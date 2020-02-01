@@ -1,153 +1,302 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp756028lfp;
-        Fri, 31 Jan 2020 07:22:44 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwnj/qxROP3CLTSKhG3IeYxu1YZOHSy4vZTHz1IKwXVOtAbdDFnVoot1ldX1KSyy/0oGqXe
-X-Received: by 2002:ac8:1205:: with SMTP id x5mr11049018qti.238.1580484164652;
-        Fri, 31 Jan 2020 07:22:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580484164; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1966907lfp;
+        Sat, 1 Feb 2020 08:09:20 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzA1YLtBnM9h84It42zP4HCTZR2oeX40uUsEw98iG/LYue5c2yQh9EuG/2WWPX8HondGjS+
+X-Received: by 2002:ae9:ea08:: with SMTP id f8mr15000360qkg.489.1580573360341;
+        Sat, 01 Feb 2020 08:09:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580573360; cv=none;
         d=google.com; s=arc-20160816;
-        b=TPfTt175IlZ1KPufIkhrzxJf2DmP9L8aD3Im37GQXQxuhX65khvxf5h2EOw15Qi74N
-         /Ev01fXlET46V0xJtQQgczJUZv3jP5VFulz1rK1wdufEfiucxTiMIpb7kGyBU80aAn5T
-         il3a4s1J5opbMb93rO+f6vB0ZtUicfKmsFgcZbb9LWO4tHy2LI5UyaJLGYpk0ZmjuF5M
-         /PgI5Cl3/SujuoZj86CiHxAfv/PgcTOBd9boonaWX8vNEfkje7yEae7Pz+pOTmH1zi0+
-         WzeUsdwgRY6yHq3+GQWtXixfipw/5zcyAP0Ltdi7KGrJt/Wo4i4sys5g8ma6kp4Hj81L
-         7fdQ==
+        b=aCfqrKhlCCtvcv+XtfHLorMlsn/NyKmMgtROJZQk+uyJe4PCXyxfSnkycrydASj5nm
+         VDwFm2w4wcoGJKsZ67ff1Y3Dn75BucKwwV13mIOUUA2rcMil0JQmo3af1/uYZusrdqUF
+         xDh3M1fxkcBvWGwgNHrTVI4MwHaSoPJtYFjRa1mC/0vS5k/J6fU2/FfXA9A/EetLcncD
+         ycFFARy8RubsGwrojjcuVCpqXzWlRZJUGTheUbheqSM3uJWhHcjDij7kLYIGAViH4cXZ
+         3fykBj6vools0I3urkB8MSp93SY2fUqO/+rZ8a761LTqOWGu+XH/lPS3gpjzyqtiyWex
+         +XFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=UfyH5nJ+NIfsObnBZjvRjm5eE82w8cQH6pIlZBQxQY8=;
-        b=Wq4Z3D8c0sMmHO/rSeHx+O41ujVb7zTbX3bi0WTHRhSBH7p2/V/t25ErjONIbeyD3h
-         9g7YyceAUJze6NtxYWtFwyLdEE29+XhZaw9MhZyuBkstCm5EV5y14VAF2UKGGOesoy++
-         q8YT9UGMPTVOB8ughS4YGIhGeIAu5tdU9vmWEWYJ2Kv5keuVGygtONj9vze6cu3DH7D3
-         jN5apHkjaK3bf5UGqtuou6I3Wb/S7avB4yiWBS175HBu1rcnFDAX5atCo4gNE2jvchxW
-         ahq4H5KRL5cIH4Mwtrkuo+mhtYAQR3i85LDqDc6OnRHWpQZmjGMUmgkHnjbzfNp0sjb5
-         1phA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject:dkim-signature;
+        bh=hf66daEhwSz8unUsUuL5N35gPWbaJ3m2PE7qZzRa32Q=;
+        b=jrOxUVkiyLOaWr3+gYut5h2BqIXaWbcpUM2/7adELjT2UBa6kNu6V7/6JePznBqZ6K
+         tL9+TC3FRxOWkbLMY251LOiHdBQbiNfsZGJoZZ26Im6ZBAbtpzywNWbX6CL/KJy3sQzZ
+         TR/w+wP07OVazxBpWq05OBEEc35Uh8GnQ7nYpmWjwkdzLWit8T1uxSa6ZOKfM+k+NMvD
+         +LrwfrPM0A8l1FenJZ7GnHd1m1/pHUsk/a1PollrB+DTFxvYPO4+mgSyk0wrwAr+m5Ak
+         AmF9VlGwQvKQGIwyGS2f8a1KmpUe4ZrqrsKS3/IuovLrPbtTKj6rGAMvJYRHFV0I/R1+
+         YEBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ChXABUpB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ufbrppPI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n14si6316135qkk.301.2020.01.31.07.22.44
+        by mx.google.com with ESMTPS id y20si7714156qki.302.2020.02.01.08.09.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 31 Jan 2020 07:22:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 01 Feb 2020 08:09:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ChXABUpB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54648 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ufbrppPI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:47408 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ixY84-0000DG-3h
-	for alex.bennee@linaro.org; Fri, 31 Jan 2020 10:22:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39202)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ixvKh-0004Jb-Lo
+	for alex.bennee@linaro.org; Sat, 01 Feb 2020 11:09:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57625)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1ixXyH-0004Is-Tn
- for qemu-devel@nongnu.org; Fri, 31 Jan 2020 10:12:40 -0500
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ixvKZ-0004JJ-JS
+ for qemu-arm@nongnu.org; Sat, 01 Feb 2020 11:09:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1ixXyG-000416-SI
- for qemu-devel@nongnu.org; Fri, 31 Jan 2020 10:12:37 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:20491
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1ixXyG-00040P-OZ
- for qemu-devel@nongnu.org; Fri, 31 Jan 2020 10:12:36 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580483556;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=UfyH5nJ+NIfsObnBZjvRjm5eE82w8cQH6pIlZBQxQY8=;
- b=ChXABUpBHyJqTnYfpcok2M3O6xviCVDKubbdZ5u27dM20n3kcDVFF97AOmePTFObaeIv6Z
- GzjAbUepJe6AjMhcda1R5glzy1eeFgyBkWlor5sdOtlc0GiU6x2dYYm43c26/LzFO/9nnU
- KDuRjDJtcfv8w8V6yFdrrEs01mmzDrs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-29-gfMpT-SoN_6FUicEP8hooA-1; Fri, 31 Jan 2020 10:12:29 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 11C6B8010CB;
- Fri, 31 Jan 2020 15:12:28 +0000 (UTC)
-Received: from dell-r430-03.lab.eng.brq.redhat.com
- (dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B928886C4B;
- Fri, 31 Jan 2020 15:12:26 +0000 (UTC)
-From: Igor Mammedov <imammedo@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v4 15/80] arm/imx25_pdk: drop RAM size fixup
-Date: Fri, 31 Jan 2020 16:08:45 +0100
-Message-Id: <1580483390-131164-16-git-send-email-imammedo@redhat.com>
-In-Reply-To: <1580483390-131164-1-git-send-email-imammedo@redhat.com>
-References: <1580483390-131164-1-git-send-email-imammedo@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: gfMpT-SoN_6FUicEP8hooA-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-devel@nongnu.org
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ixvKY-0008J2-7b
+ for qemu-arm@nongnu.org; Sat, 01 Feb 2020 11:09:11 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:36066)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ixvKY-0008Im-12; Sat, 01 Feb 2020 11:09:10 -0500
+Received: by mail-wr1-x442.google.com with SMTP id z3so12343950wru.3;
+ Sat, 01 Feb 2020 08:09:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:autocrypt:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=hf66daEhwSz8unUsUuL5N35gPWbaJ3m2PE7qZzRa32Q=;
+ b=ufbrppPIT/N1iECImwNuKKiGAvwEb6PmxmSmUjvd8qptlOmYunbLGotu0ocTNZY5aU
+ zSqjarUvZZMJTwjljj8tbDiI8TQ5ahinxWIkcK5WyGMaJXOXmJl+9fV2yXMV6MW6Kv/7
+ Sh0LJ/bHAuR37emIMhfcuU1LeNuSVLVjHqdMROahPw8cYLX7vq/OAbUiSDN/f5zdHQRN
+ sMv7vJdX97NhLNRm2XDWdVwm2Gf/ifdv7pth+i6Z536mRk6vLbbEW1jQdKWY/TBXmcAs
+ 8wxLIah7DNKqVwf8B5FiwmQqBbluGhqC/PBhg4+a9cPXfT9BjaOW9VggASgpcy12s3aE
+ /iDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=hf66daEhwSz8unUsUuL5N35gPWbaJ3m2PE7qZzRa32Q=;
+ b=elSrQ4bphnyQuop++3cXjQ1vk6JNkf4czDCUFY7K+hQMlL2X1HOOop3KmkQr4oR61e
+ aWJRlAzRPjjTYPKdPfnppmmVhGNlPrubxzhah4w+Y+Ghv++TdtU4rPcMKQyE+xwFkv+P
+ 1xGTn3W4AMYV+8PGWI1av2lxgV44pGHaWwNsbCbefI1FBx2jnFAX50E5QmzPqlknVqDg
+ UxrFfj9QDh47+Wzi2ak8ZZAtWZU0P3v5WLM4HRs1PRGG/2qcGYGM94Gjb8ctmq0MitbG
+ WAA9J1zZW+DoXQgFRghsOtwCKCCFLsJp39+0FxlP9dAJmXBCYOxkq1wfKCdcR8KQS3YT
+ QRRw==
+X-Gm-Message-State: APjAAAWyajnR7pzmQ5g6huEe5pu3EoCSCiCx2OnX0mEMat8xsPxt2kNK
+ rvgXNzT7BNe8+5o3LnJ+2Ak=
+X-Received: by 2002:adf:f986:: with SMTP id f6mr798450wrr.182.1580573348145;
+ Sat, 01 Feb 2020 08:09:08 -0800 (PST)
+Received: from [192.168.1.35] (162.red-83-52-55.dynamicip.rima-tde.net.
+ [83.52.55.162])
+ by smtp.gmail.com with ESMTPSA id w8sm15797451wmm.0.2020.02.01.08.09.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 01 Feb 2020 08:09:07 -0800 (PST)
+Subject: Re: [PATCH for-5.0 3/4] Remove the core bluetooth code
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>
+References: <20191120091014.16883-1-thuth@redhat.com>
+ <20191120091014.16883-4-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Autocrypt: addr=f4bug@amsat.org; keydata=
+ mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
+ u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
+ HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
+ YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
+ ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
+ dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
+ ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
+ Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
+ HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
+ Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
+ CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
+ klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
+ jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
+ 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
+ loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
+ sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
+ JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
+ 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
+ K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
+ n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
+ CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
+Message-ID: <7a775153-f18d-e766-1d8f-33607f5fa05b@amsat.org>
+Date: Sat, 1 Feb 2020 17:09:05 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
+MIME-Version: 1.0
+In-Reply-To: <20191120091014.16883-4-thuth@redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::442
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
- jcd@tribudubois.net
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1eMqUUl1KAW9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: libvir-list@redhat.com, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QIoL0kSQ8h52
 
-If user provided non-sense RAM size, board will complain and
-continue running with max RAM size supported.
-Also RAM is going to be allocated by generic code, so it won't be
-possible for board to fix things up for user.
+On 11/20/19 10:10 AM, Thomas Huth wrote:
+> It's been deprecated since QEMU v3.1. We've explicitly asked in the
+> deprecation message that people should speak up on qemu-devel in case
+> they are still actively using the bluetooth part of QEMU, but nobody
+> ever replied that they are really still using it.
+> 
+> I've tried it on my own to use this bluetooth subsystem for one of my
+> guests, but I was also not able to get it running anymore: When I was
+> trying to pass-through a real bluetooth device, either the guest did
+> not see the device at all, or the guest crashed.
+> 
+> Even worse for the emulated device: When running
+> 
+>  qemu-system-x86_64 -bt device:keyboard
+> 
+> QEMU crashes once you hit a key.
+> 
+> So it seems like the bluetooth stack is not only neglected, it is
+> completely bitrotten, as far as I can tell. The only attention that
+> this code got during the past years were some CVEs that have been
+> spotted there. So this code is a burden for the developers, without
+> any real benefit anymore. Time to remove it.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  Makefile.objs        |    2 -
+>  bt-host.c            |  198 ----
+>  bt-vhci.c            |  167 ----
+>  configure            |   31 -
+>  hw/Kconfig           |    1 -
+>  hw/Makefile.objs     |    1 -
+>  hw/bt/Kconfig        |    2 -
+>  hw/bt/Makefile.objs  |    3 -
+>  hw/bt/core.c         |  143 ---
+>  hw/bt/hci-csr.c      |  512 ----------
+>  hw/bt/hci.c          | 2263 ------------------------------------------
+>  hw/bt/hid.c          |  553 -----------
+>  hw/bt/l2cap.c        | 1367 -------------------------
+>  hw/bt/sdp.c          |  989 ------------------
+>  include/hw/bt.h      | 2177 ----------------------------------------
+>  include/sysemu/bt.h  |   20 -
+>  qemu-deprecated.texi |    7 -
+>  qemu-options.hx      |   79 --
+>  vl.c                 |  136 ---
+>  19 files changed, 8651 deletions(-)
+>  delete mode 100644 bt-host.c
+>  delete mode 100644 bt-vhci.c
+>  delete mode 100644 hw/bt/Kconfig
+>  delete mode 100644 hw/bt/Makefile.objs
+>  delete mode 100644 hw/bt/core.c
+>  delete mode 100644 hw/bt/hci-csr.c
+>  delete mode 100644 hw/bt/hci.c
+>  delete mode 100644 hw/bt/hid.c
+>  delete mode 100644 hw/bt/l2cap.c
+>  delete mode 100644 hw/bt/sdp.c
+>  delete mode 100644 include/hw/bt.h
+>  delete mode 100644 include/sysemu/bt.h
+> 
+[...]> diff --git a/configure b/configure
+> index 6099be1d84..ecce4ada2d 100755
+> --- a/configure
+> +++ b/configure
+> @@ -349,7 +349,6 @@ unset target_list_exclude
+>  # Distributions want to ensure that several features are compiled in, and it
+>  # is impossible without a --enable-foo that exits if a feature is not found.
+>  
+> -bluez=""
+>  brlapi=""
+>  curl=""
+>  curses=""
+> @@ -1151,10 +1150,6 @@ for opt do
+>    ;;
+>    --enable-brlapi) brlapi="yes"
+>    ;;
+> -  --disable-bluez) bluez="no"
+> -  ;;
+> -  --enable-bluez) bluez="yes"
+> -  ;;
 
-Make it error message and exit to force user fix CLI,
-instead of accepting non-sense CLI values.
+Now than I'm bisecting over this commit, I realize removing this
+option was not a good idea, we should have done like commit
+cb6414dfec8 or 315d3184525:
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
----
-CC: jcd@tribudubois.net
-CC: peter.maydell@linaro.org
-CC: qemu-arm@nongnu.org
-CC: philmd@redhat.com
----
- hw/arm/imx25_pdk.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+  @@ -886,10 +885,6 @@ for opt do
+  -  --disable-uuid) uuid="no"
+  -  ;;
+  -  --enable-uuid) uuid="yes"
+  -  ;;
+  ...
+  +  --enable-uuid|--disable-uuid)
+  +      echo "$0: $opt is obsolete, UUID support is always built" >&2
+  +  ;;
 
-diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
-index c76fc2b..a2b7b35 100644
---- a/hw/arm/imx25_pdk.c
-+++ b/hw/arm/imx25_pdk.c
-@@ -78,10 +78,10 @@ static void imx25_pdk_init(MachineState *machine)
-=20
-     /* We need to initialize our memory */
-     if (machine->ram_size > (FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZE=
-)) {
--        warn_report("RAM size " RAM_ADDR_FMT " above max supported, "
-+        error_report("RAM size " RAM_ADDR_FMT " above max supported, "
-                     "reduced to %x", machine->ram_size,
-                     FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZE);
--        machine->ram_size =3D FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZ=
-E;
-+        exit(EXIT_FAILURE);
-     }
-=20
-     memory_region_allocate_system_memory(&s->ram, NULL, "imx25.ram",
---=20
-2.7.4
-
+>    --disable-kvm) kvm="no"
+>    ;;
+>    --enable-kvm) kvm="yes"
+> @@ -1762,7 +1757,6 @@ disabled with --disable-FEATURE, default is enabled if available:
+>    curl            curl connectivity
+>    membarrier      membarrier system call (for Linux 4.14+ or Windows)
+>    fdt             fdt device tree
+> -  bluez           bluez stack connectivity
+>    kvm             KVM acceleration support
+>    hax             HAX acceleration support
+>    hvf             Hypervisor.framework acceleration support
+> @@ -3665,26 +3659,6 @@ EOF
+>    fi
+>  fi # test "$curl"
+>  
+> -##########################################
+> -# bluez support probe
+> -if test "$bluez" != "no" ; then
+> -  cat > $TMPC << EOF
+> -#include <bluetooth/bluetooth.h>
+> -int main(void) { return bt_error(0); }
+> -EOF
+> -  bluez_cflags=$($pkg_config --cflags bluez 2>/dev/null)
+> -  bluez_libs=$($pkg_config --libs bluez 2>/dev/null)
+> -  if compile_prog "$bluez_cflags" "$bluez_libs" ; then
+> -    bluez=yes
+> -    libs_softmmu="$bluez_libs $libs_softmmu"
+> -  else
+> -    if test "$bluez" = "yes" ; then
+> -      feature_not_found "bluez" "Install bluez-libs/libbluetooth devel"
+> -    fi
+> -    bluez="no"
+> -  fi
+> -fi
+> -
+>  ##########################################
+>  # glib support probe
+>  
+> @@ -6509,7 +6483,6 @@ if test "$xen" = "yes" ; then
+>    echo "xen ctrl version  $xen_ctrl_version"
+>  fi
+>  echo "brlapi support    $brlapi"
+> -echo "bluez  support    $bluez"
+>  echo "Documentation     $docs"
+>  echo "PIE               $pie"
+>  echo "vde support       $vde"
+> @@ -6933,10 +6906,6 @@ if test "$brlapi" = "yes" ; then
+>    echo "CONFIG_BRLAPI=y" >> $config_host_mak
+>    echo "BRLAPI_LIBS=$brlapi_libs" >> $config_host_mak
+>  fi
+> -if test "$bluez" = "yes" ; then
+> -  echo "CONFIG_BLUEZ=y" >> $config_host_mak
+> -  echo "BLUEZ_CFLAGS=$bluez_cflags" >> $config_host_mak
+> -fi
+>  if test "$gtk" = "yes" ; then
+>    echo "CONFIG_GTK=m" >> $config_host_mak
+>    echo "GTK_CFLAGS=$gtk_cflags" >> $config_host_mak
+[...]

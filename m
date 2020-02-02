@@ -1,327 +1,578 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp2920497lfp;
-        Sun, 2 Feb 2020 06:21:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwfxtMrl+hsZZSlCeZibLEMJ0dUoH2KJ8VpvgLDj+KtNItwEzlMKfImJ0aaRHOkYT+Vn/42
-X-Received: by 2002:a9d:6b91:: with SMTP id b17mr13797450otq.235.1580653308807;
-        Sun, 02 Feb 2020 06:21:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580653308; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3138890lfp;
+        Sun, 2 Feb 2020 11:12:48 -0800 (PST)
+X-Received: by 2002:a05:6602:210a:: with SMTP id x10mr16334215iox.151.1580670768753;
+        Sun, 02 Feb 2020 11:12:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580670768; cv=none;
         d=google.com; s=arc-20160816;
-        b=W2LmNVEqI1y2q02XEhZ0+FvwUTfBylf1jqa3t+G/Eo9fXOSk5mVILzAmXhcPgOxDyT
-         eyG11mN8mFMb3NBZSpkjlxVi4glwKTN/27tRPd734EI5YL6RxhScoUR9W3ViA/zNQliz
-         q7UQyy4zkpyR5g3yBLdPo5b6x/6cYt1BhOOcLH1bUtQoZv/UmI6fjK+W3E9g0Jjr4FFK
-         rf1Y7mVvCis+eIJw/4bP+qhqHAC1yRdn4GWs9qbvyIBhgkliamr6t+tGv36O2Q1vQoP+
-         KjNkoWBUwN3WrggD8XIu0u9XFc6gSNAu+XAZo4zniChj8frouO7EHUFfd2ni5k2GwZ9J
-         /LDQ==
+        b=Z8IqZPSwXrEAmvZ55aPZCM+ZaAMwTumgsyGzSLNl/Ua9xJ80FU0TONhC+ZcT0giJd/
+         8X5GRsYtdDOxnJP3/BEr4cSDWFzbCTSTqe6F5oaISHbpK0xhrf5sqo7Q7Kgi99EtRu6v
+         CiQzu3VkNTW1u7GjyIXCeo6xKWogMDmjLCWVq5h8uyfKvH1q93meXcBxnuJCzRQcxDKT
+         IGvxdspHF0URQ9aeH+SGjjcDVPPZ4ocmHEzre/uruG6biym7o5j5X82C5m4HOlFuTm4x
+         LIiDj2oF+wSDZh+VOJthlOZgJITdMmvmA0bye5u8KQX2c4Z9NraGHJ3fRPkyjHYgP0Q8
+         BCFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=ud/GG8XxXtGlbE0r6AqkvcaUr7MrOXWMdjvB9ZPp9J8=;
-        b=cXTG4Qy0gwd+BFRRijtu7HDhAmxmd7BSw+NxdfGjnRi5w/eI4tQprRN/VbIKxfOGwb
-         //Q+96Jemx0hiLgI96Hs7P87PQ8xgWsdMg6ZmTzuvf0AeN4ipY5+CeSWdwRSqNPOziqI
-         oMKJdSAcT/UgV3uYeVpKkJx7RkgGPLuQi6xh5VHTZUtAMAZZWsckj3vnRAVVHiJ/W7ei
-         F4myzrZ+xQRDYaXpipb3U3h/CzjiORz2WWsqQRThcEe/ZxX8vyRX0y7KP9Cg6+s4913j
-         wdRog6Rk0uxE684m6lRD8cmzM42qyWjLb7m8wZGdJcIfxOjiqy6WWxQoieKyyYCOYOgn
-         64OQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=WE281d5ljjNya0jElG6lulRNZasLBxUVQgJBPJ/8SZE=;
+        b=TAbLd5TksSIH4W8DBSbh2cYEOrsxZ1/RRlL4BH+SAUt46jPxNG0YU4r6nUzOzhmKX/
+         ZLDmG34QVI9S+2yEOfuiWqVmIz4Zl05yKWGsRXCIIjwhrH0CHbTpLYvm4qzzSFtlQr83
+         PnXW50rOowHyiv8NXs50ds5reAzv6tClmB5zHRZuY060ZLU12cbFuA5R/lvsX1ei4UKG
+         r6m6KFEv/yPNqdQWwsPIt/MLxXAjblxZrf/EZq7jB04MgzhjkAptWRJCOjIEO8r79UOS
+         lSgQvbsCpj1xlHM+JvTuerbYVQPVcH+ALa3blk58KiEIq52W4E5Ep5AjcrXjcvYzyyMT
+         bnOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b8si7567481otf.32.2020.02.02.06.21.48;
-        Sun, 02 Feb 2020 06:21:48 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=t61juFSG;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id u10sor24233270jah.14.2020.02.02.11.12.48
+        (Google Transport Security);
+        Sun, 02 Feb 2020 11:12:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726878AbgBBOVr (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Sun, 2 Feb 2020 09:21:47 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:36202 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726541AbgBBOVr (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sun, 2 Feb 2020 09:21:47 -0500
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 3A9D16CAF9288BA7580E;
-        Sun,  2 Feb 2020 22:21:38 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS412-HUB.china.huawei.com
- (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Sun, 2 Feb 2020
- 22:21:32 +0800
-Subject: Re: [PATCH v22 4/9] ACPI: Build Hardware Error Source Table
-To:     Igor Mammedov <imammedo@redhat.com>
-CC:     <pbonzini@redhat.com>, <mst@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <fam@euphon.net>, <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <mtosatti@redhat.com>, <xuwei5@huawei.com>,
-        <jonathan.cameron@huawei.com>, <james.morse@arm.com>,
-        <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
-        <qemu-arm@nongnu.org>, <zhengxiang9@huawei.com>,
-        <linuxarm@huawei.com>
-References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
- <1578483143-14905-5-git-send-email-gengdongjiu@huawei.com>
- <20200123164808.38af0491@redhat.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <dae91013-043c-26fc-e77c-77be2d1186a1@huawei.com>
-Date:   Sun, 2 Feb 2020 22:21:29 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=t61juFSG;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=WE281d5ljjNya0jElG6lulRNZasLBxUVQgJBPJ/8SZE=;
+        b=t61juFSG3DSqk7wCzDZPQ0dgR0V6Ef3wiILcV+/XV+ubSYXDRI9AWCIHuNvy1j3RBT
+         LxYzd9A9bD0ExtnfNKi/pBLjatZwPvy5e1Zn/u7PZF8xDHSILTjKolHvrhb8f3YBUN/L
+         6mDrRDNbYNx0Sb/WX+V6fTfV1K2KmBPMzN1E/e1xfpQtlYK+TX0qJ0EiND/4ZKjf3S50
+         wJaHfuYqQSVj0gKnriWWaNV+XFZEUzzoTOCZBlHR19UfwOTvK/a1KBremIH87ZFdcdQJ
+         6ZY4gJuqZXLhZ+ct7JohVH/6MhdYUxYyO5SaPCp7JasLUPHHnTpLLj3ysSgX8Ti15Vzj
+         lk6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=WE281d5ljjNya0jElG6lulRNZasLBxUVQgJBPJ/8SZE=;
+        b=kovdVEjyqcaatmwYQCgdk/SeEmZb/zh4tO1wuwoxMqgHYlpPCeTcBtO12t1aetX/TN
+         eYtHL4VD9VQeiXZfp19qvZitCodR5pBqYMPz5EPnH3UwuwqRwjy8Mcl17qybgrniISUx
+         tOOeGQypxhm8wz2MOqMfNjml09/GSlpsFk2EKU9Z4HAW2iGae87kkiCIAwl7+VQE0aYv
+         oxmXVv6sF7erui42mFjGA6zsLDw3RJ0kS37RmAmKC30GKr5Y2cGy0pNKVn1XFWxbRSbv
+         gkQNEmtTkEuoNd9ni+Gke856x6tiIulxiWzdg4c4ScA5PGfSE+xPGKl+eGNa38zk3Znl
+         0omg==
+X-Gm-Message-State: APjAAAWFRdAkFyTzWbgweDkmY/SS21kBAKFS4pbqbduGVCtPA4lMIElE
+	OSHnDIwTQofg4jUuSlYSZUK7xztDOZ3Gv/agaCQ=
+X-Google-Smtp-Source: APXvYqxDwZvSBSn3zwnc2WI1/rTgWu0rMrTgLcz69qQr1p/ZETyN2daO/lilxgWhYyTvuyIc3OPUYJhyfGjLj0TlHIg=
+X-Received: by 2002:a02:856a:: with SMTP id g97mr16426021jai.97.1580670768193;
+ Sun, 02 Feb 2020 11:12:48 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200123164808.38af0491@redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: lhWTDrHNfL9J
+References: <20200119005102.3847-1-nieklinnenbank@gmail.com>
+ <20200119005102.3847-5-nieklinnenbank@gmail.com> <39b5cc92-df42-50a4-72ba-10850aa00b04@redhat.com>
+In-Reply-To: <39b5cc92-df42-50a4-72ba-10850aa00b04@redhat.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Sun, 2 Feb 2020 20:12:36 +0100
+Message-ID: <CAPan3WoTQpm5-+Xp=6oKXtAYiVMV_+=0y+4-rg2-EH0A3i2Ytw@mail.gmail.com>
+Subject: Re: [PATCH v4 04/20] hw/arm/allwinner-h3: add USB host controller
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Peter Maydell <peter.maydell@linaro.org>, Beniamino Galvani <b.galvani@gmail.com>, jasowang@redhat.com, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, imammedo@redhat.com
+Content-Type: multipart/alternative; boundary="000000000000a52783059d9c977c"
+X-TUID: oLyFYqWfyhVS
+
+--000000000000a52783059d9c977c
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Sun, Jan 19, 2020 at 7:37 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
+com>
+wrote:
+
+> On 1/19/20 1:50 AM, Niek Linnenbank wrote:
+> > The Allwinner H3 System on Chip contains multiple USB 2.0 bus
+> > connections which provide software access using the Enhanced
+> > Host Controller Interface (EHCI) and Open Host Controller
+> > Interface (OHCI) interfaces. This commit adds support for
+> > both interfaces in the Allwinner H3 System on Chip.
+> >
+> > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> > Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+> > ---
+> >   hw/usb/hcd-ehci.h             |  1 +
+> >   include/hw/arm/allwinner-h3.h |  8 ++++++
+> >   hw/arm/allwinner-h3.c         | 52 ++++++++++++++++++++++++++++++++--=
+-
+> >   hw/usb/hcd-ehci-sysbus.c      | 17 ++++++++++++
+> >   4 files changed, 74 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
+> > index 0298238f0b..edb59311c4 100644
+> > --- a/hw/usb/hcd-ehci.h
+> > +++ b/hw/usb/hcd-ehci.h
+> > @@ -342,6 +342,7 @@ typedef struct EHCIPCIState {
+> >   #define TYPE_SYS_BUS_EHCI "sysbus-ehci-usb"
+> >   #define TYPE_PLATFORM_EHCI "platform-ehci-usb"
+> >   #define TYPE_EXYNOS4210_EHCI "exynos4210-ehci-usb"
+> > +#define TYPE_AW_H3_EHCI "aw-h3-ehci-usb"
+> >   #define TYPE_TEGRA2_EHCI "tegra2-ehci-usb"
+> >   #define TYPE_PPC4xx_EHCI "ppc4xx-ehci-usb"
+> >   #define TYPE_FUSBH200_EHCI "fusbh200-ehci-usb"
+> > diff --git a/include/hw/arm/allwinner-h3.h
+> b/include/hw/arm/allwinner-h3.h
+> > index abdc20871a..4f4dcbcd17 100644
+> > --- a/include/hw/arm/allwinner-h3.h
+> > +++ b/include/hw/arm/allwinner-h3.h
+> > @@ -56,6 +56,14 @@ enum {
+> >       AW_H3_SRAM_A1,
+> >       AW_H3_SRAM_A2,
+> >       AW_H3_SRAM_C,
+> > +    AW_H3_EHCI0,
+> > +    AW_H3_OHCI0,
+> > +    AW_H3_EHCI1,
+> > +    AW_H3_OHCI1,
+> > +    AW_H3_EHCI2,
+> > +    AW_H3_OHCI2,
+> > +    AW_H3_EHCI3,
+> > +    AW_H3_OHCI3,
+> >       AW_H3_CCU,
+> >       AW_H3_PIT,
+> >       AW_H3_UART0,
+> > diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+> > index 8df8e3e05e..f360625ee9 100644
+> > --- a/hw/arm/allwinner-h3.c
+> > +++ b/hw/arm/allwinner-h3.c
+> > @@ -28,6 +28,7 @@
+> >   #include "hw/sysbus.h"
+> >   #include "hw/char/serial.h"
+> >   #include "hw/misc/unimp.h"
+> > +#include "hw/usb/hcd-ehci.h"
+> >   #include "sysemu/sysemu.h"
+> >   #include "hw/arm/allwinner-h3.h"
+> >
+> > @@ -36,6 +37,14 @@ const hwaddr allwinner_h3_memmap[] =3D {
+> >       [AW_H3_SRAM_A1]    =3D 0x00000000,
+> >       [AW_H3_SRAM_A2]    =3D 0x00044000,
+> >       [AW_H3_SRAM_C]     =3D 0x00010000,
+> > +    [AW_H3_EHCI0]      =3D 0x01c1a000,
+> > +    [AW_H3_OHCI0]      =3D 0x01c1a400,
+> > +    [AW_H3_EHCI1]      =3D 0x01c1b000,
+> > +    [AW_H3_OHCI1]      =3D 0x01c1b400,
+> > +    [AW_H3_EHCI2]      =3D 0x01c1c000,
+> > +    [AW_H3_OHCI2]      =3D 0x01c1c400,
+> > +    [AW_H3_EHCI3]      =3D 0x01c1d000,
+> > +    [AW_H3_OHCI3]      =3D 0x01c1d400,
+> >       [AW_H3_CCU]        =3D 0x01c20000,
+> >       [AW_H3_PIT]        =3D 0x01c20c00,
+> >       [AW_H3_UART0]      =3D 0x01c28000,
+> > @@ -73,10 +82,10 @@ struct AwH3Unimplemented {
+> >       { "msgbox",    0x01c17000, 4 * KiB },
+> >       { "spinlock",  0x01c18000, 4 * KiB },
+> >       { "usb0-otg",  0x01c19000, 4 * KiB },
+> > -    { "usb0",      0x01c1a000, 4 * KiB },
+> > -    { "usb1",      0x01c1b000, 4 * KiB },
+> > -    { "usb2",      0x01c1c000, 4 * KiB },
+> > -    { "usb3",      0x01c1d000, 4 * KiB },
+> > +    { "usb0-phy",  0x01c1a000, 4 * KiB },
+> > +    { "usb1-phy",  0x01c1b000, 4 * KiB },
+> > +    { "usb2-phy",  0x01c1c000, 4 * KiB },
+> > +    { "usb3-phy",  0x01c1d000, 4 * KiB },
+>
+> As in v3 comment, this can be done in patch #1.
+>
+
+OK, I'll rename them in patch 1, so it won't show up here.
 
 
+>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>
 
-On 2020/1/23 23:48, Igor Mammedov wrote:
-> On Wed, 8 Jan 2020 19:32:18 +0800
-> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-> 
->> This patch builds Hardware Error Source Table(HEST) via fw_cfg blobs.
->> Now it only supports ARMv8 SEA, a type of Generic Hardware Error
->> Source version 2(GHESv2) error source. Afterwards, we can extend
->> the supported types if needed. For the CPER section, currently it
->> is memory section because kernel mainly wants userspace to handle
->> the memory errors.
->>
->> This patch follows the spec ACPI 6.2 to build the Hardware Error
->> Source table. For more detailed information, please refer to
->> document: docs/specs/acpi_hest_ghes.rst
->>
->> build_append_ghes_notify() will help to add Hardware Error Notification
->> to ACPI tables without using packed C structures and avoid endianness
->> issues as API doesn't need explicit conversion.
->>
->> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
->> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
->> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
->> Acked-by: Xiang Zheng <zhengxiang9@huawei.com>
-> 
-> 
-> Overall it looks fine to me, see couple nits below
-> 
-> 
->> ---
->>  hw/acpi/ghes.c           | 118 ++++++++++++++++++++++++++++++++++++++++++++++-
->>  hw/arm/virt-acpi-build.c |   2 +
->>  include/hw/acpi/ghes.h   |  40 ++++++++++++++++
->>  3 files changed, 159 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
->> index b7fdbbb..9d37798 100644
->> --- a/hw/acpi/ghes.c
->> +++ b/hw/acpi/ghes.c
->> @@ -34,9 +34,42 @@
->>  
->>  /* The max size in bytes for one error block */
->>  #define ACPI_GHES_MAX_RAW_DATA_LENGTH       0x400
->> -
->>  /* Now only support ARMv8 SEA notification type error source */
->>  #define ACPI_GHES_ERROR_SOURCE_COUNT        1
->> +/* Generic Hardware Error Source version 2 */
->> +#define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
->> +/* Address offset in Generic Address Structure(GAS) */
->> +#define GAS_ADDR_OFFSET 4
->> +
->> +/*
->> + * Hardware Error Notification
->> + * ACPI 4.0: 17.3.2.7 Hardware Error Notification
->> + * Composes dummy Hardware Error Notification descriptor of specified type
->> + */
->> +static void build_ghes_hw_error_notification(GArray *table, const uint8_t type)
->> +{
->> +    /* Type */
->> +    build_append_int_noprefix(table, type, 1);
->> +    /*
->> +     * Length:
->> +     * Total length of the structure in bytes
->> +     */
->> +    build_append_int_noprefix(table, 28, 1);
->> +    /* Configuration Write Enable */
->> +    build_append_int_noprefix(table, 0, 2);
->> +    /* Poll Interval */
->> +    build_append_int_noprefix(table, 0, 4);
->> +    /* Vector */
->> +    build_append_int_noprefix(table, 0, 4);
->> +    /* Switch To Polling Threshold Value */
->> +    build_append_int_noprefix(table, 0, 4);
->> +    /* Switch To Polling Threshold Window */
->> +    build_append_int_noprefix(table, 0, 4);
->> +    /* Error Threshold Value */
->> +    build_append_int_noprefix(table, 0, 4);
->> +    /* Error Threshold Window */
->> +    build_append_int_noprefix(table, 0, 4);
->> +}
->>  
->>  /*
->>   * Build table for the hardware error fw_cfg blob.
->> @@ -92,3 +125,86 @@ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
->>      bios_linker_loader_write_pointer(linker, ACPI_GHES_DATA_ADDR_FW_CFG_FILE,
->>          0, sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
->>  }
->> +
->> +/* Build Generic Hardware Error Source version 2 (GHESv2) */
->> +static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
->> +{
->> +    uint64_t address_offset;
->> +    /*
->> +     * Type:
->> +     * Generic Hardware Error Source version 2(GHESv2 - Type 10)
->> +     */
->> +    build_append_int_noprefix(table_data, ACPI_GHES_SOURCE_GENERIC_ERROR_V2, 2);
->> +    /* Source Id */
->> +    build_append_int_noprefix(table_data, source_id, 2);
->> +    /* Related Source Id */
->> +    build_append_int_noprefix(table_data, 0xffff, 2);
->> +    /* Flags */
->> +    build_append_int_noprefix(table_data, 0, 1);
->> +    /* Enabled */
->> +    build_append_int_noprefix(table_data, 1, 1);
->> +
->> +    /* Number of Records To Pre-allocate */
->> +    build_append_int_noprefix(table_data, 1, 4);
->> +    /* Max Sections Per Record */
->> +    build_append_int_noprefix(table_data, 1, 4);
->> +    /* Max Raw Data Length */
->> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
->> +
->> +    address_offset = table_data->len;
->> +    /* Error Status Address */
->> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
->> +                     4 /* QWord access */, 0);
->> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
->> +        address_offset + GAS_ADDR_OFFSET,
->> +        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
->> +
->> +    /*
->> +     * Notification Structure
->> +     * Now only enable ARMv8 SEA notification type
->> +     */
->> +    build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_SEA);
->> +
->> +    /* Error Status Block Length */
->> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
->> +
->> +    /*
->> +     * Read Ack Register
->> +     * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source
->> +     * version 2 (GHESv2 - Type 10)
->> +     */
->> +    address_offset = table_data->len;
->> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
->> +                     4 /* QWord access */, 0);
->> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
->> +        address_offset + GAS_ADDR_OFFSET,
->> +        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
->> +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t));
->> +
->> +    /*
->> +     * Read Ack Preserve
->> +     * We only provide the first bit in Read Ack Register to OSPM to write
->> +     * while the other bits are preserved.
->> +     */
->> +    build_append_int_noprefix(table_data, ~0x1ULL, 8);
->> +    /* Read Ack Write */
->> +    build_append_int_noprefix(table_data, 0x1, 8);
->> +}
->> +
->> +/* Build Hardware Error Source Table */
->> +void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
->                                              ^^^^^^^^ it seems to be unused, so why it's here?
-Thanks, I will remove this parameter.
+Thanks for reviewing and testing Philippe!
+Regards,
+Niek
 
-> 
->> +                          BIOSLinker *linker)
->> +{
->> +    uint64_t hest_start = table_data->len;
->> +
->> +    /* Hardware Error Source Table header*/
->> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
->> +
->> +    /* Error Source Count */
->> +    build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, 4);
->> +
->> +    build_ghes_v2(table_data, ACPI_HEST_SRC_ID_SEA, linker);
->> +
->> +    build_header(linker, table_data, (void *)(table_data->data + hest_start),
->> +        "HEST", table_data->len - hest_start, 1, NULL, "");
->> +}
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index 6819fcf..837bbf9 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -834,6 +834,8 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->>      if (vms->ras) {
->>          acpi_add_table(table_offsets, tables_blob);
->>          build_ghes_error_table(tables->hardwarerrors, tables->linker);
->> +        acpi_build_hest(tables_blob, tables->hardware_errors,
->> +                             tables->linker);
-> 
-> not aligned properly
-> 
-> you can use ./scripts/checkpatch.pl to see if there is style errors 
 
-It will not report style errors for this alignment, anyway I will do alignment to it.
+>
+> >       { "smc",       0x01c1e000, 4 * KiB },
+> >       { "pio",       0x01c20800, 1 * KiB },
+> >       { "owa",       0x01c21000, 1 * KiB },
+> > @@ -144,6 +153,14 @@ enum {
+> >       AW_H3_GIC_SPI_UART3     =3D  3,
+> >       AW_H3_GIC_SPI_TIMER0    =3D 18,
+> >       AW_H3_GIC_SPI_TIMER1    =3D 19,
+> > +    AW_H3_GIC_SPI_EHCI0     =3D 72,
+> > +    AW_H3_GIC_SPI_OHCI0     =3D 73,
+> > +    AW_H3_GIC_SPI_EHCI1     =3D 74,
+> > +    AW_H3_GIC_SPI_OHCI1     =3D 75,
+> > +    AW_H3_GIC_SPI_EHCI2     =3D 76,
+> > +    AW_H3_GIC_SPI_OHCI2     =3D 77,
+> > +    AW_H3_GIC_SPI_EHCI3     =3D 78,
+> > +    AW_H3_GIC_SPI_OHCI3     =3D 79,
+> >   };
+> >
+> >   /* Allwinner H3 general constants */
+> > @@ -284,6 +301,33 @@ static void allwinner_h3_realize(DeviceState *dev,
+> Error **errp)
+> >       qdev_init_nofail(DEVICE(&s->ccu));
+> >       sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccu), 0, s->memmap[AW_H3_CCU])=
+;
+> >
+> > +    /* Universal Serial Bus */
+> > +    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI0],
+> > +                         qdev_get_gpio_in(DEVICE(&s->gic),
+> > +                                          AW_H3_GIC_SPI_EHCI0));
+> > +    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI1],
+> > +                         qdev_get_gpio_in(DEVICE(&s->gic),
+> > +                                          AW_H3_GIC_SPI_EHCI1));
+> > +    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI2],
+> > +                         qdev_get_gpio_in(DEVICE(&s->gic),
+> > +                                          AW_H3_GIC_SPI_EHCI2));
+> > +    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI3],
+> > +                         qdev_get_gpio_in(DEVICE(&s->gic),
+> > +                                          AW_H3_GIC_SPI_EHCI3));
+> > +
+> > +    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI0],
+> > +                         qdev_get_gpio_in(DEVICE(&s->gic),
+> > +                                          AW_H3_GIC_SPI_OHCI0));
+> > +    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI1],
+> > +                         qdev_get_gpio_in(DEVICE(&s->gic),
+> > +                                          AW_H3_GIC_SPI_OHCI1));
+> > +    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI2],
+> > +                         qdev_get_gpio_in(DEVICE(&s->gic),
+> > +                                          AW_H3_GIC_SPI_OHCI2));
+> > +    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI3],
+> > +                         qdev_get_gpio_in(DEVICE(&s->gic),
+> > +                                          AW_H3_GIC_SPI_OHCI3));
+> > +
+> >       /* UART0. For future clocktree API: All UARTS are connected to
+> APB2_CLK. */
+> >       serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART0], 2,
+> >                      qdev_get_gpio_in(DEVICE(&s->gic),
+> AW_H3_GIC_SPI_UART0),
+> > diff --git a/hw/usb/hcd-ehci-sysbus.c b/hw/usb/hcd-ehci-sysbus.c
+> > index 020211fd10..174c3446ef 100644
+> > --- a/hw/usb/hcd-ehci-sysbus.c
+> > +++ b/hw/usb/hcd-ehci-sysbus.c
+> > @@ -145,6 +145,22 @@ static const TypeInfo ehci_exynos4210_type_info =
+=3D {
+> >       .class_init    =3D ehci_exynos4210_class_init,
+> >   };
+> >
+> > +static void ehci_aw_h3_class_init(ObjectClass *oc, void *data)
+> > +{
+> > +    SysBusEHCIClass *sec =3D SYS_BUS_EHCI_CLASS(oc);
+> > +    DeviceClass *dc =3D DEVICE_CLASS(oc);
+> > +
+> > +    sec->capsbase =3D 0x0;
+> > +    sec->opregbase =3D 0x10;
+> > +    set_bit(DEVICE_CATEGORY_USB, dc->categories);
+> > +}
+> > +
+> > +static const TypeInfo ehci_aw_h3_type_info =3D {
+> > +    .name          =3D TYPE_AW_H3_EHCI,
+> > +    .parent        =3D TYPE_SYS_BUS_EHCI,
+> > +    .class_init    =3D ehci_aw_h3_class_init,
+> > +};
+> > +
+> >   static void ehci_tegra2_class_init(ObjectClass *oc, void *data)
+> >   {
+> >       SysBusEHCIClass *sec =3D SYS_BUS_EHCI_CLASS(oc);
+> > @@ -267,6 +283,7 @@ static void ehci_sysbus_register_types(void)
+> >       type_register_static(&ehci_platform_type_info);
+> >       type_register_static(&ehci_xlnx_type_info);
+> >       type_register_static(&ehci_exynos4210_type_info);
+> > +    type_register_static(&ehci_aw_h3_type_info);
+> >       type_register_static(&ehci_tegra2_type_info);
+> >       type_register_static(&ehci_ppc4xx_type_info);
+> >       type_register_static(&ehci_fusbh200_type_info);
+> >
+>
+>
 
-> 
-> 
->>      }
->>  
->>      if (ms->numa_state->num_nodes > 0) {
->> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
->> index 3dbda3f..09a7f86 100644
->> --- a/include/hw/acpi/ghes.h
->> +++ b/include/hw/acpi/ghes.h
->> @@ -22,5 +22,45 @@
->>  #ifndef ACPI_GHES_H
->>  #define ACPI_GHES_H
->>  
->> +/*
->> + * Values for Hardware Error Notification Type field
->> + */
->> +enum AcpiGhesNotifyType {
->> +    /* Polled */
->> +    ACPI_GHES_NOTIFY_POLLED = 0,
->> +    /* External Interrupt */
->> +    ACPI_GHES_NOTIFY_EXTERNAL = 1,
->> +    /* Local Interrupt */
->> +    ACPI_GHES_NOTIFY_LOCAL = 2,
->> +    /* SCI */
->> +    ACPI_GHES_NOTIFY_SCI = 3,
->> +    /* NMI */
->> +    ACPI_GHES_NOTIFY_NMI = 4,
->> +    /* CMCI, ACPI 5.0: 18.3.2.7, Table 18-290 */
->> +    ACPI_GHES_NOTIFY_CMCI = 5,
->> +    /* MCE, ACPI 5.0: 18.3.2.7, Table 18-290 */
->> +    ACPI_GHES_NOTIFY_MCE = 6,
->> +    /* GPIO-Signal, ACPI 6.0: 18.3.2.7, Table 18-332 */
->> +    ACPI_GHES_NOTIFY_GPIO = 7,
->> +    /* ARMv8 SEA, ACPI 6.1: 18.3.2.9, Table 18-345 */
->> +    ACPI_GHES_NOTIFY_SEA = 8,
->> +    /* ARMv8 SEI, ACPI 6.1: 18.3.2.9, Table 18-345 */
->> +    ACPI_GHES_NOTIFY_SEI = 9,
->> +    /* External Interrupt - GSIV, ACPI 6.1: 18.3.2.9, Table 18-345 */
->> +    ACPI_GHES_NOTIFY_GSIV = 10,
->> +    /* Software Delegated Exception, ACPI 6.2: 18.3.2.9, Table 18-383 */
->> +    ACPI_GHES_NOTIFY_SDEI = 11,
->> +    /* 12 and greater are reserved */
->> +    ACPI_GHES_NOTIFY_RESERVED = 12
->> +};
->> +
->> +enum {
->> +    ACPI_HEST_SRC_ID_SEA = 0,
->> +    /* future ids go here */
->> +    ACPI_HEST_SRC_ID_RESERVED,
->> +};
->> +
->>  void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
->> +void acpi_build_hest(GArray *table_data, GArray *hardware_error,
->> +                          BIOSLinker *linker);
->>  #endif
-> 
-> .
-> 
+--=20
+Niek Linnenbank
+
+--000000000000a52783059d9c977c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Sun, Jan 19, 2020 at 7:37 PM Phili=
+ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redh=
+at.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">On 1/19/20 1:50 AM, Niek Linnenbank wrote:<br>
+&gt; The Allwinner H3 System on Chip contains multiple USB 2.0 bus<br>
+&gt; connections which provide software access using the Enhanced<br>
+&gt; Host Controller Interface (EHCI) and Open Host Controller<br>
+&gt; Interface (OHCI) interfaces. This commit adds support for<br>
+&gt; both interfaces in the Allwinner H3 System on Chip.<br>
+&gt; <br>
+&gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gm=
+ail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
+&gt; Reviewed-by: Gerd Hoffmann &lt;<a href=3D"mailto:kraxel@redhat.com" ta=
+rget=3D"_blank">kraxel@redhat.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0hw/usb/hcd-ehci.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0|=C2=A0 1 +<br>
+&gt;=C2=A0 =C2=A0include/hw/arm/allwinner-h3.h |=C2=A0 8 ++++++<br>
+&gt;=C2=A0 =C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 5=
+2 ++++++++++++++++++++++++++++++++---<br>
+&gt;=C2=A0 =C2=A0hw/usb/hcd-ehci-sysbus.c=C2=A0 =C2=A0 =C2=A0 | 17 ++++++++=
+++++<br>
+&gt;=C2=A0 =C2=A04 files changed, 74 insertions(+), 4 deletions(-)<br>
+&gt; <br>
+&gt; diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h<br>
+&gt; index 0298238f0b..edb59311c4 100644<br>
+&gt; --- a/hw/usb/hcd-ehci.h<br>
+&gt; +++ b/hw/usb/hcd-ehci.h<br>
+&gt; @@ -342,6 +342,7 @@ typedef struct EHCIPCIState {<br>
+&gt;=C2=A0 =C2=A0#define TYPE_SYS_BUS_EHCI &quot;sysbus-ehci-usb&quot;<br>
+&gt;=C2=A0 =C2=A0#define TYPE_PLATFORM_EHCI &quot;platform-ehci-usb&quot;<b=
+r>
+&gt;=C2=A0 =C2=A0#define TYPE_EXYNOS4210_EHCI &quot;exynos4210-ehci-usb&quo=
+t;<br>
+&gt; +#define TYPE_AW_H3_EHCI &quot;aw-h3-ehci-usb&quot;<br>
+&gt;=C2=A0 =C2=A0#define TYPE_TEGRA2_EHCI &quot;tegra2-ehci-usb&quot;<br>
+&gt;=C2=A0 =C2=A0#define TYPE_PPC4xx_EHCI &quot;ppc4xx-ehci-usb&quot;<br>
+&gt;=C2=A0 =C2=A0#define TYPE_FUSBH200_EHCI &quot;fusbh200-ehci-usb&quot;<b=
+r>
+&gt; diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-=
+h3.h<br>
+&gt; index abdc20871a..4f4dcbcd17 100644<br>
+&gt; --- a/include/hw/arm/allwinner-h3.h<br>
+&gt; +++ b/include/hw/arm/allwinner-h3.h<br>
+&gt; @@ -56,6 +56,14 @@ enum {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_SRAM_A1,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_SRAM_A2,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_SRAM_C,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_EHCI0,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_OHCI0,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_EHCI1,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_OHCI1,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_EHCI2,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_OHCI2,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_EHCI3,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_OHCI3,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_CCU,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_PIT,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_UART0,<br>
+&gt; diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c<br>
+&gt; index 8df8e3e05e..f360625ee9 100644<br>
+&gt; --- a/hw/arm/allwinner-h3.c<br>
+&gt; +++ b/hw/arm/allwinner-h3.c<br>
+&gt; @@ -28,6 +28,7 @@<br>
+&gt;=C2=A0 =C2=A0#include &quot;hw/sysbus.h&quot;<br>
+&gt;=C2=A0 =C2=A0#include &quot;hw/char/serial.h&quot;<br>
+&gt;=C2=A0 =C2=A0#include &quot;hw/misc/unimp.h&quot;<br>
+&gt; +#include &quot;hw/usb/hcd-ehci.h&quot;<br>
+&gt;=C2=A0 =C2=A0#include &quot;sysemu/sysemu.h&quot;<br>
+&gt;=C2=A0 =C2=A0#include &quot;hw/arm/allwinner-h3.h&quot;<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; @@ -36,6 +37,14 @@ const hwaddr allwinner_h3_memmap[] =3D {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_H3_SRAM_A1]=C2=A0 =C2=A0 =3D 0x00000000,=
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_H3_SRAM_A2]=C2=A0 =C2=A0 =3D 0x00044000,=
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_H3_SRAM_C]=C2=A0 =C2=A0 =C2=A0=3D 0x0001=
+0000,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_EHCI0]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1a000,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_OHCI0]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1a400,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_EHCI1]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1b000,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_OHCI1]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1b400,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_EHCI2]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1c000,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_OHCI2]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1c400,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_EHCI3]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1d000,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_OHCI3]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1d400,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_H3_CCU]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D 0=
+x01c20000,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_H3_PIT]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D 0=
+x01c20c00,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_H3_UART0]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c2=
+8000,<br>
+&gt; @@ -73,10 +82,10 @@ struct AwH3Unimplemented {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0{ &quot;msgbox&quot;,=C2=A0 =C2=A0 0x01c1700=
+0, 4 * KiB },<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0{ &quot;spinlock&quot;,=C2=A0 0x01c18000, 4 =
+* KiB },<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0{ &quot;usb0-otg&quot;,=C2=A0 0x01c19000, 4 =
+* KiB },<br>
+&gt; -=C2=A0 =C2=A0 { &quot;usb0&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c1a000, 4 *=
+ KiB },<br>
+&gt; -=C2=A0 =C2=A0 { &quot;usb1&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c1b000, 4 *=
+ KiB },<br>
+&gt; -=C2=A0 =C2=A0 { &quot;usb2&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c1c000, 4 *=
+ KiB },<br>
+&gt; -=C2=A0 =C2=A0 { &quot;usb3&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c1d000, 4 *=
+ KiB },<br>
+&gt; +=C2=A0 =C2=A0 { &quot;usb0-phy&quot;,=C2=A0 0x01c1a000, 4 * KiB },<br=
+>
+&gt; +=C2=A0 =C2=A0 { &quot;usb1-phy&quot;,=C2=A0 0x01c1b000, 4 * KiB },<br=
+>
+&gt; +=C2=A0 =C2=A0 { &quot;usb2-phy&quot;,=C2=A0 0x01c1c000, 4 * KiB },<br=
+>
+&gt; +=C2=A0 =C2=A0 { &quot;usb3-phy&quot;,=C2=A0 0x01c1d000, 4 * KiB },<br=
+>
+<br>
+As in v3 comment, this can be done in patch #1.<br></blockquote><div><br></=
+div><div>OK, I&#39;ll rename them in patch 1, so it won&#39;t show up here.=
+<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margi=
+n:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
+">
+<br>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redha=
+t.com" target=3D"_blank">philmd@redhat.com</a>&gt;<br>
+Tested-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.=
+com" target=3D"_blank">philmd@redhat.com</a>&gt;<br></blockquote><div><br><=
+/div><div>Thanks for reviewing and testing Philippe!</div><div>Regards,</di=
+v><div>Niek<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" sty=
+le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
+ng-left:1ex">
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0{ &quot;smc&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=
+=A00x01c1e000, 4 * KiB },<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0{ &quot;pio&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=
+=A00x01c20800, 1 * KiB },<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0{ &quot;owa&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=
+=A00x01c21000, 1 * KiB },<br>
+&gt; @@ -144,6 +153,14 @@ enum {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_GIC_SPI_UART3=C2=A0 =C2=A0 =C2=A0=3D=
+=C2=A0 3,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_GIC_SPI_TIMER0=C2=A0 =C2=A0 =3D 18,<br=
+>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_GIC_SPI_TIMER1=C2=A0 =C2=A0 =3D 19,<br=
+>
+&gt; +=C2=A0 =C2=A0 AW_H3_GIC_SPI_EHCI0=C2=A0 =C2=A0 =C2=A0=3D 72,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_GIC_SPI_OHCI0=C2=A0 =C2=A0 =C2=A0=3D 73,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_GIC_SPI_EHCI1=C2=A0 =C2=A0 =C2=A0=3D 74,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_GIC_SPI_OHCI1=C2=A0 =C2=A0 =C2=A0=3D 75,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_GIC_SPI_EHCI2=C2=A0 =C2=A0 =C2=A0=3D 76,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_GIC_SPI_OHCI2=C2=A0 =C2=A0 =C2=A0=3D 77,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_GIC_SPI_EHCI3=C2=A0 =C2=A0 =C2=A0=3D 78,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_GIC_SPI_OHCI3=C2=A0 =C2=A0 =C2=A0=3D 79,<br>
+&gt;=C2=A0 =C2=A0};<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0/* Allwinner H3 general constants */<br>
+&gt; @@ -284,6 +301,33 @@ static void allwinner_h3_realize(DeviceState *dev=
+, Error **errp)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_init_nofail(DEVICE(&amp;s-&gt;ccu));<br=
+>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;cc=
+u), 0, s-&gt;memmap[AW_H3_CCU]);<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; +=C2=A0 =C2=A0 /* Universal Serial Bus */<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, s-&gt;memmap[AW_H=
+3_EHCI0],<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 AW_H3_GIC_SPI_EHCI0));<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, s-&gt;memmap[AW_H=
+3_EHCI1],<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 AW_H3_GIC_SPI_EHCI1));<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, s-&gt;memmap[AW_H=
+3_EHCI2],<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 AW_H3_GIC_SPI_EHCI2));<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, s-&gt;memmap[AW_H=
+3_EHCI3],<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 AW_H3_GIC_SPI_EHCI3));<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;mem=
+map[AW_H3_OHCI0],<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 AW_H3_GIC_SPI_OHCI0));<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;mem=
+map[AW_H3_OHCI1],<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 AW_H3_GIC_SPI_OHCI1));<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;mem=
+map[AW_H3_OHCI2],<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 AW_H3_GIC_SPI_OHCI2));<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;mem=
+map[AW_H3_OHCI3],<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 AW_H3_GIC_SPI_OHCI3));<br>
+&gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* UART0. For future clocktree API: All UART=
+S are connected to APB2_CLK. */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0serial_mm_init(get_system_memory(), s-&gt;me=
+mmap[AW_H3_UART0], 2,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic), AW_H3_GIC_SPI_UART0),<br>
+&gt; diff --git a/hw/usb/hcd-ehci-sysbus.c b/hw/usb/hcd-ehci-sysbus.c<br>
+&gt; index 020211fd10..174c3446ef 100644<br>
+&gt; --- a/hw/usb/hcd-ehci-sysbus.c<br>
+&gt; +++ b/hw/usb/hcd-ehci-sysbus.c<br>
+&gt; @@ -145,6 +145,22 @@ static const TypeInfo ehci_exynos4210_type_info =
+=3D {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0.class_init=C2=A0 =C2=A0 =3D ehci_exynos4210=
+_class_init,<br>
+&gt;=C2=A0 =C2=A0};<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; +static void ehci_aw_h3_class_init(ObjectClass *oc, void *data)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 SysBusEHCIClass *sec =3D SYS_BUS_EHCI_CLASS(oc);<br>
+&gt; +=C2=A0 =C2=A0 DeviceClass *dc =3D DEVICE_CLASS(oc);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 sec-&gt;capsbase =3D 0x0;<br>
+&gt; +=C2=A0 =C2=A0 sec-&gt;opregbase =3D 0x10;<br>
+&gt; +=C2=A0 =C2=A0 set_bit(DEVICE_CATEGORY_USB, dc-&gt;categories);<br>
+&gt; +}<br>
+&gt; +<br>
+&gt; +static const TypeInfo ehci_aw_h3_type_info =3D {<br>
+&gt; +=C2=A0 =C2=A0 .name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_AW_H3_=
+EHCI,<br>
+&gt; +=C2=A0 =C2=A0 .parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS_BUS_EHC=
+I,<br>
+&gt; +=C2=A0 =C2=A0 .class_init=C2=A0 =C2=A0 =3D ehci_aw_h3_class_init,<br>
+&gt; +};<br>
+&gt; +<br>
+&gt;=C2=A0 =C2=A0static void ehci_tegra2_class_init(ObjectClass *oc, void *=
+data)<br>
+&gt;=C2=A0 =C2=A0{<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0SysBusEHCIClass *sec =3D SYS_BUS_EHCI_CLASS(=
+oc);<br>
+&gt; @@ -267,6 +283,7 @@ static void ehci_sysbus_register_types(void)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_platform_type=
+_info);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_xlnx_type_inf=
+o);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_exynos4210_ty=
+pe_info);<br>
+&gt; +=C2=A0 =C2=A0 type_register_static(&amp;ehci_aw_h3_type_info);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_tegra2_type_i=
+nfo);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_ppc4xx_type_i=
+nfo);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0type_register_static(&amp;ehci_fusbh200_type=
+_info);<br>
+&gt; <br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--000000000000a52783059d9c977c--

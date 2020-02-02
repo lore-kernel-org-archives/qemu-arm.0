@@ -1,91 +1,91 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3270409lfp;
-        Sun, 2 Feb 2020 14:37:26 -0800 (PST)
-X-Received: by 2002:a5e:8e4d:: with SMTP id r13mr15679717ioo.60.1580683045852;
-        Sun, 02 Feb 2020 14:37:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580683045; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3276074lfp;
+        Sun, 2 Feb 2020 14:47:48 -0800 (PST)
+X-Received: by 2002:a5e:8417:: with SMTP id h23mr16257664ioj.17.1580683668052;
+        Sun, 02 Feb 2020 14:47:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580683668; cv=none;
         d=google.com; s=arc-20160816;
-        b=TPCN9cIXqbFDKRIz9+s33KvSVzcr7wsBXYtI06Sjsfj1EjvLC0jtlAv07O/m2ErLTN
-         HJbPHd1Hx8XuHDABaYWe05QKGNNI21/D7TxaMu7kEj5wOsFMUnYIsfQwM9TRwnyitTzR
-         ABs2eQDz9ogIdsMgzJ52gKihKal6PRuT8KIB4q99OBB3nMmLtSeXHkJ9e3OeHAu2QB8b
-         cf4+U5JVH2CAIqW9JDryyk8pkcG+Llg12FR3YslgBbh3YY480LKAnhJHAzgD0040z7qk
-         P1R4Z4wzeieJikzaroTQfHDcBIA5piaANICWKUbjO4bViMNB2sS8/eZzY/6MerQwiX+A
-         36XA==
+        b=MaD6SSmnhzhr5zr1ckU8uF921N5rdrNvlVXcAvq4+uaH/aMmTCUZNzqcfCNuPzndwr
+         t1NDmoEijEBL992nD2r88JjEQQEf8NpPdWlwAfzBTxOWuqJtsHOfxedN8pVVWRDhdXDN
+         Y1OHd1qYULhYU7HvA5NJzUVzyxZrpFsvOWULrWIM0YtW97HkVuK6/ljgWgQwVR21UbKM
+         eJJRUbtrj5a+C/KyHL64dKDdKAmn+/HeWDBzfZGnCkf6HUlEHwfCOHXeC9DtWO97WMct
+         48RXDfu8uFcABDW2jJvRnzaOWHGTyfiCZKZYLbPMnuzgYUqlg0E6bQ5sMizX2RVfvWnp
+         +4Fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=sGMMb1ihPJPT1WIKt21/HxT/dBXuoaH0TpAk6fviiYQ=;
-        b=N5SO2huhv2kbUQR+X8rTh/k4Ob9K9KrdOJMcUvBkDeiSS/NwlMs0Tzv/ntI8Squury
-         +iHPeJVf9obiC6sZw92Eql+lW/Ad8rGmU6SxtVs70T54NV7r65qhbWh4U0Cwa+9DsjBz
-         Ayb9ZES37yupBJ0GBz+ja/PjmOs4RQxT86AMPc4KNcZSAkt7lYVNCoA+IOy7dYg3EJ5K
-         10Z9Z2BicMufXqU5igk8RKDNCjOh/JgAmmGqYnMZ2qBMJ+nH4xb9GP2qcdmr7X4efDqi
-         rxFF3vDLwaJMVO8Qc8FRZOxpGlNkh4fk2/DCxXOASmg7r2Sms/FyXZzpu7pNHHcnOcKG
-         vbFA==
+        bh=gmCYa385pea/JeSMYrSTjZ6v3PvAilauHA5ORn8pv8o=;
+        b=upMpVym/MD8OFjE7sArHDaStNmMY6vCWvTWHDKz3TqXGyNEPqP2p5Ez9M65rCcFrsl
+         6kyY5iaigPcwVr9QRQ1elNp2Z8zoLisha484SmZG5eln7sqPmdxJhF0Q6+/xUtEtSNKY
+         txqCuAb8j8cKwUbhJ0L+VwyBV0eHTIvXwMGhLHNXn+61UCZeDElvYoECtujZUQE1o2ne
+         EMSulPBLVlSvPQlSEaMPhYSPbWYpVGz5Xh7EQlWikfRSuaEImWR/YKIwCjfoKWyeUbDn
+         ukSrL38iimgeb2Kqt6qytmMi4Q/ath5JEM9idBE+qqeUkmdr58+q2hZG/suQQ4M7QAZD
+         i84Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i+KU+0jr;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=it7s9jdW;
        spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <nieklinnenbank@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id t26sor24928591jap.9.2020.02.02.14.37.25
+        by mx.google.com with SMTPS id g3sor8808003iop.51.2020.02.02.14.47.47
         (Google Transport Security);
-        Sun, 02 Feb 2020 14:37:25 -0800 (PST)
+        Sun, 02 Feb 2020 14:47:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i+KU+0jr;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=it7s9jdW;
        spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=sGMMb1ihPJPT1WIKt21/HxT/dBXuoaH0TpAk6fviiYQ=;
-        b=i+KU+0jrwQhAZGQRv4Ab4uC0R+UQsEWN4Ydm+muGKxKYVVP32tCzhtc04JIZlAYoaW
-         kKAedaBGRUkEg9DQfcZ3D1cIDhq0Qo2TtyLrei2w8zqhRbm2wK5kZ0ivxTkZcruEKm4c
-         /g4K4QFIGGEWWT8/jT7B+vGB4A2+oEjvc9atlqX6fVsA42hkOgLJx5Ken36u+x7TIXLd
-         wcSJCX4KIeC+Inok0MLLJMrnX6PpaivIUdy+NkT+yJRKo0GKce7B9VGy+fdFMXr/r2e/
-         lxhqngGF4r+Gg678rcfhR5Wn7DNto1P0a4HsoH3vPaMHuFkj1gN5yfx4ZlGJVC/1S8UL
-         k3Fw==
+        bh=gmCYa385pea/JeSMYrSTjZ6v3PvAilauHA5ORn8pv8o=;
+        b=it7s9jdWwRXvN02qA0jDTNQiZhK+R+KHxqIB+MSslq8fYqk2fa1XJWFMAN0H57sSjl
+         FC9LLW3Dnf9/3/ecwyPSsMK6J0G1dmZZ/cAQn+n0bjbJhO/V18m2O1EH95KC/KAV1fQY
+         jSawnCI0cNA1uDCwHzKRHpzxrN5WtqPPcpPntf1HQehR4sssxUBI4K6nn7MPm7DaVuaR
+         d/sXmJ2r25YTRSIXLFb7ZPg0Mn/GWScSu81dSoIWZ83yeb85WxBfQ21Kxn9+o3V6FsNk
+         fFvqFAPH5XMo1RER4o9EJ6i3cBP8SOYg/TTFMJ13mGy4Ui649+t9ng6U7LEX5R/4drDN
+         AxNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=sGMMb1ihPJPT1WIKt21/HxT/dBXuoaH0TpAk6fviiYQ=;
-        b=mVXVXBFWE+xyjetJq/CboGfZdXFow0FcbgpkuDxiQ9eFTav+jw94GylxPIi0CUafX6
-         HPLhaJ0mNCWiG+X97yd1PhydceUkaxmBgQZfMduqwl5vB2q2Hnb/0AX7gAgjhrmyIftH
-         oGKF7DdlgFErhSa9r7TV+/DjoiPiJilzqS1B6cn3Zs5MtIKzY82w+blZMfCnAuJxeex9
-         EzHnQPCjK9eKCfO144pgD5Phu8noadeWPsK+g02k1aYS8ZxAvH7CaNvPUHOmViFFFClc
-         /DHvnKbQfEKStzbp8ssfQQZEXNcO5uJQsKlvBqkrwNCFu/oyn8xYQewcAk/lF+gCR3hq
-         mvsg==
-X-Gm-Message-State: APjAAAXiDliaNNh/Y1T1gPMnBL04ofZ4q4c3wTrlH+TFNrKoyMryBj5c
-	qsdyNtdbeuwfXw/cpW27yuFlgtYHhO51DAxfi7Q=
-X-Google-Smtp-Source: APXvYqzPLHguKtvkgNbXnW3OzLW5f/hteDkdS9fmd/MnwglBsx6khck6G8i2L6iD9EypyK211VeN3PrOO+xgO5WZ5Mc=
-X-Received: by 2002:a02:856a:: with SMTP id g97mr16885023jai.97.1580683045469;
- Sun, 02 Feb 2020 14:37:25 -0800 (PST)
+        bh=gmCYa385pea/JeSMYrSTjZ6v3PvAilauHA5ORn8pv8o=;
+        b=n0jRm/pZNKSJ3X2EUeP5Dts8vQmToxDfs7wteN6nJibdsXdvOc6+Ddduthzfp9+8Q+
+         p+JIuNUa4pdqwFZ0qDIzm0flFGLOkGZ4Kf03FS3jqBtrFBqNIW0SK9LvvKnBWSTclIF5
+         elDWYsJ+04mqqPRNBkqpUJeufaeynx1NmGXGFKDrvzkUsYW5lZVjuzMsGDCx6JpDljOi
+         CHmynBBnt5EYD0lCdWpHkuTQ04MrFuEuHlT1lydJZwdPHS9s5a7Q8M5wpkx/GMRQnbX7
+         fqqayGzmZHcrX2P0pis5jWLiXwIZU3iN3syQth/dvmt9LMivjZLR/mCrR587nh7AgvnY
+         Vjuw==
+X-Gm-Message-State: APjAAAWO2vqtCcDhT62XMr9MLKn5PP69GqUyo9xjENedNI/xoBNtvgBO
+	YfUk9vHWh/CAE+1MQG1LUkP8GocE9hKsoYzlZVM=
+X-Google-Smtp-Source: APXvYqzjnil2mUx36k1nhQolNCE4agoeA7CjWxWPCL8GLErprQTXx24No+vHzazZJ97lXZTp30iKq+epWaR2qGT+DUM=
+X-Received: by 2002:a6b:6f01:: with SMTP id k1mr17100672ioc.28.1580683667515;
+ Sun, 02 Feb 2020 14:47:47 -0800 (PST)
 MIME-Version: 1.0
 References: <20200119005102.3847-1-nieklinnenbank@gmail.com>
- <20200119005102.3847-3-nieklinnenbank@gmail.com> <20200121173906.626c700b@Igors-MacBook-Pro>
-In-Reply-To: <20200121173906.626c700b@Igors-MacBook-Pro>
+ <20200119005102.3847-3-nieklinnenbank@gmail.com> <6dd9ce64-8126-2849-fcf1-fff71582b8f9@redhat.com>
+In-Reply-To: <6dd9ce64-8126-2849-fcf1-fff71582b8f9@redhat.com>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Sun, 2 Feb 2020 23:37:14 +0100
-Message-ID: <CAPan3WpNH-P7EtOFm92-z9wjadmKUACvyuNYe5t-Z-+ig2uW2Q@mail.gmail.com>
+Date: Sun, 2 Feb 2020 23:47:36 +0100
+Message-ID: <CAPan3WouMvrNq+5gN5Ja3wQVSBMBWxUC0qtdnisjHxMyBB2aMQ@mail.gmail.com>
 Subject: Re: [PATCH v4 02/20] hw/arm: add Xunlong Orange Pi PC machine
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, jasowang@redhat.com, 
-	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="0000000000006d81c4059d9f73fd"
-X-TUID: nA9bKsOV+ald
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Peter Maydell <peter.maydell@linaro.org>, Beniamino Galvani <b.galvani@gmail.com>, jasowang@redhat.com, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Igor Mammedov <imammedo@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000812d24059d9f98ad"
+X-TUID: Tfu+ka0iwOM/
 
---0000000000006d81c4059d9f73fd
+--000000000000812d24059d9f98ad
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Jan 21, 2020 at 5:39 PM Igor Mammedov <imammedo@redhat.com> wrote:
+On Sun, Jan 19, 2020 at 7:04 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
+com>
+wrote:
 
-> On Sun, 19 Jan 2020 01:50:44 +0100
-> Niek Linnenbank <nieklinnenbank@gmail.com> wrote:
->
+> On 1/19/20 1:50 AM, Niek Linnenbank wrote:
 > > The Xunlong Orange Pi PC is an Allwinner H3 System on Chip
 > > based embedded computer with mainline support in both U-Boot
 > > and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,
@@ -96,23 +96,13 @@ On Tue, Jan 21, 2020 at 5:39 PM Igor Mammedov <imammedo@redhat.com> wrote:
 > > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 > > Tested-by: KONRAD Frederic <frederic.konrad@adacore.com>
 > > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->
-> Acked-by: Igor Mammedov <imammedo@redhat.com>
->
-
-Thanks for the Acked-by Igor, I'm adding it to the commit message.
-
-Regards,
-Niek
-
-
->
 > > ---
-> >  hw/arm/orangepi.c    | 93 ++++++++++++++++++++++++++++++++++++++++++++
-> >  MAINTAINERS          |  1 +
-> >  hw/arm/Makefile.objs |  2 +-
-> >  3 files changed, 95 insertions(+), 1 deletion(-)
-> >  create mode 100644 hw/arm/orangepi.c
+> >   hw/arm/orangepi.c    | 93 +++++++++++++++++++++++++++++++++++++++++++=
++
+> >   MAINTAINERS          |  1 +
+> >   hw/arm/Makefile.objs |  2 +-
+> >   3 files changed, 95 insertions(+), 1 deletion(-)
+> >   create mode 100644 hw/arm/orangepi.c
 > >
 > > diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
 > > new file mode 100644
@@ -200,6 +190,17 @@ y
 ;
 > > +        exit(1);
 > > +    }
+>
+> I'd move this check earlier, eventually between the bios/cpu checks.
+>
+
+Sure, I'll move it between the bios/cpu checks.
+
+Regards,
+Niek
+
+
+>
 > > +    memory_region_allocate_system_memory(&s->sdram, NULL, "sdram",
 > > +                                         machine->ram_size);
 > > +    memory_region_add_subregion(get_system_memory(),
@@ -228,45 +229,44 @@ y
 > > --- a/MAINTAINERS
 > > +++ b/MAINTAINERS
 > > @@ -487,6 +487,7 @@ L: qemu-arm@nongnu.org
-> >  S: Maintained
-> >  F: hw/*/allwinner-h3*
-> >  F: include/hw/*/allwinner-h3*
+> >   S: Maintained
+> >   F: hw/*/allwinner-h3*
+> >   F: include/hw/*/allwinner-h3*
 > > +F: hw/arm/orangepi.c
 > >
-> >  ARM PrimeCell and CMSDK devices
-> >  M: Peter Maydell <peter.maydell@linaro.org>
+> >   ARM PrimeCell and CMSDK devices
+> >   M: Peter Maydell <peter.maydell@linaro.org>
 > > diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
 > > index ae577e875f..534a6a119e 100644
 > > --- a/hw/arm/Makefile.objs
 > > +++ b/hw/arm/Makefile.objs
 > > @@ -35,7 +35,7 @@ obj-$(CONFIG_DIGIC) +=3D digic.o
-> >  obj-$(CONFIG_OMAP) +=3D omap1.o omap2.o
-> >  obj-$(CONFIG_STRONGARM) +=3D strongarm.o
-> >  obj-$(CONFIG_ALLWINNER_A10) +=3D allwinner-a10.o cubieboard.o
+> >   obj-$(CONFIG_OMAP) +=3D omap1.o omap2.o
+> >   obj-$(CONFIG_STRONGARM) +=3D strongarm.o
+> >   obj-$(CONFIG_ALLWINNER_A10) +=3D allwinner-a10.o cubieboard.o
 > > -obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3.o
 > > +obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3.o orangepi.o
-> >  obj-$(CONFIG_RASPI) +=3D bcm2835_peripherals.o bcm2836.o raspi.o
-> >  obj-$(CONFIG_STM32F205_SOC) +=3D stm32f205_soc.o
-> >  obj-$(CONFIG_STM32F405_SOC) +=3D stm32f405_soc.o
+> >   obj-$(CONFIG_RASPI) +=3D bcm2835_peripherals.o bcm2836.o raspi.o
+> >   obj-$(CONFIG_STM32F205_SOC) +=3D stm32f205_soc.o
+> >   obj-$(CONFIG_STM32F405_SOC) +=3D stm32f405_soc.o
+> >
+>
+> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 >
 >
-
 --=20
 Niek Linnenbank
 
---0000000000006d81c4059d9f73fd
+--000000000000812d24059d9f98ad
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Jan 21, 2020 at 5:39 PM Igor =
-Mammedov &lt;<a href=3D"mailto:imammedo@redhat.com">imammedo@redhat.com</a>=
-&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
-0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On S=
-un, 19 Jan 2020 01:50:44 +0100<br>
-Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com" target=3D"_=
-blank">nieklinnenbank@gmail.com</a>&gt; wrote:<br>
-<br>
+<div dir=3D"ltr" class=3D"gmail_attr">On Sun, Jan 19, 2020 at 7:04 PM Phili=
+ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redh=
+at.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">On 1/19/20 1:50 AM, Niek Linnenbank wrote:<br>
 &gt; The Xunlong Orange Pi PC is an Allwinner H3 System on Chip<br>
 &gt; based embedded computer with mainline support in both U-Boot<br>
 &gt; and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,<br>
@@ -280,21 +280,14 @@ ail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
 re.com" target=3D"_blank">frederic.konrad@adacore.com</a>&gt;<br>
 &gt; Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@=
 redhat.com" target=3D"_blank">philmd@redhat.com</a>&gt;<br>
-<br>
-Acked-by: Igor Mammedov &lt;<a href=3D"mailto:imammedo@redhat.com" target=
-=3D"_blank">imammedo@redhat.com</a>&gt;<br></blockquote><div><br></div><div=
->Thanks for the Acked-by Igor, I&#39;m adding it to the commit message.</di=
-v><div><br></div><div>Regards,</div><div>Niek<br></div><div>=C2=A0</div><bl=
-ockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-lef=
-t:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
 &gt; ---<br>
-&gt;=C2=A0 hw/arm/orangepi.c=C2=A0 =C2=A0 | 93 ++++++++++++++++++++++++++++=
-++++++++++++++++<br>
-&gt;=C2=A0 MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 1 +<br>
-&gt;=C2=A0 hw/arm/Makefile.objs |=C2=A0 2 +-<br>
-&gt;=C2=A0 3 files changed, 95 insertions(+), 1 deletion(-)<br>
-&gt;=C2=A0 create mode 100644 hw/arm/orangepi.c<br>
+&gt;=C2=A0 =C2=A0hw/arm/orangepi.c=C2=A0 =C2=A0 | 93 ++++++++++++++++++++++=
+++++++++++++++++++++++<br>
+&gt;=C2=A0 =C2=A0MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 1 +<=
+br>
+&gt;=C2=A0 =C2=A0hw/arm/Makefile.objs |=C2=A0 2 +-<br>
+&gt;=C2=A0 =C2=A03 files changed, 95 insertions(+), 1 deletion(-)<br>
+&gt;=C2=A0 =C2=A0create mode 100644 hw/arm/orangepi.c<br>
 &gt; <br>
 &gt; diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c<br>
 &gt; new file mode 100644<br>
@@ -391,6 +384,13 @@ realized&quot;, &amp;error_abort);<br>
 be used with 1GiB of RAM&quot;);<br>
 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
 &gt; +=C2=A0 =C2=A0 }<br>
+<br>
+I&#39;d move this check earlier, eventually between the bios/cpu checks.<br=
+></blockquote><div><br></div><div>Sure, I&#39;ll move it between the bios/c=
+pu checks.</div><div><br></div><div>Regards,</div><div>Niek<br></div><div>=
+=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
+.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
 &gt; +=C2=A0 =C2=A0 memory_region_allocate_system_memory(&amp;s-&gt;sdram, =
 NULL, &quot;sdram&quot;,<br>
 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
@@ -427,32 +427,36 @@ tex-a7&quot;);<br>
 &gt; +++ b/MAINTAINERS<br>
 &gt; @@ -487,6 +487,7 @@ L: <a href=3D"mailto:qemu-arm@nongnu.org" target=
 =3D"_blank">qemu-arm@nongnu.org</a><br>
-&gt;=C2=A0 S: Maintained<br>
-&gt;=C2=A0 F: hw/*/allwinner-h3*<br>
-&gt;=C2=A0 F: include/hw/*/allwinner-h3*<br>
+&gt;=C2=A0 =C2=A0S: Maintained<br>
+&gt;=C2=A0 =C2=A0F: hw/*/allwinner-h3*<br>
+&gt;=C2=A0 =C2=A0F: include/hw/*/allwinner-h3*<br>
 &gt; +F: hw/arm/orangepi.c<br>
-&gt;=C2=A0 <br>
-&gt;=C2=A0 ARM PrimeCell and CMSDK devices<br>
-&gt;=C2=A0 M: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org"=
- target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0ARM PrimeCell and CMSDK devices<br>
+&gt;=C2=A0 =C2=A0M: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linar=
+o.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
 &gt; diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs<br>
 &gt; index ae577e875f..534a6a119e 100644<br>
 &gt; --- a/hw/arm/Makefile.objs<br>
 &gt; +++ b/hw/arm/Makefile.objs<br>
 &gt; @@ -35,7 +35,7 @@ obj-$(CONFIG_DIGIC) +=3D digic.o<br>
-&gt;=C2=A0 obj-$(CONFIG_OMAP) +=3D omap1.o omap2.o<br>
-&gt;=C2=A0 obj-$(CONFIG_STRONGARM) +=3D strongarm.o<br>
-&gt;=C2=A0 obj-$(CONFIG_ALLWINNER_A10) +=3D allwinner-a10.o cubieboard.o<br=
->
+&gt;=C2=A0 =C2=A0obj-$(CONFIG_OMAP) +=3D omap1.o omap2.o<br>
+&gt;=C2=A0 =C2=A0obj-$(CONFIG_STRONGARM) +=3D strongarm.o<br>
+&gt;=C2=A0 =C2=A0obj-$(CONFIG_ALLWINNER_A10) +=3D allwinner-a10.o cubieboar=
+d.o<br>
 &gt; -obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3.o<br>
 &gt; +obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3.o orangepi.o<br>
-&gt;=C2=A0 obj-$(CONFIG_RASPI) +=3D bcm2835_peripherals.o bcm2836.o raspi.o=
+&gt;=C2=A0 =C2=A0obj-$(CONFIG_RASPI) +=3D bcm2835_peripherals.o bcm2836.o r=
+aspi.o<br>
+&gt;=C2=A0 =C2=A0obj-$(CONFIG_STM32F205_SOC) +=3D stm32f205_soc.o<br>
+&gt;=C2=A0 =C2=A0obj-$(CONFIG_STM32F405_SOC) +=3D stm32f405_soc.o<br>
+&gt; <br>
 <br>
-&gt;=C2=A0 obj-$(CONFIG_STM32F205_SOC) +=3D stm32f205_soc.o<br>
-&gt;=C2=A0 obj-$(CONFIG_STM32F405_SOC) +=3D stm32f405_soc.o<br>
+Tested-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.=
+com" target=3D"_blank">philmd@redhat.com</a>&gt;<br>
 <br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
+</blockquote></div><div><br>-- <br><div dir=3D"ltr" class=3D"gmail_signatur=
+e"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></div></div></d=
+iv>
 
---0000000000006d81c4059d9f73fd--
+--000000000000812d24059d9f98ad--

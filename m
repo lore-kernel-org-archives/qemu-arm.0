@@ -1,391 +1,681 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3971323lfp;
-        Mon, 3 Feb 2020 05:47:14 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxPlaNcfTmj8ZY/8HHw7ZS+uq0Atkd1T+Szt7jKWp1+pzvrDo9ddr/0YjsnLts9R/l4VjjQ
-X-Received: by 2002:ac8:7501:: with SMTP id u1mr23819838qtq.149.1580737633981;
-        Mon, 03 Feb 2020 05:47:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580737633; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3974815lfp;
+        Mon, 3 Feb 2020 05:51:06 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw3OPrMKHrkp5JJ9PVqe/qkOvNs0quATajzapKEauRQOGHi/kXMX/pC4gnYANd9WwetK5KK
+X-Received: by 2002:ac8:4910:: with SMTP id e16mr19784799qtq.150.1580737866655;
+        Mon, 03 Feb 2020 05:51:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580737866; cv=none;
         d=google.com; s=arc-20160816;
-        b=VlNxMTZKkpGqDPcz3f2O/ZzR42sSlFclCWRGq1WLd3//EAqvMEp9K74mSAlwnmrR7T
-         q8GDI0JNOQ5XICHxaMqgZbPpkhsvp5Jq/dNYXAwnH8cs6OPGdhTq0XbqydKY602IUzmk
-         qkryqakVRUes2PsNhv9ES0jO8z6DkCGf5W0Cj8zcQrM7VhS5hLyO0k33/PlZ3gvzaL1U
-         ucIBWOTzHKcnu5khHmUZ5sBeMnM00D+rSnoz9MZnySalWYPC+BuXHHOOzrjrSk0FYuvl
-         WxEftfDUE6NTmxJ7NsQNVa8DwqaeH3ZSZ8jXfwjAn1kdIMjpVfGh/o8To2h91v4Dretp
-         jgOw==
+        b=g2WJA6U9o90x0KfGv3nVu/zzHC4Hc25++yLTBrKmYYYmf9cgx3gY+OdKtN830sHyep
+         FSAfKarC/Z0n1eAKLBjtcCjPQABcPgfaULaOX2FXxzVAKNr7sjhvltgawOrEAoxylP5n
+         dtxsbwEfU2gscKS/d1GM+hqVlMIYL58ODHpIxC75ALG+1cu9myESaQYsGq8U66aRS/pu
+         L9YqMHoi2EhGe689Ky4NgTTeqNrfAbCIMWw/09f4igY4i2Oev1CkekZRxw646YJiDaH4
+         Uv3USFT5osuOorV/oEd6QjK375AshfwlvTyfopDKdLCgMQP3P7Hzf4L8bw8467byXLnu
+         qYHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition
          :content-transfer-encoding:in-reply-to:mime-version:references
          :message-id:subject:to:from:date:dkim-signature;
-        bh=z+NqdDMvr6ibk08mTZ/OLpIXPh9vAD+oGLkGG2+p9eQ=;
-        b=R/ftZgW2x6cmCOWRu/sZ3Xq0qNxoyeqrMYpKBgnCcw2YsZC4QCyUPX+mjVzLoCi/At
-         RGquKmDuwWDI6JzPgSAz9hh6g5OD6QS/kCCIZQgUmiBCwWEuSdTOpWLxM7Tm+rX+xsDe
-         DKLtPDae+eZUG+4zbpOVT20CEIrJpC0e3eBJEWbo2nDfnvg1BTcJ+AzxfJxTnprnJKJ6
-         /he52J9sittaG3rpc3yEB9tgRxWS7hMmmp4F4KWE8R3imFOu8/Zxlo+uP3vcYUcQRRgN
-         jy3NRP0NJNa0cmS2EEslEJlrws9A/TJYbO0nQMEpU3CTD5rLAO3R9H/Qsmrc0ghSmdzj
-         vS6A==
+        bh=47S9O4DAxhbP6MHArnPE01W78bu5ofRMgpjC3jpOPYE=;
+        b=IPfRlZo+ZGO3BRTneMTDhKFgNn3gQ8dUseJetszFbbskSA3QGAZzG1EKyWOajZC8yG
+         U1vAne+90CbL0rCvZKDzR2DaSPz7+EmY4xePER9KCtvCRcO+E2e9Lh7t6mZptHMWv6c5
+         oECa1ssJFsqRWlqt4gMbmE7LhjK/RQFz8QZhEbCEXmN4VfwmnfoGppKQzJS9LL3WvB1G
+         lIg+1Okn3iNR2hxqtjyKPEtp/bthjd0ck/KfxJ999gQdwYeUj5VeW1gn2cMYPbnAthnw
+         zzFPI7eX2AdWQ4GtYqEQ+CLnXOfFU3wrT2n7zYevpMmORCqQBshCQvtuu5OqodDAmrtC
+         SrWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BuS+yNkc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cdNUFxWu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e25si11768529qtg.329.2020.02.03.05.47.13
+        by mx.google.com with ESMTPS id p46si11000193qte.143.2020.02.03.05.51.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 05:47:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Feb 2020 05:51:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BuS+yNkc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cdNUFxWu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40940 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40984 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iyc4H-0000nK-A1
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 08:47:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53034)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iyc82-0002sw-3N
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 08:51:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53872)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mst@redhat.com>) id 1iyc47-0000mg-Ds
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:47:05 -0500
+ (envelope-from <peterx@redhat.com>) id 1iyc6S-0002GD-6f
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 08:49:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mst@redhat.com>) id 1iyc45-00011h-HB
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:47:03 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:45139
+ (envelope-from <peterx@redhat.com>) id 1iyc6M-0007yT-Nh
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 08:49:28 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:56451
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mst@redhat.com>) id 1iyc45-0000zc-Bf
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:47:01 -0500
+ (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1iyc6M-0007y2-GY
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 08:49:22 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580737621;
+ s=mimecast20190719; t=1580737762;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=z+NqdDMvr6ibk08mTZ/OLpIXPh9vAD+oGLkGG2+p9eQ=;
- b=BuS+yNkc4JNdmuoZ6C1NzWfjLuEjyaHAgR0iObHi5rWckYnAVrcsivoVrsMQlXyoLb3ngS
- A3/mEFllQn/A/wAnhKuELSg/3Y4Il5rXemeQhiyrRyJEjH7zmo5XVTEyXlrw/pAjS4Occm
- yNVbsdz8scwBtbsGdreP9Y4w8y3VYzM=
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-348-_AeEAoFRNVu-7bRc6cVz0Q-1; Mon, 03 Feb 2020 08:46:58 -0500
-Received: by mail-qt1-f200.google.com with SMTP id e37so9911017qtk.7
- for <qemu-arm@nongnu.org>; Mon, 03 Feb 2020 05:46:58 -0800 (PST)
+ bh=47S9O4DAxhbP6MHArnPE01W78bu5ofRMgpjC3jpOPYE=;
+ b=cdNUFxWuy0y5iOkGXXmFyoNk5no7smSStLWbXrPw2j2H6Fa56eWBUuM9tUlZ5WK7wJxNic
+ JhzbyB6Hux5KMF/ekaxYhG+zjPjTaTBSClnffHk2FzPBHHtSoQn8MCNovyNh8AVBag4jL2
+ y0YV4WqnpQaUUSjwwwZEyR06K08dmik=
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-434-4yO8gFD4NK6Dzqvt4PuIcQ-1; Mon, 03 Feb 2020 08:49:20 -0500
+Received: by mail-qt1-f199.google.com with SMTP id b5so9965142qtt.10
+ for <qemu-devel@nongnu.org>; Mon, 03 Feb 2020 05:49:20 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=autq2jCamxuS1Bu9hLKFxQZqaz4BeF/L0ATO2KLLmpk=;
- b=l21Jq2374vo/54PaXbvuM/bqOsc/YCepkV5+CHH3gvPMqBB+9dXyT3a2KAErBc5yAy
- i/mNvTgCDn9WZ8R8uVamTu0PbxyuyC4cpxrzb++8y/p453DQ7wFkRBE7IDSLIWJgJri5
- NOEWY7fnzal6yNpKe+XIPMSDmvpvSwHHuCSEMPvxxqu3ITzp/uAgeNDN6xgh+nyOtVi4
- DcBH+dPI5Yf47XicJgO3FVbYb4glQR2qUOHkXSaUfAvhXigoQuhnyKdERG8dGOf9le36
- ULUx/VBkBuWimAolUbmKYe2Iob45UCYGyu+J9RV4Chs/7fAxFTsXwmPortoWXr7QKvA2
- csmA==
-X-Gm-Message-State: APjAAAWQ65eqx7c6LcuwUa0qTBurB7nzJ+6zzJEslb5+Ju0MZsq+O9C7
- RrFcOx4H/aPy05+VV2PDXfHMiVg52qHhE4cfHUX1wSeAIZU1HHjTE+AkCglKTeRRMchOX8FMkzl
- Y8701oVtecwVG
-X-Received: by 2002:a05:620a:2104:: with SMTP id
- l4mr21942831qkl.240.1580737618022; 
- Mon, 03 Feb 2020 05:46:58 -0800 (PST)
-X-Received: by 2002:a05:620a:2104:: with SMTP id
- l4mr21942814qkl.240.1580737617696; 
- Mon, 03 Feb 2020 05:46:57 -0800 (PST)
-Received: from redhat.com (bzq-109-64-11-187.red.bezeqint.net. [109.64.11.187])
- by smtp.gmail.com with ESMTPSA id q5sm9178141qkf.14.2020.02.03.05.46.54
+ bh=t9MarpD29wT9Bsiulce0VeIcxnM1H/T+zkL7kldMlgM=;
+ b=pmQJJ85JUyVe+FVxxPacGO2KMsEjkKPl0Rwk/DJUe1VTBfub6aaTbz6CI0wbEI7wdk
+ wUCAm7+en8rmDB4iKhSPnzYux875xaWCF+1tTVoX0B3UYsGfiJmAcL/c3S/WT3GjRMDq
+ Sf4LO2FzHFJVThYhU4CyzEGYJIb6m5dwuer4KSJtQTGQzqxyNxvxawRA9dVKvKovlZ8G
+ 77ChWK7WB8gzW9Bfo7GYn7HVAfZGNBV3lbHigZjltTkxUofSP2RO6Yha+8OK4rTJVZ7o
+ lt3vHDrQ3iEOi5VmG1M05todm1ffSDeGjmh5dzRmySyZVnn/pApSj1x6JPHpbtlzHHR7
+ n0AA==
+X-Gm-Message-State: APjAAAWHi2YOw+oSmLJNw2gOpjH10a4qDAZSsWurZTwhT5J9EyOW7n3P
+ P+DzH6RK0yXS10Lg6eUzryQ4dr3H0bl05IvAk+he2qhV3PD7CCOh9ESnHBBIh47Z8iki18T29Qt
+ /2OR34qEm899MXxw=
+X-Received: by 2002:ac8:3735:: with SMTP id o50mr23253332qtb.252.1580737759588; 
+ Mon, 03 Feb 2020 05:49:19 -0800 (PST)
+X-Received: by 2002:ac8:3735:: with SMTP id o50mr23253303qtb.252.1580737759138; 
+ Mon, 03 Feb 2020 05:49:19 -0800 (PST)
+Received: from xz-x1 ([2607:9880:19c8:32::2])
+ by smtp.gmail.com with ESMTPSA id h9sm9547767qtq.61.2020.02.03.05.49.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Feb 2020 05:46:56 -0800 (PST)
-Date: Mon, 3 Feb 2020 08:46:51 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Subject: Re: [PATCH v13 07/10] virtio-iommu-pci: Add virtio iommu pci support
-Message-ID: <20200203084532-mutt-send-email-mst@kernel.org>
+ Mon, 03 Feb 2020 05:49:18 -0800 (PST)
+Date: Mon, 3 Feb 2020 08:49:15 -0500
+From: Peter Xu <peterx@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v13 03/10] virtio-iommu: Implement attach/detach command
+Message-ID: <20200203134915.GA155875@xz-x1>
 References: <20200125171955.12825-1-eric.auger@redhat.com>
- <20200125171955.12825-8-eric.auger@redhat.com>
- <20200203080122-mutt-send-email-mst@kernel.org>
- <037666c2-6124-0db6-3688-a134f9f0845a@redhat.com>
- <20200203082637-mutt-send-email-mst@kernel.org>
- <462756c1-b4fd-e0f0-7fca-61b9b1fd8157@redhat.com>
+ <20200125171955.12825-4-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <462756c1-b4fd-e0f0-7fca-61b9b1fd8157@redhat.com>
-X-MC-Unique: _AeEAoFRNVu-7bRc6cVz0Q-1
+In-Reply-To: <20200125171955.12825-4-eric.auger@redhat.com>
+X-MC-Unique: 4yO8gFD4NK6Dzqvt4PuIcQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 205.139.110.120
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
- quintela@redhat.com, qemu-devel@nongnu.org, peterx@redhat.com,
+ jean-philippe@linaro.org, quintela@redhat.com, qemu-devel@nongnu.org,
  dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- jean-philippe@linaro.org, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: x3ixh+EKurMt
+ mst@redhat.com, eric.auger.pro@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PeiBB9Za3RHL
 
-On Mon, Feb 03, 2020 at 02:38:22PM +0100, Auger Eric wrote:
-> Hi Michael,
+On Sat, Jan 25, 2020 at 06:19:48PM +0100, Eric Auger wrote:
+> This patch implements the endpoint attach/detach to/from
+> a domain.
 >=20
-> On 2/3/20 2:28 PM, Michael S. Tsirkin wrote:
-> > On Mon, Feb 03, 2020 at 02:20:55PM +0100, Auger Eric wrote:
-> >> Hi Michael,
-> >>
-> >> On 2/3/20 2:03 PM, Michael S. Tsirkin wrote:
-> >>> On Sat, Jan 25, 2020 at 06:19:52PM +0100, Eric Auger wrote:
-> >>>> This patch adds virtio-iommu-pci, which is the pci proxy for
-> >>>> the virtio-iommu device.
-> >>>>
-> >>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> >>>> Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> >>>
-> >>> I commented on v11 of this patch:
-> >>>>> Could you send a smaller patchset without pci/acpi bits for now?
-> >>> And you answered:
-> >>>> Yes I am about to send v12.
-> >>>
-> >>> I guess this patch is here by mistake then?
-> >>>
-> >>> I think PCI devices should always have config space so guests are
-> >>> not tempted to find work-arounds. Right?
-> >> No it is not here by mistake. I removed everything related non DT
-> >> integration as we discussed.
-> >>
-> >> DT support is fully upstream even for virtio-iommu-pci.
-> >> https://github.com/torvalds/linux/blob/master/Documentation/devicetree=
-/bindings/virtio/iommu.txt
-> >>
-> >> So what's wrong implementing that at the moment. As we discussed we
-> >> would use the PCIe config space integration for non DT.
-> >>
-> >> If I use the MMIO based device, I am forced to lock an MMIO region for
-> >> it in the machvirt memory map:
-> >> https://elixir.bootlin.com/linux/latest/source/Documentation/devicetre=
-e/bindings/virtio/mmio.txt
-> >>
-> >> I guess Peter (Maydell) will not be happy with this situation either.
-> >>
-> >> Thanks
-> >>
-> >> Eric
-> >=20
-> > I see. Can't we limit this to DT platforms for now then?
-> That is the case. virtio-iommu does not work with ACPI.
-
-
-Right. But nothing seems to prevent users from creating it
-on systems without dt, and there won't be an easy way for
-management to detect it when qemu added  this support down the road.
-
-
-
-> For non DT the plan is to use what you suggested, ie. pass the binding
-> info through the PCIe config space.
+> Domain and endpoint internal datatypes are introduced.
+> Both are stored in RB trees. The domain owns a list of
+> endpoints attached to it. Also helpers to get/put
+> end points and domains are introduced.
 >=20
-> In that prospect I am waiting for Jean-Philippe's [RFC 00/13]
-> virtio-iommu on non-devicetree platforms respin
-> (https://lore.kernel.org/linux-iommu/20191203190136.00007171@intel.com/T/=
+> As for the IOMMU memory regions, a callback is called on
+> PCI bus enumeration that initializes for a given device
+> on the bus hierarchy an IOMMU memory region. The PCI bus
+> hierarchy is stored locally in IOMMUPciBus and IOMMUDevice
+> objects.
+>=20
+> At the time of the enumeration, the bus number may not be
+> computed yet.
+>=20
+> So operations that will need to retrieve the IOMMUdevice
+> and its IOMMU memory region from the bus number and devfn,
+> once the bus number is garanteed to be frozen, use an array
+> of IOMMUPciBus, lazily populated.
+>=20
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>=20
+> ---
+>=20
+> v12 -> v13:
+> - squashed v12 4, 5, 6 into this patch
+> - rename virtio_iommu_get_sid into virtio_iommu_get_bdf
+>=20
+> v11 -> v12:
+> - check the device is protected by the iommu on attach
+> - on detach, check the domain id the device is attached to matches
+>   the one used in the detach command
+> - fix mapping ref counter and destroy the domain when no end-points
+>   are attached anymore
+> ---
+>  hw/virtio/trace-events           |   6 +
+>  hw/virtio/virtio-iommu.c         | 315 ++++++++++++++++++++++++++++++-
+>  include/hw/virtio/virtio-iommu.h |   3 +
+>  3 files changed, 322 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+> index f7141aa2f6..15595f8cd7 100644
+> --- a/hw/virtio/trace-events
+> +++ b/hw/virtio/trace-events
+> @@ -64,3 +64,9 @@ virtio_iommu_attach(uint32_t domain_id, uint32_t ep_id)=
+ "domain=3D%d endpoint=3D%d"
+>  virtio_iommu_detach(uint32_t domain_id, uint32_t ep_id) "domain=3D%d end=
+point=3D%d"
+>  virtio_iommu_map(uint32_t domain_id, uint64_t virt_start, uint64_t virt_=
+end, uint64_t phys_start, uint32_t flags) "domain=3D%d virt_start=3D0x%"PRI=
+x64" virt_end=3D0x%"PRIx64 " phys_start=3D0x%"PRIx64" flags=3D%d"
+>  virtio_iommu_unmap(uint32_t domain_id, uint64_t virt_start, uint64_t vir=
+t_end) "domain=3D%d virt_start=3D0x%"PRIx64" virt_end=3D0x%"PRIx64
+> +virtio_iommu_translate(const char *name, uint32_t rid, uint64_t iova, in=
+t flag) "mr=3D%s rid=3D%d addr=3D0x%"PRIx64" flag=3D%d"
+> +virtio_iommu_init_iommu_mr(char *iommu_mr) "init %s"
+> +virtio_iommu_get_endpoint(uint32_t ep_id) "Alloc endpoint=3D%d"
+> +virtio_iommu_put_endpoint(uint32_t ep_id) "Free endpoint=3D%d"
+> +virtio_iommu_get_domain(uint32_t domain_id) "Alloc domain=3D%d"
+> +virtio_iommu_put_domain(uint32_t domain_id) "Free domain=3D%d"
+> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+> index 9d1b997df7..e5cc94138b 100644
+> --- a/hw/virtio/virtio-iommu.c
+> +++ b/hw/virtio/virtio-iommu.c
+> @@ -23,6 +23,8 @@
+>  #include "hw/qdev-properties.h"
+>  #include "hw/virtio/virtio.h"
+>  #include "sysemu/kvm.h"
+> +#include "qapi/error.h"
+> +#include "qemu/error-report.h"
+>  #include "trace.h"
+> =20
+>  #include "standard-headers/linux/virtio_ids.h"
+> @@ -30,19 +32,234 @@
+>  #include "hw/virtio/virtio-bus.h"
+>  #include "hw/virtio/virtio-access.h"
+>  #include "hw/virtio/virtio-iommu.h"
+> +#include "hw/pci/pci_bus.h"
+> +#include "hw/pci/pci.h"
+> =20
+>  /* Max size */
+>  #define VIOMMU_DEFAULT_QUEUE_SIZE 256
+> =20
+> +typedef struct VirtIOIOMMUDomain {
+> +    uint32_t id;
+> +    GTree *mappings;
+> +    QLIST_HEAD(, VirtIOIOMMUEndpoint) endpoint_list;
+> +} VirtIOIOMMUDomain;
+> +
+> +typedef struct VirtIOIOMMUEndpoint {
+> +    uint32_t id;
+> +    VirtIOIOMMUDomain *domain;
+> +    QLIST_ENTRY(VirtIOIOMMUEndpoint) next;
+> +} VirtIOIOMMUEndpoint;
+> +
+> +typedef struct VirtIOIOMMUInterval {
+> +    uint64_t low;
+> +    uint64_t high;
+> +} VirtIOIOMMUInterval;
+> +
+> +static inline uint16_t virtio_iommu_get_bdf(IOMMUDevice *dev)
+> +{
+> +    return PCI_BUILD_BDF(pci_bus_num(dev->bus), dev->devfn);
+> +}
+> +
+> +/**
+> + * The bus number is used for lookup when SID based operations occur.
+> + * In that case we lazily populate the IOMMUPciBus array from the bus ha=
+sh
+> + * table. At the time the IOMMUPciBus is created (iommu_find_add_as), th=
+e bus
+> + * numbers may not be always initialized yet.
+> + */
+> +static IOMMUPciBus *iommu_find_iommu_pcibus(VirtIOIOMMU *s, uint8_t bus_=
+num)
+> +{
+> +    IOMMUPciBus *iommu_pci_bus =3D s->iommu_pcibus_by_bus_num[bus_num];
+> +
+> +    if (!iommu_pci_bus) {
+> +        GHashTableIter iter;
+> +
+> +        g_hash_table_iter_init(&iter, s->as_by_busptr);
+> +        while (g_hash_table_iter_next(&iter, NULL, (void **)&iommu_pci_b=
+us)) {
+> +            if (pci_bus_num(iommu_pci_bus->bus) =3D=3D bus_num) {
+> +                s->iommu_pcibus_by_bus_num[bus_num] =3D iommu_pci_bus;
+> +                return iommu_pci_bus;
+> +            }
+> +        }
+> +        return NULL;
+> +    }
+> +    return iommu_pci_bus;
+> +}
+> +
+> +static IOMMUMemoryRegion *virtio_iommu_mr(VirtIOIOMMU *s, uint32_t sid)
+> +{
+> +    uint8_t bus_n, devfn;
+> +    IOMMUPciBus *iommu_pci_bus;
+> +    IOMMUDevice *dev;
+> +
+> +    bus_n =3D PCI_BUS_NUM(sid);
+> +    iommu_pci_bus =3D iommu_find_iommu_pcibus(s, bus_n);
+> +    if (iommu_pci_bus) {
+> +        devfn =3D sid & PCI_DEVFN_MAX;
+> +        dev =3D iommu_pci_bus->pbdev[devfn];
+> +        if (dev) {
+> +            return &dev->iommu_mr;
+> +        }
+> +    }
+> +    return NULL;
+> +}
+> +
+> +static gint interval_cmp(gconstpointer a, gconstpointer b, gpointer user=
+_data)
+> +{
+> +    VirtIOIOMMUInterval *inta =3D (VirtIOIOMMUInterval *)a;
+> +    VirtIOIOMMUInterval *intb =3D (VirtIOIOMMUInterval *)b;
+> +
+> +    if (inta->high < intb->low) {
+> +        return -1;
+> +    } else if (intb->high < inta->low) {
+> +        return 1;
+> +    } else {
+> +        return 0;
+> +    }
+> +}
+> +
+> +static void virtio_iommu_detach_endpoint_from_domain(VirtIOIOMMUEndpoint=
+ *ep)
+> +{
+> +    QLIST_REMOVE(ep, next);
+> +    g_tree_unref(ep->domain->mappings);
+
+Here domain->mapping is unreferenced for each endpoint, while at [1]
+below you only reference the domain->mappings if it's the first
+endpoint.  Is that problematic?
+
+> +    ep->domain =3D NULL;
+> +}
+> +
+> +static VirtIOIOMMUEndpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s,
+> +                                                      uint32_t ep_id)
+> +{
+> +    VirtIOIOMMUEndpoint *ep;
+> +
+> +    ep =3D g_tree_lookup(s->endpoints, GUINT_TO_POINTER(ep_id));
+> +    if (ep) {
+> +        return ep;
+> +    }
+> +    if (!virtio_iommu_mr(s, ep_id)) {
+> +        return NULL;
+> +    }
+> +    ep =3D g_malloc0(sizeof(*ep));
+> +    ep->id =3D ep_id;
+> +    trace_virtio_iommu_get_endpoint(ep_id);
+> +    g_tree_insert(s->endpoints, GUINT_TO_POINTER(ep_id), ep);
+> +    return ep;
+> +}
+> +
+> +static void virtio_iommu_put_endpoint(gpointer data)
+> +{
+> +    VirtIOIOMMUEndpoint *ep =3D (VirtIOIOMMUEndpoint *)data;
+> +
+> +    assert(!ep->domain);
+> +
+> +    trace_virtio_iommu_put_endpoint(ep->id);
+> +    g_free(ep);
+> +}
+> +
+> +static VirtIOIOMMUDomain *virtio_iommu_get_domain(VirtIOIOMMU *s,
+> +                                                  uint32_t domain_id)
+> +{
+> +    VirtIOIOMMUDomain *domain;
+> +
+> +    domain =3D g_tree_lookup(s->domains, GUINT_TO_POINTER(domain_id));
+> +    if (domain) {
+> +        return domain;
+> +    }
+> +    domain =3D g_malloc0(sizeof(*domain));
+> +    domain->id =3D domain_id;
+> +    domain->mappings =3D g_tree_new_full((GCompareDataFunc)interval_cmp,
+> +                                   NULL, (GDestroyNotify)g_free,
+> +                                   (GDestroyNotify)g_free);
+> +    g_tree_insert(s->domains, GUINT_TO_POINTER(domain_id), domain);
+> +    QLIST_INIT(&domain->endpoint_list);
+> +    trace_virtio_iommu_get_domain(domain_id);
+> +    return domain;
+> +}
+> +
+> +static void virtio_iommu_put_domain(gpointer data)
+> +{
+> +    VirtIOIOMMUDomain *domain =3D (VirtIOIOMMUDomain *)data;
+> +    VirtIOIOMMUEndpoint *iter, *tmp;
+> +
+> +    QLIST_FOREACH_SAFE(iter, &domain->endpoint_list, next, tmp) {
+> +        virtio_iommu_detach_endpoint_from_domain(iter);
+> +    }
+
+Do you need to destroy the domain->mappings here?  Is it leaked?
+
+> +    trace_virtio_iommu_put_domain(domain->id);
+> +    g_free(domain);
+> +}
+> +
+> +static AddressSpace *virtio_iommu_find_add_as(PCIBus *bus, void *opaque,
+> +                                              int devfn)
+> +{
+> +    VirtIOIOMMU *s =3D opaque;
+> +    IOMMUPciBus *sbus =3D g_hash_table_lookup(s->as_by_busptr, bus);
+> +    static uint32_t mr_index;
+> +    IOMMUDevice *sdev;
+> +
+> +    if (!sbus) {
+> +        sbus =3D g_malloc0(sizeof(IOMMUPciBus) +
+> +                         sizeof(IOMMUDevice *) * PCI_DEVFN_MAX);
+> +        sbus->bus =3D bus;
+> +        g_hash_table_insert(s->as_by_busptr, bus, sbus);
+> +    }
+> +
+> +    sdev =3D sbus->pbdev[devfn];
+> +    if (!sdev) {
+> +        char *name =3D g_strdup_printf("%s-%d-%d",
+> +                                     TYPE_VIRTIO_IOMMU_MEMORY_REGION,
+> +                                     mr_index++, devfn);
+> +        sdev =3D sbus->pbdev[devfn] =3D g_malloc0(sizeof(IOMMUDevice));
+> +
+> +        sdev->viommu =3D s;
+> +        sdev->bus =3D bus;
+> +        sdev->devfn =3D devfn;
+> +
+> +        trace_virtio_iommu_init_iommu_mr(name);
+> +
+> +        memory_region_init_iommu(&sdev->iommu_mr, sizeof(sdev->iommu_mr)=
+,
+> +                                 TYPE_VIRTIO_IOMMU_MEMORY_REGION,
+> +                                 OBJECT(s), name,
+> +                                 UINT64_MAX);
+> +        address_space_init(&sdev->as,
+> +                           MEMORY_REGION(&sdev->iommu_mr), TYPE_VIRTIO_I=
+OMMU);
+> +        g_free(name);
+> +    }
+> +    return &sdev->as;
+> +}
+> +
+>  static int virtio_iommu_attach(VirtIOIOMMU *s,
+>                                 struct virtio_iommu_req_attach *req)
+>  {
+>      uint32_t domain_id =3D le32_to_cpu(req->domain);
+>      uint32_t ep_id =3D le32_to_cpu(req->endpoint);
+> +    VirtIOIOMMUDomain *domain;
+> +    VirtIOIOMMUEndpoint *ep;
+> =20
+>      trace_virtio_iommu_attach(domain_id, ep_id);
+> =20
+> -    return VIRTIO_IOMMU_S_UNSUPP;
+> +    ep =3D virtio_iommu_get_endpoint(s, ep_id);
+> +    if (!ep) {
+> +        return VIRTIO_IOMMU_S_NOENT;
+> +    }
+> +
+> +    if (ep->domain) {
+> +        VirtIOIOMMUDomain *previous_domain =3D ep->domain;
+> +        /*
+> +         * the device is already attached to a domain,
+> +         * detach it first
+> +         */
+> +        virtio_iommu_detach_endpoint_from_domain(ep);
+> +        if (QLIST_EMPTY(&previous_domain->endpoint_list)) {
+> +            g_tree_remove(s->domains, GUINT_TO_POINTER(previous_domain->=
+id));
+> +        }
+> +    }
+> +
+> +    domain =3D virtio_iommu_get_domain(s, domain_id);
+> +    if (!QLIST_EMPTY(&domain->endpoint_list)) {
+> +        g_tree_ref(domain->mappings);
+
+[1]
+
+> +    }
+> +    QLIST_INSERT_HEAD(&domain->endpoint_list, ep, next);
+> +
+> +    ep->domain =3D domain;
+> +
+> +    return VIRTIO_IOMMU_S_OK;
+>  }
+> =20
+>  static int virtio_iommu_detach(VirtIOIOMMU *s,
+> @@ -50,10 +267,34 @@ static int virtio_iommu_detach(VirtIOIOMMU *s,
+>  {
+>      uint32_t domain_id =3D le32_to_cpu(req->domain);
+>      uint32_t ep_id =3D le32_to_cpu(req->endpoint);
+> +    VirtIOIOMMUDomain *domain;
+> +    VirtIOIOMMUEndpoint *ep;
+> =20
+>      trace_virtio_iommu_detach(domain_id, ep_id);
+> =20
+> -    return VIRTIO_IOMMU_S_UNSUPP;
+> +    ep =3D g_tree_lookup(s->endpoints, GUINT_TO_POINTER(ep_id));
+> +    if (!ep) {
+> +        return VIRTIO_IOMMU_S_NOENT;
+> +    }
+> +
+> +    domain =3D ep->domain;
+> +
+> +    if (!domain || domain->id !=3D domain_id) {
+> +        return VIRTIO_IOMMU_S_INVAL;
+> +    }
+> +
+> +    virtio_iommu_detach_endpoint_from_domain(ep);
+> +
+> +    /*
+> +     * when the last EP is detached, simply remove the domain for
+> +     * the domain list and destroy it. Note its mappings were already
+> +     * freed by the ref count mechanism. Next operation involving
+> +     * the same domain id will re-create one domain object.
+> +     */
+> +    if (QLIST_EMPTY(&domain->endpoint_list)) {
+> +        g_tree_remove(s->domains, GUINT_TO_POINTER(domain->id));
+> +    }
+> +    return VIRTIO_IOMMU_S_OK;
+>  }
+> =20
+>  static int virtio_iommu_map(VirtIOIOMMU *s,
+> @@ -172,6 +413,27 @@ out:
+>      }
+>  }
+> =20
+> +static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwadd=
+r addr,
+> +                                            IOMMUAccessFlags flag,
+> +                                            int iommu_idx)
+> +{
+> +    IOMMUDevice *sdev =3D container_of(mr, IOMMUDevice, iommu_mr);
+> +    uint32_t sid;
+> +
+> +    IOMMUTLBEntry entry =3D {
+> +        .target_as =3D &address_space_memory,
+> +        .iova =3D addr,
+> +        .translated_addr =3D addr,
+> +        .addr_mask =3D ~(hwaddr)0,
+> +        .perm =3D IOMMU_NONE,
+> +    };
+> +
+> +    sid =3D virtio_iommu_get_bdf(sdev);
+> +
+> +    trace_virtio_iommu_translate(mr->parent_obj.name, sid, addr, flag);
+> +    return entry;
+> +}
+> +
+>  static void virtio_iommu_get_config(VirtIODevice *vdev, uint8_t *config_=
+data)
+>  {
+>      VirtIOIOMMU *dev =3D VIRTIO_IOMMU(vdev);
+> @@ -218,6 +480,13 @@ static const VMStateDescription vmstate_virtio_iommu=
+_device =3D {
+>      .unmigratable =3D 1,
+>  };
+> =20
+> +static gint int_cmp(gconstpointer a, gconstpointer b, gpointer user_data=
 )
-> and especially patches 12 and 13 of the series, ie. binding info through
-> the PCIe config space.
+> +{
+> +    guint ua =3D GPOINTER_TO_UINT(a);
+> +    guint ub =3D GPOINTER_TO_UINT(b);
+> +    return (ua > ub) - (ua < ub);
+> +}
+> +
+>  static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+>  {
+>      VirtIODevice *vdev =3D VIRTIO_DEVICE(dev);
+> @@ -226,6 +495,8 @@ static void virtio_iommu_device_realize(DeviceState *=
+dev, Error **errp)
+>      virtio_init(vdev, "virtio-iommu", VIRTIO_ID_IOMMU,
+>                  sizeof(struct virtio_iommu_config));
+> =20
+> +    memset(s->iommu_pcibus_by_bus_num, 0, sizeof(s->iommu_pcibus_by_bus_=
+num));
+> +
+>      s->req_vq =3D virtio_add_queue(vdev, VIOMMU_DEFAULT_QUEUE_SIZE,
+>                               virtio_iommu_handle_command);
+>      s->event_vq =3D virtio_add_queue(vdev, VIOMMU_DEFAULT_QUEUE_SIZE, NU=
+LL);
+> @@ -244,18 +515,43 @@ static void virtio_iommu_device_realize(DeviceState=
+ *dev, Error **errp)
+>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MMIO);
+> =20
+>      qemu_mutex_init(&s->mutex);
+> +
+> +    s->as_by_busptr =3D g_hash_table_new_full(NULL, NULL, NULL, g_free);
+> +
+> +    if (s->primary_bus) {
+> +        pci_setup_iommu(s->primary_bus, virtio_iommu_find_add_as, s);
+> +    } else {
+> +        error_setg(errp, "VIRTIO-IOMMU is not attached to any PCI bus!")=
+;
+> +    }
+>  }
+> =20
+>  static void virtio_iommu_device_unrealize(DeviceState *dev, Error **errp=
+)
+>  {
+>      VirtIODevice *vdev =3D VIRTIO_DEVICE(dev);
+> +    VirtIOIOMMU *s =3D VIRTIO_IOMMU(dev);
+> +
+> +    g_tree_destroy(s->domains);
+> +    g_tree_destroy(s->endpoints);
+> =20
+>      virtio_cleanup(vdev);
+>  }
+> =20
+>  static void virtio_iommu_device_reset(VirtIODevice *vdev)
+>  {
+> +    VirtIOIOMMU *s =3D VIRTIO_IOMMU(vdev);
+> +
+>      trace_virtio_iommu_device_reset();
+> +
+> +    if (s->domains) {
+> +        g_tree_destroy(s->domains);
+> +    }
+> +    if (s->endpoints) {
+> +        g_tree_destroy(s->endpoints);
+> +    }
+
+Is it a must to free domians first then the endpoints here?
+
+I see that virtio_iommu_put_domain() will unlink the domains and
+endpoints, then in virtio_iommu_put_endpoint() you assert that
+ep->domain is NULL.  It's fine but I'm a bit curious on why not call
+virtio_iommu_detach_endpoint_from_domain() too when put the endpoint
+then iiuc we don't even need this ordering constraint.  Though in
+virtio_iommu_detach_endpoint_from_domain() we should also need:
+
+  if (!ep->domain)
+    return;
+
+Otherwise it looks good to me.  Thanks,
+
+> +    s->domains =3D g_tree_new_full((GCompareDataFunc)int_cmp,
+> +                                 NULL, NULL, virtio_iommu_put_domain);
+> +    s->endpoints =3D g_tree_new_full((GCompareDataFunc)int_cmp,
+> +                                   NULL, NULL, virtio_iommu_put_endpoint=
+);
+>  }
+> =20
+>  static void virtio_iommu_set_status(VirtIODevice *vdev, uint8_t status)
+> @@ -301,6 +597,14 @@ static void virtio_iommu_class_init(ObjectClass *kla=
+ss, void *data)
+>      vdc->vmsd =3D &vmstate_virtio_iommu_device;
+>  }
+> =20
+> +static void virtio_iommu_memory_region_class_init(ObjectClass *klass,
+> +                                                  void *data)
+> +{
+> +    IOMMUMemoryRegionClass *imrc =3D IOMMU_MEMORY_REGION_CLASS(klass);
+> +
+> +    imrc->translate =3D virtio_iommu_translate;
+> +}
+> +
+>  static const TypeInfo virtio_iommu_info =3D {
+>      .name =3D TYPE_VIRTIO_IOMMU,
+>      .parent =3D TYPE_VIRTIO_DEVICE,
+> @@ -309,9 +613,16 @@ static const TypeInfo virtio_iommu_info =3D {
+>      .class_init =3D virtio_iommu_class_init,
+>  };
+> =20
+> +static const TypeInfo virtio_iommu_memory_region_info =3D {
+> +    .parent =3D TYPE_IOMMU_MEMORY_REGION,
+> +    .name =3D TYPE_VIRTIO_IOMMU_MEMORY_REGION,
+> +    .class_init =3D virtio_iommu_memory_region_class_init,
+> +};
+> +
+>  static void virtio_register_types(void)
+>  {
+>      type_register_static(&virtio_iommu_info);
+> +    type_register_static(&virtio_iommu_memory_region_info);
+>  }
+> =20
+>  type_init(virtio_register_types)
+> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-=
+iommu.h
+> index 041f2c9390..2a2c2ecf83 100644
+> --- a/include/hw/virtio/virtio-iommu.h
+> +++ b/include/hw/virtio/virtio-iommu.h
+> @@ -28,6 +28,8 @@
+>  #define VIRTIO_IOMMU(obj) \
+>          OBJECT_CHECK(VirtIOIOMMU, (obj), TYPE_VIRTIO_IOMMU)
+> =20
+> +#define TYPE_VIRTIO_IOMMU_MEMORY_REGION "virtio-iommu-memory-region"
+> +
+>  typedef struct IOMMUDevice {
+>      void         *viommu;
+>      PCIBus       *bus;
+> @@ -48,6 +50,7 @@ typedef struct VirtIOIOMMU {
+>      struct virtio_iommu_config config;
+>      uint64_t features;
+>      GHashTable *as_by_busptr;
+> +    IOMMUPciBus *iommu_pcibus_by_bus_num[PCI_BUS_MAX];
+>      PCIBus *primary_bus;
+>      GTree *domains;
+>      QemuMutex mutex;
+> --=20
+> 2.20.1
 >=20
-> Thanks
->=20
-> Eric
-> >=20
-> >=20
-> >=20
-> >>>
-> >>>> ---
-> >>>>
-> >>>> v11 -> v12:
-> >>>> - added Jean's R-b
-> >>>> - remove the array of intervals. Will be introduced later?
-> >>>>
-> >>>> v10 -> v11:
-> >>>> - add the reserved_regions array property
-> >>>>
-> >>>> v9 -> v10:
-> >>>> - include "hw/qdev-properties.h" header
-> >>>>
-> >>>> v8 -> v9:
-> >>>> - add the msi-bypass property
-> >>>> - create virtio-iommu-pci.c
-> >>>> ---
-> >>>>  hw/virtio/Makefile.objs          |  1 +
-> >>>>  hw/virtio/virtio-iommu-pci.c     | 88 +++++++++++++++++++++++++++++=
-+++
-> >>>>  include/hw/pci/pci.h             |  1 +
-> >>>>  include/hw/virtio/virtio-iommu.h |  1 +
-> >>>>  qdev-monitor.c                   |  1 +
-> >>>>  5 files changed, 92 insertions(+)
-> >>>>  create mode 100644 hw/virtio/virtio-iommu-pci.c
-> >>>>
-> >>>> diff --git a/hw/virtio/Makefile.objs b/hw/virtio/Makefile.objs
-> >>>> index 2fd9da7410..4e4d39a0a4 100644
-> >>>> --- a/hw/virtio/Makefile.objs
-> >>>> +++ b/hw/virtio/Makefile.objs
-> >>>> @@ -29,6 +29,7 @@ obj-$(CONFIG_VIRTIO_INPUT_HOST) +=3D virtio-input-=
-host-pci.o
-> >>>>  obj-$(CONFIG_VIRTIO_INPUT) +=3D virtio-input-pci.o
-> >>>>  obj-$(CONFIG_VIRTIO_RNG) +=3D virtio-rng-pci.o
-> >>>>  obj-$(CONFIG_VIRTIO_BALLOON) +=3D virtio-balloon-pci.o
-> >>>> +obj-$(CONFIG_VIRTIO_IOMMU) +=3D virtio-iommu-pci.o
-> >>>>  obj-$(CONFIG_VIRTIO_9P) +=3D virtio-9p-pci.o
-> >>>>  obj-$(CONFIG_VIRTIO_SCSI) +=3D virtio-scsi-pci.o
-> >>>>  obj-$(CONFIG_VIRTIO_BLK) +=3D virtio-blk-pci.o
-> >>>> diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-p=
-ci.c
-> >>>> new file mode 100644
-> >>>> index 0000000000..4cfae1f9df
-> >>>> --- /dev/null
-> >>>> +++ b/hw/virtio/virtio-iommu-pci.c
-> >>>> @@ -0,0 +1,88 @@
-> >>>> +/*
-> >>>> + * Virtio IOMMU PCI Bindings
-> >>>> + *
-> >>>> + * Copyright (c) 2019 Red Hat, Inc.
-> >>>> + * Written by Eric Auger
-> >>>> + *
-> >>>> + *  This program is free software; you can redistribute it and/or m=
-odify
-> >>>> + *  it under the terms of the GNU General Public License version 2 =
-or
-> >>>> + *  (at your option) any later version.
-> >>>> + */
-> >>>> +
-> >>>> +#include "qemu/osdep.h"
-> >>>> +
-> >>>> +#include "virtio-pci.h"
-> >>>> +#include "hw/virtio/virtio-iommu.h"
-> >>>> +#include "hw/qdev-properties.h"
-> >>>> +
-> >>>> +typedef struct VirtIOIOMMUPCI VirtIOIOMMUPCI;
-> >>>> +
-> >>>> +/*
-> >>>> + * virtio-iommu-pci: This extends VirtioPCIProxy.
-> >>>> + *
-> >>>> + */
-> >>>> +#define VIRTIO_IOMMU_PCI(obj) \
-> >>>> +        OBJECT_CHECK(VirtIOIOMMUPCI, (obj), TYPE_VIRTIO_IOMMU_PCI)
-> >>>> +
-> >>>> +struct VirtIOIOMMUPCI {
-> >>>> +    VirtIOPCIProxy parent_obj;
-> >>>> +    VirtIOIOMMU vdev;
-> >>>> +};
-> >>>> +
-> >>>> +static Property virtio_iommu_pci_properties[] =3D {
-> >>>> +    DEFINE_PROP_UINT32("class", VirtIOPCIProxy, class_code, 0),
-> >>>> +    DEFINE_PROP_END_OF_LIST(),
-> >>>> +};
-> >>>> +
-> >>>> +static void virtio_iommu_pci_realize(VirtIOPCIProxy *vpci_dev, Erro=
-r **errp)
-> >>>> +{
-> >>>> +    VirtIOIOMMUPCI *dev =3D VIRTIO_IOMMU_PCI(vpci_dev);
-> >>>> +    DeviceState *vdev =3D DEVICE(&dev->vdev);
-> >>>> +
-> >>>> +    qdev_set_parent_bus(vdev, BUS(&vpci_dev->bus));
-> >>>> +    object_property_set_link(OBJECT(dev),
-> >>>> +                             OBJECT(pci_get_bus(&vpci_dev->pci_dev)=
-),
-> >>>> +                             "primary-bus", errp);
-> >>>> +    object_property_set_bool(OBJECT(vdev), true, "realized", errp);
-> >>>> +}
-> >>>> +
-> >>>> +static void virtio_iommu_pci_class_init(ObjectClass *klass, void *d=
-ata)
-> >>>> +{
-> >>>> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> >>>> +    VirtioPCIClass *k =3D VIRTIO_PCI_CLASS(klass);
-> >>>> +    PCIDeviceClass *pcidev_k =3D PCI_DEVICE_CLASS(klass);
-> >>>> +    k->realize =3D virtio_iommu_pci_realize;
-> >>>> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-> >>>> +    dc->props =3D virtio_iommu_pci_properties;
-> >>>> +    pcidev_k->vendor_id =3D PCI_VENDOR_ID_REDHAT_QUMRANET;
-> >>>> +    pcidev_k->device_id =3D PCI_DEVICE_ID_VIRTIO_IOMMU;
-> >>>> +    pcidev_k->revision =3D VIRTIO_PCI_ABI_VERSION;
-> >>>> +    pcidev_k->class_id =3D PCI_CLASS_OTHERS;
-> >>>> +}
-> >>>> +
-> >>>> +static void virtio_iommu_pci_instance_init(Object *obj)
-> >>>> +{
-> >>>> +    VirtIOIOMMUPCI *dev =3D VIRTIO_IOMMU_PCI(obj);
-> >>>> +
-> >>>> +    virtio_instance_init_common(obj, &dev->vdev, sizeof(dev->vdev),
-> >>>> +                                TYPE_VIRTIO_IOMMU);
-> >>>> +}
-> >>>> +
-> >>>> +static const VirtioPCIDeviceTypeInfo virtio_iommu_pci_info =3D {
-> >>>> +    .base_name             =3D TYPE_VIRTIO_IOMMU_PCI,
-> >>>> +    .generic_name          =3D "virtio-iommu-pci",
-> >>>> +    .transitional_name     =3D "virtio-iommu-pci-transitional",
-> >>>> +    .non_transitional_name =3D "virtio-iommu-pci-non-transitional",
-> >>>> +    .instance_size =3D sizeof(VirtIOIOMMUPCI),
-> >>>> +    .instance_init =3D virtio_iommu_pci_instance_init,
-> >>>> +    .class_init    =3D virtio_iommu_pci_class_init,
-> >>>> +};
-> >>>> +
-> >>>> +static void virtio_iommu_pci_register(void)
-> >>>> +{
-> >>>> +    virtio_pci_types_register(&virtio_iommu_pci_info);
-> >>>> +}
-> >>>> +
-> >>>> +type_init(virtio_iommu_pci_register)
-> >>>> +
-> >>>> +
-> >>>> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-> >>>> index 2acd8321af..cfedf5a995 100644
-> >>>> --- a/include/hw/pci/pci.h
-> >>>> +++ b/include/hw/pci/pci.h
-> >>>> @@ -86,6 +86,7 @@ extern bool pci_available;
-> >>>>  #define PCI_DEVICE_ID_VIRTIO_9P          0x1009
-> >>>>  #define PCI_DEVICE_ID_VIRTIO_VSOCK       0x1012
-> >>>>  #define PCI_DEVICE_ID_VIRTIO_PMEM        0x1013
-> >>>> +#define PCI_DEVICE_ID_VIRTIO_IOMMU       0x1014
-> >>>> =20
-> >>>>  #define PCI_VENDOR_ID_REDHAT             0x1b36
-> >>>>  #define PCI_DEVICE_ID_REDHAT_BRIDGE      0x0001
-> >>>> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/vi=
-rtio-iommu.h
-> >>>> index 2a2c2ecf83..f39aa0fbb4 100644
-> >>>> --- a/include/hw/virtio/virtio-iommu.h
-> >>>> +++ b/include/hw/virtio/virtio-iommu.h
-> >>>> @@ -25,6 +25,7 @@
-> >>>>  #include "hw/pci/pci.h"
-> >>>> =20
-> >>>>  #define TYPE_VIRTIO_IOMMU "virtio-iommu-device"
-> >>>> +#define TYPE_VIRTIO_IOMMU_PCI "virtio-iommu-device-base"
-> >>>>  #define VIRTIO_IOMMU(obj) \
-> >>>>          OBJECT_CHECK(VirtIOIOMMU, (obj), TYPE_VIRTIO_IOMMU)
-> >>>> =20
-> >>>> diff --git a/qdev-monitor.c b/qdev-monitor.c
-> >>>> index 3465a1e2d0..97f4022b51 100644
-> >>>> --- a/qdev-monitor.c
-> >>>> +++ b/qdev-monitor.c
-> >>>> @@ -66,6 +66,7 @@ static const QDevAlias qdev_alias_table[] =3D {
-> >>>>      { "virtio-input-host-ccw", "virtio-input-host", QEMU_ARCH_S390X=
- },
-> >>>>      { "virtio-input-host-pci", "virtio-input-host",
-> >>>>              QEMU_ARCH_ALL & ~QEMU_ARCH_S390X },
-> >>>> +    { "virtio-iommu-pci", "virtio-iommu", QEMU_ARCH_ALL & ~QEMU_ARC=
-H_S390X },
-> >>>>      { "virtio-keyboard-ccw", "virtio-keyboard", QEMU_ARCH_S390X },
-> >>>>      { "virtio-keyboard-pci", "virtio-keyboard",
-> >>>>              QEMU_ARCH_ALL & ~QEMU_ARCH_S390X },
-> >>>> --=20
-> >>>> 2.20.1
-> >>>
-> >>>
-> >=20
+
+--=20
+Peter Xu
 

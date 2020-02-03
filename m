@@ -1,110 +1,107 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3559078lfp;
-        Sun, 2 Feb 2020 22:11:21 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy1VuttYWNBSw8fAs2vdTQzXXr+Jz5smJu93nkuGkiY7J8sCPf5M7QlWPuG+weXiQuJXgWg
-X-Received: by 2002:a05:620a:112c:: with SMTP id p12mr22117857qkk.287.1580710281173;
-        Sun, 02 Feb 2020 22:11:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580710281; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3583600lfp;
+        Sun, 2 Feb 2020 22:43:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw9ZJHhf0nF7P7AZYCMkEFGyUSx6MVxI20raChPR0NsJwcXfmUtgpcNnUCV46UtxBTnxzM+
+X-Received: by 2002:a05:620a:21c3:: with SMTP id h3mr22190649qka.318.1580712216160;
+        Sun, 02 Feb 2020 22:43:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580712216; cv=none;
         d=google.com; s=arc-20160816;
-        b=x5XRPM12n5vJltsP5h4z0/NzxijsKXuYP1kqvpYORJETsaZm+aWCLnJmi4/iBc98D9
-         VP8gr278kZxxbtQJdqXlKP9pWn/zX6Wx2KgGn//u3K6bdrmEOztf6a818JE5kiIL6KCz
-         eCsQLbJTLyINBXWjtj2jF0P/5v3n13lgRr3SArGj7H6c+vTIR8D3x03uuY0Rjq3x13to
-         EFa/ACHbkeCLYN9hmRTKLRy2QDiuUcltDa00h0G3LtCGJBM80LHzZ5M3yQjlC5zQ/Hf8
-         MMu0bUTcciQm64i06qU6oG7wey8mVe4nhw5DZs6yUOR9rwXfu5MHgmZipY4LsXwZ1XVB
-         4l5Q==
+        b=I8ucMxrV+xfkKrKPSUYNn4k+J/hAB+sEGT0EwkI13ZXTHCGBq4287tYxHerVV9Ei+/
+         9mVW+AINUjjwyyeAYOJRZiIQgkTR87HHXXI9S+ojXQ0Y+JVqDKjOY0eNY/BDiIFMMV9R
+         gKgKgiZ6RIspNRQ1ZruX+3qW3mIkjmeqpxvsBBWZ5vg2tH5KEViMqduDKzf+z+I3+Ixl
+         Q/+hFb0RUjP+IC8KwYSTvFqcSNGcQIdimOtwSVWF2KwdXFgKOcVx54k3ECsd3Hk+Exmz
+         DfPxxKFeAoOgbdciEvJD6jhX5jY58nG7XzeeEUlFNf5AIKhu9hQmzdZRlnoouNnIPA2N
+         8big==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition
          :content-transfer-encoding:in-reply-to:mime-version:references
          :message-id:subject:to:from:date:dkim-signature;
-        bh=TGYi4iQGyypKkwl5HdBcxH1o1c16rSX8imA3vtobyKo=;
-        b=LQUTEI2nOWAj1AEkfdLQa1HWYU0pdJVPXtfCDtYhiloKEs3xvFHTkEr/RadwmAlClF
-         8UnlCcqoe7Ly4d7lCkhDgD+ZIbm6RkT7ffBqkHDCDpDAy2EGWkFta6Ny1uYn2Hiy8gm6
-         U5420kDRIBPf32lIM3kN4CHX4GBds/vVgB3peZDnDL/Jrg5xZXdajES/QMzaa7w5yV4d
-         t8uoAB7ND3n5p9sfCjPQbt1UF0QJSbMVALDXeTQ1MzFqb9o/fp79QE8Tg2RJTE2i50tI
-         tl4x/YhvvYebCTCzMK7NspTjWSPaHzOF3sOSljGGZqeGsGlHQbdfE5Pe8Oy2joKNSEfK
-         N2mg==
+        bh=Mxht/KLWEDwGIXr9MQR6xjOTEWdbCtU1Uk3cSWbKMHk=;
+        b=f2lKr2XI4bIXdf0tkQTrx/mpoGaqodz1g14cGNRVrERQuL6f8hH7duyAxTKCaxjtc7
+         mHoWXIYTVxGHHoSLmJ405YfvVz1TcCfA7PDG2laTQy17MtMTRZABBpiaeXzPnYbIpE3J
+         OfnWatwgmIgcGoeXuqX4BTSHV48acIgRL+KufptshwLqAB9dZ5Pumq2Ab9SDwoiB/ZhF
+         6UVfc8+UNe4ANDCMgNoQw8XdfAdOSHwSzPToJ6HxegeO48TAAJGJLAcD8BkzsGNqM9oL
+         7so2h7JZ6O5e/gmb2owmHJcmSOCOYmCByVB6ARa5AZBXFbyxz6Jv1Iujp7Bf+7pvrWci
+         UCdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IfOn09YJ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aGLyGX0L;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c21si11675889qkj.292.2020.02.02.22.11.21
+        by mx.google.com with ESMTPS id o8si10724675qtm.272.2020.02.02.22.43.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 Feb 2020 22:11:21 -0800 (PST)
+        Sun, 02 Feb 2020 22:43:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IfOn09YJ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aGLyGX0L;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34730 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35266 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iyUx6-0001x5-Lw
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 01:11:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56984)
+	id 1iyVSJ-000433-LB
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 01:43:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37089)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mst@redhat.com>) id 1iyUwy-0001un-Oh
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 01:11:14 -0500
+ (envelope-from <mst@redhat.com>) id 1iyVS7-00042k-4H
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 01:43:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mst@redhat.com>) id 1iyUwx-0001l9-MK
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 01:11:12 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:55850
+ (envelope-from <mst@redhat.com>) id 1iyVS6-0002Db-45
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 01:43:23 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:51165
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mst@redhat.com>) id 1iyUwx-0001kJ-It
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 01:11:11 -0500
+ (Exim 4.71) (envelope-from <mst@redhat.com>) id 1iyVS5-0002Bi-VT
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 01:43:22 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580710270;
+ s=mimecast20190719; t=1580712199;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=TGYi4iQGyypKkwl5HdBcxH1o1c16rSX8imA3vtobyKo=;
- b=IfOn09YJaYAoEuiDJorG6HHQS5kkoPGQaKVrk14rCR+B6EdkVhvc7eZgRcWG+U/yKh8XWy
- dLiWd2S7rS4gRkV1JgAo01QOxhyk+CyM3/gCvb5IfOs/WIeC93LWFSu/Cpu1Jom/EAFd5N
- aKNuqyEwHhq5r8yw36/mx4VGoI8J3Pw=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-407-BG3Gf-W9PNiNfrdP-ESG8g-1; Mon, 03 Feb 2020 01:11:07 -0500
-Received: by mail-wr1-f71.google.com with SMTP id m15so3446112wrs.22
- for <qemu-arm@nongnu.org>; Sun, 02 Feb 2020 22:11:06 -0800 (PST)
+ bh=Mxht/KLWEDwGIXr9MQR6xjOTEWdbCtU1Uk3cSWbKMHk=;
+ b=aGLyGX0LxmTJHrWmC5YrMN3cd/+1W3RS8W1lQm9k1bQVml9Zktu9yGVe9lCP4SieDseb+L
+ +C37F9MkGZdymL1hhwJsgS8g0Xr4mdI4NN3th442AIy9sL+qgWRZytJz9KRg10V6b3UVVd
+ SU2VDS4v8G5FHVPGXtCWIQRr8nfrOU4=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-249-RrdTDzJmM6mfQcBj1KjIgw-1; Mon, 03 Feb 2020 01:43:17 -0500
+Received: by mail-wr1-f72.google.com with SMTP id w6so7730971wrm.16
+ for <qemu-arm@nongnu.org>; Sun, 02 Feb 2020 22:43:16 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=Lw8zZl6P+1/bHZa82Tc/oS8E16nZxIUU26KAs8LQ3vc=;
- b=NR5B6emot32u/QWyo+3CKbO+zaEBbsNRnAHVrVXbwp2rHwxJ2Uasa140zVCRzJffhQ
- Ef4llSXz/qSME0z1VzwgE3EwqIRx6Ftdkh2eqvUTbm7CNTvxLy5OFLZFLgrXJNdi+JyC
- Bsi0jgEncZMpfxPOonfiUaN2VNnxUNiMiuqFxJOLxiZK4vy8ci8jf7cs/UnhUXHDr28Q
- qeSkwfssDd2nnUC2YN0yuwWcPme1RljPX7+keOyrccBCcGmkOagnGCVttbFNpd5VxSGq
- hc71/HdZEr81QAGA88WkxP6xFBjYw8Q8STh7AaTAesP/MmakcQ9QHtwyRikGp3EZXNPl
- 60tg==
-X-Gm-Message-State: APjAAAUgEuRthbNz3Eo8QlEyS1VLx3wcahzv+je2GefnxYAhtNuji28I
- N3ZmupwCEDqtOcw9X+KA1sg6tLTwrIZUI0nmf3Wpp+sPV30eC2URnLdKurmY7g1Oh11BYWUZBUO
- hEdz6+cuP4ZI8
-X-Received: by 2002:a1c:b4d7:: with SMTP id
- d206mr26783662wmf.188.1580710266014; 
- Sun, 02 Feb 2020 22:11:06 -0800 (PST)
-X-Received: by 2002:a1c:b4d7:: with SMTP id
- d206mr26783634wmf.188.1580710265780; 
- Sun, 02 Feb 2020 22:11:05 -0800 (PST)
+ bh=11YEzOH4JqxoCO8A8NB9nQ9MAE9iM+etG54GJmx13Jc=;
+ b=gtW6u4LAnqhrU4ofUDrO1sj8/QpPwod7MXgd8ElN5xw502o/T2urh5taq2Cbhjat42
+ gO7hu4i1t2q602eyf8PoDSnorp5KL6RKMykUs61XqAjubAEySDPozmZ9bmuDKoLz2JZV
+ 1ITrdXbyx15nAfZUNRLEa40HTo5v79Y9LYbJHch/iZA016VyQDAs/ejLSsAr76xfQQXF
+ XZPMwgdyMG8GGON+ZH15shoQaoTVTEmPpOLJuvpDVAUXA8dYlC3EUVKzxobzevB4HNSz
+ vCQG+8wk7FbNOf9bcX9+VYzU6TzWSgx/7H5MjG7vHbrzYNf0cePGZebkZ/rMvV1eDyIV
+ bjZQ==
+X-Gm-Message-State: APjAAAV11lXhAEAMQB+q3s2XA4KBz38J/o+TBgAq5vuorsKGoJv+w1+C
+ 8TG9GZdC1GPzLykxLJKTr9KH28NOcPQIvp7kLZ7MrS+Y3V4Y3Z/XcVqIPXdOhCvugFyiZUfKt3W
+ /3QmAlDJe3GPD
+X-Received: by 2002:adf:f1d0:: with SMTP id z16mr12940376wro.209.1580712196171; 
+ Sun, 02 Feb 2020 22:43:16 -0800 (PST)
+X-Received: by 2002:adf:f1d0:: with SMTP id z16mr12940351wro.209.1580712195914; 
+ Sun, 02 Feb 2020 22:43:15 -0800 (PST)
 Received: from redhat.com (ip-82-36-244-173.west.us.northamericancoax.com.
  [173.244.36.82])
- by smtp.gmail.com with ESMTPSA id o4sm9112696wrw.15.2020.02.02.22.11.01
+ by smtp.gmail.com with ESMTPSA id r14sm21083307wrj.26.2020.02.02.22.43.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 02 Feb 2020 22:11:05 -0800 (PST)
-Date: Mon, 3 Feb 2020 01:10:57 -0500
+ Sun, 02 Feb 2020 22:43:15 -0800 (PST)
+Date: Mon, 3 Feb 2020 01:43:07 -0500
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Heyi Guo <guoheyi@huawei.com>
-Subject: Re: [PATCH v2 4/7] arm/acpi: fix PCI _PRT definition
-Message-ID: <20200203010249-mutt-send-email-mst@kernel.org>
+Subject: Re: [PATCH v2 0/7] Some cleanup in arm/virt/acpi
+Message-ID: <20200203014246-mutt-send-email-mst@kernel.org>
 References: <20200203001505.52573-1-guoheyi@huawei.com>
- <20200203001505.52573-5-guoheyi@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200203001505.52573-5-guoheyi@huawei.com>
-X-MC-Unique: BG3Gf-W9PNiNfrdP-ESG8g-1
+In-Reply-To: <20200203001505.52573-1-guoheyi@huawei.com>
+X-MC-Unique: RrdTDzJmM6mfQcBj1KjIgw-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
@@ -129,68 +126,48 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
  Igor Mammedov <imammedo@redhat.com>, wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hfTY+Mva0thD
+X-TUID: f8EO+qyx7w0d
 
-On Mon, Feb 03, 2020 at 08:15:02AM +0800, Heyi Guo wrote:
-> The address field in each _PRT mapping package should be constructed
-> with high word for device# and low word for function#, so it is wrong
-> to use bus_no as the high word. Enumerate all possible slots
-> (i.e. PCI_SLOT_MAX) instead.
+On Mon, Feb 03, 2020 at 08:14:58AM +0800, Heyi Guo wrote:
+> Remove conflict _ADR objects, and fix and refine PCI device definition in
+> ACPI/DSDT.
 >=20
-> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
-
-
-Absolutely matches the spec so
-
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-
-To add to the commit message:
-The existing code adds a bunch useless entries with device #s above 31.
-
-
-> ---
 > Cc: Peter Maydell <peter.maydell@linaro.org>
 > Cc: "Michael S. Tsirkin" <mst@redhat.com>
 > Cc: Igor Mammedov <imammedo@redhat.com>
 > Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
 > Cc: qemu-arm@nongnu.org
 > Cc: qemu-devel@nongnu.org
-> ---
->  hw/arm/virt-acpi-build.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
+
+
+Series
+
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+
+merge through ARM tree pls.
+
+> v1 -> v2:
+> - flow the work flow in tests/qtest/bios-table-test.c to post ACPI relate=
+d
+>   patches.
+> - update commit messages for removing "RP0" and "_ADR".
+> - add 3 more cleanup patches.
 >=20
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index be752c0ad8..5d157a9dd5 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -151,7 +151,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMa=
-pEntry *memmap,
->  {
->      int ecam_id =3D VIRT_ECAM_ID(highmem_ecam);
->      Aml *method, *crs, *ifctx, *UUID, *ifctx1, *elsectx, *buf;
-> -    int i, bus_no;
-> +    int i, slot_no;
->      hwaddr base_mmio =3D memmap[VIRT_PCIE_MMIO].base;
->      hwaddr size_mmio =3D memmap[VIRT_PCIE_MMIO].size;
->      hwaddr base_pio =3D memmap[VIRT_PCIE_PIO].base;
-> @@ -170,12 +170,12 @@ static void acpi_dsdt_add_pci(Aml *scope, const Mem=
-MapEntry *memmap,
->      aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
-> =20
->      /* Declare the PCI Routing Table. */
-> -    Aml *rt_pkg =3D aml_varpackage(nr_pcie_buses * PCI_NUM_PINS);
-> -    for (bus_no =3D 0; bus_no < nr_pcie_buses; bus_no++) {
-> +    Aml *rt_pkg =3D aml_varpackage(PCI_SLOT_MAX * PCI_NUM_PINS);
-> +    for (slot_no =3D 0; slot_no < PCI_SLOT_MAX; slot_no++) {
->          for (i =3D 0; i < PCI_NUM_PINS; i++) {
-> -            int gsi =3D (i + bus_no) % PCI_NUM_PINS;
-> +            int gsi =3D (i + slot_no) % PCI_NUM_PINS;
->              Aml *pkg =3D aml_package(4);
-> -            aml_append(pkg, aml_int((bus_no << 16) | 0xFFFF));
-> +            aml_append(pkg, aml_int((slot_no << 16) | 0xFFFF));
->              aml_append(pkg, aml_int(i));
->              aml_append(pkg, aml_name("GSI%d", gsi));
->              aml_append(pkg, aml_int(0));
+> Heyi Guo (7):
+>   bios-tables-test: prepare to change ARM virt ACPI DSDT
+>   arm/virt/acpi: remove meaningless sub device "PR0" from PCI0
+>   arm/virt/acpi: remove _ADR from devices identified by _HID
+>   arm/acpi: fix PCI _PRT definition
+>   arm/acpi: fix duplicated _UID of PCI interrupt link devices
+>   arm/acpi: simplify the description of PCI _CRS
+>   virt/acpi: update golden masters for DSDT update
+>=20
+>  hw/arm/virt-acpi-build.c          |  25 ++++++-------------------
+>  tests/data/acpi/virt/DSDT         | Bin 18462 -> 5307 bytes
+>  tests/data/acpi/virt/DSDT.memhp   | Bin 19799 -> 6644 bytes
+>  tests/data/acpi/virt/DSDT.numamem | Bin 18462 -> 5307 bytes
+>  4 files changed, 6 insertions(+), 19 deletions(-)
+>=20
 > --=20
 > 2.19.1
 

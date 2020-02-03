@@ -1,117 +1,75 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4144656lfp;
-        Mon, 3 Feb 2020 08:28:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwsMt8lr3GGCHo2vJugMcvzR0ncM3XzgQx02qVR6b/r++97r6WFlxmSLPuGuzce6EW/btGC
-X-Received: by 2002:ac8:4a02:: with SMTP id x2mr24615294qtq.388.1580747335562;
-        Mon, 03 Feb 2020 08:28:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580747335; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4164827lfp;
+        Mon, 3 Feb 2020 08:49:14 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwv1KyVh9FJrx2T2+yNIQK2dJi8f3PLN5ynwWZRsIBFTL1RvNqEDqNPXJEvo+dRWuBNtXUU
+X-Received: by 2002:ac8:5205:: with SMTP id r5mr24706941qtn.230.1580748554498;
+        Mon, 03 Feb 2020 08:49:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580748554; cv=none;
         d=google.com; s=arc-20160816;
-        b=fPw4xWZ9F/rR++jJbn9g3iJ+QgX9ZHWn7+rLvvin+8C0kLVV37emkbrUUp/wdC0b0a
-         7RdS2KGNWtSCd9Hjv/Wbbw3QS2rAxrXSxSW8zk1RlvLILYpBh5JDe3kxA73dARnQ6r2e
-         v8TAF6bFYd9q8FJPbGi3SEYiARRTcID6GHC63kX9JRxeLsF9cqMtUTuFtL9KcVnb789A
-         fGX25yQi57WooT01BnXHYRbT8h/8PC+OJopduHmhuMGzI2n06n9IPHFzdSshLmi91ZSf
-         RLfDu+PScHPJA1swsCt+bJceVtqobpV7ElYox/+/542R7Bw8Dx8hEARLQ4sKuGhqw7gx
-         dHDA==
+        b=e0VIdH9GFnn66VDYr4Cy5Jhb/Ba7e5QIAa0mzi2FxiNimt3UXMOIiECgOMnEDM5NlE
+         oytJTQncCEkdbyuA7uhnh1RXOz2LWf8PWBACLC6nXb8njoeeTBe5nrYWiv1HlKus3XD4
+         cHavHHdCZ+PdNYucBbc35LP1bdLNZ5Rw0+dm4K8XB5cZxVCxJNqkeZF9+8Dd9NVtVk5Y
+         MWVOf4wBs+O70os3rmG8EKhZwBYsNM6yTpwBt8Y6/u4rM4IbIob1bYb36tRrFbTe1NHD
+         hAVNFMnuEUzjq+qGU3MvM8ir5V2OCq77ORAm/y2GEuNR8n9ALO/dKbz0Zgr5e1P7agme
+         DybQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=7dJXNaeM/sqgl8NiGZlY/jcuuoz17ROhcoGWI14l0Mk=;
-        b=aQ4pyQk2hq17A2HURwpgbM1ccMLGvKCQKaN/p81fxBQS8kozto1ScC1o5NbNREwE9U
-         4mS+fWps5xqhlFcKXXKsYPXD+hkYmnwf6nyuo0lENJLPt1FTKxJQLROYbWxvc6ZxSPwa
-         7kuQTbOLYPy8HKJcccUNFC+nRock0YZ+b3K0yOj4sckkqLFz1BSHgtU2cWVhxDeW/1hn
-         MqxZWqCX9bPOwaEiKbunMJksthiF5QhZM8ogHeqt+nuUunV0dFN4YDrMuv2WBNVG2j5U
-         HmOppTVClwP+8xvjji53tjW7OxFbhf2camWZ4M5ScGUrkes/eUr/WilIb4KTN9stiuAD
-         yXZg==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:date:to:from
+         :resent-from:content-transfer-encoding:mime-version:message-id
+         :subject:in-reply-to:resent-message-id:resent-date;
+        bh=1IP7U621T9gJPXXnBbZbEEpGbQ39KypDEQjqFPrLrNQ=;
+        b=nYGZIS8cDKz1RsBKJZ+oGOk3RPsdJJHNMyIeO8Y/Z4Lxj9NxzbHsHScxmQkutQXj7C
+         WvtrNpAVhGydVkFemShZwOq/IWxYYi2VmSUUUoMSbkaBraJM0QZVJKyTFhkjVFI0SZ0U
+         VUvhRuHbfERJBRjupNHXYIJX92OmQ/JS1vPEXj8Age3fXNN4701jyjMXsJxI5V3bgqGD
+         v0Lqb8/UpRryrwRIY+iV2r9DdltVdhTdYYUgFc7oY4ktyNVXTawOi1pctvH0m3ObsoE5
+         FGOG9ZJs9c9hCdRmD+4GGdvB2DIaHNb9NNvOJAumQhkNZggp+AttoD+QWAYbhtnREMWs
+         CKGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="TqV8Lco/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g21si11322280qtp.41.2020.02.03.08.28.55
+        by mx.google.com with ESMTPS id v7si11497283qka.328.2020.02.03.08.49.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 08:28:55 -0800 (PST)
+        Mon, 03 Feb 2020 08:49:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="TqV8Lco/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44382 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44602 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iyeak-0007jG-VC
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 11:28:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47629)
+	id 1iyeuP-000149-VO
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 11:49:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52724)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iyeZx-00072o-Ev
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 11:28:06 -0500
+ (envelope-from <no-reply@patchew.org>) id 1iyeuH-00010q-Jm
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 11:49:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iyeZv-0005zp-Nz
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 11:28:05 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:48039
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iyeZv-0005ub-K8
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 11:28:03 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580747281;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7dJXNaeM/sqgl8NiGZlY/jcuuoz17ROhcoGWI14l0Mk=;
- b=TqV8Lco/Dhzx/4BimBTM2jebl7sVqcLaqcfuPxzwm31b91GCHl9llYytGcvwhHG8SKGX2s
- ae6JrQFbcOeTAy3TiYSG7M+Z+6A/ojrV6/DfbQnBUuOF1pCuTGke/9MQdT4l8y+Yj6ynSz
- P7HQMTLjzASWH7UZUtRAxTLCn0u2m8w=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-140-Ij1DSq-IOw-1mwEYw_pL2Q-1; Mon, 03 Feb 2020 11:27:59 -0500
-Received: by mail-wr1-f69.google.com with SMTP id p8so1673603wrw.5
- for <qemu-arm@nongnu.org>; Mon, 03 Feb 2020 08:27:59 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=dayF1ugLzQY3wM/H3VSX6J0sehC4Ht2b8PcXS8EjYIA=;
- b=kYctRnNNs1yz34NvziIhONykBSfKbd38B1wrOxZThvCDZIXRmePveLpdhMKjHB/oUC
- 96IFD6Y6el27rbDMdkrNtbsjf5TYVByyWejB8ndHPCQZrARsmHJRN7o3x0gRkDC3nMcy
- np5N6GdDN33ev6jb+JYgtPFluUQE0cYVyIdim7eNfCjGIn5q4Uxc9hCg+ktr75S2gSVj
- XZ8ioOlfkWTs1pmOntAFYVbFsRCL3QioyXtHjd8Fijx0KdSYMMsa0X+cx6OfpY+Z/mKb
- mrBgPTWnnlt5W9x/0KUCtb6RqO0+ub7YPXGZDAnWTFgdfmVwBj35Tt6BvM+/8UKtfdm2
- 9QPQ==
-X-Gm-Message-State: APjAAAU9ewIn5p+c9SYwYEHo/H4gL5CCgwY2I+dpIiasqbwmI/QLpffb
- ckjJUu1QAZSzuF3weINJjeSH5y+wW2E8PjRMD5mLiBurnFmGN0S9XcxIkojDN0Q64b/tE9t/ekK
- M1Q28pvCK0n+j
-X-Received: by 2002:a7b:cae9:: with SMTP id t9mr29578324wml.186.1580747277974; 
- Mon, 03 Feb 2020 08:27:57 -0800 (PST)
-X-Received: by 2002:a7b:cae9:: with SMTP id t9mr29578312wml.186.1580747277777; 
- Mon, 03 Feb 2020 08:27:57 -0800 (PST)
-Received: from [192.168.1.35] (162.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.162])
- by smtp.gmail.com with ESMTPSA id v14sm26509162wrm.28.2020.02.03.08.27.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 03 Feb 2020 08:27:57 -0800 (PST)
-Subject: Re: [PATCH v2 1/2] bcm2835_dma: Fix the ylen loop in TD mode
-To: Rene Stange <rsta2@o2online.de>
-References: <11456775.FKKu9GnblS@desktop2>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <22289975-5cd7-47e3-6942-cc95dac80572@redhat.com>
-Date: Mon, 3 Feb 2020 17:27:56 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (envelope-from <no-reply@patchew.org>) id 1iyeuG-00088U-4F
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 11:49:05 -0500
+Resent-Date: Mon, 03 Feb 2020 11:49:05 -0500
+Resent-Message-Id: <E1iyeuG-00088U-4F@eggs.gnu.org>
+Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21110)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1iyeuC-0007na-Sm; Mon, 03 Feb 2020 11:49:01 -0500
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1580748519272441.97465150801736;
+ Mon, 3 Feb 2020 08:48:39 -0800 (PST)
+In-Reply-To: <20200203082619.7426-1-f4bug@amsat.org>
+Subject: Re: [PATCH 0/6] hw/arm/raspi: Dynamically create machines based on
+ the board revision
+Message-ID: <158074851772.10925.5158725085940659173@a1bbccc8075a>
 MIME-Version: 1.0
-In-Reply-To: <11456775.FKKu9GnblS@desktop2>
-Content-Language: en-US
-X-MC-Unique: Ij1DSq-IOw-1mwEYw_pL2Q-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: f4bug@amsat.org
+Date: Mon, 3 Feb 2020 08:48:39 -0800 (PST)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+ [fuzzy]
+X-Received-From: 136.143.188.51
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,48 +81,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-devel <qemu-devel@nongnu.org>,
- Andrew Baumann <andrew.baumann@microsoft.com>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, alistair@alistair23.me, qemu-devel@nongnu.org,
+ Andrew.Baumann@microsoft.com, f4bug@amsat.org, qemu-arm@nongnu.org,
+ imammedo@redhat.com, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dh2abFwPM+Ry
+X-TUID: o03E9aYgFZex
 
-On 2/3/20 4:40 PM, Rene Stange wrote:
-> In TD (two dimensions) DMA mode ylen has to be increased by one after
-> reading it from the TXFR_LEN register, because a value of zero has to
-> result in one run through of the ylen loop. This has been tested on a
-> real Raspberry Pi 3 Model B+. In the previous implementation the ylen
-> loop was not passed at all for a value of zero.
->=20
-> Signed-off-by: Rene Stange <rsta2@o2online.de>
-> ---
->   hw/dma/bcm2835_dma.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c
-> index 1e458d7fba..667d951a6f 100644
-> --- a/hw/dma/bcm2835_dma.c
-> +++ b/hw/dma/bcm2835_dma.c
-> @@ -70,14 +70,14 @@ static void bcm2835_dma_update(BCM2835DMAState *s, un=
-signed c)
->           ch->stride =3D ldl_le_phys(&s->dma_as, ch->conblk_ad + 16);
->           ch->nextconbk =3D ldl_le_phys(&s->dma_as, ch->conblk_ad + 20);
->  =20
-> +        ylen =3D 1;
->           if (ch->ti & BCM2708_DMA_TDMODE) {
->               /* 2D transfer mode */
-> -            ylen =3D (ch->txfr_len >> 16) & 0x3fff;
-> +            ylen +=3D (ch->txfr_len >> 16) & 0x3fff;
->               xlen =3D ch->txfr_len & 0xffff;
->               dst_stride =3D ch->stride >> 16;
->               src_stride =3D ch->stride & 0xffff;
->           } else {
-> -            ylen =3D 1;
->               xlen =3D ch->txfr_len;
->               dst_stride =3D 0;
->               src_stride =3D 0;
->=20
-
-Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDIwMzA4MjYxOS43NDI2
+LTEtZjRidWdAYW1zYXQub3JnLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhhdmUgc29t
+ZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUgaW5mb3Jt
+YXRpb246CgpTdWJqZWN0OiBbUEFUQ0ggMC82XSBody9hcm0vcmFzcGk6IER5bmFtaWNhbGx5IGNy
+ZWF0ZSBtYWNoaW5lcyBiYXNlZCBvbiB0aGUgYm9hcmQgcmV2aXNpb24KTWVzc2FnZS1pZDogMjAy
+MDAyMDMwODI2MTkuNzQyNi0xLWY0YnVnQGFtc2F0Lm9yZwpUeXBlOiBzZXJpZXMKCj09PSBURVNU
+IFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9u
+dWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBj
+b25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5h
+bGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFz
+ZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rl
+c3QnCmJhOWZjZTUgaHcvYXJtL3Jhc3BpOiBHZXQgdGhlIENQVSBjb3JlIGNvdW50IGZyb20gdGhl
+IHJldmlzaW9uIGNvZGUKZGQ2OGU2ZCBody9hcm0vcmFzcGk6IER5bmFtaWNhbGx5IGNyZWF0ZSBt
+YWNoaW5lcyBiYXNlZCBvbiB0aGUgYm9hcmQgcmV2aXNpb24KZDQ3MWJhYSBody9hcm0vcmFzcGk6
+IEdldCBib2FyZCBSQU0gc2l6ZSBmcm9tIGJvYXJkIHJldmlzaW9uIGNvZGUKOTdhZTM5ZiBody9h
+cm0vcmFzcGk6IEdldCB0aGUgU29DIHR5cGUgbmFtZSBmcm9tIHRoZSByZXZpc2lvbiBjb2RlCmNi
+NjRhNmQgaHcvYXJtL3Jhc3BpOiBHZXQgYm9hcmQgdmVyc2lvbiBmcm9tIGJvYXJkIHJldmlzaW9u
+IGNvZGUKYTRiNmZjMyBody9hcm0vcmFzcGk6IFVzZSBCQ00yNzA4IG1hY2hpbmUgdHlwZSB3aXRo
+IHByZSBEZXZpY2UgVHJlZSBrZXJuZWxzCgo9PT0gT1VUUFVUIEJFR0lOID09PQoxLzYgQ2hlY2tp
+bmcgY29tbWl0IGE0YjZmYzNkNGNhOSAoaHcvYXJtL3Jhc3BpOiBVc2UgQkNNMjcwOCBtYWNoaW5l
+IHR5cGUgd2l0aCBwcmUgRGV2aWNlIFRyZWUga2VybmVscykKMi82IENoZWNraW5nIGNvbW1pdCBj
+YjY0YTZkZTQ1NzEgKGh3L2FybS9yYXNwaTogR2V0IGJvYXJkIHZlcnNpb24gZnJvbSBib2FyZCBy
+ZXZpc2lvbiBjb2RlKQpFUlJPUjogdGhhdCBvcGVuIGJyYWNlIHsgc2hvdWxkIGJlIG9uIHRoZSBw
+cmV2aW91cyBsaW5lCiMzNjogRklMRTogaHcvYXJtL3Jhc3BpLmM6NTE6CisgICAgW0JPQVJEX1BJ
+Ml0gPQorICAgIHsKCkVSUk9SOiB0aGF0IG9wZW4gYnJhY2UgeyBzaG91bGQgYmUgb24gdGhlIHBy
+ZXZpb3VzIGxpbmUKIzQxOiBGSUxFOiBody9hcm0vcmFzcGkuYzo1NjoKKyAgICBbQk9BUkRfUEkz
+XSA9CisgICAgewoKdG90YWw6IDIgZXJyb3JzLCAwIHdhcm5pbmdzLCA3NyBsaW5lcyBjaGVja2Vk
+CgpQYXRjaCAyLzYgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9m
+IHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWlu
+dGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCjMvNiBDaGVja2luZyBjb21t
+aXQgOTdhZTM5ZjFiMmExIChody9hcm0vcmFzcGk6IEdldCB0aGUgU29DIHR5cGUgbmFtZSBmcm9t
+IHRoZSByZXZpc2lvbiBjb2RlKQo0LzYgQ2hlY2tpbmcgY29tbWl0IGQ0NzFiYWE4ODM4MCAoaHcv
+YXJtL3Jhc3BpOiBHZXQgYm9hcmQgUkFNIHNpemUgZnJvbSBib2FyZCByZXZpc2lvbiBjb2RlKQo1
+LzYgQ2hlY2tpbmcgY29tbWl0IGRkNjhlNmRjYWExMSAoaHcvYXJtL3Jhc3BpOiBEeW5hbWljYWxs
+eSBjcmVhdGUgbWFjaGluZXMgYmFzZWQgb24gdGhlIGJvYXJkIHJldmlzaW9uKQo2LzYgQ2hlY2tp
+bmcgY29tbWl0IGJhOWZjZTU2Njk0NCAoaHcvYXJtL3Jhc3BpOiBHZXQgdGhlIENQVSBjb3JlIGNv
+dW50IGZyb20gdGhlIHJldmlzaW9uIGNvZGUpCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21t
+YW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0
+dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwMjAzMDgyNjE5Ljc0MjYtMS1mNGJ1Z0BhbXNhdC5v
+cmcvdGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQg
+YXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBz
+ZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t

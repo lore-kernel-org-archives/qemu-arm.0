@@ -1,114 +1,106 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3978597lfp;
-        Mon, 3 Feb 2020 05:55:21 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy0eAsXBK0Sm4EEWazX9x2KGCeVuE8UqvA4xAkQcrn6j7GRdf+HQB/cFBSWiW9iphU2Jat+
-X-Received: by 2002:ad4:4204:: with SMTP id k4mr23148603qvp.203.1580738121009;
-        Mon, 03 Feb 2020 05:55:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580738121; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3984127lfp;
+        Mon, 3 Feb 2020 06:01:18 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwaZMqfZvdKrrUUn2jdkQaOhi4BXzNK0DsSAuHM1UYMM1xAK7hYRm5EHWFDOoKKu/m3xX/b
+X-Received: by 2002:a37:7bc7:: with SMTP id w190mr23679406qkc.193.1580738478488;
+        Mon, 03 Feb 2020 06:01:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580738478; cv=none;
         d=google.com; s=arc-20160816;
-        b=MJ7CVFtGfEDn+lcodDJzwkd8VVBuIeLx6dddBi3zD7mSViyZZ62itMhSMsmHrXMtR2
-         hoGnDtvWv/vnVRgr+/uIQ7AJTU3L5pzSHIebVNQAEqVL7/BkhGrQGWYMD0njQDjYAHHd
-         5Qni8fRmWPptt0k/9nRCn9iWzdMFmP8f79jpL7GZukd/ficC7ImrTFAgFJ/5n+Mc9puN
-         K8yBHoTrGbQzyZTCwRq/Nfi82AY2MYCrFPHtqKT4+xJEv/zoIn3yCD5AHS1Kbt8Akeki
-         qDMaUCh9WjXjPCr6MOqjHZlFNxIZGgD6QKHj3/wbUj1LjVUbZr+Pbms5LexYgX+Elgvm
-         j3pQ==
+        b=Y/XxcWIOXuXBFb8bA4YKcWpkPQnc0jOFbrHimbX0IixjYZIIkg0jOYefpwwyK+uCr+
+         i2bVwol7mFYCvEVpn26qETqBJh3JoX4IZCrQhQHJeQt/GIOf9sD2/1o0CpQ0lpIqwy77
+         aTcv1/gf3JpqJGdvspGm9W5S5Kzg5k3mojuPAM/3GI4vGwFhEyVfB+eZNlhFCL4+bvUu
+         fds0pmJnxvD93ax+Xm9ruHJgOL9kU76lA/B5QO9JeTq/STGIqYmBuBVSnSO2c/ErxxUW
+         XwkgmLKdEqRKzb9G4Ye3SHTEIgn0n5tdiTfWJlZ7C7vPv1nkFWc91mcuquhKrD09Apeh
+         LoWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=qg93xFhEGkdmIT3K3LTNem1fl2cYCQhQan2pX+lCxMw=;
-        b=tGJU+o+eTA6CuQw0Hn6z7DaNz4kQwZu1DHEK02WU4bQ14EPXbcNT000uisQ2gg08GP
-         EjO6Wj9cV3qePZmMv+FE5q5m7NeGnuw5Krn5MAloBhGs65MA1nCbMnD1OkSvbXWScL+w
-         szbPQh8mDsOs55/mLozG1JhRKCcK1nxedxr/PA3kl6fRPpe4ARiqM13/lzMLudOSdSDa
-         20BVJ8bepal9kUEvoX5zFmA+rv0dzePmpb0pc3UE5TqRckkssOmNYbes4gzq/Baed2rV
-         epfWJ/ormw/gAoAUO4lg4Nm/vyHOBhthHx4ceve57Xaa7816fZT/zD2o2nIcYasVJn1V
-         h6hg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=T2K7P3shSIytlWN24FuWBQryMjmxMWHPxy/O94Jb/Qk=;
+        b=P10tRzGSAOJTsIdulvXw8ZdVKf2HLl9XIahRSqV+GT4JKiCe1Bnk7leOJUyPhckyxS
+         xGU1DfaN6+40NUekJEYcBzY/o57Jr4sant3/P+ZQruI/XoEryUN9b40KnaiKoU46RLMj
+         tQl7/ZYme/wHfvINy7DJ7lHr6LUf/KyvxkxR0v6ZL2PGAa97LAgTswSST8dzwf5kug4b
+         5pLi/klAQ9Iu+abBGsFMlaUQDBmTBi9lrJnVRUrHhEDuMMPspALFU0jzif7XcigHtgRD
+         DU9c6WpKB8NlgisDZU7BZRI3Rhw3Sj9vGZIWRTALTlUnT+3NrrcfzYn+L9p8VHR/5xKJ
+         KMgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UBwL8pi5;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OaKpAK4F;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b13si11874070qtp.218.2020.02.03.05.55.20
+        by mx.google.com with ESMTPS id n7si13066637qtl.44.2020.02.03.06.01.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 05:55:21 -0800 (PST)
+        Mon, 03 Feb 2020 06:01:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UBwL8pi5;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OaKpAK4F;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41078 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41276 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iycC8-0006p9-ES
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 08:55:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55558)
+	id 1iycHt-00012S-UP
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 09:01:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57587)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peterx@redhat.com>) id 1iycBz-0006ln-Mr
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:55:12 -0500
+ (envelope-from <wainersm@redhat.com>) id 1iycHj-00010f-L5
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:01:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peterx@redhat.com>) id 1iycBy-00084W-KF
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:55:11 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27400
+ (envelope-from <wainersm@redhat.com>) id 1iycHi-0004dJ-Aq
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:01:07 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:33717
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1iycBy-00084N-GM
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:55:10 -0500
+ (Exim 4.71) (envelope-from <wainersm@redhat.com>) id 1iycHi-0004a8-7K
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:01:06 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580738110;
+ s=mimecast20190719; t=1580738464;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qg93xFhEGkdmIT3K3LTNem1fl2cYCQhQan2pX+lCxMw=;
- b=UBwL8pi5c5OVh0LtWMmJN2WLrWIBnnSZRb5a8gG6pn4KW8IV3g1Ja5KV0DTL8abQK8DSss
- zWH2PTpA1OG6SwVn78ttC/Ui0G4FtaDQpF5YLpIljaWkzgw1Ed6BgLxTh9w6iuZlR7V0pu
- tdtf9w0e1oPS94LZAF4VxYlalN8xKlM=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-54-V1ZeBwASNsyF74Ttep1tYg-1; Mon, 03 Feb 2020 08:55:07 -0500
-Received: by mail-qk1-f197.google.com with SMTP id v2so9497312qkf.4
- for <qemu-arm@nongnu.org>; Mon, 03 Feb 2020 05:55:06 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=OX9/undf1GE3j16kXlHknGzXZFn72TP46ty60q477W0=;
- b=L4HmCed3tmg/S5T61sbA0pUukan0hDF6/mSjAhAs+bveq+GIb4SA4tCqBeTVYgoZ9l
- aoYnUBrBpsnkKVfGg9KyiqDLi2N6z645i1zUBhy4PlEaJHeqSgK4imPFY1btL6OhFncX
- RScSBr5kX4ZWrrlxYfZK44CgpE08atQvEimNpb4L533sAQUVFjYDaoPverMml0uD3sS7
- exM8eB2osqOFTZBbdHhuOc6d2XtJUjRv1c6C3jIN4pfKNkS6osCPMsHnn6QBJOHqZ+qs
- DA09UPSRzIKUFxVLi00MSoFAX3nhTHo8FfGBjlq6SUDQpSlLvBYywTmMeb3ANSFL/YJv
- bWMQ==
-X-Gm-Message-State: APjAAAWxSeYGV3MB6FOabtXqFAIrTYVRl1ENaMzUHVzjzcOsLJJqqAsT
- zjcTVclk+HSnr54ve/lEfENqe8iGQdVX9lYh6O/Jb87i7TnsKhX79k4nFFvP7irRB9NIcgRdJBx
- 0dWI0D8n4tSxG
-X-Received: by 2002:ae9:e109:: with SMTP id g9mr23410947qkm.141.1580738106627; 
- Mon, 03 Feb 2020 05:55:06 -0800 (PST)
-X-Received: by 2002:ae9:e109:: with SMTP id g9mr23410919qkm.141.1580738106410; 
- Mon, 03 Feb 2020 05:55:06 -0800 (PST)
-Received: from xz-x1 ([2607:9880:19c8:32::2])
- by smtp.gmail.com with ESMTPSA id w60sm9760352qte.39.2020.02.03.05.55.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Feb 2020 05:55:05 -0800 (PST)
-Date: Mon, 3 Feb 2020 08:55:03 -0500
-From: Peter Xu <peterx@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v13 06/10] virtio-iommu: Implement fault reporting
-Message-ID: <20200203135503.GC155875@xz-x1>
-References: <20200125171955.12825-1-eric.auger@redhat.com>
- <20200125171955.12825-7-eric.auger@redhat.com>
+ bh=T2K7P3shSIytlWN24FuWBQryMjmxMWHPxy/O94Jb/Qk=;
+ b=OaKpAK4FbZwHmOw1kcmQVNWFSY5iUHV5YTVoslB/uAZ8MTYqZ6ziXzx+ucz3P7wDpDPCLi
+ c2LkUD/zZ5xaVd6m9rv1bI4i/w0sNHcZPZV0ibucYFJhO0OcfZDc+Rj0N7s7HBoXHXkBpI
+ NqKOP6nA9Ry3VoGjqkjebYd19zSj6SA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-379-gXpCWI0rND6kduz-dujNbg-1; Mon, 03 Feb 2020 09:00:46 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 47A4A90FF18;
+ Mon,  3 Feb 2020 14:00:42 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-90.gru2.redhat.com
+ [10.97.116.90])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0C02E909FB;
+ Mon,  3 Feb 2020 14:00:38 +0000 (UTC)
+Subject: Re: [PATCH 1/2] tests/acceptance: Extract boot_integratorcp() from
+ test_integratorcp()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200131211102.29612-1-f4bug@amsat.org>
+ <20200131211102.29612-2-f4bug@amsat.org>
+From: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Message-ID: <aa879b11-9c20-a867-e11a-02e4430fdd79@redhat.com>
+Date: Mon, 3 Feb 2020 12:00:37 -0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20200125171955.12825-7-eric.auger@redhat.com>
-X-MC-Unique: V1ZeBwASNsyF74Ttep1tYg-1
+In-Reply-To: <20200131211102.29612-2-f4bug@amsat.org>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: gXpCWI0rND6kduz-dujNbg-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -120,56 +112,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
- jean-philippe@linaro.org, quintela@redhat.com, qemu-devel@nongnu.org,
- dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- mst@redhat.com, eric.auger.pro@gmail.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, Cleber Rosa <crosa@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Nm4vgiBUN3jA
+X-TUID: WdCEWnVDLMb4
 
-On Sat, Jan 25, 2020 at 06:19:51PM +0100, Eric Auger wrote:
 
-[...]
+On 1/31/20 7:11 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> As we want to re-use this code, extract it as a new function.
+> Since we are using the PL011 serial console, add a Avocado tag
+> to ease filtering of tests.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>   tests/acceptance/machine_arm_integratorcp.py | 16 ++++++++++------
+>   1 file changed, 10 insertions(+), 6 deletions(-)
 
-> +static void virtio_iommu_report_fault(VirtIOIOMMU *viommu, uint8_t reaso=
-n,
-> +                                      int flags, uint32_t endpoint,
-> +                                      uint64_t address)
-> +{
-> +    VirtIODevice *vdev =3D &viommu->parent_obj;
-> +    VirtQueue *vq =3D viommu->event_vq;
-> +    struct virtio_iommu_fault fault;
-> +    VirtQueueElement *elem;
-> +    size_t sz;
+
+Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+
+
+>
+> diff --git a/tests/acceptance/machine_arm_integratorcp.py b/tests/accepta=
+nce/machine_arm_integratorcp.py
+> index 4f9ab40f2f..748819916d 100644
+> --- a/tests/acceptance/machine_arm_integratorcp.py
+> +++ b/tests/acceptance/machine_arm_integratorcp.py
+> @@ -19,12 +19,7 @@ class IntegratorMachine(Test):
+>  =20
+>       timeout =3D 90
+>  =20
+> -    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted co=
+de')
+> -    def test_integratorcp(self):
+> -        """
+> -        :avocado: tags=3Darch:arm
+> -        :avocado: tags=3Dmachine:integratorcp
+> -        """
+> +    def boot_integratorcp(self):
+>           kernel_url =3D ('https://github.com/zayac/qemu-arm/raw/master/'
+>                         'arm-test/kernel/zImage.integrator')
+>           kernel_hash =3D '0d7adba893c503267c946a3cbdc63b4b54f25468'
+> @@ -40,4 +35,13 @@ class IntegratorMachine(Test):
+>                            '-initrd', initrd_path,
+>                            '-append', 'printk.time=3D0 console=3DttyAMA0'=
+)
+>           self.vm.launch()
 > +
-> +    memset(&fault, 0, sizeof(fault));
-> +    fault.reason =3D reason;
-> +    fault.flags =3D cpu_to_le32(flags);
-> +    fault.endpoint =3D cpu_to_le32(endpoint);
-> +    fault.address =3D cpu_to_le64(address);
-> +
-> +    for (;;) {
-> +        elem =3D virtqueue_pop(vq, sizeof(VirtQueueElement));
-> +
-> +        if (!elem) {
-> +            error_report_once(
-> +                "no buffer available in event queue to report event");
-> +            return;
-> +        }
-> +
-> +        if (iov_size(elem->in_sg, elem->in_num) < sizeof(fault)) {
-> +            virtio_error(vdev, "error buffer of wrong size");
-> +            virtqueue_detach_element(vq, elem, 0);
-> +            g_free(elem);
-> +            return;
-> +        }
-> +        break;
-
-This for loop is not needed any more?  Other than that:
-
-Reviewed-by: Peter Xu <peterx@redhat.com>
-
---=20
-Peter Xu
+> +    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted co=
+de')
+> +    def test_integratorcp(self):
+> +        """
+> +        :avocado: tags=3Darch:arm
+> +        :avocado: tags=3Dmachine:integratorcp
+> +        :avocado: tags=3Ddevice:pl011
+> +        """
+> +        self.boot_integratorcp()
+>           wait_for_console_pattern(self, 'Log in as root')
 

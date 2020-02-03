@@ -1,214 +1,248 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4255264lfp;
-        Mon, 3 Feb 2020 10:20:04 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw+/8reIfvJwne9L0G6Ne6DENtqv+aScGNnCl1ikwXLCZVfaM7POnY1G4LWz+VyHSeHfEQb
-X-Received: by 2002:ae9:ec0a:: with SMTP id h10mr23248024qkg.303.1580754004474;
-        Mon, 03 Feb 2020 10:20:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580754004; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4279145lfp;
+        Mon, 3 Feb 2020 10:46:30 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz3U75dutOTIh8yeV2ATmR7ICLmDkYLwAYIhDtEHO7V/dWkyYxsWj1yj29UG7n0Wlozy/5T
+X-Received: by 2002:ae9:ebd8:: with SMTP id b207mr8598589qkg.353.1580755590827;
+        Mon, 03 Feb 2020 10:46:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580755590; cv=none;
         d=google.com; s=arc-20160816;
-        b=oOwFh3W3Ul/iy/Kcf3C+6PCA5U2zxEaQ5j+5EnPFENaWmt23NIXqXqCyfGPNCOtdJf
-         4q7FyEr0ql45HtXoEZnTAt4k3kX6IegZxwYxmzc/c4WHqeIURlvtQJ/sC13Uvt0kUPGw
-         UnweFU/dKQYZZT59p1o6rvtpOs/HkMBr6PXpmIfLsdWPxEZRl/sxC8H8T9HM3pKwRpXQ
-         9PxM0VF/FQQeO6hp6S+N1DzyjCj+Im8bKRvxx4HQTi4+3agxDqEx5gu8zsCQE4e/q5JE
-         OKK+3sqfKmz8RLIt1cgTMIvGHmldd/S4rZzWqzt223YFXnye7XJBdMw7kgT5sHD3JuI/
-         8NaA==
+        b=EDKWzrFT3iFjPRl8ewsJfWO/qMRE/47RUX3V4dYMrJsNvjo74SLAW6/Pf7oEF+R2DJ
+         zz0qK/pksv5JG79CNuSF3jLLBN22Ebbdc4BN6ijQ+yEsIF7ebf6fDQOobUZCFPtQSjdi
+         DuLg2PxtF5OW72GYfJf/410gO63uIWNvy/T4sSaB4a+jF9PoeaLMU1vxVWm7iAHKHDse
+         OkQcuYWdaq2V+RWJS9PIcZEtYbcm0ToGFA/jM6nBUd/Pq1frJJxaydBSIrmyUzthDocW
+         TvlcFoVwbD4tEcKPlKHxZ5KH/c/SBd635KH+hWtHAu7J3vIDtW5bxkQaLWJBhpnEAMgH
+         9G2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=3X9Ke/6lhCDOgaCdoimSHbklEKDhb4IMe/P+NV5GSW8=;
-        b=E1DO2uoKjckNmT+/77oY9wHGg4nANL1drcGxYCJX8o77atWh8dTFCgO6+5u52ICxfq
-         3jguBkpMrmL0/v2DnEeFBb3g2Dsg7eqNmRkQUCVjiVuc+OECy6r4su/N1Yt6qYHY3sHV
-         W/ZVBd4Q22O9I+2o/FCyDw3vzTZhpxPZCXVJXz+g7jIiUTS7CahXFKviCcR7qyWOQKO6
-         gIAPw9wmH6PJlu6yEE/VQZRRVb+9GehQLT16LdqrPP7FFPwwqZNNJp6CIbeiuPEA4hyr
-         lFbSU98IWollJR0oK8jlz9waLlMcMnplH8dgcw84yf2MZ8kuDokfO70HH2Iax9dJt6HM
-         A7kQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=z5jVWNOHWCY+eraD2JJMk+Tdfe0AGEFHy4MnViFqQTA=;
+        b=F7+NshDS6Yq0jQ+MnowhfoZMRiQXHzPWESRYL11/Sw2E0uqotfXF8zFK+U5AjJA5B3
+         wFGSCbSDwjXqK8Du9xc0RmkqywZKwSPPP7bwnGqhu0NKPE8WePF+HIU26a6k6k2Kho4r
+         J3V9os1/tt8hRbrUplWhPUr+CuKAt1cqtjGWG8tTgwHy0CiwEg4TiQ96+ZINKOCojusm
+         pH6+1z6E9iIpdjI58AcjV6rzWTVyOjXtfoblIFyEjfGU1K9XMANGZ1AawNaZ82/pjxpk
+         zIQ2ZSaUnPhsuJDg/fZ7vaJL1d2dQ5XUJjw//5etGIovpy5npN4Ci69I7rjIsleKpMSI
+         hYmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dthm8PUL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Df9UW8xs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m14si12392697qtu.118.2020.02.03.10.20.04
+        by mx.google.com with ESMTPS id w6si12010723qto.220.2020.02.03.10.46.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 10:20:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Feb 2020 10:46:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dthm8PUL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45578 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Df9UW8xs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45992 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iygKJ-0000PP-U7
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 13:20:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35462)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iygju-0007Zg-9M
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 13:46:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55620)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peterx@redhat.com>) id 1iygK8-0000P0-FX
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 13:19:54 -0500
+ (envelope-from <alistair23@gmail.com>) id 1iygj2-000787-1B
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 13:45:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peterx@redhat.com>) id 1iygK5-00021x-Lw
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 13:19:51 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:50670
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1iygK5-0001zH-9A
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 13:19:49 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580753988;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3X9Ke/6lhCDOgaCdoimSHbklEKDhb4IMe/P+NV5GSW8=;
- b=dthm8PULdQ283AzetRU/oUlmrj/0F51TpiS6qhSFYhHwvl6grKK9S3lPuoW4C4Xz0arN6v
- whcVrcB+NY3GoMZBeAAALfKKbR4BrchRh29XbdJHMLJGu7+jEY2DN/OeJlceaHbqq79cov
- 7enQ/ZzxxoNteG1jv0ZtnK8ovQjEKig=
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-308-kRZPmTHENDCO7nf4jFNhyg-1; Mon, 03 Feb 2020 13:19:43 -0500
-Received: by mail-qt1-f199.google.com with SMTP id l25so10527156qtu.0
- for <qemu-arm@nongnu.org>; Mon, 03 Feb 2020 10:19:43 -0800 (PST)
+ (envelope-from <alistair23@gmail.com>) id 1iygj0-0007uF-CV
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 13:45:35 -0500
+Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:42405)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1iygj0-0007qB-3q; Mon, 03 Feb 2020 13:45:34 -0500
+Received: by mail-lf1-x144.google.com with SMTP id y19so10426514lfl.9;
+ Mon, 03 Feb 2020 10:45:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=z5jVWNOHWCY+eraD2JJMk+Tdfe0AGEFHy4MnViFqQTA=;
+ b=Df9UW8xsa9AhH+7W9Id+Znk+jTS8It66gEvrKoumePSsBYA7W03vpvypAXeVUQac04
+ MhlAsilBa8Z6C056z1ZHlj15pwFq8ylpLD1FtviR2ioStNAZtCx1UB1YJrY6JMK9gcor
+ aB9nIuxzHFHwRSBJ2Ax+uruzWZ3mk8XluLuGZX6RhDhhKptC5vwExidGkGfBhbI3V4gT
+ +Whauf7zu3+ysMyqmgIWCm5hKXURx2xkUP2fUUTODoerZ4AghzHBWKnDpA14PYl9tuc7
+ wBq7ZdNcVvcx3MQMMCsH2ITip0d4esY4LZiFTmDplMe89gCUTEf0W5uGFpgdhGj0k1Xk
+ aiqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=fIm6vORCNJsGm/WnM7kjpe/TUdEBocbXhFHEzvxfb8c=;
- b=mEjdyLlx+jTAaxgvn7NagdiYFJ/r/sSIUcjMCQL4Ys7ikOwYar5RXJOv17Vk1KfR+N
- GspfeM+/3qUa8Klq2HWZJmnxTkHeROcCj8DIUUmVdC/1fxdnNot1TV2N2KTPJEm+Dz/u
- /fuPFHf8ENr8KjhjDUtMLowXGiKE0QGTA+3IoW6q2FGVFZqHL26Fwg0NFCnQc6u3l6js
- UsODJerlmEhQt78OAuSHbX2cLqPgBtWrqHlqzKpslUYbw8QBzz3pGukRIMjyk6CpIGrx
- Ce5DHMc0byVRdIq5bUbNkkacHSyXp78rRnQswhnnX5qdIlnOk5Cy3bFC3q0rSGaKzLHd
- JzMw==
-X-Gm-Message-State: APjAAAXPC49e4XWG+7nNH67kjXPZoArkzv1lMW8Q6J0jBZqrWsfLdyD1
- XykLLTznXRUfK8NqDzUTmI/9shuI0Yv8geGbPFtuyW7xYQLXUsJhItstGZyIp4XlzM+ihkcbMQa
- 5juO1PT26RTtD
-X-Received: by 2002:a05:620a:14bc:: with SMTP id
- x28mr24785036qkj.494.1580753982618; 
- Mon, 03 Feb 2020 10:19:42 -0800 (PST)
-X-Received: by 2002:a05:620a:14bc:: with SMTP id
- x28mr24785011qkj.494.1580753982340; 
- Mon, 03 Feb 2020 10:19:42 -0800 (PST)
-Received: from xz-x1 ([2607:9880:19c8:32::2])
- by smtp.gmail.com with ESMTPSA id f11sm9625207qkh.96.2020.02.03.10.19.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Feb 2020 10:19:41 -0800 (PST)
-Date: Mon, 3 Feb 2020 13:19:38 -0500
-From: Peter Xu <peterx@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Subject: Re: [PATCH v13 03/10] virtio-iommu: Implement attach/detach command
-Message-ID: <20200203181938.GE155875@xz-x1>
-References: <20200125171955.12825-1-eric.auger@redhat.com>
- <20200125171955.12825-4-eric.auger@redhat.com>
- <20200203134915.GA155875@xz-x1>
- <ce49f691-d944-2e5e-87a3-7e7c9651c2af@redhat.com>
- <20200203151917.GD155875@xz-x1>
- <5289913a-43fc-aaae-5b82-151922de93bf@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=z5jVWNOHWCY+eraD2JJMk+Tdfe0AGEFHy4MnViFqQTA=;
+ b=KfcJ3Loblfqfo8k6eE+cTrE1vodGjABk4ZE6ncPVjtg+5BetGZtuY5/3jwr2mgDJvO
+ tMc3ULDVidhEl6PStX45FEAcbyvwVC0Vr2g/YRFVUkryg8B7nrsDed2xHKppalq2lTE0
+ GFpw6/kRp8Macv6GkAtMsv5Rq6rc2YUT8RqMjkRi5ORnBH3MrC0dBPSh0Bh23gvCRvhF
+ ByO47Hw391Qlhs+XQxRBrW9W1jWfa7ax+fTcIRn9zCe1vdnRgSUCPvb4N8KoeJL/UUGo
+ 8sMx9+dHzqvvEfF7RKodRrisJ8IODTpI1mj3XODJVsRC81EHaRveXN6IUtea8mG+oyF5
+ ReBQ==
+X-Gm-Message-State: APjAAAU73aLTf4TqFs+jlrx0oNLwWbKr3YKwLvwoFFaVv3rdg0Eh+k5A
+ 5SSHvzqo+OvtJawiDP/QDb8Y9ojg/jW/wjfGZz8=
+X-Received: by 2002:a05:6512:15d:: with SMTP id
+ m29mr12963561lfo.51.1580755531549; 
+ Mon, 03 Feb 2020 10:45:31 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <5289913a-43fc-aaae-5b82-151922de93bf@redhat.com>
-X-MC-Unique: kRZPmTHENDCO7nf4jFNhyg-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+References: <20200203082619.7426-1-f4bug@amsat.org>
+ <20200203082619.7426-2-f4bug@amsat.org>
+In-Reply-To: <20200203082619.7426-2-f4bug@amsat.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 3 Feb 2020 10:38:24 -0800
+Message-ID: <CAKmqyKN_y660pVMWexeALGJx9KgaR=623Tex+15sq-_6GozhVQ@mail.gmail.com>
+Subject: Re: [PATCH 1/6] hw/arm/raspi: Use BCM2708 machine type with pre
+ Device Tree kernels
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::144
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
- quintela@redhat.com, mst@redhat.com, qemu-devel@nongnu.org,
- dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- jean-philippe@linaro.org, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nL2UXGpwqIMa
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Stephen Warren <swarren@nvidia.com>,
+ =?UTF-8?Q?Zolt=C3=A1n_Baldaszti?= <bztemail@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Jeremy Linton <lintonrjeremy@gmail.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Pete Batard <pete@akeo.ie>, Igor Mammedov <imammedo@redhat.com>,
+ Michael Chan <michael.chan@broadcom.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Pekka Enberg <penberg@iki.fi>, Kshitij Soni <kshitij.soni@broadcom.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DPqkWWUuqWyy
 
-On Mon, Feb 03, 2020 at 06:46:36PM +0100, Auger Eric wrote:
-> Hi Peter,
->=20
-> On 2/3/20 4:19 PM, Peter Xu wrote:
-> > On Mon, Feb 03, 2020 at 03:59:00PM +0100, Auger Eric wrote:
-> >=20
-> > [...]
-> >=20
-> >>>> +static void virtio_iommu_detach_endpoint_from_domain(VirtIOIOMMUEnd=
-point *ep)
-> >>>> +{
-> >>>> +    QLIST_REMOVE(ep, next);
-> >>>> +    g_tree_unref(ep->domain->mappings);
-> >>>
-> >>> Here domain->mapping is unreferenced for each endpoint, while at [1]
-> >>> below you only reference the domain->mappings if it's the first
-> >>> endpoint.  Is that problematic?
-> >> in [1] I take a ref to the domain->mappings if it is *not* the 1st
-> >> endpoint. This aims at deleting the mappings gtree when the last EP is
-> >> detached from the domain.
-> >>
-> >> This fixes the issue reported by Jean in:
-> >> https://patchwork.kernel.org/patch/11258267/#23046313
-> >=20
-> > Ah OK. :)
-> >=20
-> > However this is tricky.  How about do explicit g_tree_destroy() in
-> > virtio_iommu_detach() when it's the last endpoint?  I see that you
-> > have:
-> >=20
-> >     /*
-> >      * when the last EP is detached, simply remove the domain for
-> >      * the domain list and destroy it. Note its mappings were already
-> >      * freed by the ref count mechanism. Next operation involving
-> >      * the same domain id will re-create one domain object.
-> >      */
-> >     if (QLIST_EMPTY(&domain->endpoint_list)) {
-> >         g_tree_remove(s->domains, GUINT_TO_POINTER(domain->id));
-> >     }
-> >=20
-> > Then it becomes:
-> >=20
-> >     if (QLIST_EMPTY(&domain->endpoint_list)) {
-> >         g_tree_destroy(domain->mappings);
-> >         g_tree_remove(s->domains, GUINT_TO_POINTER(domain->id));
-> >     }
-> >=20
-> > And also remove the trick in attach() so you take the domain ref
-> > unconditionally.  Would that work?
-> Yes I think so. On the other hand this ref counting mechanism is also
-> made for that purpose of destroying objects without being forced to
-> explicitly call the destroy function.
+On Mon, Feb 3, 2020 at 12:28 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> When booting without device tree, the Linux kernels uses the $R1
+> register to determine the machine type. The list of values is
+> registered at [1].
+>
+> There are two entries for the Raspberry Pi:
+>
+> - https://www.arm.linux.org.uk/developer/machines/list.php?mid=3D3138
+>   name: MACH_TYPE_BCM2708
+>   value: 0xc42 (3138)
+>   status: Active, not mainlined
+>   date: 15 Oct 2010
+>
+> - https://www.arm.linux.org.uk/developer/machines/list.php?mid=3D4828
+>   name: MACH_TYPE_BCM2835
+>   value: 4828
+>   status: Active, mainlined
+>   date: 6 Dec 2013
+>
+> QEMU always used the non-mainlined type MACH_TYPE_BCM2708.
+> The value 0xc43 is registered to 'MX51_GGC' (processor i.MX51), and
+> 0xc44 to 'Western Digital Sharespace NAS' (processor Marvell 88F5182).
+>
+> The Raspberry Pi foundation bootloader only sets the BCM2708 machine
+> type, see [2] or [3]:
+>
+>  133 9:
+>  134     mov r0, #0
+>  135     ldr r1, =3D3138       @ BCM2708 machine id
+>  136     ldr r2, atags       @ ATAGS
+>  137     bx  r4
+>
+> U-Boot only uses MACH_TYPE_BCM2708 (see [4]):
+>
+>  25 /*
+>  26  * 2835 is a SKU in a series for which the 2708 is the first or prima=
+ry SoC,
+>  27  * so 2708 has historically been used rather than a dedicated 2835 ID=
+.
+>  28  *
+>  29  * We don't define a machine type for bcm2709/bcm2836 since the RPi F=
+oundation
+>  30  * chose to use someone else's previously registered machine ID (3139=
+, MX51_GGC)
+>  31  * rather than obtaining a valid ID:-/
+>  32  *
+>  33  * For the bcm2837, hopefully a machine type is not needed, since eve=
+rything
+>  34  * is DT.
+>  35  */
+>
+> While the definition MACH_BCM2709 with value 0xc43 was introduced in
+> a commit described "Add 2709 platform for Raspberry Pi 2" out of the
+> mainline Linux kernel, it does not seem used, and the platform is
+> introduced with Device Tree support anyway (see [5] and [6]).
+>
+> Remove the unused values (0xc43 introduced in commit 1df7d1f9303aef
+> "raspi: add raspberry pi 2 machine" and 0xc44 in commit bade58166f4
+> "raspi: Raspberry Pi 3 support"), keeping only MACH_TYPE_BCM2708.
+>
+> [1] https://www.arm.linux.org.uk/developer/machines/
+> [2] https://github.com/raspberrypi/tools/blob/920c7ed2e/armstubs/armstub7=
+.S#L135
+> [3] https://github.com/raspberrypi/tools/blob/49719d554/armstubs/armstub7=
+.S#L64
+> [4] https://gitlab.denx.de/u-boot/u-boot/blob/v2015.04/include/configs/rp=
+i-common.h#L18
+> [5] https://github.com/raspberrypi/linux/commit/d9fac63adac#diff-6722037d=
+79570df5b392a49e0e006573R526
+> [6] http://lists.infradead.org/pipermail/linux-rpi-kernel/2015-February/0=
+01268.html
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-IMHO that's two different things.  g_tree_destroy() should be the same
-as g_tree_unref() here when the tree is empty.  It's really a matter
-of easy reading of code:
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-void
-g_tree_destroy (GTree *tree)
-{
-  g_return_if_fail (tree !=3D NULL);
+Alistair
 
-  g_tree_remove_all (tree);
-  g_tree_unref (tree);
-}
-
-What we really changed here is to allow the ref/unref to be clearly
-paired, i.e., for each EP it'll ref once and unref once.  The prvious
-solution has the trick in that the 1st EP don't ref, the latter EPs
-ref, and when the domain quits it doesn't unref to match the first
-ref.  It's error prone to me.  Then, if we can do it in the paired way
-easily, I don't see why not...
-
-Thanks,
-
---=20
-Peter Xu
-
+> ---
+> Cc: Zolt=C3=A1n Baldaszti <bztemail@gmail.com>
+> Cc: Pekka Enberg <penberg@iki.fi>
+> Cc: Stephen Warren <swarren@nvidia.com>
+> Cc: Kshitij Soni <kshitij.soni@broadcom.com>
+> Cc: Michael Chan <michael.chan@broadcom.com>
+> Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>
+> Cc: Jeremy Linton <lintonrjeremy@gmail.com>
+> Cc: Pete Batard <pete@akeo.ie>
+> ---
+>  hw/arm/raspi.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index 3996f6c63a..ef76a27f33 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -29,8 +29,7 @@
+>  #define FIRMWARE_ADDR_3 0x80000 /* Pi 3 loads kernel.img here by default=
+ */
+>  #define SPINTABLE_ADDR  0xd8 /* Pi 3 bootloader spintable */
+>
+> -/* Table of Linux board IDs for different Pi versions */
+> -static const int raspi_boardid[] =3D {[1] =3D 0xc42, [2] =3D 0xc43, [3] =
+=3D 0xc44};
+> +#define MACH_TYPE_BCM2708   3138 /* Linux board IDs */
+>
+>  typedef struct RasPiState {
+>      BCM283XState soc;
+> @@ -116,7 +115,7 @@ static void setup_boot(MachineState *machine, int ver=
+sion, size_t ram_size)
+>      static struct arm_boot_info binfo;
+>      int r;
+>
+> -    binfo.board_id =3D raspi_boardid[version];
+> +    binfo.board_id =3D MACH_TYPE_BCM2708;
+>      binfo.ram_size =3D ram_size;
+>      binfo.nb_cpus =3D machine->smp.cpus;
+>
+> --
+> 2.21.1
+>
+>

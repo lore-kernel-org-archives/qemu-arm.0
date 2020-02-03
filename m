@@ -1,66 +1,65 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3333790lfp;
-        Sun, 2 Feb 2020 16:17:23 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz4TapBftsmf+KxUVOKTPcszXcS5O5zbBR2WctNWGUeOXiGW4m53CAsiHmnc35XEf4sev3C
-X-Received: by 2002:ac8:5048:: with SMTP id h8mr21196647qtm.328.1580689043696;
-        Sun, 02 Feb 2020 16:17:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580689043; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3333838lfp;
+        Sun, 2 Feb 2020 16:17:28 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwlf/zJBdKPAJRm7sbizDK+X1TITiJFx5u64EYfM4zSBPzsiGTGQwyr1uJ++TGb7A+2ATcQ
+X-Received: by 2002:a05:6214:9d2:: with SMTP id dp18mr20336398qvb.98.1580689047873;
+        Sun, 02 Feb 2020 16:17:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580689047; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dg8KIUuxTCZNnCBs2MjYNc6peO08MtSGiGragYos7Ger9Sfb5MEOSymdDEOQcHb698
-         ce1EwPtzMR0W9hXcpO+Ye+y7OUvicj/qWI9/+O26OcObRVsHSCKs8EREYKjEIuqal5HI
-         ohMIsj5yuR/0lt372l3kYPpz+qHraTTTOWLmNP6+AZFKz2o4eX6Kacwdc+ls094p/irF
-         jqeVYx2NAnSApBRQ/O3qBW+J4ESTnv3SACRfgMItsuovpf6ZUYRcClwYbo+rAki3M6GT
-         0I64sbDMK9VFjqyEfEE3RdWaUHYBN7hHjKa3FftS04QE6Fo8yJdKAIS7MgmNv3a7DAdo
-         T9Ug==
+        b=hfcD1LPLpCNQzmyeygz5E86TwarM2lqwOLpbsYBJNGTN8p/4r6sph+4HVOl0aZbYBy
+         KkYdW66ptwcqKJmaE+ju2YkIFGD0zwq8J08NyO4GbWq3JEbJQaKxE1GQMtKDKnZTq1Xb
+         aiK6XeC6doUuoWvXwcnigjHzaD7a7bvf9PAsN4AqW6rcugX/qT2Sy179x9aFFJcZDQTD
+         7fjh2aC/dmetunpdp4KF9v9uhsvt0WcMjiD3AKVMC5xr2FwbAnsuqetSOiA53biHweXg
+         ny2DopYibSttUS7PMmnHXP/YfbeqaeWjIMpVhg9kb/89LDLHXmP6racYAQl/TRWt2+Rh
+         kOVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=qt9gO2fPWg3/v14fnekAPcHan7Bvn6nC4zZHAfvMI4M=;
-        b=r+hBsJwzgPztfwNmzTsNX0OBdfobDXUiHJTR9EoekXG0xCG4Z9cL/8Uece7wfBpr0q
-         Co3+36NwY5v2tVJI34s9vHlWhYVbAollMCW6/lLPxyfcmZbYLJ/WmUOumGdrgbnDd50Z
-         QpbrLoZLw+oxXwiz2xYSVcGh54CrdUjbCffsbm7BcZL8MusSedno0/2cfcFsrzc5GW2X
-         hhw2TiGFZpQY+CNn82CPFdhSR5MDO6w01XdXQcI4Lk8uoopdohXTMsN1YBxJVtT4WOUQ
-         AT1Um+ASM+GNP2Dky8G/mJIrmQE6Sg9euNh3KCgKnAvx6ryaRdl2z/zYAda1IHOaZqof
-         UaZg==
+        bh=JNahfZfoVFXp1RPl/Kbo+5qfTxlDN82WA+D2qIoqqSI=;
+        b=FlcYDZ3mttwXfaETC4vmFjOEQKVDBWyZ8S7TFMzCc5c2tWovQkstxHveFxRjn/E+U9
+         gb6NaZj7BDsolU3MCgargU98bj/9ZlFcHZTrwbXp02bVfDPcIrcZCvMcAsICyBBBLpEU
+         NPzL7D/yfY6AVWST8qskLIq+yJfnDERoZeimdxzOKccyAxCrEWvfDitlV6D/tlE87tv4
+         yLmG7lizoEz9BVM9aQaGNW9R1g6h19LVvaTtAW4GIMWiFhQOYWbXm4Glr+wOdHdcwDI2
+         NJq6rcaGwva6Y87TFH3r8jYvZdZWunUQsVpHwdk5nHvDPpGmx8wBtGDHXDovMtBoDkIh
+         3AAw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j23si10593287qtq.221.2020.02.02.16.17.23
+        by mx.google.com with ESMTPS id n9si11454980qke.286.2020.02.02.16.17.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 Feb 2020 16:17:23 -0800 (PST)
+        Sun, 02 Feb 2020 16:17:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60702 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60708 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iyPQZ-0006lo-4h
-	for alex.bennee@linaro.org; Sun, 02 Feb 2020 19:17:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32958)
+	id 1iyPQd-0006t2-AT
+	for alex.bennee@linaro.org; Sun, 02 Feb 2020 19:17:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32984)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1iyPQP-0006jb-SO
- for qemu-arm@nongnu.org; Sun, 02 Feb 2020 19:17:14 -0500
+ (envelope-from <guoheyi@huawei.com>) id 1iyPQQ-0006kP-Nu
+ for qemu-arm@nongnu.org; Sun, 02 Feb 2020 19:17:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1iyPQO-000445-Ua
- for qemu-arm@nongnu.org; Sun, 02 Feb 2020 19:17:13 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:34610 helo=huawei.com)
+ (envelope-from <guoheyi@huawei.com>) id 1iyPQP-00045s-K1
+ for qemu-arm@nongnu.org; Sun, 02 Feb 2020 19:17:14 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2692 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1iyPQO-00041A-K8; Sun, 02 Feb 2020 19:17:12 -0500
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 85F2949815C5284A2986;
+ id 1iyPQP-00041C-9N; Sun, 02 Feb 2020 19:17:13 -0500
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 5E670FE6E6B5D5E7C80C;
  Mon,  3 Feb 2020 08:17:09 +0800 (CST)
 Received: from linux-TFkxOR.huawei.com (10.175.104.212) by
  DGGEMS413-HUB.china.huawei.com (10.3.19.213) with Microsoft SMTP Server id
- 14.3.439.0; Mon, 3 Feb 2020 08:17:01 +0800
+ 14.3.439.0; Mon, 3 Feb 2020 08:17:03 +0800
 From: Heyi Guo <guoheyi@huawei.com>
 To: <qemu-devel@nongnu.org>
-Subject: [PATCH v2 2/7] arm/virt/acpi: remove meaningless sub device "RP0"
- from PCI0
-Date: Mon, 3 Feb 2020 08:15:00 +0800
-Message-ID: <20200203001505.52573-3-guoheyi@huawei.com>
+Subject: [PATCH v2 4/7] arm/acpi: fix PCI _PRT definition
+Date: Mon, 3 Feb 2020 08:15:02 +0800
+Message-ID: <20200203001505.52573-5-guoheyi@huawei.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20200203001505.52573-1-guoheyi@huawei.com>
 References: <20200203001505.52573-1-guoheyi@huawei.com>
@@ -71,7 +70,7 @@ X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.32
+X-Received-From: 45.249.212.190
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,13 +89,14 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: h0WTYAHOzIoQ
+X-TUID: OzRDXnysKyS2
 
-The sub device "RP0" under PCI0 in ACPI/DSDT does not contain any
-method or property other than "_ADR", so it is safe to remove it.
+The address field in each _PRT mapping package should be constructed
+with high word for device# and low word for function#, so it is wrong
+to use bus_no as the high word. Enumerate all possible slots
+(i.e. PCI_SLOT_MAX) instead.
 
 Signed-off-by: Heyi Guo <guoheyi@huawei.com>
-Acked-by: "Michael S. Tsirkin" <mst@redhat.com>
 
 ---
 Cc: Peter Maydell <peter.maydell@linaro.org>
@@ -106,25 +106,41 @@ Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
 Cc: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org
 ---
- hw/arm/virt-acpi-build.c | 4 ----
- 1 file changed, 4 deletions(-)
+ hw/arm/virt-acpi-build.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index bd5f771e9b..9f4c7d1889 100644
+index be752c0ad8..5d157a9dd5 100644
 --- a/hw/arm/virt-acpi-build.c
 +++ b/hw/arm/virt-acpi-build.c
-@@ -317,10 +317,6 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemM=
-apEntry *memmap,
-     aml_append(method, aml_return(buf));
-     aml_append(dev, method);
+@@ -151,7 +151,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMa=
+pEntry *memmap,
+ {
+     int ecam_id =3D VIRT_ECAM_ID(highmem_ecam);
+     Aml *method, *crs, *ifctx, *UUID, *ifctx1, *elsectx, *buf;
+-    int i, bus_no;
++    int i, slot_no;
+     hwaddr base_mmio =3D memmap[VIRT_PCIE_MMIO].base;
+     hwaddr size_mmio =3D memmap[VIRT_PCIE_MMIO].size;
+     hwaddr base_pio =3D memmap[VIRT_PCIE_PIO].base;
+@@ -170,12 +170,12 @@ static void acpi_dsdt_add_pci(Aml *scope, const Mem=
+MapEntry *memmap,
+     aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
 =20
--    Aml *dev_rp0 =3D aml_device("%s", "RP0");
--    aml_append(dev_rp0, aml_name_decl("_ADR", aml_int(0)));
--    aml_append(dev, dev_rp0);
--
-     Aml *dev_res0 =3D aml_device("%s", "RES0");
-     aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));
-     crs =3D aml_resource_template();
+     /* Declare the PCI Routing Table. */
+-    Aml *rt_pkg =3D aml_varpackage(nr_pcie_buses * PCI_NUM_PINS);
+-    for (bus_no =3D 0; bus_no < nr_pcie_buses; bus_no++) {
++    Aml *rt_pkg =3D aml_varpackage(PCI_SLOT_MAX * PCI_NUM_PINS);
++    for (slot_no =3D 0; slot_no < PCI_SLOT_MAX; slot_no++) {
+         for (i =3D 0; i < PCI_NUM_PINS; i++) {
+-            int gsi =3D (i + bus_no) % PCI_NUM_PINS;
++            int gsi =3D (i + slot_no) % PCI_NUM_PINS;
+             Aml *pkg =3D aml_package(4);
+-            aml_append(pkg, aml_int((bus_no << 16) | 0xFFFF));
++            aml_append(pkg, aml_int((slot_no << 16) | 0xFFFF));
+             aml_append(pkg, aml_int(i));
+             aml_append(pkg, aml_name("GSI%d", gsi));
+             aml_append(pkg, aml_int(0));
 --=20
 2.19.1
 

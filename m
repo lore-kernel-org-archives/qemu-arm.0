@@ -1,107 +1,106 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp2094927lfp;
-        Sat, 1 Feb 2020 10:59:26 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxSQIwDKRK0yOYSgjDE8kNgEhHr05C0EtXqIp8kY4w+ck500xtGMne6dhUC4gdaaho24rAs
-X-Received: by 2002:aed:3e53:: with SMTP id m19mr16772168qtf.387.1580583566826;
-        Sat, 01 Feb 2020 10:59:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580583566; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4009293lfp;
+        Mon, 3 Feb 2020 06:22:27 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwQUjxFXp0kLs12G6ILS7zbIuoBe5ut2t1R4nK3v+8Sj+LWEw8JVRJEFojhoQD/aro0e6/L
+X-Received: by 2002:ac8:3853:: with SMTP id r19mr23977412qtb.69.1580739747358;
+        Mon, 03 Feb 2020 06:22:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580739747; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZphaukCLGXQELfQFxUthji0hjUV0O1g5fFz3Fv3KpwM8ZCoicXfoMeIvzXFxkhzVxe
-         J2elUtgDRKql1Uxer1A5rpBB8nu+GKzNPjPSxSF8tvQvMPEebk/XPwpsTZIiaIbAX/XJ
-         /najuMnW1YIQS2+odySNV9F3hGUsaGn1bKkL1AXVokB75Sl1TsUYBu5Kbq1aYKxsf58K
-         d6+ridZgSz4ZhD22gq+tD7mtzL3NvnrFE1vr+thHDKZbWmEFZGHp0oqeuYo97oGXGGaq
-         TgTd7IzUahhtiRpbtV0pqWuJ5uKCIMNuvQyOHnCQ3mAUMn5dIHnjtdCqb54IXDxTzmTx
-         IvOQ==
+        b=pGrbAmA1C2BF2cRndtGcGkny+3CMwfbBog0t4LLnKnhIavtkOm7ysOEC+ksdysDEnQ
+         ZspG6N68xeHmaj6gseM9YP4Iv6eP+M67n98VW4YWAmHvnswpIIOjgxaTXg8BoPhZjF4L
+         1ob9lPB13eif/Nodh4jdefl8XlX5xr/kZ4oe4LssvahGkQJPBdDU8l2KxUPqc5XjEQHh
+         xDxGOscOgzqgWG+Z8NmmCYehcxpb5w6tRuAE9KWZ8HHyJJaAu9H0XVrVceehNf026Frm
+         vSCzP21DVGPgD7NRk2I1SWIg7aW2338ATbaqI0GkyZQfg8w4IMZ26HJ/Y/ZTayCgXhHG
+         nuoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:openpgp:from:references:to:subject:dkim-signature;
-        bh=SbKXzlxS861qYnKuxhiYXJf7NHJSUbqTw3bvxwjcyfA=;
-        b=hHe3vYqJNXQsZNXxs4XIO/y9BW5e4QYq1t7Ipr9vFlM3XpmMZdJS5d717k6cjnzuKM
-         1kPH25EPGrjckcth6yX/s3bXA53z4jp9YdhAaUKuRSLzQhj6mYERPzP1d3YWVmy2nPyo
-         Ylc+4TTbqmEXm1fPuuhCdGblMtlaCdi+hn+FELMEINJJgIiMyQ/Fj5H7wbihPkWoWcEq
-         3gOs3XgqBwljR/HaJE6llTtXMzbuGZqkuMPcuVs4gr4391BfxnibD239VlZ+be+aI2RK
-         jziQCXy0Uc4NCv+6m9MCHLjK0tJKs6xkOT5qFnGWWXcCzv7NCl3j0fQhworXXOO0p35y
-         0G5g==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=8WOFrDlZIxe+YQ59pDQE+y1UgwqDQiC+KRZ1xvkUYUY=;
+        b=agKh6iw17sXZY9efJgAOODJs7cDqz2WLR86ZciLkZNlzgUH7k7v2kborQIwagiadii
+         unhM/n9Ull0sSyB4ZH56W0QHrS5Qjp5nRgoNuSHUcljZXJdGl47t4kWTppymAAsv/q4E
+         3RRkbACgDJc+vQtzDGT39yQSuoctru0QmivCBipJmbm+J7audrrunCtSUOgYDWaHNvWy
+         jBpfCIAQymjtdKTqmAMz/jYikI1T69o+REiKdeLUQsy421Or/+IaysQeAQ6+6Ln/GydL
+         E+4+Q3A8yilMcxQqrSgKmnV3DW3bjX1gi+4Xxja62e5NTRfZLLma2VDno9FqjrHUhaPC
+         35cQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="HICwM7/F";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E7VMhum7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w9si8447027qvj.17.2020.02.01.10.59.26
+        by mx.google.com with ESMTPS id w26si11264866qts.334.2020.02.03.06.22.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 01 Feb 2020 10:59:26 -0800 (PST)
+        Mon, 03 Feb 2020 06:22:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="HICwM7/F";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E7VMhum7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48790 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41774 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ixxzK-00005i-AY
-	for alex.bennee@linaro.org; Sat, 01 Feb 2020 13:59:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50294)
+	id 1iyccM-0007ub-Pw
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 09:22:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36132)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1ixxzC-00005L-4n
- for qemu-arm@nongnu.org; Sat, 01 Feb 2020 13:59:19 -0500
+ (envelope-from <wainersm@redhat.com>) id 1iyccF-0007ry-11
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:22:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1ixxzA-0005mf-Nq
- for qemu-arm@nongnu.org; Sat, 01 Feb 2020 13:59:17 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:42155
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <wainersm@redhat.com>) id 1iyccD-0004gn-IO
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:22:18 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:32652
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1ixxzA-0005lJ-KH
- for qemu-arm@nongnu.org; Sat, 01 Feb 2020 13:59:16 -0500
+ (Exim 4.71) (envelope-from <wainersm@redhat.com>) id 1iyccD-0004gf-FN
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:22:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580583554;
+ s=mimecast20190719; t=1580739737;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=SbKXzlxS861qYnKuxhiYXJf7NHJSUbqTw3bvxwjcyfA=;
- b=HICwM7/FJ6R76idrEPHh20RwLZqlQT22sW/nDRmiO8NDiBtup5JEHBCtK12UjjjBWjeZsR
- OhFbscy8STAcCt0pvdrCwZlrHRlZcicCBpCKI2zHvYWxjsa6+kLQ6YEkK4xnO+04AIi58s
- M7l20sImdw4cjMljXosLCnxhifHXHIs=
+ in-reply-to:in-reply-to:references:references;
+ bh=8WOFrDlZIxe+YQ59pDQE+y1UgwqDQiC+KRZ1xvkUYUY=;
+ b=E7VMhum7uEKttu05MOEBIdT+1Xt+YQxBnbHnyQ3vbC8vKUo9BFl5Bv4eEz6b2g5jMG+xSi
+ 0jW4mjeVgoKDXp6AL9oOctGIubaxD1Lt1Yer6bBxAsLedOTRrhngr2f6Y4ruPKvmClRUW4
+ MPm/OwJVKFLDWQ7U0aoyJ4iwkb5XBH8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-269-YjeDTNq5PWiULyeTSo5KxQ-1; Sat, 01 Feb 2020 13:59:13 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-61-SQulLM6PNiacNDhtsKEA8w-1; Mon, 03 Feb 2020 09:22:04 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2E9D5800D41;
- Sat,  1 Feb 2020 18:59:12 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-27.ams2.redhat.com [10.36.116.27])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0105B8BE25;
- Sat,  1 Feb 2020 18:59:02 +0000 (UTC)
-Subject: Re: [PATCH for-5.0 3/4] Remove the core bluetooth code
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <20191120091014.16883-1-thuth@redhat.com>
- <20191120091014.16883-4-thuth@redhat.com>
- <7a775153-f18d-e766-1d8f-33607f5fa05b@amsat.org>
- <2396dfd4-6c85-d17a-b358-bd058c757f14@redhat.com>
- <CAAdtpL7vPCQ8k91nvBWc_NLrmhu6OPVprUSL8uzi_v6HMiSrnw@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <1707e18a-6505-4efe-a85d-7525267bd72a@redhat.com>
-Date: Sat, 1 Feb 2020 19:59:00 +0100
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 87D4D108C253;
+ Mon,  3 Feb 2020 14:22:02 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-90.gru2.redhat.com
+ [10.97.116.90])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7B0BF2101;
+ Mon,  3 Feb 2020 14:21:54 +0000 (UTC)
+Subject: Re: [PATCH 1/1] tests/acceptance: Count Raspberry Pi logos displayed
+ on framebuffer
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200131232436.23548-1-f4bug@amsat.org>
+ <20200131232436.23548-2-f4bug@amsat.org>
+From: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Message-ID: <ad5d50ff-acc8-247f-74d9-7854605baaca@redhat.com>
+Date: Mon, 3 Feb 2020 12:21:53 -0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <CAAdtpL7vPCQ8k91nvBWc_NLrmhu6OPVprUSL8uzi_v6HMiSrnw@mail.gmail.com>
+In-Reply-To: <20200131232436.23548-2-f4bug@amsat.org>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: YjeDTNq5PWiULyeTSo5KxQ-1
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: SQulLM6PNiacNDhtsKEA8w-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -113,122 +112,158 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, libvir-list@redhat.com,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Cc: qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Cleber Rosa <crosa@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rlSan/mkqG6t
+X-TUID: VuoAFvmVFM7Y
 
-On 01/02/2020 19.53, Philippe Mathieu-Daud=C3=A9 wrote:
-> On Sat, Feb 1, 2020 at 7:51 PM Thomas Huth <thuth@redhat.com> wrote:
->> On 01/02/2020 17.09, Philippe Mathieu-Daud=C3=A9 wrote:
->>> On 11/20/19 10:10 AM, Thomas Huth wrote:
->>>> It's been deprecated since QEMU v3.1. We've explicitly asked in the
->>>> deprecation message that people should speak up on qemu-devel in case
->>>> they are still actively using the bluetooth part of QEMU, but nobody
->>>> ever replied that they are really still using it.
->>>>
->>>> I've tried it on my own to use this bluetooth subsystem for one of my
->>>> guests, but I was also not able to get it running anymore: When I was
->>>> trying to pass-through a real bluetooth device, either the guest did
->>>> not see the device at all, or the guest crashed.
->>>>
->>>> Even worse for the emulated device: When running
->>>>
->>>>  qemu-system-x86_64 -bt device:keyboard
->>>>
->>>> QEMU crashes once you hit a key.
->>>>
->>>> So it seems like the bluetooth stack is not only neglected, it is
->>>> completely bitrotten, as far as I can tell. The only attention that
->>>> this code got during the past years were some CVEs that have been
->>>> spotted there. So this code is a burden for the developers, without
->>>> any real benefit anymore. Time to remove it.
->>>>
->>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>>> ---
->>>>  Makefile.objs        |    2 -
->>>>  bt-host.c            |  198 ----
->>>>  bt-vhci.c            |  167 ----
->>>>  configure            |   31 -
->>>>  hw/Kconfig           |    1 -
->>>>  hw/Makefile.objs     |    1 -
->>>>  hw/bt/Kconfig        |    2 -
->>>>  hw/bt/Makefile.objs  |    3 -
->>>>  hw/bt/core.c         |  143 ---
->>>>  hw/bt/hci-csr.c      |  512 ----------
->>>>  hw/bt/hci.c          | 2263 -----------------------------------------=
--
->>>>  hw/bt/hid.c          |  553 -----------
->>>>  hw/bt/l2cap.c        | 1367 -------------------------
->>>>  hw/bt/sdp.c          |  989 ------------------
->>>>  include/hw/bt.h      | 2177 ----------------------------------------
->>>>  include/sysemu/bt.h  |   20 -
->>>>  qemu-deprecated.texi |    7 -
->>>>  qemu-options.hx      |   79 --
->>>>  vl.c                 |  136 ---
->>>>  19 files changed, 8651 deletions(-)
->>>>  delete mode 100644 bt-host.c
->>>>  delete mode 100644 bt-vhci.c
->>>>  delete mode 100644 hw/bt/Kconfig
->>>>  delete mode 100644 hw/bt/Makefile.objs
->>>>  delete mode 100644 hw/bt/core.c
->>>>  delete mode 100644 hw/bt/hci-csr.c
->>>>  delete mode 100644 hw/bt/hci.c
->>>>  delete mode 100644 hw/bt/hid.c
->>>>  delete mode 100644 hw/bt/l2cap.c
->>>>  delete mode 100644 hw/bt/sdp.c
->>>>  delete mode 100644 include/hw/bt.h
->>>>  delete mode 100644 include/sysemu/bt.h
->>>>
->>> [...]> diff --git a/configure b/configure
->>>> index 6099be1d84..ecce4ada2d 100755
->>>> --- a/configure
->>>> +++ b/configure
->>>> @@ -349,7 +349,6 @@ unset target_list_exclude
->>>>  # Distributions want to ensure that several features are compiled in,=
- and it
->>>>  # is impossible without a --enable-foo that exits if a feature is not=
- found.
->>>>
->>>> -bluez=3D""
->>>>  brlapi=3D""
->>>>  curl=3D""
->>>>  curses=3D""
->>>> @@ -1151,10 +1150,6 @@ for opt do
->>>>    ;;
->>>>    --enable-brlapi) brlapi=3D"yes"
->>>>    ;;
->>>> -  --disable-bluez) bluez=3D"no"
->>>> -  ;;
->>>> -  --enable-bluez) bluez=3D"yes"
->>>> -  ;;
->>>
->>> Now than I'm bisecting over this commit, I realize removing this
->>> option was not a good idea, we should have done like commit
->>> cb6414dfec8 or 315d3184525:
->>>
->>>   @@ -886,10 +885,6 @@ for opt do
->>>   -  --disable-uuid) uuid=3D"no"
->>>   -  ;;
->>>   -  --enable-uuid) uuid=3D"yes"
->>>   -  ;;
->>>   ...
->>>   +  --enable-uuid|--disable-uuid)
->>>   +      echo "$0: $opt is obsolete, UUID support is always built" >&2
->>>   +  ;;
->>
->> Looks trivial ... so if it bugs you, just send a patch?
->=20
-> I thought about it but this won't fix much, it is too late now.
->=20
-> I simply wanted to share this bugged me so we try to avoid doing the
-> same mistake again.
 
-Makes sense. I'll try to remember it for the future.
+On 1/31/20 9:24 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Add a test that verifies that each core properly displays the
+> Raspberry Pi logo on the framebuffer device.
+>
+> We simply follow the OpenCV "Template Matching with Multiple Objects"
+> tutorial, replacing Lionel Messi by a raspberrry:
+> https://docs.opencv.org/4.2.0/d4/dc6/tutorial_py_template_matching.html
+>
+> When OpenCV and NumPy are installed, this test can be run using:
+>
+>    $ avocado --show=3Dapp,framebuffer run -t device:bcm2835-fb tests/acce=
+ptance/
+>    JOB ID     : 9bbbc54c0a6fa180348d0b5305507f76852b4da2
+>    JOB LOG    : avocado/job-results/job-2020-01-31T23.48-9bbbc54/job.log
+>     (1/1) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_ar=
+m_raspi2_framebuffer_logo:
+>    framebuffer: found raspberry at position (x, y) =3D (0, 0)
+>    framebuffer: found raspberry at position (x, y) =3D (71, 0)
+>    framebuffer: found raspberry at position (x, y) =3D (142, 0)
+>    framebuffer: found raspberry at position (x, y) =3D (213, 0)
+>    PASS (11.06 s)
+>    RESULTS    : PASS 1 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0=
+ | CANCEL 0
+>    JOB TIME   : 11.39 s
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+> The resulting match can be visualised at https://pasteboard.co/ISzNHtx.pn=
+g
+> ---
+>   tests/acceptance/boot_linux_console.py | 62 ++++++++++++++++++++++++++
+>   1 file changed, 62 insertions(+)
+>
+> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/bo=
+ot_linux_console.py
+> index e40b84651b..4e69a83a12 100644
+> --- a/tests/acceptance/boot_linux_console.py
+> +++ b/tests/acceptance/boot_linux_console.py
+> @@ -12,6 +12,7 @@ import os
+>   import lzma
+>   import gzip
+>   import shutil
+> +import logging
+>  =20
+>   from avocado import skipUnless
+>   from avocado_qemu import Test
+> @@ -21,6 +22,19 @@ from avocado.utils import process
+>   from avocado.utils import archive
+>  =20
+>  =20
+> +NUMPY_AVAILABLE =3D True
+> +try:
+> +    import numpy as np
+> +except ImportError:
+> +    NUMPY_AVAILABLE =3D False
+> +
+> +CV2_AVAILABLE =3D True
+> +try:
+> +    import cv2
+> +except ImportError:
+> +    CV2_AVAILABLE =3D False
+> +
+> +
 
- Thomas
+
+Those Python packages are only needed by this new test case, and the=20
+test is likely to be moved to a separate file soon. So I suggest to put=20
+those availability checks inside the test method, so easing the future=20
+removal. And use self.cancel() to cancel the test (if the case).
+
+
+>   class BootLinuxConsole(Test):
+>       """
+>       Boots a Linux kernel and checks that the console is operational and=
+ the
+> @@ -360,6 +374,54 @@ class BootLinuxConsole(Test):
+>           """
+>           self.do_test_arm_raspi2(0)
+>  =20
+> +    @skipUnless(NUMPY_AVAILABLE, 'Python NumPy not installed')
+> +    @skipUnless(CV2_AVAILABLE, 'Python OpenCV not installed')
+> +    def test_arm_raspi2_framebuffer_logo(self):
+> +        """
+> +        :avocado: tags=3Darch:arm
+> +        :avocado: tags=3Dmachine:raspi2
+> +        :avocado: tags=3Ddevice:bcm2835-fb
+> +        """
+> +        screendump_path =3D os.path.join(self.workdir, 'screendump.pbm')
+> +        rpilogo_url =3D ('https://github.com/raspberrypi/linux/raw/'
+> +                       'raspberrypi-kernel_1.20190517-1/'
+> +                       'drivers/video/logo/logo_linux_clut224.ppm')
+> +        rpilogo_hash =3D 'fff3cc20c6030acce0953147f9baac43f44ed6b0'
+> +        rpilogo_path =3D self.fetch_asset(rpilogo_url, asset_hash=3Drpil=
+ogo_hash)
+> +        deb_url =3D ('http://archive.raspberrypi.org/debian/'
+> +                   'pool/main/r/raspberrypi-firmware/'
+> +                   'raspberrypi-kernel_1.20190215-1_armhf.deb')
+> +        deb_hash =3D 'cd284220b32128c5084037553db3c482426f3972'
+> +        deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
+> +        kernel_path =3D self.extract_from_deb(deb_path, '/boot/kernel7.i=
+mg')
+> +        dtb_path =3D self.extract_from_deb(deb_path, '/boot/bcm2709-rpi-=
+2-b.dtb')
+> +
+> +        self.vm.set_console()
+> +        kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
+> +                               'earlycon=3Dpl011,0x3f201000 console=3Dtt=
+yAMA0')
+> +        self.vm.add_args('-kernel', kernel_path,
+> +                         '-dtb', dtb_path,
+> +                         '-append', kernel_command_line)
+> +        self.vm.launch()
+> +        framebuffer_ready =3D 'Console: switching to colour frame buffer=
+ device'
+> +        wait_for_console_pattern(self, framebuffer_ready)
+> +        self.vm.command('human-monitor-command', command_line=3D'stop')
+> +        self.vm.command('human-monitor-command',
+> +                        command_line=3D'screendump %s' % screendump_path=
+)
+> +        logger =3D logging.getLogger('framebuffer')
+> +
+> +        cpu_cores_count =3D 4
+
+
+Won't this fail if host cpu cores are less than 4?
+
+
+Thanks!
+
+- Wainer
+
+> +        match_threshold =3D 0.95
+> +        screendump_bgr =3D cv2.imread(screendump_path, cv2.IMREAD_COLOR)
+> +        rpilogo_bgr =3D cv2.imread(rpilogo_path, cv2.IMREAD_COLOR)
+> +        result =3D cv2.matchTemplate(screendump_bgr, rpilogo_bgr,
+> +                                   cv2.TM_CCOEFF_NORMED)
+> +        loc =3D np.where(result >=3D match_threshold)
+> +        rpilogo_count =3D 0
+> +        for rpilogo_count, pt in enumerate(zip(*loc[::-1]), start=3D1):
+> +            logger.debug('found raspberry at position (x, y) =3D %s', pt=
+)
+> +        self.assertGreaterEqual(rpilogo_count, cpu_cores_count)
+> +
+>       def test_arm_exynos4210_initrd(self):
+>           """
+>           :avocado: tags=3Darch:arm
 

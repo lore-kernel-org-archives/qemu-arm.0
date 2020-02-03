@@ -1,102 +1,114 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4050590lfp;
-        Mon, 3 Feb 2020 07:02:20 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyGUa0K504omv3t4aRZdRwQusjz+zbaPRY5HmtjTALSh7lESnT0yFsHBMve2oqr5hVuoSVC
-X-Received: by 2002:a05:6214:209:: with SMTP id i9mr23153369qvt.54.1580742139491;
-        Mon, 03 Feb 2020 07:02:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580742139; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4070980lfp;
+        Mon, 3 Feb 2020 07:19:35 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxEuocGhu8GW/6+W5m8gypgHqt1W8CQ6jKdJ1KpASux1tgnm9p2VweVW8DW9ACJ0/7WmYb4
+X-Received: by 2002:a05:6214:14e3:: with SMTP id k3mr23089380qvw.215.1580743174880;
+        Mon, 03 Feb 2020 07:19:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580743174; cv=none;
         d=google.com; s=arc-20160816;
-        b=KxjH9u9zIp/qI4sBr/q0WfjeZEUMdmYUR8zro3mBoN9fnXvFTsRSixkwTyrBU9Sbna
-         QV6vFq1SdwF0tklpsJ5a3uvQ5wVYVZtYVQtCGHf8UOkp5ar1/IQmZYgcePTyuF1Lpy9o
-         /ZwxXM8kmo+V+S6q8q8kzCvyAr8D0yR/IzXIAoR2dLn1uNorgZTU3TjSE3UcEeBeItaU
-         c6tjNKB9Zre5fLjn6rCu2pUDfT4POjJdXt1XIA/aep1rTkg8X3g7cHs4C6uV71GClrWI
-         O0gxQOKqVJn0ItTnbc/EqWGqFSDM7FlxyB6TCFDuUt+fpsQ+Uyi52dqIIY9d8xeVqB93
-         W4nA==
+        b=fYL1UGBNoDC31O02tOjejOMvIrF7zLT/nIotvMCyiLAVFZIPnPZPiW3iwU04zZfOYS
+         ju/kn1mTSmA3PnjAe9IqPrUZRy/bvZAXjadY5Ms40eY30WRtjj9Nv1j9XJmWlBWlKLAk
+         JKgmUAtGHTKVql3D0z6QCzgYQAn+xsGhrwNgGSg0SSfDhH4y77O2SqWKAOvYALjGBLU8
+         q9iICVEIH3iZzk79YcP/VGJyYAEDPsB3PxqJsMO27VPxWeCr07GnXdyjDXCV2wDjfnn3
+         ldgCduGwP/MtMk8z4n5tQdIi6maHk05V5yGMhL+t6K9TMhV4ByrdzD0MlagxIK6ebaaP
+         aZxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=f1tdHEbL0o7WKYp4BEXVNY/iTYjFAcPjYJ0lzwgsDes=;
-        b=dIJWDF+rz6+ZKNgcQ/kI0I/4WmHVRDwH90t1JUI9IaK+c1zE4CNwcajfIx1hUdSpob
-         7la5bw/tGc7eETV3lRrvpraiDskkEGN6XbULqAgE6IZQuK0jw4eI0kYY/PLgIF6KeNiP
-         GXnKCOQJxjmuOst4QuZva9rbXmyDC4xkcRLmftG8iWWj7JWDmLCX0vJardEczAq+Xsg3
-         wExtw6JdFwUw2C47iQeOoUAXz701fDrUACpyxulj2lbdMp5HymBvRKsh23s2bUH/Xfrs
-         0MTpn/2q7ADvcHfuYmnpTxVuDr93eQ9DeRp5J1tMsU0/YQP+SWBn09s11EkxY4n6DFFl
-         IhqA==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=RlFIj4DI9wFk+wxoebdBLLHLRZp8ZSyr2deFmmZbems=;
+        b=bKO+qfjX2tzJAGzFrjFCqnfceKp2OwedW4dCF3OBi8X40JwDt5zj1uD95ojUDNmmc/
+         dur3v2ePIcnUyaRiM9A0pA6I2HVO4zLO7DaLKXBTugtxw632ulnitoCyA5ymX4XlBOD7
+         7krTO8h8K8UVsrA1V9vHAyOHSVCS5+2I46NB1b6CN1BcgV+5Prru+9yxrMxoTmHldupE
+         C/jJSYmGpsv8KW82Udfc2YWzNUI8LBbwnkX3Ga/NHShOFYiFo11JF9kEIuuNg1jUvpYc
+         dD1YUo+fwAXML9k61/AVBCmAY5MCadch+IFprPEHCVzTW6Xo3zav+YPuo/IFXUHNLSxJ
+         2uTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IgWMvPIb;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IaEOFscW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w1si11129840qvh.182.2020.02.03.07.02.19
+        by mx.google.com with ESMTPS id 67si11446106qtg.124.2020.02.03.07.19.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 07:02:19 -0800 (PST)
+        Mon, 03 Feb 2020 07:19:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IgWMvPIb;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IaEOFscW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42814 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43206 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iydEw-0007j9-Pb
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 10:02:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48665)
+	id 1iydVe-0002MU-Ar
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 10:19:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55631)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1iydEZ-0007HL-Lu
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 10:02:00 -0500
+ (envelope-from <peterx@redhat.com>) id 1iydVV-0002Jg-54
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 10:19:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1iydEY-00027d-JD
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 10:01:55 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:25959
+ (envelope-from <peterx@redhat.com>) id 1iydVU-0001Ft-1r
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 10:19:25 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:53118
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1iydEY-00027R-FS
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 10:01:54 -0500
+ (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1iydVT-0001E0-RJ
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 10:19:23 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580742114;
+ s=mimecast20190719; t=1580743163;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=f1tdHEbL0o7WKYp4BEXVNY/iTYjFAcPjYJ0lzwgsDes=;
- b=IgWMvPIbOwBxGaC4RET9ew8V+b3MISr2yggPc9UjhnWn5u0ttvBvmrqiP2lGhkUhZb/ZQo
- TH2tuhthph8zCl8m7DJ1nozyOF1/nXwIY7Fr0wTo9lRCTx1wOc/gf0f6yUD/5i8z+7G4bg
- cMHHy8Ns0rvLeyXFiThMtaDNEA73h3Q=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-233-wL-26xFaPEa2XdlG68MuBw-1; Mon, 03 Feb 2020 10:01:52 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0E4E11903CA9;
- Mon,  3 Feb 2020 15:01:50 +0000 (UTC)
-Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1C7BC60BE2;
- Mon,  3 Feb 2020 15:01:42 +0000 (UTC)
-Subject: Re: [PATCH v13 06/10] virtio-iommu: Implement fault reporting
-To: Peter Xu <peterx@redhat.com>
+ bh=RlFIj4DI9wFk+wxoebdBLLHLRZp8ZSyr2deFmmZbems=;
+ b=IaEOFscWDKWI2A2G6H3PFapcZjnLj8aIEJiHAZ4Lh2b0klYTeqnrdrpdZIyMYJO9l2yPwW
+ LWFvTHvbDZSGd+YthG/+XE5JTk0HgA3TQ2tfPD3yd/Y46n4kRCPwSNE+QZVVbo3v9bVQnc
+ 2cDhBc+bso5VG/aSdhhBl/1QZyq4EjQ=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-427-ORLcUUdVMJm-exyfu4XWXQ-1; Mon, 03 Feb 2020 10:19:21 -0500
+Received: by mail-qk1-f198.google.com with SMTP id m13so9643544qka.9
+ for <qemu-arm@nongnu.org>; Mon, 03 Feb 2020 07:19:21 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=rJ3sKqXuDt9hRqfvlS1b0ePFFWqQ5OZ6wqtBD+VGOGY=;
+ b=iIjUvifkdvcD6r912RTrtvFfkjv+XiVWL0SoLemr0h1wgECwMgP+35FkR2k60E/3I0
+ aOQopFJl3nA7OCXJ3UKlU8YocaBXV7dwDLB6MharJeA7s3Kq9eoWatXwnur1gsisqi+m
+ 1z1Y/37Fm/08+fwwoTGaDN38m3hpqrzRD6vsK12Vk3s9T2+JRkV0vPWATv/0T9qs6UT7
+ RVC0gO9Ns5kb9xUbLV1nBixwGDKWQQCmKyXz9K3osaXj7RGurp8kp8v8Gn4u7u53vO/M
+ tJLoVg3BT2bWBQLmra0/ck2VlStTpwLMPJ3jbrpWeZ7+wQ2+/AOByom2NHcZbEe08h67
+ GlRQ==
+X-Gm-Message-State: APjAAAWqNAQNdBpZn6kNioTtPgCGQjg9i3fjqllcIyMR912E2Yrkyu0S
+ fQFUmbdWvG0j0/knZlVuttGv13JpRgtSOWOqHf6jdWDbs0dJ6uTJyARU1nTLGPt5oUuKRPeLxty
+ v4VU9ObtAsg0i
+X-Received: by 2002:ae9:f408:: with SMTP id y8mr23059168qkl.97.1580743161063; 
+ Mon, 03 Feb 2020 07:19:21 -0800 (PST)
+X-Received: by 2002:ae9:f408:: with SMTP id y8mr23059134qkl.97.1580743160784; 
+ Mon, 03 Feb 2020 07:19:20 -0800 (PST)
+Received: from xz-x1 ([2607:9880:19c8:32::2])
+ by smtp.gmail.com with ESMTPSA id r13sm9802840qtt.70.2020.02.03.07.19.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 03 Feb 2020 07:19:20 -0800 (PST)
+Date: Mon, 3 Feb 2020 10:19:17 -0500
+From: Peter Xu <peterx@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Subject: Re: [PATCH v13 03/10] virtio-iommu: Implement attach/detach command
+Message-ID: <20200203151917.GD155875@xz-x1>
 References: <20200125171955.12825-1-eric.auger@redhat.com>
- <20200125171955.12825-7-eric.auger@redhat.com>
- <20200203135503.GC155875@xz-x1>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <9797ddd6-f77f-c461-5584-fdfb3d90b92a@redhat.com>
-Date: Mon, 3 Feb 2020 16:01:40 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ <20200125171955.12825-4-eric.auger@redhat.com>
+ <20200203134915.GA155875@xz-x1>
+ <ce49f691-d944-2e5e-87a3-7e7c9651c2af@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200203135503.GC155875@xz-x1>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: wL-26xFaPEa2XdlG68MuBw-1
+In-Reply-To: <ce49f691-d944-2e5e-87a3-7e7c9651c2af@redhat.com>
+X-MC-Unique: ORLcUUdVMJm-exyfu4XWXQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 207.211.31.81
@@ -112,60 +124,61 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
- jean-philippe@linaro.org, quintela@redhat.com, qemu-devel@nongnu.org,
+ quintela@redhat.com, mst@redhat.com, qemu-devel@nongnu.org,
  dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- mst@redhat.com, eric.auger.pro@gmail.com
+ jean-philippe@linaro.org, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Lx5pBwvY0hZl
+X-TUID: TbAv/ryPvrgp
 
-Hi Peter,
+On Mon, Feb 03, 2020 at 03:59:00PM +0100, Auger Eric wrote:
 
-On 2/3/20 2:55 PM, Peter Xu wrote:
-> On Sat, Jan 25, 2020 at 06:19:51PM +0100, Eric Auger wrote:
-> 
-> [...]
-> 
->> +static void virtio_iommu_report_fault(VirtIOIOMMU *viommu, uint8_t reason,
->> +                                      int flags, uint32_t endpoint,
->> +                                      uint64_t address)
->> +{
->> +    VirtIODevice *vdev = &viommu->parent_obj;
->> +    VirtQueue *vq = viommu->event_vq;
->> +    struct virtio_iommu_fault fault;
->> +    VirtQueueElement *elem;
->> +    size_t sz;
->> +
->> +    memset(&fault, 0, sizeof(fault));
->> +    fault.reason = reason;
->> +    fault.flags = cpu_to_le32(flags);
->> +    fault.endpoint = cpu_to_le32(endpoint);
->> +    fault.address = cpu_to_le64(address);
->> +
->> +    for (;;) {
->> +        elem = virtqueue_pop(vq, sizeof(VirtQueueElement));
->> +
->> +        if (!elem) {
->> +            error_report_once(
->> +                "no buffer available in event queue to report event");
->> +            return;
->> +        }
->> +
->> +        if (iov_size(elem->in_sg, elem->in_num) < sizeof(fault)) {
->> +            virtio_error(vdev, "error buffer of wrong size");
->> +            virtqueue_detach_element(vq, elem, 0);
->> +            g_free(elem);
->> +            return;
->> +        }
->> +        break;
-> 
-> This for loop is not needed any more?  Other than that:
-hum yes indeed.
-> 
-> Reviewed-by: Peter Xu <peterx@redhat.com>
+[...]
 
-Thanks!
+> >> +static void virtio_iommu_detach_endpoint_from_domain(VirtIOIOMMUEndpo=
+int *ep)
+> >> +{
+> >> +    QLIST_REMOVE(ep, next);
+> >> +    g_tree_unref(ep->domain->mappings);
+> >=20
+> > Here domain->mapping is unreferenced for each endpoint, while at [1]
+> > below you only reference the domain->mappings if it's the first
+> > endpoint.  Is that problematic?
+> in [1] I take a ref to the domain->mappings if it is *not* the 1st
+> endpoint. This aims at deleting the mappings gtree when the last EP is
+> detached from the domain.
+>=20
+> This fixes the issue reported by Jean in:
+> https://patchwork.kernel.org/patch/11258267/#23046313
 
-Eric
-> 
+Ah OK. :)
+
+However this is tricky.  How about do explicit g_tree_destroy() in
+virtio_iommu_detach() when it's the last endpoint?  I see that you
+have:
+
+    /*
+     * when the last EP is detached, simply remove the domain for
+     * the domain list and destroy it. Note its mappings were already
+     * freed by the ref count mechanism. Next operation involving
+     * the same domain id will re-create one domain object.
+     */
+    if (QLIST_EMPTY(&domain->endpoint_list)) {
+        g_tree_remove(s->domains, GUINT_TO_POINTER(domain->id));
+    }
+
+Then it becomes:
+
+    if (QLIST_EMPTY(&domain->endpoint_list)) {
+        g_tree_destroy(domain->mappings);
+        g_tree_remove(s->domains, GUINT_TO_POINTER(domain->id));
+    }
+
+And also remove the trick in attach() so you take the domain ref
+unconditionally.  Would that work?
+
+Thanks,
+
+--=20
+Peter Xu
 

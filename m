@@ -1,106 +1,103 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3984127lfp;
-        Mon, 3 Feb 2020 06:01:18 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwaZMqfZvdKrrUUn2jdkQaOhi4BXzNK0DsSAuHM1UYMM1xAK7hYRm5EHWFDOoKKu/m3xX/b
-X-Received: by 2002:a37:7bc7:: with SMTP id w190mr23679406qkc.193.1580738478488;
-        Mon, 03 Feb 2020 06:01:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580738478; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3988215lfp;
+        Mon, 3 Feb 2020 06:04:15 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzWkbnoPEKnRPj2vGA/y0epvOsvc+u+FzL0eePIaYXpEIs9yv5J1k2mMfcqXTan5nbwZU3Z
+X-Received: by 2002:ac8:1e8e:: with SMTP id c14mr22254825qtm.330.1580738655527;
+        Mon, 03 Feb 2020 06:04:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580738655; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y/XxcWIOXuXBFb8bA4YKcWpkPQnc0jOFbrHimbX0IixjYZIIkg0jOYefpwwyK+uCr+
-         i2bVwol7mFYCvEVpn26qETqBJh3JoX4IZCrQhQHJeQt/GIOf9sD2/1o0CpQ0lpIqwy77
-         aTcv1/gf3JpqJGdvspGm9W5S5Kzg5k3mojuPAM/3GI4vGwFhEyVfB+eZNlhFCL4+bvUu
-         fds0pmJnxvD93ax+Xm9ruHJgOL9kU76lA/B5QO9JeTq/STGIqYmBuBVSnSO2c/ErxxUW
-         XwkgmLKdEqRKzb9G4Ye3SHTEIgn0n5tdiTfWJlZ7C7vPv1nkFWc91mcuquhKrD09Apeh
-         LoWA==
+        b=IGQXKPBNp/tyh4/CJoGPZ/OvbiTMcGAckLx7ML1jVaFM+1aPZZPIaV6czq0az1zO5N
+         F07juMfdlwldZwyV+F6ddVh2GDKIkVg5+o53EWv0jp3w5sFMtVmmfk8CXBVcRUtHW//t
+         HEwFVQ9zHwRoE9QhgKrcK2cAuaZGUzjriqo8rJkF02iyM8Kl/OJHbQbpYP3952x0tWi3
+         YirCU6dioHPo5er4CyQLPTk5V6zhAWN+vPUWHQbV7oyIxbYghH4hFkU2+RnjonCkM7+M
+         EA3LX2DKJ1ZXXVyG/HMou10ewaK3073Yf4Ibb4WVja7YFCrwMnOaMt0z/K+ICwXX/exC
+         41tQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=T2K7P3shSIytlWN24FuWBQryMjmxMWHPxy/O94Jb/Qk=;
-        b=P10tRzGSAOJTsIdulvXw8ZdVKf2HLl9XIahRSqV+GT4JKiCe1Bnk7leOJUyPhckyxS
-         xGU1DfaN6+40NUekJEYcBzY/o57Jr4sant3/P+ZQruI/XoEryUN9b40KnaiKoU46RLMj
-         tQl7/ZYme/wHfvINy7DJ7lHr6LUf/KyvxkxR0v6ZL2PGAa97LAgTswSST8dzwf5kug4b
-         5pLi/klAQ9Iu+abBGsFMlaUQDBmTBi9lrJnVRUrHhEDuMMPspALFU0jzif7XcigHtgRD
-         DU9c6WpKB8NlgisDZU7BZRI3Rhw3Sj9vGZIWRTALTlUnT+3NrrcfzYn+L9p8VHR/5xKJ
-         KMgw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=g47PT5lt/iJyYcUt6t9a4d2giehtZw2lN1sbG54X8jE=;
+        b=Ldj2VTyjgjmpzP48eSndfsMf5107YAZM7IV4uYPz/HBhH0By//8rxi9yzX8bROnDXl
+         Z+sv1qtZ/V7TupOKmbTWMGpufiyZw11PNnMiJvaTHRtmNudR2jprhNa73IqsGpmqhGmT
+         MT5d+Ngg6fABP4fr2TQImUB6lxmuiqSRy3LRvUHKIto4gb448YZpkP1KRubua+3i7yU2
+         cX7tdIrS7eVyXxrh9s7YUAkCDjnBb+h2RSgrADiEZf1p7bl1VSkPs7FHxwxHgqqH3UZq
+         eIFTStDcAGtS/f5Yzq4XP3C6vJisQaroSAyFwh/AbXCPir1A/VkxaapQkxKVoRTz5nBu
+         lO+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OaKpAK4F;
+       dkim=fail header.i=@linaro.org header.s=google header.b=h4yNt754;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n7si13066637qtl.44.2020.02.03.06.01.18
+        by mx.google.com with ESMTPS id a188si11786276qke.248.2020.02.03.06.04.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 06:01:18 -0800 (PST)
+        Mon, 03 Feb 2020 06:04:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OaKpAK4F;
+       dkim=fail header.i=@linaro.org header.s=google header.b=h4yNt754;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41276 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41368 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iycHt-00012S-UP
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 09:01:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57587)
+	id 1iycKk-0004c2-Uz
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 09:04:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58540)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wainersm@redhat.com>) id 1iycHj-00010f-L5
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:01:08 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1iycK4-0003t1-Bm
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:03:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <wainersm@redhat.com>) id 1iycHi-0004dJ-Aq
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:01:07 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:33717
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <wainersm@redhat.com>) id 1iycHi-0004a8-7K
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:01:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580738464;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=T2K7P3shSIytlWN24FuWBQryMjmxMWHPxy/O94Jb/Qk=;
- b=OaKpAK4FbZwHmOw1kcmQVNWFSY5iUHV5YTVoslB/uAZ8MTYqZ6ziXzx+ucz3P7wDpDPCLi
- c2LkUD/zZ5xaVd6m9rv1bI4i/w0sNHcZPZV0ibucYFJhO0OcfZDc+Rj0N7s7HBoXHXkBpI
- NqKOP6nA9Ry3VoGjqkjebYd19zSj6SA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-379-gXpCWI0rND6kduz-dujNbg-1; Mon, 03 Feb 2020 09:00:46 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 47A4A90FF18;
- Mon,  3 Feb 2020 14:00:42 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-90.gru2.redhat.com
- [10.97.116.90])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0C02E909FB;
- Mon,  3 Feb 2020 14:00:38 +0000 (UTC)
-Subject: Re: [PATCH 1/2] tests/acceptance: Extract boot_integratorcp() from
- test_integratorcp()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200131211102.29612-1-f4bug@amsat.org>
- <20200131211102.29612-2-f4bug@amsat.org>
-From: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Message-ID: <aa879b11-9c20-a867-e11a-02e4430fdd79@redhat.com>
-Date: Mon, 3 Feb 2020 12:00:37 -0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ (envelope-from <peter.maydell@linaro.org>) id 1iycK2-0007bo-M5
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:03:32 -0500
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:37935)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iycK2-0007bE-Fb
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:03:30 -0500
+Received: by mail-ot1-x344.google.com with SMTP id z9so13696264oth.5
+ for <qemu-arm@nongnu.org>; Mon, 03 Feb 2020 06:03:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=g47PT5lt/iJyYcUt6t9a4d2giehtZw2lN1sbG54X8jE=;
+ b=h4yNt754J9oq9dRlRUyCU5FsT9uUKfxsBS0w+jAhRlB6lXhOd1eA98BTjJbustxZPb
+ cjFx/lLT0kaxJyZJ4iBagN/Pr5m16qD6x/hLAiSjfZDrRLIv0ju2gZ9LmT8Fgtj4XS2D
+ meDg2M1MPj4jtMaBZi1Vq6E6UAEl1hrARLjGo7YnhGe3/fWq2pscaZwLAYOc+f7QgWrb
+ 0Y/UXvB+nXH61znESX5XBxRKiZ7VEtBEINEUiP4oQrSWjk0ZfdmzirlXG/SGJnTXyopd
+ o7ZYCjX0kRQv798DJVSgYLO8ivYHsvBfwKliAWj5L+okqBM5vK6xOl5EryemyXw+a5A4
+ nncg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=g47PT5lt/iJyYcUt6t9a4d2giehtZw2lN1sbG54X8jE=;
+ b=cFMnhQLjCnhZvqq5/hPNGEzMExozFGw5llO/UyicQEdOV3FKv5JTTZUTFMp+Ei3PBn
+ hpTso5Js3xAPFfIWftugw/T31AWQkoi9xywy3sLqW5yjCmibzOerFzpswdFZbzSp0yAa
+ nKsGeIZ+A1QiF9TsBakn0RyUelKDrCpVwDKA0W+LenNcsyPtz77n01sTj9hTv5Qh9E8O
+ SKkKtRx8J1/kCOQAJbgJ9+5YEgoPxT7zlSKHQ8vlZj373a+ZJ1PBcvXjj4+iMyJLeNRm
+ 3IsrkBR+JUJw4GWF5OlsKjSJeabNVowYqRLXyLX/nR4DYCuY6WqDk87UVyV7OoqtSJzu
+ XCgA==
+X-Gm-Message-State: APjAAAX/m8oUfuGiOvPTnfimdzT1tZqnUvXGTNYD3M47x3f2maAsYDNc
+ 4mJxENC+6eG+GxvJEZb55Z0sxPYext8NzhOoSYEsrg==
+X-Received: by 2002:a05:6830:13da:: with SMTP id
+ e26mr16817164otq.97.1580738609492; 
+ Mon, 03 Feb 2020 06:03:29 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200131211102.29612-2-f4bug@amsat.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: gXpCWI0rND6kduz-dujNbg-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+References: <20200203001505.52573-1-guoheyi@huawei.com>
+ <20200203014246-mutt-send-email-mst@kernel.org>
+ <455d16a4-e7b6-af9b-0b7e-43be70e22f7b@huawei.com>
+In-Reply-To: <455d16a4-e7b6-af9b-0b7e-43be70e22f7b@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 3 Feb 2020 14:03:18 +0000
+Message-ID: <CAFEAcA_g3XXnxiV2O37zpj7gw8For042hg0Vau44qm=ByOuXdw@mail.gmail.com>
+Subject: Re: [PATCH v2 0/7] Some cleanup in arm/virt/acpi
+To: Heyi Guo <guoheyi@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::344
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,64 +109,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Cleber Rosa <crosa@redhat.com>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Igor Mammedov <imammedo@redhat.com>, wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WdCEWnVDLMb4
+X-TUID: HYc2LftGnd+G
 
-
-On 1/31/20 7:11 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> As we want to re-use this code, extract it as a new function.
-> Since we are using the PL011 serial console, add a Avocado tag
-> to ease filtering of tests.
+On Mon, 3 Feb 2020 at 13:33, Heyi Guo <guoheyi@huawei.com> wrote:
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->   tests/acceptance/machine_arm_integratorcp.py | 16 ++++++++++------
->   1 file changed, 10 insertions(+), 6 deletions(-)
-
-
-Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-
-
 >
-> diff --git a/tests/acceptance/machine_arm_integratorcp.py b/tests/accepta=
-nce/machine_arm_integratorcp.py
-> index 4f9ab40f2f..748819916d 100644
-> --- a/tests/acceptance/machine_arm_integratorcp.py
-> +++ b/tests/acceptance/machine_arm_integratorcp.py
-> @@ -19,12 +19,7 @@ class IntegratorMachine(Test):
->  =20
->       timeout =3D 90
->  =20
-> -    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted co=
-de')
-> -    def test_integratorcp(self):
-> -        """
-> -        :avocado: tags=3Darch:arm
-> -        :avocado: tags=3Dmachine:integratorcp
-> -        """
-> +    def boot_integratorcp(self):
->           kernel_url =3D ('https://github.com/zayac/qemu-arm/raw/master/'
->                         'arm-test/kernel/zImage.integrator')
->           kernel_hash =3D '0d7adba893c503267c946a3cbdc63b4b54f25468'
-> @@ -40,4 +35,13 @@ class IntegratorMachine(Test):
->                            '-initrd', initrd_path,
->                            '-append', 'printk.time=3D0 console=3DttyAMA0'=
-)
->           self.vm.launch()
-> +
-> +    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted co=
-de')
-> +    def test_integratorcp(self):
-> +        """
-> +        :avocado: tags=3Darch:arm
-> +        :avocado: tags=3Dmachine:integratorcp
-> +        :avocado: tags=3Ddevice:pl011
-> +        """
-> +        self.boot_integratorcp()
->           wait_for_console_pattern(self, 'Log in as root')
+> =E5=9C=A8 2020/2/3 14:43, Michael S. Tsirkin =E5=86=99=E9=81=93:
+> > On Mon, Feb 03, 2020 at 08:14:58AM +0800, Heyi Guo wrote:
+> >> Remove conflict _ADR objects, and fix and refine PCI device definition=
+ in
+> >> ACPI/DSDT.
+> >>
+> >> Cc: Peter Maydell <peter.maydell@linaro.org>
+> >> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> >> Cc: Igor Mammedov <imammedo@redhat.com>
+> >> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+> >> Cc: qemu-arm@nongnu.org
+> >> Cc: qemu-devel@nongnu.org
+> >
+> > Series
+> >
+> > Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+> >
+> > merge through ARM tree pls.
+>
+> Thanks, Michael :)
+>
+>
+> Hi Peter,
+>
+> Do I need to send v3 to update the commit message of patch 4/7 as
+> Michael suggested?
 
+This patchset seems to be corrupt somehow:
+
+e104462:bionic:qemu$ patches apply -s
+id:20200203001505.52573-1-guoheyi@huawei.com
+Applying: bios-tables-test: prepare to change ARM virt ACPI DSDT
+Applying: arm/virt/acpi: remove meaningless sub device "RP0" from PCI0
+Applying: arm/virt/acpi: remove _ADR from devices identified by _HID
+Applying: arm/acpi: fix PCI _PRT definition
+Applying: arm/acpi: fix duplicated _UID of PCI interrupt link devices
+Applying: arm/acpi: simplify the description of PCI _CRS
+Applying: virt/acpi: update golden masters for DSDT update
+error: corrupt patch at line 68
+error: could not build fake ancestor
+hint: Use 'git am --show-current-patch' to see the failed patch
+Patch failed at 0007 virt/acpi: update golden masters for DSDT update
+When you have resolved this problem, run "git am --continue".
+If you prefer to skip this patch, run "git am --skip" instead.
+To restore the original branch and stop patching, run "git am --abort".
+
+Patchew didn't like it either:
+https://patchew.org/QEMU/20200203001505.52573-1-guoheyi@huawei.com/
+
+I think the problem here is the quoting of the diff in
+the commit message of patch 7: git am and friends think
+that is part of the actual patch body and get confused.
+You might be able to avoid that by not putting the
+  diff --git a/DSDT.dsl.orig b/DSDT.dsl
+  index ed3e5f0fa9..10cf70c886 100644
+  --- a/DSDT.dsl.orig
+  +++ b/DSDT.dsl
+
+part in the commit message, but I haven't tested that.
+
+So resending a v4 would probably be a good idea anyway.
+
+thanks
+-- PMM

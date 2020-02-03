@@ -1,107 +1,112 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3963921lfp;
-        Mon, 3 Feb 2020 05:39:20 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz+xsa1sKrsRNyo133uqqUGvZcpExkKxM+OyMV90Dj44S+GNgoaJyxpPWivhdvttPNeQ+WA
-X-Received: by 2002:a05:620a:102c:: with SMTP id a12mr22432196qkk.95.1580737159880;
-        Mon, 03 Feb 2020 05:39:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580737159; cv=none;
-        d=google.com; s=arc-20160816;
-        b=nFjiY1HEp3OUnvV182JoOjhpc89ECrqg644TqZ7hlrvF57NtI+gWo+ngD7elALR2+Y
-         N/VXRjZaRx5waDy+uoTHSP1OA6jHwt3V7X52d72MLKSXiiaiPq0nBtPYVOxKN0J4w7ig
-         9tJN9bjq4kK/bLA/+UHmC0XzsuDWFgjhuzEDSDsqDByDQVWuE5gvDApCVlsCsbS9y8ll
-         MmcQYQwDS8zN7PmTS8LHqNPmF0bOZt20REZFQtd75nQXoHI8MAWqhGfES7hJjUWB7p70
-         egPXD33MqqVWhyeMXMSuzmXVo3a5S1+F2F0RKdUPC6oTzH4uqDXGMnLCEdKWx72PfGaA
-         BJZQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=UPmV1onSrE74+Mn3j3gyPUASnXxhERbrrgQbCVK9hzY=;
-        b=x2G9UDxrAsW8j3cf/az7wx9sokqolovFxfpMM3Bs7gKxdJm6CWbP1ieupPziuoYI+T
-         JMlFzcbOVZ5PRUzA9qmt5617Yuo/XQmjB1Ezx7UngioBqFY0OscSSujTcGw9A7OGJkmn
-         YenxeUPFZDTW59cPYEMM9rsADlJWmlLV/m1XSISmjRVB50YhK2vfuYOY2tJyG4hJWk0C
-         T065Wk7eBhSDxCxHAOp773BsGdLLYDC7gNWOIRtEZaOHmA52I4Z7WLYWalqLZaxgAjxy
-         DTro9Nk/4CICyy7TxRmQ8BJ67jiG4QJ6pEudv4A0y1aPN/Phvu32MKKCp/iaS7hyxFA4
-         DjjQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LDW0XXZI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3968825lfp;
+        Mon, 3 Feb 2020 05:44:39 -0800 (PST)
+X-Google-Smtp-Source: APXvYqztns3YZaEmhVuT+99J8xmvwjLekLOh7IH4mWPJK3J+47Pz9cdkfGAyAiNu0eSNLFf9X9i2
+X-Received: by 2002:a0c:f9c7:: with SMTP id j7mr23254480qvo.222.1580737479406;
+        Mon, 03 Feb 2020 05:44:39 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q29si11141750qtj.232.2020.02.03.05.39.19
+        by mx.google.com with ESMTPS id b190si11650019qkc.180.2020.02.03.05.44.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 05:39:19 -0800 (PST)
+        Mon, 03 Feb 2020 05:44:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LDW0XXZI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40696 helo=lists1p.gnu.org)
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40816 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iybwd-00007K-50
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 08:39:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49300)
+	id 1iyc1m-00069T-SC
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 08:44:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51747)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1iybw5-0007OR-CQ
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:38:47 -0500
+ (envelope-from <LYan@suse.com>) id 1iyc1e-000668-GY
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:44:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1iybw2-000396-SZ
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:38:44 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:43636
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1iybw2-00038j-O0
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:38:42 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580737122;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=UPmV1onSrE74+Mn3j3gyPUASnXxhERbrrgQbCVK9hzY=;
- b=LDW0XXZIfV7g49hQX5xbxQLB2IH3OKQbfXsVHIXACZuNPzsB2hQ/OPsBclRYTCcdDxigO3
- M05HiH8MsqGCon4xFREOlWOh/ai48DJhDAN4/Iqt8PaXn1a01lXCi9V+oQJ0UTJz6yq0LS
- i1QsrlHVrscf2Rav5iWz5dTAqA7bZDc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-29-RFDw-aNeP0SyUC-KgVyAow-1; Mon, 03 Feb 2020 08:38:37 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8425A8017DF;
- Mon,  3 Feb 2020 13:38:35 +0000 (UTC)
-Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 32A475C1D4;
- Mon,  3 Feb 2020 13:38:24 +0000 (UTC)
-Subject: Re: [PATCH v13 07/10] virtio-iommu-pci: Add virtio iommu pci support
-To: "Michael S. Tsirkin" <mst@redhat.com>
-References: <20200125171955.12825-1-eric.auger@redhat.com>
- <20200125171955.12825-8-eric.auger@redhat.com>
- <20200203080122-mutt-send-email-mst@kernel.org>
- <037666c2-6124-0db6-3688-a134f9f0845a@redhat.com>
- <20200203082637-mutt-send-email-mst@kernel.org>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <462756c1-b4fd-e0f0-7fca-61b9b1fd8157@redhat.com>
-Date: Mon, 3 Feb 2020 14:38:22 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ (envelope-from <LYan@suse.com>) id 1iyc1Y-0004st-PE
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:44:29 -0500
+Received: from m4a0072g.houston.softwaregrp.com ([15.124.2.130]:59448)
+ by eggs.gnu.org with esmtp (Exim 4.71)
+ (envelope-from <LYan@suse.com>)
+ id 1iyc1Y-0004sd-J2; Mon, 03 Feb 2020 08:44:24 -0500
+Received: FROM m4a0072g.houston.softwaregrp.com (15.120.17.147) BY
+ m4a0072g.houston.softwaregrp.com WITH ESMTP; 
+ Mon,  3 Feb 2020 13:42:55 +0000
+Received: from M4W0334.microfocus.com (2002:f78:1192::f78:1192) by
+ M4W0335.microfocus.com (2002:f78:1193::f78:1193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1591.10; Mon, 3 Feb 2020 13:43:05 +0000
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (15.124.8.10) by
+ M4W0334.microfocus.com (15.120.17.146) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1591.10 via Frontend Transport; Mon, 3 Feb 2020 13:43:04 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=TeLGZH65Fq+FDv+nSilVSzaaaOaPmuWR6HNMyx2fE2oLapvIJD2kGOf7Cfu4vzW9E/S7yXfhCc+6n1zgng7h3oJAXC1zMrquBi7KvqmrZSYum+oAlhQEQBtM82Jka+5xXPEdr15kSqJzfI2QugyKoIcDG5PX+3gni6nSKDezYYxxTMycpglDFpHSjcP6JAlcrIcI6Eh2Tz3qCpc+AT6oEucpz0n+R36Iyj9Zxh8fROtTOUGpcFYcO5zeYNJz+PVwglHw1HTvsID/2JDWRlNGRtEc38M1ouiIVT7DrrLiNyA37sDqktwhFCzi/QZbxhcJur7M+OLbsqVwN4o96FjEog==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zKeA6PrE6qdosN8awR6fawlD7jpcvjHWgfjOzOZJdr8=;
+ b=U8jLNTCuu1BCdRpUFISRPOfIqd4jr1b630LSfwKXxd5IREGgbIf1BOSv3wjvocpjqk9KTFHOrEouLcTnTHhwffIv9LOUhMVxOyAJnXmKjJasiXKJC3IrrRaZzJ8bgsPC40DOAJfDojnt8MXEJ0luOJBL57/fGVsSUWt0Dd9/pDHbdP6j0Ls5qHEPh250knsZRky3TD4jqa7d9Ob9MMeD4EN8TWnz8FxuWIi4UQwzKAKzA6o/or+7hGOCFxssJweBmMsY5TCORAp/Oa7ogGJv5sv6GHZhE9JXgPu0q5RU0rtzCCfYWhkCb7kbsbMmZig9tF8dbvOmxk3OsH5oilnNhw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=suse.com; dmarc=pass action=none header.from=suse.com;
+ dkim=pass header.d=suse.com; arc=none
+Authentication-Results: spf=none (sender IP is ) smtp.mailfrom=LYan@suse.com; 
+Received: from BYAPR18MB2888.namprd18.prod.outlook.com (20.179.58.203) by
+ BYAPR18MB2983.namprd18.prod.outlook.com (20.179.58.93) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2686.27; Mon, 3 Feb 2020 13:43:03 +0000
+Received: from BYAPR18MB2888.namprd18.prod.outlook.com
+ ([fe80::70c4:1802:725e:e829]) by BYAPR18MB2888.namprd18.prod.outlook.com
+ ([fe80::70c4:1802:725e:e829%7]) with mapi id 15.20.2686.030; Mon, 3 Feb 2020
+ 13:43:03 +0000
+From: Liang Yan <lyan@suse.com>
+To: <peter.maydell@linaro.org>, <drjones@redhat.com>, <qemu-arm@nongnu.org>
+Subject: [PATCH v4] target/arm/monitor: query-cpu-model-expansion crashed qemu
+ when using machine type none
+Date: Mon, 3 Feb 2020 08:42:51 -0500
+Message-ID: <20200203134251.12986-1-lyan@suse.com>
+X-Mailer: git-send-email 2.25.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-ClientProxiedBy: MN2PR15CA0036.namprd15.prod.outlook.com
+ (2603:10b6:208:1b4::49) To BYAPR18MB2888.namprd18.prod.outlook.com
+ (2603:10b6:a03:10d::11)
 MIME-Version: 1.0
-In-Reply-To: <20200203082637-mutt-send-email-mst@kernel.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: RFDw-aNeP0SyUC-KgVyAow-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Received: from leonstudio.lan (2605:a000:160e:228::5ca) by
+ MN2PR15CA0036.namprd15.prod.outlook.com (2603:10b6:208:1b4::49) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2686.29 via Frontend
+ Transport; Mon, 3 Feb 2020 13:43:02 +0000
+X-Mailer: git-send-email 2.25.0
+X-Originating-IP: [2605:a000:160e:228::5ca]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 0e369d23-7325-485b-3c41-08d7a8aefe07
+X-MS-TrafficTypeDiagnostic: BYAPR18MB2983:
+X-Microsoft-Antispam-PRVS: <BYAPR18MB29836F51F8F2D2FD970F4E14BF000@BYAPR18MB2983.namprd18.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:741;
+X-Forefront-PRVS: 0302D4F392
+X-Forefront-Antispam-Report: SFV:NSPM;
+ SFS:(10019020)(4636009)(376002)(136003)(346002)(366004)(396003)(39860400002)(199004)(189003)(6486002)(52116002)(6512007)(2616005)(316002)(478600001)(1076003)(36756003)(8936002)(8886007)(8676002)(81166006)(81156014)(6506007)(86362001)(6666004)(66556008)(66476007)(16526019)(5660300002)(186003)(4326008)(66946007)(2906002);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR18MB2983;
+ H:BYAPR18MB2888.namprd18.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+Received-SPF: None (protection.outlook.com: suse.com does not designate
+ permitted sender hosts)
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: f/GaQA8WiTyqQhDDk3mA3FbXHQLIoFqzmVXacjpDQMoyiwTq6Dy8C0wKfveEFOdyoxIBxNydFqBl4uPdnIDcxFVvLfRribz6LFRCMDdzKEjKyzUrRWnpDOmRsZr0m4GYufK+cP3l5LtWQQ+grihEXbmI/6NbkQxbw9izUrSDkKd4ctkZRQwns8SBwWGbxdF51BBT8lZ/Y7gagrUMXlIgjj36qZ/gDpIpfYB5qC89QwPnxggEWgreL2CMkuARHdNHRZ6GQkmyNnXN9ZAWl7ZEsm746uL6AuPHlgj9bGO+hhvKsi7rtKugpiWh7cIUJZlYHWkDQEf1a2rJVKjrNtA+ySGeStIGd+hs2tnY1q9xQ93/JTWZVPlSsuaG1uZ/fIqfEcFNIWbDscoSs0dF/XqJNH297LWKOijQQJUP5zNUZa6TDDc7UH2VIN2UkjUlOfUi
+X-MS-Exchange-AntiSpam-MessageData: /IlYZ3fdPnWb5wVNw7LRbd6bjmehu23e+cFwHUVAz7zpOkcPyfEsQKbJTaTC4kYPY5k6aTIXRidMmQ+noAMNDV80cGWyb1q19zHwcd+XPEdaSUV00Uq7ZJ3ixJMQKllDlNotivQxmZCrQDUzmQILwLYZpBpo3UXxLO4gKmvFF2g=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0e369d23-7325-485b-3c41-08d7a8aefe07
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Feb 2020 13:43:03.7526 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 856b813c-16e5-49a5-85ec-6f081e13b527
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: atWIldCYMQM0pooAC1p8PaKjqxIecaSL4gaL4IeEqtcSBxngF71wf9X3WJp7eGdY
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR18MB2983
+X-OriginatorOrg: suse.com
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 15.124.2.130
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -113,243 +118,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
- quintela@redhat.com, qemu-devel@nongnu.org, peterx@redhat.com,
- dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- jean-philippe@linaro.org, eric.auger.pro@gmail.com
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A+IatqBJNkHo
+X-TUID: eXkoPVkpKgPN
 
-Hi Michael,
+Commit e19afd566781 mentioned that target-arm only supports queryable
+cpu models 'max', 'host', and the current type when KVM is in use.
+The logic works well until using machine type none.
 
-On 2/3/20 2:28 PM, Michael S. Tsirkin wrote:
-> On Mon, Feb 03, 2020 at 02:20:55PM +0100, Auger Eric wrote:
->> Hi Michael,
->>
->> On 2/3/20 2:03 PM, Michael S. Tsirkin wrote:
->>> On Sat, Jan 25, 2020 at 06:19:52PM +0100, Eric Auger wrote:
->>>> This patch adds virtio-iommu-pci, which is the pci proxy for
->>>> the virtio-iommu device.
->>>>
->>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>> Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
->>>
->>> I commented on v11 of this patch:
->>>>> Could you send a smaller patchset without pci/acpi bits for now?
->>> And you answered:
->>>> Yes I am about to send v12.
->>>
->>> I guess this patch is here by mistake then?
->>>
->>> I think PCI devices should always have config space so guests are
->>> not tempted to find work-arounds. Right?
->> No it is not here by mistake. I removed everything related non DT
->> integration as we discussed.
->>
->> DT support is fully upstream even for virtio-iommu-pci.
->> https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/virtio/iommu.txt
->>
->> So what's wrong implementing that at the moment. As we discussed we
->> would use the PCIe config space integration for non DT.
->>
->> If I use the MMIO based device, I am forced to lock an MMIO region for
->> it in the machvirt memory map:
->> https://elixir.bootlin.com/linux/latest/source/Documentation/devicetree/bindings/virtio/mmio.txt
->>
->> I guess Peter (Maydell) will not be happy with this situation either.
->>
->> Thanks
->>
->> Eric
-> 
-> I see. Can't we limit this to DT platforms for now then?
-That is the case. virtio-iommu does not work with ACPI.
-For non DT the plan is to use what you suggested, ie. pass the binding
-info through the PCIe config space.
+For machine type none, cpu_type will be null if cpu option is not
+set by command line, strlen(cpu_type) will terminate process.
+So We add a check above it.
 
-In that prospect I am waiting for Jean-Philippe's [RFC 00/13]
-virtio-iommu on non-devicetree platforms respin
-(https://lore.kernel.org/linux-iommu/20191203190136.00007171@intel.com/T/)
-and especially patches 12 and 13 of the series, ie. binding info through
-the PCIe config space.
+This won't affect i386 and s390x since they do not use current_cpu.
 
-Thanks
+Signed-off-by: Liang Yan <lyan@suse.com>
+---
+ v4: change code style based on the review from Andrew Jones
+ v3: change git commit message
+ v2: fix code style issue
+---
+ target/arm/monitor.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
-Eric
-> 
-> 
-> 
->>>
->>>> ---
->>>>
->>>> v11 -> v12:
->>>> - added Jean's R-b
->>>> - remove the array of intervals. Will be introduced later?
->>>>
->>>> v10 -> v11:
->>>> - add the reserved_regions array property
->>>>
->>>> v9 -> v10:
->>>> - include "hw/qdev-properties.h" header
->>>>
->>>> v8 -> v9:
->>>> - add the msi-bypass property
->>>> - create virtio-iommu-pci.c
->>>> ---
->>>>  hw/virtio/Makefile.objs          |  1 +
->>>>  hw/virtio/virtio-iommu-pci.c     | 88 ++++++++++++++++++++++++++++++++
->>>>  include/hw/pci/pci.h             |  1 +
->>>>  include/hw/virtio/virtio-iommu.h |  1 +
->>>>  qdev-monitor.c                   |  1 +
->>>>  5 files changed, 92 insertions(+)
->>>>  create mode 100644 hw/virtio/virtio-iommu-pci.c
->>>>
->>>> diff --git a/hw/virtio/Makefile.objs b/hw/virtio/Makefile.objs
->>>> index 2fd9da7410..4e4d39a0a4 100644
->>>> --- a/hw/virtio/Makefile.objs
->>>> +++ b/hw/virtio/Makefile.objs
->>>> @@ -29,6 +29,7 @@ obj-$(CONFIG_VIRTIO_INPUT_HOST) += virtio-input-host-pci.o
->>>>  obj-$(CONFIG_VIRTIO_INPUT) += virtio-input-pci.o
->>>>  obj-$(CONFIG_VIRTIO_RNG) += virtio-rng-pci.o
->>>>  obj-$(CONFIG_VIRTIO_BALLOON) += virtio-balloon-pci.o
->>>> +obj-$(CONFIG_VIRTIO_IOMMU) += virtio-iommu-pci.o
->>>>  obj-$(CONFIG_VIRTIO_9P) += virtio-9p-pci.o
->>>>  obj-$(CONFIG_VIRTIO_SCSI) += virtio-scsi-pci.o
->>>>  obj-$(CONFIG_VIRTIO_BLK) += virtio-blk-pci.o
->>>> diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
->>>> new file mode 100644
->>>> index 0000000000..4cfae1f9df
->>>> --- /dev/null
->>>> +++ b/hw/virtio/virtio-iommu-pci.c
->>>> @@ -0,0 +1,88 @@
->>>> +/*
->>>> + * Virtio IOMMU PCI Bindings
->>>> + *
->>>> + * Copyright (c) 2019 Red Hat, Inc.
->>>> + * Written by Eric Auger
->>>> + *
->>>> + *  This program is free software; you can redistribute it and/or modify
->>>> + *  it under the terms of the GNU General Public License version 2 or
->>>> + *  (at your option) any later version.
->>>> + */
->>>> +
->>>> +#include "qemu/osdep.h"
->>>> +
->>>> +#include "virtio-pci.h"
->>>> +#include "hw/virtio/virtio-iommu.h"
->>>> +#include "hw/qdev-properties.h"
->>>> +
->>>> +typedef struct VirtIOIOMMUPCI VirtIOIOMMUPCI;
->>>> +
->>>> +/*
->>>> + * virtio-iommu-pci: This extends VirtioPCIProxy.
->>>> + *
->>>> + */
->>>> +#define VIRTIO_IOMMU_PCI(obj) \
->>>> +        OBJECT_CHECK(VirtIOIOMMUPCI, (obj), TYPE_VIRTIO_IOMMU_PCI)
->>>> +
->>>> +struct VirtIOIOMMUPCI {
->>>> +    VirtIOPCIProxy parent_obj;
->>>> +    VirtIOIOMMU vdev;
->>>> +};
->>>> +
->>>> +static Property virtio_iommu_pci_properties[] = {
->>>> +    DEFINE_PROP_UINT32("class", VirtIOPCIProxy, class_code, 0),
->>>> +    DEFINE_PROP_END_OF_LIST(),
->>>> +};
->>>> +
->>>> +static void virtio_iommu_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
->>>> +{
->>>> +    VirtIOIOMMUPCI *dev = VIRTIO_IOMMU_PCI(vpci_dev);
->>>> +    DeviceState *vdev = DEVICE(&dev->vdev);
->>>> +
->>>> +    qdev_set_parent_bus(vdev, BUS(&vpci_dev->bus));
->>>> +    object_property_set_link(OBJECT(dev),
->>>> +                             OBJECT(pci_get_bus(&vpci_dev->pci_dev)),
->>>> +                             "primary-bus", errp);
->>>> +    object_property_set_bool(OBJECT(vdev), true, "realized", errp);
->>>> +}
->>>> +
->>>> +static void virtio_iommu_pci_class_init(ObjectClass *klass, void *data)
->>>> +{
->>>> +    DeviceClass *dc = DEVICE_CLASS(klass);
->>>> +    VirtioPCIClass *k = VIRTIO_PCI_CLASS(klass);
->>>> +    PCIDeviceClass *pcidev_k = PCI_DEVICE_CLASS(klass);
->>>> +    k->realize = virtio_iommu_pci_realize;
->>>> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
->>>> +    dc->props = virtio_iommu_pci_properties;
->>>> +    pcidev_k->vendor_id = PCI_VENDOR_ID_REDHAT_QUMRANET;
->>>> +    pcidev_k->device_id = PCI_DEVICE_ID_VIRTIO_IOMMU;
->>>> +    pcidev_k->revision = VIRTIO_PCI_ABI_VERSION;
->>>> +    pcidev_k->class_id = PCI_CLASS_OTHERS;
->>>> +}
->>>> +
->>>> +static void virtio_iommu_pci_instance_init(Object *obj)
->>>> +{
->>>> +    VirtIOIOMMUPCI *dev = VIRTIO_IOMMU_PCI(obj);
->>>> +
->>>> +    virtio_instance_init_common(obj, &dev->vdev, sizeof(dev->vdev),
->>>> +                                TYPE_VIRTIO_IOMMU);
->>>> +}
->>>> +
->>>> +static const VirtioPCIDeviceTypeInfo virtio_iommu_pci_info = {
->>>> +    .base_name             = TYPE_VIRTIO_IOMMU_PCI,
->>>> +    .generic_name          = "virtio-iommu-pci",
->>>> +    .transitional_name     = "virtio-iommu-pci-transitional",
->>>> +    .non_transitional_name = "virtio-iommu-pci-non-transitional",
->>>> +    .instance_size = sizeof(VirtIOIOMMUPCI),
->>>> +    .instance_init = virtio_iommu_pci_instance_init,
->>>> +    .class_init    = virtio_iommu_pci_class_init,
->>>> +};
->>>> +
->>>> +static void virtio_iommu_pci_register(void)
->>>> +{
->>>> +    virtio_pci_types_register(&virtio_iommu_pci_info);
->>>> +}
->>>> +
->>>> +type_init(virtio_iommu_pci_register)
->>>> +
->>>> +
->>>> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
->>>> index 2acd8321af..cfedf5a995 100644
->>>> --- a/include/hw/pci/pci.h
->>>> +++ b/include/hw/pci/pci.h
->>>> @@ -86,6 +86,7 @@ extern bool pci_available;
->>>>  #define PCI_DEVICE_ID_VIRTIO_9P          0x1009
->>>>  #define PCI_DEVICE_ID_VIRTIO_VSOCK       0x1012
->>>>  #define PCI_DEVICE_ID_VIRTIO_PMEM        0x1013
->>>> +#define PCI_DEVICE_ID_VIRTIO_IOMMU       0x1014
->>>>  
->>>>  #define PCI_VENDOR_ID_REDHAT             0x1b36
->>>>  #define PCI_DEVICE_ID_REDHAT_BRIDGE      0x0001
->>>> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
->>>> index 2a2c2ecf83..f39aa0fbb4 100644
->>>> --- a/include/hw/virtio/virtio-iommu.h
->>>> +++ b/include/hw/virtio/virtio-iommu.h
->>>> @@ -25,6 +25,7 @@
->>>>  #include "hw/pci/pci.h"
->>>>  
->>>>  #define TYPE_VIRTIO_IOMMU "virtio-iommu-device"
->>>> +#define TYPE_VIRTIO_IOMMU_PCI "virtio-iommu-device-base"
->>>>  #define VIRTIO_IOMMU(obj) \
->>>>          OBJECT_CHECK(VirtIOIOMMU, (obj), TYPE_VIRTIO_IOMMU)
->>>>  
->>>> diff --git a/qdev-monitor.c b/qdev-monitor.c
->>>> index 3465a1e2d0..97f4022b51 100644
->>>> --- a/qdev-monitor.c
->>>> +++ b/qdev-monitor.c
->>>> @@ -66,6 +66,7 @@ static const QDevAlias qdev_alias_table[] = {
->>>>      { "virtio-input-host-ccw", "virtio-input-host", QEMU_ARCH_S390X },
->>>>      { "virtio-input-host-pci", "virtio-input-host",
->>>>              QEMU_ARCH_ALL & ~QEMU_ARCH_S390X },
->>>> +    { "virtio-iommu-pci", "virtio-iommu", QEMU_ARCH_ALL & ~QEMU_ARCH_S390X },
->>>>      { "virtio-keyboard-ccw", "virtio-keyboard", QEMU_ARCH_S390X },
->>>>      { "virtio-keyboard-pci", "virtio-keyboard",
->>>>              QEMU_ARCH_ALL & ~QEMU_ARCH_S390X },
->>>> -- 
->>>> 2.20.1
->>>
->>>
-> 
+diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+index 9725dfff16..c2dc7908de 100644
+--- a/target/arm/monitor.c
++++ b/target/arm/monitor.c
+@@ -137,17 +137,20 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(=
+CpuModelExpansionType type,
+     }
+=20
+     if (kvm_enabled()) {
+-        const char *cpu_type =3D current_machine->cpu_type;
+-        int len =3D strlen(cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
+         bool supported =3D false;
+=20
+         if (!strcmp(model->name, "host") || !strcmp(model->name, "max")) {
+             /* These are kvmarm's recommended cpu types */
+             supported =3D true;
+-        } else if (strlen(model->name) =3D=3D len &&
+-                   !strncmp(model->name, cpu_type, len)) {
+-            /* KVM is enabled and we're using this type, so it works. */
+-            supported =3D true;
++        } else if (current_machine->cpu_type) {
++            const char *cpu_type =3D current_machine->cpu_type;
++            int len =3D strlen(cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
++
++            if (strlen(model->name) =3D=3D len &&
++                !strncmp(model->name, cpu_type, len)) {
++                /* KVM is enabled and we're using this type, so it works. =
+*/
++                supported =3D true;
++            }
+         }
+         if (!supported) {
+             error_setg(errp, "We cannot guarantee the CPU type '%s' works =
+"
+--=20
+2.25.0
 

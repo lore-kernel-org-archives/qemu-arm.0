@@ -1,109 +1,106 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3668025lfp;
-        Mon, 3 Feb 2020 00:30:24 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzZl/bpUGoGAqMbrMoZIi0I3p3nveoeFjqtZpkZQobUpuOXQ2PuJm+PvfnoGK7t0tRWu0q5
-X-Received: by 2002:a37:a786:: with SMTP id q128mr6263198qke.423.1580718623951;
-        Mon, 03 Feb 2020 00:30:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580718623; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3692380lfp;
+        Mon, 3 Feb 2020 01:01:06 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxPmvGDchziUKELkEMBXs9EaOmJCCQkFX5YqbOcisV1YgTwbHAQfNa4j4VYalZZ1IPp6rmq
+X-Received: by 2002:ad4:42aa:: with SMTP id e10mr22027793qvr.92.1580720466582;
+        Mon, 03 Feb 2020 01:01:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580720466; cv=none;
         d=google.com; s=arc-20160816;
-        b=cbR6AKEWPetWNF1mHzU/QgEialfs17kiixsn/g3VXiyQHmbB3O7PrramGXE2XTjJ+S
-         ZIzUyn2/4EjcS1sHrhVe3S/+Y3sVKcA+1kcqhXYVnS8CUyfa/GE0JxSjIFNfpGk52qz+
-         XtyS5SI1U/XlPPKRiqBDW+g20KY3bRCkcwuMkSR5VGeuoHzijr0dVj3RUaSetGxhLAKJ
-         tIUPNrzvIrdVHnxpdt4/ET7/nooagPuhhW/rezzHk5m1y4EEXMTy7WGxEFaAx8u0zus8
-         oKAoMl2p0qMcBiDOCbWKgqMfxNmqaM3oq1piv/ekCET24LrQf3ORVyNYaNrw2vAYbiPT
-         su5A==
+        b=V4ifs801mauhTttUmm/wZ+KHJdKEStHp7mq4yXy0bSGf8lTAhipVCOtYnvfsZWnccA
+         c/YWo/Q9S7UMVHr+KgXHPb1c2WtddCUDf5Z5q1uBdE44Jw0DShFrU91mYHztthWIkmSZ
+         ufrK0rr9SFwVKnbGM/JIsC734VOdmJgqSX3vEd/7F48KAebPvidn18Txu99WttRtVSQF
+         MeE/2MDRczVecnZPWMYOdjp30iZA2hkK7ci8K42RyLMmvgjfqeKMsXEBgsP47n+mwJZ5
+         neppzHTnQXfFWCw/Aryt7/DZTWNsVvyJu17+iFKKrG9Jxeu0BT8bUhzCzkriBKXveX9n
+         hreg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=DFjUzzObXxlhnN9FkJ2W0kMBSKycCnz3WMxnNXs1uCo=;
-        b=izt5ncvKOZAtUihNx+FAPg7ogpDv1VnaH2VpAXixoFwOVvbsDGWF4GBk/SwW/j/CgU
-         1lm3rTd2e6a0LVk3isWKoXJWnM4UgdxoZl7XkX7Yj/fEds2Tv/ZhlxMIe0ywF2Qv4GtP
-         4ePjfGWmOF2dF0C84q+On+jpc9lSRJplKUFJ+LLfZEH0wGE6rUSw1wkZuX8LaYcnL2bF
-         rurGWmqFZfnfu3piOr0V7T1KdFZ/JXEavCLLYvDpgkqCT9qf8xn5uZG9fdHA0+Su76RJ
-         oeHNFM3vFWZPQe+rM2awbVE4AafFmgCMEB+TVA81wTLsyzAUj8szchkVNOnvddapihmD
-         xTaw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=QZnQOP94muzSIElkanGheHJjLGSupMVYZHoIdtYusII=;
+        b=XwCCf3glH7ohbbxITRU8Yj6znQz6cLW1EQ/EPk4tEfcjaHCuWslh6J+pOXntBU7saM
+         ORD0hdDhMWEoqgXB3JBHnh6i+Zi7bKtdEaHifJ0mCZGeR2Qq7hqAlQfbraaQJk/aC8M4
+         XmHf8XftOCzmnJOSZX3W96nonNJ1165fyCShIcw8GiBOysBzTStrVHRVfIGmPWH3xG8G
+         HYpBYyM7COKtbvPWonu9xozOEiN0FPNTV97YHcQf3ciqLorSmG0t7rAas7a7dphDub85
+         KcBfOcYO9fE7vIJIMfWbQsaeM8FzD/42vUHGJTDbYp7iqtutslVIEJW7ac2Gn/6eGZu2
+         sc2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lUBsX2iA;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CuKW4KHU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z80si3824837qkb.181.2020.02.03.00.30.23
+        by mx.google.com with ESMTPS id b4si10838695qtp.191.2020.02.03.01.01.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 00:30:23 -0800 (PST)
+        Mon, 03 Feb 2020 01:01:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lUBsX2iA;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CuKW4KHU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:36064 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36292 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iyX7f-0007mr-BY
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 03:30:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34812)
+	id 1iyXbN-0000nS-VQ
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 04:01:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43647)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iyX41-0002Fs-VZ
- for qemu-devel@nongnu.org; Mon, 03 Feb 2020 03:26:39 -0500
+ id 1iyXa7-00086z-OC
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 03:59:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iyX3u-00012M-Vo
- for qemu-devel@nongnu.org; Mon, 03 Feb 2020 03:26:34 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:39976)
+ id 1iyXa6-0007ae-Mu
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 03:59:47 -0500
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:54531)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iyX3u-00011t-Pg; Mon, 03 Feb 2020 03:26:30 -0500
-Received: by mail-wr1-x434.google.com with SMTP id j104so16723879wrj.7;
- Mon, 03 Feb 2020 00:26:30 -0800 (PST)
+ id 1iyXa6-0007ZG-GQ; Mon, 03 Feb 2020 03:59:46 -0500
+Received: by mail-wm1-x343.google.com with SMTP id g1so14821597wmh.4;
+ Mon, 03 Feb 2020 00:59:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=DFjUzzObXxlhnN9FkJ2W0kMBSKycCnz3WMxnNXs1uCo=;
- b=lUBsX2iA6rwwz9anYKuoKLRmUhyvGzmAW15ilmBEb6JNn42UCGKG6Wgh32pSu0G+fP
- PaCxgyxWgKj1umHMcOZi7mMMGDhCZjYm41cRcBl6rnSI84I4P1w04QTQr0B1psx0zpDj
- TjcMCAijXDKIw1EzEkZwu4lAOISn5pMXLzSujBqqSIY/6KM1vP7QPseMHrVjygHwNXgz
- vK4QAn6zitvSjr5aizvlGdB6vpq+QLje0vy/mFEVndGrIJ6ycWz++mbT14EnunWS5Ksx
- 4L4W5hZRp2E8OdjT1GQePjfbLHwBPHyjYeCvQ+KVv0YQFir/ZvQk0OgsOKSCvqfpAPEQ
- 6piA==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=QZnQOP94muzSIElkanGheHJjLGSupMVYZHoIdtYusII=;
+ b=CuKW4KHUHTbbqKsLd8e2olhNSQi5shdGgROec8c/uKFrH5xTY+oG1idSqNr0dfkkSs
+ qslU89a2f5iEYQXMkxD5oIYJ2ZW3FXW2y0Cd4u4KvXqirlEU1kDrwCsnWfTatQW1XHqF
+ 4QGm9f9kWEsddSelxpubqOtoujp0v6fR0G1ZQrePnYH5GaEkHspCTI/dyHlusKaadJxw
+ 1ymPBzdrzZicHq3r5n7CpdscQ/+lh8aWFYG/yRcZuJ16/LpbnYfUPFenxGARnhOkYxcz
+ mM45V3ZpaFBei6eMumlxS1aHp+QN/TBN6hNTBVPuR/ywyTAXCy3dWBOUll8EXq70g+S6
+ kZfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=DFjUzzObXxlhnN9FkJ2W0kMBSKycCnz3WMxnNXs1uCo=;
- b=fb7Wcrf0T50rmrHSiqbcfHXSH5bxpsrVdLGT0rREiWqgFrWoKxnxki+tFT1l9mJ9eH
- x2sCRRzKySU3A+8pdtXB6g0Hscj62FFyfZMknVKucK0R1FKYf2ZmXxtR6qpgV8tDj4ls
- +ocnH+yzLFxSunCIIWIm9W4PecJEJUQptAblSw/O2tmGbR9oosA9L6IBcFoiHVgAQpOx
- IimF0oY2NKqjzUTEVb7YEngCmKzlrFBQa+0qryhck1BgFfpnEnzbziPjTCgiSuUUgu6+
- SG6pn33+Ga6l7koC3NpAh/UMFR6c52qtu40LYrODVMHg0590rfFQR86DHuIugIMLUlGe
- ZpAQ==
-X-Gm-Message-State: APjAAAVn44YMpc+B5rn2qsvgtDcuwcDlkymdfN8enTgq3nqmzDYBJlqe
- RwqXOHRIE2BMnoUudvH1SOC7c33p
-X-Received: by 2002:adf:f401:: with SMTP id g1mr13596874wro.129.1580718389336; 
- Mon, 03 Feb 2020 00:26:29 -0800 (PST)
+ :mime-version:content-transfer-encoding;
+ bh=QZnQOP94muzSIElkanGheHJjLGSupMVYZHoIdtYusII=;
+ b=O7nHEmDvbgCuDJCE7+BYjuuYpY2+rvzDS2VyLPycK96mkGcbKt7iqn7jz1nc713+KV
+ Y92H3dmj20UsokTfhePD30HdlLn7MEdNk9PLJisjjWePYndxHK1Oqsq1xsvUDBP2qb4W
+ fmz+i7h+tO7fe+PlQzvknDmGniwBtoSC6U2684JxQP7idXSukw4cGncsghMMf70a7yWX
+ +3r5Mh1PjB4IQXsr3S/JbyD6oY66fG+xRH6X63AO0GKIW5+Zq9ScncDOlNqm9h3lz0TB
+ 87Oqx//X+QwReCE7ijCmzQoVHluN+817n4bQmg+5khWOW5rlWP4GU30DQkczy8gZHIyo
+ UkPA==
+X-Gm-Message-State: APjAAAXodhHKbIGy8tOsRW2Nxj+504i08kvwJMfrTxylOGqmuxjBPEJV
+ HUOdbFgoxndN+Y7VsTRYW63yi0Cn
+X-Received: by 2002:a1c:541b:: with SMTP id i27mr29896197wmb.137.1580720385134; 
+ Mon, 03 Feb 2020 00:59:45 -0800 (PST)
 Received: from localhost.localdomain (162.red-83-52-55.dynamicip.rima-tde.net.
  [83.52.55.162])
- by smtp.gmail.com with ESMTPSA id w20sm22396778wmk.34.2020.02.03.00.26.28
+ by smtp.gmail.com with ESMTPSA id j5sm10029678wrw.24.2020.02.03.00.59.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Feb 2020 00:26:28 -0800 (PST)
+ Mon, 03 Feb 2020 00:59:44 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 5/6] hw/arm/raspi: Dynamically create machines based on the
- board revision
-Date: Mon,  3 Feb 2020 09:26:18 +0100
-Message-Id: <20200203082619.7426-6-f4bug@amsat.org>
+Subject: [NOTFORMERGE PATCH 0/2] hw/arm/raspi: Add the Raspberry Pi Zero
+ machine
+Date: Mon,  3 Feb 2020 09:59:40 +0100
+Message-Id: <20200203085942.19826-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200203082619.7426-1-f4bug@amsat.org>
-References: <20200203082619.7426-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::434
+X-Received-From: 2a00:1450:4864:20::343
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,175 +112,30 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hQQLzuMW4eTh
+X-TUID: aPrLBgzhBr09
 
-We added tiny helpers extracting different values from the board
-revision, we can now create a full board based on its revision.
-The 'raspi-common' type is common to all raspi boards.
+Sharing these two patches to justify the refactor of previous
+series [1]. It shows how easily we can add the raspi0 machine.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/raspi.c | 93 +++++++++++++++++++++++++++++++++-----------------
- 1 file changed, 62 insertions(+), 31 deletions(-)
+[1] https://lists.gnu.org/archive/html/qemu-devel/2020-02/msg00226.html
+"hw/arm/raspi: Dynamically create machines based on the board"
+Based-on: <20200203082619.7426-1-f4bug@amsat.org>
 
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 656d834e07..12dc4d1486 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -44,12 +44,17 @@ static const struct {
-     [C_BCM2837] = {TYPE_BCM2837},
- };
- 
--typedef struct RasPiState {
-+typedef struct RaspiMachineState {
-+    /*< private >*/
-+    MachineState parent_obj;
-+    /*< public >*/
-     BCM283XState soc;
-     MemoryRegion ram;
--} RasPiState;
-+} RaspiMachineState;
- 
- typedef struct RaspiBoardInfo {
-+    const char *name;
-+    const char *desc;
-     /*
-      * Board revision codes:
-      * www.raspberrypi.org/documentation/hardware/raspberrypi/revision-codes/
-@@ -57,16 +62,32 @@ typedef struct RaspiBoardInfo {
-     uint32_t board_rev;
- } RaspiBoardInfo;
- 
--enum { BOARD_PI2, BOARD_PI3 };
-+typedef struct RaspiMachineClass {
-+    /*< private >*/
-+    MachineClass parent_obj;
-+    /*< public >*/
-+    const RaspiBoardInfo *config;
-+} RaspiMachineClass;
-+
-+#define TYPE_RASPI_MACHINE       MACHINE_TYPE_NAME("raspi-common")
-+#define RASPI_MACHINE(obj) \
-+    OBJECT_CHECK(RaspiMachineState, (obj), TYPE_RASPI_MACHINE)
-+
-+#define RASPI_MACHINE_CLASS(klass) \
-+     OBJECT_CLASS_CHECK(RaspiMachineClass, (klass), TYPE_RASPI_MACHINE)
-+#define RASPI_MACHINE_GET_CLASS(obj) \
-+     OBJECT_GET_CLASS(RaspiMachineClass, (obj), TYPE_RASPI_MACHINE)
- 
- static const RaspiBoardInfo raspi_boards[] = {
--    [BOARD_PI2] =
-     {
-+        .name = MACHINE_TYPE_NAME("raspi2"),
-+        .desc = "Raspberry Pi 2B",
-         .board_rev = 0xa21041,
-     },
- #ifdef TARGET_AARCH64
--    [BOARD_PI3] =
-     {
-+        .name = MACHINE_TYPE_NAME("raspi3"),
-+        .desc = "Raspberry Pi 3B",
-         .board_rev = 0xa02082,
-     },
- #endif
-@@ -221,7 +242,7 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
- 
- static void raspi_init(MachineState *machine, const RaspiBoardInfo *config)
- {
--    RasPiState *s = g_new0(RasPiState, 1);
-+    RaspiMachineState *s = RASPI_MACHINE(machine);
-     int version = board_version(config);
-     uint32_t vcram_size;
-     DriveInfo *di;
-@@ -271,15 +292,22 @@ static void raspi_init(MachineState *machine, const RaspiBoardInfo *config)
-     setup_boot(machine, version, machine->ram_size - vcram_size);
- }
- 
--static void raspi2_init(MachineState *machine)
-+static void raspi_machine_init(MachineState *machine)
- {
--    raspi_init(machine, &raspi_boards[BOARD_PI2]);
-+    RaspiMachineClass *rmc = RASPI_MACHINE_GET_CLASS(machine);
-+
-+    raspi_init(machine, rmc->config);
- }
- 
--static void raspi2_machine_init(MachineClass *mc)
-+static void raspi_machine_class_init(ObjectClass *oc, void *data)
- {
--    mc->desc = "Raspberry Pi 2";
--    mc->init = raspi2_init;
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
-+    const RaspiBoardInfo *config = data;
-+
-+    rmc->config = config;
-+    mc->desc = config->desc;
-+    mc->init = raspi_machine_init;
-     mc->block_default_type = IF_SD;
-     mc->no_parallel = 1;
-     mc->no_floppy = 1;
-@@ -287,29 +315,32 @@ static void raspi2_machine_init(MachineClass *mc)
-     mc->max_cpus = BCM283X_NCPUS;
-     mc->min_cpus = BCM283X_NCPUS;
-     mc->default_cpus = BCM283X_NCPUS;
--    mc->default_ram_size = 1 * GiB;
-+    mc->default_ram_size = board_ram_size(config);
-     mc->ignore_memory_transaction_failures = true;
-+}
-+
-+static const TypeInfo raspi_machine_type = {
-+    .name = TYPE_RASPI_MACHINE,
-+    .parent = TYPE_MACHINE,
-+    .instance_size = sizeof(RaspiMachineState),
-+    .class_size = sizeof(RaspiMachineClass),
-+    .abstract = true,
- };
--DEFINE_MACHINE("raspi2", raspi2_machine_init)
- 
--#ifdef TARGET_AARCH64
--static void raspi3_init(MachineState *machine)
-+static void raspi_machine_types(void)
- {
--    raspi_init(machine, &raspi_boards[BOARD_PI3]);
-+    int i;
-+
-+    type_register_static(&raspi_machine_type);
-+    for (i = 0; i < ARRAY_SIZE(raspi_boards); ++i) {
-+        TypeInfo ti = {
-+            .name       = raspi_boards[i].name,
-+            .parent     = TYPE_RASPI_MACHINE,
-+            .class_init = raspi_machine_class_init,
-+            .class_data = (void *)&raspi_boards[i],
-+        };
-+        type_register(&ti);
-+    }
- }
- 
--static void raspi3_machine_init(MachineClass *mc)
--{
--    mc->desc = "Raspberry Pi 3";
--    mc->init = raspi3_init;
--    mc->block_default_type = IF_SD;
--    mc->no_parallel = 1;
--    mc->no_floppy = 1;
--    mc->no_cdrom = 1;
--    mc->max_cpus = BCM283X_NCPUS;
--    mc->min_cpus = BCM283X_NCPUS;
--    mc->default_cpus = BCM283X_NCPUS;
--    mc->default_ram_size = 1 * GiB;
--}
--DEFINE_MACHINE("raspi3", raspi3_machine_init)
--#endif
-+type_init(raspi_machine_types)
+Philippe Mathieu-Daudé (2):
+  RFC hw/arm: Add the BCM2835 SoC
+  RFC: hw/arm/raspi: Add the Raspberry Pi Zero machine
+
+ include/hw/arm/bcm2836.h |  1 +
+ hw/arm/bcm2836.c         | 35 +++++++++++++++++++++++++++++++----
+ hw/arm/raspi.c           |  7 +++++++
+ 3 files changed, 39 insertions(+), 4 deletions(-)
+
 -- 
 2.21.1
 

@@ -1,115 +1,118 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3551055lfp;
-        Sun, 2 Feb 2020 22:01:04 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzXWSdbQmOs08D1OdxlbomeP3SpnYqWauCU57c20qJUtLQ+I9cSyxeDsN7wXHYmfn8ENuPz
-X-Received: by 2002:ac8:538e:: with SMTP id x14mr22340492qtp.301.1580709664267;
-        Sun, 02 Feb 2020 22:01:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580709664; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3559078lfp;
+        Sun, 2 Feb 2020 22:11:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy1VuttYWNBSw8fAs2vdTQzXXr+Jz5smJu93nkuGkiY7J8sCPf5M7QlWPuG+weXiQuJXgWg
+X-Received: by 2002:a05:620a:112c:: with SMTP id p12mr22117857qkk.287.1580710281173;
+        Sun, 02 Feb 2020 22:11:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580710281; cv=none;
         d=google.com; s=arc-20160816;
-        b=k1FGkv7HenNfSGKJWH0w8tirnw1CLemjbr4OuqFbLD3phtsmIi8iDVBp0gECot9RjA
-         LfTfuNwsZNUjEuDMdvQYoMuxEAZJLDSuDOUSRQNuXr0OGgCFV3uYjwPyMuaE1vmiqjMm
-         x9EwfdubXjyCEx8StAp4H5eJ0lQ/Q9aJHdklIh44Z8VC97Wdb+7Jjq/bJw/IwBhi+pvX
-         sqRvGjSZKOXxf6A8lcCoXQcicKUNKmfHL3Bvd8G3b9obPP4a34QASGuyXcJ1fSwfIe4g
-         KMtFxPr+hbN3ChVxlGihqpEBth9BBJVfQzUAtkwKLXUtDrT+p/nk5Pwh5dfXYfAasEOG
-         1H4w==
+        b=x5XRPM12n5vJltsP5h4z0/NzxijsKXuYP1kqvpYORJETsaZm+aWCLnJmi4/iBc98D9
+         VP8gr278kZxxbtQJdqXlKP9pWn/zX6Wx2KgGn//u3K6bdrmEOztf6a818JE5kiIL6KCz
+         eCsQLbJTLyINBXWjtj2jF0P/5v3n13lgRr3SArGj7H6c+vTIR8D3x03uuY0Rjq3x13to
+         EFa/ACHbkeCLYN9hmRTKLRy2QDiuUcltDa00h0G3LtCGJBM80LHzZ5M3yQjlC5zQ/Hf8
+         MMu0bUTcciQm64i06qU6oG7wey8mVe4nhw5DZs6yUOR9rwXfu5MHgmZipY4LsXwZ1XVB
+         4l5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition
          :content-transfer-encoding:in-reply-to:mime-version:references
          :message-id:subject:to:from:date:dkim-signature;
-        bh=RCDdPYJ4CJebkilqYHen5Ppk9focfoniFfnlmhfCCug=;
-        b=UyAJqb0lY7CfF52sw+hkQRjBOipUVUtj5tikYIRZgcM1lLpCEZxSDqNFqNBtaECMa7
-         JP6r9BczfYNQVzZ4EH1jZKH/qJoyKxKq1Td10dBZ0ppTRKMGCvxQ4+0oSUcacOzv+02F
-         4qbXr+kHeuXnPqhLWgSRZ7OyoaZfTJkNV4wiH/cZ7HdKcXT2JwPGYIrcm+paxseUD0HY
-         9Mz6uE0CGCPys7cAE7cnoffXCd4PFdRlQVABRFv/dq9LLrZ/3uLeObYa5RYPn+QO5BdQ
-         UIxWK/QC1rNwBblJN+RaxoOvJ9VoHuablM3Ah7MDXPkz3AdOGoHY1r4auirMaeRK9opV
-         Y1CA==
+        bh=TGYi4iQGyypKkwl5HdBcxH1o1c16rSX8imA3vtobyKo=;
+        b=LQUTEI2nOWAj1AEkfdLQa1HWYU0pdJVPXtfCDtYhiloKEs3xvFHTkEr/RadwmAlClF
+         8UnlCcqoe7Ly4d7lCkhDgD+ZIbm6RkT7ffBqkHDCDpDAy2EGWkFta6Ny1uYn2Hiy8gm6
+         U5420kDRIBPf32lIM3kN4CHX4GBds/vVgB3peZDnDL/Jrg5xZXdajES/QMzaa7w5yV4d
+         t8uoAB7ND3n5p9sfCjPQbt1UF0QJSbMVALDXeTQ1MzFqb9o/fp79QE8Tg2RJTE2i50tI
+         tl4x/YhvvYebCTCzMK7NspTjWSPaHzOF3sOSljGGZqeGsGlHQbdfE5Pe8Oy2joKNSEfK
+         N2mg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="bae1YfG/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IfOn09YJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w17si11956237qkj.115.2020.02.02.22.01.04
+        by mx.google.com with ESMTPS id c21si11675889qkj.292.2020.02.02.22.11.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 Feb 2020 22:01:04 -0800 (PST)
+        Sun, 02 Feb 2020 22:11:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="bae1YfG/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IfOn09YJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34664 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34730 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iyUn9-0007e8-Os
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 01:01:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54785)
+	id 1iyUx6-0001x5-Lw
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 01:11:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56984)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mst@redhat.com>) id 1iyUmu-0007bv-3m
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 01:00:49 -0500
+ (envelope-from <mst@redhat.com>) id 1iyUwy-0001un-Oh
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 01:11:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mst@redhat.com>) id 1iyUms-0007za-Tu
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 01:00:48 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:53169
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <mst@redhat.com>) id 1iyUwx-0001l9-MK
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 01:11:12 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:55850
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mst@redhat.com>) id 1iyUms-0007vy-Nd
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 01:00:46 -0500
+ (Exim 4.71) (envelope-from <mst@redhat.com>) id 1iyUwx-0001kJ-It
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 01:11:11 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580709645;
+ s=mimecast20190719; t=1580710270;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RCDdPYJ4CJebkilqYHen5Ppk9focfoniFfnlmhfCCug=;
- b=bae1YfG/iDPURJ3lkhnliAlCWkCwMxgLwb/TR8TnNNyHXs97oXWJzXh99d5ZbCmFJF4ean
- WkOCREXv4/uLxPB3q/kyVQwZYB7kjT8Jz0vEoGwmctyJIbpLr63ce7tgiQVIdsxJrmoc+p
- CuthPGqPDslvitNSGoRgfIuUwAbb8JQ=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-402-Q1q_BilxP9qK5J6mZZeXtQ-1; Mon, 03 Feb 2020 01:00:42 -0500
-Received: by mail-wr1-f70.google.com with SMTP id s13so7685044wrb.21
- for <qemu-arm@nongnu.org>; Sun, 02 Feb 2020 22:00:41 -0800 (PST)
+ bh=TGYi4iQGyypKkwl5HdBcxH1o1c16rSX8imA3vtobyKo=;
+ b=IfOn09YJaYAoEuiDJorG6HHQS5kkoPGQaKVrk14rCR+B6EdkVhvc7eZgRcWG+U/yKh8XWy
+ dLiWd2S7rS4gRkV1JgAo01QOxhyk+CyM3/gCvb5IfOs/WIeC93LWFSu/Cpu1Jom/EAFd5N
+ aKNuqyEwHhq5r8yw36/mx4VGoI8J3Pw=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-407-BG3Gf-W9PNiNfrdP-ESG8g-1; Mon, 03 Feb 2020 01:11:07 -0500
+Received: by mail-wr1-f71.google.com with SMTP id m15so3446112wrs.22
+ for <qemu-arm@nongnu.org>; Sun, 02 Feb 2020 22:11:06 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=vuJRcWENNqLN0tXOKXzxUBajPmXPIC9NC0LDQfL3CHA=;
- b=ooZ7IEV33SgfEj6k51hUUpzbMuRZ7N1jkPiVeGaprdEnQ/95a4lItjdqvYtqkj7apH
- a3qPZlrRpyZUvNyzOSAXGH++ee8mOR0orBCLwBH2Ok8gV4Mui+9hl7FI9N4ULo5RbPqi
- 1ekJl8ycI3AXOEX3De2A9ZLEn/CMlKaNfwEaAH+kLs1J8dS2+R+3mxo/728J0vxekK+A
- 3XoM3IkXGwgSTrHdDwF1LLJIp1FQ+tO7Akec6n6cDKuo32vY0Zkha022KdAgmJj8VBwy
- BEQRIdEg29N7ciwQ69/RGB3aWw8BU2OG5Hy2kEk+M1rHWaR3KM8OHrKXm6TbMBYfy1tj
- SDGg==
-X-Gm-Message-State: APjAAAU59rQQFlMb/9uIBSsU4R7JZzJmV9fV4+HU64kOd10w+8AYPmFb
- nurnFL5lXqBLQTbBK6y1jnGkr6xaqC/nz8/jTyCYyDRO+47aitcx7WUiNjmvsPOa4zxoTI55ntx
- jEaLHWVfHwTiO
-X-Received: by 2002:a1c:7c11:: with SMTP id x17mr28720704wmc.168.1580709640955; 
- Sun, 02 Feb 2020 22:00:40 -0800 (PST)
-X-Received: by 2002:a1c:7c11:: with SMTP id x17mr28720671wmc.168.1580709640737; 
- Sun, 02 Feb 2020 22:00:40 -0800 (PST)
+ bh=Lw8zZl6P+1/bHZa82Tc/oS8E16nZxIUU26KAs8LQ3vc=;
+ b=NR5B6emot32u/QWyo+3CKbO+zaEBbsNRnAHVrVXbwp2rHwxJ2Uasa140zVCRzJffhQ
+ Ef4llSXz/qSME0z1VzwgE3EwqIRx6Ftdkh2eqvUTbm7CNTvxLy5OFLZFLgrXJNdi+JyC
+ Bsi0jgEncZMpfxPOonfiUaN2VNnxUNiMiuqFxJOLxiZK4vy8ci8jf7cs/UnhUXHDr28Q
+ qeSkwfssDd2nnUC2YN0yuwWcPme1RljPX7+keOyrccBCcGmkOagnGCVttbFNpd5VxSGq
+ hc71/HdZEr81QAGA88WkxP6xFBjYw8Q8STh7AaTAesP/MmakcQ9QHtwyRikGp3EZXNPl
+ 60tg==
+X-Gm-Message-State: APjAAAUgEuRthbNz3Eo8QlEyS1VLx3wcahzv+je2GefnxYAhtNuji28I
+ N3ZmupwCEDqtOcw9X+KA1sg6tLTwrIZUI0nmf3Wpp+sPV30eC2URnLdKurmY7g1Oh11BYWUZBUO
+ hEdz6+cuP4ZI8
+X-Received: by 2002:a1c:b4d7:: with SMTP id
+ d206mr26783662wmf.188.1580710266014; 
+ Sun, 02 Feb 2020 22:11:06 -0800 (PST)
+X-Received: by 2002:a1c:b4d7:: with SMTP id
+ d206mr26783634wmf.188.1580710265780; 
+ Sun, 02 Feb 2020 22:11:05 -0800 (PST)
 Received: from redhat.com (ip-82-36-244-173.west.us.northamericancoax.com.
  [173.244.36.82])
- by smtp.gmail.com with ESMTPSA id x17sm23315758wrt.74.2020.02.02.22.00.36
+ by smtp.gmail.com with ESMTPSA id o4sm9112696wrw.15.2020.02.02.22.11.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 02 Feb 2020 22:00:40 -0800 (PST)
-Date: Mon, 3 Feb 2020 01:00:32 -0500
+ Sun, 02 Feb 2020 22:11:05 -0800 (PST)
+Date: Mon, 3 Feb 2020 01:10:57 -0500
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Heyi Guo <guoheyi@huawei.com>
-Subject: Re: [PATCH v2 6/7] arm/acpi: simplify the description of PCI _CRS
-Message-ID: <20200203010023-mutt-send-email-mst@kernel.org>
+Subject: Re: [PATCH v2 4/7] arm/acpi: fix PCI _PRT definition
+Message-ID: <20200203010249-mutt-send-email-mst@kernel.org>
 References: <20200203001505.52573-1-guoheyi@huawei.com>
- <20200203001505.52573-7-guoheyi@huawei.com>
+ <20200203001505.52573-5-guoheyi@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200203001505.52573-7-guoheyi@huawei.com>
-X-MC-Unique: Q1q_BilxP9qK5J6mZZeXtQ-1
+In-Reply-To: <20200203001505.52573-5-guoheyi@huawei.com>
+X-MC-Unique: BG3Gf-W9PNiNfrdP-ESG8g-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -126,47 +129,24 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
  Igor Mammedov <imammedo@redhat.com>, wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 49Pp0iv1IzGs
+X-TUID: hfTY+Mva0thD
 
-On Mon, Feb 03, 2020 at 08:15:04AM +0800, Heyi Guo wrote:
-> The original code defines a named object for the resource template but
-> then returns the resource template object itself; the resulted output
-> is like below:
->=20
-> Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
-> {
->     Name (RBUF, ResourceTemplate ()
->     {
->         WordBusNumber (ResourceProducer, MinFixed, MaxFixed, PosDecode,
->             0x0000,             // Granularity
->             0x0000,             // Range Minimum
->             0x00FF,             // Range Maximum
->             0x0000,             // Translation Offset
->             0x0100,             // Length
->             ,, )
->         ......
->     })
->     Return (ResourceTemplate ()
->     {
->         WordBusNumber (ResourceProducer, MinFixed, MaxFixed, PosDecode,
->             0x0000,             // Granularity
->             0x0000,             // Range Minimum
->             0x00FF,             // Range Maximum
->             0x0000,             // Translation Offset
->             0x0100,             // Length
->             ,, )
->         ......
->     })
-> }
->=20
-> So the named object "RBUF" is actually useless. The more natural way
-> is to return RBUF instead, or simply drop RBUF definition.
->=20
-> Choose the latter one to simplify the code.
+On Mon, Feb 03, 2020 at 08:15:02AM +0800, Heyi Guo wrote:
+> The address field in each _PRT mapping package should be constructed
+> with high word for device# and low word for function#, so it is wrong
+> to use bus_no as the high word. Enumerate all possible slots
+> (i.e. PCI_SLOT_MAX) instead.
 >=20
 > Signed-off-by: Heyi Guo <guoheyi@huawei.com>
 
+
+Absolutely matches the spec so
+
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+
+To add to the commit message:
+The existing code adds a bunch useless entries with device #s above 31.
+
 
 > ---
 > Cc: Peter Maydell <peter.maydell@linaro.org>
@@ -176,22 +156,41 @@ Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 > Cc: qemu-arm@nongnu.org
 > Cc: qemu-devel@nongnu.org
 > ---
->  hw/arm/virt-acpi-build.c | 1 -
->  1 file changed, 1 deletion(-)
+>  hw/arm/virt-acpi-build.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
 >=20
 > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index f3e340b172..fb4b166f82 100644
+> index be752c0ad8..5d157a9dd5 100644
 > --- a/hw/arm/virt-acpi-build.c
 > +++ b/hw/arm/virt-acpi-build.c
-> @@ -236,7 +236,6 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMa=
+> @@ -151,7 +151,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMa=
 pEntry *memmap,
->                               size_mmio_high));
->      }
+>  {
+>      int ecam_id =3D VIRT_ECAM_ID(highmem_ecam);
+>      Aml *method, *crs, *ifctx, *UUID, *ifctx1, *elsectx, *buf;
+> -    int i, bus_no;
+> +    int i, slot_no;
+>      hwaddr base_mmio =3D memmap[VIRT_PCIE_MMIO].base;
+>      hwaddr size_mmio =3D memmap[VIRT_PCIE_MMIO].size;
+>      hwaddr base_pio =3D memmap[VIRT_PCIE_PIO].base;
+> @@ -170,12 +170,12 @@ static void acpi_dsdt_add_pci(Aml *scope, const Mem=
+MapEntry *memmap,
+>      aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
 > =20
-> -    aml_append(method, aml_name_decl("RBUF", rbuf));
->      aml_append(method, aml_return(rbuf));
->      aml_append(dev, method);
-> =20
+>      /* Declare the PCI Routing Table. */
+> -    Aml *rt_pkg =3D aml_varpackage(nr_pcie_buses * PCI_NUM_PINS);
+> -    for (bus_no =3D 0; bus_no < nr_pcie_buses; bus_no++) {
+> +    Aml *rt_pkg =3D aml_varpackage(PCI_SLOT_MAX * PCI_NUM_PINS);
+> +    for (slot_no =3D 0; slot_no < PCI_SLOT_MAX; slot_no++) {
+>          for (i =3D 0; i < PCI_NUM_PINS; i++) {
+> -            int gsi =3D (i + bus_no) % PCI_NUM_PINS;
+> +            int gsi =3D (i + slot_no) % PCI_NUM_PINS;
+>              Aml *pkg =3D aml_package(4);
+> -            aml_append(pkg, aml_int((bus_no << 16) | 0xFFFF));
+> +            aml_append(pkg, aml_int((slot_no << 16) | 0xFFFF));
+>              aml_append(pkg, aml_int(i));
+>              aml_append(pkg, aml_name("GSI%d", gsi));
+>              aml_append(pkg, aml_int(0));
 > --=20
 > 2.19.1
 

@@ -1,158 +1,141 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3632098lfp;
-        Sun, 2 Feb 2020 23:47:43 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzYGhlTBN8SBCaQQsKe3zo8K3daq+Jzgxb/veIO4gSRbfhWs1+zcRZu0GGJMKe8L12E73r1
-X-Received: by 2002:ae9:e306:: with SMTP id v6mr22353998qkf.162.1580716062975;
-        Sun, 02 Feb 2020 23:47:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580716062; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3635283lfp;
+        Sun, 2 Feb 2020 23:51:55 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz8bDzRl0SIcjBWnO1SADTIKSQz4O5UuQ3tawrwN04rpO+2wd5CdwXAybJPxbHvepH7yNTe
+X-Received: by 2002:aca:db56:: with SMTP id s83mr14146033oig.171.1580716314878;
+        Sun, 02 Feb 2020 23:51:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580716314; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rtob89GHAKHMLYyMZGmRJS3WujNbQXlDY/cR3qC2KT7njhOMEm3g6NdTDkuePwrW9O
-         4glIdk3heRLsfwQ5P9pnTCyh+6t5kJE3MFGQ6+QoOzBr1d9DERsK+zqv8DsOCnKGwLG8
-         RhBzJl6PxfyzZ3FcdzT3LAheC9xUASNyCTv3/PQOzESJ5jfvqq+XAt/RKdk43pUXSSDK
-         qO2nS31/dPfF5LeUCBXP7gl3LDEcOVnz8ixvqnKpiQW1zcSG7Kb32BDjv2dkkqM/hfdE
-         U3HOZEa9PXK4iuJpzvjEcZP6xaFyfIkaEhPwhnLMs+i4q0imoiCmXlkpCq2dHmTBxx3J
-         kCOA==
+        b=lzsIQ5da5HtBtXLHSUk3plwZBbywwHuDiBi2obZ6jjViAj6KnwT49xTkQ28304MXil
+         O2ankqGh4Q3FUg/RzMmeYm8C8PcyfYX01XraiF3I9+8K1cYVwNURtz8s6zy7KRI0aIcT
+         w2S6webRWIRYVv07dmnJjlNtwtPs92Ev+a9TPpC2YqVZyRhjZLLYhEJD7mU2tQaURM1D
+         dEXiXA8yskRhmCfa0YbHER1557O9781mjGlIUUSgyHR0MMPopHUmzk8R8ATNEeDBjWqB
+         VXRwLZTIB73sipMSjAjAoX09npM2jOGGXdQaYmpqQ2VhsB2frSccDvFAaKS2Zrprbhnf
+         a1mg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=bG0K7h6x2mJJXNkEfT5+sGkVDoYUcH82YyM3kP6Ad78=;
-        b=Wbi1H08M/c94h1HFSjrcbevg5r4ZUTR8Tnce2pobP6nWPWDH7L5Z1PwiEU+GTwjhkn
-         uVJRVuPZZyHrMyOIc5ZFqE6g9oyJKC4HiyUSd+gq0GwlKARzFZdiICQRLymS4DLfyc3x
-         +zVqV8rMWp3MSNB+FTagKu/lvXg3ByV4t6Wil0Q6Q+p2w2Zt6hkCb3RHwqgwQ25A3iPe
-         j2GCT6RL49H7r10MoJBtFSuJwPpBls+6zlMGxSCIk5b5YWI1DZVwwYF8Z1BD6pgRF6O9
-         nKySYAvH2H0I+Voj6VwNC9K6ayGt5l/0dZVOEVGiy5PLSzhJdTDxvzwswa9mPUWXxpz6
-         n+kw==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=shrxJcLWYa5dcYmO7shA/1HAHpE7/18QYuBpgSLW+Y0=;
+        b=EQuE0Y2TEsBboQdIrboJFYVUmqQnjOB+S7QKzPKOpEugqyOynkj94sdhOpusjtOUN5
+         4f38EvKvQIszthHlPse7R6+GW0d4xQXPx5XaDNcnBsugjsoGTdnf1bek7smcZ3JNEPHo
+         7W7nuuD+iFdrpRFR/JUdUvi487KKDndiXzlZpmSJwIMKoBSC2b24pGaKWD7p5RVyFIif
+         UlQofyKop5to8PW7ugPIhNge8YLxhFdBt+T2Hc3qO2Lm9czdhCjiZYZKnl3STezJy02r
+         CnHsiUs65KU5wPzgE6oN09DzG4cCCoIa+s2QtpIcepNPkmJzIUhke3dEs7CfhWpPMi5+
+         iaVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m15si11833175qkg.90.2020.02.02.23.47.42
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 Feb 2020 23:47:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BG+gPlFv;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id t7si8280105otl.133.2020.02.02.23.51.54;
+        Sun, 02 Feb 2020 23:51:54 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35620 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iyWSM-0001xt-Cx
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 02:47:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52227)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pannengyuan@huawei.com>) id 1iyWSE-0001v8-7Y
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 02:47:35 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pannengyuan@huawei.com>) id 1iyWSD-0007XS-56
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 02:47:34 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2693 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pannengyuan@huawei.com>)
- id 1iyWSC-0007Ss-Qe; Mon, 03 Feb 2020 02:47:33 -0500
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 0003527C3EF67B893E43;
- Mon,  3 Feb 2020 15:47:27 +0800 (CST)
-Received: from DESKTOP-9NTIQGG.china.huawei.com (10.173.221.136) by
- DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
- 14.3.439.0; Mon, 3 Feb 2020 15:47:21 +0800
-From: <pannengyuan@huawei.com>
-To: <peter.maydell@linaro.org>
-Subject: [PATCH] pl031: add finalize function to avoid memleaks
-Date: Mon, 3 Feb 2020 15:47:18 +0800
-Message-ID: <20200203074718.37252-1-pannengyuan@huawei.com>
-X-Mailer: git-send-email 2.21.0.windows.1
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BG+gPlFv;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727489AbgBCHvx (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Mon, 3 Feb 2020 02:51:53 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:21764 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1727339AbgBCHvx (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 3 Feb 2020 02:51:53 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1580716312;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=shrxJcLWYa5dcYmO7shA/1HAHpE7/18QYuBpgSLW+Y0=;
+        b=BG+gPlFvXR9u5TTU+6jDQOSSbi+zenA67zz62B4k6BxdS46+2O66XbZosTcEbzW/2GySIR
+        jr0QhKDpvO5cCxD35UijNDAUbctXjoKZZASRQfO+8w5bBVt4qWIYK5qn/QZ41W0+NBIX2v
+        nqa2aoQx0gCmEInvSzDbxBTR9Y5Qu3s=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-72-QSFWe5ESNBOfXFi1a38mKw-1; Mon, 03 Feb 2020 02:51:50 -0500
+X-MC-Unique: QSFWe5ESNBOfXFi1a38mKw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 86F1D1800D41;
+        Mon,  3 Feb 2020 07:51:48 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id DC52960BE2;
+        Mon,  3 Feb 2020 07:51:41 +0000 (UTC)
+Date:   Mon, 3 Feb 2020 08:51:40 +0100
+From:   Igor Mammedov <imammedo@redhat.com>
+To:     gengdongjiu <gengdongjiu@huawei.com>
+Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <fam@euphon.net>, <rth@twiddle.net>, <ehabkost@redhat.com>,
+        <mtosatti@redhat.com>, <xuwei5@huawei.com>,
+        <jonathan.cameron@huawei.com>, <james.morse@arm.com>,
+        <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
+        <qemu-arm@nongnu.org>, <zhengxiang9@huawei.com>,
+        <linuxarm@huawei.com>
+Subject: Re: [PATCH v22 5/9] ACPI: Record the Generic Error Status Block
+ address
+Message-ID: <20200203085140.2e7ab793@redhat.com>
+In-Reply-To: <02a78eff-865c-b9e0-6d5f-d4caa4daa98d@huawei.com>
+References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
+        <1578483143-14905-6-git-send-email-gengdongjiu@huawei.com>
+        <20200128154110.04baa5bc@redhat.com>
+        <02a78eff-865c-b9e0-6d5f-d4caa4daa98d@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.173.221.136]
-X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.190
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: zhang.zhanghailiang@huawei.com, Pan Nengyuan <pannengyuan@huawei.com>,
- qemu-devel@nongnu.org, xuding42@huawei.com, qemu-arm@nongnu.org,
- Euler Robot <euler.robot@huawei.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9oTf2x1BcAO+
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 9+gww5Ye/gJs
 
-From: Pan Nengyuan <pannengyuan@huawei.com>
+On Sun, 2 Feb 2020 20:44:35 +0800
+gengdongjiu <gengdongjiu@huawei.com> wrote:
 
-There is a memory leak when we call 'device_list_properties' with
-typename =3D pl031. It's easy to reproduce as follow:
+> sorry for the late response due to Chinese new year
+> 
+> On 2020/1/28 22:41, Igor Mammedov wrote:
+> > On Wed, 8 Jan 2020 19:32:19 +0800
+> > Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+> > 
+> > in addition to comments of others:
+> >   
+> >> Record the GHEB address via fw_cfg file, when recording
+> >> a error to CPER, it will use this address to find out
+> >> Generic Error Data Entries and write the error.
+> >>
+> >> Make the HEST GHES to a GED device.  
+[...]
+> >> @@ -831,7 +832,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+> >>      acpi_add_table(table_offsets, tables_blob);
+> >>      build_spcr(tables_blob, tables->linker, vms);
+> >>  
+> >> -    if (vms->ras) {
+> >> +    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
+> >> +                                                       NULL));
+> >> +    if (acpi_ged_state &&  vms->ras) {  
+> > 
+> > there is vms->acpi_dev which is GED, so you don't need to look it up
+> > 
+> > suggest:  
+>    Thanks for the suggestion.
+> 
+> >  if (ras) {
+> >     assert(ged)  
+>       assert(vms->acpi_dev), right?
 
-  virsh qemu-monitor-command vm1 --pretty '{"execute": "device-list-prope=
-rties", "arguments": {"typename": "pl031"}}'
+yes, something like this.
 
-The memory leak stack:
-  Direct leak of 48 byte(s) in 1 object(s) allocated from:
-    #0 0x7f6e0925a970 in __interceptor_calloc (/lib64/libasan.so.5+0xef97=
-0)
-    #1 0x7f6e06f4d49d in g_malloc0 (/lib64/libglib-2.0.so.0+0x5249d)
-    #2 0x564a0f7654ea in timer_new_full /mnt/sdb/qemu/include/qemu/timer.=
-h:530
-    #3 0x564a0f76555d in timer_new /mnt/sdb/qemu/include/qemu/timer.h:551
-    #4 0x564a0f765589 in timer_new_ns /mnt/sdb/qemu/include/qemu/timer.h:=
-569
-    #5 0x564a0f76747d in pl031_init /mnt/sdb/qemu/hw/rtc/pl031.c:198
-    #6 0x564a0fd4a19d in object_init_with_type /mnt/sdb/qemu/qom/object.c=
-:360
-    #7 0x564a0fd4b166 in object_initialize_with_type /mnt/sdb/qemu/qom/ob=
-ject.c:467
-    #8 0x564a0fd4c8e6 in object_new_with_type /mnt/sdb/qemu/qom/object.c:=
-636
-    #9 0x564a0fd4c98e in object_new /mnt/sdb/qemu/qom/object.c:646
-    #10 0x564a0fc69d43 in qmp_device_list_properties /mnt/sdb/qemu/qom/qo=
-m-qmp-cmds.c:204
-    #11 0x564a0ef18e64 in qdev_device_help /mnt/sdb/qemu/qdev-monitor.c:2=
-78
-
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
----
- hw/rtc/pl031.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/hw/rtc/pl031.c b/hw/rtc/pl031.c
-index ae47f09635..50664ca000 100644
---- a/hw/rtc/pl031.c
-+++ b/hw/rtc/pl031.c
-@@ -194,6 +194,15 @@ static void pl031_init(Object *obj)
-     s->timer =3D timer_new_ns(rtc_clock, pl031_interrupt, s);
- }
-=20
-+static void pl031_finalize(Object *obj)
-+{
-+    PL031State *s =3D PL031(obj);
-+    if (s->timer) {
-+        timer_del(s->timer);
-+        timer_free(s->timer);
-+    }
-+}
-+
- static int pl031_pre_save(void *opaque)
- {
-     PL031State *s =3D opaque;
-@@ -329,6 +338,7 @@ static const TypeInfo pl031_info =3D {
-     .parent        =3D TYPE_SYS_BUS_DEVICE,
-     .instance_size =3D sizeof(PL031State),
-     .instance_init =3D pl031_init,
-+    .instance_finalize =3D pl031_finalize,
-     .class_init    =3D pl031_class_init,
- };
-=20
---=20
-2.21.0.windows.1
-
-
+ 
+> >     do other fun stuff ...
+> >  }  
+> 
+> >   
+> >>          acpi_add_table(table_offsets, tables_blob);
+> >>          build_ghes_error_table(tables->hardware_errors, tables->linker);
+> >>          acpi_build_hest(tables_blob, tables->hardware_errors,
+[...]

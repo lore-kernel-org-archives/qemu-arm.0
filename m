@@ -1,99 +1,94 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4246874lfp;
-        Mon, 3 Feb 2020 10:11:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxFUOugk2V9MuPLTl14kTLvR51yebEj0bC3Hx3eITFX4dZYSt2LOoFeUf7yVaWxFRsD6PSy
-X-Received: by 2002:ae9:f205:: with SMTP id m5mr25156565qkg.152.1580753469790;
-        Mon, 03 Feb 2020 10:11:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580753469; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4247180lfp;
+        Mon, 3 Feb 2020 10:11:30 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzqJQhBz8UdisSavT3eHp1h3VWL/WFWengIXRoCRAV0tt+qOi25CiALKEHgexL09jof3bLe
+X-Received: by 2002:a05:6214:1267:: with SMTP id r7mr24265024qvv.160.1580753490085;
+        Mon, 03 Feb 2020 10:11:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580753490; cv=none;
         d=google.com; s=arc-20160816;
-        b=o5q0wnfVmX+FXs4i/Bg3dEODnw5EgAq4Oyhga/7fkO2yo7kNrTEoYMPSkTE1R396nr
-         e4cZ3a00b231cr7w81jRA5aPohQuqjDFKNsmyLlMBcXLkMcsV72LD+BxRTiCsbD182J5
-         E03czJqidMDxoI/ljtFbUzgdxJBWcX1kOxNYFIDt3IS1iTRl/zl1YuggHx36ZoJh9Ygx
-         JM94Cz7Gqx3PfhrxyVpllwOuXDQMPAwUdecr8wfLimuq5vDxOSFkpkkNDC1jGGMj7GlQ
-         iDeGnzE/jBsBPYozNrEQFM9WM3ZFel+/LLVzaIx9i8vK4tEEjgC55fT7hyM/hTTZNFm/
-         qmrg==
+        b=y3nVeplbb6QjFT5rqINEFZGHS+acPftgWWMFTiXBVGiL8uIqlchZqF8IUGguHZwvTK
+         l5ULJBP0e74aC0aq7js64UTl7dHOK6hHbpbwN3Z+c44EfMHbZ2WOJCGfpDB/kQb+/dmb
+         lXuQXsGXidMFA/iJLGbYAYbtQoYO9yldJj7+bs0OpleHjiEv5ZhdKxscHBG5iqzdZ9ur
+         neffA6ipgB0skQl3KGFctvN3Uv5lygnldetVomNL/ZFMxeATSsc/DRLg+Gf8kgPp/lBy
+         kWKRJd5ieCJUH9TBqV++Ul0q9JWuz0SlaYsxpDTGh+oNiGGWBYw7t5Q9MNKtaDh1sX8B
+         Hdug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=yq6eFFb6QlatLCP1XykFR99zBztSE9O3BlU2GJ/1iI0=;
-        b=D9mKzRBjv2+LC24BoLDsC6XnQjAtAFbFhlfZAMHcmje1UmIOx2TqjN5uzJwe9b729B
-         zcaDtfvziFSRgqtghlJ2X++gCUF6tFDwXjuyMOqUlVyocSPB13aSR71VrLP1rB5kB+oH
-         aW2lQpnFs6METV255WFHKXmJkNKetZQ91pZcACTAoPF56fkAkR0R4m7C7WPp1Ws9ImcP
-         75gx7Gno4dDK21sDQJcUJ4Wyz+w+k+XhNTh7EEFn0wiMZbaOsc2N64FdKe3GnqPsTAZF
-         ZwuH9qeyWJ42enwgryyZ9XDKqwT/Ip693PTKWBhOACB5uEetWMIzx2Qa3T2z4lLOyqZM
-         CdLA==
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=svzEfdyLNLIk6ITuiz8ooWfYFBglfvrE37Vr4sIWzI8=;
+        b=D0fxesoenN6/uZ7zS5plpChEGcWPz7+WwRCMGYyNXEHMWNhnMNrxDuB7YPIUIpHf3i
+         lXnQoQUrB11gYlLcUUkQApa5CLcewQFWJ+IaxQEe3e3CB5XNbaEzX5xCmG+iZUZpntyA
+         pp1/A08msaw1iiH+ua5aQOmgftroijEj7W2MN53K+CXZ2nU92fwxz2e2J4ThkWVOAqUE
+         ZwKyRM5l3I8Z5Adaw/HHlXtvvDzt9PuPqnm/9Tp2kj5dK/sQZkm+W7IJXVow7hsWt8qH
+         oQyBBOrmRahP7W/C2QfUYvCihuTeOB8xME269bqMr3mYUdj+u1gbXlIsjU1WaDS+Ucwe
+         E22A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YIoNpmYc;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SuZzEXNx;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v2si12298686qtk.273.2020.02.03.10.11.09
+        by mx.google.com with ESMTPS id j21si11762632qtn.245.2020.02.03.10.11.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 10:11:09 -0800 (PST)
+        Mon, 03 Feb 2020 10:11:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YIoNpmYc;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SuZzEXNx;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45495 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45502 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iygBh-00038r-88
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 13:11:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44948)
+	id 1iygC1-0003dN-C3
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 13:11:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45037)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1iyg9s-0001QX-Rb
- for qemu-devel@nongnu.org; Mon, 03 Feb 2020 13:09:17 -0500
+ (envelope-from <groeck7@gmail.com>) id 1iyg9u-0001TQ-DN
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 13:09:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1iyg9r-0004Jc-QX
- for qemu-devel@nongnu.org; Mon, 03 Feb 2020 13:09:16 -0500
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:41725)
+ (envelope-from <groeck7@gmail.com>) id 1iyg9s-0004Ml-QZ
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 13:09:18 -0500
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:35422)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1iyg9m-0003zp-SB; Mon, 03 Feb 2020 13:09:12 -0500
-Received: by mail-pl1-x641.google.com with SMTP id t14so6155666plr.8;
- Mon, 03 Feb 2020 10:09:08 -0800 (PST)
+ id 1iyg9l-0003xg-V0; Mon, 03 Feb 2020 13:09:10 -0500
+Received: by mail-pf1-x443.google.com with SMTP id y73so7988107pfg.2;
+ Mon, 03 Feb 2020 10:09:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=yq6eFFb6QlatLCP1XykFR99zBztSE9O3BlU2GJ/1iI0=;
- b=YIoNpmYcwsYHxKOK/UlD0vU6PTWdFWExXlL2JmdbzLh3oQk8fK66V6QL10L6w0ibtT
- A0wCYQI+1/Ah68mpRTr2DA/2BgTn8wWm4b0oY4Lw3CF/T0DDwhBI5r8aTjlMAaYbDXjH
- FXcIsD5GCXw9oG7uZcu1TY96k0BVyNpm27i412bAZv9GQFgyAzYlUWTyzBn5einmf3vB
- jMM3SQFiy5cUUW1A0oCUzOyqCrB2NZHdNr2ldXh97NTRavO36uH+j6A0u7ybqy5zjfJv
- ieor9NEYnd1bfnLqACFid750QI7pTfpUlFp/dJYM//RYEyiUi6DzEXvx6Re02X/0Pyxj
- cPcg==
+ h=sender:from:to:cc:subject:date:message-id;
+ bh=svzEfdyLNLIk6ITuiz8ooWfYFBglfvrE37Vr4sIWzI8=;
+ b=SuZzEXNxyCuD2l0LP0/1mrgUQ2rsiTC63wspO9lhBkXGUebGmb5eHSFJQlCuQXE7X/
+ NJUPxkKtHNF9rzBAHz6G2Nsh4QR+SmKAhL2O84kpHe153Blt34Za8byEK03pLxDAhRR6
+ kAVj8d9zu0VbvT35Ky781IrXxXM8WhgPOJvUD5w3KhWa3pKoWayLCMco8n3xiQG06Z2+
+ xeibbhp61xDZmsxcthwDzJYFHIAR1hSVlfzIqJvrNwbH9lNCVvSa8aYMO5lacz1X3nqq
+ vJOxC7JW1S0mg6430EIYOvZ5CX4RtLuRIyoAq7IiLAn5ZZmnccS+aci1D4ksGzAEoyeK
+ YDHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references;
- bh=yq6eFFb6QlatLCP1XykFR99zBztSE9O3BlU2GJ/1iI0=;
- b=mp0g83B+CjFejlYU41TkxtEN3bQrIj6B0G/E2ZPtbbS6VZutnxjT6hEt5iSUkbDXxN
- iGyATluFYkSac8JbDPRL62N7nXys7JUpjgsLF89125fWl8ZdH1MH7V4ppNjyBiZpN+t6
- FsyGthWbsU63NF3gTxueh2XWi+bb34G/4cCLy2usnA2JUZb9n2dl0+FXVuYYAdJNafR9
- WKlAVgV+WvGOoc++kSYzRerBNcZ43Ku9rQM9w+9CGiHLwaa5wF8vAyEF5V5GY2X5LFlV
- KJK3v8tlYU9Ucii4g97zW6OEnBCjRqZlj8zhcRfyc1Iiaoo0hOdUO38m8oZXPcB8JyDl
- duLA==
-X-Gm-Message-State: APjAAAVXOF1UBc2FIoDoOGtXwMooDHnZ17vXH18FXWiLqQP3ykjhABPL
- sU8/tSw8smtN0lhu03ShP+Q=
-X-Received: by 2002:a17:902:a616:: with SMTP id
- u22mr24614170plq.173.1580753348008; 
- Mon, 03 Feb 2020 10:09:08 -0800 (PST)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
+ bh=svzEfdyLNLIk6ITuiz8ooWfYFBglfvrE37Vr4sIWzI8=;
+ b=WjsdDwPyK69T34wsJ2w9xcE7qGk76UUujfKOd29Ckk1niY4lQnYf/6KN7M4tpKNGsU
+ ucDwjm2IagPa0YDc6cm+w73MSoCWkOsqapa47QaSxSWrKVBEAgEDO0TlvM6zuAKkxQPL
+ 4uDhDlmRuUW3sdEgzMYj5EvSpe/CzkDN8oSvdY6qqLkFifwntdC9lHwFwA4TpKuleMyN
+ QWG8DBXeNSseOAFkhlZk27wxmKkMgJTWxNY9wY6K+4KaYSBvUu5ZTus33rYrGukxtSWM
+ dr6Zwtlk/O8K2pP8x7z5+TauR8nooyjpJefFP7R0pxmGjCwPvgHl+WFfpsWrwnD6zZoT
+ jHtw==
+X-Gm-Message-State: APjAAAXm3wVUpBs+Y30xhPGBXv+7X45RIT3c1cZzQOni1uRI6+Z5EI8I
+ VP2ohui7lhjiSfj/swY2iuo=
+X-Received: by 2002:a63:6407:: with SMTP id y7mr1568865pgb.45.1580753346564;
+ Mon, 03 Feb 2020 10:09:06 -0800 (PST)
 Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id w128sm20324023pgb.53.2020.02.03.10.09.07
+ by smtp.gmail.com with ESMTPSA id s5sm10738885pgc.73.2020.02.03.10.09.05
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 03 Feb 2020 10:09:07 -0800 (PST)
+ Mon, 03 Feb 2020 10:09:05 -0800 (PST)
 From: Guenter Roeck <linux@roeck-us.net>
 To: Alistair Francis <alistair@alistair23.me>
-Subject: [PATCH 2/3] m25p80: Improve command handling for Jedec and
- unsupported commands
-Date: Mon,  3 Feb 2020 10:09:03 -0800
-Message-Id: <20200203180904.2727-2-linux@roeck-us.net>
+Subject: [PATCH 1/3] m25p80: Convert to support tracing
+Date: Mon,  3 Feb 2020 10:09:02 -0800
+Message-Id: <20200203180904.2727-1-linux@roeck-us.net>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200203180904.2727-1-linux@roeck-us.net>
-References: <20200203180904.2727-1-linux@roeck-us.net>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::641
+X-Received-From: 2607:f8b0:4864:20::443
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,51 +107,194 @@ Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Guenter Roeck <linux@roeck-us.net>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 68aYQhAbRqH3
+X-TUID: yQxR1H3sBa4E
 
-Always report 6 bytes of JEDEC data. Fill remaining data with 0.
-
-For unsupported commands, keep sending a value of 0 until the chip
-is deselected.
-
-Both changes avoid attempts to decode random commands. Up to now this
-happened if the reported Jedec data was shorter than 6 bytes but the
-host read 6 bytes, and with all unsupported commands.
+While at it, add some trace messages to help debug problems
+seen when running the latest Linux kernel.
 
 Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 ---
- hw/block/m25p80.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ hw/block/m25p80.c     | 48 ++++++++++++++++++++-----------------------
+ hw/block/trace-events | 16 +++++++++++++++
+ 2 files changed, 38 insertions(+), 26 deletions(-)
 
 diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 63e050d7d3..aca75edcc1 100644
+index 11ff5b9ad7..63e050d7d3 100644
 --- a/hw/block/m25p80.c
 +++ b/hw/block/m25p80.c
-@@ -1040,8 +1040,11 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+@@ -32,17 +32,7 @@
+ #include "qemu/module.h"
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+-
+-#ifndef M25P80_ERR_DEBUG
+-#define M25P80_ERR_DEBUG 0
+-#endif
+-
+-#define DB_PRINT_L(level, ...) do { \
+-    if (M25P80_ERR_DEBUG > (level)) { \
+-        fprintf(stderr,  ": %s: ", __func__); \
+-        fprintf(stderr, ## __VA_ARGS__); \
+-    } \
+-} while (0)
++#include "trace.h"
+ 
+ /* Fields for FlashPartInfo->flags */
+ 
+@@ -574,7 +564,8 @@ static void flash_erase(Flash *s, int offset, FlashCMD cmd)
+         abort();
+     }
+ 
+-    DB_PRINT_L(0, "offset = %#x, len = %d\n", offset, len);
++    trace_m25p80_flash_erase(offset, len);
++
+     if ((s->pi->flags & capa_to_assert) != capa_to_assert) {
+         qemu_log_mask(LOG_GUEST_ERROR, "M25P80: %d erase size not supported by"
+                       " device\n", len);
+@@ -607,8 +598,7 @@ void flash_write8(Flash *s, uint32_t addr, uint8_t data)
+     }
+ 
+     if ((prev ^ data) & data) {
+-        DB_PRINT_L(1, "programming zero to one! addr=%" PRIx32 "  %" PRIx8
+-                   " -> %" PRIx8 "\n", addr, prev, data);
++        trace_m25p80_programming_zero_to_one(addr, prev, data);
+     }
+ 
+     if (s->pi->flags & EEPROM) {
+@@ -662,6 +652,9 @@ static void complete_collecting_data(Flash *s)
+ 
+     s->state = STATE_IDLE;
+ 
++    trace_m25p80_complete_collecting(s->cmd_in_progress, n, s->ear,
++                                     s->cur_addr);
++
+     switch (s->cmd_in_progress) {
+     case DPP:
+     case QPP:
+@@ -825,7 +818,7 @@ static void reset_memory(Flash *s)
+         break;
+     }
+ 
+-    DB_PRINT_L(0, "Reset done.\n");
++    trace_m25p80_reset_done();
+ }
+ 
+ static void decode_fast_read_cmd(Flash *s)
+@@ -941,9 +934,10 @@ static void decode_qio_read_cmd(Flash *s)
+ 
+ static void decode_new_cmd(Flash *s, uint32_t value)
+ {
+-    s->cmd_in_progress = value;
+     int i;
+-    DB_PRINT_L(0, "decoded new command:%x\n", value);
++
++    s->cmd_in_progress = value;
++    trace_m25p80_command_decoded(value);
+ 
+     if (value != RESET_MEMORY) {
+         s->reset_enable = false;
+@@ -1042,7 +1036,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+         break;
+ 
+     case JEDEC_READ:
+-        DB_PRINT_L(0, "populated jedec code\n");
++        trace_m25p80_populated_jedec();
          for (i = 0; i < s->pi->id_len; i++) {
              s->data[i] = s->pi->id[i];
          }
-+        for (; i < SPI_NOR_MAX_ID_LEN; i++) {
-+            s->data[i] = 0;
-+        }
- 
--        s->len = s->pi->id_len;
-+        s->len = SPI_NOR_MAX_ID_LEN;
-         s->pos = 0;
-         s->state = STATE_READING_DATA;
-         break;
-@@ -1158,6 +1161,11 @@ static void decode_new_cmd(Flash *s, uint32_t value)
-         s->quad_enable = false;
-         break;
-     default:
-+        s->pos = 0;
-+        s->len = 1;
-+        s->state = STATE_READING_DATA;
-+        s->data_read_loop = true;
-+        s->data[0] = 0;
-         qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Unknown cmd %x\n", value);
-         break;
+@@ -1063,7 +1057,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+     case BULK_ERASE_60:
+     case BULK_ERASE:
+         if (s->write_enable) {
+-            DB_PRINT_L(0, "chip erase\n");
++            trace_m25p80_chip_erase();
+             flash_erase(s, 0, BULK_ERASE);
+         } else {
+             qemu_log_mask(LOG_GUEST_ERROR, "M25P80: chip erase with write "
+@@ -1184,7 +1178,7 @@ static int m25p80_cs(SSISlave *ss, bool select)
+         s->data_read_loop = false;
      }
+ 
+-    DB_PRINT_L(0, "%sselect\n", select ? "de" : "");
++    trace_m25p80_select(select ? "de" : "");
+ 
+     return 0;
+ }
+@@ -1194,19 +1188,20 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint32_t tx)
+     Flash *s = M25P80(ss);
+     uint32_t r = 0;
+ 
++    trace_m25p80_transfer(s->state, s->len, s->needed_bytes, s->pos,
++                          s->cur_addr, (uint8_t)tx);
++
+     switch (s->state) {
+ 
+     case STATE_PAGE_PROGRAM:
+-        DB_PRINT_L(1, "page program cur_addr=%#" PRIx32 " data=%" PRIx8 "\n",
+-                   s->cur_addr, (uint8_t)tx);
++        trace_m25p80_page_program(s->cur_addr, (uint8_t)tx);
+         flash_write8(s, s->cur_addr, (uint8_t)tx);
+         s->cur_addr = (s->cur_addr + 1) & (s->size - 1);
+         break;
+ 
+     case STATE_READ:
+         r = s->storage[s->cur_addr];
+-        DB_PRINT_L(1, "READ 0x%" PRIx32 "=%" PRIx8 "\n", s->cur_addr,
+-                   (uint8_t)r);
++        trace_m25p80_read_byte(s->cur_addr, (uint8_t)r);
+         s->cur_addr = (s->cur_addr + 1) & (s->size - 1);
+         break;
+ 
+@@ -1244,6 +1239,7 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint32_t tx)
+         }
+ 
+         r = s->data[s->pos];
++        trace_m25p80_read_data(s->pos, (uint8_t)r);
+         s->pos++;
+         if (s->pos == s->len) {
+             s->pos = 0;
+@@ -1281,7 +1277,7 @@ static void m25p80_realize(SSISlave *ss, Error **errp)
+             return;
+         }
+ 
+-        DB_PRINT_L(0, "Binding to IF_MTD drive\n");
++        trace_m25p80_binding();
+         s->storage = blk_blockalign(s->blk, s->size);
+ 
+         if (blk_pread(s->blk, 0, s->storage, s->size) != s->size) {
+@@ -1289,7 +1285,7 @@ static void m25p80_realize(SSISlave *ss, Error **errp)
+             return;
+         }
+     } else {
+-        DB_PRINT_L(0, "No BDRV - binding to RAM\n");
++        trace_m25p80_binding_no_bdrv();
+         s->storage = blk_blockalign(NULL, s->size);
+         memset(s->storage, 0xFF, s->size);
+     }
+diff --git a/hw/block/trace-events b/hw/block/trace-events
+index c03e80c2c9..d052f7578c 100644
+--- a/hw/block/trace-events
++++ b/hw/block/trace-events
+@@ -134,3 +134,19 @@ xen_block_blockdev_add(char *str) "%s"
+ xen_block_blockdev_del(const char *node_name) "%s"
+ xen_block_device_create(unsigned int number) "%u"
+ xen_block_device_destroy(unsigned int number) "%u"
++
++# m25p80.c
++m25p80_flash_erase(int offset, uint32_t len) "offset = 0x%"PRIx32", len = %u"
++m25p80_programming_zero_to_one(uint32_t addr, uint8_t prev, uint8_t data) "programming zero to one! addr=0x%"PRIx32"  0x%"PRIx8" -> 0x%"PRIx8
++m25p80_reset_done(void) "Reset done."
++m25p80_command_decoded(uint32_t cmd) "new command:0x%"PRIx32
++m25p80_complete_collecting(uint32_t cmd, int n, uint8_t ear, uint32_t cur_addr) "decode cmd: 0x%"PRIx32" len %d ear 0x%"PRIx8" addr 0x%"PRIx32
++m25p80_populated_jedec(void) "populated jedec code"
++m25p80_chip_erase(void) "chip erase"
++m25p80_select(const char *what) "%sselect"
++m25p80_page_program(uint32_t addr, uint8_t tx) "page program cur_addr=0x%"PRIx32" data=0x%"PRIx8
++m25p80_transfer(uint8_t state, uint32_t len, uint8_t needed, uint32_t pos, uint32_t cur_addr, uint8_t t) "Transfer state 0x%"PRIx8" len 0x%"PRIx32" needed 0x%"PRIx8" pos 0x%"PRIx32" addr 0x%"PRIx32" tx 0x%"PRIx8
++m25p80_read_byte(uint32_t addr, uint8_t v) "Read byte 0x%"PRIx32"=0x%"PRIx8
++m25p80_read_data(uint32_t pos, uint8_t v) "Read data 0x%"PRIx32"=0x%"PRIx8
++m25p80_binding(void) "Binding to IF_MTD drive"
++m25p80_binding_no_bdrv(void) "No BDRV - binding to RAM"
 -- 
 2.17.1
 

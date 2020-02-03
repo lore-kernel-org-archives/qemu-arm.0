@@ -1,152 +1,135 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3637580lfp;
-        Sun, 2 Feb 2020 23:55:15 -0800 (PST)
-X-Google-Smtp-Source: APXvYqznBqP7AaCsFxZI3udJJ3prQ7bYCOnSk4Gx9fR6FMdg21Ze2ICy9ywM8B5iX7QWXCtE3dwn
-X-Received: by 2002:a9d:2c2:: with SMTP id 60mr16953314otl.208.1580716515286;
-        Sun, 02 Feb 2020 23:55:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580716515; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3640992lfp;
+        Sun, 2 Feb 2020 23:59:54 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy7D1KIWiGd2tmLEtZBpLBZ1fOStqokpDY2v+niB9WhgI5syEqPyK76CediwrwZ1HwEw9C/
+X-Received: by 2002:a37:a914:: with SMTP id s20mr22504959qke.270.1580716794075;
+        Sun, 02 Feb 2020 23:59:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580716794; cv=none;
         d=google.com; s=arc-20160816;
-        b=z0hKtjDsQD5f6nTlshM+Xk42SHHhRexQpYUnyoR9VV4qqZ6nvz3uo9Snf+hk7zv7tx
-         5K3/7//ZhUzGrssdg7aoJXVt1MCCpT4HkOE8fr7mAsnF/y9Fqgeo/G7edMVuIulXKX4r
-         RQAiut4+1dTAMhpjYOiPW552yvM/m1zV2CpNg6skV/kfwoWHUKeA8bRuhpN/9GCDeeh8
-         vZKAaE5eaaGJJhKB8I5v2a819ImYyJ9DLflSLxx5g96vMaHqytIj0DC5y7lR8ah2gHFj
-         wcansl6YZQ1bDwGsBjFNuqxKCL8af5m+qWTuVmb3vSn7Wsrmv/bHd6fMS05WqZ2zMPPM
-         FTlQ==
+        b=02QUZhhx7Var0zW2KRW7/vOuvjS2fmZreJZdTDHW/b++CY5B8025t/BnPIL5AuzpBL
+         bqXm/NsVSBJ3nMDvXsEB66q0dShFpNRXD2UCvktKgScozUqHcFej+YM8/xJUtWfVezyN
+         Y8ucsiZRrVMeHWV0YsVq2tLuCBtLAJVZMlI/rKulEXpcMesxwvRjbM20YCy6cujbGlnL
+         4A5kEAw5Qw/7dyoTOHTyoSHw09AZ0uFErlnb0n33Zcsx6/+DQiDbYlxpZP9VQXiL/B56
+         6+e6AL8pWZpEM4qk6a9ZJEer6tmzOV6ME4H82CY+Wu9cq7in5loH5UK1ZsPYdfwCU220
+         mYjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=dboh0QVxXtI2PvjSsCAnC9KkJagQEfb/i+ydQ8g4GXY=;
-        b=g4+6QvdmrUh1V2SYZJtMI0IkD0FQUJwxMhugOCqooFdbT5gt912gM8O2hEYePeXTpg
-         PardM58zjcQ/U980hOhzdQDyNY0sQSMZUGERPnYk+NWSkhRW8IpnHUaOWWS6BnY3UaNQ
-         r4OI00nl7ZbhQSWtr9n9mFkMF+BmZg1Dnn+Zzvlbzal9e0KaBo3A4bw8iV9bGS/VWOkj
-         7ELv3OEhCwYrnzNaWSP4X7aFT0ReI/s4nzMFb6a8ylbUOqke8CWIpQoU1tWD9g7KRevO
-         sJayyhoVJ5TBtGE0SS7g0JssaWlsI8rfAZYTM2hn5LMim+J/y2QUZF+OPxhCLkZ12vgC
-         RYMA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=sBdoRtr8F0Pw3FFJ8U50S8fiBe9PEVWu5K9A4Ul6qsY=;
+        b=psMC8rvtJk+aTgaemMV7JiG3Q7vjnl9C2HK1iWUqsBel6KMMgmUj/OHUPCe/AMuPl4
+         3w2HkmR9+pwdGhmx8eDDYeXOV4tAhLz/RUkLMl4xZ31zcGtnG2MHSTqx51pFxGZW+WPt
+         h3rKlFoTF1ydznEnQmeJBJRJ4O8MgtLIfMhrSV1SukLOWWYtowLXYtX4zcUuH3jYbDMh
+         QKuNqflmxMQ27Qa9bS+CzoeFiqvL+/WcTGpR27vNqEJO1Y3XXaRnpGmi7zYMSNb5mBPt
+         pp1cdf+M32sflaYEuL38crxoUSy4C08OL/5fel955aMvBgb1utWLpzj1MrWqZny+vwlN
+         aTtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B8ltmJRv;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id t7si8280105otl.133.2020.02.02.23.55.15;
-        Sun, 02 Feb 2020 23:55:15 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b=U6ZC0s3M;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b18si6056904qtr.340.2020.02.02.23.59.53
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 02 Feb 2020 23:59:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B8ltmJRv;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727501AbgBCHzO (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 3 Feb 2020 02:55:14 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:47503 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1727489AbgBCHzO (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 3 Feb 2020 02:55:14 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1580716512;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=dboh0QVxXtI2PvjSsCAnC9KkJagQEfb/i+ydQ8g4GXY=;
-        b=B8ltmJRvDaVsPbXZNXDfYs5feptBzq3hUKqkz4ycPnrZlUBGR399YQemGQ0VkeWhISgjsb
-        qAuwYYrr6uEwP72iX0p+UQMvhnXkYZ4WjT//NuXQatTzFvMxJumSWUvJmV00jV/VfuRPAO
-        0U0DvAdpJosR0MQq0Gemg2J/aNGIpUc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-196-ziPYIh3SP6WXYH8YYFr7Yg-1; Mon, 03 Feb 2020 02:55:10 -0500
-X-MC-Unique: ziPYIh3SP6WXYH8YYFr7Yg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9DBB4107ACCD;
-        Mon,  3 Feb 2020 07:55:08 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 0C280171D6;
-        Mon,  3 Feb 2020 07:55:02 +0000 (UTC)
-Date:   Mon, 3 Feb 2020 08:55:01 +0100
-From:   Igor Mammedov <imammedo@redhat.com>
-To:     gengdongjiu <gengdongjiu@huawei.com>
-Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <fam@euphon.net>, <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <mtosatti@redhat.com>, <xuwei5@huawei.com>,
-        <jonathan.cameron@huawei.com>, <james.morse@arm.com>,
-        <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
-        <qemu-arm@nongnu.org>, <zhengxiang9@huawei.com>,
-        <linuxarm@huawei.com>
-Subject: Re: [PATCH v22 7/9] ACPI: Record Generic Error Status Block(GESB)
- table
-Message-ID: <20200203085501.499e3a83@redhat.com>
-In-Reply-To: <a9f46632-0766-7e82-7dc4-752d00b4a0a1@huawei.com>
-References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
-        <1578483143-14905-8-git-send-email-gengdongjiu@huawei.com>
-        <20200128162938.18bd0e95@redhat.com>
-        <a9f46632-0766-7e82-7dc4-752d00b4a0a1@huawei.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=U6ZC0s3M;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35764 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iyWe9-0000ZL-IN
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 02:59:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55147)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <richard.henderson@linaro.org>) id 1iyWe1-0000Z8-TN
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 02:59:46 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <richard.henderson@linaro.org>) id 1iyWe0-0007Qc-ST
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 02:59:45 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:38218)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iyWe0-0007LV-KD
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 02:59:44 -0500
+Received: by mail-wr1-x429.google.com with SMTP id y17so16654313wrh.5
+ for <qemu-arm@nongnu.org>; Sun, 02 Feb 2020 23:59:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=sBdoRtr8F0Pw3FFJ8U50S8fiBe9PEVWu5K9A4Ul6qsY=;
+ b=U6ZC0s3MIufiBJ5tEjwWysMaWYuaN0fim8HXSMLBm/qDPLVPMBT1RG1lqc0hEqDTpC
+ g6sm5QyeycWtyciY7D7OfXrb0/Et8EK+2rDBZZ+ji5GyPydhNQ7ftzo7OEPabFvfWJGD
+ A80N0r4C7Izs4a4IJCF4zp8A9HREtbu5d+OtrnZnihZ9z0gg2dEZu1726qeWVWukKnMd
+ 2Mo076N8her+aAF8rmSmyX+BeMSNEcwsvmbtT7VdGb2QIuc9BXgaGd4sCMgUj092ECcf
+ iB5oQghuZT33+OevoiQUkpEBYCWLcwS5RaBVKuqS5OukAkb05AzLhPvGQBRygw4joEo4
+ iLDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=sBdoRtr8F0Pw3FFJ8U50S8fiBe9PEVWu5K9A4Ul6qsY=;
+ b=MEQsghYmNnVtUrkX11otQ6vhsfEz/VSd1LncLI8eQoAEzI+CkrBtZyssULLrPAx5qW
+ F4I1FzALyqXdMAMr8T5emNRSD01Hc+XQUyqRoFOqD7p3cgYitNVFoPWpkCI4csBEYHgM
+ I+JnfHBoi4hJ2EMvck7wXHp8GeW2pqY9bBDjG0ieZI7xXGwnsiTXaG/rBe8FcN6gmrBk
+ TirQjpxthr9hGVyHcDMGc3HS3NB28Yf4nI1ZxVo3Aht2JxHevOde5jXf7AIAsdWy85Wo
+ oDQ/loi0PNQfP+U+EHJ1gnR8VEbk9TXwNa2RN+80h9wYw8POicbiRe6C0thMvBLgV308
+ +IIw==
+X-Gm-Message-State: APjAAAX2Ul4h4rnZRd/HZBIyrRnH1pB88s1ypPz2OFR7soejO9U1y70l
+ 07tt67qqh/O5kvw7oPYNmxLmbw==
+X-Received: by 2002:adf:f606:: with SMTP id t6mr7733242wrp.304.1580716783382; 
+ Sun, 02 Feb 2020 23:59:43 -0800 (PST)
+Received: from [10.43.13.93] ([135.196.99.211])
+ by smtp.gmail.com with ESMTPSA id k10sm15968wrd.68.2020.02.02.23.59.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 02 Feb 2020 23:59:42 -0800 (PST)
+Subject: Re: [PATCH] pl031: add finalize function to avoid memleaks
+To: pannengyuan@huawei.com, peter.maydell@linaro.org
+References: <20200203074718.37252-1-pannengyuan@huawei.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <c4fdea63-0d7e-1f0a-b0f9-68bce365dc5e@linaro.org>
+Date: Mon, 3 Feb 2020 07:59:41 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <20200203074718.37252-1-pannengyuan@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 0Ds7JL+sm6B3
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::429
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: xuding42@huawei.com, Euler Robot <euler.robot@huawei.com>,
+ qemu-arm@nongnu.org, zhang.zhanghailiang@huawei.com, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2Q2HltZJtnZ+
 
-On Sun, 2 Feb 2020 21:42:23 +0800
-gengdongjiu <gengdongjiu@huawei.com> wrote:
+On 2/3/20 7:47 AM, pannengyuan@huawei.com wrote:
+> +static void pl031_finalize(Object *obj)
+> +{
+> +    PL031State *s = PL031(obj);
+> +    if (s->timer) {
 
-> On 2020/1/28 23:29, Igor Mammedov wrote:
-> > On Wed, 8 Jan 2020 19:32:21 +0800
-> > Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-> >   
-> >> kvm_arch_on_sigbus_vcpu() error injection uses source_id as
-> >> index in etc/hardware_errors to find out Error Status Data
-> >> Block entry corresponding to error source. So supported source_id
-> >> values should be assigned here and not be changed afterwards to
-> >> make sure that guest will write error into expected Error Status
-> >> Data Block even if guest was migrated to a newer QEMU.
-> >>
-> >> Before QEMU writes a new error to ACPI table, it will check whether
-> >> previous error has been acknowledged. Otherwise it will ignore the new
-> >> error. For the errors section type, QEMU simulate it to memory section
-> >> error.
-> >>
-> >> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> >> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-> >> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+As far as I can see, s->timer can never be null.
 
-btw:
-when you are changing patch and it's not a trivial change,
-you are supposed to drop Reviewed-by/Acked-by tags.
+Otherwise,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-[...]
-> >> diff --git a/include/qemu/uuid.h b/include/qemu/uuid.h
-> >> index 129c45f..b35e294 100644
-> >> --- a/include/qemu/uuid.h
-> >> +++ b/include/qemu/uuid.h
-> >> @@ -34,6 +34,11 @@ typedef struct {
-> >>      };
-> >>  } QemuUUID;
-> >>  
-> >> +#define UUID_LE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)             \
-> >> +  {{{ (a) & 0xff, ((a) >> 8) & 0xff, ((a) >> 16) & 0xff, ((a) >> 24) & 0xff, \
-> >> +     (b) & 0xff, ((b) >> 8) & 0xff, (c) & 0xff, ((c) >> 8) & 0xff,          \
-> >> +     (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) } } }  
-> > 
-> > since you are adding generalizing macro, take of NVDIMM_UUID_LE which served as model  
-> 
-> do you mean use this generalizing macro to replace NVDIMM_UUID_LE, right?
 
-yes, and preferably do that in a separate patch
-
-> 
-> > 
-> >   
-> >>  #define UUID_FMT "%02hhx%02hhx%02hhx%02hhx-" \
-> >>                   "%02hhx%02hhx-%02hhx%02hhx-" \
-> >>                   "%02hhx%02hhx-" \  
-> > 
-> > .
-> >   
-> 
+r~

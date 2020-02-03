@@ -1,186 +1,215 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3988215lfp;
-        Mon, 3 Feb 2020 06:04:15 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzWkbnoPEKnRPj2vGA/y0epvOsvc+u+FzL0eePIaYXpEIs9yv5J1k2mMfcqXTan5nbwZU3Z
-X-Received: by 2002:ac8:1e8e:: with SMTP id c14mr22254825qtm.330.1580738655527;
-        Mon, 03 Feb 2020 06:04:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580738655; cv=none;
-        d=google.com; s=arc-20160816;
-        b=IGQXKPBNp/tyh4/CJoGPZ/OvbiTMcGAckLx7ML1jVaFM+1aPZZPIaV6czq0az1zO5N
-         F07juMfdlwldZwyV+F6ddVh2GDKIkVg5+o53EWv0jp3w5sFMtVmmfk8CXBVcRUtHW//t
-         HEwFVQ9zHwRoE9QhgKrcK2cAuaZGUzjriqo8rJkF02iyM8Kl/OJHbQbpYP3952x0tWi3
-         YirCU6dioHPo5er4CyQLPTk5V6zhAWN+vPUWHQbV7oyIxbYghH4hFkU2+RnjonCkM7+M
-         EA3LX2DKJ1ZXXVyG/HMou10ewaK3073Yf4Ibb4WVja7YFCrwMnOaMt0z/K+ICwXX/exC
-         41tQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=g47PT5lt/iJyYcUt6t9a4d2giehtZw2lN1sbG54X8jE=;
-        b=Ldj2VTyjgjmpzP48eSndfsMf5107YAZM7IV4uYPz/HBhH0By//8rxi9yzX8bROnDXl
-         Z+sv1qtZ/V7TupOKmbTWMGpufiyZw11PNnMiJvaTHRtmNudR2jprhNa73IqsGpmqhGmT
-         MT5d+Ngg6fABP4fr2TQImUB6lxmuiqSRy3LRvUHKIto4gb448YZpkP1KRubua+3i7yU2
-         cX7tdIrS7eVyXxrh9s7YUAkCDjnBb+h2RSgrADiEZf1p7bl1VSkPs7FHxwxHgqqH3UZq
-         eIFTStDcAGtS/f5Yzq4XP3C6vJisQaroSAyFwh/AbXCPir1A/VkxaapQkxKVoRTz5nBu
-         lO+Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=h4yNt754;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3989005lfp;
+        Mon, 3 Feb 2020 06:04:53 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyyKdMDlFumOzZgNAplFfA15sztBCmytr3ynFMAIuwEO0u9wKg+2rzlnmzqNdX0TqkzRLCR
+X-Received: by 2002:a37:68a:: with SMTP id 132mr22729902qkg.139.1580738692542;
+        Mon, 03 Feb 2020 06:04:52 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a188si11786276qke.248.2020.02.03.06.04.15
+        by mx.google.com with ESMTPS id fb20si11211951qvb.212.2020.02.03.06.04.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 06:04:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Feb 2020 06:04:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=h4yNt754;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41368 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41380 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iycKk-0004c2-Uz
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 09:04:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58540)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iycLL-00055I-WB
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 09:04:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58508)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iycK4-0003t1-Bm
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:03:34 -0500
+ (envelope-from <LYan@suse.com>) id 1iycK2-0003pQ-3g
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 09:03:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iycK2-0007bo-M5
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:03:32 -0500
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:37935)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iycK2-0007bE-Fb
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:03:30 -0500
-Received: by mail-ot1-x344.google.com with SMTP id z9so13696264oth.5
- for <qemu-arm@nongnu.org>; Mon, 03 Feb 2020 06:03:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=g47PT5lt/iJyYcUt6t9a4d2giehtZw2lN1sbG54X8jE=;
- b=h4yNt754J9oq9dRlRUyCU5FsT9uUKfxsBS0w+jAhRlB6lXhOd1eA98BTjJbustxZPb
- cjFx/lLT0kaxJyZJ4iBagN/Pr5m16qD6x/hLAiSjfZDrRLIv0ju2gZ9LmT8Fgtj4XS2D
- meDg2M1MPj4jtMaBZi1Vq6E6UAEl1hrARLjGo7YnhGe3/fWq2pscaZwLAYOc+f7QgWrb
- 0Y/UXvB+nXH61znESX5XBxRKiZ7VEtBEINEUiP4oQrSWjk0ZfdmzirlXG/SGJnTXyopd
- o7ZYCjX0kRQv798DJVSgYLO8ivYHsvBfwKliAWj5L+okqBM5vK6xOl5EryemyXw+a5A4
- nncg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=g47PT5lt/iJyYcUt6t9a4d2giehtZw2lN1sbG54X8jE=;
- b=cFMnhQLjCnhZvqq5/hPNGEzMExozFGw5llO/UyicQEdOV3FKv5JTTZUTFMp+Ei3PBn
- hpTso5Js3xAPFfIWftugw/T31AWQkoi9xywy3sLqW5yjCmibzOerFzpswdFZbzSp0yAa
- nKsGeIZ+A1QiF9TsBakn0RyUelKDrCpVwDKA0W+LenNcsyPtz77n01sTj9hTv5Qh9E8O
- SKkKtRx8J1/kCOQAJbgJ9+5YEgoPxT7zlSKHQ8vlZj373a+ZJ1PBcvXjj4+iMyJLeNRm
- 3IsrkBR+JUJw4GWF5OlsKjSJeabNVowYqRLXyLX/nR4DYCuY6WqDk87UVyV7OoqtSJzu
- XCgA==
-X-Gm-Message-State: APjAAAX/m8oUfuGiOvPTnfimdzT1tZqnUvXGTNYD3M47x3f2maAsYDNc
- 4mJxENC+6eG+GxvJEZb55Z0sxPYext8NzhOoSYEsrg==
-X-Received: by 2002:a05:6830:13da:: with SMTP id
- e26mr16817164otq.97.1580738609492; 
- Mon, 03 Feb 2020 06:03:29 -0800 (PST)
+ (envelope-from <LYan@suse.com>) id 1iycJw-0007VE-Vi
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 09:03:30 -0500
+Received: from m9a0014g.houston.softwaregrp.com ([15.124.64.90]:52110)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <LYan@suse.com>)
+ id 1iycJt-0007MH-MM; Mon, 03 Feb 2020 09:03:21 -0500
+Received: FROM m9a0014g.houston.softwaregrp.com (15.121.0.190) BY
+ m9a0014g.houston.softwaregrp.com WITH ESMTP; 
+ Mon,  3 Feb 2020 14:02:25 +0000
+Received: from M9W0067.microfocus.com (2002:f79:be::f79:be) by
+ M9W0067.microfocus.com (2002:f79:be::f79:be) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1591.10; Mon, 3 Feb 2020 14:01:05 +0000
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (15.124.72.12) by
+ M9W0067.microfocus.com (15.121.0.190) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1591.10 via Frontend Transport; Mon, 3 Feb 2020 14:01:05 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=HZXsRrkUbddCCaxBqnhz9FnAjuFFJeqbqxzEOgAwvLTDSfpakOadkOpr0D1Xzk6NxC6/C0Ds2Rp1+xSP9E5f/BUNAnS0oBEj33mM28/yRvP1cK6HqfAUZV6hXOZhXCBir6W69Zm0o4wn4IFC2KcJCC/rfXNjE2UayYIGrSTRw7q6nE1NWn/cjVlnBOR+U/IOhklvd4C3oHGAHWQc0MB4BqxLmdFHGN72zbb5vtcw5u9qqJvz2CbYZZVxlikqTNLTVgo0Jw6KD6xlQDMDQsxkK8JVDTiBL7+LeUrU8lOE/FDXHg6cPtj+YooQ4TwNayqer/O5D7RMbwDXb74iXtePqA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=gD3SPoRW1SuWpV4232l/ufoTjhDiWmmwq0qWNgM5BL8=;
+ b=RWiXYo8nckUK8HlbiHFqg/5FuqnhtfoHOyHSsY9zqxV5jKtJHaGf9I6tu0TF8FmvmlQV63iZwn7jI1bkxFmC9paK9N+fI5Yh8FXue98n16zErkeL/dG81/itU+WeHymngDwyP6F4QIYQ8hBNkOodGI1GMTIddXEmYV9ciSuBREu94E6wIC8jqV7TYWhTxvDeq8pRlziX2K/TyEDwraiWSFdOXwLRrg3ObLv8zoYnPWEV+k4NjMKXSSl6UuLyPSoiNyB1dqbSJW3CADSYC6zq+tBtNrFyORKlUJuQxQzfKeKk7ZP7TsPJ6xFXg8S09CyH7xraR/xyLnXYjJzY4I1/ow==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=suse.com; dmarc=pass action=none header.from=suse.com;
+ dkim=pass header.d=suse.com; arc=none
+Authentication-Results: spf=none (sender IP is ) smtp.mailfrom=LYan@suse.com; 
+Received: from BYAPR18MB2888.namprd18.prod.outlook.com (20.179.58.203) by
+ BYAPR18MB2696.namprd18.prod.outlook.com (20.179.58.90) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2686.29; Mon, 3 Feb 2020 14:01:04 +0000
+Received: from BYAPR18MB2888.namprd18.prod.outlook.com
+ ([fe80::70c4:1802:725e:e829]) by BYAPR18MB2888.namprd18.prod.outlook.com
+ ([fe80::70c4:1802:725e:e829%7]) with mapi id 15.20.2686.030; Mon, 3 Feb 2020
+ 14:01:04 +0000
+Subject: Re: [PATCH v4] target/arm/monitor: query-cpu-model-expansion crashed
+ qemu when using machine type none
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200203134251.12986-1-lyan@suse.com>
+ <CAFEAcA-CcNwozBBFWenjnBpRPYhxe_sDiKffwO+SZk38xtY4VA@mail.gmail.com>
+From: Liang Yan <lyan@suse.com>
+Autocrypt: addr=lyan@suse.com; prefer-encrypt=mutual; keydata=
+ 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
+ yMQQ+LPXfanS4w==
+Message-ID: <ae4957c5-01a9-fbbf-c3d5-a834e6b4cbc3@suse.com>
+Date: Mon, 3 Feb 2020 09:01:01 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
+In-Reply-To: <CAFEAcA-CcNwozBBFWenjnBpRPYhxe_sDiKffwO+SZk38xtY4VA@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: BL0PR1501CA0015.namprd15.prod.outlook.com
+ (2603:10b6:207:17::28) To BYAPR18MB2888.namprd18.prod.outlook.com
+ (2603:10b6:a03:10d::11)
 MIME-Version: 1.0
-References: <20200203001505.52573-1-guoheyi@huawei.com>
- <20200203014246-mutt-send-email-mst@kernel.org>
- <455d16a4-e7b6-af9b-0b7e-43be70e22f7b@huawei.com>
-In-Reply-To: <455d16a4-e7b6-af9b-0b7e-43be70e22f7b@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 3 Feb 2020 14:03:18 +0000
-Message-ID: <CAFEAcA_g3XXnxiV2O37zpj7gw8For042hg0Vau44qm=ByOuXdw@mail.gmail.com>
-Subject: Re: [PATCH v2 0/7] Some cleanup in arm/virt/acpi
-To: Heyi Guo <guoheyi@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::344
-X-BeenThere: qemu-arm@nongnu.org
+Received: from [IPv6:2605:a000:160e:228::5ca] (2605:a000:160e:228::5ca) by
+ BL0PR1501CA0015.namprd15.prod.outlook.com (2603:10b6:207:17::28) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2686.29 via Frontend
+ Transport; Mon, 3 Feb 2020 14:01:03 +0000
+X-Originating-IP: [2605:a000:160e:228::5ca]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: df60fc5d-9d3e-41ac-6b96-08d7a8b1822c
+X-MS-TrafficTypeDiagnostic: BYAPR18MB2696:
+X-Microsoft-Antispam-PRVS: <BYAPR18MB269681DBAAB7C6288B2E2CCABF000@BYAPR18MB2696.namprd18.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:2657;
+X-Forefront-PRVS: 0302D4F392
+X-Forefront-Antispam-Report: SFV:NSPM;
+ SFS:(10019020)(4636009)(39860400002)(346002)(396003)(376002)(136003)(366004)(189003)(199004)(54906003)(36756003)(6486002)(8936002)(4326008)(81166006)(81156014)(316002)(66556008)(478600001)(66476007)(186003)(16526019)(66946007)(52116002)(6916009)(2616005)(53546011)(31686004)(31696002)(8676002)(2906002)(86362001)(5660300002);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR18MB2696;
+ H:BYAPR18MB2888.namprd18.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+Received-SPF: None (protection.outlook.com: suse.com does not designate
+ permitted sender hosts)
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 9Bq9zO7aw3QxEJ4qzjyrTN3r4ZrLSCBxBJIaiWqeTf7/uiEKGiUdLwqdOB82d3VIliT/m4rtefq/ci1DLSfXh3UkbJwM9OQ0mBUtvSNmuSz4X0wTrtuFDj0X7WMgPxU/QP4HuM4LPBzZdUwchWIaj00ZbYKyQnbpLspKeCfsvG3IRyttDEjqc+2F7/DbnX7vk4J/hbfc9j71cIQII8W7+5nwPfccRc/YKJY7ToitveyFxty+oqyeJqFwgpPt6ZimZTOAus6VOlpzpCiKeWhXy489a1XxenYDwW8yIzXbVsNA63AL8eEM0QsJPrqCPLfufLXiNc9m3/BwpSbL7NjrBTnpIA4CrY66LSGkBvs23TbMFVCYF21ob8D9vxGN3tiC07s4ilLzgfpCy/mxFQZxSCkGw/MqOobUmzqH2Cm/O4+GiGILAv9+yhiyJoeyGQN+
+X-MS-Exchange-AntiSpam-MessageData: nenaBv4HB2ue0gg4mjcA4PriRpkjjVFzi8PuuH1ou3wGuW+sGQNRnyCSp3g+lA3bVaJQJ8cAjCRO1h+t6Yb+W0b4S8UV1VFKewVCal3bIKM5RPp/VYC3+lKHC4HfzIVQivwPN+tRM9B5wbTiT2ZDFssxMSXKsB+izSqFMYL3Pv4=
+X-MS-Exchange-CrossTenant-Network-Message-Id: df60fc5d-9d3e-41ac-6b96-08d7a8b1822c
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Feb 2020 14:01:04.4140 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 856b813c-16e5-49a5-85ec-6f081e13b527
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: +rHiTH3k0jAshGNVcMY4drNi/CrdmuTSGxY0irggh11yyWsqnqFXDDQLzkfcRZlY
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR18MB2696
+X-OriginatorOrg: suse.com
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 15.124.64.90
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Igor Mammedov <imammedo@redhat.com>, wanghaibin.wang@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HYc2LftGnd+G
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Andrew Jones <drjones@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jJTOi12KtlXI
 
-On Mon, 3 Feb 2020 at 13:33, Heyi Guo <guoheyi@huawei.com> wrote:
->
->
-> =E5=9C=A8 2020/2/3 14:43, Michael S. Tsirkin =E5=86=99=E9=81=93:
-> > On Mon, Feb 03, 2020 at 08:14:58AM +0800, Heyi Guo wrote:
-> >> Remove conflict _ADR objects, and fix and refine PCI device definition=
- in
-> >> ACPI/DSDT.
-> >>
-> >> Cc: Peter Maydell <peter.maydell@linaro.org>
-> >> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> >> Cc: Igor Mammedov <imammedo@redhat.com>
-> >> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-> >> Cc: qemu-arm@nongnu.org
-> >> Cc: qemu-devel@nongnu.org
-> >
-> > Series
-> >
-> > Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> >
-> > merge through ARM tree pls.
->
-> Thanks, Michael :)
->
->
-> Hi Peter,
->
-> Do I need to send v3 to update the commit message of patch 4/7 as
-> Michael suggested?
 
-This patchset seems to be corrupt somehow:
 
-e104462:bionic:qemu$ patches apply -s
-id:20200203001505.52573-1-guoheyi@huawei.com
-Applying: bios-tables-test: prepare to change ARM virt ACPI DSDT
-Applying: arm/virt/acpi: remove meaningless sub device "RP0" from PCI0
-Applying: arm/virt/acpi: remove _ADR from devices identified by _HID
-Applying: arm/acpi: fix PCI _PRT definition
-Applying: arm/acpi: fix duplicated _UID of PCI interrupt link devices
-Applying: arm/acpi: simplify the description of PCI _CRS
-Applying: virt/acpi: update golden masters for DSDT update
-error: corrupt patch at line 68
-error: could not build fake ancestor
-hint: Use 'git am --show-current-patch' to see the failed patch
-Patch failed at 0007 virt/acpi: update golden masters for DSDT update
-When you have resolved this problem, run "git am --continue".
-If you prefer to skip this patch, run "git am --skip" instead.
-To restore the original branch and stop patching, run "git am --abort".
+On 2/3/20 8:54 AM, Peter Maydell wrote:
+> On Mon, 3 Feb 2020 at 13:44, Liang Yan <lyan@suse.com> wrote:
+>>
+>> Commit e19afd566781 mentioned that target-arm only supports queryable
+>> cpu models 'max', 'host', and the current type when KVM is in use.
+>> The logic works well until using machine type none.
+>>
+>> For machine type none, cpu_type will be null if cpu option is not
+>> set by command line, strlen(cpu_type) will terminate process.
+>> So We add a check above it.
+>>
+>> This won't affect i386 and s390x since they do not use current_cpu.
+>>
+>> Signed-off-by: Liang Yan <lyan@suse.com>
+>> ---
+>>  v4: change code style based on the review from Andrew Jones
+>>  v3: change git commit message
+>>  v2: fix code style issue
+> 
+> If a reviewer says "with these changes, reviewed-by:", or
+> "otherwise, reviewed-by...", then you should add those tags to
+> your commit message, assuming you've only made the changes
+> they asked for. That saves them having to look at and reply
+> to the patchset again.
+> 
+> In this case I'll just add them as I add this patch to
+> target-arm.next, but if you could handle tags across versions
+> for future patchset submissions it makes life a little
+> easier for us.
+> 
+Thanks for the tips, will definitely do in the future.
 
-Patchew didn't like it either:
-https://patchew.org/QEMU/20200203001505.52573-1-guoheyi@huawei.com/
+Best,
+Liang
 
-I think the problem here is the quoting of the diff in
-the commit message of patch 7: git am and friends think
-that is part of the actual patch body and get confused.
-You might be able to avoid that by not putting the
-  diff --git a/DSDT.dsl.orig b/DSDT.dsl
-  index ed3e5f0fa9..10cf70c886 100644
-  --- a/DSDT.dsl.orig
-  +++ b/DSDT.dsl
-
-part in the commit message, but I haven't tested that.
-
-So resending a v4 would probably be a good idea anyway.
-
-thanks
--- PMM
+> Applied to target-arm.next, thanks.
+> 
+> thanks
+> -- PMM
+> 

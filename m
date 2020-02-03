@@ -1,99 +1,114 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3978483lfp;
-        Mon, 3 Feb 2020 05:55:12 -0800 (PST)
-X-Google-Smtp-Source: APXvYqydodsXkPPsZ38MQdBZMWAfp80eISEB8pt7ftJcp/ykxLCcYTuZmjtB4E3CJYxGsAyWCxln
-X-Received: by 2002:ad4:5a52:: with SMTP id ej18mr22099783qvb.172.1580738112848;
-        Mon, 03 Feb 2020 05:55:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580738112; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3978597lfp;
+        Mon, 3 Feb 2020 05:55:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy0eAsXBK0Sm4EEWazX9x2KGCeVuE8UqvA4xAkQcrn6j7GRdf+HQB/cFBSWiW9iphU2Jat+
+X-Received: by 2002:ad4:4204:: with SMTP id k4mr23148603qvp.203.1580738121009;
+        Mon, 03 Feb 2020 05:55:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580738121; cv=none;
         d=google.com; s=arc-20160816;
-        b=sM67TVehX6enUC/VXe2wucdb/5BfiSyzQTi6btsjI5Utk8V6j7wOGhls+P+lIEWZgD
-         J4K+4UUdf/VbCDecqQvXY8HZ5pa3zUB9HtWvtAn+cVMQL746SxnCNlkmzDIAMBpvtRcO
-         RarMeGCixCUiJKnab9daPKMQ5jP1v5e+5wLH5+fzcxM7Lj+TwEBBZkPvdnps/vViKSYm
-         Bp7UCXYcQS998HG0pqIcASG5yM/Vsk5xlEShQyKvO3Ay7A0WfvrTTZhV8GitBE45YdXc
-         NAumdulUXzFhmA+TY5jYXuANs4FsUBG54m1ALyXfUBeyFz/cB3WrgZd81kec09B5lma/
-         ugJA==
+        b=MJ7CVFtGfEDn+lcodDJzwkd8VVBuIeLx6dddBi3zD7mSViyZZ62itMhSMsmHrXMtR2
+         hoGnDtvWv/vnVRgr+/uIQ7AJTU3L5pzSHIebVNQAEqVL7/BkhGrQGWYMD0njQDjYAHHd
+         5Qni8fRmWPptt0k/9nRCn9iWzdMFmP8f79jpL7GZukd/ficC7ImrTFAgFJ/5n+Mc9puN
+         K8yBHoTrGbQzyZTCwRq/Nfi82AY2MYCrFPHtqKT4+xJEv/zoIn3yCD5AHS1Kbt8Akeki
+         qDMaUCh9WjXjPCr6MOqjHZlFNxIZGgD6QKHj3/wbUj1LjVUbZr+Pbms5LexYgX+Elgvm
+         j3pQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=+8v7EeefAckCpSchrg2zCS+Ozg9pedNSAQvdk5WFsI8=;
-        b=in47ImcWgISmG7mx1moT1Jy3qyxWWAkiGg5lx5Njiy2apl4LCOVdmqO3VdUT1KBRbY
-         8xNiBpJv5cHPJ54uRlEFHqekUX/F5kgERQIiG96zcRf0VGJ60DMQFJjCaMfArXWdp46R
-         wvlJ6jlEBYivx5DRewMPFeH9qlD64y1Dzdcg5vrK7oMiwLna1Wynh9wZhHAQZf6JNqdD
-         j+NmTmFRzTO3LAF6lJDwerNfAFI4DsaWmGENGwavU5i4azY0N3GHFAujDg30BAtaL204
-         tyjaAGWOBF6y1X4K6Ivj0jkmUH8aJSql2GMsG2iRTXMWmhmJrw0oQx3SyeEAz+0Hj1Xg
-         DqEw==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=qg93xFhEGkdmIT3K3LTNem1fl2cYCQhQan2pX+lCxMw=;
+        b=tGJU+o+eTA6CuQw0Hn6z7DaNz4kQwZu1DHEK02WU4bQ14EPXbcNT000uisQ2gg08GP
+         EjO6Wj9cV3qePZmMv+FE5q5m7NeGnuw5Krn5MAloBhGs65MA1nCbMnD1OkSvbXWScL+w
+         szbPQh8mDsOs55/mLozG1JhRKCcK1nxedxr/PA3kl6fRPpe4ARiqM13/lzMLudOSdSDa
+         20BVJ8bepal9kUEvoX5zFmA+rv0dzePmpb0pc3UE5TqRckkssOmNYbes4gzq/Baed2rV
+         epfWJ/ormw/gAoAUO4lg4Nm/vyHOBhthHx4ceve57Xaa7816fZT/zD2o2nIcYasVJn1V
+         h6hg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=I6OvhEtT;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UBwL8pi5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u18si11969582qvk.110.2020.02.03.05.55.12
+        by mx.google.com with ESMTPS id b13si11874070qtp.218.2020.02.03.05.55.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 05:55:12 -0800 (PST)
+        Mon, 03 Feb 2020 05:55:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=I6OvhEtT;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UBwL8pi5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41068 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41078 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iycC0-0006Zn-9e
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 08:55:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55497)
+	id 1iycC8-0006p9-ES
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 08:55:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55558)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iycBq-0006YT-KJ
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:55:03 -0500
+ (envelope-from <peterx@redhat.com>) id 1iycBz-0006ln-Mr
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:55:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iycBp-0007zv-Hg
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:55:02 -0500
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:40707)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iycBp-0007xv-AK
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:55:01 -0500
-Received: by mail-oi1-x243.google.com with SMTP id a142so14781257oii.7
- for <qemu-arm@nongnu.org>; Mon, 03 Feb 2020 05:55:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+8v7EeefAckCpSchrg2zCS+Ozg9pedNSAQvdk5WFsI8=;
- b=I6OvhEtTBXf/k/urycen3rNiNJkDhm7QZYr/60K9fI8oWjqbBmByxTo5bXmY23u34G
- EiexG9EwpjmtpV7l8mARfZGflh3XGxpLKAl3Ll6JTsRYlcyP+x35PecapqE+klps34eO
- 7xXr0RPCdRWBCITTcrlhDJZAlQVxyCbTkINaBXde8fNkiZJssezaQgdXHP2pXO4CSKce
- vLxHvE6XVADOPsOgyy1ez2xofvEMrQX8/Fs5Ni++prqLM6r6Bc84yOSTKl22UiRxGvxK
- l+JOM1Vgl4EkWZbiOvTf5pyd6GOfGZBIIp4ZSoY5ezMmXeHtBc2GkLKLtChRB+rsjnsz
- MJQA==
+ (envelope-from <peterx@redhat.com>) id 1iycBy-00084W-KF
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:55:11 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27400
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1iycBy-00084N-GM
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:55:10 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1580738110;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qg93xFhEGkdmIT3K3LTNem1fl2cYCQhQan2pX+lCxMw=;
+ b=UBwL8pi5c5OVh0LtWMmJN2WLrWIBnnSZRb5a8gG6pn4KW8IV3g1Ja5KV0DTL8abQK8DSss
+ zWH2PTpA1OG6SwVn78ttC/Ui0G4FtaDQpF5YLpIljaWkzgw1Ed6BgLxTh9w6iuZlR7V0pu
+ tdtf9w0e1oPS94LZAF4VxYlalN8xKlM=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-54-V1ZeBwASNsyF74Ttep1tYg-1; Mon, 03 Feb 2020 08:55:07 -0500
+Received: by mail-qk1-f197.google.com with SMTP id v2so9497312qkf.4
+ for <qemu-arm@nongnu.org>; Mon, 03 Feb 2020 05:55:06 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=+8v7EeefAckCpSchrg2zCS+Ozg9pedNSAQvdk5WFsI8=;
- b=VVsXwPLpFfqHLtIK+6pt+vvo/Qxc9Zwo1YIq+Cl8vsoA2OO7UV6QNfHlSlqFaAeEw1
- QoT5UwFXjnwSVHtOQWQpoiMjhxnjWGEQ6y6vZIYp54NcXOB5tNWH/PWZfBTKFpkz3DB7
- 9iLpiUyJsjurO9eUa9Dlsbp3Dv5Bpthh9yuDvOMGRuvHskqJGGY1CgzosDsP/axtqiJs
- GUFPkBE6f4bSBCi7D/UNjmZkQvhMfDjJUH3zQHRVWxRmaLjqB3Worgm3qGlNnxFNgJJI
- t/nxlCtAd97Bi39DQAmuWhDvnaMeZqxd+WmgGEkP8UR+wLMStpoavW+PIlfQxOD1KlWO
- B73g==
-X-Gm-Message-State: APjAAAXoJUAtL6JtdVdOsTujwWkjAt/Rq/c+1oiU3gSQTKuSp/tkgies
- ljoHwVZLYcuGz/OV+3HZSvdjLegtFCebqZ8/SETFeA==
-X-Received: by 2002:aca:b2c5:: with SMTP id
- b188mr14899401oif.163.1580738100327; 
- Mon, 03 Feb 2020 05:55:00 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=OX9/undf1GE3j16kXlHknGzXZFn72TP46ty60q477W0=;
+ b=L4HmCed3tmg/S5T61sbA0pUukan0hDF6/mSjAhAs+bveq+GIb4SA4tCqBeTVYgoZ9l
+ aoYnUBrBpsnkKVfGg9KyiqDLi2N6z645i1zUBhy4PlEaJHeqSgK4imPFY1btL6OhFncX
+ RScSBr5kX4ZWrrlxYfZK44CgpE08atQvEimNpb4L533sAQUVFjYDaoPverMml0uD3sS7
+ exM8eB2osqOFTZBbdHhuOc6d2XtJUjRv1c6C3jIN4pfKNkS6osCPMsHnn6QBJOHqZ+qs
+ DA09UPSRzIKUFxVLi00MSoFAX3nhTHo8FfGBjlq6SUDQpSlLvBYywTmMeb3ANSFL/YJv
+ bWMQ==
+X-Gm-Message-State: APjAAAWxSeYGV3MB6FOabtXqFAIrTYVRl1ENaMzUHVzjzcOsLJJqqAsT
+ zjcTVclk+HSnr54ve/lEfENqe8iGQdVX9lYh6O/Jb87i7TnsKhX79k4nFFvP7irRB9NIcgRdJBx
+ 0dWI0D8n4tSxG
+X-Received: by 2002:ae9:e109:: with SMTP id g9mr23410947qkm.141.1580738106627; 
+ Mon, 03 Feb 2020 05:55:06 -0800 (PST)
+X-Received: by 2002:ae9:e109:: with SMTP id g9mr23410919qkm.141.1580738106410; 
+ Mon, 03 Feb 2020 05:55:06 -0800 (PST)
+Received: from xz-x1 ([2607:9880:19c8:32::2])
+ by smtp.gmail.com with ESMTPSA id w60sm9760352qte.39.2020.02.03.05.55.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 03 Feb 2020 05:55:05 -0800 (PST)
+Date: Mon, 3 Feb 2020 08:55:03 -0500
+From: Peter Xu <peterx@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v13 06/10] virtio-iommu: Implement fault reporting
+Message-ID: <20200203135503.GC155875@xz-x1>
+References: <20200125171955.12825-1-eric.auger@redhat.com>
+ <20200125171955.12825-7-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20200203134251.12986-1-lyan@suse.com>
-In-Reply-To: <20200203134251.12986-1-lyan@suse.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 3 Feb 2020 13:54:49 +0000
-Message-ID: <CAFEAcA-CcNwozBBFWenjnBpRPYhxe_sDiKffwO+SZk38xtY4VA@mail.gmail.com>
-Subject: Re: [PATCH v4] target/arm/monitor: query-cpu-model-expansion crashed
- qemu when using machine type none
-To: Liang Yan <lyan@suse.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::243
+In-Reply-To: <20200125171955.12825-7-eric.auger@redhat.com>
+X-MC-Unique: V1ZeBwASNsyF74Ttep1tYg-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,42 +120,56 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Andrew Jones <drjones@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
+ jean-philippe@linaro.org, quintela@redhat.com, qemu-devel@nongnu.org,
+ dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
+ mst@redhat.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: W+ra2zLzbF3/
+X-TUID: Nm4vgiBUN3jA
 
-On Mon, 3 Feb 2020 at 13:44, Liang Yan <lyan@suse.com> wrote:
->
-> Commit e19afd566781 mentioned that target-arm only supports queryable
-> cpu models 'max', 'host', and the current type when KVM is in use.
-> The logic works well until using machine type none.
->
-> For machine type none, cpu_type will be null if cpu option is not
-> set by command line, strlen(cpu_type) will terminate process.
-> So We add a check above it.
->
-> This won't affect i386 and s390x since they do not use current_cpu.
->
-> Signed-off-by: Liang Yan <lyan@suse.com>
-> ---
->  v4: change code style based on the review from Andrew Jones
->  v3: change git commit message
->  v2: fix code style issue
+On Sat, Jan 25, 2020 at 06:19:51PM +0100, Eric Auger wrote:
 
-If a reviewer says "with these changes, reviewed-by:", or
-"otherwise, reviewed-by...", then you should add those tags to
-your commit message, assuming you've only made the changes
-they asked for. That saves them having to look at and reply
-to the patchset again.
+[...]
 
-In this case I'll just add them as I add this patch to
-target-arm.next, but if you could handle tags across versions
-for future patchset submissions it makes life a little
-easier for us.
+> +static void virtio_iommu_report_fault(VirtIOIOMMU *viommu, uint8_t reaso=
+n,
+> +                                      int flags, uint32_t endpoint,
+> +                                      uint64_t address)
+> +{
+> +    VirtIODevice *vdev =3D &viommu->parent_obj;
+> +    VirtQueue *vq =3D viommu->event_vq;
+> +    struct virtio_iommu_fault fault;
+> +    VirtQueueElement *elem;
+> +    size_t sz;
+> +
+> +    memset(&fault, 0, sizeof(fault));
+> +    fault.reason =3D reason;
+> +    fault.flags =3D cpu_to_le32(flags);
+> +    fault.endpoint =3D cpu_to_le32(endpoint);
+> +    fault.address =3D cpu_to_le64(address);
+> +
+> +    for (;;) {
+> +        elem =3D virtqueue_pop(vq, sizeof(VirtQueueElement));
+> +
+> +        if (!elem) {
+> +            error_report_once(
+> +                "no buffer available in event queue to report event");
+> +            return;
+> +        }
+> +
+> +        if (iov_size(elem->in_sg, elem->in_num) < sizeof(fault)) {
+> +            virtio_error(vdev, "error buffer of wrong size");
+> +            virtqueue_detach_element(vq, elem, 0);
+> +            g_free(elem);
+> +            return;
+> +        }
+> +        break;
 
-Applied to target-arm.next, thanks.
+This for loop is not needed any more?  Other than that:
 
-thanks
--- PMM
+Reviewed-by: Peter Xu <peterx@redhat.com>
+
+--=20
+Peter Xu
+

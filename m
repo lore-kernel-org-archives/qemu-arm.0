@@ -1,107 +1,93 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3923073lfp;
-        Mon, 3 Feb 2020 05:03:49 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzKEosgO+XaGB6ebCUxOduowkuQ7AsAeV8shsoO4/7k2SJLl9dEItF7x/B6n1a+iCaBhTLD
-X-Received: by 2002:ac8:4244:: with SMTP id r4mr23462605qtm.169.1580735029523;
-        Mon, 03 Feb 2020 05:03:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580735029; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3930456lfp;
+        Mon, 3 Feb 2020 05:09:13 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwPV61PiGLh6AgJznO2J3cVNo00gugeJVTQVfgT5+K8aynb8K5PLSomHziF2JImgcivyZWw
+X-Received: by 2002:a0c:e2d1:: with SMTP id t17mr22989015qvl.25.1580735353544;
+        Mon, 03 Feb 2020 05:09:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580735353; cv=none;
         d=google.com; s=arc-20160816;
-        b=UJovNTBn5W+K+pkv8bn0KAd2tBon4Ol3vA2xN369L4OSznSZaDm7qmRGEQMg/0h2fL
-         vmOGfwGug+O7qaaiw9eQMZjh6Ec2Ip9LP8K96PK1VnnOKhuRSeeboclqD+WZulMHf61s
-         wOOkIf706Ez63wQNUsipKCmAGJpZdDqOMGfzILsIyXhSzCYtgQEpZTObGoZrslfVfn/A
-         /V2GWEAbHow4tyz+TxBVpVMqEOf3diryxEVBWsw0gPjPhVcoauRBGsqFGgTZQRMp4xmL
-         Bq/kHmeCcWJWkUuMwaXrHL56ODFfT6rslHFw2F70RvaOYR+bUSjIBUWoZZpgux8GCCHO
-         NlUA==
+        b=Bl+QsT1pHmprHQGj4SYRUPCtpEI7fswVnYhc+234sOxjtnumy6Z+yVsGdbBoHibsxn
+         iDnOG3fUtesGr9RnLVJLTfUwOm5GdS9uBF4N+1YIHPcH2W2L81HuQB5fxdrW5As917t3
+         ZU0H76Nv/sS9vbaBl1Pser5sk6Il8JYOC9x+lbARtPUlaZTvmOSnk/3sFZu7dWuqcjfE
+         a7wO92Efl866RyIlktunLyzFatNYZxJ4UNenb83hOZ7Fxd3Fov+DTN64aCG6tsH9CPZ2
+         mxQZTYAjZoNXTsivQeOgu0aWwCMVq2M5yRJw+IGeiDEppsyipVqjSLnlXyf1sW9rbMJU
+         atJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition
          :content-transfer-encoding:in-reply-to:mime-version:references
          :message-id:subject:to:from:date:dkim-signature;
-        bh=hZ9Ex9YwysdweURgSa9wr0iOCsn6QgrIQDlOuPP2gvY=;
-        b=WbtfRKwVCeO/WVHFEk8FwOyGLdkc5DaLinXfCnaPGDUH16Rj/uLdC7eWEFO5IavIsh
-         rwRwiTcpRely5IjiBsMk5U33rWRYbiof7dLhCiLkMeKvwUJqba7dlChs3jXQ/amq19gA
-         ecZ9x17OYrZjCenpudf+3Hy6o0E+JxJ7ZKeoUKzpKqcxVS/F9g0C7bE+XTHptgyYaBDX
-         qPi63Bc6l9GO5Jrx9ZwM6iZoNViVRW4pPzLpsXFF7YmGD/Sm2yIb2PY2DBv5o119PsQg
-         i00l7IwHZexzB3JzDLi6rj9ddBX6cJxwv+TXmYsPYfWzhLfFzC5WuTy9azC21kBKb2mn
-         YNTw==
+        bh=Ih3oxg6318zJ96yrlUtKPpx2K+QjGOYF/ly7qqO27KU=;
+        b=Kl9caXDhZLO3aW6GJu7Mxc/zu1J9Ar21WJSSYZ3+wm4ud0gorFFW10MAh3qpa2KFaX
+         rE2CxOxE5QCaT+rQhDKV33YQ7HXy5MlK8tOKfXpl9Dy7dtEqQXbqKwi7DxYiyMtzpoom
+         cEOQmMh7QfK1D2QNIVnC48ZBoatOwhTCRiuxWAifVMeYWSJdfh69fU/SEgTEKXWXtJpo
+         f4Z92SfXHjE1bjGJz6klniwCBGBW9Nb2Y9QprHFYPF2j3rT+oFm6DsHNdU49mHNh8K/G
+         F1F8nPZmpF9S617T6ninIRJ9jtIg9+nrhbD3kmuP4sBLLX7ror6kckQdQxxhqJiFsB6t
+         GHFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VPSpMB+r;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NR8ixUaQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m4si11023355qvp.52.2020.02.03.05.03.49
+        by mx.google.com with ESMTPS id e5si12156825qvy.97.2020.02.03.05.09.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 05:03:49 -0800 (PST)
+        Mon, 03 Feb 2020 05:09:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VPSpMB+r;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NR8ixUaQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40246 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40310 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iybOG-000415-Vu
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 08:03:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39465)
+	id 1iybTV-0007GC-09
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 08:09:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41244)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mst@redhat.com>) id 1iybO4-00040y-IP
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:03:38 -0500
+ (envelope-from <drjones@redhat.com>) id 1iybTE-00078B-Kp
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:09:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mst@redhat.com>) id 1iybO3-0003Xr-67
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:03:36 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:45413
+ (envelope-from <drjones@redhat.com>) id 1iybTD-0004NO-Hu
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:08:56 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:52733
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mst@redhat.com>) id 1iybO3-0003WJ-20
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:03:35 -0500
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1iybTD-0004MZ-EN
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 08:08:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580735014;
+ s=mimecast20190719; t=1580735335;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hZ9Ex9YwysdweURgSa9wr0iOCsn6QgrIQDlOuPP2gvY=;
- b=VPSpMB+rAdeQfZ5WtN35ua9sk9eQdaJWIcBdSBCOZHdBCZ60993K+NYTDVrGnDxy70JiMT
- EvRFM0FzHC24VnoimL1b68dKmsgNO1NTpZUbNh4OqZzy9m8Fbv2+Mb85EgorhFrod8JRrx
- AsTh95jDjzfn9leWZ/fyPpAlH+l6r6M=
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
- [209.85.219.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-214-G8NgqA9MO86oY2f-iWqHow-1; Mon, 03 Feb 2020 08:03:30 -0500
-Received: by mail-qv1-f71.google.com with SMTP id p3so9400525qvt.9
- for <qemu-arm@nongnu.org>; Mon, 03 Feb 2020 05:03:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=aGYVDeDWvd133EDEBrfiNuZyxU/kGHyGYl/gOONlYKg=;
- b=i7hHqymMJVWZlkbUoGSqnslOCra1i69dugtWrVrWwdCOUjcdxjhzT27Wb6/KkXreup
- UceDTJfQwr9hmXo8BfeN/r7A0Qf7y5JlveeR7QvW8sRHkDGzssZLma92VdkBdXVFWOum
- hIsT9yYBugGJhSM1yD0nnQLsgCIlrtkvkqw0g+BIa1WtQvVxVr3Vh8dmLV0Hl9kPTgbK
- MKgTmsPkaNjLY7WRIWb/pZsRdinYBNVmJAy11hj7QpWQ5pmIQt9ymZstsDfmIIiPXaXn
- wqEBmJf/DTfxLB2cpI9XWZO0QkbNIRqnWaAILlHBfkOJThjjJsrQG4H0tVKzDsOSN68z
- Sc1Q==
-X-Gm-Message-State: APjAAAWjfRIZcY0nb2SaGlYAz7/99MXB6pm6j3mJEG1M86554Wwh8DRy
- n6PqihI2uTSZIpzkod3nxuPgwC6PEmctsjr5KJ2Gah/L8lyOwfGb8yjPU2EnANVASyEnPiJq1nA
- uEUfN2r6VMMx6
-X-Received: by 2002:a37:4dc6:: with SMTP id a189mr6561126qkb.122.1580735010034; 
- Mon, 03 Feb 2020 05:03:30 -0800 (PST)
-X-Received: by 2002:a37:4dc6:: with SMTP id a189mr6561096qkb.122.1580735009663; 
- Mon, 03 Feb 2020 05:03:29 -0800 (PST)
-Received: from redhat.com (bzq-109-64-11-187.red.bezeqint.net. [109.64.11.187])
- by smtp.gmail.com with ESMTPSA id c8sm9795985qtp.13.2020.02.03.05.03.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Feb 2020 05:03:28 -0800 (PST)
-Date: Mon, 3 Feb 2020 08:03:24 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v13 07/10] virtio-iommu-pci: Add virtio iommu pci support
-Message-ID: <20200203080122-mutt-send-email-mst@kernel.org>
-References: <20200125171955.12825-1-eric.auger@redhat.com>
- <20200125171955.12825-8-eric.auger@redhat.com>
+ bh=Ih3oxg6318zJ96yrlUtKPpx2K+QjGOYF/ly7qqO27KU=;
+ b=NR8ixUaQpwvuSOoB3UtaxYGbjPn/bGgcGX3sP0Wwt36fO0XJu66M5POJlVOGST6tfmWu1e
+ Ah3ns0Um6CasqQwgU4fSHOpdsvhufaLcSs4kj3u4vHnbfXGrBA4CZ+RehthU7bRrbGDv+w
+ 5+73pYe2JNzAiPU6qsBBrLclI3QLafU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-82-UtMkyqPkO-C1GQLX2omQVA-1; Mon, 03 Feb 2020 08:08:51 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 55548800D41;
+ Mon,  3 Feb 2020 13:08:50 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2ECB75DA82;
+ Mon,  3 Feb 2020 13:08:49 +0000 (UTC)
+Date: Mon, 3 Feb 2020 14:08:46 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Liang Yan <lyan@suse.com>
+Subject: Re: [PATCH v3] target/arm/monitor: query-cpu-model-expansion crashed
+ qemu when using machine type none
+Message-ID: <20200203130846.gihtrf72inyf33wh@kamzik.brq.redhat.com>
+References: <20200201034649.26815-1-lyan@suse.com>
 MIME-Version: 1.0
-In-Reply-To: <20200125171955.12825-8-eric.auger@redhat.com>
-X-MC-Unique: G8NgqA9MO86oY2f-iWqHow-1
+In-Reply-To: <20200201034649.26815-1-lyan@suse.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: UtMkyqPkO-C1GQLX2omQVA-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
@@ -120,201 +106,90 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
- jean-philippe@linaro.org, quintela@redhat.com, qemu-devel@nongnu.org,
- peterx@redhat.com, dgilbert@redhat.com, bharatb.linux@gmail.com,
- qemu-arm@nongnu.org, eric.auger.pro@gmail.com
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tLuitp540gCB
+X-TUID: PRKaENzhewec
 
-On Sat, Jan 25, 2020 at 06:19:52PM +0100, Eric Auger wrote:
-> This patch adds virtio-iommu-pci, which is the pci proxy for
-> the virtio-iommu device.
+On Fri, Jan 31, 2020 at 10:46:49PM -0500, Liang Yan wrote:
+> Commit e19afd56 mentioned that target-arm only supports queryable
+
+Please use more hexdigits. I'm not sure QEMU has a policy for that,
+but I'd go with 12.
+
+> cpu models 'max', 'host', and the current type when KVM is in use.
+> The logic works well until using machine type none.
 >=20
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-
-I commented on v11 of this patch:
-> > Could you send a smaller patchset without pci/acpi bits for now?
-And you answered:
-> Yes I am about to send v12.
-
-I guess this patch is here by mistake then?
-
-I think PCI devices should always have config space so guests are
-not tempted to find work-arounds. Right?
-
+> For machine type none, cpu_type will be null if cpu option is not
+> set by command line, strlen(cpu_type) will terminate process.
+> So We add a check above it.
+>=20
+> This won't affect i386 and s390x since they do not use current_cpu.
+>=20
+> Signed-off-by: Liang Yan <lyan@suse.com>
 > ---
->=20
-> v11 -> v12:
-> - added Jean's R-b
-> - remove the array of intervals. Will be introduced later?
->=20
-> v10 -> v11:
-> - add the reserved_regions array property
->=20
-> v9 -> v10:
-> - include "hw/qdev-properties.h" header
->=20
-> v8 -> v9:
-> - add the msi-bypass property
-> - create virtio-iommu-pci.c
+>  v3: change git commit message
+>  v2: fix code style issue
 > ---
->  hw/virtio/Makefile.objs          |  1 +
->  hw/virtio/virtio-iommu-pci.c     | 88 ++++++++++++++++++++++++++++++++
->  include/hw/pci/pci.h             |  1 +
->  include/hw/virtio/virtio-iommu.h |  1 +
->  qdev-monitor.c                   |  1 +
->  5 files changed, 92 insertions(+)
->  create mode 100644 hw/virtio/virtio-iommu-pci.c
+>  target/arm/monitor.c | 14 ++++++++------
+>  1 file changed, 8 insertions(+), 6 deletions(-)
 >=20
-> diff --git a/hw/virtio/Makefile.objs b/hw/virtio/Makefile.objs
-> index 2fd9da7410..4e4d39a0a4 100644
-> --- a/hw/virtio/Makefile.objs
-> +++ b/hw/virtio/Makefile.objs
-> @@ -29,6 +29,7 @@ obj-$(CONFIG_VIRTIO_INPUT_HOST) +=3D virtio-input-host-=
-pci.o
->  obj-$(CONFIG_VIRTIO_INPUT) +=3D virtio-input-pci.o
->  obj-$(CONFIG_VIRTIO_RNG) +=3D virtio-rng-pci.o
->  obj-$(CONFIG_VIRTIO_BALLOON) +=3D virtio-balloon-pci.o
-> +obj-$(CONFIG_VIRTIO_IOMMU) +=3D virtio-iommu-pci.o
->  obj-$(CONFIG_VIRTIO_9P) +=3D virtio-9p-pci.o
->  obj-$(CONFIG_VIRTIO_SCSI) +=3D virtio-scsi-pci.o
->  obj-$(CONFIG_VIRTIO_BLK) +=3D virtio-blk-pci.o
-> diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
-> new file mode 100644
-> index 0000000000..4cfae1f9df
-> --- /dev/null
-> +++ b/hw/virtio/virtio-iommu-pci.c
-> @@ -0,0 +1,88 @@
-> +/*
-> + * Virtio IOMMU PCI Bindings
-> + *
-> + * Copyright (c) 2019 Red Hat, Inc.
-> + * Written by Eric Auger
-> + *
-> + *  This program is free software; you can redistribute it and/or modify
-> + *  it under the terms of the GNU General Public License version 2 or
-> + *  (at your option) any later version.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +
-> +#include "virtio-pci.h"
-> +#include "hw/virtio/virtio-iommu.h"
-> +#include "hw/qdev-properties.h"
-> +
-> +typedef struct VirtIOIOMMUPCI VirtIOIOMMUPCI;
-> +
-> +/*
-> + * virtio-iommu-pci: This extends VirtioPCIProxy.
-> + *
-> + */
-> +#define VIRTIO_IOMMU_PCI(obj) \
-> +        OBJECT_CHECK(VirtIOIOMMUPCI, (obj), TYPE_VIRTIO_IOMMU_PCI)
-> +
-> +struct VirtIOIOMMUPCI {
-> +    VirtIOPCIProxy parent_obj;
-> +    VirtIOIOMMU vdev;
-> +};
-> +
-> +static Property virtio_iommu_pci_properties[] =3D {
-> +    DEFINE_PROP_UINT32("class", VirtIOPCIProxy, class_code, 0),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-> +
-> +static void virtio_iommu_pci_realize(VirtIOPCIProxy *vpci_dev, Error **e=
-rrp)
-> +{
-> +    VirtIOIOMMUPCI *dev =3D VIRTIO_IOMMU_PCI(vpci_dev);
-> +    DeviceState *vdev =3D DEVICE(&dev->vdev);
-> +
-> +    qdev_set_parent_bus(vdev, BUS(&vpci_dev->bus));
-> +    object_property_set_link(OBJECT(dev),
-> +                             OBJECT(pci_get_bus(&vpci_dev->pci_dev)),
-> +                             "primary-bus", errp);
-> +    object_property_set_bool(OBJECT(vdev), true, "realized", errp);
-> +}
-> +
-> +static void virtio_iommu_pci_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> +    VirtioPCIClass *k =3D VIRTIO_PCI_CLASS(klass);
-> +    PCIDeviceClass *pcidev_k =3D PCI_DEVICE_CLASS(klass);
-> +    k->realize =3D virtio_iommu_pci_realize;
-> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-> +    dc->props =3D virtio_iommu_pci_properties;
-> +    pcidev_k->vendor_id =3D PCI_VENDOR_ID_REDHAT_QUMRANET;
-> +    pcidev_k->device_id =3D PCI_DEVICE_ID_VIRTIO_IOMMU;
-> +    pcidev_k->revision =3D VIRTIO_PCI_ABI_VERSION;
-> +    pcidev_k->class_id =3D PCI_CLASS_OTHERS;
-> +}
-> +
-> +static void virtio_iommu_pci_instance_init(Object *obj)
-> +{
-> +    VirtIOIOMMUPCI *dev =3D VIRTIO_IOMMU_PCI(obj);
-> +
-> +    virtio_instance_init_common(obj, &dev->vdev, sizeof(dev->vdev),
-> +                                TYPE_VIRTIO_IOMMU);
-> +}
-> +
-> +static const VirtioPCIDeviceTypeInfo virtio_iommu_pci_info =3D {
-> +    .base_name             =3D TYPE_VIRTIO_IOMMU_PCI,
-> +    .generic_name          =3D "virtio-iommu-pci",
-> +    .transitional_name     =3D "virtio-iommu-pci-transitional",
-> +    .non_transitional_name =3D "virtio-iommu-pci-non-transitional",
-> +    .instance_size =3D sizeof(VirtIOIOMMUPCI),
-> +    .instance_init =3D virtio_iommu_pci_instance_init,
-> +    .class_init    =3D virtio_iommu_pci_class_init,
-> +};
-> +
-> +static void virtio_iommu_pci_register(void)
-> +{
-> +    virtio_pci_types_register(&virtio_iommu_pci_info);
-> +}
-> +
-> +type_init(virtio_iommu_pci_register)
-> +
-> +
-> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-> index 2acd8321af..cfedf5a995 100644
-> --- a/include/hw/pci/pci.h
-> +++ b/include/hw/pci/pci.h
-> @@ -86,6 +86,7 @@ extern bool pci_available;
->  #define PCI_DEVICE_ID_VIRTIO_9P          0x1009
->  #define PCI_DEVICE_ID_VIRTIO_VSOCK       0x1012
->  #define PCI_DEVICE_ID_VIRTIO_PMEM        0x1013
-> +#define PCI_DEVICE_ID_VIRTIO_IOMMU       0x1014
+> diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+> index 9725dfff16..3350cd65d0 100644
+> --- a/target/arm/monitor.c
+> +++ b/target/arm/monitor.c
+> @@ -137,17 +137,19 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansio=
+n(CpuModelExpansionType type,
+>      }
 > =20
->  #define PCI_VENDOR_ID_REDHAT             0x1b36
->  #define PCI_DEVICE_ID_REDHAT_BRIDGE      0x0001
-> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-=
-iommu.h
-> index 2a2c2ecf83..f39aa0fbb4 100644
-> --- a/include/hw/virtio/virtio-iommu.h
-> +++ b/include/hw/virtio/virtio-iommu.h
-> @@ -25,6 +25,7 @@
->  #include "hw/pci/pci.h"
+>      if (kvm_enabled()) {
+> -        const char *cpu_type =3D current_machine->cpu_type;
+> -        int len =3D strlen(cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
+>          bool supported =3D false;
 > =20
->  #define TYPE_VIRTIO_IOMMU "virtio-iommu-device"
-> +#define TYPE_VIRTIO_IOMMU_PCI "virtio-iommu-device-base"
->  #define VIRTIO_IOMMU(obj) \
->          OBJECT_CHECK(VirtIOIOMMU, (obj), TYPE_VIRTIO_IOMMU)
-> =20
-> diff --git a/qdev-monitor.c b/qdev-monitor.c
-> index 3465a1e2d0..97f4022b51 100644
-> --- a/qdev-monitor.c
-> +++ b/qdev-monitor.c
-> @@ -66,6 +66,7 @@ static const QDevAlias qdev_alias_table[] =3D {
->      { "virtio-input-host-ccw", "virtio-input-host", QEMU_ARCH_S390X },
->      { "virtio-input-host-pci", "virtio-input-host",
->              QEMU_ARCH_ALL & ~QEMU_ARCH_S390X },
-> +    { "virtio-iommu-pci", "virtio-iommu", QEMU_ARCH_ALL & ~QEMU_ARCH_S39=
-0X },
->      { "virtio-keyboard-ccw", "virtio-keyboard", QEMU_ARCH_S390X },
->      { "virtio-keyboard-pci", "virtio-keyboard",
->              QEMU_ARCH_ALL & ~QEMU_ARCH_S390X },
+>          if (!strcmp(model->name, "host") || !strcmp(model->name, "max"))=
+ {
+>              /* These are kvmarm's recommended cpu types */
+>              supported =3D true;
+> -        } else if (strlen(model->name) =3D=3D len &&
+> -                   !strncmp(model->name, cpu_type, len)) {
+> -            /* KVM is enabled and we're using this type, so it works. */
+> -            supported =3D true;
+> +        } else if (current_machine->cpu_type) {
+> +            const char *cpu_type =3D current_machine->cpu_type;
+> +            int len =3D strlen(cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
+
+Need a blank line here.
+
+> +            if (strlen(model->name) =3D=3D len &&
+> +                    !strncmp(model->name, cpu_type, len)) {
+
+Four spaces of indent too many on the line above.
+
+> +                /* KVM is enabled and we're using this type, so it works=
+. */
+> +                supported =3D true;
+> +            }
+>          }
+>          if (!supported) {
+>              error_setg(errp, "We cannot guarantee the CPU type '%s' work=
+s "
 > --=20
-> 2.20.1
+> 2.25.0
+>=20
+>
+
+With the three changes above
+
+
+Reviewed-by: Andrew Jones <drjones@redhat.com>
+Tested-by: Andrew Jones <drjones@redhat.com>
+
+
+It'd be nice to extend tests/qtest/arm-cpu-features.c to also do
+some checks with machine=3D'none' with and without KVM.
+
+Thanks,
+drew
 

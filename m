@@ -1,178 +1,294 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3742799lfp;
-        Mon, 3 Feb 2020 01:59:37 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzvHD6LHcwBD1Dw4x+GudrAtq9hxHp4c4gh4pYvotGPAegDvmL/6fMYcqQZbVjcNERr92P0
-X-Received: by 2002:a05:620a:1324:: with SMTP id p4mr22845699qkj.497.1580723977013;
-        Mon, 03 Feb 2020 01:59:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580723977; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3754843lfp;
+        Mon, 3 Feb 2020 02:11:17 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwMiBHcAJewmiI2LsvQKpMY5k+4FrbIiFddhGN4hbevQiLV+XOFtlA8CJyFzEHcdqVlwjg+
+X-Received: by 2002:aed:3765:: with SMTP id i92mr22427122qtb.373.1580724677732;
+        Mon, 03 Feb 2020 02:11:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580724677; cv=none;
         d=google.com; s=arc-20160816;
-        b=vk4LzX7P9ANZJvRrvngBZzzEW/RLZ8NzAqimFCG6ca1K5eIWkBKrRAKkrlVWai5qHF
-         WOFma5mNW+gaQ7zONPR7GMZX67Jz47eiwGSJ2/0hLsRujvpvkR8YeLi1L8VzRi+SDPhJ
-         JYv6ggnMTcMhM6vY+uCduXS0CEvRTklgrA9Ehw2m5TSlhu1VvXzq0ZmxpWYXjbdbGZma
-         hpWpE1lbBxBxGdq/9H8lrMfLTkbGyc/lwXG0UjIlBchV30gL743lyF+W/C8w/7Q3WwoY
-         /pLW3hF2nQbZKqhw7HAJC3CCy8Pq84eB2vTvluxE4ACZb3FuzehyYxxrpC53DkDgXk0h
-         rARA==
+        b=Fd3LUCasKj+laJ1YMpOK5yYjobhJ2w6XEeVhTh/AkliOPXb/pqNLAsV2dqnpD4YuL9
+         ashwAx0PcqXnpUyzyXIxFM4MpxRRk7KerrzHWsrSRDvQPOte7mgYkCywM2Qz/vC/zBcq
+         rOd7DlmyGnKLdxbzUw4PNcM7FYju5NGW+QED7mTeAnuxkBT8DTsfVWFoJJTxXwMmv9Yi
+         /FgMl+VnjXvI3PMspQCm7d9s/h/esAd6zNN3fqV20wFWUU8a9vdMd6eu0uJxd962OfB+
+         CNrgwTTyI5AGk0WF7sDj46Zvdtck9WdAsqV0c6O036K41PM2sqE4N27XEwXgrlbzQtxZ
+         lfGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=2EQPOQX2t0Vz3rtvJuEbNRbtemaZYoymM7OD4ZlI5XA=;
-        b=D9MRxTXQgExltG0JRLa0RlYVAgvm16z+WEPga9Zkf/oRRLFeBnUXzkJOUpKwYxxiu1
-         UcpemfXzm03SSQotjtcq73thFgoj9kMEIeHl33R4dJ3zsxiP0tLKW/2kvvEswUD+qDZv
-         EtdleMBTS9U5CVdLFGD0HchXeCrejXTdiSpGbGeFWjk+M1kyLKV8kBF75iZtXw62suxz
-         cynEnBA654U6nb4QrmeMvI5yjH9FcyrhuLcl1UV8lyU6zF110xc1qI/FjHrfF0HaiL55
-         OJWxN9YkqdyWxHiYhpZYdpy7Rcd/INWgCKUBatLk6e1D5//XqTfCwRJdxVGz6fHO0myJ
-         NYrg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=NokHOPLkF79HUmVBRXwt5uInhUO8htWfvwWVOlhqyWE=;
+        b=WIIPw4/82Ci55rPGcf6bd3Og9s1NVwZBOw2aGIYSXVn20DGJToxHkIs6476g5YJbBr
+         ysYlKr85B/y8ugC2jo1Z+jfnddBmkUAv9xCCaCwq4dfUBJNIX2WkVJt6EqO7aedp0qet
+         ndrO6CpiBtuzJOFkScwCuVCiBBqBKVqCDHpHdJCqaYRjBOOQE7SvofXx36cRNLLXbh4+
+         gtRgB6L292HRvKJ3A04GAVlbpdXux0yXfKOeAbTQk4hfb410mDxqE38vepgh7TXMtTQH
+         xnmc+dIe2LN/xIdyRkhkQBqLlkJ/VY5SMZ8L9Pc10GXMZ++5G/gqTFCt2Jm2enmCtzvT
+         /ijQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=PhdDOUa2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JL4GvZvO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o15si11080772qkh.96.2020.02.03.01.59.36
+        by mx.google.com with ESMTPS id l17si11176577qvu.9.2020.02.03.02.11.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 01:59:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Feb 2020 02:11:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=PhdDOUa2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37176 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JL4GvZvO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37474 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iyYW0-0002Tl-Fy
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 04:59:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33273)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iyYhJ-0007sv-6v
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 05:11:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38470)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iyYVK-0001SB-NQ
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 04:58:57 -0500
+ (envelope-from <imammedo@redhat.com>) id 1iyYgT-00073C-5q
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 05:10:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iyYVI-0003q8-AJ
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 04:58:54 -0500
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:42055)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iyYVI-0003oT-3q
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 04:58:52 -0500
-Received: by mail-ot1-x341.google.com with SMTP id 66so13040761otd.9
- for <qemu-arm@nongnu.org>; Mon, 03 Feb 2020 01:58:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2EQPOQX2t0Vz3rtvJuEbNRbtemaZYoymM7OD4ZlI5XA=;
- b=PhdDOUa2D5W4KPIKPfkQJU7RzCP+Tj4a3stgdSnSuw/fahpNrneMJKS1JICq4uyTHw
- BksTGg2qWyxhDp8Cf3ulsDkpJb3Hj89+RF94Vwn2TJ5KynGA2JUW27nhqdZNNxqjODej
- mMWAI2/T9CLojxznV9+jJebPWmhikzyEA6Oj9QAS4+gBCjxnvZy10ID5lMCodaErw+fq
- tFCitgY/MWLwVfb9CsGpOnTy8Hu2nIC1+y3uGtxCH/ROHaMwWz/85cYIxpwhIRCMMHlR
- qPm5giMVdmrJEHsJaWQVWt2HGwf3rcCoBl7a/D9MM0uYrpHJKHvrrCvnQhv/F1CYDbiL
- 5MZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=2EQPOQX2t0Vz3rtvJuEbNRbtemaZYoymM7OD4ZlI5XA=;
- b=GrBE/Td+NgCLQsNd2WdHz40qOIQ080Ni3XpjRcRDqh5HF0wKYumXbnEPItZqRXVAKA
- sKhY/VKLioic1BfaaPd52J39R8dR/MvWwRTGthAonMshm3F3VslqJ6oFbnGphuVIA32n
- el4V/1DAM8vqmTLwN6AhGpLWy8Xnu1zOOB4ZwsqgmJnHScOWwROAag23lhHeUAOMcyC/
- FR1e1DHqT5Wa6LAAQEY0hEy6H9is3XH/Jj1WG4xrID2BSX62IlxiBhMBNTEgAIUTUqos
- 3w/dGAFjgeLiK9STm5RXwaioim0FMxYGLLuOqk0F1CHzvuLJRXNDSpT/ljKH7sJoZPu2
- X+0Q==
-X-Gm-Message-State: APjAAAVMeQSVy+xkCTKXsN9sr27GJIkZxrpUbFe8tFK4E1wDPhDYkNRF
- EfPWBbAKXFkKYRK825eB1r81LjY7JyRpBI6GBoF2OA==
-X-Received: by 2002:a05:6830:184:: with SMTP id
- q4mr17375146ota.232.1580723930947; 
- Mon, 03 Feb 2020 01:58:50 -0800 (PST)
+ (envelope-from <imammedo@redhat.com>) id 1iyYgR-0005BX-LC
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 05:10:24 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:34265
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1iyYgR-00059s-Gu
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 05:10:23 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1580724622;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NokHOPLkF79HUmVBRXwt5uInhUO8htWfvwWVOlhqyWE=;
+ b=JL4GvZvOiVt+AiQZsCjQLE+RLcEVJYTs0oXLVZTguED+ncZWFvo7ekdIYg68L8EDS33XXr
+ 1Df+HtXIV76SDvNY4uN+hHCU7hi//c1XTF5ngLrzWJLW7rBcUOcaG6Mg3VnbSCzu88QyeS
+ Bz2+vhkNkRdyqdEJNvTYur1FzQKWEYQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-330-POtdVb0UMtWVkQJromBpOA-1; Mon, 03 Feb 2020 05:10:19 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 16F9B801E6C;
+ Mon,  3 Feb 2020 10:10:18 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E6602166BE;
+ Mon,  3 Feb 2020 10:10:13 +0000 (UTC)
+Date: Mon, 3 Feb 2020 11:10:12 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Subject: Re: [PATCH 5/6] hw/arm/raspi: Dynamically create machines based on
+ the board revision
+Message-ID: <20200203111012.0ab38555@redhat.com>
+In-Reply-To: <20200203082619.7426-6-f4bug@amsat.org>
+References: <20200203082619.7426-1-f4bug@amsat.org>
+ <20200203082619.7426-6-f4bug@amsat.org>
 MIME-Version: 1.0
-References: <20200203074718.37252-1-pannengyuan@huawei.com>
-In-Reply-To: <20200203074718.37252-1-pannengyuan@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 3 Feb 2020 09:58:39 +0000
-Message-ID: <CAFEAcA_2XthfkcyNgQqoxo+Zt66pf7Te56nB8ZAQL948D=kqVw@mail.gmail.com>
-Subject: Re: [PATCH] pl031: add finalize function to avoid memleaks
-To: pannengyuan@huawei.com
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::341
-X-BeenThere: qemu-arm@nongnu.org
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: POtdVb0UMtWVkQJromBpOA-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: xuding42@huawei.com, Euler Robot <euler.robot@huawei.com>,
- qemu-arm <qemu-arm@nongnu.org>, zhanghailiang <zhang.zhanghailiang@huawei.com>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5FHEwklcZUgi
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
+ Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7JJsUIaZUqVn
 
-On Mon, 3 Feb 2020 at 07:47, <pannengyuan@huawei.com> wrote:
->
-> From: Pan Nengyuan <pannengyuan@huawei.com>
->
-> There is a memory leak when we call 'device_list_properties' with
-> typename = pl031. It's easy to reproduce as follow:
->
->   virsh qemu-monitor-command vm1 --pretty '{"execute": "device-list-properties", "arguments": {"typename": "pl031"}}'
->
-> The memory leak stack:
->   Direct leak of 48 byte(s) in 1 object(s) allocated from:
->     #0 0x7f6e0925a970 in __interceptor_calloc (/lib64/libasan.so.5+0xef970)
->     #1 0x7f6e06f4d49d in g_malloc0 (/lib64/libglib-2.0.so.0+0x5249d)
->     #2 0x564a0f7654ea in timer_new_full /mnt/sdb/qemu/include/qemu/timer.h:530
->     #3 0x564a0f76555d in timer_new /mnt/sdb/qemu/include/qemu/timer.h:551
->     #4 0x564a0f765589 in timer_new_ns /mnt/sdb/qemu/include/qemu/timer.h:569
->     #5 0x564a0f76747d in pl031_init /mnt/sdb/qemu/hw/rtc/pl031.c:198
->     #6 0x564a0fd4a19d in object_init_with_type /mnt/sdb/qemu/qom/object.c:360
->     #7 0x564a0fd4b166 in object_initialize_with_type /mnt/sdb/qemu/qom/object.c:467
->     #8 0x564a0fd4c8e6 in object_new_with_type /mnt/sdb/qemu/qom/object.c:636
->     #9 0x564a0fd4c98e in object_new /mnt/sdb/qemu/qom/object.c:646
->     #10 0x564a0fc69d43 in qmp_device_list_properties /mnt/sdb/qemu/qom/qom-qmp-cmds.c:204
->     #11 0x564a0ef18e64 in qdev_device_help /mnt/sdb/qemu/qdev-monitor.c:278
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+On Mon,  3 Feb 2020 09:26:18 +0100
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+
+> We added tiny helpers extracting different values from the board
+> revision, we can now create a full board based on its revision.
+> The 'raspi-common' type is common to all raspi boards.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/rtc/pl031.c | 10 ++++++++++
->  1 file changed, 10 insertions(+)
->
-> diff --git a/hw/rtc/pl031.c b/hw/rtc/pl031.c
-> index ae47f09635..50664ca000 100644
-> --- a/hw/rtc/pl031.c
-> +++ b/hw/rtc/pl031.c
-> @@ -194,6 +194,15 @@ static void pl031_init(Object *obj)
->      s->timer = timer_new_ns(rtc_clock, pl031_interrupt, s);
+>  hw/arm/raspi.c | 93 +++++++++++++++++++++++++++++++++-----------------
+>  1 file changed, 62 insertions(+), 31 deletions(-)
+>=20
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index 656d834e07..12dc4d1486 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -44,12 +44,17 @@ static const struct {
+>      [C_BCM2837] =3D {TYPE_BCM2837},
+>  };
+> =20
+> -typedef struct RasPiState {
+> +typedef struct RaspiMachineState {
+> +    /*< private >*/
+> +    MachineState parent_obj;
+> +    /*< public >*/
+>      BCM283XState soc;
+>      MemoryRegion ram;
+> -} RasPiState;
+> +} RaspiMachineState;
+> =20
+>  typedef struct RaspiBoardInfo {
+> +    const char *name;
+> +    const char *desc;
+>      /*
+>       * Board revision codes:
+>       * www.raspberrypi.org/documentation/hardware/raspberrypi/revision-c=
+odes/
+> @@ -57,16 +62,32 @@ typedef struct RaspiBoardInfo {
+>      uint32_t board_rev;
+>  } RaspiBoardInfo;
+> =20
+> -enum { BOARD_PI2, BOARD_PI3 };
+> +typedef struct RaspiMachineClass {
+> +    /*< private >*/
+> +    MachineClass parent_obj;
+> +    /*< public >*/
+> +    const RaspiBoardInfo *config;
+> +} RaspiMachineClass;
+> +
+> +#define TYPE_RASPI_MACHINE       MACHINE_TYPE_NAME("raspi-common")
+> +#define RASPI_MACHINE(obj) \
+> +    OBJECT_CHECK(RaspiMachineState, (obj), TYPE_RASPI_MACHINE)
+> +
+> +#define RASPI_MACHINE_CLASS(klass) \
+> +     OBJECT_CLASS_CHECK(RaspiMachineClass, (klass), TYPE_RASPI_MACHINE)
+> +#define RASPI_MACHINE_GET_CLASS(obj) \
+> +     OBJECT_GET_CLASS(RaspiMachineClass, (obj), TYPE_RASPI_MACHINE)
+> =20
+>  static const RaspiBoardInfo raspi_boards[] =3D {
+> -    [BOARD_PI2] =3D
+>      {
+> +        .name =3D MACHINE_TYPE_NAME("raspi2"),
+> +        .desc =3D "Raspberry Pi 2B",
+>          .board_rev =3D 0xa21041,
+>      },
+>  #ifdef TARGET_AARCH64
+> -    [BOARD_PI3] =3D
+>      {
+> +        .name =3D MACHINE_TYPE_NAME("raspi3"),
+> +        .desc =3D "Raspberry Pi 3B",
+>          .board_rev =3D 0xa02082,
+>      },
+>  #endif
+> @@ -221,7 +242,7 @@ static void setup_boot(MachineState *machine, int ver=
+sion, size_t ram_size)
+> =20
+>  static void raspi_init(MachineState *machine, const RaspiBoardInfo *conf=
+ig)
+>  {
+> -    RasPiState *s =3D g_new0(RasPiState, 1);
+> +    RaspiMachineState *s =3D RASPI_MACHINE(machine);
+>      int version =3D board_version(config);
+>      uint32_t vcram_size;
+>      DriveInfo *di;
+> @@ -271,15 +292,22 @@ static void raspi_init(MachineState *machine, const=
+ RaspiBoardInfo *config)
+>      setup_boot(machine, version, machine->ram_size - vcram_size);
 >  }
->
-> +static void pl031_finalize(Object *obj)
-> +{
-> +    PL031State *s = PL031(obj);
-> +    if (s->timer) {
-> +        timer_del(s->timer);
-> +        timer_free(s->timer);
-> +    }
+> =20
+> -static void raspi2_init(MachineState *machine)
+> +static void raspi_machine_init(MachineState *machine)
+>  {
+> -    raspi_init(machine, &raspi_boards[BOARD_PI2]);
+> +    RaspiMachineClass *rmc =3D RASPI_MACHINE_GET_CLASS(machine);
+> +
+> +    raspi_init(machine, rmc->config);
+>  }
+> =20
+> -static void raspi2_machine_init(MachineClass *mc)
+> +static void raspi_machine_class_init(ObjectClass *oc, void *data)
+>  {
+> -    mc->desc =3D "Raspberry Pi 2";
+> -    mc->init =3D raspi2_init;
+> +    MachineClass *mc =3D MACHINE_CLASS(oc);
+> +    RaspiMachineClass *rmc =3D RASPI_MACHINE_CLASS(oc);
+> +    const RaspiBoardInfo *config =3D data;
+> +
+> +    rmc->config =3D config;
+> +    mc->desc =3D config->desc;
+> +    mc->init =3D raspi_machine_init;
+>      mc->block_default_type =3D IF_SD;
+>      mc->no_parallel =3D 1;
+>      mc->no_floppy =3D 1;
+> @@ -287,29 +315,32 @@ static void raspi2_machine_init(MachineClass *mc)
+>      mc->max_cpus =3D BCM283X_NCPUS;
+>      mc->min_cpus =3D BCM283X_NCPUS;
+>      mc->default_cpus =3D BCM283X_NCPUS;
+> -    mc->default_ram_size =3D 1 * GiB;
+> +    mc->default_ram_size =3D board_ram_size(config);
+>      mc->ignore_memory_transaction_failures =3D true;
 > +}
 > +
->  static int pl031_pre_save(void *opaque)
->  {
->      PL031State *s = opaque;
-> @@ -329,6 +338,7 @@ static const TypeInfo pl031_info = {
->      .parent        = TYPE_SYS_BUS_DEVICE,
->      .instance_size = sizeof(PL031State),
->      .instance_init = pl031_init,
-> +    .instance_finalize = pl031_finalize,
->      .class_init    = pl031_class_init,
+> +static const TypeInfo raspi_machine_type =3D {
+> +    .name =3D TYPE_RASPI_MACHINE,
+> +    .parent =3D TYPE_MACHINE,
+> +    .instance_size =3D sizeof(RaspiMachineState),
+> +    .class_size =3D sizeof(RaspiMachineClass),
+> +    .abstract =3D true,
 >  };
+> -DEFINE_MACHINE("raspi2", raspi2_machine_init)
+> =20
+> -#ifdef TARGET_AARCH64
+> -static void raspi3_init(MachineState *machine)
+> +static void raspi_machine_types(void)
+>  {
+> -    raspi_init(machine, &raspi_boards[BOARD_PI3]);
+> +    int i;
+> +
+> +    type_register_static(&raspi_machine_type);
+> +    for (i =3D 0; i < ARRAY_SIZE(raspi_boards); ++i) {
+> +        TypeInfo ti =3D {
+> +            .name       =3D raspi_boards[i].name,
+> +            .parent     =3D TYPE_RASPI_MACHINE,
+> +            .class_init =3D raspi_machine_class_init,
+> +            .class_data =3D (void *)&raspi_boards[i],
+> +        };
+> +        type_register(&ti);
+> +    }
 
-The more usual way to fix this I think is to delay
-the timer_new until realize rather than putting it
-into instance_init, since the pl031 can't be
-hotplugged.
+from what I've seen we do something like this in cases where
+we need to generate a lot of classes based on data.
 
-thanks
--- PMM
+The thing is that it's harder to deal with compared to typical
+template where one defines machine classes and per machine
+type foo_class_init() functions. Yes it's a bit more boiler
+plate but it's what is typically used/consistent with machine types.
+So if one would have touch touch that future, one wouldn't have
+to wrap their brain around yet another way to define machine.
+
+>  }
+> =20
+> -static void raspi3_machine_init(MachineClass *mc)
+> -{
+> -    mc->desc =3D "Raspberry Pi 3";
+> -    mc->init =3D raspi3_init;
+> -    mc->block_default_type =3D IF_SD;
+> -    mc->no_parallel =3D 1;
+> -    mc->no_floppy =3D 1;
+> -    mc->no_cdrom =3D 1;
+> -    mc->max_cpus =3D BCM283X_NCPUS;
+> -    mc->min_cpus =3D BCM283X_NCPUS;
+> -    mc->default_cpus =3D BCM283X_NCPUS;
+> -    mc->default_ram_size =3D 1 * GiB;
+> -}
+> -DEFINE_MACHINE("raspi3", raspi3_machine_init)
+> -#endif
+> +type_init(raspi_machine_types)
+

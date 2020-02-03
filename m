@@ -1,100 +1,105 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3754843lfp;
-        Mon, 3 Feb 2020 02:11:17 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwMiBHcAJewmiI2LsvQKpMY5k+4FrbIiFddhGN4hbevQiLV+XOFtlA8CJyFzEHcdqVlwjg+
-X-Received: by 2002:aed:3765:: with SMTP id i92mr22427122qtb.373.1580724677732;
-        Mon, 03 Feb 2020 02:11:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580724677; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3916922lfp;
+        Mon, 3 Feb 2020 04:59:33 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxBm/8eBjYaTPykcV5Td9HFYHOYThEkrpF11Wdt2YEMv2181QuXR6H7O9l8a3Q/wKhqdZkw
+X-Received: by 2002:a05:620a:306:: with SMTP id s6mr21853896qkm.469.1580734772863;
+        Mon, 03 Feb 2020 04:59:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580734772; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fd3LUCasKj+laJ1YMpOK5yYjobhJ2w6XEeVhTh/AkliOPXb/pqNLAsV2dqnpD4YuL9
-         ashwAx0PcqXnpUyzyXIxFM4MpxRRk7KerrzHWsrSRDvQPOte7mgYkCywM2Qz/vC/zBcq
-         rOd7DlmyGnKLdxbzUw4PNcM7FYju5NGW+QED7mTeAnuxkBT8DTsfVWFoJJTxXwMmv9Yi
-         /FgMl+VnjXvI3PMspQCm7d9s/h/esAd6zNN3fqV20wFWUU8a9vdMd6eu0uJxd962OfB+
-         CNrgwTTyI5AGk0WF7sDj46Zvdtck9WdAsqV0c6O036K41PM2sqE4N27XEwXgrlbzQtxZ
-         lfGw==
+        b=MXi7cXFDkgdQ3SO9+IlBvjWoAY2/4DzAiYTc0YpIbf6NYyI7OreBQkWfxXzJT3pSIv
+         PqcZ+gGzBSJ1lF1KWRTN/ay2pVc7z+6GVomNIgmZbOtKrBAwC7GKvVFoZW41IriL7Kg7
+         DwRA55EnfbPe3d27zDDKxTkzyMSAYTVF9C6RA48EjBNES53lT45RRzae8GxIRy3z6yO8
+         /gaqwF8LQ95dGdw8ICJHaA4nHe9CxLbOWKOSf2+BMVuII3exKdCTEtJKLmf9M2W1d2nc
+         GEDwgaesSEzlZMaLTfdJajtPZKV4IM3S4piKwzU7RVUZTh9/LQ1sXrDvwvJgTUYMKXQn
+         T3+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=NokHOPLkF79HUmVBRXwt5uInhUO8htWfvwWVOlhqyWE=;
-        b=WIIPw4/82Ci55rPGcf6bd3Og9s1NVwZBOw2aGIYSXVn20DGJToxHkIs6476g5YJbBr
-         ysYlKr85B/y8ugC2jo1Z+jfnddBmkUAv9xCCaCwq4dfUBJNIX2WkVJt6EqO7aedp0qet
-         ndrO6CpiBtuzJOFkScwCuVCiBBqBKVqCDHpHdJCqaYRjBOOQE7SvofXx36cRNLLXbh4+
-         gtRgB6L292HRvKJ3A04GAVlbpdXux0yXfKOeAbTQk4hfb410mDxqE38vepgh7TXMtTQH
-         xnmc+dIe2LN/xIdyRkhkQBqLlkJ/VY5SMZ8L9Pc10GXMZ++5G/gqTFCt2Jm2enmCtzvT
-         /ijQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=mOuCHVqi6kt2PB6u0xpB+UkqarwDPoVCn4+Qm1io4R4=;
+        b=EYUBsxsp/LhXWySk5d/0dNFj6mmMbhCNHfoEEabaFG3a0zWKelt9JQpUbIlkOyr/LL
+         gIZcbGZ2HOHbZLvOVBvETq+4Q1UPzLenZPNLuer/J99gIe3cFVhjNAeHbKHSpJfZOUAj
+         v8MQ/YrSpo3pztTG3pVc6V7q4PN3NXKQJzAljEwLgdjg8ZMi1dm293Eb9rhSfKNxy9Lw
+         Amtk9H8A5H1d/gr+T79F/AO7Y0GkWOjiDyV4AiAzoto06UJnGD92BjNiaPYJds9r/J/X
+         wfkKHva0xUu6/vuezwwLOaTCgig3uEiRLDBipP1UiAwL/CuMiznMX42N7KFRF4FOn6W+
+         OL8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JL4GvZvO;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YTFo+SI6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l17si11176577qvu.9.2020.02.03.02.11.17
+        by mx.google.com with ESMTPS id m6si11311834qkh.288.2020.02.03.04.59.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 02:11:17 -0800 (PST)
+        Mon, 03 Feb 2020 04:59:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JL4GvZvO;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YTFo+SI6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37474 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39878 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iyYhJ-0007sv-6v
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 05:11:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38470)
+	id 1iybK8-0001no-A5
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 07:59:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36458)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1iyYgT-00073C-5q
- for qemu-devel@nongnu.org; Mon, 03 Feb 2020 05:10:26 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1iybJ2-0001Jx-JQ
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 07:58:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1iyYgR-0005BX-LC
- for qemu-devel@nongnu.org; Mon, 03 Feb 2020 05:10:24 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:34265
+ (envelope-from <eric.auger@redhat.com>) id 1iybJ1-0005Us-0Q
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 07:58:24 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:59112
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1iyYgR-00059s-Gu
- for qemu-devel@nongnu.org; Mon, 03 Feb 2020 05:10:23 -0500
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1iybJ0-0005Ue-Tb
+ for qemu-devel@nongnu.org; Mon, 03 Feb 2020 07:58:22 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580724622;
+ s=mimecast20190719; t=1580734702;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=NokHOPLkF79HUmVBRXwt5uInhUO8htWfvwWVOlhqyWE=;
- b=JL4GvZvOiVt+AiQZsCjQLE+RLcEVJYTs0oXLVZTguED+ncZWFvo7ekdIYg68L8EDS33XXr
- 1Df+HtXIV76SDvNY4uN+hHCU7hi//c1XTF5ngLrzWJLW7rBcUOcaG6Mg3VnbSCzu88QyeS
- Bz2+vhkNkRdyqdEJNvTYur1FzQKWEYQ=
+ bh=mOuCHVqi6kt2PB6u0xpB+UkqarwDPoVCn4+Qm1io4R4=;
+ b=YTFo+SI6uM0FPmdGVXgRE/b2S/bW805ps9CSJJMWh1EseNGceBjAv2/H3mKueX/j3XoPOv
+ UfkGVl+t4hu9Vn11c7neX+U2YmXPYpCGSMNJdnZCpBew87s5sE2Fw8CusGUV8wNiwBh6kY
+ BQ2KuzTeroJP4cabcfso2H9WwlGcL8I=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-330-POtdVb0UMtWVkQJromBpOA-1; Mon, 03 Feb 2020 05:10:19 -0500
+ us-mta-223-KbTmTud_Pz6slGGzXfTKRQ-1; Mon, 03 Feb 2020 07:58:19 -0500
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 16F9B801E6C;
- Mon,  3 Feb 2020 10:10:18 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E6602166BE;
- Mon,  3 Feb 2020 10:10:13 +0000 (UTC)
-Date: Mon, 3 Feb 2020 11:10:12 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Subject: Re: [PATCH 5/6] hw/arm/raspi: Dynamically create machines based on
- the board revision
-Message-ID: <20200203111012.0ab38555@redhat.com>
-In-Reply-To: <20200203082619.7426-6-f4bug@amsat.org>
-References: <20200203082619.7426-1-f4bug@amsat.org>
- <20200203082619.7426-6-f4bug@amsat.org>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 820AB100551A;
+ Mon,  3 Feb 2020 12:58:17 +0000 (UTC)
+Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6D7AA2103;
+ Mon,  3 Feb 2020 12:58:07 +0000 (UTC)
+Subject: Re: [PATCH v13 00/10] VIRTIO-IOMMU device
+To: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, jean-philippe@linaro.org, dgilbert@redhat.com,
+ quintela@redhat.com, mst@redhat.com, peterx@redhat.com
+References: <20200125171955.12825-1-eric.auger@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <158548eb-8337-aea0-25da-bb7729bf925e@redhat.com>
+Date: Mon, 3 Feb 2020 13:58:04 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
+In-Reply-To: <20200125171955.12825-1-eric.auger@redhat.com>
+Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: POtdVb0UMtWVkQJromBpOA-1
+X-MC-Unique: KbTmTud_Pz6slGGzXfTKRQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,189 +111,184 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
- Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Cc: kevin.tian@intel.com, bharatb.linux@gmail.com, tnowicki@marvell.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7JJsUIaZUqVn
+X-TUID: xwvELFYLDut5
 
-On Mon,  3 Feb 2020 09:26:18 +0100
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+Hi,
 
-> We added tiny helpers extracting different values from the board
-> revision, we can now create a full board based on its revision.
-> The 'raspi-common' type is common to all raspi boards.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/arm/raspi.c | 93 +++++++++++++++++++++++++++++++++-----------------
->  1 file changed, 62 insertions(+), 31 deletions(-)
->=20
-> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> index 656d834e07..12dc4d1486 100644
-> --- a/hw/arm/raspi.c
-> +++ b/hw/arm/raspi.c
-> @@ -44,12 +44,17 @@ static const struct {
->      [C_BCM2837] =3D {TYPE_BCM2837},
->  };
-> =20
-> -typedef struct RasPiState {
-> +typedef struct RaspiMachineState {
-> +    /*< private >*/
-> +    MachineState parent_obj;
-> +    /*< public >*/
->      BCM283XState soc;
->      MemoryRegion ram;
-> -} RasPiState;
-> +} RaspiMachineState;
-> =20
->  typedef struct RaspiBoardInfo {
-> +    const char *name;
-> +    const char *desc;
->      /*
->       * Board revision codes:
->       * www.raspberrypi.org/documentation/hardware/raspberrypi/revision-c=
-odes/
-> @@ -57,16 +62,32 @@ typedef struct RaspiBoardInfo {
->      uint32_t board_rev;
->  } RaspiBoardInfo;
-> =20
-> -enum { BOARD_PI2, BOARD_PI3 };
-> +typedef struct RaspiMachineClass {
-> +    /*< private >*/
-> +    MachineClass parent_obj;
-> +    /*< public >*/
-> +    const RaspiBoardInfo *config;
-> +} RaspiMachineClass;
-> +
-> +#define TYPE_RASPI_MACHINE       MACHINE_TYPE_NAME("raspi-common")
-> +#define RASPI_MACHINE(obj) \
-> +    OBJECT_CHECK(RaspiMachineState, (obj), TYPE_RASPI_MACHINE)
-> +
-> +#define RASPI_MACHINE_CLASS(klass) \
-> +     OBJECT_CLASS_CHECK(RaspiMachineClass, (klass), TYPE_RASPI_MACHINE)
-> +#define RASPI_MACHINE_GET_CLASS(obj) \
-> +     OBJECT_GET_CLASS(RaspiMachineClass, (obj), TYPE_RASPI_MACHINE)
-> =20
->  static const RaspiBoardInfo raspi_boards[] =3D {
-> -    [BOARD_PI2] =3D
->      {
-> +        .name =3D MACHINE_TYPE_NAME("raspi2"),
-> +        .desc =3D "Raspberry Pi 2B",
->          .board_rev =3D 0xa21041,
->      },
->  #ifdef TARGET_AARCH64
-> -    [BOARD_PI3] =3D
->      {
-> +        .name =3D MACHINE_TYPE_NAME("raspi3"),
-> +        .desc =3D "Raspberry Pi 3B",
->          .board_rev =3D 0xa02082,
->      },
->  #endif
-> @@ -221,7 +242,7 @@ static void setup_boot(MachineState *machine, int ver=
-sion, size_t ram_size)
-> =20
->  static void raspi_init(MachineState *machine, const RaspiBoardInfo *conf=
-ig)
->  {
-> -    RasPiState *s =3D g_new0(RasPiState, 1);
-> +    RaspiMachineState *s =3D RASPI_MACHINE(machine);
->      int version =3D board_version(config);
->      uint32_t vcram_size;
->      DriveInfo *di;
-> @@ -271,15 +292,22 @@ static void raspi_init(MachineState *machine, const=
- RaspiBoardInfo *config)
->      setup_boot(machine, version, machine->ram_size - vcram_size);
->  }
-> =20
-> -static void raspi2_init(MachineState *machine)
-> +static void raspi_machine_init(MachineState *machine)
->  {
-> -    raspi_init(machine, &raspi_boards[BOARD_PI2]);
-> +    RaspiMachineClass *rmc =3D RASPI_MACHINE_GET_CLASS(machine);
-> +
-> +    raspi_init(machine, rmc->config);
->  }
-> =20
-> -static void raspi2_machine_init(MachineClass *mc)
-> +static void raspi_machine_class_init(ObjectClass *oc, void *data)
->  {
-> -    mc->desc =3D "Raspberry Pi 2";
-> -    mc->init =3D raspi2_init;
-> +    MachineClass *mc =3D MACHINE_CLASS(oc);
-> +    RaspiMachineClass *rmc =3D RASPI_MACHINE_CLASS(oc);
-> +    const RaspiBoardInfo *config =3D data;
-> +
-> +    rmc->config =3D config;
-> +    mc->desc =3D config->desc;
-> +    mc->init =3D raspi_machine_init;
->      mc->block_default_type =3D IF_SD;
->      mc->no_parallel =3D 1;
->      mc->no_floppy =3D 1;
-> @@ -287,29 +315,32 @@ static void raspi2_machine_init(MachineClass *mc)
->      mc->max_cpus =3D BCM283X_NCPUS;
->      mc->min_cpus =3D BCM283X_NCPUS;
->      mc->default_cpus =3D BCM283X_NCPUS;
-> -    mc->default_ram_size =3D 1 * GiB;
-> +    mc->default_ram_size =3D board_ram_size(config);
->      mc->ignore_memory_transaction_failures =3D true;
-> +}
-> +
-> +static const TypeInfo raspi_machine_type =3D {
-> +    .name =3D TYPE_RASPI_MACHINE,
-> +    .parent =3D TYPE_MACHINE,
-> +    .instance_size =3D sizeof(RaspiMachineState),
-> +    .class_size =3D sizeof(RaspiMachineClass),
-> +    .abstract =3D true,
->  };
-> -DEFINE_MACHINE("raspi2", raspi2_machine_init)
-> =20
-> -#ifdef TARGET_AARCH64
-> -static void raspi3_init(MachineState *machine)
-> +static void raspi_machine_types(void)
->  {
-> -    raspi_init(machine, &raspi_boards[BOARD_PI3]);
-> +    int i;
-> +
-> +    type_register_static(&raspi_machine_type);
-> +    for (i =3D 0; i < ARRAY_SIZE(raspi_boards); ++i) {
-> +        TypeInfo ti =3D {
-> +            .name       =3D raspi_boards[i].name,
-> +            .parent     =3D TYPE_RASPI_MACHINE,
-> +            .class_init =3D raspi_machine_class_init,
-> +            .class_data =3D (void *)&raspi_boards[i],
-> +        };
-> +        type_register(&ti);
-> +    }
+On 1/25/20 6:19 PM, Eric Auger wrote:
+> This series implements the QEMU virtio-iommu device.
+> 
+> This matches the v0.12 spec (voted) and the corresponding
+> virtio-iommu driver upstreamed in 5.3. All kernel dependencies
+> are resolved for DT integration. The virtio-iommu can be
+> instantiated in ARM virt using "-device virtio-iommu-pci".
+> 
+> Non DT mode is not yet supported as it has non resolved kernel
+> dependencies [1].
+> 
+> This feature targets 5.0.
+If possible I would like to make this feature upstream in 5.0. Do you
+guys have other comments/objections?
 
-from what I've seen we do something like this in cases where
-we need to generate a lot of classes based on data.
+Thanks
 
-The thing is that it's harder to deal with compared to typical
-template where one defines machine classes and per machine
-type foo_class_init() functions. Yes it's a bit more boiler
-plate but it's what is typically used/consistent with machine types.
-So if one would have touch touch that future, one wouldn't have
-to wrap their brain around yet another way to define machine.
-
->  }
-> =20
-> -static void raspi3_machine_init(MachineClass *mc)
-> -{
-> -    mc->desc =3D "Raspberry Pi 3";
-> -    mc->init =3D raspi3_init;
-> -    mc->block_default_type =3D IF_SD;
-> -    mc->no_parallel =3D 1;
-> -    mc->no_floppy =3D 1;
-> -    mc->no_cdrom =3D 1;
-> -    mc->max_cpus =3D BCM283X_NCPUS;
-> -    mc->min_cpus =3D BCM283X_NCPUS;
-> -    mc->default_cpus =3D BCM283X_NCPUS;
-> -    mc->default_ram_size =3D 1 * GiB;
-> -}
-> -DEFINE_MACHINE("raspi3", raspi3_machine_init)
-> -#endif
-> +type_init(raspi_machine_types)
+Eric
+> 
+> Integration with vhost devices and vfio devices is not part
+> of this series. Please follow Bharat's respins [2].
+> 
+> Best Regards
+> 
+> Eric
+> 
+> This series can be found at:
+> https://github.com/eauger/qemu/tree/v4.2-virtio-iommu-v13
+> 
+> References:
+> [1] [RFC 00/13] virtio-iommu on non-devicetree platforms
+> [2] [PATCH RFC v5 0/5] virtio-iommu: VFIO integration
+> 
+> Testing:
+> - tested with guest using virtio-net-pci
+>   (,vhost=off,iommu_platform,disable-modern=off,disable-legacy=on)
+>   and virtio-blk-pci
+> - migration
+> 
+> History:
+> 
+> v12 -> v13:
+> - Take into account Peter's comments
+> - fix qtest error and accomodate for directory changes in
+>   test
+> - remove "[PATCH v12 01/13] migration: Support QLIST migration"
+>   which is now upstream
+> - fix iommu_find_iommu_pcibus()
+> - squash commits as requested by Peter
+> - remove spurious guest log
+> 
+> v11 -> v12:
+> - took into account Peter and Jean's comments
+>   - use guest features
+>   - restore as_by_bus_num and when attaching devices, check they are
+>     actually protected by the IOMMU. Updated the tests accordingly.
+>   - fix the mapping ref counting and make sure mappings are properly
+>     cleaned.
+>   - Use CamelCase for data types
+>   - simplify postload callback as suggested by Peter
+>   - add R-bs
+> - fix mingw compilation issue
+> - add IOMMU migration priority
+> - qlist migration load simplified following Juan's suggestion
+> 
+> v10 -> v11:
+> - introduce virtio_iommu_handle_req macro
+> - migration support
+> - introduce DEFINE_PROP_INTERVAL and pass reserved regions
+>   through an array of those
+> - domain gtree simplification
+> 
+> v9 -> v10:
+> - rebase on 4.1.0-rc2, compliance with 0.12 spec
+> - removed ACPI part
+> - cleanup (see individual change logs)
+> - moved to a PATCH series
+> 
+> v8 -> v9:
+> - virtio-iommu-pci device needs to be instantiated from the command
+>   line (RID is not imposed anymore).
+> - tail structure properly initialized
+> 
+> v7 -> v8:
+> - virtio-iommu-pci added
+> - virt instantiation modified
+> - DT and ACPI modified to exclude the iommu RID from the mapping
+> - VIRTIO_IOMMU_F_BYPASS, VIRTIO_F_VERSION_1 features exposed
+> 
+> v6 -> v7:
+> - rebase on qemu 3.0.0-rc3
+> - minor update against v0.7
+> - fix issue with EP not on pci.0 and ACPI probing
+> - change the instantiation method
+> 
+> v5 -> v6:
+> - minor update against v0.6 spec
+> - fix g_hash_table_lookup in virtio_iommu_find_add_as
+> - replace some error_reports by qemu_log_mask(LOG_GUEST_ERROR, ...)
+> 
+> v4 -> v5:
+> - event queue and fault reporting
+> - we now return the IOAPIC MSI region if the virtio-iommu is instantiated
+>   in a PC machine.
+> - we bypass transactions on MSI HW region and fault on reserved ones.
+> - We support ACPI boot with mach-virt (based on IORT proposal)
+> - We moved to the new driver naming conventions
+> - simplified mach-virt instantiation
+> - worked around the disappearing of pci_find_primary_bus
+> - in virtio_iommu_translate, check the dev->as is not NULL
+> - initialize as->device_list in virtio_iommu_get_as
+> - initialize bufstate.error to false in virtio_iommu_probe
+> 
+> v3 -> v4:
+> - probe request support although no reserved region is returned at
+>   the moment
+> - unmap semantics less strict, as specified in v0.4
+> - device registration, attach/detach revisited
+> - split into smaller patches to ease review
+> - propose a way to inform the IOMMU mr about the page_size_mask
+>   of underlying HW IOMMU, if any
+> - remove warning associated with the translation of the MSI doorbell
+> 
+> v2 -> v3:
+> - rebase on top of 2.10-rc0 and especially
+>   [PATCH qemu v9 0/2] memory/iommu: QOM'fy IOMMU MemoryRegion
+> - add mutex init
+> - fix as->mappings deletion using g_tree_ref/unref
+> - when a dev is attached whereas it is already attached to
+>   another address space, first detach it
+> - fix some error values
+> - page_sizes = TARGET_PAGE_MASK;
+> - I haven't changed the unmap() semantics yet, waiting for the
+>   next virtio-iommu spec revision.
+> 
+> v1 -> v2:
+> - fix redefinition of viommu_as typedef
+> 
+> 
+> Eric Auger (10):
+>   virtio-iommu: Add skeleton
+>   virtio-iommu: Decode the command payload
+>   virtio-iommu: Implement attach/detach command
+>   virtio-iommu: Implement map/unmap
+>   virtio-iommu: Implement translate
+>   virtio-iommu: Implement fault reporting
+>   virtio-iommu-pci: Add virtio iommu pci support
+>   hw/arm/virt: Add the virtio-iommu device tree mappings
+>   virtio-iommu: Support migration
+>   tests: Add virtio-iommu test
+> 
+>  hw/arm/virt.c                     |  54 +-
+>  hw/virtio/Kconfig                 |   5 +
+>  hw/virtio/Makefile.objs           |   2 +
+>  hw/virtio/trace-events            |  20 +
+>  hw/virtio/virtio-iommu-pci.c      |  88 +++
+>  hw/virtio/virtio-iommu.c          | 897 ++++++++++++++++++++++++++++++
+>  include/hw/arm/virt.h             |   2 +
+>  include/hw/pci/pci.h              |   1 +
+>  include/hw/virtio/virtio-iommu.h  |  61 ++
+>  qdev-monitor.c                    |   1 +
+>  tests/qtest/Makefile.include      |   2 +
+>  tests/qtest/libqos/virtio-iommu.c | 177 ++++++
+>  tests/qtest/libqos/virtio-iommu.h |  45 ++
+>  tests/qtest/virtio-iommu-test.c   | 306 ++++++++++
+>  14 files changed, 1653 insertions(+), 8 deletions(-)
+>  create mode 100644 hw/virtio/virtio-iommu-pci.c
+>  create mode 100644 hw/virtio/virtio-iommu.c
+>  create mode 100644 include/hw/virtio/virtio-iommu.h
+>  create mode 100644 tests/qtest/libqos/virtio-iommu.c
+>  create mode 100644 tests/qtest/libqos/virtio-iommu.h
+>  create mode 100644 tests/qtest/virtio-iommu-test.c
+> 
 

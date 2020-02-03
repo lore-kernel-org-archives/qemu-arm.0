@@ -1,215 +1,245 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3989005lfp;
-        Mon, 3 Feb 2020 06:04:53 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyyKdMDlFumOzZgNAplFfA15sztBCmytr3ynFMAIuwEO0u9wKg+2rzlnmzqNdX0TqkzRLCR
-X-Received: by 2002:a37:68a:: with SMTP id 132mr22729902qkg.139.1580738692542;
-        Mon, 03 Feb 2020 06:04:52 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3991543lfp;
+        Mon, 3 Feb 2020 06:06:55 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy2zo5wOi/KAxKLtZxqMgVzOvpOS5T+3jnUmwVeRZ/S3HIERC/DpFqnNsHlFVfXsfHN0JXl
+X-Received: by 2002:ac8:958:: with SMTP id z24mr24115333qth.40.1580738815566;
+        Mon, 03 Feb 2020 06:06:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580738815; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ZbjlZFuiACxQkpz6lrIf19ZrCNNqjkcTwgTeG84rRJxtDo/YnFoAmejQhmlrzEVrzK
+         G+CqJmtmIxYt2Sp4YnBdNfvwhTEvKa+zfIx3SCVvmBuTUXjJQFQUyA98n3zr0MSczTq7
+         0SEqRCNOXa9nkhNHzUmsfoVM304qdFKK4By9ZOcntcU0r9U23g6RPMoyHCa10SQV2rSu
+         DLcYvZjK/F+BnE+1qXbahhw/Ey+GyVReztzoMwvKbad+n4SpixzFK8pf7+BZEuYtSXbI
+         zjEfx0itv0FeBFvE0zlSC/JHJOeEsZfqMhIqw7SU/x45Jc58G45GzshcdvNeRo5o7tsX
+         98dg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=WBWUqVjVBu0s5c3cxxDUBRgI2KUhjLKiEkVMNBMsQso=;
+        b=NSWPIZhgO+09gTKK6Q6k0qs/o93maSU8uxEolNVT5Cf0z6muxxf3sbwdgXxjJf5PIV
+         DfFHrwk7pZMoqB/DF8NpHittL2hZ1+AO0qA7NEPOq5/RzMpPT6c0L6103CYPl/X+YxFI
+         iMQEoBH4W4cO7yyqmF6ZyWd8KYcNGgz88S+qyPjP6hnjhioHjePEsKKSycsD+hOQG5Ot
+         dWgtEDf7ycOsfFZ4MIm3wSSJQyH6D/98vwuNmXg6UvwlPXSrbz9pNcNCaw3pwBI9Y6+O
+         2UN/ycqOudo9Kfwavaa+nk2bqkYzDvu8Ml60keUjGakrg7DADjpysRSNZgiKsNb1Kuqu
+         OWLw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i9lmJVD9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fb20si11211951qvb.212.2020.02.03.06.04.52
+        by mx.google.com with ESMTPS id c44si11223352qte.279.2020.02.03.06.06.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 06:04:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Feb 2020 06:06:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41380 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i9lmJVD9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41464 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iycLL-00055I-WB
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 09:04:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58508)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iycNL-0000VX-0p
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 09:06:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59492)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <LYan@suse.com>) id 1iycK2-0003pQ-3g
- for qemu-devel@nongnu.org; Mon, 03 Feb 2020 09:03:31 -0500
+ (envelope-from <wainersm@redhat.com>) id 1iycMo-00082w-R9
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:06:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <LYan@suse.com>) id 1iycJw-0007VE-Vi
- for qemu-devel@nongnu.org; Mon, 03 Feb 2020 09:03:30 -0500
-Received: from m9a0014g.houston.softwaregrp.com ([15.124.64.90]:52110)
+ (envelope-from <wainersm@redhat.com>) id 1iycMm-0003QQ-BO
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:06:21 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:53055
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <LYan@suse.com>)
- id 1iycJt-0007MH-MM; Mon, 03 Feb 2020 09:03:21 -0500
-Received: FROM m9a0014g.houston.softwaregrp.com (15.121.0.190) BY
- m9a0014g.houston.softwaregrp.com WITH ESMTP; 
- Mon,  3 Feb 2020 14:02:25 +0000
-Received: from M9W0067.microfocus.com (2002:f79:be::f79:be) by
- M9W0067.microfocus.com (2002:f79:be::f79:be) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10; Mon, 3 Feb 2020 14:01:05 +0000
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (15.124.72.12) by
- M9W0067.microfocus.com (15.121.0.190) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10 via Frontend Transport; Mon, 3 Feb 2020 14:01:05 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HZXsRrkUbddCCaxBqnhz9FnAjuFFJeqbqxzEOgAwvLTDSfpakOadkOpr0D1Xzk6NxC6/C0Ds2Rp1+xSP9E5f/BUNAnS0oBEj33mM28/yRvP1cK6HqfAUZV6hXOZhXCBir6W69Zm0o4wn4IFC2KcJCC/rfXNjE2UayYIGrSTRw7q6nE1NWn/cjVlnBOR+U/IOhklvd4C3oHGAHWQc0MB4BqxLmdFHGN72zbb5vtcw5u9qqJvz2CbYZZVxlikqTNLTVgo0Jw6KD6xlQDMDQsxkK8JVDTiBL7+LeUrU8lOE/FDXHg6cPtj+YooQ4TwNayqer/O5D7RMbwDXb74iXtePqA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=gD3SPoRW1SuWpV4232l/ufoTjhDiWmmwq0qWNgM5BL8=;
- b=RWiXYo8nckUK8HlbiHFqg/5FuqnhtfoHOyHSsY9zqxV5jKtJHaGf9I6tu0TF8FmvmlQV63iZwn7jI1bkxFmC9paK9N+fI5Yh8FXue98n16zErkeL/dG81/itU+WeHymngDwyP6F4QIYQ8hBNkOodGI1GMTIddXEmYV9ciSuBREu94E6wIC8jqV7TYWhTxvDeq8pRlziX2K/TyEDwraiWSFdOXwLRrg3ObLv8zoYnPWEV+k4NjMKXSSl6UuLyPSoiNyB1dqbSJW3CADSYC6zq+tBtNrFyORKlUJuQxQzfKeKk7ZP7TsPJ6xFXg8S09CyH7xraR/xyLnXYjJzY4I1/ow==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=suse.com; dmarc=pass action=none header.from=suse.com;
- dkim=pass header.d=suse.com; arc=none
-Authentication-Results: spf=none (sender IP is ) smtp.mailfrom=LYan@suse.com; 
-Received: from BYAPR18MB2888.namprd18.prod.outlook.com (20.179.58.203) by
- BYAPR18MB2696.namprd18.prod.outlook.com (20.179.58.90) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2686.29; Mon, 3 Feb 2020 14:01:04 +0000
-Received: from BYAPR18MB2888.namprd18.prod.outlook.com
- ([fe80::70c4:1802:725e:e829]) by BYAPR18MB2888.namprd18.prod.outlook.com
- ([fe80::70c4:1802:725e:e829%7]) with mapi id 15.20.2686.030; Mon, 3 Feb 2020
- 14:01:04 +0000
-Subject: Re: [PATCH v4] target/arm/monitor: query-cpu-model-expansion crashed
- qemu when using machine type none
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200203134251.12986-1-lyan@suse.com>
- <CAFEAcA-CcNwozBBFWenjnBpRPYhxe_sDiKffwO+SZk38xtY4VA@mail.gmail.com>
-From: Liang Yan <lyan@suse.com>
-Autocrypt: addr=lyan@suse.com; prefer-encrypt=mutual; keydata=
- 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
- yMQQ+LPXfanS4w==
-Message-ID: <ae4957c5-01a9-fbbf-c3d5-a834e6b4cbc3@suse.com>
-Date: Mon, 3 Feb 2020 09:01:01 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
-In-Reply-To: <CAFEAcA-CcNwozBBFWenjnBpRPYhxe_sDiKffwO+SZk38xtY4VA@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: BL0PR1501CA0015.namprd15.prod.outlook.com
- (2603:10b6:207:17::28) To BYAPR18MB2888.namprd18.prod.outlook.com
- (2603:10b6:a03:10d::11)
+ (Exim 4.71) (envelope-from <wainersm@redhat.com>) id 1iycMm-0003PD-16
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 09:06:20 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1580738779;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=WBWUqVjVBu0s5c3cxxDUBRgI2KUhjLKiEkVMNBMsQso=;
+ b=i9lmJVD9TKok6f3N9o2WHY6ABIkIxyEL3BxSlaH5WvVtOmFYZzqdfs69xyJukvac/8f3/7
+ 6Gu65AV05zSDgVGcDHpa5GBOgIuJA54AeuPWkREVYa2HprLp5XAtAg0shW4xqG0oUNnz3I
+ ylY6nJxsBgNY6s/uIu+A3icSI3bTRgo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-49-kpf0-1swMdSupsV909b-BA-1; Mon, 03 Feb 2020 09:06:00 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5C7E7CF9BF;
+ Mon,  3 Feb 2020 14:05:59 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-90.gru2.redhat.com
+ [10.97.116.90])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 701EA84BCD;
+ Mon,  3 Feb 2020 14:05:51 +0000 (UTC)
+Subject: Re: [PATCH 2/2] tests/acceptance/integratorcp: Verify Tux is
+ displayed on framebuffer
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200131211102.29612-1-f4bug@amsat.org>
+ <20200131211102.29612-3-f4bug@amsat.org>
+From: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Message-ID: <62387425-5fc2-8607-3b78-6878b7611651@redhat.com>
+Date: Mon, 3 Feb 2020 12:05:49 -0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-Received: from [IPv6:2605:a000:160e:228::5ca] (2605:a000:160e:228::5ca) by
- BL0PR1501CA0015.namprd15.prod.outlook.com (2603:10b6:207:17::28) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2686.29 via Frontend
- Transport; Mon, 3 Feb 2020 14:01:03 +0000
-X-Originating-IP: [2605:a000:160e:228::5ca]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: df60fc5d-9d3e-41ac-6b96-08d7a8b1822c
-X-MS-TrafficTypeDiagnostic: BYAPR18MB2696:
-X-Microsoft-Antispam-PRVS: <BYAPR18MB269681DBAAB7C6288B2E2CCABF000@BYAPR18MB2696.namprd18.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:2657;
-X-Forefront-PRVS: 0302D4F392
-X-Forefront-Antispam-Report: SFV:NSPM;
- SFS:(10019020)(4636009)(39860400002)(346002)(396003)(376002)(136003)(366004)(189003)(199004)(54906003)(36756003)(6486002)(8936002)(4326008)(81166006)(81156014)(316002)(66556008)(478600001)(66476007)(186003)(16526019)(66946007)(52116002)(6916009)(2616005)(53546011)(31686004)(31696002)(8676002)(2906002)(86362001)(5660300002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR18MB2696;
- H:BYAPR18MB2888.namprd18.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-Received-SPF: None (protection.outlook.com: suse.com does not designate
- permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 9Bq9zO7aw3QxEJ4qzjyrTN3r4ZrLSCBxBJIaiWqeTf7/uiEKGiUdLwqdOB82d3VIliT/m4rtefq/ci1DLSfXh3UkbJwM9OQ0mBUtvSNmuSz4X0wTrtuFDj0X7WMgPxU/QP4HuM4LPBzZdUwchWIaj00ZbYKyQnbpLspKeCfsvG3IRyttDEjqc+2F7/DbnX7vk4J/hbfc9j71cIQII8W7+5nwPfccRc/YKJY7ToitveyFxty+oqyeJqFwgpPt6ZimZTOAus6VOlpzpCiKeWhXy489a1XxenYDwW8yIzXbVsNA63AL8eEM0QsJPrqCPLfufLXiNc9m3/BwpSbL7NjrBTnpIA4CrY66LSGkBvs23TbMFVCYF21ob8D9vxGN3tiC07s4ilLzgfpCy/mxFQZxSCkGw/MqOobUmzqH2Cm/O4+GiGILAv9+yhiyJoeyGQN+
-X-MS-Exchange-AntiSpam-MessageData: nenaBv4HB2ue0gg4mjcA4PriRpkjjVFzi8PuuH1ou3wGuW+sGQNRnyCSp3g+lA3bVaJQJ8cAjCRO1h+t6Yb+W0b4S8UV1VFKewVCal3bIKM5RPp/VYC3+lKHC4HfzIVQivwPN+tRM9B5wbTiT2ZDFssxMSXKsB+izSqFMYL3Pv4=
-X-MS-Exchange-CrossTenant-Network-Message-Id: df60fc5d-9d3e-41ac-6b96-08d7a8b1822c
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Feb 2020 14:01:04.4140 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 856b813c-16e5-49a5-85ec-6f081e13b527
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: +rHiTH3k0jAshGNVcMY4drNi/CrdmuTSGxY0irggh11yyWsqnqFXDDQLzkfcRZlY
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR18MB2696
-X-OriginatorOrg: suse.com
+In-Reply-To: <20200131211102.29612-3-f4bug@amsat.org>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: kpf0-1swMdSupsV909b-BA-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 15.124.64.90
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Andrew Jones <drjones@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jJTOi12KtlXI
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, Cleber Rosa <crosa@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8gr0AhiuBty+
 
 
+On 1/31/20 7:11 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Add a test that verifies the Tux logo is displayed on the framebuffer.
+>
+> We simply follow the OpenCV "Template Matching with Multiple Objects"
+> tutorial, replacing Lionel Messi by Tux:
 
-On 2/3/20 8:54 AM, Peter Maydell wrote:
-> On Mon, 3 Feb 2020 at 13:44, Liang Yan <lyan@suse.com> wrote:
->>
->> Commit e19afd566781 mentioned that target-arm only supports queryable
->> cpu models 'max', 'host', and the current type when KVM is in use.
->> The logic works well until using machine type none.
->>
->> For machine type none, cpu_type will be null if cpu option is not
->> set by command line, strlen(cpu_type) will terminate process.
->> So We add a check above it.
->>
->> This won't affect i386 and s390x since they do not use current_cpu.
->>
->> Signed-off-by: Liang Yan <lyan@suse.com>
->> ---
->>  v4: change code style based on the review from Andrew Jones
->>  v3: change git commit message
->>  v2: fix code style issue
-> 
-> If a reviewer says "with these changes, reviewed-by:", or
-> "otherwise, reviewed-by...", then you should add those tags to
-> your commit message, assuming you've only made the changes
-> they asked for. That saves them having to look at and reply
-> to the patchset again.
-> 
-> In this case I'll just add them as I add this patch to
-> target-arm.next, but if you could handle tags across versions
-> for future patchset submissions it makes life a little
-> easier for us.
-> 
-Thanks for the tips, will definitely do in the future.
+So Tux > Messi??!! I knew that!
 
-Best,
-Liang
+> https://docs.opencv.org/4.2.0/d4/dc6/tutorial_py_template_matching.html
+>
+> When OpenCV and NumPy are installed, this test can be run using:
+>
+>    $ AVOCADO_ALLOW_UNTRUSTED_CODE=3Dhmmm \
+>      avocado --show=3Dapp,framebuffer run -t device:framebuffer \
+>        tests/acceptance/machine_arm_integratorcp.py
+>    JOB ID     : 8c46b0f8269242e87d738247883ea2a470df949e
+>    JOB LOG    : avocado/job-results/job-2020-01-31T21.38-8c46b0f/job.log
+>     (1/1) tests/acceptance/machine_arm_integratorcp.py:IntegratorMachine.=
+test_framebuffer_tux_logo:
+>    framebuffer: found Tux at position [x, y] =3D (0, 0)
+>    PASS (3.96 s)
+>    RESULTS    : PASS 1 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0=
+ | CANCEL 0
+>    JOB TIME   : 4.23 s
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+> The resulting match is https://pasteboard.co/ISz7kr8.png
+>
+> For matching SMP machines, these suggestion might work:
+> https://stackoverflow.com/questions/50579050/template-matching-with-multi=
+ple-objects-in-opencv-python
+> ---
+>   tests/acceptance/machine_arm_integratorcp.py | 51 ++++++++++++++++++++
+>   1 file changed, 51 insertions(+)
 
-> Applied to target-arm.next, thanks.
-> 
-> thanks
-> -- PMM
-> 
+
+Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+
+
+>
+> diff --git a/tests/acceptance/machine_arm_integratorcp.py b/tests/accepta=
+nce/machine_arm_integratorcp.py
+> index 748819916d..a706fe1b44 100644
+> --- a/tests/acceptance/machine_arm_integratorcp.py
+> +++ b/tests/acceptance/machine_arm_integratorcp.py
+> @@ -9,11 +9,26 @@
+>   # later.  See the COPYING file in the top-level directory.
+>  =20
+>   import os
+> +import logging
+>  =20
+>   from avocado import skipUnless
+>   from avocado_qemu import Test
+>   from avocado_qemu import wait_for_console_pattern
+>  =20
+> +
+> +NUMPY_AVAILABLE =3D True
+> +try:
+> +    import numpy as np
+> +except ImportError:
+> +    NUMPY_AVAILABLE =3D False
+> +
+> +CV2_AVAILABLE =3D True
+> +try:
+> +    import cv2
+> +except ImportError:
+> +    CV2_AVAILABLE =3D False
+> +
+> +
+>   class IntegratorMachine(Test):
+>       """Boots the Linux kernel and checks that the console is operationa=
+l"""
+>  =20
+> @@ -45,3 +60,39 @@ class IntegratorMachine(Test):
+>           """
+>           self.boot_integratorcp()
+>           wait_for_console_pattern(self, 'Log in as root')
+> +
+> +    @skipUnless(NUMPY_AVAILABLE, 'Python NumPy not installed')
+> +    @skipUnless(CV2_AVAILABLE, 'Python OpenCV not installed')
+> +    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted co=
+de')
+> +    def test_framebuffer_tux_logo(self):
+> +        """
+> +        :avocado: tags=3Darch:arm
+> +        :avocado: tags=3Dmachine:integratorcp
+> +        :avocado: tags=3Ddevice:pl110
+> +        :avocado: tags=3Ddevice:framebuffer
+> +        """
+> +        screendump_path =3D os.path.join(self.workdir, "screendump.pbm")
+> +        tuxlogo_url =3D ('https://github.com/torvalds/linux/raw/v2.6.12/=
+'
+> +                       'drivers/video/logo/logo_linux_vga16.ppm')
+> +        tuxlogo_hash =3D '3991c2ddbd1ddaecda7601f8aafbcf5b02dc86af'
+> +        tuxlogo_path =3D self.fetch_asset(tuxlogo_url, asset_hash=3Dtuxl=
+ogo_hash)
+> +
+> +        self.boot_integratorcp()
+> +        framebuffer_ready =3D 'Console: switching to colour frame buffer=
+ device'
+> +        wait_for_console_pattern(self, framebuffer_ready)
+> +        self.vm.command('human-monitor-command', command_line=3D'stop')
+> +        self.vm.command('human-monitor-command',
+> +                        command_line=3D'screendump %s' % screendump_path=
+)
+> +        logger =3D logging.getLogger('framebuffer')
+> +
+> +        cpu_count =3D 1
+> +        match_threshold =3D 0.92
+> +        screendump_bgr =3D cv2.imread(screendump_path)
+> +        screendump_gray =3D cv2.cvtColor(screendump_bgr, cv2.COLOR_BGR2G=
+RAY)
+> +        result =3D cv2.matchTemplate(screendump_gray, cv2.imread(tuxlogo=
+_path, 0),
+> +                                   cv2.TM_CCOEFF_NORMED)
+> +        loc =3D np.where(result >=3D match_threshold)
+> +        tux_count =3D 0
+> +        for tux_count, pt in enumerate(zip(*loc[::-1]), start=3D1):
+> +            logger.debug('found Tux at position [x, y] =3D %s', pt)
+> +        self.assertGreaterEqual(tux_count, cpu_count)
+

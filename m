@@ -1,259 +1,348 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5187657lfp;
-        Tue, 4 Feb 2020 02:35:01 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwiiiOeWOo+PVtwHk17hmMv+KZ1Ig8bcCrS9J6cEAkJLDP/myEAIYGSLjnzWa2Y3ZchYaD0
-X-Received: by 2002:ad4:4aaa:: with SMTP id i10mr27425239qvx.27.1580812500955;
-        Tue, 04 Feb 2020 02:35:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580812500; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5286861lfp;
+        Tue, 4 Feb 2020 04:12:45 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxyctvEOzdPN0oUzJdmhn/1pH57/T+GprKWeaOTCUKOjzxiuJk1DbLqhDRYAaLkkCc6WRM8
+X-Received: by 2002:ac8:7396:: with SMTP id t22mr28342646qtp.269.1580818365055;
+        Tue, 04 Feb 2020 04:12:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580818365; cv=none;
         d=google.com; s=arc-20160816;
-        b=fou4QEZzrM9CDJFfVPT9R5ncyPdOjcFDsbi8U02LsKa5lga56aP4HZNe9rtMkFUZdB
-         iBKqCrmq+f5A/zh/aoMWO44nDewCxQvs62FbmD8JHHvCtdix7B9XMgtqdTK1zRVwhwI1
-         E1oFdZNx+CnLLYq0YDxkDmBq2ZVvVRfKG1yvOSowzwf1eP4JvP2oocbMDWrnOmermO/5
-         qDoAzxPdeyKMnDE4lNDupRulbLpYUkAHOAeE3CY/9iAKXfE7V8a7Qv2bHkncdrli0qj4
-         GzZDzjJ/uXZlv6PxYFND0VEeZYoNuxF6DdogD315DKeC4zBpIYjCPIrvqJ0TDhtu0rOP
-         GWpA==
+        b=yMRMpeh3v9lalsepkI/vYURno/CQjerx47Q5Q5VMr3Q9KZHnEg/eIeJvsFDLlVVPIe
+         DhM1R1VLydn28rYKDXtq2glWAWUUwXgWNLhlnKMn2ecwvLYLQj8mHTAo4srs/h79UzTz
+         cNceGwzonOWONnl/J8QUNunVdsgW7MgeVnZaamYprE3Gr3CQjizEsAknB8po3mHVF3xZ
+         6TEWfAtw9zyBHthKNOGsGCXCdI9S+PhVarlXxRJjQy7Fb6L4PJBmdpnI9oz/wX/tTQin
+         WQ2VxH0Tnd4ihyCvD0S4AmrwY/nYwxH5ppWqir1oECjpGYrOfAbdTp4ocoASUmwgZoG+
+         tQZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=zayxA1sSoKR2UdHHCp7D4LCttiVwfsBsmBLBx8/KgnM=;
-        b=Vc5sJegbT7/jt/MgPXBfJQDUm+YKHawtrAzAs986IPCyIL+BM3k0GH+Zi2E3QCl+L2
-         esyeFW1vXSafvSSEykX3zhmQMX0Mv7UiXbVKiJ3khLQGJu4iPQStkPW6LI5HPbfjVzh8
-         W+Ff/nDD/cuHA1o2iICDYE7E12SQNKG0VUmQjZUBCSLD9p91As6jOto/8PhTX7k8sJW7
-         fSgOvGKwWrMHEMkt2I2E8X3/Hb+vqxnDi9iUysXfDXRRC5cid/30qsdFKHvU0IR9y8CE
-         U0M0htXAoxgJA+V0HBrhfK22OarcLrTBBwvR5MSWlWglh/mIrVi7T4RTZqgri/AvJczF
-         vL5A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=lnDn7DQO6I/ZwuAuAhITuzdE2wjNfzwrhtnKY1itz10=;
+        b=aXRWX0NkKI+vkeI6cJyUPUzAW1bsBppXgjThIXf/V1FGk90meOrHw/AcSGx5KXIoLo
+         PHyb4E9+iEdY5TjG06e+qMAtPNc003o2IzH+WyZc6HM1DFAZSJVHgO3gLOt/FU8j34Cl
+         FmfNYo0Z98pNSa+ijxtQXdWm8wkgH7sPZNzQaCB+DkIh8fV+E+cZasb9YlE1Lxvc4XL7
+         /teItGX4F3cJwxGvkQLgJQF+5uBmreU6nfkQ9TB1rHh22afnfdZEvFWY9TwAM9AYPfmS
+         9ijEElWs9hW7f+c84NSJWS0chO7cFdoQVV+ctsO13AHECxzJxm1ts5yZwTforZxVgTA4
+         0RSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=gNRicseZ;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id p186si13628711qkc.318.2020.02.04.02.35.00;
-        Tue, 04 Feb 2020 02:35:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Cfg2z8KG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h5si2265965qkl.356.2020.02.04.04.12.44
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 04 Feb 2020 04:12:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=gNRicseZ;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 60C974A610;
-	Tue,  4 Feb 2020 05:35:00 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yqKlGtznjkRn; Tue,  4 Feb 2020 05:34:59 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 2DB174A535;
-	Tue,  4 Feb 2020 05:34:59 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 3AE854A4FC
- for <kvmarm@lists.cs.columbia.edu>; Tue,  4 Feb 2020 05:34:58 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ml64UADTgViD for <kvmarm@lists.cs.columbia.edu>;
- Tue,  4 Feb 2020 05:34:57 -0500 (EST)
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
- [205.139.110.61])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 15C104A49F
- for <kvmarm@lists.cs.columbia.edu>; Tue,  4 Feb 2020 05:34:57 -0500 (EST)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Cfg2z8KG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57168 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iyx4O-0005io-Dx
+	for alex.bennee@linaro.org; Tue, 04 Feb 2020 07:12:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52041)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philmd@redhat.com>) id 1iyx0L-0007za-SH
+ for qemu-devel@nongnu.org; Tue, 04 Feb 2020 07:08:35 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1iyx0K-00013G-72
+ for qemu-devel@nongnu.org; Tue, 04 Feb 2020 07:08:33 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:48082
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iyx0K-000118-1S
+ for qemu-devel@nongnu.org; Tue, 04 Feb 2020 07:08:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580812496;
+ s=mimecast20190719; t=1580818111;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=N2ppv8VdQFYEFb3YbQEdr4SJtjIEKEg19DLBErWYPcY=;
- b=gNRicseZ0BtdEdDZOKj6sgX/5PJsM3ulQpVW/w/kPq75A5u3EGi7WqGvBZJ8KTOjU8dYIe
- sh2Ng5vP29seEVCdIsJmu8jumZ9GRWcTuCrvoBF8z9HrGvhOPagbKXM27LVSj8HdNTQWlF
- FebKOTufV8TT4XP38ADkmz5eadRj0mU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-52-Z-AHNODQMpS_xR1azR6Erw-1; Tue, 04 Feb 2020 05:34:52 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 443E9801A1F;
- Tue,  4 Feb 2020 10:34:51 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8A9DD8068E;
- Tue,  4 Feb 2020 10:34:49 +0000 (UTC)
-Date: Tue, 4 Feb 2020 11:34:47 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Beata Michalska <beata.michalska@linaro.org>
-Subject: Re: [PATCH v2 1/2] target/arm: kvm: Inject events at the last stage
- of sync
-Message-ID: <20200204103447.naw26xl2y2zbyrqb@kamzik.brq.redhat.com>
-References: <20200129202441.12745-1-beata.michalska@linaro.org>
- <20200129202441.12745-2-beata.michalska@linaro.org>
+ bh=lnDn7DQO6I/ZwuAuAhITuzdE2wjNfzwrhtnKY1itz10=;
+ b=Cfg2z8KGiWMakQZem6UBmUccri1OV3ZIrCohXtSJRFamRsVJKX9zjcy2ob9dE0pDrBUd6f
+ fPLoeRi/SgIvGPai/ET7dXyu9x9qLaXPMftjJkAKGJuh5X/dXPunLpC9Gcnyyf+57inAtm
+ rDziCfkUFVbFZgHF9yNhpIbYB5Mr8Ng=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-228-6tDAkk6YMKiG5NBj5t2VXw-1; Tue, 04 Feb 2020 07:08:30 -0500
+Received: by mail-wr1-f70.google.com with SMTP id v17so10005365wrm.17
+ for <qemu-devel@nongnu.org>; Tue, 04 Feb 2020 04:08:30 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=rHrwFZd6tBKAlhjqr8qh1WljdRJ/xFVRmNR3LvX0hyw=;
+ b=oZRQ0d/F8U8LBRTIiMeqBXu1KpN5POlO8TNV2sVggE5nMx7IYz4hPpLZ8yO86p21cz
+ LvGNLcaa7+un1+MPFZd+qatAVaXel3zx16zSrBl59opTrN48cMv6ikUFnh66epGuxdfM
+ hrKnPKn1NTHpJZHglprp+G43/ZsV+1dq0Ec7pUWkXJhto9pJV4kk2VycERQmVcDFQPI2
+ VTH+qG4kp9S/4xKeE8qqEWqaQxUn809tX1o2AIyJ70EJwwWsRnJoli4NMsMLtgeK6RIn
+ CCpw07GA5qrKap2lPAPRfAt73uNISWv3jgt3yrYy5IsDvciTF/d71uWvXS5E0HoljFk5
+ lyaQ==
+X-Gm-Message-State: APjAAAX1NxgO4ESDm3kfl+LbnivCWnLV0nlp6q/hkSAmeSekM7beSlQv
+ uxie3oSX1A3FayHWqgu8IMnBkXCDfq2ZZYuoVUNnlrrBOv39mYh7cqB4rXZyPjbTe4dO/9g5ZPe
+ IlepMDKxoa9tMt5I=
+X-Received: by 2002:a05:600c:20e:: with SMTP id
+ 14mr5576739wmi.104.1580818108801; 
+ Tue, 04 Feb 2020 04:08:28 -0800 (PST)
+X-Received: by 2002:a05:600c:20e:: with SMTP id
+ 14mr5576713wmi.104.1580818108483; 
+ Tue, 04 Feb 2020 04:08:28 -0800 (PST)
+Received: from [192.168.1.35] (162.red-83-52-55.dynamicip.rima-tde.net.
+ [83.52.55.162])
+ by smtp.gmail.com with ESMTPSA id x10sm29218529wrv.60.2020.02.04.04.08.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 04 Feb 2020 04:08:27 -0800 (PST)
+Subject: Re: [PATCH 1/3] m25p80: Convert to support tracing
+To: Guenter Roeck <linux@roeck-us.net>,
+ Alistair Francis <alistair@alistair23.me>
+References: <20200203180904.2727-1-linux@roeck-us.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <cdc016b0-61ad-897b-d55e-7ff2feb97369@redhat.com>
+Date: Tue, 4 Feb 2020 13:08:26 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200129202441.12745-2-beata.michalska@linaro.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: Z-AHNODQMpS_xR1azR6Erw-1
+In-Reply-To: <20200203180904.2727-1-linux@roeck-us.net>
+Content-Language: en-US
+X-MC-Unique: 6tDAkk6YMKiG5NBj5t2VXw-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, pbonzini@redhat.com,
- kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: xM/HqUis9eHG
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EwjGCejQMdNt
 
-On Wed, Jan 29, 2020 at 08:24:40PM +0000, Beata Michalska wrote:
-> KVM_SET_VCPU_EVENTS might actually lead to vcpu registers being modified.
-> As such this should be the last step of sync to avoid potential overwriting
-> of whatever changes KVM might have done.
-> 
-> Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
+On 2/3/20 7:09 PM, Guenter Roeck wrote:
+> While at it, add some trace messages to help debug problems
+> seen when running the latest Linux kernel.
+>=20
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 > ---
->  target/arm/kvm32.c | 20 ++++++++++----------
->  target/arm/kvm64.c | 20 ++++++++++----------
->  2 files changed, 20 insertions(+), 20 deletions(-)
-> 
-> diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
-> index 32bf8d6..cf2b47f 100644
-> --- a/target/arm/kvm32.c
-> +++ b/target/arm/kvm32.c
-> @@ -386,17 +386,17 @@ int kvm_arch_put_registers(CPUState *cs, int level)
->          return ret;
->      }
->  
-> -    ret = kvm_put_vcpu_events(cpu);
-> -    if (ret) {
-> -        return ret;
-> -    }
+>   hw/block/m25p80.c     | 48 ++++++++++++++++++++-----------------------
+>   hw/block/trace-events | 16 +++++++++++++++
+>   2 files changed, 38 insertions(+), 26 deletions(-)
+>=20
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 11ff5b9ad7..63e050d7d3 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -32,17 +32,7 @@
+>   #include "qemu/module.h"
+>   #include "qemu/error-report.h"
+>   #include "qapi/error.h"
 > -
->      write_cpustate_to_list(cpu, true);
->  
->      if (!write_list_to_kvmstate(cpu, level)) {
->          return EINVAL;
->      }
->  
-> +    ret = kvm_put_vcpu_events(cpu);
-> +    if (ret) {
-> +        return ret;
-> +    }
-> +
-
-I think we should put a comment above this that says basically the same
-thing as the commit message in order to explain why kvm_put_vcpu_events()
-*must* be after write_list_to_kvmstate().
-
->      kvm_arm_sync_mpstate_to_kvm(cpu);
->  
->      return ret;
-> @@ -462,11 +462,6 @@ int kvm_arch_get_registers(CPUState *cs)
->      }
->      vfp_set_fpscr(env, fpscr);
->  
-> -    ret = kvm_get_vcpu_events(cpu);
-> -    if (ret) {
-> -        return ret;
-> -    }
+> -#ifndef M25P80_ERR_DEBUG
+> -#define M25P80_ERR_DEBUG 0
+> -#endif
 > -
->      if (!write_kvmstate_to_list(cpu)) {
->          return EINVAL;
->      }
-> @@ -475,6 +470,11 @@ int kvm_arch_get_registers(CPUState *cs)
->       */
->      write_list_to_cpustate(cpu);
->  
-> +    ret = kvm_get_vcpu_events(cpu);
-> +    if (ret) {
-> +        return ret;
-> +    }
+> -#define DB_PRINT_L(level, ...) do { \
+> -    if (M25P80_ERR_DEBUG > (level)) { \
+> -        fprintf(stderr,  ": %s: ", __func__); \
+> -        fprintf(stderr, ## __VA_ARGS__); \
+> -    } \
+> -} while (0)
+> +#include "trace.h"
+>  =20
+>   /* Fields for FlashPartInfo->flags */
+>  =20
+> @@ -574,7 +564,8 @@ static void flash_erase(Flash *s, int offset, FlashCM=
+D cmd)
+>           abort();
+>       }
+>  =20
+> -    DB_PRINT_L(0, "offset =3D %#x, len =3D %d\n", offset, len);
+> +    trace_m25p80_flash_erase(offset, len);
 > +
-
-Why are we moving kvm_get_vcpu_events()?
-
->      kvm_arm_sync_mpstate_to_qemu(cpu);
->  
->      return 0;
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index 6344113..d06fd32 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -1043,17 +1043,17 @@ int kvm_arch_put_registers(CPUState *cs, int level)
->          return ret;
->      }
->  
-> -    ret = kvm_put_vcpu_events(cpu);
-> -    if (ret) {
-> -        return ret;
-> -    }
-> -
->      write_cpustate_to_list(cpu, true);
->  
->      if (!write_list_to_kvmstate(cpu, level)) {
->          return -EINVAL;
->      }
->  
-> +    ret = kvm_put_vcpu_events(cpu);
-> +    if (ret) {
-> +        return ret;
-> +    }
+>       if ((s->pi->flags & capa_to_assert) !=3D capa_to_assert) {
+>           qemu_log_mask(LOG_GUEST_ERROR, "M25P80: %d erase size not suppo=
+rted by"
+>                         " device\n", len);
+> @@ -607,8 +598,7 @@ void flash_write8(Flash *s, uint32_t addr, uint8_t da=
+ta)
+>       }
+>  =20
+>       if ((prev ^ data) & data) {
+> -        DB_PRINT_L(1, "programming zero to one! addr=3D%" PRIx32 "  %" P=
+RIx8
+> -                   " -> %" PRIx8 "\n", addr, prev, data);
+> +        trace_m25p80_programming_zero_to_one(addr, prev, data);
+>       }
+>  =20
+>       if (s->pi->flags & EEPROM) {
+> @@ -662,6 +652,9 @@ static void complete_collecting_data(Flash *s)
+>  =20
+>       s->state =3D STATE_IDLE;
+>  =20
+> +    trace_m25p80_complete_collecting(s->cmd_in_progress, n, s->ear,
+> +                                     s->cur_addr);
 > +
->      kvm_arm_sync_mpstate_to_kvm(cpu);
->  
->      return ret;
-> @@ -1251,11 +1251,6 @@ int kvm_arch_get_registers(CPUState *cs)
->      }
->      vfp_set_fpcr(env, fpr);
->  
-> -    ret = kvm_get_vcpu_events(cpu);
-> -    if (ret) {
-> -        return ret;
-> -    }
-> -
->      if (!write_kvmstate_to_list(cpu)) {
->          return -EINVAL;
->      }
-> @@ -1264,6 +1259,11 @@ int kvm_arch_get_registers(CPUState *cs)
->       */
->      write_list_to_cpustate(cpu);
->  
-> +    ret = kvm_get_vcpu_events(cpu);
-> +    if (ret) {
-> +        return ret;
-> +    }
+>       switch (s->cmd_in_progress) {
+>       case DPP:
+>       case QPP:
+> @@ -825,7 +818,7 @@ static void reset_memory(Flash *s)
+>           break;
+>       }
+>  =20
+> -    DB_PRINT_L(0, "Reset done.\n");
+> +    trace_m25p80_reset_done();
+>   }
+>  =20
+>   static void decode_fast_read_cmd(Flash *s)
+> @@ -941,9 +934,10 @@ static void decode_qio_read_cmd(Flash *s)
+>  =20
+>   static void decode_new_cmd(Flash *s, uint32_t value)
+>   {
+> -    s->cmd_in_progress =3D value;
+>       int i;
+> -    DB_PRINT_L(0, "decoded new command:%x\n", value);
 > +
->      kvm_arm_sync_mpstate_to_qemu(cpu);
->  
->      /* TODO: other registers */
-> -- 
-> 2.7.4
-> 
-> 
+> +    s->cmd_in_progress =3D value;
+> +    trace_m25p80_command_decoded(value);
+>  =20
+>       if (value !=3D RESET_MEMORY) {
+>           s->reset_enable =3D false;
+> @@ -1042,7 +1036,7 @@ static void decode_new_cmd(Flash *s, uint32_t value=
+)
+>           break;
+>  =20
+>       case JEDEC_READ:
+> -        DB_PRINT_L(0, "populated jedec code\n");
+> +        trace_m25p80_populated_jedec();
+>           for (i =3D 0; i < s->pi->id_len; i++) {
+>               s->data[i] =3D s->pi->id[i];
+>           }
+> @@ -1063,7 +1057,7 @@ static void decode_new_cmd(Flash *s, uint32_t value=
+)
+>       case BULK_ERASE_60:
+>       case BULK_ERASE:
+>           if (s->write_enable) {
+> -            DB_PRINT_L(0, "chip erase\n");
+> +            trace_m25p80_chip_erase();
+>               flash_erase(s, 0, BULK_ERASE);
+>           } else {
+>               qemu_log_mask(LOG_GUEST_ERROR, "M25P80: chip erase with wri=
+te "
+> @@ -1184,7 +1178,7 @@ static int m25p80_cs(SSISlave *ss, bool select)
+>           s->data_read_loop =3D false;
+>       }
+>  =20
+> -    DB_PRINT_L(0, "%sselect\n", select ? "de" : "");
+> +    trace_m25p80_select(select ? "de" : "");
+>  =20
+>       return 0;
+>   }
+> @@ -1194,19 +1188,20 @@ static uint32_t m25p80_transfer8(SSISlave *ss, ui=
+nt32_t tx)
+>       Flash *s =3D M25P80(ss);
+>       uint32_t r =3D 0;
+>  =20
+> +    trace_m25p80_transfer(s->state, s->len, s->needed_bytes, s->pos,
+> +                          s->cur_addr, (uint8_t)tx);
+> +
+>       switch (s->state) {
+>  =20
+>       case STATE_PAGE_PROGRAM:
+> -        DB_PRINT_L(1, "page program cur_addr=3D%#" PRIx32 " data=3D%" PR=
+Ix8 "\n",
+> -                   s->cur_addr, (uint8_t)tx);
+> +        trace_m25p80_page_program(s->cur_addr, (uint8_t)tx);
+>           flash_write8(s, s->cur_addr, (uint8_t)tx);
+>           s->cur_addr =3D (s->cur_addr + 1) & (s->size - 1);
+>           break;
+>  =20
+>       case STATE_READ:
+>           r =3D s->storage[s->cur_addr];
+> -        DB_PRINT_L(1, "READ 0x%" PRIx32 "=3D%" PRIx8 "\n", s->cur_addr,
+> -                   (uint8_t)r);
+> +        trace_m25p80_read_byte(s->cur_addr, (uint8_t)r);
+>           s->cur_addr =3D (s->cur_addr + 1) & (s->size - 1);
+>           break;
+>  =20
+> @@ -1244,6 +1239,7 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint=
+32_t tx)
+>           }
+>  =20
+>           r =3D s->data[s->pos];
+> +        trace_m25p80_read_data(s->pos, (uint8_t)r);
+>           s->pos++;
+>           if (s->pos =3D=3D s->len) {
+>               s->pos =3D 0;
+> @@ -1281,7 +1277,7 @@ static void m25p80_realize(SSISlave *ss, Error **er=
+rp)
+>               return;
+>           }
+>  =20
+> -        DB_PRINT_L(0, "Binding to IF_MTD drive\n");
+> +        trace_m25p80_binding();
+>           s->storage =3D blk_blockalign(s->blk, s->size);
+>  =20
+>           if (blk_pread(s->blk, 0, s->storage, s->size) !=3D s->size) {
+> @@ -1289,7 +1285,7 @@ static void m25p80_realize(SSISlave *ss, Error **er=
+rp)
+>               return;
+>           }
+>       } else {
+> -        DB_PRINT_L(0, "No BDRV - binding to RAM\n");
+> +        trace_m25p80_binding_no_bdrv();
+>           s->storage =3D blk_blockalign(NULL, s->size);
+>           memset(s->storage, 0xFF, s->size);
+>       }
+> diff --git a/hw/block/trace-events b/hw/block/trace-events
+> index c03e80c2c9..d052f7578c 100644
+> --- a/hw/block/trace-events
+> +++ b/hw/block/trace-events
+> @@ -134,3 +134,19 @@ xen_block_blockdev_add(char *str) "%s"
+>   xen_block_blockdev_del(const char *node_name) "%s"
+>   xen_block_device_create(unsigned int number) "%u"
+>   xen_block_device_destroy(unsigned int number) "%u"
+> +
+> +# m25p80.c
+> +m25p80_flash_erase(int offset, uint32_t len) "offset =3D 0x%"PRIx32", le=
+n =3D %u"
+> +m25p80_programming_zero_to_one(uint32_t addr, uint8_t prev, uint8_t data=
+) "programming zero to one! addr=3D0x%"PRIx32"  0x%"PRIx8" -> 0x%"PRIx8
+> +m25p80_reset_done(void) "Reset done."
+> +m25p80_command_decoded(uint32_t cmd) "new command:0x%"PRIx32
+> +m25p80_complete_collecting(uint32_t cmd, int n, uint8_t ear, uint32_t cu=
+r_addr) "decode cmd: 0x%"PRIx32" len %d ear 0x%"PRIx8" addr 0x%"PRIx32
+> +m25p80_populated_jedec(void) "populated jedec code"
+> +m25p80_chip_erase(void) "chip erase"
+> +m25p80_select(const char *what) "%sselect"
+> +m25p80_page_program(uint32_t addr, uint8_t tx) "page program cur_addr=3D=
+0x%"PRIx32" data=3D0x%"PRIx8
+> +m25p80_transfer(uint8_t state, uint32_t len, uint8_t needed, uint32_t po=
+s, uint32_t cur_addr, uint8_t t) "Transfer state 0x%"PRIx8" len 0x%"PRIx32"=
+ needed 0x%"PRIx8" pos 0x%"PRIx32" addr 0x%"PRIx32" tx 0x%"PRIx8
+> +m25p80_read_byte(uint32_t addr, uint8_t v) "Read byte 0x%"PRIx32"=3D0x%"=
+PRIx8
+> +m25p80_read_data(uint32_t pos, uint8_t v) "Read data 0x%"PRIx32"=3D0x%"P=
+RIx8
+> +m25p80_binding(void) "Binding to IF_MTD drive"
+> +m25p80_binding_no_bdrv(void) "No BDRV - binding to RAM"
+>=20
 
-Same comments for kvm64.c as for kvm32.c
+Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 
-Thanks,
-drew
-
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

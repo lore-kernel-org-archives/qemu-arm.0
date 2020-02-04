@@ -1,292 +1,188 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4798908lfp;
-        Mon, 3 Feb 2020 19:52:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwOo1vxUzvuzOuNAJWguT1gPIlO+L2QPAdGxZNA/uQ1Eio2VaIJJsUTsXhFzuBIKHEMf/1X
-X-Received: by 2002:ad4:5a48:: with SMTP id ej8mr25934642qvb.187.1580788361532;
-        Mon, 03 Feb 2020 19:52:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580788361; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4865868lfp;
+        Mon, 3 Feb 2020 21:10:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxkexk/R+YrvFiz0UuBHD8YX0o2TFXApVhrvNijdTjuBlZOJ0kEYR1RJOCTISRItXU/BItw
+X-Received: by 2002:a05:620a:126d:: with SMTP id b13mr9988143qkl.124.1580793056554;
+        Mon, 03 Feb 2020 21:10:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580793056; cv=none;
         d=google.com; s=arc-20160816;
-        b=RwbQaQPzQsldkWeoJJCNvg2vwey2PHfqBA7dlKUQu43LPYVSAUZ9/B28PA5EJYI+y+
-         77nZJ7n/UwlZCUBqgGhSuqfcT3gaghiUnwBdF/XyWyeVlh+zCaPnqu3PO11ej11lFtnT
-         2iQBlMXnbWeEeQRKP3QtgdwZ5dRQ4MHKVrttnHDgiD+cPu5kWPBrJ2lG60p5YnL1Kn3A
-         T/u8RUrvPrKzNcLrL6Rq4iI9eHytipWhi6IgEQzZaluVjl1MkrmOAxVMihHxgMTfxcwl
-         +mVlK/43oYGSHsDn7pe0nWbCa00ZF8Wrg+rr2xN9riuJdQL150ZYooyMLVxB/EmFWfMA
-         cbJg==
+        b=bOgI+0MW9SXnFiSaS7ttzH2Wpl2syEsdPysGqIhYG3lFQUnUk0QvQO8E27kqZ3YgI0
+         l+FlGpMbk4oJ3vMhvUjj7wzPERKcndr4XQbOvkYauk+i17KFp1ipZhIg37gBfFg+5og+
+         TorYI3qsiVqqauPJV/i9leJbIVxJI7BUH8FiipCGmCC7K7AmLCRoFYHVE6H490wYsx5k
+         ZZzTZpd0q2xNcmIm3UTGc8iSuuo3wBAtgynG89iauQxDsULh5c2vHrYSgE+W1tq2+1Tx
+         7W1XlZQhyx74pSkJQkQNAyf0x3vMg5mojTKTqRepiT6hzLsGo9lm00gkK3qDUAYOnfA9
+         q0jg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=9LGinM4sj6tofFxQDV7iYehZejHqxF9ANKDkmx/KmVA=;
-        b=a0gTik/FfD0xPm3lTyuQlnh+np0BAf9axTpgv9K5n5pWQm1S/TZlROmZd5YCZc6b1j
-         7vLFlEMPT8luEomDsdTHxGSK+Zz5Pg+dDDudgjhardmuCf5+fNYgPSaEbyraG4vaDRD0
-         P+tVceTeVwiaPsRdy+ql5AptTDKfoXFIVmobIhPlpU3HR5aR9iDvczaDEMt0LqqxqS+k
-         kKSj5UhkDRiE5kfx/lM3fvYPJ+B3XqCcp5AT+3TZRiFH1gNz3wWz01NgjDyUq865b0a9
-         4RlxY9vx2wMBFgUBfGLli4DX1V3MYSmKM6LQdv5qzEKmw+QN3pWHT1f+qbie2oC/JWn2
-         7oFQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=FnuQBtivZ7EncxzIflJmnkWYs8AiupbYMzRIoNKSWGQ=;
+        b=RgBgslewq6KmNkAGRwptwQgnUw3y84HRQVXahyIq7PjBINycfZdxdMBeyxtHMKGlvb
+         eoyAEoJPJ//YotI6W6BovCl0viGB4PVmN5U8gs1J9/R7+VYaO2ENJ9WwlCOgYXyouP0t
+         7LpoS5fdJnH1VeWk4H4G1u6znN2dA/6OwjhxQbvOxFkW8ymNpRqrXOtV7cTH+cZkCPGy
+         jqv8YLegCs1cHfDYpVASQLgvXuX2XQ1jALMZJ2+uWlMNr3CMw322EX7oIl6gsYHOIUmB
+         qUMAKmtj/TEtb65qwdP29NHNKjRH+BJ+eZkfOk4X2x40z9buOye+AadbKjbwpO9UET2f
+         Qnaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=U6khUZ6D;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k25si13053261qkj.354.2020.02.03.19.52.41
+        by mx.google.com with ESMTPS id c20si13447012qte.198.2020.02.03.21.10.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 19:52:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Feb 2020 21:10:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=U6khUZ6D;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52490 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52938 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iypGT-00005U-00
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 22:52:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52302)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iyqUB-00030B-Pp
+	for alex.bennee@linaro.org; Tue, 04 Feb 2020 00:10:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48431)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <gshan@redhat.com>) id 1iypFo-00088D-Qh
- for qemu-devel@nongnu.org; Mon, 03 Feb 2020 22:52:02 -0500
+ (envelope-from <zhukeqian1@huawei.com>) id 1iyqU2-000304-9p
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 00:10:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <gshan@redhat.com>) id 1iypFm-0002c6-5J
- for qemu-devel@nongnu.org; Mon, 03 Feb 2020 22:51:59 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:60285
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <zhukeqian1@huawei.com>) id 1iyqU1-0003oJ-1d
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 00:10:46 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:41470 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1iypFl-0002aK-Te
- for qemu-devel@nongnu.org; Mon, 03 Feb 2020 22:51:58 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580788317;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=9LGinM4sj6tofFxQDV7iYehZejHqxF9ANKDkmx/KmVA=;
- b=U6khUZ6DDwLBY99FqB7fXQ3xsOFEbC8WhyfnsltwojRYyXQPCwxVmqJ/akJHCP7w3LvWfY
- nUFCdSKMAEQEYyeyrD8uZ/C/82DDz8ZApD//BUpz2bKc9b8Na+MM8moAaDUcB2FFiPxHSh
- DkbrjYpeQIk+yebY8Kvw5ID5imzaick=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-410-5sWPAH8qORuAOoeyXzY2UQ-1; Mon, 03 Feb 2020 22:51:52 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 719B71857344;
- Tue,  4 Feb 2020 03:51:50 +0000 (UTC)
-Received: from localhost.localdomain (vpn2-54-57.bne.redhat.com [10.64.54.57])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B8CB519C69;
- Tue,  4 Feb 2020 03:51:43 +0000 (UTC)
-Subject: Re: [RFC PATCH] hw/arm/virt: Support NMI injection
-To: Marc Zyngier <maz@kernel.org>
-References: <20191219040612.28431-1-gshan@redhat.com>
- <d972631d-7db7-b6d5-61b8-244ae2c85882@redhat.com>
- <7f6e29e6-1df9-4513-79ba-b53873b0735e@ozlabs.ru>
- <544f261e4b9c97f1d3a5fb64cef42ba5@kernel.org>
- <ff584722-1b51-e538-7c45-c71cdc40105f@redhat.com>
- <c61c95c434dbcf97a0c946f0993d4843@kernel.org>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <8a286e1c-c3f3-3052-e497-d44a90667451@redhat.com>
-Date: Tue, 4 Feb 2020 14:51:39 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
+ id 1iyqU0-0002n0-Mu; Tue, 04 Feb 2020 00:10:44 -0500
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 68DF8C6E135F0EF27316;
+ Tue,  4 Feb 2020 13:10:36 +0800 (CST)
+Received: from linux-TFkxOR.huawei.com (10.175.104.212) by
+ DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
+ 14.3.439.0; Tue, 4 Feb 2020 13:10:29 +0800
+From: Keqian Zhu <zhukeqian1@huawei.com>
+To: <qemu-devel@nongnu.org>
+Subject: [PATCH] migration: Optimization about wait-unplug migration state
+Date: Tue, 4 Feb 2020 13:08:41 +0800
+Message-ID: <20200204050841.44453-1-zhukeqian1@huawei.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-In-Reply-To: <c61c95c434dbcf97a0c946f0993d4843@kernel.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: 5sWPAH8qORuAOoeyXzY2UQ-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.212]
+X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-devel@nongnu.org
+ [fuzzy]
+X-Received-From: 45.249.212.35
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, jthierry@redhat.com,
- Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-devel@nongnu.org,
- eric.auger@redhat.com, qemu-arm@nongnu.org, shan.gavin@gmail.com,
- pbonzini@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bThdwzpjDLFq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ wanghaibin.wang@huawei.com, jfreimann@redhat.com,
+ Keqian Zhu <zhukeqian1@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ka+DZ161lfWK
 
-On 1/31/20 8:39 PM, Marc Zyngier wrote:
-> On 2020-01-31 06:59, Gavin Shan wrote:
->> On 1/29/20 8:04 PM, Marc Zyngier wrote:
->>> On 2020-01-29 02:44, Alexey Kardashevskiy wrote:
->>>> On 28/01/2020 17:48, Gavin Shan wrote:
->>>>> but a NMI is injected
->>>>> through LAPIC on x86. So I'm not sure what architect (system reset on
->>>>> ppc or injecting NMI on x86) aarch64 should follow.
->>>>
->>>> I'd say whatever triggers in-kernel debugger or kdump but I am not
->>>> familiar with ARM at all :)
->>>
->>> All that is completely OS specific, and has no relation to the architec=
-ture.
->>> As I mentioned in another part of the thread, the closest thing to this
->>> would be to implement SDEI together with an IMPDEF mechanism to enter i=
-t
->>> (or even generate a RAS error).
->>>
->>> On the other hand, SDEI is pretty horrible, and means either KVM or QEM=
-U
->>> acting like a firmware for the guest. To say that I'm not keen is a mas=
-sive
->>> understatement.
->>>
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 M.
->>
->> Marc, could you please explain a bit about "IMPDEF mechanism"? I'm not s=
-ure if
->> it means a non-standard SDEI event should be used, corresponding to the =
-HMP/QMP
->> "nmi" command.
->=20
-> SDEI doesn't quite describe *why* and *how* you enter it. You just get th=
-ere by
-> some mean (SError, Group-0 interrupt, or IMPlementation DEFined mechanism=
-).
-> It is then for the SDEI implementation to sort it out and enter the OS us=
-ing the
-> registered entry point.
->=20
+qemu_savevm_nr_failover_devices() is originally designed to
+get the number of failover devices, but it actually returns
+the number of "unplug-pending" failover devices now. Moreover,
+what drives migration state to wait-unplug should be the number
+of "unplug-pending" failover devices, not all failover devices.
 
-Thanks for the explanation, which make things much clearer.
+We can also notice that qemu_savevm_state_guest_unplug_pending()
+and qemu_savevm_nr_failover_devices() is equivalent almost (from
+the code view). So the latter is incorrect semantically and
+useless, just delete it.
 
->> Also, If I'm correct, you agree that a crash dump should be triggered on=
- arm64
->> guest once HMP/QMP "nmi" command is issued?
->=20
-> No, I don't agree. QEMU and KVM are OS agnostic, and there is nothing in =
-the ARMv8
-> architecture that talks about "crash dumps".=C2=A0 If your "nmi" command =
-generates
-> a SDEI event and that event gets dispatched to the guest, it is entirely =
-the guest's
-> responsibility to do whatever it wants. We should stay clear of assuming =
-behaviours.
->=20
+In the qemu_savevm_state_guest_unplug_pending(), once hit a
+unplug-pending failover device, then it can return true right
+now to save cpu time.
 
-Ok. Thank you for your clarification.
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+---
+Cc: jfreimann@redhat.com
+Cc: Juan Quintela <quintela@redhat.com>
+Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+---
+ migration/migration.c |  2 +-
+ migration/savevm.c    | 24 +++---------------------
+ migration/savevm.h    |  1 -
+ 3 files changed, 4 insertions(+), 23 deletions(-)
 
->> I also dig into SDEI a bit. It seems the SDEI support in QEMU isn't upst=
-ream yet:
->>
->> https://patchew.org/QEMU/20191105091056.9541-1-guoheyi@huawei.com/
->=20
-> And I'm glad. SDEI, as I said, is absolutely horrible. I'm also very fort=
-unate
-> to have been CC'd on this series on an email address I cannot read.
-> This would have huge impacts on both QEMU and KVM, and this needs more th=
-an
-> a knee jerk reaction to support a QEMU command.
->=20
-> And to be honest, if what you require is the guest kernel to panic, why d=
-on't
-> you just implement a QEMU-specific driver in Linux that does just that?
-> Some kind of watchdog driver, maybe?
->=20
-
-Marc, sorry for the delay and didn't come to you in time because I wanted t=
-o figure
-out the mechanism, which helps to get similar output as x86/ppc: NMI (or re=
-set exception)
-is received as indication to errors, possibly panic and restart the guest k=
-ernel.
-
-The mechanism I figured out is to inject SError to guest, as below snippet =
-shows. It
-helps to get a panic and guest rebooting, which looks similar to what x86/p=
-pc have.
-I can post the patch as RFC if it's right direction to go :)
-
-Note: I'm still investigating the code to see how SError can be injected wh=
-en TCG
-is used. I think we need same function when TCG is enabled, or it's somethi=
-ng for
-future.
-
-static void do_inject_nmi_kvm(CPUState *cpu, Error **errp)
-{
-     struct kvm_vcpu_events events;
-     int ret;
-
-      :
-     memset(&events, 0, sizeof(events));
-     events.exception.serror_pending =3D 1;
-     ret =3D kvm_vcpu_ioctl(CPU(cpu), KVM_SET_VCPU_EVENTS, &events);
-      :
-}
-
-# echo 1 > /proc/sys/kernel/panic
-# (qemu) nmi
-[  812.510613] SError Interrupt on CPU0, code 0xbf000000 -- SError
-[  812.510617] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.5.0-rc2-00187-gf=
-72202430e30 #2
-[  812.510617] Hardware name: QEMU KVM Virtual Machine, BIOS 0.0.0 02/06/20=
-15
-[  812.510618] pstate: 40400085 (nZcv daIf +PAN -UAO)
-[  812.510619] pc : cpu_do_idle+0x48/0x58
-[  812.510619] lr : arch_cpu_idle+0x30/0x238
-[  812.510620] sp : ffff8000112c3e80
-[  812.510620] pmr_save: 000000f0
-[  812.510621] x29: ffff8000112c3e80 x28: 0000000040e10018
-[  812.510622] x27: 000000033e50d340 x26: 0000000000000000
-[  812.510623] x25: 0000000000000000 x24: ffff8000112ca21c
-[  812.510624] x23: ffff800010f98cb8 x22: ffff8000112c98c8
-[  812.510625] x21: ffff8000112ca1f8 x20: 0000000000000001
-[  812.510626] x19: ffff800010f86018 x18: 0000000000000000
-[  812.510627] x17: 0000000000000000 x16: 0000000000000000
-[  812.510628] x15: 0000000000000000 x14: 0000000000000000
-[  812.510629] x13: 0000000000000000 x12: ffff0002fe640100
-[  812.510630] x11: ffffffffffffffff x10: 00000000000009f0
-[  812.510631] x9 : ffff800010088928 x8 : ffff8000112d28d0
-[  812.510632] x7 : ffff8002ed63a000 x6 : 0000002fe2092876
-[  812.510633] x5 : 00ffffffffffffff x4 : ffff8002ed63a000
-[  812.510634] x3 : 0000000000001bce x2 : 00000000000000f0
-[  812.510635] x1 : 0000000000000000 x0 : 0000000000000060
-[  812.510636] Kernel panic - not syncing: Asynchronous SError Interrupt
-[  812.510637] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.5.0-rc2-00187-gf=
-72202430e30 #2
-[  812.510638] Hardware name: QEMU KVM Virtual Machine, BIOS 0.0.0 02/06/20=
-15
-[  812.510638] Call trace:
-[  812.510639]  dump_backtrace+0x0/0x1a8
-[  812.510639]  show_stack+0x1c/0x28
-[  812.510640]  dump_stack+0xbc/0x100
-[  812.510640]  panic+0x168/0x370
-[  812.510640]  nmi_panic+0x68/0x98
-[  812.510641]  arm64_serror_panic+0x84/0x90
-[  812.510641]  do_serror+0x88/0x140
-[  812.510642]  el1_error+0x8c/0x108
-[  812.510642]  cpu_do_idle+0x48/0x58
-[  812.510643]  default_idle_call+0x44/0x4c
-[  812.510643]  do_idle+0x228/0x2d0
-[  812.510644]  cpu_startup_entry+0x28/0x48
-[  812.510644]  rest_init+0xdc/0xe8
-[  812.510645]  arch_call_rest_init+0x14/0x1c
-[  812.510645]  start_kernel+0x494/0x4c0
-[  812.510675] SMP: stopping secondary CPUs
-[  812.510676] Kernel Offset: disabled
-[  812.510676] CPU features: 0x04402,22000438
-[  812.510677] Memory Limit: none
-        :
-<guest is rebooted>
-
-Thanks,
-Gavin
+diff --git a/migration/migration.c b/migration/migration.c
+index 3a21a4686c..deedc968cf 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -3333,7 +3333,7 @@ static void *migration_thread(void *opaque)
+=20
+     qemu_savevm_state_setup(s->to_dst_file);
+=20
+-    if (qemu_savevm_nr_failover_devices()) {
++    if (qemu_savevm_state_guest_unplug_pending()) {
+         migrate_set_state(&s->state, MIGRATION_STATUS_SETUP,
+                           MIGRATION_STATUS_WAIT_UNPLUG);
+=20
+diff --git a/migration/savevm.c b/migration/savevm.c
+index f19cb9ec7a..1d4220ece8 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -1140,36 +1140,18 @@ void qemu_savevm_state_header(QEMUFile *f)
+     }
+ }
+=20
+-int qemu_savevm_nr_failover_devices(void)
++bool qemu_savevm_state_guest_unplug_pending(void)
+ {
+     SaveStateEntry *se;
+-    int n =3D 0;
+=20
+     QTAILQ_FOREACH(se, &savevm_state.handlers, entry) {
+         if (se->vmsd && se->vmsd->dev_unplug_pending &&
+             se->vmsd->dev_unplug_pending(se->opaque)) {
+-            n++;
+-        }
+-    }
+-
+-    return n;
+-}
+-
+-bool qemu_savevm_state_guest_unplug_pending(void)
+-{
+-    SaveStateEntry *se;
+-    int n =3D 0;
+-
+-    QTAILQ_FOREACH(se, &savevm_state.handlers, entry) {
+-        if (!se->vmsd || !se->vmsd->dev_unplug_pending) {
+-            continue;
+-        }
+-        if (se->vmsd->dev_unplug_pending(se->opaque)) {
+-            n++;
++            return true;
+         }
+     }
+=20
+-    return n > 0;
++    return false;
+ }
+=20
+ void qemu_savevm_state_setup(QEMUFile *f)
+diff --git a/migration/savevm.h b/migration/savevm.h
+index c42b9c80ee..ba64a7e271 100644
+--- a/migration/savevm.h
++++ b/migration/savevm.h
+@@ -31,7 +31,6 @@
+=20
+ bool qemu_savevm_state_blocked(Error **errp);
+ void qemu_savevm_state_setup(QEMUFile *f);
+-int qemu_savevm_nr_failover_devices(void);
+ bool qemu_savevm_state_guest_unplug_pending(void);
+ int qemu_savevm_state_resume_prepare(MigrationState *s);
+ void qemu_savevm_state_header(QEMUFile *f);
+--=20
+2.19.1
 

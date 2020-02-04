@@ -1,110 +1,100 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5427047lfp;
-        Tue, 4 Feb 2020 06:28:53 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyA9ouhgWwdOFoKKMyg81emyDwUBobOW9D/m/fd+1+kM2X91iC7xL0HJBzO1W5EE+ai6O7E
-X-Received: by 2002:ad4:4d85:: with SMTP id cv5mr27183965qvb.171.1580826532935;
-        Tue, 04 Feb 2020 06:28:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580826532; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5489176lfp;
+        Tue, 4 Feb 2020 07:24:13 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyG/CpB/Ih2oB2YDOGSJfeJaBq4339cF9mZZA60WZADpr/nKLYb9jk+vA2SHwDGaAQtxtkd
+X-Received: by 2002:ae9:efc5:: with SMTP id d188mr29278271qkg.178.1580829853497;
+        Tue, 04 Feb 2020 07:24:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580829853; cv=none;
         d=google.com; s=arc-20160816;
-        b=HutcpqAynwdR7ygcqq/ld8oBfqN1nHAqsi1FpYlFfI7npjmmI4bx43Lj6nD1ZUjf13
-         biTYNAWUUxVG3XW9pGOaQMKA4FvPvRuNIrnAciI6Tt/PMebNmYcUvIQ0ycfiXMRHz7ux
-         +Akyd7t0IW5H93bp2tPzI/g/e8sJanLkuWQnbEmfvSPdQtF8wOfW5vnFHLP9KH8QAIug
-         43cAkfeq4obqjWwd7NZ0VO+hjYpCZIhIiXfx2InzLGrh+ua6iHO9sb/7TUvF7Yn4Ddls
-         MWwcitj+/BYz/wwANjB+n1zhyJCUTBVMfOL8rTlAiYmay1NqHwcBsdYJ1ZyCLvrOVHvw
-         M/+A==
+        b=R/eo9GYGwQd6maemCAVG0w5i1+HgguxLPSqC4jh4+/EVC9u75mBZm5FeiZoaieOiJ5
+         Spyoh7DFSIfPPWmJ23X71KY96tkUHwoW5jkzxyYsjweyXEYpJ74h/kcRJn75+pcjp+sx
+         6NKqmdAo7izxqRnTbXgICS8pJkKmdubmnqaOCmtE/ueXGSvtH3P1GaBjzBPtavfFnH1Q
+         19ofn1kisY7dfE6BkpAn3ENoYBpt7xDADqvdNngq9lvDEjZTqem5nY62oQhQdpK6eE0/
+         pRGGSsexKM9coNK/DEhYktWbmd8wV/6nIufE2hpnzZnZaPhqTR91FG6iViT4lsk5bk8x
+         C2kA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=BXoc4wax9AubX/kELszQsgm/+uB9WOGe3eqVjGcpiX0=;
-        b=SJrGTXZBtdoWf91cxzg4OS5aimPe83uCW9vxzG7vl05YzlL1Z5iP94BAe4EMHj6Ktu
-         F5//PUJ/GWeJFokeWvzSDQq9ptEO/yI0SIsvILcY49Iw17+yIneOcO4jhJPw/XDdL39V
-         EW2aL6ETPOUHklKsnNJB/gnoOSRnBtkoMokUfIKj9s7WguZ5n8qHIZ+BuPBRLWo8qZmE
-         s2qSJqSQO0t7+g5mgW631mY/uxyFctuexFLY4UvlO+qaO7U0Mt5X1UCYUdtL000iWwfQ
-         QrrXmN79JPGIjmIJA9Zn49k+Pbzh/XAgYpq/qyM2ypAgERhuCStZQj9eEItJQRS1CsTL
-         xIWA==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=OGi9IIcyUk1XmiLj6EKWRUyxWG1emSceCAWGnoUxcJM=;
+        b=wx7z+xzY/c6O/HUHzEYfOusjIyIMz4sydCV7KqXp5X0CaZfS0141aV24iioMNB6Ibz
+         fEdqDCLQnGvIe/HUbCngufFw+xwtcYrbj1A5jaBUDFBNncOlqPXpJl1Ifz3gKoRUWGht
+         WD6hPHw2PvP8qCCGCmHR/iBiVOczjMGXW7goJDVUtj5NyhNaknqHUt1IGmit1GYBjJYZ
+         zLfoSVJawUn8Uqv0isydkugftcdi/JeDT2Kgel23aHfoI/E4jOq+B2SuGhRUJBHBfagy
+         dVDWAESZd8kHk85EuCAO7h8yOjOo8bSXfUnUx59N6ll7XOlupb8uQak4+nFIlq8VyoDS
+         PHDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EYqOxdGk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hBxyOItt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s124si14144908qkc.53.2020.02.04.06.28.52
+        by mx.google.com with ESMTPS id h19si13601406qvb.29.2020.02.04.07.24.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2020 06:28:52 -0800 (PST)
+        Tue, 04 Feb 2020 07:24:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EYqOxdGk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59578 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hBxyOItt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60318 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iyzC8-0005n1-C8
-	for alex.bennee@linaro.org; Tue, 04 Feb 2020 09:28:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60614)
+	id 1iz03f-0002Vi-U1
+	for alex.bennee@linaro.org; Tue, 04 Feb 2020 10:24:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41258)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1iyzBy-0005jT-PF
- for qemu-arm@nongnu.org; Tue, 04 Feb 2020 09:28:43 -0500
+ (envelope-from <imammedo@redhat.com>) id 1iz03Q-0002I9-FH
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 10:23:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1iyzBx-000396-I8
- for qemu-arm@nongnu.org; Tue, 04 Feb 2020 09:28:42 -0500
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:42468)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1iyzBx-000332-C2; Tue, 04 Feb 2020 09:28:41 -0500
-Received: by mail-pg1-x544.google.com with SMTP id w21so3984751pgl.9;
- Tue, 04 Feb 2020 06:28:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=BXoc4wax9AubX/kELszQsgm/+uB9WOGe3eqVjGcpiX0=;
- b=EYqOxdGk3QW4rrHmD8OwzhRHSopSbc/4P7aowIJGn2Jk+qdEQWP+Tv9ckviOdF9fmf
- XyoxsBsBGS6hBoVMooeD/knR8xU85NapjDV6lYdhc1CGTacHwj9oRl4pyPBqhdMyYEHi
- mS/udBeUcNqka0iT8Xe/37lhRired4e3Du8pOwwANAwGc/V6BJFstPT+347Zmf7IYVnL
- m6eVKV0t/yaa4kIpg+I1k26pwT4cn8E6ZaXymSk4sXVUeNs1ZONsD+GavnYjEXWNvP6M
- OHgVv5GQ1IwJA9LIKg2/JM8bSZeeERiPR3YBWeAY3qJB6ZkrQ8YeynU70lzjtPhti9GJ
- Wqrg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=BXoc4wax9AubX/kELszQsgm/+uB9WOGe3eqVjGcpiX0=;
- b=bZzRBJTvstm4JSSB5QKLDqy5RMWE1JwgtA0iA3g139bKRr43VMT6idHb8YjwIYOkY2
- pHxhNsiT//cZFD4MSxrgHq48rtyKCmFmRVF/MlAs3jwSgbzsldzpTWD2I2sHen5lyDCD
- jf6TyHJZ3xX9kK9nIdaGSACP0gKSOcI/2/CPqLaLZxD2DmPUtpTyt+XVcR0kebXT2c9U
- AVswwgcZC3XrweOrLZ3Q8BSbRM2qm6Si55B+oAsCsR6tYKJqPpjHfA4fEbO5Js+IdhCG
- nxnFT4QGodtQJFLG7YhplmaeQkUavyF1Z29rAWmIneNfy+RNesiWEYguKxBvtJ6ddN7g
- H7Gg==
-X-Gm-Message-State: APjAAAW8X3eV1e4/VSsYFzWjayRzkmgzxIpkux+3ecurHA8/OAXYypn+
- MKazkO0fF1bwJrh/A2RPzDU=
-X-Received: by 2002:a62:e719:: with SMTP id s25mr29906695pfh.40.1580826520115; 
- Tue, 04 Feb 2020 06:28:40 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- g22sm24113391pgk.85.2020.02.04.06.28.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 Feb 2020 06:28:39 -0800 (PST)
-Subject: Re: [PATCH 2/3] m25p80: Improve command handling for Jedec and
- unsupported commands
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Alistair Francis <alistair@alistair23.me>
-References: <20200203180904.2727-1-linux@roeck-us.net>
- <20200203180904.2727-2-linux@roeck-us.net>
- <accf297f-0c54-7475-8817-c1014999a57d@kaod.org>
-From: Guenter Roeck <linux@roeck-us.net>
-Message-ID: <7fe70871-c0e3-4ff6-bfda-17b45aa50c5e@roeck-us.net>
-Date: Tue, 4 Feb 2020 06:28:37 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (envelope-from <imammedo@redhat.com>) id 1iz03O-0001xI-Mi
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 10:23:56 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40560
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1iz03O-0001tS-GQ
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 10:23:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1580829834;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=OGi9IIcyUk1XmiLj6EKWRUyxWG1emSceCAWGnoUxcJM=;
+ b=hBxyOIttJRN8YbMtRlDzCibE3R6ujLg9waz5dG8fdaY9Mn//a/zXZ+X4gXouCDe/cgHrTK
+ tTK5V9gtPir6ojTTT22H0IBcsfJ6adk0kv+1Rzgx882yYyaZnh9hw2azOQ2SEuIzUFTbq0
+ cBAm458JwJXlXz0tfnZgc43h2sO3MQY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-231-x-K2vMQ1NKKmsXwTE68xIw-1; Tue, 04 Feb 2020 10:23:34 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8B81B8010F1;
+ Tue,  4 Feb 2020 15:23:32 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8E94360BF7;
+ Tue,  4 Feb 2020 15:23:22 +0000 (UTC)
+Date: Tue, 4 Feb 2020 16:23:20 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
+Message-ID: <20200204162320.67e5d353@redhat.com>
+In-Reply-To: <20200117174522.22044-2-shameerali.kolothum.thodi@huawei.com>
+References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
+ <20200117174522.22044-2-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <accf297f-0c54-7475-8817-c1014999a57d@kaod.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::544
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: x-K2vMQ1NKKmsXwTE68xIw-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,80 +106,138 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>
+Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, mst@redhat.com,
+ shannon.zhaosl@gmail.com, David Hildenbrand <david@redhat.com>,
+ qemu-devel@nongnu.org, xuwei5@hisilicon.com, linuxarm@huawei.com,
+ eric.auger@redhat.com, qemu-arm@nongnu.org, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gc42qX/5rH1N
+X-TUID: Hw3A1ysr4gqU
 
-On 2/4/20 12:53 AM, Cédric Le Goater wrote:
-> On 2/3/20 7:09 PM, Guenter Roeck wrote:
->> Always report 6 bytes of JEDEC data. Fill remaining data with 0.
->>
->> For unsupported commands, keep sending a value of 0 until the chip
->> is deselected.
->>
->> Both changes avoid attempts to decode random commands. Up to now this
->> happened if the reported Jedec data was shorter than 6 bytes but the
->> host read 6 bytes, and with all unsupported commands.
+On Fri, 17 Jan 2020 17:45:16 +0000
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+
+> If ACPI blob length modifications happens after the initial
+> virt_acpi_build() call, and the changed blob length is within
+> the PAGE size boundary, then the revised size is not seen by
+> the firmware on Guest reboot. The is because in the
+> virt_acpi_build_update() -> acpi_ram_update() -> qemu_ram_resize()
+> path, qemu_ram_resize() uses used_length (ram_block size which is
+> aligned to PAGE size) and the "resize callback" to update the size
+> seen by firmware is not getting invoked.
 > 
-> Do you have a concrete example for that ? machine and flash model.
+> Hence make sure callback is called if the new size is different
+> from original requested size.
+> 
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+> Please find the previous discussions on this issue here,
+> https://patchwork.kernel.org/patch/11174947/
+> 
+> But this one attempts a different solution to fix it by introducing
+> req_length var to RAMBlock struct. 
 > 
 
-I noticed it while tracking down the bug fixed in patch 3 of the series,
-ie with AST2500 evb using w25q256 flash, but it happens with all machines
-using SPI NOR flash (ie all aspeed bmc machines) when running the Linux
-kernel. Most of the time it doesn't cause harm, unless the host sends
-an "address" as part of an unsupported command which happens to include
-a valid command code.
+looks fine to me, so
+Acked-by: Igor Mammedov <imammedo@redhat.com>
 
->> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
->> ---
->>   hw/block/m25p80.c | 10 +++++++++-
->>   1 file changed, 9 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
->> index 63e050d7d3..aca75edcc1 100644
->> --- a/hw/block/m25p80.c
->> +++ b/hw/block/m25p80.c
->> @@ -1040,8 +1040,11 @@ static void decode_new_cmd(Flash *s, uint32_t value)
->>           for (i = 0; i < s->pi->id_len; i++) {
->>               s->data[i] = s->pi->id[i];
->>           }
->> +        for (; i < SPI_NOR_MAX_ID_LEN; i++) {
->> +            s->data[i] = 0;
->> +        }
+CCing David who touches this area in his latest series for and
+might have an opinion on how it should be handled.
+
+> ---
+>  exec.c                  | 36 +++++++++++++++++++++++-------------
+>  include/exec/ram_addr.h |  5 +++--
+>  2 files changed, 26 insertions(+), 15 deletions(-)
 > 
-> It seems that data should be reseted in m25p80_cs() also.
-> 
-Are you sure ?
-
-The current implementation sets s->data[] as needed when command decode
-is complete. That seems less costly to me.
-
-Thanks,
-Guenter
-
->>   
->> -        s->len = s->pi->id_len;
->> +        s->len = SPI_NOR_MAX_ID_LEN;
->>           s->pos = 0;
->>           s->state = STATE_READING_DATA;
->>           break;
->> @@ -1158,6 +1161,11 @@ static void decode_new_cmd(Flash *s, uint32_t value)
->>           s->quad_enable = false;
->>           break;
->>       default:
->> +        s->pos = 0;
->> +        s->len = 1;
->> +        s->state = STATE_READING_DATA;
->> +        s->data_read_loop = true;
->> +        s->data[0] = 0;
->>           qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Unknown cmd %x\n", value);
->>           break;
->>       }
->>
-> 
+> diff --git a/exec.c b/exec.c
+> index d4b769d0d4..9ce33992f8 100644
+> --- a/exec.c
+> +++ b/exec.c
+> @@ -2123,16 +2123,18 @@ static int memory_try_enable_merging(void *addr, size_t len)
+>   * resize callback to update device state and/or add assertions to detect
+>   * misuse, if necessary.
+>   */
+> -int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp)
+> +int qemu_ram_resize(RAMBlock *block, ram_addr_t size, Error **errp)
+>  {
+> -    assert(block);
+> +    ram_addr_t newsize;
+>  
+> -    newsize = HOST_PAGE_ALIGN(newsize);
+> +    assert(block);
+>  
+> -    if (block->used_length == newsize) {
+> +    if (block->req_length == size) {
+>          return 0;
+>      }
+>  
+> +    newsize = HOST_PAGE_ALIGN(size);
+> +
+>      if (!(block->flags & RAM_RESIZEABLE)) {
+>          error_setg_errno(errp, EINVAL,
+>                           "Length mismatch: %s: 0x" RAM_ADDR_FMT
+> @@ -2149,13 +2151,19 @@ int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp)
+>          return -EINVAL;
+>      }
+>  
+> -    cpu_physical_memory_clear_dirty_range(block->offset, block->used_length);
+> -    block->used_length = newsize;
+> -    cpu_physical_memory_set_dirty_range(block->offset, block->used_length,
+> -                                        DIRTY_CLIENTS_ALL);
+> -    memory_region_set_size(block->mr, newsize);
+> +    block->req_length = size;
+> +
+> +    if (newsize != block->used_length) {
+> +        cpu_physical_memory_clear_dirty_range(block->offset,
+> +                                              block->used_length);
+> +        block->used_length = newsize;
+> +        cpu_physical_memory_set_dirty_range(block->offset, block->used_length,
+> +                                            DIRTY_CLIENTS_ALL);
+> +        memory_region_set_size(block->mr, newsize);
+> +    }
+> +
+>      if (block->resized) {
+> -        block->resized(block->idstr, newsize, block->host);
+> +        block->resized(block->idstr, block->req_length, block->host);
+>      }
+>      return 0;
+>  }
+> @@ -2412,16 +2420,18 @@ RAMBlock *qemu_ram_alloc_internal(ram_addr_t size, ram_addr_t max_size,
+>                                    MemoryRegion *mr, Error **errp)
+>  {
+>      RAMBlock *new_block;
+> +    ram_addr_t newsize;
+>      Error *local_err = NULL;
+>  
+> -    size = HOST_PAGE_ALIGN(size);
+> +    newsize = HOST_PAGE_ALIGN(size);
+>      max_size = HOST_PAGE_ALIGN(max_size);
+>      new_block = g_malloc0(sizeof(*new_block));
+>      new_block->mr = mr;
+>      new_block->resized = resized;
+> -    new_block->used_length = size;
+> +    new_block->req_length = size;
+> +    new_block->used_length = newsize;
+>      new_block->max_length = max_size;
+> -    assert(max_size >= size);
+> +    assert(max_size >= newsize);
+>      new_block->fd = -1;
+>      new_block->page_size = qemu_real_host_page_size;
+>      new_block->host = host;
+> diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
+> index 5adebb0bc7..fd13082224 100644
+> --- a/include/exec/ram_addr.h
+> +++ b/include/exec/ram_addr.h
+> @@ -31,8 +31,9 @@ struct RAMBlock {
+>      uint8_t *host;
+>      uint8_t *colo_cache; /* For colo, VM's ram cache */
+>      ram_addr_t offset;
+> -    ram_addr_t used_length;
+> -    ram_addr_t max_length;
+> +    ram_addr_t req_length; /* Original requested size, used if RAM_RESIZEABLE */
+> +    ram_addr_t used_length; /* aligned to qemu_host_page_size */
+> +    ram_addr_t max_length; /*  aligned to qemu_host_page_size */
+>      void (*resized)(const char*, uint64_t length, void *host);
+>      uint32_t flags;
+>      /* Protected by iothread lock.  */
 

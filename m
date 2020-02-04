@@ -1,71 +1,69 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4688447lfp;
-        Mon, 3 Feb 2020 17:48:04 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxnzmQ8saLwl3F2C7bE8keC5lE11cb8UfEU1gXWEwqvWXaNx+hi0a0PVijh+0sNY9VoeRZ8
-X-Received: by 2002:a37:68a:: with SMTP id 132mr25370886qkg.139.1580780884801;
-        Mon, 03 Feb 2020 17:48:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580780884; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4705781lfp;
+        Mon, 3 Feb 2020 18:06:33 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwc3sa+Eu3L40N9Sv7O1ssBAbXQaLxjZZZmCKDu8INiUXjU3SO2C7hC2flFgYDoR7rEeJya
+X-Received: by 2002:a37:a8c1:: with SMTP id r184mr26148555qke.151.1580781992960;
+        Mon, 03 Feb 2020 18:06:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580781992; cv=none;
         d=google.com; s=arc-20160816;
-        b=ExZYL/aUV8cXa8fgestibEpwmzE/LJnP1GJdqX9qs0V5e3DRHavOBYCmO47+BYzXkD
-         NIEvL3eKi3wEluDRB8W61G5mnD+LXBsrNjfAmI1e00bsDOA9UP50QWLWlBjmgO67nMJd
-         6BNo77hoHd30NGoEchmJvPPNWZ5+fCe4+JTTy61qUXFf1eiH3kNZbBU0f61SBq6oDxsH
-         6lwYakAJxwyLhlS/khB9IF7SSRYUoZIQq5fEEj/XcHJgDQ04l7715+weP+KmLvk5TguV
-         +aH1KREjX6W0BNaz37FIFDw6EJoNVaFI2Z6gfXpchm6yD9Hk+miFCqGFFm+ZVHhyL3hF
-         UHLQ==
+        b=NrQi33WZqkOyUVG2w6LbL+upC2dk8scc4vH9eUam5j/J2Yo1xCqaVQi+WZTQdkvdz9
+         8LUhb4K6ZpWww+DGnI6R2751jY0+1Du2JreIfeAmALhBhMX1AkwVWJ2sJr80jEyjq9PW
+         giklCCqc3it0a5xWspEv9CeM19IiGLpiAdaL+UrcdNJVWNxZRbZkn1R4A1DqZTjDnEfC
+         XzOMca4119O+DIk4edh7UP7HZd08sB/qDGtBebynxjkFaLDRkheW2HPSiL2clJIl6m5N
+         ldT6uN3+QnI2cLpasXbqZ0LykG6+rWPMtNka2PItMt7UEC4grMq/udN/PCGN1dFAuSlc
+         r3Tg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=xnHRowrONCnbEWqTe6mAo/NOdwU3sEtCqIKcVORs+oM=;
-        b=naHpjFFFJCO14G5toTBmoRpdORZjnPcxlLNGQO/5rqJrLqgKQVLBD8kBvkBG/HPop2
-         7koTRWZ8tzJtvyBOtX/2zgqEuXYDr7siVWnt3UBkFvIzTTixwEi4LQpJw1VdZPSzTZPx
-         B4wYkPiAgCBa6Br1bXTcCOQhIsKVgTbSJ3617Cse5O9239rb/h6DwMDuCxQXeYHxzdeq
-         O0YYXR3hfIm67R2mLYSh+CS8HItvDAoSW4Ix4FtMu6lFTB7NxUU62zulVhoR1iy7hi0Y
-         xD5lCb9f9ybb/8pyqY8o9x8QPvKd5fs2PGAsPqFsPCP75H91yq9058K479RyCjrlVMpE
-         DzJA==
+         :mime-version:message-id:date:subject:to:from;
+        bh=NgJz4sa8O2FI3cLl1yYshc7KPIWgE0EReyj5OuUL+Qw=;
+        b=oY4dn8iFWOrN7i2hlFLe05NcggGQ/8SBiWAwbJWigdQoaz3Go2GOFwSagB0O7G2fGf
+         R9pd/R7Znx03KEWHM/xsomwIgiDB9JYbHSfSffJR1lTabbnfhgNGdGlLNdnI2vbNZYAQ
+         0Cj92dO2wNPpP8Nb00O/vxBy690R2J2WQXN9eFeWYhs2O82cyHVENhouYqPVuPrwkE5a
+         y9tYtId3LbTjFM/EcysAHVHzmN7YXfAUm/12i/70JM+IFY0dFmKylxNyZoaW0aw/xQ5Q
+         kth6h2GqScZLDoXQZx+GnOCUzhqFJZCDPSGVRF3TWFEVSHT/IarLLZBJVl0e/O+oq4U3
+         CsEw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r8si12051932qtb.400.2020.02.03.17.48.04
+        by mx.google.com with ESMTPS id v22si13424529qkg.298.2020.02.03.18.06.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 17:48:04 -0800 (PST)
+        Mon, 03 Feb 2020 18:06:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49282 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51838 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iynJs-00012A-8d
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 20:48:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47859)
+	id 1iynbk-0002nd-Ch
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 21:06:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35077)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1iynIK-0007hb-E3
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 20:46:29 -0500
+ (envelope-from <pannengyuan@huawei.com>) id 1iynbc-0002nK-MF
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 21:06:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1iynIJ-0008DK-BT
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 20:46:28 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2750 helo=huawei.com)
+ (envelope-from <pannengyuan@huawei.com>) id 1iynbb-0007Id-DI
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 21:06:24 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2754 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1iynII-0008At-Vu; Mon, 03 Feb 2020 20:46:27 -0500
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 2546E9063938F7983AE5;
- Tue,  4 Feb 2020 09:46:25 +0800 (CST)
-Received: from linux-TFkxOR.huawei.com (10.175.104.212) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.439.0; Tue, 4 Feb 2020 09:46:17 +0800
-From: Heyi Guo <guoheyi@huawei.com>
-To: <qemu-devel@nongnu.org>
-Subject: [PATCH v3 4/7] arm/acpi: fix PCI _PRT definition
-Date: Tue, 4 Feb 2020 09:43:22 +0800
-Message-ID: <20200204014325.16279-5-guoheyi@huawei.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20200204014325.16279-1-guoheyi@huawei.com>
-References: <20200204014325.16279-1-guoheyi@huawei.com>
+ (Exim 4.71) (envelope-from <pannengyuan@huawei.com>)
+ id 1iynbb-0006gX-1i; Mon, 03 Feb 2020 21:06:23 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 01129323CB897F3B19F3;
+ Tue,  4 Feb 2020 10:06:17 +0800 (CST)
+Received: from DESKTOP-9NTIQGG.china.huawei.com (10.173.221.136) by
+ DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
+ 14.3.439.0; Tue, 4 Feb 2020 10:06:11 +0800
+From: <pannengyuan@huawei.com>
+To: <peter.maydell@linaro.org>
+Subject: [PATCH v2] pl031: add finalize function to avoid memleaks
+Date: Tue, 4 Feb 2020 10:05:54 +0800
+Message-ID: <20200204020554.9380-1-pannengyuan@huawei.com>
+X-Mailer: git-send-email 2.21.0.windows.1
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Originating-IP: [10.175.104.212]
+X-Originating-IP: [10.173.221.136]
 X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
@@ -82,67 +80,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm@nongnu.org, Igor
- Mammedov <imammedo@redhat.com>, Heyi Guo <guoheyi@huawei.com>,
- wanghaibin.wang@huawei.com
+Cc: Euler Robot <euler.robot@huawei.com>, qemu-arm@nongnu.org,
+ Pan Nengyuan <pannengyuan@huawei.com>, zhang.zhanghailiang@huawei.com,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yq03dvUFqHj3
+X-TUID: wP1prARYPMas
 
-The address field in each _PRT mapping package should be constructed
-with high word for device# and low word for function#, so it is wrong
-to use bus_no as the high word. The existing code adds a bunch useless
-entries with device #s above 31. Enumerate all possible slots
-(i.e. PCI_SLOT_MAX) instead.
+From: Pan Nengyuan <pannengyuan@huawei.com>
 
-Signed-off-by: Heyi Guo <guoheyi@huawei.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+There is a memory leak when we call 'device_list_properties' with
+typename =3D pl031. It's easy to reproduce as follow:
 
+  virsh qemu-monitor-command vm1 --pretty '{"execute": "device-list-prope=
+rties", "arguments": {"typename": "pl031"}}'
+
+The memory leak stack:
+  Direct leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7f6e0925a970 in __interceptor_calloc (/lib64/libasan.so.5+0xef97=
+0)
+    #1 0x7f6e06f4d49d in g_malloc0 (/lib64/libglib-2.0.so.0+0x5249d)
+    #2 0x564a0f7654ea in timer_new_full /mnt/sdb/qemu/include/qemu/timer.=
+h:530
+    #3 0x564a0f76555d in timer_new /mnt/sdb/qemu/include/qemu/timer.h:551
+    #4 0x564a0f765589 in timer_new_ns /mnt/sdb/qemu/include/qemu/timer.h:=
+569
+    #5 0x564a0f76747d in pl031_init /mnt/sdb/qemu/hw/rtc/pl031.c:198
+    #6 0x564a0fd4a19d in object_init_with_type /mnt/sdb/qemu/qom/object.c=
+:360
+    #7 0x564a0fd4b166 in object_initialize_with_type /mnt/sdb/qemu/qom/ob=
+ject.c:467
+    #8 0x564a0fd4c8e6 in object_new_with_type /mnt/sdb/qemu/qom/object.c:=
+636
+    #9 0x564a0fd4c98e in object_new /mnt/sdb/qemu/qom/object.c:646
+    #10 0x564a0fc69d43 in qmp_device_list_properties /mnt/sdb/qemu/qom/qo=
+m-qmp-cmds.c:204
+    #11 0x564a0ef18e64 in qdev_device_help /mnt/sdb/qemu/qdev-monitor.c:2=
+78
+
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
 ---
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>
-Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-Cc: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org
+Changes V2 to V1:
+- Delay the timer_new until realize instead of putting it into instance_i=
+nit, since the pl031 can't be hotplugged(suggested by Peter Maydell).
 ---
- hw/arm/virt-acpi-build.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ hw/rtc/pl031.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index be752c0ad8..5d157a9dd5 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -151,7 +151,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMa=
-pEntry *memmap,
- {
-     int ecam_id =3D VIRT_ECAM_ID(highmem_ecam);
-     Aml *method, *crs, *ifctx, *UUID, *ifctx1, *elsectx, *buf;
--    int i, bus_no;
-+    int i, slot_no;
-     hwaddr base_mmio =3D memmap[VIRT_PCIE_MMIO].base;
-     hwaddr size_mmio =3D memmap[VIRT_PCIE_MMIO].size;
-     hwaddr base_pio =3D memmap[VIRT_PCIE_PIO].base;
-@@ -170,12 +170,12 @@ static void acpi_dsdt_add_pci(Aml *scope, const Mem=
-MapEntry *memmap,
-     aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+diff --git a/hw/rtc/pl031.c b/hw/rtc/pl031.c
+index ae47f09635..0b9253eb30 100644
+--- a/hw/rtc/pl031.c
++++ b/hw/rtc/pl031.c
+@@ -190,7 +190,11 @@ static void pl031_init(Object *obj)
+     qemu_get_timedate(&tm, 0);
+     s->tick_offset =3D mktimegm(&tm) -
+         qemu_clock_get_ns(rtc_clock) / NANOSECONDS_PER_SECOND;
++}
 =20
-     /* Declare the PCI Routing Table. */
--    Aml *rt_pkg =3D aml_varpackage(nr_pcie_buses * PCI_NUM_PINS);
--    for (bus_no =3D 0; bus_no < nr_pcie_buses; bus_no++) {
-+    Aml *rt_pkg =3D aml_varpackage(PCI_SLOT_MAX * PCI_NUM_PINS);
-+    for (slot_no =3D 0; slot_no < PCI_SLOT_MAX; slot_no++) {
-         for (i =3D 0; i < PCI_NUM_PINS; i++) {
--            int gsi =3D (i + bus_no) % PCI_NUM_PINS;
-+            int gsi =3D (i + slot_no) % PCI_NUM_PINS;
-             Aml *pkg =3D aml_package(4);
--            aml_append(pkg, aml_int((bus_no << 16) | 0xFFFF));
-+            aml_append(pkg, aml_int((slot_no << 16) | 0xFFFF));
-             aml_append(pkg, aml_int(i));
-             aml_append(pkg, aml_name("GSI%d", gsi));
-             aml_append(pkg, aml_int(0));
++static void pl031_realize(DeviceState *dev, Error **errp)
++{
++    PL031State *s =3D PL031(dev);
+     s->timer =3D timer_new_ns(rtc_clock, pl031_interrupt, s);
+ }
+=20
+@@ -321,6 +325,7 @@ static void pl031_class_init(ObjectClass *klass, void=
+ *data)
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+=20
+     dc->vmsd =3D &vmstate_pl031;
++    dc->realize =3D pl031_realize;
+     device_class_set_props(dc, pl031_properties);
+ }
+=20
 --=20
-2.19.1
+2.21.0.windows.1
+
 

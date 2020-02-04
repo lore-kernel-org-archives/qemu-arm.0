@@ -1,136 +1,94 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1966907lfp;
-        Sat, 1 Feb 2020 08:09:20 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzA1YLtBnM9h84It42zP4HCTZR2oeX40uUsEw98iG/LYue5c2yQh9EuG/2WWPX8HondGjS+
-X-Received: by 2002:ae9:ea08:: with SMTP id f8mr15000360qkg.489.1580573360341;
-        Sat, 01 Feb 2020 08:09:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580573360; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5452382lfp;
+        Tue, 4 Feb 2020 06:52:05 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwW+cpqtXKs7T9YxadL8VKiRUhuCZttXDa0Q2XxeJVSE7vai4EPe7BkBsSWG5i3cxWr76cp
+X-Received: by 2002:aed:2a86:: with SMTP id t6mr28064495qtd.81.1580827925648;
+        Tue, 04 Feb 2020 06:52:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580827925; cv=none;
         d=google.com; s=arc-20160816;
-        b=aCfqrKhlCCtvcv+XtfHLorMlsn/NyKmMgtROJZQk+uyJe4PCXyxfSnkycrydASj5nm
-         VDwFm2w4wcoGJKsZ67ff1Y3Dn75BucKwwV13mIOUUA2rcMil0JQmo3af1/uYZusrdqUF
-         xDh3M1fxkcBvWGwgNHrTVI4MwHaSoPJtYFjRa1mC/0vS5k/J6fU2/FfXA9A/EetLcncD
-         ycFFARy8RubsGwrojjcuVCpqXzWlRZJUGTheUbheqSM3uJWhHcjDij7kLYIGAViH4cXZ
-         3fykBj6vools0I3urkB8MSp93SY2fUqO/+rZ8a761LTqOWGu+XH/lPS3gpjzyqtiyWex
-         +XFQ==
+        b=L5u1cvCmg12W3/DpCgvpSV3mNQeZ1gf51qr0y8mwgjQlLiW9+EfmdqHtYcrv2LPhN0
+         nA5GXpTLUyqFlYQhoXgz+mSDDJxpjXbwGs5naRGZmolQaP6gogDOvbvo6kdSIJ7UB6En
+         jrtvsmwsnTfrXenk/9BtVM4V7Pgl8LSkWseZ1/eiTAuXpDKDmiEdp+4U8XJtyys2FgBW
+         7akpyARGLrQ/DBJMHNeWYd1+ol76UzJtQc5J4njGqZKtBkEB8u+KGX7psQ4/JWuG5FkY
+         quLT0LjhBUQIfGNuae0bhxLgaHHvRUQN0BzFbxt4T/XsjoF1lhRDLQ7qDqW0oNS3Bse+
+         t3+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=hf66daEhwSz8unUsUuL5N35gPWbaJ3m2PE7qZzRa32Q=;
-        b=jrOxUVkiyLOaWr3+gYut5h2BqIXaWbcpUM2/7adELjT2UBa6kNu6V7/6JePznBqZ6K
-         tL9+TC3FRxOWkbLMY251LOiHdBQbiNfsZGJoZZ26Im6ZBAbtpzywNWbX6CL/KJy3sQzZ
-         TR/w+wP07OVazxBpWq05OBEEc35Uh8GnQ7nYpmWjwkdzLWit8T1uxSa6ZOKfM+k+NMvD
-         +LrwfrPM0A8l1FenJZ7GnHd1m1/pHUsk/a1PollrB+DTFxvYPO4+mgSyk0wrwAr+m5Ak
-         AmF9VlGwQvKQGIwyGS2f8a1KmpUe4ZrqrsKS3/IuovLrPbtTKj6rGAMvJYRHFV0I/R1+
-         YEBg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=wzuVTmFx9GZsjbitRVHvEpxLGLu+ZigsJcDI+U5riyY=;
+        b=KKmwTWxHcrLO/o0rVXhrNA4eeA7x9A/5wTn19nHj15dMCS5emlZKC3Jue+alCJA2Hp
+         4TFGb//c2defCR9FT9UOXI96b+GDEsKI0zWYapStxsgrzNXBai0jxmWdVNEzRudA7wJn
+         eLw8gd/tHFPhCblVkjQEdHx7EvGPjrDnqGLvDPcCiOcJP5pOEjHBz42ZMhqv2oNbSJ3B
+         9/ut7+bN2Sc/xCPlHqSvW4UQxpZSq9SQIkxJH7KsWIYgia3FYw/8wTz13XoScKeiocro
+         /WTQylIJHNnQbMdUTp0X+ueWCau5/5doDK/xg8+orm+wlz0/T9KrDwwrb3/U8qXLrM6r
+         JZfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ufbrppPI;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="DJRod/8b";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y20si7714156qki.302.2020.02.01.08.09.20
+        by mx.google.com with ESMTPS id j35si12736214qtb.298.2020.02.04.06.52.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 01 Feb 2020 08:09:20 -0800 (PST)
+        Tue, 04 Feb 2020 06:52:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ufbrppPI;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="DJRod/8b";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:47408 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:59834 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ixvKh-0004Jb-Lo
-	for alex.bennee@linaro.org; Sat, 01 Feb 2020 11:09:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57625)
+	id 1iyzYb-00068O-3N
+	for alex.bennee@linaro.org; Tue, 04 Feb 2020 09:52:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51086)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ixvKZ-0004JJ-JS
- for qemu-arm@nongnu.org; Sat, 01 Feb 2020 11:09:12 -0500
+ (envelope-from <max.lapshin@gmail.com>) id 1iyzYU-00068C-GH
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 09:51:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ixvKY-0008J2-7b
- for qemu-arm@nongnu.org; Sat, 01 Feb 2020 11:09:11 -0500
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:36066)
+ (envelope-from <max.lapshin@gmail.com>) id 1iyzYT-0000Vx-I8
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 09:51:58 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:32814)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ixvKY-0008Im-12; Sat, 01 Feb 2020 11:09:10 -0500
-Received: by mail-wr1-x442.google.com with SMTP id z3so12343950wru.3;
- Sat, 01 Feb 2020 08:09:09 -0800 (PST)
+ (Exim 4.71) (envelope-from <max.lapshin@gmail.com>)
+ id 1iyzYT-0000N4-Ar
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 09:51:57 -0500
+Received: by mail-wr1-x432.google.com with SMTP id u6so10137386wrt.0
+ for <qemu-arm@nongnu.org>; Tue, 04 Feb 2020 06:51:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=hf66daEhwSz8unUsUuL5N35gPWbaJ3m2PE7qZzRa32Q=;
- b=ufbrppPIT/N1iECImwNuKKiGAvwEb6PmxmSmUjvd8qptlOmYunbLGotu0ocTNZY5aU
- zSqjarUvZZMJTwjljj8tbDiI8TQ5ahinxWIkcK5WyGMaJXOXmJl+9fV2yXMV6MW6Kv/7
- Sh0LJ/bHAuR37emIMhfcuU1LeNuSVLVjHqdMROahPw8cYLX7vq/OAbUiSDN/f5zdHQRN
- sMv7vJdX97NhLNRm2XDWdVwm2Gf/ifdv7pth+i6Z536mRk6vLbbEW1jQdKWY/TBXmcAs
- 8wxLIah7DNKqVwf8B5FiwmQqBbluGhqC/PBhg4+a9cPXfT9BjaOW9VggASgpcy12s3aE
- /iDQ==
+ h=mime-version:from:date:message-id:subject:to;
+ bh=wzuVTmFx9GZsjbitRVHvEpxLGLu+ZigsJcDI+U5riyY=;
+ b=DJRod/8bsGW1VKlIKN4HSsII9b+8hLSK3EWG8ZeYvWvIK3AqW4ycB5b/XzoorCV/LZ
+ PvO59fX25JS9i1vLocHG0G+1EPY+jgh7EijOTZ2R3c8KsSG7Sy9EcaZ6QueA7h6kzMGk
+ cKvhicUSaVLYMwI4Vq+fOxMxSnmtoh6B05Y0JF+8VWTEL9x+MM6MWbxQOOQyy7MnYld8
+ Xbt9PnMEJZ7kPrgblVbD6mJhIm8rBLuNFOhAMR8mT92s42zTT+GTjO18Ew8pLtjzN10H
+ wAHHwJWih7vtkbo0A8kfiQz04WxWTkZmBBm7dzMSKXfE4ZKRWA1sWFQ6Lpx7zMTqKRJ5
+ Y4Hg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=hf66daEhwSz8unUsUuL5N35gPWbaJ3m2PE7qZzRa32Q=;
- b=elSrQ4bphnyQuop++3cXjQ1vk6JNkf4czDCUFY7K+hQMlL2X1HOOop3KmkQr4oR61e
- aWJRlAzRPjjTYPKdPfnppmmVhGNlPrubxzhah4w+Y+Ghv++TdtU4rPcMKQyE+xwFkv+P
- 1xGTn3W4AMYV+8PGWI1av2lxgV44pGHaWwNsbCbefI1FBx2jnFAX50E5QmzPqlknVqDg
- UxrFfj9QDh47+Wzi2ak8ZZAtWZU0P3v5WLM4HRs1PRGG/2qcGYGM94Gjb8ctmq0MitbG
- WAA9J1zZW+DoXQgFRghsOtwCKCCFLsJp39+0FxlP9dAJmXBCYOxkq1wfKCdcR8KQS3YT
- QRRw==
-X-Gm-Message-State: APjAAAWyajnR7pzmQ5g6huEe5pu3EoCSCiCx2OnX0mEMat8xsPxt2kNK
- rvgXNzT7BNe8+5o3LnJ+2Ak=
-X-Received: by 2002:adf:f986:: with SMTP id f6mr798450wrr.182.1580573348145;
- Sat, 01 Feb 2020 08:09:08 -0800 (PST)
-Received: from [192.168.1.35] (162.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.162])
- by smtp.gmail.com with ESMTPSA id w8sm15797451wmm.0.2020.02.01.08.09.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 01 Feb 2020 08:09:07 -0800 (PST)
-Subject: Re: [PATCH for-5.0 3/4] Remove the core bluetooth code
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>
-References: <20191120091014.16883-1-thuth@redhat.com>
- <20191120091014.16883-4-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Autocrypt: addr=f4bug@amsat.org; keydata=
- mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
- u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
- HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
- YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
- ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
- dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
- ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
- Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
- HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
- Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
- klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
- jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
- 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
- loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
- sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
- JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
- 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
- K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
- n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
- CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
-Message-ID: <7a775153-f18d-e766-1d8f-33607f5fa05b@amsat.org>
-Date: Sat, 1 Feb 2020 17:09:05 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=wzuVTmFx9GZsjbitRVHvEpxLGLu+ZigsJcDI+U5riyY=;
+ b=DMwcFPUqn8xCWj+cUnv7CKhsFpOpQeLLBQrBFPCyDOwVk2S7PaUr7cWf6aTVhijuou
+ 1v52NqK+LBg5EbMzwpkQTPL2wRFNAm3T5dFDYufkZ4KYPF9O6cqf8R+r4T+PGYeAfnFn
+ W+hPAr9AJl0nfRi8pPcdQ6j/btsb7Wt2Vr8A3VEYIdsIGjDtWUt8yVIg0bVwVC62ry7O
+ p0Vd4IjJ3SKaX507c0jzhJuwW1RcTOuzREitBguw7TIJWlOTwDEVRdDeZ/Sf/jZjClqR
+ +OMltKBnBHVE53zV7x1YQGfFxkraHQru5UeBgmLxAxkFQy7kgi1Oi1E1zXgroxWrjWmr
+ iEgg==
+X-Gm-Message-State: APjAAAXtGQbJJGF2K1yYSunUewsFMAPUHAsldOfQAcL9uxSwipg9rT3f
+ rLZaFbynijxCoP2n+9ClkUEdsQCxNxnS+sS9n4BaVA==
+X-Received: by 2002:adf:d0c1:: with SMTP id z1mr24290790wrh.371.1580827915486; 
+ Tue, 04 Feb 2020 06:51:55 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191120091014.16883-4-thuth@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+From: Max Lapshin <max.lapshin@gmail.com>
+Date: Tue, 4 Feb 2020 17:51:44 +0300
+Message-ID: <CAMxVRxC=2G7LrdwLf+oZBUiSfdP7JtPc=4ygkqtEvrCB4oRUYA@mail.gmail.com>
+Subject: Support for nvidia jetson
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000005a896e059dc12ecf"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::442
+X-Received-From: 2a00:1450:4864:20::432
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -142,161 +100,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: libvir-list@redhat.com, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QIoL0kSQ8h52
+X-TUID: mHXpg0EGN9in
 
-On 11/20/19 10:10 AM, Thomas Huth wrote:
-> It's been deprecated since QEMU v3.1. We've explicitly asked in the
-> deprecation message that people should speak up on qemu-devel in case
-> they are still actively using the bluetooth part of QEMU, but nobody
-> ever replied that they are really still using it.
-> 
-> I've tried it on my own to use this bluetooth subsystem for one of my
-> guests, but I was also not able to get it running anymore: When I was
-> trying to pass-through a real bluetooth device, either the guest did
-> not see the device at all, or the guest crashed.
-> 
-> Even worse for the emulated device: When running
-> 
->  qemu-system-x86_64 -bt device:keyboard
-> 
-> QEMU crashes once you hit a key.
-> 
-> So it seems like the bluetooth stack is not only neglected, it is
-> completely bitrotten, as far as I can tell. The only attention that
-> this code got during the past years were some CVEs that have been
-> spotted there. So this code is a burden for the developers, without
-> any real benefit anymore. Time to remove it.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  Makefile.objs        |    2 -
->  bt-host.c            |  198 ----
->  bt-vhci.c            |  167 ----
->  configure            |   31 -
->  hw/Kconfig           |    1 -
->  hw/Makefile.objs     |    1 -
->  hw/bt/Kconfig        |    2 -
->  hw/bt/Makefile.objs  |    3 -
->  hw/bt/core.c         |  143 ---
->  hw/bt/hci-csr.c      |  512 ----------
->  hw/bt/hci.c          | 2263 ------------------------------------------
->  hw/bt/hid.c          |  553 -----------
->  hw/bt/l2cap.c        | 1367 -------------------------
->  hw/bt/sdp.c          |  989 ------------------
->  include/hw/bt.h      | 2177 ----------------------------------------
->  include/sysemu/bt.h  |   20 -
->  qemu-deprecated.texi |    7 -
->  qemu-options.hx      |   79 --
->  vl.c                 |  136 ---
->  19 files changed, 8651 deletions(-)
->  delete mode 100644 bt-host.c
->  delete mode 100644 bt-vhci.c
->  delete mode 100644 hw/bt/Kconfig
->  delete mode 100644 hw/bt/Makefile.objs
->  delete mode 100644 hw/bt/core.c
->  delete mode 100644 hw/bt/hci-csr.c
->  delete mode 100644 hw/bt/hci.c
->  delete mode 100644 hw/bt/hid.c
->  delete mode 100644 hw/bt/l2cap.c
->  delete mode 100644 hw/bt/sdp.c
->  delete mode 100644 include/hw/bt.h
->  delete mode 100644 include/sysemu/bt.h
-> 
-[...]> diff --git a/configure b/configure
-> index 6099be1d84..ecce4ada2d 100755
-> --- a/configure
-> +++ b/configure
-> @@ -349,7 +349,6 @@ unset target_list_exclude
->  # Distributions want to ensure that several features are compiled in, and it
->  # is impossible without a --enable-foo that exits if a feature is not found.
->  
-> -bluez=""
->  brlapi=""
->  curl=""
->  curses=""
-> @@ -1151,10 +1150,6 @@ for opt do
->    ;;
->    --enable-brlapi) brlapi="yes"
->    ;;
-> -  --disable-bluez) bluez="no"
-> -  ;;
-> -  --enable-bluez) bluez="yes"
-> -  ;;
+--0000000000005a896e059dc12ecf
+Content-Type: text/plain; charset="UTF-8"
 
-Now than I'm bisecting over this commit, I realize removing this
-option was not a good idea, we should have done like commit
-cb6414dfec8 or 315d3184525:
+Hi.
 
-  @@ -886,10 +885,6 @@ for opt do
-  -  --disable-uuid) uuid="no"
-  -  ;;
-  -  --enable-uuid) uuid="yes"
-  -  ;;
-  ...
-  +  --enable-uuid|--disable-uuid)
-  +      echo "$0: $opt is obsolete, UUID support is always built" >&2
-  +  ;;
+I want to test nvidia jetson system (without its specific features, just
+test that it loads and can communicate via internet).
 
->    --disable-kvm) kvm="no"
->    ;;
->    --enable-kvm) kvm="yes"
-> @@ -1762,7 +1757,6 @@ disabled with --disable-FEATURE, default is enabled if available:
->    curl            curl connectivity
->    membarrier      membarrier system call (for Linux 4.14+ or Windows)
->    fdt             fdt device tree
-> -  bluez           bluez stack connectivity
->    kvm             KVM acceleration support
->    hax             HAX acceleration support
->    hvf             Hypervisor.framework acceleration support
-> @@ -3665,26 +3659,6 @@ EOF
->    fi
->  fi # test "$curl"
->  
-> -##########################################
-> -# bluez support probe
-> -if test "$bluez" != "no" ; then
-> -  cat > $TMPC << EOF
-> -#include <bluetooth/bluetooth.h>
-> -int main(void) { return bt_error(0); }
-> -EOF
-> -  bluez_cflags=$($pkg_config --cflags bluez 2>/dev/null)
-> -  bluez_libs=$($pkg_config --libs bluez 2>/dev/null)
-> -  if compile_prog "$bluez_cflags" "$bluez_libs" ; then
-> -    bluez=yes
-> -    libs_softmmu="$bluez_libs $libs_softmmu"
-> -  else
-> -    if test "$bluez" = "yes" ; then
-> -      feature_not_found "bluez" "Install bluez-libs/libbluetooth devel"
-> -    fi
-> -    bluez="no"
-> -  fi
-> -fi
-> -
->  ##########################################
->  # glib support probe
->  
-> @@ -6509,7 +6483,6 @@ if test "$xen" = "yes" ; then
->    echo "xen ctrl version  $xen_ctrl_version"
->  fi
->  echo "brlapi support    $brlapi"
-> -echo "bluez  support    $bluez"
->  echo "Documentation     $docs"
->  echo "PIE               $pie"
->  echo "vde support       $vde"
-> @@ -6933,10 +6906,6 @@ if test "$brlapi" = "yes" ; then
->    echo "CONFIG_BRLAPI=y" >> $config_host_mak
->    echo "BRLAPI_LIBS=$brlapi_libs" >> $config_host_mak
->  fi
-> -if test "$bluez" = "yes" ; then
-> -  echo "CONFIG_BLUEZ=y" >> $config_host_mak
-> -  echo "BLUEZ_CFLAGS=$bluez_cflags" >> $config_host_mak
-> -fi
->  if test "$gtk" = "yes" ; then
->    echo "CONFIG_GTK=m" >> $config_host_mak
->    echo "GTK_CFLAGS=$gtk_cflags" >> $config_host_mak
-[...]
+Should I change/recompile kernel?
+
+--0000000000005a896e059dc12ecf
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi.<div><br></div><div>I want to test nvidia jetson system=
+ (without its specific features, just test that it loads and can communicat=
+e via internet).</div><div><br></div><div>Should I change/recompile kernel?=
+</div><div><br></div><div><br></div></div>
+
+--0000000000005a896e059dc12ecf--

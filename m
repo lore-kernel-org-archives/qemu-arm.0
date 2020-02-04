@@ -1,106 +1,119 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5299686lfp;
-        Tue, 4 Feb 2020 04:26:46 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyCWtpaCuHmEzUX488/qbyLUAGg8tCvm6gbtMuOJMJTpF33r5ThHGIBgo4Rvd7js33/bGMX
-X-Received: by 2002:a37:7bc7:: with SMTP id w190mr28330624qkc.193.1580819206027;
-        Tue, 04 Feb 2020 04:26:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580819206; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5300896lfp;
+        Tue, 4 Feb 2020 04:28:13 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwTNU2GCUgMHbt9GqbU5zAZ0GBz63x6OpmsDWwgPd0ID4N7Dd64rOn3ej+Jwef77UhLVcBm
+X-Received: by 2002:ac8:76d7:: with SMTP id q23mr20685750qtr.198.1580819293802;
+        Tue, 04 Feb 2020 04:28:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580819293; cv=none;
         d=google.com; s=arc-20160816;
-        b=RAFO1fCHSzyNUUyUKll9k+DO0Mt12obdNUUfSQWZtEJivYCkx6AogX+/Mi+C2bB4qj
-         9SabxMgVPAOzjtUT6x1Qq3gwiTZklNdYTTaUzAuWDBJ7v3GYJgg+KMQ4O6jAtyHI+UP8
-         dANP//F5hIBt0gfA/HqhzybykaQrZ75hm7R3/4A39udzcXLclJjM6+GFY9SBsmYhVC7n
-         WC6lQYvcSxzaZLcvQQibgiaAJ083RNn6zsSwBh3/Z9num8R+CIgHIPVe6FIB+7lU7f6M
-         TmtXd3Xob5aRAaMz/0E8+qILUCEr/zeELrQ3DLQxSkGGy6DrxK9tN/r/TTfKjdGJD5PT
-         dAxg==
+        b=CjKDMEN+CjGB3SbLeHASUO5Zd6W9K7/W0joJ1QPJkGoH0wTn5jUzbNpf0OxlgNp7AD
+         7pBE2CUJRabe/doF6acLa/b4jXmHbKe/oN53OWS1VhuwViGFF+WfMY+kCxjk/OImwKqd
+         jnpPAiNzTUlov9/1a+eMErdjiqJqFzjIJH2rx0cbIYPwvDM/VDg+4n3C10wKHGEopG9b
+         N9YX4gXj5rcheG8RY8+dWLTXekXKD9KQew7ns+vP2oSKEiI04VCsuCKMOGEMKeZ0Rodt
+         hrswYYmgO4AajjeyEwyFZOO4EPbjRgpaiCAHClHAC73SLo1O1jN2iWpwvVLLfYPVU+Ca
+         0PPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=MszlNI7YNZV2jQRy7qH0Q4vUrqQZS2e1Cn9y39/Qy5g=;
-        b=gQc8Wc2Ejo+EOYwbrG2MXLhb8BecfUZYn8BzA9/8epjAa96w0krW79o8gunnfp7nLL
-         p4qjOwKiQIrdAWkNqm71ejrNkP3vCRVhAQB2DlsP+ewXtGJeXDcP/kMBcNyE/owPLgF1
-         g5wo1/OQfNBPXvxYH+nCWedHOQA+L5ck0XzyxdOwvZHW1E1xU/ZgqnBTqH11AuMkwYsz
-         xGMpjgto1ta7J8SR4MkyOZh3oAqwNUQhh0pnCZufcivqCPihWKGP7Ye3+DSL9M266eIX
-         jlDmhMC2GZNHCcUIB8whEiJ5pfwdtpYuGKLmsPnAxrRfGwYvmqWVD/IhOdmnshMrFVBh
-         KdfA==
+        bh=NMrQ2FqiJxtXMoywPmShxbp0CDoQFF8TiGnGLfh3VL0=;
+        b=qVYPQONPwA0UVID9ur1JbrkPFdz7lU5TwHX3JKlsiyONT2ihFoGZPa52276cIXYzOi
+         t8t7ykHfZqgazu0WjuxpyW7kwwAsCyRH615ggFDUlYPtT50bJdKSOO4GaiPs80crsZtr
+         8T71yIiBBLFgVtztc9j249hCoPprn2pXvV/FGPaDQhPHJ/iq8sTtfDzkCMjdIGA7Mkfw
+         jAC6zo9oqVl8I7AX7FN02PA9pqpaCyDsYiVHnLELSrMyxVBEDXjT/rhHAWWY1R3CQZIl
+         ie939rhBJzZl8z6fs+AqWBpiWoch0y8781Mt5/YvbuB+c1+COtBpuYOLhAsnI3ePO1LF
+         N7Mg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bLZN1XkL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J2V79SaJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v10si13355851qvl.183.2020.02.04.04.26.45
+        by mx.google.com with ESMTPS id g7si12703737qvx.171.2020.02.04.04.28.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2020 04:26:46 -0800 (PST)
+        Tue, 04 Feb 2020 04:28:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bLZN1XkL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J2V79SaJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57388 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57414 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iyxHx-0007Ai-Ez
-	for alex.bennee@linaro.org; Tue, 04 Feb 2020 07:26:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37274)
+	id 1iyxJN-000078-7y
+	for alex.bennee@linaro.org; Tue, 04 Feb 2020 07:28:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38734)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1iyxHj-0007AP-LH
- for qemu-arm@nongnu.org; Tue, 04 Feb 2020 07:26:33 -0500
+ (envelope-from <philmd@redhat.com>) id 1iyxJF-00006f-H5
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 07:28:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1iyxHh-0002fN-09
- for qemu-arm@nongnu.org; Tue, 04 Feb 2020 07:26:30 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:23770
+ (envelope-from <philmd@redhat.com>) id 1iyxJE-0003bx-F0
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 07:28:05 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:27552
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1iyxHg-0002Z1-KN
- for qemu-arm@nongnu.org; Tue, 04 Feb 2020 07:26:28 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iyxJE-0003Zs-Ae
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 07:28:04 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580819187;
+ s=mimecast20190719; t=1580819284;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=MszlNI7YNZV2jQRy7qH0Q4vUrqQZS2e1Cn9y39/Qy5g=;
- b=bLZN1XkL5XL07oCgVYtpaDAHn2VpsZ+tLQg5OKXptC451Jg2oaNWs9orAIMdWTQ1yjVcgC
- n7DpBPWCc6g0DFtNUReDZxkwbecm+SbpNhZ9SJx5dRdjCju/7wH1eLfIthRIwYemkamWVg
- SZTlaogHfnhYYaB3FzS+xb2WrjBQ8TU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-295-IKb5SNlgMcyyescI_bQdWw-1; Tue, 04 Feb 2020 07:26:23 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 51FA51137846;
- Tue,  4 Feb 2020 12:26:21 +0000 (UTC)
-Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 06D4C86C4A;
- Tue,  4 Feb 2020 12:26:11 +0000 (UTC)
-Subject: Re: [PATCH v13 03/10] virtio-iommu: Implement attach/detach command
-To: Peter Xu <peterx@redhat.com>
-References: <20200125171955.12825-1-eric.auger@redhat.com>
- <20200125171955.12825-4-eric.auger@redhat.com>
- <20200203134915.GA155875@xz-x1>
- <ce49f691-d944-2e5e-87a3-7e7c9651c2af@redhat.com>
- <20200203151917.GD155875@xz-x1>
- <5289913a-43fc-aaae-5b82-151922de93bf@redhat.com>
- <20200203181938.GE155875@xz-x1>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <75625c27-88da-c26b-7ee6-ab3f57b55906@redhat.com>
-Date: Tue, 4 Feb 2020 13:26:09 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ bh=NMrQ2FqiJxtXMoywPmShxbp0CDoQFF8TiGnGLfh3VL0=;
+ b=J2V79SaJtNUrUqpqHRscojBliEBJweUJJ4U0WDeVDSXDSe+lzTQdR+UKc1ZKIMTxPVxElm
+ 6bRvotpdbCs8fUdzVnxEAI4+VVuBttsJqXULmF68NGuOAqsT2F1/uBS5hYgAxURaKIN0rH
+ IwBLak91WF23eZn9wpVdQ2LwxYVoBoA=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-167-wvqDXyISOR6QaU5Bt63vhg-1; Tue, 04 Feb 2020 07:28:02 -0500
+Received: by mail-wr1-f71.google.com with SMTP id s13so10034712wru.7
+ for <qemu-arm@nongnu.org>; Tue, 04 Feb 2020 04:28:02 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=cPt9M0d6iDtsqmwQp6NOAbnKeDl8EVjT5esYR0OjJQU=;
+ b=KJ9RjIbLiJCUKlDCJV1VfDFQ9oKSMH0EsTTt5QBHbfZcECGS4TosVSclaPyPYjxuly
+ VuZpwhwDTZXvlmdcbaATKTnxPEU1Ugcg0NBIZAc8IPOTPfveCM485y44NeTq0f96ASiI
+ sdKC9cSk29Ow3N9T40NEKRhRb8uukNuTNUGePIuxErS/hroe92AGALBzmqOwjBwgYpB9
+ MUeaMPcaamutBpk7yQXvZyQETeZUkP9rXO3WcR+X+fGuKcOwBS/qvDLBFtV+BsMLawDe
+ WwppbTCv/MpF4Wd3ncnIB9UBHAbNDG6M/TbJlzwob2FCrfTLmFWaTVbn8I54SmYdAj7g
+ 9IjQ==
+X-Gm-Message-State: APjAAAWBiuoS5UG6hyGHHMk45Ay4+w8cJcrvG4JysbFIwLot0EEkQTD5
+ gyUn8/G40fHddQ3453K2owAvVjnAGFZGF8W7gJ50nu19HNF7HrSJP2H114LfswnUfHsxeeSROZb
+ F3w69r/yL2YIF
+X-Received: by 2002:a1c:a752:: with SMTP id q79mr5315074wme.64.1580819281366; 
+ Tue, 04 Feb 2020 04:28:01 -0800 (PST)
+X-Received: by 2002:a1c:a752:: with SMTP id q79mr5315054wme.64.1580819281160; 
+ Tue, 04 Feb 2020 04:28:01 -0800 (PST)
+Received: from [192.168.1.35] (162.red-83-52-55.dynamicip.rima-tde.net.
+ [83.52.55.162])
+ by smtp.gmail.com with ESMTPSA id l15sm29370822wrv.39.2020.02.04.04.27.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 04 Feb 2020 04:28:00 -0800 (PST)
+Subject: Re: [PATCH 2/3] m25p80: Improve command handling for Jedec and
+ unsupported commands
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Guenter Roeck <linux@roeck-us.net>, Alistair Francis <alistair@alistair23.me>
+References: <20200203180904.2727-1-linux@roeck-us.net>
+ <20200203180904.2727-2-linux@roeck-us.net>
+ <accf297f-0c54-7475-8817-c1014999a57d@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <4ac29597-25f8-5bf3-ef67-8bb846295de2@redhat.com>
+Date: Tue, 4 Feb 2020 13:27:59 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200203181938.GE155875@xz-x1>
+In-Reply-To: <accf297f-0c54-7475-8817-c1014999a57d@kaod.org>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: IKb5SNlgMcyyescI_bQdWw-1
+X-MC-Unique: wvqDXyISOR6QaU5Bt63vhg-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 207.211.31.81
@@ -115,95 +128,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
- quintela@redhat.com, mst@redhat.com, qemu-devel@nongnu.org,
- dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- jean-philippe@linaro.org, eric.auger.pro@gmail.com
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QPOpEvr5lg28
+X-TUID: gL87bH6vBCWs
 
-Hi Peter,
-
-On 2/3/20 7:19 PM, Peter Xu wrote:
-> On Mon, Feb 03, 2020 at 06:46:36PM +0100, Auger Eric wrote:
->> Hi Peter,
+On 2/4/20 9:53 AM, C=C3=A9dric Le Goater wrote:
+> On 2/3/20 7:09 PM, Guenter Roeck wrote:
+>> Always report 6 bytes of JEDEC data. Fill remaining data with 0.
 >>
->> On 2/3/20 4:19 PM, Peter Xu wrote:
->>> On Mon, Feb 03, 2020 at 03:59:00PM +0100, Auger Eric wrote:
->>>
->>> [...]
->>>
->>>>>> +static void virtio_iommu_detach_endpoint_from_domain(VirtIOIOMMUEndpoint *ep)
->>>>>> +{
->>>>>> +    QLIST_REMOVE(ep, next);
->>>>>> +    g_tree_unref(ep->domain->mappings);
->>>>>
->>>>> Here domain->mapping is unreferenced for each endpoint, while at [1]
->>>>> below you only reference the domain->mappings if it's the first
->>>>> endpoint.  Is that problematic?
->>>> in [1] I take a ref to the domain->mappings if it is *not* the 1st
->>>> endpoint. This aims at deleting the mappings gtree when the last EP is
->>>> detached from the domain.
->>>>
->>>> This fixes the issue reported by Jean in:
->>>> https://patchwork.kernel.org/patch/11258267/#23046313
->>>
->>> Ah OK. :)
->>>
->>> However this is tricky.  How about do explicit g_tree_destroy() in
->>> virtio_iommu_detach() when it's the last endpoint?  I see that you
->>> have:
->>>
->>>     /*
->>>      * when the last EP is detached, simply remove the domain for
->>>      * the domain list and destroy it. Note its mappings were already
->>>      * freed by the ref count mechanism. Next operation involving
->>>      * the same domain id will re-create one domain object.
->>>      */
->>>     if (QLIST_EMPTY(&domain->endpoint_list)) {
->>>         g_tree_remove(s->domains, GUINT_TO_POINTER(domain->id));
->>>     }
->>>
->>> Then it becomes:
->>>
->>>     if (QLIST_EMPTY(&domain->endpoint_list)) {
->>>         g_tree_destroy(domain->mappings);
->>>         g_tree_remove(s->domains, GUINT_TO_POINTER(domain->id));
->>>     }
->>>
->>> And also remove the trick in attach() so you take the domain ref
->>> unconditionally.  Would that work?
->> Yes I think so. On the other hand this ref counting mechanism is also
->> made for that purpose of destroying objects without being forced to
->> explicitly call the destroy function.
-> 
-> IMHO that's two different things.  g_tree_destroy() should be the same
-> as g_tree_unref() here when the tree is empty.  It's really a matter
-> of easy reading of code:
-> 
-> void
-> g_tree_destroy (GTree *tree)
-> {
->   g_return_if_fail (tree != NULL);
-> 
->   g_tree_remove_all (tree);
->   g_tree_unref (tree);
-> }
-> 
-> What we really changed here is to allow the ref/unref to be clearly
-> paired, i.e., for each EP it'll ref once and unref once.  The prvious
-> solution has the trick in that the 1st EP don't ref, the latter EPs
-> ref, and when the domain quits it doesn't unref to match the first
-> ref.  It's error prone to me.  Then, if we can do it in the paired way
-> easily, I don't see why not...
+>> For unsupported commands, keep sending a value of 0 until the chip
+>> is deselected.
+>>
+>> Both changes avoid attempts to decode random commands. Up to now this
+>> happened if the reported Jedec data was shorter than 6 bytes but the
+>> host read 6 bytes, and with all unsupported commands.
+>=20
+> Do you have a concrete example for that ? machine and flash model.
+>=20
+>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+>> ---
+>>   hw/block/m25p80.c | 10 +++++++++-
+>>   1 file changed, 9 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+>> index 63e050d7d3..aca75edcc1 100644
+>> --- a/hw/block/m25p80.c
+>> +++ b/hw/block/m25p80.c
+>> @@ -1040,8 +1040,11 @@ static void decode_new_cmd(Flash *s, uint32_t val=
+ue)
+>>           for (i =3D 0; i < s->pi->id_len; i++) {
+>>               s->data[i] =3D s->pi->id[i];
+>>           }
+>> +        for (; i < SPI_NOR_MAX_ID_LEN; i++) {
+>> +            s->data[i] =3D 0;
+>> +        }
+>=20
+> It seems that data should be reseted in m25p80_cs() also.
 
-OK. I will respin according to your suggestion.
+I am not sure, since a guest can queue various requests in a single=20
+frame. Guenter patch seems correct to me.
 
-Thanks
+All the others uses in decode_new_cmd() fill data[] up to the correct=20
+length, so are safe.
 
-Eric
-> 
-> Thanks,
-> 
+In complete_collecting_data() the access to data[] should be protected=20
+by STATE_COLLECTING_VAR_LEN_DATA (state only changes when enough data).
+
+>>  =20
+>> -        s->len =3D s->pi->id_len;
+>> +        s->len =3D SPI_NOR_MAX_ID_LEN;
+>>           s->pos =3D 0;
+>>           s->state =3D STATE_READING_DATA;
+>>           break;
+>> @@ -1158,6 +1161,11 @@ static void decode_new_cmd(Flash *s, uint32_t val=
+ue)
+>>           s->quad_enable =3D false;
+>>           break;
+>>       default:
+>> +        s->pos =3D 0;
+>> +        s->len =3D 1;
+>> +        s->state =3D STATE_READING_DATA;
+>> +        s->data_read_loop =3D true;
+>> +        s->data[0] =3D 0;
+>>           qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Unknown cmd %x\n", val=
+ue);
+>>           break;
+>>       }
+>>
+>=20
+>=20
 

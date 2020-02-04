@@ -1,85 +1,72 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id c9sm4712061wmc.47.2020.02.04.10.40.34
+        by smtp.gmail.com with ESMTPSA id u8sm5443862wmm.15.2020.02.04.13.45.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Feb 2020 10:40:37 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 60E371FF9B;
-	Tue,  4 Feb 2020 18:40:29 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PULL 11/16] tests/tcg: gate pauth-% tests on having compiler support
-Date: Tue,  4 Feb 2020 18:40:23 +0000
-Message-Id: <20200204184028.13708-12-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200204184028.13708-1-alex.bennee@linaro.org>
-References: <20200204184028.13708-1-alex.bennee@linaro.org>
+        Tue, 04 Feb 2020 13:45:14 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 146C91FF87;
+	Tue,  4 Feb 2020 21:45:12 +0000 (GMT)
+References: <20200114150953.27659-1-alex.bennee@linaro.org>
+ <20200114150953.27659-21-alex.bennee@linaro.org>
+ <2731815f-9a72-390b-0a8e-73b77c4b62b6@linaro.org>
+User-agent: mu4e 1.3.7; emacs 27.0.60
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org
+Subject: Re: [PATCH v5 20/22] tests/tcg/aarch64: add test-sve-ioctl
+ guest-debug test
+In-reply-to: <2731815f-9a72-390b-0a8e-73b77c4b62b6@linaro.org>
+Date: Tue, 04 Feb 2020 21:45:12 +0000
+Message-ID: <87lfpi81sn.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: nLhZfZctNSvK
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 2YdAELBkCP3T
 
-Otherwise we end up failing to build our tests on CI which may have
-older compilers that the user expects. We can get rid of this once we
-can fallback to multiarch containers.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20200203090932.19147-14-alex.bennee@linaro.org>
+Richard Henderson <richard.henderson@linaro.org> writes:
 
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index f6b5121f5ce..d2299b98b76 100644
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -61,7 +61,13 @@ run-memory-replay: memory-replay run-memory-record
- 	   	  $(QEMU_OPTS) memory, \
- 	  "$< on $(TARGET_NAME)")
- 
--run-pauth-3: pauth-3
--pauth-3: CFLAGS += -march=armv8.3-a
-+EXTRA_TESTS+=memory-record memory-replay
- 
--EXTRA_TESTS+=memory-record memory-replay pauth-3
-+ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_3),)
-+pauth-3: CFLAGS += -march=armv8.3-a
-+else
-+pauth-3:
-+	$(call skip-test, "BUILD of $@", "missing compiler support")
-+run-pauth-3:
-+	$(call skip-test, "RUN of pauth-3", "not built")
-+endif
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index efa67cf1e9e..8ed477d0d51 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -18,9 +18,11 @@ run-fcvt: fcvt
- 	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
- 
- # Pauth Tests
-+ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_3),)
- AARCH64_TESTS += pauth-1 pauth-2 pauth-4
- run-pauth-%: QEMU_OPTS += -cpu max
- pauth-%: CFLAGS += -march=armv8.3-a
-+endif
- 
- # Semihosting smoke test for linux-user
- AARCH64_TESTS += semihosting
-diff --git a/tests/tcg/configure.sh b/tests/tcg/configure.sh
-index e0d1fbb182f..9eb6ba3b7ea 100755
---- a/tests/tcg/configure.sh
-+++ b/tests/tcg/configure.sh
-@@ -227,6 +227,10 @@ for target in $target_list; do
-                -march=armv8.1-a+sve -o $TMPE $TMPC; then
-                 echo "CROSS_CC_HAS_SVE=y" >> $config_target_mak
-             fi
-+            if do_compiler "$target_compiler" $target_compiler_cflags \
-+               -march=-march=armv8.3-a -o $TMPE $TMPC; then
-+                echo "CROSS_CC_HAS_ARMV8_3=y" >> $config_target_mak
-+            fi
-         ;;
-     esac
- 
--- 
-2.20.1
+> On 1/14/20 5:09 AM, Alex Benn=C3=A9e wrote:
+>> This test exercises the gdbstub while runing the sve-iotcl test. I
+>> haven't plubmed it into make system as we need a way of verifying if
+>> gdb has the right support for SVE.
+>>=20
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>>=20
+>> ---
+>> v4
+>>   - interrogate ZCR_EL1 directly as no longer have vg
+>
+> Note that ZCR_EL1 does not give you the correct answer if the hypervisor =
+has
+> set ZCR_EL2 to something lower.
+
+Sure - although this is only a user space test so we are not expecting
+shenanigans.
+
+
+> Also, ZCR_EL1 it itself not correct if the
+> hardware does not support all vector sizes.
+>
+> See some of Andrew Jones' qemu command-line work.  Try -cpu max,sve512=3D=
+on and
+> then use the ioctl to set vq to 3 (sve384).  The result will be an effect=
+ive vq
+> of 2 (sve256).
+>
+> We *really* need vg, as computed from sve_zcr_len_for_el().
+
+How come TARGET_PR_SVE_GET_VL is happy to compute directly from ZCR
+then?
+
+I'll put the vg back in but it seemed a little pointless given the
+gdbstub ignores it.
+
+>
+>
+> r~
+
+
+--=20
+Alex Benn=C3=A9e

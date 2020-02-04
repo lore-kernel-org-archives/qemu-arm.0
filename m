@@ -1,81 +1,74 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4684811lfp;
-        Mon, 3 Feb 2020 17:43:44 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwIQlem4XfmVHxLPPh24qO0yaqX77I3xGGmOUmFVlIHrS5APs86hP2BhQuEp9pHOlc5/dX6
-X-Received: by 2002:ac8:3602:: with SMTP id m2mr660701qtb.356.1580780624778;
-        Mon, 03 Feb 2020 17:43:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580780624; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4686681lfp;
+        Mon, 3 Feb 2020 17:46:05 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzSqEFI8SD9AQKYbeUmCzpkx3PVA5yDmkTP0IXsvMUbpBkgMBcMqVrN0GKZOrNtLGpfPD51
+X-Received: by 2002:a37:7005:: with SMTP id l5mr25460035qkc.334.1580780765661;
+        Mon, 03 Feb 2020 17:46:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580780765; cv=none;
         d=google.com; s=arc-20160816;
-        b=a+9lUpO7hQdNOGJMOdkrKvvct+jeoJgt4n7eHzZkeaUaO72SLSWRoKkopgIu/lm+xs
-         7voYfYjv91RGqI1Cb3gmdv4RVg1hAVwAblylLRsV4GQW14DlYvd2/Lo7FUE2flXJjtLE
-         /LUoJPz+dODH9efDlFSgctH3XwMN7lg2Ba6bB2W7dDxlLkVa2r4XZnQQgQ1JbVxlGmUY
-         Y41372zUkmtMgvW354NwlUWrGQMSKDcZXDdjewGot/6IU4etpz2PFPe3/OFhkIrtnrLd
-         uiO6lE5C3bAGVwYQ1jEstyyhU8yAO4Yp3m5U4eFeE+V/GsI49Rrf37/dnlScIyPPdOBG
-         kuIw==
+        b=08H+eBKMxybqd7MxPbHyH8hsZl0zFWJJwlukT7BXgxLcEUWBdV9N0TI8CZCsElnvBA
+         BJlSc8ilwvGnIRoKFlZ/eTThtkBFW38axg282Co8D7rg1c+rdqLmAgSv4nN4os5MIpMC
+         4reOSqwRnVW3IIXDUQAX3+AECYMy5Q7rZKGa5D76PMPkvlBixqvgI3+AtAD3OVRL2AL8
+         3ZKn2vD1LksIRjWrxudiJx02DropbGfbEnE+4cyVB0t8jahI6sUCvEdnesjRzCFf4cUV
+         k04j7Iha09ZBT/1d1n4rK/7rK3ju0+53PFwqbw/QoOpOCJ87UHgWk/fArtfMt2EblUEL
+         N+wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=jz8GbkG0hf9Fu6jFFJ9oPan4XA5qIXTDXOnqfYLEhjQ=;
-        b=mTiP5YvnR3PeBkw4u6MlfTAHnqCi0li+/FPlJuUX0ajxyYSMQTJk1OGNpj+0W/O7Ls
-         Fc+ZMy+dfD+yrW4+E/9YYIJfnLWCb4T14732rqLqUU9m9KHpWTafhqdd9Gmp6NpcqfEI
-         0AXP08FKWlVu+P/w6eqnaAguu5fzkSecJfBK940sVmUZeP0QnVK3xBip0RAahlMID/Ob
-         UUy31AfyRdtSJxmLTEsP8FRdyEqyhWd2Au0MJQzPE8itv7jnw1FGkdzsvn24WIAemrPE
-         0AWzyzOAZFE+UYeTLY8c9xVefwM6m4fiFjRKzvXnUTjYLqF116HSgB3l/HmsVbgEYGtO
-         LXwQ==
+         :mime-version:message-id:date:subject:to:from;
+        bh=IZgGS8qL2BGEX6iTp46kWAcDnDHCG7kZwVpBTlW/xqY=;
+        b=yMsXgNDbABSZrDoQLeQYClQLeuUm642Y/36lF3m2GIRwyWLeDgnMV9dwYV0wsVzNof
+         ZKOtZWGqc6tQk4UdquTtlYDuEk/SnSoXluY5fCOKU50IknJJIu9T0yV9aVRbxnLA8jiV
+         QQ8X90uIQiUg064agWXtC9HIHkS2z+ytZXbkvf4Q+yc1UhVFhAWfJ+OSjnCf0hvIU4NY
+         IHNNyhtkf0Cw+urld/TXsjmV13yY/NN6/bZZOMrg70mO/0PFkfE3ZKIt05JCpaJq99yC
+         REaPh2eMpraLh2xYd2fh1ocWkU+towMB3SEO9zz6wb4dhbHmgCjpC7raDIoHOHwMCuZI
+         jSQg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b25si12011570qtp.12.2020.02.03.17.43.44
+        by mx.google.com with ESMTPS id m4si13014624qtg.24.2020.02.03.17.46.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 17:43:44 -0800 (PST)
+        Mon, 03 Feb 2020 17:46:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49134 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49150 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iynFg-0005v7-7E
-	for alex.bennee@linaro.org; Mon, 03 Feb 2020 20:43:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45332)
+	id 1iynHx-00070A-2r
+	for alex.bennee@linaro.org; Mon, 03 Feb 2020 20:46:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47020)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1iynFX-0005uw-5X
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 20:43:36 -0500
+ (envelope-from <guoheyi@huawei.com>) id 1iynHR-000703-Vt
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 20:45:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1iynFV-0003Iu-Gt
- for qemu-arm@nongnu.org; Mon, 03 Feb 2020 20:43:34 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2749 helo=huawei.com)
+ (envelope-from <guoheyi@huawei.com>) id 1iynHP-0006xG-0k
+ for qemu-arm@nongnu.org; Mon, 03 Feb 2020 20:45:33 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:50634 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1iynFV-00035X-5N; Mon, 03 Feb 2020 20:43:33 -0500
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 7104A1C2F3DB9C057A7D;
- Tue,  4 Feb 2020 09:43:27 +0800 (CST)
-Received: from [127.0.0.1] (10.173.221.228) by DGGEMS401-HUB.china.huawei.com
- (10.3.19.201) with Microsoft SMTP Server id 14.3.439.0;
- Tue, 4 Feb 2020 09:43:20 +0800
-Subject: Re: [PATCH v2 0/7] Some cleanup in arm/virt/acpi
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200203001505.52573-1-guoheyi@huawei.com>
- <20200203014246-mutt-send-email-mst@kernel.org>
- <455d16a4-e7b6-af9b-0b7e-43be70e22f7b@huawei.com>
- <CAFEAcA_g3XXnxiV2O37zpj7gw8For042hg0Vau44qm=ByOuXdw@mail.gmail.com>
+ id 1iynHN-0006rV-5L; Mon, 03 Feb 2020 20:45:30 -0500
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 4631BB1E560719FDA459;
+ Tue,  4 Feb 2020 09:45:24 +0800 (CST)
+Received: from linux-TFkxOR.huawei.com (10.175.104.212) by
+ DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
+ 14.3.439.0; Tue, 4 Feb 2020 09:45:16 +0800
 From: Heyi Guo <guoheyi@huawei.com>
-Message-ID: <32e63add-da4b-ed26-98dc-2ab69f3ab007@huawei.com>
-Date: Tue, 4 Feb 2020 09:43:19 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+To: <qemu-devel@nongnu.org>
+Subject: [PATCH v3 0/7] Some cleanup in arm/virt/acpi
+Date: Tue, 4 Feb 2020 09:43:18 +0800
+Message-ID: <20200204014325.16279-1-guoheyi@huawei.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_g3XXnxiV2O37zpj7gw8For042hg0Vau44qm=ByOuXdw@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-X-Originating-IP: [10.173.221.228]
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.212]
 X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.191
+X-Received-From: 45.249.212.32
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,90 +80,55 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Igor Mammedov <imammedo@redhat.com>, wanghaibin.wang@huawei.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Igor
+ Mammedov <imammedo@redhat.com>, Heyi Guo <guoheyi@huawei.com>,
+ wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gIvDW5qJt378
+X-TUID: lQBALOd0Dfre
 
+Remove conflict _ADR objects, and fix and refine PCI device definition in
+ACPI/DSDT.
 
-=E5=9C=A8 2020/2/3 22:03, Peter Maydell =E5=86=99=E9=81=93:
-> On Mon, 3 Feb 2020 at 13:33, Heyi Guo <guoheyi@huawei.com> wrote:
->>
->> =E5=9C=A8 2020/2/3 14:43, Michael S. Tsirkin =E5=86=99=E9=81=93:
->>> On Mon, Feb 03, 2020 at 08:14:58AM +0800, Heyi Guo wrote:
->>>> Remove conflict _ADR objects, and fix and refine PCI device definiti=
-on in
->>>> ACPI/DSDT.
->>>>
->>>> Cc: Peter Maydell <peter.maydell@linaro.org>
->>>> Cc: "Michael S. Tsirkin" <mst@redhat.com>
->>>> Cc: Igor Mammedov <imammedo@redhat.com>
->>>> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
->>>> Cc: qemu-arm@nongnu.org
->>>> Cc: qemu-devel@nongnu.org
->>> Series
->>>
->>> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
->>>
->>> merge through ARM tree pls.
->> Thanks, Michael :)
->>
->>
->> Hi Peter,
->>
->> Do I need to send v3 to update the commit message of patch 4/7 as
->> Michael suggested?
-> This patchset seems to be corrupt somehow:
->
-> e104462:bionic:qemu$ patches apply -s
-> id:20200203001505.52573-1-guoheyi@huawei.com
-> Applying: bios-tables-test: prepare to change ARM virt ACPI DSDT
-> Applying: arm/virt/acpi: remove meaningless sub device "RP0" from PCI0
-> Applying: arm/virt/acpi: remove _ADR from devices identified by _HID
-> Applying: arm/acpi: fix PCI _PRT definition
-> Applying: arm/acpi: fix duplicated _UID of PCI interrupt link devices
-> Applying: arm/acpi: simplify the description of PCI _CRS
-> Applying: virt/acpi: update golden masters for DSDT update
-> error: corrupt patch at line 68
-> error: could not build fake ancestor
-> hint: Use 'git am --show-current-patch' to see the failed patch
-> Patch failed at 0007 virt/acpi: update golden masters for DSDT update
-> When you have resolved this problem, run "git am --continue".
-> If you prefer to skip this patch, run "git am --skip" instead.
-> To restore the original branch and stop patching, run "git am --abort".
->
-> Patchew didn't like it either:
-> https://patchew.org/QEMU/20200203001505.52573-1-guoheyi@huawei.com/
->
-> I think the problem here is the quoting of the diff in
-> the commit message of patch 7: git am and friends think
-> that is part of the actual patch body and get confused.
-> You might be able to avoid that by not putting the
->    diff --git a/DSDT.dsl.orig b/DSDT.dsl
->    index ed3e5f0fa9..10cf70c886 100644
->    --- a/DSDT.dsl.orig
->    +++ b/DSDT.dsl
->
-> part in the commit message, but I haven't tested that.
->
-> So resending a v4 would probably be a good idea anyway.
+History:
 
-Sorry for trouble. I should have tried locally before sending the patch.
+v3 -> v2:
+- update commit message for patch 4/7.
+- remove diff keywords in commit message of patch 7/7 to avoid applying p=
+atch
+  failure.
 
-Yes, removing the above 4 lines help git am success.
+v1 -> v2:
+- flow the work flow in tests/qtest/bios-table-test.c to post ACPI relate=
+d
+  patches.
+- update commit messages for removing "RP0" and "_ADR".
+- add 3 more cleanup patches.
 
-I'll send a v3.
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Igor Mammedov <imammedo@redhat.com>
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+Cc: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org
 
-Thanks,
+Heyi Guo (7):
+  bios-tables-test: prepare to change ARM virt ACPI DSDT
+  arm/virt/acpi: remove meaningless sub device "RP0" from PCI0
+  arm/virt/acpi: remove _ADR from devices identified by _HID
+  arm/acpi: fix PCI _PRT definition
+  arm/acpi: fix duplicated _UID of PCI interrupt link devices
+  arm/acpi: simplify the description of PCI _CRS
+  virt/acpi: update golden masters for DSDT update
 
-Heyi
+ hw/arm/virt-acpi-build.c          |  25 ++++++-------------------
+ tests/data/acpi/virt/DSDT         | Bin 18462 -> 5307 bytes
+ tests/data/acpi/virt/DSDT.memhp   | Bin 19799 -> 6644 bytes
+ tests/data/acpi/virt/DSDT.numamem | Bin 18462 -> 5307 bytes
+ 4 files changed, 6 insertions(+), 19 deletions(-)
 
->
-> thanks
-> -- PMM
->
-> .
+--=20
+2.19.1
 

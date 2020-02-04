@@ -1,116 +1,82 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4946641lfp;
-        Mon, 3 Feb 2020 22:35:59 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzRr2rMQiX7p2D94MB7x83ehRmRKkAE1SUwueHt1PySHhjv/EHqr4yMwq4v+eSmbWKC930M
-X-Received: by 2002:a0c:bf0b:: with SMTP id m11mr26581059qvi.63.1580798159184;
-        Mon, 03 Feb 2020 22:35:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580798159; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4988510lfp;
+        Mon, 3 Feb 2020 23:16:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxIneEUMcB7lXAFmsk/3Mi6S5I+uZVQPooBxwNKdWbJ2MACZ/qR1mN9bJ92cwuCO13dJmt9
+X-Received: by 2002:a05:620a:133a:: with SMTP id p26mr27590362qkj.50.1580800615832;
+        Mon, 03 Feb 2020 23:16:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580800615; cv=none;
         d=google.com; s=arc-20160816;
-        b=pbkTYS5Ogk+UNJSVCHm/JsPe0qKPx3TOocmmxq2RPXYxqfAsXSYmtg1mGfUn5A+ShR
-         UWT0E4QSymHIjZwhGALINWeG8dnnGEGtxBjSEY82RmKC7ksuPL3A2209Kgk6v0Mnj+5T
-         jSQ/bhoxVYxTjllZHOBzm4nx8X9l2a8PRVBwl6JM6B00FWK3+8REz0HbYxPBupW8MgZw
-         2E0hkh2U7BXC2XQNqI0U8Mvm/SNirLudP98M+pU3B7IJgASmRSt6s7t+HWLoLoJBnWE/
-         CNscl2A5q55UNCQLCg4LPjBluv3pyfPbf9dN88nV4zZOCGq2TGrfMyjv8+H55bI2KQ/B
-         jiUg==
+        b=tobXuVbpretNNTmy9fu7aBWT3CKlokYbAQymmdJ4BayntlRIoR5Se9TqaLA2jg8edf
+         hfd4ewUkKjXqScpG6OAP2c5ZRcIKWPCyDG9pSrXe7Fhd25hqB7HsIZEsQ5ct/QECwbE0
+         dX0fcJo6tGXBcJN8I1uGeQaaT8O6tl/5ZdZcRPGLTK1l41KSRoR2czkICui9UlBlYLhZ
+         BhPtt+qsQl1rIllLsWXd17K0FOpn4DShaJrcsXlUnynTvBdokJ5I31zy/ua+fIa6QnRS
+         ScWDN1V1MQDf4vPjOJ/AY5fiHlOWzUKQMdIEb2CrnwOyd06PCmzLaArZT7UBuwqu4Nui
+         i0Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=wVqf0acbo6uek2evnAMsQCoUgPVt9B9GWsSlHwXLCUo=;
-        b=IDbwv1nDFB+KRiLA/E6XWob465W7r8KwUs/PrASPg2Rw6up1kVUr4R2ypSQ4MxbdID
-         uEgEHAs6igLUYE2+VoE5jloTym4rY2hIDi1VTjYxTSuVea4WS4G4m4zstp+kcHjSm6XV
-         zRx8MZ2tTTzjLUc3MSWXZtWpuQvWb15OPghWXjLEDVnRKvwqo3Kjnu85OyB3OC4CVmsh
-         WUQjyZu49rt3wYq3+fFvW14JRmNOpbFoL8bnkl023qhEUbbDVfQtqD/Ilg7bJsUL2IGm
-         utk5ZkO5t1nE8eAe+F8Rzawn50niiOY4X284IxS8+tEJVW9hvgcUp5XNMCDaem/0XEy1
-         O7qw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=fZzzzvbu5urZKpkZGvMl8aCwQT2cRpyLn+EYMemleFU=;
+        b=twrZJsqCNNg8Ey2wQzU7T9q7HbFsBtgCdX0xiPMshr+dQCkT9NpHmBATRDbVWkQVHX
+         h9i3RcTqu66PqydJe4/3lqKDAvdKwoVaP/YdyJ5GKTyWMGt9FyF8ODpBNHwhChscRn3H
+         xwat28qxfg04M2zdSH4rJ9l3MSJRe0wlGBqyWTEni/Vp/5656lIdFjDvKUiArz8ldwfS
+         Trp2uALdFde63BJmq/LPsfC69HvTVqvfqeb3UHcg4h22+Stda8QuyecZbZjJeyZZsqPP
+         UXoNE+9TwTrO+HkzHWYXW/wMPjgNphoEnfdmYsBI3RYZMJ1QOcvgxKlSz065tBRBS2Vm
+         ULMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZXvgCXEe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n19si13362190qkg.277.2020.02.03.22.35.59
+        by mx.google.com with ESMTPS id w54si13510374qtj.372.2020.02.03.23.16.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Feb 2020 22:35:59 -0800 (PST)
+        Mon, 03 Feb 2020 23:16:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZXvgCXEe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53550 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53838 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iyroU-00017R-DE
-	for alex.bennee@linaro.org; Tue, 04 Feb 2020 01:35:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60378)
+	id 1iysS7-0001QQ-1R
+	for alex.bennee@linaro.org; Tue, 04 Feb 2020 02:16:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42399)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mst@redhat.com>) id 1iyroL-00014h-JM
- for qemu-arm@nongnu.org; Tue, 04 Feb 2020 01:35:50 -0500
+ (envelope-from <clg@kaod.org>) id 1iysRh-0001Pn-9P
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 02:16:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mst@redhat.com>) id 1iyroK-00061m-Ez
- for qemu-arm@nongnu.org; Tue, 04 Feb 2020 01:35:49 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:44029
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <clg@kaod.org>) id 1iysRe-0002nv-Ae
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 02:16:27 -0500
+Received: from 4.mo179.mail-out.ovh.net ([46.105.36.149]:38235)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mst@redhat.com>) id 1iyroK-00061A-AW
- for qemu-arm@nongnu.org; Tue, 04 Feb 2020 01:35:48 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580798148;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wVqf0acbo6uek2evnAMsQCoUgPVt9B9GWsSlHwXLCUo=;
- b=ZXvgCXEeTrPjgyw41paFy6neb9s8DecbXin5JwvbrQ334yd69wH+gnZQbwBYght8U77rWl
- R7IyEFDwlEGfIJUm4qJ47zj6AIw3JwFauteWTePjY0xry2fObSaRY15btld3SSzz8iX2Eh
- 5qXvJRF3kasHRSu3YccoeV2pTIpoPZY=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-307-jaNNK7JgO3-luauLZdZWPA-1; Tue, 04 Feb 2020 01:35:46 -0500
-Received: by mail-qk1-f198.google.com with SMTP id y6so11211774qki.13
- for <qemu-arm@nongnu.org>; Mon, 03 Feb 2020 22:35:46 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=hNAbxjmT3EJKtjyG7rQniLNeqzdU/9mrDavT+lFPQ6o=;
- b=ATQ1BwINLncJoQxgmh2c4WDfFue+OIjOjbrWlzxQEdT5tnBw0kQX1x9yhLBfe0XsMW
- mgIjIQVxcsB0/r0haP6UKaRL/7mviNfw+NBxDZBGjPBdGdumWbKHXbjzAnkhwi0EwJk4
- ze9OWSQYtwCjriB0MRpZX58RyCIzPOHr6BdpWuIiebjGWtUNVXq4zcqeahKAk22S9mzD
- BrgeSzVmnF8rnQE5m7FZjsYIiLHwyKczy1AfN8/3X65m0M7w1LEDKjOnZY+AQF67Pp9r
- eyZRwTB/9nA4+/wDHdHiYvTFQsBMzigb/MYde7jrO/rlfGDYFZC8zCn69bbynPycMAmx
- sjPA==
-X-Gm-Message-State: APjAAAWm6g3taRWldo3M1NmBDwiQxjlKJu/2z6YDE4BSR6arpLMDBcBh
- vkyhQHOh6YCycVgQD2t3Orory0u7aAsMkKTwn3qw+xxNG7fy/L8r5by1/zxBIUqfIZDM0LNT1f4
- j6zxCBnzIR4sX
-X-Received: by 2002:ac8:754e:: with SMTP id b14mr27501062qtr.220.1580798145512; 
- Mon, 03 Feb 2020 22:35:45 -0800 (PST)
-X-Received: by 2002:ac8:754e:: with SMTP id b14mr27501046qtr.220.1580798145302; 
- Mon, 03 Feb 2020 22:35:45 -0800 (PST)
-Received: from redhat.com (bzq-109-64-11-187.red.bezeqint.net. [109.64.11.187])
- by smtp.gmail.com with ESMTPSA id t2sm10394260qkc.31.2020.02.03.22.35.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Feb 2020 22:35:44 -0800 (PST)
-Date: Tue, 4 Feb 2020 01:35:40 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Heyi Guo <guoheyi@huawei.com>
-Subject: Re: [PATCH v3 2/7] arm/virt/acpi: remove meaningless sub device
- "RP0" from PCI0
-Message-ID: <20200204013535-mutt-send-email-mst@kernel.org>
-References: <20200204014325.16279-1-guoheyi@huawei.com>
- <20200204014325.16279-3-guoheyi@huawei.com>
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iysRd-0002Wp-RW
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 02:16:26 -0500
+Received: from player692.ha.ovh.net (unknown [10.110.208.147])
+ by mo179.mail-out.ovh.net (Postfix) with ESMTP id F0CB2158872
+ for <qemu-arm@nongnu.org>; Tue,  4 Feb 2020 08:16:21 +0100 (CET)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player692.ha.ovh.net (Postfix) with ESMTPSA id 96631ED3F18A;
+ Tue,  4 Feb 2020 07:16:10 +0000 (UTC)
+Subject: Re: [PATCH 1/3] m25p80: Convert to support tracing
+To: Guenter Roeck <linux@roeck-us.net>,
+ Alistair Francis <alistair@alistair23.me>
+References: <20200203180904.2727-1-linux@roeck-us.net>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <2dfe10d0-2e67-b83c-92a6-b503ed55ebd7@kaod.org>
+Date: Tue, 4 Feb 2020 08:16:10 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200204014325.16279-3-guoheyi@huawei.com>
-X-MC-Unique: jaNNK7JgO3-luauLZdZWPA-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+In-Reply-To: <20200203180904.2727-1-linux@roeck-us.net>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 1892919220812090336
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrgeekgddutdeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrheiledvrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 46.105.36.149
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -122,50 +88,234 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, wanghaibin.wang@huawei.com
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YH2ceEdPdTVd
+X-TUID: R4vpj7pxAGho
 
-On Tue, Feb 04, 2020 at 09:43:20AM +0800, Heyi Guo wrote:
-> The sub device "RP0" under PCI0 in ACPI/DSDT does not contain any
-> method or property other than "_ADR", so it is safe to remove it.
+On 2/3/20 7:09 PM, Guenter Roeck wrote:
+> While at it, add some trace messages to help debug problems
+> seen when running the latest Linux kernel.
 >=20
-> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
-> Acked-by: "Michael S. Tsirkin" <mst@redhat.com>
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 
 
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+
+We have been chasing a bug for years on the witherspoon-bmc machine=20
+using UBIfs. It will be useful.=20
+
+What kind of issue are you looking at ?=20
+
+Thanks,
+
+C.=20
 
 > ---
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Igor Mammedov <imammedo@redhat.com>
-> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-devel@nongnu.org
-> ---
->  hw/arm/virt-acpi-build.c | 4 ----
->  1 file changed, 4 deletions(-)
+>  hw/block/m25p80.c     | 48 ++++++++++++++++++++-----------------------
+>  hw/block/trace-events | 16 +++++++++++++++
+>  2 files changed, 38 insertions(+), 26 deletions(-)
 >=20
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index bd5f771e9b..9f4c7d1889 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -317,10 +317,6 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemM=
-apEntry *memmap,
->      aml_append(method, aml_return(buf));
->      aml_append(dev, method);
-> =20
-> -    Aml *dev_rp0 =3D aml_device("%s", "RP0");
-> -    aml_append(dev_rp0, aml_name_decl("_ADR", aml_int(0)));
-> -    aml_append(dev, dev_rp0);
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 11ff5b9ad7..63e050d7d3 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -32,17 +32,7 @@
+>  #include "qemu/module.h"
+>  #include "qemu/error-report.h"
+>  #include "qapi/error.h"
 > -
->      Aml *dev_res0 =3D aml_device("%s", "RES0");
->      aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));
->      crs =3D aml_resource_template();
-> --=20
-> 2.19.1
+> -#ifndef M25P80_ERR_DEBUG
+> -#define M25P80_ERR_DEBUG 0
+> -#endif
+> -
+> -#define DB_PRINT_L(level, ...) do { \
+> -    if (M25P80_ERR_DEBUG > (level)) { \
+> -        fprintf(stderr,  ": %s: ", __func__); \
+> -        fprintf(stderr, ## __VA_ARGS__); \
+> -    } \
+> -} while (0)
+> +#include "trace.h"
+> =20
+>  /* Fields for FlashPartInfo->flags */
+> =20
+> @@ -574,7 +564,8 @@ static void flash_erase(Flash *s, int offset, Flash=
+CMD cmd)
+>          abort();
+>      }
+> =20
+> -    DB_PRINT_L(0, "offset =3D %#x, len =3D %d\n", offset, len);
+> +    trace_m25p80_flash_erase(offset, len);
+> +
+>      if ((s->pi->flags & capa_to_assert) !=3D capa_to_assert) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "M25P80: %d erase size not supp=
+orted by"
+>                        " device\n", len);
+> @@ -607,8 +598,7 @@ void flash_write8(Flash *s, uint32_t addr, uint8_t =
+data)
+>      }
+> =20
+>      if ((prev ^ data) & data) {
+> -        DB_PRINT_L(1, "programming zero to one! addr=3D%" PRIx32 "  %"=
+ PRIx8
+> -                   " -> %" PRIx8 "\n", addr, prev, data);
+> +        trace_m25p80_programming_zero_to_one(addr, prev, data);
+>      }
+> =20
+>      if (s->pi->flags & EEPROM) {
+> @@ -662,6 +652,9 @@ static void complete_collecting_data(Flash *s)
+> =20
+>      s->state =3D STATE_IDLE;
+> =20
+> +    trace_m25p80_complete_collecting(s->cmd_in_progress, n, s->ear,
+> +                                     s->cur_addr);
+> +
+>      switch (s->cmd_in_progress) {
+>      case DPP:
+>      case QPP:
+> @@ -825,7 +818,7 @@ static void reset_memory(Flash *s)
+>          break;
+>      }
+> =20
+> -    DB_PRINT_L(0, "Reset done.\n");
+> +    trace_m25p80_reset_done();
+>  }
+> =20
+>  static void decode_fast_read_cmd(Flash *s)
+> @@ -941,9 +934,10 @@ static void decode_qio_read_cmd(Flash *s)
+> =20
+>  static void decode_new_cmd(Flash *s, uint32_t value)
+>  {
+> -    s->cmd_in_progress =3D value;
+>      int i;
+> -    DB_PRINT_L(0, "decoded new command:%x\n", value);
+> +
+> +    s->cmd_in_progress =3D value;
+> +    trace_m25p80_command_decoded(value);
+> =20
+>      if (value !=3D RESET_MEMORY) {
+>          s->reset_enable =3D false;
+> @@ -1042,7 +1036,7 @@ static void decode_new_cmd(Flash *s, uint32_t val=
+ue)
+>          break;
+> =20
+>      case JEDEC_READ:
+> -        DB_PRINT_L(0, "populated jedec code\n");
+> +        trace_m25p80_populated_jedec();
+>          for (i =3D 0; i < s->pi->id_len; i++) {
+>              s->data[i] =3D s->pi->id[i];
+>          }
+> @@ -1063,7 +1057,7 @@ static void decode_new_cmd(Flash *s, uint32_t val=
+ue)
+>      case BULK_ERASE_60:
+>      case BULK_ERASE:
+>          if (s->write_enable) {
+> -            DB_PRINT_L(0, "chip erase\n");
+> +            trace_m25p80_chip_erase();
+>              flash_erase(s, 0, BULK_ERASE);
+>          } else {
+>              qemu_log_mask(LOG_GUEST_ERROR, "M25P80: chip erase with wr=
+ite "
+> @@ -1184,7 +1178,7 @@ static int m25p80_cs(SSISlave *ss, bool select)
+>          s->data_read_loop =3D false;
+>      }
+> =20
+> -    DB_PRINT_L(0, "%sselect\n", select ? "de" : "");
+> +    trace_m25p80_select(select ? "de" : "");
+> =20
+>      return 0;
+>  }
+> @@ -1194,19 +1188,20 @@ static uint32_t m25p80_transfer8(SSISlave *ss, =
+uint32_t tx)
+>      Flash *s =3D M25P80(ss);
+>      uint32_t r =3D 0;
+> =20
+> +    trace_m25p80_transfer(s->state, s->len, s->needed_bytes, s->pos,
+> +                          s->cur_addr, (uint8_t)tx);
+> +
+>      switch (s->state) {
+> =20
+>      case STATE_PAGE_PROGRAM:
+> -        DB_PRINT_L(1, "page program cur_addr=3D%#" PRIx32 " data=3D%" =
+PRIx8 "\n",
+> -                   s->cur_addr, (uint8_t)tx);
+> +        trace_m25p80_page_program(s->cur_addr, (uint8_t)tx);
+>          flash_write8(s, s->cur_addr, (uint8_t)tx);
+>          s->cur_addr =3D (s->cur_addr + 1) & (s->size - 1);
+>          break;
+> =20
+>      case STATE_READ:
+>          r =3D s->storage[s->cur_addr];
+> -        DB_PRINT_L(1, "READ 0x%" PRIx32 "=3D%" PRIx8 "\n", s->cur_addr=
+,
+> -                   (uint8_t)r);
+> +        trace_m25p80_read_byte(s->cur_addr, (uint8_t)r);
+>          s->cur_addr =3D (s->cur_addr + 1) & (s->size - 1);
+>          break;
+> =20
+> @@ -1244,6 +1239,7 @@ static uint32_t m25p80_transfer8(SSISlave *ss, ui=
+nt32_t tx)
+>          }
+> =20
+>          r =3D s->data[s->pos];
+> +        trace_m25p80_read_data(s->pos, (uint8_t)r);
+>          s->pos++;
+>          if (s->pos =3D=3D s->len) {
+>              s->pos =3D 0;
+> @@ -1281,7 +1277,7 @@ static void m25p80_realize(SSISlave *ss, Error **=
+errp)
+>              return;
+>          }
+> =20
+> -        DB_PRINT_L(0, "Binding to IF_MTD drive\n");
+> +        trace_m25p80_binding();
+>          s->storage =3D blk_blockalign(s->blk, s->size);
+> =20
+>          if (blk_pread(s->blk, 0, s->storage, s->size) !=3D s->size) {
+> @@ -1289,7 +1285,7 @@ static void m25p80_realize(SSISlave *ss, Error **=
+errp)
+>              return;
+>          }
+>      } else {
+> -        DB_PRINT_L(0, "No BDRV - binding to RAM\n");
+> +        trace_m25p80_binding_no_bdrv();
+>          s->storage =3D blk_blockalign(NULL, s->size);
+>          memset(s->storage, 0xFF, s->size);
+>      }
+> diff --git a/hw/block/trace-events b/hw/block/trace-events
+> index c03e80c2c9..d052f7578c 100644
+> --- a/hw/block/trace-events
+> +++ b/hw/block/trace-events
+> @@ -134,3 +134,19 @@ xen_block_blockdev_add(char *str) "%s"
+>  xen_block_blockdev_del(const char *node_name) "%s"
+>  xen_block_device_create(unsigned int number) "%u"
+>  xen_block_device_destroy(unsigned int number) "%u"
+> +
+> +# m25p80.c
+> +m25p80_flash_erase(int offset, uint32_t len) "offset =3D 0x%"PRIx32", =
+len =3D %u"
+> +m25p80_programming_zero_to_one(uint32_t addr, uint8_t prev, uint8_t da=
+ta) "programming zero to one! addr=3D0x%"PRIx32"  0x%"PRIx8" -> 0x%"PRIx8
+> +m25p80_reset_done(void) "Reset done."
+> +m25p80_command_decoded(uint32_t cmd) "new command:0x%"PRIx32
+> +m25p80_complete_collecting(uint32_t cmd, int n, uint8_t ear, uint32_t =
+cur_addr) "decode cmd: 0x%"PRIx32" len %d ear 0x%"PRIx8" addr 0x%"PRIx32
+> +m25p80_populated_jedec(void) "populated jedec code"
+> +m25p80_chip_erase(void) "chip erase"
+> +m25p80_select(const char *what) "%sselect"
+> +m25p80_page_program(uint32_t addr, uint8_t tx) "page program cur_addr=3D=
+0x%"PRIx32" data=3D0x%"PRIx8
+> +m25p80_transfer(uint8_t state, uint32_t len, uint8_t needed, uint32_t =
+pos, uint32_t cur_addr, uint8_t t) "Transfer state 0x%"PRIx8" len 0x%"PRI=
+x32" needed 0x%"PRIx8" pos 0x%"PRIx32" addr 0x%"PRIx32" tx 0x%"PRIx8
+> +m25p80_read_byte(uint32_t addr, uint8_t v) "Read byte 0x%"PRIx32"=3D0x=
+%"PRIx8
+> +m25p80_read_data(uint32_t pos, uint8_t v) "Read data 0x%"PRIx32"=3D0x%=
+"PRIx8
+> +m25p80_binding(void) "Binding to IF_MTD drive"
+> +m25p80_binding_no_bdrv(void) "No BDRV - binding to RAM"
+>=20
 

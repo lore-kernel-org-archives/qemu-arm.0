@@ -1,145 +1,131 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5101804lfp;
-        Tue, 4 Feb 2020 01:15:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwgOS/auW/6hB4peszxE+rzK2/81FGIRKILE0RAagdHRZI0KhCdKb+ZkTDSucVXMMHAHs0l
-X-Received: by 2002:aed:24b2:: with SMTP id t47mr27409704qtc.337.1580807731079;
-        Tue, 04 Feb 2020 01:15:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580807731; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5171449lfp;
+        Tue, 4 Feb 2020 02:22:55 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzau+nqvHgpFZKFgEDPTWQholWjXiDX/tdVxx9nJC6rx5MZXyIhKejhkGXbsK8nWg7+F9xs
+X-Received: by 2002:ac8:3673:: with SMTP id n48mr28129378qtb.288.1580811775302;
+        Tue, 04 Feb 2020 02:22:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580811775; cv=none;
         d=google.com; s=arc-20160816;
-        b=TNb2mcJ4r6TTFbQ0pK8BGRlqn6JDh60Po64w2BAjSK0qM9Jh6+oIMUs1ZE+ZQHTknW
-         72iN6FLZNZT+eVNXDYPf768d6s4YO3fScsjtNcp/xT7h6DYDBBBnmlqCM+ghGyvKXxER
-         qlk0+XPoN5TrS6QgxY3SbUmAa0guVv51yIIPu0Wm6TT37UUL8XpflGRBeL4ONqp0JUEm
-         qYNl2QUMxYHqJ4dKuPRyh1CCM3wnjonHQHXihgu9xSTWHjUob+qWZrbsqyRs0HC/WBht
-         LguYaUGOn0FiMUCWQdBL/1jri339pHNEc99S67F24trpHLc48Py1PyAOkJsVkXGZ7FYW
-         Kjeg==
+        b=vDhAs14rFLJDFstFDMUSYN5iWmf8dXQh8yYTC1r932i7ys2/nSE/C90NqFcAZy2BKJ
+         qKBGUuCfjuDQgUM+m7EmqsFVVKF/Mqb+3MQqGw1EQTCgk5iyPN5eWNdiKBnl3lYzBXoS
+         NqJiR9QUBSCnLJWdaXYsfzYd+JDU4IYs3ODnHVtQbUbhpWomz0xWxVFchPztmFuEFK8Y
+         ZYaFwRxz0QdBeo8uryJmqHgUUF/X3psNxQNVrLrqKMl2mhqQsLo+PRfw7Oo7IThBUiTP
+         T18TAxlcPdSrKTCogD61t2eHXShs6HYOh0sNXQs1QTAdsl0OjdHBwejN1/rA1vqehJo3
+         GaWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:user-agent
-         :references:in-reply-to:subject:to:from:dkim-signature;
-        bh=an2Gkp9unIEriLSGyodP//4XJXFL/hL+jhCSDIXSz9U=;
-        b=07zmXR8sR/qCgGEm4nQOqnoffDvsjC3LcfSxWSvyy85W4b7cDysZ6vEt+BeO4q70Ez
-         hEasWBsQ90xogJrO35c7s5RUbb/4WDT/IiTILSMx1OcYUBEAV9egganytnfIxzf4YwvW
-         Nors+Xy5MfQK0r8MXLyWPBEhc91DFtE4R3bOEMTxXYJjQe+2N4HTYKgRPT3jba1RCdZp
-         SQLSVPpYvson392qGAKCkFkeH52LS1T+oohXFGPoJRZC8OBGEKyQvz+7dWa5rPc2tnL2
-         N1fuGSjMwDRYjQT9ixeFiL3FiJ/n3gSJiBa0lylGDj9V1v7Cc3legv/OS8NtBg+k+KDk
-         vtEQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Vib72RK1mz4kVITADDK2FtUXi807Li9E+4tBGQjWb7A=;
+        b=GNSQeHTrMdofFI1WDAM4yrzLllr1bfu5sJ3wDdyTtdguLP5nWC15jeywb9MmE/tekz
+         xT9XwJFCcKFcpPP3ZG4ZYd+no8wXOcRbDIzufhRN+yVJt8lWzIpLHWWwlCzxs6ErUiz6
+         IhIkgNl/g+IXE6JoZD1KQqyRmOztRFXBjuEbC8eHr30JMSerCO4JxkGCEcG58wOFUPaR
+         /QBn8DkYWJvEIudsD64sRjXJCgj0JzHqDnBzbejwUoG7HQRd8LLR6HyikzesthTAKO4K
+         6TTHn+XYbRKKVFZxPYWh0a5t86ICEKxU8iqZda9s64ceN/AixheFhk2PvQ7Jb7iOos17
+         JSPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CqxaqOLi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=DNefLlAW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 127si13746909qkl.279.2020.02.04.01.15.30
+        by mx.google.com with ESMTPS id f26si11082961qtq.59.2020.02.04.02.22.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2020 01:15:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Feb 2020 02:22:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CqxaqOLi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54846 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=DNefLlAW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55816 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iyuIs-0007Si-BO
-	for alex.bennee@linaro.org; Tue, 04 Feb 2020 04:15:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52563)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iyvM6-0004D0-IG
+	for alex.bennee@linaro.org; Tue, 04 Feb 2020 05:22:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49330)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1iyuI2-0006oa-U1
- for qemu-devel@nongnu.org; Tue, 04 Feb 2020 04:14:40 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1iyvLy-0004C4-Mc
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 05:22:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1iyuHz-0003Ki-U1
- for qemu-devel@nongnu.org; Tue, 04 Feb 2020 04:14:36 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:32423
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1iyuHz-0003Cb-NQ
- for qemu-devel@nongnu.org; Tue, 04 Feb 2020 04:14:35 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580807673;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=an2Gkp9unIEriLSGyodP//4XJXFL/hL+jhCSDIXSz9U=;
- b=CqxaqOLiTP0Q6dnxGzLUBsBCzh7cCYAnDb1GusBX03OR6MWVhWzVpTuaTa3aNALiK+/JBE
- Px2M0+5zWIvuYsE11hnfC2yFxULPhTjyo3SqRG4A9xd4amIRaFWTpmy7bUYnNiF/XYOHEO
- p0vlY7Jf2LzEASltgkmu/mFNhIodjRE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-385-GhtMIrN5M6SFCFNClTYhnA-1; Tue, 04 Feb 2020 04:14:32 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F109B801E72;
- Tue,  4 Feb 2020 09:14:30 +0000 (UTC)
-Received: from redhat.com (ovpn-117-28.ams2.redhat.com [10.36.117.28])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 74AD35C1B5;
- Tue,  4 Feb 2020 09:14:27 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
-To: Keqian Zhu <zhukeqian1@huawei.com>
-Subject: Re: [PATCH] migration: Optimization about wait-unplug migration state
-In-Reply-To: <20200204050841.44453-1-zhukeqian1@huawei.com> (Keqian Zhu's
- message of "Tue, 4 Feb 2020 13:08:41 +0800")
-References: <20200204050841.44453-1-zhukeqian1@huawei.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
-Date: Tue, 04 Feb 2020 10:14:24 +0100
-Message-ID: <87blqehfyn.fsf@secure.laptop>
+ (envelope-from <peter.maydell@linaro.org>) id 1iyvLx-0005vo-OO
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 05:22:46 -0500
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:33453)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iyvLx-0005uM-Ig
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 05:22:45 -0500
+Received: by mail-oi1-x244.google.com with SMTP id q81so17968311oig.0
+ for <qemu-arm@nongnu.org>; Tue, 04 Feb 2020 02:22:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Vib72RK1mz4kVITADDK2FtUXi807Li9E+4tBGQjWb7A=;
+ b=DNefLlAWwhN19RdzfL8iKSltIh/MPRMexpZtus9Eh2id9neJUq97bZHGBEvIYDrMxU
+ 2F0dPW8LGEyFPmzlsnPgWjtZ00JVgGB2gOfslw3JmOH3zZlw9w4xcgwfd8HAKo8oMGKR
+ de46S2gvKHljzqLpsMrVahaZhAwpZO7jn+ZMEhFpkCKGK+DTh2W8/QuRfcVqTHJbqiX3
+ w5yUrsrWd3EmWNtocXaHhv91AcsrK7wXqmtY5gA+Ae8Y/v08XyIPBMigUBC6ek1zDC8Q
+ 3Z5/vmYk4nhJSDdUDPmOczUbd/Km20zcOYvumsmX8jgH6JtJO3nREXvg6+0wXFJzk3wC
+ p2gw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Vib72RK1mz4kVITADDK2FtUXi807Li9E+4tBGQjWb7A=;
+ b=tms72avWQihA47DpqZNLvDDksHOlOiO+kt03x943Np6VjDhb6KBdklw/F/RXJkynXo
+ +1Iq8fJgUf+pj96uu4grnjUhVgeDRnqG3m1P9smTziv17ihLPH0NWmdBma21ab/Btulu
+ bUp4/kNDPpMFN2kIbY0oV4mQ8GY1vp1IL8yostc2Nd8Bip/0iuXLLMo2iCPe9r//mpBA
+ wpW3nnkcWlkk7zRBKzhL7VLSmgu7lB7XHsnpyilW5KmMo/Yg/LHwK8qE03YIMNb8Br0b
+ jafwi87wIUDxvFePcEl52szIxDXhXcH6SI0/+/bBu/IOMh/KdO8EGr6J5MD6SETX6kkk
+ BWbw==
+X-Gm-Message-State: APjAAAXg84WnZpnZvDhXvUm7hOTIPmQJlmwpTA0wsbNqggqgeODcfij/
+ 0kZn3sBbwiq7EJBb6hj2TLMVpSlf/VVdENnez6+1lA==
+X-Received: by 2002:aca:b2c5:: with SMTP id b188mr2989706oif.163.1580811764753; 
+ Tue, 04 Feb 2020 02:22:44 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: GhtMIrN5M6SFCFNClTYhnA-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-devel@nongnu.org
+References: <20191219040612.28431-1-gshan@redhat.com>
+ <d972631d-7db7-b6d5-61b8-244ae2c85882@redhat.com>
+ <7f6e29e6-1df9-4513-79ba-b53873b0735e@ozlabs.ru>
+ <544f261e4b9c97f1d3a5fb64cef42ba5@kernel.org>
+ <ff584722-1b51-e538-7c45-c71cdc40105f@redhat.com>
+ <c61c95c434dbcf97a0c946f0993d4843@kernel.org>
+ <8a286e1c-c3f3-3052-e497-d44a90667451@redhat.com>
+In-Reply-To: <8a286e1c-c3f3-3052-e497-d44a90667451@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 4 Feb 2020 10:22:33 +0000
+Message-ID: <CAFEAcA-wKbF7mYToaAsxDxahuJ_X3_i3Z+8DqXmj8mKySmTW7Q@mail.gmail.com>
+Subject: Re: [RFC PATCH] hw/arm/virt: Support NMI injection
+To: Gavin Shan <gshan@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::244
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: quintela@redhat.com
-Cc: jfreimann@redhat.com, wanghaibin.wang@huawei.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yW3g65cdPpn0
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jones <drjones@redhat.com>, jthierry@redhat.com,
+ Alexey Kardashevskiy <aik@ozlabs.ru>, Marc Zyngier <maz@kernel.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Shan Gavin <shan.gavin@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Qcu2zA8ay6NK
 
-Keqian Zhu <zhukeqian1@huawei.com> wrote:
-> qemu_savevm_nr_failover_devices() is originally designed to
-> get the number of failover devices, but it actually returns
-> the number of "unplug-pending" failover devices now. Moreover,
-> what drives migration state to wait-unplug should be the number
-> of "unplug-pending" failover devices, not all failover devices.
->
-> We can also notice that qemu_savevm_state_guest_unplug_pending()
-> and qemu_savevm_nr_failover_devices() is equivalent almost (from
-> the code view). So the latter is incorrect semantically and
-> useless, just delete it.
->
-> In the qemu_savevm_state_guest_unplug_pending(), once hit a
-> unplug-pending failover device, then it can return true right
-> now to save cpu time.
->
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+On Tue, 4 Feb 2020 at 03:51, Gavin Shan <gshan@redhat.com> wrote:
+> Note: I'm still investigating the code to see how SError can be injected when TCG
+> is used. I think we need same function when TCG is enabled, or it's something for
+> future.
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+TCG doesn't currently implement SError -- it could be added, but
+there's a bit of plumbing you'd need to do to get it to work and to
+ensure the exception is taken, routed and masked correctly.
 
-For my reading you are right:
-- 1st function naming is not right
-- 2nd function achieves exactly the same effect
-
-I will wait until Jens says anything, but then I will queue it.
-
-Thanks, Juan.
-
+thanks
+-- PMM

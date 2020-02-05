@@ -1,374 +1,199 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp336465lfp;
-        Wed, 5 Feb 2020 08:57:52 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxCHT6xZpnQB7RNg2Ew9apaha3XbXIRIhv/XDKDGDnkvIbBDDTt9wcbc/40EuteAEMoATh8
-X-Received: by 2002:aed:2510:: with SMTP id v16mr22227565qtc.306.1580921871779;
-        Wed, 05 Feb 2020 08:57:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580921871; cv=none;
-        d=google.com; s=arc-20160816;
-        b=kIseSBmSmSwqII7xSG0+QlFdL6uvlCSmUrTp4xHmJlCNHyWqX5/IXtzVs3lRJ++BQe
-         S0SFsJo+oKRVbCXXJaeIFgxVZuThkKdFLEIHTDyslooP+N6fu2AjqhCkJC5hgf7lwgqg
-         MRbsb4r0+j//dW7BFmssO7Aj3QP0tc+AEwV0EqdIAw0RCp1ABbOmScTJeoj8xHhyLwMj
-         SjbJccxHyoxNcNvPkgU829EKwB5kOwYGJ7x5MbfDGngp7bQjCQG2WXd6zaFFLs8rPqYM
-         zUqP6PK80cpxQjGcyysPhEb5lU/bzBHZTASQp+Hzkw61xWcnkfQzFUZ4tjRLujoOwYTU
-         BgtA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=q5R64kn/7g7Lmh7xUx7tjk99kqyaVeBrNk0DtsZC558=;
-        b=zacBTAaM9Dt1mlZmFJVeeLRpiwfD3ha6xSLKPO7BdQMNV4RaMP+7MfLCCamHnQF5vW
-         E4UTlbXwuzzuZolQ0Cmo97OBnQX1cKYJZ6vLRzdm76GjkfqMVpsOVVELhxl9p/gPXZ5P
-         I4PJAuzhMscIAe/OpItmfTxhQGj21CLEzwIdl43nso7TEwHCKQgkj0ZaE1SDR9lsjucG
-         c0WahZ74d9MRmqNoOCTB2FYv16XNsGGHtEQeyBN0gbjm2cv6l+RSNMWD3Cw/jfYzFADN
-         ZXLt6Y59zNE01DEfjZdEVcQJtd5amljJEC0k4zyG8QocY1ZUmPKR56CfpbnMXcKm7At5
-         +4bQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=ZP0c1wy0;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id k10si49642qtp.358.2020.02.05.08.57.51;
-        Wed, 05 Feb 2020 08:57:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
-Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=ZP0c1wy0;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 75D074A524;
-	Wed,  5 Feb 2020 11:57:51 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZJybzkwFO-eZ; Wed,  5 Feb 2020 11:57:50 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1D4BE4A536;
-	Wed,  5 Feb 2020 11:57:50 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 0C7404A51F
- for <kvmarm@lists.cs.columbia.edu>; Wed,  5 Feb 2020 11:57:49 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6z84lyXAF8bu for <kvmarm@lists.cs.columbia.edu>;
- Wed,  5 Feb 2020 11:57:47 -0500 (EST)
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [207.211.31.120])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id CF4E24A483
- for <kvmarm@lists.cs.columbia.edu>; Wed,  5 Feb 2020 11:57:47 -0500 (EST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580921867;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SiYlUJigP5VTtHJmMRlvP/w8KjSCeSJJEvTgJ9n810A=;
- b=ZP0c1wy0ApycWdaO3KObDIWveKV120/t56KadK9WLZEvXvA+SrVJu9wj1xUUcg094EfB9x
- OTCv+gIw+RRoyXhi5rXx7NcuhupfMqUBeENgYNWebuldvw01UIidhxA46oERAEYMWi27An
- hrol72ggs54x+tUYUVUnH2Wiz5lUVSs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-375-qOwDMK6ZMAqpfYoFEyOA5w-1; Wed, 05 Feb 2020 11:57:45 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B7F71DB60;
- Wed,  5 Feb 2020 16:57:43 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 00F1C8DC13;
- Wed,  5 Feb 2020 16:57:41 +0000 (UTC)
-Date: Wed, 5 Feb 2020 17:57:39 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Beata Michalska <beata.michalska@linaro.org>
-Subject: Re: [PATCH v2 2/2] target/arm: kvm: Handle DABT with no valid ISS
-Message-ID: <20200205165739.2jkklbpmy3yrdq3q@kamzik.brq.redhat.com>
-References: <20200129202441.12745-1-beata.michalska@linaro.org>
- <20200129202441.12745-3-beata.michalska@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id t1sm208248wma.43.2020.02.05.09.10.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 05 Feb 2020 09:10:39 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id B74201FF9A;
+	Wed,  5 Feb 2020 17:10:32 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: richard.henderson@linaro.org,
+	alan.hayward@arm.com,
+	luis.machado@linaro.org,
+	damien.hedde@greensocs.com,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH  v6 10/22] target/arm: prepare for multiple dynamic XMLs
+Date: Wed,  5 Feb 2020 17:10:19 +0000
+Message-Id: <20200205171031.22582-11-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200205171031.22582-1-alex.bennee@linaro.org>
+References: <20200205171031.22582-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20200129202441.12745-3-beata.michalska@linaro.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: qOwDMK6ZMAqpfYoFEyOA5w-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, pbonzini@redhat.com,
- kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: SFQAAJ/Od9hc
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: hThpoc+4Ehbc
 
-On Wed, Jan 29, 2020 at 08:24:41PM +0000, Beata Michalska wrote:
-> On ARMv7 & ARMv8 some load/store instructions might trigger a data abort
-> exception with no valid ISS info to be decoded. The lack of decode info
-> makes it at least tricky to emulate those instruction which is one of the
-> (many) reasons why KVM will not even try to do so.
-> 
-> Add support for handling those by requesting KVM to inject external
-> dabt into the quest.
-> 
-> Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
-> ---
->  target/arm/cpu.h     |  2 ++
->  target/arm/kvm.c     | 96 ++++++++++++++++++++++++++++++++++++++++++++++++++++
->  target/arm/kvm32.c   |  3 ++
->  target/arm/kvm64.c   |  3 ++
->  target/arm/kvm_arm.h | 19 +++++++++++
->  5 files changed, 123 insertions(+)
-> 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index c1aedbe..e04a8d3 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -558,6 +558,8 @@ typedef struct CPUARMState {
->          uint8_t has_esr;
->          uint64_t esr;
->      } serror;
-> +    /* Status field for pending external dabt */
-> +    uint8_t ext_dabt_pending;
->  
->      /* State of our input IRQ/FIQ/VIRQ/VFIQ lines */
->      uint32_t irq_line_state;
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 8d82889..e7bc9b7 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -37,6 +37,7 @@ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
->  
->  static bool cap_has_mp_state;
->  static bool cap_has_inject_serror_esr;
-> +static bool cap_has_inject_ext_dabt; /* KVM_CAP_ARM_INJECT_EXT_DABT */
+We will want to generate similar dynamic XML for gdbstub support of
+SVE registers (the upstream doesn't use XML). To that end lightly
+rename a few things to make the distinction.
 
-nit: the KVM_CAP_ARM_INJECT_EXT_DABT comment is unnecessary
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.h     | 20 +++++++++++++-------
+ target/arm/gdbstub.c | 30 +++++++++++++++---------------
+ target/arm/helper.c  |  4 ++--
+ 3 files changed, 30 insertions(+), 24 deletions(-)
 
->  
->  static ARMHostCPUFeatures arm_host_cpu_features;
->  
-> @@ -62,6 +63,12 @@ void kvm_arm_init_serror_injection(CPUState *cs)
->                                      KVM_CAP_ARM_INJECT_SERROR_ESR);
->  }
->  
-> +void kvm_arm_init_ext_dabt_injection(CPUState *cs)
-> +{
-> +    cap_has_inject_ext_dabt = kvm_check_extension(cs->kvm_state,
-> +                                    KVM_CAP_ARM_INJECT_EXT_DABT);
-> +}
-> +
->  bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
->                                        int *fdarray,
->                                        struct kvm_vcpu_init *init)
-> @@ -216,6 +223,11 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
->          ret = -EINVAL;
->      }
->  
-> +    if (kvm_check_extension(s, KVM_CAP_ARM_NISV_TO_USER))
-> +        if (kvm_vm_enable_cap(s, KVM_CAP_ARM_NISV_TO_USER, 0)) {
-> +            warn_report("Failed to enable DABT NISV cap");
-> +        }
-> +
-
-Missing {} around the outer block.
-
-As KVM_CAP_ARM_INJECT_EXT_DABT is a VM capability then I think we should
-set cap_has_inject_ext_dabt here, like cap_has_mp_state gets set. I see
-you've followed the pattern used for cap_has_inject_serror_esr, but that
-looks wrong too since KVM_CAP_ARM_INJECT_SERROR_ESR is also a VM
-capability. The way it is now we just keep setting
-cap_has_inject_serror_esr to the same value, NR_VCPUS times.
-
->      return ret;
->  }
->  
-> @@ -598,6 +610,10 @@ int kvm_put_vcpu_events(ARMCPU *cpu)
->          events.exception.serror_esr = env->serror.esr;
->      }
->  
-> +    if (cap_has_inject_ext_dabt) {
-> +        events.exception.ext_dabt_pending = env->ext_dabt_pending;
-> +    }
-> +
->      ret = kvm_vcpu_ioctl(CPU(cpu), KVM_SET_VCPU_EVENTS, &events);
->      if (ret) {
->          error_report("failed to put vcpu events");
-> @@ -627,6 +643,8 @@ int kvm_get_vcpu_events(ARMCPU *cpu)
->      env->serror.has_esr = events.exception.serror_has_esr;
->      env->serror.esr = events.exception.serror_esr;
->  
-> +    env->ext_dabt_pending = events.exception.ext_dabt_pending;
-> +
-
-afaict from Documentation/virt/kvm/api.txt and the KVM code you cannot
-get this state. Therefore the above line (and extra stray blank line)
-should be dropped.
-
->      return 0;
->  }
->  
-> @@ -634,6 +652,7 @@ void kvm_arch_pre_run(CPUState *cs, struct kvm_run *run)
->  {
->  }
->  
-> +
-
-stray blank line
-
->  MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
->  {
->      ARMCPU *cpu;
-> @@ -699,6 +718,11 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
->              ret = EXCP_DEBUG;
->          } /* otherwise return to guest */
->          break;
-> +    case KVM_EXIT_ARM_NISV:
-> +        /* External DABT with no valid iss to decode */
-> +        ret = kvm_arm_handle_dabt_nisv(cs, run->arm_nisv.esr_iss,
-> +                                       run->arm_nisv.fault_ipa);
-> +        break;
->      default:
->          qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
->                        __func__, run->exit_reason);
-> @@ -833,3 +857,75 @@ int kvm_arch_msi_data_to_gsi(uint32_t data)
->  {
->      return (data - 32) & 0xffff;
->  }
-> +
-> +int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
-> +                             uint64_t fault_ipa)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(cs);
-> +    CPUARMState *env = &cpu->env;
-> +    uint32_t ins, ins_fetched;
-
-ins_fetched is a bool
-
-> +
-> +    /*
-> +     * Hacky workaround for kernels that for aarch32 guests, instead of expected
-> +     * external data abort, inject the IMPLEMENTATION DEFINED exception with the
-> +     * lock-down. This is actually handled by the guest which results in
-> +     * re-running the faulting instruction.
-> +     * This intends to break the vicious cycle.
-> +     */
-
-This doesn't seem like the right thing to do. What happens on real
-hardware in this case? If an OS would get into a "vicious cycle" on
-real hardware then it should get into one on KVM too.
-
-> +    if (!is_a64(env)) {
-> +        static uint8_t setback;
-> +
-> +        /*
-> +         * The state has not been synchronized yet, so if this is re-occurrence
-> +         * of the same abort triggered by guest, the status for pending external
-> +         * abort should not get cleared yet
-> +         */
-> +        if (unlikely(env->ext_dabt_pending)) {
-> +            if (setback) {
-> +                error_report("Most probably triggered kernel issue with"
-> +                             " injecting external data abort.");
-> +                error_printf("Giving up trying ...\n");
-> +                /* Here is where the fun comes to an end */
-> +                return -EINVAL;
-> +            }
-> +        }
-> +        setback = env->ext_dabt_pending;
-> +    }
-> +
-> +    kvm_cpu_synchronize_state(cs);
-> +   /*
-> +    * ISS [23:14] is invalid so there is a limited info
-> +    * on what has just happened so the only *useful* thing that can
-> +    * be retrieved from ISS is WnR & DFSC (though in some cases WnR
-> +    * might be less of a value as well)
-> +    */
-> +
-> +    /*
-> +     * Get current PC before it will get updated to exception vector entry
-> +     */
-> +    target_ulong ins_addr = is_a64(env) ? env->pc : env->regs[15];
-
-ins_addr should be declared above
-
-But what are we doing? pc is a guest virtual address. Oh, I see...
-
-> +
-> +    /*
-> +     * Get the faulting instruction
-> +     * Instructions have a fixed length of 32 bits
-> +     * and are always little-endian
-> +     */
-> +    ins_fetched = !cpu_memory_rw_debug(cs, ins_addr, (uint8_t *) &ins,
-> +                                       sizeof(uint32_t), 0);
-
-... we're trying to actual walk the KVM guest's page tables. That
-seems a bit odd, and the "_debug" function name used for it makes
-it seem even more odd.
-
-> +
-> +    error_report("Data abort exception with no valid ISS generated by "
-> +                 "guest memory access at physical address: 0x" TARGET_FMT_lx,
-> +                 (target_ulong)fault_ipa);
-> +
-> +    error_printf(ins_fetched ? "%s : 0x%" PRIx32 " (ins encoded)\n"  : "%s\n",
-> +                 "KVM unable to emulate faulting instruction",
-> +                 (!ins_fetched ? 0 : ldl_le_p(&ins)));
-> +    error_printf("Injecting a data abort exception into guest.\n");
-
-The guest shouldn't be able to generate three lines of errors on the host
-whenever it wants. That's a security bug. One trace point here seems like
-the most we should do. Or, after these three lines we should kill the
-guest.
-
-Actually, I don't think we should attempt to get the instruction at all.
-We should do what the KVM documenation suggests we do when we get
-this exit. We should either do a user selected action: one of suspend,
-dump, restart, or inject a dabt (as is done below). The last choice hopes
-that the guest will handle it in some graceful way, or that it'll crash
-with all the information needed for a post-mortem crash investigation.
-
-And I don't think we should do the "very brave" option of trying to
-emulate the instruction, even if we identify it as a valid MMIO address.
-That just sounds like a huge can of worms.
-
-Does QEMU already have a way for users to select a
-don't-know-how-to-handle-guest-exception behavior?
-
-> +    /*
-> +     * Set pending ext dabt and trigger SET_EVENTS so that
-> +     * KVM can inject the abort
-> +     */
-> +    env->ext_dabt_pending = 1;
-> +
-> +    return 0;
-> +}
-
-Thanks,
-drew
-
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index d8464dcff63..d58cb505ee8 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -128,14 +128,20 @@ enum {
+ /**
+  * DynamicGDBXMLInfo:
+  * @desc: Contains the XML descriptions.
+- * @num_cpregs: Number of the Coprocessor registers seen by GDB.
+- * @cpregs_keys: Array that contains the corresponding Key of
+- * a given cpreg with the same order of the cpreg in the XML description.
++ * @num: Number of the registers in this XML seen by GDB.
++ * @data: A union with data specific to the set of registers
++ *    @cpregs_keys: Array that contains the corresponding Key of
++ *                  a given cpreg with the same order of the cpreg
++ *                  in the XML description.
+  */
+ typedef struct DynamicGDBXMLInfo {
+     char *desc;
+-    int num_cpregs;
+-    uint32_t *cpregs_keys;
++    int num;
++    union {
++        struct {
++            uint32_t *keys;
++        } cpregs;
++    } data;
+ } DynamicGDBXMLInfo;
+ 
+ /* CPU state for each instance of a generic timer (in cp15 c14) */
+@@ -748,7 +754,7 @@ struct ARMCPU {
+     uint64_t *cpreg_vmstate_values;
+     int32_t cpreg_vmstate_array_len;
+ 
+-    DynamicGDBXMLInfo dyn_xml;
++    DynamicGDBXMLInfo dyn_sysreg_xml;
+ 
+     /* Timers used by the generic (architected) timer */
+     QEMUTimer *gt_timer[NUM_GTIMERS];
+@@ -967,7 +973,7 @@ int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+ /* Dynamically generates for gdb stub an XML description of the sysregs from
+  * the cp_regs hashtable. Returns the registered sysregs number.
+  */
+-int arm_gen_dynamic_xml(CPUState *cpu);
++int arm_gen_dynamic_sysreg_xml(CPUState *cpu);
+ 
+ /* Returns the dynamically generated XML for the gdb stub.
+  * Returns a pointer to the XML contents for the specified XML file or NULL
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 4557775d245..1f68ab98c3b 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -106,15 +106,15 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+     return 0;
+ }
+ 
+-static void arm_gen_one_xml_reg_tag(GString *s, DynamicGDBXMLInfo *dyn_xml,
+-                                    ARMCPRegInfo *ri, uint32_t ri_key,
+-                                    int bitsize)
++static void arm_gen_one_xml_sysreg_tag(GString *s, DynamicGDBXMLInfo *dyn_xml,
++                                       ARMCPRegInfo *ri, uint32_t ri_key,
++                                       int bitsize)
+ {
+     g_string_append_printf(s, "<reg name=\"%s\"", ri->name);
+     g_string_append_printf(s, " bitsize=\"%d\"", bitsize);
+     g_string_append_printf(s, " group=\"cp_regs\"/>");
+-    dyn_xml->num_cpregs++;
+-    dyn_xml->cpregs_keys[dyn_xml->num_cpregs - 1] = ri_key;
++    dyn_xml->data.cpregs.keys[dyn_xml->num] = ri_key;
++    dyn_xml->num++;
+ }
+ 
+ static void arm_register_sysreg_for_xml(gpointer key, gpointer value,
+@@ -126,12 +126,12 @@ static void arm_register_sysreg_for_xml(gpointer key, gpointer value,
+     GString *s = param->s;
+     ARMCPU *cpu = ARM_CPU(param->cs);
+     CPUARMState *env = &cpu->env;
+-    DynamicGDBXMLInfo *dyn_xml = &cpu->dyn_xml;
++    DynamicGDBXMLInfo *dyn_xml = &cpu->dyn_sysreg_xml;
+ 
+     if (!(ri->type & (ARM_CP_NO_RAW | ARM_CP_NO_GDB))) {
+         if (arm_feature(env, ARM_FEATURE_AARCH64)) {
+             if (ri->state == ARM_CP_STATE_AA64) {
+-                arm_gen_one_xml_reg_tag(s , dyn_xml, ri, ri_key, 64);
++                arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 64);
+             }
+         } else {
+             if (ri->state == ARM_CP_STATE_AA32) {
+@@ -140,30 +140,30 @@ static void arm_register_sysreg_for_xml(gpointer key, gpointer value,
+                     return;
+                 }
+                 if (ri->type & ARM_CP_64BIT) {
+-                    arm_gen_one_xml_reg_tag(s , dyn_xml, ri, ri_key, 64);
++                    arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 64);
+                 } else {
+-                    arm_gen_one_xml_reg_tag(s , dyn_xml, ri, ri_key, 32);
++                    arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 32);
+                 }
+             }
+         }
+     }
+ }
+ 
+-int arm_gen_dynamic_xml(CPUState *cs)
++int arm_gen_dynamic_sysreg_xml(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+     GString *s = g_string_new(NULL);
+     RegisterSysregXmlParam param = {cs, s};
+ 
+-    cpu->dyn_xml.num_cpregs = 0;
+-    cpu->dyn_xml.cpregs_keys = g_new(uint32_t, g_hash_table_size(cpu->cp_regs));
++    cpu->dyn_sysreg_xml.num = 0;
++    cpu->dyn_sysreg_xml.data.cpregs.keys = g_new(uint32_t, g_hash_table_size(cpu->cp_regs));
+     g_string_printf(s, "<?xml version=\"1.0\"?>");
+     g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+     g_string_append_printf(s, "<feature name=\"org.qemu.gdb.arm.sys.regs\">");
+     g_hash_table_foreach(cpu->cp_regs, arm_register_sysreg_for_xml, &param);
+     g_string_append_printf(s, "</feature>");
+-    cpu->dyn_xml.desc = g_string_free(s, false);
+-    return cpu->dyn_xml.num_cpregs;
++    cpu->dyn_sysreg_xml.desc = g_string_free(s, false);
++    return cpu->dyn_sysreg_xml.num;
+ }
+ 
+ const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
+@@ -171,7 +171,7 @@ const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
+     ARMCPU *cpu = ARM_CPU(cs);
+ 
+     if (strcmp(xmlname, "system-registers.xml") == 0) {
+-        return cpu->dyn_xml.desc;
++        return cpu->dyn_sysreg_xml.desc;
+     }
+     return NULL;
+ }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index f6df3735e95..f05bd2fc769 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -207,7 +207,7 @@ static int arm_gdb_get_sysreg(CPUARMState *env, GByteArray *buf, int reg)
+     const ARMCPRegInfo *ri;
+     uint32_t key;
+ 
+-    key = cpu->dyn_xml.cpregs_keys[reg];
++    key = cpu->dyn_sysreg_xml.data.cpregs.keys[reg];
+     ri = get_arm_cp_reginfo(cpu->cp_regs, key);
+     if (ri) {
+         if (cpreg_field_is_64bit(ri)) {
+@@ -7141,7 +7141,7 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+                                  19, "arm-vfp.xml", 0);
+     }
+     gdb_register_coprocessor(cs, arm_gdb_get_sysreg, arm_gdb_set_sysreg,
+-                             arm_gen_dynamic_xml(cs),
++                             arm_gen_dynamic_sysreg_xml(cs),
+                              "system-registers.xml", 0);
+ }
+ 
+-- 
+2.20.1

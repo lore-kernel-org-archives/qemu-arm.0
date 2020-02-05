@@ -1,115 +1,129 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6494025lfp;
-        Wed, 5 Feb 2020 02:19:11 -0800 (PST)
-X-Received: by 2002:adf:ce87:: with SMTP id r7mr27512952wrn.245.1580897951037;
-        Wed, 05 Feb 2020 02:19:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580897951; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp11392lfp;
+        Wed, 5 Feb 2020 03:49:24 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz2pkxcMlDZZZYAHoPqGQ3DhtaO1n/tl8GnSQjk9PgjTq4SMYordQrglb7tcWu+PHsnV/Gk
+X-Received: by 2002:a17:906:ecea:: with SMTP id qt10mr30484259ejb.235.1580903364368;
+        Wed, 05 Feb 2020 03:49:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580903364; cv=none;
         d=google.com; s=arc-20160816;
-        b=AcXAUanRg3mntevJMNixbBZU+sM2G60xc4M/GU+FE98QrJga91rYXmaJJxRo7DkUPM
-         RBHZ2rThfpYIG/lYzEeoE165Axd0IMFBTyEuWHfD/PqmzN5K0Y2S3w5UMaDrvbYMlnpN
-         vAYBw2/4/9FlsEcoEIToiPUZdeQFgFpj91xHHAvanr446mu1YNNK05JfLx/nL1dX7G0m
-         GcWhkmIMxN2YDaA2GcpgM50jH/OVo5g9uTB2OlRES6M9IznXlXMsX4eBo2j/CeQ7TIci
-         rrjm3xVNu5yhlvXeCPCLj9MHZoIU3ljMaL3YLs5otob75pbR5Nbtu4reQ/nEKatBV90k
-         EA3A==
+        b=AIJ/6SM2aRG2t5GmwgDMPrkPlFO2I6PeyhsXmV3e0GUYlrbDqG1a23SvPtl7aGk0GF
+         y+9L86TU9bTfe6b1N3ReMGQUtTr+cyhXmS5xj6htd2MrTjMIq/VBX39ORhNZMdsTqty/
+         uk7OXJvMw51HZ0iO9dgQpQgK3VTpJOpS+EnnGltUt2SJSMKsoZaKoCY19Vaq2cTV35UN
+         hURPaB4CwsGRLCbGhgz1exoMVF+eVv9voi02viP0HgwIHo3a7IWvocRyABRyzTwqV3Mh
+         vciXp6p+zJZOpP9oCwFSo1XdydQeBXblbXHX34eRMyub+kT7AbRURfqMBiKgSl31AzEE
+         Wr1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        h=content-disposition:content-transfer-encoding:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=cheKAPsPgiaBJIzhq1a63cWBr231jEjpWu3kGAqeVc8=;
-        b=B7o4DR9VRPBEC+UvNdkAIcKg3VSqX3aepzWx9ACpKhP4zMil5Bu7A7O59Y4jc3LlZk
-         ALTCylxNau0g7m56FrZedwV0OOyk9GeewGZM+MqmLINsB7YJNw/5uiZb332nCUcbuPx3
-         8IXEFCcPcI5ZARZYNmBgMSnpMCj9CE02GbUAT7fhUGOuKZLYxc8RJq4pn9gMGLO6s7mU
-         TgfwgOXNXj9NNmRaBjOjEe70GbZ0bMV2eb2LMPEYnnVre89dBVRm2zkKN/8rO58aHyBv
-         mKpTTupcdoHdXULVjGaqIcD2UW15xk6N87azC0PqNP0vuLNgfSMqUcG4lf7OBHMez/GP
-         fc+w==
+        bh=E3oNQ+/2T7H98hfraWv9Amzyk0TgfOqvhSof9Y4rL9M=;
+        b=JP58BXeNL3T/HMj5nlFExkfiOr0hhph5MuNRJt8HxUCm7uJo3ZFOQWmjgl8MPmLn6y
+         Z09Z5Liakk58WLOvZk/Mjm4AdVaT7ndm8qqbUSSHHR1fLFNKJyPnxLy2Gg6V/bLig0Cl
+         JOpAT9+d9a7f1+ilh0zLpEdpE8gJp/8vZC0wtaKyR9GiVpApwxE0hHP/2wjDxvQ2iB0o
+         ZGc1enRNGXZi3iLGlWmTs328OAxvhEPpXvn8PWIv8rxseRz+mmME9za3AjzOXUfNbyut
+         AId7zhh+fSozHgi1pnFkRf0aeTp2tK6wTJrTLqfx2qZuAUXtzFFS9YIDAE5fZ+ecBgcV
+         4rLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s4QBuU6E;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id t12sor3722900wmj.11.2020.02.05.02.19.10
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cjWL46i9;
+       spf=pass (google.com: domain of drjones@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by mx.google.com with ESMTPS id pw7si13654426ejb.321.2020.02.05.03.49.24
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 05 Feb 2020 02:19:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 05 Feb 2020 03:49:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s4QBuU6E;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=cheKAPsPgiaBJIzhq1a63cWBr231jEjpWu3kGAqeVc8=;
-        b=s4QBuU6EEzgY6T/cy6w8iECthSNEHJckwyExzoY2T4Ml1v6jtAVrtmM9KkSQjmogbW
-         j9xTpwlpqwbiBum7JZfQHMVgwFP/2YN87AS7ABFIt1Wu7w7V+5deA3EbBMiAe2byNX7n
-         NerVI9NpgpOWlFk4JZX0do0Lynvd7l0UxOVxxmNUaEN9r8iz3lfyiS2FVecNSlRB8ScD
-         QIQDJVcWkhGJVSWoWInn9fW1BuQgpjLydfftGf6Wt543swhuvfZFE6GifQZzI/N6cusM
-         ZETv3nPU4oABCynatusWfApmxiRq5ahrwZ9vrugYlaU6wEA7/pYaI8DZAuswOJ80dXyl
-         Bx8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=cheKAPsPgiaBJIzhq1a63cWBr231jEjpWu3kGAqeVc8=;
-        b=TXbPTA8nccbtfEq40CM+Mtf8BfzdZAecGzLYF3zbEW71Otx3hWOnNe3lYt6UrXGio9
-         4Zlw/c+OOwfUnvuFrFkD8PxOF6rZxyRP1atunbq4FqDgQ+e++8GlHcJq9cx4zckKhUZi
-         abRd+MUKvMQPFdeUtj4psjyGGKbA5ALBGrGWdlgw/vJ2uI3k1dFkVzCxwR64YczBZdN9
-         qr53zR+3Y4NM2wqZZzaBCZUz+TlAYeVD8asxefAZP47u47jJ7xvSoepEr16xLNKZbjW8
-         E8KSehLq4uVJi9Tmmqcd/BmhjtFXYKdKQgR/vL0AXeVx9WvgiM1Zk7+c4iJMmjfdERa2
-         k2ag==
-X-Gm-Message-State: APjAAAXhc0Gdt459BvbIS/Pz7+l8kDuqlyccIqEMtdy+9T83aL97B7KB
-	m4bT+dfM1ljYL7VCFIwQMr/XiMu2wbqPzFbD
-X-Google-Smtp-Source: APXvYqzS6N41oLXqSKUb5BITACNMA0uXEY14OATW2UonILjtqc6AtJciBlYwL9VTjxd0Ief1Dy5WAg==
-X-Received: by 2002:a7b:c14e:: with SMTP id z14mr4850483wmi.58.1580897950601;
-        Wed, 05 Feb 2020 02:19:10 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [172.27.246.193] ([212.187.182.166])
-        by smtp.gmail.com with ESMTPSA id g18sm7273906wmh.48.2020.02.05.02.19.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 05 Feb 2020 02:19:09 -0800 (PST)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cjWL46i9;
+       spf=pass (google.com: domain of drjones@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1580903363;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=E3oNQ+/2T7H98hfraWv9Amzyk0TgfOqvhSof9Y4rL9M=;
+	b=cjWL46i9yHP7PLvXx221ucieJzl/roD4okFJG/LJt3pr31d4eG2ZtWJPDYHKRZnKuI+OVY
+	RMKgT9MQM+CnK70sTFRCUTPvgjS4qIBWyngDjw6sazHClna9JFDgRbtDVIXCcHLedM+tnA
+	yG3MZllrXLvESIUMoZT/5TeWbkcgPXo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-403-zZ6xp8C1NEO6iJCzl5CUGQ-1; Wed, 05 Feb 2020 06:49:19 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 66486800D54;
+	Wed,  5 Feb 2020 11:49:18 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2B4F25C1B2;
+	Wed,  5 Feb 2020 11:49:17 +0000 (UTC)
+Date: Wed, 5 Feb 2020 12:49:14 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
 Subject: Re: [PATCH v5 20/22] tests/tcg/aarch64: add test-sve-ioctl
  guest-debug test
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
+Message-ID: <20200205114914.heuaamk4sw2ndopw@kamzik.brq.redhat.com>
 References: <20200114150953.27659-1-alex.bennee@linaro.org>
  <20200114150953.27659-21-alex.bennee@linaro.org>
- <2731815f-9a72-390b-0a8e-73b77c4b62b6@linaro.org> <87lfpi81sn.fsf@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <a361a310-f6f8-9c17-6846-64e9f0b189f2@linaro.org>
-Date: Wed, 5 Feb 2020 10:19:08 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ <2731815f-9a72-390b-0a8e-73b77c4b62b6@linaro.org>
+ <87lfpi81sn.fsf@linaro.org>
+ <a361a310-f6f8-9c17-6846-64e9f0b189f2@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <87lfpi81sn.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: FdrtqOq9Oks5
+In-Reply-To: <a361a310-f6f8-9c17-6846-64e9f0b189f2@linaro.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: zZ6xp8C1NEO6iJCzl5CUGQ-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-TUID: vvDe8NFErGmY
 
-On 2/4/20 9:45 PM, Alex Bennée wrote:
->> Also, ZCR_EL1 it itself not correct if the
->> hardware does not support all vector sizes.
->>
->> See some of Andrew Jones' qemu command-line work.  Try -cpu max,sve512=on and
->> then use the ioctl to set vq to 3 (sve384).  The result will be an effective vq
->> of 2 (sve256).
->>
->> We *really* need vg, as computed from sve_zcr_len_for_el().
-> 
-> How come TARGET_PR_SVE_GET_VL is happy to compute directly from ZCR
-> then?
+On Wed, Feb 05, 2020 at 10:19:08AM +0000, Richard Henderson wrote:
+> On 2/4/20 9:45 PM, Alex Benn=E9e wrote:
+> >> Also, ZCR_EL1 it itself not correct if the
+> >> hardware does not support all vector sizes.
+> >>
+> >> See some of Andrew Jones' qemu command-line work.  Try -cpu max,sve512=
+=3Don and
+> >> then use the ioctl to set vq to 3 (sve384).  The result will be an eff=
+ective vq
+> >> of 2 (sve256).
+> >>
+> >> We *really* need vg, as computed from sve_zcr_len_for_el().
+> >=20
+> > How come TARGET_PR_SVE_GET_VL is happy to compute directly from ZCR
+> > then?
+>=20
+> Bug.  It didn't get updated with Andrew's changes to limit the set of sup=
+ported
+> sve lengths.
 
-Bug.  It didn't get updated with Andrew's changes to limit the set of supported
-sve lengths.
+Yeah. Sorry about that. I don't know much about linux-user so I didn't
+look closely enough at it to realize it needed changes as well. Grepping
+now, I see there's a couple other places that might need updating too
 
-> I'll put the vg back in but it seemed a little pointless given the
-> gdbstub ignores it.
+  linux-user/aarch64/signal.c
+    target_restore_sigframe: TARGET_SVE_MAGIC
+    target_setup_frame: /* SVE state needs saving only if it exists.  */
 
-I'll say again that this is a gdb bug and we should simply report/fix it
-upstream.  Don't try to work around it in qemu.
+And, like TARGET_PR_SVE_GET_VL, TARGET_PR_SVE_SET_VL needs changes in
+linux-user/syscall.c as well.
 
+Thanks,
+drew
 
-r~
+>=20
+> > I'll put the vg back in but it seemed a little pointless given the
+> > gdbstub ignores it.
+>=20
+> I'll say again that this is a gdb bug and we should simply report/fix it
+> upstream.  Don't try to work around it in qemu.
+>=20
+>=20
+> r~
+>=20

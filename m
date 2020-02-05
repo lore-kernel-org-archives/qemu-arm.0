@@ -1,96 +1,97 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6535886lfp;
-        Wed, 5 Feb 2020 03:09:08 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwKGDKBoHMlcmQ7pI2nXw2cCYgxFI5fd+t2a9i2j11XAZ3J8guUiln8Iz8kxKVcYGPuwsND
-X-Received: by 2002:a05:6214:1428:: with SMTP id o8mr32254006qvx.87.1580900948080;
-        Wed, 05 Feb 2020 03:09:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580900948; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6536152lfp;
+        Wed, 5 Feb 2020 03:09:22 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyCaxbRjSP+nUxjVpSQjwczLwQT4mlqhyJj3/oSXwXGihFxBgnknRbhQmc9IJP317hRHD1z
+X-Received: by 2002:a05:6214:c3:: with SMTP id f3mr30961662qvs.226.1580900962007;
+        Wed, 05 Feb 2020 03:09:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580900962; cv=none;
         d=google.com; s=arc-20160816;
-        b=hP7b5acnNxxlBbrCb7skXEkKt83zYRmW747JX77AXpieXvxbAQlbNn1yzKXEeCppj2
-         jg5G7yswpMana+ojOC14WbIEeKVscecZBMxW95QlbGmBQ6VlagC/P5JIRTK6ErZqFdqb
-         fXoGAyB7/9RI/24Og70JXTu0K5gTJRsC7Y4kqRiEmsr1uecGzFIfbNxNWpiWBemjv/Qw
-         H+6/yRYBaDdlnnJRRjE7KTAj1LV7mO2uK3xCkK5xH7oWtjzpu7UFLsFNavLhuOiKbm5C
-         9DsqBmlAVRTxFgrkcBQz1gw1nvkLc/Y8fRhU7SsySc6jekYXloEyRJ8JIt4GaZH81AZC
-         qdhA==
+        b=na7H93kpjdiSFhovcaLlCdFSwnpEFKJLPFJzVFvmeUnLUA1GwFKFgqLXpt+2hQA650
+         dSZTg6hMcFIviok6RZL7Jmi89Jk1baUr/gh1ww0eUXG2Yw3BaAKInCkMuhdtBKMkxrzJ
+         sAyE/xZylIAbZJj4iCGEu2kxoC4qmf+pBBVIyr6urwS0J2t5ksns4LV3IXNI+Zo/y4Xc
+         +oogPHxw2OZzZ9V8OHfjQ7/YYDb05uyd6RUAPEmIQs2E+YRYXu7Swy9vQ0W64I80HW1X
+         MYiDKNdEJH99k8ZLMlQpXxx6ODeW4lyfaObdHvGt4Xb9ImrXSd/858VlWkcSW3RpG/yG
+         HJIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=e3sZqixUTB6l4ZXXTVziX6Kdsz82alFvsnQ/+T1eNL0=;
-        b=o5Q0H+hPBGMneo24WJtlha4oa8OKRQ+zFIo6Spx8bisaNMpqRa4KBNFVD8ltzzX2zm
-         ri7AhJf35MHjffQrTImzEtJLy+vtQX3YBslD5d87mx4WqseBqdtLyYQwKLK99+OGzdBn
-         zve1I76R413BeCGAcCte/pzRVAm9rblRtRXjUk7/Ih8fDJsWgmgHxcXNxEDpTvfJmMsn
-         /BHszUVegcRHD2L8rFWW2WpOV+L+ZmI5N32C9DgCSrjeYkKifXlFKHE87hDGvB0ydmkU
-         8NQvlkq0b/Bhv7fSOuQnGh5cLYws6OfdKn20JYjKu1UHwQYf0A8zdSJmBsUVS7IdIR90
-         2Niw==
+        bh=N9+b7e4x5yznvSmGThVN1j4c9ZkLyTEFvHz5YPIdIE8=;
+        b=gDe+cEichVfGQqpmHH6qRyTqnGpcSkkbSawqNztKZG0T+C7sVDQzy6csLgvC2Dw6h+
+         jQDIAhkfxDHtMrFqzgXUbl/MNnmQ2Sysyc8I3PYKEZQB5fth6fIDh45XoHQFp0HMasxY
+         fuJbmTSOzP+BozTp8d6BfDv+tdkIwkD2LaxAFSSy4d1ZAgW/E6RgM+1f+wHSjP19Z+yC
+         YV9BIDStevpg5K1Ct/nTlpUO/IVoo0W/KuW3iwI2r2+JQLdT0gN0w+Yf1K6KXIPpAbCw
+         nSBDPdCK8zR0X+SSwqpDTZJXiW1hmZ7qurfMvyxl+Edc5AFizCk5pRb4dCyRqTLiKpsH
+         oguQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A8Pv9jLR;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VxNaxz5C;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b42si15261141qtc.156.2020.02.05.03.09.07
+        by mx.google.com with ESMTPS id n19si15064732qtp.51.2020.02.05.03.09.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Feb 2020 03:09:08 -0800 (PST)
+        Wed, 05 Feb 2020 03:09:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A8Pv9jLR;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VxNaxz5C;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45036 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45042 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izIYN-0004uR-Gc
-	for alex.bennee@linaro.org; Wed, 05 Feb 2020 06:09:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47083)
+	id 1izIYb-0005D6-EC
+	for alex.bennee@linaro.org; Wed, 05 Feb 2020 06:09:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47150)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <gshan@redhat.com>) id 1izIVO-0008SA-6S
- for qemu-arm@nongnu.org; Wed, 05 Feb 2020 06:06:04 -0500
+ (envelope-from <gshan@redhat.com>) id 1izIVV-0008Vj-47
+ for qemu-arm@nongnu.org; Wed, 05 Feb 2020 06:06:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <gshan@redhat.com>) id 1izIVM-00061e-Pz
- for qemu-arm@nongnu.org; Wed, 05 Feb 2020 06:06:02 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:60149
+ (envelope-from <gshan@redhat.com>) id 1izIVS-0006NV-KI
+ for qemu-arm@nongnu.org; Wed, 05 Feb 2020 06:06:09 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:24975
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1izIVM-0005ye-Lb
- for qemu-arm@nongnu.org; Wed, 05 Feb 2020 06:06:00 -0500
+ (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1izIVS-0006LV-G8
+ for qemu-arm@nongnu.org; Wed, 05 Feb 2020 06:06:06 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580900760;
+ s=mimecast20190719; t=1580900766;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding;
- bh=e3sZqixUTB6l4ZXXTVziX6Kdsz82alFvsnQ/+T1eNL0=;
- b=A8Pv9jLRbAmjdLS9aUKwEs/3Ssfew+kHtu+NccAGhMKBNCGDVQ2YMswXkXr2lG8J51QJN9
- w2ZvRrP97N4f4Y72jxAVjngTy/TMzEfwnEAx13mJmke+xz79zuS2sh0zPO4K7G7EAgrEBC
- w7VOimqbRHWqA0mvierpZ24bisSvW/E=
+ bh=N9+b7e4x5yznvSmGThVN1j4c9ZkLyTEFvHz5YPIdIE8=;
+ b=VxNaxz5C4nsMu4EOZozt47ErbxlwJsjBJ9tvSA9ezg/aoZAUT31wAttnHmRosxdtrRYjKo
+ A92dTvPTJMTHoPOCd6g+m4xwW22KohZ5ar4imbfvsA2SwIxEnZ0yIEcc8bXvCzps5Ing1V
+ YFWQ6kBjCYfClZim9u+LFqEPJAM3S2I=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-188-0LMMxv78OiOYiA_Axh2k4g-1; Wed, 05 Feb 2020 06:05:58 -0500
+ us-mta-209-zsCF2bmbM7qXBewNLrRftw-1; Wed, 05 Feb 2020 06:06:04 -0500
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 920DB1835A03;
- Wed,  5 Feb 2020 11:05:57 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 90E9A1835A04;
+ Wed,  5 Feb 2020 11:06:02 +0000 (UTC)
 Received: from localhost.localdomain.com (vpn2-54-31.bne.redhat.com
  [10.64.54.31])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D4743790C0;
- Wed,  5 Feb 2020 11:05:54 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 11075790C0;
+ Wed,  5 Feb 2020 11:05:58 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [RESEND RFC PATCH v2 1/2] target/arm: Allow to inject SError interrupt
-Date: Wed,  5 Feb 2020 22:05:40 +1100
-Message-Id: <20200205110541.37811-2-gshan@redhat.com>
+Subject: [RESEND RFC PATCH v2 2/2] target/arm: Support NMI injection
+Date: Wed,  5 Feb 2020 22:05:41 +1100
+Message-Id: <20200205110541.37811-3-gshan@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: 0LMMxv78OiOYiA_Axh2k4g-1
+X-MC-Unique: zsCF2bmbM7qXBewNLrRftw-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,103 +108,232 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, jthierry@redhat.com,
  pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6jj9cQqPQTCU
+X-TUID: YCwGV75hFfDl
 
-This allows to inject SError interrupt, which will be used on receiving
-QMP/HMP "nmi" command in next patch.
+This supports QMP/HMP "nmi" command by injecting SError interrupt to
+guest, which is expected to crash with that. Currently, It's supported
+on two CPU models: "host" and "max".
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- target/arm/cpu.c    | 11 +++++++++++
- target/arm/cpu.h    | 12 +++++++++---
- target/arm/helper.c |  4 ++++
- 3 files changed, 24 insertions(+), 3 deletions(-)
+ hw/arm/virt.c          | 18 ++++++++++++++++
+ target/arm/cpu-qom.h   |  1 +
+ target/arm/cpu.c       | 48 ++++++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu64.c     | 25 ++++++++++++++++++----
+ target/arm/internals.h |  8 +++++++
+ 5 files changed, 96 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index f86e71a260..24fd77437b 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -461,6 +461,17 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int interrup=
-t_request)
-         }
-     }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index f788fe27d6..883861a28a 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -71,6 +71,7 @@
+ #include "hw/mem/pc-dimm.h"
+ #include "hw/mem/nvdimm.h"
+ #include "hw/acpi/generic_event_device.h"
++#include "hw/nmi.h"
 =20
-+    if (interrupt_request & CPU_INTERRUPT_SERROR) {
-+        excp_idx =3D EXCP_SERROR;
-+        target_el =3D arm_phys_excp_target_el(cs, excp_idx, cur_el, secure=
-);
-+        if (arm_excp_unmasked(cs, excp_idx, target_el)) {
-+            cs->exception_index =3D excp_idx;
-+            env->exception.target_el =3D target_el;
-+            cc->do_interrupt(cs);
-+            ret =3D true;
-+        }
+ #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+@@ -2026,10 +2027,25 @@ static int virt_kvm_type(MachineState *ms, const ch=
+ar *type_str)
+     return requested_pa_size > 40 ? requested_pa_size : 0;
+ }
+=20
++static void virt_nmi(NMIState *n, int cpu_index, Error **errp)
++{
++    ARMCPUClass *acc;
++    CPUState *cpu =3D first_cpu;
++
++    acc =3D ARM_CPU_GET_CLASS(OBJECT(cpu));
++    if (!acc->inject_nmi) {
++        error_setg(errp, "NMI injection not supported");
++        return;
 +    }
 +
++    acc->inject_nmi(cpu, errp);
++}
++
+ static void virt_machine_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc =3D MACHINE_CLASS(oc);
+     HotplugHandlerClass *hc =3D HOTPLUG_HANDLER_CLASS(oc);
++    NMIClass *nc =3D NMI_CLASS(oc);
+=20
+     mc->init =3D machvirt_init;
+     /* Start with max_cpus set to 512, which is the maximum supported by K=
+VM.
+@@ -2058,6 +2074,7 @@ static void virt_machine_class_init(ObjectClass *oc, =
+void *data)
+     hc->unplug_request =3D virt_machine_device_unplug_request_cb;
+     mc->numa_mem_supported =3D true;
+     mc->auto_enable_numa_with_memhp =3D true;
++    nc->nmi_monitor_handler =3D virt_nmi;
+ }
+=20
+ static void virt_instance_init(Object *obj)
+@@ -2141,6 +2158,7 @@ static const TypeInfo virt_machine_info =3D {
+     .instance_init =3D virt_instance_init,
+     .interfaces =3D (InterfaceInfo[]) {
+          { TYPE_HOTPLUG_HANDLER },
++         { TYPE_NMI },
+          { }
+     },
+ };
+diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
+index 7f5b244bde..853f0f3ca5 100644
+--- a/target/arm/cpu-qom.h
++++ b/target/arm/cpu-qom.h
+@@ -52,6 +52,7 @@ typedef struct ARMCPUClass {
+     const ARMCPUInfo *info;
+     DeviceRealize parent_realize;
+     void (*parent_reset)(CPUState *cpu);
++    void (*inject_nmi)(CPUState *cpu, Error **errp);
+ } ARMCPUClass;
+=20
+ typedef struct ARMCPU ARMCPU;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 24fd77437b..f0ef315f3b 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -475,6 +475,44 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int interrup=
+t_request)
      return ret;
  }
 =20
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 608fcbd0b7..0bbc46ff6d 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -49,6 +49,7 @@
- #define EXCP_LAZYFP         20   /* v7M fault during lazy FP stacking */
- #define EXCP_LSERR          21   /* v8M LSERR SecureFault */
- #define EXCP_UNALIGNED      22   /* v7M UNALIGNED UsageFault */
-+#define EXCP_SERROR         23   /* SError Interrupt */
- /* NB: add new EXCP_ defines to the array in arm_log_exception() too */
++#ifdef CONFIG_KVM
++static void do_inject_nmi_kvm(CPUState *cpu, run_on_cpu_data data)
++{
++    struct kvm_vcpu_events events;
++    Error **errp =3D data.host_ptr;
++    int ret;
++
++    if (!kvm_has_vcpu_events()) {
++        error_setg(errp, "vCPU events not supported");
++        return;
++    }
++
++    memset(&events, 0, sizeof(events));
++    events.exception.serror_pending =3D 1;
++    ret =3D kvm_vcpu_ioctl(CPU(cpu), KVM_SET_VCPU_EVENTS, &events);
++    if (ret) {
++        error_setg(errp, "Error to inject vCPU events");
++    }
++}
++#endif
++
++/* The guest is expected to crash once receiving the SError interrupt */
++static void do_inject_nmi(CPUState *cpu, run_on_cpu_data data)
++{
++    cpu_synchronize_state(cpu);
++
++#ifdef CONFIG_KVM
++    return do_inject_nmi_kvm(cpu, data);
++#endif
++
++    cpu_interrupt(cpu, CPU_INTERRUPT_SERROR);
++}
++
++void arm_cpu_inject_nmi(CPUState *cpu, Error **errp)
++{
++    async_run_on_cpu(cpu, do_inject_nmi, RUN_ON_CPU_HOST_PTR(errp));
++}
++
+ #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
+ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request=
+)
+ {
+@@ -2759,10 +2797,20 @@ static void arm_host_initfn(Object *obj)
+     arm_cpu_post_init(obj);
+ }
 =20
- #define ARMV7M_EXCP_RESET   1
-@@ -79,9 +80,10 @@ enum {
++#ifdef TARGET_AARCH64
++static void arm_host_class_init(ObjectClass *oc, void *data)
++{
++    ARMCPUClass *acc =3D ARM_CPU_CLASS(oc);
++
++    acc->inject_nmi =3D arm_cpu_inject_nmi;
++}
++#endif /* TARGET_AARCH64 */
++
+ static const TypeInfo host_arm_cpu_type_info =3D {
+     .name =3D TYPE_ARM_HOST_CPU,
+ #ifdef TARGET_AARCH64
+     .parent =3D TYPE_AARCH64_CPU,
++    .class_init =3D arm_host_class_init,
+ #else
+     .parent =3D TYPE_ARM_CPU,
+ #endif
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 2d97bf45e1..66e746f66b 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -21,6 +21,7 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "cpu.h"
++#include "internals.h"
+ #include "qemu/module.h"
+ #if !defined(CONFIG_USER_ONLY)
+ #include "hw/loader.h"
+@@ -713,6 +714,14 @@ static void aarch64_max_initfn(Object *obj)
+                         cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
+ }
+=20
++static void aarch64_max_class_init(ObjectClass *oc, void *data)
++{
++    ARMCPUClass *acc =3D ARM_CPU_CLASS(oc);
++
++    acc->inject_nmi =3D arm_cpu_inject_nmi;
++    acc->info =3D data;
++}
++
+ struct ARMCPUInfo {
+     const char *name;
+     void (*initfn)(Object *obj);
+@@ -720,10 +729,18 @@ struct ARMCPUInfo {
  };
 =20
- /* ARM-specific interrupt pending bits.  */
--#define CPU_INTERRUPT_FIQ   CPU_INTERRUPT_TGT_EXT_1
--#define CPU_INTERRUPT_VIRQ  CPU_INTERRUPT_TGT_EXT_2
--#define CPU_INTERRUPT_VFIQ  CPU_INTERRUPT_TGT_EXT_3
-+#define CPU_INTERRUPT_FIQ    CPU_INTERRUPT_TGT_EXT_1
-+#define CPU_INTERRUPT_VIRQ   CPU_INTERRUPT_TGT_EXT_2
-+#define CPU_INTERRUPT_VFIQ   CPU_INTERRUPT_TGT_EXT_3
-+#define CPU_INTERRUPT_SERROR CPU_INTERRUPT_TGT_EXT_4
+ static const ARMCPUInfo aarch64_cpus[] =3D {
+-    { .name =3D "cortex-a57",         .initfn =3D aarch64_a57_initfn },
+-    { .name =3D "cortex-a53",         .initfn =3D aarch64_a53_initfn },
+-    { .name =3D "cortex-a72",         .initfn =3D aarch64_a72_initfn },
+-    { .name =3D "max",                .initfn =3D aarch64_max_initfn },
++    { .name =3D "cortex-a57",
++      .class_init =3D NULL,
++      .initfn =3D aarch64_a57_initfn },
++    { .name =3D "cortex-a53",
++      .class_init =3D NULL,
++      .initfn =3D aarch64_a53_initfn },
++    { .name =3D "cortex-a72",
++      .class_init =3D NULL,
++      .initfn =3D aarch64_a72_initfn },
++    { .name =3D "max",
++      .class_init =3D aarch64_max_class_init,
++      .initfn =3D aarch64_max_initfn },
+     { .name =3D NULL }
+ };
 =20
- /* The usual mapping for an AArch64 system register to its AArch32
-  * counterpart is for the 32 bit world to have access to the lower
-@@ -2731,6 +2733,10 @@ static inline bool arm_excp_unmasked(CPUState *cs, u=
-nsigned int excp_idx,
-         pstate_unmasked =3D !(env->daif & PSTATE_I);
-         break;
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index f5313dd3d4..6a922fbc98 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -949,6 +949,14 @@ void arm_cpu_update_virq(ARMCPU *cpu);
+  */
+ void arm_cpu_update_vfiq(ARMCPU *cpu);
 =20
-+    case EXCP_SERROR:
-+       pstate_unmasked =3D !(env->daif & PSTATE_A);
-+       break;
++/**
++ * arm_cpu_inject_nmi: Inject SError exception
++ *
++ * Inject SError exception to trigger kernel panic inside the guest. That'=
+s
++ * the simulated behavior as to other architectures like x86.
++ */
++void arm_cpu_inject_nmi(CPUState *cpu, Error **errp);
 +
-     case EXCP_VFIQ:
-         if (secure || !(hcr_el2 & HCR_FMO) || (hcr_el2 & HCR_TGE)) {
-             /* VFIQs are only taken when hypervized and non-secure.  */
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 19a57a17da..622a1d8796 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7980,6 +7980,7 @@ void arm_log_exception(int idx)
-             [EXCP_LAZYFP] =3D "v7M exception during lazy FP stacking",
-             [EXCP_LSERR] =3D "v8M LSERR UsageFault",
-             [EXCP_UNALIGNED] =3D "v7M UNALIGNED UsageFault",
-+            [EXCP_SERROR] =3D "SError Interrupt",
-         };
-=20
-         if (idx >=3D 0 && idx < ARRAY_SIZE(excnames)) {
-@@ -8566,6 +8567,9 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs=
-)
-     case EXCP_VFIQ:
-         addr +=3D 0x100;
-         break;
-+    case EXCP_SERROR:
-+        addr +=3D 0x180;
-+        break;
-     default:
-         cpu_abort(cs, "Unhandled exception 0x%x\n", cs->exception_index);
-     }
+ /**
+  * arm_mmu_idx_el:
+  * @env: The cpu environment
 --=20
 2.23.0
 

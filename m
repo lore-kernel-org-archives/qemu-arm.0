@@ -1,220 +1,374 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp322978lfp;
-        Wed, 5 Feb 2020 08:43:34 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyvEG0n/HKjBh/CqvlmF/E9SqIVaKDOaPPnPpR1y649gYO5m05gsV0/olKTQ2p9M2swPU7y
-X-Received: by 2002:aca:b2c5:: with SMTP id b188mr3629189oif.163.1580921014235;
-        Wed, 05 Feb 2020 08:43:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580921014; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp336465lfp;
+        Wed, 5 Feb 2020 08:57:52 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxCHT6xZpnQB7RNg2Ew9apaha3XbXIRIhv/XDKDGDnkvIbBDDTt9wcbc/40EuteAEMoATh8
+X-Received: by 2002:aed:2510:: with SMTP id v16mr22227565qtc.306.1580921871779;
+        Wed, 05 Feb 2020 08:57:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580921871; cv=none;
         d=google.com; s=arc-20160816;
-        b=UPSGm28to13KjEQcJoyLAU8g1EQi/d7o2t9TpvEmopAS9kanWWTC/HfeZyOzq3aobP
-         BvDPvwEjTjmya7NYWknNwy3Gn+vNN2OrbSd/JUzKt2hj9pGFtWgtAUiaIH2gn9RLfmvI
-         S2ExZhRZ1p2FMnxm1AfenSWRvb8HNjonNeEgqRtMhhN2v/1bSmx+AwAIDd6H0N8lEavx
-         BUtYJol1Vl5jpiPCsA8rrbwdb8la6ExcDuwUtjNP1Gon6yjcz0UaFDNNGcDbpQ4GLhOp
-         yCLuAk7sctc3JDQ+MCkpTgyNqnFZyvQWoppiJOyDHXXk75mv8qC7C5PAekawTA1s79Fw
-         HUzQ==
+        b=kIseSBmSmSwqII7xSG0+QlFdL6uvlCSmUrTp4xHmJlCNHyWqX5/IXtzVs3lRJ++BQe
+         S0SFsJo+oKRVbCXXJaeIFgxVZuThkKdFLEIHTDyslooP+N6fu2AjqhCkJC5hgf7lwgqg
+         MRbsb4r0+j//dW7BFmssO7Aj3QP0tc+AEwV0EqdIAw0RCp1ABbOmScTJeoj8xHhyLwMj
+         SjbJccxHyoxNcNvPkgU829EKwB5kOwYGJ7x5MbfDGngp7bQjCQG2WXd6zaFFLs8rPqYM
+         zUqP6PK80cpxQjGcyysPhEb5lU/bzBHZTASQp+Hzkw61xWcnkfQzFUZ4tjRLujoOwYTU
+         BgtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :organization:references:in-reply-to:message-id:subject:cc:to:from
-         :date;
-        bh=/oVoqbjF9czu00lwmOWpwLambJkXoqO2Vwyc/o6TOyM=;
-        b=bfEMDqrd/B/y1WqxpmQUwCHjV2IiY2iBUeFO3u0AkGHv9NeNCNkSRKPcCPiFUXpBAb
-         +JCrgxaOeaKgOANEk042851KnE4+RhKux7cTYG4oyw/Td3LTMudb5x2JOFzmgWk+3m4F
-         zeJWtGwZTQm3uFFb34oB/jBMJXiZ7VR6J+wwd7fvzG4x1WOCc6mXcEcMTRhuij81xhuT
-         TJi0oBCTaI+C5VZ36xtLxy2j99yVqT05RwFChGaKeUXEqRDiKyrGivcNasCi3Bp3tMUH
-         dXShGTxpcsU0jKp8vVGemssGHW4Cg2Ade1fswSLbmXbOD2liOZnEO6CnKcQNr2qI5doQ
-         dR/A==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=q5R64kn/7g7Lmh7xUx7tjk99kqyaVeBrNk0DtsZC558=;
+        b=zacBTAaM9Dt1mlZmFJVeeLRpiwfD3ha6xSLKPO7BdQMNV4RaMP+7MfLCCamHnQF5vW
+         E4UTlbXwuzzuZolQ0Cmo97OBnQX1cKYJZ6vLRzdm76GjkfqMVpsOVVELhxl9p/gPXZ5P
+         I4PJAuzhMscIAe/OpItmfTxhQGj21CLEzwIdl43nso7TEwHCKQgkj0ZaE1SDR9lsjucG
+         c0WahZ74d9MRmqNoOCTB2FYv16XNsGGHtEQeyBN0gbjm2cv6l+RSNMWD3Cw/jfYzFADN
+         ZXLt6Y59zNE01DEfjZdEVcQJtd5amljJEC0k4zyG8QocY1ZUmPKR56CfpbnMXcKm7At5
+         +4bQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id j70si339688oib.219.2020.02.05.08.43.34;
-        Wed, 05 Feb 2020 08:43:34 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=ZP0c1wy0;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id k10si49642qtp.358.2020.02.05.08.57.51;
+        Wed, 05 Feb 2020 08:57:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727052AbgBEQnc (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Wed, 5 Feb 2020 11:43:32 -0500
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2382 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726359AbgBEQnc (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 5 Feb 2020 11:43:32 -0500
-Received: from lhreml703-cah.china.huawei.com (unknown [172.18.7.106])
-        by Forcepoint Email with ESMTP id 2BCBD87DFEB78505D9D6;
-        Wed,  5 Feb 2020 16:43:30 +0000 (GMT)
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- lhreml703-cah.china.huawei.com (10.201.108.44) with Microsoft SMTP Server
- (TLS) id 14.3.408.0; Wed, 5 Feb 2020 16:43:29 +0000
-Received: from localhost (10.202.226.57) by lhreml710-chm.china.huawei.com
- (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5; Wed, 5 Feb 2020
- 16:43:29 +0000
-Date:   Wed, 5 Feb 2020 16:43:28 +0000
-From:   Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To:     Dongjiu Geng <gengdongjiu@huawei.com>
-CC:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <fam@euphon.net>, <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <mtosatti@redhat.com>, <xuwei5@huawei.com>, <james.morse@arm.com>,
-        <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
-        <qemu-arm@nongnu.org>, <zhengxiang9@huawei.com>,
-        <linuxarm@huawei.com>
-Subject: Re: [PATCH v22 4/9] ACPI: Build Hardware Error Source Table
-Message-ID: <20200205164328.00006f1e@Huawei.com>
-In-Reply-To: <1578483143-14905-5-git-send-email-gengdongjiu@huawei.com>
-References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
-        <1578483143-14905-5-git-send-email-gengdongjiu@huawei.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; i686-w64-mingw32)
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=ZP0c1wy0;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 75D074A524;
+	Wed,  5 Feb 2020 11:57:51 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZJybzkwFO-eZ; Wed,  5 Feb 2020 11:57:50 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1D4BE4A536;
+	Wed,  5 Feb 2020 11:57:50 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 0C7404A51F
+ for <kvmarm@lists.cs.columbia.edu>; Wed,  5 Feb 2020 11:57:49 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6z84lyXAF8bu for <kvmarm@lists.cs.columbia.edu>;
+ Wed,  5 Feb 2020 11:57:47 -0500 (EST)
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
+ [207.211.31.120])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id CF4E24A483
+ for <kvmarm@lists.cs.columbia.edu>; Wed,  5 Feb 2020 11:57:47 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1580921867;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SiYlUJigP5VTtHJmMRlvP/w8KjSCeSJJEvTgJ9n810A=;
+ b=ZP0c1wy0ApycWdaO3KObDIWveKV120/t56KadK9WLZEvXvA+SrVJu9wj1xUUcg094EfB9x
+ OTCv+gIw+RRoyXhi5rXx7NcuhupfMqUBeENgYNWebuldvw01UIidhxA46oERAEYMWi27An
+ hrol72ggs54x+tUYUVUnH2Wiz5lUVSs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-375-qOwDMK6ZMAqpfYoFEyOA5w-1; Wed, 05 Feb 2020 11:57:45 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B7F71DB60;
+ Wed,  5 Feb 2020 16:57:43 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 00F1C8DC13;
+ Wed,  5 Feb 2020 16:57:41 +0000 (UTC)
+Date: Wed, 5 Feb 2020 17:57:39 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Beata Michalska <beata.michalska@linaro.org>
+Subject: Re: [PATCH v2 2/2] target/arm: kvm: Handle DABT with no valid ISS
+Message-ID: <20200205165739.2jkklbpmy3yrdq3q@kamzik.brq.redhat.com>
+References: <20200129202441.12745-1-beata.michalska@linaro.org>
+ <20200129202441.12745-3-beata.michalska@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+In-Reply-To: <20200129202441.12745-3-beata.michalska@linaro.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: qOwDMK6ZMAqpfYoFEyOA5w-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, pbonzini@redhat.com,
+ kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.226.57]
-X-ClientProxiedBy: lhreml712-chm.china.huawei.com (10.201.108.63) To
- lhreml710-chm.china.huawei.com (10.201.108.61)
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: D3QLsOttYVaM
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: SFQAAJ/Od9hc
 
-On Wed, 8 Jan 2020 19:32:18 +0800
-Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-
-> This patch builds Hardware Error Source Table(HEST) via fw_cfg blobs.
-> Now it only supports ARMv8 SEA, a type of Generic Hardware Error
-> Source version 2(GHESv2) error source. Afterwards, we can extend
-> the supported types if needed. For the CPER section, currently it
-> is memory section because kernel mainly wants userspace to handle
-> the memory errors.
+On Wed, Jan 29, 2020 at 08:24:41PM +0000, Beata Michalska wrote:
+> On ARMv7 & ARMv8 some load/store instructions might trigger a data abort
+> exception with no valid ISS info to be decoded. The lack of decode info
+> makes it at least tricky to emulate those instruction which is one of the
+> (many) reasons why KVM will not even try to do so.
 > 
-> This patch follows the spec ACPI 6.2 to build the Hardware Error
-> Source table. For more detailed information, please refer to
-> document: docs/specs/acpi_hest_ghes.rst
+> Add support for handling those by requesting KVM to inject external
+> dabt into the quest.
 > 
-> build_append_ghes_notify() will help to add Hardware Error Notification
-> to ACPI tables without using packed C structures and avoid endianness
-> issues as API doesn't need explicit conversion.
-> 
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> Acked-by: Xiang Zheng <zhengxiang9@huawei.com>
-
-Hi. 
-
-I was forwards porting my old series adding CCIX error injection support
-and came across a place this could 'possibly' be improved.
-
-I say possibly because it's really about enabling more flexibility
-in how this code is reused than actually 'fixing' anything here.
-
-If you don't make the change here, I'll just add a precursor patch to my
-series.  Just seems nice to tidy it up at source.
-
-The rest of the parts of this series I am using seems to work great.
-
-Thanks!
-
-Jonathan
-
+> Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
 > ---
->  hw/acpi/ghes.c           | 118 ++++++++++++++++++++++++++++++++++++++++++++++-
->  hw/arm/virt-acpi-build.c |   2 +
->  include/hw/acpi/ghes.h   |  40 ++++++++++++++++
->  3 files changed, 159 insertions(+), 1 deletion(-)
+>  target/arm/cpu.h     |  2 ++
+>  target/arm/kvm.c     | 96 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  target/arm/kvm32.c   |  3 ++
+>  target/arm/kvm64.c   |  3 ++
+>  target/arm/kvm_arm.h | 19 +++++++++++
+>  5 files changed, 123 insertions(+)
 > 
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index b7fdbbb..9d37798 100644
-> --- a/hw/acpi/ghes.c
-> +++ b/hw/acpi/ghes.c
-> @@ -34,9 +34,42 @@
-> +
-...
-> +/* Build Generic Hardware Error Source version 2 (GHESv2) */
-> +static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
-This function takes source ID, which uses the enum of all sources registered.
-However, it doesn't use it to locate the actual physical addresses.
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index c1aedbe..e04a8d3 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -558,6 +558,8 @@ typedef struct CPUARMState {
+>          uint8_t has_esr;
+>          uint64_t esr;
+>      } serror;
+> +    /* Status field for pending external dabt */
+> +    uint8_t ext_dabt_pending;
+>  
+>      /* State of our input IRQ/FIQ/VIRQ/VFIQ lines */
+>      uint32_t irq_line_state;
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 8d82889..e7bc9b7 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -37,6 +37,7 @@ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+>  
+>  static bool cap_has_mp_state;
+>  static bool cap_has_inject_serror_esr;
+> +static bool cap_has_inject_ext_dabt; /* KVM_CAP_ARM_INJECT_EXT_DABT */
 
-Currently the code effectively assumes the value is 0.
+nit: the KVM_CAP_ARM_INJECT_EXT_DABT comment is unnecessary
 
+>  
+>  static ARMHostCPUFeatures arm_host_cpu_features;
+>  
+> @@ -62,6 +63,12 @@ void kvm_arm_init_serror_injection(CPUState *cs)
+>                                      KVM_CAP_ARM_INJECT_SERROR_ESR);
+>  }
+>  
+> +void kvm_arm_init_ext_dabt_injection(CPUState *cs)
 > +{
-> +    uint64_t address_offset;
+> +    cap_has_inject_ext_dabt = kvm_check_extension(cs->kvm_state,
+> +                                    KVM_CAP_ARM_INJECT_EXT_DABT);
+> +}
+> +
+>  bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
+>                                        int *fdarray,
+>                                        struct kvm_vcpu_init *init)
+> @@ -216,6 +223,11 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>          ret = -EINVAL;
+>      }
+>  
+> +    if (kvm_check_extension(s, KVM_CAP_ARM_NISV_TO_USER))
+> +        if (kvm_vm_enable_cap(s, KVM_CAP_ARM_NISV_TO_USER, 0)) {
+> +            warn_report("Failed to enable DABT NISV cap");
+> +        }
+> +
+
+Missing {} around the outer block.
+
+As KVM_CAP_ARM_INJECT_EXT_DABT is a VM capability then I think we should
+set cap_has_inject_ext_dabt here, like cap_has_mp_state gets set. I see
+you've followed the pattern used for cap_has_inject_serror_esr, but that
+looks wrong too since KVM_CAP_ARM_INJECT_SERROR_ESR is also a VM
+capability. The way it is now we just keep setting
+cap_has_inject_serror_esr to the same value, NR_VCPUS times.
+
+>      return ret;
+>  }
+>  
+> @@ -598,6 +610,10 @@ int kvm_put_vcpu_events(ARMCPU *cpu)
+>          events.exception.serror_esr = env->serror.esr;
+>      }
+>  
+> +    if (cap_has_inject_ext_dabt) {
+> +        events.exception.ext_dabt_pending = env->ext_dabt_pending;
+> +    }
+> +
+>      ret = kvm_vcpu_ioctl(CPU(cpu), KVM_SET_VCPU_EVENTS, &events);
+>      if (ret) {
+>          error_report("failed to put vcpu events");
+> @@ -627,6 +643,8 @@ int kvm_get_vcpu_events(ARMCPU *cpu)
+>      env->serror.has_esr = events.exception.serror_has_esr;
+>      env->serror.esr = events.exception.serror_esr;
+>  
+> +    env->ext_dabt_pending = events.exception.ext_dabt_pending;
+> +
+
+afaict from Documentation/virt/kvm/api.txt and the KVM code you cannot
+get this state. Therefore the above line (and extra stray blank line)
+should be dropped.
+
+>      return 0;
+>  }
+>  
+> @@ -634,6 +652,7 @@ void kvm_arch_pre_run(CPUState *cs, struct kvm_run *run)
+>  {
+>  }
+>  
+> +
+
+stray blank line
+
+>  MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
+>  {
+>      ARMCPU *cpu;
+> @@ -699,6 +718,11 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+>              ret = EXCP_DEBUG;
+>          } /* otherwise return to guest */
+>          break;
+> +    case KVM_EXIT_ARM_NISV:
+> +        /* External DABT with no valid iss to decode */
+> +        ret = kvm_arm_handle_dabt_nisv(cs, run->arm_nisv.esr_iss,
+> +                                       run->arm_nisv.fault_ipa);
+> +        break;
+>      default:
+>          qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
+>                        __func__, run->exit_reason);
+> @@ -833,3 +857,75 @@ int kvm_arch_msi_data_to_gsi(uint32_t data)
+>  {
+>      return (data - 32) & 0xffff;
+>  }
+> +
+> +int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
+> +                             uint64_t fault_ipa)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    CPUARMState *env = &cpu->env;
+> +    uint32_t ins, ins_fetched;
+
+ins_fetched is a bool
+
+> +
 > +    /*
-> +     * Type:
-> +     * Generic Hardware Error Source version 2(GHESv2 - Type 10)
+> +     * Hacky workaround for kernels that for aarch32 guests, instead of expected
+> +     * external data abort, inject the IMPLEMENTATION DEFINED exception with the
+> +     * lock-down. This is actually handled by the guest which results in
+> +     * re-running the faulting instruction.
+> +     * This intends to break the vicious cycle.
 > +     */
-> +    build_append_int_noprefix(table_data, ACPI_GHES_SOURCE_GENERIC_ERROR_V2, 2);
-> +    /* Source Id */
-> +    build_append_int_noprefix(table_data, source_id, 2);
-> +    /* Related Source Id */
-> +    build_append_int_noprefix(table_data, 0xffff, 2);
-> +    /* Flags */
-> +    build_append_int_noprefix(table_data, 0, 1);
-> +    /* Enabled */
-> +    build_append_int_noprefix(table_data, 1, 1);
-> +
-> +    /* Number of Records To Pre-allocate */
-> +    build_append_int_noprefix(table_data, 1, 4);
-> +    /* Max Sections Per Record */
-> +    build_append_int_noprefix(table_data, 1, 4);
-> +    /* Max Raw Data Length */
-> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
-> +
-> +    address_offset = table_data->len;
-> +    /* Error Status Address */
-> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
-> +                     4 /* QWord access */, 0);
-> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-> +        address_offset + GAS_ADDR_OFFSET,
-> +        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
 
-The offset here would need to be source_id * sizeof(uint64_t) I think
+This doesn't seem like the right thing to do. What happens on real
+hardware in this case? If an OS would get into a "vicious cycle" on
+real hardware then it should get into one on KVM too.
+
+> +    if (!is_a64(env)) {
+> +        static uint8_t setback;
+> +
+> +        /*
+> +         * The state has not been synchronized yet, so if this is re-occurrence
+> +         * of the same abort triggered by guest, the status for pending external
+> +         * abort should not get cleared yet
+> +         */
+> +        if (unlikely(env->ext_dabt_pending)) {
+> +            if (setback) {
+> +                error_report("Most probably triggered kernel issue with"
+> +                             " injecting external data abort.");
+> +                error_printf("Giving up trying ...\n");
+> +                /* Here is where the fun comes to an end */
+> +                return -EINVAL;
+> +            }
+> +        }
+> +        setback = env->ext_dabt_pending;
+> +    }
+> +
+> +    kvm_cpu_synchronize_state(cs);
+> +   /*
+> +    * ISS [23:14] is invalid so there is a limited info
+> +    * on what has just happened so the only *useful* thing that can
+> +    * be retrieved from ISS is WnR & DFSC (though in some cases WnR
+> +    * might be less of a value as well)
+> +    */
+> +
+> +    /*
+> +     * Get current PC before it will get updated to exception vector entry
+> +     */
+> +    target_ulong ins_addr = is_a64(env) ? env->pc : env->regs[15];
+
+ins_addr should be declared above
+
+But what are we doing? pc is a guest virtual address. Oh, I see...
 
 > +
 > +    /*
-> +     * Notification Structure
-> +     * Now only enable ARMv8 SEA notification type
+> +     * Get the faulting instruction
+> +     * Instructions have a fixed length of 32 bits
+> +     * and are always little-endian
 > +     */
-> +    build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_SEA);
-Perhaps a switch for this to allow for other options later.
+> +    ins_fetched = !cpu_memory_rw_debug(cs, ins_addr, (uint8_t *) &ins,
+> +                                       sizeof(uint32_t), 0);
 
-	switch (source_id) {
-	case ACPI_HEST_SRC_ID_SEA:
-		...
-		break;
-	default:
-	//print some error message.
+... we're trying to actual walk the KVM guest's page tables. That
+seems a bit odd, and the "_debug" function name used for it makes
+it seem even more odd.
 
-	}
 > +
-> +    /* Error Status Block Length */
-> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
+> +    error_report("Data abort exception with no valid ISS generated by "
+> +                 "guest memory access at physical address: 0x" TARGET_FMT_lx,
+> +                 (target_ulong)fault_ipa);
 > +
+> +    error_printf(ins_fetched ? "%s : 0x%" PRIx32 " (ins encoded)\n"  : "%s\n",
+> +                 "KVM unable to emulate faulting instruction",
+> +                 (!ins_fetched ? 0 : ldl_le_p(&ins)));
+> +    error_printf("Injecting a data abort exception into guest.\n");
+
+The guest shouldn't be able to generate three lines of errors on the host
+whenever it wants. That's a security bug. One trace point here seems like
+the most we should do. Or, after these three lines we should kill the
+guest.
+
+Actually, I don't think we should attempt to get the instruction at all.
+We should do what the KVM documenation suggests we do when we get
+this exit. We should either do a user selected action: one of suspend,
+dump, restart, or inject a dabt (as is done below). The last choice hopes
+that the guest will handle it in some graceful way, or that it'll crash
+with all the information needed for a post-mortem crash investigation.
+
+And I don't think we should do the "very brave" option of trying to
+emulate the instruction, even if we identify it as a valid MMIO address.
+That just sounds like a huge can of worms.
+
+Does QEMU already have a way for users to select a
+don't-know-how-to-handle-guest-exception behavior?
+
 > +    /*
-> +     * Read Ack Register
-> +     * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source
-> +     * version 2 (GHESv2 - Type 10)
+> +     * Set pending ext dabt and trigger SET_EVENTS so that
+> +     * KVM can inject the abort
 > +     */
-> +    address_offset = table_data->len;
-> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
-> +                     4 /* QWord access */, 0);
-> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-> +        address_offset + GAS_ADDR_OFFSET,
-> +        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
-> +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t));
-
-Offset of (ACPI_GHES_ERROR_SOURCE_COUNT + source_id) * sizeof(uint64_t)
-
+> +    env->ext_dabt_pending = 1;
 > +
-> +    /*
-> +     * Read Ack Preserve
-> +     * We only provide the first bit in Read Ack Register to OSPM to write
-> +     * while the other bits are preserved.
-> +     */
-> +    build_append_int_noprefix(table_data, ~0x1ULL, 8);
-> +    /* Read Ack Write */
-> +    build_append_int_noprefix(table_data, 0x1, 8);
+> +    return 0;
 > +}
 
+Thanks,
+drew
 
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

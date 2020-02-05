@@ -1,209 +1,220 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp320566lfp;
-        Wed, 5 Feb 2020 08:41:07 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxSOvl2/Hu394ViPTm+b40M23N18VsPYLc5HHwugaK+HMy0tGuSWvsyVxBW1BSMxS3rVQkE
-X-Received: by 2002:a05:6214:18eb:: with SMTP id ep11mr33012956qvb.91.1580920866921;
-        Wed, 05 Feb 2020 08:41:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580920866; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp322978lfp;
+        Wed, 5 Feb 2020 08:43:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyvEG0n/HKjBh/CqvlmF/E9SqIVaKDOaPPnPpR1y649gYO5m05gsV0/olKTQ2p9M2swPU7y
+X-Received: by 2002:aca:b2c5:: with SMTP id b188mr3629189oif.163.1580921014235;
+        Wed, 05 Feb 2020 08:43:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580921014; cv=none;
         d=google.com; s=arc-20160816;
-        b=SVJ0PCCdNPCfRsSe0m7OCIbNIHwgY9EzaLC9n/gz5bsoi1a2UQuoXTNbOciU7sWEQn
-         ZsQcWI0wAgMQXVwlEj9FYOOc6wCmW9cL60ujpp0G9D1Yp9zzreB6NvwjdRdQkAPI4GYj
-         oAtihHL6nV1vAfmUsyXlQPXBeiAUI91LsrNmUNI609KmgZabD143vckELQrPLIZftA13
-         O8KAnD3TAcAeGU0FRFe51jnGbIeLr1opLZ3rMT62yukfznYgfzAE6rj3IJ0GYTSn3Ajk
-         9i4lLQenaa6Tv0Ar/70OuI8dMknnaZyhIxsSJvdSRqHkvK2U0U5ec4xv++Kup2OuUvuK
-         mO5Q==
+        b=UPSGm28to13KjEQcJoyLAU8g1EQi/d7o2t9TpvEmopAS9kanWWTC/HfeZyOzq3aobP
+         BvDPvwEjTjmya7NYWknNwy3Gn+vNN2OrbSd/JUzKt2hj9pGFtWgtAUiaIH2gn9RLfmvI
+         S2ExZhRZ1p2FMnxm1AfenSWRvb8HNjonNeEgqRtMhhN2v/1bSmx+AwAIDd6H0N8lEavx
+         BUtYJol1Vl5jpiPCsA8rrbwdb8la6ExcDuwUtjNP1Gon6yjcz0UaFDNNGcDbpQ4GLhOp
+         yCLuAk7sctc3JDQ+MCkpTgyNqnFZyvQWoppiJOyDHXXk75mv8qC7C5PAekawTA1s79Fw
+         HUzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:from:references:to:subject
-         :dkim-signature;
-        bh=2ngiJi5jD2rFb2s5ESvyyFNj/NPj/qHBDYwXjPCqtAI=;
-        b=NQnyuBx5sXV+NVrH696yGvio8vwLwSHGmfvObgyq30IY1o1/m6Wp8x86x/9GA8Vrbf
-         7Ujjs/kX0fwax8+33OHl/ppJqXt+b5RNr7H35DwgYFe+caJae59pj8fXlPvmTkcJ5PZi
-         DSCR3fSpNu/uCHI2Y5V+/sw5CSRUtN+IYDKiXVecR4r095F5o/QUSholRo4+QuU9qgYi
-         xQtT0+kAFDesy+Ugkkbebbp+HuHB4TzRnjtx6mVyNNrm0k4fC9Il0d2sHs6VFq4Usx7z
-         LWmJFgU+0BTg4xLnJ8/xo3JUrRwScYKJ7sVWvuDZUHIbyfPXndIPDFygojGSaGyQHqFd
-         tGMQ==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :organization:references:in-reply-to:message-id:subject:cc:to:from
+         :date;
+        bh=/oVoqbjF9czu00lwmOWpwLambJkXoqO2Vwyc/o6TOyM=;
+        b=bfEMDqrd/B/y1WqxpmQUwCHjV2IiY2iBUeFO3u0AkGHv9NeNCNkSRKPcCPiFUXpBAb
+         +JCrgxaOeaKgOANEk042851KnE4+RhKux7cTYG4oyw/Td3LTMudb5x2JOFzmgWk+3m4F
+         zeJWtGwZTQm3uFFb34oB/jBMJXiZ7VR6J+wwd7fvzG4x1WOCc6mXcEcMTRhuij81xhuT
+         TJi0oBCTaI+C5VZ36xtLxy2j99yVqT05RwFChGaKeUXEqRDiKyrGivcNasCi3Bp3tMUH
+         dXShGTxpcsU0jKp8vVGemssGHW4Cg2Ade1fswSLbmXbOD2liOZnEO6CnKcQNr2qI5doQ
+         dR/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ig2rrrd1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fe2si150136qvb.154.2020.02.05.08.41.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Feb 2020 08:41:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id j70si339688oib.219.2020.02.05.08.43.34;
+        Wed, 05 Feb 2020 08:43:34 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ig2rrrd1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52548 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izNje-0000T4-Af
-	for alex.bennee@linaro.org; Wed, 05 Feb 2020 11:41:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44122)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <david@redhat.com>) id 1izNjS-0000Lo-KX
- for qemu-arm@nongnu.org; Wed, 05 Feb 2020 11:40:56 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <david@redhat.com>) id 1izNjQ-0006Ep-MO
- for qemu-arm@nongnu.org; Wed, 05 Feb 2020 11:40:54 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:30331
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <david@redhat.com>) id 1izNjO-00069l-UK
- for qemu-arm@nongnu.org; Wed, 05 Feb 2020 11:40:51 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580920850;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=2ngiJi5jD2rFb2s5ESvyyFNj/NPj/qHBDYwXjPCqtAI=;
- b=ig2rrrd1oH2gDdkIXinTcpwdgJsDsrgiqnPQPk+imjSlfz68K81IfUjNAQKNnjcg912OfO
- VzI7CBe9dYuE1SISrc23F921MAIjD5Y/83K+U/9UTHJ9zAkWWNoSti6tJ1qaNpVwTey7oL
- gY3TDx3vQ23Fw0saRk19XHwHBVZjEzI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-181-cGz7EfO_N8CAJ9Wmmm3qfw-1; Wed, 05 Feb 2020 11:40:46 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6EE811137846;
- Wed,  5 Feb 2020 16:40:44 +0000 (UTC)
-Received: from [10.36.116.217] (ovpn-116-217.ams2.redhat.com [10.36.116.217])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 18AAC8DC11;
- Wed,  5 Feb 2020 16:40:35 +0000 (UTC)
-Subject: Re: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>
-References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
- <20200117174522.22044-2-shameerali.kolothum.thodi@huawei.com>
- <20200204162320.67e5d353@redhat.com>
- <74eaaa45-0d20-9a21-fbf8-6d29deb248eb@redhat.com>
- <4ce41554-8b8e-dbb5-5fe9-43af09950f23@redhat.com>
- <8e0b2c762e914c64bebfab5fc7441661@huawei.com>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat GmbH
-Message-ID: <133f274e-e942-7008-93d2-8edb1bc4d7ae@redhat.com>
-Date: Wed, 5 Feb 2020 17:40:35 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.1
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727052AbgBEQnc (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Wed, 5 Feb 2020 11:43:32 -0500
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2382 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1726359AbgBEQnc (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 5 Feb 2020 11:43:32 -0500
+Received: from lhreml703-cah.china.huawei.com (unknown [172.18.7.106])
+        by Forcepoint Email with ESMTP id 2BCBD87DFEB78505D9D6;
+        Wed,  5 Feb 2020 16:43:30 +0000 (GMT)
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ lhreml703-cah.china.huawei.com (10.201.108.44) with Microsoft SMTP Server
+ (TLS) id 14.3.408.0; Wed, 5 Feb 2020 16:43:29 +0000
+Received: from localhost (10.202.226.57) by lhreml710-chm.china.huawei.com
+ (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5; Wed, 5 Feb 2020
+ 16:43:29 +0000
+Date:   Wed, 5 Feb 2020 16:43:28 +0000
+From:   Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To:     Dongjiu Geng <gengdongjiu@huawei.com>
+CC:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <fam@euphon.net>, <rth@twiddle.net>, <ehabkost@redhat.com>,
+        <mtosatti@redhat.com>, <xuwei5@huawei.com>, <james.morse@arm.com>,
+        <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
+        <qemu-arm@nongnu.org>, <zhengxiang9@huawei.com>,
+        <linuxarm@huawei.com>
+Subject: Re: [PATCH v22 4/9] ACPI: Build Hardware Error Source Table
+Message-ID: <20200205164328.00006f1e@Huawei.com>
+In-Reply-To: <1578483143-14905-5-git-send-email-gengdongjiu@huawei.com>
+References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
+        <1578483143-14905-5-git-send-email-gengdongjiu@huawei.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; i686-w64-mingw32)
 MIME-Version: 1.0
-In-Reply-To: <8e0b2c762e914c64bebfab5fc7441661@huawei.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: cGz7EfO_N8CAJ9Wmmm3qfw-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
- "mst@redhat.com" <mst@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- "lersek@redhat.com" <lersek@redhat.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8X1KE5soL3kO
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.226.57]
+X-ClientProxiedBy: lhreml712-chm.china.huawei.com (10.201.108.63) To
+ lhreml710-chm.china.huawei.com (10.201.108.61)
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: D3QLsOttYVaM
 
->> Oh, and one more reason why the proposal in this patch is inconsistent:
->>
->> When migrating resizable memory regions (RAM_SAVE_FLAG_MEM_SIZE) we
->> store the block->used_length (ram_save_setup()) and use that value to
->> resize the region on the target (ram_load_precopy() -> qemu_ram_resize()=
-).
->>
->> This will be the value the callback will be called with. Page aligned.
->>
->=20
-> Sorry, I didn=E2=80=99t quite get that point and not sure how "req_length=
-" approach=20
-> will affect the migration.
+On Wed, 8 Jan 2020 19:32:18 +0800
+Dongjiu Geng <gengdongjiu@huawei.com> wrote:
 
-The issue is that on migration, you will lose the sub-page size either
-way. So your callback will be called
-- on the migration source with a sub-page size (via
-  memory_region_ram_resize() from e.g., hw/i386/acpi-build.c)
-- on the migration target with a page-aligned size (via
-  qemu_ram_resize() from migration/ram.c)
+> This patch builds Hardware Error Source Table(HEST) via fw_cfg blobs.
+> Now it only supports ARMv8 SEA, a type of Generic Hardware Error
+> Source version 2(GHESv2) error source. Afterwards, we can extend
+> the supported types if needed. For the CPER section, currently it
+> is memory section because kernel mainly wants userspace to handle
+> the memory errors.
+> 
+> This patch follows the spec ACPI 6.2 to build the Hardware Error
+> Source table. For more detailed information, please refer to
+> document: docs/specs/acpi_hest_ghes.rst
+> 
+> build_append_ghes_notify() will help to add Hardware Error Notification
+> to ACPI tables without using packed C structures and avoid endianness
+> issues as API doesn't need explicit conversion.
+> 
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+> Acked-by: Xiang Zheng <zhengxiang9@huawei.com>
 
-So this is inconsistent, especially when migrating.
+Hi. 
 
-Is there a way to get access to the sub-page size without passing it
-through the callback?
+I was forwards porting my old series adding CCIX error injection support
+and came across a place this could 'possibly' be improved.
 
-Like in fw_cfg_modify_file() do some fancy lookup and use the sub-page
-size instead of the passed size? (might have to be stored somewhere and
-refetched - and migrated)
+I say possibly because it's really about enabling more flexibility
+in how this code is reused than actually 'fixing' anything here.
 
---=20
-Thanks,
+If you don't make the change here, I'll just add a precursor patch to my
+series.  Just seems nice to tidy it up at source.
 
-David / dhildenb
+The rest of the parts of this series I am using seems to work great.
+
+Thanks!
+
+Jonathan
+
+> ---
+>  hw/acpi/ghes.c           | 118 ++++++++++++++++++++++++++++++++++++++++++++++-
+>  hw/arm/virt-acpi-build.c |   2 +
+>  include/hw/acpi/ghes.h   |  40 ++++++++++++++++
+>  3 files changed, 159 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> index b7fdbbb..9d37798 100644
+> --- a/hw/acpi/ghes.c
+> +++ b/hw/acpi/ghes.c
+> @@ -34,9 +34,42 @@
+> +
+...
+> +/* Build Generic Hardware Error Source version 2 (GHESv2) */
+> +static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
+This function takes source ID, which uses the enum of all sources registered.
+However, it doesn't use it to locate the actual physical addresses.
+
+Currently the code effectively assumes the value is 0.
+
+> +{
+> +    uint64_t address_offset;
+> +    /*
+> +     * Type:
+> +     * Generic Hardware Error Source version 2(GHESv2 - Type 10)
+> +     */
+> +    build_append_int_noprefix(table_data, ACPI_GHES_SOURCE_GENERIC_ERROR_V2, 2);
+> +    /* Source Id */
+> +    build_append_int_noprefix(table_data, source_id, 2);
+> +    /* Related Source Id */
+> +    build_append_int_noprefix(table_data, 0xffff, 2);
+> +    /* Flags */
+> +    build_append_int_noprefix(table_data, 0, 1);
+> +    /* Enabled */
+> +    build_append_int_noprefix(table_data, 1, 1);
+> +
+> +    /* Number of Records To Pre-allocate */
+> +    build_append_int_noprefix(table_data, 1, 4);
+> +    /* Max Sections Per Record */
+> +    build_append_int_noprefix(table_data, 1, 4);
+> +    /* Max Raw Data Length */
+> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
+> +
+> +    address_offset = table_data->len;
+> +    /* Error Status Address */
+> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
+> +                     4 /* QWord access */, 0);
+> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> +        address_offset + GAS_ADDR_OFFSET,
+> +        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
+
+The offset here would need to be source_id * sizeof(uint64_t) I think
+
+> +
+> +    /*
+> +     * Notification Structure
+> +     * Now only enable ARMv8 SEA notification type
+> +     */
+> +    build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_SEA);
+Perhaps a switch for this to allow for other options later.
+
+	switch (source_id) {
+	case ACPI_HEST_SRC_ID_SEA:
+		...
+		break;
+	default:
+	//print some error message.
+
+	}
+> +
+> +    /* Error Status Block Length */
+> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
+> +
+> +    /*
+> +     * Read Ack Register
+> +     * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source
+> +     * version 2 (GHESv2 - Type 10)
+> +     */
+> +    address_offset = table_data->len;
+> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
+> +                     4 /* QWord access */, 0);
+> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> +        address_offset + GAS_ADDR_OFFSET,
+> +        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
+> +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t));
+
+Offset of (ACPI_GHES_ERROR_SOURCE_COUNT + source_id) * sizeof(uint64_t)
+
+> +
+> +    /*
+> +     * Read Ack Preserve
+> +     * We only provide the first bit in Read Ack Register to OSPM to write
+> +     * while the other bits are preserved.
+> +     */
+> +    build_append_int_noprefix(table_data, ~0x1ULL, 8);
+> +    /* Read Ack Write */
+> +    build_append_int_noprefix(table_data, 0x1, 8);
+> +}
+
 

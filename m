@@ -1,95 +1,95 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6149918lfp;
-        Tue, 4 Feb 2020 19:12:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxr1OIi+dMMtk6m27xq0yrMeAr5l9x0dPq++YNosqcQdiWzeex/nbsQXbhwsvTuEkUGM/l8
-X-Received: by 2002:a0c:fac8:: with SMTP id p8mr30835416qvo.47.1580872374732;
-        Tue, 04 Feb 2020 19:12:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580872374; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6150020lfp;
+        Tue, 4 Feb 2020 19:13:03 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzL8caLJ09ZV0OROTqKxGww8/b+4zno+6rX9LuHdxcKhAwmcWiWsNsfkIQ0kMXTBQI054DF
+X-Received: by 2002:ac8:72d6:: with SMTP id o22mr31172710qtp.20.1580872383068;
+        Tue, 04 Feb 2020 19:13:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580872383; cv=none;
         d=google.com; s=arc-20160816;
-        b=VYpE7CLMLVuky+sKXzMIMCqwPl5kFi4qTFtN6T3ywg+B21mSdhlAEwB2HDIga4W5Nw
-         EO/r9aIgjw34CH4fy24pnywb9bA2n2GrP/jkBBeBzZ6qwQ5Lc+dRFPFGEvLwIJfrdLq1
-         DS5OrlCmraJdzcoeFwen5HvFmtxpkR4ALlq4uNbIdFI473xpdjkoqvnIfSRofSoX3sUH
-         rH+3wbWHNS6UYE2FuaXmvAXh9gZfBPzslbFvSm70fV5VAdSWGhU0NaGxr08gR7tU8dhp
-         DhdpugWhVcAJA74dKw9olRKyiOGWgAFZLy+iAkxI8C69fSUE7Kpu0ze7SHObcmgiU2QQ
-         6mkA==
+        b=cH7D3FsutaMCdlXiMy3R60LkfaK619l21WFz2A2i94aYYtAEcsW61PB867c2vGtQyU
+         mFe5pPOB4cgYsK+KC9fL4s5U+WUeHKAruoMzOfkiYWgQzDN86tx5p8yFNrjyN2Y6BnOH
+         QBb3J2W8rdQpT4+PpGR00uio34MqMsL56E+R1/DmAQP/g7AsYIotoGFKv9anoVNNKsMk
+         PP5XWalIDYLUsj1P5HZb2bQUBIoQK06EyRUtWXELFH4Jt5x9p8ArJdwndWYqsRJFRuJH
+         liGQOy6vZkfm/OeRSwAvL715yYrvox+oeX9nJv11WQxAtPDNZqmJVBzFuKR5GgbyRIl+
+         Us4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=qh2lAYN9mfnlZ3ypiOWt9zSlEsUPgnszltHhu5G8D08=;
-        b=elo883+89MlaptZk+GgDcGUg0giNIPiAAChRojur0Ksb1LumGMpr0fMLSAvTloJ5Ar
-         +dr+b9IgBZbna6SXG4m+gnn7uAN66MPQRNGT2/b7BR7lPqsczGY+3fgVejg4+UUe2e0K
-         jQZJsHp3srYtezVk/u6BZTFGOHBxXsVLDPbRgEUr/fcDS6yQ4N3tEGQ1qxxwH9yFJ81x
-         DM0ojn2vT8oYeD3unyhLyk4MkEbqx+mD54EHBP4iQIg+TpfVO2J9EsVoue228FMnOIdL
-         dYHYB/F7Rb9P2qVeLhPWct30CRJO57lIbqDshLQE13uT5hFsudfKVNntbn/juw+OW2Pw
-         6U7A==
+        bh=e3sZqixUTB6l4ZXXTVziX6Kdsz82alFvsnQ/+T1eNL0=;
+        b=V5Q4A/wt2yZrnumDgM/tik9yN06hlLuVWiY4AyvF/ZPkse4Vr57b3BvAiVsucciKzb
+         vLlGvcXH9YKSN0E0+mbLwfivQWtQ7slB/g/CogCRJ7exA7eXdsAMr6d2hn29VHL721pu
+         44EerGvX8gs8Bgb5gJrAIvFcvoCpzketGZvztvLfOGRBkLH2ULPQGPyWN9q4wUS8BPRj
+         ImMbpuh2S/RNpEIMWBnlr55d7ka0ic4mk6IqJj0IU5tl/FgKp8oY0QG7JcWvWbthn+VD
+         KVqAZgWwnTAQ813xv3kckKFLobYg1mBcszvlT3dWRWi1YNoRhroXKrbQjspBjMn2TSgW
+         zPpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WysVCNA7;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="YL/pajQ9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i13si14005868qtr.368.2020.02.04.19.12.54
+        by mx.google.com with ESMTPS id r10si14811298qvs.126.2020.02.04.19.13.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Feb 2020 19:12:54 -0800 (PST)
+        Tue, 04 Feb 2020 19:13:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WysVCNA7;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="YL/pajQ9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40852 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40858 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izB7W-0005Hk-5A
-	for alex.bennee@linaro.org; Tue, 04 Feb 2020 22:12:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45832)
+	id 1izB7e-0005Ma-HN
+	for alex.bennee@linaro.org; Tue, 04 Feb 2020 22:13:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45933)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <gshan@redhat.com>) id 1izB7O-0005Ez-FR
- for qemu-arm@nongnu.org; Tue, 04 Feb 2020 22:12:47 -0500
+ (envelope-from <gshan@redhat.com>) id 1izB7T-0005JJ-3k
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 22:12:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <gshan@redhat.com>) id 1izB7M-0003ED-0M
- for qemu-arm@nongnu.org; Tue, 04 Feb 2020 22:12:45 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:21007
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <gshan@redhat.com>) id 1izB7R-0003ZN-UL
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 22:12:51 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:40479
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1izB7L-00039A-Jp
- for qemu-arm@nongnu.org; Tue, 04 Feb 2020 22:12:43 -0500
+ (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1izB7R-0003VG-Qk
+ for qemu-arm@nongnu.org; Tue, 04 Feb 2020 22:12:49 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580872362;
+ s=mimecast20190719; t=1580872368;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding;
- bh=qh2lAYN9mfnlZ3ypiOWt9zSlEsUPgnszltHhu5G8D08=;
- b=WysVCNA7dj63JIsiRlxATuhdBecPuxhVNnQhsgEbB9xv0u0eKZc2fpoO/MDKy9yvhICM0r
- ao4ve6HsHlSLoueeFTUXz7glayke5PLvm/yx4v47UY6hbmOESwOI/z60y9FmLp6Kn0Z4fQ
- Ponj04lOvCJVmTIJMxIdk9v4ZHG8i20=
+ bh=e3sZqixUTB6l4ZXXTVziX6Kdsz82alFvsnQ/+T1eNL0=;
+ b=YL/pajQ9PhCXCCwzzRR1F9EH7K598xFqe0iftQRfKjWJohPVq+NXPyxbyXBJT1y60ns9ee
+ rw8Gp0cpWYvncT/zh3Fb1EWveNn6chfJvTJyF0MBe1Uues8TeF1Z0ch4p31zJALq2vEzrB
+ jIyH9EnuUxPRgZ2Xo88uDUmWpEUTCJU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-360-BJ0emUVHMQePEzf_hckHfw-1; Tue, 04 Feb 2020 22:12:40 -0500
+ us-mta-368-HGn0GsbIM5i_UTGpsoYgbA-1; Tue, 04 Feb 2020 22:12:45 -0500
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4EAFC1137849;
- Wed,  5 Feb 2020 03:12:39 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 51D661137842;
+ Wed,  5 Feb 2020 03:12:44 +0000 (UTC)
 Received: from localhost.localdomain.com (vpn2-54-74.bne.redhat.com
  [10.64.54.74])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6F95F811F8;
- Wed,  5 Feb 2020 03:12:33 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 09149811F8;
+ Wed,  5 Feb 2020 03:12:40 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
-Subject: [RFC PATCH v2 0/2] Support NMI Injection
-Date: Wed,  5 Feb 2020 14:12:25 +1100
-Message-Id: <20200205031227.24355-1-gshan@redhat.com>
+Subject: [RFC PATCH v2 1/2] target/arm: Allow to inject SError interrupt
+Date: Wed,  5 Feb 2020 14:12:26 +1100
+Message-Id: <20200205031227.24355-2-gshan@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: BJ0emUVHMQePEzf_hckHfw-1
+X-MC-Unique: HGn0GsbIM5i_UTGpsoYgbA-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,45 +106,103 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, jthierry@redhat.com,
  pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pZ8nORkhlmO8
+X-TUID: LhrC2SYK+xXr
 
-This intends to support HMP/QMP "nmi" command. When it's issued, the
-SError interrupt is injected to the guest. The guest is expected to
-crash with it. The behavior is similar to x86: NMI is injected to
-guest as error indication. The guest possiblly crashes and reboots
-with the injected NMI. Note that the functionality is currently
-supported on "virt" machine and {"host", "max"} CPU models only.
+This allows to inject SError interrupt, which will be used on receiving
+QMP/HMP "nmi" command in next patch.
 
-PATCH[1/2] allows to inject SError interrupt, which will be used by
-the subsequent patch. PATH[2/2] injects SError interrupt when "nmi"
-command is issued. With that, the guest is expected to crash and
-possiblly reboot.
+Signed-off-by: Gavin Shan <gshan@redhat.com>
+---
+ target/arm/cpu.c    | 11 +++++++++++
+ target/arm/cpu.h    | 12 +++++++++---
+ target/arm/helper.c |  4 ++++
+ 3 files changed, 24 insertions(+), 3 deletions(-)
 
-Testing
-=3D=3D=3D=3D=3D=3D=3D
-Start linux 5.5 guest with "virt"+"host", or "virt"+"max". The
-guest crashes and reboot if "/proc/sys/core/panic" had been configured
-properly, after "nmi" command is issued. The following error message
-is given on "virt"+"cortext-a72": "Error: NMI injection not supported"
-
-Changelog
-=3D=3D=3D=3D=3D=3D=3D=3D=3D
-v2:
-   * Redesigned to fully exploit SError interrupt
-
-Gavin Shan (2):
-  target/arm: Allow to inject SError interrupt
-  target/arm: Support NMI injection
-
- hw/arm/virt.c          | 18 +++++++++++++
- target/arm/cpu-qom.h   |  1 +
- target/arm/cpu.c       | 59 ++++++++++++++++++++++++++++++++++++++++++
- target/arm/cpu.h       | 12 ++++++---
- target/arm/cpu64.c     | 25 +++++++++++++++---
- target/arm/helper.c    |  4 +++
- target/arm/internals.h |  8 ++++++
- 7 files changed, 120 insertions(+), 7 deletions(-)
-
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index f86e71a260..24fd77437b 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -461,6 +461,17 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int interrup=
+t_request)
+         }
+     }
+=20
++    if (interrupt_request & CPU_INTERRUPT_SERROR) {
++        excp_idx =3D EXCP_SERROR;
++        target_el =3D arm_phys_excp_target_el(cs, excp_idx, cur_el, secure=
+);
++        if (arm_excp_unmasked(cs, excp_idx, target_el)) {
++            cs->exception_index =3D excp_idx;
++            env->exception.target_el =3D target_el;
++            cc->do_interrupt(cs);
++            ret =3D true;
++        }
++    }
++
+     return ret;
+ }
+=20
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 608fcbd0b7..0bbc46ff6d 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -49,6 +49,7 @@
+ #define EXCP_LAZYFP         20   /* v7M fault during lazy FP stacking */
+ #define EXCP_LSERR          21   /* v8M LSERR SecureFault */
+ #define EXCP_UNALIGNED      22   /* v7M UNALIGNED UsageFault */
++#define EXCP_SERROR         23   /* SError Interrupt */
+ /* NB: add new EXCP_ defines to the array in arm_log_exception() too */
+=20
+ #define ARMV7M_EXCP_RESET   1
+@@ -79,9 +80,10 @@ enum {
+ };
+=20
+ /* ARM-specific interrupt pending bits.  */
+-#define CPU_INTERRUPT_FIQ   CPU_INTERRUPT_TGT_EXT_1
+-#define CPU_INTERRUPT_VIRQ  CPU_INTERRUPT_TGT_EXT_2
+-#define CPU_INTERRUPT_VFIQ  CPU_INTERRUPT_TGT_EXT_3
++#define CPU_INTERRUPT_FIQ    CPU_INTERRUPT_TGT_EXT_1
++#define CPU_INTERRUPT_VIRQ   CPU_INTERRUPT_TGT_EXT_2
++#define CPU_INTERRUPT_VFIQ   CPU_INTERRUPT_TGT_EXT_3
++#define CPU_INTERRUPT_SERROR CPU_INTERRUPT_TGT_EXT_4
+=20
+ /* The usual mapping for an AArch64 system register to its AArch32
+  * counterpart is for the 32 bit world to have access to the lower
+@@ -2731,6 +2733,10 @@ static inline bool arm_excp_unmasked(CPUState *cs, u=
+nsigned int excp_idx,
+         pstate_unmasked =3D !(env->daif & PSTATE_I);
+         break;
+=20
++    case EXCP_SERROR:
++       pstate_unmasked =3D !(env->daif & PSTATE_A);
++       break;
++
+     case EXCP_VFIQ:
+         if (secure || !(hcr_el2 & HCR_FMO) || (hcr_el2 & HCR_TGE)) {
+             /* VFIQs are only taken when hypervized and non-secure.  */
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 19a57a17da..622a1d8796 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -7980,6 +7980,7 @@ void arm_log_exception(int idx)
+             [EXCP_LAZYFP] =3D "v7M exception during lazy FP stacking",
+             [EXCP_LSERR] =3D "v8M LSERR UsageFault",
+             [EXCP_UNALIGNED] =3D "v7M UNALIGNED UsageFault",
++            [EXCP_SERROR] =3D "SError Interrupt",
+         };
+=20
+         if (idx >=3D 0 && idx < ARRAY_SIZE(excnames)) {
+@@ -8566,6 +8567,9 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs=
+)
+     case EXCP_VFIQ:
+         addr +=3D 0x100;
+         break;
++    case EXCP_SERROR:
++        addr +=3D 0x180;
++        break;
+     default:
+         cpu_abort(cs, "Unhandled exception 0x%x\n", cs->exception_index);
+     }
 --=20
 2.23.0
 

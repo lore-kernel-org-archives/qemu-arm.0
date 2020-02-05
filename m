@@ -1,153 +1,185 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp440525lfp;
-        Wed, 5 Feb 2020 10:35:05 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwpXZJgBCy2Sg1eBW542uhofj11Z0yzJpIi+LdBL18Ki21UCXcDbzk/uRgFpGN35/Wz14xo
-X-Received: by 2002:ac8:7695:: with SMTP id g21mr31557781qtr.99.1580927705468;
-        Wed, 05 Feb 2020 10:35:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580927705; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp457439lfp;
+        Wed, 5 Feb 2020 10:54:18 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw3feT1cf76PXO65oAzrB7O+ZBHvBjcEEDHvKfvoSgkMiOCtLqj3QjLS1F+gY2nZyATKSpN
+X-Received: by 2002:a37:8cc:: with SMTP id 195mr20779172qki.456.1580928858119;
+        Wed, 05 Feb 2020 10:54:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580928858; cv=none;
         d=google.com; s=arc-20160816;
-        b=HOxMx5hQZl0S4FXFC3PgT/pWzqJkj3u6x3YK2BLMHW4FmbO7ATlTxujnAHs55+GBl9
-         U7cc9iiRbdF0k0RU2s2OxOw407q1shgBKG/NddyCKWMBwqjiT0dZt3zSr8d6+1ydeapY
-         K3bd1Gvn8CqmcexZr9wFmQh4Lt4izzwyxEWHtw8RqT0PoJ46zW82qAo6H2/1AaIDbytn
-         zf713VfENrJutaSXljrfrPScAMf//WyERJt8QIT/NPbyWNQGCjsACsoPl4optUSN1+lE
-         K72kFJm8vOfBOILqb5PD9godJiZBlX74x3aNVMXUsu9f3zEGo4cppTpfwRl/rU5q+smt
-         gKlA==
+        b=POtdLUdlmDarzmmrJbvCQTSe5Yv9pCOW1R9bjzgH/Z7NhLuw/HbF3WLFA900cJ+VBP
+         +M3Gw/0rdqw/7Sr9gz4A63ATWxeBThxY44JzeEtBAHt7TmPlk2aOG7HDO6nTzC1eesdx
+         pct/R1QQM2ZIx48lvoPgMyV6R54UsMfFr/kLHsFjGwwzCrpZyiZtiWcxKEtwwvDpa6y4
+         jwrFSTjWSxqg3jo3qlfGy9gH9lRYFD/QPRu2a5pcPcvQCigLvy4Cei4881RXmvHPcw23
+         b6MzKnxYt0yrifwWL6szJIvd/FbtFgcyeBLuMtBL9mVX0QuCunU7+evl44eQCFAeJdq5
+         XzNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=U9k6gslZubazUtZyUDKePl3+kVZUq7ywnE3xDBg3sqc=;
-        b=t3Qy2bQ61PIiJCOAGDIfIr89Id4dP1ot4IOISQmck8E3e56EBALvaAADubyHbH5dI8
-         fLkYVuhWg1hQZPE5LpbxDlDbaed8jI94Y06zJYtY0q32liKoTwpoKElXuQA/DzmwaMVF
-         dc5zupk2a+zI4l0GR5BSnklysJuWsGsC7WAZOnN1l+TQnq7peqenR36ozQCWtXuEI7XA
-         Tk6W0irqm2ZzRzbYwgK4A29vdsCR5Lh4FnjLjwrJhOv6xi9rn5ZrqMLenvOuUBSG/MJQ
-         +UXzTBmRkezJgXlTx2OWVSavG1qvwSKgCrBxmOJ4QzjJdJQYFMV43b4tStD4MhMfevZT
-         fUcw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=UZ0bX6T6pi3Kt/fWzzu7atALwWihp9KxFsFA+tnR25Q=;
+        b=pK5pkW05KqumpF34IRCGd894vfwVEgM5uTbDhl2v2s3HpvAOHLZH9DiJS9A8DzvmrV
+         vbyA+nuhnpi6nUF5cq4ATh9BU05yf1LcMXlPDqZC8lqUbt7g+U5jG8h2l9ZgRjhlvpxS
+         juTjwknP9CsxEb4l2VqGoBNB0qLLVD9VjzzUaPm+ht/yhF2MMY8sJBpfclmQVR63pkpY
+         0zdbP0hSqmOKWOBtnX4HJou4eN/ASNu5312ofyYzG0T6bX0oU38xD4hEMYr26lvnqx6o
+         Bdqv9SCokn6XyU0bVx/hJ9N5ujXq5klJYXiwvzHPQACaf7f4XEFUYJzHSJiaYsd06sLK
+         JGvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="hZG/14ly";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ka5K5z05;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 1si329946qks.131.2020.02.05.10.35.05
+        by mx.google.com with ESMTPS id b17si359144qkg.63.2020.02.05.10.54.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Feb 2020 10:35:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 05 Feb 2020 10:54:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="hZG/14ly";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54952 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ka5K5z05;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:55132 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izPVw-00026t-Uq
-	for alex.bennee@linaro.org; Wed, 05 Feb 2020 13:35:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50937)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1izPoX-0007un-JA
+	for alex.bennee@linaro.org; Wed, 05 Feb 2020 13:54:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36140)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1izPVY-00024r-3G
- for qemu-devel@nongnu.org; Wed, 05 Feb 2020 13:34:41 -0500
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1izPoP-0007qv-2m
+ for qemu-arm@nongnu.org; Wed, 05 Feb 2020 13:54:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1izPVX-0008Ap-1Z
- for qemu-devel@nongnu.org; Wed, 05 Feb 2020 13:34:40 -0500
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:33936)
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1izPoN-0008E1-It
+ for qemu-arm@nongnu.org; Wed, 05 Feb 2020 13:54:09 -0500
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:38453)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1izPVT-00082c-Pb; Wed, 05 Feb 2020 13:34:35 -0500
-Received: by mail-pf1-x442.google.com with SMTP id i6so1657140pfc.1;
- Wed, 05 Feb 2020 10:34:35 -0800 (PST)
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1izPoK-000831-PF; Wed, 05 Feb 2020 13:54:04 -0500
+Received: by mail-oi1-x244.google.com with SMTP id l9so1828775oii.5;
+ Wed, 05 Feb 2020 10:54:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=U9k6gslZubazUtZyUDKePl3+kVZUq7ywnE3xDBg3sqc=;
- b=hZG/14lyL9U7tz3jLbYSlRAUU0u51lwFwpsiaH7/8gKaxhoJfkN2tOYEk80MIlGZjX
- GGLDHXSeXwjG817+46HrCQ461/f92CT8Fls7pyOxQ93AHfW2lhYPvq1Wij3bOgxQsy3O
- IhqujIHIgmPhnOr5odLxpYlIJEtyqQfXW/1trPZ1w2jQy9rerwU9Z0+KaMqCAOra+x7f
- FRpmHPVOichpjaLmkcqL6/luQFdSUBdnU4wzFN8lBz+4b5mcWLOll+AhumsmlZpQcyBu
- 9D0cXFfLMCtv6vdjMTfk1jDyEMa84082PS60b9zzT23lXK4GWdu7F59jTDUyCwLvJg5H
- Up9A==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=UZ0bX6T6pi3Kt/fWzzu7atALwWihp9KxFsFA+tnR25Q=;
+ b=ka5K5z05vBeVpJqUQmtLw8DdEx0GTGXptUn8YP2xnvhWtfHusUZy7+EOwdqpEF9RZ4
+ hJKxn4qDEZOXT4FR67ukmVczBGqe8j4TH+zlgAVcQ7Xy2lwQ1msm22TKjWB00LBSg3Gb
+ /f/Ni8RUNZrxVBY1YWjCupCdkc0TVasBgdy75BjrE7eQqMCV/KiFqRkBesxM/pFV3qYl
+ wcOuK1ASWngr3H90awsv3xG4BiiIzeddZjReboYiHXvAIv/N7oilhV16CjCZLAs+TH7C
+ PNycdT5TP/tYjuVCYQLcTmMgl/fYOlzEKLTFBd0Vobm4wbBmTUXVL0eBiNWrqR3LSxNv
+ xPjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition
- :content-transfer-encoding:in-reply-to:user-agent;
- bh=U9k6gslZubazUtZyUDKePl3+kVZUq7ywnE3xDBg3sqc=;
- b=aqYWoyYzSw2OabTMlaa9i9fpqAWCj0Gj9GgB6zsILWXiiYFtnyKBUGXVfuEJMomGCt
- T5i6wooSffxpsFvwx7e0AGnKPKIRTbUUe7uSRNSZebl9WNuVVIGqg25I5/hvK3x3C5Hg
- gdDli98IRZMQtj0jItydpgRvePJPMKTaHZeafq4gD5/rY9Hr5QDRW5JYCrJGG6SGpBvH
- rswBkns7tZ4NXnk8N367T9jE+NqU7QCBtqZY2Yuvid8yHBYDqo4SddJ/c7YopHTrPsgu
- 0ipsZBs2HxLmONGA/vMCvBIICUEmc1Gitf5rl2I9RWO1f9W0brK2CAxF/BdPyyN7mrsj
- 9nrQ==
-X-Gm-Message-State: APjAAAXjaEsdUGwWI4Ad7XNsbASZ0XVbGDbrbkI/4rWxoLQ6bXdUFU1W
- 0mjTBecnHKcawiXyQZ3sPOI=
-X-Received: by 2002:a63:78b:: with SMTP id 133mr37098735pgh.379.1580927674512; 
- Wed, 05 Feb 2020 10:34:34 -0800 (PST)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id c15sm194369pfo.137.2020.02.05.10.34.33
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 05 Feb 2020 10:34:33 -0800 (PST)
-Date: Wed, 5 Feb 2020 10:34:32 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Subject: Re: [PATCH 1/3] m25p80: Convert to support tracing
-Message-ID: <20200205183432.GA10650@roeck-us.net>
-References: <20200203180904.2727-1-linux@roeck-us.net>
- <615518c7-f4c8-7c08-9096-bcf5f583eeb1@kaod.org>
- <20200205163520.GE25403@roeck-us.net>
- <a4ee58d2-0642-b4f4-2756-84d9f08b08a9@kaod.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=UZ0bX6T6pi3Kt/fWzzu7atALwWihp9KxFsFA+tnR25Q=;
+ b=iZiVc/ReYZhjzBFCYMq2hGDI2VgI661C5eZosfcuKq2tt+aag3/eXwiQX8H3ehEY4h
+ Cf9QQzKSQRAm1RTF34u9pBSxxuKuVHY5ZTiwzo52wsGP8hKl+L+2Glfg68A1pSR6j+4P
+ J2lpJ7ja1M9rshEhRUIwXKOonDLx7N+HvjLRQFhkr0rI9G19wnaeUmdgEFZKth4p+rC/
+ JJSxVa17cyd8hs2iA6J1eTvVEfAcaE/B3vZx1vGnWEVB0zE80b7XT6abR30Cn4bnp4mP
+ YikG0AUV1+1JDi2tbqPRd9xDvrkRfqQX0xjiEhXjghjPdvCVn33G94fKNMsAaIhOR0jW
+ VaJQ==
+X-Gm-Message-State: APjAAAU5Dc5PnaW6OAcRMkQfLlBxFglvhevSreFXnnoDXalAkeU0cL9+
+ XxrGNU76BzTZfQ6TjPci4qsV4BG1CemGf9lB+uo=
+X-Received: by 2002:a05:6808:64e:: with SMTP id
+ z14mr3815280oih.79.1580928843800; 
+ Wed, 05 Feb 2020 10:54:03 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <a4ee58d2-0642-b4f4-2756-84d9f08b08a9@kaod.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+References: <20191120091014.16883-1-thuth@redhat.com>
+ <20191120091014.16883-4-thuth@redhat.com>
+ <7a775153-f18d-e766-1d8f-33607f5fa05b@amsat.org>
+ <2396dfd4-6c85-d17a-b358-bd058c757f14@redhat.com>
+ <CAAdtpL7vPCQ8k91nvBWc_NLrmhu6OPVprUSL8uzi_v6HMiSrnw@mail.gmail.com>
+ <CAL1e-=gd-ymYd3_cods8BAtwbQeJFodmnmsNo-gLx381rXHKxQ@mail.gmail.com>
+ <20200205175115.GT2221087@redhat.com>
+ <CAL1e-=jHpNmTdWSiHZ_StC0MXjLLsyq0cfSE=45=6SwoFnfiaA@mail.gmail.com>
+In-Reply-To: <CAL1e-=jHpNmTdWSiHZ_StC0MXjLLsyq0cfSE=45=6SwoFnfiaA@mail.gmail.com>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Wed, 5 Feb 2020 19:53:52 +0100
+Message-ID: <CAL1e-=ivAZCj990c+47kVdcaOUgU5sDvoWZNWAMHmVJWd9L3Vg@mail.gmail.com>
+Subject: Re: [PATCH for-5.0 3/4] Remove the core bluetooth code
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::442
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::244
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KRfrxzDG5B42
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ libvir-list@redhat.com,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: w3uf02r0Yg6u
 
-On Wed, Feb 05, 2020 at 06:10:44PM +0100, Cédric Le Goater wrote:
-> On 2/5/20 5:35 PM, Guenter Roeck wrote:
-> > On Wed, Feb 05, 2020 at 11:05:04AM +0100, Cédric Le Goater wrote:
-> >> On 2/3/20 7:09 PM, Guenter Roeck wrote:
-> >>> While at it, add some trace messages to help debug problems
-> >>> seen when running the latest Linux kernel.
-> >>
-> >> In case you resend, It would be nice to printout a flash id in the tracing
-> >> else I have a patch for it on top of yours. It helped me track a squashfs
-> >> corruption on the Aspeed witherspoon-bmc machine which we were after since
-> >> 2017 or so. It seems to be a kernel bug.
-> >>
-> > 
-> > I'll send a new version to split patch 2. Not sure I understand what you mean
-> > with the above. If you send me your patch I'll be happy to merge it into mine,
-> > otherwise we can just keep it as follow-ip patch.
-> 
-> Here is the idea : 
-> 
->   https://github.com/legoater/qemu/commit/a07727e9cfc8447ea18249ff68a561f7e8883584
-> 
+On Wed, Feb 5, 2020 at 7:03 PM Aleksandar Markovic
+<aleksandar.m.mail@gmail.com> wrote:
+>
+> > The deprecation policy is primarily intended for notifying of changes
+> > to QEMU's stable interfaces ( CLI, HMP, QMP) which affect behaviour
+> > and usage of QEMU at runtime & are liable to break apps managing
+> > QEMU.
+> >
+> > Changes to build time options have no strong reason to be subjected to
+> > the deprecation process.
+>
+> This sounds reasonable to me.
+>
+> But: Should our deprecation policy be clearer on what is subject to
+> our deprecation procedure, and what is not?
+>
+> Regards,
+> Aleksandar
+>
 
-Ah, that. I had thought about doing that, but I found displaying the pointer
-a bit clumsy. It looks like there isn't really anything else available that
-would provide a flash index, and I agree that it would be useful, so I'll
-add it for all traces.
+And, there is even a section devoted to the build system in
+https://qemu.weilnetz.de/doc/qemu-doc.html#Deprecated-features :
 
-Thanks,
-Guenter
+    B.10 Build system
+
+    B.10.1 Python 2 support (since 4.1.0)
+
+    In the future, QEMU will require Python 3 to be available at build
+time. Support for Python 2 in scripts shipped with QEMU is deprecated.
+
+The wording above comes from the file in our source tree: qemu-deprecated.texi .
+
+Shouldn't the cases like "--enable-blues" be documented here? I think
+the deprecation of bluetooth devices support should have included a
+short section on involved configure options here.
+
+Why is Python 2 support different to "--enable-blues" support? There
+should not be some unknown and arbitrary criterium what do and what
+doesn't come in this subsection.
+
+Or, if our build system is not subject to our deprecation policy, than
+what is the entire subsection "B.10 Build system" doing here, in
+section "Deprecated features"?
+
+
+> > If we remove an option at build time the effect
+> > is noticed immediately and the solution is straightforward (stop passing
+> > the option). We have added / removed configure options at will with little
+> > negative feedback historically. We'll have far biggest changes coming to
+> > the build system in future too, with the introduction of meson.
+> >
+> > I don't think we want to constrain & complicate our work in modernizing
+> > the build system by declaring that any changes to it must go through
+> > deprecation.
+> >
+> > Regards,
+> > Daniel
+> > --
+> > |: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+> > |: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+> > |: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+> >

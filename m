@@ -1,223 +1,209 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp187481lfp;
-        Wed, 5 Feb 2020 06:42:28 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzbyehDn+VB1v4+IFbXchhPjABWBNTNFvDryfPj9gs9Ton/ISygVDJqo45rWxOdGHqPWS4v
-X-Received: by 2002:a0c:e98e:: with SMTP id z14mr33026131qvn.158.1580913748309;
-        Wed, 05 Feb 2020 06:42:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580913748; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp320566lfp;
+        Wed, 5 Feb 2020 08:41:07 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxSOvl2/Hu394ViPTm+b40M23N18VsPYLc5HHwugaK+HMy0tGuSWvsyVxBW1BSMxS3rVQkE
+X-Received: by 2002:a05:6214:18eb:: with SMTP id ep11mr33012956qvb.91.1580920866921;
+        Wed, 05 Feb 2020 08:41:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580920866; cv=none;
         d=google.com; s=arc-20160816;
-        b=QkI3XWkwQnKhRZ9bgwmtI2YjTPbWIrOUWlzpdP3ci/IWBFj43F82Isa/WcsRw17jxh
-         Ug5quTlJhDkPut1Ucv5WdvhKbQkBuo+F6kYeHzLSQGotPn/NKa4WgyKrqXobmaOftGPV
-         H+gXrLci4AI3Y9miSD+dtShr0H+KMk7zxqR+6nT0ZTw+3tb08PZ6sXFVjIjAdVLsoqEM
-         dK9bCqqCWFD2ZpyLye3JZOpKRk0v/815Uq/MGFikKIj2Vyqq0dU8Um6vhxKhzvgvJrXV
-         jj3SYZEw24quan63hrGtP8y4fJAChur4mpVTFrDClVi4HqP4vvBVHziW1h5vvVMnAJjj
-         FDMg==
+        b=SVJ0PCCdNPCfRsSe0m7OCIbNIHwgY9EzaLC9n/gz5bsoi1a2UQuoXTNbOciU7sWEQn
+         ZsQcWI0wAgMQXVwlEj9FYOOc6wCmW9cL60ujpp0G9D1Yp9zzreB6NvwjdRdQkAPI4GYj
+         oAtihHL6nV1vAfmUsyXlQPXBeiAUI91LsrNmUNI609KmgZabD143vckELQrPLIZftA13
+         O8KAnD3TAcAeGU0FRFe51jnGbIeLr1opLZ3rMT62yukfznYgfzAE6rj3IJ0GYTSn3Ajk
+         9i4lLQenaa6Tv0Ar/70OuI8dMknnaZyhIxsSJvdSRqHkvK2U0U5ec4xv++Kup2OuUvuK
+         mO5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:user-agent:in-reply-to:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=0kyKvGWlr4sHpTV4rEePrOoocfQGRqpMub/4CaZCDWU=;
-        b=HyAk0f7a5dmq/kFKHm4bJ03+ge/mRidhkyhbfBfP321h1ozwDUy/bDclK9X/ceOe4u
-         LAQbe7FKjzpY5drNKHnAMrVCqDA1oKKhviRnrJHwxsyoPIxj5djfNl+RCEGJtzE1Z2XN
-         tWVK4okM5uS4Qod9S1Vc9trJoy4dMhw9TPmoiw0W4lyOhvtN51fb+qAn+VpzYUVCAO88
-         haqsWISqIVOAxxjA0Ch6UwZ1ZoN2M7ah91RFfQGQEmIDnWhwgi1wm8bDLF9v5rRTgBgL
-         eF6UYmgzqWMKu/iX9FN1JHMfMuibjPsVxCc6ltqAoTSFDnCOPj7mXSyl1hnVlW3tK9aR
-         uwaA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:autocrypt:from:references:to:subject
+         :dkim-signature;
+        bh=2ngiJi5jD2rFb2s5ESvyyFNj/NPj/qHBDYwXjPCqtAI=;
+        b=NQnyuBx5sXV+NVrH696yGvio8vwLwSHGmfvObgyq30IY1o1/m6Wp8x86x/9GA8Vrbf
+         7Ujjs/kX0fwax8+33OHl/ppJqXt+b5RNr7H35DwgYFe+caJae59pj8fXlPvmTkcJ5PZi
+         DSCR3fSpNu/uCHI2Y5V+/sw5CSRUtN+IYDKiXVecR4r095F5o/QUSholRo4+QuU9qgYi
+         xQtT0+kAFDesy+Ugkkbebbp+HuHB4TzRnjtx6mVyNNrm0k4fC9Il0d2sHs6VFq4Usx7z
+         LWmJFgU+0BTg4xLnJ8/xo3JUrRwScYKJ7sVWvuDZUHIbyfPXndIPDFygojGSaGyQHqFd
+         tGMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="YBxf/jvO";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ig2rrrd1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bp4si22918qvb.66.2020.02.05.06.42.28
+        by mx.google.com with ESMTPS id fe2si150136qvb.154.2020.02.05.08.41.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Feb 2020 06:42:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 05 Feb 2020 08:41:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="YBxf/jvO";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ig2rrrd1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48418 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52548 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izLsp-0000av-QE
-	for alex.bennee@linaro.org; Wed, 05 Feb 2020 09:42:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60517)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1izNje-0000T4-Af
+	for alex.bennee@linaro.org; Wed, 05 Feb 2020 11:41:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44122)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jfreimann@redhat.com>) id 1izLs6-0008U1-PL
- for qemu-devel@nongnu.org; Wed, 05 Feb 2020 09:41:43 -0500
+ (envelope-from <david@redhat.com>) id 1izNjS-0000Lo-KX
+ for qemu-arm@nongnu.org; Wed, 05 Feb 2020 11:40:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jfreimann@redhat.com>) id 1izLs5-0002fc-Ev
- for qemu-devel@nongnu.org; Wed, 05 Feb 2020 09:41:42 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:25660
+ (envelope-from <david@redhat.com>) id 1izNjQ-0006Ep-MO
+ for qemu-arm@nongnu.org; Wed, 05 Feb 2020 11:40:54 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:30331
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jfreimann@redhat.com>)
- id 1izLs5-0002dq-AP
- for qemu-devel@nongnu.org; Wed, 05 Feb 2020 09:41:41 -0500
+ (Exim 4.71) (envelope-from <david@redhat.com>) id 1izNjO-00069l-UK
+ for qemu-arm@nongnu.org; Wed, 05 Feb 2020 11:40:51 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580913700;
+ s=mimecast20190719; t=1580920850;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0kyKvGWlr4sHpTV4rEePrOoocfQGRqpMub/4CaZCDWU=;
- b=YBxf/jvOF5OsbREWHueIuGqxg8EGWndDFGc0psXXpa4SpYletUs/AH7/uelW3SSx47QTjK
- o+Tnh4VE1c/PxEqgkot8yf09HkFFhH9qRNSmFQ4DqItjqynpbc8YP2lFQnsjhXVT2G+Z8Q
- OlkPsLKaaKu+AlUSR5hRcVFRmHHfy08=
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=2ngiJi5jD2rFb2s5ESvyyFNj/NPj/qHBDYwXjPCqtAI=;
+ b=ig2rrrd1oH2gDdkIXinTcpwdgJsDsrgiqnPQPk+imjSlfz68K81IfUjNAQKNnjcg912OfO
+ VzI7CBe9dYuE1SISrc23F921MAIjD5Y/83K+U/9UTHJ9zAkWWNoSti6tJ1qaNpVwTey7oL
+ gY3TDx3vQ23Fw0saRk19XHwHBVZjEzI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-108-NuAAIiOrNUyN7Gis0Mgd1Q-1; Wed, 05 Feb 2020 09:40:30 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-181-cGz7EfO_N8CAJ9Wmmm3qfw-1; Wed, 05 Feb 2020 11:40:46 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9B48861268;
- Wed,  5 Feb 2020 14:40:29 +0000 (UTC)
-Received: from localhost (ovpn-116-52.ams2.redhat.com [10.36.116.52])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2748A1001B05;
- Wed,  5 Feb 2020 14:40:28 +0000 (UTC)
-Date: Wed, 5 Feb 2020 15:40:27 +0100
-From: Jens Freimann <jfreimann@redhat.com>
-To: Keqian Zhu <zhukeqian1@huawei.com>
-Subject: Re: [PATCH] migration: Optimization about wait-unplug migration state
-Message-ID: <20200205144027.55qsz3j7qf26pzfd@jenstp.localdomain>
-References: <20200204050841.44453-1-zhukeqian1@huawei.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6EE811137846;
+ Wed,  5 Feb 2020 16:40:44 +0000 (UTC)
+Received: from [10.36.116.217] (ovpn-116-217.ams2.redhat.com [10.36.116.217])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 18AAC8DC11;
+ Wed,  5 Feb 2020 16:40:35 +0000 (UTC)
+Subject: Re: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ Igor Mammedov <imammedo@redhat.com>
+References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
+ <20200117174522.22044-2-shameerali.kolothum.thodi@huawei.com>
+ <20200204162320.67e5d353@redhat.com>
+ <74eaaa45-0d20-9a21-fbf8-6d29deb248eb@redhat.com>
+ <4ce41554-8b8e-dbb5-5fe9-43af09950f23@redhat.com>
+ <8e0b2c762e914c64bebfab5fc7441661@huawei.com>
+From: David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat GmbH
+Message-ID: <133f274e-e942-7008-93d2-8edb1bc4d7ae@redhat.com>
+Date: Wed, 5 Feb 2020 17:40:35 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
 MIME-Version: 1.0
-In-Reply-To: <20200204050841.44453-1-zhukeqian1@huawei.com>
-User-Agent: NeoMutt/20180716-1376-5d6ed1
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: NuAAIiOrNUyN7Gis0Mgd1Q-1
+In-Reply-To: <8e0b2c762e914c64bebfab5fc7441661@huawei.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: cGz7EfO_N8CAJ9Wmmm3qfw-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-devel@nongnu.org
+ [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: wanghaibin.wang@huawei.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Juan Quintela <quintela@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e7V2bZo/WzwD
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
+ "mst@redhat.com" <mst@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ "lersek@redhat.com" <lersek@redhat.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8X1KE5soL3kO
 
-On Tue, Feb 04, 2020 at 01:08:41PM +0800, Keqian Zhu wrote:
->qemu_savevm_nr_failover_devices() is originally designed to
->get the number of failover devices, but it actually returns
->the number of "unplug-pending" failover devices now. Moreover,
->what drives migration state to wait-unplug should be the number
->of "unplug-pending" failover devices, not all failover devices.
->
->We can also notice that qemu_savevm_state_guest_unplug_pending()
->and qemu_savevm_nr_failover_devices() is equivalent almost (from
->the code view). So the latter is incorrect semantically and
->useless, just delete it.
->
->In the qemu_savevm_state_guest_unplug_pending(), once hit a
->unplug-pending failover device, then it can return true right
->now to save cpu time.
->
->Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
->---
->Cc: jfreimann@redhat.com
->Cc: Juan Quintela <quintela@redhat.com>
->Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
->---
-> migration/migration.c |  2 +-
-> migration/savevm.c    | 24 +++---------------------
-> migration/savevm.h    |  1 -
-> 3 files changed, 4 insertions(+), 23 deletions(-)
->
->diff --git a/migration/migration.c b/migration/migration.c
->index 3a21a4686c..deedc968cf 100644
->--- a/migration/migration.c
->+++ b/migration/migration.c
->@@ -3333,7 +3333,7 @@ static void *migration_thread(void *opaque)
->
->     qemu_savevm_state_setup(s->to_dst_file);
->
->-    if (qemu_savevm_nr_failover_devices()) {
->+    if (qemu_savevm_state_guest_unplug_pending()) {
->         migrate_set_state(&s->state, MIGRATION_STATUS_SETUP,
->                           MIGRATION_STATUS_WAIT_UNPLUG);
->
->diff --git a/migration/savevm.c b/migration/savevm.c
->index f19cb9ec7a..1d4220ece8 100644
->--- a/migration/savevm.c
->+++ b/migration/savevm.c
->@@ -1140,36 +1140,18 @@ void qemu_savevm_state_header(QEMUFile *f)
->     }
-> }
->
->-int qemu_savevm_nr_failover_devices(void)
->+bool qemu_savevm_state_guest_unplug_pending(void)
-> {
->     SaveStateEntry *se;
->-    int n =3D 0;
->
->     QTAILQ_FOREACH(se, &savevm_state.handlers, entry) {
->         if (se->vmsd && se->vmsd->dev_unplug_pending &&
->             se->vmsd->dev_unplug_pending(se->opaque)) {
->-            n++;
->-        }
->-    }
->-
->-    return n;
->-}
->-
->-bool qemu_savevm_state_guest_unplug_pending(void)
->-{
->-    SaveStateEntry *se;
->-    int n =3D 0;
->-
->-    QTAILQ_FOREACH(se, &savevm_state.handlers, entry) {
->-        if (!se->vmsd || !se->vmsd->dev_unplug_pending) {
->-            continue;
->-        }
->-        if (se->vmsd->dev_unplug_pending(se->opaque)) {
->-            n++;
->+            return true;
->         }
->     }
->
->-    return n > 0;
->+    return false;
-> }
->
-> void qemu_savevm_state_setup(QEMUFile *f)
->diff --git a/migration/savevm.h b/migration/savevm.h
->index c42b9c80ee..ba64a7e271 100644
->--- a/migration/savevm.h
->+++ b/migration/savevm.h
->@@ -31,7 +31,6 @@
->
-> bool qemu_savevm_state_blocked(Error **errp);
-> void qemu_savevm_state_setup(QEMUFile *f);
->-int qemu_savevm_nr_failover_devices(void);
-> bool qemu_savevm_state_guest_unplug_pending(void);
-> int qemu_savevm_state_resume_prepare(MigrationState *s);
-> void qemu_savevm_state_header(QEMUFile *f);
->--=20
->2.19.1
+>> Oh, and one more reason why the proposal in this patch is inconsistent:
+>>
+>> When migrating resizable memory regions (RAM_SAVE_FLAG_MEM_SIZE) we
+>> store the block->used_length (ram_save_setup()) and use that value to
+>> resize the region on the target (ram_load_precopy() -> qemu_ram_resize()=
+).
+>>
+>> This will be the value the callback will be called with. Page aligned.
+>>
+>=20
+> Sorry, I didn=E2=80=99t quite get that point and not sure how "req_length=
+" approach=20
+> will affect the migration.
 
-Looks good to me. I tested it and it still works, so=20
+The issue is that on migration, you will lose the sub-page size either
+way. So your callback will be called
+- on the migration source with a sub-page size (via
+  memory_region_ram_resize() from e.g., hw/i386/acpi-build.c)
+- on the migration target with a page-aligned size (via
+  qemu_ram_resize() from migration/ram.c)
 
-Tested-by: Jens Freimann <jfreimann@redhat.com>
-Reviewed-by: Jens Freimann <jfreimann@redhat.com>=20
+So this is inconsistent, especially when migrating.
 
-regards
-Jens
+Is there a way to get access to the sub-page size without passing it
+through the callback?
+
+Like in fw_cfg_modify_file() do some fancy lookup and use the sub-page
+size instead of the passed size? (might have to be stored somewhere and
+refetched - and migrated)
+
+--=20
+Thanks,
+
+David / dhildenb
 

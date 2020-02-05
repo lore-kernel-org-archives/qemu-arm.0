@@ -1,105 +1,82 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6382191lfp;
-        Wed, 5 Feb 2020 00:07:28 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyDDSQMLcK9z3nuoAhO9voMCP05SLpqpcSJBTCEWp7Fgz8crPN7w0K+dsw7n+MsDa66XVh2
-X-Received: by 2002:aed:2047:: with SMTP id 65mr32244055qta.78.1580890048587;
-        Wed, 05 Feb 2020 00:07:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580890048; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6481893lfp;
+        Wed, 5 Feb 2020 02:05:39 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxwk9SZkKGW3IQRMq7+1rYS7sqbqMMQvcKp8X1MB1as+Lgy21mEbryvsldZXtTyzrTgZbaD
+X-Received: by 2002:a37:ef12:: with SMTP id j18mr14269852qkk.374.1580897139106;
+        Wed, 05 Feb 2020 02:05:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580897139; cv=none;
         d=google.com; s=arc-20160816;
-        b=XdcTz2Pp13xzhulXdK5xzB04ECvDobm44lL1/vdlzkDpAZv3o9iyMrhP9FfC1ZuKMx
-         AsG9JaunTq9OxD7LHAl2A0eQpIY/H7le8Pq+EEZ0Oy59h94US9VGnK5j+hmkjUK9TN50
-         G6/tSgV+mmYR1QiGHx4s6jaYfHOdrAbmxI+7PlBCq7AvecwbtfkP2x7HPi1Mg8eY7E9+
-         j8ylsKrNoe3f+fu4UuBoNmKTOBLcVubdmrbKS6p6n6M46iRTNEljSzyQGC8/clZ4f8QP
-         ox7oDgoMnd96Atu0NiEm3/QZJJwU3m9ZQvMAVjRdGe5jteBaAW+1iSRdSGgSMPJouTQF
-         HUig==
+        b=ct0klmzSx/lUPRJ2DtaUX+clJPCHfpyTO6oVNZk6Uv+gCDgCT8TUOfLyrG6XNU4kiV
+         Sinqd1zdw1aRyeEZTYz5sTGnZSIx2/9H6y967WjJLTSeKWf0CzlpxiNixW6iiE5N3VM8
+         bo7Gz5OtQqhBZTC83lz0biNII33Xw4ywz1aWLD+g5xHdjkpPeC+PjZ0QZYhozvFzTvN5
+         tcsuvx84wkOEpqAO8iXlzeFBZqXDW8a7FQFaPER7of5azO7Wqosx8Q8NPvwybNzbT7j7
+         Mzkj4GaC63boi4d4pN2L5kY0YJ//Sl0YPr5dS/as2dUkdnlbCRnZUtQEL1tnpBKHUfw0
+         4eFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date:dkim-signature;
-        bh=GSSo9jYLWrhjCo5narrDLRAJBiiZCZLlHcecUJ6T0VE=;
-        b=IUzr/tTIvQlQ1dBAIl+4gyotNb1Z/2zO+J/+5qbUVyBCMUHNlzdAJWZD4ifDJGcBYL
-         gO3c/MSfQNVZR+C/G+wP1sFLV29w3n/3gSiRSkbQjsXMkyqc+rwvni+++b3WMtpudHqD
-         DZP64sRHl08EJaqItf1EXW/cW39HyHAs8mDR4BEUCW/ZFxFCafVAWa+4iVY86Rx4igNR
-         BHyGQza6nen8+EtCrbof3/A/2S/ceYORIbseXUV7zJl/bULOGs4LCRB3bCNqLlc0EHgs
-         eHoTunR4MrQyO7fksStD0HRCpVZACzb5TnKkUkgqxOZH8qPaQX9C9rIuIlf/BxPrAmwh
-         4JTA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=iCR+sDkXFA0kvb9Pa52A/EXZFkk7WSVaA4k10WfUUKQ=;
+        b=h2+XWPk1ww0lkEvCT6lWd09mEAPZaiDruZMLa87YYSFRwqip8aN/LKW+QS9oe6SUgZ
+         drPcgON2G5pT4iV/Em7AYC1gX/72VCTxrrRH2b62s1AIvWCDdvwYllCeO3XVNqS+Dxqm
+         3qiuXuXQLhWcXOUrjrz74xdJXUkVyem5mtWB4qhpKEqSNG9HGC4gX9pLdMBO7jaoIW2D
+         ahUIBBc71yG0hfx8wYtPgaj532UNIrTDjPMuSCLwVHiwAZJtZaFo8sVAtb7VUUCTZ9zh
+         dTqYte9IMd3/J4DpX3AnrKY0Spvo1a4zCp84TEYq2GMX12iopFa7k6l+YtB0kOUBKVmC
+         159g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@kernel.org header.s=default header.b=HfgnmqcI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k23si14140441qtj.342.2020.02.05.00.07.28
+        by mx.google.com with ESMTPS id h3si14613412qvs.71.2020.02.05.02.05.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Feb 2020 00:07:28 -0800 (PST)
+        Wed, 05 Feb 2020 02:05:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@kernel.org header.s=default header.b=HfgnmqcI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1]:42572 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44026 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izFia-00077A-11
-	for alex.bennee@linaro.org; Wed, 05 Feb 2020 03:07:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57709)
+	id 1izHYw-0004JV-Hh
+	for alex.bennee@linaro.org; Wed, 05 Feb 2020 05:05:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44561)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <maz@kernel.org>) id 1izFiP-00074j-Er
- for qemu-arm@nongnu.org; Wed, 05 Feb 2020 03:07:18 -0500
+ (envelope-from <clg@kaod.org>) id 1izHYm-0004I3-Hd
+ for qemu-arm@nongnu.org; Wed, 05 Feb 2020 05:05:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <maz@kernel.org>) id 1izFiO-00052z-Bj
- for qemu-arm@nongnu.org; Wed, 05 Feb 2020 03:07:17 -0500
-Received: from mail.kernel.org ([198.145.29.99]:51482)
+ (envelope-from <clg@kaod.org>) id 1izHYl-0007IA-0d
+ for qemu-arm@nongnu.org; Wed, 05 Feb 2020 05:05:28 -0500
+Received: from 8.mo3.mail-out.ovh.net ([87.98.172.249]:42277)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <maz@kernel.org>)
- id 1izFiO-0004k4-3P; Wed, 05 Feb 2020 03:07:16 -0500
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 34BB32082E;
- Wed,  5 Feb 2020 08:07:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1580890031;
- bh=/PmRNbSIFey1F65Cjr0+6NLe5UDtJZ3iR0/Zifk5+IE=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=HfgnmqcIicTGt0hrULA7Hl21ViHA6c5PYsOR7Bpb+GeqEfCyN3/BSz8xDhGGhxgLF
- uTb7owhlPTolrsB/J5SRxlkeOOIRpgG7rBd6pK012Z3VrPKvcILLiM6irM94WJXY8g
- VA0TlD4pr64aDgh4pcWLDakGrLa2YgPDO6D5drzw=
-Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
- helo=why) by disco-boy.misterjones.org with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <maz@kernel.org>)
- id 1izFiH-0035yj-He; Wed, 05 Feb 2020 08:07:09 +0000
-Date: Wed, 5 Feb 2020 08:07:08 +0000
-From: Marc Zyngier <maz@kernel.org>
-To: Gavin Shan <gshan@redhat.com>
-Subject: Re: [RFC PATCH] hw/arm/virt: Support NMI injection
-Message-ID: <20200205080708.7ecf194f@why>
-In-Reply-To: <8a286e1c-c3f3-3052-e497-d44a90667451@redhat.com>
-References: <20191219040612.28431-1-gshan@redhat.com>
- <d972631d-7db7-b6d5-61b8-244ae2c85882@redhat.com>
- <7f6e29e6-1df9-4513-79ba-b53873b0735e@ozlabs.ru>
- <544f261e4b9c97f1d3a5fb64cef42ba5@kernel.org>
- <ff584722-1b51-e538-7c45-c71cdc40105f@redhat.com>
- <c61c95c434dbcf97a0c946f0993d4843@kernel.org>
- <8a286e1c-c3f3-3052-e497-d44a90667451@redhat.com>
-Organization: Approximate
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1izHYk-0006KI-R1
+ for qemu-arm@nongnu.org; Wed, 05 Feb 2020 05:05:26 -0500
+Received: from player168.ha.ovh.net (unknown [10.110.208.22])
+ by mo3.mail-out.ovh.net (Postfix) with ESMTP id BC04424082D
+ for <qemu-arm@nongnu.org>; Wed,  5 Feb 2020 11:05:17 +0100 (CET)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player168.ha.ovh.net (Postfix) with ESMTPSA id 5715DEFE2DB8;
+ Wed,  5 Feb 2020 10:05:05 +0000 (UTC)
+Subject: Re: [PATCH 1/3] m25p80: Convert to support tracing
+To: Guenter Roeck <linux@roeck-us.net>,
+ Alistair Francis <alistair@alistair23.me>
+References: <20200203180904.2727-1-linux@roeck-us.net>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <615518c7-f4c8-7c08-9096-bcf5f583eeb1@kaod.org>
+Date: Wed, 5 Feb 2020 11:05:04 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <20200203180904.2727-1-linux@roeck-us.net>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: gshan@redhat.com, aik@ozlabs.ru, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, pbonzini@redhat.com, drjones@redhat.com,
- eric.auger@redhat.com, jthierry@redhat.com, shan.gavin@gmail.com,
- qemu-devel@nongnu.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+X-Ovh-Tracer-Id: 10618643497891171296
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrhedugdduudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrudeikedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 198.145.29.99
+X-Received-From: 87.98.172.249
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,41 +88,209 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, jthierry@redhat.com,
- Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-devel@nongnu.org,
- eric.auger@redhat.com, qemu-arm@nongnu.org, shan.gavin@gmail.com,
- pbonzini@redhat.com
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UMwlLO7rU/Wt
+X-TUID: QETHdcDBOyxt
 
-On Tue, 4 Feb 2020 14:51:39 +1100
-Gavin Shan <gshan@redhat.com> wrote:
+On 2/3/20 7:09 PM, Guenter Roeck wrote:
+> While at it, add some trace messages to help debug problems
+> seen when running the latest Linux kernel.
 
-[...]
-
-> The mechanism I figured out is to inject SError to guest, as below snippet shows. It
-> helps to get a panic and guest rebooting, which looks similar to what x86/p
-> pc have.
-
-I think being able to inject a SError is a reasonable thing to have for
-QEMU. After all, the RAS spec[1] says that "An SError interrupt can also
-be generated for IMPLEMENTATION DEFINED causes."
-
-What I'm more concerned about is how this is going to coexist with the
-RAS extension itself (which is mandated with ARMv8.2), and whether we
-should classify this with a particular syndrome (by populating the ESR
-field in the event injection structure), if only to be able to
-distinguish the SW-injected SError from a RAS error propagated by KVM.
-
-It looks to me that this SError could be described as a "Recoverable
-Error", but I'd like someone who knows more about the RAS extension to
-comment on this.
+In case you resend, It would be nice to printout a flash id in the tracing
+else I have a patch for it on top of yours. It helped me track a squashfs
+corruption on the Aspeed witherspoon-bmc machine which we were after since
+2017 or so. It seems to be a kernel bug.
 
 Thanks,
 
-	M.
+C. 
 
-[1] https://static.docs.arm.com/ddi0587/cb/2019_07_05_DD_0587_C_b.pdf
--- 
-Jazz is not dead. It just smells funny...
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> ---
+>  hw/block/m25p80.c     | 48 ++++++++++++++++++++-----------------------
+>  hw/block/trace-events | 16 +++++++++++++++
+>  2 files changed, 38 insertions(+), 26 deletions(-)
+> 
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 11ff5b9ad7..63e050d7d3 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -32,17 +32,7 @@
+>  #include "qemu/module.h"
+>  #include "qemu/error-report.h"
+>  #include "qapi/error.h"
+> -
+> -#ifndef M25P80_ERR_DEBUG
+> -#define M25P80_ERR_DEBUG 0
+> -#endif
+> -
+> -#define DB_PRINT_L(level, ...) do { \
+> -    if (M25P80_ERR_DEBUG > (level)) { \
+> -        fprintf(stderr,  ": %s: ", __func__); \
+> -        fprintf(stderr, ## __VA_ARGS__); \
+> -    } \
+> -} while (0)
+> +#include "trace.h"
+>  
+>  /* Fields for FlashPartInfo->flags */
+>  
+> @@ -574,7 +564,8 @@ static void flash_erase(Flash *s, int offset, FlashCMD cmd)
+>          abort();
+>      }
+>  
+> -    DB_PRINT_L(0, "offset = %#x, len = %d\n", offset, len);
+> +    trace_m25p80_flash_erase(offset, len);
+> +
+>      if ((s->pi->flags & capa_to_assert) != capa_to_assert) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "M25P80: %d erase size not supported by"
+>                        " device\n", len);
+> @@ -607,8 +598,7 @@ void flash_write8(Flash *s, uint32_t addr, uint8_t data)
+>      }
+>  
+>      if ((prev ^ data) & data) {
+> -        DB_PRINT_L(1, "programming zero to one! addr=%" PRIx32 "  %" PRIx8
+> -                   " -> %" PRIx8 "\n", addr, prev, data);
+> +        trace_m25p80_programming_zero_to_one(addr, prev, data);
+>      }
+>  
+>      if (s->pi->flags & EEPROM) {
+> @@ -662,6 +652,9 @@ static void complete_collecting_data(Flash *s)
+>  
+>      s->state = STATE_IDLE;
+>  
+> +    trace_m25p80_complete_collecting(s->cmd_in_progress, n, s->ear,
+> +                                     s->cur_addr);
+> +
+>      switch (s->cmd_in_progress) {
+>      case DPP:
+>      case QPP:
+> @@ -825,7 +818,7 @@ static void reset_memory(Flash *s)
+>          break;
+>      }
+>  
+> -    DB_PRINT_L(0, "Reset done.\n");
+> +    trace_m25p80_reset_done();
+>  }
+>  
+>  static void decode_fast_read_cmd(Flash *s)
+> @@ -941,9 +934,10 @@ static void decode_qio_read_cmd(Flash *s)
+>  
+>  static void decode_new_cmd(Flash *s, uint32_t value)
+>  {
+> -    s->cmd_in_progress = value;
+>      int i;
+> -    DB_PRINT_L(0, "decoded new command:%x\n", value);
+> +
+> +    s->cmd_in_progress = value;
+> +    trace_m25p80_command_decoded(value);
+>  
+>      if (value != RESET_MEMORY) {
+>          s->reset_enable = false;
+> @@ -1042,7 +1036,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+>          break;
+>  
+>      case JEDEC_READ:
+> -        DB_PRINT_L(0, "populated jedec code\n");
+> +        trace_m25p80_populated_jedec();
+>          for (i = 0; i < s->pi->id_len; i++) {
+>              s->data[i] = s->pi->id[i];
+>          }
+> @@ -1063,7 +1057,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+>      case BULK_ERASE_60:
+>      case BULK_ERASE:
+>          if (s->write_enable) {
+> -            DB_PRINT_L(0, "chip erase\n");
+> +            trace_m25p80_chip_erase();
+>              flash_erase(s, 0, BULK_ERASE);
+>          } else {
+>              qemu_log_mask(LOG_GUEST_ERROR, "M25P80: chip erase with write "
+> @@ -1184,7 +1178,7 @@ static int m25p80_cs(SSISlave *ss, bool select)
+>          s->data_read_loop = false;
+>      }
+>  
+> -    DB_PRINT_L(0, "%sselect\n", select ? "de" : "");
+> +    trace_m25p80_select(select ? "de" : "");
+>  
+>      return 0;
+>  }
+> @@ -1194,19 +1188,20 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint32_t tx)
+>      Flash *s = M25P80(ss);
+>      uint32_t r = 0;
+>  
+> +    trace_m25p80_transfer(s->state, s->len, s->needed_bytes, s->pos,
+> +                          s->cur_addr, (uint8_t)tx);
+> +
+>      switch (s->state) {
+>  
+>      case STATE_PAGE_PROGRAM:
+> -        DB_PRINT_L(1, "page program cur_addr=%#" PRIx32 " data=%" PRIx8 "\n",
+> -                   s->cur_addr, (uint8_t)tx);
+> +        trace_m25p80_page_program(s->cur_addr, (uint8_t)tx);
+>          flash_write8(s, s->cur_addr, (uint8_t)tx);
+>          s->cur_addr = (s->cur_addr + 1) & (s->size - 1);
+>          break;
+>  
+>      case STATE_READ:
+>          r = s->storage[s->cur_addr];
+> -        DB_PRINT_L(1, "READ 0x%" PRIx32 "=%" PRIx8 "\n", s->cur_addr,
+> -                   (uint8_t)r);
+> +        trace_m25p80_read_byte(s->cur_addr, (uint8_t)r);
+>          s->cur_addr = (s->cur_addr + 1) & (s->size - 1);
+>          break;
+>  
+> @@ -1244,6 +1239,7 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint32_t tx)
+>          }
+>  
+>          r = s->data[s->pos];
+> +        trace_m25p80_read_data(s->pos, (uint8_t)r);
+>          s->pos++;
+>          if (s->pos == s->len) {
+>              s->pos = 0;
+> @@ -1281,7 +1277,7 @@ static void m25p80_realize(SSISlave *ss, Error **errp)
+>              return;
+>          }
+>  
+> -        DB_PRINT_L(0, "Binding to IF_MTD drive\n");
+> +        trace_m25p80_binding();
+>          s->storage = blk_blockalign(s->blk, s->size);
+>  
+>          if (blk_pread(s->blk, 0, s->storage, s->size) != s->size) {
+> @@ -1289,7 +1285,7 @@ static void m25p80_realize(SSISlave *ss, Error **errp)
+>              return;
+>          }
+>      } else {
+> -        DB_PRINT_L(0, "No BDRV - binding to RAM\n");
+> +        trace_m25p80_binding_no_bdrv();
+>          s->storage = blk_blockalign(NULL, s->size);
+>          memset(s->storage, 0xFF, s->size);
+>      }
+> diff --git a/hw/block/trace-events b/hw/block/trace-events
+> index c03e80c2c9..d052f7578c 100644
+> --- a/hw/block/trace-events
+> +++ b/hw/block/trace-events
+> @@ -134,3 +134,19 @@ xen_block_blockdev_add(char *str) "%s"
+>  xen_block_blockdev_del(const char *node_name) "%s"
+>  xen_block_device_create(unsigned int number) "%u"
+>  xen_block_device_destroy(unsigned int number) "%u"
+> +
+> +# m25p80.c
+> +m25p80_flash_erase(int offset, uint32_t len) "offset = 0x%"PRIx32", len = %u"
+> +m25p80_programming_zero_to_one(uint32_t addr, uint8_t prev, uint8_t data) "programming zero to one! addr=0x%"PRIx32"  0x%"PRIx8" -> 0x%"PRIx8
+> +m25p80_reset_done(void) "Reset done."
+> +m25p80_command_decoded(uint32_t cmd) "new command:0x%"PRIx32
+> +m25p80_complete_collecting(uint32_t cmd, int n, uint8_t ear, uint32_t cur_addr) "decode cmd: 0x%"PRIx32" len %d ear 0x%"PRIx8" addr 0x%"PRIx32
+> +m25p80_populated_jedec(void) "populated jedec code"
+> +m25p80_chip_erase(void) "chip erase"
+> +m25p80_select(const char *what) "%sselect"
+> +m25p80_page_program(uint32_t addr, uint8_t tx) "page program cur_addr=0x%"PRIx32" data=0x%"PRIx8
+> +m25p80_transfer(uint8_t state, uint32_t len, uint8_t needed, uint32_t pos, uint32_t cur_addr, uint8_t t) "Transfer state 0x%"PRIx8" len 0x%"PRIx32" needed 0x%"PRIx8" pos 0x%"PRIx32" addr 0x%"PRIx32" tx 0x%"PRIx8
+> +m25p80_read_byte(uint32_t addr, uint8_t v) "Read byte 0x%"PRIx32"=0x%"PRIx8
+> +m25p80_read_data(uint32_t pos, uint8_t v) "Read data 0x%"PRIx32"=0x%"PRIx8
+> +m25p80_binding(void) "Binding to IF_MTD drive"
+> +m25p80_binding_no_bdrv(void) "No BDRV - binding to RAM"
+> 
+

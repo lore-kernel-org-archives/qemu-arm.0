@@ -1,155 +1,76 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1301489lfp;
-        Thu, 6 Feb 2020 03:08:23 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyzGRKHuXAhSuupqg2Wn6vWJW8DbP86b1pBWDjJKZ+WMtKulRymdi/A067yzPffhNgIMRWs
-X-Received: by 2002:a05:620a:1497:: with SMTP id w23mr1885631qkj.472.1580987303766;
-        Thu, 06 Feb 2020 03:08:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580987303; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1319746lfp;
+        Thu, 6 Feb 2020 03:27:18 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyrkN0sRsoMjSXij4IXCBawndWV4dJcIhmlPnC51hz/hGvApj19fqe8T3q7HB3Ytg8IEBVa
+X-Received: by 2002:ac8:4b70:: with SMTP id g16mr2110027qts.296.1580988438059;
+        Thu, 06 Feb 2020 03:27:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580988438; cv=none;
         d=google.com; s=arc-20160816;
-        b=rrh3cPrNzoE3Fte4btAuFb1eL0LwUfpthk+nw7aU9achp1i2Bq4NyrC0td9+d0rz8k
-         mszYaAZQ6aus9BpIM+JsODFs3UmmiHoUYV6cWYoFqaBp9T2/0xACJfNjQRjQ2PqJ8WDG
-         lA+8IEP++E2h498wCeXYkSU2tL9/iJpQ90egcGZoQhi74iTWTpQk4VjVH+7Vlp1uR+JC
-         3/E4xDQj0MVeJaur86FGvQx/2Qp+WV3/a/OYYVhU21aGt8eQIgGoGMrZWfazRHtrLkII
-         Uy9TG86Wir3UicEUI11Bajx/Mo5csK5LEFtPtUNsv3XC87RMXvNlDjbN+QjI1eyGyg3r
-         RxJg==
+        b=HYqePvnvyj1Uxy3Kz1mCm50bG2+dNfG5u8xdI9sUQAQwlolfNfEHM+7+m7tG0F5D+B
+         8uizHXFQpET+U5SJKaM+IvS7eabLRlf63vG2PHcPMbmRT70uQg+7+9MtX5OUlbLqVVJv
+         NpRXIz6Ol/gxnq+QbBId2tj88CTdz1OS1n+LaXW61jLOvT+T3RzNszFH7Ll8DaF+uVrq
+         Le8EkeMktTJZgnQAb5GSOYybx0vhe7P8+91gSs/w7J6YFjAzbVj+y9SCN4cdeNEDpyfQ
+         fjhB/oTEYJQY2bGAuR+d3Jcwu0N8llYGmVMqcJWXk1xJEY5TB33Rdtb+aaJNGYrTQjZ/
+         rX3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:from:references:to:subject
-         :dkim-signature;
-        bh=bnPOW1G44qTpvGj1MftB10PT1Z+1QFANOM1qlenfUGY=;
-        b=Ft9R+3tPVIed8TkCn6Qzb9FGJfiZ52Hli57ZF0sCRUx38EsNuioRo9JNHV+McgcIGl
-         wpQ0E5+khoVt8aiKGpjAeKMVbebtiAgZqP3FEXRYlwbddfmMZmwjvca0jtidHTOutac5
-         6OJxidJOsIWEJqlX7UyFpwz+O4UVuRThfuOCkrbR7RPZYieuOZHw2/SOOr0ywp0N5qwT
-         XekUhEFmFe3FqmB1CQ4XfLVpBdg4nlGJhe775v9f7buKMKLw8eLoFnGi5AA1aYlvIaaS
-         r228W0XRabpaz44ByHiQUnvxuU86Pl27RWoKITq7pxo12kQ5lMzfGRmH5FGYiT4GSSn2
-         inhA==
+         :mime-version:message-id:date:subject:to:from;
+        bh=fwzVIJ8PnEgKfBwjNHPGCmK4pM+IYq4IvDGaQJVRu+U=;
+        b=vNQiR/fExiZSbbdjTfAsWATv0afQ7TiNgrlFT7w3k1DdwjrQU5lfLnMZZqLP9ugyS3
+         5h0j9TaMEla1upegZrG+LLZTNcQOY7XuNnr+GLyMoO5SkOzoERYeI2kbH88iK302JW+a
+         oSHhDR+J6DUDF3Vf8E2zwRjcUcR7hp23r4WOl2czoskZuSVmVWGs12jnIo/hm0xHfeJ2
+         Mh6/Eo/wBgDPXL87i3GV4g6hUOkbHdCjaSzK6stLoKw83gldfQRSi6R7po3aQeUJY3+3
+         9swLjbXDpHNIAt8PMjpsVn4j3R3jJnSTrvq0ir5DkxvGAZ9mtB/pk1v9unTpLCnuomzL
+         nyOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DLJhxLGs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v14si1250351qvn.75.2020.02.06.03.08.23
+        by mx.google.com with ESMTPS id 3si1410676qkc.336.2020.02.06.03.27.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2020 03:08:23 -0800 (PST)
+        Thu, 06 Feb 2020 03:27:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DLJhxLGs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36038 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36766 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izf1D-0002lR-5V
-	for alex.bennee@linaro.org; Thu, 06 Feb 2020 06:08:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50623)
+	id 1izfJV-0005bo-GL
+	for alex.bennee@linaro.org; Thu, 06 Feb 2020 06:27:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38416)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <david@redhat.com>) id 1izepC-0004XH-Fu
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 05:56:00 -0500
+ (envelope-from <clg@kaod.org>) id 1izfJM-0005ZT-56
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 06:27:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <david@redhat.com>) id 1izepA-0003tJ-TL
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 05:55:58 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:28922
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <clg@kaod.org>) id 1izfJJ-0007ho-Ve
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 06:27:07 -0500
+Received: from 17.mo6.mail-out.ovh.net ([46.105.36.150]:42568)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <david@redhat.com>) id 1izepA-0003r8-Oi
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 05:55:56 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580986556;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=bnPOW1G44qTpvGj1MftB10PT1Z+1QFANOM1qlenfUGY=;
- b=DLJhxLGsM5+eR63Fw3HcB2OhCrk+Y676wATlnxizLJopPTrkarWdqMPZQLokZFKmml+tv+
- pjDCPjMYw6F85MHVjdD/skP3OT+DEAZVWbYd9uSbxnhD5LJAZ6P5NKd6iZCnDE4iKWG1qJ
- 87r25Py8cbptI8SOXZtUJ/wLWtsAeSI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-143-kS86Aa1GOAKvT8Kl-kdQ9g-1; Thu, 06 Feb 2020 05:55:52 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EF43A18A8C83;
- Thu,  6 Feb 2020 10:55:50 +0000 (UTC)
-Received: from [10.36.118.119] (unknown [10.36.118.119])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 764205C1D8;
- Thu,  6 Feb 2020 10:55:40 +0000 (UTC)
-Subject: Re: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>
-References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
- <20200117174522.22044-2-shameerali.kolothum.thodi@huawei.com>
- <20200204162320.67e5d353@redhat.com>
- <74eaaa45-0d20-9a21-fbf8-6d29deb248eb@redhat.com>
- <4ce41554-8b8e-dbb5-5fe9-43af09950f23@redhat.com>
- <8e0b2c762e914c64bebfab5fc7441661@huawei.com>
- <133f274e-e942-7008-93d2-8edb1bc4d7ae@redhat.com>
- <52fff289cca14874ad493fc25806fe3d@huawei.com>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat GmbH
-Message-ID: <f041380c-afcb-f8d8-89db-8f48c7b46767@redhat.com>
-Date: Thu, 6 Feb 2020 11:55:39 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.1
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1izfJJ-000705-QD
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 06:27:05 -0500
+Received: from player788.ha.ovh.net (unknown [10.108.42.167])
+ by mo6.mail-out.ovh.net (Postfix) with ESMTP id 2E6B71FD260
+ for <qemu-arm@nongnu.org>; Thu,  6 Feb 2020 12:26:56 +0100 (CET)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player788.ha.ovh.net (Postfix) with ESMTPSA id 553F8F1A6CFB;
+ Thu,  6 Feb 2020 11:26:47 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH 0/2] aspeed/smc: fix data corruption on witherspoon machines
+Date: Thu,  6 Feb 2020 12:26:43 +0100
+Message-Id: <20200206112645.21275-1-clg@kaod.org>
+X-Mailer: git-send-email 2.21.1
 MIME-Version: 1.0
-In-Reply-To: <52fff289cca14874ad493fc25806fe3d@huawei.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: kS86Aa1GOAKvT8Kl-kdQ9g-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 17870283324729756433
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrheefgddviecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofggtgfgsehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeekkedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 46.105.36.150
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -161,159 +82,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
- "mst@redhat.com" <mst@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- "lersek@redhat.com" <lersek@redhat.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Andrew Geissler <geissonator@gmail.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6uhMMWeXZXwO
+X-TUID: Dcr9cXFL/cE8
 
-On 06.02.20 11:20, Shameerali Kolothum Thodi wrote:
->=20
->=20
->> -----Original Message-----
->> From: David Hildenbrand [mailto:david@redhat.com]
->> Sent: 05 February 2020 16:41
->> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
->> Igor Mammedov <imammedo@redhat.com>
->> Cc: peter.maydell@linaro.org; xiaoguangrong.eric@gmail.com;
->> mst@redhat.com; shannon.zhaosl@gmail.com; qemu-devel@nongnu.org;
->> xuwei (O) <xuwei5@huawei.com>; Linuxarm <linuxarm@huawei.com>;
->> eric.auger@redhat.com; qemu-arm@nongnu.org; lersek@redhat.com
->> Subject: Re: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
->>
->>>> Oh, and one more reason why the proposal in this patch is inconsistent=
-:
->>>>
->>>> When migrating resizable memory regions (RAM_SAVE_FLAG_MEM_SIZE)
->> we
->>>> store the block->used_length (ram_save_setup()) and use that value to
->>>> resize the region on the target (ram_load_precopy() -> qemu_ram_resize=
-()).
->>>>
->>>> This will be the value the callback will be called with. Page aligned.
->>>>
->>>
->>> Sorry, I didn=E2=80=99t quite get that point and not sure how "req_leng=
-th" approach
->>> will affect the migration.
->>
->> The issue is that on migration, you will lose the sub-page size either
->> way. So your callback will be called
->> - on the migration source with a sub-page size (via
->>   memory_region_ram_resize() from e.g., hw/i386/acpi-build.c)
->> - on the migration target with a page-aligned size (via
->>   qemu_ram_resize() from migration/ram.c)
->>
->> So this is inconsistent, especially when migrating.
->=20
-> Thanks for explaining. I tried to add some debug prints to further unders=
-tand
-> what actually happens during migration case.
->=20
-> Guest-source with initial one nvdimm
-> ----------------------------------------------------
->=20
-> -object memory-backend-ram,id=3Dmem1,size=3D1G \
-> -device nvdimm,id=3Ddimm1,memdev=3Dmem1 \
->=20
-> fw_cfg_add_file_callback: filename etc/boot-fail-wait size 0x4
-> fw_cfg_add_file_callback: filename etc/acpi/nvdimm-mem size 0x1000
-> fw_cfg_add_file_callback: filename etc/acpi/tables size 0x55f4
-> fw_cfg_add_file_callback: filename etc/table-loader size 0xd00
-> fw_cfg_add_file_callback: filename etc/tpm/log size 0x0
-> fw_cfg_add_file_callback: filename etc/acpi/rsdp size 0x24
-> fw_cfg_add_file_callback: filename etc/smbios/smbios-tables size 0x104
-> fw_cfg_add_file_callback: filename etc/smbios/smbios-anchor size 0x18
-> fw_cfg_modify_file: filename bootorder len 0x0
-> fw_cfg_add_file_callback: filename bootorder size 0x0
-> fw_cfg_modify_file: filename bios-geometry len 0x0
-> fw_cfg_add_file_callback: filename bios-geometry size 0x0
-> fw_cfg_modify_file: filename etc/acpi/tables len 0x55f4
-> fw_cfg_modify_file: filename etc/acpi/rsdp len 0x24
-> fw_cfg_modify_file: filename etc/table-loader len 0xd00
-> ....
->=20
-> hot add another nvdimm device,
->=20
-> (qemu) object_add memory-backend-ram,id=3Dmem2,size=3D1G
-> (qemu) device_add nvdimm,id=3Ddimm2,memdev=3Dmem2
->=20
->=20
-> root@ubuntu:/# cat /dev/pmem
-> pmem0  pmem1
->=20
-> Guest-target with two nvdimms
-> -----------------------------------------------
->=20
-> -object memory-backend-ram,id=3Dmem1,size=3D1G \
-> -device nvdimm,id=3Ddimm1,memdev=3Dmem1 \
-> -object memory-backend-ram,id=3Dmem2,size=3D1G \
-> -device nvdimm,id=3Ddimm2,memdev=3Dmem2 \
->=20
-> fw_cfg_add_file_callback: filename etc/boot-fail-wait size 0x4
-> fw_cfg_add_file_callback: filename etc/acpi/nvdimm-mem size 0x1000
-> fw_cfg_add_file_callback: filename etc/acpi/tables size 0x56ac
-> fw_cfg_add_file_callback: filename etc/table-loader size 0xd00
-> fw_cfg_add_file_callback: filename etc/tpm/log size 0x0
-> fw_cfg_add_file_callback: filename etc/acpi/rsdp size 0x24
-> fw_cfg_add_file_callback: filename etc/smbios/smbios-tables size 0x104
-> fw_cfg_add_file_callback: filename etc/smbios/smbios-anchor size 0x18
-> fw_cfg_modify_file: filename bootorder len 0x0
-> fw_cfg_add_file_callback: filename bootorder size 0x0
-> fw_cfg_modify_file: filename bios-geometry len 0x0
-> fw_cfg_add_file_callback: filename bios-geometry size 0x0
->=20
->=20
-> Initiate migration Source --> Target,
->=20
-> ram_load_precopy: Ram blk mach-virt.ram length 0x100000000 used_length 0x=
-100000000
-> ram_load_precopy: Ram blk mem1 length 0x40000000 used_length 0x40000000
-> ram_load_precopy: Ram blk mem2 length 0x40000000 used_length 0x40000000
-> ram_load_precopy: Ram blk virt.flash0 length 0x4000000 used_length 0x4000=
-000
-> ram_load_precopy: Ram blk virt.flash1 length 0x4000000 used_length 0x4000=
-000
-> ram_load_precopy: Ram blk /rom@etc/acpi/tables length 0x6000 used_length =
-0x6000
-> ram_load_precopy: Ram blk 0000:00:01.0/virtio-net-pci.rom length 0x40000 =
-used_length 0x40000
-> ram_load_precopy: Ram blk /rom@etc/table-loader length 0x1000 used_length=
- 0x1000
-> ram_load_precopy: Ram blk /rom@etc/acpi/rsdp length 0x1000 used_length 0x=
-1000
->=20
->=20
-> root@ubuntu:/# cat /dev/pmem
-> pmem0  pmem1 =20
->=20
-> From the logs, it looks like the ram_load_precopy() --> qemu_ram_resize()=
- is not
-> called as length =3D=3D used_length and both seems to be page aligned val=
-ues.
-> And from https://github.com/qemu/qemu/blob/master/migration/ram.c#L3421
-> qemu_ram_resize() is called with length if length !=3D used_length.
+Hello,
 
-Assume on your source, the old size is 12345 bytes. So 16384 aligned up
-(4 pages).
+We have been seeing a squashfs corruption on the witherspoon-bmc
+machine for quite some time. It boots but quickly after boot
+corruption errors start to fill the console. This machine has two BMC
+chips with UBIfs on them. The romulus-bmc machine has a similar
+problem when both PNOR are enabled.
 
-Assume on your target, the new size is 123456 bytes, so 126976 aligned
-up (31 pages).
+After some investigation, it appeared that the SPI transfers on the
+two chips were getting mixed and after more investigation, the User
+mode select/unselect scheme of the Aspeed SMC model proved to be
+broken. It's been there since the right beginning of the model. Here
+is a fix.
 
-If you migrate from source to destination, the migration code would
-resize to 16384, although the "actual size" is 12345. The callback will
-be called with the aligned size, not the actual size. Same the other way
-around. That's what's inconsistent IMHO.
+Kudos to Andrew J. for the time he spent on this and Andrew G. for his
+patience.
 
---=20
+I pushed the code on my github branch aspeed-5.0 for more testing.
+
 Thanks,
 
-David / dhildenb
+C.
+
+C=C3=A9dric Le Goater (2):
+  aspeed/smc: Add some tracing
+  aspeed/smc: Fix User mode select/unselect scheme
+
+ Makefile.objs       |  1 +
+ hw/ssi/aspeed_smc.c | 56 ++++++++++++++++++++++++++++++++-------------
+ hw/ssi/trace-events | 10 ++++++++
+ 3 files changed, 51 insertions(+), 16 deletions(-)
+ create mode 100644 hw/ssi/trace-events
+
+--=20
+2.21.1
 

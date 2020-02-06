@@ -1,429 +1,315 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1960103lfp;
-        Thu, 6 Feb 2020 13:48:22 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzFpDFykwAObJlC4+weMUlkkStxJy93gTXVZuuLBZhK7Anr+pwSWbPxkYrbOdBzvVhJwTi4
-X-Received: by 2002:ac8:3676:: with SMTP id n51mr4562453qtb.208.1581025701813;
-        Thu, 06 Feb 2020 13:48:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581025701; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1994593lfp;
+        Thu, 6 Feb 2020 14:27:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxFhEyff9UXwCixZeml707EHGFOxdULpAgJRRkhsviIVqLlfHTbW0dQuGcFmdmg7Q57ag+H
+X-Received: by 2002:a37:a2d8:: with SMTP id l207mr4479946qke.315.1581028061060;
+        Thu, 06 Feb 2020 14:27:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581028061; cv=none;
         d=google.com; s=arc-20160816;
-        b=UfKhPIhohv8gFkxflmdz1NVlGp7PMtD2ay8sAxoS96/Worwmx3tM85rrOnQJ1oaaTX
-         2zhWDQHs2wsrXXJfOycR/F1lWZckLfhgxu9VhZ5kQ/aHy/KpI8pGGZBJdwdzrZGgHXIm
-         qrx/zIqHDRTT0PWktQPi2xnjf4dJg8svsPuFT60eVOYRLn3yAE9ldcDDwgvTIZZWFuHv
-         vOFPebYWiX5ArrogUQ227ciDxA8Ggw9ssIVdEAe5kjPOYDO6IJjWkJYzTccSi8+frqd0
-         eIN0zvkR+0S+v0tiZEq8vQKhR4nHkeerGxReluvrV7R03csU+cP2zn6AMeoQWuzgA+5C
-         ZLig==
+        b=zgjVYDWhL0Lg+RZ4tMSC+XPC56lLcWdRXgHTikcuSZR1v6lEcblsT8DInvMvvsa6Wp
+         ZyUapWg7W02S26Ay4LPxoOuHQViZB04uFiqjEo40roAPsj4xcErq01DLjhFa624RYROz
+         UlsCSDFUdgUws4SqsYM74RjLqgTB2XvRpJTrbCoiKmpHzq+OU1O3yU/+jr88hdhaLdBy
+         GnpFZ0+2Lblt6DuoA3Yrp1Eklikty/dU8G/TVJtJm49i2VSFufwyEQGMiqCz5e6vdJAi
+         xZjAy80C3BxAjKrvYaxIQU5dcsKk8OGoQcN2Lnp54wHujAOrdWcPmMHNTiCQXSeXy6fN
+         JKUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=wzP0uYfVXf7b45Dpu0EpqWrdSx6ujvWJHbIfBMy4aqk=;
-        b=BUphFAQJ/+wXMyRMwJr0du+MSOqfE15v1dWmoaMEsWn08Keg1CIeFvfO27ZR5CIFbu
-         qEKngcJolu2lCP8QjbY08LpLYkxUAHts+6WWKQUmvvE72/DfCQigOMahV0oe64cOcgUb
-         PQHr75tC/ATDBSY/1CbK20GG6YJipQdCrOxdBHDkQq4kkdBnXBmFvGLjmPlQlE65eCLQ
-         SFpNxrs8p08WNIJzQuTgnAS4E3H4UDCsmS0htMbSH11iHygkBFCk862NM7Vc718QfjID
-         2/LtxNHlm0MwK9PLJINFFB8iPbU+q6QsmMsEGBT1Tozy9+8PSM2v49F9IbXbL6kLedhC
-         2RxQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=3b5htaa0jYgY/fVlTdFYwXBIPWv+NnvM27DOHClygGs=;
+        b=lnH3sqBzidQved/I+bdeg8O0itV7CgkGif0mbS27Lb7DOz20ugVdKXNWFBQ0tCf1vl
+         U6apt98aA4pDATM6JtgOoDG2Kh82miRClEGrcu3BYvJPNjr6WFxBf2XB79H4sOzifYwq
+         h43DE9ImNvyBxCcsQmPkR+/8gtDR8iVghY5UHUkS4hcVBZg6IuHTiC5hr6u+RYodJ3KB
+         0Zvk/gVTKXdczOnawjANp5WlijfbIDqAaLMAmolVynF94GUVx2AjNDX0tBHAsaLs/1K3
+         klpFkGNyFrvVtyHg27wY+V8WMzKgpxIbeAY5XVWB2hUXtWPDjK5VY7anV8Z4F8Ch5vDL
+         jgNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=BAGyVylt;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id d11si310306qkj.14.2020.02.06.13.48.21;
-        Thu, 06 Feb 2020 13:48:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JMmOdgwl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x17si473748qtm.13.2020.02.06.14.27.40
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 06 Feb 2020 14:27:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=BAGyVylt;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 65B614A4C0;
-	Thu,  6 Feb 2020 16:48:21 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@linaro.org
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4Ox0EanQmiKh; Thu,  6 Feb 2020 16:48:20 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id F20234A51F;
-	Thu,  6 Feb 2020 16:48:19 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id BC8294A3A3
- for <kvmarm@lists.cs.columbia.edu>; Thu,  6 Feb 2020 16:48:18 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YrPf1qKx2caD for <kvmarm@lists.cs.columbia.edu>;
- Thu,  6 Feb 2020 16:48:17 -0500 (EST)
-Received: from mail-il1-f196.google.com (mail-il1-f196.google.com
- [209.85.166.196])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 2402D4A389
- for <kvmarm@lists.cs.columbia.edu>; Thu,  6 Feb 2020 16:48:17 -0500 (EST)
-Received: by mail-il1-f196.google.com with SMTP id b15so6535412iln.3
- for <kvmarm@lists.cs.columbia.edu>; Thu, 06 Feb 2020 13:48:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JMmOdgwl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:47178 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1izpca-000822-G9
+	for alex.bennee@linaro.org; Thu, 06 Feb 2020 17:27:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56221)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <alistair23@gmail.com>) id 1izpbg-0006L3-FS
+ for qemu-devel@nongnu.org; Thu, 06 Feb 2020 17:26:46 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <alistair23@gmail.com>) id 1izpbe-0004Ps-Td
+ for qemu-devel@nongnu.org; Thu, 06 Feb 2020 17:26:44 -0500
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:33616)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1izpbb-0003wf-J5; Thu, 06 Feb 2020 17:26:39 -0500
+Received: by mail-lf1-x142.google.com with SMTP id n25so204897lfl.0;
+ Thu, 06 Feb 2020 14:26:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Wy1Sqdo0M2y1UUkfOruL8IBYp1Ki3GytyCuyoZOPLQA=;
- b=BAGyVyltUOacgCnahSh4chCmoHo3fSgdE1cTe+KSdqHvUTP35lEDhHva/ef/e2xhU9
- Apwu5z99bZ6SYGDxBcVoYh+FxU0EDNq9mRk4ckENMWpQ/XgaR2aNngYxX//tH/yCs6Qo
- 7u8HJq9F+bICLxNOakFsmeFhvVve4DEfVaF7NVQhsE5J+QEa7sUa9kZmAAMiXGQJoOVl
- NnpxT3adltjuuUWJTeISjwGaom6xdubSK3rXgnViYpC1iC13X4arU1e+1BowowYBvmoO
- 6SrZVYM2HZkL9aYimkezGECZMNy+FFb/Tk/v6JDz7Qxr2EPKMYcBCBFwuCOdPLeJH+Kb
- jSeQ==
+ :cc; bh=3b5htaa0jYgY/fVlTdFYwXBIPWv+NnvM27DOHClygGs=;
+ b=JMmOdgwl4L36VTMz3ndaEYyoYYzpJP7zD/3Y8azgNx98YJpOumE59/YoofjxWvHDmZ
+ UAi8Gmf3vPcTD/AAvEsOFU8F+LZvSEpcwBFnUJayYohvBIn5LkOnHv0tZ6HcYWzZUgPY
+ +szPo1age8JtLINExhnd3AEBhvSY7gjHDqGlWnnx0amzMu3CAz0CDs1mkKr5LEdDYZRY
+ AiTqQ/U8B2nELel0zImBfY0IR+5NEMjr4NhxCLrqZhqGYkedGc/goHpEDPOeRtk8Jt/7
+ 8mxnFLeSw+lrf0mDB7paixOw59mmwDzWTQJBuQzrT362hsK4SoiQS0fbMKqXXcqChttS
+ eMRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Wy1Sqdo0M2y1UUkfOruL8IBYp1Ki3GytyCuyoZOPLQA=;
- b=ivlAkAqZ33cdE1VVVbTbCT34nyzyKBLLC2lpamoC9dYTNM6MQKea3lO2dZrK3aTuG1
- oEob9fSiz5DTRH5zMZOmxZeUoXij+j84YvD+dKDHLIaoPm0eQXBZx9Q+6SxLEYjiizBz
- hM+simRWMjIU47RTY1vD/5vwqBhObb8qozvQVpFFMSM+h9GJXsZ6x4mwsp8PVDMSOG57
- 7t6gQaSgiK2i8GBWusEQIvZwhKncx3y55fLhKw7yvnAejZuzBkk0TnojuLPwy53PLxZR
- +tSmjQ8pUBzVi9SI4lp+3V2bRP3xQj4enuDqoRWy4O8BoJKviY0AG7kM/IjctDJlrHFa
- JDag==
-X-Gm-Message-State: APjAAAUQOFDZUIt2tCYtlupKJzyGN1OLaVSypzknU7RDfAFCige7j4zZ
- epLHkejOFItz1JEqp6L/vZfTOVEAh2TSMXS+e8RbFw==
-X-Received: by 2002:a05:6e02:5c3:: with SMTP id
- l3mr6351768ils.260.1581025696368; 
- Thu, 06 Feb 2020 13:48:16 -0800 (PST)
+ bh=3b5htaa0jYgY/fVlTdFYwXBIPWv+NnvM27DOHClygGs=;
+ b=dQXeqNqqEMWEwV6aMQsUuASd94or8+iHZDl3En/7cZgLxG8EiXapXNcSshbw6t9108
+ VwmIl8AMVykNxWCccBD+oq+vQv0Aqq7ybX9/T8jMaFdsxUgXfxKcl1tagEEgYOyf7ca6
+ GH5DxeEmkRSKW52+SzdDmfPbhpVjw/kORuQnlwKRYyoNOcjXJ6//T4a1QPbUei7rB8o2
+ 6/n4k/2M8elCjKjeiIqM6Lu3g2k3K3j/PPtrj+TefCKB4VV/+pG08W7DT30/bc+rWyhs
+ jgkSXn1ciD4vMBIuByT3gha51qjxENNDWtMuaE0yMCWrnv/UiAwNT8AL2U9f4ztVjDza
+ XobQ==
+X-Gm-Message-State: APjAAAW2B58VguuFXIxk7adjKnemA5c8pIWXxLpirHOQAVYEUlD5OTzF
+ qqOHgkiq7ZBkHvl1XgHEgGpD7Ha0UAaKIJWjFqQ=
+X-Received: by 2002:ac2:5f68:: with SMTP id c8mr2826103lfc.196.1581027997328; 
+ Thu, 06 Feb 2020 14:26:37 -0800 (PST)
 MIME-Version: 1.0
-References: <20200129202441.12745-1-beata.michalska@linaro.org>
- <20200129202441.12745-3-beata.michalska@linaro.org>
- <20200205165739.2jkklbpmy3yrdq3q@kamzik.brq.redhat.com>
-In-Reply-To: <20200205165739.2jkklbpmy3yrdq3q@kamzik.brq.redhat.com>
-From: Beata Michalska <beata.michalska@linaro.org>
-Date: Thu, 6 Feb 2020 21:48:05 +0000
-Message-ID: <CADSWDzu70AXg5pNY3sLr5GFbKtXaFmV_UgSm6TWw7oshv4vcEw@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] target/arm: kvm: Handle DABT with no valid ISS
-To: Andrew Jones <drjones@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+References: <20200206183219.3756-1-linux@roeck-us.net>
+In-Reply-To: <20200206183219.3756-1-linux@roeck-us.net>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 6 Feb 2020 14:19:25 -0800
+Message-ID: <CAKmqyKP+xFJoWyOemBQ1vnc77vJ24jHPC3cSfsth3JALc6uTyQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/4] m25p80: Convert to support tracing
+To: Guenter Roeck <linux@roeck-us.net>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::142
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: F63E4HKavAyn
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Qemu-block <qemu-block@nongnu.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Max Reitz <mreitz@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /MEOz3vcn1FO
 
-On Wed, 5 Feb 2020 at 16:57, Andrew Jones <drjones@redhat.com> wrote:
+On Thu, Feb 6, 2020 at 10:33 AM Guenter Roeck <linux@roeck-us.net> wrote:
 >
-> On Wed, Jan 29, 2020 at 08:24:41PM +0000, Beata Michalska wrote:
-> > On ARMv7 & ARMv8 some load/store instructions might trigger a data abort
-> > exception with no valid ISS info to be decoded. The lack of decode info
-> > makes it at least tricky to emulate those instruction which is one of the
-> > (many) reasons why KVM will not even try to do so.
-> >
-> > Add support for handling those by requesting KVM to inject external
-> > dabt into the quest.
-> >
-> > Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
-> > ---
-> >  target/arm/cpu.h     |  2 ++
-> >  target/arm/kvm.c     | 96 ++++++++++++++++++++++++++++++++++++++++++++++++++++
-> >  target/arm/kvm32.c   |  3 ++
-> >  target/arm/kvm64.c   |  3 ++
-> >  target/arm/kvm_arm.h | 19 +++++++++++
-> >  5 files changed, 123 insertions(+)
-> >
-> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> > index c1aedbe..e04a8d3 100644
-> > --- a/target/arm/cpu.h
-> > +++ b/target/arm/cpu.h
-> > @@ -558,6 +558,8 @@ typedef struct CPUARMState {
-> >          uint8_t has_esr;
-> >          uint64_t esr;
-> >      } serror;
-> > +    /* Status field for pending external dabt */
-> > +    uint8_t ext_dabt_pending;
-> >
-> >      /* State of our input IRQ/FIQ/VIRQ/VFIQ lines */
-> >      uint32_t irq_line_state;
-> > diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> > index 8d82889..e7bc9b7 100644
-> > --- a/target/arm/kvm.c
-> > +++ b/target/arm/kvm.c
-> > @@ -37,6 +37,7 @@ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
-> >
-> >  static bool cap_has_mp_state;
-> >  static bool cap_has_inject_serror_esr;
-> > +static bool cap_has_inject_ext_dabt; /* KVM_CAP_ARM_INJECT_EXT_DABT */
+> While at it, add some trace messages to help debug problems
+> seen when running the latest Linux kernel.
 >
-> nit: the KVM_CAP_ARM_INJECT_EXT_DABT comment is unnecessary
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 
-Might be - I just find it handy when looking for  related details.
-I will remove that one though.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
->
-> >
-> >  static ARMHostCPUFeatures arm_host_cpu_features;
-> >
-> > @@ -62,6 +63,12 @@ void kvm_arm_init_serror_injection(CPUState *cs)
-> >                                      KVM_CAP_ARM_INJECT_SERROR_ESR);
-> >  }
-> >
-> > +void kvm_arm_init_ext_dabt_injection(CPUState *cs)
-> > +{
-> > +    cap_has_inject_ext_dabt = kvm_check_extension(cs->kvm_state,
-> > +                                    KVM_CAP_ARM_INJECT_EXT_DABT);
-> > +}
-> > +
-> >  bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
-> >                                        int *fdarray,
-> >                                        struct kvm_vcpu_init *init)
-> > @@ -216,6 +223,11 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
-> >          ret = -EINVAL;
-> >      }
-> >
-> > +    if (kvm_check_extension(s, KVM_CAP_ARM_NISV_TO_USER))
-> > +        if (kvm_vm_enable_cap(s, KVM_CAP_ARM_NISV_TO_USER, 0)) {
-> > +            warn_report("Failed to enable DABT NISV cap");
-> > +        }
-> > +
->
-> Missing {} around the outer block.
+Alistair
 
-Checkpatch didn't complain ...
-Will fix that.
-
+> ---
+> v2: Print pointer to Flash data structure as flash ID with each trace
+>     message to support systems with more than one instantiated flash.
 >
-> As KVM_CAP_ARM_INJECT_EXT_DABT is a VM capability then I think we should
-> set cap_has_inject_ext_dabt here, like cap_has_mp_state gets set. I see
-> you've followed the pattern used for cap_has_inject_serror_esr, but that
-> looks wrong too since KVM_CAP_ARM_INJECT_SERROR_ESR is also a VM
-> capability. The way it is now we just keep setting
-> cap_has_inject_serror_esr to the same value, NR_VCPUS times.
+>  hw/block/m25p80.c     | 48 ++++++++++++++++++++-----------------------
+>  hw/block/trace-events | 16 +++++++++++++++
+>  2 files changed, 38 insertions(+), 26 deletions(-)
 >
-You are totally right - I have completely missed that point! Thanks.
-
-> >      return ret;
-> >  }
-> >
-> > @@ -598,6 +610,10 @@ int kvm_put_vcpu_events(ARMCPU *cpu)
-> >          events.exception.serror_esr = env->serror.esr;
-> >      }
-> >
-> > +    if (cap_has_inject_ext_dabt) {
-> > +        events.exception.ext_dabt_pending = env->ext_dabt_pending;
-> > +    }
-> > +
-> >      ret = kvm_vcpu_ioctl(CPU(cpu), KVM_SET_VCPU_EVENTS, &events);
-> >      if (ret) {
-> >          error_report("failed to put vcpu events");
-> > @@ -627,6 +643,8 @@ int kvm_get_vcpu_events(ARMCPU *cpu)
-> >      env->serror.has_esr = events.exception.serror_has_esr;
-> >      env->serror.esr = events.exception.serror_esr;
-> >
-> > +    env->ext_dabt_pending = events.exception.ext_dabt_pending;
-> > +
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 61f2fb8f8f..5ff8d270c4 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -32,17 +32,7 @@
+>  #include "qemu/module.h"
+>  #include "qemu/error-report.h"
+>  #include "qapi/error.h"
+> -
+> -#ifndef M25P80_ERR_DEBUG
+> -#define M25P80_ERR_DEBUG 0
+> -#endif
+> -
+> -#define DB_PRINT_L(level, ...) do { \
+> -    if (M25P80_ERR_DEBUG > (level)) { \
+> -        fprintf(stderr,  ": %s: ", __func__); \
+> -        fprintf(stderr, ## __VA_ARGS__); \
+> -    } \
+> -} while (0)
+> +#include "trace.h"
 >
-> afaict from Documentation/virt/kvm/api.txt and the KVM code you cannot
-> get this state. Therefore the above line (and extra stray blank line)
-> should be dropped.
+>  /* Fields for FlashPartInfo->flags */
 >
-That's true, though this is a lightweight way of resetting the vcpu state.
-We would have to do that otherwise to mark that this case has been handled
-and that the abort is no longer pending.
-
-> >      return 0;
-> >  }
-> >
-> > @@ -634,6 +652,7 @@ void kvm_arch_pre_run(CPUState *cs, struct kvm_run *run)
-> >  {
-> >  }
-> >
-> > +
+> @@ -574,7 +564,8 @@ static void flash_erase(Flash *s, int offset, FlashCMD cmd)
+>          abort();
+>      }
 >
-> stray blank line
+> -    DB_PRINT_L(0, "offset = %#x, len = %d\n", offset, len);
+> +    trace_m25p80_flash_erase(s, offset, len);
+> +
+>      if ((s->pi->flags & capa_to_assert) != capa_to_assert) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "M25P80: %d erase size not supported by"
+>                        " device\n", len);
+> @@ -607,8 +598,7 @@ void flash_write8(Flash *s, uint32_t addr, uint8_t data)
+>      }
 >
-> >  MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
-> >  {
-> >      ARMCPU *cpu;
-> > @@ -699,6 +718,11 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
-> >              ret = EXCP_DEBUG;
-> >          } /* otherwise return to guest */
-> >          break;
-> > +    case KVM_EXIT_ARM_NISV:
-> > +        /* External DABT with no valid iss to decode */
-> > +        ret = kvm_arm_handle_dabt_nisv(cs, run->arm_nisv.esr_iss,
-> > +                                       run->arm_nisv.fault_ipa);
-> > +        break;
-> >      default:
-> >          qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
-> >                        __func__, run->exit_reason);
-> > @@ -833,3 +857,75 @@ int kvm_arch_msi_data_to_gsi(uint32_t data)
-> >  {
-> >      return (data - 32) & 0xffff;
-> >  }
-> > +
-> > +int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
-> > +                             uint64_t fault_ipa)
-> > +{
-> > +    ARMCPU *cpu = ARM_CPU(cs);
-> > +    CPUARMState *env = &cpu->env;
-> > +    uint32_t ins, ins_fetched;
+>      if ((prev ^ data) & data) {
+> -        DB_PRINT_L(1, "programming zero to one! addr=%" PRIx32 "  %" PRIx8
+> -                   " -> %" PRIx8 "\n", addr, prev, data);
+> +        trace_m25p80_programming_zero_to_one(s, addr, prev, data);
+>      }
 >
-> ins_fetched is a bool
-
-Actually that's int (as per cpu_memory_rw_debug)
+>      if (s->pi->flags & EEPROM) {
+> @@ -662,6 +652,9 @@ static void complete_collecting_data(Flash *s)
 >
-> > +
-> > +    /*
-> > +     * Hacky workaround for kernels that for aarch32 guests, instead of expected
-> > +     * external data abort, inject the IMPLEMENTATION DEFINED exception with the
-> > +     * lock-down. This is actually handled by the guest which results in
-> > +     * re-running the faulting instruction.
-> > +     * This intends to break the vicious cycle.
-> > +     */
+>      s->state = STATE_IDLE;
 >
-> This doesn't seem like the right thing to do. What happens on real
-> hardware in this case? If an OS would get into a "vicious cycle" on
-> real hardware then it should get into one on KVM too.
+> +    trace_m25p80_complete_collecting(s, s->cmd_in_progress, n, s->ear,
+> +                                     s->cur_addr);
+> +
+>      switch (s->cmd_in_progress) {
+>      case DPP:
+>      case QPP:
+> @@ -825,7 +818,7 @@ static void reset_memory(Flash *s)
+>          break;
+>      }
 >
-That's the problem. that would not happen on a real hardware.
-We might end up here due to a KVM bug (which has been fixed recently)
-when the injected
-abort is not the one expected (as of not the one that would be
-triggered by hw in this
-particular case).
-Details in : https://patchwork.kernel.org/patch/11358083/
-
-> > +    if (!is_a64(env)) {
-> > +        static uint8_t setback;
-> > +
-> > +        /*
-> > +         * The state has not been synchronized yet, so if this is re-occurrence
-> > +         * of the same abort triggered by guest, the status for pending external
-> > +         * abort should not get cleared yet
-> > +         */
-> > +        if (unlikely(env->ext_dabt_pending)) {
-> > +            if (setback) {
-> > +                error_report("Most probably triggered kernel issue with"
-> > +                             " injecting external data abort.");
-> > +                error_printf("Giving up trying ...\n");
-> > +                /* Here is where the fun comes to an end */
-> > +                return -EINVAL;
-> > +            }
-> > +        }
-> > +        setback = env->ext_dabt_pending;
-> > +    }
-> > +
-> > +    kvm_cpu_synchronize_state(cs);
-> > +   /*
-> > +    * ISS [23:14] is invalid so there is a limited info
-> > +    * on what has just happened so the only *useful* thing that can
-> > +    * be retrieved from ISS is WnR & DFSC (though in some cases WnR
-> > +    * might be less of a value as well)
-> > +    */
-> > +
-> > +    /*
-> > +     * Get current PC before it will get updated to exception vector entry
-> > +     */
-> > +    target_ulong ins_addr = is_a64(env) ? env->pc : env->regs[15];
+> -    DB_PRINT_L(0, "Reset done.\n");
+> +    trace_m25p80_reset_done(s);
+>  }
 >
-> ins_addr should be declared above
+>  static void decode_fast_read_cmd(Flash *s)
+> @@ -941,9 +934,10 @@ static void decode_qio_read_cmd(Flash *s)
 >
-> But what are we doing? pc is a guest virtual address. Oh, I see...
+>  static void decode_new_cmd(Flash *s, uint32_t value)
+>  {
+> -    s->cmd_in_progress = value;
+>      int i;
+> -    DB_PRINT_L(0, "decoded new command:%x\n", value);
+> +
+> +    s->cmd_in_progress = value;
+> +    trace_m25p80_command_decoded(s, value);
 >
-> > +
-> > +    /*
-> > +     * Get the faulting instruction
-> > +     * Instructions have a fixed length of 32 bits
-> > +     * and are always little-endian
-> > +     */
-> > +    ins_fetched = !cpu_memory_rw_debug(cs, ins_addr, (uint8_t *) &ins,
-> > +                                       sizeof(uint32_t), 0);
+>      if (value != RESET_MEMORY) {
+>          s->reset_enable = false;
+> @@ -1042,7 +1036,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+>          break;
 >
-> ... we're trying to actual walk the KVM guest's page tables. That
-> seems a bit odd, and the "_debug" function name used for it makes
-> it seem even more odd.
+>      case JEDEC_READ:
+> -        DB_PRINT_L(0, "populated jedec code\n");
+> +        trace_m25p80_populated_jedec(s);
+>          for (i = 0; i < s->pi->id_len; i++) {
+>              s->data[i] = s->pi->id[i];
+>          }
+> @@ -1063,7 +1057,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+>      case BULK_ERASE_60:
+>      case BULK_ERASE:
+>          if (s->write_enable) {
+> -            DB_PRINT_L(0, "chip erase\n");
+> +            trace_m25p80_chip_erase(s);
+>              flash_erase(s, 0, BULK_ERASE);
+>          } else {
+>              qemu_log_mask(LOG_GUEST_ERROR, "M25P80: chip erase with write "
+> @@ -1184,7 +1178,7 @@ static int m25p80_cs(SSISlave *ss, bool select)
+>          s->data_read_loop = false;
+>      }
 >
-> > +
-> > +    error_report("Data abort exception with no valid ISS generated by "
-> > +                 "guest memory access at physical address: 0x" TARGET_FMT_lx,
-> > +                 (target_ulong)fault_ipa);
-> > +
-> > +    error_printf(ins_fetched ? "%s : 0x%" PRIx32 " (ins encoded)\n"  : "%s\n",
-> > +                 "KVM unable to emulate faulting instruction",
-> > +                 (!ins_fetched ? 0 : ldl_le_p(&ins)));
-> > +    error_printf("Injecting a data abort exception into guest.\n");
+> -    DB_PRINT_L(0, "%sselect\n", select ? "de" : "");
+> +    trace_m25p80_select(s, select ? "de" : "");
 >
-> The guest shouldn't be able to generate three lines of errors on the host
-> whenever it wants. That's a security bug. One trace point here seems like
-> the most we should do. Or, after these three lines we should kill the
-> guest.
+>      return 0;
+>  }
+> @@ -1194,19 +1188,20 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint32_t tx)
+>      Flash *s = M25P80(ss);
+>      uint32_t r = 0;
 >
-You have a point here, this can indeed be exploited by the malicious
-guest. Not sure if killing it is necessary here.
-I could limit the logging though that gets tricky for aborts triggered by
-user-space processes which would probably leave the guest running
-without much of an issue there.
-I can y get rid of logging the additional info and keep the single
-statement of an instruction not being emulated but that still leaves an
-open door for potential exploits...
-
-> Actually, I don't think we should attempt to get the instruction at all.
-> We should do what the KVM documenation suggests we do when we get
-> this exit. We should either do a user selected action: one of suspend,
-> dump, restart, or inject a dabt (as is done below). The last choice hopes
-> that the guest will handle it in some graceful way, or that it'll crash
-> with all the information needed for a post-mortem crash investigation.
+> +    trace_m25p80_transfer(s, s->state, s->len, s->needed_bytes, s->pos,
+> +                          s->cur_addr, (uint8_t)tx);
+> +
+>      switch (s->state) {
 >
-> And I don't think we should do the "very brave" option of trying to
-> emulate the instruction, even if we identify it as a valid MMIO address.
-> That just sounds like a huge can of worms.
+>      case STATE_PAGE_PROGRAM:
+> -        DB_PRINT_L(1, "page program cur_addr=%#" PRIx32 " data=%" PRIx8 "\n",
+> -                   s->cur_addr, (uint8_t)tx);
+> +        trace_m25p80_page_program(s, s->cur_addr, (uint8_t)tx);
+>          flash_write8(s, s->cur_addr, (uint8_t)tx);
+>          s->cur_addr = (s->cur_addr + 1) & (s->size - 1);
+>          break;
 >
-> Does QEMU already have a way for users to select a
-> don't-know-how-to-handle-guest-exception behavior?
+>      case STATE_READ:
+>          r = s->storage[s->cur_addr];
+> -        DB_PRINT_L(1, "READ 0x%" PRIx32 "=%" PRIx8 "\n", s->cur_addr,
+> -                   (uint8_t)r);
+> +        trace_m25p80_read_byte(s, s->cur_addr, (uint8_t)r);
+>          s->cur_addr = (s->cur_addr + 1) & (s->size - 1);
+>          break;
 >
-
-The function is attempting to inject the external data abort. The rest is for
-the aftermath analysis to easy figuring out what has happened
-which will not be so easy in case of user-space process triggering
-the DABT with no valid ISS. There is no attempt of emulating the instruction
-just simply saying the guest tried to access this address with this instruction
-which couldn't be handled. Might be excessive in some cases
-(like misbehaving kernel) but it also might be handy on those rare
-occasions when there is not much to analyze.
-But as per the issue you have raised above I will rework that.
-
-Not sure if there is a mechanism to specify the 'preferred' behavior though.
-
-BR
-
-
-Beata
-
-
-> > +    /*
-> > +     * Set pending ext dabt and trigger SET_EVENTS so that
-> > +     * KVM can inject the abort
-> > +     */
-> > +    env->ext_dabt_pending = 1;
-> > +
-> > +    return 0;
-> > +}
+> @@ -1244,6 +1239,7 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint32_t tx)
+>          }
 >
-> Thanks,
-> drew
+>          r = s->data[s->pos];
+> +        trace_m25p80_read_data(s, s->pos, (uint8_t)r);
+>          s->pos++;
+>          if (s->pos == s->len) {
+>              s->pos = 0;
+> @@ -1281,7 +1277,7 @@ static void m25p80_realize(SSISlave *ss, Error **errp)
+>              return;
+>          }
 >
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+> -        DB_PRINT_L(0, "Binding to IF_MTD drive\n");
+> +        trace_m25p80_binding(s);
+>          s->storage = blk_blockalign(s->blk, s->size);
+>
+>          if (blk_pread(s->blk, 0, s->storage, s->size) != s->size) {
+> @@ -1289,7 +1285,7 @@ static void m25p80_realize(SSISlave *ss, Error **errp)
+>              return;
+>          }
+>      } else {
+> -        DB_PRINT_L(0, "No BDRV - binding to RAM\n");
+> +        trace_m25p80_binding_no_bdrv(s);
+>          s->storage = blk_blockalign(NULL, s->size);
+>          memset(s->storage, 0xFF, s->size);
+>      }
+> diff --git a/hw/block/trace-events b/hw/block/trace-events
+> index c03e80c2c9..f78939fa9d 100644
+> --- a/hw/block/trace-events
+> +++ b/hw/block/trace-events
+> @@ -134,3 +134,19 @@ xen_block_blockdev_add(char *str) "%s"
+>  xen_block_blockdev_del(const char *node_name) "%s"
+>  xen_block_device_create(unsigned int number) "%u"
+>  xen_block_device_destroy(unsigned int number) "%u"
+> +
+> +# m25p80.c
+> +m25p80_flash_erase(void *s, int offset, uint32_t len) "[%p] offset = 0x%"PRIx32", len = %u"
+> +m25p80_programming_zero_to_one(void *s, uint32_t addr, uint8_t prev, uint8_t data) "[%p] programming zero to one! addr=0x%"PRIx32"  0x%"PRIx8" -> 0x%"PRIx8
+> +m25p80_reset_done(void *s) "[%p] Reset done."
+> +m25p80_command_decoded(void *s, uint32_t cmd) "[%p] new command:0x%"PRIx32
+> +m25p80_complete_collecting(void *s, uint32_t cmd, int n, uint8_t ear, uint32_t cur_addr) "[%p] decode cmd: 0x%"PRIx32" len %d ear 0x%"PRIx8" addr 0x%"PRIx32
+> +m25p80_populated_jedec(void *s) "[%p] populated jedec code"
+> +m25p80_chip_erase(void *s) "[%p] chip erase"
+> +m25p80_select(void *s, const char *what) "[%p] %sselect"
+> +m25p80_page_program(void *s, uint32_t addr, uint8_t tx) "[%p] page program cur_addr=0x%"PRIx32" data=0x%"PRIx8
+> +m25p80_transfer(void *s, uint8_t state, uint32_t len, uint8_t needed, uint32_t pos, uint32_t cur_addr, uint8_t t) "[%p] Transfer state 0x%"PRIx8" len 0x%"PRIx32" needed 0x%"PRIx8" pos 0x%"PRIx32" addr 0x%"PRIx32" tx 0x%"PRIx8
+> +m25p80_read_byte(void *s, uint32_t addr, uint8_t v) "[%p] Read byte 0x%"PRIx32"=0x%"PRIx8
+> +m25p80_read_data(void *s, uint32_t pos, uint8_t v) "[%p] Read data 0x%"PRIx32"=0x%"PRIx8
+> +m25p80_binding(void *s) "[%p] Binding to IF_MTD drive"
+> +m25p80_binding_no_bdrv(void *s) "[%p] No BDRV - binding to RAM"
+> --
+> 2.17.1
+>
+>

@@ -1,99 +1,98 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp827223lfp;
-        Wed, 5 Feb 2020 17:37:57 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw9K6mFwtlkT0Kvr5QDTcXZbEL3RopwgJdiVPK+0rQo2dtlXlz299RanUwgqSqiCqlhqhN4
-X-Received: by 2002:aed:3f77:: with SMTP id q52mr605799qtf.248.1580953076848;
-        Wed, 05 Feb 2020 17:37:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580953076; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp828462lfp;
+        Wed, 5 Feb 2020 17:39:26 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzY/VXjdMJadcPd5zNt1zVXLx2kZEXoPgl1umMubdjQf9NsYBQ8qPp3Ae8070uyAKMgy72S
+X-Received: by 2002:aed:3344:: with SMTP id u62mr572942qtd.73.1580953166241;
+        Wed, 05 Feb 2020 17:39:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580953166; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sp+qBv1kQnmVBeyZ56KzbeSxrHuVwsh696Fv2nE9+h6DMMCz8ZtwItUd8ejlJz1xqS
-         bU2eqy4DbE+ZOSYa9bcx3NFdF8fwUcZXoqQEhJhMPgZ1Tx/NV9arSmXi/Qtx6peRWOd9
-         N9A5oXAgjpjYHvKpJYpijRE7e3J3PVXL6qXkukEUuiYzZBfQniPm21El9E1g65/esl1R
-         3edQSC53IbQjfm3TnA85cRFsuS3Af93EDfDBQMb7m3i618fYjWyYlVoYtSNyQ0iqdpOp
-         ZHviuG3Ezg2GR1uwotlZlQ3o23pS5zsJpzSD3Tas5Ewyg/o0Tt6ATWqdExW24aSbaOik
-         k1zA==
+        b=RCV8KmFEbQvnWp5yhrGaVuea0aFZkrnoWD347kuPqGz7y7NGjfPYApP6ouXcnPQQwo
+         u/KdIxNdhslrrS27baRZzIucJIjm2iCoTFRxmXQNhk30oIKp8Z6bTkR8CLVWRN65FwDQ
+         IfbE2NIS2UfzWDjCI5UKMhAHp61v559+fBg8RwGXPhYD+GzVjrvyhQIrToZf6DxisikP
+         y8hIL3GkohjIJjqJEvmYEhTLIbXOciyBpKpduoCZ5fCgO9Ewi2OE+eh7/4GXd5z6tziq
+         KP5fgk3ZSa3ZBizF8wMxVHCv8EMKxtBa5JvMFWSU60PSEAc/UjqtDD9Y9nzHnEvYs7Ze
+         JbCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=yUSBUp9gdan6yP5vOjp1HSLcVgTCg5pBVo6PRPW8Pj0=;
-        b=nucCwhIzLGAcNHMS8xhX+aXiQYVBEZQQ5090v6N6O9NqHaaMfw/UMYvsUT0b1xMXGC
-         e8JATj82H43001+RZkGxC56TO7bomBSlg5Tq2n0Z2okU5ebD9E2YLfi++kMykelMoWPF
-         24RDovESccq1JlBoy9LJc4Bf7KPOUnixIHCnVUdNoetcs9X9EBE+XDj8rWxAEYq6YWDH
-         PDpjAk63pr13SIkFMcK7wJsE02Led0WysLyexdFGWo8AVTjOMv/dMVbItrFAKuZvVUEe
-         xFPdbgyHC55ScQNhk6LxP0IQm5Qt/rDRydr9sxDQT4lqLj8FG4nS2r7NG4IBRNU+bJa9
-         js0g==
+        bh=YKntEz0YWqvXEnpxZehSJURd2wV0yMHHN+VgGwbeMbQ=;
+        b=xg0m35FoQwb9V/JE5tVnu7YWg4AkrhHFu9b3savmQquvYplDEQyngsipNGpXUMrmAr
+         vFUcFPYy2FQ39ZQxLzSBXkNosbvBRSJkwjpM5M6FTD+GYLfqBqGi0Ztaq8xk+4KLHwSN
+         Hr1a7TeMT+JrOidkeErkQY8j/xq2zpj1Fi8ogwF0+5GRekybrcBfEX9ndTeO4JMWfUUy
+         Gkn+W/npIYQp9BW5+HLCA0qdbj/shZdzi856P7Y6J7+z0pZeoxaO0Sz8YyMAnCktW820
+         G1gGHt67+RoPGZoKeIgqNFkIjBZZF5n0cyBbfpu2MlGkGrH/AsEqCHcxM0K699q9cGWy
+         NAmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=g2E12OKa;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oi+qusW0;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h5si772870qkl.356.2020.02.05.17.37.56
+        by mx.google.com with ESMTPS id p21si806260qkj.72.2020.02.05.17.39.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Feb 2020 17:37:56 -0800 (PST)
+        Wed, 05 Feb 2020 17:39:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=g2E12OKa;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oi+qusW0;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:59458 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59480 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izW79-0001oM-8y
-	for alex.bennee@linaro.org; Wed, 05 Feb 2020 20:37:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54414)
+	id 1izW8a-0003zo-Mg
+	for alex.bennee@linaro.org; Wed, 05 Feb 2020 20:39:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54754)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1izVof-0001Ea-I1
- for qemu-devel@nongnu.org; Wed, 05 Feb 2020 20:18:53 -0500
+ id 1izVox-0001bw-8o
+ for qemu-devel@nongnu.org; Wed, 05 Feb 2020 20:19:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1izVod-0004Dp-7L
- for qemu-devel@nongnu.org; Wed, 05 Feb 2020 20:18:49 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:38252)
+ id 1izVou-00058R-De
+ for qemu-devel@nongnu.org; Wed, 05 Feb 2020 20:19:07 -0500
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:37975)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1izVod-00049t-0b; Wed, 05 Feb 2020 20:18:47 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id y17so5137540wrh.5;
- Wed, 05 Feb 2020 17:18:46 -0800 (PST)
+ id 1izVot-0004zb-59; Wed, 05 Feb 2020 20:19:04 -0500
+Received: by mail-wr1-x444.google.com with SMTP id y17so5137963wrh.5;
+ Wed, 05 Feb 2020 17:19:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=yUSBUp9gdan6yP5vOjp1HSLcVgTCg5pBVo6PRPW8Pj0=;
- b=g2E12OKam7A8Mb9Y1AW9/62RhZ4sGt2ctKZdAyLuBT8yU+eB4qDZ++cb5UrtYprsrd
- HTKDsTuEa98f72e1fonm6ybRdVYg2tjWjwsSC0WKDyP9eZ4WWJeNf3AlktPVCOlP8Qyv
- uL0o2vDIJZP6G+ywreBoM0eyk6NeSsO2w12lKBzMqvwB3as50OSc9Ik+G8m/ptNj6qb7
- hVkluHGGcOv+6DJqAC5UpLmoJlqmEvD9Co7OJJY4oLYBrpNJUCPOuB7Zu148Mja9ov3+
- WlQZPagvGHPgmWO6iI+XhQWw7jW+PLQrPWcf52yjvgJlcvYG6Ou7s+XWBIUdxNpUT24j
- N6Ng==
+ bh=YKntEz0YWqvXEnpxZehSJURd2wV0yMHHN+VgGwbeMbQ=;
+ b=oi+qusW0M9ReYlUYlgK0Tx/WRBFwFBdJ3G492nLXQLtnq6cGlfgg6IhU+8Q1KX6NzW
+ teDpuwygyQFRiAY1Bzhvjk0EGqbVz9KYTaTxwGhK/j+amIwnTRpxU2SIJvMuV4HGjAaW
+ uEp3GKynLjsBGBbR9XhcYJZWrJqckktTU7lOW+LXYjrnoVa122Niz0U/9OoMMri6G0Nh
+ 9B5mbOdkBEhkSkewOp3IWx5a9VezotBoyF2DpZCYJrccs4O3bi5UT+RacKHELvRxujR9
+ A2XK/Kp2QYYkb77vhJVlyXqGX55cUQB7+fpwlg7JccbeTvKPyBU0o5SLoLVlrBY+qob/
+ 0Ebg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=yUSBUp9gdan6yP5vOjp1HSLcVgTCg5pBVo6PRPW8Pj0=;
- b=MlQqq0pxVGmdhnduSbZ4BVBsvq3guIxgm8N1XqB3Sf6tapz2m7xNUCrOwy5e2W+a/K
- QKeyuRtYpKRItQ3DXgFEJOeRKOKcqoRzS2IFGHmkMaifNyaUlO32oSN4KscipGvhgLWW
- rkgdnQP/Bpw6/OzMuVSCXjqk5b6TuDNP4ZaXhQJSqYvBahtFQiuxgqrasL6N5oCMKkG7
- ClqaX6zMnODO8/2oCFvSQvCAs8W4+aLdyOHLK1CrKIvl4gKoJk831nfl/QrEw1CNZI7W
- WQfe1GqBfwRWjo1yHfN58OKI+lSmSCkBZeTDdMKkWg3ExHBe7X0+TDF+TYXIPXOoyyfT
- PW/g==
-X-Gm-Message-State: APjAAAWVfiGMlxgi+cXfSuzgbJ4gMrIFu+26ap8lBO3glEeRkCAqz4+Y
- ZBJeqYEdF+CY67ZpCQ5e+dLCQQ6Y
-X-Received: by 2002:a5d:6191:: with SMTP id j17mr296382wru.427.1580951925784; 
- Wed, 05 Feb 2020 17:18:45 -0800 (PST)
+ bh=YKntEz0YWqvXEnpxZehSJURd2wV0yMHHN+VgGwbeMbQ=;
+ b=RVX/foTZTBlE5I0PLAHyswFbCCyW957lSZTMwNL7RXOLHQUXCgYZfqP1yBiYlu9l82
+ MsG8uk5SHa4n+wHRqE7sR5UATxTy5q63MwYdbWX8ZtTgkJC0brUwEQRD/dOfMX+lafsA
+ 6Lnj3cKjWqk3eaDlPTXIljabH7TDeBFlru592ugUrGrnutDHpl5wd2bp/X/KXf4/YfGv
+ 5W2/3An59btzT92rzqy29GERysDhWs0rJqWU1ZqaK5Xnup/T4/kKGvKdqfPxpV9eT9m3
+ jkmckUfty90ATeG+CYzqFjGrjFjPFo0uS95qxn/ycigRl7olyPAcrvuL19DV1+56w8Z0
+ 7+lw==
+X-Gm-Message-State: APjAAAVXL1JxyqoKN98Nvz+XVL3WWrlk5IqnfOrBBtqbdSBs2Ejqcknd
+ WaLepIB2ImJ4Isjx/oxlUdkh9Oz+
+X-Received: by 2002:adf:f1c6:: with SMTP id z6mr303703wro.279.1580951940799;
+ Wed, 05 Feb 2020 17:19:00 -0800 (PST)
 Received: from localhost.localdomain (2.red-95-127-156.staticip.rima-tde.net.
  [95.127.156.2])
- by smtp.gmail.com with ESMTPSA id w13sm2053526wru.38.2020.02.05.17.18.44
+ by smtp.gmail.com with ESMTPSA id w13sm2053526wru.38.2020.02.05.17.18.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 Feb 2020 17:18:45 -0800 (PST)
+ Wed, 05 Feb 2020 17:19:00 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 22/30] tests/acceptance/boot_linux_console: Use raspi
- console model as key
-Date: Thu,  6 Feb 2020 02:17:48 +0100
-Message-Id: <20200206011756.2413-23-f4bug@amsat.org>
+Subject: [NOTFORMERGE PATCH v2 29/30] hw/arm/bcm2836: Add the BCM2838 (ARMv8)
+Date: Thu,  6 Feb 2020 02:17:55 +0100
+Message-Id: <20200206011756.2413-30-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200206011756.2413-1-f4bug@amsat.org>
 References: <20200206011756.2413-1-f4bug@amsat.org>
@@ -103,7 +102,7 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::42f
+X-Received-From: 2a00:1450:4864:20::444
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -119,58 +118,293 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Joaquin de Andres <me@xcancerberox.com.ar>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Esteban Bosse <estebanbosse@gmail.com>, qemu-arm@nongnu.org
+ Esteban Bosse <estebanbosse@gmail.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QIT754LbiNB4
+X-TUID: PbDqT0BRci45
 
-Python dictionary are not that expensive. Use a key makes the
-code easier to review.
+Setup the GICv2.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- tests/acceptance/boot_linux_console.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ include/hw/arm/bcm2836.h |   3 +
+ hw/arm/bcm2836.c         | 206 +++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 209 insertions(+)
 
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index e40b84651b..5fba46a9d1 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -325,14 +325,14 @@ class BootLinuxConsole(Test):
-         self.vm.launch()
-         self.wait_for_console_pattern('init started: BusyBox')
+diff --git a/include/hw/arm/bcm2836.h b/include/hw/arm/bcm2836.h
+index 3d46469a73..7c1f79911c 100644
+--- a/include/hw/arm/bcm2836.h
++++ b/include/hw/arm/bcm2836.h
+@@ -13,6 +13,7 @@
  
--    def do_test_arm_raspi2(self, uart_id):
-+    def do_test_arm_raspi2(self, uart_model):
-         """
-         The kernel can be rebuilt using the kernel source referenced
-         and following the instructions on the on:
-         https://www.raspberrypi.org/documentation/linux/kernel/building.md
-         """
-         serial_kernel_cmdline = {
--            0: 'earlycon=pl011,0x3f201000 console=ttyAMA0',
-+            'pl011': 'earlycon=pl011,0x3f201000 console=ttyAMA0',
-         }
-         deb_url = ('http://archive.raspberrypi.org/debian/'
-                    'pool/main/r/raspberrypi-firmware/'
-@@ -344,7 +344,7 @@ class BootLinuxConsole(Test):
+ #include "hw/arm/bcm2835_peripherals.h"
+ #include "hw/intc/bcm2836_control.h"
++#include "hw/intc/arm_gic.h"
+ #include "target/arm/cpu.h"
  
-         self.vm.set_console()
-         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
--                               serial_kernel_cmdline[uart_id])
-+                               serial_kernel_cmdline[uart_model])
-         self.vm.add_args('-kernel', kernel_path,
-                          '-dtb', dtb_path,
-                          '-append', kernel_command_line)
-@@ -358,7 +358,7 @@ class BootLinuxConsole(Test):
-         :avocado: tags=machine:raspi2
-         :avocado: tags=device:pl011
-         """
--        self.do_test_arm_raspi2(0)
-+        self.do_test_arm_raspi2('pl011')
+ #define TYPE_BCM283X "bcm283x"
+@@ -27,6 +28,7 @@
+ #define TYPE_BCM2835 "bcm2835"
+ #define TYPE_BCM2836 "bcm2836"
+ #define TYPE_BCM2837 "bcm2837"
++#define TYPE_BCM2838 "bcm2838"
  
-     def test_arm_exynos4210_initrd(self):
-         """
+ typedef struct BCM283XState {
+     /*< private >*/
+@@ -39,6 +41,7 @@ typedef struct BCM283XState {
+     struct {
+         ARMCPU core;
+     } cpu[BCM283X_NCPUS];
++    GICState gic;
+     BCM2836ControlState control;
+     BCM2835PeripheralState peripherals;
+ } BCM283XState;
+diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+index bce5f8a866..f09cd25caf 100644
+--- a/hw/arm/bcm2836.c
++++ b/hw/arm/bcm2836.c
+@@ -24,6 +24,7 @@ typedef struct BCM283XClass {
+     int core_count;
+     hwaddr peri_base; /* Peripheral base address seen by the CPU */
+     hwaddr ctrl_base; /* Interrupt controller and mailboxes etc. */
++    hwaddr gic_base;
+     int clusterid;
+ } BCM283XClass;
+ 
+@@ -51,6 +52,11 @@ static void bcm2836_init(Object *obj)
+         qdev_prop_set_uint32(DEVICE(obj), "enabled-cpus", bc->core_count);
+     }
+ 
++    if (bc->gic_base) {
++        sysbus_init_child_obj(obj, "gic", &s->gic, sizeof(s->gic),
++                              TYPE_ARM_GIC);
++    }
++
+     if (bc->ctrl_base) {
+         sysbus_init_child_obj(obj, "control", &s->control,
+                               sizeof(s->control), TYPE_BCM2836_CONTROL);
+@@ -201,6 +207,188 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
+     }
+ }
+ 
++#ifdef TARGET_AARCH64
++
++#define GIC400_MAINTAINANCE_IRQ  9
++#define GIC400_TIMER_NS_EL2_IRQ 10
++#define GIC400_TIMER_VIRT_IRQ   11
++#define GIC400_LEGACY_FIQ       12
++#define GIC400_TIMER_S_EL1_IRQ  13
++#define GIC400_TIMER_NS_EL1_IRQ 14
++#define GIC400_LEGACY_IRQ       15
++
++/* Number of external interrupt lines to configure the GIC with */
++#define GIC_NUM_IRQS                128
++
++#define PPI(cpu, irq) (GIC_NUM_IRQS + (cpu) * GIC_INTERNAL + GIC_NR_SGIS + irq)
++
++#define GIC_BASE_OFS                0x0000
++#define GIC_DIST_OFS                0x1000
++#define GIC_CPU_OFS                 0x2000
++#define GIC_VIFACE_THIS_OFS         0x4000
++#define GIC_VIFACE_OTHER_OFS(cpu)  (0x5000 + (cpu) * 0x200)
++#define GIC_VCPU_OFS                0x6000
++
++#define NUM_GICV2M_SPIS       64
++
++#define VIRTUAL_PMU_IRQ 7
++
++static void bcm2838_gic_set_irq(void *opaque, int irq, int level)
++{
++    BCM283XState *s = (BCM283XState *)opaque;
++
++    printf("bcm2838_gic_set_irq irq:%d lvl:%d\n", irq, level);
++    qemu_set_irq(qdev_get_gpio_in(DEVICE(&s->gic), irq), level);
++}
++
++static void bcm2838_realize(DeviceState *dev, Error **errp)
++{
++    BCM283XState *s = BCM283X(dev);
++    BCM283XClass *bc = BCM283X_GET_CLASS(dev);
++    Error *err = NULL;
++    int n;
++
++    bcm283x_common_realize(dev, &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->peripherals), 0,
++                            bc->peri_base, 1);
++
++    /* bcm2836 interrupt controller (and mailboxes, etc.) */
++    object_property_set_bool(OBJECT(&s->control), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->control), 0, bc->ctrl_base);
++
++    /* Create cores */
++    for (n = 0; n < bc->core_count; n++) {
++        /* TODO: this should be converted to a property of ARM_CPU */
++        s->cpu[n].core.mp_affinity = (bc->clusterid << 8) | n;
++
++        /* set periphbase/CBAR value for CPU-local registers */
++        object_property_set_int(OBJECT(&s->cpu[n]),
++                                bc->peri_base,
++                                "reset-cbar", &err);
++        if (err) {
++            error_propagate(errp, err);
++            return;
++        }
++
++        /* start powered off if not enabled */
++        object_property_set_bool(OBJECT(&s->cpu[n]), n >= s->enabled_cpus,
++                                 "start-powered-off", &err);
++        if (err) {
++            error_propagate(errp, err);
++            return;
++        }
++
++        object_property_set_bool(OBJECT(&s->cpu[n]), true, "realized", &err);
++        if (err) {
++            error_propagate(errp, err);
++            return;
++        }
++    }
++
++    object_property_set_uint(OBJECT(&s->gic), 2, "revision", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    object_property_set_uint(OBJECT(&s->gic),
++                             BCM283X_NCPUS, "num-cpu", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    object_property_set_uint(OBJECT(&s->gic),
++                             GIC_NUM_IRQS + GIC_INTERNAL, "num-irq", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    object_property_set_bool(OBJECT(&s->gic),
++                             true, "has-virtualization-extensions", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    object_property_set_bool(OBJECT(&s->gic), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 0,
++                    bc->ctrl_base + bc->gic_base + GIC_DIST_OFS);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 1,
++                    bc->ctrl_base + bc->gic_base + GIC_CPU_OFS);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 2,
++                    bc->ctrl_base + bc->gic_base + GIC_VIFACE_THIS_OFS);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 3,
++                    bc->ctrl_base + bc->gic_base + GIC_VCPU_OFS);
++
++    for (n = 0; n < BCM283X_NCPUS; n++) {
++        sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 4 + n,
++                        bc->ctrl_base + bc->gic_base
++                        + GIC_VIFACE_OTHER_OFS(n));
++    }
++
++    for (n = 0; n < BCM283X_NCPUS; n++) {
++        DeviceState *cpudev = DEVICE(&s->cpu[n]);
++        DeviceState *gicdev = DEVICE(&s->gic);
++
++        /* Connect the GICv2 outputs to the CPU */
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), n,
++                           qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), n + BCM283X_NCPUS,
++                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), n + 2 * BCM283X_NCPUS,
++                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), n + 3 * BCM283X_NCPUS,
++                        qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
++
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), n + 4 * BCM283X_NCPUS,
++                        qdev_get_gpio_in(gicdev,
++                                         PPI(n, GIC400_MAINTAINANCE_IRQ)));
++
++        /* Connect timers from the CPU to the interrupt controller */
++        qdev_connect_gpio_out(cpudev, GTIMER_PHYS,
++              qdev_get_gpio_in(gicdev, PPI(n, GIC400_TIMER_NS_EL1_IRQ)));
++        qdev_connect_gpio_out(cpudev, GTIMER_VIRT,
++              qdev_get_gpio_in(gicdev, PPI(n, GIC400_TIMER_VIRT_IRQ)));
++        qdev_connect_gpio_out(cpudev, GTIMER_HYP,
++              qdev_get_gpio_in(gicdev, PPI(n, GIC400_TIMER_NS_EL2_IRQ)));
++        qdev_connect_gpio_out(cpudev, GTIMER_SEC,
++              qdev_get_gpio_in(gicdev, PPI(n, GIC400_TIMER_S_EL1_IRQ)));
++        /* PMU interrupt */
++        qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
++            qdev_get_gpio_in(gicdev, PPI(n, VIRTUAL_PMU_IRQ)));
++    }
++
++    /* Pass through inbound GPIO lines to the GIC */
++    qdev_init_gpio_in(dev, bcm2838_gic_set_irq, GIC_NUM_IRQS);
++
++    /* Pass through outbound IRQ lines from the GIC */
++    qdev_pass_gpios(DEVICE(&s->gic), DEVICE(&s->peripherals), NULL);
++
++    object_property_set_bool(OBJECT(&s->peripherals), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++}
++#endif /* TARGET_AARCH64 */
++
+ static void bcm283x_class_init(ObjectClass *oc, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(oc);
+@@ -246,6 +434,20 @@ static void bcm2837_class_init(ObjectClass *oc, void *data)
+     bc->clusterid = 0x0;
+     dc->realize = bcm2836_realize;
+ };
++
++static void bcm2838_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    BCM283XClass *bc = BCM283X_CLASS(oc);
++
++    bc->cpu_type = ARM_CPU_TYPE_NAME("cortex-a72");
++    bc->core_count = BCM283X_NCPUS;
++    bc->peri_base = 0xfe000000;
++    bc->ctrl_base = 0xff800000;
++    bc->gic_base = 0x40000;
++    bc->clusterid = 0x0;
++    dc->realize = bcm2838_realize;
++};
+ #endif
+ 
+ static const TypeInfo bcm283x_types[] = {
+@@ -262,6 +464,10 @@ static const TypeInfo bcm283x_types[] = {
+         .name           = TYPE_BCM2837,
+         .parent         = TYPE_BCM283X,
+         .class_init     = bcm2837_class_init,
++    }, {
++        .name           = TYPE_BCM2838,
++        .parent         = TYPE_BCM283X,
++        .class_init     = bcm2838_class_init,
+ #endif
+     }, {
+         .name           = TYPE_BCM283X,
 -- 
 2.21.1
 

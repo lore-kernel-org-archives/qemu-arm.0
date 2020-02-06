@@ -1,100 +1,110 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1088060lfp;
-        Wed, 5 Feb 2020 23:05:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzY8drWdZfOdhgJbVFndmkTrOouUp4EGr9P6fygp0DpchxJZG72xHqHX/4c8My16TA38FI0
-X-Received: by 2002:a05:6214:88c:: with SMTP id cz12mr1140339qvb.95.1580972706087;
-        Wed, 05 Feb 2020 23:05:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580972706; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1236370lfp;
+        Thu, 6 Feb 2020 01:57:05 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwrg2PGwlpVeOJF+h+6DNVI7TUPLUNJGMeI8QbwPnlR1nFUp0dqU7Ckf/MGL6lu1v5WNA51
+X-Received: by 2002:a37:b83:: with SMTP id 125mr1742226qkl.107.1580983025199;
+        Thu, 06 Feb 2020 01:57:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580983025; cv=none;
         d=google.com; s=arc-20160816;
-        b=WtGY+7iMVDl53XKQhBMql8pdlXOB/owmBDqATkEkaNnb/0+Afc1xGvXc0vYtb6bQum
-         Fl2GlZNaSkz0V5RkdtWfspGUvTESko50d+Jl/yAUHMblwF3d8Bf3bSI9bUXtVpLXVhge
-         MVoRc4c3DQ5dHpc5zyQHYE4BCG4HV/JqGRLmfp0tIUrK2CP1WIoOPSDUe0aZLFnnOong
-         oiE6DvbfyKMU/zu7bqtDhcQ8wVABjaLRf7wJ1KAio0yc3hiXXU3QplYW7ZG+x7AvHqTO
-         slUGqxiuWABhbGTAPQkZZmeh27xaLib8VMVzTlAkIbFYkpERuIkjp2tS8zUW0hjrF2nL
-         JDwg==
+        b=eAQDZsWEsCtnWCAasDynddeG+c4Nk54LN2yfDUVRJmhVeKBkCNAI67oT3wBM5g62TQ
+         edqoqgD8WqBhEeAqHJU+9iQ6Sm8q7omT6W95KIzgkf3TtCnQZNUuJf0rIWnTMDHglWwW
+         Mo1do6DRt3dgSokEFMZ2XtgRD/LZhZQaBzIic3kjWKoK4FWyn5VXaKt0u/kf1yWpdlDX
+         BPBuvU/y8vk5dJoI+6CtpoJ1r0wMAMt1Xouu+ncGI18hOWMFrFL32o43lCUISd/B4reo
+         iUKaLbnO4x0tqkcBTI+drqKW379BpUK8/wBb+wJAZuws6BP7jEYk+OJC7DJ/rc7Pot8r
+         9rJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-disposition:content-transfer-encoding:user-agent
+         :in-reply-to:mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=h672+PvYOg4F9GqkfTlAyYdpuih/rH914wY/nGyuogk=;
-        b=Fk2jiGoLCSE6RBGlwmAzPe/hC/+Ik+kzQ2ecjFPXKdo3FhHydEUiTZCh1xrPgoRYKW
-         dhbajT1BYEaxK/CaBTGiMoGYJX30kNdYUAhLaNurGT2tvp+9qHGDUjXJzuQjZJDpdHDc
-         Gx5EgyWcR6hS0GBT8nVMvcAA8t1jsuRIEUMyTAvZy5QHH5Ja1cbOMFMb1wtuz5Rkegy3
-         dK/QxWB+zvowdcKAf1LcNWVI+dCyoWo+Rk8RvMnwl0/wamGEw2SeyoNfhSirkoX+i/NI
-         T6M8DLLEtYw1lmDgJMA7uOKI0cHpGa+gmkwkzQUhjb6fkAKiUgOB9Q8zgbR0ZMFmPrjb
-         avvg==
+        bh=wvGcVVWN7dt2fAY8WfvoWDjRJxfK0DPrldxxpTv42Fw=;
+        b=c6vP/EffOd/YJeVfa/2aLPgL20oI7yH+gnN/qrxKN2vJxJ2kKDQChR9L7Bbi2clWXF
+         aImuQHbH9nMrGgllsPazurt2VEyauFrMhzSn+YcM3jZOPviueHuC6LtiiwehxcDQHuFN
+         nfO88ow3N/xc9EJGfNIgcr6hqV4egxAusK7dDLR7wZ63DEkNmu6B5qSvwcAdDlpLZ2oq
+         bKCym9tTMjouruq1CbcPB/0eH9F862DJnc40L2fszQGIxXAu3oyN5JUA9tOEi1tCJIu1
+         qOcwjtP/k6xZpfLESB8NBed8C2hm8bdRXSSf29NxtEE8Oqali1kg5sNnDqvfhjr5OyVr
+         nWZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b="jq/HND09";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LSShHTuA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i65si1197395qke.190.2020.02.05.23.05.05
+        by mx.google.com with ESMTPS id c4si1330144qkj.144.2020.02.06.01.57.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Feb 2020 23:05:06 -0800 (PST)
+        Thu, 06 Feb 2020 01:57:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b="jq/HND09";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33130 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LSShHTuA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34692 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izbDl-0004oW-Dj
-	for alex.bennee@linaro.org; Thu, 06 Feb 2020 02:05:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50032)
+	id 1izduB-0002GE-K1
+	for alex.bennee@linaro.org; Thu, 06 Feb 2020 04:57:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50482)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <joel.stan@gmail.com>) id 1izbDP-0004nz-UK
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 02:04:44 -0500
+ (envelope-from <berrange@redhat.com>) id 1izdti-0002FN-Uc
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 04:56:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <joel.stan@gmail.com>) id 1izbDN-0006zu-S5
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 02:04:42 -0500
-Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742]:32907)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <joel.stan@gmail.com>)
- id 1izbDG-00066f-CR; Thu, 06 Feb 2020 02:04:35 -0500
-Received: by mail-qk1-x742.google.com with SMTP id h4so4584335qkm.0;
- Wed, 05 Feb 2020 23:04:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=h672+PvYOg4F9GqkfTlAyYdpuih/rH914wY/nGyuogk=;
- b=jq/HND09rlub7v5VE0z/kEmhohKZ7Zbx+9C64fiKh/8UGEk8U3gMAOTkXE/+jF8ii9
- WTirQjCUn8/LLu3FyKwP4SYEmQjQnj6pfhiBmN+j2t8V4Xg9CTgaO5pxCDweekfJEyVE
- 5NzYK1u6Slg8xcb1Xv/r+2qFloNcpdndi5rJM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=h672+PvYOg4F9GqkfTlAyYdpuih/rH914wY/nGyuogk=;
- b=qYJlfXIUcevBaGymcDBsNeIL/mVkPKzHWIeQk4hdLWQBJtpcIUjejiLCXIwowA/NYU
- 3XWRzMH1J0z6kTso/BuvYbTAPCLCDldCVZ9oSZ1kxHFAknirwuCJhD/vC0Qh/l24YPmN
- lVpSVF4wDD6xhFJYaDCHXhqzSSOtiaLIXquXfL7k2a+uep9uKHl7RdG9z8k1yHdz0x1U
- Sjjtiq9Bppah0SQ9hqnqPiqsW5oMfCKE1bpGKQJO8xCFIWZbY6Ue2TxnXIQJ4hvALf5d
- +DwlPHyjyrmggRbWW6B4XmoiupfRSlfV6jZwuS+zKtVfPJPAiFXUu+mIXfZeKtHvFp1r
- c+YQ==
-X-Gm-Message-State: APjAAAWH++HvBd/Vhc1UyYue/HWlT3SDNBwBDIBDERTk9GaBZkPxRbUc
- RA1S54wdzaVT2xECaw5xogdkPmoEdttLJ2oQ1Ck=
-X-Received: by 2002:a37:dd8:: with SMTP id 207mr1266280qkn.292.1580972673487; 
- Wed, 05 Feb 2020 23:04:33 -0800 (PST)
+ (envelope-from <berrange@redhat.com>) id 1izdth-0000a7-0V
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 04:56:34 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:20511
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <berrange@redhat.com>) id 1izdtf-0000Ul-F9
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 04:56:31 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1580982991;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=wvGcVVWN7dt2fAY8WfvoWDjRJxfK0DPrldxxpTv42Fw=;
+ b=LSShHTuALpFpxj5tpo0Tzr6KaoWrI34pSldEkjmQMKdOMrRHcAry7T8Qc9FZxfLKD1rWjU
+ tQZ0Hrymitn/lOM0/4qhRK114fIx3BZpECnp4Wjo9AdAfL7gheFWYJg9cP0Zhvr7/00wg5
+ nsdkLnQekfofbed2dU1VgOubUpbc/fw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-31-0lCrKGGMOF-zAlOsbHMA4Q-1; Thu, 06 Feb 2020 04:56:16 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 470A71413;
+ Thu,  6 Feb 2020 09:56:15 +0000 (UTC)
+Received: from redhat.com (ovpn-112-65.ams2.redhat.com [10.36.112.65])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1F2AD10018FF;
+ Thu,  6 Feb 2020 09:56:04 +0000 (UTC)
+Date: Thu, 6 Feb 2020 09:56:01 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH for-5.0 3/4] Remove the core bluetooth code
+Message-ID: <20200206095601.GC2391707@redhat.com>
+References: <20191120091014.16883-1-thuth@redhat.com>
+ <20191120091014.16883-4-thuth@redhat.com>
+ <7a775153-f18d-e766-1d8f-33607f5fa05b@amsat.org>
+ <2396dfd4-6c85-d17a-b358-bd058c757f14@redhat.com>
+ <CAAdtpL7vPCQ8k91nvBWc_NLrmhu6OPVprUSL8uzi_v6HMiSrnw@mail.gmail.com>
+ <CAL1e-=gd-ymYd3_cods8BAtwbQeJFodmnmsNo-gLx381rXHKxQ@mail.gmail.com>
+ <20200205175115.GT2221087@redhat.com>
+ <3585192d-a0c1-4116-bec9-4816d498ca3d@amsat.org>
 MIME-Version: 1.0
-References: <20200203180904.2727-1-linux@roeck-us.net>
- <20200203180904.2727-2-linux@roeck-us.net>
- <accf297f-0c54-7475-8817-c1014999a57d@kaod.org>
- <7fe70871-c0e3-4ff6-bfda-17b45aa50c5e@roeck-us.net>
- <22a96987-9548-1335-8b04-00167ed9491d@kaod.org>
- <20200205174345.GA7754@roeck-us.net>
-In-Reply-To: <20200205174345.GA7754@roeck-us.net>
-From: Joel Stanley <joel@jms.id.au>
-Date: Thu, 6 Feb 2020 07:04:20 +0000
-Message-ID: <CACPK8XesxroZii2-r-HTigW4-7Ahw4TQNG1r-YO2K09S7Ap9=Q@mail.gmail.com>
-Subject: Re: [PATCH 2/3] m25p80: Improve command handling for Jedec and
- unsupported commands
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <3585192d-a0c1-4116-bec9-4816d498ca3d@amsat.org>
+User-Agent: Mutt/1.13.3 (2020-01-12)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: 0lCrKGGMOF-zAlOsbHMA4Q-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::742
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,35 +116,105 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>, Max Reitz <mreitz@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ libvir-list@redhat.com,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Aleksandar Markovic <aleksandar.m.mail@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PoRVEo072kFs
+X-TUID: z+hVOgvCSH3o
 
-On Wed, 5 Feb 2020 at 17:43, Guenter Roeck <linux@roeck-us.net> wrote:
->
-> On Wed, Feb 05, 2020 at 11:08:07AM +0100, C=C3=A9dric Le Goater wrote:
-> >
-> > ok. we will need to model SFDP one day.
-> >
-> > Are you using the OpenBMC images or do you have your own ?
-> >
->
-> I am running images built from upstream/stable kernel branches.
+On Wed, Feb 05, 2020 at 08:13:19PM +0100, Philippe Mathieu-Daud=C3=A9 wrote=
+:
+> On 2/5/20 6:51 PM, Daniel P. Berrang=C3=A9 wrote:
+> > On Wed, Feb 05, 2020 at 06:40:31PM +0100, Aleksandar Markovic wrote:
+> >> On Sat, Feb 1, 2020 at 7:53 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsa=
+t.org> wrote:
+> >>>
+> >>>>>> @@ -1151,10 +1150,6 @@ for opt do
+> >>>>>>    ;;
+> >>>>>>    --enable-brlapi) brlapi=3D"yes"
+> >>>>>>    ;;
+> >>>>>> -  --disable-bluez) bluez=3D"no"
+> >>>>>> -  ;;
+> >>>>>> -  --enable-bluez) bluez=3D"yes"
+> >>>>>> -  ;;
+> >>>>>
+> >>>>> Now than I'm bisecting over this commit, I realize removing this
+> >>>>> option was not a good idea, we should have done like commit
+> >>>>> cb6414dfec8 or 315d3184525:
+> >>>>>
+> >>>>>   @@ -886,10 +885,6 @@ for opt do
+> >>>>>   -  --disable-uuid) uuid=3D"no"
+> >>>>>   -  ;;
+> >>>>>   -  --enable-uuid) uuid=3D"yes"
+> >>>>>   -  ;;
+> >>>>>   ...
+> >>>>>   +  --enable-uuid|--disable-uuid)
+> >>>>>   +      echo "$0: $opt is obsolete, UUID support is always built" =
+>&2
+> >>>>>   +  ;;
+> >>>>
+> >>>> Looks trivial ... so if it bugs you, just send a patch?
+> >>>
+> >>> I thought about it but this won't fix much, it is too late now.
+> >>>
+> >>> I simply wanted to share this bugged me so we try to avoid doing the
+> >>> same mistake again.
+> >>>
+> >>
+> >> I vote for addition of a change similar to what Philippe described.
+> >>
+> >> Furthermore, it looks to me the correct way would be to now do full
+> >> deprecation of --enable-bluez and --disable-bluez. This means adding
+> >> this to documentation (not related to bluetooth devices support), not
+> >> only a change in "configure". This also means that only after two next
+> >> full cycles these options could be removed.
+> >>
+> >> True, this could have been done together with bluetooth devices
+> >> support deprecation (and in that case we could have deleted these
+> >> options right away), but it wasn't. Users don't have a crystal ball to
+> >> know that we assumed that --enable-bluez and --disable-bluez were part
+> >> of bluetooth devices support, and could rightfully complain about an
+> >> abrupt elimination of a compile time option.
+> >=20
+> > The deprecation policy is primarily intended for notifying of changes
+> > to QEMU's stable interfaces ( CLI, HMP, QMP) which affect behaviour
+> > and usage of QEMU at runtime & are liable to break apps managing
+> > QEMU.
+> >=20
+> > Changes to build time options have no strong reason to be subjected to
+> > the deprecation process. If we remove an option at build time the effec=
+t
+> > is noticed immediately and the solution is straightforward (stop passin=
+g
+> > the option). We have added / removed configure options at will with lit=
+tle
+> > negative feedback historically. We'll have far biggest changes coming t=
+o
+> > the build system in future too, with the introduction of meson.
+>=20
+> I understand your point when looking forward (when distribution upgrade,
+> it is easy to adapt).
+> However this is still an issue when looking backward when running
+> bisection to find regressions.
 
-I think C=C3=A9dric was wondering which flash images and therefore
-filesystems you were using in your testing.
+That's only a problem if you were actively setting this particular
+command line argument. Most developers are just fine with configure
+auto-detecting stuff. The only time I've ever needed to try to
+explicitly disable this is in downstream RHEL branches of QEMU
 
-I had a poke around here but I couldn't work out where 'mtd32' came from:
+Regards,
+Daniel
+--=20
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange=
+ :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com=
+ :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange=
+ :|
 
-https://github.com/groeck/linux-build-test/blob/master/rootfs/arm/run-qemu-=
-arm.sh
-
-Cheers,
-
-Joel

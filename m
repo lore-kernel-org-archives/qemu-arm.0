@@ -1,99 +1,98 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp823951lfp;
-        Wed, 5 Feb 2020 17:34:04 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyOqzHgzy084PGr/jFy0zq3SZzVs1LJQntQBubyISqAsWpiJLLkKqPkhh4KWLMjA4uj3xRa
-X-Received: by 2002:ac8:7b9b:: with SMTP id p27mr626384qtu.2.1580952844128;
-        Wed, 05 Feb 2020 17:34:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580952844; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp824099lfp;
+        Wed, 5 Feb 2020 17:34:12 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz5gPS6MLkydoR7bR1/i+PoxjtAPX9t7C128AZQRz1q3y5ZAS9C46bHzJKyxSgGXjSNlwnN
+X-Received: by 2002:ae9:f81a:: with SMTP id x26mr512650qkh.231.1580952852111;
+        Wed, 05 Feb 2020 17:34:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580952852; cv=none;
         d=google.com; s=arc-20160816;
-        b=q+xS/m/FplJoEAN5llAGpkfOR3SgfNN+On6MVnH24Ca8YzR2YNtazhgAEXXnWjxqXa
-         2iTOdAol5VVbStxqr9erFcuNkCSEvgaU28d+YRwkUmOE8Bgp7sAZ5YjUQMP3SJUCLTmZ
-         tBGZCAd/y774j7x4Oqrlm8AXa5UwOoTMDjAXWUyXKri4TjtT7thMB/t82HqwYQa2MCr/
-         bsZdJ+sHNj/wcZF3CZ/31wmbCyddm/q3VVXtVfC+nPvSMxB1q5m+xTvZiJG8Po350PQ9
-         VmxjcdT2BkO5XPI1fqAJ5r0Qs6Q8fo4kVfBlufB+O19YsrpnvhEyZgj9nQAzgTLR6YBb
-         568g==
+        b=Ry0uP8BsYuE0osAVEkj0GaHn25oHqkza7lDIEtTm2pHeh5O0J+F8o0THYY5WG+PwAO
+         jsOwWFdEdB1O9pPZdqCOUdHUfNFpBH8z7aPBp4fyHzVcrwhFTAZfVgCkPMfj8GTnX1/W
+         ltagBH13HGmsM1a1wQ2plLf9BkPw3jI+KicN1+oz9PTG3iEuuyD00vGP6iOuQ+LvyBL8
+         kTuY79H4WM3v8BO9xI+Wozbr97A3QXlEPJBkaggLahJ6i7qiGNYhqyg5VY1OskH1ee8/
+         MhinxEZZT6aKnCRIIHpxAJofSwLtw0jDenMmd4/uWAwVPCf5CunNKxw207gNi9o02Jlq
+         kHyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=O6bajScUJ4xgmQhfXtPoiQXddmANh1kvtsMps+VVVb4=;
-        b=lyfyAXdOWqzh8V3ruGOye1Wz6WJe0I9y3PXKJBbp0QHZkx/OniQTjaR2uAI2afDcc+
-         xPhEyp5kZ5y8fMLbSC78rJVHAb90D9Z3FlJfA5pAcglJozHoKFHaOfUlHsyQ//9We1+5
-         qzjAJpF4YhxuqlQKS52o6YizojCD8Pjc/rRhqN6iugrBsBeBmUEBu4ZtTSaX9Q/QyWMV
-         2jd9oe282UqeX94sFG4fKlaEV+p42H8xa5l6Uiils0UllPV9PVtFIQ+63d86RgQoh38S
-         hUhmqHfBEN6ybXRIiLunKWQOd4P0LPL+XMFqylJ//LeIOk9gjJUyvJh77l+KZASgyvwZ
-         ESbw==
+        bh=bj2pLjmxnon+yHpt+3WlsQNgSCFWtNKV2Jq/oi6zYzc=;
+        b=VToPCFtNls0mTkFydJOneS4n0uoMQASIj3P/BpE4XeS9w63NrX1H3nGALi6ZOlDf2F
+         PXWQsvSmPw5T26U9h5DeiXiAsRB240GT525H2FPAY7PRAr3Rd138sCeKq99TNGkOiKxl
+         MUvRW+68tbdklyRvkEkXuCs/LsVLcmGETIK/p/biYHTHrQ+J3aF140LryCTrUaN4qv1N
+         guMZa/Pdo1JqjRLGfKsRJecXWCii+3s16J0F+Fd/0Ozito/UY10lWep++/Hu618M45H7
+         vigVSUClKak6wMn2SoVkP94IJ0bGfcW5HBnHvEM6+10p/rXmQwU6TQQkFwUt16emHRAV
+         xE3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ik1SwQvx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Nye+nc8j;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g1si467844qki.369.2020.02.05.17.34.03
+        by mx.google.com with ESMTPS id g21si781059qtp.41.2020.02.05.17.34.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Feb 2020 17:34:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 05 Feb 2020 17:34:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ik1SwQvx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Nye+nc8j;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:59390 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59380 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izW3P-0004QP-JC
-	for alex.bennee@linaro.org; Wed, 05 Feb 2020 20:34:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54533)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1izW3X-0003pr-EY
+	for alex.bennee@linaro.org; Wed, 05 Feb 2020 20:34:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54379)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1izVom-0001Mr-2s
- for qemu-arm@nongnu.org; Wed, 05 Feb 2020 20:18:57 -0500
+ id 1izVod-0001BW-KS
+ for qemu-devel@nongnu.org; Wed, 05 Feb 2020 20:18:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1izVoj-0004Xl-MY
- for qemu-arm@nongnu.org; Wed, 05 Feb 2020 20:18:55 -0500
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:38856)
+ id 1izVoc-00049N-AB
+ for qemu-devel@nongnu.org; Wed, 05 Feb 2020 20:18:47 -0500
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:37402)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1izVof-0004Kf-Ss; Wed, 05 Feb 2020 20:18:50 -0500
-Received: by mail-wm1-x343.google.com with SMTP id a9so5040167wmj.3;
- Wed, 05 Feb 2020 17:18:49 -0800 (PST)
+ id 1izVoc-00041K-3A; Wed, 05 Feb 2020 20:18:46 -0500
+Received: by mail-wm1-x343.google.com with SMTP id f129so5041247wmf.2;
+ Wed, 05 Feb 2020 17:18:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=O6bajScUJ4xgmQhfXtPoiQXddmANh1kvtsMps+VVVb4=;
- b=Ik1SwQvxolLdkQ37I3pqyoWqpzyZcVfBezc8UkfEDLG/Qkdrpauwd8GJj0u/XP/O6X
- heIlusf3u2YPKKKRu4vw8rVQNPMvE0KHOcjDVwNw4L1Q7tIW6Auv2zmZFbzy4DWn/aZX
- W9yekDYMRsJ2tU6q+nqHlMAF9zsGTzhjDSXjsdrpzGoOHcDdGKjy8OE/PsSL8Ar/9J5o
- uR83ShF3a4gmVeqrpNDzVybpbzT1TjwCEeAAkfR0x7VVm52eRhMuJpfevgpSHP0KRZE7
- 5Tdwdmy/zxF0M3iZdpGw2lW05zrsR5tn9omT5qKgfiX6hUACfhM3fC/0u+WVivZzuhCQ
- ZauQ==
+ bh=bj2pLjmxnon+yHpt+3WlsQNgSCFWtNKV2Jq/oi6zYzc=;
+ b=Nye+nc8ji+LUoD+HqHEh898XZcqoaNdY5bQe5q2jNmG6KWO/OLLNAL0Mq6UN8IWRef
+ HSTiFX9YHmG3prS6i6FPzypakPBA2Io13Sa1AnLVn4Cd/mrjcKmPmePyeBT1AeEBt+AO
+ 3lvg0H5lpxAQ8LOSoBfJu6rZY0yg7uN9z/9tUfwvpK0NKMIwqcDoznEMWEIdgPFcrzTu
+ 32rs7if1Avykot7/SS59R/EP4Nu5tQzBj2VlIZNkgYDZax5tO90n++DAXNLQtrlmTenu
+ cb1SscE1nxv9ShTPYD+8DnE0uYJfzyYP3ekE7DGBewoMgAx1ldKy6XPhOYlSSjpzVdMZ
+ nqZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=O6bajScUJ4xgmQhfXtPoiQXddmANh1kvtsMps+VVVb4=;
- b=Q/SfRuLLNS6iDYAg8A6hUU2/xlNn4S4gHhH3SR9hkXm7/DvhqRwrIgpxuC7elFu2Sh
- OPtHtpz+KBwf+CB0zWOL4mPforzi82GVsLZhDzsO63ecMmw1eZstYhmBkBZw7T+JZ7R3
- fwy3bM85lq4LbpEuW5HoL9VU5WgBExh+7HWwhGnudC1Eq87y41XfXylO82vgi7PzNM88
- oQxPdB/10Ai1PYm1z5kRuBM9wjK4QsIasJ/33zvgg1kRpAwU3xZoXLrqahCUWerg3DDn
- Ek7xRFHC/EqH/7bjRMqrTLDr1axyFL5PXugcVyn5CTzd9c1yKehe//GVG9TXdR1Iq7Pe
- VRiw==
-X-Gm-Message-State: APjAAAVAHcFmLyDjgxDlNx0ZrQaDQ5cfIFhRBYvCJ5hupXy4EqkE78xd
- eOw/BkJPa9NLmkqq9xU9EpGgBLeT
-X-Received: by 2002:a7b:cd8e:: with SMTP id y14mr629858wmj.150.1580951927679; 
- Wed, 05 Feb 2020 17:18:47 -0800 (PST)
+ bh=bj2pLjmxnon+yHpt+3WlsQNgSCFWtNKV2Jq/oi6zYzc=;
+ b=b51GVn0jIaSj0igmTclU+8Tqr70csH6kWkXaHHl/iMUSdZBjB4WcuBv9zXyOconJJQ
+ OMxfMYW0hjJ99K990M8ub4Hfmrxhw1Tara3YYJfwhb9SVKgY9hHDuPjoyzWmPat+dMy3
+ LNJ/5u9igZgL5KnmVjie5NFMAuEdDKzZ3/5NfG7cWmv2o4lEbyHge9JdkA3ynQCGbrGl
+ cDA2g7UhltY2Zi56nrOf7izsE5Hgm3U3UEWLzyacmyvWKppPXcOkfRGtQQDBSzSqZ6P6
+ U+0A+Opn/ASLkMFppEBWsufIAzeUWu0mHNSv4nxO9C5bdrS+aFtQ/gN6EELJcmAJ0rks
+ 8wuw==
+X-Gm-Message-State: APjAAAXobJIpujuei9/x1GAkH9nPn8iEafEnIOdfVLM6vokq1f4IoX2O
+ kxku9K7pmgi8kVS1beipu7cpU+0y
+X-Received: by 2002:a7b:c1d0:: with SMTP id a16mr582193wmj.175.1580951923906; 
+ Wed, 05 Feb 2020 17:18:43 -0800 (PST)
 Received: from localhost.localdomain (2.red-95-127-156.staticip.rima-tde.net.
  [95.127.156.2])
- by smtp.gmail.com with ESMTPSA id w13sm2053526wru.38.2020.02.05.17.18.46
+ by smtp.gmail.com with ESMTPSA id w13sm2053526wru.38.2020.02.05.17.18.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 Feb 2020 17:18:47 -0800 (PST)
+ Wed, 05 Feb 2020 17:18:43 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 23/30] tests/acceptance/boot_linux_console: Add raspi
- version=2 parameter
-Date: Thu,  6 Feb 2020 02:17:49 +0100
-Message-Id: <20200206011756.2413-24-f4bug@amsat.org>
+Subject: [PATCH v2 21/30] hw/arm/raspi: Add the Raspberry Pi B+ machine
+Date: Thu,  6 Feb 2020 02:17:47 +0100
+Message-Id: <20200206011756.2413-22-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200206011756.2413-1-f4bug@amsat.org>
 References: <20200206011756.2413-1-f4bug@amsat.org>
@@ -104,90 +103,69 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 2a00:1450:4864:20::343
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Joaquin de Andres <me@xcancerberox.com.ar>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Esteban Bosse <estebanbosse@gmail.com>, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: M2fvUg/lcTsW
+ Esteban Bosse <estebanbosse@gmail.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cs2h0i+fVcz3
 
-We want to tests different Raspberry Pi machines. Refactor to
-take the board version as argument.
+  $ qemu-system-arm -M raspi1 -serial stdio \
+      -kernel raspberrypi/firmware/boot/kernel.img \
+      -dtb raspberrypi/firmware/boot/bcm2708-rpi-b.dtb \
+      -append 'printk.time=0 earlycon=pl011,0x20201000 console=ttyAMA0'
+  [    0.000000] Booting Linux on physical CPU 0x0
+  [    0.000000] Linux version 4.19.69+ (dom@buildbot) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1261 Tue Sep 3 20:21:01 BST 2019
+  [    0.000000] CPU: ARMv6-compatible processor [410fb767] revision 7 (ARMv7), cr=00c5387d
+  [    0.000000] CPU: VIPT aliasing data cache, unknown instruction cache
+  [    0.000000] OF: fdt: Machine model: Raspberry Pi Model B
+  [    0.000000] earlycon: pl11 at MMIO 0x20201000 (options '')
+  [    0.000000] bootconsole [pl11] enabled
+  [    0.000000] Memory policy: Data cache writeback
+  [    0.000000] cma: Reserved 8 MiB at 0x1b800000
+  [    0.000000] random: get_random_bytes called from start_kernel+0x8c/0x49c with crng_init=0
+  [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 113680
+  [    0.000000] Kernel command line: printk.time=0 earlycon=pl011,0x20201000 console=ttyAMA0
+  Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
+  Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
+  Memory: 434380K/458752K available (6971K kernel code, 635K rwdata, 2080K rodata, 464K init, 797K bss, 16180K reserved, 8192K cma-reserved)
+  ...
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- tests/acceptance/boot_linux_console.py | 21 +++++++++++++++------
- 1 file changed, 15 insertions(+), 6 deletions(-)
+ hw/arm/raspi.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index 5fba46a9d1..56c8d54ca6 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -325,26 +325,34 @@ class BootLinuxConsole(Test):
-         self.vm.launch()
-         self.wait_for_console_pattern('init started: BusyBox')
- 
--    def do_test_arm_raspi2(self, uart_model):
-+    def do_test_arm_raspi(self, version, uart_model):
-         """
-         The kernel can be rebuilt using the kernel source referenced
-         and following the instructions on the on:
-         https://www.raspberrypi.org/documentation/linux/kernel/building.md
-         """
-         serial_kernel_cmdline = {
--            'pl011': 'earlycon=pl011,0x3f201000 console=ttyAMA0',
-+            'pl011': {
-+                2: 'earlycon=pl011,0x3f201000 console=ttyAMA0',
-+            },
-+        }
-+        kernel = {
-+            2: '/boot/kernel7.img',
-+        }
-+        dtb = {
-+            2: '/boot/bcm2709-rpi-2-b.dtb',
-         }
-         deb_url = ('http://archive.raspberrypi.org/debian/'
-                    'pool/main/r/raspberrypi-firmware/'
-                    'raspberrypi-kernel_1.20190215-1_armhf.deb')
-         deb_hash = 'cd284220b32128c5084037553db3c482426f3972'
-         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
--        kernel_path = self.extract_from_deb(deb_path, '/boot/kernel7.img')
--        dtb_path = self.extract_from_deb(deb_path, '/boot/bcm2709-rpi-2-b.dtb')
-+        kernel_path = self.extract_from_deb(deb_path, kernel[version])
-+        dtb_path = self.extract_from_deb(deb_path, dtb[version])
- 
-         self.vm.set_console()
-         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
--                               serial_kernel_cmdline[uart_model])
-+                               serial_kernel_cmdline[uart_model][version])
-         self.vm.add_args('-kernel', kernel_path,
-                          '-dtb', dtb_path,
-                          '-append', kernel_command_line)
-@@ -356,9 +364,10 @@ class BootLinuxConsole(Test):
-         """
-         :avocado: tags=arch:arm
-         :avocado: tags=machine:raspi2
-+        :avocado: tags=cpu:cortex-a7
-         :avocado: tags=device:pl011
-         """
--        self.do_test_arm_raspi2('pl011')
-+        self.do_test_arm_raspi(2, 'pl011')
- 
-     def test_arm_exynos4210_initrd(self):
-         """
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index 0d1f15e08c..47cc250883 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -334,6 +334,11 @@ static const TypeInfo raspi_machine_types[] = {
+         .parent         = TYPE_RASPI_MACHINE,
+         .class_init     = raspi_machine_class_init,
+         .class_data     = (void *)0x9000c1,
++    }, {
++        .name           = MACHINE_TYPE_NAME("raspi1"),
++        .parent         = TYPE_RASPI_MACHINE,
++        .class_init     = raspi_machine_class_init,
++        .class_data     = (void *)0x900032,
+     }, {
+         .name           = MACHINE_TYPE_NAME("raspi2"),
+         .parent         = TYPE_RASPI_MACHINE,
 -- 
 2.21.1
 

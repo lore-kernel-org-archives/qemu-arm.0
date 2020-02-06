@@ -1,99 +1,99 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp814574lfp;
-        Wed, 5 Feb 2020 17:23:39 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyf+Kiwy/71tPgsp8xaGv0ZPZ2/vXpSO3xGB73Gm0JesN1oy1ITRdnsLkDDczu3UCyjaQOV
-X-Received: by 2002:ac8:2afb:: with SMTP id c56mr590749qta.112.1580952219060;
-        Wed, 05 Feb 2020 17:23:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580952219; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp815740lfp;
+        Wed, 5 Feb 2020 17:24:57 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwxSa31hrZfMQUFrx+bwAbXMXTXg6F4Xcobr7F/la5pGL0k7GhNFD4ElRwpEn0mq5lhqL/B
+X-Received: by 2002:aed:218f:: with SMTP id l15mr525852qtc.247.1580952296910;
+        Wed, 05 Feb 2020 17:24:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580952296; cv=none;
         d=google.com; s=arc-20160816;
-        b=ToYL45O6mIe34BGLTGB2UFQfgPTDvATv9fJl4OJJurN2DQMJqMkHMwLFladwAVn5n3
-         7tu/fhTO0U5uw7DjbfEx4MCOusvVk760EMz+m8YYQAGo8d/+lgTBFRy7Ud73Vwd5gQi2
-         88s50eqYfC/dIFOXRuIHVMMF0vKqdIlMOSq5iOzxKh34IAvutdHYHCvmjpgr+7acQurn
-         qtwFMashMX1Pi3eNB2bahsCA7dNVBVcp3sRPkLTH7RfJdECG4MB6eUYVkEz+xED5H0gh
-         GA6xufV4zBg6QDbbkRkd1OT5uK0hfsixQKxcDCcwFiEOy9B5gooRZg0NUyjHXeMmkaXz
-         Cwmw==
+        b=M02zNbdIL57tFWJUdOanvRBw3rawtkKwHrYB8i8PhsXBKuHEmL2TL5kTiFjMUqODPX
+         C6DKbm5WvjsA9GOlhtH416L8GYuvhMViUhL32rUBc7DOMncmlPmyLr4z9fhI5PsL9D1R
+         OHiL9ZtktEHigG3QHgCO6JS2fBZWVv2o9lg7W9CTFt03ggkm0ZkehtFv04AnsKeB437B
+         xVNRiuOY+ZWnJYQCK3wwx9ZwAbTmwVJX7XthACqIK/FXupLrjRQ7qD8/foPQ5byHK7dl
+         zTd16ekquSUUx0BBJUYu2QbVTLPyN/EVL2zgMIZKusZE1Z43HrFRkcMTlvkR4sIP50xA
+         SEpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=1Sth+jzkQIFIFbQJHNGyUBHjEOjdQyCxDQru8urvXnA=;
-        b=D8pTQcfJ5zlpSncaKiopfdAwsLK4KTx4sMKB8QbqL5BWU0k+UJOje31IzNq6oNEK6N
-         L10ZaghvbAaalyTdRkFD/I3+sWWqWYhvLYhuFHYUcjojC3DWXIrlcla2iMjiq6HBqMy9
-         Xgd5zpQym/cVVM7wdZc0BHiVaYeyuLbU3pqR12CuJTj7MrkboD8hyhLsuOBdyPpmTlZ+
-         n3GnCXwVWhsfEf+bo0q0xfIiPa7aMCkSbe2Pb+8n+vqTO/MLE1SH+XnnBNpZ8RR9wGxU
-         O2ihFPnjHbg87V8v4XTlf08h0Bcvky8tCz0BflGOA61PawcjLks1Na0buJSfx8aM5Lor
-         +B9Q==
+        bh=FcTo9TN8PYsENDGEQjBiXZU3Vioo+Qv1b4+0maH8RB0=;
+        b=hzmmzf/dCuk51zlhwCEHy4pUiO+h6IjJ27ScwCg9ahihQp4Vt9yyDn+EE9jx3QOSDe
+         KZWbx0+NUu5Ow8LK/1glG8JX9l6wYZsPE90RiqpwRLUf8eY6ujX3QDqgrB1YJ9ecqDSS
+         EkpODl3B+9n2CeZX5DUtJ90JdCOSeWqGY+ibgxamZDtimR5xhRshHGI5GybkwNeeU1r1
+         1MUQN4+wVMjvmI8lfkd3YWYgJA3kEwfF01QzwawylFf/4B/jGHVVUTFxJmjFXu9eArBy
+         9I5h2fUHkGcuqPu02ufnDOIHTXwUcYKYct9Q+3LugkOUtn7l7a27qWA0l9e8Bkxj0mFu
+         z77g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rbRx0UVN;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RoPBEx5H;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t12si840965qvx.2.2020.02.05.17.23.38
+        by mx.google.com with ESMTPS id s20si796949qks.12.2020.02.05.17.24.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Feb 2020 17:23:39 -0800 (PST)
+        Wed, 05 Feb 2020 17:24:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rbRx0UVN;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RoPBEx5H;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:59230 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59240 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izVtK-0007bf-Eg
-	for alex.bennee@linaro.org; Wed, 05 Feb 2020 20:23:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54018)
+	id 1izVua-0000Sa-AG
+	for alex.bennee@linaro.org; Wed, 05 Feb 2020 20:24:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53757)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1izVoP-0000mc-5q
- for qemu-devel@nongnu.org; Wed, 05 Feb 2020 20:18:34 -0500
+ id 1izVoD-0000S9-4g
+ for qemu-devel@nongnu.org; Wed, 05 Feb 2020 20:18:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1izVoN-0003Ae-2e
- for qemu-devel@nongnu.org; Wed, 05 Feb 2020 20:18:33 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:55408)
+ id 1izVoB-0002VN-2C
+ for qemu-devel@nongnu.org; Wed, 05 Feb 2020 20:18:20 -0500
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43329)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1izVoM-00034O-RE; Wed, 05 Feb 2020 20:18:30 -0500
-Received: by mail-wm1-x341.google.com with SMTP id q9so4474243wmj.5;
- Wed, 05 Feb 2020 17:18:29 -0800 (PST)
+ id 1izVoA-0002Q8-RF; Wed, 05 Feb 2020 20:18:18 -0500
+Received: by mail-wr1-x441.google.com with SMTP id z9so5097592wrs.10;
+ Wed, 05 Feb 2020 17:18:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=1Sth+jzkQIFIFbQJHNGyUBHjEOjdQyCxDQru8urvXnA=;
- b=rbRx0UVNbeybfwuMXarIV7EXseTKqianAfuz/QXeBu1vm7hUPEaKky2FG03uaUkkav
- e3L7RvF0zPuoZ14+fsELDZ0a2okTb7H4hEtfzHXhYpa29RgxSuKxCB9ABdjyTYX6hyyy
- 7Oydl1/RdyOjabX3GPHYPfPMSrt9/yPLbBB+PSY3mUe0wX+fgFkgJvZwFjN103mV3G0G
- qpiDPxaO/ziByk7zEMUpPQeMamnc9FU309dQcj4YgaM7Kxkb1R469EswJuTJuGg1CUmq
- 1Q4R61FQ+AAdakCgMgxTre8jzwo7+gUSox+a8U/sc4L/vv6f+jo6d+QgObjDJkdcnRuJ
- Xasg==
+ bh=FcTo9TN8PYsENDGEQjBiXZU3Vioo+Qv1b4+0maH8RB0=;
+ b=RoPBEx5HmP/j2LP1WivPYfg+K+Aag+N5eFumOi2sePyI2e2KSvcJMkKWFYgaDXDIEx
+ +m1zTPX8160CCy6FEcK50ToN4yQQ/3zsHnJTqllQVyjIMMFqKiJ0YiZl5bITqmu82wR1
+ dUzCHZLq19NhxBuoztcjvrmLWTy3SfknJ5sCQY5yFgOP0LnOsYef2OEFAgJDg1XoujjG
+ dNyWD/QrVDO68OhV5rYxSp3HZnZhDDmtqX7Zuk3mYuTVPTUADyCjD1dQbSSqJvORkvHW
+ 4L8ADR3UG8Sppeh05Vh4YmwahHe6bW/tTFCwF+Fq0wIFJlG+pJ7+b34AWMFAh1goHjVQ
+ DeOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=1Sth+jzkQIFIFbQJHNGyUBHjEOjdQyCxDQru8urvXnA=;
- b=ndfm/pfx7RpWll4IvpG6IBvu6mpYn9G217H6EHKrKe+3jP2c3IRC/o916yBnaDYkj8
- M8dv9xqjdVsubweXhyh0vWhYES0zgqs5+8MiMhsEEGKatVHHdK9XPiAYAhcaRYIPz5wd
- zwZm+D3GbU+hafmVnxaMzzxXENClF2T7hi66px2rOxX6so700tGauTJhEWPV32nkxOfG
- +D4Oz9BIYVLM4ptPVnwL0/yJH5yY1FtbHQhhWnMXKbwFlA6kgivGwdAtN3BCRVR0BoRT
- Pum6iL6DkRB4fFJ5//6KLWWwdLnbHt/bXy7GKaE4ucOKDd/gzElT3A/wsIYv6jlsrjNr
- 3tng==
-X-Gm-Message-State: APjAAAX5c5/1iUjhd1WKN7HAvbKuNhAdYqkmH1QACaiAP1Afi8hzQY8g
- 5j2IYgpMYYbN5CBjiHtUIQ2N77Nb
-X-Received: by 2002:a1c:a78b:: with SMTP id q133mr638318wme.28.1580951907662; 
- Wed, 05 Feb 2020 17:18:27 -0800 (PST)
+ bh=FcTo9TN8PYsENDGEQjBiXZU3Vioo+Qv1b4+0maH8RB0=;
+ b=UjV4D6EoekrifacV0fjouSTEAJVDJnlEmhrDHYja8hFbRrpC1JH/fVP8S1rjCjGMJ+
+ dDYxa1E28FQ1n+KUsEfr9NloBQ1bWTMF5W5wW2t3oRAhshqkGIwVeakPNfYCOx4/2xRv
+ QDD8jtiZZdRDSAZkMxX6wqX3lyqIrQvgVcbO7gS8oUCjGJOuIUNe3HBqVbXr2Qssyz8Y
+ uNtTd7bejkoaGLSjuvoPPdPX5Wv+9YaVzXRZDXjKn6jv+i+FPu148x45PRGvWKFPSN+Q
+ 5aaiWLGo2bhXaRhEqdN0MggAzzcjW7ydYGJJLEN20o14VFgD0DpNTe8BVZJ0H1KgP5hY
+ IGuw==
+X-Gm-Message-State: APjAAAXG2SNb5YqzZhMlhqCDPM9Dht0UW3TRuPoKZmBD+ZxB9zTSvHcb
+ ZOmbJMMtLQ/hR9hFau8YLrac4jZP
+X-Received: by 2002:adf:82ce:: with SMTP id 72mr397455wrc.14.1580951897636;
+ Wed, 05 Feb 2020 17:18:17 -0800 (PST)
 Received: from localhost.localdomain (2.red-95-127-156.staticip.rima-tde.net.
  [95.127.156.2])
- by smtp.gmail.com with ESMTPSA id w13sm2053526wru.38.2020.02.05.17.18.25
+ by smtp.gmail.com with ESMTPSA id w13sm2053526wru.38.2020.02.05.17.18.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 Feb 2020 17:18:27 -0800 (PST)
+ Wed, 05 Feb 2020 17:18:17 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 13/30] hw/arm/raspi: Extract the cores count from the board
- revision
-Date: Thu,  6 Feb 2020 02:17:39 +0100
-Message-Id: <20200206011756.2413-14-f4bug@amsat.org>
+Subject: [PATCH v2 08/30] hw/arm/raspi: Make board_rev a field of
+ RaspiMachineClass
+Date: Thu,  6 Feb 2020 02:17:34 +0100
+Message-Id: <20200206011756.2413-9-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200206011756.2413-1-f4bug@amsat.org>
 References: <20200206011756.2413-1-f4bug@amsat.org>
@@ -103,7 +103,7 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::341
+X-Received-From: 2a00:1450:4864:20::441
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,54 +123,92 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j0q79koI3fTE
+X-TUID: ukr5Mup0eyCm
 
-The board revision encode the count of ARM cores. Add a helper
-to extract the number of cores, and use it. This will be helpful
-when we add the Raspi0/1 that have a single core.
+We want to have a common class_init(). The only value that
+matters (and changes) is the board revision.
+Pass the board_rev as class_data to class_init().
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/raspi.c | 19 ++++++++++++++++---
- 1 file changed, 16 insertions(+), 3 deletions(-)
+ hw/arm/raspi.c | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
 
 diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 8fe07db47a..4f7e5ecfab 100644
+index edf3e1c0d5..885abced57 100644
 --- a/hw/arm/raspi.c
 +++ b/hw/arm/raspi.c
-@@ -100,6 +100,21 @@ static const char *board_soc_type(uint32_t board_rev)
-     return soc_types[proc_id];
+@@ -45,6 +45,7 @@ typedef struct RaspiMachineClass {
+     /*< private >*/
+     MachineClass parent_obj;
+     /*< public >*/
++    uint32_t board_rev;
+ } RaspiMachineClass;
+ 
+ #define TYPE_RASPI_MACHINE       MACHINE_TYPE_NAME("raspi-common")
+@@ -226,9 +227,11 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
+     arm_load_kernel(ARM_CPU(first_cpu), machine, &binfo);
  }
  
-+static int cores_count(uint32_t board_rev)
-+{
-+    static const int soc_cores_count[] = {
-+        0, BCM283X_NCPUS, BCM283X_NCPUS,
-+    };
-+    int proc_id = board_processor_id(board_rev);
-+
-+    if (proc_id >= ARRAY_SIZE(soc_cores_count) || !soc_cores_count[proc_id]) {
-+        error_report("Unsupported processor id '%d' (board revision: 0x%x)",
-+                     proc_id, board_rev);
-+        exit(1);
-+    }
-+    return soc_cores_count[proc_id];
-+}
-+
- static const char *board_type(uint32_t board_rev)
+-static void raspi_init(MachineState *machine, uint32_t board_rev)
++static void raspi_init(MachineState *machine)
  {
-     static const char *types[] = {
-@@ -306,9 +321,7 @@ static void raspi_machine_class_init(ObjectClass *oc, void *data)
-     mc->no_parallel = 1;
-     mc->no_floppy = 1;
-     mc->no_cdrom = 1;
--    mc->max_cpus = BCM283X_NCPUS;
--    mc->min_cpus = BCM283X_NCPUS;
--    mc->default_cpus = BCM283X_NCPUS;
-+    mc->default_cpus = mc->min_cpus = mc->max_cpus = cores_count(board_rev);
-     mc->default_ram_size = board_ram_size(board_rev);
-     if (board_version(board_rev) == 2) {
-         mc->ignore_memory_transaction_failures = true;
++    RaspiMachineClass *mc = RASPI_MACHINE_GET_CLASS(machine);
+     RaspiMachineState *s = RASPI_MACHINE(machine);
++    uint32_t board_rev = mc->board_rev;
+     int version = board_version(board_rev);
+     uint64_t ram_size = board_ram_size(board_rev);
+     uint32_t vcram_size;
+@@ -278,13 +281,16 @@ static void raspi_init(MachineState *machine, uint32_t board_rev)
+ 
+ static void raspi2_init(MachineState *machine)
+ {
+-    raspi_init(machine, 0xa21041);
++    raspi_init(machine);
+ }
+ 
+ static void raspi2_machine_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
++    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
++    uint32_t board_rev = (uint32_t)(uintptr_t)data;
+ 
++    rmc->board_rev = board_rev;
+     mc->desc = "Raspberry Pi 2B";
+     mc->init = raspi2_init;
+     mc->block_default_type = IF_SD;
+@@ -301,13 +307,16 @@ static void raspi2_machine_class_init(ObjectClass *oc, void *data)
+ #ifdef TARGET_AARCH64
+ static void raspi3_init(MachineState *machine)
+ {
+-    raspi_init(machine, 0xa02082);
++    raspi_init(machine);
+ }
+ 
+ static void raspi3_machine_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
++    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
++    uint32_t board_rev = (uint32_t)(uintptr_t)data;
+ 
++    rmc->board_rev = board_rev;
+     mc->desc = "Raspberry Pi 3B";
+     mc->init = raspi3_init;
+     mc->block_default_type = IF_SD;
+@@ -326,11 +335,13 @@ static const TypeInfo raspi_machine_types[] = {
+         .name           = MACHINE_TYPE_NAME("raspi2"),
+         .parent         = TYPE_RASPI_MACHINE,
+         .class_init     = raspi2_machine_class_init,
++        .class_data     = (void *)0xa21041,
+ #ifdef TARGET_AARCH64
+     }, {
+         .name           = MACHINE_TYPE_NAME("raspi3"),
+         .parent         = TYPE_RASPI_MACHINE,
+         .class_init     = raspi3_machine_class_init,
++        .class_data     = (void *)0xa02082,
+ #endif
+     }, {
+         .name           = TYPE_RASPI_MACHINE,
 -- 
 2.21.1
 

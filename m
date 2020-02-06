@@ -1,233 +1,231 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp477695lfp;
-        Wed, 5 Feb 2020 11:13:35 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxNNYc7IRNcTubUnXW7BiL8rWOp0du7y+B9YYFaQTCt4wb2XqXwa476P62tMMt3HfB3YXYs
-X-Received: by 2002:ac8:340c:: with SMTP id u12mr34615022qtb.257.1580930015099;
-        Wed, 05 Feb 2020 11:13:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580930015; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp810366lfp;
+        Wed, 5 Feb 2020 17:19:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwEwuK9hgonj2nMiKmjQRl7bwrOuPLC0JwiyngfgCM8y4WBm2yIQXPmdD1A8zFJcEoI3fyw
+X-Received: by 2002:a37:a8f:: with SMTP id 137mr453063qkk.435.1580951950979;
+        Wed, 05 Feb 2020 17:19:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580951950; cv=none;
         d=google.com; s=arc-20160816;
-        b=FRe3SzKtGLF8mwLSt/5ApzeFX1Tliwic5TNZPIQI/L+lZbqXHkGWUw2VqCaKrGvNSa
-         MDfl8+re0Lin+qEpTCcNkJI6E1zt4HtXYadZ5c/exkHR83BpMpE98KH7A2axTIrKwouV
-         cb+ir6mbMgb0zpXJB9jkpIKbLlpy5zqH8ex3wHjn3lbdqk8lIJPnnj+Dblvzqukie6Cq
-         P/iomjfBhXgMX8xZnhc4K6MAmQ+hmpdr2gxmFwN5eah5tYwFNOlfBUtLA1RXp8X5Rlwv
-         ETHNUuZhBYGNZHxCLC3kxKnoUSX8UBHHh2IRZ8zOu4gF11HBXty8yAU0cgOTqzix2zBt
-         CJVA==
+        b=UI3NYDlUazGkiIyYZQoO86VExuJA/d63ADzp9nIwgv3zIC179x2foApb9jF8mE4JED
+         Rq1fhFaKPPcHCdGTQY2vLXjMhF9PX6CugpXPxyBtz80278WJJtwnxxYxjbbnnFwwUufE
+         pk4hhrzbOebs/pJal1lbnWM+L5Z+WUv/jGpYbJFEkkzBTZlRl8aKWMQ0OCLJFaQSux6N
+         4Y11vyOsemcLnbaAP77Ztb/c8yhLCyWDEKwgahVMWwW2fld3qCahI2GvoXr2k+Q4tl+h
+         V6VuE9ytjvsgnEttdyhalW1RCjodapmmWeUGyYDXnc7QBNPBHRGGCOl3OcbqjsboB8bF
+         14LA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=yTIyRlHSro7zUF/ki3mXbJaQaoeJCNT7pAeMjShe0vg=;
-        b=DsDODxA/Xj0lO+6/wAFqGz/Jm0zkl76miLxQTD+LOOiwWS+sWHfqUiO81Dkk/Pe5Is
-         THCeYFinVGZNsDr3U7od/A1YWY7+U7qhjdQrAbqYFh9Ocq4KlnakAZzmT5C2tdDrGzsE
-         HRlV3ciO16EM8Tf+RvlEDFpiuYR2J0X/jlD62HoAjtrZVHqyKj0YqLILKI4orUDuw4Yy
-         HZxE/rcvFxc/SDOEgAit/H8txrY8OZVKuL1TsGJfRj6KTbXEHcT2GkMlcU3uSSBi3Doj
-         ZemBxzjBUp2eeyLe618uMLlxrAtJDSQAESK4ceVXtBgOdXJlPmJiELel6MA9KjA32tYc
-         VtCg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=+Tq5S/N+0JOq8c9dlCr3FKmOhtjiwItYwYRBLhuDC7A=;
+        b=OTpoQAhRHKYAvCEGGGp3nSudXaJGVvNvFWUxWpNNeTjpiF8ytLvxmpGA8KFzBuHxj/
+         0Z8IgGroHT+Kxnm2Y+dQeZBbnQj8+G0cXdawLB55tov0dMqnY2e7XDnwYiC6dNA0ouz5
+         9aUn5p6ZhjhDjm7ZejugpfNJb+GBzFBcEWCadkGnXlytIgZ7lRPG20lZVl+8YTp8Mb3T
+         maC+0v7zNze6dAVE3YWrLB06qkezqpvKi6kZ14yfKHuUkWX10iNg3GDHJ/lBjymzOVNz
+         8i48lEkQo9+EiKFE4VFgNwJ+HCAyH6JShZHvSeHc4v4XoaBfAFl52glPHecDvhnhWETv
+         6hHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZTxoO5XQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dhzqRfTT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k19si261898qtj.64.2020.02.05.11.13.34
+        by mx.google.com with ESMTPS id h3si782030qvs.71.2020.02.05.17.19.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Feb 2020 11:13:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 05 Feb 2020 17:19:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZTxoO5XQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dhzqRfTT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:55288 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59152 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izQ7C-0007cp-Fo
-	for alex.bennee@linaro.org; Wed, 05 Feb 2020 14:13:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47978)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1izVp0-0000Ci-Bw
+	for alex.bennee@linaro.org; Wed, 05 Feb 2020 20:19:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53486)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1izQ73-0007cV-VS
- for qemu-arm@nongnu.org; Wed, 05 Feb 2020 14:13:27 -0500
+ id 1izVo2-00007e-1d
+ for qemu-devel@nongnu.org; Wed, 05 Feb 2020 20:18:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1izQ71-0005xQ-Hh
- for qemu-arm@nongnu.org; Wed, 05 Feb 2020 14:13:25 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:55089)
+ id 1izVo0-0001bk-IL
+ for qemu-devel@nongnu.org; Wed, 05 Feb 2020 20:18:09 -0500
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:51252)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1izQ70-0005mg-SV; Wed, 05 Feb 2020 14:13:23 -0500
-Received: by mail-wm1-x341.google.com with SMTP id g1so3687538wmh.4;
- Wed, 05 Feb 2020 11:13:22 -0800 (PST)
+ id 1izVo0-0001UD-Bh; Wed, 05 Feb 2020 20:18:08 -0500
+Received: by mail-wm1-x342.google.com with SMTP id t23so4501839wmi.1;
+ Wed, 05 Feb 2020 17:18:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=yTIyRlHSro7zUF/ki3mXbJaQaoeJCNT7pAeMjShe0vg=;
- b=ZTxoO5XQetWPMBh0E385GeSKQyW/ucjCG9M//rJ9ETQsc0zRYYV+gsh/rEnu2BY/C2
- dKzbHaHQ6Si4nWjFCt1TOIcaW0lA4FWEv+DYwPhShs9GOC2jy8UY1tvCFUBJNqLHVl2h
- O+jBDqcsWD39/Dt6DcXWvXPbD0Zp7720D+shC4fZadtpm0YsVH1uFqNzl7iC/DDQUR/v
- SMkon8Fk4Ao6PMUTIP7zdk39gRxdZizqMYWIYvbys7A4vGxsBv7LOTAzzkgSC620GmVV
- 54d8sfTMe5edTprVyfFyIhMHBhsorVCK7m8y8Y+57BOYswYJe2IPuvctGHEiCY8R4tEL
- Q8Lw==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=+Tq5S/N+0JOq8c9dlCr3FKmOhtjiwItYwYRBLhuDC7A=;
+ b=dhzqRfTTMKnc/slCd2A5GK/4tWWJj3ctlKsJLVN+0ksxF6qMVXbwGLTPou3wGKErLP
+ 0R1toyGDwFopCyVih6C5Y+KJr0/24mqduJWEOqqPmvWMNurr7G+XeXTxQW+MH4CO23oQ
+ HPpsWwRVORk9uunFCovL/5go9YJisIK31kvnlZqEbKBLw7Pz92ctBK47BotgvcneWK/w
+ VEOCvNnbCsXXiBYerqCGbmg+pZPQnY5IJq+gwvnbVRNY3pZnRKiWuavLPW70iBqtCqO9
+ RrPomb7igtIOlVZUl05R1ELXTPCH7bkqc2pim0lgrC636FyouTaYUOwRb16ocCOzVSsY
+ cXfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=yTIyRlHSro7zUF/ki3mXbJaQaoeJCNT7pAeMjShe0vg=;
- b=cys1FEZo6IJ49abhBgGMNT9tlBXIPk1HgMG6u7nlZBSyfzNIKWDzXVpGgIWS5zcpvL
- fZm2zlb4fnjRWDvvdqg0GGCqbtzQlRY7dA5A/8kc8gPWpVXwUwT14o+A53RPWWM5ariL
- a7WDlgPyjAmeFS/iV5//WyGtlQKDOGSOiWQbnXfp3KTwtivAqQRs59il8C8SFs4q8t74
- 63hGbotP2nz4tcsyxpasIUPucJ3XBLBdzuDCz01ogdfNheK3FjaBrm7REPhE0VOdbUVI
- mMvf3Ga6vYldX2TJDnR1FfPQurR86hSXSBjQBhK30hPiYQJQ4EaOIuTDHkKg4zqJokkT
- Bo1Q==
-X-Gm-Message-State: APjAAAUV0gOtxfb9wcl/+fe4MfiMGQwaoY9cBTdDnUKhlDFC65Cop4WQ
- hqi/+vPIxDr4JmG9c1yQzOo=
-X-Received: by 2002:a7b:cd14:: with SMTP id f20mr7147062wmj.43.1580930001565; 
- Wed, 05 Feb 2020 11:13:21 -0800 (PST)
-Received: from [192.168.1.35] (162.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.162])
- by smtp.gmail.com with ESMTPSA id q130sm698917wme.19.2020.02.05.11.13.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 05 Feb 2020 11:13:20 -0800 (PST)
-Subject: Re: [PATCH for-5.0 3/4] Remove the core bluetooth code
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-References: <20191120091014.16883-1-thuth@redhat.com>
- <20191120091014.16883-4-thuth@redhat.com>
- <7a775153-f18d-e766-1d8f-33607f5fa05b@amsat.org>
- <2396dfd4-6c85-d17a-b358-bd058c757f14@redhat.com>
- <CAAdtpL7vPCQ8k91nvBWc_NLrmhu6OPVprUSL8uzi_v6HMiSrnw@mail.gmail.com>
- <CAL1e-=gd-ymYd3_cods8BAtwbQeJFodmnmsNo-gLx381rXHKxQ@mail.gmail.com>
- <20200205175115.GT2221087@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Autocrypt: addr=f4bug@amsat.org; keydata=
- mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
- u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
- HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
- YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
- ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
- dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
- ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
- Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
- HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
- Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
- klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
- jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
- 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
- loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
- sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
- JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
- 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
- K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
- n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
- CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
-Message-ID: <3585192d-a0c1-4116-bec9-4816d498ca3d@amsat.org>
-Date: Wed, 5 Feb 2020 20:13:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=+Tq5S/N+0JOq8c9dlCr3FKmOhtjiwItYwYRBLhuDC7A=;
+ b=VtChgoYJWXo44YWyLaDTYVN9oPcxo1J/APRcN7Y6NX5UX4ksiIn1n6n+LfeK5UAwwv
+ 1dZ5eJoYpchM1oKya8CqXX6fnN8s6roc/I6XCiCBu/epSyCNXIhOrbEdyUrJDT5UhLtL
+ 13+WLgonsu8kTb1Fvi3wzgCmI6C/l2GS/DYagJj6LT72o7XiKemV6XEyqOAbOK5e4pYk
+ ADxjJP+eFDfNEiFGcN9+DmaDjLzvMQ2ZrMTuPWpVBkjdK7tBhD2Yxmi6xUfuhXWtbhDJ
+ FZLVYOpSs41kSd4x6GhgNy6+2KGgpapAMPLQpueTbfCjsTCfSx3/6RPJmSTm48brQCyf
+ vpAA==
+X-Gm-Message-State: APjAAAW9OSH70OYZJyR3rXEqApG4sBAQEW+D21UC/I3eLbBwAB2kja83
+ LrZSwCXEvRzp+pTMM3aNYb9I5Dlf
+X-Received: by 2002:a7b:c19a:: with SMTP id y26mr662146wmi.152.1580951882851; 
+ Wed, 05 Feb 2020 17:18:02 -0800 (PST)
+Received: from localhost.localdomain (2.red-95-127-156.staticip.rima-tde.net.
+ [95.127.156.2])
+ by smtp.gmail.com with ESMTPSA id w13sm2053526wru.38.2020.02.05.17.18.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 05 Feb 2020 17:18:02 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 01/30] hw/arm/raspi: Use BCM2708 machine type with pre
+ Device Tree kernels
+Date: Thu,  6 Feb 2020 02:17:27 +0100
+Message-Id: <20200206011756.2413-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200206011756.2413-1-f4bug@amsat.org>
+References: <20200206011756.2413-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20200205175115.GT2221087@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::341
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::342
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- libvir-list@redhat.com,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ny7s9dln7+lK
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Stephen Warren <swarren@nvidia.com>,
+ =?UTF-8?q?Zolt=C3=A1n=20Baldaszti?= <bztemail@gmail.com>,
+ Joaquin de Andres <me@xcancerberox.com.ar>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Esteban Bosse <estebanbosse@gmail.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Michael Chan <michael.chan@broadcom.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Pekka Enberg <penberg@iki.fi>, Kshitij Soni <kshitij.soni@broadcom.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PrJsCdbXwx5n
 
-On 2/5/20 6:51 PM, Daniel P. Berrangé wrote:
-> On Wed, Feb 05, 2020 at 06:40:31PM +0100, Aleksandar Markovic wrote:
->> On Sat, Feb 1, 2020 at 7:53 PM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>>
->>>>>> @@ -1151,10 +1150,6 @@ for opt do
->>>>>>    ;;
->>>>>>    --enable-brlapi) brlapi="yes"
->>>>>>    ;;
->>>>>> -  --disable-bluez) bluez="no"
->>>>>> -  ;;
->>>>>> -  --enable-bluez) bluez="yes"
->>>>>> -  ;;
->>>>>
->>>>> Now than I'm bisecting over this commit, I realize removing this
->>>>> option was not a good idea, we should have done like commit
->>>>> cb6414dfec8 or 315d3184525:
->>>>>
->>>>>   @@ -886,10 +885,6 @@ for opt do
->>>>>   -  --disable-uuid) uuid="no"
->>>>>   -  ;;
->>>>>   -  --enable-uuid) uuid="yes"
->>>>>   -  ;;
->>>>>   ...
->>>>>   +  --enable-uuid|--disable-uuid)
->>>>>   +      echo "$0: $opt is obsolete, UUID support is always built" >&2
->>>>>   +  ;;
->>>>
->>>> Looks trivial ... so if it bugs you, just send a patch?
->>>
->>> I thought about it but this won't fix much, it is too late now.
->>>
->>> I simply wanted to share this bugged me so we try to avoid doing the
->>> same mistake again.
->>>
->>
->> I vote for addition of a change similar to what Philippe described.
->>
->> Furthermore, it looks to me the correct way would be to now do full
->> deprecation of --enable-bluez and --disable-bluez. This means adding
->> this to documentation (not related to bluetooth devices support), not
->> only a change in "configure". This also means that only after two next
->> full cycles these options could be removed.
->>
->> True, this could have been done together with bluetooth devices
->> support deprecation (and in that case we could have deleted these
->> options right away), but it wasn't. Users don't have a crystal ball to
->> know that we assumed that --enable-bluez and --disable-bluez were part
->> of bluetooth devices support, and could rightfully complain about an
->> abrupt elimination of a compile time option.
-> 
-> The deprecation policy is primarily intended for notifying of changes
-> to QEMU's stable interfaces ( CLI, HMP, QMP) which affect behaviour
-> and usage of QEMU at runtime & are liable to break apps managing
-> QEMU.
-> 
-> Changes to build time options have no strong reason to be subjected to
-> the deprecation process. If we remove an option at build time the effect
-> is noticed immediately and the solution is straightforward (stop passing
-> the option). We have added / removed configure options at will with little
-> negative feedback historically. We'll have far biggest changes coming to
-> the build system in future too, with the introduction of meson.
+When booting without device tree, the Linux kernels uses the $R1
+register to determine the machine type. The list of values is
+registered at [1].
 
-I understand your point when looking forward (when distribution upgrade,
-it is easy to adapt).
-However this is still an issue when looking backward when running
-bisection to find regressions.
+There are two entries for the Raspberry Pi:
 
-> I don't think we want to constrain & complicate our work in modernizing
-> the build system by declaring that any changes to it must go through
-> deprecation.
-> 
-> Regards,
-> Daniel
-> 
+- https://www.arm.linux.org.uk/developer/machines/list.php?mid=3138
+  name: MACH_TYPE_BCM2708
+  value: 0xc42 (3138)
+  status: Active, not mainlined
+  date: 15 Oct 2010
+
+- https://www.arm.linux.org.uk/developer/machines/list.php?mid=4828
+  name: MACH_TYPE_BCM2835
+  value: 4828
+  status: Active, mainlined
+  date: 6 Dec 2013
+
+QEMU always used the non-mainlined type MACH_TYPE_BCM2708.
+The value 0xc43 is registered to 'MX51_GGC' (processor i.MX51), and
+0xc44 to 'Western Digital Sharespace NAS' (processor Marvell 88F5182).
+
+The Raspberry Pi foundation bootloader only sets the BCM2708 machine
+type, see [2] or [3]:
+
+ 133 9:
+ 134     mov r0, #0
+ 135     ldr r1, =3138       @ BCM2708 machine id
+ 136     ldr r2, atags       @ ATAGS
+ 137     bx  r4
+
+U-Boot only uses MACH_TYPE_BCM2708 (see [4]):
+
+ 25 /*
+ 26  * 2835 is a SKU in a series for which the 2708 is the first or primary SoC,
+ 27  * so 2708 has historically been used rather than a dedicated 2835 ID.
+ 28  *
+ 29  * We don't define a machine type for bcm2709/bcm2836 since the RPi Foundation
+ 30  * chose to use someone else's previously registered machine ID (3139, MX51_GGC)
+ 31  * rather than obtaining a valid ID:-/
+ 32  *
+ 33  * For the bcm2837, hopefully a machine type is not needed, since everything
+ 34  * is DT.
+ 35  */
+
+While the definition MACH_BCM2709 with value 0xc43 was introduced in
+a commit described "Add 2709 platform for Raspberry Pi 2" out of the
+mainline Linux kernel, it does not seem used, and the platform is
+introduced with Device Tree support anyway (see [5] and [6]).
+
+Remove the unused values (0xc43 introduced in commit 1df7d1f9303aef
+"raspi: add raspberry pi 2 machine" and 0xc44 in commit bade58166f4
+"raspi: Raspberry Pi 3 support"), keeping only MACH_TYPE_BCM2708.
+
+[1] https://www.arm.linux.org.uk/developer/machines/
+[2] https://github.com/raspberrypi/tools/blob/920c7ed2e/armstubs/armstub7.S#L135
+[3] https://github.com/raspberrypi/tools/blob/49719d554/armstubs/armstub7.S#L64
+[4] https://gitlab.denx.de/u-boot/u-boot/blob/v2015.04/include/configs/rpi-common.h#L18
+[5] https://github.com/raspberrypi/linux/commit/d9fac63adac#diff-6722037d79570df5b392a49e0e006573R526
+[6] http://lists.infradead.org/pipermail/linux-rpi-kernel/2015-February/001268.html
+
+Cc: Zoltán Baldaszti <bztemail@gmail.com>
+Cc: Pekka Enberg <penberg@iki.fi>
+Cc: Stephen Warren <swarren@nvidia.com>
+Cc: Kshitij Soni <kshitij.soni@broadcom.com>
+Cc: Michael Chan <michael.chan@broadcom.com>
+Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/arm/raspi.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index 3996f6c63a..ef76a27f33 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -29,8 +29,7 @@
+ #define FIRMWARE_ADDR_3 0x80000 /* Pi 3 loads kernel.img here by default */
+ #define SPINTABLE_ADDR  0xd8 /* Pi 3 bootloader spintable */
+ 
+-/* Table of Linux board IDs for different Pi versions */
+-static const int raspi_boardid[] = {[1] = 0xc42, [2] = 0xc43, [3] = 0xc44};
++#define MACH_TYPE_BCM2708   3138 /* Linux board IDs */
+ 
+ typedef struct RasPiState {
+     BCM283XState soc;
+@@ -116,7 +115,7 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
+     static struct arm_boot_info binfo;
+     int r;
+ 
+-    binfo.board_id = raspi_boardid[version];
++    binfo.board_id = MACH_TYPE_BCM2708;
+     binfo.ram_size = ram_size;
+     binfo.nb_cpus = machine->smp.cpus;
+ 
+-- 
+2.21.1
+

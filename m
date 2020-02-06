@@ -1,87 +1,85 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1398739lfp;
-        Thu, 6 Feb 2020 04:51:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzRCSv1BmHK+aIXiGxCVx/zAcOry+paWIbNYxSCVhUiPEBwiKJTSCu/2+tw7ntlPLCUgg6f
-X-Received: by 2002:a37:4fc3:: with SMTP id d186mr2453856qkb.100.1580993466174;
-        Thu, 06 Feb 2020 04:51:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580993466; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1398830lfp;
+        Thu, 6 Feb 2020 04:51:12 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyDPlv6qCbQ+JZjtolGvS6BHubK2297bZtZuAIHadETZgDwcKAbq3o5od15Mmvaq5Vy2/Iy
+X-Received: by 2002:ad4:4e04:: with SMTP id dl4mr2061582qvb.150.1580993472677;
+        Thu, 06 Feb 2020 04:51:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580993472; cv=none;
         d=google.com; s=arc-20160816;
-        b=kQ/AKhAa8NEQ90ElD9Xq5ZtsSLhzVaK5FRcj8TPydh9OSN5oZsaocN1IxYdGi1eSzA
-         blbx1DQo2Nuzbou96Ktw51XBPO+tCGZxK1xEOBT6vLgwMVs2DLJPHELYfSgerob5kWNi
-         DZbljqSlttKKAQLPtHSr5FDJcV61/lzEAE39sU1fgWkLEancHXVSGjQeaGqe5OKpe06y
-         TLE/hSRt9LKY5Gum0qiGLQ2+v5NeFfS1kf85gQFczQGVKf0dTH4kOrcQ/D/kMiOGGZma
-         APBqS1JuXE5p0lFP9ScgJ9Q+43mDNTkX9OeLX6lLy/nuf/HWSH/ZzCEquX21QtSTMnFj
-         8mjQ==
+        b=Bwieyrcn3N3ZNU0PaXz1hE6BjBFe+EvRDBF+ys6854sWeRD7hP/bFZ8LKgIeq+yk+y
+         jturwoj5oogC0AeqlwbOOnQtjvS0mvVFFPPz5MA0EZfkms2Lad5TktxMaD/1FkPGI+Hr
+         mJvJOGipqSUtT0ZVing1NElwehe+bM9w/MlvhQe92dnr8tYnXsL6U1AZMx6nsGSwhoPT
+         af7QtwptaqJj6IBHtDC3PRzf0kjNAtx3ewhnIXETYhNO9M89vxcWhm9QhkAq005ALpfi
+         ikYpi2fwzBiD7VuhflH3hU5S2e8xKBiLA+FokmuFOcuuxvx8/AVC6oq6YsiW0Z06DOps
+         1wrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=T0J9XPyS3vHRYoq4r9+GwH5xosG4UZqG+6B+9ibnVvg=;
-        b=H7PjU+j5xM4uqrUOGYJ2g2G/s2Vpi6dkD4QOz9rQ69Az01yKTU9aHJ1vbrZ1yad2AR
-         lV9CjzoaqB9AOXcEu0vLE0RKl9q376q55FK9tNHJs4wjkeWqRibEuQGN1KFH7K3Aprck
-         hkCGSYGdon0n8a/YnCOBxKfFUsHS93YnNlhbNRBErWuk9xWw6f63Jsi4P5wZyeWNhVmm
-         m6R7kReyOPr+qW+TdFDK6o3Gnyr18G/jgzQ6tbuVZpkHcS+XivmwYO2Sinftr4AwCsCB
-         UuTIckwhlLvaEjXOBpjM6yTXct5vRHWZbfH1lWKjq4nIZndTWL4oAejXK55FLNL6O6fG
-         ITAg==
+         :mime-version:message-id:date:subject:to:from;
+        bh=YjK7XQamnZGkSz2sH8Ah31zWT70HVmCGJaIlIyNTxtU=;
+        b=xUbR3qzLcuQXPOy7azsVI17TOJRDdF8GUsVaSWj84LiagU+zKzGh8UuUfeSUYAWENb
+         wZ7YWRy421NLZxJmwpiOYK4Bl2gCd0l4cVh2wQ4cjdYQgzlBkm81yCMu/uQ7g6O0yg4F
+         53UvOHLK1r5mthhXX9pUL41cM5s40yB3q7Nw0itoYeBpakYJY6vLoJpFqrqsBAGuH8DW
+         EmPQpEVjIUffoebDmc3z9ewZFSt28YXCUBq2v/I9F5leAkWmFcJvpBgjzHTNkcZuZ8xy
+         AGWrM41S42fcm/dZyQ+ybQM2MnldT/i6VoBvWO+wJlcL2ASOg0wyA2aWW0k1j4d+7TeK
+         0VKw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q143si1645132qke.276.2020.02.06.04.51.06
+        by mx.google.com with ESMTPS id q143si1645285qke.276.2020.02.06.04.51.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2020 04:51:06 -0800 (PST)
+        Thu, 06 Feb 2020 04:51:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38056 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38060 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izgcb-0000nq-I0
-	for alex.bennee@linaro.org; Thu, 06 Feb 2020 07:51:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56091)
+	id 1izgci-0000tc-3a
+	for alex.bennee@linaro.org; Thu, 06 Feb 2020 07:51:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56153)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1izgcO-0000jo-4W
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 07:50:53 -0500
+ (envelope-from <laurent@vivier.eu>) id 1izgcQ-0000nc-EO
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 07:50:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1izgcN-0005P9-5p
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 07:50:52 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:40183)
+ (envelope-from <laurent@vivier.eu>) id 1izgcP-0005Xz-BQ
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 07:50:54 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:48687)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1izgcL-0005HO-2U; Thu, 06 Feb 2020 07:50:49 -0500
+ id 1izgcK-0005CF-BG; Thu, 06 Feb 2020 07:50:48 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MLRI3-1jIAyA3eFP-00IUxA; Thu, 06 Feb 2020 13:50:34 +0100
+ id 1MLAAs-1jHtzG1Rek-00IDyH; Thu, 06 Feb 2020 13:50:32 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Subject: [PULL 01/12] hw/smbios/smbios: Remove unused include
-Date: Thu,  6 Feb 2020 13:50:16 +0100
-Message-Id: <20200206125027.1926263-2-laurent@vivier.eu>
+Subject: [PULL 00/12] Trivial branch patches
+Date: Thu,  6 Feb 2020 13:50:15 +0100
+Message-Id: <20200206125027.1926263-1-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20200206125027.1926263-1-laurent@vivier.eu>
-References: <20200206125027.1926263-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:+3n0YO0QvTIjSQEknkdfsEfpTCPU42TUPsP6TjbitggmiHP1E+M
- RByE75jAEA5SE+wkOjw6p7PFWoJnIu0zIB5155gtr8QESRj+7fr82vaTiSMn6/AKw8pKUP5
- pISTWZkDQDr8y2IgZbxDoqo0m7FVIVQdbl4JysShTpPCQ9ygL2FHMv6vLaRDkIXmacOn5tF
- rscj+o2aL05jRX+5uiHWg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:odg5yYKeunY=:DbiVs2SHG0vDv8/rh/IG29
- UaPa51Zdy1INZz6ddPgvV+3V5uTCilCrubLwWlaVh9asTZMDjlEsV3dI60HAJY956EpzEHoYN
- gYh8D7jfjvR6yeurHO9HqIG60ARM3zSBYZHd4T+jz0o+uG7SP5mQdhW+hczwThMMLeVCpQ8+N
- N7t8k4l+hXkyxHlVK9mXEKR+XAIiDZUH/0mUPRGPJi9i2oTKZOhGGVLcdrpwQENuA12mEbh4T
- ssWQi7+WAtuK6LcmAuQYVwadSasReo6NJQc7S3XcxhPdhfI1kVjo3v6Z7jEObNi4B/lsn9NbJ
- Sjeyb5w0Pgvv/l3xYdK2O/se2WaMEQ0K2LHDQdBVVGD9ZewLgDqRibSSOAGLHeExk1TCE0Uhe
- J5QPk9lvlN7hOqy1dSeP51RYfavD/QslF/Je+EDCOHSAtEFCslfb55WtIaDV5FCedGXF9mQQl
- wBdJB9n5i0XcOnLSRUYtK6cZOh+Qd71Q3n7AZgYk2yvH/rnMoYkeuaYzv0i/3WEKhmQ/HsG59
- UTy6nPt89t5ziYgzVWF/EuQR6o2RIPKcJ1GqiD3oaX147bW5RYzVC74uPnb/bluX5fu7wzdOu
- 4ZuAEFYumm5SBulV+qd83fNwt5RrzM7nxIkK1ojSar3gfPHMTrqM/wfZMzYh/NaLO/4lurT2o
- HrB/vZx2nzeyFAOL+rtHgymw6S8AIGpqfu29O2hX1qsuqBVNjYLGohNnDXCt3YbjSfHPFq1FE
- HQYnkbKF7NvnCxpCh7qMEdNmA1NxCXU/PMpYIM8klEM3O54/hgZjP0uFImZMzVMe1t/gQDw89
- AZLjfXPw4dq0xtJ5ZXX2NCMNUL04m8kXG0YplZzMwYFC+9vb0PTLE2Wne7nebmPPncuT80Y
+X-Provags-ID: V03:K1:QzrtNTtr1K/Hl64rveH+CH3JhhqW2lAEJSTsE1MD4Gf/mDf2eDG
+ hcp6UwtyYGq2ZDKfQLywQR/Cbj4isrd1eOE0vfg2DmT9RgwJ+Mf/fzwBHYOZsk3WOXe7CoG
+ XVD9F+1JVH68RHSSP1QFWUKI3lggejSWLdxNVWGhfC3VovWD883sn7qhA0yhnGck+JWmQVF
+ fK4hc9oJiKuwv9ddsA8EQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:uGANA53uBh8=:mJANNCyFK9Ag03MxmagNJE
+ j44usZCp4LHSJeTclAX7LZg4UuEKy5aJBMJhQKwNDlvJDWyGW6BRUc7M9z6mrTHZy6FJVYeTp
+ 024lseQ2xq6hhO4kjUxY92mAHsDrsICKb+YPpiR3tSQe7EBujZmotQLZwtpCXmD4kmGbWJ8q9
+ iEk8yGU9hzlOB8iZzIMipyHqBbg/s3/QZ+egOUQPJk9tQxag1rtUo0YGU/VEm6UqmpSzIEzv+
+ SuqyH5r1zIcWjTSln6NwJOvhwFc5TABCKThzIuHHS+9ShSGXk6gFYPtSy3D1H93pKu3AWZ3sv
+ j4LeEu24Hf9Kn4xs2lDOuycr3d/sP5gF3Y5VmY053wH8JR2zVDH5vk4Qt7wE8LGY1KI7k1VU9
+ aOLJRbF0iQ7Q+WCH+TmYq6vQmX9rjjpjxcXHht7eEhFMkNqL5DOwXvr+5cgE3OuB5aF6/uZWU
+ SeF6Of9ebNYR5HrU3GJbGb+tMYI80laJIqNf8Jc46w7BoCZ8KaCdrNGmU7Z3GHK/yYHIHdcau
+ Ktw3FUbxfLhu2sOuSBHrWQ0nUFWJCQ8YOa5ADEIfaI+FDEOUtQRMgRzNM10gY/6UjFOWfSWG/
+ TitqJo8xo8hzoTmghFptOGuFD+qygIfjaFXSigzynQ/0D+mKBsxw5xhHw0zmRKHCdhm/l81L5
+ tTm+basNwLzPQAMwD9MDESZ/u00mbP3u9PUzJCEtYe59NBHjNO60mSg3NTHfAdhTTE32CY4qb
+ usX+c1+jHcFaXuOPTVL+qY8yVQ/wAkRJqo+bNxT/rOhvCAUDRyXmwfzTc/nj8iviSNIrO9U77
+ GYNL/onpkqa+DCYPFN6Ce3h8YHnsKLEvSVxNubbY9yN3ea+USLErU2nKXs56NGXLFOofpiH
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.131
+X-Received-From: 212.227.126.187
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,36 +101,72 @@ Cc: Kevin Wolf <kwolf@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
  qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JxN+h582GjgG
+X-TUID: EJkuqvOSkUYJ
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+The following changes since commit 7bd9d0a9e26c7a3c67c0f174f0009ba19969b158:
 
-Nothing from "sysemu/cpus.h" is used by smbios.c, remove the include.
+  Merge remote-tracking branch 'remotes/huth-gitlab/tags/pull-request-2020-02-04' into staging (2020-02-04 16:12:31 +0000)
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20200109112504.32622-1-philmd@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/smbios/smbios.c | 1 -
- 1 file changed, 1 deletion(-)
+are available in the Git repository at:
 
-diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-index 11d476c4a2cb..ffd98727ee9e 100644
---- a/hw/smbios/smbios.c
-+++ b/hw/smbios/smbios.c
-@@ -24,7 +24,6 @@
- #include "qemu/option.h"
- #include "sysemu/sysemu.h"
- #include "qemu/uuid.h"
--#include "sysemu/cpus.h"
- #include "hw/firmware/smbios.h"
- #include "hw/loader.h"
- #include "hw/boards.h"
+  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+
+for you to fetch changes up to 8ef350b32fe08d254f92a3a7efe89809397fff77:
+
+  MAINTAINERS: Cc the qemu-arm@nongnu.org for the ARM machines (2020-02-06 12:32:03 +0100)
+
+----------------------------------------------------------------
+trivial patches 20200206
+
+----------------------------------------------------------------
+
+Chen Qun (1):
+  monitor: fix memory leak in monitor_fdset_dup_fd_find_remove
+
+John Snow (1):
+  qemu-options: replace constant 1 with HAS_ARG
+
+Julia Suvorova (2):
+  qemu-img: Place the '-i aio' option in alphabetical order
+  hw/pci/pci_bridge: Fix typo in comment
+
+Leif Lindholm (1):
+  MAINTAINERS: update Leif Lindholm's address
+
+Miroslav Rezanina (1):
+  aspeed/i2c: Prevent uninitialized warning
+
+Philippe Mathieu-Daudé (4):
+  hw/smbios/smbios: Remove unused include
+  hw/timer/m48t59: Convert debug printf()s to trace events
+  MAINTAINERS: Cover hppa-softmmu.mak in the HP-PARISC Machines section
+  MAINTAINERS: Cc the qemu-arm@nongnu.org for the ARM machines
+
+Thomas Huth (2):
+  hw/bt: Remove empty Kconfig file
+  hw/i386/vmmouse: Fix crash when using the vmmouse on a machine without
+    vmport
+
+ .mailmap                    |  1 +
+ MAINTAINERS                 | 10 +++++++++-
+ docs/interop/qemu-img.rst   |  8 ++++----
+ hw/bt/Kconfig               |  0
+ hw/i2c/aspeed_i2c.c         |  2 +-
+ hw/i386/vmmouse.c           |  6 ++++++
+ hw/rtc/m48t59-internal.h    |  5 -----
+ hw/rtc/m48t59.c             | 11 +++++------
+ hw/rtc/trace-events         |  6 ++++++
+ hw/smbios/smbios.c          |  1 -
+ include/hw/pci/pci_bridge.h |  2 +-
+ monitor/misc.c              |  1 +
+ qemu-img-cmds.hx            |  4 ++--
+ qemu-options.hx             |  2 +-
+ 14 files changed, 37 insertions(+), 22 deletions(-)
+ delete mode 100644 hw/bt/Kconfig
+
 -- 
 2.24.1
 

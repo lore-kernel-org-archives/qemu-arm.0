@@ -1,159 +1,157 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1408326lfp;
-        Thu, 6 Feb 2020 05:01:33 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwkT1/p4mr8kdogIcnhjlXbVzKsm6YAk4rdA3d3+qWHFXWoOj7gaRKdvkQp9mXsXZR6MSbA
-X-Received: by 2002:aed:2ac5:: with SMTP id t63mr2312435qtd.315.1580994092988;
-        Thu, 06 Feb 2020 05:01:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580994092; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1527926lfp;
+        Thu, 6 Feb 2020 06:43:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyKY31/qThmZslGEhMJgYFg75EsCCU1m460kaGy3ER2Fv5xSF3MJUN2ybyXLGX+OzhMehe5
+X-Received: by 2002:a25:d204:: with SMTP id j4mr3248416ybg.140.1581000191827;
+        Thu, 06 Feb 2020 06:43:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581000191; cv=none;
         d=google.com; s=arc-20160816;
-        b=IPQmsSr+U4El8Q2rixhYO+AWzYX/ux6AOi9pZgeYkavuFUfPoZOWjkHgFG08qTmKXb
-         VgOpIzbVw4DA1Pf4b+F+bnrOP7EH+hshcYZXocGAay1tpcvxEHdycxymLmwtdCfPFvsq
-         gQaiJcb4F4lXnEYQTWrAmoLTD0RDCHjc0VuTmiI+9AdzQWb4Sm9LPPpwkxbYdkJEPevT
-         KyYrNYQZk2JaxFWazP69LRrnuBXrEhft9sZIuMouP2fZ3lhwQGn9Rvimi0DS3hts1SdG
-         /BQ6kcG5jcRMiiT10QIt7NVSSX5cIJ7zAMlrKcqd0rMjMLa/71gBxvPQPGn0akoCKbug
-         UxWA==
+        b=ezhS+LJc0ZuPG1cU/oXZlo+kYf8euMvNzaUF8lAikRyXUTQGG0Q81s358qycH17yT8
+         dtyaiOhqu7okd/yuzVlzS4h4YGH6VMoWUCDyMicxwKmY6EHYc0xc3RJwoG3E04w5gEuW
+         yjx323gH1XkCTXSU82DApTkgaHy+X/SkqrlfYTkLy8PiE1OnURRomVXvA0FXb7p7r2ov
+         DKppBo6dNFusin/uyOz8h10NCRBfPixY07V3a5edItE1PymdwvEk08aHCcvwkFnXZ2Ez
+         evEklH3f5kVpbFCR1d/S8NvOtVzICr8xCJ5ixyGmeejlY+aFVw2+D6H/hv8j5VO3Gsjt
+         0j1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=qPqoQcvHDeQtnhdxTOvQtc9fUTtc0MGkEWE/is6kQX8=;
-        b=baR7Zj3KMmIc5gI9vI1/t/N0Ae6LQCC1orwEfOuQk8IyIUz5A0lJXRcB93DTL7k4wn
-         NJ1IFi7Z8UBX66ipmFsKEzBWnNQhbwTSGLYUFBtjTN7r7ufPUHaxnlNVMRtv3yNaJEGM
-         c7L+WgJkdgSlW9is5doQd9Ta943VXKuHl9sG2dwsevkPUB/dGO5j3EiPUZYWwSA25E92
-         hpK+KIJ+LDqK1jCUXcM6aTrl6Xx9oswm41uoP1CfTU+W9MArNNVgxvp2m7dft5EfWFcV
-         Xoarl/qieL5QI/SiEguMBWljcjuakFPAFHCVGRvROX6g0ekk8VqefXlHDBIpm06EtWC8
-         1Yzg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=sNSoM/jbKaYz7kq4M705HNnusVQQuDoTRX40NEeqqrs=;
+        b=RXielHcSPZY4DfLf/WBopcLJGeb6Ge1IjftLSwI4Pv413gnx7kqt4VCYfVcUF5U2gv
+         X5jRtVZqaTO3I966MgOoU/O0fqHUc3QkU2Kh4twJb2uq1MeluAnjcZ+QzqTISNxDxB9y
+         HHPfaSsH+ydfCD7amMdZRPK6sjtfkWmIj2qXUmAgHxp2FFfhYriRii/OLcuCWM39GBZf
+         SsuuAM4hauwyvQUBMFc5uA7UPsjU4VsJcYMWouwvJO3WsgC5sCO8An5maeROqZLrcefH
+         En3sij/qcsOcnd4W1vY5y+efS6f0hKT2usWlVs+Yh7JCZYuU7Lg3x96X/409GrjLE8CC
+         KKMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d7si1539479qvs.62.2020.02.06.05.01.32
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WizQ4AY0;
+       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [205.139.110.61])
+        by mx.google.com with ESMTPS id y201si2244675ybe.152.2020.02.06.06.43.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2020 05:01:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 06 Feb 2020 06:43:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38404 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izgmi-0006dy-Cj
-	for alex.bennee@linaro.org; Thu, 06 Feb 2020 08:01:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56783)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1izgcl-0001YE-8G
- for qemu-devel@nongnu.org; Thu, 06 Feb 2020 07:51:16 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1izgck-0006bw-4b
- for qemu-devel@nongnu.org; Thu, 06 Feb 2020 07:51:15 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:58643)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1izgcj-0006XH-QX; Thu, 06 Feb 2020 07:51:14 -0500
-Received: from localhost.localdomain ([78.238.229.36]) by
- mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MA7X0-1ipGDR2F8E-00BbCn; Thu, 06 Feb 2020 13:50:43 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Subject: [PULL 06/12] hw/i386/vmmouse: Fix crash when using the vmmouse on a
- machine without vmport
-Date: Thu,  6 Feb 2020 13:50:21 +0100
-Message-Id: <20200206125027.1926263-7-laurent@vivier.eu>
-X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20200206125027.1926263-1-laurent@vivier.eu>
-References: <20200206125027.1926263-1-laurent@vivier.eu>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WizQ4AY0;
+       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1581000191;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=sNSoM/jbKaYz7kq4M705HNnusVQQuDoTRX40NEeqqrs=;
+	b=WizQ4AY06hNSmY3kdNlxtoWpCLx+W3v/vqffKo5SdQugAVVrIQPV1bGP2tuqlpBxPzUHb8
+	dT3VyTIhqsMP+03bZbKS3xOQUwI5nVlBjW+7nDgvQk3Eo8bK8Uvl6y6PhdGu+FSjRO3aX2
+	a56yT/YYU0LHdHXZ5JOHU3tcn+Jk+Lc=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-250-Q6PD8CJcM36hxw1My7breQ-1; Thu, 06 Feb 2020 09:42:53 -0500
+Received: by mail-wr1-f71.google.com with SMTP id z15so3520790wrw.0
+        for <alex.bennee@linaro.org>; Thu, 06 Feb 2020 06:42:53 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=BqVdkPSfFrlSiqisiJMa5lZAuzM02Lkgy3y9qPtfwWk=;
+        b=m7i/4uJEv/qvMp6QFudp7HPOoRxT49WHxlgpxQV1jt36i+BfnltW9CIJVFxajwDkuH
+         IuxAiF4duxve9oe54uB605Fg0wjAseMwzjINhjlj8JxY+Cq2I0h9rqIejcqg3G/66gjG
+         MZlkRqtGqK9Ab17adq4sGAfGnTEW/pZzhSkjJdtRV40fchZ6BUMBo2eB+6sOIsVZXmgC
+         wlsW/MhbsleOjprsmR1Pmvgr4U6Nb0Ccpqa4+RO+SFStDaAtBo8hg7IukDIKAkqgZ5vh
+         7r52GcYetT10LoAcGKB7UUX2blb1Z7IfwHWA0o3YAd8pBn8sq5/WN6EM+icpDB0F8dQL
+         WYlw==
+X-Gm-Message-State: APjAAAX0tcreosl51ZdXKMbyWWGVlJUMpzWPT0Osf7AKnt4s3P7dF6qa
+	9oZwzpyQuvmphb5xsyeikho0DYfFwuzF+rmadvOGPynnxa5Eto96fBJdUkfXcP0csPzcEHaP8sV
+	mOFHHKx9n8Y+Y3KQr
+X-Received: by 2002:a05:600c:2150:: with SMTP id v16mr4870655wml.156.1581000172220;
+        Thu, 06 Feb 2020 06:42:52 -0800 (PST)
+X-Received: by 2002:a05:600c:2150:: with SMTP id v16mr4870643wml.156.1581000172014;
+        Thu, 06 Feb 2020 06:42:52 -0800 (PST)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net. [88.21.202.78])
+        by smtp.gmail.com with ESMTPSA id a62sm3945162wmh.33.2020.02.06.06.42.50
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 06 Feb 2020 06:42:51 -0800 (PST)
+Subject: Re: Is STM32f429 discovery board fully supported on qemu?
+To: Liviu Ionescu <ilg@livius.net>, Mohannad Maklad <msala.work@gmail.com>
+Cc: qemu-discuss@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, Alistair Francis <alistair@alistair23.me>,
+ qemu-arm <qemu-arm@nongnu.org>
+References: <CADxp150RUQXjDFjrQcrJCfoWto=ERaGVd=neo9s_2=3XsyS9XA@mail.gmail.com>
+ <07187FD3-2C54-4F19-8D2A-386FD3F360AD@livius.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <aa9a6e4e-70bd-2abf-9b75-8200990a1c57@redhat.com>
+Date: Thu, 6 Feb 2020 15:42:50 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:W1eH0lsjt6jCmCVV74la6b76emMsVYrvt3vX9vKnSUbZyYJ1LxV
- vtdSYnTft+amupyioUNYFMtJdy8/g//VcZz7uFPjMidplOCS6YfqZmWLZCwx1ZIWrIYjG9l
- y61aZRme2DuQEx7Zc2iaqSnN89jnovLuJSzXeMci1JUogfrEXnKtjO2S9G1N2AYP9kCXOhj
- bNbhcsMNb4iZUJzDoKmww==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:0MfJi3yqHXI=:USKbxS+q6G353dEWeijF0b
- EK2ts37obxszI2JCLXU29w1ksJwOFewxKDy27S3Q5Xhrz2o3XOTRPZnqfnJ0wzJNTsB3rgiWR
- 6TqZXwqCbvdYxtOswWNyLVVdWtz0b+sjQC2n+9SXSp4D7IvblHcJIUSp0u7d0l/GPP9Zx8BtE
- NoVgoRl9QOqYwjpVYTakhKSa3lfeNuFeeiKgs8MFqlk+OvftJzPP73ARsZ2YeW0BnqvCIYbSR
- CLgvGMjQh0zALkd8NE9jR9UvgVfOEq2cQO9TSCl/TYc8VsSLU65ez21LfxMsRmENo5ZzrjMMV
- ARDecpr+6Irb0aKYvrNMWWFUOXCHLKGBpjrYIgYA6uKezP0MV9xKFG2TKLbL53jmg87r13mhv
- XC/YEKJSZuAqnHTIKeHiNO4sd6IM8Whj3JJBhYHp43ehAP1JnPt8HKX45OXhoTpeErpCniZLC
- bS7sQB8EGFeoXvcp0GD8pSbF1YE3zk7pqGigEarj/wuAY72NG/jeH3IzVuKkKUxjjz3TraUg2
- nihkNBbEvUw3ST+H5po1f7bvGylx6VRsMFd7UZZnWnVgWgiL2UWOiBS8ouEeKVAOiM5ndxOp/
- q6VtFwxOmSoC+ohbaQSpAsaSXG15bct0YGJTVgARmKGPqIksiRQGT1kCTXM9ycJJwHQJdMCXr
- Oudoi5Jyn0xVDGwzQYu4iqnP72/kN5DQEOCphgc1N0oKh7sfLWO2v8wlfREN9Jv3O21gsI8zz
- 63+ggC0DjmAZ7QT1dwlfch+J+nrm0flDRL2BJQnnLRepqPrOK4NZd+VPswVY1saEs7k5lp35z
- iB6j1SDhXFXscf04HhP5cReUpqrgcWMks0qiO373956cMzFE+veARtPMUn8l/PBA0vIakyu
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@aj.id.au>, Markus Armbruster <armbru@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Max Reitz <mreitz@redhat.com>,
- qemu-trivial@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Darren Kenny <darren.kenny@oracle.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3HNNpC5SQj5S
+In-Reply-To: <07187FD3-2C54-4F19-8D2A-386FD3F360AD@livius.net>
+Content-Language: en-US
+X-MC-Unique: Q6PD8CJcM36hxw1My7breQ-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-TUID: R581/Pv66rpZ
 
-From: Thomas Huth <thuth@redhat.com>
+Hi Liviu,
 
-QEMU currently crashes when the user tries to use the "vmmouse" on a
-machine without vmport, e.g.:
+On 2/6/20 3:34 PM, Liviu Ionescu wrote:
+>> On 6 Feb 2020, at 11:23, Mohannad Maklad <msala.work@gmail.com> wrote:
+>>
+>> I'm trying to emulate STM32F429I discovery board using qemu & eclipse ID=
+E.
+>>
+>> I got the blinky example running with the led turning on and off on the =
+graphics screen but I have tried an example to run the on-board screen and =
+it doesn't seem to be running, Is it supported?
+>>
+>> Also, many drivers fail when simulated with qemu (sdram, rcc, ...) How c=
+an I know exactly what peripherals that are fully supported?
+>>
+>=20
+> If you are using the xPack QEMU (formerly GNU MCU Eclipse QEMU), the docu=
+mentation page is:
+>=20
+> https://xpack.github.io/qemu-arm/
 
- $ x86_64-softmmu/qemu-system-x86_64 -machine microvm -device vmmouse
- Segmentation fault (core dumped)
+https://xpack.github.io/qemu-arm/#why-xpack-qemu-arm
 
-or:
+   "Even more, support for semihosting in the public
+   QEMU version was broken, and the verbosity required
+   for integration with the QEMU plug-in was missing,
+   so it could not be used with the GNU MCU Eclipse
+   plug-ins."
 
- $ x86_64-softmmu/qemu-system-x86_64 -device vmmouse -M pc,vmport=off
- Segmentation fault (core dumped)
+Too bad these improvements aren't shared with the whole community.
 
-Let's avoid the crash by checking for the vmport device first.
+Note there have been a lot of changes/improvements related to ARM=20
+semihosting recently in the mainstream QEMU.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Darren Kenny <darren.kenny@oracle.com>
-Message-Id: <20200129112954.4282-1-thuth@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/i386/vmmouse.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+https://xpack.github.io/qemu-arm/#supported-boards-and-mcus
 
-diff --git a/hw/i386/vmmouse.c b/hw/i386/vmmouse.c
-index 7c2a3755271a..e8e62bd96b8c 100644
---- a/hw/i386/vmmouse.c
-+++ b/hw/i386/vmmouse.c
-@@ -23,6 +23,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qapi/error.h"
- #include "ui/console.h"
- #include "hw/i386/pc.h"
- #include "hw/input/i8042.h"
-@@ -269,6 +270,11 @@ static void vmmouse_realizefn(DeviceState *dev, Error **errp)
- 
-     DPRINTF("vmmouse_init\n");
- 
-+    if (!object_resolve_path_type("", TYPE_VMPORT, NULL)) {
-+        error_setg(errp, "vmmouse needs a machine with vmport");
-+        return;
-+    }
-+
-     vmport_register(VMMOUSE_STATUS, vmmouse_ioport_read, s);
-     vmport_register(VMMOUSE_COMMAND, vmmouse_ioport_read, s);
-     vmport_register(VMMOUSE_DATA, vmmouse_ioport_read, s);
--- 
-2.24.1
+   The boards currently supported by the xPack QEMU Arm are:
 
+     Maple =E2=80=93 LeafLab Arduino-style STM32 microcontroller board
+     NUCLEO-F103RB =E2=80=93 ST Nucleo Development Board for STM32 F1 serie=
+s
+     NetduinoGo =E2=80=93 Netduino GoBus Development Board with STM32F4
+     NetduinoPlus2 =E2=80=93 Netduino Development Board with STM32F4
+     STM32-E407 =E2=80=93 Olimex Development Board for STM32F407ZGT6
+     STM32-H103 =E2=80=93 Olimex Header Board for STM32F103RBT6
+     STM32-P103 =E2=80=93 Olimex Prototype Board for STM32F103RBT6
+     STM32-P107 =E2=80=93 Olimex Prototype Board for STM32F107VCT6
+     STM32F4-Discovery =E2=80=93 ST Discovery kit for STM32F407/417 lines
+     STM32F429I-Discovery =E2=80=93 ST Discovery kit for STM32F429/439 line=
+s
+
+Quite a nice list, it shouldn't require a lot of effort to contribute=20
+these boards to the community IMHO.
+
+Regards,
+
+Phil.

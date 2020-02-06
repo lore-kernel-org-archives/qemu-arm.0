@@ -1,304 +1,155 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1783223lfp;
-        Thu, 6 Feb 2020 10:34:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwdF83xeAb4g0pDhzN0TGhEIU8aqZqYyR5z84qT4WpaH9n/E1uHx6dC5KByDLlKecdiGrYp
-X-Received: by 2002:a37:47c8:: with SMTP id u191mr3906698qka.438.1581014046659;
-        Thu, 06 Feb 2020 10:34:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581014046; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1783893lfp;
+        Thu, 6 Feb 2020 10:34:50 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy41KoY/g2IMizXSm/HnAmKq8m6V39jEUoY/K6b1zei8v9DEtH6yvNOSA4nToRD/LC5kGz0
+X-Received: by 2002:a37:9c07:: with SMTP id f7mr3876872qke.103.1581014090467;
+        Thu, 06 Feb 2020 10:34:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581014090; cv=none;
         d=google.com; s=arc-20160816;
-        b=U2IUChgfdDO7dX93v7xdQBKBXjY5h5rKlm5D5oME5PP+L7LLoBWMle8nY6/Rpdft8J
-         UA8AidcRvuPSsGmSHkyQeAs3Z4FYyKSvq+MnR+sgSEg6zUwHQxSIcB19s6n2zvdrDdE7
-         bTOLpgLnIyKdSlsHLyQ8354bK+BiJfxeHS+NWXLG1ExMwFVtfVcEIEe1gc8IFtZKvKOS
-         378RkxqTAyKx2uTZUg8eVz407tlDj5EssVLbk94uhacDhUiBX8OCIT0U16LV7vvdQAqC
-         noQAsM4qlzdbxBTxM+uZa+wjbMiMgJFZwEObNsZwgOgKxiIDSR685nbCs9N2DBYmDUd2
-         a1Rw==
+        b=sjmA/P0H4aTpVqK2cK84GWpoPo0cBmYYQ0TUihbqAC7yry2hVlP/LEgpBCHWDxDjLj
+         BzuYKTx5BKhNztLKyxTF/bo37mbYLYrI8gFYjwPPrYMLhscxHz8CCQYR+VbiWCKvHeuu
+         QYeO11U2rd02QaswI8WLQWfDVea+laBs2RROs/H8YroSI9mqtADST/1Woa1m2esAk/Vt
+         C1j911ICey9A7f/n3QGvZn69FSP0IfyonIDkA1yDOsyTHmhKCbuDM/7vuQbAjC9N3V5H
+         ShZ1UdZJlcwEJi88R8f8P7jV0/NPtWIlZKtaiIJ+6XUaCSh7aFmhrUGOSVZfH7IV5BFg
+         nJng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ALuZTuN5DfhXqsi8y55rZh7eLMFrbBhU4HDPNxMYbKY=;
-        b=pXgFfIf/eAN2oJWlwq1MVEiK8Fy+xvxawhg9WhH8O68qVnHecJfLb3gHQ1xKubRM9V
-         PNVNHqAjOXuSkxDp9sB3CAhQ+FmVHj0aAEBPcNaJSOdSL94lf0twia/PevkF6nmRHOsM
-         AzzAEASFRovuUJfo8kH90PXiEdek7YCS2TP+oUoPfT1nMo0b65SLmaQjrWs8HPVV4NoA
-         yt1Vhvdk/hozqskEMJrO5qW10a268ANergV4IY1Yw20gb39OS52QdFlxwhkKXS6dy1mj
-         xIef1M2ZKsUqm8oz0LM3J+ll7ctLJwnUlhoaSWOIZCzs8ufAInmq4xBd9A4xmc/bPFJA
-         TcXw==
+        bh=IilPI+Sl+B1I6W2BM0SWvCm9l7ZzLSY3Gh4DaMCNP84=;
+        b=BHxJDZ2d5KIBUQHOYID/hxRWuROtjzs07tWCb2Ps+usLhYDAP7dS0B2VNjsE2CmCp2
+         VYitiUlTisWDRuXMI9nsVHtdOPrcvfMeK7MnpEpa5DRBnqWu6X1OroRtmAo5m8cyAfkN
+         sSqTa3LGJlrZfIeHFtoPlxJTNkeUP1WNkPCc6dNJpe/f/wfkty+1AGRvl6WqQWcAzhLR
+         m3u6X3odKAaeRTrZIfRrS6gdWf9A9f59tJyFiZxZMFwUkyfs2uSnrbvDA/fbs80+iX8Y
+         EvvvzcvuPYdwu+gi7B1tvTHWF/5lx3wXrKVvTWodaiVPqIfyvqnnI0QR7Bs8DzBcwaLv
+         j7gw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rirS6Cd5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MRYmMeMe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v35si150005qtk.206.2020.02.06.10.34.06
+        by mx.google.com with ESMTPS id w8si150517qtk.219.2020.02.06.10.34.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2020 10:34:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Feb 2020 10:34:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rirS6Cd5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44400 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MRYmMeMe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44420 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izlyY-0001Xm-1h
-	for alex.bennee@linaro.org; Thu, 06 Feb 2020 13:34:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33845)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1izlzF-0002v3-U7
+	for alex.bennee@linaro.org; Thu, 06 Feb 2020 13:34:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33946)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1izlx1-0000Hi-CU
- for qemu-devel@nongnu.org; Thu, 06 Feb 2020 13:32:35 -0500
+ (envelope-from <groeck7@gmail.com>) id 1izlx9-0000Sb-TV
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 13:32:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1izlwz-0002pq-Kx
- for qemu-devel@nongnu.org; Thu, 06 Feb 2020 13:32:31 -0500
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:36645)
+ (envelope-from <groeck7@gmail.com>) id 1izlx8-0003La-UL
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 13:32:39 -0500
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:43861)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1izlwv-0002JV-Vp; Thu, 06 Feb 2020 13:32:26 -0500
-Received: by mail-pg1-x544.google.com with SMTP id k3so3167489pgc.3;
- Thu, 06 Feb 2020 10:32:25 -0800 (PST)
+ id 1izlx0-0002rS-CN; Thu, 06 Feb 2020 13:32:30 -0500
+Received: by mail-pf1-x442.google.com with SMTP id s1so3529362pfh.10;
+ Thu, 06 Feb 2020 10:32:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id;
- bh=ALuZTuN5DfhXqsi8y55rZh7eLMFrbBhU4HDPNxMYbKY=;
- b=rirS6Cd5G3uxOCsFgXy9CdpIl/E8oFnxeCmQCOCVRMTl5YY0EvIPiQ0Y82YtgJfxg1
- O4qb/iX+cU4ah1COUQtieL/oykPycBuzgOy6SeMqy+sRz5uhfScA3V0MpGOhmHiOtchF
- Y4Nm7eERHOSK7DnAm/SUXAraqKJHCjK3mAh2FZAsmdsQd90y/ymsEqaFCHlqQfqUCYfV
- x1vFHnNlm2Y1Bmocpmh63gB4OoJzpKyEqR5oMVtdTXQXmp/vE3nMyRDU0WryycFLchvs
- di3SwFey45cs+/9Hu+/cY5mXNrsQdtyEVOw9tYcRzs0Y2/b2sTu/D98BxKGo/YnwhHP6
- Xvuw==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=IilPI+Sl+B1I6W2BM0SWvCm9l7ZzLSY3Gh4DaMCNP84=;
+ b=MRYmMeMeK0LrfdlBnYA80D6ZOqlWW8huDdFcoVVb5HtB7oJkkCMiuUJ4isEtkJutMQ
+ g6p2VXaPGFBMSHjPxr1FvKs0uYe23MNJY+L7ztF9YpVhHbUhUP7Yn9xe0bhWObP2g4yR
+ WGFKdwS73OTGI1pajnq8ds+WlXrkosbcmusaV9VoD+hyssqfhbw2403nzx2h8BJyAh4U
+ OvPZyhmz/fItlKH4rHtkL5aO92zPEpCy3OcMQFTZSbQgW47e5765V5sGX8XxXMcLsqEm
+ b8ivxDdHuaOpjn+ooGcJdd/51couDDkQiMQ/QRIKi7gipP5zunAc0afqGeQkpVjb53fm
+ RD/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
- bh=ALuZTuN5DfhXqsi8y55rZh7eLMFrbBhU4HDPNxMYbKY=;
- b=L1F5lvUs8ur+ouferdEIm7HXUn6gi0V2RFDUOaDZ9BcDJKphpqI/R4Bkppe3Ctiy5a
- Xcg4EHIjm7I99EOsrkVTwIgTDHGLVTDsvbrD/3BwuNp+eZSNwxw+DGO/Bdr8jUR2jTOw
- v98MABfJ+uN77lRBf94XYxLwTXaG4DCXCK64lR8lmhzN+tKizQ27UXk4Sac5eGJoM5Z2
- n/olh+/ckQ7U0WIPbecnCNGB02e9W+4XDSuVsFnO5LFAYecP5hnLSv+8oYTbzS5tN7ow
- 0muM7IwHn1nUbeQImi0Z1z90TW5CzkQxOE2Dave8CrHwfJ64qZKRgLYpN3SR9gsfRgGj
- 9pNg==
-X-Gm-Message-State: APjAAAXZ8JNYFfTISv2F8hZzXvorIEegfnhSuhE+hTE/jkNxN+ETXfAA
- XCUZwyb4/LCSAIGSwNzRMNo=
-X-Received: by 2002:a63:f648:: with SMTP id u8mr5236001pgj.148.1581013944579; 
- Thu, 06 Feb 2020 10:32:24 -0800 (PST)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=IilPI+Sl+B1I6W2BM0SWvCm9l7ZzLSY3Gh4DaMCNP84=;
+ b=Jv07uvCVvoANmMmTKJAt8m/yzawU8m0dAM4+B27ToprGLlBhIayULYv1k4xXbnS9Vc
+ GOi0qquINFg3s5mfccDekg3QQEbRHEwVoidY2ZAKcPXq0TbXEwQaR7hH211uaHhS24Qs
+ tlb7vOManzD6FgdQ0Yu/inbtUx3DJIDyyK3/dlECPYQMDPGRLW33lo3sZQnF5B1C6sda
+ NUVlt9iybf12XhXs2f33odp0kjqlChaDlXY3PpL++NefnhCX9P/ju8GQfN/oLdsDoHYU
+ AlwfXhOKs/ETlHTLwkAUmmIgU3ywlLAASEIjLf2TyCPxqmPQ4+oJfCsQmpuXGPduCQdP
+ 9jOg==
+X-Gm-Message-State: APjAAAWz7vHDMM7K4VKh5gbitS+rLzrfvDrIhnYwUegRbQWB0hnArRer
+ j21goPfIRLmDGav5njGMvgo=
+X-Received: by 2002:a63:6e8b:: with SMTP id j133mr5030071pgc.6.1581013949370; 
+ Thu, 06 Feb 2020 10:32:29 -0800 (PST)
 Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id c15sm94514pfo.137.2020.02.06.10.32.22
+ by smtp.gmail.com with ESMTPSA id 28sm127082pgl.42.2020.02.06.10.32.28
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 06 Feb 2020 10:32:23 -0800 (PST)
+ Thu, 06 Feb 2020 10:32:28 -0800 (PST)
 From: Guenter Roeck <linux@roeck-us.net>
 To: Alistair Francis <alistair@alistair23.me>,
 	Kevin Wolf <kwolf@redhat.com>
-Subject: [PATCH v2 1/4] m25p80: Convert to support tracing
-Date: Thu,  6 Feb 2020 10:32:16 -0800
-Message-Id: <20200206183219.3756-1-linux@roeck-us.net>
+Subject: [PATCH v2 4/4] aspeed/smc: Fix number of dummy cycles for FAST_READ_4
+ command
+Date: Thu,  6 Feb 2020 10:32:19 -0800
+Message-Id: <20200206183219.3756-4-linux@roeck-us.net>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200206183219.3756-1-linux@roeck-us.net>
+References: <20200206183219.3756-1-linux@roeck-us.net>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::544
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::442
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
  Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
  Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
  Joel Stanley <joel@jms.id.au>, Guenter Roeck <linux@roeck-us.net>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DaDcPxCg1Je/
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zffLYT7m1AYV
 
-While at it, add some trace messages to help debug problems
-seen when running the latest Linux kernel.
+The Linux kernel recently started using FAST_READ_4 commands.
+This results in flash read failures. At the same time, the m25p80
+emulation is seen to read 8 more bytes than expected. Adjusting the
+expected number of dummy cycles to match FAST_READ fixes the problem.
 
+Fixes: f95c4bffdc4c ("aspeed/smc: snoop SPI transfers to fake dummy cycles")
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 ---
-v2: Print pointer to Flash data structure as flash ID with each trace
-    message to support systems with more than one instantiated flash.
+v2: No change
 
- hw/block/m25p80.c     | 48 ++++++++++++++++++++-----------------------
- hw/block/trace-events | 16 +++++++++++++++
- 2 files changed, 38 insertions(+), 26 deletions(-)
+ hw/ssi/aspeed_smc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 61f2fb8f8f..5ff8d270c4 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -32,17 +32,7 @@
- #include "qemu/module.h"
- #include "qemu/error-report.h"
- #include "qapi/error.h"
--
--#ifndef M25P80_ERR_DEBUG
--#define M25P80_ERR_DEBUG 0
--#endif
--
--#define DB_PRINT_L(level, ...) do { \
--    if (M25P80_ERR_DEBUG > (level)) { \
--        fprintf(stderr,  ": %s: ", __func__); \
--        fprintf(stderr, ## __VA_ARGS__); \
--    } \
--} while (0)
-+#include "trace.h"
- 
- /* Fields for FlashPartInfo->flags */
- 
-@@ -574,7 +564,8 @@ static void flash_erase(Flash *s, int offset, FlashCMD cmd)
-         abort();
-     }
- 
--    DB_PRINT_L(0, "offset = %#x, len = %d\n", offset, len);
-+    trace_m25p80_flash_erase(s, offset, len);
-+
-     if ((s->pi->flags & capa_to_assert) != capa_to_assert) {
-         qemu_log_mask(LOG_GUEST_ERROR, "M25P80: %d erase size not supported by"
-                       " device\n", len);
-@@ -607,8 +598,7 @@ void flash_write8(Flash *s, uint32_t addr, uint8_t data)
-     }
- 
-     if ((prev ^ data) & data) {
--        DB_PRINT_L(1, "programming zero to one! addr=%" PRIx32 "  %" PRIx8
--                   " -> %" PRIx8 "\n", addr, prev, data);
-+        trace_m25p80_programming_zero_to_one(s, addr, prev, data);
-     }
- 
-     if (s->pi->flags & EEPROM) {
-@@ -662,6 +652,9 @@ static void complete_collecting_data(Flash *s)
- 
-     s->state = STATE_IDLE;
- 
-+    trace_m25p80_complete_collecting(s, s->cmd_in_progress, n, s->ear,
-+                                     s->cur_addr);
-+
-     switch (s->cmd_in_progress) {
-     case DPP:
-     case QPP:
-@@ -825,7 +818,7 @@ static void reset_memory(Flash *s)
-         break;
-     }
- 
--    DB_PRINT_L(0, "Reset done.\n");
-+    trace_m25p80_reset_done(s);
- }
- 
- static void decode_fast_read_cmd(Flash *s)
-@@ -941,9 +934,10 @@ static void decode_qio_read_cmd(Flash *s)
- 
- static void decode_new_cmd(Flash *s, uint32_t value)
- {
--    s->cmd_in_progress = value;
-     int i;
--    DB_PRINT_L(0, "decoded new command:%x\n", value);
-+
-+    s->cmd_in_progress = value;
-+    trace_m25p80_command_decoded(s, value);
- 
-     if (value != RESET_MEMORY) {
-         s->reset_enable = false;
-@@ -1042,7 +1036,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
-         break;
- 
-     case JEDEC_READ:
--        DB_PRINT_L(0, "populated jedec code\n");
-+        trace_m25p80_populated_jedec(s);
-         for (i = 0; i < s->pi->id_len; i++) {
-             s->data[i] = s->pi->id[i];
-         }
-@@ -1063,7 +1057,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
-     case BULK_ERASE_60:
-     case BULK_ERASE:
-         if (s->write_enable) {
--            DB_PRINT_L(0, "chip erase\n");
-+            trace_m25p80_chip_erase(s);
-             flash_erase(s, 0, BULK_ERASE);
-         } else {
-             qemu_log_mask(LOG_GUEST_ERROR, "M25P80: chip erase with write "
-@@ -1184,7 +1178,7 @@ static int m25p80_cs(SSISlave *ss, bool select)
-         s->data_read_loop = false;
-     }
- 
--    DB_PRINT_L(0, "%sselect\n", select ? "de" : "");
-+    trace_m25p80_select(s, select ? "de" : "");
- 
-     return 0;
- }
-@@ -1194,19 +1188,20 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint32_t tx)
-     Flash *s = M25P80(ss);
-     uint32_t r = 0;
- 
-+    trace_m25p80_transfer(s, s->state, s->len, s->needed_bytes, s->pos,
-+                          s->cur_addr, (uint8_t)tx);
-+
-     switch (s->state) {
- 
-     case STATE_PAGE_PROGRAM:
--        DB_PRINT_L(1, "page program cur_addr=%#" PRIx32 " data=%" PRIx8 "\n",
--                   s->cur_addr, (uint8_t)tx);
-+        trace_m25p80_page_program(s, s->cur_addr, (uint8_t)tx);
-         flash_write8(s, s->cur_addr, (uint8_t)tx);
-         s->cur_addr = (s->cur_addr + 1) & (s->size - 1);
-         break;
- 
-     case STATE_READ:
-         r = s->storage[s->cur_addr];
--        DB_PRINT_L(1, "READ 0x%" PRIx32 "=%" PRIx8 "\n", s->cur_addr,
--                   (uint8_t)r);
-+        trace_m25p80_read_byte(s, s->cur_addr, (uint8_t)r);
-         s->cur_addr = (s->cur_addr + 1) & (s->size - 1);
-         break;
- 
-@@ -1244,6 +1239,7 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint32_t tx)
-         }
- 
-         r = s->data[s->pos];
-+        trace_m25p80_read_data(s, s->pos, (uint8_t)r);
-         s->pos++;
-         if (s->pos == s->len) {
-             s->pos = 0;
-@@ -1281,7 +1277,7 @@ static void m25p80_realize(SSISlave *ss, Error **errp)
-             return;
-         }
- 
--        DB_PRINT_L(0, "Binding to IF_MTD drive\n");
-+        trace_m25p80_binding(s);
-         s->storage = blk_blockalign(s->blk, s->size);
- 
-         if (blk_pread(s->blk, 0, s->storage, s->size) != s->size) {
-@@ -1289,7 +1285,7 @@ static void m25p80_realize(SSISlave *ss, Error **errp)
-             return;
-         }
-     } else {
--        DB_PRINT_L(0, "No BDRV - binding to RAM\n");
-+        trace_m25p80_binding_no_bdrv(s);
-         s->storage = blk_blockalign(NULL, s->size);
-         memset(s->storage, 0xFF, s->size);
-     }
-diff --git a/hw/block/trace-events b/hw/block/trace-events
-index c03e80c2c9..f78939fa9d 100644
---- a/hw/block/trace-events
-+++ b/hw/block/trace-events
-@@ -134,3 +134,19 @@ xen_block_blockdev_add(char *str) "%s"
- xen_block_blockdev_del(const char *node_name) "%s"
- xen_block_device_create(unsigned int number) "%u"
- xen_block_device_destroy(unsigned int number) "%u"
-+
-+# m25p80.c
-+m25p80_flash_erase(void *s, int offset, uint32_t len) "[%p] offset = 0x%"PRIx32", len = %u"
-+m25p80_programming_zero_to_one(void *s, uint32_t addr, uint8_t prev, uint8_t data) "[%p] programming zero to one! addr=0x%"PRIx32"  0x%"PRIx8" -> 0x%"PRIx8
-+m25p80_reset_done(void *s) "[%p] Reset done."
-+m25p80_command_decoded(void *s, uint32_t cmd) "[%p] new command:0x%"PRIx32
-+m25p80_complete_collecting(void *s, uint32_t cmd, int n, uint8_t ear, uint32_t cur_addr) "[%p] decode cmd: 0x%"PRIx32" len %d ear 0x%"PRIx8" addr 0x%"PRIx32
-+m25p80_populated_jedec(void *s) "[%p] populated jedec code"
-+m25p80_chip_erase(void *s) "[%p] chip erase"
-+m25p80_select(void *s, const char *what) "[%p] %sselect"
-+m25p80_page_program(void *s, uint32_t addr, uint8_t tx) "[%p] page program cur_addr=0x%"PRIx32" data=0x%"PRIx8
-+m25p80_transfer(void *s, uint8_t state, uint32_t len, uint8_t needed, uint32_t pos, uint32_t cur_addr, uint8_t t) "[%p] Transfer state 0x%"PRIx8" len 0x%"PRIx32" needed 0x%"PRIx8" pos 0x%"PRIx32" addr 0x%"PRIx32" tx 0x%"PRIx8
-+m25p80_read_byte(void *s, uint32_t addr, uint8_t v) "[%p] Read byte 0x%"PRIx32"=0x%"PRIx8
-+m25p80_read_data(void *s, uint32_t pos, uint8_t v) "[%p] Read data 0x%"PRIx32"=0x%"PRIx8
-+m25p80_binding(void *s) "[%p] Binding to IF_MTD drive"
-+m25p80_binding_no_bdrv(void *s) "[%p] No BDRV - binding to RAM"
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 23c8d2f062..0444570750 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -787,11 +787,11 @@ static int aspeed_smc_num_dummies(uint8_t command)
+     case FAST_READ:
+     case DOR:
+     case QOR:
++    case FAST_READ_4:
+     case DOR_4:
+     case QOR_4:
+         return 1;
+     case DIOR:
+-    case FAST_READ_4:
+     case DIOR_4:
+         return 2;
+     case QIOR:
 -- 
 2.17.1
 

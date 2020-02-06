@@ -1,75 +1,75 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1373721lfp;
-        Thu, 6 Feb 2020 04:24:30 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwvhyPWbTVcLaaxH55SIpStoTslVdW0Iq4p9MGJXAEgAiYHNN4jyyJ4q/4BW8EzlZ9OTT5I
-X-Received: by 2002:a37:b883:: with SMTP id i125mr2316464qkf.64.1580991870804;
-        Thu, 06 Feb 2020 04:24:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580991870; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1374298lfp;
+        Thu, 6 Feb 2020 04:25:12 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxUrxOv5s3KhNj49FvKeCO4WDLrDTT16xGrxswCCGoupn1WarRXGC4EJ+b79+UsfAGJS1Cz
+X-Received: by 2002:a05:620a:1289:: with SMTP id w9mr2227303qki.290.1580991912143;
+        Thu, 06 Feb 2020 04:25:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580991912; cv=none;
         d=google.com; s=arc-20160816;
-        b=mXJ8obcaZ0NU2adMMQGpcYvfCcz1Y2FcOrF8PBTg/obQDzXqkF3oNzETQJpvccRH2v
-         0RUGHEBi3JEvACz2PKarphdQBY9seTX5YAySMzRYwkorwx+JSKZBI34WEE05MNSFfVl3
-         13tzK6aXy8lIeE1vQ9WCJfIPIuRJel7eTedba1qFUO1kgioXoa4Nj7lIQAdlUKxdfWiZ
-         vRJKkOAkH1gjhzPHr8fFd8Ig/PDPCmig505WE1wp9+EO9DuCzRR9sUvqEP1ztaJYPIun
-         9ZW0gK5UGNd0Nzwa90zYFB8t3xr0sZ9vK7jyMeY5ldwaDqXAI/Uz/ThKnsbp+A/4FJgu
-         /UrA==
+        b=bu2zjV1uWsiyAnUxMp7o8fWAP6MFaS2+hYsLemqvvVCyuUe9qMtsGbCydxlPeOVqol
+         vVYYTFs6VWh1ZmGpmRAhTxnbDMJvrOqllmGhy2kqfWahDc78BgzJOVBrCRf5HzJO2oc6
+         rk1aJEhvq0Hm34qJfzIHGrp7/NBG76LiGBalkPimJiB7f5f3rF0/7lW7nGoxlzzvCEyR
+         B4ovA1ei+GGtxJfC4LRZ8y8JA6Va0x4loOS/FxT5AP7yBVHi7JxFc3bu1EbqYVrAgItQ
+         HQi0IbEpOCX4tNqBKceUCayF4f2tJORfK2amerJzay2A3tsnr9FDO+/MZqn/W+CRVDJM
+         JvyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:user-agent
          :references:message-id:in-reply-to:subject:to:from:date;
-        bh=1cua+EsoqXFGIxrbgIHXJi62xMvkrJx03spr156Xa/g=;
-        b=PS/Eu3z9geyAIU1C5l0vKr1HY/lWNQSV9uqZNk74Ykjy8Wqa/J0nFUIhW0NIWFvyUz
-         WWs4ggXmVGFp2ZitfeHwD6TEKfydqEIYQlD0cTd11xfhU6G1l9kQJVuqvzoDvUvPWTVH
-         Gy4Z+/ikIsv2aolsiCKcaYJvkr9W2b8j2Mve2EKQetzknslUTSRSZ9qzfKca6KZ70c6M
-         7iDhiFBeWHO5ZgaWzhUACNOMpqmbSD4F6WTAIMiUVYS0Pxq5Ke+ZThE1iWAG2vsM4suO
-         tjeM1Y9kaH1KLDRmNBx4SOMDh2TdJtIHy2Ko2eq1OICqsdm7+Bs4qea/hq0nhF80CUwM
-         /rtQ==
+        bh=c6JfjSFwx+I3bMNZPv0WNPSq7gttH/SDTxsN4Dp/hBQ=;
+        b=fIy40AV79Kh9nUfE8hFhDqAvtLE+kKyrKGzUVSyDOZQskloLJi9LRyYJ2ZAhSj+BDw
+         4OD3w/dfQ2/akNDPuWJ3+erC3gpKDgPYPvbxO4yp2OOwf0q8CCYbNo7CPQZ/CaIlxmeu
+         qzgf7BnzTgj7SmUONUTfC59motKbMZfCQicUjy120bohtWvtSXGLli/H+FAhblS4RhZu
+         WzDL4LLYS1ciXzMrNbjjd/Fu7ft1wVl/O8s9/PPGxPfXiv8NNS1Sif83PlDHLeBLsD5H
+         lomnqiJzCQIxLLukWT9MaKkejur9QEufIItVqwcwQC1FfiYaKkRpHF/KnMa+JWaEcPB5
+         1IRA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x23si1453871qkn.112.2020.02.06.04.24.30
+        by mx.google.com with ESMTPS id l26si1492353qkl.381.2020.02.06.04.25.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2020 04:24:30 -0800 (PST)
+        Thu, 06 Feb 2020 04:25:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37836 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37842 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izgCs-0003TF-95
-	for alex.bennee@linaro.org; Thu, 06 Feb 2020 07:24:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41413)
+	id 1izgDX-0004Iu-I8
+	for alex.bennee@linaro.org; Thu, 06 Feb 2020 07:25:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41887)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <balaton@eik.bme.hu>) id 1izgCm-0003T8-6m
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 07:24:25 -0500
+ (envelope-from <balaton@eik.bme.hu>) id 1izgDN-0004C3-DF
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 07:25:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <balaton@eik.bme.hu>) id 1izgCl-0000VI-3D
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 07:24:24 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:15551)
+ (envelope-from <balaton@eik.bme.hu>) id 1izgDM-0003m5-3Z
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 07:25:01 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:38401)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
- id 1izgCk-00007R-Sa; Thu, 06 Feb 2020 07:24:23 -0500
+ id 1izgDL-0003gI-OJ; Thu, 06 Feb 2020 07:25:00 -0500
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id 08B4D746383;
- Thu,  6 Feb 2020 13:24:20 +0100 (CET)
+ by localhost (Postfix) with SMTP id DDDD4747DFF;
+ Thu,  6 Feb 2020 13:24:58 +0100 (CET)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id D9C9074637F; Thu,  6 Feb 2020 13:24:19 +0100 (CET)
+ id B8317747DF7; Thu,  6 Feb 2020 13:24:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id D859274569F;
- Thu,  6 Feb 2020 13:24:19 +0100 (CET)
-Date: Thu, 6 Feb 2020 13:24:19 +0100 (CET)
+ by zero.eik.bme.hu (Postfix) with ESMTP id B6DB5747DFE;
+ Thu,  6 Feb 2020 13:24:58 +0100 (CET)
+Date: Thu, 6 Feb 2020 13:24:58 +0100 (CET)
 From: BALATON Zoltan <balaton@eik.bme.hu>
 To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v2 04/30] hw/arm/raspi: Extract the RAM size from the
- board revision
-In-Reply-To: <20200206011756.2413-5-f4bug@amsat.org>
-Message-ID: <alpine.BSF.2.22.395.2002061321480.71431@zero.eik.bme.hu>
+Subject: Re: [PATCH v2 07/30] hw/arm/raspi: Make machines children of abstract
+ RaspiMachineClass
+In-Reply-To: <20200206011756.2413-8-f4bug@amsat.org>
+Message-ID: <alpine.BSF.2.22.395.2002061324260.71431@zero.eik.bme.hu>
 References: <20200206011756.2413-1-f4bug@amsat.org>
- <20200206011756.2413-5-f4bug@amsat.org>
+ <20200206011756.2413-8-f4bug@amsat.org>
 User-Agent: Alpine 2.22 (BSF 395 2020-01-19)
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
- boundary="3866299591-125707739-1580991859=:71431"
+ boundary="3866299591-269300259-1580991898=:71431"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 2001:738:2001:2001::2001
@@ -84,95 +84,139 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org,
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wHfelO9O/Dqk
+X-TUID: Q8KHxC3iMSdM
 
   This message is in MIME format.  The first part should be readable text,
   while the remaining parts are likely unreadable without MIME-aware tools.
 
---3866299591-125707739-1580991859=:71431
+--3866299591-269300259-1580991898=:71431
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 
 On Thu, 6 Feb 2020, Philippe Mathieu-Daud=C3=A9 wrote:
-> The board revision encode the amount of RAM. Add a helper
-> to extract the RAM size, and use it.
-> Since the amount of RAM is fixed (it is impossible to physically
-> modify to have more or less RAM), do not allow sizes different
-> than the one anounced by the manufacturer.
->
-> Acked-by: Igor Mammedov <imammedo@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> Cc: Alistair Francis <alistair@alistair23.me>
->
-> hw/arm/raspi.c | 15 ++++++++++++---
-> 1 file changed, 12 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> index 13d41dfce6..2f5cd32c5e 100644
-> --- a/hw/arm/raspi.c
-> +++ b/hw/arm/raspi.c
-> @@ -13,6 +13,7 @@
->
-> #include "qemu/osdep.h"
-> #include "qemu/units.h"
-> +#include "qemu/cutils.h"
-> #include "qapi/error.h"
-> #include "cpu.h"
-> #include "hw/arm/bcm2836.h"
-> @@ -48,6 +49,12 @@ FIELD(REV_CODE, MANUFACTURER,      16, 4);
-> FIELD(REV_CODE, MEMORY_SIZE,       20, 3);
-> FIELD(REV_CODE, STYLE,             23, 1);
->
-> +static uint64_t board_ram_size(uint32_t board_rev)
-> +{
-> +    assert(FIELD_EX32(board_rev, REV_CODE, STYLE)); /* Only new style =
-*/
-> +    return 256 * MiB << FIELD_EX32(board_rev, REV_CODE, MEMORY_SIZE);
-> +}
-> +
-> static int board_processor_id(uint32_t board_rev)
-> {
->     assert(FIELD_EX32(board_rev, REV_CODE, STYLE)); /* Only new style *=
-/
-> @@ -190,15 +197,17 @@ static void raspi_init(MachineState *machine, uin=
-t32_t board_rev)
-> {
->     RasPiState *s =3D g_new0(RasPiState, 1);
->     int version =3D board_version(board_rev);
-> +    uint64_t ram_size =3D board_ram_size(board_rev);
->     uint32_t vcram_size;
->     DriveInfo *di;
->     BlockBackend *blk;
->     BusState *bus;
->     DeviceState *carddev;
->
-> -    if (machine->ram_size > 1 * GiB) {
-> -        error_report("Requested ram size is too large for this machine=
-: "
-> -                     "maximum is 1GB");
-> +    if (machine->ram_size !=3D ram_size) {
-> +        char *size_str =3D size_to_str(ram_size);
-> +        error_report("This machine can only be used with %s", size_str=
-);
+> QOM'ify RaspiMachineState. Now machines inherite of RaspiMachineClass.
 
-Reword error message so it says it has problem with memory as this is not=
-=20
-clear from the above and user getting it after a command line does not=20
-have context to tell what the printed number means.
+Typo: inherite -> inherit
 
 Regards,
 BALATON Zoltan
 
 
-> +        g_free(size_str);
->         exit(1);
->     }
 >
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+> hw/arm/raspi.c | 56 +++++++++++++++++++++++++++++++++++++++++++-------
+> 1 file changed, 49 insertions(+), 7 deletions(-)
 >
---3866299591-125707739-1580991859=:71431--
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index fab361939c..edf3e1c0d5 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -33,10 +33,28 @@
+>
+> #define MACH_TYPE_BCM2708   3138 /* Linux board IDs */
+>
+> -typedef struct RasPiState {
+> +typedef struct RaspiMachineState {
+> +    /*< private >*/
+> +    MachineState parent_obj;
+> +    /*< public >*/
+>     BCM283XState soc;
+>     MemoryRegion ram;
+> -} RasPiState;
+> +} RaspiMachineState;
+> +
+> +typedef struct RaspiMachineClass {
+> +    /*< private >*/
+> +    MachineClass parent_obj;
+> +    /*< public >*/
+> +} RaspiMachineClass;
+> +
+> +#define TYPE_RASPI_MACHINE       MACHINE_TYPE_NAME("raspi-common")
+> +#define RASPI_MACHINE(obj) \
+> +    OBJECT_CHECK(RaspiMachineState, (obj), TYPE_RASPI_MACHINE)
+> +
+> +#define RASPI_MACHINE_CLASS(klass) \
+> +     OBJECT_CLASS_CHECK(RaspiMachineClass, (klass), TYPE_RASPI_MACHINE=
+)
+> +#define RASPI_MACHINE_GET_CLASS(obj) \
+> +     OBJECT_GET_CLASS(RaspiMachineClass, (obj), TYPE_RASPI_MACHINE)
+>
+> /*
+>  * Board revision codes:
+> @@ -210,7 +228,7 @@ static void setup_boot(MachineState *machine, int v=
+ersion, size_t ram_size)
+>
+> static void raspi_init(MachineState *machine, uint32_t board_rev)
+> {
+> -    RasPiState *s =3D g_new0(RasPiState, 1);
+> +    RaspiMachineState *s =3D RASPI_MACHINE(machine);
+>     int version =3D board_version(board_rev);
+>     uint64_t ram_size =3D board_ram_size(board_rev);
+>     uint32_t vcram_size;
+> @@ -263,8 +281,10 @@ static void raspi2_init(MachineState *machine)
+>     raspi_init(machine, 0xa21041);
+> }
+>
+> -static void raspi2_machine_init(MachineClass *mc)
+> +static void raspi2_machine_class_init(ObjectClass *oc, void *data)
+> {
+> +    MachineClass *mc =3D MACHINE_CLASS(oc);
+> +
+>     mc->desc =3D "Raspberry Pi 2B";
+>     mc->init =3D raspi2_init;
+>     mc->block_default_type =3D IF_SD;
+> @@ -277,7 +297,6 @@ static void raspi2_machine_init(MachineClass *mc)
+>     mc->default_ram_size =3D 1 * GiB;
+>     mc->ignore_memory_transaction_failures =3D true;
+> };
+> -DEFINE_MACHINE("raspi2", raspi2_machine_init)
+>
+> #ifdef TARGET_AARCH64
+> static void raspi3_init(MachineState *machine)
+> @@ -285,8 +304,10 @@ static void raspi3_init(MachineState *machine)
+>     raspi_init(machine, 0xa02082);
+> }
+>
+> -static void raspi3_machine_init(MachineClass *mc)
+> +static void raspi3_machine_class_init(ObjectClass *oc, void *data)
+> {
+> +    MachineClass *mc =3D MACHINE_CLASS(oc);
+> +
+>     mc->desc =3D "Raspberry Pi 3B";
+>     mc->init =3D raspi3_init;
+>     mc->block_default_type =3D IF_SD;
+> @@ -298,5 +319,26 @@ static void raspi3_machine_init(MachineClass *mc)
+>     mc->default_cpus =3D BCM283X_NCPUS;
+>     mc->default_ram_size =3D 1 * GiB;
+> }
+> -DEFINE_MACHINE("raspi3", raspi3_machine_init)
+> #endif
+> +
+> +static const TypeInfo raspi_machine_types[] =3D {
+> +    {
+> +        .name           =3D MACHINE_TYPE_NAME("raspi2"),
+> +        .parent         =3D TYPE_RASPI_MACHINE,
+> +        .class_init     =3D raspi2_machine_class_init,
+> +#ifdef TARGET_AARCH64
+> +    }, {
+> +        .name           =3D MACHINE_TYPE_NAME("raspi3"),
+> +        .parent         =3D TYPE_RASPI_MACHINE,
+> +        .class_init     =3D raspi3_machine_class_init,
+> +#endif
+> +    }, {
+> +        .name           =3D TYPE_RASPI_MACHINE,
+> +        .parent         =3D TYPE_MACHINE,
+> +        .instance_size  =3D sizeof(RaspiMachineState),
+> +        .class_size     =3D sizeof(RaspiMachineClass),
+> +        .abstract       =3D true,
+> +    }
+> +};
+> +
+> +DEFINE_TYPES(raspi_machine_types)
+>
+--3866299591-269300259-1580991898=:71431--

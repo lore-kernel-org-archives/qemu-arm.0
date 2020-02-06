@@ -1,86 +1,87 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1401007lfp;
-        Thu, 6 Feb 2020 04:53:43 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxUzKhUJIXEmClOH6B1PO09in9OUg3jfpcnzeSaKi1311T2shetrQE7bPEunxsS8srBynID
-X-Received: by 2002:a0c:f513:: with SMTP id j19mr2144234qvm.206.1580993623224;
-        Thu, 06 Feb 2020 04:53:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580993623; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1401188lfp;
+        Thu, 6 Feb 2020 04:53:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw8FqhratDawOjeZtpj1V4TRehR/u6WazgxdclvqRD4y5s3JjdSpzQw1Hld0dN96If2LGAS
+X-Received: by 2002:a37:a915:: with SMTP id s21mr2339675qke.112.1580993636101;
+        Thu, 06 Feb 2020 04:53:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580993636; cv=none;
         d=google.com; s=arc-20160816;
-        b=ns+Ba1hskJXkj2UZzBRZRZdcxt7vHCFXcl+IOjQ4bzujHmYxAAFt+O2CEEB9od0DAj
-         d2Vvi93DUBTkvKwEXDXarnWZ8Ie1EoPDikEK/dsoojM0cfR9CrNRdWmFgVLFtMDkUGmV
-         v9LMrUAOnJmlShDaYu5d4i30BuY+NNS6W6B6pwmVfgUibDV27f5FKEMlfVtQT01LWnT6
-         GkfBv9hKbtfMWSgN+K2w4UxFeV2eOAD/px9n5Fri2qfeXoUcfN0EE9ZqOwcUJPesPTAD
-         ExcSRq+2LDKJS5oSIpp7OSS5ZtxqZfJttEmVrGw3m2AqqPKHsCw5qufXA8qTQIJSzIxJ
-         bY/w==
+        b=C/9M35UBZwQK4+RvI7+PVCoeod87lMJiSMMHB76208JUPcaDTqaL3nzKW4Dd87uHP5
+         3lE4gpD5r9Z5CYoTOtsWubcghSjHxJ/pCJW0rJLgw4f59L8TkYhGGQzMEREb68AS6efQ
+         HN39zsRSXMgX0uShk22oYZlfc5AAjR4C9o7+vsRiyWrJUUXrVlbBdqdBPywqi/3qs312
+         X5XWr1HVrIgmsulSmqHiHdsz/pbZzswvTIIXHsuenpYYK4+NmlRZNeWUh67sg8ortVsM
+         /N6Jlw4VDBu2stG8AvU+V04MUAmgLCbqOTTQvrEluKDrW151LdLzQFPrB7tZgcc+AqJO
+         sHAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=Iav+ozSGlJZyt5njPyWljCZcPOCkQqqHlnoTko2GfJc=;
-        b=V+bLSIEj5b1ljHjipsttU/rcrHyskYZKZHdffipaUIbGASvrHC5WUaQz07eJ2/lYCz
-         KUAIgkhFoZ8rKBqaGlXDY77vmVF2kFTqp9Moj7FcyebNyQ1LZplS25lI9rKiMjAaCDlF
-         /m2OP3qmIxWad21xQhqlKDMoEMhqEyi1duz9bL8xb3g4Fo//gAb9vQFUlSejy/KUljkc
-         CDGSAxlwL96YhivNRyCfeliNuKoEQvjRl35h183SL6U/9XXdrcq+RcTJTIrdjVXmYKAS
-         vDaOcE0Cpnm0gFwq+WSEOWqLWENzEjcuawI+gqkA6PHQjo7AAghjZTO2lsrSss2EBm5V
-         X/lg==
+        bh=PBwdPog+JQTRwsnKtIyIG1z1AantiTE1mm9RcOUmaiA=;
+        b=n40ekQ4DyJ3Kh4MdKEoTa5L37Lc7iupeCCwaaNgfCU1BJ0cuXg7k3TISklAPYKC3LF
+         o126DlDfs0FeSKQ3xRJnWgPnFQUp2w2sVlhsPZrhp7kw9ytxUeoL8mfTJheyzqsV80rB
+         c6t9TueHveJRzLdaZxNuayUzOgCdl8Pi3mE+Y4W5yQNeeDQzxdF59bBWmUP2TtTXouFj
+         z4ZV7oE5sxoiVFF12dUeXkzmI22/XndN+VqhCJ4++7OiIcoTvQ+Q08rxiDmWy8cJ1wpb
+         puUFQEx3+9LQjiqhGPKUU9BViVVjKWGRXq/cyKIE/aZIqHn61/ekIZ7FyPSF7TS2V7An
+         Y8Fw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p3si1453779qtq.169.2020.02.06.04.53.43
+        by mx.google.com with ESMTPS id x4si1402643qti.178.2020.02.06.04.53.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2020 04:53:43 -0800 (PST)
+        Thu, 06 Feb 2020 04:53:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38212 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38220 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izgf8-0007bP-L5
-	for alex.bennee@linaro.org; Thu, 06 Feb 2020 07:53:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56560)
+	id 1izgfL-0008CR-GX
+	for alex.bennee@linaro.org; Thu, 06 Feb 2020 07:53:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56803)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1izgcd-0001Gk-ME
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 07:51:08 -0500
+ (envelope-from <laurent@vivier.eu>) id 1izgcl-0001a8-R1
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 07:51:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1izgcc-0006Hb-FR
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 07:51:07 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:46301)
+ (envelope-from <laurent@vivier.eu>) id 1izgck-0006eX-K0
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 07:51:15 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:44683)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1izgcc-0006CW-1X; Thu, 06 Feb 2020 07:51:06 -0500
+ id 1izgck-0006Yv-9s; Thu, 06 Feb 2020 07:51:14 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MA7X0-1ipGDL3NvO-00BbCn; Thu, 06 Feb 2020 13:50:50 +0100
+ id 1MS43X-1j7Cbb1EHT-00TXYy; Thu, 06 Feb 2020 13:50:48 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Subject: [PULL 10/12] hw/pci/pci_bridge: Fix typo in comment
-Date: Thu,  6 Feb 2020 13:50:25 +0100
-Message-Id: <20200206125027.1926263-11-laurent@vivier.eu>
+Subject: [PULL 09/12] qemu-img: Place the '-i aio' option in alphabetical order
+Date: Thu,  6 Feb 2020 13:50:24 +0100
+Message-Id: <20200206125027.1926263-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200206125027.1926263-1-laurent@vivier.eu>
 References: <20200206125027.1926263-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:dvrfDhR6DTOhirCpblgtkyZOsXurCpz2lUT8+BgCe+AC302dNr2
- TyTDGbePLn0u7x5scTLfwu/wap6ChKmf2n0vqw96mki9X/o3feJJ5Y0l1hDbqKRO05j85by
- 1g4poy999FyyG/2D42fHg2IJ4lb30AIljABO/cgq5EUyRJ/P6/bcboeX/ut9XT55vJqosWs
- BMcJrxnflp0kyKKMrHv4w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:0amfNGgEKrE=:JOnQLYNPdK2mG5x28jln3w
- VsLmBCqKzffy5h7CkXAOj0ZVUC0naVXBxP7yGWak5OrUYvIEdrM5oUDW2M9hIac26F+4D/TaB
- bsI29F3s9gmitrELcHjKTausehV8xLpPfUBIiZRMv1yKT7KaS7PCP9q6WTXbWNC3Je+jgjrMy
- 4tLcomWUZCi/urFYVwcQy0xK7aNwX8rdaeyaPjFP/3VciYglnLOwo1++I5f/4aRZ1RIl+nmnT
- U8P200T0BGyC70gj2Ea9/13sBs5H5YRUs7FYKASoyyLsRif1QK7QjJwKTl3Gu56O1uSFuUBAQ
- afNOc3Wyn9HlcoqO7l6j8swpqa6aaonT97EVGFcCFmHklraML/IYK3xg54LznX2Z26FC/OEv+
- oSiS4xDb7Qf1zWkJst4HL9cOKI9QBNRLzj3KyvEYIRZGBkxqGtPg4R1kzO9r31IuOKr12mfyY
- KN+6HhgKc2S4VNOMxqOOKYmMMcX3pJfNEaEwKA6Sga7TBeUMQYOvbOL+dmpFQ4FYTvfdCW0/1
- VrV8unbKGzrIfInCnI0pO65gXprSSnv/4+AgM7xx5B4/cuEtgY5JGoskCkhrpBEBLb1wZUfvw
- xhTAlvEVl+44/l9B+sejwUAVZiEgl0ipsbHmpXsUuqrpFOgLlPhzRT2GdWY7zZnxwBnOP53Kw
- Iq/WBBFf+4/gvZosN5RoYEWF2lmblmlTAPSAydV9iL9u92LnedX9QP76WrMZJoDZiST2ymR8m
- ruskjq0RgzpnhV62v9eBaBjE2OMfs0T+p9Y+aKsvo/KqMC7sJdYFYPaGrojK6PHePOzgQJduS
- l1BY0WsscTAUMQKvx2tHerAxLaJpUBcP6IPaA/ATKEHfhoYkOfzQgWKvmYbh3MXXLvCzFzR
+X-Provags-ID: V03:K1:q5OgFELXy/F3+zstPUpHYoG35Pm5W5bnOHshrxWXGZ4a2RaL3pC
+ NPW7PkhCN8+/WkTOaXrMprme3CT2UsKRhPdf/WuINSmVq9DBvPHalTefsE1uVfJ4ByiN4fI
+ r4FAMtCKYhFM7AE1jyiVs+4TKcpaRS3oM1daT2Z2kS7fBVyw+3/ZF1ZHV31+DnuL8wb/PO8
+ /XdlYmcKygbPlS3si7Pvw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:k3aSZZVnYeE=:YBruHn1BiN+LGwbdJjWmCn
+ 4yKQka6fPnW1B9nIIYUdxfIH1JWilidqGsbDInT9rcGF7gqMX8bkpZXbYWGDBs8RngvPq6IqK
+ E0yJFb+UKBWtZg3Y7CVOoYXGjq0P5/1w/NwMrTpwDy6xQL3lOEv+DXQNsgC2lPvGY/+NXWNfI
+ 2Vrxdkq0l0ySp52HYu8RtJku04th7rk2cJwC84dHWAQOrqqWkVggRUccHoPqGwMc5GjjLtfDe
+ QvC21FkTGEAUdqyHdy1TlVrM3C6wm0HjxkSwwqRIlMcDxJJZ+5yAiyKYxbIATTlyyqXXMM+82
+ rA6zcDAHQ2FZP50MzhGisq59uhbYqBKQP/bDoTXSjVR0DONeqWZXEWWFbF8pRdH2NlJ2bYv2P
+ HIEtGPRwpVZQrMcchdY6g55/bjzfejyXWDh91KGb0yw3PZF1nUSvuXaZ8twhcvXo7xmgUIan3
+ cGK/h1vAhoNSYCOvQBylA4FeH5WJintnjdb6ZZHDWb1qyPnpx2msg9gTqrMsUiwO8xpnd/tc6
+ O4w0VEMy/kszb0qdPls2IFc//UizX4ryzMSnC3DSyhF4EFFVPWCxZDGqi6s7/H2JSiI3A6crU
+ KmKlWsT+byuSwqBCwEWgNobR97LqUXtqAL0c1cEaBIa6OJYuXrpGuBQej1RcISd9yk2Ox01O0
+ ec/eAfpo2oxHVBv4B9/RQQ4S9kz6HEkYzHJwOnf48Bd7i1XQoELV5vP51p9+VkXReYFDLLQQC
+ syLLXo9Ic37uSExoxAYZaeYBAjjSClwwqRpqPKB37zweTrDM+vQeDudJ8zOjUi+8Ahy0Kc9IW
+ WkNT477Dyul2y3e3cM4Neaq7/FsV0fRk7ofx7n+Wo5Zq7ZABg6z2GgOESyzdPR/Ns8OuXKB
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
+X-Received-From: 212.227.126.134
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -92,44 +93,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Markus Armbruster <armbru@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Max Reitz <mreitz@redhat.com>,
- qemu-trivial@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- qemu-arm@nongnu.org, Julia Suvorova <jusual@redhat.com>,
- Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Richard Henderson <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ Eric Blake <eblake@redhat.com>, qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, Joel Stanley <joel@jms.id.au>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Julia Suvorova <jusual@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Laurent Vivier <laurent@vivier.eu>,
+ Max Reitz <mreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N2lItKE3CJfx
+X-TUID: /1OuxdA+fLvV
 
 From: Julia Suvorova <jusual@redhat.com>
 
+The '-i AIO' option was accidentally placed after '-n' and '-t'. Move it
+after '--flush-interval'.
+
 Signed-off-by: Julia Suvorova <jusual@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-Id: <20200205185123.210209-1-jusual@redhat.com>
+Message-Id: <20200205163008.204493-1-jusual@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- include/hw/pci/pci_bridge.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ docs/interop/qemu-img.rst | 8 ++++----
+ qemu-img-cmds.hx          | 4 ++--
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/include/hw/pci/pci_bridge.h b/include/hw/pci/pci_bridge.h
-index ba488818d292..99c674e94954 100644
---- a/include/hw/pci/pci_bridge.h
-+++ b/include/hw/pci/pci_bridge.h
-@@ -108,7 +108,7 @@ void pci_bridge_dev_unplug_request_cb(HotplugHandler *hotplug_dev,
+diff --git a/docs/interop/qemu-img.rst b/docs/interop/qemu-img.rst
+index fa27e5c7b453..42e4451db4a2 100644
+--- a/docs/interop/qemu-img.rst
++++ b/docs/interop/qemu-img.rst
+@@ -247,7 +247,7 @@ Command description:
+   Amends the image format specific *OPTIONS* for the image file
+   *FILENAME*. Not all file formats support this operation.
  
- /*
-  * before qdev initialization(qdev_init()), this function sets bus_name and
-- * map_irq callback which are necessry for pci_bridge_initfn() to
-+ * map_irq callback which are necessary for pci_bridge_initfn() to
-  * initialize bus.
-  */
- void pci_bridge_map_irq(PCIBridge *br, const char* bus_name,
+-.. option:: bench [-c COUNT] [-d DEPTH] [-f FMT] [--flush-interval=FLUSH_INTERVAL] [-n] [-i AIO] [--no-drain] [-o OFFSET] [--pattern=PATTERN] [-q] [-s BUFFER_SIZE] [-S STEP_SIZE] [-t CACHE] [-w] [-U] FILENAME
++.. option:: bench [-c COUNT] [-d DEPTH] [-f FMT] [--flush-interval=FLUSH_INTERVAL] [-i AIO] [-n] [--no-drain] [-o OFFSET] [--pattern=PATTERN] [-q] [-s BUFFER_SIZE] [-S STEP_SIZE] [-t CACHE] [-w] [-U] FILENAME
+ 
+   Run a simple sequential I/O benchmark on the specified image. If ``-w`` is
+   specified, a write test is performed, otherwise a read test is performed.
+@@ -264,13 +264,13 @@ Command description:
+   ``--no-drain`` is specified, a flush is issued without draining the request
+   queue first.
+ 
++  if ``-i`` is specified, *AIO* option can be used to specify different
++  AIO backends: ``threads``, ``native`` or ``io_uring``.
++
+   If ``-n`` is specified, the native AIO backend is used if possible. On
+   Linux, this option only works if ``-t none`` or ``-t directsync`` is
+   specified as well.
+ 
+-  if ``-i`` is specified, *AIO* option can be used to specify different
+-  AIO backends: ``threads``, ``native`` or ``io_uring``.
+-
+   For write tests, by default a buffer filled with zeros is written. This can be
+   overridden with a pattern byte specified by *PATTERN*.
+ 
+diff --git a/qemu-img-cmds.hx b/qemu-img-cmds.hx
+index 3fd836ca9090..d7fbc6b1f483 100644
+--- a/qemu-img-cmds.hx
++++ b/qemu-img-cmds.hx
+@@ -16,9 +16,9 @@ SRST
+ ERST
+ 
+ DEF("bench", img_bench,
+-    "bench [-c count] [-d depth] [-f fmt] [--flush-interval=flush_interval] [-n] [--no-drain] [-o offset] [--pattern=pattern] [-q] [-s buffer_size] [-S step_size] [-t cache] [-i aio] [-w] [-U] filename")
++    "bench [-c count] [-d depth] [-f fmt] [--flush-interval=flush_interval] [-i aio] [-n] [--no-drain] [-o offset] [--pattern=pattern] [-q] [-s buffer_size] [-S step_size] [-t cache] [-w] [-U] filename")
+ SRST
+-.. option:: bench [-c COUNT] [-d DEPTH] [-f FMT] [--flush-interval=FLUSH_INTERVAL] [-n] [--no-drain] [-o OFFSET] [--pattern=PATTERN] [-q] [-s BUFFER_SIZE] [-S STEP_SIZE] [-t CACHE] [-i AIO] [-w] [-U] FILENAME
++.. option:: bench [-c COUNT] [-d DEPTH] [-f FMT] [--flush-interval=FLUSH_INTERVAL] [-i AIO] [-n] [--no-drain] [-o OFFSET] [--pattern=PATTERN] [-q] [-s BUFFER_SIZE] [-S STEP_SIZE] [-t CACHE] [-w] [-U] FILENAME
+ ERST
+ DEF("check", img_check,
+     "check [--object objectdef] [--image-opts] [-q] [-f fmt] [--output=ofmt] [-r [leaks | all]] [-T src_cache] [-U] filename")
 -- 
 2.24.1
 

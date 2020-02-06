@@ -1,533 +1,221 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1562510lfp;
-        Thu, 6 Feb 2020 07:12:36 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzHCFUrGLRwU5+s7xD7gC9KNPcvdJst29TSMtHQayI/4QKmYJU+IbjAYrA23e/5Lk2IEkf+
-X-Received: by 2002:aca:1005:: with SMTP id 5mr7427512oiq.16.1581001956412;
-        Thu, 06 Feb 2020 07:12:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581001956; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1624517lfp;
+        Thu, 6 Feb 2020 08:06:45 -0800 (PST)
+X-Google-Smtp-Source: APXvYqytNvxo+iIYGguAVKhWSpfNoY22oXV8SaEU3VqFoYFoWXN/Sl8+SnXYTwQAGM6y7r9iyoD+
+X-Received: by 2002:a05:620a:9d9:: with SMTP id y25mr3171989qky.41.1581005205257;
+        Thu, 06 Feb 2020 08:06:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581005205; cv=none;
         d=google.com; s=arc-20160816;
-        b=S3eLwckX3K0WMEYroALCHaT7iQzj0Imv6d1FBrFe3mgHYdZxDndpa3RZNth0lJGN8N
-         tqDW2C/2R8rBJiD6ANlJ9zDcfG64fQIXNjau9hwn387gf93vhTFmccnGJ5f6k/UhbRjS
-         4gDUPkoGHsBaHmEVB9oGJQUJBIsOHbwNN8iF/WO/jpypAFzfWE8GPvZksReTPNSm1njM
-         ibqBsii4LwpaykUdL0vdnQ9Fk1Uqug16QIIoNh81F6NX2uz72Rg9SvpNwc+kUyuqnQDR
-         fpog4AZCW9KsFx9rBJC9bJ5J53XtEAEdHQmB8tIwkSUj4doaJS1zjhu134t7WE0MYggQ
-         mjpw==
+        b=VYRZ0CJm4DsVzNzgdyi7BjRDKQXgTvlpZTRaMQmZ3gSJ/9WQy2Dy9WdPHdvX8jPN/8
+         pEtEa/UGSRP6y9RtJK6SAzSJud/w4NOjPOVd/GTBkZ7i2wBa/wc1Qv+tppWf0mnKFFmk
+         ilVgjNFQv8XUsvGtmKLohMwb60Wj+TQjebPOPMf446SBUk62IeL0sxPck96s5HG1jUot
+         Fm928MtjcOv3GldQi/ZbT6+j+cJvB2EI4CW/i7DDV2BobBq8+HmQtn72DlirgwciPvpl
+         JhTR6fh3pMB/bw1W+MXOTWZE+UCVJ6awXIFxuXYSdqXffOR+oeJWDglgpamedWJWdLwx
+         0pGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=Nvv9+hM0XfL7M+YB0BsLxSotvXi70woYVTLBoIrz94U=;
-        b=el+eQFdgAJjbuUFHtRe/6zZ0gE0JnTIPRZX7hy96BBWR0uYwO/djPOIRWAVWCvRad2
-         D1HwveHDYIyk0bCwAd9EgW7jdQAbkRq+tyMXcu8HeqBOxHcxSstEcCdJyLYayeZAlHvS
-         zs5eS8zlysbyyzLRAZKaecPI+oNaybfS1ZYqjOk45RMt79KaAmxUNYokH2SjGrifNrnu
-         TEWSNEWSskOwE0gUZNoLUOhlLo8HLuc5vr1xqIHnzazWh6ZEYBKzs8U72dU3y8Lx5Cs6
-         mcQFrb4E3nxKsg03r+cOx+I4/tR13p1oJJcyRWJsTnynHeoxZyj/eXRwB3Dg5eEWwd7G
-         tJRQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=f5gxHJorGkNvYfdDWlcoZ0y2MnMJCHX/bGzx9gddK4c=;
+        b=GC1ZvTlOnLGikpvfxEqOtOjAnBrputr0ysxmhxZy2fGIZj8Ul7AGQwVqEh6MVKQgfU
+         t+Lhok4NH9fAikdbyzb7RPyGTLFXcSQGzxG5Y3ZgsObjKdU4oUP16uJazdJyDo96USfg
+         OwphTlH5zX6Kc3NtNrIX1tp64Am534Jj+mn8vDUxnC76FkBDYa/YyEpNMm0Bl5JKzRX9
+         gwoy6p5EihRJwxYgOMEGuXhq42VAgCtVl21O4ykfjm3AwiCXyFh1LT4BbpnFIBLcB48+
+         HcxC8vPQleHejp2eYAqmZ1uNgcuGBbH8IpBNYdkxTevuNlDNi3DWvfzoVdg+A3vze3ka
+         BSew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id c144si2381151oig.263.2020.02.06.07.12.36;
-        Thu, 06 Feb 2020 07:12:36 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZUXEhX9a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c9si1721480qth.190.2020.02.06.08.06.45
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 06 Feb 2020 08:06:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727570AbgBFPMf (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 6 Feb 2020 10:12:35 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:46572 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1727473AbgBFPMf (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 6 Feb 2020 10:12:35 -0500
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
-        by Forcepoint Email with ESMTP id 30C342B1006464400976;
-        Thu,  6 Feb 2020 23:12:27 +0800 (CST)
-Received: from [127.0.0.1] (10.173.222.27) by DGGEMS414-HUB.china.huawei.com
- (10.3.19.214) with Microsoft SMTP Server id 14.3.439.0; Thu, 6 Feb 2020
- 23:12:18 +0800
-Subject: Re: [kvm-unit-tests PATCH v3 05/14] arm/arm64: ITS: Introspection
- tests
-To:     Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
-        <maz@kernel.org>, <kvmarm@lists.cs.columbia.edu>,
-        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>
-CC:     <drjones@redhat.com>, <andre.przywara@arm.com>,
-        <peter.maydell@linaro.org>, <alexandru.elisei@arm.com>,
-        <thuth@redhat.com>
-References: <20200128103459.19413-1-eric.auger@redhat.com>
- <20200128103459.19413-6-eric.auger@redhat.com>
-From:   Zenghui Yu <yuzenghui@huawei.com>
-Message-ID: <a5f8d1dc-fa1c-c5e2-e449-afac92840563@huawei.com>
-Date:   Thu, 6 Feb 2020 23:12:16 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZUXEhX9a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41680 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1izjfw-0002ue-NJ
+	for alex.bennee@linaro.org; Thu, 06 Feb 2020 11:06:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35309)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <imammedo@redhat.com>) id 1izjfm-0002qR-PQ
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 11:06:36 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <imammedo@redhat.com>) id 1izjfk-0001MH-Va
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 11:06:34 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:24679
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1izjfk-0001IQ-Po
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 11:06:32 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581005192;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=f5gxHJorGkNvYfdDWlcoZ0y2MnMJCHX/bGzx9gddK4c=;
+ b=ZUXEhX9adZy+TP+yXcUp7nvgmXLNvPVllb9Yn7sUQd9x4a0nvBLwqO68irhNUxGOzdkMk7
+ Ue7AXnx/ICbdknebWhENXkNeWA13rzNWeZD3Wuiw9gmrDTWGYncImq5JVESfYqEn9Y7Epi
+ MighpB+WzbHFafi6qKW1KzdTBwuk04k=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-416-w6T5HID3MNaE0NZcx9Xttg-1; Thu, 06 Feb 2020 11:06:15 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4DF898010F8;
+ Thu,  6 Feb 2020 16:06:13 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E329E60BEC;
+ Thu,  6 Feb 2020 16:06:05 +0000 (UTC)
+Date: Thu, 6 Feb 2020 17:06:04 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH v2 2/7] hw/acpi/nvdimm: Fix for NVDIMM incorrect DSM
+ output buffer length
+Message-ID: <20200206170604.12899caf@redhat.com>
+In-Reply-To: <20200117174522.22044-3-shameerali.kolothum.thodi@huawei.com>
+References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
+ <20200117174522.22044-3-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200128103459.19413-6-eric.auger@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: w6T5HID3MNaE0NZcx9Xttg-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.173.222.27]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: WhzLEcmn8VdW
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, mst@redhat.com,
+ shannon.zhaosl@gmail.com, qemu-devel@nongnu.org, xuwei5@hisilicon.com,
+ linuxarm@huawei.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
+ lersek@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1yFLJxvURao/
 
-Hi Eric,
+On Fri, 17 Jan 2020 17:45:17 +0000
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-On 2020/1/28 18:34, Eric Auger wrote:
-> Detect the presence of an ITS as part of the GICv3 init
-> routine, initialize its base address and read few registers
-> the IIDR, the TYPER to store its dimensioning parameters.
-> Also parse the BASER registers.
+> As per ACPI spec 6.3, Table 19-419 Object Conversion Rules, if
+> the Buffer Field <= to the size of an Integer (in bits), it will
+> be treated as an integer. Moreover, the integer size depends on
+> DSDT tables revision number. If revision number is < 2, integer
+> size is 32 bits, otherwise it is 64 bits. Current NVDIMM common
+> DSM aml code (NCAL) uses CreateField() for creating DSM output
+> buffer. This creates an issue in arm/virt platform where DSDT
+> revision number is 2 and results in DSM buffer with a wrong
+> size(8 bytes) gets returned when actual length is < 8 bytes.
+> This causes guest kernel to report,
 > 
-> This is our first ITS test, belonging to a new "its" group.
+> "nfit ACPI0012:00: found a zero length table '0' parsing nfit"
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> In order to fix this, aml code is now modified such that it builds
+> the DSM output buffer in a byte by byte fashion when length is
+> smaller than Integer size.
+> 
+> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+> Please find the previous discussion on this here,
+> https://patchwork.kernel.org/cover/11174959/
 > 
 > ---
+>  hw/acpi/nvdimm.c                            | 36 +++++++++++++++++++--
+>  tests/qtest/bios-tables-test-allowed-diff.h |  2 ++
+>  2 files changed, 35 insertions(+), 3 deletions(-)
 > 
-> v2 -> v3:
-> - updated dates and changed author
-> - squash "arm/arm64: ITS: Test BASER" into this patch but
->    removes setup_baser which will be introduced later.
-> - only compile on aarch64
-> - restrict the new test to aarch64
-> 
-> v1 -> v2:
-> - clean GITS_TYPER macros and unused fields in typer struct
-> - remove memory attribute related macros
-> - remove everything related to memory attributes
-> - s/dev_baser/coll_baser/ in report_info
-> - add extra line
-> - removed index filed in its_baser
-> ---
->   arm/Makefile.arm64         |   1 +
->   arm/gic.c                  |  49 ++++++++++++++++++
->   arm/unittests.cfg          |   7 +++
->   lib/arm/asm/gic-v3-its.h   | 103 +++++++++++++++++++++++++++++++++++++
->   lib/arm/gic-v3-its.c       |  88 +++++++++++++++++++++++++++++++
->   lib/arm/gic.c              |  30 +++++++++--
->   lib/arm64/asm/gic-v3-its.h |   1 +
->   7 files changed, 274 insertions(+), 5 deletions(-)
->   create mode 100644 lib/arm/asm/gic-v3-its.h
->   create mode 100644 lib/arm/gic-v3-its.c
->   create mode 100644 lib/arm64/asm/gic-v3-its.h
-> 
-> diff --git a/arm/Makefile.arm64 b/arm/Makefile.arm64
-> index 6d3dc2c..2571ffb 100644
-> --- a/arm/Makefile.arm64
-> +++ b/arm/Makefile.arm64
-> @@ -19,6 +19,7 @@ endef
->   cstart.o = $(TEST_DIR)/cstart64.o
->   cflatobjs += lib/arm64/processor.o
->   cflatobjs += lib/arm64/spinlock.o
-> +cflatobjs += lib/arm/gic-v3-its.o
->   
->   OBJDIRS += lib/arm64
->   
-> diff --git a/arm/gic.c b/arm/gic.c
-> index abf08c7..4d7dd03 100644
-> --- a/arm/gic.c
-> +++ b/arm/gic.c
-> @@ -16,6 +16,7 @@
->   #include <asm/processor.h>
->   #include <asm/delay.h>
->   #include <asm/gic.h>
-> +#include <asm/gic-v3-its.h>
->   #include <asm/smp.h>
->   #include <asm/barrier.h>
->   #include <asm/io.h>
-> @@ -518,6 +519,50 @@ static void gic_test_mmio(void)
->   		test_targets(nr_irqs);
->   }
->   
-> +#if defined(__arm__)
+> diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
+> index 9fdad6dc3f..5e7b8318d0 100644
+> --- a/hw/acpi/nvdimm.c
+> +++ b/hw/acpi/nvdimm.c
+> @@ -964,6 +964,7 @@ static void nvdimm_build_common_dsm(Aml *dev)
+>      Aml *method, *ifctx, *function, *handle, *uuid, *dsm_mem, *elsectx2;
+>      Aml *elsectx, *unsupport, *unpatched, *expected_uuid, *uuid_invalid;
+>      Aml *pckg, *pckg_index, *pckg_buf, *field, *dsm_out_buf, *dsm_out_buf_size;
+> +    Aml *whilectx, *offset;
+>      uint8_t byte_list[1];
+>  
+>      method = aml_method(NVDIMM_COMMON_DSM, 5, AML_SERIALIZED);
+> @@ -1117,13 +1118,42 @@ static void nvdimm_build_common_dsm(Aml *dev)
+>      /* RLEN is not included in the payload returned to guest. */
+>      aml_append(method, aml_subtract(aml_name(NVDIMM_DSM_OUT_BUF_SIZE),
+>                 aml_int(4), dsm_out_buf_size));
 > +
-> +static void test_its_introspection(void) {}
-> +
-> +#else /* __arch64__ */
-> +
-> +static void test_its_introspection(void)
-> +{
-> +	struct its_baser *dev_baser, *coll_baser;
-> +	struct its_typer *typer = &its_data.typer;
-> +
-> +	if (!gicv3_its_base()) {
-> +		report_skip("No ITS, skip ...");
-> +		return;
-> +	}
-> +
-> +	/* IIDR */
-> +	report(test_readonly_32(gicv3_its_base() + GITS_IIDR, false),
-> +	       "GITS_IIDR is read-only"),
-> +
-> +	/* TYPER */
-> +	report(test_readonly_32(gicv3_its_base() + GITS_TYPER, false),
-> +	       "GITS_TYPER is read-only");
-> +
-> +	report(typer->phys_lpi, "ITS supports physical LPIs");
-> +	report_info("vLPI support: %s", typer->virt_lpi ? "yes" : "no");
-> +	report_info("ITT entry size = 0x%x", typer->ite_size);
-> +	report_info("Bit Count: EventID=%d DeviceId=%d CollId=%d",
-> +		    typer->eventid_bits, typer->deviceid_bits,
-> +		    typer->collid_bits);
-> +	report(typer->eventid_bits && typer->deviceid_bits &&
-> +	       typer->collid_bits, "ID spaces");
-> +	report_info("Target address format %s",
-> +			typer->pta ? "Redist basse address" : "PE #");
+> +    /*
+> +     * As per ACPI spec 6.3, Table 19-419 Object Conversion Rules, if
+> +     * the Buffer Field <= to the size of an Integer (in bits), it will
+> +     * be treated as an integer. Moreover, the integer size depends on
+> +     * DSDT tables revision number. If revision number is < 2, integer
+> +     * size is 32 bits, otherwise it is 64 bits.
+> +     * Because of this CreateField() canot be used if RLEN < Integer Size.
+> +     * Hence build dsm_out_buf byte by byte.
+> +     */
+> +    ifctx = aml_if(aml_lless(dsm_out_buf_size, aml_sizeof(aml_int(0))));
 
-typo: s/basse/base/
+this decomplies into
 
-> +
-> +	dev_baser = its_lookup_baser(GITS_BASER_TYPE_DEVICE);
-> +	coll_baser = its_lookup_baser(GITS_BASER_TYPE_COLLECTION);
-> +	report(dev_baser && coll_baser, "detect device and collection BASER");
-> +	report_info("device baser entry_size = 0x%x", dev_baser->esz);
-> +	report_info("collection baser entry_size = 0x%x", coll_baser->esz);
+ If (Local1 < SizeOf ())
 
-How about "device table entry_size = ..." and "collection table
-entry_size = ..."?
+which doesn't look right
 
-> +}
+> +    offset = aml_local(2);
+> +    aml_append(ifctx, aml_store(aml_int(0), offset));
+> +    aml_append(ifctx, aml_name_decl("TBUF", aml_buffer(1, NULL)));
+> +    aml_append(ifctx, aml_store(aml_buffer(0, NULL), dsm_out_buf));
 > +
-> +#endif
+> +    whilectx = aml_while(aml_lless(offset, dsm_out_buf_size));
+> +    /* Copy 1 byte at offset from ODAT to temporary buffer(TBUF). */
+> +    aml_append(whilectx, aml_store(aml_derefof(aml_index(
+> +                                   aml_name(NVDIMM_DSM_OUT_BUF), offset)),
+> +                                   aml_index(aml_name("TBUF"), aml_int(0))));
+> +    aml_append(whilectx, aml_concatenate(dsm_out_buf, aml_name("TBUF"),
+> +                                         dsm_out_buf));
+> +    aml_append(whilectx, aml_increment(offset));
+> +    aml_append(ifctx, whilectx);
 > +
->   int main(int argc, char **argv)
->   {
->   	if (!gic_init()) {
-> @@ -549,6 +594,10 @@ int main(int argc, char **argv)
->   		report_prefix_push(argv[1]);
->   		gic_test_mmio();
->   		report_prefix_pop();
-> +	} else if (strcmp(argv[1], "its-introspection") == 0) {
-> +		report_prefix_push(argv[1]);
-> +		test_its_introspection();
-> +		report_prefix_pop();
->   	} else {
->   		report_abort("Unknown subtest '%s'", argv[1]);
->   	}
-> diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-> index daeb5a0..ba2b31b 100644
-> --- a/arm/unittests.cfg
-> +++ b/arm/unittests.cfg
-> @@ -122,6 +122,13 @@ smp = $MAX_SMP
->   extra_params = -machine gic-version=3 -append 'active'
->   groups = gic
->   
-> +[its-introspection]
-> +file = gic.flat
-> +smp = $MAX_SMP
-> +extra_params = -machine gic-version=3 -append 'its-introspection'
-> +groups = its
-> +arch = arm64
+> +    aml_append(ifctx, aml_return(dsm_out_buf));
+> +    aml_append(method, ifctx);
 > +
->   # Test PSCI emulation
->   [psci]
->   file = psci.flat
-> diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
-> new file mode 100644
-> index 0000000..815c515
-> --- /dev/null
-> +++ b/lib/arm/asm/gic-v3-its.h
-> @@ -0,0 +1,103 @@
-> +/*
-> + * All ITS* defines are lifted from include/linux/irqchip/arm-gic-v3.h
-> + *
-> + * Copyright (C) 2020, Red Hat Inc, Eric Auger <eric.auger@redhat.com>
-> + *
-> + * This work is licensed under the terms of the GNU LGPL, version 2.
-> + */
-> +#ifndef _ASMARM_GIC_V3_ITS_H_
-> +#define _ASMARM_GIC_V3_ITS_H_
+> +    /* If RLEN >= Integer size, just use CreateField() operator */
+>      aml_append(method, aml_store(aml_shiftleft(dsm_out_buf_size, aml_int(3)),
+>                                   dsm_out_buf_size));
+>      aml_append(method, aml_create_field(aml_name(NVDIMM_DSM_OUT_BUF),
+>                 aml_int(0), dsm_out_buf_size, "OBUF"));
+> -    aml_append(method, aml_concatenate(aml_buffer(0, NULL), aml_name("OBUF"),
+> -                                       dsm_out_buf));
+> -    aml_append(method, aml_return(dsm_out_buf));
+> +    aml_append(method, aml_return(aml_name("OBUF")));
 > +
-> +#ifndef __ASSEMBLY__
-> +
-> +struct its_typer {
-> +	unsigned int ite_size;
-> +	unsigned int eventid_bits;
-> +	unsigned int deviceid_bits;
-> +	unsigned int collid_bits;
-> +	bool pta;
-> +	bool phys_lpi;
-> +	bool virt_lpi;
-> +};
-> +
-> +struct its_baser {
-> +	int type;
-> +	size_t psz;
-> +	int nr_pages;
-> +	bool indirect;
-> +	phys_addr_t table_addr;
-> +	bool valid;
-> +	int esz;
-> +};
-> +
-> +#define GITS_BASER_NR_REGS              8
-> +
-> +struct its_data {
-> +	void *base;
-> +	struct its_typer typer;
-> +	struct its_baser baser[GITS_BASER_NR_REGS];
-> +};
-> +
-> +extern struct its_data its_data;
-> +
-> +#define gicv3_its_base()		(its_data.base)
-> +
-> +#if defined(__aarch64__)
-> +
-> +#define GITS_CTLR			0x0000
-> +#define GITS_IIDR			0x0004
-> +#define GITS_TYPER			0x0008
-> +#define GITS_CBASER			0x0080
-> +#define GITS_CWRITER			0x0088
-> +#define GITS_CREADR			0x0090
-> +#define GITS_BASER			0x0100
-> +
-> +#define GITS_TYPER_PLPIS                BIT(0)
-> +#define GITS_TYPER_VLPIS		BIT(1)
-> +#define GITS_TYPER_ITT_ENTRY_SIZE	GENMASK_ULL(7, 4)
-> +#define GITS_TYPER_ITT_ENTRY_SIZE_SHIFT	4
-> +#define GITS_TYPER_IDBITS		GENMASK_ULL(8, 12)
-> +#define GITS_TYPER_IDBITS_SHIFT         8
-> +#define GITS_TYPER_DEVBITS		GENMASK_ULL(13, 17)
-> +#define GITS_TYPER_DEVBITS_SHIFT        13
-> +#define GITS_TYPER_PTA                  BIT(19)
-> +#define GITS_TYPER_CIDBITS		GENMASK_ULL(32, 35)
-> +#define GITS_TYPER_CIDBITS_SHIFT	32
-> +#define GITS_TYPER_CIL			BIT(36)
-> +
-> +#define GITS_CTLR_ENABLE		(1U << 0)
-> +
-> +#define GITS_CBASER_VALID		(1UL << 63)
-> +
-> +#define GITS_BASER_VALID		BIT(63)
-> +#define GITS_BASER_INDIRECT		BIT(62)
-> +#define GITS_BASER_TYPE_SHIFT		(56)
-> +#define GITS_BASER_TYPE(r)		(((r) >> GITS_BASER_TYPE_SHIFT) & 7)
-> +#define GITS_BASER_ENTRY_SIZE_SHIFT	(48)
-> +#define GITS_BASER_ENTRY_SIZE(r)	((((r) >> GITS_BASER_ENTRY_SIZE_SHIFT) & 0x1f) + 1)
-> +#define GITS_BASER_PAGE_SIZE_SHIFT	(8)
-> +#define GITS_BASER_PAGE_SIZE_4K		(0UL << GITS_BASER_PAGE_SIZE_SHIFT)
-> +#define GITS_BASER_PAGE_SIZE_16K	(1UL << GITS_BASER_PAGE_SIZE_SHIFT)
-> +#define GITS_BASER_PAGE_SIZE_64K	(2UL << GITS_BASER_PAGE_SIZE_SHIFT)
-> +#define GITS_BASER_PAGE_SIZE_MASK	(3UL << GITS_BASER_PAGE_SIZE_SHIFT)
-> +#define GITS_BASER_PAGES_MAX		256
-> +#define GITS_BASER_PAGES_SHIFT		(0)
-> +#define GITS_BASER_NR_PAGES(r)		(((r) & 0xff) + 1)
-> +#define GITS_BASER_PHYS_ADDR_MASK	0xFFFFFFFFF000
-> +#define GITS_BASER_TYPE_NONE		0
-> +#define GITS_BASER_TYPE_DEVICE		1
-> +#define GITS_BASER_TYPE_COLLECTION	4
-> +
-> +extern void its_parse_typer(void);
-> +extern void its_init(void);
-> +extern int its_parse_baser(int i, struct its_baser *baser);
-> +extern struct its_baser *its_lookup_baser(int type);
-> +
-> +#else /* __arm__ */
-> +
-> +static inline void its_init(void) {}
-> +
-> +#endif
-> +
-> +#endif /* !__ASSEMBLY__ */
-> +#endif /* _ASMARM_GIC_V3_ITS_H_ */
-> diff --git a/lib/arm/gic-v3-its.c b/lib/arm/gic-v3-its.c
-> new file mode 100644
-> index 0000000..2c0ce13
-> --- /dev/null
-> +++ b/lib/arm/gic-v3-its.c
-> @@ -0,0 +1,88 @@
-> +/*
-> + * Copyright (C) 2020, Red Hat Inc, Eric Auger <eric.auger@redhat.com>
-> + *
-> + * This work is licensed under the terms of the GNU LGPL, version 2.
-> + */
-> +#include <asm/gic.h>
-> +#include <alloc_page.h>
-> +#include <asm/gic-v3-its.h>
-> +
-> +void its_parse_typer(void)
-> +{
-> +	u64 typer = readq(gicv3_its_base() + GITS_TYPER);
-> +
-> +	its_data.typer.ite_size = ((typer & GITS_TYPER_ITT_ENTRY_SIZE) >>
-> +					GITS_TYPER_ITT_ENTRY_SIZE_SHIFT) + 1;
-> +	its_data.typer.pta = typer & GITS_TYPER_PTA;
-> +	its_data.typer.eventid_bits = ((typer & GITS_TYPER_IDBITS) >>
-> +						GITS_TYPER_IDBITS_SHIFT) + 1;
-> +	its_data.typer.deviceid_bits = ((typer & GITS_TYPER_DEVBITS) >>
-> +						GITS_TYPER_DEVBITS_SHIFT) + 1;
-> +
-> +	if (typer & GITS_TYPER_CIL)
-> +		its_data.typer.collid_bits = ((typer & GITS_TYPER_CIDBITS) >>
-> +						GITS_TYPER_CIDBITS_SHIFT) + 1;
-> +	else
-> +		its_data.typer.collid_bits = 16;
-> +
-> +	its_data.typer.virt_lpi = typer & GITS_TYPER_VLPIS;
-> +	its_data.typer.phys_lpi = typer & GITS_TYPER_PLPIS;
-> +}
-> +
-> +int its_parse_baser(int i, struct its_baser *baser)
-> +{
-> +	void *reg_addr = gicv3_its_base() + GITS_BASER + i * 8;
-> +	u64 val = readq(reg_addr);
-> +
-> +	if (!val) {
-> +		memset(baser, 0, sizeof(*baser));
-> +		return -1;
-> +	}
+>      aml_append(dev, method);
+>  }
+>  
+> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+> index dfb8523c8b..eb8bae1407 100644
+> --- a/tests/qtest/bios-tables-test-allowed-diff.h
+> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+> @@ -1 +1,3 @@
+>  /* List of comma-separated changed AML files to ignore */
+> +"tests/data/acpi/pc/SSDT.dimmpxm",
+> +"tests/data/acpi/q35/SSDT.dimmpxm",
 
-Unimplemented BASERs? How about using something like:
-
-	if (GITS_BASER_TYPE(val) == GITS_BASER_TYPE_NONE) {
-		[...]
-	}
-
-to make it a bit more explicit?
-
-But feel free to just ignore it because you're right that
-the unimplemented BASERs are RES0.
-
-
-Thanks,
-Zenghui
-
-> +
-> +	baser->valid = val & GITS_BASER_VALID;
-> +	baser->indirect = val & GITS_BASER_INDIRECT;
-> +	baser->type = GITS_BASER_TYPE(val);
-> +	baser->esz = GITS_BASER_ENTRY_SIZE(val);
-> +	baser->nr_pages = GITS_BASER_NR_PAGES(val);
-> +	baser->table_addr = val & GITS_BASER_PHYS_ADDR_MASK;
-> +	switch (val & GITS_BASER_PAGE_SIZE_MASK) {
-> +	case GITS_BASER_PAGE_SIZE_4K:
-> +		baser->psz = SZ_4K;
-> +		break;
-> +	case GITS_BASER_PAGE_SIZE_16K:
-> +		baser->psz = SZ_16K;
-> +		break;
-> +	case GITS_BASER_PAGE_SIZE_64K:
-> +		baser->psz = SZ_64K;
-> +		break;
-> +	default:
-> +		baser->psz = SZ_64K;
-> +	}
-> +	return 0;
-> +}
-> +
-> +struct its_baser *its_lookup_baser(int type)
-> +{
-> +	int i;
-> +
-> +	for (i = 0; i < GITS_BASER_NR_REGS; i++) {
-> +		struct its_baser *baser = &its_data.baser[i];
-> +
-> +		if (baser->type == type)
-> +			return baser;
-> +	}
-> +	return NULL;
-> +}
-> +
-> +void its_init(void)
-> +{
-> +	int i;
-> +
-> +	if (!its_data.base)
-> +		return;
-> +
-> +	its_parse_typer();
-> +	for (i = 0; i < GITS_BASER_NR_REGS; i++)
-> +		its_parse_baser(i, &its_data.baser[i]);
-> +}
-> +
-> diff --git a/lib/arm/gic.c b/lib/arm/gic.c
-> index aa9cb86..6b70b05 100644
-> --- a/lib/arm/gic.c
-> +++ b/lib/arm/gic.c
-> @@ -6,9 +6,11 @@
->   #include <devicetree.h>
->   #include <asm/gic.h>
->   #include <asm/io.h>
-> +#include <asm/gic-v3-its.h>
->   
->   struct gicv2_data gicv2_data;
->   struct gicv3_data gicv3_data;
-> +struct its_data its_data;
->   
->   struct gic_common_ops {
->   	void (*enable_defaults)(void);
-> @@ -44,12 +46,13 @@ static const struct gic_common_ops gicv3_common_ops = {
->    * Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.txt
->    */
->   static bool
-> -gic_get_dt_bases(const char *compatible, void **base1, void **base2)
-> +gic_get_dt_bases(const char *compatible, void **base1, void **base2, void **base3)
->   {
->   	struct dt_pbus_reg reg;
-> -	struct dt_device gic;
-> +	struct dt_device gic, its;
->   	struct dt_bus bus;
-> -	int node, ret, i;
-> +	int node, subnode, ret, i, len;
-> +	const void *fdt = dt_fdt();
->   
->   	dt_bus_init_defaults(&bus);
->   	dt_device_init(&gic, &bus, NULL);
-> @@ -74,19 +77,35 @@ gic_get_dt_bases(const char *compatible, void **base1, void **base2)
->   		base2[i] = ioremap(reg.addr, reg.size);
->   	}
->   
-> +	if (base3 && !strcmp(compatible, "arm,gic-v3")) {
-> +		dt_for_each_subnode(node, subnode) {
-> +			const struct fdt_property *prop;
-> +
-> +			prop = fdt_get_property(fdt, subnode, "compatible", &len);
-> +			if (!strcmp((char *)prop->data, "arm,gic-v3-its")) {
-> +				dt_device_bind_node(&its, subnode);
-> +				ret = dt_pbus_translate(&its, 0, &reg);
-> +				assert(ret == 0);
-> +				*base3 = ioremap(reg.addr, reg.size);
-> +				break;
-> +			}
-> +		}
-> +
-> +	}
-> +
->   	return true;
->   }
->   
->   int gicv2_init(void)
->   {
->   	return gic_get_dt_bases("arm,cortex-a15-gic",
-> -			&gicv2_data.dist_base, &gicv2_data.cpu_base);
-> +			&gicv2_data.dist_base, &gicv2_data.cpu_base, NULL);
->   }
->   
->   int gicv3_init(void)
->   {
->   	return gic_get_dt_bases("arm,gic-v3", &gicv3_data.dist_base,
-> -			&gicv3_data.redist_bases[0]);
-> +			&gicv3_data.redist_bases[0], &its_data.base);
->   }
->   
->   int gic_version(void)
-> @@ -104,6 +123,7 @@ int gic_init(void)
->   		gic_common_ops = &gicv2_common_ops;
->   	else if (gicv3_init())
->   		gic_common_ops = &gicv3_common_ops;
-> +	its_init();
->   	return gic_version();
->   }
->   
-> diff --git a/lib/arm64/asm/gic-v3-its.h b/lib/arm64/asm/gic-v3-its.h
-> new file mode 100644
-> index 0000000..083cba4
-> --- /dev/null
-> +++ b/lib/arm64/asm/gic-v3-its.h
-> @@ -0,0 +1 @@
-> +#include "../../arm/asm/gic-v3-its.h"
-> 

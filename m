@@ -1,76 +1,78 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1319746lfp;
-        Thu, 6 Feb 2020 03:27:18 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyrkN0sRsoMjSXij4IXCBawndWV4dJcIhmlPnC51hz/hGvApj19fqe8T3q7HB3Ytg8IEBVa
-X-Received: by 2002:ac8:4b70:: with SMTP id g16mr2110027qts.296.1580988438059;
-        Thu, 06 Feb 2020 03:27:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580988438; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1319816lfp;
+        Thu, 6 Feb 2020 03:27:22 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwAYP5hhsV6BGjl5ZQSo6r+LgPm644KPkCa9Xql//JvmpsvyV2ruORPHp+HJukwfneIWJmf
+X-Received: by 2002:a37:e214:: with SMTP id g20mr2089517qki.367.1580988442306;
+        Thu, 06 Feb 2020 03:27:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580988442; cv=none;
         d=google.com; s=arc-20160816;
-        b=HYqePvnvyj1Uxy3Kz1mCm50bG2+dNfG5u8xdI9sUQAQwlolfNfEHM+7+m7tG0F5D+B
-         8uizHXFQpET+U5SJKaM+IvS7eabLRlf63vG2PHcPMbmRT70uQg+7+9MtX5OUlbLqVVJv
-         NpRXIz6Ol/gxnq+QbBId2tj88CTdz1OS1n+LaXW61jLOvT+T3RzNszFH7Ll8DaF+uVrq
-         Le8EkeMktTJZgnQAb5GSOYybx0vhe7P8+91gSs/w7J6YFjAzbVj+y9SCN4cdeNEDpyfQ
-         fjhB/oTEYJQY2bGAuR+d3Jcwu0N8llYGmVMqcJWXk1xJEY5TB33Rdtb+aaJNGYrTQjZ/
-         rX3Q==
+        b=bh4cLptEPqAkWE3Tbtd+nqnpk9EBR+Tylw2Z2f4jZuRkL6Gpwidyj/EGhJCktmOhXr
+         qZSQ8bEMlMsxXjwJXHELMzvptfwBLmLp2ES1vqeDzgI3kVvaEQRBNQ91umAeHpMGRAMY
+         Q8ut++y6b6Mn9BInWXqVNxhYess6LDRpQklA6v2lVVGk2q0LC5O8rADl4g0s6cHfwKgI
+         Sz2jDMb/MkX4WHf486VMBHN4hVFxW1TYdkxJ7CtmC/Btjj9YJKMUdAA+2Vdd0pw5lNos
+         tGVVFQHfyQ/ukR2YvEubXXf76j+Fa+2jAsRQb/ZcGA3o4yKCpv80EKmFVjbMWwgecRRm
+         igHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=fwzVIJ8PnEgKfBwjNHPGCmK4pM+IYq4IvDGaQJVRu+U=;
-        b=vNQiR/fExiZSbbdjTfAsWATv0afQ7TiNgrlFT7w3k1DdwjrQU5lfLnMZZqLP9ugyS3
-         5h0j9TaMEla1upegZrG+LLZTNcQOY7XuNnr+GLyMoO5SkOzoERYeI2kbH88iK302JW+a
-         oSHhDR+J6DUDF3Vf8E2zwRjcUcR7hp23r4WOl2czoskZuSVmVWGs12jnIo/hm0xHfeJ2
-         Mh6/Eo/wBgDPXL87i3GV4g6hUOkbHdCjaSzK6stLoKw83gldfQRSi6R7po3aQeUJY3+3
-         9swLjbXDpHNIAt8PMjpsVn4j3R3jJnSTrvq0ir5DkxvGAZ9mtB/pk1v9unTpLCnuomzL
-         nyOw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=xe/X2XBKUwKXZ5OvDDDXsNISMQDFq/ahVTBW4Yie/gk=;
+        b=e4iqz8ZOSURhOvP0Kvdg1PlPp0ZnItU5Xl4JL9yKQ8VD7a7cPfRgjaadTk2AYtDhTZ
+         c4SoEXUlcdH/+/43fObgiVNuBvMWtObWHlwDGGJ000DA8PC+H/p75cbNTki4gC0Gm7pD
+         Dsi45x2NXwNy2kAx7b9ce9DXjBK/4dh70vxPfqprfMzZXfi4f5ELMu8WEgFoRqQIbVZy
+         4bJ+tr+GdhX9f7ZbYUBcxV5+3qLCX30P80GCIY7EMvLfc67hi3UGIupKOzSjnVlMKAVo
+         t2WGPRfCC2ZUQcfW3suVgSPJMzn33cPqq4duqn4FNxMEeQiRCWXmOcwjxCPg1HPMVv0C
+         47AQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 3si1410676qkc.336.2020.02.06.03.27.17
+        by mx.google.com with ESMTPS id p19si1282554qtn.210.2020.02.06.03.27.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2020 03:27:18 -0800 (PST)
+        Thu, 06 Feb 2020 03:27:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36766 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36770 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izfJV-0005bo-GL
-	for alex.bennee@linaro.org; Thu, 06 Feb 2020 06:27:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38416)
+	id 1izfJZ-0005fd-Mk
+	for alex.bennee@linaro.org; Thu, 06 Feb 2020 06:27:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38457)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1izfJM-0005ZT-56
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 06:27:09 -0500
+ (envelope-from <clg@kaod.org>) id 1izfJN-0005aj-MR
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 06:27:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1izfJJ-0007ho-Ve
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 06:27:07 -0500
-Received: from 17.mo6.mail-out.ovh.net ([46.105.36.150]:42568)
+ (envelope-from <clg@kaod.org>) id 1izfJM-0007p7-8l
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 06:27:09 -0500
+Received: from 8.mo2.mail-out.ovh.net ([188.165.52.147]:50803)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1izfJJ-000705-QD
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 06:27:05 -0500
-Received: from player788.ha.ovh.net (unknown [10.108.42.167])
- by mo6.mail-out.ovh.net (Postfix) with ESMTP id 2E6B71FD260
- for <qemu-arm@nongnu.org>; Thu,  6 Feb 2020 12:26:56 +0100 (CET)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1izfJM-0007jo-0Z
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 06:27:08 -0500
+Received: from player788.ha.ovh.net (unknown [10.108.35.59])
+ by mo2.mail-out.ovh.net (Postfix) with ESMTP id A1CA91C508F
+ for <qemu-arm@nongnu.org>; Thu,  6 Feb 2020 12:27:05 +0100 (CET)
 Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
  (Authenticated sender: clg@kaod.org)
- by player788.ha.ovh.net (Postfix) with ESMTPSA id 553F8F1A6CFB;
- Thu,  6 Feb 2020 11:26:47 +0000 (UTC)
+ by player788.ha.ovh.net (Postfix) with ESMTPSA id AB865F1A6D58;
+ Thu,  6 Feb 2020 11:26:56 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 0/2] aspeed/smc: fix data corruption on witherspoon machines
-Date: Thu,  6 Feb 2020 12:26:43 +0100
-Message-Id: <20200206112645.21275-1-clg@kaod.org>
+Subject: [PATCH 1/2] aspeed/smc: Add some tracing
+Date: Thu,  6 Feb 2020 12:26:44 +0100
+Message-Id: <20200206112645.21275-2-clg@kaod.org>
 X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200206112645.21275-1-clg@kaod.org>
+References: <20200206112645.21275-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 17870283324729756433
+X-Ovh-Tracer-Id: 17872816598246394641
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrheefgddviecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofggtgfgsehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeekkedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrheefgddviecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgsehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeekkedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.36.150
+X-Received-From: 188.165.52.147
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,41 +89,138 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Andrew Geissler <geissonator@gmail.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Dcr9cXFL/cE8
+X-TUID: +nCpb+DLZXoE
 
-Hello,
-
-We have been seeing a squashfs corruption on the witherspoon-bmc
-machine for quite some time. It boots but quickly after boot
-corruption errors start to fill the console. This machine has two BMC
-chips with UBIfs on them. The romulus-bmc machine has a similar
-problem when both PNOR are enabled.
-
-After some investigation, it appeared that the SPI transfers on the
-two chips were getting mixed and after more investigation, the User
-mode select/unselect scheme of the Aspeed SMC model proved to be
-broken. It's been there since the right beginning of the model. Here
-is a fix.
-
-Kudos to Andrew J. for the time he spent on this and Andrew G. for his
-patience.
-
-I pushed the code on my github branch aspeed-5.0 for more testing.
-
-Thanks,
-
-C.
-
-C=C3=A9dric Le Goater (2):
-  aspeed/smc: Add some tracing
-  aspeed/smc: Fix User mode select/unselect scheme
-
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+---
  Makefile.objs       |  1 +
- hw/ssi/aspeed_smc.c | 56 ++++++++++++++++++++++++++++++++-------------
- hw/ssi/trace-events | 10 ++++++++
- 3 files changed, 51 insertions(+), 16 deletions(-)
+ hw/ssi/aspeed_smc.c | 17 +++++++++++++++++
+ hw/ssi/trace-events |  9 +++++++++
+ 3 files changed, 27 insertions(+)
  create mode 100644 hw/ssi/trace-events
 
+diff --git a/Makefile.objs b/Makefile.objs
+index 26b9cff95436..9e4ba95794e9 100644
+--- a/Makefile.objs
++++ b/Makefile.objs
+@@ -168,6 +168,7 @@ trace-events-subdirs +=3D hw/scsi
+ trace-events-subdirs +=3D hw/sd
+ trace-events-subdirs +=3D hw/sparc
+ trace-events-subdirs +=3D hw/sparc64
++trace-events-subdirs +=3D hw/ssi
+ trace-events-subdirs +=3D hw/timer
+ trace-events-subdirs +=3D hw/tpm
+ trace-events-subdirs +=3D hw/usb
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 23c8d2f06245..e5621bf728ca 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -31,6 +31,7 @@
+ #include "qapi/error.h"
+ #include "exec/address-spaces.h"
+ #include "qemu/units.h"
++#include "trace.h"
+=20
+ #include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+@@ -513,6 +514,8 @@ static void aspeed_smc_flash_set_segment(AspeedSMCSta=
+te *s, int cs,
+=20
+     s->ctrl->reg_to_segment(s, new, &seg);
+=20
++    trace_aspeed_smc_flash_set_segment(cs, new, seg.addr, seg.addr + seg=
+.size);
++
+     /* The start address of CS0 is read-only */
+     if (cs =3D=3D 0 && seg.addr !=3D s->ctrl->flash_window_base) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+@@ -753,6 +756,8 @@ static uint64_t aspeed_smc_flash_read(void *opaque, h=
+waddr addr, unsigned size)
+                       __func__, aspeed_smc_flash_mode(fl));
+     }
+=20
++    trace_aspeed_smc_flash_read(fl->id, addr, size, ret,
++                                aspeed_smc_flash_mode(fl));
+     return ret;
+ }
+=20
+@@ -808,6 +813,9 @@ static bool aspeed_smc_do_snoop(AspeedSMCFlash *fl,  =
+uint64_t data,
+     AspeedSMCState *s =3D fl->controller;
+     uint8_t addr_width =3D aspeed_smc_flash_is_4byte(fl) ? 4 : 3;
+=20
++    trace_aspeed_smc_do_snoop(fl->id, s->snoop_index, s->snoop_dummies,
++                              (uint8_t) data & 0xff);
++
+     if (s->snoop_index =3D=3D SNOOP_OFF) {
+         return false; /* Do nothing */
+=20
+@@ -858,6 +866,9 @@ static void aspeed_smc_flash_write(void *opaque, hwad=
+dr addr, uint64_t data,
+     AspeedSMCState *s =3D fl->controller;
+     int i;
+=20
++    trace_aspeed_smc_flash_write(fl->id, addr, size, data,
++                                 aspeed_smc_flash_mode(fl));
++
+     if (!aspeed_smc_is_writable(fl)) {
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: flash is not writable at 0x%=
+"
+                       HWADDR_PRIx "\n", __func__, addr);
+@@ -972,6 +983,9 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr =
+addr, unsigned int size)
+         (s->ctrl->has_dma && addr =3D=3D R_DMA_CHECKSUM) ||
+         (addr >=3D R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_slav=
+es) ||
+         (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->ctrl->max_slaves=
+)) {
++
++        trace_aspeed_smc_read(addr, size, s->regs[addr]);
++
+         return s->regs[addr];
+     } else {
+         qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx =
+"\n",
+@@ -1091,6 +1105,7 @@ static void aspeed_smc_dma_checksum(AspeedSMCState =
+*s)
+                           __func__, s->regs[R_DMA_FLASH_ADDR]);
+             return;
+         }
++        trace_aspeed_smc_dma_checksum(s->regs[R_DMA_FLASH_ADDR], data);
+=20
+         /*
+          * When the DMA is on-going, the DMA registers are updated
+@@ -1225,6 +1240,8 @@ static void aspeed_smc_write(void *opaque, hwaddr a=
+ddr, uint64_t data,
+=20
+     addr >>=3D 2;
+=20
++    trace_aspeed_smc_write(addr, size, data);
++
+     if (addr =3D=3D s->r_conf ||
+         (addr >=3D s->r_timings &&
+          addr < s->r_timings + s->ctrl->nregs_timings) ||
+diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
+new file mode 100644
+index 000000000000..ffe531a500aa
+--- /dev/null
++++ b/hw/ssi/trace-events
+@@ -0,0 +1,9 @@
++# aspeed_smc.c
++
++aspeed_smc_flash_set_segment(int cs, uint64_t reg, uint64_t start, uint6=
+4_t end) "CS%d segreg=3D0x%"PRIx64" [ 0x%"PRIx64" - 0x%"PRIx64" ]"
++aspeed_smc_flash_read(int cs, uint64_t addr,  uint32_t size, uint64_t da=
+ta, int mode) "CS%d @0x%" PRIx64 " size %u: 0x%" PRIx64" mode:%d"
++aspeed_smc_do_snoop(int cs, int index, int dummies, int data) "CS%d inde=
+x:0x%x dummies:%d data:0x%x"
++aspeed_smc_flash_write(int cs, uint64_t addr,  uint32_t size, uint64_t d=
+ata, int mode) "CS%d @0x%" PRIx64 " size %u: 0x%" PRIx64" mode:%d"
++aspeed_smc_read(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PRI=
+x64 " size %u: 0x%" PRIx64
++aspeed_smc_dma_checksum(uint32_t addr, uint32_t data) "0x%08x: 0x%08x"
++aspeed_smc_write(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PR=
+Ix64 " size %u: 0x%" PRIx64
 --=20
 2.21.1
 

@@ -1,1325 +1,482 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1927156lfp;
-        Thu, 6 Feb 2020 13:10:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqydzOF6GTFeioihxT2l3TsvoSReYwLtuU5obbU0oQ3U3g+VtX/fuPCV8G9NqIr0Wit4varw
-X-Received: by 2002:a05:620a:b04:: with SMTP id t4mr4499312qkg.7.1581023402456;
-        Thu, 06 Feb 2020 13:10:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581023402; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1938053lfp;
+        Thu, 6 Feb 2020 13:21:46 -0800 (PST)
+X-Received: by 2002:a5e:860f:: with SMTP id z15mr211947ioj.64.1581024106235;
+        Thu, 06 Feb 2020 13:21:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581024106; cv=none;
         d=google.com; s=arc-20160816;
-        b=zgH/QuTs39fof6V+UJrsKsB5R6MaInvy0u9ujQeiZY4aFmGUaLdEAQc25u6f8qULYV
-         1cjJYELauwbVdhiYdvCAh+/e/uaDn7TGUrN9l4dHI6ia1zopGxXt4hIwoCJe3tbclkTb
-         Nfi66VnI6aQi7EfGP+KekY9J+5Ib772JHaYXGOAtIOs5Ok2eAlyhuAq60kQzQ5QLmJNU
-         O6EM7rXmCSlPZjSrQa1TjYJ8VNp4yBN9Xcyb2wLMnSD2QlJWqLiRQFZbqjINKcD7KbtN
-         ctW7Fr9IJpsek1JBvaeHtOnw+TD5Gj6OyIL2CRkyPxKGFF5XeD04MwNJR9BFHGmD+Iss
-         qHOQ==
+        b=CR0AwWNmVkzjWgBilmia3ZSfVthlp3XKqXBmcAM8kz8wCaoLYPqaREs1CKaSTgPx7C
+         jpDDieCP6TC7j7JzM6t/fUE7GiWQtE4eA+1R/MFF7Z85NS5WGjOecokSC/l3RJ6VMZZb
+         TdUEopQwnrms9MYZtydU5QcuP9YsU/WSZd2kJSHmwOjKQWnDGDwepFNb/p7KTkw8vbVO
+         qOOctJ2ZraKSPmzYhbK945HcWpRe2pqRZ+PkixUK/M5YAdmucmXnP50UnJ1w+hQoRdEz
+         UJmJDNgMfWq9pt1weDHHYf2hxtyjSln/w6tMJF4Ivek/eiGXXEGVR058zetsCMMYZVwJ
+         U6Aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=hSlwnim92rBeFqaO80cYqjTQ+wpc0Eemz6eGqLuIGhk=;
-        b=H6rJ9xCA5k2LhwSytG2puWetcQ7PoT4FiVNINcG5pqSJybp9Rd3Xh++ezWwMlzY7bS
-         ofjkUKgzEIa5bBjz3W7G7aG4qMCe4sx6ZUf8z9e4MCX7GAqVnQxaStZ5OMGdY4+OMNbk
-         502KOfYWjHjlUU6zj7FwscA6xt87nZhyRMYpvjvZKjawfv6NXDTk75IOQyYts0rlTXeP
-         Un9uJ6yZ/MPgJcqmkI7SM14RYMoFVP2YCNtGA1sJWYyZtcafmgkl/+rX1uY25QfV+aFW
-         xePemDPiE/5FpS+8WHZadEQipWEJnmC7z+/zd9JDUjFw7cr3HaZhcHTVkzyWE7gkjBmq
-         +9Xg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=ctjbc4Tr+ubp6tCXycl2H3Xae/BsxQ1mkV9e0ggGVeQ=;
+        b=aPO/Jl4hcXceZAKu6yQ2xhXV2S7KEEvZH2f1olDCXph8GOTCUo3WvX6abfZau5EVOk
+         fjcXbck43vBVGUuEA88dhMHEOwGvGW8ABBozENmVP32KAE8QCB1OGoFbv6zjOqtPnUWy
+         U+lvvOxUp+AAjjI5UkIY2hpAgeoWd+pdQ4GYF/ojyxZq4XBJSyLi++ll7Gj6NhtcXVMM
+         U04OQ9Zt9t7olYzGbUuiWKbHMiIaclL5DRxWIyPaeYkUqtA6osE40GP0zsMrvihdgfSx
+         Y6huo0HjzOeZOlDpAqBKxYC30A0UD12iX24PLRo+Qm8J/7tmS+iqV/kig5ubqi4/6lQ2
+         ZASA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aujLYTWd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k25si219897qkj.354.2020.02.06.13.10.02
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2020 13:10:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=p789zCto;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id t5sor415504ild.126.2020.02.06.13.21.46
+        (Google Transport Security);
+        Thu, 06 Feb 2020 13:21:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aujLYTWd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46062 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izoPR-0003V1-Q0
-	for alex.bennee@linaro.org; Thu, 06 Feb 2020 16:10:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59783)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1izoPF-0003Oy-27
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 16:09:53 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1izoPA-0003sr-HK
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 16:09:48 -0500
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:36426)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1izoP1-0002EF-Hu; Thu, 06 Feb 2020 16:09:35 -0500
-Received: by mail-il1-x144.google.com with SMTP id b15so6451073iln.3;
- Thu, 06 Feb 2020 13:09:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hSlwnim92rBeFqaO80cYqjTQ+wpc0Eemz6eGqLuIGhk=;
- b=aujLYTWdc+yZ9ac8uQ2o1Lf4oeBYlYzig92Inv1gbHY/+MNs2ZFKDtECs1NQTFXjcH
- 6KmYx18AxGebLV0n5FP3FdvO9t2UC0asiQ+sZe280iBNtc9BDSEE/Rrd4djPwQtRNGCK
- afdFWlRvFCXCFgExodBnlNU2ZuBFj+fEhNrdRdE80bGyDMDrwXbCbFg6sG6D6SukszUk
- xxyGXbTmfTMB4OfV8yNYt4V/Umi2CBFPwfh3B59QRYiqALTviCsXjfkoVuj+ZQigZIAn
- QzL+2ROVc2s6GzhVsAg9ZuaeehXHew8ZjWFMRLf+L4cKDTnNoeGtVQF1bZh3BterMzni
- xB+A==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=p789zCto;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=ctjbc4Tr+ubp6tCXycl2H3Xae/BsxQ1mkV9e0ggGVeQ=;
+        b=p789zCtokiNOy4jm91nagQ5A77PYKANjdsAq6y5iMrFMs4DeZV0VLwhAD2uF1fNw7B
+         J43pG6p5TUciKEE+DoEe8k//1Zl86d+Sz/e4HdRu++dNnlij/I019RoNPVakJuTxkvAq
+         FiwVffYjYC/nuS+PY6razj9DOYQPbc5RLmkbM/4Y5+nX/NR/d9LX9yXFsfPw00dp4Jq+
+         U9ouUsKb1Zdio4g87we4HpfNcRLcL7XoRKnGdPRaN/W3nZcnCbvjCBHQxdBm/3znX3GX
+         5n5eqnf7wJ+Mk6cnmuuQUbdWVPWKE5upE5zT2SvIBT6On1/gHRlLjksfrLmtp3uLcsUs
+         mDXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=hSlwnim92rBeFqaO80cYqjTQ+wpc0Eemz6eGqLuIGhk=;
- b=TGwJUKzxQYrs4f4BnP1Jh2EcBrYhx28NhxIiYe2srigtovmfKRzo1uI1bDjp5m4fRN
- LhAHG5AvCWEkAX9hADbQHI6cqmS+HMr7wRJzwfGegwnIXgi6V8AyxWldrpPFDyYnzqW9
- pAxT2iWal17+eS18rGaujpEso6oxUBXJYhZ5tWHV64avJ0C77gb69Rmjrzwet3nDj4Wp
- kxiCS9m9qgi9+DLduIL7dc8vUIG97fX3BpVJ/N7N+qojSq0+kK9J/QHu795bPiIonBJr
- x2iXS5Zcb3io3uSWrEX70WRd21vGX+vZ5CqSRu7XnoU2e+vBczAc0pPETIRj3mdXA2d5
- 7RcA==
-X-Gm-Message-State: APjAAAUQsQ4/zhMqeXYQ13zEHvE1B1PviBLliyvsBhbC0l/XKnBECaXU
- /tKSR++bJNd9waTPShtUAG8NOLSHy14km/WI7G0=
-X-Received: by 2002:a92:5f45:: with SMTP id t66mr6059189ilb.28.1581023374333; 
- Thu, 06 Feb 2020 13:09:34 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=ctjbc4Tr+ubp6tCXycl2H3Xae/BsxQ1mkV9e0ggGVeQ=;
+        b=PNDI4H0rsOo5GvKUam9RDIyA2DJkzUPEB8Q9sePP51GyqHte4aOs5ExL1IA5RBvXum
+         fkYVo9pZac7iM5g/ZNZBuq3KJDBaHzPeT0UrvhLnLzG6pG2HMf1xJhlDKt8fdee2lqH7
+         4xbQh4fLL1bHZjpy5Pt35Mb6WLyoksMvcHAOPIlDF6NDYMiJVJY+IQ3ERYJ41SP0RfFe
+         7r7d33zmwMGEcymd1BiRa677d7nJs28DDy7+eKXfdBnorJ0kDkSgfLju39HOmizV3Z3X
+         vupT2T/uUoD//Ap/+UkurnnlublBLdFHVvcZ1MAM7ct9/vQEO16bm8wZjxIg9EGw1r9V
+         QqLQ==
+X-Gm-Message-State: APjAAAWoGihPo27w2+WoYYeqikZHy++089XJZJ9hNEIqRueYyHMs0yU2
+	WjPUAzbhYxWfOO/qIdkChWXGHMec54fmgFbRbtXOlg==
+X-Google-Smtp-Source: APXvYqxFYv83jyeJ22beUn/1Q0wBtVbCNI1VVO8oxY0Hp1iVPAePCzxFiFoUyCGSNE2nPx/R+61GBe4kIB0ue1xitH0=
+X-Received: by 2002:a92:5f45:: with SMTP id t66mr6112555ilb.28.1581024105854;
+ Thu, 06 Feb 2020 13:21:45 -0800 (PST)
 MIME-Version: 1.0
-References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
- <20200108200020.4745-8-nieklinnenbank@gmail.com>
- <8be03fbb-74f2-e688-76b1-ab504f25f8e4@redhat.com>
- <20200120175918.GA2949@minyard.net>
- <CAPan3WpJ_L7OyiC0hod0e436xOUZ2sHCfQqRmAsvD7hTPrBsDg@mail.gmail.com>
- <20200203131017.GE2626@minyard.net>
-In-Reply-To: <20200203131017.GE2626@minyard.net>
+References: <20200119005102.3847-1-nieklinnenbank@gmail.com>
+ <20200119005102.3847-17-nieklinnenbank@gmail.com> <6dd1ab52-3a75-c439-f26b-fa04d797059c@amsat.org>
+In-Reply-To: <6dd1ab52-3a75-c439-f26b-fa04d797059c@amsat.org>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Thu, 6 Feb 2020 22:09:22 +0100
-Message-ID: <CAPan3Wr=JFwHPChPfN6kng9ZZhrbprc8ZuXjHS5cErPuV-FzJg@mail.gmail.com>
-Subject: Re: [PATCH v3 07/17] hw/arm/allwinner: add Security Identifier device
-To: Corey Minyard <cminyard@mvista.com>
-Content-Type: multipart/alternative; boundary="0000000000009bdd44059deeb005"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::144
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Yury Kotov <yury-kotov@yandex-team.ru>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iddGfd9S+t7O
+Date: Thu, 6 Feb 2020 22:21:34 +0100
+Message-ID: <CAPan3Wq8eftDpzxzGoeY5Qhpvcw8oA0vFebXwmSbT+78UaDRcg@mail.gmail.com>
+Subject: Re: [PATCH v4 16/20] tests/boot_linux_console: Add a SLOW test
+ booting Ubuntu on OrangePi PC
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Cleber Rosa <crosa@redhat.com>, 
+	qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+	Beniamino Galvani <b.galvani@gmail.com>, jasowang@redhat.com, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Igor Mammedov <imammedo@redhat.com>
+Content-Type: multipart/alternative; boundary="00000000000036006e059deedc89"
+X-TUID: cmEasIs1Y4wx
 
---0000000000009bdd44059deeb005
+--00000000000036006e059deedc89
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi Corey,
+Hi Philippe,
 
-On Mon, Feb 3, 2020 at 2:10 PM Corey Minyard <cminyard@mvista.com> wrote:
+On Sun, Jan 19, 2020 at 11:30 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg>
+wrote:
 
-> On Sun, Feb 02, 2020 at 10:27:49PM +0100, Niek Linnenbank wrote:
-> > Hi Corey,
+> On 1/19/20 1:50 AM, Niek Linnenbank wrote:
+> > From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > >
-> > Thanks for reviewing!
+> > This test boots Ubuntu Bionic on a OrangePi PC board.
 > >
-> > On Mon, Jan 20, 2020 at 6:59 PM Corey Minyard <cminyard@mvista.com>
-> wrote:
+> > As it requires 1GB of storage, and is slow, this test is disabled
+> > on automatic CI testing.
 > >
-> > > On Sat, Jan 18, 2020 at 04:25:08PM +0100, Philippe Mathieu-Daud=C3=A9=
- wrote:
-> > > > Cc'ing Corey/David for good advices about using UUID.
-> > >
-> > > Is there any reason you didn't use the built-in qemu UUID for this?  =
-It
-> > > would simplify things in general.
-> > >
+> > It is useful for workstation testing. Currently Avocado timeouts too
+> > quickly, so we can't run userland commands.
 > >
-> > Currently the Allwinner SID device is using the QemuUUID type from
-> > include/qemu/uuid.h.
-> > Is that the build-in UUID you are referring to or should I use somethin=
-g
-> > else?
+> > The kernel image and DeviceTree blob are built by the Armbian
+> > project (based on Debian):
+> > https://www.armbian.com/orange-pi-pc/
+> >
+> > The Ubuntu image is downloaded from:
+> > https://dl.armbian.com/orangepipc/Bionic_current
 >
-> You are using the QemuUUID type, which is of course what you should do,
-> but you aren't using the UUID generated by qemu (at least that I can find=
-).
-> That in include/sysemu/sysemu.h and is named qemu_uuid.  Whether you
-> should use that or not depends on your needs.  If you just need some
-> uuid, then that's what you should probably use.  If you need something
-> the user can individually control for this device, for instance, then
-> that probably won't do.
+> I forgot the image is compressed is compressed with 7z, which is not
+> provided by avocado.utils.archive. This patch requires more checks, see
+> inlined...
 >
-
-Ah I did not know about the qemu_uuid variable, thanks for pointing that
-out.
-Basically the SID identifier is a number that is unique for each board that
-comes
-out of the factory. It is currently used by U-Boot to as input to generate
-a MAC address.
-
-If I understand correctly, qemu_uuid is optional and by default zero.
-However the SID value should not be zero, as otherwise U-Boot can't pick a
-MAC address
-resulting in a non-working ethernet device.
-
-Currently the hw/arm/orangepi.c machine specifies a fixed SID to be used
-for the emulated board,
-also containing a prefix (8100c002) that indicates the H3 chipset. One
-thing that I am strugling with is that
-I'm not able to override the property using '-global', if hw/arm/orangepi.c
-initializes the property with qdev_prop_set_string:
-
-$ qemu-system-arm -M orangepi-pc -kernel u-boot -nographic -nic user \
--global allwinner-sid.identifier=3D8100c002-0001-0002-0003-000044556688
-
-If I don't set the property in hw/arm/orangepi.c, I can set it with
-'-global'. Do you perhaps have a
-recommendation how to improve that? Basically what is needed is that the
-machine sets the default
-property including the chip prefix, and that the user can override it.
-Although it is not required for a
-working emulated board, it would be a nice-to-have that the user can set it=
-.
-
-
 > >
+> > This test can be run using:
 > >
-> > > Also, in case no one else say, you have tabs in your code that you ne=
-ed
-> > > to get rid of.
-> > >
-> > >
-> > If there are any tabs in the code, it was not intended. I re-checked th=
-is
-> > patch and others
-> > again but found no tabs in the code.
-> > Could you please point out where you found the extra tabs?
+> >   $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes \
+> >     avocado --show=3Dapp,console run -t machine:orangepi-pc \
+> >       tests/acceptance/boot_linux_console.py
+> >   console: U-Boot SPL 2019.04-armbian (Nov 18 2019 - 23:08:35 +0100)
+> >   console: DRAM: 1024 MiB
+> >   console: Failed to set core voltage! Can't set CPU frequency
+> >   console: Trying to boot from MMC1
+> >   console: U-Boot 2019.04-armbian (Nov 18 2019 - 23:08:35 +0100)
+> Allwinner Technology
+> >   console: CPU:   Allwinner H3 (SUN8I 0000)
+> >   console: Model: Xunlong Orange Pi PC
+> >   console: DRAM:  1 GiB
+> >   console: MMC:   mmc@1c0f000: 0
+> >   [...]
+> >   console: Uncompressing Linux... done, booting the kernel.
+> >   console: Booting Linux on physical CPU 0x0
+> >   console: Linux version 5.3.9-sunxi (root@builder) (gcc version 8.3.0
+> (GNU Toolchain for the A-profile Architecture 8.3-2019.03 (arm-rel-8.36))=
+)
+> #19.11.3 SMP Mon Nov 18 18:49:43 CET 2019
+> >   console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7),
+> cr=3D50c5387d
+> >   console: CPU: div instructions available: patching division code
+> >   console: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing
+> instruction cache
+> >   console: OF: fdt: Machine model: Xunlong Orange Pi PC
+> >   [...]
+> >   console: EXT4-fs (mmcblk0p1): mounted filesystem with writeback data
+> mode. Opts: (null)
+> >   console: done.
+> >   console: Begin: Running /scripts/local-bottom ... done.
+> >   console: Begin: Running /scripts/init-bottom ... done.
+> >   console: systemd[1]: systemd 237 running in system mode. (...)
+> >   console: systemd[1]: Detected architecture arm.
+> >   console: Welcome to Ubuntu 18.04.3 LTS!
+> >   console: systemd[1]: Set hostname to <orangepipc>.
+> >
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> > [NL: rename in commit message Raspbian to Armbian, remove
+> vm.set_machine()]
+> > [NL: changed test to boot from SD card via BootROM]
+> > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> > ---
+> >  tests/acceptance/boot_linux_console.py | 41 ++++++++++++++++++++++++++
+> >  1 file changed, 41 insertions(+)
+> >
+> > diff --git a/tests/acceptance/boot_linux_console.py
+> b/tests/acceptance/boot_linux_console.py
+> > index 50294e1675..399d5062db 100644
+> > --- a/tests/acceptance/boot_linux_console.py
+> > +++ b/tests/acceptance/boot_linux_console.py
 >
-> My apologies, I saw 1-character misalignments, and that usually means
-> that there's a tab.  But it looks like it has something to do with the
-> way it was forwarded.  I didn't get the original email.
+> This patch needs:
 >
-> Ah yes that is possible indeed. I'll add you to the CC list for the next
-version of this patch series.
+>   from avocado.utils.path import find_command
+>
+>   P7ZIP_AVAILABLE =3D True
+>   try:
+>       find_command('7z')
+>   except CmdNotFoundError:
+>       P7ZIP_AVAILABLE =3D False
+>
+> > @@ -591,6 +591,47 @@ class BootLinuxConsole(Test):
+> >          exec_command_and_wait_for_pattern(self, 'reboot',
+> >                                                  'reboot: Restarting
+> system')
+> >
+> > +    @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage
+> limited')
+>
+>        @skipUnless(P7ZIP_AVAILABLE, '7z not installed')
+>
+
+Ah indeed, that makes sense. I'll add this check for v5.
+Now that we come accross this, I'm thinking that functionality like
+decompression
+might not be specific to the linux tests and perhaps should eventually come
+in a utility/helper .py file.
 
 Regards,
 Niek
 
 
-> -corey
 >
-> >
-> > Regards,
-> > Niek
-> >
-> >
-> > > -corey
-> > >
-> > > >
-> > > > On 1/8/20 9:00 PM, Niek Linnenbank wrote:
-> > > > > The Security Identifier device found in various Allwinner System =
-on
-> > > Chip
-> > > > > designs gives applications a per-board unique identifier. This
-> commit
-> > > > > adds support for the Allwinner Security Identifier using a 128-bi=
-t
-> > > > > UUID value as input.
-> > > > >
-> > > > > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> > > > > ---
-> > > > >   include/hw/arm/allwinner-h3.h   |   3 +
-> > > > >   include/hw/misc/allwinner-sid.h |  61 ++++++++++++
-> > > > >   hw/arm/allwinner-h3.c           |  11 ++-
-> > > > >   hw/arm/orangepi.c               |   4 +
-> > > > >   hw/misc/allwinner-sid.c         | 170
-> > > ++++++++++++++++++++++++++++++++
-> > > > >   hw/misc/Makefile.objs           |   1 +
-> > > > >   hw/misc/trace-events            |   4 +
-> > > > >   7 files changed, 253 insertions(+), 1 deletion(-)
-> > > > >   create mode 100644 include/hw/misc/allwinner-sid.h
-> > > > >   create mode 100644 hw/misc/allwinner-sid.c
-> > > > >
-> > > > > diff --git a/include/hw/arm/allwinner-h3.h
-> > > b/include/hw/arm/allwinner-h3.h
-> > > > > index 5a25a92eae..9ed365507c 100644
-> > > > > --- a/include/hw/arm/allwinner-h3.h
-> > > > > +++ b/include/hw/arm/allwinner-h3.h
-> > > > > @@ -46,6 +46,7 @@
-> > > > >   #include "hw/misc/allwinner-h3-ccu.h"
-> > > > >   #include "hw/misc/allwinner-cpucfg.h"
-> > > > >   #include "hw/misc/allwinner-h3-sysctrl.h"
-> > > > > +#include "hw/misc/allwinner-sid.h"
-> > > > >   #include "target/arm/cpu.h"
-> > > > >   /**
-> > > > > @@ -63,6 +64,7 @@ enum {
-> > > > >       AW_H3_SRAM_A2,
-> > > > >       AW_H3_SRAM_C,
-> > > > >       AW_H3_SYSCTRL,
-> > > > > +    AW_H3_SID,
-> > > > >       AW_H3_EHCI0,
-> > > > >       AW_H3_OHCI0,
-> > > > >       AW_H3_EHCI1,
-> > > > > @@ -115,6 +117,7 @@ typedef struct AwH3State {
-> > > > >       AwH3ClockCtlState ccu;
-> > > > >       AwCpuCfgState cpucfg;
-> > > > >       AwH3SysCtrlState sysctrl;
-> > > > > +    AwSidState sid;
-> > > > >       GICState gic;
-> > > > >       MemoryRegion sram_a1;
-> > > > >       MemoryRegion sram_a2;
-> > > > > diff --git a/include/hw/misc/allwinner-sid.h
-> > > b/include/hw/misc/allwinner-sid.h
-> > > > > new file mode 100644
-> > > > > index 0000000000..41189967e2
-> > > > > --- /dev/null
-> > > > > +++ b/include/hw/misc/allwinner-sid.h
-> > > > > @@ -0,0 +1,61 @@
-> > > > > +/*
-> > > > > + * Allwinner Security ID emulation
-> > > > > + *
-> > > > > + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-> > > > > + *
-> > > > > + * This program is free software: you can redistribute it and/or
-> > > modify
-> > > > > + * it under the terms of the GNU General Public License as
-> published
-> > > by
-> > > > > + * the Free Software Foundation, either version 2 of the License=
-,
-> or
-> > > > > + * (at your option) any later version.
-> > > > > + *
-> > > > > + * This program is distributed in the hope that it will be usefu=
-l,
-> > > > > + * but WITHOUT ANY WARRANTY; without even the implied warranty o=
-f
-> > > > > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > > > > + * GNU General Public License for more details.
-> > > > > + *
-> > > > > + * You should have received a copy of the GNU General Public
-> License
-> > > > > + * along with this program.  If not, see <
-> > > http://www.gnu.org/licenses/>.
-> > > > > + */
-> > > > > +
-> > > > > +#ifndef HW_MISC_ALLWINNER_SID_H
-> > > > > +#define HW_MISC_ALLWINNER_SID_H
-> > > > > +
-> > > > > +#include "qemu/osdep.h"
-> > > > > +#include "qom/object.h"
-> > > > > +#include "hw/sysbus.h"
-> > > > > +#include "qemu/uuid.h"
-> > > > > +
-> > > > > +/**
-> > > > > + * Object model
-> > > > > + * @{
-> > > > > + */
-> > > > > +
-> > > > > +#define TYPE_AW_SID    "allwinner-sid"
-> > > > > +#define AW_SID(obj) \
-> > > > > +    OBJECT_CHECK(AwSidState, (obj), TYPE_AW_SID)
-> > > > > +
-> > > > > +/** @} */
-> > > > > +
-> > > > > +/**
-> > > > > + * Allwinner Security ID object instance state
-> > > > > + */
-> > > > > +typedef struct AwSidState {
-> > > > > +    /*< private >*/
-> > > > > +    SysBusDevice parent_obj;
-> > > > > +    /*< public >*/
-> > > > > +
-> > > > > +    /** Maps I/O registers in physical memory */
-> > > > > +    MemoryRegion iomem;
-> > > > > +
-> > > > > +    /** Control register defines how and what to read */
-> > > > > +    uint32_t control;
-> > > > > +
-> > > > > +    /** RdKey register contains the data retrieved by the device
-> */
-> > > > > +    uint32_t rdkey;
-> > > > > +
-> > > > > +    /** Stores the emulated device identifier */
-> > > > > +    QemuUUID identifier;
-> > > > > +
-> > > > > +} AwSidState;
-> > > > > +
-> > > > > +#endif /* HW_MISC_ALLWINNER_SID_H */
-> > > > > diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-> > > > > index e9ad6d23df..af7317e86a 100644
-> > > > > --- a/hw/arm/allwinner-h3.c
-> > > > > +++ b/hw/arm/allwinner-h3.c
-> > > > > @@ -36,6 +36,7 @@ const hwaddr allwinner_h3_memmap[] =3D {
-> > > > >       [AW_H3_SRAM_A2]    =3D 0x00044000,
-> > > > >       [AW_H3_SRAM_C]     =3D 0x00010000,
-> > > > >       [AW_H3_SYSCTRL]    =3D 0x01c00000,
-> > > > > +    [AW_H3_SID]        =3D 0x01c14000,
-> > > > >       [AW_H3_EHCI0]      =3D 0x01c1a000,
-> > > > >       [AW_H3_OHCI0]      =3D 0x01c1a400,
-> > > > >       [AW_H3_EHCI1]      =3D 0x01c1b000,
-> > > > > @@ -76,7 +77,6 @@ struct AwH3Unimplemented {
-> > > > >       { "mmc0",      0x01c0f000, 4 * KiB },
-> > > > >       { "mmc1",      0x01c10000, 4 * KiB },
-> > > > >       { "mmc2",      0x01c11000, 4 * KiB },
-> > > > > -    { "sid",       0x01c14000, 1 * KiB },
-> > > > >       { "crypto",    0x01c15000, 4 * KiB },
-> > > > >       { "msgbox",    0x01c17000, 4 * KiB },
-> > > > >       { "spinlock",  0x01c18000, 4 * KiB },
-> > > > > @@ -196,6 +196,11 @@ static void allwinner_h3_init(Object *obj)
-> > > > >       sysbus_init_child_obj(obj, "cpucfg", &s->cpucfg,
-> > > sizeof(s->cpucfg),
-> > > > >                             TYPE_AW_CPUCFG);
-> > > > > +
-> > > > > +    sysbus_init_child_obj(obj, "sid", &s->sid, sizeof(s->sid),
-> > > > > +                          TYPE_AW_SID);
-> > > > > +    object_property_add_alias(obj, "identifier", OBJECT(&s->sid)=
-,
-> > > > > +                              "identifier", &error_abort);
-> > > > >   }
-> > > > >   static void allwinner_h3_realize(DeviceState *dev, Error **errp=
+> > +    def test_arm_orangepi_bionic(self):
+> > +        """
+> > +        :avocado: tags=3Darch:arm
+> > +        :avocado: tags=3Dmachine:orangepi-pc
+> > +        """
+> > +
+> > +        # This test download a 196MB compressed image and expand it to
+> 932MB...
+> > +        image_url =3D ('https://dl.armbian.com/orangepipc/archive/'
+> > +
+>  'Armbian_19.11.3_Orangepipc_bionic_current_5.3.9.7z')
+> > +        image_hash =3D '196a8ffb72b0123d92cea4a070894813d305c71e'
+> > +        image_path_7z =3D self.fetch_asset(image_url,
+> asset_hash=3Dimage_hash)
+> > +        image_name =3D
+> 'Armbian_19.11.3_Orangepipc_bionic_current_5.3.9.img'
+> > +        image_path =3D os.path.join(self.workdir, image_name)
+> > +        process.run("7z e -o%s %s" % (self.workdir, image_path_7z))
+>
+> Because here 7z is called ^
+>
+> > +
+> > +        self.vm.set_console()
+> > +        self.vm.add_args('-drive', 'file=3D' + image_path +
+> ',if=3Dsd,format=3Draw',
+> > +                         '-nic', 'user',
+> > +                         '-no-reboot')
+> > +        self.vm.launch()
+> > +
+> > +        kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
+> > +                               'console=3DttyS0,115200 '
+> > +                               'loglevel=3D7 '
+> > +                               'nosmp '
+> > +                               'systemd.default_timeout_start_sec=3D90=
+00 '
+> > +
+>  'systemd.mask=3Darmbian-zram-config.service '
+> > +                               'systemd.mask=3Darmbian-ramlog.service'=
 )
-> > > > > @@ -316,6 +321,10 @@ static void allwinner_h3_realize(DeviceState
-> > > *dev, Error **errp)
-> > > > >       qdev_init_nofail(DEVICE(&s->cpucfg));
-> > > > >       sysbus_mmio_map(SYS_BUS_DEVICE(&s->cpucfg), 0,
-> > > s->memmap[AW_H3_CPUCFG]);
-> > > > > +    /* Security Identifier */
-> > > > > +    qdev_init_nofail(DEVICE(&s->sid));
-> > > > > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sid), 0,
-> s->memmap[AW_H3_SID]);
-> > > > > +
-> > > > >       /* Universal Serial Bus */
-> > > > >       sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI0=
-],
-> > > > >                            qdev_get_gpio_in(DEVICE(&s->gic),
-> > > > > diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-> > > > > index 051184f14f..a7f870c88b 100644
-> > > > > --- a/hw/arm/orangepi.c
-> > > > > +++ b/hw/arm/orangepi.c
-> > > > > @@ -54,6 +54,10 @@ static void orangepi_init(MachineState *machin=
-e)
-> > > > >       object_property_set_int(OBJECT(s->h3), 24000000, "clk1-freq=
-",
-> > > > >                               &error_abort);
-> > > > > +    /* Setup SID properties */
-> > > > > +    qdev_prop_set_string(DEVICE(s->h3), "identifier",
-> > > > > +                         "8100c002-0001-0002-0003-000044556677")=
-;
-> > > > > +
-> > > > >       /* Mark H3 object realized */
-> > > > >       object_property_set_bool(OBJECT(s->h3), true, "realized",
-> > > &error_abort);
-> > > > > diff --git a/hw/misc/allwinner-sid.c b/hw/misc/allwinner-sid.c
-> > > > > new file mode 100644
-> > > > > index 0000000000..954de935bc
-> > > > > --- /dev/null
-> > > > > +++ b/hw/misc/allwinner-sid.c
-> > > > > @@ -0,0 +1,170 @@
-> > > > > +/*
-> > > > > + * Allwinner Security ID emulation
-> > > > > + *
-> > > > > + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-> > > > > + *
-> > > > > + * This program is free software: you can redistribute it and/or
-> > > modify
-> > > > > + * it under the terms of the GNU General Public License as
-> published
-> > > by
-> > > > > + * the Free Software Foundation, either version 2 of the License=
-,
-> or
-> > > > > + * (at your option) any later version.
-> > > > > + *
-> > > > > + * This program is distributed in the hope that it will be usefu=
-l,
-> > > > > + * but WITHOUT ANY WARRANTY; without even the implied warranty o=
-f
-> > > > > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > > > > + * GNU General Public License for more details.
-> > > > > + *
-> > > > > + * You should have received a copy of the GNU General Public
-> License
-> > > > > + * along with this program.  If not, see <
-> > > http://www.gnu.org/licenses/>.
-> > > > > + */
-> > > > > +
-> > > > > +#include "qemu/osdep.h"
-> > > > > +#include "qemu/units.h"
-> > > > > +#include "hw/sysbus.h"
-> > > > > +#include "migration/vmstate.h"
-> > > > > +#include "qemu/log.h"
-> > > > > +#include "qemu/module.h"
-> > > > > +#include "qemu/guest-random.h"
-> > > > > +#include "qapi/error.h"
-> > > > > +#include "hw/qdev-properties.h"
-> > > > > +#include "hw/misc/allwinner-sid.h"
-> > > > > +#include "trace.h"
-> > > > > +
-> > > > > +/* SID register offsets */
-> > > > > +enum {
-> > > > > +    REG_PRCTL =3D 0x40,   /* Control */
-> > > > > +    REG_RDKEY =3D 0x60,   /* Read Key */
-> > > > > +};
-> > > > > +
-> > > > > +/* SID register flags */
-> > > > > +enum {
-> > > > > +    REG_PRCTL_WRITE   =3D 0x0002, /* Unknown write flag */
-> > > > > +    REG_PRCTL_OP_LOCK =3D 0xAC00, /* Lock operation */
-> > > > > +};
-> > > > > +
-> > > > > +static uint64_t allwinner_sid_read(void *opaque, hwaddr offset,
-> > > > > +                                   unsigned size)
-> > > > > +{
-> > > > > +    const AwSidState *s =3D AW_SID(opaque);
-> > > > > +    uint64_t val =3D 0;
-> > > > > +
-> > > > > +    switch (offset) {
-> > > > > +    case REG_PRCTL:    /* Control */
-> > > > > +        val =3D s->control;
-> > > > > +        break;
-> > > > > +    case REG_RDKEY:    /* Read Key */
-> > > > > +        val =3D s->rdkey;
-> > > > > +        break;
-> > > > > +    default:
-> > > > > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset
-> > > 0x%04x\n",
-> > > > > +                      __func__, (uint32_t)offset);
-> > > > > +        return 0;
-> > > > > +    }
-> > > > > +
-> > > > > +    trace_allwinner_sid_read(offset, val, size);
-> > > > > +
-> > > > > +    return val;
-> > > > > +}
-> > > > > +
-> > > > > +static void allwinner_sid_write(void *opaque, hwaddr offset,
-> > > > > +                                uint64_t val, unsigned size)
-> > > > > +{
-> > > > > +    AwSidState *s =3D AW_SID(opaque);
-> > > > > +
-> > > > > +    trace_allwinner_sid_write(offset, val, size);
-> > > > > +
-> > > > > +    switch (offset) {
-> > > > > +    case REG_PRCTL:    /* Control */
-> > > > > +        s->control =3D val;
-> > > > > +
-> > > > > +        if ((s->control & REG_PRCTL_OP_LOCK) &&
-> > > > > +            (s->control & REG_PRCTL_WRITE)) {
-> > > > > +            uint32_t id =3D s->control >> 16;
-> > > > > +
-> > > > > +            if (id < sizeof(QemuUUID)) {
-> > > > > +                s->rdkey =3D (s->identifier.data[id]) |
-> > > > > +                           (s->identifier.data[id + 1] << 8) |
-> > > > > +                           (s->identifier.data[id + 2] << 16) |
-> > > > > +                           (s->identifier.data[id + 3] << 24);
-> > > > > +            }
-> > > > > +        }
-> > > > > +        s->control &=3D ~REG_PRCTL_WRITE;
-> > > > > +        break;
-> > > > > +    case REG_RDKEY:    /* Read Key */
-> > > > > +        break;
-> > > > > +    default:
-> > > > > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset
-> > > 0x%04x\n",
-> > > > > +                      __func__, (uint32_t)offset);
-> > > > > +        break;
-> > > > > +    }
-> > > > > +}
-> > > > > +
-> > > > > +static const MemoryRegionOps allwinner_sid_ops =3D {
-> > > > > +    .read =3D allwinner_sid_read,
-> > > > > +    .write =3D allwinner_sid_write,
-> > > > > +    .endianness =3D DEVICE_NATIVE_ENDIAN,
-> > > > > +    .valid =3D {
-> > > > > +        .min_access_size =3D 4,
-> > > > > +        .max_access_size =3D 4,
-> > > > > +    },
-> > > > > +    .impl.min_access_size =3D 4,
-> > > > > +};
-> > > > > +
-> > > > > +static void allwinner_sid_reset(DeviceState *dev)
-> > > > > +{
-> > > > > +    AwSidState *s =3D AW_SID(dev);
-> > > > > +
-> > > > > +    /* Set default values for registers */
-> > > > > +    s->control =3D 0;
-> > > > > +    s->rdkey =3D 0;
-> > > > > +}
-> > > > > +
-> > > > > +static void allwinner_sid_init(Object *obj)
-> > > > > +{
-> > > > > +    SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
-> > > > > +    AwSidState *s =3D AW_SID(obj);
-> > > > > +
-> > > > > +    /* Memory mapping */
-> > > > > +    memory_region_init_io(&s->iomem, OBJECT(s),
-> &allwinner_sid_ops, s,
-> > > > > +                           TYPE_AW_SID, 1 * KiB);
-> > > > > +    sysbus_init_mmio(sbd, &s->iomem);
-> > > > > +}
-> > > > > +
-> > > > > +static Property allwinner_sid_properties[] =3D {
-> > > > > +    DEFINE_PROP_UUID_NODEFAULT("identifier", AwSidState,
-> identifier),
-> > > > > +    DEFINE_PROP_END_OF_LIST()
-> > > > > +};
-> > > > > +
-> > > > > +static const VMStateDescription allwinner_sid_vmstate =3D {
-> > > > > +    .name =3D "allwinner-sid",
-> > > > > +    .version_id =3D 1,
-> > > > > +    .minimum_version_id =3D 1,
-> > > > > +    .fields =3D (VMStateField[]) {
-> > > > > +        VMSTATE_UINT32(control, AwSidState),
-> > > > > +        VMSTATE_UINT32(rdkey, AwSidState),
-> > > > > +        VMSTATE_END_OF_LIST()
-> > > > > +    }
-> > > > > +};
-> > > > > +
-> > > > > +static void allwinner_sid_class_init(ObjectClass *klass, void
-> *data)
-> > > > > +{
-> > > > > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> > > > > +
-> > > > > +    dc->reset =3D allwinner_sid_reset;
-> > > > > +    dc->vmsd =3D &allwinner_sid_vmstate;
-> > > > > +    dc->props =3D allwinner_sid_properties;
-> > > > > +}
-> > > > > +
-> > > > > +static const TypeInfo allwinner_sid_info =3D {
-> > > > > +    .name          =3D TYPE_AW_SID,
-> > > > > +    .parent        =3D TYPE_SYS_BUS_DEVICE,
-> > > > > +    .instance_init =3D allwinner_sid_init,
-> > > > > +    .instance_size =3D sizeof(AwSidState),
-> > > > > +    .class_init    =3D allwinner_sid_class_init,
-> > > > > +};
-> > > > > +
-> > > > > +static void allwinner_sid_register(void)
-> > > > > +{
-> > > > > +    type_register_static(&allwinner_sid_info);
-> > > > > +}
-> > > > > +
-> > > > > +type_init(allwinner_sid_register)
-> > > > > diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-> > > > > index 12c2c306b5..59500d5681 100644
-> > > > > --- a/hw/misc/Makefile.objs
-> > > > > +++ b/hw/misc/Makefile.objs
-> > > > > @@ -31,6 +31,7 @@ common-obj-$(CONFIG_IVSHMEM_DEVICE) +=3D ivshme=
-m.o
-> > > > >   common-obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3-ccu.o
-> > > > >   obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-cpucfg.o
-> > > > >   common-obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-h3-sysctrl.o
-> > > > > +common-obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-sid.o
-> > > > >   common-obj-$(CONFIG_REALVIEW) +=3D arm_sysctl.o
-> > > > >   common-obj-$(CONFIG_NSERIES) +=3D cbus.o
-> > > > >   common-obj-$(CONFIG_ECCMEMCTL) +=3D eccmemctl.o
-> > > > > diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-> > > > > index d3e0952429..67d8bf493c 100644
-> > > > > --- a/hw/misc/trace-events
-> > > > > +++ b/hw/misc/trace-events
-> > > > > @@ -5,6 +5,10 @@ allwinner_cpucfg_cpu_reset(uint8_t cpu_id,
-> uint32_t
-> > > reset_addr) "id %u, reset_ad
-> > > > >   allwinner_cpucfg_read(uint64_t offset, uint64_t data, unsigned
-> size)
-> > > "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
-> > > > >   allwinner_cpucfg_write(uint64_t offset, uint64_t data, unsigned
-> > > size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
-> > > > > +# allwinner-sid.c
-> > > > > +allwinner_sid_read(uint64_t offset, uint64_t data, unsigned size=
-)
-> > > "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
-> > > > > +allwinner_sid_write(uint64_t offset, uint64_t data, unsigned siz=
-e)
-> > > "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
-> > > > > +
-> > > > >   # eccmemctl.c
-> > > > >   ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
-> > > > >   ecc_mem_writel_mdr(uint32_t val) "Write memory delay 0x%08x"
-> > > > >
-> > > >
-> > >
+> > +
+> > +        self.wait_for_console_pattern('U-Boot SPL')
+> > +        self.wait_for_console_pattern('Autoboot in ')
+> > +        exec_command_and_wait_for_pattern(self, ' ', '=3D>')
+> > +        exec_command_and_wait_for_pattern(self, "setenv extraargs '" +
+> > +                                                kernel_command_line +
+> "'", '=3D>')
+> > +        exec_command_and_wait_for_pattern(self, 'boot', 'Starting
+> kernel ...');
+> > +
+> > +        self.wait_for_console_pattern('systemd[1]: Set hostname ' +
+> > +                                      'to <orangepipc>')
+> > +        self.wait_for_console_pattern('Starting Load Kernel Modules...=
+')
+> > +
+> >      def test_s390x_s390_ccw_virtio(self):
+> >          """
+> >          :avocado: tags=3Darch:s390x
 > >
-> >
-> > --
-> > Niek Linnenbank
 >
 
 
 --=20
 Niek Linnenbank
 
---0000000000009bdd44059deeb005
+--00000000000036006e059deedc89
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div>Hi Corey,<br></div><br><div class=3D"gmail_quote"><di=
-v dir=3D"ltr" class=3D"gmail_attr">On Mon, Feb 3, 2020 at 2:10 PM Corey Min=
-yard &lt;<a href=3D"mailto:cminyard@mvista.com">cminyard@mvista.com</a>&gt;=
- wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
-0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Sun, =
-Feb 02, 2020 at 10:27:49PM +0100, Niek Linnenbank wrote:<br>
-&gt; Hi Corey,<br>
+<div dir=3D"ltr"><div>Hi Philippe,<br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Sun, Jan 19, 2020 at 11:30 PM Phil=
+ippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.=
+org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"marg=
+in:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1e=
+x">On 1/19/20 1:50 AM, Niek Linnenbank wrote:<br>
+&gt; From: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.or=
+g" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
 &gt; <br>
-&gt; Thanks for reviewing!<br>
+&gt; This test boots Ubuntu Bionic on a OrangePi PC board.<br>
 &gt; <br>
-&gt; On Mon, Jan 20, 2020 at 6:59 PM Corey Minyard &lt;<a href=3D"mailto:cm=
-inyard@mvista.com" target=3D"_blank">cminyard@mvista.com</a>&gt; wrote:<br>
+&gt; As it requires 1GB of storage, and is slow, this test is disabled<br>
+&gt; on automatic CI testing.<br>
 &gt; <br>
-&gt; &gt; On Sat, Jan 18, 2020 at 04:25:08PM +0100, Philippe Mathieu-Daud=
-=C3=A9 wrote:<br>
-&gt; &gt; &gt; Cc&#39;ing Corey/David for good advices about using UUID.<br=
->
-&gt; &gt;<br>
-&gt; &gt; Is there any reason you didn&#39;t use the built-in qemu UUID for=
- this?=C2=A0 It<br>
-&gt; &gt; would simplify things in general.<br>
-&gt; &gt;<br>
-&gt; <br>
-&gt; Currently the Allwinner SID device is using the QemuUUID type from<br>
-&gt; include/qemu/uuid.h.<br>
-&gt; Is that the build-in UUID you are referring to or should I use somethi=
-ng<br>
-&gt; else?<br>
-<br>
-You are using the QemuUUID type, which is of course what you should do,<br>
-but you aren&#39;t using the UUID generated by qemu (at least that I can fi=
-nd).<br>
-That in include/sysemu/sysemu.h and is named qemu_uuid.=C2=A0 Whether you<b=
+&gt; It is useful for workstation testing. Currently Avocado timeouts too<b=
 r>
-should use that or not depends on your needs.=C2=A0 If you just need some<b=
-r>
-uuid, then that&#39;s what you should probably use.=C2=A0 If you need somet=
-hing<br>
-the user can individually control for this device, for instance, then<br>
-that probably won&#39;t do.<br></blockquote><div><br></div><div>Ah I did no=
-t know about the qemu_uuid variable, thanks for pointing that out.</div><di=
-v>Basically the SID identifier is a number that is unique for each board th=
-at comes</div><div>out of the factory. It is currently used by U-Boot to as=
- input to generate a MAC address.</div><div><br></div><div>If I understand =
-correctly, qemu_uuid is optional and by default zero. </div><div>However th=
-e SID value should not be zero, as otherwise U-Boot can&#39;t pick a MAC ad=
-dress</div><div>resulting in a non-working ethernet device.<br></div><div><=
-br></div><div>Currently the hw/arm/orangepi.c machine specifies a fixed SID=
- to be used for the emulated board,</div><div>also containing a prefix (810=
-0c002) that indicates the H3 chipset. One thing that I am strugling with is=
- that</div><div>I&#39;m not able to override the property using &#39;-globa=
-l&#39;, if hw/arm/orangepi.c initializes the property with qdev_prop_set_st=
-ring:<br></div><div><br></div><div>$ qemu-system-arm -M orangepi-pc -kernel=
- u-boot -nographic -nic user \<br></div><div>-global allwinner-sid.identifi=
-er=3D8100c002-0001-0002-0003-000044556688</div><div>=C2=A0</div><div>If I d=
-on&#39;t set the property in hw/arm/orangepi.c, I can set it with &#39;-glo=
-bal&#39;. Do you perhaps have a</div><div>recommendation how to improve tha=
-t? Basically what is needed is that the machine sets the default</div><div>=
-property including the chip prefix, and that the user can override it. Alth=
-ough it is not required for a</div><div>working emulated board, it would be=
- a nice-to-have that the user can set it.<br></div><div><br></div><blockquo=
-te class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px =
-solid rgb(204,204,204);padding-left:1ex">
+&gt; quickly, so we can&#39;t run userland commands.<br>
+&gt; <br>
+&gt; The kernel image and DeviceTree blob are built by the Armbian<br>
+&gt; project (based on Debian):<br>
+&gt; <a href=3D"https://www.armbian.com/orange-pi-pc/" rel=3D"noreferrer" t=
+arget=3D"_blank">https://www.armbian.com/orange-pi-pc/</a><br>
+&gt; <br>
+&gt; The Ubuntu image is downloaded from:<br>
+&gt; <a href=3D"https://dl.armbian.com/orangepipc/Bionic_current" rel=3D"no=
+referrer" target=3D"_blank">https://dl.armbian.com/orangepipc/Bionic_curren=
+t</a><br>
+<br>
+I forgot the image is compressed is compressed with 7z, which is not<br>
+provided by avocado.utils.archive. This patch requires more checks, see<br>
+inlined...<br>
 <br>
 &gt; <br>
+&gt; This test can be run using:<br>
 &gt; <br>
-&gt; &gt; Also, in case no one else say, you have tabs in your code that yo=
-u need<br>
-&gt; &gt; to get rid of.<br>
-&gt; &gt;<br>
-&gt; &gt;<br>
-&gt; If there are any tabs in the code, it was not intended. I re-checked t=
-his<br>
-&gt; patch and others<br>
-&gt; again but found no tabs in the code.<br>
-&gt; Could you please point out where you found the extra tabs?<br>
-<br>
-My apologies, I saw 1-character misalignments, and that usually means<br>
-that there&#39;s a tab.=C2=A0 But it looks like it has something to do with=
- the<br>
-way it was forwarded.=C2=A0 I didn&#39;t get the original email.<br>
-<br></blockquote><div>Ah yes that is possible indeed. I&#39;ll add you to t=
-he CC list for the next version of this patch series.</div><div><br></div><=
-div>Regards,</div><div>Niek<br></div><div>=C2=A0</div><blockquote class=3D"=
-gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(20=
-4,204,204);padding-left:1ex">
--corey<br>
-<br>
-&gt; <br>
-&gt; Regards,<br>
-&gt; Niek<br>
-&gt; <br>
-&gt; <br>
-&gt; &gt; -corey<br>
-&gt; &gt;<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; On 1/8/20 9:00 PM, Niek Linnenbank wrote:<br>
-&gt; &gt; &gt; &gt; The Security Identifier device found in various Allwinn=
-er System on<br>
-&gt; &gt; Chip<br>
-&gt; &gt; &gt; &gt; designs gives applications a per-board unique identifie=
-r. This commit<br>
-&gt; &gt; &gt; &gt; adds support for the Allwinner Security Identifier usin=
-g a 128-bit<br>
-&gt; &gt; &gt; &gt; UUID value as input.<br>
-&gt; &gt; &gt; &gt;<br>
-&gt; &gt; &gt; &gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:ni=
-eklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<=
+&gt;=C2=A0 =C2=A0$ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes \<br>
+&gt;=C2=A0 =C2=A0 =C2=A0avocado --show=3Dapp,console run -t machine:orangep=
+i-pc \<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0tests/acceptance/boot_linux_console.py<br>
+&gt;=C2=A0 =C2=A0console: U-Boot SPL 2019.04-armbian (Nov 18 2019 - 23:08:3=
+5 +0100)<br>
+&gt;=C2=A0 =C2=A0console: DRAM: 1024 MiB<br>
+&gt;=C2=A0 =C2=A0console: Failed to set core voltage! Can&#39;t set CPU fre=
+quency<br>
+&gt;=C2=A0 =C2=A0console: Trying to boot from MMC1<br>
+&gt;=C2=A0 =C2=A0console: U-Boot 2019.04-armbian (Nov 18 2019 - 23:08:35 +0=
+100) Allwinner Technology<br>
+&gt;=C2=A0 =C2=A0console: CPU:=C2=A0 =C2=A0Allwinner H3 (SUN8I 0000)<br>
+&gt;=C2=A0 =C2=A0console: Model: Xunlong Orange Pi PC<br>
+&gt;=C2=A0 =C2=A0console: DRAM:=C2=A0 1 GiB<br>
+&gt;=C2=A0 =C2=A0console: MMC:=C2=A0 =C2=A0mmc@1c0f000: 0<br>
+&gt;=C2=A0 =C2=A0[...]<br>
+&gt;=C2=A0 =C2=A0console: Uncompressing Linux... done, booting the kernel.<=
 br>
-&gt; &gt; &gt; &gt; ---<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0include/hw/arm/allwinner-h3.h=C2=A0 =C2=A0|=
-=C2=A0 =C2=A03 +<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0include/hw/misc/allwinner-sid.h |=C2=A0 61 =
-++++++++++++<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0|=C2=A0 11 ++-<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0hw/arm/orangepi.c=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A04 +<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0hw/misc/allwinner-sid.c=C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0| 170<br>
-&gt; &gt; ++++++++++++++++++++++++++++++++<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0hw/misc/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0hw/misc/trace-events=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A04 +<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A07 files changed, 253 insertions(+), 1 delet=
-ion(-)<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0create mode 100644 include/hw/misc/allwinne=
-r-sid.h<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0create mode 100644 hw/misc/allwinner-sid.c<=
-br>
-&gt; &gt; &gt; &gt;<br>
-&gt; &gt; &gt; &gt; diff --git a/include/hw/arm/allwinner-h3.h<br>
-&gt; &gt; b/include/hw/arm/allwinner-h3.h<br>
-&gt; &gt; &gt; &gt; index 5a25a92eae..9ed365507c 100644<br>
-&gt; &gt; &gt; &gt; --- a/include/hw/arm/allwinner-h3.h<br>
-&gt; &gt; &gt; &gt; +++ b/include/hw/arm/allwinner-h3.h<br>
-&gt; &gt; &gt; &gt; @@ -46,6 +46,7 @@<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0#include &quot;hw/misc/allwinner-h3-ccu.h&q=
-uot;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0#include &quot;hw/misc/allwinner-cpucfg.h&q=
-uot;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0#include &quot;hw/misc/allwinner-h3-sysctrl=
-.h&quot;<br>
-&gt; &gt; &gt; &gt; +#include &quot;hw/misc/allwinner-sid.h&quot;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0#include &quot;target/arm/cpu.h&quot;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0/**<br>
-&gt; &gt; &gt; &gt; @@ -63,6 +64,7 @@ enum {<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_SRAM_A2,<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_SRAM_C,<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_SYSCTRL,<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 AW_H3_SID,<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_EHCI0,<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_OHCI0,<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AW_H3_EHCI1,<br>
-&gt; &gt; &gt; &gt; @@ -115,6 +117,7 @@ typedef struct AwH3State {<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AwH3ClockCtlState ccu;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AwCpuCfgState cpucfg;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AwH3SysCtrlState sysctrl;<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 AwSidState sid;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0GICState gic;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0MemoryRegion sram_a1;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0MemoryRegion sram_a2;<br>
-&gt; &gt; &gt; &gt; diff --git a/include/hw/misc/allwinner-sid.h<br>
-&gt; &gt; b/include/hw/misc/allwinner-sid.h<br>
-&gt; &gt; &gt; &gt; new file mode 100644<br>
-&gt; &gt; &gt; &gt; index 0000000000..41189967e2<br>
-&gt; &gt; &gt; &gt; --- /dev/null<br>
-&gt; &gt; &gt; &gt; +++ b/include/hw/misc/allwinner-sid.h<br>
-&gt; &gt; &gt; &gt; @@ -0,0 +1,61 @@<br>
-&gt; &gt; &gt; &gt; +/*<br>
-&gt; &gt; &gt; &gt; + * Allwinner Security ID emulation<br>
-&gt; &gt; &gt; &gt; + *<br>
-&gt; &gt; &gt; &gt; + * Copyright (C) 2019 Niek Linnenbank &lt;<a href=3D"m=
-ailto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com<=
-/a>&gt;<br>
-&gt; &gt; &gt; &gt; + *<br>
-&gt; &gt; &gt; &gt; + * This program is free software: you can redistribute=
- it and/or<br>
-&gt; &gt; modify<br>
-&gt; &gt; &gt; &gt; + * it under the terms of the GNU General Public Licens=
-e as published<br>
-&gt; &gt; by<br>
-&gt; &gt; &gt; &gt; + * the Free Software Foundation, either version 2 of t=
-he License, or<br>
-&gt; &gt; &gt; &gt; + * (at your option) any later version.<br>
-&gt; &gt; &gt; &gt; + *<br>
-&gt; &gt; &gt; &gt; + * This program is distributed in the hope that it wil=
-l be useful,<br>
-&gt; &gt; &gt; &gt; + * but WITHOUT ANY WARRANTY; without even the implied =
-warranty of<br>
-&gt; &gt; &gt; &gt; + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE=
-.=C2=A0 See the<br>
-&gt; &gt; &gt; &gt; + * GNU General Public License for more details.<br>
-&gt; &gt; &gt; &gt; + *<br>
-&gt; &gt; &gt; &gt; + * You should have received a copy of the GNU General =
-Public License<br>
-&gt; &gt; &gt; &gt; + * along with this program.=C2=A0 If not, see &lt;<br>
-&gt; &gt; <a href=3D"http://www.gnu.org/licenses/" rel=3D"noreferrer" targe=
-t=3D"_blank">http://www.gnu.org/licenses/</a>&gt;.<br>
-&gt; &gt; &gt; &gt; + */<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +#ifndef HW_MISC_ALLWINNER_SID_H<br>
-&gt; &gt; &gt; &gt; +#define HW_MISC_ALLWINNER_SID_H<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +#include &quot;qemu/osdep.h&quot;<br>
-&gt; &gt; &gt; &gt; +#include &quot;qom/object.h&quot;<br>
-&gt; &gt; &gt; &gt; +#include &quot;hw/sysbus.h&quot;<br>
-&gt; &gt; &gt; &gt; +#include &quot;qemu/uuid.h&quot;<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +/**<br>
-&gt; &gt; &gt; &gt; + * Object model<br>
-&gt; &gt; &gt; &gt; + * @{<br>
-&gt; &gt; &gt; &gt; + */<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +#define TYPE_AW_SID=C2=A0 =C2=A0 &quot;allwinner-sid&q=
-uot;<br>
-&gt; &gt; &gt; &gt; +#define AW_SID(obj) \<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 OBJECT_CHECK(AwSidState, (obj), TYPE_AW_=
-SID)<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +/** @} */<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +/**<br>
-&gt; &gt; &gt; &gt; + * Allwinner Security ID object instance state<br>
-&gt; &gt; &gt; &gt; + */<br>
-&gt; &gt; &gt; &gt; +typedef struct AwSidState {<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 /*&lt; private &gt;*/<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 SysBusDevice parent_obj;<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 /*&lt; public &gt;*/<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 /** Maps I/O registers in physical memor=
-y */<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 MemoryRegion iomem;<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 /** Control register defines how and wha=
-t to read */<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 uint32_t control;<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 /** RdKey register contains the data ret=
-rieved by the device */<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 uint32_t rdkey;<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 /** Stores the emulated device identifie=
-r */<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 QemuUUID identifier;<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +} AwSidState;<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +#endif /* HW_MISC_ALLWINNER_SID_H */<br>
-&gt; &gt; &gt; &gt; diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h=
-3.c<br>
-&gt; &gt; &gt; &gt; index e9ad6d23df..af7317e86a 100644<br>
-&gt; &gt; &gt; &gt; --- a/hw/arm/allwinner-h3.c<br>
-&gt; &gt; &gt; &gt; +++ b/hw/arm/allwinner-h3.c<br>
-&gt; &gt; &gt; &gt; @@ -36,6 +36,7 @@ const hwaddr allwinner_h3_memmap[] =
-=3D {<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_H3_SRAM_A2]=C2=A0 =C2=A0 =
-=3D 0x00044000,<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_H3_SRAM_C]=C2=A0 =C2=A0 =
-=C2=A0=3D 0x00010000,<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_H3_SYSCTRL]=C2=A0 =C2=A0 =
-=3D 0x01c00000,<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 [AW_H3_SID]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=3D 0x01c14000,<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_H3_EHCI0]=C2=A0 =C2=A0 =
-=C2=A0 =3D 0x01c1a000,<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_H3_OHCI0]=C2=A0 =C2=A0 =
-=C2=A0 =3D 0x01c1a400,<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_H3_EHCI1]=C2=A0 =C2=A0 =
-=C2=A0 =3D 0x01c1b000,<br>
-&gt; &gt; &gt; &gt; @@ -76,7 +77,6 @@ struct AwH3Unimplemented {<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0{ &quot;mmc0&quot;,=C2=A0 =C2=
-=A0 =C2=A0 0x01c0f000, 4 * KiB },<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0{ &quot;mmc1&quot;,=C2=A0 =C2=
-=A0 =C2=A0 0x01c10000, 4 * KiB },<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0{ &quot;mmc2&quot;,=C2=A0 =C2=
-=A0 =C2=A0 0x01c11000, 4 * KiB },<br>
-&gt; &gt; &gt; &gt; -=C2=A0 =C2=A0 { &quot;sid&quot;,=C2=A0 =C2=A0 =C2=A0 =
-=C2=A00x01c14000, 1 * KiB },<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0{ &quot;crypto&quot;,=C2=A0 =
-=C2=A0 0x01c15000, 4 * KiB },<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0{ &quot;msgbox&quot;,=C2=A0 =
-=C2=A0 0x01c17000, 4 * KiB },<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0{ &quot;spinlock&quot;,=C2=A0=
- 0x01c18000, 4 * KiB },<br>
-&gt; &gt; &gt; &gt; @@ -196,6 +196,11 @@ static void allwinner_h3_init(Obje=
-ct *obj)<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_init_child_obj(obj, &q=
-uot;cpucfg&quot;, &amp;s-&gt;cpucfg,<br>
-&gt; &gt; sizeof(s-&gt;cpucfg),<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0TYPE_AW_CPUCFG);<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 sysbus_init_child_obj(obj, &quot;sid&quo=
-t;, &amp;s-&gt;sid, sizeof(s-&gt;sid),<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 TYPE_AW_SID);<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 object_property_add_alias(obj, &quot;ide=
-ntifier&quot;, OBJECT(&amp;s-&gt;sid),<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;identifier&quot;=
-, &amp;error_abort);<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0}<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0static void allwinner_h3_realize(DeviceStat=
-e *dev, Error **errp)<br>
-&gt; &gt; &gt; &gt; @@ -316,6 +321,10 @@ static void allwinner_h3_realize(D=
-eviceState<br>
-&gt; &gt; *dev, Error **errp)<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_init_nofail(DEVICE(&amp;=
-s-&gt;cpucfg));<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_mmio_map(SYS_BUS_DEVIC=
-E(&amp;s-&gt;cpucfg), 0,<br>
-&gt; &gt; s-&gt;memmap[AW_H3_CPUCFG]);<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 /* Security Identifier */<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 qdev_init_nofail(DEVICE(&amp;s-&gt;sid))=
-;<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&g=
-t;sid), 0, s-&gt;memmap[AW_H3_SID]);<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* Universal Serial Bus */<br=
+&gt;=C2=A0 =C2=A0console: Booting Linux on physical CPU 0x0<br>
+&gt;=C2=A0 =C2=A0console: Linux version 5.3.9-sunxi (root@builder) (gcc ver=
+sion 8.3.0 (GNU Toolchain for the A-profile Architecture 8.3-2019.03 (arm-r=
+el-8.36))) #19.11.3 SMP Mon Nov 18 18:49:43 CET 2019<br>
+&gt;=C2=A0 =C2=A0console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7=
+), cr=3D50c5387d<br>
+&gt;=C2=A0 =C2=A0console: CPU: div instructions available: patching divisio=
+n code<br>
+&gt;=C2=A0 =C2=A0console: CPU: PIPT / VIPT nonaliasing data cache, VIPT ali=
+asing instruction cache<br>
+&gt;=C2=A0 =C2=A0console: OF: fdt: Machine model: Xunlong Orange Pi PC<br>
+&gt;=C2=A0 =C2=A0[...]<br>
+&gt;=C2=A0 =C2=A0console: EXT4-fs (mmcblk0p1): mounted filesystem with writ=
+eback data mode. Opts: (null)<br>
+&gt;=C2=A0 =C2=A0console: done.<br>
+&gt;=C2=A0 =C2=A0console: Begin: Running /scripts/local-bottom ... done.<br=
 >
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_create_simple(TYPE_AW_=
-H3_EHCI, s-&gt;memmap[AW_H3_EHCI0],<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&g=
-t;gic),<br>
-&gt; &gt; &gt; &gt; diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c<br>
-&gt; &gt; &gt; &gt; index 051184f14f..a7f870c88b 100644<br>
-&gt; &gt; &gt; &gt; --- a/hw/arm/orangepi.c<br>
-&gt; &gt; &gt; &gt; +++ b/hw/arm/orangepi.c<br>
-&gt; &gt; &gt; &gt; @@ -54,6 +54,10 @@ static void orangepi_init(MachineSta=
-te *machine)<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0object_property_set_int(OBJEC=
-T(s-&gt;h3), 24000000, &quot;clk1-freq&quot;,<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&amp;error_abort);<b=
+&gt;=C2=A0 =C2=A0console: Begin: Running /scripts/init-bottom ... done.<br>
+&gt;=C2=A0 =C2=A0console: systemd[1]: systemd 237 running in system mode. (=
+...)<br>
+&gt;=C2=A0 =C2=A0console: systemd[1]: Detected architecture arm.<br>
+&gt;=C2=A0 =C2=A0console: Welcome to Ubuntu 18.04.3 LTS!<br>
+&gt;=C2=A0 =C2=A0console: systemd[1]: Set hostname to &lt;orangepipc&gt;.<b=
 r>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 /* Setup SID properties */<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 qdev_prop_set_string(DEVICE(s-&gt;h3), &=
-quot;identifier&quot;,<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;8100c002-0001-0002-0003-0000445=
-56677&quot;);<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* Mark H3 object realized */=
-<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0object_property_set_bool(OBJE=
-CT(s-&gt;h3), true, &quot;realized&quot;,<br>
-&gt; &gt; &amp;error_abort);<br>
-&gt; &gt; &gt; &gt; diff --git a/hw/misc/allwinner-sid.c b/hw/misc/allwinne=
-r-sid.c<br>
-&gt; &gt; &gt; &gt; new file mode 100644<br>
-&gt; &gt; &gt; &gt; index 0000000000..954de935bc<br>
-&gt; &gt; &gt; &gt; --- /dev/null<br>
-&gt; &gt; &gt; &gt; +++ b/hw/misc/allwinner-sid.c<br>
-&gt; &gt; &gt; &gt; @@ -0,0 +1,170 @@<br>
-&gt; &gt; &gt; &gt; +/*<br>
-&gt; &gt; &gt; &gt; + * Allwinner Security ID emulation<br>
-&gt; &gt; &gt; &gt; + *<br>
-&gt; &gt; &gt; &gt; + * Copyright (C) 2019 Niek Linnenbank &lt;<a href=3D"m=
-ailto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com<=
-/a>&gt;<br>
-&gt; &gt; &gt; &gt; + *<br>
-&gt; &gt; &gt; &gt; + * This program is free software: you can redistribute=
- it and/or<br>
-&gt; &gt; modify<br>
-&gt; &gt; &gt; &gt; + * it under the terms of the GNU General Public Licens=
-e as published<br>
-&gt; &gt; by<br>
-&gt; &gt; &gt; &gt; + * the Free Software Foundation, either version 2 of t=
-he License, or<br>
-&gt; &gt; &gt; &gt; + * (at your option) any later version.<br>
-&gt; &gt; &gt; &gt; + *<br>
-&gt; &gt; &gt; &gt; + * This program is distributed in the hope that it wil=
-l be useful,<br>
-&gt; &gt; &gt; &gt; + * but WITHOUT ANY WARRANTY; without even the implied =
-warranty of<br>
-&gt; &gt; &gt; &gt; + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE=
-.=C2=A0 See the<br>
-&gt; &gt; &gt; &gt; + * GNU General Public License for more details.<br>
-&gt; &gt; &gt; &gt; + *<br>
-&gt; &gt; &gt; &gt; + * You should have received a copy of the GNU General =
-Public License<br>
-&gt; &gt; &gt; &gt; + * along with this program.=C2=A0 If not, see &lt;<br>
-&gt; &gt; <a href=3D"http://www.gnu.org/licenses/" rel=3D"noreferrer" targe=
-t=3D"_blank">http://www.gnu.org/licenses/</a>&gt;.<br>
-&gt; &gt; &gt; &gt; + */<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +#include &quot;qemu/osdep.h&quot;<br>
-&gt; &gt; &gt; &gt; +#include &quot;qemu/units.h&quot;<br>
-&gt; &gt; &gt; &gt; +#include &quot;hw/sysbus.h&quot;<br>
-&gt; &gt; &gt; &gt; +#include &quot;migration/vmstate.h&quot;<br>
-&gt; &gt; &gt; &gt; +#include &quot;qemu/log.h&quot;<br>
-&gt; &gt; &gt; &gt; +#include &quot;qemu/module.h&quot;<br>
-&gt; &gt; &gt; &gt; +#include &quot;qemu/guest-random.h&quot;<br>
-&gt; &gt; &gt; &gt; +#include &quot;qapi/error.h&quot;<br>
-&gt; &gt; &gt; &gt; +#include &quot;hw/qdev-properties.h&quot;<br>
-&gt; &gt; &gt; &gt; +#include &quot;hw/misc/allwinner-sid.h&quot;<br>
-&gt; &gt; &gt; &gt; +#include &quot;trace.h&quot;<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +/* SID register offsets */<br>
-&gt; &gt; &gt; &gt; +enum {<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 REG_PRCTL =3D 0x40,=C2=A0 =C2=A0/* Contr=
-ol */<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 REG_RDKEY =3D 0x60,=C2=A0 =C2=A0/* Read =
-Key */<br>
-&gt; &gt; &gt; &gt; +};<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +/* SID register flags */<br>
-&gt; &gt; &gt; &gt; +enum {<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 REG_PRCTL_WRITE=C2=A0 =C2=A0=3D 0x0002, =
-/* Unknown write flag */<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 REG_PRCTL_OP_LOCK =3D 0xAC00, /* Lock op=
-eration */<br>
-&gt; &gt; &gt; &gt; +};<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +static uint64_t allwinner_sid_read(void *opaque, hwadd=
-r offset,<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0un=
-signed size)<br>
-&gt; &gt; &gt; &gt; +{<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 const AwSidState *s =3D AW_SID(opaque);<=
-br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 uint64_t val =3D 0;<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 switch (offset) {<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 case REG_PRCTL:=C2=A0 =C2=A0 /* Control =
-*/<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 val =3D s-&gt;control;<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 case REG_RDKEY:=C2=A0 =C2=A0 /* Read Key=
- */<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 val =3D s-&gt;rdkey;<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 default:<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ER=
-ROR, &quot;%s: out-of-bounds offset<br>
-&gt; &gt; 0x%04x\n&quot;,<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 __func__, (uint32_t)offset);<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 }<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 trace_allwinner_sid_read(offset, val, si=
-ze);<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 return val;<br>
-&gt; &gt; &gt; &gt; +}<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +static void allwinner_sid_write(void *opaque, hwaddr o=
-ffset,<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint64_t val, u=
-nsigned size)<br>
-&gt; &gt; &gt; &gt; +{<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 AwSidState *s =3D AW_SID(opaque);<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 trace_allwinner_sid_write(offset, val, s=
-ize);<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 switch (offset) {<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 case REG_PRCTL:=C2=A0 =C2=A0 /* Control =
-*/<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;control =3D val;<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if ((s-&gt;control &amp; R=
-EG_PRCTL_OP_LOCK) &amp;&amp;<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (s-&gt;contr=
-ol &amp; REG_PRCTL_WRITE)) {<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t id =
-=3D s-&gt;control &gt;&gt; 16;<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (id &lt; =
-sizeof(QemuUUID)) {<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 s-&gt;rdkey =3D (s-&gt;identifier.data[id]) |<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(s-&gt;identifier.data[id + 1]=
- &lt;&lt; 8) |<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(s-&gt;identifier.data[id + 2]=
- &lt;&lt; 16) |<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(s-&gt;identifier.data[id + 3]=
- &lt;&lt; 24);<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;control &amp;=3D ~RE=
-G_PRCTL_WRITE;<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 case REG_RDKEY:=C2=A0 =C2=A0 /* Read Key=
- */<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 default:<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ER=
-ROR, &quot;%s: out-of-bounds offset<br>
-&gt; &gt; 0x%04x\n&quot;,<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 __func__, (uint32_t)offset);<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 }<br>
-&gt; &gt; &gt; &gt; +}<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +static const MemoryRegionOps allwinner_sid_ops =3D {<b=
-r>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 .read =3D allwinner_sid_read,<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 .write =3D allwinner_sid_write,<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 .endianness =3D DEVICE_NATIVE_ENDIAN,<br=
->
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 .valid =3D {<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .min_access_size =3D 4,<br=
->
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .max_access_size =3D 4,<br=
->
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 },<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 .impl.min_access_size =3D 4,<br>
-&gt; &gt; &gt; &gt; +};<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +static void allwinner_sid_reset(DeviceState *dev)<br>
-&gt; &gt; &gt; &gt; +{<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 AwSidState *s =3D AW_SID(dev);<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 /* Set default values for registers */<b=
-r>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 s-&gt;control =3D 0;<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 s-&gt;rdkey =3D 0;<br>
-&gt; &gt; &gt; &gt; +}<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +static void allwinner_sid_init(Object *obj)<br>
-&gt; &gt; &gt; &gt; +{<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj=
-);<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 AwSidState *s =3D AW_SID(obj);<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 /* Memory mapping */<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 memory_region_init_io(&amp;s-&gt;iomem, =
-OBJECT(s), &amp;allwinner_sid_ops, s,<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0TYPE_AW_SID, 1 * KiB);<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 sysbus_init_mmio(sbd, &amp;s-&gt;iomem);=
-<br>
-&gt; &gt; &gt; &gt; +}<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +static Property allwinner_sid_properties[] =3D {<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 DEFINE_PROP_UUID_NODEFAULT(&quot;identif=
-ier&quot;, AwSidState, identifier),<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 DEFINE_PROP_END_OF_LIST()<br>
-&gt; &gt; &gt; &gt; +};<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +static const VMStateDescription allwinner_sid_vmstate =
-=3D {<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 .name =3D &quot;allwinner-sid&quot;,<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 .version_id =3D 1,<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 .minimum_version_id =3D 1,<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 .fields =3D (VMStateField[]) {<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT32(control, Aw=
-SidState),<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT32(rdkey, AwSi=
-dState),<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_END_OF_LIST()<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 }<br>
-&gt; &gt; &gt; &gt; +};<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +static void allwinner_sid_class_init(ObjectClass *klas=
-s, void *data)<br>
-&gt; &gt; &gt; &gt; +{<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 DeviceClass *dc =3D DEVICE_CLASS(klass);=
-<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 dc-&gt;reset =3D allwinner_sid_reset;<br=
->
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 dc-&gt;vmsd =3D &amp;allwinner_sid_vmsta=
-te;<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 dc-&gt;props =3D allwinner_sid_propertie=
-s;<br>
-&gt; &gt; &gt; &gt; +}<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +static const TypeInfo allwinner_sid_info =3D {<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 .name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=3D TYPE_AW_SID,<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 .parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D T=
-YPE_SYS_BUS_DEVICE,<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 .instance_init =3D allwinner_sid_init,<b=
-r>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 .instance_size =3D sizeof(AwSidState),<b=
-r>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 .class_init=C2=A0 =C2=A0 =3D allwinner_s=
-id_class_init,<br>
-&gt; &gt; &gt; &gt; +};<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +static void allwinner_sid_register(void)<br>
-&gt; &gt; &gt; &gt; +{<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 type_register_static(&amp;allwinner_sid_=
-info);<br>
-&gt; &gt; &gt; &gt; +}<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt; +type_init(allwinner_sid_register)<br>
-&gt; &gt; &gt; &gt; diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.o=
-bjs<br>
-&gt; &gt; &gt; &gt; index 12c2c306b5..59500d5681 100644<br>
-&gt; &gt; &gt; &gt; --- a/hw/misc/Makefile.objs<br>
-&gt; &gt; &gt; &gt; +++ b/hw/misc/Makefile.objs<br>
-&gt; &gt; &gt; &gt; @@ -31,6 +31,7 @@ common-obj-$(CONFIG_IVSHMEM_DEVICE) +=
-=3D ivshmem.o<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0common-obj-$(CONFIG_ALLWINNER_H3) +=3D allw=
-inner-h3-ccu.o<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-c=
-pucfg.o<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0common-obj-$(CONFIG_ALLWINNER_H3) +=3D allw=
-inner-h3-sysctrl.o<br>
-&gt; &gt; &gt; &gt; +common-obj-$(CONFIG_ALLWINNER_H3) +=3D allwinner-sid.o=
-<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0common-obj-$(CONFIG_REALVIEW) +=3D arm_sysc=
-tl.o<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0common-obj-$(CONFIG_NSERIES) +=3D cbus.o<br=
->
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0common-obj-$(CONFIG_ECCMEMCTL) +=3D eccmemc=
-tl.o<br>
-&gt; &gt; &gt; &gt; diff --git a/hw/misc/trace-events b/hw/misc/trace-event=
-s<br>
-&gt; &gt; &gt; &gt; index d3e0952429..67d8bf493c 100644<br>
-&gt; &gt; &gt; &gt; --- a/hw/misc/trace-events<br>
-&gt; &gt; &gt; &gt; +++ b/hw/misc/trace-events<br>
-&gt; &gt; &gt; &gt; @@ -5,6 +5,10 @@ allwinner_cpucfg_cpu_reset(uint8_t cpu=
-_id, uint32_t<br>
-&gt; &gt; reset_addr) &quot;id %u, reset_ad<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0allwinner_cpucfg_read(uint64_t offset, uint=
-64_t data, unsigned size)<br>
-&gt; &gt; &quot;offset 0x%&quot; PRIx64 &quot; data 0x%&quot; PRIx64 &quot;=
- size %&quot; PRIu32<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0allwinner_cpucfg_write(uint64_t offset, uin=
-t64_t data, unsigned<br>
-&gt; &gt; size) &quot;offset 0x%&quot; PRIx64 &quot; data 0x%&quot; PRIx64 =
-&quot; size %&quot; PRIu32<br>
-&gt; &gt; &gt; &gt; +# allwinner-sid.c<br>
-&gt; &gt; &gt; &gt; +allwinner_sid_read(uint64_t offset, uint64_t data, uns=
-igned size)<br>
-&gt; &gt; &quot;offset 0x%&quot; PRIx64 &quot; data 0x%&quot; PRIx64 &quot;=
- size %&quot; PRIu32<br>
-&gt; &gt; &gt; &gt; +allwinner_sid_write(uint64_t offset, uint64_t data, un=
-signed size)<br>
-&gt; &gt; &quot;offset 0x%&quot; PRIx64 &quot; data 0x%&quot; PRIx64 &quot;=
- size %&quot; PRIu32<br>
-&gt; &gt; &gt; &gt; +<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0# eccmemctl.c<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0ecc_mem_writel_mer(uint32_t val) &quot;Writ=
-e memory enable 0x%08x&quot;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0ecc_mem_writel_mdr(uint32_t val) &quot;Writ=
-e memory delay 0x%08x&quot;<br>
-&gt; &gt; &gt; &gt;<br>
-&gt; &gt; &gt;<br>
-&gt; &gt;<br>
 &gt; <br>
+&gt; Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug=
+@amsat.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
+&gt; [NL: rename in commit message Raspbian to Armbian, remove vm.set_machi=
+ne()]<br>
+&gt; [NL: changed test to boot from SD card via BootROM]<br>
+&gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gm=
+ail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 tests/acceptance/boot_linux_console.py | 41 ++++++++++++++++++++=
+++++++<br>
+&gt;=C2=A0 1 file changed, 41 insertions(+)<br>
 &gt; <br>
-&gt; -- <br>
-&gt; Niek Linnenbank<br>
+&gt; diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance=
+/boot_linux_console.py<br>
+&gt; index 50294e1675..399d5062db 100644<br>
+&gt; --- a/tests/acceptance/boot_linux_console.py<br>
+&gt; +++ b/tests/acceptance/boot_linux_console.py<br>
+<br>
+This patch needs:<br>
+<br>
+=C2=A0 from avocado.utils.path import find_command<br>
+<br>
+=C2=A0 P7ZIP_AVAILABLE =3D True<br>
+=C2=A0 try:<br>
+=C2=A0 =C2=A0 =C2=A0 find_command(&#39;7z&#39;)<br>
+=C2=A0 except CmdNotFoundError:<br>
+=C2=A0 =C2=A0 =C2=A0 P7ZIP_AVAILABLE =3D False<br>
+<br>
+&gt; @@ -591,6 +591,47 @@ class BootLinuxConsole(Test):<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(se=
+lf, &#39;reboot&#39;,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &#39;reboot: Restarting system&#39;)<br>
+&gt;=C2=A0 <br>
+&gt; +=C2=A0 =C2=A0 @skipUnless(os.getenv(&#39;AVOCADO_ALLOW_LARGE_STORAGE&=
+#39;), &#39;storage limited&#39;)<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0@skipUnless(P7ZIP_AVAILABLE, &#39;7z not install=
+ed&#39;)<br></blockquote><div><br></div><div>Ah indeed, that makes sense. I=
+&#39;ll add this check for v5.</div><div>Now that we come accross this, I&#=
+39;m thinking that functionality like decompression</div><div>might not be =
+specific to the linux tests and perhaps should eventually come in a utility=
+/helper .py file.<br></div><div><br></div><div>Regards,</div><div>Niek<br><=
+/div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px=
+ 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+&gt; +=C2=A0 =C2=A0 def test_arm_orangepi_bionic(self):<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Darch:arm<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Dmachine:orangepi-pc<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 # This test download a 196MB compressed i=
+mage and expand it to 932MB...<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_url =3D (&#39;<a href=3D"https://dl=
+.armbian.com/orangepipc/archive/" rel=3D"noreferrer" target=3D"_blank">http=
+s://dl.armbian.com/orangepipc/archive/</a>&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0&#39;Armbian_19.11.3_Orangepipc_bionic_current_5.3.9.7z&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_hash =3D &#39;196a8ffb72b0123d92cea=
+4a070894813d305c71e&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_path_7z =3D self.fetch_asset(image_=
+url, asset_hash=3Dimage_hash)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_name =3D &#39;Armbian_19.11.3_Orang=
+epipc_bionic_current_5.3.9.img&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_path =3D os.path.join(self.workdir,=
+ image_name)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 process.run(&quot;7z e -o%s %s&quot; % (s=
+elf.workdir, image_path_7z))<br>
+<br>
+Because here 7z is called ^<br>
+<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.set_console()<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.add_args(&#39;-drive&#39;, &#39;f=
+ile=3D&#39; + image_path + &#39;,if=3Dsd,format=3Draw&#39;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0&#39;-nic&#39;, &#39;user&#39;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0&#39;-no-reboot&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.launch()<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_command_line =3D (self.KERNEL_COMM=
+ON_COMMAND_LINE +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;console=3DttyS0,115200 &#39;=
+<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;loglevel=3D7 &#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;nosmp &#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;systemd.default_timeout_star=
+t_sec=3D9000 &#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;systemd.mask=3Darmbian-zram-=
+config.service &#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;systemd.mask=3Darmbian-ramlo=
+g.service&#39;)<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.wait_for_console_pattern(&#39;U-Boot=
+ SPL&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.wait_for_console_pattern(&#39;Autobo=
+ot in &#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &=
+#39; &#39;, &#39;=3D&gt;&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &=
+quot;setenv extraargs &#39;&quot; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 kernel_command_line + &quot;&#39;&quot;, &#39;=3D&=
+gt;&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &=
+#39;boot&#39;, &#39;Starting kernel ...&#39;);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.wait_for_console_pattern(&#39;system=
+d[1]: Set hostname &#39; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &#39;to &lt=
+;orangepipc&gt;&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.wait_for_console_pattern(&#39;Starti=
+ng Load Kernel Modules...&#39;)<br>
+&gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 def test_s390x_s390_ccw_virtio(self):<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Darch:s390x<br>
+&gt; <br>
 </blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
 mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
 div></div>
 
---0000000000009bdd44059deeb005--
+--00000000000036006e059deedc89--

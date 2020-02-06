@@ -1,102 +1,114 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1389709lfp;
-        Thu, 6 Feb 2020 04:41:11 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyIWCe5ESJq7cH1zMWuGoMQUWKIBkxK/nMHtVtOjvQkMdWY4GEDlVM6XG+YWwi7pNKbkc0+
-X-Received: by 2002:aed:3e13:: with SMTP id l19mr2349008qtf.103.1580992870911;
-        Thu, 06 Feb 2020 04:41:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580992870; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1509084lfp;
+        Thu, 6 Feb 2020 06:26:39 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyrOM5YPbzHBCNdp3rdKj+h7ONW4hJ2M6DEyvaex7K3+nBsu2sX65+iny4BrtiaqHlXMVUG
+X-Received: by 2002:ad4:56a7:: with SMTP id bd7mr2605528qvb.238.1580999199055;
+        Thu, 06 Feb 2020 06:26:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580999199; cv=none;
         d=google.com; s=arc-20160816;
-        b=DkV5W53PKlaJVCl59hP9uoqQf+nTkukjRiTrJEeilXILEHNXUo9zweGqML4X7Sxq88
-         36/v+EFHnYb5Za+gkl69vxjUc1r+70Plc+6U0tg9Z29z5RQ5PJU5BdxIywSL/RAHCuVm
-         kSEv7q2nP/KmDyBeeKge+0Y29sn4kHGA5iAxRdAVHD4xwW/I5JbXCpThPV1FRMbKclDe
-         g2J+zYWI1YFvPx5qWmeMJ4f4GpDIegVol4EX+IRQ16Sqsrq6fbEvyhf9R3MSZ46QDPvT
-         gH2dGq90OfRXrtSO5Rj6LFGdxORDQmkSAw8mRo9e+R7iIz++HMGUSIJv7BUwuwrR+EK1
-         VDtQ==
+        b=SLcrwRfqOc8md+WOTNDieNVHiSwbura2IAL3nnoETHcx1gjax3Ptg0Hja6IDlux6EL
+         Fipt4r+SeQxYDRkWkp0A03+3Ac0xV4j2Bvjb2ykiVq6NuH+qVGSp+5Hz3uFjYF/vFP7G
+         az3UrQsKK2TKMhZ4RR/uHs5E3T4tgMmsNhE/6c7IqXMPGpxTvvK4BPT10f21MXmApERI
+         tErpklFdp4WaQ+HgTcuywOOztqsOEiQ1BC/fopQZAT5hz5oTcYv+7hioLr1tYN+BGybi
+         +tuo4f3Mb1ZsJQxwvIcwgAZIFbt1nw591+6eyHxfi0TjoBZC9LYb+KnlcqeS5aP56Oge
+         x2Sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=FgaO1qcylEw1Ratw4Gx0lE+m4ReViIem7CxGHMx+5Is=;
-        b=fdemjRdv5px4AtUdgMjOij520GfeQN5vgoukGH3arkmwyBnx26UOoiBvaPd9FL8fmU
-         vHb/qaM00jsXQr9MZL9lNb3WweccRE8Kph6gnTiHenMX8/aIPi+ADEV7oWFWuACtCSq0
-         mVqGa6CCAnxgCwxfK21xSaNHMDIek16P8crzXkDgo6CePzvdGySFe7HAVK/IAyLzG1D0
-         bPjduRGz+ZjvYwipcbRh16Pf3GOQyJKud93FbIllzg5QxAU2Aje7IOl4rmRqZUwnnWDX
-         otGekqRayZQdFdxovtq30XgKdSSSoaUTJ1NB5qA7cAaQWEPtJb804xSVOy3NiTYMOZjA
-         8RdA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=dgvelOjxXepWDkCo+aQxeDvybFNaShgsH498mYyRW24=;
+        b=gNElvKO5rLDtwVHg89IBnNTJD4Um/FNwDj91oDkV78pZKDfKXLyl1NtVw0u/vipr3G
+         pec136N0ICwbBo7vi1UJ2uNd2MFPxlptaacHHcTDBpV3Sl4f4M0BP//KYGt1x9hOQn1S
+         qqTkv8dF2xheAjriZemaDCHPamssunCPMUDCqzP4MXDX3LAGcf+bRoho81ZM/kOWqjY2
+         Eb4i0xLf8kwrje1SIvJcOUmXINQVG4muT2ykSE5JA3kTPjnDfiR5uET5VsUMhrYtu0Nz
+         SPphqcbnQXZ8TdD3Lt/bpTZC08df4mhQsovGuNA53J1mHTlEfkyjovHlxaR2zsaZ09iT
+         0Mwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fgOHSvNr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="YGkPR/1H";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z24si1444077qtn.325.2020.02.06.04.41.10
+        by mx.google.com with ESMTPS id l26si1677630qkl.381.2020.02.06.06.26.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2020 04:41:10 -0800 (PST)
+        Thu, 06 Feb 2020 06:26:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fgOHSvNr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37948 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="YGkPR/1H";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39926 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izgT0-0001ob-AD
-	for alex.bennee@linaro.org; Thu, 06 Feb 2020 07:41:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51396)
+	id 1izi74-0004aE-Gs
+	for alex.bennee@linaro.org; Thu, 06 Feb 2020 09:26:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53743)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1izgSp-0001l6-Vj
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 07:41:00 -0500
+ (envelope-from <groeck7@gmail.com>) id 1izi6v-0004Xb-OA
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 09:26:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1izgSp-0003oO-05
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 07:40:59 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:25426
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1izgSo-0003l0-Rv
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 07:40:58 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580992857;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FgaO1qcylEw1Ratw4Gx0lE+m4ReViIem7CxGHMx+5Is=;
- b=fgOHSvNrozd/opNMmwGlEvC2ARH5gIS7RtCGuU4UkbVtqyhPbA6/ugLGbLO54cKoTGJlsH
- Y0RQETCRimp6KT6mAA1KPrYI+NqC9EnKhOkLfMXcWXStA6N7rJeHzRfH/rXljJdwkd6Mk/
- FhDPQBnbhlXqxhniPGFjNjNovg/glkQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-298-xIfokgDOPf-flTG8rjaTmg-1; Thu, 06 Feb 2020 07:40:56 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E7C261081FA3;
- Thu,  6 Feb 2020 12:40:54 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BCB5C5C1D8;
- Thu,  6 Feb 2020 12:40:50 +0000 (UTC)
-Date: Thu, 6 Feb 2020 13:40:47 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [RFC PATCH v2 5/5] target/arm/cpu: Add the kvm-no-adjvtime CPU
- property
-Message-ID: <20200206124047.o4sy52jgbkqeravd@kamzik.brq.redhat.com>
-References: <20191212173320.11610-1-drjones@redhat.com>
- <20191212173320.11610-6-drjones@redhat.com>
- <CAP+75-Vt3apV8i64oFTC6pAATXkrE1g+tVskr_3ohBHtZ1LNdQ@mail.gmail.com>
+ (envelope-from <groeck7@gmail.com>) id 1izi6u-0005IX-NC
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 09:26:29 -0500
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:38426)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1izi6u-0004yM-F6; Thu, 06 Feb 2020 09:26:28 -0500
+Received: by mail-pl1-x642.google.com with SMTP id t6so2418747plj.5;
+ Thu, 06 Feb 2020 06:26:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=dgvelOjxXepWDkCo+aQxeDvybFNaShgsH498mYyRW24=;
+ b=YGkPR/1HaAW5MnJvS47pmUITdfddFk8EqCzyjCkUqLeES5Q5u4MWiIvXVsIKZe6cJO
+ gdKaznoFskLynbg/XCtE31NqDhqvHA5xnpWxmuqpn+/DZHuZ9KnVX5xPjrh7NSFgRy6R
+ dUD0TzutqBXEVfa8yfhHKGaLBMxPW5h5msiHp9+VJStZrDzwOqwnElosaqIaLsg4kh34
+ Zknab0wO6aLKRq0Fv7m0O6Z1ejI3aF3liEFx/p7z5UW+b0x5roT2ltvU+KojPE0Dg4TX
+ EtPomucQRzrf3C8OgXbS0oEe7tyJwrDNeOXkXwSgS0qpxPrllnNPph3tL2MSTNMaWsF2
+ q6LQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=dgvelOjxXepWDkCo+aQxeDvybFNaShgsH498mYyRW24=;
+ b=rtdGw7HRcw55qIcVLAHlt5A96meN6frDw07mXUh9ijtDxEmuvinYbpQQq+ZUxIxesR
+ hd4d4ixKPT7clhQyi9rWyhfWfY9/k4QU0GtDWoY0M85ZVcML2Ikc8RNfNM1IxEmjdhl0
+ 5CTaZ4Ntp6t10UQJK206PTkIKeNP8jEuEvW27n9AZc24kLs0KVKRKNph3E/UjObJ4iwq
+ i67lkJvDL5rg0Lip+tenE8ue0nBp+3+KAdV1pPUOQiT1XYNNK+Dijtzg+3GmWp3kKtje
+ kRMx+IsLrastCHJtwCGGokFOpWqA4VevLyOzgwx9D2W4RLhs4ylUybSNJdDDUwMIlviU
+ Mr6Q==
+X-Gm-Message-State: APjAAAWa77tozXiRYn64JwxiuwJutPCvLs6af6wv/3c/DXz10ixgxkRJ
+ 6FUoXK53gqaPPHwzo+gx+sY=
+X-Received: by 2002:a17:902:b690:: with SMTP id
+ c16mr4077065pls.320.1580999186314; 
+ Thu, 06 Feb 2020 06:26:26 -0800 (PST)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ m12sm3722748pjf.25.2020.02.06.06.26.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 06 Feb 2020 06:26:25 -0800 (PST)
+Subject: Re: [PATCH 2/3] m25p80: Improve command handling for Jedec and
+ unsupported commands
+To: Joel Stanley <joel@jms.id.au>
+References: <20200203180904.2727-1-linux@roeck-us.net>
+ <20200203180904.2727-2-linux@roeck-us.net>
+ <accf297f-0c54-7475-8817-c1014999a57d@kaod.org>
+ <7fe70871-c0e3-4ff6-bfda-17b45aa50c5e@roeck-us.net>
+ <22a96987-9548-1335-8b04-00167ed9491d@kaod.org>
+ <20200205174345.GA7754@roeck-us.net>
+ <CACPK8XesxroZii2-r-HTigW4-7Ahw4TQNG1r-YO2K09S7Ap9=Q@mail.gmail.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <7318860e-4d6c-b7f8-182f-d0efa332973f@roeck-us.net>
+Date: Thu, 6 Feb 2020 06:26:23 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <CAP+75-Vt3apV8i64oFTC6pAATXkrE1g+tVskr_3ohBHtZ1LNdQ@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: xIfokgDOPf-flTG8rjaTmg-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+In-Reply-To: <CACPK8XesxroZii2-r-HTigW4-7Ahw4TQNG1r-YO2K09S7Ap9=Q@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::642
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,27 +120,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, bijan.mottahedeh@oracle.com,
- Marc Zyngier <maz@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- guoheyi@huawei.com, msys.mizuma@gmail.com
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
+ Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>, Max Reitz <mreitz@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yfcm/EPtaktu
+X-TUID: izFFrdNUYlg/
 
-On Thu, Feb 06, 2020 at 01:08:53PM +0100, Philippe Mathieu-Daud=E9 wrote:
-...
-> > +/* KVM VCPU properties should be prefixed with "kvm-". */
-> > +void kvm_arm_add_vcpu_properties(Object *obj)
-> > +{
-> > +    if (!kvm_enabled()) {
->=20
-> This can't happen, right? Can we turn that into an assertion, or
-> remove the check?
+On 2/5/20 11:04 PM, Joel Stanley wrote:
+> On Wed, 5 Feb 2020 at 17:43, Guenter Roeck <linux@roeck-us.net> wrote:
+>>
+>> On Wed, Feb 05, 2020 at 11:08:07AM +0100, Cédric Le Goater wrote:
+>>>
+>>> ok. we will need to model SFDP one day.
+>>>
+>>> Are you using the OpenBMC images or do you have your own ?
+>>>
+>>
+>> I am running images built from upstream/stable kernel branches.
+> 
+> I think Cédric was wondering which flash images and therefore
+> filesystems you were using in your testing.
+> 
+Ah, ok. Sorry, misunderstood.
 
-You're right. An assert would be more appropriate. Will you send a patch?
+> I had a poke around here but I couldn't work out where 'mtd32' came from:
+> 
+> https://github.com/groeck/linux-build-test/blob/master/rootfs/arm/run-qemu-arm.sh
+> 
 
-Thanks,
-drew
+mtd32 tells the infrastructure that the boot device is mtd (flash) with
+32MB capacity. The infrastructure uses that to create the actual flash
+image and to generate the qemu command line. The root file system is
+is rootfs-armv5.ext2 (located in the same directory as the run script).
+It was generated using buildroot.
 
+Guenter

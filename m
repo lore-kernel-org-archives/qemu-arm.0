@@ -1,100 +1,104 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1624517lfp;
-        Thu, 6 Feb 2020 08:06:45 -0800 (PST)
-X-Google-Smtp-Source: APXvYqytNvxo+iIYGguAVKhWSpfNoY22oXV8SaEU3VqFoYFoWXN/Sl8+SnXYTwQAGM6y7r9iyoD+
-X-Received: by 2002:a05:620a:9d9:: with SMTP id y25mr3171989qky.41.1581005205257;
-        Thu, 06 Feb 2020 08:06:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581005205; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1676804lfp;
+        Thu, 6 Feb 2020 08:55:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzgbWW1sjAnDQFHZsvS3114eNDxIIML36A1sjLebssqdLtydtWTy56PlrJENJvkwuHOSRr5
+X-Received: by 2002:a05:620a:1333:: with SMTP id p19mr3414003qkj.73.1581008132765;
+        Thu, 06 Feb 2020 08:55:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581008132; cv=none;
         d=google.com; s=arc-20160816;
-        b=VYRZ0CJm4DsVzNzgdyi7BjRDKQXgTvlpZTRaMQmZ3gSJ/9WQy2Dy9WdPHdvX8jPN/8
-         pEtEa/UGSRP6y9RtJK6SAzSJud/w4NOjPOVd/GTBkZ7i2wBa/wc1Qv+tppWf0mnKFFmk
-         ilVgjNFQv8XUsvGtmKLohMwb60Wj+TQjebPOPMf446SBUk62IeL0sxPck96s5HG1jUot
-         Fm928MtjcOv3GldQi/ZbT6+j+cJvB2EI4CW/i7DDV2BobBq8+HmQtn72DlirgwciPvpl
-         JhTR6fh3pMB/bw1W+MXOTWZE+UCVJ6awXIFxuXYSdqXffOR+oeJWDglgpamedWJWdLwx
-         0pGQ==
+        b=ak9jwKsjxFdtWI+LON4HCW3jeKI0VxMaWiAjTsuBuhL/dtckpXJCnFqXiiba9YOqV8
+         wSh/IZTI+UqFL0x+3uMEhiVumlTLHHYsRu/bl+YVfaOz2zwocSzztXKDl82O1xR9vPDK
+         SpzQolgvXyArYS72PSQ7iGPrj1RamwWZECNM3ohWESEGCpfBNu4IDAzD2HVUnQ2FHUHO
+         MaVZLNL4vQGlkzZJhZq1riQlg9k2zpqUQ8wPdZSsUkGOAhT/9f7XkKGcHk3JDW9e6QAK
+         9fu+fR6K/dMbcU5wP/ebXlmCSOXlxMiEPHFmcz14VScLWIYVm69dP8v0nggmcvouByFm
+         PXhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=f5gxHJorGkNvYfdDWlcoZ0y2MnMJCHX/bGzx9gddK4c=;
-        b=GC1ZvTlOnLGikpvfxEqOtOjAnBrputr0ysxmhxZy2fGIZj8Ul7AGQwVqEh6MVKQgfU
-         t+Lhok4NH9fAikdbyzb7RPyGTLFXcSQGzxG5Y3ZgsObjKdU4oUP16uJazdJyDo96USfg
-         OwphTlH5zX6Kc3NtNrIX1tp64Am534Jj+mn8vDUxnC76FkBDYa/YyEpNMm0Bl5JKzRX9
-         gwoy6p5EihRJwxYgOMEGuXhq42VAgCtVl21O4ykfjm3AwiCXyFh1LT4BbpnFIBLcB48+
-         HcxC8vPQleHejp2eYAqmZ1uNgcuGBbH8IpBNYdkxTevuNlDNi3DWvfzoVdg+A3vze3ka
-         BSew==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:from:references:to:subject:dkim-signature;
+        bh=fpToknbMbQO8u6/kOoi+5h/0vxJJu9SJaVqT6g5cPvA=;
+        b=Qcv6XE29WhP7iDMacUEGhhTBJQMiwD4SRDFB+Hz7Bma5iy/KqXkBieLMKm7M5v1Xul
+         zZUvK3OtrcuKAFb9wYQzwUoJEy0F1UTjtOXS84v72mRwi5UYdtW4ofBh85e2AVp7ZRmG
+         VHK/0Vq+fn7TCOYBLeKNXuE0gCsP/EgJTH3idIVaqxg0HeSa4opJvcNnbqLqBeJ75Nvl
+         jGRJBXvfmUiylwgYxsmhYsWqtz2I+hoEW+DThpNfbd4zxMsIeWXw5bWRbirgDxbThw+Z
+         Kyfxl/bpl2Icxl7aksS7JvT0QYU7axSekRaV5vnsfumYrtllg+PzoG8KUBr0cqTCOGsS
+         3ZFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZUXEhX9a;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gwqWOxL1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c9si1721480qth.190.2020.02.06.08.06.45
+        by mx.google.com with ESMTPS id f26si7885qtq.59.2020.02.06.08.55.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2020 08:06:45 -0800 (PST)
+        Thu, 06 Feb 2020 08:55:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZUXEhX9a;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gwqWOxL1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41680 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42408 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izjfw-0002ue-NJ
-	for alex.bennee@linaro.org; Thu, 06 Feb 2020 11:06:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35309)
+	id 1izkRA-0003x6-6R
+	for alex.bennee@linaro.org; Thu, 06 Feb 2020 11:55:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58236)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1izjfm-0002qR-PQ
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 11:06:36 -0500
+ (envelope-from <eblake@redhat.com>) id 1izkQt-0003v4-TB
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 11:55:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1izjfk-0001MH-Va
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 11:06:34 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:24679
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <eblake@redhat.com>) id 1izkQs-00021n-1q
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 11:55:15 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:21894
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1izjfk-0001IQ-Po
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 11:06:32 -0500
+ (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1izkQr-0001zi-Ss
+ for qemu-arm@nongnu.org; Thu, 06 Feb 2020 11:55:13 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581005192;
+ s=mimecast20190719; t=1581008113;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=f5gxHJorGkNvYfdDWlcoZ0y2MnMJCHX/bGzx9gddK4c=;
- b=ZUXEhX9adZy+TP+yXcUp7nvgmXLNvPVllb9Yn7sUQd9x4a0nvBLwqO68irhNUxGOzdkMk7
- Ue7AXnx/ICbdknebWhENXkNeWA13rzNWeZD3Wuiw9gmrDTWGYncImq5JVESfYqEn9Y7Epi
- MighpB+WzbHFafi6qKW1KzdTBwuk04k=
+ bh=fpToknbMbQO8u6/kOoi+5h/0vxJJu9SJaVqT6g5cPvA=;
+ b=gwqWOxL1f1CDN7R11c/3Qlx2qHtWMT+Awov5T+tj7phInB1IZ8xQSZBZXjnOJnUeHO/8ok
+ M1ptfC/aUOOLIRBfUoQzL9ZDuvSMW5jaRNsUGg+DFeGosRhJnzetgmC7H7rjiJJo8QZ9U2
+ Q0ccOvr89eL7DwZNhWEEnIM7HodNGdE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-416-w6T5HID3MNaE0NZcx9Xttg-1; Thu, 06 Feb 2020 11:06:15 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-263-j_V__971NZKok27yX1rxMw-1; Thu, 06 Feb 2020 11:55:11 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4DF898010F8;
- Thu,  6 Feb 2020 16:06:13 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E329E60BEC;
- Thu,  6 Feb 2020 16:06:05 +0000 (UTC)
-Date: Thu, 6 Feb 2020 17:06:04 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Subject: Re: [PATCH v2 2/7] hw/acpi/nvdimm: Fix for NVDIMM incorrect DSM
- output buffer length
-Message-ID: <20200206170604.12899caf@redhat.com>
-In-Reply-To: <20200117174522.22044-3-shameerali.kolothum.thodi@huawei.com>
-References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
- <20200117174522.22044-3-shameerali.kolothum.thodi@huawei.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2FB06800D54;
+ Thu,  6 Feb 2020 16:55:09 +0000 (UTC)
+Received: from [10.3.117.249] (ovpn-117-249.phx2.redhat.com [10.3.117.249])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 260BF84DB8;
+ Thu,  6 Feb 2020 16:55:07 +0000 (UTC)
+Subject: Re: [PULL 3/5] nbd: fix uninitialized variable warning
+To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
+References: <20200108160233.991134-1-laurent@vivier.eu>
+ <20200108160233.991134-4-laurent@vivier.eu>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <1ce40cae-eb8b-a18c-f651-2e6432c1b213@redhat.com>
+Date: Thu, 6 Feb 2020 10:55:06 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: w6T5HID3MNaE0NZcx9Xttg-1
+In-Reply-To: <20200108160233.991134-4-laurent@vivier.eu>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: j_V__971NZKok27yX1rxMw-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,116 +110,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, mst@redhat.com,
- shannon.zhaosl@gmail.com, qemu-devel@nongnu.org, xuwei5@hisilicon.com,
- linuxarm@huawei.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
- lersek@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, Pan Nengyuan <pannengyuan@huawei.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, qemu-arm@nongnu.org,
+ Euler Robot <euler.robot@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1yFLJxvURao/
+X-TUID: FMooQkwX7ocf
 
-On Fri, 17 Jan 2020 17:45:17 +0000
-Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
-
-> As per ACPI spec 6.3, Table 19-419 Object Conversion Rules, if
-> the Buffer Field <= to the size of an Integer (in bits), it will
-> be treated as an integer. Moreover, the integer size depends on
-> DSDT tables revision number. If revision number is < 2, integer
-> size is 32 bits, otherwise it is 64 bits. Current NVDIMM common
-> DSM aml code (NCAL) uses CreateField() for creating DSM output
-> buffer. This creates an issue in arm/virt platform where DSDT
-> revision number is 2 and results in DSM buffer with a wrong
-> size(8 bytes) gets returned when actual length is < 8 bytes.
-> This causes guest kernel to report,
+On 1/8/20 10:02 AM, Laurent Vivier wrote:
+> From: Pan Nengyuan <pannengyuan@huawei.com>
 > 
-> "nfit ACPI0012:00: found a zero length table '0' parsing nfit"
+> Fixes:
+> /mnt/sdb/qemu/nbd/server.c: In function 'nbd_handle_request':
+> /mnt/sdb/qemu/nbd/server.c:2313:9: error: 'ret' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+>       int ret;
 > 
-> In order to fix this, aml code is now modified such that it builds
-> the DSM output buffer in a byte by byte fashion when length is
-> smaller than Integer size.
-> 
-> Suggested-by: Igor Mammedov <imammedo@redhat.com>
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> Message-Id: <20200108025132.46956-1-pannengyuan@huawei.com>
+> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 > ---
-> Please find the previous discussion on this here,
-> https://patchwork.kernel.org/cover/11174959/
+>   nbd/server.c | 10 +---------
+>   1 file changed, 1 insertion(+), 9 deletions(-)
 > 
-> ---
->  hw/acpi/nvdimm.c                            | 36 +++++++++++++++++++--
->  tests/qtest/bios-tables-test-allowed-diff.h |  2 ++
->  2 files changed, 35 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-> index 9fdad6dc3f..5e7b8318d0 100644
-> --- a/hw/acpi/nvdimm.c
-> +++ b/hw/acpi/nvdimm.c
-> @@ -964,6 +964,7 @@ static void nvdimm_build_common_dsm(Aml *dev)
->      Aml *method, *ifctx, *function, *handle, *uuid, *dsm_mem, *elsectx2;
->      Aml *elsectx, *unsupport, *unpatched, *expected_uuid, *uuid_invalid;
->      Aml *pckg, *pckg_index, *pckg_buf, *field, *dsm_out_buf, *dsm_out_buf_size;
-> +    Aml *whilectx, *offset;
->      uint8_t byte_list[1];
->  
->      method = aml_method(NVDIMM_COMMON_DSM, 5, AML_SERIALIZED);
-> @@ -1117,13 +1118,42 @@ static void nvdimm_build_common_dsm(Aml *dev)
->      /* RLEN is not included in the payload returned to guest. */
->      aml_append(method, aml_subtract(aml_name(NVDIMM_DSM_OUT_BUF_SIZE),
->                 aml_int(4), dsm_out_buf_size));
-> +
-> +    /*
-> +     * As per ACPI spec 6.3, Table 19-419 Object Conversion Rules, if
-> +     * the Buffer Field <= to the size of an Integer (in bits), it will
-> +     * be treated as an integer. Moreover, the integer size depends on
-> +     * DSDT tables revision number. If revision number is < 2, integer
-> +     * size is 32 bits, otherwise it is 64 bits.
-> +     * Because of this CreateField() canot be used if RLEN < Integer Size.
-> +     * Hence build dsm_out_buf byte by byte.
-> +     */
-> +    ifctx = aml_if(aml_lless(dsm_out_buf_size, aml_sizeof(aml_int(0))));
 
-this decomplies into
+This patch is broken; I first noticed it when testing libnbd, where the 
+symptoms are a hung interop/dirty-bitmap.sh test.
 
- If (Local1 < SizeOf ())
+> diff --git a/nbd/server.c b/nbd/server.c
+> index 24ebc1a80571..87fcd2e7bfac 100644
+> --- a/nbd/server.c
+> +++ b/nbd/server.c
+> @@ -2384,20 +2384,12 @@ static coroutine_fn int nbd_handle_request(NBDClient *client,
+>                                                  !client->export_meta.bitmap,
+>                                                  NBD_META_ID_BASE_ALLOCATION,
+>                                                  errp);
+> -                if (ret < 0) {
+> -                    return ret;
+> -                }
+> -            }
+> -
+> -            if (client->export_meta.bitmap) {
+> +            } else {              /* client->export_meta.bitmap */
+>                   ret = nbd_co_send_bitmap(client, request->handle,
+>                                            client->exp->export_bitmap,
+>                                            request->from, request->len,
+>                                            dont_fragment,
+>                                            true, NBD_META_ID_DIRTY_BITMAP, errp);
+> -                if (ret < 0) {
+> -                    return ret;
+> -                }
+>               }
 
-which doesn't look right
+The NBD spec says that clients can request more than one meta context at 
+a time. Qemu does not (and hence we didn't notice the breakage until 
+now), but libnbd does, and this change prevents qemu from obeying the 
+spec (if the client requested both contexts, then we must return both, 
+and not short-circuit after the first).
 
-> +    offset = aml_local(2);
-> +    aml_append(ifctx, aml_store(aml_int(0), offset));
-> +    aml_append(ifctx, aml_name_decl("TBUF", aml_buffer(1, NULL)));
-> +    aml_append(ifctx, aml_store(aml_buffer(0, NULL), dsm_out_buf));
-> +
-> +    whilectx = aml_while(aml_lless(offset, dsm_out_buf_size));
-> +    /* Copy 1 byte at offset from ODAT to temporary buffer(TBUF). */
-> +    aml_append(whilectx, aml_store(aml_derefof(aml_index(
-> +                                   aml_name(NVDIMM_DSM_OUT_BUF), offset)),
-> +                                   aml_index(aml_name("TBUF"), aml_int(0))));
-> +    aml_append(whilectx, aml_concatenate(dsm_out_buf, aml_name("TBUF"),
-> +                                         dsm_out_buf));
-> +    aml_append(whilectx, aml_increment(offset));
-> +    aml_append(ifctx, whilectx);
-> +
-> +    aml_append(ifctx, aml_return(dsm_out_buf));
-> +    aml_append(method, ifctx);
-> +
-> +    /* If RLEN >= Integer size, just use CreateField() operator */
->      aml_append(method, aml_store(aml_shiftleft(dsm_out_buf_size, aml_int(3)),
->                                   dsm_out_buf_size));
->      aml_append(method, aml_create_field(aml_name(NVDIMM_DSM_OUT_BUF),
->                 aml_int(0), dsm_out_buf_size, "OBUF"));
-> -    aml_append(method, aml_concatenate(aml_buffer(0, NULL), aml_name("OBUF"),
-> -                                       dsm_out_buf));
-> -    aml_append(method, aml_return(dsm_out_buf));
-> +    aml_append(method, aml_return(aml_name("OBUF")));
-> +
->      aml_append(dev, method);
->  }
->  
-> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-> index dfb8523c8b..eb8bae1407 100644
-> --- a/tests/qtest/bios-tables-test-allowed-diff.h
-> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-> @@ -1 +1,3 @@
->  /* List of comma-separated changed AML files to ignore */
-> +"tests/data/acpi/pc/SSDT.dimmpxm",
-> +"tests/data/acpi/q35/SSDT.dimmpxm",
+I'll post a patch to fix this unintended regression soon.
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 

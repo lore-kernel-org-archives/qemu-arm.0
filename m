@@ -1,212 +1,244 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp265062lfp;
-        Thu, 6 Feb 2020 23:41:36 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw3YXa92exe/01eiYRJUDlyGm4nkBnhbZjyCWqRcV0FW2jzFwEcj+YIOa4yMdWFiCmS2r1A
-X-Received: by 2002:a37:91c2:: with SMTP id t185mr5609066qkd.284.1581061296117;
-        Thu, 06 Feb 2020 23:41:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581061296; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp294728lfp;
+        Fri, 7 Feb 2020 00:16:58 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx7pd4K5fuXkrsrwuDGy9L3i0EtwBuwkNmDz8b7lEWAElaJ8rPwDeGR6mUEahuPcpV3DPOE
+X-Received: by 2002:a05:6214:20c:: with SMTP id i12mr5901762qvt.48.1581063418255;
+        Fri, 07 Feb 2020 00:16:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581063418; cv=none;
         d=google.com; s=arc-20160816;
-        b=DqdTdOtAfylrHKZaOAt+edlyIW6SI7xt5Fg3Z9WHom8RDA9FfJXN8wCEebmxQ9RAWd
-         CgKNI8PwrXi/yQ9i/9k3QZwwvRPbT3N4Ixk8WtdmUlXvm7rne+8mQdJGvw0cA3kBgRba
-         ZaoK0MArv1cYr6V5gfBoxFEzgD02/+WghlyP+xWyS7ioYoia2rFCP5q1NmVOVSyw2MnF
-         pgLyoULTBjuj6ZXd7JEp58wfCYcigTGplQRfF8eBTht2DBzHVHLpxYdSuvfe/N0G/Nf1
-         L4gO4kAAWtgTYHkN+McbwC2/fDp8slAu8OP+msL/J6h80CAdWzI8JAPJe7/u1CgJzzk2
-         ImCQ==
+        b=tbgSWCcAWolxifDimf5kBS7umUzucZ5vLpWB1aVSinUJxdTdGAgwn23A59AZppvm+5
+         j087+OprY9zX0N3DpIprDBYVtrVXh5LPLrVgg4RobGvftcLXy1YPLneq4cg/N0DiA4UW
+         jpAShtt7Rviq+DRbwzRvC8TLT0RoORaThtj5Qv+e9oOranov/kJTxSB4O//XfHRYNCUj
+         lASGaCFiy+Mci/P7noOZ/zRZ4avjUCEWRpWNLAzsmJ5Mk8E7N//hDtyIY8mzBpW0T999
+         /zf27vvrCGcWKBpmUtYzPgPNI/dFYHvslJ2AWsH9NESi5uT6B2j+xhxqYzlSzxecA2xU
+         MROA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=kymZeyzsMBFu4akHy7XEY6KLbUKfvwkYqe02J2j7VWw=;
-        b=DT3CH/zP5wloNTqMW8cxsXjGTxnIlYnamJQOvfr55Q+HAtcd4yZuL/dykSdfi9sTtU
-         /YhIiRnnd42XN1ulxN687H0ms0DtiPLieaj3X+gHnaigBm4kv+KfR3O0TVItFWqZatCP
-         12BrdgGHTFl1V40cY5p7If/zBr2T5nQNIix5bKg82ZRV6Vypfm3QEMEehFhTQIoBakWp
-         lUs5Q24P3P2f7K0RHi8MAZPeZKb5HuX/tmuNTJCphbDCeCQDzHXWxNw0vLdFql7gT+rz
-         ktH0AVmYPmrLrsUNybdHrX8Jc2R6h3vESpzB59M519rw0/nrePRT+PRY8+Z97gLcqWjY
-         Cwng==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=KZ5JyYj9I1fKWgDwbyxCdunTJ3DQyPr04lJNt9yN/cw=;
+        b=LOhDDfBlyw30JcavKZ+nQSMPAkZc9PiB+BjkYjwCKfCXucNvrOV5EBpR2ayO5nBfIb
+         bmrqCBNnIdYzgtF7BZ/4kGzBH1+n6zqnlsMRMyS4ievhsFNSfHki+SZgjkRPsdGe2ar+
+         MFqx9G0RuDUw6IjUcg6zB0JL+REtpg9ZxxQbSRDmmlbwqp4m6KYL0PDSWjQEQy0E5wmF
+         k4RKIGveZRpCv/G7NMen9i2Zisy5rIiMpj7+RwBwN7vMeo568awvtHlKbpGFTdbR7Ydc
+         ptbCzveWA176cMqUN50xB21sEuGTx8hcwKhkJtc5/1gLlFTjXXquerUO482PYTnNDDx/
+         wO5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=eomoCohj;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id x10si1054000qth.16.2020.02.06.23.41.35;
-        Thu, 06 Feb 2020 23:41:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t28si942941qkg.61.2020.02.07.00.16.58
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 07 Feb 2020 00:16:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=eomoCohj;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id A1A384A4E5;
-	Fri,  7 Feb 2020 02:41:35 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AYC-c7AWMbNQ; Fri,  7 Feb 2020 02:41:32 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 39D124A4F7;
-	Fri,  7 Feb 2020 02:41:32 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 54CA64A4A9
- for <kvmarm@lists.cs.columbia.edu>; Fri,  7 Feb 2020 02:41:31 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rS806BcBzx+L for <kvmarm@lists.cs.columbia.edu>;
- Fri,  7 Feb 2020 02:41:30 -0500 (EST)
-Received: from us-smtp-delivery-1.mimecast.com
- (us-smtp-delivery-1.mimecast.com [205.139.110.120])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 408624A4A3
- for <kvmarm@lists.cs.columbia.edu>; Fri,  7 Feb 2020 02:41:30 -0500 (EST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581061290;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=H8+dV5qOgRpncSSzSUiwmdaiC4cKdUtEBCRqg7fQpDw=;
- b=eomoCohjmGL553yE/zsW7t+el2Xq3Njoee8mRTfyKrpzOsvTDtmJ0mZgpWpzpzYO/cH3Fo
- apKswc5cPcYLdABHCnAR5ZFVFUYzjSNo3HIBeKc4y9P/n4VwUgeX2UvzQrfSHSME7VW0BR
- BAZwDnbzgkwHSMiKuQv22Q54GOs4AVk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-346-x4rM60IcNg6d6naFPLjCbQ-1; Fri, 07 Feb 2020 02:41:25 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 75396801E6C;
- Fri,  7 Feb 2020 07:41:24 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DC0771000325;
- Fri,  7 Feb 2020 07:41:22 +0000 (UTC)
-Date: Fri, 7 Feb 2020 08:41:20 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Beata Michalska <beata.michalska@linaro.org>
-Subject: Re: [PATCH v2 1/2] target/arm: kvm: Inject events at the last stage
- of sync
-Message-ID: <20200207074120.emuqo4syqubpay4k@kamzik.brq.redhat.com>
-References: <20200129202441.12745-1-beata.michalska@linaro.org>
- <20200129202441.12745-2-beata.michalska@linaro.org>
- <20200204103447.naw26xl2y2zbyrqb@kamzik.brq.redhat.com>
- <CADSWDzuQvZThaoFbeYM2QrDbwRPrZuiyDrVJV=jxiSMTW9O-rg@mail.gmail.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51840 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1izyor-0002aB-Ma
+	for alex.bennee@linaro.org; Fri, 07 Feb 2020 03:16:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47122)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <clg@kaod.org>) id 1izyog-0002WX-UJ
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 03:16:48 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <clg@kaod.org>) id 1izyof-0006zS-G9
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 03:16:46 -0500
+Received: from 2.mo68.mail-out.ovh.net ([46.105.52.162]:49897)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1izyof-0006rS-Ah
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 03:16:45 -0500
+Received: from player715.ha.ovh.net (unknown [10.110.171.96])
+ by mo68.mail-out.ovh.net (Postfix) with ESMTP id 0D615159F10
+ for <qemu-arm@nongnu.org>; Fri,  7 Feb 2020 09:16:42 +0100 (CET)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player715.ha.ovh.net (Postfix) with ESMTPSA id 4323AEEB6B74;
+ Fri,  7 Feb 2020 08:16:37 +0000 (UTC)
+Subject: Re: [PATCH] hw/arm: ast2400/ast2500: Wire up EHCI controllers
+To: Guenter Roeck <linux@roeck-us.net>
+References: <20200206183437.3979-1-linux@roeck-us.net>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <e9f490fe-34d3-6830-832c-155f6fa63482@kaod.org>
+Date: Fri, 7 Feb 2020 09:16:28 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <CADSWDzuQvZThaoFbeYM2QrDbwRPrZuiyDrVJV=jxiSMTW9O-rg@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: x4rM60IcNg6d6naFPLjCbQ-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+In-Reply-To: <20200206183437.3979-1-linux@roeck-us.net>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: cTRTo0pZpIQy
+X-Ovh-Tracer-Id: 2083477778856250176
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrheeggdduudekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejudehrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 46.105.52.162
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Dk+4vDNeyzxq
 
-On Thu, Feb 06, 2020 at 09:41:10PM +0000, Beata Michalska wrote:
-> On Tue, 4 Feb 2020 at 10:34, Andrew Jones <drjones@redhat.com> wrote:
-> >
-> > On Wed, Jan 29, 2020 at 08:24:40PM +0000, Beata Michalska wrote:
-> > > KVM_SET_VCPU_EVENTS might actually lead to vcpu registers being modified.
-> > > As such this should be the last step of sync to avoid potential overwriting
-> > > of whatever changes KVM might have done.
-> > >
-> > > Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
-> > > ---
-> > >  target/arm/kvm32.c | 20 ++++++++++----------
-> > >  target/arm/kvm64.c | 20 ++++++++++----------
-> > >  2 files changed, 20 insertions(+), 20 deletions(-)
-> > >
-> > > diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
-> > > index 32bf8d6..cf2b47f 100644
-> > > --- a/target/arm/kvm32.c
-> > > +++ b/target/arm/kvm32.c
-> > > @@ -386,17 +386,17 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-> > >          return ret;
-> > >      }
-> > >
-> > > -    ret = kvm_put_vcpu_events(cpu);
-> > > -    if (ret) {
-> > > -        return ret;
-> > > -    }
-> > > -
-> > >      write_cpustate_to_list(cpu, true);
-> > >
-> > >      if (!write_list_to_kvmstate(cpu, level)) {
-> > >          return EINVAL;
-> > >      }
-> > >
-> > > +    ret = kvm_put_vcpu_events(cpu);
-> > > +    if (ret) {
-> > > +        return ret;
-> > > +    }
-> > > +
-> >
-> > I think we should put a comment above this that says basically the same
-> > thing as the commit message in order to explain why kvm_put_vcpu_events()
-> > *must* be after write_list_to_kvmstate().
-> >
-> Will do that.
+On 2/6/20 7:34 PM, Guenter Roeck wrote:
+> Initialize EHCI controllers on AST2400 and AST2500 using the existing
+> TYPE_PLATFORM_EHCI. After this change, booting ast2500-evb into Linux
+> successfully instantiates a USB interface.
 > 
-> > >      kvm_arm_sync_mpstate_to_kvm(cpu);
-> > >
-> > >      return ret;
-> > > @@ -462,11 +462,6 @@ int kvm_arch_get_registers(CPUState *cs)
-> > >      }
-> > >      vfp_set_fpscr(env, fpscr);
-> > >
-> > > -    ret = kvm_get_vcpu_events(cpu);
-> > > -    if (ret) {
-> > > -        return ret;
-> > > -    }
-> > > -
-> > >      if (!write_kvmstate_to_list(cpu)) {
-> > >          return EINVAL;
-> > >      }
-> > > @@ -475,6 +470,11 @@ int kvm_arch_get_registers(CPUState *cs)
-> > >       */
-> > >      write_list_to_cpustate(cpu);
-> > >
-> > > +    ret = kvm_get_vcpu_events(cpu);
-> > > +    if (ret) {
-> > > +        return ret;
-> > > +    }
-> > > +
-> >
-> > Why are we moving kvm_get_vcpu_events()?
-> 
-> This is only to make things consistent with put_registeres.
-> There is no functional change per se.
+> ehci-platform 1e6a3000.usb: EHCI Host Controller
+> ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number 1
+> ehci-platform 1e6a3000.usb: irq 21, io mem 0x1e6a3000
+> ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
+> usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.05
+> usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+> usb usb1: Product: EHCI Host Controller
 
-Without a functional change I wouldn't move it. It's much
-more appealing to have the final state writes at the bottom
-of this function.
+Cool. Have you tried to plug any devices ? 
+
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+
+
+This looks good. Could you add the AST2600 also ?
 
 Thanks,
-drew
 
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+C.
+
+> ---
+>  hw/arm/aspeed_soc.c         | 25 +++++++++++++++++++++++++
+>  include/hw/arm/aspeed_soc.h |  6 ++++++
+>  2 files changed, 31 insertions(+)
+> 
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index b5e809a1d3..696c7fda14 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -30,6 +30,7 @@ static const hwaddr aspeed_soc_ast2400_memmap[] = {
+>      [ASPEED_IOMEM]  = 0x1E600000,
+>      [ASPEED_FMC]    = 0x1E620000,
+>      [ASPEED_SPI1]   = 0x1E630000,
+> +    [ASPEED_EHCI1]  = 0x1E6A1000,
+>      [ASPEED_VIC]    = 0x1E6C0000,
+>      [ASPEED_SDMC]   = 0x1E6E0000,
+>      [ASPEED_SCU]    = 0x1E6E2000,
+> @@ -59,6 +60,8 @@ static const hwaddr aspeed_soc_ast2500_memmap[] = {
+>      [ASPEED_FMC]    = 0x1E620000,
+>      [ASPEED_SPI1]   = 0x1E630000,
+>      [ASPEED_SPI2]   = 0x1E631000,
+> +    [ASPEED_EHCI1]  = 0x1E6A1000,
+> +    [ASPEED_EHCI2]  = 0x1E6A3000,
+>      [ASPEED_VIC]    = 0x1E6C0000,
+>      [ASPEED_SDMC]   = 0x1E6E0000,
+>      [ASPEED_SCU]    = 0x1E6E2000,
+> @@ -91,6 +94,8 @@ static const int aspeed_soc_ast2400_irqmap[] = {
+>      [ASPEED_UART5]  = 10,
+>      [ASPEED_VUART]  = 8,
+>      [ASPEED_FMC]    = 19,
+> +    [ASPEED_EHCI1]  = 5,
+> +    [ASPEED_EHCI2]  = 13,
+>      [ASPEED_SDMC]   = 0,
+>      [ASPEED_SCU]    = 21,
+>      [ASPEED_ADC]    = 31,
+> @@ -180,6 +185,11 @@ static void aspeed_soc_init(Object *obj)
+>                                sizeof(s->spi[i]), typename);
+>      }
+>  
+> +    for (i = 0; i < sc->ehcis_num; i++) {
+> +        sysbus_init_child_obj(obj, "ehci[*]", OBJECT(&s->ehci[i]),
+> +                              sizeof(s->ehci[i]), TYPE_PLATFORM_EHCI);
+> +    }
+> +
+>      snprintf(typename, sizeof(typename), "aspeed.sdmc-%s", socname);
+>      sysbus_init_child_obj(obj, "sdmc", OBJECT(&s->sdmc), sizeof(s->sdmc),
+>                            typename);
+> @@ -364,6 +374,19 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>                          s->spi[i].ctrl->flash_window_base);
+>      }
+>  
+> +    /* EHCI */
+> +    for (i = 0; i < sc->ehcis_num; i++) {
+> +        object_property_set_bool(OBJECT(&s->ehci[i]), true, "realized", &err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
+> +                        sc->memmap[ASPEED_EHCI1 + i]);
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
+> +                           aspeed_soc_get_irq(s, ASPEED_EHCI1 + i));
+> +    }
+> +
+>      /* SDMC - SDRAM Memory Controller */
+>      object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &err);
+>      if (err) {
+> @@ -472,6 +495,7 @@ static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
+>      sc->silicon_rev  = AST2400_A1_SILICON_REV;
+>      sc->sram_size    = 0x8000;
+>      sc->spis_num     = 1;
+> +    sc->ehcis_num    = 1;
+>      sc->wdts_num     = 2;
+>      sc->macs_num     = 2;
+>      sc->irqmap       = aspeed_soc_ast2400_irqmap;
+> @@ -496,6 +520,7 @@ static void aspeed_soc_ast2500_class_init(ObjectClass *oc, void *data)
+>      sc->silicon_rev  = AST2500_A1_SILICON_REV;
+>      sc->sram_size    = 0x9000;
+>      sc->spis_num     = 2;
+> +    sc->ehcis_num    = 2;
+>      sc->wdts_num     = 3;
+>      sc->macs_num     = 2;
+>      sc->irqmap       = aspeed_soc_ast2500_irqmap;
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index 90ac7f7ffa..78b9f6ae53 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -26,8 +26,10 @@
+>  #include "target/arm/cpu.h"
+>  #include "hw/gpio/aspeed_gpio.h"
+>  #include "hw/sd/aspeed_sdhci.h"
+> +#include "hw/usb/hcd-ehci.h"
+>  
+>  #define ASPEED_SPIS_NUM  2
+> +#define ASPEED_EHCIS_NUM 2
+>  #define ASPEED_WDTS_NUM  4
+>  #define ASPEED_CPUS_NUM  2
+>  #define ASPEED_MACS_NUM  4
+> @@ -50,6 +52,7 @@ typedef struct AspeedSoCState {
+>      AspeedXDMAState xdma;
+>      AspeedSMCState fmc;
+>      AspeedSMCState spi[ASPEED_SPIS_NUM];
+> +    EHCISysBusState ehci[ASPEED_EHCIS_NUM];
+>      AspeedSDMCState sdmc;
+>      AspeedWDTState wdt[ASPEED_WDTS_NUM];
+>      FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
+> @@ -71,6 +74,7 @@ typedef struct AspeedSoCClass {
+>      uint32_t silicon_rev;
+>      uint64_t sram_size;
+>      int spis_num;
+> +    int ehcis_num;
+>      int wdts_num;
+>      int macs_num;
+>      const int *irqmap;
+> @@ -94,6 +98,8 @@ enum {
+>      ASPEED_FMC,
+>      ASPEED_SPI1,
+>      ASPEED_SPI2,
+> +    ASPEED_EHCI1,
+> +    ASPEED_EHCI2,
+>      ASPEED_VIC,
+>      ASPEED_SDMC,
+>      ASPEED_SCU,
+> 
+

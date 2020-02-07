@@ -1,499 +1,195 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp564565lfp;
-        Fri, 7 Feb 2020 05:16:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy2b4wdqijTpa2p5UDs4mjREQP9xiQt3IB4j4an+oJmtGcNn/GPiBIsNz11apijpv01U+zW
-X-Received: by 2002:ac8:3453:: with SMTP id v19mr7430569qtb.263.1581081366689;
-        Fri, 07 Feb 2020 05:16:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581081366; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp566958lfp;
+        Fri, 7 Feb 2020 05:18:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzsVZSSeWr1ZaOtYH3dZokhbcVK4qQ9NUsoiFqRBhojBFUHPASC8NUaszbTS9K2G3+Q+FL9
+X-Received: by 2002:ac8:1835:: with SMTP id q50mr6998331qtj.210.1581081505753;
+        Fri, 07 Feb 2020 05:18:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581081505; cv=none;
         d=google.com; s=arc-20160816;
-        b=EmeyEnadWmFa4uJ1PlUN9++fu+/t/qP3ND49jHlOHSR1Bf3OqB8l7Xwib3B8SoTPt9
-         wyE6Kq1NfSLOTDjdD2ByG9C3UfXphDL+unjE78Su0RZMhFf/ji9splYYC9jxXCJlCHqV
-         nnIYyY56QWfZPxxE1nD7XpgHQjE9e2NrsOejxGiGZa2ydzeGAEXHt82ujw5onVAzGicZ
-         INj0qkdz0FYxfrQ11y2PJ4QJJotmNI0UPobS4GdHrHyniggpRE770BKwp9h3lt97zRYx
-         8SHJGtmR+RElF2JoEE0JOZQi2Bkaapln3RstSKXpXKIyjqOu6h9rC1R9ZbkQQ0rpRp9O
-         /gtA==
+        b=n4O+wXUS81AG6uP1NzsELkEsI+hSi+W6l3GHHubfEqAyFgR2tPwaRWIjf6KRNFWD/n
+         pPLt/l+6M2n816hhucOFhgFo9wtwFi5EvZu9rPkPKUNvOLb8UDLhOaTsswKnSiBOFMa/
+         3oEwNKFrxtpccVEGaHgqdUuZh/E4ZIFOPHlR4FH7PfEvN1ZMtBKigJiNKZVxbpJQBIJ0
+         e6fGTX821Mo75XV3+/lFLdpnzUWHgk8W4/MpfqnRQAFatzGzwJ1AfIqG7L56x7vbChhO
+         yrvXW70tzZe68zPBRHq1W2Xqjehin+8EYbcwTBP9Qqonb2vefW4kJUwT+DXurcTwnmdf
+         zfVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=feOKv06N+KSUAnv6yzsLEefYBBOq0bjvQnOQSEs+Kzk=;
-        b=JKUhSRhhVzFuhNv9PlCyW5Ea1qf3kJkFyMDDaVLvJOpylhCU7rQkQxrZHPy0sM4Ylp
-         u+YttVumKFtdfpQnjVyoJ3jI3P4IoBNyziy9R9bH3ljyRSShe+XflBo8IgYKnjCeM5xX
-         DWwZcHCNPac0hw4VPyi1SlmYjTq9DTmpSPohW45Lo795LfAswY0Z4Jc05LQcGSCKcGxD
-         S9olSNRiAyPMcbIX4b4at2RDL2GOfzJUxntIuoDrvD6vlg0aboZM0JpJW3AI22zo5urY
-         yqXit5sXeVdKv/9j3ZRGAKraO2O72N0FT5wAAxN8Ddox+hTaNcM6LRr0O+MWB2ZlRIkd
-         yRAA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=ZmZW+dAeMW8YQzGob0AORwEoPAH3C1vm/LAmWkBsM7M=;
+        b=IPyOKF4uXBWxA4W5FV51KlTyu6IOBDQs0Cxk6m0dJXSGqF0RgBbPySwUZO+3yDKQ+u
+         EG1v58rX8UK36KB/oC4nX0GAaepLq5mFAXqSfio5+l3/0Fh6Io/PY/sxERdzAx6iNdEM
+         ylsvZdBXOLQDbKbfngTNm73ijmwf1s0Zx9A6aBV9nqJvmncPJQxrAgcRx48rm/33vfcU
+         e0abz9fhEmIJ5SM0enfdGK8/QsMJCQ/5qrICus1agSdIF6hP95qyz2ndR1dZmi8AQi6g
+         4trxkvfH+l6ngNSLqwQLUbVbnpmUD9jDB3RXf2JvXGwPXAXMytXinAnrWWoWAJTB8CNo
+         BKtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=KgDvNQij;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id d190si1304799qkg.344.2020.02.07.05.16.06;
-        Fri, 07 Feb 2020 05:16:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id k19si1347871qtj.64.2020.02.07.05.18.25
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 07 Feb 2020 05:18:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=KgDvNQij;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 448AF4A551;
-	Fri,  7 Feb 2020 08:16:06 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N0oL96DuOUc0; Fri,  7 Feb 2020 08:16:04 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id CCFB24A4C0;
-	Fri,  7 Feb 2020 08:16:04 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id F3AF34A4C0
- for <kvmarm@lists.cs.columbia.edu>; Fri,  7 Feb 2020 08:16:02 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9dMHCtmd-O0X for <kvmarm@lists.cs.columbia.edu>;
- Fri,  7 Feb 2020 08:16:01 -0500 (EST)
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [205.139.110.120])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 9541B4A3A5
- for <kvmarm@lists.cs.columbia.edu>; Fri,  7 Feb 2020 08:16:01 -0500 (EST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581081361;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=oClRtBhodqGVYqoJbtW8DMEVH3CdF5teJSKNOv0GzTM=;
- b=KgDvNQijhicCJ8kFkI2FHZOhihinwlZLRmYk3fe45oYYHsYfsXn/KkL4ooWuq3M8bpr9M/
- 9BI5Fsy4YCGowrVNeKgPCjYSZva/SiG5rfOoL3MPZPVBjF7xvIfjbAbTXuXPYQfNAi8P+A
- vkTB6SsUN6asV0ahSL3DYu416cN7Z/c=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-338-cudI3_b8PxemvxAJoIbtxw-1; Fri, 07 Feb 2020 08:15:57 -0500
-X-MC-Unique: cudI3_b8PxemvxAJoIbtxw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B32D0100726C;
- Fri,  7 Feb 2020 13:15:55 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C530F1001B28;
- Fri,  7 Feb 2020 13:15:50 +0000 (UTC)
-Date: Fri, 7 Feb 2020 14:15:47 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [kvm-unit-tests PATCH v3 11/14] arm/arm64: ITS: INT functional
- tests
-Message-ID: <20200207131547.rlj44nwu32xa4tyd@kamzik.brq.redhat.com>
-References: <20200128103459.19413-1-eric.auger@redhat.com>
- <20200128103459.19413-12-eric.auger@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56298 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j03Wb-00035W-4X
+	for alex.bennee@linaro.org; Fri, 07 Feb 2020 08:18:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57490)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <guoheyi@huawei.com>) id 1j03WS-00035I-UI
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 08:18:18 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <guoheyi@huawei.com>) id 1j03WR-0001HH-Mu
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 08:18:16 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:38246 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
+ id 1j03WR-0001Au-A0; Fri, 07 Feb 2020 08:18:15 -0500
+Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 3B0F73F34A8B2E1395DD;
+ Fri,  7 Feb 2020 21:18:07 +0800 (CST)
+Received: from [127.0.0.1] (10.173.221.228) by DGGEMS401-HUB.china.huawei.com
+ (10.3.19.201) with Microsoft SMTP Server id 14.3.439.0;
+ Fri, 7 Feb 2020 21:17:58 +0800
+Subject: Re: [RFC v2 00/14] Add SDEI support for arm64
+To: Marc Zyngier <maz@kernel.org>
+References: <20191105091056.9541-1-guoheyi@huawei.com>
+ <CAFEAcA-+tAbb9h2wZOm56TqUvjQJT0OYFLwTVS-UxKrF5PO3mQ@mail.gmail.com>
+ <5aece614-4341-35e5-53a6-2f3d788e6e8d@huawei.com>
+ <e8b93460-48e6-43cd-4608-370c07cb45ec@huawei.com>
+ <350aa4ca1b57a466ed882236caf23051@kernel.org>
+ <c67c1563-045f-a5f8-8b8b-97d792aa1912@huawei.com>
+ <f8394aafb2adb513186cd2784a1cb077@kernel.org>
+From: Heyi Guo <guoheyi@huawei.com>
+Message-ID: <659a85d2-07e0-ad33-a2c0-99f21fc24ef8@huawei.com>
+Date: Fri, 7 Feb 2020 21:17:56 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200128103459.19413-12-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Cc: thuth@redhat.com, kvm@vger.kernel.org, maz@kernel.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
- kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+In-Reply-To: <f8394aafb2adb513186cd2784a1cb077@kernel.org>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+X-Originating-IP: [10.173.221.228]
+X-CFilter-Loop: Reflected
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.32
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 5qPNfry1D5zt
-
-On Tue, Jan 28, 2020 at 11:34:56AM +0100, Eric Auger wrote:
-> Triggers LPIs through the INT command.
-> 
-> the test checks the LPI hits the right CPU and triggers
-> the right LPI intid, ie. the translation is correct.
-> 
-> Updates to the config table also are tested, along with inv
-> and invall commands.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
-> ---
-> 
-> v2 -> v3:
-> - add comments
-> - keep the report_skip in case there aren't 4 vcpus to be able to
->   run other tests in the its category.
-> - fix the prefix pop
-> - move its_event and its_stats to arm/gic.c
-> ---
->  arm/gic.c         | 228 +++++++++++++++++++++++++++++++++++++++++++---
->  arm/unittests.cfg |   7 ++
->  2 files changed, 224 insertions(+), 11 deletions(-)
-> 
-> diff --git a/arm/gic.c b/arm/gic.c
-> index 4d7dd03..50104b1 100644
-> --- a/arm/gic.c
-> +++ b/arm/gic.c
-> @@ -160,6 +160,87 @@ static void ipi_handler(struct pt_regs *regs __unused)
->  	}
->  }
->  
-> +static void setup_irq(handler_t handler)
-> +{
-> +	gic_enable_defaults();
-> +#ifdef __arm__
-> +	install_exception_handler(EXCPTN_IRQ, handler);
-> +#else
-> +	install_irq_handler(EL1H_IRQ, handler);
-> +#endif
-> +	local_irq_enable();
-> +}
-> +
-> +#if defined(__aarch64__)
-> +struct its_event {
-> +	int cpu_id;
-> +	int lpi_id;
-> +};
-> +
-> +struct its_stats {
-> +	struct its_event expected;
-> +	struct its_event observed;
-> +};
-> +
-> +static struct its_stats lpi_stats;
-> +
-> +static void lpi_handler(struct pt_regs *regs __unused)
-> +{
-> +	u32 irqstat = gic_read_iar();
-> +	int irqnr = gic_iar_irqnr(irqstat);
-> +
-> +	gic_write_eoir(irqstat);
-> +	if (irqnr < 8192)
-> +		report(false, "Unexpected non LPI interrupt received");
-
-report_info
-
-> +	smp_rmb(); /* pairs with wmb in lpi_stats_expect */
-> +	lpi_stats.observed.cpu_id = smp_processor_id();
-> +	lpi_stats.observed.lpi_id = irqnr;
-> +	smp_wmb(); /* pairs with rmb in check_lpi_stats */
-> +}
-> +
-> +static void lpi_stats_expect(int exp_cpu_id, int exp_lpi_id)
-> +{
-> +	lpi_stats.expected.cpu_id = exp_cpu_id;
-> +	lpi_stats.expected.lpi_id = exp_lpi_id;
-> +	lpi_stats.observed.cpu_id = -1;
-> +	lpi_stats.observed.lpi_id = -1;
-> +	smp_wmb(); /* pairs with rmb in handler */
-> +}
-> +
-> +static void check_lpi_stats(void)
-
-static void check_lpi_stats(const char *testname)
-{
-   bool pass = false;
-
-> +{
-> +	mdelay(100);
-> +	smp_rmb(); /* pairs with wmb in lpi_handler */
-> +	if ((lpi_stats.observed.cpu_id != lpi_stats.expected.cpu_id) ||
-> +	    (lpi_stats.observed.lpi_id != lpi_stats.expected.lpi_id)) {
-
-nit: extra ()
-
-> +		if (lpi_stats.observed.cpu_id == -1 &&
-> +		    lpi_stats.observed.lpi_id == -1) {
-> +			report(false,
-> +			       "No LPI received whereas (cpuid=%d, intid=%d) "
-> +			       "was expected", lpi_stats.expected.cpu_id,
-> +			       lpi_stats.expected.lpi_id);
-
-report_info
-
-> +		} else {
-> +			report(false, "Unexpected LPI (cpuid=%d, intid=%d)",
-> +			       lpi_stats.observed.cpu_id,
-> +			       lpi_stats.observed.lpi_id);
-
-report_info
-
-> +		}
-
-pass = false;
-
-> +	} else if (lpi_stats.expected.lpi_id != -1) {
-> +		report(true, "LPI %d on CPU %d", lpi_stats.observed.lpi_id,
-> +		       lpi_stats.observed.cpu_id);
-
-report_info
-
-> +	} else {
-> +		report(true, "no LPI received, as expected");
-
-report_info
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Gavin Shan <gshan@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, James
+ Morse <james.morse@arm.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ wanghaibin.wang@huawei.com, Dave Martin <Dave.Martin@arm.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Lg1bhQvsKlb5
 
 
-> +	}
-
-report(pass, "%s", testname);
-
-> +}
-> +
-> +static void secondary_lpi_test(void)
-> +{
-> +	setup_irq(lpi_handler);
-> +	cpumask_set_cpu(smp_processor_id(), &ready);
-> +	while (1)
-> +		wfi();
-> +}
-> +#endif
-> +
->  static void gicv2_ipi_send_self(void)
->  {
->  	writel(2 << 24 | IPI_IRQ, gicv2_dist_base() + GICD_SGIR);
-> @@ -217,17 +298,6 @@ static void ipi_test_smp(void)
->  	report_prefix_pop();
->  }
->  
-> -static void setup_irq(handler_t handler)
-> -{
-> -	gic_enable_defaults();
-> -#ifdef __arm__
-> -	install_exception_handler(EXCPTN_IRQ, handler);
-> -#else
-> -	install_irq_handler(EL1H_IRQ, handler);
-> -#endif
-> -	local_irq_enable();
-> -}
-> -
->  static void ipi_send(void)
->  {
->  	setup_irq(ipi_handler);
-> @@ -522,6 +592,7 @@ static void gic_test_mmio(void)
->  #if defined(__arm__)
->  
->  static void test_its_introspection(void) {}
-> +static void test_its_trigger(void) {}
->  
->  #else /* __arch64__ */
->  
-> @@ -561,6 +632,137 @@ static void test_its_introspection(void)
->  	report_info("collection baser entry_size = 0x%x", coll_baser->esz);
->  }
->  
-> +static bool its_prerequisites(int nb_cpus)
-> +{
-> +	int cpu;
-> +
-> +	if (!gicv3_its_base()) {
-> +		report_skip("No ITS, skip ...");
-> +		return true;
-> +	}
-> +
-> +	if (nr_cpus < 4) {
-
-nr_cpus < nb_cpus, or just drop the nb_cpus parameter and hard code 4
-here.
-
-> +		report_skip("Test requires at least %d vcpus", nb_cpus);
-> +		return true;
-> +	}
-> +
-> +	stats_reset();
-> +
-> +	setup_irq(lpi_handler);
-> +
-> +	for_each_present_cpu(cpu) {
-> +		if (cpu == 0)
-> +			continue;
-> +		smp_boot_secondary(cpu, secondary_lpi_test);
-> +	}
-> +	wait_on_ready();
-> +
-> +	its_enable_defaults();
-> +
-> +	lpi_stats_expect(-1, -1);
-> +	check_lpi_stats();
-> +
-> +	return false;
-
-Reverse logic. I'd expect 'return true' for success.
-
-> +}
-> +
-> +static void test_its_trigger(void)
-> +{
-> +	struct its_collection *col3, *col2;
-> +	struct its_device *dev2, *dev7;
-> +
-> +	if (its_prerequisites(4))
-
-if (!its_prerequisites(...))
-
-> +		return;
-> +
-> +	dev2 = its_create_device(2 /* dev id */, 8 /* nb_ites */);
-> +	dev7 = its_create_device(7 /* dev id */, 8 /* nb_ites */);
-> +
-> +	col3 = its_create_collection(3 /* col id */, 3/* target PE */);
-> +	col2 = its_create_collection(2 /* col id */, 2/* target PE */);
-> +
-> +	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
-> +	gicv3_lpi_set_config(8196, LPI_PROP_DEFAULT);
-> +
-> +	its_send_invall(col2);
-> +	its_send_invall(col3);
-> +
-> +	report_prefix_push("int");
-> +	/*
-> +	 * dev=2, eventid=20  -> lpi= 8195, col=3
-> +	 * dev=7, eventid=255 -> lpi= 8196, col=2
-> +	 * Trigger dev2, eventid=20 and dev7, eventid=255
-> +	 * Check both LPIs hit
-> +	 */
-> +
-> +	its_send_mapd(dev2, true);
-> +	its_send_mapd(dev7, true);
-> +
-> +	its_send_mapc(col3, true);
-> +	its_send_mapc(col2, true);
-> +
-> +	its_send_mapti(dev2, 8195 /* lpi id */,
-> +		       20 /* event id */, col3);
-> +	its_send_mapti(dev7, 8196 /* lpi id */,
-> +		       255 /* event id */, col2);
-
-No need for line breaks, with the embedded comments it's hard to read
-
-> +
-> +	lpi_stats_expect(3, 8195);
-> +	its_send_int(dev2, 20);
-> +	check_lpi_stats();
-> +
-> +	lpi_stats_expect(2, 8196);
-> +	its_send_int(dev7, 255);
-> +	check_lpi_stats();
-> +
-> +	report_prefix_pop();
-
-I think a table of parameters and loop would be nicer than all the
-repeated function calls.
-
-> +
-> +	report_prefix_push("inv/invall");
-> +
-> +	/*
-> +	 * disable 8195, check dev2/eventid=20 does not trigger the
-> +	 * corresponding LPI
-> +	 */
-> +	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT & ~0x1);
-
-LPI_PROP_DEFAULT & ~LPI_PROP_ENABLED
-
-> +	its_send_inv(dev2, 20);
-> +
-> +	lpi_stats_expect(-1, -1);
-> +	its_send_int(dev2, 20);
-> +	check_lpi_stats();
-> +
-> +	/*
-> +	 * re-enable the LPI but willingly do not call invall
-> +	 * so the change in config is not taken into account.
-> +	 * The LPI should not hit
-> +	 */
-> +	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
-> +	lpi_stats_expect(-1, -1);
-> +	its_send_int(dev2, 20);
-> +	check_lpi_stats();
-> +
-> +	/* Now call the invall and check the LPI hits */
-> +	its_send_invall(col3);
-> +	lpi_stats_expect(3, 8195);
-> +	its_send_int(dev2, 20);
-> +	check_lpi_stats();
-> +
-> +	report_prefix_pop();
-
-Need blank line here.
-
-> +	/*
-> +	 * Unmap device 2 and check the eventid 20 formerly
-> +	 * attached to it does not hit anymore
-> +	 */
-> +	report_prefix_push("mapd valid=false");
-
-Above you have the prefix-push before the comment explaining the test.
-After is probably better, but whatever, as long as it's consistent.
-
-> +	its_send_mapd(dev2, false);
-> +	lpi_stats_expect(-1, -1);
-> +	its_send_int(dev2, 20);
-> +	check_lpi_stats();
-> +	report_prefix_pop();
-> +
-> +	/* Unmap the collection this time and check no LPI does hit */
-> +	report_prefix_push("mapc valid=false");
-> +	its_send_mapc(col2, false);
-> +	lpi_stats_expect(-1, -1);
-> +	its_send_int(dev7, 255);
-> +	check_lpi_stats();
-> +	report_prefix_pop();
-> +}
->  #endif
->  
->  int main(int argc, char **argv)
-> @@ -594,6 +796,10 @@ int main(int argc, char **argv)
->  		report_prefix_push(argv[1]);
->  		gic_test_mmio();
->  		report_prefix_pop();
-> +	} else if (!strcmp(argv[1], "its-trigger")) {
-> +		report_prefix_push(argv[1]);
-> +		test_its_trigger();
-> +		report_prefix_pop();
->  	} else if (strcmp(argv[1], "its-introspection") == 0) {
->  		report_prefix_push(argv[1]);
->  		test_its_introspection();
-> diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-> index ba2b31b..bfafec5 100644
-> --- a/arm/unittests.cfg
-> +++ b/arm/unittests.cfg
-> @@ -129,6 +129,13 @@ extra_params = -machine gic-version=3 -append 'its-introspection'
->  groups = its
->  arch = arm64
->  
-> +[its-trigger]
-> +file = gic.flat
-> +smp = $MAX_SMP
-> +extra_params = -machine gic-version=3 -append 'its-trigger'
-> +groups = its
-> +arch = arm64
-> +
->  # Test PSCI emulation
->  [psci]
->  file = psci.flat
-> -- 
-> 2.20.1
+On 2020/2/7 1:30, Marc Zyngier wrote:
+> On 2020-02-06 01:20, Heyi Guo wrote:
+>> Hi Marc,
+>>
+>> On 2020/2/5 21:15, Marc Zyngier wrote:
+>>> Hi Heyi,
+>>>
+>>> On 2020-02-04 08:26, Heyi Guo wrote:
+>>>> Update Marc's email address.
+>>>>
+>>>> +cc Gavin as he is posting a RFC for ARM NMI.
+>>>>
+>>>> Hi Marc,
+>>>>
+>>>> Really sorry for missing to update your email address, for the initi=
+al
+>>>> topic was raised long time ago and I forgot to update the Cc list in
+>>>> the commit message of the patches.
+>>>>
+>>>> Thanks Gavin for forwarding current discussion on ARM NMI to me.
+>>>>
+>>>> For you said SDEI is "horrible", does it mean we'd better never
+>>>> implement SDEI in virtual world? Or do you have any advice on how to
+>>>> implement it?
+>>>
+>>> My concern is that SDEI implies having EL3. EL3 not being virtualizab=
+le
+>>> with KVM, you end-up baking SDEI in *hardware*. Of course, this=20
+>>> hardware
+>>> is actually software (it is QEMU), but this isn't the way it was=20
+>>> intended.
+>>
+>>>
+>>> It's not the first time we've done that (PSCI is another example),=20
+>>> but the
+>>> logic behind SDEI looks much more invasive.
+>>
+>> Thanks for your comments.
+>>
+>> Thinking about them for quite a while, below is my understanding,
+>> please correct me if I'm wrong:
+>>
+>> So should the KVM based virtual machine be treated as one with CPUs
+>> only having NS-EL1 and NS-EL0, ideally? And SDEI messes up this model,
+>> isn't it?
 >
+> Well, that's exactly what it is (until we have nested virt, in which ca=
+se
+> you will be able to add NS-EL2 to the mix).
+>
+>> PSCI only contains some one-shot operations, so it is much less
+>> invasive than SDEI.
+>>
+>>
+>> I've another question. The origin of "virtual" SDEI requirement comes
+>> from the lack of hard lockup detector in VM.
+>
+> Sure. But nothing guarantees that the guest is going to register a SDEI
+> entry point anyway.
+>
+>> We can have some kind of
+>> watchdog, but how can the watchdog trigger the VM OS to panic and run
+>> kdump, even in irq-off state?
+>
+> Nothing. All the events, including SDEI, are maskable, one way or=20
+> another.
+
+Indeed...
+
+>
+> Gavin's approach to inject a SError is probably OK for Linux, given tha=
+t
+> it tends to run with PSTATE.A=3D=3D0. But that's not a guarantee either=
+ (if
+> you take a recursive exception, SError won't be delivered).
+>
+> The long and the short of it is that there is no way to do what you wan=
+t
+> with absolute guarantees on the ARM architecture. It just doesn't exist=
+.
+
+Much appreciate your explanation and advice.
 
 Thanks,
-drew 
 
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+Heyi
+
+>
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 M.
+

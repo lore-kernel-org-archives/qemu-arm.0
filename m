@@ -1,192 +1,238 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp2092612lfp;
-        Thu, 6 Feb 2020 16:21:39 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyKPFR8BV57PGlORoIK3hSuJbzCEEfXAkYLXXluzTwPtQe453MrSj53VddUBN4yTH4h41gD
-X-Received: by 2002:a37:7d01:: with SMTP id y1mr5167727qkc.452.1581034899166;
-        Thu, 06 Feb 2020 16:21:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581034899; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6973lfp;
+        Thu, 6 Feb 2020 18:12:23 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx93+leZiSjT/d/Bvzu6mo6KE1/rY694rm2mi3vR3o0+QrMZYQdwPeVT+Z5gK3MRr1zl5e6
+X-Received: by 2002:a54:4182:: with SMTP id 2mr572697oiy.14.1581041542810;
+        Thu, 06 Feb 2020 18:12:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581041542; cv=none;
         d=google.com; s=arc-20160816;
-        b=eM3naetTs/tKbtRxNMTAgRnwRT/9np8aDWxNGyCNRHIUhrP5/lbu83ttsuuC0Hx0o2
-         AUgY7QHiWdExW8q+sQ5HhxiML92/scrAAU6fI2v4RW1NRr9sK5NZF6rPz902PSQ9kxg+
-         OaRYrTQIgF2a8pLhJcD0XzMwt8wUg3PCqrEzNX1wTqX0reQs6r6HPHwXLr0z8ktleKhr
-         DHkORs6Qvar0Q/6cgwbzbOQ2R+elURKP1zIK+e2cZ9uqN0weOcjaWzq5wacaHaSv6CTW
-         r0jvmjOE6gQ/ZGTv+sstFCZKwISWE0MJuOMe49OVL0Nnm9VB8F1YXMung4PaRXtD9Ku6
-         SPDw==
+        b=Z7Zz1ezHavk6X+qdgHvr2BWyCOd88H2CsdYeCpzSfkDW8QQTcDPFZGASGjREfK/kr/
+         OloeFbSb39OVNvllZfAzPKalOrJZlI+kVpjQ30Jz6B6YoK/yo+DF4Lvk87K+H6Il6eOu
+         zH6Lwe6fi9+Rh00p7uPjSK63lNcqkf3WzNUiQu6XrhYC4dx1QpdGNsUPtnG43B/LxTDB
+         13nQSKbTMseu8I6m6Uuv+vtju/3jrQFvTkmHseg8xmJHsuxgT0bHbmgCl72kVCFvHQ/W
+         5+jRs3N/l/FCEM0we9mf63uLaeASrDOC9an9FkrWM9VZSFJzAZ8J4gsUKHLZmh36N8/i
+         fWDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+        h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=s3Q4FUv0JvyibRsw6iAxeHyN5xi5kNpFADNMc7DiO3c=;
-        b=V7GEJ+8kz5qgOW2QvpGwLSy9YQa4Ub5SV7qplkDqGNqC025+6E7cuVq17EaWKfnj9g
-         8mUq5x0DwGxBKIeuXVoqrYapdCKPm1dYICDnc/QkXet765obu3KpLFdQHYc15Y/h3sfq
-         uSb6zCBVC3DqpWusra0ap9ffzT4dHjhDbbsT+Z9gWhNp+CDhS44guG1SRBCwmH5Bqsu8
-         +QHeu+8JPq2Xu8p7ChfjDD9cl5GcDlkJ9weeew9tlhpXWJa/9ppkddaj44a4SMImJB/u
-         3gmMuHrrtnUD616H20NoCdcvO7NZGLJZ0Brk8CGJOoYuay0IFyKjm94ZGTnLdgIJ4ysf
-         4lYw==
+         :message-id:from:references:cc:to:subject;
+        bh=smWdssDAN0qFCiA94Tg1prKGvPGmDpnppQxp8/TxVUw=;
+        b=ElSzErDZzfjqXfdG870ZKFw2dajUm0R+hLaqTEETNGNG9DmaHbShK5ntgwxUk+7dY6
+         X7Ptrj1dd1kmq9Fz9Z39qUQmpbYPvSDWkmi/vLqDzNGz+TyRgrPBvIPE+wXvZZlGm5Uy
+         c4pu8sODRE+cOxB7Npnp3ptKmIesfwMKXlsLz6ksD6iFUTbg1fLkQiRfvEYZgbC6zUhS
+         DI785PR7eW8Xu0rj2vFsvwQ0PhLg6WZ9veJ+nTfb1uJMFxS1imIUJyXhp09czhM4q9hC
+         ai1DeQNOjAX1Pu17+wlfZR7MpBbk+h8wFiNlR4j1RTKPqLpuP6UwxiaDuVOZ4J3zNzk/
+         WAHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N4OKUDHJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x74si480454qka.199.2020.02.06.16.21.38
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2020 16:21:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id r1si830627otq.298.2020.02.06.18.12.22;
+        Thu, 06 Feb 2020 18:12:22 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N4OKUDHJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48254 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izrOs-0003Ik-JH
-	for alex.bennee@linaro.org; Thu, 06 Feb 2020 19:21:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58140)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1izrOb-0003F3-AZ
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 19:21:25 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1izrOa-00008K-39
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 19:21:20 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:20278
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1izrOZ-00005X-VQ
- for qemu-arm@nongnu.org; Thu, 06 Feb 2020 19:21:20 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581034878;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=s3Q4FUv0JvyibRsw6iAxeHyN5xi5kNpFADNMc7DiO3c=;
- b=N4OKUDHJ0QPcjV4SFryXTyNc9kGP5DiBwfcinsXO8AJivhHoXm0FKkDKcIFaJfaOwvNfyN
- 2cPtD8vPI3FIX3Zl4NfTSkbwEzu7HmudRS7d2EaFTAbJfex0Nis+T544VCJEt2sV9IaT8g
- o+yADt9RdeOT+1+RNEO2/ZWmeo2jYq8=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-398-lniVAawKP_ipiD7mcxTvzA-1; Thu, 06 Feb 2020 19:21:17 -0500
-Received: by mail-wr1-f69.google.com with SMTP id u18so325762wrn.11
- for <qemu-arm@nongnu.org>; Thu, 06 Feb 2020 16:21:16 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=lLkZD4wBLDRhGKRYrPoACT34vqZqYhy2O17uqclLv0c=;
- b=kSR6BOY+i9q1HGLMskyg/faKt2o7Kh23fSsP9HAJekX2m/NCtJDmmiMy7n0yyG9SDJ
- blzYAvC+n5artF5OxQUnepTAN/Vwzie+kzlFhmOeUDsjtKRcOtmCSbpvbZwf/j0MqJVs
- cf53uDvzHQceWqQEtCRdhFhvRbEgXSpLNSb57gFvIxPNlxvUaMF56I2snHx1JxWZg6tB
- gMUutT2MdqEaI0V4VAAO/CcL9yt/v8nYIJxNvCTI5/s2YfroGlaamTKgLjQvpw3fA3Ao
- LZWxif+0BDQk9XVGf3TV7IzpQWQnMWUyBDRd1kxJQei6kyNOFZgPyOt7LiOb1bVDPS87
- uC7w==
-X-Gm-Message-State: APjAAAVEkoprMXdAPz9OFei5cyr1Iv7kK16kkN9CdSIQ3TPI1VhjNGkM
- nrG7GZKcCAofnS2OquSquzgjbNLJ9Bpx+6p8C8FiBNSGFAZENtoFtSMvSMB207KpKF3RHmmYKIf
- +N9ZKV1uAOvtC
-X-Received: by 2002:a7b:c3d1:: with SMTP id t17mr442449wmj.27.1581034875065;
- Thu, 06 Feb 2020 16:21:15 -0800 (PST)
-X-Received: by 2002:a7b:c3d1:: with SMTP id t17mr442396wmj.27.1581034874696;
- Thu, 06 Feb 2020 16:21:14 -0800 (PST)
-Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id v17sm1123352wrt.91.2020.02.06.16.21.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 06 Feb 2020 16:21:14 -0800 (PST)
-Subject: Re: [PATCH v2 3/4] m25p80: Improve command handling for unsupported
- commands
-To: Guenter Roeck <linux@roeck-us.net>,
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>
-References: <20200206183219.3756-1-linux@roeck-us.net>
- <20200206183219.3756-3-linux@roeck-us.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <ad276d31-ae72-3349-86cc-6339ec250c74@redhat.com>
-Date: Fri, 7 Feb 2020 01:21:12 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727154AbgBGCMT (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 6 Feb 2020 21:12:19 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:9706 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1727003AbgBGCMS (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 6 Feb 2020 21:12:18 -0500
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 0CC776FDC2DB42D9E710;
+        Fri,  7 Feb 2020 10:12:17 +0800 (CST)
+Received: from [127.0.0.1] (10.173.222.27) by DGGEMS408-HUB.china.huawei.com
+ (10.3.19.208) with Microsoft SMTP Server id 14.3.439.0; Fri, 7 Feb 2020
+ 10:12:07 +0800
+Subject: Re: [kvm-unit-tests PATCH v3 06/14] arm/arm64: gicv3: Set the LPI
+ config and pending tables
+To:     Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
+        <maz@kernel.org>, <kvmarm@lists.cs.columbia.edu>,
+        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>
+CC:     <drjones@redhat.com>, <andre.przywara@arm.com>,
+        <peter.maydell@linaro.org>, <alexandru.elisei@arm.com>,
+        <thuth@redhat.com>
+References: <20200128103459.19413-1-eric.auger@redhat.com>
+ <20200128103459.19413-7-eric.auger@redhat.com>
+From:   Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <5e188428-11c9-aad4-3d5e-fca89cc41b7f@huawei.com>
+Date:   Fri, 7 Feb 2020 10:12:05 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <20200206183219.3756-3-linux@roeck-us.net>
+In-Reply-To: <20200128103459.19413-7-eric.auger@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
-X-MC-Unique: lniVAawKP_ipiD7mcxTvzA-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9uvTMujF5ptR
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.173.222.27]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: M1v4Nk4glGQV
 
-On 2/6/20 7:32 PM, Guenter Roeck wrote:
-> Whenever an unsupported command is encountered, the current code
-> interprets each transferred byte as new command. Most of the time, those
-> 'commands' are interpreted as new unknown commands. However, in rare
-> cases, it may be that for example address or length information
-> passed with the original command is by itself a valid command.
-> If that happens, the state machine may get completely confused and,
-> worst case, start writing data into the flash or even erase it.
->=20
-> To avoid the problem, transition into STATE_READING_DATA and keep
-> sending a value of 0 until the chip is deselected after encountering
-> an unsupported command.
->=20
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+Hi Eric,
+
+On 2020/1/28 18:34, Eric Auger wrote:
+> Allocate the LPI configuration and per re-distributor pending table.
+> Set redistributor's PROPBASER and PENDBASER. The LPIs are enabled
+> by default in the config table.
+> 
+> Also introduce a helper routine that allows to set the pending table
+> bit for a given LPI.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> 
 > ---
-> v2: Split patch into two parts; improved description.
->=20
->   hw/block/m25p80.c | 5 +++++
->   1 file changed, 5 insertions(+)
->=20
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index 53bf63856f..8227088441 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -1161,6 +1161,11 @@ static void decode_new_cmd(Flash *s, uint32_t valu=
-e)
->           s->quad_enable =3D false;
->           break;
->       default:
-> +        s->pos =3D 0;
-> +        s->len =3D 1;
-> +        s->state =3D STATE_READING_DATA;
-> +        s->data_read_loop =3D true;
-> +        s->data[0] =3D 0;
+> 
+> v2 -> v3:
+> - Move the helpers in lib/arm/gic-v3.c and prefix them with "gicv3_"
+>    and add _lpi prefix too
+> 
+> v1 -> v2:
+> - remove memory attributes
+> ---
+>   lib/arm/asm/gic-v3.h | 16 +++++++++++
+>   lib/arm/gic-v3.c     | 64 ++++++++++++++++++++++++++++++++++++++++++++
+>   2 files changed, 80 insertions(+)
+> 
+> diff --git a/lib/arm/asm/gic-v3.h b/lib/arm/asm/gic-v3.h
+> index ffb2e26..ec2a6f0 100644
+> --- a/lib/arm/asm/gic-v3.h
+> +++ b/lib/arm/asm/gic-v3.h
+> @@ -48,6 +48,16 @@
+>   #define MPIDR_TO_SGI_AFFINITY(cluster_id, level) \
+>   	(MPIDR_AFFINITY_LEVEL(cluster_id, level) << ICC_SGI1R_AFFINITY_## level ## _SHIFT)
+>   
+> +#define GICR_PROPBASER_IDBITS_MASK                      (0x1f)
 
-Maybe self-explicit using:
+This is not being used.  You can use it when calculating prop_val
+or just drop it.
 
-            s->data[0] =3D NOP;
+> +
+> +#define GICR_PENDBASER_PTZ                              BIT_ULL(62)
+> +
+> +#define LPI_PROP_GROUP1		(1 << 1)
+> +#define LPI_PROP_ENABLED	(1 << 0)
+> +#define LPI_PROP_DEFAULT_PRIO   0xa0
+> +#define LPI_PROP_DEFAULT	(LPI_PROP_DEFAULT_PRIO | LPI_PROP_GROUP1 | \
+> +				 LPI_PROP_ENABLED)
+> +
+>   #include <asm/arch_gicv3.h>
+>   
+>   #ifndef __ASSEMBLY__
+> @@ -64,6 +74,8 @@ struct gicv3_data {
+>   	void *dist_base;
+>   	void *redist_bases[GICV3_NR_REDISTS];
+>   	void *redist_base[NR_CPUS];
+> +	void *lpi_prop;
+> +	void *lpi_pend[NR_CPUS];
+>   	unsigned int irq_nr;
+>   };
+>   extern struct gicv3_data gicv3_data;
+> @@ -80,6 +92,10 @@ extern void gicv3_write_eoir(u32 irqstat);
+>   extern void gicv3_ipi_send_single(int irq, int cpu);
+>   extern void gicv3_ipi_send_mask(int irq, const cpumask_t *dest);
+>   extern void gicv3_set_redist_base(size_t stride);
+> +extern void gicv3_lpi_set_config(int n, u8 val);
+> +extern u8 gicv3_lpi_get_config(int n);
+> +extern void gicv3_lpi_set_pending_table_bit(int rdist, int n, bool set);
+> +extern void gicv3_lpi_alloc_tables(void);
+>   
+>   static inline void gicv3_do_wait_for_rwp(void *base)
+>   {
+> diff --git a/lib/arm/gic-v3.c b/lib/arm/gic-v3.c
+> index feecb5e..c33f883 100644
+> --- a/lib/arm/gic-v3.c
+> +++ b/lib/arm/gic-v3.c
+> @@ -5,6 +5,7 @@
+>    */
+>   #include <asm/gic.h>
+>   #include <asm/io.h>
+> +#include <alloc_page.h>
+>   
+>   void gicv3_set_redist_base(size_t stride)
+>   {
+> @@ -147,3 +148,66 @@ void gicv3_ipi_send_single(int irq, int cpu)
+>   	cpumask_set_cpu(cpu, &dest);
+>   	gicv3_ipi_send_mask(irq, &dest);
+>   }
+> +
+> +#if defined(__aarch64__)
+> +/* alloc_lpi_tables: Allocate LPI config and pending tables */
+> +void gicv3_lpi_alloc_tables(void)
+> +{
+> +	unsigned long n = SZ_64K >> PAGE_SHIFT;
+> +	unsigned long order = fls(n);
+> +	u64 prop_val;
+> +	int cpu;
+> +
+> +	gicv3_data.lpi_prop = (void *)virt_to_phys(alloc_pages(order));
+> +
+> +	/* ID bits = 13, ie. up to 14b LPI INTID */
+> +	prop_val = (u64)gicv3_data.lpi_prop | 13;
+> +
+> +	/*
+> +	 * Allocate pending tables for each redistributor
+> +	 * and set PROPBASER and PENDBASER
+> +	 */
+> +	for_each_present_cpu(cpu) {
+> +		u64 pend_val;
+> +		void *ptr;
+> +
+> +		ptr = gicv3_data.redist_base[cpu];
+> +
+> +		writeq(prop_val, ptr + GICR_PROPBASER);
+> +
+> +		gicv3_data.lpi_pend[cpu] = (void *)virt_to_phys(alloc_pages(order));
+> +
+> +		pend_val = (u64)gicv3_data.lpi_pend[cpu];
+> +
+> +		writeq(pend_val, ptr + GICR_PENDBASER);
+> +	}
+> +}
+> +
+> +void gicv3_lpi_set_config(int n, u8 value)
+> +{
+> +	u8 *entry = (u8 *)(gicv3_data.lpi_prop + (n - 8192));
 
-Matter of taste probably, but I find this order easier to review:
+But this is actually the *physical* address, shouldn't it be
+converted by phys_to_virt() before reading/writing something?
+Like what you've done for the 'lpi_pend[rdist]' before writing
+pending bit.  Or I'm missing some points here?
 
-            s->state =3D STATE_READING_DATA;
-            s->data_read_loop =3D true;
-            s->pos =3D 0;
-            s->data[0] =3D NOP;
-            s->len =3D 1;
+> +
+> +	*entry = value;
+> +}
+> +
+> +u8 gicv3_lpi_get_config(int n)
+> +{
+> +	u8 *entry = (u8 *)(gicv3_data.lpi_prop + (n - 8192));
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+The same as above.
 
->           qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Unknown cmd %x\n", valu=
-e);
->           break;
->       }
->=20
 
+Thanks,
+Zenghui
+
+> +
+> +	return *entry;
+> +}
+> +
+> +void gicv3_lpi_set_pending_table_bit(int rdist, int n, bool set)
+> +{
+> +	u8 *ptr = phys_to_virt((phys_addr_t)gicv3_data.lpi_pend[rdist]);
+> +	u8 mask = 1 << (n % 8), byte;
+> +
+> +	ptr += (n / 8);
+> +	byte = *ptr;
+> +	if (set)
+> +		byte |=  mask;
+> +	else
+> +		byte &= ~mask;
+> +	*ptr = byte;
+> +}
+> +#endif /* __aarch64__ */
+> 

@@ -1,162 +1,499 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp558023lfp;
-        Fri, 7 Feb 2020 05:09:59 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxNdFgW7So7tWvVQkM6lJaavSmfNmewzMYhwkICGIPzwa+FeE9Ezcm/+sXMZ4C4GlmgXQWN
-X-Received: by 2002:a37:9d0c:: with SMTP id g12mr6798468qke.35.1581080999271;
-        Fri, 07 Feb 2020 05:09:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581080999; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp564565lfp;
+        Fri, 7 Feb 2020 05:16:06 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy2b4wdqijTpa2p5UDs4mjREQP9xiQt3IB4j4an+oJmtGcNn/GPiBIsNz11apijpv01U+zW
+X-Received: by 2002:ac8:3453:: with SMTP id v19mr7430569qtb.263.1581081366689;
+        Fri, 07 Feb 2020 05:16:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581081366; cv=none;
         d=google.com; s=arc-20160816;
-        b=gn/ymU8cpyokQCWW19dIEDrVKb6TtjXT9Utsi4g6OnW4Q8saXEDqmgbDsb2D2oGhVq
-         RkcFLv3OhcsBaIcN20q5y3WZKqTyQbOxjCGWtQulGr2DGY5pFy9lqRiUZ84auzzRzvEP
-         v9bCgGszYTpxOr2sHLztqJUVBTNchfyfAaLII3p5dZf9MI99/grUFbIh2Oge4X/SilbR
-         PZGRPQplAqHPO5+JHXH9wqwSvFlWrWZXhhP8HXMWXTliv5S/AthgU4I+6Hu7DBXluYQK
-         m92sVVIhLMgY8B6/DKUrgXADU9PIaEuoBoQMjCMFNxj3SKePDzNYUlzFMKU/ijbCB1tl
-         oOMg==
+        b=EmeyEnadWmFa4uJ1PlUN9++fu+/t/qP3ND49jHlOHSR1Bf3OqB8l7Xwib3B8SoTPt9
+         wyE6Kq1NfSLOTDjdD2ByG9C3UfXphDL+unjE78Su0RZMhFf/ji9splYYC9jxXCJlCHqV
+         nnIYyY56QWfZPxxE1nD7XpgHQjE9e2NrsOejxGiGZa2ydzeGAEXHt82ujw5onVAzGicZ
+         INj0qkdz0FYxfrQ11y2PJ4QJJotmNI0UPobS4GdHrHyniggpRE770BKwp9h3lt97zRYx
+         8SHJGtmR+RElF2JoEE0JOZQi2Bkaapln3RstSKXpXKIyjqOu6h9rC1R9ZbkQQ0rpRp9O
+         /gtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=Pq+thd+KtO12hP6grY9IKrV0MxBWCghCYX7aWpxsH5M=;
-        b=HWsE93h/fAZbnOsPB2yMXlIoCkk9L8S5NB8hblAdsdwVABgQplvya3KLJwlUkPOpxh
-         uri1ZlufRAeZyEnJGOXXKQYj65UkYH01RXmBUL4dUpImGk8GtcsVOt1CIehxRdfr8M3l
-         fmTKXkd50kW5mOHTacPLtomFhBtBN7F12W/glnLbXGNHwTjaMyt2Af5z8l/N+JadngV8
-         YoKEofuikJagOGN8sFT8shuLfp8NZ1+ByrNs/lhTiEe39Jn6xGzi8o6KXIuTQGfpVn8A
-         5ZgtmuhL/rEcylbrXgGfV+4VcNrav+nd36w/7979oGh5cJzhq+o5t0IuPmrSJDZIhYfh
-         dNxQ==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=feOKv06N+KSUAnv6yzsLEefYBBOq0bjvQnOQSEs+Kzk=;
+        b=JKUhSRhhVzFuhNv9PlCyW5Ea1qf3kJkFyMDDaVLvJOpylhCU7rQkQxrZHPy0sM4Ylp
+         u+YttVumKFtdfpQnjVyoJ3jI3P4IoBNyziy9R9bH3ljyRSShe+XflBo8IgYKnjCeM5xX
+         DWwZcHCNPac0hw4VPyi1SlmYjTq9DTmpSPohW45Lo795LfAswY0Z4Jc05LQcGSCKcGxD
+         S9olSNRiAyPMcbIX4b4at2RDL2GOfzJUxntIuoDrvD6vlg0aboZM0JpJW3AI22zo5urY
+         yqXit5sXeVdKv/9j3ZRGAKraO2O72N0FT5wAAxN8Ddox+hTaNcM6LRr0O+MWB2ZlRIkd
+         yRAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=ciT8X3Ew;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p20si1169148qvk.15.2020.02.07.05.09.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Feb 2020 05:09:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=KgDvNQij;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id d190si1304799qkg.344.2020.02.07.05.16.06;
+        Fri, 07 Feb 2020 05:16:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=ciT8X3Ew;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56214 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j03OO-0005QT-MY
-	for alex.bennee@linaro.org; Fri, 07 Feb 2020 08:09:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55494)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <joel.stan@gmail.com>) id 1j03O0-0005Ow-3R
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 08:09:33 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <joel.stan@gmail.com>) id 1j03Ny-0004Bd-Pq
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 08:09:31 -0500
-Received: from mail-qv1-xf41.google.com ([2607:f8b0:4864:20::f41]:38317)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <joel.stan@gmail.com>)
- id 1j03Ny-00048U-F5; Fri, 07 Feb 2020 08:09:30 -0500
-Received: by mail-qv1-xf41.google.com with SMTP id g6so958414qvy.5;
- Fri, 07 Feb 2020 05:09:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Pq+thd+KtO12hP6grY9IKrV0MxBWCghCYX7aWpxsH5M=;
- b=ciT8X3EwITAxWw4b7OK5wDID+OFi0ndjuq3SU2kKq7oYuSDKsXvTKry5MP+OOAWGgs
- xn0e8pUkIO1jZX62ASWSYRTPB5a3FXP2xKLlpQOnMuk3J/8yZcdMYJFaHo2mEGEk8nka
- RoWjGygkvaUloPZJ/a3aObfDzKsgn7RV+yNVI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Pq+thd+KtO12hP6grY9IKrV0MxBWCghCYX7aWpxsH5M=;
- b=r+kplnr8U7aqdiVcLp6gsLZOJN+XOMNdbNMueYWAjXCn0wbKIEPYOBOJNN3DzFGS7u
- RbzmulOCTpBmH1DnQ3zACKEwcgx77/kAXKEwH4XtH4mCw7CUo/gElRvQAdSwlGNL02d7
- uCprvczxg7m83NZ58mG3DuFi1kTwjFajQJl81d/8ww4pYWehO8lxniugsBh7gVJgQmRT
- UpC0qEWvQ44s6/sqSr6ivwCCulhAkOk2Tr6/QeQ6HPrjWzIi6XqATg1pOMtMFPn4cHmI
- ZxExhLRC6DiL7zBRpGOqrw72lteLfV9tIfpUuE8+WTOeAUQBsxSpSIFZOCJw1oDeS+Cr
- WiBg==
-X-Gm-Message-State: APjAAAW6J0P1KTmzhLqvp1/9XrGhSWx5JYtH45P/C8iQcqsodNR0UbDV
- zZaayKFDBwd1tlpXZvWyphbSJfaZtkLhoLkbTaw=
-X-Received: by 2002:a0c:fec3:: with SMTP id z3mr6495157qvs.111.1581080968914; 
- Fri, 07 Feb 2020 05:09:28 -0800 (PST)
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=KgDvNQij;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 448AF4A551;
+	Fri,  7 Feb 2020 08:16:06 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id N0oL96DuOUc0; Fri,  7 Feb 2020 08:16:04 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id CCFB24A4C0;
+	Fri,  7 Feb 2020 08:16:04 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id F3AF34A4C0
+ for <kvmarm@lists.cs.columbia.edu>; Fri,  7 Feb 2020 08:16:02 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 9dMHCtmd-O0X for <kvmarm@lists.cs.columbia.edu>;
+ Fri,  7 Feb 2020 08:16:01 -0500 (EST)
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
+ [205.139.110.120])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 9541B4A3A5
+ for <kvmarm@lists.cs.columbia.edu>; Fri,  7 Feb 2020 08:16:01 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581081361;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=oClRtBhodqGVYqoJbtW8DMEVH3CdF5teJSKNOv0GzTM=;
+ b=KgDvNQijhicCJ8kFkI2FHZOhihinwlZLRmYk3fe45oYYHsYfsXn/KkL4ooWuq3M8bpr9M/
+ 9BI5Fsy4YCGowrVNeKgPCjYSZva/SiG5rfOoL3MPZPVBjF7xvIfjbAbTXuXPYQfNAi8P+A
+ vkTB6SsUN6asV0ahSL3DYu416cN7Z/c=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-338-cudI3_b8PxemvxAJoIbtxw-1; Fri, 07 Feb 2020 08:15:57 -0500
+X-MC-Unique: cudI3_b8PxemvxAJoIbtxw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B32D0100726C;
+ Fri,  7 Feb 2020 13:15:55 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C530F1001B28;
+ Fri,  7 Feb 2020 13:15:50 +0000 (UTC)
+Date: Fri, 7 Feb 2020 14:15:47 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [kvm-unit-tests PATCH v3 11/14] arm/arm64: ITS: INT functional
+ tests
+Message-ID: <20200207131547.rlj44nwu32xa4tyd@kamzik.brq.redhat.com>
+References: <20200128103459.19413-1-eric.auger@redhat.com>
+ <20200128103459.19413-12-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20200206183437.3979-1-linux@roeck-us.net>
- <e9f490fe-34d3-6830-832c-155f6fa63482@kaod.org>
- <1605922b-2aa0-dd8e-720a-031e74bc9872@roeck-us.net>
-In-Reply-To: <1605922b-2aa0-dd8e-720a-031e74bc9872@roeck-us.net>
-From: Joel Stanley <joel@jms.id.au>
-Date: Fri, 7 Feb 2020 13:09:16 +0000
-Message-ID: <CACPK8XdADQwGnsX=YR0n_zm_WMv532bAmR3O-CfyJ23ytT9bpA@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm: ast2400/ast2500: Wire up EHCI controllers
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::f41
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+Content-Disposition: inline
+In-Reply-To: <20200128103459.19413-12-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Cc: thuth@redhat.com, kvm@vger.kernel.org, maz@kernel.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
+ kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xe1H+RaU9bhg
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: 5qPNfry1D5zt
 
-On Fri, 7 Feb 2020 at 12:58, Guenter Roeck <linux@roeck-us.net> wrote:
+On Tue, Jan 28, 2020 at 11:34:56AM +0100, Eric Auger wrote:
+> Triggers LPIs through the INT command.
+> 
+> the test checks the LPI hits the right CPU and triggers
+> the right LPI intid, ie. the translation is correct.
+> 
+> Updates to the config table also are tested, along with inv
+> and invall commands.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> 
+> ---
+> 
+> v2 -> v3:
+> - add comments
+> - keep the report_skip in case there aren't 4 vcpus to be able to
+>   run other tests in the its category.
+> - fix the prefix pop
+> - move its_event and its_stats to arm/gic.c
+> ---
+>  arm/gic.c         | 228 +++++++++++++++++++++++++++++++++++++++++++---
+>  arm/unittests.cfg |   7 ++
+>  2 files changed, 224 insertions(+), 11 deletions(-)
+> 
+> diff --git a/arm/gic.c b/arm/gic.c
+> index 4d7dd03..50104b1 100644
+> --- a/arm/gic.c
+> +++ b/arm/gic.c
+> @@ -160,6 +160,87 @@ static void ipi_handler(struct pt_regs *regs __unused)
+>  	}
+>  }
+>  
+> +static void setup_irq(handler_t handler)
+> +{
+> +	gic_enable_defaults();
+> +#ifdef __arm__
+> +	install_exception_handler(EXCPTN_IRQ, handler);
+> +#else
+> +	install_irq_handler(EL1H_IRQ, handler);
+> +#endif
+> +	local_irq_enable();
+> +}
+> +
+> +#if defined(__aarch64__)
+> +struct its_event {
+> +	int cpu_id;
+> +	int lpi_id;
+> +};
+> +
+> +struct its_stats {
+> +	struct its_event expected;
+> +	struct its_event observed;
+> +};
+> +
+> +static struct its_stats lpi_stats;
+> +
+> +static void lpi_handler(struct pt_regs *regs __unused)
+> +{
+> +	u32 irqstat = gic_read_iar();
+> +	int irqnr = gic_iar_irqnr(irqstat);
+> +
+> +	gic_write_eoir(irqstat);
+> +	if (irqnr < 8192)
+> +		report(false, "Unexpected non LPI interrupt received");
+
+report_info
+
+> +	smp_rmb(); /* pairs with wmb in lpi_stats_expect */
+> +	lpi_stats.observed.cpu_id = smp_processor_id();
+> +	lpi_stats.observed.lpi_id = irqnr;
+> +	smp_wmb(); /* pairs with rmb in check_lpi_stats */
+> +}
+> +
+> +static void lpi_stats_expect(int exp_cpu_id, int exp_lpi_id)
+> +{
+> +	lpi_stats.expected.cpu_id = exp_cpu_id;
+> +	lpi_stats.expected.lpi_id = exp_lpi_id;
+> +	lpi_stats.observed.cpu_id = -1;
+> +	lpi_stats.observed.lpi_id = -1;
+> +	smp_wmb(); /* pairs with rmb in handler */
+> +}
+> +
+> +static void check_lpi_stats(void)
+
+static void check_lpi_stats(const char *testname)
+{
+   bool pass = false;
+
+> +{
+> +	mdelay(100);
+> +	smp_rmb(); /* pairs with wmb in lpi_handler */
+> +	if ((lpi_stats.observed.cpu_id != lpi_stats.expected.cpu_id) ||
+> +	    (lpi_stats.observed.lpi_id != lpi_stats.expected.lpi_id)) {
+
+nit: extra ()
+
+> +		if (lpi_stats.observed.cpu_id == -1 &&
+> +		    lpi_stats.observed.lpi_id == -1) {
+> +			report(false,
+> +			       "No LPI received whereas (cpuid=%d, intid=%d) "
+> +			       "was expected", lpi_stats.expected.cpu_id,
+> +			       lpi_stats.expected.lpi_id);
+
+report_info
+
+> +		} else {
+> +			report(false, "Unexpected LPI (cpuid=%d, intid=%d)",
+> +			       lpi_stats.observed.cpu_id,
+> +			       lpi_stats.observed.lpi_id);
+
+report_info
+
+> +		}
+
+pass = false;
+
+> +	} else if (lpi_stats.expected.lpi_id != -1) {
+> +		report(true, "LPI %d on CPU %d", lpi_stats.observed.lpi_id,
+> +		       lpi_stats.observed.cpu_id);
+
+report_info
+
+> +	} else {
+> +		report(true, "no LPI received, as expected");
+
+report_info
+
+
+> +	}
+
+report(pass, "%s", testname);
+
+> +}
+> +
+> +static void secondary_lpi_test(void)
+> +{
+> +	setup_irq(lpi_handler);
+> +	cpumask_set_cpu(smp_processor_id(), &ready);
+> +	while (1)
+> +		wfi();
+> +}
+> +#endif
+> +
+>  static void gicv2_ipi_send_self(void)
+>  {
+>  	writel(2 << 24 | IPI_IRQ, gicv2_dist_base() + GICD_SGIR);
+> @@ -217,17 +298,6 @@ static void ipi_test_smp(void)
+>  	report_prefix_pop();
+>  }
+>  
+> -static void setup_irq(handler_t handler)
+> -{
+> -	gic_enable_defaults();
+> -#ifdef __arm__
+> -	install_exception_handler(EXCPTN_IRQ, handler);
+> -#else
+> -	install_irq_handler(EL1H_IRQ, handler);
+> -#endif
+> -	local_irq_enable();
+> -}
+> -
+>  static void ipi_send(void)
+>  {
+>  	setup_irq(ipi_handler);
+> @@ -522,6 +592,7 @@ static void gic_test_mmio(void)
+>  #if defined(__arm__)
+>  
+>  static void test_its_introspection(void) {}
+> +static void test_its_trigger(void) {}
+>  
+>  #else /* __arch64__ */
+>  
+> @@ -561,6 +632,137 @@ static void test_its_introspection(void)
+>  	report_info("collection baser entry_size = 0x%x", coll_baser->esz);
+>  }
+>  
+> +static bool its_prerequisites(int nb_cpus)
+> +{
+> +	int cpu;
+> +
+> +	if (!gicv3_its_base()) {
+> +		report_skip("No ITS, skip ...");
+> +		return true;
+> +	}
+> +
+> +	if (nr_cpus < 4) {
+
+nr_cpus < nb_cpus, or just drop the nb_cpus parameter and hard code 4
+here.
+
+> +		report_skip("Test requires at least %d vcpus", nb_cpus);
+> +		return true;
+> +	}
+> +
+> +	stats_reset();
+> +
+> +	setup_irq(lpi_handler);
+> +
+> +	for_each_present_cpu(cpu) {
+> +		if (cpu == 0)
+> +			continue;
+> +		smp_boot_secondary(cpu, secondary_lpi_test);
+> +	}
+> +	wait_on_ready();
+> +
+> +	its_enable_defaults();
+> +
+> +	lpi_stats_expect(-1, -1);
+> +	check_lpi_stats();
+> +
+> +	return false;
+
+Reverse logic. I'd expect 'return true' for success.
+
+> +}
+> +
+> +static void test_its_trigger(void)
+> +{
+> +	struct its_collection *col3, *col2;
+> +	struct its_device *dev2, *dev7;
+> +
+> +	if (its_prerequisites(4))
+
+if (!its_prerequisites(...))
+
+> +		return;
+> +
+> +	dev2 = its_create_device(2 /* dev id */, 8 /* nb_ites */);
+> +	dev7 = its_create_device(7 /* dev id */, 8 /* nb_ites */);
+> +
+> +	col3 = its_create_collection(3 /* col id */, 3/* target PE */);
+> +	col2 = its_create_collection(2 /* col id */, 2/* target PE */);
+> +
+> +	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
+> +	gicv3_lpi_set_config(8196, LPI_PROP_DEFAULT);
+> +
+> +	its_send_invall(col2);
+> +	its_send_invall(col3);
+> +
+> +	report_prefix_push("int");
+> +	/*
+> +	 * dev=2, eventid=20  -> lpi= 8195, col=3
+> +	 * dev=7, eventid=255 -> lpi= 8196, col=2
+> +	 * Trigger dev2, eventid=20 and dev7, eventid=255
+> +	 * Check both LPIs hit
+> +	 */
+> +
+> +	its_send_mapd(dev2, true);
+> +	its_send_mapd(dev7, true);
+> +
+> +	its_send_mapc(col3, true);
+> +	its_send_mapc(col2, true);
+> +
+> +	its_send_mapti(dev2, 8195 /* lpi id */,
+> +		       20 /* event id */, col3);
+> +	its_send_mapti(dev7, 8196 /* lpi id */,
+> +		       255 /* event id */, col2);
+
+No need for line breaks, with the embedded comments it's hard to read
+
+> +
+> +	lpi_stats_expect(3, 8195);
+> +	its_send_int(dev2, 20);
+> +	check_lpi_stats();
+> +
+> +	lpi_stats_expect(2, 8196);
+> +	its_send_int(dev7, 255);
+> +	check_lpi_stats();
+> +
+> +	report_prefix_pop();
+
+I think a table of parameters and loop would be nicer than all the
+repeated function calls.
+
+> +
+> +	report_prefix_push("inv/invall");
+> +
+> +	/*
+> +	 * disable 8195, check dev2/eventid=20 does not trigger the
+> +	 * corresponding LPI
+> +	 */
+> +	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT & ~0x1);
+
+LPI_PROP_DEFAULT & ~LPI_PROP_ENABLED
+
+> +	its_send_inv(dev2, 20);
+> +
+> +	lpi_stats_expect(-1, -1);
+> +	its_send_int(dev2, 20);
+> +	check_lpi_stats();
+> +
+> +	/*
+> +	 * re-enable the LPI but willingly do not call invall
+> +	 * so the change in config is not taken into account.
+> +	 * The LPI should not hit
+> +	 */
+> +	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
+> +	lpi_stats_expect(-1, -1);
+> +	its_send_int(dev2, 20);
+> +	check_lpi_stats();
+> +
+> +	/* Now call the invall and check the LPI hits */
+> +	its_send_invall(col3);
+> +	lpi_stats_expect(3, 8195);
+> +	its_send_int(dev2, 20);
+> +	check_lpi_stats();
+> +
+> +	report_prefix_pop();
+
+Need blank line here.
+
+> +	/*
+> +	 * Unmap device 2 and check the eventid 20 formerly
+> +	 * attached to it does not hit anymore
+> +	 */
+> +	report_prefix_push("mapd valid=false");
+
+Above you have the prefix-push before the comment explaining the test.
+After is probably better, but whatever, as long as it's consistent.
+
+> +	its_send_mapd(dev2, false);
+> +	lpi_stats_expect(-1, -1);
+> +	its_send_int(dev2, 20);
+> +	check_lpi_stats();
+> +	report_prefix_pop();
+> +
+> +	/* Unmap the collection this time and check no LPI does hit */
+> +	report_prefix_push("mapc valid=false");
+> +	its_send_mapc(col2, false);
+> +	lpi_stats_expect(-1, -1);
+> +	its_send_int(dev7, 255);
+> +	check_lpi_stats();
+> +	report_prefix_pop();
+> +}
+>  #endif
+>  
+>  int main(int argc, char **argv)
+> @@ -594,6 +796,10 @@ int main(int argc, char **argv)
+>  		report_prefix_push(argv[1]);
+>  		gic_test_mmio();
+>  		report_prefix_pop();
+> +	} else if (!strcmp(argv[1], "its-trigger")) {
+> +		report_prefix_push(argv[1]);
+> +		test_its_trigger();
+> +		report_prefix_pop();
+>  	} else if (strcmp(argv[1], "its-introspection") == 0) {
+>  		report_prefix_push(argv[1]);
+>  		test_its_introspection();
+> diff --git a/arm/unittests.cfg b/arm/unittests.cfg
+> index ba2b31b..bfafec5 100644
+> --- a/arm/unittests.cfg
+> +++ b/arm/unittests.cfg
+> @@ -129,6 +129,13 @@ extra_params = -machine gic-version=3 -append 'its-introspection'
+>  groups = its
+>  arch = arm64
+>  
+> +[its-trigger]
+> +file = gic.flat
+> +smp = $MAX_SMP
+> +extra_params = -machine gic-version=3 -append 'its-trigger'
+> +groups = its
+> +arch = arm64
+> +
+>  # Test PSCI emulation
+>  [psci]
+>  file = psci.flat
+> -- 
+> 2.20.1
 >
-> On 2/7/20 12:16 AM, C=C3=A9dric Le Goater wrote:
-> > On 2/6/20 7:34 PM, Guenter Roeck wrote:
-> >> Initialize EHCI controllers on AST2400 and AST2500 using the existing
-> >> TYPE_PLATFORM_EHCI. After this change, booting ast2500-evb into Linux
-> >> successfully instantiates a USB interface.
-> >>
-> >> ehci-platform 1e6a3000.usb: EHCI Host Controller
-> >> ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus numbe=
-r 1
-> >> ehci-platform 1e6a3000.usb: irq 21, io mem 0x1e6a3000
-> >> ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
-> >> usb usb1: New USB device found, idVendor=3D1d6b, idProduct=3D0002, bcd=
-Device=3D 5.05
-> >> usb usb1: New USB device strings: Mfr=3D3, Product=3D2, SerialNumber=
-=3D1
-> >> usb usb1: Product: EHCI Host Controller
-> >
-> > Cool. Have you tried to plug any devices ?
-> >
->
-> Yes, booting from USB drive works just fine. I already added it to my
-> test suite at kerneltests.org.
 
-Nice!
+Thanks,
+drew 
 
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-
-> > This looks good. Could you add the AST2600 also ?
-> >
->
-> I thought about that, but how would I test it ? None of the ast2600
-> systems in the Linux kernel enables it. The devicetree include file for
-> ast2600 doesn't even have an entry for it. I could cook something up,
-> but that would not reflect real hardware.
-
-FYI, there are patches on the linux-aspeed list to enable USB:
-
- https://patchwork.ozlabs.org/project/linux-aspeed/list/?series=3D156260
-
-They have not yet been merged into the kernel, but I will merge the
-device tree changes once -rc1 is out.
-
-(I don't see any patches that enable the driver though, so I'll have
-to follow that up with Tao)
-
-Cheers,
-
-Joel
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

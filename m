@@ -1,51 +1,51 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6973lfp;
-        Thu, 6 Feb 2020 18:12:23 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx93+leZiSjT/d/Bvzu6mo6KE1/rY694rm2mi3vR3o0+QrMZYQdwPeVT+Z5gK3MRr1zl5e6
-X-Received: by 2002:a54:4182:: with SMTP id 2mr572697oiy.14.1581041542810;
-        Thu, 06 Feb 2020 18:12:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581041542; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp59777lfp;
+        Thu, 6 Feb 2020 19:20:51 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz3LjtQQXkFe2esKbtrynFx4zz8Iv/rS3IplYASM+A9PSU5yymAbIAXPdm/WXq7/o9lH/KH
+X-Received: by 2002:a05:6830:1d7a:: with SMTP id l26mr1040101oti.138.1581045651491;
+        Thu, 06 Feb 2020 19:20:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581045651; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z7Zz1ezHavk6X+qdgHvr2BWyCOd88H2CsdYeCpzSfkDW8QQTcDPFZGASGjREfK/kr/
-         OloeFbSb39OVNvllZfAzPKalOrJZlI+kVpjQ30Jz6B6YoK/yo+DF4Lvk87K+H6Il6eOu
-         zH6Lwe6fi9+Rh00p7uPjSK63lNcqkf3WzNUiQu6XrhYC4dx1QpdGNsUPtnG43B/LxTDB
-         13nQSKbTMseu8I6m6Uuv+vtju/3jrQFvTkmHseg8xmJHsuxgT0bHbmgCl72kVCFvHQ/W
-         5+jRs3N/l/FCEM0we9mf63uLaeASrDOC9an9FkrWM9VZSFJzAZ8J4gsUKHLZmh36N8/i
-         fWDA==
+        b=dSbVbgmt3C9gZB7QMznRGp3D4Gr8RBPnfPWFosNMWN3lZ9NY/JJ6AbTwtWVmQRz9hA
+         ZTrZdhmipyg/2D6DekTB5El00xx3ySIhzM82XJqHesXsm1bEN4o09J3LZ9mFv8VW/8KS
+         d0OTaHgre+7OD2Qcgwq6EzvG3Vphyk+r33YfEbA9atD6s1DR2JOFnjCqu2dpsTdh1Q3s
+         JM+kmmN5PRiy4m6kn6ncllr6O6qdPIKaOWQsK9SB3TccmWlQxS4ZNyUz7S6WGSWJZ2cC
+         6ue7DuC/9ynNFLZjKnpqtHgKtZfotW5FneNuKYV2v9Yz/YkkGBzQjQ27g0VymP7gjZMl
+         ApWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:cc:to:subject;
-        bh=smWdssDAN0qFCiA94Tg1prKGvPGmDpnppQxp8/TxVUw=;
-        b=ElSzErDZzfjqXfdG870ZKFw2dajUm0R+hLaqTEETNGNG9DmaHbShK5ntgwxUk+7dY6
-         X7Ptrj1dd1kmq9Fz9Z39qUQmpbYPvSDWkmi/vLqDzNGz+TyRgrPBvIPE+wXvZZlGm5Uy
-         c4pu8sODRE+cOxB7Npnp3ptKmIesfwMKXlsLz6ksD6iFUTbg1fLkQiRfvEYZgbC6zUhS
-         DI785PR7eW8Xu0rj2vFsvwQ0PhLg6WZ9veJ+nTfb1uJMFxS1imIUJyXhp09czhM4q9hC
-         ai1DeQNOjAX1Pu17+wlfZR7MpBbk+h8wFiNlR4j1RTKPqLpuP6UwxiaDuVOZ4J3zNzk/
-         WAHQ==
+        bh=9485yQ0nISe2MwS9OnZqdxbSvjrYos/kvj7Tb1hTlOI=;
+        b=SQQBZtZYsRSShILQ4Q27REh9L4GmeboybhQbMlH3KlgYJQkEBO00Tm2ZTZbxeTWVcj
+         yBHSwBCFUbX9jjKsNJqxhSEjMz96v8mE4hc2VnjVDDlfOutFn3TTYzwHMJ8eHmCUvOyc
+         YaqrtPmKB/W3oOAcScSU5z77iU6pu0pbKazvHjXFdrecGLDmNzkkXgBOqIvwp4ogc7G0
+         mt9Gl9OK1Zxz6OUKVSaNiD07iOUb1puZCzenWM0wxBe+EbyioVq+C5qKX6WWv40jFdEn
+         A59e3ILToukpvTy9nGEcyKOsVTuG9ouXKAwrg9/3a4b5J35vRjeDoxCX/IVBT7qGlDM9
+         oWSg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id r1si830627otq.298.2020.02.06.18.12.22;
-        Thu, 06 Feb 2020 18:12:22 -0800 (PST)
+        by mx.google.com with ESMTP id f3si3258604oia.264.2020.02.06.19.20.50;
+        Thu, 06 Feb 2020 19:20:51 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727154AbgBGCMT (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 6 Feb 2020 21:12:19 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:9706 "EHLO huawei.com"
+        id S1726838AbgBGDUu (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 6 Feb 2020 22:20:50 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:9707 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1727003AbgBGCMS (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 6 Feb 2020 21:12:18 -0500
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 0CC776FDC2DB42D9E710;
-        Fri,  7 Feb 2020 10:12:17 +0800 (CST)
-Received: from [127.0.0.1] (10.173.222.27) by DGGEMS408-HUB.china.huawei.com
- (10.3.19.208) with Microsoft SMTP Server id 14.3.439.0; Fri, 7 Feb 2020
- 10:12:07 +0800
-Subject: Re: [kvm-unit-tests PATCH v3 06/14] arm/arm64: gicv3: Set the LPI
- config and pending tables
+        id S1726628AbgBGDUt (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 6 Feb 2020 22:20:49 -0500
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 4FC83DEDBF9E915389DD;
+        Fri,  7 Feb 2020 11:20:46 +0800 (CST)
+Received: from [127.0.0.1] (10.173.222.27) by DGGEMS405-HUB.china.huawei.com
+ (10.3.19.205) with Microsoft SMTP Server id 14.3.439.0; Fri, 7 Feb 2020
+ 11:20:39 +0800
+Subject: Re: [kvm-unit-tests PATCH v3 08/14] arm/arm64: ITS:
+ its_enable_defaults
 To:     Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
         <maz@kernel.org>, <kvmarm@lists.cs.columbia.edu>,
         <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
@@ -54,14 +54,14 @@ CC:     <drjones@redhat.com>, <andre.przywara@arm.com>,
         <peter.maydell@linaro.org>, <alexandru.elisei@arm.com>,
         <thuth@redhat.com>
 References: <20200128103459.19413-1-eric.auger@redhat.com>
- <20200128103459.19413-7-eric.auger@redhat.com>
+ <20200128103459.19413-9-eric.auger@redhat.com>
 From:   Zenghui Yu <yuzenghui@huawei.com>
-Message-ID: <5e188428-11c9-aad4-3d5e-fca89cc41b7f@huawei.com>
-Date:   Fri, 7 Feb 2020 10:12:05 +0800
+Message-ID: <10d0630f-1464-b12a-5ad5-ee617eaa5cca@huawei.com>
+Date:   Fri, 7 Feb 2020 11:20:38 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <20200128103459.19413-7-eric.auger@redhat.com>
+In-Reply-To: <20200128103459.19413-9-eric.auger@redhat.com>
 Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
@@ -71,168 +71,110 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: M1v4Nk4glGQV
+X-TUID: hD7slNdaCw9V
 
 Hi Eric,
 
 On 2020/1/28 18:34, Eric Auger wrote:
-> Allocate the LPI configuration and per re-distributor pending table.
-> Set redistributor's PROPBASER and PENDBASER. The LPIs are enabled
-> by default in the config table.
+> its_enable_defaults() is the top init function that allocates the
+> command queue and all the requested tables (device, collection,
+> lpi config and pending tables), enable LPIs at distributor level
+> and ITS level.
 > 
-> Also introduce a helper routine that allows to set the pending table
-> bit for a given LPI.
+> gicv3_enable_defaults must be called before.
 > 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > 
 > ---
 > 
 > v2 -> v3:
-> - Move the helpers in lib/arm/gic-v3.c and prefix them with "gicv3_"
->    and add _lpi prefix too
-> 
-> v1 -> v2:
-> - remove memory attributes
+> - introduce its_setup_baser in this patch
+> - squash "arm/arm64: ITS: Init the command queue" in this patch.
 > ---
->   lib/arm/asm/gic-v3.h | 16 +++++++++++
->   lib/arm/gic-v3.c     | 64 ++++++++++++++++++++++++++++++++++++++++++++
->   2 files changed, 80 insertions(+)
+>   lib/arm/asm/gic-v3-its.h |  8 ++++
+>   lib/arm/gic-v3-its.c     | 89 ++++++++++++++++++++++++++++++++++++++++
+>   2 files changed, 97 insertions(+)
 > 
-> diff --git a/lib/arm/asm/gic-v3.h b/lib/arm/asm/gic-v3.h
-> index ffb2e26..ec2a6f0 100644
-> --- a/lib/arm/asm/gic-v3.h
-> +++ b/lib/arm/asm/gic-v3.h
-> @@ -48,6 +48,16 @@
->   #define MPIDR_TO_SGI_AFFINITY(cluster_id, level) \
->   	(MPIDR_AFFINITY_LEVEL(cluster_id, level) << ICC_SGI1R_AFFINITY_## level ## _SHIFT)
->   
-> +#define GICR_PROPBASER_IDBITS_MASK                      (0x1f)
-
-This is not being used.  You can use it when calculating prop_val
-or just drop it.
-
-> +
-> +#define GICR_PENDBASER_PTZ                              BIT_ULL(62)
-> +
-> +#define LPI_PROP_GROUP1		(1 << 1)
-> +#define LPI_PROP_ENABLED	(1 << 0)
-> +#define LPI_PROP_DEFAULT_PRIO   0xa0
-> +#define LPI_PROP_DEFAULT	(LPI_PROP_DEFAULT_PRIO | LPI_PROP_GROUP1 | \
-> +				 LPI_PROP_ENABLED)
-> +
->   #include <asm/arch_gicv3.h>
->   
->   #ifndef __ASSEMBLY__
-> @@ -64,6 +74,8 @@ struct gicv3_data {
->   	void *dist_base;
->   	void *redist_bases[GICV3_NR_REDISTS];
->   	void *redist_base[NR_CPUS];
-> +	void *lpi_prop;
-> +	void *lpi_pend[NR_CPUS];
->   	unsigned int irq_nr;
+> diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
+> index 815c515..fe73c04 100644
+> --- a/lib/arm/asm/gic-v3-its.h
+> +++ b/lib/arm/asm/gic-v3-its.h
+> @@ -36,6 +36,8 @@ struct its_data {
+>   	void *base;
+>   	struct its_typer typer;
+>   	struct its_baser baser[GITS_BASER_NR_REGS];
+> +	struct its_cmd_block *cmd_base;
+> +	struct its_cmd_block *cmd_write;
 >   };
->   extern struct gicv3_data gicv3_data;
-> @@ -80,6 +92,10 @@ extern void gicv3_write_eoir(u32 irqstat);
->   extern void gicv3_ipi_send_single(int irq, int cpu);
->   extern void gicv3_ipi_send_mask(int irq, const cpumask_t *dest);
->   extern void gicv3_set_redist_base(size_t stride);
-> +extern void gicv3_lpi_set_config(int n, u8 val);
-> +extern u8 gicv3_lpi_get_config(int n);
-> +extern void gicv3_lpi_set_pending_table_bit(int rdist, int n, bool set);
-> +extern void gicv3_lpi_alloc_tables(void);
 >   
->   static inline void gicv3_do_wait_for_rwp(void *base)
->   {
-> diff --git a/lib/arm/gic-v3.c b/lib/arm/gic-v3.c
-> index feecb5e..c33f883 100644
-> --- a/lib/arm/gic-v3.c
-> +++ b/lib/arm/gic-v3.c
-> @@ -5,6 +5,7 @@
->    */
->   #include <asm/gic.h>
->   #include <asm/io.h>
-> +#include <alloc_page.h>
+>   extern struct its_data its_data;
+> @@ -88,10 +90,16 @@ extern struct its_data its_data;
+>   #define GITS_BASER_TYPE_DEVICE		1
+>   #define GITS_BASER_TYPE_COLLECTION	4
 >   
->   void gicv3_set_redist_base(size_t stride)
->   {
-> @@ -147,3 +148,66 @@ void gicv3_ipi_send_single(int irq, int cpu)
->   	cpumask_set_cpu(cpu, &dest);
->   	gicv3_ipi_send_mask(irq, &dest);
+> +
+> +struct its_cmd_block {
+> +	u64 raw_cmd[4];
+> +};
+> +
+>   extern void its_parse_typer(void);
+>   extern void its_init(void);
+>   extern int its_parse_baser(int i, struct its_baser *baser);
+>   extern struct its_baser *its_lookup_baser(int type);
+> +extern void its_enable_defaults(void);
+>   
+>   #else /* __arm__ */
+>   
+> diff --git a/lib/arm/gic-v3-its.c b/lib/arm/gic-v3-its.c
+> index 2c0ce13..d1e7e52 100644
+> --- a/lib/arm/gic-v3-its.c
+> +++ b/lib/arm/gic-v3-its.c
+> @@ -86,3 +86,92 @@ void its_init(void)
+>   		its_parse_baser(i, &its_data.baser[i]);
 >   }
-> +
-> +#if defined(__aarch64__)
-> +/* alloc_lpi_tables: Allocate LPI config and pending tables */
-> +void gicv3_lpi_alloc_tables(void)
+>   
+> +static void its_setup_baser(int i, struct its_baser *baser)
 > +{
-> +	unsigned long n = SZ_64K >> PAGE_SHIFT;
-> +	unsigned long order = fls(n);
-> +	u64 prop_val;
-> +	int cpu;
+> +	unsigned long n = (baser->nr_pages * baser->psz) >> PAGE_SHIFT;
+> +	unsigned long order = is_power_of_2(n) ? fls(n) : fls(n) + 1;
+> +	u64 val;
 > +
-> +	gicv3_data.lpi_prop = (void *)virt_to_phys(alloc_pages(order));
+> +	baser->table_addr = (u64)virt_to_phys(alloc_pages(order));
 > +
-> +	/* ID bits = 13, ie. up to 14b LPI INTID */
-> +	prop_val = (u64)gicv3_data.lpi_prop | 13;
+> +	val = ((u64)baser->table_addr					|
+> +		((u64)baser->type	<< GITS_BASER_TYPE_SHIFT)	|
+> +		((u64)(baser->esz - 1)	<< GITS_BASER_ENTRY_SIZE_SHIFT)	|
+> +		((baser->nr_pages - 1)	<< GITS_BASER_PAGES_SHIFT)	|
+> +		(u64)baser->indirect	<< 62				|
+
+I haven't seen the 'nr_pages' and 'indirect' are programmed anywhere
+except in its_parse_baser(). It looks like they're treated as RO (but
+they shouldn't) and I now don't think it makes sense to parse them in
+its_parse_baser(), in patch#5.
+
+> +		(u64)baser->valid	<< 63);
 > +
-> +	/*
-> +	 * Allocate pending tables for each redistributor
-> +	 * and set PROPBASER and PENDBASER
-> +	 */
-> +	for_each_present_cpu(cpu) {
-> +		u64 pend_val;
-> +		void *ptr;
-> +
-> +		ptr = gicv3_data.redist_base[cpu];
-> +
-> +		writeq(prop_val, ptr + GICR_PROPBASER);
-> +
-> +		gicv3_data.lpi_pend[cpu] = (void *)virt_to_phys(alloc_pages(order));
-> +
-> +		pend_val = (u64)gicv3_data.lpi_pend[cpu];
-> +
-> +		writeq(pend_val, ptr + GICR_PENDBASER);
+> +	switch (baser->psz) {
+> +	case SZ_4K:
+> +		val |= GITS_BASER_PAGE_SIZE_4K;
+> +		break;
+> +	case SZ_16K:
+> +		val |= GITS_BASER_PAGE_SIZE_16K;
+> +		break;
+> +	case SZ_64K:
+> +		val |= GITS_BASER_PAGE_SIZE_64K;
+> +		break;
 > +	}
+> +
+> +	writeq(val, gicv3_its_base() + GITS_BASER + i * 8);
 > +}
 > +
-> +void gicv3_lpi_set_config(int n, u8 value)
-> +{
-> +	u8 *entry = (u8 *)(gicv3_data.lpi_prop + (n - 8192));
+> +/**
+> + * init_cmd_queue: Allocate the command queue and initialize
+> + * CBASER, CREADR, CWRITER
 
-But this is actually the *physical* address, shouldn't it be
-converted by phys_to_virt() before reading/writing something?
-Like what you've done for the 'lpi_pend[rdist]' before writing
-pending bit.  Or I'm missing some points here?
-
-> +
-> +	*entry = value;
-> +}
-> +
-> +u8 gicv3_lpi_get_config(int n)
-> +{
-> +	u8 *entry = (u8 *)(gicv3_data.lpi_prop + (n - 8192));
-
-The same as above.
+no 'CREADR'.
 
 
 Thanks,
 Zenghui
-
-> +
-> +	return *entry;
-> +}
-> +
-> +void gicv3_lpi_set_pending_table_bit(int rdist, int n, bool set)
-> +{
-> +	u8 *ptr = phys_to_virt((phys_addr_t)gicv3_data.lpi_pend[rdist]);
-> +	u8 mask = 1 << (n % 8), byte;
-> +
-> +	ptr += (n / 8);
-> +	byte = *ptr;
-> +	if (set)
-> +		byte |=  mask;
-> +	else
-> +		byte &= ~mask;
-> +	*ptr = byte;
-> +}
-> +#endif /* __aarch64__ */
-> 

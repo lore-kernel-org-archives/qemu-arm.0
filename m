@@ -1,81 +1,102 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp721709lfp;
-        Fri, 7 Feb 2020 07:47:36 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw+v08p/NJsciBOzSbcv/YW207VVgCYrV3tiRMyIwvJ6DUqrPTEPTC77Vz5sOBm5B2h7Tol
-X-Received: by 2002:a0c:e150:: with SMTP id c16mr7396037qvl.51.1581090456651;
-        Fri, 07 Feb 2020 07:47:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581090456; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp740105lfp;
+        Fri, 7 Feb 2020 08:05:51 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyh+mL0Duo0ul0qGTBxsG0VrjqBzKMqoQEZR7DMvYIUEsXglZlgHtjn2QTt1gdm0yiOrD4N
+X-Received: by 2002:ac8:5353:: with SMTP id d19mr7757756qto.313.1581091551097;
+        Fri, 07 Feb 2020 08:05:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581091551; cv=none;
         d=google.com; s=arc-20160816;
-        b=ukegrZVS6UT7eUU9zAu3DDBNxKaP3syumJDdvAg9x5ggJh3jVWQNPUkogzMS74X2qV
-         qkl/FUM9TaBdIzAJh+KN3TDLRCAkGtbUD3LP8y4k47Q3DryYc+t6gzT8As+ZcumaNfI8
-         whzolofspeWeBTciYS8thYoPJEQtHBbKYs4fOprzut8GlxbJFeWpfjQeS6lJarHvyRmF
-         UggX+pHGWyZMidvYonRZGQtg5r3dya9MYbBl1penqyczaYwzWY0ZgV5Fc9SVBGETCOoI
-         QfvuQ6anpP8ZD/RdHMGdOSuW1BEjkwAJHfuzn/1BU2VDJy+BjgsFs0ZzK/d9JWM9CYiI
-         r2Ww==
+        b=nrjAt61CyfEyvkOZ1O19OFWcsUScnI8wIq3LYHdihJSjAQoUEpshHUNSP520neH9Ia
+         vrujbSkXWENba/iSxnwuyObG42rP2mZ+cVeuwc3PeQF3VP9U+lmuP+EjKGZcpzfw9iTM
+         wnQBpzeLWb2iNSKVA0g9c8VUYX2db6HS0m50wIV5Z4/LqsT4ulYBgJZKpQCjQL7I9Lbw
+         SrSte30ecZvX2hQHKm0j1Lnhn2BJPF21QCyBNXitfF7MfdtnMO4jlBtBdZeUcunhMHMt
+         z+lNZMhSon19vLH5lS8e5wSq/I1vgaKdbmFBxrS72eXhI97NjwrFVHrxW52VSbb/f3MM
+         iKGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=duZEPu1l1Eh0OW7nEyU+mPdd1/KZgAHozoheUHZVJrI=;
-        b=slv3nxaGAo9e9xCPSf1H2qymnZYdcwZDFgryE+S3RC356iWgt7CgDVxb7oEYt2qXZR
-         ETEwoJpOrFhm/gH62nj5el+WEgI5P3ZnlqWD62Nul8krTTCkb3jA+M1uKtxMBaChT078
-         5imwk48n8LfDTBSMuFRBqLnuUY9j2QitioS5uXDBHC8LzQy9iYToBd0vKfTBg3b5oTRY
-         0mskHO1JPE/Tr/dUSCK3kUG5RAteHehi+qpoXAd4K66fPH7INqCF1DTr9RM2UeVn1g2i
-         ycCE+PMFbluOTICbuqLcWFAr32sLhpqGIk1gB1YG/Wx0NueIY3L1Sh1NA8uzdciBEu3J
-         UJFQ==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=HtGXy3Min58dVpnhk+ippTgpHeSUf6txvDz0hS+rgk0=;
+        b=E12P/M6XYnYMxyjV40mzzT1QoXOGpzcQoX1EPqbad2qwpIbLP+ANm3s5iSd2pMyJtY
+         MzkZ4eZ9Iib/5Eym0r5yfLRzzzV5jSzitgzz5UhQtQ4G46XmLOrWZr2GabiJ8pF2Cfrx
+         JYSMOsnDEHK5AMs1ZMuHdAXprOepCJwH5+kMjR9dGM/i274CWXRk+2PeHqie4pI04RT4
+         g8E6k+EmpCdMrU+dqoo7JFPVWZyNjHVY2E61NmtSYWl4spigSeE1CcEmd4ZzZD7NsJi2
+         +4HnSVUZ0HurjZybwd8biHOBMI0jBphRyzO2KQWk4TEjQ18cA6bVtqZBdn6sS9HUZ7dz
+         ohrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i2si1629601qtv.141.2020.02.07.07.47.36
+        by mx.google.com with ESMTPS id h15si1406795qvr.72.2020.02.07.08.05.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Feb 2020 07:47:36 -0800 (PST)
+        Fri, 07 Feb 2020 08:05:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59728 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59906 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j05qy-0006ta-2k
-	for alex.bennee@linaro.org; Fri, 07 Feb 2020 10:47:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45888)
+	id 1j068c-0000JS-5k
+	for alex.bennee@linaro.org; Fri, 07 Feb 2020 11:05:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48634)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1j05qq-0006rm-3l
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 10:47:29 -0500
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1j068R-0000Fi-HX
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 11:05:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1j05qi-0000iq-Jb
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 10:47:28 -0500
-Received: from 20.mo7.mail-out.ovh.net ([46.105.49.208]:43939)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1j068P-0004VR-Vv
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 11:05:39 -0500
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2074 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1j05qg-0000ex-Rv
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 10:47:20 -0500
-Received: from player735.ha.ovh.net (unknown [10.108.57.183])
- by mo7.mail-out.ovh.net (Postfix) with ESMTP id 0542D14FB8A
- for <qemu-arm@nongnu.org>; Fri,  7 Feb 2020 16:47:15 +0100 (CET)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player735.ha.ovh.net (Postfix) with ESMTPSA id 207A1EEAD3F9;
- Fri,  7 Feb 2020 15:47:10 +0000 (UTC)
-Subject: Re: [PATCH] hw/arm: ast2600: Wire up EHCI controllers
-To: Guenter Roeck <linux@roeck-us.net>
-References: <20200207144954.13634-1-linux@roeck-us.net>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <c0bcd37a-0745-69ec-471f-be54c8e5a54e@kaod.org>
-Date: Fri, 7 Feb 2020 16:47:09 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
-MIME-Version: 1.0
-In-Reply-To: <20200207144954.13634-1-linux@roeck-us.net>
-Content-Type: text/plain; charset=utf-8
+ (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1j068P-0004Qp-P7; Fri, 07 Feb 2020 11:05:37 -0500
+Received: from lhreml705-cah.china.huawei.com (unknown [172.18.7.108])
+ by Forcepoint Email with ESMTP id 758D95F97B0B9C3636AF;
+ Fri,  7 Feb 2020 16:05:30 +0000 (GMT)
+Received: from lhreml702-chm.china.huawei.com (10.201.108.51) by
+ lhreml705-cah.china.huawei.com (10.201.108.46) with Microsoft SMTP Server
+ (TLS) id 14.3.408.0; Fri, 7 Feb 2020 16:05:29 +0000
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ lhreml702-chm.china.huawei.com (10.201.108.51) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1713.5; Fri, 7 Feb 2020 16:05:29 +0000
+Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
+ lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
+ 15.01.1713.004; Fri, 7 Feb 2020 16:05:29 +0000
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: David Hildenbrand <david@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+Subject: RE: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
+Thread-Topic: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
+Thread-Index: AQHVzV43w2nN4JnxQEOUTwT8NpSKx6gLQ1MAgAAWtoCAACc+AIABYS3wgAAIyYCAAR1e4IAAFJiAgAAHflCAADtYAIABo1pQ
+Date: Fri, 7 Feb 2020 16:05:29 +0000
+Message-ID: <6bf255ecb88446f1b08ee4ab21a85f02@huawei.com>
+References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
+ <20200117174522.22044-2-shameerali.kolothum.thodi@huawei.com>
+ <20200204162320.67e5d353@redhat.com>
+ <74eaaa45-0d20-9a21-fbf8-6d29deb248eb@redhat.com>
+ <4ce41554-8b8e-dbb5-5fe9-43af09950f23@redhat.com>
+ <8e0b2c762e914c64bebfab5fc7441661@huawei.com>
+ <133f274e-e942-7008-93d2-8edb1bc4d7ae@redhat.com>
+ <52fff289cca14874ad493fc25806fe3d@huawei.com>
+ <f041380c-afcb-f8d8-89db-8f48c7b46767@redhat.com>
+ <e97fa28c653044b8bab66aeca2374682@huawei.com>
+ <0ff4d2c1-ebd3-1d2f-07e8-a4f13be07ceb@redhat.com>
+In-Reply-To: <0ff4d2c1-ebd3-1d2f-07e8-a4f13be07ceb@redhat.com>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 9692590823282215744
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrheehgdekudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeefhedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.49.208
+ [fuzzy]
+X-Received-From: 185.176.76.210
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,99 +108,83 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
+ "mst@redhat.com" <mst@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ "lersek@redhat.com" <lersek@redhat.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7CovDpK7o97X
+X-TUID: Smkmuf7H/nPp
 
-On 2/7/20 3:49 PM, Guenter Roeck wrote:
-> Initialize EHCI controllers on AST2600 using the existing
-> TYPE_PLATFORM_EHCI. After this change, booting ast2600-evb
-> into Linux successfully instantiates a USB interface after
-> the necessary changes are made to its devicetree files.
-> 
-> ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
-> ehci-platform: EHCI generic platform driver
-> ehci-platform 1e6a3000.usb: EHCI Host Controller
-> ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number 1
-> ehci-platform 1e6a3000.usb: irq 25, io mem 0x1e6a3000
-> ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
-> usb usb1: Manufacturer: Linux 5.5.0-09825-ga0802f2d0ef5-dirty ehci_hcd
-> usb 1-1: new high-speed USB device number 2 using ehci-platform
-> 
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> ---
->  hw/arm/aspeed_ast2600.c | 23 +++++++++++++++++++++++
->  1 file changed, 23 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index 931887ac68..a528251c8d 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -31,6 +31,8 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
->      [ASPEED_FMC]       = 0x1E620000,
->      [ASPEED_SPI1]      = 0x1E630000,
->      [ASPEED_SPI2]      = 0x1E641000,
-> +    [ASPEED_EHCI1]     = 0x1E6A1000,
-> +    [ASPEED_EHCI2]     = 0x1E6A3000,
->      [ASPEED_MII1]      = 0x1E650000,
->      [ASPEED_MII2]      = 0x1E650008,
->      [ASPEED_MII3]      = 0x1E650010,
-> @@ -77,6 +79,8 @@ static const int aspeed_soc_ast2600_irqmap[] = {
->      [ASPEED_ADC]       = 78,
->      [ASPEED_XDMA]      = 6,
->      [ASPEED_SDHCI]     = 43,
-> +    [ASPEED_EHCI1]     = 5,
-> +    [ASPEED_EHCI2]     = 9,
-
-There is a conflict here with commit a29e3e127077 ("hw/arm: ast2600: Wire 
-up the eMMC controller") which is mainline already 
-
-C. 
-
->      [ASPEED_GPIO]      = 40,
->      [ASPEED_GPIO_1_8V] = 11,
->      [ASPEED_RTC]       = 13,
-> @@ -167,6 +171,11 @@ static void aspeed_soc_ast2600_init(Object *obj)
->                                sizeof(s->spi[i]), typename);
->      }
->  
-> +    for (i = 0; i < sc->ehcis_num; i++) {
-> +        sysbus_init_child_obj(obj, "ehci[*]", OBJECT(&s->ehci[i]),
-> +                              sizeof(s->ehci[i]), TYPE_PLATFORM_EHCI);
-> +    }
-> +
->      snprintf(typename, sizeof(typename), "aspeed.sdmc-%s", socname);
->      sysbus_init_child_obj(obj, "sdmc", OBJECT(&s->sdmc), sizeof(s->sdmc),
->                            typename);
-> @@ -395,6 +404,19 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->                          s->spi[i].ctrl->flash_window_base);
->      }
->  
-> +    /* EHCI */
-> +    for (i = 0; i < sc->ehcis_num; i++) {
-> +        object_property_set_bool(OBJECT(&s->ehci[i]), true, "realized", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-> +                        sc->memmap[ASPEED_EHCI1 + i]);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-> +                           aspeed_soc_get_irq(s, ASPEED_EHCI1 + i));
-> +    }
-> +
->      /* SDMC - SDRAM Memory Controller */
->      object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &err);
->      if (err) {
-> @@ -499,6 +521,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
->      sc->silicon_rev  = AST2600_A0_SILICON_REV;
->      sc->sram_size    = 0x10000;
->      sc->spis_num     = 2;
-> +    sc->ehcis_num    = 2;
->      sc->wdts_num     = 4;
->      sc->macs_num     = 4;
->      sc->irqmap       = aspeed_soc_ast2600_irqmap;
-> 
-
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRGF2aWQgSGlsZGVuYnJh
+bmQgW21haWx0bzpkYXZpZEByZWRoYXQuY29tXQ0KPiBTZW50OiAwNiBGZWJydWFyeSAyMDIwIDE0
+OjU1DQo+IFRvOiBTaGFtZWVyYWxpIEtvbG90aHVtIFRob2RpIDxzaGFtZWVyYWxpLmtvbG90aHVt
+LnRob2RpQGh1YXdlaS5jb20+Ow0KPiBJZ29yIE1hbW1lZG92IDxpbWFtbWVkb0ByZWRoYXQuY29t
+Pg0KPiBDYzogcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyB4aWFvZ3Vhbmdyb25nLmVyaWNAZ21h
+aWwuY29tOw0KPiBtc3RAcmVkaGF0LmNvbTsgc2hhbm5vbi56aGFvc2xAZ21haWwuY29tOyBxZW11
+LWRldmVsQG5vbmdudS5vcmc7DQo+IHh1d2VpIChPKSA8eHV3ZWk1QGh1YXdlaS5jb20+OyBMaW51
+eGFybSA8bGludXhhcm1AaHVhd2VpLmNvbT47DQo+IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgcWVt
+dS1hcm1Abm9uZ251Lm9yZzsgbGVyc2VrQHJlZGhhdC5jb20NCj4gU3ViamVjdDogUmU6IFtQQVRD
+SCB2MiAxLzddIGV4ZWM6IEZpeCBmb3IgcWVtdV9yYW1fcmVzaXplKCkgY2FsbGJhY2sNCj4gDQo+
+IE9uIDA2LjAyLjIwIDEyOjI4LCBTaGFtZWVyYWxpIEtvbG90aHVtIFRob2RpIHdyb3RlOg0KPiA+
+DQo+ID4NCj4gPj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gPj4gRnJvbTogRGF2aWQg
+SGlsZGVuYnJhbmQgW21haWx0bzpkYXZpZEByZWRoYXQuY29tXQ0KPiA+PiBTZW50OiAwNiBGZWJy
+dWFyeSAyMDIwIDEwOjU2DQo+ID4+IFRvOiBTaGFtZWVyYWxpIEtvbG90aHVtIFRob2RpIDxzaGFt
+ZWVyYWxpLmtvbG90aHVtLnRob2RpQGh1YXdlaS5jb20+Ow0KPiA+PiBJZ29yIE1hbW1lZG92IDxp
+bWFtbWVkb0ByZWRoYXQuY29tPg0KPiA+PiBDYzogcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyB4
+aWFvZ3Vhbmdyb25nLmVyaWNAZ21haWwuY29tOw0KPiA+PiBtc3RAcmVkaGF0LmNvbTsgc2hhbm5v
+bi56aGFvc2xAZ21haWwuY29tOyBxZW11LWRldmVsQG5vbmdudS5vcmc7DQo+ID4+IHh1d2VpIChP
+KSA8eHV3ZWk1QGh1YXdlaS5jb20+OyBMaW51eGFybSA8bGludXhhcm1AaHVhd2VpLmNvbT47DQo+
+ID4+IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgcWVtdS1hcm1Abm9uZ251Lm9yZzsgbGVyc2VrQHJl
+ZGhhdC5jb20NCj4gPj4gU3ViamVjdDogUmU6IFtQQVRDSCB2MiAxLzddIGV4ZWM6IEZpeCBmb3Ig
+cWVtdV9yYW1fcmVzaXplKCkgY2FsbGJhY2sNCj4gPg0KPiA+IFsuLi5dDQo+ID4NCj4gPj4+IHJv
+b3RAdWJ1bnR1Oi8jIGNhdCAvZGV2L3BtZW0NCj4gPj4+IHBtZW0wICBwbWVtMQ0KPiA+Pj4NCj4g
+Pj4+IEZyb20gdGhlIGxvZ3MsIGl0IGxvb2tzIGxpa2UgdGhlIHJhbV9sb2FkX3ByZWNvcHkoKSAt
+LT4gcWVtdV9yYW1fcmVzaXplKCkNCj4gaXMNCj4gPj4gbm90DQo+ID4+PiBjYWxsZWQgYXMgbGVu
+Z3RoID09IHVzZWRfbGVuZ3RoIGFuZCBib3RoIHNlZW1zIHRvIGJlIHBhZ2UgYWxpZ25lZCB2YWx1
+ZXMuDQo+ID4+PiBBbmQgZnJvbQ0KPiA+PiBodHRwczovL2dpdGh1Yi5jb20vcWVtdS9xZW11L2Js
+b2IvbWFzdGVyL21pZ3JhdGlvbi9yYW0uYyNMMzQyMQ0KPiA+Pj4gcWVtdV9yYW1fcmVzaXplKCkg
+aXMgY2FsbGVkIHdpdGggbGVuZ3RoIGlmIGxlbmd0aCAhPSB1c2VkX2xlbmd0aC4NCj4gPj4NCj4g
+Pj4gQXNzdW1lIG9uIHlvdXIgc291cmNlLCB0aGUgb2xkIHNpemUgaXMgMTIzNDUgYnl0ZXMuIFNv
+IDE2Mzg0IGFsaWduZWQgdXANCj4gPj4gKDQgcGFnZXMpLg0KPiA+Pg0KPiA+PiBBc3N1bWUgb24g
+eW91ciB0YXJnZXQsIHRoZSBuZXcgc2l6ZSBpcyAxMjM0NTYgYnl0ZXMsIHNvIDEyNjk3NiBhbGln
+bmVkDQo+ID4+IHVwICgzMSBwYWdlcykuDQo+ID4+DQo+ID4+IElmIHlvdSBtaWdyYXRlIGZyb20g
+c291cmNlIHRvIGRlc3RpbmF0aW9uLCB0aGUgbWlncmF0aW9uIGNvZGUgd291bGQNCj4gPj4gcmVz
+aXplIHRvIDE2Mzg0LCBhbHRob3VnaCB0aGUgImFjdHVhbCBzaXplIiBpcyAxMjM0NS4gVGhlIGNh
+bGxiYWNrIHdpbGwNCj4gPj4gYmUgY2FsbGVkIHdpdGggdGhlIGFsaWduZWQgc2l6ZSwgbm90IHRo
+ZSBhY3R1YWwgc2l6ZS4gU2FtZSB0aGUgb3RoZXIgd2F5DQo+ID4+IGFyb3VuZC4gVGhhdCdzIHdo
+YXQncyBpbmNvbnNpc3RlbnQgSU1ITy4NCj4gPg0KPiA+IFRoYW5rcy4gWW91IGFyZSByaWdodC4g
+SSBkaWRu4oCZdCBjb25zaWRlciB0aGUgY2FzZSB3aGVyZSB0aGUgdGFyZ2V0IGNhbiBiZQ0KPiA+
+IGNvbmZpZ3VyZWQgd2l0aCBhIGxhcmdlciBudW1iZXIgb2YgZGV2aWNlcyB0aGFuIHRoZSBzb3Vy
+Y2UuIEkgY2FuIHJlcGxpY2F0ZQ0KPiA+IHRoZSBzY2VuYXJpbyBub3csDQo+ID4NCj4gPiBTb3Vy
+Y2U6DQo+ID4NCj4gPiBmd19jZmdfYWRkX2ZpbGVfY2FsbGJhY2s6IGZpbGVuYW1lIGV0Yy9ib290
+LWZhaWwtd2FpdCBzaXplIDB4NA0KPiA+IGZ3X2NmZ19hZGRfZmlsZV9jYWxsYmFjazogZmlsZW5h
+bWUgZXRjL2FjcGkvbnZkaW1tLW1lbSBzaXplIDB4MTAwMA0KPiA+IGZ3X2NmZ19hZGRfZmlsZV9j
+YWxsYmFjazogZmlsZW5hbWUgZXRjL2FjcGkvdGFibGVzIHNpemUgMHg2MjEwDQo+ID4NCj4gPiBU
+YXJnZXQ6DQo+ID4gcmFtX2xvYWRfcHJlY29weTogUmFtIGJsayBtZW0xIGxlbmd0aCAweDQwMDAw
+MDAwIHVzZWRfbGVuZ3RoDQo+IDB4NDAwMDAwMDANCj4gPiByYW1fbG9hZF9wcmVjb3B5OiBSYW0g
+YmxrIHZpcnQuZmxhc2gwIGxlbmd0aCAweDQwMDAwMDAgdXNlZF9sZW5ndGgNCj4gMHg0MDAwMDAw
+DQo+ID4gcmFtX2xvYWRfcHJlY29weTogUmFtIGJsayB2aXJ0LmZsYXNoMSBsZW5ndGggMHg0MDAw
+MDAwIHVzZWRfbGVuZ3RoDQo+IDB4NDAwMDAwMA0KPiA+IHJhbV9sb2FkX3ByZWNvcHk6IFJhbSBi
+bGsgL3JvbUBldGMvYWNwaS90YWJsZXMgbGVuZ3RoIDB4NzAwMA0KPiB1c2VkX2xlbmd0aCAweDgw
+MDANCj4gPiBmd19jZmdfbW9kaWZ5X2ZpbGU6IGZpbGVuYW1lIGV0Yy9hY3BpL3RhYmxlcyBsZW4g
+MHg3MDAwDQo+ID4NCj4gPiBUYXJnZXQgdXBkYXRlcyBGV0NmZ0VudHJ5IHdpdGggYSBwYWdlIGFs
+aWduZWQgc2l6ZSA6KC4gSSB3aWxsIGxvb2sgaW50byB0aGlzIGFuZA0KPiBzZWUgaG93DQo+ID4g
+d2UgY2FuIHNvbHZlIHRoaXMuIEFueSBwb2ludGVycyB3ZWxjb21lLg0KPiANCj4gQ2FuIHlvdSBs
+b29rIHRoZSBvcmlnaW5hbCB2YWx1ZSB1cCBzb21laG93IGFuZCB1cyB0aGUgcmVzaXplIGNhbGxi
+YWNrDQo+IG9ubHkgYXMgYSBub3RpZmljYXRpb24gdGhhdCBzb21ldGhpbmcgY2hhbmdlZD8gKHRo
+YXQgdmFsdWUgd291bGQgaGF2ZSB0bw0KPiBiZSBzdG9yZWQgc29tZXdoZXJlIGFuZCBtaWdyYXRl
+ZCBJIGFzc3VtZSAtIG1heWJlIHRoYXQncyBhbHJlYWR5IGJlaW5nDQo+IGRvbmUpDQoNCk9rLiBJ
+IHdpbGwgdGFrZSBhIGxvb2sgYXQgdGhhdC4gQnV0IGNhbiB3ZSBpbnN0ZWFkIHBhc3MgdGhlIGJs
+b2NrLT51c2VkX2xlbmd0aCB0bw0KZndfY2ZnX2FkZF9maWxlX2NhbGxiYWNrKCkuIFRoYXQgd2F5
+IHdlIGRvbuKAmXQgaGF2ZSB0byBjaGFuZ2UgdGhlIHFlbXVfcmFtX3Jlc2l6ZSgpDQphcyB3ZWxs
+LiBJIHRoaW5rIElnb3IgaGFzIHN1Z2dlc3RlZCB0aGlzIGJlZm9yZVsxXSBhbmQgSSBoYWQgYSBn
+byBhdCBpdCBiZWZvcmUgY29taW5nIHVwDQp3aXRoIHRoZSAicmVxX2xlbmd0aCIgcHJvcG9zYWwg
+aGVyZS4NCg0KVGhhbmtzLA0KU2hhbWVlcg0KDQpbMV0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcv
+cWVtdS1kZXZlbC8zMjNhYTc0YTkyOTM0YjZhOTg5ZTZlNGRiZTBkZmUyMUBodWF3ZWkuY29tLw0K
+DQoNCg==

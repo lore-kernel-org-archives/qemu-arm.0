@@ -1,261 +1,159 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp530401lfp;
-        Fri, 7 Feb 2020 04:41:24 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxTjNABHFzGHN8tfxRT0egd8yuid83zifeJm1WXeoP9mNopE7yl8kcmMQ41x7W46V4b3dIn
-X-Received: by 2002:aca:d544:: with SMTP id m65mr1940291oig.177.1581079284324;
-        Fri, 07 Feb 2020 04:41:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581079284; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp836398lfp;
+        Fri, 7 Feb 2020 09:38:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz0NOZvv1L4YgICsTXyKwTGsdJqkEcGORjACRZgDAjA3294RXIJbpnq/6PhTzDsiTFxc7hh
+X-Received: by 2002:a05:620a:226:: with SMTP id u6mr8032155qkm.484.1581097124448;
+        Fri, 07 Feb 2020 09:38:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581097124; cv=none;
         d=google.com; s=arc-20160816;
-        b=OtKlwKkj1fqn6lGoNFuKA1Q+RR0UQZOrf9UGr765P05Eh2j1SIE6Doajcxxoh37Bgc
-         81KkMty7RcQfmWjMCo63GgokqFyhdUMTrOKGnZy5UUhy6B1gF3ardDBgFgMklqIKja1i
-         D7sWiF5Gp4gnTHST7B6WSWyI5wMKL4gIE2jsfd03EIeJW9oMlOWZzBewGEqW0vDATGy9
-         AinWDBDZ5qM20pePbEo+XYbTntJPrFkoCI37dQD5akhiVT5xS1qcQ05wZMznRQQlvgnW
-         SIN2XKgQUQYAaChAw8q/EIJSi6f5ttfDdmKp7paFV0rCrQ9iLWPH2gTt6lrxguqZKY36
-         Obfw==
+        b=cgyeKNbiWcrqJ54l68MsPcDVGkJtpTcjXi9b9mOofCgW1L5SbOin+ISPTjaaQ4Enpe
+         G/B7WlhpI9RvABUGrwt7CoYoRABcyXJ8pAtM91gBqsXybjWt/DOAn49tEgwB4h3UCf4S
+         4WvSEJOaP6+eXP1F3BJpPxXMHYboHw30hSvvfst7A0doa5qVj8O/gpTqqQqMP756s5Y9
+         5T9L2abl7SBr4aIsZH7ONQkEsoncm2frYaF2+vZ3SCSi8R6sdc+YzUNOgLCsB+pkLae8
+         /Jj8f6ZdGC5zpDqEAzYHdD1bL+7DJLM0VNPJgGp7cQcV9kL9Ki7rW7xYPdSR6ToRrtnH
+         iubA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=jekBhkDKUDW/HdvYc4nFBVt1gZ8ZA3cNzhKmGx21BcU=;
-        b=p8p87KWa/5wnupM3RYU5pLaDvhUdXyNESp4OsYEw9T3IJcsAxxZi7hHOQwB9xisdpj
-         mHGlNImNtf22QwF21TfcZnQ7c46xeo3hN4gv2fZAnQ10IFflSU1m46/RlHa2zHlsZRho
-         rdTERPVW4PjVP4x215naSU8mmiOA57HYExp8aSKt2oj9T/Gngh1Fbvw2ieKFWNDPDAZR
-         Xw7H6sdVEdbqFpD6OBu+x5vbwR4shfNccLKwh1Z5kMgiT6FkIg1uavSORh5JbE6nhl4o
-         YBVlVbS4Vha/YSLgzKX7dDyoT8JDgbZJrxE5CK9X1ddfRV+u4hFuaV6rKJbd981cl9Kp
-         gWmQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=fGozaL5Ws+qig5Bqcmx+fSctCJLvNrlPSpH4XuZQqtQ=;
+        b=zf88rDI+ypA/IuByh3cD2UI6IwUBcqHExMOOqEjb335oMf8Fb/W4T3mBta+NIeHjSE
+         wyStENLTBmj6y4tLdRpRI79/iot3n/ZoIXw1JhX5//rxdJxTcWFr7gbEtIWzmeILkMH8
+         7EoqXvgjWBCewoHZovqdi5EBIHDFWdvVjEqNdJXxuGgFnG+PJil5G0OO450Fe6TEESly
+         7iBrJmwWEd5ETT42vdNbTNIZe3liyUv5vln0V98Ygf5QseNdFqfIjjcMUWKAHd5yS38/
+         MNRtrO8jTqwWUmEBczTClivPvp8YuEIVKXOrU4OAQTyOHj/fyvX/hHPihDBs5yIq91Gg
+         jg2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZUlRyWDB;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id a13si1663019otq.201.2020.02.07.04.41.24;
-        Fri, 07 Feb 2020 04:41:24 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i12si17824qvw.61.2020.02.07.09.38.44
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 07 Feb 2020 09:38:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZUlRyWDB;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726897AbgBGMlX (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Fri, 7 Feb 2020 07:41:23 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:24029 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1726860AbgBGMlX (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 7 Feb 2020 07:41:23 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1581079282;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         in-reply-to:in-reply-to:references:references;
-        bh=jekBhkDKUDW/HdvYc4nFBVt1gZ8ZA3cNzhKmGx21BcU=;
-        b=ZUlRyWDBUHMmUTlMQbB5SMYWUchT1hctIkLjNYUt7whCBVMuXoN/Y08bQV7rVvOiDszajf
-        KIPQW3tYDHBcoF5rJSh+Lxol1hweXhWqHhUvR9eHIX+zoqcNSJEyUOghB1qz79tDiYWY2n
-        FuTK1cE08UFP8mvCTnr4AXP7tt+ED4I=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-359-CS3g7-frPAC93Tllq8U3SQ-1; Fri, 07 Feb 2020 07:41:18 -0500
-X-MC-Unique: CS3g7-frPAC93Tllq8U3SQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C79FD86A060;
-        Fri,  7 Feb 2020 12:41:15 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 6C13787B11;
-        Fri,  7 Feb 2020 12:41:10 +0000 (UTC)
-Date:   Fri, 7 Feb 2020 13:41:08 +0100
-From:   Andrew Jones <drjones@redhat.com>
-To:     Eric Auger <eric.auger@redhat.com>
-Cc:     eric.auger.pro@gmail.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-        peter.maydell@linaro.org, andre.przywara@arm.com, thuth@redhat.com,
-        yuzenghui@huawei.com, alexandru.elisei@arm.com
-Subject: Re: [kvm-unit-tests PATCH v3 08/14] arm/arm64: ITS:
- its_enable_defaults
-Message-ID: <20200207124108.wtgghuwoka42oj4i@kamzik.brq.redhat.com>
-References: <20200128103459.19413-1-eric.auger@redhat.com>
- <20200128103459.19413-9-eric.auger@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33262 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j07aV-000160-TK
+	for alex.bennee@linaro.org; Fri, 07 Feb 2020 12:38:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43153)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <clg@kaod.org>) id 1j07aO-00015W-1a
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 12:38:37 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <clg@kaod.org>) id 1j07aM-0006Kc-Tm
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 12:38:35 -0500
+Received: from 10.mo179.mail-out.ovh.net ([46.105.79.46]:42216)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1j07aM-0006DI-NS
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 12:38:34 -0500
+Received: from player779.ha.ovh.net (unknown [10.110.208.43])
+ by mo179.mail-out.ovh.net (Postfix) with ESMTP id A63DA1594E0
+ for <qemu-arm@nongnu.org>; Fri,  7 Feb 2020 18:38:32 +0100 (CET)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player779.ha.ovh.net (Postfix) with ESMTPSA id A648FF1A8494;
+ Fri,  7 Feb 2020 17:38:24 +0000 (UTC)
+Subject: Re: [PATCH] hw/arm: ast2600: Wire up EHCI controllers
+To: Guenter Roeck <linux@roeck-us.net>
+References: <20200207144954.13634-1-linux@roeck-us.net>
+ <c0bcd37a-0745-69ec-471f-be54c8e5a54e@kaod.org>
+ <20200207170726.GA24635@roeck-us.net>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <6e266552-f6e2-e335-1e78-3b037041f9b4@kaod.org>
+Date: Fri, 7 Feb 2020 18:38:24 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200128103459.19413-9-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: f81KKGWccURz
+In-Reply-To: <20200207170726.GA24635@roeck-us.net>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 11571999244111874880
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrheehgddutdefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejjeelrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 46.105.79.46
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WwjDbwolCH0j
 
-On Tue, Jan 28, 2020 at 11:34:53AM +0100, Eric Auger wrote:
-> its_enable_defaults() is the top init function that allocates the
-> command queue and all the requested tables (device, collection,
-> lpi config and pending tables), enable LPIs at distributor level
-> and ITS level.
-> 
-> gicv3_enable_defaults must be called before.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
-> ---
-> 
-> v2 -> v3:
-> - introduce its_setup_baser in this patch
-> - squash "arm/arm64: ITS: Init the command queue" in this patch.
-> ---
->  lib/arm/asm/gic-v3-its.h |  8 ++++
->  lib/arm/gic-v3-its.c     | 89 ++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 97 insertions(+)
-> 
-> diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
-> index 815c515..fe73c04 100644
-> --- a/lib/arm/asm/gic-v3-its.h
-> +++ b/lib/arm/asm/gic-v3-its.h
-> @@ -36,6 +36,8 @@ struct its_data {
->  	void *base;
->  	struct its_typer typer;
->  	struct its_baser baser[GITS_BASER_NR_REGS];
-> +	struct its_cmd_block *cmd_base;
-> +	struct its_cmd_block *cmd_write;
->  };
->  
->  extern struct its_data its_data;
-> @@ -88,10 +90,16 @@ extern struct its_data its_data;
->  #define GITS_BASER_TYPE_DEVICE		1
->  #define GITS_BASER_TYPE_COLLECTION	4
->  
-> +
-> +struct its_cmd_block {
-> +	u64 raw_cmd[4];
-> +};
-> +
->  extern void its_parse_typer(void);
->  extern void its_init(void);
->  extern int its_parse_baser(int i, struct its_baser *baser);
->  extern struct its_baser *its_lookup_baser(int type);
-> +extern void its_enable_defaults(void);
->  
->  #else /* __arm__ */
->  
-> diff --git a/lib/arm/gic-v3-its.c b/lib/arm/gic-v3-its.c
-> index 2c0ce13..d1e7e52 100644
-> --- a/lib/arm/gic-v3-its.c
-> +++ b/lib/arm/gic-v3-its.c
-> @@ -86,3 +86,92 @@ void its_init(void)
->  		its_parse_baser(i, &its_data.baser[i]);
->  }
->  
-> +static void its_setup_baser(int i, struct its_baser *baser)
-> +{
-> +	unsigned long n = (baser->nr_pages * baser->psz) >> PAGE_SHIFT;
-> +	unsigned long order = is_power_of_2(n) ? fls(n) : fls(n) + 1;
-> +	u64 val;
-> +
-> +	baser->table_addr = (u64)virt_to_phys(alloc_pages(order));
-> +
-> +	val = ((u64)baser->table_addr					|
-> +		((u64)baser->type	<< GITS_BASER_TYPE_SHIFT)	|
-> +		((u64)(baser->esz - 1)	<< GITS_BASER_ENTRY_SIZE_SHIFT)	|
-> +		((baser->nr_pages - 1)	<< GITS_BASER_PAGES_SHIFT)	|
-> +		(u64)baser->indirect	<< 62				|
-> +		(u64)baser->valid	<< 63);
+On 2/7/20 6:07 PM, Guenter Roeck wrote:
+> On Fri, Feb 07, 2020 at 04:47:09PM +0100, C=C3=A9dric Le Goater wrote:
+>> On 2/7/20 3:49 PM, Guenter Roeck wrote:
+>>> Initialize EHCI controllers on AST2600 using the existing
+>>> TYPE_PLATFORM_EHCI. After this change, booting ast2600-evb
+>>> into Linux successfully instantiates a USB interface after
+>>> the necessary changes are made to its devicetree files.
+>>>
+>>> ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+>>> ehci-platform: EHCI generic platform driver
+>>> ehci-platform 1e6a3000.usb: EHCI Host Controller
+>>> ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus numb=
+er 1
+>>> ehci-platform 1e6a3000.usb: irq 25, io mem 0x1e6a3000
+>>> ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
+>>> usb usb1: Manufacturer: Linux 5.5.0-09825-ga0802f2d0ef5-dirty ehci_hc=
+d
+>>> usb 1-1: new high-speed USB device number 2 using ehci-platform
+>>>
+>>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+>>> ---
+>>>  hw/arm/aspeed_ast2600.c | 23 +++++++++++++++++++++++
+>>>  1 file changed, 23 insertions(+)
+>>>
+>>> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+>>> index 931887ac68..a528251c8d 100644
+>>> --- a/hw/arm/aspeed_ast2600.c
+>>> +++ b/hw/arm/aspeed_ast2600.c
+>>> @@ -31,6 +31,8 @@ static const hwaddr aspeed_soc_ast2600_memmap[] =3D=
+ {
+>>>      [ASPEED_FMC]       =3D 0x1E620000,
+>>>      [ASPEED_SPI1]      =3D 0x1E630000,
+>>>      [ASPEED_SPI2]      =3D 0x1E641000,
+>>> +    [ASPEED_EHCI1]     =3D 0x1E6A1000,
+>>> +    [ASPEED_EHCI2]     =3D 0x1E6A3000,
+>>>      [ASPEED_MII1]      =3D 0x1E650000,
+>>>      [ASPEED_MII2]      =3D 0x1E650008,
+>>>      [ASPEED_MII3]      =3D 0x1E650010,
+>>> @@ -77,6 +79,8 @@ static const int aspeed_soc_ast2600_irqmap[] =3D {
+>>>      [ASPEED_ADC]       =3D 78,
+>>>      [ASPEED_XDMA]      =3D 6,
+>>>      [ASPEED_SDHCI]     =3D 43,
+>>> +    [ASPEED_EHCI1]     =3D 5,
+>>> +    [ASPEED_EHCI2]     =3D 9,
+>>
+>> There is a conflict here with commit a29e3e127077 ("hw/arm: ast2600: W=
+ire=20
+>> up the eMMC controller") which is mainline already=20
+>>
+> Ah, sorry, I had tested this on top of v4.2. Fortunately it is only
+> a context conflict. Should I resend ?
 
- << GITS_BASER_INDIRECT
- << GITS_BASER_VALID
+yes. keep my S-o-b.
 
-> +
-> +	switch (baser->psz) {
-> +	case SZ_4K:
-> +		val |= GITS_BASER_PAGE_SIZE_4K;
-> +		break;
-> +	case SZ_16K:
-> +		val |= GITS_BASER_PAGE_SIZE_16K;
-> +		break;
-> +	case SZ_64K:
-> +		val |= GITS_BASER_PAGE_SIZE_64K;
-> +		break;
-> +	}
-> +
-> +	writeq(val, gicv3_its_base() + GITS_BASER + i * 8);
-> +}
-> +
-> +/**
-> + * init_cmd_queue: Allocate the command queue and initialize
-> + * CBASER, CREADR, CWRITER
-> + */
-> +static void its_cmd_queue_init(void)
-> +{
-> +	unsigned long n = SZ_64K >> PAGE_SHIFT;
-> +	unsigned long order = fls(n);
-> +	u64 cbaser;
-> +
-> +	its_data.cmd_base = (void *)virt_to_phys(alloc_pages(order));
-> +
-> +	cbaser = ((u64)its_data.cmd_base | (SZ_64K / SZ_4K - 1)	| GITS_CBASER_VALID);
-> +
-> +	writeq(cbaser, its_data.base + GITS_CBASER);
-> +
-> +	its_data.cmd_write = its_data.cmd_base;
-> +	writeq(0, its_data.base + GITS_CWRITER);
-> +}
-> +
-> +void its_enable_defaults(void)
-> +{
-> +	unsigned int i;
-> +
-> +	its_parse_typer();
-> +
-> +	/* Allocate BASER tables (device and collection tables) */
-> +	for (i = 0; i < GITS_BASER_NR_REGS; i++) {
-> +		struct its_baser *baser = &its_data.baser[i];
-> +		int ret;
-> +
-> +		ret = its_parse_baser(i, baser);
-> +		if (ret)
-> +			continue;
-
-Didn't we already parse typer and baser at its_init time? How/why would
-its_parse_baser fail? Should we assert when it does?
-
-> +
-> +		switch (baser->type) {
-> +		case GITS_BASER_TYPE_DEVICE:
-> +			baser->valid = true;
-> +			its_setup_baser(i, baser);
-> +			break;
-> +		case GITS_BASER_TYPE_COLLECTION:
-> +			baser->valid = true;
-> +			its_setup_baser(i, baser);
-> +			break;
-> +		default:
-> +			break;
-
-assert() ?
-
-> +		}
-> +	}
-> +
-> +	/* Allocate LPI config and pending tables */
-> +	gicv3_lpi_alloc_tables();
-> +
-> +	its_cmd_queue_init();
-> +
-> +	for (i = 0; i < nr_cpus; i++)
-> +		gicv3_lpi_rdist_ctrl(i, true);
-> +
-> +	writel(GITS_CTLR_ENABLE, its_data.base + GITS_CTLR);
-> +}
-> -- 
-> 2.20.1
-> 
->
-
-It's looking like we don't have a clean separation between its_init and
-its_enable_defaults. I'd expect its_init to do all the allocating of
-memory and its_enable_defaults to do all the write's to the device.
-We should only do its_init once and its_enable should be something
-we can do again (after a disable, on reset, etc.). Is that not possible
-with the ITS device?
+There are a few aspeed changes in 5.0 and some more on the list but all=20
+patches apply cleanly. It will Peter's life easier. =20
 
 Thanks,
-drew
+
+C.=20
+
+=20

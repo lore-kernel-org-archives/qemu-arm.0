@@ -1,236 +1,154 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp539451lfp;
-        Fri, 7 Feb 2020 04:51:59 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxdb1dcjPdwANj5aidg3dEzXeDPWQgT2v/OUNG+TfhQarllHuZ6AQ1eTV0fsv+yQQmFsJeV
-X-Received: by 2002:a9d:5a09:: with SMTP id v9mr2475337oth.214.1581079919224;
-        Fri, 07 Feb 2020 04:51:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581079919; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp544843lfp;
+        Fri, 7 Feb 2020 04:58:45 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxaGTbzhU5mP/cfE4FaS861sfUJkhS0nsF5kywS+l6MZaYSRHK1mk67ekRHTLzg5bgs/3se
+X-Received: by 2002:a05:620a:108d:: with SMTP id g13mr7049586qkk.121.1581080325670;
+        Fri, 07 Feb 2020 04:58:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581080325; cv=none;
         d=google.com; s=arc-20160816;
-        b=iwfevNXXjTj5l4hr+0rfC/MkqO6H/y/SkzjymF1l0sIziz2nEgqlyxi9wOE2hyeMHj
-         kc8HtwWcNkYvwVzz9/aB5l/rZumXBSXQLx2tIbQN3SHph7LsaRiLJioxpNXZ90xzh5fE
-         sAksNNTHurtVakIXw4QZVGJ3mX9J91PSVXLLRAmRdMY0IZ4SG7oc7ECxsipdOTd8Ke5Y
-         r6/JCwu6FqG/i+ganWDzIRLA0hj7AENeoJnbgP6BtW/S8JgFS6zgVgI2ODp1qAae6O0V
-         GbOKwzdNPkN7Ml60nHL95/16cQxMFQEDxN4h2q4M6fnYHd8jPOl5Wj9Se051VqUr/Gaq
-         dVsg==
+        b=eRJHKLbZuqwlt4MPHFam0AObQtGzbvfvdsuEFSlTdBG4i/r5acCHvUvZ+IwDO1i1tr
+         BApgFLrWBKvWIH6Nra5wng9Qwx6ajeEar7ddl7a3f50CBPeX5JgQyPH8d1R+8bewWFzF
+         3ldf83WpPbkFg7rd2CVHIuRtjbAarYcI5+SW6dT7F/Vp9MzVqk3bK5oRnMHR7xp9o8Hy
+         dGS+34aknNfRoobz8syp6NGjRhbfWL7W1mcd3qNedHn9BGVmFzdUamtlleMdXbh1VWez
+         onDU3BksbxVUNT91Wl8K+/N+I8iZm3avlVsg9pCP2EbHS3oKo/o9T2gelI0cSo786dE+
+         NIpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=QfifAdtZgyLKfSMjV381OxKtjAbgvAPmh0ViyL9F8LE=;
-        b=LqUhbEKnDDFaDgkbfAkDhFHoA4xSR/H7xTHfcF+2Z+1QT0cz4HnkJuQtK2GDD8qvrL
-         8ryBSYzVYhZA0qxEx5fvUaT3nN1wZ6vN9SYZICqfvfg1YoBAC9oOHKmzwANbjT/n3uYz
-         hf/Eu6SQUtlxGxQRrFIpnTClLTincNKm6YUVTWMLiwrt1O1YBAR1KCo0mDn31eB0TSyp
-         xzQ8/R4pKP7tQMkXGlFuZsOfkEuwn27u3+jp/H2hNPRTCN1FSoQd2BRYUdrrfly+F861
-         Y5yuqnoXG366i2HRaeq3bl71jPeSUKbLfXN3B3bQVN4e9F5vqYXjW/RakcT9EaQ13RAR
-         rkzQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=fVJ/lNKCbvS/EN1US49rpyBiCuO505cnmOErQECnowo=;
+        b=Ts+hn57r9L6QFL8ybLQ07+XdrS3sTYgIL9w7FQVEfPBRARRMiqimWJdVovnzLzYM5N
+         2ltJKrZiJZ+oyA1Rq562J2WEDAZLehBBwxd5regMtyasV+CLA6UhnTXLct1JNNTMy1tK
+         TOn/dDmloYUu5TYPKow9cvyIWlgj1eLj5wNd3HBZQ+yRKlJL5JCt3bPn1BQ4Ktgw/a6/
+         o6+XRbaTifjUmh9BbJ6uvs9UiYfW3JZwd9X61Kp3yV8PZDp+5MaYX8mGKiRJMBU0+Paz
+         zDJI/gpKSRTFMWMZE578cPb6BnaMS17D4qNmV83te20ddn+70qMjgXuiPzXf0VXvronk
+         xfNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iQaFkIGM;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id q65si3800491oic.123.2020.02.07.04.51.59;
-        Fri, 07 Feb 2020 04:51:59 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="YJBv/uBE";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z133si1224209qkb.353.2020.02.07.04.58.45
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 07 Feb 2020 04:58:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iQaFkIGM;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726861AbgBGMvz (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Fri, 7 Feb 2020 07:51:55 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:53555 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1726798AbgBGMvz (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 7 Feb 2020 07:51:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1581079913;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         in-reply-to:in-reply-to:references:references;
-        bh=QfifAdtZgyLKfSMjV381OxKtjAbgvAPmh0ViyL9F8LE=;
-        b=iQaFkIGMJOm5JAvZvJQK1EZN8yQ//oFLy9pYUrz7vwq69ZclezWcMaOsvQx6S8fJ7xi0Hs
-        2/fR5/Z3fKd+t8jBnnzup7vC5FaE3Uo/4jcif6Ukc53TJr+q450gEeQ/qZmakOhxsW1zYH
-        YkzC280B9Z7Pq7GQTf1wYVhMo99GHas=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-2-w6w7WfAfN2-uYclU7SUvdA-1; Fri, 07 Feb 2020 07:51:51 -0500
-X-MC-Unique: w6w7WfAfN2-uYclU7SUvdA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DAFF9140A;
-        Fri,  7 Feb 2020 12:51:49 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id ADD4A60C05;
-        Fri,  7 Feb 2020 12:51:43 +0000 (UTC)
-Date:   Fri, 7 Feb 2020 13:51:40 +0100
-From:   Andrew Jones <drjones@redhat.com>
-To:     Eric Auger <eric.auger@redhat.com>
-Cc:     eric.auger.pro@gmail.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
-        peter.maydell@linaro.org, yuzenghui@huawei.com,
-        alexandru.elisei@arm.com, thuth@redhat.com
-Subject: Re: [kvm-unit-tests PATCH v3 09/14] arm/arm64: ITS: Device and
- collection Initialization
-Message-ID: <20200207125140.656ctxlmk3d4au7g@kamzik.brq.redhat.com>
-References: <20200128103459.19413-1-eric.auger@redhat.com>
- <20200128103459.19413-10-eric.auger@redhat.com>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="YJBv/uBE";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55762 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j03DX-00047d-Rv
+	for alex.bennee@linaro.org; Fri, 07 Feb 2020 07:58:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51645)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <groeck7@gmail.com>) id 1j03DN-00045k-4i
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 07:58:35 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <groeck7@gmail.com>) id 1j03DM-0006Cz-4J
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 07:58:33 -0500
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:46706)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1j03DI-00069m-GU; Fri, 07 Feb 2020 07:58:28 -0500
+Received: by mail-pf1-x443.google.com with SMTP id k29so1232428pfp.13;
+ Fri, 07 Feb 2020 04:58:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=fVJ/lNKCbvS/EN1US49rpyBiCuO505cnmOErQECnowo=;
+ b=YJBv/uBEqKXGTA7FSTiB7tl0r3MavseDq820o3j8btnbEGTRydSptXIcgAbGnoBkdR
+ +54/UQdLlNc0mPYq1HrZQhA1sJGzdCSIRp0EC2zaJ57SqVThz+6Scc4iTXkEcW7XUl/w
+ C2lkVVG/7oDUwCIDsyKZLgGKpWk3j0rp/K/VUOEo87y9PhEqhEy8HIuxr4Fnf7091iPf
+ RF+a4N9S9xG2ZDDtPNwSuOIIAaMGsWAFtiZvLUS0nOI8MYJC4sPMIKBj2zWES4LTmz3q
+ c5xrx6wtze9qRCsXz0hmfpujsA3GofdYzGeNBKsl3aTO6dpiABwCZnJAX9A/yrlzvREJ
+ kYVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=fVJ/lNKCbvS/EN1US49rpyBiCuO505cnmOErQECnowo=;
+ b=SWg+6lstkWYYnLQ2ELiipPwft7aKPRfV4oY9QljCnx5EWQEJk7fNoHX6T7P0nRcOVI
+ rA/0i4qFn0wa3q5vN3jBkwxnix7ZBlLJFrQs9WufhQ5V1CKRt643Kr5wM04ZDWHOA1GT
+ 5z77QskLfl5CBpaa98KWWK5Y3PCnyjGpJMOzZYucxoj8W5hiWUAaqnvEJOefiDIT3po1
+ bKvI25A6cXpJqkAJ6jrMeRbKLsYBjZSNs+6b57sEmMF25jmVArHIifVZFUcBXyqwBud7
+ q1gmdZc5rwDoXHq6V2U6eqF5b/5Z6RC2hXdqvu1dpCGzUSo/YEAYtIrXyxZ/IeX01/LP
+ jAHg==
+X-Gm-Message-State: APjAAAV7fI6GWFFeTgqdvYn5GbuEegeVmEoL9j4nmhOXYvoeYq3uQXuc
+ agZkcmYnpqabq/2UUW+v/xYhRzfx
+X-Received: by 2002:aa7:9e0b:: with SMTP id y11mr10249439pfq.182.1581080306998; 
+ Fri, 07 Feb 2020 04:58:26 -0800 (PST)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ r66sm3295375pfc.74.2020.02.07.04.58.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 07 Feb 2020 04:58:26 -0800 (PST)
+Subject: Re: [PATCH] hw/arm: ast2400/ast2500: Wire up EHCI controllers
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+References: <20200206183437.3979-1-linux@roeck-us.net>
+ <e9f490fe-34d3-6830-832c-155f6fa63482@kaod.org>
+From: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <1605922b-2aa0-dd8e-720a-031e74bc9872@roeck-us.net>
+Date: Fri, 7 Feb 2020 04:58:24 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200128103459.19413-10-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: Ib8LBTy4UROF
+In-Reply-To: <e9f490fe-34d3-6830-832c-155f6fa63482@kaod.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::443
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cgHnTfXYLtIr
 
-On Tue, Jan 28, 2020 at 11:34:54AM +0100, Eric Auger wrote:
-> Introduce an helper functions to register
-> - a new device, characterized by its device id and the
->   max number of event IDs that dimension its ITT (Interrupt
->   Translation Table).  The function allocates the ITT.
+On 2/7/20 12:16 AM, Cédric Le Goater wrote:
+> On 2/6/20 7:34 PM, Guenter Roeck wrote:
+>> Initialize EHCI controllers on AST2400 and AST2500 using the existing
+>> TYPE_PLATFORM_EHCI. After this change, booting ast2500-evb into Linux
+>> successfully instantiates a USB interface.
+>>
+>> ehci-platform 1e6a3000.usb: EHCI Host Controller
+>> ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number 1
+>> ehci-platform 1e6a3000.usb: irq 21, io mem 0x1e6a3000
+>> ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
+>> usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.05
+>> usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+>> usb usb1: Product: EHCI Host Controller
 > 
-> - a new collection, characterized by its ID and the
->   target processing engine (PE).
+> Cool. Have you tried to plug any devices ?
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
+Yes, booting from USB drive works just fine. I already added it to my
+test suite at kerneltests.org.
+
+>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 > 
-> ---
 > 
-> v2 -> v3:
-> - s/report_abort/assert
+> This looks good. Could you add the AST2600 also ?
 > 
-> v1 -> v2:
-> - s/nb_/nr_
-> ---
->  lib/arm/asm/gic-v3-its.h | 20 +++++++++++++++++-
->  lib/arm/gic-v3-its.c     | 44 ++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 63 insertions(+), 1 deletion(-)
-> 
-> diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
-> index fe73c04..acd97a9 100644
-> --- a/lib/arm/asm/gic-v3-its.h
-> +++ b/lib/arm/asm/gic-v3-its.h
-> @@ -31,6 +31,19 @@ struct its_baser {
->  };
->  
->  #define GITS_BASER_NR_REGS              8
-> +#define GITS_MAX_DEVICES		8
-> +#define GITS_MAX_COLLECTIONS		8
-> +
-> +struct its_device {
-> +	u32 device_id;	/* device ID */
-> +	u32 nr_ites;	/* Max Interrupt Translation Entries */
-> +	void *itt;	/* Interrupt Translation Table GPA */
-> +};
-> +
-> +struct its_collection {
-> +	u64 target_address;
-> +	u16 col_id;
-> +};
->  
->  struct its_data {
->  	void *base;
-> @@ -38,6 +51,10 @@ struct its_data {
->  	struct its_baser baser[GITS_BASER_NR_REGS];
->  	struct its_cmd_block *cmd_base;
->  	struct its_cmd_block *cmd_write;
-> +	struct its_device devices[GITS_MAX_DEVICES];
-> +	u32 nr_devices;		/* Allocated Devices */
-> +	struct its_collection collections[GITS_MAX_COLLECTIONS];
-> +	u32 nr_collections;	/* Allocated Collections */
->  };
->  
->  extern struct its_data its_data;
-> @@ -90,7 +107,6 @@ extern struct its_data its_data;
->  #define GITS_BASER_TYPE_DEVICE		1
->  #define GITS_BASER_TYPE_COLLECTION	4
->  
-> -
->  struct its_cmd_block {
->  	u64 raw_cmd[4];
->  };
-> @@ -100,6 +116,8 @@ extern void its_init(void);
->  extern int its_parse_baser(int i, struct its_baser *baser);
->  extern struct its_baser *its_lookup_baser(int type);
->  extern void its_enable_defaults(void);
-> +extern struct its_device *its_create_device(u32 dev_id, int nr_ites);
-> +extern struct its_collection *its_create_collection(u32 col_id, u32 target_pe);
->  
->  #else /* __arm__ */
->  
-> diff --git a/lib/arm/gic-v3-its.c b/lib/arm/gic-v3-its.c
-> index d1e7e52..c2dcd01 100644
-> --- a/lib/arm/gic-v3-its.c
-> +++ b/lib/arm/gic-v3-its.c
-> @@ -175,3 +175,47 @@ void its_enable_defaults(void)
->  
->  	writel(GITS_CTLR_ENABLE, its_data.base + GITS_CTLR);
->  }
-> +
-> +struct its_device *its_create_device(u32 device_id, int nr_ites)
-> +{
-> +	struct its_baser *baser;
-> +	struct its_device *new;
-> +	unsigned long n, order;
-> +
-> +	assert(its_data.nr_devices < GITS_MAX_DEVICES);
-> +
-> +	baser = its_lookup_baser(GITS_BASER_TYPE_DEVICE);
-> +	if (!baser)
-> +		return NULL;
 
-Should we assert here if we can't find a GITS_BASER_TYPE_DEVICE ?
-It seems none of the callers of its_create_device are checking
-for null.
-
-> +
-> +	new = &its_data.devices[its_data.nr_devices];
-> +
-> +	new->device_id = device_id;
-> +	new->nr_ites = nr_ites;
-> +
-> +	n = (its_data.typer.ite_size * nr_ites) >> PAGE_SHIFT;
-> +	order = is_power_of_2(n) ? fls(n) : fls(n) + 1;
-
-I've seen this calculation several times now, so I think an
-arch-neutral order calculator is in order:
-
- int get_order(size_t size);
-
-> +	new->itt = (void *)virt_to_phys(alloc_pages(order));
-
-If this is a physical address then shouldn't itt be phys_addr_t ?
-
-> +
-> +	its_data.nr_devices++;
-> +	return new;
-> +}
-> +
-> +struct its_collection *its_create_collection(u32 col_id, u32 pe)
-> +{
-> +	struct its_collection *new;
-> +
-> +	assert(its_data.nr_collections < GITS_MAX_COLLECTIONS);
-> +
-> +	new = &its_data.collections[its_data.nr_collections];
-> +
-> +	new->col_id = col_id;
-> +
-> +	if (its_data.typer.pta)
-> +		new->target_address = (u64)gicv3_data.redist_base[pe];
-> +	else
-> +		new->target_address = pe << 16;
-> +
-> +	its_data.nr_collections++;
-> +	return new;
-> +}
-> -- 
-> 2.20.1
->
+I thought about that, but how would I test it ? None of the ast2600
+systems in the Linux kernel enables it. The devicetree include file for
+ast2600 doesn't even have an entry for it. I could cook something up,
+but that would not reflect real hardware.
 
 Thanks,
-drew 
+Guenter

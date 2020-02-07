@@ -1,118 +1,85 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp590100lfp;
-        Fri, 7 Feb 2020 05:41:23 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzoTLtY7H1uA9HYkf4ZZowF+SBED6IdMrxfSnehx/jMH1zfGfqenWVlTkiZDzOLugLe04RJ
-X-Received: by 2002:a05:620a:20d0:: with SMTP id f16mr7375266qka.349.1581082882959;
-        Fri, 07 Feb 2020 05:41:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581082882; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp594368lfp;
+        Fri, 7 Feb 2020 05:45:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzKeDRr9ZAGlqF2rEEDAHN5I5k3HNLn6c3IDn3w3kjOVblKIVdEv7SHKLrNxoKW++umRVnC
+X-Received: by 2002:ac8:7396:: with SMTP id t22mr7460805qtp.269.1581083146142;
+        Fri, 07 Feb 2020 05:45:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581083146; cv=none;
         d=google.com; s=arc-20160816;
-        b=kuwxAJj4U9tMCPCYJAKrvqXRvKgE6xr/JmUaHXPs8jBQBz1uW+USFHKDlukq7FnMC4
-         er1l1JeruHp0xJCUcKnBy+7NlN6EtO+oMVuiH8wdm25TWJAjZWTyz3Ao3WhyQfAEKgwB
-         y5Tin/BfHo308rZh1GhKeYShIZQ3WkMOJWTvuX4ybtQ24GQsJEEIyAN6Yh9KNXsEm3k6
-         IvhohKSmKdCDuPli/ikR2cgodkb0uYtWX8635vVNp3O9OMZdaBVoQZpDljg2RKbbZppL
-         B6vDmA3QGc9bE39P71Ff2r6OynGsgr5LLBpkfzNRMWdLf01gkR6OoEoLpdoBVfz00Vty
-         oR6Q==
+        b=DpkHssE0YLDMjAivv84ThP/cnhGLKUpa6Uryd4tVqBWWAZvlnVbDzNtmBE45rlHdSA
+         80waAdCx73tFTEmb2UShOiMTOi6kbnfa//ThyCUi3I0zEhZOTZ7l4kyjruejWlCKBEi6
+         YcP07HrbmK6FG7PKvWe9GEQKG4gpOukcYG5hmjpOmF+hLlcqmIRhoiEgRXsD2czh7CvS
+         j7ZsXRABrYbpMTj0FAKDiZRpmFd3VEBpdBYNLDv3Fo+dXXaihrSEX85HtW6uLJO4OT8F
+         qkC0dO0L0YeSmUqyzMdcRGo3+vbI7kgvD6hpFwLhB0Ti4A60ou6XCrmttwJxX4jXzLzI
+         JY5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Vq/WHv9rsrgZFCCngOGb0Smg/2lD0d4tiEbgqBwORmk=;
-        b=EACPkE9/yr3kNZ60zHi6C6SxTB/Jaf3miEI6XqJFyyHtKy/owFhZLlk9l+L+bjjfeA
-         NwqTiyPE3bGnHW2K3u2BzI0ZLHSpIqHSjgbvotTB4rOpUysNcU3sTYWwp63fb/L4U+uL
-         +4DJQxx5KxchYVzWBUfpoXFmkn8F2tflPaKXNZj8yv3M9CyCWSVN4aGU3v6wNnDMNLjd
-         aneoc9oeh09cjNShSnXbV7EMYohc6ymvU68abKLbaz+AUxTcw7SlzcjF+crtEnoxgDN/
-         rYVAsN+lWfgfoOSyg6KZ9HdhCs3hApqDA1jpGJleZ1UJOabh/5Uv3PeG3EpupkjBgR6B
-         3EHg==
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=8XgyTsxG+pQRaOX6DjawSDaOXNBlKSyo7eZKb89YL5M=;
+        b=jKa3bev86rya7KqmhnHkid7BTs5Oz3AZkbsmbuJ6AJCb6wfHeevREvIbx3wmTJtx6N
+         pho1mmiVJI+WiPoPBW9YGGWWFAMKwzpuB3icoOs/jU/KfpE98CnrG+hJlbWu4Pl7c/eM
+         Ws/US8Zjq8ewy9jqbNTHh8yPu4qWtS+CfZwyEcwxr+l1eX/E7I0Q9/QEnndrsmz/mbgj
+         gXYJhskopDrvMPWpRyTR7tp6y2ZKNIntfv5B3ZtWCS3YzYOCml0MSHQCfc/hyxPKXxli
+         WqDSerS4EaNPmwEMbYBinOE/py9MjZn4UOPCfujyo8+2/ZlGp8R9p4h90uc08P4SGb6c
+         Lwmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Oc3moxMu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 4si1271431qkd.225.2020.02.07.05.41.22
+        by mx.google.com with ESMTPS id m4si1236805qvp.52.2020.02.07.05.45.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Feb 2020 05:41:22 -0800 (PST)
+        Fri, 07 Feb 2020 05:45:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Oc3moxMu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56638 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56738 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j03so-0001aK-Cg
-	for alex.bennee@linaro.org; Fri, 07 Feb 2020 08:41:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36190)
+	id 1j03x3-0007Zh-IH
+	for alex.bennee@linaro.org; Fri, 07 Feb 2020 08:45:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38324)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j03sV-0001U9-Ie
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 08:41:06 -0500
+ (envelope-from <guoheyi@huawei.com>) id 1j03wo-0007ZG-W1
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 08:45:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j03sU-0007dl-4V
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 08:41:03 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:49062
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <guoheyi@huawei.com>) id 1j03wn-00057d-CF
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 08:45:30 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2758 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j03sT-0007bU-Ix
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 08:41:01 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581082861;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Vq/WHv9rsrgZFCCngOGb0Smg/2lD0d4tiEbgqBwORmk=;
- b=Oc3moxMu4RaF6Y/Dssp/9JkRJFY3wwWll24DDf4Uyrx5Qcg5S5i/goN7zAkUYwo2zaCcIx
- v/J74/hUaa0kC8IDF4iA6+AglyRG4OE1NQQ9YqQ4+6FunyBwNCIZ1KIGJi9i498j+XXrOU
- F0za3vBBOXbsunBCSD2Pfm+QXuPxLq0=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-390-SBU1lRzGPIKl8C91iA2fRQ-1; Fri, 07 Feb 2020 08:40:55 -0500
-Received: by mail-wr1-f70.google.com with SMTP id 90so1262134wrq.6
- for <qemu-arm@nongnu.org>; Fri, 07 Feb 2020 05:40:55 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=icvCLwP5xvkeg9X7jv+3GbM5xpcVQFPo59uqDlBOmcs=;
- b=BBQ0NPrWm7Jl+RmuTGclOrZ4Z75CnWIVG5PyV030rN+muQ/31gjJsAz7RRaRgUjQ/R
- A6jj97vrtk7FybZ4FFjjIPQOkMxAU30sgsi5JxXKeqK2dYKn23G9JOW8ueK9TX4D+4DM
- z534lfbvo7nxWwTQ5XDqDa/0MyNVWm2HGj14BCXfNYKKC3sA6KOD/BgQop9i8IT4BzdC
- Fs3yJwgvDRkJOfOuFq4ZzOq8K/NKLOMKBGV0Lc7mdr6+dhZg7ad+judxap5wmwq6+yrZ
- eQnxp/urLTsroD/rEbu21B8SpZSoVjxf3vlYBBVemF/wmGOOgeTuNMX2am0zsPg1+7B8
- TLxw==
-X-Gm-Message-State: APjAAAXhhpR/PF+dIkv4ECRAhy+8IdOKcbQgTEsaia5tigKGVyVxRHgA
- DguWWpyTxPagu7ZikK3dhUsKPl3nq0DMWHHZMwROlnlKop80fC9qgh8DDf+RrGO+m5BRPjCkH7C
- zwZff6YZudM2V
-X-Received: by 2002:adf:e984:: with SMTP id h4mr4856768wrm.275.1581082854405; 
- Fri, 07 Feb 2020 05:40:54 -0800 (PST)
-X-Received: by 2002:adf:e984:: with SMTP id h4mr4856741wrm.275.1581082854118; 
- Fri, 07 Feb 2020 05:40:54 -0800 (PST)
-Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id s22sm3307171wmh.4.2020.02.07.05.40.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 07 Feb 2020 05:40:53 -0800 (PST)
-Subject: Re: [PATCH] hw/arm: ast2400/ast2500: Wire up EHCI controllers
-To: Guenter Roeck <linux@roeck-us.net>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>
-References: <20200206183437.3979-1-linux@roeck-us.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <9aa0cb6e-a06a-7086-5846-e34233c54b74@redhat.com>
-Date: Fri, 7 Feb 2020 14:40:52 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
+ id 1j03wm-0004l0-Uo; Fri, 07 Feb 2020 08:45:29 -0500
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 202298598E8A1BE03C7A;
+ Fri,  7 Feb 2020 21:45:23 +0800 (CST)
+Received: from [127.0.0.1] (10.173.221.228) by DGGEMS402-HUB.china.huawei.com
+ (10.3.19.202) with Microsoft SMTP Server id 14.3.439.0;
+ Fri, 7 Feb 2020 21:45:13 +0800
+Subject: Re: [RFC v2 00/14] Add SDEI support for arm64
+To: James Morse <james.morse@arm.com>, Marc Zyngier <maz@kernel.org>
+References: <20191105091056.9541-1-guoheyi@huawei.com>
+ <CAFEAcA-+tAbb9h2wZOm56TqUvjQJT0OYFLwTVS-UxKrF5PO3mQ@mail.gmail.com>
+ <5aece614-4341-35e5-53a6-2f3d788e6e8d@huawei.com>
+ <e8b93460-48e6-43cd-4608-370c07cb45ec@huawei.com>
+ <350aa4ca1b57a466ed882236caf23051@kernel.org>
+ <c67c1563-045f-a5f8-8b8b-97d792aa1912@huawei.com>
+ <f8394aafb2adb513186cd2784a1cb077@kernel.org>
+ <58519c6b-5c0e-b557-ac91-2024c594b28c@arm.com>
+From: Heyi Guo <guoheyi@huawei.com>
+Message-ID: <0e727390-0ed9-0346-aa3b-dc983afd443d@huawei.com>
+Date: Fri, 7 Feb 2020 21:45:11 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20200206183437.3979-1-linux@roeck-us.net>
-Content-Language: en-US
-X-MC-Unique: SBU1lRzGPIKl8C91iA2fRQ-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <58519c6b-5c0e-b557-ac91-2024c594b28c@arm.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.173.221.228]
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+ [fuzzy]
+X-Received-From: 45.249.212.191
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,156 +91,100 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Gavin Shan <gshan@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Paolo
+ Bonzini <pbonzini@redhat.com>, wanghaibin.wang@huawei.com, Dave
+ Martin <Dave.Martin@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EcrjHh14xOZ/
+X-TUID: YgtZ3c51WL+h
 
-On 2/6/20 7:34 PM, Guenter Roeck wrote:
-> Initialize EHCI controllers on AST2400 and AST2500 using the existing
-> TYPE_PLATFORM_EHCI. After this change, booting ast2500-evb into Linux
-> successfully instantiates a USB interface.
->=20
-> ehci-platform 1e6a3000.usb: EHCI Host Controller
-> ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number 1
-> ehci-platform 1e6a3000.usb: irq 21, io mem 0x1e6a3000
-> ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
-> usb usb1: New USB device found, idVendor=3D1d6b, idProduct=3D0002, bcdDev=
-ice=3D 5.05
-> usb usb1: New USB device strings: Mfr=3D3, Product=3D2, SerialNumber=3D1
-> usb usb1: Product: EHCI Host Controller
->=20
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> ---
->   hw/arm/aspeed_soc.c         | 25 +++++++++++++++++++++++++
->   include/hw/arm/aspeed_soc.h |  6 ++++++
->   2 files changed, 31 insertions(+)
->=20
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index b5e809a1d3..696c7fda14 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -30,6 +30,7 @@ static const hwaddr aspeed_soc_ast2400_memmap[] =3D {
->       [ASPEED_IOMEM]  =3D 0x1E600000,
->       [ASPEED_FMC]    =3D 0x1E620000,
->       [ASPEED_SPI1]   =3D 0x1E630000,
-> +    [ASPEED_EHCI1]  =3D 0x1E6A1000,
->       [ASPEED_VIC]    =3D 0x1E6C0000,
->       [ASPEED_SDMC]   =3D 0x1E6E0000,
->       [ASPEED_SCU]    =3D 0x1E6E2000,
-> @@ -59,6 +60,8 @@ static const hwaddr aspeed_soc_ast2500_memmap[] =3D {
->       [ASPEED_FMC]    =3D 0x1E620000,
->       [ASPEED_SPI1]   =3D 0x1E630000,
->       [ASPEED_SPI2]   =3D 0x1E631000,
-> +    [ASPEED_EHCI1]  =3D 0x1E6A1000,
-> +    [ASPEED_EHCI2]  =3D 0x1E6A3000,
->       [ASPEED_VIC]    =3D 0x1E6C0000,
->       [ASPEED_SDMC]   =3D 0x1E6E0000,
->       [ASPEED_SCU]    =3D 0x1E6E2000,
-> @@ -91,6 +94,8 @@ static const int aspeed_soc_ast2400_irqmap[] =3D {
->       [ASPEED_UART5]  =3D 10,
->       [ASPEED_VUART]  =3D 8,
->       [ASPEED_FMC]    =3D 19,
-> +    [ASPEED_EHCI1]  =3D 5,
-> +    [ASPEED_EHCI2]  =3D 13,
->       [ASPEED_SDMC]   =3D 0,
->       [ASPEED_SCU]    =3D 21,
->       [ASPEED_ADC]    =3D 31,
-> @@ -180,6 +185,11 @@ static void aspeed_soc_init(Object *obj)
->                                 sizeof(s->spi[i]), typename);
->       }
->  =20
-> +    for (i =3D 0; i < sc->ehcis_num; i++) {
-> +        sysbus_init_child_obj(obj, "ehci[*]", OBJECT(&s->ehci[i]),
-> +                              sizeof(s->ehci[i]), TYPE_PLATFORM_EHCI);
-> +    }
-> +
->       snprintf(typename, sizeof(typename), "aspeed.sdmc-%s", socname);
->       sysbus_init_child_obj(obj, "sdmc", OBJECT(&s->sdmc), sizeof(s->sdmc=
-),
->                             typename);
-> @@ -364,6 +374,19 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
-or **errp)
->                           s->spi[i].ctrl->flash_window_base);
->       }
->  =20
-> +    /* EHCI */
-> +    for (i =3D 0; i < sc->ehcis_num; i++) {
-> +        object_property_set_bool(OBJECT(&s->ehci[i]), true, "realized", =
-&err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-> +                        sc->memmap[ASPEED_EHCI1 + i]);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-> +                           aspeed_soc_get_irq(s, ASPEED_EHCI1 + i));
-> +    }
-> +
->       /* SDMC - SDRAM Memory Controller */
->       object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &err);
->       if (err) {
-> @@ -472,6 +495,7 @@ static void aspeed_soc_ast2400_class_init(ObjectClass=
- *oc, void *data)
->       sc->silicon_rev  =3D AST2400_A1_SILICON_REV;
->       sc->sram_size    =3D 0x8000;
->       sc->spis_num     =3D 1;
-> +    sc->ehcis_num    =3D 1;
->       sc->wdts_num     =3D 2;
->       sc->macs_num     =3D 2;
->       sc->irqmap       =3D aspeed_soc_ast2400_irqmap;
-> @@ -496,6 +520,7 @@ static void aspeed_soc_ast2500_class_init(ObjectClass=
- *oc, void *data)
->       sc->silicon_rev  =3D AST2500_A1_SILICON_REV;
->       sc->sram_size    =3D 0x9000;
->       sc->spis_num     =3D 2;
-> +    sc->ehcis_num    =3D 2;
->       sc->wdts_num     =3D 3;
->       sc->macs_num     =3D 2;
->       sc->irqmap       =3D aspeed_soc_ast2500_irqmap;
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 90ac7f7ffa..78b9f6ae53 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -26,8 +26,10 @@
->   #include "target/arm/cpu.h"
->   #include "hw/gpio/aspeed_gpio.h"
->   #include "hw/sd/aspeed_sdhci.h"
-> +#include "hw/usb/hcd-ehci.h"
->  =20
->   #define ASPEED_SPIS_NUM  2
-> +#define ASPEED_EHCIS_NUM 2
->   #define ASPEED_WDTS_NUM  4
->   #define ASPEED_CPUS_NUM  2
->   #define ASPEED_MACS_NUM  4
-> @@ -50,6 +52,7 @@ typedef struct AspeedSoCState {
->       AspeedXDMAState xdma;
->       AspeedSMCState fmc;
->       AspeedSMCState spi[ASPEED_SPIS_NUM];
-> +    EHCISysBusState ehci[ASPEED_EHCIS_NUM];
->       AspeedSDMCState sdmc;
->       AspeedWDTState wdt[ASPEED_WDTS_NUM];
->       FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
-> @@ -71,6 +74,7 @@ typedef struct AspeedSoCClass {
->       uint32_t silicon_rev;
->       uint64_t sram_size;
->       int spis_num;
-> +    int ehcis_num;
->       int wdts_num;
->       int macs_num;
->       const int *irqmap;
-> @@ -94,6 +98,8 @@ enum {
->       ASPEED_FMC,
->       ASPEED_SPI1,
->       ASPEED_SPI2,
-> +    ASPEED_EHCI1,
-> +    ASPEED_EHCI2,
->       ASPEED_VIC,
->       ASPEED_SDMC,
->       ASPEED_SCU,
->=20
 
-Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+On 2020/2/7 18:52, James Morse wrote:
+> Hi guys,
+>
+> On 06/02/2020 17:30, Marc Zyngier wrote:
+>> On 2020-02-06 01:20, Heyi Guo wrote:
+>>> On 2020/2/5 21:15, Marc Zyngier wrote:
+>>>> My concern is that SDEI implies having EL3. EL3 not being virtualizable
+>>>> with KVM, you end-up baking SDEI in *hardware*. Of course, this hardware
+>>>> is actually software (it is QEMU), but this isn't the way it was intended.
+>>>> It's not the first time we've done that (PSCI is another example), but the
+>>>> logic behind SDEI looks much more invasive.
+>>> Thanks for your comments.
+>>>
+>>> Thinking about them for quite a while, below is my understanding,
+>>> please correct me if I'm wrong:
+>>>
+>>> So should the KVM based virtual machine be treated as one with CPUs
+>>> only having NS-EL1 and NS-EL0, ideally? And SDEI messes up this model,
+>>> isn't it?
+>> Well, that's exactly what it is (until we have nested virt, in which case
+>> you will be able to add NS-EL2 to the mix).
+>>
+>>> PSCI only contains some one-shot operations, so it is much less
+>>> invasive than SDEI.
+> Is there an established pattern for how Qemu 'gets' things that are done in secure-world?
+> For PSCI the kernel does it, but this obviously doesn't scale to something like OP-TEE.
+>
+> Ideally we'd get the reference implementation (from ATF) in some form that is easy to use...
+>
+>
+>>> I've another question. The origin of "virtual" SDEI requirement comes
+>>> from the lack of hard lockup detector in VM.
+> (this is your use case. Its origin was just symmetry with EL3<->EL2)
+>
+>
+>> Sure. But nothing guarantees that the guest is going to register a SDEI
+>> entry point anyway.
+>>> We can have some kind of
+>>> watchdog, but how can the watchdog trigger the VM OS to panic and run
+>>> kdump, even in irq-off state?
+>> Nothing. All the events, including SDEI, are maskable, one way or another.
+>>
+>> Gavin's approach to inject a SError is probably OK for Linux, given that
+>> it tends to run with PSTATE.A==0. But that's not a guarantee either (if
+>> you take a recursive exception, SError won't be delivered).
+> Or get stuck in debug-state (for which we mask SError), power-management, the vectors or
+> somewhere weird, like KVM's world-switch.
+>
+>
+> If you just want to kill the OS if its sort-of-alive, there is another trick:
+>
+> Synchronous exceptions can't be masked because they are caused by the instruction pointed
+> to by the ELR. You can't inject an emulated data-abort unless the ELR points to an
+> instruction that accesses memory, but...
+>
+> synchronous external abort for instruction fetch is something that  could happen at any
+> time. If you have v8.2 you can make the severity uncontainable for extra points.
+>
+> On real hardware, this would be as if this instruction missed in the i-cache, then got an
+> abort from the PoU-cache. The PoU-cache must have suffered some metadata corruption to
+> report an uncontained error. On real hardware its very likely the next instruction would
+> suffer the same fate, but linux should put up a good show of trying to panic().
+
+Good idea. It seems to be able to cover all the possible the cases, 
+while we only need to highlight this exception in the user document :)
+
+Thanks,
+
+Heyi
+
+>
+>
+>> The long and the short of it is that there is no way to do what you want
+>> with absolute guarantees on the ARM architecture. It just doesn't exist.
+> Yes. By sort-of-alive it needs to be making some kind of progress. If the CPU is spinning
+> through the vectors (because some joker unmapped them), all bets are off.
+>
+>
+> Thanks,
+>
+> James
+>
+> .
 

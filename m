@@ -1,84 +1,108 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp566958lfp;
-        Fri, 7 Feb 2020 05:18:25 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzsVZSSeWr1ZaOtYH3dZokhbcVK4qQ9NUsoiFqRBhojBFUHPASC8NUaszbTS9K2G3+Q+FL9
-X-Received: by 2002:ac8:1835:: with SMTP id q50mr6998331qtj.210.1581081505753;
-        Fri, 07 Feb 2020 05:18:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581081505; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp585585lfp;
+        Fri, 7 Feb 2020 05:36:57 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxb0MjDIEemrcryhfzh+rnDo7tX3wo72RummnxCBIqPl3OAjLT4QKKbM6NjkZVRl0xlYCin
+X-Received: by 2002:a37:2f07:: with SMTP id v7mr4230458qkh.261.1581082617476;
+        Fri, 07 Feb 2020 05:36:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581082617; cv=none;
         d=google.com; s=arc-20160816;
-        b=n4O+wXUS81AG6uP1NzsELkEsI+hSi+W6l3GHHubfEqAyFgR2tPwaRWIjf6KRNFWD/n
-         pPLt/l+6M2n816hhucOFhgFo9wtwFi5EvZu9rPkPKUNvOLb8UDLhOaTsswKnSiBOFMa/
-         3oEwNKFrxtpccVEGaHgqdUuZh/E4ZIFOPHlR4FH7PfEvN1ZMtBKigJiNKZVxbpJQBIJ0
-         e6fGTX821Mo75XV3+/lFLdpnzUWHgk8W4/MpfqnRQAFatzGzwJ1AfIqG7L56x7vbChhO
-         yrvXW70tzZe68zPBRHq1W2Xqjehin+8EYbcwTBP9Qqonb2vefW4kJUwT+DXurcTwnmdf
-         zfVA==
+        b=lCrClbrfqCbsQUdIqw0xtN8y3AwgThPOv97J9nLa8aL5EhF5x5l6G0KGGBpbGbEQlH
+         45PYfgjx0KQt+tX7xgMaCq4gGuRZT4LpZ/HuwWE/77HdcGYwRZjqJM0WqROu5BMGkUiH
+         9y/a2LjvlO5Vo56lOSOfpdpZLNoIMsTY2GAGG7r6O19AhvgbHogfU4CEnnN0s4aF2Zyr
+         I3rYbZG22j7lh0bIFYc82LQfLM1MbRvyTnAHhNjWFNiOAHp7g9KCigf/1qnNpo5M+aO7
+         eqslXhd/eVJXhViIUwpIAn2jf3xfvGrAXUFq1ciexOIz3cam0UnB6AjBPZDXAsI3J6ta
+         SNLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=ZmZW+dAeMW8YQzGob0AORwEoPAH3C1vm/LAmWkBsM7M=;
-        b=IPyOKF4uXBWxA4W5FV51KlTyu6IOBDQs0Cxk6m0dJXSGqF0RgBbPySwUZO+3yDKQ+u
-         EG1v58rX8UK36KB/oC4nX0GAaepLq5mFAXqSfio5+l3/0Fh6Io/PY/sxERdzAx6iNdEM
-         ylsvZdBXOLQDbKbfngTNm73ijmwf1s0Zx9A6aBV9nqJvmncPJQxrAgcRx48rm/33vfcU
-         e0abz9fhEmIJ5SM0enfdGK8/QsMJCQ/5qrICus1agSdIF6hP95qyz2ndR1dZmi8AQi6g
-         4trxkvfH+l6ngNSLqwQLUbVbnpmUD9jDB3RXf2JvXGwPXAXMytXinAnrWWoWAJTB8CNo
-         BKtQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=r78P+OeZ8mXzhWTNlUJukDEI2NiuxbJT3nuVnClgWVw=;
+        b=dHT07dFWoxNRymOEMYmE8xd+dHdwl+Hsxh4alf0VW615wA5cFTcfnH672RQrW2X23B
+         ra7/M/U8oXNjvO1tOb41Viqlq6Wmt0lUXlQC4hFBWRPuvG2SvYHi3QA5nVcQdi3qZ/4/
+         hAnNG8p2w5ilbIFmZlzHnY74gZUZFDOoHkrw62EwP+/haaDFNpF1vbfYnlVgITV+0gql
+         tFtqdVwFxSAIR6EaUB74fhhj7qEYu9uDsgLVCiAnlUckD7aeVx3LaCTFSIIOYpzNDD0B
+         HrA0fnbzZO/oOFn1AHNLvu0aWRW74Hp/dcr0UC09mKNiMUPiJNhCzDYGR7ZSa+lvpNg+
+         9XKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iT44yD8r;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k19si1347871qtj.64.2020.02.07.05.18.25
+        by mx.google.com with ESMTPS id d5si1347214qtq.370.2020.02.07.05.36.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Feb 2020 05:18:25 -0800 (PST)
+        Fri, 07 Feb 2020 05:36:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56298 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iT44yD8r;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56476 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j03Wb-00035W-4X
-	for alex.bennee@linaro.org; Fri, 07 Feb 2020 08:18:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57490)
+	id 1j03oW-0003g0-TD
+	for alex.bennee@linaro.org; Fri, 07 Feb 2020 08:36:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33895)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1j03WS-00035I-UI
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 08:18:18 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1j03oJ-0003df-RH
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 08:36:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1j03WR-0001HH-Mu
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 08:18:16 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:38246 helo=huawei.com)
+ (envelope-from <eric.auger@redhat.com>) id 1j03oI-0000vZ-F1
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 08:36:43 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:42852
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1j03WR-0001Au-A0; Fri, 07 Feb 2020 08:18:15 -0500
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 3B0F73F34A8B2E1395DD;
- Fri,  7 Feb 2020 21:18:07 +0800 (CST)
-Received: from [127.0.0.1] (10.173.221.228) by DGGEMS401-HUB.china.huawei.com
- (10.3.19.201) with Microsoft SMTP Server id 14.3.439.0;
- Fri, 7 Feb 2020 21:17:58 +0800
-Subject: Re: [RFC v2 00/14] Add SDEI support for arm64
-To: Marc Zyngier <maz@kernel.org>
-References: <20191105091056.9541-1-guoheyi@huawei.com>
- <CAFEAcA-+tAbb9h2wZOm56TqUvjQJT0OYFLwTVS-UxKrF5PO3mQ@mail.gmail.com>
- <5aece614-4341-35e5-53a6-2f3d788e6e8d@huawei.com>
- <e8b93460-48e6-43cd-4608-370c07cb45ec@huawei.com>
- <350aa4ca1b57a466ed882236caf23051@kernel.org>
- <c67c1563-045f-a5f8-8b8b-97d792aa1912@huawei.com>
- <f8394aafb2adb513186cd2784a1cb077@kernel.org>
-From: Heyi Guo <guoheyi@huawei.com>
-Message-ID: <659a85d2-07e0-ad33-a2c0-99f21fc24ef8@huawei.com>
-Date: Fri, 7 Feb 2020 21:17:56 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1j03oI-0000sh-97
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 08:36:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581082598;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=r78P+OeZ8mXzhWTNlUJukDEI2NiuxbJT3nuVnClgWVw=;
+ b=iT44yD8r9kAC82vhP1QoARH5s93Cra15yqmYHduWXz50oSeuDbsMDPUHxwKBoyGykJC4Qv
+ C1UO9NVpGEcUZpesW8MnpxyT0pXFCr12xmMKK4jcXP+717Ogv6wcGrBwzke+alhQhNh7VT
+ +NDXWEGK1Bfw3+Dl7zOj1GnDxBlnjqA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-97-XXoDksGIOoqYsLqsDsWuiw-1; Fri, 07 Feb 2020 08:36:34 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2B4CBDB65;
+ Fri,  7 Feb 2020 13:36:33 +0000 (UTC)
+Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1881D60BEC;
+ Fri,  7 Feb 2020 13:36:22 +0000 (UTC)
+Subject: Re: [PATCH v14 08/11] virtio-iommu-pci: Introduce the x-dt-binding
+ option
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+References: <20200207093203.3788-1-eric.auger@redhat.com>
+ <20200207093203.3788-9-eric.auger@redhat.com>
+ <20200207052214-mutt-send-email-mst@kernel.org>
+ <25d39300-46b9-571c-6fa6-44c5f8d0be99@redhat.com>
+ <20200207111538.GB1999431@myrica>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <ee50af9c-398d-6fdf-d012-cf3430a78580@redhat.com>
+Date: Fri, 7 Feb 2020 14:36:20 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <f8394aafb2adb513186cd2784a1cb077@kernel.org>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-X-Originating-IP: [10.173.221.228]
-X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20200207111538.GB1999431@myrica>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: XXoDksGIOoqYsLqsDsWuiw-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.32
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,106 +114,152 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Peter Maydell <peter.maydell@linaro.org>, Gavin Shan <gshan@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, James
- Morse <james.morse@arm.com>, Paolo Bonzini <pbonzini@redhat.com>,
- wanghaibin.wang@huawei.com, Dave Martin <Dave.Martin@arm.com>
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
+ "Michael S. Tsirkin" <mst@redhat.com>, quintela@redhat.com,
+ dgilbert@redhat.com, peterx@redhat.com, qemu-devel@nongnu.org,
+ bharatb.linux@gmail.com, qemu-arm@nongnu.org, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Lg1bhQvsKlb5
+X-TUID: emD0udmehcOT
 
+Hi Jean,
 
-On 2020/2/7 1:30, Marc Zyngier wrote:
-> On 2020-02-06 01:20, Heyi Guo wrote:
->> Hi Marc,
+On 2/7/20 12:15 PM, Jean-Philippe Brucker wrote:
+> On Fri, Feb 07, 2020 at 11:51:55AM +0100, Auger Eric wrote:
+>> Hi,
 >>
->> On 2020/2/5 21:15, Marc Zyngier wrote:
->>> Hi Heyi,
+>> On 2/7/20 11:23 AM, Michael S. Tsirkin wrote:
+>>> On Fri, Feb 07, 2020 at 10:32:00AM +0100, Eric Auger wrote:
+>>>> At the moment, the kernel only supports device tree
+>>>> integration of the virtio-iommu. DT bindings between the
+>>>> PCI root complex and the IOMMU must be created by the machine
+>>>> in conformance to:
+>>>>
+>>>> Documentation/devicetree/bindings/virtio/iommu.txt.
+>>>>
+>>>> To make sure the end-user is aware of this, force him to use the
+>>>> temporary device option "x-dt-binding" and also double check the
+>>>> machine has a hotplug handler for the virtio-iommu-pci device.
+>>>> This hotplug handler is in charge of creating those DT bindings.
+>>>>
+>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>> Suggested-by: Michael S. Tsirkin <mst@redhat.com>
 >>>
->>> On 2020-02-04 08:26, Heyi Guo wrote:
->>>> Update Marc's email address.
->>>>
->>>> +cc Gavin as he is posting a RFC for ARM NMI.
->>>>
->>>> Hi Marc,
->>>>
->>>> Really sorry for missing to update your email address, for the initi=
-al
->>>> topic was raised long time ago and I forgot to update the Cc list in
->>>> the commit message of the patches.
->>>>
->>>> Thanks Gavin for forwarding current discussion on ARM NMI to me.
->>>>
->>>> For you said SDEI is "horrible", does it mean we'd better never
->>>> implement SDEI in virtual world? Or do you have any advice on how to
->>>> implement it?
->>>
->>> My concern is that SDEI implies having EL3. EL3 not being virtualizab=
-le
->>> with KVM, you end-up baking SDEI in *hardware*. Of course, this=20
->>> hardware
->>> is actually software (it is QEMU), but this isn't the way it was=20
->>> intended.
+>>> how about setting it by default from machine class?
+>> Do you mean in ARM virt machine class? But this wouldn't prevent a user
+>> from launching an ACPI booted guest. I thought you wanted the end-user
+>> to know what he does.
+>>
+>> I don't figure out a way to know if the guest is booted in dt or acpi
+>> mode. I can get access to those info:
+>> - whether acpi is enabled
+> 
+> That's the default on virt machine right?
+I think that's the default for qemu. you can siwtch it off on the cmd
+line using "-no-acpi"
+
+
+  Then if there is a FW it can
+> choose either ACPI or DT?
+yes that's why I can't actually know which one is going to be used.
+> 
+>> - whether a FW is loaded
+In case there is no FW I am sure this is dt mode. So I would be inclined
+to only support that mode atm.
+>>
+>> But a FW can be loaded, acpi enabled and eventually the guest is DT
+>> booted with acpi=off in kernel opts.
+>>
+>> Maybe at this point I could only support the case where no FW is loaded.
+>> In machvirt I would not register the virtio-iommu-pci hotplug handler in
+>> case a FW is loaded. Then I could get rid of the new x-dt-binding prop.
+>>
+>> Thoughts?
+> 
+> Yes, I'm hoping we can get the topology description into next version of
+> Linux, and it would be nicer not to introduce backward-compatible baggage
+> for something that should be solved within a few month
+
+I agree. So I am inclined to remove the x-dt-binding prop then I just
+expose allow the virtio-iommu-pci to be instantiated if no FW is loaded.
+The constraint will be removed when we get topology description support
+in kernel.
+
+Thanks
+
+Eric
+If we have to
+> warn the user then checking the FW seems like a good compromise, and easy
+> to remove later.
+> 
+> Thanks,
+> Jean
+> 
+>>
+>> Eric
+>>> See
+>>> [PATCH 1/2] spapr: Disable legacy virtio devices for pseries-5.0 and later
+>>> [PATCH 2/2] spapr: Enable virtio iommu_platform=on by default
+>>> which does it for spapr.
 >>
 >>>
->>> It's not the first time we've done that (PSCI is another example),=20
->>> but the
->>> logic behind SDEI looks much more invasive.
+>>>> ---
+>>>>
+>>>> May be squashed with previous patch
+>>>> ---
+>>>>  hw/virtio/virtio-iommu-pci.c | 18 ++++++++++++++++++
+>>>>  1 file changed, 18 insertions(+)
+>>>>
+>>>> diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
+>>>> index d539fcce75..3d06e14000 100644
+>>>> --- a/hw/virtio/virtio-iommu-pci.c
+>>>> +++ b/hw/virtio/virtio-iommu-pci.c
+>>>> @@ -14,6 +14,7 @@
+>>>>  #include "virtio-pci.h"
+>>>>  #include "hw/virtio/virtio-iommu.h"
+>>>>  #include "hw/qdev-properties.h"
+>>>> +#include "qapi/error.h"
+>>>>  
+>>>>  typedef struct VirtIOIOMMUPCI VirtIOIOMMUPCI;
+>>>>  
+>>>> @@ -27,10 +28,12 @@ typedef struct VirtIOIOMMUPCI VirtIOIOMMUPCI;
+>>>>  struct VirtIOIOMMUPCI {
+>>>>      VirtIOPCIProxy parent_obj;
+>>>>      VirtIOIOMMU vdev;
+>>>> +    bool dt_binding;
+>>>>  };
+>>>>  
+>>>>  static Property virtio_iommu_pci_properties[] = {
+>>>>      DEFINE_PROP_UINT32("class", VirtIOPCIProxy, class_code, 0),
+>>>> +    DEFINE_PROP_BOOL("x-dt-binding", VirtIOIOMMUPCI, dt_binding, false),
+>>>>      DEFINE_PROP_END_OF_LIST(),
+>>>>  };
+>>>>  
+>>>> @@ -39,6 +42,21 @@ static void virtio_iommu_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
+>>>>      VirtIOIOMMUPCI *dev = VIRTIO_IOMMU_PCI(vpci_dev);
+>>>>      DeviceState *vdev = DEVICE(&dev->vdev);
+>>>>  
+>>>> +    if (!dev->dt_binding) {
+>>>> +        error_setg(errp,
+>>>> +                   "Instantiation currently only is possible if the machine "
+>>>> +                   "creates device tree iommu-map bindings, ie. ACPI is not "
+>>>> +                   "yet supported");
+>>>> +        error_append_hint(errp, "use -virtio-iommu-pci,x-dt-binding\n");
+>>>> +        return;
+>>>> +    }
+>>>> +
+>>>> +    if (!qdev_get_machine_hotplug_handler(DEVICE(vpci_dev))) {
+>>>> +        error_setg(errp,
+>>>> +                   "The machine does not implement a virtio-iommu-pci hotplug "
+>>>> +                   " handler that creates the device tree iommu-map bindings");
+>>>> +       return;
+>>>> +    }
+>>>>      qdev_set_parent_bus(vdev, BUS(&vpci_dev->bus));
+>>>>      object_property_set_link(OBJECT(dev),
+>>>>                               OBJECT(pci_get_bus(&vpci_dev->pci_dev)),
+>>>> -- 
+>>>> 2.20.1
+>>>
 >>
->> Thanks for your comments.
->>
->> Thinking about them for quite a while, below is my understanding,
->> please correct me if I'm wrong:
->>
->> So should the KVM based virtual machine be treated as one with CPUs
->> only having NS-EL1 and NS-EL0, ideally? And SDEI messes up this model,
->> isn't it?
->
-> Well, that's exactly what it is (until we have nested virt, in which ca=
-se
-> you will be able to add NS-EL2 to the mix).
->
->> PSCI only contains some one-shot operations, so it is much less
->> invasive than SDEI.
->>
->>
->> I've another question. The origin of "virtual" SDEI requirement comes
->> from the lack of hard lockup detector in VM.
->
-> Sure. But nothing guarantees that the guest is going to register a SDEI
-> entry point anyway.
->
->> We can have some kind of
->> watchdog, but how can the watchdog trigger the VM OS to panic and run
->> kdump, even in irq-off state?
->
-> Nothing. All the events, including SDEI, are maskable, one way or=20
-> another.
-
-Indeed...
-
->
-> Gavin's approach to inject a SError is probably OK for Linux, given tha=
-t
-> it tends to run with PSTATE.A=3D=3D0. But that's not a guarantee either=
- (if
-> you take a recursive exception, SError won't be delivered).
->
-> The long and the short of it is that there is no way to do what you wan=
-t
-> with absolute guarantees on the ARM architecture. It just doesn't exist=
-.
-
-Much appreciate your explanation and advice.
-
-Thanks,
-
-Heyi
-
->
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 M.
+> 
 

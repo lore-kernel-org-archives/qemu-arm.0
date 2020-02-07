@@ -1,184 +1,172 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp632236lfp;
-        Fri, 7 Feb 2020 06:21:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyKpRinHj9hc9/cRJXCr5crEtYWC45KVTIcq/agPAKPzVZyHRG3rGGWF8UGTHbNlI+cTu+p
-X-Received: by 2002:ac8:1184:: with SMTP id d4mr7632014qtj.104.1581085315590;
-        Fri, 07 Feb 2020 06:21:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581085315; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp642317lfp;
+        Fri, 7 Feb 2020 06:31:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz5uM05mLZGp8FIcowbWDdgsgSuUiqtK3oMZHDGWedWUbdsIMNUZkV9JEM5OlOZPmG4Y8EY
+X-Received: by 2002:a05:620a:13ca:: with SMTP id g10mr6379989qkl.313.1581085896280;
+        Fri, 07 Feb 2020 06:31:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581085896; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gi/wbANHCBF2Q5pkssk1IHRNqNxhv3evurQ47/MJNg/vLplk0f0SVP26DnSHZtYgWA
-         D1NtO+m0KZQeW5i2ykWqpoKcmyxvipYmPyFAYtOd5MqxZtH+NXN42wgoRfehrYPXqIHm
-         4Lu1tVZmv/nycazDkg5xUlojGIqESnT2F2XIsYsuOxjHHajDi+OnpXp8kmhFnkj+2cZN
-         B9KfwiWVrJ3FGIcW0ieIxAcqGDhFRCRDXh/mMeEHXuz28YMOeqPcT+N5ZJscBVFbL07l
-         KqDlaYVBAG60soCnnYSd+yFcsnUjz2ZtbFYiz7wn2Gkb5wvT7bmUdVjj2S7rni7SOY8n
-         hVRg==
+        b=MTgirWhbIDkC2euJgEl6/+EAUYSLptPBaKTYVdYSkzvl98BQvx/kx73MoAGGkg2rhu
+         vW9ve0U3btPDg1KzyJFTHu6kvRG2lrBiLfAoetUqKNh08H/LG/qlpUfbyZ2BiAjZEE1H
+         u5UgmgJcSdOa430+dt3Yg1U04Z9OP81t67pTrL3X0OWMR7yC9/hmO5xbyT4P+tU3jzG0
+         fU3tnCR7+jUOAtMEyNtjieQnpLFdf2A7y24rkqZ0gEU/NZyPab+9P777KVwVVv8kPTDr
+         kSWXLXLkvUBwvbcd1U46NFP9zyA9xw4msFlSmhql/E75ZZeKueW95DfkKigLSs8U/87I
+         WLow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=MXTE7+VG/fuavlzhWWW8cwSsMcmiVYN8chLv/BbuYRQ=;
-        b=FGJ7qDv/0hC52MsFQmxua8v8NosiPn4uNgY1tpOhShZsbY8WOBJbvb8JbsoqKPgF/3
-         RgbMkfwVrAq3GfdU5JwmrIjkBDwx5enXNGNI/s6wPvu6RtrU8fl1xqz9pMlQ0w7OE26n
-         20JUu73czY6Q5iEFKp8y+R3/QwfJnDvWHhs9+q4HJMnt9tVfWvb/QO/FAeDXrJ46fHn+
-         ZjMNvud1LM8/7UnapzuU8k7wmCKEwvLtT4KdHY0TC8SHndMGuJjDfmI0qcVdWm2C4R/W
-         LgrhsQ/GDz0mMOOvNXJHR7fNUcuR25XF7BOCgcJ6+pMKElpXihYH1xCdLpBdULaueonM
-         gIxw==
+         :message-id:from:references:to:subject;
+        bh=IovgtA238ERKNqoRoODXoAHsRlXAonbLaJ/8rq58plk=;
+        b=KIHiWIwgrWPi5yuVrN2qOrfyD4pWL3ARNcK9G64RYEMIhouZFcZkAL7HZFDe0xtmlR
+         5AJtvSJOS8FBYQEmsKgI+UeP0lEBal3Q3iA5YBxmrqY5N5Z+vkQbxPtJHGVWOjhazMH1
+         fX8RJFyq/eOYbZbnaW7ZgXKWnZyBdoaxKCGfDdOU+AWiQDdvXPZlZbS5R1Lw8N3LKVtR
+         YbqJfHh2Bg+B7qRWmiJNey/u+tjcJxsqQP5V3gmyQ7Y++h+wAbTaYvA9T7on621EV5cO
+         MYvM6u1MtY9VnZAZEaj8tnEE2j05El+lRQzqEu7ofnN8clV9Cx/jDUFRhQ1xLtQnMlZk
+         Bi+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kkFd2gkK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j3si1324673qki.321.2020.02.07.06.21.54
+        by mx.google.com with ESMTPS id o2si1317201qki.77.2020.02.07.06.31.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Feb 2020 06:21:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 07 Feb 2020 06:31:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kkFd2gkK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57276 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57466 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j04W2-0000Zv-KJ
-	for alex.bennee@linaro.org; Fri, 07 Feb 2020 09:21:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48710)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j04fP-0004BM-NO
+	for alex.bennee@linaro.org; Fri, 07 Feb 2020 09:31:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50571)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1j04Vr-0000V9-8h
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 09:21:44 -0500
+ (envelope-from <clg@kaod.org>) id 1j04ee-00047c-Jq
+ for qemu-devel@nongnu.org; Fri, 07 Feb 2020 09:30:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1j04Vq-0005Z5-0B
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 09:21:43 -0500
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:35328)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1j04Vn-0005Ws-63; Fri, 07 Feb 2020 09:21:39 -0500
-Received: by mail-pf1-x442.google.com with SMTP id y73so1373599pfg.2;
- Fri, 07 Feb 2020 06:21:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=MXTE7+VG/fuavlzhWWW8cwSsMcmiVYN8chLv/BbuYRQ=;
- b=kkFd2gkKjMscBWiifoMvICLDUUe0b+TXzqK+vYbSmMVeVdAd7WQ3ZOfVDQ+aRJUN/v
- NA80XNatBQay2t+1im7LqUcoVG+di1lnczx2reer3aNmTDzEvQ7GJQHwHa3hj3GF0Zrg
- OyYRvWtgFmRiMIKOc4pnzYa+vSXF6Q17ZCzuX+6RPkMqWP/69WmkRPMbycNKiC06baau
- NvvFLr5GBP3p7Tz1Q6ttKO6MXCZDunTnKi/OH152+Vv3hnyBiieioanNaQdqPr5Xk5+x
- iWBxhAeAzxQhBc2sVeLC+X0LAl0rEO67DCY2zHZxUAOUuiQuRBvykAUhzH434NNckwgx
- MDIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=MXTE7+VG/fuavlzhWWW8cwSsMcmiVYN8chLv/BbuYRQ=;
- b=bLBotZrVNG6/XpcdFDIkeK/v92glaQI210lDuVMhoH2uScDlZUtCecc8L4kuzihCMA
- ZxMb8Mya6US9F/vroa1/QeQ+hfF0hRxCXL9KTCYxASPiwAFyn2jwzmypLdck00GK56en
- cgToOBY3R0QU/xUNSYrLROu+sQBofs2PkDH9vw8rDt9VPTgBAJDIBKLYnvNcfWQ+kqMx
- nw5zaYdvi/yhDlKlQ8J4LJg/TIV90iszrWV4LR+cYRIthT3cgy1rfhXvJpvPPvlxwDmf
- Xh8O0/hO0rHu2cbg3r3FMq/2C5kN6dfqJGyTAOoO/866GDudMyAbqsREVdehnGKyuk1H
- jnZw==
-X-Gm-Message-State: APjAAAXUy1/RVEJmb0NEHzoDz+1FWhH5ABfpHQhzM5KnwVXjdTxEwtfy
- beKcWhP0GGYT7Qolr1lh0M8SBEWd
-X-Received: by 2002:a63:a541:: with SMTP id r1mr9753236pgu.118.1581085294415; 
- Fri, 07 Feb 2020 06:21:34 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- e19sm3174475pgn.86.2020.02.07.06.21.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 07 Feb 2020 06:21:33 -0800 (PST)
+ (envelope-from <clg@kaod.org>) id 1j04ed-00006b-1U
+ for qemu-devel@nongnu.org; Fri, 07 Feb 2020 09:30:48 -0500
+Received: from 3.mo177.mail-out.ovh.net ([46.105.36.172]:59354)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1j04ec-0008Vu-RZ
+ for qemu-devel@nongnu.org; Fri, 07 Feb 2020 09:30:46 -0500
+Received: from player789.ha.ovh.net (unknown [10.110.103.168])
+ by mo177.mail-out.ovh.net (Postfix) with ESMTP id 9DA9D1223F2
+ for <qemu-devel@nongnu.org>; Fri,  7 Feb 2020 15:30:44 +0100 (CET)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player789.ha.ovh.net (Postfix) with ESMTPSA id 81C40F282A61;
+ Fri,  7 Feb 2020 14:30:35 +0000 (UTC)
 Subject: Re: [PATCH] hw/arm: ast2400/ast2500: Wire up EHCI controllers
-To: Joel Stanley <joel@jms.id.au>
+To: Guenter Roeck <linux@roeck-us.net>, Joel Stanley <joel@jms.id.au>
 References: <20200206183437.3979-1-linux@roeck-us.net>
  <e9f490fe-34d3-6830-832c-155f6fa63482@kaod.org>
  <1605922b-2aa0-dd8e-720a-031e74bc9872@roeck-us.net>
  <CACPK8XdADQwGnsX=YR0n_zm_WMv532bAmR3O-CfyJ23ytT9bpA@mail.gmail.com>
-From: Guenter Roeck <linux@roeck-us.net>
-Message-ID: <ebcfceea-2f70-7e88-0996-b072ec81f59e@roeck-us.net>
-Date: Fri, 7 Feb 2020 06:21:31 -0800
+ <ebcfceea-2f70-7e88-0996-b072ec81f59e@roeck-us.net>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <c4d751a8-1f7e-4adf-c883-c69112185626@kaod.org>
+Date: Fri, 7 Feb 2020 15:30:34 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <CACPK8XdADQwGnsX=YR0n_zm_WMv532bAmR3O-CfyJ23ytT9bpA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <ebcfceea-2f70-7e88-0996-b072ec81f59e@roeck-us.net>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::442
-X-BeenThere: qemu-arm@nongnu.org
+X-Ovh-Tracer-Id: 8400339208267205440
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrheehgdeiiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuffhomhgrihhnpehkvghrnhgvlhhtvghsthhsrdhorhhgpdhoiihlrggsshdrohhrghenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejkeelrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrgh
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 46.105.36.172
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PxGCDlB7eXBx
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0SbgyBuAO0NI
 
-On 2/7/20 5:09 AM, Joel Stanley wrote:
-> On Fri, 7 Feb 2020 at 12:58, Guenter Roeck <linux@roeck-us.net> wrote:
->>
->> On 2/7/20 12:16 AM, Cédric Le Goater wrote:
->>> On 2/6/20 7:34 PM, Guenter Roeck wrote:
->>>> Initialize EHCI controllers on AST2400 and AST2500 using the existing
->>>> TYPE_PLATFORM_EHCI. After this change, booting ast2500-evb into Linux
->>>> successfully instantiates a USB interface.
+On 2/7/20 3:21 PM, Guenter Roeck wrote:
+> On 2/7/20 5:09 AM, Joel Stanley wrote:
+>> On Fri, 7 Feb 2020 at 12:58, Guenter Roeck <linux@roeck-us.net> wrote:
+>>>
+>>> On 2/7/20 12:16 AM, C=C3=A9dric Le Goater wrote:
+>>>> On 2/6/20 7:34 PM, Guenter Roeck wrote:
+>>>>> Initialize EHCI controllers on AST2400 and AST2500 using the existi=
+ng
+>>>>> TYPE_PLATFORM_EHCI. After this change, booting ast2500-evb into Lin=
+ux
+>>>>> successfully instantiates a USB interface.
+>>>>>
+>>>>> ehci-platform 1e6a3000.usb: EHCI Host Controller
+>>>>> ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus nu=
+mber 1
+>>>>> ehci-platform 1e6a3000.usb: irq 21, io mem 0x1e6a3000
+>>>>> ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
+>>>>> usb usb1: New USB device found, idVendor=3D1d6b, idProduct=3D0002, =
+bcdDevice=3D 5.05
+>>>>> usb usb1: New USB device strings: Mfr=3D3, Product=3D2, SerialNumbe=
+r=3D1
+>>>>> usb usb1: Product: EHCI Host Controller
 >>>>
->>>> ehci-platform 1e6a3000.usb: EHCI Host Controller
->>>> ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number 1
->>>> ehci-platform 1e6a3000.usb: irq 21, io mem 0x1e6a3000
->>>> ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
->>>> usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.05
->>>> usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
->>>> usb usb1: Product: EHCI Host Controller
+>>>> Cool. Have you tried to plug any devices ?
+>>>>
 >>>
->>> Cool. Have you tried to plug any devices ?
->>>
+>>> Yes, booting from USB drive works just fine. I already added it to my
+>>> test suite at kerneltests.org.
 >>
->> Yes, booting from USB drive works just fine. I already added it to my
->> test suite at kerneltests.org.
-> 
-> Nice!
-> 
-> Reviewed-by: Joel Stanley <joel@jms.id.au>
-> 
->>> This looks good. Could you add the AST2600 also ?
->>>
+>> Nice!
 >>
->> I thought about that, but how would I test it ? None of the ast2600
->> systems in the Linux kernel enables it. The devicetree include file for
->> ast2600 doesn't even have an entry for it. I could cook something up,
->> but that would not reflect real hardware.
-> 
-> FYI, there are patches on the linux-aspeed list to enable USB:
-> 
->   https://patchwork.ozlabs.org/project/linux-aspeed/list/?series=156260
-> 
-> They have not yet been merged into the kernel, but I will merge the
-> device tree changes once -rc1 is out.
-> 
+>> Reviewed-by: Joel Stanley <joel@jms.id.au>
+>>
+>>>> This looks good. Could you add the AST2600 also ?
+>>>>
+>>>
+>>> I thought about that, but how would I test it ? None of the ast2600
+>>> systems in the Linux kernel enables it. The devicetree include file f=
+or
+>>> ast2600 doesn't even have an entry for it. I could cook something up,
+>>> but that would not reflect real hardware.
+>>
+>> FYI, there are patches on the linux-aspeed list to enable USB:
+>>
+>> =C2=A0 https://patchwork.ozlabs.org/project/linux-aspeed/list/?series=3D=
+156260
+>>
+>> They have not yet been merged into the kernel, but I will merge the
+>> device tree changes once -rc1 is out.
+>>
+>=20
+> Excellent. With the above series, and after enabling ehci1 for ast2600-=
+evb
+> and adding the necessary code to qemu, I get
+>=20
+> ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+> ehci-platform: EHCI generic platform driver
+> ehci-platform 1e6a3000.usb: EHCI Host Controller
+> ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number=
+ 1
+> ehci-platform 1e6a3000.usb: irq 25, io mem 0x1e6a3000
+> ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
+> usb usb1: Manufacturer: Linux 5.5.0-09825-ga0802f2d0ef5-dirty ehci_hcd
+>=20
+> and I can mount a USB drive. Is that good enough for a follow-up patch,
+> or should I wait until the code finds its way into the Linux kernel ?
 
-Excellent. With the above series, and after enabling ehci1 for ast2600-evb
-and adding the necessary code to qemu, I get
-
-ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
-ehci-platform: EHCI generic platform driver
-ehci-platform 1e6a3000.usb: EHCI Host Controller
-ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number 1
-ehci-platform 1e6a3000.usb: irq 25, io mem 0x1e6a3000
-ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
-usb usb1: Manufacturer: Linux 5.5.0-09825-ga0802f2d0ef5-dirty ehci_hcd
-
-and I can mount a USB drive. Is that good enough for a follow-up patch,
-or should I wait until the code finds its way into the Linux kernel ?
+I don't think we need to wait for Linux to be ready to add support in QEM=
+U.
 
 Thanks,
-Guenter
+C.=20
+=20

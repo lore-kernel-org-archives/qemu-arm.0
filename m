@@ -1,371 +1,235 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1039677lfp;
-        Fri, 7 Feb 2020 13:26:18 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwuFOW8nKv6OqZD934VGKwgO+VEOTdgCgjIJYEjZa8iqaQYXPb/Fq6GvDsJ14z524P5gn/I
-X-Received: by 2002:a05:620a:911:: with SMTP id v17mr950843qkv.94.1581110778541;
-        Fri, 07 Feb 2020 13:26:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581110778; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1047013lfp;
+        Fri, 7 Feb 2020 13:34:58 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz3ppv63uoXnexfZsT4l0O/m++RIutRiOnMHFBwlS+2Aq0x75v5XMieObf2srYkB0w65W71
+X-Received: by 2002:a37:b95:: with SMTP id 143mr900941qkl.399.1581111298836;
+        Fri, 07 Feb 2020 13:34:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581111298; cv=none;
         d=google.com; s=arc-20160816;
-        b=oiBSlAZWuJdK73HfK+sVyCHyG3og3Ve7i0eRZuxJip681wkZ1SJrV2cpksN23XX2OH
-         i+gE1Imlf9IJimFEeGvX+lvW3gx1UHNQz7IYzAyi/yt4UW3C0IZ+5R5Jj3K9OAXeGE4B
-         Q7l15lbDZnxrBGJ61u2VXMShY1KuYyF5sAd4+oCjznq48fN2sQHKPFIloSklD2ZpTNo8
-         ktO+PJMv+Pirl749UMLS4SYPTOa4KGNtaZHv6nEj/vIf2kPAYUt5o1f4A2B3Nt/HMsne
-         ntZSnKM3pmQswXfYizpJ2o+5W9rY8kkS8feDlfuC1z2fCF3QaYSgVXy27Biexq8LNX8F
-         2Jww==
+        b=fMtMV89Bq6D4WWZJsjXTJoxE1uy7gKfBoWJBbR0kfG8JXeo0GG1sa3/xb4dA0Kd5YN
+         ahglPm3zDrAgPnV+46c8NsQCrDyUS1u3PK6vRk/sYve3OWPQjQ/Tb3BefEKwcMF07ypj
+         cJb2zE3aXco+3WXWxInryMCCAMIA2jacr5t09+HlmCqzfYDHSzelzDrmZ6ew3aEeDOqk
+         tg/O6uIdPLleReywYAhRssEsud54PFa/AeqLZnnW6tRszBMY7Gu9paiCo9Oe6wqeSWib
+         3n8WCgXUs4BpA58J95Z8B3rOXeDrhS1OZuOcdzirBtdUQcXCr6M9zfcDcf0ByoQcpHS/
+         QULw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=A8lKmCY6SFqSVVWqSP6h8fkZEJPKv4/jszApgkOiKCQ=;
-        b=pv+uu/OR5di3Hpyzsw/RO7mFuBw1+6BRVKVYwZGZ9GQoPevZQBJrZxIG42ohV/fyyj
-         s883lOQOXBRpRsDs4iWZA9GvnTOAWNTuzdHXFt864Jq+bQvnUGpLi/gjVbvsUoFSRBIY
-         FMc/v5jfF7R5G9fbTEY1K48xH3J/Dg6V/bJ5+JvISu8RE/dPXa9febLG14UqSOOuoORH
-         VC3QBEg2GlacTMW7wroYSRQRiLN8Ziig2Y1+uETdJ3aEIxWzg+1m2vYaxMwtajNZ7Wlj
-         5tg4UCncAJS/CPonOCpN1IwzIHqWCYP5Vgrmlde5sTlAYyqaiOhQp02waEVRh80XD2t7
-         +vzg==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=cfiWotLrnhcLi8XjkCaC6PtuyFcuR2G9W7x60jGeq2w=;
+        b=E/u8+81V0U9NTAmVR5HXzN3siaV91SUc6DDpuxKmFPS2LcrPad7x0PAzcpzh4GW1Es
+         sicA1t/Wt/EWi7a0QNNW06V9W8eCo7MpgVULIlImDMXnHNCW54mkOpuE1cfq4Toezpkd
+         NhULp7QQdkyXsw3PHdSq8xKtnTvTmQo0GFUQseVVPSuVaeElmILxq23k2kRUCaR331Tk
+         AdMJDsN3b3DwRfLbV7eIMhwJjsakQShYilIG0Y5jro20dB2CXy+DorUw4zaMimbNMQZi
+         TpmgTNhg92/m3/t6bX6r2KdwU4QEm/ZjYZY6GlYbbWvNbzlSLg/7z6ZXjQrgkinHrZMs
+         9BAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SU3J4FW4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AqDNi+V2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g5si357660qvu.74.2020.02.07.13.26.18
+        by mx.google.com with ESMTPS id x10si473298qth.16.2020.02.07.13.34.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Feb 2020 13:26:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 07 Feb 2020 13:34:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SU3J4FW4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35374 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AqDNi+V2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35498 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j0B8j-0001pi-W8
-	for alex.bennee@linaro.org; Fri, 07 Feb 2020 16:26:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40221)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j0BH8-0002E8-8a
+	for alex.bennee@linaro.org; Fri, 07 Feb 2020 16:34:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42473)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1j0B7k-00088D-IH
- for qemu-devel@nongnu.org; Fri, 07 Feb 2020 16:25:19 -0500
+ (envelope-from <groeck7@gmail.com>) id 1j0BGc-0001bW-H3
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 16:34:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1j0B7i-00072E-JW
- for qemu-devel@nongnu.org; Fri, 07 Feb 2020 16:25:16 -0500
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:40364)
+ (envelope-from <groeck7@gmail.com>) id 1j0BGb-0008Vg-9P
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 16:34:26 -0500
+Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:50807)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1j0B7i-0006tM-CZ; Fri, 07 Feb 2020 16:25:14 -0500
-Received: by mail-il1-x143.google.com with SMTP id i7so777757ilr.7;
- Fri, 07 Feb 2020 13:25:13 -0800 (PST)
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1j0BGY-0008Ql-GE; Fri, 07 Feb 2020 16:34:22 -0500
+Received: by mail-pj1-x1044.google.com with SMTP id r67so1464384pjb.0;
+ Fri, 07 Feb 2020 13:34:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=A8lKmCY6SFqSVVWqSP6h8fkZEJPKv4/jszApgkOiKCQ=;
- b=SU3J4FW4Dt7j2oi6lt9v3aRx6gyHM1TFY6E6xJ7N3FPdDIHlvHljHg9HNtqNRiNIhb
- yEYAg6jn2kvmSJb6bPXBwZ4VizInlwKlk61oafFe3YyjHGc+ZxmM1wG2P5pRdq/pMO+R
- N3Mm9xnlKUc2a8a7AN1Gmool4m1BiHkAQSJa/j6b6+7km2jfsePW8m9iJDt4oHMzOvvo
- +C3OHZJZZwtRfkrDgGN3YuUo4/t3IrVSJpXBejpYBiZjtHkckaUOjN9LN3Y3MDod60vd
- Z4XnTlU/DJRr/sj+ASAN8Z3znZs9eMeSwwejJUYMMvZn6S3jndLfsXwvxLFrzNPxh427
- E1SQ==
+ h=sender:date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=cfiWotLrnhcLi8XjkCaC6PtuyFcuR2G9W7x60jGeq2w=;
+ b=AqDNi+V2xGR3DqQtPpg63ww+rPTwk8miRJvmJt20+n6glRsYDmHnD9sQrfP0oZ3GMO
+ FFfVgy/lMD3QaUokHAqV0w+oXKaToxPKXqSssKObKn730dz2Dap9Nfc73nFO4p5deunO
+ sl6oGMnWVSFwAdZrVUeZ9L5ylcLobiN/+Xu2ewc/hxEhaCdbeR8PIGjsrwZ61lXSnlpQ
+ uHQNRSF5uZsG9Qp+sOIuQ3OJjMNhWX+sJqEutUk04OOVo+QA9lx6UPSfjer+LimmYKI6
+ 3YDHETAgIoa8z9omtkd6oZmCuZkpZwdVG1fDujfr2QWY+A511uUIWnZHhXiV15pBafqM
+ iKLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=A8lKmCY6SFqSVVWqSP6h8fkZEJPKv4/jszApgkOiKCQ=;
- b=Oh+hbIc0HeVgXwonNBZ4W56Ur6ssv41vKjoHdppt2Ms846lZKaf5nx+y+Qti+HbfPG
- 7Sn3L5amfO6xPF7AfRghEXMzuWcoIOSs3JXko424rXTqndPmjkddcwe1eMEa9XDP7oly
- 9xcUnmmFPYyvpL6r51PoKX8lusEJ1uWBRsODbs/usJhECibKGjvWPzatrnMaUfsyBH1E
- I+xN2mzSmYBhOb48y2VhoeTUyEEkNt8wIt1oCQbs+mr7IX14BiaZlfwU1bTBT+w8iPFk
- zvVj3k64hWAVfED54mIZ6/OhAHDEpBtdRxNJtSHB4vAb/4AlgsgXZuDzmUuwX9YM2ZSX
- XY0Q==
-X-Gm-Message-State: APjAAAVLyIGRoXVqraHGnnBg9Kp6KADWU/dOmy6C/n2lVH8x2ZdrAo6q
- TX+sOMvlEt8IkDcVN1zPjnitLOy00t/IrobmuYg=
-X-Received: by 2002:a92:d5cf:: with SMTP id d15mr1431259ilq.306.1581110713038; 
- Fri, 07 Feb 2020 13:25:13 -0800 (PST)
-MIME-Version: 1.0
-References: <20200207174548.9087-1-linux@roeck-us.net>
-In-Reply-To: <20200207174548.9087-1-linux@roeck-us.net>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Fri, 7 Feb 2020 22:25:01 +0100
-Message-ID: <CAPan3WqT8gUmpjboD460CVP2imYftMHtRQ+rcmvEiDXnLN+3=A@mail.gmail.com>
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :references:mime-version:content-disposition
+ :content-transfer-encoding:in-reply-to:user-agent;
+ bh=cfiWotLrnhcLi8XjkCaC6PtuyFcuR2G9W7x60jGeq2w=;
+ b=FQP/LBgs8lHaAeM88AeMCnh9jNBXWoVAFv4oSoClUB1YKprzU3VRCmqaooTZsZJZpo
+ FGfDuDuudMa2NfHU1O3JuAGvbAddvH/B1xn7JHdQq9JcUBZav4aOms8yl4z9AUC5QrKL
+ eKfXuR6WM7EmuO4pYprBivb0XIL+Q3POXbNZoWog2wEKf+JKLEuUsHf6EAu8JSsubi53
+ p5/E1/Geop0/t0b0cdrDGXAmL4S3R2vAgoAex/AHak9oI5BGqsSjP/7hP0dxr2Knsgg5
+ m4p5xPF3IHaw/h+3Wa0c9fUBWLxUb0R+VpGkYNA/q3+z9Tk+F1SCIM/urNj/eQJzH3R0
+ sSxA==
+X-Gm-Message-State: APjAAAVegnAm2iGNNuWhWgSkFKDR03wNNzkbL+5t8XiyTIC3jz8fAscl
+ vu8GaeAy+ZWO8pVpMigB8Tg=
+X-Received: by 2002:a17:90a:5d85:: with SMTP id
+ t5mr6153257pji.126.1581111261091; 
+ Fri, 07 Feb 2020 13:34:21 -0800 (PST)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id t15sm4016891pgr.60.2020.02.07.13.34.19
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 07 Feb 2020 13:34:20 -0800 (PST)
+Date: Fri, 7 Feb 2020 13:34:19 -0800
+From: Guenter Roeck <linux@roeck-us.net>
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
 Subject: Re: [PATCH v2] hw/arm: ast2600: Wire up EHCI controllers
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: multipart/alternative; boundary="00000000000066bd72059e03061b"
+Message-ID: <20200207213419.GA7154@roeck-us.net>
+References: <20200207174548.9087-1-linux@roeck-us.net>
+ <CAPan3WqT8gUmpjboD460CVP2imYftMHtRQ+rcmvEiDXnLN+3=A@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAPan3WqT8gUmpjboD460CVP2imYftMHtRQ+rcmvEiDXnLN+3=A@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::143
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::1044
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
  Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xNbFFkDTNOIz
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Sn1WNV37PAcV
 
---00000000000066bd72059e03061b
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Fri, Feb 07, 2020 at 10:25:01PM +0100, Niek Linnenbank wrote:
+> Hi Guenter,
+> 
+> On Fri, Feb 7, 2020 at 6:46 PM Guenter Roeck <linux@roeck-us.net> wrote:
+> 
+> > Initialize EHCI controllers on AST2600 using the existing
+> > TYPE_PLATFORM_EHCI. After this change, booting ast2600-evb
+> > into Linux successfully instantiates a USB interface after
+> > the necessary changes are made to its devicetree files.
+> >
+> > ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+> > ehci-platform: EHCI generic platform driver
+> > ehci-platform 1e6a3000.usb: EHCI Host Controller
+> > ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number 1
+> > ehci-platform 1e6a3000.usb: irq 25, io mem 0x1e6a3000
+> > ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
+> > usb usb1: Manufacturer: Linux 5.5.0-09825-ga0802f2d0ef5-dirty ehci_hcd
+> > usb 1-1: new high-speed USB device number 2 using ehci-platform
+> >
+> > Reviewed-by: Cédric Le Goater <clg@kaod.org>
+> > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> > ---
+> > v2: Rebased to master (to fix context conflict)
+> >     Added Reviewed-by: tag
+> >
+> >  hw/arm/aspeed_ast2600.c | 23 +++++++++++++++++++++++
+> >  1 file changed, 23 insertions(+)
+> >
+> > diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> > index 90cf1c755d..446b44d31c 100644
+> > --- a/hw/arm/aspeed_ast2600.c
+> > +++ b/hw/arm/aspeed_ast2600.c
+> > @@ -31,6 +31,8 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
+> >      [ASPEED_FMC]       = 0x1E620000,
+> >      [ASPEED_SPI1]      = 0x1E630000,
+> >      [ASPEED_SPI2]      = 0x1E641000,
+> > +    [ASPEED_EHCI1]     = 0x1E6A1000,
+> > +    [ASPEED_EHCI2]     = 0x1E6A3000,
+> >      [ASPEED_MII1]      = 0x1E650000,
+> >      [ASPEED_MII2]      = 0x1E650008,
+> >      [ASPEED_MII3]      = 0x1E650010,
+> > @@ -79,6 +81,8 @@ static const int aspeed_soc_ast2600_irqmap[] = {
+> >      [ASPEED_ADC]       = 78,
+> >      [ASPEED_XDMA]      = 6,
+> >      [ASPEED_SDHCI]     = 43,
+> > +    [ASPEED_EHCI1]     = 5,
+> > +    [ASPEED_EHCI2]     = 9,
+> >      [ASPEED_EMMC]      = 15,
+> >      [ASPEED_GPIO]      = 40,
+> >      [ASPEED_GPIO_1_8V] = 11,
+> > @@ -166,6 +170,11 @@ static void aspeed_soc_ast2600_init(Object *obj)
+> >                                sizeof(s->spi[i]), typename);
+> >      }
+> >
+> > +    for (i = 0; i < sc->ehcis_num; i++) {
+> > +        sysbus_init_child_obj(obj, "ehci[*]", OBJECT(&s->ehci[i]),
+> > +                              sizeof(s->ehci[i]), TYPE_PLATFORM_EHCI);
+> > +    }
+> > +
+> >      snprintf(typename, sizeof(typename), "aspeed.sdmc-%s", socname);
+> >      sysbus_init_child_obj(obj, "sdmc", OBJECT(&s->sdmc), sizeof(s->sdmc),
+> >                            typename);
+> > @@ -416,6 +425,19 @@ static void aspeed_soc_ast2600_realize(DeviceState
+> > *dev, Error **errp)
+> >                          s->spi[i].ctrl->flash_window_base);
+> >      }
+> >
+> > +    /* EHCI */
+> > +    for (i = 0; i < sc->ehcis_num; i++) {
+> > +        object_property_set_bool(OBJECT(&s->ehci[i]), true, "realized",
+> > &err);
+> > +        if (err) {
+> > +            error_propagate(errp, err);
+> > +            return;
+> > +        }
+> >
+> 
+> Would it make sense to directly use error_fatal in the call to
+> object_property_set_bool?
+> That way you can avoid the additional code for propagating the error.
+> 
 
-Hi Guenter,
+The code matches the pattern used in the rest of the function.
+Given that, I would be hesitant to change it for this one case.
 
-On Fri, Feb 7, 2020 at 6:46 PM Guenter Roeck <linux@roeck-us.net> wrote:
+> 
+> > +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
+> > +                        sc->memmap[ASPEED_EHCI1 + i]);
+> > +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
+> > +                           aspeed_soc_get_irq(s, ASPEED_EHCI1 + i));
+> > +    }
+> > +
+> >      /* SDMC - SDRAM Memory Controller */
+> >      object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &err);
+> >      if (err) {
+> > @@ -534,6 +556,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass
+> > *oc, void *data)
+> >      sc->silicon_rev  = AST2600_A0_SILICON_REV;
+> >      sc->sram_size    = 0x10000;
+> >      sc->spis_num     = 2;
+> > +    sc->ehcis_num    = 2;
+> >
+> 
+> Since this field is only set once here, does it need to be part of the
+> class state?
+> 
 
-> Initialize EHCI controllers on AST2600 using the existing
-> TYPE_PLATFORM_EHCI. After this change, booting ast2600-evb
-> into Linux successfully instantiates a USB interface after
-> the necessary changes are made to its devicetree files.
->
-> ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
-> ehci-platform: EHCI generic platform driver
-> ehci-platform 1e6a3000.usb: EHCI Host Controller
-> ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number 1
-> ehci-platform 1e6a3000.usb: irq 25, io mem 0x1e6a3000
-> ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
-> usb usb1: Manufacturer: Linux 5.5.0-09825-ga0802f2d0ef5-dirty ehci_hcd
-> usb 1-1: new high-speed USB device number 2 using ehci-platform
->
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> ---
-> v2: Rebased to master (to fix context conflict)
->     Added Reviewed-by: tag
->
->  hw/arm/aspeed_ast2600.c | 23 +++++++++++++++++++++++
->  1 file changed, 23 insertions(+)
->
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index 90cf1c755d..446b44d31c 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -31,6 +31,8 @@ static const hwaddr aspeed_soc_ast2600_memmap[] =3D {
->      [ASPEED_FMC]       =3D 0x1E620000,
->      [ASPEED_SPI1]      =3D 0x1E630000,
->      [ASPEED_SPI2]      =3D 0x1E641000,
-> +    [ASPEED_EHCI1]     =3D 0x1E6A1000,
-> +    [ASPEED_EHCI2]     =3D 0x1E6A3000,
->      [ASPEED_MII1]      =3D 0x1E650000,
->      [ASPEED_MII2]      =3D 0x1E650008,
->      [ASPEED_MII3]      =3D 0x1E650010,
-> @@ -79,6 +81,8 @@ static const int aspeed_soc_ast2600_irqmap[] =3D {
->      [ASPEED_ADC]       =3D 78,
->      [ASPEED_XDMA]      =3D 6,
->      [ASPEED_SDHCI]     =3D 43,
-> +    [ASPEED_EHCI1]     =3D 5,
-> +    [ASPEED_EHCI2]     =3D 9,
->      [ASPEED_EMMC]      =3D 15,
->      [ASPEED_GPIO]      =3D 40,
->      [ASPEED_GPIO_1_8V] =3D 11,
-> @@ -166,6 +170,11 @@ static void aspeed_soc_ast2600_init(Object *obj)
->                                sizeof(s->spi[i]), typename);
->      }
->
-> +    for (i =3D 0; i < sc->ehcis_num; i++) {
-> +        sysbus_init_child_obj(obj, "ehci[*]", OBJECT(&s->ehci[i]),
-> +                              sizeof(s->ehci[i]), TYPE_PLATFORM_EHCI);
-> +    }
-> +
->      snprintf(typename, sizeof(typename), "aspeed.sdmc-%s", socname);
->      sysbus_init_child_obj(obj, "sdmc", OBJECT(&s->sdmc), sizeof(s->sdmc)=
-,
->                            typename);
-> @@ -416,6 +425,19 @@ static void aspeed_soc_ast2600_realize(DeviceState
-> *dev, Error **errp)
->                          s->spi[i].ctrl->flash_window_base);
->      }
->
-> +    /* EHCI */
-> +    for (i =3D 0; i < sc->ehcis_num; i++) {
-> +        object_property_set_bool(OBJECT(&s->ehci[i]), true, "realized",
-> &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
->
+The same applies to spis_num, wdts_num, and macs_num.
+AspeedSoCClass is defined for all ast2X00 SoCs, and
+the same mechanism is used for all of them. I don't see
+the benefit of deviating from a common mechanism.
 
-Would it make sense to directly use error_fatal in the call to
-object_property_set_bool?
-That way you can avoid the additional code for propagating the error.
-
-
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-> +                        sc->memmap[ASPEED_EHCI1 + i]);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-> +                           aspeed_soc_get_irq(s, ASPEED_EHCI1 + i));
-> +    }
-> +
->      /* SDMC - SDRAM Memory Controller */
->      object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &err);
->      if (err) {
-> @@ -534,6 +556,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass
-> *oc, void *data)
->      sc->silicon_rev  =3D AST2600_A0_SILICON_REV;
->      sc->sram_size    =3D 0x10000;
->      sc->spis_num     =3D 2;
-> +    sc->ehcis_num    =3D 2;
->
-
-Since this field is only set once here, does it need to be part of the
-class state?
-
-
->      sc->wdts_num     =3D 4;
->      sc->macs_num     =3D 4;
->      sc->irqmap       =3D aspeed_soc_ast2600_irqmap;
-> --
-> 2.17.1
->
->
->
-Rest looks good to me.
-
-Regards,
-Niek
-
-
---=20
-Niek Linnenbank
-
---00000000000066bd72059e03061b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi Guenter,<br></div><br><div class=3D"gmail_quote"><=
-div dir=3D"ltr" class=3D"gmail_attr">On Fri, Feb 7, 2020 at 6:46 PM Guenter=
- Roeck &lt;<a href=3D"mailto:linux@roeck-us.net">linux@roeck-us.net</a>&gt;=
- wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
-0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Initiali=
-ze EHCI controllers on AST2600 using the existing<br>
-TYPE_PLATFORM_EHCI. After this change, booting ast2600-evb<br>
-into Linux successfully instantiates a USB interface after<br>
-the necessary changes are made to its devicetree files.<br>
-<br>
-ehci_hcd: USB 2.0 &#39;Enhanced&#39; Host Controller (EHCI) Driver<br>
-ehci-platform: EHCI generic platform driver<br>
-ehci-platform 1e6a3000.usb: EHCI Host Controller<br>
-ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number 1<b=
-r>
-ehci-platform 1e6a3000.usb: irq 25, io mem 0x1e6a3000<br>
-ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00<br>
-usb usb1: Manufacturer: Linux 5.5.0-09825-ga0802f2d0ef5-dirty ehci_hcd<br>
-usb 1-1: new high-speed USB device number 2 using ehci-platform<br>
-<br>
-Reviewed-by: C=C3=A9dric Le Goater &lt;<a href=3D"mailto:clg@kaod.org" targ=
-et=3D"_blank">clg@kaod.org</a>&gt;<br>
-Signed-off-by: Guenter Roeck &lt;<a href=3D"mailto:linux@roeck-us.net" targ=
-et=3D"_blank">linux@roeck-us.net</a>&gt;<br>
----<br>
-v2: Rebased to master (to fix context conflict)<br>
-=C2=A0 =C2=A0 Added Reviewed-by: tag<br>
-<br>
-=C2=A0hw/arm/aspeed_ast2600.c | 23 +++++++++++++++++++++++<br>
-=C2=A01 file changed, 23 insertions(+)<br>
-<br>
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c<br>
-index 90cf1c755d..446b44d31c 100644<br>
---- a/hw/arm/aspeed_ast2600.c<br>
-+++ b/hw/arm/aspeed_ast2600.c<br>
-@@ -31,6 +31,8 @@ static const hwaddr aspeed_soc_ast2600_memmap[] =3D {<br>
-=C2=A0 =C2=A0 =C2=A0[ASPEED_FMC]=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 0x1E620000,<=
-br>
-=C2=A0 =C2=A0 =C2=A0[ASPEED_SPI1]=C2=A0 =C2=A0 =C2=A0 =3D 0x1E630000,<br>
-=C2=A0 =C2=A0 =C2=A0[ASPEED_SPI2]=C2=A0 =C2=A0 =C2=A0 =3D 0x1E641000,<br>
-+=C2=A0 =C2=A0 [ASPEED_EHCI1]=C2=A0 =C2=A0 =C2=A0=3D 0x1E6A1000,<br>
-+=C2=A0 =C2=A0 [ASPEED_EHCI2]=C2=A0 =C2=A0 =C2=A0=3D 0x1E6A3000,<br>
-=C2=A0 =C2=A0 =C2=A0[ASPEED_MII1]=C2=A0 =C2=A0 =C2=A0 =3D 0x1E650000,<br>
-=C2=A0 =C2=A0 =C2=A0[ASPEED_MII2]=C2=A0 =C2=A0 =C2=A0 =3D 0x1E650008,<br>
-=C2=A0 =C2=A0 =C2=A0[ASPEED_MII3]=C2=A0 =C2=A0 =C2=A0 =3D 0x1E650010,<br>
-@@ -79,6 +81,8 @@ static const int aspeed_soc_ast2600_irqmap[] =3D {<br>
-=C2=A0 =C2=A0 =C2=A0[ASPEED_ADC]=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 78,<br>
-=C2=A0 =C2=A0 =C2=A0[ASPEED_XDMA]=C2=A0 =C2=A0 =C2=A0 =3D 6,<br>
-=C2=A0 =C2=A0 =C2=A0[ASPEED_SDHCI]=C2=A0 =C2=A0 =C2=A0=3D 43,<br>
-+=C2=A0 =C2=A0 [ASPEED_EHCI1]=C2=A0 =C2=A0 =C2=A0=3D 5,<br>
-+=C2=A0 =C2=A0 [ASPEED_EHCI2]=C2=A0 =C2=A0 =C2=A0=3D 9,<br>
-=C2=A0 =C2=A0 =C2=A0[ASPEED_EMMC]=C2=A0 =C2=A0 =C2=A0 =3D 15,<br>
-=C2=A0 =C2=A0 =C2=A0[ASPEED_GPIO]=C2=A0 =C2=A0 =C2=A0 =3D 40,<br>
-=C2=A0 =C2=A0 =C2=A0[ASPEED_GPIO_1_8V] =3D 11,<br>
-@@ -166,6 +170,11 @@ static void aspeed_soc_ast2600_init(Object *obj)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0sizeof(s-&gt;spi[i]), typename);<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-<br>
-+=C2=A0 =C2=A0 for (i =3D 0; i &lt; sc-&gt;ehcis_num; i++) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_init_child_obj(obj, &quot;ehci[*]&quot;=
-, OBJECT(&amp;s-&gt;ehci[i]),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 sizeof(s-&gt;ehci[i]), TYPE_PLATFORM_EHCI);=
-<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-=C2=A0 =C2=A0 =C2=A0snprintf(typename, sizeof(typename), &quot;aspeed.sdmc-=
-%s&quot;, socname);<br>
-=C2=A0 =C2=A0 =C2=A0sysbus_init_child_obj(obj, &quot;sdmc&quot;, OBJECT(&am=
-p;s-&gt;sdmc), sizeof(s-&gt;sdmc),<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0typename);<br>
-@@ -416,6 +425,19 @@ static void aspeed_soc_ast2600_realize(DeviceState *de=
-v, Error **errp)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0s-&gt;spi[i].ctrl-&gt;flash_window_base);<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-<br>
-+=C2=A0 =C2=A0 /* EHCI */<br>
-+=C2=A0 =C2=A0 for (i =3D 0; i &lt; sc-&gt;ehcis_num; i++) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 object_property_set_bool(OBJECT(&amp;s-&gt;ehc=
-i[i]), true, &quot;realized&quot;, &amp;err);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (err) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 error_propagate(errp, err);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br></blockquote><div><br></div><div>Would it=
- make sense to directly use error_fatal in the call to object_property_set_=
-bool?</div><div>That way you can avoid the additional code for propagating =
-the error.<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" styl=
-e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
-g-left:1ex">
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;ehci=
-[i]), 0,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 sc-&gt;memmap[ASPEED_EHCI1 + i]);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;e=
-hci[i]), 0,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0aspeed_soc_get_irq(s, ASPEED_EHCI1 + i));<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-=C2=A0 =C2=A0 =C2=A0/* SDMC - SDRAM Memory Controller */<br>
-=C2=A0 =C2=A0 =C2=A0object_property_set_bool(OBJECT(&amp;s-&gt;sdmc), true,=
- &quot;realized&quot;, &amp;err);<br>
-=C2=A0 =C2=A0 =C2=A0if (err) {<br>
-@@ -534,6 +556,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *=
-oc, void *data)<br>
-=C2=A0 =C2=A0 =C2=A0sc-&gt;silicon_rev=C2=A0 =3D AST2600_A0_SILICON_REV;<br=
->
-=C2=A0 =C2=A0 =C2=A0sc-&gt;sram_size=C2=A0 =C2=A0 =3D 0x10000;<br>
-=C2=A0 =C2=A0 =C2=A0sc-&gt;spis_num=C2=A0 =C2=A0 =C2=A0=3D 2;<br>
-+=C2=A0 =C2=A0 sc-&gt;ehcis_num=C2=A0 =C2=A0 =3D 2;<br></blockquote><div><b=
-r></div><div>Since this field is only set once here, does it need to be par=
-t of the class state? <br></div><div>=C2=A0</div><blockquote class=3D"gmail=
-_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204=
-,204);padding-left:1ex">
-=C2=A0 =C2=A0 =C2=A0sc-&gt;wdts_num=C2=A0 =C2=A0 =C2=A0=3D 4;<br>
-=C2=A0 =C2=A0 =C2=A0sc-&gt;macs_num=C2=A0 =C2=A0 =C2=A0=3D 4;<br>
-=C2=A0 =C2=A0 =C2=A0sc-&gt;irqmap=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D aspeed_soc_=
-ast2600_irqmap;<br>
--- <br>
-2.17.1<br>
-<br>
-<br>
-</blockquote></div><div><br></div><div>Rest looks good to me.</div><div><br=
-></div><div>Regards,</div><div>Niek<br></div><div><br></div><br>-- <br><div=
- dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"ltr"><div>Niek Linnenban=
-k<br><br></div></div></div></div>
-
---00000000000066bd72059e03061b--
+Guenter

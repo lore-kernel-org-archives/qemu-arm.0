@@ -1,416 +1,184 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp615509lfp;
-        Fri, 7 Feb 2020 06:06:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzHZTi/IfwIEUhwb4dDLMmwklHMGh57OIS3E4EK0+5JNBiEKBiUDhtt9+DHFrJfC6YgmIwb
-X-Received: by 2002:aed:3786:: with SMTP id j6mr7779807qtb.62.1581084407952;
-        Fri, 07 Feb 2020 06:06:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581084407; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp632236lfp;
+        Fri, 7 Feb 2020 06:21:55 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyKpRinHj9hc9/cRJXCr5crEtYWC45KVTIcq/agPAKPzVZyHRG3rGGWF8UGTHbNlI+cTu+p
+X-Received: by 2002:ac8:1184:: with SMTP id d4mr7632014qtj.104.1581085315590;
+        Fri, 07 Feb 2020 06:21:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581085315; cv=none;
         d=google.com; s=arc-20160816;
-        b=t+gcGsVao/XqFB/OMeHExpDiwGtq/IzjyHP6nV4bKt5f1AU61Oij4epX7q70hB8M08
-         m8bR19ztEkYvCJj9OMhpGmdmd3eo7ZaFQfQYkkm3TkJkD/06uVyd9qcFOfm1yznqzT5J
-         kQ+4rlvM17nsUaXbqR/y95lnExnbN7Vlf7NCHbkA/KUpzsOd/uA+gPNJvx7p3/TdFSol
-         T6CHPOt9G+RzyVhrIMYWslpKE13lfcL3XCxeXJIXi0x5aWWU7KbwpUhVqUkudejaw+Js
-         WjUDeAZA/vErK5itsvsxBuX7GH/qQ79RzigBtHE7zaw17mo/xFrRmFVYHlhWREkmqfhN
-         wiyw==
+        b=Gi/wbANHCBF2Q5pkssk1IHRNqNxhv3evurQ47/MJNg/vLplk0f0SVP26DnSHZtYgWA
+         D1NtO+m0KZQeW5i2ykWqpoKcmyxvipYmPyFAYtOd5MqxZtH+NXN42wgoRfehrYPXqIHm
+         4Lu1tVZmv/nycazDkg5xUlojGIqESnT2F2XIsYsuOxjHHajDi+OnpXp8kmhFnkj+2cZN
+         B9KfwiWVrJ3FGIcW0ieIxAcqGDhFRCRDXh/mMeEHXuz28YMOeqPcT+N5ZJscBVFbL07l
+         KqDlaYVBAG60soCnnYSd+yFcsnUjz2ZtbFYiz7wn2Gkb5wvT7bmUdVjj2S7rni7SOY8n
+         hVRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=fbbZgMz9O3Tn1lO+vZigS78DqXWiil13SNPa7EEt4iw=;
-        b=F/3T9doA2pap2VvjBQqh1Ha9pSykFb3JWfiIJJ5aShtbnF36y/am9rnbLGbId0JAJ5
-         /MGb7l/vHK3stmqgW9VM3SE+PnQ6+GQTC/K0iQBrLAnknxfXy79mSwtO0R1hywN0Jx3A
-         HxL1jnv/t/KG7/v/y6aoHkZc6NHA9VEfiuaWWiw+yeHgO6+uCl/gNAB1s9YFazcdslUE
-         RgkjEri5vykgutG71Tki2feTRp/sNfnZhSplUZXDrgZLS7YaZUvRrSEzTZeLjDEsEpla
-         09mhAeTsZMZV2u9OHT4YzTUq0dylVl16egTLmbkJNMHltW7yzbwvmPPs5qbFwFB4VvNY
-         kXSg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=MXTE7+VG/fuavlzhWWW8cwSsMcmiVYN8chLv/BbuYRQ=;
+        b=FGJ7qDv/0hC52MsFQmxua8v8NosiPn4uNgY1tpOhShZsbY8WOBJbvb8JbsoqKPgF/3
+         RgbMkfwVrAq3GfdU5JwmrIjkBDwx5enXNGNI/s6wPvu6RtrU8fl1xqz9pMlQ0w7OE26n
+         20JUu73czY6Q5iEFKp8y+R3/QwfJnDvWHhs9+q4HJMnt9tVfWvb/QO/FAeDXrJ46fHn+
+         ZjMNvud1LM8/7UnapzuU8k7wmCKEwvLtT4KdHY0TC8SHndMGuJjDfmI0qcVdWm2C4R/W
+         LgrhsQ/GDz0mMOOvNXJHR7fNUcuR25XF7BOCgcJ6+pMKElpXihYH1xCdLpBdULaueonM
+         gIxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=A0aGfumH;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id a20si1382383qkn.88.2020.02.07.06.06.42;
-        Fri, 07 Feb 2020 06:06:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kkFd2gkK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j3si1324673qki.321.2020.02.07.06.21.54
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 07 Feb 2020 06:21:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=A0aGfumH;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id C581A4A51E;
-	Fri,  7 Feb 2020 09:06:42 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oW+toeI7hM4U; Fri,  7 Feb 2020 09:06:41 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 8779D4A522;
-	Fri,  7 Feb 2020 09:06:41 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 4F6654A51E
- for <kvmarm@lists.cs.columbia.edu>; Fri,  7 Feb 2020 09:06:41 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kKPCTKJ-XVme for <kvmarm@lists.cs.columbia.edu>;
- Fri,  7 Feb 2020 09:06:40 -0500 (EST)
-Received: from us-smtp-1.mimecast.com (us-smtp-2.mimecast.com [205.139.110.61])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 100074A3A3
- for <kvmarm@lists.cs.columbia.edu>; Fri,  7 Feb 2020 09:06:40 -0500 (EST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581084399;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=1ANWr1J4B+2ekgdtAkoqM5ghV0In7jIKf11OTWBZkeY=;
- b=A0aGfumH6T6xZA385aAbrY4xgPy0VspRKkrwqUqJATTA/AFDA/B7S56gCOBQsWspSu2thx
- 5PKvl8lXbyLDDZfNWcy1WZ1zpHrEBsWNsm40xqvddNmVr8QOD8Ol6go1wl+QZVtntEpiC4
- 6T3FR3JIP25AiFhb0qsYggMr4xSs7Rw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-288-A3Xp7amqMniKgguMD0pKew-1; Fri, 07 Feb 2020 09:06:37 -0500
-X-MC-Unique: A3Xp7amqMniKgguMD0pKew-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 57D10800D54;
- Fri,  7 Feb 2020 14:06:35 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 57A521001281;
- Fri,  7 Feb 2020 14:06:29 +0000 (UTC)
-Date: Fri, 7 Feb 2020 15:06:27 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [kvm-unit-tests PATCH v3 14/14] arm/arm64: ITS: pending table
- migration test
-Message-ID: <20200207140627.rikkw5coe7naxssb@kamzik.brq.redhat.com>
-References: <20200128103459.19413-1-eric.auger@redhat.com>
- <20200128103459.19413-15-eric.auger@redhat.com>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kkFd2gkK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57276 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j04W2-0000Zv-KJ
+	for alex.bennee@linaro.org; Fri, 07 Feb 2020 09:21:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48710)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <groeck7@gmail.com>) id 1j04Vr-0000V9-8h
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 09:21:44 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <groeck7@gmail.com>) id 1j04Vq-0005Z5-0B
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 09:21:43 -0500
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:35328)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1j04Vn-0005Ws-63; Fri, 07 Feb 2020 09:21:39 -0500
+Received: by mail-pf1-x442.google.com with SMTP id y73so1373599pfg.2;
+ Fri, 07 Feb 2020 06:21:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=MXTE7+VG/fuavlzhWWW8cwSsMcmiVYN8chLv/BbuYRQ=;
+ b=kkFd2gkKjMscBWiifoMvICLDUUe0b+TXzqK+vYbSmMVeVdAd7WQ3ZOfVDQ+aRJUN/v
+ NA80XNatBQay2t+1im7LqUcoVG+di1lnczx2reer3aNmTDzEvQ7GJQHwHa3hj3GF0Zrg
+ OyYRvWtgFmRiMIKOc4pnzYa+vSXF6Q17ZCzuX+6RPkMqWP/69WmkRPMbycNKiC06baau
+ NvvFLr5GBP3p7Tz1Q6ttKO6MXCZDunTnKi/OH152+Vv3hnyBiieioanNaQdqPr5Xk5+x
+ iWBxhAeAzxQhBc2sVeLC+X0LAl0rEO67DCY2zHZxUAOUuiQuRBvykAUhzH434NNckwgx
+ MDIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=MXTE7+VG/fuavlzhWWW8cwSsMcmiVYN8chLv/BbuYRQ=;
+ b=bLBotZrVNG6/XpcdFDIkeK/v92glaQI210lDuVMhoH2uScDlZUtCecc8L4kuzihCMA
+ ZxMb8Mya6US9F/vroa1/QeQ+hfF0hRxCXL9KTCYxASPiwAFyn2jwzmypLdck00GK56en
+ cgToOBY3R0QU/xUNSYrLROu+sQBofs2PkDH9vw8rDt9VPTgBAJDIBKLYnvNcfWQ+kqMx
+ nw5zaYdvi/yhDlKlQ8J4LJg/TIV90iszrWV4LR+cYRIthT3cgy1rfhXvJpvPPvlxwDmf
+ Xh8O0/hO0rHu2cbg3r3FMq/2C5kN6dfqJGyTAOoO/866GDudMyAbqsREVdehnGKyuk1H
+ jnZw==
+X-Gm-Message-State: APjAAAXUy1/RVEJmb0NEHzoDz+1FWhH5ABfpHQhzM5KnwVXjdTxEwtfy
+ beKcWhP0GGYT7Qolr1lh0M8SBEWd
+X-Received: by 2002:a63:a541:: with SMTP id r1mr9753236pgu.118.1581085294415; 
+ Fri, 07 Feb 2020 06:21:34 -0800 (PST)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ e19sm3174475pgn.86.2020.02.07.06.21.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 07 Feb 2020 06:21:33 -0800 (PST)
+Subject: Re: [PATCH] hw/arm: ast2400/ast2500: Wire up EHCI controllers
+To: Joel Stanley <joel@jms.id.au>
+References: <20200206183437.3979-1-linux@roeck-us.net>
+ <e9f490fe-34d3-6830-832c-155f6fa63482@kaod.org>
+ <1605922b-2aa0-dd8e-720a-031e74bc9872@roeck-us.net>
+ <CACPK8XdADQwGnsX=YR0n_zm_WMv532bAmR3O-CfyJ23ytT9bpA@mail.gmail.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <ebcfceea-2f70-7e88-0996-b072ec81f59e@roeck-us.net>
+Date: Fri, 7 Feb 2020 06:21:31 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200128103459.19413-15-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Cc: thuth@redhat.com, kvm@vger.kernel.org, maz@kernel.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
- kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+In-Reply-To: <CACPK8XdADQwGnsX=YR0n_zm_WMv532bAmR3O-CfyJ23ytT9bpA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::442
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: Et4aiiPFt2AZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PxGCDlB7eXBx
 
-On Tue, Jan 28, 2020 at 11:34:59AM +0100, Eric Auger wrote:
-> Add two new migration tests. One testing the migration of
-> a topology where collection were unmapped. The second test
-> checks the migration of the pending table.
+On 2/7/20 5:09 AM, Joel Stanley wrote:
+> On Fri, 7 Feb 2020 at 12:58, Guenter Roeck <linux@roeck-us.net> wrote:
+>>
+>> On 2/7/20 12:16 AM, Cédric Le Goater wrote:
+>>> On 2/6/20 7:34 PM, Guenter Roeck wrote:
+>>>> Initialize EHCI controllers on AST2400 and AST2500 using the existing
+>>>> TYPE_PLATFORM_EHCI. After this change, booting ast2500-evb into Linux
+>>>> successfully instantiates a USB interface.
+>>>>
+>>>> ehci-platform 1e6a3000.usb: EHCI Host Controller
+>>>> ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number 1
+>>>> ehci-platform 1e6a3000.usb: irq 21, io mem 0x1e6a3000
+>>>> ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
+>>>> usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.05
+>>>> usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+>>>> usb usb1: Product: EHCI Host Controller
+>>>
+>>> Cool. Have you tried to plug any devices ?
+>>>
+>>
+>> Yes, booting from USB drive works just fine. I already added it to my
+>> test suite at kerneltests.org.
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Nice!
 > 
-> ---
+> Reviewed-by: Joel Stanley <joel@jms.id.au>
 > 
-> v2 -> v3:
-> - tests belong to both its and migration groups
-> ---
->  arm/gic.c         | 150 ++++++++++++++++++++++++++++++++++++++++++++++
->  arm/unittests.cfg |  16 +++++
->  2 files changed, 166 insertions(+)
+>>> This looks good. Could you add the AST2600 also ?
+>>>
+>>
+>> I thought about that, but how would I test it ? None of the ast2600
+>> systems in the Linux kernel enables it. The devicetree include file for
+>> ast2600 doesn't even have an entry for it. I could cook something up,
+>> but that would not reflect real hardware.
 > 
-> diff --git a/arm/gic.c b/arm/gic.c
-> index fa8626a..ec3dd3a 100644
-> --- a/arm/gic.c
-> +++ b/arm/gic.c
-> @@ -195,6 +195,7 @@ static void lpi_handler(struct pt_regs *regs __unused)
->  	smp_rmb(); /* pairs with wmb in lpi_stats_expect */
->  	lpi_stats.observed.cpu_id = smp_processor_id();
->  	lpi_stats.observed.lpi_id = irqnr;
-> +	acked[lpi_stats.observed.cpu_id]++;
->  	smp_wmb(); /* pairs with rmb in check_lpi_stats */
->  }
->  
-> @@ -239,6 +240,18 @@ static void secondary_lpi_test(void)
->  	while (1)
->  		wfi();
->  }
-> +
-> +static void check_lpi_hits(int *expected)
-> +{
-> +	int i;
-> +
-> +	for (i = 0; i < nr_cpus; i++) {
-> +		if (acked[i] != expected[i])
-> +			report(false, "expected %d LPIs on PE #%d, %d observed",
-> +			       expected[i], i, acked[i]);
-
-report_info
-pass = false
-
-> +		}
-> +	report(true, "check LPI on all vcpus");
-
-report(pass, ...);
-
-> +}
->  #endif
->  
->  static void gicv2_ipi_send_self(void)
-> @@ -594,6 +607,8 @@ static void gic_test_mmio(void)
->  static void test_its_introspection(void) {}
->  static void test_its_trigger(void) {}
->  static void test_its_migration(void) {}
-> +static void test_migrate_unmapped_collection(void) {}
-> +static void test_its_pending_migration(void) {}
-
-I'm not sure what's worse. This pile of stubs or one #ifdef in main()
-wrapping all the calls.
-
->  
->  #else /* __arch64__ */
->  
-> @@ -666,6 +681,18 @@ static bool its_prerequisites(int nb_cpus)
->  	return false;
->  }
->  
-> +static void set_lpi(struct its_device *dev, u32 eventid, u32 physid,
-> +		    struct its_collection *col)
-> +{
-> +	if (!dev || !col)
-
-I don't think col can be null, and this doesn't look like the right place
-to check if dev is null.  If we're bothiner to call set_lpi, then I
-think we should already expect dev to be good to go.
-
-> +		report_abort("wrong device or collection");
-> +
-> +	its_send_mapti(dev, physid, eventid, col);
-> +
-> +	gicv3_lpi_set_config(physid, LPI_PROP_DEFAULT);
-> +	its_send_invall(col);
-> +}
-> +
->  /*
->   * Setup the configuration for those mappings:
->   * dev_id=2 event=20 -> vcpu 3, intid=8195
-> @@ -806,6 +833,121 @@ static void test_its_migration(void)
->  	its_send_int(dev7, 255);
->  	check_lpi_stats();
->  }
-> +
-> +static void test_migrate_unmapped_collection(void)
-> +{
-> +	struct its_collection *col;
-> +	struct its_device *dev2, *dev7;
-> +	u8 config;
-> +
-> +	if (its_setup1())
-> +		return;
-> +
-> +	col = its_create_collection(nr_cpus - 1, nr_cpus - 1);
-> +	dev2 = its_get_device(2);
-> +	dev7 = its_get_device(7);
-> +
-> +	/* MAPTI with the collection unmapped */
-> +	set_lpi(dev2, 0, 8192, col);
-> +
-> +	puts("Now migrate the VM, then press a key to continue...\n");
-> +	(void)getchar();
-> +	report(true, "Migration complete");
-
-report_info
-
-> +
-> +	/* on the destination, map the collection */
-> +	its_send_mapc(col, true);
-> +
-> +	lpi_stats_expect(2, 8196);
-> +	its_send_int(dev7, 255);
-> +	check_lpi_stats();
-> +
-> +	config = gicv3_lpi_get_config(8192);
-> +	report(config == LPI_PROP_DEFAULT,
-> +	       "Config of LPI 8192 was properly migrated");
-> +
-> +	lpi_stats_expect(nr_cpus - 1, 8192);
-> +	its_send_int(dev2, 0);
-> +	check_lpi_stats();
-> +
-> +	/* unmap the collection */
-> +	its_send_mapc(col, false);
-> +
-> +	lpi_stats_expect(-1, -1);
-> +	its_send_int(dev2, 0);
-> +	check_lpi_stats();
-> +
-> +	/* remap event 0 onto lpiid 8193 */
-> +	set_lpi(dev2, 0, 8193, col);
-> +	lpi_stats_expect(-1, -1);
-> +	its_send_int(dev2, 0);
-> +	check_lpi_stats();
-> +
-> +	/* remap the collection */
-> +	its_send_mapc(col, true);
-> +	lpi_stats_expect(nr_cpus - 1, 8193);
-> +}
-> +
-> +static void test_its_pending_migration(void)
-> +{
-> +	struct its_device *dev;
-> +	struct its_collection *collection[2];
-> +	int expected[NR_CPUS];
-
-expected = malloc(nr_cpus * sizeof(int));
-
-I know there are other places using NR_CPUS right now that don't have to,
-but we shouldn't add more. Eventually I'll change the other places too.
-
-> +	u64 pendbaser;
-> +	void *ptr;
-> +	int i;
-> +
-> +	if (its_prerequisites(4))
-> +		return;
-> +
-> +	dev = its_create_device(2 /* dev id */, 8 /* nb_ites */);
-> +	its_send_mapd(dev, true);
-> +
-> +	collection[0] = its_create_collection(nr_cpus - 1, nr_cpus - 1);
-> +	collection[1] = its_create_collection(nr_cpus - 2, nr_cpus - 2);
-> +	its_send_mapc(collection[0], true);
-> +	its_send_mapc(collection[1], true);
-> +
-> +	/* disable lpi at redist level */
-> +	gicv3_lpi_rdist_ctrl(nr_cpus - 1, false);
-> +	gicv3_lpi_rdist_ctrl(nr_cpus - 2, false);
-> +
-> +	/* even lpis are assigned to even cpu */
-> +	for (i = 0; i < 256; i++) {
-> +		struct its_collection *col = i % 2 ? collection[0] :
-> +						     collection[1];
-> +		int vcpu = col->target_address >> 16;
-
-I'm lost with the even/odd (nr_cpus - 1)/(nr_cpus - 2) stuff, and won't
-it swap if nr_cpus is odd vs. even?
-
-Shouldn't we just have something like
-
-  pe1 = nr_cpus - 1;
-  pe2 = nr_cpus - 2;
-  col1 = its_create_collection(pe1, pe1);
-  col2 = its_create_collection(pe2, pe2);
-
-without mentioning even and odd?
-
-> +
-> +		its_send_mapti(dev, 8192 + i, i, col);
-> +		gicv3_lpi_set_config(8192 + i, LPI_PROP_DEFAULT);
-> +		gicv3_lpi_set_pending_table_bit(vcpu, 8192 + i, true);
-> +	}
-> +	its_send_invall(collection[0]);
-> +	its_send_invall(collection[1]);
-> +
-> +	/* Set the PTZ bit on each pendbaser */
-> +
-> +	expected[nr_cpus - 1] = 128;
-> +	expected[nr_cpus - 2] = 128;
-> +
-> +	ptr = gicv3_data.redist_base[nr_cpus - 1] + GICR_PENDBASER;
-> +	pendbaser = readq(ptr);
-> +	writeq(pendbaser & ~GICR_PENDBASER_PTZ, ptr);
-> +
-> +	ptr = gicv3_data.redist_base[nr_cpus - 2] + GICR_PENDBASER;
-> +	pendbaser = readq(ptr);
-> +	writeq(pendbaser & ~GICR_PENDBASER_PTZ, ptr);
-> +
-> +	gicv3_lpi_rdist_ctrl(nr_cpus - 1, true);
-> +	gicv3_lpi_rdist_ctrl(nr_cpus - 2, true);
-> +
-> +	puts("Now migrate the VM, then press a key to continue...\n");
-> +	(void)getchar();
-> +	report(true, "Migration complete");
-
-report_info
-
-> +
-> +	mdelay(1000);
-
-This delay needs a comment explaining why it's here.
-
-> +
-> +	check_lpi_hits(expected);
-> +}
->  #endif
->  
->  int main(int argc, char **argv)
-> @@ -847,6 +989,14 @@ int main(int argc, char **argv)
->  		report_prefix_push(argv[1]);
->  		test_its_migration();
->  		report_prefix_pop();
-> +	} else if (!strcmp(argv[1], "its-pending-migration")) {
-> +		report_prefix_push(argv[1]);
-> +		test_its_pending_migration();
-> +		report_prefix_pop();
-> +	} else if (!strcmp(argv[1], "its-migrate-unmapped-collection")) {
-> +		report_prefix_push(argv[1]);
-> +		test_migrate_unmapped_collection();
-> +		report_prefix_pop();
->  	} else if (strcmp(argv[1], "its-introspection") == 0) {
->  		report_prefix_push(argv[1]);
->  		test_its_introspection();
-> diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-> index 8b8ec79..d917157 100644
-> --- a/arm/unittests.cfg
-> +++ b/arm/unittests.cfg
-> @@ -144,6 +144,22 @@ extra_params = -machine gic-version=3 -append 'its-migration'
->  groups = its migration
->  arch = arm64
->  
-> +[its-pending-migration]
-> +file = gic.flat
-> +smp = $MAX_SMP
-> +accel = kvm
-> +extra_params = -machine gic-version=3 -append 'its-pending-migration'
-> +groups = its migration
-> +arch = arm64
-> +
-> +[its-migrate-unmapped-collection]
-> +file = gic.flat
-> +smp = $MAX_SMP
-> +accel = kvm
-> +extra_params = -machine gic-version=3 -append 'its-migrate-unmapped-collection'
-> +groups = its migration
-> +arch = arm64
-> +
->  # Test PSCI emulation
->  [psci]
->  file = psci.flat
-> -- 
-> 2.20.1
+> FYI, there are patches on the linux-aspeed list to enable USB:
 > 
->
+>   https://patchwork.ozlabs.org/project/linux-aspeed/list/?series=156260
+> 
+> They have not yet been merged into the kernel, but I will merge the
+> device tree changes once -rc1 is out.
+> 
+
+Excellent. With the above series, and after enabling ehci1 for ast2600-evb
+and adding the necessary code to qemu, I get
+
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ehci-platform: EHCI generic platform driver
+ehci-platform 1e6a3000.usb: EHCI Host Controller
+ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number 1
+ehci-platform 1e6a3000.usb: irq 25, io mem 0x1e6a3000
+ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
+usb usb1: Manufacturer: Linux 5.5.0-09825-ga0802f2d0ef5-dirty ehci_hcd
+
+and I can mount a USB drive. Is that good enough for a follow-up patch,
+or should I wait until the code finds its way into the Linux kernel ?
 
 Thanks,
-drew 
-
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+Guenter

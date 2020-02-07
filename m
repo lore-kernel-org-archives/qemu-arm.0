@@ -1,202 +1,260 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp843135lfp;
-        Fri, 7 Feb 2020 09:46:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzIa/wH4claYbJnjzQodVO2IFkE4t9L2jo/aXsC/UTqjSb6m4I/fRrhfI4vaAaukuzT2F4T
-X-Received: by 2002:aed:3022:: with SMTP id 31mr8313127qte.282.1581097570303;
-        Fri, 07 Feb 2020 09:46:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581097570; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp989829lfp;
+        Fri, 7 Feb 2020 12:27:00 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyeRvAjZ0q03v28nSCzc3xegqoNuQ08pR1CvQfuA9A3/jqKx+jJSCh8UQe8qbO2FejLwkuc
+X-Received: by 2002:aed:35e7:: with SMTP id d36mr103618qte.363.1581107220210;
+        Fri, 07 Feb 2020 12:27:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581107220; cv=none;
         d=google.com; s=arc-20160816;
-        b=SEZsgnd24LuaLZyXGCjOFnmEdwfJykllVUtellNpLdXHjFoQjdZGUh0f1+XS9ixcS4
-         MoujWhrMmxJ7CNjag3kN7jEBrEpqPK3hrklzdl3t02MoNIQRhzgB6JCcaWS5uj7p6GVP
-         Ca5YURBx1fjPuxTmk7p2IvkM8siaGZfvryFVzgSS/frOXfZG0GEKs2AZJv7N3wgWtX+N
-         yxNgH1LPlYFCF6QsTWqhvVupnZufyp1Pvj1SmIaod5In5qpZuxzjpbkaSkOpysEM5U4U
-         9bUZK7uIL9lnwoREAKuSEYMF7s7DmW7pyWbg3Vrb1rogzxt3EngUUZLl2QL0ALqG7sxh
-         H4JQ==
+        b=rMQ3gn6YessoYvpp/wfiLheCpz/sXekw77w2zP2wUaJFSlp8NyRBCHNNsNvvRVrqJC
+         RSoomZftFHp/MzhI224FpmHLAVQaAZngvoQtBSGVlnpvt4jRXOm3RtiwTi5zRbLPCDLc
+         Ne1gaHsS+sku9dEiCGljeJiu4sMSaOIfm5u8IidH8fDXm3kU35fzG2DPa/vshzlT1G+X
+         buXyom3kB1KqcXsod384wjZZ2WMquynxQs7QPqjlzRtjgEFznX4oJc9nrqyhkMGSFbzF
+         g9icG2nP0f3ONExF6tmz9wAggE4m4A+LbYn95BiWbNndR8uM/CbOdoNouFBfLgLoPFmP
+         C5Zg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=t5xnOGmmDATC7VvfltIWmLOyLl/k0lGPYddVZzdKuyE=;
-        b=0K6scQRyaE4I11jdZETvq8tr8Z5QOCMFXWK1qkrOD8if/4uHUYeP18b/mQowJpMJkK
-         Wdpg4gcGDBfEG8aa926/5oltpoEZusDtHZUkJvRzGALUFo/aBet7P+8VtzTeIFeaCZz9
-         cNIf5MBlfPPpqwnUhLDAv9l8F19MnspfvgDtkF4Momtv7UxqZgb/3saKh2E/u5j9ucnm
-         eJE8kBHKjD6sRabyzIqcQyJPgb69pFPSl/1Ze7ph8SWhdS+rfaH8uniVn8+hcU6375kl
-         IuEw6CIL2/h+dRjGDWYo9nMP+qKlq9SMtUS4ROtCbALPfLD3FDlYKiPnDzLLE9LBCxDQ
-         OEdg==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=fX68pnrXCaepJggUv37SrOGhdFndlVqiL1tAnozGtBA=;
+        b=J2oY0F2DF9MkZ1w7QO09At05JEXAxmP9TwpHg3MLb8vINWPSSerlWxcqm4hinDptwZ
+         mC2zuxx67QavVae1fSxRhhjcZa+0Cx19iM0c61DxkDIRbOuNoFDNy7zWH2uud3BYy1+r
+         /2LnAkrD4wO7W1xU7OMoPZ/IEz1Wwo2SDvlW6zoGWuPXvPxhAis96DlSHRdMqfJkHsrr
+         mi4/OH9ta25gRU4xOgEua7E5VToGZ+zGwtCuI3on3dKz8f0K90EkXW8/rFU+K1PPxYFL
+         k3BDu23wXcL8XtvCA4vvROguCHlAaxbB3xRiAvtKN8h4j7511U+jpBm1PpNrx62lFuvs
+         sidQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CSuzvFXR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Onpvyfe5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m25si141128qtg.14.2020.02.07.09.46.10
+        by mx.google.com with ESMTPS id o45si374354qtk.333.2020.02.07.12.27.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Feb 2020 09:46:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 07 Feb 2020 12:27:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CSuzvFXR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33414 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Onpvyfe5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34982 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j07hh-0007ky-O2
-	for alex.bennee@linaro.org; Fri, 07 Feb 2020 12:46:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44453)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j0ADL-0001VF-Lk
+	for alex.bennee@linaro.org; Fri, 07 Feb 2020 15:26:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56342)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1j07hS-0007hQ-2g
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 12:45:55 -0500
+ (envelope-from <peterx@redhat.com>) id 1j0ACZ-0000ll-Ns
+ for qemu-devel@nongnu.org; Fri, 07 Feb 2020 15:26:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1j07hQ-0006fm-Oy
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 12:45:53 -0500
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:44717)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1j07hQ-0006fV-JJ; Fri, 07 Feb 2020 12:45:52 -0500
-Received: by mail-pg1-x544.google.com with SMTP id g3so115420pgs.11;
- Fri, 07 Feb 2020 09:45:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=t5xnOGmmDATC7VvfltIWmLOyLl/k0lGPYddVZzdKuyE=;
- b=CSuzvFXR9FgzXoC/Fa1/iy5S2g5umJw+FrAf8KWFOfXCDuTftdlG5QbXjn2TmGmGpx
- Ag+shmwSsZf+n3Mvv1WEWpHXwxKKQ1UDSLPNl+FUlTCtT4LINX182GpaJpnLK2Zqk7kb
- +CHvCVs048ugJANGGAnkZXIltME8N3XQxw5jvNPPdNL7Me7RVSmn4sdF3a8C5ZGg9t8r
- PA95bRPOY5VJxtmnpFewSmVeI8FqtU+0U5nYZFu9hQSllwbWGneeOyMeulvv546D7Ipf
- zRPEieFsZ34PvrguKIpRQ1Uc4OoDM72Ks8rHU2jCCRZ789Ix5cop7WNHFT9AbG1t7T1x
- c4MQ==
+ (envelope-from <peterx@redhat.com>) id 1j0ACW-0001B4-Sm
+ for qemu-devel@nongnu.org; Fri, 07 Feb 2020 15:26:09 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:26123
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1j0ACW-00018W-Hx
+ for qemu-devel@nongnu.org; Fri, 07 Feb 2020 15:26:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581107167;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=fX68pnrXCaepJggUv37SrOGhdFndlVqiL1tAnozGtBA=;
+ b=Onpvyfe5BFuz/ViPgBCJEOVMbkLGBTvSzjovhLGZj/L42G4b72oqb2GgGp9RkjDF5bAIfo
+ /YNqSv/rqcwU4DVakQOIa+kU2muYqO+MK2mTKRm2P8+DcYn6Hut2kuex6GaCr3cvkHQ5ml
+ x64MhmZVQyzt/t2MH99E6ladF66gOy8=
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
+ [209.85.160.197]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-341-VdttOF6PPHS3h7o94lw2KA-1; Fri, 07 Feb 2020 15:26:05 -0500
+Received: by mail-qt1-f197.google.com with SMTP id d16so330633qtr.2
+ for <qemu-devel@nongnu.org>; Fri, 07 Feb 2020 12:26:05 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=t5xnOGmmDATC7VvfltIWmLOyLl/k0lGPYddVZzdKuyE=;
- b=FQkNMmZoJE9d2TVDe6sMy4eIDQcuJAC5w9mlWsEqu5C9sopTXCpsdjbBC/acS5MnZd
- pcOR8so915lt89Yz/Efa+rU5Su2ZmUyfx/f534HZ09dQWmPCn7xaltyi4WhI50po4WHY
- bYDYMinSpKO0ARHE+7nOLo7oFmC8HZfezQTo+MfELhT/LMy0JQd+vtqoXTuuNw1j2usa
- 3NSSgkwTz4NQfslqbIvJKUz/788oPB3fu0IIdYsgSdqwUhUeNyKeHT6bT4vasLlUWg6B
- JHgsZZVKWU4b5UbBljayh8NIvbsuECawmbbKvhtUQaU2Qf1u3DGiWNA+JMCrjX5w2SEW
- MoeA==
-X-Gm-Message-State: APjAAAVzBFXke8LsS8LErhaAF65bIXcITRZAEv0X+dY5Qm0kmYrdPOr3
- FfonPPCEUrtAdkg5UP7V7Ak=
-X-Received: by 2002:aa7:9a01:: with SMTP id w1mr30034pfj.231.1581097551308;
- Fri, 07 Feb 2020 09:45:51 -0800 (PST)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id r62sm3770534pfc.89.2020.02.07.09.45.50
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 07 Feb 2020 09:45:50 -0800 (PST)
-From: Guenter Roeck <linux@roeck-us.net>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v2] hw/arm: ast2600: Wire up EHCI controllers
-Date: Fri,  7 Feb 2020 09:45:48 -0800
-Message-Id: <20200207174548.9087-1-linux@roeck-us.net>
-X-Mailer: git-send-email 2.17.1
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=6opY5JAPnTC3deXfh3fnYGt75ABnlBjWVDrm/KM9ZmQ=;
+ b=K7nDoXn251fddrzIf3+bu/c0siAzvtVVrtfLQYS+CdsYcnpRqKK0LJct84xOHxpSEi
+ C0i4G/8PplYm9zIjb27VWBBR1Wt/wUnNx7RUiF2t9Z2t2LGSpsvyZBzGR4FsFn62qzSK
+ coMOqbiOVHAfYFy9T+tS16he3lQhqh6ruH8JXGjawyQ0kE4TOx/qvgnLoug1yEIeJHQX
+ DQTB2e7+No9jjDWptHMduPTomSYeLZv+jN85khSYpnoHsgYWkKkWLjd2MbyzW5GofRKz
+ qmfen/cbJGlYDEDikLeiaGaX1Pft2PYjv2Cv6V2Gh2oDXJu6EZxOdzdlAR617CsZu9Rb
+ BPsA==
+X-Gm-Message-State: APjAAAWWyg1pOJOuOBlXG1USuXT+WFi/V/P/tjp+R3mAb2ICEZSr+YAP
+ lKuROjFM3PeMAvIAvJJjvJNjuZxoQQfwIU2NMU+V20FXAdGGcrw8JVSKcMi10cKlyqDV8RGdgbZ
+ k85pFxoAJWmJJxu8=
+X-Received: by 2002:ac8:7501:: with SMTP id u1mr121616qtq.149.1581107164628;
+ Fri, 07 Feb 2020 12:26:04 -0800 (PST)
+X-Received: by 2002:ac8:7501:: with SMTP id u1mr121583qtq.149.1581107164225;
+ Fri, 07 Feb 2020 12:26:04 -0800 (PST)
+Received: from xz-x1 ([2607:9880:19c8:32::2])
+ by smtp.gmail.com with ESMTPSA id s67sm1882496qke.1.2020.02.07.12.26.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 07 Feb 2020 12:26:03 -0800 (PST)
+Date: Fri, 7 Feb 2020 15:26:01 -0500
+From: Peter Xu <peterx@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v14 03/11] virtio-iommu: Implement attach/detach command
+Message-ID: <20200207202601.GD720553@xz-x1>
+References: <20200207093203.3788-1-eric.auger@redhat.com>
+ <20200207093203.3788-4-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::544
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <20200207093203.3788-4-eric.auger@redhat.com>
+X-MC-Unique: VdttOF6PPHS3h7o94lw2KA-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Guenter Roeck <linux@roeck-us.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HC1gZJ/SS95E
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
+ jean-philippe@linaro.org, quintela@redhat.com, qemu-devel@nongnu.org,
+ dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
+ mst@redhat.com, eric.auger.pro@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8h57Sj80z6ra
 
-Initialize EHCI controllers on AST2600 using the existing
-TYPE_PLATFORM_EHCI. After this change, booting ast2600-evb
-into Linux successfully instantiates a USB interface after
-the necessary changes are made to its devicetree files.
+On Fri, Feb 07, 2020 at 10:31:55AM +0100, Eric Auger wrote:
 
-ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
-ehci-platform: EHCI generic platform driver
-ehci-platform 1e6a3000.usb: EHCI Host Controller
-ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number 1
-ehci-platform 1e6a3000.usb: irq 25, io mem 0x1e6a3000
-ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
-usb usb1: Manufacturer: Linux 5.5.0-09825-ga0802f2d0ef5-dirty ehci_hcd
-usb 1-1: new high-speed USB device number 2 using ehci-platform
+[...]
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
----
-v2: Rebased to master (to fix context conflict)
-    Added Reviewed-by: tag
+> v13 -> v14:
+> - in virtio_iommu_put_endpoint, if the EP is attached to a
+>   domain, call virtio_iommu_detach_endpoint_from_domain()
+> - remove domain ref counting and simply delete the mappings
+>   gtree when the last EP is detached from the domain
 
- hw/arm/aspeed_ast2600.c | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+Yeh this looks a good optimization!  Ref counting protects the domain
+from being gone when there's still EP in the domain, but since we've
+got the ep_list in domain after all so it seems to be safe and clearer.
 
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 90cf1c755d..446b44d31c 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -31,6 +31,8 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
-     [ASPEED_FMC]       = 0x1E620000,
-     [ASPEED_SPI1]      = 0x1E630000,
-     [ASPEED_SPI2]      = 0x1E641000,
-+    [ASPEED_EHCI1]     = 0x1E6A1000,
-+    [ASPEED_EHCI2]     = 0x1E6A3000,
-     [ASPEED_MII1]      = 0x1E650000,
-     [ASPEED_MII2]      = 0x1E650008,
-     [ASPEED_MII3]      = 0x1E650010,
-@@ -79,6 +81,8 @@ static const int aspeed_soc_ast2600_irqmap[] = {
-     [ASPEED_ADC]       = 78,
-     [ASPEED_XDMA]      = 6,
-     [ASPEED_SDHCI]     = 43,
-+    [ASPEED_EHCI1]     = 5,
-+    [ASPEED_EHCI2]     = 9,
-     [ASPEED_EMMC]      = 15,
-     [ASPEED_GPIO]      = 40,
-     [ASPEED_GPIO_1_8V] = 11,
-@@ -166,6 +170,11 @@ static void aspeed_soc_ast2600_init(Object *obj)
-                               sizeof(s->spi[i]), typename);
-     }
- 
-+    for (i = 0; i < sc->ehcis_num; i++) {
-+        sysbus_init_child_obj(obj, "ehci[*]", OBJECT(&s->ehci[i]),
-+                              sizeof(s->ehci[i]), TYPE_PLATFORM_EHCI);
-+    }
-+
-     snprintf(typename, sizeof(typename), "aspeed.sdmc-%s", socname);
-     sysbus_init_child_obj(obj, "sdmc", OBJECT(&s->sdmc), sizeof(s->sdmc),
-                           typename);
-@@ -416,6 +425,19 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-                         s->spi[i].ctrl->flash_window_base);
-     }
- 
-+    /* EHCI */
-+    for (i = 0; i < sc->ehcis_num; i++) {
-+        object_property_set_bool(OBJECT(&s->ehci[i]), true, "realized", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-+                        sc->memmap[ASPEED_EHCI1 + i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-+                           aspeed_soc_get_irq(s, ASPEED_EHCI1 + i));
-+    }
-+
-     /* SDMC - SDRAM Memory Controller */
-     object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &err);
-     if (err) {
-@@ -534,6 +556,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
-     sc->silicon_rev  = AST2600_A0_SILICON_REV;
-     sc->sram_size    = 0x10000;
-     sc->spis_num     = 2;
-+    sc->ehcis_num    = 2;
-     sc->wdts_num     = 4;
-     sc->macs_num     = 4;
-     sc->irqmap       = aspeed_soc_ast2600_irqmap;
--- 
-2.17.1
+> - in virtio_iommu_detach_endpoint_from_domain(), return if the
+>   ep's domain is unset.
+
+[...]
+
+> +static void virtio_iommu_put_domain(gpointer data)
+> +{
+> +    VirtIOIOMMUDomain *domain =3D (VirtIOIOMMUDomain *)data;
+> +    VirtIOIOMMUEndpoint *iter, *tmp;
+> +
+> +    QLIST_FOREACH_SAFE(iter, &domain->endpoint_list, next, tmp) {
+> +        virtio_iommu_detach_endpoint_from_domain(iter);
+> +    }
+> +    trace_virtio_iommu_put_domain(domain->id);
+
+[1]
+
+> +    g_free(domain);
+> +}
+
+[...]
+
+>  static int virtio_iommu_attach(VirtIOIOMMU *s,
+>                                 struct virtio_iommu_req_attach *req)
+>  {
+>      uint32_t domain_id =3D le32_to_cpu(req->domain);
+>      uint32_t ep_id =3D le32_to_cpu(req->endpoint);
+> +    VirtIOIOMMUDomain *domain;
+> +    VirtIOIOMMUEndpoint *ep;
+> =20
+>      trace_virtio_iommu_attach(domain_id, ep_id);
+> =20
+> -    return VIRTIO_IOMMU_S_UNSUPP;
+> +    ep =3D virtio_iommu_get_endpoint(s, ep_id);
+> +    if (!ep) {
+> +        return VIRTIO_IOMMU_S_NOENT;
+> +    }
+> +
+> +    if (ep->domain) {
+> +        VirtIOIOMMUDomain *previous_domain =3D ep->domain;
+> +        /*
+> +         * the device is already attached to a domain,
+> +         * detach it first
+> +         */
+> +        virtio_iommu_detach_endpoint_from_domain(ep);
+> +        if (QLIST_EMPTY(&previous_domain->endpoint_list)) {
+
+I feel like we still need:
+
+               g_tree_destroy(previous_domain->mappings);
+
+Or the mappings will be leaked.
+
+To make this simpler, maybe we can destroy the mappings at [1] above.
+Then we can remove line [2] below too.
+
+> +            g_tree_remove(s->domains, GUINT_TO_POINTER(previous_domain->=
+id));
+> +        }
+> +    }
+> +
+> +    domain =3D virtio_iommu_get_domain(s, domain_id);
+> +    QLIST_INSERT_HEAD(&domain->endpoint_list, ep, next);
+> +
+> +    ep->domain =3D domain;
+> +
+> +    return VIRTIO_IOMMU_S_OK;
+>  }
+> =20
+>  static int virtio_iommu_detach(VirtIOIOMMU *s,
+> @@ -50,10 +268,29 @@ static int virtio_iommu_detach(VirtIOIOMMU *s,
+>  {
+>      uint32_t domain_id =3D le32_to_cpu(req->domain);
+>      uint32_t ep_id =3D le32_to_cpu(req->endpoint);
+> +    VirtIOIOMMUDomain *domain;
+> +    VirtIOIOMMUEndpoint *ep;
+> =20
+>      trace_virtio_iommu_detach(domain_id, ep_id);
+> =20
+> -    return VIRTIO_IOMMU_S_UNSUPP;
+> +    ep =3D g_tree_lookup(s->endpoints, GUINT_TO_POINTER(ep_id));
+> +    if (!ep) {
+> +        return VIRTIO_IOMMU_S_NOENT;
+> +    }
+> +
+> +    domain =3D ep->domain;
+> +
+> +    if (!domain || domain->id !=3D domain_id) {
+> +        return VIRTIO_IOMMU_S_INVAL;
+> +    }
+> +
+> +    virtio_iommu_detach_endpoint_from_domain(ep);
+> +
+> +    if (QLIST_EMPTY(&domain->endpoint_list)) {
+> +        g_tree_destroy(domain->mappings);
+
+[2]
+
+> +        g_tree_remove(s->domains, GUINT_TO_POINTER(domain->id));
+> +    }
+> +    return VIRTIO_IOMMU_S_OK;
+>  }
+> =20
+>  static int virtio_iommu_map(VirtIOIOMMU *s,
+> @@ -172,6 +409,27 @@ out:
+>      }
+>  }
+
+Other than that, the whole patch looks good to me.
+
+Thanks,
+
+--=20
+Peter Xu
 

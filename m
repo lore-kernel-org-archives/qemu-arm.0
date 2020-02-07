@@ -1,100 +1,97 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp303051lfp;
-        Fri, 7 Feb 2020 00:27:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw4NCyycm4kkc9Ziob7XlMirTfMtdtznAWZBYtFZZ5zGarYGljzcifPlgS+o2gVejIgNEXf
-X-Received: by 2002:ac8:f02:: with SMTP id e2mr5961275qtk.216.1581064022693;
-        Fri, 07 Feb 2020 00:27:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581064022; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp359466lfp;
+        Fri, 7 Feb 2020 01:32:53 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy09xFQFOU4c+/C5Xglb+j/RjA0kESvjBe0htoz/frOLWmID3ab8EqwNzI62pUlvyzzaG53
+X-Received: by 2002:a0c:fe10:: with SMTP id x16mr5995394qvr.188.1581067973643;
+        Fri, 07 Feb 2020 01:32:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581067973; cv=none;
         d=google.com; s=arc-20160816;
-        b=qAJVGtc5ss+yDjHsoTZ0Z5ggetvcI9KkNgQWt2d2Vg0Ka6CP4SXXtandwBZIGNYPad
-         rUw7NqNEfKOAJBLl+lR9t/BfOfUMsKQSwCnqio0bOyoj8Lrz5zHZgCZvRjWUAlP92iG5
-         tYS+2Tf5azbXXo5Gg+Li4qYjyJlU5XFEDCLn3ie/fK+kreMEk/4birZk8OHy7rTreKvX
-         9jeQ6Zk46R5aCumQIy716ksf9rrDiS79FY7E8dmixi3ty/vVxIqSGW8TlCfFG6qxHGTb
-         gSV2Vw+r2p2razsv2Gc1gJUrsCIAzZA6sHut0EtMceZvhe+4Kp6MSWWXPGUn0GZnMx5a
-         Qb+w==
+        b=BL53EH6gmXIqbzxuT3mForGcE9duCXOJKP2WLDVokNIr4xjwzdzYbKD3+dGFNFCRre
+         yPCY/VukFUMzFlmIIZ43ay/1l+LkYP/TzjcaBU1VWlNQc/GcS2DIgVAQGgPwOxrxCz7M
+         CA8IxNvA2M6nWCzJyq+k+m40qyfxzEgI9oW8TgPdMvI3JHsW6EdPKbMqh8B4rB+rFkeR
+         toi9GkS5hOo9t9/A56IB36OEv6ZquvZdqwKQgBPh21cawPq2q95hie0useo52rj3t4na
+         BpyF5G1BETtA6+t9TcYUAtfkO1Rl0RGySMZql96et34K5EC70cF99kzwO3o0hoLkKRaw
+         F3AQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=uwyqtmyEhZCV+SovDAOUhUZzsaUHNv+ozZ7l+V/puMY=;
-        b=yHqLoT7BMuwuq+FAQurUjI0yvYRBAerba3WDB/9/+Z52VuFl47CrZ6o7JzKdsJqase
-         fiGjtLofbtjiyYz/gmw0rA0f670QoxqBGYs883f7YVGV90+c9ny4x0Kd5xR267Ene2NV
-         3y3JB9QF9Wy0A8lQVrDUJ95MChQqo8VUsIpbZov9sEOCEl5eM2tc5Mf17axwVuKNvU0E
-         EWp5F5vavo5aBvDGpGMzCthqBerr8grz5RCKq1eN8HSHAAQO4FDNLadbA6amMt7Lzi3G
-         ehFob3t4NPkZeIxMbmWXQ54kbctkwbY1r2VtiNlUVgodtGz93hOv63yNW2aBLsTxipiD
-         XQSQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=PbZGeQcCpZB0x5vnuP91MhqFcpHoTpRhFRkxHZNyC14=;
+        b=NaeA4IiRFi28X6VQr4cUiDBmgRQZz0y1jr7ie2r3zKoC6nipbJkqzN2Gbkv1qEmcFc
+         mbiuec283PTPrY1z9e0cCnV/dshWWYI4nVTbu6qypw/qELECM76Y9BQmDiu6FlfQWa29
+         M17yd9Pi9ZzKuRn0G75o4S6KNaHbtevIHkdDdWRz9C2ZMJJHTbiwDvrsCKO92dnyxGCs
+         LJ7YiREsDHIuIxo0k5HY+WUOCMLmW+UayKYiFeBhOKdO6cY4jSyE2Fj5AM0m6yJtvGEa
+         Ns1BumVITuQgLEOVC16fs4GrJhta/o5hEaNn/SpmlBaeteIM2a1Hfr0kBDnvfG1lX1uf
+         jftQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="WOPm/+0Q";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="d86wFG/h";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c3si1015982qkb.191.2020.02.07.00.27.02
+        by mx.google.com with ESMTPS id r15si1065121qtm.144.2020.02.07.01.32.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Feb 2020 00:27:02 -0800 (PST)
+        Fri, 07 Feb 2020 01:32:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="WOPm/+0Q";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="d86wFG/h";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51990 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52740 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izyyc-0002Yg-3i
-	for alex.bennee@linaro.org; Fri, 07 Feb 2020 03:27:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48952)
+	id 1j000L-0006c8-0j
+	for alex.bennee@linaro.org; Fri, 07 Feb 2020 04:32:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36402)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1izyyT-0002Y6-U5
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 03:26:54 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1izzzz-0006Zf-T7
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 04:32:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1izyyS-00014l-TC
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 03:26:53 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:49680
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <eric.auger@redhat.com>) id 1izzzu-0004CK-Mv
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 04:32:31 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:53266
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1izyyS-00013H-Pd
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 03:26:52 -0500
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1izzzu-00048S-E3
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 04:32:26 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581064012;
+ s=mimecast20190719; t=1581067945;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uwyqtmyEhZCV+SovDAOUhUZzsaUHNv+ozZ7l+V/puMY=;
- b=WOPm/+0QZRaSeg0aDeE+OGRZHw7e7Jx7ERzDnk2tRCxwOz0s8YWuczRWFDuFxx7MHd/b/1
- ZMLC6k7qKX49hY7UucAQDeVCVBKis6N+VHFWE1Vw+Va4fv1doovf2qofnGk5dOw5r1Ktpe
- 1IWLBJ12VQnLstjz837iM1SxHNWp++M=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=PbZGeQcCpZB0x5vnuP91MhqFcpHoTpRhFRkxHZNyC14=;
+ b=d86wFG/h/cuGfojwF40p4NwTWGTg6dPcA/d+ZKcuQwSzL7+tPh00A4tH8pFQ59TixrlCAv
+ KED7ji46+eYet4NrMHYwx+UrpIpHcnObsbTu0CwK3Izn07yfDTh0eXg0Q+TU67hRlNQ/+F
+ tlGlq+TdKefkAZcDSmn5VyQBTIITSMo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-80-Vc0G0U-BMIGHRjxXbtnJ0Q-1; Fri, 07 Feb 2020 03:26:50 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-246-mdtCTQl7N2CNnk4WDBagew-1; Fri, 07 Feb 2020 04:32:23 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C4109DB22;
- Fri,  7 Feb 2020 08:26:49 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8AE757FB60;
- Fri,  7 Feb 2020 08:26:45 +0000 (UTC)
-Date: Fri, 7 Feb 2020 09:26:43 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [PATCH v2] docs/arm-cpu-features: Make kvm-no-adjvtime comment
- clearer
-Message-ID: <20200207082643.m7pkyjbx5h2o4zh7@kamzik.brq.redhat.com>
-References: <20200206225148.23923-1-philmd@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 53F9518A6EC3;
+ Fri,  7 Feb 2020 09:32:22 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 70C13790EB;
+ Fri,  7 Feb 2020 09:32:10 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, jean-philippe@linaro.org,
+ dgilbert@redhat.com, quintela@redhat.com, mst@redhat.com, peterx@redhat.com
+Subject: [PATCH v14 00/11] VIRTIO-IOMMU device
+Date: Fri,  7 Feb 2020 10:31:52 +0100
+Message-Id: <20200207093203.3788-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200206225148.23923-1-philmd@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: Vc0G0U-BMIGHRjxXbtnJ0Q-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: mdtCTQl7N2CNnk4WDBagew-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,44 +103,187 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: kevin.tian@intel.com, bharatb.linux@gmail.com, tnowicki@marvell.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 96bs4ytITko3
+X-TUID: tl3QOyAQHvQ6
 
-On Thu, Feb 06, 2020 at 11:51:48PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> The bold text sounds like 'knock knock'. Only bolding the
+This series implements the QEMU virtio-iommu device.
 
-Who's there?
+This matches the v0.12 spec (voted) and the corresponding
+virtio-iommu driver upstreamed in 5.3. All kernel dependencies
+are resolved for DT integration. The virtio-iommu can be
+instantiated in ARM virt using:
 
-> second 'not' makes it easier to read.
->=20
-> Fixes: dea101a1ae
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> ---
-> v2: Removed unrelated hunk
-> ---
->  docs/arm-cpu-features.rst | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/docs/arm-cpu-features.rst b/docs/arm-cpu-features.rst
-> index dbf3b7cf42..fc1623aeca 100644
-> --- a/docs/arm-cpu-features.rst
-> +++ b/docs/arm-cpu-features.rst
-> @@ -185,7 +185,7 @@ the list of KVM VCPU features and their descriptions.
-> =20
->    kvm-no-adjvtime          By default kvm-no-adjvtime is disabled.  This
->                             means that by default the virtual time
-> -                           adjustment is enabled (vtime is *not not*
-> +                           adjustment is enabled (vtime is not *not*
->                             adjusted).
-> =20
->                             When virtual time adjustment is enabled each
-> --=20
-> 2.21.1
->=20
->
+"-device virtio-iommu-pci,x-dt-binding".
 
-Not-Not-Reviewed-by: Andrew Jones <drjones@redhat.com>
+Non DT mode is not yet supported as it has non resolved kernel
+dependencies [1].
+
+This feature targets 5.0.
+
+Integration with vhost devices and vfio devices is not part
+of this series. Please follow Bharat's respins [2].
+
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/v4.2-virtio-iommu-v14
+
+References:
+[1] [RFC 00/13] virtio-iommu on non-devicetree platforms
+[2] [PATCH RFC v5 0/5] virtio-iommu: VFIO integration
+
+Testing:
+- tested with guest using virtio-net-pci
+  (,vhost=3Doff,iommu_platform,disable-modern=3Doff,disable-legacy=3Don)
+  and virtio-blk-pci
+- migration
+
+History:
+
+v13 -> v14:
+- added "virtio-iommu-pci: Introduce the x-dt-binding option"
+- Removed the mappings gtree ref counting and simply delete
+  the gtree when the last EP is detached from the domain
+- call virtio_iommu_detach_endpoint_from_domain from
+  virtio_iommu_put_endpoint
+
+v12 -> v13:
+- Take into account Peter's comments
+- fix qtest error and accomodate for directory changes in
+  test
+- remove "[PATCH v12 01/13] migration: Support QLIST migration"
+  which is now upstream
+- fix iommu_find_iommu_pcibus()
+- squash commits as requested by Peter
+- remove spurious guest log
+
+v11 -> v12:
+- took into account Peter and Jean's comments
+  - use guest features
+  - restore as_by_bus_num and when attaching devices, check they are
+    actually protected by the IOMMU. Updated the tests accordingly.
+  - fix the mapping ref counting and make sure mappings are properly
+    cleaned.
+  - Use CamelCase for data types
+  - simplify postload callback as suggested by Peter
+  - add R-bs
+- fix mingw compilation issue
+- add IOMMU migration priority
+- qlist migration load simplified following Juan's suggestion
+
+v10 -> v11:
+- introduce virtio_iommu_handle_req macro
+- migration support
+- introduce DEFINE_PROP_INTERVAL and pass reserved regions
+  through an array of those
+- domain gtree simplification
+
+v9 -> v10:
+- rebase on 4.1.0-rc2, compliance with 0.12 spec
+- removed ACPI part
+- cleanup (see individual change logs)
+- moved to a PATCH series
+
+v8 -> v9:
+- virtio-iommu-pci device needs to be instantiated from the command
+  line (RID is not imposed anymore).
+- tail structure properly initialized
+
+v7 -> v8:
+- virtio-iommu-pci added
+- virt instantiation modified
+- DT and ACPI modified to exclude the iommu RID from the mapping
+- VIRTIO_IOMMU_F_BYPASS, VIRTIO_F_VERSION_1 features exposed
+
+v6 -> v7:
+- rebase on qemu 3.0.0-rc3
+- minor update against v0.7
+- fix issue with EP not on pci.0 and ACPI probing
+- change the instantiation method
+
+v5 -> v6:
+- minor update against v0.6 spec
+- fix g_hash_table_lookup in virtio_iommu_find_add_as
+- replace some error_reports by qemu_log_mask(LOG_GUEST_ERROR, ...)
+
+v4 -> v5:
+- event queue and fault reporting
+- we now return the IOAPIC MSI region if the virtio-iommu is instantiated
+  in a PC machine.
+- we bypass transactions on MSI HW region and fault on reserved ones.
+- We support ACPI boot with mach-virt (based on IORT proposal)
+- We moved to the new driver naming conventions
+- simplified mach-virt instantiation
+- worked around the disappearing of pci_find_primary_bus
+- in virtio_iommu_translate, check the dev->as is not NULL
+- initialize as->device_list in virtio_iommu_get_as
+- initialize bufstate.error to false in virtio_iommu_probe
+
+v3 -> v4:
+- probe request support although no reserved region is returned at
+  the moment
+- unmap semantics less strict, as specified in v0.4
+- device registration, attach/detach revisited
+- split into smaller patches to ease review
+- propose a way to inform the IOMMU mr about the page_size_mask
+  of underlying HW IOMMU, if any
+- remove warning associated with the translation of the MSI doorbell
+
+v2 -> v3:
+- rebase on top of 2.10-rc0 and especially
+  [PATCH qemu v9 0/2] memory/iommu: QOM'fy IOMMU MemoryRegion
+- add mutex init
+- fix as->mappings deletion using g_tree_ref/unref
+- when a dev is attached whereas it is already attached to
+  another address space, first detach it
+- fix some error values
+- page_sizes =3D TARGET_PAGE_MASK;
+- I haven't changed the unmap() semantics yet, waiting for the
+  next virtio-iommu spec revision.
+
+v1 -> v2:
+- fix redefinition of viommu_as typedef
+
+
+Eric Auger (11):
+  virtio-iommu: Add skeleton
+  virtio-iommu: Decode the command payload
+  virtio-iommu: Implement attach/detach command
+  virtio-iommu: Implement map/unmap
+  virtio-iommu: Implement translate
+  virtio-iommu: Implement fault reporting
+  virtio-iommu-pci: Add virtio iommu pci support
+  virtio-iommu-pci: Introduce the x-dt-binding option
+  hw/arm/virt: Add the virtio-iommu device tree mappings
+  virtio-iommu: Support migration
+  tests: Add virtio-iommu test
+
+ hw/arm/virt.c                     |  54 +-
+ hw/virtio/Kconfig                 |   5 +
+ hw/virtio/Makefile.objs           |   2 +
+ hw/virtio/trace-events            |  20 +
+ hw/virtio/virtio-iommu-pci.c      | 106 ++++
+ hw/virtio/virtio-iommu.c          | 890 ++++++++++++++++++++++++++++++
+ include/hw/arm/virt.h             |   2 +
+ include/hw/pci/pci.h              |   1 +
+ include/hw/virtio/virtio-iommu.h  |  61 ++
+ qdev-monitor.c                    |   1 +
+ tests/qtest/Makefile.include      |   2 +
+ tests/qtest/libqos/virtio-iommu.c | 177 ++++++
+ tests/qtest/libqos/virtio-iommu.h |  45 ++
+ tests/qtest/virtio-iommu-test.c   | 306 ++++++++++
+ 14 files changed, 1664 insertions(+), 8 deletions(-)
+ create mode 100644 hw/virtio/virtio-iommu-pci.c
+ create mode 100644 hw/virtio/virtio-iommu.c
+ create mode 100644 include/hw/virtio/virtio-iommu.h
+ create mode 100644 tests/qtest/libqos/virtio-iommu.c
+ create mode 100644 tests/qtest/libqos/virtio-iommu.h
+ create mode 100644 tests/qtest/virtio-iommu-test.c
+
+--=20
+2.20.1
 

@@ -1,260 +1,387 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp989829lfp;
-        Fri, 7 Feb 2020 12:27:00 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyeRvAjZ0q03v28nSCzc3xegqoNuQ08pR1CvQfuA9A3/jqKx+jJSCh8UQe8qbO2FejLwkuc
-X-Received: by 2002:aed:35e7:: with SMTP id d36mr103618qte.363.1581107220210;
-        Fri, 07 Feb 2020 12:27:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581107220; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1025344lfp;
+        Fri, 7 Feb 2020 13:09:29 -0800 (PST)
+X-Received: by 2002:a6b:fd18:: with SMTP id c24mr345552ioi.189.1581109769463;
+        Fri, 07 Feb 2020 13:09:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581109769; cv=none;
         d=google.com; s=arc-20160816;
-        b=rMQ3gn6YessoYvpp/wfiLheCpz/sXekw77w2zP2wUaJFSlp8NyRBCHNNsNvvRVrqJC
-         RSoomZftFHp/MzhI224FpmHLAVQaAZngvoQtBSGVlnpvt4jRXOm3RtiwTi5zRbLPCDLc
-         Ne1gaHsS+sku9dEiCGljeJiu4sMSaOIfm5u8IidH8fDXm3kU35fzG2DPa/vshzlT1G+X
-         buXyom3kB1KqcXsod384wjZZ2WMquynxQs7QPqjlzRtjgEFznX4oJc9nrqyhkMGSFbzF
-         g9icG2nP0f3ONExF6tmz9wAggE4m4A+LbYn95BiWbNndR8uM/CbOdoNouFBfLgLoPFmP
-         C5Zg==
+        b=WPBEPFAWyzZnnuQC7SweKUhFgUUqwB1yj9632XQt4ySUyC8yK3KjYtO1CUIcbHEvA0
+         CZx3IAD42zJlEZ3zinOghjuXqjcEYpVE/ip3KkFkqwjg/utfmRguzMeF3l8WZdK7acgE
+         CscLhFss9U0AB1mHzOnQvr1ZvPGI4cfllDIrAobHRnVMKGZTu1C21G8zSSJah0BgrlKC
+         qxh2t1mef05F1MDSY08UuSUZoFb9G5fZPmER4wpW7b+sJ0vRTW8RnXhXtF648zR6+vnK
+         kToRwMlyhPyxY9ucmBhzxOHJmIAOZA1InUbLPuxahXUnhiwrbt7c0WIB+9EWfl4QSpID
+         PVQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=fX68pnrXCaepJggUv37SrOGhdFndlVqiL1tAnozGtBA=;
-        b=J2oY0F2DF9MkZ1w7QO09At05JEXAxmP9TwpHg3MLb8vINWPSSerlWxcqm4hinDptwZ
-         mC2zuxx67QavVae1fSxRhhjcZa+0Cx19iM0c61DxkDIRbOuNoFDNy7zWH2uud3BYy1+r
-         /2LnAkrD4wO7W1xU7OMoPZ/IEz1Wwo2SDvlW6zoGWuPXvPxhAis96DlSHRdMqfJkHsrr
-         mi4/OH9ta25gRU4xOgEua7E5VToGZ+zGwtCuI3on3dKz8f0K90EkXW8/rFU+K1PPxYFL
-         k3BDu23wXcL8XtvCA4vvROguCHlAaxbB3xRiAvtKN8h4j7511U+jpBm1PpNrx62lFuvs
-         sidQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=DGQE7Ulr1dPFbkBbpWWN+b7EnRREQqShmFupImjIXsg=;
+        b=AEKQiZnB+bz299Ps+Lnhz16vJ6w0STVrxA5Rf0O7bwUA/Q/lpj4syXGMvQMdKYGBpm
+         t2gSdo9XofP3r3IaTKrxzDcT79kHxmUab1cHCZnptsAsdwMXCoA8I/nVWFJX5HY73dRv
+         cGRqypMpYILfkU2o5/PJXrjqc0kEgXNUSJCxwjHFIgGrZAgHWGdUuM7z6bJd+kJTb0SV
+         25v/EH1BRj0Yf4h6WGso5Q7B/GG0kQTJQQWNckFb5SKOLxsrHLpZCVbu2V5Mgmys7ga9
+         kH/rKm36JvVMR/iYUUuu9XyHfNscu1sM1mfJ5uUKdXMjGk4PfIbZaQTx5KrodsGpTCJZ
+         4rfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Onpvyfe5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o45si374354qtk.333.2020.02.07.12.27.00
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Feb 2020 12:27:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cWzeITb3;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id t12sor716156ioc.112.2020.02.07.13.09.29
+        (Google Transport Security);
+        Fri, 07 Feb 2020 13:09:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Onpvyfe5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34982 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j0ADL-0001VF-Lk
-	for alex.bennee@linaro.org; Fri, 07 Feb 2020 15:26:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56342)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peterx@redhat.com>) id 1j0ACZ-0000ll-Ns
- for qemu-devel@nongnu.org; Fri, 07 Feb 2020 15:26:12 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peterx@redhat.com>) id 1j0ACW-0001B4-Sm
- for qemu-devel@nongnu.org; Fri, 07 Feb 2020 15:26:09 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:26123
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1j0ACW-00018W-Hx
- for qemu-devel@nongnu.org; Fri, 07 Feb 2020 15:26:08 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581107167;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fX68pnrXCaepJggUv37SrOGhdFndlVqiL1tAnozGtBA=;
- b=Onpvyfe5BFuz/ViPgBCJEOVMbkLGBTvSzjovhLGZj/L42G4b72oqb2GgGp9RkjDF5bAIfo
- /YNqSv/rqcwU4DVakQOIa+kU2muYqO+MK2mTKRm2P8+DcYn6Hut2kuex6GaCr3cvkHQ5ml
- x64MhmZVQyzt/t2MH99E6ladF66gOy8=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-341-VdttOF6PPHS3h7o94lw2KA-1; Fri, 07 Feb 2020 15:26:05 -0500
-Received: by mail-qt1-f197.google.com with SMTP id d16so330633qtr.2
- for <qemu-devel@nongnu.org>; Fri, 07 Feb 2020 12:26:05 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cWzeITb3;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=DGQE7Ulr1dPFbkBbpWWN+b7EnRREQqShmFupImjIXsg=;
+        b=cWzeITb3HO4lxvYtI0eJ7pFf0w0idzM14lR/y46EbodfpnQNqAU8dn6CXNsPqqlMma
+         9R8KCsgA6N/mt+6B1TQJtE/HSQQPWt2Npc4FAOU+kPZQenOjEMlA8UfEO4sGFKUucvl0
+         NZmEWJTZtcBg96GGMvtUff26561LO4RlFc25pl72skmfpDukgJzmWS88+BCZHn35AHsL
+         C1Ba1olNl86clYWpx+rpNUXDGi7Xo0RZImCTXmYUU9CAb/TSm4b219Q7LnivQXuNXJVO
+         lp8WhWhT7S1/mMs2JFl5HddhKYZt4Ep9bRLyPIZLJ+13FrKydzM4FgxRWlqnToosloUc
+         L+sg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=6opY5JAPnTC3deXfh3fnYGt75ABnlBjWVDrm/KM9ZmQ=;
- b=K7nDoXn251fddrzIf3+bu/c0siAzvtVVrtfLQYS+CdsYcnpRqKK0LJct84xOHxpSEi
- C0i4G/8PplYm9zIjb27VWBBR1Wt/wUnNx7RUiF2t9Z2t2LGSpsvyZBzGR4FsFn62qzSK
- coMOqbiOVHAfYFy9T+tS16he3lQhqh6ruH8JXGjawyQ0kE4TOx/qvgnLoug1yEIeJHQX
- DQTB2e7+No9jjDWptHMduPTomSYeLZv+jN85khSYpnoHsgYWkKkWLjd2MbyzW5GofRKz
- qmfen/cbJGlYDEDikLeiaGaX1Pft2PYjv2Cv6V2Gh2oDXJu6EZxOdzdlAR617CsZu9Rb
- BPsA==
-X-Gm-Message-State: APjAAAWWyg1pOJOuOBlXG1USuXT+WFi/V/P/tjp+R3mAb2ICEZSr+YAP
- lKuROjFM3PeMAvIAvJJjvJNjuZxoQQfwIU2NMU+V20FXAdGGcrw8JVSKcMi10cKlyqDV8RGdgbZ
- k85pFxoAJWmJJxu8=
-X-Received: by 2002:ac8:7501:: with SMTP id u1mr121616qtq.149.1581107164628;
- Fri, 07 Feb 2020 12:26:04 -0800 (PST)
-X-Received: by 2002:ac8:7501:: with SMTP id u1mr121583qtq.149.1581107164225;
- Fri, 07 Feb 2020 12:26:04 -0800 (PST)
-Received: from xz-x1 ([2607:9880:19c8:32::2])
- by smtp.gmail.com with ESMTPSA id s67sm1882496qke.1.2020.02.07.12.26.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Feb 2020 12:26:03 -0800 (PST)
-Date: Fri, 7 Feb 2020 15:26:01 -0500
-From: Peter Xu <peterx@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v14 03/11] virtio-iommu: Implement attach/detach command
-Message-ID: <20200207202601.GD720553@xz-x1>
-References: <20200207093203.3788-1-eric.auger@redhat.com>
- <20200207093203.3788-4-eric.auger@redhat.com>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=DGQE7Ulr1dPFbkBbpWWN+b7EnRREQqShmFupImjIXsg=;
+        b=DAry9uWSa2G4vVotLj92rCMfVylJuVwU/dC5CLAoOS+TqNs/M730ywc2hXYrwgkL6j
+         lyKOGoPNDHyvYQlgmrqkvqQxQZSrGQ3MENCiSNdjoJ+cXK0GqqkwrHtlL2peWbss+dcz
+         9SSK43hUja2w/9yYjb4ibNpEGZgXmYSZRleGLi8qC2ATopC2RfMnjhnxBzSXfbjx/PKA
+         m09E6JvOOvPXbvO/aj9O10EF8Obl16oxNzVaOEY7ANfMCmkJ4Ax7E3kS5nUNsOlmIdDj
+         lgbtQIUnMp/yCtk1jl5Jbdk6vlT6GPi5TtMGGAfpaVaHkfqE/FFQkHIrgXF4mQ9+sm0l
+         Djcg==
+X-Gm-Message-State: APjAAAVCXyXUsqvpO/Mk3wUSmHGu0BVbJnBqURFqCu6mB1M7GJwGZc3s
+	sSAFcdcqfznS1iLo/HjS9NWO4sT8Mk+BKZ7QUnbIgxqEFCE=
+X-Google-Smtp-Source: APXvYqzUQ5qQtdeFH1SsdoH5SxLwh9AD74MZ8PQ1GW9qLdyFHfeAQ3g67lLWm8NNzxl6QqG2fNBnV6ESjUMVbs08Xvo=
+X-Received: by 2002:a6b:6f01:: with SMTP id k1mr437677ioc.28.1581109769076;
+ Fri, 07 Feb 2020 13:09:29 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200207093203.3788-4-eric.auger@redhat.com>
-X-MC-Unique: VdttOF6PPHS3h7o94lw2KA-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+References: <20200119005102.3847-1-nieklinnenbank@gmail.com>
+ <20200119005102.3847-9-nieklinnenbank@gmail.com> <e9c31386-d471-159a-6cb0-7e621cb3bc83@redhat.com>
+ <CAPan3WpJnd4YPa1DT_5Z6+i5yVahAE7sFHZ6JXqC69KstFG+Mg@mail.gmail.com>
+In-Reply-To: <CAPan3WpJnd4YPa1DT_5Z6+i5yVahAE7sFHZ6JXqC69KstFG+Mg@mail.gmail.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Fri, 7 Feb 2020 22:09:16 +0100
+Message-ID: <CAPan3WpjkBc9WKPt7SDud5TQsnRphnBJwgqUep+3fFzfzLC0hg@mail.gmail.com>
+Subject: Re: [PATCH v4 08/20] hw/arm/allwinner: add SD/MMC host controller
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Peter Maydell <peter.maydell@linaro.org>, Beniamino Galvani <b.galvani@gmail.com>, jasowang@redhat.com, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Igor Mammedov <imammedo@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000230470059e02ce7b"
+X-TUID: YM/r/BG34/pD
+
+--000000000000230470059e02ce7b
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
- jean-philippe@linaro.org, quintela@redhat.com, qemu-devel@nongnu.org,
- dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- mst@redhat.com, eric.auger.pro@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8h57Sj80z6ra
 
-On Fri, Feb 07, 2020 at 10:31:55AM +0100, Eric Auger wrote:
+Hi Philippe,
 
-[...]
+FYI, and in case someone also wants to do a similar configuration test on
+some other machine.
+I managed to re-produce the same error by temporarily modifying
+default-configs/arm-softmmu.mak, such that it only enables the orangepi
+machine.
+That way, if any configuration item is missing from the machine, the error
+will be visible.
 
-> v13 -> v14:
-> - in virtio_iommu_put_endpoint, if the EP is attached to a
->   domain, call virtio_iommu_detach_endpoint_from_domain()
-> - remove domain ref counting and simply delete the mappings
->   gtree when the last EP is detached from the domain
+Regards,
+Niek
 
-Yeh this looks a good optimization!  Ref counting protects the domain
-from being gone when there's still EP in the domain, but since we've
-got the ep_list in domain after all so it seems to be safe and clearer.
 
-> - in virtio_iommu_detach_endpoint_from_domain(), return if the
->   ep's domain is unset.
+On Sun, Feb 2, 2020 at 10:43 PM Niek Linnenbank <nieklinnenbank@gmail.com>
+wrote:
 
-[...]
-
-> +static void virtio_iommu_put_domain(gpointer data)
-> +{
-> +    VirtIOIOMMUDomain *domain =3D (VirtIOIOMMUDomain *)data;
-> +    VirtIOIOMMUEndpoint *iter, *tmp;
-> +
-> +    QLIST_FOREACH_SAFE(iter, &domain->endpoint_list, next, tmp) {
-> +        virtio_iommu_detach_endpoint_from_domain(iter);
-> +    }
-> +    trace_virtio_iommu_put_domain(domain->id);
-
-[1]
-
-> +    g_free(domain);
-> +}
-
-[...]
-
->  static int virtio_iommu_attach(VirtIOIOMMU *s,
->                                 struct virtio_iommu_req_attach *req)
->  {
->      uint32_t domain_id =3D le32_to_cpu(req->domain);
->      uint32_t ep_id =3D le32_to_cpu(req->endpoint);
-> +    VirtIOIOMMUDomain *domain;
-> +    VirtIOIOMMUEndpoint *ep;
-> =20
->      trace_virtio_iommu_attach(domain_id, ep_id);
-> =20
-> -    return VIRTIO_IOMMU_S_UNSUPP;
-> +    ep =3D virtio_iommu_get_endpoint(s, ep_id);
-> +    if (!ep) {
-> +        return VIRTIO_IOMMU_S_NOENT;
-> +    }
-> +
-> +    if (ep->domain) {
-> +        VirtIOIOMMUDomain *previous_domain =3D ep->domain;
-> +        /*
-> +         * the device is already attached to a domain,
-> +         * detach it first
-> +         */
-> +        virtio_iommu_detach_endpoint_from_domain(ep);
-> +        if (QLIST_EMPTY(&previous_domain->endpoint_list)) {
-
-I feel like we still need:
-
-               g_tree_destroy(previous_domain->mappings);
-
-Or the mappings will be leaked.
-
-To make this simpler, maybe we can destroy the mappings at [1] above.
-Then we can remove line [2] below too.
-
-> +            g_tree_remove(s->domains, GUINT_TO_POINTER(previous_domain->=
-id));
-> +        }
-> +    }
-> +
-> +    domain =3D virtio_iommu_get_domain(s, domain_id);
-> +    QLIST_INSERT_HEAD(&domain->endpoint_list, ep, next);
-> +
-> +    ep->domain =3D domain;
-> +
-> +    return VIRTIO_IOMMU_S_OK;
->  }
-> =20
->  static int virtio_iommu_detach(VirtIOIOMMU *s,
-> @@ -50,10 +268,29 @@ static int virtio_iommu_detach(VirtIOIOMMU *s,
->  {
->      uint32_t domain_id =3D le32_to_cpu(req->domain);
->      uint32_t ep_id =3D le32_to_cpu(req->endpoint);
-> +    VirtIOIOMMUDomain *domain;
-> +    VirtIOIOMMUEndpoint *ep;
-> =20
->      trace_virtio_iommu_detach(domain_id, ep_id);
-> =20
-> -    return VIRTIO_IOMMU_S_UNSUPP;
-> +    ep =3D g_tree_lookup(s->endpoints, GUINT_TO_POINTER(ep_id));
-> +    if (!ep) {
-> +        return VIRTIO_IOMMU_S_NOENT;
-> +    }
-> +
-> +    domain =3D ep->domain;
-> +
-> +    if (!domain || domain->id !=3D domain_id) {
-> +        return VIRTIO_IOMMU_S_INVAL;
-> +    }
-> +
-> +    virtio_iommu_detach_endpoint_from_domain(ep);
-> +
-> +    if (QLIST_EMPTY(&domain->endpoint_list)) {
-> +        g_tree_destroy(domain->mappings);
-
-[2]
-
-> +        g_tree_remove(s->domains, GUINT_TO_POINTER(domain->id));
-> +    }
-> +    return VIRTIO_IOMMU_S_OK;
->  }
-> =20
->  static int virtio_iommu_map(VirtIOIOMMU *s,
-> @@ -172,6 +409,27 @@ out:
->      }
->  }
-
-Other than that, the whole patch looks good to me.
-
-Thanks,
+> Hi Philippe,
+>
+> On Sun, Jan 19, 2020 at 8:02 PM Philippe Mathieu-Daud=C3=A9 <philmd@redha=
+t.com>
+> wrote:
+>
+>> On 1/19/20 1:50 AM, Niek Linnenbank wrote:
+>> > The Allwinner System on Chip families sun4i and above contain
+>> > an integrated storage controller for Secure Digital (SD) and
+>> > Multi Media Card (MMC) interfaces. This commit adds support
+>> > for the Allwinner SD/MMC storage controller with the following
+>> > emulated features:
+>> >
+>> >   * DMA transfers
+>> >   * Direct FIFO I/O
+>> >   * Short/Long format command responses
+>> >   * Auto-Stop command (CMD12)
+>> >   * Insert & remove card detection
+>> >
+>> > The following boards are extended with the SD host controller:
+>> >
+>> >   * Cubieboard (hw/arm/cubieboard.c)
+>> >   * Orange Pi PC (hw/arm/orangepi.c)
+>> >
+>> > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+>> > Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>> > ---
+>> >   include/hw/arm/allwinner-a10.h   |   2 +
+>> >   include/hw/arm/allwinner-h3.h    |   3 +
+>> >   include/hw/sd/allwinner-sdhost.h | 135 +++++
+>> >   hw/arm/allwinner-a10.c           |  11 +
+>> >   hw/arm/allwinner-h3.c            |  15 +-
+>> >   hw/arm/cubieboard.c              |  15 +
+>> >   hw/arm/orangepi.c                |  16 +
+>> >   hw/sd/allwinner-sdhost.c         | 848 +++++++++++++++++++++++++++++=
+++
+>> >   hw/sd/Makefile.objs              |   1 +
+>> >   hw/sd/trace-events               |   7 +
+>> >   10 files changed, 1052 insertions(+), 1 deletion(-)
+>> >   create mode 100644 include/hw/sd/allwinner-sdhost.h
+>> >   create mode 100644 hw/sd/allwinner-sdhost.c
+>>
+>> Failure at build if configured with --without-default-devices:
+>>
+>>    CC      arm-softmmu/hw/sd/allwinner-sdhost.o
+>>    CC      arm-softmmu/hw/arm/orangepi.o
+>>    CC      arm-softmmu/hw/arm/allwinner-h3.o
+>>    LINK    arm-softmmu/qemu-system-arm
+>> /usr/bin/ld: hw/sd/allwinner-sdhost.o: in function
+>> `allwinner_sdhost_send_command':
+>> hw/sd/allwinner-sdhost.c:239: undefined reference to `sdbus_do_command'
+>> /usr/bin/ld: hw/sd/allwinner-sdhost.o: in function
+>> `allwinner_sdhost_read':
+>> hw/sd/allwinner-sdhost.c:517: undefined reference to `sdbus_data_ready'
+>> /usr/bin/ld: hw/sd/allwinner-sdhost.c:518: undefined reference to
+>> `sdbus_read_data'
+>> /usr/bin/ld: hw/sd/allwinner-sdhost.c:519: undefined reference to
+>> `sdbus_read_data'
+>> /usr/bin/ld: hw/sd/allwinner-sdhost.c:520: undefined reference to
+>> `sdbus_read_data'
+>> /usr/bin/ld: hw/sd/allwinner-sdhost.c:521: undefined reference to
+>> `sdbus_read_data'
+>> /usr/bin/ld: hw/sd/allwinner-sdhost.o: in function
+>> `allwinner_sdhost_process_desc':
+>> hw/sd/allwinner-sdhost.c:340: undefined reference to `sdbus_read_data'
+>> /usr/bin/ld: hw/sd/allwinner-sdhost.c:334: undefined reference to
+>> `sdbus_write_data'
+>> /usr/bin/ld: hw/sd/allwinner-sdhost.o: in function
+>> `allwinner_sdhost_write':
+>> hw/sd/allwinner-sdhost.c:651: undefined reference to `sdbus_write_data'
+>> /usr/bin/ld: hw/sd/allwinner-sdhost.c:652: undefined reference to
+>> `sdbus_write_data'
+>> /usr/bin/ld: hw/sd/allwinner-sdhost.c:653: undefined reference to
+>> `sdbus_write_data'
+>> /usr/bin/ld: hw/sd/allwinner-sdhost.c:654: undefined reference to
+>> `sdbus_write_data'
+>> /usr/bin/ld: hw/sd/allwinner-sdhost.o: in function `allwinner_sdhost_dma=
+':
+>> hw/sd/allwinner-sdhost.c:372: undefined reference to `sdbus_data_ready'
+>> collect2: error: ld returned 1 exit status
+>> make[1]: *** [Makefile:206: qemu-system-arm] Error 1
+>>
+>>
+> Thanks for reporting this Philippe. As you pointed out, I also made the
+> same mistake in patch #4 for USB support [1].
+> Here I also tried to re-produce the error here with:
+>
+> $ ./configure --target-list=3Darm-softmmu --without-default-devices; make=
+ -j5
+>
+> But again no error. I also see that CONFIG_SD=3Dy is set in
+> arm-softmmu/config-devices.mak.
+> Maybe on my laptop  --without-default-devices has no effect or is
+> overriden somehow, I'll try to debug it further.
+>
+> [1] https://lists.gnu.org/archive/html/qemu-devel/2020-02/msg00125.html
+>
+>
+>> Fixed by:
+>>
+>> -- >8 --
+>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+>> index bb75c1de17..086241354c 100644
+>> --- a/hw/arm/Kconfig
+>> +++ b/hw/arm/Kconfig
+>> @@ -302,6 +302,9 @@ config ALLWINNER_H3
+>>       select ARM_TIMER
+>>       select ARM_GIC
+>>       select UNIMP
+>>       select USB_OHCI
+>>       select USB_EHCI_SYSBUS
+>> +    select SD
+>>
+>> Thanks, I'll add this fix.
+>
+> Regards,
+> Niek
+>
+>
+>>   config RASPI
+>>       bool
+>> ---
+>>
+>>
+>
+> --
+> Niek Linnenbank
+>
+>
 
 --=20
-Peter Xu
+Niek Linnenbank
 
+--000000000000230470059e02ce7b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Philippe,</div><div><br></div><div>FYI, and in cas=
+e someone also wants to do a similar configuration test on some other machi=
+ne.</div><div>I managed to re-produce the same error by temporarily modifyi=
+ng default-configs/arm-softmmu.mak, such that it only enables the orangepi =
+machine.</div><div>That way, if any configuration item is missing from the =
+machine, the error will be visible.</div><div><br></div><div>Regards,</div>=
+<div>Niek<br></div><div><br></div></div><br><div class=3D"gmail_quote"><div=
+ dir=3D"ltr" class=3D"gmail_attr">On Sun, Feb 2, 2020 at 10:43 PM Niek Linn=
+enbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail=
+.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"mar=
+gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
+ex"><div dir=3D"ltr"><div>Hi Philippe,<br></div><br><div class=3D"gmail_quo=
+te"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Jan 19, 2020 at 8:02 PM P=
+hilippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com" target=
+=3D"_blank">philmd@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"=
+gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(20=
+4,204,204);padding-left:1ex">On 1/19/20 1:50 AM, Niek Linnenbank wrote:<br>
+&gt; The Allwinner System on Chip families sun4i and above contain<br>
+&gt; an integrated storage controller for Secure Digital (SD) and<br>
+&gt; Multi Media Card (MMC) interfaces. This commit adds support<br>
+&gt; for the Allwinner SD/MMC storage controller with the following<br>
+&gt; emulated features:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0* DMA transfers<br>
+&gt;=C2=A0 =C2=A0* Direct FIFO I/O<br>
+&gt;=C2=A0 =C2=A0* Short/Long format command responses<br>
+&gt;=C2=A0 =C2=A0* Auto-Stop command (CMD12)<br>
+&gt;=C2=A0 =C2=A0* Insert &amp; remove card detection<br>
+&gt; <br>
+&gt; The following boards are extended with the SD host controller:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0* Cubieboard (hw/arm/cubieboard.c)<br>
+&gt;=C2=A0 =C2=A0* Orange Pi PC (hw/arm/orangepi.c)<br>
+&gt; <br>
+&gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gm=
+ail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
+&gt; Tested-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@re=
+dhat.com" target=3D"_blank">philmd@redhat.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0include/hw/arm/allwinner-a10.h=C2=A0 =C2=A0|=C2=A0 =C2=A02=
+ +<br>
+&gt;=C2=A0 =C2=A0include/hw/arm/allwinner-h3.h=C2=A0 =C2=A0 |=C2=A0 =C2=A03=
+ +<br>
+&gt;=C2=A0 =C2=A0include/hw/sd/allwinner-sdhost.h | 135 +++++<br>
+&gt;=C2=A0 =C2=A0hw/arm/allwinner-a10.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0|=C2=A0 11 +<br>
+&gt;=C2=A0 =C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 |=C2=A0 15 +-<br>
+&gt;=C2=A0 =C2=A0hw/arm/cubieboard.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 |=C2=A0 15 +<br>
+&gt;=C2=A0 =C2=A0hw/arm/orangepi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 |=C2=A0 16 +<br>
+&gt;=C2=A0 =C2=A0hw/sd/allwinner-sdhost.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+| 848 +++++++++++++++++++++++++++++++<br>
+&gt;=C2=A0 =C2=A0hw/sd/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
+&gt;=C2=A0 =C2=A0hw/sd/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A07 +<br>
+&gt;=C2=A0 =C2=A010 files changed, 1052 insertions(+), 1 deletion(-)<br>
+&gt;=C2=A0 =C2=A0create mode 100644 include/hw/sd/allwinner-sdhost.h<br>
+&gt;=C2=A0 =C2=A0create mode 100644 hw/sd/allwinner-sdhost.c<br>
+<br>
+Failure at build if configured with --without-default-devices:<br>
+<br>
+=C2=A0 =C2=A0CC=C2=A0 =C2=A0 =C2=A0 arm-softmmu/hw/sd/allwinner-sdhost.o<br=
+>
+=C2=A0 =C2=A0CC=C2=A0 =C2=A0 =C2=A0 arm-softmmu/hw/arm/orangepi.o<br>
+=C2=A0 =C2=A0CC=C2=A0 =C2=A0 =C2=A0 arm-softmmu/hw/arm/allwinner-h3.o<br>
+=C2=A0 =C2=A0LINK=C2=A0 =C2=A0 arm-softmmu/qemu-system-arm<br>
+/usr/bin/ld: hw/sd/allwinner-sdhost.o: in function <br>
+`allwinner_sdhost_send_command&#39;:<br>
+hw/sd/allwinner-sdhost.c:239: undefined reference to `sdbus_do_command&#39;=
+<br>
+/usr/bin/ld: hw/sd/allwinner-sdhost.o: in function `allwinner_sdhost_read&#=
+39;:<br>
+hw/sd/allwinner-sdhost.c:517: undefined reference to `sdbus_data_ready&#39;=
+<br>
+/usr/bin/ld: hw/sd/allwinner-sdhost.c:518: undefined reference to <br>
+`sdbus_read_data&#39;<br>
+/usr/bin/ld: hw/sd/allwinner-sdhost.c:519: undefined reference to <br>
+`sdbus_read_data&#39;<br>
+/usr/bin/ld: hw/sd/allwinner-sdhost.c:520: undefined reference to <br>
+`sdbus_read_data&#39;<br>
+/usr/bin/ld: hw/sd/allwinner-sdhost.c:521: undefined reference to <br>
+`sdbus_read_data&#39;<br>
+/usr/bin/ld: hw/sd/allwinner-sdhost.o: in function <br>
+`allwinner_sdhost_process_desc&#39;:<br>
+hw/sd/allwinner-sdhost.c:340: undefined reference to `sdbus_read_data&#39;<=
+br>
+/usr/bin/ld: hw/sd/allwinner-sdhost.c:334: undefined reference to <br>
+`sdbus_write_data&#39;<br>
+/usr/bin/ld: hw/sd/allwinner-sdhost.o: in function `allwinner_sdhost_write&=
+#39;:<br>
+hw/sd/allwinner-sdhost.c:651: undefined reference to `sdbus_write_data&#39;=
+<br>
+/usr/bin/ld: hw/sd/allwinner-sdhost.c:652: undefined reference to <br>
+`sdbus_write_data&#39;<br>
+/usr/bin/ld: hw/sd/allwinner-sdhost.c:653: undefined reference to <br>
+`sdbus_write_data&#39;<br>
+/usr/bin/ld: hw/sd/allwinner-sdhost.c:654: undefined reference to <br>
+`sdbus_write_data&#39;<br>
+/usr/bin/ld: hw/sd/allwinner-sdhost.o: in function `allwinner_sdhost_dma&#3=
+9;:<br>
+hw/sd/allwinner-sdhost.c:372: undefined reference to `sdbus_data_ready&#39;=
+<br>
+collect2: error: ld returned 1 exit status<br>
+make[1]: *** [Makefile:206: qemu-system-arm] Error 1<br>
+<br></blockquote><div><br></div><div>Thanks for reporting this Philippe. As=
+ you pointed out, I also made the same mistake in patch #4 for USB support =
+[1].</div><div>Here I also tried to re-produce the error here with:</div><d=
+iv><br></div><div>$ ./configure --target-list=3Darm-softmmu --without-defau=
+lt-devices; make -j5</div><div><br></div><div>But again no error. I also se=
+e that CONFIG_SD=3Dy is set in arm-softmmu/config-devices.mak.</div><div>Ma=
+ybe on my laptop=C2=A0 --without-default-devices has no effect or is overri=
+den somehow, I&#39;ll try to debug it further.</div><div><br></div><div>[1]=
+ <a href=3D"https://lists.gnu.org/archive/html/qemu-devel/2020-02/msg00125.=
+html" target=3D"_blank">https://lists.gnu.org/archive/html/qemu-devel/2020-=
+02/msg00125.html</a></div><div>=C2=A0</div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex">
+Fixed by:<br>
+<br>
+-- &gt;8 --<br>
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig<br>
+index bb75c1de17..086241354c 100644<br>
+--- a/hw/arm/Kconfig<br>
++++ b/hw/arm/Kconfig<br>
+@@ -302,6 +302,9 @@ config ALLWINNER_H3<br>
+=C2=A0 =C2=A0 =C2=A0 select ARM_TIMER<br>
+=C2=A0 =C2=A0 =C2=A0 select ARM_GIC<br>
+=C2=A0 =C2=A0 =C2=A0 select UNIMP<br>
+=C2=A0 =C2=A0 =C2=A0 select USB_OHCI<br>
+=C2=A0 =C2=A0 =C2=A0 select USB_EHCI_SYSBUS<br>
++=C2=A0 =C2=A0 select SD<br>
+<br></blockquote><div>Thanks, I&#39;ll add this fix.</div><div><br></div><d=
+iv>Regards,</div><div>Niek<br></div><div>=C2=A0</div><blockquote class=3D"g=
+mail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
+=C2=A0 config RASPI<br>
+=C2=A0 =C2=A0 =C2=A0 bool<br>
+---<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr"><div dir=
+=3D"ltr"><div>Niek Linnenbank<br><br></div></div></div></div>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div>
+
+--000000000000230470059e02ce7b--

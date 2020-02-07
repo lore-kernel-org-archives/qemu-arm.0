@@ -1,217 +1,320 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp166542lfp;
-        Thu, 6 Feb 2020 21:42:13 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzo81KAPAaTIq7E+waJW3+G30UC/vhTUdmOjk+Uv/aWmDb/xVHA1wzfZvwMHmhbDD1hiBDE
-X-Received: by 2002:a05:6808:8d0:: with SMTP id k16mr997360oij.68.1581054132803;
-        Thu, 06 Feb 2020 21:42:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581054132; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp250236lfp;
+        Thu, 6 Feb 2020 23:22:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxyuNRut/r/7mwii3Mg+/ce4dC6sBsH6p9jAvrSkoJQjH783a+UKrCXHcqSfGu0H/qoP7Gp
+X-Received: by 2002:ac8:4616:: with SMTP id p22mr6225280qtn.368.1581060154727;
+        Thu, 06 Feb 2020 23:22:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581060154; cv=none;
         d=google.com; s=arc-20160816;
-        b=iF9/ajaGjH/lAUTXkXoiZCynv94eufOooxoEfvezzw9jA8ekeZR5o23wKWRiJimimv
-         kLAysEn5uSQgbRc7Cm63EqYmsG0oBgoLnNug3bVkbjar8IxVyielsy1xTh++ityiW187
-         ifQB4/ma0VLgrpqniLzo24rKXKQbUqn9mb3dDyr4UbYFDB/xM6I6Qyixca/A9OaHF0ka
-         gPYwrNdZx4rPU16LxOcRxKwmowM9k8/TO1vgvoTikwtF9gZnIA6U+kkzqIJR4+u7CFwJ
-         lPHzMa3qYh1jdNKFkQzUH6NoAZwrpBnnucIaZuwsVME/dUDUQ6Yj+xVdLysWcOAMc6VM
-         kJ4A==
+        b=g1q4ebArD1gcWgfJmivUUi3HsazHm3osXSsf7r7Kz+fdg0O5QmPD9cGW4mqn8ATKhJ
+         bLNGYZKx5voBZ/VYIHAUbnYncRpLI6mAFdIPIaTXZzTUmoSyubARyuDrqWjEPjcr1NLH
+         8lTq/Q8P9feKhHe6t59XTLt9keqOu+pQb0E77L3DpCA/8FF6U8futWV9bc1k8KlGrqOY
+         8v+C9sg7ZCAU/neP+nf9rb4mQBQW6QiERawi8dIPJ2k+/9n8CwHmViy8sxh2kuzOfmwY
+         w6qFG79+E8izB+NX0J6WS+bqhls8FbePDzOWFLqVjFWyPzDxjEzstfSTdHy/s2YY+mvm
+         MR0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=Ol59viViBDDcMlYLt2+48qv9bgji/0VO2xDJM4wKTRY=;
-        b=DX5ZVdFW9mTAFDdvU1/rJA9ORxvRyOaSA34ugoURQpslyu81jme9v16K784eoGvd7N
-         EGDstmMgK+H9zgFMA6avbZbutRs+gquYd/eoVCHXJrqSQipCUO2zjgDD6z4UdRbRCzfd
-         L2DbYUpMmszpX+oF0kOaShas5EfX/7cBWecdDKfiobJnb948SU8rsWiANRBoXYKctp0k
-         l0HR1yKHuwB5M+O/PWyq0kQQ5qE0/V4zc80v+PuDOHzJKj0WbGgte4kvMA5IrChIT9Ra
-         fX8186lV4N7wn38D1pk+8ZI1PpJhj44YLThm744zj3/7Wf+gD/uvjZKFOa4ZQN95jHZI
-         tSNA==
+         :message-id:from:references:to:subject;
+        bh=rZJZvm0aANTD5wUq1tdfS8wJlvm/38QLNIg8OtSzSgE=;
+        b=RM1/Q+wi07JhY8kbZNS3GjyBp2+mXgzgtWT18+lbQLG2eyaSkMGfPTa7D2derRZKDx
+         ytyUgSfotH5Z4I8e9RayFAKvr6wK7nhVHK+1NKFy9qwdN7Ae6xrZrlQqkwizRWdzuDNH
+         RsxOCICblIPDXidhQ05pZF61apma92vzspKilF/1c1QHqryXX4AjxMaqE2WVx9DWsIP3
+         /tp93zY+fZKywI5k2dAPF7HSZKZ5XnrBMlu1cMFOY3NgEZ3EKVlEdbt3S+FXDmklbmf8
+         qSk3hsuRQ8VwtBg23SdMnwP047XaA+C4hBs3e98r5LAPLh7iHKfUJmOF0yT0uOi/EO6y
+         f7yQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id 106si1091185oti.106.2020.02.06.21.42.12;
-        Thu, 06 Feb 2020 21:42:12 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z8si908863qkg.97.2020.02.06.23.22.34
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 06 Feb 2020 23:22:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726619AbgBGFmJ (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Fri, 7 Feb 2020 00:42:09 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:50088 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1725837AbgBGFmI (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 7 Feb 2020 00:42:08 -0500
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id A8F7D8F5FD0ADFE965E5;
-        Fri,  7 Feb 2020 13:42:01 +0800 (CST)
-Received: from [127.0.0.1] (10.173.222.27) by DGGEMS406-HUB.china.huawei.com
- (10.3.19.206) with Microsoft SMTP Server id 14.3.439.0; Fri, 7 Feb 2020
- 13:41:54 +0800
-Subject: Re: [kvm-unit-tests PATCH v3 09/14] arm/arm64: ITS: Device and
- collection Initialization
-To:     Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
-        <maz@kernel.org>, <kvmarm@lists.cs.columbia.edu>,
-        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>
-CC:     <drjones@redhat.com>, <andre.przywara@arm.com>,
-        <peter.maydell@linaro.org>, <alexandru.elisei@arm.com>,
-        <thuth@redhat.com>
-References: <20200128103459.19413-1-eric.auger@redhat.com>
- <20200128103459.19413-10-eric.auger@redhat.com>
-From:   Zenghui Yu <yuzenghui@huawei.com>
-Message-ID: <42a8964a-af3d-0117-bfac-5db6b7b832dd@huawei.com>
-Date:   Fri, 7 Feb 2020 13:41:53 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50976 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1izxyE-00087n-4t
+	for alex.bennee@linaro.org; Fri, 07 Feb 2020 02:22:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58523)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <clg@kaod.org>) id 1izxy2-00087F-UJ
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 02:22:24 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <clg@kaod.org>) id 1izxy0-0005En-Am
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 02:22:21 -0500
+Received: from 1.mo1.mail-out.ovh.net ([178.32.127.22]:59188)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1izxy0-0005CU-3L
+ for qemu-arm@nongnu.org; Fri, 07 Feb 2020 02:22:20 -0500
+Received: from player737.ha.ovh.net (unknown [10.108.42.142])
+ by mo1.mail-out.ovh.net (Postfix) with ESMTP id F371E1ADC9B
+ for <qemu-arm@nongnu.org>; Fri,  7 Feb 2020 08:22:16 +0100 (CET)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player737.ha.ovh.net (Postfix) with ESMTPSA id 511B55A64E55;
+ Fri,  7 Feb 2020 07:22:04 +0000 (UTC)
+Subject: Re: [PATCH v2 1/4] m25p80: Convert to support tracing
+To: Guenter Roeck <linux@roeck-us.net>,
+ Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>
+References: <20200206183219.3756-1-linux@roeck-us.net>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <886e4356-eeb9-7b71-0452-86da2a838116@kaod.org>
+Date: Fri, 7 Feb 2020 08:22:03 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200128103459.19413-10-eric.auger@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
+In-Reply-To: <20200206183219.3756-1-linux@roeck-us.net>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.173.222.27]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: cb8gWrX+UzfJ
+X-Ovh-Tracer-Id: 1164180506168953776
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrheeggddutdejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejfeejrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 178.32.127.22
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5M+HYeSDhIvb
 
-Hi Eric,
+On 2/6/20 7:32 PM, Guenter Roeck wrote:
+> While at it, add some trace messages to help debug problems
+> seen when running the latest Linux kernel.
+>=20
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 
-On 2020/1/28 18:34, Eric Auger wrote:
-> Introduce an helper functions to register
-> - a new device, characterized by its device id and the
->    max number of event IDs that dimension its ITT (Interrupt
->    Translation Table).  The function allocates the ITT.
-> 
-> - a new collection, characterized by its ID and the
->    target processing engine (PE).
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
+
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+
 > ---
-> 
-> v2 -> v3:
-> - s/report_abort/assert
-> 
-> v1 -> v2:
-> - s/nb_/nr_
-> ---
->   lib/arm/asm/gic-v3-its.h | 20 +++++++++++++++++-
->   lib/arm/gic-v3-its.c     | 44 ++++++++++++++++++++++++++++++++++++++++
->   2 files changed, 63 insertions(+), 1 deletion(-)
-> 
-> diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
-> index fe73c04..acd97a9 100644
-> --- a/lib/arm/asm/gic-v3-its.h
-> +++ b/lib/arm/asm/gic-v3-its.h
-> @@ -31,6 +31,19 @@ struct its_baser {
->   };
->   
->   #define GITS_BASER_NR_REGS              8
-> +#define GITS_MAX_DEVICES		8
-> +#define GITS_MAX_COLLECTIONS		8
-> +
-> +struct its_device {
-> +	u32 device_id;	/* device ID */
-> +	u32 nr_ites;	/* Max Interrupt Translation Entries */
-> +	void *itt;	/* Interrupt Translation Table GPA */
-> +};
-> +
-> +struct its_collection {
-> +	u64 target_address;
-> +	u16 col_id;
-> +};
->   
->   struct its_data {
->   	void *base;
-> @@ -38,6 +51,10 @@ struct its_data {
->   	struct its_baser baser[GITS_BASER_NR_REGS];
->   	struct its_cmd_block *cmd_base;
->   	struct its_cmd_block *cmd_write;
-> +	struct its_device devices[GITS_MAX_DEVICES];
-> +	u32 nr_devices;		/* Allocated Devices */
-> +	struct its_collection collections[GITS_MAX_COLLECTIONS];
-> +	u32 nr_collections;	/* Allocated Collections */
->   };
->   
->   extern struct its_data its_data;
-> @@ -90,7 +107,6 @@ extern struct its_data its_data;
->   #define GITS_BASER_TYPE_DEVICE		1
->   #define GITS_BASER_TYPE_COLLECTION	4
->   
+> v2: Print pointer to Flash data structure as flash ID with each trace
+>     message to support systems with more than one instantiated flash.
+>=20
+>  hw/block/m25p80.c     | 48 ++++++++++++++++++++-----------------------
+>  hw/block/trace-events | 16 +++++++++++++++
+>  2 files changed, 38 insertions(+), 26 deletions(-)
+>=20
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 61f2fb8f8f..5ff8d270c4 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -32,17 +32,7 @@
+>  #include "qemu/module.h"
+>  #include "qemu/error-report.h"
+>  #include "qapi/error.h"
 > -
->   struct its_cmd_block {
->   	u64 raw_cmd[4];
->   };
-> @@ -100,6 +116,8 @@ extern void its_init(void);
->   extern int its_parse_baser(int i, struct its_baser *baser);
->   extern struct its_baser *its_lookup_baser(int type);
->   extern void its_enable_defaults(void);
-> +extern struct its_device *its_create_device(u32 dev_id, int nr_ites);
-> +extern struct its_collection *its_create_collection(u32 col_id, u32 target_pe);
->   
->   #else /* __arm__ */
->   
-> diff --git a/lib/arm/gic-v3-its.c b/lib/arm/gic-v3-its.c
-> index d1e7e52..c2dcd01 100644
-> --- a/lib/arm/gic-v3-its.c
-> +++ b/lib/arm/gic-v3-its.c
-> @@ -175,3 +175,47 @@ void its_enable_defaults(void)
->   
->   	writel(GITS_CTLR_ENABLE, its_data.base + GITS_CTLR);
->   }
+> -#ifndef M25P80_ERR_DEBUG
+> -#define M25P80_ERR_DEBUG 0
+> -#endif
+> -
+> -#define DB_PRINT_L(level, ...) do { \
+> -    if (M25P80_ERR_DEBUG > (level)) { \
+> -        fprintf(stderr,  ": %s: ", __func__); \
+> -        fprintf(stderr, ## __VA_ARGS__); \
+> -    } \
+> -} while (0)
+> +#include "trace.h"
+> =20
+>  /* Fields for FlashPartInfo->flags */
+> =20
+> @@ -574,7 +564,8 @@ static void flash_erase(Flash *s, int offset, Flash=
+CMD cmd)
+>          abort();
+>      }
+> =20
+> -    DB_PRINT_L(0, "offset =3D %#x, len =3D %d\n", offset, len);
+> +    trace_m25p80_flash_erase(s, offset, len);
 > +
-> +struct its_device *its_create_device(u32 device_id, int nr_ites)
-> +{
-> +	struct its_baser *baser;
-> +	struct its_device *new;
-> +	unsigned long n, order;
+>      if ((s->pi->flags & capa_to_assert) !=3D capa_to_assert) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "M25P80: %d erase size not supp=
+orted by"
+>                        " device\n", len);
+> @@ -607,8 +598,7 @@ void flash_write8(Flash *s, uint32_t addr, uint8_t =
+data)
+>      }
+> =20
+>      if ((prev ^ data) & data) {
+> -        DB_PRINT_L(1, "programming zero to one! addr=3D%" PRIx32 "  %"=
+ PRIx8
+> -                   " -> %" PRIx8 "\n", addr, prev, data);
+> +        trace_m25p80_programming_zero_to_one(s, addr, prev, data);
+>      }
+> =20
+>      if (s->pi->flags & EEPROM) {
+> @@ -662,6 +652,9 @@ static void complete_collecting_data(Flash *s)
+> =20
+>      s->state =3D STATE_IDLE;
+> =20
+> +    trace_m25p80_complete_collecting(s, s->cmd_in_progress, n, s->ear,
+> +                                     s->cur_addr);
 > +
-> +	assert(its_data.nr_devices < GITS_MAX_DEVICES);
+>      switch (s->cmd_in_progress) {
+>      case DPP:
+>      case QPP:
+> @@ -825,7 +818,7 @@ static void reset_memory(Flash *s)
+>          break;
+>      }
+> =20
+> -    DB_PRINT_L(0, "Reset done.\n");
+> +    trace_m25p80_reset_done(s);
+>  }
+> =20
+>  static void decode_fast_read_cmd(Flash *s)
+> @@ -941,9 +934,10 @@ static void decode_qio_read_cmd(Flash *s)
+> =20
+>  static void decode_new_cmd(Flash *s, uint32_t value)
+>  {
+> -    s->cmd_in_progress =3D value;
+>      int i;
+> -    DB_PRINT_L(0, "decoded new command:%x\n", value);
 > +
+> +    s->cmd_in_progress =3D value;
+> +    trace_m25p80_command_decoded(s, value);
+> =20
+>      if (value !=3D RESET_MEMORY) {
+>          s->reset_enable =3D false;
+> @@ -1042,7 +1036,7 @@ static void decode_new_cmd(Flash *s, uint32_t val=
+ue)
+>          break;
+> =20
+>      case JEDEC_READ:
+> -        DB_PRINT_L(0, "populated jedec code\n");
+> +        trace_m25p80_populated_jedec(s);
+>          for (i =3D 0; i < s->pi->id_len; i++) {
+>              s->data[i] =3D s->pi->id[i];
+>          }
+> @@ -1063,7 +1057,7 @@ static void decode_new_cmd(Flash *s, uint32_t val=
+ue)
+>      case BULK_ERASE_60:
+>      case BULK_ERASE:
+>          if (s->write_enable) {
+> -            DB_PRINT_L(0, "chip erase\n");
+> +            trace_m25p80_chip_erase(s);
+>              flash_erase(s, 0, BULK_ERASE);
+>          } else {
+>              qemu_log_mask(LOG_GUEST_ERROR, "M25P80: chip erase with wr=
+ite "
+> @@ -1184,7 +1178,7 @@ static int m25p80_cs(SSISlave *ss, bool select)
+>          s->data_read_loop =3D false;
+>      }
+> =20
+> -    DB_PRINT_L(0, "%sselect\n", select ? "de" : "");
+> +    trace_m25p80_select(s, select ? "de" : "");
+> =20
+>      return 0;
+>  }
+> @@ -1194,19 +1188,20 @@ static uint32_t m25p80_transfer8(SSISlave *ss, =
+uint32_t tx)
+>      Flash *s =3D M25P80(ss);
+>      uint32_t r =3D 0;
+> =20
+> +    trace_m25p80_transfer(s, s->state, s->len, s->needed_bytes, s->pos=
+,
+> +                          s->cur_addr, (uint8_t)tx);
+> +
+>      switch (s->state) {
+> =20
+>      case STATE_PAGE_PROGRAM:
+> -        DB_PRINT_L(1, "page program cur_addr=3D%#" PRIx32 " data=3D%" =
+PRIx8 "\n",
+> -                   s->cur_addr, (uint8_t)tx);
+> +        trace_m25p80_page_program(s, s->cur_addr, (uint8_t)tx);
+>          flash_write8(s, s->cur_addr, (uint8_t)tx);
+>          s->cur_addr =3D (s->cur_addr + 1) & (s->size - 1);
+>          break;
+> =20
+>      case STATE_READ:
+>          r =3D s->storage[s->cur_addr];
+> -        DB_PRINT_L(1, "READ 0x%" PRIx32 "=3D%" PRIx8 "\n", s->cur_addr=
+,
+> -                   (uint8_t)r);
+> +        trace_m25p80_read_byte(s, s->cur_addr, (uint8_t)r);
+>          s->cur_addr =3D (s->cur_addr + 1) & (s->size - 1);
+>          break;
+> =20
+> @@ -1244,6 +1239,7 @@ static uint32_t m25p80_transfer8(SSISlave *ss, ui=
+nt32_t tx)
+>          }
+> =20
+>          r =3D s->data[s->pos];
+> +        trace_m25p80_read_data(s, s->pos, (uint8_t)r);
+>          s->pos++;
+>          if (s->pos =3D=3D s->len) {
+>              s->pos =3D 0;
+> @@ -1281,7 +1277,7 @@ static void m25p80_realize(SSISlave *ss, Error **=
+errp)
+>              return;
+>          }
+> =20
+> -        DB_PRINT_L(0, "Binding to IF_MTD drive\n");
+> +        trace_m25p80_binding(s);
+>          s->storage =3D blk_blockalign(s->blk, s->size);
+> =20
+>          if (blk_pread(s->blk, 0, s->storage, s->size) !=3D s->size) {
+> @@ -1289,7 +1285,7 @@ static void m25p80_realize(SSISlave *ss, Error **=
+errp)
+>              return;
+>          }
+>      } else {
+> -        DB_PRINT_L(0, "No BDRV - binding to RAM\n");
+> +        trace_m25p80_binding_no_bdrv(s);
+>          s->storage =3D blk_blockalign(NULL, s->size);
+>          memset(s->storage, 0xFF, s->size);
+>      }
+> diff --git a/hw/block/trace-events b/hw/block/trace-events
+> index c03e80c2c9..f78939fa9d 100644
+> --- a/hw/block/trace-events
+> +++ b/hw/block/trace-events
+> @@ -134,3 +134,19 @@ xen_block_blockdev_add(char *str) "%s"
+>  xen_block_blockdev_del(const char *node_name) "%s"
+>  xen_block_device_create(unsigned int number) "%u"
+>  xen_block_device_destroy(unsigned int number) "%u"
+> +
+> +# m25p80.c
+> +m25p80_flash_erase(void *s, int offset, uint32_t len) "[%p] offset =3D=
+ 0x%"PRIx32", len =3D %u"
+> +m25p80_programming_zero_to_one(void *s, uint32_t addr, uint8_t prev, u=
+int8_t data) "[%p] programming zero to one! addr=3D0x%"PRIx32"  0x%"PRIx8=
+" -> 0x%"PRIx8
+> +m25p80_reset_done(void *s) "[%p] Reset done."
+> +m25p80_command_decoded(void *s, uint32_t cmd) "[%p] new command:0x%"PR=
+Ix32
+> +m25p80_complete_collecting(void *s, uint32_t cmd, int n, uint8_t ear, =
+uint32_t cur_addr) "[%p] decode cmd: 0x%"PRIx32" len %d ear 0x%"PRIx8" ad=
+dr 0x%"PRIx32
+> +m25p80_populated_jedec(void *s) "[%p] populated jedec code"
+> +m25p80_chip_erase(void *s) "[%p] chip erase"
+> +m25p80_select(void *s, const char *what) "[%p] %sselect"
+> +m25p80_page_program(void *s, uint32_t addr, uint8_t tx) "[%p] page pro=
+gram cur_addr=3D0x%"PRIx32" data=3D0x%"PRIx8
+> +m25p80_transfer(void *s, uint8_t state, uint32_t len, uint8_t needed, =
+uint32_t pos, uint32_t cur_addr, uint8_t t) "[%p] Transfer state 0x%"PRIx=
+8" len 0x%"PRIx32" needed 0x%"PRIx8" pos 0x%"PRIx32" addr 0x%"PRIx32" tx =
+0x%"PRIx8
+> +m25p80_read_byte(void *s, uint32_t addr, uint8_t v) "[%p] Read byte 0x=
+%"PRIx32"=3D0x%"PRIx8
+> +m25p80_read_data(void *s, uint32_t pos, uint8_t v) "[%p] Read data 0x%=
+"PRIx32"=3D0x%"PRIx8
+> +m25p80_binding(void *s) "[%p] Binding to IF_MTD drive"
+> +m25p80_binding_no_bdrv(void *s) "[%p] No BDRV - binding to RAM"
+>=20
 
-
-> +	baser = its_lookup_baser(GITS_BASER_TYPE_DEVICE);
-> +	if (!baser)
-> +		return NULL;
-
-I think there's no need to lookup the device baser here. As the
-device baser should have already been setup at initialization
-time (i.e. in its_enable_defaults). And anyway, 'baser' is not
-being used in this function.
-
-
-Thanks,
-Zenghui
-
-> +
-> +	new = &its_data.devices[its_data.nr_devices];
-> +
-> +	new->device_id = device_id;
-> +	new->nr_ites = nr_ites;
-> +
-> +	n = (its_data.typer.ite_size * nr_ites) >> PAGE_SHIFT;
-> +	order = is_power_of_2(n) ? fls(n) : fls(n) + 1;
-> +	new->itt = (void *)virt_to_phys(alloc_pages(order));
-> +
-> +	its_data.nr_devices++;
-> +	return new;
-> +}
-> +
-> +struct its_collection *its_create_collection(u32 col_id, u32 pe)
-> +{
-> +	struct its_collection *new;
-> +
-> +	assert(its_data.nr_collections < GITS_MAX_COLLECTIONS);
-> +
-> +	new = &its_data.collections[its_data.nr_collections];
-> +
-> +	new->col_id = col_id;
-> +
-> +	if (its_data.typer.pta)
-> +		new->target_address = (u64)gicv3_data.redist_base[pe];
-> +	else
-> +		new->target_address = pe << 16;
-> +
-> +	its_data.nr_collections++;
-> +	return new;
-> +}
-> 

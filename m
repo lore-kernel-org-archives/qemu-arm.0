@@ -1,161 +1,212 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp262636lfp;
-        Thu, 6 Feb 2020 23:38:08 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzLjvICM66X+jo29fjFNHPArKjMqCru8M/HLVfmosfPGW/5ahrRdSOjCaofuo6lukojqBhT
-X-Received: by 2002:aed:2dc2:: with SMTP id i60mr6090965qtd.8.1581061088645;
-        Thu, 06 Feb 2020 23:38:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581061088; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp265062lfp;
+        Thu, 6 Feb 2020 23:41:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw3YXa92exe/01eiYRJUDlyGm4nkBnhbZjyCWqRcV0FW2jzFwEcj+YIOa4yMdWFiCmS2r1A
+X-Received: by 2002:a37:91c2:: with SMTP id t185mr5609066qkd.284.1581061296117;
+        Thu, 06 Feb 2020 23:41:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581061296; cv=none;
         d=google.com; s=arc-20160816;
-        b=XQSu1RUy3sWjVVyS1yaJRhHXSqOUDmZLVkA+xmHV5FaISKO7EOLPKWvR9LL/SrFdAq
-         pf6V7UfI5SwaxsqYu/Vs2LF/pJ1llb0B/zoN0LPxm2gY5sE4bcT9vNqA4OyEWN64LWiI
-         sTQ6tW8U1BGx2d+VHZMiYsQRWl5wSXwd+FAewHIGOmnPo2313lvf9v3HzWyFHg5y0Qm+
-         atDdr8p4kgQYvz+PhJSCyUe++uoPsdTaARYUBrkGuWtLrNOkttwlfKcm1hpBdiSulbDj
-         Iat0VJ/RjciwX0mK5hzTSE/o2dzYqcOqbVf0oI/r+6jFRf8qoBZoiIboOuyGovkytiIi
-         MRMg==
+        b=DqdTdOtAfylrHKZaOAt+edlyIW6SI7xt5Fg3Z9WHom8RDA9FfJXN8wCEebmxQ9RAWd
+         CgKNI8PwrXi/yQ9i/9k3QZwwvRPbT3N4Ixk8WtdmUlXvm7rne+8mQdJGvw0cA3kBgRba
+         ZaoK0MArv1cYr6V5gfBoxFEzgD02/+WghlyP+xWyS7ioYoia2rFCP5q1NmVOVSyw2MnF
+         pgLyoULTBjuj6ZXd7JEp58wfCYcigTGplQRfF8eBTht2DBzHVHLpxYdSuvfe/N0G/Nf1
+         L4gO4kAAWtgTYHkN+McbwC2/fDp8slAu8OP+msL/J6h80CAdWzI8JAPJe7/u1CgJzzk2
+         ImCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=3Pum9DLoPcluppoVUR9e3hm+aPXS0TbibkrITFC+2VM=;
-        b=TJq65tLia2PYyAxFZM5isOHrBOjPXGif+3en4dcI+vwloNtTruJ4oCQDRQzAAvZyuC
-         atAU966YOqig3mg5LJllFqPalV24YQs/jJW+A4Em+iIfW9lNjaEDUeSzeMuzkvA4oEpd
-         6Gj3LQBUbhESLyPv11ZTq7p8iSy7nmg5hqCvonS0Lm644AM/0TTZlW/X5FgasrZ5tNRZ
-         4pkYxBNpLQKuZnxw/DFCv1IWiu7ieNzS+zfeoZxftsFXUSEJiISEmc48XW608CQajNWz
-         YRQhS2YBnJ0CBZlZdZbVzxUzf+kzV9ALnfgLyLtDsSeKhE1tAUSePbwItSrXfLmwB4d5
-         zXNA==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=kymZeyzsMBFu4akHy7XEY6KLbUKfvwkYqe02J2j7VWw=;
+        b=DT3CH/zP5wloNTqMW8cxsXjGTxnIlYnamJQOvfr55Q+HAtcd4yZuL/dykSdfi9sTtU
+         /YhIiRnnd42XN1ulxN687H0ms0DtiPLieaj3X+gHnaigBm4kv+KfR3O0TVItFWqZatCP
+         12BrdgGHTFl1V40cY5p7If/zBr2T5nQNIix5bKg82ZRV6Vypfm3QEMEehFhTQIoBakWp
+         lUs5Q24P3P2f7K0RHi8MAZPeZKb5HuX/tmuNTJCphbDCeCQDzHXWxNw0vLdFql7gT+rz
+         ktH0AVmYPmrLrsUNybdHrX8Jc2R6h3vESpzB59M519rw0/nrePRT+PRY8+Z97gLcqWjY
+         Cwng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ZKeu/18R";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k13si885878qvo.6.2020.02.06.23.38.08
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Feb 2020 23:38:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=eomoCohj;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id x10si1054000qth.16.2020.02.06.23.41.35;
+        Thu, 06 Feb 2020 23:41:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ZKeu/18R";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51208 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1izyDI-0007CO-4o
-	for alex.bennee@linaro.org; Fri, 07 Feb 2020 02:38:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35639)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1izyDA-0007CD-R6
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 02:38:01 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1izyD8-0006T6-MT
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 02:37:59 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:53626
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1izyD8-0006RS-EG
- for qemu-arm@nongnu.org; Fri, 07 Feb 2020 02:37:58 -0500
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=eomoCohj;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id A1A384A4E5;
+	Fri,  7 Feb 2020 02:41:35 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id AYC-c7AWMbNQ; Fri,  7 Feb 2020 02:41:32 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 39D124A4F7;
+	Fri,  7 Feb 2020 02:41:32 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 54CA64A4A9
+ for <kvmarm@lists.cs.columbia.edu>; Fri,  7 Feb 2020 02:41:31 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rS806BcBzx+L for <kvmarm@lists.cs.columbia.edu>;
+ Fri,  7 Feb 2020 02:41:30 -0500 (EST)
+Received: from us-smtp-delivery-1.mimecast.com
+ (us-smtp-delivery-1.mimecast.com [205.139.110.120])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 408624A4A3
+ for <kvmarm@lists.cs.columbia.edu>; Fri,  7 Feb 2020 02:41:30 -0500 (EST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581061077;
+ s=mimecast20190719; t=1581061290;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3Pum9DLoPcluppoVUR9e3hm+aPXS0TbibkrITFC+2VM=;
- b=ZKeu/18Ri28c58yRFT1m79cCDXoWcQTkPA0FoTZTeDJLD9Jr2AoFnCm7r3v5qQb3hc53IW
- qkdpRAqhURaWCn0u6GcyKFAWa1al1w4FRcpYKGzQhQNCUb1tfLpbhBS/EFNZL549CHpQwW
- +NaZ4yBLGAHc1k55v+biBI0btpWpk08=
+ bh=H8+dV5qOgRpncSSzSUiwmdaiC4cKdUtEBCRqg7fQpDw=;
+ b=eomoCohjmGL553yE/zsW7t+el2Xq3Njoee8mRTfyKrpzOsvTDtmJ0mZgpWpzpzYO/cH3Fo
+ apKswc5cPcYLdABHCnAR5ZFVFUYzjSNo3HIBeKc4y9P/n4VwUgeX2UvzQrfSHSME7VW0BR
+ BAZwDnbzgkwHSMiKuQv22Q54GOs4AVk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-278-SXhL_bQ-MbqcyIHfJuLpjQ-1; Fri, 07 Feb 2020 02:37:56 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-346-x4rM60IcNg6d6naFPLjCbQ-1; Fri, 07 Feb 2020 02:41:25 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7A190DB60;
- Fri,  7 Feb 2020 07:37:54 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 75396801E6C;
+ Fri,  7 Feb 2020 07:41:24 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id F1705790EA;
- Fri,  7 Feb 2020 07:37:49 +0000 (UTC)
-Date: Fri, 7 Feb 2020 08:37:47 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DC0771000325;
+ Fri,  7 Feb 2020 07:41:22 +0000 (UTC)
+Date: Fri, 7 Feb 2020 08:41:20 +0100
 From: Andrew Jones <drjones@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [RFC PATCH v2 5/5] target/arm/cpu: Add the kvm-no-adjvtime CPU
- property
-Message-ID: <20200207073747.x3rsqxtfbmtlfqws@kamzik.brq.redhat.com>
-References: <20191212173320.11610-1-drjones@redhat.com>
- <20191212173320.11610-6-drjones@redhat.com>
- <CAP+75-Vt3apV8i64oFTC6pAATXkrE1g+tVskr_3ohBHtZ1LNdQ@mail.gmail.com>
- <20200206124047.o4sy52jgbkqeravd@kamzik.brq.redhat.com>
- <2522956e-5dae-3ebc-76d2-010a918e0d19@redhat.com>
+To: Beata Michalska <beata.michalska@linaro.org>
+Subject: Re: [PATCH v2 1/2] target/arm: kvm: Inject events at the last stage
+ of sync
+Message-ID: <20200207074120.emuqo4syqubpay4k@kamzik.brq.redhat.com>
+References: <20200129202441.12745-1-beata.michalska@linaro.org>
+ <20200129202441.12745-2-beata.michalska@linaro.org>
+ <20200204103447.naw26xl2y2zbyrqb@kamzik.brq.redhat.com>
+ <CADSWDzuQvZThaoFbeYM2QrDbwRPrZuiyDrVJV=jxiSMTW9O-rg@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <2522956e-5dae-3ebc-76d2-010a918e0d19@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: SXhL_bQ-MbqcyIHfJuLpjQ-1
+In-Reply-To: <CADSWDzuQvZThaoFbeYM2QrDbwRPrZuiyDrVJV=jxiSMTW9O-rg@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: x4rM60IcNg6d6naFPLjCbQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, bijan.mottahedeh@oracle.com,
- Marc Zyngier <maz@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- guoheyi@huawei.com, msys.mizuma@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rNYaVhAaLVcA
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: cTRTo0pZpIQy
 
-On Thu, Feb 06, 2020 at 11:46:49PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> On 2/6/20 1:40 PM, Andrew Jones wrote:
-> > On Thu, Feb 06, 2020 at 01:08:53PM +0100, Philippe Mathieu-Daud=E9 wrot=
-e:
-> > ...
-> > > > +/* KVM VCPU properties should be prefixed with "kvm-". */
-> > > > +void kvm_arm_add_vcpu_properties(Object *obj)
-> > > > +{
-> > > > +    if (!kvm_enabled()) {
-> > >=20
-> > > This can't happen, right? Can we turn that into an assertion, or
-> > > remove the check?
-> >=20
-> > You're right. An assert would be more appropriate. Will you send a patc=
-h?
->=20
-> Apparently this can be called with KVM_CONFIG && !kvm_enabled():
->=20
-> See kvm_arm_set_cpu_features_from_host()
-> {
->     if (!arm_host_cpu_features.dtb_compatible) {
->         if (!kvm_enabled() ||
->             !kvm_arm_get_host_cpu_features(&arm_host_cpu_features)) {
->             /* We can't report this error yet, so flag that we need to
->              * in arm_cpu_realizefn().
->              */
->=20
-> I won't modify your patch (until I have a better understanding of
-> TYPE_ARM_HOST_CPU).
->
+On Thu, Feb 06, 2020 at 09:41:10PM +0000, Beata Michalska wrote:
+> On Tue, 4 Feb 2020 at 10:34, Andrew Jones <drjones@redhat.com> wrote:
+> >
+> > On Wed, Jan 29, 2020 at 08:24:40PM +0000, Beata Michalska wrote:
+> > > KVM_SET_VCPU_EVENTS might actually lead to vcpu registers being modified.
+> > > As such this should be the last step of sync to avoid potential overwriting
+> > > of whatever changes KVM might have done.
+> > >
+> > > Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
+> > > ---
+> > >  target/arm/kvm32.c | 20 ++++++++++----------
+> > >  target/arm/kvm64.c | 20 ++++++++++----------
+> > >  2 files changed, 20 insertions(+), 20 deletions(-)
+> > >
+> > > diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+> > > index 32bf8d6..cf2b47f 100644
+> > > --- a/target/arm/kvm32.c
+> > > +++ b/target/arm/kvm32.c
+> > > @@ -386,17 +386,17 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+> > >          return ret;
+> > >      }
+> > >
+> > > -    ret = kvm_put_vcpu_events(cpu);
+> > > -    if (ret) {
+> > > -        return ret;
+> > > -    }
+> > > -
+> > >      write_cpustate_to_list(cpu, true);
+> > >
+> > >      if (!write_list_to_kvmstate(cpu, level)) {
+> > >          return EINVAL;
+> > >      }
+> > >
+> > > +    ret = kvm_put_vcpu_events(cpu);
+> > > +    if (ret) {
+> > > +        return ret;
+> > > +    }
+> > > +
+> >
+> > I think we should put a comment above this that says basically the same
+> > thing as the commit message in order to explain why kvm_put_vcpu_events()
+> > *must* be after write_list_to_kvmstate().
+> >
+> Will do that.
+> 
+> > >      kvm_arm_sync_mpstate_to_kvm(cpu);
+> > >
+> > >      return ret;
+> > > @@ -462,11 +462,6 @@ int kvm_arch_get_registers(CPUState *cs)
+> > >      }
+> > >      vfp_set_fpscr(env, fpscr);
+> > >
+> > > -    ret = kvm_get_vcpu_events(cpu);
+> > > -    if (ret) {
+> > > -        return ret;
+> > > -    }
+> > > -
+> > >      if (!write_kvmstate_to_list(cpu)) {
+> > >          return EINVAL;
+> > >      }
+> > > @@ -475,6 +470,11 @@ int kvm_arch_get_registers(CPUState *cs)
+> > >       */
+> > >      write_list_to_cpustate(cpu);
+> > >
+> > > +    ret = kvm_get_vcpu_events(cpu);
+> > > +    if (ret) {
+> > > +        return ret;
+> > > +    }
+> > > +
+> >
+> > Why are we moving kvm_get_vcpu_events()?
+> 
+> This is only to make things consistent with put_registeres.
+> There is no functional change per se.
 
-Just grepped around and talked to Igor. Indeed we need to be able
-to do the host cpu init without erroring out (even if we know we
-will in realize) and, as cpu instance_init should add the properties,
-then I don't really see a cleaner way to do it than what we already
-have.
+Without a functional change I wouldn't move it. It's much
+more appealing to have the final state writes at the bottom
+of this function.
 
 Thanks,
 drew
 
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

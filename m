@@ -1,104 +1,107 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1783401lfp;
-        Sat, 8 Feb 2020 06:01:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyE56LFrBVYipzVdLhQi6Q9koHbWdRXjMapbOz53BIgE/slk18dMUC0wgBaYa6SbiSNvAUI
-X-Received: by 2002:a05:620a:1401:: with SMTP id d1mr3112572qkj.79.1581170491564;
-        Sat, 08 Feb 2020 06:01:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581170491; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1919149lfp;
+        Sat, 8 Feb 2020 08:57:20 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwYftJBQG+DDgkdCFKuOlP8+o9s3hrtEE8I/K/3Nr6H4IyguACpUyvXSCGVY09JBrQt5AQE
+X-Received: by 2002:a0c:c310:: with SMTP id f16mr3519818qvi.65.1581181040362;
+        Sat, 08 Feb 2020 08:57:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581181040; cv=none;
         d=google.com; s=arc-20160816;
-        b=YQJWVv8QoXY0wfCRAB1LSBqFtUyKcbG2geyMMw5h8TN7NAbA7B59gyvlxkt9L4jyRd
-         94DnVtk1XnlMoEOJ4uvfcbEI07UZiG49+0a0fiSh3zx25/i6zGQPo9xxUaG91FuT3iFn
-         UA0l6VfxPS7UMfkrYdUlEDLvxbXDxaywn6XXZzclhULbmaXSemh/FtWF2RSxVkPSNwL8
-         BF2gdH2hnEwx6INlrfO6i/FZ5sNEuEu57mJv+78Vtq6lGa7omZBpx7Xv7LDqrsFlH/B2
-         x18yjSoD7WvSz9sQ36F+LOePtXir3vGVJtBoKdLEgmOyedC3PTrJklBKKTtKW/yel/rx
-         q1iA==
+        b=Qs/yyaAi30840cvv2IrMFCrczBi6a037/G24++lVY3teX26cKD71dLz5NkxwFkvufS
+         9TM3u6VgefdFLw49jpL+VajxjYchdD88gJYuYQ0tLZa6KG3jvvPGZXGuwZ2hGw52mVHq
+         7LMKacJWKo2ybmeFmApIYTRRjWUlsyr1s+DykJesRgH0rxcvoDq/Jy16Y1uRDI/qAerk
+         iMmUEey+LUAdTPqNUrBXqMLLpd+FI/EAsxHZhEqGHY0BtSFP1zGhQjOJ3Qtv9oysTBga
+         2RjR4kyFPdoQ/nV+hPyBbZ3zSwOQMyhlLec4J8CKaPH0nzJ3V4xeINcSA5fzlq//WRaa
+         aBYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=7CkhUHqSDfzg8BXvadVBEQhUSFJT7WpEfFdu88HfXAs=;
-        b=xtyiRX/QhJSssoTnQQT5t6tSEA3s5uZdddP5Kma2pYJxIvx/b7W7NRNGQskgD0lh3z
-         gX1iQjaTUJ5kdi3Hs5rWrgqqfyhxD5+rRsRuh8qVIktuexdJYzQgBCPZRnLVR+Hci7sV
-         E9BLZzr9L8j2kqeKJJlBjzZIz985nRxkuvyOoh5R4whsqMCZGBtdyWi7L+SR2ftC10dn
-         8S41dSZnjQOFwh9dqE6FXNHMs0R2gDAKGgTdInWlDmUCsWVrXivzcDZQgi7/4UORj0XB
-         VskEUnEdXtylfZHSE7n0d24j9ZutuJMHx6HW/8CofURgDlCZMK8fvAsJ9ftsM4dzSBtx
-         vxfQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=M6znWrwvkqZIc+O5AYJ19ilD9hYxp5DQIdt31ia8C3Q=;
+        b=PcE20IldreNF3dAx3djrvcLLCUxtbPr80gBgWi7UVg6mTIBFXhqCSO7Uyw/PiXB3tC
+         wTRDEnlaD9T01oVUSfUOGDztAaWjT/eKg/ACqoP3mYnbd0EGfKcsZaw1HOklRbGm/MO+
+         2raBpY6a/S3yMyeF+rxPTlxtx6QHA1bwr8jsVVOW0v8SQMuIeiWvdkYlx35KOe6tS9kC
+         ZuGJKUwKQESY/+LbH9+yqHH+iFYcLFa62YHtYaKuY2jZzIktes30SWQjpiYM8LOvBs/m
+         Pphh/gzhrxJVV0d6ZwvMX/hPjOdkQjYqUj8yH7iaS/rgRt7GFihLobYCJ3/pi/0MBqqA
+         40tg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ofw1fYQ4;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HGiJiXab;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d19si1525009qto.284.2020.02.08.06.01.31
+        by mx.google.com with ESMTPS id z12si1844143qki.1.2020.02.08.08.57.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 08 Feb 2020 06:01:31 -0800 (PST)
+        Sat, 08 Feb 2020 08:57:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ofw1fYQ4;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HGiJiXab;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41970 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:43300 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j0Qfr-0000bn-0G
-	for alex.bennee@linaro.org; Sat, 08 Feb 2020 09:01:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49687)
+	id 1j0TPz-0005Yz-Mm
+	for alex.bennee@linaro.org; Sat, 08 Feb 2020 11:57:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53715)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j0Qfg-0000bU-61
- for qemu-arm@nongnu.org; Sat, 08 Feb 2020 09:01:21 -0500
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1j0TPl-0005W1-FO
+ for qemu-arm@nongnu.org; Sat, 08 Feb 2020 11:57:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j0Qfd-0001gJ-Mh
- for qemu-arm@nongnu.org; Sat, 08 Feb 2020 09:01:19 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:52288
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j0Qfd-0001d4-3x
- for qemu-arm@nongnu.org; Sat, 08 Feb 2020 09:01:17 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581170476;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7CkhUHqSDfzg8BXvadVBEQhUSFJT7WpEfFdu88HfXAs=;
- b=Ofw1fYQ44sx35SlvrtV2X/Xuu5KoXm+34V362/uv0ng/JdRucra5Z0W6MJi4UPVrfrcst4
- zTFXDBao2hpmnuVARWBuUfM6DKN/NbmxtfESzViIRJJH3zOTGA4i816M0aRtVwEpJUf7Ke
- ugoAH/AKy9Z+5U6JW6UKVhFdn7iPRjg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-367-CQzk8OopPkqjONcu7k5rRw-1; Sat, 08 Feb 2020 09:01:11 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9D7768018A2;
- Sat,  8 Feb 2020 14:01:09 +0000 (UTC)
-Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BF73610021B2;
- Sat,  8 Feb 2020 14:00:57 +0000 (UTC)
-Subject: Re: [PATCH v15 3/9] virtio-iommu: Implement attach/detach command
-To: Peter Xu <peterx@redhat.com>
-References: <20200208120022.1920-1-eric.auger@redhat.com>
- <20200208120022.1920-4-eric.auger@redhat.com> <20200208134154.GD823968@xz-x1>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <73abec19-86b2-099c-1a13-8725561d915f@redhat.com>
-Date: Sat, 8 Feb 2020 15:00:54 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1j0TPk-0001de-Bf
+ for qemu-arm@nongnu.org; Sat, 08 Feb 2020 11:57:05 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:34919)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1j0TPh-0001cH-KW; Sat, 08 Feb 2020 11:57:01 -0500
+Received: by mail-wm1-x336.google.com with SMTP id b17so6067992wmb.0;
+ Sat, 08 Feb 2020 08:57:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=M6znWrwvkqZIc+O5AYJ19ilD9hYxp5DQIdt31ia8C3Q=;
+ b=HGiJiXabjwc8ocLFlTVpqQYHMva4qCcYfBGrpA9BjBUd21rLsUtRzbmnCH6nSIoUpZ
+ 5/6Cd61EUUN0N4JsjQU/wgwCiq5s0rIvIZbK4+YJZ5ZVg+57tyaGtlk4ObXXCoko0CVR
+ kt84iHq2vaes7z+Z8WqQkqwZgKVayzuh+XGzLOcyrmjNYIDU1UU6qYHaXL1e/GhFd5PI
+ AgjoLpez4XtJpz7JCL0N+cyg/ZWLHgYr2Ks0MY3NuDRj1QLuwCpGWiljzpRBoe3X0AJX
+ D93zD3YZCYvTgAZqB4FHcF8pDpiLTePUnUF9VsZGxq+RgpvlfIP8jrg+ZkE/Y5x1u6fG
+ 0Fug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=M6znWrwvkqZIc+O5AYJ19ilD9hYxp5DQIdt31ia8C3Q=;
+ b=L0WhE04uOufkQ43g1BU1SrPh1rvhPIPyrst9Dzi3tWHUFHjxwuvnfZqczeZafqoSDb
+ EYHrA51rTLhj5A8SsFEgByCo/DCXE4962RL3wR9mTsu9M+/bopWsjNDHkY/UCK1Ui4bB
+ ZoWcP5yHt79E2uzrB4c+jPhXmcp3VobvDOqRI4uIjU19jhbb2nGlyyBuaAKGB/gN98dn
+ a7fAuXnVFC0xnIwnN2tYIMmBonTEaZj5rf8xQnX+Lv7GGAjeAysqYERFMYD9aaj9S/lq
+ LLugb/oyjWQz0YlNpH1EZ9H7FTESKAvoAc/s3DDacCyNmBCYWrPVx4zwsmkesMEvp8vf
+ Mhag==
+X-Gm-Message-State: APjAAAUsd60fpm6LXVE4xdzR/AMAula2+XFzHmnW12SPDQfcUYtTB6VH
+ PvMYuR8NeWEOMm7psPifunWmXJGc
+X-Received: by 2002:a05:600c:20c6:: with SMTP id
+ y6mr5106294wmm.95.1581181019299; 
+ Sat, 08 Feb 2020 08:56:59 -0800 (PST)
+Received: from localhost.localdomain (78.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.78])
+ by smtp.gmail.com with ESMTPSA id a5sm7872763wmb.37.2020.02.08.08.56.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 08 Feb 2020 08:56:58 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 00/13] hw/arm/raspi: Dynamically create machines based on
+ the board revision
+Date: Sat,  8 Feb 2020 17:56:32 +0100
+Message-Id: <20200208165645.15657-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.1
 MIME-Version: 1.0
-In-Reply-To: <20200208134154.GD823968@xz-x1>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: CQzk8OopPkqjONcu7k5rRw-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::336
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,53 +113,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
- jean-philippe@linaro.org, quintela@redhat.com, qemu-devel@nongnu.org,
- dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- mst@redhat.com, eric.auger.pro@gmail.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Joaquin de Andres <me@xcancerberox.com.ar>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Esteban Bosse <estebanbosse@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pcAnj61MzV8B
+X-TUID: SsRUYCvYrEu7
 
-Hi Peter,
+Hi,
 
-On 2/8/20 2:41 PM, Peter Xu wrote:
-> On Sat, Feb 08, 2020 at 01:00:16PM +0100, Eric Auger wrote:
->> This patch implements the endpoint attach/detach to/from
->> a domain.
->>
->> Domain and endpoint internal datatypes are introduced.
->> Both are stored in RB trees. The domain owns a list of
->> endpoints attached to it. Also helpers to get/put
->> end points and domains are introduced.
->>
->> As for the IOMMU memory regions, a callback is called on
->> PCI bus enumeration that initializes for a given device
->> on the bus hierarchy an IOMMU memory region. The PCI bus
->> hierarchy is stored locally in IOMMUPciBus and IOMMUDevice
->> objects.
->>
->> At the time of the enumeration, the bus number may not be
->> computed yet.
->>
->> So operations that will need to retrieve the IOMMUdevice
->> and its IOMMU memory region from the bus number and devfn,
->> once the bus number is garanteed to be frozen, use an array
->> of IOMMUPciBus, lazily populated.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
-> Reviewed-by: Peter Xu <peterx@redhat.com>
-> 
-> (Hope this is the last one missing r-b besides patch 8, I'll leave
->  patch 8 for the others or Michael when merging)
+This series is a preparatory to easily add the raspi0/raspi1/raspi4
+boards (see [1]).
 
-Sure. Many thanks!
+Igor has been working in his "refactor main RAM allocation to use
+hostmem backend" series, and now v4 [2] is almost reviewed.
 
-Best Regards
+His raspi patch [3] clashes with my work, Since it is easier for
+him to apply his on top of mine, I am sending these patches first.
 
-Eric
-> 
-> Thanks,
-> 
+Since v2:
+- Split of bigger series (30 patches was scary)
+- addressed Zoltan review comments
+
+Phil.
+
+[1] https://www.mail-archive.com/qemu-devel@nongnu.org/msg677145.html
+[2] https://www.mail-archive.com/qemu-devel@nongnu.org/msg675738.html
+[3] https://www.mail-archive.com/qemu-devel@nongnu.org/msg675752.html
+Supersedes: <20200206011756.2413-1-f4bug@amsat.org>
+
+Philippe Mathieu-Daudé (13):
+  hw/arm/raspi: Use BCM2708 machine type with pre Device Tree kernels
+  hw/arm/raspi: Correct the board descriptions
+  hw/arm/raspi: Extract the version from the board revision
+  hw/arm/raspi: Extract the RAM size from the board revision
+  hw/arm/raspi: Extract the processor type from the board revision
+  hw/arm/raspi: Trivial code movement
+  hw/arm/raspi: Make machines children of abstract RaspiMachineClass
+  hw/arm/raspi: Make board_rev a field of RaspiMachineClass
+  hw/arm/raspi: Let class_init() directly call raspi_machine_init()
+  hw/arm/raspi: Set default RAM size to size encoded in board revision
+  hw/arm/raspi: Extract the board model from the board revision
+  hw/arm/raspi: Use a unique raspi_machine_class_init() method
+  hw/arm/raspi: Extract the cores count from the board revision
+
+ hw/arm/raspi.c | 190 +++++++++++++++++++++++++++++++++++++------------
+ 1 file changed, 143 insertions(+), 47 deletions(-)
+
+-- 
+2.21.1
 

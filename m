@@ -1,107 +1,110 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1919149lfp;
-        Sat, 8 Feb 2020 08:57:20 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwYftJBQG+DDgkdCFKuOlP8+o9s3hrtEE8I/K/3Nr6H4IyguACpUyvXSCGVY09JBrQt5AQE
-X-Received: by 2002:a0c:c310:: with SMTP id f16mr3519818qvi.65.1581181040362;
-        Sat, 08 Feb 2020 08:57:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581181040; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1919205lfp;
+        Sat, 8 Feb 2020 08:57:26 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxsCCQ+vL6ZADJBWZnARfJ0X1PE09iD8H7peU8+jUHczQBeZs13iCd012si/RG3uHx2+r/T
+X-Received: by 2002:a05:620a:536:: with SMTP id h22mr4195409qkh.189.1581181045984;
+        Sat, 08 Feb 2020 08:57:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581181045; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qs/yyaAi30840cvv2IrMFCrczBi6a037/G24++lVY3teX26cKD71dLz5NkxwFkvufS
-         9TM3u6VgefdFLw49jpL+VajxjYchdD88gJYuYQ0tLZa6KG3jvvPGZXGuwZ2hGw52mVHq
-         7LMKacJWKo2ybmeFmApIYTRRjWUlsyr1s+DykJesRgH0rxcvoDq/Jy16Y1uRDI/qAerk
-         iMmUEey+LUAdTPqNUrBXqMLLpd+FI/EAsxHZhEqGHY0BtSFP1zGhQjOJ3Qtv9oysTBga
-         2RjR4kyFPdoQ/nV+hPyBbZ3zSwOQMyhlLec4J8CKaPH0nzJ3V4xeINcSA5fzlq//WRaa
-         aBYw==
+        b=xGH7BatIwn1qHbwkgaEJAEI8U/pqhhUzmpPFJWIvqs2kjgUzsmZDa9aMsxjNjDTy25
+         RdyV28N6avua/VVxSDyRrYUfeFA5vtrIf70N/RbtNzFcwZOwXyKjUELpII+7JpcwwOWj
+         dnMr/fBPAPTBWzaWhtCkT2/vW1e1bYTpFL3Mb5x0EMRIQ9MLFGTuchv50LpZrjpqWlMS
+         sg23iXOXhf9AmA32/ndlma8KgZlvse82sI2q2h4PgFCguEgjHXd9Sg66zVltsH8Yjlsj
+         ZUWvRGB64n7oRW6uGWh90DHRaAcb8R013v4EBuShgYH83znZVziOGYjk7ZdIUqGfeB8L
+         cDEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=M6znWrwvkqZIc+O5AYJ19ilD9hYxp5DQIdt31ia8C3Q=;
-        b=PcE20IldreNF3dAx3djrvcLLCUxtbPr80gBgWi7UVg6mTIBFXhqCSO7Uyw/PiXB3tC
-         wTRDEnlaD9T01oVUSfUOGDztAaWjT/eKg/ACqoP3mYnbd0EGfKcsZaw1HOklRbGm/MO+
-         2raBpY6a/S3yMyeF+rxPTlxtx6QHA1bwr8jsVVOW0v8SQMuIeiWvdkYlx35KOe6tS9kC
-         ZuGJKUwKQESY/+LbH9+yqHH+iFYcLFa62YHtYaKuY2jZzIktes30SWQjpiYM8LOvBs/m
-         Pphh/gzhrxJVV0d6ZwvMX/hPjOdkQjYqUj8yH7iaS/rgRt7GFihLobYCJ3/pi/0MBqqA
-         40tg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=Jn2j29BiRfoRvwQ9fncbxxXvC03O2fhpTEmaOkjnTnA=;
+        b=nQzIEAcEf2Eze6zyvHNrez56BfvPNNDM1b0/UHJ/Pfraq467xZpKKx17tIVfrLyVxG
+         Mwlb9VR750Yh6GQcCp0921rQqcPZt52d2TNCBHnzmDWBa75SK3suiPhaGSOMFD/1mq0y
+         qve3K/qemhMDNCt+G6BWGWFV+BTSUHK8IEjWvK92vx+XqHpGwD7PoFlNWy6LUTERN9Pw
+         S5FQNmZjyEQnUZPbiyuUPSP5ADJmU88FUAYKi/psNK0oXqtcLZI8Fq4klvJHExaoDe4t
+         EMZr8lHH+Jp/uBGueDZHFFyAbUX9sYlMwVuvwMDVpm7fQ4zLEhtbLKXdfrsiQ166mkY/
+         rmFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HGiJiXab;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=R9HSU8Cs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z12si1844143qki.1.2020.02.08.08.57.20
+        by mx.google.com with ESMTPS id v16si1759066qkg.262.2020.02.08.08.57.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 08 Feb 2020 08:57:20 -0800 (PST)
+        Sat, 08 Feb 2020 08:57:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HGiJiXab;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=R9HSU8Cs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:43300 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43302 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j0TPz-0005Yz-Mm
-	for alex.bennee@linaro.org; Sat, 08 Feb 2020 11:57:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53715)
+	id 1j0TQ5-0005la-8D
+	for alex.bennee@linaro.org; Sat, 08 Feb 2020 11:57:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53786)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j0TPl-0005W1-FO
- for qemu-arm@nongnu.org; Sat, 08 Feb 2020 11:57:06 -0500
+ id 1j0TPp-0005dV-Of
+ for qemu-arm@nongnu.org; Sat, 08 Feb 2020 11:57:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j0TPk-0001de-Bf
- for qemu-arm@nongnu.org; Sat, 08 Feb 2020 11:57:05 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:34919)
+ id 1j0TPo-0001gP-4z
+ for qemu-arm@nongnu.org; Sat, 08 Feb 2020 11:57:09 -0500
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:40980)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j0TPh-0001cH-KW; Sat, 08 Feb 2020 11:57:01 -0500
-Received: by mail-wm1-x336.google.com with SMTP id b17so6067992wmb.0;
- Sat, 08 Feb 2020 08:57:01 -0800 (PST)
+ id 1j0TPj-0001dC-5g; Sat, 08 Feb 2020 11:57:03 -0500
+Received: by mail-wr1-x444.google.com with SMTP id c9so2479904wrw.8;
+ Sat, 08 Feb 2020 08:57:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=M6znWrwvkqZIc+O5AYJ19ilD9hYxp5DQIdt31ia8C3Q=;
- b=HGiJiXabjwc8ocLFlTVpqQYHMva4qCcYfBGrpA9BjBUd21rLsUtRzbmnCH6nSIoUpZ
- 5/6Cd61EUUN0N4JsjQU/wgwCiq5s0rIvIZbK4+YJZ5ZVg+57tyaGtlk4ObXXCoko0CVR
- kt84iHq2vaes7z+Z8WqQkqwZgKVayzuh+XGzLOcyrmjNYIDU1UU6qYHaXL1e/GhFd5PI
- AgjoLpez4XtJpz7JCL0N+cyg/ZWLHgYr2Ks0MY3NuDRj1QLuwCpGWiljzpRBoe3X0AJX
- D93zD3YZCYvTgAZqB4FHcF8pDpiLTePUnUF9VsZGxq+RgpvlfIP8jrg+ZkE/Y5x1u6fG
- 0Fug==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Jn2j29BiRfoRvwQ9fncbxxXvC03O2fhpTEmaOkjnTnA=;
+ b=R9HSU8Csw0S/VWIcvMGmfnOWq1FCfKKRUvBAf5saDHKK+3Ek0UgcXnXxfFRx6DQ/W8
+ 01ilGHFpR/pUXVc5QFgkCHRkAUmPgA+3RP3A5lqZQIf0Vvw88zCk2GIq0z/ImikWt/E4
+ 4oZKXg6aA5zALqkODO2m6wlVIYhLq6rKsNRusfZtgyFoAtItJcG6UwFg4abG6N3PSPvP
+ QiH8wnFIeMiacbXElLY5GUryN5OA36Ofd5T4RBHsV0O6rqJCFIDEFU2sdqTpfZ5ZjreK
+ +qnglgUpZurvf0Df/iDiylEUAWjLbTg6aLS9rGZn1b0R5Xk+cOmluBmEVQLjAeRely73
+ tcPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=M6znWrwvkqZIc+O5AYJ19ilD9hYxp5DQIdt31ia8C3Q=;
- b=L0WhE04uOufkQ43g1BU1SrPh1rvhPIPyrst9Dzi3tWHUFHjxwuvnfZqczeZafqoSDb
- EYHrA51rTLhj5A8SsFEgByCo/DCXE4962RL3wR9mTsu9M+/bopWsjNDHkY/UCK1Ui4bB
- ZoWcP5yHt79E2uzrB4c+jPhXmcp3VobvDOqRI4uIjU19jhbb2nGlyyBuaAKGB/gN98dn
- a7fAuXnVFC0xnIwnN2tYIMmBonTEaZj5rf8xQnX+Lv7GGAjeAysqYERFMYD9aaj9S/lq
- LLugb/oyjWQz0YlNpH1EZ9H7FTESKAvoAc/s3DDacCyNmBCYWrPVx4zwsmkesMEvp8vf
- Mhag==
-X-Gm-Message-State: APjAAAUsd60fpm6LXVE4xdzR/AMAula2+XFzHmnW12SPDQfcUYtTB6VH
- PvMYuR8NeWEOMm7psPifunWmXJGc
-X-Received: by 2002:a05:600c:20c6:: with SMTP id
- y6mr5106294wmm.95.1581181019299; 
- Sat, 08 Feb 2020 08:56:59 -0800 (PST)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=Jn2j29BiRfoRvwQ9fncbxxXvC03O2fhpTEmaOkjnTnA=;
+ b=JH2qlwXL0WVjU3uRt7oqZflPqvQwWUrQtmFfmGm5gZ5Mug6RZCNWzcZVDBdn2ylNOI
+ mOcBP4Dt+2WVNdOtJt128S9gjzjTtmAuSimvitzyzVBhgGWR25sTQC+NUPGpzFu5a9UP
+ zKZp+YOXK8/H/jWJCGyMw0S+tZy9G50SKjVHoSxWP27CzugTc1aIDz0RoKKBuD01P5Es
+ X4d8CeqB3giWpgEyEi0gA+nw7Vb4xtnAc8FCTUlgERnPlgkCAPXfg4ulYCvZPSzpwXHM
+ aoQPcOmymaD8qTCSUQVyRDDXiR3lO6fm83QIWv7lqdzOVa1I24zCsOpic/9Y0XQNMMvq
+ nnOw==
+X-Gm-Message-State: APjAAAW5u+n3xlvVGRLyUGuBgznt3uN+SPxrH0VoX7pNGlFWlTlcZxo9
+ eOae3fDE4d8+25YjZ2eHFlnZu8Lp
+X-Received: by 2002:a05:6000:124b:: with SMTP id
+ j11mr5640409wrx.285.1581181021610; 
+ Sat, 08 Feb 2020 08:57:01 -0800 (PST)
 Received: from localhost.localdomain (78.red-88-21-202.staticip.rima-tde.net.
  [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id a5sm7872763wmb.37.2020.02.08.08.56.57
+ by smtp.gmail.com with ESMTPSA id a5sm7872763wmb.37.2020.02.08.08.56.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 08 Feb 2020 08:56:58 -0800 (PST)
+ Sat, 08 Feb 2020 08:57:00 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 00/13] hw/arm/raspi: Dynamically create machines based on
- the board revision
-Date: Sat,  8 Feb 2020 17:56:32 +0100
-Message-Id: <20200208165645.15657-1-f4bug@amsat.org>
+Subject: [PATCH v3 01/13] hw/arm/raspi: Use BCM2708 machine type with pre
+ Device Tree kernels
+Date: Sat,  8 Feb 2020 17:56:33 +0100
+Message-Id: <20200208165645.15657-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200208165645.15657-1-f4bug@amsat.org>
+References: <20200208165645.15657-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::336
+X-Received-From: 2a00:1450:4864:20::444
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,57 +117,121 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Stephen Warren <swarren@nvidia.com>,
+ =?UTF-8?q?Zolt=C3=A1n=20Baldaszti?= <bztemail@gmail.com>,
  Joaquin de Andres <me@xcancerberox.com.ar>,
  Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Esteban Bosse <estebanbosse@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>
+ Alistair Francis <alistair.francis@wdc.com>,
+ Igor Mammedov <imammedo@redhat.com>, Michael Chan <michael.chan@broadcom.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Pekka Enberg <penberg@iki.fi>, Kshitij Soni <kshitij.soni@broadcom.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SsRUYCvYrEu7
+X-TUID: IVtEYmZ6G65F
 
-Hi,
+When booting without device tree, the Linux kernels uses the $R1
+register to determine the machine type. The list of values is
+registered at [1].
 
-This series is a preparatory to easily add the raspi0/raspi1/raspi4
-boards (see [1]).
+There are two entries for the Raspberry Pi:
 
-Igor has been working in his "refactor main RAM allocation to use
-hostmem backend" series, and now v4 [2] is almost reviewed.
+- https://www.arm.linux.org.uk/developer/machines/list.php?mid=3138
+  name: MACH_TYPE_BCM2708
+  value: 0xc42 (3138)
+  status: Active, not mainlined
+  date: 15 Oct 2010
 
-His raspi patch [3] clashes with my work, Since it is easier for
-him to apply his on top of mine, I am sending these patches first.
+- https://www.arm.linux.org.uk/developer/machines/list.php?mid=4828
+  name: MACH_TYPE_BCM2835
+  value: 4828
+  status: Active, mainlined
+  date: 6 Dec 2013
 
-Since v2:
-- Split of bigger series (30 patches was scary)
-- addressed Zoltan review comments
+QEMU always used the non-mainlined type MACH_TYPE_BCM2708.
+The value 0xc43 is registered to 'MX51_GGC' (processor i.MX51), and
+0xc44 to 'Western Digital Sharespace NAS' (processor Marvell 88F5182).
 
-Phil.
+The Raspberry Pi foundation bootloader only sets the BCM2708 machine
+type, see [2] or [3]:
 
-[1] https://www.mail-archive.com/qemu-devel@nongnu.org/msg677145.html
-[2] https://www.mail-archive.com/qemu-devel@nongnu.org/msg675738.html
-[3] https://www.mail-archive.com/qemu-devel@nongnu.org/msg675752.html
-Supersedes: <20200206011756.2413-1-f4bug@amsat.org>
+ 133 9:
+ 134     mov r0, #0
+ 135     ldr r1, =3138       @ BCM2708 machine id
+ 136     ldr r2, atags       @ ATAGS
+ 137     bx  r4
 
-Philippe Mathieu-Daudé (13):
-  hw/arm/raspi: Use BCM2708 machine type with pre Device Tree kernels
-  hw/arm/raspi: Correct the board descriptions
-  hw/arm/raspi: Extract the version from the board revision
-  hw/arm/raspi: Extract the RAM size from the board revision
-  hw/arm/raspi: Extract the processor type from the board revision
-  hw/arm/raspi: Trivial code movement
-  hw/arm/raspi: Make machines children of abstract RaspiMachineClass
-  hw/arm/raspi: Make board_rev a field of RaspiMachineClass
-  hw/arm/raspi: Let class_init() directly call raspi_machine_init()
-  hw/arm/raspi: Set default RAM size to size encoded in board revision
-  hw/arm/raspi: Extract the board model from the board revision
-  hw/arm/raspi: Use a unique raspi_machine_class_init() method
-  hw/arm/raspi: Extract the cores count from the board revision
+U-Boot only uses MACH_TYPE_BCM2708 (see [4]):
 
- hw/arm/raspi.c | 190 +++++++++++++++++++++++++++++++++++++------------
- 1 file changed, 143 insertions(+), 47 deletions(-)
+ 25 /*
+ 26  * 2835 is a SKU in a series for which the 2708 is the first or primary SoC,
+ 27  * so 2708 has historically been used rather than a dedicated 2835 ID.
+ 28  *
+ 29  * We don't define a machine type for bcm2709/bcm2836 since the RPi Foundation
+ 30  * chose to use someone else's previously registered machine ID (3139, MX51_GGC)
+ 31  * rather than obtaining a valid ID:-/
+ 32  *
+ 33  * For the bcm2837, hopefully a machine type is not needed, since everything
+ 34  * is DT.
+ 35  */
 
+While the definition MACH_BCM2709 with value 0xc43 was introduced in
+a commit described "Add 2709 platform for Raspberry Pi 2" out of the
+mainline Linux kernel, it does not seem used, and the platform is
+introduced with Device Tree support anyway (see [5] and [6]).
+
+Remove the unused values (0xc43 introduced in commit 1df7d1f9303aef
+"raspi: add raspberry pi 2 machine" and 0xc44 in commit bade58166f4
+"raspi: Raspberry Pi 3 support"), keeping only MACH_TYPE_BCM2708.
+
+[1] https://www.arm.linux.org.uk/developer/machines/
+[2] https://github.com/raspberrypi/tools/blob/920c7ed2e/armstubs/armstub7.S#L135
+[3] https://github.com/raspberrypi/tools/blob/49719d554/armstubs/armstub7.S#L64
+[4] https://gitlab.denx.de/u-boot/u-boot/blob/v2015.04/include/configs/rpi-common.h#L18
+[5] https://github.com/raspberrypi/linux/commit/d9fac63adac#diff-6722037d79570df5b392a49e0e006573R526
+[6] http://lists.infradead.org/pipermail/linux-rpi-kernel/2015-February/001268.html
+
+Cc: Zoltán Baldaszti <bztemail@gmail.com>
+Cc: Pekka Enberg <penberg@iki.fi>
+Cc: Stephen Warren <swarren@nvidia.com>
+Cc: Kshitij Soni <kshitij.soni@broadcom.com>
+Cc: Michael Chan <michael.chan@broadcom.com>
+Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+v3: Improved MACH_TYPE_BCM2708 comment (Zoltán)
+---
+ hw/arm/raspi.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index 3996f6c63a..f2ccabc662 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -29,8 +29,8 @@
+ #define FIRMWARE_ADDR_3 0x80000 /* Pi 3 loads kernel.img here by default */
+ #define SPINTABLE_ADDR  0xd8 /* Pi 3 bootloader spintable */
+ 
+-/* Table of Linux board IDs for different Pi versions */
+-static const int raspi_boardid[] = {[1] = 0xc42, [2] = 0xc43, [3] = 0xc44};
++/* Registered machine type (matches RPi Foundation bootloader and U-Boot) */
++#define MACH_TYPE_BCM2708   3138
+ 
+ typedef struct RasPiState {
+     BCM283XState soc;
+@@ -116,7 +116,7 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
+     static struct arm_boot_info binfo;
+     int r;
+ 
+-    binfo.board_id = raspi_boardid[version];
++    binfo.board_id = MACH_TYPE_BCM2708;
+     binfo.ram_size = ram_size;
+     binfo.nb_cpus = machine->smp.cpus;
+ 
 -- 
 2.21.1
 

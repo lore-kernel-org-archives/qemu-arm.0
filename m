@@ -1,74 +1,104 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1132212lfp;
-        Fri, 7 Feb 2020 15:27:22 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyCtH3bXNuamEzLbZrQq3MB5uHjJ4wANqAt0hpwPyQnZRpq0EgcgHGlfsf/gFv5HRuwFof0
-X-Received: by 2002:a05:620a:12e1:: with SMTP id f1mr1316735qkl.394.1581118042747;
-        Fri, 07 Feb 2020 15:27:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581118042; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1681194lfp;
+        Sat, 8 Feb 2020 03:52:05 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx7jNkU5NOZu8tT2WqPPrrELI49EP7x0wwCtghcLtQOVsP0ob0TR5f963tkJ0dPADhwRVeN
+X-Received: by 2002:a37:9ac6:: with SMTP id c189mr3159371qke.40.1581162724859;
+        Sat, 08 Feb 2020 03:52:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581162724; cv=none;
         d=google.com; s=arc-20160816;
-        b=JfJdccSAtETFUHi9uk14LzGFYIL2W4u9uJSgrWPAAX7KZ2+T+W5RQHgaDAG+6P9i5Z
-         47I9vVTiwoAc7mUlU1Bxy3tzymlhDMWtkTNUse0G3JSzPjBwAL5QEPKrURdAIoOoepIE
-         S5COM19Ye8qGPatDfVuCDvQ0QfmT1ZsQh9vNKo8otXRRP7qLSkuwlQYwJIm7AvLpNU7y
-         /bQn4jK98osEpL8xDahfwdnfdWb91plIwFrHw4StThJrqNyepKMeYgOQdRoDwQpkZkjY
-         PjJYEIy5+WxVvwM0fB8jjyzPfMG+BV4Un60zSqmR0UPS1moLUbnZR5HKiYuB3YLdGuzw
-         9E2w==
+        b=lXoTYM6VSeq5D43RjnCzkmIVUPADrHf1snqV0mSE/r+IPhfYSNbNmb6eEt+do1xVFD
+         PJrYsWKZBUVwk2IPUXiZTEkg4uQ9Sp4LskIayEPZp5Cuskln/zpLRn9L3tsp0UJHK1Iy
+         9klG8DvwvVSj3mw7Xkvp/nkbKZZ4wTngN/WZIJzNC3xGsJe+tMeH7qeO9My25tD413qZ
+         wDLAr8hFxhG+RITJFD1s8j1AZG6Xxj6y2Je0daITaHGpAwiFK/zqXiUJPJMsLRdkT3o5
+         pTRTucj3HLO0K+zJdE6Xsx/YEyBe7thRBKjuziKVb1cnAKHc+UIUR9OOpIk8qKkZaref
+         agwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:date:to:from
-         :resent-from:content-transfer-encoding:mime-version:message-id
-         :subject:in-reply-to:resent-message-id:resent-date;
-        bh=wPOpv9SorDhiaW7F6TZ1qt8rHANf9yZKCjcXJOlbm6A=;
-        b=IOXXQ9xCJMsi95uNsiPc1QJHSDlmB+EteU5tR1fjoa/bW/uYH1IWpnQnj47jIatp73
-         61g2GhbR9xziPc4JFJoXpbnSqWMhc06BkyhFE68JB5ewcIZ9bBswtXbjSjF492OG0+PV
-         pGkbzFVjeL03yfVP7pyLxWtTxTza9cg59hINDKYIEt2dS9VCKTnZ9pnnI2dA5dLVbBs8
-         Q3Ks70IPKUAoI9jES5rU3+WFDUrxA4qatNenssL56Qpfo2TiTc5KbAIMUyNrwA4f39xC
-         PAytozKHCtfa6F3lVId6m+Xhlr0i8QwcdWWzdk/NHlpt7X96GZvLTnn8UOSgB+QKdnem
-         BT1w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=tmgoM8Z59Cj0nmW9qkdGgVPuJd0CovuBUQotOi2vlrQ=;
+        b=cA0yvv0DcltqyvQoZk4BgcikhfS7z9Nt9Jza3klH4pxm8iM/5gfTaxKh2ZywqQs4G+
+         5iL9cKJJHeyje57Qi8mh8AtGY+srqPSTkRXZ5DTYk6elNz85laDXID50IZcVQjFrJZXJ
+         kBGe8+T8LpDWHBTJD2SiBzk0dONOoZ+H93YqXnhHhfecoWkGjfVfBSzFjnpoBfs+AnUX
+         8lWCqucuMn2GF5ILG607UK1jDuFT/DXcB4RF4NWEADbrPetcZwUXFx8Q6CZNUZR0XE+P
+         bPSFvi2bkSLJ0SFxd2KylOiUFU8+TMC1Q+PlUaOFbXp5SRu7M3ajby95W9sZUrbrirWT
+         WPew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JYQTv41k;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d7si544469qvs.62.2020.02.07.15.27.22
+        by mx.google.com with ESMTPS id u7si1310129qtv.353.2020.02.08.03.52.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Feb 2020 15:27:22 -0800 (PST)
+        Sat, 08 Feb 2020 03:52:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36232 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JYQTv41k;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40274 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j0D1u-0001wv-6r
-	for alex.bennee@linaro.org; Fri, 07 Feb 2020 18:27:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33046)
+	id 1j0Oea-0001Pr-0j
+	for alex.bennee@linaro.org; Sat, 08 Feb 2020 06:52:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51934)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1j0D0z-0001WJ-Vv
- for qemu-devel@nongnu.org; Fri, 07 Feb 2020 18:26:27 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1j0OdR-0000yX-Qo
+ for qemu-devel@nongnu.org; Sat, 08 Feb 2020 06:50:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1j0D0y-0006x2-E9
- for qemu-devel@nongnu.org; Fri, 07 Feb 2020 18:26:25 -0500
-Resent-Date: Fri, 07 Feb 2020 18:26:25 -0500
-Resent-Message-Id: <E1j0D0y-0006x2-E9@eggs.gnu.org>
-Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21133)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1j0D0y-0006oH-83; Fri, 07 Feb 2020 18:26:24 -0500
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1581117947112439.0638488255023;
- Fri, 7 Feb 2020 15:25:47 -0800 (PST)
-In-Reply-To: <20200207174548.9087-1-linux@roeck-us.net>
-Subject: Re: [PATCH v2] hw/arm: ast2600: Wire up EHCI controllers
-Message-ID: <158111794646.591.15728158804652336738@a1bbccc8075a>
+ (envelope-from <eric.auger@redhat.com>) id 1j0OdP-0006X7-IE
+ for qemu-devel@nongnu.org; Sat, 08 Feb 2020 06:50:52 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:53036
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1j0OdP-0006Ww-DO
+ for qemu-devel@nongnu.org; Sat, 08 Feb 2020 06:50:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581162650;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=tmgoM8Z59Cj0nmW9qkdGgVPuJd0CovuBUQotOi2vlrQ=;
+ b=JYQTv41kCl8rpWYLVzayNk9yWsUum8/NlLSqpUYyzJo1Vf3FtIrNCfeQQOmWhdw24nPMSO
+ sEC76b6BBBDXLNRnj+gFlTEt8IvzT0l3cBOwln2MHmARFshWcRFL7M2HpRaLZjW1EYSoCe
+ 4i9pHdHI+QwMLLxegVypVhXuy2nBjp4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-45-eT5bdguAOx6HNG5JVupINA-1; Sat, 08 Feb 2020 06:50:48 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F140E1401;
+ Sat,  8 Feb 2020 11:50:46 +0000 (UTC)
+Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 855795D9C9;
+ Sat,  8 Feb 2020 11:50:37 +0000 (UTC)
+Subject: Re: [PATCH v14 03/11] virtio-iommu: Implement attach/detach command
+To: Peter Xu <peterx@redhat.com>
+References: <20200207093203.3788-1-eric.auger@redhat.com>
+ <20200207093203.3788-4-eric.auger@redhat.com> <20200207202601.GD720553@xz-x1>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <b0ae352f-aee2-345a-743d-51bf67f640f8@redhat.com>
+Date: Sat, 8 Feb 2020 12:50:34 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: linux@roeck-us.net
-Date: Fri, 7 Feb 2020 15:25:47 -0800 (PST)
-X-ZohoMailClient: External
+In-Reply-To: <20200207202601.GD720553@xz-x1>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: eT5bdguAOx6HNG5JVupINA-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 136.143.188.51
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -80,130 +110,146 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, andrew@aj.id.au, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, joel@jms.id.au, linux@roeck-us.net, clg@kaod.org
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
+ quintela@redhat.com, mst@redhat.com, qemu-devel@nongnu.org,
+ dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
+ jean-philippe@linaro.org, eric.auger.pro@gmail.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HJKiR8q0QrPb
+X-TUID: LEeONTuFYZlZ
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDIwNzE3NDU0OC45MDg3
-LTEtbGludXhAcm9lY2stdXMubmV0LwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0aGUgZG9j
-a2VyLXF1aWNrQGNlbnRvczcgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRlc3RpbmcgY29t
-bWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2VyIGluc3RhbGxl
-ZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBURVNUIFNDUklQ
-VCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKbWFrZSBkb2NrZXItaW1hZ2UtY2VudG9zNyBWPTEgTkVU
-V09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1xdWlja0BjZW50b3M3IFNIT1dfRU5WPTEgSj0x
-NCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCiAgQ0MgICAgICBhYXJjaDY0LXNv
-ZnRtbXUvZ2Ric3R1Yi14bWwubwogIENDICAgICAgYWFyY2g2NC1zb2Z0bW11L3RhcmdldC9hcm0v
-dHJhbnNsYXRlLm8KICBDQyAgICAgIGFhcmNoNjQtc29mdG1tdS90cmFjZS9nZW5lcmF0ZWQtaGVs
-cGVycy5vCi90bXAvcWVtdS10ZXN0L3NyYy9ody9hcm0vYXNwZWVkX2FzdDI2MDAuYzozNDo2OiBl
-cnJvcjogJ0FTUEVFRF9FSENJMScgdW5kZWNsYXJlZCBoZXJlIChub3QgaW4gYSBmdW5jdGlvbikK
-ICAgICBbQVNQRUVEX0VIQ0kxXSAgICAgPSAweDFFNkExMDAwLAogICAgICBeCi90bXAvcWVtdS10
-ZXN0L3NyYy9ody9hcm0vYXNwZWVkX2FzdDI2MDAuYzozNDo1OiBlcnJvcjogYXJyYXkgaW5kZXgg
-aW4gaW5pdGlhbGl6ZXIgbm90IG9mIGludGVnZXIgdHlwZQogICAgIFtBU1BFRURfRUhDSTFdICAg
-ICA9IDB4MUU2QTEwMDAsCiAgICAgXgovdG1wL3FlbXUtdGVzdC9zcmMvaHcvYXJtL2FzcGVlZF9h
-c3QyNjAwLmM6MzQ6NTogZXJyb3I6IChuZWFyIGluaXRpYWxpemF0aW9uIGZvciAnYXNwZWVkX3Nv
-Y19hc3QyNjAwX21lbW1hcCcpCi90bXAvcWVtdS10ZXN0L3NyYy9ody9hcm0vYXNwZWVkX2FzdDI2
-MDAuYzozNTo2OiBlcnJvcjogJ0FTUEVFRF9FSENJMicgdW5kZWNsYXJlZCBoZXJlIChub3QgaW4g
-YSBmdW5jdGlvbikKICAgICBbQVNQRUVEX0VIQ0kyXSAgICAgPSAweDFFNkEzMDAwLAogICAgICBe
-Ci90bXAvcWVtdS10ZXN0L3NyYy9ody9hcm0vYXNwZWVkX2FzdDI2MDAuYzozNTo1OiBlcnJvcjog
-YXJyYXkgaW5kZXggaW4gaW5pdGlhbGl6ZXIgbm90IG9mIGludGVnZXIgdHlwZQogICAgIFtBU1BF
-RURfRUhDSTJdICAgICA9IDB4MUU2QTMwMDAsCiAgICAgXgovdG1wL3FlbXUtdGVzdC9zcmMvaHcv
-YXJtL2FzcGVlZF9hc3QyNjAwLmM6MzU6NTogZXJyb3I6IChuZWFyIGluaXRpYWxpemF0aW9uIGZv
-ciAnYXNwZWVkX3NvY19hc3QyNjAwX21lbW1hcCcpCi90bXAvcWVtdS10ZXN0L3NyYy9ody9hcm0v
-YXNwZWVkX2FzdDI2MDAuYzo4NDo1OiBlcnJvcjogYXJyYXkgaW5kZXggaW4gaW5pdGlhbGl6ZXIg
-bm90IG9mIGludGVnZXIgdHlwZQogICAgIFtBU1BFRURfRUhDSTFdICAgICA9IDUsCiAgICAgXgov
-dG1wL3FlbXUtdGVzdC9zcmMvaHcvYXJtL2FzcGVlZF9hc3QyNjAwLmM6ODQ6NTogZXJyb3I6IChu
-ZWFyIGluaXRpYWxpemF0aW9uIGZvciAnYXNwZWVkX3NvY19hc3QyNjAwX2lycW1hcCcpCi90bXAv
-cWVtdS10ZXN0L3NyYy9ody9hcm0vYXNwZWVkX2FzdDI2MDAuYzo4NTo1OiBlcnJvcjogYXJyYXkg
-aW5kZXggaW4gaW5pdGlhbGl6ZXIgbm90IG9mIGludGVnZXIgdHlwZQogICAgIFtBU1BFRURfRUhD
-STJdICAgICA9IDksCiAgICAgXgovdG1wL3FlbXUtdGVzdC9zcmMvaHcvYXJtL2FzcGVlZF9hc3Qy
-NjAwLmM6ODU6NTogZXJyb3I6IChuZWFyIGluaXRpYWxpemF0aW9uIGZvciAnYXNwZWVkX3NvY19h
-c3QyNjAwX2lycW1hcCcpCi90bXAvcWVtdS10ZXN0L3NyYy9ody9hcm0vYXNwZWVkX2FzdDI2MDAu
-YzogSW4gZnVuY3Rpb24gJ2FzcGVlZF9zb2NfYXN0MjYwMF9pbml0JzoKL3RtcC9xZW11LXRlc3Qv
-c3JjL2h3L2FybS9hc3BlZWRfYXN0MjYwMC5jOjE3MzoyMzogZXJyb3I6ICdBc3BlZWRTb0NDbGFz
-cycgaGFzIG5vIG1lbWJlciBuYW1lZCAnZWhjaXNfbnVtJwogICAgIGZvciAoaSA9IDA7IGkgPCBz
-Yy0+ZWhjaXNfbnVtOyBpKyspIHsKICAgICAgICAgICAgICAgICAgICAgICBeCkluIGZpbGUgaW5j
-bHVkZWQgZnJvbSAvdG1wL3FlbXUtdGVzdC9zcmMvaW5jbHVkZS9ody9xZGV2LWNvcmUuaDo2OjAs
-Ci0tLQogICAgICAgICAgICAgICAgIGZyb20gL3RtcC9xZW11LXRlc3Qvc3JjL3RhcmdldC9hcm0v
-Y3B1LXFvbS5oOjIzLAogICAgICAgICAgICAgICAgIGZyb20gL3RtcC9xZW11LXRlc3Qvc3JjL3Rh
-cmdldC9hcm0vY3B1Lmg6MjUsCiAgICAgICAgICAgICAgICAgZnJvbSAvdG1wL3FlbXUtdGVzdC9z
-cmMvaHcvYXJtL2FzcGVlZF9hc3QyNjAwLmM6MTI6Ci90bXAvcWVtdS10ZXN0L3NyYy9ody9hcm0v
-YXNwZWVkX2FzdDI2MDAuYzoxNzQ6NTY6IGVycm9yOiAnQXNwZWVkU29DU3RhdGUnIGhhcyBubyBt
-ZW1iZXIgbmFtZWQgJ2VoY2knCiAgICAgICAgIHN5c2J1c19pbml0X2NoaWxkX29iaihvYmosICJl
-aGNpWypdIiwgT0JKRUNUKCZzLT5laGNpW2ldKSwKICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeCi90bXAvcWVtdS10ZXN0L3NyYy9pbmNsdWRl
-L3FvbS9vYmplY3QuaDo1MTE6MTc6IG5vdGU6IGluIGRlZmluaXRpb24gb2YgbWFjcm8gJ09CSkVD
-VCcKICAgICAoKE9iamVjdCAqKShvYmopKQogICAgICAgICAgICAgICAgIF4KL3RtcC9xZW11LXRl
-c3Qvc3JjL2h3L2FybS9hc3BlZWRfYXN0MjYwMC5jOjE3NTozOTogZXJyb3I6ICdBc3BlZWRTb0NT
-dGF0ZScgaGFzIG5vIG1lbWJlciBuYW1lZCAnZWhjaScKICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIHNpemVvZihzLT5laGNpW2ldKSwgVFlQRV9QTEFURk9STV9FSENJKTsKICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgovdG1wL3FlbXUtdGVzdC9zcmMvaHcvYXJt
-L2FzcGVlZF9hc3QyNjAwLmM6MTc1OjUxOiBlcnJvcjogJ1RZUEVfUExBVEZPUk1fRUhDSScgdW5k
-ZWNsYXJlZCAoZmlyc3QgdXNlIGluIHRoaXMgZnVuY3Rpb24pCiAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICBzaXplb2Yocy0+ZWhjaVtpXSksIFRZUEVfUExBVEZPUk1fRUhDSSk7CiAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF4KL3RtcC9xZW11
-LXRlc3Qvc3JjL2h3L2FybS9hc3BlZWRfYXN0MjYwMC5jOjE3NTo1MTogbm90ZTogZWFjaCB1bmRl
-Y2xhcmVkIGlkZW50aWZpZXIgaXMgcmVwb3J0ZWQgb25seSBvbmNlIGZvciBlYWNoIGZ1bmN0aW9u
-IGl0IGFwcGVhcnMgaW4KL3RtcC9xZW11LXRlc3Qvc3JjL2h3L2FybS9hc3BlZWRfYXN0MjYwMC5j
-OiBJbiBmdW5jdGlvbiAnYXNwZWVkX3NvY19hc3QyNjAwX3JlYWxpemUnOgovdG1wL3FlbXUtdGVz
-dC9zcmMvaHcvYXJtL2FzcGVlZF9hc3QyNjAwLmM6NDI5OjIzOiBlcnJvcjogJ0FzcGVlZFNvQ0Ns
-YXNzJyBoYXMgbm8gbWVtYmVyIG5hbWVkICdlaGNpc19udW0nCiAgICAgZm9yIChpID0gMDsgaSA8
-IHNjLT5laGNpc19udW07IGkrKykgewogICAgICAgICAgICAgICAgICAgICAgIF4KSW4gZmlsZSBp
-bmNsdWRlZCBmcm9tIC90bXAvcWVtdS10ZXN0L3NyYy9pbmNsdWRlL2h3L3FkZXYtY29yZS5oOjY6
-MCwKLS0tCiAgICAgICAgICAgICAgICAgZnJvbSAvdG1wL3FlbXUtdGVzdC9zcmMvdGFyZ2V0L2Fy
-bS9jcHUtcW9tLmg6MjMsCiAgICAgICAgICAgICAgICAgZnJvbSAvdG1wL3FlbXUtdGVzdC9zcmMv
-dGFyZ2V0L2FybS9jcHUuaDoyNSwKICAgICAgICAgICAgICAgICBmcm9tIC90bXAvcWVtdS10ZXN0
-L3NyYy9ody9hcm0vYXNwZWVkX2FzdDI2MDAuYzoxMjoKL3RtcC9xZW11LXRlc3Qvc3JjL2h3L2Fy
-bS9hc3BlZWRfYXN0MjYwMC5jOjQzMDo0MzogZXJyb3I6ICdBc3BlZWRTb0NTdGF0ZScgaGFzIG5v
-IG1lbWJlciBuYW1lZCAnZWhjaScKICAgICAgICAgb2JqZWN0X3Byb3BlcnR5X3NldF9ib29sKE9C
-SkVDVCgmcy0+ZWhjaVtpXSksIHRydWUsICJyZWFsaXplZCIsICZlcnIpOwogICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgovdG1wL3FlbXUtdGVzdC9zcmMvaW5jbHVk
-ZS9xb20vb2JqZWN0Lmg6NTExOjE3OiBub3RlOiBpbiBkZWZpbml0aW9uIG9mIG1hY3JvICdPQkpF
-Q1QnCiAgICAgKChPYmplY3QgKikob2JqKSkKICAgICAgICAgICAgICAgICBeCi90bXAvcWVtdS10
-ZXN0L3NyYy9ody9hcm0vYXNwZWVkX2FzdDI2MDAuYzo0MzU6NDI6IGVycm9yOiAnQXNwZWVkU29D
-U3RhdGUnIGhhcyBubyBtZW1iZXIgbmFtZWQgJ2VoY2knCiAgICAgICAgIHN5c2J1c19tbWlvX21h
-cChTWVNfQlVTX0RFVklDRSgmcy0+ZWhjaVtpXSksIDAsCiAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIF4KL3RtcC9xZW11LXRlc3Qvc3JjL2luY2x1ZGUvcW9tL29iamVj
-dC5oOjUxMToxNzogbm90ZTogaW4gZGVmaW5pdGlvbiBvZiBtYWNybyAnT0JKRUNUJwotLS0KL3Rt
-cC9xZW11LXRlc3Qvc3JjL2h3L2FybS9hc3BlZWRfYXN0MjYwMC5jOjQzNToyNTogbm90ZTogaW4g
-ZXhwYW5zaW9uIG9mIG1hY3JvICdTWVNfQlVTX0RFVklDRScKICAgICAgICAgc3lzYnVzX21taW9f
-bWFwKFNZU19CVVNfREVWSUNFKCZzLT5laGNpW2ldKSwgMCwKICAgICAgICAgICAgICAgICAgICAg
-ICAgIF4KL3RtcC9xZW11LXRlc3Qvc3JjL2h3L2FybS9hc3BlZWRfYXN0MjYwMC5jOjQzNzo0NTog
-ZXJyb3I6ICdBc3BlZWRTb0NTdGF0ZScgaGFzIG5vIG1lbWJlciBuYW1lZCAnZWhjaScKICAgICAg
-ICAgc3lzYnVzX2Nvbm5lY3RfaXJxKFNZU19CVVNfREVWSUNFKCZzLT5laGNpW2ldKSwgMCwKICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgovdG1wL3FlbXUtdGVz
-dC9zcmMvaW5jbHVkZS9xb20vb2JqZWN0Lmg6NTExOjE3OiBub3RlOiBpbiBkZWZpbml0aW9uIG9m
-IG1hY3JvICdPQkpFQ1QnCi0tLQogICAgICAgICBzeXNidXNfY29ubmVjdF9pcnEoU1lTX0JVU19E
-RVZJQ0UoJnMtPmVoY2lbaV0pLCAwLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgXgovdG1w
-L3FlbXUtdGVzdC9zcmMvaHcvYXJtL2FzcGVlZF9hc3QyNjAwLmM6IEluIGZ1bmN0aW9uICdhc3Bl
-ZWRfc29jX2FzdDI2MDBfY2xhc3NfaW5pdCc6Ci90bXAvcWVtdS10ZXN0L3NyYy9ody9hcm0vYXNw
-ZWVkX2FzdDI2MDAuYzo1NTk6NzogZXJyb3I6ICdBc3BlZWRTb0NDbGFzcycgaGFzIG5vIG1lbWJl
-ciBuYW1lZCAnZWhjaXNfbnVtJwogICAgIHNjLT5laGNpc19udW0gICAgPSAyOwogICAgICAgXgpt
-YWtlWzFdOiAqKiogW2h3L2FybS9hc3BlZWRfYXN0MjYwMC5vXSBFcnJvciAxCm1ha2VbMV06ICoq
-KiBXYWl0aW5nIGZvciB1bmZpbmlzaGVkIGpvYnMuLi4uCm1ha2U6ICoqKiBbYWFyY2g2NC1zb2Z0
-bW11L2FsbF0gRXJyb3IgMgptYWtlOiAqKiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2JzLi4u
-LgpybSB0ZXN0cy9xZW11LWlvdGVzdHMvc29ja2V0X3NjbV9oZWxwZXIubwpUcmFjZWJhY2sgKG1v
-c3QgcmVjZW50IGNhbGwgbGFzdCk6Ci0tLQogICAgcmFpc2UgQ2FsbGVkUHJvY2Vzc0Vycm9yKHJl
-dGNvZGUsIGNtZCkKc3VicHJvY2Vzcy5DYWxsZWRQcm9jZXNzRXJyb3I6IENvbW1hbmQgJ1snc3Vk
-bycsICctbicsICdkb2NrZXInLCAncnVuJywgJy0tbGFiZWwnLCAnY29tLnFlbXUuaW5zdGFuY2Uu
-dXVpZD1iMTQwMjA4N2IwYjg0ZjZiYmU1MzE3ZTFlY2FiYmIxOCcsICctdScsICcxMDAxJywgJy0t
-c2VjdXJpdHktb3B0JywgJ3NlY2NvbXA9dW5jb25maW5lZCcsICctLXJtJywgJy1lJywgJ1RBUkdF
-VF9MSVNUPScsICctZScsICdFWFRSQV9DT05GSUdVUkVfT1BUUz0nLCAnLWUnLCAnVj0nLCAnLWUn
-LCAnSj0xNCcsICctZScsICdERUJVRz0nLCAnLWUnLCAnU0hPV19FTlY9MScsICctZScsICdDQ0FD
-SEVfRElSPS92YXIvdG1wL2NjYWNoZScsICctdicsICcvaG9tZS9wYXRjaGV3Ly5jYWNoZS9xZW11
-LWRvY2tlci1jY2FjaGU6L3Zhci90bXAvY2NhY2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hl
-dy10ZXN0ZXItdG1wLXk5X20xczJxL3NyYy9kb2NrZXItc3JjLjIwMjAtMDItMDctMTguMjMuNDAu
-MTA3MzA6L3Zhci90bXAvcWVtdTp6LHJvJywgJ3FlbXU6Y2VudG9zNycsICcvdmFyL3RtcC9xZW11
-L3J1bicsICd0ZXN0LXF1aWNrJ10nIHJldHVybmVkIG5vbi16ZXJvIGV4aXQgc3RhdHVzIDIuCmZp
-bHRlcj0tLWZpbHRlcj1sYWJlbD1jb20ucWVtdS5pbnN0YW5jZS51dWlkPWIxNDAyMDg3YjBiODRm
-NmJiZTUzMTdlMWVjYWJiYjE4Cm1ha2VbMV06ICoqKiBbZG9ja2VyLXJ1bl0gRXJyb3IgMQptYWtl
-WzFdOiBMZWF2aW5nIGRpcmVjdG9yeSBgL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLXk5X20x
-czJxL3NyYycKbWFrZTogKioqIFtkb2NrZXItcnVuLXRlc3QtcXVpY2tAY2VudG9zN10gRXJyb3Ig
-MgoKcmVhbCAgICAybTcuNTg3cwp1c2VyICAgIDBtOC42NTBzCgoKVGhlIGZ1bGwgbG9nIGlzIGF2
-YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDIwMDIwNzE3NDU0OC45MDg3LTEt
-bGludXhAcm9lY2stdXMubmV0L3Rlc3RpbmcuZG9ja2VyLXF1aWNrQGNlbnRvczcvP3R5cGU9bWVz
-c2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBz
-Oi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRl
-dmVsQHJlZGhhdC5jb20=
+Hi Peter,
+
+On 2/7/20 9:26 PM, Peter Xu wrote:
+> On Fri, Feb 07, 2020 at 10:31:55AM +0100, Eric Auger wrote:
+> 
+> [...]
+> 
+>> v13 -> v14:
+>> - in virtio_iommu_put_endpoint, if the EP is attached to a
+>>   domain, call virtio_iommu_detach_endpoint_from_domain()
+>> - remove domain ref counting and simply delete the mappings
+>>   gtree when the last EP is detached from the domain
+> 
+> Yeh this looks a good optimization!  Ref counting protects the domain
+> from being gone when there's still EP in the domain, but since we've
+> got the ep_list in domain after all so it seems to be safe and clearer.
+> 
+>> - in virtio_iommu_detach_endpoint_from_domain(), return if the
+>>   ep's domain is unset.
+> 
+> [...]
+> 
+>> +static void virtio_iommu_put_domain(gpointer data)
+>> +{
+>> +    VirtIOIOMMUDomain *domain = (VirtIOIOMMUDomain *)data;
+>> +    VirtIOIOMMUEndpoint *iter, *tmp;
+>> +
+>> +    QLIST_FOREACH_SAFE(iter, &domain->endpoint_list, next, tmp) {
+>> +        virtio_iommu_detach_endpoint_from_domain(iter);
+>> +    }
+>> +    trace_virtio_iommu_put_domain(domain->id);
+> 
+> [1]
+> 
+>> +    g_free(domain);
+>> +}
+> 
+> [...]
+> 
+>>  static int virtio_iommu_attach(VirtIOIOMMU *s,
+>>                                 struct virtio_iommu_req_attach *req)
+>>  {
+>>      uint32_t domain_id = le32_to_cpu(req->domain);
+>>      uint32_t ep_id = le32_to_cpu(req->endpoint);
+>> +    VirtIOIOMMUDomain *domain;
+>> +    VirtIOIOMMUEndpoint *ep;
+>>  
+>>      trace_virtio_iommu_attach(domain_id, ep_id);
+>>  
+>> -    return VIRTIO_IOMMU_S_UNSUPP;
+>> +    ep = virtio_iommu_get_endpoint(s, ep_id);
+>> +    if (!ep) {
+>> +        return VIRTIO_IOMMU_S_NOENT;
+>> +    }
+>> +
+>> +    if (ep->domain) {
+>> +        VirtIOIOMMUDomain *previous_domain = ep->domain;
+>> +        /*
+>> +         * the device is already attached to a domain,
+>> +         * detach it first
+>> +         */
+>> +        virtio_iommu_detach_endpoint_from_domain(ep);
+>> +        if (QLIST_EMPTY(&previous_domain->endpoint_list)) {
+> 
+> I feel like we still need:
+> 
+>                g_tree_destroy(previous_domain->mappings);
+> 
+> Or the mappings will be leaked.
+You're fully right :-(
+> 
+> To make this simpler, maybe we can destroy the mappings at [1] above.
+> Then we can remove line [2] below too.
+Yes I chose to destroy the mappings in the put_domain and remove [2].
+> 
+>> +            g_tree_remove(s->domains, GUINT_TO_POINTER(previous_domain->id));
+>> +        }
+>> +    }
+>> +
+>> +    domain = virtio_iommu_get_domain(s, domain_id);
+>> +    QLIST_INSERT_HEAD(&domain->endpoint_list, ep, next);
+>> +
+>> +    ep->domain = domain;
+>> +
+>> +    return VIRTIO_IOMMU_S_OK;
+>>  }
+>>  
+>>  static int virtio_iommu_detach(VirtIOIOMMU *s,
+>> @@ -50,10 +268,29 @@ static int virtio_iommu_detach(VirtIOIOMMU *s,
+>>  {
+>>      uint32_t domain_id = le32_to_cpu(req->domain);
+>>      uint32_t ep_id = le32_to_cpu(req->endpoint);
+>> +    VirtIOIOMMUDomain *domain;
+>> +    VirtIOIOMMUEndpoint *ep;
+>>  
+>>      trace_virtio_iommu_detach(domain_id, ep_id);
+>>  
+>> -    return VIRTIO_IOMMU_S_UNSUPP;
+>> +    ep = g_tree_lookup(s->endpoints, GUINT_TO_POINTER(ep_id));
+>> +    if (!ep) {
+>> +        return VIRTIO_IOMMU_S_NOENT;
+>> +    }
+>> +
+>> +    domain = ep->domain;
+>> +
+>> +    if (!domain || domain->id != domain_id) {
+>> +        return VIRTIO_IOMMU_S_INVAL;
+>> +    }
+>> +
+>> +    virtio_iommu_detach_endpoint_from_domain(ep);
+>> +
+>> +    if (QLIST_EMPTY(&domain->endpoint_list)) {
+>> +        g_tree_destroy(domain->mappings);
+> 
+> [2]
+> 
+>> +        g_tree_remove(s->domains, GUINT_TO_POINTER(domain->id));
+>> +    }
+>> +    return VIRTIO_IOMMU_S_OK;
+>>  }
+>>  
+>>  static int virtio_iommu_map(VirtIOIOMMU *s,
+>> @@ -172,6 +409,27 @@ out:
+>>      }
+>>  }
+> 
+> Other than that, the whole patch looks good to me.
+
+Thank you for the careful review.
+
+Eric
+> 
+> Thanks,
+> 
+

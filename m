@@ -1,177 +1,203 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1926036lfp;
-        Sat, 8 Feb 2020 09:05:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxcX3abpdubbZnw7SRzwvzRMUeI+7LwPqchB6KaRKUrP+g2Vhp/EjABmHqtGO4Y3ftMj8Q0
-X-Received: by 2002:ae9:ec0a:: with SMTP id h10mr3804833qkg.303.1581181547582;
-        Sat, 08 Feb 2020 09:05:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581181547; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3067267lfp;
+        Sun, 9 Feb 2020 12:59:19 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyenWLr+ObvZCVjVvO+4Fnz+3pOb59v6jvVV61uCA8kSKRXtkEScnFyZ3HS3aDDVIEGQkVY
+X-Received: by 2002:ac8:33f8:: with SMTP id d53mr7366717qtb.86.1581281958989;
+        Sun, 09 Feb 2020 12:59:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581281958; cv=none;
         d=google.com; s=arc-20160816;
-        b=nBdNbgFBEzTIuV3cjIM/nAq+hiJI2JWfZZcOAR/dgDXvexPDvkjBbpfu+DNPVlE9fr
-         dVYbN5rMwkWdzSg3BBUf/pC6MhO+lcdGbE1V7X+aXGYc7M0EO//md2fO9+6ymUsxTkZc
-         RVJ8TdULYE3I/JCuOy1A8AC+wF62kc04/SsrWZBZvj0eShoTqQ7eF89EEzvA2V0Gd7bx
-         Q4bkZGyE/wpYlJsQAlVEYiLMjeEVHj4CEHr/My5km66FMaKvhc/foV2mueLUhY0n9jdv
-         RDWS9x+7m5ATyUb1IC/GVCr+fGE4LFpkyeNGVJQ978C1oQ+t5mLv8dK4A5pWW89VMhlk
-         jV7A==
+        b=edeAKtJN4GVINqlqJwsJcpaCUc9IcSlElQSWw1Y/xDdgRlhSiguQ9wgpg440vwktah
+         a5cjB+VzvHaoL0xLDc9EVEEjcpQyKGgCMJ4dkcd4xMNzmjIDmmTFxC/2kBw8OIwOoN7F
+         Ee/ThZj8QYrwdokPC0MyWdSTGNyWyG5KhwJ8TBZ3QWydKjCQ8GRE6m95GlmGnZ9ncVu3
+         Y81zW/ZwKEeJwrSqcJKsiAPBavCl/WtTYNBtZ6FRhe/i0mRR2tH+ryW1+JsBeAFccPU9
+         qp7ns6BSBEwpBY+18y3+SpqqEZzGVdJGvjwkWoZLEfZN3rqCQPS6DiXluLdZKTWetJqt
+         dgLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=jNoPpCE7rRcR0rvodwnfplyWOCiHGlW6dGRYxmxzFcY=;
-        b=Usng1BlAM6sR6+gfgjixN4HTJMzEW41iCzF8NAgM50OK8ZYF3vq4r8IElmllMO5s0n
-         /ir9WOQpa7VNnHiZRgok2DA2UA1JrHuYKc9iRQsuoZuWswolQSO28SbVinKJvx6B/D8u
-         h508xONXLTRNkCU7NFO9JyTAGa8evkUSINJuRvBolH5zRyEWN92fis35rfHtPa2eIBW6
-         w47PzEDmjNtqBlN2DSieobzxH1rzSBhDY3b1+SnB5mK5v14VsI655b6AG/PLaZFyT/p+
-         kiXfZz5I5US2sZT+nNDHI28jbYeFJD5Bz9FqnPXTZJIl0pj7YjihvwqsQ2SOoLcxx/vR
-         Wkxg==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=4TgsTYlq2uWpX5l3dOcoMSrO707rEi65LVX3fRa5d4g=;
+        b=fpG7jjN/qY8gQSgHEr2HYfOnX1Ss+/8dCq9URzhbCKV6AWL2/rp5RGEXBCQhpBynwy
+         ei1H37BbiMNnJj854V++P0lNBrNC0HSIIdO8VJaq+ovPgI+dwfGA3SruKzVpG62gPmFt
+         VMvYopdYGDoepcpRfjwujlm3mFO4kzeAuEmGcC2JHO5LQppFb/2WkCyeIQnvxY1is3eE
+         snCz6Q2ulpsK6yto9KFDBM8FTKWvTrc4UsycG/+Yt36YylSZ+QBLHjo7alqtvyTMFwnI
+         uFajNUsylpcC476Ju9ETjMNFXY+v+qapROp3u4DWt2If/TjhZQSURYND3SyOoXuvN4In
+         QTRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HsFHKVCJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Qypr55LI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v6si1489865qvy.118.2020.02.08.09.05.47
+        by mx.google.com with ESMTPS id h1si3230893qtj.356.2020.02.09.12.59.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 08 Feb 2020 09:05:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 09 Feb 2020 12:59:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HsFHKVCJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:43556 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Qypr55LI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54392 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j0TYA-0002gf-L4
-	for alex.bennee@linaro.org; Sat, 08 Feb 2020 12:05:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53821)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j0tfi-0005Hb-Bt
+	for alex.bennee@linaro.org; Sun, 09 Feb 2020 15:59:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41553)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j0TPr-0005iK-LY
- for qemu-devel@nongnu.org; Sat, 08 Feb 2020 11:57:12 -0500
+ (envelope-from <mst@redhat.com>) id 1j0tfZ-0005GQ-7l
+ for qemu-arm@nongnu.org; Sun, 09 Feb 2020 15:59:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j0TPq-0001in-LR
- for qemu-devel@nongnu.org; Sat, 08 Feb 2020 11:57:11 -0500
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:45762)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j0TPq-0001iD-FC; Sat, 08 Feb 2020 11:57:10 -0500
-Received: by mail-wr1-x442.google.com with SMTP id g3so1410632wrs.12;
- Sat, 08 Feb 2020 08:57:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=jNoPpCE7rRcR0rvodwnfplyWOCiHGlW6dGRYxmxzFcY=;
- b=HsFHKVCJtW45wUmDbfZF7mdfRVwDZ18BXahh9dkXEnOZZYK3VtYEoxpgKz6qLM0qDq
- 6ojj/dZFn8yxq6gVDVARWe3m36nJXoJx3s436yBHMv0NhbsykPuUma09oM2Gu/wJazjR
- EecfibknY8R00Id4/SvXC6YKWwro4Due+736UAXcwTAQnjYhy5lKi/qlL7H56mXxJDPL
- 1F29Q6+XQMDOsXmvcjVvWvEUgw+W44k0nxowWal7PDlCvjlTv0VplBcTyUUKVIJYN+Cg
- nD7aULU38RJPw/Dib/3N3wvGdMRVdAgj51gHdzAUfPyHlI87o/nlGWF8A6MpGj2eGyF/
- 3szA==
+ (envelope-from <mst@redhat.com>) id 1j0tfW-0001eD-RR
+ for qemu-arm@nongnu.org; Sun, 09 Feb 2020 15:59:07 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:26040
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <mst@redhat.com>) id 1j0tfW-0001cs-Gd
+ for qemu-arm@nongnu.org; Sun, 09 Feb 2020 15:59:06 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581281945;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4TgsTYlq2uWpX5l3dOcoMSrO707rEi65LVX3fRa5d4g=;
+ b=Qypr55LIrRcrGI2xbs+QOevzDuaIdKu8x6IVHRKl7RMxuaxTAwoe5yi+oDRweZ0+vftL4c
+ CtlYyt8vPiBac74mAlZda7Cdv6wNbnNC3XgnYIVtXmW50U0tRVXet/tLqPGVjuTCU3WOOb
+ iG4TGUoDOxyhPlasYF2DKp3YdNilOWA=
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-398-c3ZmjcO7O4eoqZFRtsjRtA-1; Sun, 09 Feb 2020 15:59:03 -0500
+Received: by mail-qt1-f199.google.com with SMTP id l1so3177508qtp.21
+ for <qemu-arm@nongnu.org>; Sun, 09 Feb 2020 12:59:03 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=jNoPpCE7rRcR0rvodwnfplyWOCiHGlW6dGRYxmxzFcY=;
- b=mYAlTH/J27VwAKM08iYPYt/WkAKeu5HldvBhufClDo6+lGdSLRAt74VAbqndoaUIl3
- BNqp87KotvU5TEj0kZzS962MIkypknwHrnYQDHiLhfwCsddXDWOpYWaXE9tGiLWnp55H
- ON7fzz9fIXzgvYoMC3EOHazglKe2mLhY02g5M9QifwWcZWHDYkSllBwE85+oY7lDwap4
- GxLrJMFieeUNS2hHMXAE8Uwvc1RIdbUGNfMy7Y9TIrkt40Tr6R8AC/fP22usllq6pQxe
- AVjLRqDYj/NKoyweoYZU5O/0RoCA0cHIq1IKpwWffgy2MW2jFH7n8mlmNx3y3skD0KlR
- kg6Q==
-X-Gm-Message-State: APjAAAWZiLHMhxpSKFpqJbSwORVVOKv7tF1kWJZCJ6RY51f51mNWK870
- SX6z4qmJyddZwCHfQX9qoQLZWbn2
-X-Received: by 2002:adf:a285:: with SMTP id s5mr6467894wra.118.1581181029389; 
- Sat, 08 Feb 2020 08:57:09 -0800 (PST)
-Received: from localhost.localdomain (78.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id a5sm7872763wmb.37.2020.02.08.08.57.07
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=b8IZa3WqHO9P3WUfVwvQeYuuFSFdaUexg28Zj2YYOh4=;
+ b=lp3phgAX3gq6yLmOtaemZZlu9PvP2JGfhhs9qt5+BN1SdnTa283n0qAzVGFDS2eb1c
+ qG3LhS+llIZO5X4vD+pQ4D6Clf/OhD54h5KrGRI5GnFOYmayuwVvhhAxwuN7hUR6vWIX
+ VYpbqUf+NLtkCAy2H580HkpuZblF7SW5HK/b65hUev2U46g12UeDkRr1rHEZNWISQeNy
+ CPciIIGN0mEswRwyyPPaqnn96NYtzLNDIm7V5sba3U30aAReiHWihI7UTR3b+c5NFfep
+ y0bA3ZyGIYMDtKUIKC5wB6jaQt8yvuR2Y4ouKw5YpSpBfMy2F9axz/VdcgSh0ZDyA+7c
+ TN/w==
+X-Gm-Message-State: APjAAAXoK3j9moBFg2pdt0oOKiD1loTIIcY6O375w4zbCexbFQpetHuR
+ UY4C6Pt8hg7tkc0fbxNmNRx5Bp21txfTXfiHzZN4R08t5GminayG1NRmtFwnlrpnFW8yQrDzQ2j
+ hS/ufrYccGZCp
+X-Received: by 2002:a05:620a:6d4:: with SMTP id
+ 20mr7988855qky.81.1581281942809; 
+ Sun, 09 Feb 2020 12:59:02 -0800 (PST)
+X-Received: by 2002:a05:620a:6d4:: with SMTP id
+ 20mr7988840qky.81.1581281942562; 
+ Sun, 09 Feb 2020 12:59:02 -0800 (PST)
+Received: from redhat.com (bzq-79-176-41-183.red.bezeqint.net. [79.176.41.183])
+ by smtp.gmail.com with ESMTPSA id h8sm4997217qtm.51.2020.02.09.12.58.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 08 Feb 2020 08:57:08 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 05/13] hw/arm/raspi: Extract the processor type from the
- board revision
-Date: Sat,  8 Feb 2020 17:56:37 +0100
-Message-Id: <20200208165645.15657-6-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200208165645.15657-1-f4bug@amsat.org>
-References: <20200208165645.15657-1-f4bug@amsat.org>
+ Sun, 09 Feb 2020 12:59:01 -0800 (PST)
+Date: Sun, 9 Feb 2020 15:58:57 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Peter Xu <peterx@redhat.com>
+Subject: Re: [PATCH v14 08/11] virtio-iommu-pci: Introduce the x-dt-binding
+ option
+Message-ID: <20200209155639-mutt-send-email-mst@kernel.org>
+References: <20200207093203.3788-1-eric.auger@redhat.com>
+ <20200207093203.3788-9-eric.auger@redhat.com>
+ <20200207100540.GA1999431@myrica>
+ <20200207052405-mutt-send-email-mst@kernel.org>
+ <20200207230405.GJ720553@xz-x1>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::442
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20200207230405.GJ720553@xz-x1>
+X-MC-Unique: c3ZmjcO7O4eoqZFRtsjRtA-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Joaquin de Andres <me@xcancerberox.com.ar>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Esteban Bosse <estebanbosse@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jLhBKAXv8NQc
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>, quintela@redhat.com,
+ qemu-devel@nongnu.org, dgilbert@redhat.com, Eric Auger <eric.auger@redhat.com>,
+ bharatb.linux@gmail.com, qemu-arm@nongnu.org, eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uCnrn7BczeMu
 
-The board revision encode the processor type. Add a helper
-to extract the type, and use it.
+On Fri, Feb 07, 2020 at 06:04:05PM -0500, Peter Xu wrote:
+> On Fri, Feb 07, 2020 at 05:24:54AM -0500, Michael S. Tsirkin wrote:
+> > On Fri, Feb 07, 2020 at 11:05:40AM +0100, Jean-Philippe Brucker wrote:
+> > > Hi Eric,
+> > >=20
+> > > On Fri, Feb 07, 2020 at 10:32:00AM +0100, Eric Auger wrote:
+> > > > At the moment, the kernel only supports device tree
+> > > > integration of the virtio-iommu. DT bindings between the
+> > > > PCI root complex and the IOMMU must be created by the machine
+> > > > in conformance to:
+> > > >=20
+> > > > Documentation/devicetree/bindings/virtio/iommu.txt.
+> > > >=20
+> > > > To make sure the end-user is aware of this, force him to use the
+> > > > temporary device option "x-dt-binding" and also double check the
+> > > > machine has a hotplug handler for the virtio-iommu-pci device.
+> > > > This hotplug handler is in charge of creating those DT bindings.
+> > > >=20
+> > > > Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> > > > Suggested-by: Michael S. Tsirkin <mst@redhat.com>
+> > > [...]
+> > > > @@ -39,6 +42,21 @@ static void virtio_iommu_pci_realize(VirtIOPCIPr=
+oxy *vpci_dev, Error **errp)
+> > > >      VirtIOIOMMUPCI *dev =3D VIRTIO_IOMMU_PCI(vpci_dev);
+> > > >      DeviceState *vdev =3D DEVICE(&dev->vdev);
+> > > > =20
+> > > > +    if (!dev->dt_binding) {
+> > > > +        error_setg(errp,
+> > > > +                   "Instantiation currently only is possible if th=
+e machine "
+> > > > +                   "creates device tree iommu-map bindings, ie. AC=
+PI is not "
+> > > > +                   "yet supported");
+> > > > +        error_append_hint(errp, "use -virtio-iommu-pci,x-dt-bindin=
+g\n");
+> > >=20
+> > > "use -device virtio-iommu-pci,x-dt-binding"?
+> > >=20
+> > > Can the option be safely removed as soon as we implement a topology
+> > > description for the remaining platforms?  Or will we need to carry it
+> > > forever for backward-compatibility (ie. ensure that an old command-li=
+ne
+> > > invocation that contains this option still works)?
+> > >=20
+> > > Thanks,
+> > > Jean
+> >=20
+> > I'd worry that if we actually document it then users will come to
+> > depend on it for sure, even though it starts with x-.
+>=20
+> I thought x- parameters can be dropped directly with totally no
+> grarantee...  Otherwise how do we differenciate x- with the common
+> parameters, and how do we introduce remove-prone parameters?
+>=20
+> Thanks,
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/raspi.c | 18 ++++++++++++++++--
- 1 file changed, 16 insertions(+), 2 deletions(-)
+It's all about not breaking users. Yes we document that x-
+interfaces are unstable. But that documentation is only=20
+good for well-behaved users such as libvirt. End-users
+tend not to read the docs and the subtleties of
+stable/unstable interface are lost on them, so we really must never
+actively ask end users to set an x- flag.
 
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index dcd8d2d6d3..7a2ca97347 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -67,6 +67,21 @@ static int board_version(uint32_t board_rev)
-     return board_processor_id(board_rev) + 1;
- }
- 
-+static const char *board_soc_type(uint32_t board_rev)
-+{
-+    static const char *soc_types[] = {
-+        NULL, TYPE_BCM2836, TYPE_BCM2837,
-+    };
-+    int proc_id = board_processor_id(board_rev);
-+
-+    if (proc_id >= ARRAY_SIZE(soc_types) || !soc_types[proc_id]) {
-+        error_report("Unsupported processor id '%d' (board revision: 0x%x)",
-+                     proc_id, board_rev);
-+        exit(1);
-+    }
-+    return soc_types[proc_id];
-+}
-+
- static void write_smpboot(ARMCPU *cpu, const struct arm_boot_info *info)
- {
-     static const uint32_t smpboot[] = {
-@@ -213,8 +228,7 @@ static void raspi_init(MachineState *machine, uint32_t board_rev)
-     }
- 
-     object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->soc),
--                            version == 3 ? TYPE_BCM2837 : TYPE_BCM2836,
--                            &error_abort, NULL);
-+                            board_soc_type(board_rev), &error_abort, NULL);
- 
-     /* Allocate and map RAM */
-     memory_region_allocate_system_memory(&s->ram, OBJECT(machine), "ram",
--- 
-2.21.1
+
+> --=20
+> Peter Xu
 

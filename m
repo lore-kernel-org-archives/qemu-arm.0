@@ -1,160 +1,113 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3827440lfp;
-        Mon, 10 Feb 2020 05:16:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxBkyb9nb9iOkLy9xvgl0XxCzwBkvF5sVxwvG1JfM8JFpPiao7BwWAZZI6w1/gE09kdqJ4f
-X-Received: by 2002:ac8:1e8e:: with SMTP id c14mr9167878qtm.330.1581340562816;
-        Mon, 10 Feb 2020 05:16:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581340562; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3831022lfp;
+        Mon, 10 Feb 2020 05:19:23 -0800 (PST)
+X-Received: by 2002:a05:6808:658:: with SMTP id z24mr791250oih.91.1581340763138;
+        Mon, 10 Feb 2020 05:19:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581340763; cv=none;
         d=google.com; s=arc-20160816;
-        b=00pat5tMpWtpRI86E6X2rYw9nBBO7zcoZp9cdUBTqbYAQx9fm8xClXobuP4IgU3ihB
-         RPqZAKE+YO3X+09dilxsFtdMDnzx7glNd0yvP56ME33DiHfTQc0gnBbB3X8JpoJGw5sz
-         8A9jATbJ6GYnC2SFiP8VUzgj87VFB1Ol27jiaBIaIYn7vhE+uiw9J/VhVTmS09yfskfE
-         LJ1uMRZJoeM0JjGvVvWR67+KO+20a4eucMWs6VVfLU5SsKyf6j0BcVzH6JYv3ZuD43yo
-         yFFpXF9sPuAOWSgGBmIN2NkQ5ykjDcsbrJLxBgvF52Nxw+h1rX5f18QY7xOlBlEa4tX5
-         iDqg==
+        b=ZE1LT3OtxwQDh19AUfylrqVVxnB3sOaSOiuF3D0LSQcTXXkcCrsW9s0kJVe0Ue+Lwj
+         3pqcpZoLUknRpXi2o6UEGalH4LqVlD0uVsqorzqFWWec3T+Wp782WXP++d/micn33gif
+         2/h37rkz8RrYq2v8Kp7e0bvBuY+BD6TpnbM49LAoNekJHYuXlQNIytNgeEUVM0IBl9SZ
+         IbJ+Fg/Iv1rVpxg2CzoFIQe8Qi6zAcw+tq+uz/L4rBeu3P8XLuEQcXBfIYPHhB7M5q/6
+         FPPCnGIGVFn7HR7RTgoP/JjVJuhDnoqi0LclncSsEKkCnJvH/WSr5jJn0UGACQ2DmH1J
+         A/CA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=kkmR7J2AZfEsKH/WXUpt/QP++fn+DThlOT8ntA1PKCo=;
-        b=A/WaVmOpTbm8TC/t/7YyU/Iq0pJ2+OowgkpDh7Aj5XARR8Xx30fp4U8OTmAx2DiajV
-         EdvbvqizTI0ybYFWa529XC1sTBSXePKPioewSDd+O+miXZON5WCJ5E3pgeIgYTplbjT/
-         iqH+QCU9Bu6gV+yluJ8STk2++9F5ZfAWhEisjvFVDEVuCH9TWigtfMYjMeOqwgAHax6q
-         5pL4RdyYekU1ptBpDgM/2o4nwmoxHOAjjT1is7OHjkHSRR5r+/xK/2kwDe3eZv1ALGFH
-         NecIOMGH6NZWg43Rlz90c4G6CLso3SYg+WzLGCyYwTMbAe4ep5QX5KvBQuSkJ+uXEqvO
-         2sBQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=5jEPFD9HPWrfJhFXIwWs+zCONNzkL7FEsU6F1yfMKrk=;
+        b=CR7MYtQCBn9fKC+pdYWyKtFcO9gpes9hL4Ja1KEacTO5XmAFJhL+pwdEF9bC81lvxO
+         uF7skjhpum6wqtXET2cqr+pKRE3pDqG+XXQOb0KHcvtZ31Mt8Z+GthJkILY6/ixj+QrJ
+         B6b1zUumXIeY2yTkVFBUNl08ZZRjOmmogpCaR9SA5zjzKO9mGNez2c1mNdUUMB5e1G8L
+         GWSBLNe7jNLtidSAxxvL0PA6KyyOO04UrBH87EsR6c16pfYxPmoeV6zFhvtImcnU+FN/
+         yy0G+yzzn/QM/lXgJK9VuPfkFYspc3Xhc+QSl/5a41B2FvV2d8A0iOjO65PuHTJvpp60
+         Wr6w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UhGkTiNl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bm9si156088qvb.23.2020.02.10.05.16.02
+       dkim=pass header.i=@linaro.org header.s=google header.b=il25U0+Z;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id m200sor52758oig.92.2020.02.10.05.19.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Feb 2020 05:16:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 10 Feb 2020 05:19:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UhGkTiNl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33434 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j18uw-0003zX-6U
-	for alex.bennee@linaro.org; Mon, 10 Feb 2020 08:16:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45971)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j18um-0003yx-8N
- for qemu-arm@nongnu.org; Mon, 10 Feb 2020 08:15:53 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j18ul-0007GQ-57
- for qemu-arm@nongnu.org; Mon, 10 Feb 2020 08:15:52 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:44659
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j18ul-0007Fm-27
- for qemu-arm@nongnu.org; Mon, 10 Feb 2020 08:15:51 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581340550;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=kkmR7J2AZfEsKH/WXUpt/QP++fn+DThlOT8ntA1PKCo=;
- b=UhGkTiNlt6JN9tkUGayfPz46TNH5gC4LS5+9yWTZJtkjHQd6rY9Wcjw3LMFVC5Ztvh3ZaC
- Lj9dtByoapXvUB996P3W2VhM2knpSNI2C3umicYYeIyjA2fgp9WvAobp7fXShevQ2H6u0Q
- DDzX0DXlWIwJ+wb9iG1+e9dD3rdt+hw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-135-zivFn7thOryor5xsi0Rl3g-1; Mon, 10 Feb 2020 08:15:48 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 570FD107ACC5;
- Mon, 10 Feb 2020 13:15:47 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B0F29387;
- Mon, 10 Feb 2020 13:15:35 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
-Subject: [RFC 0/2] vTPM for aarch64
-Date: Mon, 10 Feb 2020 14:15:21 +0100
-Message-Id: <20200210131523.27540-1-eric.auger@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=il25U0+Z;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=5jEPFD9HPWrfJhFXIwWs+zCONNzkL7FEsU6F1yfMKrk=;
+        b=il25U0+ZwdnS60FU3ivI3TlWcsm/6GGbtsqAZlyDE0aUvG2gh8BcPTWm2J9wGlEsol
+         KxtA1nnCbQ+wslkGShaSlxIxyAFzawffgY9LATx30iw5gJfiBlm5awoHq0gt8LTz21++
+         nb0dOf+m1oZxlDtGma/xUVYeYLauQm7NEYWdrT5sUiDuTmmZHj+HrqraEmni50F86lay
+         Ao4yjJc3v1f/LuHIKsY/EjcLjlI7/Gd2dn0opvZ/x7koZdZo23jVTtk+X0+St0PJ2RWi
+         Z/SnLcsAU9H571FIsoGULI18UD5DWHaTIPUNlAY16k4h+rOv9yl/FXY9tD7skAQ4EMCA
+         eB8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=5jEPFD9HPWrfJhFXIwWs+zCONNzkL7FEsU6F1yfMKrk=;
+        b=LBbGSMnT0jPuXwbMjVcrKcsMWR+0ON/f/MJtjc9dTpp93pR8O/Bsw30bg7vJy3E5Sy
+         J8JwzdX43e4sXzEld2XyTj2oCyUxYOhLH8U6w9G3lb5qrZZJqqhS7r2bBZuHSP5bxXYx
+         dtmGQGrygEr5T2O6m9Hvx/QdfIq45dfandgdxysG58cjIxYf/3Bd82r9HpGE8jfUBc/c
+         Ylis2j6stkEbDqDcu2GGpeLlrjTZSI+muVXM8DIZxtadCBkEl7NuUvHyL3VypcIA68V/
+         48l2GBPEKVEvOc405uFpnjh0K0J93pwaPoHAfV5fOK8MYGelXwNzawIA/8UCpSDtXPQ0
+         NUIw==
+X-Gm-Message-State: APjAAAVa8DZXVEkmQPbMJiwjKoG7ETKuelhLK+Nv8dumnpB95ooqS2K/
+	03Yy8rTJKoC79qyl40WFcvRTWNAJyJArSc3YQhF6hhibplQ=
+X-Google-Smtp-Source: APXvYqxeewqfduFItFCrpHpSE87sqy7wmGa3Cb/A454waZTnCI30l60Ydr7i3C7H371K9x/p/ZMb0MBDDbuWGb31XUQ=
+X-Received: by 2002:a54:4f16:: with SMTP id e22mr813348oiy.170.1581340762175;
+ Mon, 10 Feb 2020 05:19:22 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: zivFn7thOryor5xsi0Rl3g-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+References: <20200210120146.17631-1-peter.maydell@linaro.org> <875zge3a2b.fsf@zen.linaroharston>
+In-Reply-To: <875zge3a2b.fsf@zen.linaroharston>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 10 Feb 2020 13:19:11 +0000
+Message-ID: <CAFEAcA9d4XDaUQLwy4yYyTSz1nzQ49adTv9z4K8e29OsUh_21A@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Implement ARMv8.1-VMID16 extension
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org,
- philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cOaXNxyMHF9M
+X-TUID: NwPHbFkgnicA
 
-This series adds the capability to instantiate an MMIO TPM TIS
-in ARM virt.
+On Mon, 10 Feb 2020 at 12:23, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+>
+> Peter Maydell <peter.maydell@linaro.org> writes:
+>
+> > The ARMv8.1-VMID16 extension extends the VMID from 8 bits to 16 bits:
+> >
+> >  * the ID_AA64MMFR1_EL1.VMIDBits field specifies whether the VMID is
+> >    8 or 16 bits
+> >  * the VMID field in VTTBR_EL2 is extended to 16 bits
+> >  * VTCR_EL2.VS lets the guest specify whether to use the full 16 bits,
+> >    or use the backwards-compatible 8 bits
+> >
+> > For QEMU implementing this is trivial:
+> >  * we do not track VMIDs in TLB entries, so we never use the VMID
+> > field
+>
+> Not currently but does the VMID allow you to have per-guest page table
+> caching? Last time I chatted to rth about potential performance wins we
+> discussed how easy it would be to support this in the softmmu now we
+> have indirect TLB lookups anyway. Given how much time is currently spent
+> expensively re-populating tables we could keep the last couple of id
+> tagged tables around for faster switching between sets of tables.
 
-The series was tested with the swtpm/libtpms emulator.
-Automatic guest LUKS volume unlocking (tpm2) was successful.
-EDK2 support is under development [3]. Thanks to Ard
-for supporting me when setting up the test environment.
+Yeah, in hardware the whole point of the VMID is to have per-guest
+caching of VA-to-PA mappings in the TLB so you don't have to blow
+them all away when you switch VM (just as ASID does for processes).
+The difficulty with QEMU has always been that adding the "and is this
+the right VMID/ASID" to the softmmu fastpath code would be expensive,
+AIUI. If we ever come up with a clever plan for this it should be
+no different if the VMID field is 16 vs 8 bits, though.
 
-Best Regards
-
-Eric
-
-Testing:
-
-mkdir /tmp/tpm
-swtpm socket \
---tpm2 \
--t -d \
---tpmstate dir=3D/tmp/tpm \
---ctrl type=3Dunixio,path=3D/tmp/swtpm-sock
-
-qemu command line must be augmented with the following options:
-
--chardev socket,id=3Dchrtpm,path=3D/tmp/swtpm-sock \
--tpmdev emulator,id=3Dtpm0,chardev=3Dchrtpm \
--device tpm-tis,tpmdev=3Dtpm0 \
-
-References:
-[1] libtpms: https://github.com/stefanberger/libtpms/wiki
-[2] swtpm: https://github.com/stefanberger/swtpm/wiki
-[3] [PATCH 0/4] ArmVirtPkg: implement measured boot for ArmVirtQemu
-
-This series can be found at:
-https://github.com/eauger/qemu/tree/v4.2.0-tpm-rfc
-
-Eric Auger (2):
-  tpm: Let the TPM TIS device be usable on ARM
-  hw/arm/virt: vTPM support
-
- hw/arm/Kconfig      |  1 +
- hw/arm/sysbus-fdt.c | 36 ++++++++++++++++++++++++++++++++++++
- hw/arm/virt.c       |  7 +++++++
- hw/tpm/Kconfig      |  2 +-
- hw/tpm/tpm_tis.c    | 16 ++++++++++++++++
- 5 files changed, 61 insertions(+), 1 deletion(-)
-
---=20
-2.20.1
-
+thanks
+-- PMM

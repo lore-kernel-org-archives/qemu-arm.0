@@ -1,122 +1,160 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3754058lfp;
-        Mon, 10 Feb 2020 04:01:49 -0800 (PST)
-X-Received: by 2002:a5d:62d1:: with SMTP id o17mr1685929wrv.9.1581336109412;
-        Mon, 10 Feb 2020 04:01:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581336109; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3827440lfp;
+        Mon, 10 Feb 2020 05:16:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxBkyb9nb9iOkLy9xvgl0XxCzwBkvF5sVxwvG1JfM8JFpPiao7BwWAZZI6w1/gE09kdqJ4f
+X-Received: by 2002:ac8:1e8e:: with SMTP id c14mr9167878qtm.330.1581340562816;
+        Mon, 10 Feb 2020 05:16:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581340562; cv=none;
         d=google.com; s=arc-20160816;
-        b=cv+v8FdH1XaNpcNwp2bsOJQuiHAL2do6gBESnpqv5Ga6JKrTxrnf1me0251Jj83QNE
-         Eg92GV+YEcAWm4BH5uxMbNUT+AMpY/hpDDzSYNilXFImSkpJAxWGcNjHRBbN3v2BOrfG
-         DB0SQByUxIOA9nXDFYqkqoCFjWLlPO9E952ePzgLTaUH098MW4LPbgXQgiUOH9T+WOCH
-         rteIMjcgO47M0H8xUNVIdk65OloI52j7BU1J90UzCfTF7fDyGJvWMPIwouDaJX8xU+Sl
-         HV+9wcRjF2ut/Mfv60a7L2wMMbRBwFB4d5t5tTrKM+TUl9ybSqmIycSDLkCylVEQkm0y
-         NDLw==
+        b=00pat5tMpWtpRI86E6X2rYw9nBBO7zcoZp9cdUBTqbYAQx9fm8xClXobuP4IgU3ihB
+         RPqZAKE+YO3X+09dilxsFtdMDnzx7glNd0yvP56ME33DiHfTQc0gnBbB3X8JpoJGw5sz
+         8A9jATbJ6GYnC2SFiP8VUzgj87VFB1Ol27jiaBIaIYn7vhE+uiw9J/VhVTmS09yfskfE
+         LJ1uMRZJoeM0JjGvVvWR67+KO+20a4eucMWs6VVfLU5SsKyf6j0BcVzH6JYv3ZuD43yo
+         yFFpXF9sPuAOWSgGBmIN2NkQ5ykjDcsbrJLxBgvF52Nxw+h1rX5f18QY7xOlBlEa4tX5
+         iDqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=Jle24mRVWyhiSlJz0ynMllgtOVUvCHA26143XxrUarU=;
-        b=H7/naGdWZjoHmckigfs3+gUA6xdTlotmpUHHwNm6l2tJXEXJOOWx0iNDGXX8vby1sf
-         PMJgVNaFa4Qj+GAgwiF72eWb1nAyMapx9AX6uL2OXOd6BDXYJgperl1nfUrhCwCmwNRi
-         F+ZHAob+aU9QU4i2ss+hC+iO+uZf+lbhgHaYYNbsEusqbeUeluenbMPKgmgKe5PBT8JX
-         H4/fe72qohGeiytq/jAe00AP/9KKDOfTVAhzjsGY2KZVeOymGvAGSYeAITshBt+EfZqh
-         SCkSfsjzBMcvaCJFHlVfXDLrhvd7WbEPt/GEurKuJ+x+zfEu5qBbe6VvBAQhVnIWnA97
-         dNBA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=kkmR7J2AZfEsKH/WXUpt/QP++fn+DThlOT8ntA1PKCo=;
+        b=A/WaVmOpTbm8TC/t/7YyU/Iq0pJ2+OowgkpDh7Aj5XARR8Xx30fp4U8OTmAx2DiajV
+         EdvbvqizTI0ybYFWa529XC1sTBSXePKPioewSDd+O+miXZON5WCJ5E3pgeIgYTplbjT/
+         iqH+QCU9Bu6gV+yluJ8STk2++9F5ZfAWhEisjvFVDEVuCH9TWigtfMYjMeOqwgAHax6q
+         5pL4RdyYekU1ptBpDgM/2o4nwmoxHOAjjT1is7OHjkHSRR5r+/xK/2kwDe3eZv1ALGFH
+         NecIOMGH6NZWg43Rlz90c4G6CLso3SYg+WzLGCyYwTMbAe4ep5QX5KvBQuSkJ+uXEqvO
+         2sBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JLALmue8;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id a17sor197628wrm.3.2020.02.10.04.01.49
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UhGkTiNl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id bm9si156088qvb.23.2020.02.10.05.16.02
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 10 Feb 2020 04:01:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 10 Feb 2020 05:16:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JLALmue8;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Jle24mRVWyhiSlJz0ynMllgtOVUvCHA26143XxrUarU=;
-        b=JLALmue86Vj1WLKga3IYxtsrrrSb2fZfVjSA/kJG0pu36CzPRvUzZVsTZS/MLQqECo
-         B/pvVjUTXM2FfA6nJobQCJk0k/y8NSiwzqPgxjKcgZAoFz8rn71bfPPxGQCDxk0R24zH
-         aFOfDq8za89nqwXw4+yDu+04uuodJjU/HevVrYpZLmUGFY67Vw+4qIB4QNXNXJbhDVc1
-         Z8lCl7cLpJmLKfevGWR5mTlnnQxW+GE4v9atmDDeJOxbC3Muo7CKfioLGNM+r1y6Ytd2
-         /oFDA7M9wtA1d5esX5qfb7XZGcxOIxqLpQMwOSYNhX+FTBU5VvX+DBqTyMzwO2aDIdTO
-         trTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Jle24mRVWyhiSlJz0ynMllgtOVUvCHA26143XxrUarU=;
-        b=m1bNsow1eglrO+fuisvCAWKfV3icy7EFzLUT0pbhw7HFk5QxLxTItKbzJGuX4y7KyR
-         UR3mOQxUCESUqIjEr2yVbWlhGpYVncK+v3NEgRnOy4a5eOF5LsRgDzRHIRCWQLRreJRz
-         dV2IvDaiZd+mhB2vgJjrSHOB+n0zaPSqGInnIDqTJpBdldKVxfI3bwzj4b/X9bEuBChn
-         Dh+331Orq6TkGaJT001Cbm66z5BHW6+GF9FXn7qjxXGjZrCsv9RSDJurJDL5e7xxAVKN
-         u5WfHhf0erY2PreFStrtENfe0V3mm9P3o7zdQOaybBrQe5KsxMpUMjNe9W4AIAEFlEvL
-         QrVQ==
-X-Gm-Message-State: APjAAAXslah7binSECba1+4OAtxxjYQ4/0G98CNfD9bIYqdoVj7k3cRH
-	Ys0E1PYfpRujKVlcavY2YkqNbuV5
-X-Google-Smtp-Source: APXvYqyY8rjzha/DoA1j0XJXXFrzjrREp1fthxF8UV5BIn+M1Xk/cMSEqSeOnZp4Ay6VXzm0A6gxcQ==
-X-Received: by 2002:adf:f28f:: with SMTP id k15mr1637970wro.230.1581336109096;
-        Mon, 10 Feb 2020 04:01:49 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-        by smtp.gmail.com with ESMTPSA id p26sm311305wmc.24.2020.02.10.04.01.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Feb 2020 04:01:48 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH] target/arm: Implement ARMv8.1-VMID16 extension
-Date: Mon, 10 Feb 2020 12:01:46 +0000
-Message-Id: <20200210120146.17631-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UhGkTiNl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33434 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j18uw-0003zX-6U
+	for alex.bennee@linaro.org; Mon, 10 Feb 2020 08:16:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45971)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <eric.auger@redhat.com>) id 1j18um-0003yx-8N
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2020 08:15:53 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <eric.auger@redhat.com>) id 1j18ul-0007GQ-57
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2020 08:15:52 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:44659
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1j18ul-0007Fm-27
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2020 08:15:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581340550;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=kkmR7J2AZfEsKH/WXUpt/QP++fn+DThlOT8ntA1PKCo=;
+ b=UhGkTiNlt6JN9tkUGayfPz46TNH5gC4LS5+9yWTZJtkjHQd6rY9Wcjw3LMFVC5Ztvh3ZaC
+ Lj9dtByoapXvUB996P3W2VhM2knpSNI2C3umicYYeIyjA2fgp9WvAobp7fXShevQ2H6u0Q
+ DDzX0DXlWIwJ+wb9iG1+e9dD3rdt+hw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-135-zivFn7thOryor5xsi0Rl3g-1; Mon, 10 Feb 2020 08:15:48 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 570FD107ACC5;
+ Mon, 10 Feb 2020 13:15:47 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B0F29387;
+ Mon, 10 Feb 2020 13:15:35 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
+Subject: [RFC 0/2] vTPM for aarch64
+Date: Mon, 10 Feb 2020 14:15:21 +0100
+Message-Id: <20200210131523.27540-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: n2x/w+1fBlli
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: zivFn7thOryor5xsi0Rl3g-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org,
+ philmd@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cOaXNxyMHF9M
 
-The ARMv8.1-VMID16 extension extends the VMID from 8 bits to 16 bits:
+This series adds the capability to instantiate an MMIO TPM TIS
+in ARM virt.
 
- * the ID_AA64MMFR1_EL1.VMIDBits field specifies whether the VMID is
-   8 or 16 bits
- * the VMID field in VTTBR_EL2 is extended to 16 bits
- * VTCR_EL2.VS lets the guest specify whether to use the full 16 bits,
-   or use the backwards-compatible 8 bits
+The series was tested with the swtpm/libtpms emulator.
+Automatic guest LUKS volume unlocking (tpm2) was successful.
+EDK2 support is under development [3]. Thanks to Ard
+for supporting me when setting up the test environment.
 
-For QEMU implementing this is trivial:
- * we do not track VMIDs in TLB entries, so we never use the VMID field
- * we treat any write to VTTBR_EL2, not just a change to the VMID field
-   bits, as a "possible VMID change" that causes us to throw away TLB
-   entries, so that code doesn't need changing
- * we allow the guest to read/write the VTCR_EL2.VS bit already
+Best Regards
 
-So all that's missing is the ID register part: report that we support
-VMID16 in our 'max' CPU.
+Eric
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Not something anybody's been asking for, but worthwhile as
-a step towards finishing off support for all the v8.1 extensions.
+Testing:
 
- target/arm/cpu64.c | 1 +
- 1 file changed, 1 insertion(+)
+mkdir /tmp/tpm
+swtpm socket \
+--tpm2 \
+-t -d \
+--tpmstate dir=3D/tmp/tpm \
+--ctrl type=3Dunixio,path=3D/tmp/swtpm-sock
 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 2d97bf45e1e..bf2cf278c03 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -672,6 +672,7 @@ static void aarch64_max_initfn(Object *obj)
-         t = cpu->isar.id_aa64mmfr1;
-         t = FIELD_DP64(t, ID_AA64MMFR1, HPDS, 1); /* HPD */
-         t = FIELD_DP64(t, ID_AA64MMFR1, LO, 1);
-+        t = FIELD_DP64(t, ID_AA64MMFR1, VMIDBITS, 2); /* VMID16 */
-         cpu->isar.id_aa64mmfr1 = t;
- 
-         /* Replicate the same data to the 32-bit id registers.  */
--- 
+qemu command line must be augmented with the following options:
+
+-chardev socket,id=3Dchrtpm,path=3D/tmp/swtpm-sock \
+-tpmdev emulator,id=3Dtpm0,chardev=3Dchrtpm \
+-device tpm-tis,tpmdev=3Dtpm0 \
+
+References:
+[1] libtpms: https://github.com/stefanberger/libtpms/wiki
+[2] swtpm: https://github.com/stefanberger/swtpm/wiki
+[3] [PATCH 0/4] ArmVirtPkg: implement measured boot for ArmVirtQemu
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/v4.2.0-tpm-rfc
+
+Eric Auger (2):
+  tpm: Let the TPM TIS device be usable on ARM
+  hw/arm/virt: vTPM support
+
+ hw/arm/Kconfig      |  1 +
+ hw/arm/sysbus-fdt.c | 36 ++++++++++++++++++++++++++++++++++++
+ hw/arm/virt.c       |  7 +++++++
+ hw/tpm/Kconfig      |  2 +-
+ hw/tpm/tpm_tis.c    | 16 ++++++++++++++++
+ 5 files changed, 61 insertions(+), 1 deletion(-)
+
+--=20
 2.20.1
+

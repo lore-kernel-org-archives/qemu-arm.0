@@ -1,245 +1,154 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3718264lfp;
-        Mon, 10 Feb 2020 03:18:22 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw3XcPr30pQ0a8+aV58Cfc7fqLCRyVh1RfIfhZvmTyEHb4LRXOJNuuPb88klagaJ+EPqGhw
-X-Received: by 2002:a05:6830:14c3:: with SMTP id t3mr644002otq.213.1581333502315;
-        Mon, 10 Feb 2020 03:18:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581333502; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4044511lfp;
+        Mon, 10 Feb 2020 08:45:10 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyb7cQrMj8Npwyd/GVpASq2ok2xCiLsTN9YniQu2Tc0ipN1q2kiI8T9Kmyhz8CVhNJ0/+Vp
+X-Received: by 2002:a05:620a:ce5:: with SMTP id c5mr2150566qkj.49.1581353109923;
+        Mon, 10 Feb 2020 08:45:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581353109; cv=none;
         d=google.com; s=arc-20160816;
-        b=Eoj5iPrh5EzghjpscpiNCL/Y31oAsu2I/M4vaOfoWQF9+4/68VT+65nYPHopq4sZnE
-         9yNFzg2PU02iEt4IE0brUq2uxI5N7qKrQ+GJXcBxt4iHdB7Kd3GH35ytEMRR5fbnrO4B
-         9f1QGSW9jSL0irjiOzZRTCRHzPJ+75wdp5AKkmxL93jIS7pd6wRnqt2gzduulxUgW92C
-         5UwvbA+BVxthFJ4Y4DjQufaSK1gOx6Qd81cIPbq/09i8UDGkeOQbBbF67Tx2M/NRcpVe
-         Zkymhm34/vcnyv/OY9TLjUyEbsKcg+EUEfUKzhPjHTuhlR6ynf9ZkufdL6tGGNF/ApDz
-         OiCg==
+        b=xjiLQCNFy4S8CN3cK5TbnIThyxfe3Rxsg7G5bqRSW+Gy7KfxqBWgjY3xA/UklFi1aJ
+         tnx0Owv0yEllU3n379rychuYw7FM7iLvvFh7qKihaXdnUHvkn7VCrJRZwSN1NFnbFe7A
+         JM3kOYqEdHAZjJLmJGyPj5FvCnt11j5uJdjTqdQ+kqfls4nfwaDR3fQqgO9GIxCiBBvG
+         MoN/ucA9bdHiRUW2zgigsmrb9b/QjFLDfs+KFu3HckW5NS/DLmwf54J6qfS0KltQlZOx
+         wCZ15sAKjqowl1DslShED3XtaQbyAYwlzsJJe4GmCixIZKiJFvL8m0Kgoqcvf+AOQOwJ
+         xHsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=CqT2nHtMSySt1Vvyg0IgA2ZLHzfRQYhizz7AylZJRHI=;
-        b=QsBVtB9fT0uy7q1oa8ge/GbDXpfBeLoXxGAS3doAWTKOS45iyig5DuQJVKbjwjyFXh
-         xvx8y6hY40rD7hDFPLokwkVeuH89uSRLphL6ahA2hE6Z0OSiF0Lfv/O+iqtU0rSBezMc
-         yCoG6Hv4UJt1yHpz/ZMUhmLtB/cmcNmr2yUMZkGYWL1oX7bn/AK0St0FO9BC4SQ/EQL3
-         4pJg0MVNiD91qEjeCv52P9PbC3Ikf/UBT2pUhUxvFUMWlOjeUC6Ia+BQ+f8ylQORHVS8
-         V9Tq49PzddoJ6Fhnwk1YYxc7BRQ4CkkC+KYmEnPHxgNrNRceM1zKFXoLeQhh75vZafUp
-         t1Eg==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:user-agent
+         :references:in-reply-to:subject:to:from:dkim-signature;
+        bh=vV4eGTWFc+JudZUEnauQlSTCA8p35uJtX0Dklx+ttrk=;
+        b=fh30qgwBxlSIg+DxZ1bM8pbQNGdTbVTHSqL0sI4lRJuoq0ygwbYO/5AGpWQQxY2o0z
+         CjEyYB+JPeROn3xzbUfJ0AoSI50G2oU4Tnlrlpr5CDZvOOQSqyyqszuZiZK41JMGAnQ8
+         YeroV3tl8Fgz/nLpANmboHeH7X8XXOuzX99ImU+i4j7mse127xTmVCtIVZ1OvkDaVga2
+         7wDm3NNjwcrF0J9Q61HJIQ7PQnpfhItJaGmewiCQ0cL5lW1ZdtKZHFiyiWGRNgnj8AB/
+         Q0LBOgL2yMRBW0exLeFJrQl8L6a1v8tIu8DQ0e71FZJXgh0CRhBu9yQSSE32OWLS1fHj
+         MSRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id w2si56484otk.126.2020.02.10.03.18.22;
-        Mon, 10 Feb 2020 03:18:22 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=O7HGYSmm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w136si391689qka.165.2020.02.10.08.45.09
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 10 Feb 2020 08:45:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727363AbgBJLSU (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 10 Feb 2020 06:18:20 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:10609 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1727121AbgBJLSU (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 10 Feb 2020 06:18:20 -0500
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 81946A329E95B9C74D68;
-        Mon, 10 Feb 2020 19:18:16 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Mon, 10 Feb 2020
- 19:18:07 +0800
-Subject: Re: [PATCH v22 4/9] ACPI: Build Hardware Error Source Table
-To:     Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-CC:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <fam@euphon.net>, <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <mtosatti@redhat.com>, <xuwei5@huawei.com>, <james.morse@arm.com>,
-        <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
-        <qemu-arm@nongnu.org>, <zhengxiang9@huawei.com>,
-        <linuxarm@huawei.com>
-References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
- <1578483143-14905-5-git-send-email-gengdongjiu@huawei.com>
- <20200205164328.00006f1e@Huawei.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <f24fb648-a06b-0b97-1afa-e4ed6137a7d4@huawei.com>
-Date:   Mon, 10 Feb 2020 19:18:05 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=O7HGYSmm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36056 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j1CBJ-0005eU-CS
+	for alex.bennee@linaro.org; Mon, 10 Feb 2020 11:45:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50907)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <quintela@redhat.com>) id 1j1CB5-0005cO-Kc
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2020 11:44:56 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <quintela@redhat.com>) id 1j1CB4-0000NS-J8
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2020 11:44:55 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:41601
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1j1CB4-0000Mq-Fk
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2020 11:44:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581353094;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vV4eGTWFc+JudZUEnauQlSTCA8p35uJtX0Dklx+ttrk=;
+ b=O7HGYSmmprHl91yQBX0L/OB41C3HbKsRcCyj6rnbNnZvNlJVi7J7zmAzvidPc7SghrEhxO
+ doZB2W0o88yx41cEXC05mUL2gfKNpDDbxa1JbGljPx+l/gCcgdIE2gxEBIceobQ7F2L/2x
+ WG66ZACAr3IXsJZoMpTeWRmhJYQ0Ang=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-132-TPZjxvRtNGCfDg9wDmtWZA-1; Mon, 10 Feb 2020 11:44:52 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 92567107ACCD;
+ Mon, 10 Feb 2020 16:44:50 +0000 (UTC)
+Received: from redhat.com (ovpn-117-6.ams2.redhat.com [10.36.117.6])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4959B60BF3;
+ Mon, 10 Feb 2020 16:44:42 +0000 (UTC)
+From: Juan Quintela <quintela@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Subject: Re: [PATCH v12 12/13] virtio-iommu: Support migration
+In-Reply-To: <6a276f9d-18a3-300b-c55f-00665d30b34f@redhat.com> (Auger Eric's
+ message of "Mon, 10 Feb 2020 14:36:56 +0100")
+References: <20200109144319.15912-1-eric.auger@redhat.com>
+ <20200109144319.15912-13-eric.auger@redhat.com>
+ <87eev27hby.fsf@secure.laptop>
+ <c8df42d0-c913-94e3-39a0-1e09fa459622@redhat.com>
+ <6a276f9d-18a3-300b-c55f-00665d30b34f@redhat.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+Date: Mon, 10 Feb 2020 17:44:40 +0100
+Message-ID: <8736bi75on.fsf@secure.laptop>
 MIME-Version: 1.0
-In-Reply-To: <20200205164328.00006f1e@Huawei.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: MN4/ZsIwkNqK
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: TPZjxvRtNGCfDg9wDmtWZA-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: quintela@redhat.com
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
+ mst@redhat.com, qemu-devel@nongnu.org, peterx@redhat.com, dgilbert@redhat.com,
+ bharatb.linux@gmail.com, qemu-arm@nongnu.org, jean-philippe@linaro.org,
+ eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: TUU4sWOv1Mwu
 
+Auger Eric <eric.auger@redhat.com> wrote:
+> Hi Juan,
+>
+> On 2/10/20 2:09 PM, Auger Eric wrote:
+>> Hi Juan,
+>>=20
+>> On 2/10/20 1:33 PM, Juan Quintela wrote:
+>>> Eric Auger <eric.auger@redhat.com> wrote:
+>>>> Add Migration support. We rely on recently added gtree and qlist
+>>>> migration. We only migrate the domain gtree. The endpoint gtree
+>>>> is re-constructed in a post-load operation.
+>>>>
+>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>
+>>> Reviewed-by: Juan Quintela <quintela@redhat.com>
+>>>
+>>> And yes, this is as confusing as it can be:
+>>>  a tree of mappings (i.e. key,value)
+>>>  a list of endpoints
+>>>
+>>> I will propose this as most complex structure migrated ever.
+>> :-) Thank you Juan, Dave, and Peter for your support
+>
+> I did not notice this at the first glimpse but could you send the R-b on
+> the v15. I have been running like a hamster on my wheel during last week.
+>
+> Code has not changed though :-).
 
+Sure.
 
-On 2020/2/6 0:43, Jonathan Cameron wrote:
-> On Wed, 8 Jan 2020 19:32:18 +0800
-> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-> 
->> This patch builds Hardware Error Source Table(HEST) via fw_cfg blobs.
->> Now it only supports ARMv8 SEA, a type of Generic Hardware Error
->> Source version 2(GHESv2) error source. Afterwards, we can extend
->> the supported types if needed. For the CPER section, currently it
->> is memory section because kernel mainly wants userspace to handle
->> the memory errors.
->>
->> This patch follows the spec ACPI 6.2 to build the Hardware Error
->> Source table. For more detailed information, please refer to
->> document: docs/specs/acpi_hest_ghes.rst
->>
->> build_append_ghes_notify() will help to add Hardware Error Notification
->> to ACPI tables without using packed C structures and avoid endianness
->> issues as API doesn't need explicit conversion.
->>
->> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
->> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
->> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
->> Acked-by: Xiang Zheng <zhengxiang9@huawei.com>
-> 
-> Hi. 
-> 
-> I was forwards porting my old series adding CCIX error injection support
-> and came across a place this could 'possibly' be improved.
+Later, Juan.
 
-Jonathan, It is great that you add CCIX error injection support based on this series.
-thanks for using it.
-
-> 
-> I say possibly because it's really about enabling more flexibility
-> in how this code is reused than actually 'fixing' anything here.
-> 
-> If you don't make the change here, I'll just add a precursor patch to my
-> series.  Just seems nice to tidy it up at source.
-
-sure, I make a change to make your patch work well.
-
-> 
-> The rest of the partMake your patch very good work.s of this series I am using seems to work great.
-
-
-
-
-> 
-> Thanks!
-> 
-> Jonathan
-> 
->> ---
->>  hw/acpi/ghes.c           | 118 ++++++++++++++++++++++++++++++++++++++++++++++-
->>  hw/arm/virt-acpi-build.c |   2 +
->>  include/hw/acpi/ghes.h   |  40 ++++++++++++++++
->>  3 files changed, 159 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
->> index b7fdbbb..9d37798 100644
->> --- a/hw/acpi/ghes.c
->> +++ b/hw/acpi/ghes.c
->> @@ -34,9 +34,42 @@
->> +
-> ...
->> +/* Build Generic Hardware Error Source version 2 (GHESv2) */
->> +static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
-> This function takes source ID, which uses the enum of all sources registered.
-> However, it doesn't use it to locate the actual physical addresses.
-> 
-> Currently the code effectively assumes the value is 0.
-
-yes, because there is only one source, so the value is 0.
-
-> 
->> +{
->> +    uint64_t address_offset;
->> +    /*
->> +     * Type:
->> +     * Generic Hardware Error Source version 2(GHESv2 - Type 10)
->> +     */
->> +    build_append_int_noprefix(table_data, ACPI_GHES_SOURCE_GENERIC_ERROR_V2, 2);
->> +    /* Source Id */
->> +    build_append_int_noprefix(table_data, source_id, 2);
->> +    /* Related Source Id */
->> +    build_append_int_noprefix(table_data, 0xffff, 2);
->> +    /* Flags */
->> +    build_append_int_noprefix(table_data, 0, 1);
->> +    /* Enabled */
->> +    build_append_int_noprefix(table_data, 1, 1);
->> +
->> +    /* Number of Records To Pre-allocate */
->> +    build_append_int_noprefix(table_data, 1, 4);
->> +    /* Max Sections Per Record */
->> +    build_append_int_noprefix(table_data, 1, 4);
->> +    /* Max Raw Data Length */
->> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
->> +
->> +    address_offset = table_data->len;
->> +    /* Error Status Address */
->> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
->> +                     4 /* QWord access */, 0);
->> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
->> +        address_offset + GAS_ADDR_OFFSET,
->> +        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
-> 
-> The offset here would need to be source_id * sizeof(uint64_t) I think
-> 
->> +
->> +    /*
->> +     * Notification Structure
->> +     * Now only enable ARMv8 SEA notification type
->> +     */
->> +    build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_SEA);
-> Perhaps a switch for this to allow for other options later.
-
-OK, I will make this change in order to easily support more hardware error source.
-
-> 
-> 	switch (source_id) {
-> 	case ACPI_HEST_SRC_ID_SEA:
-> 		...
-> 		break;
-> 	default:
-> 	//print some error message.
-> 
-> 	}
-
-ok
-
->> +
->> +    /* Error Status Block Length */
->> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
->> +
->> +    /*
->> +     * Read Ack Register
->> +     * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source
->> +     * version 2 (GHESv2 - Type 10)
->> +     */
->> +    address_offset = table_data->len;
->> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
->> +                     4 /* QWord access */, 0);
->> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
->> +        address_offset + GAS_ADDR_OFFSET,
->> +        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
->> +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t));
-> 
-> Offset of (ACPI_GHES_ERROR_SOURCE_COUNT + source_id) * sizeof(uint64_t)
-yes, It due to I only support one source, the source_id is zero and not use it.
-In order to easily extend, I will add this change.
-
-> 
->> +
->> +    /*
->> +     * Read Ack Preserve
->> +     * We only provide the first bit in Read Ack Register to OSPM to write
->> +     * while the other bits are preserved.
->> +     */
->> +    build_append_int_noprefix(table_data, ~0x1ULL, 8);
->> +    /* Read Ack Write */
->> +    build_append_int_noprefix(table_data, 0x1, 8);
->> +}
-> 
-> 
-> 
-> .
-> 

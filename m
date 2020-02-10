@@ -1,78 +1,79 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3207485lfp;
-        Sun, 9 Feb 2020 16:30:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwX5h+edDZ8MUMmfx8ONrFIgOVbeOcO53oUHUSgu/iCwzMxhzfnVBl3BEQxUKPNxewaheyR
-X-Received: by 2002:aed:25a4:: with SMTP id x33mr8031390qtc.165.1581294654557;
-        Sun, 09 Feb 2020 16:30:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581294654; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3460039lfp;
+        Sun, 9 Feb 2020 22:15:08 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyMH8GpBFN8lXQKdmYTnAYsbh0Z8t2N5MmwxTHK1reoH9zxT0Uy03U8fYGrlcbrdppBHfFa
+X-Received: by 2002:a0c:ffc9:: with SMTP id h9mr8878108qvv.50.1581315308323;
+        Sun, 09 Feb 2020 22:15:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581315308; cv=none;
         d=google.com; s=arc-20160816;
-        b=RyvxIExFdKSpgLnQZHhv1vn8FvjFD1m4CwR1J6UvU+5gxdAPB+TiiRrwBPd9TY8kiJ
-         3tM/iZ2qXGVFa7EgqoDpVpU0zcNoh2UBE10liOikkUzFsDVLw1txspwLKNqnlkjvGQzU
-         Y11I1LGhAvciXpPhkE2B9WA9o/cju8g4XltuSCBug+YecUKcE9FeZa1LPmogjsCaQLbp
-         FVc3+yu5EC9lDxthDw1af0LttTJMdrHLgc6OhvnJuyiMAWjvi/1H0uQadVKT90/wEQEj
-         tXAp6D93ZW8Ta7kgGifvwx73/oN/i6+Dt9G+K/3DeTKe8b1UfqqU0X1YKe0BmXIW61XN
-         4FXQ==
+        b=qeZOv9OfcOYYbPJL4GbFkuw4v5N12Uoa4/ebc4C/qD2U5dKM60A6/eWF65abwz+hrx
+         psa/jP+A2cy9xUnVtSusjmqF+8uOQh1ZGWQ4hR5Lrbp6bLQqsovhegOT0kLmO+iPMU0z
+         vLePPHeYVx22mZpfxvtYDn3b+TEx66E0XEcsxZs1jHsmZONBh9/YPLC8kXDlgQHmndnT
+         vIcWdCZV+bZFjDeBuqqU56Y5JNvQs8z8B9LAXnU63JRqUXRQVNKL/gLoXn+F8TN9qAR+
+         5oYgt+oGNn7gQAoZ607OQvsnqMIdia33qlSXjBscoBXp0zz2r7jyTTIZMIC+ODXBdDjj
+         qTlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:mime-version:user-agent:date:message-id:from:references
          :to:subject;
-        bh=8tKFA07VZ2DKuvx4Gfe321rutiwX99gttCjW+uzzA4M=;
-        b=BxIaqN63MtjcH18IfL1dHvFuU/xC7x7jxY8z3ZU6RKtILpA4PBownj4EDlhqYnqtts
-         a91UpxRkvitpxCqnmgY09YxDPO9zl58og1Fx3OhPkoUlgRMyVkqfDZXI5uSuj4aJijhu
-         ocH42VYvj8ii8PLTYlBetC9xsakH42hIt3yhYMCbPiX0xWOUz5xpuph4w20OQo6o2iwh
-         iiPZCT3BL7EqbHmnEso8sdSR/fHL0KhFafeAdWGx2Ier3l7rP0hvsBRSQx/bG8kg7Sgn
-         ogU2NWUfJpI0754jSO3XldNUrMODg4cm5OOVXRN+4NOotpR/fJ4imzsPoR9nCSSSGW1/
-         ff/g==
+        bh=8K2xpLHolhId60QnugG0HIOPyYIdOitvOircKSRqY+8=;
+        b=Ihfq2pwtyeP1ADuBW7D1ipV93KQdscNgSJ5iEhn9GazbWv9U8238pr6iPq8MAYEOnR
+         1t/sMSeT0+FNpN0lXfhGj6Ly73EmyszkksFFMwQN/pX5D/g/Xci+BGipTRjE9bt1CZNf
+         5ACvoMb7+hYVAYm2+I3QW1mcZRrRZE1QK5XhyXyOrfe+jExt/9z5D7u/RhTPc40DRc3N
+         fea0ByStUiioy7Bv7/khrWBNcoFeCt5FirQjn6xMCdBR7vaSi91+tfhfB4distoXcHDi
+         W35TkpSWjIemDwJCZsWzAZzrm2BrHus2jXK92QG1t64l8t4AC9OXE08zv8h+9u3Kc7y9
+         TLfA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z6si1395702qtq.211.2020.02.09.16.30.54
+        by mx.google.com with ESMTPS id n7si3663317qkg.290.2020.02.09.22.15.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 Feb 2020 16:30:54 -0800 (PST)
+        Sun, 09 Feb 2020 22:15:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55554 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57260 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j0wyU-0000rq-0F
-	for alex.bennee@linaro.org; Sun, 09 Feb 2020 19:30:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58246)
+	id 1j12Lb-0002BS-Iz
+	for alex.bennee@linaro.org; Mon, 10 Feb 2020 01:15:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55183)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <guoheyi@huawei.com>) id 1j0wyK-0000rX-0w
- for qemu-arm@nongnu.org; Sun, 09 Feb 2020 19:30:45 -0500
+ (envelope-from <zhukeqian1@huawei.com>) id 1j12LQ-0002BC-P6
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2020 01:14:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <guoheyi@huawei.com>) id 1j0wyI-00054g-On
- for qemu-arm@nongnu.org; Sun, 09 Feb 2020 19:30:43 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:58826 helo=huawei.com)
+ (envelope-from <zhukeqian1@huawei.com>) id 1j12LP-0007d2-HL
+ for qemu-arm@nongnu.org; Mon, 10 Feb 2020 01:14:56 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2699 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <guoheyi@huawei.com>)
- id 1j0wyI-0004yF-EU; Sun, 09 Feb 2020 19:30:42 -0500
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 3C093DF6E8F6169F310C;
- Mon, 10 Feb 2020 08:30:35 +0800 (CST)
-Received: from [127.0.0.1] (10.173.221.228) by DGGEMS405-HUB.china.huawei.com
- (10.3.19.205) with Microsoft SMTP Server id 14.3.439.0;
- Mon, 10 Feb 2020 08:30:24 +0800
-Subject: Re: [PATCH v3 0/7] Some cleanup in arm/virt/acpi
-To: <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>
-References: <20200204014325.16279-1-guoheyi@huawei.com>
-From: Heyi Guo <guoheyi@huawei.com>
-Message-ID: <03b1f20b-6b65-0856-a1e8-5aff14154ad6@huawei.com>
-Date: Mon, 10 Feb 2020 08:30:22 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
+ id 1j12LP-0007DO-6J; Mon, 10 Feb 2020 01:14:55 -0500
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 051FF14E37D5277C505C;
+ Mon, 10 Feb 2020 14:14:46 +0800 (CST)
+Received: from [127.0.0.1] (10.173.221.230) by DGGEMS410-HUB.china.huawei.com
+ (10.3.19.210) with Microsoft SMTP Server id 14.3.439.0;
+ Mon, 10 Feb 2020 14:14:35 +0800
+Subject: Re: [PATCH] migration: Optimization about wait-unplug migration state
+To: <quintela@redhat.com>
+References: <20200204050841.44453-1-zhukeqian1@huawei.com>
+ <87blqehfyn.fsf@secure.laptop>
+From: zhukeqian <zhukeqian1@huawei.com>
+Message-ID: <4c6ab663-0d59-765a-e4b2-4dbf63afe9e9@huawei.com>
+Date: Mon, 10 Feb 2020 14:14:35 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-In-Reply-To: <20200204014325.16279-1-guoheyi@huawei.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
+In-Reply-To: <87blqehfyn.fsf@secure.laptop>
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.173.221.228]
+X-Originating-IP: [10.173.221.230]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.35
+X-Received-From: 45.249.212.190
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -84,59 +85,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: wanghaibin.wang@huawei.com, Igor Mammedov <imammedo@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>
+Cc: jfreimann@redhat.com, wanghaibin.wang@huawei.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gYVQP8LadeBP
+X-TUID: 1Rf9O6L50FF9
 
-Hi Peter,
 
-Do you have any other comments? If not, could you help to merge into 
-your tree?
 
+On 2020/2/4 17:14, Juan Quintela wrote:
+> Keqian Zhu <zhukeqian1@huawei.com> wrote:
+>> qemu_savevm_nr_failover_devices() is originally designed to
+>> get the number of failover devices, but it actually returns
+>> the number of "unplug-pending" failover devices now. Moreover,
+>> what drives migration state to wait-unplug should be the number
+>> of "unplug-pending" failover devices, not all failover devices.
+>>
+>> We can also notice that qemu_savevm_state_guest_unplug_pending()
+>> and qemu_savevm_nr_failover_devices() is equivalent almost (from
+>> the code view). So the latter is incorrect semantically and
+>> useless, just delete it.
+>>
+>> In the qemu_savevm_state_guest_unplug_pending(), once hit a
+>> unplug-pending failover device, then it can return true right
+>> now to save cpu time.
+>>
+>> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> 
+> Reviewed-by: Juan Quintela <quintela@redhat.com>
+> 
+> For my reading you are right:
+> - 1st function naming is not right
+> - 2nd function achieves exactly the same effect
+> 
+> I will wait until Jens says anything, but then I will queue it.
+> 
+> Thanks, Juan.
+> 
+> 
+> .
+> 
 Thanks,
-
-Heyi
-
-On 2020/2/4 9:43, Heyi Guo wrote:
-> Remove conflict _ADR objects, and fix and refine PCI device definition in
-> ACPI/DSDT.
->
-> History:
->
-> v3 -> v2:
-> - update commit message for patch 4/7.
-> - remove diff keywords in commit message of patch 7/7 to avoid applying patch
->    failure.
->
-> v1 -> v2:
-> - flow the work flow in tests/qtest/bios-table-test.c to post ACPI related
->    patches.
-> - update commit messages for removing "RP0" and "_ADR".
-> - add 3 more cleanup patches.
->
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Igor Mammedov <imammedo@redhat.com>
-> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-devel@nongnu.org
->
-> Heyi Guo (7):
->    bios-tables-test: prepare to change ARM virt ACPI DSDT
->    arm/virt/acpi: remove meaningless sub device "RP0" from PCI0
->    arm/virt/acpi: remove _ADR from devices identified by _HID
->    arm/acpi: fix PCI _PRT definition
->    arm/acpi: fix duplicated _UID of PCI interrupt link devices
->    arm/acpi: simplify the description of PCI _CRS
->    virt/acpi: update golden masters for DSDT update
->
->   hw/arm/virt-acpi-build.c          |  25 ++++++-------------------
->   tests/data/acpi/virt/DSDT         | Bin 18462 -> 5307 bytes
->   tests/data/acpi/virt/DSDT.memhp   | Bin 19799 -> 6644 bytes
->   tests/data/acpi/virt/DSDT.numamem | Bin 18462 -> 5307 bytes
->   4 files changed, 6 insertions(+), 19 deletions(-)
->
+Keqian.
 

@@ -1,97 +1,98 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5356860lfp;
-        Tue, 11 Feb 2020 09:42:07 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzKX7sk2lqTXVn41Wtu01CHhsq1gTMm5wYqEy47iOu6n5j6Ckab7e9AzpNXi2giU15BThXY
-X-Received: by 2002:ac8:2af4:: with SMTP id c49mr3517948qta.367.1581442927090;
-        Tue, 11 Feb 2020 09:42:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581442927; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5357074lfp;
+        Tue, 11 Feb 2020 09:42:24 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxA9A9eL3ASHm+9xg0/vvecqq1BTnxEGzbfb1Zyrg6xeOotGMGq3MVyWqPDA/bn5Y9K5GIk
+X-Received: by 2002:a05:6214:4f2:: with SMTP id cl18mr3972170qvb.89.1581442943872;
+        Tue, 11 Feb 2020 09:42:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581442943; cv=none;
         d=google.com; s=arc-20160816;
-        b=EOrtRgqqWAEXf5fz8CwYyK7LuRSfv+OqJ2dx4JuVGroOKYZ9ep675purweg8Z7p7+z
-         HJTdQJa+j2FCE+aKtfAmoe7f6UvPjfbacdP5T6gVlwjMj6j07I0/SYfUxAzU6MNIYaqI
-         VWZn/IDfPGclICHoU6U+HxtrEZFL3tcB6HKVAXP2CJYpRKYqfORuJD9JL/wNNeqqAH7q
-         h50XKWRmkunRFUe7dvW15BHGdWxnCZHN9UT1UyrXE3aeFijkmNO2o5/vFXqvwhs15TpB
-         4eiXjZatICL4lB83Vt2kZFKy1oystUmaL2oJggyZSY6mU+qDLO7qN6LZV1G46PSbnx3Z
-         9lhQ==
+        b=FJ9Xj9Wj8Eb54GUlJo1IMD3CFgF/rqGrSoFDDktTd+4PwzIAMtC44vo8QGv4l68BBQ
+         5ZAJ4wbmyYUf/HdCVxPodfnse4+sYc3ztVrlPfJ3hLiB07MWYjvnln1D7noOtufan9Ul
+         uRvYXsWqwx8MtD1DQM7Rjq6hRAYBX4J0lHsdrDVN3VqDbdF+8tDmAfXx9fFZqKXMauYD
+         pjcOqUFo7hCNrUkmOZdBoSiAgkv1TghqgiNdmIR8g66/WkJjRmR5126s412YAv7iIse1
+         AE6fSZukxisUMDaQNlftKjYs39o5im3CiEbdvD6//9iQFzaqHPVg1faVhFpJX/hREJqT
+         Q2OA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=/e1L4KBHqvWrooUDR5lzsFsfvdP9rosN0/X6B5pxbVQ=;
-        b=j1iJL7tsd6GggA3nno+YQJFc+LISPe/4M2tXf28S9w5to0yJfuok1jeymcAlcBFulq
-         XbbVB95H53Swc3e08M+H6OUAbr+uQ+wDK78XWtQLcEYh3mRcyQ0toXyjpvzww70eCT9T
-         /ybwgC62SerFRuyo0RJfePYfRnrIMtUSP8E83a1xlv7dSpgVFhbN10lAOcbgLt9i4tYo
-         3ZWnnCedsJTIMvWpGgXBNB1ua88VTh2R9k5bEqidf7PdqRBKKdfn/npdue7DJA1QA1xv
-         V1jFpUhwjhk3r093Mc9Rv60Cc78ucCLU9d7WL4yjFDuJAbKDVzN/4GQsScjg8Rh8W+iT
-         pIZA==
+        bh=JSb9oHrSYbgGp44mvDk4b87Si1MyKo6uTVibb795S44=;
+        b=t2OdUTQYxks2jKQOVZG8/Vv2WTgYvOcet3N6NvqiS7+QWPpU4Uc++1/dQV6f1eIJ4F
+         cJHggxA4knp6B8fhrDo2hwvg9QtgvuO3rIeRG95Nn7fm9FR/BAHMA3DapnDDQdzzc8Pj
+         0Bp1A1hfctkLL8IjqXjrB1MXjFuwVDz3AsRAwuR7V/FCLbxiK5YhmP67BIGloZhrsHCi
+         Cnbf6Sry9T4r7IK7OuLZB8jJIsPzjUrL/kjF3qBAbN8sryZ8oXoRO6XkbtQAdGkk1p80
+         I1Nwy0w5MP2L3od7q8LHw6gmqTGdrkGJzYbdHwy/rJ1+4WEN/aKoXMZJqcnxH5SlnGMp
+         ishg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=znBIwIhD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=KdeyNqLx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e5si2325019qvy.97.2020.02.11.09.42.06
+        by mx.google.com with ESMTPS id y12si2120118qtn.58.2020.02.11.09.42.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Feb 2020 09:42:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Feb 2020 09:42:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=znBIwIhD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=KdeyNqLx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54368 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54388 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j1ZXy-0003VY-CO
-	for alex.bennee@linaro.org; Tue, 11 Feb 2020 12:42:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48505)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j1ZYF-0004k8-9u
+	for alex.bennee@linaro.org; Tue, 11 Feb 2020 12:42:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48620)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j1ZTj-0005k6-FZ
- for qemu-devel@nongnu.org; Tue, 11 Feb 2020 12:37:46 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j1ZTk-0005me-Vo
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:37:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j1ZTg-00044R-SW
- for qemu-devel@nongnu.org; Tue, 11 Feb 2020 12:37:43 -0500
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:35036)
+ (envelope-from <peter.maydell@linaro.org>) id 1j1ZTh-00047s-HT
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:37:44 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:46338)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j1ZTc-0003zB-FU
- for qemu-devel@nongnu.org; Tue, 11 Feb 2020 12:37:36 -0500
-Received: by mail-wr1-x442.google.com with SMTP id w12so13502869wrt.2
- for <qemu-devel@nongnu.org>; Tue, 11 Feb 2020 09:37:36 -0800 (PST)
+ id 1j1ZTh-00041M-1z
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:37:41 -0500
+Received: by mail-wr1-x442.google.com with SMTP id z7so13425143wrl.13
+ for <qemu-arm@nongnu.org>; Tue, 11 Feb 2020 09:37:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=/e1L4KBHqvWrooUDR5lzsFsfvdP9rosN0/X6B5pxbVQ=;
- b=znBIwIhDmIxmIoTItLT0q7uzwiIA1KqsWbNUs92C22Qac89yVzNPSPcsdULHf6dxia
- QS7P3j70Mga4qlgBM6wKNwkPjfeOVBNGf93pJOpuLFvq87RFvp/0O8hXInydbaVpEdjH
- Veorn/QTTAqMcJ40itejTs0+6n5+2Z8ukBhYyRpZKrj9O51vKtRgzi5vGZKwO/BI2kHN
- RzG32HLjiwJD3hCKkaJY1wqYx3K0d3hhpOdSB/0pVQ44nz/dgnvFMpsohquApZ2kKE16
- +f4GrpAl5mIaHDDQuwVdQhk8/r7gWvaDRold5DFmxnGtGUaA5NohEtzhAR46i1Q+jQyi
- GZJw==
+ bh=JSb9oHrSYbgGp44mvDk4b87Si1MyKo6uTVibb795S44=;
+ b=KdeyNqLxNRrctXOU0reSvDdXp6NGfQg7f6hSUk9aRbusiSG9sNsOUnCk6SMN/M2JqP
+ XERnMDwo2friCZIdQUq6Wmu8xWzIkZChGfqaAT6d2vDpKdMhppkKhYDblc4uibLU0H+E
+ HvErkYM1w4qnj7ir3hNCs6wURUTagP8rSLkwvZAYj37nqzVVb/3pfW35VzGIvOwS32in
+ AHS8soIyVBrzlY5JzztGPDUXKorbacNLcgxyKC9Gr8EkBz/gO56SegcMG9lxF+rz/PGa
+ ZuyT2rp6TGsq7HnF3Y1Q9K62lC0dC5SxwHChlD/eU54oE2TREOtnvK+4fMMVasMWWyWx
+ H93w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=/e1L4KBHqvWrooUDR5lzsFsfvdP9rosN0/X6B5pxbVQ=;
- b=rKSRnlmBV3oNqLv9WBz5k1NsqrDICfmRN3bKrL6z1lpx0QwWlv4jYumWeuFom7vDhD
- pwl7grNztEmZnfPQuYgPS+soZDQWPDvLzVE82nntZWFlvxdbqSv3N6vBRhX8EpaV4NNz
- AEZrYW9d6GmeBBuHV9pTS9W6j3lFBX/zYwlKSCOAY+gg8Dad1KecMYJ98ZpQzGfDtTn+
- GKDwfcLl0CqRIUI3/GEi12iuwjZKVFGpImnS5exSkxb7iOYl6+dgrC2NLrsnbaCKwGNo
- bCOj3e8HZmLrPvMYH6TTDr2EP2VXNqH3YOkO3De+s6RYe2vmDHOwUs7LdTkbed+Eqqv8
- U5NQ==
-X-Gm-Message-State: APjAAAXCffMlQqTEO3i5Sf5ADBiGWQE1div+HqCOc4hpJMmOPo5KYbCS
- IPpN5GMHwr2gBLv5TCOdsCNf6RPl8Nw=
-X-Received: by 2002:a5d:6789:: with SMTP id v9mr10154631wru.55.1581442655275; 
- Tue, 11 Feb 2020 09:37:35 -0800 (PST)
+ bh=JSb9oHrSYbgGp44mvDk4b87Si1MyKo6uTVibb795S44=;
+ b=B+p5PwSklkec9qT3pkXmnSxeii0jQWriTKX/NPQ29ZYaI04PaZFAhqL3GosZSWWCdf
+ 5IF6r7g5iVYfo19J0ZILWcxJk3DCEzZrQ+yzu3oc149LA8u8J1RhdS/mcX9UEaU0lFdV
+ bhzx9qnAw0gPxK84O/ZSx1IF4O/0KCBgtv3r39ek14/O53UYk1W6MddT0ALv5Chbck3B
+ iARE0xOIZ58jDzMTPZSr38yANyELMTXggLAKmTxqclP05A37tdx3qnFOtxABgXIP/X56
+ CZOgzP9Iy52GYGhAqMxK1WOfvuD/EXMZxGn5lzjGyaTIZ6UyJSbBmqYCNwd34XqkbtRf
+ g8cA==
+X-Gm-Message-State: APjAAAUHSnyn8wKwNWAnbfshfH8Hg8Maw0Tcnvytul3MhsX0vBwVW3Fh
+ Sy+gNdCKrwv8Zpu5PUIYdiQbMSEATsU=
+X-Received: by 2002:a5d:494b:: with SMTP id r11mr9526289wrs.184.1581442656249; 
+ Tue, 11 Feb 2020 09:37:36 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y1sm6109675wrq.16.2020.02.11.09.37.33
+ by smtp.gmail.com with ESMTPSA id y1sm6109675wrq.16.2020.02.11.09.37.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Feb 2020 09:37:34 -0800 (PST)
+ Tue, 11 Feb 2020 09:37:35 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 04/13] target/arm: Factor out PMU register definitions
-Date: Tue, 11 Feb 2020 17:37:17 +0000
-Message-Id: <20200211173726.22541-5-peter.maydell@linaro.org>
+Subject: [PATCH 05/13] target/arm: Add and use FIELD definitions for
+ ID_AA64DFR0_EL1
+Date: Tue, 11 Feb 2020 17:37:18 +0000
+Message-Id: <20200211173726.22541-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200211173726.22541-1-peter.maydell@linaro.org>
 References: <20200211173726.22541-1-peter.maydell@linaro.org>
@@ -100,222 +101,85 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 2a00:1450:4864:20::442
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Eric Auger <eric.auger@redhat.com>,
  Aaron Lindsay <aaron@os.amperecomputing.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ryZIC9XC9zoC
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: aNWqd+kDfNnI
 
-Pull the code that defines the various PMU registers out
-into its own function, matching the pattern we have
-already for the debug registers.
-
-Apart from one style fix to a multi-line comment, this
-is purely movement of code with no changes to it.
+Add FIELD() definitions for the ID_AA64DFR0_EL1 and use them
+where we currently have hard-coded bit values.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 158 +++++++++++++++++++++++---------------------
- 1 file changed, 82 insertions(+), 76 deletions(-)
+ target/arm/cpu.h    | 10 ++++++++++
+ target/arm/cpu.c    |  2 +-
+ target/arm/helper.c |  6 +++---
+ 3 files changed, 14 insertions(+), 4 deletions(-)
 
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index b1f3ecfd942..f2194b27ba3 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1806,6 +1806,16 @@ FIELD(ID_AA64MMFR1, PAN, 20, 4)
+ FIELD(ID_AA64MMFR1, SPECSEI, 24, 4)
+ FIELD(ID_AA64MMFR1, XNX, 28, 4)
+ 
++FIELD(ID_AA64DFR0, DEBUGVER, 0, 4)
++FIELD(ID_AA64DFR0, TRACEVER, 4, 4)
++FIELD(ID_AA64DFR0, PMUVER, 8, 4)
++FIELD(ID_AA64DFR0, BRPS, 12, 4)
++FIELD(ID_AA64DFR0, WRPS, 20, 4)
++FIELD(ID_AA64DFR0, CTX_CMPS, 28, 4)
++FIELD(ID_AA64DFR0, PMSVER, 32, 4)
++FIELD(ID_AA64DFR0, DOUBLELOCK, 36, 4)
++FIELD(ID_AA64DFR0, TRACEFILT, 40, 4)
++
+ FIELD(ID_DFR0, COPDBG, 0, 4)
+ FIELD(ID_DFR0, COPSDBG, 4, 4)
+ FIELD(ID_DFR0, MMAPDBG, 8, 4)
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 5712082c0b9..dc582da8fa4 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1602,7 +1602,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+                 cpu);
+ #endif
+     } else {
+-        cpu->id_aa64dfr0 &= ~0xf00;
++        cpu->id_aa64dfr0 = FIELD_DP32(cpu->id_aa64dfr0, ID_AA64DFR0, PMUVER, 0);
+         cpu->id_dfr0 &= ~(0xf << 24);
+         cpu->pmceid0 = 0;
+         cpu->pmceid1 = 0;
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index bf083c369fc..0011a22f42d 100644
+index 0011a22f42d..2a57bfd9e86 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -5822,6 +5822,87 @@ static void define_debug_regs(ARMCPU *cpu)
+@@ -5771,9 +5771,9 @@ static void define_debug_regs(ARMCPU *cpu)
+      * check that if they both exist then they agree.
+      */
+     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+-        assert(extract32(cpu->id_aa64dfr0, 12, 4) == brps);
+-        assert(extract32(cpu->id_aa64dfr0, 20, 4) == wrps);
+-        assert(extract32(cpu->id_aa64dfr0, 28, 4) == ctx_cmps);
++        assert(FIELD_EX32(cpu->id_aa64dfr0, ID_AA64DFR0, BRPS) == brps);
++        assert(FIELD_EX32(cpu->id_aa64dfr0, ID_AA64DFR0, WRPS) == wrps);
++        assert(FIELD_EX32(cpu->id_aa64dfr0, ID_AA64DFR0, CTX_CMPS) == ctx_cmps);
      }
- }
  
-+static void define_pmu_regs(ARMCPU *cpu)
-+{
-+    /*
-+     * v7 performance monitor control register: same implementor
-+     * field as main ID register, and we implement four counters in
-+     * addition to the cycle count register.
-+     */
-+    unsigned int i, pmcrn = 4;
-+    ARMCPRegInfo pmcr = {
-+        .name = "PMCR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 0,
-+        .access = PL0_RW,
-+        .type = ARM_CP_IO | ARM_CP_ALIAS,
-+        .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmcr),
-+        .accessfn = pmreg_access, .writefn = pmcr_write,
-+        .raw_writefn = raw_write,
-+    };
-+    ARMCPRegInfo pmcr64 = {
-+        .name = "PMCR_EL0", .state = ARM_CP_STATE_AA64,
-+        .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 0,
-+        .access = PL0_RW, .accessfn = pmreg_access,
-+        .type = ARM_CP_IO,
-+        .fieldoffset = offsetof(CPUARMState, cp15.c9_pmcr),
-+        .resetvalue = (cpu->midr & 0xff000000) | (pmcrn << PMCRN_SHIFT),
-+        .writefn = pmcr_write, .raw_writefn = raw_write,
-+    };
-+    define_one_arm_cp_reg(cpu, &pmcr);
-+    define_one_arm_cp_reg(cpu, &pmcr64);
-+    for (i = 0; i < pmcrn; i++) {
-+        char *pmevcntr_name = g_strdup_printf("PMEVCNTR%d", i);
-+        char *pmevcntr_el0_name = g_strdup_printf("PMEVCNTR%d_EL0", i);
-+        char *pmevtyper_name = g_strdup_printf("PMEVTYPER%d", i);
-+        char *pmevtyper_el0_name = g_strdup_printf("PMEVTYPER%d_EL0", i);
-+        ARMCPRegInfo pmev_regs[] = {
-+            { .name = pmevcntr_name, .cp = 15, .crn = 14,
-+              .crm = 8 | (3 & (i >> 3)), .opc1 = 0, .opc2 = i & 7,
-+              .access = PL0_RW, .type = ARM_CP_IO | ARM_CP_ALIAS,
-+              .readfn = pmevcntr_readfn, .writefn = pmevcntr_writefn,
-+              .accessfn = pmreg_access },
-+            { .name = pmevcntr_el0_name, .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 8 | (3 & (i >> 3)),
-+              .opc2 = i & 7, .access = PL0_RW, .accessfn = pmreg_access,
-+              .type = ARM_CP_IO,
-+              .readfn = pmevcntr_readfn, .writefn = pmevcntr_writefn,
-+              .raw_readfn = pmevcntr_rawread,
-+              .raw_writefn = pmevcntr_rawwrite },
-+            { .name = pmevtyper_name, .cp = 15, .crn = 14,
-+              .crm = 12 | (3 & (i >> 3)), .opc1 = 0, .opc2 = i & 7,
-+              .access = PL0_RW, .type = ARM_CP_IO | ARM_CP_ALIAS,
-+              .readfn = pmevtyper_readfn, .writefn = pmevtyper_writefn,
-+              .accessfn = pmreg_access },
-+            { .name = pmevtyper_el0_name, .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 12 | (3 & (i >> 3)),
-+              .opc2 = i & 7, .access = PL0_RW, .accessfn = pmreg_access,
-+              .type = ARM_CP_IO,
-+              .readfn = pmevtyper_readfn, .writefn = pmevtyper_writefn,
-+              .raw_writefn = pmevtyper_rawwrite },
-+            REGINFO_SENTINEL
-+        };
-+        define_arm_cp_regs(cpu, pmev_regs);
-+        g_free(pmevcntr_name);
-+        g_free(pmevcntr_el0_name);
-+        g_free(pmevtyper_name);
-+        g_free(pmevtyper_el0_name);
-+    }
-+    if (FIELD_EX32(cpu->id_dfr0, ID_DFR0, PERFMON) >= 4 &&
-+            FIELD_EX32(cpu->id_dfr0, ID_DFR0, PERFMON) != 0xf) {
-+        ARMCPRegInfo v81_pmu_regs[] = {
-+            { .name = "PMCEID2", .state = ARM_CP_STATE_AA32,
-+              .cp = 15, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 4,
-+              .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
-+              .resetvalue = extract64(cpu->pmceid0, 32, 32) },
-+            { .name = "PMCEID3", .state = ARM_CP_STATE_AA32,
-+              .cp = 15, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 5,
-+              .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
-+              .resetvalue = extract64(cpu->pmceid1, 32, 32) },
-+            REGINFO_SENTINEL
-+        };
-+        define_arm_cp_regs(cpu, v81_pmu_regs);
-+    }
-+}
-+
- /* We don't know until after realize whether there's a GICv3
-  * attached, and that is what registers the gicv3 sysregs.
-  * So we have to fill in the GIC fields in ID_PFR/ID_PFR1_EL1/ID_AA64PFR0_EL1
-@@ -6244,67 +6325,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, pmovsset_cp_reginfo);
-     }
-     if (arm_feature(env, ARM_FEATURE_V7)) {
--        /* v7 performance monitor control register: same implementor
--         * field as main ID register, and we implement four counters in
--         * addition to the cycle count register.
--         */
--        unsigned int i, pmcrn = 4;
--        ARMCPRegInfo pmcr = {
--            .name = "PMCR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 0,
--            .access = PL0_RW,
--            .type = ARM_CP_IO | ARM_CP_ALIAS,
--            .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmcr),
--            .accessfn = pmreg_access, .writefn = pmcr_write,
--            .raw_writefn = raw_write,
--        };
--        ARMCPRegInfo pmcr64 = {
--            .name = "PMCR_EL0", .state = ARM_CP_STATE_AA64,
--            .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 0,
--            .access = PL0_RW, .accessfn = pmreg_access,
--            .type = ARM_CP_IO,
--            .fieldoffset = offsetof(CPUARMState, cp15.c9_pmcr),
--            .resetvalue = (cpu->midr & 0xff000000) | (pmcrn << PMCRN_SHIFT),
--            .writefn = pmcr_write, .raw_writefn = raw_write,
--        };
--        define_one_arm_cp_reg(cpu, &pmcr);
--        define_one_arm_cp_reg(cpu, &pmcr64);
--        for (i = 0; i < pmcrn; i++) {
--            char *pmevcntr_name = g_strdup_printf("PMEVCNTR%d", i);
--            char *pmevcntr_el0_name = g_strdup_printf("PMEVCNTR%d_EL0", i);
--            char *pmevtyper_name = g_strdup_printf("PMEVTYPER%d", i);
--            char *pmevtyper_el0_name = g_strdup_printf("PMEVTYPER%d_EL0", i);
--            ARMCPRegInfo pmev_regs[] = {
--                { .name = pmevcntr_name, .cp = 15, .crn = 14,
--                  .crm = 8 | (3 & (i >> 3)), .opc1 = 0, .opc2 = i & 7,
--                  .access = PL0_RW, .type = ARM_CP_IO | ARM_CP_ALIAS,
--                  .readfn = pmevcntr_readfn, .writefn = pmevcntr_writefn,
--                  .accessfn = pmreg_access },
--                { .name = pmevcntr_el0_name, .state = ARM_CP_STATE_AA64,
--                  .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 8 | (3 & (i >> 3)),
--                  .opc2 = i & 7, .access = PL0_RW, .accessfn = pmreg_access,
--                  .type = ARM_CP_IO,
--                  .readfn = pmevcntr_readfn, .writefn = pmevcntr_writefn,
--                  .raw_readfn = pmevcntr_rawread,
--                  .raw_writefn = pmevcntr_rawwrite },
--                { .name = pmevtyper_name, .cp = 15, .crn = 14,
--                  .crm = 12 | (3 & (i >> 3)), .opc1 = 0, .opc2 = i & 7,
--                  .access = PL0_RW, .type = ARM_CP_IO | ARM_CP_ALIAS,
--                  .readfn = pmevtyper_readfn, .writefn = pmevtyper_writefn,
--                  .accessfn = pmreg_access },
--                { .name = pmevtyper_el0_name, .state = ARM_CP_STATE_AA64,
--                  .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 12 | (3 & (i >> 3)),
--                  .opc2 = i & 7, .access = PL0_RW, .accessfn = pmreg_access,
--                  .type = ARM_CP_IO,
--                  .readfn = pmevtyper_readfn, .writefn = pmevtyper_writefn,
--                  .raw_writefn = pmevtyper_rawwrite },
--                REGINFO_SENTINEL
--            };
--            define_arm_cp_regs(cpu, pmev_regs);
--            g_free(pmevcntr_name);
--            g_free(pmevcntr_el0_name);
--            g_free(pmevtyper_name);
--            g_free(pmevtyper_el0_name);
--        }
-         ARMCPRegInfo clidr = {
-             .name = "CLIDR", .state = ARM_CP_STATE_BOTH,
-             .opc0 = 3, .crn = 0, .crm = 0, .opc1 = 1, .opc2 = 1,
-@@ -6315,24 +6335,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         define_one_arm_cp_reg(cpu, &clidr);
-         define_arm_cp_regs(cpu, v7_cp_reginfo);
-         define_debug_regs(cpu);
-+        define_pmu_regs(cpu);
-     } else {
-         define_arm_cp_regs(cpu, not_v7_cp_reginfo);
-     }
--    if (FIELD_EX32(cpu->id_dfr0, ID_DFR0, PERFMON) >= 4 &&
--            FIELD_EX32(cpu->id_dfr0, ID_DFR0, PERFMON) != 0xf) {
--        ARMCPRegInfo v81_pmu_regs[] = {
--            { .name = "PMCEID2", .state = ARM_CP_STATE_AA32,
--              .cp = 15, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 4,
--              .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
--              .resetvalue = extract64(cpu->pmceid0, 32, 32) },
--            { .name = "PMCEID3", .state = ARM_CP_STATE_AA32,
--              .cp = 15, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 5,
--              .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
--              .resetvalue = extract64(cpu->pmceid1, 32, 32) },
--            REGINFO_SENTINEL
--        };
--        define_arm_cp_regs(cpu, v81_pmu_regs);
--    }
-     if (arm_feature(env, ARM_FEATURE_V8)) {
-         /* AArch64 ID registers, which all have impdef reset values.
-          * Note that within the ID register ranges the unused slots
+     define_one_arm_cp_reg(cpu, &dbgdidr);
 -- 
 2.20.1
 

@@ -1,133 +1,177 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5279523lfp;
-        Tue, 11 Feb 2020 08:27:29 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwPgmgewqfns1S/Yv8wehGF6ew9AxAqFcCjCqf+vKRMOZGNRJLuJS2THuY8Yv71p1nX+7iT
-X-Received: by 2002:a9d:4110:: with SMTP id o16mr5866143ote.101.1581438449350;
-        Tue, 11 Feb 2020 08:27:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581438449; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5280717lfp;
+        Tue, 11 Feb 2020 08:28:47 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyKKxp+QEh1644fScYnI1uZq/63gSHqSGlxa/LStolcVXO7ZtzZU25WCuzCVS4JveieCrRz
+X-Received: by 2002:a05:620a:701:: with SMTP id 1mr2773744qkc.306.1581438527066;
+        Tue, 11 Feb 2020 08:28:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581438527; cv=none;
         d=google.com; s=arc-20160816;
-        b=JyGDCL0ea9RHboPyTcUqWdhJSam3QYAvbrATxJBmYW1ASApB9KysUQbLSc7z3CZ3JQ
-         lmEljoirJXquskky0bkMd09SffvLuZ+0+GeBwhmAeE5QtdGrCFMrSA2qZKx/cgtYchwd
-         Nov0IzNx2ab0DR+LaBF2beeotfTQOwSUikxPzrw8RbVFyW/DDAsjsQyHNIqcwmxrrKLL
-         OEsqv9lEUzR2Unx4pmRQ2ck4UfFB3T8yU2CrzqHOyqyyqUSslVT+l8Wm7zngK4t1gWlf
-         cVTL/CQyFk/g0tyRUQS7a6mXNMlbeutqDpye8kSuXij7ePoAOrUJQTx1pXOzC8tq46vt
-         Nokg==
+        b=mrIk1FYaDZUrzR5nXw8lC/N1Br4IvUvgfblcjaZLkpEFsvBwJ56D60Dr3P+nIAzPK1
+         6+Je7+MmsmyI+TMWBUNbM4QFhZlYlHKr0IIQ52TMYayzdOBGdMJaxMr5N1ndlK8Rbzsr
+         IdNloU0+NiPvUtay2y05hBPI2xLN1BOdo2esw3xyP47A5grbnRzVhCXkQpX7QPQ6tqpF
+         N/rbo0uzd4cWIbHhKjrkL3ndr94WfG2fvieZ7oj4xISTRSWypOXCx5u9nPZr2j/o4gqt
+         1AxPh3bJ+ymykRjAqy0+HoRzQvm90f/WDSsjBHYtYo22l4IZh2myeKyTzNE45ZSaWU2a
+         w+LA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=yVHXsm2IYBbO0NyhRrtnF1/ntngEqGjIm7d0F0XQrvk=;
-        b=EoNu1s99UYOCIc+z4SmLbIh6jYClWLYVotvLPJZ0LOennDgkTllRxr08bev3L/Irrs
-         CFHSo/FQRWS5XqISSFt+lmn2nJN0SrvsvrEN1UU/cQBbkYfa/j8GT1tcFYBh802zW/wp
-         CzQqzD0ED7fFliniO6ify2fH9mWcZZKVPcFrycFmVKMu8Y8or1oYt4nWBz/699ayAF5U
-         2MXcxLJeQYTQEpLGV/kShl8JIFBILgJ4JCQd0I+xGdoc0XKUt+OLvRPg0hTVDdbJTkMH
-         q4TNfiwWIUGGEbS6uOa3hDVGHRzKoffLqSdtPhzjMIdzc2p8nrVbScdyCsYp4fOaYlr1
-         Xoeg==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=6onaApw7FtzIzOfy3StclCST+VJzxOK3YFP6WmhowrQ=;
+        b=qjQks964QejG4xUXXcHnHGmA4Xl3mA0M5muyVRew/Gx2CLv8Fwx02QLERKp7J+iXr/
+         oocXrCAAdqrEhhd+Eg++rQzwK0MkQHwfBpzaly2ofcGpWj2EPMQSOeGoDePCvTqbqloV
+         OBJbbSNssTLjFKY9qfoS7rNZiwkVpsRRsk8hw4t7b2r4l0ZBYuEUJj4w+CIdQEpdRF4r
+         s9RmLOqvPbnRtcNPZjd9SO6gRfLfg6ZUns+BOlOSXzhsNBnkAifT9VFvx9Zq1VEZOe9E
+         WrhtZwqayXdnLCFbqKX1utPd3nYSfGiNABK868f1JsV1oVpgJZTFJ5h7xhDrBxfRyWZQ
+         NS/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zgDrvETe;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b2si2862873ots.284.2020.02.11.08.27.29;
-        Tue, 11 Feb 2020 08:27:29 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=SoHdSL0v;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id 206si2336869qki.89.2020.02.11.08.28.46;
+        Tue, 11 Feb 2020 08:28:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zgDrvETe;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1730828AbgBKQ12 (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Tue, 11 Feb 2020 11:27:28 -0500
-Received: from mail-oi1-f196.google.com ([209.85.167.196]:40503 "EHLO
-        mail-oi1-f196.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1729133AbgBKQ12 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 11 Feb 2020 11:27:28 -0500
-Received: by mail-oi1-f196.google.com with SMTP id a142so13338035oii.7
-        for <kvm@vger.kernel.org>; Tue, 11 Feb 2020 08:27:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=yVHXsm2IYBbO0NyhRrtnF1/ntngEqGjIm7d0F0XQrvk=;
-        b=zgDrvETeZ98ubY0HRNgI2g9jEA8jJoX/ED4+UpFR+atEhYr56+2n8NOg6kMLgv3Rnr
-         4n5nnpYPG0cXSdVX49tRS/ufUSm1llmPiSvhrGu+uhyJokufZD0gPCfLV1rN0EjA2/F+
-         7ZYg5KHJTUZQRZ0I2+WAKQ1bpvITGMsZmdTRxFkJ0ruKftoWC/OF/JRQjtdOooStvflb
-         Ud8hY87RyjXX16e3GoZkH/Og2IFdB+Dd5gxqGkulEj9QE01t0D1HXpJXcvPl+fr/iFhO
-         6oK208vi8WL/kuS8J5phalnb6fuMwPpENxZRLIVpeOnZ+hhClUWqo83ltw1HGhGlrqKC
-         Yi5w==
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=SoHdSL0v;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id A96DA4AEB2;
+	Tue, 11 Feb 2020 11:28:46 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@linaro.org
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id NVcU3dqSdPjc; Tue, 11 Feb 2020 11:28:45 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id AAD8C4A4FF;
+	Tue, 11 Feb 2020 11:28:45 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 70BAA4A4FF
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 11 Feb 2020 11:28:44 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id cMDQd4U1Pdji for <kvmarm@lists.cs.columbia.edu>;
+ Tue, 11 Feb 2020 11:28:43 -0500 (EST)
+Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
+ [209.85.210.65])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 707064005D
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 11 Feb 2020 11:28:43 -0500 (EST)
+Received: by mail-ot1-f65.google.com with SMTP id h9so10655367otj.11
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 11 Feb 2020 08:28:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=sBL1pdvCcbU5vh2MRuYeHAqsYDWdsnFmPWD7z1MAFS8=;
+ b=SoHdSL0v6iKBaL8zgd+lCUElYoaXsAfUEXa9LewiooAA5sfD7WLzJr/zUAq9inb3HN
+ g9KiANDepXgVQcQML6UQoWdxX/zCH7k5u/cQJb++myJJll2u1soQx+bX3bgsEogEyYwT
+ o98FqckKC1IhQGCE3z3WZHOMPuGB8UU2meAF8cGqSkqAshTrVWdNtyg65J2bHeD0z3AG
+ LH8pUj+bixTPli6OWfF6iNF+dspoPIks04pG2OV9Re/uPltKscvyX9FfW6qXZfK/hE4Q
+ DwsGFLAMTwyXlci8q0KGniQs9daCRGj+ie2k3v81msJ7xmG5YCS5YkqCUHbx8lobeQuZ
+ r3fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=yVHXsm2IYBbO0NyhRrtnF1/ntngEqGjIm7d0F0XQrvk=;
-        b=I/rD9JW8NrspiNcJ0uo+cniQvKzY7ca5FwpbcwNMRmzfKcK4S05CcqkLS/Y5vX8OPq
-         4Hmf/BOIs+FNS4uGniywUJ5LGLvkImKe5xVKEFZ8TCfzmie7bzBBT3NZ0k7+ZfpGtYmJ
-         0m8YeHKBBEoB6T+Nb/BErKt4cPGDGt1P1/S5IB8z9ILBL5kIiL66xyHlJaBzxXJtPSlg
-         za9CIKbQ7min/wOrEPz2d4KQERXmgPb3UXKa3xEdljXt8bBb/yT8OiN2a2hrX7MxNrM8
-         e5AebsfhQaJwpjNkBhhugWZItV0PJzhHkODTYevXafTJLph29d+OFSjoHHDvQdVvZfqS
-         GgFw==
-X-Gm-Message-State: APjAAAVt+MYleWORDMhqWC3/H5yiEzA2xXYnPDxigcbBnanlSs5HGFgV
-        L35ZG7HRfvJjFst7EfnDMVwR8hAfjTP7sblrbYuU6olw
-X-Received: by 2002:aca:3d7:: with SMTP id 206mr3432708oid.98.1581438447073;
- Tue, 11 Feb 2020 08:27:27 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=sBL1pdvCcbU5vh2MRuYeHAqsYDWdsnFmPWD7z1MAFS8=;
+ b=jDq1Sm39KXdRCJCJxZ0G6PiIxGfLjr+bRPSksLQ6LOOJcsr2Fw6qMJejTSiO/Y/Dg0
+ MQKF40jTT/MkXXpy1KlJ6xqWJViGKIM+OtG4tQys20/2snEtwEGZoZpMjdoLl1NPzrcO
+ U2YO/mpQ6GpieZQH4bJVQhFXJ5gkFO8OM43mSbPBnS1yF3lCmlP0/EmYlee4GgVl4PHQ
+ HQi0qy5oYc4U97yxNP9rKbYW4BjQWOFJIqLaeSJw+Ceb3HQpLjELd+SO+PWdrI89jZR1
+ MuBVy/oxTNj4nV55DTtym4dk7zEeqcZn4mY/G6cp+hQ37a4gC1csThtBOvuYCp9S0kw7
+ V4Sg==
+X-Gm-Message-State: APjAAAX7sKYjIzoKIGCohHX6HQp/C5outfcokGnz98lNZudW6Vtt7TqY
+ LmuwjCY8IFuhmEQU5QaoXVpCfas/7nba7ERRo7Y+Zg==
+X-Received: by 2002:a05:6830:4a4:: with SMTP id
+ l4mr5921019otd.91.1581438522842; 
+ Tue, 11 Feb 2020 08:28:42 -0800 (PST)
 MIME-Version: 1.0
-References: <20200130112510.15154-1-eric.auger@redhat.com> <20200130112510.15154-6-eric.auger@redhat.com>
-In-Reply-To: <20200130112510.15154-6-eric.auger@redhat.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Tue, 11 Feb 2020 16:27:16 +0000
-Message-ID: <CAFEAcA9Yc9dKTCcP3fP93tQU62Q=2FYOoYGvUqfiOMY=pYV_RA@mail.gmail.com>
-Subject: Re: [kvm-unit-tests PATCH v2 5/9] arm: pmu: Basic event counter Tests
-To:     Eric Auger <eric.auger@redhat.com>
-Cc:     Eric Auger <eric.auger.pro@gmail.com>,
-        Marc Zyngier <maz@kernel.org>, kvmarm@lists.cs.columbia.edu,
-        kvm-devel <kvm@vger.kernel.org>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>,
-        Andrew Jones <drjones@redhat.com>,
-        Andrew Murray <andrew.murray@arm.com>,
-        Andre Przywara <andre.przywara@arm.com>,
-        Alexandru Elisei <alexandru.elisei@arm.com>
-Content-Type: text/plain; charset="UTF-8"
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: MyeF+WMBWUdp
+References: <20200130112510.15154-1-eric.auger@redhat.com>
+ <20200130112510.15154-5-eric.auger@redhat.com>
+In-Reply-To: <20200130112510.15154-5-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 11 Feb 2020 16:28:32 +0000
+Message-ID: <CAFEAcA_V3rT+C1FCPPyjmQ8svxF1tMWWOLgZ1Vn_CNQ3N0x-KA@mail.gmail.com>
+Subject: Re: [kvm-unit-tests PATCH v2 4/9] arm: pmu: Check Required Event
+ Support
+To: Eric Auger <eric.auger@redhat.com>
+Cc: kvm-devel <kvm@vger.kernel.org>, Marc Zyngier <maz@kernel.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Andre Przywara <andre.przywara@arm.com>, Andrew Murray <andrew.murray@arm.com>,
+ kvmarm@lists.cs.columbia.edu, Eric Auger <eric.auger.pro@gmail.com>
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: KwNKsbDS4594
 
-On Thu, 30 Jan 2020 at 11:26, Eric Auger <eric.auger@redhat.com> wrote:
+On Thu, 30 Jan 2020 at 11:25, Eric Auger <eric.auger@redhat.com> wrote:
 >
-> Adds the following tests:
-> - event-counter-config: test event counter configuration
-> - basic-event-count:
->   - programs counters #0 and #1 to count 2 required events
->   (resp. CPU_CYCLES and INST_RETIRED). Counter #0 is preset
->   to a value close enough to the 32b
->   overflow limit so that we check the overflow bit is set
->   after the execution of the asm loop.
-> - mem-access: counts MEM_ACCESS event on counters #0 and #1
->   with and without 32-bit overflow.
+> If event counters are implemented check the common events
+> required by the PMUv3 are implemented.
+>
+> Some are unconditionally required (SW_INCR, CPU_CYCLES,
+> either INST_RETIRED or INST_SPEC). Some others only are
+> required if the implementation implements some other features.
+>
+> Check those wich are unconditionally required.
+>
+> This test currently fails on TCG as neither INST_RETIRED
+> or INST_SPEC are supported.
 >
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>
 
-> +static bool satisfy_prerequisites(uint32_t *events, unsigned int nb_events)
+> +static bool is_event_supported(uint32_t n, bool warn)
 > +{
-> +       int i;
+> +       uint64_t pmceid0 = read_sysreg(pmceid0_el0);
+> +       uint64_t pmceid1 = read_sysreg_s(PMCEID1_EL0);
+> +       bool supported;
+> +       uint64_t reg;
 > +
-> +       if (pmu.nb_implemented_counters < nb_events) {
-> +               report_skip("Skip test as number of counters is too small (%d)",
-> +                           pmu.nb_implemented_counters);
-> +               return false;
-> +       }
+> +       /*
+> +        * The low 32-bits of PMCEID0/1 respectly describe
+> +        * event support for events 0-31/32-63. Their High
+> +        * 32-bits describe support for extended events
+> +        * starting at 0x4000, using the same split.
+> +        */
+> +       if (n >= 0x0  && n <= 0x3F)
+> +               reg = (pmceid0 & 0xFFFFFFFF) | ((pmceid1 & 0xFFFFFFFF) << 32);
+> +       else if  (n >= 0x4000 && n <= 0x403F)
+> +               reg = (pmceid0 >> 32) | ((pmceid1 >> 32) << 32);
+> +       else
+> +               abort();
 > +
-> +       for (i = 0; i < nb_events; i++) {
-> +               if (!is_event_supported(events[i], false)) {
-> +                       report_skip("Skip test as event %d is not supported",
-> +                                   events[i]);
+> +       supported =  reg & (1UL << (n & 0x3F));
+> +
+> +       if (!supported && warn)
+> +               report_info("event %d is not supported", n);
 
-Event numbers are given in hex in the Arm ARM and also
-specified in hex in your test source code. I think it
-would be more helpful if the message here used "0x%x", to
-save the reader having to do the decimal-to-hex conversion
-to find the event in the spec or the test case.
+As with satisfy_prerequisites(), printing this with "0x%x"
+would probably be more helpful to most users.
 
 thanks
 -- PMM
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

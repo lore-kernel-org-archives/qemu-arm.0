@@ -1,104 +1,109 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5445453lfp;
-        Tue, 11 Feb 2020 11:14:40 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzVwr7e9Mjmz4dq1jKrbjVUNg+SWI9YwuRaKpkS4x7+5qk0hzfyFOCqEmd6Djs7jJ+wRO2J
-X-Received: by 2002:a0c:e58e:: with SMTP id t14mr4142766qvm.131.1581448480515;
-        Tue, 11 Feb 2020 11:14:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581448480; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5464153lfp;
+        Tue, 11 Feb 2020 11:34:47 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxc81iyuFZou7RJ0SL2CJYCfIDT4f8OH6tAWlFfFufIWsofHBpbbR6+/KRro0rEZnUeKiUC
+X-Received: by 2002:ac8:1e05:: with SMTP id n5mr3939661qtl.227.1581449687756;
+        Tue, 11 Feb 2020 11:34:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581449687; cv=none;
         d=google.com; s=arc-20160816;
-        b=eEdd0n7NcmkTseAlKpmtbQ8B8DlAF6mvxd2q+/2Ywf52e4B7wPKDCQ8tOXDBFLCSib
-         G07BuZ+7+KqTlvJYm4RqQmwcGi+XThYxtJsAtxS6Da+u5JLtJ8aNyGmIAgvuWkLuGXoz
-         tZbuKBvjE4AEtAIJ3NvpXcQXMv904fvO8VYP2xcjjiCElPTe7edPc0wkVUueSF8akRxl
-         hXgPGzZcjlIHJmBmfXacZsbh9gBNKltf0xrIlG6xkx/5It7xiSq1cvSy1HPx1zRUUolv
-         7YGuqaUlhaIk8jDK3A3iWDbY5DxQjXwF6yCLj0iZFLwwg7sWRdptz020ZjOT5J/MIEFU
-         U3Mg==
+        b=WegmqdRzeCsj4dXkgXIBAwMsqRQHoH0+kx2gtsA7XxeudOeVPnQtrGh/5QJs86O143
+         DOMWmP/CD3dRQc5aTlL8uz98BESD2I8vHOXR87Id1ldD3rIVRGGocZYbxc3XxhRxRUZF
+         YlvuoOg9TEmOR+elcQ72SR35lhyHB57Xg7tFAbFMi41rvJS7C2qEMRPg4DCS37MqAg4v
+         cUh2E/1orBGb8q0z3TJo9RVIGCarVMLIiMSZjNHVIeUVV6s1pe1C3IHv9qqYAcLVHYIq
+         MLujAfg/Gz7upGsJyGlCCTZux19wC5exHsqoy0z+lTz+o5fuvs73yUchG7Rs2CG9wopH
+         L/eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=3/v3gfJ3/8xcmUKYJaWsS5mk0HeG31C48A0s8XLNYbk=;
-        b=hXtePCy0dJUpYm7KXQznXaMK2AQb0w+nkTfC5zk2TbOTPwMJ++hEwXmIkAneVXrwzK
-         VYjZ+zGn9gbmJ3qM5AtbS9N485xQtQBSgXqmgJgE8nZHEORi0SH2BA1aCcbeK4jDysWa
-         GCpTincnIpsfMVLv4DyyWgSFChbucSm+VoNBZeaM5fpcQ62ltw0Y3TDuR2Ch23046qiV
-         k+TIwNc3HRcbM9WHvvCFhRaNPHkTuqgSQb1dTXVKds7I5c3G7lBOmzSGzeB04qLNuzf/
-         MP77iBj4BF4/JK2G04mTBnfVM/HFuCUit50KfAP6u2Jeph2uiTc2nJwKKwHQ6lz472jD
-         Y2uQ==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=aWltyIygR++XQS2oU6s22u496QY3iyGDI8+SIrPN/Hk=;
+        b=0Sfl2erAUsC8PO9V2rf56oJVVYBzUgzBbNDkLWBi6RZa6qebTguVxH/yNkmQLQWajc
+         CsUzEE/NcvkQYSDJ+11v6q/G8H5ngxdWJuuDKmv0pNfXg1BUgGtbcC816o9eNHC63tdW
+         tdLkQG4Su2GwrS7odtT8LvsAehzqPaBZesKapaGHJPvazm/WRP5/REqlRvPXvuAd5upJ
+         /2vKJsq0JMt8PjvwV3n5tP03w52RSKYXOsHGtV3BlAa0JNjchaqKf2yi90hY8phUiigq
+         ALP0xM8KJ8RVrN2RRJXmNL3PnorUAsvSwG2jwpMx9NaeQqudwM0Vl3TnwrRHcCadn7nZ
+         xJ3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=r3gwbyUD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=h5krVA33;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a192si2512369qkc.273.2020.02.11.11.14.40
+        by mx.google.com with ESMTPS id b19si2360045qtq.348.2020.02.11.11.34.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Feb 2020 11:14:40 -0800 (PST)
+        Tue, 11 Feb 2020 11:34:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=r3gwbyUD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56204 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=h5krVA33;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56400 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j1azX-0001e4-V0
-	for alex.bennee@linaro.org; Tue, 11 Feb 2020 14:14:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42057)
+	id 1j1bJ1-0007vz-79
+	for alex.bennee@linaro.org; Tue, 11 Feb 2020 14:34:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46348)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j1ayy-0001di-Uo
- for qemu-devel@nongnu.org; Tue, 11 Feb 2020 14:14:06 -0500
+ (envelope-from <groeck7@gmail.com>) id 1j1bHh-0007SC-Fn
+ for qemu-devel@nongnu.org; Tue, 11 Feb 2020 14:33:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j1ayw-0005j5-UX
- for qemu-devel@nongnu.org; Tue, 11 Feb 2020 14:14:04 -0500
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:33010)
+ (envelope-from <groeck7@gmail.com>) id 1j1bHg-0008HU-7m
+ for qemu-devel@nongnu.org; Tue, 11 Feb 2020 14:33:25 -0500
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:40638)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j1ayv-0005eI-6i
- for qemu-devel@nongnu.org; Tue, 11 Feb 2020 14:14:01 -0500
-Received: by mail-ot1-x341.google.com with SMTP id b18so11301679otp.0
- for <qemu-devel@nongnu.org>; Tue, 11 Feb 2020 11:14:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=3/v3gfJ3/8xcmUKYJaWsS5mk0HeG31C48A0s8XLNYbk=;
- b=r3gwbyUDzESCTQ4/9IiHMeRJggdIdMPswT52LjYzDmGUmDhNL8z72K8HN7nJwUjxsP
- 1zUXdS4uxbWYCvLdRk0mCKnJhKi/yBdAgb+pj/9izxbuvwFzjxiZekz3S3OLVMa1YtmB
- lEeIbQPjbIhHvaytCDEWRXhTt0EfBJArBfhdBxgmNpjzIA/CNQt5yGu5ZasvQfASwvul
- mX+dpk9LaM75ySnkNddBqcKhDh5kgm4rL9J4hhrFGfBx1FA745CWLnQA9oP7vULMHJrP
- G694GQK3vMOBJ2a+gww7j0AVCOV8sEOTgLyXKdo3w6l6cH7x2EzeB7x6TOgwlQSD43sf
- U9KQ==
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1j1bHg-0008AP-0F; Tue, 11 Feb 2020 14:33:24 -0500
+Received: by mail-pl1-x641.google.com with SMTP id y1so4668328plp.7;
+ Tue, 11 Feb 2020 11:33:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=aWltyIygR++XQS2oU6s22u496QY3iyGDI8+SIrPN/Hk=;
+ b=h5krVA33bDfDvq6NC/JdJUgDRcr487HpZfEyN9ddRmqHVdtIm8LwNQGyvqweFR8O4t
+ JSc3aLCK1Y6jXyUHqUYt9VJT6JogWXiAGxQnZjfr7kRoJfkscBUR8AGStfo13CTPFv86
+ G6KHD/iHaj1ttmv0M2RYh/UaRoZqBfj0XAURm820F8CVh+tZaPJPtg9m4scSLPWoKEpg
+ Lg5mlHLsf34aNDbJtNqwQjdf2XOvX2tPQjjouywvJCB6O5xvtL4M2DYphAKM87XkbuwM
+ X71Vf7no2Tiq1HXzv2EM++RB7Spw58ozE2CI/V42etPTl4rTngXuU6PbucnXgX/KoSqw
+ zgiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=3/v3gfJ3/8xcmUKYJaWsS5mk0HeG31C48A0s8XLNYbk=;
- b=I7BptuYcmtgTjgTTWvW8UGmkCmMSPX6+fybfzrv4riqoQbyY6TLcSrj9dFQP656gXI
- 6nDQi/QWQW0JKRs7lK0w9QLcxJANmTFC3WDBcCW2JVo0wvW5CqCxT1yt6aS5h45ts07U
- 2xbpeYbC/WpIXldy3PG8i84syT9BwrFPOj0HmrgyTOv33+XDMP5Dv8ZxX3klnaItPYKA
- wb44kem/xnTBaYJfy9RJXwakijQwe4M4vrbdmk1GU67mf5Dg33fJ1dyh2DjrN/+PTeZW
- fCTszcu/kV5UECzK4w17uQoIi1LBqQI2pPMWXvhV4t7L74Rv+zSyYtqJKKHKUyHHIDbK
- apeQ==
-X-Gm-Message-State: APjAAAUl6JJ9gg4BXpOKTYogc49xxlZRGcj4Rc2req2egR3zvXv5xoAy
- cE4jDdqmY5/UrovSY2YkDsD9mpJGNX5s6A2fnBqT3w==
-X-Received: by 2002:a05:6830:1184:: with SMTP id
- u4mr6053662otq.221.1581448439224; 
- Tue, 11 Feb 2020 11:13:59 -0800 (PST)
-MIME-Version: 1.0
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :references:mime-version:content-disposition
+ :content-transfer-encoding:in-reply-to:user-agent;
+ bh=aWltyIygR++XQS2oU6s22u496QY3iyGDI8+SIrPN/Hk=;
+ b=Vxvs9Q8diACGPzR+j3wRAmm/gfFkNHxKJXjwBw8MBwj1cbgk0rjIBtaFSeW/1/xrlP
+ INXdW+tbH+RVxs6fKf+PCz69bg5o/f6SIud7+ZytzHpjdqwwvy5bgD1ai3QyQYdzzxqu
+ EYAkai1n9RDuj+pjSgQ6nFI5m5C6t3O4NNAEZ59OknJqxrp13Uf1suplH/xWVSU55Stu
+ FHYGNBJnZWk6sTXmyZaPPUbINcGB6qYVnT2BwmLoWILCihdCpAnAi5v1dCOPme2/ioy8
+ XQUj9TwicL4Js4tyTZ2ub+i+9DvHuOde8XC3IqaSqlJe4WUQ8w10yyCIUP/2bTyolw2v
+ g4Yg==
+X-Gm-Message-State: APjAAAWmDN+LGkxokqmTdF2jY20rLypTtEQnhLJfurmVwzYX4iM9zj54
+ rjEwGXg508ns21GAWjbG7xU=
+X-Received: by 2002:a17:90a:9416:: with SMTP id
+ r22mr5519868pjo.2.1581449601037; 
+ Tue, 11 Feb 2020 11:33:21 -0800 (PST)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id q21sm5034212pff.105.2020.02.11.11.33.19
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Tue, 11 Feb 2020 11:33:20 -0800 (PST)
+Date: Tue, 11 Feb 2020 11:33:18 -0800
+From: Guenter Roeck <linux@roeck-us.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH v2] hw/arm: ast2600: Wire up EHCI controllers
+Message-ID: <20200211193318.GA11891@roeck-us.net>
 References: <20200207174548.9087-1-linux@roeck-us.net>
  <158111304888.591.9861885311267533100@a1bbccc8075a>
  <20200207224850.GA10890@roeck-us.net>
  <445cee18-5de3-3da4-fef4-2e3f4530d96b@redhat.com>
-In-Reply-To: <445cee18-5de3-3da4-fef4-2e3f4530d96b@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 Feb 2020 19:13:48 +0000
-Message-ID: <CAFEAcA-0Yea_c_YCGUnGqjsQ72MxzHfdbR2UfJYEPMGzvayKCA@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/arm: ast2600: Wire up EHCI controllers
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+ <CAFEAcA-0Yea_c_YCGUnGqjsQ72MxzHfdbR2UfJYEPMGzvayKCA@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAFEAcA-0Yea_c_YCGUnGqjsQ72MxzHfdbR2UfJYEPMGzvayKCA@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::341
+X-Received-From: 2607:f8b0:4864:20::641
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,45 +117,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
  qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- Guenter Roeck <linux@roeck-us.net>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CbmSgetcDF+E
+X-TUID: J9pla0OXoWRi
 
-On Tue, 11 Feb 2020 at 08:12, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
->
-> On 2/7/20 11:48 PM, Guenter Roeck wrote:
-> > On Fri, Feb 07, 2020 at 02:04:09PM -0800, no-reply@patchew.org wrote:
-> >> Patchew URL: https://patchew.org/QEMU/20200207174548.9087-1-linux@roec=
-k-us.net/
-> >>
-> >>
-> >>
-> >> Hi,
-> >>
-> >> This series failed the docker-mingw@fedora build test. Please find the=
- testing commands and
-> >> their output below. If you have Docker installed, you can probably rep=
-roduce it
-> >> locally.
-> >>
-> > I forgot to mention that the patch depends on the similar
-> > patch for ast2400/ast2500. Sorry for that. Not sure though how
-> > to tell that to the test build system.
->
-> You mean the "Aspeed: machine extensions and fixes" series?
+On Tue, Feb 11, 2020 at 07:13:48PM +0000, Peter Maydell wrote:
+> On Tue, 11 Feb 2020 at 08:12, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
+> >
+> > On 2/7/20 11:48 PM, Guenter Roeck wrote:
+> > > On Fri, Feb 07, 2020 at 02:04:09PM -0800, no-reply@patchew.org wrote:
+> > >> Patchew URL: https://patchew.org/QEMU/20200207174548.9087-1-linux@roeck-us.net/
+> > >>
+> > >>
+> > >>
+> > >> Hi,
+> > >>
+> > >> This series failed the docker-mingw@fedora build test. Please find the testing commands and
+> > >> their output below. If you have Docker installed, you can probably reproduce it
+> > >> locally.
+> > >>
+> > > I forgot to mention that the patch depends on the similar
+> > > patch for ast2400/ast2500. Sorry for that. Not sure though how
+> > > to tell that to the test build system.
+> >
+> > You mean the "Aspeed: machine extensions and fixes" series?
+> 
+> Seems unlikely given that series is from 2019 and went into
+> master last year... Probably Guenter means
+> "ast2400/ast2500: Wire up EHCI controllers"
+> https://patchew.org/QEMU/20200206183437.3979-1-linux@roeck-us.net/
+> 
+> (which I had dropped from my to-review queue because I'd
+> misunderstood Cedric's review and was expecting to see
+> a v2 of that which covered all of ast2400/2500/2600 --
+> I'll put it back on my list to queue before this one)
+> 
+Yes, that is correct; the patch for ast2600 depends on the patch
+for ast2400/ast2500. Please let me know if I need to resend both.
 
-Seems unlikely given that series is from 2019 and went into
-master last year... Probably Guenter means
-"ast2400/ast2500: Wire up EHCI controllers"
-https://patchew.org/QEMU/20200206183437.3979-1-linux@roeck-us.net/
-
-(which I had dropped from my to-review queue because I'd
-misunderstood Cedric's review and was expecting to see
-a v2 of that which covered all of ast2400/2500/2600 --
-I'll put it back on my list to queue before this one)
-
-thanks
--- PMM
+Thanks,
+Guenter

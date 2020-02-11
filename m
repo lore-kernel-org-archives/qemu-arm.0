@@ -1,106 +1,105 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5347250lfp;
-        Tue, 11 Feb 2020 09:32:03 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzwwezjnFShkwIW2UdMo52UJZQyQRkhrwSkTsj9hSP1gU+ggpXrmuq9NO1E+AwS95AAkcLS
-X-Received: by 2002:a0c:8605:: with SMTP id p5mr3868726qva.109.1581442323413;
-        Tue, 11 Feb 2020 09:32:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581442323; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5352908lfp;
+        Tue, 11 Feb 2020 09:37:54 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwQDXD12PxZYYzgru+xcRW3LSB4+uiW3sRssYo8+hetVWvK3F31Ydb5A9RkqvUEoXQOcz7a
+X-Received: by 2002:ac8:2939:: with SMTP id y54mr3447277qty.109.1581442674823;
+        Tue, 11 Feb 2020 09:37:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581442674; cv=none;
         d=google.com; s=arc-20160816;
-        b=oePaZ25L+si/9GxxygOU5t++a0D/6jZRJQuIhLQ6xdznvaQVQpcpcmlpV5dOZwIJww
-         EtYtvCn3HLGEQTy7tvOmnk4ln+NGENIrlr4Pv8JsRBoXDlYE5fIj7kLjEljAIO5dLMQa
-         hmM8v8XOk4TMH9zCEPN5mSH4oiLga9+4O1FT0X6fukVyDOVlgE5bPDFxtpYpXBtp3v8o
-         pouchRsRclp3bg9ISSKFwfURV3KElqoSiFvUj7BctKDJKjCNhwFw7D7OatLVB+B7+OHF
-         9RaWUflIeynJzLp9bYMHdWkYJPcJzhjjVkECKsiCf5xGlxRSLqUV3sTBmv1MYtmGkm37
-         z/hg==
+        b=iMxmIDNxrZH4OpPpk8yz3mjZ1y+yuLprdojDMtq2yB9OcsSF6omaq7Zux9WygrrWzU
+         lN6Qqj6jXNEjoGhAcqkEMtAciSvmvBGQtCY46wqikXPQEzFhVH69XjY0BOwtOkiux7TY
+         jHQh4VunYH1rAk2FPpKWFSdEbP6273PcOD6zHDjy9LwxF1fpBA4i0hoeB8lHOzkEfv69
+         N9NUrE2c1acYeDYw7aFb4ykcuCUq8AQ+rs4RO/zE7VAgltlAEk4yZmJaTmRaZT9/RiGg
+         Rjpue/3h4GAIS9Kd9WWlTacdJKKaX8E9NlJ9vhSHns49ja96YXgeLTrSBirukxbtAk2e
+         bthw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=KIG2jWNZvHfn1cjKvDlDX4wdBlCaBbkHWqDYpEE/6ns=;
-        b=QKBRpN29usLdo2HSka22jQHSa0QNSnEqfJcgP5ZwJcPgb2DA7EDGpWl16s0u4JEftP
-         Yv3FoP8uq+CsGs9SS0CVglzC6CVOozujh9pBd8BXnTFJbjvOdk9B1sYnDMJ5D5nMoomJ
-         6FvkzDgkSsr9qfwUPBZA2HiCfeYdW0atPkTZtQZxjxscxVROA9+VY4llxfQWDJR6nboG
-         yuZe4ck1Y5m39pYxhiFcWbnau4iE4+cthb945DFwpUw3c9uQAdWk2WGxGLNCfWEzyFwN
-         fxjPESyhymPd9uj3MlJCbOJ55NwQkLnf6DMD24P/UpOS+4duFtcjRf3gnZV3Rg33lT3B
-         TpBg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=Gu4Ok/18d9t4bS+gGDbkd/ibAEuGshhJuDPzFWbBLFg=;
+        b=cJgR+5q6keIa7QZ+IFyOrIEfdvpL3wesKByfFdi8mN72bdnfdM59fEHd3LtXJjlIbO
+         Yo86EOyW+gi+q7LWOluqF/WXdVYiHynh1lX7JdmbZPLtjruaiOoUXWUPuhwUfGssZdm3
+         RoZD7EZrsezLTsgDu2BsIzcmy4q8gGDmg1vcK0VPbTt8xJUbrEnbykKkMXsiqlFZCBTx
+         3/YOz+P9FFLXu9MXAK2P2SA3cn9mfEvtdP5ybMm8N9Gbo89JM2RZut9fKX88U8S6SDxf
+         hwgFVbbAxNvCu/p/BKXZV3+HazPYciGk2bxDuY0h113O4kTBg71w7Spbi35lAfMOsq/J
+         RvuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NJlysz7Z;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QeptztjY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c20si2283819qte.198.2020.02.11.09.32.03
+        by mx.google.com with ESMTPS id j25si2182688qtp.306.2020.02.11.09.37.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Feb 2020 09:32:03 -0800 (PST)
+        Tue, 11 Feb 2020 09:37:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NJlysz7Z;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QeptztjY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53908 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54108 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j1ZOE-0001ii-QN
-	for alex.bennee@linaro.org; Tue, 11 Feb 2020 12:32:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36878)
+	id 1j1ZTu-0005lQ-6h
+	for alex.bennee@linaro.org; Tue, 11 Feb 2020 12:37:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48309)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j1ZNz-0001h2-Cy
- for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:31:48 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j1ZTh-0005hK-89
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:37:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j1ZNw-0001Zz-BP
- for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:31:45 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:33918
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j1ZNu-0001WT-IY
- for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:31:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581442301;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=KIG2jWNZvHfn1cjKvDlDX4wdBlCaBbkHWqDYpEE/6ns=;
- b=NJlysz7ZT/hzhhSdLkMMjmbCXT27o8GO1W0/k1L9TipEhvUkff0DpIaYVnKC/A71BMDzk8
- VxUcbwioZCX7Tog0WDpgmElMNKyv0y03sEvsKMwXJJWzCRpSUw39WCkddyVyQZp+K//jhB
- ywJt15oewjPst/FxeWZFHCqxqPNWrhM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-361-NQZSC5K5NZyQRz1_OJwEKQ-1; Tue, 11 Feb 2020 12:31:37 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 139E618C43EE;
- Tue, 11 Feb 2020 17:31:36 +0000 (UTC)
-Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A2B4F90092;
- Tue, 11 Feb 2020 17:31:20 +0000 (UTC)
-Subject: Re: [PATCH v15 8/9] hw/arm/virt: Add the virtio-iommu device tree
- mappings
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200208120022.1920-1-eric.auger@redhat.com>
- <20200208120022.1920-9-eric.auger@redhat.com>
- <CAFEAcA-n97LKaQo9haLdEv+c7k8QkK=LegP_gORr9z4WrBU2Ww@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <5e4549f4-44c3-6a2c-a270-4923db8b455e@redhat.com>
-Date: Tue, 11 Feb 2020 18:31:18 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ (envelope-from <peter.maydell@linaro.org>) id 1j1ZTf-00043K-9m
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:37:40 -0500
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:40396)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j1ZTc-0003y3-F9
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:37:36 -0500
+Received: by mail-wr1-x444.google.com with SMTP id t3so13488450wru.7
+ for <qemu-arm@nongnu.org>; Tue, 11 Feb 2020 09:37:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Gu4Ok/18d9t4bS+gGDbkd/ibAEuGshhJuDPzFWbBLFg=;
+ b=QeptztjYmsEtwOMPBO1gx3GM1omBAVUTTQiGSINmsShZFPYKPIFkS8QWky51611EO6
+ F8MRQmNEOUrP52u6mOqMNBTHXF17GU7r6dcLzcxe7DoxvTCoid1RyLaMmlnbwoh3xMeH
+ cclwaFtf3ZRlHQboaoISYlUxVk/1S0DX6KINECo7VvlGrgyu0YISVbLYLeuOR6kUnw9R
+ +knYmlTyBoHMr6itQR4rxKbvhITXE82ElRcQi1cp6tV8AsXPs6jyR4+AoO/Q6o/93jLl
+ sjopF2H1WKFNKVz7gRJLyleSO8NB3MhT9TdONFtAWOtUPiTUKB5yn/wjd/bPVYhW1wnA
+ gRlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Gu4Ok/18d9t4bS+gGDbkd/ibAEuGshhJuDPzFWbBLFg=;
+ b=SrbuDDzdrjsSOtlPUi/+Cq87gCZKUt08HTGD6hjvCtKtoa/BSXPoUvncGPooOiRZwG
+ 2pwNVGReThRsi6HIlVYvUrEhmWmqp4hCgFSzQccKUZffj2UsXefZt+Y9wKxRQqc6lXWn
+ yNNTh9Xo1z2JNnj5uFejI2LXi1Q5IKwlOSrEqwWW10TbhVBTd7YKTFtWPjfudE1PgL1e
+ 0hRSo9DvCyp5Dd+7uGoJ6ZWOFKsAiyNaxBPMZsPNJOnkN5ucEx0w9uM6xlsS+DVIBX64
+ 9LLxJc5mxE4rNVAzqfS8N5ePokxI5MevsgCu6Ggak+jDG4oX9nb6Lz/Q6CylTkHT3eKX
+ UZAw==
+X-Gm-Message-State: APjAAAWNIoPUKKDkOkjioauT8qmKtGdPBfIICi2QaTYiDHRUzoUgeDIz
+ g3i4PiUlRfCNGVgujdHuViMx5wgDJlg=
+X-Received: by 2002:a5d:4b03:: with SMTP id v3mr10073902wrq.178.1581442653418; 
+ Tue, 11 Feb 2020 09:37:33 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id y1sm6109675wrq.16.2020.02.11.09.37.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 11 Feb 2020 09:37:32 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 03/13] target/arm: Define and use any_predinv isar_feature test
+Date: Tue, 11 Feb 2020 17:37:16 +0000
+Message-Id: <20200211173726.22541-4-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200211173726.22541-1-peter.maydell@linaro.org>
+References: <20200211173726.22541-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-n97LKaQo9haLdEv+c7k8QkK=LegP_gORr9z4WrBU2Ww@mail.gmail.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: NQZSC5K5NZyQRz1_OJwEKQ-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::444
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,78 +111,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: jean-philippe@linaro.org, "Tian, Kevin" <kevin.tian@intel.com>,
- tnowicki@marvell.com, Juan Quintela <quintela@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Peter Xu <peterx@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- bharatb.linux@gmail.com, qemu-arm <qemu-arm@nongnu.org>,
- Eric Auger <eric.auger.pro@gmail.com>
+Cc: Eric Auger <eric.auger@redhat.com>,
+ Aaron Lindsay <aaron@os.amperecomputing.com>,
+ Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FF2jnLCdz+Sn
+X-TUID: ki77ojYX8dmP
 
-Hi Peter,
+Instead of open-coding "ARM_FEATURE_AARCH64 ? aa64_predinv: aa32_predinv",
+define and use an any_predinv isar_feature test function.
 
-On 2/11/20 4:00 PM, Peter Maydell wrote:
-> On Sat, 8 Feb 2020 at 12:01, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> Adds the "virtio,pci-iommu" node in the host bridge node and
->> the RID mapping, excluding the IOMMU RID.
->>
->> This is done in the virtio-iommu-pci hotplug handler which
->> gets called only if no firmware is loaded or if -no-acpi is
->> passed on the command line. As non DT integration is
->> not yet supported by the kernel we must make sure we
->> are in DT mode. This limitation will be removed as soon
->> as the topology description feature gets supported.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> +static void create_virtio_iommu(VirtMachineState *vms, Error **errp)
->> +{
->> +    const char compat[] = "virtio,pci-iommu";
->> +    uint16_t bdf = vms->virtio_iommu_bdf;
->> +    char *node;
->> +
->> +    vms->iommu_phandle = qemu_fdt_alloc_phandle(vms->fdt);
->> +
->> +    node = g_strdup_printf("%s/virtio_iommu@%d", vms->pciehb_nodename, bdf);
->> +    qemu_fdt_add_subnode(vms->fdt, node);
->> +    qemu_fdt_setprop(vms->fdt, node, "compatible", compat, sizeof(compat));
->> +    qemu_fdt_setprop_sized_cells(vms->fdt, node, "reg",
->> +                                 1, bdf << 8, 1, 0, 1, 0,
->> +                                 1, 0, 1, 0);
->> +
->> +    qemu_fdt_setprop_cell(vms->fdt, node, "#iommu-cells", 1);
->> +    qemu_fdt_setprop_cell(vms->fdt, node, "phandle", vms->iommu_phandle);
->> +    g_free(node);
->> +
->> +    qemu_fdt_setprop_cells(vms->fdt, vms->pciehb_nodename, "iommu-map",
->> +                           0x0, vms->iommu_phandle, 0x0, bdf,
->> +                           bdf + 1, vms->iommu_phandle, bdf + 1, 0xffff - bdf);
->> +}
-> 
-> This function name implies that we're creating the IOMMU device
-> here (which would be a weird thing to do in a hotplug callback
-> for some other device), but it looks like we're only adding
-> device tree nodes ?
-yes the actual iommu device is created through the -device option. I can
-rename into create_iommu_dt_bindings
-> 
-> Given that we write the FDT blob into the guest RAM on bootup,
-> how does making changes to it here on hotplug (which I assume
-> to be 'after boot, whenever the user hot-plugs something') work?
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpu.h    | 5 +++++
+ target/arm/helper.c | 9 +--------
+ 2 files changed, 6 insertions(+), 8 deletions(-)
 
-the virtio-iommu is not supposed to be hotplugged but rather
-cold-plugged. I use this hotplug mechanism to detect its presence and
-add the related dt mappings. Maybe I can add a check to detect if the
-bootup is over?
-
-Thoughts?
-
-Eric
-> 
-> thanks
-> -- PMM
-> 
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index ac4b7950166..b1f3ecfd942 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3719,6 +3719,11 @@ static inline bool isar_feature_any_fp16(const ARMISARegisters *id)
+     return isar_feature_aa64_fp16(id) || isar_feature_aa32_fp16_arith(id);
+ }
+ 
++static inline bool isar_feature_any_predinv(const ARMISARegisters *id)
++{
++    return isar_feature_aa64_predinv(id) || isar_feature_aa32_predinv(id);
++}
++
+ /*
+  * Forward to the above feature tests given an ARMCPU pointer.
+  */
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index ddfd0183d98..bf083c369fc 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -7116,14 +7116,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+ #endif /*CONFIG_USER_ONLY*/
+ #endif
+ 
+-    /*
+-     * While all v8.0 cpus support aarch64, QEMU does have configurations
+-     * that do not set ID_AA64ISAR1, e.g. user-only qemu-arm -cpu max,
+-     * which will set ID_ISAR6.
+-     */
+-    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)
+-        ? cpu_isar_feature(aa64_predinv, cpu)
+-        : cpu_isar_feature(aa32_predinv, cpu)) {
++    if (cpu_isar_feature(any_predinv, cpu)) {
+         define_arm_cp_regs(cpu, predinv_reginfo);
+     }
+ }
+-- 
+2.20.1
 

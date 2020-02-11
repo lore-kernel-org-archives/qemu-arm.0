@@ -1,98 +1,97 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5357897lfp;
-        Tue, 11 Feb 2020 09:43:21 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyISL3MkaEjNqfTvMsRm9/4KNPx/3QMv2WN30XNB8bz6YbHYU137OscOM6yMUk03YfXuTmM
-X-Received: by 2002:a37:4a51:: with SMTP id x78mr6801495qka.445.1581443001295;
-        Tue, 11 Feb 2020 09:43:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581443001; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5358979lfp;
+        Tue, 11 Feb 2020 09:44:38 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzXsQ+1o3sw8mo1TGbNT18nh1ezNvOdcTxQKq1Y7m++vvNKvfIas6FOQ8/PTRXTNEVvH/fj
+X-Received: by 2002:ae9:f50c:: with SMTP id o12mr7372600qkg.42.1581443078041;
+        Tue, 11 Feb 2020 09:44:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581443078; cv=none;
         d=google.com; s=arc-20160816;
-        b=eKrY7GxzKwuqjIsdjHpkJ7Ch2hlcBwDtJoZKAH6ooQcgO7wDdSly9sbaDSGKJEEg3X
-         innimrVgcbaDQ2UlPIMC+AGJOH+046aTAy1sb1tMIa28R+bBigShud08uK87xiynPX/w
-         dG6OVOty95ZLPhlMvvC3G1C+qkPolJyDqZnTR24GJ0BtZO6U4K8VPi4CHbtAsZI/mYsF
-         uPH1ZVQccja8eXwP/PY5m8d+MeHSUieJHmCSV5agV+5wUOluWjCPNjZcm6R97uq+JGdH
-         OhWlp41U/Hu6dXs4QX0UTEb1+/PhtXtiUR2uW/HK9D7VVSKGrL/nmYka2KFcNZVAKuKA
-         lZDg==
+        b=hunwXXt5n10FubeR5bNwKxmh/9A5taVIKbAMzcqLu8Iq2SgDT3iWcklUkGwFFaQFxc
+         n+1eHMZ5DUfggFuJpbLgKEqkbWMQE0sltm837n0w6KxPZceAPaT11y8eVfTTqFLoM43j
+         T9hz+Go3odNp7Q4N3j4Yxf9yX72vWp6acF9vhnRQajsmXiGNQtMFj55YbpXTUAFayBN9
+         OJvi7ZCgWIqYtDmN144dBAKooam29tR0lun+x34dqSCRHZY6VcCDEeHzv10mJcrgkk8u
+         yuPV/ieUTChHpbkSKx6ekwTMOLjoMcdbK5usNICuIFAGhnq5XirI0m6fwvJ5lN7jP6P4
+         Dfxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Jy3CpiCNUfrp1JLIEXg9qAR4jJdj8q8ZZ8kelkkxy8w=;
-        b=gYiQZ4K/0nlEyGn7xroXx6WxrhWjDJOKOgM5JOfbcfM/035MuBD9TsjM5Csz5U3TDE
-         juE7qOazdnfSp1yYTCvEBLO2voN45YoQkXW7E92qz9U7WT17+7NTH/ogGO0XfMMKhdFm
-         2yo/hEAPXUg4QcGnPfwYD0iT4aemy5KNe1YKuElhghiSI64IOzm1WeLlXSkStWhTcPQO
-         OrhMeEGwDFYM1bpZgAhrgAY6YBC7vPk68lZKDvUPK4KQAypgCmUIV6i7Q17wQJHpFjCt
-         G8VcuTvtMvEKqPrYcJmQ/3mwc3S1Ie3q//SgmNH65/Yyoosu1mBwGzjHO/ld9aU4s0BJ
-         70tw==
+        bh=e9WDJDdjLb6cBOzgUb2FHyNTKjKf7aBhEJaTRctl1CQ=;
+        b=p2HIMYyb8Si36A1L1YM6Y9zDsgpjLrE00duE4Su2TZn3YJJUSyqj1idilx9eTCqTtI
+         f+8lobuDvY71vEN1ISaz9OvXOOHzSLuobkjh7psi9yGj5xmSYbUUo1RqwHw/DK88RACz
+         2gHQkXFCMDfmcDv7Mo32gbVUFZd3e8kQv01FDiaHCYgNSCGD5N2u02XPK+8ut3enOsCy
+         jhM01ka43aZ4QJXY84jykjnvzOmtpXTOEm4AbfLGW6+0TwncB+MW6rGafWIJQON8YCkk
+         AJuFo3vMLJDpHy9takEyeJQYRN2deAAjW0CUU2uRWIDQRl/xyzIcFOfjvuobjbso5nnI
+         BcrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=SpKaS64m;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=JdxnJb19;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i70si2424883qke.224.2020.02.11.09.43.21
+        by mx.google.com with ESMTPS id c141si2346075qke.337.2020.02.11.09.44.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Feb 2020 09:43:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Feb 2020 09:44:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=SpKaS64m;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=JdxnJb19;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54416 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54460 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j1ZZA-0005Yw-Jy
-	for alex.bennee@linaro.org; Tue, 11 Feb 2020 12:43:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48697)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j1ZaP-0000Hv-Cp
+	for alex.bennee@linaro.org; Tue, 11 Feb 2020 12:44:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48882)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j1ZTl-0005oa-Qx
- for qemu-devel@nongnu.org; Tue, 11 Feb 2020 12:37:48 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j1ZTo-0005uj-AU
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:37:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j1ZTj-0004C1-5p
- for qemu-devel@nongnu.org; Tue, 11 Feb 2020 12:37:45 -0500
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:40396)
+ (envelope-from <peter.maydell@linaro.org>) id 1j1ZTm-0004LN-Qm
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:37:48 -0500
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43984)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j1ZTi-0004A7-RL
- for qemu-devel@nongnu.org; Tue, 11 Feb 2020 12:37:43 -0500
-Received: by mail-wr1-x441.google.com with SMTP id t3so13488946wru.7
- for <qemu-devel@nongnu.org>; Tue, 11 Feb 2020 09:37:42 -0800 (PST)
+ id 1j1ZTm-0004JA-Hn
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:37:46 -0500
+Received: by mail-wr1-x441.google.com with SMTP id r11so10242645wrq.10
+ for <qemu-arm@nongnu.org>; Tue, 11 Feb 2020 09:37:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Jy3CpiCNUfrp1JLIEXg9qAR4jJdj8q8ZZ8kelkkxy8w=;
- b=SpKaS64mlxQdPnaH5yk7jYv5re9yiJUx+jkvWW4GYSQuXOTsRfnhiWz/2yqbmHfDhG
- UzwgSBtRHfOhrVUU5maOrRBDIiRsA01Ry5c6vTIVp/+7nvGsNczxHzsRPFKTQHUFjVtR
- eakXX/O2E0trzOMktV4VZct8K8zzTSlt+vye1FgN5xY4fbRgt01SsbBv6syx+xYHxVgb
- Nf6Iakfu+XaTjaRdgRFS/QSdXtqL8jBEILTBO1zpfZH1qGb/J2ZceRgNJdReDPSX585D
- ksjLAKEVWv1TZASfN2+bJcMiMdByq193s15+CFot7LzkxW9Np4a3JM5J6Zq0yAEZxh6e
- /9mg==
+ bh=e9WDJDdjLb6cBOzgUb2FHyNTKjKf7aBhEJaTRctl1CQ=;
+ b=JdxnJb19Yx+ytvD5ScJML7HO1/01cTmA2Y+T1l7Y85KZ1ebi7R2Z4Vuux3PMFCXfew
+ RP16qgznOUeFfmbLZ+o8JcEyd10U1Jl8Mzgp24R5UBlFV5gJnPzU6+Y5iTV2pBDcpHhK
+ wfqOEdNcJCInSpuZhT05TOZvlLC9P9dlYNoBTmQ/ZWAQyTeknVIZYrhnxF9Jg1GDX0XA
+ EivwAUzjJ2g5+QhW7AwX5p2aRRJSvSm6MXf84d1ANT1aCctRvFVkt/6LgtdPtMMGi5Vn
+ Dtj1xMmLWb8a5vQRk8+kcuaBZ7W8E+dUXtvXhFNWoyPIo+D+GQ1eZXkNiOz/DQqos7H4
+ 5/Sg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Jy3CpiCNUfrp1JLIEXg9qAR4jJdj8q8ZZ8kelkkxy8w=;
- b=UBFhCwRdGhnybyFZJUEO67OjeDxbfabgGCh3RYrL6GkMfzxO6AUHtnE8+phrAM0F39
- 9h8Xwga+FIyIbqe/7StG3EQEHv9PxrCX+Rv6myFe5z7ACvyB0SXF80eZvzbzffUNkPIn
- 2ClBalWpRpQZHKFB1x4Z07aR1f7uGkPM6p44rDvOBxadyXUc/FYNMa9zzijSCpaRKoOb
- dmM+Ukz1uBbJsCAemxx0qH9R11kkXoLOwwWEx1WnxFXP9oMoE5nRlnMksA+97ICzbluN
- c2mquyuvwX8xgWIoxhUiUpMDsyI5ll86Ph0mzxfh1aJg+z9REozhimk5Lz7JFuWTsxZk
- jEBA==
-X-Gm-Message-State: APjAAAU4+dbzhBO6YNvdUlCgls0D9HI5WTQmblu5WYr+xRyXnI0HPAhh
- 8F9pkWjn5BYcLXpbXSF2/6LOXQ==
-X-Received: by 2002:a05:6000:1043:: with SMTP id
- c3mr9206184wrx.330.1581442661806; 
- Tue, 11 Feb 2020 09:37:41 -0800 (PST)
+ bh=e9WDJDdjLb6cBOzgUb2FHyNTKjKf7aBhEJaTRctl1CQ=;
+ b=WE708VhLOojNWrtBqYP6ptg53sYsKmsRkKnK4PZKz55X69mn2YO6ESDDVWUEKc+93W
+ Sj2w80uwTJiANJJOW4ovRqKlZnimS3cbX9GucW9H5s03OTuSl2bdHZcFDoONvjJOINNr
+ Z8N+It7fnD9uTWpR6Sr6k/hjr9oV//bNtMqB+9pwNtbsWJlAKAaoO4K5XVFh0P+ynYX1
+ 4NBBAAbnkVLMKg1Cv8ZfHnNbgIjPk5jIoh4b7Um8FhvcHCFYqayOhv0UqzUacELfQS8d
+ +dRNca6iHiWCt1tIG2e1YC0C0UURICzcSBtuPkH+gI7rgRnsiwETGLy7BtVE+LhDoFv5
+ NzXg==
+X-Gm-Message-State: APjAAAUED72CxI7RXtvNHFg9R0OtAB8XlInOeTHbNb4n/zlaFWiVxcHi
+ 2JJkFmaa58R/s5LHgnqFyAAx+FUvkTU=
+X-Received: by 2002:a5d:530e:: with SMTP id e14mr9482945wrv.250.1581442665222; 
+ Tue, 11 Feb 2020 09:37:45 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y1sm6109675wrq.16.2020.02.11.09.37.40
+ by smtp.gmail.com with ESMTPSA id y1sm6109675wrq.16.2020.02.11.09.37.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Feb 2020 09:37:41 -0800 (PST)
+ Tue, 11 Feb 2020 09:37:44 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 10/13] target/arm: Implement ARMv8.4-PMU extension
-Date: Tue, 11 Feb 2020 17:37:23 +0000
-Message-Id: <20200211173726.22541-11-peter.maydell@linaro.org>
+Subject: [PATCH 13/13] target/arm: Correct handling of PMCR_EL0.LC bit
+Date: Tue, 11 Feb 2020 17:37:26 +0000
+Message-Id: <20200211173726.22541-14-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200211173726.22541-1-peter.maydell@linaro.org>
 References: <20200211173726.22541-1-peter.maydell@linaro.org>
@@ -101,146 +100,80 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 2a00:1450:4864:20::441
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Eric Auger <eric.auger@redhat.com>,
  Aaron Lindsay <aaron@os.amperecomputing.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 27sZVKSY7TJI
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ri18VMlxGjcV
 
-The ARMv8.4-PMU extension adds:
- * one new required event, STALL
- * one new system register PMMIR_EL1
+The LC bit in the PMCR_EL0 register is supposed to be:
+ * read/write
+ * RES1 on an AArch64-only implementation
+ * an architecturally UNKNOWN value on reset
+(and use of LC==0 by software is deprecated).
 
-(There are also some more L1-cache related events, but since
-we don't implement any cache we don't provide these, in the
-same way we don't provide the base-PMUv3 cache events.)
+We were implementing it incorrectly as read-only always zero,
+though we do have all the code needed to test it and behave
+accordingly.
 
-The STALL event "counts every attributable cycle on which no
-attributable instruction or operation was sent for execution on this
-PE".  QEMU doesn't stall in this sense, so this is another
-always-reads-zero event.
-
-The PMMIR_EL1 register is a read-only register providing
-implementation-specific information about the PMU; currently it has
-only one field, SLOTS, which defines behaviour of the STALL_SLOT PMU
-event.  Since QEMU doesn't implement the STALL_SLOT event, we can
-validly make the register read zero.
+Instead make it a read-write bit which resets to 1 always, which
+satisfies all the architectural requirements above.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.h    | 18 ++++++++++++++++++
- target/arm/helper.c | 22 +++++++++++++++++++++-
- 2 files changed, 39 insertions(+), 1 deletion(-)
+ target/arm/helper.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 2b3124fd76b..cfe7cfd1a4d 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3569,6 +3569,13 @@ static inline bool isar_feature_aa32_pmu_8_1(const ARMISARegisters *id)
-         FIELD_EX32(id->id_dfr0, ID_DFR0, PERFMON) != 0xf;
- }
- 
-+static inline bool isar_feature_aa32_pmu_8_4(const ARMISARegisters *id)
-+{
-+    /* 0xf means "non-standard IMPDEF PMU" */
-+    return FIELD_EX32(id->id_dfr0, ID_DFR0, PERFMON) >= 5 &&
-+        FIELD_EX32(id->id_dfr0, ID_DFR0, PERFMON) != 0xf;
-+}
-+
- /*
-  * 64-bit feature tests via id registers.
-  */
-@@ -3734,6 +3741,12 @@ static inline bool isar_feature_aa64_pmu_8_1(const ARMISARegisters *id)
-         FIELD_EX32(id->id_aa64dfr0, ID_AA64DFR0, PMUVER) != 0xf;
- }
- 
-+static inline bool isar_feature_aa64_pmu_8_4(const ARMISARegisters *id)
-+{
-+    return FIELD_EX32(id->id_aa64dfr0, ID_AA64DFR0, PMUVER) >= 5 &&
-+        FIELD_EX32(id->id_aa64dfr0, ID_AA64DFR0, PMUVER) != 0xf;
-+}
-+
- /*
-  * Feature tests for "does this exist in either 32-bit or 64-bit?"
-  */
-@@ -3752,6 +3765,11 @@ static inline bool isar_feature_any_pmu_8_1(const ARMISARegisters *id)
-     return isar_feature_aa64_pmu_8_1(id) || isar_feature_aa32_pmu_8_1(id);
- }
- 
-+static inline bool isar_feature_any_pmu_8_4(const ARMISARegisters *id)
-+{
-+    return isar_feature_aa64_pmu_8_4(id) || isar_feature_aa32_pmu_8_4(id);
-+}
-+
- /*
-  * Forward to the above feature tests given an ARMCPU pointer.
-  */
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c896ad0b7ee..cb3c30f1725 100644
+index c6758bfbeb5..1d8eafceda8 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -1130,6 +1130,12 @@ static bool pmu_8_1_events_supported(CPUARMState *env)
-     return cpu_isar_feature(any_pmu_8_1, env_archcpu(env));
- }
+@@ -1023,6 +1023,11 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
+ #define PMCRC   0x4
+ #define PMCRP   0x2
+ #define PMCRE   0x1
++/*
++ * Mask of PMCR bits writeable by guest (not including WO bits like C, P,
++ * which can be written as 1 to trigger behaviour but which stay RAZ).
++ */
++#define PMCR_WRITEABLE_MASK (PMCRLC | PMCRDP | PMCRX | PMCRD | PMCRE)
  
-+static bool pmu_8_4_events_supported(CPUARMState *env)
-+{
-+    /* For events which are supported in any v8.1 PMU */
-+    return cpu_isar_feature(any_pmu_8_4, env_archcpu(env));
-+}
-+
- static uint64_t zero_event_get_count(CPUARMState *env)
- {
-     /* For events which on QEMU never fire, so their count is always zero */
-@@ -1170,6 +1176,11 @@ static const pm_event pm_events[] = {
-       .get_count = zero_event_get_count,
-       .ns_per_count = zero_event_ns_per,
-     },
-+    { .number = 0x03c, /* STALL */
-+      .supported = pmu_8_4_events_supported,
-+      .get_count = zero_event_get_count,
-+      .ns_per_count = zero_event_ns_per,
-+    },
- };
- 
- /*
-@@ -1178,7 +1189,7 @@ static const pm_event pm_events[] = {
-  * should first be updated to something sparse instead of the current
-  * supported_event_map[] array.
-  */
--#define MAX_EVENT_ID 0x24
-+#define MAX_EVENT_ID 0x3c
- #define UNSUPPORTED_EVENT UINT16_MAX
- static uint16_t supported_event_map[MAX_EVENT_ID + 1];
- 
-@@ -5930,6 +5941,15 @@ static void define_pmu_regs(ARMCPU *cpu)
-         };
-         define_arm_cp_regs(cpu, v81_pmu_regs);
+ #define PMXEVTYPER_P          0x80000000
+ #define PMXEVTYPER_U          0x40000000
+@@ -1577,9 +1582,8 @@ static void pmcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+         }
      }
-+    if (cpu_isar_feature(any_pmu_8_4, cpu)) {
-+        static const ARMCPRegInfo v84_pmmir = {
-+            .name = "PMMIR_EL1", .state = ARM_CP_STATE_BOTH,
-+            .opc0 = 3, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 6,
-+            .access = PL1_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
-+            .resetvalue = 0
-+        };
-+        define_one_arm_cp_reg(cpu, &v84_pmmir);
-+    }
- }
  
- /* We don't know until after realize whether there's a GICv3
+-    /* only the DP, X, D and E bits are writable */
+-    env->cp15.c9_pmcr &= ~0x39;
+-    env->cp15.c9_pmcr |= (value & 0x39);
++    env->cp15.c9_pmcr &= ~PMCR_WRITEABLE_MASK;
++    env->cp15.c9_pmcr |= (value & PMCR_WRITEABLE_MASK);
+ 
+     pmu_op_finish(env);
+ }
+@@ -5886,7 +5890,8 @@ static void define_pmu_regs(ARMCPU *cpu)
+         .access = PL0_RW, .accessfn = pmreg_access,
+         .type = ARM_CP_IO,
+         .fieldoffset = offsetof(CPUARMState, cp15.c9_pmcr),
+-        .resetvalue = (cpu->midr & 0xff000000) | (pmcrn << PMCRN_SHIFT),
++        .resetvalue = (cpu->midr & 0xff000000) | (pmcrn << PMCRN_SHIFT) |
++                      PMCRLC,
+         .writefn = pmcr_write, .raw_writefn = raw_write,
+     };
+     define_one_arm_cp_reg(cpu, &pmcr);
 -- 
 2.20.1
 

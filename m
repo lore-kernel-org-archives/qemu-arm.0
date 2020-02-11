@@ -1,115 +1,106 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5282973lfp;
-        Tue, 11 Feb 2020 08:30:59 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzrH9xG81IFRv94IrUHagnqlFtCWh/XdwS1MXjad/Hu+hnH5h8GoEzIic3NuvRmGv7fnxZX
-X-Received: by 2002:a37:554:: with SMTP id 81mr6372814qkf.297.1581438659711;
-        Tue, 11 Feb 2020 08:30:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581438659; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5347250lfp;
+        Tue, 11 Feb 2020 09:32:03 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzwwezjnFShkwIW2UdMo52UJZQyQRkhrwSkTsj9hSP1gU+ggpXrmuq9NO1E+AwS95AAkcLS
+X-Received: by 2002:a0c:8605:: with SMTP id p5mr3868726qva.109.1581442323413;
+        Tue, 11 Feb 2020 09:32:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581442323; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mbh7y/8z9OjQuVb8e7XRevrUbDmAhRg+j5PzTATM6JX9Y53HQR6toZjABA7yT5xAU2
-         Wyv25w2pEZ0SO3zNd70cWjA7PASYkPCD376lBjKXalou9q+ToVIKSm2X8hp8MgAQrk/D
-         AbEEqDX4++qixP/ikHMvzudq9XYW8ixh3sQRk+RyoL6RFWtPBOUv/Ynv0vmvvc1mfy9t
-         V8zH0+3VbYfeI2SMeLkz1Kp2aHjDDH9j97VdEX6dszyO3xMTnwQOLmhsXn7TrXqTW/k5
-         ZdW+yrXAHFoKylt0NMt6UW/XQ8MVAke8AOH338mkwQ+8gT2Q6FpE8YcjrbAWL5ocwBej
-         zOnw==
+        b=oePaZ25L+si/9GxxygOU5t++a0D/6jZRJQuIhLQ6xdznvaQVQpcpcmlpV5dOZwIJww
+         EtYtvCn3HLGEQTy7tvOmnk4ln+NGENIrlr4Pv8JsRBoXDlYE5fIj7kLjEljAIO5dLMQa
+         hmM8v8XOk4TMH9zCEPN5mSH4oiLga9+4O1FT0X6fukVyDOVlgE5bPDFxtpYpXBtp3v8o
+         pouchRsRclp3bg9ISSKFwfURV3KElqoSiFvUj7BctKDJKjCNhwFw7D7OatLVB+B7+OHF
+         9RaWUflIeynJzLp9bYMHdWkYJPcJzhjjVkECKsiCf5xGlxRSLqUV3sTBmv1MYtmGkm37
+         z/hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=ZKKLvaG4MruHYk5soyWRrVOuAKaqd3a59m6O1Qw24mU=;
-        b=HJ4DLat57w+YgSx/ddy3mpSi04FLxzH/q8V73hQ9JXNQP+tiZ0vinvxAYLezPHQAm5
-         Vp7+WlpV2oLrzOV86T8NrQklcap8GxgvyQCmQS8TI51ZlcZ6xtmeKkc+zSil3qlIf4Tw
-         H/zxR8hQvlTMbdcaBNRHKFbyCLr27y1hUby77OyDlx+E+awiKkIX4RUMK0F9Ax9Kl7wA
-         8q1gW5Sf2moeVFHgrRlZXj3C95RP7ysmm8pTmBwqfevMNAKu3mrf0sOU4inpE0demEPb
-         uFi+xkZSguS4BTxxjBe55g7ILs9BYKIVfleZRzM/LAeSFO/LgnzfJnQy4PnuSJxQ92lO
-         yx6g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=KIG2jWNZvHfn1cjKvDlDX4wdBlCaBbkHWqDYpEE/6ns=;
+        b=QKBRpN29usLdo2HSka22jQHSa0QNSnEqfJcgP5ZwJcPgb2DA7EDGpWl16s0u4JEftP
+         Yv3FoP8uq+CsGs9SS0CVglzC6CVOozujh9pBd8BXnTFJbjvOdk9B1sYnDMJ5D5nMoomJ
+         6FvkzDgkSsr9qfwUPBZA2HiCfeYdW0atPkTZtQZxjxscxVROA9+VY4llxfQWDJR6nboG
+         yuZe4ck1Y5m39pYxhiFcWbnau4iE4+cthb945DFwpUw3c9uQAdWk2WGxGLNCfWEzyFwN
+         fxjPESyhymPd9uj3MlJCbOJ55NwQkLnf6DMD24P/UpOS+4duFtcjRf3gnZV3Rg33lT3B
+         TpBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GEOIvyOc;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NJlysz7Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x10si2148091qth.16.2020.02.11.08.30.59
+        by mx.google.com with ESMTPS id c20si2283819qte.198.2020.02.11.09.32.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Feb 2020 08:30:59 -0800 (PST)
+        Tue, 11 Feb 2020 09:32:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GEOIvyOc;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NJlysz7Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52896 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53908 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j1YR9-00031I-4j
-	for alex.bennee@linaro.org; Tue, 11 Feb 2020 11:30:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55586)
+	id 1j1ZOE-0001ii-QN
+	for alex.bennee@linaro.org; Tue, 11 Feb 2020 12:32:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36878)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mst@redhat.com>) id 1j1YQx-00030j-LL
- for qemu-arm@nongnu.org; Tue, 11 Feb 2020 11:30:48 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1j1ZNz-0001h2-Cy
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:31:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mst@redhat.com>) id 1j1YQv-0003F6-EX
- for qemu-arm@nongnu.org; Tue, 11 Feb 2020 11:30:46 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:26218
+ (envelope-from <eric.auger@redhat.com>) id 1j1ZNw-0001Zz-BP
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:31:45 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:33918
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mst@redhat.com>) id 1j1YQv-0003Du-A8
- for qemu-arm@nongnu.org; Tue, 11 Feb 2020 11:30:45 -0500
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1j1ZNu-0001WT-IY
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:31:43 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581438644;
+ s=mimecast20190719; t=1581442301;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZKKLvaG4MruHYk5soyWRrVOuAKaqd3a59m6O1Qw24mU=;
- b=GEOIvyOcQJxbX0uX57zl0OYxX43yFveixqgPjuog+X1aS8+UiXUyKdcGqxhu8Oos2hskd9
- DL/TwhQO286xjypNl+Mklx0NBuSiMeugh5k/qK8l1JNbT1q6048yyt5gMF0pcGEKeITQN0
- usJYKNhRxxoOZQHNG8Vm4SxNGQ8l3B8=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-278-svvOPsL3Pwaw6OG1OhzC_A-1; Tue, 11 Feb 2020 11:30:42 -0500
-Received: by mail-qv1-f70.google.com with SMTP id d7so7492142qvq.12
- for <qemu-arm@nongnu.org>; Tue, 11 Feb 2020 08:30:42 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=WK5vkxsRRO7y1k6SkzO7lAousX7/QuD/JIYyavjDixI=;
- b=kH6tMbHGwwnFy5HUgDFs05+Ae1BHQvxoWNik7JIVXc/LbVerr/am094gTjKNzf/suU
- Le9eTCrSO4qKiEgMU9zlPmBl3iAX8ofhx6TtVigUboGwd8aG7Jelmch8uin3y2zFdVsm
- IC1CZFHPrqRiGmebjYFx+VcAvYrA3lWO/p2McN5jmxs2MBuQfimjpMrHTZexheiEX+qA
- Ktbzw5zWmc52o2zvhjXwjcRJkzTeKYFjyfPHS8KqQSMVmUPqexibVnUigTGqGeAhHCGG
- sanRf9BExakRxIsKtBP6IvN27T2nxwouNNwI31uKNxX+mvHrpL8ovt6MPNYk54PygcIp
- bAyg==
-X-Gm-Message-State: APjAAAX3YTCXkS1BwEwLTVXoczK6mUuyKDhWMi3s+8Q/sTFklW8vSs3/
- bAKT5pph/lFC0HpkftQgc2F29wnEdga3fvmL6jgfu6T2oW8Vde/j7xkToZRdniLKsDBReTD+w1t
- 8TSexHFIXLu2v
-X-Received: by 2002:ac8:6f0d:: with SMTP id g13mr15277312qtv.56.1581438642020; 
- Tue, 11 Feb 2020 08:30:42 -0800 (PST)
-X-Received: by 2002:ac8:6f0d:: with SMTP id g13mr15277288qtv.56.1581438641791; 
- Tue, 11 Feb 2020 08:30:41 -0800 (PST)
-Received: from redhat.com (bzq-79-176-41-183.red.bezeqint.net. [79.176.41.183])
- by smtp.gmail.com with ESMTPSA id f26sm2343160qtv.77.2020.02.11.08.30.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Feb 2020 08:30:40 -0800 (PST)
-Date: Tue, 11 Feb 2020 11:30:35 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
+ bh=KIG2jWNZvHfn1cjKvDlDX4wdBlCaBbkHWqDYpEE/6ns=;
+ b=NJlysz7ZT/hzhhSdLkMMjmbCXT27o8GO1W0/k1L9TipEhvUkff0DpIaYVnKC/A71BMDzk8
+ VxUcbwioZCX7Tog0WDpgmElMNKyv0y03sEvsKMwXJJWzCRpSUw39WCkddyVyQZp+K//jhB
+ ywJt15oewjPst/FxeWZFHCqxqPNWrhM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-361-NQZSC5K5NZyQRz1_OJwEKQ-1; Tue, 11 Feb 2020 12:31:37 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 139E618C43EE;
+ Tue, 11 Feb 2020 17:31:36 +0000 (UTC)
+Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A2B4F90092;
+ Tue, 11 Feb 2020 17:31:20 +0000 (UTC)
+Subject: Re: [PATCH v15 8/9] hw/arm/virt: Add the virtio-iommu device tree
+ mappings
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v15 0/9] VIRTIO-IOMMU device
-Message-ID: <20200211113000-mutt-send-email-mst@kernel.org>
 References: <20200208120022.1920-1-eric.auger@redhat.com>
- <20200211085526-mutt-send-email-mst@kernel.org>
- <CAFEAcA8hWyHYk+PPLsyjyqiRqaWfosJwrpFpsRXnO+toSzaZfw@mail.gmail.com>
+ <20200208120022.1920-9-eric.auger@redhat.com>
+ <CAFEAcA-n97LKaQo9haLdEv+c7k8QkK=LegP_gORr9z4WrBU2Ww@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <5e4549f4-44c3-6a2c-a270-4923db8b455e@redhat.com>
+Date: Tue, 11 Feb 2020 18:31:18 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8hWyHYk+PPLsyjyqiRqaWfosJwrpFpsRXnO+toSzaZfw@mail.gmail.com>
-X-MC-Unique: svvOPsL3Pwaw6OG1OhzC_A-1
+In-Reply-To: <CAFEAcA-n97LKaQo9haLdEv+c7k8QkK=LegP_gORr9z4WrBU2Ww@mail.gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: NQZSC5K5NZyQRz1_OJwEKQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,57 +114,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: jean-philippe@linaro.org, "Tian, Kevin" <kevin.tian@intel.com>,
  tnowicki@marvell.com, Juan Quintela <quintela@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Eric Auger <eric.auger@redhat.com>, bharatb.linux@gmail.com,
- qemu-arm <qemu-arm@nongnu.org>, Eric Auger <eric.auger.pro@gmail.com>
+ "Michael S. Tsirkin" <mst@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ Peter Xu <peterx@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ bharatb.linux@gmail.com, qemu-arm <qemu-arm@nongnu.org>,
+ Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xoDbNC/Cyk2M
+X-TUID: FF2jnLCdz+Sn
 
-On Tue, Feb 11, 2020 at 03:02:28PM +0000, Peter Maydell wrote:
-> On Tue, 11 Feb 2020 at 13:56, Michael S. Tsirkin <mst@redhat.com> wrote:
-> >
-> > On Sat, Feb 08, 2020 at 01:00:13PM +0100, Eric Auger wrote:
-> > > This series implements the QEMU virtio-iommu device.
-> > >
-> > > This matches the v0.12 spec (voted) and the corresponding
-> > > virtio-iommu driver upstreamed in 5.3. All kernel dependencies
-> > > are resolved for DT integration. The virtio-iommu can be
-> > > instantiated in ARM virt using:
-> > >
-> > > "-device virtio-iommu-pci".
-> > >
-> > > Non DT mode is not yet supported as it has non resolved kernel
-> > > dependencies [1].
-> > >
-> > > This feature targets 5.0.
-> > >
-> > > Integration with vhost devices and vfio devices is not part
-> > > of this series. Please follow Bharat's respins [2].
-> > >
-> > > Best Regards
-> > >
-> > > Eric
-> >
-> >
-> > Looks good.
-> > Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> >
-> > I can see this merged through ARM tree, or through my tree with
-> > Peters's ack for the ARM bits.
->=20
-> Either way would work for me. I left some review comments
-> on patch 8 which I think is the only arm-specific one.
->=20
-> Can you use the virtio-iommu on x86 ? Would you want to?
+Hi Peter,
 
-Potentially yes.
+On 2/11/20 4:00 PM, Peter Maydell wrote:
+> On Sat, 8 Feb 2020 at 12:01, Eric Auger <eric.auger@redhat.com> wrote:
+>>
+>> Adds the "virtio,pci-iommu" node in the host bridge node and
+>> the RID mapping, excluding the IOMMU RID.
+>>
+>> This is done in the virtio-iommu-pci hotplug handler which
+>> gets called only if no firmware is loaded or if -no-acpi is
+>> passed on the command line. As non DT integration is
+>> not yet supported by the kernel we must make sure we
+>> are in DT mode. This limitation will be removed as soon
+>> as the topology description feature gets supported.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>
+>> +static void create_virtio_iommu(VirtMachineState *vms, Error **errp)
+>> +{
+>> +    const char compat[] = "virtio,pci-iommu";
+>> +    uint16_t bdf = vms->virtio_iommu_bdf;
+>> +    char *node;
+>> +
+>> +    vms->iommu_phandle = qemu_fdt_alloc_phandle(vms->fdt);
+>> +
+>> +    node = g_strdup_printf("%s/virtio_iommu@%d", vms->pciehb_nodename, bdf);
+>> +    qemu_fdt_add_subnode(vms->fdt, node);
+>> +    qemu_fdt_setprop(vms->fdt, node, "compatible", compat, sizeof(compat));
+>> +    qemu_fdt_setprop_sized_cells(vms->fdt, node, "reg",
+>> +                                 1, bdf << 8, 1, 0, 1, 0,
+>> +                                 1, 0, 1, 0);
+>> +
+>> +    qemu_fdt_setprop_cell(vms->fdt, node, "#iommu-cells", 1);
+>> +    qemu_fdt_setprop_cell(vms->fdt, node, "phandle", vms->iommu_phandle);
+>> +    g_free(node);
+>> +
+>> +    qemu_fdt_setprop_cells(vms->fdt, vms->pciehb_nodename, "iommu-map",
+>> +                           0x0, vms->iommu_phandle, 0x0, bdf,
+>> +                           bdf + 1, vms->iommu_phandle, bdf + 1, 0xffff - bdf);
+>> +}
+> 
+> This function name implies that we're creating the IOMMU device
+> here (which would be a weird thing to do in a hotplug callback
+> for some other device), but it looks like we're only adding
+> device tree nodes ?
+yes the actual iommu device is created through the -device option. I can
+rename into create_iommu_dt_bindings
+> 
+> Given that we write the FDT blob into the guest RAM on bootup,
+> how does making changes to it here on hotplug (which I assume
+> to be 'after boot, whenever the user hot-plugs something') work?
 
-> If I'm not misreading the MAINTAINERS file the new
-> files in hw/virtio aren't covered by any existing
-> entry there, so we should probably have a new one.
->=20
+the virtio-iommu is not supposed to be hotplugged but rather
+cold-plugged. I use this hotplug mechanism to detect its presence and
+add the related dt mappings. Maybe I can add a check to detect if the
+bootup is over?
+
+Thoughts?
+
+Eric
+> 
 > thanks
 > -- PMM
+> 
 

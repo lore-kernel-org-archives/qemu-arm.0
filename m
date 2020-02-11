@@ -1,154 +1,146 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5406341lfp;
-        Tue, 11 Feb 2020 10:32:22 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxeWxXQ+HJ4QdKY+YuyeQseNrj8gz59iGqLhSZwEvAvCXbBGaTCpdJFmt5/MVFPFs8tZEuj
-X-Received: by 2002:a9d:6398:: with SMTP id w24mr6021675otk.15.1581445942219;
-        Tue, 11 Feb 2020 10:32:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581445942; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5408780lfp;
+        Tue, 11 Feb 2020 10:34:49 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwnih3S3jS4uaFNy25cj99g7ZZZkOJg4hqb/tlT8s8Vs0WrUH1GZhbnUElmCsb+WKTBqeKB
+X-Received: by 2002:a37:4c81:: with SMTP id z123mr3957453qka.320.1581446089338;
+        Tue, 11 Feb 2020 10:34:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581446089; cv=none;
         d=google.com; s=arc-20160816;
-        b=BMjD5VVX/y8r6nLyGS8iUqsS5USDAVtERIbzcqAzMT1s4DW0H+Cni53ogQNobfHmeu
-         iuQMfS4m7UahKkxK+OVCXt0AvgysXl57YP/inyNKcmCu0/K40tRQX9MxR8ZfENl0cpCs
-         XKkotdNzN4Mi2eGc9XdlS94SEtMK1YeRjhu6tk0v+nFMhA1wHK+WD/eAqxkcrutP/XhG
-         hArb5HSpZudrog1r2na5BZvjLtjEWfdxg9JWORqfzPZpB/rGVNrLT/wfvVZudLMeO/JW
-         pxm3qJz5U583jtISktbckGg9MZ7H3WypQRxP/UFMSuyJDn8YMMev9rKVn1XW1u12ZOW2
-         R4MA==
+        b=Yui3Xoa95IgtT7E4BeGyM39UcbIs2FPzq4Y3Th1fwqyqPPqzdJdKAf/vuM8SMXMsKo
+         eo/oOKGi3vDv1RZ+VhkJjNMfZT8xZ2zYzbPy6rW5vofC3gfJu8/4Yd0uDnQQL+SIamCR
+         gCy6Hks3ZaMLjNhFqzKcU1hMJ+sA+0rzDbCqCvmcztTEvn+XkdcXTKUFzxQ44ptfxAFK
+         RSZlFvQW/rnUH4CNqEItkZn8tG0axtYpNtMglICWOxh6V76zdCtmz6xys9kH4MFLx2E9
+         0bECGk041U59D8OQAmqpQwlr7CccBPeQSrBm5+Tv5/qXCJgd4dTOFFGX87mvA3/yu2sB
+         fvDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:dkim-signature;
-        bh=ZAgyvfwf3MxzMiPOUvUmlPx5ULbWnylJ3lGwUp9IgdE=;
-        b=QAU+lwsU06ouZNrLf/3Z0co4+dQPM5muE5twJsBKmEG31bQeTk+/aksRor5jjIgatP
-         8eDJHA4GpyDBspzFq9mV/G5LtlnjH6LWY9jt9Tco7lhKo/N1dqkao1V+ujVQoRSbFhCU
-         gzaf1yS+7p8MtpoiM7C3VBv/NNiSAUSvmE0uHsBX6OxA1Gm8H/UjeiXxzQu4RrNdn6W+
-         qeRRFWVxgG7XrZyvU1TyCkbfwkGC4q4QkQGAgpxNhsc9i7EBajF2Exb01vWhNeeW4Jsb
-         yFMFa4r2Bc/rOML1p3Yg2H6ILkW+EKGtXo7RtsHQEy0zgwkD89/wpRsqHNBgo8iiZvO6
-         ArAw==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=n4m+epJYNb0ai4smVW5s9ALgRfzKmsG8W7U/CC+sWfo=;
+        b=RzP80OjtOMJiL4oOr8uGR9nGY7JjEcoNYf6mV75SL8vg8fG5Z44zjpK9REV2TqWqRR
+         T8eRKf/05xRI5Px1JWD5EQM3lwT1gVw6gWhzmxDVwJdw39LRiy1OmkClJlfld5ipXCXb
+         7YW9aYZrZW4sCjSxNrqxBJdTkL97QsECOb6FfBPVz03HzN5AQTGCLqjfjHgt5DTa9/jM
+         W1gFeauGwrxvDJLr0GYb3UphzLvNyroNm/qDhRxeOCxZUpcr2KVRK3l1sMmcuTy3xHkb
+         Ehgjryj1EEW5CQIsn5zwgZrYfLeOGumCV+kxaDv4P7T9ws3RpI0IBQmU0sifGURpr35l
+         8Uiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LQC9pzJc;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id s8si1934014oic.7.2020.02.11.10.32.22;
-        Tue, 11 Feb 2020 10:32:22 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Qjv/canZ";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v16si2470316qvw.20.2020.02.11.10.34.49
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 11 Feb 2020 10:34:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LQC9pzJc;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1730412AbgBKScV (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Tue, 11 Feb 2020 13:32:21 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:25639 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1730274AbgBKScU (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 11 Feb 2020 13:32:20 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1581445939;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=ZAgyvfwf3MxzMiPOUvUmlPx5ULbWnylJ3lGwUp9IgdE=;
-        b=LQC9pzJcGEpWe+qx0YPkaiWPxZscnV7B8F4l0vsgmgPPpxhknLJUUxadlOtuEfPZvsDzda
-        8mU9Kxr82rA3K9k6Y15poxITreTLchY2L+Fn7z3XT/bvzbQYlyDPrrsUTKkPZBHXYA3V9O
-        eBX+Kr5+RXO0i9ollSB4nk5E4LKVUzU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-317-XCCwj2V_O9aRrp398QR0pA-1; Tue, 11 Feb 2020 13:32:10 -0500
-X-MC-Unique: XCCwj2V_O9aRrp398QR0pA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 48518113784B;
-        Tue, 11 Feb 2020 18:32:08 +0000 (UTC)
-Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id C54275C1B5;
-        Tue, 11 Feb 2020 18:32:03 +0000 (UTC)
-Subject: Re: [kvm-unit-tests PATCH v2 4/9] arm: pmu: Check Required Event
- Support
-To:     Peter Maydell <peter.maydell@linaro.org>
-Cc:     Eric Auger <eric.auger.pro@gmail.com>,
-        Marc Zyngier <maz@kernel.org>, kvmarm@lists.cs.columbia.edu,
-        kvm-devel <kvm@vger.kernel.org>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>,
-        Andrew Jones <drjones@redhat.com>,
-        Andrew Murray <andrew.murray@arm.com>,
-        Andre Przywara <andre.przywara@arm.com>,
-        Alexandru Elisei <alexandru.elisei@arm.com>
-References: <20200130112510.15154-1-eric.auger@redhat.com>
- <20200130112510.15154-5-eric.auger@redhat.com>
- <CAFEAcA_V3rT+C1FCPPyjmQ8svxF1tMWWOLgZ1Vn_CNQ3N0x-KA@mail.gmail.com>
-From:   Auger Eric <eric.auger@redhat.com>
-Message-ID: <e3fc48f2-e31c-c70b-16fe-ca5af4a0708e@redhat.com>
-Date:   Tue, 11 Feb 2020 19:32:00 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       dkim=pass header.i=@linaro.org header.s=google header.b="Qjv/canZ";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55632 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j1aMy-0004oV-Mt
+	for alex.bennee@linaro.org; Tue, 11 Feb 2020 13:34:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57213)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <richard.henderson@linaro.org>) id 1j1aMr-0004mZ-6g
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2020 13:34:42 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <richard.henderson@linaro.org>) id 1j1aMq-0008Dy-96
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2020 13:34:41 -0500
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:33995)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1j1aMq-0008Ar-1h
+ for qemu-arm@nongnu.org; Tue, 11 Feb 2020 13:34:40 -0500
+Received: by mail-pl1-x644.google.com with SMTP id j7so4612794plt.1
+ for <qemu-arm@nongnu.org>; Tue, 11 Feb 2020 10:34:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=n4m+epJYNb0ai4smVW5s9ALgRfzKmsG8W7U/CC+sWfo=;
+ b=Qjv/canZctlDmlw8InLEI6KTj1dK/yh4f3AZmZN5SSbiZk53GD6Cq7pDpNpfTKAxss
+ o5I+PHNWZIqRRDKMCq3f7jcy843dBCuD5J77/r5TmLV9Wv5h4SCa34bRei7QVK6igqq0
+ cfbMgyjSmTiyJjQnK5HY2wbFAqED6hYaSEaqXRfz+vSLYyGC93TgM4lfF0lQ0xAx3BJd
+ j1UYWZEAYc6r555qUkVOj8N3FBtQ2NM2e8NzzJTdYLj4nKVbe8M2trRrYT7Zhl9ayn3V
+ KFblrhiPxh6ptYHUGuXNZnL6Ii9XW1bcjYHnGXNhgOotkzB1RMz8ikiGPe7i9vazVvm4
+ AA9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=n4m+epJYNb0ai4smVW5s9ALgRfzKmsG8W7U/CC+sWfo=;
+ b=IKyHYqXSRKIw3bf/92eIswJLwcJT1z7HTvnLHGfy8Pt+iA3krvujyUAELazDM2OWVl
+ WHQh/jJQg05MIyo0zXLKnp09UJU6+AU/ODbxGCi/T5uN2fUilAk8KGr2+cL5UhptgzGE
+ BmDo9gneVnLFa4WFDH0CRVnQ91GXfHzJ/WwWWI2KRUBCskS+jSBSXJxiPRng+9zwj6Oc
+ 9RNbd9h/ixrfit65rliePwK0kLKe63qLOyueZdF2Od20i495OgCIk73WzsPoy80SyVCe
+ t8mCL+MoxRuDF5cmIbLIs9lbd442Cclr/lykIRZSKRK0qXGYCQjMCGgSFxz61zRSqPjd
+ 2PbA==
+X-Gm-Message-State: APjAAAXByH16pmrAjvFzurOz+Agxv47ALs+83ZAXg+AKtwUEW4YgG+Y4
+ lrmRC1DGJn2cl0sQbLiUHEKG7g==
+X-Received: by 2002:a17:90a:cb96:: with SMTP id
+ a22mr5119541pju.96.1581446078867; 
+ Tue, 11 Feb 2020 10:34:38 -0800 (PST)
+Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
+ by smtp.gmail.com with ESMTPSA id
+ s14sm4743221pgv.74.2020.02.11.10.34.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 11 Feb 2020 10:34:37 -0800 (PST)
+Subject: Re: [PATCH 06/13] target/arm: Use FIELD macros for clearing ID_DFR0
+ PERFMON field
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20200211173726.22541-1-peter.maydell@linaro.org>
+ <20200211173726.22541-7-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <1125c0a0-aac7-2edd-1cd5-b122f3c3a609@linaro.org>
+Date: Tue, 11 Feb 2020 10:34:36 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_V3rT+C1FCPPyjmQ8svxF1tMWWOLgZ1Vn_CNQ3N0x-KA@mail.gmail.com>
+In-Reply-To: <20200211173726.22541-7-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: V8iwIHBbU3zM
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::644
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Eric Auger <eric.auger@redhat.com>,
+ Aaron Lindsay <aaron@os.amperecomputing.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7YLwqjb6oBX3
 
-Hi Peter,
+On 2/11/20 9:37 AM, Peter Maydell wrote:
+> We already define FIELD macros for ID_DFR0, so use them in the
+> one place where we're doing direct bit value manipulation.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> We have lots of this non-FIELD style in the code, of course;
+> I change this one purely because it otherwise looks a bit odd
+> sat next to the ID_AA64DFR0 line that was changed in the previous
+> patch...
+> ---
+>  target/arm/cpu.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-On 2/11/20 5:28 PM, Peter Maydell wrote:
-> On Thu, 30 Jan 2020 at 11:25, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> If event counters are implemented check the common events
->> required by the PMUv3 are implemented.
->>
->> Some are unconditionally required (SW_INCR, CPU_CYCLES,
->> either INST_RETIRED or INST_SPEC). Some others only are
->> required if the implementation implements some other features.
->>
->> Check those wich are unconditionally required.
->>
->> This test currently fails on TCG as neither INST_RETIRED
->> or INST_SPEC are supported.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
-> 
->> +static bool is_event_supported(uint32_t n, bool warn)
->> +{
->> +       uint64_t pmceid0 = read_sysreg(pmceid0_el0);
->> +       uint64_t pmceid1 = read_sysreg_s(PMCEID1_EL0);
->> +       bool supported;
->> +       uint64_t reg;
->> +
->> +       /*
->> +        * The low 32-bits of PMCEID0/1 respectly describe
->> +        * event support for events 0-31/32-63. Their High
->> +        * 32-bits describe support for extended events
->> +        * starting at 0x4000, using the same split.
->> +        */
->> +       if (n >= 0x0  && n <= 0x3F)
->> +               reg = (pmceid0 & 0xFFFFFFFF) | ((pmceid1 & 0xFFFFFFFF) << 32);
->> +       else if  (n >= 0x4000 && n <= 0x403F)
->> +               reg = (pmceid0 >> 32) | ((pmceid1 >> 32) << 32);
->> +       else
->> +               abort();
->> +
->> +       supported =  reg & (1UL << (n & 0x3F));
->> +
->> +       if (!supported && warn)
->> +               report_info("event %d is not supported", n);
-> 
-> As with satisfy_prerequisites(), printing this with "0x%x"
-> would probably be more helpful to most users.
-OK
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Thanks
 
-Eric
-> 
-> thanks
-> -- PMM
-> 
+r~
+

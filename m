@@ -1,138 +1,129 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4064769lfp;
-        Mon, 10 Feb 2020 09:05:28 -0800 (PST)
-X-Received: by 2002:a17:90a:cb83:: with SMTP id a3mr46758pju.80.1581354328499;
-        Mon, 10 Feb 2020 09:05:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581354328; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5372064lfp;
+        Tue, 11 Feb 2020 09:58:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxH0G2jaQyssMizupH4W6OPxys7D9YHjfAhIbBBkKWmzjhGM5BRqMJ5DoT8ys3gkCPyOvx2
+X-Received: by 2002:ae9:c316:: with SMTP id n22mr7068180qkg.72.1581443914039;
+        Tue, 11 Feb 2020 09:58:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581443914; cv=none;
         d=google.com; s=arc-20160816;
-        b=ReU8TMlkVqg8PIZ9UhrZDeczb6/HR8BBwhtugd+K2+34psZJqvA8aDXCZGcCapGq9K
-         ADWyX8HeGnWUF6Y79iozzm2lcflVZdxO9RL37x312Gr19eunIUXmYsZBzSI2e2tpwkRi
-         dg/IjfKUWl851WQze5y5UMiJmU8+9aeF9ooFhGGjy89wNMlh/9dvaiM9Uc4Md/XHV74T
-         QNa7Sa+qCM/YGQGKr+Uil/7fXOyxJYrpF6jSJWRrap58Dx20xE2uQIq8t+6EQdvg/g0H
-         /UlaW38DVK26g0eewGrGUHcKyCXO5s14P1SjknzlXYiuJkpbrxxhg8DLE10AwxYgUdw3
-         YFqA==
+        b=s/4lb3D4nIco8jIJQ3z3Uv07FUCYoXNSgnyl7iYlqCcW5Kef69Sh4LrShCO5X4y9Hz
+         ECyiT18iiPUDmjfmbZCPKTmTVvliw8eoBvpZR6HgvN2PLe9sk8zdglIdJdU6vIV5YNYU
+         gQIVG9I506LRVwp3R2vUpTOHRMHGO4ULNI1SdYVBrAfbwlb34PQTInMhITCA7sKbN6bG
+         mE/V+IMfCTTaXCe1JsYup248Expigf+4S1oGBk9nRrCBDgnr5T1xjmSXF461NlYWJMNS
+         5PYV9ADdEj3UzEggZ62Dba3DBGPt98DfH7MSShswMtEsevil5vTsWFqav3M7C37BSDQE
+         e3rQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=iM1vLWJPP0yWCV3ZxFs3mmdNJDy/+2jRoIP4IBofKgA=;
-        b=M3BTnI8WcPgQXnrpBavImGACKNeTI+bMDtAro+dLjLn5m+Q80979pj2eC6I5k/ul4J
-         VqRmZbfWkzuUjCJKNMAD9bbrkxn8ihEZH8T7/QQv90LcipCqnmUny4GL50yyY8B6z1g7
-         7m8AfAfX3dXu3ZpvnMekT28It4tgMVnNuaLlwGThHGKVQ3Cmq5GW4KB/gHe9Pk0lDUcX
-         hxDSInzBYqRZWPO0B74co00pKENK+CxX7tQji7xxQShjO7S+MXE5bqfyZASwDWxl1/ty
-         Zn+e9NJuf9EmpRlo+QSaeBj7z3/BjLjZFRoE4EgiMsCAztI0jYufk91bJAiCOwgX6qyZ
-         Up7A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=dS4V1ioc4cE+TiPXsCl6QMyY7qNQDAKLHZvdg6nxPoA=;
+        b=W+PYmHLilhOujRv9oeAesx3l5FKlUUFCyvYLsQWUBP2OgUmzoghsGHZpGI5FcFYXlW
+         Quoza1RqGutioBYr8roqmR0Xg5BFQmfKjbyjilFdXP+X5bbN8SpGkfxfBHz5gSheSfgU
+         Neol7+mlju3tGgnB66k+lXLchW/3JdVIZVDKVxrjHLxpwJJcb2hp993/eKR0TlyDsAwu
+         PWs+OyrZrjaD4v5mh78Yp7ngnG9lZwVpNN6XS6t6Uz/KaB2cVJ+31p5mJu+xtt5l3BBU
+         oZOSggRvDSgdA4DSU2+aP6+keoCI+t1+CHVdiFTTtseEC1YYLl2E0SruhqDQjpjy9NVH
+         TA3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nxkQMJiT;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id n65sor1028824pji.11.2020.02.10.09.05.28
+       dkim=fail header.i=@linaro.org header.s=google header.b=bPapeTgX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o66si2380414qka.227.2020.02.11.09.58.33
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 10 Feb 2020 09:05:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 11 Feb 2020 09:58:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nxkQMJiT;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=iM1vLWJPP0yWCV3ZxFs3mmdNJDy/+2jRoIP4IBofKgA=;
-        b=nxkQMJiTJ4l6cXGt28TCQYe4vRCQbN0y+/zUKpy/9K6CCxEtjGgrDXjY93l6kTk5Mj
-         MyqTL5V40tLFtt/fy8iJS0C2TPoa5XixqPEkqYFIFr1PnKsDrbleUW4kHpnX0RaeeAO1
-         220ea/z4gCFBlfLgJqVIrnFusSqxvXpk9g7jigAjFa8gvzltTWJvT7p9E+mKoFjRdarq
-         pM1ohFLzC6+pkyDWHfb4q4q2QVft8/PoKOzQvD7QTP8tCxlhC1OwZhIkyGzWqJv2lo+1
-         DLt+CUN5CRYGh/b592wlq4Wgp/Fsb7bb2hX+t+Iv534IiSAyA0uW5W3ugEsEqk/0y9DG
-         Uxcw==
+       dkim=fail header.i=@linaro.org header.s=google header.b=bPapeTgX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54802 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j1Znt-0002oi-GU
+	for alex.bennee@linaro.org; Tue, 11 Feb 2020 12:58:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32921)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1j1ZnP-0002o0-OW
+ for qemu-devel@nongnu.org; Tue, 11 Feb 2020 12:58:04 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1j1ZnJ-000683-KK
+ for qemu-devel@nongnu.org; Tue, 11 Feb 2020 12:57:58 -0500
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:33127)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j1ZnE-00064f-Lm
+ for qemu-devel@nongnu.org; Tue, 11 Feb 2020 12:57:53 -0500
+Received: by mail-ot1-x341.google.com with SMTP id b18so11041363otp.0
+ for <qemu-devel@nongnu.org>; Tue, 11 Feb 2020 09:57:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=dS4V1ioc4cE+TiPXsCl6QMyY7qNQDAKLHZvdg6nxPoA=;
+ b=bPapeTgXEHZZG7XwvGW/52yMapoF/lnwM1o6x+Hd8wXeJjoM2dnSUxN7qjUie2J6Z0
+ ipb9wC13SpCeNoMkRgH5mecnHSUjj7/GRv1gRy7SvVH1E+cJcGzQI1ngGHd9p4JdS2ny
+ RMK5/KIXRCYfQh1ZECLyMzoGxRkASvCclzg1/obhOpVZpg4TwcP+U2vhdopOjz2vNUuV
+ K21EHVcruMrHuY6ExgoHZuQI6yeV/LjweSeqG/bWvXYhcSxfU/wvzp9U0IEG7fYIP8gt
+ dq5tY2MkiwiADevwbZS2T3EE6QbIPx4PnPAnr3XcAIgLP5WU6pTWFkVOSBGcix4HffMV
+ WOlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=iM1vLWJPP0yWCV3ZxFs3mmdNJDy/+2jRoIP4IBofKgA=;
-        b=c7ssZa531WaIOm2q7y6DPy+BB6mXvmQxqWqqyk4acX8jsmEJDgIMC1O6qJa4yUaKBG
-         05Hc0QFngfbiahiUT5sAWdp1zTP4BPOAs6Zph4i5RM1Ia0Mk8sdrWFo/RIfryGgBINmm
-         CpjDWDUvaPan9EDAI4Bf4MPQdTvvNNdVMlrYABvbUTMQW1PnH/i8jIx2NFrjmLy8OrWi
-         lHp5s5bcPgr8OQK6hhSJ9FoC8ImAEOq1fJpf9xMS8L0+CzHZonI/2pMhGKwEB4PeJolS
-         fKXrMhWDxbQhcMT5gm/Yz9ZROyv6I6lx0zsXNcSNH8O+nksf0ZIPFGX44vt37czSJ6Va
-         NASA==
-X-Gm-Message-State: APjAAAUjQyPIxGGyBN9Na+y1i6gfcErChTM3CsZX+vCxQFEEmLaPWUMo
-	Gw11gFiW6Wl6/WtM6GXQyO8P4j2d
-X-Google-Smtp-Source: APXvYqw/VKLTij2fGGw1Tgb8oGVnqfyYgzlMuQ/X/mexfr17C5ofERjSS7/MTVctrP6gVClPXR8kzA==
-X-Received: by 2002:a17:90b:4004:: with SMTP id ie4mr15833pjb.49.1581354327934;
-        Mon, 10 Feb 2020 09:05:27 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
-        by smtp.gmail.com with ESMTPSA id k123sm686715pgk.48.2020.02.10.09.05.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 10 Feb 2020 09:05:27 -0800 (PST)
-Subject: Re: [PATCH] target/arm: Implement ARMv8.1-VMID16 extension
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-References: <20200210120146.17631-1-peter.maydell@linaro.org>
- <875zge3a2b.fsf@zen.linaroharston>
- <CAFEAcA9d4XDaUQLwy4yYyTSz1nzQ49adTv9z4K8e29OsUh_21A@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <97c3e59d-8279-9cac-7102-1f99f828f700@linaro.org>
-Date: Mon, 10 Feb 2020 09:05:25 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=dS4V1ioc4cE+TiPXsCl6QMyY7qNQDAKLHZvdg6nxPoA=;
+ b=QNyb79jfJCCCbMNVyeDKre0hK2MytjQuoOpXpCnH0/CUNy++D+CB6oI8cbVNpdUzzo
+ qCc1J8NroYtHJy5KLWlK7uAEF8GS/lB6beM5WOqku4Mvp577sCFXemMhNgJr0HO0Svqt
+ TbuIQarFiJGq7X69d1nll2WIOaF4RKTMQFwU9gXo97oUx1KApWbRGeQ7d8iDTsCRykY0
+ ZXm1xdHFI1Twb5jebTfZph+qRQb5l2W4Ajcahx/5gIbYTyiD8RsDEWU7/BwfWWuXRLfa
+ AqnT0yBq2Tz5Pve+QKoUFF6mx1C60oHsALDjZ8YwrFqmDwFbsaZ4iXXUypHx2xJ0bT7n
+ N9Wg==
+X-Gm-Message-State: APjAAAV5/45exLfNAGGroJDfPvJMNC0fNOXttoUVFWSMjndPpHfCGNvR
+ Rca+mX0mRkr/tFtInUHL7it5zm5s3jv1bhj5QZUcKQ==
+X-Received: by 2002:a05:6830:13da:: with SMTP id
+ e26mr5772377otq.97.1581443870716; 
+ Tue, 11 Feb 2020 09:57:50 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9d4XDaUQLwy4yYyTSz1nzQ49adTv9z4K8e29OsUh_21A@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: xNeEZbn+sh+m
+References: <20200207095409.11227-1-rka@sysgo.com>
+In-Reply-To: <20200207095409.11227-1-rka@sysgo.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 11 Feb 2020 17:57:39 +0000
+Message-ID: <CAFEAcA_vgg8mVw+-vfjWcouyOOnM_qZPdsPFmSgatV4Lq5Panw@mail.gmail.com>
+Subject: Re: [PATCH] i.MX: Fix inverted register bits in wdt code.
+To: Roman Kapl <rka@sysgo.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Y5QZ7JUmwYmt
 
-On 2/10/20 1:19 PM, Peter Maydell wrote:
-> On Mon, 10 Feb 2020 at 12:23, Alex Bennée <alex.bennee@linaro.org> wrote:
->>
->>
->> Peter Maydell <peter.maydell@linaro.org> writes:
->>
->>> The ARMv8.1-VMID16 extension extends the VMID from 8 bits to 16 bits:
->>>
->>>  * the ID_AA64MMFR1_EL1.VMIDBits field specifies whether the VMID is
->>>    8 or 16 bits
->>>  * the VMID field in VTTBR_EL2 is extended to 16 bits
->>>  * VTCR_EL2.VS lets the guest specify whether to use the full 16 bits,
->>>    or use the backwards-compatible 8 bits
->>>
->>> For QEMU implementing this is trivial:
->>>  * we do not track VMIDs in TLB entries, so we never use the VMID
->>> field
->>
->> Not currently but does the VMID allow you to have per-guest page table
->> caching? Last time I chatted to rth about potential performance wins we
->> discussed how easy it would be to support this in the softmmu now we
->> have indirect TLB lookups anyway. Given how much time is currently spent
->> expensively re-populating tables we could keep the last couple of id
->> tagged tables around for faster switching between sets of tables.
-> 
-> Yeah, in hardware the whole point of the VMID is to have per-guest
-> caching of VA-to-PA mappings in the TLB so you don't have to blow
-> them all away when you switch VM (just as ASID does for processes).
+On Fri, 7 Feb 2020 at 09:55, Roman Kapl <rka@sysgo.com> wrote:
+>
+> Documentation says for WDA '0: Assert WDOG output.' and for SRS
+> '0: Assert system reset signal.'.
+>
+> Signed-off-by: Roman Kapl <rka@sysgo.com>
+> ---
+>  hw/misc/imx2_wdt.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Yep.
+Applied to target-arm.next, thanks.
 
-> The difficulty with QEMU has always been that adding the "and is this
-> the right VMID/ASID" to the softmmu fastpath code would be expensive,
+(It looks like we're missing a lot of the watchdog
+functionality in our model, ie the actual watchdog
+timer parts, enable bits, etc etc...)
 
-Yep.  My current half-baked idea for this does not involve changing the
-fastpath, but swapping out softmmu tlbs in bulk.
-Which is possible now that there's a pointer involved, and not 8k of data in an
-array.
-
-> AIUI. If we ever come up with a clever plan for this it should be
-> no different if the VMID field is 16 vs 8 bits, though.
-
-Yep.
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-r~
+-- PMM

@@ -1,159 +1,180 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5190746lfp;
-        Tue, 11 Feb 2020 07:03:37 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxP/GAuxBwjnB1FOvKArN6248vFmWT5Evl8Dj1eLzkmJ3NlP++c2BpJ0NyGUmgZm9BRrl6k
-X-Received: by 2002:ac8:53c7:: with SMTP id c7mr2746913qtq.311.1581433417179;
-        Tue, 11 Feb 2020 07:03:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581433417; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5223775lfp;
+        Tue, 11 Feb 2020 07:34:14 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzXIRXAiZSNJH9BgqfHGbqBHgsjSftHhmLXyctJ+QqCKr1aoGnGhC6UUrHlSAPumr7gUmN7
+X-Received: by 2002:aca:f584:: with SMTP id t126mr3304114oih.132.1581435254538;
+        Tue, 11 Feb 2020 07:34:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581435254; cv=none;
         d=google.com; s=arc-20160816;
-        b=vQ/0hfYWGFEfXCZhuIKZy21hk0ORFFiwFksouUZzj88yYYpe1davkajfwmZv8HgBAR
-         CWXY+ulG/+dOHGnombZoLgI9IRZzT8PT4l7+ug0Xy393nVpV0Zznl+vlabsolJtrVzhV
-         a7V16iclCYt0em12FGYml78Sio1UFWck3pa6G3tWv2szUW43AbCexBgqiKRHSoQlJkPR
-         +iAFhwelwhY68Uu1qYaGD6TsS1Xh5XdSn8eVIkP0ouC3X327wOFqL07c++APGT/R7fB3
-         YuF0ji9WOCYF1A3MDcdsenUPQ8pJtUGgfDxQGlvCvw9CeCzF9SZbVOmXLJUbwDdln2Yl
-         veBQ==
+        b=jIs6iiZ7Tr4f1gElYbr2PIB/u7Jab5Lh3ORLwWULB2tUX8kenLn7lasAZI5qsrVN95
+         yj7yjE5C+kXuSJJn2mqezgXS3CBqQfjRH9PliRdkfod3TBZ/aElkQORx3Vs5etqRawaM
+         Fv4Dv9/zhJcA7jaRdZkMhpxEMLGQJXT8j5Q+ybganpKgo53M7Cf24sc0r0xB890e/44p
+         XgqaGyjriYazmWzAhtakwyV99Qbcqusdq2ZkGuuKvLU2AosT9TGuyRvrd0/Bau5c9Er+
+         XltLn8rREVB9wPsGWXDr3p1DbyWcn4/wBqJ1xtJqv/s9eTTpcvOrTZRUzcH/ddypdSX7
+         KVdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=NJzapH/OwUP25ait7xEggB84gbQoRFwSXIZjrFEANkY=;
-        b=GZX5RnbWyVRpyYfL8gCDBD4+ye8LGc68oPBXdeLk5dDlkDDpMZoN9y3csHkJBi3scz
-         eM3kg/1mfZo1Vem9s+i1haB9UhvveMf+vk3JEgEvKD53qZ1/7eBTYL4z25jaywF7Aqft
-         f3isESbqYSsyA8qKwmB42I2ViNMcy0/EX+xiQQ6g3N4ot/t4phwd9Wzlizdp77BlJgpN
-         xf4KkrluYxueIM1wTpYRyChwXYIyNThwTM+1Bxo8bB/AdSoYvPHBVLMc5xYGXYxSuPAG
-         kqUSzGw0bg1L1hJHEIrOx5roHvMvbcSjM6zDhNVbE+KARjTfzUxR4Omyj//he+2YRLSB
-         ebpg==
+        bh=SC8tyGtOpHm57sc5gE2Q5QspKh0iTcK1s5Xp662IVFM=;
+        b=YYxfcW8QdUApLK26GJZqPYkFjls/xjbVx1dIbxOlDwA/qurV1Xxksp7PfEG5A5pUG6
+         DPN35M2mFveZnlIHsbiLIx66izyWhdsEFvMpeQKswYXOSWMVw70hB2RvfakeIJygCbiO
+         75xa/4img1I1qlSEPeRdpTheOFz2ioMAO6I4+kQ7xx3240saJEYjZhZQig/4EMvvF3hm
+         uPcBj/bGPqIoz564lgc9gQ3L0K4rak8YpKDmbEg9B/POXyUv2PqdLCvkMHqCEV6fBQW8
+         IQNX+sdHdnkcbf9UZQVW7oF0TDLv5vdyVtw6LMI1dySO5EAGnnUsyln2/v3ovRc9mMga
+         amJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=oZSMlWE6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p186si1966503qkc.318.2020.02.11.07.03.36
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Feb 2020 07:03:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TCk96Zrv;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id m17si2327662otk.109.2020.02.11.07.34.14;
+        Tue, 11 Feb 2020 07:34:14 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=oZSMlWE6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51072 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j1X4a-0004mS-D6
-	for alex.bennee@linaro.org; Tue, 11 Feb 2020 10:03:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33665)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j1X3l-0003wW-Ac
- for qemu-arm@nongnu.org; Tue, 11 Feb 2020 10:02:46 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j1X3g-0002qu-Ej
- for qemu-arm@nongnu.org; Tue, 11 Feb 2020 10:02:45 -0500
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:37771)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j1X3g-0002qi-9s
- for qemu-arm@nongnu.org; Tue, 11 Feb 2020 10:02:40 -0500
-Received: by mail-oi1-x243.google.com with SMTP id q84so13083508oic.4
- for <qemu-arm@nongnu.org>; Tue, 11 Feb 2020 07:02:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=NJzapH/OwUP25ait7xEggB84gbQoRFwSXIZjrFEANkY=;
- b=oZSMlWE6dBhBHhQwQ1+i7gRKxYHEABBikoGlmiHFHuDYpp7J2WXWFok71rvM1YbB+S
- qgV2t9acezLhTuxqoV2sDZIwX2WW6MwhSCZGP2Msbypdxnjm5b7Iry4vJTIcQNTqTn+g
- Ake2GyQJdzhXAWVkhxf1fLIr+KoTMLMGxjasaB7O4op7iQ9nMkgvWnIHeiU9AM9OlaL1
- Pa3+QrXiqnSC++/I25uF/cwM+Qq8XwVSj2byk4vBd/KT9obZUZDYbNd97kMzAWN0xJ9D
- qYZ/AWfXX4wDF3l7SXJ5xqjBGJCZ/dIkGj9M9qUS5YgoHPWhNMrPvdsilovqfiMnRz62
- g2Xg==
+       dkim=pass header.i=@linaro.org header.s=google header.b=TCk96Zrv;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1729394AbgBKPeL (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 11 Feb 2020 10:34:11 -0500
+Received: from mail-ot1-f67.google.com ([209.85.210.67]:36646 "EHLO
+        mail-ot1-f67.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1728891AbgBKPeL (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 11 Feb 2020 10:34:11 -0500
+Received: by mail-ot1-f67.google.com with SMTP id j20so10490501otq.3
+        for <kvm@vger.kernel.org>; Tue, 11 Feb 2020 07:34:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=SC8tyGtOpHm57sc5gE2Q5QspKh0iTcK1s5Xp662IVFM=;
+        b=TCk96ZrvyLxBaska0vmDd8zhDDHL32wBx+GpxMYTZh8GrXAN9fDOQBd1PEOty+f6T1
+         vfDUvSX7ZHSIiW/dbUiu5BMA8AsYLDvPMAl3KLhhnRuE1TYR3JUUyzsXs9/FERrXgIQ0
+         /h6Pefrk7ao03J/OG9iA2qBYvgOMpcFGgqXYgfHA21BfmH6nNBBSJsupWnyc35MF4cQt
+         I8R7/t3gExWR92oy3Iq+GfwPHqZcUaB5OKtpOO6IHn8eA5fvKa05yhOpYh2QwK871uvQ
+         /kYmRzNk5o1EnbkPGwBpLr5Rl4nVsGM4Zwf9kXtwvubhbFB1qChTuxErjCDDkSUp6RrX
+         pe5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=NJzapH/OwUP25ait7xEggB84gbQoRFwSXIZjrFEANkY=;
- b=ePjKx5KQXiZoph6HSRYvbYPfpvj++si2mL2zSChRCUqR9C+97ub4Cu148MNNWur3yz
- Z98XVLoY8p13GRB0fEvkiR/cHAjLZap74Dvn9m+FZA17ZBb783MY7V1rxFt5AR8bMPFy
- m2S1NExwtsFmn2b1XErkwf/Ql2klrarEzlCVZ82fC0VzlxV8HVUcSdR/3q8MxT//IXeH
- 36QePI3s6kVz3EGRtmP9TK+lxcrLrQOOKd4fDOGqy1TnlHQdY320536/glxm2d3wJz0F
- OByiJaGa5VTXum/AOBFZP2kD3MtuRLtwOTiM0GSDCx8qEiwveAncdrgkKyJzE+RY9w/N
- mvRw==
-X-Gm-Message-State: APjAAAWZM5lEE6FF7sg0ZksLKD7nTVQBNQocCSN4L2jcKTN4FDUX+wNu
- 9ladxzYYwu6sC11qjlJz5gCRuPj5JrvJZHEsy7hP9g==
-X-Received: by 2002:a05:6808:3b2:: with SMTP id
- n18mr3029835oie.146.1581433359096; 
- Tue, 11 Feb 2020 07:02:39 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=SC8tyGtOpHm57sc5gE2Q5QspKh0iTcK1s5Xp662IVFM=;
+        b=qheDnWzG5vsKwecCkVmSxH+0pih1yBLlxHavhWt7E/HvQP00sS3/5cZ9TzBCog1ja2
+         BQTkYaekdFO6AFE+iKxe2t1kwja1TxUY7IuZeN4ELfPSwnTimA8AGjuycCNQPtveNwuC
+         +6PYhoiXv53QORg3sq3mxdE8mrEVWiS/Z7hFs+efa+DvnS7DURD2hoJrrHW4Y/A4tWcI
+         vD4HSQm4GKaEPGLAn/K/E7iV9cK78auBLPqRUZkQf4ZxyoXCXaTbYYgW/MvTEW6ifTXi
+         vnsEwbGBJ2WGdxN5J8Gm8iZvuUn2VtaAqqZRxYHdk9ZF1YUgmybDbdJ5udNvNAphGJfy
+         vSgg==
+X-Gm-Message-State: APjAAAUZd5OBJWFaE8n4IiOB3mUZbpho/v2YdtCntAJR6st5zI35Q+bt
+        JFvOSOM8d5qDlYdLc2dk+VzW2qyx7H2Nho1GPU/Fgw==
+X-Received: by 2002:a05:6830:184:: with SMTP id q4mr5759307ota.232.1581435250516;
+ Tue, 11 Feb 2020 07:34:10 -0800 (PST)
 MIME-Version: 1.0
-References: <20200208120022.1920-1-eric.auger@redhat.com>
- <20200211085526-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20200211085526-mutt-send-email-mst@kernel.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 Feb 2020 15:02:28 +0000
-Message-ID: <CAFEAcA8hWyHYk+PPLsyjyqiRqaWfosJwrpFpsRXnO+toSzaZfw@mail.gmail.com>
-Subject: Re: [PATCH v15 0/9] VIRTIO-IOMMU device
-To: "Michael S. Tsirkin" <mst@redhat.com>
+References: <20200130112510.15154-1-eric.auger@redhat.com> <20200130112510.15154-5-eric.auger@redhat.com>
+In-Reply-To: <20200130112510.15154-5-eric.auger@redhat.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Tue, 11 Feb 2020 15:33:59 +0000
+Message-ID: <CAFEAcA9rsncts+s4tVn4tY4zaMHKeqyJj1O4J=Ufx33fb=Nrcg@mail.gmail.com>
+Subject: Re: [kvm-unit-tests PATCH v2 4/9] arm: pmu: Check Required Event Support
+To:     Eric Auger <eric.auger@redhat.com>
+Cc:     Eric Auger <eric.auger.pro@gmail.com>,
+        Marc Zyngier <maz@kernel.org>, kvmarm@lists.cs.columbia.edu,
+        kvm-devel <kvm@vger.kernel.org>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        qemu-arm <qemu-arm@nongnu.org>,
+        Andrew Jones <drjones@redhat.com>,
+        Andrew Murray <andrew.murray@arm.com>,
+        Andre Przywara <andre.przywara@arm.com>,
+        Alexandru Elisei <alexandru.elisei@arm.com>
 Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::243
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: jean-philippe@linaro.org, "Tian, Kevin" <kevin.tian@intel.com>,
- tnowicki@marvell.com, Juan Quintela <quintela@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Eric Auger <eric.auger@redhat.com>, bharatb.linux@gmail.com,
- qemu-arm <qemu-arm@nongnu.org>, Eric Auger <eric.auger.pro@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ujHs263OCQUe
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: zzV9raMIZrs9
 
-On Tue, 11 Feb 2020 at 13:56, Michael S. Tsirkin <mst@redhat.com> wrote:
+On Thu, 30 Jan 2020 at 11:25, Eric Auger <eric.auger@redhat.com> wrote:
 >
-> On Sat, Feb 08, 2020 at 01:00:13PM +0100, Eric Auger wrote:
-> > This series implements the QEMU virtio-iommu device.
-> >
-> > This matches the v0.12 spec (voted) and the corresponding
-> > virtio-iommu driver upstreamed in 5.3. All kernel dependencies
-> > are resolved for DT integration. The virtio-iommu can be
-> > instantiated in ARM virt using:
-> >
-> > "-device virtio-iommu-pci".
-> >
-> > Non DT mode is not yet supported as it has non resolved kernel
-> > dependencies [1].
-> >
-> > This feature targets 5.0.
-> >
-> > Integration with vhost devices and vfio devices is not part
-> > of this series. Please follow Bharat's respins [2].
-> >
-> > Best Regards
-> >
-> > Eric
+> If event counters are implemented check the common events
+> required by the PMUv3 are implemented.
 >
+> Some are unconditionally required (SW_INCR, CPU_CYCLES,
+> either INST_RETIRED or INST_SPEC). Some others only are
+> required if the implementation implements some other features.
 >
-> Looks good.
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+> Check those wich are unconditionally required.
 >
-> I can see this merged through ARM tree, or through my tree with
-> Peters's ack for the ARM bits.
+> This test currently fails on TCG as neither INST_RETIRED
+> or INST_SPEC are supported.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>
+> ---
+>
 
-Either way would work for me. I left some review comments
-on patch 8 which I think is the only arm-specific one.
+> +static bool is_event_supported(uint32_t n, bool warn)
+> +{
+> +       uint64_t pmceid0 = read_sysreg(pmceid0_el0);
+> +       uint64_t pmceid1 = read_sysreg_s(PMCEID1_EL0);
+> +       bool supported;
+> +       uint64_t reg;
+> +
+> +       /*
+> +        * The low 32-bits of PMCEID0/1 respectly describe
 
-Can you use the virtio-iommu on x86 ? Would you want to?
+"respectively"
 
-If I'm not misreading the MAINTAINERS file the new
-files in hw/virtio aren't covered by any existing
-entry there, so we should probably have a new one.
+> +        * event support for events 0-31/32-63. Their High
+> +        * 32-bits describe support for extended events
+> +        * starting at 0x4000, using the same split.
+> +        */
+> +       if (n >= 0x0  && n <= 0x3F)
+> +               reg = (pmceid0 & 0xFFFFFFFF) | ((pmceid1 & 0xFFFFFFFF) << 32);
+> +       else if  (n >= 0x4000 && n <= 0x403F)
+> +               reg = (pmceid0 >> 32) | ((pmceid1 >> 32) << 32);
+> +       else
+> +               abort();
+> +
+> +       supported =  reg & (1UL << (n & 0x3F));
+> +
+> +       if (!supported && warn)
+> +               report_info("event %d is not supported", n);
+> +       return supported;
+> +}
+> +
+> +static void test_event_introspection(void)
+> +{
+> +       bool required_events;
+> +
+> +       if (!pmu.nb_implemented_counters) {
+> +               report_skip("No event counter, skip ...");
+> +               return;
+> +       }
+> +
+> +       /* PMUv3 requires an implementation includes some common events */
+> +       required_events = is_event_supported(0x0, true) /* SW_INCR */ &&
+> +                         is_event_supported(0x11, true) /* CPU_CYCLES */ &&
+> +                         (is_event_supported(0x8, true) /* INST_RETIRED */ ||
+> +                          is_event_supported(0x1B, true) /* INST_PREC */);
+> +
+> +       if (pmu.version == 0x4) {
+
+This condition will only test for v8.1-required events if the PMU
+is exactly 8.1, so you lose coverage if the implementation happens
+to support ARMv8.4-PMU. Hopefully you have already bailed out
+for "ID_AA64DFR0_EL1.PMUVer == 0xf" which means "non-standard IMPDEF
+PMU", in which case you can just check >= 0x4.
+
+> +               /* ARMv8.1 PMU: STALL_FRONTEND and STALL_BACKEND are required */
+> +               required_events = required_events &&
+> +                                 is_event_supported(0x23, true) &&
+> +                                 is_event_supported(0x24, true);
+> +       }
+> +
+> +       report(required_events, "Check required events are implemented");
+> +}
+> +
+>  #endif
 
 thanks
 -- PMM

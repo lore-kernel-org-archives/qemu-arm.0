@@ -1,97 +1,98 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5353590lfp;
-        Tue, 11 Feb 2020 09:38:35 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxW/QrbXVhcCjvJlAqrMP0h0mHiksSg6Lz9vsvE/1TR01Z72WNUpQTWjc0PeKqHCYOVJLc7
-X-Received: by 2002:ac8:145:: with SMTP id f5mr3456060qtg.194.1581442715524;
-        Tue, 11 Feb 2020 09:38:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581442715; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5354293lfp;
+        Tue, 11 Feb 2020 09:39:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwwU/TSIUfP0w/yXNS/1we2yTVVnGJzsQcXUjIoST0T8AD0joe9TJV6CXqInmrr5VGkeCpN
+X-Received: by 2002:a05:620a:535:: with SMTP id h21mr544679qkh.184.1581442760773;
+        Tue, 11 Feb 2020 09:39:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581442760; cv=none;
         d=google.com; s=arc-20160816;
-        b=JBhGfX578Doc1m4A+CCji6bJIaT+jiNkvz2a/Z9+vUr6X0X9srtXx9r2D7b1JHkj74
-         9fmFW9LOKabJs+iwWLTKBKay3d58YX1x7HmkLjwCAMg+ZF2megMu2YTcAWPaAC5Z8lNb
-         N8Rj2sKEdu3YgLnSDhZmFJi4ceFdJJ3DBLAFBVr4kCA5QasURaGxWoP7hXJadK4Hmr10
-         Twjx7K+XOJpfOdHvrXAEfMJ6iiaUqxUQ7o3BJYpFgKH/AAkMSaQ2LQVMz+JURksRhrjm
-         MLbTTuD7CSDL2GercSk5Qp8I1MFJCWBMye+nLMuK4Opet+5UUzwhLQl+qayoHE1Tpz22
-         xw4Q==
+        b=Kt/OCz6gB/R9dRE1/RIhycEyIhX+A3WMSZThW1AQvYRrVbApGRCdMQ5LGwLy+lSU3/
+         jSBYTmBB1f81mTCRp9IF+GNI2Egfks/PApTYPdQuVMKsp1tc6p4j/EhkbtEdB9kUqPGt
+         hy0Qn8/Ou7K6+Hws/pUV1K0494ROkpzIu9UvreYJON6maTa94diZ+fxtiRtWEjvMoKw/
+         TY5SNchGipcgSlCDOLxA8Btu0ulNtesUaLv3ke39ZV8dgwaYdEm9NXq3ofEFL/uxPN6r
+         KoLLcTnUjl8GNj8NL6X+G0pMFAwmF5oD3/ei9Xa+w5LCa5IW+PNf9RvidAGXOX5/0v4Q
+         V01w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=YAolMHbVRc4z4JgtOBFldRu9cUtp/1u8OxuIdSNhw1w=;
-        b=nR56+XA/S1msNijBmSFlHnCWHWJfOD5ukwP+3Vb5rTD0digQyJWAx+GJECd15gU8Vz
-         QFGtKti8AHzB7BOLShU+HJ7M8F/RM9ctpU/pkVkK1odjnPioWGxC7ScaBbLqSO2+0PdP
-         +LOKvhkdoh0f0nOXMK7Icr1/GOwLVOZfRk6vIHJmZYAgZz2bn2Ht2y4Q3tmIWiAoJ156
-         QbtPFQOrqU/OamrF3J8GSV7CucxQCb9HdfYew7ZxJLdwaPsvDiN9oPaW8t5eha4Sak8N
-         du9UHPfBN3nQsWcz3H3llayLjmlt4wyCVInMejLS24N+BOwvSLyS4B9j2lD+MEDWtTp6
-         E9XQ==
+        bh=UvzHW7FwqyjZQe8719x2kLtn+42I2f2TvPE23s84PqM=;
+        b=bDVFn49VioTgCntnZHQl154GnnN/MOSoupIPMVkr8JjWtYyiNtcJ/ytHfzWmurH8MD
+         BTc1kmYQTaYC3IchdO3nviO1JVPJMo4E/mddtPhur2tFR9IcZBjsSZKs2pmyoIfqIFzS
+         mOXhl5z8xW6Huee7bfhbNlIwvMScIgr4zL/+1/JFU96HBhs6s1mqmFGAsjFGi5innaaQ
+         7WBaragUuF61jlhtGaQsQuxzIcaqC43tlbfTRdVzmXgu5pjNtZXR3hNz+w8PwxVrTcdT
+         QpxyeJs/LHvd5I6CkYzdih91u+a6qX70K/120SV/sH13re4ia9NvmI7ov3kie2r2yK6x
+         llFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HH1sWJ4s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=tX+E3GiG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q13si2121136qtn.133.2020.02.11.09.38.35
+        by mx.google.com with ESMTPS id d10si2381857qkb.307.2020.02.11.09.39.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Feb 2020 09:38:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Feb 2020 09:39:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HH1sWJ4s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=tX+E3GiG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54258 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54262 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j1ZUY-0007GO-R0
-	for alex.bennee@linaro.org; Tue, 11 Feb 2020 12:38:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48632)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j1ZVI-0007YE-6w
+	for alex.bennee@linaro.org; Tue, 11 Feb 2020 12:39:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48296)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j1ZTl-0005my-44
- for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:37:46 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j1ZTh-0005hB-8y
+ for qemu-devel@nongnu.org; Tue, 11 Feb 2020 12:37:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j1ZTi-00049j-61
- for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:37:44 -0500
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:39499)
+ (envelope-from <peter.maydell@linaro.org>) id 1j1ZTc-00040p-Jb
+ for qemu-devel@nongnu.org; Tue, 11 Feb 2020 12:37:38 -0500
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:43982)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j1ZTh-00047E-W6
- for qemu-arm@nongnu.org; Tue, 11 Feb 2020 12:37:42 -0500
-Received: by mail-wr1-x441.google.com with SMTP id y11so13492443wrt.6
- for <qemu-arm@nongnu.org>; Tue, 11 Feb 2020 09:37:41 -0800 (PST)
+ id 1j1ZTc-0003x3-C4
+ for qemu-devel@nongnu.org; Tue, 11 Feb 2020 12:37:36 -0500
+Received: by mail-wr1-x444.google.com with SMTP id r11so10241790wrq.10
+ for <qemu-devel@nongnu.org>; Tue, 11 Feb 2020 09:37:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=YAolMHbVRc4z4JgtOBFldRu9cUtp/1u8OxuIdSNhw1w=;
- b=HH1sWJ4sQ+0T8BkfjmGLV4oOGm+e01IArqCqdQcoh9FCju7AAyVpVXJdoxsXxVZNcJ
- NUjpADGCP9igs4hUmzM+5W387e//3UA8NKpFuJNYKM/IixnyEoUrGxjI23/1ImToOFY+
- BmZRl+cCugFMS7osvgoGohXXV+2Asf+OoryznAwSeUvtHSlwP1iV5XAdd1RAokIvF52A
- 0LXN0Wx8lVO0p98TYhxEfIbDjVvSHags2Tmac7BJYYUFUHXeWE3rcxRXfQ5XIWbFNfRb
- RdhNFo6Bzxp07MucbBylAc/37YTUon+XTxyRpJ2a44rFnhd1Zi1j6XBCEGpnIwemrxAT
- /j7w==
+ bh=UvzHW7FwqyjZQe8719x2kLtn+42I2f2TvPE23s84PqM=;
+ b=tX+E3GiGu6WA7ifzMjUhi/CC98DUnr0kUUJkkHzN7B1Lk7wuu5RLBih59V0XJrapQR
+ Qwfa+Bey285yu3e20165GeU1DdSATgvZlbKjtsw0hWuTDS0yyGLRuiGLnGGOBS5c0AKe
+ 7BrhzNIDmYzINp85mGBu6Z3Ejwg/0GbbyJ6VBe9U3SwkGpM7ii3CTiE2zkMvRMGvYr/K
+ HJ2uMf0XgBiWY4Nv3IJS3ekqTARqYg3UdnkUJAPjPLBjlzteHTv5dVWvIiGuom6eEN9q
+ 4CMQ1ry/h7XGxIjAt31/c25SniLhoTLR0zvqVmtVDWPoSA5xtkcdOMcnrErBCnR/PZ2n
+ 4JBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=YAolMHbVRc4z4JgtOBFldRu9cUtp/1u8OxuIdSNhw1w=;
- b=fVjXioDcAB033DytxkK0eWujQ0kjj5g3A7QDwCpN5Y8ZRXCc2Bi4N+Ff1b5NaYAj/n
- AsDDxtg3/eRyEvnfdXb46mJuGpT+yImQ80Dsuqxv1gW2UdHWhcQkuTxMKHExmgAUW7n2
- RrLZYQSOQ8yiuJvxckqluDj8PnZzcazKsCXay/LRthhZcjRmAnEwPJn1eY0ZjJ65J7L4
- q5b0GjHThNeHtthR4nIL5ypUumuEM/L/fLFdTclWj3Xm/aP2dWECkAd+Rg5GOGNSdJq8
- 1ckjDGhI+2ELXPviIBYKDE8A4Gw711x5R0pEAu0akgXI38TLahdGIQXWkNxrzEEn4nJx
- 8NVQ==
-X-Gm-Message-State: APjAAAWdsNGPaHsjIepar4OYGRrsZVRUEur1KamGM4qV/RlBC5E4mvjL
- 43dNEHCM1Pxas2/aFvl3cgQihnP4dGM=
-X-Received: by 2002:adf:d0c1:: with SMTP id z1mr10209600wrh.371.1581442660645; 
- Tue, 11 Feb 2020 09:37:40 -0800 (PST)
+ bh=UvzHW7FwqyjZQe8719x2kLtn+42I2f2TvPE23s84PqM=;
+ b=qSjwpRBeHCfYjJlGmcPY6Kx9F0SmFxSJwLVcMRoyc3lxc+Z7hWHzbbUMxsrMLxx8qr
+ nCPASsPpRXumZNgYLGhCiXbFUiXIxXlGwzT29Z/O0Ma1lSJlFEQAFRB58NcXQh46m3qK
+ dgRs4eejqCnAZKRZ8c8DQbkGTT+zr8Aj1EIEI7U7jGLI9zZ4S4yAOI+RER4s0Yy8mo4Z
+ N0MplsEjjNy+0IDwTpa14WxRYg1MR2KfjhuHDWgB3kutwSSOrJnSfrTXuyfQ8RLDjfGL
+ XVkUDnYf6R2sGg105nYElqo5XRcLC4+7rU4u+PAdf/D/gS13Nk+0OuT1g5FHGPbzmkuL
+ 2haA==
+X-Gm-Message-State: APjAAAVP9+9Q1NamyP9Ke/pv+ZcsMaPiEhxrVejFprjmBGqQHMnNRpQr
+ eppi6vdqZLc4q3v52dJo5ubnQg==
+X-Received: by 2002:adf:e910:: with SMTP id f16mr9517620wrm.20.1581442652239; 
+ Tue, 11 Feb 2020 09:37:32 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y1sm6109675wrq.16.2020.02.11.09.37.39
+ by smtp.gmail.com with ESMTPSA id y1sm6109675wrq.16.2020.02.11.09.37.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Feb 2020 09:37:40 -0800 (PST)
+ Tue, 11 Feb 2020 09:37:31 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 09/13] target/arm: Implement ARMv8.1-PMU extension
-Date: Tue, 11 Feb 2020 17:37:22 +0000
-Message-Id: <20200211173726.22541-10-peter.maydell@linaro.org>
+Subject: [PATCH 02/13] target/arm: Add isar_feature_any_fp16 and document
+ naming/usage conventions
+Date: Tue, 11 Feb 2020 17:37:15 +0000
+Message-Id: <20200211173726.22541-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200211173726.22541-1-peter.maydell@linaro.org>
 References: <20200211173726.22541-1-peter.maydell@linaro.org>
@@ -99,107 +100,99 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::441
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::444
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Eric Auger <eric.auger@redhat.com>,
  Aaron Lindsay <aaron@os.amperecomputing.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6gSvEeXpmB/6
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7cxpzLQHWQmq
 
-The ARMv8.1-PMU extension requires:
- * the evtCount field in PMETYPER<n>_EL0 is 16 bits, not 10
- * MDCR_EL2.HPMD allows event counting to be disabled at EL2
- * two new required events, STALL_FRONTEND and STALL_BACKEND
- * ID register bits in ID_AA64DFR0_EL1 and ID_DFR0
+Our current usage of the isar_feature feature tests almost always
+uses an _aa32_ test when the code path is known to be AArch32
+specific and an _aa64_ test when the code path is known to be
+AArch64 specific. There is just one exception: in the vfp_set_fpscr
+helper we check aa64_fp16 to determine whether the FZ16 bit in
+the FP(S)CR exists, but this code is also used for AArch32.
+There are other places in future where we're likely to want
+a general "does this feature exist for either AArch32 or
+AArch64" check (typically where architecturally the feature exists
+for both CPU states if it exists at all, but the CPU might be
+AArch32-only or AArch64-only, and so only have one set of ID
+registers).
 
-We already implement the 16-bit evtCount field and the
-HPMD bit, so all that is missing is the two new events:
-  STALL_FRONTEND
-   "counts every cycle counted by the CPU_CYCLES event on which no
-    operation was issued because there are no operations available
-    to issue to this PE from the frontend"
-  STALL_BACKEND
-   "counts every cycle counted by the CPU_CYCLES event on which no
-    operation was issued because the backend is unable to accept
-    any available operations from the frontend"
-
-QEMU never stalls in this sense, so our implementation is trivial:
-always return a zero count.
+Introduce a new category of isar_feature_* functions:
+isar_feature_any_foo() should be tested when what we want to
+know is "does this feature exist for either AArch32 or AArch64",
+and always returns the logical OR of isar_feature_aa32_foo()
+and isar_feature_aa64_foo().
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 32 ++++++++++++++++++++++++++++++--
- 1 file changed, 30 insertions(+), 2 deletions(-)
+ target/arm/cpu.h        | 19 ++++++++++++++++++-
+ target/arm/vfp_helper.c |  2 +-
+ 2 files changed, 19 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 9537785104e..c896ad0b7ee 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1124,6 +1124,24 @@ static int64_t instructions_ns_per(uint64_t icount)
- }
- #endif
- 
-+static bool pmu_8_1_events_supported(CPUARMState *env)
-+{
-+    /* For events which are supported in any v8.1 PMU */
-+    return cpu_isar_feature(any_pmu_8_1, env_archcpu(env));
-+}
-+
-+static uint64_t zero_event_get_count(CPUARMState *env)
-+{
-+    /* For events which on QEMU never fire, so their count is always zero */
-+    return 0;
-+}
-+
-+static int64_t zero_event_ns_per(uint64_t cycles)
-+{
-+    /* An event which never fires can never overflow */
-+    return -1;
-+}
-+
- static const pm_event pm_events[] = {
-     { .number = 0x000, /* SW_INCR */
-       .supported = event_always_supported,
-@@ -1140,8 +1158,18 @@ static const pm_event pm_events[] = {
-       .supported = event_always_supported,
-       .get_count = cycles_get_count,
-       .ns_per_count = cycles_ns_per,
--    }
-+    },
- #endif
-+    { .number = 0x023, /* STALL_FRONTEND */
-+      .supported = pmu_8_1_events_supported,
-+      .get_count = zero_event_get_count,
-+      .ns_per_count = zero_event_ns_per,
-+    },
-+    { .number = 0x024, /* STALL_BACKEND */
-+      .supported = pmu_8_1_events_supported,
-+      .get_count = zero_event_get_count,
-+      .ns_per_count = zero_event_ns_per,
-+    },
- };
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index ad2f0e172a7..ac4b7950166 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3400,7 +3400,16 @@ extern const uint64_t pred_esz_masks[4];
+  * Naming convention for isar_feature functions:
+  * Functions which test 32-bit ID registers should have _aa32_ in
+  * their name. Functions which test 64-bit ID registers should have
+- * _aa64_ in their name.
++ * _aa64_ in their name. These must only be used in code where we
++ * know for certain that the CPU has AArch32 or AArch64 respectively
++ * or where the correct answer for a CPU which doesn't implement that
++ * CPU state is "false" (eg when generating A32 or A64 code, if adding
++ * system registers that are specific to that CPU state, for "should
++ * we let this system register bit be set" tests where the 32-bit
++ * flavour of the register doesn't have the bit, and so on).
++ * Functions which simply ask "does this feature exist at all" have
++ * _any_ in their name, and always return the logical OR of the _aa64_
++ * and the _aa32_ function.
+  */
  
  /*
-@@ -1150,7 +1178,7 @@ static const pm_event pm_events[] = {
-  * should first be updated to something sparse instead of the current
-  * supported_event_map[] array.
+@@ -3702,6 +3711,14 @@ static inline bool isar_feature_aa64_bti(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, BT) != 0;
+ }
+ 
++/*
++ * Feature tests for "does this exist in either 32-bit or 64-bit?"
++ */
++static inline bool isar_feature_any_fp16(const ARMISARegisters *id)
++{
++    return isar_feature_aa64_fp16(id) || isar_feature_aa32_fp16_arith(id);
++}
++
+ /*
+  * Forward to the above feature tests given an ARMCPU pointer.
   */
--#define MAX_EVENT_ID 0x11
-+#define MAX_EVENT_ID 0x24
- #define UNSUPPORTED_EVENT UINT16_MAX
- static uint16_t supported_event_map[MAX_EVENT_ID + 1];
+diff --git a/target/arm/vfp_helper.c b/target/arm/vfp_helper.c
+index 0ae7d4f34a9..930d6e747f6 100644
+--- a/target/arm/vfp_helper.c
++++ b/target/arm/vfp_helper.c
+@@ -185,7 +185,7 @@ uint32_t vfp_get_fpscr(CPUARMState *env)
+ void HELPER(vfp_set_fpscr)(CPUARMState *env, uint32_t val)
+ {
+     /* When ARMv8.2-FP16 is not supported, FZ16 is RES0.  */
+-    if (!cpu_isar_feature(aa64_fp16, env_archcpu(env))) {
++    if (!cpu_isar_feature(any_fp16, env_archcpu(env))) {
+         val &= ~FPCR_FZ16;
+     }
  
 -- 
 2.20.1

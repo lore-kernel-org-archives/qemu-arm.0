@@ -1,117 +1,106 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6928193lfp;
-        Wed, 12 Feb 2020 14:50:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxsPUvER7Dk3TdNEKK0K6NFT/5cVPw3Gu9vy6d5toEU3O8JFsw0SLY+8VNKQx7x0hFQu3rG
-X-Received: by 2002:a37:9647:: with SMTP id y68mr9497763qkd.300.1581547831189;
-        Wed, 12 Feb 2020 14:50:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581547831; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6944588lfp;
+        Wed, 12 Feb 2020 15:09:45 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzajRgZ16FP5EI6HQVv/fCJ/rvQo3BuQMGrcewjPUsxYkzaUomEpKK9NdWD5ebEGAgARt3Q
+X-Received: by 2002:aed:2a32:: with SMTP id c47mr9054903qtd.289.1581548985516;
+        Wed, 12 Feb 2020 15:09:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581548985; cv=none;
         d=google.com; s=arc-20160816;
-        b=o7IXhFYgeahVXzqA8r/Cw6qz3PqrZUSprknfZSiZ3Ju2OE2yeqFqnptBsK7qCF7yg2
-         Z6qxv+cicf4lamrF9VQUBRYmEspJIzWu9EX+3t3F7XRoOA0QTQWc3qoMbwkh9Vkly3x0
-         pjOnNhAhp7u32uNUHWC88ICDw8s5YQxQx2voMgnYL0YuKpVw6u6HBIGIo2/PrKoOwaWH
-         +jwhviucj8wSTjr4PftdNABr3WgzZP5orBC4FeEVNthEpc1TaKmhCAfKd47urFzsd9Zi
-         87/sZ18EqPftvgWJcI14x7srQFxAi89H/aGOySDITCh+At5zOtywy8MudTEuLlLQI3Q4
-         eyUQ==
+        b=jIVAE6isdalZwtTbEGfmuh0ZtugW5ooz0NrRtF2fHaOiNTaWeZFaqY8vU37ggIf6LS
+         q4NLT+mvGAjS4/uiEkI3o2QMxf5tnw3jXeTDRJdqNbTPtOZwPM8EY6xjMGoI1MRV76D/
+         vUpKHk614lf3E6kT1KU6kVe4IRq/MSfZLYiGaCT45Dq5fSKwRLrHuPclu06JrqqkSPnY
+         fHeL/0FiYcBzKOGc3nTKuBIua7UB1McB7BqRgj0o1AZggAp2wPo8wMd6lXdhvClhDZgx
+         vcVoVxWPY3fY+6D5Ts5ECIM+6jvRw3B/z+RWB9MqxWCfHdRlkbLC91YlFIR0/9hVNUy7
+         WcDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=qr50x6WXUegzP8QDAQETMfuqnQLhTICpS5/SjcktxS4=;
-        b=TAS9PI4i8dBLCymOPcu2zGLFdSo2Uf91gHoWvsNpguXazeglUSh8KT+1jprm7d16CS
-         BpMIQD7AQncHt/1Hk6uUtGT5S5+lLv9plTO51/KAiGp0mg/Pd870OATk5VYlQ6Y5T5bL
-         04z8E64jJG9J78Ss/Yl6KW6CWK8NtVlX/qPpOJRcWSFG02SEsD06HQt74pEq7BI+Rlm7
-         d9dHPV4XByBJAWyBP1gy7CAwltIVafOaS0FG/ceB5CiYBMCmLyUzKdfeRdy5g20q9QP2
-         2XbpTakxJLJxEkCYikOwhfgpavYFRGhqPBKR5g3AQBXuyJqVcAtnYvOo0QmeDR4mPigC
-         r3BA==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=AiE1r6YOeFPfRVFFJZLH7Z0csnvt9YqTi2HaF0JL6js=;
+        b=X6J3k5WMObXJbplhbjU6vhE6cxC6KtSu0YzSNke5N/fTKHwOqj6GJdkRrvLZKktg2F
+         2hvhfMad9NDctp3dBV7pslaTI3Y4ciZDCjRlYs8hMnOs5ABONXyBwfYs7iyc0zQyidJn
+         Bg167ByBQ0NdlRUICoEP05PenNmVUke9KNDulBNjsAgCjS8jrs5e/ogBt8lP3SU+PqCE
+         BcFXJxxB85Bx7iwAkNJ82P6FboXpSHSy9A46Czzkic9/cGv0PqvzdeVm1P6Xlgz406IL
+         DVVM4JG8eoYVvd/i+maTeOu3mri+ZyXZ8yG6x9CSDhMg67s8pbYzGtcInIF3jnz67Sqe
+         JVlg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=arEuMBVH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CJFGQmue;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y62si281353qtd.42.2020.02.12.14.50.30
+        by mx.google.com with ESMTPS id z41si316876qtb.134.2020.02.12.15.09.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2020 14:50:31 -0800 (PST)
+        Wed, 12 Feb 2020 15:09:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=arEuMBVH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44468 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CJFGQmue;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44800 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j20py-0002wV-Jh
-	for alex.bennee@linaro.org; Wed, 12 Feb 2020 17:50:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47420)
+	id 1j218b-0001hX-0i
+	for alex.bennee@linaro.org; Wed, 12 Feb 2020 18:09:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51964)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pmathieu@redhat.com>) id 1j20nh-0001Xf-CT
- for qemu-devel@nongnu.org; Wed, 12 Feb 2020 17:48:10 -0500
+ (envelope-from <groeck7@gmail.com>) id 1j218G-0001h4-Aw
+ for qemu-devel@nongnu.org; Wed, 12 Feb 2020 18:09:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pmathieu@redhat.com>) id 1j20ne-0003co-Ja
- for qemu-devel@nongnu.org; Wed, 12 Feb 2020 17:48:08 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:46091
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pmathieu@redhat.com>) id 1j20ne-0003aN-B0
- for qemu-devel@nongnu.org; Wed, 12 Feb 2020 17:48:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581547685;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qr50x6WXUegzP8QDAQETMfuqnQLhTICpS5/SjcktxS4=;
- b=arEuMBVHqUl+AirnGgGn9KBH0YFRbytNAAB7HYs4iSKcnSu/zbWMCfenF42EhpW/0/Z+P2
- plWwilVhSA+VwWUjJ29VObe4vgJBtfuG6s+0eSOgdcFCYGMT0fGup/3TN2MiP/47d9I/cR
- 9U2TNZlV2+kHwXsxd4KR3rBvQ5DX6Tw=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-74-WdjKvxmZNi6k2qPLEzaFxw-1; Wed, 12 Feb 2020 17:48:00 -0500
-Received: by mail-wr1-f69.google.com with SMTP id o9so1461592wrw.14
- for <qemu-devel@nongnu.org>; Wed, 12 Feb 2020 14:48:00 -0800 (PST)
+ (envelope-from <groeck7@gmail.com>) id 1j218F-0006c2-5D
+ for qemu-devel@nongnu.org; Wed, 12 Feb 2020 18:09:24 -0500
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:45970)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1j218E-0006bV-SF; Wed, 12 Feb 2020 18:09:23 -0500
+Received: by mail-pl1-x641.google.com with SMTP id b22so1516784pls.12;
+ Wed, 12 Feb 2020 15:09:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=AiE1r6YOeFPfRVFFJZLH7Z0csnvt9YqTi2HaF0JL6js=;
+ b=CJFGQmuevf3yr30vlaR0aQ/52O4caXfDQI+fQGqQJPI+Dc4lbZX37qf7bMhYybU/ru
+ 2cw3N4JEPC+Br+B3rnqQPnHsBlY0H+8sSKapsqEyixB5GSxkCTKiAzRtehIcThV45Vo/
+ hxOKnkAUe/8M6p7CQ+dk/cAR2VX95KeaOu9BnFfU2fZgWis6JA8eH/6bqsAwpDl42pkt
+ cI/b2uWcvYI+WaMwAylE/G6xpS6PHBnelaw/ulL5PLHgbQRuRuFQ/V1EbjIyj4/8LVtF
+ 1qNJcBA74w5zBViiEmwVlnqu+X/noEYApZHoA5pK5hQJINdpHffO5NWqR3wkp84UmtqQ
+ MkNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=qr50x6WXUegzP8QDAQETMfuqnQLhTICpS5/SjcktxS4=;
- b=adtTMho87+BldETUwyvgP7ZDx+kWegixVQlSKgmbjpw0VVQkfZ5RKxF/IUmTNC0+YT
- b+4wI7S2Uxrx61LZjVGEoVZ+jWzoVOXUUvRvzLyMTWkmKGp9YXaw9skMO/85CXXaWn8L
- Hb1+v+hgKSllb6ihONcTMMtj8C7Kcm+GVG6JbC4x/ANAus4s2rdJl5oUdpCPsR6bmeLp
- 18/LYyeuwogv/byuh4pT3bG1TLT8mBYfGqPkG2Nj+vHwFLnzuigJrI7D1Ce4bZEKL9xD
- dv6BUOn8Qo9IUhvpgBIgjvCkSogF5ueYmkOEC9Jfe029OAO9CnLaruaV967NvWwlA5/8
- 9gpQ==
-X-Gm-Message-State: APjAAAUkUwNhHCsp72IIK+EInDuzMmWh+KaM+ig7c14pEN79TC/9H5h8
- CTlWUsbx5yCFXwDyNOCdU3plqgKHFVuanVzM9h0oegvbtnn04dU2jGBQihJ6ONLbkRydZAnBOSp
- /hozxugEkdGEmX8lG9A4iqgjU/dne8GM=
-X-Received: by 2002:a05:600c:291d:: with SMTP id
- i29mr1406992wmd.39.1581547679064; 
- Wed, 12 Feb 2020 14:47:59 -0800 (PST)
-X-Received: by 2002:a05:600c:291d:: with SMTP id
- i29mr1406969wmd.39.1581547678738; 
- Wed, 12 Feb 2020 14:47:58 -0800 (PST)
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :references:mime-version:content-disposition
+ :content-transfer-encoding:in-reply-to:user-agent;
+ bh=AiE1r6YOeFPfRVFFJZLH7Z0csnvt9YqTi2HaF0JL6js=;
+ b=fsvjJEed+OGQmc6tqO7caOyxlvg8APtdoGtM+AgfVAUEmHNQYuGnvovkbNcBkrPTFg
+ 12ibuKw5ppjX6VWUxtyxOdaG1A/sbt1qPkrL0XfRHf6O60PFpYe4npIGM0djGVmEDaN3
+ 3bZk5mFiV2L6jZWSbhiX14cYoYSX0lSfJWkNY6eAANdb/uzQC/7azmuImKhEucINr97N
+ 4J+1vMsx86K5NQ4CTUjalDvzrFZwo4rmdfpOxfxyM09YRgxx9vCR0FGNLe76Xgoddkrk
+ NH5fCWcZbD0H0orbfCXHBMU5iwQRD8WFL8j1AhjHrj79vbB0zV4MpSp/FA9+fg3lkmFX
+ /1KA==
+X-Gm-Message-State: APjAAAUPXV73ukhNTJW58aNgT3BkB/cQywYuLnmewvyE/Z8c6IX8GyM8
+ nG6Wrdck6pU3DRkQjbotHyC7Z1EZ
+X-Received: by 2002:a17:90a:c390:: with SMTP id
+ h16mr1599787pjt.131.1581548961314; 
+ Wed, 12 Feb 2020 15:09:21 -0800 (PST)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id d3sm283679pjx.10.2020.02.12.15.09.19
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Wed, 12 Feb 2020 15:09:20 -0800 (PST)
+Date: Wed, 12 Feb 2020 15:09:18 -0800
+From: Guenter Roeck <linux@roeck-us.net>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Subject: Re: Question about (and problem with) pflash data access
+Message-ID: <20200212230918.GA27242@roeck-us.net>
+References: <20200212184648.GA584@roeck-us.net>
+ <504e7722-0b60-ec02-774d-26a7320e5309@redhat.com>
 MIME-Version: 1.0
-References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
- <20200108200020.4745-8-nieklinnenbank@gmail.com>
- <8be03fbb-74f2-e688-76b1-ab504f25f8e4@redhat.com>
- <20200120175918.GA2949@minyard.net>
- <CAPan3WpJ_L7OyiC0hod0e436xOUZ2sHCfQqRmAsvD7hTPrBsDg@mail.gmail.com>
- <20200203131017.GE2626@minyard.net>
- <CAPan3Wr=JFwHPChPfN6kng9ZZhrbprc8ZuXjHS5cErPuV-FzJg@mail.gmail.com>
- <CAPan3WrE77GePz-mgz1otf1iiK8nDZ+RK2NF5ueRoHbDmpS1_w@mail.gmail.com>
-In-Reply-To: <CAPan3WrE77GePz-mgz1otf1iiK8nDZ+RK2NF5ueRoHbDmpS1_w@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Date: Wed, 12 Feb 2020 23:47:47 +0100
-Message-ID: <CAP+75-XQKisiLaTFXc2JuCvORkfFjfs0UPzjzyj1PrKGScR7Ow@mail.gmail.com>
-Subject: Re: [PATCH v3 07/17] hw/arm/allwinner: add Security Identifier device
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
-X-MC-Unique: WdjKvxmZNi6k2qPLEzaFxw-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <504e7722-0b60-ec02-774d-26a7320e5309@redhat.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::641
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,241 +112,98 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Yury Kotov <yury-kotov@yandex-team.ru>, qemu-arm <qemu-arm@nongnu.org>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, qemu-devel@nongnu.org, Max Reitz <mreitz@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ Jean-Christophe PLAGNIOL-VILLARD <plagnioj@jcrosoft.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IkPVTA6OE5eg
+X-TUID: ViGN7jSqHt1N
 
-)-.On Wed, Feb 12, 2020 at 10:31 PM Niek Linnenbank
-<nieklinnenbank@gmail.com> wrote:
->
-> Hi Corey,
->
-> On Thu, Feb 6, 2020 at 10:09 PM Niek Linnenbank <nieklinnenbank@gmail.com=
-> wrote:
->>
->> Hi Corey,
->>
->> On Mon, Feb 3, 2020 at 2:10 PM Corey Minyard <cminyard@mvista.com> wrote=
-:
->>>
->>> On Sun, Feb 02, 2020 at 10:27:49PM +0100, Niek Linnenbank wrote:
->>> > Hi Corey,
->>> >
->>> > Thanks for reviewing!
->>> >
->>> > On Mon, Jan 20, 2020 at 6:59 PM Corey Minyard <cminyard@mvista.com> w=
-rote:
->>> >
->>> > > On Sat, Jan 18, 2020 at 04:25:08PM +0100, Philippe Mathieu-Daud=C3=
-=A9 wrote:
->>> > > > Cc'ing Corey/David for good advices about using UUID.
->>> > >
->>> > > Is there any reason you didn't use the built-in qemu UUID for this?=
-  It
->>> > > would simplify things in general.
->>> > >
->>> >
->>> > Currently the Allwinner SID device is using the QemuUUID type from
->>> > include/qemu/uuid.h.
->>> > Is that the build-in UUID you are referring to or should I use someth=
-ing
->>> > else?
->>>
->>> You are using the QemuUUID type, which is of course what you should do,
->>> but you aren't using the UUID generated by qemu (at least that I can fi=
-nd).
->>> That in include/sysemu/sysemu.h and is named qemu_uuid.  Whether you
->>> should use that or not depends on your needs.  If you just need some
->>> uuid, then that's what you should probably use.  If you need something
->>> the user can individually control for this device, for instance, then
->>> that probably won't do.
->>
->>
->> Ah I did not know about the qemu_uuid variable, thanks for pointing that=
- out.
->> Basically the SID identifier is a number that is unique for each board t=
-hat comes
->> out of the factory. It is currently used by U-Boot to as input to genera=
-te a MAC address.
->>
->> If I understand correctly, qemu_uuid is optional and by default zero.
->> However the SID value should not be zero, as otherwise U-Boot can't pick=
- a MAC address
->> resulting in a non-working ethernet device.
->>
->> Currently the hw/arm/orangepi.c machine specifies a fixed SID to be used=
- for the emulated board,
->> also containing a prefix (8100c002) that indicates the H3 chipset. One t=
-hing that I am strugling with is that
+On Wed, Feb 12, 2020 at 10:39:30PM +0100, Philippe Mathieu-Daudé wrote:
+> Cc'ing Jean-Christophe and Peter.
+> 
+> On 2/12/20 7:46 PM, Guenter Roeck wrote:
+> > Hi,
+> > 
+> > I have been playing with pflash recently. For the most part it works,
+> > but I do have an odd problem when trying to instantiate pflash on sx1.
+> > 
+> > My data file looks as follows.
+> > 
+> > 0000000 0001 0000 aaaa aaaa 5555 5555 0000 0000
+> > 0000020 0000 0000 0000 0000 0000 0000 0000 0000
+> > *
+> > 0002000 0002 0000 aaaa aaaa 5555 5555 0000 0000
+> > 0002020 0000 0000 0000 0000 0000 0000 0000 0000
+> > *
+> > 0004000 0003 0000 aaaa aaaa 5555 5555 0000 0000
+> > 0004020 0000 0000 0000 0000 0000 0000 0000 0000
+> > ...
+> > 
+> > In the sx1 machine, this becomes:
+> > 
+> > 0000000 6001 0000 aaaa aaaa 5555 5555 0000 0000
+> > 0000020 0000 0000 0000 0000 0000 0000 0000 0000
+> > *
+> > 0002000 6002 0000 aaaa aaaa 5555 5555 0000 0000
+> > 0002020 0000 0000 0000 0000 0000 0000 0000 0000
+> > *
+> > 0004000 6003 0000 aaaa aaaa 5555 5555 0000 0000
+> > 0004020 0000 0000 0000 0000 0000 0000 0000 0000
+> > *
+> > ...
+> > 
+> > pflash is instantiated with "-drive file=flash.32M.test,format=raw,if=pflash".
+> > 
+> > I don't have much success with pflash tracing - data accesses don't
+> > show up there.
+> > 
+> > I did find a number of problems with the sx1 emulation, but I have no clue
+> > what is going on with pflash. As far as I can see pflash works fine on
+> > other machines. Can someone give me a hint what to look out for ?
+> 
+> This is specific to the SX1, introduced in commit 997641a84ff:
+> 
+>  64 static uint64_t static_read(void *opaque, hwaddr offset,
+>  65                             unsigned size)
+>  66 {
+>  67     uint32_t *val = (uint32_t *) opaque;
+>  68     uint32_t mask = (4 / size) - 1;
+>  69
+>  70     return *val >> ((offset & mask) << 3);
+>  71 }
+> 
+> Only guessing, this looks like some hw parity, and I imagine you need to
+> write the parity bits in your flash.32M file before starting QEMU, then it
+> would appear "normal" within the guest.
+> 
+I thought this might be related, but that is not the case. I added log
+messages, and even ran the code in gdb. static_read() and static_write()
+are not executed.
 
-Suggestion while reading this, you might display a warning if the user
-provided UUID doesn't start with 8100c002.
+Also,
 
->> I'm not able to override the property using '-global', if hw/arm/orangep=
-i.c initializes the property with qdev_prop_set_string:
->>
->> $ qemu-system-arm -M orangepi-pc -kernel u-boot -nographic -nic user \
->> -global allwinner-sid.identifier=3D8100c002-0001-0002-0003-000044556688
->>
->> If I don't set the property in hw/arm/orangepi.c, I can set it with '-gl=
-obal'. Do you perhaps have a
->> recommendation how to improve that? Basically what is needed is that the=
- machine sets the default
->> property including the chip prefix, and that the user can override it. A=
-lthough it is not required for a
->> working emulated board, it would be a nice-to-have that the user can set=
- it.
->
->
-> FYI and possibly others who have a similar usecase, I figured out how to =
-do this. In the machine init function,
-> after creating the new SoC object, simply check if the identifier has a v=
-alue:
->
-> +    if (qemu_uuid_is_null(&s->h3->sid.identifier)) {
-> +        qdev_prop_set_string(DEVICE(s->h3), "identifier",
-> +                             "8100c002-0001-0002-0003-000044556677");
+    memory_region_init_io(&cs[0], NULL, &static_ops, &cs0val,
+                          "sx1.cs0", OMAP_CS0_SIZE - flash_size);
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    memory_region_add_subregion(address_space,
+                                OMAP_CS0_BASE + flash_size, &cs[0]);
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Similarly, display a warning "No UUID provided, using default one..."
-(or generate one 8100c002-XXX)?
+suggests that the code is only executed for memory accesses _after_
+the actual flash. The memory tree is:
 
-> +    }
->
-> That way, if the user passed -global to override it, the machine will not=
- overrule the user's value
-> and by default the machine sets an identifier containing the H3 specific =
-chip prefix.
->
-[...]
->>> > > > > --- /dev/null
->>> > > > > +++ b/hw/misc/allwinner-sid.c
->>> > > > > @@ -0,0 +1,170 @@
->>> > > > > +/*
->>> > > > > + * Allwinner Security ID emulation
->>> > > > > + *
->>> > > > > + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.co=
-m>
->>> > > > > + *
->>> > > > > + * This program is free software: you can redistribute it and/=
-or
->>> > > modify
->>> > > > > + * it under the terms of the GNU General Public License as pub=
-lished
->>> > > by
->>> > > > > + * the Free Software Foundation, either version 2 of the Licen=
-se, or
->>> > > > > + * (at your option) any later version.
->>> > > > > + *
->>> > > > > + * This program is distributed in the hope that it will be use=
-ful,
->>> > > > > + * but WITHOUT ANY WARRANTY; without even the implied warranty=
- of
->>> > > > > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See t=
-he
->>> > > > > + * GNU General Public License for more details.
->>> > > > > + *
->>> > > > > + * You should have received a copy of the GNU General Public L=
-icense
->>> > > > > + * along with this program.  If not, see <
->>> > > http://www.gnu.org/licenses/>.
->>> > > > > + */
->>> > > > > +
->>> > > > > +#include "qemu/osdep.h"
->>> > > > > +#include "qemu/units.h"
->>> > > > > +#include "hw/sysbus.h"
->>> > > > > +#include "migration/vmstate.h"
->>> > > > > +#include "qemu/log.h"
->>> > > > > +#include "qemu/module.h"
->>> > > > > +#include "qemu/guest-random.h"
->>> > > > > +#include "qapi/error.h"
->>> > > > > +#include "hw/qdev-properties.h"
->>> > > > > +#include "hw/misc/allwinner-sid.h"
->>> > > > > +#include "trace.h"
->>> > > > > +
->>> > > > > +/* SID register offsets */
->>> > > > > +enum {
->>> > > > > +    REG_PRCTL =3D 0x40,   /* Control */
->>> > > > > +    REG_RDKEY =3D 0x60,   /* Read Key */
->>> > > > > +};
->>> > > > > +
->>> > > > > +/* SID register flags */
->>> > > > > +enum {
->>> > > > > +    REG_PRCTL_WRITE   =3D 0x0002, /* Unknown write flag */
->>> > > > > +    REG_PRCTL_OP_LOCK =3D 0xAC00, /* Lock operation */
->>> > > > > +};
->>> > > > > +
->>> > > > > +static uint64_t allwinner_sid_read(void *opaque, hwaddr offset=
-,
->>> > > > > +                                   unsigned size)
->>> > > > > +{
->>> > > > > +    const AwSidState *s =3D AW_SID(opaque);
->>> > > > > +    uint64_t val =3D 0;
->>> > > > > +
->>> > > > > +    switch (offset) {
->>> > > > > +    case REG_PRCTL:    /* Control */
->>> > > > > +        val =3D s->control;
->>> > > > > +        break;
->>> > > > > +    case REG_RDKEY:    /* Read Key */
->>> > > > > +        val =3D s->rdkey;
->>> > > > > +        break;
->>> > > > > +    default:
->>> > > > > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offs=
-et
->>> > > 0x%04x\n",
->>> > > > > +                      __func__, (uint32_t)offset);
->>> > > > > +        return 0;
->>> > > > > +    }
->>> > > > > +
->>> > > > > +    trace_allwinner_sid_read(offset, val, size);
->>> > > > > +
->>> > > > > +    return val;
->>> > > > > +}
->>> > > > > +
->>> > > > > +static void allwinner_sid_write(void *opaque, hwaddr offset,
->>> > > > > +                                uint64_t val, unsigned size)
->>> > > > > +{
->>> > > > > +    AwSidState *s =3D AW_SID(opaque);
->>> > > > > +
->>> > > > > +    trace_allwinner_sid_write(offset, val, size);
->>> > > > > +
->>> > > > > +    switch (offset) {
->>> > > > > +    case REG_PRCTL:    /* Control */
->>> > > > > +        s->control =3D val;
->>> > > > > +
->>> > > > > +        if ((s->control & REG_PRCTL_OP_LOCK) &&
->>> > > > > +            (s->control & REG_PRCTL_WRITE)) {
->>> > > > > +            uint32_t id =3D s->control >> 16;
->>> > > > > +
->>> > > > > +            if (id < sizeof(QemuUUID)) {
->>> > > > > +                s->rdkey =3D (s->identifier.data[id]) |
->>> > > > > +                           (s->identifier.data[id + 1] << 8) |
->>> > > > > +                           (s->identifier.data[id + 2] << 16) =
-|
->>> > > > > +                           (s->identifier.data[id + 3] << 24);
+memory-region: system
+  0000000000000000-ffffffffffffffff (prio 0, i/o): system
+    0000000000000000-0000000001ffffff (prio 0, romd): omap_sx1.flash0-1
+    0000000000000000-0000000001ffffff (prio 0, rom): omap_sx1.flash0-0
+    0000000002000000-0000000003ffffff (prio 0, i/o): sx1.cs0
 
-Maybe you want:
+I thought that the dual memory assignment (omap_sx1.flash0-1 and
+omap_sx1.flash0-0) might play a role, but removing that didn't make
+a difference either (not that I have any idea what it is supposed
+to be used for).
 
-  s->rdkey =3D ldl_le_p(s->identifier.data);
-
->>> > > > > +            }
->>> > > > > +        }
->>> > > > > +        s->control &=3D ~REG_PRCTL_WRITE;
->>> > > > > +        break;
->>> > > > > +    case REG_RDKEY:    /* Read Key */
->>> > > > > +        break;
->>> > > > > +    default:
->>> > > > > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offs=
-et
->>> > > 0x%04x\n",
->>> > > > > +                      __func__, (uint32_t)offset);
->>> > > > > +        break;
->>> > > > > +    }
->>> > > > > +}
-> > > > > +}
-[...]
-
+Thanks,
+Guenter

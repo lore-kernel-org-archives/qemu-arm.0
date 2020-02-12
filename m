@@ -1,304 +1,363 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6907402lfp;
-        Wed, 12 Feb 2020 14:23:20 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwJytrg7f6o9i28IdwuT+ehy1CQQVcGC6VCyR5RKpQADl6STT9oN1lnw1YIQKCiDs2Sd5l1
-X-Received: by 2002:a17:906:b208:: with SMTP id p8mr13610926ejz.191.1581546200155;
-        Wed, 12 Feb 2020 14:23:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581546200; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6928193lfp;
+        Wed, 12 Feb 2020 14:50:31 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxsPUvER7Dk3TdNEKK0K6NFT/5cVPw3Gu9vy6d5toEU3O8JFsw0SLY+8VNKQx7x0hFQu3rG
+X-Received: by 2002:a37:9647:: with SMTP id y68mr9497763qkd.300.1581547831189;
+        Wed, 12 Feb 2020 14:50:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581547831; cv=none;
         d=google.com; s=arc-20160816;
-        b=T9+BmkaReXVgmoPpenUXZ/bdR1Lmme5azl2Qx7L0WvsoBaWG1AyRFPjPC4ekDqud6X
-         Jmx0v/JQIjMLJCC7VpSyti9viYfqxQfM+AhLWnVPDcJV3sJRkk7fhripg5Ilh54Peaq2
-         bKq9wiMQj+2AgK1TuzREGqAq3YyTGlsnVlcJm8m5Uknj6OUhiGkNaDFn/2AXSTryZFs4
-         /WLyMFe1Z1xo9bk0Z0WuQIijkAbJPy26I6q/o/6AkhXecwIr7dgf5oQulmAjYm2Axspi
-         OAKLiAovvVJ9HlwI/wGwQ84TIUesK04nDE/fg/sTmojsRfNdycRRFhV4z9f84LsfNsV0
-         aOaQ==
+        b=o7IXhFYgeahVXzqA8r/Cw6qz3PqrZUSprknfZSiZ3Ju2OE2yeqFqnptBsK7qCF7yg2
+         Z6qxv+cicf4lamrF9VQUBRYmEspJIzWu9EX+3t3F7XRoOA0QTQWc3qoMbwkh9Vkly3x0
+         pjOnNhAhp7u32uNUHWC88ICDw8s5YQxQx2voMgnYL0YuKpVw6u6HBIGIo2/PrKoOwaWH
+         +jwhviucj8wSTjr4PftdNABr3WgzZP5orBC4FeEVNthEpc1TaKmhCAfKd47urFzsd9Zi
+         87/sZ18EqPftvgWJcI14x7srQFxAi89H/aGOySDITCh+At5zOtywy8MudTEuLlLQI3Q4
+         eyUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=wmONONmIzvyz1sX4qporTHqmAAEnRWbKBVxy8HzX9fE=;
-        b=UGQ1MtYCN777lKLTdZlkN7BYO1Dhr9L7u8st/sDYHzraYB2ejPOvTrlntoYbmCyzNW
-         P5KI4DM8pKeYGrgWpCICuznRUlaJoCzFHMNXP55H5+WexSyEUPjxQDuOClrF25nuCLq7
-         z4EjQxMa5RlwIZEtxpT6ghZu0k/Yco5nwpHlANJuqJQzLTvrpUqmbCzy+KBd2Os2oEJS
-         AlJfzO3LHSm55GuUsjOnn64c4WIQr3gOyzmKsGRxpqvoY75jcxpwa4UVCeGRiFuzuf9n
-         U95TSykUY+x1lERoyoKBv7OMANtRT0kL8DmiSnqjRlL6ONMGp7l6sUSlVmPSRq+ZVnYS
-         eWaQ==
+        bh=qr50x6WXUegzP8QDAQETMfuqnQLhTICpS5/SjcktxS4=;
+        b=TAS9PI4i8dBLCymOPcu2zGLFdSo2Uf91gHoWvsNpguXazeglUSh8KT+1jprm7d16CS
+         BpMIQD7AQncHt/1Hk6uUtGT5S5+lLv9plTO51/KAiGp0mg/Pd870OATk5VYlQ6Y5T5bL
+         04z8E64jJG9J78Ss/Yl6KW6CWK8NtVlX/qPpOJRcWSFG02SEsD06HQt74pEq7BI+Rlm7
+         d9dHPV4XByBJAWyBP1gy7CAwltIVafOaS0FG/ceB5CiYBMCmLyUzKdfeRdy5g20q9QP2
+         2XbpTakxJLJxEkCYikOwhfgpavYFRGhqPBKR5g3AQBXuyJqVcAtnYvOo0QmeDR4mPigC
+         r3BA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D03zxkT1;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id y1si61549ejj.31.2020.02.12.14.23.19
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=arEuMBVH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y62si281353qtd.42.2020.02.12.14.50.30
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 12 Feb 2020 14:23:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 12 Feb 2020 14:50:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D03zxkT1;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=arEuMBVH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44468 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j20py-0002wV-Jh
+	for alex.bennee@linaro.org; Wed, 12 Feb 2020 17:50:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47420)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <pmathieu@redhat.com>) id 1j20nh-0001Xf-CT
+ for qemu-devel@nongnu.org; Wed, 12 Feb 2020 17:48:10 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <pmathieu@redhat.com>) id 1j20ne-0003co-Ja
+ for qemu-devel@nongnu.org; Wed, 12 Feb 2020 17:48:08 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:46091
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <pmathieu@redhat.com>) id 1j20ne-0003aN-B0
+ for qemu-devel@nongnu.org; Wed, 12 Feb 2020 17:48:06 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1581546199;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=wmONONmIzvyz1sX4qporTHqmAAEnRWbKBVxy8HzX9fE=;
-	b=D03zxkT13tGwKdiKTqkC6rUgB8zuYK8aRN/ineKE1uiXrC6FgBDKg0Y+dv1m3U2uQ5awod
-	2BJjCRXlJyOIqQ4E3IhvmJYdxYyxiap2YZQWjqGOeVIGqXQ/RoGVNg/NttA+HUG3p3clTO
-	mVSmcpsLdBJvSGJgWIVZP/L0eZKEzwY=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-227-zO2NEFKMNGiPuBS6Jj3Waw-1; Wed, 12 Feb 2020 17:23:13 -0500
-Received: by mail-wm1-f69.google.com with SMTP id f66so1522517wmf.9
-        for <alex.bennee@linaro.org>; Wed, 12 Feb 2020 14:23:13 -0800 (PST)
+ s=mimecast20190719; t=1581547685;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qr50x6WXUegzP8QDAQETMfuqnQLhTICpS5/SjcktxS4=;
+ b=arEuMBVHqUl+AirnGgGn9KBH0YFRbytNAAB7HYs4iSKcnSu/zbWMCfenF42EhpW/0/Z+P2
+ plWwilVhSA+VwWUjJ29VObe4vgJBtfuG6s+0eSOgdcFCYGMT0fGup/3TN2MiP/47d9I/cR
+ 9U2TNZlV2+kHwXsxd4KR3rBvQ5DX6Tw=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-74-WdjKvxmZNi6k2qPLEzaFxw-1; Wed, 12 Feb 2020 17:48:00 -0500
+Received: by mail-wr1-f69.google.com with SMTP id o9so1461592wrw.14
+ for <qemu-devel@nongnu.org>; Wed, 12 Feb 2020 14:48:00 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=Juo60NxFwNcwOYj8cAHnsnsJENPQ91B29FvAwEZvxNM=;
-        b=YupXEYJeZaRkXNxbov9RO5Sg0AlA0D7Tjqv//WbUuLg6YJ3Qp+HkwJDLjaIqPJqhoD
-         CsmFwYTM8H5ZTksAOoWThMWWS9lc91NluBF68bMD/5mPoTH3/rz7P6zVgxLIhu82aF1W
-         Onn/DzlSDlKrhamhyREB6fM7eRy7gTfM2hgQdD52Jienp8Pohij9ZQBo8W2zaY1M8fA/
-         YWmQL5/Zrd89BC7vzHPf0YbeNWmjw9rpG3rqyK1foE540vCHq7kSGw2Cv2Wf+G4meL3P
-         GVKT7vsAaTNh058hd+iKopHrYXz1eQUGHaHpVErFF9LGIa3IZP7dqT9kzbBykprJdRjD
-         4alQ==
-X-Gm-Message-State: APjAAAWNjlYSz9dggRExLrtUpwO2kLwsRaq0krlrKtzfUImdCM4tv3uf
-	hrYfjXysqZxedyTMvA++EEt6qInRP0+gPMoO8rmRejOX4ytYUo2pJHaxxnHDFZDzGm9ltx5VaLi
-	cDOucf8AddYVoDo69
-X-Received: by 2002:a5d:488c:: with SMTP id g12mr17685933wrq.67.1581546192209;
-        Wed, 12 Feb 2020 14:23:12 -0800 (PST)
-X-Received: by 2002:a5d:488c:: with SMTP id g12mr17685904wrq.67.1581546191897;
-        Wed, 12 Feb 2020 14:23:11 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net. [88.21.202.78])
-        by smtp.gmail.com with ESMTPSA id a8sm278364wmc.20.2020.02.12.14.23.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 12 Feb 2020 14:23:11 -0800 (PST)
-Subject: Re: [PATCH v4 04/20] hw/arm/allwinner-h3: add USB host controller
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>, jasowang@redhat.com,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, imammedo@redhat.com
-References: <20200119005102.3847-1-nieklinnenbank@gmail.com>
- <20200119005102.3847-5-nieklinnenbank@gmail.com>
- <39b5cc92-df42-50a4-72ba-10850aa00b04@redhat.com>
- <851e2620-82f8-b911-7641-f1690238cc2a@redhat.com>
- <CAPan3WqamSU7GdTQ5q-Z2KqBpZBTy3CE0p0MUW2zWOe7dKseTA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <61567d70-bb80-045b-0500-01158487f83e@redhat.com>
-Date: Wed, 12 Feb 2020 23:23:10 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=qr50x6WXUegzP8QDAQETMfuqnQLhTICpS5/SjcktxS4=;
+ b=adtTMho87+BldETUwyvgP7ZDx+kWegixVQlSKgmbjpw0VVQkfZ5RKxF/IUmTNC0+YT
+ b+4wI7S2Uxrx61LZjVGEoVZ+jWzoVOXUUvRvzLyMTWkmKGp9YXaw9skMO/85CXXaWn8L
+ Hb1+v+hgKSllb6ihONcTMMtj8C7Kcm+GVG6JbC4x/ANAus4s2rdJl5oUdpCPsR6bmeLp
+ 18/LYyeuwogv/byuh4pT3bG1TLT8mBYfGqPkG2Nj+vHwFLnzuigJrI7D1Ce4bZEKL9xD
+ dv6BUOn8Qo9IUhvpgBIgjvCkSogF5ueYmkOEC9Jfe029OAO9CnLaruaV967NvWwlA5/8
+ 9gpQ==
+X-Gm-Message-State: APjAAAUkUwNhHCsp72IIK+EInDuzMmWh+KaM+ig7c14pEN79TC/9H5h8
+ CTlWUsbx5yCFXwDyNOCdU3plqgKHFVuanVzM9h0oegvbtnn04dU2jGBQihJ6ONLbkRydZAnBOSp
+ /hozxugEkdGEmX8lG9A4iqgjU/dne8GM=
+X-Received: by 2002:a05:600c:291d:: with SMTP id
+ i29mr1406992wmd.39.1581547679064; 
+ Wed, 12 Feb 2020 14:47:59 -0800 (PST)
+X-Received: by 2002:a05:600c:291d:: with SMTP id
+ i29mr1406969wmd.39.1581547678738; 
+ Wed, 12 Feb 2020 14:47:58 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAPan3WqamSU7GdTQ5q-Z2KqBpZBTy3CE0p0MUW2zWOe7dKseTA@mail.gmail.com>
-Content-Language: en-US
-X-MC-Unique: zO2NEFKMNGiPuBS6Jj3Waw-1
+References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
+ <20200108200020.4745-8-nieklinnenbank@gmail.com>
+ <8be03fbb-74f2-e688-76b1-ab504f25f8e4@redhat.com>
+ <20200120175918.GA2949@minyard.net>
+ <CAPan3WpJ_L7OyiC0hod0e436xOUZ2sHCfQqRmAsvD7hTPrBsDg@mail.gmail.com>
+ <20200203131017.GE2626@minyard.net>
+ <CAPan3Wr=JFwHPChPfN6kng9ZZhrbprc8ZuXjHS5cErPuV-FzJg@mail.gmail.com>
+ <CAPan3WrE77GePz-mgz1otf1iiK8nDZ+RK2NF5ueRoHbDmpS1_w@mail.gmail.com>
+In-Reply-To: <CAPan3WrE77GePz-mgz1otf1iiK8nDZ+RK2NF5ueRoHbDmpS1_w@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Date: Wed, 12 Feb 2020 23:47:47 +0100
+Message-ID: <CAP+75-XQKisiLaTFXc2JuCvORkfFjfs0UPzjzyj1PrKGScR7Ow@mail.gmail.com>
+Subject: Re: [PATCH v3 07/17] hw/arm/allwinner: add Security Identifier device
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
+X-MC-Unique: WdjKvxmZNi6k2qPLEzaFxw-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: aDmF/NTj5uBJ
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <cminyard@mvista.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Yury Kotov <yury-kotov@yandex-team.ru>, qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IkPVTA6OE5eg
 
-On 2/2/20 8:33 PM, Niek Linnenbank wrote:
-> On Sun, Jan 19, 2020 at 7:44 PM Philippe Mathieu-Daud=C3=A9=20
-> <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
->=20
->     On 1/19/20 7:37 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->      > On 1/19/20 1:50 AM, Niek Linnenbank wrote:
->      >> The Allwinner H3 System on Chip contains multiple USB 2.0 bus
->      >> connections which provide software access using the Enhanced
->      >> Host Controller Interface (EHCI) and Open Host Controller
->      >> Interface (OHCI) interfaces. This commit adds support for
->      >> both interfaces in the Allwinner H3 System on Chip.
->      >>
->      >> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com
->     <mailto:nieklinnenbank@gmail.com>>
->      >> Reviewed-by: Gerd Hoffmann <kraxel@redhat.com
->     <mailto:kraxel@redhat.com>>
->      >> ---
->      >> =C2=A0 hw/usb/hcd-ehci.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 1 +
->      >> =C2=A0 include/hw/arm/allwinner-h3.h |=C2=A0 8 ++++++
->      >> =C2=A0 hw/arm/allwinner-h3.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 | 52
->     ++++++++++++++++++++++++++++++++---
->      >> =C2=A0 hw/usb/hcd-ehci-sysbus.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 1=
-7 ++++++++++++
->      >> =C2=A0 4 files changed, 74 insertions(+), 4 deletions(-)
->      >>
->      >> diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
->      >> index 0298238f0b..edb59311c4 100644
->      >> --- a/hw/usb/hcd-ehci.h
->      >> +++ b/hw/usb/hcd-ehci.h
->      >> @@ -342,6 +342,7 @@ typedef struct EHCIPCIState {
->      >> =C2=A0 #define TYPE_SYS_BUS_EHCI "sysbus-ehci-usb"
->      >> =C2=A0 #define TYPE_PLATFORM_EHCI "platform-ehci-usb"
->      >> =C2=A0 #define TYPE_EXYNOS4210_EHCI "exynos4210-ehci-usb"
->      >> +#define TYPE_AW_H3_EHCI "aw-h3-ehci-usb"
->      >> =C2=A0 #define TYPE_TEGRA2_EHCI "tegra2-ehci-usb"
->      >> =C2=A0 #define TYPE_PPC4xx_EHCI "ppc4xx-ehci-usb"
->      >> =C2=A0 #define TYPE_FUSBH200_EHCI "fusbh200-ehci-usb"
->      >> diff --git a/include/hw/arm/allwinner-h3.h
->      >> b/include/hw/arm/allwinner-h3.h
->      >> index abdc20871a..4f4dcbcd17 100644
->      >> --- a/include/hw/arm/allwinner-h3.h
->      >> +++ b/include/hw/arm/allwinner-h3.h
->      >> @@ -56,6 +56,14 @@ enum {
->      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AW_H3_SRAM_A1,
->      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AW_H3_SRAM_A2,
->      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AW_H3_SRAM_C,
->      >> +=C2=A0=C2=A0=C2=A0 AW_H3_EHCI0,
->      >> +=C2=A0=C2=A0=C2=A0 AW_H3_OHCI0,
->      >> +=C2=A0=C2=A0=C2=A0 AW_H3_EHCI1,
->      >> +=C2=A0=C2=A0=C2=A0 AW_H3_OHCI1,
->      >> +=C2=A0=C2=A0=C2=A0 AW_H3_EHCI2,
->      >> +=C2=A0=C2=A0=C2=A0 AW_H3_OHCI2,
->      >> +=C2=A0=C2=A0=C2=A0 AW_H3_EHCI3,
->      >> +=C2=A0=C2=A0=C2=A0 AW_H3_OHCI3,
->      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AW_H3_CCU,
->      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AW_H3_PIT,
->      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AW_H3_UART0,
->      >> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
->      >> index 8df8e3e05e..f360625ee9 100644
->      >> --- a/hw/arm/allwinner-h3.c
->      >> +++ b/hw/arm/allwinner-h3.c
->      >> @@ -28,6 +28,7 @@
->      >> =C2=A0 #include "hw/sysbus.h"
->      >> =C2=A0 #include "hw/char/serial.h"
->      >> =C2=A0 #include "hw/misc/unimp.h"
->      >> +#include "hw/usb/hcd-ehci.h"
->      >> =C2=A0 #include "sysemu/sysemu.h"
->      >> =C2=A0 #include "hw/arm/allwinner-h3.h"
->      >> @@ -36,6 +37,14 @@ const hwaddr allwinner_h3_memmap[] =3D {
->      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [AW_H3_SRAM_A1]=C2=A0=C2=A0=C2=A0 =
-=3D 0x00000000,
->      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [AW_H3_SRAM_A2]=C2=A0=C2=A0=C2=A0 =
-=3D 0x00044000,
->      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [AW_H3_SRAM_C]=C2=A0=C2=A0=C2=A0=
-=C2=A0 =3D 0x00010000,
->      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_EHCI0]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-=3D 0x01c1a000,
->      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_OHCI0]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-=3D 0x01c1a400,
->      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_EHCI1]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-=3D 0x01c1b000,
->      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_OHCI1]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-=3D 0x01c1b400,
->      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_EHCI2]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-=3D 0x01c1c000,
->      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_OHCI2]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-=3D 0x01c1c400,
->      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_EHCI3]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-=3D 0x01c1d000,
->      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_OHCI3]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-=3D 0x01c1d400,
->      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [AW_H3_CCU]=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 =3D 0x01c20000,
->      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [AW_H3_PIT]=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 =3D 0x01c20c00,
->      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [AW_H3_UART0]=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 =3D 0x01c28000,
->      >> @@ -73,10 +82,10 @@ struct AwH3Unimplemented {
->      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 { "msgbox",=C2=A0=C2=A0=C2=A0 0x01=
-c17000, 4 * KiB },
->      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 { "spinlock",=C2=A0 0x01c18000, 4 =
-* KiB },
->      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 { "usb0-otg",=C2=A0 0x01c19000, 4 =
-* KiB },
->      >> -=C2=A0=C2=A0=C2=A0 { "usb0",=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0x01c=
-1a000, 4 * KiB },
->      >> -=C2=A0=C2=A0=C2=A0 { "usb1",=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0x01c=
-1b000, 4 * KiB },
->      >> -=C2=A0=C2=A0=C2=A0 { "usb2",=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0x01c=
-1c000, 4 * KiB },
->      >> -=C2=A0=C2=A0=C2=A0 { "usb3",=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0x01c=
-1d000, 4 * KiB },
->      >> +=C2=A0=C2=A0=C2=A0 { "usb0-phy",=C2=A0 0x01c1a000, 4 * KiB },
->      >> +=C2=A0=C2=A0=C2=A0 { "usb1-phy",=C2=A0 0x01c1b000, 4 * KiB },
->      >> +=C2=A0=C2=A0=C2=A0 { "usb2-phy",=C2=A0 0x01c1c000, 4 * KiB },
->      >> +=C2=A0=C2=A0=C2=A0 { "usb3-phy",=C2=A0 0x01c1d000, 4 * KiB },
->      >
->      > As in v3 comment, this can be done in patch #1.
->      >
->      > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com
->     <mailto:philmd@redhat.com>>
->      > Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com
->     <mailto:philmd@redhat.com>>
->=20
->     Err, this patch is incomplete, when using ./configure
->     --without-default-devices:
->=20
->     $ qemu-system-arm -M orangepi-pc
->     qemu-system-arm: invalid accelerator kvm
->     qemu-system-arm: falling back to tcg
->     qemu-system-arm: Unknown device 'aw-h3-ehci-usb' for default sysbus
->     qemu-system-arm: Unknown device 'sysbus-ohci' for default sysbus
->     Aborted (core dumped)
->=20
->=20
-> Thanks for pointing this out, I was not aware at all that the=20
-> --without-default-devices option existed.
-> It's not in the configure --help message also.
+)-.On Wed, Feb 12, 2020 at 10:31 PM Niek Linnenbank
+<nieklinnenbank@gmail.com> wrote:
+>
+> Hi Corey,
+>
+> On Thu, Feb 6, 2020 at 10:09 PM Niek Linnenbank <nieklinnenbank@gmail.com=
+> wrote:
+>>
+>> Hi Corey,
+>>
+>> On Mon, Feb 3, 2020 at 2:10 PM Corey Minyard <cminyard@mvista.com> wrote=
+:
+>>>
+>>> On Sun, Feb 02, 2020 at 10:27:49PM +0100, Niek Linnenbank wrote:
+>>> > Hi Corey,
+>>> >
+>>> > Thanks for reviewing!
+>>> >
+>>> > On Mon, Jan 20, 2020 at 6:59 PM Corey Minyard <cminyard@mvista.com> w=
+rote:
+>>> >
+>>> > > On Sat, Jan 18, 2020 at 04:25:08PM +0100, Philippe Mathieu-Daud=C3=
+=A9 wrote:
+>>> > > > Cc'ing Corey/David for good advices about using UUID.
+>>> > >
+>>> > > Is there any reason you didn't use the built-in qemu UUID for this?=
+  It
+>>> > > would simplify things in general.
+>>> > >
+>>> >
+>>> > Currently the Allwinner SID device is using the QemuUUID type from
+>>> > include/qemu/uuid.h.
+>>> > Is that the build-in UUID you are referring to or should I use someth=
+ing
+>>> > else?
+>>>
+>>> You are using the QemuUUID type, which is of course what you should do,
+>>> but you aren't using the UUID generated by qemu (at least that I can fi=
+nd).
+>>> That in include/sysemu/sysemu.h and is named qemu_uuid.  Whether you
+>>> should use that or not depends on your needs.  If you just need some
+>>> uuid, then that's what you should probably use.  If you need something
+>>> the user can individually control for this device, for instance, then
+>>> that probably won't do.
+>>
+>>
+>> Ah I did not know about the qemu_uuid variable, thanks for pointing that=
+ out.
+>> Basically the SID identifier is a number that is unique for each board t=
+hat comes
+>> out of the factory. It is currently used by U-Boot to as input to genera=
+te a MAC address.
+>>
+>> If I understand correctly, qemu_uuid is optional and by default zero.
+>> However the SID value should not be zero, as otherwise U-Boot can't pick=
+ a MAC address
+>> resulting in a non-working ethernet device.
+>>
+>> Currently the hw/arm/orangepi.c machine specifies a fixed SID to be used=
+ for the emulated board,
+>> also containing a prefix (8100c002) that indicates the H3 chipset. One t=
+hing that I am strugling with is that
 
-Indeed. This is https://bugs.launchpad.net/qemu/+bug/1836537
+Suggestion while reading this, you might display a warning if the user
+provided UUID doesn't start with 8100c002.
 
-> I tried to re-produce the error by running:
-> $ ./configure --target-list=3Darm-softmmu --without-default-devices; make=
- -j5
-> $ ./arm-softmmu/qemu-system-arm -M orangepi-pc
->=20
-> On my laptop it didn't give the error, I think because somehow the build=
-=20
-> system did select
-> the USB config items (even tho they were missing for the ALLWINNER_H3=20
-> item in hw/arm/Kconfig):
->=20
-> $ grep USB arm-softmmu/config-devices.mak
-> CONFIG_TUSB6010=3Dy
-> CONFIG_USB=3Dy
-> CONFIG_USB_EHCI=3Dy
-> CONFIG_USB_EHCI_SYSBUS=3Dy
-> CONFIG_USB_MUSB=3Dy
-> CONFIG_USB_OHCI=3Dy
->=20
-> Is there any other option you used in addition to=20
-> --without-default-devices to trigger the error?
+>> I'm not able to override the property using '-global', if hw/arm/orangep=
+i.c initializes the property with qdev_prop_set_string:
+>>
+>> $ qemu-system-arm -M orangepi-pc -kernel u-boot -nographic -nic user \
+>> -global allwinner-sid.identifier=3D8100c002-0001-0002-0003-000044556688
+>>
+>> If I don't set the property in hw/arm/orangepi.c, I can set it with '-gl=
+obal'. Do you perhaps have a
+>> recommendation how to improve that? Basically what is needed is that the=
+ machine sets the default
+>> property including the chip prefix, and that the user can override it. A=
+lthough it is not required for a
+>> working emulated board, it would be a nice-to-have that the user can set=
+ it.
+>
+>
+> FYI and possibly others who have a similar usecase, I figured out how to =
+do this. In the machine init function,
+> after creating the new SoC object, simply check if the identifier has a v=
+alue:
+>
+> +    if (qemu_uuid_is_null(&s->h3->sid.identifier)) {
+> +        qdev_prop_set_string(DEVICE(s->h3), "identifier",
+> +                             "8100c002-0001-0002-0003-000044556677");
 
-Uff this was 1 month ago... I might have done:
+Similarly, display a warning "No UUID provided, using default one..."
+(or generate one 8100c002-XXX)?
 
-  $ echo CONFIG_ALLWINNER_H3=3Dy > arm-softmmu/config-devices.mak
-  $ make arm-softmmu/all
+> +    }
+>
+> That way, if the user passed -global to override it, the machine will not=
+ overrule the user's value
+> and by default the machine sets an identifier containing the H3 specific =
+chip prefix.
+>
+[...]
+>>> > > > > --- /dev/null
+>>> > > > > +++ b/hw/misc/allwinner-sid.c
+>>> > > > > @@ -0,0 +1,170 @@
+>>> > > > > +/*
+>>> > > > > + * Allwinner Security ID emulation
+>>> > > > > + *
+>>> > > > > + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.co=
+m>
+>>> > > > > + *
+>>> > > > > + * This program is free software: you can redistribute it and/=
+or
+>>> > > modify
+>>> > > > > + * it under the terms of the GNU General Public License as pub=
+lished
+>>> > > by
+>>> > > > > + * the Free Software Foundation, either version 2 of the Licen=
+se, or
+>>> > > > > + * (at your option) any later version.
+>>> > > > > + *
+>>> > > > > + * This program is distributed in the hope that it will be use=
+ful,
+>>> > > > > + * but WITHOUT ANY WARRANTY; without even the implied warranty=
+ of
+>>> > > > > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See t=
+he
+>>> > > > > + * GNU General Public License for more details.
+>>> > > > > + *
+>>> > > > > + * You should have received a copy of the GNU General Public L=
+icense
+>>> > > > > + * along with this program.  If not, see <
+>>> > > http://www.gnu.org/licenses/>.
+>>> > > > > + */
+>>> > > > > +
+>>> > > > > +#include "qemu/osdep.h"
+>>> > > > > +#include "qemu/units.h"
+>>> > > > > +#include "hw/sysbus.h"
+>>> > > > > +#include "migration/vmstate.h"
+>>> > > > > +#include "qemu/log.h"
+>>> > > > > +#include "qemu/module.h"
+>>> > > > > +#include "qemu/guest-random.h"
+>>> > > > > +#include "qapi/error.h"
+>>> > > > > +#include "hw/qdev-properties.h"
+>>> > > > > +#include "hw/misc/allwinner-sid.h"
+>>> > > > > +#include "trace.h"
+>>> > > > > +
+>>> > > > > +/* SID register offsets */
+>>> > > > > +enum {
+>>> > > > > +    REG_PRCTL =3D 0x40,   /* Control */
+>>> > > > > +    REG_RDKEY =3D 0x60,   /* Read Key */
+>>> > > > > +};
+>>> > > > > +
+>>> > > > > +/* SID register flags */
+>>> > > > > +enum {
+>>> > > > > +    REG_PRCTL_WRITE   =3D 0x0002, /* Unknown write flag */
+>>> > > > > +    REG_PRCTL_OP_LOCK =3D 0xAC00, /* Lock operation */
+>>> > > > > +};
+>>> > > > > +
+>>> > > > > +static uint64_t allwinner_sid_read(void *opaque, hwaddr offset=
+,
+>>> > > > > +                                   unsigned size)
+>>> > > > > +{
+>>> > > > > +    const AwSidState *s =3D AW_SID(opaque);
+>>> > > > > +    uint64_t val =3D 0;
+>>> > > > > +
+>>> > > > > +    switch (offset) {
+>>> > > > > +    case REG_PRCTL:    /* Control */
+>>> > > > > +        val =3D s->control;
+>>> > > > > +        break;
+>>> > > > > +    case REG_RDKEY:    /* Read Key */
+>>> > > > > +        val =3D s->rdkey;
+>>> > > > > +        break;
+>>> > > > > +    default:
+>>> > > > > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offs=
+et
+>>> > > 0x%04x\n",
+>>> > > > > +                      __func__, (uint32_t)offset);
+>>> > > > > +        return 0;
+>>> > > > > +    }
+>>> > > > > +
+>>> > > > > +    trace_allwinner_sid_read(offset, val, size);
+>>> > > > > +
+>>> > > > > +    return val;
+>>> > > > > +}
+>>> > > > > +
+>>> > > > > +static void allwinner_sid_write(void *opaque, hwaddr offset,
+>>> > > > > +                                uint64_t val, unsigned size)
+>>> > > > > +{
+>>> > > > > +    AwSidState *s =3D AW_SID(opaque);
+>>> > > > > +
+>>> > > > > +    trace_allwinner_sid_write(offset, val, size);
+>>> > > > > +
+>>> > > > > +    switch (offset) {
+>>> > > > > +    case REG_PRCTL:    /* Control */
+>>> > > > > +        s->control =3D val;
+>>> > > > > +
+>>> > > > > +        if ((s->control & REG_PRCTL_OP_LOCK) &&
+>>> > > > > +            (s->control & REG_PRCTL_WRITE)) {
+>>> > > > > +            uint32_t id =3D s->control >> 16;
+>>> > > > > +
+>>> > > > > +            if (id < sizeof(QemuUUID)) {
+>>> > > > > +                s->rdkey =3D (s->identifier.data[id]) |
+>>> > > > > +                           (s->identifier.data[id + 1] << 8) |
+>>> > > > > +                           (s->identifier.data[id + 2] << 16) =
+|
+>>> > > > > +                           (s->identifier.data[id + 3] << 24);
 
-> I also searched for something in configure to select/filter on machines=
-=20
-> to build, but I don't see that yet.
->=20
-> Nevertheless I will surely add the fix below to the patch.
->=20
-> Regards,
-> Niek
->=20
->=20
->=20
->     You need to amend:
->=20
->     -- >8 --
->     diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
->     index bb75c1de17..57b29cc522 100644
->     --- a/hw/arm/Kconfig
->     +++ b/hw/arm/Kconfig
->     @@ -302,6 +302,8 @@ config ALLWINNER_H3
->      =C2=A0 =C2=A0 =C2=A0 select ARM_TIMER
->      =C2=A0 =C2=A0 =C2=A0 select ARM_GIC
->      =C2=A0 =C2=A0 =C2=A0 select UNIMP
->     +=C2=A0 =C2=A0 select USB_OHCI
->     +=C2=A0 =C2=A0 select USB_EHCI_SYSBUS
->=20
->      =C2=A0 config RASPI
->      =C2=A0 =C2=A0 =C2=A0 bool
->     ---
->=20
->     R/T-b tags can stay with this amended.
+Maybe you want:
+
+  s->rdkey =3D ldl_le_p(s->identifier.data);
+
+>>> > > > > +            }
+>>> > > > > +        }
+>>> > > > > +        s->control &=3D ~REG_PRCTL_WRITE;
+>>> > > > > +        break;
+>>> > > > > +    case REG_RDKEY:    /* Read Key */
+>>> > > > > +        break;
+>>> > > > > +    default:
+>>> > > > > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offs=
+et
+>>> > > 0x%04x\n",
+>>> > > > > +                      __func__, (uint32_t)offset);
+>>> > > > > +        break;
+>>> > > > > +    }
+>>> > > > > +}
+> > > > > +}
+[...]
+

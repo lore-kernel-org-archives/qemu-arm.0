@@ -1,181 +1,225 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5232430lfp;
-        Tue, 11 Feb 2020 07:42:53 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyVyxpGgJtZ0Q1mq6u89zDATq5y2ScuIvLijD1AW1RBa0+jofqDwK2dgUxjrQj98zO1zN4V
-X-Received: by 2002:ae9:ee11:: with SMTP id i17mr3276040qkg.333.1581435773621;
-        Tue, 11 Feb 2020 07:42:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581435773; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6614839lfp;
+        Wed, 12 Feb 2020 09:08:24 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyLWYn0urB9+56TOT/LcQ3HIrvQIVGtVOlBn98QZFMkX65TLcssI1M9i2MmfDzT2V5Dcn/G
+X-Received: by 2002:a37:6351:: with SMTP id x78mr2979743qkb.298.1581527303682;
+        Wed, 12 Feb 2020 09:08:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581527303; cv=none;
         d=google.com; s=arc-20160816;
-        b=WDkD5R4D7g03PJHDAKDJdnjJ3Odsk2Phg/A5aPPRHUxGm82qhI9xNtoCRTkgcNhXCs
-         kIKBXN5VZcahfmy7wSJJgKGI8kVz3GfvwmnZEs8yiUs4hJGHO8oS3iu2Hz8vHEOsDyIq
-         M1J/35nul7cezDho0fmBsF0CBGW3FkqTkK4niRrVDllJX209C99/SSpRs4EAXV0GfOks
-         yupRTgnxFFnWoPTxfov2NhSV8+TARVlN4V7azLnlCXSXZfXGp8FSgEO2O2xvndigus8u
-         g/wBJXzXi2HTXtLEs45ig9b9Rzzpa7UqtQFAV+3+Hi7byar1z7fDMNIEbvp8Qw9XoN1i
-         mKRA==
+        b=BRE2fC5pNxTMWHmyoZ3UpuVlEz9RJ/INaTngdPs/r9gWkYahuaeWf1oA8XpkQgXHn4
+         xLIuizw6e1hPKbXe/WdJiP3l5IA/tLPKFyooe/BWnkjDpYV7BqrfZJNAZp+4M8XaWoKm
+         F2NP3YMTYt66i50PTAaCh/9DWoHrddtIsp3MTwLp4+bgUk1bSAC9eKzS1PTpksGKCASl
+         ACLVDvUvUdUfgEE+jXYM2RdsGaO9TC1S9S+EYxui5KR5lCduTsos79FzP6D9OC3PHu4b
+         hopL7K0edD5HQVkBUPJ0tgXIWNKzo5BMofpFshThZgwBkL7UgiByHBCqv8MFUSknsS+c
+         Lg8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=fP9A41oUyVlHckBCUpzZU3f04sLL0M3b5U6pokTZeD0=;
-        b=SdDdr6gLFoBBIrOm3mp9l2u4L2XfbkoD2bPFUCSYYcX0zgedikmberPNuxAh4c7riA
-         98tEXS2NRBQofvC9qlKgxOrx/xaHm7kh0Ab1yqWsnSnihoR41cV6Z/tN1toTyrtUa7vq
-         PM7tMrYMBtlIYMFEEBlx3E1PSu41GxMUR/ANCPY9Wbkd2G9pfCmmr4Y2Q5CFToyqvnXe
-         eZOVhMB9CgfhnCtxFI7aeKBykv654qhT96P4bUCbrAP/WRCwQYufU42dy24lruBR1Pjk
-         HuyWPI33vTguuYVhc7myG0vq9AeAINx0OqgBwSh5JUCxlwxmXyAkq5u8Lsk6+M3RZ5t6
-         9S/w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=IONp2L248T24blEHKQON0AEvpVRSCrd/8bgsWZ5IKmo=;
+        b=yeQrgr2dcHRLtsFfV5AHCThZew+dXCmU6GpH9b2hf0EJivPPssy08hZhh7BHMg7YDU
+         xCHMVqkQBJKqPzd34V1oOXgsNGDNyUjv5qw9DLxEuCUJ+pYJLuX5mf+iBcg6lOvvk1a+
+         jFjz7XZVrv9exQhEqWA4/bWw5bfU3JoMgR3y7hTkg/UPYWdiuyKspDb3r9ASebIo5f11
+         s6amYkbjxAr8OdTjfnhP9uIY6LAMtpno3EqjYeyOMrf+obhH90t8TYxe1VWnPc28vRRJ
+         yqAJBCpXnjnKuOG4qxaP6Xe2VowuYUDOOYAYVvxXl0+sk9pNdxZ45L5LRWqfjHDItwjp
+         Dgig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=NgbxyWkY;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id o10si2011724qtj.260.2020.02.11.07.42.53;
-        Tue, 11 Feb 2020 07:42:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h4si443339qtp.117.2020.02.12.09.08.23
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 12 Feb 2020 09:08:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=NgbxyWkY;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 4AC244AEBB;
-	Tue, 11 Feb 2020 10:42:53 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@linaro.org
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id REAolZXtyWTw; Tue, 11 Feb 2020 10:42:52 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1FA024AEB3;
-	Tue, 11 Feb 2020 10:42:52 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id DC4E64A578
- for <kvmarm@lists.cs.columbia.edu>; Tue, 11 Feb 2020 10:42:50 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kTIjAHqLAeqr for <kvmarm@lists.cs.columbia.edu>;
- Tue, 11 Feb 2020 10:42:49 -0500 (EST)
-Received: from mail-oi1-f193.google.com (mail-oi1-f193.google.com
- [209.85.167.193])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id B64B44AEC2
- for <kvmarm@lists.cs.columbia.edu>; Tue, 11 Feb 2020 10:42:49 -0500 (EST)
-Received: by mail-oi1-f193.google.com with SMTP id d62so13145624oia.11
- for <kvmarm@lists.cs.columbia.edu>; Tue, 11 Feb 2020 07:42:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=pd5As4/L2oTjSBZjWpPOMKqBaFJ2ADt2yHhVgPMSRMg=;
- b=NgbxyWkY7QLXWCbElISLSiWcF/s7LTdVaFB+VXa8xsn1F/e7JfYIPCMIKBEQCXs5nW
- iXI+lGmftjS4OwXM1uikkl0qHoPcgl0A7DSAXpDV/lrluZA6CiSTEoUq92TyQaNVgo0s
- /OufFYqsDyXdkgxkQqXIZhR/gn2hKjRt+DQG8idlZbE7kgI2SFYEcROBNbcJLk6j3cEh
- /CqMY4GMl6dhkdmQzr7kTNo1+lrBjIxHTQtCRI7+McqZKg42LNfa1nLKL34X3jNcL9La
- xvhIiQEk9HnxRhb7Fy0CjnmAop0gorfnt2hoFTSxgquVxnuLd8s9nlZHgy7p6DjSKqr4
- E0iQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=pd5As4/L2oTjSBZjWpPOMKqBaFJ2ADt2yHhVgPMSRMg=;
- b=BSjULjjyrF+DdR7wYe08fXZRndVD9jN0EFOppYWoVIOIRRsR+kXPYIvyskjYuLQFPT
- vHJZuOcHRiF3zymrz4FGKsyeuMbVOZC62Ox/vmdWyOtm1LQuBHv1zv09SQnbYesk+taV
- gkgoZAg37L4cvzHACewkh4X4rMtDsqT7np5vOJMFLStAPqpGsxcmhx6e5F3ixz4wVKzO
- ermgnKz0/S/vh4ywuwamSPhce326uw96iq4JAQGxaeAzh9maOUwZfo1yOcEEcHxYz45Y
- kJtr0e8LzM3anWmI3AmBbj0ptAvBVfbfzwpGUOgfzcTAt1w9MWCghNgjLMSumJmr41tG
- 4LMQ==
-X-Gm-Message-State: APjAAAUEwc5syTkmSEHjSpxHgKkzCdN23lhj2G2kCdqMj3mYVDx9kInh
- Bd63J9QUpHz+3OR+bF2trjYRnmO+YQUSWwYPd9HJCA==
-X-Received: by 2002:a05:6808:289:: with SMTP id
- z9mr3174520oic.48.1581435769182; 
- Tue, 11 Feb 2020 07:42:49 -0800 (PST)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40804 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j1vUt-0001UJ-48
+	for alex.bennee@linaro.org; Wed, 12 Feb 2020 12:08:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40200)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1j1vUj-0001Qp-8J
+ for qemu-arm@nongnu.org; Wed, 12 Feb 2020 12:08:14 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1j1vUh-0004gP-H7
+ for qemu-arm@nongnu.org; Wed, 12 Feb 2020 12:08:13 -0500
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2076 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1j1vUh-0004YK-8F; Wed, 12 Feb 2020 12:08:11 -0500
+Received: from LHREML711-CAH.china.huawei.com (unknown [172.18.7.106])
+ by Forcepoint Email with ESMTP id 41D181161F13F6FE7F59;
+ Wed, 12 Feb 2020 17:07:58 +0000 (GMT)
+Received: from lhreml708-chm.china.huawei.com (10.201.108.57) by
+ LHREML711-CAH.china.huawei.com (10.201.108.34) with Microsoft SMTP Server
+ (TLS) id 14.3.408.0; Wed, 12 Feb 2020 17:07:19 +0000
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ lhreml708-chm.china.huawei.com (10.201.108.57) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1713.5; Wed, 12 Feb 2020 17:07:19 +0000
+Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
+ lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
+ 15.01.1713.004; Wed, 12 Feb 2020 17:07:19 +0000
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: David Hildenbrand <david@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+Subject: RE: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
+Thread-Topic: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
+Thread-Index: AQHVzV43w2nN4JnxQEOUTwT8NpSKx6gLQ1MAgAAWtoCAACc+AIABYS3wgAAIyYCAAR1e4IAAFJiAgAAHflCAADtYAIABo1pQgARLAwCAAABbwIAABn8AgAN5SJA=
+Date: Wed, 12 Feb 2020 17:07:19 +0000
+Message-ID: <fad66252aa8f4b46816f21b5315b6358@huawei.com>
+References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
+ <20200117174522.22044-2-shameerali.kolothum.thodi@huawei.com>
+ <20200204162320.67e5d353@redhat.com>
+ <74eaaa45-0d20-9a21-fbf8-6d29deb248eb@redhat.com>
+ <4ce41554-8b8e-dbb5-5fe9-43af09950f23@redhat.com>
+ <8e0b2c762e914c64bebfab5fc7441661@huawei.com>
+ <133f274e-e942-7008-93d2-8edb1bc4d7ae@redhat.com>
+ <52fff289cca14874ad493fc25806fe3d@huawei.com>
+ <f041380c-afcb-f8d8-89db-8f48c7b46767@redhat.com>
+ <e97fa28c653044b8bab66aeca2374682@huawei.com>
+ <0ff4d2c1-ebd3-1d2f-07e8-a4f13be07ceb@redhat.com>
+ <6bf255ecb88446f1b08ee4ab21a85f02@huawei.com>
+ <69848dd3-fac4-ec6b-78a8-a052124f4fc3@redhat.com>
+ <49b54eea65cd49ae832cd6ec21eae64a@huawei.com>
+ <b4ccf1d9-4514-6b63-5ef9-1d337f539267@redhat.com>
+In-Reply-To: <b4ccf1d9-4514-6b63-5ef9-1d337f539267@redhat.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20200130112510.15154-1-eric.auger@redhat.com>
-In-Reply-To: <20200130112510.15154-1-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 Feb 2020 15:42:38 +0000
-Message-ID: <CAFEAcA8iBvM2xguW2_6OFWDjPPEzEorief4F2aoh0Vitp466rQ@mail.gmail.com>
-Subject: Re: [kvm-unit-tests PATCH v2 0/9] KVM: arm64: PMUv3 Event Counter
- Tests
-To: Eric Auger <eric.auger@redhat.com>
-Cc: kvm-devel <kvm@vger.kernel.org>, Marc Zyngier <maz@kernel.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Andre Przywara <andre.przywara@arm.com>, Andrew Murray <andrew.murray@arm.com>,
- kvmarm@lists.cs.columbia.edu, Eric Auger <eric.auger.pro@gmail.com>
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 185.176.76.210
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: ghRAJ+Q+crWr
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
+ "mst@redhat.com" <mst@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ "lersek@redhat.com" <lersek@redhat.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7DdBiQAORfum
 
-On Thu, 30 Jan 2020 at 11:25, Eric Auger <eric.auger@redhat.com> wrote:
->
-> This series implements tests exercising the PMUv3 event counters.
-> It tests both the 32-bit and 64-bit versions. Overflow interrupts
-> also are checked. Those tests only are written for arm64.
->
-> It allowed to reveal some issues related to SW_INCR implementation
-> (esp. related to 64-bit implementation), some problems related to
-> 32-bit <-> 64-bit transitions and consistency of enabled states
-> of odd and event counters (See [1]).
->
-> Overflow interrupt testing relies of one patch from Andre
-> ("arm: gic: Provide per-IRQ helper functions") to enable the
-> PPI 23, coming from "arm: gic: Test SPIs and interrupt groups"
-> (https://patchwork.kernel.org/cover/11234975/). Drew kindly
-> provided "arm64: Provide read/write_sysreg_s".
->
-> All PMU tests can be launched with:
-> ./run_tests.sh -g pmu
-> Tests also can be launched individually. For example:
-> ./arm-run arm/pmu.flat -append 'chained-sw-incr'
->
-> With KVM:
-> - chain-promotion and chained-sw-incr are known to be failing.
->   [1] proposed a fix.
-> - On TX2, I have some random failures due to MEM_ACCESS event
->   measured with a great disparity. This is not observed on
->   other machines I have access to.
-> With TCG:
-> - all new tests are skipped
-
-I'm having a go at using this patchset to test the support
-I'm adding for TCG for the v8.1 and v8.4 PMU extensions...
-
-Q1: how can I get run_tests.sh to pass extra arguments to
-QEMU ? The PMU events check will fail unless QEMU gets
-the '-icount 8' to enable cycle-counting, but although
-the underlying ./arm/run lets you add arbitrary extra
-arguments to QEMU, run_tests.sh doesn't seem to. Trying to
-pass them in via "QEMU=/path/to/qemu -icount 8" doesn't
-work either.
-
-Q2: do you know why arm/pmu.c:check_pmcr() insists that
-PMCR.IMP is non-zero? The comment says "simple sanity check",
-but architecturally a zero IMP field is permitted (meaning
-"go look at MIDR_EL1 instead"). This causes TCG to fail this
-test on '-cpu max', because in that case we set PMCR.IMP
-to the same thing as MIDR_EL1.Implementer which is 0
-("software use", since QEMU is software...)
-
-thanks
--- PMM
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRGF2aWQgSGlsZGVuYnJh
+bmQgW21haWx0bzpkYXZpZEByZWRoYXQuY29tXQ0KPiBTZW50OiAxMCBGZWJydWFyeSAyMDIwIDA5
+OjU0DQo+IFRvOiBTaGFtZWVyYWxpIEtvbG90aHVtIFRob2RpIDxzaGFtZWVyYWxpLmtvbG90aHVt
+LnRob2RpQGh1YXdlaS5jb20+Ow0KPiBJZ29yIE1hbW1lZG92IDxpbWFtbWVkb0ByZWRoYXQuY29t
+Pg0KPiBDYzogcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyB4aWFvZ3Vhbmdyb25nLmVyaWNAZ21h
+aWwuY29tOw0KPiBtc3RAcmVkaGF0LmNvbTsgc2hhbm5vbi56aGFvc2xAZ21haWwuY29tOyBxZW11
+LWRldmVsQG5vbmdudS5vcmc7DQo+IHh1d2VpIChPKSA8eHV3ZWk1QGh1YXdlaS5jb20+OyBMaW51
+eGFybSA8bGludXhhcm1AaHVhd2VpLmNvbT47DQo+IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgcWVt
+dS1hcm1Abm9uZ251Lm9yZzsgbGVyc2VrQHJlZGhhdC5jb20NCj4gU3ViamVjdDogUmU6IFtQQVRD
+SCB2MiAxLzddIGV4ZWM6IEZpeCBmb3IgcWVtdV9yYW1fcmVzaXplKCkgY2FsbGJhY2sNCj4gDQo+
+IE9uIDEwLjAyLjIwIDEwOjUwLCBTaGFtZWVyYWxpIEtvbG90aHVtIFRob2RpIHdyb3RlOg0KPiA+
+DQo+ID4NCj4gPj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gPj4gRnJvbTogRGF2aWQg
+SGlsZGVuYnJhbmQgW21haWx0bzpkYXZpZEByZWRoYXQuY29tXQ0KPiA+PiBTZW50OiAxMCBGZWJy
+dWFyeSAyMDIwIDA5OjI5DQo+ID4+IFRvOiBTaGFtZWVyYWxpIEtvbG90aHVtIFRob2RpIDxzaGFt
+ZWVyYWxpLmtvbG90aHVtLnRob2RpQGh1YXdlaS5jb20+Ow0KPiA+PiBJZ29yIE1hbW1lZG92IDxp
+bWFtbWVkb0ByZWRoYXQuY29tPg0KPiA+PiBDYzogcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyB4
+aWFvZ3Vhbmdyb25nLmVyaWNAZ21haWwuY29tOw0KPiA+PiBtc3RAcmVkaGF0LmNvbTsgc2hhbm5v
+bi56aGFvc2xAZ21haWwuY29tOyBxZW11LWRldmVsQG5vbmdudS5vcmc7DQo+ID4+IHh1d2VpIChP
+KSA8eHV3ZWk1QGh1YXdlaS5jb20+OyBMaW51eGFybSA8bGludXhhcm1AaHVhd2VpLmNvbT47DQo+
+ID4+IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgcWVtdS1hcm1Abm9uZ251Lm9yZzsgbGVyc2VrQHJl
+ZGhhdC5jb20NCj4gPj4gU3ViamVjdDogUmU6IFtQQVRDSCB2MiAxLzddIGV4ZWM6IEZpeCBmb3Ig
+cWVtdV9yYW1fcmVzaXplKCkgY2FsbGJhY2sNCj4gPj4NCj4gPj4+PiBDYW4geW91IGxvb2sgdGhl
+IG9yaWdpbmFsIHZhbHVlIHVwIHNvbWVob3cgYW5kIHVzIHRoZSByZXNpemUgY2FsbGJhY2sNCj4g
+Pj4+PiBvbmx5IGFzIGEgbm90aWZpY2F0aW9uIHRoYXQgc29tZXRoaW5nIGNoYW5nZWQ/ICh0aGF0
+IHZhbHVlIHdvdWxkIGhhdmUgdG8NCj4gPj4+PiBiZSBzdG9yZWQgc29tZXdoZXJlIGFuZCBtaWdy
+YXRlZCBJIGFzc3VtZSAtIG1heWJlIHRoYXQncyBhbHJlYWR5DQo+IGJlaW5nDQo+ID4+Pj4gZG9u
+ZSkNCj4gPj4+DQo+ID4+PiBPay4gSSB3aWxsIHRha2UgYSBsb29rIGF0IHRoYXQuIEJ1dCBjYW4g
+d2UgaW5zdGVhZCBwYXNzIHRoZQ0KPiBibG9jay0+dXNlZF9sZW5ndGgNCj4gPj4gdG8NCj4gPj4+
+IGZ3X2NmZ19hZGRfZmlsZV9jYWxsYmFjaygpLiBUaGF0IHdheSB3ZSBkb27igJl0IGhhdmUgdG8g
+Y2hhbmdlIHRoZQ0KPiA+PiBxZW11X3JhbV9yZXNpemUoKQ0KPiA+Pj4gYXMgd2VsbC4gSSB0aGlu
+ayBJZ29yIGhhcyBzdWdnZXN0ZWQgdGhpcyBiZWZvcmVbMV0gYW5kIEkgaGFkIGEgZ28gYXQgaXQg
+YmVmb3JlDQo+ID4+IGNvbWluZyB1cA0KPiA+Pj4gd2l0aCB0aGUgInJlcV9sZW5ndGgiIHByb3Bv
+c2FsIGhlcmUuDQo+ID4+DQo+ID4+IFlvdSBtZWFuLCBwYXNzaW5nIHRoZSBvbGQgc2l6ZSBhcyB3
+ZWxsPyBJIGRvbid0IHNlZSBob3cgdGhhdCB3aWxsIHNvbHZlDQo+ID4+IHRoZSBpc3N1ZSwgYnV0
+IHllYWgsIG5vdGhpbmcgc3BlYWtzIGFnYWluc3Qgc2ltcGx5IHNlbmRpbmcgdGhlIG9sZCBhbmQN
+Cj4gPj4gdGhlIG5ldyBzaXplLg0KPiA+DQo+ID4gTm9wZS4gSSBhY3R1YWxseSBtZWFudCB1c2lu
+ZyB0aGUgYmxvY2stPnVzZWRfbGVuZ3RoIHRvIHN0b3JlIGluIHRoZQ0KPiA+IHMtPmZpbGVzLT5m
+W2luZGV4XS5zaXplLg0KPiA+DQo+ID4gdmlydF9hY3BpX3NldHVwKCkNCj4gPiAgIGFjcGlfYWRk
+X3JvbV9ibG9iKCkNCj4gPiAgICAgcm9tX2FkZF9ibG9iKCkNCj4gPiAgICAgICByb21fc2V0X21y
+KCkgIC0tPiB1c2VkX2xlbmd0aCAgPSBwYWdlIGFsaWduZWQgYmxvYiBzaXplDQo+ID4gICAgICAg
+ICBmd19jZmdfYWRkX2ZpbGVfY2FsbGJhY2soKSAgLS0+IHVzZXMgYWN0dWFsIGJsb2Igc2l6ZS4N
+Cj4gPg0KPiA+DQo+ID4gUmlnaHQgbm93IHdoYXQgd2UgZG8gaXMgdXNlIHRoZSBhY3R1YWwgYmxv
+YiBzaXplIHRvIHN0b3JlIGluIEZXQ2ZnRW50cnkuDQo+ID4gSW5zdGVhZCBwYXNzIHRoZSBSQU1C
+bG9jayB1c2VkX2xlbmd0aCB0byBmd19jZmdfYWRkX2ZpbGVfY2FsbGJhY2soKS4NCj4gPiBPZiBj
+b3Vyc2UgYnkgdGhpcywgdGhlIGZpcm13YXJlIHdpbGwgc2VlIGFuIGFsaWduZWQgc2l6ZSwgYnV0
+IHRoYXQgaXMgZmluZSBJIHRoaW5rLg0KPiA+IEJ1dCBhdCB0aGUgc2FtZSB0aW1lIHRoaXMgbWVh
+bnMgdGhlIHFlbXVfcmFtX3Jlc2l6ZSgpIGNhbiBzdGF5IGFzIGl0IGlzDQo+ID4gYmVjYXVzZSBp
+dCB3aWxsIGludm9rZSB0aGUgY2FsbGJhY2sgd2hlbiB0aGUgc2l6ZSBjaGFuZ2VzIGJleW9uZCB0
+aGUgYWxpZ25lZA0KPiA+IHBhZ2Ugc2l6ZS4gQW5kIGFsc28gZHVyaW5nIG1pZ3JhdGlvbiwgdGhl
+cmUgd29uJ3QgYmUgYW55IGluY29uc2lzdGVuY3kgYXMNCj4gZXZlcnlvbmUNCj4gPiB3b3JrcyBv
+biBhbGlnbmVkIHBhZ2Ugc2l6ZS4NCj4gPg0KPiA+IERvZXMgdGhhdCBtYWtlIHNlbnNlPyBPciBJ
+IGFtIGFnYWluIG1pc3Npbmcgc29tZXRoaW5nIGhlcmU/DQo+IA0KPiBPaCwgeW91IG1lYW4gc2lt
+cGx5IHJvdW5kaW5nIHVwIHRvIGZ1bGwgcGFnZXMgaW4gdGhlIGZ3IGVudHJpZXM/IElmIHdlDQo+
+IGNhbiBkcm9wIHRoZSAic3ViLXBhZ2UiIHJlc3RyaWN0aW9uLCB0aGF0IHdvdWxkIGJlIGF3ZXNv
+bWUhDQo+IA0KPiBOZWVkIHRvIGRvdWJsZSBjaGVjayBpZiB0aGF0IGNvdWxkIGJlIGFuIGlzc3Vl
+IGZvciBmdy9taWdyYXRpb24vd2hhdGV2ZXIuDQoNCkhtbS4uaXQgYnJlYWtzIHg4NiArIHNlYWJp
+b3MgYm9vdC4gVGhlIGlzc3VlIGlzIHNlYWJpb3MgZXhwZWN0cyBSU0RQIGluIEZTRUcNCm1lbW9y
+eS4gV2l0aCB0aGUgYWJvdmUgcHJvcG9zZWQgY2hhbmdlLCBSU0RQIHdpbGwgYmUgYWxpZ25lZCB0
+byBQQUdFX1NJWkUgYW5kDQpzZWFiaW9zIG1lbSBhbGxvY2F0aW9uIGZvciBSU0RQIGZhaWxzIGF0
+LA0KDQpodHRwczovL2dpdGh1Yi5jb20vY29yZWJvb3Qvc2VhYmlvcy9ibG9iL21hc3Rlci9zcmMv
+Zncvcm9tZmlsZV9sb2FkZXIuYyNMODUNCg0KVG8gZ2V0IHBhc3MgdGhlIGFib3ZlLCBJIGNoYW5n
+ZWQgImFsbG9jX2ZzZWciIGZsYWcgdG8gZmFsc2UgaW4gYnVpbGRfcnNkcCgpLCBidXQNCnNlYWJp
+b3Mgc2VlbXMgdG8gbWFrZSB0aGUgYXNzdW1wdGlvbiB0aGF0IFJTRFAgaGFzIHRvIGJlIHBsYWNl
+ZCBpbiBGU0VHIG1lbW9yeQ0KaGVyZSwNCmh0dHBzOi8vZ2l0aHViLmNvbS9jb3JlYm9vdC9zZWFi
+aW9zL2Jsb2IvbWFzdGVyL3NyYy9mdy9iaW9zdGFibGVzLmMjTDEyNg0KDQpTbyBkb2VzbuKAmXQg
+bG9vayBsaWtlIHRoZXJlIGlzIGFuIGVhc3kgZml4IGZvciB0aGlzIHdpdGhvdXQgY2hhbmdpbmcg
+dGhlIHNlYWJpb3MgY29kZS4NCg0KQmV0d2VlbiwgT1ZNRiB3b3JrcyBmaW5lIHdpdGggdGhlIGFs
+aWduZWQgc2l6ZSBvbiB4ODYuDQoNCk9uZSB0aGluZyB3ZSBjYW4gZG8gaXMgdHJlYXQgdGhlIFJT
+RFAgY2FzZSBzZXBhcmF0ZWx5IG9yIG9ubHkgdXNlIHRoZSBhbGlnbmVkDQpwYWdlIHNpemUgZm9y
+ICJldGMvYWNwaS90YWJsZXMiIGFzIGJlbG93LA0KDQpkaWZmIC0tZ2l0IGEvaHcvY29yZS9sb2Fk
+ZXIuYyBiL2h3L2NvcmUvbG9hZGVyLmMNCmluZGV4IGQxYjc4ZjYwY2QuLmYwN2Y2YTdhMzUgMTAw
+NjQ0DQotLS0gYS9ody9jb3JlL2xvYWRlci5jDQorKysgYi9ody9jb3JlL2xvYWRlci5jDQpAQCAt
+NjAsNiArNjAsNyBAQA0KICNpbmNsdWRlICJody9ib2FyZHMuaCINCiAjaW5jbHVkZSAicWVtdS9j
+dXRpbHMuaCINCiAjaW5jbHVkZSAic3lzZW11L3J1bnN0YXRlLmgiDQorI2luY2x1ZGUgImh3L2Fj
+cGkvYW1sLWJ1aWxkLmgiDQogDQogI2luY2x1ZGUgPHpsaWIuaD4NCiANCkBAIC0xMDU2LDYgKzEw
+NTcsNyBAQCBNZW1vcnlSZWdpb24gKnJvbV9hZGRfYmxvYihjb25zdCBjaGFyICpuYW1lLCBjb25z
+dCB2b2lkICpibG9iLCBzaXplX3QgbGVuLA0KICAgICBpZiAoZndfZmlsZV9uYW1lICYmIGZ3X2Nm
+Zykgew0KICAgICAgICAgY2hhciBkZXZwYXRoWzEwMF07DQogICAgICAgICB2b2lkICpkYXRhOw0K
+KyAgICAgICAgc2l6ZV90IHNpemUgPSByb20tPmRhdGFzaXplOw0KIA0KICAgICAgICAgaWYgKHJl
+YWRfb25seSkgew0KICAgICAgICAgICAgIHNucHJpbnRmKGRldnBhdGgsIHNpemVvZihkZXZwYXRo
+KSwgIi9yb21AJXMiLCBmd19maWxlX25hbWUpOw0KQEAgLTEwNjYsMTMgKzEwNjgsMjEgQEAgTWVt
+b3J5UmVnaW9uICpyb21fYWRkX2Jsb2IoY29uc3QgY2hhciAqbmFtZSwgY29uc3Qgdm9pZCAqYmxv
+Yiwgc2l6ZV90IGxlbiwNCiAgICAgICAgIGlmIChtYy0+cm9tX2ZpbGVfaGFzX21yKSB7DQogICAg
+ICAgICAgICAgZGF0YSA9IHJvbV9zZXRfbXIocm9tLCBPQkpFQ1QoZndfY2ZnKSwgZGV2cGF0aCwg
+cmVhZF9vbmx5KTsNCiAgICAgICAgICAgICBtciA9IHJvbS0+bXI7DQorICAgICAgICAgICAvKg0K
+KyAgICAgICAgICAgICogVXNlIHRoZSBSQU1ibGsgdXNlZF9sZW5ndGggZm9yIGFjcGkgdGFibGVz
+IGFzIHRoaXMgYXZvaWRzIGFueQ0KKyAgICAgICAgICAgICogaW5jb25zaXN0ZW5jeSB3aXRoIHRh
+YmxlIHNpemUgY2hhbmdlcyBkdXJpbmcgaG90IGFkZCBhbmQgZHVyaW5nDQorICAgICAgICAgICAg
+KiBtaWdyYXRpb24uDQorICAgICAgICAgICAgKi8NCisgICAgICAgICAgIGlmIChzdHJjbXAoZndf
+ZmlsZV9uYW1lLCBBQ1BJX0JVSUxEX1RBQkxFX0ZJTEUpID09IDApIHsNCisgICAgICAgICAgICAg
+ICAgc2l6ZSA9IG1lbW9yeV9yZWdpb25fZ2V0X3VzZWRfbGVuZ3RoKG1yKTsNCisgICAgICAgICAg
+IH0NCiAgICAgICAgIH0gZWxzZSB7DQogICAgICAgICAgICAgZGF0YSA9IHJvbS0+ZGF0YTsNCiAg
+ICAgICAgIH0NCiANCiAgICAgICAgIGZ3X2NmZ19hZGRfZmlsZV9jYWxsYmFjayhmd19jZmcsIGZ3
+X2ZpbGVfbmFtZSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBmd19jYWxsYmFj
+aywgTlVMTCwgY2FsbGJhY2tfb3BhcXVlLA0KLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIGRhdGEsIHJvbS0+ZGF0YXNpemUsIHJlYWRfb25seSk7DQorICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgZGF0YSwgc2l6ZSwgcmVhZF9vbmx5KTsNCiAgICAgfQ0KICAgICByZXR1
+cm4gbXI7DQogfQ0KDQoNClRob3VnaHRzPw0KDQpUaGFua3MsDQpTaGFtZWVyDQoNCg0K

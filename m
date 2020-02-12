@@ -1,513 +1,603 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6688088lfp;
-        Wed, 12 Feb 2020 10:21:28 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxs1p2OZ7y5rPJupr6e4RnItZotssOUsu8qS/Iu55DQuc15wvEOpFi7N2x9P/VAz8hLo3As
-X-Received: by 2002:a05:620a:b18:: with SMTP id t24mr8459683qkg.341.1581531687775;
-        Wed, 12 Feb 2020 10:21:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581531687; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6877285lfp;
+        Wed, 12 Feb 2020 13:47:55 -0800 (PST)
+X-Received: by 2002:a92:d5cf:: with SMTP id d15mr12667401ilq.306.1581544075714;
+        Wed, 12 Feb 2020 13:47:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581544075; cv=none;
         d=google.com; s=arc-20160816;
-        b=R8E2VyekPvgj5ylG2frDG3NLAOiCBZQ/I8YjEyQDF0EEcJp7y4mrLW301W/3eP3c2d
-         qqerafB8c6RkLtvVcqTsfseVFoJ5OxM/0Cw7q+d/QGLgHx8aiGM/3OTWp5neKECzWxZM
-         pL9uNaGC3aBvXotYDk8oUvjD49Jwfwex5LC39bXdPpfLMlq22sbxQvcuzPnL6TUpmmGF
-         HIu6DiNQIwryzc5MdFbIQ3IwNGeyWhWrSuByeD+MQQvkT3w4WvbRfwdu2wxPN72Vnu7V
-         SZz0A84n2TAwalfyzLSbmcu6KEkVmgiWpOzDK8/43RCo7Xfw5Grz9PKgGlr50JNFmsFw
-         gq0w==
+        b=u0FGexsxyLCYTQ7PysLunQOqnfYyETN0uUBZ8B1y+uzz4lWHEPhBe3Vc9delgGpDsU
+         C0ZRX1BfbU8oYmhkqpscAvi6xHQ2C/NKBDcsAXf+oR99ZEBAlpO5YRrGj2x+jzPYRwzP
+         6cyXQQA3CYVkEmTGfI5VVyleSbWQ4llWxo4YKJRF/1h30Br/K+aWegNge18mXD7qWZgE
+         IUqwD3Apnvw/YvfGILmVxIRO+BhA9Wiey5yC+WKZRB+AI6PQ5DJ+Nyun/cSDfyOge06W
+         +kD+41oUDoIogQiVdWjyIWHdZyJswmY2VJgNWlOa6lPA+rAhF554QbB+BcbCDgOc9Wpo
+         O0LQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:from:references:to:subject
-         :dkim-signature;
-        bh=G5EEGDoYvH+v8ukGpNndzjDKvYVuBu5Iusu2Lrc5j2E=;
-        b=Ot+vjQ1cPvle+/KWscgaKVxb4LoFS5yjPAk6rtcfVilgho7YAQnshiXiYTgMYjmt03
-         6tGIraHnheDJjxVhKIv8+rwuMAkDtYP91lZJKLUr/DILS6hAH6bEv0lRgQ0d/uk9Cnp/
-         nVNvi0+LWnPE0nBFEW6/76q0bVwmNY8HAi9CxAe1M1bupM0lvkLKAwJ/oXu9Uy0MUMvY
-         Q2YrM5/hpReSy8j54/t0ZP1za7dvhnByXszshmf7RpO2yaNMfuoIC84IStbdFEJJLWoG
-         cIne9HpP2oN9VvSa2ytEtZN9vwVfuvy5BDYt+YTgqftuZUYp8BbLYoDDN22u/uBBRSDg
-         J+tg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=vDjnTlkyucru1OXPiU6QEVvdOvEVDBal/664wRHBydk=;
+        b=lZWUHUZgHi2Jl4Zu5BbIMfftRYv6qjydvGntSB2PGBMXNyJIp3Xr9150eLpA7tzBfK
+         BFEz8uWL8PKxpLOyiSqlsiqnL3R7UYExVG+VXzwdZRq+cExhaXt+IuzSkM0t9NVkg/0m
+         85BF0viWElZov1dE3pUGHR8i61h+6l2SpfjfVMWBR0IcoHGWAeeL0tJLglhdx+/6oOrg
+         5VV1ESh7DLnerqPjpwVkAmnnUIeRHoyIoqbFLxFAbS1R2fQ4Juv5dst7xfxf56URwfjC
+         rw5MumN83byl+nkTKEU8aAx85IXfqwHWg0gfWMWt4UpGRq9v9g8t5q59YinOTyGenkvt
+         c9OQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BRd26heL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 17si568852qkj.308.2020.02.12.10.21.27
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2020 10:21:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OX303qz2;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id t25sor11511iom.113.2020.02.12.13.47.55
+        (Google Transport Security);
+        Wed, 12 Feb 2020 13:47:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BRd26heL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41788 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j1wdb-0002fB-7J
-	for alex.bennee@linaro.org; Wed, 12 Feb 2020 13:21:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52631)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <david@redhat.com>) id 1j1wdR-0002eW-Qs
- for qemu-arm@nongnu.org; Wed, 12 Feb 2020 13:21:19 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <david@redhat.com>) id 1j1wdP-0006HF-2T
- for qemu-arm@nongnu.org; Wed, 12 Feb 2020 13:21:17 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:32527
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <david@redhat.com>) id 1j1wdO-0006FV-MV
- for qemu-arm@nongnu.org; Wed, 12 Feb 2020 13:21:15 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581531673;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=G5EEGDoYvH+v8ukGpNndzjDKvYVuBu5Iusu2Lrc5j2E=;
- b=BRd26heLiUOggFmxeA/cLEVSWx0qERKi9uKBCAd4hJksmBR2r1QenEUx2gMveP6o47znS7
- Hm03pNY8lz+pTW4nrDQLrwb1UcNDT9o86u8yBCh/njBxW7g/Mpq6O7qS+o54NgESx29c71
- nQJd31N3OAkYYimuhcs/WDZrMwhd/2M=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-268-X1i3wboWNaqnbhD1TH2UmA-1; Wed, 12 Feb 2020 13:21:09 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C5FDD107ACC9;
- Wed, 12 Feb 2020 18:21:07 +0000 (UTC)
-Received: from [10.36.117.92] (ovpn-117-92.ams2.redhat.com [10.36.117.92])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D063619C6A;
- Wed, 12 Feb 2020 18:20:58 +0000 (UTC)
-Subject: Re: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>
-References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
- <20200117174522.22044-2-shameerali.kolothum.thodi@huawei.com>
- <20200204162320.67e5d353@redhat.com>
- <74eaaa45-0d20-9a21-fbf8-6d29deb248eb@redhat.com>
- <4ce41554-8b8e-dbb5-5fe9-43af09950f23@redhat.com>
- <8e0b2c762e914c64bebfab5fc7441661@huawei.com>
- <133f274e-e942-7008-93d2-8edb1bc4d7ae@redhat.com>
- <52fff289cca14874ad493fc25806fe3d@huawei.com>
- <f041380c-afcb-f8d8-89db-8f48c7b46767@redhat.com>
- <e97fa28c653044b8bab66aeca2374682@huawei.com>
- <0ff4d2c1-ebd3-1d2f-07e8-a4f13be07ceb@redhat.com>
- <6bf255ecb88446f1b08ee4ab21a85f02@huawei.com>
- <69848dd3-fac4-ec6b-78a8-a052124f4fc3@redhat.com>
- <49b54eea65cd49ae832cd6ec21eae64a@huawei.com>
- <b4ccf1d9-4514-6b63-5ef9-1d337f539267@redhat.com>
- <fad66252aa8f4b46816f21b5315b6358@huawei.com>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat GmbH
-Message-ID: <8f10dd72-9a19-b910-489c-eacc6a772046@redhat.com>
-Date: Wed, 12 Feb 2020 19:20:58 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OX303qz2;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=vDjnTlkyucru1OXPiU6QEVvdOvEVDBal/664wRHBydk=;
+        b=OX303qz24yzUuFG2t6LSpiUqFzaOeLUW8wua0BssjMcS366+4EhHaaSoKC+2VXaK1J
+         dS4coTUhIOG0b+ds0ik8n1nVk82rgI1PyspO7Nw1ClR9xlAgvHvmBR3k/0W4IZETu/lO
+         lB3R4Xz3/YQLFQBt5E4Gmn9DJO88piTWmHY6vGKjLAJ9U0iYzciJWz8bYD1sG3qgS4WW
+         GHk63Sk2j/osKivyElzxobFRSXa90lHrP+PXoq2uY6eqUY6NvAx4NyfPYhQRCQ1Sgfgi
+         HoAFSN47EjivHssa21GWL6ZvBzMXzurVrUv/B0N7S5aWPIfCfDSy/lr2N/xwK8n4LiUF
+         i/yA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=vDjnTlkyucru1OXPiU6QEVvdOvEVDBal/664wRHBydk=;
+        b=Wm8aApA9aaASOfSpd4Wi+S1KWtZ8L3B8JBz6P/G0Al+Li2QlGjIgizeJEQQjuxZASI
+         R/G0Ami8Ry05Ne9g+DbIJ4T7BES3ObLwQQXEW0d60LQFlqmJtKFQBgQ54ajLX7FEzOqg
+         H28QRHOgzVfWF99UjB1LY8I4yHdue3crrq/i2lsVndHbgqIeMU2w0vsw4L0Mn9H/5MNV
+         wcupkDjM93NJGNHEi30FTl4lxvJs2aIXiQbvRpWOKf/2k5EfX8IxTpL8hi9xeoPNuyVl
+         WozUWnvf2BoHrQVVgrO1OmmDWz1m0SrbJbD8kgKR7oqPP/A11pmFeohGWzcrH0b66ros
+         Gadw==
+X-Gm-Message-State: APjAAAUg4VNVXE9vwirIODhtIiSX902KRktunn+cyr0dNuoR3WZJoNLY
+	x+PDDN9FyKn6v44hTZPWcLyj4Jc6+YAVRLldYg0=
+X-Google-Smtp-Source: APXvYqxrH7QDp2LFzJAcHEr8lfayTzkUaGqS3vyUAf/kELPmknOOtHU8fZudX5gwH1mxdH0pTcbrYQpyxea12178c2k=
+X-Received: by 2002:a6b:d912:: with SMTP id r18mr18742896ioc.306.1581544075178;
+ Wed, 12 Feb 2020 13:47:55 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <fad66252aa8f4b46816f21b5315b6358@huawei.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: X1i3wboWNaqnbhD1TH2UmA-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+References: <20200119005102.3847-1-nieklinnenbank@gmail.com>
+In-Reply-To: <20200119005102.3847-1-nieklinnenbank@gmail.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Wed, 12 Feb 2020 22:47:44 +0100
+Message-ID: <CAPan3WpV2m9HXLXZDopKUb2EfX2KE9y530m2pJG4-D96==ggCg@mail.gmail.com>
+Subject: Re: [PATCH v4 00/20] Add Allwinner H3 SoC and Orange Pi PC Machine
+To: QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+	Beniamino Galvani <b.galvani@gmail.com>, jasowang@redhat.com, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Igor Mammedov <imammedo@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000cc38cd059e67ecb0"
+X-TUID: zvxEvU1WEcmL
+
+--000000000000cc38cd059e67ecb0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
- "mst@redhat.com" <mst@redhat.com>,
- Juan Jose Quintela Carreira <quintela@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- "lersek@redhat.com" <lersek@redhat.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "dgilbert@redhat.com" <dgilbert@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wA8tiQupFF7R
 
-On 12.02.20 18:07, Shameerali Kolothum Thodi wrote:
->=20
->=20
->> -----Original Message-----
->> From: David Hildenbrand [mailto:david@redhat.com]
->> Sent: 10 February 2020 09:54
->> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
->> Igor Mammedov <imammedo@redhat.com>
->> Cc: peter.maydell@linaro.org; xiaoguangrong.eric@gmail.com;
->> mst@redhat.com; shannon.zhaosl@gmail.com; qemu-devel@nongnu.org;
->> xuwei (O) <xuwei5@huawei.com>; Linuxarm <linuxarm@huawei.com>;
->> eric.auger@redhat.com; qemu-arm@nongnu.org; lersek@redhat.com
->> Subject: Re: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
->>
->> On 10.02.20 10:50, Shameerali Kolothum Thodi wrote:
->>>
->>>
->>>> -----Original Message-----
->>>> From: David Hildenbrand [mailto:david@redhat.com]
->>>> Sent: 10 February 2020 09:29
->>>> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
->>>> Igor Mammedov <imammedo@redhat.com>
->>>> Cc: peter.maydell@linaro.org; xiaoguangrong.eric@gmail.com;
->>>> mst@redhat.com; shannon.zhaosl@gmail.com; qemu-devel@nongnu.org;
->>>> xuwei (O) <xuwei5@huawei.com>; Linuxarm <linuxarm@huawei.com>;
->>>> eric.auger@redhat.com; qemu-arm@nongnu.org; lersek@redhat.com
->>>> Subject: Re: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
->>>>
->>>>>> Can you look the original value up somehow and us the resize callbac=
-k
->>>>>> only as a notification that something changed? (that value would hav=
-e to
->>>>>> be stored somewhere and migrated I assume - maybe that's already
->> being
->>>>>> done)
->>>>>
->>>>> Ok. I will take a look at that. But can we instead pass the
->> block->used_length
->>>> to
->>>>> fw_cfg_add_file_callback(). That way we don=E2=80=99t have to change =
-the
->>>> qemu_ram_resize()
->>>>> as well. I think Igor has suggested this before[1] and I had a go at =
-it before
->>>> coming up
->>>>> with the "req_length" proposal here.
->>>>
->>>> You mean, passing the old size as well? I don't see how that will solv=
-e
->>>> the issue, but yeah, nothing speaks against simply sending the old and
->>>> the new size.
->>>
->>> Nope. I actually meant using the block->used_length to store in the
->>> s->files->f[index].size.
->>>
->>> virt_acpi_setup()
->>>   acpi_add_rom_blob()
->>>     rom_add_blob()
->>>       rom_set_mr()  --> used_length  =3D page aligned blob size
->>>         fw_cfg_add_file_callback()  --> uses actual blob size.
->>>
->>>
->>> Right now what we do is use the actual blob size to store in FWCfgEntry=
-.
->>> Instead pass the RAMBlock used_length to fw_cfg_add_file_callback().
->>> Of course by this, the firmware will see an aligned size, but that is f=
-ine I think.
->>> But at the same time this means the qemu_ram_resize() can stay as it is
->>> because it will invoke the callback when the size changes beyond the al=
-igned
->>> page size. And also during migration, there won't be any inconsistency =
-as
->> everyone
->>> works on aligned page size.
->>>
->>> Does that make sense? Or I am again missing something here?
->>
->> Oh, you mean simply rounding up to full pages in the fw entries? If we
->> can drop the "sub-page" restriction, that would be awesome!
->>
->> Need to double check if that could be an issue for fw/migration/whatever=
-.
->=20
-> Hmm..it breaks x86 + seabios boot. The issue is seabios expects RSDP in F=
-SEG
-> memory. With the above proposed change, RSDP will be aligned to PAGE_SIZE=
- and
-> seabios mem allocation for RSDP fails at,
->=20
-> https://github.com/coreboot/seabios/blob/master/src/fw/romfile_loader.c#L=
-85
->=20
-> To get pass the above, I changed "alloc_fseg" flag to false in build_rsdp=
-(), but
-> seabios seems to make the assumption that RSDP has to be placed in FSEG m=
-emory
-> here,
-> https://github.com/coreboot/seabios/blob/master/src/fw/biostables.c#L126
->=20
-> So doesn=E2=80=99t look like there is an easy fix for this without changi=
-ng the seabios code.
->=20
-> Between, OVMF works fine with the aligned size on x86.
->=20
-> One thing we can do is treat the RSDP case separately or only use the ali=
-gned
-> page size for "etc/acpi/tables" as below,
->=20
-> diff --git a/hw/core/loader.c b/hw/core/loader.c
-> index d1b78f60cd..f07f6a7a35 100644
-> --- a/hw/core/loader.c
-> +++ b/hw/core/loader.c
-> @@ -60,6 +60,7 @@
->  #include "hw/boards.h"
->  #include "qemu/cutils.h"
->  #include "sysemu/runstate.h"
-> +#include "hw/acpi/aml-build.h"
-> =20
->  #include <zlib.h>
-> =20
-> @@ -1056,6 +1057,7 @@ MemoryRegion *rom_add_blob(const char *name, const =
-void *blob, size_t len,
->      if (fw_file_name && fw_cfg) {
->          char devpath[100];
->          void *data;
-> +        size_t size =3D rom->datasize;
-> =20
->          if (read_only) {
->              snprintf(devpath, sizeof(devpath), "/rom@%s", fw_file_name);
-> @@ -1066,13 +1068,21 @@ MemoryRegion *rom_add_blob(const char *name, cons=
-t void *blob, size_t len,
->          if (mc->rom_file_has_mr) {
->              data =3D rom_set_mr(rom, OBJECT(fw_cfg), devpath, read_only)=
-;
->              mr =3D rom->mr;
-> +           /*
-> +            * Use the RAMblk used_length for acpi tables as this avoids =
-any
-> +            * inconsistency with table size changes during hot add and d=
-uring
-> +            * migration.
-> +            */
-> +           if (strcmp(fw_file_name, ACPI_BUILD_TABLE_FILE) =3D=3D 0) {
-> +                size =3D memory_region_get_used_length(mr);
-> +           }
->          } else {
->              data =3D rom->data;
->          }
-> =20
->          fw_cfg_add_file_callback(fw_cfg, fw_file_name,
->                                   fw_callback, NULL, callback_opaque,
-> -                                 data, rom->datasize, read_only);
-> +                                 data, size, read_only);
->      }
->      return mr;
->  }
->=20
->=20
-> Thoughts?
+Hi all,
 
-I don't think introducing memory_region_get_used_length() is a
-good idea. I also dislike, that the ram block size can differ
-to the memory region size. I wasn't aware of that condition, sorry!
+Short status update regarding this series.
 
-Making the memory region always store an aligned size might break other use=
- cases.
+Currently I am debugging booting NetBSD 9.0-RC2, which is recently released
+[1]
+The problem is that, apparently, RC2 can't mount the rootfs properly:
 
-Summarizing the issue:
-1. Memory regions contain ram blocks with a different size, if the size is
-   not properly aligned. While memory regions can have an unaligned size,
-   ram blocks can't. This is true when creating resizable memory region wit=
-h
-   an unaligned size.
-2. When resizing a ram block/memory region, the size of the memory region
-   is set to the aligned size. The callback is called with the aligned size=
-.
-   The unaligned piece is lost.
-3. When migrating, we migrate the aligned size.
+[   3.1871510] vfs_mountroot: can't open root device
+[   3.2141370] cannot mount root, error =3D 6
 
+This only happens using the RC2 filesystem image. However, the RC2 kernel
+can
+properly load & boot the RC1 filesystem image, and the RC1 kernel gives the
+same error
+on the RC2 filesystem.  But I dont think its a NetBSD-RC2 issue, because on
+a real
+Orange Pi PC hardware board, this problem does not show.
 
-What about something like this: (untested)
+I'm comparing traces and adding more low-level debug output to NetBSD and
+QEMU to find the issue.
 
+Also I processed the review remarks which were send so far.
 
-From d84c21bc67e15acdac2f6265cd1576d8dd920211 Mon Sep 17 00:00:00 2001
-From: David Hildenbrand <david@redhat.com>
-Date: Wed, 12 Feb 2020 19:16:34 +0100
-Subject: [PATCH v1] tmp
+Kind regards,
+Niek
 
-Signed-off-by: David Hildenbrand <david@redhat.com>
----
- exec.c          | 14 ++++++++++++--
- migration/ram.c | 44 ++++++++++++++++++++++++++++++++------------
- 2 files changed, 44 insertions(+), 14 deletions(-)
+[1] https://www.netbsd.org/releases/formal-9/NetBSD-9.0.html
 
-diff --git a/exec.c b/exec.c
-index 05cfe868ab..d41a1e11b5 100644
---- a/exec.c
-+++ b/exec.c
-@@ -2130,11 +2130,21 @@ static int memory_try_enable_merging(void *addr, si=
-ze_t len)
-  */
- int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp)
- {
-+    const ram_addr_t unaligned_size =3D newsize;
-+
-     assert(block);
-=20
-     newsize =3D HOST_PAGE_ALIGN(newsize);
-=20
-     if (block->used_length =3D=3D newsize) {
-+        /*
-+         * We don't have to resize the ram block (which only knows aligned
-+         * sizes), however, we have to notify if the unaligned size change=
-d.
-+         */
-+        if (block->resized && unaligned_size !=3D memory_region_size(block=
-->mr)) {
-+            block->resized(block->idstr, unaligned_size, block->host);
-+            memory_region_set_size(block->mr, unaligned_size);
-+        }
-         return 0;
-     }
-=20
-@@ -2158,9 +2168,9 @@ int qemu_ram_resize(RAMBlock *block, ram_addr_t newsi=
-ze, Error **errp)
-     block->used_length =3D newsize;
-     cpu_physical_memory_set_dirty_range(block->offset, block->used_length,
-                                         DIRTY_CLIENTS_ALL);
--    memory_region_set_size(block->mr, newsize);
-+    memory_region_set_size(block->mr, unaligned_size);
-     if (block->resized) {
--        block->resized(block->idstr, newsize, block->host);
-+        block->resized(block->idstr, unaligned_size, block->host);
-     }
-     return 0;
- }
-diff --git a/migration/ram.c b/migration/ram.c
-index ed23ed1c7c..2acc4b85ca 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -1761,28 +1761,43 @@ void acct_update_position(QEMUFile *f, size_t size,=
- bool zero)
-     }
- }
-=20
--static uint64_t ram_bytes_total_common(bool count_ignored)
-+static uint64_t ramblock_ram_bytes_migration(RAMBlock *block)
-+{
-+    /*
-+     * When resizing on the target, we need the unaligned size,
-+     * otherwise, we lose the unaligned size during migration.
-+     */
-+    if (block->mr && (block->flags & RAM_RESIZEABLE)) {
-+        return memory_region_size(block->mr);
-+    } else {
-+        return block->used_length;
-+    }
-+}
-+
-+static uint64_t ram_bytes_total_migration(void)
- {
-     RAMBlock *block;
-     uint64_t total =3D 0;
-=20
-     RCU_READ_LOCK_GUARD();
-=20
--    if (count_ignored) {
--        RAMBLOCK_FOREACH_MIGRATABLE(block) {
--            total +=3D block->used_length;
--        }
--    } else {
--        RAMBLOCK_FOREACH_NOT_IGNORED(block) {
--            total +=3D block->used_length;
--        }
-+    RAMBLOCK_FOREACH_MIGRATABLE(block) {
-+        total +=3D ramblock_ram_bytes_migration(block);
-     }
-     return total;
- }
-=20
- uint64_t ram_bytes_total(void)
- {
--    return ram_bytes_total_common(false);
-+    RAMBlock *block;
-+    uint64_t total =3D 0;
-+
-+    RCU_READ_LOCK_GUARD();
-+
-+    RAMBLOCK_FOREACH_NOT_IGNORED(block) {
-+        total +=3D block->used_length;
-+    }
-+    return total;
- }
-=20
- static void xbzrle_load_setup(void)
-@@ -2432,12 +2447,17 @@ static int ram_save_setup(QEMUFile *f, void *opaque=
-)
-     (*rsp)->f =3D f;
-=20
-     WITH_RCU_READ_LOCK_GUARD() {
--        qemu_put_be64(f, ram_bytes_total_common(true) | RAM_SAVE_FLAG_MEM_=
-SIZE);
-+        qemu_put_be64(f, ram_bytes_total_migration() | RAM_SAVE_FLAG_MEM_S=
-IZE);
-=20
-         RAMBLOCK_FOREACH_MIGRATABLE(block) {
-             qemu_put_byte(f, strlen(block->idstr));
-             qemu_put_buffer(f, (uint8_t *)block->idstr, strlen(block->idst=
-r));
--            qemu_put_be64(f, block->used_length);
-+            /*
-+             * When resizing on the target, we need the unaligned size,
-+             * otherwise we lose the unaligned sise during migration.
-+             */
-+            qemu_put_be64(f, ramblock_ram_bytes_migration(block));
-+
-             if (migrate_postcopy_ram() && block->page_size !=3D
-                                           qemu_host_page_size) {
-                 qemu_put_be64(f, block->page_size);
---=20
-2.24.1
+On Sun, Jan 19, 2020 at 1:51 AM Niek Linnenbank <nieklinnenbank@gmail.com>
+wrote:
+
+> Dear QEMU developers,
+>
+> Hereby I would like to contribute the following set of patches to QEMU
+> which add support for the Allwinner H3 System on Chip and the
+> Orange Pi PC machine. The following features and devices are supported:
+>
+>  * SMP (Quad Core Cortex A7)
+>  * Generic Interrupt Controller configuration
+>  * SRAM mappings
+>  * SDRAM controller
+>  * Real Time Clock
+>  * Timer device (re-used from Allwinner A10)
+>  * UART
+>  * SD/MMC storage controller
+>  * EMAC ethernet connectivity
+>  * USB 2.0 interfaces
+>  * Clock Control Unit
+>  * System Control module
+>  * Security Identifier device
+>
+> Functionality related to graphical output such as HDMI, GPU,
+> Display Engine and audio are not included. Recently released
+> mainline Linux kernels (4.19 up to latest master), mainline U-Boot
+> and NetBSD 9.0-RC1 are known to work.
+>
+> For full details on how to use the Orange Pi PC machine, see the file
+> docs/orangepi.rst which is included as a patch in this series.
+>
+> The contents of this patch series is available on Github at:
+>
+>   https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v3
+>
+> The followings are currently known issues in this series:
+>
+>   - NetBSD 9.0-RC1 reads out year 2050 from RTC, while Linux works fine
+>      -> This is due to difference in base year defined by the
+> corresponding drivers
+>   - RTC date & time is not persistent
+>   - boot0 custom Allwinner bootloader not yet working
+>   - Watchdog not yet implemented, affects U-Boot 'reset' and
+> shutdown/reboot
+>      -> This is part of the existing A10 timer that needs to be
+> generalized first
+>
+> Looking forward to your review comments. I will do my best
+> to update the patches where needed.
+>
+> =3D=3D=3D=3D=3D CHANGELOG =3D=3D=3D=3D=3D
+> v4:
+>  * docs/orangepi.rst: correct SDRAM size in board description: 512MB ->
+> 1GiB
+>  * hw/arm/orangepi.c: correct SDRAM size in commit message: 512MB -> 1GiB
+>  * hw/arm/orangepi.c: set .nb_cpus in the orangepi_binfo struct static
+> initialisation
+>  * hw/arm/orangepi.c: remove .board_id from orangepi_binfo struct
+>  * hw/arm/orangepi.c: move BIOS check to top of orangepi_init()
+>  * hw/arm/orangepi.c: change clk1-freq argument 24000000 to 24 * 1000 *
+> 1000 for readability
+>  * hw/arm/orangepi.c: rephrase 1GiB check error message
+>  * include/hw/arm/allwinner-h3.h: improved comments
+>  * hw/arm/allwinner-h3.c: remove duplicate initialization and declaration
+> of i variable
+>  * hw/arm/allwinner-h3.c: use DEVICE(&s->cpus[i]) instead of qemu_get_cpu=
+()
+>  * hw/arm/allwinner-h3.c: use qdev API instead of object API in CPU
+> initialization part
+>  * hw/arm/allwinner-h3.c: add note that UARTs are connected to APB2_CLK,
+> for future clocktree API
+>  * hw/arm/allwinner-h3.c: extend commit message for Boot ROM with
+> description for the 32KiB size
+>  * hw/rtc/allwinner-rtc.c: correct usage of AwRtcClass->regmap_size for
+> checking r/w offset
+>  * hw/misc/allwinner-cpucfg.c: remove 64-bit counter, as it is unused by
+> Linux/U-Boot/NetBSD
+>  * hw/misc/allwinner-cpucfg.c: add CPU_EXCEPTION_LEVEL_ON_RESET constant
+>  * hw/misc/allwinner-cpucfg.c: break instead of return after logging gues=
+t
+> error, for tracing
+>  * hw/misc/allwinner-cpucfg.c: reduce duplication in switch/case for
+> REG_CPUX_RST_CTRL in write function
+>  * include/hw/rtc/allwinner-rtc.h: increase AW_RTC_REGS_MAXADDR to 0x200
+>  * include/hw/rtc/allwinner-rtc.h: change type of AwRtcClass->year_offset
+> to int, to match struct tm
+>  * tests/acceptance/boot_linux_console.py: remove calls to vm.set_machine=
+()
+>  * tests/acceptance/boot_linux_console.py: added NetBSD test by Philippe
+>  * docs/orangepi.rst: removed some unneeded words/typos
+>  * docs/orangepi.rst: remove usage of -j5 for calling make (not all users
+> have >=3D 4 SMP cores)
+>  * include/hw/*/allwinner*.h: moved #include "qemu/osdep.h" and unneeded
+> #includes to .c file
+>
+> v3: https://lists.gnu.org/archive/html/qemu-devel/2020-01/msg01534.html
+>     https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v3
+>
+> v2: https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg03265.html
+>     https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v2
+>
+> v1: https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg00320.html
+>     https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v1
+>
+> With kind regards,
+>
+> Niek Linnenbank
+>
+> Niek Linnenbank (13):
+>   hw/arm: add Allwinner H3 System-on-Chip
+>   hw/arm: add Xunlong Orange Pi PC machine
+>   hw/arm/allwinner-h3: add Clock Control Unit
+>   hw/arm/allwinner-h3: add USB host controller
+>   hw/arm/allwinner-h3: add System Control module
+>   hw/arm/allwinner: add CPU Configuration module
+>   hw/arm/allwinner: add Security Identifier device
+>   hw/arm/allwinner: add SD/MMC host controller
+>   hw/arm/allwinner-h3: add EMAC ethernet device
+>   hw/arm/allwinner-h3: add Boot ROM support
+>   hw/arm/allwinner-h3: add SDRAM controller device
+>   hw/arm/allwinner: add RTC device support
+>   docs: add Orange Pi PC document
+>
+> Philippe Mathieu-Daud=C3=A9 (7):
+>   tests/boot_linux_console: Add a quick test for the OrangePi PC board
+>   tests/boot_linux_console: Add initrd test for the Orange Pi PC board
+>   tests/boot_linux_console: Add a SD card test for the OrangePi PC board
+>   tests/boot_linux_console: Add a SLOW test booting Ubuntu on OrangePi
+>     PC
+>   Acceptance tests: Extract _console_interaction()
+>   Acceptance tests: Add interrupt_interactive_console_until_pattern()
+>   tests/boot_linux_console: Test booting NetBSD via U-Boot on OrangePi
+>     PC
+>
+>  docs/orangepi.rst                         | 199 +++++
+>  default-configs/arm-softmmu.mak           |   1 +
+>  hw/usb/hcd-ehci.h                         |   1 +
+>  include/hw/arm/allwinner-a10.h            |   4 +
+>  include/hw/arm/allwinner-h3.h             | 163 ++++
+>  include/hw/misc/allwinner-cpucfg.h        |  52 ++
+>  include/hw/misc/allwinner-h3-ccu.h        |  66 ++
+>  include/hw/misc/allwinner-h3-dramc.h      | 106 +++
+>  include/hw/misc/allwinner-h3-sysctrl.h    |  67 ++
+>  include/hw/misc/allwinner-sid.h           |  60 ++
+>  include/hw/net/allwinner-sun8i-emac.h     |  99 +++
+>  include/hw/rtc/allwinner-rtc.h            | 128 ++++
+>  include/hw/sd/allwinner-sdhost.h          | 135 ++++
+>  hw/arm/allwinner-a10.c                    |  19 +
+>  hw/arm/allwinner-h3.c                     | 476 ++++++++++++
+>  hw/arm/cubieboard.c                       |  15 +
+>  hw/arm/orangepi.c                         | 127 ++++
+>  hw/misc/allwinner-cpucfg.c                | 269 +++++++
+>  hw/misc/allwinner-h3-ccu.c                | 243 ++++++
+>  hw/misc/allwinner-h3-dramc.c              | 358 +++++++++
+>  hw/misc/allwinner-h3-sysctrl.c            | 140 ++++
+>  hw/misc/allwinner-sid.c                   | 170 +++++
+>  hw/net/allwinner-sun8i-emac.c             | 871 ++++++++++++++++++++++
+>  hw/rtc/allwinner-rtc.c                    | 386 ++++++++++
+>  hw/sd/allwinner-sdhost.c                  | 848 +++++++++++++++++++++
+>  hw/usb/hcd-ehci-sysbus.c                  |  17 +
+>  MAINTAINERS                               |   9 +
+>  hw/arm/Kconfig                            |   9 +
+>  hw/arm/Makefile.objs                      |   1 +
+>  hw/misc/Makefile.objs                     |   5 +
+>  hw/misc/trace-events                      |  19 +
+>  hw/net/Kconfig                            |   3 +
+>  hw/net/Makefile.objs                      |   1 +
+>  hw/net/trace-events                       |  10 +
+>  hw/rtc/Makefile.objs                      |   1 +
+>  hw/rtc/trace-events                       |   4 +
+>  hw/sd/Makefile.objs                       |   1 +
+>  hw/sd/trace-events                        |   7 +
+>  tests/acceptance/avocado_qemu/__init__.py |  59 +-
+>  tests/acceptance/boot_linux_console.py    | 210 ++++++
+>  40 files changed, 5345 insertions(+), 14 deletions(-)
+>  create mode 100644 docs/orangepi.rst
+>  create mode 100644 include/hw/arm/allwinner-h3.h
+>  create mode 100644 include/hw/misc/allwinner-cpucfg.h
+>  create mode 100644 include/hw/misc/allwinner-h3-ccu.h
+>  create mode 100644 include/hw/misc/allwinner-h3-dramc.h
+>  create mode 100644 include/hw/misc/allwinner-h3-sysctrl.h
+>  create mode 100644 include/hw/misc/allwinner-sid.h
+>  create mode 100644 include/hw/net/allwinner-sun8i-emac.h
+>  create mode 100644 include/hw/rtc/allwinner-rtc.h
+>  create mode 100644 include/hw/sd/allwinner-sdhost.h
+>  create mode 100644 hw/arm/allwinner-h3.c
+>  create mode 100644 hw/arm/orangepi.c
+>  create mode 100644 hw/misc/allwinner-cpucfg.c
+>  create mode 100644 hw/misc/allwinner-h3-ccu.c
+>  create mode 100644 hw/misc/allwinner-h3-dramc.c
+>  create mode 100644 hw/misc/allwinner-h3-sysctrl.c
+>  create mode 100644 hw/misc/allwinner-sid.c
+>  create mode 100644 hw/net/allwinner-sun8i-emac.c
+>  create mode 100644 hw/rtc/allwinner-rtc.c
+>  create mode 100644 hw/sd/allwinner-sdhost.c
+>
+> --
+> 2.17.1
+>
 
 
 --=20
-Thanks,
+Niek Linnenbank
 
-David / dhildenb
+--000000000000cc38cd059e67ecb0
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"ltr"><div>Hi all,</div><div><br></div><div>Short status update =
+regarding this series.</div><div><br></div><div>Currently I am debugging bo=
+oting NetBSD 9.0-RC2, which is recently released [1]</div><div>The problem =
+is that, apparently, RC2 can&#39;t mount the rootfs properly: <br></div><di=
+v><br></div><div>[ =C2=A0 3.1871510] vfs_mountroot: can&#39;t open root dev=
+ice<br>[ =C2=A0 3.2141370] cannot mount root, error =3D 6<br></div><div><br=
+></div><div>This only happens using the RC2 filesystem image. However, the =
+RC2 kernel can</div><div>properly load &amp; boot the RC1 filesystem image,=
+ and the RC1 kernel gives the same error</div><div>on the RC2 filesystem.=
+=C2=A0 But I dont think its a NetBSD-RC2 issue, because on a real</div><div=
+>Orange Pi PC hardware board, this problem does not show.</div><div><br></d=
+iv><div>I&#39;m comparing traces and adding more low-level debug output to =
+NetBSD and QEMU to find the issue.<br></div><div><br></div><div>Also I proc=
+essed the review remarks which were send so far.</div><div><br></div><div>K=
+ind regards,</div><div>Niek<br></div><div><br></div><div>[1] <a href=3D"htt=
+ps://www.netbsd.org/releases/formal-9/NetBSD-9.0.html">https://www.netbsd.o=
+rg/releases/formal-9/NetBSD-9.0.html</a></div><div><br></div><div class=3D"=
+gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Jan 19, 2020 at =
+1:51 AM Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">nie=
+klinnenbank@gmail.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex">Dear QEMU developers,<br>
+<br>
+Hereby I would like to contribute the following set of patches to QEMU<br>
+which add support for the Allwinner H3 System on Chip and the<br>
+Orange Pi PC machine. The following features and devices are supported:<br>
+<br>
+=C2=A0* SMP (Quad Core Cortex A7)<br>
+=C2=A0* Generic Interrupt Controller configuration<br>
+=C2=A0* SRAM mappings<br>
+=C2=A0* SDRAM controller<br>
+=C2=A0* Real Time Clock<br>
+=C2=A0* Timer device (re-used from Allwinner A10)<br>
+=C2=A0* UART<br>
+=C2=A0* SD/MMC storage controller<br>
+=C2=A0* EMAC ethernet connectivity<br>
+=C2=A0* USB 2.0 interfaces<br>
+=C2=A0* Clock Control Unit<br>
+=C2=A0* System Control module<br>
+=C2=A0* Security Identifier device<br>
+<br>
+Functionality related to graphical output such as HDMI, GPU,<br>
+Display Engine and audio are not included. Recently released<br>
+mainline Linux kernels (4.19 up to latest master), mainline U-Boot<br>
+and NetBSD 9.0-RC1 are known to work.<br>
+<br>
+For full details on how to use the Orange Pi PC machine, see the file<br>
+docs/orangepi.rst which is included as a patch in this series.<br>
+<br>
+The contents of this patch series is available on Github at:<br>
+<br>
+=C2=A0 <a href=3D"https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-=
+v3" rel=3D"noreferrer" target=3D"_blank">https://github.com/nieklinnenbank/=
+qemu/tree/allwinner-h3-v3</a><br>
+<br>
+The followings are currently known issues in this series:<br>
+<br>
+=C2=A0 - NetBSD 9.0-RC1 reads out year 2050 from RTC, while Linux works fin=
+e<br>
+=C2=A0 =C2=A0 =C2=A0-&gt; This is due to difference in base year defined by=
+ the corresponding drivers<br>
+=C2=A0 - RTC date &amp; time is not persistent<br>
+=C2=A0 - boot0 custom Allwinner bootloader not yet working<br>
+=C2=A0 - Watchdog not yet implemented, affects U-Boot &#39;reset&#39; and s=
+hutdown/reboot<br>
+=C2=A0 =C2=A0 =C2=A0-&gt; This is part of the existing A10 timer that needs=
+ to be generalized first<br>
+<br>
+Looking forward to your review comments. I will do my best<br>
+to update the patches where needed.<br>
+<br>
+=3D=3D=3D=3D=3D CHANGELOG =3D=3D=3D=3D=3D<br>
+v4:<br>
+=C2=A0* docs/orangepi.rst: correct SDRAM size in board description: 512MB -=
+&gt; 1GiB<br>
+=C2=A0* hw/arm/orangepi.c: correct SDRAM size in commit message: 512MB -&gt=
+; 1GiB<br>
+=C2=A0* hw/arm/orangepi.c: set .nb_cpus in the orangepi_binfo struct static=
+ initialisation<br>
+=C2=A0* hw/arm/orangepi.c: remove .board_id from orangepi_binfo struct<br>
+=C2=A0* hw/arm/orangepi.c: move BIOS check to top of orangepi_init()<br>
+=C2=A0* hw/arm/orangepi.c: change clk1-freq argument 24000000 to 24 * 1000 =
+* 1000 for readability<br>
+=C2=A0* hw/arm/orangepi.c: rephrase 1GiB check error message<br>
+=C2=A0* include/hw/arm/allwinner-h3.h: improved comments<br>
+=C2=A0* hw/arm/allwinner-h3.c: remove duplicate initialization and declarat=
+ion of i variable<br>
+=C2=A0* hw/arm/allwinner-h3.c: use DEVICE(&amp;s-&gt;cpus[i]) instead of qe=
+mu_get_cpu()<br>
+=C2=A0* hw/arm/allwinner-h3.c: use qdev API instead of object API in CPU in=
+itialization part<br>
+=C2=A0* hw/arm/allwinner-h3.c: add note that UARTs are connected to APB2_CL=
+K, for future clocktree API<br>
+=C2=A0* hw/arm/allwinner-h3.c: extend commit message for Boot ROM with desc=
+ription for the 32KiB size<br>
+=C2=A0* hw/rtc/allwinner-rtc.c: correct usage of AwRtcClass-&gt;regmap_size=
+ for checking r/w offset<br>
+=C2=A0* hw/misc/allwinner-cpucfg.c: remove 64-bit counter, as it is unused =
+by Linux/U-Boot/NetBSD<br>
+=C2=A0* hw/misc/allwinner-cpucfg.c: add CPU_EXCEPTION_LEVEL_ON_RESET consta=
+nt<br>
+=C2=A0* hw/misc/allwinner-cpucfg.c: break instead of return after logging g=
+uest error, for tracing<br>
+=C2=A0* hw/misc/allwinner-cpucfg.c: reduce duplication in switch/case for R=
+EG_CPUX_RST_CTRL in write function<br>
+=C2=A0* include/hw/rtc/allwinner-rtc.h: increase AW_RTC_REGS_MAXADDR to 0x2=
+00<br>
+=C2=A0* include/hw/rtc/allwinner-rtc.h: change type of AwRtcClass-&gt;year_=
+offset to int, to match struct tm<br>
+=C2=A0* tests/acceptance/boot_linux_console.py: remove calls to vm.set_mach=
+ine()<br>
+=C2=A0* tests/acceptance/boot_linux_console.py: added NetBSD test by Philip=
+pe<br>
+=C2=A0* docs/orangepi.rst: removed some unneeded words/typos<br>
+=C2=A0* docs/orangepi.rst: remove usage of -j5 for calling make (not all us=
+ers have &gt;=3D 4 SMP cores)<br>
+=C2=A0* include/hw/*/allwinner*.h: moved #include &quot;qemu/osdep.h&quot; =
+and unneeded #includes to .c file<br>
+<br>
+v3: <a href=3D"https://lists.gnu.org/archive/html/qemu-devel/2020-01/msg015=
+34.html" rel=3D"noreferrer" target=3D"_blank">https://lists.gnu.org/archive=
+/html/qemu-devel/2020-01/msg01534.html</a><br>
+=C2=A0 =C2=A0 <a href=3D"https://github.com/nieklinnenbank/qemu/tree/allwin=
+ner-h3-v3" rel=3D"noreferrer" target=3D"_blank">https://github.com/nieklinn=
+enbank/qemu/tree/allwinner-h3-v3</a><br>
+<br>
+v2: <a href=3D"https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg032=
+65.html" rel=3D"noreferrer" target=3D"_blank">https://lists.gnu.org/archive=
+/html/qemu-devel/2019-12/msg03265.html</a><br>
+=C2=A0 =C2=A0 <a href=3D"https://github.com/nieklinnenbank/qemu/tree/allwin=
+ner-h3-v2" rel=3D"noreferrer" target=3D"_blank">https://github.com/nieklinn=
+enbank/qemu/tree/allwinner-h3-v2</a><br>
+<br>
+v1: <a href=3D"https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg003=
+20.html" rel=3D"noreferrer" target=3D"_blank">https://lists.gnu.org/archive=
+/html/qemu-devel/2019-12/msg00320.html</a><br>
+=C2=A0 =C2=A0 <a href=3D"https://github.com/nieklinnenbank/qemu/tree/allwin=
+ner-h3-v1" rel=3D"noreferrer" target=3D"_blank">https://github.com/nieklinn=
+enbank/qemu/tree/allwinner-h3-v1</a><br>
+<br>
+With kind regards,<br>
+<br>
+Niek Linnenbank<br>
+<br>
+Niek Linnenbank (13):<br>
+=C2=A0 hw/arm: add Allwinner H3 System-on-Chip<br>
+=C2=A0 hw/arm: add Xunlong Orange Pi PC machine<br>
+=C2=A0 hw/arm/allwinner-h3: add Clock Control Unit<br>
+=C2=A0 hw/arm/allwinner-h3: add USB host controller<br>
+=C2=A0 hw/arm/allwinner-h3: add System Control module<br>
+=C2=A0 hw/arm/allwinner: add CPU Configuration module<br>
+=C2=A0 hw/arm/allwinner: add Security Identifier device<br>
+=C2=A0 hw/arm/allwinner: add SD/MMC host controller<br>
+=C2=A0 hw/arm/allwinner-h3: add EMAC ethernet device<br>
+=C2=A0 hw/arm/allwinner-h3: add Boot ROM support<br>
+=C2=A0 hw/arm/allwinner-h3: add SDRAM controller device<br>
+=C2=A0 hw/arm/allwinner: add RTC device support<br>
+=C2=A0 docs: add Orange Pi PC document<br>
+<br>
+Philippe Mathieu-Daud=C3=A9 (7):<br>
+=C2=A0 tests/boot_linux_console: Add a quick test for the OrangePi PC board=
+<br>
+=C2=A0 tests/boot_linux_console: Add initrd test for the Orange Pi PC board=
+<br>
+=C2=A0 tests/boot_linux_console: Add a SD card test for the OrangePi PC boa=
+rd<br>
+=C2=A0 tests/boot_linux_console: Add a SLOW test booting Ubuntu on OrangePi=
+<br>
+=C2=A0 =C2=A0 PC<br>
+=C2=A0 Acceptance tests: Extract _console_interaction()<br>
+=C2=A0 Acceptance tests: Add interrupt_interactive_console_until_pattern()<=
+br>
+=C2=A0 tests/boot_linux_console: Test booting NetBSD via U-Boot on OrangePi=
+<br>
+=C2=A0 =C2=A0 PC<br>
+<br>
+=C2=A0docs/orangepi.rst=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 199 +++++<br>
+=C2=A0default-configs/arm-softmmu.mak=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0|=C2=A0 =C2=A01 +<br>
+=C2=A0hw/usb/hcd-ehci.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
+=C2=A0include/hw/arm/allwinner-a10.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 |=C2=A0 =C2=A04 +<br>
+=C2=A0include/hw/arm/allwinner-h3.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0| 163 ++++<br>
+=C2=A0include/hw/misc/allwinner-cpucfg.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0=
+ 52 ++<br>
+=C2=A0include/hw/misc/allwinner-h3-ccu.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0=
+ 66 ++<br>
+=C2=A0include/hw/misc/allwinner-h3-dramc.h=C2=A0 =C2=A0 =C2=A0 | 106 +++<br=
+>
+=C2=A0include/hw/misc/allwinner-h3-sysctrl.h=C2=A0 =C2=A0 |=C2=A0 67 ++<br>
+=C2=A0include/hw/misc/allwinner-sid.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0|=C2=A0 60 ++<br>
+=C2=A0include/hw/net/allwinner-sun8i-emac.h=C2=A0 =C2=A0 =C2=A0|=C2=A0 99 +=
+++<br>
+=C2=A0include/hw/rtc/allwinner-rtc.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 | 128 ++++<br>
+=C2=A0include/hw/sd/allwinner-sdhost.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | =
+135 ++++<br>
+=C2=A0hw/arm/allwinner-a10.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 19 +<br>
+=C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0| 476 ++++++++++++<br>
+=C2=A0hw/arm/cubieboard.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 15 +<br>
+=C2=A0hw/arm/orangepi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 127 ++++<br>
+=C2=A0hw/misc/allwinner-cpucfg.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 | 269 +++++++<br>
+=C2=A0hw/misc/allwinner-h3-ccu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 | 243 ++++++<br>
+=C2=A0hw/misc/allwinner-h3-dramc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 | 358 +++++++++<br>
+=C2=A0hw/misc/allwinner-h3-sysctrl.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 | 140 ++++<br>
+=C2=A0hw/misc/allwinner-sid.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0| 170 +++++<br>
+=C2=A0hw/net/allwinner-sun8i-emac.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0| 871 ++++++++++++++++++++++<br>
+=C2=A0hw/rtc/allwinner-rtc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 | 386 ++++++++++<br>
+=C2=A0hw/sd/allwinner-sdhost.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 | 848 +++++++++++++++++++++<br>
+=C2=A0hw/usb/hcd-ehci-sysbus.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 |=C2=A0 17 +<br>
+=C2=A0MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A09 +<br=
+>
+=C2=A0hw/arm/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A09 +<br>
+=C2=A0hw/arm/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
+=C2=A0hw/misc/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A05 +<br>
+=C2=A0hw/misc/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 19 +<br>
+=C2=A0hw/net/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A03 +<br>
+=C2=A0hw/net/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
+=C2=A0hw/net/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 10 +<br>
+=C2=A0hw/rtc/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
+=C2=A0hw/rtc/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A04 +<br>
+=C2=A0hw/sd/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
+=C2=A0hw/sd/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A07 +<br>
+=C2=A0tests/acceptance/avocado_qemu/__init__.py |=C2=A0 59 +-<br>
+=C2=A0tests/acceptance/boot_linux_console.py=C2=A0 =C2=A0 | 210 ++++++<br>
+=C2=A040 files changed, 5345 insertions(+), 14 deletions(-)<br>
+=C2=A0create mode 100644 docs/orangepi.rst<br>
+=C2=A0create mode 100644 include/hw/arm/allwinner-h3.h<br>
+=C2=A0create mode 100644 include/hw/misc/allwinner-cpucfg.h<br>
+=C2=A0create mode 100644 include/hw/misc/allwinner-h3-ccu.h<br>
+=C2=A0create mode 100644 include/hw/misc/allwinner-h3-dramc.h<br>
+=C2=A0create mode 100644 include/hw/misc/allwinner-h3-sysctrl.h<br>
+=C2=A0create mode 100644 include/hw/misc/allwinner-sid.h<br>
+=C2=A0create mode 100644 include/hw/net/allwinner-sun8i-emac.h<br>
+=C2=A0create mode 100644 include/hw/rtc/allwinner-rtc.h<br>
+=C2=A0create mode 100644 include/hw/sd/allwinner-sdhost.h<br>
+=C2=A0create mode 100644 hw/arm/allwinner-h3.c<br>
+=C2=A0create mode 100644 hw/arm/orangepi.c<br>
+=C2=A0create mode 100644 hw/misc/allwinner-cpucfg.c<br>
+=C2=A0create mode 100644 hw/misc/allwinner-h3-ccu.c<br>
+=C2=A0create mode 100644 hw/misc/allwinner-h3-dramc.c<br>
+=C2=A0create mode 100644 hw/misc/allwinner-h3-sysctrl.c<br>
+=C2=A0create mode 100644 hw/misc/allwinner-sid.c<br>
+=C2=A0create mode 100644 hw/net/allwinner-sun8i-emac.c<br>
+=C2=A0create mode 100644 hw/rtc/allwinner-rtc.c<br>
+=C2=A0create mode 100644 hw/sd/allwinner-sdhost.c<br>
+<br>
+-- <br>
+2.17.1<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--000000000000cc38cd059e67ecb0--

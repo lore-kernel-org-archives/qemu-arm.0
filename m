@@ -1,153 +1,304 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6897497lfp;
-        Wed, 12 Feb 2020 14:12:14 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx40KzVHY/iOeC0cigkEYD8jX7CuodKJu4Z/3ROFMdzQVL+81bVnZKSP7jBsXGYQ2X5ocwR
-X-Received: by 2002:a17:906:4055:: with SMTP id y21mr13320200ejj.78.1581545533946;
-        Wed, 12 Feb 2020 14:12:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581545533; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6907402lfp;
+        Wed, 12 Feb 2020 14:23:20 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwJytrg7f6o9i28IdwuT+ehy1CQQVcGC6VCyR5RKpQADl6STT9oN1lnw1YIQKCiDs2Sd5l1
+X-Received: by 2002:a17:906:b208:: with SMTP id p8mr13610926ejz.191.1581546200155;
+        Wed, 12 Feb 2020 14:23:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581546200; cv=none;
         d=google.com; s=arc-20160816;
-        b=MEDvdE9KuEjcnZ3RIbES8T3xDnnF5SMyH9J87JwOO0KtFSsxMAxNT4R1Fg+M0G9gKb
-         vKlUXLTeONilp18PCUz3iVul4hSGy8Bvny+l+rNWtQip/q3waJ36MnGhGw1gs5SfHgmi
-         vwWrjct26w0e+dQXX1OdH/LANM772jkngAl9cWEZOZvQ6khEdn3aBwUrR6CiIhQM53+d
-         h5kKcit9/WPBfwAnW6JqABcCEu7n2HlyvmPuSSKTccdl/Uk8whARKanzqy/VlrqL0xvx
-         sYpvD6RhpmsCP7JwbOY9ctsPXm0BuKKRiVCTHM/U86WUhFo7YdpVUFai4CR66JJCaBE6
-         qqIQ==
+        b=T9+BmkaReXVgmoPpenUXZ/bdR1Lmme5azl2Qx7L0WvsoBaWG1AyRFPjPC4ekDqud6X
+         Jmx0v/JQIjMLJCC7VpSyti9viYfqxQfM+AhLWnVPDcJV3sJRkk7fhripg5Ilh54Peaq2
+         bKq9wiMQj+2AgK1TuzREGqAq3YyTGlsnVlcJm8m5Uknj6OUhiGkNaDFn/2AXSTryZFs4
+         /WLyMFe1Z1xo9bk0Z0WuQIijkAbJPy26I6q/o/6AkhXecwIr7dgf5oQulmAjYm2Axspi
+         OAKLiAovvVJ9HlwI/wGwQ84TIUesK04nDE/fg/sTmojsRfNdycRRFhV4z9f84LsfNsV0
+         aOaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=OQX3+OQlNGyIK2uBxScP/fIdyTEIe4OqFvcwVb2qhYQ=;
-        b=t+gYIYru5RbIU1nyXDipUTRxVQaSpjZv289yRsH3N1m0ofhkaMkcZNRMJuoIVwnlu7
-         3lZ1HKWw6s66XF5TjGPAui7jrzy9ZkvhYJIhXL5el9d4bJyiG2t04javtgTxG86MzASa
-         ugLP1V5wrgxrMPTmOsZc8AHTUlKeFf4SdbLdubPeprC8L7DPDUdRIV3h4ru5OpU9JepA
-         1WMfymmxVlWDbCrwwFlQtN8dZSoQdFz3bh8luGNk1TlhUoOJ8pVbgmHH1L5MQSlsepKJ
-         cNhHR8+6OY/v72/X3l3/6PepcAdZjp4WR1bkdXjQfnxjYBr5zg3Unqfy8op18Ivwl00q
-         g3qQ==
+        bh=wmONONmIzvyz1sX4qporTHqmAAEnRWbKBVxy8HzX9fE=;
+        b=UGQ1MtYCN777lKLTdZlkN7BYO1Dhr9L7u8st/sDYHzraYB2ejPOvTrlntoYbmCyzNW
+         P5KI4DM8pKeYGrgWpCICuznRUlaJoCzFHMNXP55H5+WexSyEUPjxQDuOClrF25nuCLq7
+         z4EjQxMa5RlwIZEtxpT6ghZu0k/Yco5nwpHlANJuqJQzLTvrpUqmbCzy+KBd2Os2oEJS
+         AlJfzO3LHSm55GuUsjOnn64c4WIQr3gOyzmKsGRxpqvoY75jcxpwa4UVCeGRiFuzuf9n
+         U95TSykUY+x1lERoyoKBv7OMANtRT0kL8DmiSnqjRlL6ONMGp7l6sUSlVmPSRq+ZVnYS
+         eWaQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V6VFpWNW;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D03zxkT1;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by mx.google.com with ESMTPS id x21si35748eju.309.2020.02.12.14.12.13
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
+        by mx.google.com with ESMTPS id y1si61549ejj.31.2020.02.12.14.23.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 12 Feb 2020 14:12:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
+        Wed, 12 Feb 2020 14:23:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V6VFpWNW;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D03zxkT1;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1581545532;
+	s=mimecast20190719; t=1581546199;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=OQX3+OQlNGyIK2uBxScP/fIdyTEIe4OqFvcwVb2qhYQ=;
-	b=V6VFpWNWIdSsr8Mf55x/DNhLwb7Rt/MYGRYrCrhxLtruQbmec7EyRPsvQrBra90r0WM5dC
-	IloXLIxG/+qgNF1mNVNBiGc+21jleK/CVqHrXwTxC/KKwFK563xvcuWmNxE51loOiaAuWG
-	JJU8BI8ioA+yXagI29Ot4wm8ZRqLL6A=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-301-UgLsC7U2M3GoN7KOJ95KdA-1; Wed, 12 Feb 2020 17:12:10 -0500
-Received: by mail-wm1-f70.google.com with SMTP id n17so1312884wmk.1
-        for <alex.bennee@linaro.org>; Wed, 12 Feb 2020 14:12:10 -0800 (PST)
+	bh=wmONONmIzvyz1sX4qporTHqmAAEnRWbKBVxy8HzX9fE=;
+	b=D03zxkT13tGwKdiKTqkC6rUgB8zuYK8aRN/ineKE1uiXrC6FgBDKg0Y+dv1m3U2uQ5awod
+	2BJjCRXlJyOIqQ4E3IhvmJYdxYyxiap2YZQWjqGOeVIGqXQ/RoGVNg/NttA+HUG3p3clTO
+	mVSmcpsLdBJvSGJgWIVZP/L0eZKEzwY=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-227-zO2NEFKMNGiPuBS6Jj3Waw-1; Wed, 12 Feb 2020 17:23:13 -0500
+Received: by mail-wm1-f69.google.com with SMTP id f66so1522517wmf.9
+        for <alex.bennee@linaro.org>; Wed, 12 Feb 2020 14:23:13 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=KbOIkA8SQFrtdw8hwMIaAD/l02PZxmKHkrzKvQ4tpqw=;
-        b=P8RbcDvftL8+DeYUiIPnQVjssojR1vcfy2pUmy6E5bWudgcous2jsYL3Wnfdm/3Kso
-         21LytQfQolqS6OxIWHJjhAr2zvyD2c+u3zbNCUiqVU8UqJ6nHOAbantWVU4C7uYhPS9H
-         ez47jSTzeW2dbhglMxVV8VECu+TplEWvDhDn/gFsed6pnDOH4veDs9OwPb89hWKlssVJ
-         x2soBwt2vw/Eb5RAJZ4uG5MVigFUHJkCMgWJix2mbAejznLzZdJazbNTAKeIVQDU6eFa
-         +fAitl287gMAHdZEL4ovkIJZTBvmAe0XFpp7yL5jsOjTZZvoUx0XHp9ThXwjKwg0ULOA
-         dQFA==
-X-Gm-Message-State: APjAAAWOIcag4AoeBs9j5z2IKlPGWk6PXNpPewYaLX3oApuOPyyn6KUF
-	Zkt/TJ+NWjiTkb4wTsmKNiCNLAof2pdAdBx+lY+rbmeVCIw+izP/kO0PtDGrevL+k4AxmYuhI7Y
-	vMRSPRkfV9ACaiQhh
-X-Received: by 2002:a5d:6708:: with SMTP id o8mr18147895wru.296.1581545529888;
-        Wed, 12 Feb 2020 14:12:09 -0800 (PST)
-X-Received: by 2002:a5d:6708:: with SMTP id o8mr18147889wru.296.1581545529664;
-        Wed, 12 Feb 2020 14:12:09 -0800 (PST)
+        bh=Juo60NxFwNcwOYj8cAHnsnsJENPQ91B29FvAwEZvxNM=;
+        b=YupXEYJeZaRkXNxbov9RO5Sg0AlA0D7Tjqv//WbUuLg6YJ3Qp+HkwJDLjaIqPJqhoD
+         CsmFwYTM8H5ZTksAOoWThMWWS9lc91NluBF68bMD/5mPoTH3/rz7P6zVgxLIhu82aF1W
+         Onn/DzlSDlKrhamhyREB6fM7eRy7gTfM2hgQdD52Jienp8Pohij9ZQBo8W2zaY1M8fA/
+         YWmQL5/Zrd89BC7vzHPf0YbeNWmjw9rpG3rqyK1foE540vCHq7kSGw2Cv2Wf+G4meL3P
+         GVKT7vsAaTNh058hd+iKopHrYXz1eQUGHaHpVErFF9LGIa3IZP7dqT9kzbBykprJdRjD
+         4alQ==
+X-Gm-Message-State: APjAAAWNjlYSz9dggRExLrtUpwO2kLwsRaq0krlrKtzfUImdCM4tv3uf
+	hrYfjXysqZxedyTMvA++EEt6qInRP0+gPMoO8rmRejOX4ytYUo2pJHaxxnHDFZDzGm9ltx5VaLi
+	cDOucf8AddYVoDo69
+X-Received: by 2002:a5d:488c:: with SMTP id g12mr17685933wrq.67.1581546192209;
+        Wed, 12 Feb 2020 14:23:12 -0800 (PST)
+X-Received: by 2002:a5d:488c:: with SMTP id g12mr17685904wrq.67.1581546191897;
+        Wed, 12 Feb 2020 14:23:11 -0800 (PST)
 Return-Path: <philmd@redhat.com>
 Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net. [88.21.202.78])
-        by smtp.gmail.com with ESMTPSA id y7sm11135958wmd.1.2020.02.12.14.12.08
+        by smtp.gmail.com with ESMTPSA id a8sm278364wmc.20.2020.02.12.14.23.10
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 12 Feb 2020 14:12:09 -0800 (PST)
-Subject: Re: [PATCH v4 00/20] Add Allwinner H3 SoC and Orange Pi PC Machine
-To: Niek Linnenbank <nieklinnenbank@gmail.com>,
- QEMU Developers <qemu-devel@nongnu.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>,
+        Wed, 12 Feb 2020 14:23:11 -0800 (PST)
+Subject: Re: [PATCH v4 04/20] hw/arm/allwinner-h3: add USB host controller
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Beniamino Galvani <b.galvani@gmail.com>, jasowang@redhat.com,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, imammedo@redhat.com
 References: <20200119005102.3847-1-nieklinnenbank@gmail.com>
- <CAPan3WpV2m9HXLXZDopKUb2EfX2KE9y530m2pJG4-D96==ggCg@mail.gmail.com>
+ <20200119005102.3847-5-nieklinnenbank@gmail.com>
+ <39b5cc92-df42-50a4-72ba-10850aa00b04@redhat.com>
+ <851e2620-82f8-b911-7641-f1690238cc2a@redhat.com>
+ <CAPan3WqamSU7GdTQ5q-Z2KqBpZBTy3CE0p0MUW2zWOe7dKseTA@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <ee95179f-c15f-9615-e241-80199e6948b7@redhat.com>
-Date: Wed, 12 Feb 2020 23:12:08 +0100
+Message-ID: <61567d70-bb80-045b-0500-01158487f83e@redhat.com>
+Date: Wed, 12 Feb 2020 23:23:10 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <CAPan3WpV2m9HXLXZDopKUb2EfX2KE9y530m2pJG4-D96==ggCg@mail.gmail.com>
+In-Reply-To: <CAPan3WqamSU7GdTQ5q-Z2KqBpZBTy3CE0p0MUW2zWOe7dKseTA@mail.gmail.com>
 Content-Language: en-US
-X-MC-Unique: UgLsC7U2M3GoN7KOJ95KdA-1
+X-MC-Unique: zO2NEFKMNGiPuBS6Jj3Waw-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-TUID: EoDSUyHa3ZPi
+X-TUID: aDmF/NTj5uBJ
 
-On 2/12/20 10:47 PM, Niek Linnenbank wrote:
-> Hi all,
+On 2/2/20 8:33 PM, Niek Linnenbank wrote:
+> On Sun, Jan 19, 2020 at 7:44 PM Philippe Mathieu-Daud=C3=A9=20
+> <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
 >=20
-> Short status update regarding this series.
+>     On 1/19/20 7:37 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+>      > On 1/19/20 1:50 AM, Niek Linnenbank wrote:
+>      >> The Allwinner H3 System on Chip contains multiple USB 2.0 bus
+>      >> connections which provide software access using the Enhanced
+>      >> Host Controller Interface (EHCI) and Open Host Controller
+>      >> Interface (OHCI) interfaces. This commit adds support for
+>      >> both interfaces in the Allwinner H3 System on Chip.
+>      >>
+>      >> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com
+>     <mailto:nieklinnenbank@gmail.com>>
+>      >> Reviewed-by: Gerd Hoffmann <kraxel@redhat.com
+>     <mailto:kraxel@redhat.com>>
+>      >> ---
+>      >> =C2=A0 hw/usb/hcd-ehci.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 1 +
+>      >> =C2=A0 include/hw/arm/allwinner-h3.h |=C2=A0 8 ++++++
+>      >> =C2=A0 hw/arm/allwinner-h3.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 | 52
+>     ++++++++++++++++++++++++++++++++---
+>      >> =C2=A0 hw/usb/hcd-ehci-sysbus.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 1=
+7 ++++++++++++
+>      >> =C2=A0 4 files changed, 74 insertions(+), 4 deletions(-)
+>      >>
+>      >> diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
+>      >> index 0298238f0b..edb59311c4 100644
+>      >> --- a/hw/usb/hcd-ehci.h
+>      >> +++ b/hw/usb/hcd-ehci.h
+>      >> @@ -342,6 +342,7 @@ typedef struct EHCIPCIState {
+>      >> =C2=A0 #define TYPE_SYS_BUS_EHCI "sysbus-ehci-usb"
+>      >> =C2=A0 #define TYPE_PLATFORM_EHCI "platform-ehci-usb"
+>      >> =C2=A0 #define TYPE_EXYNOS4210_EHCI "exynos4210-ehci-usb"
+>      >> +#define TYPE_AW_H3_EHCI "aw-h3-ehci-usb"
+>      >> =C2=A0 #define TYPE_TEGRA2_EHCI "tegra2-ehci-usb"
+>      >> =C2=A0 #define TYPE_PPC4xx_EHCI "ppc4xx-ehci-usb"
+>      >> =C2=A0 #define TYPE_FUSBH200_EHCI "fusbh200-ehci-usb"
+>      >> diff --git a/include/hw/arm/allwinner-h3.h
+>      >> b/include/hw/arm/allwinner-h3.h
+>      >> index abdc20871a..4f4dcbcd17 100644
+>      >> --- a/include/hw/arm/allwinner-h3.h
+>      >> +++ b/include/hw/arm/allwinner-h3.h
+>      >> @@ -56,6 +56,14 @@ enum {
+>      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AW_H3_SRAM_A1,
+>      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AW_H3_SRAM_A2,
+>      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AW_H3_SRAM_C,
+>      >> +=C2=A0=C2=A0=C2=A0 AW_H3_EHCI0,
+>      >> +=C2=A0=C2=A0=C2=A0 AW_H3_OHCI0,
+>      >> +=C2=A0=C2=A0=C2=A0 AW_H3_EHCI1,
+>      >> +=C2=A0=C2=A0=C2=A0 AW_H3_OHCI1,
+>      >> +=C2=A0=C2=A0=C2=A0 AW_H3_EHCI2,
+>      >> +=C2=A0=C2=A0=C2=A0 AW_H3_OHCI2,
+>      >> +=C2=A0=C2=A0=C2=A0 AW_H3_EHCI3,
+>      >> +=C2=A0=C2=A0=C2=A0 AW_H3_OHCI3,
+>      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AW_H3_CCU,
+>      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AW_H3_PIT,
+>      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AW_H3_UART0,
+>      >> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+>      >> index 8df8e3e05e..f360625ee9 100644
+>      >> --- a/hw/arm/allwinner-h3.c
+>      >> +++ b/hw/arm/allwinner-h3.c
+>      >> @@ -28,6 +28,7 @@
+>      >> =C2=A0 #include "hw/sysbus.h"
+>      >> =C2=A0 #include "hw/char/serial.h"
+>      >> =C2=A0 #include "hw/misc/unimp.h"
+>      >> +#include "hw/usb/hcd-ehci.h"
+>      >> =C2=A0 #include "sysemu/sysemu.h"
+>      >> =C2=A0 #include "hw/arm/allwinner-h3.h"
+>      >> @@ -36,6 +37,14 @@ const hwaddr allwinner_h3_memmap[] =3D {
+>      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [AW_H3_SRAM_A1]=C2=A0=C2=A0=C2=A0 =
+=3D 0x00000000,
+>      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [AW_H3_SRAM_A2]=C2=A0=C2=A0=C2=A0 =
+=3D 0x00044000,
+>      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [AW_H3_SRAM_C]=C2=A0=C2=A0=C2=A0=
+=C2=A0 =3D 0x00010000,
+>      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_EHCI0]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+=3D 0x01c1a000,
+>      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_OHCI0]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+=3D 0x01c1a400,
+>      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_EHCI1]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+=3D 0x01c1b000,
+>      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_OHCI1]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+=3D 0x01c1b400,
+>      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_EHCI2]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+=3D 0x01c1c000,
+>      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_OHCI2]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+=3D 0x01c1c400,
+>      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_EHCI3]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+=3D 0x01c1d000,
+>      >> +=C2=A0=C2=A0=C2=A0 [AW_H3_OHCI3]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+=3D 0x01c1d400,
+>      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [AW_H3_CCU]=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 =3D 0x01c20000,
+>      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [AW_H3_PIT]=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 =3D 0x01c20c00,
+>      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [AW_H3_UART0]=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 =3D 0x01c28000,
+>      >> @@ -73,10 +82,10 @@ struct AwH3Unimplemented {
+>      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 { "msgbox",=C2=A0=C2=A0=C2=A0 0x01=
+c17000, 4 * KiB },
+>      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 { "spinlock",=C2=A0 0x01c18000, 4 =
+* KiB },
+>      >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 { "usb0-otg",=C2=A0 0x01c19000, 4 =
+* KiB },
+>      >> -=C2=A0=C2=A0=C2=A0 { "usb0",=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0x01c=
+1a000, 4 * KiB },
+>      >> -=C2=A0=C2=A0=C2=A0 { "usb1",=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0x01c=
+1b000, 4 * KiB },
+>      >> -=C2=A0=C2=A0=C2=A0 { "usb2",=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0x01c=
+1c000, 4 * KiB },
+>      >> -=C2=A0=C2=A0=C2=A0 { "usb3",=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0x01c=
+1d000, 4 * KiB },
+>      >> +=C2=A0=C2=A0=C2=A0 { "usb0-phy",=C2=A0 0x01c1a000, 4 * KiB },
+>      >> +=C2=A0=C2=A0=C2=A0 { "usb1-phy",=C2=A0 0x01c1b000, 4 * KiB },
+>      >> +=C2=A0=C2=A0=C2=A0 { "usb2-phy",=C2=A0 0x01c1c000, 4 * KiB },
+>      >> +=C2=A0=C2=A0=C2=A0 { "usb3-phy",=C2=A0 0x01c1d000, 4 * KiB },
+>      >
+>      > As in v3 comment, this can be done in patch #1.
+>      >
+>      > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com
+>     <mailto:philmd@redhat.com>>
+>      > Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com
+>     <mailto:philmd@redhat.com>>
 >=20
-> Currently I am debugging booting NetBSD 9.0-RC2, which is recently=20
-> released [1]
-> The problem is that, apparently, RC2 can't mount the rootfs properly:
+>     Err, this patch is incomplete, when using ./configure
+>     --without-default-devices:
 >=20
-> [ =C2=A0 3.1871510] vfs_mountroot: can't open root device
-> [ =C2=A0 3.2141370] cannot mount root, error =3D 6
+>     $ qemu-system-arm -M orangepi-pc
+>     qemu-system-arm: invalid accelerator kvm
+>     qemu-system-arm: falling back to tcg
+>     qemu-system-arm: Unknown device 'aw-h3-ehci-usb' for default sysbus
+>     qemu-system-arm: Unknown device 'sysbus-ohci' for default sysbus
+>     Aborted (core dumped)
 >=20
-> This only happens using the RC2 filesystem image. However, the RC2=20
-> kernel can
-> properly load & boot the RC1 filesystem image, and the RC1 kernel gives=
+>=20
+> Thanks for pointing this out, I was not aware at all that the=20
+> --without-default-devices option existed.
+> It's not in the configure --help message also.
+
+Indeed. This is https://bugs.launchpad.net/qemu/+bug/1836537
+
+> I tried to re-produce the error by running:
+> $ ./configure --target-list=3Darm-softmmu --without-default-devices; make=
+ -j5
+> $ ./arm-softmmu/qemu-system-arm -M orangepi-pc
+>=20
+> On my laptop it didn't give the error, I think because somehow the build=
 =20
-> the same error
-> on the RC2 filesystem.=C2=A0 But I dont think its a NetBSD-RC2 issue, bec=
-ause=20
-> on a real
-> Orange Pi PC hardware board, this problem does not show.
-
-Linux shows:
-   console: mmc0: Problem switching card into high-speed mode!
-
-QEMU MMC support is not in good shape, and high-speed SD card support is=20
-limited. I keep procrastinating at reviewing your SDHCI patch hmmmmm.
-
-So you added:
-
-  * DMA transfers
-  * Direct FIFO I/O
-  * Short/Long format command responses
-
-I'd start diffing the trace output of the following events:
-
-allwinner_sdhost*
-sdcard*
-
-with both kernels.
-
+> system did select
+> the USB config items (even tho they were missing for the ALLWINNER_H3=20
+> item in hw/arm/Kconfig):
 >=20
-> I'm comparing traces and adding more low-level debug output to NetBSD=20
-> and QEMU to find the issue.
+> $ grep USB arm-softmmu/config-devices.mak
+> CONFIG_TUSB6010=3Dy
+> CONFIG_USB=3Dy
+> CONFIG_USB_EHCI=3Dy
+> CONFIG_USB_EHCI_SYSBUS=3Dy
+> CONFIG_USB_MUSB=3Dy
+> CONFIG_USB_OHCI=3Dy
 >=20
-> Also I processed the review remarks which were send so far.
+> Is there any other option you used in addition to=20
+> --without-default-devices to trigger the error?
+
+Uff this was 1 month ago... I might have done:
+
+  $ echo CONFIG_ALLWINNER_H3=3Dy > arm-softmmu/config-devices.mak
+  $ make arm-softmmu/all
+
+> I also searched for something in configure to select/filter on machines=
+=20
+> to build, but I don't see that yet.
 >=20
-> Kind regards,
+> Nevertheless I will surely add the fix below to the patch.
+>=20
+> Regards,
 > Niek
 >=20
-> [1] https://www.netbsd.org/releases/formal-9/NetBSD-9.0.html
+>=20
+>=20
+>     You need to amend:
+>=20
+>     -- >8 --
+>     diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+>     index bb75c1de17..57b29cc522 100644
+>     --- a/hw/arm/Kconfig
+>     +++ b/hw/arm/Kconfig
+>     @@ -302,6 +302,8 @@ config ALLWINNER_H3
+>      =C2=A0 =C2=A0 =C2=A0 select ARM_TIMER
+>      =C2=A0 =C2=A0 =C2=A0 select ARM_GIC
+>      =C2=A0 =C2=A0 =C2=A0 select UNIMP
+>     +=C2=A0 =C2=A0 select USB_OHCI
+>     +=C2=A0 =C2=A0 select USB_EHCI_SYSBUS
+>=20
+>      =C2=A0 config RASPI
+>      =C2=A0 =C2=A0 =C2=A0 bool
+>     ---
+>=20
+>     R/T-b tags can stay with this amended.

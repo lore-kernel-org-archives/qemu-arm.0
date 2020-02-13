@@ -1,190 +1,118 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6871835lfp;
-        Wed, 12 Feb 2020 13:40:27 -0800 (PST)
-X-Google-Smtp-Source: APXvYqylTkUWvKrAxMR44hmyBNyQql9PjSaV9a+VaxNwStMawMsEV5irjADzTWBK1mFbiFIhovVX
-X-Received: by 2002:a0c:fe0d:: with SMTP id x13mr9172807qvr.88.1581543627033;
-        Wed, 12 Feb 2020 13:40:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581543627; cv=none;
-        d=google.com; s=arc-20160816;
-        b=PIyzOsHqMUSoFA7PR/BI7YikCcJdincZeqewNAQr/BtB/MTqBaQkcJJPCssScRvPBV
-         XVZmzHc7c6iD6N0V6+x+3xXVrstz5wDtT0zXWJ4b/T5A1mc92CfAGroWU2k5o5QhauUy
-         +azilo5QKXRP9bD2iXsNfNTurtpcKdPzQrUBzKYhYGGKBj/tFtGAuoeYPsLpyW/R42NV
-         2f9XO0g53o2BIMixgx8OJOpdZ94t2NbGtfDhqYbuR8YNFsv0QzbU+YikGE1eCzWdLZIv
-         Go8wWw/EBdt32dhsPC3kkK+r+YuN6bVWfgEoDw45kvYMp9IoWNMMx9E8d5LJPbHw7apu
-         uaEw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=qquN2CqCDX1aHa1RbpIdU+TKmi8DhASx8szKauwNduM=;
-        b=vyxCsn4O+lVrQqq+hkrJrkV0K76uaaXp4rljDH5lDLQfgm1P4U05YxPsmSgI2b4P7I
-         2ckylsW3Mom2fTbgSKxIrYk43QS9F2Uiv911Bv5S5hdy/1M+H3/iUi7AYI3nyCtY9OJQ
-         nQhHOBWX3FN/KrquQMDlj4/9xjBl/rYaYhYaKf5FFpzxyk9j9CKrpHgy0mXyLcgIe6gW
-         lNTccdS0+nUhdhSqC3b2Z41WexsomzO4o3fxeXTM4eygsLXbsSvCMp7GH31xcX71ipic
-         462K8aXtA1ImW8x198YERjPb+Fr0/hsQEXOwxSElevFyAkxAbd8O/WmWjJq5O0zX+k9e
-         TYGQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Csx/3PND";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e43si231765qtk.168.2020.02.12.13.40.26
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2020 13:40:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Csx/3PND";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43704 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j1zkA-0005pi-GM
-	for alex.bennee@linaro.org; Wed, 12 Feb 2020 16:40:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50898)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j1zjO-0005Lm-A9
- for qemu-devel@nongnu.org; Wed, 12 Feb 2020 16:39:39 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j1zjM-00047V-Ki
- for qemu-devel@nongnu.org; Wed, 12 Feb 2020 16:39:37 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:26094
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j1zjM-00046a-Hm
- for qemu-devel@nongnu.org; Wed, 12 Feb 2020 16:39:36 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581543575;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qquN2CqCDX1aHa1RbpIdU+TKmi8DhASx8szKauwNduM=;
- b=Csx/3PNDnLpJvLiDATzDWyiZIePe3CCJuCAp0kOpILdZBS6KayW01xf6KQuoh4yAOxUXzP
- uluw+RzxOE6PcixpfbkvgeS3Y+XVNhPkEtPBNv18c3Hl890mJwYuPNho1SzZAalymtb/l4
- Dd23jNv2x7wAUh4wCgzhhLvUhFU3MrA=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-286-q94odP3RMc-YXHqkKPKU5Q-1; Wed, 12 Feb 2020 16:39:33 -0500
-Received: by mail-wr1-f71.google.com with SMTP id u8so1381462wrp.10
- for <qemu-devel@nongnu.org>; Wed, 12 Feb 2020 13:39:33 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=qquN2CqCDX1aHa1RbpIdU+TKmi8DhASx8szKauwNduM=;
- b=gTdw94ZQPgpbSqWR7LjxBnPSB010p5CKjsG2eyyyQOMAtYsjqKQ9X3RgQJKblwe/8w
- mwiwNMazKL4KKYOujmS2n7oiPDEGtjkO/BZ0SLZRXsx01mg3Uk5PHdlZTCvfZf+1sPk8
- AacXZOZOTiCqHIq+3lZAHrc2kzk/4xBLJoPAcl5z/jTHAleEjbowc0LU3Tya6WjRdq22
- VkIz8yBf+Lntb2AqSZhCDz2BcJhB6FE5JTjmOOqjyg3ypmpFMDw/U/tuAGnFsBflFWk8
- UXFqlPdaUxDeLUjEI4WTrfVIJ6p2BJAx3Bh+zQR8/n211EzM51oLEDA6fXV0I91ZCjhA
- 3Oog==
-X-Gm-Message-State: APjAAAXycZM/OciROuucGv2hhvTGAaQfnGrebdYx/VWDghIq6nVtYHPU
- 9416QryTyNnn5o6OaWi3vqi/CZ+/1MHh3p+8sPzGtzIGiF02SOvQc1WymbwrNLsHsgiSj+mhdVV
- LlLwsxNR99VUTq6Q=
-X-Received: by 2002:a1c:7419:: with SMTP id p25mr1036214wmc.129.1581543572730; 
- Wed, 12 Feb 2020 13:39:32 -0800 (PST)
-X-Received: by 2002:a1c:7419:: with SMTP id p25mr1036198wmc.129.1581543572430; 
- Wed, 12 Feb 2020 13:39:32 -0800 (PST)
-Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id o77sm131468wme.34.2020.02.12.13.39.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Feb 2020 13:39:31 -0800 (PST)
-Subject: Re: Question about (and problem with) pflash data access
-To: Guenter Roeck <linux@roeck-us.net>, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Jean-Christophe PLAGNIOL-VILLARD <plagnioj@jcrosoft.com>
-References: <20200212184648.GA584@roeck-us.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <504e7722-0b60-ec02-774d-26a7320e5309@redhat.com>
-Date: Wed, 12 Feb 2020 22:39:30 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id g15sm4363854wro.65.2020.02.13.15.00.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Feb 2020 15:00:45 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 4B08F1FFAA;
+	Thu, 13 Feb 2020 22:51:11 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: cota@braap.org,
+	aaron@os.amperecomputing.com,
+	peter.puhov@linaro.org,
+	robert.foley@linaro.org,
+	kuhn.chenqun@huawei.com,
+	robhenry@microsoft.com,
+	fam@euphon.net,
+	berrange@redhat.com,
+	f4bug@amsat.org,
+	richard.henderson@linaro.org,
+	balrogg@gmail.com,
+	aurelien@aurel32.net,
+	pbonzini@redhat.com,
+	stefanha@redhat.com,
+	stefanb@linux.vnet.ibm.com,
+	marcandre.lureau@redhat.com,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH  v2 19/19] tests/tcg: take into account expected clashes pauth-4
+Date: Thu, 13 Feb 2020 22:51:09 +0000
+Message-Id: <20200213225109.13120-20-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200213225109.13120-1-alex.bennee@linaro.org>
+References: <20200213225109.13120-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20200212184648.GA584@roeck-us.net>
-Content-Language: en-US
-X-MC-Unique: q94odP3RMc-YXHqkKPKU5Q-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NJvlvnK3IwYp
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: JRxAq1jK05wo
 
-Cc'ing Jean-Christophe and Peter.
+Pointer authentication isn't perfect so measure the percentage of
+failed checks. As we want to vary the pointer that is authenticated we
+recurse down the stack.
 
-On 2/12/20 7:46 PM, Guenter Roeck wrote:
-> Hi,
-> 
-> I have been playing with pflash recently. For the most part it works,
-> but I do have an odd problem when trying to instantiate pflash on sx1.
-> 
-> My data file looks as follows.
-> 
-> 0000000 0001 0000 aaaa aaaa 5555 5555 0000 0000
-> 0000020 0000 0000 0000 0000 0000 0000 0000 0000
-> *
-> 0002000 0002 0000 aaaa aaaa 5555 5555 0000 0000
-> 0002020 0000 0000 0000 0000 0000 0000 0000 0000
-> *
-> 0004000 0003 0000 aaaa aaaa 5555 5555 0000 0000
-> 0004020 0000 0000 0000 0000 0000 0000 0000 0000
-> ...
-> 
-> In the sx1 machine, this becomes:
-> 
-> 0000000 6001 0000 aaaa aaaa 5555 5555 0000 0000
-> 0000020 0000 0000 0000 0000 0000 0000 0000 0000
-> *
-> 0002000 6002 0000 aaaa aaaa 5555 5555 0000 0000
-> 0002020 0000 0000 0000 0000 0000 0000 0000 0000
-> *
-> 0004000 6003 0000 aaaa aaaa 5555 5555 0000 0000
-> 0004020 0000 0000 0000 0000 0000 0000 0000 0000
-> *
-> ...
-> 
-> pflash is instantiated with "-drive file=flash.32M.test,format=raw,if=pflash".
-> 
-> I don't have much success with pflash tracing - data accesses don't
-> show up there.
-> 
-> I did find a number of problems with the sx1 emulation, but I have no clue
-> what is going on with pflash. As far as I can see pflash works fine on
-> other machines. Can someone give me a hint what to look out for ?
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/tcg/aarch64/pauth-4.c | 54 +++++++++++++++++++++++++------------
+ 1 file changed, 37 insertions(+), 17 deletions(-)
 
-This is specific to the SX1, introduced in commit 997641a84ff:
-
-  64 static uint64_t static_read(void *opaque, hwaddr offset,
-  65                             unsigned size)
-  66 {
-  67     uint32_t *val = (uint32_t *) opaque;
-  68     uint32_t mask = (4 / size) - 1;
-  69
-  70     return *val >> ((offset & mask) << 3);
-  71 }
-
-Only guessing, this looks like some hw parity, and I imagine you need to 
-write the parity bits in your flash.32M file before starting QEMU, then 
-it would appear "normal" within the guest.
-
+diff --git a/tests/tcg/aarch64/pauth-4.c b/tests/tcg/aarch64/pauth-4.c
+index 1040e92aec3..24a639e36ca 100644
+--- a/tests/tcg/aarch64/pauth-4.c
++++ b/tests/tcg/aarch64/pauth-4.c
+@@ -1,25 +1,45 @@
+ #include <stdint.h>
+ #include <assert.h>
++#include <stdio.h>
++#include <stdlib.h>
++
++#define TESTS 1000
+ 
+ int main()
+ {
+-  uintptr_t x, y;
++    int i, count = 0;
++    float perc;
++    void *base = malloc(TESTS);
++
++    for (i = 0; i < TESTS; i++) {
++        uintptr_t in, x, y;
++
++        in = i + (uintptr_t) base;
++
++        asm("mov %0, %[in]\n\t"
++            "pacia %0, sp\n\t"        /* sigill if pauth not supported */
++            "eor %0, %0, #4\n\t"      /* corrupt single bit */
++            "mov %1, %0\n\t"
++            "autia %1, sp\n\t"        /* validate corrupted pointer */
++            "xpaci %0\n\t"            /* strip pac from corrupted pointer */
++            : /* out */ "=r"(x), "=r"(y)
++            : /* in */ [in] "r" (in)
++            : /* clobbers */);
+ 
+-  asm("mov %0, lr\n\t"
+-      "pacia %0, sp\n\t"        /* sigill if pauth not supported */
+-      "eor %0, %0, #4\n\t"      /* corrupt single bit */
+-      "mov %1, %0\n\t"
+-      "autia %1, sp\n\t"        /* validate corrupted pointer */
+-      "xpaci %0\n\t"            /* strip pac from corrupted pointer */
+-      : "=r"(x), "=r"(y));
++        /*
++         * Once stripped, the corrupted pointer is of the form 0x0000...wxyz.
++         * We expect the autia to indicate failure, producing a pointer of the
++         * form 0x000e....wxyz.  Use xpaci and != for the test, rather than
++         * extracting explicit bits from the top, because the location of the
++         * error code "e" depends on the configuration of virtual memory.
++         */
++        if (x != y) {
++            count++;
++        }
+ 
+-  /*
+-   * Once stripped, the corrupted pointer is of the form 0x0000...wxyz.
+-   * We expect the autia to indicate failure, producing a pointer of the
+-   * form 0x000e....wxyz.  Use xpaci and != for the test, rather than
+-   * extracting explicit bits from the top, because the location of the
+-   * error code "e" depends on the configuration of virtual memory.
+-   */
+-  assert(x != y);
+-  return 0;
++    }
++    perc = (float) count / (float) TESTS;
++    printf("Checks Passed: %0.2f%%", perc * 100.0);
++    assert(perc > 0.95);
++    return 0;
+ }
+-- 
+2.20.1

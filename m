@@ -1,160 +1,155 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp67044lfp;
-        Wed, 12 Feb 2020 18:37:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwRsbkYGq8+E6K3f0hGklSMcRy7SZqazpGA6sGTECnvYlAN9SLKpX/Bv0GMNyG4dQhl+RuF
-X-Received: by 2002:a37:40d2:: with SMTP id n201mr13521453qka.211.1581561426557;
-        Wed, 12 Feb 2020 18:37:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581561426; cv=none;
-        d=google.com; s=arc-20160816;
-        b=YETjBWhrV+nox/6DxnXk4bMmmrDMI/hlE/TguvPWvn7KPAoFoFIVAoCkB/LpxonymI
-         CB7HhkFQTaGsJounM3LC7ARzsw45Q+qmlCDgTAkROoRE0yKkhQ0DCuzHvgxGTu/gLjwv
-         7rQeGe+PZEAfJFi6T7q6XVTuPzIbI/0pmzopd3IDLAwcIwQ0F3VfMmKUKIIWPihzc6Wj
-         +MbqMTJ1WkKTMjynC3g2khmczPW3qUHypwlJeJ4dWGjJKINRTjV/1EzFKO2soCvUzofP
-         QHXRbUrtwXfbNm+BvO3tdsoea5nE1ZZ9pMVRFXoyYxnyrYKCkYZzwBGZQuUbhgFe8Nue
-         G0qQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=1n3lqZSoTv31YaIWwdtWAgvBt2nwUo6Y3bsQJbU+S4M=;
-        b=BU9bd8rttKPfSXGR5jIcEehE+7fjXvfhTV2OeCKlRW2/Ui4EnCbfkfFGFo0Wg/IBdO
-         bXDksXDht74Hl6fdz6uGDdMILFguAh1OUBPqiJqIGnJkAE3UClb/OGTUtDqv1vkoAPY1
-         Oto1bdhfuZyMWifN9h1LBKSF75NvkV4qm/cXnsAfqFjCotvqmm5H8K+NtVEu0A8G+GgM
-         YZ0Fm6sTPgppNBJZx2b5Z+P5jTloQpWg1rgVzhsf76MkCXiMw3UbVB29YV0+lFPAETHQ
-         IAPIVh2KwUzI0jNyZ+UcwXDLfYLmrCT0dFqwUAK3ARWQjUJjAFFIOxAZuuMAUNkATLr8
-         IJCw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp67435lfp;
+        Wed, 12 Feb 2020 18:37:37 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwO0vDjI11XhyspMPsUC9pZZLjqbKH8PFYsBugwRvh6Qt5nJnWKA2WEiOzhhWR5SnfcmnkN
+X-Received: by 2002:a37:b103:: with SMTP id a3mr10384055qkf.204.1581561457481;
+        Wed, 12 Feb 2020 18:37:37 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x27si537914qkx.125.2020.02.12.18.37.06
+        by mx.google.com with ESMTPS id dg4si346118qvb.149.2020.02.12.18.37.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2020 18:37:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 12 Feb 2020 18:37:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46446 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46464 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j24NF-0008Vo-Ua
-	for alex.bennee@linaro.org; Wed, 12 Feb 2020 21:37:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55439)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j24Nk-0001kQ-FF
+	for alex.bennee@linaro.org; Wed, 12 Feb 2020 21:37:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55630)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <fangying1@huawei.com>) id 1j24M3-0007DR-Ms
- for qemu-devel@nongnu.org; Wed, 12 Feb 2020 21:35:52 -0500
+ (envelope-from <no-reply@patchew.org>) id 1j24ND-0000sv-C4
+ for qemu-arm@nongnu.org; Wed, 12 Feb 2020 21:37:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <fangying1@huawei.com>) id 1j24M2-0000Yr-K9
- for qemu-devel@nongnu.org; Wed, 12 Feb 2020 21:35:51 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2702 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <fangying1@huawei.com>)
- id 1j24M0-0000PV-3G; Wed, 12 Feb 2020 21:35:48 -0500
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 24C73388DE11816840F7;
- Thu, 13 Feb 2020 10:35:43 +0800 (CST)
-Received: from localhost (10.133.205.53) by DGGEMS410-HUB.china.huawei.com
- (10.3.19.210) with Microsoft SMTP Server id 14.3.439.0; Thu, 13 Feb 2020
- 10:35:37 +0800
-From: Ying Fang <fangying1@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH 4/4] arm: Create the cpufreq device
-Date: Thu, 13 Feb 2020 10:35:32 +0800
-Message-ID: <20200213023532.902-5-fangying1@huawei.com>
-X-Mailer: git-send-email 2.22.0.windows.1
-In-Reply-To: <20200213023532.902-1-fangying1@huawei.com>
-References: <20200213023532.902-1-fangying1@huawei.com>
+ (envelope-from <no-reply@patchew.org>) id 1j24NC-0002BX-0H
+ for qemu-arm@nongnu.org; Wed, 12 Feb 2020 21:37:03 -0500
+Resent-Date: Wed, 12 Feb 2020 21:37:03 -0500
+Resent-Message-Id: <E1j24NC-0002BX-0H@eggs.gnu.org>
+Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21142)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1j24N8-00020S-Ct; Wed, 12 Feb 2020 21:36:58 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1581561400; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=iWmYIiQ0Y93iaxdDrUa85+tQbUnxpA8dnLF/jOPaEILAA/cF8iBnV0D+lrpdfXDVnjex9NFzHQAvPAXhbYMf9qj3krpuDDttu8LIN56otPt2lQONFgU7f60i/cDSrxhp55xRl1e7U00VmmHf4FXi8lP/eveVa/T31F6PNlUzvA8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1581561400;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=214f8LVUbXAH3abzSP7aK7OMgz+Vj3wXFIW4xWwIXoU=; 
+ b=igLzCfWBGWyZBaL/ztaKWtgHiN5t8+3jm30ZGlVxQNEpRexvctHlGr7Du1SZnXHgnmE5E99E9gVttSGL6V3OS/hPHRNmwjrZ1Vl8WbzVlnC7av+fPnKMDO8jbkrAvrB12Jb1ie3yIuBYNlWNqy5SIJtMewFU3FViXA4uKlZiKSE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1581561398414964.2354194890848;
+ Wed, 12 Feb 2020 18:36:38 -0800 (PST)
+In-Reply-To: <20200213020712.447-1-fangying1@huawei.com>
+Subject: Re: [PATCH 0/4] arm64: Add the cpufreq device to show cpufreq info to
+ guest
+Message-ID: <158156139644.23372.17808278515630684308@a1bbccc8075a>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.133.205.53]
-X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: fangying1@huawei.com
+Date: Wed, 12 Feb 2020 18:36:38 -0800 (PST)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.190
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 136.143.188.51
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com, mst@redhat.com,
- i.mitsyanko@gmail.com, shannon.zhaosl@gmail.com, guoheyi@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IX6z+kzCeltR
+ i.mitsyanko@gmail.com, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
+ qemu-arm@nongnu.org, guoheyi@huawei.com, fangying1@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jKDr3Go7HBZg
 
-Add the cpufreq device to arm64 virt machine
-
-Signed-off-by: Heyi Guo <guoheyi@huawei.com>
-Signed-off-by: Ying Fang <fangying1@huawei.com>
----
- default-configs/aarch64-softmmu.mak |  1 +
- hw/acpi/Kconfig                     |  4 ++++
- hw/arm/virt.c                       | 13 +++++++++++++
- 3 files changed, 18 insertions(+)
-
-diff --git a/default-configs/aarch64-softmmu.mak b/default-configs/aarch6=
-4-softmmu.mak
-index 958b1e08e4..0a030e853f 100644
---- a/default-configs/aarch64-softmmu.mak
-+++ b/default-configs/aarch64-softmmu.mak
-@@ -6,3 +6,4 @@ include arm-softmmu.mak
- CONFIG_XLNX_ZYNQMP_ARM=3Dy
- CONFIG_XLNX_VERSAL=3Dy
- CONFIG_SBSA_REF=3Dy
-+CONFIG_CPUFREQ=3Dy
-diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
-index 54209c6f2f..7d8aa58492 100644
---- a/hw/acpi/Kconfig
-+++ b/hw/acpi/Kconfig
-@@ -38,3 +38,7 @@ config ACPI_VMGENID
-     depends on PC
-=20
- config ACPI_HW_REDUCED
-+
-+config CPUFREQ
-+    bool
-+    default y
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ed9dc38b60..53638f9557 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -764,6 +764,17 @@ static void create_uart(const VirtMachineState *vms,=
- int uart,
-     g_free(nodename);
- }
-=20
-+static void create_cpufreq(const VirtMachineState *vms, MemoryRegion *me=
-m)
-+{
-+    hwaddr base =3D vms->memmap[VIRT_CPUFREQ].base;
-+    DeviceState *dev =3D qdev_create(NULL, "cpufreq");
-+    SysBusDevice *s =3D SYS_BUS_DEVICE(dev);
-+
-+    qdev_init_nofail(dev);
-+    memory_region_add_subregion(mem, base, sysbus_mmio_get_region(s, 0))=
-;
-+}
-+
-+
- static void create_rtc(const VirtMachineState *vms)
- {
-     char *nodename;
-@@ -1723,6 +1734,8 @@ static void machvirt_init(MachineState *machine)
-=20
-     create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
-=20
-+    create_cpufreq(vms, sysmem);
-+
-     if (vms->secure) {
-         create_secure_ram(vms, secure_sysmem);
-         create_uart(vms, VIRT_SECURE_UART, secure_sysmem, serial_hd(1));
---=20
-2.19.1
-
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDIxMzAyMDcxMi40NDct
+MS1mYW5neWluZzFAaHVhd2VpLmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgdGhlIGRv
+Y2tlci1taW5nd0BmZWRvcmEgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRlc3RpbmcgY29t
+bWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2VyIGluc3RhbGxl
+ZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBURVNUIFNDUklQ
+VCBCRUdJTiA9PT0KIyEgL2Jpbi9iYXNoCmV4cG9ydCBBUkNIPXg4Nl82NAptYWtlIGRvY2tlci1p
+bWFnZS1mZWRvcmEgVj0xIE5FVFdPUks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtbWluZ3dAZmVk
+b3JhIEo9MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgogIENDICAgICAgaHcv
+YWNwaS9jcHVmcmVxLm8KICBDQyAgICAgIGh3L2FjcGkvaXBtaS5vCi90bXAvcWVtdS10ZXN0L3Ny
+Yy9ody9hY3BpL2NwdWZyZXEuYzogSW4gZnVuY3Rpb24gJ2NwdWZyZXFfcmVhZCc6Ci90bXAvcWVt
+dS10ZXN0L3NyYy9ody9hY3BpL2NwdWZyZXEuYzo3MTo0NzogZXJyb3I6IGZvcm1hdCAnJWx4JyBl
+eHBlY3RzIGFyZ3VtZW50IG9mIHR5cGUgJ2xvbmcgdW5zaWduZWQgaW50JywgYnV0IGFyZ3VtZW50
+IDIgaGFzIHR5cGUgJ2h3YWRkcicge2FrYSAnbG9uZyBsb25nIHVuc2lnbmVkIGludCd9IFstV2Vy
+cm9yPWZvcm1hdD1dCiAgICAgICAgIHdhcm5fcmVwb3J0KCJjcHVmcmVxX3JlYWQ6IG9mZnNldCAw
+eCVseCBvdXQgb2YgcmFuZ2UiLCBvZmZzZXQpOwogICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICB+fl4gICAgICAgICAgICAgICAgfn5+fn5+CiAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICVsbHgKL3RtcC9xZW11LXRlc3Qvc3JjL2h3
+L2FjcGkvY3B1ZnJlcS5jOjEyNzo1MjogZXJyb3I6IGZvcm1hdCAnJWx4JyBleHBlY3RzIGFyZ3Vt
+ZW50IG9mIHR5cGUgJ2xvbmcgdW5zaWduZWQgaW50JywgYnV0IGFyZ3VtZW50IDIgaGFzIHR5cGUg
+J2h3YWRkcicge2FrYSAnbG9uZyBsb25nIHVuc2lnbmVkIGludCd9IFstV2Vycm9yPWZvcm1hdD1d
+CiAgICAgICAgIGVycm9yX3ByaW50ZigiY3B1ZnJlcV9yZWFkOiBCYWQgb2Zmc2V0IDB4JWx4XG4i
+LCBvZmZzZXQpOwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIH5+XiAgICAgfn5+fn5+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgJWxseAovdG1wL3FlbXUtdGVzdC9zcmMvaHcvYWNwaS9jcHVmcmVxLmM6IElu
+IGZ1bmN0aW9uICdjcHVmcmVxX3dyaXRlJzoKL3RtcC9xZW11LXRlc3Qvc3JjL2h3L2FjcGkvY3B1
+ZnJlcS5jOjE0Mzo0OTogZXJyb3I6IGZvcm1hdCAnJWx4JyBleHBlY3RzIGFyZ3VtZW50IG9mIHR5
+cGUgJ2xvbmcgdW5zaWduZWQgaW50JywgYnV0IGFyZ3VtZW50IDIgaGFzIHR5cGUgJ2h3YWRkcicg
+e2FrYSAnbG9uZyBsb25nIHVuc2lnbmVkIGludCd9IFstV2Vycm9yPWZvcm1hdD1dCiAgICAgICAg
+IGVycm9yX3ByaW50ZigiY3B1ZnJlcV93cml0ZTogb2Zmc2V0IDB4JWx4IG91dCBvZiByYW5nZSIs
+IG9mZnNldCk7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+fn5eICAgICAgICAgICAgICAgIH5+fn5+fgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICVsbHgKL3RtcC9xZW11LXRlc3Qvc3JjL2h3L2FjcGkvY3B1ZnJlcS5j
+OjE1Mzo1MzogZXJyb3I6IGZvcm1hdCAnJWx4JyBleHBlY3RzIGFyZ3VtZW50IG9mIHR5cGUgJ2xv
+bmcgdW5zaWduZWQgaW50JywgYnV0IGFyZ3VtZW50IDIgaGFzIHR5cGUgJ2h3YWRkcicge2FrYSAn
+bG9uZyBsb25nIHVuc2lnbmVkIGludCd9IFstV2Vycm9yPWZvcm1hdD1dCiAgICAgICAgIGVycm9y
+X3ByaW50ZigiY3B1ZnJlcV93cml0ZTogQmFkIG9mZnNldCAweCVseFxuIiwgb2Zmc2V0KTsKICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfn5eICAgICB+
+fn5+fn4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+JWxseAovdG1wL3FlbXUtdGVzdC9zcmMvaHcvYWNwaS9jcHVmcmVxLmM6IEluIGZ1bmN0aW9uICdD
+UFBDX1JlYWQnOgovdG1wL3FlbXUtdGVzdC9zcmMvaHcvYWNwaS9jcHVmcmVxLmM6MTc2OjQ0OiBl
+cnJvcjogcGFzc2luZyBhcmd1bWVudCA0IG9mICdxZW11X3N0cnRvdWwnIGZyb20gaW5jb21wYXRp
+YmxlIHBvaW50ZXIgdHlwZSBbLVdlcnJvcj1pbmNvbXBhdGlibGUtcG9pbnRlci10eXBlc10KICAg
+ICByZXQgPSBxZW11X3N0cnRvdWwoYnVmZmVyLCAmZW5kcHRyLCAwLCAmaHopOwogICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF5+fgpJbiBmaWxlIGluY2x1ZGVkIGZy
+b20gL3RtcC9xZW11LXRlc3Qvc3JjL2h3L2FjcGkvY3B1ZnJlcS5jOjMwOgotLS0KICAgICAgICAg
+ICAgICAgICAgdW5zaWduZWQgbG9uZyAqcmVzdWx0KTsKICAgICAgICAgICAgICAgICAgfn5+fn5+
+fn5+fn5+fn5+Xn5+fn5+CmNjMTogYWxsIHdhcm5pbmdzIGJlaW5nIHRyZWF0ZWQgYXMgZXJyb3Jz
+Cm1ha2U6ICoqKiBbL3RtcC9xZW11LXRlc3Qvc3JjL3J1bGVzLm1hazo2OTogaHcvYWNwaS9jcHVm
+cmVxLm9dIEVycm9yIDEKbWFrZTogKioqIFdhaXRpbmcgZm9yIHVuZmluaXNoZWQgam9icy4uLi4K
+VHJhY2ViYWNrIChtb3N0IHJlY2VudCBjYWxsIGxhc3QpOgogIEZpbGUgIi4vdGVzdHMvZG9ja2Vy
+L2RvY2tlci5weSIsIGxpbmUgNjY0LCBpbiA8bW9kdWxlPgotLS0KICAgIHJhaXNlIENhbGxlZFBy
+b2Nlc3NFcnJvcihyZXRjb2RlLCBjbWQpCnN1YnByb2Nlc3MuQ2FsbGVkUHJvY2Vzc0Vycm9yOiBD
+b21tYW5kICdbJ3N1ZG8nLCAnLW4nLCAnZG9ja2VyJywgJ3J1bicsICctLWxhYmVsJywgJ2NvbS5x
+ZW11Lmluc3RhbmNlLnV1aWQ9MDBjMWNjMGIyZjlmNGJkMTkzNThiZTg1YTg4NTIxMTcnLCAnLXUn
+LCAnMTAwMycsICctLXNlY3VyaXR5LW9wdCcsICdzZWNjb21wPXVuY29uZmluZWQnLCAnLS1ybScs
+ICctZScsICdUQVJHRVRfTElTVD0nLCAnLWUnLCAnRVhUUkFfQ09ORklHVVJFX09QVFM9JywgJy1l
+JywgJ1Y9JywgJy1lJywgJ0o9MTQnLCAnLWUnLCAnREVCVUc9JywgJy1lJywgJ1NIT1dfRU5WPScs
+ICctZScsICdDQ0FDSEVfRElSPS92YXIvdG1wL2NjYWNoZScsICctdicsICcvaG9tZS9wYXRjaGV3
+Mi8uY2FjaGUvcWVtdS1kb2NrZXItY2NhY2hlOi92YXIvdG1wL2NjYWNoZTp6JywgJy12JywgJy92
+YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC1xbzVuZ25pYi9zcmMvZG9ja2VyLXNyYy4yMDIwLTAy
+LTEyLTIxLjM0LjI0LjQ4OTA6L3Zhci90bXAvcWVtdTp6LHJvJywgJ3FlbXU6ZmVkb3JhJywgJy92
+YXIvdG1wL3FlbXUvcnVuJywgJ3Rlc3QtbWluZ3cnXScgcmV0dXJuZWQgbm9uLXplcm8gZXhpdCBz
+dGF0dXMgMi4KZmlsdGVyPS0tZmlsdGVyPWxhYmVsPWNvbS5xZW11Lmluc3RhbmNlLnV1aWQ9MDBj
+MWNjMGIyZjlmNGJkMTkzNThiZTg1YTg4NTIxMTcKbWFrZVsxXTogKioqIFtkb2NrZXItcnVuXSBF
+cnJvciAxCm1ha2VbMV06IExlYXZpbmcgZGlyZWN0b3J5IGAvdmFyL3RtcC9wYXRjaGV3LXRlc3Rl
+ci10bXAtcW81bmduaWIvc3JjJwptYWtlOiAqKiogW2RvY2tlci1ydW4tdGVzdC1taW5nd0BmZWRv
+cmFdIEVycm9yIDIKCnJlYWwgICAgMm0xMi42NDVzCnVzZXIgICAgMG04LjQ3OXMKCgpUaGUgZnVs
+bCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwMjEzMDIw
+NzEyLjQ0Ny0xLWZhbmd5aW5nMUBodWF3ZWkuY29tL3Rlc3RpbmcuZG9ja2VyLW1pbmd3QGZlZG9y
+YS8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0
+Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRv
+IHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==

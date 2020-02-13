@@ -1,191 +1,212 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp621098lfp;
-        Thu, 13 Feb 2020 05:40:49 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxT15lUKbMGC6Qzz7G4PTl/EJsyFR/lexr39bz926r4Ysma0Jg347g07unMF/gVcVhbcPIv
-X-Received: by 2002:ae9:c014:: with SMTP id u20mr6665527qkk.53.1581601249628;
-        Thu, 13 Feb 2020 05:40:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581601249; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp628502lfp;
+        Thu, 13 Feb 2020 05:48:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwrq2EdvAv4CO2tNoEHhgNxu+1yTi4I7NXeZo86IDc6u47YrbF/KN/DlCIj+ccUt8vIKRSh
+X-Received: by 2002:ae9:ed10:: with SMTP id c16mr15025897qkg.95.1581601714564;
+        Thu, 13 Feb 2020 05:48:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581601714; cv=none;
         d=google.com; s=arc-20160816;
-        b=dTp1CdT1I+qzSayWPzZ+Bcw/WIbdEIwa0JH+QrSS9sOA4IzcJZN1UCh5wGcFewv1gj
-         xvAaXGlMTdkbdy8QU4T14c8Teaj7f3MUDUuPVI48G/vLghGV+tyud47k8MUEtMpWekkX
-         874HFVAmcdmDh3zy+p8kS52VZXgThDfu8u1OL+TPr1scjBIpEAqZCdo2KsdY9EcZCaX6
-         an+VMytjc0IIorGqMhYjohUtze/0ylOwOxmpTJcSZ0aw8LtSQqIQeqlnVD8LZXwGHoz2
-         2SvIAz4J3ivIwKJ+uzowQrQS0ixLfl06NUMR1hsx/tfLvigNQmWpa5hIwbynARk69wNI
-         YE2w==
+        b=SVSLdTTNdz/XVXDg9mOeqZoa3adDA8UlvD8nGrUcXbQ6JNZ4wBs7Imel+2I8Yd1/MT
+         ZUL68xChLq/ePwVXxFZWnvoAtRjkQa8D2riyXH1gFzuaNMqXx1U0AjBdIg2myf4iPMyo
+         c3uaV4t/WJvEvqTobhAeYkLAyOjXUxDIdvH2ytAROQyYAy0JqwAGxRu4wzPQQl0ZjZJ0
+         rfYY8hSTd8PascIwO7LlZkCZhfCdAYJ61LW2SZisbrSyhAguiJctcDlOkHSoLZS5Xdhp
+         AGua6gaGfOO+cfY3I7wvexTIFJy8n6jImClT3nyNcpuniDh1eY608A9V4MTwvmEdXtKs
+         vuLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=ljVj4STwM5UNaWAh2zvHFBMVkqOCUqG6AOnHf75eF+8=;
-        b=TBwfzl6t3kgapKz1XGkhyUxsbqTBp/fiyLsEKWyACOntq22yHTJqbwcHMEItFPCF/T
-         wgm+JMZoYX6h9jJuxdWGvJLk3pNFeWJGhfr+TR83WYI2DlsvSe2156N5HFz71Gvb1A88
-         11C0diNVSGJKW0qzakrqsUQqpSneSXJkA6XlzeKhTpBKDkM3XeAhdFkvnar/NAX76+23
-         XLGnWH6WBuX3m5HmG+pBnX1yYCppz3PMHoeZAzDOYhRH12Q93e+l+xrFH/FJQGbfcd0O
-         hXv7qata4qJpsG6R9wMlmZrxp/ybnYpTkMTKRqQG1EilEfgf1/raCe+xBBKSo+YV69Sq
-         zNlA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=otGcj6+gTd0lM/N+nMk+ulE/cCS4tpnsiTP5cBC4dQY=;
+        b=szc6sHS95vwJgjAlYiwOihUnilrEscv2HkBDqLzWOAtzQUVGKSFDoDXLwnCPjOiVH6
+         cqGBPTt/CM8gG1rTtzj0CkOk9FKJ6KV0ULf4KaPXzyR4oS3qH5mEZxr6cy73MpY0hCtL
+         KnExjGDK9/17FL1RbbtYEvkeel+uGqUf1UStAiwe3+frygkiaHLLCx2JSBRqYKD0ak1p
+         J924+Y8RCwwUCa5B73yWc5j/1KQv5QVbMqcZglvS1X830CESlW5lcCznnIy3b4rWmGHY
+         IqnxK2LglKpm/OCh31DLq/NPfndeCp5QWCAaw/irXLx9NfZHYV19H6EjhNAAp2qaTMBM
+         dFJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=rkhrBQJd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=X65LKHWp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o18si1123195qtq.280.2020.02.13.05.40.49
+        by mx.google.com with ESMTPS id m20si1152030qkh.40.2020.02.13.05.48.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Feb 2020 05:40:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 13 Feb 2020 05:48:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=rkhrBQJd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52462 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=X65LKHWp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52620 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j2EjZ-0002un-3R
-	for alex.bennee@linaro.org; Thu, 13 Feb 2020 08:40:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49340)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j2Er3-0002SZ-Um
+	for alex.bennee@linaro.org; Thu, 13 Feb 2020 08:48:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50519)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j2EjF-0002uL-LK
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 08:40:30 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1j2Eob-0008Do-SO
+ for qemu-devel@nongnu.org; Thu, 13 Feb 2020 08:46:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j2EjE-0006ev-Bx
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 08:40:29 -0500
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:37372)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j2EjE-0006ec-5Q
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 08:40:28 -0500
-Received: by mail-oi1-x241.google.com with SMTP id q84so5784237oic.4
- for <qemu-arm@nongnu.org>; Thu, 13 Feb 2020 05:40:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=ljVj4STwM5UNaWAh2zvHFBMVkqOCUqG6AOnHf75eF+8=;
- b=rkhrBQJdvwmd+vWrfXS+jqxjpI5yZV6ZpKIJXxQu/m2ZnFsYM2kwJDBsNTtrIJj+EY
- ZXrazrva8sHjPGEqMb2dFjvl88yJJlW9/QzOI9pAt6hXnZuI++RRs7E65/FB+Xaj+7lu
- YYYoI8IgOtCVM/ioPDgSnwCh9VP98MzWAZJays2dzH2JYSD6JC/LIjllZ0rqfgcQCeHC
- 8IqDjm9PNcfJVmbjdMUnOnPggHoeLuXzXJ6glKVQp78TYSH7LwJ1HBqBVR9ZDvxheSY6
- DsAgyb2UAcDJOoa2ToTeb7Ms4BJJsS0E4IsGNHrpr7nNw2DspZUcKmfsdocasKuk0JnX
- Lj6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=ljVj4STwM5UNaWAh2zvHFBMVkqOCUqG6AOnHf75eF+8=;
- b=WcOgZTNMtnw8d9aWSljE2vnEtoR7FD+Yj7mOyiDiVYEEen9Vw6YWAc4OWpLE3hcBZb
- 5qDwfyRY2W0DLNwuZhuGMadwFzPVTGk1+5OqjldWBSOxeoqOnSQkKa8K/hsQb/hTkYqu
- c00g31OzpSVLvXO0DpWROTLfe3kHArd5gF4wmkNPIYxMVMv4fEfTQ1e5agbgTQQICohd
- Dwt8aFkHWdRTtpZyUz3nqhbtwvQnwr5ER0SWX1GUZTCqgwimt9qK0s2QBwDW9vrS/I8R
- CzCXTZE3rziYhGyb2pY+YHmFbFdofjRp7XCUofkPdCdIZKwMkav24U/fFpkPKIhfzv9y
- RUWg==
-X-Gm-Message-State: APjAAAWT3sWHqlmIBKCnggXRrmUS56tjAU37BDpbYK/aigeb7lPutsps
- qEy+YKP0RfP9DXBAgu/avKLxP+bePSvM30f7uDb7kg==
-X-Received: by 2002:a54:4f16:: with SMTP id e22mr2986112oiy.170.1581601227184; 
- Thu, 13 Feb 2020 05:40:27 -0800 (PST)
+ (envelope-from <eric.auger@redhat.com>) id 1j2Eoa-0000jO-Nx
+ for qemu-devel@nongnu.org; Thu, 13 Feb 2020 08:46:01 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:22393
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1j2Eoa-0000ib-Ja
+ for qemu-devel@nongnu.org; Thu, 13 Feb 2020 08:46:00 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581601557;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=otGcj6+gTd0lM/N+nMk+ulE/cCS4tpnsiTP5cBC4dQY=;
+ b=X65LKHWpmcWJtaXHqr/V2ALGkAV9cXp1B1ShpfC+yPrK3Iqe9Bpz3BGdhfEXsqrh/np1ZV
+ S909uHowI/AnmLxmzYv5skF+fHA78A/wpsA+cB6F8pJIIqrxqFdgI17QTwA4mcRA2BG1n4
+ zw4ojePfYOZ6in80GXRAIo50ySfOFiE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-313--ql0KuwZNI6-eqcTRd5DpA-1; Thu, 13 Feb 2020 08:45:53 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E9F4C1088380;
+ Thu, 13 Feb 2020 13:45:51 +0000 (UTC)
+Received: from [10.36.116.37] (ovpn-116-37.ams2.redhat.com [10.36.116.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id ABED860499;
+ Thu, 13 Feb 2020 13:45:42 +0000 (UTC)
+Subject: Re: [PATCH v15 8/9] hw/arm/virt: Add the virtio-iommu device tree
+ mappings
+From: Auger Eric <eric.auger@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200208120022.1920-1-eric.auger@redhat.com>
+ <20200208120022.1920-9-eric.auger@redhat.com>
+ <CAFEAcA-n97LKaQo9haLdEv+c7k8QkK=LegP_gORr9z4WrBU2Ww@mail.gmail.com>
+ <5e4549f4-44c3-6a2c-a270-4923db8b455e@redhat.com>
+Message-ID: <b39be61a-0562-c747-2f47-ba9f966277d7@redhat.com>
+Date: Thu, 13 Feb 2020 14:45:40 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-References: <20200208165645.15657-1-f4bug@amsat.org>
- <20200208165645.15657-4-f4bug@amsat.org>
-In-Reply-To: <20200208165645.15657-4-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 13 Feb 2020 13:40:16 +0000
-Message-ID: <CAFEAcA8raRKW5OYJzO1kHs263_uJ_LucCa9tKgg70iX0jGqcGQ@mail.gmail.com>
-Subject: Re: [PATCH v3 03/13] hw/arm/raspi: Extract the version from the board
- revision
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::241
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <5e4549f4-44c3-6a2c-a270-4923db8b455e@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: -ql0KuwZNI6-eqcTRd5DpA-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Joaquin de Andres <me@xcancerberox.com.ar>,
- Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, Esteban Bosse <estebanbosse@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QOji5QpReyba
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: jean-philippe@linaro.org, "Tian, Kevin" <kevin.tian@intel.com>,
+ tnowicki@marvell.com, "Michael S. Tsirkin" <mst@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ Peter Xu <peterx@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ bharatb.linux@gmail.com, qemu-arm <qemu-arm@nongnu.org>,
+ Eric Auger <eric.auger.pro@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HAKHjPNjoXCQ
 
-On Sat, 8 Feb 2020 at 16:57, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
->
-> The board revision encode the board version. Add a helper
-> to extract the version, and use it.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/arm/raspi.c | 31 +++++++++++++++++++++++++++----
->  1 file changed, 27 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> index 818146fdbb..f285e2988f 100644
-> --- a/hw/arm/raspi.c
-> +++ b/hw/arm/raspi.c
-> @@ -16,6 +16,7 @@
->  #include "qapi/error.h"
->  #include "cpu.h"
->  #include "hw/arm/bcm2836.h"
-> +#include "hw/registerfields.h"
->  #include "qemu/error-report.h"
->  #include "hw/boards.h"
->  #include "hw/loader.h"
-> @@ -37,6 +38,28 @@ typedef struct RasPiState {
->      MemoryRegion ram;
->  } RasPiState;
->
-> +/*
-> + * Board revision codes:
-> + * www.raspberrypi.org/documentation/hardware/raspberrypi/revision-codes=
-/
-> + */
-> +FIELD(REV_CODE, REVISION,           0, 4);
-> +FIELD(REV_CODE, TYPE,               4, 8);
-> +FIELD(REV_CODE, PROCESSOR,         12, 4);
-> +FIELD(REV_CODE, MANUFACTURER,      16, 4);
-> +FIELD(REV_CODE, MEMORY_SIZE,       20, 3);
-> +FIELD(REV_CODE, STYLE,             23, 1);
-> +
-> +static int board_processor_id(uint32_t board_rev)
-> +{
-> +    assert(FIELD_EX32(board_rev, REV_CODE, STYLE)); /* Only new style */
-> +    return FIELD_EX32(board_rev, REV_CODE, PROCESSOR);
-> +}
-> +
-> +static int board_version(uint32_t board_rev)
-> +{
-> +    return board_processor_id(board_rev) + 1;
+Hi Peter, Michael,
 
-This uses the 'processor' field, which basically means the SoC
-(0 for BCM2835, 1 for BCM2836, 2 for BCMM2837, 3 for BCM2711).
-We use 'version' for a wider range of things in our code here:
- * do we need SMP setup?
- * which address does the firmware image go?
- * do we need to set up SMC vectors so no-op SMC works?
- * as well as "which SoC do we instantiate"?
+On 2/11/20 6:31 PM, Auger Eric wrote:
+> Hi Peter,
+> 
+> On 2/11/20 4:00 PM, Peter Maydell wrote:
+>> On Sat, 8 Feb 2020 at 12:01, Eric Auger <eric.auger@redhat.com> wrote:
+>>>
+>>> Adds the "virtio,pci-iommu" node in the host bridge node and
+>>> the RID mapping, excluding the IOMMU RID.
+>>>
+>>> This is done in the virtio-iommu-pci hotplug handler which
+>>> gets called only if no firmware is loaded or if -no-acpi is
+>>> passed on the command line. As non DT integration is
+>>> not yet supported by the kernel we must make sure we
+>>> are in DT mode. This limitation will be removed as soon
+>>> as the topology description feature gets supported.
+>>>
+>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>
+>>> +static void create_virtio_iommu(VirtMachineState *vms, Error **errp)
+>>> +{
+>>> +    const char compat[] = "virtio,pci-iommu";
+>>> +    uint16_t bdf = vms->virtio_iommu_bdf;
+>>> +    char *node;
+>>> +
+>>> +    vms->iommu_phandle = qemu_fdt_alloc_phandle(vms->fdt);
+>>> +
+>>> +    node = g_strdup_printf("%s/virtio_iommu@%d", vms->pciehb_nodename, bdf);
+>>> +    qemu_fdt_add_subnode(vms->fdt, node);
+>>> +    qemu_fdt_setprop(vms->fdt, node, "compatible", compat, sizeof(compat));
+>>> +    qemu_fdt_setprop_sized_cells(vms->fdt, node, "reg",
+>>> +                                 1, bdf << 8, 1, 0, 1, 0,
+>>> +                                 1, 0, 1, 0);
+>>> +
+>>> +    qemu_fdt_setprop_cell(vms->fdt, node, "#iommu-cells", 1);
+>>> +    qemu_fdt_setprop_cell(vms->fdt, node, "phandle", vms->iommu_phandle);
+>>> +    g_free(node);
+>>> +
+>>> +    qemu_fdt_setprop_cells(vms->fdt, vms->pciehb_nodename, "iommu-map",
+>>> +                           0x0, vms->iommu_phandle, 0x0, bdf,
+>>> +                           bdf + 1, vms->iommu_phandle, bdf + 1, 0xffff - bdf);
+>>> +}
+>>
+>> This function name implies that we're creating the IOMMU device
+>> here (which would be a weird thing to do in a hotplug callback
+>> for some other device), but it looks like we're only adding
+>> device tree nodes ?
+> yes the actual iommu device is created through the -device option. I can
+> rename into create_iommu_dt_bindings
+So I renamed it into create_virtio_iommu_dt_bindings()
+>>
+>> Given that we write the FDT blob into the guest RAM on bootup,
+>> how does making changes to it here on hotplug (which I assume
+>> to be 'after boot, whenever the user hot-plugs something') work?
+> 
+> the virtio-iommu is not supposed to be hotplugged but rather
+> cold-plugged. I use this hotplug mechanism to detect its presence and
+> add the related dt mappings. Maybe I can add a check to detect if the
+> bootup is over?
+I added in virtio-iommu-pci virtio_iommu_pci_class_init()
+dc->hotpluggable = false;
 
-We think of 'version' as basically "raspi 2 or 3?", but
-according to the table in your url you can get a version of
-the raspi 2b with a BCM2837 SoC, which confuses this idea.
+As far as I understand this makes the virtio-iommu-pci device not
+hotpluggable (same is used for intel-iommu):
 
-Anyway, since what we have in this patch works OK for the set
-of board models we support, I'm happy to leave the patch as-is,
-but maybe worth checking and considering what in our code we
-should really be making conditional on "actually the SoC type"
-and what on something else...
+(QEMU) device_add id=hot0 driver=virtio-iommu-pci bus=head.0 addr=4
+{"error": {"class": "GenericError", "desc": "Parameter 'driver' expects
+pluggable device type"}}
 
-thanks
--- PMM
+Is that OK?
+
+Thanks
+
+Eric
+
+> 
+> Thoughts?
+> 
+> Eric
+>>
+>> thanks
+>> -- PMM
+>>
+> 
+> 
+

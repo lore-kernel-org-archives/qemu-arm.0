@@ -1,82 +1,123 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp741391lfp;
-        Thu, 13 Feb 2020 07:29:49 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwNJF8abHp5AG/GSX3NaeEa9yBW//t5MOlDWKtN9hOGxDpyxJ2L8jVbgpE98FZAvzP8ujMS
-X-Received: by 2002:a05:6214:20c:: with SMTP id i12mr4787361qvt.48.1581607788958;
-        Thu, 13 Feb 2020 07:29:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581607788; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp747044lfp;
+        Thu, 13 Feb 2020 07:34:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyLgaEvizp5gO/UBJ4NZpVHTvte/1HJgMcbCE17KjXX5K1dpLmYNue6/Kq6A/iYFLtsUd7N
+X-Received: by 2002:aed:2ac5:: with SMTP id t63mr23689285qtd.315.1581608061060;
+        Thu, 13 Feb 2020 07:34:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581608061; cv=none;
         d=google.com; s=arc-20160816;
-        b=bTOsX9hKZVpX/QIbGSwhxXtp5FNHsvLzot7RlnOm66u98Xxmo1KefAeeKl+ZQTaS/0
-         s/gpMfm5FOWuCBCFvtOucGvlqGrWvzWRDE7DnAHDOnjAjDD83TIWy7GsmGgmslY2Vfjh
-         Qzg+LDrJwEilCSwmbsc/W79RW7uIicrVEHOTxsPXeho3XCXbb1QJpFvoHi4+Zh2papAX
-         Msf2bjR6S9ChT6ttVekp6dMx4Ub8GiC1MhV7ZxhlcLpSmEKbHQKFW7V/pKGNiSRON72/
-         Hz25RwqWKg0Cq8bgrLkNuepyetffmSRGFp/qvC/9o02nHNIvWHCLYLVyVYkE7XKXU7Y9
-         bmRQ==
+        b=1FUDn8VksOdi0rT5o2DJy2WvJaLaMjnUYe+yWAsHyVCVo5ITb0Ir3sB3Riqwtw7J7N
+         bpNViVi+dnbC/xKFK/SYeaNJYD78uS67sDxgUzuqyAc5F9gQRsIan4lX7DV8GDapfs3s
+         mKbIMsxS9BcxQRD4B6ocBssrn3YbB3S+/QGTuy2gzBUoJstkFP0v4YNoY1Sj7k8BcJWA
+         7n9SToWURTQbnvKvp12kdh+8ypK/xrjrQobk7AFIrG//j2+FbJYC78aw2TtPl65duRJ6
+         ykXixJl8CqRiJbCZ7KQ/ePkn2zZxHugP+eMP55qdZrX725yWfpJDubjiHtx9JBhAZMH0
+         5Qpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=oQdkulsMlhsXqg9k+ZD0XTlzQ7IC7FnJNleOZS13quE=;
-        b=J51cbtj7xD8dF5E1Vmo5aJKlbftsqjuj+SV9DX5Kuae2crA3zTsW/c51A8ZGp3asAg
-         YfcVKz05i/yRaN+SmAxkVwAPpvXAod02P0/OXDhpXksGiM2kiY4wfYIWBDMZuziSD3YK
-         MtR5H5bH049hh0kFKDalauSIPEFNo3RJ+sADl/g0PA10H1bcBlrWVocvJaXNR/NATYdi
-         Al/CT9J8ZnaIouxPPO2N9OJJo4e04cIp5+BhPZebI9Xou+gytzUaXI/z772f0iN6WwVB
-         tA1AflB0qyhRLncYpvGv+P+FAZUmueBYtpDV11HqBzS8IMSmhWcqGJlCZ+SKjfndYs6S
-         mmcQ==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=GDWid6/iq8siU8ZHevmjU4sE5uKGLFLX3QyEuxy3bsw=;
+        b=yBwDogh1noWzZU8yDsnO8Z2jI8QZV4rzEOPezPta1zU9PJgFyyY5f7PEwcjGRFMxM6
+         19v/VZD/Q1wrLM53GsZiZQtMpZShR2jKA92s/UwHy6kQWAx+QTRAhKl2r93uRUlZs8d+
+         xridFR4BnDU0bq07vkufRN8469omUmc2GvVWxiPVt6lqmA7GT+EBbbbF9fgBQC7cLMfN
+         WYjkg9wb5D6iF/ghKReNZnHJFxDKryZ+QjM6IUOq6+3YaYqEuuRr3HOOpilCWCSBNJJx
+         cCtuWMex8vTgYXxxGajKTH/0Vxd3Jkvlblt9/nwGOPe4G7eYRFabaaN3Ky/catNOOFTk
+         j+cA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T9eg25rn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s5si1383074qkg.335.2020.02.13.07.29.48
+        by mx.google.com with ESMTPS id 3si1305064qta.62.2020.02.13.07.34.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Feb 2020 07:29:48 -0800 (PST)
+        Thu, 13 Feb 2020 07:34:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54830 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T9eg25rn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54876 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j2GR2-000637-Dr
-	for alex.bennee@linaro.org; Thu, 13 Feb 2020 10:29:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45205)
+	id 1j2GVQ-0007Yr-Gw
+	for alex.bennee@linaro.org; Thu, 13 Feb 2020 10:34:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45671)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <gengdongjiu@huawei.com>) id 1j2GQp-00062z-Bt
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 10:29:37 -0500
+ (envelope-from <philmd@redhat.com>) id 1j2GV0-0007XS-Ah
+ for qemu-arm@nongnu.org; Thu, 13 Feb 2020 10:33:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <gengdongjiu@huawei.com>) id 1j2GQn-0000Gx-O2
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 10:29:35 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:60788 helo=huawei.com)
+ (envelope-from <philmd@redhat.com>) id 1j2GUx-0006uW-TL
+ for qemu-arm@nongnu.org; Thu, 13 Feb 2020 10:33:54 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:32049
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
- id 1j2GQm-0008DL-Ux; Thu, 13 Feb 2020 10:29:33 -0500
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id BD2F6DAC1677B4B4B1B2;
- Thu, 13 Feb 2020 23:29:06 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS404-HUB.china.huawei.com
- (10.3.19.204) with Microsoft SMTP Server id 14.3.439.0; Thu, 13 Feb 2020
- 23:29:00 +0800
-Subject: Re: [PATCH v22 5/9] ACPI: Record the Generic Error Status Block
- address
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j2GUx-0006p0-Pe
+ for qemu-arm@nongnu.org; Thu, 13 Feb 2020 10:33:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581608027;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=GDWid6/iq8siU8ZHevmjU4sE5uKGLFLX3QyEuxy3bsw=;
+ b=T9eg25rn3stouRthBz3gI7Qw2OdkJL+zx/p/PeBU2PI3WcNlurfRbu8XDgj5o2WKFKq92n
+ +lJTq/4v0OaqrRA+3ZIgqP+rOiJfAxdw5ostuWROcThJlpX5qjzKc57O/FpXb7TJNbVhgw
+ P+C0GbiJb+2V0JqgfEu/6lySDg2lEd8=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-1-Ns1QpATzMSS4KoxeSDZ42g-1; Thu, 13 Feb 2020 10:33:40 -0500
+Received: by mail-wr1-f69.google.com with SMTP id d8so2464170wrq.12
+ for <qemu-arm@nongnu.org>; Thu, 13 Feb 2020 07:33:40 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=lnyI72nC5aJyDHvLxnHY68BclaJOoav9SKihz+lhs3s=;
+ b=o4XrEiLrECHO5kYoJepIjBMQZ/RTF4TaOnKBUudypXEg/S9eVSVyycsCx9KZxMZ4Zz
+ Ie+QTf2gdLO1a/+eX7AqIWwrBLxteEJoPYnAIOPxBcJfSYn9eZEvLfz334hIArMCvQsM
+ 6/FwbXdK/r1kh3UBJud0FjtaNBnBKeU/TZ8SVFnWKoY9pO7H/4V26aNm1AUI5LvGnWyb
+ aFSfzdFUPws4MTz0FWeRmrA+IGcaNMScd05B2fbjyKPJZiw4A9NEblFi04C3bSpyMI8W
+ Xzcj6H4/M+wx8KCjI9B5ajKt8MQypPGoXTx1I7v5U95+kn+Uv6oLaTXxG60/U1T2c/Fg
+ bkIw==
+X-Gm-Message-State: APjAAAVPl8KvvbmzWa4BISfClB8jUqL8/3gsImF7aWkewmLGBSlo8eE1
+ Aq+yixepUvwJWz41SpCV3BKf9A1MSsDYTyqqsXGpdhHjVIhNYTER3OcFTyVTAEBq7lk8qMxpKI5
+ I1h09OcAKB47U
+X-Received: by 2002:adf:fe50:: with SMTP id m16mr23495892wrs.217.1581608019535; 
+ Thu, 13 Feb 2020 07:33:39 -0800 (PST)
+X-Received: by 2002:adf:fe50:: with SMTP id m16mr23495868wrs.217.1581608019289; 
+ Thu, 13 Feb 2020 07:33:39 -0800 (PST)
+Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.78])
+ by smtp.gmail.com with ESMTPSA id t128sm3618227wmf.28.2020.02.13.07.33.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 13 Feb 2020 07:33:38 -0800 (PST)
+Subject: Re: [PATCH v3 12/13] hw/arm/raspi: Use a unique
+ raspi_machine_class_init() method
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
- <1578483143-14905-6-git-send-email-gengdongjiu@huawei.com>
- <CAFEAcA9z9KDHmvh6WsrCPj_FTvNmOfhatxNQDftNG+ZKZN0wAA@mail.gmail.com>
-From: gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <8cc6c97a-aa05-7a84-40cc-5e264e7e13d4@huawei.com>
-Date: Thu, 13 Feb 2020 23:28:58 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+References: <20200208165645.15657-1-f4bug@amsat.org>
+ <20200208165645.15657-13-f4bug@amsat.org>
+ <CAFEAcA8e4NqwKPM6qx=vKm6NOz__=S90trhUuhaSNe_yJ8GeXg@mail.gmail.com>
+ <0d72fad3-3eef-66ff-2162-f0c07ba01ff2@redhat.com>
+ <CAFEAcA9x6=Hxqwjacc3ZXUJy1P0xxKt-oqiZf1Fm=f1d8f63xQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <d3e9caeb-345c-4596-eff1-059a8cc94a8e@redhat.com>
+Date: Thu, 13 Feb 2020 16:33:37 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9z9KDHmvh6WsrCPj_FTvNmOfhatxNQDftNG+ZKZN0wAA@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <CAFEAcA9x6=Hxqwjacc3ZXUJy1P0xxKt-oqiZf1Fm=f1d8f63xQ@mail.gmail.com>
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
+X-MC-Unique: Ns1QpATzMSS4KoxeSDZ42g-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.32
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,227 +129,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Eduardo Habkost <ehabkost@redhat.com>,
- kvm-devel <kvm@vger.kernel.org>, "Michael S. Tsirkin" <mst@redhat.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, QEMU
- Developers <qemu-devel@nongnu.org>, Linuxarm <linuxarm@huawei.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Zheng Xiang <zhengxiang9@huawei.com>,
- qemu-arm <qemu-arm@nongnu.org>, James Morse <james.morse@arm.com>,
- "xuwei \(O\)" <xuwei5@huawei.com>, Igor Mammedov <imammedo@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Cc: Joaquin de Andres <me@xcancerberox.com.ar>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Esteban Bosse <estebanbosse@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Igor Mammedov <imammedo@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QWu9TL+U2EzV
+X-TUID: sCCaJxig5uZB
 
-On 2020/1/17 0:44, Peter Maydell wrote:
-> On Wed, 8 Jan 2020 at 11:33, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+On 2/13/20 3:32 PM, Peter Maydell wrote:
+> On Thu, 13 Feb 2020 at 14:16, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
+com> wrote:
+>> On 2/13/20 2:59 PM, Peter Maydell wrote:
+>>> The natural way to implement this is to have the .class_data
+>>> be a pointer to a struct which is in an array and defines
+>>> relevant per-class stuff, the same way we do in
+>>> bcm2836_register_types(). That way the struct can indicate
+>>> both the board revision number and also "is this a legacy
+>>> board that needs transaction-failures disabled?".
 >>
->> Record the GHEB address via fw_cfg file, when recording
->> a error to CPER, it will use this address to find out
->> Generic Error Data Entries and write the error.
->>
->> Make the HEST GHES to a GED device.
->>
->> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
->> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
->> ---
->>  hw/acpi/generic_event_device.c         | 15 ++++++++++++++-
->>  hw/acpi/ghes.c                         | 16 ++++++++++++++++
->>  hw/arm/virt-acpi-build.c               | 13 ++++++++++++-
->>  include/hw/acpi/generic_event_device.h |  2 ++
->>  include/hw/acpi/ghes.h                 |  6 ++++++
->>  5 files changed, 50 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
->> index 9cee90c..9bf37e4 100644
->> --- a/hw/acpi/generic_event_device.c
->> +++ b/hw/acpi/generic_event_device.c
->> @@ -234,12 +234,25 @@ static const VMStateDescription vmstate_ged_state = {
->>      }
->>  };
->>
->> +static const VMStateDescription vmstate_ghes_state = {
->> +    .name = "acpi-ghes-state",
->> +    .version_id = 1,
->> +    .minimum_version_id = 1,
->> +    .fields      = (VMStateField[]) {
->> +        VMSTATE_UINT64(ghes_addr_le, AcpiGhesState),
->> +        VMSTATE_END_OF_LIST()
->> +    }
->> +};
->> +
->>  static const VMStateDescription vmstate_acpi_ged = {
->>      .name = "acpi-ged",
->>      .version_id = 1,
->>      .minimum_version_id = 1,
->>      .fields = (VMStateField[]) {
->> -        VMSTATE_STRUCT(ged_state, AcpiGedState, 1, vmstate_ged_state, GEDState),
->> +        VMSTATE_STRUCT(ged_state, AcpiGedState, 1,
->> +                       vmstate_ged_state, GEDState),
->> +        VMSTATE_STRUCT(ghes_state, AcpiGedState, 1,
->> +                       vmstate_ghes_state, AcpiGhesState),
->>          VMSTATE_END_OF_LIST(),
->>      },
->>      .subsections = (const VMStateDescription * []) {
-> 
-> You can't just add fields to an existing VMStateDescription
-> like this -- it will break migration compatibility. Instead you
-> need to add a new subsection to this vmstate, with a '.needed'
-> function which indicates when the subsection should be present.
+>> IIUC Igor insists explaining that he doesn't accept anymore a
+>> ".class_data pointer to a struct which is in an array and defines
+>> relevant per-class stuff" and we should not use this pattern anymore.
+>=20
+> Huh? How else would you do this? I'm kinda dubious about the
+> pattern this patch series uses of just stuffing a 32-bit board
+> ID number into the class_data field, to be honest -- I let that
+> pass partly not to hold up the series but partly because I
+> expect that we'll need to turn it back into a proper pointer
+> to a data struct soonish.
 
-Hi Peter/Igor
-   In order to avoid migration failure, do you think whether below change is Ok to make error table address(AcpiGhesState) to a part of GED device? thanks a lot in advance.
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg678305.html
 
----------------------------------------------------------------------------------------------
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index 021ed2b..264154d 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -234,16 +234,34 @@ static const VMStateDescription vmstate_ged_state = {
-     }
- };
+Igor> we sometimes use .class_data when creating many
+       derived types (typical example CPU types (x86))
+       where it's impractical to code leaf class_init
+       functions. I'd use .class_data in cases where I
+       can't get away with explicit .class_init
 
-+static bool ghes_needed(void *opaque)
-+{
-+    return object_property_get_bool(qdev_get_machine(), "ras", NULL);
-+}
-+
-+static const VMStateDescription vmstate_ghes_state = {
-+    .name = "acpi-ged/ghes",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = ghes_needed,
-+    .fields      = (VMStateField[]) {
-+        VMSTATE_STRUCT(ghes_state, AcpiGedState, 1, vmstate_ghes_state, AcpiGhesState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription vmstate_acpi_ged = {
-     .name = "acpi-ged",
-     .version_id = 1,
-     .minimum_version_id = 1,
-     .fields = (VMStateField[]) {
--        VMSTATE_STRUCT(ged_state, AcpiGedState, 1, vmstate_ged_state, GEDState),
-+        VMSTATE_STRUCT(ged_state, AcpiGedState, 1,
-+                       vmstate_ged_state, GEDState),
-         VMSTATE_END_OF_LIST(),
-     },
-     .subsections = (const VMStateDescription * []) {
-         &vmstate_memhp_state,
-+        &vmstate_ghes_state,
-         NULL
-     }
- };
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index a67b1de..3bf32ec 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -24,6 +24,7 @@
- #include "hw/acpi/acpi.h"
- #include "hw/acpi/ghes.h"
- #include "hw/acpi/aml-build.h"
-+#include "hw/acpi/generic_event_device.h"
- #include "hw/nvram/fw_cfg.h"
- #include "sysemu/sysemu.h"
- #include "qemu/error-report.h"
-@@ -216,3 +217,18 @@ void acpi_build_hest(GArray *table_data, BIOSLinker *linker)
-     build_header(linker, table_data, (void *)(table_data->data + hest_start),
-         "HEST", table_data->len - hest_start, 1, NULL, "");
- }
-+
-+void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
-+                          GArray *hardware_error)
-+{
-+    size_t size = 2 * sizeof(uint64_t) + ACPI_GHES_MAX_RAW_DATA_LENGTH;
-+    size_t request_block_size = ACPI_GHES_ERROR_SOURCE_COUNT * size;
-+
-+    /* Create a read-only fw_cfg file for GHES */
-+    fw_cfg_add_file(s, ACPI_GHES_ERRORS_FW_CFG_FILE, hardware_error->data,
-+                    request_block_size);
-+
-+    /* Create a read-write fw_cfg file for Address */
-+    fw_cfg_add_file_callback(s, ACPI_GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
-+        NULL, &(ags->ghes_addr_le), sizeof(ags->ghes_addr_le), false);
-+}
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 12a9a78..d6e7521 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -832,6 +832,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-     build_spcr(tables_blob, tables->linker, vms);
+Which I understand as:
 
-     if (vms->ras) {
-+        assert(vms->acpi_dev);
-         acpi_add_table(table_offsets, tables_blob);
-         build_ghes_error_table(tables->hardware_errors, tables->linker);
-         acpi_build_hest(tables_blob, tables->linker);
-@@ -924,6 +925,7 @@ void virt_acpi_setup(VirtMachineState *vms)
- {
-     AcpiBuildTables tables;
-     AcpiBuildState *build_state;
-+    AcpiGedState *acpi_ged_state;
-
-     if (!vms->fw_cfg) {
-         trace_virt_acpi_setup();
-@@ -954,6 +956,14 @@ void virt_acpi_setup(VirtMachineState *vms)
-     fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
-                     acpi_data_len(tables.tcpalog));
-
-+    if (vms->ras) {
-+        assert(vms->acpi_dev);
-+        acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
-+                                                           NULL));
-+        acpi_ghes_add_fw_cfg(&acpi_ged_state->ghes_state,
-+                             vms->fw_cfg, tables.hardware_errors);
-+    }
-+
-     build_state->rsdp_mr = acpi_add_rom_blob(virt_acpi_build_update,
-                                              build_state, tables.rsdp,
-                                              ACPI_BUILD_RSDP_FILE, 0);
-diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-index d157eac..037d2b5 100644
---- a/include/hw/acpi/generic_event_device.h
-+++ b/include/hw/acpi/generic_event_device.h
-@@ -61,6 +61,7 @@
-
- #include "hw/sysbus.h"
- #include "hw/acpi/memory_hotplug.h"
-+#include "hw/acpi/ghes.h"
-
- #define ACPI_POWER_BUTTON_DEVICE "PWRB"
-
-@@ -95,6 +96,7 @@ typedef struct AcpiGedState {
-     GEDState ged_state;
-     uint32_t ged_event_bitmap;
-     qemu_irq irq;
-+    AcpiGhesState ghes_state;
- } AcpiGedState;
-
- void build_ged_aml(Aml *table, const char* name, HotplugHandler *hotplug_dev,
-diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-index 18debd8..a3420fc 100644
---- a/include/hw/acpi/ghes.h
-+++ b/include/hw/acpi/ghes.h
-@@ -62,6 +62,12 @@ enum {
-     ACPI_HEST_SRC_ID_RESERVED,
- };
-
-+typedef struct AcpiGhesState {
-+    uint64_t ghes_addr_le;
-+} AcpiGhesState;
-+
- void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
- void acpi_build_hest(GArray *table_data, BIOSLinker *linker);
-+void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
-+                          GArray *hardware_errors);
- #endif
-
-
-> 
-> thanks
-> -- PMM
-> .
-> 
+- avoid .class_data (pointers to structures)
+- explicitly set ObjectClass::fields in .class_init()
+   by open-coding all.
 

@@ -1,87 +1,104 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp685478lfp;
-        Thu, 13 Feb 2020 06:40:15 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw0G1bH1eCf+8PlZW+f3/ENIenbXQ8WkpjpHAKRzF8/8XrOOLNxAsWkvN0occwcqz/KNNLo
-X-Received: by 2002:ac8:740c:: with SMTP id p12mr11796876qtq.286.1581604815178;
-        Thu, 13 Feb 2020 06:40:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581604815; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp736457lfp;
+        Thu, 13 Feb 2020 07:25:16 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzF4A3A/FPhvNuUKeBz5eEwsZ1V6CZSv62AHhuNu5MH9eBJynPTd/bpa7cH2stoI0GkGgpE
+X-Received: by 2002:a37:5044:: with SMTP id e65mr15433199qkb.294.1581607516742;
+        Thu, 13 Feb 2020 07:25:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581607516; cv=none;
         d=google.com; s=arc-20160816;
-        b=paBcuWuUf9uWUpjBkahmhuJpYCgQiH2jJjp5RWh92wVfMbq0yTz3aB/Pn0KzkPkgyU
-         z6JwnHBU98MiATG87wdji4IgmbpRJksBjXLAXUc8CXUuPtVBbd59sIqv6ixNtwi0BV4a
-         ECNoNEY69NcPkGasE069rETca2i+q1e5f8Z1CTX1TQDXP6qvMm+O/dxzMEcBXMnRAPgT
-         M/fJ9YHk03RCDwXAsTnKG0HA8MAyNPrfmdrKTswfu8+SyY+7tC6JPv8ak+jeVA6E2p9j
-         uzmaIk5eH08YH/F4YQ0l2TMMj+LKLcM531jV9U1xs11dU5fVD16ntn4uyMEWf/1Oj/Z9
-         q1Jg==
+        b=MS0mCQVyti2S5EPxz0K6THTMaVF612rbgpB93kCiNfCkS+bkbQrueuJ/y2XRK07QXQ
+         i++dnd+hAKTy6pR9ONjuD8MawAoBZxnPSwyvSAYgQWAnGqS2kYg0wXNVnKfbYjkky/YZ
+         7Ec7YroJPyo/+BYOhppfSvD+XNosBc/ck8PbosDjqjaZEboiYviAZb6x4Iyx41rJF7kG
+         ab3XwSejPEbVKNk7E6zo2hPq49/S+1UKcGLqX9oNBMwsz/t9vJObAYT5NgIY+JZgIN+n
+         uWdb5DppUuoQqEw6K8jHkZfP4vU5ROfgnYMu8iYkrMDpfpZt1aFKlyb8mo53o274LW90
+         6SPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=A4EPPn1XD+DrC3EutJ1d+JoZYSjW6TenIzcHdxfjf7A=;
-        b=utBS69hek2Vxt3Bi0AZpKR/h0M9ik+VqSZLO+rzAeqAq5MRpSNhfU/8g5hskdElKLZ
-         OtyFuALaeUxWwXHrSUfltM0GCOpdGJpuXCY/YcCX8JigJdXyV5a57ttX9SGXDODurUCd
-         z6kLGQRoV5lnGCRLI3vsUF/Tg2VCHwQeqiI6//7vlqPfoS3gZL+Jsu1b1QKIi6b+1Boo
-         VhA8b0a6DbdTxdVWLwd+rAglZwfVj/Hvyd2M9PWkhAvtmM9dy5LzDqQLvyxfZqMwr+Hq
-         +cF/yuHhJQ2b/knrxqjVr5ot7lRlnLsfmBydS2aq6Wv7Z3mUamnYDDLWyTKqDFtS4sfZ
-         qfvg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=NPerDuVjCJQ2UeO9FdNW7E1PeN/DO9lJmQRRxxb5QCo=;
+        b=GFLXDqKAuNNZ3iKHXp5KprS1AcI/Xdemt+6E9fBb9GEDjZfQMoqcrQM2cdSODX1gra
+         vAYGyb/NeuHruuYEOB5NydrmN5mdPw7mzYnnwmemY2rQqkZ5vv2Sf7H07lt55bgOnMly
+         2nWlfSoMbY7RSQeKKYc7qeEtNXvAs+eAGoGUnZqAXQQtPK3XoueiaVOw8i90dXFus30f
+         75Dqbe73ibROI1kL9u4Q+5+9YWv3uFpaDNzo+wxb8eRiMzWT9stFcKEg9WGAsns2aEGt
+         M5nWkn1ohL6xtkhUnnHM6Fuz89ZGeNeRGANqVjmNp0Hrgsk2cMboWQknSnqSffXfVc+n
+         eLsA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=WP+5Lnmz;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jF4RAiqx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d17si1231905qtg.313.2020.02.13.06.40.15
+        by mx.google.com with ESMTPS id 206si1435016qki.89.2020.02.13.07.25.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Feb 2020 06:40:15 -0800 (PST)
+        Thu, 13 Feb 2020 07:25:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=WP+5Lnmz;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jF4RAiqx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53382 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54702 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j2Ff4-0002Xi-Ik
-	for alex.bennee@linaro.org; Thu, 13 Feb 2020 09:40:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59626)
+	id 1j2GMe-00025k-5P
+	for alex.bennee@linaro.org; Thu, 13 Feb 2020 10:25:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44276)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j2Fes-0002Vn-7M
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 09:40:04 -0500
+ (envelope-from <philmd@redhat.com>) id 1j2GLw-0001Td-TW
+ for qemu-arm@nongnu.org; Thu, 13 Feb 2020 10:24:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j2Fer-00067n-4B
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 09:40:02 -0500
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:45852)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j2Feq-00065q-UA
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 09:40:01 -0500
-Received: by mail-ot1-x343.google.com with SMTP id 59so5735867otp.12
- for <qemu-arm@nongnu.org>; Thu, 13 Feb 2020 06:40:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=A4EPPn1XD+DrC3EutJ1d+JoZYSjW6TenIzcHdxfjf7A=;
- b=WP+5LnmzPYpCz1W88JoUB3XPljfC+Y8gXRoZakD0QsCtzfuBycN0/X6D07SflZQzCb
- IQLogAZ5rX/hGMw2TJ6jnI9/r6z0YxK6sMD1Bjqxj4yTPeeweVLslHSW63m17T/eoHCZ
- IjAo3GMVWWsE189yVidUxOKy56SNv8kLO76+x+hjXp9Nqop0dfYQkLFjgZCYsyZgr6tf
- YTxw0JquFLwP+blpXdXFGBmWdFh9ikNYofnbAAxEgAL8gTxLR/qBVXgDHSV5eslBaRDZ
- qk2ov+BkDppxTBGMVUeK8FsCLRNQ2pDGeHhKwUniOUP8P/ikNjvQ1ORnBOo3F7nA5SPA
- ILTg==
+ (envelope-from <philmd@redhat.com>) id 1j2GLu-0000mj-8A
+ for qemu-arm@nongnu.org; Thu, 13 Feb 2020 10:24:32 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:20216
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j2GLt-0000lM-RF
+ for qemu-arm@nongnu.org; Thu, 13 Feb 2020 10:24:29 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581607469;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NPerDuVjCJQ2UeO9FdNW7E1PeN/DO9lJmQRRxxb5QCo=;
+ b=jF4RAiqxUNdX5cmcg1PqxEZjSyvbypUhCLyOTjLqFgGcl390xqnecg+XeAbE1uoDtwWk7Q
+ qtObwhrtEWYiAUind+tiTHpo5TSwDLV8VyYBRXJP/5Bg+SeWpq2/M4ZRSWxU1VSK1iP93Y
+ ANwTk2yNnLfDTIpeyGzJUQqxoD3hTDc=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-119-mkgdZidRPhukeoFA5Sa6PA-1; Thu, 13 Feb 2020 10:24:27 -0500
+Received: by mail-wr1-f72.google.com with SMTP id t6so2483253wru.3
+ for <qemu-arm@nongnu.org>; Thu, 13 Feb 2020 07:24:27 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=A4EPPn1XD+DrC3EutJ1d+JoZYSjW6TenIzcHdxfjf7A=;
- b=MfH6eiqqGyYqJdvruiznbth8ajUgTF9AHkjo8b6bhTTs82EiSkX6MJ8chfeOi1lhHq
- 20VBhiYHrN8BANe2z8Ijr82bqN6o9rgBoHWGc8O/Z90XxUHGQZl/4g1sFR77x9GA7lCA
- AEaMByqs8Jfe8q/iS6lzTBBRSaPkfLlRWo02a2mPDSrw/89uj23S//T2IosZXZDDTqkI
- x2uqgGhRg129AMm/Wpc4fhH0641bYM47cPbl+lUNnseShUCEYjgZpOhIWrszy9sWJEI2
- TwWjinIU+flh4NB+tXSRRS02qcj/8VTNFVyzkPpdjktWqp8/BTAxgcnvNtC9CFQsTvHz
- 0ESg==
-X-Gm-Message-State: APjAAAVrNHm1qNNQcfuUF2x3lPZgD8aZyiMFw7EggWvjqYLLlbptF7Qm
- TpAJxjTMrgBfVvRa5/kdlYcn4dkK7MnQtHfc5DoT4A==
-X-Received: by 2002:a05:6830:1184:: with SMTP id
- u4mr12900017otq.221.1581604799968; 
- Thu, 13 Feb 2020 06:39:59 -0800 (PST)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=NPerDuVjCJQ2UeO9FdNW7E1PeN/DO9lJmQRRxxb5QCo=;
+ b=DfbSSuUkUbgo3Wmc6B/YWdzRo/DohVCvJd+giLZE2z6fcgp3czvbyaGbiKHjN1HrkO
+ mi1OAwysatF2cy40NtF3kGm5+jfPs8yPmVTLxgRqqPaYtt8LR9vSWp0LPspKz6dVm8gp
+ mSWf7h4E2YPZ9uljaHvEDKIPeMssJqYfKpl+PJAxydvqWWiTe1p7y8fugnekjESe/AMq
+ GMmE7H1tBLW9wg324iFQB/NX293PqBw/zDa9x82oHqb1dczsyZGzMbN8h1wFjl5LM+Z0
+ atwNtJWwUiFYpwPe69DellP/C+0+R+nQ0FcF70kJyFnka6L6Uz923VUc2lRu5mX3BajE
+ BEWQ==
+X-Gm-Message-State: APjAAAVi9CHbt/AufVWr0T/xg4fmx/gebrYtbSxruZ7w9WpIMjuFD6+T
+ BFTdAwJKDlVhHS/rtLyV1O6CGtsax/k6+UM0BEPdhfb2Quqn720SdaSGU+rzfXCJclxDOAmTRL6
+ X8GDMzRhQYAXF
+X-Received: by 2002:a05:6000:1187:: with SMTP id
+ g7mr22452328wrx.109.1581607466335; 
+ Thu, 13 Feb 2020 07:24:26 -0800 (PST)
+X-Received: by 2002:a05:6000:1187:: with SMTP id
+ g7mr22452291wrx.109.1581607465944; 
+ Thu, 13 Feb 2020 07:24:25 -0800 (PST)
+Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.78])
+ by smtp.gmail.com with ESMTPSA id q130sm3756970wme.19.2020.02.13.07.24.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 13 Feb 2020 07:24:25 -0800 (PST)
+Subject: Re: Question about (and problem with) pflash data access
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Guenter Roeck <linux@roeck-us.net>
 References: <20200212184648.GA584@roeck-us.net>
  <504e7722-0b60-ec02-774d-26a7320e5309@redhat.com>
  <20200212230918.GA27242@roeck-us.net>
@@ -89,16 +106,23 @@ References: <20200212184648.GA584@roeck-us.net>
  <279d959f-f7e5-65e1-9c68-459f3fed56d3@ozlabs.ru>
  <52f0b829-151a-3dd0-0ec7-c3155185510c@redhat.com>
  <9f652340-1277-0eb2-bc2c-402b4209a220@roeck-us.net>
-In-Reply-To: <9f652340-1277-0eb2-bc2c-402b4209a220@roeck-us.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 13 Feb 2020 14:39:49 +0000
-Message-ID: <CAFEAcA8CyTqdqvT6xatkxb9EN49zD4OBaKrbaLpkyZg+eMoM6w@mail.gmail.com>
-Subject: Re: Question about (and problem with) pflash data access
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::343
+ <CAFEAcA8CyTqdqvT6xatkxb9EN49zD4OBaKrbaLpkyZg+eMoM6w@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <ff42c7de-ef78-a0e5-9abe-9343947ff6d6@redhat.com>
+Date: Thu, 13 Feb 2020 16:24:24 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8CyTqdqvT6xatkxb9EN49zD4OBaKrbaLpkyZg+eMoM6w@mail.gmail.com>
+Content-Language: en-US
+X-MC-Unique: mkgdZidRPhukeoFA5Sa6PA-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,42 +135,54 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Kevin Wolf <kwolf@redhat.com>, Qemu-block <qemu-block@nongnu.org>,
- Alexey Kardashevskiy <aik@ozlabs.ru>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Max Reitz <mreitz@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ Alexey Kardashevskiy <aik@ozlabs.ru>, QEMU Developers <qemu-devel@nongnu.org>,
+ Max Reitz <mreitz@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  Jean-Christophe PLAGNIOL-VILLARD <plagnioj@jcrosoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fGnJvxhB8s4H
+X-TUID: wuUydYuzwOvp
 
-On Thu, 13 Feb 2020 at 14:26, Guenter Roeck <linux@roeck-us.net> wrote:
-> What really puzzles me is that there is no trace output for
-> flash data accesses (trace_pflash_data_read and trace_pflash_data_write),
-> meaning the actual flash data access must be handled elsewhere.
-> Can someone give me a hint where that might be ?
-> Clearly I am missing something about inner workings of qemu.
+On 2/13/20 3:39 PM, Peter Maydell wrote:
+> On Thu, 13 Feb 2020 at 14:26, Guenter Roeck <linux@roeck-us.net> wrote:
+>> What really puzzles me is that there is no trace output for
+>> flash data accesses (trace_pflash_data_read and trace_pflash_data_write),
+>> meaning the actual flash data access must be handled elsewhere.
+>> Can someone give me a hint where that might be ?
 
-Probably the device is in 'romd' mode. A QEMU MemoryRegion
-can be:
- * RAM (includes ROM for these purposes) -- backed by host
-   memory, reads and writes (if permitted) go straight to
-   the host memory via fastpath accesses
- * MMIO -- backed by a read and write accessor function,
-   all accesses go to these functions
- * "ROM device" -- a mix of the above where there is a
-   backing bit of host memory but also accessor functions.
-   When the device is in "romd" mode, reads go direct to
-   host memory, and writes still go to the accessor function.
-   When the device is not in "romd" mode, reads also go
-   to the accessor function.
+If you can share built kernel/dtb/rootfs for this machine I can have a 
+look at it.
 
-We use this in the pflash devices to make the common case
-("just read the flash") fast. When the guest makes a write
-to flash that puts it into programming mode, we call
-memory_region_rom_device_set_romd(..., false) so we can
-intercept reads and make them do the right thing for
-programming mode.
+>> Clearly I am missing something about inner workings of qemu.
 
-thanks
--- PMM
+You can see all the pflash events using '-trace pflash*'.
+
+> 
+> Probably the device is in 'romd' mode. A QEMU MemoryRegion
+> can be:
+>   * RAM (includes ROM for these purposes) -- backed by host
+>     memory, reads and writes (if permitted) go straight to
+>     the host memory via fastpath accesses
+
+No tracing here.
+
+>   * MMIO -- backed by a read and write accessor function,
+>     all accesses go to these functions
+>   * "ROM device" -- a mix of the above where there is a
+>     backing bit of host memory but also accessor functions.
+>     When the device is in "romd" mode, reads go direct to
+>     host memory, and writes still go to the accessor function.
+>     When the device is not in "romd" mode, reads also go
+>     to the accessor function.
+> 
+> We use this in the pflash devices to make the common case
+> ("just read the flash") fast. When the guest makes a write
+> to flash that puts it into programming mode, we call
+> memory_region_rom_device_set_romd(..., false) so we can
+> intercept reads and make them do the right thing for
+> programming mode.
+> 
+> thanks
+> -- PMM
+> 
+

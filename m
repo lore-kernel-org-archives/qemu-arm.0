@@ -1,84 +1,85 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp838074lfp;
-        Thu, 13 Feb 2020 08:59:59 -0800 (PST)
-X-Google-Smtp-Source: APXvYqynHrFp55B09DrBRKQYCO3ol1TMkv2+6JKRBhxu7adE54mrq+o5dEjz7c8VCHfI0wvL0nzD
-X-Received: by 2002:a37:de16:: with SMTP id h22mr13007836qkj.400.1581613198987;
-        Thu, 13 Feb 2020 08:59:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581613198; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp850772lfp;
+        Thu, 13 Feb 2020 09:09:54 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxh8zPF9iIv0K4f7qFfXtHczegHe/fVurDdfrvxleCHhc2DfuM6QvrEapaM2RVcz2d1nFNB
+X-Received: by 2002:a37:396:: with SMTP id 144mr5535984qkd.260.1581613794752;
+        Thu, 13 Feb 2020 09:09:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581613794; cv=none;
         d=google.com; s=arc-20160816;
-        b=aqbmufkTqxG3QH1aGftJAGOsL9dG6vD1xedS4u6sWjTv909HVQC7kTWu63uzyWFFs5
-         Z/bVRF/o0twAyA2kxpjThkSIWSxZv463gCQ/DPRwUqzYydHKs9Py3N6Ewc4z4RfCwTAK
-         w9CzrWAse0NxvfqqIyQkLBB3Ma+Xt/nM16JkaagpqxsjBwjPt8T1VuvonLVs+SA11U8H
-         9h1bycEuiAb7PNOS2rsq9e9Qg/4MjN0DAzFC0khNEL4Ir/HIQU0OOgqS4EIGofIX5qcT
-         b31k8FTc++VJzt7rT/cMsT3Oc8gkfqU9fQ4eF70WuK6QwdoIuC6XRUTXdiCC6eVD9/Mr
-         +66Q==
+        b=G4+VJaD1WsFJXLD9WpMPlfBzH9pdPH0MDW/SpZALLql1Qw19lGc+OkR+WeT0GX3DGm
+         noZZ2GUunHRO18kC/ykQ8X3dZth9PZ50qPvFZafqVvNMJrjoQISCztLBY9rOT4thJ2sh
+         vWAVPt0NKcTTkVlee64bLPN/9sofkNzx3MRFN2hp96JgscbVY41RsdZdIGfvrPMqx152
+         NPDrYduf35C797Xy5k3FYNUya83Pj8zc3bNbs31/ckAoEB3mXcKMkf/XqkzazZBWq9fi
+         Ab8s3XtS2LLpORQ13oRxQBEsk+8ganp5f4i+Hmjk6Yxt4MXzzHU1tJ7cinqq9lvZ9t8T
+         6zgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:from:references:to:subject
+         :message-id:organization:autocrypt:references:to:from:subject
          :dkim-signature;
-        bh=A6KIJYPyXJLqB/OEJmc9Fsu7HoYdgsxhn2W6lRfwfOs=;
-        b=ecXuPGvr1vqUyKzXTNa87kwRYmN096Vxl5eQv2/LLaY3vurGj9woj8ZP8la6v3L3OX
-         b17Jcno/oDin23t7O2Vei2Zz8lYkBZv70TXSsxYpKkDtfWnN97Bs1ARobgmycP5U6IAl
-         jM50j1vG7P/ql3EcqFeM89YS3zogIpPnaRFGB8+Erq/B4jGp5YUJE2G/Br2zrM2RDHvn
-         x6p8xLyDno0yluM4UTgn3lKjtkNLa7PMWuRRUx2p0msWLC6quxCuQNJ4ZM+rTEHaDc+v
-         PE5hleKobh3ZA7zY7RdCnX5YiWML0TksOuDnsIGXnrIIzpbwcMviFxORZEuocil8AvRu
-         htHA==
+        bh=U+T+5pGfapfOW/JE6R+W4Hjw+MWSOR6MG3HUewC3RdQ=;
+        b=CRiHE0TwfY+XvZVa9kHejglhgov4x3Pn1kvux3Na52ahEwnSFo7+mqOvOtWVLeMlzY
+         8VVMK02iLRV9LFBBlEDmGYt2igZjt1lYPM0CzSCJkuG30EgXtKLfxxNAtfONsdgwgaVF
+         CVD0J/RAbCAmrhwuUzdj8M61Erxnejak85eX6gjE2p9yO06za12Kvdu1XStl/vDQ3PfO
+         Jp67v0bQlW2uuC3JPK8bSGczBT/aRm56xdgWOSpd+bjhgUjMnGQilsw5bRfgVgSmTS4I
+         au0G8vISQ2gVQRiIDRtrCZoWkz9SYat9eDDpx+uqECMggsBUCZxP8aZQfvZ3taa4kkLV
+         BUjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F06wlNhb;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BJVvgPtG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c4si1491114qtv.83.2020.02.13.08.59.58
+        by mx.google.com with ESMTPS id i12si1501677qki.273.2020.02.13.09.09.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Feb 2020 08:59:58 -0800 (PST)
+        Thu, 13 Feb 2020 09:09:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F06wlNhb;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BJVvgPtG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55722 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56124 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j2HqI-0003EY-9J
-	for alex.bennee@linaro.org; Thu, 13 Feb 2020 11:59:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57790)
+	id 1j2Hzu-0002hJ-5i
+	for alex.bennee@linaro.org; Thu, 13 Feb 2020 12:09:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60388)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <david@redhat.com>) id 1j2Hq6-0003EI-CH
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 11:59:47 -0500
+ (envelope-from <david@redhat.com>) id 1j2Hzi-0002di-J4
+ for qemu-arm@nongnu.org; Thu, 13 Feb 2020 12:09:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <david@redhat.com>) id 1j2Hq5-0006Ra-0B
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 11:59:46 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:22766
+ (envelope-from <david@redhat.com>) id 1j2Hzh-0002Ui-1z
+ for qemu-arm@nongnu.org; Thu, 13 Feb 2020 12:09:42 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:48185
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <david@redhat.com>) id 1j2Hq3-0006On-T4
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 11:59:44 -0500
+ (Exim 4.71) (envelope-from <david@redhat.com>) id 1j2Hzg-0002SY-Us
+ for qemu-arm@nongnu.org; Thu, 13 Feb 2020 12:09:41 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581613182;
+ s=mimecast20190719; t=1581613779;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=A6KIJYPyXJLqB/OEJmc9Fsu7HoYdgsxhn2W6lRfwfOs=;
- b=F06wlNhbJ2HiPU5iGcC0Hpj04vXryR4s5J8Q6hhJpUmL4yucbj40S+Y2DcErs/rD1BaJjg
- 2cyTz1ziPfHI4/mViYrDE9Fr2GkGE5pTMDWkZLRo2s4uWXWFuNKoGLjNlgSR5yjkumnBjb
- qquELc4I+qqIU4DNpW5SPsEK1pkSXLA=
+ bh=U+T+5pGfapfOW/JE6R+W4Hjw+MWSOR6MG3HUewC3RdQ=;
+ b=BJVvgPtGsI0PP1P6pfwb0jHQKVzkYTnZMwF9I1tjHwwRmL2ZKGyJe22HM6Mq/vFhkFrV25
+ lVgAupjHxrmxyzeyPf7XJ79JYKJHsvl65WPrqFVB6cCqEedltjO2kVtIYp+opeKUcvk2fu
+ z7qdeORqmyImSDsnyQrJyFSf6Cp+qF0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-151-urfw84_ENpm3yMnT5JB9tg-1; Thu, 13 Feb 2020 11:59:40 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-149-8hpYHMG6PMKiUXv1jMzkzA-1; Thu, 13 Feb 2020 12:09:24 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 75EEB8010E8;
- Thu, 13 Feb 2020 16:59:38 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DB9B21095138;
+ Thu, 13 Feb 2020 17:09:22 +0000 (UTC)
 Received: from [10.36.117.120] (ovpn-117-120.ams2.redhat.com [10.36.117.120])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5BFBF89E6F;
- Thu, 13 Feb 2020 16:59:29 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3BAF51001B0B;
+ Thu, 13 Feb 2020 17:09:10 +0000 (UTC)
 Subject: Re: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
+From: David Hildenbrand <david@redhat.com>
 To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
  Igor Mammedov <imammedo@redhat.com>
 References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
@@ -99,7 +100,7 @@ References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
  <fad66252aa8f4b46816f21b5315b6358@huawei.com>
  <8f10dd72-9a19-b910-489c-eacc6a772046@redhat.com>
  <04adb50079bc45888f514721edb3cfa3@huawei.com>
-From: David Hildenbrand <david@redhat.com>
+ <69ab2339-f4c3-dbd6-1be7-5d6eef28d027@redhat.com>
 Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
  mQINBFXLn5EBEAC+zYvAFJxCBY9Tr1xZgcESmxVNI/0ffzE/ZQOiHJl6mGkmA1R7/uUpiCjJ
  dBrn+lhhOYjjNefFQou6478faXE6o2AhmebqT4KiQoUQFV4R7y1KMEKoSyy8hQaK1umALTdL
@@ -144,15 +145,15 @@ Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
  njnuI31KBiLUks+paRkHQlFcgS2N3gkRBzH7xSZ+t7Re3jvXdXEzKBbQ+dC3lpJB0wPnyMcX
  FOTT3aZT7IgePkt5iC/BKBk3hqKteTnJFeVIT7EC+a6YUFg=
 Organization: Red Hat GmbH
-Message-ID: <69ab2339-f4c3-dbd6-1be7-5d6eef28d027@redhat.com>
-Date: Thu, 13 Feb 2020 17:59:28 +0100
+Message-ID: <b78f892f-c917-a3a8-4c6b-8d03af02782d@redhat.com>
+Date: Thu, 13 Feb 2020 18:09:07 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <04adb50079bc45888f514721edb3cfa3@huawei.com>
+In-Reply-To: <69ab2339-f4c3-dbd6-1be7-5d6eef28d027@redhat.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: urfw84_ENpm3yMnT5JB9tg-1
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: 8hpYHMG6PMKiUXv1jMzkzA-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
@@ -184,118 +185,124 @@ Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
  "dgilbert@redhat.com" <dgilbert@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: czKCsDeHkmCb
+X-TUID: qrqIp+HvjezT
 
-On 13.02.20 17:38, Shameerali Kolothum Thodi wrote:
->=20
->=20
->> -----Original Message-----
->> From: David Hildenbrand [mailto:david@redhat.com]
->> Sent: 12 February 2020 18:21
->> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
->> Igor Mammedov <imammedo@redhat.com>
->> Cc: peter.maydell@linaro.org; xiaoguangrong.eric@gmail.com;
->> mst@redhat.com; shannon.zhaosl@gmail.com; qemu-devel@nongnu.org;
->> xuwei (O) <xuwei5@huawei.com>; Linuxarm <linuxarm@huawei.com>;
->> eric.auger@redhat.com; qemu-arm@nongnu.org; lersek@redhat.com;
->> dgilbert@redhat.com; Juan Jose Quintela Carreira <quintela@redhat.com>
->> Subject: Re: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
->=20
-> [...]
->=20
->>> Hmm..it breaks x86 + seabios boot. The issue is seabios expects RSDP in=
- FSEG
->>> memory. With the above proposed change, RSDP will be aligned to PAGE_SI=
-ZE
->> and
->>> seabios mem allocation for RSDP fails at,
->>>
->>>
->> https://github.com/coreboot/seabios/blob/master/src/fw/romfile_loader.c#=
-L8
->> 5
->>>
->>> To get pass the above, I changed "alloc_fseg" flag to false in build_rs=
-dp(), but
->>> seabios seems to make the assumption that RSDP has to be placed in FSEG
->> memory
->>> here,
->>> https://github.com/coreboot/seabios/blob/master/src/fw/biostables.c#L12=
-6
->>>
->>> So doesn=E2=80=99t look like there is an easy fix for this without chan=
-ging the seabios
->> code.
->>>
->>> Between, OVMF works fine with the aligned size on x86.
->>>
->>> One thing we can do is treat the RSDP case separately or only use the a=
-ligned
->>> page size for "etc/acpi/tables" as below,
->=20
-> [...]
->=20
->>>
->>> Thoughts?
->>
->> I don't think introducing memory_region_get_used_length() is a
->> good idea. I also dislike, that the ram block size can differ
->> to the memory region size. I wasn't aware of that condition, sorry!
->=20
-> Right. They can differ in size and is the case here.
->=20
->> Making the memory region always store an aligned size might break other =
-use
->> cases.
->>
->> Summarizing the issue:
->> 1. Memory regions contain ram blocks with a different size, if the size =
-is
->>    not properly aligned. While memory regions can have an unaligned size=
-,
->>    ram blocks can't. This is true when creating resizable memory region =
-with
->>    an unaligned size.
->> 2. When resizing a ram block/memory region, the size of the memory regio=
-n
->>    is set to the aligned size. The callback is called with the aligned s=
-ize.
->>    The unaligned piece is lost.
->> 3. When migrating, we migrate the aligned size.
+On 13.02.20 17:59, David Hildenbrand wrote:
+> On 13.02.20 17:38, Shameerali Kolothum Thodi wrote:
 >>
 >>
->> What about something like this: (untested)
->=20
-> Thanks for that. I had a go with the below patch and it indeed fixes the =
-issue
-> of callback not being called on resize. But the migration fails with the =
-below
-> error,
->=20
-> For x86
-> ---------
-> qemu-system-x86_64: Unknown combination of migration flags: 0x14
-> qemu-system-x86_64: error while loading state for instance 0x0 of device =
-'ram'
-> qemu-system-x86_64: load of migration failed: Invalid argument=20
->=20
-> For arm64
-> --------------
-> qemu-system-aarch64: Received an unexpected compressed page
-> qemu-system-aarch64: error while loading state for instance 0x0 of device=
+>>> -----Original Message-----
+>>> From: David Hildenbrand [mailto:david@redhat.com]
+>>> Sent: 12 February 2020 18:21
+>>> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
+>>> Igor Mammedov <imammedo@redhat.com>
+>>> Cc: peter.maydell@linaro.org; xiaoguangrong.eric@gmail.com;
+>>> mst@redhat.com; shannon.zhaosl@gmail.com; qemu-devel@nongnu.org;
+>>> xuwei (O) <xuwei5@huawei.com>; Linuxarm <linuxarm@huawei.com>;
+>>> eric.auger@redhat.com; qemu-arm@nongnu.org; lersek@redhat.com;
+>>> dgilbert@redhat.com; Juan Jose Quintela Carreira <quintela@redhat.com>
+>>> Subject: Re: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
+>>
+>> [...]
+>>
+>>>> Hmm..it breaks x86 + seabios boot. The issue is seabios expects RSDP i=
+n FSEG
+>>>> memory. With the above proposed change, RSDP will be aligned to PAGE_S=
+IZE
+>>> and
+>>>> seabios mem allocation for RSDP fails at,
+>>>>
+>>>>
+>>> https://github.com/coreboot/seabios/blob/master/src/fw/romfile_loader.c=
+#L8
+>>> 5
+>>>>
+>>>> To get pass the above, I changed "alloc_fseg" flag to false in build_r=
+sdp(), but
+>>>> seabios seems to make the assumption that RSDP has to be placed in FSE=
+G
+>>> memory
+>>>> here,
+>>>> https://github.com/coreboot/seabios/blob/master/src/fw/biostables.c#L1=
+26
+>>>>
+>>>> So doesn=E2=80=99t look like there is an easy fix for this without cha=
+nging the seabios
+>>> code.
+>>>>
+>>>> Between, OVMF works fine with the aligned size on x86.
+>>>>
+>>>> One thing we can do is treat the RSDP case separately or only use the =
+aligned
+>>>> page size for "etc/acpi/tables" as below,
+>>
+>> [...]
+>>
+>>>>
+>>>> Thoughts?
+>>>
+>>> I don't think introducing memory_region_get_used_length() is a
+>>> good idea. I also dislike, that the ram block size can differ
+>>> to the memory region size. I wasn't aware of that condition, sorry!
+>>
+>> Right. They can differ in size and is the case here.
+>>
+>>> Making the memory region always store an aligned size might break other=
+ use
+>>> cases.
+>>>
+>>> Summarizing the issue:
+>>> 1. Memory regions contain ram blocks with a different size, if the size=
+ is
+>>>    not properly aligned. While memory regions can have an unaligned siz=
+e,
+>>>    ram blocks can't. This is true when creating resizable memory region=
+ with
+>>>    an unaligned size.
+>>> 2. When resizing a ram block/memory region, the size of the memory regi=
+on
+>>>    is set to the aligned size. The callback is called with the aligned =
+size.
+>>>    The unaligned piece is lost.
+>>> 3. When migrating, we migrate the aligned size.
+>>>
+>>>
+>>> What about something like this: (untested)
+>>
+>> Thanks for that. I had a go with the below patch and it indeed fixes the=
+ issue
+>> of callback not being called on resize. But the migration fails with the=
+ below
+>> error,
+>>
+>> For x86
+>> ---------
+>> qemu-system-x86_64: Unknown combination of migration flags: 0x14
+>> qemu-system-x86_64: error while loading state for instance 0x0 of device=
  'ram'
-> qemu-system-aarch64: load of migration failed: Invalid argument
-> =20
-> I haven=E2=80=99t debugged this further but looks like there is a corrupt=
-ion happening.
-> Please let me know if you have any clue.
+>> qemu-system-x86_64: load of migration failed: Invalid argument=20
+>>
+>> For arm64
+>> --------------
+>> qemu-system-aarch64: Received an unexpected compressed page
+>> qemu-system-aarch64: error while loading state for instance 0x0 of devic=
+e 'ram'
+>> qemu-system-aarch64: load of migration failed: Invalid argument
+>> =20
+>> I haven=E2=80=99t debugged this further but looks like there is a corrup=
+tion happening.
+>> Please let me know if you have any clue.
+>=20
+> The issue is
+>=20
+> qemu_put_be64(f, ram_bytes_total_common(true) | RAM_SAVE_FLAG_MEM_SIZE)
+>=20
+> The total ram size we store must be page aligned, otherwise it will be
+> detected as flags. Hm ... maybe we can round it up ...
+>=20
 
-The issue is
-
-qemu_put_be64(f, ram_bytes_total_common(true) | RAM_SAVE_FLAG_MEM_SIZE)
-
-The total ram size we store must be page aligned, otherwise it will be
-detected as flags. Hm ... maybe we can round it up ...
+I'm afraid we can't otherwise we will run into issues in
+ram_load_precopy(). Hm ...
 
 --=20
 Thanks,

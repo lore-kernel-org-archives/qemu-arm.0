@@ -1,101 +1,102 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp520309lfp;
-        Thu, 13 Feb 2020 04:00:22 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyue/G01u95+TwNtswi/xvmBpXKA9clnGrL/XRyqpIkWCXkDtmDyob+j2WzqhCo6S2o+fZ0
-X-Received: by 2002:a05:620a:13ab:: with SMTP id m11mr4433370qki.326.1581595221810;
-        Thu, 13 Feb 2020 04:00:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581595221; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp621098lfp;
+        Thu, 13 Feb 2020 05:40:49 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxT15lUKbMGC6Qzz7G4PTl/EJsyFR/lexr39bz926r4Ysma0Jg347g07unMF/gVcVhbcPIv
+X-Received: by 2002:ae9:c014:: with SMTP id u20mr6665527qkk.53.1581601249628;
+        Thu, 13 Feb 2020 05:40:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581601249; cv=none;
         d=google.com; s=arc-20160816;
-        b=MfrmULDk96bvt4wePMyWjB0qnTxoAP8mwcwgwsdxY7Q7acJp+KneWBRQxP4XuM9FId
-         RTXj/nTPs79ldTShZ45xK723gxM6Z4b/yAq9wsgjIIeO3jFs01m8OB7a7BaTYnuJEo//
-         pV8ZcFuBlusjWHepbEOWuWiMwmFNivlkxaWcVchmb082I6EWNwfBDVNTwTUSAlsFOFfo
-         o4mnVuQK3Ir6gEJ3+7E6qSTKLwC/ABKSSIMd1o17gkxX4i/T9V5h8wpq7ayNKzmYxJx3
-         n7mwrAGRyMJG0P3rUIPrRISFnFfMH3BRE+6U7poZvdi+6J55dPnp0maFFP4SxRp+GWAv
-         cuaQ==
+        b=dTp1CdT1I+qzSayWPzZ+Bcw/WIbdEIwa0JH+QrSS9sOA4IzcJZN1UCh5wGcFewv1gj
+         xvAaXGlMTdkbdy8QU4T14c8Teaj7f3MUDUuPVI48G/vLghGV+tyud47k8MUEtMpWekkX
+         874HFVAmcdmDh3zy+p8kS52VZXgThDfu8u1OL+TPr1scjBIpEAqZCdo2KsdY9EcZCaX6
+         an+VMytjc0IIorGqMhYjohUtze/0ylOwOxmpTJcSZ0aw8LtSQqIQeqlnVD8LZXwGHoz2
+         2SvIAz4J3ivIwKJ+uzowQrQS0ixLfl06NUMR1hsx/tfLvigNQmWpa5hIwbynARk69wNI
+         YE2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=ZIUotafDXfUwGtFzakVHbdga+VmjUYxpyzlK5Dq85yg=;
-        b=jAjo0zSp5H8NTK/OWKRinEqtyqvs3QtlWWUQwd4lCJ1Nbs3fctAdx4pRWcIFLf573V
-         Dy9Kdw86FwdI2tYcB48Tn9iSLgR/KL2V0EYdvhVpKrUbslTfGR3Qifq+9wbhC3q4/5W4
-         iviGrjpvM4US+nx9+cH7e8NfUQ9jCOuVwkucNaKidkK6YjSnVZ+ohedUM+s7jSJf3Nej
-         8vUlTEGXonpjbMA/lQZzzAcYtPdykhw+sYxkqorxiBcEivjQa4xd6d2Hi0tTYEMryzt5
-         gxIqoWeqNb5srmsBPrSH0JiuF5b4drhVBfPK3ELGxBy9+CikY8NFKeB0cWTPqe4j0bhi
-         Jb1w==
+        bh=ljVj4STwM5UNaWAh2zvHFBMVkqOCUqG6AOnHf75eF+8=;
+        b=TBwfzl6t3kgapKz1XGkhyUxsbqTBp/fiyLsEKWyACOntq22yHTJqbwcHMEItFPCF/T
+         wgm+JMZoYX6h9jJuxdWGvJLk3pNFeWJGhfr+TR83WYI2DlsvSe2156N5HFz71Gvb1A88
+         11C0diNVSGJKW0qzakrqsUQqpSneSXJkA6XlzeKhTpBKDkM3XeAhdFkvnar/NAX76+23
+         XLGnWH6WBuX3m5HmG+pBnX1yYCppz3PMHoeZAzDOYhRH12Q93e+l+xrFH/FJQGbfcd0O
+         hXv7qata4qJpsG6R9wMlmZrxp/ybnYpTkMTKRqQG1EilEfgf1/raCe+xBBKSo+YV69Sq
+         zNlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VDF0hbxB;
+       dkim=fail header.i=@linaro.org header.s=google header.b=rkhrBQJd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r20si821305qvw.135.2020.02.13.04.00.21
+        by mx.google.com with ESMTPS id o18si1123195qtq.280.2020.02.13.05.40.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Feb 2020 04:00:21 -0800 (PST)
+        Thu, 13 Feb 2020 05:40:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VDF0hbxB;
+       dkim=fail header.i=@linaro.org header.s=google header.b=rkhrBQJd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51170 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52462 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j2DAL-0001eL-4W
-	for alex.bennee@linaro.org; Thu, 13 Feb 2020 07:00:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36179)
+	id 1j2EjZ-0002un-3R
+	for alex.bennee@linaro.org; Thu, 13 Feb 2020 08:40:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49340)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j2D94-0007uQ-1o
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 06:59:03 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j2EjF-0002uL-LK
+ for qemu-arm@nongnu.org; Thu, 13 Feb 2020 08:40:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j2D92-0001Rr-Ul
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 06:59:01 -0500
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:33341)
+ (envelope-from <peter.maydell@linaro.org>) id 1j2EjE-0006ev-Bx
+ for qemu-arm@nongnu.org; Thu, 13 Feb 2020 08:40:29 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:37372)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j2D92-0001R3-Q1
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 06:59:00 -0500
-Received: by mail-ot1-x343.google.com with SMTP id b18so5323693otp.0
- for <qemu-arm@nongnu.org>; Thu, 13 Feb 2020 03:59:00 -0800 (PST)
+ id 1j2EjE-0006ec-5Q
+ for qemu-arm@nongnu.org; Thu, 13 Feb 2020 08:40:28 -0500
+Received: by mail-oi1-x241.google.com with SMTP id q84so5784237oic.4
+ for <qemu-arm@nongnu.org>; Thu, 13 Feb 2020 05:40:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=ZIUotafDXfUwGtFzakVHbdga+VmjUYxpyzlK5Dq85yg=;
- b=VDF0hbxB4RMyEIGjJArqQqwBtT9cHo8aVz2lSZ8RWEDDN73O7/0665HmZ527ojn/uk
- s6vy8op9zOmSRmIlTxgN/rvQ9qJwGa5uPL5b34ZMAcI35NHL9MsHAWk78PgNRpJpTmTv
- aHl4IVY19lQCd4KojU+kwbkUzcwFkp6bhjd3ig4OCUCuE+y1GR/0agrBJl0DBwsiuqho
- tiKSc75W2i19pNqXcm5ovMhjKtTBjU7EsAZ0E2VnGhnaUQ2f5EAHXhlnbiDXVMiM4TPd
- DTR7cwN3Rp6vvb0vIfYnwlo+A/OoNIV5OhIuNz18/257irA8cxLQLC0im8lSo/MzN76g
- aVKA==
+ bh=ljVj4STwM5UNaWAh2zvHFBMVkqOCUqG6AOnHf75eF+8=;
+ b=rkhrBQJdvwmd+vWrfXS+jqxjpI5yZV6ZpKIJXxQu/m2ZnFsYM2kwJDBsNTtrIJj+EY
+ ZXrazrva8sHjPGEqMb2dFjvl88yJJlW9/QzOI9pAt6hXnZuI++RRs7E65/FB+Xaj+7lu
+ YYYoI8IgOtCVM/ioPDgSnwCh9VP98MzWAZJays2dzH2JYSD6JC/LIjllZ0rqfgcQCeHC
+ 8IqDjm9PNcfJVmbjdMUnOnPggHoeLuXzXJ6glKVQp78TYSH7LwJ1HBqBVR9ZDvxheSY6
+ DsAgyb2UAcDJOoa2ToTeb7Ms4BJJsS0E4IsGNHrpr7nNw2DspZUcKmfsdocasKuk0JnX
+ Lj6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=ZIUotafDXfUwGtFzakVHbdga+VmjUYxpyzlK5Dq85yg=;
- b=M/dggwas3xtRP5MsfvSjxW+FUR4Lm4rSN0OO+9xBMDWVxFrG7uSAfR5YSzGB0LxJjs
- elQf2ThAGvP/5K5x7AscdQCUH+qJ3bUClyg2wH0Mg6fRDh9sRgZ3v+eFYDQdM0mTG0FY
- 2HmYIXs8nvbvPwdo2Ne4iPqBca+naanHblbAPbbtnrp1Qs39Y2aMLP2W8a5Z8qIg3wFE
- UIpm1d0QkGvdGClJEpvaNByC82xRd/BR+caPVZAU+bKLsOA/6AOty2fxWFLdC0wiSMLN
- 4O/GvV8RBtuaMe0qwLf3TCQ7xWdrpo1JPUDZyYaWXuaohm4tS+eYSUJsKcWjAt/lFp1P
- h8NQ==
-X-Gm-Message-State: APjAAAUH4Ou9eXKh3CGjspez7tJCHYoMyTffULJV6ozuBG68y7j8hPAv
- yeHpXSxtNdh1eFrTVvEdgtrtgDfYnXn9WV74CYIMQA==
-X-Received: by 2002:a05:6830:13d3:: with SMTP id
- e19mr13093232otq.135.1581595140039; 
- Thu, 13 Feb 2020 03:59:00 -0800 (PST)
+ bh=ljVj4STwM5UNaWAh2zvHFBMVkqOCUqG6AOnHf75eF+8=;
+ b=WcOgZTNMtnw8d9aWSljE2vnEtoR7FD+Yj7mOyiDiVYEEen9Vw6YWAc4OWpLE3hcBZb
+ 5qDwfyRY2W0DLNwuZhuGMadwFzPVTGk1+5OqjldWBSOxeoqOnSQkKa8K/hsQb/hTkYqu
+ c00g31OzpSVLvXO0DpWROTLfe3kHArd5gF4wmkNPIYxMVMv4fEfTQ1e5agbgTQQICohd
+ Dwt8aFkHWdRTtpZyUz3nqhbtwvQnwr5ER0SWX1GUZTCqgwimt9qK0s2QBwDW9vrS/I8R
+ CzCXTZE3rziYhGyb2pY+YHmFbFdofjRp7XCUofkPdCdIZKwMkav24U/fFpkPKIhfzv9y
+ RUWg==
+X-Gm-Message-State: APjAAAWT3sWHqlmIBKCnggXRrmUS56tjAU37BDpbYK/aigeb7lPutsps
+ qEy+YKP0RfP9DXBAgu/avKLxP+bePSvM30f7uDb7kg==
+X-Received: by 2002:a54:4f16:: with SMTP id e22mr2986112oiy.170.1581601227184; 
+ Thu, 13 Feb 2020 05:40:27 -0800 (PST)
 MIME-Version: 1.0
-References: <20200207174548.9087-1-linux@roeck-us.net>
-In-Reply-To: <20200207174548.9087-1-linux@roeck-us.net>
+References: <20200208165645.15657-1-f4bug@amsat.org>
+ <20200208165645.15657-4-f4bug@amsat.org>
+In-Reply-To: <20200208165645.15657-4-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 13 Feb 2020 11:58:49 +0000
-Message-ID: <CAFEAcA8ig1CYb1ioszchv8wmNnbxJDUhxMrK3_ATqprNrauWxg@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/arm: ast2600: Wire up EHCI controllers
-To: Guenter Roeck <linux@roeck-us.net>
+Date: Thu, 13 Feb 2020 13:40:16 +0000
+Message-ID: <CAFEAcA8raRKW5OYJzO1kHs263_uJ_LucCa9tKgg70iX0jGqcGQ@mail.gmail.com>
+Subject: Re: [PATCH v3 03/13] hw/arm/raspi: Extract the version from the board
+ revision
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::343
+X-Received-From: 2607:f8b0:4864:20::241
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,35 +108,84 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
+Cc: Joaquin de Andres <me@xcancerberox.com.ar>,
+ Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Esteban Bosse <estebanbosse@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IGw492v07n9L
+X-TUID: QOji5QpReyba
 
-On Fri, 7 Feb 2020 at 17:45, Guenter Roeck <linux@roeck-us.net> wrote:
+On Sat, 8 Feb 2020 at 16:57, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
+wrote:
 >
-> Initialize EHCI controllers on AST2600 using the existing
-> TYPE_PLATFORM_EHCI. After this change, booting ast2600-evb
-> into Linux successfully instantiates a USB interface after
-> the necessary changes are made to its devicetree files.
+> The board revision encode the board version. Add a helper
+> to extract the version, and use it.
 >
-> ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
-> ehci-platform: EHCI generic platform driver
-> ehci-platform 1e6a3000.usb: EHCI Host Controller
-> ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number 1
-> ehci-platform 1e6a3000.usb: irq 25, io mem 0x1e6a3000
-> ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
-> usb usb1: Manufacturer: Linux 5.5.0-09825-ga0802f2d0ef5-dirty ehci_hcd
-> usb 1-1: new high-speed USB device number 2 using ehci-platform
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/arm/raspi.c | 31 +++++++++++++++++++++++++++----
+>  1 file changed, 27 insertions(+), 4 deletions(-)
 >
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index 818146fdbb..f285e2988f 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -16,6 +16,7 @@
+>  #include "qapi/error.h"
+>  #include "cpu.h"
+>  #include "hw/arm/bcm2836.h"
+> +#include "hw/registerfields.h"
+>  #include "qemu/error-report.h"
+>  #include "hw/boards.h"
+>  #include "hw/loader.h"
+> @@ -37,6 +38,28 @@ typedef struct RasPiState {
+>      MemoryRegion ram;
+>  } RasPiState;
+>
+> +/*
+> + * Board revision codes:
+> + * www.raspberrypi.org/documentation/hardware/raspberrypi/revision-codes=
+/
+> + */
+> +FIELD(REV_CODE, REVISION,           0, 4);
+> +FIELD(REV_CODE, TYPE,               4, 8);
+> +FIELD(REV_CODE, PROCESSOR,         12, 4);
+> +FIELD(REV_CODE, MANUFACTURER,      16, 4);
+> +FIELD(REV_CODE, MEMORY_SIZE,       20, 3);
+> +FIELD(REV_CODE, STYLE,             23, 1);
+> +
+> +static int board_processor_id(uint32_t board_rev)
+> +{
+> +    assert(FIELD_EX32(board_rev, REV_CODE, STYLE)); /* Only new style */
+> +    return FIELD_EX32(board_rev, REV_CODE, PROCESSOR);
+> +}
+> +
+> +static int board_version(uint32_t board_rev)
+> +{
+> +    return board_processor_id(board_rev) + 1;
 
+This uses the 'processor' field, which basically means the SoC
+(0 for BCM2835, 1 for BCM2836, 2 for BCMM2837, 3 for BCM2711).
+We use 'version' for a wider range of things in our code here:
+ * do we need SMP setup?
+ * which address does the firmware image go?
+ * do we need to set up SMC vectors so no-op SMC works?
+ * as well as "which SoC do we instantiate"?
 
+We think of 'version' as basically "raspi 2 or 3?", but
+according to the table in your url you can get a version of
+the raspi 2b with a BCM2837 SoC, which confuses this idea.
 
-Applied to target-arm.next, thanks.
+Anyway, since what we have in this patch works OK for the set
+of board models we support, I'm happy to leave the patch as-is,
+but maybe worth checking and considering what in our code we
+should really be making conditional on "actually the SoC type"
+and what on something else...
 
+thanks
 -- PMM

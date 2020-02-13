@@ -1,128 +1,82 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp736457lfp;
-        Thu, 13 Feb 2020 07:25:16 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzF4A3A/FPhvNuUKeBz5eEwsZ1V6CZSv62AHhuNu5MH9eBJynPTd/bpa7cH2stoI0GkGgpE
-X-Received: by 2002:a37:5044:: with SMTP id e65mr15433199qkb.294.1581607516742;
-        Thu, 13 Feb 2020 07:25:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581607516; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp741391lfp;
+        Thu, 13 Feb 2020 07:29:49 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwNJF8abHp5AG/GSX3NaeEa9yBW//t5MOlDWKtN9hOGxDpyxJ2L8jVbgpE98FZAvzP8ujMS
+X-Received: by 2002:a05:6214:20c:: with SMTP id i12mr4787361qvt.48.1581607788958;
+        Thu, 13 Feb 2020 07:29:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581607788; cv=none;
         d=google.com; s=arc-20160816;
-        b=MS0mCQVyti2S5EPxz0K6THTMaVF612rbgpB93kCiNfCkS+bkbQrueuJ/y2XRK07QXQ
-         i++dnd+hAKTy6pR9ONjuD8MawAoBZxnPSwyvSAYgQWAnGqS2kYg0wXNVnKfbYjkky/YZ
-         7Ec7YroJPyo/+BYOhppfSvD+XNosBc/ck8PbosDjqjaZEboiYviAZb6x4Iyx41rJF7kG
-         ab3XwSejPEbVKNk7E6zo2hPq49/S+1UKcGLqX9oNBMwsz/t9vJObAYT5NgIY+JZgIN+n
-         uWdb5DppUuoQqEw6K8jHkZfP4vU5ROfgnYMu8iYkrMDpfpZt1aFKlyb8mo53o274LW90
-         6SPw==
+        b=bTOsX9hKZVpX/QIbGSwhxXtp5FNHsvLzot7RlnOm66u98Xxmo1KefAeeKl+ZQTaS/0
+         s/gpMfm5FOWuCBCFvtOucGvlqGrWvzWRDE7DnAHDOnjAjDD83TIWy7GsmGgmslY2Vfjh
+         Qzg+LDrJwEilCSwmbsc/W79RW7uIicrVEHOTxsPXeho3XCXbb1QJpFvoHi4+Zh2papAX
+         Msf2bjR6S9ChT6ttVekp6dMx4Ub8GiC1MhV7ZxhlcLpSmEKbHQKFW7V/pKGNiSRON72/
+         Hz25RwqWKg0Cq8bgrLkNuepyetffmSRGFp/qvC/9o02nHNIvWHCLYLVyVYkE7XKXU7Y9
+         bmRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=NPerDuVjCJQ2UeO9FdNW7E1PeN/DO9lJmQRRxxb5QCo=;
-        b=GFLXDqKAuNNZ3iKHXp5KprS1AcI/Xdemt+6E9fBb9GEDjZfQMoqcrQM2cdSODX1gra
-         vAYGyb/NeuHruuYEOB5NydrmN5mdPw7mzYnnwmemY2rQqkZ5vv2Sf7H07lt55bgOnMly
-         2nWlfSoMbY7RSQeKKYc7qeEtNXvAs+eAGoGUnZqAXQQtPK3XoueiaVOw8i90dXFus30f
-         75Dqbe73ibROI1kL9u4Q+5+9YWv3uFpaDNzo+wxb8eRiMzWT9stFcKEg9WGAsns2aEGt
-         M5nWkn1ohL6xtkhUnnHM6Fuz89ZGeNeRGANqVjmNp0Hrgsk2cMboWQknSnqSffXfVc+n
-         eLsA==
+         :message-id:from:references:to:subject;
+        bh=oQdkulsMlhsXqg9k+ZD0XTlzQ7IC7FnJNleOZS13quE=;
+        b=J51cbtj7xD8dF5E1Vmo5aJKlbftsqjuj+SV9DX5Kuae2crA3zTsW/c51A8ZGp3asAg
+         YfcVKz05i/yRaN+SmAxkVwAPpvXAod02P0/OXDhpXksGiM2kiY4wfYIWBDMZuziSD3YK
+         MtR5H5bH049hh0kFKDalauSIPEFNo3RJ+sADl/g0PA10H1bcBlrWVocvJaXNR/NATYdi
+         Al/CT9J8ZnaIouxPPO2N9OJJo4e04cIp5+BhPZebI9Xou+gytzUaXI/z772f0iN6WwVB
+         tA1AflB0qyhRLncYpvGv+P+FAZUmueBYtpDV11HqBzS8IMSmhWcqGJlCZ+SKjfndYs6S
+         mmcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jF4RAiqx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 206si1435016qki.89.2020.02.13.07.25.16
+        by mx.google.com with ESMTPS id s5si1383074qkg.335.2020.02.13.07.29.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Feb 2020 07:25:16 -0800 (PST)
+        Thu, 13 Feb 2020 07:29:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jF4RAiqx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54702 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54830 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j2GMe-00025k-5P
-	for alex.bennee@linaro.org; Thu, 13 Feb 2020 10:25:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44276)
+	id 1j2GR2-000637-Dr
+	for alex.bennee@linaro.org; Thu, 13 Feb 2020 10:29:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45205)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j2GLw-0001Td-TW
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 10:24:34 -0500
+ (envelope-from <gengdongjiu@huawei.com>) id 1j2GQp-00062z-Bt
+ for qemu-arm@nongnu.org; Thu, 13 Feb 2020 10:29:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j2GLu-0000mj-8A
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 10:24:32 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:20216
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <gengdongjiu@huawei.com>) id 1j2GQn-0000Gx-O2
+ for qemu-arm@nongnu.org; Thu, 13 Feb 2020 10:29:35 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:60788 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j2GLt-0000lM-RF
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 10:24:29 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581607469;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NPerDuVjCJQ2UeO9FdNW7E1PeN/DO9lJmQRRxxb5QCo=;
- b=jF4RAiqxUNdX5cmcg1PqxEZjSyvbypUhCLyOTjLqFgGcl390xqnecg+XeAbE1uoDtwWk7Q
- qtObwhrtEWYiAUind+tiTHpo5TSwDLV8VyYBRXJP/5Bg+SeWpq2/M4ZRSWxU1VSK1iP93Y
- ANwTk2yNnLfDTIpeyGzJUQqxoD3hTDc=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-119-mkgdZidRPhukeoFA5Sa6PA-1; Thu, 13 Feb 2020 10:24:27 -0500
-Received: by mail-wr1-f72.google.com with SMTP id t6so2483253wru.3
- for <qemu-arm@nongnu.org>; Thu, 13 Feb 2020 07:24:27 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=NPerDuVjCJQ2UeO9FdNW7E1PeN/DO9lJmQRRxxb5QCo=;
- b=DfbSSuUkUbgo3Wmc6B/YWdzRo/DohVCvJd+giLZE2z6fcgp3czvbyaGbiKHjN1HrkO
- mi1OAwysatF2cy40NtF3kGm5+jfPs8yPmVTLxgRqqPaYtt8LR9vSWp0LPspKz6dVm8gp
- mSWf7h4E2YPZ9uljaHvEDKIPeMssJqYfKpl+PJAxydvqWWiTe1p7y8fugnekjESe/AMq
- GMmE7H1tBLW9wg324iFQB/NX293PqBw/zDa9x82oHqb1dczsyZGzMbN8h1wFjl5LM+Z0
- atwNtJWwUiFYpwPe69DellP/C+0+R+nQ0FcF70kJyFnka6L6Uz923VUc2lRu5mX3BajE
- BEWQ==
-X-Gm-Message-State: APjAAAVi9CHbt/AufVWr0T/xg4fmx/gebrYtbSxruZ7w9WpIMjuFD6+T
- BFTdAwJKDlVhHS/rtLyV1O6CGtsax/k6+UM0BEPdhfb2Quqn720SdaSGU+rzfXCJclxDOAmTRL6
- X8GDMzRhQYAXF
-X-Received: by 2002:a05:6000:1187:: with SMTP id
- g7mr22452328wrx.109.1581607466335; 
- Thu, 13 Feb 2020 07:24:26 -0800 (PST)
-X-Received: by 2002:a05:6000:1187:: with SMTP id
- g7mr22452291wrx.109.1581607465944; 
- Thu, 13 Feb 2020 07:24:25 -0800 (PST)
-Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id q130sm3756970wme.19.2020.02.13.07.24.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 Feb 2020 07:24:25 -0800 (PST)
-Subject: Re: Question about (and problem with) pflash data access
-To: Peter Maydell <peter.maydell@linaro.org>,
- Guenter Roeck <linux@roeck-us.net>
-References: <20200212184648.GA584@roeck-us.net>
- <504e7722-0b60-ec02-774d-26a7320e5309@redhat.com>
- <20200212230918.GA27242@roeck-us.net>
- <560224fe-f0a3-c64a-6689-e824225cfbb9@redhat.com>
- <279d959f-f7e5-65e1-9c68-459f3fed56d3@ozlabs.ru>
- <52f0b829-151a-3dd0-0ec7-c3155185510c@redhat.com>
- <9f652340-1277-0eb2-bc2c-402b4209a220@roeck-us.net>
- <CAFEAcA8CyTqdqvT6xatkxb9EN49zD4OBaKrbaLpkyZg+eMoM6w@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <ff42c7de-ef78-a0e5-9abe-9343947ff6d6@redhat.com>
-Date: Thu, 13 Feb 2020 16:24:24 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
+ id 1j2GQm-0008DL-Ux; Thu, 13 Feb 2020 10:29:33 -0500
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id BD2F6DAC1677B4B4B1B2;
+ Thu, 13 Feb 2020 23:29:06 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS404-HUB.china.huawei.com
+ (10.3.19.204) with Microsoft SMTP Server id 14.3.439.0; Thu, 13 Feb 2020
+ 23:29:00 +0800
+Subject: Re: [PATCH v22 5/9] ACPI: Record the Generic Error Status Block
+ address
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1578483143-14905-1-git-send-email-gengdongjiu@huawei.com>
+ <1578483143-14905-6-git-send-email-gengdongjiu@huawei.com>
+ <CAFEAcA9z9KDHmvh6WsrCPj_FTvNmOfhatxNQDftNG+ZKZN0wAA@mail.gmail.com>
+From: gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <8cc6c97a-aa05-7a84-40cc-5e264e7e13d4@huawei.com>
+Date: Thu, 13 Feb 2020 23:28:58 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8CyTqdqvT6xatkxb9EN49zD4OBaKrbaLpkyZg+eMoM6w@mail.gmail.com>
+In-Reply-To: <CAFEAcA9z9KDHmvh6WsrCPj_FTvNmOfhatxNQDftNG+ZKZN0wAA@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
-X-MC-Unique: mkgdZidRPhukeoFA5Sa6PA-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 45.249.212.32
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -134,55 +88,227 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Qemu-block <qemu-block@nongnu.org>,
- Alexey Kardashevskiy <aik@ozlabs.ru>, QEMU Developers <qemu-devel@nongnu.org>,
- Max Reitz <mreitz@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Jean-Christophe PLAGNIOL-VILLARD <plagnioj@jcrosoft.com>
+Cc: Fam Zheng <fam@euphon.net>, Eduardo Habkost <ehabkost@redhat.com>,
+ kvm-devel <kvm@vger.kernel.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, QEMU
+ Developers <qemu-devel@nongnu.org>, Linuxarm <linuxarm@huawei.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Zheng Xiang <zhengxiang9@huawei.com>,
+ qemu-arm <qemu-arm@nongnu.org>, James Morse <james.morse@arm.com>,
+ "xuwei \(O\)" <xuwei5@huawei.com>, Igor Mammedov <imammedo@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wuUydYuzwOvp
+X-TUID: QWu9TL+U2EzV
 
-On 2/13/20 3:39 PM, Peter Maydell wrote:
-> On Thu, 13 Feb 2020 at 14:26, Guenter Roeck <linux@roeck-us.net> wrote:
->> What really puzzles me is that there is no trace output for
->> flash data accesses (trace_pflash_data_read and trace_pflash_data_write),
->> meaning the actual flash data access must be handled elsewhere.
->> Can someone give me a hint where that might be ?
-
-If you can share built kernel/dtb/rootfs for this machine I can have a 
-look at it.
-
->> Clearly I am missing something about inner workings of qemu.
-
-You can see all the pflash events using '-trace pflash*'.
-
+On 2020/1/17 0:44, Peter Maydell wrote:
+> On Wed, 8 Jan 2020 at 11:33, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+>>
+>> Record the GHEB address via fw_cfg file, when recording
+>> a error to CPER, it will use this address to find out
+>> Generic Error Data Entries and write the error.
+>>
+>> Make the HEST GHES to a GED device.
+>>
+>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+>> ---
+>>  hw/acpi/generic_event_device.c         | 15 ++++++++++++++-
+>>  hw/acpi/ghes.c                         | 16 ++++++++++++++++
+>>  hw/arm/virt-acpi-build.c               | 13 ++++++++++++-
+>>  include/hw/acpi/generic_event_device.h |  2 ++
+>>  include/hw/acpi/ghes.h                 |  6 ++++++
+>>  5 files changed, 50 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+>> index 9cee90c..9bf37e4 100644
+>> --- a/hw/acpi/generic_event_device.c
+>> +++ b/hw/acpi/generic_event_device.c
+>> @@ -234,12 +234,25 @@ static const VMStateDescription vmstate_ged_state = {
+>>      }
+>>  };
+>>
+>> +static const VMStateDescription vmstate_ghes_state = {
+>> +    .name = "acpi-ghes-state",
+>> +    .version_id = 1,
+>> +    .minimum_version_id = 1,
+>> +    .fields      = (VMStateField[]) {
+>> +        VMSTATE_UINT64(ghes_addr_le, AcpiGhesState),
+>> +        VMSTATE_END_OF_LIST()
+>> +    }
+>> +};
+>> +
+>>  static const VMStateDescription vmstate_acpi_ged = {
+>>      .name = "acpi-ged",
+>>      .version_id = 1,
+>>      .minimum_version_id = 1,
+>>      .fields = (VMStateField[]) {
+>> -        VMSTATE_STRUCT(ged_state, AcpiGedState, 1, vmstate_ged_state, GEDState),
+>> +        VMSTATE_STRUCT(ged_state, AcpiGedState, 1,
+>> +                       vmstate_ged_state, GEDState),
+>> +        VMSTATE_STRUCT(ghes_state, AcpiGedState, 1,
+>> +                       vmstate_ghes_state, AcpiGhesState),
+>>          VMSTATE_END_OF_LIST(),
+>>      },
+>>      .subsections = (const VMStateDescription * []) {
 > 
-> Probably the device is in 'romd' mode. A QEMU MemoryRegion
-> can be:
->   * RAM (includes ROM for these purposes) -- backed by host
->     memory, reads and writes (if permitted) go straight to
->     the host memory via fastpath accesses
+> You can't just add fields to an existing VMStateDescription
+> like this -- it will break migration compatibility. Instead you
+> need to add a new subsection to this vmstate, with a '.needed'
+> function which indicates when the subsection should be present.
 
-No tracing here.
+Hi Peter/Igor
+   In order to avoid migration failure, do you think whether below change is Ok to make error table address(AcpiGhesState) to a part of GED device? thanks a lot in advance.
 
->   * MMIO -- backed by a read and write accessor function,
->     all accesses go to these functions
->   * "ROM device" -- a mix of the above where there is a
->     backing bit of host memory but also accessor functions.
->     When the device is in "romd" mode, reads go direct to
->     host memory, and writes still go to the accessor function.
->     When the device is not in "romd" mode, reads also go
->     to the accessor function.
-> 
-> We use this in the pflash devices to make the common case
-> ("just read the flash") fast. When the guest makes a write
-> to flash that puts it into programming mode, we call
-> memory_region_rom_device_set_romd(..., false) so we can
-> intercept reads and make them do the right thing for
-> programming mode.
+---------------------------------------------------------------------------------------------
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index 021ed2b..264154d 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -234,16 +234,34 @@ static const VMStateDescription vmstate_ged_state = {
+     }
+ };
+
++static bool ghes_needed(void *opaque)
++{
++    return object_property_get_bool(qdev_get_machine(), "ras", NULL);
++}
++
++static const VMStateDescription vmstate_ghes_state = {
++    .name = "acpi-ged/ghes",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = ghes_needed,
++    .fields      = (VMStateField[]) {
++        VMSTATE_STRUCT(ghes_state, AcpiGedState, 1, vmstate_ghes_state, AcpiGhesState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static const VMStateDescription vmstate_acpi_ged = {
+     .name = "acpi-ged",
+     .version_id = 1,
+     .minimum_version_id = 1,
+     .fields = (VMStateField[]) {
+-        VMSTATE_STRUCT(ged_state, AcpiGedState, 1, vmstate_ged_state, GEDState),
++        VMSTATE_STRUCT(ged_state, AcpiGedState, 1,
++                       vmstate_ged_state, GEDState),
+         VMSTATE_END_OF_LIST(),
+     },
+     .subsections = (const VMStateDescription * []) {
+         &vmstate_memhp_state,
++        &vmstate_ghes_state,
+         NULL
+     }
+ };
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index a67b1de..3bf32ec 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -24,6 +24,7 @@
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/ghes.h"
+ #include "hw/acpi/aml-build.h"
++#include "hw/acpi/generic_event_device.h"
+ #include "hw/nvram/fw_cfg.h"
+ #include "sysemu/sysemu.h"
+ #include "qemu/error-report.h"
+@@ -216,3 +217,18 @@ void acpi_build_hest(GArray *table_data, BIOSLinker *linker)
+     build_header(linker, table_data, (void *)(table_data->data + hest_start),
+         "HEST", table_data->len - hest_start, 1, NULL, "");
+ }
++
++void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
++                          GArray *hardware_error)
++{
++    size_t size = 2 * sizeof(uint64_t) + ACPI_GHES_MAX_RAW_DATA_LENGTH;
++    size_t request_block_size = ACPI_GHES_ERROR_SOURCE_COUNT * size;
++
++    /* Create a read-only fw_cfg file for GHES */
++    fw_cfg_add_file(s, ACPI_GHES_ERRORS_FW_CFG_FILE, hardware_error->data,
++                    request_block_size);
++
++    /* Create a read-write fw_cfg file for Address */
++    fw_cfg_add_file_callback(s, ACPI_GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
++        NULL, &(ags->ghes_addr_le), sizeof(ags->ghes_addr_le), false);
++}
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 12a9a78..d6e7521 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -832,6 +832,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     build_spcr(tables_blob, tables->linker, vms);
+
+     if (vms->ras) {
++        assert(vms->acpi_dev);
+         acpi_add_table(table_offsets, tables_blob);
+         build_ghes_error_table(tables->hardware_errors, tables->linker);
+         acpi_build_hest(tables_blob, tables->linker);
+@@ -924,6 +925,7 @@ void virt_acpi_setup(VirtMachineState *vms)
+ {
+     AcpiBuildTables tables;
+     AcpiBuildState *build_state;
++    AcpiGedState *acpi_ged_state;
+
+     if (!vms->fw_cfg) {
+         trace_virt_acpi_setup();
+@@ -954,6 +956,14 @@ void virt_acpi_setup(VirtMachineState *vms)
+     fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
+                     acpi_data_len(tables.tcpalog));
+
++    if (vms->ras) {
++        assert(vms->acpi_dev);
++        acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
++                                                           NULL));
++        acpi_ghes_add_fw_cfg(&acpi_ged_state->ghes_state,
++                             vms->fw_cfg, tables.hardware_errors);
++    }
++
+     build_state->rsdp_mr = acpi_add_rom_blob(virt_acpi_build_update,
+                                              build_state, tables.rsdp,
+                                              ACPI_BUILD_RSDP_FILE, 0);
+diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+index d157eac..037d2b5 100644
+--- a/include/hw/acpi/generic_event_device.h
++++ b/include/hw/acpi/generic_event_device.h
+@@ -61,6 +61,7 @@
+
+ #include "hw/sysbus.h"
+ #include "hw/acpi/memory_hotplug.h"
++#include "hw/acpi/ghes.h"
+
+ #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+
+@@ -95,6 +96,7 @@ typedef struct AcpiGedState {
+     GEDState ged_state;
+     uint32_t ged_event_bitmap;
+     qemu_irq irq;
++    AcpiGhesState ghes_state;
+ } AcpiGedState;
+
+ void build_ged_aml(Aml *table, const char* name, HotplugHandler *hotplug_dev,
+diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+index 18debd8..a3420fc 100644
+--- a/include/hw/acpi/ghes.h
++++ b/include/hw/acpi/ghes.h
+@@ -62,6 +62,12 @@ enum {
+     ACPI_HEST_SRC_ID_RESERVED,
+ };
+
++typedef struct AcpiGhesState {
++    uint64_t ghes_addr_le;
++} AcpiGhesState;
++
+ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
+ void acpi_build_hest(GArray *table_data, BIOSLinker *linker);
++void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
++                          GArray *hardware_errors);
+ #endif
+
+
 > 
 > thanks
 > -- PMM
+> .
 > 
 

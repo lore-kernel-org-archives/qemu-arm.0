@@ -1,65 +1,65 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp45236lfp;
-        Wed, 12 Feb 2020 18:08:29 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyr/h8NyHdozndAWZTg8Qkyx2dLyNN05WY8DWuEj0uMLqLlQnSHdCHJgkRrPc9oOulQn+J+
-X-Received: by 2002:a0c:e4c1:: with SMTP id g1mr9962192qvm.45.1581559709014;
-        Wed, 12 Feb 2020 18:08:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581559709; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp45270lfp;
+        Wed, 12 Feb 2020 18:08:31 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy31nbhrpu8J/Ww95/TyM4xoMUzVFTSnnIqJkaj0pf4T2pASZAtriS9EojZCLUEsMSEtbvh
+X-Received: by 2002:a37:40c:: with SMTP id 12mr13826111qke.212.1581559711338;
+        Wed, 12 Feb 2020 18:08:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581559711; cv=none;
         d=google.com; s=arc-20160816;
-        b=efvZnwS9uV8FDY5wTkKNq9+JfcITlEcnT6fuZPr2nnXM4T0rKn9c3REj1C/45VB+ng
-         aLODNwiPJuN6m652JrDqqbeGIb91vB23p2eXzkv/4mpkrVjfDEkCbdb50DRdgzzG9Hgk
-         3qKr2vNZZQZd2gbwXBoe2/AhSvL9yMlb99dFWuidBeysRJzad8+gVqdekaTUsnDerUiO
-         wPl2hRvhPytttxtRdzYKY7gIord2zU+v45n9E0jWHYPD7HMlDlEtX13zL2TsCeRjr1K6
-         6uPaMv85hZIX4DWYaL7oqgtJG8FFpSdJQH//VCvBizpoj4kLPK6wbmPXnjZgryQGAlWl
-         xtow==
+        b=BVQKJS4agYf1GEv39ZRacK1tvvcEUuBbZ+jd+JZKfWw2JxuC8Pysgk96J9E4qk+DJ3
+         LBlIY2XuPFeWQF9PHdCS3Yo94/ZluKTDnCJ5YuIpoG+9ccY/bcUAb/i7XaB17M0u2JWz
+         phvGbUSCSMbOnMwYq53wzZF281H0eEAEMiz+sF8SHjusVWTodOr4BFkIIurufARKYIB+
+         4rWR3HR0wmDdt5/jaCTljxfB3KQqA6RvaScJzDxdSPHmG5qrMfj8VC/OBjw9I+T4EZYw
+         qEH2O9vGPR6RDWxeeHPzRwW1hHlbSIaceA5/zZLqP2g0/hrxbD+coMW3zuBCasJ44PvK
+         +K4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=aotdB4hLyvfDvwxFTTb7IU09prg+uFjgIQreIef4NRQ=;
-        b=Zio6k0YE6sK/vAD3wHwBHZED+5gJs1sHR2aZbyrxPxX14qCl8lEKuWYSKV9CIbW+2N
-         xe1huBL04J4aGZvNXPmNaeuNeWNy/wM0ZkOzhDEiFL1ruzbjfahsbCcHUeRpvfRYstyy
-         7UeoYFvWlSvkmQNW/Aa/QnJxkAIaoEwPRDYVpVl69l7LK2QRsRKXqTXb/FuTKasRMX+V
-         yzyzD0wY05HKi2f7+HUrusjOxboCI3JOTRkJljrG+dDRixfazT7e/laQKh1qt9Dmr9Xp
-         PeNiMzHSZ1QVqkKY5NdB4E5b+1yyXak02oMGJrM7oWJ58sHk3UXtAy5cfsZdtdhtP04m
-         gS3A==
+        bh=Qw//vKGw5bNczChFT0Exzrc0lVTRwYgQNoIO7vKKqzs=;
+        b=bMAtcVYG8/j72rc9xc0WzVGQ4zqygq+/3zacPaUZrKMUsILT59hi+9lKNcQaYeWrl/
+         84rj8bFmkVp8Vg5i6Mm80nF0xLxayaC6PUtFJfrHrOkkRLfB3rAdNmKggjXLH/dVi3aR
+         dFtHR375pXs+jJ3DECjj4ndIVj0I2BLrlbey6a97EjQFN9q/6neKFW8c9YoIukEBoNX2
+         Os6WAbDwnfb5V1S5RW3/55st5ZLAkYVuYtuBrzgNBpcPVyLGzBMePZy+Xm8CAFhg/fVi
+         i6fROHELun2Wr5fsR8zGm+5TPedV305SCmoxB6/T4Ijpa8ETBOB6IaFwLfmaCaRYKxu5
+         XyzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l20si504428qtn.101.2020.02.12.18.08.28
+        by mx.google.com with ESMTPS id d21si514130qtg.277.2020.02.12.18.08.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2020 18:08:29 -0800 (PST)
+        Wed, 12 Feb 2020 18:08:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46232 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46236 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j23vY-00067l-F5
-	for alex.bennee@linaro.org; Wed, 12 Feb 2020 21:08:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52265)
+	id 1j23va-0006Bw-QF
+	for alex.bennee@linaro.org; Wed, 12 Feb 2020 21:08:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52255)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <fangying1@huawei.com>) id 1j23ue-0004qb-J9
+ (envelope-from <fangying1@huawei.com>) id 1j23ue-0004qK-9s
  for qemu-devel@nongnu.org; Wed, 12 Feb 2020 21:07:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <fangying1@huawei.com>) id 1j23ud-0005MK-Gg
+ (envelope-from <fangying1@huawei.com>) id 1j23ud-0005Lk-6S
  for qemu-devel@nongnu.org; Wed, 12 Feb 2020 21:07:32 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:37296 helo=huawei.com)
+Received: from szxga06-in.huawei.com ([45.249.212.32]:60296 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <fangying1@huawei.com>)
- id 1j23ua-0005ER-LO; Wed, 12 Feb 2020 21:07:28 -0500
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 0CE23A32EE050BCF1445;
- Thu, 13 Feb 2020 10:07:26 +0800 (CST)
-Received: from localhost (10.133.205.53) by DGGEMS404-HUB.china.huawei.com
- (10.3.19.204) with Microsoft SMTP Server id 14.3.439.0; Thu, 13 Feb 2020
- 10:07:17 +0800
+ id 1j23ua-0005AD-EV; Wed, 12 Feb 2020 21:07:28 -0500
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 152F291525B9B0CCAC38;
+ Thu, 13 Feb 2020 10:07:22 +0800 (CST)
+Received: from localhost (10.133.205.53) by DGGEMS412-HUB.china.huawei.com
+ (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Thu, 13 Feb 2020
+ 10:07:13 +0800
 From: <fangying1@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH 4/4] arm: Create the cpufreq device
-Date: Thu, 13 Feb 2020 10:07:12 +0800
-Message-ID: <20200213020712.447-5-fangying1@huawei.com>
+Subject: [PATCH 1/4] acpi: Add aml_generic_register
+Date: Thu, 13 Feb 2020 10:07:09 +0800
+Message-ID: <20200213020712.447-2-fangying1@huawei.com>
 X-Mailer: git-send-email 2.22.0.windows.1
 In-Reply-To: <20200213020712.447-1-fangying1@huawei.com>
 References: <20200213020712.447-1-fangying1@huawei.com>
@@ -70,7 +70,7 @@ X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.35
+X-Received-From: 45.249.212.32
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,74 +87,74 @@ Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com, mst@redhat.com,
  fangying1@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2JO8FHecuFtY
+X-TUID: hHwkb6axQ0sV
 
 From: Ying Fang <fangying1@huawei.com>
+
+The generic register descriptor describes the localtion of a
+fixed width register within any of the ACPI-defined address space.
+
+This is needed to declare the ACPI CPPC registers.
 
 Signed-off-by: Heyi Guo <guoheyi@huawei.com>
 Signed-off-by: Ying Fang <fangying1@huawei.com>
 ---
- default-configs/aarch64-softmmu.mak |  1 +
- hw/acpi/Kconfig                     |  4 ++++
- hw/arm/virt.c                       | 13 +++++++++++++
- 3 files changed, 18 insertions(+)
+ hw/acpi/aml-build.c         | 22 ++++++++++++++++++++++
+ include/hw/acpi/aml-build.h |  3 +++
+ 2 files changed, 25 insertions(+)
 
-diff --git a/default-configs/aarch64-softmmu.mak b/default-configs/aarch6=
-4-softmmu.mak
-index 958b1e08e4..0a030e853f 100644
---- a/default-configs/aarch64-softmmu.mak
-+++ b/default-configs/aarch64-softmmu.mak
-@@ -6,3 +6,4 @@ include arm-softmmu.mak
- CONFIG_XLNX_ZYNQMP_ARM=3Dy
- CONFIG_XLNX_VERSAL=3Dy
- CONFIG_SBSA_REF=3Dy
-+CONFIG_CPUFREQ=3Dy
-diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
-index 54209c6f2f..7d8aa58492 100644
---- a/hw/acpi/Kconfig
-+++ b/hw/acpi/Kconfig
-@@ -38,3 +38,7 @@ config ACPI_VMGENID
-     depends on PC
-=20
- config ACPI_HW_REDUCED
-+
-+config CPUFREQ
-+    bool
-+    default y
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ed9dc38b60..53638f9557 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -764,6 +764,17 @@ static void create_uart(const VirtMachineState *vms,=
- int uart,
-     g_free(nodename);
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index 2c3702b882..79b1431f07 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -1370,6 +1370,28 @@ Aml *aml_sleep(uint64_t msec)
+     return var;
  }
 =20
-+static void create_cpufreq(const VirtMachineState *vms, MemoryRegion *me=
-m)
++/* ACPI 5.0b: 6.4.3.7 Generic Register Descriptor */
++Aml *aml_generic_register(AmlRegionSpace rs, uint8_t reg_width,
++                          uint8_t reg_offset, AmlAccessType type, uint64=
+_t addr)
 +{
-+    hwaddr base =3D vms->memmap[VIRT_CPUFREQ].base;
-+    DeviceState *dev =3D qdev_create(NULL, "cpufreq");
-+    SysBusDevice *s =3D SYS_BUS_DEVICE(dev);
++    int i;
++    Aml *var =3D aml_alloc();
++    build_append_byte(var->buf, 0x82); /* Generic Register Descriptor */
++    build_append_byte(var->buf, 0x0C); /* Length, bits[7:0] value =3D 0x=
+0C */
++    build_append_byte(var->buf, 0);    /* Length, bits[15:8] value =3D 0=
+ */
++    build_append_byte(var->buf, rs);   /* Address Space ID */
++    build_append_byte(var->buf, reg_width);   /* Register Bit Width */
++    build_append_byte(var->buf, reg_offset);  /* Register Bit Offset */
++    build_append_byte(var->buf, type);        /* Access Size */
 +
-+    qdev_init_nofail(dev);
-+    memory_region_add_subregion(mem, base, sysbus_mmio_get_region(s, 0))=
-;
++    /* Register address */
++    for (i =3D 0; i < 8; i++) {
++        build_append_byte(var->buf, extract64(addr, i * 8, 8));
++    }
++
++    return var;
 +}
 +
-+
- static void create_rtc(const VirtMachineState *vms)
+ static uint8_t Hex2Byte(const char *src)
  {
-     char *nodename;
-@@ -1723,6 +1734,8 @@ static void machvirt_init(MachineState *machine)
+     int hi, lo;
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index de4a406568..37a047b156 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -364,6 +364,9 @@ Aml *aml_qword_memory(AmlDecode dec, AmlMinFixed min_=
+fixed,
+ Aml *aml_dma(AmlDmaType typ, AmlDmaBusMaster bm, AmlTransferSize sz,
+              uint8_t channel);
+ Aml *aml_sleep(uint64_t msec);
++Aml *aml_generic_register(AmlRegionSpace rs, uint8_t reg_width,
++                          uint8_t reg_offset, AmlAccessType type,
++                          uint64_t addr);
+ Aml *aml_i2c_serial_bus_device(uint16_t address, const char *resource_so=
+urce);
 =20
-     create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
-=20
-+    create_cpufreq(vms, sysmem);
-+
-     if (vms->secure) {
-         create_secure_ram(vms, secure_sysmem);
-         create_uart(vms, VIRT_SECURE_UART, secure_sysmem, serial_hd(1));
+ /* Block AML object primitives */
 --=20
 2.19.1
 

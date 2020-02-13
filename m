@@ -1,65 +1,65 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp67779lfp;
-        Wed, 12 Feb 2020 18:38:03 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz2ZfDbvUi80JI7sZZtA/Xpnz5XwmAud8J6iEcyiT8TN1n4NmcpcC1KcntkwrKysXiu46ft
-X-Received: by 2002:a37:48c4:: with SMTP id v187mr13807100qka.198.1581561483571;
-        Wed, 12 Feb 2020 18:38:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581561483; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp68194lfp;
+        Wed, 12 Feb 2020 18:38:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxrhwPhwjS/PrdzYL/ohTBpZsU+CG9/hXkaq9aKE/16MSJyDtTePa6jJPzr6Ynkbgcn+L6u
+X-Received: by 2002:a37:6716:: with SMTP id b22mr13489712qkc.109.1581561514657;
+        Wed, 12 Feb 2020 18:38:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581561514; cv=none;
         d=google.com; s=arc-20160816;
-        b=LLCWR1rtQZolTSJqPHnOFzsPgefptlpikDHvy7r/2W3A6Vt/PzE/Y3gv5bUm3mmiZV
-         UaK+EE3XtEdAo+vLp4MEoz/2otu+CVZQ33SAyK9I/49iuDEaoL7oGa5hJ2uPc3CUKC9E
-         UzqrXW4blAF1DmoASzQiXKvHIqyWqvslnOSDoh+fW1quIzfahlf3MqPu0zsRjwuYhau9
-         ayQqdgbOpHJnkS3f0Ees3tl6ohzaG0Pjia7e76qyawfhcQ4w9pNsLA/l6RpYnb8jllYr
-         Bb+B7IytJGhGTB5ZX0jINYpt0g9WKNFOj3RdAHgjnrTUk2B/IakadpMb2wAaPsBPjcfY
-         4N+w==
+        b=oXN7HPrO/rI4iSCOx/G+nhdWDgJ6m9ax1p6AoX9Bhi0Nlt96xby7L0DDorBB0cazET
+         Bq4NPZN4A1/xmTwO9Dgi/0E1dvoD5lg+mDWiKunUMuYz6rTBkAG2vhZKPy+qfFymdy3T
+         P8prM5qSaXvmt43sH89Nm+fl3cvWufllmo3cQXtyZuX4G+W45nC4KsYAnZD5j5FI4TYv
+         xmYTGugf654CZUVU7Imf0odS8KRYxFhjxuUjBcsUl4oaZiIfkZ1YiDocqQK78Xz6QWiA
+         y1Ps3cBdWldQb3Mr5RCmcCK6I3c2H9njZ/URPsNG9mrUrFcblHYgk225GmwTkARipwuL
+         mduQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=sRneQsbEB1iI1TCT3lXFuZk6frh4T5x44Pj85UcKVz0=;
-        b=JyvkSROBjOyz2110pJOMU766jdXClfMUQ3BodpiRtf0ZlpNpQA1sXag5/7t5/dzjD2
-         Rz5kMoySoAVNTMBjDVB6usrFJQCilrpdAaHhUF13KcbhK8SSXG25aae+/JTFXHq93Cad
-         G8OGZEt3b0kmDEzZtK7O/Smb+ipCfB8K3d4Yw4WhTypZaYRDLHcdbTwwJsRff655bYl3
-         T+ETstis0Xda/dt/C/avXiooHaHqZn98o81snlXbw3IpJ5R/DDEj8e7Sd4JC+PM4oomB
-         +Jt3cpnPrtBVtwW/aQL0ZgjrkVIUmgafzTUh1WKIqLitOYf/GGItneG5KyhN6vEY4WO3
-         uwnA==
+        bh=tiH/xv0qyoEr9CyXfszo2954fOQlLctVJmB0cNKPw1A=;
+        b=tc4TU+5tmDxUdKygdItfImwwb4XSECzVXcSwWtvgIMwXyeoS25zeWqUMfl3/FQGuAN
+         KlhNgvQz66m9+GRL6vaOBD9nsVh26PuzPl7PUJ3ra8gH7Zagu5wwyLNvjikZ/rFyIe/o
+         sF+P62HGeY5ZqrRy8XENMrx5r5FThvyZf0x9rNikdBVnaj3iPRxZKoxgUmFPXLiWtSgn
+         veCMpMG3m5fUd8zkCc8Fp27g1I/sYjU4wC57LyVHuwN2xflFmy4UKkSZU4N192KcrxYm
+         pNB9/Hhc9bYY9lBAQPQ+LYvOdlJVGWMTXbz9xFtY8atkbjJsj6380yp+9Hr8rgBK+/9b
+         9aJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w15si518913qka.3.2020.02.12.18.38.03
+        by mx.google.com with ESMTPS id n12si523859qkh.278.2020.02.12.18.38.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Feb 2020 18:38:03 -0800 (PST)
+        Wed, 12 Feb 2020 18:38:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46473 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46478 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j24OB-0001mz-1M
-	for alex.bennee@linaro.org; Wed, 12 Feb 2020 21:38:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55477)
+	id 1j24Og-00035v-3d
+	for alex.bennee@linaro.org; Wed, 12 Feb 2020 21:38:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55464)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <fangying1@huawei.com>) id 1j24M6-0007FY-8S
- for qemu-devel@nongnu.org; Wed, 12 Feb 2020 21:35:55 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <fangying1@huawei.com>) id 1j24M4-0000bq-Gb
+ (envelope-from <fangying1@huawei.com>) id 1j24M4-0007EW-TA
  for qemu-devel@nongnu.org; Wed, 12 Feb 2020 21:35:54 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:57584 helo=huawei.com)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <fangying1@huawei.com>) id 1j24M3-0000aA-Fd
+ for qemu-devel@nongnu.org; Wed, 12 Feb 2020 21:35:52 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:57520 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <fangying1@huawei.com>)
- id 1j24M0-0000T4-7f; Wed, 12 Feb 2020 21:35:48 -0500
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 53FE1CF72C5DD6B4C053;
- Thu, 13 Feb 2020 10:35:46 +0800 (CST)
-Received: from localhost (10.133.205.53) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Thu, 13 Feb 2020
- 10:35:36 +0800
+ id 1j24M0-0000Rg-6Z; Wed, 12 Feb 2020 21:35:48 -0500
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 5B78D9043C57BD0FF0E9;
+ Thu, 13 Feb 2020 10:35:45 +0800 (CST)
+Received: from localhost (10.133.205.53) by DGGEMS407-HUB.china.huawei.com
+ (10.3.19.207) with Microsoft SMTP Server id 14.3.439.0; Thu, 13 Feb 2020
+ 10:35:35 +0800
 From: Ying Fang <fangying1@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH 3/4] arm: Add the cpufreq device model
-Date: Thu, 13 Feb 2020 10:35:31 +0800
-Message-ID: <20200213023532.902-4-fangying1@huawei.com>
+Subject: [PATCH 2/4] acpi/cppc: Add ACPI CPPC registers
+Date: Thu, 13 Feb 2020 10:35:30 +0800
+Message-ID: <20200213023532.902-3-fangying1@huawei.com>
 X-Mailer: git-send-email 2.22.0.windows.1
 In-Reply-To: <20200213023532.902-1-fangying1@huawei.com>
 References: <20200213023532.902-1-fangying1@huawei.com>
@@ -86,302 +86,196 @@ Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com, mst@redhat.com,
  i.mitsyanko@gmail.com, shannon.zhaosl@gmail.com, guoheyi@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q0Us57mPzexj
+X-TUID: Kl+f0iSX6isn
 
-On ARM64 platform, CPU frequency is retrieved by ACPI CPPC,
-so here we create the virtual cpufreq device to present
-the CPPC registers and ACPI _CPC objects.
-
-The default frequency is set host CPU nominal frequency, which
-is obtained from the host CPPC sysfs. Other performance data
-are set to the same value, since we don't support guest performance scali=
-ng.
-
-Performance counters are also not emulated and they simply return 1
-if readed, and guest should fallback to use the desired performance
-value as the current performance.
+The Continuous Performance Control Package is used to
+describe the ACPI CPPC registers.
 
 Signed-off-by: Heyi Guo <guoheyi@huawei.com>
 Signed-off-by: Ying Fang <fangying1@huawei.com>
 ---
- hw/acpi/Makefile.objs |   1 +
- hw/acpi/cpufreq.c     | 247 ++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 248 insertions(+)
- create mode 100644 hw/acpi/cpufreq.c
+ hw/arm/virt-acpi-build.c    | 74 ++++++++++++++++++++++++++++++++++++-
+ hw/arm/virt.c               |  1 +
+ include/hw/acpi/acpi-defs.h | 32 ++++++++++++++++
+ include/hw/arm/virt.h       |  1 +
+ 4 files changed, 106 insertions(+), 2 deletions(-)
 
-diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
-index 777da07f4d..61530675d4 100644
---- a/hw/acpi/Makefile.objs
-+++ b/hw/acpi/Makefile.objs
-@@ -16,6 +16,7 @@ common-obj-y +=3D bios-linker-loader.o
- common-obj-y +=3D aml-build.o utils.o
- common-obj-$(CONFIG_ACPI_PCI) +=3D pci.o
- common-obj-$(CONFIG_TPM) +=3D tpm.o
-+common-obj-$(CONFIG_CPUFREQ) +=3D cpufreq.o
-=20
- common-obj-$(CONFIG_IPMI) +=3D ipmi.o
- common-obj-$(call lnot,$(CONFIG_IPMI)) +=3D ipmi-stub.o
-diff --git a/hw/acpi/cpufreq.c b/hw/acpi/cpufreq.c
-new file mode 100644
-index 0000000000..f38087884a
---- /dev/null
-+++ b/hw/acpi/cpufreq.c
-@@ -0,0 +1,247 @@
-+/*
-+ * ACPI CPPC register device
-+ *
-+ * Support for showing CPU frequency in guest OS.
-+ *
-+ * Copyright (c) 2019 HUAWEI TECHNOLOGIES CO.,LTD.
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+
-+ * You should have received a copy of the GNU General Public License alo=
-ng
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/sysbus.h"
-+#include "chardev/char.h"
-+#include "qemu/log.h"
-+#include "trace.h"
-+#include "qemu/option.h"
-+#include "sysemu/sysemu.h"
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index bd5f771e9b..d133bad738 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -41,6 +41,7 @@
+ #include "hw/acpi/pci.h"
+ #include "hw/acpi/memory_hotplug.h"
+ #include "hw/acpi/generic_event_device.h"
 +#include "hw/acpi/acpi-defs.h"
-+#include "qemu/cutils.h"
-+#include "qemu/error-report.h"
-+#include "hw/boards.h"
+ #include "hw/pci/pcie_host.h"
+ #include "hw/pci/pci.h"
+ #include "hw/arm/virt.h"
+@@ -51,7 +52,70 @@
+=20
+ #define ARM_SPI_BASE 32
+=20
+-static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
 +
-+#define TYPE_CPUFREQ "cpufreq"
-+#define CPUFREQ(obj) OBJECT_CHECK(CpufreqState, (obj), TYPE_CPUFREQ)
-+#define NOMINAL_FREQ_FILE "/sys/devices/system/cpu/cpu0/acpi_cppc/nomina=
-l_freq"
-+#define CPU_MAX_FREQ_FILE "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_=
-max_freq"
-+#define HZ_MAX_LENGTH 1024
-+#define MAX_SUPPORT_SPACE 0x10000
-+
-+typedef struct CpufreqState {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion iomem;
-+    uint32_t HighestPerformance;
-+    uint32_t NominalPerformance;
-+    uint32_t LowestNonlinearPerformance;
-+    uint32_t LowestPerformance;
-+    uint32_t GuaranteedPerformance;
-+    uint32_t DesiredPerformance;
-+    uint64_t ReferencePerformanceCounter;
-+    uint64_t DeliveredPerformanceCounter;
-+    uint32_t PerformanceLimited;
-+    uint32_t LowestFreq;
-+    uint32_t NominalFreq;
-+    uint32_t reg_size;
-+} CpufreqState;
-+
-+
-+static uint64_t cpufreq_read(void *opaque, hwaddr offset,
-+                           unsigned size)
++static void acpi_dsdt_add_psd(Aml *dev, int cpus)
 +{
-+    CpufreqState *s =3D (CpufreqState *)opaque;
-+    uint64_t r;
-+    uint64_t n;
++    Aml *pkg;
++    Aml *sub;
 +
-+    MachineState *ms =3D MACHINE(qdev_get_machine());
-+    unsigned int smp_cpus =3D ms->smp.cpus;
++    sub =3D aml_package(5);
++    aml_append(sub, aml_int(5));
++    aml_append(sub, aml_int(0));
++    /* Assume all vCPUs belong to the same domain */
++    aml_append(sub, aml_int(0));
++    /* SW_ANY: OSPM coordinate, initiate on any processor */
++    aml_append(sub, aml_int(0xFD));
++    aml_append(sub, aml_int(cpus));
 +
-+    if (offset >=3D smp_cpus * CPPC_REG_PER_CPU_STRIDE) {
-+        warn_report("cpufreq_read: offset 0x%lx out of range", offset);
-+        return 0;
-+    }
++    pkg =3D aml_package(1);
++    aml_append(pkg, sub);
 +
-+    n =3D offset % CPPC_REG_PER_CPU_STRIDE;
-+    switch (n) {
-+    case 0:
-+        r =3D s->HighestPerformance;
-+        break;
-+    case 4:
-+        r =3D s->NominalPerformance;
-+        break;
-+    case 8:
-+        r =3D s->LowestNonlinearPerformance;
-+        break;
-+    case 12:
-+        r =3D s->LowestPerformance;
-+        break;
-+    case 16:
-+        r =3D s->GuaranteedPerformance;
-+        break;
-+    case 20:
-+        r =3D s->DesiredPerformance;
-+        break;
-+    /*
-+     * We don't have real counters and it is hard to emulate, so always =
-set the
-+     * counter value to 1 to rely on Linux to use the DesiredPerformance=
- value
-+     * directly.
-+     */
-+    case 24:
-+        r =3D s->ReferencePerformanceCounter;
-+        break;
-+    /*
-+     * Guest may still access the register by 32bit; add the process to
-+     * eliminate unnecessary warnings
-+     */
-+    case 28:
-+        r =3D s->ReferencePerformanceCounter >> 32;
-+        break;
-+    case 32:
-+        r =3D s->DeliveredPerformanceCounter;
-+        break;
-+    case 36:
-+        r =3D s->DeliveredPerformanceCounter >> 32;
-+        break;
-+
-+    case 40:
-+        r =3D s->PerformanceLimited;
-+        break;
-+    case 44:
-+        r =3D s->LowestFreq;
-+        break;
-+    case 48:
-+        r =3D s->NominalFreq;
-+        break;
-+    default:
-+        error_printf("cpufreq_read: Bad offset 0x%lx\n", offset);
-+        r =3D 0;
-+        break;
-+    }
-+    return r;
++    aml_append(dev, aml_name_decl("_PSD", pkg));
 +}
 +
-+static void cpufreq_write(void *opaque, hwaddr offset,
-+                           uint64_t value, unsigned size)
++static void acpi_dsdt_add_cppc(Aml *dev, uint64_t cpu_base)
 +{
-+    uint64_t n;
++    Aml *cpc;
++    int i;
 +
-+    MachineState *ms =3D MACHINE(qdev_get_machine());
-+    unsigned int smp_cpus =3D ms->smp.cpus;
++    /* ACPI 6.3 8.4.7.1, version 3 of the CPPC table is used */
++    cpc =3D aml_package(23);
++    aml_append(cpc, aml_int(23));
++    aml_append(cpc, aml_int(3));
 +
-+    if (offset >=3D smp_cpus * CPPC_REG_PER_CPU_STRIDE) {
-+        error_printf("cpufreq_write: offset 0x%lx out of range", offset)=
-;
-+        return;
++    for (i =3D 0; i < CPPC_REG_COUNT; i++) {
++        Aml *res;
++        uint8_t reg_width;
++        uint8_t acc_type;
++        uint64_t addr;
++        /* Only some necessary registers are emulated */
++        if ((i >=3D MIN_PERF && i < REFERENCE_CTR) ||
++            (i >=3D ENABLE && i < LOWEST_FREQ)) {
++            reg_width =3D 0;
++            acc_type =3D AML_ANY_ACC;
++            addr =3D 0;
++        } else {
++            addr =3D cpu_base + i * 4;
++            if (i =3D=3D REFERENCE_CTR || i =3D=3D DELIVERED_CTR) {
++                reg_width =3D 64;
++                acc_type =3D AML_QWORD_ACC;
++            } else {
++                reg_width =3D 32;
++                acc_type =3D AML_DWORD_ACC;
++            }
++        }
++
++        res =3D aml_resource_template();
++        aml_append(res, aml_generic_register(AML_SYSTEM_MEMORY, reg_widt=
+h, 0,
++                                             acc_type, addr));
++        aml_append(cpc, res);
 +    }
 +
-+    n =3D offset % CPPC_REG_PER_CPU_STRIDE;
-+
-+    switch (n) {
-+    case 20:
-+        break;
-+    default:
-+        error_printf("cpufreq_write: Bad offset 0x%lx\n", offset);
-+    }
++    aml_append(dev, aml_name_decl("_CPC", cpc));
 +}
 +
-+static uint32_t CPPC_Read(const char *hostpath)
-+{
-+    int fd;
-+    char buffer[HZ_MAX_LENGTH] =3D { 0 };
-+    uint64_t hz;
-+    int len;
-+    const char *endptr =3D NULL;
-+    int ret;
-+
-+    fd =3D qemu_open(hostpath, O_RDONLY);
-+    if (fd < 0) {
-+        return 0;
-+    }
-+
-+    len =3D read(fd, buffer, HZ_MAX_LENGTH);
-+    qemu_close(fd);
-+    if (len <=3D 0) {
-+        return 0;
-+    }
-+    ret =3D qemu_strtoul(buffer, &endptr, 0, &hz);
-+    if (ret < 0) {
-+        return 0;
-+    }
-+    return (uint32_t)hz;
-+}
-+
-+static const MemoryRegionOps cpufreq_ops =3D {
-+    .read =3D cpufreq_read,
-+    .write =3D cpufreq_write,
-+    .endianness =3D DEVICE_NATIVE_ENDIAN,
++static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus,
++                               const MemMapEntry *cppc_memmap)
+ {
+     uint16_t i;
+=20
+@@ -60,6 +124,12 @@ static void acpi_dsdt_add_cpus(Aml *scope, int smp_cp=
+us)
+         aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0007")));
+         aml_append(dev, aml_name_decl("_UID", aml_int(i)));
+         aml_append(scope, dev);
++        /*
++         * Append _CPC and _PSD to show CPU frequency
++         */
++        acpi_dsdt_add_cppc(dev,
++                           cppc_memmap->base + i * CPPC_REG_PER_CPU_STRI=
+DE);
++        acpi_dsdt_add_psd(dev, smp_cpus);
+     }
+ }
+=20
+@@ -736,7 +806,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, Vi=
+rtMachineState *vms)
+      * the RTC ACPI device at all when using UEFI.
+      */
+     scope =3D aml_scope("\\_SB");
+-    acpi_dsdt_add_cpus(scope, vms->smp_cpus);
++    acpi_dsdt_add_cpus(scope, vms->smp_cpus, &memmap[VIRT_CPUFREQ]);
+     acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+                        (irqmap[VIRT_UART] + ARM_SPI_BASE));
+     acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index f788fe27d6..ed9dc38b60 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -144,6 +144,7 @@ static const MemMapEntry base_memmap[] =3D {
+     [VIRT_PCDIMM_ACPI] =3D        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
+     [VIRT_ACPI_GED] =3D           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
+     [VIRT_MMIO] =3D               { 0x0a000000, 0x00000200 },
++    [VIRT_CPUFREQ] =3D            { 0x0b000000, 0x00010000 },
+     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that s=
+ize */
+     [VIRT_PLATFORM_BUS] =3D       { 0x0c000000, 0x02000000 },
+     [VIRT_SECURE_MEM] =3D         { 0x0e000000, 0x01000000 },
+diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+index 57a3f58b0c..3a33f7220d 100644
+--- a/include/hw/acpi/acpi-defs.h
++++ b/include/hw/acpi/acpi-defs.h
+@@ -634,4 +634,36 @@ struct AcpiIortRC {
+ } QEMU_PACKED;
+ typedef struct AcpiIortRC AcpiIortRC;
+=20
++/*
++ * CPPC register definition from kernel header
++ * include/acpi/cppc_acpi.h
++ * The last element is newly added for easy use
++ */
++enum cppc_regs {
++    HIGHEST_PERF,
++    NOMINAL_PERF,
++    LOW_NON_LINEAR_PERF,
++    LOWEST_PERF,
++    GUARANTEED_PERF,
++    DESIRED_PERF,
++    MIN_PERF,
++    MAX_PERF,
++    PERF_REDUC_TOLERANCE,
++    TIME_WINDOW,
++    CTR_WRAP_TIME,
++    REFERENCE_CTR,
++    DELIVERED_CTR,
++    PERF_LIMITED,
++    ENABLE,
++    AUTO_SEL_ENABLE,
++    AUTO_ACT_WINDOW,
++    ENERGY_PERF,
++    REFERENCE_PERF,
++    LOWEST_FREQ,
++    NOMINAL_FREQ,
++    CPPC_REG_COUNT,
 +};
 +
-+static void hz_init(CpufreqState *s)
-+{
-+    uint32_t hz;
++#define CPPC_REG_PER_CPU_STRIDE     0x40
 +
-+    hz =3D CPPC_Read(NOMINAL_FREQ_FILE);
-+    if (hz =3D=3D 0) {
-+        hz =3D CPPC_Read(CPU_MAX_FREQ_FILE);
-+        /* Value in CpuMaxFrequency is in KHz unit; convert to MHz */
-+        hz =3D hz / 1000;
-+    }
-+
-+    s->HighestPerformance =3D hz;
-+    s->NominalPerformance =3D hz;
-+    s->LowestNonlinearPerformance =3D hz;
-+    s->LowestPerformance =3D hz;
-+    s->GuaranteedPerformance =3D hz;
-+    s->DesiredPerformance =3D hz;
-+    s->ReferencePerformanceCounter =3D 1;
-+    s->DeliveredPerformanceCounter =3D 1;
-+    s->PerformanceLimited =3D 0;
-+    s->LowestFreq =3D hz;
-+    s->NominalFreq =3D hz;
-+}
-+
-+static void cpufreq_init(Object *obj)
-+{
-+    SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
-+    CpufreqState *s =3D CPUFREQ(obj);
-+
-+    MachineState *ms =3D MACHINE(qdev_get_machine());
-+    unsigned int smp_cpus =3D ms->smp.cpus;
-+
-+    s->reg_size =3D smp_cpus * CPPC_REG_PER_CPU_STRIDE;
-+    if (s->reg_size > MAX_SUPPORT_SPACE) {
-+        error_report("Required space 0x%x excesses the maximun size 0x%x=
-",
-+                 s->reg_size, MAX_SUPPORT_SPACE);
-+        abort();
-+    }
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &cpufreq_ops, s, "cpufre=
-q",
-+                          s->reg_size);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    hz_init(s);
-+    return;
-+}
-+
-+static const TypeInfo cpufreq_info =3D {
-+    .name          =3D TYPE_CPUFREQ,
-+    .parent        =3D TYPE_SYS_BUS_DEVICE,
-+    .instance_size =3D sizeof(CpufreqState),
-+    .instance_init =3D cpufreq_init,
-+};
-+
-+static void cpufreq_register_types(void)
-+{
-+    type_register_static(&cpufreq_info);
-+}
-+
-+type_init(cpufreq_register_types)
+ #endif
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 71508bf40c..f371713728 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -67,6 +67,7 @@ enum {
+     VIRT_SMMU,
+     VIRT_UART,
+     VIRT_MMIO,
++    VIRT_CPUFREQ,
+     VIRT_RTC,
+     VIRT_FW_CFG,
+     VIRT_PCIE,
 --=20
 2.19.1
 

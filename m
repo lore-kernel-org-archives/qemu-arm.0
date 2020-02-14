@@ -1,109 +1,107 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1973346lfp;
-        Fri, 14 Feb 2020 06:27:00 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy5l6Lm7auN+n3d1PRcTyvKnzh6yS1ArlsMH/Z5NAcIblwI3/ueFHhY0gUXJ10xX8Pp4E3V
-X-Received: by 2002:a0c:fec3:: with SMTP id z3mr2286579qvs.111.1581690420139;
-        Fri, 14 Feb 2020 06:27:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581690420; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp2012770lfp;
+        Fri, 14 Feb 2020 07:02:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzUTInL9DYWdah5TzsLOL2tkxQGlEFy+nElhmBokwQwFJnveSnfJ4Dqv9TWvr6En7gDkfUK
+X-Received: by 2002:a37:a649:: with SMTP id p70mr2974183qke.497.1581692576808;
+        Fri, 14 Feb 2020 07:02:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581692576; cv=none;
         d=google.com; s=arc-20160816;
-        b=E7bmJALVbpXpv6t81IQKQe2Ly9FV2PGEsb5K7xKc/UKxRJ5UL6GjL6x2zZMF6t07K9
-         xcZ/kBrEGU0EgiTdWs9CAnZS3K/rzMLAx5r8zyfvuDdeXUE4G0t2wLCkfms6YtIS9HJe
-         t82yVmjsJ247R9I4YVs8v95tc/Oo3uKzLy0GuOs/6SlAY0XzE9l1vpPvQujx5WE9Y56j
-         67PCs5alR1bveaAX8U9bYGJyFQkVRH9i4HVVhNjSoxQBfKm7q61Nl1DMjSqCOs5Pu4pQ
-         IftEenta/VxKULlmI9M25buD1amLHlTZW4dCpMmU0vhYD6dBIOe8H9b+qrsDKzd0Qy3f
-         CpAg==
+        b=HAI2Y1EWlEq6Eo0RjDvf3sOpryOBOe7RcWDYD7yN2D4CnItW7lupEY6wU+QTUhSjxa
+         J+kJMR45ykWZGKCUUHi4AVeRcvZaZ8a2HYB8oQPtUPIpJZyAgFu27CQYh/5t63Y6QU+O
+         1vUB3UdRLqi3GozStTeWB8nu/prYgvk9VES1bQDqOLdYiEjawmF98/CuNlXXcWlYonNL
+         YNyv+I8tba2NMJ287sRirmcPUgUDP0KCZQPtRy17nawaUXORqW5E5IFgofhUew7SmjnZ
+         ReKJMIPbfNx6pBBjoxBWK6ThALpmoRy9xrHd0gBU6sL+wgHWqDJ9oLyP5GFgT6s65LsK
+         YGoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=eY3vOUcsAaeAD2/crVnO3Sv19z9so2Ylgmn74tRhRJY=;
-        b=ysojvwFNmqnx/J3kZySQ+1nty7OeSEzoLTBIP7uDH7OSImdItXqiLT588uwhsjgbkH
-         kKD+E4ziersDzfduU6AzBBcuPutWNIfAIcsSJXhD8/rgR7DT7DzQIq+0chvaq4cMJAVp
-         RaVRvxRxLPkSEaWnY/SR5Erg7YiaETLLeE7kuF6F+hCGux6dSAIW99QpvAu8YqHXzWd4
-         zhreYN69RJ9ZDu+AsZGSmdchzzw9qzbftltr991HPw9BenJKwFI8XGh8Ft1vXTkELEqn
-         MmEkQ5UcAMeFZ2CXgHUbFMET0c4HlfcktKTwA6B5Ox7EMAcEhxSB5a4f1XAPGFchI/mf
-         dPww==
+        bh=L/fzSUv3LWaUZgAyFEnvD/PWp0NSUATXxB2tzCGpoCc=;
+        b=pVnkgMNWrnKbTKj6KmuZHYqRGoYyJIKyPTXxr3UKiGXF0+MQLaDxgbJ/mb7Zgl3Q5a
+         YBxXv4ropllZEYPFPi0Vo1VR7pgTBjkG3oUN2J9jqbCpoRk5YCVoHZ2i+XfLVXKC6LUZ
+         k3Znop00AAqqhwjmuJ9wVvZOpNTZIiK0ISy0Dt/x3SXQFKsOj89QYk0afHvSm0TxlJio
+         JF8I3CQXyF3c5bsLa3MCcm6m+/FE1yEJ+sixKB3fa5C3sKqZxz5Si9YE6osto1MMMg0W
+         MdIfT6VNgt6vCSgDv6bpK8tEdWroYQ4EmUQq0bzT5e5FduCy8+bKIJ0qGJxfXolpCuXn
+         zmWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gSKJueX3;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bzrwGijf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x17si2749850qtm.13.2020.02.14.06.26.59
+        by mx.google.com with ESMTPS id p21si3006952qkj.72.2020.02.14.07.02.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Feb 2020 06:27:00 -0800 (PST)
+        Fri, 14 Feb 2020 07:02:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gSKJueX3;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bzrwGijf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39602 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39970 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j2bvn-0001Qy-IH
-	for alex.bennee@linaro.org; Fri, 14 Feb 2020 09:26:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35986)
+	id 1j2cUa-0007ss-81
+	for alex.bennee@linaro.org; Fri, 14 Feb 2020 10:02:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43531)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1j2bvS-0001Oy-H7
- for qemu-arm@nongnu.org; Fri, 14 Feb 2020 09:26:39 -0500
+ (envelope-from <groeck7@gmail.com>) id 1j2cUR-0007pv-4x
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 10:02:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1j2bvR-0006RB-1V
- for qemu-arm@nongnu.org; Fri, 14 Feb 2020 09:26:38 -0500
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:37558)
+ (envelope-from <groeck7@gmail.com>) id 1j2cUQ-0005FZ-5y
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 10:02:47 -0500
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:39737)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1j2bvN-0006Jm-6a; Fri, 14 Feb 2020 09:26:33 -0500
-Received: by mail-pl1-x644.google.com with SMTP id c23so3800031plz.4;
- Fri, 14 Feb 2020 06:26:32 -0800 (PST)
+ id 1j2cUN-0005CQ-Sd; Fri, 14 Feb 2020 10:02:44 -0500
+Received: by mail-pg1-x543.google.com with SMTP id j15so5089210pgm.6;
+ Fri, 14 Feb 2020 07:02:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=eY3vOUcsAaeAD2/crVnO3Sv19z9so2Ylgmn74tRhRJY=;
- b=gSKJueX3l3dr2qZdd+ylScIdzAymHKUVG7Iv3uTlVnuksvx7uhSdzcqhGjewDMEkyE
- Bq3s8bnLV1ELoO2FpdK5DPuMe/beQFvsn68LWMOUM69zGi1gB5SMooVxCoR/6Z4e6K9E
- wktfj69BscRhb9+1OwnrlvpVdtCfPkgALOWabglkWyOLhRNnGzy5g5QooEAvIrm0WHfu
- NPzh6RRwZzwwnAJZf519PsJ86eQzXs/WYzvmjMN9XzMZ9K98hZdzW+KKnQSigrUnh3jn
- tHR0yYTcHaupAdT7ZrW1QHdFd7R/W5monjFNbrDbUe8MiJkLtIW7arMZCs5dwqemCoks
- mS4Q==
+ bh=L/fzSUv3LWaUZgAyFEnvD/PWp0NSUATXxB2tzCGpoCc=;
+ b=bzrwGijfp9yoVCMh/AGYESeqYWo//w9yBTgRsT4YlAa9RKhWaGXgRbZ/tLK9f3kyon
+ yR/otbnjJWRusFLQEPsrjcUyzvDNiJAl4tXgONXZoWOwCLm+vAlGOqDAtJUIhSHN1qIN
+ 35Ab24AgPTtTWaoxEaFZMTWKvntMHLN0VL4FOcppRwzWAbVUcWsOqVC2w+789GnojszJ
+ 6RHkHU5KkUBLOBcPTRv9+JRB/gAtQh64F834QkAy/6aRxK58ODewmn70rmAYUb2XUigZ
+ YXOyMu/wIo1GnZPNE0L8t+o1i97E8cv20lE0NWEau4QuMKclqJc4j80lXI45GCP1xuxj
+ f/Ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=eY3vOUcsAaeAD2/crVnO3Sv19z9so2Ylgmn74tRhRJY=;
- b=L0xR7ICID/0UCIeL0CDzvuZLaMzEmTGbVpzgefUxI9mT0SqbiQAUmqjEcoAhAqM3QR
- 8T6akk/CIk+Sg/zfl85aSCuAivHcJZ0bcA2Z2f4NPnyU2PXby+eB1IEJ0oTb0sSqBhhK
- KlQs39dqsknkGAlOQBSBVzQgYiCQux0cuUxuGr+QDOO7RDlIfRleaN1gH+AOgB2zpWBQ
- ji5txOX+lETtud1t/jqzqKPWMQqO/sUWhRtNymbBGHdY5YlgIZkemdxpddW+s3ds9+Xd
- fTbukiZux86RdOtf/CDpic4UjYAPMfVXvDQrbwD4iPKMA7O65YbOza+WPXao3iPj/QI0
- S3vg==
-X-Gm-Message-State: APjAAAXxXc4ueCchpiloFEwdXJmoE5b6dx1FhZRPAaYO+nOmkxy+OwG9
- 84DF6FYtXXVhHgwuggQ3TJQ76/Zk
-X-Received: by 2002:a17:90b:97:: with SMTP id
- bb23mr3709789pjb.53.1581690391132; 
- Fri, 14 Feb 2020 06:26:31 -0800 (PST)
+ bh=L/fzSUv3LWaUZgAyFEnvD/PWp0NSUATXxB2tzCGpoCc=;
+ b=oauvAqxRekIVCv5WOS4PZxBWFKKiB2P6lvSHI2iCWmuP24HYKBOXD2SaYtAlY8WuRL
+ Ff3TUvUYy28m0sDIHG0oc1m1weibHk4jZm4XeL5sQf5r30kdSk9Kxd5DvdtSF0iaS8m7
+ YbV3wc9MAa+pb2LS0JFYlMdPDyNHV7KdE9R7BH1GLcIYrX9uSda5eLgYEBaIKaTkimiG
+ a5krJEY4thNOlPPT8ppUvyHp5FingvqMlqg6DaW+xShBTlL4ATiSX2cutZbRDmXEo78X
+ +o6bt/jUYQXAftopDKTVtaLcqvmgs7LKxXGCnlJ+oMGkCFVDlab/7RXyuzTgVQ5mZAsE
+ A6Lw==
+X-Gm-Message-State: APjAAAWKwlNQvy9TrbiQlZu19ZahPzCqsn8GFcKCmL/LE24hwLMOPFTX
+ oq/afWZssinnzyj7VQ2scWG1aMp0
+X-Received: by 2002:a63:ca04:: with SMTP id n4mr3994122pgi.110.1581692562016; 
+ Fri, 14 Feb 2020 07:02:42 -0800 (PST)
 Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- t65sm7171884pfd.178.2020.02.14.06.26.29
+ b12sm7662557pfr.26.2020.02.14.07.02.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 Feb 2020 06:26:30 -0800 (PST)
-Subject: Re: [PATCH 3/3] arm: allwinner: Wire up USB EHCI
-To: Gerd Hoffmann <kraxel@redhat.com>
-References: <20200214062109.24494-1-linux@roeck-us.net>
- <20200214062109.24494-3-linux@roeck-us.net>
- <20200214100837.lv2cok5he7epmu7i@sirius.home.kraxel.org>
+ Fri, 14 Feb 2020 07:02:40 -0800 (PST)
+Subject: Re: [PATCH 1/2] hw/arm/xilinx_zynq: Fix USB port instantiation
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200214060548.24939-1-linux@roeck-us.net>
+ <CAFEAcA9nojfAx_MevUE5Z44cJ7OQzv7Dy5wRYy22tZpbnz-NAA@mail.gmail.com>
 From: Guenter Roeck <linux@roeck-us.net>
-Message-ID: <db087bc9-eb23-0b6e-b3aa-5309d824f6ef@roeck-us.net>
-Date: Fri, 14 Feb 2020 06:26:29 -0800
+Message-ID: <9bfcd260-696d-c747-355e-f694d108e9df@roeck-us.net>
+Date: Fri, 14 Feb 2020 07:02:39 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200214100837.lv2cok5he7epmu7i@sirius.home.kraxel.org>
+In-Reply-To: <CAFEAcA9nojfAx_MevUE5Z44cJ7OQzv7Dy5wRYy22tZpbnz-NAA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::644
+X-Received-From: 2607:f8b0:4864:20::543
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,31 +113,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+Cc: Alistair Francis <alistair@alistair23.me>,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SVgviH2iZMC+
+X-TUID: byfp0RPmmQEH
 
-On 2/14/20 2:08 AM, Gerd Hoffmann wrote:
->> ehci-platform 1c1c000.usb: new USB bus registered, assigned bus number 2
->> ehci-platform 1c1c000.usb: irq 31, io mem 0x01c1c000
->> ehci-platform 1c1c000.usb: USB 2.0 started, EHCI 1.00
+On 2/14/20 1:26 AM, Peter Maydell wrote:
+> On Fri, 14 Feb 2020 at 06:05, Guenter Roeck <linux@roeck-us.net> wrote:
+>>
+>> USB ports must be instantiated as TYPE_CHIPIDEA to work.
+>> Linux expects and checks various chipidea registers, which
+>> do not exist with the basic ehci emulation.
 > 
->> +        for (i = 0; i < ARRAY_SIZE(s->ehci); i++) {
->> +            object_property_set_bool(OBJECT(&s->ehci[i]), true, "realized",
->> +                                     &err);
-> 
-> I suspect the ohci controllers are ehci companions, i.e. they handle a
-> single usb bus, with ehci handling usb2 and ohci handling usb1 devices?
-> 
-> If so then you should initialize ehci first, explicitly assign bus
-> names and set the masterbus property for the ohci controllers.
-> 
-> See also docs/usb2.txt
+> Hi; I didn't see a cover letter email for this series (sorry if
+> I missed it). Would you mind including a cover letter email
+
+I didn't send a cover letter, sorry.
+
+> for any more-than-one-patch set, please? It helps the
+> automatic tools and it also decreases the chances that
+> I miss the patches when I'm scanning through my email
+> (when I'm tagging things I might want to review I basically
+> look through subject lines for single patch patches
+> and for 00/nn cover letters and ignore middle-of-patchset
+> emails...)
 > 
 
-Thanks for the references. Makes sense; I'll give it a try.
+Sure, NP. I'll resend with a cover letter.
 
 Guenter

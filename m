@@ -1,339 +1,230 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp2247232lfp;
-        Fri, 14 Feb 2020 10:39:25 -0800 (PST)
-X-Google-Smtp-Source: APXvYqznIipU/QesDAB/U5fy30LbymPyQ378j/erkOGSlk9beNL9dJcdWWiao7l2dkfNNC07+DrK
-X-Received: by 2002:a37:4b52:: with SMTP id y79mr4057977qka.389.1581705565694;
-        Fri, 14 Feb 2020 10:39:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581705565; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp2259935lfp;
+        Fri, 14 Feb 2020 10:55:33 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwjYbFfHZkM+mnKeLXDs/FULt3xSvfDB5NL9X+AcVJPD7vIHfUHJ2anUyMa3JuAYFeM+/rc
+X-Received: by 2002:ac8:1aed:: with SMTP id h42mr3604330qtk.270.1581706533121;
+        Fri, 14 Feb 2020 10:55:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581706533; cv=none;
         d=google.com; s=arc-20160816;
-        b=g/qYT3L+r7m3PpXeqjP2yYgbKHh+hoRISuzCwUFSuFDqeURx44bAWXd/L1d9Pep0r4
-         e59fCbY/GYuP108xCdF2BWU9ZbqJel8j+cDmXRyGXCihQuC0nJD+S+Tc3TC8MXY041lh
-         N1mh+LGcw1y0gXtC8Mrva5tNWcLbFviROKjV5CbqiSg+y7RwU/dyhDuc9pjqYP4mltw5
-         xDVggSoGI6otAaMf00JzY59ZCv3CO/khGcyRhLxXzNQM7P0xQnp0iLwR3sAZWrYwdWFi
-         kCnrIV9aIrd7DG2D+ZY5snu79tM644x3A+HBZBT+i5213haak69rL8n0M/vdrjpYXRNV
-         k51g==
+        b=HkdK/oN+FLt6ehCfiDRZgURpKpqldVWoa6+wvud+GMDV568gGGCXrpS0yckjEnJPac
+         mXpjxkxSwI4teI3diWUgAVYWHHDc75ocQDkWklfL6GkibDuYwugBhsij+3UxasMxnhOZ
+         umbS7iNbzt493hC9HP8CL5MWPskT40vkumGsIg5By4xFT10QLE8jXeQh29UmsCcTWlWp
+         6xTxrrBmSgTB1UR+i65GOa3vsoh9mzF+3JjYdBI4X1amE9Gi2K/vX54c5e4NNB4Ki0Hv
+         jGc8VEF/8xoXuQGTEs9ZUhgCVPUI75+zD2Bz+o5C22S5sS1n+/rRFNw1BiFvwIebFqSL
+         AYsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=JE38b81t1DCRPv5y3aSAcGRc/93LyZpyLx1a21kHzJM=;
-        b=Cd/7dbiiDw17WwgYFvH3NkM1DOdxlxnJlF+Gn/OnqTPWM8E9lC+HTUvRiDucz6GaIA
-         bVxI0W86duX8qFZHcbFfdfb7CL2Hdig4LtnhgmRSZ40A/iDy0Y2CjKh+AB1Jl1Y1IvOf
-         w4Tud02iMm+9EJdSsQJ8XLHLNBRJaKoOeXeEc/crbBmfZIiFTAR46CmPgMgWVOAAIPAi
-         TF9A9LP+JFK1vo4xHMpzVV9NC+NYTdRXaYhIH2thh4Husw5IPSzT6reCZBkVmz6k7dtS
-         URHEnfrQXcwhq0PIV6/lOBHqPnaefj6cl1uUV3EDDIVI3jegFmz1h2E+EQxsI0ju4amq
-         qwtg==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=EN8zjuPHGL5alcVnWz2YMgcaV5lO4slthD+6U+XV9Cc=;
+        b=x3sKi8yUuT6Q+ZVdkreetsOzRPjF7lnvkkSJoZIJklYaztW3IJeaUU31JxucrsXR2E
+         CG+dgsKXX8T1LfeP3u/V0YN30vFULtiW8EbYTRgsrJIFb0uptB8eMCgZaby4bTgxhf0Y
+         GnE5cZj53CGEphWx1iqFtDJDWmYwmr+oSD22vu1tgpFoVgfV799HoWz2MZwupmWzJIPx
+         403zP6IWcqfvxzfD4iAAvDeWYi7aTjDeoGmTgSiOfc8S+McokB7wFDCKbyrDsqWMQQAL
+         ciCj8Z+yVbc2Of77/osDhMCwSayBcq/g6V/5WslOuUZ8Xl+NLXbVP8IdEZTmKZYM2sp/
+         MdSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Y3NDoD3z;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bW0B+k2C;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h3si2784147qvs.71.2020.02.14.10.39.25
+        by mx.google.com with ESMTPS id t3si3021429qtb.297.2020.02.14.10.55.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Feb 2020 10:39:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 14 Feb 2020 10:55:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Y3NDoD3z;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bW0B+k2C;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44042 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44228 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j2fs5-00055n-4E
-	for alex.bennee@linaro.org; Fri, 14 Feb 2020 13:39:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37207)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j2g7g-0008RH-Dx
+	for alex.bennee@linaro.org; Fri, 14 Feb 2020 13:55:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40569)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j2fqe-0002Xo-E3
- for qemu-devel@nongnu.org; Fri, 14 Feb 2020 13:37:58 -0500
+ (envelope-from <philmd@redhat.com>) id 1j2g7X-0008QZ-9t
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 13:55:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j2fqc-0004Ly-RJ
- for qemu-devel@nongnu.org; Fri, 14 Feb 2020 13:37:56 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:43834
+ (envelope-from <philmd@redhat.com>) id 1j2g7V-0002zE-LE
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 13:55:22 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:25810
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j2fqc-0004Ln-N0
- for qemu-devel@nongnu.org; Fri, 14 Feb 2020 13:37:54 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j2g7V-0002yu-Gu
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 13:55:21 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581705474;
+ s=mimecast20190719; t=1581706521;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JE38b81t1DCRPv5y3aSAcGRc/93LyZpyLx1a21kHzJM=;
- b=Y3NDoD3zfxNWhGvii+AaUvyMPgSxwKN2WMSStfnFsmToxXptMQMTLKGA3tU01WRHeyxAXp
- zZxFyOGlnREcf1t0AspYF2SOpk9jCCoMfchfaRRxB3eP8C2bskqMTnFYpII0SiOhqD3mfc
- nZNTQ5wAilcP+7vF+9blESssNkzW+vE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-381-_LyBS_0UPCWqnrxTvenQ5Q-1; Fri, 14 Feb 2020 13:37:52 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 378B0DB60;
- Fri, 14 Feb 2020 18:37:51 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 10C545DA7D;
- Fri, 14 Feb 2020 18:37:46 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
-Subject: [RFC v2 5/6] tpm: Add the SysBus TPM TIS device
-Date: Fri, 14 Feb 2020 19:37:03 +0100
-Message-Id: <20200214183704.14389-6-eric.auger@redhat.com>
-In-Reply-To: <20200214183704.14389-1-eric.auger@redhat.com>
+ bh=EN8zjuPHGL5alcVnWz2YMgcaV5lO4slthD+6U+XV9Cc=;
+ b=bW0B+k2CwXx4EeYXBR6af7XwInTPZjWiykxnnjUWSco8K5XN4BdaX8aciJgxAWMmGuMxvs
+ 2g8JeBPF6eLxb+7OqE2zNRajdOQPNHGFaYcIEIiQjBf+Xf3dasLZIvDIRhbnxtetWgyH5p
+ Bjgr5gDlJo4tL8A4pV559kLFsxAnLDY=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-67-dLb_nq4TPfWG-2Q2bpLQCg-1; Fri, 14 Feb 2020 13:55:19 -0500
+Received: by mail-wr1-f69.google.com with SMTP id c6so4490575wrm.18
+ for <qemu-arm@nongnu.org>; Fri, 14 Feb 2020 10:55:18 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=S3GH1oAA4Bad2Xr/3CgXymLB45XQFQaZUty8DiYaUTU=;
+ b=unVGe78V5/ryIzES99augQPOIof86kxSvK0q2ZrnV163oDE3MluGn+10BjLtTrGZzl
+ 5XKPBrO/mqZEFZ3gYLwBUCINB5uy2kF6zSPqxZ30BMz/0EOSG+5VZ/7O8HSyCs/NdKBc
+ QwDpFjgPKo9fXup5p20URZH0Ys7/tnSb5KCGrFyqCF8XcGCgfsVsA0AMgheJZurzI1Rk
+ MlRbwqBV0SghGJJleGJ5ea7Gq4ILLdrObUzMoL9OnoStx0UvL66NTDe9Roa5PzeWUufn
+ UWCfGAjjzLYYdbbEf0/dlp7Kb8Pqjq9NsKeBF8thlq49lAiOIhmDuXMkTxjFLlbX69i5
+ XOpQ==
+X-Gm-Message-State: APjAAAWl085zBzLKjc4ReKUNV/RaHjjlJ+CmG5GMzGrJU85V6Q7qP5JY
+ mGypG5KEI0+XGkfm3iqKKtuRJb32oXtx6SrksjXLa0FV4/kbVH54tqHM2f3tm68gcq1lEyyGmI7
+ cnpTTUJs4jRR4
+X-Received: by 2002:adf:cd04:: with SMTP id w4mr5650753wrm.219.1581706517994; 
+ Fri, 14 Feb 2020 10:55:17 -0800 (PST)
+X-Received: by 2002:adf:cd04:: with SMTP id w4mr5650736wrm.219.1581706517773; 
+ Fri, 14 Feb 2020 10:55:17 -0800 (PST)
+Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.78])
+ by smtp.gmail.com with ESMTPSA id o9sm5260381wrw.20.2020.02.14.10.55.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 14 Feb 2020 10:55:17 -0800 (PST)
+Subject: Re: [RFC v2 1/6] tpm: rename TPM_TIS into TPM_TIS_ISA
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ stefanb@linux.ibm.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org
 References: <20200214183704.14389-1-eric.auger@redhat.com>
+ <20200214183704.14389-2-eric.auger@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <29cc9864-a016-b251-506a-8c04b37efe28@redhat.com>
+Date: Fri, 14 Feb 2020 19:55:16 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: _LyBS_0UPCWqnrxTvenQ5Q-1
+In-Reply-To: <20200214183704.14389-2-eric.auger@redhat.com>
+Content-Language: en-US
+X-MC-Unique: dLb_nq4TPfWG-2Q2bpLQCg-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org,
- philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pFZfqHcP2dv4
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3DCJmfZkzOaO
 
-Introduce the tpm-tis-device which is a sysbus device
-and is bound to be used on ARM.
+On 2/14/20 7:36 PM, Eric Auger wrote:
+> As we plan to introduce a sysbus TPM_TIS, let's rename
+> TPM_TIS into TPM_TIS_ISA.
+>=20
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>   hw/i386/acpi-build.c | 6 +++---
+>   hw/tpm/tpm_tis.c     | 4 ++--
+>   include/sysemu/tpm.h | 6 +++---
+>   3 files changed, 8 insertions(+), 8 deletions(-)
+>=20
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 9c4e46fa74..26777f8828 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -2026,7 +2026,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>           }
+>       }
+>  =20
+> -    if (TPM_IS_TIS(tpm_find())) {
+> +    if (TPM_IS_TIS_ISA(tpm_find())) {
+>           aml_append(crs, aml_memory32_fixed(TPM_TIS_ADDR_BASE,
+>                      TPM_TIS_ADDR_SIZE, AML_READ_WRITE));
+>       }
+> @@ -2197,7 +2197,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>               /* Scan all PCI buses. Generate tables to support hotplug. =
+*/
+>               build_append_pci_bus_devices(scope, bus, pm->pcihp_bridge_e=
+n);
+>  =20
+> -            if (TPM_IS_TIS(tpm)) {
+> +            if (TPM_IS_TIS_ISA(tpm)) {
+>                   if (misc->tpm_version =3D=3D TPM_VERSION_2_0) {
+>                       dev =3D aml_device("TPM");
+>                       aml_append(dev, aml_name_decl("_HID",
+> @@ -2304,7 +2304,7 @@ build_tpm2(GArray *table_data, BIOSLinker *linker, =
+GArray *tcpalog)
+>           (char *)&tpm2_ptr->log_area_start_address - table_data->data;
+>  =20
+>       tpm2_ptr->platform_class =3D cpu_to_le16(TPM2_ACPI_CLASS_CLIENT);
+> -    if (TPM_IS_TIS(tpm_find())) {
+> +    if (TPM_IS_TIS_ISA(tpm_find())) {
+>           tpm2_ptr->control_area_address =3D cpu_to_le64(0);
+>           tpm2_ptr->start_method =3D cpu_to_le32(TPM2_START_METHOD_MMIO);
+>       } else if (TPM_IS_CRB(tpm_find())) {
+> diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
+> index 31facb896d..c609737272 100644
+> --- a/hw/tpm/tpm_tis.c
+> +++ b/hw/tpm/tpm_tis.c
+> @@ -91,7 +91,7 @@ typedef struct TPMState {
+>       TPMPPI ppi;
+>   } TPMState;
+>  =20
+> -#define TPM(obj) OBJECT_CHECK(TPMState, (obj), TYPE_TPM_TIS)
+> +#define TPM(obj) OBJECT_CHECK(TPMState, (obj), TYPE_TPM_TIS_ISA)
+>  =20
+>   #define DEBUG_TIS 0
+>  =20
+> @@ -1008,7 +1008,7 @@ static void tpm_tis_class_init(ObjectClass *klass, =
+void *data)
+>   }
+>  =20
+>   static const TypeInfo tpm_tis_info =3D {
+> -    .name =3D TYPE_TPM_TIS,
+> +    .name =3D TYPE_TPM_TIS_ISA,
+>       .parent =3D TYPE_ISA_DEVICE,
+>       .instance_size =3D sizeof(TPMState),
+>       .instance_init =3D tpm_tis_initfn,
+> diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
+> index 15979a3647..1691b92c28 100644
+> --- a/include/sysemu/tpm.h
+> +++ b/include/sysemu/tpm.h
+> @@ -43,12 +43,12 @@ typedef struct TPMIfClass {
+>       enum TPMVersion (*get_version)(TPMIf *obj);
+>   } TPMIfClass;
+>  =20
+> -#define TYPE_TPM_TIS                "tpm-tis"
+> +#define TYPE_TPM_TIS_ISA            "tpm-tis"
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/tpm/Kconfig          |   5 ++
- hw/tpm/Makefile.objs    |   1 +
- hw/tpm/tpm_tis_sysbus.c | 159 ++++++++++++++++++++++++++++++++++++++++
- include/sysemu/tpm.h    |   1 +
- 4 files changed, 166 insertions(+)
- create mode 100644 hw/tpm/tpm_tis_sysbus.c
+It should be safe to rename this "tpm-tis-isa" in this patch.
 
-diff --git a/hw/tpm/Kconfig b/hw/tpm/Kconfig
-index 686f8206bb..4794e7fe28 100644
---- a/hw/tpm/Kconfig
-+++ b/hw/tpm/Kconfig
-@@ -7,6 +7,11 @@ config TPM_TIS_ISA
-     depends on TPM && ISA_BUS
-     select TPM_TIS
-=20
-+config TPM_TIS_SYSBUS
-+    bool
-+    depends on TPM
-+    select TPM_TIS
-+
- config TPM_TIS
-     bool
-     depends on TPM
-diff --git a/hw/tpm/Makefile.objs b/hw/tpm/Makefile.objs
-index 3ef2036cca..f1ec4beb95 100644
---- a/hw/tpm/Makefile.objs
-+++ b/hw/tpm/Makefile.objs
-@@ -1,6 +1,7 @@
- common-obj-$(CONFIG_TPM) +=3D tpm_util.o
- obj-$(call lor,$(CONFIG_TPM_TIS),$(CONFIG_TPM_CRB)) +=3D tpm_ppi.o
- common-obj-$(CONFIG_TPM_TIS_ISA) +=3D tpm_tis_isa.o
-+common-obj-$(CONFIG_TPM_TIS_SYSBUS) +=3D tpm_tis_sysbus.o
- common-obj-$(CONFIG_TPM_TIS) +=3D tpm_tis_common.o
- common-obj-$(CONFIG_TPM_CRB) +=3D tpm_crb.o
- common-obj-$(CONFIG_TPM_PASSTHROUGH) +=3D tpm_passthrough.o
-diff --git a/hw/tpm/tpm_tis_sysbus.c b/hw/tpm/tpm_tis_sysbus.c
-new file mode 100644
-index 0000000000..18c02aed67
---- /dev/null
-+++ b/hw/tpm/tpm_tis_sysbus.c
-@@ -0,0 +1,159 @@
-+/*
-+ * tpm_tis_sysbus.c - QEMU's TPM TIS SYSBUS Device
-+ *
-+ * Copyright (C) 2006,2010-2013 IBM Corporation
-+ *
-+ * Authors:
-+ *  Stefan Berger <stefanb@us.ibm.com>
-+ *  David Safford <safford@us.ibm.com>
-+ *
-+ * Xen 4 support: Andrease Niederl <andreas.niederl@iaik.tugraz.at>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-+ *
-+ * Implementation of the TIS interface according to specs found at
-+ * http://www.trustedcomputinggroup.org. This implementation currently
-+ * supports version 1.3, 21 March 2013
-+ * In the developers menu choose the PC Client section then find the TIS
-+ * specification.
-+ *
-+ * TPM TIS for TPM 2 implementation following TCG PC Client Platform
-+ * TPM Profile (PTP) Specification, Familiy 2.0, Revision 00.43
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/qdev-properties.h"
-+#include "migration/vmstate.h"
-+#include "tpm_util.h"
-+#include "hw/sysbus.h"
-+#include "tpm_tis.h"
-+
-+typedef struct TPMStateSysBus {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+
-+    /*< public >*/
-+    TPMState state; /* not a QOM object */
-+} TPMStateSysBus;
-+
-+#define TPM_TIS_SYSBUS(obj) OBJECT_CHECK(TPMStateSysBus, (obj), TYPE_TPM_T=
-IS_SYSBUS)
-+
-+static int tpm_tis_pre_save_sysbus(void *opaque)
-+{
-+    TPMStateSysBus *sbdev =3D opaque;
-+
-+    return tpm_tis_pre_save(&sbdev->state);
-+}
-+
-+static const VMStateDescription vmstate_tpm_tis_sysbus =3D {
-+    .name =3D "tpm-tis",
-+    .version_id =3D 0,
-+    .pre_save  =3D tpm_tis_pre_save_sysbus,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_BUFFER(state.buffer, TPMStateSysBus),
-+        VMSTATE_UINT16(state.rw_offset, TPMStateSysBus),
-+        VMSTATE_UINT8(state.active_locty, TPMStateSysBus),
-+        VMSTATE_UINT8(state.aborting_locty, TPMStateSysBus),
-+        VMSTATE_UINT8(state.next_locty, TPMStateSysBus),
-+
-+        VMSTATE_STRUCT_ARRAY(state.loc, TPMStateSysBus, TPM_TIS_NUM_LOCALI=
-TIES,
-+                             0, vmstate_locty, TPMLocality),
-+
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void tpm_tis_sysbus_request_completed(TPMIf *ti, int ret)
-+{
-+    TPMStateSysBus *sbdev =3D TPM_TIS_SYSBUS(ti);
-+    TPMState *s =3D &sbdev->state;
-+
-+    tpm_tis_request_completed(s, ret);
-+}
-+
-+static enum TPMVersion tpm_tis_sysbus_get_tpm_version(TPMIf *ti)
-+{
-+    TPMStateSysBus *sbdev =3D TPM_TIS_SYSBUS(ti);
-+    TPMState *s =3D &sbdev->state;
-+
-+    return tpm_tis_get_tpm_version(s);
-+}
-+
-+static void tpm_tis_sysbus_reset(DeviceState *dev)
-+{
-+    TPMStateSysBus *sbdev =3D TPM_TIS_SYSBUS(dev);
-+    TPMState *s =3D &sbdev->state;
-+
-+    return tpm_tis_reset(s);
-+}
-+
-+static Property tpm_tis_sysbus_properties[] =3D {
-+    DEFINE_PROP_UINT32("irq", TPMStateSysBus, state.irq_num, TPM_TIS_IRQ),
-+    DEFINE_PROP_TPMBE("tpmdev", TPMStateSysBus, state.be_driver),
-+    DEFINE_PROP_BOOL("ppi", TPMStateSysBus, state.ppi_enabled, true),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void tpm_tis_sysbus_initfn(Object *obj)
-+{
-+    TPMStateSysBus *sbdev =3D TPM_TIS_SYSBUS(obj);
-+    TPMState *s =3D &sbdev->state;
-+
-+    memory_region_init_io(&s->mmio, obj, &tpm_tis_memory_ops,
-+                          s, "tpm-tis-mmio",
-+                          TPM_TIS_NUM_LOCALITIES << TPM_TIS_LOCALITY_SHIFT=
-);
-+
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
-+    sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
-+}
-+
-+static void tpm_tis_sysbus_realizefn(DeviceState *dev, Error **errp)
-+{
-+    TPMStateSysBus *sbdev =3D TPM_TIS_SYSBUS(dev);
-+    TPMState *s =3D &sbdev->state;
-+
-+    if (!tpm_find()) {
-+        error_setg(errp, "at most one TPM device is permitted");
-+        return;
-+    }
-+
-+    if (!s->be_driver) {
-+        error_setg(errp, "'tpmdev' property is required");
-+        return;
-+    }
-+}
-+
-+static void tpm_tis_sysbus_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    TPMIfClass *tc =3D TPM_IF_CLASS(klass);
-+
-+    device_class_set_props(dc, tpm_tis_sysbus_properties);
-+    dc->vmsd  =3D &vmstate_tpm_tis_sysbus;
-+    tc->model =3D TPM_MODEL_TPM_TIS;
-+    dc->realize =3D tpm_tis_sysbus_realizefn;
-+    dc->user_creatable =3D true;
-+    dc->reset =3D tpm_tis_sysbus_reset;
-+    tc->request_completed =3D tpm_tis_sysbus_request_completed;
-+    tc->get_version =3D tpm_tis_sysbus_get_tpm_version;
-+}
-+
-+static const TypeInfo tpm_tis_sysbus_info =3D {
-+    .name =3D TYPE_TPM_TIS_SYSBUS,
-+    .parent =3D TYPE_SYS_BUS_DEVICE,
-+    .instance_size =3D sizeof(TPMStateSysBus),
-+    .instance_init =3D tpm_tis_sysbus_initfn,
-+    .class_init  =3D tpm_tis_sysbus_class_init,
-+    .interfaces =3D (InterfaceInfo[]) {
-+        { TYPE_TPM_IF },
-+        { }
-+    }
-+};
-+
-+static void tpm_tis_sysbus_register(void)
-+{
-+    type_register_static(&tpm_tis_sysbus_info);
-+}
-+
-+type_init(tpm_tis_sysbus_register)
-diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
-index 1691b92c28..f37851b1aa 100644
---- a/include/sysemu/tpm.h
-+++ b/include/sysemu/tpm.h
-@@ -44,6 +44,7 @@ typedef struct TPMIfClass {
- } TPMIfClass;
-=20
- #define TYPE_TPM_TIS_ISA            "tpm-tis"
-+#define TYPE_TPM_TIS_SYSBUS         "tpm-tis-device"
- #define TYPE_TPM_CRB                "tpm-crb"
- #define TYPE_TPM_SPAPR              "tpm-spapr"
-=20
---=20
-2.20.1
+Regardless:
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+>   #define TYPE_TPM_CRB                "tpm-crb"
+>   #define TYPE_TPM_SPAPR              "tpm-spapr"
+>  =20
+> -#define TPM_IS_TIS(chr)                             \
+> -    object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS)
+> +#define TPM_IS_TIS_ISA(chr)                         \
+> +    object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_ISA)
+>   #define TPM_IS_CRB(chr)                             \
+>       object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB)
+>   #define TPM_IS_SPAPR(chr)                           \
+>=20
 

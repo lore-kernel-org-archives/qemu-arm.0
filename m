@@ -1,301 +1,173 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp2200825lfp;
-        Fri, 14 Feb 2020 09:53:29 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwK+TGkgD0VDeL4V1VD5uLbVve+SFkaIqvTcdYslcC6ZdrO/pHa8NGNOAlElIKcdrwNwRDu
-X-Received: by 2002:a05:620a:15e9:: with SMTP id p9mr3725185qkm.162.1581702809260;
-        Fri, 14 Feb 2020 09:53:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581702809; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp2200844lfp;
+        Fri, 14 Feb 2020 09:53:30 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxxlP8Hcb2pcXXOodPCNeygXqFD4H1aAM4SHdl8bos+1Nl6/Wm1zmHy/uWGH9iSszWvphcI
+X-Received: by 2002:a05:620a:1641:: with SMTP id c1mr3619733qko.69.1581702810174;
+        Fri, 14 Feb 2020 09:53:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581702810; cv=none;
         d=google.com; s=arc-20160816;
-        b=gtRmQO+Hx/F6L5AncSuPNrk07/vKho2urUaL+WDl7AQyPJYtms2atDEiLecoaQifWd
-         JHA8/03/OY7CWOREbrXUsA2msRuq+adeI6oSYJfDLx5UfhGmyoCoTNoLjJqy6wUFPtAi
-         pgi8vuBJjOBKorp68TBeLxBYpFiuOiXBWiSRCOq9RVt+XzzgoHcVArFrr/M52aITo5t9
-         +rnyBI6Jz1jbM+2phlkrteQlnJbAIJDtXnveg2MLPCGXSWSzxCcdRUCqmknPYcpDDzZ8
-         uWbbSiWl6ng/YvL8QWPSnUtBCv/wm0TUxrDMavkrmwOjQXTFYB+6dOKSXbLymiJtMW+H
-         sUMw==
+        b=xIXI8Pi20g0+sVpVfxIacUODFXnTvR2Ob2cD+45mliFcw1UM/qdi6RePS4GBuVjlzF
+         Y8sxl46ldoPuokVQPKz+Qs2zSb/sVb5zdOia2MlxYQNdsmXC92xPOkeylHHQ1F0k7NYg
+         oojIQF+p7LjxMu6CFTuejhLix459jPPR5y6hFqrnxBPeHiHY0u10S/JEggm+1xdBxBen
+         e7IZAswbctWWt5IHsIUhcPf/CGxm7DbSzyvTWrHVzDypUHTCXdPt756Pxx2ZvBuoVD4T
+         JgVuNAtRgRpC+L05fH53770U5iNz5iS+SkwHZFpHJu6zg38F+Jhe36SJgoCwIQEfn1JC
+         uq4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=+RSZKscRdCamXAJ0k30/EyUeGISH+9TDKdteY9Rg/DM=;
-        b=yRcCsTOj59vBYKBuHuCiUrZvx/Q4mGTnaY0Guf29In2+wDZxa0lptxETb9n/Tp4auG
-         +PZiX2Af3CVVLYvfb6Ym72/k0Z8dPz1CCBmxtB4OykeixBYqEaFj8Z18bZT5CoGNtwHx
-         h/YJdBzmnMs40Jfz0Yeavasz7I43sovGfMx93cSqkvpDP/W9JKTbqw36TEg+ns2w+2D5
-         51PTjmK/n+y1DeUEYGpa8pD2Tc2qiNOH1CI3eTO74DzwZsbkloi7/2ZM+JC4A5FKDP4X
-         5blq69ysZcIHz51ibHUg7++hKsPAV5O2VPfO/ZW17UItpi/gXNW1YAMhkmf/nULn3THC
-         Knzg==
+        bh=5yFL6qJIGrr6vMsTkdaf8oL+HzuN+eqpKkJ6fDD8yLs=;
+        b=RocjytWVPQPGiBMblngJ6oaZgY2ykype7LV8W8oiv+8uWHzH6ux+R1mVMhvskRHBmQ
+         r6S+Zx3X7MfAoSyCsYwuzQJFD/PwxkSrYPi3CfqwMki4lkDGiof+a6AWJhYiojq1V6lB
+         WA92/QEoEBrCVbs2FhFbDgKksZ+reYNBJy/Jzvb+kOmVqemvE6FxsFpNemUsoMOWtGgA
+         KOpA41Kls/WiuVJcY4x0uyH1YvB0TwGrCP8qJxmCy9Ot0PBEdkpwBIXNBGiaXD4oZsI3
+         mXGzVjVyY3nBTT27tTrrxQzvKScaBD906SwjzXLDRxjOpcRA5onvb6kDMFDSlpcPMp/T
+         Vbmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="LHd69Z9/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=IYCp5AzT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a5si2841266qvm.185.2020.02.14.09.53.29
+        by mx.google.com with ESMTPS id 85si3403275qkg.249.2020.02.14.09.53.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Feb 2020 09:53:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 14 Feb 2020 09:53:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="LHd69Z9/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=IYCp5AzT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42792 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42820 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j2f9c-0000nr-L0
-	for alex.bennee@linaro.org; Fri, 14 Feb 2020 12:53:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56046)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j2f9d-0001of-KE
+	for alex.bennee@linaro.org; Fri, 14 Feb 2020 12:53:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55927)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j2f7o-0005wb-92
- for qemu-devel@nongnu.org; Fri, 14 Feb 2020 12:51:37 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j2f7j-0005qT-8w
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 12:51:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j2f7m-0000p7-RM
- for qemu-devel@nongnu.org; Fri, 14 Feb 2020 12:51:36 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:53791)
+ (envelope-from <peter.maydell@linaro.org>) id 1j2f7i-0000jk-8r
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 12:51:31 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43205)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j2f7m-0000oH-KI
- for qemu-devel@nongnu.org; Fri, 14 Feb 2020 12:51:34 -0500
-Received: by mail-wm1-x335.google.com with SMTP id s10so10844383wmh.3
- for <qemu-devel@nongnu.org>; Fri, 14 Feb 2020 09:51:34 -0800 (PST)
+ id 1j2f7g-0000hU-DZ
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 12:51:29 -0500
+Received: by mail-wr1-x442.google.com with SMTP id r11so11854548wrq.10
+ for <qemu-arm@nongnu.org>; Fri, 14 Feb 2020 09:51:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=+RSZKscRdCamXAJ0k30/EyUeGISH+9TDKdteY9Rg/DM=;
- b=LHd69Z9/E6GbSWIp12Y1fRT6SW8N7Yh8hivs/KTO/v6k1xYl46xC4xfH0aZnceSYt7
- QWbvXHvYXXZnryA4BDZj2gAWBy8QmzmkzzRF4ZmmgABKySk8kdbVH0JIwH138MnuKVNA
- AK2f2g5VstRGczRCOlDzyhHl+0DzPP0DNLHBXNLYFETqe7ObT91TzsiFr83rpwfCIDjW
- IDlrXh5692JXzmJRL3O2WtQQSsQL8jB4f7od+f/lmW6Al+b8HHjnyv61iqmZWZkIHi0O
- aYu0NnMZ5w73iKKjMC7TgssmqgWDEhQb8T1dTHiawvul7OQMTEtWdbwRH0HwQiB2kyiR
- zQ1A==
+ bh=5yFL6qJIGrr6vMsTkdaf8oL+HzuN+eqpKkJ6fDD8yLs=;
+ b=IYCp5AzTtdyojqddY7SiOZHntlgKyZ3KYGFsC69DYHBgd6uzM0lTbYhCcM0+E4dxg4
+ 9ZyceTGxmOGIM3eaQlaWbt6OK1lyhYcVdTT+KY1aRhxDnJdUCrRDCxUQkW4SLkYwn4cW
+ Xq9wWEo4kt3UpUi+Or2rVPWLUljpKBY8Jq0A/HitrCP2NuH96gNLzhf2lO+sRBF+VhN/
+ 3QeeJ7kKFrkoJ3KI1KfC0oxHUGJtzguiNPJLhnnqsayN0RYNCWJy0iM5MF1e+b8JR068
+ DBTN7NY5gK4FqFfaNoz80rAsWEUmyG2PBVG2cyhyCRWriWVsup/6QV15gkK3f9fpisNy
+ Igwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=+RSZKscRdCamXAJ0k30/EyUeGISH+9TDKdteY9Rg/DM=;
- b=c0AwIpAQgs8hKViM2XgUjapAiqiBFhnVeHDpSN3MTntLfvUO+0FG6OFk6/78UJKCSl
- poDchrLc4Wmt7c+qJtRVZGWVdp9Yt/UIltbYaZw0F1FnbmI2mpQwK0RAyQ7SYRN1pEoc
- 9XbTPnL/2WDWRRnpPq75i/BWvSRQNird1SlP4yFHwyYwJhfNiROAZzvGVbBq5rqJ6dPD
- cFATHXjJO1mafskoDn9uc/g/WhQ/mdNpnITxFm0s+Fsc7YLjV94byPhIlvVoKEN7ZDkB
- 1sEDZRI7pv9q8Lizr6spESor89bl10V+5dgOJwS/x66W/bnaQcS5c5ACTX6+XpgCJYW9
- PHAw==
-X-Gm-Message-State: APjAAAUmJaEQL8rcLx0FEDYyFcrbXsYiGuVpHgs68sKRMYueuFI/X2FJ
- 6wVo2GEBtspiPNzNIdSNIwn5Kg==
-X-Received: by 2002:a05:600c:21c5:: with SMTP id
- x5mr6013917wmj.72.1581702693533; 
- Fri, 14 Feb 2020 09:51:33 -0800 (PST)
+ bh=5yFL6qJIGrr6vMsTkdaf8oL+HzuN+eqpKkJ6fDD8yLs=;
+ b=bgzFTZ9kFWKy4GjzXDp3zORYkRZjDvQ2QRfj9VB4ny1i4HShqZxCDnqDpCHkBKdNfw
+ 9HrjBI2WRWDevE8PETVHrjehWKIbyigQVDpjs7BnsIt3NuwtEqasmg+sjnnco5LHG2Z7
+ Wi2xIjvagGuuwMauR0SMsg8ew5nG4CIhKgt+8ZeANuOBD2es4SVR3kNuzDgbnschAxRj
+ dbt2eKjLnwaULFnfWAqSyXBG3M1wvTUMDDomFgxESw3HtGFjY1EUznpWBR2CXN9v9Q9T
+ Vf7FUQc0uGT3Z5g7/bn0Cafa+NOv6Xnv0QXi2GX+7Ix9fxu6kjQmrA4axnSWNdFvlgeQ
+ Galw==
+X-Gm-Message-State: APjAAAX2TanZpboLAMQEgF9XIDR6ISOx9pzd9nj2Q/ASYPQaJcSl2/Ei
+ +w1bBC1Eli+ftbh9WWkPcru22d3/wmA=
+X-Received: by 2002:adf:b60f:: with SMTP id f15mr5381955wre.372.1581702686270; 
+ Fri, 14 Feb 2020 09:51:26 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id v8sm8001857wrw.2.2020.02.14.09.51.32
+ by smtp.gmail.com with ESMTPSA id v8sm8001857wrw.2.2020.02.14.09.51.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 14 Feb 2020 09:51:33 -0800 (PST)
+ Fri, 14 Feb 2020 09:51:25 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 10/21] target/arm: Stop assuming DBGDIDR always exists
-Date: Fri, 14 Feb 2020 17:51:05 +0000
-Message-Id: <20200214175116.9164-11-peter.maydell@linaro.org>
+Subject: [PATCH v2 04/21] target/arm: Define and use any_predinv isar_feature
+ test
+Date: Fri, 14 Feb 2020 17:50:59 +0000
+Message-Id: <20200214175116.9164-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200214175116.9164-1-peter.maydell@linaro.org>
 References: <20200214175116.9164-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::335
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::442
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Eric Auger <eric.auger@redhat.com>,
  Aaron Lindsay <aaron@os.amperecomputing.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zAUQDSbwuPU8
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kGMoHBkbxs37
 
-The AArch32 DBGDIDR defines properties like the number of
-breakpoints, watchpoints and context-matching comparators.  On an
-AArch64 CPU, the register may not even exist if AArch32 is not
-supported at EL1.
+Instead of open-coding "ARM_FEATURE_AARCH64 ? aa64_predinv: aa32_predinv",
+define and use an any_predinv isar_feature test function.
 
-Currently we hard-code use of DBGDIDR to identify the number of
-breakpoints etc; this works for all our TCG CPUs, but will break if
-we ever add an AArch64-only CPU.  We also have an assert() that the
-AArch32 and AArch64 registers match, which currently works only by
-luck for KVM because we don't populate either of these ID registers
-from the KVM vCPU and so they are both zero.
-
-Clean this up so we have functions for finding the number
-of breakpoints, watchpoints and context comparators which look
-in the appropriate ID register.
-
-This allows us to drop the "check that AArch64 and AArch32 agree
-on the number of breakpoints etc" asserts:
- * we no longer look at the AArch32 versions unless that's the
-   right place to be looking
- * it's valid to have a CPU (eg AArch64-only) where they don't match
- * we shouldn't have been asserting the validity of ID registers
-   in a codepath used with KVM anyway
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.h          |  7 +++++++
- target/arm/internals.h    | 42 +++++++++++++++++++++++++++++++++++++++
- target/arm/debug_helper.c |  6 +++---
- target/arm/helper.c       | 21 +++++---------------
- 4 files changed, 57 insertions(+), 19 deletions(-)
+ target/arm/cpu.h    | 5 +++++
+ target/arm/helper.c | 9 +--------
+ 2 files changed, 6 insertions(+), 8 deletions(-)
 
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 98240224c0c..0f21b6ed803 100644
+index 7ccd65bdce3..ef0feb228ab 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -1840,6 +1840,13 @@ FIELD(ID_DFR0, MPROFDBG, 20, 4)
- FIELD(ID_DFR0, PERFMON, 24, 4)
- FIELD(ID_DFR0, TRACEFILT, 28, 4)
- 
-+FIELD(DBGDIDR, SE_IMP, 12, 1)
-+FIELD(DBGDIDR, NSUHD_IMP, 14, 1)
-+FIELD(DBGDIDR, VERSION, 16, 4)
-+FIELD(DBGDIDR, CTX_CMPS, 20, 4)
-+FIELD(DBGDIDR, BRPS, 24, 4)
-+FIELD(DBGDIDR, WRPS, 28, 4)
-+
- FIELD(MVFR0, SIMDREG, 0, 4)
- FIELD(MVFR0, FPSP, 4, 4)
- FIELD(MVFR0, FPDP, 8, 4)
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 052449b4826..39239186def 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -931,6 +931,48 @@ static inline uint32_t arm_debug_exception_fsr(CPUARMState *env)
-     }
+@@ -3677,6 +3677,11 @@ static inline bool isar_feature_any_fp16(const ARMISARegisters *id)
+     return isar_feature_aa64_fp16(id) || isar_feature_aa32_fp16_arith(id);
  }
  
-+/**
-+ * arm_num_brps: Return number of implemented breakpoints.
-+ * Note that the ID register BRPS field is "number of bps - 1",
-+ * and we return the actual number of breakpoints.
-+ */
-+static inline int arm_num_brps(ARMCPU *cpu)
++static inline bool isar_feature_any_predinv(const ARMISARegisters *id)
 +{
-+    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-+        return FIELD_EX64(cpu->isar.id_aa64dfr0, ID_AA64DFR0, BRPS) + 1;
-+    } else {
-+        return FIELD_EX32(cpu->dbgdidr, DBGDIDR, BRPS) + 1;
-+    }
++    return isar_feature_aa64_predinv(id) || isar_feature_aa32_predinv(id);
 +}
 +
-+/**
-+ * arm_num_wrps: Return number of implemented watchpoints.
-+ * Note that the ID register WRPS field is "number of wps - 1",
-+ * and we return the actual number of watchpoints.
-+ */
-+static inline int arm_num_wrps(ARMCPU *cpu)
-+{
-+    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-+        return FIELD_EX64(cpu->isar.id_aa64dfr0, ID_AA64DFR0, WRPS) + 1;
-+    } else {
-+        return FIELD_EX32(cpu->dbgdidr, DBGDIDR, WRPS) + 1;
-+    }
-+}
-+
-+/**
-+ * arm_num_ctx_cmps: Return number of implemented context comparators.
-+ * Note that the ID register CTX_CMPS field is "number of cmps - 1",
-+ * and we return the actual number of comparators.
-+ */
-+static inline int arm_num_ctx_cmps(ARMCPU *cpu)
-+{
-+    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-+        return FIELD_EX64(cpu->isar.id_aa64dfr0, ID_AA64DFR0, CTX_CMPS) + 1;
-+    } else {
-+        return FIELD_EX32(cpu->dbgdidr, DBGDIDR, CTX_CMPS) + 1;
-+    }
-+}
-+
- /* Note make_memop_idx reserves 4 bits for mmu_idx, and MO_BSWAP is bit 3.
-  * Thus a TCGMemOpIdx, without any MO_ALIGN bits, fits in 8 bits.
+ /*
+  * Forward to the above feature tests given an ARMCPU pointer.
   */
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index 2e3e90c6a57..2ff72d47d19 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -16,8 +16,8 @@ static bool linked_bp_matches(ARMCPU *cpu, int lbn)
- {
-     CPUARMState *env = &cpu->env;
-     uint64_t bcr = env->cp15.dbgbcr[lbn];
--    int brps = extract32(cpu->dbgdidr, 24, 4);
--    int ctx_cmps = extract32(cpu->dbgdidr, 20, 4);
-+    int brps = arm_num_brps(cpu);
-+    int ctx_cmps = arm_num_ctx_cmps(cpu);
-     int bt;
-     uint32_t contextidr;
-     uint64_t hcr_el2;
-@@ -29,7 +29,7 @@ static bool linked_bp_matches(ARMCPU *cpu, int lbn)
-      * case DBGWCR<n>_EL1.LBN must indicate that breakpoint).
-      * We choose the former.
-      */
--    if (lbn > brps || lbn < (brps - ctx_cmps)) {
-+    if (lbn >= brps || lbn < (brps - ctx_cmps)) {
-         return false;
-     }
- 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 11b87723e47..8415cc6b154 100644
+index d4ed52981fa..b3ced7f78ba 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -6256,23 +6256,12 @@ static void define_debug_regs(ARMCPU *cpu)
-     };
+@@ -7721,14 +7721,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+ #endif /*CONFIG_USER_ONLY*/
+ #endif
  
-     /* Note that all these register fields hold "number of Xs minus 1". */
--    brps = extract32(cpu->dbgdidr, 24, 4);
--    wrps = extract32(cpu->dbgdidr, 28, 4);
--    ctx_cmps = extract32(cpu->dbgdidr, 20, 4);
-+    brps = arm_num_brps(cpu);
-+    wrps = arm_num_wrps(cpu);
-+    ctx_cmps = arm_num_ctx_cmps(cpu);
- 
-     assert(ctx_cmps <= brps);
- 
--    /* The DBGDIDR and ID_AA64DFR0_EL1 define various properties
--     * of the debug registers such as number of breakpoints;
--     * check that if they both exist then they agree.
+-    /*
+-     * While all v8.0 cpus support aarch64, QEMU does have configurations
+-     * that do not set ID_AA64ISAR1, e.g. user-only qemu-arm -cpu max,
+-     * which will set ID_ISAR6.
 -     */
--    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
--        assert(FIELD_EX64(cpu->isar.id_aa64dfr0, ID_AA64DFR0, BRPS) == brps);
--        assert(FIELD_EX64(cpu->isar.id_aa64dfr0, ID_AA64DFR0, WRPS) == wrps);
--        assert(FIELD_EX64(cpu->isar.id_aa64dfr0, ID_AA64DFR0, CTX_CMPS)
--               == ctx_cmps);
--    }
--
-     define_one_arm_cp_reg(cpu, &dbgdidr);
-     define_arm_cp_regs(cpu, debug_cp_reginfo);
- 
-@@ -6280,7 +6269,7 @@ static void define_debug_regs(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, debug_lpae_cp_reginfo);
+-    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)
+-        ? cpu_isar_feature(aa64_predinv, cpu)
+-        : cpu_isar_feature(aa32_predinv, cpu)) {
++    if (cpu_isar_feature(any_predinv, cpu)) {
+         define_arm_cp_regs(cpu, predinv_reginfo);
      }
  
--    for (i = 0; i < brps + 1; i++) {
-+    for (i = 0; i < brps; i++) {
-         ARMCPRegInfo dbgregs[] = {
-             { .name = "DBGBVR", .state = ARM_CP_STATE_BOTH,
-               .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = i, .opc2 = 4,
-@@ -6299,7 +6288,7 @@ static void define_debug_regs(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, dbgregs);
-     }
- 
--    for (i = 0; i < wrps + 1; i++) {
-+    for (i = 0; i < wrps; i++) {
-         ARMCPRegInfo dbgregs[] = {
-             { .name = "DBGWVR", .state = ARM_CP_STATE_BOTH,
-               .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = i, .opc2 = 6,
 -- 
 2.20.1
 

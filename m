@@ -1,143 +1,145 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1917855lfp;
-        Fri, 14 Feb 2020 05:35:23 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy4y2v4+9AWaPKCLsanzSrhh6zxxkduS7qCaNmOMS6ima4fBm9QOu5z+41+bg1rh8avTKJ1
-X-Received: by 2002:a05:620a:795:: with SMTP id 21mr2641137qka.60.1581687322887;
-        Fri, 14 Feb 2020 05:35:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581687322; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1973346lfp;
+        Fri, 14 Feb 2020 06:27:00 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy5l6Lm7auN+n3d1PRcTyvKnzh6yS1ArlsMH/Z5NAcIblwI3/ueFHhY0gUXJ10xX8Pp4E3V
+X-Received: by 2002:a0c:fec3:: with SMTP id z3mr2286579qvs.111.1581690420139;
+        Fri, 14 Feb 2020 06:27:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581690420; cv=none;
         d=google.com; s=arc-20160816;
-        b=A8d4ZFCCpK68lvE+vuhmtM9JVEMtDmCxzffAz5k0y5DxpLPGlykkpEw2BHNugwHEz8
-         OXmTKOqRzYGQsXa0HeYetFlBsY+Ud/3Q91Ti9+Kg1S//Y5pzMUqmFstjP23lvCCXh8cO
-         4byruMpch31NjjS74TA3747Wk19J4CmQDeij9mdOZDqvwtgdPt27Ro227AOvNFBUDo2d
-         yTKfs2rjyJ89l3PtNRLjUYg0nzGNT7Giw1UGvLie0b0E/0ZjC5ayCcvvx0/bimm9/X6x
-         rz0r00TlnvJkK0sCq8zDTR7PCNrLFGUZUx/E2PMyQ7piLNFl/KaDOcK2H8CkMZt/rMnL
-         rbhg==
+        b=E7bmJALVbpXpv6t81IQKQe2Ly9FV2PGEsb5K7xKc/UKxRJ5UL6GjL6x2zZMF6t07K9
+         xcZ/kBrEGU0EgiTdWs9CAnZS3K/rzMLAx5r8zyfvuDdeXUE4G0t2wLCkfms6YtIS9HJe
+         t82yVmjsJ247R9I4YVs8v95tc/Oo3uKzLy0GuOs/6SlAY0XzE9l1vpPvQujx5WE9Y56j
+         67PCs5alR1bveaAX8U9bYGJyFQkVRH9i4HVVhNjSoxQBfKm7q61Nl1DMjSqCOs5Pu4pQ
+         IftEenta/VxKULlmI9M25buD1amLHlTZW4dCpMmU0vhYD6dBIOe8H9b+qrsDKzd0Qy3f
+         CpAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=HjKFH/nidefwo3HE1V+8oDIe2P6XzNRGslG25dH2YO0=;
-        b=UUO29xZ5fF9Ljg5Ny/eQW9iM6v4A6OSr7z3jlfTucllT0wScjnFOMKqc9WxP5gqU6f
-         tYwgSFnKacaWb/9795WeYgVzALeX/3m7R/8PK7XEgGbmC71LdSKItwmRQ8B4V95I/hLK
-         PzgAcjamHFz2CcPLDny2ayAJZb5MdVX3/RcxT2D5GWxzROxoelUNxAR5yf4K/VDnd1z0
-         qV1K6nYnrW9y5lgFRr+nPHbtm4aRMXrd7maDj/BKVzqa5CW3rcYG/zVTb6NlZdHvvO0o
-         gvAG45fLITKIskrDz90AqKblUocCxDyjP0Fdr+ZhErESyC207l/e/VctqZROmETEuwWu
-         FZIQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=eY3vOUcsAaeAD2/crVnO3Sv19z9so2Ylgmn74tRhRJY=;
+        b=ysojvwFNmqnx/J3kZySQ+1nty7OeSEzoLTBIP7uDH7OSImdItXqiLT588uwhsjgbkH
+         kKD+E4ziersDzfduU6AzBBcuPutWNIfAIcsSJXhD8/rgR7DT7DzQIq+0chvaq4cMJAVp
+         RaVRvxRxLPkSEaWnY/SR5Erg7YiaETLLeE7kuF6F+hCGux6dSAIW99QpvAu8YqHXzWd4
+         zhreYN69RJ9ZDu+AsZGSmdchzzw9qzbftltr991HPw9BenJKwFI8XGh8Ft1vXTkELEqn
+         MmEkQ5UcAMeFZ2CXgHUbFMET0c4HlfcktKTwA6B5Ox7EMAcEhxSB5a4f1XAPGFchI/mf
+         dPww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hUzU19ru;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gSKJueX3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n54si583540qtk.149.2020.02.14.05.35.22
+        by mx.google.com with ESMTPS id x17si2749850qtm.13.2020.02.14.06.26.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Feb 2020 05:35:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 14 Feb 2020 06:27:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hUzU19ru;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39004 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gSKJueX3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39602 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j2b7q-0003pl-7G
-	for alex.bennee@linaro.org; Fri, 14 Feb 2020 08:35:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52522)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j2bvn-0001Qy-IH
+	for alex.bennee@linaro.org; Fri, 14 Feb 2020 09:26:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35986)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j2b2X-0003Ac-Lg
- for qemu-devel@nongnu.org; Fri, 14 Feb 2020 08:29:54 -0500
+ (envelope-from <groeck7@gmail.com>) id 1j2bvS-0001Oy-H7
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 09:26:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j2b2W-0003Lh-NS
- for qemu-devel@nongnu.org; Fri, 14 Feb 2020 08:29:53 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:34018
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j2b2W-0003JT-JO
- for qemu-devel@nongnu.org; Fri, 14 Feb 2020 08:29:52 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581686992;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HjKFH/nidefwo3HE1V+8oDIe2P6XzNRGslG25dH2YO0=;
- b=hUzU19ru9M7XMm/p5OBQnUVT5/N3LB8GDl7yYiQ4Xh6DWIrYBn5UVeLZQztPLsOmotUJ2x
- tRIS6MjEKOfGdkOzIBnZeBq2eogzPWZkZ0Zly2nIeExrnOVaSCxzk79Nrzfs1TtU8eb/KA
- 4WkMp66XIz31uFSipji9i0DjcntR4AU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-387-btnV4LqKNDm0DqxunrjcTw-1; Fri, 14 Feb 2020 08:29:50 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 35BAD801E66;
- Fri, 14 Feb 2020 13:29:49 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8DF4A5DA7D;
- Fri, 14 Feb 2020 13:29:37 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, jean-philippe@linaro.org,
- dgilbert@redhat.com, quintela@redhat.com, mst@redhat.com, peterx@redhat.com
-Subject: [PATCH v16 10/10] MAINTAINERS: add virtio-iommu related files
-Date: Fri, 14 Feb 2020 14:27:45 +0100
-Message-Id: <20200214132745.23392-11-eric.auger@redhat.com>
-In-Reply-To: <20200214132745.23392-1-eric.auger@redhat.com>
-References: <20200214132745.23392-1-eric.auger@redhat.com>
+ (envelope-from <groeck7@gmail.com>) id 1j2bvR-0006RB-1V
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 09:26:38 -0500
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:37558)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1j2bvN-0006Jm-6a; Fri, 14 Feb 2020 09:26:33 -0500
+Received: by mail-pl1-x644.google.com with SMTP id c23so3800031plz.4;
+ Fri, 14 Feb 2020 06:26:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=eY3vOUcsAaeAD2/crVnO3Sv19z9so2Ylgmn74tRhRJY=;
+ b=gSKJueX3l3dr2qZdd+ylScIdzAymHKUVG7Iv3uTlVnuksvx7uhSdzcqhGjewDMEkyE
+ Bq3s8bnLV1ELoO2FpdK5DPuMe/beQFvsn68LWMOUM69zGi1gB5SMooVxCoR/6Z4e6K9E
+ wktfj69BscRhb9+1OwnrlvpVdtCfPkgALOWabglkWyOLhRNnGzy5g5QooEAvIrm0WHfu
+ NPzh6RRwZzwwnAJZf519PsJ86eQzXs/WYzvmjMN9XzMZ9K98hZdzW+KKnQSigrUnh3jn
+ tHR0yYTcHaupAdT7ZrW1QHdFd7R/W5monjFNbrDbUe8MiJkLtIW7arMZCs5dwqemCoks
+ mS4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=eY3vOUcsAaeAD2/crVnO3Sv19z9so2Ylgmn74tRhRJY=;
+ b=L0xR7ICID/0UCIeL0CDzvuZLaMzEmTGbVpzgefUxI9mT0SqbiQAUmqjEcoAhAqM3QR
+ 8T6akk/CIk+Sg/zfl85aSCuAivHcJZ0bcA2Z2f4NPnyU2PXby+eB1IEJ0oTb0sSqBhhK
+ KlQs39dqsknkGAlOQBSBVzQgYiCQux0cuUxuGr+QDOO7RDlIfRleaN1gH+AOgB2zpWBQ
+ ji5txOX+lETtud1t/jqzqKPWMQqO/sUWhRtNymbBGHdY5YlgIZkemdxpddW+s3ds9+Xd
+ fTbukiZux86RdOtf/CDpic4UjYAPMfVXvDQrbwD4iPKMA7O65YbOza+WPXao3iPj/QI0
+ S3vg==
+X-Gm-Message-State: APjAAAXxXc4ueCchpiloFEwdXJmoE5b6dx1FhZRPAaYO+nOmkxy+OwG9
+ 84DF6FYtXXVhHgwuggQ3TJQ76/Zk
+X-Received: by 2002:a17:90b:97:: with SMTP id
+ bb23mr3709789pjb.53.1581690391132; 
+ Fri, 14 Feb 2020 06:26:31 -0800 (PST)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ t65sm7171884pfd.178.2020.02.14.06.26.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 14 Feb 2020 06:26:30 -0800 (PST)
+Subject: Re: [PATCH 3/3] arm: allwinner: Wire up USB EHCI
+To: Gerd Hoffmann <kraxel@redhat.com>
+References: <20200214062109.24494-1-linux@roeck-us.net>
+ <20200214062109.24494-3-linux@roeck-us.net>
+ <20200214100837.lv2cok5he7epmu7i@sirius.home.kraxel.org>
+From: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <db087bc9-eb23-0b6e-b3aa-5309d824f6ef@roeck-us.net>
+Date: Fri, 14 Feb 2020 06:26:29 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: btnV4LqKNDm0DqxunrjcTw-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20200214100837.lv2cok5he7epmu7i@sirius.home.kraxel.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::644
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: kevin.tian@intel.com, bharatb.linux@gmail.com, tnowicki@marvell.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /tPjHbYJYKYX
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SVgviH2iZMC+
 
-Add a new "virtio-iommu" section with the new files
-related to this device.
+On 2/14/20 2:08 AM, Gerd Hoffmann wrote:
+>> ehci-platform 1c1c000.usb: new USB bus registered, assigned bus number 2
+>> ehci-platform 1c1c000.usb: irq 31, io mem 0x01c1c000
+>> ehci-platform 1c1c000.usb: USB 2.0 started, EHCI 1.00
+> 
+>> +        for (i = 0; i < ARRAY_SIZE(s->ehci); i++) {
+>> +            object_property_set_bool(OBJECT(&s->ehci[i]), true, "realized",
+>> +                                     &err);
+> 
+> I suspect the ohci controllers are ehci companions, i.e. they handle a
+> single usb bus, with ehci handling usb2 and ohci handling usb1 devices?
+> 
+> If so then you should initialize ehci first, explicitly assign bus
+> names and set the masterbus property for the ohci controllers.
+> 
+> See also docs/usb2.txt
+> 
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- MAINTAINERS | 6 ++++++
- 1 file changed, 6 insertions(+)
+Thanks for the references. Makes sense; I'll give it a try.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index c7717df720..b7a7a18737 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1623,6 +1623,12 @@ F: hw/input/virtio-input*.c
- F: include/hw/virtio/virtio-input.h
- F: contrib/vhost-user-input/*
-=20
-+virtio-iommu
-+M: Eric Auger <eric.auger@redhat.com>
-+S: Maintained
-+F: hw/virtio/virtio-iommu*.c
-+F: include/hw/virtio/virtio-iommu.h
-+
- virtio-serial
- M: Laurent Vivier <lvivier@redhat.com>
- R: Amit Shah <amit@kernel.org>
---=20
-2.20.1
-
+Guenter

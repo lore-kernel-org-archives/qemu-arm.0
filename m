@@ -1,104 +1,97 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1518321lfp;
-        Thu, 13 Feb 2020 22:23:46 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyz334CSEQN7iIBybvOwsjowQRe+gjIlSIQYChPX9R24nlMncrsCgp9rrApbHxNuW7emqYh
-X-Received: by 2002:a05:620a:545:: with SMTP id o5mr1049442qko.27.1581661426445;
-        Thu, 13 Feb 2020 22:23:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581661426; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1678607lfp;
+        Fri, 14 Feb 2020 01:26:49 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzWYXv48ry7JyTmNJ9cYhS3CWChBpTmrpxzKZlsjMWYB1ODHCITmJqdgaz1TNTF3flmS2eQ
+X-Received: by 2002:ad4:4c42:: with SMTP id cs2mr1306152qvb.198.1581672409289;
+        Fri, 14 Feb 2020 01:26:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581672409; cv=none;
         d=google.com; s=arc-20160816;
-        b=ev4oyjHz/Bov0Gi5uCb8HxxJKsW3XeAXhPMgXIRuv6+dZ92ximjRdRiE9+SKDijkSr
-         Ke3lubNKFYmHGFIiAzXHAMBbRvDBa1tJWRlTy+MsRee3RvTugz/rx7LsqMOdZ2Oa2I0W
-         3gItvI+IM33YxoaTjAnBZPuvM2cFRddT6UFVOMYXD7KvQMu8CoUgzyPq453qqZ4aoeC7
-         f43rk1d/7W+pWFGI2kGXpNP0N0/Z+R2kdM5eOuIP0dvJ7I75ThcEEeg+tBdPyqOa+Tnt
-         Jq/cmROuuR4XIW+ezmEnsGtTpXMv4qH0TXbtpR6vAi+HAzzZ4uNyLK8FzlyyWZsCrBaZ
-         XzIw==
+        b=MR/zpQM/hLPuKyRxJJAqfMZ8T1LTXYshCkgIje2irETQxImV4KkbKEPPVKji/VsTl8
+         +FOfqqlf2wIjyCOn1sddiozrj0/JMOzGUCOcTkvoRM/eLGKgjdgNhJhk33lx8GUZr4QQ
+         EiAre1MSLfMxy/OBUqTgOvffpAVo16TAyjvh9ZdJ4vkX1W5a/LNfg5FmcMdp6GDDVtLb
+         gl1Og3p7+A6vSu65h9s7Ysbd4FjyDQIquniBeGKHvuexFPlhYeBUwoEvl9pQbc7PIH75
+         JmHMBFKAKefRpjJpLqRB7khRK1Xv7baDyreZHAQGLvS++5dwIFd8RYFXdwDHsPFrN3Ht
+         b8aA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=G/cEIzy2lLCmEJumUIZaTRQAhf9WUeC8c9gRGqdTpm0=;
-        b=dxhAVbB5nxov0PhECMXTWpzrb6HzuFjft6V8xw5OUf8MiEpBbQ8R9Ftz9MpzvGqPUw
-         iN3LKQ/B+L6+jnp4mEOLz+eVU4jFyhIF4ysO73caejgA3PnKy5ZgGEczI5h8hTi/74BD
-         sRjRuJLetCooYfI6ISH4lG3r2FU3tl91ePEbRH/LMFE4KyM4Xy+BDQ8GRfeD6eJuThav
-         z/1APV5Kq/gCy+QqOj+5wWJf7LkPTubuqoiDIB1WnJxsj27trjX0Q9No3QWUZWeot2Bh
-         JNoDxVaQbwB1rLQKwM+kRUo1aHhYj+hA9kQ+BYpoAuHazVmS74129HLpPemtURaJSKJj
-         38sA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Naq8o0gstU0K0l8QzCdUTMTZTl72zzwe6tWvByxFx6I=;
+        b=eSsh2EUwPukPXJ08UDNh8cO1emmjxOuCLiSTe83UQ8PXucPaWh8GoCSXNY6ZPYRAKh
+         /uGEjAgXXX43+QiZenEzvcQecznTPWAffXiSUTzvQIX+9t9WII2V+ILW4AmALYxxLa5S
+         dbdYEMlGqNv/lF+NUDPZCTLs6GDU96yXhm6T/UG2KHmzc3nQ/tr9yCfCiDGOtyQGCDlB
+         ROuxATVLdeA2jBe6VzBYfu3ynstkbYfMs7IeD7vgfbd5p6iABhN8+m58LfQEsK2LG02g
+         beI+ShO3qR7uhBSjnwZgdWsReBuAIIO1MHeQgmCFDEyrVuiY40G/KEU+41/lQJxEZr14
+         2/7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BXVEF8Gm;
+       dkim=fail header.i=@linaro.org header.s=google header.b=tyEV6hN7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v9si2247464qtk.351.2020.02.13.22.23.46
+        by mx.google.com with ESMTPS id k71si2502813qke.214.2020.02.14.01.26.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Feb 2020 22:23:46 -0800 (PST)
+        Fri, 14 Feb 2020 01:26:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BXVEF8Gm;
+       dkim=fail header.i=@linaro.org header.s=google header.b=tyEV6hN7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35230 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36502 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j2UO9-00032I-Sx
-	for alex.bennee@linaro.org; Fri, 14 Feb 2020 01:23:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40899)
+	id 1j2XFI-0005zz-I7
+	for alex.bennee@linaro.org; Fri, 14 Feb 2020 04:26:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49593)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <gshan@redhat.com>) id 1j2UNu-0002zK-2M
- for qemu-arm@nongnu.org; Fri, 14 Feb 2020 01:23:31 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j2XF2-0005zn-5K
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 04:26:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <gshan@redhat.com>) id 1j2UNs-0001pp-Hg
- for qemu-arm@nongnu.org; Fri, 14 Feb 2020 01:23:29 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:43503
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1j2UNs-0001oa-EK
- for qemu-arm@nongnu.org; Fri, 14 Feb 2020 01:23:28 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581661407;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=G/cEIzy2lLCmEJumUIZaTRQAhf9WUeC8c9gRGqdTpm0=;
- b=BXVEF8GmIrCnsy9wU4P6tB9z5NXhGYSY7h3NspUsrhQdL2gpWkfhLfJLjv0uSVmMUKFnw1
- McvklBu0UTtBgjFvh+QfsVQwNzxXIXfW0G8wKcHs6tCtr2JfpEivzBF0E1sKEtiBB4y8D2
- xwOlybed0pV76zustvXqz89Hi9oZ4GE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-280-X1loO7BlPD2DXX2iKh1ogQ-1; Fri, 14 Feb 2020 01:23:25 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A1716189F760;
- Fri, 14 Feb 2020 06:23:24 +0000 (UTC)
-Received: from localhost.localdomain (vpn2-54-93.bne.redhat.com [10.64.54.93])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DBCE0384;
- Fri, 14 Feb 2020 06:23:18 +0000 (UTC)
-Subject: Re: [RESEND RFC PATCH v2 2/2] target/arm: Support NMI injection
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200205110541.37811-3-gshan@redhat.com>
- <CAFEAcA8LJf3rQhi1VyBqSrC9Rj_ZKiYeVMJ8Gb-U7HA4LVagLA@mail.gmail.com>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <9342b389-331d-353b-f6f2-c6a676e0ea32@redhat.com>
-Date: Fri, 14 Feb 2020 17:23:16 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ (envelope-from <peter.maydell@linaro.org>) id 1j2XF1-00077M-8g
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 04:26:32 -0500
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:32840)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j2XF1-00076R-2f
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 04:26:31 -0500
+Received: by mail-oi1-x244.google.com with SMTP id q81so8832469oig.0
+ for <qemu-arm@nongnu.org>; Fri, 14 Feb 2020 01:26:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Naq8o0gstU0K0l8QzCdUTMTZTl72zzwe6tWvByxFx6I=;
+ b=tyEV6hN7zeb685p0dU1hMJ/iYKOSL6MM9OZcee0FQi1IIuWxHuIlRDQEW6Shh3fTRv
+ G3mCiY1eIXkZQbzZwo0cV3s7I9vwTdNWqgdFOVe93ymmwhfZ8cHq47kvOA9tJJsLlr+9
+ zIgmQDpv5lyAfDlc/WyM8LUPP3xUs8iUqKqNLU31QRXkjygpIZzY9XBP7Tl79usu0EYB
+ cD2uItsohv86400cPruuymWhncwkzD79VcV8ZSChkhOty9IWn63erhfWQtn6TYLCVBVX
+ iPL2W8t/YtmJ41XhDeA+QzidGDiyf1QsSP/u/0M7N5GBzr/aA3/aHAib0DsKQkwgNUcg
+ qHtw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Naq8o0gstU0K0l8QzCdUTMTZTl72zzwe6tWvByxFx6I=;
+ b=gj29lAZ/xhHH0s2GwO5f893YlZZCCOqBDo/rkhdxtyPCk/2ZgT1Xb2882JgKqkOFRQ
+ a1zmPLcbXTSosbQrrLZGE2y+9sF7If81nYyqw7/N/A//Ih19seq3ReEgPqvAq4/W7e/h
+ jKaKQnroiWHAU85NZRuZXAPly30LIj/G24r3ZwsfP+4lpiZcT1XoHwyCmJpWIDdW3aCU
+ 3x5bJt17esFVQxn6iZN4ts8zxIoZgnIpzyLv7CIWLlByWMvKMP54FhN4UmATllFeqSOH
+ n/P4CD74lmggkEumVMe6kk0xS5dS7tuZy3H/8viYoWSBE1CXd5i4cjJhASrYYqbmuWZo
+ ucGg==
+X-Gm-Message-State: APjAAAWUHFCdl8zS/SaucR2lez77vg81Kxx6N49DZzE4ZvLE+bHk+bOu
+ syaBpbdefh7WS416UKVCwIw0JOq9p+ePhl1gyoM4kw==
+X-Received: by 2002:aca:b2c5:: with SMTP id b188mr1221123oif.163.1581672390142; 
+ Fri, 14 Feb 2020 01:26:30 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8LJf3rQhi1VyBqSrC9Rj_ZKiYeVMJ8Gb-U7HA4LVagLA@mail.gmail.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: X1loO7BlPD2DXX2iKh1ogQ-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+References: <20200214060548.24939-1-linux@roeck-us.net>
+In-Reply-To: <20200214060548.24939-1-linux@roeck-us.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 14 Feb 2020 09:26:19 +0000
+Message-ID: <CAFEAcA9nojfAx_MevUE5Z44cJ7OQzv7Dy5wRYy22tZpbnz-NAA@mail.gmail.com>
+Subject: Re: [PATCH 1/2] hw/arm/xilinx_zynq: Fix USB port instantiation
+To: Guenter Roeck <linux@roeck-us.net>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::244
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,73 +103,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: Andrew Jones <drjones@redhat.com>, jthierry@redhat.com,
- Alexey Kardashevskiy <aik@ozlabs.ru>, Marc Zyngier <maz@kernel.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Shan Gavin <shan.gavin@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YT0GUEsL00OO
+X-TUID: YNRSLDZqB0r/
 
-On 2/13/20 10:11 PM, Peter Maydell wrote:
-> On Wed, 5 Feb 2020 at 11:06, Gavin Shan <gshan@redhat.com> wrote:
->>
->> This supports QMP/HMP "nmi" command by injecting SError interrupt to
->> guest, which is expected to crash with that. Currently, It's supported
->> on two CPU models: "host" and "max".
->>
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> ---
->>   hw/arm/virt.c          | 18 ++++++++++++++++
->>   target/arm/cpu-qom.h   |  1 +
->>   target/arm/cpu.c       | 48 ++++++++++++++++++++++++++++++++++++++++++
->>   target/arm/cpu64.c     | 25 ++++++++++++++++++----
->>   target/arm/internals.h |  8 +++++++
->>   5 files changed, 96 insertions(+), 4 deletions(-)
-> 
-> A few quick general notes:
-> 
-> (1) as I mentioned on the cover letter, the mechanism
-> for injecting an SError/async external abort into the
-> CPU should be a qemu_irq line, like FIQ/IRQ, not a
-> special-purpose method on the CPU object.
-> 
-> (2) for function naming, there's a dividing line between:
->   * code that implements the (unfortunately x86-centric)
->     monitor command named "nmi"; these functions can have
->     names with 'nmi' in them
->   * code which implements the actual mechanism of 'deliver
->     an SError to the CPU'; these functions should not
->     have 'nmi' in the name or mention nmi, because nmi is
->     not a concept in the Arm architecture
-> 
-> (3) Before we expose 'nmi' to users as something that
-> delivers an SError, we need to think about the interactions
-> with RAS, because currently we also use SError to say
-> "there was an error in the host memory you're using",
-> and we might in future want to use SError for proper
-> emulated RAS. We don't want to paint ourselves into a
-> corner by grabbing SError exclusively for 'nmi'.
-> 
+On Fri, 14 Feb 2020 at 06:05, Guenter Roeck <linux@roeck-us.net> wrote:
+>
+> USB ports must be instantiated as TYPE_CHIPIDEA to work.
+> Linux expects and checks various chipidea registers, which
+> do not exist with the basic ehci emulation.
 
-Hi Peter, Thanks for the nice details. I just posted v3 to address
-(1) and (2).
+Hi; I didn't see a cover letter email for this series (sorry if
+I missed it). Would you mind including a cover letter email
+for any more-than-one-patch set, please? It helps the
+automatic tools and it also decreases the chances that
+I miss the patches when I'm scanning through my email
+(when I'm tagging things I might want to review I basically
+look through subject lines for single patch patches
+and for 00/nn cover letters and ignore middle-of-patchset
+emails...)
 
-For (3), I'm not sure. It seems we need some registers to record the
-details on why the SError is raised. For ARMv8 with RAS extension is
-supported, VSESR_EL2 can be used. Otherwise, we probably need some
-space in ESR_EL1. For aarch32, DFSR might be the alternative. With
-more details about the cause, the "NMI" and other errors can be
-classified.
 
-May I ask if the SError is going to be triggered by simulated device
-or real one, or both in future? If it's corresponding to host memory
-error, it seems it should be triggered by a real hardware. In this case,
-the error should be intercepted and then delivered to guest. I need
-more details how the SError will be used for RAS.
-
-Thanks,
-Gavin
-
+thanks
+-- PMM

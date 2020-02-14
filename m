@@ -1,98 +1,104 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1517574lfp;
-        Thu, 13 Feb 2020 22:22:46 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw/bXvfkl3p76bUNxtBAwo05AGcyxN7cjsDnHUYYBOWw3he8/xrSlQ3qUii0LvKGk0Y1EyQ
-X-Received: by 2002:a0c:fac1:: with SMTP id p1mr877156qvo.231.1581661365961;
-        Thu, 13 Feb 2020 22:22:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581661365; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1518321lfp;
+        Thu, 13 Feb 2020 22:23:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyz334CSEQN7iIBybvOwsjowQRe+gjIlSIQYChPX9R24nlMncrsCgp9rrApbHxNuW7emqYh
+X-Received: by 2002:a05:620a:545:: with SMTP id o5mr1049442qko.27.1581661426445;
+        Thu, 13 Feb 2020 22:23:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581661426; cv=none;
         d=google.com; s=arc-20160816;
-        b=NOrw/kVL/F/Zn3OGhbogthb+4h0xG70kmBIE0gBIzzCl3SrvqcA2d7m7reYoTKVSVu
-         KBDzaxqR0rJZ0iS9ZqAR4z5kQBBQc1WdkwZhxWs/wngVsdDGtkTZac3H3qKIUFASdtfH
-         CpEx+GF09SSgngMhVc/dHPSNyhsbD59IzL/+Af2+HVdKa9NHj/IxYIEHYVu8ukG5ELA8
-         r0P45wZymWevTRrsu+Exh7oMW9d6YTjO3KcJoBp/245+HHlAKbrMGFcS9eCnYTVVhYVI
-         dpQsmJLygB0PM9AjCk/KY/GDwWhTiB/d+Lk7PwomxWzA/hCEJq79CPiiKzk8MYpfPKDz
-         Rnfg==
+        b=ev4oyjHz/Bov0Gi5uCb8HxxJKsW3XeAXhPMgXIRuv6+dZ92ximjRdRiE9+SKDijkSr
+         Ke3lubNKFYmHGFIiAzXHAMBbRvDBa1tJWRlTy+MsRee3RvTugz/rx7LsqMOdZ2Oa2I0W
+         3gItvI+IM33YxoaTjAnBZPuvM2cFRddT6UFVOMYXD7KvQMu8CoUgzyPq453qqZ4aoeC7
+         f43rk1d/7W+pWFGI2kGXpNP0N0/Z+R2kdM5eOuIP0dvJ7I75ThcEEeg+tBdPyqOa+Tnt
+         Jq/cmROuuR4XIW+ezmEnsGtTpXMv4qH0TXbtpR6vAi+HAzzZ4uNyLK8FzlyyWZsCrBaZ
+         XzIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=uSI6UGwVXPkrla+R3kIjKT7Kl55AJFmzZRtGcCUVGBI=;
-        b=oSu2tDxGbsibebQvdSCleXJ3aZjOMr39AbVO3o5jydS5dN4Idc+LUVW3XlJQMCBYOh
-         M8ZB6ZHrZay9/iTBJFr/ZLqIDwnZ7I/rkOZfa7t0nlxCX4NTDOmYr6Up0eydVEMpwLJ0
-         7SQUqMM0uhSeizBvJhSxgyennEASp5BagwvmGmJZoKASxhRwLCfgapCVqbvbBaDueJhs
-         lC3edYIAAIBSTeUUehrbUmfL3tL6UjXr9jEs9sT69tBn5xAIpXkZ1WQ6p4baYcFLWprW
-         5bmVu9pLU45eVef5foKkj8RLrPen68EPOUqej3F121nudoy8ntFlS8HbIdMQPU0C2UqB
-         4VBA==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :dkim-signature;
+        bh=G/cEIzy2lLCmEJumUIZaTRQAhf9WUeC8c9gRGqdTpm0=;
+        b=dxhAVbB5nxov0PhECMXTWpzrb6HzuFjft6V8xw5OUf8MiEpBbQ8R9Ftz9MpzvGqPUw
+         iN3LKQ/B+L6+jnp4mEOLz+eVU4jFyhIF4ysO73caejgA3PnKy5ZgGEczI5h8hTi/74BD
+         sRjRuJLetCooYfI6ISH4lG3r2FU3tl91ePEbRH/LMFE4KyM4Xy+BDQ8GRfeD6eJuThav
+         z/1APV5Kq/gCy+QqOj+5wWJf7LkPTubuqoiDIB1WnJxsj27trjX0Q9No3QWUZWeot2Bh
+         JNoDxVaQbwB1rLQKwM+kRUo1aHhYj+hA9kQ+BYpoAuHazVmS74129HLpPemtURaJSKJj
+         38sA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=seheKpj0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BXVEF8Gm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o22si2267274qtk.216.2020.02.13.22.22.45
+        by mx.google.com with ESMTPS id v9si2247464qtk.351.2020.02.13.22.23.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Feb 2020 22:22:45 -0800 (PST)
+        Thu, 13 Feb 2020 22:23:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=seheKpj0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35219 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BXVEF8Gm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35230 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j2UNB-0001wD-EO
-	for alex.bennee@linaro.org; Fri, 14 Feb 2020 01:22:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40264)
+	id 1j2UO9-00032I-Sx
+	for alex.bennee@linaro.org; Fri, 14 Feb 2020 01:23:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40899)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1j2ULq-0008Rv-Fk
- for qemu-arm@nongnu.org; Fri, 14 Feb 2020 01:21:23 -0500
+ (envelope-from <gshan@redhat.com>) id 1j2UNu-0002zK-2M
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 01:23:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1j2ULp-0007vR-DB
- for qemu-arm@nongnu.org; Fri, 14 Feb 2020 01:21:22 -0500
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:38975)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1j2ULp-0007ub-1t; Fri, 14 Feb 2020 01:21:21 -0500
-Received: by mail-pj1-x1041.google.com with SMTP id e9so3485900pjr.4;
- Thu, 13 Feb 2020 22:21:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=uSI6UGwVXPkrla+R3kIjKT7Kl55AJFmzZRtGcCUVGBI=;
- b=seheKpj0spMk8r8qng1fvTY9miF6A5EF8l2ZSfog7Xbm1TrPTAV4sDlgOZHMPIidNC
- BcvLDNy6dkeW6AX4mG8BIaxKO8KPETwony+rPG+KDv4xEmDMgZHoLnCufG+C2VLuPheI
- +3FxOT0G2aLdwgW6xpkpxkxrOGmBi1+wQAnlgfG78s62HWcl5GCrDAUDPpWq0q9bgIjs
- PMzy3jDLk/vHOMyOn7b3ocgBjoqPrlggAFuRSI4Mks9LJpgh4DDfWOSqyiNoIga9LJef
- UAqCMw6poDV4A0WDux+tzzOp1Gw8pyMN4lHTiaOhMxhQacZQH5UjqVWvKA59dW9TSYfn
- A7Xw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references;
- bh=uSI6UGwVXPkrla+R3kIjKT7Kl55AJFmzZRtGcCUVGBI=;
- b=U63A2yX9xyGdh8hH/nJYxoYamt67WeU7uwLgaSlrCLn8ElsTXkfrkiNJRhGTZYM1+2
- COeT/zvkUqqI0w3Yn6VCJFJkeWIoOON50TF9jwAkmBSCfAqc35SWKAU5DFH72tfE1Z7r
- hQf7KGv4Uujxv/loTHFL4Dg/4tZV/E1NqeK0a0DfBOMvorg9DKNN3nJRK0IHYiLlkjKD
- 1UO/RTesW60jwWaRRvsXwxJiXwG2VltMOJEPylVmcIyeYiczE6h65DkeR/VwOmho8WtM
- VjV/x4R1DXcFCFfKK0hKKck3dOdvF/7jCI4CxnCa8Xj7VHSzeW5ngPjb6/+g5SvTKgpq
- 9s9A==
-X-Gm-Message-State: APjAAAUZS55HDHtIuLnOVFA+9JEQPPil4Mgz9gyjY8pEGADWgENf4b63
- f7IgcTKYUNQYcU/i8Uv3X64=
-X-Received: by 2002:a17:90a:c389:: with SMTP id
- h9mr1733981pjt.128.1581661279995; 
- Thu, 13 Feb 2020 22:21:19 -0800 (PST)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id u26sm5112210pfn.46.2020.02.13.22.21.18
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 13 Feb 2020 22:21:19 -0800 (PST)
-From: Guenter Roeck <linux@roeck-us.net>
+ (envelope-from <gshan@redhat.com>) id 1j2UNs-0001pp-Hg
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 01:23:29 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:43503
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1j2UNs-0001oa-EK
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 01:23:28 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581661407;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=G/cEIzy2lLCmEJumUIZaTRQAhf9WUeC8c9gRGqdTpm0=;
+ b=BXVEF8GmIrCnsy9wU4P6tB9z5NXhGYSY7h3NspUsrhQdL2gpWkfhLfJLjv0uSVmMUKFnw1
+ McvklBu0UTtBgjFvh+QfsVQwNzxXIXfW0G8wKcHs6tCtr2JfpEivzBF0E1sKEtiBB4y8D2
+ xwOlybed0pV76zustvXqz89Hi9oZ4GE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-280-X1loO7BlPD2DXX2iKh1ogQ-1; Fri, 14 Feb 2020 01:23:25 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A1716189F760;
+ Fri, 14 Feb 2020 06:23:24 +0000 (UTC)
+Received: from localhost.localdomain (vpn2-54-93.bne.redhat.com [10.64.54.93])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DBCE0384;
+ Fri, 14 Feb 2020 06:23:18 +0000 (UTC)
+Subject: Re: [RESEND RFC PATCH v2 2/2] target/arm: Support NMI injection
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 3/3] arm: allwinner: Wire up USB EHCI
-Date: Thu, 13 Feb 2020 22:21:09 -0800
-Message-Id: <20200214062109.24494-3-linux@roeck-us.net>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200214062109.24494-1-linux@roeck-us.net>
-References: <20200214062109.24494-1-linux@roeck-us.net>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::1041
+References: <20200205110541.37811-3-gshan@redhat.com>
+ <CAFEAcA8LJf3rQhi1VyBqSrC9Rj_ZKiYeVMJ8Gb-U7HA4LVagLA@mail.gmail.com>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <9342b389-331d-353b-f6f2-c6a676e0ea32@redhat.com>
+Date: Fri, 14 Feb 2020 17:23:16 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8LJf3rQhi1VyBqSrC9Rj_ZKiYeVMJ8Gb-U7HA4LVagLA@mail.gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: X1loO7BlPD2DXX2iKh1ogQ-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,94 +110,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Guenter Roeck <linux@roeck-us.net>,
- qemu-devel@nongnu.org
+Reply-To: Gavin Shan <gshan@redhat.com>
+Cc: Andrew Jones <drjones@redhat.com>, jthierry@redhat.com,
+ Alexey Kardashevskiy <aik@ozlabs.ru>, Marc Zyngier <maz@kernel.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Shan Gavin <shan.gavin@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PB3bPLGzhxR9
+X-TUID: YT0GUEsL00OO
 
-Initialize EHCI controllers on Allwinner A10. With this patch applied,
-USB EHCI ports are discovered when booting the cubieboard machine with
-a recent Linux kernel.
+On 2/13/20 10:11 PM, Peter Maydell wrote:
+> On Wed, 5 Feb 2020 at 11:06, Gavin Shan <gshan@redhat.com> wrote:
+>>
+>> This supports QMP/HMP "nmi" command by injecting SError interrupt to
+>> guest, which is expected to crash with that. Currently, It's supported
+>> on two CPU models: "host" and "max".
+>>
+>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>> ---
+>>   hw/arm/virt.c          | 18 ++++++++++++++++
+>>   target/arm/cpu-qom.h   |  1 +
+>>   target/arm/cpu.c       | 48 ++++++++++++++++++++++++++++++++++++++++++
+>>   target/arm/cpu64.c     | 25 ++++++++++++++++++----
+>>   target/arm/internals.h |  8 +++++++
+>>   5 files changed, 96 insertions(+), 4 deletions(-)
+> 
+> A few quick general notes:
+> 
+> (1) as I mentioned on the cover letter, the mechanism
+> for injecting an SError/async external abort into the
+> CPU should be a qemu_irq line, like FIQ/IRQ, not a
+> special-purpose method on the CPU object.
+> 
+> (2) for function naming, there's a dividing line between:
+>   * code that implements the (unfortunately x86-centric)
+>     monitor command named "nmi"; these functions can have
+>     names with 'nmi' in them
+>   * code which implements the actual mechanism of 'deliver
+>     an SError to the CPU'; these functions should not
+>     have 'nmi' in the name or mention nmi, because nmi is
+>     not a concept in the Arm architecture
+> 
+> (3) Before we expose 'nmi' to users as something that
+> delivers an SError, we need to think about the interactions
+> with RAS, because currently we also use SError to say
+> "there was an error in the host memory you're using",
+> and we might in future want to use SError for proper
+> emulated RAS. We don't want to paint ourselves into a
+> corner by grabbing SError exclusively for 'nmi'.
+> 
 
-ehci-platform 1c14000.usb: EHCI Host Controller
-ehci-platform 1c14000.usb: new USB bus registered, assigned bus number 1
-ehci-platform 1c14000.usb: irq 26, io mem 0x01c14000
-ehci-platform 1c14000.usb: USB 2.0 started, EHCI 1.00
-ehci-platform 1c1c000.usb: EHCI Host Controller
-ehci-platform 1c1c000.usb: new USB bus registered, assigned bus number 2
-ehci-platform 1c1c000.usb: irq 31, io mem 0x01c1c000
-ehci-platform 1c1c000.usb: USB 2.0 started, EHCI 1.00
+Hi Peter, Thanks for the nice details. I just posted v3 to address
+(1) and (2).
 
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
----
- hw/arm/allwinner-a10.c         | 17 +++++++++++++++++
- include/hw/arm/allwinner-a10.h |  2 ++
- 2 files changed, 19 insertions(+)
+For (3), I'm not sure. It seems we need some registers to record the
+details on why the SError is raised. For ARMv8 with RAS extension is
+supported, VSESR_EL2 can be used. Otherwise, we probably need some
+space in ESR_EL1. For aarch32, DFSR might be the alternative. With
+more details about the cause, the "NMI" and other errors can be
+classified.
 
-diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index 818145428c..f8b963b5c3 100644
---- a/hw/arm/allwinner-a10.c
-+++ b/hw/arm/allwinner-a10.c
-@@ -32,6 +32,7 @@
- #define AW_A10_PIT_REG_BASE     0x01c20c00
- #define AW_A10_UART0_REG_BASE   0x01c28000
- #define AW_A10_EMAC_BASE        0x01c0b000
-+#define AW_A10_EHCI_BASE        0x01c14000
- #define AW_A10_OHCI_BASE        0x01c14400
- #define AW_A10_SATA_BASE        0x01c18000
- 
-@@ -64,6 +65,10 @@ static void aw_a10_init(Object *obj)
-             sysbus_init_child_obj(obj, "ohci[*]", OBJECT(&s->ohci[i]),
-                                   sizeof(s->ohci[i]), TYPE_SYSBUS_OHCI);
-         }
-+        for (i = 0; i < ARRAY_SIZE(s->ehci); i++) {
-+            sysbus_init_child_obj(obj, "ehci[*]", OBJECT(&s->ehci[i]),
-+                                  sizeof(s->ehci[i]), TYPE_PLATFORM_EHCI);
-+        }
-     }
- }
- 
-@@ -162,6 +167,18 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
-             sysbus_connect_irq(SYS_BUS_DEVICE(&s->ohci[i]), 0,
-                                qdev_get_gpio_in(dev, 64 + i));
-         }
-+        for (i = 0; i < ARRAY_SIZE(s->ehci); i++) {
-+            object_property_set_bool(OBJECT(&s->ehci[i]), true, "realized",
-+                                     &err);
-+            if (err) {
-+                error_propagate(errp, err);
-+                return;
-+            }
-+            sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-+                            AW_A10_EHCI_BASE + i * 0x8000);
-+            sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-+                               qdev_get_gpio_in(dev, 39 + i));
-+        }
-     }
- }
- 
-diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
-index 4864adbec3..17e1ee92e2 100644
---- a/include/hw/arm/allwinner-a10.h
-+++ b/include/hw/arm/allwinner-a10.h
-@@ -10,6 +10,7 @@
- #include "hw/net/allwinner_emac.h"
- #include "hw/ide/ahci.h"
- #include "hw/usb/hcd-ohci.h"
-+#include "hw/usb/hcd-ehci.h"
- 
- #include "target/arm/cpu.h"
- 
-@@ -31,6 +32,7 @@ typedef struct AwA10State {
-     AllwinnerAHCIState sata;
-     MemoryRegion sram_a;
-     OHCISysBusState ohci[2];
-+    EHCISysBusState ehci[2];
- } AwA10State;
- 
- #endif
--- 
-2.17.1
+May I ask if the SError is going to be triggered by simulated device
+or real one, or both in future? If it's corresponding to host memory
+error, it seems it should be triggered by a real hardware. In this case,
+the error should be intercepted and then delivered to guest. I need
+more details how the SError will be used for RAS.
+
+Thanks,
+Gavin
 

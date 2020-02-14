@@ -1,108 +1,103 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1338924lfp;
-        Thu, 13 Feb 2020 18:25:42 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzEcqXcBu/khcHXvMPAwFGiJUweRXXQvZY+iUt2lZRZrZFMjWGm/VkyUZ2PPJ6cj5r5YTCj
-X-Received: by 2002:a37:ac17:: with SMTP id e23mr547888qkm.80.1581647141963;
-        Thu, 13 Feb 2020 18:25:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581647141; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp1808155lfp;
+        Fri, 14 Feb 2020 03:47:09 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzrGAWmtqo7SLidIUqNvPi3DnvTnfNvRsL9qUAwQxsJBBLF775dDAvF33pZCr35DdpxhhTp
+X-Received: by 2002:ac8:7773:: with SMTP id h19mr2167185qtu.144.1581680829799;
+        Fri, 14 Feb 2020 03:47:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581680829; cv=none;
         d=google.com; s=arc-20160816;
-        b=q/9uCJLehvlD7x3F8vnWXrTbg5Tnn99wPsiKpjaGvDN1iN3SYRxT+APLHW3q2nPiZZ
-         kmfmYQuG1uoR91AnSCXP8eNgztqrkOIuYdGfrmvr6D5F44JWkZ0OxevdVDZy1qhTwwAT
-         FmQv7nY7WI7JqyPuBCt2H9T6pjUXtg0JnW5r7pKqgN08ZHDWY0PdaGSI+kYrOk00adAE
-         g07plp+TiBk/Jv14A8XzH+cH4uNrmhw1U4MHmWi6Cg9jrjF+tKfD1RY56oDX+XCjhJDh
-         sXooSHVv0INTZTiLh/X65Ge/qUKYxepN6Tj4WK6F3PgFASK6PFd0XFaZUJwPqXY4y+xR
-         hz+A==
+        b=esdQM10z9TqCWVH4ruoocLpgggKYqWPumfAQT2aO4/mLIM0oF/woVqIYBF/bMHONzv
+         sMXjVfDjQBm0pusduvSSkMxl7tnbrci/m7/iluuhRiCVYtwQVptSGosi090/G4Ngh7Xc
+         NNx5JPUTbmlZWSF8kIphkTeAxC29JWkvFvyJW9PSv+KuqiM2BFZnz7xT1GQgKX6cp0zs
+         Q6QgfVeMQHPUw9xluXGGCKP76OGWI7XK1wLH61fvwceYYgOT9rEzPKEJOZbcpBxuhF45
+         B+MVuPTgCW3fyXkIzpMM+t753+s+f4yqUbQm66JiMpAm+KUsa5BEp3fHOzWXT6cDhaep
+         uw9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=7lrAOZ9XjD+N2YIRPqwm0lN9LlzDnvRAI1rMkp2cWqc=;
-        b=f64OXbERUarOhB0uuFYgdSMotpOES/vRa9qvtXnlt8JLYxBtxrBaMx1O2/aYChjtIL
-         fe1i+bE7vAGqOK6ydcWwR97KD3Qq2/xjv79ivee3r42BpU42EcZaCjbt5u1mFXBLeczD
-         A7QwhB33A1wayj90dZbTKSP4uaNhsfXZSPTv3e1qTch6u1e2i4r7cXRdYFeakcb1mU4d
-         VksNtjkZvFbCBm/APe/kA3TbS2KtVthKxTsvUpF/q6UmH7n7T69VZYkQSFxbLcgrGceI
-         kTkAmT+Q995m/VrIhRQa4S3VCWGu1cicx72HBIPUZzJ2np0RJTg62y3YfH5fnYMlLE3K
-         MIPQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:from:references:to:subject:dkim-signature;
+        bh=SxMX0UpvUTdAOsL+LgluIHhV1v8PCiN4B847b3lrIMU=;
+        b=tMMh2xwtkw7KfCCBc7oBLjyGuCPy37MqnlNHEjk5oN9AScs9fMK/JB1ZUydT4uVH+s
+         igkKmfwz5jq13Zu9WTK9/FpgJxRmGOvQFRCHK9dEwUKN3Koz76epJj0gJYxJM7MFKQHd
+         sjuLjfQZ05lmeJrwyEmkZ5KJf5SAOiOo3kgkFWd3PrOXR5pX3UQQeMKvk7FIDYMwWcAR
+         MLGNiVIxHgaeWYZ0M+1uarDT6xAbSUYw0HkSF0EA+MJWjIC1B7NN1qNLamxymiatGCgi
+         Rkh1PILO10taOCQV5pj0HbYVYhsbespGLm8xw2WQO+FsKfcXh+LLEFEi7CDCDhkA8efc
+         2OQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ws8B7oOe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E4bwHXUz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g19si671447qkl.337.2020.02.13.18.25.41
+        by mx.google.com with ESMTPS id u4si2584649qtd.257.2020.02.14.03.47.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Feb 2020 18:25:41 -0800 (PST)
+        Fri, 14 Feb 2020 03:47:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ws8B7oOe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E4bwHXUz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33874 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37574 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j2Qfl-0004hd-DD
-	for alex.bennee@linaro.org; Thu, 13 Feb 2020 21:25:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56782)
+	id 1j2ZR7-0001TE-5o
+	for alex.bennee@linaro.org; Fri, 14 Feb 2020 06:47:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55156)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <gshan@redhat.com>) id 1j2Qfc-0004gl-FP
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 21:25:33 -0500
+ (envelope-from <eblake@redhat.com>) id 1j2ZQt-0001Sz-A5
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 06:46:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <gshan@redhat.com>) id 1j2Qfa-0000qQ-OW
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 21:25:31 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:29676
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <eblake@redhat.com>) id 1j2ZQs-0000vz-B9
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 06:46:55 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40570
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1j2Qfa-0000nL-By
- for qemu-arm@nongnu.org; Thu, 13 Feb 2020 21:25:30 -0500
+ (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1j2ZQs-0000uC-7T
+ for qemu-arm@nongnu.org; Fri, 14 Feb 2020 06:46:54 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581647129;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1581680813;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=7lrAOZ9XjD+N2YIRPqwm0lN9LlzDnvRAI1rMkp2cWqc=;
- b=Ws8B7oOeF2HSUzSoIw5CW3lZcz3Ge+sbBZccwPQbJYGONKKItMSJjoCGzp0Y7BA1wBrxx7
- QFNn6P56NOVfWvZTYwn+QjgEyK3PwCR2y0tjxqFmZZPA1py6iB2SXXXQs+2bgYoHLsSuJ9
- bMig0nj+GiC7nM6tVrxb6pOr02Agd4c=
+ bh=SxMX0UpvUTdAOsL+LgluIHhV1v8PCiN4B847b3lrIMU=;
+ b=E4bwHXUzIALrmvrHZe6T32VcdLoV0j5L9HIKroxnK3IxmChv5IBJv97kuxSUODPjW5Vi15
+ sXp6qkPkoWclA7gVW9oPpH3glJrSQtdgMacmkilUCGX1ZXw0ReLY9F6V4cUR5DlkPIJ/Da
+ fjrhyb8S/zx2Wo1UBSjW5uQGdTzjNlE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-162-guSVQx0fN4SJRXBvGUTGJw-1; Thu, 13 Feb 2020 21:25:24 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-97-fjWVyNt2OC-M0X9KDyw6lA-1; Fri, 14 Feb 2020 06:46:46 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F3726800D41;
- Fri, 14 Feb 2020 02:25:22 +0000 (UTC)
-Received: from localhost.localdomain (vpn2-54-88.bne.redhat.com [10.64.54.88])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7D98719C70;
- Fri, 14 Feb 2020 02:25:16 +0000 (UTC)
-Subject: Re: [RESEND RFC PATCH v2 1/2] target/arm: Allow to inject SError
- interrupt
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200205110541.37811-2-gshan@redhat.com>
- <8dce7dbe-c6c1-122a-f960-0fc29257dd1c@redhat.com>
- <CAFEAcA-RiVfrFFkxppB=z8x76rjorF-5onyGwVAdsHY7W1U88g@mail.gmail.com>
- <21e4051a-4d06-03cb-6d8e-5331b5b570c4@redhat.com>
- <CAFEAcA_zyMgG5SQpVCwUTx3CyU=S=enSZCLCU=2NurukHNM=AA@mail.gmail.com>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <6d4934de-4aa6-24b4-6768-2439336a51af@redhat.com>
-Date: Fri, 14 Feb 2020 13:25:13 +1100
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E2D5C8018A5;
+ Fri, 14 Feb 2020 11:46:43 +0000 (UTC)
+Received: from [10.3.116.180] (ovpn-116-180.phx2.redhat.com [10.3.116.180])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id F0DB260BFB;
+ Fri, 14 Feb 2020 11:46:42 +0000 (UTC)
+Subject: Re: [PATCH] migration/throttle: Make throttle slower at tail stage
+To: Keqian Zhu <zhukeqian1@huawei.com>, qemu-devel@nongnu.org
+References: <20200214032700.25011-1-zhukeqian1@huawei.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <d46149e5-8d8f-d3b8-91ec-145c102cffb7@redhat.com>
+Date: Fri, 14 Feb 2020 05:46:42 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_zyMgG5SQpVCwUTx3CyU=S=enSZCLCU=2NurukHNM=AA@mail.gmail.com>
+In-Reply-To: <20200214032700.25011-1-zhukeqian1@huawei.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: guSVQx0fN4SJRXBvGUTGJw-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: fjWVyNt2OC-M0X9KDyw6lA-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,48 +109,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: Andrew Jones <drjones@redhat.com>, jthierry@redhat.com,
- Alexey Kardashevskiy <aik@ozlabs.ru>, Marc Zyngier <maz@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Shan Gavin <shan.gavin@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: wanghaibin.wang@huawei.com, qemu-arm@nongnu.org,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Juan Quintela <quintela@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K6imce7tBg9N
+X-TUID: VDBCtJJoDqsT
 
-On 2/13/20 9:31 PM, Peter Maydell wrote:
-> On Thu, 13 Feb 2020 at 03:49, Gavin Shan <gshan@redhat.com> wrote:
->> On 2/12/20 10:34 PM, Peter Maydell wrote:
->>> Yeah, this is on my list to look at; Richard Henderson also could
->>> have a look at it. From a quick scan I suspect you may be missing
->>> handling for AArch32.
+On 2/13/20 9:27 PM, Keqian Zhu wrote:
+> At the tail stage of throttle, VM is very sensitive to
+> CPU percentage. We just throttle 30% of remaining CPU
+> when throttle is more than 80 percentage.
 > 
->> Yes, the functionality is only supported on aarch64 currently by intention
->> because the next patch enables it on "max" and "host" CPU models and both
->> of them are running in aarch64 mode.
->>
->> https://patchwork.kernel.org/patch/11366119/
->>
->> If you really want to get this supported for aarch32 either, I can do
->> it. However, it seems there is a long list of aarch32 CPU models, defined
->> in target/arm/cpu.c::arm_cpus. so which CPU models you prefer to see with
->> this supported? I think we might choose one or two popular CPU models if
->> you agree.
+> This doesn't conflict with cpu_throttle_increment.
 > 
-> I don't think you should need to care about the CPU models.
-> We should implement SError (aka "asynchronous external
-> abort" in ARMv7 and earlier) generically for all CPUs. The
-> SError/async abort should be triggered by a qemu_irq line
-> inbound to the CPU (similar to FIQ and IRQ); the board can
-> choose to wire that up to something, or not, as it likes.
+> This may make migration time longer, and is disabled
+> by default.
 > 
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> ---
+> Cc: Juan Quintela <quintela@redhat.com>
+> Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+> Cc: Eric Blake <eblake@redhat.com>
+> Cc: Markus Armbruster <armbru@redhat.com>
 
-Yes, what I need to care about is board with this. It means
-I will get this supported on "virt" only. Thanks for the comments
-and the changes will be included in v3.
+> +++ b/qapi/migration.json
+> @@ -532,6 +532,12 @@
+>   #                          auto-converge detects that migration is not making
+>   #                          progress. The default value is 10. (Since 2.7)
+>   #
+> +# @cpu-throttle-tailslow: Make throttle slower at tail stage
+> +#                         At the tail stage of throttle, VM is very sensitive to
+> +#                         CPU percentage. We just throttle 30% of remaining CPU
+> +#                         when throttle is more than 80 percentage. The default
+> +#                         value is false. (Since 4.1)
 
-Thanks,
-Gavin
+The next release is 5.0, not 4.1.
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 

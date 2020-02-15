@@ -1,97 +1,76 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp2522751lfp;
-        Fri, 14 Feb 2020 16:14:23 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwC4gMq9OG0RMZJKYSedu8ZUyB7SqIDlBdWLNMlJyBuZbq0eIz3dnWYCMUK4bnr29nIRdSJ
-X-Received: by 2002:a05:620a:12a8:: with SMTP id x8mr5126807qki.93.1581725662946;
-        Fri, 14 Feb 2020 16:14:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581725662; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp2863492lfp;
+        Sat, 15 Feb 2020 00:22:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx4gQ/xBsSlcoIVWu4w9EeSnz205gXZEvtv3gblFYWdUpHyNougf9twQ9ndbwVG2CGGA7Ic
+X-Received: by 2002:ac8:108:: with SMTP id e8mr5688373qtg.101.1581754921829;
+        Sat, 15 Feb 2020 00:22:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581754921; cv=none;
         d=google.com; s=arc-20160816;
-        b=N1Jc2OC9MDsLFAcs2gj+cn3oFcQ6h6u/FqqsrZeKYOT495btc72Wz+Bz3oZjyQpVY4
-         h6fi/Y9qvc/558a9Cg2auubbSXTF4FHzYdMNLpzLf8upLOlYdMHjb3V8agHlFloTHYaY
-         aMJ/UboOVlvkQi0N5kGYJOBNGrLSm82myTzfqxU6T62eOHkN6z00WEX3/G6ZR92Lom6Y
-         HrtEkzseGqqEajXFkSsduKTSclq9q86I8Zpqcj9twWlkmP+v2AMGYUKrioGYpb7a7FNl
-         Qb9kEoxWlAGGFzkk7LuLCsdYahU8whagPuUIQbEN/Mxz3nouWp5mlBSJPzUUZiiDJspi
-         OF+w==
+        b=aShNO0tlMWycYWI8s/wBo9c9OcD2uJKPY2XOWFE1z/9R61fYBrG3Uej6uSTNFx3J/K
+         yPbZ40aaZhfKM5jGZUSztPRkw3c9vd9A8npyZVwN7CbrvRxiqThSGuszyXx2Ofv8Q/L4
+         KsIUKPQGQv5FIwLsxk7Dv4KlGjTK/1fEmE0MFMCVabehgannsfVMRojDKhOeqlkGSQ9e
+         AcPpHP5jtMhUW5HXhOJ/HdL5dK5+//AepzFYbewoOgT4LiabloQVSWMqmLmRQmp602S4
+         tV+clZjk6x9g8un5LCNzuv/jwmT2t2GimyXcysdgf5LYCGB7nkNbxSn9tvJHt1+KdjEs
+         U2mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=JXT2z9qJxKdTjfJEwn9Dgtbq3jsFOHBma8z40zcFGTA=;
-        b=mrrWEMJFN/tfj8X4oHXp4qaJcmktLY9Teti+fBFkN1mGCGBCMVhYaw9B1JaupCrR+Y
-         mt04tSe8vvUsUDa86cJ1VxmDzDV4AOiWPNpyShU8Jx3FZXSI8vbc0Vy7k6h6/Ai9Twem
-         abUQpgriX4nThJ9WLNNCNcX8guUp/ZDzP8OMV7QN8jhUo32aczSi7L1OgZT7PuLFyEYg
-         1rSDLAUf2wRwbmyOYaTSiPfbX02M23k6cQxF0wsO9KIgkFX7+Whb2Pv5VGiH5BRobK3G
-         WmBp1mcgVQcBjpKr43iggQPq5/uZH1JZemxFdP6oDQ8C3M5nLIYSfdH1Rlq8v3a4+YHH
-         wHpQ==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=9EBVPaFeHs+NEYGFFoC65BqT+SevvVC8qPa7EIem0xQ=;
+        b=jY95iUZGONPGrn9TpSvQY1P/myJgbOuwXPo6oLY6E/smon74odJKTgEo1zx/fqC3Tg
+         IfiQUiGRawNWPOw9sCKwkp8O28xos6uc0TF+KlcDp1m0frItMfQlRuVM/zeWoTzR46Vp
+         r2VE5mKzxmpV2rs2Yjc6XrUM9ZuugaAoY9ZCEdtmAy9YeOZcyLPdpz+gbrKdqKlsUKUC
+         JBQA25G8BydqjLYnyYxFr39knktkz12lxE+eDgD2c8TlW/xKDowNDiWAtxBJiCnN+vdE
+         oG96EXqYqTN/ggs7Pl8jAR8KKEvq6alzRL2btxBKrq7o2CEPnYOFX6xPddKXpCQ+jazB
+         qWEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=erjIupE2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k76si3813143qke.258.2020.02.14.16.14.22
+        by mx.google.com with ESMTPS id o126si1171754qke.237.2020.02.15.00.22.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Feb 2020 16:14:22 -0800 (PST)
+        Sat, 15 Feb 2020 00:22:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=erjIupE2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46900 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49188 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j2l6E-0002d5-CO
-	for alex.bennee@linaro.org; Fri, 14 Feb 2020 19:14:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53563)
+	id 1j2si9-00073i-9v
+	for alex.bennee@linaro.org; Sat, 15 Feb 2020 03:22:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33810)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1j2l4t-0008FZ-6B
- for qemu-arm@nongnu.org; Fri, 14 Feb 2020 19:13:00 -0500
+ (envelope-from <pannengyuan@huawei.com>) id 1j2si2-00073a-0l
+ for qemu-arm@nongnu.org; Sat, 15 Feb 2020 03:21:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1j2l4r-0003B2-VN
- for qemu-arm@nongnu.org; Fri, 14 Feb 2020 19:12:59 -0500
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:40659)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1j2l4r-000394-Oz; Fri, 14 Feb 2020 19:12:57 -0500
-Received: by mail-pg1-x542.google.com with SMTP id z7so5730382pgk.7;
- Fri, 14 Feb 2020 16:12:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=JXT2z9qJxKdTjfJEwn9Dgtbq3jsFOHBma8z40zcFGTA=;
- b=erjIupE2hrkCVfbJAUzkJA3r/6EXPdw5gdrXcpF/7dgS0/HyyXih9EVrtz5hX+59Kh
- wirhOtGjH3fF+KkY2lKTj2fO0mQ6LXoI14YgCyn+fxA2UpD/upsVZ4fM53CrccSnLc4a
- YMUA/1OKKn2+irPElLOGTnJEexceZGxkxDtTC7bqBGncKAEsDVQGj2FdWFTyen3VwgAW
- GiMnG1yW7t0xjbG3ZlRGRg1XUpznbE+QOAI/i6pMSx5tU/q5Yuzw8o98Y0z9bT4IYmrd
- E6UjrT86fQWcefXYN/L62fuPSoRjqfoEuI2li5fevEM91EUyVGKD82PTdOlOAHwAKn+7
- p6Zg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references;
- bh=JXT2z9qJxKdTjfJEwn9Dgtbq3jsFOHBma8z40zcFGTA=;
- b=dabIFZb73JFlHinBi2+nyTa7uN1qmvCyNlt9M+0YSvjKkIbmUAnkOXc+SBlb6IIp9T
- sCsrEUeAa+Y+xHBBOo8Y/lFrYwKHqe76UkCx5facdNFZvev1moZRFecqbb9BeNodDK/P
- 85zd9aFK6orsVuSsUmj4tmF+EubkG1nFaKN+ZRTXMNC5Lzfy40vqeMtNMhbJtBAY7voB
- gMw/8Wazz+Np1h8ghblFhEuGP5xLcpWw/tinpXTKfzyCqlxVuu5tMHQ8w2Wxga3gIcsy
- rRP0z9fbKfflUTyBktteI1usKFIYzRZGK0CtcvCkagZURmyHbQvrtMa0/m9du6ht8XYx
- kbCw==
-X-Gm-Message-State: APjAAAXH3yVtIvvAvz8ojd/bFa1VioannjioZISXHCiSpeeXAc3RviUe
- BOy3CbrlJ7AHnU+HHs9YhVw=
-X-Received: by 2002:a63:9919:: with SMTP id d25mr5997971pge.22.1581725576805; 
- Fri, 14 Feb 2020 16:12:56 -0800 (PST)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id g24sm8305601pfk.92.2020.02.14.16.12.56
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 14 Feb 2020 16:12:56 -0800 (PST)
-From: Guenter Roeck <linux@roeck-us.net>
-To: Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH v2 3/3] arm: allwinner: Wire up USB ports
-Date: Fri, 14 Feb 2020 16:12:48 -0800
-Message-Id: <20200215001248.2642-4-linux@roeck-us.net>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200215001248.2642-1-linux@roeck-us.net>
-References: <20200215001248.2642-1-linux@roeck-us.net>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::542
+ (envelope-from <pannengyuan@huawei.com>) id 1j2si0-00018j-L6
+ for qemu-arm@nongnu.org; Sat, 15 Feb 2020 03:21:53 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:36942 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <pannengyuan@huawei.com>)
+ id 1j2si0-00014E-0y; Sat, 15 Feb 2020 03:21:52 -0500
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id BD29D85176AFA43D24D7;
+ Sat, 15 Feb 2020 16:21:46 +0800 (CST)
+Received: from localhost.localdomain (10.175.104.216) by
+ DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
+ 14.3.439.0; Sat, 15 Feb 2020 16:21:36 +0800
+From: <pannengyuan@huawei.com>
+To: <balrogg@gmail.com>, <peter.maydell@linaro.org>,
+ <mark.cave-ayland@ilande.co.uk>, <david@gibson.dropbear.id.au>,
+ <edgar.iglesias@gmail.com>, <alistair@alistair23.me>
+Subject: [PATCH 2/2] hw: move timer_new from init() into realize() to avoid
+ memleaks
+Date: Sat, 15 Feb 2020 16:37:15 +0800
+Message-ID: <20200215083715.5147-1-pannengyuan@huawei.com>
+X-Mailer: git-send-email 2.18.2
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.216]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.35
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,152 +82,236 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Guenter Roeck <linux@roeck-us.net>
+Cc: zhang.zhanghailiang@huawei.com, Pan Nengyuan <pannengyuan@huawei.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ euler.robot@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UDpPYWcNGjD4
+X-TUID: urufJvpWb2ZL
 
-Instantiate EHCI and OHCI controllers on Allwinner A10. OHCI ports are
-modeled as companions of the respective EHCI ports.
+From: Pan Nengyuan <pannengyuan@huawei.com>
 
-With this patch applied, USB controllers are discovered and instantiated
-when booting the cubieboard machine with a recent Linux kernel.
+There are some memleaks when we call 'device_list_properties'. This patch move timer_new from init into realize to fix it.
+Meanwhile, do the null check in mos6522_reset() to avoid null deref if we move timer_new into realize().
 
-ehci-platform 1c14000.usb: EHCI Host Controller
-ehci-platform 1c14000.usb: new USB bus registered, assigned bus number 1
-ehci-platform 1c14000.usb: irq 26, io mem 0x01c14000
-ehci-platform 1c14000.usb: USB 2.0 started, EHCI 1.00
-ehci-platform 1c1c000.usb: EHCI Host Controller
-ehci-platform 1c1c000.usb: new USB bus registered, assigned bus number 2
-ehci-platform 1c1c000.usb: irq 31, io mem 0x01c1c000
-ehci-platform 1c1c000.usb: USB 2.0 started, EHCI 1.00
-ohci-platform 1c14400.usb: Generic Platform OHCI controller
-ohci-platform 1c14400.usb: new USB bus registered, assigned bus number 3
-ohci-platform 1c14400.usb: irq 27, io mem 0x01c14400
-ohci-platform 1c1c400.usb: Generic Platform OHCI controller
-ohci-platform 1c1c400.usb: new USB bus registered, assigned bus number 4
-ohci-platform 1c1c400.usb: irq 32, io mem 0x01c1c400
-usb 2-1: new high-speed USB device number 2 using ehci-platform
-usb-storage 2-1:1.0: USB Mass Storage device detected
-scsi host1: usb-storage 2-1:1.0
-usb 3-1: new full-speed USB device number 2 using ohci-platform
-input: QEMU QEMU USB Mouse as /devices/platform/soc/1c14400.usb/usb3/3-1/3-1:1.0/0003:0627:0001.0001/input/input0
-
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
 ---
-v2: Instantiate EHCI and OHCI in a single patch
-    Use define instead of ARRAY_SIZE to get the number of USB ports
-    Instantiate OHCI in companion mode
-    Use &error_fatal to handle error conditions
+ hw/arm/pxa2xx.c        | 17 +++++++++++------
+ hw/arm/spitz.c         |  8 +++++++-
+ hw/arm/strongarm.c     | 18 ++++++++++++------
+ hw/misc/mos6522.c      | 14 ++++++++++++--
+ hw/timer/cadence_ttc.c | 16 +++++++++++-----
+ 5 files changed, 53 insertions(+), 20 deletions(-)
 
- hw/arm/allwinner-a10.c         | 43 ++++++++++++++++++++++++++++++++++
- include/hw/arm/allwinner-a10.h |  6 +++++
- 2 files changed, 49 insertions(+)
-
-diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index 45cd8d2db5..57275c92f5 100644
---- a/hw/arm/allwinner-a10.c
-+++ b/hw/arm/allwinner-a10.c
-@@ -24,12 +24,16 @@
- #include "hw/arm/allwinner-a10.h"
- #include "hw/misc/unimp.h"
- #include "sysemu/sysemu.h"
-+#include "hw/boards.h"
-+#include "hw/usb/hcd-ohci.h"
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+index b33f8f1351..56a36202d7 100644
+--- a/hw/arm/pxa2xx.c
++++ b/hw/arm/pxa2xx.c
+@@ -1134,18 +1134,22 @@ static void pxa2xx_rtc_init(Object *obj)
+     s->last_rtcpicr = 0;
+     s->last_hz = s->last_sw = s->last_pi = qemu_clock_get_ms(rtc_clock);
  
- #define AW_A10_CCM_REG_BASE     0x01c20000
- #define AW_A10_PIC_REG_BASE     0x01c20400
- #define AW_A10_PIT_REG_BASE     0x01c20c00
- #define AW_A10_UART0_REG_BASE   0x01c28000
- #define AW_A10_EMAC_BASE        0x01c0b000
-+#define AW_A10_EHCI_BASE        0x01c14000
-+#define AW_A10_OHCI_BASE        0x01c14400
- #define AW_A10_SATA_BASE        0x01c18000
- 
- static void aw_a10_init(Object *obj)
-@@ -53,6 +57,17 @@ static void aw_a10_init(Object *obj)
- 
-     sysbus_init_child_obj(obj, "sata", &s->sata, sizeof(s->sata),
-                           TYPE_ALLWINNER_AHCI);
++    sysbus_init_irq(dev, &s->rtc_irq);
 +
-+    if (machine_usb(current_machine)) {
-+        int i;
++    memory_region_init_io(&s->iomem, obj, &pxa2xx_rtc_ops, s,
++                          "pxa2xx-rtc", 0x10000);
++    sysbus_init_mmio(dev, &s->iomem);
++}
 +
-+        for (i = 0; i < AW_A10_NUM_USB; i++) {
-+            sysbus_init_child_obj(obj, "ehci[*]", OBJECT(&s->ehci[i]),
-+                                  sizeof(s->ehci[i]), TYPE_PLATFORM_EHCI);
-+            sysbus_init_child_obj(obj, "ohci[*]", OBJECT(&s->ohci[i]),
-+                                  sizeof(s->ohci[i]), TYPE_SYSBUS_OHCI);
-+        }
++static void pxa2xx_rtc_realize(DeviceState *dev, Error **errp)
++{
++    PXA2xxRTCState *s = PXA2XX_RTC(dev);
+     s->rtc_hz    = timer_new_ms(rtc_clock, pxa2xx_rtc_hz_tick,    s);
+     s->rtc_rdal1 = timer_new_ms(rtc_clock, pxa2xx_rtc_rdal1_tick, s);
+     s->rtc_rdal2 = timer_new_ms(rtc_clock, pxa2xx_rtc_rdal2_tick, s);
+     s->rtc_swal1 = timer_new_ms(rtc_clock, pxa2xx_rtc_swal1_tick, s);
+     s->rtc_swal2 = timer_new_ms(rtc_clock, pxa2xx_rtc_swal2_tick, s);
+     s->rtc_pi    = timer_new_ms(rtc_clock, pxa2xx_rtc_pi_tick,    s);
+-
+-    sysbus_init_irq(dev, &s->rtc_irq);
+-
+-    memory_region_init_io(&s->iomem, obj, &pxa2xx_rtc_ops, s,
+-                          "pxa2xx-rtc", 0x10000);
+-    sysbus_init_mmio(dev, &s->iomem);
+ }
+ 
+ static int pxa2xx_rtc_pre_save(void *opaque)
+@@ -1203,6 +1207,7 @@ static void pxa2xx_rtc_sysbus_class_init(ObjectClass *klass, void *data)
+ 
+     dc->desc = "PXA2xx RTC Controller";
+     dc->vmsd = &vmstate_pxa2xx_rtc_regs;
++    dc->realize = pxa2xx_rtc_realize;
+ }
+ 
+ static const TypeInfo pxa2xx_rtc_sysbus_info = {
+diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+index e001088103..cbfa6934cf 100644
+--- a/hw/arm/spitz.c
++++ b/hw/arm/spitz.c
+@@ -524,11 +524,16 @@ static void spitz_keyboard_init(Object *obj)
+ 
+     spitz_keyboard_pre_map(s);
+ 
+-    s->kbdtimer = timer_new_ns(QEMU_CLOCK_VIRTUAL, spitz_keyboard_tick, s);
+     qdev_init_gpio_in(dev, spitz_keyboard_strobe, SPITZ_KEY_STROBE_NUM);
+     qdev_init_gpio_out(dev, s->sense, SPITZ_KEY_SENSE_NUM);
+ }
+ 
++static void spitz_keyboard_realize(DeviceState *dev, Error **errp)
++{
++    SpitzKeyboardState *s = SPITZ_KEYBOARD(dev);
++    s->kbdtimer = timer_new_ns(QEMU_CLOCK_VIRTUAL, spitz_keyboard_tick, s);
++}
++
+ /* LCD backlight controller */
+ 
+ #define LCDTG_RESCTL	0x00
+@@ -1115,6 +1120,7 @@ static void spitz_keyboard_class_init(ObjectClass *klass, void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+     dc->vmsd = &vmstate_spitz_kbd;
++    dc->realize = spitz_keyboard_realize;
+ }
+ 
+ static const TypeInfo spitz_keyboard_info = {
+diff --git a/hw/arm/strongarm.c b/hw/arm/strongarm.c
+index cd8a99aaf2..3010d765bb 100644
+--- a/hw/arm/strongarm.c
++++ b/hw/arm/strongarm.c
+@@ -399,9 +399,6 @@ static void strongarm_rtc_init(Object *obj)
+     s->last_rcnr = (uint32_t) mktimegm(&tm);
+     s->last_hz = qemu_clock_get_ms(rtc_clock);
+ 
+-    s->rtc_alarm = timer_new_ms(rtc_clock, strongarm_rtc_alarm_tick, s);
+-    s->rtc_hz = timer_new_ms(rtc_clock, strongarm_rtc_hz_tick, s);
+-
+     sysbus_init_irq(dev, &s->rtc_irq);
+     sysbus_init_irq(dev, &s->rtc_hz_irq);
+ 
+@@ -410,6 +407,13 @@ static void strongarm_rtc_init(Object *obj)
+     sysbus_init_mmio(dev, &s->iomem);
+ }
+ 
++static void strongarm_rtc_realize(DeviceState *dev, Error **errp)
++{
++    StrongARMRTCState *s = STRONGARM_RTC(dev);
++    s->rtc_alarm = timer_new_ms(rtc_clock, strongarm_rtc_alarm_tick, s);
++    s->rtc_hz = timer_new_ms(rtc_clock, strongarm_rtc_hz_tick, s);
++}
++
+ static int strongarm_rtc_pre_save(void *opaque)
+ {
+     StrongARMRTCState *s = opaque;
+@@ -451,6 +455,7 @@ static void strongarm_rtc_sysbus_class_init(ObjectClass *klass, void *data)
+ 
+     dc->desc = "StrongARM RTC Controller";
+     dc->vmsd = &vmstate_strongarm_rtc_regs;
++    dc->realize = strongarm_rtc_realize;
+ }
+ 
+ static const TypeInfo strongarm_rtc_sysbus_info = {
+@@ -1240,15 +1245,16 @@ static void strongarm_uart_init(Object *obj)
+                           "uart", 0x10000);
+     sysbus_init_mmio(dev, &s->iomem);
+     sysbus_init_irq(dev, &s->irq);
+-
+-    s->rx_timeout_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, strongarm_uart_rx_to, s);
+-    s->tx_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, strongarm_uart_tx, s);
+ }
+ 
+ static void strongarm_uart_realize(DeviceState *dev, Error **errp)
+ {
+     StrongARMUARTState *s = STRONGARM_UART(dev);
+ 
++    s->rx_timeout_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
++                                       strongarm_uart_rx_to,
++                                       s);
++    s->tx_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, strongarm_uart_tx, s);
+     qemu_chr_fe_set_handlers(&s->chr,
+                              strongarm_uart_can_receive,
+                              strongarm_uart_receive,
+diff --git a/hw/misc/mos6522.c b/hw/misc/mos6522.c
+index 19e154b870..980eda7599 100644
+--- a/hw/misc/mos6522.c
++++ b/hw/misc/mos6522.c
+@@ -465,11 +465,15 @@ static void mos6522_reset(DeviceState *dev)
+     s->timers[0].frequency = s->frequency;
+     s->timers[0].latch = 0xffff;
+     set_counter(s, &s->timers[0], 0xffff);
+-    timer_del(s->timers[0].timer);
++    if (s->timers[0].timer) {
++        timer_del(s->timers[0].timer);
++    }
+ 
+     s->timers[1].frequency = s->frequency;
+     s->timers[1].latch = 0xffff;
+-    timer_del(s->timers[1].timer);
++    if (s->timers[1].timer) {
++        timer_del(s->timers[1].timer);
 +    }
  }
  
- static void aw_a10_realize(DeviceState *dev, Error **errp)
-@@ -133,6 +148,34 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
-     serial_mm_init(get_system_memory(), AW_A10_UART0_REG_BASE, 2,
-                    qdev_get_gpio_in(dev, 1),
-                    115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
+ static void mos6522_init(Object *obj)
+@@ -485,6 +489,11 @@ static void mos6522_init(Object *obj)
+     for (i = 0; i < ARRAY_SIZE(s->timers); i++) {
+         s->timers[i].index = i;
+     }
++}
 +
-+    if (machine_usb(current_machine)) {
-+        int i;
++static void mos6522_realize(DeviceState *dev, Error **errp)
++{
++    MOS6522State *s = MOS6522(dev);
+ 
+     s->timers[0].timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, mos6522_timer1, s);
+     s->timers[1].timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, mos6522_timer2, s);
+@@ -502,6 +511,7 @@ static void mos6522_class_init(ObjectClass *oc, void *data)
+ 
+     dc->reset = mos6522_reset;
+     dc->vmsd = &vmstate_mos6522;
++    dc->realize = mos6522_realize;
+     device_class_set_props(dc, mos6522_properties);
+     mdc->parent_reset = dc->reset;
+     mdc->set_sr_int = mos6522_set_sr_int;
+diff --git a/hw/timer/cadence_ttc.c b/hw/timer/cadence_ttc.c
+index 5e3128c1e3..b0ba6b2bba 100644
+--- a/hw/timer/cadence_ttc.c
++++ b/hw/timer/cadence_ttc.c
+@@ -412,16 +412,21 @@ static void cadence_timer_init(uint32_t freq, CadenceTimerState *s)
+ static void cadence_ttc_init(Object *obj)
+ {
+     CadenceTTCState *s = CADENCE_TTC(obj);
 +
-+        for (i = 0; i < AW_A10_NUM_USB; i++) {
-+            char bus[16];
++    memory_region_init_io(&s->iomem, obj, &cadence_ttc_ops, s,
++                          "timer", 0x1000);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
++}
 +
-+            sprintf(bus, "usb-bus.%d", i);
-+
-+            object_property_set_bool(OBJECT(&s->ehci[i]), true,
-+                                     "companion-enable", &error_fatal);
-+            object_property_set_bool(OBJECT(&s->ehci[i]), true, "realized",
-+                                     &error_fatal);
-+            sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-+                            AW_A10_EHCI_BASE + i * 0x8000);
-+            sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-+                               qdev_get_gpio_in(dev, 39 + i));
-+
-+            object_property_set_str(OBJECT(&s->ohci[i]), bus, "masterbus",
-+                                    &error_fatal);
-+            object_property_set_bool(OBJECT(&s->ohci[i]), true, "realized",
-+                                     &error_fatal);
-+            sysbus_mmio_map(SYS_BUS_DEVICE(&s->ohci[i]), 0,
-+                            AW_A10_OHCI_BASE + i * 0x8000);
-+            sysbus_connect_irq(SYS_BUS_DEVICE(&s->ohci[i]), 0,
-+                               qdev_get_gpio_in(dev, 64 + i));
-+        }
-+    }
++static void cadence_ttc_realize(DeviceState *dev, Error **errp)
++{
++    CadenceTTCState *s = CADENCE_TTC(dev);
+     int i;
+ 
+     for (i = 0; i < 3; ++i) {
+         cadence_timer_init(133000000, &s->timer[i]);
+-        sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->timer[i].irq);
++        sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->timer[i].irq);
+     }
+-
+-    memory_region_init_io(&s->iomem, obj, &cadence_ttc_ops, s,
+-                          "timer", 0x1000);
+-    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
  }
  
- static void aw_a10_class_init(ObjectClass *oc, void *data)
-diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
-index 0007a927bb..12ca731cb2 100644
---- a/include/hw/arm/allwinner-a10.h
-+++ b/include/hw/arm/allwinner-a10.h
-@@ -9,11 +9,15 @@
- #include "hw/intc/allwinner-a10-pic.h"
- #include "hw/net/allwinner_emac.h"
- #include "hw/ide/ahci.h"
-+#include "hw/usb/hcd-ohci.h"
-+#include "hw/usb/hcd-ehci.h"
+ static int cadence_timer_pre_save(void *opaque)
+@@ -479,6 +484,7 @@ static void cadence_ttc_class_init(ObjectClass *klass, void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
  
- #include "target/arm/cpu.h"
+     dc->vmsd = &vmstate_cadence_ttc;
++    dc->realize = cadence_ttc_realize;
+ }
  
- #define AW_A10_SDRAM_BASE       0x40000000
- 
-+#define AW_A10_NUM_USB          2
-+
- #define TYPE_AW_A10 "allwinner-a10"
- #define AW_A10(obj) OBJECT_CHECK(AwA10State, (obj), TYPE_AW_A10)
- 
-@@ -29,6 +33,8 @@ typedef struct AwA10State {
-     AwEmacState emac;
-     AllwinnerAHCIState sata;
-     MemoryRegion sram_a;
-+    EHCISysBusState ehci[AW_A10_NUM_USB];
-+    OHCISysBusState ohci[AW_A10_NUM_USB];
- } AwA10State;
- 
- #endif
+ static const TypeInfo cadence_ttc_info = {
 -- 
-2.17.1
+2.18.2
 

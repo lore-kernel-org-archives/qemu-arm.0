@@ -1,264 +1,356 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4381453lfp;
-        Sun, 16 Feb 2020 13:42:36 -0800 (PST)
-X-Received: by 2002:a17:90a:8806:: with SMTP id s6mr15410007pjn.141.1581889356430;
-        Sun, 16 Feb 2020 13:42:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581889356; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4381480lfp;
+        Sun, 16 Feb 2020 13:42:39 -0800 (PST)
+X-Received: by 2002:a65:478a:: with SMTP id e10mr14119896pgs.197.1581889358921;
+        Sun, 16 Feb 2020 13:42:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581889358; cv=none;
         d=google.com; s=arc-20160816;
-        b=VmhHrmNMrzTDOqMra87UVL6GSzZot5bugkk7vncVpAqZ8iDRHn5c8E5YikhdGAGeKd
-         E8g470ZFyehx5PFBaE0QBXF61lpzLJs2u05GIY8js8Dviw3Mot85NgJsySupEaiD17RS
-         x9B2D5QRV7vA+r+W77fZ2maQxHYO7+0Fbr+Rg6g6/LAcKNliywN3Frb2AkZIBRguJFJB
-         c9XDdEMmSZWRS9eDskZF7LNteQoPhF+HckGcJuDmibxPNlfNbRIckMfZi+uyIuhH2oi8
-         Gh8ai2jLWpPIOcZnJbGJA5/WUM1JpafZMrt2I6P8Z7Wpwcqc6RqBSHC/Rj+rrKxCUWjH
-         OPNQ==
+        b=MevOh4MGEO1nPT+WyOw6bZUGWA2Ix85xBbnpCTeeAqIzbM8mSWNQ5jAm1a64uWsdye
+         +9K6W1t9H8QCNE62nB7B7sDSJAEBzw65mFl+wvp2Xkn/Ah3xAuzoQeZ/HZMz5IzEmn5V
+         JtGyZu2zXJqPQ0s8DamPKHGjX0NiXO1yTnBmczhLsGMR6CIHGkSQ7ET1ES+a8ogVInC4
+         KRjNoNoOTAn1J5VzYv9jAXeTvKe5ycasPsr8iDbZwJX8YBJy+p60yAYBvo43L6y1h5/j
+         RD4EJXFWHYukdwa0JgsgfCoPtOnVAT7wM+hOurU8SbQK0LiOsCwwWA8seNict1KyD1oI
+         jerQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=O2GXPDLFXihWuaiW0fDwrNaCDa99hsJ9UfIJrAM1orM=;
-        b=GCeeSLixDlHMo9yKXO7qdxrtsfmGMT3IV2Cc8mm1JyXcuWyslkET1cNApWokda4yYO
-         I06GLZXe3YClCgy8c0em08BRkZXX9yqk7XVQJBymagE+GtMKr96ComLDI1giYYW0ufau
-         YvjoWBXuF4LxWt3U4JpzJ5M1kReYnybb0GG23yyCUH2QuYPJJa10PRuKljHloUZlSnvV
-         ufSay1HXu64lYPgV32RXQSnh6YZHcZUh6LfLUYSvqiCSyLQliZwNXGPAqD9Q2VGSWsSa
-         BGy4WZx2b1OZdoY3BnHPhM5M9Tf6upk/1vc43mFz9AzUZskoLCFyD9ZmlCZRGpc1vQ3H
-         bEXg==
+        bh=eMj4/+qaGhoNS+9r6sBtA5cZajrCIO2mP4pzA4t1Oe8=;
+        b=UiOtZU9W32eq4Tsv+FtkuGtz8Im5OhDqabAoB6jdpdxwROr0E7kYn+4pwtnp5RV9Ew
+         PxDctX8zyNgkEqLfXtvNtSwVDd5OinNceepqekk98Xx5+nHeskgJDrgBYfQt/GAjCXAA
+         cBjeMyAdZRDRAFd1Bz2k+ls3xLDLP0ac3DWofPkFpMWHJKd+yG4l6SnDk0QN0h1l3UVb
+         IILIFo90oUdGFSLDoCMlSpGo+Cbiq+xNU/NsBzgtMU19S9FCWtVoGX+q3UtCqoCC8cfr
+         mSSDUv0Mnx/XbxX4A5MOU4oFY8FN1AcLUJLoEXDnAuXZ1uqpcoK9pNuRr8uBeOKsZ40k
+         zdaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TW3t5Ayc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZaLvYpO7;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id m5sor15113918pfm.22.2020.02.16.13.42.36
+        by mx.google.com with SMTPS id l20sor15050314pgn.6.2020.02.16.13.42.38
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 16 Feb 2020 13:42:36 -0800 (PST)
+        Sun, 16 Feb 2020 13:42:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TW3t5Ayc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZaLvYpO7;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=O2GXPDLFXihWuaiW0fDwrNaCDa99hsJ9UfIJrAM1orM=;
-        b=TW3t5Ayc5JouTnjfgnOAe8PSFoU5aml6f3YdB6tJvjBpXz/XkQ8WALVeO8veWPXxmj
-         w7QlzmW7xF/hGsi2paL1BGdTRSuii27ZHEWanO8eMz56WsN2hc/vax8OF7gXlR+L6dwq
-         7KJ2p/RMCpyMhdQkKfrMfJ0mVByAXNnPQu5oUYjK5sAefpo8V/ulhgR2AF9obxwBysxE
-         dGGc4//aaocKAIxswi5nG+vjyVuLv48QaxUStjYRmwhxhL8MqE8SmyuGBn02umo6AgBS
-         m46seyWnj3KrwNyLNaQdnauNzj9Zzs70NzzJwxuGLWxgNBbK6gcLPUlem9O/oPAJgbQP
-         TV7w==
+        bh=eMj4/+qaGhoNS+9r6sBtA5cZajrCIO2mP4pzA4t1Oe8=;
+        b=ZaLvYpO7Plsa4JkrHEWOMHzEilmAl84Ww9Bs9YFX67ULjFzKwrz1bNXW/4NO6v2aai
+         w0TjRvCuxeb1i+YtniFnEP2J6JfURLPtAECrB8gaAugVAIcVXcPZc6LSiyViGw8mON9g
+         XcUU6kvVRvPIFh+BWMmXoxN34+Bkf7Ebg3WkmpiT2Rba4myqJ+JArNcsbQIkJP9Cc5Kj
+         8Gm2iicF6UMawAijwMsxiEOwDliOCRMN98eNfk7SHZhY5Xw11Sx+GBptng+pugCtG6R5
+         26SsMi1BW3z3AUUK5Ok8O4HUmzdQ5tg+fDwnexXknp2EDQGS592shvIvzQLQeruRE1+x
+         aWXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=O2GXPDLFXihWuaiW0fDwrNaCDa99hsJ9UfIJrAM1orM=;
-        b=CZfH4CQiHTVPdvLYhQtiGC0Q/9HqmIKLNwXPyZ5rNB8I01QVU3t57B1Kcc6jJj3EUN
-         Hkk3uig+Xk9FTsiB1EekYn3FIRMSSymA+bnbR7XfPb2ZPwA+BDk8wl4cHGbr5OjPIdWB
-         dqqXMndaHnl5R2W6wKT67Blvn71dXOg489x2mpFMQicCQ2Fs72pDXtlGc0MqHccITY3H
-         4OwRALJvCaEVLMbqq564uM0SR7o0WNEjKCZmsi5vGDzsmm2eIpC1NCQi9CzPXq180q9A
-         p3L4w73APr2pJg5jHl/ZSeS6OLiytyKAkrHsU4a4RI8iUMg3YigK4uUyDaORCX6RcE7+
-         D0YA==
-X-Gm-Message-State: APjAAAXH5D9KAscfH6czRysX25Nt0OOSsRBx5F2FjmZ03fQbll0suW9H
-	lMpBK+1kfKEp7rdocVbmsH1H0SjM
-X-Google-Smtp-Source: APXvYqwCX+NSsYSzBinz2e50TmZeK3ZWAh9Y/JrnDSB9C4rMkSEpMI8Es2Jr5UAoNX8zEOXhsfCnqQ==
-X-Received: by 2002:a63:4a47:: with SMTP id j7mr14571862pgl.196.1581889355873;
-        Sun, 16 Feb 2020 13:42:35 -0800 (PST)
+        bh=eMj4/+qaGhoNS+9r6sBtA5cZajrCIO2mP4pzA4t1Oe8=;
+        b=YUi8ojEtlhr7JOeBrZ124Hg83ISrNqM8wgv/MNHM6wZqYUuICVnjhh2N6Dprb0hbzu
+         toFeq4hCevQQfqTJ5hotUt79uNtMV5DcVkE7Gkz9x4WGVZ9tmTuhu8408wBF38sgE3+8
+         756ljrSfDLs6zSsssQGGTPSW/eh5OoxWDJtI22XT8Cxdc49oaOrLfW8qppbSJ/VXvdYo
+         XNqeFAs7kC3CUDfMo9lRJNE2BJHGNEWmCvQ1qfLd4frz07sZoflXGTMQQTV1qY1IuiM6
+         KdMXJhpWUGWyi4v6YOzAxetfP1ptyA4EqNMomUThY4VBi8bC0aoDNb9TwPjBffg5E7DE
+         LL1w==
+X-Gm-Message-State: APjAAAWIFg8D3rEbLW0lns6POsVIWHHYrr+JaLLSpQ3ybzYFpW1+WD4g
+	n2wWwtygRCXV0DLm1ebJKFMtM+T/21PQIw==
+X-Google-Smtp-Source: APXvYqyyJ29pJzabRZL+uf4gczrHw+yt+c+CrbDSeV2wy35D6raiDX7ZvY2RCdrjxCbvOtZMGjOBVw==
+X-Received: by 2002:a63:a4b:: with SMTP id z11mr13916456pgk.398.1581889358362;
+        Sun, 16 Feb 2020 13:42:38 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net. [97.126.123.70])
-        by smtp.gmail.com with ESMTPSA id z29sm14821848pgc.21.2020.02.16.13.42.34
+        by smtp.gmail.com with ESMTPSA id z29sm14821848pgc.21.2020.02.16.13.42.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 16 Feb 2020 13:42:35 -0800 (PST)
+        Sun, 16 Feb 2020 13:42:37 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 2/4] target/arm: Convert PMUL.8 to gvec
-Date: Sun, 16 Feb 2020 13:42:30 -0800
-Message-Id: <20200216214232.4230-3-richard.henderson@linaro.org>
+Subject: [PATCH v2 4/4] target/arm: Convert PMULL.8 to gvec
+Date: Sun, 16 Feb 2020 13:42:32 -0800
+Message-Id: <20200216214232.4230-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200216214232.4230-1-richard.henderson@linaro.org>
 References: <20200216214232.4230-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: grlYvdUP6vVG
+X-TUID: 6Q3dSnqkfpkC
 
-The gvec form will be needed for implementing SVE2.
+We still need two different helpers, since NEON and SVE2 get the
+inputs from different locations within the source vector.  However,
+we can convert both to the same internal form for computation.
 
-Extend the implementation to operate on uint64_t instead of uint32_t.
-Use a counted inner loop instead of terminating when op1 goes to zero,
-looking toward the required implementation for ARMv8.4-DIT.
+The sve2 helper is not used yet, but adding it with this patch
+helps illustrate why the neon changes are helpful.
 
 Tested-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v3: Elide mask after right-shift on N, as we already do N & 1
-    at the top of the loop.
----
- target/arm/helper.h        |  3 ++-
- target/arm/neon_helper.c   | 22 ----------------------
- target/arm/translate-a64.c | 10 +++-------
- target/arm/translate.c     | 11 ++++-------
- target/arm/vec_helper.c    | 30 ++++++++++++++++++++++++++++++
- 5 files changed, 39 insertions(+), 37 deletions(-)
+ target/arm/helper-sve.h    |  2 ++
+ target/arm/helper.h        |  3 +-
+ target/arm/neon_helper.c   | 32 --------------------
+ target/arm/translate-a64.c | 27 +++++++++++------
+ target/arm/translate.c     | 26 ++++++++---------
+ target/arm/vec_helper.c    | 60 ++++++++++++++++++++++++++++++++++++++
+ 6 files changed, 95 insertions(+), 55 deletions(-)
 
+diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+index 9e79182ab4..2f47279155 100644
+--- a/target/arm/helper-sve.h
++++ b/target/arm/helper-sve.h
+@@ -1574,3 +1574,5 @@ DEF_HELPER_FLAGS_6(sve_stdd_le_zd, TCG_CALL_NO_WG,
+                    void, env, ptr, ptr, ptr, tl, i32)
+ DEF_HELPER_FLAGS_6(sve_stdd_be_zd, TCG_CALL_NO_WG,
+                    void, env, ptr, ptr, ptr, tl, i32)
++
++DEF_HELPER_FLAGS_4(sve2_pmull_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 459a278b5c..82450a3f96 100644
+index 4352fae3db..fcbf504121 100644
 --- a/target/arm/helper.h
 +++ b/target/arm/helper.h
 @@ -342,7 +342,6 @@ DEF_HELPER_2(neon_sub_u8, i32, i32, i32)
  DEF_HELPER_2(neon_sub_u16, i32, i32, i32)
  DEF_HELPER_2(neon_mul_u8, i32, i32, i32)
  DEF_HELPER_2(neon_mul_u16, i32, i32, i32)
--DEF_HELPER_2(neon_mul_p8, i32, i32, i32)
- DEF_HELPER_2(neon_mull_p8, i64, i32, i32)
+-DEF_HELPER_2(neon_mull_p8, i64, i32, i32)
  
  DEF_HELPER_2(neon_tst_u8, i32, i32, i32)
-@@ -696,6 +695,8 @@ DEF_HELPER_FLAGS_4(gvec_sshl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(gvec_ushl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(gvec_ushl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_2(neon_tst_u16, i32, i32, i32)
+@@ -695,6 +694,8 @@ DEF_HELPER_FLAGS_4(gvec_ushl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(gvec_pmul_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(gvec_pmull_q, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
  
-+DEF_HELPER_FLAGS_4(gvec_pmul_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(neon_pmull_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 +
  #ifdef TARGET_AARCH64
  #include "helper-a64.h"
  #include "helper-sve.h"
 diff --git a/target/arm/neon_helper.c b/target/arm/neon_helper.c
-index c581ffb7d3..9e7a9a1ac5 100644
+index 6a107da0e1..c7a8438b42 100644
 --- a/target/arm/neon_helper.c
 +++ b/target/arm/neon_helper.c
-@@ -1131,28 +1131,6 @@ NEON_VOP(mul_u16, neon_u16, 2)
+@@ -1129,38 +1129,6 @@ NEON_VOP(mul_u8, neon_u8, 4)
+ NEON_VOP(mul_u16, neon_u16, 2)
+ #undef NEON_FN
  
- /* Polynomial multiplication is like integer multiplication except the
-    partial products are XORed, not added.  */
--uint32_t HELPER(neon_mul_p8)(uint32_t op1, uint32_t op2)
+-/* Polynomial multiplication is like integer multiplication except the
+-   partial products are XORed, not added.  */
+-uint64_t HELPER(neon_mull_p8)(uint32_t op1, uint32_t op2)
 -{
--    uint32_t mask;
--    uint32_t result;
--    result = 0;
+-    uint64_t result = 0;
+-    uint64_t mask;
+-    uint64_t op2ex = op2;
+-    op2ex = (op2ex & 0xff) |
+-        ((op2ex & 0xff00) << 8) |
+-        ((op2ex & 0xff0000) << 16) |
+-        ((op2ex & 0xff000000) << 24);
 -    while (op1) {
 -        mask = 0;
--        if (op1 & 1)
--            mask |= 0xff;
--        if (op1 & (1 << 8))
--            mask |= (0xff << 8);
--        if (op1 & (1 << 16))
--            mask |= (0xff << 16);
--        if (op1 & (1 << 24))
--            mask |= (0xff << 24);
--        result ^= op2 & mask;
+-        if (op1 & 1) {
+-            mask |= 0xffff;
+-        }
+-        if (op1 & (1 << 8)) {
+-            mask |= (0xffffU << 16);
+-        }
+-        if (op1 & (1 << 16)) {
+-            mask |= (0xffffULL << 32);
+-        }
+-        if (op1 & (1 << 24)) {
+-            mask |= (0xffffULL << 48);
+-        }
+-        result ^= op2ex & mask;
 -        op1 = (op1 >> 1) & 0x7f7f7f7f;
--        op2 = (op2 << 1) & 0xfefefefe;
+-        op2ex <<= 1;
 -    }
 -    return result;
 -}
 -
- uint64_t HELPER(neon_mull_p8)(uint32_t op1, uint32_t op2)
- {
-     uint64_t result = 0;
+ #define NEON_FN(dest, src1, src2) dest = (src1 & src2) ? -1 : 0
+ NEON_VOP(tst_u8, neon_u8, 4)
+ NEON_VOP(tst_u16, neon_u16, 2)
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index e42dcfebdd..c96ed28f9d 100644
+index 6ce1131860..63ff042d60 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -11160,9 +11160,10 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
-     case 0x13: /* MUL, PMUL */
-         if (!u) { /* MUL */
-             gen_gvec_fn3(s, is_q, rd, rn, rm, tcg_gen_gvec_mul, size);
--            return;
-+        } else {  /* PMUL */
-+            gen_gvec_op3_ool(s, is_q, rd, rn, rm, 0, gen_helper_gvec_pmul_b);
-         }
--        break;
-+        return;
-     case 0x12: /* MLA, MLS */
-         if (u) {
-             gen_gvec_op3(s, is_q, rd, rn, rm, &mls_op[size]);
-@@ -11292,11 +11293,6 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
-                 genfn = fns[size][u];
+@@ -10533,10 +10533,6 @@ static void handle_3rd_widening(DisasContext *s, int is_q, int is_u, int size,
+                 gen_helper_neon_addl_saturate_s32(tcg_passres, cpu_env,
+                                                   tcg_passres, tcg_passres);
                  break;
-             }
--            case 0x13: /* MUL, PMUL */
--                assert(u); /* PMUL */
+-            case 14: /* PMULL */
 -                assert(size == 0);
--                genfn = gen_helper_neon_mul_p8;
+-                gen_helper_neon_mull_p8(tcg_passres, tcg_op1, tcg_op2);
 -                break;
-             case 0x16: /* SQDMULH, SQRDMULH */
-             {
-                 static NeonGenTwoOpEnvFn * const fns[2][2] = {
+             default:
+                 g_assert_not_reached();
+             }
+@@ -10700,11 +10696,21 @@ static void disas_simd_three_reg_diff(DisasContext *s, uint32_t insn)
+         handle_3rd_narrowing(s, is_q, is_u, size, opcode, rd, rn, rm);
+         break;
+     case 14: /* PMULL, PMULL2 */
+-        if (is_u || size == 1 || size == 2) {
++        if (is_u) {
+             unallocated_encoding(s);
+             return;
+         }
+-        if (size == 3) {
++        switch (size) {
++        case 0: /* PMULL.P8 */
++            if (!fp_access_check(s)) {
++                return;
++            }
++            /* The Q field specifies lo/hi half input for this insn.  */
++            gen_gvec_op3_ool(s, true, rd, rn, rm, is_q,
++                             gen_helper_neon_pmull_h);
++            break;
++
++        case 3: /* PMULL.P64 */
+             if (!dc_isar_feature(aa64_pmull, s)) {
+                 unallocated_encoding(s);
+                 return;
+@@ -10715,9 +10721,13 @@ static void disas_simd_three_reg_diff(DisasContext *s, uint32_t insn)
+             /* The Q field specifies lo/hi half input for this insn.  */
+             gen_gvec_op3_ool(s, true, rd, rn, rm, is_q,
+                              gen_helper_gvec_pmull_q);
+-            return;
++            break;
++
++        default:
++            unallocated_encoding(s);
++            break;
+         }
+-        goto is_widening;
++        return;
+     case 9: /* SQDMLAL, SQDMLAL2 */
+     case 11: /* SQDMLSL, SQDMLSL2 */
+     case 13: /* SQDMULL, SQDMULL2 */
+@@ -10738,7 +10748,6 @@ static void disas_simd_three_reg_diff(DisasContext *s, uint32_t insn)
+             unallocated_encoding(s);
+             return;
+         }
+-    is_widening:
+         if (!fp_access_check(s)) {
+             return;
+         }
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index c4dd14e053..4581373e31 100644
+index e2dbafa161..07178b632a 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -5007,16 +5007,17 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
- 
-         case NEON_3R_VMUL: /* VMUL */
-             if (u) {
--                /* Polynomial case allows only P8 and is handled below.  */
-+                /* Polynomial case allows only P8.  */
-                 if (size != 0) {
+@@ -5866,15 +5866,20 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
                      return 1;
                  }
-+                tcg_gen_gvec_3_ool(rd_ofs, rn_ofs, rm_ofs, vec_size, vec_size,
-+                                   0, gen_helper_gvec_pmul_b);
-             } else {
-                 tcg_gen_gvec_mul(size, rd_ofs, rn_ofs, rm_ofs,
-                                  vec_size, vec_size);
--                return 0;
-             }
--            break;
-+            return 0;
  
-         case NEON_3R_VML: /* VMLA, VMLS */
-             tcg_gen_gvec_3(rd_ofs, rn_ofs, rm_ofs, vec_size, vec_size,
-@@ -5206,10 +5207,6 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
-             tmp2 = neon_load_reg(rd, pass);
-             gen_neon_add(size, tmp, tmp2);
-             break;
--        case NEON_3R_VMUL:
--            /* VMUL.P8; other cases already eliminated.  */
--            gen_helper_neon_mul_p8(tmp, tmp, tmp2);
--            break;
-         case NEON_3R_VPMAX:
-             GEN_NEON_INTEGER_OP(pmax);
-             break;
+-                /* Handle VMULL.P64 (Polynomial 64x64 to 128 bit multiply)
+-                 * outside the loop below as it only performs a single pass.
+-                 */
+-                if (op == 14 && size == 2) {
+-                    if (!dc_isar_feature(aa32_pmull, s)) {
+-                        return 1;
++                /* Handle polynomial VMULL in a single pass.  */
++                if (op == 14) {
++                    if (size == 0) {
++                        /* VMULL.P8 */
++                        tcg_gen_gvec_3_ool(rd_ofs, rn_ofs, rm_ofs, 16, 16,
++                                           0, gen_helper_neon_pmull_h);
++                    } else {
++                        /* VMULL.P64 */
++                        if (!dc_isar_feature(aa32_pmull, s)) {
++                            return 1;
++                        }
++                        tcg_gen_gvec_3_ool(rd_ofs, rn_ofs, rm_ofs, 16, 16,
++                                           0, gen_helper_gvec_pmull_q);
+                     }
+-                    tcg_gen_gvec_3_ool(rd_ofs, rn_ofs, rm_ofs, 16, 16,
+-                                       0, gen_helper_gvec_pmull_q);
+                     return 0;
+                 }
+ 
+@@ -5952,11 +5957,6 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+                         /* VMLAL, VQDMLAL, VMLSL, VQDMLSL, VMULL, VQDMULL */
+                         gen_neon_mull(cpu_V0, tmp, tmp2, size, u);
+                         break;
+-                    case 14: /* Polynomial VMULL */
+-                        gen_helper_neon_mull_p8(cpu_V0, tmp, tmp2);
+-                        tcg_temp_free_i32(tmp2);
+-                        tcg_temp_free_i32(tmp);
+-                        break;
+                     default: /* 15 is RESERVED: caught earlier  */
+                         abort();
+                     }
 diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
-index fcb3663903..854de0e279 100644
+index 79d2624f7b..8017bd88c4 100644
 --- a/target/arm/vec_helper.c
 +++ b/target/arm/vec_helper.c
-@@ -1134,3 +1134,33 @@ void HELPER(gvec_ushl_h)(void *vd, void *vn, void *vm, uint32_t desc)
+@@ -1197,3 +1197,63 @@ void HELPER(gvec_pmull_q)(void *vd, void *vn, void *vm, uint32_t desc)
      }
      clear_tail(d, opr_sz, simd_maxsz(desc));
  }
 +
 +/*
-+ * 8x8->8 polynomial multiply.
++ * 8x8->16 polynomial multiply.
 + *
-+ * Polynomial multiplication is like integer multiplication except the
-+ * partial products are XORed, not added.
-+ *
-+ * TODO: expose this as a generic vector operation, as it is a common
-+ * crypto building block.
++ * The byte inputs are expanded to (or extracted from) half-words.
++ * Note that neon and sve2 get the inputs from different positions.
++ * This allows 4 bytes to be processed in parallel with uint64_t.
 + */
-+void HELPER(gvec_pmul_b)(void *vd, void *vn, void *vm, uint32_t desc)
++
++static uint64_t expand_byte_to_half(uint64_t x)
 +{
-+    intptr_t i, j, opr_sz = simd_oprsz(desc);
++    return  (x & 0x000000ff)
++         | ((x & 0x0000ff00) << 8)
++         | ((x & 0x00ff0000) << 16)
++         | ((x & 0xff000000) << 24);
++}
++
++static uint64_t pmull_h(uint64_t op1, uint64_t op2)
++{
++    uint64_t result = 0;
++    int i;
++
++    for (i = 0; i < 8; ++i) {
++        uint64_t mask = (op1 & 0x0001000100010001ull) * 0xffff;
++        result ^= op2 & mask;
++        op1 >>= 1;
++        op2 <<= 1;
++    }
++    return result;
++}
++
++void HELPER(neon_pmull_h)(void *vd, void *vn, void *vm, uint32_t desc)
++{
++    int hi = simd_data(desc);
++    uint64_t *d = vd, *n = vn, *m = vm;
++    uint64_t nn = n[hi], mm = m[hi];
++
++    d[0] = pmull_h(expand_byte_to_half(nn), expand_byte_to_half(mm));
++    nn >>= 32;
++    mm >>= 32;
++    d[1] = pmull_h(expand_byte_to_half(nn), expand_byte_to_half(mm));
++
++    clear_tail(d, 16, simd_maxsz(desc));
++}
++
++#ifdef TARGET_AARCH64
++void HELPER(sve2_pmull_h)(void *vd, void *vn, void *vm, uint32_t desc)
++{
++    int shift = simd_data(desc) * 8;
++    intptr_t i, opr_sz = simd_oprsz(desc);
 +    uint64_t *d = vd, *n = vn, *m = vm;
 +
 +    for (i = 0; i < opr_sz / 8; ++i) {
-+        uint64_t nn = n[i];
-+        uint64_t mm = m[i];
-+        uint64_t rr = 0;
++        uint64_t nn = (n[i] >> shift) & 0x00ff00ff00ff00ffull;
++        uint64_t mm = (m[i] >> shift) & 0x00ff00ff00ff00ffull;
 +
-+        for (j = 0; j < 8; ++j) {
-+            uint64_t mask = (nn & 0x0101010101010101ull) * 0xff;
-+            rr ^= mm & mask;
-+            mm = (mm << 1) & 0xfefefefefefefefeull;
-+            nn >>= 1;
-+        }
-+        d[i] = rr;
++        d[i] = pmull_h(nn, mm);
 +    }
-+    clear_tail(d, opr_sz, simd_maxsz(desc));
 +}
++#endif
 -- 
 2.20.1

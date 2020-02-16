@@ -1,294 +1,132 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4310112lfp;
-        Sun, 16 Feb 2020 11:44:36 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx5PNw9q1vgI7rHRS+bidANWibO7Dak+ebpN1drOBFynRvxTMzXH5vM4SDGWdqRI1w7I2AR
-X-Received: by 2002:a37:a8e:: with SMTP id 136mr11684473qkk.173.1581882276782;
-        Sun, 16 Feb 2020 11:44:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581882276; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4350086lfp;
+        Sun, 16 Feb 2020 12:49:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqypnyam96ZaytFABNHdSCc+Wqn/fd5DW7HGpcTQaeDHTJnF7A57JdpkPAOtVjDxoMv9+fj+
+X-Received: by 2002:ac8:176f:: with SMTP id u44mr10657063qtk.379.1581886188231;
+        Sun, 16 Feb 2020 12:49:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581886188; cv=none;
         d=google.com; s=arc-20160816;
-        b=wXtHw4nQHnPEQZgEXHrRdNjI9aXGACkJagZldInAFFH7MFfsdPhy8yZA8v9iwXG6HU
-         MKmjBgg+hwG7bSmp1amYXvXHUfmdMA5Qi/y4WTXp6DQopCdN7PV3lTQkQQThVwkEuBlL
-         LJGO7zlF5H7t+Jk92suoWZpCb89rIL2hafxSJji7L9efUgRgLf7TF1yDkx69k+ay/GEx
-         x3Jei1S9FRqEnZyVIsWXzbNjuTNOTwwRcWMZptESexo0sQBL8gzVB475vio5UT9++nxX
-         7DjT7nnxstZkd4PcD41nGUDX36B5fDP+bjL/MKw+BUqIpNvbKtl7g0ano13a4WsikAmw
-         G1fw==
+        b=Omiwu2i3kwFG+pGreGW8lZmVuLb9dm3MWS+2YC5Nas6dxHEOTgxk955rvVgrNjnPGl
+         mk/tDU2k6QLx0dtdN3PRq5QHJmY1bmErah4yXbyTGrxnPi2Cp4GrzfbQop9k5quJpt50
+         bXBx/kd2mrKxVs19ubDFPNZSP0ARL5UlQ96eZRYF+hVeaHHFKYqzv2Lxs0tVepQ0pHMY
+         6SUJSRyJ9+9pO3gv+k6EEwIz8uZgflSBs2NQ6Xn+YGM9Zh9oq1HXfo67bT3qPxFBJ/1K
+         ccyfkcQuJPbe72FD9aSwJAiM8dmek6oKLxzBXVQAPKb8gLIJqL9LoFINSAPMeYLoSOxu
+         BKfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=jKe60JzIR9wTTCupClDTcPlRGkah6P8mFmzkvCXt/nU=;
-        b=xInenwRNDYuDBaGFiMTJzGLgghSQSJrpbzOP5JRw/AiKGLM0GxsgFgcXG/n7Wv4QZL
-         w89S4/rHNQq712L3nv9H0m/O79UUg42LINVpJq6hXn/5g1Sn+ehnB/nJWwMsH16122gZ
-         wYup6AfZUfZ5jaipjcyaCiXZABKrQO9agpT1mKCt1xZjz9Rl3oYQRXqsIV7jmu/IP4iw
-         TU9GMzvv117BEHz5ELQMOKMPIA+0Q94F1OD8Wea7jzTiKgghjvN4nUBomaqvkLRCHMjk
-         uca/EnS9p5uA1R1XxrUmA2LouisMoZVdl+FHOaLV7BHvR+mdx93U+WcuCnTlzkEJ1IH8
-         TElA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=14QYsuapzbDaPwF+vtYMIhYK6HSjTpn5v3qbb5kuPmQ=;
+        b=eQtPrfEETO1oDOZwIAMHGKcolbq2Sxt3SMYs0ckTybCn9r0y46i2bpUvoXRfa/Cn8N
+         C+yNnwt0SnUpvtQCZC3olixQRXNHprGrsoc2rYW13XKS3N696SA94orPqO12VHtRg+dJ
+         WWqtlVBbiKKzIYEJHfaTPtoffcw5fyMXcwLmqK610kHXw7pEm/RUIn20BhDVdmUBI3QE
+         HKZQqhEwWbrjC0qXgp3BFmCzzMk+2Pfku1ljO5V7zstgmQcQ7iFIRDAUIPD0lkHaUu+Y
+         tocbmevAeE+RjhW3A2hG5vbQqQYO7OaDIjmixMTl/Peex8q6wiZbSaSHuS5PWUZ0ganD
+         mlIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MFJ51olg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=lUYcd7tK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v22si6195833qkf.298.2020.02.16.11.44.36
+        by mx.google.com with ESMTPS id 89si5636820qta.317.2020.02.16.12.49.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Feb 2020 11:44:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 16 Feb 2020 12:49:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MFJ51olg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35726 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=lUYcd7tK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36258 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3PqG-00048v-5c
-	for alex.bennee@linaro.org; Sun, 16 Feb 2020 14:44:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34760)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j3QrL-0000ca-Mg
+	for alex.bennee@linaro.org; Sun, 16 Feb 2020 15:49:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41809)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1j3PpZ-0003iF-1e
- for qemu-devel@nongnu.org; Sun, 16 Feb 2020 14:43:54 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j3QrC-0000aw-Ru
+ for qemu-arm@nongnu.org; Sun, 16 Feb 2020 15:49:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1j3PpX-0005cs-Mh
- for qemu-devel@nongnu.org; Sun, 16 Feb 2020 14:43:52 -0500
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:40646)
+ (envelope-from <peter.maydell@linaro.org>) id 1j3QrB-0002SQ-MD
+ for qemu-arm@nongnu.org; Sun, 16 Feb 2020 15:49:38 -0500
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:38160)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1j3PpX-0005bh-HE
- for qemu-devel@nongnu.org; Sun, 16 Feb 2020 14:43:51 -0500
-Received: by mail-pg1-x544.google.com with SMTP id z7so7889893pgk.7
- for <qemu-devel@nongnu.org>; Sun, 16 Feb 2020 11:43:51 -0800 (PST)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j3QrB-0002RB-IF
+ for qemu-arm@nongnu.org; Sun, 16 Feb 2020 15:49:37 -0500
+Received: by mail-ot1-x341.google.com with SMTP id z9so14162680oth.5
+ for <qemu-arm@nongnu.org>; Sun, 16 Feb 2020 12:49:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=jKe60JzIR9wTTCupClDTcPlRGkah6P8mFmzkvCXt/nU=;
- b=MFJ51olgXjMW5MdZBN1Ft5GvIN6GtY9huC3Q8048vWVMuorOEKJA+zdx2AradH6XZX
- fVITTHDj6SRPYPSFxeVMIWcq2HK/Gh4ZkSD/mDSMFQP7qhHagU22iPIcsSZH0hGI40pi
- yW19rvbo8IjqlwBXZHQyIZpXjA1SzjqUyremndbhlOzg4PynZd6nt4eydyfwpN/DCL1B
- raVdyg5m1SVaSrFmpbndHEkdWT5du5nV9x6lLYpjvbgmFgwtp0Wwun9yPvMP+slBGzx0
- HbcxY93qSld49VKCjf1A1VrgwlOjq2rVdMHA6ydnUqo5lB69bD36WuV2m6mipGno2Qv7
- MiEw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=14QYsuapzbDaPwF+vtYMIhYK6HSjTpn5v3qbb5kuPmQ=;
+ b=lUYcd7tKHnMnPkYv3KqcIs65fQvfwi/24hctUKwYjo4C7flZw9FDmOQoiUvLJLLVoq
+ YIGIjpA+fPt8CsKIUZ1joe34kSqYlvcsYq/HbtgIZ8cLF5nR4O5dNiCXbuiyGmWJmbGx
+ sRpjNdQoYsTpiDB95iTSgQl75UENCEHwEmJc7X+fFkiqGTSUXUubICGVIdgk5842WUMs
+ cJSoVGe61wHK+OkuozKZ5Fg7As6Jl2v/G69yyMEnVRoRfjEMudjL9A6QvnU67idKtGyB
+ EtRaeh23tIgWxaZ6IW7EPtamIFjdaYaSDTTCgT6JscCDhHlfl8gj84T9nAkilKWRsG90
+ 0XLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=jKe60JzIR9wTTCupClDTcPlRGkah6P8mFmzkvCXt/nU=;
- b=FXPEvcZ67gE+Q9wLlWfpBSaxu65pz1PK3SX7Pw5TVTNdAf0eLfX2qyiYPNlNLuk80M
- IoFmZ1kmbvwb6pKzT511MLXY1vLFeK6ZxKuX1Q+0NmnydbfjxmE0Up2CvEU/kKiQnFNW
- BGyymWYGy70vBe98GMetBNRc+XpDhpyNZf++5Vr0ONb1YI2hWmAV4LWy3gcApZhI8cYA
- rHUgeglmhZ7YmQzac7oEMlYROubUzmiVdYLUGFwhwgkIo/z+xEzy9dHfHjMUN+uFkyR1
- 6LJbUL3Mi1TeNuXgI2bpnq+I9Ka65aQFBK3M2TyT6nL7o7OySF32DTWa1Rwag1/9S8tY
- +KDw==
-X-Gm-Message-State: APjAAAX/PpVR5qS4AdPpps5xIGc45h2wMzL7vn93W9m7OQAlyJ+NEsww
- piZDukEeDa1WUxX9XzCsNdMkPp2qdKk=
-X-Received: by 2002:a63:e755:: with SMTP id j21mr14372101pgk.330.1581882230265; 
- Sun, 16 Feb 2020 11:43:50 -0800 (PST)
-Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net.
- [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id y127sm13945188pfg.22.2020.02.16.11.43.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 16 Feb 2020 11:43:49 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 4/4] target/arm: Split out aa64_va_parameter_tbi,
- aa64_va_parameter_tbid
-Date: Sun, 16 Feb 2020 11:43:43 -0800
-Message-Id: <20200216194343.21331-5-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200216194343.21331-1-richard.henderson@linaro.org>
-References: <20200216194343.21331-1-richard.henderson@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=14QYsuapzbDaPwF+vtYMIhYK6HSjTpn5v3qbb5kuPmQ=;
+ b=BiusS+9/vqUs77Yb3kR4yRrHrKPV0bgZdFJ+jh/gewOIBrdMPCHSW+GQ9WOyjWedj7
+ h/C5uqcBCutz/14KxV21MtaszuTzwQDPaAQEaY22t7IrzEPHuMcuy2nV+XyI9dJ576S1
+ KhOVFOm2FPRfG2bFGb/WUCwyWnEHAG0R5ZbW73BzoQJf9SL2vVESvbMD7bkECyOVaV+c
+ obiCRgGP7C6naHU+QsByHFGJJSL7xyq6Jx66NhsaKsw43Q8alXcsOWM5Gkp3TTI2+zbn
+ ls48aUbve+HHrKx5wLRxteQlW5fulaz6pNRzmKn5Z4GMGyikjiPMcYax1L2RNU/X60tN
+ mskQ==
+X-Gm-Message-State: APjAAAVzLyr1QCZtg8PSOEl5Zf1W3BiMfQLRaytZlFlmMn1eWuQqCOEM
+ q/fAQSocWRexXIG61DQG7Anvb+oDWMs+oCZaXq9pOQ==
+X-Received: by 2002:a05:6830:184:: with SMTP id
+ q4mr10032085ota.232.1581886176266; 
+ Sun, 16 Feb 2020 12:49:36 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20200216194343.21331-1-richard.henderson@linaro.org>
+ <20200216194343.21331-2-richard.henderson@linaro.org>
+In-Reply-To: <20200216194343.21331-2-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 16 Feb 2020 20:49:25 +0000
+Message-ID: <CAFEAcA9zuhhUa5YFn=TKX45H60x664xs4gjkFsPOk50MaSnnZg@mail.gmail.com>
+Subject: Re: [PATCH v3 1/4] target/arm: Use bit 55 explicitly for pauth
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::544
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::341
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qQlEWPJpFSKw
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: I7tT3qqbWqYa
 
-For the purpose of rebuild_hflags_a64, we do not need to compute
-all of the va parameters, only tbi.  Moreover, we can compute them
-in a form that is more useful to storing in hflags.
-
-This eliminates the need for aa64_va_parameter_both, so fold that
-in to aa64_va_parameter.  The remaining calls to aa64_va_parameter
-are in get_phys_addr_lpae and in pauth_helper.c.
-
-This reduces the total cpu consumption of aa64_va_parameter in a
-kernel boot plus a kvm guest kernel boot from 3% to 0.5%.
+On Sun, 16 Feb 2020 at 19:43, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> The psuedocode in aarch64/functions/pac/auth/Auth and
+> aarch64/functions/pac/strip/Strip always uses bit 55 for
+> extfield and do not consider if the current regime has 2 ranges.
+>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/pauth_helper.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/internals.h |  3 --
- target/arm/helper.c    | 68 +++++++++++++++++++++++-------------------
- 2 files changed, 37 insertions(+), 34 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 58c4d707c5..14328e3f7d 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1127,15 +1127,12 @@ typedef struct ARMVAParameters {
-     unsigned tsz    : 8;
-     unsigned select : 1;
-     bool tbi        : 1;
--    bool tbid       : 1;
-     bool epd        : 1;
-     bool hpd        : 1;
-     bool using16k   : 1;
-     bool using64k   : 1;
- } ARMVAParameters;
- 
--ARMVAParameters aa64_va_parameters_both(CPUARMState *env, uint64_t va,
--                                        ARMMMUIdx mmu_idx);
- ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-                                    ARMMMUIdx mmu_idx, bool data);
- 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index eec7b01ab3..8d0f6eca27 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -10234,12 +10234,34 @@ static uint8_t convert_stage2_attrs(CPUARMState *env, uint8_t s2attrs)
- }
- #endif /* !CONFIG_USER_ONLY */
- 
--ARMVAParameters aa64_va_parameters_both(CPUARMState *env, uint64_t va,
--                                        ARMMMUIdx mmu_idx)
-+static int aa64_va_parameter_tbi(uint64_t tcr, ARMMMUIdx mmu_idx)
-+{
-+    if (regime_has_2_ranges(mmu_idx)) {
-+        return extract64(tcr, 37, 2);
-+    } else if (mmu_idx == ARMMMUIdx_Stage2) {
-+        return 0; /* VTCR_EL2 */
-+    } else {
-+        return extract32(tcr, 20, 1);
-+    }
-+}
-+
-+static int aa64_va_parameter_tbid(uint64_t tcr, ARMMMUIdx mmu_idx)
-+{
-+    if (regime_has_2_ranges(mmu_idx)) {
-+        return extract64(tcr, 51, 2);
-+    } else if (mmu_idx == ARMMMUIdx_Stage2) {
-+        return 0; /* VTCR_EL2 */
-+    } else {
-+        return extract32(tcr, 29, 1);
-+    }
-+}
-+
-+ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-+                                   ARMMMUIdx mmu_idx, bool data)
- {
-     uint64_t tcr = regime_tcr(env, mmu_idx)->raw_tcr;
--    bool tbi, tbid, epd, hpd, using16k, using64k;
--    int select, tsz;
-+    bool epd, hpd, using16k, using64k;
-+    int select, tsz, tbi;
- 
-     if (!regime_has_2_ranges(mmu_idx)) {
-         select = 0;
-@@ -10248,11 +10270,9 @@ ARMVAParameters aa64_va_parameters_both(CPUARMState *env, uint64_t va,
-         using16k = extract32(tcr, 15, 1);
-         if (mmu_idx == ARMMMUIdx_Stage2) {
-             /* VTCR_EL2 */
--            tbi = tbid = hpd = false;
-+            hpd = false;
-         } else {
--            tbi = extract32(tcr, 20, 1);
-             hpd = extract32(tcr, 24, 1);
--            tbid = extract32(tcr, 29, 1);
-         }
-         epd = false;
-     } else {
-@@ -10266,28 +10286,30 @@ ARMVAParameters aa64_va_parameters_both(CPUARMState *env, uint64_t va,
-             epd = extract32(tcr, 7, 1);
-             using64k = extract32(tcr, 14, 1);
-             using16k = extract32(tcr, 15, 1);
--            tbi = extract64(tcr, 37, 1);
-             hpd = extract64(tcr, 41, 1);
--            tbid = extract64(tcr, 51, 1);
-         } else {
-             int tg = extract32(tcr, 30, 2);
-             using16k = tg == 1;
-             using64k = tg == 3;
-             tsz = extract32(tcr, 16, 6);
-             epd = extract32(tcr, 23, 1);
--            tbi = extract64(tcr, 38, 1);
-             hpd = extract64(tcr, 42, 1);
--            tbid = extract64(tcr, 52, 1);
-         }
-     }
-     tsz = MIN(tsz, 39);  /* TODO: ARMv8.4-TTST */
-     tsz = MAX(tsz, 16);  /* TODO: ARMv8.2-LVA  */
- 
-+    /* Present TBI as a composite with TBID.  */
-+    tbi = aa64_va_parameter_tbi(tcr, mmu_idx);
-+    if (!data) {
-+        tbi &= ~aa64_va_parameter_tbid(tcr, mmu_idx);
-+    }
-+    tbi = (tbi >> select) & 1;
-+
-     return (ARMVAParameters) {
-         .tsz = tsz,
-         .select = select,
-         .tbi = tbi,
--        .tbid = tbid,
-         .epd = epd,
-         .hpd = hpd,
-         .using16k = using16k,
-@@ -10295,16 +10317,6 @@ ARMVAParameters aa64_va_parameters_both(CPUARMState *env, uint64_t va,
-     };
- }
- 
--ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
--                                   ARMMMUIdx mmu_idx, bool data)
--{
--    ARMVAParameters ret = aa64_va_parameters_both(env, va, mmu_idx);
--
--    /* Present TBI as a composite with TBID.  */
--    ret.tbi &= (data || !ret.tbid);
--    return ret;
--}
--
- #ifndef CONFIG_USER_ONLY
- static ARMVAParameters aa32_va_parameters(CPUARMState *env, uint32_t va,
-                                           ARMMMUIdx mmu_idx)
-@@ -12134,21 +12146,15 @@ static uint32_t rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
- {
-     uint32_t flags = rebuild_hflags_aprofile(env);
-     ARMMMUIdx stage1 = stage_1_mmu_idx(mmu_idx);
--    ARMVAParameters p0 = aa64_va_parameters_both(env, 0, stage1);
-+    uint64_t tcr = regime_tcr(env, mmu_idx)->raw_tcr;
-     uint64_t sctlr;
-     int tbii, tbid;
- 
-     flags = FIELD_DP32(flags, TBFLAG_ANY, AARCH64_STATE, 1);
- 
-     /* Get control bits for tagged addresses.  */
--    if (regime_has_2_ranges(mmu_idx)) {
--        ARMVAParameters p1 = aa64_va_parameters_both(env, -1, stage1);
--        tbid = (p1.tbi << 1) | p0.tbi;
--        tbii = tbid & ~((p1.tbid << 1) | p0.tbid);
--    } else {
--        tbid = p0.tbi;
--        tbii = tbid & !p0.tbid;
--    }
-+    tbid = aa64_va_parameter_tbi(tcr, mmu_idx);
-+    tbii = tbid & ~aa64_va_parameter_tbid(tcr, mmu_idx);
- 
-     flags = FIELD_DP32(flags, TBFLAG_A64, TBII, tbii);
-     flags = FIELD_DP32(flags, TBFLAG_A64, TBID, tbid);
--- 
-2.20.1
+('pseudocode', but I'll fix the typo when I apply it if
+it doesn't need a respin for some other reason)
 
+thanks
+-- PMM

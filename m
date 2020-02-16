@@ -1,66 +1,106 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4404408lfp;
-        Sun, 16 Feb 2020 14:21:09 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxM4CffYE1pz6jB4z/VrN8ubGAfTn20U5bYmsziZF/0Q7N5ZO9VBgrC+uhLytOoSs4zOxPY
-X-Received: by 2002:ac8:195d:: with SMTP id g29mr11049402qtk.65.1581891669101;
-        Sun, 16 Feb 2020 14:21:09 -0800 (PST)
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4452944lfp;
+        Sun, 16 Feb 2020 15:42:50 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxz6G7jdHPs/p8ZcsPZOSSmu3HYYhrUGo9AyyLfBBnORTDIg2emMaJ9y7cbfgubPElrUNeH
+X-Received: by 2002:ac8:4616:: with SMTP id p22mr11349214qtn.368.1581896570756;
+        Sun, 16 Feb 2020 15:42:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581896570; cv=none;
+        d=google.com; s=arc-20160816;
+        b=AKUUDnUh4PEvWRgMLQ1r1beqPY3UhXM7qmA7Uz3PwKHQ6kvDioccB3m6+8fPfF4LNO
+         lWwVvwWQUIQse5luUQDXMxOR/fQ6wLb89o8tcrUJ5Ckq0o+QHBbeOyk0omEkUb/CjT+n
+         sgj8du9wquDdcwvCTixFwPTqdezrd7RrARAHtBRYT5LyLCaN1820ZUh97151qadN53Id
+         hiBwK8ONFIDdP/eOFeGaQljh3OjgMPllFFuDjmNofCpd0eprtDmrKeZc0e4pab5Zlud6
+         5ir0TPWvKJ97NL0SM2OTQp8lg4AHhLRA6AldOeOT/kiTsMqnBF2fPMYbS8Sh0HV40d2/
+         y9Lw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :dkim-signature;
+        bh=CWof6CVWogOW3pvdt5XNombSiCK1g8ZWhbCTLP9sfcM=;
+        b=CbUZYhfNSmv65MDM8zcRT3htkJrZqCUZDD9gVAQ3qDdiGOP9rLOwto6+9kDyxBPPfZ
+         Oq/0JXWp0Foug4nFh6AZ+6LmPxG92UHy3vDUq3+gOUV73NTFJk4Sy6zcbqy8jq4dAJFd
+         aeQZGpAFgIiaesh32y/wCeFutvJVYrlbt35/JMEcp9JzGwzj+xkdzmYuB4+70S9Nw9+S
+         t7ejXaiDkth6Z/KtmAmer5I9edrvZqxkhcZbHjXacVWPZkZXBahCDx3Wobwe+a5YO1ir
+         23ZaNdWarFSNu8R1lcTBkMkjOfcYAmlkY3J90egRa0GSxeWJxqFXNC1Op0UaCskJuZoS
+         B6hA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="G/ptAkeZ";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v10si5642763qvl.183.2020.02.16.14.21.08
+        by mx.google.com with ESMTPS id g7si5850307qth.127.2020.02.16.15.42.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Feb 2020 14:21:09 -0800 (PST)
+        Sun, 16 Feb 2020 15:42:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37486 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="G/ptAkeZ";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37954 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3SHk-0002Ef-5c
-	for alex.bennee@linaro.org; Sun, 16 Feb 2020 17:21:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52047)
+	id 1j3TYo-0005nQ-7P
+	for alex.bennee@linaro.org; Sun, 16 Feb 2020 18:42:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57634)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1j3SHc-0002DO-3I
- for qemu-arm@nongnu.org; Sun, 16 Feb 2020 17:21:01 -0500
+ (envelope-from <gshan@redhat.com>) id 1j3TYh-0005nC-95
+ for qemu-arm@nongnu.org; Sun, 16 Feb 2020 18:42:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1j3SHa-0006wI-VG
- for qemu-arm@nongnu.org; Sun, 16 Feb 2020 17:21:00 -0500
-Resent-Date: Sun, 16 Feb 2020 17:21:00 -0500
-Resent-Message-Id: <E1j3SHa-0006wI-VG@eggs.gnu.org>
-Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21107)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1j3SHX-0006ou-M8; Sun, 16 Feb 2020 17:20:55 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1581891648; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=Cgii2xOYd0lJIP00L1ijLp8GKowUG8dmUM1XZZuWVOjaJ7jg6d5sBLSB/QK+mKitNDW5zPyz/dolvufh6gzOQb3nFWDBumVmSSM0f7nj9yvjn5xe8IolnY16ikmbl0VfLdQmycCxgzamqMEvi81v0HrtFvoDde7uYAgc+wjU1MU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1581891648;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=h45rM+Q+EHCgOZqedzhRYrOel5Gd8HkFC8A0GWQudq0=; 
- b=a2qIIcMZwAq5GsUDmE6QflGFIHvxDtkd1i32+TMyiXpLrOrr9SlMTUyBkNYopDXOwrH4/VJi7hbaIhb9d+KSbrNypPT4lzl55mcZBjnOtNqOGqd8aSozG9F9B5P6ZS/YQGBPZYZ8h/CAlCIfHPofgFpJsSa/ZcGLfvl5zkDsI3I=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1581891644481257.05944383701956;
- Sun, 16 Feb 2020 14:20:44 -0800 (PST)
-In-Reply-To: <20200216214232.4230-1-richard.henderson@linaro.org>
-Subject: Re: [PATCH v2 0/4] target/arm vector improvements
-Message-ID: <158189164315.22563.16471888088547791729@a1bbccc8075a>
+ (envelope-from <gshan@redhat.com>) id 1j3TYf-0006xM-Ne
+ for qemu-arm@nongnu.org; Sun, 16 Feb 2020 18:42:42 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:23781
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1j3TYf-0006w3-Ix
+ for qemu-arm@nongnu.org; Sun, 16 Feb 2020 18:42:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581896560;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=CWof6CVWogOW3pvdt5XNombSiCK1g8ZWhbCTLP9sfcM=;
+ b=G/ptAkeZaaYKrcqF211YuEOqjADkZ5Wc50J7jWLbr55xwmWVKRnAKdzPap7IYetztUO8oz
+ kxkhG3MmEsQTq8o3rZWG7MUPM0lC7LpV9Mj+Ey7Jfh0s+QfUf5/tCnK8QWm4hFW3Jcldfp
+ q5k0dceJBg02enGkSgypxtTnUeB6nIQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-60-hj5PHfJPMkKVFwWMl08AoQ-1; Sun, 16 Feb 2020 18:42:39 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 099A8107ACC7;
+ Sun, 16 Feb 2020 23:42:37 +0000 (UTC)
+Received: from localhost.localdomain (vpn2-54-16.bne.redhat.com [10.64.54.16])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CB3BB85735;
+ Sun, 16 Feb 2020 23:42:30 +0000 (UTC)
+Subject: Re: [PATCH v3 1/2] target/arm: Support SError injection
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20200214055950.62477-1-gshan@redhat.com>
+ <20200214055950.62477-2-gshan@redhat.com>
+ <0c00d0d4-19c5-0802-8fd3-f583bb270709@linaro.org>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <b0d30a90-7d0e-8bb6-c7f5-7f01cb218122@redhat.com>
+Date: Mon, 17 Feb 2020 10:42:28 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: richard.henderson@linaro.org
-Date: Sun, 16 Feb 2020 14:20:44 -0800 (PST)
-X-ZohoMailClient: External
+In-Reply-To: <0c00d0d4-19c5-0802-8fd3-f583bb270709@linaro.org>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: hj5PHfJPMkKVFwWMl08AoQ-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.51
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,46 +112,120 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Reply-To: Gavin Shan <gshan@redhat.com>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, jthierry@redhat.com,
+ aik@ozlabs.ru, maz@kernel.org, eric.auger@redhat.com, shan.gavin@gmail.com,
+ pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dTijsLck8/XS
+X-TUID: QNawazYVWTBw
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDIxNjIxNDIzMi40MjMw
-LTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVt
-cyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZv
-cgptb3JlIGluZm9ybWF0aW9uOgoKU3ViamVjdDogW1BBVENIIHYyIDAvNF0gdGFyZ2V0L2FybSB2
-ZWN0b3IgaW1wcm92ZW1lbnRzCk1lc3NhZ2UtaWQ6IDIwMjAwMjE2MjE0MjMyLjQyMzAtMS1yaWNo
-YXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnClR5cGU6IHNlcmllcwoKPT09IFRFU1QgU0NSSVBUIEJF
-R0lOID09PQojIS9iaW4vYmFzaApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2L251bGwgfHwgZXhp
-dCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxv
-Y2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBo
-aXN0b2dyYW0KLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRF
-U1QgU0NSSVBUIEVORCA9PT0KCkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVj
-dC9xZW11CiAqIFtuZXcgdGFnXSAgICAgICAgIHBhdGNoZXcvMjAyMDAyMTYyMTQyMzIuNDIzMC0x
-LXJpY2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmcgLT4gcGF0Y2hldy8yMDIwMDIxNjIxNDIzMi40
-MjMwLTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZwpTd2l0Y2hlZCB0byBhIG5ldyBicmFu
-Y2ggJ3Rlc3QnCjIyMzY1NTIgdGFyZ2V0L2FybTogQ29udmVydCBQTVVMTC44IHRvIGd2ZWMKODg5
-MjUyNCB0YXJnZXQvYXJtOiBDb252ZXJ0IFBNVUxMLjY0IHRvIGd2ZWMKYTQzOGQ0MCB0YXJnZXQv
-YXJtOiBDb252ZXJ0IFBNVUwuOCB0byBndmVjCjM5MTY0ZGUgdGFyZ2V0L2FybTogVmVjdG9yaXpl
-IFVTSEwgYW5kIFNTSEwKCj09PSBPVVRQVVQgQkVHSU4gPT09CjEvNCBDaGVja2luZyBjb21taXQg
-MzkxNjRkZTk0NGQ1ICh0YXJnZXQvYXJtOiBWZWN0b3JpemUgVVNITCBhbmQgU1NITCkKRVJST1I6
-IHRyYWlsaW5nIHN0YXRlbWVudHMgc2hvdWxkIGJlIG9uIG5leHQgbGluZQojMTYxOiBGSUxFOiB0
-YXJnZXQvYXJtL3RyYW5zbGF0ZS5jOjM1Nzg6CisgICAgICAgICAgICBjYXNlIDI6IGdlbl91c2hs
-X2kzMih2YXIsIHZhciwgc2hpZnQpOyBicmVhazsKCkVSUk9SOiB0cmFpbGluZyBzdGF0ZW1lbnRz
-IHNob3VsZCBiZSBvbiBuZXh0IGxpbmUKIzE2ODogRklMRTogdGFyZ2V0L2FybS90cmFuc2xhdGUu
-YzozNTg0OgorICAgICAgICAgICAgY2FzZSAyOiBnZW5fc3NobF9pMzIodmFyLCB2YXIsIHNoaWZ0
-KTsgYnJlYWs7Cgp0b3RhbDogMiBlcnJvcnMsIDAgd2FybmluZ3MsIDU2OSBsaW5lcyBjaGVja2Vk
-CgpQYXRjaCAxLzQgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9m
-IHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWlu
-dGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCjIvNCBDaGVja2luZyBjb21t
-aXQgYTQzOGQ0MDEyYjcwICh0YXJnZXQvYXJtOiBDb252ZXJ0IFBNVUwuOCB0byBndmVjKQozLzQg
-Q2hlY2tpbmcgY29tbWl0IDg4OTI1MjQxMDI1NCAodGFyZ2V0L2FybTogQ29udmVydCBQTVVMTC42
-NCB0byBndmVjKQo0LzQgQ2hlY2tpbmcgY29tbWl0IDIyMzY1NTJhNGI0NCAodGFyZ2V0L2FybTog
-Q29udmVydCBQTVVMTC44IHRvIGd2ZWMpCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5k
-IGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6
-Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwMjE2MjE0MjMyLjQyMzAtMS1yaWNoYXJkLmhlbmRlcnNv
-bkBsaW5hcm8ub3JnL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwg
-Z2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9d
-LgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+On 2/16/20 2:41 PM, Richard Henderson wrote:
+> On 2/13/20 9:59 PM, Gavin Shan wrote:
+>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>> index b0762a76c4..180e29fb83 100644
+>> --- a/target/arm/cpu.c
+>> +++ b/target/arm/cpu.c
+>> @@ -78,7 +78,7 @@ static bool arm_cpu_has_work(CPUState *cs)
+>>           && cs->interrupt_request &
+>>           (CPU_INTERRUPT_FIQ | CPU_INTERRUPT_HARD
+>>            | CPU_INTERRUPT_VFIQ | CPU_INTERRUPT_VIRQ
+>> -         | CPU_INTERRUPT_EXITTB);
+>> +         | ARM_CPU_SERROR | CPU_INTERRUPT_EXITTB);
+> 
+> CPU_INTERRUPT_SERROR, not ARM_CPU_SERROR.
+> 
+
+Yep, will be corrected in v4.
+
+>> @@ -570,6 +573,16 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+>>               goto found;
+>>           }
+>>       }
+>> +
+>> +    if (interrupt_request & CPU_INTERRUPT_SERROR) {
+>> +        excp_idx = EXCP_SERROR;
+>> +        target_el = arm_phys_excp_target_el(cs, excp_idx, cur_el, secure);
+>> +        if (arm_excp_unmasked(cs, excp_idx, target_el,
+>> +                              cur_el, secure, hcr_el2)) {
+>> +            goto found;
+>> +        }
+>> +    }
+>> +
+>>       return false;
+>>   
+>>    found:
+> 
+> If you're intending to use Serror for NMI, perhaps it should be the first bit
+> tested, not the last.  Otherwise some bug that leaves a normal hard interrupt
+> line high will keep delivering the interrupt, and not the Serror.
+> 
+> As the comment at the top of the function says, the priority is implementation
+> defined, so we can put it anywhere we like.
+> 
+
+Yes, SError will have highest priority in v4.
+
+>> @@ -594,13 +607,26 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+>>        * (which depends on state like BASEPRI, FAULTMASK and the
+>>        * currently active exception).
+>>        */
+>> -    if (interrupt_request & CPU_INTERRUPT_HARD
+>> -        && (armv7m_nvic_can_take_pending_exception(env->nvic))) {
+>> -        cs->exception_index = EXCP_IRQ;
+>> -        cc->do_interrupt(cs);
+>> -        ret = true;
+>> +    if (!armv7m_nvic_can_take_pending_exception(env->nvic)) {
+>> +        return false;
+>> +    }
+>> +
+>> +    if (interrupt_request & CPU_INTERRUPT_HARD) {
+>> +        excp_idx = EXCP_IRQ;
+>> +        goto found;
+>>       }
+>> -    return ret;
+>> +
+>> +    if (interrupt_request & CPU_INTERRUPT_SERROR) {
+>> +        excp_idx = EXCP_SERROR;
+>> +        goto found;
+>> +    }
+> 
+> Likewise.
+> 
+
+Thanks, SError will have highest priority in v4.
+
+>> -        qdev_init_gpio_in(DEVICE(cpu), arm_cpu_kvm_set_irq, 4);
+>> +        qdev_init_gpio_in(DEVICE(cpu), arm_cpu_kvm_set_irq, 5);
+>>       } else {
+>> -        qdev_init_gpio_in(DEVICE(cpu), arm_cpu_set_irq, 4);
+>> +        qdev_init_gpio_in(DEVICE(cpu), arm_cpu_set_irq, 5);
+> 
+> I wonder if we should have an ARM_CPU_NUM_IRQ define so that this is more
+> automatic.
+> 
+
+Yes, It makes sense. ARM_CPU_NUM_IRQ will be introduced in v4.
+
+>> @@ -98,10 +100,11 @@ enum {
+>>   #endif
+>>   
+>>   /* Meanings of the ARMCPU object's four inbound GPIO lines */
+>> -#define ARM_CPU_IRQ 0
+>> -#define ARM_CPU_FIQ 1
+>> -#define ARM_CPU_VIRQ 2
+>> -#define ARM_CPU_VFIQ 3
+>> +#define ARM_CPU_IRQ    0
+>> +#define ARM_CPU_FIQ    1
+>> +#define ARM_CPU_VIRQ   2
+>> +#define ARM_CPU_VFIQ   3
+>> +#define ARM_CPU_SERROR 4
+> 
+> Comment is now wrong about the count.
+> 
+
+Yes, It will be corrected to "ARMCPU object's inbound GPIO lines" in v4.
+
+Thanks,
+Gavin
+

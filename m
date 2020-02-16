@@ -1,48 +1,48 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3917673lfp;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3917677lfp;
         Sun, 16 Feb 2020 02:22:12 -0800 (PST)
-X-Google-Smtp-Source: APXvYqygqRUPKoWs42o1zNoFdS8baQ/0KxOw5m3lU4gZE1FZrkVveb28wPTYJyIi/WN+drfrw/pL
-X-Received: by 2002:a9d:6544:: with SMTP id q4mr8099531otl.269.1581848531928;
-        Sun, 16 Feb 2020 02:22:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581848531; cv=none;
+X-Google-Smtp-Source: APXvYqx8A2ryQXybq4atK2G7pkqZKxTpHn7D/alKuBlOwqIHb7SIa0eNblF9E5COiBXdhiwkitiP
+X-Received: by 2002:a05:6830:1d93:: with SMTP id y19mr8647367oti.350.1581848532228;
+        Sun, 16 Feb 2020 02:22:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581848532; cv=none;
         d=google.com; s=arc-20160816;
-        b=oKZp6uYqdN6Blm/CmjWXN3wsMK8DabK2GyN/uGU+YTy1FaORgP2oM+PXlEhP2RpBlb
-         6WNzCeqxZXiEmreFCLz6JEil9RnN+eshX/2PJoTNLsQx3LMGxe8ujSLnDI4FIj9R7mKB
-         XspsAnDK7XVl9UCskjhh1tkktJRn9VC3jBmICgyDzBn45LAF1NOhWgcauwIi1oX9qKBy
-         s7m7SRngTZW4XwPW1jA3w6h4J81EoxQIuumtdm1AumXOpq2hqyRbZqBcBXH5bAqi1/Mo
-         ttcdK7xG6fmQTGIkqWRRIqrLBAPf16HxrTb3WINCzsgJ5dEdyhF8BKaJBlsWcjecEqyI
-         3SWA==
+        b=GnaAv3tf7wex771n5FGzDGwtCDAAGXMe5ZRVTv/Z5zBBT3+XXKC0ba+JBCYWDNcTCl
+         DpCoCusTIUgBEDWcZ4ibPSxhWvNO0zYmgUG4W/00FWFeM2jf0Xcof6Sejs3i/e03Ld3P
+         vRxM34nugffLgJSEAs5CGxUZGen8Ai2RAbwoFwglYfVqMYeB0XCeUNShmpROrYI4E/JR
+         PeJe8PAerttESIoiCJUS1ksaPAL97qPxbPWZ6FK6yxVPt17rYakBt7I5+Xxxv7DSqRat
+         qF8YcnCTSM1uc7S+oXY2udl7mxuZtbVkuNtSwN7vqahnHJQNCTf3KFsgy23E5TjpyfmL
+         EmWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=l4Wm86eOYTUyxbo20YvBJuytJaMnkjwkRZM0qqMmTPw=;
-        b=hvxhi6IbkVtqC4OwAs5rQFiI2FP3RWmiyQ3xkDRymfn1ZA4eKlgOcZ1vfqRWvlSwP0
-         9ltwnMTVI27VBzd0yFlHTa/LQhwDGVhSrEIPPE3hyAc5f3W7Hu1SL/FEvbnc5G2NZ+61
-         doWT7vFUecLdbZwdQ7CaoBojcIeqpwd2KFfL9wSituw5gRR/PDidl2+byL6uBHEfCzUD
-         JluwLBoEfFW41ZDCSs0W3toHKNmXxgNFa10AUGGMRNrras4RLICw9abTKL+a2RNN2VmB
-         MG5Pz+e7rS7lRla8Moh662IEm+88AaoP3vmSzVGZvkogZEYvvAj21HBHviHkm0IWSmIx
-         bHiQ==
+        h=list-id:precedence:sender:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=Gh//WlSzjD9sSMlfPFU7zlR9DG5/MhK5H7WxQxK5Xg8=;
+        b=gb6C33IDWnVvgzvkl6GilNUtRWVXioDh8K7w9E7mIUfB7BGMMPk2Tha9uDZkQ/Gnl5
+         oWtljY7uJIz/aBH+p1iwy3eIx9bN61eXWGfdCOazkzVqkXP7DB4wm9wqjzgHLwdIbBDn
+         zZiZ/Rom8EBwfhoVV6iobpTEvuYv/Rw6omIwSV0KmM7wUB3te+zEkIH0GLDHNmCq3zf0
+         SF4jmTM0pMDVvfbkLaj47kWSeKfqtHJnC5TQyiIXxvjdyH6eJJsH1B1XXaZImxeccDbL
+         YmRIuIeDH8vz1v2hkYZIi3nnBsDaFooMXM535K3urZr+bgQ2StsuflKQ80Y58x3rQj/P
+         /bqA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id z18si5546068otq.121.2020.02.16.02.22.11;
-        Sun, 16 Feb 2020 02:22:11 -0800 (PST)
+        by mx.google.com with ESMTP id z18si5546068otq.121.2020.02.16.02.22.12;
+        Sun, 16 Feb 2020 02:22:12 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726617AbgBPKV6 (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Sun, 16 Feb 2020 05:21:58 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:10182 "EHLO huawei.com"
+        id S1726701AbgBPKV7 (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Sun, 16 Feb 2020 05:21:59 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:45288 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726116AbgBPKV6 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sun, 16 Feb 2020 05:21:58 -0500
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
-        by Forcepoint Email with ESMTP id 163D2AA470891E543A32;
-        Sun, 16 Feb 2020 18:21:52 +0800 (CST)
+        id S1726116AbgBPKV7 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sun, 16 Feb 2020 05:21:59 -0500
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 2658C239572484E39928;
+        Sun, 16 Feb 2020 18:21:57 +0800 (CST)
 Received: from huawei.com (10.151.151.243) by DGGEMS411-HUB.china.huawei.com
  (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Sun, 16 Feb 2020
- 18:21:45 +0800
+ 18:21:47 +0800
 From:   Dongjiu Geng <gengdongjiu@huawei.com>
 To:     <mst@redhat.com>, <imammedo@redhat.com>,
         <xiaoguangrong.eric@gmail.com>, <shannon.zhaosl@gmail.com>,
@@ -54,10 +54,12 @@ To:     <mst@redhat.com>, <imammedo@redhat.com>,
         <jonathan.cameron@huawei.com>,
         <shameerali.kolothum.thodi@huawei.com>
 CC:     <gengdongjiu@huawei.com>, <zhengxiang9@huawei.com>
-Subject: [PATCH v1] acpi: nvdimm: change NVDIMM_UUID_LE to a common macro
-Date:   Sun, 16 Feb 2020 18:23:58 +0800
-Message-ID: <20200216102408.22987-1-gengdongjiu@huawei.com>
+Subject: [PATCH v23 1/9] hw/arm/virt: Introduce a RAS machine option
+Date:   Sun, 16 Feb 2020 18:24:00 +0800
+Message-ID: <20200216102408.22987-3-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 2.18.0.huawei.25
+In-Reply-To: <20200216102408.22987-1-gengdongjiu@huawei.com>
+References: <20200216102408.22987-1-gengdongjiu@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.151.151.243]
@@ -66,65 +68,72 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: gA4fK4TVLGXF
+X-TUID: u+SeuzKG6AkY
 
-The little end UUID is used in many places, so make
-NVDIMM_UUID_LE to a common macro to convert the UUID
-to a little end array.
+RAS Virtualization feature is not supported now, so add a RAS machine
+option and disable it by default.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-Reviewed-by: Xiang Zheng <zhengxiang9@huawei.com>
+Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 ---
- hw/acpi/nvdimm.c    | 8 ++------
- include/qemu/uuid.h | 5 +++++
- 2 files changed, 7 insertions(+), 6 deletions(-)
+ hw/arm/virt.c         | 23 +++++++++++++++++++++++
+ include/hw/arm/virt.h |  1 +
+ 2 files changed, 24 insertions(+)
 
-diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-index 9fdad6d..232b701 100644
---- a/hw/acpi/nvdimm.c
-+++ b/hw/acpi/nvdimm.c
-@@ -27,6 +27,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/uuid.h"
- #include "hw/acpi/acpi.h"
- #include "hw/acpi/aml-build.h"
- #include "hw/acpi/bios-linker-loader.h"
-@@ -60,17 +61,12 @@ static GSList *nvdimm_get_device_list(void)
-     return list;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index f788fe2..9555b8b 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1823,6 +1823,20 @@ static void virt_set_its(Object *obj, bool value, Error **errp)
+     vms->its = value;
  }
  
--#define NVDIMM_UUID_LE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)             \
--   { (a) & 0xff, ((a) >> 8) & 0xff, ((a) >> 16) & 0xff, ((a) >> 24) & 0xff, \
--     (b) & 0xff, ((b) >> 8) & 0xff, (c) & 0xff, ((c) >> 8) & 0xff,          \
--     (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) }
--
- /*
-  * define Byte Addressable Persistent Memory (PM) Region according to
-  * ACPI 6.0: 5.2.25.1 System Physical Address Range Structure.
-  */
- static const uint8_t nvdimm_nfit_spa_uuid[] =
--      NVDIMM_UUID_LE(0x66f0d379, 0xb4f3, 0x4074, 0xac, 0x43, 0x0d, 0x33,
-+      UUID_LE(0x66f0d379, 0xb4f3, 0x4074, 0xac, 0x43, 0x0d, 0x33,
-                      0x18, 0xb7, 0x8c, 0xdb);
- 
- /*
-diff --git a/include/qemu/uuid.h b/include/qemu/uuid.h
-index 129c45f..bd38af5 100644
---- a/include/qemu/uuid.h
-+++ b/include/qemu/uuid.h
-@@ -34,6 +34,11 @@ typedef struct {
-     };
- } QemuUUID;
- 
-+#define UUID_LE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)             \
-+  { (a) & 0xff, ((a) >> 8) & 0xff, ((a) >> 16) & 0xff, ((a) >> 24) & 0xff, \
-+     (b) & 0xff, ((b) >> 8) & 0xff, (c) & 0xff, ((c) >> 8) & 0xff,          \
-+     (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) }
++static bool virt_get_ras(Object *obj, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
 +
- #define UUID_FMT "%02hhx%02hhx%02hhx%02hhx-" \
-                  "%02hhx%02hhx-%02hhx%02hhx-" \
-                  "%02hhx%02hhx-" \
++    return vms->ras;
++}
++
++static void virt_set_ras(Object *obj, bool value, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    vms->ras = value;
++}
++
+ static char *virt_get_gic_version(Object *obj, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+@@ -2126,6 +2140,15 @@ static void virt_instance_init(Object *obj)
+                                     "Valid values are none and smmuv3",
+                                     NULL);
+ 
++    /* Default disallows RAS instantiation */
++    vms->ras = false;
++    object_property_add_bool(obj, "ras", virt_get_ras,
++                             virt_set_ras, NULL);
++    object_property_set_description(obj, "ras",
++                                    "Set on/off to enable/disable reporting host memory errors "
++                                    "to a KVM guest using ACPI and guest external abort exceptions",
++                                    NULL);
++
+     vms->irqmap = a15irqmap;
+ 
+     virt_flash_create(vms);
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 71508bf..c32b7c7 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -123,6 +123,7 @@ typedef struct {
+     bool highmem_ecam;
+     bool its;
+     bool virt;
++    bool ras;
+     int32_t gic_version;
+     VirtIOMMUType iommu;
+     struct arm_boot_info bootinfo;
 -- 
 1.8.3.1

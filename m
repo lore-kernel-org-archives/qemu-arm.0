@@ -1,106 +1,121 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4224783lfp;
-        Sun, 16 Feb 2020 09:31:18 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxX2F+j9e46Tq8d2j8GaPpu38ehNb4Esiv2tzYWQ43NoJm8wAuhG/nG0j1c/Oe06NQ+ngQv
-X-Received: by 2002:ad4:4511:: with SMTP id k17mr9308799qvu.135.1581874278389;
-        Sun, 16 Feb 2020 09:31:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581874278; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4254007lfp;
+        Sun, 16 Feb 2020 10:14:37 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyuqhQHXQCMeFdmkRG+ZnQvEph0wAMJhWiQ5G/e3moxfqo0FEna9VmZ57EP79SNEqxq24TV
+X-Received: by 2002:a0c:b255:: with SMTP id k21mr10079061qve.103.1581876877318;
+        Sun, 16 Feb 2020 10:14:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581876877; cv=none;
         d=google.com; s=arc-20160816;
-        b=LTYlITpRzPLeTY3sitmig1kt41yritjRS2dU8u7Kqf+Ez16SnFfih/mirDPDneyJVv
-         uU4MA4nFrRcOeqVR/+KMfahU+YMJHySESN2TaOx6cJ5NvqyMYyH2AQ/SsJh6NoGPABw/
-         CYK8VTT8+/N9nfomU4AjypEKiPKlbBwA9d7oL/D/Gb9w6OF1MxcMVZ30lcRiSbJ/wEK9
-         0O7Wd1nlqq2oQCi5r9+X/ocx4Rk63nNHuIuil2vHPRDb46Kad8aSPyPg4jUswyIotuh7
-         oEshqnYFFQ0SYzdkP5h6LPCIWU4bgIEg6QI+cguNLHaz2PI01xDjrAHln5Henw1gQ7X9
-         UgwA==
+        b=oPkzOiexiuerxg2AsoyXlvSBfTzc6M9crUB0Kft1z193EnZjU/xf+VbXGR6TBnfgXq
+         G93JetvYcccCI03bGAiScFocO4BmAVLBzpdJVnLno6YMfol8F/v64MxOA6Kk/3V8Dh/k
+         z2F5Nvak3oUDPfoJoFKhJSoMcszgpoxJ330h/0bWSE6RrS4o4/7Atz62lCMU44vj0FIq
+         Hy8I1rnnWn0nmI5YlzluKmpdmgAGRQIXIqSqUsBSYCdSTsIiv/hsiFIXoFID2RWq4Yh8
+         eTTMwcK5D0YwxxOHw9dF0Drv2wPuSBlT9X4e3m5QNfGgENIHSVRE9GMvHjKTGNBL8bDJ
+         Dc1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=ILByhanNSF4EWIF7kqIRdqxbnlc2sM+dFB4V1nqdc6M=;
-        b=C2/q+rhKo6lWCwA0RYg6T6t9WorvEySF7BDYg5W5jpDU/WbGQd4ZtwAeglW17salwh
-         GOfrSSuJ99LZ8CtG7sdZfwAZh8zsmmys/QF9y0OEV35IXQV2AB9l9ceHrPp52nJGzfN8
-         O7sT920DcpNILVjteFjgMsoMKNko4KhY9gyoh6TudgdrlJlcS30AWkZ0UziFdtelj+zK
-         L9txG8FgMUdLWOc2CTUNQHfclvEaXo3SwsLED83jACvMVUKUdGT61Is7FcBj5yXFa7EL
-         ct631cP4blTcpqkiH4BqrSlDnDw0v34wzEI8N1LtKB6+QuYW/IQCJgnG286F65Njo6o7
-         LitQ==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=+X2EEHUfHavAoZ8jIbupp2eZqZL1WUQ3xsR50hgiFYQ=;
+        b=hl52NwoAduJDFRbxPb2MrYmAhyecUfQEnzTUNAsNFYtcSrWMHpJdsrzwMrHe2XY9ow
+         LAsxDgW6W8SBCEO5KbiBAadMMfQrwRNSb57g5Sv4UzhF20ASNMqbHNshEIrqRQjmsZBu
+         lDQPB4qKWqrJ8dIUF3h5jBdqA4WKakiZRDpar0GZQc0ng1RAuqvsI8DXbEEHZWv41HmL
+         DBcoFOhbU1sEtjfGoxSFJry2vtOPZVRmRooqSuz4rLYQHX2joZXPCSk4yDPPT3aUkMc9
+         Ttgmu7tApXJJXwKLar7PK5yW0AdaOAMJhpd/3xqfqLEs/oYzBpFPzUuwAKOIlsJ7dAZc
+         FGAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UYTLEyVG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y82si6579827qkb.103.2020.02.16.09.31.18
+        by mx.google.com with ESMTPS id a4si4911733qvb.196.2020.02.16.10.14.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Feb 2020 09:31:18 -0800 (PST)
+        Sun, 16 Feb 2020 10:14:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UYTLEyVG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:34622 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:34904 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3NlF-0004ep-Ox
-	for alex.bennee@linaro.org; Sun, 16 Feb 2020 12:31:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49816)
+	id 1j3ORA-0001T9-PB
+	for alex.bennee@linaro.org; Sun, 16 Feb 2020 13:14:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53686)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j3Nl5-0004b6-G7
- for qemu-arm@nongnu.org; Sun, 16 Feb 2020 12:31:08 -0500
+ (envelope-from <stefanb@linux.ibm.com>) id 1j3OQz-0001Sz-Gk
+ for qemu-arm@nongnu.org; Sun, 16 Feb 2020 13:14:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j3Nl3-0001Sc-4x
- for qemu-arm@nongnu.org; Sun, 16 Feb 2020 12:31:07 -0500
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:35453)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j3Nky-0001Ob-Bn; Sun, 16 Feb 2020 12:31:01 -0500
-Received: by mail-wr1-x444.google.com with SMTP id w12so16866682wrt.2;
- Sun, 16 Feb 2020 09:30:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ILByhanNSF4EWIF7kqIRdqxbnlc2sM+dFB4V1nqdc6M=;
- b=UYTLEyVGniAzpBLTnUMIlzGKTh2jG8JtmaIfySDMY24Cvt+e4H2Ea7opHdhb1VhR95
- E5d5b7L3jERpa5ZX+/F5yJssJMHZ1QHgCD0IE8wtfb0Gu9SIkhk4bcf2ccV1JV5saILb
- 0cPKQVYUe7Fq329pmEyGBCv9Ckkek6PMUGg9ogS4Y467u8glzlQVWyhKp/Dv7SgHguXi
- DC7SKsSZD6KqUguTAexer9LGWjVPcvfW+GCi5Z4hpo5MwVVsAISQ+lqfqTAZHkcJBp2Q
- Yh2e5JAjuQTEVb299sl4VWk5A1rsomGPKUCEkWWF7YkQThWqY+Q1jA3SWSSkkgjttAjg
- wTXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=ILByhanNSF4EWIF7kqIRdqxbnlc2sM+dFB4V1nqdc6M=;
- b=m/pGOHuvNVhAv7SUhnOD5xmtYQHdUqY2QIdfR9XW3RmRalvboaI62z40ImUqbEEzEi
- eq2za087we1Pjf9rak3okq0WFRAZO2y9YkFz2Yrgt+uqiX1LF4cJBuHZubyXKziVFiCQ
- bOBQbsDdBgXYfeywntjRJa3n9omNMZuZwj/Ja4AHFNxEC1pw/xRd0RWq3b1+H6+YGCQO
- eNhxZyrCDDK8aWyNM5RbWWiZ+57K9vgeehckRbnJmfgiuFROBAY46slQafNF4W73iTcf
- 84Lr6RPiMVqUFd4EOl7Ab3N8zXDBXcLxk8CZEh5kA9vpo/5/BqDjo+5G83Kr1E7quWNw
- V4cg==
-X-Gm-Message-State: APjAAAV9pAoiiN/oCTa11oD2RJOKBIZBzW+uiq2IR2J7ZAW6sxkKgBzW
- CLGzlPjBfFw8cuxrA0ofa7xtG9F9YHw=
-X-Received: by 2002:adf:e5c4:: with SMTP id a4mr17687924wrn.292.1581874258126; 
- Sun, 16 Feb 2020 09:30:58 -0800 (PST)
-Received: from localhost.localdomain (78.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id 59sm18086135wre.29.2020.02.16.09.30.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 16 Feb 2020 09:30:57 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] tests/boot_linux_console: Boot Trusted Firmware-A on the
- Raspberry Pi 3
-Date: Sun, 16 Feb 2020 18:30:55 +0100
-Message-Id: <20200216173055.30338-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.1
+ (envelope-from <stefanb@linux.ibm.com>) id 1j3OQy-0002xy-Bg
+ for qemu-arm@nongnu.org; Sun, 16 Feb 2020 13:14:25 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:47442)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <stefanb@linux.ibm.com>)
+ id 1j3OQy-0002st-3J; Sun, 16 Feb 2020 13:14:24 -0500
+Received: from pps.filterd (m0098404.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 01GI9C8x113130; Sun, 16 Feb 2020 13:14:18 -0500
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2y6dkvt1g1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sun, 16 Feb 2020 13:14:18 -0500
+Received: from m0098404.ppops.net (m0098404.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 01GIDF8t130981;
+ Sun, 16 Feb 2020 13:14:18 -0500
+Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com
+ [169.62.189.11])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2y6dkvt1ea-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sun, 16 Feb 2020 13:14:17 -0500
+Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
+ by ppma03dal.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id 01GIABhB026178;
+ Sun, 16 Feb 2020 18:14:11 GMT
+Received: from b01cxnp22034.gho.pok.ibm.com (b01cxnp22034.gho.pok.ibm.com
+ [9.57.198.24]) by ppma03dal.us.ibm.com with ESMTP id 2y689672u0-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sun, 16 Feb 2020 18:14:11 +0000
+Received: from b01ledav005.gho.pok.ibm.com (b01ledav005.gho.pok.ibm.com
+ [9.57.199.110])
+ by b01cxnp22034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 01GIEA7T54460688
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sun, 16 Feb 2020 18:14:10 GMT
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 3CD99AE060;
+ Sun, 16 Feb 2020 18:14:10 +0000 (GMT)
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 1FB0CAE05C;
+ Sun, 16 Feb 2020 18:14:10 +0000 (GMT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+ by b01ledav005.gho.pok.ibm.com (Postfix) with ESMTP;
+ Sun, 16 Feb 2020 18:14:10 +0000 (GMT)
+Subject: Re: [RFC v2 1/6] tpm: rename TPM_TIS into TPM_TIS_ISA
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
+References: <20200214183704.14389-1-eric.auger@redhat.com>
+ <20200214183704.14389-2-eric.auger@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+Message-ID: <09c4557c-7f75-847a-ae49-7146778e9c4b@linux.ibm.com>
+Date: Sun, 16 Feb 2020 13:14:09 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::444
+In-Reply-To: <20200214183704.14389-2-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.572
+ definitions=2020-02-16_04:2020-02-14,
+ 2020-02-16 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 mlxscore=0
+ adultscore=0 priorityscore=1501 mlxlogscore=999 suspectscore=0
+ malwarescore=0 spamscore=0 impostorscore=0 lowpriorityscore=0 phishscore=0
+ clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2001150001 definitions=main-2002160165
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.156.1
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,83 +127,96 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, pete@akeo.ie,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org,
+ philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OKDoERS45fl7
+X-TUID: JA7mLpoN1YRI
 
-This test runs Trusted Firmware-A on the Raspberry Pi 3.
-We deliberately stop the boot process when the EDK2 UEFI version
-is displayed.
+On 2/14/20 1:36 PM, Eric Auger wrote:
+> As we plan to introduce a sysbus TPM_TIS, let's rename
+> TPM_TIS into TPM_TIS_ISA.
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>   hw/i386/acpi-build.c | 6 +++---
+>   hw/tpm/tpm_tis.c     | 4 ++--
+>   include/sysemu/tpm.h | 6 +++---
+>   3 files changed, 8 insertions(+), 8 deletions(-)
+>
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 9c4e46fa74..26777f8828 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -2026,7 +2026,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>           }
+>       }
+>   
+> -    if (TPM_IS_TIS(tpm_find())) {
+> +    if (TPM_IS_TIS_ISA(tpm_find())) {
+>           aml_append(crs, aml_memory32_fixed(TPM_TIS_ADDR_BASE,
+>                      TPM_TIS_ADDR_SIZE, AML_READ_WRITE));
+>       }
+> @@ -2197,7 +2197,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>               /* Scan all PCI buses. Generate tables to support hotplug. */
+>               build_append_pci_bus_devices(scope, bus, pm->pcihp_bridge_en);
+>   
+> -            if (TPM_IS_TIS(tpm)) {
+> +            if (TPM_IS_TIS_ISA(tpm)) {
+>                   if (misc->tpm_version == TPM_VERSION_2_0) {
+>                       dev = aml_device("TPM");
+>                       aml_append(dev, aml_name_decl("_HID",
+> @@ -2304,7 +2304,7 @@ build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+>           (char *)&tpm2_ptr->log_area_start_address - table_data->data;
+>   
+>       tpm2_ptr->platform_class = cpu_to_le16(TPM2_ACPI_CLASS_CLIENT);
+> -    if (TPM_IS_TIS(tpm_find())) {
+> +    if (TPM_IS_TIS_ISA(tpm_find())) {
+>           tpm2_ptr->control_area_address = cpu_to_le64(0);
+>           tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_MMIO);
+>       } else if (TPM_IS_CRB(tpm_find())) {
+> diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
+> index 31facb896d..c609737272 100644
+> --- a/hw/tpm/tpm_tis.c
+> +++ b/hw/tpm/tpm_tis.c
+> @@ -91,7 +91,7 @@ typedef struct TPMState {
+>       TPMPPI ppi;
+>   } TPMState;
+>   
+> -#define TPM(obj) OBJECT_CHECK(TPMState, (obj), TYPE_TPM_TIS)
+> +#define TPM(obj) OBJECT_CHECK(TPMState, (obj), TYPE_TPM_TIS_ISA)
+>   
+>   #define DEBUG_TIS 0
+>   
+> @@ -1008,7 +1008,7 @@ static void tpm_tis_class_init(ObjectClass *klass, void *data)
+>   }
+>   
+>   static const TypeInfo tpm_tis_info = {
+> -    .name = TYPE_TPM_TIS,
+> +    .name = TYPE_TPM_TIS_ISA,
+>       .parent = TYPE_ISA_DEVICE,
+>       .instance_size = sizeof(TPMState),
+>       .instance_init = tpm_tis_initfn,
+> diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
+> index 15979a3647..1691b92c28 100644
+> --- a/include/sysemu/tpm.h
+> +++ b/include/sysemu/tpm.h
+> @@ -43,12 +43,12 @@ typedef struct TPMIfClass {
+>       enum TPMVersion (*get_version)(TPMIf *obj);
+>   } TPMIfClass;
+>   
+> -#define TYPE_TPM_TIS                "tpm-tis"
+> +#define TYPE_TPM_TIS_ISA            "tpm-tis"
+>   #define TYPE_TPM_CRB                "tpm-crb"
+>   #define TYPE_TPM_SPAPR              "tpm-spapr"
+>   
+> -#define TPM_IS_TIS(chr)                             \
+> -    object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS)
+> +#define TPM_IS_TIS_ISA(chr)                         \
+> +    object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_ISA)
+>   #define TPM_IS_CRB(chr)                             \
+>       object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB)
+>   #define TPM_IS_SPAPR(chr)                           \
 
-The binary is build on AppVeyor CI using Pete Batard repository [1].
-ATF v2.1 binary are used (see [2]).
-
-It is very simple and fast:
-
-  $ avocado --show=app,console run -t atf tests/acceptance
-  JOB ID     : 1e748d7c9e9011cf0af3250ddc8ebf2389d6204e
-  JOB LOG    : avocado/job-results/job-2020-02-16T18.08-1e748d7/job.log
-   (1/1) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_aarch64_raspi3_atf:
-  console: NOTICE:  Booting Trusted Firmware
-  console: NOTICE:  BL1: v2.1(release):v2.1
-  console: NOTICE:  BL1: Built : 15:26:06, May 13 2019
-  console: NOTICE:  rpi3: Detected: Raspberry Pi 3 Model B (1GB, Sony, UK) [0x00a02082]
-  console: NOTICE:  BL1: Booting BL2
-  console: ERROR:   rpi3_sdhost: timeout status 0x40
-  console: NOTICE:  BL2: v2.1(release):v2.1
-  console: NOTICE:  BL2: Built : 15:26:01, May 13 2019
-  console: NOTICE:  BL1: Booting BL31
-  console: NOTICE:  BL31: v2.1(release):v2.1
-  console: NOTICE:  BL31: Built : 15:26:04, May 13 2019
-  console: =UEFI firmware (version UEFI Firmware v1.15 built at 11:58:44 on Feb 14 2020)
-  PASS (1.54 s)
-  RESULTS    : PASS 1 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0
-  JOB TIME   : 1.88 s
-
-[1] https://github.com/pbatard/RPi3#summary
-[2] https://github.com/ARM-software/arm-trusted-firmware/blob/v2.1/docs/plat/rpi3.rst
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- tests/acceptance/boot_linux_console.py | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
-
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index 34d37eba3b..51f24c462a 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -507,6 +507,28 @@ def test_arm_cubieboard_sata(self):
-         exec_command_and_wait_for_pattern(self, 'reboot',
-                                                 'reboot: Restarting system')
- 
-+    def test_aarch64_raspi3_atf(self):
-+        """
-+        :avocado: tags=arch:aarch64
-+        :avocado: tags=machine:raspi3
-+        :avocado: tags=cpu:cortex-a53
-+        :avocado: tags=device:pl011
-+        :avocado: tags=atf
-+        """
-+        zip_url = ('https://github.com/pbatard/RPi3/releases/download/'
-+                   'v1.15/RPi3_UEFI_Firmware_v1.15.zip')
-+        zip_hash = '74b3bd0de92683cadb14e008a7575e1d0c3cafb9'
-+        zip_path = self.fetch_asset(zip_url, asset_hash=zip_hash)
-+
-+        archive.extract(zip_path, self.workdir)
-+        efi_fd = os.path.join(self.workdir, 'RPI_EFI.fd')
-+
-+        self.vm.set_console(console_index=1)
-+        self.vm.add_args('-nodefaults',
-+                         '-device', 'loader,file=%s,force-raw=true' % efi_fd)
-+        self.vm.launch()
-+        self.wait_for_console_pattern('version UEFI Firmware v1.15')
-+
-     def test_s390x_s390_ccw_virtio(self):
-         """
-         :avocado: tags=arch:s390x
--- 
-2.21.1
 

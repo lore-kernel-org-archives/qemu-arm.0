@@ -1,48 +1,48 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5055483lfp;
-        Mon, 17 Feb 2020 05:10:51 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwgrDXnteziyxI/6ev65g1XxjxMqdAQ8IJpBLYsgMDyJPueiVWwMXejEa2DHe9Cn2SB/b/z
-X-Received: by 2002:aca:af49:: with SMTP id y70mr10164829oie.162.1581945051122;
-        Mon, 17 Feb 2020 05:10:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581945051; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5055518lfp;
+        Mon, 17 Feb 2020 05:10:53 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwPVDTI6uNldiW60kRYfxqs8z/mlnyIfihd6PTmA3WNeIa+MXQwd8ieHNjPGrp8Gle5/sZV
+X-Received: by 2002:a9d:6647:: with SMTP id q7mr12539904otm.35.1581945053037;
+        Mon, 17 Feb 2020 05:10:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581945053; cv=none;
         d=google.com; s=arc-20160816;
-        b=LFVX8/8kmRBiYAewz4DyNcQxzaq35t3fkyV8o5jS/lhST+7EN77fWzSfhgTStAWh5m
-         +TW0ifSt36CX2EfnjMmQoHAHHHAOih+F0OkEggQUzfJvmtiLY10Cl8yBMC8/Gkt69dUW
-         +2BMOM/A4dvCHod/uqCxnkZLKNp76fQbuPeRFko1bfz4GupQN/7it4YlavrXiiED2Z4/
-         cnryQzf1X4RjzMt5JaWF1AQ4nh67tvyi74b0Z++U7cmiVvHQkh/7Kf5d+6pIhgR/SQUb
-         cy/fKiGWYkf8yF3Iqb0nH5ems1kAQT803WCGPmPJ5ab0cmL9QY8yKaHibT9CHNUZrxlO
-         rjhA==
+        b=psdCRkGLmqKiGeFdqQRJMKE2CtvzpAqCIJ7+hHzi8hsN+JAItz+V9wg4HG3WY8Fs2V
+         C5XWIpOAI9cTpK+fqLzHYEEjGs/KKBOivDXSrD8DoRf8UkcyEgtnmIkwFDESvYBvk0Rh
+         euyIYhF0udOYKq6jq1nq3ASQzEsaZ19EORzL070liuVV1SR1rZ5/0ZHAkNDHBfUzttkZ
+         oYO1vU91vdqC3U1IM3K4WX6mCn05gC9RzvEDTFhNnV/F+k52pAeGzUje9vv/CWHAoIjC
+         2qajHm5N+hPM9drI0ZAhAjjI5FR+6s3dzQpdbAGsLekg3sYnctTZ1Pu1v0uUvdGOrtp4
+         p79A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=gVq2QiByhkGJlMJJTz7CIRcBbPNyIrd1qqmGjINpSVo=;
-        b=ToCpfjwCL/DCtJFsoQZlyWrLTvqFAHNrqw2I+elPhWBSxILojQiGelKBWRe6ZKGc5T
-         J80NxpIqgKxcJBbiXJV80ltL1Z17qKZDU99ZvO6jsSauTZVyFo8amN73lIu4zClx65Em
-         R1F0AYvUSaCxh1RetvTp/c/Kj6xl5eO/n4IwfYu6UVxosd6mX56ihcZFzMgIuW8Op5O9
-         UaRRUNIqkuVWTbdnrA88EGL3dyogTPDNauZC7X87Arv7f2c7Snc9VTjp1LNYOaWS8wey
-         kDyt4XBTD8jF0FVSZeSlGAD+KiRX4McqzSB8Jh0ok1KZsOd8U4k3NTIAOT9PXoGrTpF3
-         fhJQ==
+        bh=Ymhw9rGQLUjVGWYCdFOdbxpoP1tVD4lDVs1d9J7yZiE=;
+        b=jYd6TmkDaAP6xYQRfFPRGHehlVhxiVbfydCPUlE2N40ty127WPGYwhK25kgVrBVRMW
+         07eaGfQrapfja/SD0fBTVPsL185oTHpCDjWHiVNuGhM4xIWeSSZOI/MR/Eb8hU1FXsoe
+         0XMjhKMtUmLIsprue9e3ax/rPe95AHEWaSGWAcXwiUgQXPBAFas9TKAiEiDZtKiSuj9I
+         XjKhDPWnXbc0IhUvucbBGbtFr4OVberEQk8HSHggjn5p/P39mYVBNx5q9/SJMLAt44CU
+         WyUJ5JuWA+K/5ilP2FIE4oXpx6jEgZeux1UbMdLS+Px+iSdu91QnezgAngQwWtG+99AA
+         CHrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b10si5923172oic.153.2020.02.17.05.10.50;
-        Mon, 17 Feb 2020 05:10:51 -0800 (PST)
+        by mx.google.com with ESMTP id b10si5923172oic.153.2020.02.17.05.10.52;
+        Mon, 17 Feb 2020 05:10:53 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728692AbgBQNKu (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 17 Feb 2020 08:10:50 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:10192 "EHLO huawei.com"
+        id S1728583AbgBQNKv (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Mon, 17 Feb 2020 08:10:51 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:10631 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1728138AbgBQNKt (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 17 Feb 2020 08:10:49 -0500
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
-        by Forcepoint Email with ESMTP id 47455C2A8EF48AAEC652;
-        Mon, 17 Feb 2020 21:10:41 +0800 (CST)
+        id S1728468AbgBQNKv (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 17 Feb 2020 08:10:51 -0500
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.58])
+        by Forcepoint Email with ESMTP id 402BA501748D044E3B26;
+        Mon, 17 Feb 2020 21:10:46 +0800 (CST)
 Received: from huawei.com (10.151.151.243) by DGGEMS410-HUB.china.huawei.com
  (10.3.19.210) with Microsoft SMTP Server id 14.3.439.0; Mon, 17 Feb 2020
- 21:10:32 +0800
+ 21:10:35 +0800
 From:   Dongjiu Geng <gengdongjiu@huawei.com>
 To:     <mst@redhat.com>, <imammedo@redhat.com>,
         <xiaoguangrong.eric@gmail.com>, <shannon.zhaosl@gmail.com>,
@@ -54,9 +54,9 @@ To:     <mst@redhat.com>, <imammedo@redhat.com>,
         <jonathan.cameron@huawei.com>,
         <shameerali.kolothum.thodi@huawei.com>
 CC:     <gengdongjiu@huawei.com>, <zhengxiang9@huawei.com>
-Subject: [PATCH v24 05/10] ACPI: Build Hardware Error Source Table
-Date:   Mon, 17 Feb 2020 21:12:43 +0800
-Message-ID: <20200217131248.28273-6-gengdongjiu@huawei.com>
+Subject: [PATCH v24 09/10] target-arm: kvm64: handle SIGBUS signal from kernel or KVM
+Date:   Mon, 17 Feb 2020 21:12:47 +0800
+Message-ID: <20200217131248.28273-10-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 2.18.0.huawei.25
 In-Reply-To: <20200217131248.28273-1-gengdongjiu@huawei.com>
 References: <20200217131248.28273-1-gengdongjiu@huawei.com>
@@ -68,240 +68,233 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ntpbW95j3Mte
+X-TUID: seN327XKeALP
 
-This patch builds Hardware Error Source Table(HEST) via fw_cfg blobs.
-Now it only supports ARMv8 SEA, a type of Generic Hardware Error
-Source version 2(GHESv2) error source. Afterwards, we can extend
-the supported types if needed. For the CPER section, currently it
-is memory section because kernel mainly wants userspace to handle
-the memory errors.
+Add a SIGBUS signal handler. In this handler, it checks the SIGBUS type,
+translates the host VA delivered by host to guest PA, then fills this PA
+to guest APEI GHES memory, then notifies guest according to the SIGBUS
+type.
 
-This patch follows the spec ACPI 6.2 to build the Hardware Error
-Source table. For more detailed information, please refer to
-document: docs/specs/acpi_hest_ghes.rst
+When guest accesses the poisoned memory, it will generate a Synchronous
+External Abort(SEA). Then host kernel gets an APEI notification and calls
+memory_failure() to unmapped the affected page in stage 2, finally
+returns to guest.
 
-build_ghes_hw_error_notification() helper will help to add Hardware
-Error Notification to ACPI tables without using packed C structures
-and avoid endianness issues as API doesn't need explicit conversion.
+Guest continues to access the PG_hwpoison page, it will trap to KVM as
+stage2 fault, then a SIGBUS_MCEERR_AR synchronous signal is delivered to
+Qemu, Qemu records this error address into guest APEI GHES memory and
+notifes guest using Synchronous-External-Abort(SEA).
+
+In order to inject a vSEA, we introduce the kvm_inject_arm_sea() function
+in which we can setup the type of exception and the syndrome information.
+When switching to guest, the target vcpu will jump to the synchronous
+external abort vector table entry.
+
+The ESR_ELx.DFSC is set to synchronous external abort(0x10), and the
+ESR_ELx.FnV is set to not valid(0x1), which will tell guest that FAR is
+not valid and hold an UNKNOWN value. These values will be set to KVM
+register structures through KVM_SET_ONE_REG IOCTL.
 
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Acked-by: Xiang Zheng <zhengxiang9@huawei.com>
 ---
- hw/acpi/ghes.c           | 126 +++++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/virt-acpi-build.c |   1 +
- include/hw/acpi/ghes.h   |  39 +++++++++++++++
- 3 files changed, 166 insertions(+)
+ include/sysemu/kvm.h    |  3 +-
+ target/arm/cpu.h        |  4 +++
+ target/arm/helper.c     |  2 +-
+ target/arm/internals.h  |  5 ++--
+ target/arm/kvm64.c      | 73 +++++++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/tlb_helper.c |  2 +-
+ target/i386/cpu.h       |  2 ++
+ 7 files changed, 85 insertions(+), 6 deletions(-)
 
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index e1b3f8f..7a7381d 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -23,6 +23,7 @@
- #include "qemu/units.h"
- #include "hw/acpi/ghes.h"
- #include "hw/acpi/aml-build.h"
-+#include "qemu/error-report.h"
+diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+index 141342d..3b22504 100644
+--- a/include/sysemu/kvm.h
++++ b/include/sysemu/kvm.h
+@@ -379,8 +379,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
+ /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
+ unsigned long kvm_arch_vcpu_id(CPUState *cpu);
  
- #define ACPI_GHES_ERRORS_FW_CFG_FILE        "etc/hardware_errors"
- #define ACPI_GHES_DATA_ADDR_FW_CFG_FILE     "etc/hardware_errors_addr"
-@@ -33,6 +34,42 @@
- /* Now only support ARMv8 SEA notification type error source */
- #define ACPI_GHES_ERROR_SOURCE_COUNT        1
+-#ifdef TARGET_I386
+-#define KVM_HAVE_MCE_INJECTION 1
++#ifdef KVM_HAVE_MCE_INJECTION
+ void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
+ #endif
  
-+/* Generic Hardware Error Source version 2 */
-+#define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 0b3036c..a8b7fb0 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -28,6 +28,10 @@
+ /* ARM processors have a weak memory model */
+ #define TCG_GUEST_DEFAULT_MO      (0)
+ 
++#ifdef TARGET_AARCH64
++#define KVM_HAVE_MCE_INJECTION 1
++#endif
 +
-+/* Address offset in Generic Address Structure(GAS) */
-+#define GAS_ADDR_OFFSET 4
-+
-+/*
-+ * Hardware Error Notification
-+ * ACPI 4.0: 17.3.2.7 Hardware Error Notification
-+ * Composes dummy Hardware Error Notification descriptor of specified type
-+ */
-+static void build_ghes_hw_error_notification(GArray *table, const uint8_t type)
+ #define EXCP_UDEF            1   /* undefined instruction */
+ #define EXCP_SWI             2   /* software interrupt */
+ #define EXCP_PREFETCH_ABORT  3
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 7d15d5c..12a95b6 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -3310,7 +3310,7 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
+              * Report exception with ESR indicating a fault due to a
+              * translation table walk for a cache maintenance instruction.
+              */
+-            syn = syn_data_abort_no_iss(current_el == target_el,
++            syn = syn_data_abort_no_iss(current_el == target_el, 0,
+                                         fi.ea, 1, fi.s1ptw, 1, fsc);
+             env->exception.vaddress = value;
+             env->exception.fsr = fsr;
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 6d4a942..31b7b96 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -451,13 +451,14 @@ static inline uint32_t syn_insn_abort(int same_el, int ea, int s1ptw, int fsc)
+         | ARM_EL_IL | (ea << 9) | (s1ptw << 7) | fsc;
+ }
+ 
+-static inline uint32_t syn_data_abort_no_iss(int same_el,
++static inline uint32_t syn_data_abort_no_iss(int same_el, int fnv,
+                                              int ea, int cm, int s1ptw,
+                                              int wnr, int fsc)
+ {
+     return (EC_DATAABORT << ARM_EL_EC_SHIFT) | (same_el << ARM_EL_EC_SHIFT)
+            | ARM_EL_IL
+-           | (ea << 9) | (cm << 8) | (s1ptw << 7) | (wnr << 6) | fsc;
++           | (fnv << 10) | (ea << 9) | (cm << 8) | (s1ptw << 7)
++           | (wnr << 6) | fsc;
+ }
+ 
+ static inline uint32_t syn_data_abort_with_iss(int same_el,
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index fb21ab9..f91b611 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -28,6 +28,8 @@
+ #include "sysemu/kvm_int.h"
+ #include "kvm_arm.h"
+ #include "internals.h"
++#include "hw/acpi/acpi.h"
++#include "hw/acpi/ghes.h"
+ 
+ static bool have_guest_debug;
+ 
+@@ -846,6 +848,30 @@ int kvm_arm_cpreg_level(uint64_t regidx)
+     return KVM_PUT_RUNTIME_STATE;
+ }
+ 
++/* Callers must hold the iothread mutex lock */
++static void kvm_inject_arm_sea(CPUState *c)
 +{
-+    /* Type */
-+    build_append_int_noprefix(table, type, 1);
++    ARMCPU *cpu = ARM_CPU(c);
++    CPUARMState *env = &cpu->env;
++    CPUClass *cc = CPU_GET_CLASS(c);
++    uint32_t esr;
++    bool same_el;
++
++    c->exception_index = EXCP_DATA_ABORT;
++    env->exception.target_el = 1;
++
 +    /*
-+     * Length:
-+     * Total length of the structure in bytes
++     * Set the DFSC to synchronous external abort and set FnV to not valid,
++     * this will tell guest the FAR_ELx is UNKNOWN for this abort.
 +     */
-+    build_append_int_noprefix(table, 28, 1);
-+    /* Configuration Write Enable */
-+    build_append_int_noprefix(table, 0, 2);
-+    /* Poll Interval */
-+    build_append_int_noprefix(table, 0, 4);
-+    /* Vector */
-+    build_append_int_noprefix(table, 0, 4);
-+    /* Switch To Polling Threshold Value */
-+    build_append_int_noprefix(table, 0, 4);
-+    /* Switch To Polling Threshold Window */
-+    build_append_int_noprefix(table, 0, 4);
-+    /* Error Threshold Value */
-+    build_append_int_noprefix(table, 0, 4);
-+    /* Error Threshold Window */
-+    build_append_int_noprefix(table, 0, 4);
++    same_el = arm_current_el(env) == env->exception.target_el;
++    esr = syn_data_abort_no_iss(same_el, 1, 0, 0, 0, 0, 0x10);
++
++    env->exception.syndrome = esr;
++
++    cc->do_interrupt(c);
 +}
 +
- /*
-  * Build table for the hardware error fw_cfg blob.
-  * Initialize "etc/hardware_errors" and "etc/hardware_errors_addr" fw_cfg blobs.
-@@ -87,3 +124,92 @@ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
-     bios_linker_loader_write_pointer(linker, ACPI_GHES_DATA_ADDR_FW_CFG_FILE,
-         0, sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
+ #define AARCH64_CORE_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U64 | \
+                  KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
+ 
+@@ -1274,6 +1300,53 @@ int kvm_arch_get_registers(CPUState *cs)
+     return ret;
  }
-+
-+/* Build Generic Hardware Error Source version 2 (GHESv2) */
-+static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
+ 
++void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
 +{
-+    uint64_t address_offset;
-+    /*
-+     * Type:
-+     * Generic Hardware Error Source version 2(GHESv2 - Type 10)
-+     */
-+    build_append_int_noprefix(table_data, ACPI_GHES_SOURCE_GENERIC_ERROR_V2, 2);
-+    /* Source Id */
-+    build_append_int_noprefix(table_data, source_id, 2);
-+    /* Related Source Id */
-+    build_append_int_noprefix(table_data, 0xffff, 2);
-+    /* Flags */
-+    build_append_int_noprefix(table_data, 0, 1);
-+    /* Enabled */
-+    build_append_int_noprefix(table_data, 1, 1);
++    ram_addr_t ram_addr;
++    hwaddr paddr;
 +
-+    /* Number of Records To Pre-allocate */
-+    build_append_int_noprefix(table_data, 1, 4);
-+    /* Max Sections Per Record */
-+    build_append_int_noprefix(table_data, 1, 4);
-+    /* Max Raw Data Length */
-+    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
++    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
 +
-+    address_offset = table_data->len;
-+    /* Error Status Address */
-+    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
-+                     4 /* QWord access */, 0);
-+    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-+        address_offset + GAS_ADDR_OFFSET, sizeof(uint64_t),
-+        ACPI_GHES_ERRORS_FW_CFG_FILE, source_id * sizeof(uint64_t));
-+
-+    switch (source_id) {
-+    case ACPI_HEST_SRC_ID_SEA:
-+        /*
-+         * Notification Structure
-+         * Now only enable ARMv8 SEA notification type
-+         */
-+        build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_SEA);
-+        break;
-+    default:
-+        error_report("Not support this error source");
-+        abort();
++    if (acpi_enabled && addr &&
++            object_property_get_bool(qdev_get_machine(), "ras", NULL)) {
++        ram_addr = qemu_ram_addr_from_host(addr);
++        if (ram_addr != RAM_ADDR_INVALID &&
++            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
++            kvm_hwpoison_page_add(ram_addr);
++            /*
++             * If this is a BUS_MCEERR_AR, we know we have been called
++             * synchronously from the vCPU thread, so we can easily
++             * synchronize the state and inject an error.
++             *
++             * TODO: we currently don't tell the guest at all about
++             * BUS_MCEERR_AO. In that case we might either be being
++             * called synchronously from the vCPU thread, or a bit
++             * later from the main thread, so doing the injection of
++             * the error would be more complicated.
++             */
++            if (code == BUS_MCEERR_AR) {
++                kvm_cpu_synchronize_state(c);
++                if (!acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
++                    kvm_inject_arm_sea(c);
++                } else {
++                    error_report("failed to record the error");
++                    abort();
++                }
++            }
++            return;
++        }
++        if (code == BUS_MCEERR_AO) {
++            error_report("Hardware memory error at addr %p for memory used by "
++                "QEMU itself instead of guest system!", addr);
++        }
 +    }
 +
-+    /* Error Status Block Length */
-+    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
-+
-+    /*
-+     * Read Ack Register
-+     * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source
-+     * version 2 (GHESv2 - Type 10)
-+     */
-+    address_offset = table_data->len;
-+    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
-+                     4 /* QWord access */, 0);
-+    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-+        address_offset + GAS_ADDR_OFFSET,
-+        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
-+        (ACPI_GHES_ERROR_SOURCE_COUNT + source_id) * sizeof(uint64_t));
-+
-+    /*
-+     * Read Ack Preserve field
-+     * We only provide the first bit in Read Ack Register to OSPM to write
-+     * while the other bits are preserved.
-+     */
-+    build_append_int_noprefix(table_data, ~0x1ULL, 8);
-+    /* Read Ack Write */
-+    build_append_int_noprefix(table_data, 0x1, 8);
++    if (code == BUS_MCEERR_AR) {
++        error_report("Hardware memory error!");
++        exit(1);
++    }
 +}
 +
-+/* Build Hardware Error Source Table */
-+void acpi_build_hest(GArray *table_data, BIOSLinker *linker)
-+{
-+    uint64_t hest_start = table_data->len;
-+
-+    /* Hardware Error Source Table header*/
-+    acpi_data_push(table_data, sizeof(AcpiTableHeader));
-+
-+    /* Error Source Count */
-+    build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, 4);
-+
-+    build_ghes_v2(table_data, ACPI_HEST_SRC_ID_SEA, linker);
-+
-+    build_header(linker, table_data, (void *)(table_data->data + hest_start),
-+        "HEST", table_data->len - hest_start, 1, NULL, "");
-+}
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 6819fcf..12a9a78 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -834,6 +834,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-     if (vms->ras) {
-         acpi_add_table(table_offsets, tables_blob);
-         build_ghes_error_table(tables->hardware_errors, tables->linker);
-+        acpi_build_hest(tables_blob, tables->linker);
-     }
+ /* C6.6.29 BRK instruction */
+ static const uint32_t brk_insn = 0xd4200000;
  
-     if (ms->numa_state->num_nodes > 0) {
-diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-index 50379b0..18debd8 100644
---- a/include/hw/acpi/ghes.h
-+++ b/include/hw/acpi/ghes.h
-@@ -24,5 +24,44 @@
+diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
+index e63f8bd..7388494 100644
+--- a/target/arm/tlb_helper.c
++++ b/target/arm/tlb_helper.c
+@@ -33,7 +33,7 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
+      * ISV field.
+      */
+     if (!(template_syn & ARM_EL_ISV) || target_el != 2 || s1ptw) {
+-        syn = syn_data_abort_no_iss(same_el,
++        syn = syn_data_abort_no_iss(same_el, 0,
+                                     ea, 0, s1ptw, is_write, fsc);
+     } else {
+         /*
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index 576f309..69a2bb7 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -29,6 +29,8 @@
+ /* The x86 has a strong memory model with some store-after-load re-ordering */
+ #define TCG_GUEST_DEFAULT_MO      (TCG_MO_ALL & ~TCG_MO_ST_LD)
  
- #include "hw/acpi/bios-linker-loader.h"
++#define KVM_HAVE_MCE_INJECTION 1
++
+ /* Maximum instruction code size */
+ #define TARGET_MAX_INSN_SIZE 16
  
-+/*
-+ * Values for Hardware Error Notification Type field
-+ */
-+enum AcpiGhesNotifyType {
-+    /* Polled */
-+    ACPI_GHES_NOTIFY_POLLED = 0,
-+    /* External Interrupt */
-+    ACPI_GHES_NOTIFY_EXTERNAL = 1,
-+    /* Local Interrupt */
-+    ACPI_GHES_NOTIFY_LOCAL = 2,
-+    /* SCI */
-+    ACPI_GHES_NOTIFY_SCI = 3,
-+    /* NMI */
-+    ACPI_GHES_NOTIFY_NMI = 4,
-+    /* CMCI, ACPI 5.0: 18.3.2.7, Table 18-290 */
-+    ACPI_GHES_NOTIFY_CMCI = 5,
-+    /* MCE, ACPI 5.0: 18.3.2.7, Table 18-290 */
-+    ACPI_GHES_NOTIFY_MCE = 6,
-+    /* GPIO-Signal, ACPI 6.0: 18.3.2.7, Table 18-332 */
-+    ACPI_GHES_NOTIFY_GPIO = 7,
-+    /* ARMv8 SEA, ACPI 6.1: 18.3.2.9, Table 18-345 */
-+    ACPI_GHES_NOTIFY_SEA = 8,
-+    /* ARMv8 SEI, ACPI 6.1: 18.3.2.9, Table 18-345 */
-+    ACPI_GHES_NOTIFY_SEI = 9,
-+    /* External Interrupt - GSIV, ACPI 6.1: 18.3.2.9, Table 18-345 */
-+    ACPI_GHES_NOTIFY_GSIV = 10,
-+    /* Software Delegated Exception, ACPI 6.2: 18.3.2.9, Table 18-383 */
-+    ACPI_GHES_NOTIFY_SDEI = 11,
-+    /* 12 and greater are reserved */
-+    ACPI_GHES_NOTIFY_RESERVED = 12
-+};
-+
-+enum {
-+    ACPI_HEST_SRC_ID_SEA = 0,
-+    /* future ids go here */
-+    ACPI_HEST_SRC_ID_RESERVED,
-+};
-+
- void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
-+void acpi_build_hest(GArray *table_data, BIOSLinker *linker);
- #endif
 -- 
 1.8.3.1

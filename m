@@ -1,130 +1,442 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4817107lfp;
-        Mon, 17 Feb 2020 00:23:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz0bwU8YESwIN/j7XER+vUmxMplAYlzn2B5NZM3MxOXMGxqsl6PW9bOXTkgfrRUc5DT0Qox
-X-Received: by 2002:ad4:514e:: with SMTP id g14mr11678012qvq.196.1581927782704;
-        Mon, 17 Feb 2020 00:23:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581927782; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4864621lfp;
+        Mon, 17 Feb 2020 01:22:29 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwbLTA9fKYhIr2owlH2sPcOEBs75sBtoA4tHhzYl5OOruL5bvCZUB1ZGtYVbbet214hIx1/
+X-Received: by 2002:ae9:eb16:: with SMTP id b22mr12786161qkg.386.1581931349189;
+        Mon, 17 Feb 2020 01:22:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581931349; cv=none;
         d=google.com; s=arc-20160816;
-        b=RwBF4Ddo64t8aGiVxRZs0joEntuTZrtaK1xk5wFTCX8GGpMotPzZPWxFmJRphtNvCj
-         1c+q4peZQROoQH8CRO4r4vkZ13uxCgKm9BkdgR16B8axisQOG9wXSdG7/virazGhxvk9
-         SpMSkCHdPS+QwasFoE0Evn8xGWd2Hs55UQi4R7TfipqyQZ/frd2fnLw+th75a10jKOpL
-         c62Mx7PDxkCdm2oRQbozoVOWeHMfBhEnqjeaftEvGcOP+oiSOT3tAxtvuriDmk9QuUqO
-         p73aSTEmgP412jt2CewM5XjJhn97eniCi6cLIQac49zqCv30BaK7l7HK2j1BjBqedvIM
-         3B+Q==
+        b=NnVMpBUqMPYVnDAh5gVgR6/Ko8uffb4pgJnHAl4VcnaGamiZm8A+7zqfCAeBeeH/Ug
+         QiwjpszN1oFmp79QUdWrXuCzrGZj/mR/mQUPGPUL3IMuIsa6GGikQBJDg2iDrKyjkxEp
+         gOHuPpOsIFvI48rtxto6tBlQiR9Vril5dtNmXYs+d+m1493DVL+tjRUDQ22AdWVDfMZx
+         xsE+U/iE+q32uYebDizwPhUTXaqXM8sxrI+Kmoi+45jtywKkUcZQ2+ZuDZgmNtSZoLz5
+         2TqmIg+q/d5HT+Q0FSA24tsOB8f2xnzfWHsShihDLFMRE9Oye0453v0fnL1arLE7IaSf
+         KvsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=lLC6hvry3al3USDaACNa83FXWkKprfzMAPP542CsDZU=;
-        b=isu+jlgcgoDPqhV1S4ChFrUsDyEeEtRSUvGHhZ+GUF/hn46bHnoPQ377w5SA968qj4
-         7i1FkLS2tT3KA5DbzTdGAti90O38oifFiWYBzYAXWJUMaPWsZri3ATbjTzww76QT/t6M
-         sjctbKMCQ07fY6xA6+u9BXP6CuFtGzX6j/pdKF2+YVWzJ1iSPWMjTtL70r37W3QsPk2j
-         3EL4EKvcwQPzSAAdxyGHTr5kSOxn9BRWAl+FG6XqAQUR7WG0QoGhPpHGuudqW27QNWEB
-         jpNAkFoJcXnebPU1MQCfAao1kqpMcihgD93pmz7Kok50sDNG4nUEkwpLWPClVwajTTM0
-         RWIw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=lisnPcDB15QHDm3FNXn38p+Xr7+XPlALGYswteOpypg=;
+        b=Z6YqKEU1MDrKFnADMsOhYtocNtsXSfiZElJxyVnLifyadoaDIXTTJzrtGx1Ha5wwZO
+         A0QzwDhs7bbiV7tJ/JhDKmd1xe+cgGNKMsUy05N7rIbRonaECrbqY1WDw/k1advuf+BS
+         u4WbHg4NBmGBF73h3ub/z75L41oDvMPna1j7Ko2BcX/rg8SOVk8lDP1N4ftqUaWR9sNo
+         PcrtA0nxArR36OZ79BZmWLiqONgbkIe5z3FLhJoqBo6W7elnZGIKhBgQzYT+jpCRIvNV
+         NF7KATaZh0aUle5KEurdfsHYD/FRw6bzLOK+usdo/tuOTZslJEV9DINEFuKcRvcbAPf7
+         5dPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hj7KJhyV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KRfGAOGc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l3si5849011qvo.206.2020.02.17.00.23.02
+        by mx.google.com with ESMTPS id f9si5343323qti.275.2020.02.17.01.22.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Feb 2020 00:23:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 17 Feb 2020 01:22:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hj7KJhyV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KRfGAOGc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41874 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42386 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3bgE-0006Oz-6k
-	for alex.bennee@linaro.org; Mon, 17 Feb 2020 03:23:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43716)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j3cbk-00038P-LF
+	for alex.bennee@linaro.org; Mon, 17 Feb 2020 04:22:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51167)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kraxel@redhat.com>) id 1j3bf7-0005V1-Dz
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 03:21:54 -0500
+ (envelope-from <philmd@redhat.com>) id 1j3cbG-00032b-9I
+ for qemu-devel@nongnu.org; Mon, 17 Feb 2020 04:21:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kraxel@redhat.com>) id 1j3bf6-0000g4-IW
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 03:21:53 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:27704
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1j3cbE-0007jC-Ie
+ for qemu-devel@nongnu.org; Mon, 17 Feb 2020 04:21:58 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:39319
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kraxel@redhat.com>) id 1j3bf6-0000fR-9m
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 03:21:52 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j3cbE-0007i6-FA
+ for qemu-devel@nongnu.org; Mon, 17 Feb 2020 04:21:56 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581927711;
+ s=mimecast20190719; t=1581931315;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=lLC6hvry3al3USDaACNa83FXWkKprfzMAPP542CsDZU=;
- b=hj7KJhyV0+2bUhaC2EUXj34Dx9sCmFDueaoZULHECkTz6WgkTvK0eLP5w2Xwue3+zXPVhF
- 2Bh2hefxmqjF6MaoaTQbALe1Q3sXRZsSPSsRgXjsVI+JKAIiGgiIe2zYstzBucTvO5xtX4
- 0KASr7I1eZpg8ucIn1v07MTHhtYGWlE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-309-_pe6ig_nMZCeEP5kgy3YPA-1; Mon, 17 Feb 2020 03:21:49 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 218388017CC;
- Mon, 17 Feb 2020 08:21:48 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-117-39.ams2.redhat.com
- [10.36.117.39])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CA2B690531;
- Mon, 17 Feb 2020 08:21:47 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 02C9A16E1A; Mon, 17 Feb 2020 09:21:47 +0100 (CET)
-Date: Mon, 17 Feb 2020 09:21:46 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH v2 0/2] hw/arm/xilinx_zynq: Fix USB port instantiation
-Message-ID: <20200217082146.7zzrcdv6drtnxblu@sirius.home.kraxel.org>
-References: <20200215122354.13706-1-linux@roeck-us.net>
+ bh=lisnPcDB15QHDm3FNXn38p+Xr7+XPlALGYswteOpypg=;
+ b=KRfGAOGcGdJYeblPwlSYJbpYQfW96xabLQCNpl3YdvUylY5QsWu/cmv6FxMFIWm6CHYliZ
+ vnYSx3X3VoPLPF143EtS9APnm7dNfyiBAHBUL3qLJj3TtJRp51t8xthqCbC3I6u/YFJL8W
+ chn+qbNiKYPBj8abjHDxQM5WjNdKk0s=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-61-lH3gTYn8NFixNbmUMxfhuA-1; Mon, 17 Feb 2020 04:21:53 -0500
+Received: by mail-wm1-f69.google.com with SMTP id p26so5976669wmg.5
+ for <qemu-devel@nongnu.org>; Mon, 17 Feb 2020 01:21:53 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=lisnPcDB15QHDm3FNXn38p+Xr7+XPlALGYswteOpypg=;
+ b=bgMt0jojmIten02HDDvfiqCmxHxEkm3DoiufJp/zJ+nCU8hw/jgw/6/80i2i+hHSU6
+ sVTxiprLR0+LdSyaI/6ICZHnC3xXPvkgPJDIf1s8YKekXjS6emxfuWrjQ78jxNRNGs/d
+ TRdh17Zrve+J+axQPAkBqO1nhlKWYTdk7xBbdEKACFFM1LQI1jzsyaAJ4vr2SHmopLsY
+ lmlsrOyWizkmb4H/PxiW92/ncfBrBnckVRy/inrGQEebJlZK++JbStU7uLDtLP8GY7/1
+ 48Cg6hmdBdNzYoVUtTKD9SkRd1p16pYTwEDBTG1ItQxUJuRDs6y4WAZtJdIUpCIvkCR/
+ Z4Og==
+X-Gm-Message-State: APjAAAU4hzpRBwRtnobOvHgq1cLMZ1rSEdywvrYZ9TmIcDxB2Nd1Lt8n
+ wE3f5RAvh7fjHUbzj2tZuM2TSfoU9XaNPtwihqjeva2AOXYjHibD6gSF+SuKSLjjjJqa/cSKVgR
+ VF/qG8CJyqQB7tOQ=
+X-Received: by 2002:a1c:9e13:: with SMTP id h19mr21570943wme.21.1581931312652; 
+ Mon, 17 Feb 2020 01:21:52 -0800 (PST)
+X-Received: by 2002:a1c:9e13:: with SMTP id h19mr21570896wme.21.1581931312217; 
+ Mon, 17 Feb 2020 01:21:52 -0800 (PST)
+Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.78])
+ by smtp.gmail.com with ESMTPSA id v8sm87890wrw.2.2020.02.17.01.21.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 17 Feb 2020 01:21:51 -0800 (PST)
+Subject: Re: [RFC v2 2/6] tpm: Use TPMState as a common struct
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ stefanb@linux.ibm.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org
+References: <20200214183704.14389-1-eric.auger@redhat.com>
+ <20200214183704.14389-3-eric.auger@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <bda40279-016a-8cb5-96b0-cedc88e21e60@redhat.com>
+Date: Mon, 17 Feb 2020 10:21:49 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200215122354.13706-1-linux@roeck-us.net>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: _pe6ig_nMZCeEP5kgy3YPA-1
+In-Reply-To: <20200214183704.14389-3-eric.auger@redhat.com>
+Content-Language: en-US
+X-MC-Unique: lH3gTYn8NFixNbmUMxfhuA-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BMgftseommSo
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0OE3HxF0foRk
 
-On Sat, Feb 15, 2020 at 04:23:52AM -0800, Guenter Roeck wrote:
-> USB ports on Xilinx Zync must be instantiated as TYPE_CHIPIDEA to work.
-> Linux expects and checks various chipidea registers, which do not exist
-> with the basic ehci emulation. This patch series fixes the problem.
->=20
-> The first patch in the series fixes the actual problem.
->=20
-> The second patch removes the now obsolete explicit Xilinx
-> support from the EHCI code.
+Hi Eric,
 
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+On 2/14/20 7:37 PM, Eric Auger wrote:
+> As we plan to introdce a SysBus TPM TIS device, let's
+> make the TPMState a common struct usable by both the
+> ISADevice and the SysBusDevice. TPMStateISA embeds the
+> struct and inherits from the ISADevice.
+> 
+> The prototype of functions bound to be used by both
+> the ISA and SysBus devices is changed to take TPMState
+> handle.
+> 
+> A bunch of structs also are renamed to be specialized
+> for the ISA device. Besides those transformations, no
+> functional change is expected.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>   hw/tpm/tpm_tis.c | 146 +++++++++++++++++++++++++++++------------------
+>   1 file changed, 91 insertions(+), 55 deletions(-)
+> 
+> diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
+> index c609737272..fc6d7ca579 100644
+> --- a/hw/tpm/tpm_tis.c
+> +++ b/hw/tpm/tpm_tis.c
+> @@ -65,7 +65,6 @@ typedef struct TPMLocality {
+>   } TPMLocality;
+>   
+>   typedef struct TPMState {
+> -    ISADevice busdev;
+>       MemoryRegion mmio;
+>   
+>       unsigned char buffer[TPM_TIS_BUFFER_MAX];
+> @@ -91,7 +90,15 @@ typedef struct TPMState {
+>       TPMPPI ppi;
+>   } TPMState;
+>   
+> -#define TPM(obj) OBJECT_CHECK(TPMState, (obj), TYPE_TPM_TIS_ISA)
+> +typedef struct TPMStateISA {
+> +    /*< private >*/
+> +    ISADevice parent_obj;
+> +
+> +    /*< public >*/
+> +    TPMState state; /* not a QOM object */
+> +} TPMStateISA;
+> +
+> +#define TPM_TIS_ISA(obj) OBJECT_CHECK(TPMStateISA, (obj), TYPE_TPM_TIS_ISA)
+>   
+>   #define DEBUG_TIS 0
+>   
+> @@ -281,9 +288,8 @@ static void tpm_tis_prep_abort(TPMState *s, uint8_t locty, uint8_t newlocty)
+>   /*
+>    * Callback from the TPM to indicate that the response was received.
+>    */
+> -static void tpm_tis_request_completed(TPMIf *ti, int ret)
+> +static void tpm_tis_request_completed(TPMState *s, int ret)
+>   {
+> -    TPMState *s = TPM(ti);
+>       uint8_t locty = s->cmd.locty;
+>       uint8_t l;
+>   
+> @@ -338,7 +344,7 @@ static uint32_t tpm_tis_data_read(TPMState *s, uint8_t locty)
+>   }
+>   
+>   #ifdef DEBUG_TIS
+> -static void tpm_tis_dump_state(void *opaque, hwaddr addr)
+> +static void tpm_tis_dump_state(TPMState *s, hwaddr addr)
+>   {
+>       static const unsigned regs[] = {
+>           TPM_TIS_REG_ACCESS,
+> @@ -353,7 +359,6 @@ static void tpm_tis_dump_state(void *opaque, hwaddr addr)
+>       int idx;
+>       uint8_t locty = tpm_tis_locality_from_addr(addr);
+>       hwaddr base = addr & ~0xfff;
+> -    TPMState *s = opaque;
+>   
+>       printf("tpm_tis: active locality      : %d\n"
+>              "tpm_tis: state of locality %d : %d\n"
+> @@ -363,7 +368,7 @@ static void tpm_tis_dump_state(void *opaque, hwaddr addr)
+>   
+>       for (idx = 0; regs[idx] != 0xfff; idx++) {
+>           printf("tpm_tis: 0x%04x : 0x%08x\n", regs[idx],
+> -               (int)tpm_tis_mmio_read(opaque, base + regs[idx], 4));
+> +               (int)tpm_tis_mmio_read(s, base + regs[idx], 4));
+>       }
+>   
+>       printf("tpm_tis: r/w offset    : %d\n"
+> @@ -488,7 +493,7 @@ static uint64_t tpm_tis_mmio_read(void *opaque, hwaddr addr,
+>           break;
+>   #ifdef DEBUG_TIS
+>       case TPM_TIS_REG_DEBUG:
+> -        tpm_tis_dump_state(opaque, addr);
+> +        tpm_tis_dump_state(s, addr);
+>           break;
+>   #endif
+>       }
+> @@ -835,10 +840,8 @@ static const MemoryRegionOps tpm_tis_memory_ops = {
+>   /*
+>    * Get the TPMVersion of the backend device being used
+>    */
+> -static enum TPMVersion tpm_tis_get_tpm_version(TPMIf *ti)
+> +static enum TPMVersion tpm_tis_get_tpm_version(TPMState *s)
+>   {
+> -    TPMState *s = TPM(ti);
+> -
+>       if (tpm_backend_had_startup_error(s->be_driver)) {
+>           return TPM_VERSION_UNSPEC;
+>       }
+> @@ -850,9 +853,8 @@ static enum TPMVersion tpm_tis_get_tpm_version(TPMIf *ti)
+>    * This function is called when the machine starts, resets or due to
+>    * S3 resume.
+>    */
+> -static void tpm_tis_reset(DeviceState *dev)
+> +static void tpm_tis_reset(TPMState *s)
+>   {
+> -    TPMState *s = TPM(dev);
+>       int c;
+>   
+>       s->be_tpm_version = tpm_backend_get_tpm_version(s->be_driver);
+> @@ -896,15 +898,14 @@ static void tpm_tis_reset(DeviceState *dev)
+>   
+>   /* persistent state handling */
+>   
+> -static int tpm_tis_pre_save(void *opaque)
+> +static int tpm_tis_pre_save(TPMState *s)
+>   {
+> -    TPMState *s = opaque;
+>       uint8_t locty = s->active_locty;
+>   
+>       trace_tpm_tis_pre_save(locty, s->rw_offset);
+>   
+>       if (DEBUG_TIS) {
+> -        tpm_tis_dump_state(opaque, 0);
+> +        tpm_tis_dump_state(s, 0);
+>       }
+>   
+>       /*
+> @@ -929,34 +930,78 @@ static const VMStateDescription vmstate_locty = {
+>       }
+>   };
+>   
+> -static const VMStateDescription vmstate_tpm_tis = {
+> +/* ISA */
+> +
+> +static int tpm_tis_pre_save_isa(void *opaque)
+> +{
+> +    TPMStateISA *isadev = opaque;
+> +
+> +    return tpm_tis_pre_save(&isadev->state);
+> +}
+> +
+> +static const VMStateDescription vmstate_tpm_tis_isa = {
+>       .name = "tpm-tis",
+>       .version_id = 0,
+> -    .pre_save  = tpm_tis_pre_save,
+> +    .pre_save  = tpm_tis_pre_save_isa,
+>       .fields = (VMStateField[]) {
+> -        VMSTATE_BUFFER(buffer, TPMState),
+> -        VMSTATE_UINT16(rw_offset, TPMState),
+> -        VMSTATE_UINT8(active_locty, TPMState),
+> -        VMSTATE_UINT8(aborting_locty, TPMState),
+> -        VMSTATE_UINT8(next_locty, TPMState),
+> +        VMSTATE_BUFFER(state.buffer, TPMStateISA),
+> +        VMSTATE_UINT16(state.rw_offset, TPMStateISA),
+> +        VMSTATE_UINT8(state.active_locty, TPMStateISA),
+> +        VMSTATE_UINT8(state.aborting_locty, TPMStateISA),
+> +        VMSTATE_UINT8(state.next_locty, TPMStateISA),
+
+On a second thought these fields seem to belong to a TPMCommonState.
+Why not QOM'ify an abstract common parent between ISA and SysBus?
+
+>   
+> -        VMSTATE_STRUCT_ARRAY(loc, TPMState, TPM_TIS_NUM_LOCALITIES, 0,
+> +        VMSTATE_STRUCT_ARRAY(state.loc, TPMStateISA, TPM_TIS_NUM_LOCALITIES, 0,
+>                                vmstate_locty, TPMLocality),
+>   
+>           VMSTATE_END_OF_LIST()
+>       }
+>   };
+>   
+> -static Property tpm_tis_properties[] = {
+> -    DEFINE_PROP_UINT32("irq", TPMState, irq_num, TPM_TIS_IRQ),
+> -    DEFINE_PROP_TPMBE("tpmdev", TPMState, be_driver),
+> -    DEFINE_PROP_BOOL("ppi", TPMState, ppi_enabled, true),
+> +static void tpm_tis_isa_request_completed(TPMIf *ti, int ret)
+> +{
+> +    TPMStateISA *isadev = TPM_TIS_ISA(ti);
+> +    TPMState *s = &isadev->state;
+> +
+> +    tpm_tis_request_completed(s, ret);
+> +}
+> +
+> +static enum TPMVersion tpm_tis_isa_get_tpm_version(TPMIf *ti)
+> +{
+> +    TPMStateISA *isadev = TPM_TIS_ISA(ti);
+> +    TPMState *s = &isadev->state;
+> +
+> +    return tpm_tis_get_tpm_version(s);
+> +}
+> +
+> +static void tpm_tis_isa_reset(DeviceState *dev)
+> +{
+> +    TPMStateISA *isadev = TPM_TIS_ISA(dev);
+> +    TPMState *s = &isadev->state;
+> +
+> +    return tpm_tis_reset(s);
+> +}
+> +
+> +static Property tpm_tis_isa_properties[] = {
+> +    DEFINE_PROP_UINT32("irq", TPMStateISA, state.irq_num, TPM_TIS_IRQ),
+> +    DEFINE_PROP_TPMBE("tpmdev", TPMStateISA, state.be_driver),
+> +    DEFINE_PROP_BOOL("ppi", TPMStateISA, state.ppi_enabled, true),
+>       DEFINE_PROP_END_OF_LIST(),
+>   };
+>   
+> -static void tpm_tis_realizefn(DeviceState *dev, Error **errp)
+> +static void tpm_tis_isa_initfn(Object *obj)
+>   {
+> -    TPMState *s = TPM(dev);
+> +    TPMStateISA *isadev = TPM_TIS_ISA(obj);
+> +    TPMState *s = &isadev->state;
+> +
+> +    memory_region_init_io(&s->mmio, obj, &tpm_tis_memory_ops,
+> +                          s, "tpm-tis-mmio",
+> +                          TPM_TIS_NUM_LOCALITIES << TPM_TIS_LOCALITY_SHIFT);
+> +}
+> +
+> +static void tpm_tis_isa_realizefn(DeviceState *dev, Error **errp)
+> +{
+> +    TPMStateISA *isadev = TPM_TIS_ISA(dev);
+> +    TPMState *s = &isadev->state;
+>   
+>       if (!tpm_find()) {
+>           error_setg(errp, "at most one TPM device is permitted");
+> @@ -973,55 +1018,46 @@ static void tpm_tis_realizefn(DeviceState *dev, Error **errp)
+>           return;
+>       }
+>   
+> -    isa_init_irq(&s->busdev, &s->irq, s->irq_num);
+> +    isa_init_irq(ISA_DEVICE(dev), &s->irq, s->irq_num);
+>   
+>       memory_region_add_subregion(isa_address_space(ISA_DEVICE(dev)),
+>                                   TPM_TIS_ADDR_BASE, &s->mmio);
+>   
+>       if (s->ppi_enabled) {
+>           tpm_ppi_init(&s->ppi, isa_address_space(ISA_DEVICE(dev)),
+> -                     TPM_PPI_ADDR_BASE, OBJECT(s));
+> +                     TPM_PPI_ADDR_BASE, OBJECT(dev));
+>       }
+>   }
+>   
+> -static void tpm_tis_initfn(Object *obj)
+> -{
+> -    TPMState *s = TPM(obj);
+> -
+> -    memory_region_init_io(&s->mmio, OBJECT(s), &tpm_tis_memory_ops,
+> -                          s, "tpm-tis-mmio",
+> -                          TPM_TIS_NUM_LOCALITIES << TPM_TIS_LOCALITY_SHIFT);
+> -}
+> -
+> -static void tpm_tis_class_init(ObjectClass *klass, void *data)
+> +static void tpm_tis_isa_class_init(ObjectClass *klass, void *data)
+>   {
+>       DeviceClass *dc = DEVICE_CLASS(klass);
+>       TPMIfClass *tc = TPM_IF_CLASS(klass);
+>   
+> -    dc->realize = tpm_tis_realizefn;
+> -    device_class_set_props(dc, tpm_tis_properties);
+> -    dc->reset = tpm_tis_reset;
+> -    dc->vmsd  = &vmstate_tpm_tis;
+> +    device_class_set_props(dc, tpm_tis_isa_properties);
+> +    dc->vmsd  = &vmstate_tpm_tis_isa;
+>       tc->model = TPM_MODEL_TPM_TIS;
+> -    tc->get_version = tpm_tis_get_tpm_version;
+> -    tc->request_completed = tpm_tis_request_completed;
+> +    dc->realize = tpm_tis_isa_realizefn;
+> +    dc->reset = tpm_tis_isa_reset;
+> +    tc->request_completed = tpm_tis_isa_request_completed;
+> +    tc->get_version = tpm_tis_isa_get_tpm_version;
+>   }
+>   
+> -static const TypeInfo tpm_tis_info = {
+> +static const TypeInfo tpm_tis_isa_info = {
+>       .name = TYPE_TPM_TIS_ISA,
+>       .parent = TYPE_ISA_DEVICE,
+> -    .instance_size = sizeof(TPMState),
+> -    .instance_init = tpm_tis_initfn,
+> -    .class_init  = tpm_tis_class_init,
+> +    .instance_size = sizeof(TPMStateISA),
+> +    .instance_init = tpm_tis_isa_initfn,
+> +    .class_init  = tpm_tis_isa_class_init,
+>       .interfaces = (InterfaceInfo[]) {
+>           { TYPE_TPM_IF },
+>           { }
+>       }
+>   };
+>   
+> -static void tpm_tis_register(void)
+> +static void tpm_tis_isa_register(void)
+>   {
+> -    type_register_static(&tpm_tis_info);
+> +    type_register_static(&tpm_tis_isa_info);
+>   }
+>   
+> -type_init(tpm_tis_register)
+> +type_init(tpm_tis_isa_register)
+> 
 

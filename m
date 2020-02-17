@@ -1,105 +1,78 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4585699lfp;
-        Sun, 16 Feb 2020 18:59:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx4lvBVtQNWJCksfG/oAiggg4Wk3LYFu14call5klGkCchF7aavCAWFvM8PnlYKmFs2oVxB
-X-Received: by 2002:ad4:5144:: with SMTP id g4mr11011830qvq.179.1581908395450;
-        Sun, 16 Feb 2020 18:59:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581908395; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4601147lfp;
+        Sun, 16 Feb 2020 19:22:23 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwyhW36iOxqP3vgb5xqLR87tMmm57rUSnNm7EBsxeiPkjxC8mXmGzXjNsfqlOtp1h30gG2m
+X-Received: by 2002:a05:620a:1417:: with SMTP id d23mr11668557qkj.469.1581909743593;
+        Sun, 16 Feb 2020 19:22:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581909743; cv=none;
         d=google.com; s=arc-20160816;
-        b=EBFObfWseIl9XgBoGdnP9PQCBaxCFAJXYhbGKkv1SJIcWMQvOMv38zmnSyXwSrv5Ap
-         tHBmuhtQnRsYXDWxOBdAhIlrmyssLeHzrWr4a9GwmuY5KJTKbes1GwzwcsbYHA0/Unbx
-         kwmIoX/SLbXtbk8yld+JJcaIlNc8EJH6c7CZltvSxI48zJ4DebQRQT7DpR+MWuQULQIJ
-         Id2OWBO5Nmyx9uBhI3GKCwcMpJPXP2sUYiFZe73X21Vhgn9NkXEwloQk4OI1SaPz6d81
-         xwgz/bO2hkA1dnUsCHygKC1FEER93qkYWMtm5MweYYBWZ+oRFZHMUyYxeMJR9LwdjnOa
-         tJRg==
+        b=MNcp2rDkxbHY8M4wA5A2F+OMzhz/EECSSgeYd4r2Yy8ekOED6le4VLF/YMdYLnDuBw
+         3FNmxE0VdItoG1s51aN960Skmo03SoQqKoVrDQwi6r3etv/TBS9GpZLbpTObG1OMljzV
+         CgD7ivy/8FlSyNHaWjRHsGlobtkmLV0EEZmVC9JPH1Y9GN1R6rj5y03538+h6qgU5DsN
+         lQql0IQ+nitdeStRHnp4GPoxYHAiS9FJlKmhMw5LTCuikkEdzNC9lyOaBWK87DtHFR9Z
+         Jb5ZZ3TLwbXTwCIlM2JM+hDj1I6vvhRiItJIhmWFbCEHOkXoZ2cDyit/+WA/kQk8iDNA
+         7tKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=LmoFYXdBrijMVhWal0NtASQS/e7GPwjMxtjYpYKVCWE=;
-        b=MZhhh4mqaVo/ahOQ5u3IaABK6vm3X8EwoZTEokHQQBecu9NAkw+Sw9H8CHk5vYxGQz
-         r8SpyXqklIVNdfHEIQoCfLqIA8BSh6tSl/hP0PpyCs9ZVhyKBdiKHjSKzs55AjaMWKQT
-         W0reS0FaCOh/HW0bRu4nSpq8De3hnkp7MB9BS6ehG+zyfnRcdEgkUM8wVhIIfHBFzUH1
-         O+9W9jpnPEydX9Nzsz4s+/ZeUQI67zpefddv6LYB4T2l0xEJc/tUKSPkR4qz+p+h/yOS
-         7Zl7SOv5AaYaWUJPLOCZocG7ID/3SvYKLAmcZLqNCerSq7lz+qR1B1WPZ7ojREXDmOl4
-         ibgA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=7hXSwbN9Kn32qZcoNaa2/DI9RSZfZ2p/QHnXG7VVBdU=;
+        b=ySZ0LYbkt/KnNjdY3dZhKMrKP97UK+IyV907TjTN5B1Q/vS2J+KFHlDaTQ8lbjmlfi
+         koBJv5+6WSg4bFF7D7kCgb7KhHkCZo6ofvsqWjC4ivMe/tjlIbJWu0dZp6GSA5lDQuyy
+         TkO6LEkH41dGftiIONFx2NKTvKaNuZwowDX8vTMlvAEdjJdV6eWrP63H4A8D4amd6LRL
+         uxxBUXMQFVgHq1nZvDj8pO+2OS4U28LgXsUvDx4J4qzRD8jiQe5RPZiULOBQ+qPJMrlE
+         p2+B9zwVMey//et462RN7/OyWD9/2A25r02b+Mr+CdQeOA45hD24pgTM7GP0r2lXzUGe
+         3FWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WRcXByH1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d11si6636781qkj.14.2020.02.16.18.59.55
+        by mx.google.com with ESMTPS id x28si5340974qkj.350.2020.02.16.19.22.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Feb 2020 18:59:55 -0800 (PST)
+        Sun, 16 Feb 2020 19:22:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WRcXByH1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39486 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39720 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3WdW-0002mz-T9
-	for alex.bennee@linaro.org; Sun, 16 Feb 2020 21:59:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44748)
+	id 1j3WzG-0005KI-TH
+	for alex.bennee@linaro.org; Sun, 16 Feb 2020 22:22:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46528)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <gshan@redhat.com>) id 1j3WdO-0002mK-HJ
- for qemu-arm@nongnu.org; Sun, 16 Feb 2020 21:59:47 -0500
+ (envelope-from <pannengyuan@huawei.com>) id 1j3Wz7-0005Ju-E4
+ for qemu-arm@nongnu.org; Sun, 16 Feb 2020 22:22:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <gshan@redhat.com>) id 1j3WdM-00037U-F5
- for qemu-arm@nongnu.org; Sun, 16 Feb 2020 21:59:45 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:27041
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <pannengyuan@huawei.com>) id 1j3Wz6-0003gH-9C
+ for qemu-arm@nongnu.org; Sun, 16 Feb 2020 22:22:13 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:42702 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1j3WdL-00035z-Qi
- for qemu-arm@nongnu.org; Sun, 16 Feb 2020 21:59:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581908382;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LmoFYXdBrijMVhWal0NtASQS/e7GPwjMxtjYpYKVCWE=;
- b=WRcXByH1Zsxw8AkznIq7BG6Z1pzAGBga2SR2Gg+oAw6knbEfZUNQLtVIBKM92JQUTtR/rU
- mEmutExo0G1aAp0vTLGcHFljgIO7Q0/O3/W718/5MlVx/sh0GrOr7SkPWp3oX/31FljNND
- 7ferlMGSVaUQsQ6eeZpBczKAejJspQw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-184-EJgOa8qaOI-bGgQ4_QemAQ-1; Sun, 16 Feb 2020 21:59:41 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EA72114E1;
- Mon, 17 Feb 2020 02:59:39 +0000 (UTC)
-Received: from localhost.localdomain (vpn2-54-16.bne.redhat.com [10.64.54.16])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B99AC5C241;
- Mon, 17 Feb 2020 02:59:33 +0000 (UTC)
-Subject: Re: [PATCH v3 1/2] target/arm: Support SError injection
-To: Marc Zyngier <maz@kernel.org>
-References: <20200214055950.62477-1-gshan@redhat.com>
- <20200214055950.62477-2-gshan@redhat.com>
- <27b9c2a363d69911c003fcbaed958a5a@kernel.org>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <37c5a2c3-4ca8-1717-6672-2712161076ed@redhat.com>
-Date: Mon, 17 Feb 2020 13:59:31 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ (Exim 4.71) (envelope-from <pannengyuan@huawei.com>)
+ id 1j3Wz5-0003WL-Ui; Sun, 16 Feb 2020 22:22:12 -0500
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 312C0782262440C76FEF;
+ Mon, 17 Feb 2020 11:22:03 +0800 (CST)
+Received: from DESKTOP-9NTIQGG.china.huawei.com (10.173.221.136) by
+ DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
+ 14.3.439.0; Mon, 17 Feb 2020 11:21:56 +0800
+From: <pannengyuan@huawei.com>
+To: <balrogg@gmail.com>, <peter.maydell@linaro.org>,
+ <mav2-rk.cave-ayland@ilande.co.uk>, <david@gibson.dropbear.id.au>,
+ <edgar.iglesias@gmail.com>, <alistair@alistair23.me>
+Subject: [PATCH v2 1/2] s390x: fix memleaks in cpu_finalize
+Date: Mon, 17 Feb 2020 11:21:26 +0800
+Message-ID: <20200217032127.46508-2-pannengyuan@huawei.com>
+X-Mailer: git-send-email 2.21.0.windows.1
+In-Reply-To: <20200217032127.46508-1-pannengyuan@huawei.com>
+References: <20200217032127.46508-1-pannengyuan@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <27b9c2a363d69911c003fcbaed958a5a@kernel.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: EJgOa8qaOI-bGgQ4_QemAQ-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
+Content-Type: text/plain
+X-Originating-IP: [10.173.221.136]
+X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+ [fuzzy]
+X-Received-From: 45.249.212.32
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,67 +84,125 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, jthierry@redhat.com,
- aik@ozlabs.ru, richard.henderson@linaro.org, qemu-devel@nongnu.org,
- eric.auger@redhat.com, qemu-arm@nongnu.org, shan.gavin@gmail.com,
- pbonzini@redhat.com
+Cc: zhang.zhanghailiang@huawei.com, Cornelia Huck <cohuck@redhat.com>,
+ Pan Nengyuan <pannengyuan@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, euler.robot@huawei.com,
+ Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: he1ize7x4Sde
+X-TUID: 74sfbEKfc9pg
 
-Hi Marc,
+From: Pan Nengyuan <pannengyuan@huawei.com>
 
-On 2/16/20 11:34 PM, Marc Zyngier wrote:
-> On 2020-02-14 05:59, Gavin Shan wrote:
->> This supports SError injection, which will be used by "virt" board to
->> simulating the behavior of NMI injection in next patch. As Peter Maydell
->> suggested, this adds a new interrupt (ARM_CPU_SERROR), which is parallel
->> to CPU_INTERRUPT_HARD. The backend depends on if kvm is enabled or not.
->> kvm_vcpu_ioctl(cpu, KVM_SET_VCPU_EVENTS) is leveraged to inject SError
->> or data abort to guest. When TCG is enabled, the behavior is simulated
->> by injecting SError and data abort to guest.
->>
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> ---
->> =A0target/arm/cpu.c=A0=A0=A0=A0=A0 | 69 ++++++++++++++++++++++++++++++++=
-+++--------
->> =A0target/arm/cpu.h=A0=A0=A0=A0=A0 | 17 ++++++-----
->> =A0target/arm/helper.c=A0=A0 |=A0 6 ++++
->> =A0target/arm/m_helper.c |=A0 8 +++++
->> =A04 files changed, 81 insertions(+), 19 deletions(-)
->>
->=20
-> [...]
->=20
->> @@ -656,7 +682,8 @@ static void arm_cpu_set_irq(void *opaque, int irq,
->> int level)
->> =A0=A0=A0=A0=A0=A0=A0=A0 [ARM_CPU_IRQ] =3D CPU_INTERRUPT_HARD,
->> =A0=A0=A0=A0=A0=A0=A0=A0 [ARM_CPU_FIQ] =3D CPU_INTERRUPT_FIQ,
->> =A0=A0=A0=A0=A0=A0=A0=A0 [ARM_CPU_VIRQ] =3D CPU_INTERRUPT_VIRQ,
->> -=A0=A0=A0=A0=A0=A0=A0 [ARM_CPU_VFIQ] =3D CPU_INTERRUPT_VFIQ
->> +=A0=A0=A0=A0=A0=A0=A0 [ARM_CPU_VFIQ] =3D CPU_INTERRUPT_VFIQ,
->> +=A0=A0=A0=A0=A0=A0=A0 [ARM_CPU_SERROR] =3D CPU_INTERRUPT_SERROR,
->=20
-> I'm a bit concerned with this. It makes sense for a host, but doesn't
-> allow the SError signal to be virtualised (there should be a VSError
-> signal in this list that can be injected via HCR_EL2.VA, just like
-> VIRQ is injected by HCR_EL2.VI).
->=20
-> Given that people use QEMU as a development platform for hypervisors,
-> I'd really like this functionality to be supported from day-1.
->=20
-> There is also the whole RAS stuff which quite a lot of work, but let's
-> start at least with the full ARMv8.0 semantics.
->=20
+This patch fix memleaks when we call tests/qtest/cpu-plug-test on s390x. =
+The leak stack is as follow:
 
-Thanks for the comments. Yes, I think it's reasonable to support virtual
-SError as well. Lets have a separate patch to support it in v4. I think
-you were talking about HCR_EL2.VSE, which is defined as below in target/arm=
-/cpu.h:
+Direct leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7fb43c7cd970 in __interceptor_calloc (/lib64/libasan.so.5+0xef97=
+0)
+    #1 0x7fb43be2149d in g_malloc0 (/lib64/libglib-2.0.so.0+0x5249d)
+    #2 0x558ba96da716 in timer_new_full /mnt/sdb/qemu-new/qemu/include/qe=
+mu/timer.h:530
+    #3 0x558ba96da716 in timer_new /mnt/sdb/qemu-new/qemu/include/qemu/ti=
+mer.h:551
+    #4 0x558ba96da716 in timer_new_ns /mnt/sdb/qemu-new/qemu/include/qemu=
+/timer.h:569
+    #5 0x558ba96da716 in s390_cpu_initfn /mnt/sdb/qemu-new/qemu/target/s3=
+90x/cpu.c:285
+    #6 0x558ba9c969ab in object_init_with_type /mnt/sdb/qemu-new/qemu/qom=
+/object.c:372
+    #7 0x558ba9c9eb5f in object_initialize_with_type /mnt/sdb/qemu-new/qe=
+mu/qom/object.c:516
+    #8 0x558ba9c9f053 in object_new_with_type /mnt/sdb/qemu-new/qemu/qom/=
+object.c:684
+    #9 0x558ba967ede6 in s390x_new_cpu /mnt/sdb/qemu-new/qemu/hw/s390x/s3=
+90-virtio-ccw.c:64
+    #10 0x558ba99764b3 in hmp_cpu_add /mnt/sdb/qemu-new/qemu/hw/core/mach=
+ine-hmp-cmds.c:57
+    #11 0x558ba9b1c27f in handle_hmp_command /mnt/sdb/qemu-new/qemu/monit=
+or/hmp.c:1082
+    #12 0x558ba96c1b02 in qmp_human_monitor_command /mnt/sdb/qemu-new/qem=
+u/monitor/misc.c:142
 
-#define HCR_VSE       (1ULL << 8)
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+Cc: Richard Henderson <rth@twiddle.net>
+Cc: Cornelia Huck <cohuck@redhat.com>
+---
+Changes v2 to v1:
+- Similarly to other cleanups, move timer_new into realize, then do
+timer_del in unrealize.
+---
+ target/s390x/cpu.c | 22 ++++++++++++++++++----
+ 1 file changed, 18 insertions(+), 4 deletions(-)
 
-Thanks,
-Gavin
+diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
+index cf84d307c6..f18dbc6fe4 100644
+--- a/target/s390x/cpu.c
++++ b/target/s390x/cpu.c
+@@ -170,7 +170,12 @@ static void s390_cpu_realizefn(DeviceState *dev, Err=
+or **errp)
+     S390CPUClass *scc =3D S390_CPU_GET_CLASS(dev);
+ #if !defined(CONFIG_USER_ONLY)
+     S390CPU *cpu =3D S390_CPU(dev);
++    cpu->env.tod_timer =3D
++        timer_new_ns(QEMU_CLOCK_VIRTUAL, s390x_tod_timer, cpu);
++    cpu->env.cpu_timer =3D
++        timer_new_ns(QEMU_CLOCK_VIRTUAL, s390x_cpu_timer, cpu);
+ #endif
++
+     Error *err =3D NULL;
+=20
+     /* the model has to be realized before qemu_init_vcpu() due to kvm *=
+/
+@@ -227,6 +232,16 @@ out:
+     error_propagate(errp, err);
+ }
+=20
++static void s390_cpu_unrealizefn(DeviceState *dev, Error **errp)
++{
++#if !defined(CONFIG_USER_ONLY)
++    S390CPU *cpu =3D S390_CPU(dev);
++
++    timer_del(cpu->env.tod_timer);
++    timer_del(cpu->env.cpu_timer);
++#endif
++}
++
+ static GuestPanicInformation *s390_cpu_get_crash_info(CPUState *cs)
+ {
+     GuestPanicInformation *panic_info;
+@@ -279,10 +294,6 @@ static void s390_cpu_initfn(Object *obj)
+                         s390_cpu_get_crash_info_qom, NULL, NULL, NULL, N=
+ULL);
+     s390_cpu_model_register_props(obj);
+ #if !defined(CONFIG_USER_ONLY)
+-    cpu->env.tod_timer =3D
+-        timer_new_ns(QEMU_CLOCK_VIRTUAL, s390x_tod_timer, cpu);
+-    cpu->env.cpu_timer =3D
+-        timer_new_ns(QEMU_CLOCK_VIRTUAL, s390x_cpu_timer, cpu);
+     s390_cpu_set_state(S390_CPU_STATE_STOPPED, cpu);
+ #endif
+ }
+@@ -294,6 +305,8 @@ static void s390_cpu_finalize(Object *obj)
+=20
+     qemu_unregister_reset(s390_cpu_machine_reset_cb, cpu);
+     g_free(cpu->irqstate);
++    timer_free(cpu->env.tod_timer);
++    timer_free(cpu->env.cpu_timer);
+ #endif
+ }
+=20
+@@ -453,6 +466,7 @@ static void s390_cpu_class_init(ObjectClass *oc, void=
+ *data)
+=20
+     device_class_set_parent_realize(dc, s390_cpu_realizefn,
+                                     &scc->parent_realize);
++    dc->unrealize =3D s390_cpu_unrealizefn;
+     device_class_set_props(dc, s390x_cpu_properties);
+     dc->user_creatable =3D true;
+=20
+--=20
+2.21.0.windows.1
+
 

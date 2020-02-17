@@ -1,300 +1,152 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5192922lfp;
-        Mon, 17 Feb 2020 07:48:32 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzUG1fC2bB1jyiJ/XU+1j7iqRzS++Acj4nyLZ5nDogunbAPY0GlkFIUQRgnR+eY6AEZEpRt
-X-Received: by 2002:a37:664f:: with SMTP id a76mr15325454qkc.470.1581954512113;
-        Mon, 17 Feb 2020 07:48:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581954512; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5283696lfp;
+        Mon, 17 Feb 2020 09:38:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzyiEyde/fqO/Xam87x/CiWpoya5Se7ysqyhNRbYxsvGZPZmPAVeg7VjwxFgKJI+zCj+ZV+
+X-Received: by 2002:ac8:74c:: with SMTP id k12mr14184195qth.185.1581961128214;
+        Mon, 17 Feb 2020 09:38:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581961128; cv=none;
         d=google.com; s=arc-20160816;
-        b=1IXOapXsbKa4UaSF4hcYX7KQ8PfJr8ocTCTI2UHWTYew5GigtYb+JZWJTLTqByXHQX
-         cbZFi+s6juvF68IIFowdLFgOHgPxMrGJxbk+SiInR6onfSEPqvVqTM5twNquEqFK3KdR
-         h+u/tg6/I4wluWp/VsL4I4Ektif2tks3TwEn8l5S3Cr7YL8F13SBJxQBIhf+WBVunkGy
-         hirAvhEcjXfcE6kJJBXFXK4TRsaDzyKhSv4Q62b6MyGJOONWpJgveMhHtVz3+Cav7Pzc
-         z8i220Nz632xcraNe1eQ1zPQKQvt/c4iqMVopPZ+xBTd//Ro4lIF1W+Qkc3cuiSrORZa
-         JLBw==
+        b=h81qqWUTCIVYxmyLCTNhQoRnExs3y61F42jl9H7j9E7424up6ZTWi3gClXQ+Hvpmnp
+         DqkDPZiqaPPaNBcbnveBNAny0u7VZCQRM2LAHh78x67OagfnXWRKUhaFb2xz9JMvyfPh
+         ew/VWW8zgaNpPIqXOTePnmzRp3UI82nR0F4rKZCMCARlFrEzG7deIuGIxD4/Q2ZG6yym
+         WrvqCg4mPnp7hT7x5UmTc7dpWDRXfbvef+u+Qz01wDJbXNv/6Fkq5l6S8J9CaTcVO14z
+         pUCRT7WyEq14Ayuwf1c6MeE+k5x0RTkRbbi13fVNwkTGng1Z1Xl7XqxDzMGai+0HNH5E
+         oAvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=WXxQWrmo9I/4n4j+3NIQM6EhKGOh7dXEuTAQyKCsynM=;
-        b=Ub1RN1Pla/MJfwz7tOsfCcvv65JJJbyAHKdqtkB/1RP6EvLPEZtrjUCZeh4G1uyTcz
-         rW50AKRPEefAHVp5xDerJUY7Di6uMEvmZPhRINWGh4qxvIY2ZqX2mROwdN2YsUnkdKfi
-         09oxW53QXTKlfWNt7rKyFq+nzZ1e8sE1xNjhQo4c0NetZxPzZMtZaXwRLd2M44oDhex/
-         4cO+pMJlQh83/v5qi+UjGM2ZyadbCiEsD3ZpISEjii60x7NPOXxcvYU8vshhYi1B51OD
-         7SNftI3EzYs6b8y/rRahIpxYhjAV1zVoA2HHb07sYcuV7iqpCNC1x40gvG9AdAnHp5je
-         3XUg==
+         :references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=PoLKVuD8z1OSIeOnDJ8QRLSEIGCP8+HptdOHqvqlXlk=;
+        b=S/YYj4AUpvw82LRX+f2VB7OHP47VtIKfrnMRAVdrYkI8YR3SFKMdZ7Jb5uoov8nYC3
+         OIvyzhg0zFkTVz/7EJC6CFlBCjo/lA/Vzm4IuDNNPU9cEs27xE9VJDC+fmNeOClGGhCL
+         CkgorL0eBOL5zOPbMtVJIvlwQmIRSRq6I4ylJ9Z80TptRnbYG+9uU8BzCeCR3aK86lpp
+         aIf2b6mKA9mAuvrJSTKjbvVfW0XVd4Hrn0SQSOrUeWmKtzeT/9zsNFtK02NxlEiXl5Cr
+         lOI+orUOZEDfAwp+6MFu4i9rFznGptfOo38gRSiQgfntU2PltyY616JGdSKFKZdI89ss
+         vDxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aymhT6uL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b9si494594qkj.334.2020.02.17.07.48.30
+        by mx.google.com with ESMTPS id z24si554250qtn.325.2020.02.17.09.38.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Feb 2020 07:48:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 17 Feb 2020 09:38:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47314 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aymhT6uL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49404 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3idK-0002Kr-3Q
-	for alex.bennee@linaro.org; Mon, 17 Feb 2020 10:48:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49279)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j3kM3-0008RB-JO
+	for alex.bennee@linaro.org; Mon, 17 Feb 2020 12:38:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38167)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1j3idA-0002It-Tm
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 10:48:22 -0500
+ (envelope-from <imammedo@redhat.com>) id 1j3kIl-0001I6-0d
+ for qemu-devel@nongnu.org; Mon, 17 Feb 2020 12:35:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1j3id9-0003Le-6L
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 10:48:20 -0500
-Received: from 5.mo2.mail-out.ovh.net ([87.98.181.248]:46676)
+ (envelope-from <imammedo@redhat.com>) id 1j3kIj-0001q2-Qi
+ for qemu-devel@nongnu.org; Mon, 17 Feb 2020 12:35:22 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:46590
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1j3id8-0003Ku-V8
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 10:48:19 -0500
-Received: from player771.ha.ovh.net (unknown [10.110.208.220])
- by mo2.mail-out.ovh.net (Postfix) with ESMTP id A2D491CA2FF
- for <qemu-arm@nongnu.org>; Mon, 17 Feb 2020 16:48:16 +0100 (CET)
-Received: from kaod.org (deibp9eh1--blueice1n4.emea.ibm.com [195.212.29.166])
- (Authenticated sender: clg@kaod.org)
- by player771.ha.ovh.net (Postfix) with ESMTPSA id BA131F8A6E35;
- Mon, 17 Feb 2020 15:47:57 +0000 (UTC)
-Subject: Re: [PATCH v2 1/4] m25p80: Convert to support tracing
-To: Guenter Roeck <linux@roeck-us.net>,
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>
-References: <20200206183219.3756-1-linux@roeck-us.net>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <488b3355-4467-e01e-d6a0-a2d5bc959428@kaod.org>
-Date: Mon, 17 Feb 2020 16:47:52 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
-MIME-Version: 1.0
-In-Reply-To: <20200206183219.3756-1-linux@roeck-us.net>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 13096467718066768816
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrjeeigdekudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdduleehrddvuddvrddvledrudeiieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejjedurdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1j3kIj-0001pK-MY
+ for qemu-devel@nongnu.org; Mon, 17 Feb 2020 12:35:21 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581960921;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=PoLKVuD8z1OSIeOnDJ8QRLSEIGCP8+HptdOHqvqlXlk=;
+ b=aymhT6uLX8t2eupGLzKoUtBG4FSBtz1bcOrDxSM7dfscjmnisCNOsZz6ZlNjL5HCG6YnD3
+ qo5bZAjKQ7VH1DBG8anUKu1XKMHz8BATeQn+k/LFeufHW569JjYxGEQiZGer9dGnKpuCHD
+ a0ZKL1+fr16GjSgRhvu9D0VZAZEhVWk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-422-wZugAkmWMqut0vxOq6qlbA-1; Mon, 17 Feb 2020 12:35:19 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7C6048017DF;
+ Mon, 17 Feb 2020 17:35:18 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq.redhat.com
+ (dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F23A78CCE0;
+ Mon, 17 Feb 2020 17:35:16 +0000 (UTC)
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v5 15/79] arm/imx25_pdk: drop RAM size fixup
+Date: Mon, 17 Feb 2020 12:33:48 -0500
+Message-Id: <20200217173452.15243-16-imammedo@redhat.com>
+In-Reply-To: <20200217173452.15243-1-imammedo@redhat.com>
+References: <20200217173452.15243-1-imammedo@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: wZugAkmWMqut0vxOq6qlbA-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 87.98.181.248
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HzIjKiFZTd5V
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, philmd@redhat.com, jcd@tribudubois.net
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YhbU6xC+vm83
 
-Hello all, 
+If user provided non-sense RAM size, board will complain and
+continue running with max RAM size supported.
+Also RAM is going to be allocated by generic code, so it won't be
+possible for board to fix things up for user.
 
-On 2/6/20 7:32 PM, Guenter Roeck wrote:
-> While at it, add some trace messages to help debug problems
-> seen when running the latest Linux kernel.
+Make it error message and exit to force user fix CLI,
+instead of accepting non-sense CLI values.
 
-Through which tree do you think it is best to merge this patchset ? 
-block or arm ? 
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+---
+CC: jcd@tribudubois.net
+CC: peter.maydell@linaro.org
+CC: qemu-arm@nongnu.org
+CC: philmd@redhat.com
+---
+ hw/arm/imx25_pdk.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Thanks,
-
-C.
-
-
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> ---
-> v2: Print pointer to Flash data structure as flash ID with each trace
->     message to support systems with more than one instantiated flash.
-> 
->  hw/block/m25p80.c     | 48 ++++++++++++++++++++-----------------------
->  hw/block/trace-events | 16 +++++++++++++++
->  2 files changed, 38 insertions(+), 26 deletions(-)
-> 
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index 61f2fb8f8f..5ff8d270c4 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -32,17 +32,7 @@
->  #include "qemu/module.h"
->  #include "qemu/error-report.h"
->  #include "qapi/error.h"
-> -
-> -#ifndef M25P80_ERR_DEBUG
-> -#define M25P80_ERR_DEBUG 0
-> -#endif
-> -
-> -#define DB_PRINT_L(level, ...) do { \
-> -    if (M25P80_ERR_DEBUG > (level)) { \
-> -        fprintf(stderr,  ": %s: ", __func__); \
-> -        fprintf(stderr, ## __VA_ARGS__); \
-> -    } \
-> -} while (0)
-> +#include "trace.h"
->  
->  /* Fields for FlashPartInfo->flags */
->  
-> @@ -574,7 +564,8 @@ static void flash_erase(Flash *s, int offset, FlashCMD cmd)
->          abort();
->      }
->  
-> -    DB_PRINT_L(0, "offset = %#x, len = %d\n", offset, len);
-> +    trace_m25p80_flash_erase(s, offset, len);
-> +
->      if ((s->pi->flags & capa_to_assert) != capa_to_assert) {
->          qemu_log_mask(LOG_GUEST_ERROR, "M25P80: %d erase size not supported by"
->                        " device\n", len);
-> @@ -607,8 +598,7 @@ void flash_write8(Flash *s, uint32_t addr, uint8_t data)
->      }
->  
->      if ((prev ^ data) & data) {
-> -        DB_PRINT_L(1, "programming zero to one! addr=%" PRIx32 "  %" PRIx8
-> -                   " -> %" PRIx8 "\n", addr, prev, data);
-> +        trace_m25p80_programming_zero_to_one(s, addr, prev, data);
->      }
->  
->      if (s->pi->flags & EEPROM) {
-> @@ -662,6 +652,9 @@ static void complete_collecting_data(Flash *s)
->  
->      s->state = STATE_IDLE;
->  
-> +    trace_m25p80_complete_collecting(s, s->cmd_in_progress, n, s->ear,
-> +                                     s->cur_addr);
-> +
->      switch (s->cmd_in_progress) {
->      case DPP:
->      case QPP:
-> @@ -825,7 +818,7 @@ static void reset_memory(Flash *s)
->          break;
->      }
->  
-> -    DB_PRINT_L(0, "Reset done.\n");
-> +    trace_m25p80_reset_done(s);
->  }
->  
->  static void decode_fast_read_cmd(Flash *s)
-> @@ -941,9 +934,10 @@ static void decode_qio_read_cmd(Flash *s)
->  
->  static void decode_new_cmd(Flash *s, uint32_t value)
->  {
-> -    s->cmd_in_progress = value;
->      int i;
-> -    DB_PRINT_L(0, "decoded new command:%x\n", value);
-> +
-> +    s->cmd_in_progress = value;
-> +    trace_m25p80_command_decoded(s, value);
->  
->      if (value != RESET_MEMORY) {
->          s->reset_enable = false;
-> @@ -1042,7 +1036,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
->          break;
->  
->      case JEDEC_READ:
-> -        DB_PRINT_L(0, "populated jedec code\n");
-> +        trace_m25p80_populated_jedec(s);
->          for (i = 0; i < s->pi->id_len; i++) {
->              s->data[i] = s->pi->id[i];
->          }
-> @@ -1063,7 +1057,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
->      case BULK_ERASE_60:
->      case BULK_ERASE:
->          if (s->write_enable) {
-> -            DB_PRINT_L(0, "chip erase\n");
-> +            trace_m25p80_chip_erase(s);
->              flash_erase(s, 0, BULK_ERASE);
->          } else {
->              qemu_log_mask(LOG_GUEST_ERROR, "M25P80: chip erase with write "
-> @@ -1184,7 +1178,7 @@ static int m25p80_cs(SSISlave *ss, bool select)
->          s->data_read_loop = false;
->      }
->  
-> -    DB_PRINT_L(0, "%sselect\n", select ? "de" : "");
-> +    trace_m25p80_select(s, select ? "de" : "");
->  
->      return 0;
->  }
-> @@ -1194,19 +1188,20 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint32_t tx)
->      Flash *s = M25P80(ss);
->      uint32_t r = 0;
->  
-> +    trace_m25p80_transfer(s, s->state, s->len, s->needed_bytes, s->pos,
-> +                          s->cur_addr, (uint8_t)tx);
-> +
->      switch (s->state) {
->  
->      case STATE_PAGE_PROGRAM:
-> -        DB_PRINT_L(1, "page program cur_addr=%#" PRIx32 " data=%" PRIx8 "\n",
-> -                   s->cur_addr, (uint8_t)tx);
-> +        trace_m25p80_page_program(s, s->cur_addr, (uint8_t)tx);
->          flash_write8(s, s->cur_addr, (uint8_t)tx);
->          s->cur_addr = (s->cur_addr + 1) & (s->size - 1);
->          break;
->  
->      case STATE_READ:
->          r = s->storage[s->cur_addr];
-> -        DB_PRINT_L(1, "READ 0x%" PRIx32 "=%" PRIx8 "\n", s->cur_addr,
-> -                   (uint8_t)r);
-> +        trace_m25p80_read_byte(s, s->cur_addr, (uint8_t)r);
->          s->cur_addr = (s->cur_addr + 1) & (s->size - 1);
->          break;
->  
-> @@ -1244,6 +1239,7 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint32_t tx)
->          }
->  
->          r = s->data[s->pos];
-> +        trace_m25p80_read_data(s, s->pos, (uint8_t)r);
->          s->pos++;
->          if (s->pos == s->len) {
->              s->pos = 0;
-> @@ -1281,7 +1277,7 @@ static void m25p80_realize(SSISlave *ss, Error **errp)
->              return;
->          }
->  
-> -        DB_PRINT_L(0, "Binding to IF_MTD drive\n");
-> +        trace_m25p80_binding(s);
->          s->storage = blk_blockalign(s->blk, s->size);
->  
->          if (blk_pread(s->blk, 0, s->storage, s->size) != s->size) {
-> @@ -1289,7 +1285,7 @@ static void m25p80_realize(SSISlave *ss, Error **errp)
->              return;
->          }
->      } else {
-> -        DB_PRINT_L(0, "No BDRV - binding to RAM\n");
-> +        trace_m25p80_binding_no_bdrv(s);
->          s->storage = blk_blockalign(NULL, s->size);
->          memset(s->storage, 0xFF, s->size);
->      }
-> diff --git a/hw/block/trace-events b/hw/block/trace-events
-> index c03e80c2c9..f78939fa9d 100644
-> --- a/hw/block/trace-events
-> +++ b/hw/block/trace-events
-> @@ -134,3 +134,19 @@ xen_block_blockdev_add(char *str) "%s"
->  xen_block_blockdev_del(const char *node_name) "%s"
->  xen_block_device_create(unsigned int number) "%u"
->  xen_block_device_destroy(unsigned int number) "%u"
-> +
-> +# m25p80.c
-> +m25p80_flash_erase(void *s, int offset, uint32_t len) "[%p] offset = 0x%"PRIx32", len = %u"
-> +m25p80_programming_zero_to_one(void *s, uint32_t addr, uint8_t prev, uint8_t data) "[%p] programming zero to one! addr=0x%"PRIx32"  0x%"PRIx8" -> 0x%"PRIx8
-> +m25p80_reset_done(void *s) "[%p] Reset done."
-> +m25p80_command_decoded(void *s, uint32_t cmd) "[%p] new command:0x%"PRIx32
-> +m25p80_complete_collecting(void *s, uint32_t cmd, int n, uint8_t ear, uint32_t cur_addr) "[%p] decode cmd: 0x%"PRIx32" len %d ear 0x%"PRIx8" addr 0x%"PRIx32
-> +m25p80_populated_jedec(void *s) "[%p] populated jedec code"
-> +m25p80_chip_erase(void *s) "[%p] chip erase"
-> +m25p80_select(void *s, const char *what) "[%p] %sselect"
-> +m25p80_page_program(void *s, uint32_t addr, uint8_t tx) "[%p] page program cur_addr=0x%"PRIx32" data=0x%"PRIx8
-> +m25p80_transfer(void *s, uint8_t state, uint32_t len, uint8_t needed, uint32_t pos, uint32_t cur_addr, uint8_t t) "[%p] Transfer state 0x%"PRIx8" len 0x%"PRIx32" needed 0x%"PRIx8" pos 0x%"PRIx32" addr 0x%"PRIx32" tx 0x%"PRIx8
-> +m25p80_read_byte(void *s, uint32_t addr, uint8_t v) "[%p] Read byte 0x%"PRIx32"=0x%"PRIx8
-> +m25p80_read_data(void *s, uint32_t pos, uint8_t v) "[%p] Read data 0x%"PRIx32"=0x%"PRIx8
-> +m25p80_binding(void *s) "[%p] Binding to IF_MTD drive"
-> +m25p80_binding_no_bdrv(void *s) "[%p] No BDRV - binding to RAM"
-> 
+diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
+index c76fc2bd94..a2b7b35dcc 100644
+--- a/hw/arm/imx25_pdk.c
++++ b/hw/arm/imx25_pdk.c
+@@ -78,10 +78,10 @@ static void imx25_pdk_init(MachineState *machine)
+=20
+     /* We need to initialize our memory */
+     if (machine->ram_size > (FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZE=
+)) {
+-        warn_report("RAM size " RAM_ADDR_FMT " above max supported, "
++        error_report("RAM size " RAM_ADDR_FMT " above max supported, "
+                     "reduced to %x", machine->ram_size,
+                     FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZE);
+-        machine->ram_size =3D FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZ=
+E;
++        exit(EXIT_FAILURE);
+     }
+=20
+     memory_region_allocate_system_memory(&s->ram, NULL, "imx25.ram",
+--=20
+2.18.1
 

@@ -1,142 +1,258 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5499564lfp;
-        Mon, 17 Feb 2020 14:56:37 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw8hnlApDNaAJDUSDTjasKPJL7CUC0+5c+2DfdYsP0LyS8Y+8NyvfYMOiUhVuqricbCxrsJ
-X-Received: by 2002:a37:47c4:: with SMTP id u187mr16706365qka.165.1581980197843;
-        Mon, 17 Feb 2020 14:56:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581980197; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5518530lfp;
+        Mon, 17 Feb 2020 15:24:27 -0800 (PST)
+X-Received: by 2002:a7b:cd92:: with SMTP id y18mr1277118wmj.133.1581981866943;
+        Mon, 17 Feb 2020 15:24:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581981866; cv=none;
         d=google.com; s=arc-20160816;
-        b=TdGmUZURTZKB/dld8AjMsKWdJhNScUKkMbGll++imo29dwvDywYdLbSZeSa9Qb7N4S
-         6ZSC+4NqbjkEOv8LcB6legF/dWunO3U2BsbpuQV9zVKGU95DPPm7LtSH9f1zeNlx52ec
-         ai0gihTbBWNrsYjR259nR41zX0jyr37n5LM5HgrLEb0Wsyw2x1sPEOnsqp1mVSfrK2ee
-         tMzMLIp55ry/RqamjNmnB4nZC61wpwHrKKvOD8WP5gJaIhXeWYl+Lm0ovWX2u2CFfzUs
-         9Atz1W/aAZMeDh9pEEkv6bhWfXYkj7fJGIi39rREDfkRGcX36QN/d1zj1gOCWE9zjnej
-         4IBw==
+        b=XudxPO8ELC/QPZ3E05odQ479wyyvZMFp4s+/w89UWrTh/A5LiBhaH+eRJhdqBUk5SJ
+         pu0ditY6iYSiUV0lIX0d9WxOLUlb2ezs8mnYqt9c4x3A3U7R/V02WnFFuYAFo0si7mQL
+         F4/Pfo2+LZpaYARYksncUM5pd1WebXhdMFs0tksuGGs2Sh+1vyukggdMwD9kuHNgPwVz
+         ompDvsgEGnFsn35VeFPCLlRw1e8dzbQUwHhjasAmUtrWTQ/2uzI4hK4jm1Jpt6z0GTrp
+         1SWL39VOv9tmvWZ7o+KZnSD/jUC+ROj6TDfd5QIgxLoZ86LU9ZRg588fhC8SPxsayO8W
+         pQcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=B/yZw8BsUCzvzPWgM/M/oVrIGRQRILRpW+5b60Kx/8o=;
-        b=RcQEb8s8zBgOfdwXxXlP2PCRzhMPxJPAR1nBFG8JQRuk963nYVKGjUR8pog74FjHtu
-         eFkU/SpYyZyYt3PUpy4ffNJBwQfo5Ad/SMJ7ElLUHEwjZfCie7hXLAVUw6derRlTXKL4
-         0tgpmscGNnRAZ4zHubT6TJZKHQZDAJoqoek/7D92h+yt1i19qZ9sc36EdW/auYmz8GkE
-         aWCL4SJQR5hBrhbEWRgkvSgRqOpVegAeFvUegYTwnfVRkAp+YLF60oa8NGblFgZJ+qGx
-         w2HG3DHZDzvpHjrRxAlzkN35C2XjeEuj6eZQLwvqw71hgUp86qE2jD8BzDf07i4B/Ch7
-         W9Ng==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=b3b7kBz00LpGCYA81YDLxYiAvamTgoNcDsjIy7fcIFk=;
+        b=U/4QpTlKUzIPREzHyVxG51xSwV0jcyLI13bWoNFrfDoiCKeVZZ9WeuGwfSz7vwajl3
+         Wg7ptQxITQqge2bBUh643uC+wdNBBqoPYC79o/DaV3omh0JKui2CLhTf2HLVKliAftZS
+         JHeme0621hPztRB/2q9VCBGvbg+Npb2/HHly6R03T7xm5WASeseM1f4uqWcEDJcRHRKD
+         SwL1MNexzdxva6MBvFg33udm8iRhyYjRnnz6IvFJJOzacEOMZwFGli/eB5zLFmEksiOp
+         NISVR9hPAQ5Y1wTwuMnLsjwTblBKxAOMRaouiNEWP5ZbeWPilelR9A2cnbQ09zymYwFu
+         +8mg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Ca/oPVr9";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h6si942227qtr.366.2020.02.17.14.56.37
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Feb 2020 14:56:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TZGkiWkk;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id h5sor1325192wrv.64.2020.02.17.15.24.26
+        (Google Transport Security);
+        Mon, 17 Feb 2020 15:24:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Ca/oPVr9";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54140 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3pJd-00016A-Aa
-	for alex.bennee@linaro.org; Mon, 17 Feb 2020 17:56:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56084)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1j3pJU-00014r-4x
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 17:56:29 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1j3pJR-0001Ji-KI
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 17:56:27 -0500
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:38403)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1j3pJQ-0001Ik-Ka
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 17:56:24 -0500
-Received: by mail-pl1-x642.google.com with SMTP id t6so7273813plj.5
- for <qemu-arm@nongnu.org>; Mon, 17 Feb 2020 14:56:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=B/yZw8BsUCzvzPWgM/M/oVrIGRQRILRpW+5b60Kx/8o=;
- b=Ca/oPVr973xjWW17Ed8M5C+tKVyWAMmmHGiwHbTfWHPujkA/MtwCWE9kmeLtEY6WzO
- 7bWDCU2JApbedXk29hUYSiXkqfSTdedhvNt2gwLsI1oadkEFQf6a7pfMtTJf14i5zI4j
- l3lbtWjOW+mOuKGC1NSGzPs0bZjGl6Ur9cT7SEEyC3B97TiRc36evF/dZCTQ1m/+uyhe
- 3X3LGahihviDacgcFpYaoDtpFCNidwNdsHPAXk4SSg+gS9+OUSnO6bgfz0/4pwTn+qQb
- 35/v/Bbb2pNJS653RcMGMD30wzZK9GD+F2mXdeB4keN6ykEHNJtqNXQFJvNUzSj+RmxJ
- MV1w==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TZGkiWkk;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=b3b7kBz00LpGCYA81YDLxYiAvamTgoNcDsjIy7fcIFk=;
+        b=TZGkiWkkvv6mUJEciJzw5v3xmVLy68FEegTnf9PPuCa9F4b5N9Ux9Islqrqk3TKo2p
+         2f5WBo7ErAIgTLNrqzWS8dZC31gCl/u5b5G9BfKT2ItF3I7LbPrzzxKqupICNkeTZxi+
+         elPDV2J0EUAjYnamufpL4x9S84qEiHz2iYF+uc8b6oZRlbDoLjkU8o58KKfEfH3ZoiEL
+         JS1uRHSVCiP4jozVLdTituP3QKi/ih3WzA5kyuTY9GBofwz9C8SwHEirSyizxeHaob7p
+         pak1m+pUg2wFvx079bFOHW7MKVOi4BphvP8zNSWfufykqbPYXSBujK3yWjc6uT7ORrsZ
+         QpZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=B/yZw8BsUCzvzPWgM/M/oVrIGRQRILRpW+5b60Kx/8o=;
- b=gDagB5ezUoD6qQ74BxMpPirGp4qrV+K+OmlTpJI6djf4AQvlsHuQ94DkL9ZEO0Wwo/
- /Ltt2OFR4Dnw4VRrD2VeQRY+evfGn46iRkAk2/QxuJUPngv1GY9rBeigACndMnYlkwe/
- UbfWwJynbb+hRFkfDP9Cso0GYybLeeualG+cKwPQ3fQ0dZVsMG9ef54UWK5bt40aJg14
- 3+AsaacFBkdcR3PzFPFtuc7HXTLW9hKVaGloO3PXvumGy2Rd/FPCtnVSAfWkOTgV6f/h
- To32irj1G1uNAPIwMnVSpnm9us3gy620sm7rajG1K8sckwIuTBhI1sf1ZS51yTMHSsRD
- SIAg==
-X-Gm-Message-State: APjAAAWQ/LxEhOzR9cg2ZWGN2wchYbR/ifY0Mtd5lc26A1HS8JIuWmY/
- z+p/rRiKy9eiJ/VxfpB7qdH8PKrPlGs=
-X-Received: by 2002:a17:902:124:: with SMTP id
- 33mr18460218plb.128.1581980182915; 
- Mon, 17 Feb 2020 14:56:22 -0800 (PST)
-Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id
- u1sm1348362pfn.133.2020.02.17.14.56.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Feb 2020 14:56:22 -0800 (PST)
-Subject: Re: [PATCH v5 10/22] target/arm: Define arm_cpu_do_unaligned_access
- for CONFIG_USER_ONLY
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20191011134744.2477-1-richard.henderson@linaro.org>
- <20191011134744.2477-11-richard.henderson@linaro.org>
- <CAFEAcA-MKN5vJYTwF5fbQVvgC_QpfezG_S4Z1gF1Qxtc5NSNoA@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <0ecaf16f-d5cc-9448-0953-64f71af4aa26@linaro.org>
-Date: Mon, 17 Feb 2020 14:56:20 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=b3b7kBz00LpGCYA81YDLxYiAvamTgoNcDsjIy7fcIFk=;
+        b=WRVUuXCP3wciPDy9iNIE0PWruTeCURNO8oPjAqMCJE5UbAHRM+OGchkzxN0EVR/VOx
+         Fv81Jxs6Vksj9/5jlx/s/ElA0xOj/YG2hHQnip9nBrMgp/ihYLCnu/91MYXNK2S/Er7g
+         0+pot9jaxc4IFvbwe/ihQrQlIEv64l5a9pYkFoYCMwaTAGnY6KaenXsm8mTle5ayFZPv
+         hg/QPHu+lgZyujj1XbG7EThZYmPxJWBqaItebLDTirwdUkAKPXHh609kKbLGvLdrxp0b
+         el7PFzfiTIRMSwXHEzTBCxk/bB5fLfe5ZCZS8FmU/+4zGfrE4o/lyj3FbrAHbdtYdw1A
+         bJRA==
+X-Gm-Message-State: APjAAAUZgAJu8DLM8cZZ8YgqPppF729yndS8mpKl727Owuijmu+Kz0Su
+	lP1B83vLSi+TQzhe5jIu1m0=
+X-Google-Smtp-Source: APXvYqzM6yaY5PSwwJVYgeXICAjUxHuDmWfArtxgn40ZNi0wLS8TnPVy370UH7NyyCtzCfwPObhPiQ==
+X-Received: by 2002:adf:f986:: with SMTP id f6mr25443065wrr.182.1581981866440;
+        Mon, 17 Feb 2020 15:24:26 -0800 (PST)
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
+        by smtp.gmail.com with ESMTPSA id w1sm3244831wro.72.2020.02.17.15.24.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Feb 2020 15:24:25 -0800 (PST)
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	peter.maydell@linaro.org,
+	philmd@redhat.com,
+	b.galvani@gmail.com,
+	jasowang@redhat.com,
+	alex.bennee@linaro.org,
+	imammedo@redhat.com,
+	Niek Linnenbank <nieklinnenbank@gmail.com>
+Subject: [PATCH v5 00/18] Add Allwinner H3 SoC and Orange Pi PC Machine
+Date: Tue, 18 Feb 2020 00:23:53 +0100
+Message-Id: <20200217232411.30096-1-nieklinnenbank@gmail.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-MKN5vJYTwF5fbQVvgC_QpfezG_S4Z1gF1Qxtc5NSNoA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::642
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2Q5VA/xsDfoG
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: /KYFrRf9+nWC
 
-On 12/5/19 8:12 AM, Peter Maydell wrote:
-> For arm_cpu_tlb_fill() which handles prefetch/data aborts
-> we just have a separate much simpler codepath for
-> CONFIG_USER_ONLY which doesn't call arm_deliver_fault().
-> I think being consistent here about how we handle the
-> CONFIG_USER_ONLY case would help avoid having a codepath
-> that isn't very well tested because it's only used in
-> the odd special case of unaligned-address exceptions.
+Dear QEMU developers,
 
-Fair enough.
+Hereby I would like to contribute the following set of patches to QEMU
+which add support for the Allwinner H3 System on Chip and the
+Orange Pi PC machine. The following features and devices are supported:
 
-It also reminds me that I had failed to add the linux-user changes to go along
-with this to raise SIGBUS instead of SIGSEGV.
+ * SMP (Quad Core Cortex A7)
+ * Generic Interrupt Controller configuration
+ * SRAM mappings
+ * SDRAM controller
+ * Real Time Clock
+ * Timer device (re-used from Allwinner A10)
+ * UART
+ * SD/MMC storage controller
+ * EMAC ethernet connectivity
+ * USB 2.0 interfaces
+ * Clock Control Unit
+ * System Control module
+ * Security Identifier device
 
+Functionality related to graphical output such as HDMI, GPU,
+Display Engine and audio are not included. Recently released
+mainline Linux kernels (4.19 up to latest master), mainline U-Boot
+and NetBSD 9.0 are known to work.
 
-r~
+For full details on how to use the Orange Pi PC machine, see the file
+docs/orangepi.rst which is included as a patch in this series.
+
+The contents of this patch series is available on Github at:
+
+  https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v5
+
+The followings are currently known issues in this series:
+
+  - RTC date & time is not persistent
+  - boot0 custom Allwinner bootloader not yet working
+  - Watchdog not yet implemented, affects U-Boot 'reset' and shutdown/reboot
+     -> This is part of the existing A10 timer that needs to be generalized first
+
+Looking forward to your review comments. I will do my best
+to update the patches where needed.
+
+===== CHANGELOG =====
+v5:
+ * hw/arm/allwinner-h3.c: correct comment for dc->user_creatable = false
+ * hw/arm/allwinner-h3.c: rename usb[0-3] to usb[0-3]-phy in unimplemented array
+ * hw/arm/allwinner-h3.c: remove unneeded check for rom_size > blk_size in bootrom_setup()
+ * hw/arm/allwinner-h3.c: remove errp parameter and directl use error_fatal in bootrom_setup()
+ * hw/arm/Kconfig: add USB_OHCI, USB_EHCI_SYSBUS, SD to ALLWINNER_H3 item (for --without-default-devices)
+ * hw/misc/allwinner-cpucfg.c: add entry_addr to VMState for migration
+ * hw/misc/allwinner-sid.c: add identifier to VMState for migration
+ * hw/misc/allwinner-sid.c: use ldl_be_p() to set rdkey value
+ * hw/arm/orangepi.c: add comment about always using a default fixed SID identifier
+ * hw/arm/orangepi.c: add check for SID identifier override, to allow -global override by the user
+ * hw/arm/orangepi.c: print warning if SID identifier does not include H3 prefix
+ * hw/arm/orangepi.c: move 1GiB RAM check between checks for BIOS and CPU type
+ * include/hw/misc/allwinner-h3-ccu.h: rename AW_H3_CCU_REGS_MAXADDR to AW_H3_CCU_IOSIZE with value 0x400
+ * hw/misc/allwinner-h3-ccu.c: use AW_H3_CCU_IOSIZE with range in switch(offset) in read/write
+ * hw/rtc/allwinner-rtc.c: add 'base-year' property in AwRtcState (replaces previous year_offset)
+ * hw/sd/allwinner-sdhost.c: set AUTOCMD interrupt flag in auto_stop() function only
+ * hw/sd/allwinner-sdhost.c: set SDIO_INTR and INT_SUMMARY interrupt flags in dma() function
+ * docs/orangepi.rst: add machine options section, which documents available machine/device specific properties
+ * docs/orangepi.rst: updated NetBSD 9 instructions with new image URL, -global options and extend SD image command
+ * hw/*/allwinner*.c: use device_class_set_props() to set DeviceClass properties
+ * tests/acceptance/boot_linux_console.py: add check for 7z program using avocado's find_command()
+ * tests/acceptance/boot_linux_console.py: adapt NetBSD test to use NetBSD 9.0 final release
+ * tests/acceptance/boot_linux_console.py: adapt NetBSD test to use -global allwinner-rtc.base-year=2000
+
+v4: https://lists.gnu.org/archive/html/qemu-devel/2020-01/msg03960.html
+    https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v4
+
+v3: https://lists.gnu.org/archive/html/qemu-devel/2020-01/msg01534.html
+    https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v3
+
+v2: https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg03265.html
+    https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v2
+
+v1: https://lists.gnu.org/archive/html/qemu-devel/2019-12/msg00320.html
+    https://github.com/nieklinnenbank/qemu/tree/allwinner-h3-v1
+
+With kind regards,
+
+Niek Linnenbank
+
+Niek Linnenbank (13):
+  hw/arm: add Allwinner H3 System-on-Chip
+  hw/arm: add Xunlong Orange Pi PC machine
+  hw/arm/allwinner-h3: add Clock Control Unit
+  hw/arm/allwinner-h3: add USB host controller
+  hw/arm/allwinner-h3: add System Control module
+  hw/arm/allwinner: add CPU Configuration module
+  hw/arm/allwinner: add Security Identifier device
+  hw/arm/allwinner: add SD/MMC host controller
+  hw/arm/allwinner-h3: add EMAC ethernet device
+  hw/arm/allwinner-h3: add Boot ROM support
+  hw/arm/allwinner-h3: add SDRAM controller device
+  hw/arm/allwinner: add RTC device support
+  docs: add Orange Pi PC document
+
+Philippe Mathieu-Daudé (5):
+  tests/boot_linux_console: Add a quick test for the OrangePi PC board
+  tests/boot_linux_console: Add initrd test for the Orange Pi PC board
+  tests/boot_linux_console: Add a SD card test for the OrangePi PC board
+  tests/boot_linux_console: Add a SLOW test booting Ubuntu on OrangePi
+    PC
+  tests/boot_linux_console: Test booting NetBSD via U-Boot on OrangePi
+    PC
+
+ docs/orangepi.rst                      | 226 +++++++
+ default-configs/arm-softmmu.mak        |   1 +
+ hw/usb/hcd-ehci.h                      |   1 +
+ include/hw/arm/allwinner-a10.h         |   4 +
+ include/hw/arm/allwinner-h3.h          | 161 +++++
+ include/hw/misc/allwinner-cpucfg.h     |  52 ++
+ include/hw/misc/allwinner-h3-ccu.h     |  66 ++
+ include/hw/misc/allwinner-h3-dramc.h   | 106 +++
+ include/hw/misc/allwinner-h3-sysctrl.h |  67 ++
+ include/hw/misc/allwinner-sid.h        |  60 ++
+ include/hw/net/allwinner-sun8i-emac.h  |  99 +++
+ include/hw/rtc/allwinner-rtc.h         | 134 ++++
+ include/hw/sd/allwinner-sdhost.h       | 135 ++++
+ hw/arm/allwinner-a10.c                 |  19 +
+ hw/arm/allwinner-h3.c                  | 466 +++++++++++++
+ hw/arm/cubieboard.c                    |  15 +
+ hw/arm/orangepi.c                      | 134 ++++
+ hw/misc/allwinner-cpucfg.c             | 270 ++++++++
+ hw/misc/allwinner-h3-ccu.c             | 242 +++++++
+ hw/misc/allwinner-h3-dramc.c           | 358 ++++++++++
+ hw/misc/allwinner-h3-sysctrl.c         | 140 ++++
+ hw/misc/allwinner-sid.c                | 168 +++++
+ hw/net/allwinner-sun8i-emac.c          | 871 +++++++++++++++++++++++++
+ hw/rtc/allwinner-rtc.c                 | 411 ++++++++++++
+ hw/sd/allwinner-sdhost.c               | 854 ++++++++++++++++++++++++
+ hw/usb/hcd-ehci-sysbus.c               |  17 +
+ MAINTAINERS                            |   9 +
+ hw/arm/Kconfig                         |  12 +
+ hw/arm/Makefile.objs                   |   1 +
+ hw/misc/Makefile.objs                  |   5 +
+ hw/misc/trace-events                   |  19 +
+ hw/net/Kconfig                         |   3 +
+ hw/net/Makefile.objs                   |   1 +
+ hw/net/trace-events                    |  10 +
+ hw/rtc/Makefile.objs                   |   1 +
+ hw/rtc/trace-events                    |   4 +
+ hw/sd/Makefile.objs                    |   1 +
+ hw/sd/trace-events                     |   7 +
+ tests/acceptance/boot_linux_console.py | 224 +++++++
+ 39 files changed, 5374 insertions(+)
+ create mode 100644 docs/orangepi.rst
+ create mode 100644 include/hw/arm/allwinner-h3.h
+ create mode 100644 include/hw/misc/allwinner-cpucfg.h
+ create mode 100644 include/hw/misc/allwinner-h3-ccu.h
+ create mode 100644 include/hw/misc/allwinner-h3-dramc.h
+ create mode 100644 include/hw/misc/allwinner-h3-sysctrl.h
+ create mode 100644 include/hw/misc/allwinner-sid.h
+ create mode 100644 include/hw/net/allwinner-sun8i-emac.h
+ create mode 100644 include/hw/rtc/allwinner-rtc.h
+ create mode 100644 include/hw/sd/allwinner-sdhost.h
+ create mode 100644 hw/arm/allwinner-h3.c
+ create mode 100644 hw/arm/orangepi.c
+ create mode 100644 hw/misc/allwinner-cpucfg.c
+ create mode 100644 hw/misc/allwinner-h3-ccu.c
+ create mode 100644 hw/misc/allwinner-h3-dramc.c
+ create mode 100644 hw/misc/allwinner-h3-sysctrl.c
+ create mode 100644 hw/misc/allwinner-sid.c
+ create mode 100644 hw/net/allwinner-sun8i-emac.c
+ create mode 100644 hw/rtc/allwinner-rtc.c
+ create mode 100644 hw/sd/allwinner-sdhost.c
+
+-- 
+2.17.1

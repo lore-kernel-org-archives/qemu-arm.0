@@ -1,98 +1,94 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5420175lfp;
-        Mon, 17 Feb 2020 12:50:50 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwWXgZA77xeETcIkgp+31WUyy4Qq0Uy34f4Rhb9kJKcpHhAS0MbmYeELD1tx5qTO2JKnaO/
-X-Received: by 2002:a37:9d47:: with SMTP id g68mr11547862qke.119.1581972650754;
-        Mon, 17 Feb 2020 12:50:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581972650; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5431986lfp;
+        Mon, 17 Feb 2020 13:08:38 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzf2qUCv2S6eIcN/Ikwonk17rgWV18gckYgGzU4tooKnmjyo+fDYllesKv9SfpWj0biWTly
+X-Received: by 2002:a05:620a:ce5:: with SMTP id c5mr15683448qkj.49.1581973718697;
+        Mon, 17 Feb 2020 13:08:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581973718; cv=none;
         d=google.com; s=arc-20160816;
-        b=AxHqeHRsqN5QF1YvriXjbwa8Is44nkKZ92y0NuzSJDF23klcXafzZ/h+pX6+7a5N9v
-         c0paWIR3YbKK7cYlbkY8pw8P83bMqwRHrtxcUbIpQV4E0a8BDvE0WfywqxJeJmIgvROm
-         dBdSnzZbl3Fa5j3psuACwgie+kco553RUz/xdp8WN2dKsr3xROBNFEDOqI87gA7Ng55H
-         KcYWDnQNx8za8SUaFmDJnF6R+DFPCEl/F6+zDp+M70vxPt3Rd6s7xiVByuvxbKm21Pun
-         ZM5yQWYORid0IP+emAdy3fCsGqviHnoSTBIeRRZgeJura4yjOEcouIsuC2GEPFDbVXoK
-         f2rQ==
+        b=eA/IwEx+3XVA9u/iMCyo9/OKEbBzIRJLe3bfre8tMqyV4HeZXjt6mRX45r6DYxi5Om
+         OkfKSVDc9rnZLP68VbsLlsfL8pa2KpWtWAxchm5k7m86iEppo2dbnzw2HlKiYGhgdPTK
+         e2EYia3W14W79WqsAmVb3Dc1W+SVCIuE16+n8wzvIEIJleyibUMIMML/cwOnbqyEQzE4
+         Bs/Aifelh/ZfbJKNwfqDugafIa3Ic3NT4ibx4zGzocaTuc0zCSB166DdfKbyT5Dzmwuf
+         SLdv09JsIvi35D5ko48zAkWXqlpw2sWEIe3UxNtSkJe1LaPdNEhiRq+RRqmmx6pdTCLW
+         drsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=3dwRimbCUvS0eAuYvuE/OQDNqnH9kNQy8jPuRwTKHSo=;
-        b=BivQTyD6A6esFIrKCc2dYe1IBLc7SsKq3/S0GUooqPDvl3XNYNv1vnrOpwBn50X/gW
-         yemYTBhF/LtGY7Dv33Ogw5coaUXy+NE1FmBk38BBMG1z2o4JOWEHUX+VR/OKrWPtWTUr
-         V35U03a8VgDcbVeOEPKPz4o19J+S5h6oYLdYKL9BxvJziarSHbR3qvvf9po7Pdu/Yt4q
-         mLDGAeJM9FFlQg9mg+r1PwqyzoCkkceeUTY32vygciWCwm8TK/p1P1WEaDA911jYXeRi
-         wdS2oIl+D+u1C5DzAkzoD4eKkgb9Nbb2hfMO7xhpv3WAR1FLGKnkKMSsU8ZzdfP/40sl
-         kVSg==
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=4W8ac1dYsXHMdhBg8YUpwrP/cAv1a4OAvhptQKJ56As=;
+        b=uPMaJnFypvwW82NfaB8rCcLDE9i7IhL60jlg7LnSnM4cZ/wm07aI50uvE5j2AOrwjO
+         3II8MPci/RJ1qjq+g7OROar559+R+0fwjpAGncFG9jDfDu5q/w0j7xlOtQjmZ1urGLdx
+         PoYfKEN45xBYoB5ZCG6q5OTViB7wJXhofhlZJe7BhbXy2dWxbNoupgTN558hOVCv/NEk
+         ONDpz3p1ShehUAGto4z6AvttKFUBxNKWs/oB3IDisn1667B7zhIXAQly5Utarvvv1Nhf
+         lhrU0JjVf8jqgVKOlYeBpqD2hgODpw0Xj/AsnJ5QojIs2ORQAfZ1MIKoMysXQB02QR/S
+         5DXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZmUP+Ay9;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BfXdRVPR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d22si910257qkl.168.2020.02.17.12.50.50
+        by mx.google.com with ESMTPS id e7si841652qtg.228.2020.02.17.13.08.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Feb 2020 12:50:50 -0800 (PST)
+        Mon, 17 Feb 2020 13:08:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZmUP+Ay9;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BfXdRVPR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52762 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53086 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3nLu-0000RT-7b
-	for alex.bennee@linaro.org; Mon, 17 Feb 2020 15:50:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38230)
+	id 1j3nd8-0002FG-3r
+	for alex.bennee@linaro.org; Mon, 17 Feb 2020 16:08:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41199)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1j3nJV-0005aF-LF
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 15:48:22 -0500
+ (envelope-from <groeck7@gmail.com>) id 1j3nd0-0002F2-5L
+ for qemu-arm@nongnu.org; Mon, 17 Feb 2020 16:08:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1j3nJU-0007RZ-EZ
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 15:48:21 -0500
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:36183)
+ (envelope-from <groeck7@gmail.com>) id 1j3ncy-000886-VZ
+ for qemu-arm@nongnu.org; Mon, 17 Feb 2020 16:08:29 -0500
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:34434)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1j3nJU-0007RD-8M; Mon, 17 Feb 2020 15:48:20 -0500
-Received: by mail-pl1-x644.google.com with SMTP id a6so7194178plm.3;
- Mon, 17 Feb 2020 12:48:20 -0800 (PST)
+ id 1j3ncy-00087J-Nx; Mon, 17 Feb 2020 16:08:28 -0500
+Received: by mail-pf1-x442.google.com with SMTP id i6so9552213pfc.1;
+ Mon, 17 Feb 2020 13:08:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=3dwRimbCUvS0eAuYvuE/OQDNqnH9kNQy8jPuRwTKHSo=;
- b=ZmUP+Ay9MZ2Zo6o5m3nqaVt0FAJIW2Dx8Jb2vFov3W102E2ngLHM1NbnLm8F0a4Om6
- C2Fk0KuctIgIfvePwTs2dtNVLFMtbqNH8HO0M6TUw+BoD3Ry/l+PQkN8+6sIM+OQu23b
- NoOQ5Db0AH+FRFZ+Gv6CV1fH4AqlXFng5meV6zw6zMSRd/pMaqcKsjwYWpWBcSpyTuvz
- rHscZZHElgArgk1nFOfHGfMXsuyyO1QkZebtOUXfVTr/an4ujj+FF7aC5jzI4SbwJ3i/
- ueY/GwmPPNDXcQDkKkXcD93WQF3iD8hDnoipgXdz0eXIeCTDRluMsLpm0CQcn61MzLuM
- iXwA==
+ h=sender:from:to:cc:subject:date:message-id;
+ bh=4W8ac1dYsXHMdhBg8YUpwrP/cAv1a4OAvhptQKJ56As=;
+ b=BfXdRVPRawhRZquebRHNooYXxntVh8rTF5sB17PRyYahYualveqfXII9RDCBqcxdha
+ OfyqxZcCzYDQg/uL/5csxoIfDq7m0KX7L4Q8SHNScqHlWJQFd1mkNpyio0t8Ks1Y665v
+ KJbVlnwzl24+VPTp2QSSdJp84YdDiFzbSHiWPApgNUZtz0KM+F1b+QQjCJlK8UbtJYL8
+ 8s/E9xLMRjLZ0x53Fh2D/0pC7hJF7+I/hFGojFipSkQVIiwxM6O55VLqErzQ55Rkt0TD
+ ZFa/HK8NJE+KOAqNXtlJgVYJJErDjftASR7z2/BEoOniNeCV76FVglrDNDkrwtGjiYT7
+ pORw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references;
- bh=3dwRimbCUvS0eAuYvuE/OQDNqnH9kNQy8jPuRwTKHSo=;
- b=LbvZ6we2OVcb0BP6zzoCGGWSl60DYNxM+5qpf7gM3qIsvIX0YFqSG9INu18ndjJmdx
- OCOedqlDOjIt2dmIH0n2XzJzqxqaMyrmzMYcZTwqqB0ECd1+WRlywn657ZLR4x5htHLC
- zNqtUhhsGGADrSvA7VBHZ3PNe8j1WV2XXwoKg3AvGf8uL9n1CGU12sg3XT2mR4KAs1pr
- eB8hWDCAenytU4+LObnDON/4CyZPn32LrSOsXqOVLu5PA/01WKH1vlCPSx3Dr+FhMx2K
- AedtyYWrzjEUTggubuN8kZRrRwZHumOx0QJz82grC8qW9OTB8eXiF21jIEZBVPqr0TM3
- BjJw==
-X-Gm-Message-State: APjAAAU7a21I/UJJZOE4ttH4ax+IXOQCn+MsmMNacgga4CzBhjvvmHbo
- miQoIPxQzyalDbM76EcnUM4=
-X-Received: by 2002:a17:902:8308:: with SMTP id
- bd8mr17636816plb.210.1581972499290; 
- Mon, 17 Feb 2020 12:48:19 -0800 (PST)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
+ bh=4W8ac1dYsXHMdhBg8YUpwrP/cAv1a4OAvhptQKJ56As=;
+ b=sV+yFJTQMCkmuKnoMpQ0uSl0xYRYMi2sJqouGNOzQp0bT8UHxbs3xQoRajLU/kP/TI
+ +3yKeFxt4x96Kd2/uvfLQ+SyCNHgVSHU0ne3ygaa6P4SPet1Ke8mR34I0p9IE0SHh0Du
+ pAlsWw1ZidDHHEgL0olAHwmgiInhv9kWGcjVrb9QDAD15qGUj2iAVbDz/F8vqBshwsBs
+ DcbeXWNoTnoI6PeuetdsyWW0xVbnSpF1vRE8sC0e2gXwl11A899x8yv52A+PrI1yLwjw
+ 79e86dym81v9zuf0UI0EbkzzfR4DrE+Dcc0zv1Vrbo1g013o4jw0TAyvE97FaTqnrR4C
+ iLoA==
+X-Gm-Message-State: APjAAAXrvc/oN+N4xWeF9dOWtY88SIocdxrEilAj8LDWZNKvnEZ1o3GW
+ z7kV2VUY0mTKp3DabMQrVuc=
+X-Received: by 2002:aa7:84cd:: with SMTP id x13mr18955649pfn.130.1581973707334; 
+ Mon, 17 Feb 2020 13:08:27 -0800 (PST)
 Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id k29sm1371042pfh.77.2020.02.17.12.48.18
+ by smtp.gmail.com with ESMTPSA id q187sm1292509pfq.185.2020.02.17.13.08.26
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 17 Feb 2020 12:48:18 -0800 (PST)
+ Mon, 17 Feb 2020 13:08:26 -0800 (PST)
 From: Guenter Roeck <linux@roeck-us.net>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 3/3] arm: allwinner: Wire up USB ports
-Date: Mon, 17 Feb 2020 12:48:12 -0800
-Message-Id: <20200217204812.9857-4-linux@roeck-us.net>
+Subject: [PATCH] mainstone: Make providing flash images non-mandatory
+Date: Mon, 17 Feb 2020 13:08:24 -0800
+Message-Id: <20200217210824.18513-1-linux@roeck-us.net>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200217204812.9857-1-linux@roeck-us.net>
-References: <20200217204812.9857-1-linux@roeck-us.net>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::644
+X-Received-From: 2607:f8b0:4864:20::442
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,156 +100,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Guenter Roeck <linux@roeck-us.net>,
- qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>,
+ qemu-devel@nongnu.org, Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2ku0PUXh15Rg
+X-TUID: xPYjQvvfKblv
 
-Instantiate EHCI and OHCI controllers on Allwinner A10. OHCI ports are
-modeled as companions of the respective EHCI ports.
+Up to now, the mainstone machine only boots if two flash images are
+provided. This is not really necessary; the machine can boot from initrd
+or from SD without it. At the same time, having to provide dummy flash
+images is a nuisance and does not add any real value. Make it optional.
 
-With this patch applied, USB controllers are discovered and instantiated
-when booting the cubieboard machine with a recent Linux kernel.
-
-ehci-platform 1c14000.usb: EHCI Host Controller
-ehci-platform 1c14000.usb: new USB bus registered, assigned bus number 1
-ehci-platform 1c14000.usb: irq 26, io mem 0x01c14000
-ehci-platform 1c14000.usb: USB 2.0 started, EHCI 1.00
-ehci-platform 1c1c000.usb: EHCI Host Controller
-ehci-platform 1c1c000.usb: new USB bus registered, assigned bus number 2
-ehci-platform 1c1c000.usb: irq 31, io mem 0x01c1c000
-ehci-platform 1c1c000.usb: USB 2.0 started, EHCI 1.00
-ohci-platform 1c14400.usb: Generic Platform OHCI controller
-ohci-platform 1c14400.usb: new USB bus registered, assigned bus number 3
-ohci-platform 1c14400.usb: irq 27, io mem 0x01c14400
-ohci-platform 1c1c400.usb: Generic Platform OHCI controller
-ohci-platform 1c1c400.usb: new USB bus registered, assigned bus number 4
-ohci-platform 1c1c400.usb: irq 32, io mem 0x01c1c400
-usb 2-1: new high-speed USB device number 2 using ehci-platform
-usb-storage 2-1:1.0: USB Mass Storage device detected
-scsi host1: usb-storage 2-1:1.0
-usb 3-1: new full-speed USB device number 2 using ohci-platform
-input: QEMU QEMU USB Mouse as /devices/platform/soc/1c14400.usb/usb3/3-1/3-1:1.0/0003:0627:0001.0001/input/input0
-
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
 Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 ---
-v3: Rebased to master
-    Added Gerd's Reviewed-by: tag
-v2: Instantiate EHCI and OHCI in a single patch
-    Use define instead of ARRAY_SIZE to get the number of USB ports
-    Instantiate OHCI in companion mode
-    Use &error_fatal to handle error conditions
+ hw/arm/mainstone.c | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
 
- hw/arm/allwinner-a10.c         | 43 ++++++++++++++++++++++++++++++++++
- include/hw/arm/allwinner-a10.h |  6 +++++
- 2 files changed, 49 insertions(+)
-
-diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index 1cde165611..2ae9c15311 100644
---- a/hw/arm/allwinner-a10.c
-+++ b/hw/arm/allwinner-a10.c
-@@ -24,11 +24,15 @@
- #include "hw/arm/allwinner-a10.h"
- #include "hw/misc/unimp.h"
- #include "sysemu/sysemu.h"
-+#include "hw/boards.h"
-+#include "hw/usb/hcd-ohci.h"
- 
- #define AW_A10_PIC_REG_BASE     0x01c20400
- #define AW_A10_PIT_REG_BASE     0x01c20c00
- #define AW_A10_UART0_REG_BASE   0x01c28000
- #define AW_A10_EMAC_BASE        0x01c0b000
-+#define AW_A10_EHCI_BASE        0x01c14000
-+#define AW_A10_OHCI_BASE        0x01c14400
- #define AW_A10_SATA_BASE        0x01c18000
- 
- static void aw_a10_init(Object *obj)
-@@ -49,6 +53,17 @@ static void aw_a10_init(Object *obj)
- 
-     sysbus_init_child_obj(obj, "sata", &s->sata, sizeof(s->sata),
-                           TYPE_ALLWINNER_AHCI);
-+
-+    if (machine_usb(current_machine)) {
-+        int i;
-+
-+        for (i = 0; i < AW_A10_NUM_USB; i++) {
-+            sysbus_init_child_obj(obj, "ehci[*]", OBJECT(&s->ehci[i]),
-+                                  sizeof(s->ehci[i]), TYPE_PLATFORM_EHCI);
-+            sysbus_init_child_obj(obj, "ohci[*]", OBJECT(&s->ohci[i]),
-+                                  sizeof(s->ohci[i]), TYPE_SYSBUS_OHCI);
-+        }
-+    }
- }
- 
- static void aw_a10_realize(DeviceState *dev, Error **errp)
-@@ -121,6 +136,34 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
-     serial_mm_init(get_system_memory(), AW_A10_UART0_REG_BASE, 2,
-                    qdev_get_gpio_in(dev, 1),
-                    115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
-+
-+    if (machine_usb(current_machine)) {
-+        int i;
-+
-+        for (i = 0; i < AW_A10_NUM_USB; i++) {
-+            char bus[16];
-+
-+            sprintf(bus, "usb-bus.%d", i);
-+
-+            object_property_set_bool(OBJECT(&s->ehci[i]), true,
-+                                     "companion-enable", &error_fatal);
-+            object_property_set_bool(OBJECT(&s->ehci[i]), true, "realized",
-+                                     &error_fatal);
-+            sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-+                            AW_A10_EHCI_BASE + i * 0x8000);
-+            sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-+                               qdev_get_gpio_in(dev, 39 + i));
-+
-+            object_property_set_str(OBJECT(&s->ohci[i]), bus, "masterbus",
-+                                    &error_fatal);
-+            object_property_set_bool(OBJECT(&s->ohci[i]), true, "realized",
-+                                     &error_fatal);
-+            sysbus_mmio_map(SYS_BUS_DEVICE(&s->ohci[i]), 0,
-+                            AW_A10_OHCI_BASE + i * 0x8000);
-+            sysbus_connect_irq(SYS_BUS_DEVICE(&s->ohci[i]), 0,
-+                               qdev_get_gpio_in(dev, 64 + i));
-+        }
-+    }
- }
- 
- static void aw_a10_class_init(ObjectClass *oc, void *data)
-diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
-index 40d0b1d9c0..8af724548f 100644
---- a/include/hw/arm/allwinner-a10.h
-+++ b/include/hw/arm/allwinner-a10.h
-@@ -8,12 +8,16 @@
- #include "hw/intc/allwinner-a10-pic.h"
- #include "hw/net/allwinner_emac.h"
- #include "hw/ide/ahci.h"
-+#include "hw/usb/hcd-ohci.h"
-+#include "hw/usb/hcd-ehci.h"
- 
- #include "target/arm/cpu.h"
- 
- 
- #define AW_A10_SDRAM_BASE       0x40000000
- 
-+#define AW_A10_NUM_USB          2
-+
- #define TYPE_AW_A10 "allwinner-a10"
- #define AW_A10(obj) OBJECT_CHECK(AwA10State, (obj), TYPE_AW_A10)
- 
-@@ -28,6 +32,8 @@ typedef struct AwA10State {
-     AwEmacState emac;
-     AllwinnerAHCIState sata;
-     MemoryRegion sram_a;
-+    EHCISysBusState ehci[AW_A10_NUM_USB];
-+    OHCISysBusState ohci[AW_A10_NUM_USB];
- } AwA10State;
- 
- #endif
+diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
+index b01ce3ce08..6e64dfab50 100644
+--- a/hw/arm/mainstone.c
++++ b/hw/arm/mainstone.c
+@@ -138,19 +138,10 @@ static void mainstone_common_init(MemoryRegion *address_space_mem,
+     /* There are two 32MiB flash devices on the board */
+     for (i = 0; i < 2; i ++) {
+         dinfo = drive_get(IF_PFLASH, 0, i);
+-        if (!dinfo) {
+-            if (qtest_enabled()) {
+-                break;
+-            }
+-            error_report("Two flash images must be given with the "
+-                         "'pflash' parameter");
+-            exit(1);
+-        }
+-
+         if (!pflash_cfi01_register(mainstone_flash_base[i],
+                                    i ? "mainstone.flash1" : "mainstone.flash0",
+                                    MAINSTONE_FLASH,
+-                                   blk_by_legacy_dinfo(dinfo),
++                                   dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+                                    sector_len, 4, 0, 0, 0, 0, be)) {
+             error_report("Error registering flash memory");
+             exit(1);
 -- 
 2.17.1
 

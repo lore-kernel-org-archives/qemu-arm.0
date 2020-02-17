@@ -1,300 +1,121 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4524048lfp;
-        Sun, 16 Feb 2020 17:25:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwpYuvESdCMSpy54YkP67YO+/rl27gYIadJlR/hA/V5oOcHyyeTgUUq1St4mCZrPI8WmsNj
-X-Received: by 2002:a9d:518b:: with SMTP id y11mr9923465otg.349.1581902738776;
-        Sun, 16 Feb 2020 17:25:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581902738; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4545931lfp;
+        Sun, 16 Feb 2020 17:58:51 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzrZRhSdtLyCE3WfBYQmzNBJ0iDo/C+ZYuXmCUnxNMpL8FAGPXsQijIF9EJVuiH1JYccRDW
+X-Received: by 2002:a9d:20c1:: with SMTP id x59mr10980832ota.286.1581904731117;
+        Sun, 16 Feb 2020 17:58:51 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1581904731; cv=pass;
         d=google.com; s=arc-20160816;
-        b=r1I+A2mClDURk9yIsV/45Fr7CiCq56fm8PZCRKEwy+nAe64mpPs/WCkp/foQt44lNq
-         8c2mb6dgXOVnCPb60XntWxZ+wqg6NPz0SrEgfHYLFr2Q1b1dOPaVZejp0wV5eyBuuUUs
-         6PEUxO1lnkdmxbAN1dy3wMzjLt8wmnmplTmvZQBdRpgjUEm+7w2nv5tf6I9ih3fgOT7C
-         Ne4jo0anhvrQ9L+zjLrub5ZKwL+b3hTRUOLHcVW5xTRoSjkCfidAxVGiUix0WPA4yI+9
-         l66o3N5hxgSx52S6DjIwX4HmFoYmuKM6r1ZW8uAp/TAjmQ/ihO0xrfOZyYvlcjjRmlNy
-         bNvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=Ymhw9rGQLUjVGWYCdFOdbxpoP1tVD4lDVs1d9J7yZiE=;
-        b=ezfTZxD+sFhfULlnyV9xbul3P1vbd0iEwK6HvgqzMGdZTb2OL5rArjFp7SirIOahuI
-         n2e3i/VIWQoE7EyqiP6fjNjKLOfEzWqc9p7owReys3q0KQDk8CdeLQdUsmkSA0xDJTyd
-         5mAGkSlf01BGz5RCYTOPT/SwznO//IJkaSdp+3YjtDlNuxZvRCiUK7rxCAtwr0aLqZ7t
-         fXE8sLA4jhHElMWTKFl2NuAEvY0vn3mfXDgqCo/jrATKUQhgHle10dn82tjy6N3roql1
-         CsNgCojBVHaIWXJ9bK4ppWjEr8GcUeIWYewbw1L2b6cGbzUmAq+EUKeqDOU0GZJwbE7u
-         OM0A==
-ARC-Authentication-Results: i=1; mx.google.com;
+        b=jIX21vlXda292H1utraXA4H/YI5WvL9c28sppTMW1QdOaE4eRcB9kgcqVRh82Zd/s/
+         4txE6lj9qhvfz7B52w1BQTC4xPdVaCmzWo4XgWqC7vtGRyYTO0xBFZSatpp+QvwXaU9w
+         R8DDQ543iW7jKSubLSvcSd3gNRcBNoMHhvT3lRDUnYiEinrNP8V94v6MegPUK9PzZ1XX
+         jkpEs0bJrFvxPPEe2oVf/MwNo3k0hiEgGlH5Hujb7FidtQsQr10zHkAbFyq8JZqolJvL
+         BbEi2ND98E64qnvcQO7tQ+etMRAlQRzyS4Seb3fNGxPDxAJX8YDzkB9b0ilkPXXUhq9K
+         Czfw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-id:precedence:sender:date:cc:to:from:content-transfer-encoding
+         :mime-version:message-id:subject:in-reply-to:reply-to;
+        bh=+Q92JkpEHaMBZidjUitV7WlmVdqbO8FBHBidjLdReew=;
+        b=arMa/dRl59ljKeeKLUctraziSG/XwWXpU0bt0B1jz3XzDCyQCCIZ0HvYUc3WjX5rw2
+         DdNpbuhYD0kD5uFaKlC1nYAm5ZA2AmBstwkneTdJwoa+glc5U5CVq7KEYH7kS4H5PXUQ
+         EbE7yoz3uJMHDRhLZNw32aimqhji0JkPDcTihMeO0HKx46czEoJotHPpa4Cnz8MUu19i
+         Ssk3s42kWJ8Fimy+BOK5mwN2y5u5P9XjyH/OyGGq5c7IUO49Gmhy2imGlhdmCzxcTlJ1
+         l0kD0kzvp2qpSXgsZu0UHOXIfe6rmiK49tf6v9+/yyYm/tkCOJ2UgvqfoOxIjHUxuLxr
+         dXqA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id z14si5843662oth.15.2020.02.16.17.25.38;
-        Sun, 16 Feb 2020 17:25:38 -0800 (PST)
+        by mx.google.com with ESMTP id p83si5672983oih.198.2020.02.16.17.58.50;
+        Sun, 16 Feb 2020 17:58:51 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727329AbgBQBZg (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Sun, 16 Feb 2020 20:25:36 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:37924 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726766AbgBQBZg (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sun, 16 Feb 2020 20:25:36 -0500
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 13F842AD821644C9D88A;
-        Mon, 17 Feb 2020 09:25:33 +0800 (CST)
-Received: from huawei.com (10.151.151.243) by DGGEMS405-HUB.china.huawei.com
- (10.3.19.205) with Microsoft SMTP Server id 14.3.439.0; Mon, 17 Feb 2020
- 09:25:23 +0800
-From:   Dongjiu Geng <gengdongjiu@huawei.com>
-To:     <mst@redhat.com>, <imammedo@redhat.com>,
-        <xiaoguangrong.eric@gmail.com>, <shannon.zhaosl@gmail.com>,
-        <peter.maydell@linaro.org>, <fam@euphon.net>, <rth@twiddle.net>,
-        <ehabkost@redhat.com>, <mtosatti@redhat.com>,
-        <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
-        <qemu-arm@nongnu.org>, <pbonzini@redhat.com>,
-        <james.morse@arm.com>, <lersek@redhat.com>,
-        <jonathan.cameron@huawei.com>,
-        <shameerali.kolothum.thodi@huawei.com>
-CC:     <gengdongjiu@huawei.com>, <zhengxiang9@huawei.com>
-Subject: [PATCH RESEND v23 09/10] target-arm: kvm64: handle SIGBUS signal from kernel or KVM
-Date:   Mon, 17 Feb 2020 09:27:36 +0800
-Message-ID: <20200217012737.30231-10-gengdongjiu@huawei.com>
-X-Mailer: git-send-email 2.18.0.huawei.25
+        id S1726269AbgBQB6p (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Sun, 16 Feb 2020 20:58:45 -0500
+Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21110 "EHLO
+        sender4-of-o51.zoho.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1726256AbgBQB6p (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sun, 16 Feb 2020 20:58:45 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1581904694; cv=none; 
+        d=zohomail.com; s=zohoarc; 
+        b=ZfITRVlqrmwrIaK5LnQSBPhd2mt2upIfOLMmc6dtqTuBymdBNMr5dWrmYd/ETMx7Ti9TfuzzjPQxvFqhpboMfFVg3LwcXQW7Zmy4yGQtNpoYX+z9niPVVifD6xZ7TM0UgZn+QE8g5x1O1my+Hof/lhmC23cZ2/Z3mpgJXYqwNV0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+        t=1581904694; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To; 
+        bh=+Q92JkpEHaMBZidjUitV7WlmVdqbO8FBHBidjLdReew=; 
+        b=lvPZ7g3JtokLOQy5rcChtbLQYKFP0UeSH42BUC60WSSF4Gn6Yu41NyvciVLLSYsNPjPAOrf8bUEiE73vLftyuCWFNNXCXLgs3bR4p/rWm8GQKVAQ2PO2GhCxFReqbTbEB1Ho24+4tUh2iwOWGTQg85/JIKXSCBulE+5SIQJi7uQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+        dkim=pass  header.i=patchew.org;
+        spf=pass  smtp.mailfrom=no-reply@patchew.org;
+        dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
+        with SMTPS id 158190469314487.81033754147495; Sun, 16 Feb 2020 17:58:13 -0800 (PST)
+Reply-To: <qemu-devel@nongnu.org>
 In-Reply-To: <20200217012737.30231-1-gengdongjiu@huawei.com>
-References: <20200217012737.30231-1-gengdongjiu@huawei.com>
+Subject: Re: [PATCH RESEND v23 00/10] Add ARMv8 RAS virtualization support in QEMU
+Message-ID: <158190469039.22563.11180150744026622799@a1bbccc8075a>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.151.151.243]
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+From:   no-reply@patchew.org
+To:     gengdongjiu@huawei.com
+Cc:     mst@redhat.com, imammedo@redhat.com, xiaoguangrong.eric@gmail.com,
+        shannon.zhaosl@gmail.com, peter.maydell@linaro.org, fam@euphon.net,
+        rth@twiddle.net, ehabkost@redhat.com, mtosatti@redhat.com,
+        qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+        pbonzini@redhat.com, james.morse@arm.com, lersek@redhat.com,
+        jonathan.cameron@huawei.com, shameerali.kolothum.thodi@huawei.com,
+        zhengxiang9@huawei.com, gengdongjiu@huawei.com
+Date:   Sun, 16 Feb 2020 17:58:13 -0800 (PST)
+X-ZohoMailClient: External
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: pDqsj1qZm6gm
+X-TUID: fP+BCILNsAnd
 
-Add a SIGBUS signal handler. In this handler, it checks the SIGBUS type,
-translates the host VA delivered by host to guest PA, then fills this PA
-to guest APEI GHES memory, then notifies guest according to the SIGBUS
-type.
-
-When guest accesses the poisoned memory, it will generate a Synchronous
-External Abort(SEA). Then host kernel gets an APEI notification and calls
-memory_failure() to unmapped the affected page in stage 2, finally
-returns to guest.
-
-Guest continues to access the PG_hwpoison page, it will trap to KVM as
-stage2 fault, then a SIGBUS_MCEERR_AR synchronous signal is delivered to
-Qemu, Qemu records this error address into guest APEI GHES memory and
-notifes guest using Synchronous-External-Abort(SEA).
-
-In order to inject a vSEA, we introduce the kvm_inject_arm_sea() function
-in which we can setup the type of exception and the syndrome information.
-When switching to guest, the target vcpu will jump to the synchronous
-external abort vector table entry.
-
-The ESR_ELx.DFSC is set to synchronous external abort(0x10), and the
-ESR_ELx.FnV is set to not valid(0x1), which will tell guest that FAR is
-not valid and hold an UNKNOWN value. These values will be set to KVM
-register structures through KVM_SET_ONE_REG IOCTL.
-
-Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Acked-by: Xiang Zheng <zhengxiang9@huawei.com>
----
- include/sysemu/kvm.h    |  3 +-
- target/arm/cpu.h        |  4 +++
- target/arm/helper.c     |  2 +-
- target/arm/internals.h  |  5 ++--
- target/arm/kvm64.c      | 73 +++++++++++++++++++++++++++++++++++++++++++++++++
- target/arm/tlb_helper.c |  2 +-
- target/i386/cpu.h       |  2 ++
- 7 files changed, 85 insertions(+), 6 deletions(-)
-
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index 141342d..3b22504 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -379,8 +379,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
- /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
- unsigned long kvm_arch_vcpu_id(CPUState *cpu);
- 
--#ifdef TARGET_I386
--#define KVM_HAVE_MCE_INJECTION 1
-+#ifdef KVM_HAVE_MCE_INJECTION
- void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
- #endif
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 0b3036c..a8b7fb0 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -28,6 +28,10 @@
- /* ARM processors have a weak memory model */
- #define TCG_GUEST_DEFAULT_MO      (0)
- 
-+#ifdef TARGET_AARCH64
-+#define KVM_HAVE_MCE_INJECTION 1
-+#endif
-+
- #define EXCP_UDEF            1   /* undefined instruction */
- #define EXCP_SWI             2   /* software interrupt */
- #define EXCP_PREFETCH_ABORT  3
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 7d15d5c..12a95b6 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -3310,7 +3310,7 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-              * Report exception with ESR indicating a fault due to a
-              * translation table walk for a cache maintenance instruction.
-              */
--            syn = syn_data_abort_no_iss(current_el == target_el,
-+            syn = syn_data_abort_no_iss(current_el == target_el, 0,
-                                         fi.ea, 1, fi.s1ptw, 1, fsc);
-             env->exception.vaddress = value;
-             env->exception.fsr = fsr;
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 6d4a942..31b7b96 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -451,13 +451,14 @@ static inline uint32_t syn_insn_abort(int same_el, int ea, int s1ptw, int fsc)
-         | ARM_EL_IL | (ea << 9) | (s1ptw << 7) | fsc;
- }
- 
--static inline uint32_t syn_data_abort_no_iss(int same_el,
-+static inline uint32_t syn_data_abort_no_iss(int same_el, int fnv,
-                                              int ea, int cm, int s1ptw,
-                                              int wnr, int fsc)
- {
-     return (EC_DATAABORT << ARM_EL_EC_SHIFT) | (same_el << ARM_EL_EC_SHIFT)
-            | ARM_EL_IL
--           | (ea << 9) | (cm << 8) | (s1ptw << 7) | (wnr << 6) | fsc;
-+           | (fnv << 10) | (ea << 9) | (cm << 8) | (s1ptw << 7)
-+           | (wnr << 6) | fsc;
- }
- 
- static inline uint32_t syn_data_abort_with_iss(int same_el,
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index fb21ab9..f91b611 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -28,6 +28,8 @@
- #include "sysemu/kvm_int.h"
- #include "kvm_arm.h"
- #include "internals.h"
-+#include "hw/acpi/acpi.h"
-+#include "hw/acpi/ghes.h"
- 
- static bool have_guest_debug;
- 
-@@ -846,6 +848,30 @@ int kvm_arm_cpreg_level(uint64_t regidx)
-     return KVM_PUT_RUNTIME_STATE;
- }
- 
-+/* Callers must hold the iothread mutex lock */
-+static void kvm_inject_arm_sea(CPUState *c)
-+{
-+    ARMCPU *cpu = ARM_CPU(c);
-+    CPUARMState *env = &cpu->env;
-+    CPUClass *cc = CPU_GET_CLASS(c);
-+    uint32_t esr;
-+    bool same_el;
-+
-+    c->exception_index = EXCP_DATA_ABORT;
-+    env->exception.target_el = 1;
-+
-+    /*
-+     * Set the DFSC to synchronous external abort and set FnV to not valid,
-+     * this will tell guest the FAR_ELx is UNKNOWN for this abort.
-+     */
-+    same_el = arm_current_el(env) == env->exception.target_el;
-+    esr = syn_data_abort_no_iss(same_el, 1, 0, 0, 0, 0, 0x10);
-+
-+    env->exception.syndrome = esr;
-+
-+    cc->do_interrupt(c);
-+}
-+
- #define AARCH64_CORE_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U64 | \
-                  KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
- 
-@@ -1274,6 +1300,53 @@ int kvm_arch_get_registers(CPUState *cs)
-     return ret;
- }
- 
-+void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-+{
-+    ram_addr_t ram_addr;
-+    hwaddr paddr;
-+
-+    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
-+
-+    if (acpi_enabled && addr &&
-+            object_property_get_bool(qdev_get_machine(), "ras", NULL)) {
-+        ram_addr = qemu_ram_addr_from_host(addr);
-+        if (ram_addr != RAM_ADDR_INVALID &&
-+            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
-+            kvm_hwpoison_page_add(ram_addr);
-+            /*
-+             * If this is a BUS_MCEERR_AR, we know we have been called
-+             * synchronously from the vCPU thread, so we can easily
-+             * synchronize the state and inject an error.
-+             *
-+             * TODO: we currently don't tell the guest at all about
-+             * BUS_MCEERR_AO. In that case we might either be being
-+             * called synchronously from the vCPU thread, or a bit
-+             * later from the main thread, so doing the injection of
-+             * the error would be more complicated.
-+             */
-+            if (code == BUS_MCEERR_AR) {
-+                kvm_cpu_synchronize_state(c);
-+                if (!acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
-+                    kvm_inject_arm_sea(c);
-+                } else {
-+                    error_report("failed to record the error");
-+                    abort();
-+                }
-+            }
-+            return;
-+        }
-+        if (code == BUS_MCEERR_AO) {
-+            error_report("Hardware memory error at addr %p for memory used by "
-+                "QEMU itself instead of guest system!", addr);
-+        }
-+    }
-+
-+    if (code == BUS_MCEERR_AR) {
-+        error_report("Hardware memory error!");
-+        exit(1);
-+    }
-+}
-+
- /* C6.6.29 BRK instruction */
- static const uint32_t brk_insn = 0xd4200000;
- 
-diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
-index e63f8bd..7388494 100644
---- a/target/arm/tlb_helper.c
-+++ b/target/arm/tlb_helper.c
-@@ -33,7 +33,7 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
-      * ISV field.
-      */
-     if (!(template_syn & ARM_EL_ISV) || target_el != 2 || s1ptw) {
--        syn = syn_data_abort_no_iss(same_el,
-+        syn = syn_data_abort_no_iss(same_el, 0,
-                                     ea, 0, s1ptw, is_write, fsc);
-     } else {
-         /*
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 576f309..69a2bb7 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -29,6 +29,8 @@
- /* The x86 has a strong memory model with some store-after-load re-ordering */
- #define TCG_GUEST_DEFAULT_MO      (TCG_MO_ALL & ~TCG_MO_ST_LD)
- 
-+#define KVM_HAVE_MCE_INJECTION 1
-+
- /* Maximum instruction code size */
- #define TARGET_MAX_INSN_SIZE 16
- 
--- 
-1.8.3.1
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDIxNzAxMjczNy4zMDIz
+MS0xLWdlbmdkb25naml1QGh1YXdlaS5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVkIHRo
+ZSBkb2NrZXItbWluZ3dAZmVkb3JhIGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5n
+IGNvbW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0
+YWxsZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBT
+Q1JJUFQgQkVHSU4gPT09CiMhIC9iaW4vYmFzaApleHBvcnQgQVJDSD14ODZfNjQKbWFrZSBkb2Nr
+ZXItaW1hZ2UtZmVkb3JhIFY9MSBORVRXT1JLPTEKdGltZSBtYWtlIGRvY2tlci10ZXN0LW1pbmd3
+QGZlZG9yYSBKPTE0IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKICBDQyAgICAg
+IGh3L2F1ZGlvL3NiMTYubwpJbiBmaWxlIGluY2x1ZGVkIGZyb20gL3RtcC9xZW11LXRlc3Qvc3Jj
+L2h3L2FjcGkvZ2hlcy5jOjI5OgovdG1wL3FlbXUtdGVzdC9zcmMvaHcvYWNwaS9naGVzLmM6IElu
+IGZ1bmN0aW9uICdhY3BpX2doZXNfcmVjb3JkX21lbV9lcnJvcic6Ci90bXAvcWVtdS10ZXN0L3Ny
+Yy9pbmNsdWRlL3FlbXUvdXVpZC5oOjM4OjM6IGVycm9yOiBtaXNzaW5nIGJyYWNlcyBhcm91bmQg
+aW5pdGlhbGl6ZXIgWy1XZXJyb3I9bWlzc2luZy1icmFjZXNdCiAgIHsgKGEpICYgMHhmZiwgKChh
+KSA+PiA4KSAmIDB4ZmYsICgoYSkgPj4gMTYpICYgMHhmZiwgKChhKSA+PiAyNCkgJiAweGZmLCBc
+CiAgIF4KL3RtcC9xZW11LXRlc3Qvc3JjL2h3L2FjcGkvZ2hlcy5jOjYwOjU6IG5vdGU6IGluIGV4
+cGFuc2lvbiBvZiBtYWNybyAnVVVJRF9MRScKLS0tCiAgICAgUWVtdVVVSUQgbWVtX3NlY3Rpb25f
+aWRfbGUgPSBVRUZJX0NQRVJfU0VDX1BMQVRGT1JNX01FTTsKICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+CmNjMTogYWxsIHdhcm5pbmdz
+IGJlaW5nIHRyZWF0ZWQgYXMgZXJyb3JzCm1ha2U6ICoqKiBbL3RtcC9xZW11LXRlc3Qvc3JjL3J1
+bGVzLm1hazo2OTogaHcvYWNwaS9naGVzLm9dIEVycm9yIDEKbWFrZTogKioqIFdhaXRpbmcgZm9y
+IHVuZmluaXNoZWQgam9icy4uLi4KICBDQyAgICAgIGh3L2F1ZGlvL2VzMTM3MC5vClRyYWNlYmFj
+ayAobW9zdCByZWNlbnQgY2FsbCBsYXN0KToKLS0tCiAgICByYWlzZSBDYWxsZWRQcm9jZXNzRXJy
+b3IocmV0Y29kZSwgY21kKQpzdWJwcm9jZXNzLkNhbGxlZFByb2Nlc3NFcnJvcjogQ29tbWFuZCAn
+WydzdWRvJywgJy1uJywgJ2RvY2tlcicsICdydW4nLCAnLS1sYWJlbCcsICdjb20ucWVtdS5pbnN0
+YW5jZS51dWlkPTlhNzY0MDI0NjNjMzQ1MzI4YmU1NmFlNDA5N2NlZTNiJywgJy11JywgJzEwMDMn
+LCAnLS1zZWN1cml0eS1vcHQnLCAnc2VjY29tcD11bmNvbmZpbmVkJywgJy0tcm0nLCAnLWUnLCAn
+VEFSR0VUX0xJU1Q9JywgJy1lJywgJ0VYVFJBX0NPTkZJR1VSRV9PUFRTPScsICctZScsICdWPScs
+ICctZScsICdKPTE0JywgJy1lJywgJ0RFQlVHPScsICctZScsICdTSE9XX0VOVj0nLCAnLWUnLCAn
+Q0NBQ0hFX0RJUj0vdmFyL3RtcC9jY2FjaGUnLCAnLXYnLCAnL2hvbWUvcGF0Y2hldzIvLmNhY2hl
+L3FlbXUtZG9ja2VyLWNjYWNoZTovdmFyL3RtcC9jY2FjaGU6eicsICctdicsICcvdmFyL3RtcC9w
+YXRjaGV3LXRlc3Rlci10bXAtbGZocV9qNWEvc3JjL2RvY2tlci1zcmMuMjAyMC0wMi0xNi0yMC41
+NS4zNi4xMzM5NzovdmFyL3RtcC9xZW11Onoscm8nLCAncWVtdTpmZWRvcmEnLCAnL3Zhci90bXAv
+cWVtdS9ydW4nLCAndGVzdC1taW5ndyddJyByZXR1cm5lZCBub24temVybyBleGl0IHN0YXR1cyAy
+LgpmaWx0ZXI9LS1maWx0ZXI9bGFiZWw9Y29tLnFlbXUuaW5zdGFuY2UudXVpZD05YTc2NDAyNDYz
+YzM0NTMyOGJlNTZhZTQwOTdjZWUzYgptYWtlWzFdOiAqKiogW2RvY2tlci1ydW5dIEVycm9yIDEK
+bWFrZVsxXTogTGVhdmluZyBkaXJlY3RvcnkgYC92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC1s
+ZmhxX2o1YS9zcmMnCm1ha2U6ICoqKiBbZG9ja2VyLXJ1bi10ZXN0LW1pbmd3QGZlZG9yYV0gRXJy
+b3IgMgoKcmVhbCAgICAybTM1LjQ2NnMKdXNlciAgICAwbTguMjMxcwoKClRoZSBmdWxsIGxvZyBp
+cyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDAyMTcwMTI3MzcuMzAy
+MzEtMS1nZW5nZG9uZ2ppdUBodWF3ZWkuY29tL3Rlc3RpbmcuZG9ja2VyLW1pbmd3QGZlZG9yYS8/
+dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hl
+dyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBh
+dGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==

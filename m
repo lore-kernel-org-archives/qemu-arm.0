@@ -1,106 +1,90 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4945741lfp;
-        Mon, 17 Feb 2020 02:57:24 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz67luRSagtVKi3R7CeP1zQeuMcGZTEzqFaQUijifYL8SfLA6B/Al2+fo0uGmNgnawWPFvj
-X-Received: by 2002:ac8:1408:: with SMTP id k8mr12471586qtj.69.1581937044236;
-        Mon, 17 Feb 2020 02:57:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581937044; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4946237lfp;
+        Mon, 17 Feb 2020 02:57:57 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx2oFHq9yOkSj96snPOsV2gKtUVUIW7DUkxK7dyZE0wH3R5fFxbXTRL/BbT3IlCiAXjcdb6
+X-Received: by 2002:a05:620a:12bc:: with SMTP id x28mr12991523qki.118.1581937077778;
+        Mon, 17 Feb 2020 02:57:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581937077; cv=none;
         d=google.com; s=arc-20160816;
-        b=PqLhaknd3BcX2IZ5SSPA1N54H3HsL16Yy1cXfsN6mXvd/HxtsRVIvNabpd/oIwBmYc
-         SA7qqNn+9v3b4UkJirg6e4q+7WORz/XTjd8NBSi4Aekeb+7B+8Vm4AxT4RQLllzg2tfW
-         MG/tXQZVkgREHhKkfNDUHgFjaMm4TZEiiLbC10LP0qL0ukAcN+nGia9IJW+3RIlXcGF9
-         8TWl7U/poy6OGv0CjxLCHJkyTxVr1N3XM6GFhLhsaayoP826zrhi0ziy0G69DfVidY82
-         a3QrorRSzmLNptmp9vybBDDXcphyT4aSegXU2/KnILj3h1UkC3wHyCqUn3Tchyit2s6j
-         augQ==
+        b=YvNlVtciE3N6aqmnXfXD6KpYb9VOyxgSBf690tM66NH8BIm1LIf3SjmUrA067vUuhh
+         JhMqWyCq+qf6aSKz10lqewu8tjs93Lmz7I5LegkaC12+V2Bk9sL52r2BAel5rawlP2IA
+         a2d8StW1kASlG2MY7rvMUYcJEoYsuRrNFrdtLhHAaAuV9+aQixzgL5jkXWdLN0UsisnI
+         i+5OXW0KveYg92IqjvjhlTonz26Fe0cenf6I8FGnzmwNkLdniXyfRv+RZSzOhfAS8jlo
+         wQkDdoWkJ0fNyDEawWfXQgx+zNUzVgW76mhe4T1hz81GzdC87uYDnAyzPUHiG1aIQV59
+         sCVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=QefSIhzsJ5EzH0dIBGDnIAWhsi6Ouz7g5ZmP1cUfx+k=;
-        b=OCubJTix+jdUrwNLgqvMVwUFQCcEuEk+JlaXZCsUJMHsBEV3nZJQnrPVcvJ9srCw/+
-         lRjuEMSP6Fv0Vv9t0RM7k7X+pk7fnyDK2YbgOoei4s7RSqQX67OL/sjzMQ2NhSYlajq1
-         5OyiqmcOQ79ZXb+iXsgTmVZOTyZ6gcPC79RaWwcRUXVREZMH+PNczcqb2UeQrq4kEeDS
-         Bt3F0/3OUhG6xt9fFgUuKB3VxkFQ5Elzb6FXtXlpHjjWTqdQpcspDfLeYhREMHQgJyxs
-         uTMRhsYQC6u3EBob3fDja1nF+50yd1TcCrDB0dgC1WA8uylqdA3vaQNK5mXt+Ig4JgoJ
-         Dm+A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version;
+        bh=yYpkn/2TVQDh4ObMqxU7c30vZhqnoqsvQjqU/wbS55A=;
+        b=nbxgr+FJaeVvWORrrLwLHr0oeP1gnzCWC74ml6L5qMb7i/jJpxFyJIiBqq6MUkL34H
+         wC7CX+H2PPIR9ipg1FE+B1c+wVicqF3lixrqMh5g4lbb7Nbp5ZmOPsJU9ApgSA/NcIFC
+         VL9abGQosc1Y3Y59DMQInaf6ABDWwGN9HHBmdjkpWxhillSrBcDuYmugQH6auqz7O0+Q
+         d+4ED9r/jGnamPOeMm17Fqqrivh3KLYxeEBf2wweg1it5kbkDDD78z+4zLCD3N6QH7dR
+         3nx3+QpUT+z6NK5B55Sw0xnB/akJwzRbeyLhs/Sxx14sxKtt5JOF2/kjpE/3Jm5Il+S4
+         mEpw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qYCGkTjX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b9si112567qkj.334.2020.02.17.02.57.24
+        by mx.google.com with ESMTPS id u6si103332qvo.5.2020.02.17.02.57.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Feb 2020 02:57:24 -0800 (PST)
+        Mon, 17 Feb 2020 02:57:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qYCGkTjX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:43490 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43494 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3e5b-0004wU-NF
-	for alex.bennee@linaro.org; Mon, 17 Feb 2020 05:57:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34728)
+	id 1j3e69-0005ob-82
+	for alex.bennee@linaro.org; Mon, 17 Feb 2020 05:57:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34832)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j3e5I-0004tw-Es
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 05:57:05 -0500
+ id 1j3e62-0005mh-18
+ for qemu-arm@nongnu.org; Mon, 17 Feb 2020 05:57:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j3e5H-0005mv-HN
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 05:57:04 -0500
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:35495)
+ id 1j3e61-0006ZS-1H
+ for qemu-arm@nongnu.org; Mon, 17 Feb 2020 05:57:49 -0500
+Received: from mail-yb1-f196.google.com ([209.85.219.196]:43620)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j3e5F-0005kR-BW; Mon, 17 Feb 2020 05:57:01 -0500
-Received: by mail-wr1-x441.google.com with SMTP id w12so19135401wrt.2;
- Mon, 17 Feb 2020 02:57:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=QefSIhzsJ5EzH0dIBGDnIAWhsi6Ouz7g5ZmP1cUfx+k=;
- b=qYCGkTjXajFbzKAvzqglT1rLluAgxi+fFNBav4fwQufVtBhNR1sPNNoqW+6q9RYLBV
- IIMdfwT8pQWCfGaOZYSJ2vp24lRg8dW6IhsqG95H3yIyj5vCUcIP/I+5uc45GPtOgeZ2
- /AZbwAq8ZBskxJ0JsofCa8kM6ax5MPT6q7MBzoGXvZSoXznjGYfmI7r29fBnhxb2Anjx
- KRzsNsiPP0dwAsToccwEnmg9qi+EPQa8X0VuG7ff53fB4vymzB9SXLOOnp3/puW696Tm
- BQyZhA9NNx/c2EaOGwtiaLAbc/sQZTDJWJ9x+t9l3Iv6BdCAaCplNkoo46hLR1F7ghnU
- +fOQ==
+ id 1j3e5y-0006UE-UI; Mon, 17 Feb 2020 05:57:47 -0500
+Received: by mail-yb1-f196.google.com with SMTP id b141so8462424ybg.10;
+ Mon, 17 Feb 2020 02:57:46 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=QefSIhzsJ5EzH0dIBGDnIAWhsi6Ouz7g5ZmP1cUfx+k=;
- b=kNEWfELjtB7G6b0Lo89NqHe6mEzyRRw/FbSOqqsKksCeNnLl4bexAaQpu7VBWaOfd/
- BeYNTrQsYVdBS3/AX+orJOeZjz9mZqOqExy3T+lpkc/8nsiSItXRulZtSgRKRkHWAmj2
- MenRjcSfr1+HmOGlACKfw2LHzDD8iV0mr9PC+UNOggOqfaTDLxywn8CgvjqU1Vfb4/hE
- ZGnqVkb9LCgzAoQPPJFAlmW1qBdYS/blKwgL3Nsnwefp8B9v7SYWS6iSZygOFpd3YDSN
- ZhGa5y/Vj2y9f136PMvRWVy6BV3omBoYh0lujM8qFk6IyziLmuwu6+WfS9uHLzNXPRut
- e3kg==
-X-Gm-Message-State: APjAAAVR0h6xVy3njAPGgRv9CXF4JWSDWPeMwDMjUegnvzmepkkfgNLo
- sezmkdXsA2nAxeC8SQE7CMMjBwGMg3M=
-X-Received: by 2002:a5d:4750:: with SMTP id o16mr21335146wrs.91.1581937019783; 
- Mon, 17 Feb 2020 02:56:59 -0800 (PST)
-Received: from x1w.redhat.com (78.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id a9sm135149wmm.15.2020.02.17.02.56.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Feb 2020 02:56:58 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2] hw/misc/iotkit-secctl: Fix writing to 'PPC Interrupt
- Clear' register
-Date: Mon, 17 Feb 2020 11:56:57 +0100
-Message-Id: <20200217105657.31506-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=yYpkn/2TVQDh4ObMqxU7c30vZhqnoqsvQjqU/wbS55A=;
+ b=klLN+toibcO0/KFZ9g3m1emFhS0ZpI7kJVRAm6+PKd8mOKKdPcPeU2V9MqWIxkwbjX
+ scBPq+C5ROWfY9r9RsUeJa+h9KH/kJenSDcnIbnhrxOCyJcadmPCEUHL7oziAd+1gM9i
+ FGe+YsmiGSf+brsenCuoXd5T8yp5EDikdkE5QHUWOM4ighZIooQhaRNRiAEvLq81sq3g
+ EQDKgNUa9ixD/UtJ99Ux84gCWGdUlyg9alJbvxN3RRAxF21YOZLi8tkFCuuRXCJFABTj
+ b6S16438Ptf0biPLne9MVZMh6ObFB1j/gRkWMl5/FKG7x+GurHqVux0aBYvIzdkDnTEZ
+ gYzg==
+X-Gm-Message-State: APjAAAUBN7CDoBmYSJUz9B1Dvjg+d/KhgTkFQkjUDbcmjQefQco9dtBJ
+ kdHjqWdG8ZpWOojQ8Lid3oJx96CEIhibJzifG9o=
+X-Received: by 2002:a25:5f4d:: with SMTP id h13mr9583313ybm.312.1581937066295; 
+ Mon, 17 Feb 2020 02:57:46 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::441
+References: <20200215161923.4741-1-f4bug@amsat.org>
+ <CAFEAcA8SLR5YXWYiS_GXOBhHAxR2QKut_BGVzNeamw_1xtifLA@mail.gmail.com>
+In-Reply-To: <CAFEAcA8SLR5YXWYiS_GXOBhHAxR2QKut_BGVzNeamw_1xtifLA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Mon, 17 Feb 2020 11:57:35 +0100
+Message-ID: <CAAdtpL7iSY4oxg964WxzXvrpNUKy5ApTMq0Lq_MU6dW1v61DGA@mail.gmail.com>
+Subject: Re: [PATCH] hw/misc/iotkit-secctl: Fix writing to 'PPC Interrupt
+ Clear' register
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.219.196
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,41 +96,61 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6+QDCcc6/iZB
+X-TUID: 4GEzYBjUS9Wx
 
-Fix warning reported by Clang static code analyzer:
+On Mon, Feb 17, 2020 at 11:22 AM Peter Maydell <peter.maydell@linaro.org> w=
+rote:
+>
+> On Sat, 15 Feb 2020 at 16:19, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+> >
+> > Fix warning reported by Clang static code analyzer:
+> >
+> >     CC      hw/misc/iotkit-secctl.o
+> >   hw/misc/iotkit-secctl.c:343:9: warning: Value stored to 'value' is ne=
+ver read
+> >           value &=3D 0x00f000f3;
+> >           ^        ~~~~~~~~~~
+> >
+> > Fixes: b3717c23e1c
+> > Reported-by: Clang Static Analyzer
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> > ---
+> >  hw/misc/iotkit-secctl.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/hw/misc/iotkit-secctl.c b/hw/misc/iotkit-secctl.c
+> > index 609869821a..0d5556dd17 100644
+> > --- a/hw/misc/iotkit-secctl.c
+> > +++ b/hw/misc/iotkit-secctl.c
+> > @@ -340,7 +340,7 @@ static MemTxResult iotkit_secctl_s_write(void *opaq=
+ue, hwaddr addr,
+> >          qemu_set_irq(s->sec_resp_cfg, s->secrespcfg);
+> >          break;
+> >      case A_SECPPCINTCLR:
+> > -        value &=3D 0x00f000f3;
+> > +        s->secppcintstat =3D ~value & 0x00f000f3;
+>
+> This is (obviously) a bug, but I don't think your fix is right.
+> This register has bits which are write-one-to-clear,
+> (plus some other bits that are reserved and RAZ/WI)
+> so we want:
+>   s->secppcintstat &=3D ~(value & 0x00f000f3);
+>
+> (In particular bitwise-not has higher precedence than
+> bitwise-and, so your expression will end up writing zero
+> to s->specppcintstat for any valid guest write.)
 
-    CC      hw/misc/iotkit-secctl.o
-  hw/misc/iotkit-secctl.c:343:9: warning: Value stored to 'value' is never read
-          value &= 0x00f000f3;
-          ^        ~~~~~~~~~~
+Oops indeed :)
 
-Fixes: b3717c23e1c
-Reported-by: Clang Static Analyzer
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-v2: Corrected bitwise-not precedence (pm215)
----
- hw/misc/iotkit-secctl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/misc/iotkit-secctl.c b/hw/misc/iotkit-secctl.c
-index 609869821a..43cf0f9970 100644
---- a/hw/misc/iotkit-secctl.c
-+++ b/hw/misc/iotkit-secctl.c
-@@ -340,7 +340,7 @@ static MemTxResult iotkit_secctl_s_write(void *opaque, hwaddr addr,
-         qemu_set_irq(s->sec_resp_cfg, s->secrespcfg);
-         break;
-     case A_SECPPCINTCLR:
--        value &= 0x00f000f3;
-+        s->secppcintstat = ~(value & 0x00f000f3);
-         foreach_ppc(s, iotkit_secctl_ppc_update_irq_clear);
-         break;
-     case A_SECPPCINTEN:
--- 
-2.21.1
-
+> My guess is that when I originally wrote the code I meant
+> to write something like
+>    value &=3D 0x00f000f3;
+>    s->secppcintstat &=3D ~value;
+> and forgot the second line.
+>
+> thanks
+> -- PMM

@@ -1,101 +1,109 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4974738lfp;
-        Mon, 17 Feb 2020 03:28:16 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxkR683Bk3ff6ZXyJdAJUv/eFzMCP4/5Hrh7jDj3yaSzdc1kO6PMr86Ao9gchAgjzeo1TA4
-X-Received: by 2002:ac8:1194:: with SMTP id d20mr12568816qtj.243.1581938896757;
-        Mon, 17 Feb 2020 03:28:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581938896; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4988364lfp;
+        Mon, 17 Feb 2020 03:46:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxyIlEVK+XA9cfwlsesVrMoh5P9+kNPtR7z4tmiD4S2lh8ZE+G+kEo78BFHqghdNtYer7+8
+X-Received: by 2002:aed:2ac5:: with SMTP id t63mr12266642qtd.315.1581939962559;
+        Mon, 17 Feb 2020 03:46:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581939962; cv=none;
         d=google.com; s=arc-20160816;
-        b=uTkU3vhHVyKaY1Yqj24vyfeU4zR0iRDgo59XcpKYfsFgMy3qxn2Tnp/O5DGwUvAawK
-         nYmJQaTvgSl2fgS6kExprTqcBuiTzFrLeVyLSBiHNABZ/ykKIjrkvtPA4eZ2DlFySpkw
-         UKD42jdml3gI5JxeNfL2mUyFzrysv0nEYrUGMyOKtvSidB6CKgmT0eu1ih2vYK8E7kvZ
-         IGfXI3idq5VkIMBavfzT1i3DAYy+3DArMvq6/RHluvWs43v8MWfwZSBkx5oh66VWrpdY
-         meaBSxKU9FYVugLG2a7fVeL62PYdq1J/74yYpgPCGPqc7KorYsIdA5tMv1wk9tTnIk96
-         OYwQ==
+        b=Ttcup0gFlTVbRqmkiyY6hGw+B26wP8+7ilj7pWIB1nR/oq0YHOuQnvHHh5JeAx30Yl
+         7kNH6JSHajybPzpAEvryuWuiAfr4VbZwwq/XM3pVnI0+2oCCZpC91sW5UBdqmW9CgI6L
+         DnhPJKLkJ0MGW1DEplvIhxfA250hXmEKxcfT4BfUs69Wm2c2zQrw/h/kCwOhulpGB8BA
+         8O8ONel1pPOP9lAh8YEpREnzwKRNt7J9IcKIWv+tjvIvx/7JTkk/xv5acJ/T8TxPFHLb
+         oY/ICzqoTgczcwi7M4zEUBM7XQgE1lR3+LlFDFitQCS9V6/CtkMkjzfdEvKFetk8toes
+         sSyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=P6A4CuPNh5DrmAV95Z4jahk8OrH+S9Dcprv7wSv2qqM=;
-        b=ZrePW/1Rl8ynvWrep4HN1+WicXQQxCZnWRNhLYhYNY1bUJRGqJOPRiW9tJeSIXWZhA
-         YLWG0jampCb7m7YxRrjnBy18e5zzTaujdoMR3xBOvOAyJ4KQnV6IH0JeS5u3mH3UZate
-         NOP2Q8RV4yWLwnnRLhCqgFZEw3rs3OOGIrbpTkWvuDnOgFZxZR5lTXn/XeFqQ/ok/I/j
-         +Ipny3Ua2oX9of2yIJEX0yFRR0kC5hPFFUraW1SiNjdwOF8d/L6w4UHhZT7ZRaXRNyBP
-         VDktsbAb7DHArG66RQSwflGl0u/1WQgP28xcTJz28hek6o4EzCepT9dg7Tt66ASiZext
-         7e7Q==
+        bh=CQieaLe+XzdG/scqrmf0SdvellEvi4/sJOsfkTjUk/k=;
+        b=p7swAx7K2RAU8T7XGIDzP/8zOfExIWfBVYdl7vgMuFWvz4Ozl3ZxyIWZZKEhPXRWC8
+         FBGZ2QkNxVr1sEiRVO5YIVCuRmUrYqPNOm0MwpU98aWj6TD5ggRX2MJk/HXweHOEY+qw
+         4QSYjKAlR83+pUJyumAUaNrKB16ahHKZjZmWe1OmQg8RgU3WoTqSj9p3lv1ZWSb2QrAJ
+         3XOn1PcpwouFD+rEkNIAAwNGDdcA0Iricc9c0gukVo49/DqavvhrhKHADMsfAyjHVQv8
+         hq8i6lSXVFXWflAzdHeXlHpgm+RWpRNLjaHoRaoHcQOnU+NdU3rXvPwHZUgU5v1Bi8U/
+         0xCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OWlPY6LX;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="IXIUOD/t";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i6si142543qvw.80.2020.02.17.03.28.16
+        by mx.google.com with ESMTPS id z4si197525qkl.25.2020.02.17.03.46.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Feb 2020 03:28:16 -0800 (PST)
+        Mon, 17 Feb 2020 03:46:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OWlPY6LX;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="IXIUOD/t";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43854 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:44100 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3eZU-0004kh-6k
-	for alex.bennee@linaro.org; Mon, 17 Feb 2020 06:28:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38839)
+	id 1j3eqf-0006W4-T5
+	for alex.bennee@linaro.org; Mon, 17 Feb 2020 06:46:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40588)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j3eZM-0004iB-7S
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 06:28:09 -0500
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1j3eqL-0006SX-CP
+ for qemu-arm@nongnu.org; Mon, 17 Feb 2020 06:45:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j3eZK-0002Pc-Vx
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 06:28:07 -0500
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:45839)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1j3eqK-0002Nb-CP
+ for qemu-arm@nongnu.org; Mon, 17 Feb 2020 06:45:41 -0500
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:38341)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j3eZK-0002Oo-PU
- for qemu-arm@nongnu.org; Mon, 17 Feb 2020 06:28:06 -0500
-Received: by mail-oi1-x241.google.com with SMTP id v19so16330100oic.12
- for <qemu-arm@nongnu.org>; Mon, 17 Feb 2020 03:28:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=P6A4CuPNh5DrmAV95Z4jahk8OrH+S9Dcprv7wSv2qqM=;
- b=OWlPY6LXd7WCTA1HpliAtBFKIi27s46D/y8xB63R01SH64dqFQ7lQsEXqL4H7b/baD
- 2se5BgQH7KcGdFC73D6Nm0OrJVDzQjGTsuvt7FbzVMlsZO3EBOjY87SlkxS0odm6joq0
- dA5k3U6fy4OeMoB6rSNC7sqMxibmG/HQAdbYVQEth9p2ZFt8U+hCp29yicwyvkyRMNpa
- ung0trd3Cxt7mldRuMhxa/CxH2VVClisjHC7rG0y5Vzs08lNvvCfdNQwwbnKnZtkmTlR
- l/Wv3ZVgBfIGEVEsIqgDh/H1eoFO1xVCFhRyHsxDvN/PN2Mhsb2f94HZVh0+bg4w16DV
- PtQw==
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1j3eqI-0002IN-7c; Mon, 17 Feb 2020 06:45:38 -0500
+Received: by mail-wr1-x443.google.com with SMTP id y17so19314236wrh.5;
+ Mon, 17 Feb 2020 03:45:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=CQieaLe+XzdG/scqrmf0SdvellEvi4/sJOsfkTjUk/k=;
+ b=IXIUOD/tMMjlZo2zjX9iGESFe/AKtsDvRbx/V/mhLn3FuF42j6ZcuBvCJtqv/b9lrN
+ vZK4CNKbTZnZzbFN9DAwiTMlp5OWHCpktH38QBI05Vzm5TQGW8JynuIVYxCGLjNy7qdN
+ bVkSf3cROrY2WGaZZFKFq3cHSEDqHu7KeLivWZqmtR6QykTuq6GoIFXEIPgIH8iQ/1TR
+ ypGAkGM7lkxSeWBGVR43IFUe2COBUjCcdx11eVonxxAw17JNXMiQXfhxjZqydbSjeStJ
+ YydpEdzBvFWCaqr2Qk0Ar44ZRKPnbKbHrifH47c4EBJihaOBQ2W9E7bT+qtOFfuKXW9J
+ q2bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=P6A4CuPNh5DrmAV95Z4jahk8OrH+S9Dcprv7wSv2qqM=;
- b=J5shX47cIJa7fi6nE6MPe8SCn5tdUlZPClIZjR88C9lMQNonxcZD1Lw/eHQwgTyRw8
- Do++2cYL9caP0h2vLVw0uRWaXHMcz+PyAI8xfHkme71Q/GoSSrTn+4sSA/a7aqvOQuvz
- FW2IAJqNkM6Q2jvSFcePZJ4DBZILNZg0tj21legxE2wF9CXvpcS5UpplD/8qFWi8/hvD
- l2OpU22Dm+z5QoRtcIzd0yxVt7hy/A3r9YcsbhQC7rEhR6Q26AWCoDiQJjQJivqmL6D2
- ost9+LrC36j5AujVn9nBNyvLLfyy//BlirI+hJlzsBxkRxOZQNHmuwtIMUgMPCDC5cA/
- j9vQ==
-X-Gm-Message-State: APjAAAWAKNuABzOWiZuzGuMpeYPHzS0XTwKVbdqRT4OtD///jAf8zSj+
- ESjcCbGETCZ9BwlSAJRU4OOfWHhotZ6MJ5zaXpSLhpKx
-X-Received: by 2002:aca:3d7:: with SMTP id 206mr9747324oid.98.1581938885747;
- Mon, 17 Feb 2020 03:28:05 -0800 (PST)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=CQieaLe+XzdG/scqrmf0SdvellEvi4/sJOsfkTjUk/k=;
+ b=pxeIHzmNdiiqDaw8+l4YK8Rl+wIsKk8kpNTECsSGAwTDJnB8AWm4Y1/GNKX5/C/5CJ
+ NoZSUriqYYlWwXG6xrNUOmBLv1kTv2MTqSkqjLz26UE9+P8+TzXEx1L+mZ9eccFkpdC3
+ ZAFdXG5JcIzbXvnXDm0Tqh0cvEDndmS3Cy4Q0gfo9FxrhXgtAxEO8c9moqkr+h5o5EGi
+ e8Jubr2lRAwFMBlH1kUHB4P/YEzYIbmDiVrygSfHLBuBGjKkJ9z9sgHeULUVtWUStB6A
+ vkkxa1t1MOOZcsTnCA6Ru4Mr8R8NBPipjf1c7+WzmvjxYkNmKWfcexMM5yvvtcX7ctHr
+ oIGg==
+X-Gm-Message-State: APjAAAViVpFNv2Ub8nC/HC8JE9N1a0maxQ0maiIByHrvuQw5g1gNRPoY
+ MgGtGgIwLe/MvtfsjnPFyzzXbxrNpZ4=
+X-Received: by 2002:a5d:5273:: with SMTP id l19mr22952522wrc.175.1581939937009; 
+ Mon, 17 Feb 2020 03:45:37 -0800 (PST)
+Received: from x1w.redhat.com (78.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.78])
+ by smtp.gmail.com with ESMTPSA id i2sm268149wmb.28.2020.02.17.03.45.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 17 Feb 2020 03:45:36 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 01/13] hw/arm/raspi: Remove
+ ignore_memory_transaction_failures on the raspi2
+Date: Mon, 17 Feb 2020 12:45:21 +0100
+Message-Id: <20200217114533.17779-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200217114533.17779-1-f4bug@amsat.org>
+References: <20200217114533.17779-1-f4bug@amsat.org>
 MIME-Version: 1.0
-References: <20200217105657.31506-1-f4bug@amsat.org>
-In-Reply-To: <20200217105657.31506-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 17 Feb 2020 11:27:54 +0000
-Message-ID: <CAFEAcA8AT2YE0kzWjRmR1ZsSFxH7bs1t_G8Bs+J-QsCzMXPg3w@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/misc/iotkit-secctl: Fix writing to 'PPC Interrupt
- Clear' register
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::241
+X-Received-From: 2a00:1450:4864:20::443
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,45 +115,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Sf1DTewA0rw2
+X-TUID: DRuk1QFKnVuS
 
-On Mon, 17 Feb 2020 at 10:57, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> Fix warning reported by Clang static code analyzer:
->
->     CC      hw/misc/iotkit-secctl.o
->   hw/misc/iotkit-secctl.c:343:9: warning: Value stored to 'value' is neve=
-r read
->           value &=3D 0x00f000f3;
->           ^        ~~~~~~~~~~
->
-> Fixes: b3717c23e1c
-> Reported-by: Clang Static Analyzer
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> v2: Corrected bitwise-not precedence (pm215)
-> ---
->  hw/misc/iotkit-secctl.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/misc/iotkit-secctl.c b/hw/misc/iotkit-secctl.c
-> index 609869821a..43cf0f9970 100644
-> --- a/hw/misc/iotkit-secctl.c
-> +++ b/hw/misc/iotkit-secctl.c
-> @@ -340,7 +340,7 @@ static MemTxResult iotkit_secctl_s_write(void *opaque=
-, hwaddr addr,
->          qemu_set_irq(s->sec_resp_cfg, s->secrespcfg);
->          break;
->      case A_SECPPCINTCLR:
-> -        value &=3D 0x00f000f3;
-> +        s->secppcintstat =3D ~(value & 0x00f000f3);
+Commit 1c3db49d39 added the raspi3, which uses the same peripherals
+than the raspi2 (but with different ARM cores). The raspi3 was
+introduced without the ignore_memory_transaction_failures flag.
+Almost 2 years later, the machine is usable running U-Boot and
+Linux.
+In commit 00cbd5bd74 we mapped a lot of unimplemented devices,
+commit d442d95f added thermal block and commit 0e5bbd7406 the
+system timer.
+As we are happy with the raspi3, let's remove this flag on the
+raspi2.
 
-Should be &=3D, not =3D. Otherwise you set all the other
-bits in the register.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/arm/raspi.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-thanks
--- PMM
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index 90ad9b8115..221356933e 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -324,9 +324,6 @@ static void raspi_machine_class_init(ObjectClass *oc, void *data)
+     mc->no_cdrom = 1;
+     mc->default_cpus = mc->min_cpus = mc->max_cpus = cores_count(board_rev);
+     mc->default_ram_size = board_ram_size(board_rev);
+-    if (board_version(board_rev) == 2) {
+-        mc->ignore_memory_transaction_failures = true;
+-    }
+ };
+ 
+ static const TypeInfo raspi_machine_types[] = {
+-- 
+2.21.1
+

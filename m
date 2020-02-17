@@ -1,102 +1,107 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5305333lfp;
-        Mon, 17 Feb 2020 10:08:15 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx0JQz9dcDoRf2c62DOV1chiPKe1WWtrBLHjJf7bwIM/thAtjPlsSqZ6nQqa3EfrxcEMOJN
-X-Received: by 2002:ac8:7484:: with SMTP id v4mr14094955qtq.19.1581962894798;
-        Mon, 17 Feb 2020 10:08:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581962894; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5308144lfp;
+        Mon, 17 Feb 2020 10:11:27 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy1tFegVtVpXDe8am3JBQFJ/FOrt4GYvClVj0Z4mDrbqIywusJ5pn0Zbo7T1yO6FkBZHZtv
+X-Received: by 2002:a37:652:: with SMTP id 79mr15535086qkg.464.1581963086876;
+        Mon, 17 Feb 2020 10:11:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581963086; cv=none;
         d=google.com; s=arc-20160816;
-        b=tCYNBfH+GTv6jdES/32wCPjyoKc069r6HNaEbl57INVFZ7rxSGyJ/ycGR+XO+DZCgr
-         I8W+PftaiDyq2nQlTjQ9dZBp10hOd455WUTFY247M2SsGcrCLfJDAeui2YvNFbGIw3yD
-         2JlJEDHTyAMcua0ceSrtN44xY22yewSX9BuC90t3mN9dcw5quw/Aal0EgqedOL5M+LGz
-         b9FzfMKtGuimQZSI+6ApzajcsQZk9jNsoQkcjr2l/sgSuMgUXr4yl906fl4yYxV1khGM
-         NBfqN1yLULhQOy4iJQQM6TfDhZN7O0nyRi+rWsvy+Ny7e9SqEgHysJytYQ3jtGqhJvov
-         yyJg==
+        b=kBof9LVpE4vEBdlv7d7MfP47PMIwqsXva7s6AYVYvPS2wEdyqbZKIWAbjoPrZLgvFB
+         Y/zAyJyxaLzuERYblJX0pcelAzP+vIAEumsu7nRGkr8aRJrF9fZhIjLtJbmR86cE2/4c
+         rq1GHWdkHLZzbJzS+7FK80hDsHmnC03YCHK6FTek+JUDgKFuiKbBA/dkAA4kWyk29slS
+         ZUMXRhcNsb20RpllS2xpmvyCI/MuO8S+ssVlNnB9ToYRmepML3IV0ePlgmG/VicDduVZ
+         SR39KCBeC2ZT2UpRzkR5YYqpWLSlXmSa0d9+4k5Fv5G5BGaQ3P/uL85VNx2IZM8IVbZu
+         MWoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=iqRDxwhGitXGaxwS+nF4P1weqSN/U9gDo8XE2cwDJVE=;
-        b=tjVGX3rx5oKsSSNnc2egLHuK9/MEY5JI69eRRLfcxmUGXbeUYLO2+2nptztyXZQdhT
-         g2y11gzBvtpQlT0jJOlrBgyZj0fVx8vHa6TQuxqEpVQbAMx5G/0iNYI+i/4V+/CkOEcr
-         7aKq5wxe/K0pXb0JWmJgz4wsEh0jgSEtVtUapZfmG86Rsu7wgZ/QyjG8PEwPGrGumrAe
-         z37tocnZPnOu07sSFgIHaXyh6xECTxbSk4Y17wYgx5Nrh1vhI49SYc000n+H3elWuffK
-         wGE5kISLrHM+u0swQTzrhQwc/flkICdLCuzn0ElZ43x4TVMd6EOUy2HlYWV8PUctSAh1
-         d5Bg==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=IgawMG19E3RU0NZxjOXs3aj3YANRC8kx8UiFxJUF2XU=;
+        b=JiNe308thFwMqLp7JioSguqNHmkA+DfiwMexLza4ImqEHpWn3h4t4Mo0UofyrO0WKV
+         gDRllqSlVgdIrfAb0cVkXYSJYXc4RNDizr2x0PaHcCGPtS0N2flzooGIgL6MHO+2falD
+         43FhWSLL7KLyKOO3VgVQvqfBYi2Cpbd73GDRF9iKnsvQ9xMHuNyMHZY8OIwBHbnLmsxM
+         87jCnB4mQFwmVOFPHv3J+4nST0/zrnMQE/mxsS1VbFZwinjQ60MfUNQVVuoXKeOxdBT8
+         COzeb7Qg+ur3PP/7QKo1WRCLkslTiY3mMoH4Bulybi9J547yT0DEHDeb1XyniI6f07r4
+         Yu6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oDUK3VDo;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="E/9LvTYY";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n8si575575qtr.208.2020.02.17.10.08.14
+        by mx.google.com with ESMTPS id x8si682267qkf.173.2020.02.17.10.11.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Feb 2020 10:08:14 -0800 (PST)
+        Mon, 17 Feb 2020 10:11:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oDUK3VDo;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="E/9LvTYY";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49904 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49990 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3koY-00056s-53
-	for alex.bennee@linaro.org; Mon, 17 Feb 2020 13:08:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39229)
+	id 1j3kre-0003nh-7l
+	for alex.bennee@linaro.org; Mon, 17 Feb 2020 13:11:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42103)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1j3kM7-0001MO-OC
- for qemu-devel@nongnu.org; Mon, 17 Feb 2020 12:38:53 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1j3kiI-0002q8-JZ
+ for qemu-devel@nongnu.org; Mon, 17 Feb 2020 13:01:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1j3kM5-00045Z-QA
- for qemu-devel@nongnu.org; Mon, 17 Feb 2020 12:38:51 -0500
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:33283)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1j3kM5-00044w-J7
- for qemu-devel@nongnu.org; Mon, 17 Feb 2020 12:38:49 -0500
-Received: by mail-pg1-x544.google.com with SMTP id 6so9575836pgk.0
- for <qemu-devel@nongnu.org>; Mon, 17 Feb 2020 09:38:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=iqRDxwhGitXGaxwS+nF4P1weqSN/U9gDo8XE2cwDJVE=;
- b=oDUK3VDoo5YZp8JjNnHhwn9ScWKCXMwy+nowHtZ9k6xYjvLxdQ8/uSLwkNT33/Ueyi
- xeDTbDzUTRFDoLkYh4VqlYrGhlanK3qf7d1R/FhwZfQeXM1WFD6P4h34cqEtn1cVC8ov
- k3VdLz37IWLywT7YYv7B6wQJwTwx09CWFDDJ+n/Iz/+iT0LUs+kHxquxK9e7kapKMKkc
- Jo6ZsnHyqWvP/kcJu01pTtKgXfG9CogccFVEbTCC+NKjIuDwg+bhwUb20+WV8EJ46k7I
- er43PSRGoEEILLUiBEyn1WOWZ6O1ko/EOHPcOB7ZhvrDNLRYaMc91cBREhQgRIBT2oZP
- 7tJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=iqRDxwhGitXGaxwS+nF4P1weqSN/U9gDo8XE2cwDJVE=;
- b=ZIM3naR/E7qSGrFAbLeHWsDNdRahHxnPT2Ne90SJiQGazFFsUbB3roUZxLZKfHkOS9
- XieaYN7ZvbPk1GhAuGgX4hl2hxaxydLQ0Sa/95CQNUxon5NCDkx7mV8HOdPZMNkG4khG
- e2AuxudJlrAcY6C2u6vjlnHonulSvNKkgArCQuu/lxjKFzcFaxw5iE8pYCMl1Q41ezg1
- o427yv83xDUpZQTMVT2Ggl0gHORVg4RMe+JDIjHb12yz2nPzJlgfqxoBygDAq7Ojksy+
- 2dQBJEcE7ZCMgGVtB52CpaUCvED2H0XB1oJ8Zr2lshhCl6zqjEt6gauw8La+inwsr6B6
- oqsQ==
-X-Gm-Message-State: APjAAAWA2vdD80S4eihqSTdaBbsObshyk1Nu2t8NvsRdZw4uU1zOpdSF
- F92ieMrd0YQS7/1LIbXJOM/ng0rVWAM=
-X-Received: by 2002:aa7:9145:: with SMTP id 5mr17551993pfi.74.1581961128042;
- Mon, 17 Feb 2020 09:38:48 -0800 (PST)
-Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net.
- [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id e26sm1140338pfl.59.2020.02.17.09.38.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Feb 2020 09:38:47 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Honor the HCR_EL2.{TVM,TRVM} bits
-Date: Mon, 17 Feb 2020 09:38:46 -0800
-Message-Id: <20200217173846.2803-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ (envelope-from <eric.auger@redhat.com>) id 1j3kiF-0002P1-Ue
+ for qemu-devel@nongnu.org; Mon, 17 Feb 2020 13:01:46 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:49284
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1j3kiF-0002Oi-PA
+ for qemu-devel@nongnu.org; Mon, 17 Feb 2020 13:01:43 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581962503;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=IgawMG19E3RU0NZxjOXs3aj3YANRC8kx8UiFxJUF2XU=;
+ b=E/9LvTYYGPmTyooVkXnh8wAnqpXKdS4D5rRpYEdJa+ggaR+oLgzzwntcwQuDzBmfLUjYAO
+ UjtWOYm0Fva1YcWIroL5W842iXoXQ7u6Th6XWbMNRH/mdLTBNG+rcZol++4kjhsCt6rk+A
+ Ll/A75pXLl6Flf30JJFo6UoJBBsmzpU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-137-XXolDiF5N-qm6vy_sypIFw-1; Mon, 17 Feb 2020 13:01:41 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 91653A0CC6;
+ Mon, 17 Feb 2020 18:01:39 +0000 (UTC)
+Received: from [10.36.116.239] (ovpn-116-239.ams2.redhat.com [10.36.116.239])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8CFD18681F;
+ Mon, 17 Feb 2020 18:01:30 +0000 (UTC)
+Subject: Re: [RFC v2 2/6] tpm: Use TPMState as a common struct
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ eric.auger.pro@gmail.com, stefanb@linux.ibm.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org
+References: <20200214183704.14389-1-eric.auger@redhat.com>
+ <20200214183704.14389-3-eric.auger@redhat.com>
+ <bda40279-016a-8cb5-96b0-cedc88e21e60@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <cad0ccd9-1bb9-33af-a4d5-0f8c2a521f13@redhat.com>
+Date: Mon, 17 Feb 2020 19:01:27 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::544
+In-Reply-To: <bda40279-016a-8cb5-96b0-cedc88e21e60@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: XXolDiF5N-qm6vy_sypIFw-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,224 +113,374 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vkfTkEVeyFMR
+X-TUID: 5/3xGA9GmgfC
 
-These bits trap EL1 access to various virtual memory controls.
+Hi Philippe,
 
-Buglink: https://bugs.launchpad.net/bugs/1855072
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
-
-I guess this is a feature used by Xen?  The Linux kernel only uses
-this for a Cavium errata workaround.  I'm still looking into how
-to test this.
-
-r~
-
----
- target/arm/helper.c | 74 ++++++++++++++++++++++++++++++---------------
- 1 file changed, 50 insertions(+), 24 deletions(-)
-
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 366dbcf460..24b2b5dd55 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -529,6 +529,19 @@ static CPAccessResult access_tpm(CPUARMState *env, const ARMCPRegInfo *ri,
-     return CP_ACCESS_OK;
- }
- 
-+/* Check for traps from EL1 due to HCR_EL2.TVM and HCR_EL2.TRVM.  */
-+static CPAccessResult access_tvm_trvm(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                      bool isread)
-+{
-+    if (arm_current_el(env) == 1) {
-+        uint64_t trap = isread ? HCR_TRVM : HCR_TVM;
-+        if (arm_hcr_el2_eff(env) & trap) {
-+            return CP_ACCESS_TRAP_EL2;
-+        }
-+    }
-+    return CP_ACCESS_OK;
-+}
-+
- static void dacr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+On 2/17/20 10:21 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi Eric,
+>=20
+> On 2/14/20 7:37 PM, Eric Auger wrote:
+>> As we plan to introdce a SysBus TPM TIS device, let's
+>> make the TPMState a common struct usable by both the
+>> ISADevice and the SysBusDevice. TPMStateISA embeds the
+>> struct and inherits from the ISADevice.
+>>
+>> The prototype of functions bound to be used by both
+>> the ISA and SysBus devices is changed to take TPMState
+>> handle.
+>>
+>> A bunch of structs also are renamed to be specialized
+>> for the ISA device. Besides those transformations, no
+>> functional change is expected.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>> =C2=A0 hw/tpm/tpm_tis.c | 146 +++++++++++++++++++++++++++++-------------=
+-----
+>> =C2=A0 1 file changed, 91 insertions(+), 55 deletions(-)
+>>
+>> diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
+>> index c609737272..fc6d7ca579 100644
+>> --- a/hw/tpm/tpm_tis.c
+>> +++ b/hw/tpm/tpm_tis.c
+>> @@ -65,7 +65,6 @@ typedef struct TPMLocality {
+>> =C2=A0 } TPMLocality;
+>> =C2=A0 =C2=A0 typedef struct TPMState {
+>> -=C2=A0=C2=A0=C2=A0 ISADevice busdev;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 MemoryRegion mmio;
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 unsigned char buffer[TPM_TIS_BUFFE=
+R_MAX];
+>> @@ -91,7 +90,15 @@ typedef struct TPMState {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 TPMPPI ppi;
+>> =C2=A0 } TPMState;
+>> =C2=A0 -#define TPM(obj) OBJECT_CHECK(TPMState, (obj), TYPE_TPM_TIS_ISA)
+>> +typedef struct TPMStateISA {
+>> +=C2=A0=C2=A0=C2=A0 /*< private >*/
+>> +=C2=A0=C2=A0=C2=A0 ISADevice parent_obj;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 /*< public >*/
+>> +=C2=A0=C2=A0=C2=A0 TPMState state; /* not a QOM object */
+>> +} TPMStateISA;
+>> +
+>> +#define TPM_TIS_ISA(obj) OBJECT_CHECK(TPMStateISA, (obj),
+>> TYPE_TPM_TIS_ISA)
+>> =C2=A0 =C2=A0 #define DEBUG_TIS 0
+>> =C2=A0 @@ -281,9 +288,8 @@ static void tpm_tis_prep_abort(TPMState *s,
+>> uint8_t locty, uint8_t newlocty)
+>> =C2=A0 /*
+>> =C2=A0=C2=A0 * Callback from the TPM to indicate that the response was r=
+eceived.
+>> =C2=A0=C2=A0 */
+>> -static void tpm_tis_request_completed(TPMIf *ti, int ret)
+>> +static void tpm_tis_request_completed(TPMState *s, int ret)
+>> =C2=A0 {
+>> -=C2=A0=C2=A0=C2=A0 TPMState *s =3D TPM(ti);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 uint8_t locty =3D s->cmd.locty;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 uint8_t l;
+>> =C2=A0 @@ -338,7 +344,7 @@ static uint32_t tpm_tis_data_read(TPMState *s=
+,
+>> uint8_t locty)
+>> =C2=A0 }
+>> =C2=A0 =C2=A0 #ifdef DEBUG_TIS
+>> -static void tpm_tis_dump_state(void *opaque, hwaddr addr)
+>> +static void tpm_tis_dump_state(TPMState *s, hwaddr addr)
+>> =C2=A0 {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 static const unsigned regs[] =3D {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 TPM_TIS_REG_ACCES=
+S,
+>> @@ -353,7 +359,6 @@ static void tpm_tis_dump_state(void *opaque,
+>> hwaddr addr)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int idx;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 uint8_t locty =3D tpm_tis_locality_from_a=
+ddr(addr);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 hwaddr base =3D addr & ~0xfff;
+>> -=C2=A0=C2=A0=C2=A0 TPMState *s =3D opaque;
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 printf("tpm_tis: active locality=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 : %d\n"
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ "tpm_tis: state of locality %d : %d\n"
+>> @@ -363,7 +368,7 @@ static void tpm_tis_dump_state(void *opaque,
+>> hwaddr addr)
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 for (idx =3D 0; regs[idx] !=3D 0xf=
+ff; idx++) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 printf("tpm_tis: =
+0x%04x : 0x%08x\n", regs[idx],
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 (int)tpm_tis_mmio_read(opaque, base + regs[idx], 4));
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 (int)tpm_tis_mmio_read(s, base + regs[idx], 4));
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 printf("tpm_tis: r/w offset=C2=A0=
+=C2=A0=C2=A0 : %d\n"
+>> @@ -488,7 +493,7 @@ static uint64_t tpm_tis_mmio_read(void *opaque,
+>> hwaddr addr,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> =C2=A0 #ifdef DEBUG_TIS
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case TPM_TIS_REG_DEBUG:
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tpm_tis_dump_state(opaque, a=
+ddr);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tpm_tis_dump_state(s, addr);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> =C2=A0 #endif
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> @@ -835,10 +840,8 @@ static const MemoryRegionOps tpm_tis_memory_ops =3D=
  {
-     ARMCPU *cpu = env_archcpu(env);
-@@ -784,7 +797,8 @@ static const ARMCPRegInfo cp_reginfo[] = {
-      */
-     { .name = "CONTEXTIDR_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 13, .crm = 0, .opc2 = 1,
--      .access = PL1_RW, .secure = ARM_CP_SECSTATE_NS,
-+      .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .secure = ARM_CP_SECSTATE_NS,
-       .fieldoffset = offsetof(CPUARMState, cp15.contextidr_el[1]),
-       .resetvalue = 0, .writefn = contextidr_write, .raw_writefn = raw_write, },
-     { .name = "CONTEXTIDR_S", .state = ARM_CP_STATE_AA32,
-@@ -876,9 +890,11 @@ static const ARMCPRegInfo not_v7_cp_reginfo[] = {
-       .opc1 = CP_ANY, .opc2 = 3, .access = PL1_W, .writefn = tlbimvaa_write,
-       .type = ARM_CP_NO_RAW },
-     { .name = "PRRR", .cp = 15, .crn = 10, .crm = 2,
--      .opc1 = 0, .opc2 = 0, .access = PL1_RW, .type = ARM_CP_NOP },
-+      .opc1 = 0, .opc2 = 0, .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .type = ARM_CP_NOP },
-     { .name = "NMRR", .cp = 15, .crn = 10, .crm = 2,
--      .opc1 = 0, .opc2 = 1, .access = PL1_RW, .type = ARM_CP_NOP },
-+      .opc1 = 0, .opc2 = 1, .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .type = ARM_CP_NOP },
-     REGINFO_SENTINEL
- };
- 
-@@ -996,7 +1012,7 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
-     { .name = "DMB", .cp = 15, .crn = 7, .crm = 10, .opc1 = 0, .opc2 = 5,
-       .access = PL0_W, .type = ARM_CP_NOP },
-     { .name = "IFAR", .cp = 15, .crn = 6, .crm = 0, .opc1 = 0, .opc2 = 2,
--      .access = PL1_RW,
-+      .access = PL1_RW, .accessfn = access_tvm_trvm,
-       .bank_fieldoffsets = { offsetof(CPUARMState, cp15.ifar_s),
-                              offsetof(CPUARMState, cp15.ifar_ns) },
-       .resetvalue = 0, },
-@@ -2164,16 +2180,19 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-      */
-     { .name = "AFSR0_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 5, .crm = 1, .opc2 = 0,
--      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+      .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .type = ARM_CP_CONST, .resetvalue = 0 },
-     { .name = "AFSR1_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 5, .crm = 1, .opc2 = 1,
--      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+      .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .type = ARM_CP_CONST, .resetvalue = 0 },
-     /* MAIR can just read-as-written because we don't implement caches
-      * and so don't need to care about memory attributes.
-      */
-     { .name = "MAIR_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 10, .crm = 2, .opc2 = 0,
--      .access = PL1_RW, .fieldoffset = offsetof(CPUARMState, cp15.mair_el[1]),
-+      .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mair_el[1]),
-       .resetvalue = 0 },
-     { .name = "MAIR_EL3", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 6, .crn = 10, .crm = 2, .opc2 = 0,
-@@ -2187,12 +2206,14 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-       * handled in the field definitions.
-       */
-     { .name = "MAIR0", .state = ARM_CP_STATE_AA32,
--      .cp = 15, .opc1 = 0, .crn = 10, .crm = 2, .opc2 = 0, .access = PL1_RW,
-+      .cp = 15, .opc1 = 0, .crn = 10, .crm = 2, .opc2 = 0,
-+      .access = PL1_RW, .accessfn = access_tvm_trvm,
-       .bank_fieldoffsets = { offsetof(CPUARMState, cp15.mair0_s),
-                              offsetof(CPUARMState, cp15.mair0_ns) },
-       .resetfn = arm_cp_reset_ignore },
-     { .name = "MAIR1", .state = ARM_CP_STATE_AA32,
--      .cp = 15, .opc1 = 0, .crn = 10, .crm = 2, .opc2 = 1, .access = PL1_RW,
-+      .cp = 15, .opc1 = 0, .crn = 10, .crm = 2, .opc2 = 1,
-+      .access = PL1_RW, .accessfn = access_tvm_trvm,
-       .bank_fieldoffsets = { offsetof(CPUARMState, cp15.mair1_s),
-                              offsetof(CPUARMState, cp15.mair1_ns) },
-       .resetfn = arm_cp_reset_ignore },
-@@ -3842,20 +3863,21 @@ static void vttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
- 
- static const ARMCPRegInfo vmsa_pmsa_cp_reginfo[] = {
-     { .name = "DFSR", .cp = 15, .crn = 5, .crm = 0, .opc1 = 0, .opc2 = 0,
--      .access = PL1_RW, .type = ARM_CP_ALIAS,
-+      .access = PL1_RW, .accessfn = access_tvm_trvm, .type = ARM_CP_ALIAS,
-       .bank_fieldoffsets = { offsetoflow32(CPUARMState, cp15.dfsr_s),
-                              offsetoflow32(CPUARMState, cp15.dfsr_ns) }, },
-     { .name = "IFSR", .cp = 15, .crn = 5, .crm = 0, .opc1 = 0, .opc2 = 1,
--      .access = PL1_RW, .resetvalue = 0,
-+      .access = PL1_RW, .accessfn = access_tvm_trvm, .resetvalue = 0,
-       .bank_fieldoffsets = { offsetoflow32(CPUARMState, cp15.ifsr_s),
-                              offsetoflow32(CPUARMState, cp15.ifsr_ns) } },
-     { .name = "DFAR", .cp = 15, .opc1 = 0, .crn = 6, .crm = 0, .opc2 = 0,
--      .access = PL1_RW, .resetvalue = 0,
-+      .access = PL1_RW, .accessfn = access_tvm_trvm, .resetvalue = 0,
-       .bank_fieldoffsets = { offsetof(CPUARMState, cp15.dfar_s),
-                              offsetof(CPUARMState, cp15.dfar_ns) } },
-     { .name = "FAR_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .crn = 6, .crm = 0, .opc1 = 0, .opc2 = 0,
--      .access = PL1_RW, .fieldoffset = offsetof(CPUARMState, cp15.far_el[1]),
-+      .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .fieldoffset = offsetof(CPUARMState, cp15.far_el[1]),
-       .resetvalue = 0, },
-     REGINFO_SENTINEL
- };
-@@ -3863,21 +3885,24 @@ static const ARMCPRegInfo vmsa_pmsa_cp_reginfo[] = {
- static const ARMCPRegInfo vmsa_cp_reginfo[] = {
-     { .name = "ESR_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .crn = 5, .crm = 2, .opc1 = 0, .opc2 = 0,
--      .access = PL1_RW,
-+      .access = PL1_RW, .accessfn = access_tvm_trvm,
-       .fieldoffset = offsetof(CPUARMState, cp15.esr_el[1]), .resetvalue = 0, },
-     { .name = "TTBR0_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 0, .opc2 = 0,
--      .access = PL1_RW, .writefn = vmsa_ttbr_write, .resetvalue = 0,
-+      .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .writefn = vmsa_ttbr_write, .resetvalue = 0,
-       .bank_fieldoffsets = { offsetof(CPUARMState, cp15.ttbr0_s),
-                              offsetof(CPUARMState, cp15.ttbr0_ns) } },
-     { .name = "TTBR1_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 0, .opc2 = 1,
--      .access = PL1_RW, .writefn = vmsa_ttbr_write, .resetvalue = 0,
-+      .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .writefn = vmsa_ttbr_write, .resetvalue = 0,
-       .bank_fieldoffsets = { offsetof(CPUARMState, cp15.ttbr1_s),
-                              offsetof(CPUARMState, cp15.ttbr1_ns) } },
-     { .name = "TCR_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .crn = 2, .crm = 0, .opc1 = 0, .opc2 = 2,
--      .access = PL1_RW, .writefn = vmsa_tcr_el12_write,
-+      .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .writefn = vmsa_tcr_el12_write,
-       .resetfn = vmsa_ttbcr_reset, .raw_writefn = raw_write,
-       .fieldoffset = offsetof(CPUARMState, cp15.tcr_el[1]) },
-     { .name = "TTBCR", .cp = 15, .crn = 2, .crm = 0, .opc1 = 0, .opc2 = 2,
-@@ -3893,7 +3918,8 @@ static const ARMCPRegInfo vmsa_cp_reginfo[] = {
-  */
- static const ARMCPRegInfo ttbcr2_reginfo = {
-     .name = "TTBCR2", .cp = 15, .opc1 = 0, .crn = 2, .crm = 0, .opc2 = 3,
--    .access = PL1_RW, .type = ARM_CP_ALIAS,
-+    .access = PL1_RW, .accessfn = access_tvm_trvm,
-+    .type = ARM_CP_ALIAS,
-     .bank_fieldoffsets = { offsetofhigh32(CPUARMState, cp15.tcr_el[3]),
-                            offsetofhigh32(CPUARMState, cp15.tcr_el[1]) },
- };
-@@ -4113,12 +4139,12 @@ static const ARMCPRegInfo lpae_cp_reginfo[] = {
-     /* NOP AMAIR0/1 */
-     { .name = "AMAIR0", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .crn = 10, .crm = 3, .opc1 = 0, .opc2 = 0,
--      .access = PL1_RW, .type = ARM_CP_CONST,
--      .resetvalue = 0 },
-+      .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .type = ARM_CP_CONST, .resetvalue = 0 },
-     /* AMAIR1 is mapped to AMAIR_EL1[63:32] */
-     { .name = "AMAIR1", .cp = 15, .crn = 10, .crm = 3, .opc1 = 0, .opc2 = 1,
--      .access = PL1_RW, .type = ARM_CP_CONST,
--      .resetvalue = 0 },
-+      .access = PL1_RW, .accessfn = access_tvm_trvm,
-+      .type = ARM_CP_CONST, .resetvalue = 0 },
-     { .name = "PAR", .cp = 15, .crm = 7, .opc1 = 0,
-       .access = PL1_RW, .type = ARM_CP_64BIT, .resetvalue = 0,
-       .bank_fieldoffsets = { offsetof(CPUARMState, cp15.par_s),
-@@ -4844,7 +4870,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .type = ARM_CP_NOP, .access = PL1_W },
-     /* MMU Domain access control / MPU write buffer control */
-     { .name = "DACR", .cp = 15, .opc1 = 0, .crn = 3, .crm = 0, .opc2 = 0,
--      .access = PL1_RW, .resetvalue = 0,
-+      .access = PL1_RW, .accessfn = access_tvm_trvm, .resetvalue = 0,
-       .writefn = dacr_write, .raw_writefn = raw_write,
-       .bank_fieldoffsets = { offsetoflow32(CPUARMState, cp15.dacr_s),
-                              offsetoflow32(CPUARMState, cp15.dacr_ns) } },
-@@ -7652,7 +7678,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         ARMCPRegInfo sctlr = {
-             .name = "SCTLR", .state = ARM_CP_STATE_BOTH,
-             .opc0 = 3, .opc1 = 0, .crn = 1, .crm = 0, .opc2 = 0,
--            .access = PL1_RW,
-+            .access = PL1_RW, .accessfn = access_tvm_trvm,
-             .bank_fieldoffsets = { offsetof(CPUARMState, cp15.sctlr_s),
-                                    offsetof(CPUARMState, cp15.sctlr_ns) },
-             .writefn = sctlr_write, .resetvalue = cpu->reset_sctlr,
--- 
-2.20.1
+>> =C2=A0 /*
+>> =C2=A0=C2=A0 * Get the TPMVersion of the backend device being used
+>> =C2=A0=C2=A0 */
+>> -static enum TPMVersion tpm_tis_get_tpm_version(TPMIf *ti)
+>> +static enum TPMVersion tpm_tis_get_tpm_version(TPMState *s)
+>> =C2=A0 {
+>> -=C2=A0=C2=A0=C2=A0 TPMState *s =3D TPM(ti);
+>> -
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (tpm_backend_had_startup_error(s->be_d=
+river)) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return TPM_VERSIO=
+N_UNSPEC;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> @@ -850,9 +853,8 @@ static enum TPMVersion
+>> tpm_tis_get_tpm_version(TPMIf *ti)
+>> =C2=A0=C2=A0 * This function is called when the machine starts, resets o=
+r due to
+>> =C2=A0=C2=A0 * S3 resume.
+>> =C2=A0=C2=A0 */
+>> -static void tpm_tis_reset(DeviceState *dev)
+>> +static void tpm_tis_reset(TPMState *s)
+>> =C2=A0 {
+>> -=C2=A0=C2=A0=C2=A0 TPMState *s =3D TPM(dev);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int c;
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s->be_tpm_version =3D tpm_backend_=
+get_tpm_version(s->be_driver);
+>> @@ -896,15 +898,14 @@ static void tpm_tis_reset(DeviceState *dev)
+>> =C2=A0 =C2=A0 /* persistent state handling */
+>> =C2=A0 -static int tpm_tis_pre_save(void *opaque)
+>> +static int tpm_tis_pre_save(TPMState *s)
+>> =C2=A0 {
+>> -=C2=A0=C2=A0=C2=A0 TPMState *s =3D opaque;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 uint8_t locty =3D s->active_locty;
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 trace_tpm_tis_pre_save(locty, s->r=
+w_offset);
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (DEBUG_TIS) {
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tpm_tis_dump_state(opaque, 0=
+);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tpm_tis_dump_state(s, 0);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /*
+>> @@ -929,34 +930,78 @@ static const VMStateDescription vmstate_locty =3D =
+{
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 };
+>> =C2=A0 -static const VMStateDescription vmstate_tpm_tis =3D {
+>> +/* ISA */
+>> +
+>> +static int tpm_tis_pre_save_isa(void *opaque)
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 TPMStateISA *isadev =3D opaque;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 return tpm_tis_pre_save(&isadev->state);
+>> +}
+>> +
+>> +static const VMStateDescription vmstate_tpm_tis_isa =3D {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .name =3D "tpm-tis",
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .version_id =3D 0,
+>> -=C2=A0=C2=A0=C2=A0 .pre_save=C2=A0 =3D tpm_tis_pre_save,
+>> +=C2=A0=C2=A0=C2=A0 .pre_save=C2=A0 =3D tpm_tis_pre_save_isa,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .fields =3D (VMStateField[]) {
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_BUFFER(buffer, TPMSt=
+ate),
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_UINT16(rw_offset, TP=
+MState),
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_UINT8(active_locty, =
+TPMState),
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_UINT8(aborting_locty=
+, TPMState),
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_UINT8(next_locty, TP=
+MState),
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_BUFFER(state.buffer,=
+ TPMStateISA),
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_UINT16(state.rw_offs=
+et, TPMStateISA),
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_UINT8(state.active_l=
+octy, TPMStateISA),
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_UINT8(state.aborting=
+_locty, TPMStateISA),
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_UINT8(state.next_loc=
+ty, TPMStateISA),
+>=20
+> On a second thought these fields seem to belong to a TPMCommonState.
+> Why not QOM'ify an abstract common parent between ISA and SysBus?
+This would mean we have double QOM inheritance (ISADevice and Sysbus
+device already being QOM devices). As far as I know this is not
+supported (see qom/object.h). Here I use the same trick as the one being
+used in hw/vfio/platform or pci.c and also used in hw/block/fdc.c - as
+pointed out by Stefan- : see FDCtrlSysBus and FDCtrlISABus.
+
+Thanks
+
+Eric
+>=20
+>> =C2=A0 -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_STRUCT_ARRAY(=
+loc, TPMState, TPM_TIS_NUM_LOCALITIES, 0,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_STRUCT_ARRAY(state.l=
+oc, TPMStateISA,
+>> TPM_TIS_NUM_LOCALITIES, 0,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vmstate_locty, TPMLocality),
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_EN=
+D_OF_LIST()
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 };
+>> =C2=A0 -static Property tpm_tis_properties[] =3D {
+>> -=C2=A0=C2=A0=C2=A0 DEFINE_PROP_UINT32("irq", TPMState, irq_num, TPM_TIS=
+_IRQ),
+>> -=C2=A0=C2=A0=C2=A0 DEFINE_PROP_TPMBE("tpmdev", TPMState, be_driver),
+>> -=C2=A0=C2=A0=C2=A0 DEFINE_PROP_BOOL("ppi", TPMState, ppi_enabled, true)=
+,
+>> +static void tpm_tis_isa_request_completed(TPMIf *ti, int ret)
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 TPMStateISA *isadev =3D TPM_TIS_ISA(ti);
+>> +=C2=A0=C2=A0=C2=A0 TPMState *s =3D &isadev->state;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 tpm_tis_request_completed(s, ret);
+>> +}
+>> +
+>> +static enum TPMVersion tpm_tis_isa_get_tpm_version(TPMIf *ti)
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 TPMStateISA *isadev =3D TPM_TIS_ISA(ti);
+>> +=C2=A0=C2=A0=C2=A0 TPMState *s =3D &isadev->state;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 return tpm_tis_get_tpm_version(s);
+>> +}
+>> +
+>> +static void tpm_tis_isa_reset(DeviceState *dev)
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 TPMStateISA *isadev =3D TPM_TIS_ISA(dev);
+>> +=C2=A0=C2=A0=C2=A0 TPMState *s =3D &isadev->state;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 return tpm_tis_reset(s);
+>> +}
+>> +
+>> +static Property tpm_tis_isa_properties[] =3D {
+>> +=C2=A0=C2=A0=C2=A0 DEFINE_PROP_UINT32("irq", TPMStateISA, state.irq_num=
+, TPM_TIS_IRQ),
+>> +=C2=A0=C2=A0=C2=A0 DEFINE_PROP_TPMBE("tpmdev", TPMStateISA, state.be_dr=
+iver),
+>> +=C2=A0=C2=A0=C2=A0 DEFINE_PROP_BOOL("ppi", TPMStateISA, state.ppi_enabl=
+ed, true),
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 DEFINE_PROP_END_OF_LIST(),
+>> =C2=A0 };
+>> =C2=A0 -static void tpm_tis_realizefn(DeviceState *dev, Error **errp)
+>> +static void tpm_tis_isa_initfn(Object *obj)
+>> =C2=A0 {
+>> -=C2=A0=C2=A0=C2=A0 TPMState *s =3D TPM(dev);
+>> +=C2=A0=C2=A0=C2=A0 TPMStateISA *isadev =3D TPM_TIS_ISA(obj);
+>> +=C2=A0=C2=A0=C2=A0 TPMState *s =3D &isadev->state;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 memory_region_init_io(&s->mmio, obj, &tpm_tis_memory=
+_ops,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 s, "tpm-tis-mmio",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 TPM_TIS_NUM_LOCALITIES <<
+>> TPM_TIS_LOCALITY_SHIFT);
+>> +}
+>> +
+>> +static void tpm_tis_isa_realizefn(DeviceState *dev, Error **errp)
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 TPMStateISA *isadev =3D TPM_TIS_ISA(dev);
+>> +=C2=A0=C2=A0=C2=A0 TPMState *s =3D &isadev->state;
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!tpm_find()) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp, =
+"at most one TPM device is permitted");
+>> @@ -973,55 +1018,46 @@ static void tpm_tis_realizefn(DeviceState *dev,
+>> Error **errp)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 -=C2=A0=C2=A0=C2=A0 isa_init_irq(&s->busdev, &s->irq, s->irq_num)=
+;
+>> +=C2=A0=C2=A0=C2=A0 isa_init_irq(ISA_DEVICE(dev), &s->irq, s->irq_num);
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 memory_region_add_subregion(isa_ad=
+dress_space(ISA_DEVICE(dev)),
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 TPM_TIS_ADDR_BASE, &s->=
+mmio);
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (s->ppi_enabled) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tpm_ppi_init(&s->=
+ppi, isa_address_space(ISA_DEVICE(dev)),
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 TPM_PPI_ADDR_BASE, OBJE=
+CT(s));
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 TPM_PPI_ADDR_BASE, OBJE=
+CT(dev));
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 }
+>> =C2=A0 -static void tpm_tis_initfn(Object *obj)
+>> -{
+>> -=C2=A0=C2=A0=C2=A0 TPMState *s =3D TPM(obj);
+>> -
+>> -=C2=A0=C2=A0=C2=A0 memory_region_init_io(&s->mmio, OBJECT(s), &tpm_tis_=
+memory_ops,
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 s, "tpm-tis-mmio",
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 TPM_TIS_NUM_LOCALITIES <<
+>> TPM_TIS_LOCALITY_SHIFT);
+>> -}
+>> -
+>> -static void tpm_tis_class_init(ObjectClass *klass, void *data)
+>> +static void tpm_tis_isa_class_init(ObjectClass *klass, void *data)
+>> =C2=A0 {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 DeviceClass *dc =3D DEVICE_CLASS(klass);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 TPMIfClass *tc =3D TPM_IF_CLASS(klass);
+>> =C2=A0 -=C2=A0=C2=A0=C2=A0 dc->realize =3D tpm_tis_realizefn;
+>> -=C2=A0=C2=A0=C2=A0 device_class_set_props(dc, tpm_tis_properties);
+>> -=C2=A0=C2=A0=C2=A0 dc->reset =3D tpm_tis_reset;
+>> -=C2=A0=C2=A0=C2=A0 dc->vmsd=C2=A0 =3D &vmstate_tpm_tis;
+>> +=C2=A0=C2=A0=C2=A0 device_class_set_props(dc, tpm_tis_isa_properties);
+>> +=C2=A0=C2=A0=C2=A0 dc->vmsd=C2=A0 =3D &vmstate_tpm_tis_isa;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tc->model =3D TPM_MODEL_TPM_TIS;
+>> -=C2=A0=C2=A0=C2=A0 tc->get_version =3D tpm_tis_get_tpm_version;
+>> -=C2=A0=C2=A0=C2=A0 tc->request_completed =3D tpm_tis_request_completed;
+>> +=C2=A0=C2=A0=C2=A0 dc->realize =3D tpm_tis_isa_realizefn;
+>> +=C2=A0=C2=A0=C2=A0 dc->reset =3D tpm_tis_isa_reset;
+>> +=C2=A0=C2=A0=C2=A0 tc->request_completed =3D tpm_tis_isa_request_comple=
+ted;
+>> +=C2=A0=C2=A0=C2=A0 tc->get_version =3D tpm_tis_isa_get_tpm_version;
+>> =C2=A0 }
+>> =C2=A0 -static const TypeInfo tpm_tis_info =3D {
+>> +static const TypeInfo tpm_tis_isa_info =3D {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .name =3D TYPE_TPM_TIS_ISA,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .parent =3D TYPE_ISA_DEVICE,
+>> -=C2=A0=C2=A0=C2=A0 .instance_size =3D sizeof(TPMState),
+>> -=C2=A0=C2=A0=C2=A0 .instance_init =3D tpm_tis_initfn,
+>> -=C2=A0=C2=A0=C2=A0 .class_init=C2=A0 =3D tpm_tis_class_init,
+>> +=C2=A0=C2=A0=C2=A0 .instance_size =3D sizeof(TPMStateISA),
+>> +=C2=A0=C2=A0=C2=A0 .instance_init =3D tpm_tis_isa_initfn,
+>> +=C2=A0=C2=A0=C2=A0 .class_init=C2=A0 =3D tpm_tis_isa_class_init,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .interfaces =3D (InterfaceInfo[]) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 { TYPE_TPM_IF },
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 { }
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 };
+>> =C2=A0 -static void tpm_tis_register(void)
+>> +static void tpm_tis_isa_register(void)
+>> =C2=A0 {
+>> -=C2=A0=C2=A0=C2=A0 type_register_static(&tpm_tis_info);
+>> +=C2=A0=C2=A0=C2=A0 type_register_static(&tpm_tis_isa_info);
+>> =C2=A0 }
+>> =C2=A0 -type_init(tpm_tis_register)
+>> +type_init(tpm_tis_isa_register)
+>>
+>=20
 

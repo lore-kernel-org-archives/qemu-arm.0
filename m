@@ -1,66 +1,66 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4788044lfp;
-        Sun, 16 Feb 2020 23:47:34 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyf2X4S9yTCdDaSlTqwbJDlslU9S2z4dUfKmLvN2m8IVVGcuo07Gm45/rKP/MW2UTqwtFkf
-X-Received: by 2002:a37:4ca:: with SMTP id 193mr12895975qke.255.1581925654664;
-        Sun, 16 Feb 2020 23:47:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581925654; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4788819lfp;
+        Sun, 16 Feb 2020 23:48:42 -0800 (PST)
+X-Google-Smtp-Source: APXvYqykCZx8ekAWf3ktPsjhNx5x3V7jXwrE4Qf0NSn6+EnsASFnUcpvAYBdNTg7TnMSGvnXoY9U
+X-Received: by 2002:ac8:6054:: with SMTP id k20mr11793386qtm.92.1581925722484;
+        Sun, 16 Feb 2020 23:48:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581925722; cv=none;
         d=google.com; s=arc-20160816;
-        b=rE9TXJF2bHGMHe5h3ei9CcrQkIe5UARDsh8EEWrnsGMwR4KPL5AWetIxWD+nO0i8kg
-         OnmJQdRdIMpH8j28LXPnKKXXwBW5G5It8oazms/p9uOOfXlvNTf2gHJ45wgJBHKxJdbb
-         HHAkHhGwDKlH10F2r+3yGcucFPLUCLXknb9xJCZiq4uDWh8UGtWnON424hz/9vT25c5/
-         cgK5w55YyjdS8qDaL+aCLTskxTmdxFVqfP0SnXxt1gROabpV+LxRICYbKxxHbTqqNJr+
-         kcLKSNsBfIwWrYeSrx4uK+pIOpAYMA2P6mrCI4duuGPoXdp3rSkB/GXy7I1ny3CvwcAI
-         Tsng==
+        b=V/2s/afkz20uqxLmBcxGn2oBDcpGgPbYSJdpMVEnAxiwRIFqV2zgieqS2rDlDlcvp3
+         agtUmBGAFjteVpJssGo3F6dkFDrIiI2y9DSFmvyNJEN0CNwt60hamGlr7S60V/u+ISI9
+         x9rqHkOvtm9sR4VzINtt6qa65gkIPM+6FYVIzfdmiW9M7F8ebpfAc8eiqLjlIQNqmZQy
+         btmxJJWpllDbaBjIWnIcdZNH9oCJFnQ5FHsmU3yjk/6s62t771zSVSANbwL0jJWaUUmj
+         4GlQs8a0dwzPteMcg+XtrPnfEZMbPWHPLS6ATKGOioDWToYMGXKLHpAjKyuGZdPCLHyF
+         F4Xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=dxvorqBRClXVCfNuDO4/1nBicbfbGuSh8XSmh6oYM+w=;
-        b=Z3yVQA+ezSk8i+RvlqyVbbzrAGeqK9P6aXEDIhZ/qUw1r/qodZrKPZbo+s0KAYAv1w
-         7mYUIUj5Bhti0hCK+1pVxYtFrRQlXEzhJVh2FMgYZDgHmLHEOg5zuhXvDTkWqeJ9AoaX
-         ObdcAxr9z4WkLxW4vXAGryPJ1s2e3mJEC+oqodH7LlRtd2Ezq8diJDQ3AWEXD7GXYLk7
-         9Hd97DyG46feh2zUiLHCsGxn23hFNzf1X2L3+QaqcVt4y4iQ01+NAmUSK5BzNWsQy1+v
-         AjrgsWYCBtM3o9EGRhH8dnO5qVpl4ZJIRWGDc2iKBP3g199n0vEHvkHWx0ae1i4x/rwY
-         eMdQ==
+        bh=vVto2zKf3Y8xIyZmoSGVI8hhSzwiEr9QrAXg2zM215Q=;
+        b=JRHSBj3LcFJFmljdDI4Ac1Q/LuCCOTYUC3d16TOw56OXYF2jx7YX1bfvwu8EvUr8bu
+         zn1qqhEZCcbf0yEQk6RvVG6qgvrjePWTvSz036L/ABGcuB//V3xXut78NMZqaQ1Fo4O8
+         lD9XGn8KvnpdKddr6q4snBhC3+kcdNJ66LiSpdylY0YHVDSToP4oYD47dL88XBtxYPGB
+         tZvR8ZqIbuYYxFF8RPoVppFKG3pXnrMTAbPChCgUljri7gijObhOhQZbSdfYMIS6xJXH
+         JmKPw/8b1b8bOUfFsQM25UMfSuXJzSM+1Oxy8aFDoJAfF+yCJaFvmwU4cR9/MAsxtioC
+         CsFg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u15si6098585qvm.28.2020.02.16.23.47.34
+        by mx.google.com with ESMTPS id bp6si4424790qvb.141.2020.02.16.23.48.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Feb 2020 23:47:34 -0800 (PST)
+        Sun, 16 Feb 2020 23:48:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41516 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41522 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3b7u-0004fr-2K
-	for alex.bennee@linaro.org; Mon, 17 Feb 2020 02:47:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39529)
+	id 1j3b8z-0006KK-Tx
+	for alex.bennee@linaro.org; Mon, 17 Feb 2020 02:48:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39447)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <xuyandong2@huawei.com>) id 1j3b33-0004V9-KZ
- for qemu-devel@nongnu.org; Mon, 17 Feb 2020 02:42:36 -0500
+ (envelope-from <xuyandong2@huawei.com>) id 1j3b30-0004Mn-3w
+ for qemu-devel@nongnu.org; Mon, 17 Feb 2020 02:42:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <xuyandong2@huawei.com>) id 1j3b30-0000dz-Q4
- for qemu-devel@nongnu.org; Mon, 17 Feb 2020 02:42:33 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:45570 helo=huawei.com)
+ (envelope-from <xuyandong2@huawei.com>) id 1j3b2x-0000Zq-6j
+ for qemu-devel@nongnu.org; Mon, 17 Feb 2020 02:42:30 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:36472 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <xuyandong2@huawei.com>)
- id 1j3b2s-0000Q2-MU; Mon, 17 Feb 2020 02:42:23 -0500
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 7A5DEB51FF8740FA55DE;
- Mon, 17 Feb 2020 15:42:20 +0800 (CST)
-Received: from localhost (10.175.124.177) by DGGEMS407-HUB.china.huawei.com
- (10.3.19.207) with Microsoft SMTP Server id 14.3.439.0; Mon, 17 Feb 2020
- 15:42:10 +0800
+ id 1j3b2q-0000JB-FC; Mon, 17 Feb 2020 02:42:21 -0500
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id EFF76E45A823E766DEB0;
+ Mon, 17 Feb 2020 15:42:13 +0800 (CST)
+Received: from localhost (10.175.124.177) by DGGEMS409-HUB.china.huawei.com
+ (10.3.19.209) with Microsoft SMTP Server id 14.3.439.0; Mon, 17 Feb 2020
+ 15:42:03 +0800
 From: Xu Yandong <xuyandong2@huawei.com>
 To: <peter.maydell@linaro.org>
-Subject: [PATCH RFC 12/16] hw/arm: move shared devices related functions to
- arm.c and export them
-Date: Mon, 17 Feb 2020 02:51:24 -0500
-Message-ID: <1581925888-103620-13-git-send-email-xuyandong2@huawei.com>
+Subject: [PATCH RFC 01/16] hw/arm/arm: Introduce ArmMachineState and
+ ArmMachineClass
+Date: Mon, 17 Feb 2020 02:51:13 -0500
+Message-ID: <1581925888-103620-2-git-send-email-xuyandong2@huawei.com>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1581925888-103620-1-git-send-email-xuyandong2@huawei.com>
 References: <1581925888-103620-1-git-send-email-xuyandong2@huawei.com>
@@ -70,7 +70,7 @@ X-Originating-IP: [10.175.124.177]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.35
+X-Received-From: 45.249.212.32
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,427 +87,356 @@ Cc: zhang.zhanghailiang@huawei.com, slp@redhat.com,
  wu.wubin@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4pofvzKT1skM
+X-TUID: Axqm44gA3Egg
 
-Move device related functions to arm.c, include RTC(pl031), UART(pl011),
-virtio devices.
+In the following patches, VirtMachineState and VirtMachineClass will
+splited to and deriving ArmMachineState and ArmMachineClass.
+This allows sharing code with other arm machine types.
 
 Signed-off-by: Xu Yandong <xuyandong2@huawei.com>
 ---
- hw/arm/arm.c          | 137 +++++++++++++++++++++++++++++++++++++
- hw/arm/virt.c         | 156 +++---------------------------------------
- include/hw/arm/arm.h  |   8 +++
- include/hw/arm/virt.h |   1 -
- 4 files changed, 153 insertions(+), 149 deletions(-)
+ hw/arm/Makefile.objs  |   2 +-
+ hw/arm/arm.c          |  77 ++++++++++++++++++++++++++++++++
+ hw/arm/virt.c         |  11 +----
+ include/hw/arm/arm.h  | 100 ++++++++++++++++++++++++++++++++++++++++++
+ include/hw/arm/virt.h |  61 ++------------------------
+ 5 files changed, 183 insertions(+), 68 deletions(-)
+ create mode 100644 hw/arm/arm.c
+ create mode 100644 include/hw/arm/arm.h
 
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index 336f6dd374..51fcee2ac8 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -1,6 +1,6 @@
+ obj-y += boot.o
+ obj-$(CONFIG_PLATFORM_BUS) += sysbus-fdt.o
+-obj-$(CONFIG_ARM_VIRT) += virt.o
++obj-$(CONFIG_ARM_VIRT) += arm.o virt.o
+ obj-$(CONFIG_ACPI) += virt-acpi-build.o
+ obj-$(CONFIG_DIGIC) += digic_boards.o
+ obj-$(CONFIG_EXYNOS4) += exynos4_boards.o
 diff --git a/hw/arm/arm.c b/hw/arm/arm.c
-index c51bf513d2..6751c6a624 100644
---- a/hw/arm/arm.c
+new file mode 100644
+index 0000000000..4261d56832
+--- /dev/null
 +++ b/hw/arm/arm.c
-@@ -145,6 +145,143 @@ void init_gic_sysbus(ArmMachineState *ams)
-     }
- }
- 
-+void create_uart(const ArmMachineState *ams, int uart,
-+                        MemoryRegion *mem, Chardev *chr)
+@@ -0,0 +1,77 @@
++/*
++ * ARM mach-virt emulation
++ * Copyright (c) 2013 Linaro Limited
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU General Public License,
++ * version 2 or later, as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ *
++ * You should have received a copy of the GNU General Public License along with
++ * this program.  If not, see <http://www.gnu.org/licenses/>.
++ *
++ * Emulate a virtual board which works by passing Linux all the information
++ * it needs about what devices are present via the device tree.
++ * There are some restrictions about what we can do here:
++ *  + we can only present devices whose Linux drivers will work based
++ *    purely on the device tree with no platform data at all
++ * This is essentially the same approach kvmtool uses.
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/arm/arm.h"
++#include "sysemu/device_tree.h"
++#include "sysemu/numa.h"
++#include "hw/loader.h"
++#include "exec/address-spaces.h"
++#include "qemu/bitops.h"
++#include "qemu/error-report.h"
++#include "qemu/module.h"
++#include "hw/arm/sysbus-fdt.h"
++#include "hw/platform-bus.h"
++#include "hw/qdev-properties.h"
++#include "hw/arm/fdt.h"
++#include "hw/intc/arm_gic.h"
++#include "kvm_arm.h"
++
++static void arm_machine_class_init(ObjectClass *oc, void *data)
 +{
-+    char *nodename;
-+    hwaddr base = ams->memmap[uart].base;
-+    hwaddr size = ams->memmap[uart].size;
-+    int irq = ams->irqmap[uart];
-+    const char compat[] = "arm,pl011\0arm,primecell";
-+    const char clocknames[] = "uartclk\0apb_pclk";
-+    DeviceState *dev = qdev_create(NULL, "pl011");
-+    SysBusDevice *s = SYS_BUS_DEVICE(dev);
++    MachineClass *mc = MACHINE_CLASS(oc);
 +
-+    qdev_prop_set_chr(dev, "chardev", chr);
-+    qdev_init_nofail(dev);
-+    memory_region_add_subregion(mem, base,
-+                                sysbus_mmio_get_region(s, 0));
-+    sysbus_connect_irq(s, 0, qdev_get_gpio_in(ams->gic, irq));
-+
-+    nodename = g_strdup_printf("/pl011@%" PRIx64, base);
-+    qemu_fdt_add_subnode(ams->fdt, nodename);
-+    /* Note that we can't use setprop_string because of the embedded NUL */
-+    qemu_fdt_setprop(ams->fdt, nodename, "compatible",
-+                         compat, sizeof(compat));
-+    qemu_fdt_setprop_sized_cells(ams->fdt, nodename, "reg",
-+                                     2, base, 2, size);
-+    qemu_fdt_setprop_cells(ams->fdt, nodename, "interrupts",
-+                               GIC_FDT_IRQ_TYPE_SPI, irq,
-+                               GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-+    qemu_fdt_setprop_cells(ams->fdt, nodename, "clocks",
-+                               ams->clock_phandle, ams->clock_phandle);
-+    qemu_fdt_setprop(ams->fdt, nodename, "clock-names",
-+                         clocknames, sizeof(clocknames));
-+
-+    if (uart == VIRT_UART) {
-+        qemu_fdt_setprop_string(ams->fdt, "/chosen", "stdout-path", nodename);
-+    } else {
-+        /* Mark as not usable by the normal world */
-+        qemu_fdt_setprop_string(ams->fdt, nodename, "status", "disabled");
-+        qemu_fdt_setprop_string(ams->fdt, nodename, "secure-status", "okay");
-+
-+        qemu_fdt_add_subnode(ams->fdt, "/secure-chosen");
-+        qemu_fdt_setprop_string(ams->fdt, "/secure-chosen", "stdout-path",
-+                                nodename);
-+    }
-+
-+    g_free(nodename);
++    mc->block_default_type = IF_VIRTIO;
++    mc->no_cdrom = 1;
++    mc->pci_allow_0_address = true;
++    /* We know we will never create a pre-ARMv7 CPU which needs 1K pages */
++    mc->minimum_page_bits = 12;
++    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
++    mc->numa_mem_supported = true;
++    mc->auto_enable_numa_with_memhp = true;
 +}
 +
-+void create_rtc(const ArmMachineState *ams)
++static void arm_instance_init(Object *obj)
 +{
-+    char *nodename;
-+    hwaddr base = ams->memmap[VIRT_RTC].base;
-+    hwaddr size = ams->memmap[VIRT_RTC].size;
-+    int irq = ams->irqmap[VIRT_RTC];
-+    const char compat[] = "arm,pl031\0arm,primecell";
-+
-+    sysbus_create_simple("pl031", base, qdev_get_gpio_in(ams->gic, irq));
-+
-+    nodename = g_strdup_printf("/pl031@%" PRIx64, base);
-+    qemu_fdt_add_subnode(ams->fdt, nodename);
-+    qemu_fdt_setprop(ams->fdt, nodename, "compatible", compat, sizeof(compat));
-+    qemu_fdt_setprop_sized_cells(ams->fdt, nodename, "reg",
-+                                 2, base, 2, size);
-+    qemu_fdt_setprop_cells(ams->fdt, nodename, "interrupts",
-+                           GIC_FDT_IRQ_TYPE_SPI, irq,
-+                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-+    qemu_fdt_setprop_cell(ams->fdt, nodename, "clocks", ams->clock_phandle);
-+    qemu_fdt_setprop_string(ams->fdt, nodename, "clock-names", "apb_pclk");
-+    g_free(nodename);
 +}
 +
-+void create_virtio_devices(const ArmMachineState *ams)
++static const TypeInfo arm_machine_info = {
++    .name          = TYPE_ARM_MACHINE,
++    .parent        = TYPE_MACHINE,
++    .abstract      = true,
++    .instance_size = sizeof(ArmMachineState),
++    .class_size    = sizeof(ArmMachineClass),
++    .class_init    = arm_machine_class_init,
++    .instance_init = arm_instance_init,
++    .interfaces = (InterfaceInfo[]) {
++         { }
++    },
++};
++
++static void macharm_machine_init(void)
 +{
-+    int i;
-+    hwaddr size = ams->memmap[VIRT_MMIO].size;
-+
-+    /* We create the transports in forwards order. Since qbus_realize()
-+     * prepends (not appends) new child buses, the incrementing loop below will
-+     * create a list of virtio-mmio buses with decreasing base addresses.
-+     *
-+     * When a -device option is processed from the command line,
-+     * qbus_find_recursive() picks the next free virtio-mmio bus in forwards
-+     * order. The upshot is that -device options in increasing command line
-+     * order are mapped to virtio-mmio buses with decreasing base addresses.
-+     *
-+     * When this code was originally written, that arrangement ensured that the
-+     * guest Linux kernel would give the lowest "name" (/dev/vda, eth0, etc) to
-+     * the first -device on the command line. (The end-to-end order is a
-+     * function of this loop, qbus_realize(), qbus_find_recursive(), and the
-+     * guest kernel's name-to-address assignment strategy.)
-+     *
-+     * Meanwhile, the kernel's traversal seems to have been reversed; see eg.
-+     * the message, if not necessarily the code, of commit 70161ff336.
-+     * Therefore the loop now establishes the inverse of the original intent.
-+     *
-+     * Unfortunately, we can't counteract the kernel change by reversing the
-+     * loop; it would break existing command lines.
-+     *
-+     * In any case, the kernel makes no guarantee about the stability of
-+     * enumeration order of virtio devices (as demonstrated by it changing
-+     * between kernel versions). For reliable and stable identification
-+     * of disks users must use UUIDs or similar mechanisms.
-+     */
-+    for (i = 0; i < NUM_VIRTIO_TRANSPORTS; i++) {
-+        int irq = ams->irqmap[VIRT_MMIO] + i;
-+        hwaddr base = ams->memmap[VIRT_MMIO].base + i * size;
-+
-+        sysbus_create_simple("virtio-mmio", base,
-+                             qdev_get_gpio_in(ams->gic, irq));
-+    }
-+
-+    /* We add dtb nodes in reverse order so that they appear in the finished
-+     * device tree lowest address first.
-+     *
-+     * Note that this mapping is independent of the loop above. The previous
-+     * loop influences virtio device to virtio transport assignment, whereas
-+     * this loop controls how virtio transports are laid out in the dtb.
-+     */
-+    for (i = NUM_VIRTIO_TRANSPORTS - 1; i >= 0; i--) {
-+        char *nodename;
-+        int irq = ams->irqmap[VIRT_MMIO] + i;
-+        hwaddr base = ams->memmap[VIRT_MMIO].base + i * size;
-+
-+        nodename = g_strdup_printf("/virtio_mmio@%" PRIx64, base);
-+        qemu_fdt_add_subnode(ams->fdt, nodename);
-+        qemu_fdt_setprop_string(ams->fdt, nodename,
-+                                "compatible", "virtio,mmio");
-+        qemu_fdt_setprop_sized_cells(ams->fdt, nodename, "reg",
-+                                     2, base, 2, size);
-+        qemu_fdt_setprop_cells(ams->fdt, nodename, "interrupts",
-+                               GIC_FDT_IRQ_TYPE_SPI, irq,
-+                               GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
-+        qemu_fdt_setprop(ams->fdt, nodename, "dma-coherent", NULL, 0);
-+        g_free(nodename);
-+    }
++    type_register_static(&arm_machine_info);
 +}
-+
- static char *virt_get_gic_version(Object *obj, Error **errp)
- {
-     ArmMachineState *ams = ARM_MACHINE(obj);
++type_init(macharm_machine_init);
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 2c0dfb2695..b3267b873a 100644
+index f788fe27d6..355007fd32 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -231,14 +231,14 @@ static void create_fdt(VirtMachineState *vms)
-      * optional but in practice if you omit them the kernel refuses to
-      * probe for the device.
-      */
--    vms->clock_phandle = qemu_fdt_alloc_phandle(fdt);
-+    ams->clock_phandle = qemu_fdt_alloc_phandle(fdt);
-     qemu_fdt_add_subnode(fdt, "/apb-pclk");
-     qemu_fdt_setprop_string(fdt, "/apb-pclk", "compatible", "fixed-clock");
-     qemu_fdt_setprop_cell(fdt, "/apb-pclk", "#clock-cells", 0x0);
-     qemu_fdt_setprop_cell(fdt, "/apb-pclk", "clock-frequency", 24000000);
-     qemu_fdt_setprop_string(fdt, "/apb-pclk", "clock-output-names",
-                                 "clk24mhz");
--    qemu_fdt_setprop_cell(fdt, "/apb-pclk", "phandle", vms->clock_phandle);
-+    qemu_fdt_setprop_cell(fdt, "/apb-pclk", "phandle", ams->clock_phandle);
- 
-     if (nb_numa_nodes > 0 && ms->numa_state->have_numa_distance) {
-         int size = nb_numa_nodes * nb_numa_nodes * 3 * sizeof(uint32_t);
-@@ -687,79 +687,6 @@ static void create_gic(VirtMachineState *vms)
-     gic_set_msi_interrupt(vms);
+@@ -37,6 +37,7 @@
+ #include "hw/boards.h"
+ #include "hw/arm/boot.h"
+ #include "hw/arm/primecell.h"
++#include "hw/arm/arm.h"
+ #include "hw/arm/virt.h"
+ #include "hw/block/flash.h"
+ #include "hw/vfio/vfio-calxeda-xgmac.h"
+@@ -2041,14 +2042,8 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_AMD_XGBE);
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
+-    mc->block_default_type = IF_VIRTIO;
+-    mc->no_cdrom = 1;
+-    mc->pci_allow_0_address = true;
+-    /* We know we will never create a pre-ARMv7 CPU which needs 1K pages */
+-    mc->minimum_page_bits = 12;
+     mc->possible_cpu_arch_ids = virt_possible_cpu_arch_ids;
+     mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
+-    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
+     mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
+     mc->kvm_type = virt_kvm_type;
+     assert(!mc->get_hotplug_handler);
+@@ -2056,8 +2051,6 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     hc->pre_plug = virt_machine_device_pre_plug_cb;
+     hc->plug = virt_machine_device_plug_cb;
+     hc->unplug_request = virt_machine_device_unplug_request_cb;
+-    mc->numa_mem_supported = true;
+-    mc->auto_enable_numa_with_memhp = true;
  }
  
--static void create_uart(const VirtMachineState *vms, int uart,
--                        MemoryRegion *mem, Chardev *chr)
--{
--    char *nodename;
--    const ArmMachineState *ams = ARM_MACHINE(vms);
--    hwaddr base = ams->memmap[uart].base;
--    hwaddr size = ams->memmap[uart].size;
--    int irq = ams->irqmap[uart];
--    const char compat[] = "arm,pl011\0arm,primecell";
--    const char clocknames[] = "uartclk\0apb_pclk";
--    DeviceState *dev = qdev_create(NULL, "pl011");
--    SysBusDevice *s = SYS_BUS_DEVICE(dev);
--
--    qdev_prop_set_chr(dev, "chardev", chr);
--    qdev_init_nofail(dev);
--    memory_region_add_subregion(mem, base,
--                                sysbus_mmio_get_region(s, 0));
--    sysbus_connect_irq(s, 0, qdev_get_gpio_in(ams->gic, irq));
--
--    nodename = g_strdup_printf("/pl011@%" PRIx64, base);
--    qemu_fdt_add_subnode(ams->fdt, nodename);
--    /* Note that we can't use setprop_string because of the embedded NUL */
--    qemu_fdt_setprop(ams->fdt, nodename, "compatible",
--                         compat, sizeof(compat));
--    qemu_fdt_setprop_sized_cells(ams->fdt, nodename, "reg",
--                                     2, base, 2, size);
--    qemu_fdt_setprop_cells(ams->fdt, nodename, "interrupts",
--                               GIC_FDT_IRQ_TYPE_SPI, irq,
--                               GIC_FDT_IRQ_FLAGS_LEVEL_HI);
--    qemu_fdt_setprop_cells(ams->fdt, nodename, "clocks",
--                               vms->clock_phandle, vms->clock_phandle);
--    qemu_fdt_setprop(ams->fdt, nodename, "clock-names",
--                         clocknames, sizeof(clocknames));
--
--    if (uart == VIRT_UART) {
--        qemu_fdt_setprop_string(ams->fdt, "/chosen", "stdout-path", nodename);
--    } else {
--        /* Mark as not usable by the normal world */
--        qemu_fdt_setprop_string(ams->fdt, nodename, "status", "disabled");
--        qemu_fdt_setprop_string(ams->fdt, nodename, "secure-status", "okay");
--
--        qemu_fdt_add_subnode(ams->fdt, "/secure-chosen");
--        qemu_fdt_setprop_string(ams->fdt, "/secure-chosen", "stdout-path",
--                                nodename);
--    }
--
--    g_free(nodename);
--}
--
--static void create_rtc(const VirtMachineState *vms)
--{
--    char *nodename;
--    const ArmMachineState *ams = ARM_MACHINE(vms);
--    hwaddr base = ams->memmap[VIRT_RTC].base;
--    hwaddr size = ams->memmap[VIRT_RTC].size;
--    int irq = ams->irqmap[VIRT_RTC];
--    const char compat[] = "arm,pl031\0arm,primecell";
--
--    sysbus_create_simple("pl031", base, qdev_get_gpio_in(ams->gic, irq));
--
--    nodename = g_strdup_printf("/pl031@%" PRIx64, base);
--    qemu_fdt_add_subnode(ams->fdt, nodename);
--    qemu_fdt_setprop(ams->fdt, nodename, "compatible", compat, sizeof(compat));
--    qemu_fdt_setprop_sized_cells(ams->fdt, nodename, "reg",
--                                 2, base, 2, size);
--    qemu_fdt_setprop_cells(ams->fdt, nodename, "interrupts",
--                           GIC_FDT_IRQ_TYPE_SPI, irq,
--                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
--    qemu_fdt_setprop_cell(ams->fdt, nodename, "clocks", vms->clock_phandle);
--    qemu_fdt_setprop_string(ams->fdt, nodename, "clock-names", "apb_pclk");
--    g_free(nodename);
--}
--
- static DeviceState *gpio_key_dev;
- static void virt_powerdown_req(Notifier *n, void *opaque)
- {
-@@ -797,7 +724,7 @@ static void create_gpio(const VirtMachineState *vms)
-     qemu_fdt_setprop_cells(ams->fdt, nodename, "interrupts",
-                            GIC_FDT_IRQ_TYPE_SPI, irq,
-                            GIC_FDT_IRQ_FLAGS_LEVEL_HI);
--    qemu_fdt_setprop_cell(ams->fdt, nodename, "clocks", vms->clock_phandle);
-+    qemu_fdt_setprop_cell(ams->fdt, nodename, "clocks", ams->clock_phandle);
-     qemu_fdt_setprop_string(ams->fdt, nodename, "clock-names", "apb_pclk");
-     qemu_fdt_setprop_cell(ams->fdt, nodename, "phandle", phandle);
+ static void virt_instance_init(Object *obj)
+@@ -2133,7 +2126,7 @@ static void virt_instance_init(Object *obj)
  
-@@ -818,73 +745,6 @@ static void create_gpio(const VirtMachineState *vms)
-     g_free(nodename);
- }
- 
--static void create_virtio_devices(const VirtMachineState *vms)
--{
--    int i;
--    const ArmMachineState *ams = ARM_MACHINE(vms);
--    hwaddr size = ams->memmap[VIRT_MMIO].size;
--
--    /* We create the transports in forwards order. Since qbus_realize()
--     * prepends (not appends) new child buses, the incrementing loop below will
--     * create a list of virtio-mmio buses with decreasing base addresses.
--     *
--     * When a -device option is processed from the command line,
--     * qbus_find_recursive() picks the next free virtio-mmio bus in forwards
--     * order. The upshot is that -device options in increasing command line
--     * order are mapped to virtio-mmio buses with decreasing base addresses.
--     *
--     * When this code was originally written, that arrangement ensured that the
--     * guest Linux kernel would give the lowest "name" (/dev/vda, eth0, etc) to
--     * the first -device on the command line. (The end-to-end order is a
--     * function of this loop, qbus_realize(), qbus_find_recursive(), and the
--     * guest kernel's name-to-address assignment strategy.)
--     *
--     * Meanwhile, the kernel's traversal seems to have been reversed; see eg.
--     * the message, if not necessarily the code, of commit 70161ff336.
--     * Therefore the loop now establishes the inverse of the original intent.
--     *
--     * Unfortunately, we can't counteract the kernel change by reversing the
--     * loop; it would break existing command lines.
--     *
--     * In any case, the kernel makes no guarantee about the stability of
--     * enumeration order of virtio devices (as demonstrated by it changing
--     * between kernel versions). For reliable and stable identification
--     * of disks users must use UUIDs or similar mechanisms.
--     */
--    for (i = 0; i < NUM_VIRTIO_TRANSPORTS; i++) {
--        int irq = ams->irqmap[VIRT_MMIO] + i;
--        hwaddr base = ams->memmap[VIRT_MMIO].base + i * size;
--
--        sysbus_create_simple("virtio-mmio", base,
--                             qdev_get_gpio_in(ams->gic, irq));
--    }
--
--    /* We add dtb nodes in reverse order so that they appear in the finished
--     * device tree lowest address first.
--     *
--     * Note that this mapping is independent of the loop above. The previous
--     * loop influences virtio device to virtio transport assignment, whereas
--     * this loop controls how virtio transports are laid out in the dtb.
--     */
--    for (i = NUM_VIRTIO_TRANSPORTS - 1; i >= 0; i--) {
--        char *nodename;
--        int irq = ams->irqmap[VIRT_MMIO] + i;
--        hwaddr base = ams->memmap[VIRT_MMIO].base + i * size;
--
--        nodename = g_strdup_printf("/virtio_mmio@%" PRIx64, base);
--        qemu_fdt_add_subnode(ams->fdt, nodename);
--        qemu_fdt_setprop_string(ams->fdt, nodename,
--                                "compatible", "virtio,mmio");
--        qemu_fdt_setprop_sized_cells(ams->fdt, nodename, "reg",
--                                     2, base, 2, size);
--        qemu_fdt_setprop_cells(ams->fdt, nodename, "interrupts",
--                               GIC_FDT_IRQ_TYPE_SPI, irq,
--                               GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
--        qemu_fdt_setprop(ams->fdt, nodename, "dma-coherent", NULL, 0);
--        g_free(nodename);
--    }
--}
--
- #define VIRT_FLASH_SECTOR_SIZE (256 * KiB)
- 
- static PFlashCFI01 *virt_flash_create1(VirtMachineState *vms,
-@@ -1151,7 +1011,7 @@ static void create_smmu(const VirtMachineState *vms,
-     qemu_fdt_setprop(ams->fdt, node, "interrupt-names", irq_names,
-                      sizeof(irq_names));
- 
--    qemu_fdt_setprop_cell(ams->fdt, node, "clocks", vms->clock_phandle);
-+    qemu_fdt_setprop_cell(ams->fdt, node, "clocks", ams->clock_phandle);
-     qemu_fdt_setprop_string(ams->fdt, node, "clock-names", "apb_pclk");
-     qemu_fdt_setprop(ams->fdt, node, "dma-coherent", NULL, 0);
- 
-@@ -1709,16 +1569,16 @@ static void machvirt_init(MachineState *machine)
- 
-     fdt_add_pmu_nodes(vms);
- 
--    create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
-+    create_uart(ams, VIRT_UART, sysmem, serial_hd(0));
- 
-     if (vms->secure) {
-         create_secure_ram(vms, secure_sysmem);
--        create_uart(vms, VIRT_SECURE_UART, secure_sysmem, serial_hd(1));
-+        create_uart(ams, VIRT_SECURE_UART, secure_sysmem, serial_hd(1));
-     }
- 
-     vms->highmem_ecam &= vms->highmem && (!firmware_loaded || aarch64);
- 
--    create_rtc(vms);
-+    create_rtc(ams);
- 
-     create_pcie(vms);
- 
-@@ -1736,7 +1596,7 @@ static void machvirt_init(MachineState *machine)
-      * (which will be automatically plugged in to the transports). If
-      * no backend is created the transport will just sit harmlessly idle.
-      */
--    create_virtio_devices(vms);
-+    create_virtio_devices(ams);
- 
-     vms->fw_cfg = create_fw_cfg(vms, &address_space_memory);
-     rom_set_fw(vms->fw_cfg);
+ static const TypeInfo virt_machine_info = {
+     .name          = TYPE_VIRT_MACHINE,
+-    .parent        = TYPE_MACHINE,
++    .parent        = TYPE_ARM_MACHINE,
+     .abstract      = true,
+     .instance_size = sizeof(VirtMachineState),
+     .class_size    = sizeof(VirtMachineClass),
 diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
-index bb3680e583..8fec23985e 100644
---- a/include/hw/arm/arm.h
+new file mode 100644
+index 0000000000..2aa9ee3d05
+--- /dev/null
 +++ b/include/hw/arm/arm.h
-@@ -97,6 +97,7 @@ typedef struct {
-     int smp_cpus;
-     void *fdt;
-     int fdt_size;
-+    uint32_t clock_phandle;
-     uint32_t gic_phandle;
-     int psci_conduit;
-     DeviceState *gic;
-@@ -114,6 +115,13 @@ void qdev_create_gic(ArmMachineState *ams);
- 
- void init_gic_sysbus(ArmMachineState *ams);
- 
-+void create_uart(const ArmMachineState *ams, int uart,
-+                 MemoryRegion *mem, Chardev *chr);
+@@ -0,0 +1,100 @@
++/*
++ * Copyright (c) 2015 Linaro Limited
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU General Public License,
++ * version 2 or later, as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ *
++ * You should have received a copy of the GNU General Public License along with
++ * this program.  If not, see <http://www.gnu.org/licenses/>.*
++ */
 +
-+void create_rtc(const ArmMachineState *ams);
++#ifndef QEMU_ARM_ARM_H
++#define QEMU_ARM_ARM_H
 +
-+void create_virtio_devices(const ArmMachineState *ams);
++#include "exec/hwaddr.h"
++#include "hw/boards.h"
++#include "hw/arm/boot.h"
++#include "hw/intc/arm_gicv3_common.h"
 +
- /* Return the number of used redistributor regions  */
- static inline int virt_gicv3_redist_region_count(ArmMachineState *ams)
- {
++#define NUM_GICV2M_SPIS       64
++#define NUM_VIRTIO_TRANSPORTS 32
++#define NUM_SMMU_IRQS          4
++
++#define ARCH_GIC_MAINT_IRQ  9
++
++#define ARCH_TIMER_VIRT_IRQ   11
++#define ARCH_TIMER_S_EL1_IRQ  13
++#define ARCH_TIMER_NS_EL1_IRQ 14
++#define ARCH_TIMER_NS_EL2_IRQ 10
++
++#define VIRTUAL_PMU_IRQ 7
++
++#define PPI(irq) ((irq) + 16)
++
++
++enum {
++    VIRT_FLASH,
++    VIRT_MEM,
++    VIRT_CPUPERIPHS,
++    VIRT_GIC_DIST,
++    VIRT_GIC_CPU,
++    VIRT_GIC_V2M,
++    VIRT_GIC_HYP,
++    VIRT_GIC_VCPU,
++    VIRT_GIC_ITS,
++    VIRT_GIC_REDIST,
++    VIRT_SMMU,
++    VIRT_UART,
++    VIRT_MMIO,
++    VIRT_RTC,
++    VIRT_FW_CFG,
++    VIRT_PCIE,
++    VIRT_PCIE_MMIO,
++    VIRT_PCIE_PIO,
++    VIRT_PCIE_ECAM,
++    VIRT_PLATFORM_BUS,
++    VIRT_GPIO,
++    VIRT_SECURE_UART,
++    VIRT_SECURE_MEM,
++    VIRT_PCDIMM_ACPI,
++    VIRT_ACPI_GED,
++    VIRT_LOWMEMMAP_LAST,
++};
++
++/* indices of IO regions located after the RAM */
++enum {
++    VIRT_HIGH_GIC_REDIST2 =  VIRT_LOWMEMMAP_LAST,
++    VIRT_HIGH_PCIE_ECAM,
++    VIRT_HIGH_PCIE_MMIO,
++};
++
++/* indices of IO regions located after the RAM */
++
++typedef struct MemMapEntry {
++    hwaddr base;
++    hwaddr size;
++} MemMapEntry;
++
++typedef struct {
++    MachineClass parent;
++} ArmMachineClass;
++
++typedef struct {
++    MachineState parent;
++} ArmMachineState;
++
++#define TYPE_ARM_MACHINE   MACHINE_TYPE_NAME("arm")
++#define ARM_MACHINE(obj) \
++    OBJECT_CHECK(ArmMachineState, (obj), TYPE_ARM_MACHINE)
++#define ARM_MACHINE_GET_CLASS(obj) \
++    OBJECT_GET_CLASS(ArmMachineClass, obj, TYPE_ARM_MACHINE)
++#define ARM_MACHINE_CLASS(klass) \
++    OBJECT_CLASS_CHECK(ArmMachineClass, klass, TYPE_ARM_MACHINE)
++
++#endif /* QEMU_ARM_ARM_H */
 diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index ad94634038..086a27682f 100644
+index 71508bf40c..aa0cc852a5 100644
 --- a/include/hw/arm/virt.h
 +++ b/include/hw/arm/virt.h
-@@ -69,7 +69,6 @@ typedef struct {
-     bool virt;
-     VirtIOMMUType iommu;
-     struct arm_boot_info bootinfo;
--    uint32_t clock_phandle;
-     uint32_t msi_phandle;
-     uint32_t iommu_phandle;
-     hwaddr highest_gpa;
+@@ -37,57 +37,7 @@
+ #include "hw/block/flash.h"
+ #include "sysemu/kvm.h"
+ #include "hw/intc/arm_gicv3_common.h"
+-
+-#define NUM_GICV2M_SPIS       64
+-#define NUM_VIRTIO_TRANSPORTS 32
+-#define NUM_SMMU_IRQS          4
+-
+-#define ARCH_GIC_MAINT_IRQ  9
+-
+-#define ARCH_TIMER_VIRT_IRQ   11
+-#define ARCH_TIMER_S_EL1_IRQ  13
+-#define ARCH_TIMER_NS_EL1_IRQ 14
+-#define ARCH_TIMER_NS_EL2_IRQ 10
+-
+-#define VIRTUAL_PMU_IRQ 7
+-
+-#define PPI(irq) ((irq) + 16)
+-
+-enum {
+-    VIRT_FLASH,
+-    VIRT_MEM,
+-    VIRT_CPUPERIPHS,
+-    VIRT_GIC_DIST,
+-    VIRT_GIC_CPU,
+-    VIRT_GIC_V2M,
+-    VIRT_GIC_HYP,
+-    VIRT_GIC_VCPU,
+-    VIRT_GIC_ITS,
+-    VIRT_GIC_REDIST,
+-    VIRT_SMMU,
+-    VIRT_UART,
+-    VIRT_MMIO,
+-    VIRT_RTC,
+-    VIRT_FW_CFG,
+-    VIRT_PCIE,
+-    VIRT_PCIE_MMIO,
+-    VIRT_PCIE_PIO,
+-    VIRT_PCIE_ECAM,
+-    VIRT_PLATFORM_BUS,
+-    VIRT_GPIO,
+-    VIRT_SECURE_UART,
+-    VIRT_SECURE_MEM,
+-    VIRT_PCDIMM_ACPI,
+-    VIRT_ACPI_GED,
+-    VIRT_LOWMEMMAP_LAST,
+-};
+-
+-/* indices of IO regions located after the RAM */
+-enum {
+-    VIRT_HIGH_GIC_REDIST2 =  VIRT_LOWMEMMAP_LAST,
+-    VIRT_HIGH_PCIE_ECAM,
+-    VIRT_HIGH_PCIE_MMIO,
+-};
++#include "hw/arm/arm.h"
+ 
+ typedef enum VirtIOMMUType {
+     VIRT_IOMMU_NONE,
+@@ -95,13 +45,8 @@ typedef enum VirtIOMMUType {
+     VIRT_IOMMU_VIRTIO,
+ } VirtIOMMUType;
+ 
+-typedef struct MemMapEntry {
+-    hwaddr base;
+-    hwaddr size;
+-} MemMapEntry;
+-
+ typedef struct {
+-    MachineClass parent;
++    ArmMachineClass parent;
+     bool disallow_affinity_adjustment;
+     bool no_its;
+     bool no_pmu;
+@@ -113,7 +58,7 @@ typedef struct {
+ } VirtMachineClass;
+ 
+ typedef struct {
+-    MachineState parent;
++    ArmMachineState parent;
+     Notifier machine_done;
+     DeviceState *platform_bus_dev;
+     FWCfgState *fw_cfg;
 -- 
 2.18.1
 

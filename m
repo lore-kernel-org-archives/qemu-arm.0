@@ -1,65 +1,65 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4784987lfp;
-        Sun, 16 Feb 2020 23:43:35 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyQB0DJm9ziizK6ah8xpAT5XmDLKEC8ODLO14dIwl/PV3qa514JmZzQp991f5nuygGvAnTR
-X-Received: by 2002:aed:2be4:: with SMTP id e91mr12372053qtd.148.1581925415207;
-        Sun, 16 Feb 2020 23:43:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581925415; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4785022lfp;
+        Sun, 16 Feb 2020 23:43:37 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxgM7zlpji+bJULDG7d6ztSzDhj7VGBseaF9y1kyVmDH86mmuqBC7aPKvaEv7H8D3vDy5y/
+X-Received: by 2002:ac8:694f:: with SMTP id n15mr12177206qtr.372.1581925417510;
+        Sun, 16 Feb 2020 23:43:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581925417; cv=none;
         d=google.com; s=arc-20160816;
-        b=0FqDYestXwIdUeUAa/zScQ4aD15I1J/ZZwZ/0xhsUgPBTJEPxH9UbdwO/PuQT0C+bh
-         bQpMqX9rwtldbQYecd697gjOlfS2mScMmbAG9pYs5G2s2kBf4LzrCnu7Tco9eN5CoJmP
-         jQXzzSFyHuT4Pahth+sIp/mMSuMwewKcWoNxBjDAFCX/w4i8WZB2u5bh/oEHwMZfSqRp
-         YD/ELYYRYId67ouBu+9DDQ0v6CUMoObg+RauLOZcz9hh8k1k6QXkVkV/NSGQ90Vmj0gn
-         1tDIZg6vQLB1fbTadQOhCz3qdj+sLqgvDEa0rtM7ewm3/1gSrERIrjPRrvALSR32IKTp
-         UoDA==
+        b=p6VuJ71KaV1dZAa1p9XgIbHQLQAY8yXlCEr8up+iJ08zwijGPTY603FkYIA/34FTfG
+         qVvtrFxg/zNKtCL/+EnIJ01Ii58xy1nra9c1Ng75XRFqqzSJ0JzbkGN298Jc5TAQBtku
+         iiwg7X4vsXP431mbeoXGpZc98jDA24EzodEmtmMJw+vmSFklpONjYR08TfNahiUwVp6X
+         uOvjOW/Hxvwu5m8W2mybYcJReoNgr/aWTaK/uz8P3Q8sgoOJHm6Eezo5XJrvtxr4+ANo
+         qsAaoApMlwdiJAkcU8VkggwhgrinxGDERWuAxGLRmE+uWoq4rmiaBYpjKVyqyNfX0IrM
+         m8Sg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=P44/5Ek+Mz9pJkDpqNmtp7VjQ6kjS3HV9MBHbCe6kVw=;
-        b=0GjKghY+pz9foPI/Q3qaMWB6AJBtIeI6js6PGxQDmd9XNVqRuHB7fq0GeBpgcf+XSg
-         2u2aK+u5CVnB/H5W4cNiAF0VTsvdwPyVERs9lEcL0WoZ7QT1+950OGAmZHxTUIVRcm/3
-         Hnr+xGcygklHIj00c59VrlnprDfS4LWjITDQJXYjphBLLZJS0cTvshBW3/Y1gNKQ0GCV
-         mc1a+AJeRXAeOseRyM3ck19AAyn2N3pdDVzPZCMS8mTQoRm9ifD9PNA7VOCwbX7kKVd0
-         lfa3qdgoIKorX1MDcqSe+7bP2I1xbOpzjvZGjco70U50WBz0ubmXKwFSwp0nbi8fTyoy
-         tvNg==
+        bh=fHUygRcnWSblJjHh0kqrOZVRzxnQvmgn8770GDvUy48=;
+        b=VJqxhvSTtp/Nccn0wqn0h6kUGF3OK9Jpsil4eZ0dYrjFHH1R3F163CT9CyD+VIBm0G
+         TNW9z0gF0+okbeUEYfr3CdV9C/fqInkwK2cVpbO84O+dvSFAgnidakTr/6oZIBcoqMzv
+         altzclNKdP/7jCLYaSBihWIHdTq/MorBqzwURG9+CyrPeUEVAPSv1oVr4UldloT18zSc
+         J2m1H7fitCu/LxVB7rirtTQRAbRiVAfa225dt+16mSBQreBeL/ioLIh6jYyXpG3Wi3Zl
+         1rvjJ9wdDkjQM/Kf+tM6XA1s5gS1OylmnOBcfxFBSLtVjipwf0rfqDS63Vgc/4tTYXXB
+         P7FA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o34si5975150qtd.109.2020.02.16.23.43.35
+        by mx.google.com with ESMTPS id l17si6005995qvu.9.2020.02.16.23.43.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Feb 2020 23:43:35 -0800 (PST)
+        Sun, 16 Feb 2020 23:43:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41424 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41426 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3b42-0005ws-GI
-	for alex.bennee@linaro.org; Mon, 17 Feb 2020 02:43:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39288)
+	id 1j3b44-00062p-VK
+	for alex.bennee@linaro.org; Mon, 17 Feb 2020 02:43:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39254)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <xuyandong2@huawei.com>) id 1j3b2v-0004Hc-Kc
- for qemu-devel@nongnu.org; Mon, 17 Feb 2020 02:42:27 -0500
+ (envelope-from <xuyandong2@huawei.com>) id 1j3b2u-0004Gy-IZ
+ for qemu-devel@nongnu.org; Mon, 17 Feb 2020 02:42:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <xuyandong2@huawei.com>) id 1j3b2t-0000U0-Q0
- for qemu-devel@nongnu.org; Mon, 17 Feb 2020 02:42:25 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:45474 helo=huawei.com)
+ (envelope-from <xuyandong2@huawei.com>) id 1j3b2s-0000So-Tm
+ for qemu-devel@nongnu.org; Mon, 17 Feb 2020 02:42:24 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:36470 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <xuyandong2@huawei.com>)
- id 1j3b2q-0000Jp-F4; Mon, 17 Feb 2020 02:42:20 -0500
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id C1114725AEB8CBDF36BB;
- Mon, 17 Feb 2020 15:42:14 +0800 (CST)
-Received: from localhost (10.175.124.177) by DGGEMS414-HUB.china.huawei.com
- (10.3.19.214) with Microsoft SMTP Server id 14.3.439.0; Mon, 17 Feb 2020
- 15:42:06 +0800
+ id 1j3b2q-0000JD-FD; Mon, 17 Feb 2020 02:42:20 -0500
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id EAFCB999BEF12C43F04B;
+ Mon, 17 Feb 2020 15:42:13 +0800 (CST)
+Received: from localhost (10.175.124.177) by DGGEMS409-HUB.china.huawei.com
+ (10.3.19.209) with Microsoft SMTP Server id 14.3.439.0; Mon, 17 Feb 2020
+ 15:42:07 +0800
 From: Xu Yandong <xuyandong2@huawei.com>
 To: <peter.maydell@linaro.org>
-Subject: [PATCH RFC 05/16] hw/arm: move shared smp_cpus member to ArmMachine
-Date: Mon, 17 Feb 2020 02:51:17 -0500
-Message-ID: <1581925888-103620-6-git-send-email-xuyandong2@huawei.com>
+Subject: [PATCH RFC 06/16] hw/arm/virt: split MSI related codes from create_gic
+Date: Mon, 17 Feb 2020 02:51:18 -0500
+Message-ID: <1581925888-103620-7-git-send-email-xuyandong2@huawei.com>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1581925888-103620-1-git-send-email-xuyandong2@huawei.com>
 References: <1581925888-103620-1-git-send-email-xuyandong2@huawei.com>
@@ -69,7 +69,7 @@ X-Originating-IP: [10.175.124.177]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.35
+X-Received-From: 45.249.212.32
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,139 +82,53 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: zhang.zhanghailiang@huawei.com, slp@redhat.com,
- "Michael S. Tsirkin" <mst@redhat.com>, Xu Yandong <xuyandong2@huawei.com>,
- qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>, wu.wubin@huawei.com
+ Xu Yandong <xuyandong2@huawei.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ wu.wubin@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j+WuFj4XJZ7W
+X-TUID: YueinfqCHN8D
 
-Move smp_cpus member from VirtMachineState to ArmMachineState.
+GICv2m and GICits is not always needed.
 
-Cc: Michael S. Tsirkin <mst@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>
-Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
 Signed-off-by: Xu Yandong <xuyandong2@huawei.com>
 ---
- hw/arm/virt-acpi-build.c |  4 ++--
- hw/arm/virt.c            | 12 ++++++------
- include/hw/arm/arm.h     |  1 +
- include/hw/arm/virt.h    |  3 +--
- 4 files changed, 10 insertions(+), 10 deletions(-)
+ hw/arm/virt.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 27e6c95eca..ef2761ef77 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -623,7 +623,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     gicd->base_address = cpu_to_le64(memmap[VIRT_GIC_DIST].base);
-     gicd->version = vms->gic_version;
- 
--    for (i = 0; i < vms->smp_cpus; i++) {
-+    for (i = 0; i < ams->smp_cpus; i++) {
-         AcpiMadtGenericCpuInterface *gicc = acpi_data_push(table_data,
-                                                            sizeof(*gicc));
-         ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
-@@ -742,7 +742,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-      * the RTC ACPI device at all when using UEFI.
-      */
-     scope = aml_scope("\\_SB");
--    acpi_dsdt_add_cpus(scope, vms->smp_cpus);
-+    acpi_dsdt_add_cpus(scope, ams->smp_cpus);
-     acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
-                        (irqmap[VIRT_UART] + ARM_SPI_BASE));
-     acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index e7eee13385..9031fd6757 100644
+index 9031fd6757..32c3977e32 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -300,7 +300,7 @@ static void fdt_add_timer_nodes(const VirtMachineState *vms)
-     if (vms->gic_version == 2) {
-         irqflags = deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
-                              GIC_FDT_IRQ_PPI_CPU_WIDTH,
--                             (1 << vms->smp_cpus) - 1);
-+                             (1 << ams->smp_cpus) - 1);
-     }
- 
-     qemu_fdt_add_subnode(ams->fdt, "/timer");
-@@ -342,7 +342,7 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-      *  The simplest way to go is to examine affinity IDs of all our CPUs. If
-      *  at least one of them has Aff3 populated, we set #address-cells to 2.
-      */
--    for (cpu = 0; cpu < vms->smp_cpus; cpu++) {
-+    for (cpu = 0; cpu < ams->smp_cpus; cpu++) {
-         ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu));
- 
-         if (armcpu->mp_affinity & ARM_AFF3_MASK) {
-@@ -355,7 +355,7 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-     qemu_fdt_setprop_cell(ams->fdt, "/cpus", "#address-cells", addr_cells);
-     qemu_fdt_setprop_cell(ams->fdt, "/cpus", "#size-cells", 0x0);
- 
--    for (cpu = vms->smp_cpus - 1; cpu >= 0; cpu--) {
-+    for (cpu = ams->smp_cpus - 1; cpu >= 0; cpu--) {
-         char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
-         ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu));
-         CPUState *cs = CPU(armcpu);
-@@ -366,7 +366,7 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-                                     armcpu->dtb_compatible);
- 
-         if (vms->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED
--            && vms->smp_cpus > 1) {
-+            && ams->smp_cpus > 1) {
-             qemu_fdt_setprop_string(ams->fdt, nodename,
-                                         "enable-method", "psci");
-         }
-@@ -525,7 +525,7 @@ static void fdt_add_pmu_nodes(const VirtMachineState *vms)
-     if (vms->gic_version == 2) {
-         irqflags = deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
-                              GIC_FDT_IRQ_PPI_CPU_WIDTH,
--                             (1 << vms->smp_cpus) - 1);
-+                             (1 << ams->smp_cpus) - 1);
-     }
- 
-     armcpu = ARM_CPU(qemu_get_cpu(0));
-@@ -1641,7 +1641,7 @@ static void machvirt_init(MachineState *machine)
-         exit(1);
-     }
- 
--    vms->smp_cpus = smp_cpus;
-+    ams->smp_cpus = smp_cpus;
- 
-     if (vms->virt && kvm_enabled()) {
-         error_report("mach-virt: KVM does not support providing "
-diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
-index 97cb902b6a..469f603e77 100644
---- a/include/hw/arm/arm.h
-+++ b/include/hw/arm/arm.h
-@@ -89,6 +89,7 @@ typedef struct {
-     MachineState parent;
-     MemMapEntry *memmap;
-     const int *irqmap;
-+    int smp_cpus;
-     void *fdt;
-     int fdt_size;
- } ArmMachineState;
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 4028821a09..dfc2a16010 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -71,7 +71,6 @@ typedef struct {
-     int32_t gic_version;
-     VirtIOMMUType iommu;
-     struct arm_boot_info bootinfo;
--    int smp_cpus;
-     uint32_t clock_phandle;
-     uint32_t gic_phandle;
-     uint32_t msi_phandle;
-@@ -104,7 +103,7 @@ static inline int virt_gicv3_redist_region_count(VirtMachineState *vms)
- 
-     assert(vms->gic_version == 3);
- 
--    return vms->smp_cpus > redist0_capacity ? 2 : 1;
-+    return ams->smp_cpus > redist0_capacity ? 2 : 1;
+@@ -605,6 +605,15 @@ static void create_v2m(VirtMachineState *vms)
+     fdt_add_v2m_gic_node(vms);
  }
  
- #endif /* QEMU_ARM_VIRT_H */
++static void gic_set_msi_interrupt(VirtMachineState *vms)
++{
++    if (vms->gic_version == 3 && vms->its) {
++        create_its(vms);
++    } else if (vms->gic_version == 2) {
++        create_v2m(vms);
++    }
++}
++
+ static void create_gic(VirtMachineState *vms)
+ {
+     MachineState *ms = MACHINE(vms);
+@@ -719,12 +728,7 @@ static void create_gic(VirtMachineState *vms)
+     }
+ 
+     fdt_add_gic_node(vms);
+-
+-    if (type == 3 && vms->its) {
+-        create_its(vms);
+-    } else if (type == 2) {
+-        create_v2m(vms);
+-    }
++    gic_set_msi_interrupt(vms);
+ }
+ 
+ static void create_uart(const VirtMachineState *vms, int uart,
 -- 
 2.18.1
 

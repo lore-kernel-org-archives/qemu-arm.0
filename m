@@ -1,712 +1,266 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5369833lfp;
-        Mon, 17 Feb 2020 11:36:40 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyFnOMS0uubqg/tajbpTW0msROBr12QIM+R0IDG7mCLM2uI4/mdFxCnM+w5P6M90+WdyWSs
-X-Received: by 2002:a37:a786:: with SMTP id q128mr14463514qke.448.1581968200125;
-        Mon, 17 Feb 2020 11:36:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581968200; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5405424lfp;
+        Mon, 17 Feb 2020 12:27:15 -0800 (PST)
+X-Received: by 2002:a6b:3a03:: with SMTP id h3mr13591330ioa.241.1581971235127;
+        Mon, 17 Feb 2020 12:27:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581971235; cv=none;
         d=google.com; s=arc-20160816;
-        b=nE+fsPcRlViiozbUheTPHsoVx0GpXGpwRzS2eA+cfKlo9gfS8oTe7PEl1DBU9FXhns
-         g7raio7uGjPWUZ2IBWPFD41LI+cuqlY0jkG+9cpphkK0F3BSafX4ABGI2RCxgvTUIIS/
-         Aerw/IMnWpQgvlqvAo5zANpwADFmycfZAXQ5liA9hZlD5td6/Le8vxx6iNXm1VRl7Fj4
-         Y1WoQrs2dXFjYCVFLRoyb6vAW4/TNV2b+RgMFXHjPbJrrIK9xcVSsBdjmRX5XHUh+aB5
-         mRSAMU6MIcaetSl4mrNrVXyJ+i4odG5JWJ+wNtWKXoUAcxBvhY2YhXbQ3va/4iXHnJ9W
-         rDeQ==
+        b=AvOIjs5uu4DY68jOJWpYftirmG7vmLFk3H34NumP6kMUftz0iDlODOvICBNXr0Uszu
+         uQmmQcNWXY5mQc+HKAK9lu9BKyz7yvcizgybIgfQNZCVnE7YPR2wfaA4sPQFTlgoxz5l
+         dQSuUbE57oQ0c9nR14v5rVTRILLYDnUB1uHRZggCrvh8pIEVf6Iunqt7koispsJa0AmW
+         HJRHTM4yxQA7vjao8C1MRRX+zlXZ2nNk+c9E4GjTJeIF/G0cx6UJKNgATcCOhOxtRMeN
+         9AUTqJCLxDWYoQR/VAekfbpBiNbtLuHu8fkrsyOyeeGd7HgYTKx1IuxJE1ucwlJCLSlS
+         OUsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=fEVMIIQ96FX3VUZKtUePl/vfZoq3yp6AbT/Ral18fPM=;
-        b=pn9GJXLnQ0DPNmUgSzybRe8alXuuxS1Q/Jf9faAbBqwpKqhLBqjI6sAL/qshxkOX8K
-         FRJMSw1LLXCZDtYeNi+mRTxHja3eSTrieJAggVrwTl62F6kEmZMfQyP5MWqX3BBg1YH6
-         6k10HiyzBsUU0x8qGyzOG2fZjldHoPZGQnrktLT3uH59Sd57wVk1VQ1vXykcu0Cafvp1
-         iLqe/G+nBvhqcHRWLAr4b0aSNskTf294iTDhTjg0bgfrMwhYg/kNwaxBK2CONuu3j1gv
-         ytOy/jNXVRy4nUMibZL8esXsIm9cfEFsMsRlz+EPvojrC3o1NXmOfDedLTvqLA0pFzIk
-         ePFg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=WGVGJR17GkdVB9ljDQdhlnTm1kjSiWcfZ0HqZbiRloA=;
+        b=s+Jd1gdIXGz6VisIryJSSEQQptn060r83XtaAVl59R8+5ytBJzk1U7Y4IVMPG+6TO+
+         z3wcZIuR5mw2nHJvPdeuJhOqrTMzTiDIv9Qhi3j0e4HLecnANd6uDuoCTy2lYjUTUBgY
+         jvy0CB8wS3QU2oHM5JZJhzIjuXYVKHNzzRif4Fkl4ieGoJLCiFHlsi7BM0hGFYdFl0Z6
+         kEnqleJZ1hoZxs0YT5Ij+E5ui3ENd0sePqMmJA1hf1cFMwLE9IFc//U9aXFAyq2QYrU9
+         M3aw9FJH/By7zuHpFzDpIBk/vdb9fMjF/QjK05zAyhhXB19gQnQXdLxdRVxs1Kto22ix
+         kahw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GA6Js8ah;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h4si709188qtp.117.2020.02.17.11.36.39
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Feb 2020 11:36:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IvygvMhB;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id u24sor1348627iot.86.2020.02.17.12.27.14
+        (Google Transport Security);
+        Mon, 17 Feb 2020 12:27:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GA6Js8ah;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52074 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3mC7-0003KS-IX
-	for alex.bennee@linaro.org; Mon, 17 Feb 2020 14:36:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56446)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1j3mAD-0000OP-2k
- for qemu-devel@nongnu.org; Mon, 17 Feb 2020 14:34:43 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1j3mAA-0005ij-Km
- for qemu-devel@nongnu.org; Mon, 17 Feb 2020 14:34:40 -0500
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:44699)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1j3mAA-0005hu-At; Mon, 17 Feb 2020 14:34:38 -0500
-Received: by mail-il1-x144.google.com with SMTP id s85so15205206ill.11;
- Mon, 17 Feb 2020 11:34:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=fEVMIIQ96FX3VUZKtUePl/vfZoq3yp6AbT/Ral18fPM=;
- b=GA6Js8ahXZ0Il2kMpfbsZTccaMFqiINsrz7qBr6HsOSuINfO5nA2KQ5FMm4k+x/Qtd
- 3nrCwawj1hjGfwCsoEY1E6pkeCjgr2wciloSXgMWKgqhhLV6b7iDqT2PKrvsZxmjwvy7
- 5wXzOHuMIH+/Ai2VhrVO7q5aZxKMduGj4m4ZJqa0ieas6E8sFCDoUJMUzGHYEYLJju+J
- GKrWnnlbEZjHUvkXvxDKra74hoJTV/3S3FIPLuRHMlaIWPkSI2yHSkoteVNF1OwaQCS7
- Ijq2pvQPtefWku2iRR8mdHmnAQtkvUvpZF+ox8K0DltmMIwmPBD5y0DadeOuq+EipeDm
- r5tA==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IvygvMhB;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=WGVGJR17GkdVB9ljDQdhlnTm1kjSiWcfZ0HqZbiRloA=;
+        b=IvygvMhBaNhgfXbBp6NGtil/Xbzq7wsYwENi/f0OjI05vAUCGN7FhYlqPLz/PU7crF
+         QdqfoHvAV+vNYNLvv3UTqiVNteKu7gwoGMF7sANoCR6HgtthbfbGan8NxEM8R1peIjLr
+         n17kDwywPlzGjY1cX7As4+Nzoi0J2O3pHFpWkOrf4m5hwA+BF7b3m5LSvMuUPpymQ5aY
+         auqaRuGagLYtuNn8oZza4m+AkOjl/TAbhaJ9l/u/6cWQtAvQigbPHYbv+/e6m95o6LRM
+         ZcJdduWO4sf1c8MtB+fZVk1gOPduXAzqQv+wcBoSOK2oIlIR95IH/i+tPbbW3y5x1B+7
+         QXog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=fEVMIIQ96FX3VUZKtUePl/vfZoq3yp6AbT/Ral18fPM=;
- b=GQ/jUN7oJ5q13dTZTZu/CMKmj/BmG7d7RUPVuRD9xgdocqj/sbxcgQHexSpJWOjCj0
- wTyIMPUd7R7rYYc6g9jAt7PIAM0S7NF3JNiGYTdMFhhQxkPBk391dixSuJPGTbnx3PRR
- yMwlMBZWPL0UCCdCBnsfNtG9koOWqj2H7v76iqQ3zYqs6xtqs0VhqcDoeQIsNgqXw+zh
- 20R+puqxUFKNuhQOPui1MKcwl8eU5sEQDIdDMhvS9GMMhM7kHIgRFIbG52YTdghxe1ej
- CJBHiDgMyBLHht4j3wFYBYZGwYiaalNDMn/VCKCF7WAxg+S4G2nk0B7itZ+1qj0hy5Vf
- J8gQ==
-X-Gm-Message-State: APjAAAWTQuwyaQ+Q754fNSbL5NA8NVsmDyL4P56gszMJajMz3VBw9W68
- EgpibpVDi9YE+kcTbBzzD0Bm7s0nD2Ieo+pRU9s=
-X-Received: by 2002:a92:81d9:: with SMTP id q86mr15274561ilk.67.1581968077215; 
- Mon, 17 Feb 2020 11:34:37 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=WGVGJR17GkdVB9ljDQdhlnTm1kjSiWcfZ0HqZbiRloA=;
+        b=BwmXzPyY2D2LqO84rDXneZGoPC/J05lSiWWNHS0+izaS47yV98EKzrSx4QQte+ZC9R
+         7YhDJw7jEjriEq+/rfoECS7tjj6SQirvMiDB9gZhtJrV/bEKE8nDfV4I54SA0W31BCYJ
+         KlzOSkRCLk+R8vkFfjDILmhjOq+d1uwSi5G51v6c9J2SqpQMCVWI252E8sguB/epdrDo
+         JSelTByAs68JQhBR0WVs45UzFHsjujiiNfusqQbj8+7l+Uk1Y4blo5KDcCws9nPdp6Ld
+         k7IRs1jahCP5vwX9ov/t9XcLrQIbmc4Y8ex/9rT13Krk6As0XDi63ZAifNffEzmT7kNE
+         gT1A==
+X-Gm-Message-State: APjAAAWJBigE3whRZNx/ubv8AnWqMsc5/VDxmLMmtvmS933JWjYSJ0G2
+	+eo2sGavSh8kQZhzYAXVHr1Yu2fT4nBjvJ95nsY=
+X-Google-Smtp-Source: APXvYqwAlxkmUsBoeo1q6NlMIv4rrmAW6qM5cGN6Ze7uBu4VSwpaG9H/IcQQtm8EOG222B+TgYHcDRaul0AImZyjLM8=
+X-Received: by 2002:a5d:8f17:: with SMTP id f23mr13468253iof.265.1581971234763;
+ Mon, 17 Feb 2020 12:27:14 -0800 (PST)
 MIME-Version: 1.0
-References: <20200108200020.4745-1-nieklinnenbank@gmail.com>
- <20200108200020.4745-8-nieklinnenbank@gmail.com>
- <8be03fbb-74f2-e688-76b1-ab504f25f8e4@redhat.com>
- <20200120175918.GA2949@minyard.net>
- <CAPan3WpJ_L7OyiC0hod0e436xOUZ2sHCfQqRmAsvD7hTPrBsDg@mail.gmail.com>
- <20200203131017.GE2626@minyard.net>
- <CAPan3Wr=JFwHPChPfN6kng9ZZhrbprc8ZuXjHS5cErPuV-FzJg@mail.gmail.com>
- <CAPan3WrE77GePz-mgz1otf1iiK8nDZ+RK2NF5ueRoHbDmpS1_w@mail.gmail.com>
- <CAP+75-XQKisiLaTFXc2JuCvORkfFjfs0UPzjzyj1PrKGScR7Ow@mail.gmail.com>
-In-Reply-To: <CAP+75-XQKisiLaTFXc2JuCvORkfFjfs0UPzjzyj1PrKGScR7Ow@mail.gmail.com>
+References: <20200119005102.3847-1-nieklinnenbank@gmail.com>
+ <CAPan3WpV2m9HXLXZDopKUb2EfX2KE9y530m2pJG4-D96==ggCg@mail.gmail.com> <ee95179f-c15f-9615-e241-80199e6948b7@redhat.com>
+In-Reply-To: <ee95179f-c15f-9615-e241-80199e6948b7@redhat.com>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Mon, 17 Feb 2020 20:34:25 +0100
-Message-ID: <CAPan3WqVrrbuQ2tiMr58bcd0Gie5Ym4=pXCG68trdqxmurgMcA@mail.gmail.com>
-Subject: Re: [PATCH v3 07/17] hw/arm/allwinner: add Security Identifier device
+Date: Mon, 17 Feb 2020 21:27:03 +0100
+Message-ID: <CAPan3WpG0yPu5sbS=mpHk=xNVGaqwWFrBcDBcovLLRit==5dwg@mail.gmail.com>
+Subject: Re: [PATCH v4 00/20] Add Allwinner H3 SoC and Orange Pi PC Machine
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="00000000000049dab1059ecaa516"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::144
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Yury Kotov <yury-kotov@yandex-team.ru>, qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RaX2FJpK+Z+V
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Peter Maydell <peter.maydell@linaro.org>, Beniamino Galvani <b.galvani@gmail.com>, jasowang@redhat.com, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Igor Mammedov <imammedo@redhat.com>
+Content-Type: multipart/alternative; boundary="0000000000007e35b1059ecb615e"
+X-TUID: rxGZ9fNyIFOY
 
---00000000000049dab1059ecaa516
+--0000000000007e35b1059ecb615e
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Feb 12, 2020 at 11:48 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
+Hi Philippe,
+
+On Wed, Feb 12, 2020 at 11:12 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
 .com>
 wrote:
 
-> )-.On Wed, Feb 12, 2020 at 10:31 PM Niek Linnenbank
-> <nieklinnenbank@gmail.com> wrote:
+> On 2/12/20 10:47 PM, Niek Linnenbank wrote:
+> > Hi all,
 > >
-> > Hi Corey,
+> > Short status update regarding this series.
 > >
-> > On Thu, Feb 6, 2020 at 10:09 PM Niek Linnenbank <
-> nieklinnenbank@gmail.com> wrote:
-> >>
-> >> Hi Corey,
-> >>
-> >> On Mon, Feb 3, 2020 at 2:10 PM Corey Minyard <cminyard@mvista.com>
-> wrote:
-> >>>
-> >>> On Sun, Feb 02, 2020 at 10:27:49PM +0100, Niek Linnenbank wrote:
-> >>> > Hi Corey,
-> >>> >
-> >>> > Thanks for reviewing!
-> >>> >
-> >>> > On Mon, Jan 20, 2020 at 6:59 PM Corey Minyard <cminyard@mvista.com>
-> wrote:
-> >>> >
-> >>> > > On Sat, Jan 18, 2020 at 04:25:08PM +0100, Philippe Mathieu-Daud=
-=C3=A9
-> wrote:
-> >>> > > > Cc'ing Corey/David for good advices about using UUID.
-> >>> > >
-> >>> > > Is there any reason you didn't use the built-in qemu UUID for
-> this?  It
-> >>> > > would simplify things in general.
-> >>> > >
-> >>> >
-> >>> > Currently the Allwinner SID device is using the QemuUUID type from
-> >>> > include/qemu/uuid.h.
-> >>> > Is that the build-in UUID you are referring to or should I use
-> something
-> >>> > else?
-> >>>
-> >>> You are using the QemuUUID type, which is of course what you should d=
-o,
-> >>> but you aren't using the UUID generated by qemu (at least that I can
-> find).
-> >>> That in include/sysemu/sysemu.h and is named qemu_uuid.  Whether you
-> >>> should use that or not depends on your needs.  If you just need some
-> >>> uuid, then that's what you should probably use.  If you need somethin=
-g
-> >>> the user can individually control for this device, for instance, then
-> >>> that probably won't do.
-> >>
-> >>
-> >> Ah I did not know about the qemu_uuid variable, thanks for pointing
-> that out.
-> >> Basically the SID identifier is a number that is unique for each board
-> that comes
-> >> out of the factory. It is currently used by U-Boot to as input to
-> generate a MAC address.
-> >>
-> >> If I understand correctly, qemu_uuid is optional and by default zero.
-> >> However the SID value should not be zero, as otherwise U-Boot can't
-> pick a MAC address
-> >> resulting in a non-working ethernet device.
-> >>
-> >> Currently the hw/arm/orangepi.c machine specifies a fixed SID to be
-> used for the emulated board,
-> >> also containing a prefix (8100c002) that indicates the H3 chipset. One
-> thing that I am strugling with is that
->
-> Suggestion while reading this, you might display a warning if the user
-> provided UUID doesn't start with 8100c002.
->
-
-Yeah sure, I can add a warning for it.
-
-
->
-> >> I'm not able to override the property using '-global', if
-> hw/arm/orangepi.c initializes the property with qdev_prop_set_string:
-> >>
-> >> $ qemu-system-arm -M orangepi-pc -kernel u-boot -nographic -nic user \
-> >> -global allwinner-sid.identifier=3D8100c002-0001-0002-0003-00004455668=
-8
-> >>
-> >> If I don't set the property in hw/arm/orangepi.c, I can set it with
-> '-global'. Do you perhaps have a
-> >> recommendation how to improve that? Basically what is needed is that
-> the machine sets the default
-> >> property including the chip prefix, and that the user can override it.
-> Although it is not required for a
-> >> working emulated board, it would be a nice-to-have that the user can
-> set it.
+> > Currently I am debugging booting NetBSD 9.0-RC2, which is recently
+> > released [1]
+> > The problem is that, apparently, RC2 can't mount the rootfs properly:
 > >
+> > [   3.1871510] vfs_mountroot: can't open root device
+> > [   3.2141370] cannot mount root, error =3D 6
 > >
-> > FYI and possibly others who have a similar usecase, I figured out how t=
-o
-> do this. In the machine init function,
-> > after creating the new SoC object, simply check if the identifier has a
-> value:
-> >
-> > +    if (qemu_uuid_is_null(&s->h3->sid.identifier)) {
-> > +        qdev_prop_set_string(DEVICE(s->h3), "identifier",
-> > +                             "8100c002-0001-0002-0003-000044556677");
+> > This only happens using the RC2 filesystem image. However, the RC2
+> > kernel can
+> > properly load & boot the RC1 filesystem image, and the RC1 kernel gives
+> > the same error
+> > on the RC2 filesystem.  But I dont think its a NetBSD-RC2 issue, becaus=
+e
+> > on a real
+> > Orange Pi PC hardware board, this problem does not show.
 >
-> Similarly, display a warning "No UUID provided, using default one..."
-> (or generate one 8100c002-XXX)?
+> Linux shows:
+>    console: mmc0: Problem switching card into high-speed mode!
 >
+> QEMU MMC support is not in good shape, and high-speed SD card support is
+> limited. I keep procrastinating at reviewing your SDHCI patch hmmmmm.
+>
+> So you added:
+>
+>   * DMA transfers
+>   * Direct FIFO I/O
+>   * Short/Long format command responses
+>
+> I'd start diffing the trace output of the following events:
+>
+> allwinner_sdhost*
+> sdcard*
+>
+> with both kernels.
+>
+> Thanks for the kind suggestions Philippe.
+Indeed, comparing the trace files of both the RC1 and RC2 kernels is one of
+the things I did, and many more.
 
-If its allright with you, I would prefer not to display a warning for the
-default behavior.
-The other boards are also not displaying such warnings and it keeps the
-qemu output clean.
+After extensive low-level debugging, I discovered that the issue is much
+more simple than I thought.
+In particular, when using -sd <file>, the emulated device gets the same
+physical size as the file.
+Normally this is not a problem, but for the NetBSD RC2 image, the kernel
+reads the MBR partition table,
+compares it with the device size and concludes that the NetBSD partition in
+the image is larger than the actual device.
 
+Unfortunately, this root cause is not printed on the NetBSD console, only
+the final  'can't open root device' message.
+Also, when running on hardware, obviously the SD card will be larger, e.g.
+4GB or more, so that is why this issue does not show.
 
->
-> > +    }
-> >
-> > That way, if the user passed -global to override it, the machine will
-> not overrule the user's value
-> > and by default the machine sets an identifier containing the H3 specifi=
-c
-> chip prefix.
-> >
-> [...]
-> >>> > > > > --- /dev/null
-> >>> > > > > +++ b/hw/misc/allwinner-sid.c
-> >>> > > > > @@ -0,0 +1,170 @@
-> >>> > > > > +/*
-> >>> > > > > + * Allwinner Security ID emulation
-> >>> > > > > + *
-> >>> > > > > + * Copyright (C) 2019 Niek Linnenbank <
-> nieklinnenbank@gmail.com>
-> >>> > > > > + *
-> >>> > > > > + * This program is free software: you can redistribute it
-> and/or
-> >>> > > modify
-> >>> > > > > + * it under the terms of the GNU General Public License as
-> published
-> >>> > > by
-> >>> > > > > + * the Free Software Foundation, either version 2 of the
-> License, or
-> >>> > > > > + * (at your option) any later version.
-> >>> > > > > + *
-> >>> > > > > + * This program is distributed in the hope that it will be
-> useful,
-> >>> > > > > + * but WITHOUT ANY WARRANTY; without even the implied
-> warranty of
-> >>> > > > > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See
-> the
-> >>> > > > > + * GNU General Public License for more details.
-> >>> > > > > + *
-> >>> > > > > + * You should have received a copy of the GNU General Public
-> License
-> >>> > > > > + * along with this program.  If not, see <
-> >>> > > http://www.gnu.org/licenses/>.
-> >>> > > > > + */
-> >>> > > > > +
-> >>> > > > > +#include "qemu/osdep.h"
-> >>> > > > > +#include "qemu/units.h"
-> >>> > > > > +#include "hw/sysbus.h"
-> >>> > > > > +#include "migration/vmstate.h"
-> >>> > > > > +#include "qemu/log.h"
-> >>> > > > > +#include "qemu/module.h"
-> >>> > > > > +#include "qemu/guest-random.h"
-> >>> > > > > +#include "qapi/error.h"
-> >>> > > > > +#include "hw/qdev-properties.h"
-> >>> > > > > +#include "hw/misc/allwinner-sid.h"
-> >>> > > > > +#include "trace.h"
-> >>> > > > > +
-> >>> > > > > +/* SID register offsets */
-> >>> > > > > +enum {
-> >>> > > > > +    REG_PRCTL =3D 0x40,   /* Control */
-> >>> > > > > +    REG_RDKEY =3D 0x60,   /* Read Key */
-> >>> > > > > +};
-> >>> > > > > +
-> >>> > > > > +/* SID register flags */
-> >>> > > > > +enum {
-> >>> > > > > +    REG_PRCTL_WRITE   =3D 0x0002, /* Unknown write flag */
-> >>> > > > > +    REG_PRCTL_OP_LOCK =3D 0xAC00, /* Lock operation */
-> >>> > > > > +};
-> >>> > > > > +
-> >>> > > > > +static uint64_t allwinner_sid_read(void *opaque, hwaddr
-> offset,
-> >>> > > > > +                                   unsigned size)
-> >>> > > > > +{
-> >>> > > > > +    const AwSidState *s =3D AW_SID(opaque);
-> >>> > > > > +    uint64_t val =3D 0;
-> >>> > > > > +
-> >>> > > > > +    switch (offset) {
-> >>> > > > > +    case REG_PRCTL:    /* Control */
-> >>> > > > > +        val =3D s->control;
-> >>> > > > > +        break;
-> >>> > > > > +    case REG_RDKEY:    /* Read Key */
-> >>> > > > > +        val =3D s->rdkey;
-> >>> > > > > +        break;
-> >>> > > > > +    default:
-> >>> > > > > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds
-> offset
-> >>> > > 0x%04x\n",
-> >>> > > > > +                      __func__, (uint32_t)offset);
-> >>> > > > > +        return 0;
-> >>> > > > > +    }
-> >>> > > > > +
-> >>> > > > > +    trace_allwinner_sid_read(offset, val, size);
-> >>> > > > > +
-> >>> > > > > +    return val;
-> >>> > > > > +}
-> >>> > > > > +
-> >>> > > > > +static void allwinner_sid_write(void *opaque, hwaddr offset,
-> >>> > > > > +                                uint64_t val, unsigned size)
-> >>> > > > > +{
-> >>> > > > > +    AwSidState *s =3D AW_SID(opaque);
-> >>> > > > > +
-> >>> > > > > +    trace_allwinner_sid_write(offset, val, size);
-> >>> > > > > +
-> >>> > > > > +    switch (offset) {
-> >>> > > > > +    case REG_PRCTL:    /* Control */
-> >>> > > > > +        s->control =3D val;
-> >>> > > > > +
-> >>> > > > > +        if ((s->control & REG_PRCTL_OP_LOCK) &&
-> >>> > > > > +            (s->control & REG_PRCTL_WRITE)) {
-> >>> > > > > +            uint32_t id =3D s->control >> 16;
-> >>> > > > > +
-> >>> > > > > +            if (id < sizeof(QemuUUID)) {
-> >>> > > > > +                s->rdkey =3D (s->identifier.data[id]) |
-> >>> > > > > +                           (s->identifier.data[id + 1] << 8)=
- |
-> >>> > > > > +                           (s->identifier.data[id + 2] << 16=
-)
-> |
-> >>> > > > > +                           (s->identifier.data[id + 3] << 24=
-);
->
-> Maybe you want:
->
->   s->rdkey =3D ldl_le_p(s->identifier.data);
->
+So the fix is to extend the input image by a few megabytes before booting
+it.
+And on the positive side, with this search we now have more confidence that
+the
+emulated SD/MMC device in Qemu works as expected.
 
-Thanks Philippe, I'll use this function to set s->rdkey.
-
-Regards,
+Kind regards,
 Niek
 
 
->
-> >>> > > > > +            }
-> >>> > > > > +        }
-> >>> > > > > +        s->control &=3D ~REG_PRCTL_WRITE;
-> >>> > > > > +        break;
-> >>> > > > > +    case REG_RDKEY:    /* Read Key */
-> >>> > > > > +        break;
-> >>> > > > > +    default:
-> >>> > > > > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds
-> offset
-> >>> > > 0x%04x\n",
-> >>> > > > > +                      __func__, (uint32_t)offset);
-> >>> > > > > +        break;
-> >>> > > > > +    }
-> >>> > > > > +}
-> > > > > > +}
-> [...]
+> >
+> > I'm comparing traces and adding more low-level debug output to NetBSD
+> > and QEMU to find the issue.
+> >
+> > Also I processed the review remarks which were send so far.
+> >
+> > Kind regards,
+> > Niek
+> >
+> > [1] https://www.netbsd.org/releases/formal-9/NetBSD-9.0.html
 >
 >
 
 --=20
 Niek Linnenbank
 
---00000000000049dab1059ecaa516
+--0000000000007e35b1059ecb615e
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Feb 12, 2020 at 11:48 PM Phil=
+<div dir=3D"ltr"><div>Hi Philippe,<br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Feb 12, 2020 at 11:12 PM Phil=
 ippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@red=
 hat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
 margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
-t:1ex">)-.On Wed, Feb 12, 2020 at 10:31 PM Niek Linnenbank<br>
-&lt;<a href=3D"mailto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinne=
-nbank@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; Hi Corey,<br>
-&gt;<br>
-&gt; On Thu, Feb 6, 2020 at 10:09 PM Niek Linnenbank &lt;<a href=3D"mailto:=
-nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt=
-; wrote:<br>
-&gt;&gt;<br>
-&gt;&gt; Hi Corey,<br>
-&gt;&gt;<br>
-&gt;&gt; On Mon, Feb 3, 2020 at 2:10 PM Corey Minyard &lt;<a href=3D"mailto=
-:cminyard@mvista.com" target=3D"_blank">cminyard@mvista.com</a>&gt; wrote:<=
-br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; On Sun, Feb 02, 2020 at 10:27:49PM +0100, Niek Linnenbank wrot=
-e:<br>
-&gt;&gt;&gt; &gt; Hi Corey,<br>
-&gt;&gt;&gt; &gt;<br>
-&gt;&gt;&gt; &gt; Thanks for reviewing!<br>
-&gt;&gt;&gt; &gt;<br>
-&gt;&gt;&gt; &gt; On Mon, Jan 20, 2020 at 6:59 PM Corey Minyard &lt;<a href=
-=3D"mailto:cminyard@mvista.com" target=3D"_blank">cminyard@mvista.com</a>&g=
-t; wrote:<br>
-&gt;&gt;&gt; &gt;<br>
-&gt;&gt;&gt; &gt; &gt; On Sat, Jan 18, 2020 at 04:25:08PM +0100, Philippe M=
-athieu-Daud=C3=A9 wrote:<br>
-&gt;&gt;&gt; &gt; &gt; &gt; Cc&#39;ing Corey/David for good advices about u=
-sing UUID.<br>
-&gt;&gt;&gt; &gt; &gt;<br>
-&gt;&gt;&gt; &gt; &gt; Is there any reason you didn&#39;t use the built-in =
-qemu UUID for this?=C2=A0 It<br>
-&gt;&gt;&gt; &gt; &gt; would simplify things in general.<br>
-&gt;&gt;&gt; &gt; &gt;<br>
-&gt;&gt;&gt; &gt;<br>
-&gt;&gt;&gt; &gt; Currently the Allwinner SID device is using the QemuUUID =
-type from<br>
-&gt;&gt;&gt; &gt; include/qemu/uuid.h.<br>
-&gt;&gt;&gt; &gt; Is that the build-in UUID you are referring to or should =
-I use something<br>
-&gt;&gt;&gt; &gt; else?<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; You are using the QemuUUID type, which is of course what you s=
-hould do,<br>
-&gt;&gt;&gt; but you aren&#39;t using the UUID generated by qemu (at least =
-that I can find).<br>
-&gt;&gt;&gt; That in include/sysemu/sysemu.h and is named qemu_uuid.=C2=A0 =
-Whether you<br>
-&gt;&gt;&gt; should use that or not depends on your needs.=C2=A0 If you jus=
-t need some<br>
-&gt;&gt;&gt; uuid, then that&#39;s what you should probably use.=C2=A0 If y=
-ou need something<br>
-&gt;&gt;&gt; the user can individually control for this device, for instanc=
-e, then<br>
-&gt;&gt;&gt; that probably won&#39;t do.<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; Ah I did not know about the qemu_uuid variable, thanks for pointin=
-g that out.<br>
-&gt;&gt; Basically the SID identifier is a number that is unique for each b=
-oard that comes<br>
-&gt;&gt; out of the factory. It is currently used by U-Boot to as input to =
-generate a MAC address.<br>
-&gt;&gt;<br>
-&gt;&gt; If I understand correctly, qemu_uuid is optional and by default ze=
-ro.<br>
-&gt;&gt; However the SID value should not be zero, as otherwise U-Boot can&=
-#39;t pick a MAC address<br>
-&gt;&gt; resulting in a non-working ethernet device.<br>
-&gt;&gt;<br>
-&gt;&gt; Currently the hw/arm/orangepi.c machine specifies a fixed SID to b=
-e used for the emulated board,<br>
-&gt;&gt; also containing a prefix (8100c002) that indicates the H3 chipset.=
- One thing that I am strugling with is that<br>
-<br>
-Suggestion while reading this, you might display a warning if the user<br>
-provided UUID doesn&#39;t start with 8100c002.<br></blockquote><div><br></d=
-iv><div>Yeah sure, I can add a warning for it.</div><div>=C2=A0</div><block=
-quote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1=
-px solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt;&gt; I&#39;m not able to override the property using &#39;-global&#39;,=
- if hw/arm/orangepi.c initializes the property with qdev_prop_set_string:<b=
-r>
-&gt;&gt;<br>
-&gt;&gt; $ qemu-system-arm -M orangepi-pc -kernel u-boot -nographic -nic us=
-er \<br>
-&gt;&gt; -global allwinner-sid.identifier=3D8100c002-0001-0002-0003-0000445=
-56688<br>
-&gt;&gt;<br>
-&gt;&gt; If I don&#39;t set the property in hw/arm/orangepi.c, I can set it=
- with &#39;-global&#39;. Do you perhaps have a<br>
-&gt;&gt; recommendation how to improve that? Basically what is needed is th=
-at the machine sets the default<br>
-&gt;&gt; property including the chip prefix, and that the user can override=
- it. Although it is not required for a<br>
-&gt;&gt; working emulated board, it would be a nice-to-have that the user c=
-an set it.<br>
-&gt;<br>
-&gt;<br>
-&gt; FYI and possibly others who have a similar usecase, I figured out how =
-to do this. In the machine init function,<br>
-&gt; after creating the new SoC object, simply check if the identifier has =
-a value:<br>
-&gt;<br>
-&gt; +=C2=A0 =C2=A0 if (qemu_uuid_is_null(&amp;s-&gt;h3-&gt;sid.identifier)=
-) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_string(DEVICE(s-&gt;h3), &q=
-uot;identifier&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;8100c002-0001-0002-0003-0000445566=
-77&quot;);<br>
-<br>
-Similarly, display a warning &quot;No UUID provided, using default one...&q=
-uot;<br>
-(or generate one 8100c002-XXX)?<br></blockquote><div><br></div><div>If its =
-allright with you, I would prefer not to display a warning for the default =
-behavior.</div><div>The other boards are also not displaying such warnings =
-and it keeps the qemu output clean.<br></div><div>=C2=A0</div><blockquote c=
-lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px soli=
-d rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt;<br>
-&gt; That way, if the user passed -global to override it, the machine will =
-not overrule the user&#39;s value<br>
-&gt; and by default the machine sets an identifier containing the H3 specif=
-ic chip prefix.<br>
-&gt;<br>
-[...]<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; --- /dev/null<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +++ b/hw/misc/allwinner-sid.c<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; @@ -0,0 +1,170 @@<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +/*<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + * Allwinner Security ID emulation<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + *<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + * Copyright (C) 2019 Niek Linnenbank &lt=
-;<a href=3D"mailto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenba=
-nk@gmail.com</a>&gt;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + *<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + * This program is free software: you can=
- redistribute it and/or<br>
-&gt;&gt;&gt; &gt; &gt; modify<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + * it under the terms of the GNU General =
-Public License as published<br>
-&gt;&gt;&gt; &gt; &gt; by<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + * the Free Software Foundation, either v=
-ersion 2 of the License, or<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + * (at your option) any later version.<br=
+t:1ex">On 2/12/20 10:47 PM, Niek Linnenbank wrote:<br>
+&gt; Hi all,<br>
+&gt; <br>
+&gt; Short status update regarding this series.<br>
+&gt; <br>
+&gt; Currently I am debugging booting NetBSD 9.0-RC2, which is recently <br=
 >
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + *<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + * This program is distributed in the hop=
-e that it will be useful,<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + * but WITHOUT ANY WARRANTY; without even=
- the implied warranty of<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + * MERCHANTABILITY or FITNESS FOR A PARTI=
-CULAR PURPOSE.=C2=A0 See the<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + * GNU General Public License for more de=
-tails.<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + *<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + * You should have received a copy of the=
- GNU General Public License<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + * along with this program.=C2=A0 If not,=
- see &lt;<br>
-&gt;&gt;&gt; &gt; &gt; <a href=3D"http://www.gnu.org/licenses/" rel=3D"nore=
-ferrer" target=3D"_blank">http://www.gnu.org/licenses/</a>&gt;.<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; + */<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +#include &quot;qemu/osdep.h&quot;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +#include &quot;qemu/units.h&quot;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +#include &quot;hw/sysbus.h&quot;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +#include &quot;migration/vmstate.h&quot;<=
-br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +#include &quot;qemu/log.h&quot;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +#include &quot;qemu/module.h&quot;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +#include &quot;qemu/guest-random.h&quot;<=
-br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +#include &quot;qapi/error.h&quot;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +#include &quot;hw/qdev-properties.h&quot;=
+&gt; released [1]<br>
+&gt; The problem is that, apparently, RC2 can&#39;t mount the rootfs proper=
+ly:<br>
+&gt; <br>
+&gt; [ =C2=A0 3.1871510] vfs_mountroot: can&#39;t open root device<br>
+&gt; [ =C2=A0 3.2141370] cannot mount root, error =3D 6<br>
+&gt; <br>
+&gt; This only happens using the RC2 filesystem image. However, the RC2 <br=
+>
+&gt; kernel can<br>
+&gt; properly load &amp; boot the RC1 filesystem image, and the RC1 kernel =
+gives <br>
+&gt; the same error<br>
+&gt; on the RC2 filesystem.=C2=A0 But I dont think its a NetBSD-RC2 issue, =
+because <br>
+&gt; on a real<br>
+&gt; Orange Pi PC hardware board, this problem does not show.<br>
 <br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +#include &quot;hw/misc/allwinner-sid.h&qu=
-ot;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +#include &quot;trace.h&quot;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +/* SID register offsets */<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +enum {<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 REG_PRCTL =3D 0x40,=C2=A0 =
-=C2=A0/* Control */<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 REG_RDKEY =3D 0x60,=C2=A0 =
-=C2=A0/* Read Key */<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +};<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +/* SID register flags */<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +enum {<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 REG_PRCTL_WRITE=C2=A0 =C2=
-=A0=3D 0x0002, /* Unknown write flag */<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 REG_PRCTL_OP_LOCK =3D 0xAC0=
-0, /* Lock operation */<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +};<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +static uint64_t allwinner_sid_read(void *=
-opaque, hwaddr offset,<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0unsigned size)<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +{<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 const AwSidState *s =3D AW_=
-SID(opaque);<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 uint64_t val =3D 0;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 switch (offset) {<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 case REG_PRCTL:=C2=A0 =C2=
-=A0 /* Control */<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 val =3D s-&gt=
-;control;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 case REG_RDKEY:=C2=A0 =C2=
-=A0 /* Read Key */<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 val =3D s-&gt=
-;rdkey;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 default:<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask=
-(LOG_GUEST_ERROR, &quot;%s: out-of-bounds offset<br>
-&gt;&gt;&gt; &gt; &gt; 0x%04x\n&quot;,<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 __func__, (uint32_t)offset);<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 }<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 trace_allwinner_sid_read(of=
-fset, val, size);<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 return val;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +}<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +static void allwinner_sid_write(void *opa=
-que, hwaddr offset,<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint=
-64_t val, unsigned size)<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +{<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 AwSidState *s =3D AW_SID(op=
-aque);<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 trace_allwinner_sid_write(o=
-ffset, val, size);<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 switch (offset) {<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 case REG_PRCTL:=C2=A0 =C2=
-=A0 /* Control */<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;control=
- =3D val;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if ((s-&gt;co=
-ntrol &amp; REG_PRCTL_OP_LOCK) &amp;&amp;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- (s-&gt;control &amp; REG_PRCTL_WRITE)) {<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- uint32_t id =3D s-&gt;control &gt;&gt; 16;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- if (id &lt; sizeof(QemuUUID)) {<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 s-&gt;rdkey =3D (s-&gt;identifier.data[id]) |<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(s-&gt;identifier.d=
-ata[id + 1] &lt;&lt; 8) |<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(s-&gt;identifier.d=
-ata[id + 2] &lt;&lt; 16) |<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(s-&gt;identifier.d=
-ata[id + 3] &lt;&lt; 24);<br>
+Linux shows:<br>
+=C2=A0 =C2=A0console: mmc0: Problem switching card into high-speed mode!<br=
+>
 <br>
-Maybe you want:<br>
+QEMU MMC support is not in good shape, and high-speed SD card support is <b=
+r>
+limited. I keep procrastinating at reviewing your SDHCI patch hmmmmm.<br>
 <br>
-=C2=A0 s-&gt;rdkey =3D ldl_le_p(s-&gt;identifier.data);<br></blockquote><di=
-v><br></div><div>Thanks Philippe, I&#39;ll use this function to set s-&gt;r=
-dkey.</div><div><br></div><div>Regards,</div><div>Niek<br></div><div>=C2=A0=
-</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;b=
-order-left:1px solid rgb(204,204,204);padding-left:1ex">
+So you added:<br>
 <br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- }<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;control=
- &amp;=3D ~REG_PRCTL_WRITE;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 case REG_RDKEY:=C2=A0 =C2=
-=A0 /* Read Key */<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 default:<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask=
-(LOG_GUEST_ERROR, &quot;%s: out-of-bounds offset<br>
-&gt;&gt;&gt; &gt; &gt; 0x%04x\n&quot;,<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 __func__, (uint32_t)offset);<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 }<br>
-&gt;&gt;&gt; &gt; &gt; &gt; &gt; +}<br>
-&gt; &gt; &gt; &gt; &gt; +}<br>
-[...]<br>
+=C2=A0 * DMA transfers<br>
+=C2=A0 * Direct FIFO I/O<br>
+=C2=A0 * Short/Long format command responses<br>
+<br>
+I&#39;d start diffing the trace output of the following events:<br>
+<br>
+allwinner_sdhost*<br>
+sdcard*<br>
+<br>
+with both kernels.<br>
+<br></blockquote><div>Thanks for the kind suggestions Philippe. <br></div><=
+div>Indeed, comparing the trace files of both the RC1 and RC2 kernels is on=
+e of the things I did, and many more.</div><div><br></div><div>After extens=
+ive low-level debugging, I discovered that the issue is much more simple th=
+an I thought.</div><div>In particular, when using -sd &lt;file&gt;, the emu=
+lated device gets the same physical size as the file.</div><div>Normally th=
+is is not a problem, but for the NetBSD RC2 image, the kernel reads the MBR=
+ partition table,</div><div>compares it with the device size and concludes =
+that the NetBSD partition in the image is larger than the actual device.</d=
+iv><div><br></div><div>Unfortunately, this root cause is not printed on the=
+ NetBSD console, only the final=C2=A0 &#39;can&#39;t open root device&#39; =
+message.</div><div> Also, when running on hardware, obviously the SD card w=
+ill be larger, e.g. 4GB or more, so that is why this issue does not show.</=
+div><div><br></div><div>So the fix is to extend the input image by a few me=
+gabytes before booting it.<br></div><div><div>And on the positive side, wit=
+h this search we now have more confidence that the</div><div>emulated SD/MM=
+C device in Qemu works as expected.</div></div><div><br></div><div>Kind reg=
+ards,</div><div>Niek<br></div><div>=C2=A0</div><blockquote class=3D"gmail_q=
+uote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,2=
+04);padding-left:1ex">
+&gt; <br>
+&gt; I&#39;m comparing traces and adding more low-level debug output to Net=
+BSD <br>
+&gt; and QEMU to find the issue.<br>
+&gt; <br>
+&gt; Also I processed the review remarks which were send so far.<br>
+&gt; <br>
+&gt; Kind regards,<br>
+&gt; Niek<br>
+&gt; <br>
+&gt; [1] <a href=3D"https://www.netbsd.org/releases/formal-9/NetBSD-9.0.htm=
+l" rel=3D"noreferrer" target=3D"_blank">https://www.netbsd.org/releases/for=
+mal-9/NetBSD-9.0.html</a><br>
 <br>
 </blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
 mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
 div></div>
 
---00000000000049dab1059ecaa516--
+--0000000000007e35b1059ecb615e--

@@ -1,26 +1,26 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4524006lfp;
-        Sun, 16 Feb 2020 17:25:35 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyhh/sVb6w5xP15ytcANiW1z0cj1jx4nAeD0svHZPzvPdQmDx7qYfLMzL++iWK5TZmYUTn3
-X-Received: by 2002:a54:4816:: with SMTP id j22mr8620578oij.179.1581902735459;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp4524015lfp;
+        Sun, 16 Feb 2020 17:25:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx9uEpamRo1tts0Mhxi90RClFZdct4uUvA9e9oZHMfOdqq+0I7bD93dtiBrq7vtbtztWmuP
+X-Received: by 2002:a9d:2c2:: with SMTP id 60mr10486616otl.208.1581902735867;
         Sun, 16 Feb 2020 17:25:35 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1581902735; cv=none;
         d=google.com; s=arc-20160816;
-        b=H2yjdViKT5wsCPiOvy2q4oaHMHwI0InuJWuajdYmqMzzRkwmhddsc+6FPqpEJsUL/H
-         6iG82u+c3hmVdCQOgFeNJIdnL/InnQuc7on15CAHN83MlpBqcrHwd1uiY3b9SsoGtHEf
-         793JC+5vVEJpbw8BnHFjs9HuYUTY9eV4ndPTVB5FCia3PZ3Pldd4cGbBu3ZTK2hBamek
-         dFq3Hlo9WbQiyPrX/W3zLzdqKkwRRpTaqmaU4XzIYi/O/OLA1bkCVnc2zYDftZdVvQPI
-         x5diXWwIwxpM+ABNbPBCEBF1RNrtYDroqcY13k4O4SZNqPa5uUEXB2dCSgaC5exi/MuG
-         HJVA==
+        b=trICrTYwYDWpfmwrOUJ5kXmwCFdRO1HO0SehncjR1Fl2WpfqyPS9tIi8jVSjSfODz7
+         efE+XA2xkFcPC1FcDCJhe8BWHum9jnRrp2cCZHsdeYAVmzu3JgGvUDxoiUkK3B8viR+3
+         pyQ6U/QdsAwTaJ6qcXAEpaQiTTTPBsIBR6Fbzp8GXiW6o+QDlf2lYOHPs/h8iIer/uS0
+         FYiOdFmsM+IftIwD8GnsEQe4hf3fN6gnVZg9ZIss5zTPT8GkA52tp2JJ0ysvOU1r4rCS
+         HSg3tXUzsbecaF91bJ/NmVJ6hzv7klgLj8CBhIuZUpCaYHZENSch6CMqkHtaUMzC6CRU
+         zSng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=MHHO9xTPWNF3jFmVmqR7R0Y1Y70mpAX38BQXvciyb3I=;
-        b=NJex7LAKsNxQ7bMDDuP3SU+pbUiieRRfMrvHV1+IMUEN+fHYaCRK/aCH31+Ppfmp1a
-         Mgps+9EPIW/IeQmhSc45i4ojpicrGobvWJFGLYO5WT+mRfgJ2+TOINfpGSPZ2hY7l0UG
-         Zc57EeTZbDSZUsKBDPp5+EGHn0rsDNVKJOoPBvnSb7YyOx2G4zg2UPYjWP4NgYKIOOj8
-         TZN9FvoIbuL1S1hjAsAf/3N2XwpXYPxP2Q9ZZuCpeCFtbl31zS0pRHmI5ZMJeBz4USvA
-         /wIoyO+kTbjYpgD8rY5+v5c5AGIRvRHdD+EI1KI2dyiu7eaaQX/4cEo8E+ybBewkpqAx
-         hwxg==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:date:subject:cc:to:from;
+        bh=qVTVkvm/x3TxIbJO1P0x50Rr6BGbIYDIjH5GKyKLQpo=;
+        b=nW8bRieIY/TdVjy8U2piDf4fX6W70JnmUqUWoJQ3x8ueyv13PW6dVnK/aZXZkDFyko
+         uXCmxCmK8Q4480k0V3nMM+C+jO69qwR8w9BhGIl2MlhPmZP3W3kv0hlZk5RR1SQ7wzqL
+         nUicuNhL8PwaWtM3xdBkKYkO/ii+NG4FM3eYDEpieuQyeNDp8whXUuc9cHLyWjffE0P2
+         KrWX8XuL3fjtE2QX8c325rye9yNoSKYxL9HPliC3j1tAWPSBAp+mI7mspAf/20lajmAp
+         xDhjq1sTSW5VA+u8oDYpkxPIE1iqIy3snijzNjZhnXW+WqdvCKj2hbm6BNIQ6yABCwow
+         AuUA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
@@ -31,18 +31,18 @@ Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.k
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727086AbgBQBZe (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        id S1727006AbgBQBZe (ORCPT <rfc822;naresh.kamboju@linaro.org>
         + 5 others); Sun, 16 Feb 2020 20:25:34 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:10185 "EHLO huawei.com"
+Received: from szxga06-in.huawei.com ([45.249.212.32]:37904 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726766AbgBQBZd (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sun, 16 Feb 2020 20:25:33 -0500
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id E985D334EBB9A0DC04DC;
-        Mon, 17 Feb 2020 09:25:27 +0800 (CST)
+        id S1726786AbgBQBZe (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sun, 16 Feb 2020 20:25:34 -0500
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
+        by Forcepoint Email with ESMTP id 0C6711041FEC9D0C88D0;
+        Mon, 17 Feb 2020 09:25:33 +0800 (CST)
 Received: from huawei.com (10.151.151.243) by DGGEMS405-HUB.china.huawei.com
  (10.3.19.205) with Microsoft SMTP Server id 14.3.439.0; Mon, 17 Feb 2020
- 09:25:21 +0800
+ 09:25:24 +0800
 From:   Dongjiu Geng <gengdongjiu@huawei.com>
 To:     <mst@redhat.com>, <imammedo@redhat.com>,
         <xiaoguangrong.eric@gmail.com>, <shannon.zhaosl@gmail.com>,
@@ -54,180 +54,53 @@ To:     <mst@redhat.com>, <imammedo@redhat.com>,
         <jonathan.cameron@huawei.com>,
         <shameerali.kolothum.thodi@huawei.com>
 CC:     <gengdongjiu@huawei.com>, <zhengxiang9@huawei.com>
-Subject: [PATCH RESEND v23 06/10] ACPI: Record the Generic Error Status Block address
-Date:   Mon, 17 Feb 2020 09:27:33 +0800
-Message-ID: <20200217012737.30231-7-gengdongjiu@huawei.com>
+Subject: [PATCH RESEND v23 10/10] MAINTAINERS: Add ACPI/HEST/GHES entries
+Date:   Mon, 17 Feb 2020 09:27:37 +0800
+Message-ID: <20200217012737.30231-11-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 2.18.0.huawei.25
 In-Reply-To: <20200217012737.30231-1-gengdongjiu@huawei.com>
 References: <20200217012737.30231-1-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.151.151.243]
 X-CFilter-Loop: Reflected
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: rpQj7Z2PGq9V
+X-TUID: qSp/VWGqgQJb
 
-Record the GHEB address via fw_cfg file, when recording
-a error to CPER, it will use this address to find out
-Generic Error Data Entries and write the error.
-
-In order to avoid migration failure, make hardware
-error table address to a part of GED device instead
-of global variable, then this address will be migrated
-to target QEMU.
+I and Xiang are willing to review the APEI-related patches and
+volunteer as the reviewers for the HEST/GHES part.
 
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-Acked-by: Xiang Zheng <zhengxiang9@huawei.com>
+Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- hw/acpi/generic_event_device.c         | 18 ++++++++++++++++++
- hw/acpi/ghes.c                         | 17 +++++++++++++++++
- hw/arm/virt-acpi-build.c               | 10 ++++++++++
- include/hw/acpi/generic_event_device.h |  2 ++
- include/hw/acpi/ghes.h                 |  6 ++++++
- 5 files changed, 53 insertions(+)
+ MAINTAINERS | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index 021ed2b..d59607c 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -234,6 +234,23 @@ static const VMStateDescription vmstate_ged_state = {
-     }
- };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index c7717df..0748475 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1446,6 +1446,15 @@ F: tests/qtest/bios-tables-test.c
+ F: tests/qtest/acpi-utils.[hc]
+ F: tests/data/acpi/
  
-+static bool ghes_needed(void *opaque)
-+{
-+    return object_property_get_bool(qdev_get_machine(), "ras", NULL);
-+}
++ACPI/HEST/GHES
++R: Dongjiu Geng <gengdongjiu@huawei.com>
++R: Xiang Zheng <zhengxiang9@huawei.com>
++L: qemu-arm@nongnu.org
++S: Maintained
++F: hw/acpi/ghes.c
++F: include/hw/acpi/ghes.h
++F: docs/specs/acpi_hest_ghes.rst
 +
-+static const VMStateDescription vmstate_ghes_state = {
-+    .name = "acpi-ged/ghes",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = ghes_needed,
-+    .fields      = (VMStateField[]) {
-+        VMSTATE_STRUCT(ghes_state, AcpiGedState, 1,
-+                       vmstate_ghes_state, AcpiGhesState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription vmstate_acpi_ged = {
-     .name = "acpi-ged",
-     .version_id = 1,
-@@ -244,6 +261,7 @@ static const VMStateDescription vmstate_acpi_ged = {
-     },
-     .subsections = (const VMStateDescription * []) {
-         &vmstate_memhp_state,
-+        &vmstate_ghes_state,
-         NULL
-     }
- };
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index 7a7381d..cea2bff 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -24,6 +24,8 @@
- #include "hw/acpi/ghes.h"
- #include "hw/acpi/aml-build.h"
- #include "qemu/error-report.h"
-+#include "hw/acpi/generic_event_device.h"
-+#include "hw/nvram/fw_cfg.h"
- 
- #define ACPI_GHES_ERRORS_FW_CFG_FILE        "etc/hardware_errors"
- #define ACPI_GHES_DATA_ADDR_FW_CFG_FILE     "etc/hardware_errors_addr"
-@@ -213,3 +215,18 @@ void acpi_build_hest(GArray *table_data, BIOSLinker *linker)
-     build_header(linker, table_data, (void *)(table_data->data + hest_start),
-         "HEST", table_data->len - hest_start, 1, NULL, "");
- }
-+
-+void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
-+                          GArray *hardware_error)
-+{
-+    size_t size = 2 * sizeof(uint64_t) + ACPI_GHES_MAX_RAW_DATA_LENGTH;
-+    size_t request_block_size = ACPI_GHES_ERROR_SOURCE_COUNT * size;
-+
-+    /* Create a read-only fw_cfg file for GHES */
-+    fw_cfg_add_file(s, ACPI_GHES_ERRORS_FW_CFG_FILE, hardware_error->data,
-+                    request_block_size);
-+
-+    /* Create a read-write fw_cfg file for Address */
-+    fw_cfg_add_file_callback(s, ACPI_GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
-+        NULL, &(ags->ghes_addr_le), sizeof(ags->ghes_addr_le), false);
-+}
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 12a9a78..d6e7521 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -832,6 +832,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-     build_spcr(tables_blob, tables->linker, vms);
- 
-     if (vms->ras) {
-+        assert(vms->acpi_dev);
-         acpi_add_table(table_offsets, tables_blob);
-         build_ghes_error_table(tables->hardware_errors, tables->linker);
-         acpi_build_hest(tables_blob, tables->linker);
-@@ -924,6 +925,7 @@ void virt_acpi_setup(VirtMachineState *vms)
- {
-     AcpiBuildTables tables;
-     AcpiBuildState *build_state;
-+    AcpiGedState *acpi_ged_state;
- 
-     if (!vms->fw_cfg) {
-         trace_virt_acpi_setup();
-@@ -954,6 +956,14 @@ void virt_acpi_setup(VirtMachineState *vms)
-     fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
-                     acpi_data_len(tables.tcpalog));
- 
-+    if (vms->ras) {
-+        assert(vms->acpi_dev);
-+        acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
-+                                                           NULL));
-+        acpi_ghes_add_fw_cfg(&acpi_ged_state->ghes_state,
-+                             vms->fw_cfg, tables.hardware_errors);
-+    }
-+
-     build_state->rsdp_mr = acpi_add_rom_blob(virt_acpi_build_update,
-                                              build_state, tables.rsdp,
-                                              ACPI_BUILD_RSDP_FILE, 0);
-diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-index d157eac..037d2b5 100644
---- a/include/hw/acpi/generic_event_device.h
-+++ b/include/hw/acpi/generic_event_device.h
-@@ -61,6 +61,7 @@
- 
- #include "hw/sysbus.h"
- #include "hw/acpi/memory_hotplug.h"
-+#include "hw/acpi/ghes.h"
- 
- #define ACPI_POWER_BUTTON_DEVICE "PWRB"
- 
-@@ -95,6 +96,7 @@ typedef struct AcpiGedState {
-     GEDState ged_state;
-     uint32_t ged_event_bitmap;
-     qemu_irq irq;
-+    AcpiGhesState ghes_state;
- } AcpiGedState;
- 
- void build_ged_aml(Aml *table, const char* name, HotplugHandler *hotplug_dev,
-diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-index 18debd8..a3420fc 100644
---- a/include/hw/acpi/ghes.h
-+++ b/include/hw/acpi/ghes.h
-@@ -62,6 +62,12 @@ enum {
-     ACPI_HEST_SRC_ID_RESERVED,
- };
- 
-+typedef struct AcpiGhesState {
-+    uint64_t ghes_addr_le;
-+} AcpiGhesState;
-+
- void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
- void acpi_build_hest(GArray *table_data, BIOSLinker *linker);
-+void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
-+                          GArray *hardware_errors);
- #endif
+ ppc4xx
+ M: David Gibson <david@gibson.dropbear.id.au>
+ L: qemu-ppc@nongnu.org
 -- 
 1.8.3.1

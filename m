@@ -1,266 +1,142 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5405424lfp;
-        Mon, 17 Feb 2020 12:27:15 -0800 (PST)
-X-Received: by 2002:a6b:3a03:: with SMTP id h3mr13591330ioa.241.1581971235127;
-        Mon, 17 Feb 2020 12:27:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581971235; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5418702lfp;
+        Mon, 17 Feb 2020 12:48:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxLtcBGKsRjCmWe1RneamQtI+6/uX5CqFV+jT72O0qnSVPTt95AE7iV/7dfpmQdpX6WwPeR
+X-Received: by 2002:ac8:b43:: with SMTP id m3mr14496849qti.191.1581972505162;
+        Mon, 17 Feb 2020 12:48:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581972505; cv=none;
         d=google.com; s=arc-20160816;
-        b=AvOIjs5uu4DY68jOJWpYftirmG7vmLFk3H34NumP6kMUftz0iDlODOvICBNXr0Uszu
-         uQmmQcNWXY5mQc+HKAK9lu9BKyz7yvcizgybIgfQNZCVnE7YPR2wfaA4sPQFTlgoxz5l
-         dQSuUbE57oQ0c9nR14v5rVTRILLYDnUB1uHRZggCrvh8pIEVf6Iunqt7koispsJa0AmW
-         HJRHTM4yxQA7vjao8C1MRRX+zlXZ2nNk+c9E4GjTJeIF/G0cx6UJKNgATcCOhOxtRMeN
-         9AUTqJCLxDWYoQR/VAekfbpBiNbtLuHu8fkrsyOyeeGd7HgYTKx1IuxJE1ucwlJCLSlS
-         OUsA==
+        b=CXI39QKrmfh/dYu/urmpuB67lYuqNjXae+D3VfshCM3Lg2oBvIhlyxN1zTsz23DKiZ
+         7+JaT6WKKALw9n+kIzp+dvrm2iNACjsV8+YTv4GZZsMKZHI2YIyWX5qwT4kNY0O0M4Ru
+         PNpEHAWZcZoLl6iMQOZ0ugrq9ij4Nda6xajnw65G9bIV7WHOIKFwSe0iZEymALGGdmTE
+         rGU5RwSkDESu/xqg3GtunS6APO+QTP0fij9irwPCm4qkVsJHmzarM95tt45ORfF++H9G
+         5rnpzUWJJxpY0oRMFuHGyG0P7Wc5Wfp1ipfnWLIAg9/b9oo44S4p8x/0L/04HT2KEcAC
+         YhjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=WGVGJR17GkdVB9ljDQdhlnTm1kjSiWcfZ0HqZbiRloA=;
-        b=s+Jd1gdIXGz6VisIryJSSEQQptn060r83XtaAVl59R8+5ytBJzk1U7Y4IVMPG+6TO+
-         z3wcZIuR5mw2nHJvPdeuJhOqrTMzTiDIv9Qhi3j0e4HLecnANd6uDuoCTy2lYjUTUBgY
-         jvy0CB8wS3QU2oHM5JZJhzIjuXYVKHNzzRif4Fkl4ieGoJLCiFHlsi7BM0hGFYdFl0Z6
-         kEnqleJZ1hoZxs0YT5Ij+E5ui3ENd0sePqMmJA1hf1cFMwLE9IFc//U9aXFAyq2QYrU9
-         M3aw9FJH/By7zuHpFzDpIBk/vdb9fMjF/QjK05zAyhhXB19gQnQXdLxdRVxs1Kto22ix
-         kahw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=nJIVKmw+QNWasbVtvZYI6aeAoGBosQZFZlyMe02F2rM=;
+        b=eDzi2B6NS3R8wvryN2bXFlomSUlvoVctoFIozUh13/I2pjxBWs4oMkc7fJNoJ838yN
+         53WhtbhBqN5wM2PlC95QgJTk69+rNcb/MDqWI1vWFBYuxqN2VDUfRmvDF9GxCqnze//N
+         dQYfd3kj7Px2alYVyg3+uIBhGDkjYbb6lvPaLeY+0pSxxpiEsv1PUs27SBx41PcsnKGG
+         1phDaPI8LBn9qT8HsAu+0HdWaGmojfq4OQeISPupTPguZHhFVV1BwB03nuFUX0cT92XT
+         mcSFZx0bdIVMpNUJeHhoc/UPck2zlAs+5RfSwk9QEuJU2BSLIvuqh56XqYdZ8cHEPph2
+         IENQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IvygvMhB;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id u24sor1348627iot.86.2020.02.17.12.27.14
-        (Google Transport Security);
-        Mon, 17 Feb 2020 12:27:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FqzOjWav;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 136si166938qkd.13.2020.02.17.12.48.25
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 17 Feb 2020 12:48:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IvygvMhB;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=WGVGJR17GkdVB9ljDQdhlnTm1kjSiWcfZ0HqZbiRloA=;
-        b=IvygvMhBaNhgfXbBp6NGtil/Xbzq7wsYwENi/f0OjI05vAUCGN7FhYlqPLz/PU7crF
-         QdqfoHvAV+vNYNLvv3UTqiVNteKu7gwoGMF7sANoCR6HgtthbfbGan8NxEM8R1peIjLr
-         n17kDwywPlzGjY1cX7As4+Nzoi0J2O3pHFpWkOrf4m5hwA+BF7b3m5LSvMuUPpymQ5aY
-         auqaRuGagLYtuNn8oZza4m+AkOjl/TAbhaJ9l/u/6cWQtAvQigbPHYbv+/e6m95o6LRM
-         ZcJdduWO4sf1c8MtB+fZVk1gOPduXAzqQv+wcBoSOK2oIlIR95IH/i+tPbbW3y5x1B+7
-         QXog==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FqzOjWav;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52724 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j3nJY-0005WX-Kw
+	for alex.bennee@linaro.org; Mon, 17 Feb 2020 15:48:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38158)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <groeck7@gmail.com>) id 1j3nJQ-0005WP-Q6
+ for qemu-arm@nongnu.org; Mon, 17 Feb 2020 15:48:17 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <groeck7@gmail.com>) id 1j3nJP-0007PO-V0
+ for qemu-arm@nongnu.org; Mon, 17 Feb 2020 15:48:16 -0500
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:33963)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1j3nJP-0007P4-Pw; Mon, 17 Feb 2020 15:48:15 -0500
+Received: by mail-pg1-x541.google.com with SMTP id j4so9839552pgi.1;
+ Mon, 17 Feb 2020 12:48:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id;
+ bh=nJIVKmw+QNWasbVtvZYI6aeAoGBosQZFZlyMe02F2rM=;
+ b=FqzOjWavgMQi5txfNRze4yjP8LSdemMG2AMNz8rgzQstqbu1tGBIpGg3TwjdzDRGzM
+ EDPv/5XtKsVHYOqlZs813X8bLN8CDlGTB+q0/TSAwQ4DFd9/W4mcU7lGarnzPZZqWxnd
+ JtmrTGGK5Titicd6LET/Kj/7NpzUAafe6ho9i8xa3FPKMWPR6pxTypYrUNsiyefB8zSg
+ jHUxYudqZcZTC4zVj0ZeEdB9mGyDYOLC0zgOJbd5ZYgp476C1IxBBRGSKyRc5i4bS57X
+ 1QSRADGA3BTFZHMk7GaABI1ghNCh+TQI3JP8lVmudhmk4DLSSDv8uYhB+2D/y2i4LUSU
+ BQHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=WGVGJR17GkdVB9ljDQdhlnTm1kjSiWcfZ0HqZbiRloA=;
-        b=BwmXzPyY2D2LqO84rDXneZGoPC/J05lSiWWNHS0+izaS47yV98EKzrSx4QQte+ZC9R
-         7YhDJw7jEjriEq+/rfoECS7tjj6SQirvMiDB9gZhtJrV/bEKE8nDfV4I54SA0W31BCYJ
-         KlzOSkRCLk+R8vkFfjDILmhjOq+d1uwSi5G51v6c9J2SqpQMCVWI252E8sguB/epdrDo
-         JSelTByAs68JQhBR0WVs45UzFHsjujiiNfusqQbj8+7l+Uk1Y4blo5KDcCws9nPdp6Ld
-         k7IRs1jahCP5vwX9ov/t9XcLrQIbmc4Y8ex/9rT13Krk6As0XDi63ZAifNffEzmT7kNE
-         gT1A==
-X-Gm-Message-State: APjAAAWJBigE3whRZNx/ubv8AnWqMsc5/VDxmLMmtvmS933JWjYSJ0G2
-	+eo2sGavSh8kQZhzYAXVHr1Yu2fT4nBjvJ95nsY=
-X-Google-Smtp-Source: APXvYqwAlxkmUsBoeo1q6NlMIv4rrmAW6qM5cGN6Ze7uBu4VSwpaG9H/IcQQtm8EOG222B+TgYHcDRaul0AImZyjLM8=
-X-Received: by 2002:a5d:8f17:: with SMTP id f23mr13468253iof.265.1581971234763;
- Mon, 17 Feb 2020 12:27:14 -0800 (PST)
-MIME-Version: 1.0
-References: <20200119005102.3847-1-nieklinnenbank@gmail.com>
- <CAPan3WpV2m9HXLXZDopKUb2EfX2KE9y530m2pJG4-D96==ggCg@mail.gmail.com> <ee95179f-c15f-9615-e241-80199e6948b7@redhat.com>
-In-Reply-To: <ee95179f-c15f-9615-e241-80199e6948b7@redhat.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Mon, 17 Feb 2020 21:27:03 +0100
-Message-ID: <CAPan3WpG0yPu5sbS=mpHk=xNVGaqwWFrBcDBcovLLRit==5dwg@mail.gmail.com>
-Subject: Re: [PATCH v4 00/20] Add Allwinner H3 SoC and Orange Pi PC Machine
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Peter Maydell <peter.maydell@linaro.org>, Beniamino Galvani <b.galvani@gmail.com>, jasowang@redhat.com, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Igor Mammedov <imammedo@redhat.com>
-Content-Type: multipart/alternative; boundary="0000000000007e35b1059ecb615e"
-X-TUID: rxGZ9fNyIFOY
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
+ bh=nJIVKmw+QNWasbVtvZYI6aeAoGBosQZFZlyMe02F2rM=;
+ b=DIckFi6FHQG5a/jvS+yfL0TO20iFZld6gStn/FeaKTDG3zjme6OKpn/rZ3tpkTzNHS
+ J1uiAcwKGSXpFxEeLLZKxuemuAFFBsbCshL9+5ApNMU/NFErLqrjUtR7NY1o/LrL3yQQ
+ +NfpsTreiTUFdiI3Nd3qi0z6VP/Wb6k/cIfQHgPhFU7nrBy18QZ4wa1GujQjvWumuP1q
+ s71+lMHzKOZuET1il0luugaWlst741rnJ62impWgD2nk9fDy9g2hpjYin9D6YtLpSQEc
+ Gjn3UZkfVeX5To3ZPAS+OUdvHPjXg1OUfH5FViDi8TduwinBRS0aBT7/mT6k4rgbmvaA
+ y2eg==
+X-Gm-Message-State: APjAAAX7u5dq70MIUmdkgNAlVIw2SS8ZSTwA6kVIbJ6I9HxMLvaG9h6n
+ jLDqSyVt476a5uetChKy6tE=
+X-Received: by 2002:aa7:9aa5:: with SMTP id x5mr18410167pfi.131.1581972494743; 
+ Mon, 17 Feb 2020 12:48:14 -0800 (PST)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id b18sm1266070pfb.116.2020.02.17.12.48.13
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 17 Feb 2020 12:48:14 -0800 (PST)
+From: Guenter Roeck <linux@roeck-us.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v3 0/3] arm: allwinner: Wire up USB ports
+Date: Mon, 17 Feb 2020 12:48:09 -0800
+Message-Id: <20200217204812.9857-1-linux@roeck-us.net>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::541
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, Guenter Roeck <linux@roeck-us.net>,
+ qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7VBLa77zyJFn
 
---0000000000007e35b1059ecb615e
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Instantiate EHCI and OHCI controllers on Allwinner A10.
 
-Hi Philippe,
+The first patch in the series moves the declaration of EHCISysBusState
+from hcd-ohci.c to hcd-ohci.h. This lets us add the structure to
+AwA10State. Similar, TYPE_SYSBUS_OHCI is moved to be able to use it
+outside its driver.
 
-On Wed, Feb 12, 2020 at 11:12 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
-.com>
-wrote:
+The second patch introduces the ehci-sysbus property "companion-enable".
+This lets us use object_property_set_bool() to enable companion mode.
 
-> On 2/12/20 10:47 PM, Niek Linnenbank wrote:
-> > Hi all,
-> >
-> > Short status update regarding this series.
-> >
-> > Currently I am debugging booting NetBSD 9.0-RC2, which is recently
-> > released [1]
-> > The problem is that, apparently, RC2 can't mount the rootfs properly:
-> >
-> > [   3.1871510] vfs_mountroot: can't open root device
-> > [   3.2141370] cannot mount root, error =3D 6
-> >
-> > This only happens using the RC2 filesystem image. However, the RC2
-> > kernel can
-> > properly load & boot the RC1 filesystem image, and the RC1 kernel gives
-> > the same error
-> > on the RC2 filesystem.  But I dont think its a NetBSD-RC2 issue, becaus=
-e
-> > on a real
-> > Orange Pi PC hardware board, this problem does not show.
->
-> Linux shows:
->    console: mmc0: Problem switching card into high-speed mode!
->
-> QEMU MMC support is not in good shape, and high-speed SD card support is
-> limited. I keep procrastinating at reviewing your SDHCI patch hmmmmm.
->
-> So you added:
->
->   * DMA transfers
->   * Direct FIFO I/O
->   * Short/Long format command responses
->
-> I'd start diffing the trace output of the following events:
->
-> allwinner_sdhost*
-> sdcard*
->
-> with both kernels.
->
-> Thanks for the kind suggestions Philippe.
-Indeed, comparing the trace files of both the RC1 and RC2 kernels is one of
-the things I did, and many more.
+The third patch instantiates EHCI and OHCI ports for Allwinner-A10
+and marks the OHCI ports as companions of the respective EHCI ports.
 
-After extensive low-level debugging, I discovered that the issue is much
-more simple than I thought.
-In particular, when using -sd <file>, the emulated device gets the same
-physical size as the file.
-Normally this is not a problem, but for the NetBSD RC2 image, the kernel
-reads the MBR partition table,
-compares it with the device size and concludes that the NetBSD partition in
-the image is larger than the actual device.
+Tested by attaching various high speed and full speed devices, and by
+booting from USB drive.
 
-Unfortunately, this root cause is not printed on the NetBSD console, only
-the final  'can't open root device' message.
-Also, when running on hardware, obviously the SD card will be larger, e.g.
-4GB or more, so that is why this issue does not show.
+v3: Rebased to master
+v2: Add summary
+    Rewrite to instantiate OHCI in companion mode; add patch 2/3
+    Merge EHCI and OHCI instantiation into a single patch
 
-So the fix is to extend the input image by a few megabytes before booting
-it.
-And on the positive side, with this search we now have more confidence that
-the
-emulated SD/MMC device in Qemu works as expected.
+----------------------------------------------------------------
+Guenter Roeck (3):
+      hw: usb: hcd-ohci: Move OHCISysBusState and TYPE_SYSBUS_OHCI to include file
+      hcd-ehci: Introduce "companion-enable" sysbus property
+      arm: allwinner: Wire up USB ports
 
-Kind regards,
-Niek
-
-
-> >
-> > I'm comparing traces and adding more low-level debug output to NetBSD
-> > and QEMU to find the issue.
-> >
-> > Also I processed the review remarks which were send so far.
-> >
-> > Kind regards,
-> > Niek
-> >
-> > [1] https://www.netbsd.org/releases/formal-9/NetBSD-9.0.html
->
->
-
---=20
-Niek Linnenbank
-
---0000000000007e35b1059ecb615e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi Philippe,<br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Feb 12, 2020 at 11:12 PM Phil=
-ippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@red=
-hat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
-margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
-t:1ex">On 2/12/20 10:47 PM, Niek Linnenbank wrote:<br>
-&gt; Hi all,<br>
-&gt; <br>
-&gt; Short status update regarding this series.<br>
-&gt; <br>
-&gt; Currently I am debugging booting NetBSD 9.0-RC2, which is recently <br=
->
-&gt; released [1]<br>
-&gt; The problem is that, apparently, RC2 can&#39;t mount the rootfs proper=
-ly:<br>
-&gt; <br>
-&gt; [ =C2=A0 3.1871510] vfs_mountroot: can&#39;t open root device<br>
-&gt; [ =C2=A0 3.2141370] cannot mount root, error =3D 6<br>
-&gt; <br>
-&gt; This only happens using the RC2 filesystem image. However, the RC2 <br=
->
-&gt; kernel can<br>
-&gt; properly load &amp; boot the RC1 filesystem image, and the RC1 kernel =
-gives <br>
-&gt; the same error<br>
-&gt; on the RC2 filesystem.=C2=A0 But I dont think its a NetBSD-RC2 issue, =
-because <br>
-&gt; on a real<br>
-&gt; Orange Pi PC hardware board, this problem does not show.<br>
-<br>
-Linux shows:<br>
-=C2=A0 =C2=A0console: mmc0: Problem switching card into high-speed mode!<br=
->
-<br>
-QEMU MMC support is not in good shape, and high-speed SD card support is <b=
-r>
-limited. I keep procrastinating at reviewing your SDHCI patch hmmmmm.<br>
-<br>
-So you added:<br>
-<br>
-=C2=A0 * DMA transfers<br>
-=C2=A0 * Direct FIFO I/O<br>
-=C2=A0 * Short/Long format command responses<br>
-<br>
-I&#39;d start diffing the trace output of the following events:<br>
-<br>
-allwinner_sdhost*<br>
-sdcard*<br>
-<br>
-with both kernels.<br>
-<br></blockquote><div>Thanks for the kind suggestions Philippe. <br></div><=
-div>Indeed, comparing the trace files of both the RC1 and RC2 kernels is on=
-e of the things I did, and many more.</div><div><br></div><div>After extens=
-ive low-level debugging, I discovered that the issue is much more simple th=
-an I thought.</div><div>In particular, when using -sd &lt;file&gt;, the emu=
-lated device gets the same physical size as the file.</div><div>Normally th=
-is is not a problem, but for the NetBSD RC2 image, the kernel reads the MBR=
- partition table,</div><div>compares it with the device size and concludes =
-that the NetBSD partition in the image is larger than the actual device.</d=
-iv><div><br></div><div>Unfortunately, this root cause is not printed on the=
- NetBSD console, only the final=C2=A0 &#39;can&#39;t open root device&#39; =
-message.</div><div> Also, when running on hardware, obviously the SD card w=
-ill be larger, e.g. 4GB or more, so that is why this issue does not show.</=
-div><div><br></div><div>So the fix is to extend the input image by a few me=
-gabytes before booting it.<br></div><div><div>And on the positive side, wit=
-h this search we now have more confidence that the</div><div>emulated SD/MM=
-C device in Qemu works as expected.</div></div><div><br></div><div>Kind reg=
-ards,</div><div>Niek<br></div><div>=C2=A0</div><blockquote class=3D"gmail_q=
-uote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,2=
-04);padding-left:1ex">
-&gt; <br>
-&gt; I&#39;m comparing traces and adding more low-level debug output to Net=
-BSD <br>
-&gt; and QEMU to find the issue.<br>
-&gt; <br>
-&gt; Also I processed the review remarks which were send so far.<br>
-&gt; <br>
-&gt; Kind regards,<br>
-&gt; Niek<br>
-&gt; <br>
-&gt; [1] <a href=3D"https://www.netbsd.org/releases/formal-9/NetBSD-9.0.htm=
-l" rel=3D"noreferrer" target=3D"_blank">https://www.netbsd.org/releases/for=
-mal-9/NetBSD-9.0.html</a><br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
-
---0000000000007e35b1059ecb615e--
+ hw/arm/allwinner-a10.c         | 43 ++++++++++++++++++++++++++++++++++++++++++
+ hw/usb/hcd-ehci-sysbus.c       |  2 ++
+ hw/usb/hcd-ohci.c              | 15 ---------------
+ hw/usb/hcd-ohci.h              | 16 ++++++++++++++++
+ include/hw/arm/allwinner-a10.h |  6 ++++++
+ 5 files changed, 67 insertions(+), 15 deletions(-)

@@ -1,101 +1,110 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6011322lfp;
-        Tue, 18 Feb 2020 03:10:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqztcEdyn6gcz6LmeHWIWWHBOSiFA0uSNzykzvl0Mxky5MODRuRxqn1Y8lMCqsvspS1daZL0
-X-Received: by 2002:ac8:3863:: with SMTP id r32mr16917426qtb.291.1582024230904;
-        Tue, 18 Feb 2020 03:10:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582024230; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6035367lfp;
+        Tue, 18 Feb 2020 03:39:14 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxd7UqHjQ3ac7E1jCrUHBkmFAMbuJZSYM6nK/qKlSIszdXWbqLbyR8rT9H7H9+iQKZPcCzm
+X-Received: by 2002:a05:6214:1253:: with SMTP id q19mr16090439qvv.75.1582025954326;
+        Tue, 18 Feb 2020 03:39:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582025954; cv=none;
         d=google.com; s=arc-20160816;
-        b=DsQP9/ix+MIY0i9z6BI/mnqUluOazenEVdRAC3ZfGE+seEmI5GJ99WhZvIlAnZcdZC
-         5kY9Ul+zRMfz4OrB2PLt/aU6lac8LSwRhIauB8gCC9jcG+CDKBF+hyYYvc1iE/C6O2ft
-         krdIr+d6hIKGNsQXj2Jo2Fe18fYFFOzCTEWlkvo6FOgKDYdwd+3m5UH4tg1xy1VrgeG1
-         S55IV49o4Paq1FwnEUhSpKHgkg+8DvMycU9eQFKBSvKLps8y9JdlvPVDVZGUUy5pdz67
-         7fcJAUOKRNAbnvqI4j+GXNBO7ioPOzk6kBTEQuqRSqcDR2AwIdlbS1Ky85/wu0oz94dF
-         oihQ==
+        b=mqzi3gaHZmvSLx4D8TB8fU2M/qDA8mwrkxS/Y5EgAjsybF+DFpzdWHgNt5vxOY/dNO
+         GW1/PqB/AxePXY1xuuhTWgrMkjI4O0okFkm+tWoGIAMPy7Bh/YqEzbTeYa5OAUufS+jy
+         w0xmToDEUC+cczCpIy6vAxZJ3d5nm3q2IIpOsuzry3i6GIO3TlETvQuIb1lrc2PShpYC
+         sq7WvC5cooh9HYfHB6FHLNRbE1Zcz0fz9G0yFPI4OIK1bvOBFLvB8nWWYdH1f8RUfd0S
+         2XS3k8F4Y1N+qW/fT7fxTvUjCLb18dapZUKxRAfY9YsRmclk+DYTLFZjxauBnE9YhDsD
+         pvkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=cvdycf7eeOlOjrck3aMmk+I3QxrgA8fg09x+XPH+bPY=;
-        b=UH70/sHLqqtEYfE8T+rj7jiceFGn23U9KITVRqGioQq5FhhZ2A3HR+znCnyrIKYvZt
-         yaVJ3cxl9xjj8ilgQUr0n/NQ0TWLl2Gh/D+6AgNMbL1Af6rmlj6H8vn0SGq1QPZBuTKW
-         I8yXZScuODJAH6QdJ7Bz2Hm0EQGfrd4vRZjGWlpijPFlS3vVwKcfCx1T/A5gnP7gKKbG
-         nEr508jI3Ob2td+5OULLorWjc2KHRDy/XOlUV0ngL44fFIfTgcBv8P2S5OeubWqN5lHa
-         i/+HYNaLpEUDzb6AG4o7lxlFtJklnSgntNGhf1Ti/TFnsdypKsksZl0jnY3YomLkabwA
-         qSsw==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=PDrx0gbrrdaedKVW2szBvbd+d3GsrxxMGWrORoPwLJ4=;
+        b=tR53mY9bB/c460A6mhrJVqrVQ/IU1wjyg3xSBjhYB3c+tMsdLTeJQ+g1Rk8XYfEvD5
+         ND/bnTxZoIF2TFDmuOAA+R0yM7kitxjdhh51nF++KvERf+H1XbWtfpwLGUSiZMteFoyy
+         Q3LB/tmx9qaBVDZOVKGux0WLXhjubqELICBOV+O5F9h10nwPefumLg04c+Ide9kRwF83
+         8mgphr2TNUjPwQ9l7j7QaB/2uZh+LuYqxuzHNv1IusZgEiaZ9gR2dMoKLKSflWMjHbba
+         OOsJe0MloM/AJPFi+RrzD2aPv6n42c9z1JzVd2NQbnmWKejUIW6kMGO8CRF6ZLZBIzjG
+         2mGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RUyZLh0q;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=L1fvSDtD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 22si1760668qkj.74.2020.02.18.03.10.30
+        by mx.google.com with ESMTPS id c3si1699321qtg.352.2020.02.18.03.39.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2020 03:10:30 -0800 (PST)
+        Tue, 18 Feb 2020 03:39:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RUyZLh0q;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=L1fvSDtD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:32864 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:33200 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j40lq-0004yT-CT
-	for alex.bennee@linaro.org; Tue, 18 Feb 2020 06:10:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56998)
+	id 1j41Dd-0001iy-LB
+	for alex.bennee@linaro.org; Tue, 18 Feb 2020 06:39:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60195)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j40la-0004wx-JY
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 06:10:15 -0500
+ (envelope-from <frasse.iglesias@gmail.com>) id 1j41DV-0001fu-Ir
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 06:39:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j40lZ-0000QS-DW
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 06:10:14 -0500
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:43886)
+ (envelope-from <frasse.iglesias@gmail.com>) id 1j41DU-0008FR-JW
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 06:39:05 -0500
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:42447)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j40lZ-0000Pz-7a
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 06:10:13 -0500
-Received: by mail-ot1-x343.google.com with SMTP id p8so19073495oth.10
- for <qemu-arm@nongnu.org>; Tue, 18 Feb 2020 03:10:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cvdycf7eeOlOjrck3aMmk+I3QxrgA8fg09x+XPH+bPY=;
- b=RUyZLh0qeI7r6RadeFKtI2OZtkZDgW2RVKhbdb3tY0AnZ2QkB8tuWYnZaKGzSn4kxm
- Xe4bPDiUBfcW/EeX6xD8nRZITALx5lS6NhkuoazG4busVgxw+jJty9OofCFroQpZb8S1
- 8h8+UTFyt93FJ707imoSMfTTCK9owTdGsoF3CW/BfmUbJsWy9mod02MDPHiK1ihXIynm
- ARJ1AJQKaeWxitiPUD+eKU9QAZJrC4kadPPPtwHkUnIKS6RPor6e0vSr6ZCCrMUUxdH1
- kiOcl1jLLw9i+JtryEWfgeGy2fiuStd4P/ZFuzlxlRMGP1Ouf19JlMO1zmdJ55JNv7lY
- Ga9g==
+ (Exim 4.71) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1j41DQ-0008CH-4n; Tue, 18 Feb 2020 06:39:00 -0500
+Received: by mail-lf1-x143.google.com with SMTP id y19so14259122lfl.9;
+ Tue, 18 Feb 2020 03:39:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=PDrx0gbrrdaedKVW2szBvbd+d3GsrxxMGWrORoPwLJ4=;
+ b=L1fvSDtDylB1Klon8SkIjwo2t0ic8Dig63jin6nQ8GkgER5ez9f4/QoF1nifcaNi+8
+ jp2gHSQUwgU7z7Dlu4xDRVOhrICzYqSMY8raKNB2Z8R/ksAEbVIEM4j0yKg0iGkoVbah
+ VWHiKX7y3jPvv5DtJEaU7kfRU8CIFg28TsM1XsfIwHuyBwybD6neXzw9kVD0VIU2PB3d
+ yLTJn9/HJXWG0WQqx5ZXohXBZX7F81FRx/XFrTN+RfDBxJlPYUOca1X9UtjNuxH0RWKL
+ CJtO1t7qjAUfxIUdPomXzcOgsithYkwVysvgIc0kcp2UX0SllsjnPHUcFHeMZXB6OsDN
+ UuYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=cvdycf7eeOlOjrck3aMmk+I3QxrgA8fg09x+XPH+bPY=;
- b=tWkKs06jZOHAdtXWUmu3DKOVuhtUsK3bsbbDzJDQUuOlmfqtS1SlsxkvOqh5VjBWuU
- jd185AJhWedjuE5O9wdjO2ctBN8bFUJnhMA1Z7ufNARaguzoLYuB6X576YNPq2bxC48C
- WsyjlmsMx8XmMY4Q8XFYTXJJp9x4ASHb4uUBCk/1g/sQJSTKbIUJBLRTTrSYPrNqgGJu
- ga2BDLhVB6dKk4PnPjsIbQdzu5HzzBrU2SCiEg6LjPQE+MZLPN/XWZnptf57HsyO1vq9
- JgTitVpbZWZyt586KpHXoFI+gnDQNl4H67AOLDbymKb2DUL8ZH1npOzpGiO22VCa0b2H
- KWYg==
-X-Gm-Message-State: APjAAAU09dVDn3fQhHBfcSL7bbJ9gVNdCMGKI6J2ZAxUAWhPIU7mPxd7
- /PJ8d7ez+FwJzdBVX65OOMxQOIwIoTfC5xMnRBdzzQ==
-X-Received: by 2002:a05:6830:4a4:: with SMTP id
- l4mr15546075otd.91.1582024212250; 
- Tue, 18 Feb 2020 03:10:12 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=PDrx0gbrrdaedKVW2szBvbd+d3GsrxxMGWrORoPwLJ4=;
+ b=Wzbmkk7zrsL4m1TaYQ7OY2FIg/4lorK7WSmCW+HyVaJVnLjW0fVB4vLGgOQjZm69yG
+ nZ4XKic1omhkq1YipapUqO97yxg4EoboUy5d4CGdYa2jnO1Tpnr3lv3pHrcp37wVLJNW
+ 6m8qglYjdwp1N17VfOYAwy508rRdmMkd6IoZeikVWkY7K1JIDdnGhd3+D70aZKIkRnc7
+ i0SAA7fDI7RGbVybNa5yCmRnaowqYViLLJ3O+bxEXmL5yAhh1WGtsWqZ6dczKAlTY9z3
+ uILvOcSs1SFQl/ieo0O3pEj/xD5eOh3n0DBgYIMzJig4xWKZ9s1AiefLOynujGhC/yUO
+ 3waQ==
+X-Gm-Message-State: APjAAAUJ45sfbKsWyWjvWetMQV9jRf+tfz/Mr3ShmeGx9f1DwkSqMK8m
+ Uwh5JJTNqiL30aBmqZvOhrk=
+X-Received: by 2002:a19:4208:: with SMTP id p8mr10428296lfa.160.1582025938580; 
+ Tue, 18 Feb 2020 03:38:58 -0800 (PST)
+Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
+ by smtp.gmail.com with ESMTPSA id
+ g15sm2346352ljk.8.2020.02.18.03.38.57
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Tue, 18 Feb 2020 03:38:58 -0800 (PST)
+Date: Tue, 18 Feb 2020 12:38:56 +0100
+From: Francisco Iglesias <frasse.iglesias@gmail.com>
+To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Subject: Re: [PATCH 3/3] aspeed/smc: Fix number of dummy cycles for
+ FAST_READ_4 command
+Message-ID: <20200218113855.dedn7xqmt3v3q7uk@fralle-msi>
+References: <20200203180904.2727-1-linux@roeck-us.net>
+ <20200203180904.2727-3-linux@roeck-us.net>
+ <329f6d24-6d47-4e2e-1a66-7683bc0529a9@kaod.org>
 MIME-Version: 1.0
-References: <20191011134744.2477-1-richard.henderson@linaro.org>
- <20191011134744.2477-16-richard.henderson@linaro.org>
- <CAFEAcA86hhBNLWhAe2UY+0-pS65wpSdPKFPTA9O4m9avjECxaA@mail.gmail.com>
- <3193d3bc-230a-8770-ffd8-d15d26c75ef9@linaro.org>
-In-Reply-To: <3193d3bc-230a-8770-ffd8-d15d26c75ef9@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 18 Feb 2020 11:10:01 +0000
-Message-ID: <CAFEAcA-GO-rNA-TbVj+vHXGWj33oKZWPrG7m-k=q0+UekRERGw@mail.gmail.com>
-Subject: Re: [PATCH v5 15/22] target/arm: Clean address for DC ZVA
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <329f6d24-6d47-4e2e-1a66-7683bc0529a9@kaod.org>
+User-Agent: NeoMutt/20170113 (1.7.2)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::343
+X-Received-From: 2a00:1450:4864:20::143
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,31 +116,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
+ Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cvwcrVnVlFjv
+X-TUID: jQcHqB6ZiUKZ
 
-On Tue, 18 Feb 2020 at 00:50, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> It isn't clear to me that DC ZVA does check tags.  There's no pseudocode for
-> DC_ZVA, which is less helpful than it might be.
->
-> I suppose one could infer it from "behaves as a set of stores to each byte
-> within the block", but considering that stores are both checking or
-> non-checking depending on addressing mode etc, I'd have preferred an explicit note.
->
-> So far I'm treating DC_ZVA as unchecked.
+Hi Cédric,
 
-I think the spec is reasonably clear here. In D6.8 it says
-"Unless an access is explicitly defined as a Tag Unchecked
-access it is a Tag Checked access."
-and then in D6.8.1:
-"A cache maintenance by virtual address operation other than
-DC ZVA generates a Tag Unchecked access."
+On [2020 Feb 04] Tue 08:45:11, Cédric Le Goater wrote:
+> On 2/3/20 7:09 PM, Guenter Roeck wrote:
+> > The Linux kernel recently started using FAST_READ_4 commands.
+> > This results in flash read failures. At the same time, the m25p80
+> > emulation is seen to read 8 more bytes than expected. Adjusting the
+> > expected number of dummy cycles to match FAST_READ fixes the problem.
+> 
+> Which machine are you using for these tests ? the AST2500 evb using
+> the w25q256 flash model ? 
+> 
+> Any how, it looks correct. 
+> 
+> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+> Fixes: f95c4bffdc4c ("aspeed/smc: snoop SPI transfers to fake dummy cycles")
+> 
+> I think commit ef06ca3946e2 ("xilinx_spips: Add support for RX discard 
+> and RX drain") needs a similar fix. Adding Francisco.
 
-So DC ZVA is Tag Checked, other DC ops that take a VA
-are Tag Unchecked.
+Yes, I agree that a similar fix is needed in the xilinx_spips aswell, I just
+provided a patch. Thank you for the notification!
 
-thanks
--- PMM
+Best regards,
+Francisco Iglesias
+
+> 
+> Thanks,
+> 
+> C. 
+> 
+> 
+> > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> > ---
+> >  hw/ssi/aspeed_smc.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+> > index f0c7bbbad3..61e8fa57d3 100644
+> > --- a/hw/ssi/aspeed_smc.c
+> > +++ b/hw/ssi/aspeed_smc.c
+> > @@ -762,11 +762,11 @@ static int aspeed_smc_num_dummies(uint8_t command)
+> >      case FAST_READ:
+> >      case DOR:
+> >      case QOR:
+> > +    case FAST_READ_4:
+> >      case DOR_4:
+> >      case QOR_4:
+> >          return 1;
+> >      case DIOR:
+> > -    case FAST_READ_4:
+> >      case DIOR_4:
+> >          return 2;
+> >      case QIOR:
+> > 
+> 

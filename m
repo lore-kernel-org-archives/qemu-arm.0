@@ -1,103 +1,102 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5950947lfp;
-        Tue, 18 Feb 2020 02:00:40 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyUoMp0s/1Q7WS60100tyLVNhyNTWaKNbm3XhnYz7kPvWeWpK/I4Z3yFswO6MHRTjmOkGZr
-X-Received: by 2002:a05:620a:247:: with SMTP id q7mr17646653qkn.199.1582020040239;
-        Tue, 18 Feb 2020 02:00:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582020040; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5951163lfp;
+        Tue, 18 Feb 2020 02:00:53 -0800 (PST)
+X-Google-Smtp-Source: APXvYqySC4F+Twgicr3yK+rCm889lvscWMwGWQ2JxSgbZ1pi9jAjl3ua77Xn3Vwr3L54x/nyi8MK
+X-Received: by 2002:ac8:7297:: with SMTP id v23mr16368799qto.135.1582020053090;
+        Tue, 18 Feb 2020 02:00:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582020053; cv=none;
         d=google.com; s=arc-20160816;
-        b=lUkR8UAPuI73xXg3XMxLboP9JsgjpG8s1sgedHd367ZRuptwI9BXbrRvSIJilIhQHb
-         EyGrXrOtuGvwSbSGYr/X16TGjCDmFZ5wjuvDv+SdWg7Me82YCsi33hdfDa56SLU/ShLv
-         vPOapM3pUoOW1kDTVuUq+rOcqZwqTGyQMaJlho4Wo1cQMojMF2He2CsrZ1zlkiGfGJk9
-         kC1JVQtkLyBMV3kcm5RObIMabKTbuByczSvcOsJ/NwyRj+dheJzZGKaliMRzvLptEiM0
-         FacwovzZUpkKSz93QJPMxTi2HVVH/a5N2OVmDZygCXjXoeEbTAiizvfJKXi4xebbDDYT
-         MaHg==
+        b=aVxTCTVofNzh9J3KDxd4WP7JuVFBtA2XTVJw23tN3JuRcwu7DIS4UAa6lwDY+/eqt3
+         ybzkf0vHtfkVAWTTnHEElHI50ykPgPmzoBpwSlmc3RGV21Wk0Xzc5riXntKR4eFI8xvz
+         Olu5uYKLnaACYZXMprlLAljW38vvZomxhzB+IsSYkT/W7pb2Gtqr+tRspTMWOhuv1YfW
+         8osk64u1Rw0S2frJwW72nZdg0tuUww/27Eo/YxjjA7zMTvINYYB+zCvRmE9Lf0M8xPgK
+         sxQMkGBge4P8i4Wg3F+MzbLj9YBGWGb6DqT9IAlKIWJ+KyfS3jf9L8s6FrI0h861ZzG2
+         KHlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition
          :content-transfer-encoding:user-agent:in-reply-to:mime-version
          :references:message-id:subject:to:from:date:dkim-signature;
-        bh=qDbx61T4Q0bmDfIc+2zbjFF4eWEyPM0f+8ojJBMdH+k=;
-        b=uvb/CpmxHEJrmBK/9p3wi0FP4Lhcu0k1lDdNxxeBgsiLYiYDUr+papQLIZH/kRdXBU
-         w6eoDVwlDJG6HzISk6TMrbjpfnnUPRYn+WCTLzppMpQVOBw/wj8qJXYri2kLeAOmvjrl
-         7Vcl4ARdV4sgVU/1OgZP38lOGIA7XJPVfkyKacf1zHXwRloZgoGRK3HFkm6xlojG91dW
-         BKPgQfLfzIVehVZTd4g9P2lalHNhSbCYZ3jCotHy9bgDE3MTVHytzmBFLVaGVYI448/F
-         8D080XfsaTIqYkHlKs8gzQ1q+uh1ej+AFcdK3sFA9IzFIOPYyBgzzcUh2RqWPdJRivoD
-         au7A==
+        bh=PSdoaDpcjuMsY9+RCbhjnC/nAltEB1nfZhS6Dcm2AS4=;
+        b=RYJKbt63qNDqy9PaZ4kHN3SOC119KgT0SelZx6y8c0Bz59So7PcaLmZfwW16r1MtRF
+         Qf5xZbM3jDSB3fboeBA/v1QQ8DiTNyWykw+sxjg7LvHFBtPHKtfB3gM08hdpchWKXh8f
+         MiJKexmON5b7ibG+n5R2O5cVlW/i4K3Bbv2ExYcQ2wLtLktywn6rO/aC4/bQNeJ7Y9gb
+         Vf89Ay+OtjHTiUYurY1za3NNYwNkZvDIH0VNxf+FEb0hI1SqxpYTAJ1X009T1DtMe1VQ
+         x2NMdqTqV6j6pQZC4GqCW4nlwztqzjfgjzVH6/GFk2dAJLeufzlBC7vgaepjH3sC9DnQ
+         3nFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AND8KQF0;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Dd5ZBVdd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o18si1660188qkh.26.2020.02.18.02.00.40
+        by mx.google.com with ESMTPS id l8si1559670qki.54.2020.02.18.02.00.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2020 02:00:40 -0800 (PST)
+        Tue, 18 Feb 2020 02:00:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AND8KQF0;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Dd5ZBVdd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59724 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59734 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3zgF-00054N-Lp
-	for alex.bennee@linaro.org; Tue, 18 Feb 2020 05:00:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45276)
+	id 1j3zgR-0005OO-Cg
+	for alex.bennee@linaro.org; Tue, 18 Feb 2020 05:00:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46153)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgilbert@redhat.com>) id 1j3zZr-00025U-V3
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:54:04 -0500
+ (envelope-from <dgilbert@redhat.com>) id 1j3zf1-0003Do-4U
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:59:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgilbert@redhat.com>) id 1j3zZq-0002YL-Vq
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:54:03 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:60517
+ (envelope-from <dgilbert@redhat.com>) id 1j3zf0-0004hl-5P
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:59:23 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:57532
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1j3zZq-0002Xz-SF
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:54:02 -0500
+ (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1j3zf0-0004hU-0w
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:59:22 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582019642;
+ s=mimecast20190719; t=1582019961;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qDbx61T4Q0bmDfIc+2zbjFF4eWEyPM0f+8ojJBMdH+k=;
- b=AND8KQF0ZBDq+z1o9obLzkixzjfIW9FFC0sJXFiD8fTzTm+WnTV+reLVx2eZuz3Vs03lyQ
- aSSrvzdzwUoeK4aueSWaMo9z/hl4LpUV8Dqc1snpHPnkrXfbdWHwb0fJbB5KOosLLmy6w4
- GKeeKHC1QTNW+Cbw3xk0katDhmAHcGI=
+ bh=PSdoaDpcjuMsY9+RCbhjnC/nAltEB1nfZhS6Dcm2AS4=;
+ b=Dd5ZBVddpTyWYez4+hVBIrE5NHL6eXn/GjZvUBR/zE+m3VizNGhTKlm9Z6D3Orb+M5/cbX
+ +52Fta7d23f617LU+bsTrnYd7d1H4G98Cf2T5e3NCubq2Qw0YM1ZPg/5mytnb/5WPa3cS/
+ Qeh++dvFlxuNlF3HWAunCGbV1KiEyaQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-253-btOGXQXyM_qUxLkPaA8nDg-1; Tue, 18 Feb 2020 04:54:00 -0500
+ us-mta-230-VmESdGpZMZKUYxDtqqpbDg-1; Tue, 18 Feb 2020 04:59:20 -0500
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1C266189F760;
- Tue, 18 Feb 2020 09:53:58 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2E304DBA3;
+ Tue, 18 Feb 2020 09:59:18 +0000 (UTC)
 Received: from work-vm (unknown [10.36.118.89])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6E44E27061;
- Tue, 18 Feb 2020 09:53:37 +0000 (UTC)
-Date: Tue, 18 Feb 2020 09:53:35 +0000
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3683219481;
+ Tue, 18 Feb 2020 09:58:58 +0000 (UTC)
+Date: Tue, 18 Feb 2020 09:58:55 +0000
 From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [PATCH RESEND 05/13] hw/arm/xlnx-versal: Remove superfluous
+Subject: Re: [PATCH RESEND 09/13] migration/multifd: Remove superfluous
  semicolon
-Message-ID: <20200218095335.GH3080@work-vm>
+Message-ID: <20200218095855.GL3080@work-vm>
 References: <20200218094402.26625-1-philmd@redhat.com>
- <20200218094402.26625-6-philmd@redhat.com>
+ <20200218094402.26625-10-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200218094402.26625-6-philmd@redhat.com>
+In-Reply-To: <20200218094402.26625-10-philmd@redhat.com>
 User-Agent: Mutt/1.13.3 (2020-01-12)
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: btOGXQXyM_qUxLkPaA8nDg-1
+X-MC-Unique: VmESdGpZMZKUYxDtqqpbDg-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -126,31 +125,31 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Xl1JZQs7lCR3
+X-TUID: XgORX35gvqFR
 
 * Philippe Mathieu-Daud=E9 (philmd@redhat.com) wrote:
-> Fixes: 6f16da53ffe
+> Fixes: d32ca5ad798
 > Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 
 > ---
->  hw/arm/xlnx-versal-virt.c | 2 +-
+>  migration/multifd.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-> index 462493c467..0d2e3bdda1 100644
-> --- a/hw/arm/xlnx-versal-virt.c
-> +++ b/hw/arm/xlnx-versal-virt.c
-> @@ -350,7 +350,7 @@ static void create_virtio_regions(VersalVirt *s)
->      int i;
+> diff --git a/migration/multifd.c b/migration/multifd.c
+> index b3e8ae9bcc..cfaba1369e 100644
+> --- a/migration/multifd.c
+> +++ b/migration/multifd.c
+> @@ -305,7 +305,7 @@ static int multifd_send_pages(QEMUFile *f)
+>                  + p->packet_len;
+>      qemu_file_update_transfer(f, transferred);
+>      ram_counters.multifd_bytes +=3D transferred;
+> -    ram_counters.transferred +=3D transferred;;
+> +    ram_counters.transferred +=3D transferred;
+>      qemu_mutex_unlock(&p->mutex);
+>      qemu_sem_post(&p->sem);
 > =20
->      for (i =3D 0; i < NUM_VIRTIO_TRANSPORT; i++) {
-> -        char *name =3D g_strdup_printf("virtio%d", i);;
-> +        char *name =3D g_strdup_printf("virtio%d", i);
->          hwaddr base =3D MM_TOP_RSVD + i * virtio_mmio_size;
->          int irq =3D VERSAL_RSVD_IRQ_FIRST + i;
->          MemoryRegion *mr;
 > --=20
 > 2.21.1
 >=20

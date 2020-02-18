@@ -1,100 +1,159 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6400933lfp;
-        Tue, 18 Feb 2020 10:26:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzJoWtjWA0gjn2NNxJoeKlkXKwnhwnlILl6+S11R32/YRfV6uKASTx8m1hiMR7O4usnJtOG
-X-Received: by 2002:a05:6214:176e:: with SMTP id et14mr17257242qvb.133.1582050370274;
-        Tue, 18 Feb 2020 10:26:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582050370; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6422433lfp;
+        Tue, 18 Feb 2020 10:54:45 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwoQYJmGsx4t9KiB++Wb9Ns7p/Cyoa0WHl6GDZa1Qe6+vnWdTsg+54iOpNYSIJC1O0AI88D
+X-Received: by 2002:ac8:108:: with SMTP id e8mr18912527qtg.101.1582052085360;
+        Tue, 18 Feb 2020 10:54:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582052085; cv=none;
         d=google.com; s=arc-20160816;
-        b=macntZi3Ir1lYtKt+GbxLsGyiIgN9T53MS6767kRLlSjw44dslSEgGNlHLCq/Ws9ua
-         nuYSCsUJhSbgnGLIclYLWFQxsuovCHgQf1HwsbygoiCnsYWRPIcyztrWh+P/lmkC37Tg
-         ePgmZIxwqHkxPt4fzNYrBzlgY1S8Wn0RwK6a+8ZiQui3/KfxP7jvRQaArGVaHnFQoTzQ
-         7yo4NjjB6+s9JKIMKml57uz4UmnAtNIjpAeFpCb0UP4zVkJoNLr5FvLYfZgn+GfpCKc9
-         88UI6/D749ACDnCGPNnFstXXUXmFLVyTT3p4vpAcVl7LM0p9cH7cQqd4YtQQSbCIW3HP
-         aUuA==
+        b=k8ziJ0hqxsMrjRTPRt42JkvDsIzKRUZrrYY60gyvudYc4IKkbE+Gfqu8ylIZPyVXYY
+         QkLDCjPCs1xHta/jTCA9EREhK4Mipa6bGgMufxlLCWjseqoILoPSkD4eBsHs0JRerQhS
+         oVg1BlLFPLx8EIym4uyXMgvzS6JDsl5iaGajW18usJFcy9/ul35TiD8/96WZ7e9C6QN9
+         fCaCI46PixTheZX+b18d88f6IgKF0gMdvnfdfxPIlRdx3/gA01tQbAj6Kdzg0PjpfncZ
+         7iJh19AWGd4sUYNMn+eRLhRkq0twOeWMHnPgfMMDbc5fl07NRYruPFajRZGzx395NuNl
+         m04g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=dcvSQoAsUL9C5Aq1ofm643zj+vq9wM/Vam8GdBtyzPM=;
-        b=UAJY3wvnwu/IrxcdZ2cSxDO2HXA/Mc/Z7yBmx+fVr3Y4xHyrQYd0RxTs4Xp5PH8YyZ
-         QNJqAle0PkRdPAbDi736cRBBFaGgleHvwNGueVfWSgxCv6JV26s5k/+/uzenJdUzbNWg
-         PYTLl3hqxw9cCeBg2m7evbQ2y74Z2KlKzHzLy7ZUJQNwXszBTii/bWr1NPffthLQOAPD
-         ESFqTsKE/LIZI0Rq7Oh8m7JcE4gBXQXeFS3hr8y60Or1A93foVdys5UCT/2ePK1J5njP
-         NA2GwbfhKqApPhlcY1+dr7xianBYZe/hcCs3Y8beyZflz1l/qzAQ0l8UuNsAUMxO6yb0
-         rLgQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject:dkim-signature;
+        bh=CqLFDJ1ABcii2HzXgyZtrgrFJT91w7L0xl23aCTYaH0=;
+        b=BzqgjT7r1t5TDh1lIqgr5BkfTI4Nf2SU1bLL3wloxXUBKqi0vS+rmzrZwyA48/RQDA
+         Ekis06qhJxL8zeQycWyrwDCwv3FVrR8/Zujg/sLz5tKC6W7XD+ykH1jZsAZHzs7ENoL8
+         dU/b5YDA7LzDDMMehkDqp/3QrjjhAzW4bnWItatS7ZeUBBc5x3wpKuKRBSkyVpC6wAej
+         GO8AB6khBd4shYcjp5WxlYMnJloFYDI6iQM5pqIGezJbZxb0+wBGgO9cZ5poGs711+Wx
+         z4Q7Ba4dhXuyc7ONkQg4czsJPJf5bmiAsTiaTU11Uv/mlWGCxC8U8KJr/27MnmhLZ6uH
+         dTRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=syrsSzcQ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="WV33N/IP";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j194si2341334qke.294.2020.02.18.10.26.10
+        by mx.google.com with ESMTPS id h1si2136668qtr.73.2020.02.18.10.54.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2020 10:26:10 -0800 (PST)
+        Tue, 18 Feb 2020 10:54:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=syrsSzcQ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="WV33N/IP";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39930 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40194 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j47ZR-0005SH-Om
-	for alex.bennee@linaro.org; Tue, 18 Feb 2020 13:26:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54447)
+	id 1j4816-000360-Py
+	for alex.bennee@linaro.org; Tue, 18 Feb 2020 13:54:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45658)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j47ZI-0005S1-Qd
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 13:26:01 -0500
+ (envelope-from <lvivier@redhat.com>) id 1j480z-00035a-1o
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 13:54:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j47ZH-0000hF-CE
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 13:26:00 -0500
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:37883)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j47ZG-0000fb-5M
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 13:25:59 -0500
-Received: by mail-ot1-x344.google.com with SMTP id w23so4055914otj.4
- for <qemu-arm@nongnu.org>; Tue, 18 Feb 2020 10:25:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=dcvSQoAsUL9C5Aq1ofm643zj+vq9wM/Vam8GdBtyzPM=;
- b=syrsSzcQKVlBcC4d1Rcsd5/4t0RaqvNT83RQbH0e9qu3biyh4kETK5t9dacw9Ja9yZ
- POl3cMCdmEQb1aN9pMIW2ydt6WPgnA/Lkir/9kPIuGyjch80ZwnIfIXBxS1LOgGGfRgc
- SgNRUsUKZ8EcmYzidpP2h6frvqaS5rnBFDZuxs8bKciLmWbERaht8LLVIRJOvpGsZaMn
- Jod+f4SRzQceLm/np5nDjIodtiGaIyqn9bd2OaSa4KvIxWt5L7BVI+oYyoCyjPz2dQpY
- z3MKisFrgsV0UYsAafJ8FpDPk+yfizX89nOFtGmLM3d1YK7sKzYultaoCWSOfYzbErn4
- bDxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=dcvSQoAsUL9C5Aq1ofm643zj+vq9wM/Vam8GdBtyzPM=;
- b=rFxjoXtcmdCDALTPTGEdjuMAhD6U3oCEDWQqxwD62xk9g33ru6SFES9eVcl0vwvpks
- 4X5SRA1K2dbd3fZf/gfxEkqmSxtw0RZyQNBcB36VTmEnK1FYrRzpNObHAxlgHEfCqliN
- AeX2CNmnoeo4sxfn1lqwT2yn4mAOInBzD+ZIBPC5fmJ+p/0JQ2bGIY7+b6xFNsCDKEWD
- x2tKk2gGPNf9YS+ueXG7RktwlB73hGfvJQKbfMy2lcSPr7tjwW3Tb0Buig/tdlFcmGES
- pKLHS6DBS+HJJWZBjCkKzgzgYy9u80cMLI7lug4p1XcYzOyTtDkqEPFqOoyWxGkzOeB4
- ZCAg==
-X-Gm-Message-State: APjAAAUh5YfQ3mkafTqaBUKln1gkmflGL9MhckuvTDdDzwfcz5+sxHkF
- z2ukDbcVM3kSmXJ1yzA4+AuJbUA3rMHIzOfTWMJ0iw==
-X-Received: by 2002:a05:6830:13da:: with SMTP id
- e26mr15663627otq.97.1582050357188; 
- Tue, 18 Feb 2020 10:25:57 -0800 (PST)
+ (envelope-from <lvivier@redhat.com>) id 1j480x-0007zj-Ip
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 13:54:36 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:33010
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <lvivier@redhat.com>) id 1j480x-0007xm-9Q
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 13:54:35 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582052074;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=CqLFDJ1ABcii2HzXgyZtrgrFJT91w7L0xl23aCTYaH0=;
+ b=WV33N/IPiG4rUHc4RyIEv1any5BVtIIOPyeZSYxWYVzS7KJiROKEf/WvWw9jIKIOKI06MZ
+ rC/WKKswCNUozQ8EdbtcWcbrHu8tOv8Sjc67X61pRKxIJAv1R4WUzfdKfGOeEgaBsD2wdB
+ qiUEAxBz+ECU2cSTKtyTp3XXk61GwvE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-180-PqKxugGlMYKyMmpL2GHEGA-1; Tue, 18 Feb 2020 13:54:28 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C3461801E6C;
+ Tue, 18 Feb 2020 18:54:25 +0000 (UTC)
+Received: from [10.36.116.166] (ovpn-116-166.ams2.redhat.com [10.36.116.166])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5AF2F90F55;
+ Tue, 18 Feb 2020 18:54:03 +0000 (UTC)
+Subject: Re: [PATCH RESEND 00/13] trivial: Detect and remove superfluous
+ semicolons in C code
+To: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20200218094402.26625-1-philmd@redhat.com>
+ <55411270-83ae-d6aa-362f-07018b44c0e1@redhat.com>
+From: Laurent Vivier <lvivier@redhat.com>
+Autocrypt: addr=lvivier@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+ D+Ofp0T3KOr1RUHvCZoLURfFhSQ=
+Message-ID: <db6b6d52-da28-d279-6aeb-ba76cd0f4da6@redhat.com>
+Date: Tue, 18 Feb 2020 19:54:02 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-References: <1581686212-9625-1-git-send-email-sai.pavan.boddu@xilinx.com>
- <1581686212-9625-3-git-send-email-sai.pavan.boddu@xilinx.com>
- <CAFEAcA9Bs9VuZNstbpF6Q2=MhVDN_HHMnUdwfOJSf7Qm9to2nw@mail.gmail.com>
-In-Reply-To: <CAFEAcA9Bs9VuZNstbpF6Q2=MhVDN_HHMnUdwfOJSf7Qm9to2nw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 18 Feb 2020 18:25:46 +0000
-Message-ID: <CAFEAcA88+k9nhpCsb38qaf3KnrfVKhp_2eVFToGqO+eLGTE7rQ@mail.gmail.com>
-Subject: Re: [PATCH 2/3] cpu/a9mpcore: Add num priority bits property
-To: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::344
+In-Reply-To: <55411270-83ae-d6aa-362f-07018b44c0e1@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: PqKxugGlMYKyMmpL2GHEGA-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,72 +165,67 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Anthony Liguori <anthony@codemonkey.ws>,
- =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, Yuval Shaia <yuval.shaia.ml@gmail.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
+ Juan Quintela <quintela@redhat.com>, qemu-trivial@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Julia Suvorova <jusual@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>, Aarushi Mehta <mehta.aaru20@gmail.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ Thomas Huth <huth@tuxfamily.org>, Laurent Vivier <laurent@vivier.eu>,
+ Max Reitz <mreitz@redhat.com>, Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9FEwivebVs4L
+X-TUID: 4DiZEraXvFuC
 
-On Tue, 18 Feb 2020 at 18:16, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Fri, 14 Feb 2020 at 13:21, Sai Pavan Boddu
-> <sai.pavan.boddu@xilinx.com> wrote:
-> >
-> > Set number of priority bits property of gic as guided by machine
-> > configuration.
-> >
-> > Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-> > ---
-> >  hw/cpu/a9mpcore.c         | 2 ++
-> >  include/hw/cpu/a9mpcore.h | 1 +
-> >  2 files changed, 3 insertions(+)
-> >
-> > diff --git a/hw/cpu/a9mpcore.c b/hw/cpu/a9mpcore.c
-> > index 1f8bc8a..eb1e752 100644
-> > --- a/hw/cpu/a9mpcore.c
-> > +++ b/hw/cpu/a9mpcore.c
-> > @@ -68,6 +68,7 @@ static void a9mp_priv_realize(DeviceState *dev, Error **errp)
-> >      gicdev = DEVICE(&s->gic);
-> >      qdev_prop_set_uint32(gicdev, "num-cpu", s->num_cpu);
-> >      qdev_prop_set_uint32(gicdev, "num-irq", s->num_irq);
-> > +    qdev_prop_set_uint32(gicdev, "num-prio-bits", s->n_prio_bits);
-> >
-> >      /* Make the GIC's TZ support match the CPUs. We assume that
-> >       * either all the CPUs have TZ, or none do.
-> > @@ -167,6 +168,7 @@ static Property a9mp_priv_properties[] = {
-> >       * Other boards may differ and should set this property appropriately.
-> >       */
-> >      DEFINE_PROP_UINT32("num-irq", A9MPPrivState, num_irq, 96),
-> > +    DEFINE_PROP_UINT32("num-priority-bits", A9MPPrivState, n_prio_bits, 8),
-> >      DEFINE_PROP_END_OF_LIST(),
->
-> You should be able to just directly pass through the property
-> from the GIC object by calling
->     object_property_add_alias(obj, "num-priority-bits", OBJECT(&s->gic),
->                               "num-priority-bits", &error_abort);
-> at the end of a9mp_priv_initfn().
+On 18/02/2020 18:04, Paolo Bonzini wrote:
+> On 18/02/20 10:43, Philippe Mathieu-Daud=C3=A9 wrote:
+>> Luc noticed a superfluous trailing semicolon:
+>> https://lists.gnu.org/archive/html/qemu-devel/2020-02/msg04593.html
+>>
+>> Prevent that by modifying checkpatch.pl and clean the codebase.
+>>
+>> Philippe Mathieu-Daud=C3=A9 (13):
+>>   scripts/checkpatch.pl: Detect superfluous semicolon in C code
+>>   audio/alsaaudio: Remove superfluous semicolons
+>>   block: Remove superfluous semicolons
+>>   block/io_uring: Remove superfluous semicolon
+>>   hw/arm/xlnx-versal: Remove superfluous semicolon
+>>   hw/m68k/next-cube: Remove superfluous semicolon
+>>   hw/scsi/esp: Remove superfluous semicolon
+>>   hw/vfio/display: Remove superfluous semicolon
+>>   migration/multifd: Remove superfluous semicolon
+>>   ui/input-barrier: Remove superfluous semicolon
+>>   target/i386/whpx: Remove superfluous semicolon
+>>   tests/qtest/libqos/qgraph: Remove superfluous semicolons
+>>   contrib/rdmacm-mux: Remove superfluous semicolon
+>>
+>>  audio/alsaaudio.c           | 4 ++--
+>>  block.c                     | 4 ++--
+>>  block/io_uring.c            | 2 +-
+>>  contrib/rdmacm-mux/main.c   | 2 +-
+>>  hw/arm/xlnx-versal-virt.c   | 2 +-
+>>  hw/m68k/next-cube.c         | 2 +-
+>>  hw/scsi/esp.c               | 2 +-
+>>  hw/vfio/display.c           | 2 +-
+>>  migration/multifd.c         | 2 +-
+>>  target/i386/whpx-all.c      | 2 +-
+>>  tests/qtest/libqos/qgraph.c | 4 ++--
+>>  ui/input-barrier.c          | 2 +-
+>>  scripts/checkpatch.pl       | 5 +++++
+>>  13 files changed, 20 insertions(+), 15 deletions(-)
+>>
+>=20
+> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+>=20
+> Laurent, can you queue this in qemu-trivial?
+>=20
+Yes, I will.
 
-On second thoughts, and having checked the manual:
+Thanks,
+Laurent
 
-All A9 CPUs have a GIC with 5 bits of priority. So we should
-just set the num-priority-bits on the GIC object in a9mpcore.c,
-and not expose it as a property of this container device.
-
-That will be a behaviour change for:
- - exynos4210 boards
- - fsl-imx6 boards
- - highbank
- - realview
- - vexpress
-as well as xilinx, but it is a bug fix, and I have enough test
-images for those to check it doesn't completely break them.
-So we should just go ahead and implement them correctly.
-
-Similarly, the 11MPCore GIC always has 4 bits of priority,
-so we could get the behaviour right for the 'realview-eb-mpcore'
-board too.
-
-thanks
--- PMM

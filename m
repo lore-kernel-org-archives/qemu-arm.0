@@ -1,76 +1,77 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5896639lfp;
-        Tue, 18 Feb 2020 00:50:44 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzowZ3BG2uRb0ffSWzCteB+uT5R9Oj/l1LEsx+kX28FQUVUuzQeVuLmltnaOTpMrx91shyo
-X-Received: by 2002:a05:620a:201d:: with SMTP id c29mr17345502qka.91.1582015844071;
-        Tue, 18 Feb 2020 00:50:44 -0800 (PST)
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5901206lfp;
+        Tue, 18 Feb 2020 00:57:53 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyRSpLtmMiffVBc5//LdaJuPnn/erULABkO8cTnargT9diVbRnVKjA3mUmh3x72KZDuUDWb
+X-Received: by 2002:ac8:3a27:: with SMTP id w36mr16328364qte.204.1582016273778;
+        Tue, 18 Feb 2020 00:57:53 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 1si1560638qki.364.2020.02.18.00.50.43
+        by mx.google.com with ESMTPS id p25si1467333qtq.34.2020.02.18.00.57.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2020 00:50:44 -0800 (PST)
+        Tue, 18 Feb 2020 00:57:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=2B8eGv6C;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=appDnoOV;
        arc=fail (body hash mismatch);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58360 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58404 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3yaZ-00089Y-D9
-	for alex.bennee@linaro.org; Tue, 18 Feb 2020 03:50:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36172)
+	id 1j3yhV-0003NU-4R
+	for alex.bennee@linaro.org; Tue, 18 Feb 2020 03:57:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36750)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1j3yZv-0007zs-TK
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 03:50:05 -0500
+ (envelope-from <luc.michel@greensocs.com>) id 1j3yfi-0002ML-4Z
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 03:56:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <luc.michel@greensocs.com>) id 1j3yZu-0005Kr-KI
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 03:50:03 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:33122)
+ (envelope-from <luc.michel@greensocs.com>) id 1j3yfh-0001dj-5C
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 03:56:02 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:33320)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <luc.michel@greensocs.com>)
- id 1j3yZu-0005Fv-Bv; Tue, 18 Feb 2020 03:50:02 -0500
+ id 1j3yfg-0001dY-SW; Tue, 18 Feb 2020 03:56:01 -0500
 Received: from [172.16.11.100] (tiramisu.bar.greensocs.com [172.16.11.100])
- by beetle.greensocs.com (Postfix) with ESMTPSA id A72F896EF0;
- Tue, 18 Feb 2020 08:49:58 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 70E2696EF0;
+ Tue, 18 Feb 2020 08:55:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1582015798;
+ s=mail; t=1582016159;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DHWFfZ+ONx+uAB+oGFVCcksw9qZAV67jcksubLr09YQ=;
- b=2B8eGv6C9eHdMoKLq+7By1KC53uECffymJoEv5v0n5Ec5Eqc76WQCEdLAITJFwkrvrk6ZW
- DFhXgCvTOSMQxmNNJ2lO25LE9PwhfNbK9IUZK7gsjBk2aqHhEUr0E+z7Cf4sUS3BdrIs8t
- 8XpzMaP3C0OrkwZ04nCuSrtq0+H64DA=
-Subject: Re: [PATCH v2 13/13] hw/arm/raspi: Add the Raspberry Pi Zero machine
+ bh=CnhKFiGzn80VHlML3T1si5xmjUf7aVYSQ788Nc/DGVM=;
+ b=appDnoOVYm2PxwF85x4LMIGOwFCRxC9I5tIYjdf5WPbSn8LWhvAG9h/sWFmAheLPmoGI+e
+ 0tC4aNARZRr4jd2TbaX/zBlS5QjrKFwptPh9L/Gecv6dsWjU24bIxBAcATqKjmG58VAqrF
+ +xlJtxs3+Vbq7g2L/E4r7vlr77bkBk8=
+Subject: Re: [PATCH v2 06/13] hw/arm/bcm2836: Restrict BCM283XClass
+ declaration to C source
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20200217114533.17779-1-f4bug@amsat.org>
- <20200217114533.17779-14-f4bug@amsat.org>
+ <20200217114533.17779-7-f4bug@amsat.org>
 From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <cccdf237-a477-0662-930b-df05def200d3@greensocs.com>
-Date: Tue, 18 Feb 2020 09:49:58 +0100
+Message-ID: <52bf1d53-7294-2aba-0015-937420f48ae7@greensocs.com>
+Date: Tue, 18 Feb 2020 09:55:59 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200217114533.17779-14-f4bug@amsat.org>
+In-Reply-To: <20200217114533.17779-7-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-PH
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1582015799;
+ s=mail; t=1582016159;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DHWFfZ+ONx+uAB+oGFVCcksw9qZAV67jcksubLr09YQ=;
- b=qI5dR7/tpkTqHPyryf9DJfL6duUIA/PdYmLYqiDoPy/LX61v2Sex4TR+1wGca0FBIGid1K
- IjMVYPeeBh62/arxwaMBfrrnlDSKvXmXqvgFX+b62W2kGRFWue1nqKz71UMmmVbAxvHdnT
- +WAlfktzkmzHoH8EYthDxUmyUf2uSC4=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582015799; a=rsa-sha256; cv=none;
- b=VneEHaXdfJvRiPq/fWaLw4sSqZkS+kXF/Ue0OzI+Uvx53b6BWEtRmeBEFS9qsGErgJ30Rp
- AqEZZQHN8Hvm/G8X/7ZS8p7taqsdqCf3RE2NRvxHnCGZqZp2YdEmuq+4B9ENf9f94lPeek
- ggOjP2Ay1L9DfEf3yu0CDJIg57VzhPI=
+ bh=CnhKFiGzn80VHlML3T1si5xmjUf7aVYSQ788Nc/DGVM=;
+ b=Zu3PJxb89Dmqss9DiqnYrlHKupqOAixwEx7sJ3BnZlGH4jOGxwRyBgH+ePTh3msPAEN+BA
+ UxAc7e5y1WC7Mn/OxhFDSJWwO8DoAWSvKU1laI3eZPTPuAiCrIQwYBQhqp2nvBXHWdJpOY
+ stOGnUDArC4YqgOofkerYUslFelA0IU=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582016159; a=rsa-sha256; cv=none;
+ b=52mBx7QIuxRJz/P4sgH4duu44NulGDf890iJLc3ONqMqS+02ljm7gyeznJW4Rx/6qLcEHE
+ mc9MMDrUWSmXzLpgk7P58oqPZB6LlHNGCKNBH05LsS2ilBZ11LH3/xWXtI18mb047NJp/V
+ oUMvHAHaiAnRX/XJISztkbSaccJ0TrY=
 ARC-Authentication-Results: i=1; ORIGINATING;
  auth=pass smtp.auth=luc smtp.mailfrom=luc.michel@greensocs.com
 Content-Transfer-Encoding: quoted-printable
@@ -92,99 +93,72 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t26x3ms/PgYP
+X-TUID: P/sT3OcjMb2y
 
 On 2/17/20 12:45 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Add a Raspberry Pi Zero machine.
->=20
->   $ qemu-system-arm -M raspi0w -serial stdio \
->       -kernel raspberrypi/firmware/boot/kernel.img \
->       -dtb raspberrypi/firmware/boot/bcm2708-rpi-zero-w.dtb \
->       -append 'printk.time=3D0 earlycon=3Dpl011,0x20201000 console=3Dtt=
-yAMA0'
->   [    0.000000] Booting Linux on physical CPU 0x0
->   [    0.000000] Linux version 4.19.69+ (dom@buildbot) (gcc version 4.9=
-.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1261 Tue Sep 3 20:21:=
-01 BST 2019
->   [    0.000000] CPU: ARMv6-compatible processor [410fb767] revision 7 =
-(ARMv7), cr=3D00c5387d
->   [    0.000000] CPU: VIPT aliasing data cache, unknown instruction cac=
-he
->   [    0.000000] OF: fdt: Machine model: Raspberry Pi Zero W
->   [    0.000000] earlycon: pl11 at MMIO 0x20201000 (options '')
->   [    0.000000] bootconsole [pl11] enabled
->   [    0.000000] Memory policy: Data cache writeback
->   [    0.000000] cma: Reserved 8 MiB at 0x1b800000
->   [    0.000000] random: get_random_bytes called from start_kernel+0x8c=
-/0x49c with crng_init=3D0
->   [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages:=
- 113680
->   [    0.000000] Kernel command line: printk.time=3D0 earlycon=3Dpl011,=
-0x20201000 console=3DttyAMA0 root=3D/dev/mmcblk0 rootwait
->   Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
->   Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
->   Memory: 434380K/458752K available (6971K kernel code, 635K rwdata, 20=
-80K rodata, 464K init, 797K bss, 16180K reserved, 8192K cma-reserved)
->   Virtual kernel memory layout:
->       vector  : 0xffff0000 - 0xffff1000   (   4 kB)
->       fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
->       vmalloc : 0xdc800000 - 0xff800000   ( 560 MB)
->       lowmem  : 0xc0000000 - 0xdc000000   ( 448 MB)
->       modules : 0xbf000000 - 0xc0000000   (  16 MB)
->         .text : 0x(ptrval) - 0x(ptrval)   (6973 kB)
->         .init : 0x(ptrval) - 0x(ptrval)   ( 464 kB)
->         .data : 0x(ptrval) - 0x(ptrval)   ( 636 kB)
->          .bss : 0x(ptrval) - 0x(ptrval)   ( 798 kB)
->   SLUB: HWalign=3D32, Order=3D0-3, MinObjects=3D0, CPUs=3D1, Nodes=3D1
->   ftrace: allocating 25193 entries in 74 pages
->   NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
->   sched_clock: 32 bits at 1000kHz, resolution 1000ns, wraps every 21474=
-83647500ns
->   clocksource: timer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle=
-_ns: 1911260446275 ns
->   bcm2835: system timer (irq =3D 27)
->   Console: colour dummy device 80x30
->   ...
+> No code out of bcm2836.c uses (or requires) this declarations.
+> Move it locally to the C source file.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 
 > ---
->  hw/arm/raspi.c | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
+>  include/hw/arm/bcm2836.h | 12 ------------
+>  hw/arm/bcm2836.c         | 14 ++++++++++++++
+>  2 files changed, 14 insertions(+), 12 deletions(-)
 >=20
-> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> index 2d9f4e3085..d59d7c4294 100644
-> --- a/hw/arm/raspi.c
-> +++ b/hw/arm/raspi.c
-> @@ -324,6 +324,15 @@ static void raspi_machine_class_common_init(Machin=
-eClass *mc,
->      mc->default_ram_size =3D board_ram_size(board_rev);
+> diff --git a/include/hw/arm/bcm2836.h b/include/hw/arm/bcm2836.h
+> index 92a6544816..acc75bf553 100644
+> --- a/include/hw/arm/bcm2836.h
+> +++ b/include/hw/arm/bcm2836.h
+> @@ -42,16 +42,4 @@ typedef struct BCM283XState {
+>      BCM2835PeripheralState peripherals;
+>  } BCM283XState;
+> =20
+> -typedef struct BCM283XInfo BCM283XInfo;
+> -
+> -typedef struct BCM283XClass {
+> -    DeviceClass parent_class;
+> -    const BCM283XInfo *info;
+> -} BCM283XClass;
+> -
+> -#define BCM283X_CLASS(klass) \
+> -    OBJECT_CLASS_CHECK(BCM283XClass, (klass), TYPE_BCM283X)
+> -#define BCM283X_GET_CLASS(obj) \
+> -    OBJECT_GET_CLASS(BCM283XClass, (obj), TYPE_BCM283X)
+> -
+>  #endif /* BCM2836_H */
+> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+> index 38e2941bab..24109fef1d 100644
+> --- a/hw/arm/bcm2836.c
+> +++ b/hw/arm/bcm2836.c
+> @@ -16,6 +16,15 @@
+>  #include "hw/arm/raspi_platform.h"
+>  #include "hw/sysbus.h"
+> =20
+> +typedef struct BCM283XInfo BCM283XInfo;
+> +
+> +typedef struct BCM283XClass {
+> +    /*< private >*/
+> +    DeviceClass parent_class;
+> +    /*< public >*/
+> +    const BCM283XInfo *info;
+> +} BCM283XClass;
+> +
+>  struct BCM283XInfo {
+>      const char *name;
+>      const char *cpu_type;
+> @@ -24,6 +33,11 @@ struct BCM283XInfo {
+>      int clusterid;
 >  };
 > =20
-> +static void raspi0w_machine_class_init(ObjectClass *oc, void *data)
-> +{
-> +    MachineClass *mc =3D MACHINE_CLASS(oc);
-> +    RaspiMachineClass *rmc =3D RASPI_MACHINE_CLASS(oc);
+> +#define BCM283X_CLASS(klass) \
+> +    OBJECT_CLASS_CHECK(BCM283XClass, (klass), TYPE_BCM283X)
+> +#define BCM283X_GET_CLASS(obj) \
+> +    OBJECT_GET_CLASS(BCM283XClass, (obj), TYPE_BCM283X)
 > +
-> +    rmc->board_rev =3D 0x9000c1;
-> +    raspi_machine_class_common_init(mc, rmc->board_rev);
-> +};
-> +
->  static void raspi1b_machine_class_init(ObjectClass *oc, void *data)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(oc);
-> @@ -357,6 +366,10 @@ static void raspi3b_machine_class_init(ObjectClass=
- *oc, void *data)
-> =20
->  static const TypeInfo raspi_machine_types[] =3D {
+>  static const BCM283XInfo bcm283x_socs[] =3D {
 >      {
-> +        .name           =3D MACHINE_TYPE_NAME("raspi0w"),
-> +        .parent         =3D TYPE_RASPI_MACHINE,
-> +        .class_init     =3D raspi0w_machine_class_init,
-> +    }, {
->          .name           =3D MACHINE_TYPE_NAME("raspi1b"),
->          .parent         =3D TYPE_RASPI_MACHINE,
->          .class_init     =3D raspi1b_machine_class_init,
+>          .name =3D TYPE_BCM2836,
 >=20

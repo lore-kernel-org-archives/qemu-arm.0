@@ -1,214 +1,160 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5805276lfp;
-        Mon, 17 Feb 2020 22:46:39 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwwj0JbOj15it1sh/rs4T6r84jYQaVkXyNJCIIEivusXXNisnz7/UfxkSJqeT4QeLAsF5QN
-X-Received: by 2002:a81:2e57:: with SMTP id u84mr15214136ywu.98.1582008399171;
-        Mon, 17 Feb 2020 22:46:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582008399; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5808657lfp;
+        Mon, 17 Feb 2020 22:51:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzyF7mQ+tmJCcDrAOGVMStkwtZ/w1hhHBWy/AZUiyk9XDfWyn0bJGPfb4F55Y4BUp+9Fa0A
+X-Received: by 2002:a37:a406:: with SMTP id n6mr16381797qke.321.1582008716064;
+        Mon, 17 Feb 2020 22:51:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582008716; cv=none;
         d=google.com; s=arc-20160816;
-        b=uVSRqpz4QsA/Kggr474S8/ndUQcGFLFJUAznwgtB1Z+Y4hXPrZbeaS7INppiOHFWdG
-         jry7e+GNulKy6CXo3M+Be1pd5Wiaw6DXNtRYwF8JEMx3CcUTsZ2Y61DzyDAzO+zNIJ0w
-         EiGV7qGDiYTT0cju5b2KKwkbK+tambcFS1RfYUdeOiMLyUY0/X5HqPiUVY2LQj/STT0a
-         Cm5ZvtUtvggW3qoANfbETj33ekqKxbaZa2AKpKExm1zEfSDWMy8Imf3rzAGcbTsYFtPw
-         JzfBOr6F5frTDFE87/Mv6SknbNLDGEYDnpR/34YYYYSqchYdo2vgXJDvXQ5/Ip1UD+tj
-         NCQg==
+        b=L4vxIrFukS4wpknz0aZtuO60sFbJJ63VRIESDR8HV8nWyCracCbvWzh6I116p/hCmy
+         sjNUU+Mr1kxYxOf60xpz+9nwFPZh56mo5w3Jx2yK0aB8LiwwpW7d0lKPrmruA/ksBHMB
+         rt/XFCTjildhgWG+EHx8tn2UOEFCKuharfnSO/egeZBoY9cuFYrx4YUBd5Nr5BhcobZT
+         tCBC/EWZBkpbJbkl/aBKnJbN9ZZw5RGL/Oec9lBMwaQfXU1kw67kTZIxuU0XMFlA6CYy
+         Vt6J6d3h0MNeho3Wqg4j67QMYzXs9+GbF0NDhtgdlw6JDHa2xI+t3dBG5D11fGhXW42x
+         8gLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=7EexfLdD5JSfQpqO5jqNe6EOqoeJQYPvSvd4DEM4l58=;
-        b=svX/sN9PSk1iNOf6fPXmei7pAz9/MDZ+4Y+kWYaFD9vZDQevtAi0jVNcUNbUIMzcQl
-         ZG9oVD6D+a6sPE5B/ZFnOtrMlI3lZpmgsLsL1eJYhHb/IxtE560XMptS48Z/NGERDgRc
-         e6vGg98PIh0+o5dKE4IMGqyh4QzvajNHnRRitbZa8CzzlxrW5FTz/2cCQDIIhveKkCdj
-         OWXl1gZB05dH98q8+xiqIYxcPfVnBYVllVf/NUi/YQv+gqB5uE3dfMJT9Oh52Qewb7L2
-         iejLEUBecYok/SXn2+fOqFW7ssHtiPoNEARTircEhz/Ua8enlHazBCdKEI63vrVArxdt
-         ynjA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=OXu3dTJnGeCPNl6Wj3/I0DcBqHkkVxoLIUBttvTJ/MI=;
+        b=RP55EXTiw2LE97BIMlDdbuYj930rpYK3vgv+SEGldqjUx4yC2Qqb+7lwYO1msNjmen
+         samf9kcruRs0e/GQ6/K4j4gS0UM1pDb4+1oziAs/f/AE4NgrQSsR245Eogl0coTAiu4/
+         /86rSX3SlGmF/I0ukyOSH+FzQZ5VIQ/XfV4G7W5duPuqhOPeMe0HH3f8uj+QcNRSMZzJ
+         kxXLphRhLJV0kIZLfANXTVvmXAdTqOId5Ej/ViSgWMCaSCigCcPBcMTYhnTmULae0E7s
+         Lh/p69tddvf++WYZ03JzNQU9I4KXSp1OQqWK7Rz5rMQ5o0PgE7ylprDPXPMRBvDLqspx
+         ZKEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XCD1gOYo;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
-        by mx.google.com with ESMTPS id n18si1193537ywj.258.2020.02.17.22.46.38
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Jsq8z6OL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t19si1301428qto.107.2020.02.17.22.51.55
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 17 Feb 2020 22:46:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 17 Feb 2020 22:51:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XCD1gOYo;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Jsq8z6OL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57512 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j3wjb-0002wh-ID
+	for alex.bennee@linaro.org; Tue, 18 Feb 2020 01:51:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51497)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philmd@redhat.com>) id 1j3wjA-0002wO-W4
+ for qemu-devel@nongnu.org; Tue, 18 Feb 2020 01:51:29 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1j3wj7-0005VH-FN
+ for qemu-devel@nongnu.org; Tue, 18 Feb 2020 01:51:27 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:28284
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j3wj7-0005V6-BT
+ for qemu-devel@nongnu.org; Tue, 18 Feb 2020 01:51:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1582008398;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=7EexfLdD5JSfQpqO5jqNe6EOqoeJQYPvSvd4DEM4l58=;
-	b=XCD1gOYo0FDid62MdVhstGEIPxLzamVPl1NUB9/mnlr/6AVGTGXZnI5sT0rTQdQzJ/dVhX
-	CyQqe0EA4CEIIsL6XRek68M2LSzYdWU8qrL9dvUBOpVF58fG5kifc+rtn9g+EMLVA9pRGs
-	cxdmdCgWoysHh8ReAab7xAB3WLGV9DU=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-232-k-RerAshMIudHFMAt0jIUw-1; Tue, 18 Feb 2020 01:46:30 -0500
-Received: by mail-wr1-f71.google.com with SMTP id n23so10273513wra.20
-        for <alex.bennee@linaro.org>; Mon, 17 Feb 2020 22:46:30 -0800 (PST)
+ s=mimecast20190719; t=1582008684;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=OXu3dTJnGeCPNl6Wj3/I0DcBqHkkVxoLIUBttvTJ/MI=;
+ b=Jsq8z6OL3JvigHxaSAb6wk8cy7a/sbE+fSru123zoUx20lrd8XJ5aoAGcK/acHmCZQz8GG
+ N1p4CsqVslKGjmkEQITi8QRlIYA31Js20GVRLt39U8CMt7yxVdEFYtaRKY+8kpRTbLktIB
+ 0Vv+7/Ld19qvKGmHsH+1d/achHQSr84=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-280-am1ytdxYM-C-Ul_C2TdZVw-1; Tue, 18 Feb 2020 01:51:23 -0500
+Received: by mail-wr1-f69.google.com with SMTP id j4so10287495wrs.13
+ for <qemu-devel@nongnu.org>; Mon, 17 Feb 2020 22:51:23 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=0Xfzg04uB8sMZPMiaMCiM5JFy9tm9UmJ6U9SQouTgD8=;
-        b=SSmKHEYGnyMiys34GG5/2DULoMFPm0giaq0fwiMxGa1ONqlxBxmR5yXPfNTPwyedHJ
-         QkqBmFY4hexHlFOV6OgLW+hlJGna21GlWVmLotIPvocJ7N7TCAiW8eKcS330K4+eJlwK
-         4yvq3IbvX2jBzSbD6JuNq3+uEvPyVP5iFYVuN9eLO52kC/lgRgwaiTD/s/ZiABWRuD+5
-         cbCgSXSePth+WmMz4ACKa68GpClQPLlSiIN1T/MZazm5DArYVTYdL+OkAIehCLkBzXGe
-         No1lgjaWbJ3UdtzMLnpXYWJ0uDcP75VnI9ToUEOfUjRwUZZGEg8ojVRwY4hVrwPyCPXh
-         3VZw==
-X-Gm-Message-State: APjAAAWm7D0rcSbQSLGo+QVwFhUEM//YJfyYVRCloGWT2zQGlqi03Np3
-	VBSV5NtDui4g7Z9TPoNDN0t3vExVWxVpjz8m8cy4v15zlZtRq0GVjy/QW2r9ZgXYe1OPsLzYvpj
-	mH0QP4qwGaaS9twal
-X-Received: by 2002:adf:ab14:: with SMTP id q20mr26592228wrc.274.1582008389541;
-        Mon, 17 Feb 2020 22:46:29 -0800 (PST)
-X-Received: by 2002:adf:ab14:: with SMTP id q20mr26592197wrc.274.1582008389256;
-        Mon, 17 Feb 2020 22:46:29 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net. [88.21.202.78])
-        by smtp.gmail.com with ESMTPSA id m3sm4340179wrs.53.2020.02.17.22.46.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 17 Feb 2020 22:46:28 -0800 (PST)
-Subject: Re: [PATCH v4 00/20] Add Allwinner H3 SoC and Orange Pi PC Machine
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>, jasowang@redhat.com,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>
-References: <20200119005102.3847-1-nieklinnenbank@gmail.com>
- <CAPan3WpV2m9HXLXZDopKUb2EfX2KE9y530m2pJG4-D96==ggCg@mail.gmail.com>
- <ee95179f-c15f-9615-e241-80199e6948b7@redhat.com>
- <CAPan3WpG0yPu5sbS=mpHk=xNVGaqwWFrBcDBcovLLRit==5dwg@mail.gmail.com>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=2UcbJiQ/7H1UBF3e3ZaiblHCql68Wni2pQ7N/Pryn2o=;
+ b=F/xhzCllzNveiBwobUWtAeYloV4fCtDJF1YxIf3e4RQhXT08CAr0mpfhm4Uv41v0Ut
+ N9008IhUOw+IVaVLPQfHiuoW/zSYYy1KT0z5vrexEKXopa1iSI3eH4tSYm3OSApo2nB3
+ Jysl+OxD+S/0gEE19DOlFDYwwp5imGY01TwRd67hByKuAeIWk+uLVyV5NLRxWGHDymLB
+ 1KEirtGr91OloffxO712lDI3IAcTJFVV2NzLHRk2jyackw+7jbuPvrN0GmB5BMEKNJos
+ 0GkjdC4aqECAKrqyQOhp/brsK/yu9wbK4lSfEqzDtB3mbHx93Gf/i23qP5nxzjMWb1FA
+ Zz2w==
+X-Gm-Message-State: APjAAAXNOWEuln1YlhH+JP2TJXV/g/roxtJx2Qi6/JfE3Bs+YPc49l4V
+ Bc6cn3ofJLtQ/i3eakQ8tiLuznR7kRnpVkRoBE2llEo/VkYPqXe3Y2Efb7cPszqwTjgXV9XWpH3
+ Kw5tC26bLIufxvX8=
+X-Received: by 2002:a5d:65cf:: with SMTP id e15mr26470118wrw.126.1582008681900; 
+ Mon, 17 Feb 2020 22:51:21 -0800 (PST)
+X-Received: by 2002:a5d:65cf:: with SMTP id e15mr26470093wrw.126.1582008681671; 
+ Mon, 17 Feb 2020 22:51:21 -0800 (PST)
+Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.78])
+ by smtp.gmail.com with ESMTPSA id v17sm4585682wrt.91.2020.02.17.22.51.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 17 Feb 2020 22:51:21 -0800 (PST)
+Subject: Re: [PATCH v5 15/79] arm/imx25_pdk: drop RAM size fixup
+To: Richard Henderson <richard.henderson@linaro.org>,
+ Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+References: <20200217173452.15243-1-imammedo@redhat.com>
+ <20200217173452.15243-16-imammedo@redhat.com>
+ <77939c6c-3781-a016-d023-a9aa0f580846@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <3aa04b23-80a8-21d1-7481-d52b6d8f88c1@redhat.com>
-Date: Tue, 18 Feb 2020 07:46:27 +0100
+Message-ID: <057e44ee-d444-4f31-e4df-d402e213c3b2@redhat.com>
+Date: Tue, 18 Feb 2020 07:51:19 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <CAPan3WpG0yPu5sbS=mpHk=xNVGaqwWFrBcDBcovLLRit==5dwg@mail.gmail.com>
+In-Reply-To: <77939c6c-3781-a016-d023-a9aa0f580846@linaro.org>
 Content-Language: en-US
-X-MC-Unique: k-RerAshMIudHFMAt0jIUw-1
+X-MC-Unique: am1ytdxYM-C-Ul_C2TdZVw-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-TUID: AJn92ssmU+pz
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, jcd@tribudubois.net,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KtTkV+uRYzY6
 
-On 2/17/20 9:27 PM, Niek Linnenbank wrote:
-> Hi Philippe,
+On 2/17/20 7:56 PM, Richard Henderson wrote:
+> On 2/17/20 9:33 AM, Igor Mammedov wrote:
+>>       /* We need to initialize our memory */
+>>       if (machine->ram_size > (FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_=
+SIZE)) {
+>> -        warn_report("RAM size " RAM_ADDR_FMT " above max supported, "
+>> +        error_report("RAM size " RAM_ADDR_FMT " above max supported, "
+>>                       "reduced to %x", machine->ram_size,
+>>                       FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZE);
+>> -        machine->ram_size =3D FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_=
+SIZE;
+>> +        exit(EXIT_FAILURE);
 >=20
-> On Wed, Feb 12, 2020 at 11:12 PM Philippe Mathieu-Daud=C3=A9=20
-> <philmd@redhat.com <mailto:philmd@redhat.com>> wrote:
+> The wording here doesn't make sense anymore.
+> I think it would be better to mirror that used elsewhere:
 >=20
->     On 2/12/20 10:47 PM, Niek Linnenbank wrote:
->      > Hi all,
->      >
->      > Short status update regarding this series.
->      >
->      > Currently I am debugging booting NetBSD 9.0-RC2, which is recently
->      > released [1]
->      > The problem is that, apparently, RC2 can't mount the rootfs proper=
-ly:
->      >
->      > [ =C2=A0 3.1871510] vfs_mountroot: can't open root device
->      > [ =C2=A0 3.2141370] cannot mount root, error =3D 6
->      >
->      > This only happens using the RC2 filesystem image. However, the RC2
->      > kernel can
->      > properly load & boot the RC1 filesystem image, and the RC1 kernel
->     gives
->      > the same error
->      > on the RC2 filesystem.=C2=A0 But I dont think its a NetBSD-RC2 iss=
-ue,
->     because
->      > on a real
->      > Orange Pi PC hardware board, this problem does not show.
+> +        char *sz =3D size_to_str(mc->default_ram_size);
+> +        error_report("Invalid RAM size, should be %s", sz);
+> +        g_free(sz);
 >=20
->     Linux shows:
->      =C2=A0 =C2=A0console: mmc0: Problem switching card into high-speed m=
-ode!
->=20
->     QEMU MMC support is not in good shape, and high-speed SD card
->     support is
->     limited. I keep procrastinating at reviewing your SDHCI patch hmmmmm.
->=20
->     So you added:
->=20
->      =C2=A0 * DMA transfers
->      =C2=A0 * Direct FIFO I/O
->      =C2=A0 * Short/Long format command responses
->=20
->     I'd start diffing the trace output of the following events:
->=20
->     allwinner_sdhost*
->     sdcard*
->=20
->     with both kernels.
->=20
-> Thanks for the kind suggestions Philippe.
-> Indeed, comparing the trace files of both the RC1 and RC2 kernels is one=
-=20
-> of the things I did, and many more.
->=20
-> After extensive low-level debugging, I discovered that the issue is much=
-=20
-> more simple than I thought.
-> In particular, when using -sd <file>, the emulated device gets the same=
-=20
-> physical size as the file.
-> Normally this is not a problem, but for the NetBSD RC2 image, the kernel=
-=20
-> reads the MBR partition table,
-> compares it with the device size and concludes that the NetBSD partition=
-=20
-> in the image is larger than the actual device.
->=20
-> Unfortunately, this root cause is not printed on the NetBSD console,=20
-> only the final=C2=A0 'can't open root device' message.
-> Also, when running on hardware, obviously the SD card will be larger,=20
-> e.g. 4GB or more, so that is why this issue does not show.
->=20
-> So the fix is to extend the input image by a few megabytes before=20
-> booting it.
-> And on the positive side, with this search we now have more confidence=20
-> that the
-> emulated SD/MMC device in Qemu works as expected.
+> With that,
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Good news!
+Agreed.
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-IIRC from the specs, cards are block devices and the only alignment=20
-required is the size of a block (512KiB for your 4GiB card).
-
-That said I never saw a card not pow2 aligned, but the card firmware=20
-should be able to discard blocks and announce fewer. Maybe FreeBSD is=20
-incorrect assuming a pow2 alignment?
-
->=20
-> Kind regards,
-> Niek
->=20
->      >
->      > I'm comparing traces and adding more low-level debug output to
->     NetBSD
->      > and QEMU to find the issue.
->      >
->      > Also I processed the review remarks which were send so far.
->      >
->      > Kind regards,
->      > Niek
->      >
->      > [1] https://www.netbsd.org/releases/formal-9/NetBSD-9.0.html
->=20
->=20
->=20
-> --=20
-> Niek Linnenbank
->=20

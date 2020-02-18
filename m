@@ -1,163 +1,103 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5954490lfp;
-        Tue, 18 Feb 2020 02:04:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwc7i79oIQjY3kNZW5kFRa9Ib9EQHy7CQHAOr4bT0gAlh/QTE+o3q9cI93gKmNMzwZwuSNW
-X-Received: by 2002:ae9:ed41:: with SMTP id c62mr17720683qkg.403.1582020250617;
-        Tue, 18 Feb 2020 02:04:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582020250; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5955448lfp;
+        Tue, 18 Feb 2020 02:05:13 -0800 (PST)
+X-Received: by 2002:aca:b70a:: with SMTP id h10mr787920oif.20.1582020313338;
+        Tue, 18 Feb 2020 02:05:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582020313; cv=none;
         d=google.com; s=arc-20160816;
-        b=aihT9RIKaLEnylr1ZxqtBWETlAaxQVDNUcBoJLfQhLOmEZhvGFCxIT497+PhTWglw5
-         wgmow7ZiEDcgAjP+pi+z6PuGdUj6KA8qjz1gV3A2b8mEP1rrma+RD7fWAZyNr9l6s4ec
-         HODDWJibCATcZlFFiXyFXICCSEO9SlOdHSm1bzBtNaeMKszUQxT9LR/AplHFZzugLStT
-         vPecIy8uXwMUrUdUSNQflG4xZcL0kmR4C+1usXpMeffnB8Ebo1H6yChnCmXCvxzuhIns
-         Pv4a0Dhyii8emggpIpbcPEZdZqx+xyZF2osoeD95DZS/QJB+GdP3l4py9uqaXF5MP6xG
-         cz4Q==
+        b=pxqQPSoFE0UGsiSOxZ0qASkmiiBcVXiUOouNI+94W/tmPTxeH91rsNdEagFWZT9Pfb
+         cm3XCULUoMaN8jEG71lR0BKQfKoCJJbxGbyz7/Qu/vwvrQtQBb/VaiuCUSEfo3f4mHnv
+         yilPlynCAyjbr8pbsT89vSVw8hz0XIYZOymbQ1fVlbU6fws4DbhiBd9tcdsmDgIwiNLP
+         uvrpHS56U0m9la1Rsand/z2lMNH3nZ4hj04JJG6B+BLu0JGqlnmaY9ENq480y9LzYOB1
+         24CtgCayb5MWRezhBd2vqqsuaZGbkamujSscgf+2yBf7SpsjDJTJASZPDhlskQUjrMB1
+         c6ag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:user-agent:in-reply-to:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=QAXZjIhwy4mje/o+BFQvvA22gylf/JskhFJ6XxFOlt0=;
-        b=x6BU7FFp22fa86FsQ8ADgzIX/0nwOO7DAPK1X74geDF+Tf82Qm8vOC/DWk9tx+8Zc0
-         AsvxBjS2IPBesc5MuV2Cyr3pGI+nZF99FPJdkHFXmNRtJOkMFHoUSBXGEG4yT0cCi3dy
-         62A1kQuvy1vpv120efC2TE9GowkOXumshtmMijUia5bGPwlEVSAFD06zq94PgZu+qKuf
-         Yjy1kYUB6nofkI2u+CIpuqph238nSveYUd3aCntg+egXJxuj5Oo5pBccvcgv9HppV8v7
-         8LTQgWWLCMQCC2q2VSrRWc5IQdqpThuHdiGCAWZlS4snRQNqTQDQ0eJUC8Xshtt+Kyn2
-         i22A==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=vMxX+nDorhKqu10/D7ZYUU5lAla6+z9TBRxzHMwoESE=;
+        b=jhRPgKiW9vDCSHukIQNAjfOiA4IT0n2VnWeJuzc+Eyo03tlabxh16Tt2OEuHb3E/r+
+         inYaSe8j2kAf7Minu8t0tlqyHy2ysIS11lyHhQVEZNxQWegSVG9sL17B752TMV9Ez4mI
+         XDCCcI3pN2v34zlM9TDI1UZszSuDtaieijZ8hPxU8Hpaes4rdLyYs5jbAnwjuSBguBiE
+         aIrzQH0pTNvG8fpy7L4zmcw2w2eTONaR4g0MDjmI6/NQh2wBJbggNqCtDI55W59VKOwk
+         /Y1pClntFpxceZSM1Zv1NVLNwQaBl8acFzVdxBjiB/tZvq+JZR9gJq2xXfBjMM5GHQam
+         msoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=W7xaWVBR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q10si1457681qvr.199.2020.02.18.02.04.10
+       dkim=pass header.i=@linaro.org header.s=google header.b=m9siwg1x;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id b17sor1691704otp.102.2020.02.18.02.05.13
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2020 02:04:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 18 Feb 2020 02:05:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=W7xaWVBR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59804 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3zje-0002eX-23
-	for alex.bennee@linaro.org; Tue, 18 Feb 2020 05:04:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45783)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgilbert@redhat.com>) id 1j3zcb-0007IE-S5
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:56:54 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgilbert@redhat.com>) id 1j3zca-0003dv-Pc
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:56:53 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:52330
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1j3zca-0003dW-Lk
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:56:52 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582019812;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QAXZjIhwy4mje/o+BFQvvA22gylf/JskhFJ6XxFOlt0=;
- b=W7xaWVBREhwjOokfA+Av3XkyMHcrHC2rY7KYd2Ybk/3VH4hqwAbiOD2dF72MRDI7DM09pY
- 08pKKgLfYuYYrORDPUzuQXg9xyXtqvxJSnkkuwCRHrzrYafpw4wi724pHg8q35jVSX3mu2
- GmoFBKi409HfDwFWYehBEbdFNg29UFc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-348-ZZ3_37a4OlyV9DAcJxmuDg-1; Tue, 18 Feb 2020 04:56:50 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 968181137851;
- Tue, 18 Feb 2020 09:56:46 +0000 (UTC)
-Received: from work-vm (unknown [10.36.118.89])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2B88919E9C;
- Tue, 18 Feb 2020 09:56:28 +0000 (UTC)
-Date: Tue, 18 Feb 2020 09:56:26 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [PATCH RESEND 07/13] hw/scsi/esp: Remove superfluous semicolon
-Message-ID: <20200218095626.GJ3080@work-vm>
-References: <20200218094402.26625-1-philmd@redhat.com>
- <20200218094402.26625-8-philmd@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=m9siwg1x;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=vMxX+nDorhKqu10/D7ZYUU5lAla6+z9TBRxzHMwoESE=;
+        b=m9siwg1xRQPyQvh9D43Lgx3k9iJHpXfaViyYzH27RFStlHOKlFbJmG4N4s5TmdgI6A
+         cb8kkvnStmoFoPXyYndIPQF/Ib3BmEkXIKJ7uxOA/iBk1NsMePUkF3al9+l6FoKOCCvq
+         SLWE8jOOk8UUYPUk5/SXNIBU9jOps4yEfuBqFD5OrCAl2wrY1CH+D5C/qjgixHF1zXyp
+         3Fph159DaSDVDWjO0f6ZsMeUBM+OY50L2jNIcKY1tIw0cq8oxuVtnJ4//iqP/L6HSMgC
+         6DOjg7Os0o2f08UG6JceEEZdETWj+tcMhzg1Xr5rVQH6ZsUnlvuaGYdcVwkHwhB+Zp1A
+         a1TA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=vMxX+nDorhKqu10/D7ZYUU5lAla6+z9TBRxzHMwoESE=;
+        b=OSXCCxF5Yeg9WZFZeCsUQDr6J8uzvQ1zHJaOokahNevvPN1LGRvDYuv8caO8YSC9f8
+         0b/Y0CcWQfn1kmitASyhIWB6Sfdy3o8zk4DAk8qObZ06wlUFkpJmEiHQjJY/SUzJFbRV
+         ElStCjPCF4aLc/DiCohPXmWcZTX/qf3oruPCzMrJqo2YPe1Zpv9v+LGIaMGL9YnNmVNW
+         +trzOmILvtpN0i1xS7VYQY0n2sG+qY/BpIREsePKF3gFxaRbyoMS+qNmTub9LnYvwz4z
+         fHQYPOSonKv+Zj8akl5dLWdT0V3+yFB6oecwYl3Jou3nS8FwdNrqwdqR2lbThD0nIevK
+         Vi7Q==
+X-Gm-Message-State: APjAAAUYFtiO/bUM7Uu+miTTyHyHqvuvl+BAZKkriO2QEOGIs3eJhZPS
+	DepPEvlfUsfcOGejjTILRt3fTWHurIOZP5Bb3Pt6pVvZ
+X-Google-Smtp-Source: APXvYqxj/zkU5gCFJstOibaBQqHoBML3D4jF5nT0TTyiwfdmvMcmlT4D8O0KJBhtIomLHeUv2NESIGt2N8wIOkPkZr8=
+X-Received: by 2002:a05:6830:184:: with SMTP id q4mr15411534ota.232.1582020312884;
+ Tue, 18 Feb 2020 02:05:12 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200218094402.26625-8-philmd@redhat.com>
-User-Agent: Mutt/1.13.3 (2020-01-12)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: ZZ3_37a4OlyV9DAcJxmuDg-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
+References: <20200119005102.3847-1-nieklinnenbank@gmail.com>
+ <CAPan3WpV2m9HXLXZDopKUb2EfX2KE9y530m2pJG4-D96==ggCg@mail.gmail.com>
+ <ee95179f-c15f-9615-e241-80199e6948b7@redhat.com> <CAPan3WpG0yPu5sbS=mpHk=xNVGaqwWFrBcDBcovLLRit==5dwg@mail.gmail.com>
+ <3aa04b23-80a8-21d1-7481-d52b6d8f88c1@redhat.com>
+In-Reply-To: <3aa04b23-80a8-21d1-7481-d52b6d8f88c1@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 18 Feb 2020 10:05:01 +0000
+Message-ID: <CAFEAcA-kNNWgLc8NxWgVJQk29BVr28j-A_d4M+8=7nfpTzhzcQ@mail.gmail.com>
+Subject: Re: [PATCH v4 00/20] Add Allwinner H3 SoC and Orange Pi PC Machine
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Niek Linnenbank <nieklinnenbank@gmail.com>, QEMU Developers <qemu-devel@nongnu.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, Beniamino Galvani <b.galvani@gmail.com>, 
+	Jason Wang <jasowang@redhat.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Igor Mammedov <imammedo@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
- Juan Quintela <quintela@redhat.com>, qemu-trivial@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alistair Francis <alistair@alistair23.me>, Julia Suvorova <jusual@redhat.com>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>,
- Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>, Aarushi Mehta <mehta.aaru20@gmail.com>,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- Thomas Huth <huth@tuxfamily.org>, Laurent Vivier <laurent@vivier.eu>,
- Max Reitz <mreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2s7BcUtWun/n
+X-TUID: dpMecgr4b9le
 
-* Philippe Mathieu-Daud=E9 (philmd@redhat.com) wrote:
-> Fixes: 74d71ea16bc
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+On Tue, 18 Feb 2020 at 06:46, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+> IIRC from the specs, cards are block devices and the only alignment
+> required is the size of a block (512KiB for your 4GiB card).
 
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Isn't there something related to erase blocks too, which impose
+a larger granularity than just a single block?
 
-> ---
-> Cc: Dr. David Alan Gilbert <dgilbert@redhat.com>
-> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> Cc: Laurent Vivier <laurent@vivier.eu>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> ---
->  hw/scsi/esp.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/hw/scsi/esp.c b/hw/scsi/esp.c
-> index f8fc30cccb..405f8b7cbc 100644
-> --- a/hw/scsi/esp.c
-> +++ b/hw/scsi/esp.c
-> @@ -293,7 +293,7 @@ static void handle_satn_stop(ESPState *s)
->          s->dma_cb =3D handle_satn_stop;
->          return;
->      }
-> -    s->pdma_cb =3D satn_stop_pdma_cb;;
-> +    s->pdma_cb =3D satn_stop_pdma_cb;
->      s->cmdlen =3D get_cmd(s, s->cmdbuf, sizeof(s->cmdbuf));
->      if (s->cmdlen) {
->          trace_esp_handle_satn_stop(s->cmdlen);
-> --=20
-> 2.21.1
->=20
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+Anyway, in general the backing image for an SD card device
+needs to be exactly the size of the SD card you're emulating,
+because QEMU needs somewhere it can write back the data
+if the guest decides to write to the last block on the card.
+So short-length images generally don't work (true for all
+block devices, not just SD cards, I think). This often bites users
+if they're using some distro "here's a disk/sd card image file"
+where the expected use with real hardware is "dd the image
+file onto the SD card".
 
+thanks
+-- PMM

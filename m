@@ -1,160 +1,186 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5808657lfp;
-        Mon, 17 Feb 2020 22:51:56 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzyF7mQ+tmJCcDrAOGVMStkwtZ/w1hhHBWy/AZUiyk9XDfWyn0bJGPfb4F55Y4BUp+9Fa0A
-X-Received: by 2002:a37:a406:: with SMTP id n6mr16381797qke.321.1582008716064;
-        Mon, 17 Feb 2020 22:51:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582008716; cv=none;
-        d=google.com; s=arc-20160816;
-        b=L4vxIrFukS4wpknz0aZtuO60sFbJJ63VRIESDR8HV8nWyCracCbvWzh6I116p/hCmy
-         sjNUU+Mr1kxYxOf60xpz+9nwFPZh56mo5w3Jx2yK0aB8LiwwpW7d0lKPrmruA/ksBHMB
-         rt/XFCTjildhgWG+EHx8tn2UOEFCKuharfnSO/egeZBoY9cuFYrx4YUBd5Nr5BhcobZT
-         tCBC/EWZBkpbJbkl/aBKnJbN9ZZw5RGL/Oec9lBMwaQfXU1kw67kTZIxuU0XMFlA6CYy
-         Vt6J6d3h0MNeho3Wqg4j67QMYzXs9+GbF0NDhtgdlw6JDHa2xI+t3dBG5D11fGhXW42x
-         8gLA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=OXu3dTJnGeCPNl6Wj3/I0DcBqHkkVxoLIUBttvTJ/MI=;
-        b=RP55EXTiw2LE97BIMlDdbuYj930rpYK3vgv+SEGldqjUx4yC2Qqb+7lwYO1msNjmen
-         samf9kcruRs0e/GQ6/K4j4gS0UM1pDb4+1oziAs/f/AE4NgrQSsR245Eogl0coTAiu4/
-         /86rSX3SlGmF/I0ukyOSH+FzQZ5VIQ/XfV4G7W5duPuqhOPeMe0HH3f8uj+QcNRSMZzJ
-         kxXLphRhLJV0kIZLfANXTVvmXAdTqOId5Ej/ViSgWMCaSCigCcPBcMTYhnTmULae0E7s
-         Lh/p69tddvf++WYZ03JzNQU9I4KXSp1OQqWK7Rz5rMQ5o0PgE7ylprDPXPMRBvDLqspx
-         ZKEA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Jsq8z6OL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5863799lfp;
+        Tue, 18 Feb 2020 00:05:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx5qMeI+za1gvbrGVeRIzkT445e5C0FpANzW9NwH73L36a+1jfabS4m5EFpjD4j6jLpR8+Y
+X-Received: by 2002:ac8:405a:: with SMTP id j26mr16212341qtl.88.1582013141442;
+        Tue, 18 Feb 2020 00:05:41 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t19si1301428qto.107.2020.02.17.22.51.55
+        by mx.google.com with ESMTPS id g19si1346320qto.255.2020.02.18.00.05.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Feb 2020 22:51:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Feb 2020 00:05:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Jsq8z6OL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57512 helo=lists1p.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="L9Q/iQ5c";
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58054 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3wjb-0002wh-ID
-	for alex.bennee@linaro.org; Tue, 18 Feb 2020 01:51:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51497)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j3xsy-0006HR-JN
+	for alex.bennee@linaro.org; Tue, 18 Feb 2020 03:05:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59210)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j3wjA-0002wO-W4
- for qemu-devel@nongnu.org; Tue, 18 Feb 2020 01:51:29 -0500
+ (envelope-from <luc.michel@greensocs.com>) id 1j3xsI-00064L-S8
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 03:05:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j3wj7-0005VH-FN
- for qemu-devel@nongnu.org; Tue, 18 Feb 2020 01:51:27 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:28284
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <luc.michel@greensocs.com>) id 1j3xsH-0003Gx-8b
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 03:04:58 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:60046)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j3wj7-0005V6-BT
- for qemu-devel@nongnu.org; Tue, 18 Feb 2020 01:51:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582008684;
+ (Exim 4.71) (envelope-from <luc.michel@greensocs.com>)
+ id 1j3xsG-0003Fo-Om; Tue, 18 Feb 2020 03:04:57 -0500
+Received: from [172.16.11.100] (tiramisu.bar.greensocs.com [172.16.11.100])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id BCC7496EF0;
+ Tue, 18 Feb 2020 08:04:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1582013094;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=OXu3dTJnGeCPNl6Wj3/I0DcBqHkkVxoLIUBttvTJ/MI=;
- b=Jsq8z6OL3JvigHxaSAb6wk8cy7a/sbE+fSru123zoUx20lrd8XJ5aoAGcK/acHmCZQz8GG
- N1p4CsqVslKGjmkEQITi8QRlIYA31Js20GVRLt39U8CMt7yxVdEFYtaRKY+8kpRTbLktIB
- 0Vv+7/Ld19qvKGmHsH+1d/achHQSr84=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-280-am1ytdxYM-C-Ul_C2TdZVw-1; Tue, 18 Feb 2020 01:51:23 -0500
-Received: by mail-wr1-f69.google.com with SMTP id j4so10287495wrs.13
- for <qemu-devel@nongnu.org>; Mon, 17 Feb 2020 22:51:23 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=2UcbJiQ/7H1UBF3e3ZaiblHCql68Wni2pQ7N/Pryn2o=;
- b=F/xhzCllzNveiBwobUWtAeYloV4fCtDJF1YxIf3e4RQhXT08CAr0mpfhm4Uv41v0Ut
- N9008IhUOw+IVaVLPQfHiuoW/zSYYy1KT0z5vrexEKXopa1iSI3eH4tSYm3OSApo2nB3
- Jysl+OxD+S/0gEE19DOlFDYwwp5imGY01TwRd67hByKuAeIWk+uLVyV5NLRxWGHDymLB
- 1KEirtGr91OloffxO712lDI3IAcTJFVV2NzLHRk2jyackw+7jbuPvrN0GmB5BMEKNJos
- 0GkjdC4aqECAKrqyQOhp/brsK/yu9wbK4lSfEqzDtB3mbHx93Gf/i23qP5nxzjMWb1FA
- Zz2w==
-X-Gm-Message-State: APjAAAXNOWEuln1YlhH+JP2TJXV/g/roxtJx2Qi6/JfE3Bs+YPc49l4V
- Bc6cn3ofJLtQ/i3eakQ8tiLuznR7kRnpVkRoBE2llEo/VkYPqXe3Y2Efb7cPszqwTjgXV9XWpH3
- Kw5tC26bLIufxvX8=
-X-Received: by 2002:a5d:65cf:: with SMTP id e15mr26470118wrw.126.1582008681900; 
- Mon, 17 Feb 2020 22:51:21 -0800 (PST)
-X-Received: by 2002:a5d:65cf:: with SMTP id e15mr26470093wrw.126.1582008681671; 
- Mon, 17 Feb 2020 22:51:21 -0800 (PST)
-Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id v17sm4585682wrt.91.2020.02.17.22.51.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Feb 2020 22:51:21 -0800 (PST)
-Subject: Re: [PATCH v5 15/79] arm/imx25_pdk: drop RAM size fixup
-To: Richard Henderson <richard.henderson@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
-References: <20200217173452.15243-1-imammedo@redhat.com>
- <20200217173452.15243-16-imammedo@redhat.com>
- <77939c6c-3781-a016-d023-a9aa0f580846@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <057e44ee-d444-4f31-e4df-d402e213c3b2@redhat.com>
-Date: Tue, 18 Feb 2020 07:51:19 +0100
+ bh=tGyqGwDRbxUKf6Z/MSnBwmUozILvP3C0b36blPlMfbs=;
+ b=L9Q/iQ5c7zpBUcURA8FtfCY8SpxK+16lzs2JlB+zUrDB+KuUhicvvgGiD3XCg6XFY7Rjun
+ CNFX6E5JEmucSM2E/1MX8E6cq/GH4QdoGww4CYqfpVnAJUBb5yT4F1O6pZe5d8IcZWEw1r
+ P0v1Zks+s8giVPaHVMDxQTxCcA9q45U=
+Subject: Re: [PATCH v2] tests/boot_linux_console: Boot Trusted Firmware-A on
+ the Raspberry Pi 3
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200217103442.30318-1-f4bug@amsat.org>
+From: Luc Michel <luc.michel@greensocs.com>
+Message-ID: <dc7d3ca4-5613-43ab-a48b-e28a6ea0cd51@greensocs.com>
+Date: Tue, 18 Feb 2020 09:04:53 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <77939c6c-3781-a016-d023-a9aa0f580846@linaro.org>
-Content-Language: en-US
-X-MC-Unique: am1ytdxYM-C-Ul_C2TdZVw-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20200217103442.30318-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-PH
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1582013094;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=tGyqGwDRbxUKf6Z/MSnBwmUozILvP3C0b36blPlMfbs=;
+ b=frVCuOwkqqE9bpWyGevUtH51JveJGEg26QyUSs2evsUL+rbulhuE5S2lfhOfbXGrR9dm4G
+ 2/Ur7Vybhd/MZRZgR7ULX6B31lfhC3L3UJn4wT90NeP5Lx/2LuDwTqfuV3yvXHzoA4vcPL
+ /hHv7PgA2BhCzLKGXIouSWeS6cvg0cE=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582013094; a=rsa-sha256; cv=none;
+ b=Jan71N4/JoWLOY2WFAz+Ub/+oV3mQ3fltnCNlQQmRan92dINsAQ4S7w0YY7YmmEWA1Y/Ln
+ LktTPr1WsK7Uvtnse7JiR9twIR+ygIi/hhp4kP0Ub1c/pg+D1VXikXe6cd0hBTJ+ot8FWm
+ V4dLStN0BGjLUKNF3/kDBH6iC7e9EHo=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=luc smtp.mailfrom=luc.michel@greensocs.com
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 5.135.226.135
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, jcd@tribudubois.net,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KtTkV+uRYzY6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, pete@akeo.ie,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pw5GjbGgInFK
 
-On 2/17/20 7:56 PM, Richard Henderson wrote:
-> On 2/17/20 9:33 AM, Igor Mammedov wrote:
->>       /* We need to initialize our memory */
->>       if (machine->ram_size > (FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_=
-SIZE)) {
->> -        warn_report("RAM size " RAM_ADDR_FMT " above max supported, "
->> +        error_report("RAM size " RAM_ADDR_FMT " above max supported, "
->>                       "reduced to %x", machine->ram_size,
->>                       FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZE);
->> -        machine->ram_size =3D FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_=
-SIZE;
->> +        exit(EXIT_FAILURE);
+On 2/17/20 11:34 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> This test runs Trusted Firmware-A on the Raspberry Pi 3.
+> We deliberately stop the boot process when the EDK2 UEFI version
+> is displayed.
 >=20
-> The wording here doesn't make sense anymore.
-> I think it would be better to mirror that used elsewhere:
+> The binary is build on AppVeyor CI using Pete Batard repository [1].
+> ATF v2.1 binary are used (see [2]). Extra documentation in [3].
 >=20
-> +        char *sz =3D size_to_str(mc->default_ram_size);
-> +        error_report("Invalid RAM size, should be %s", sz);
-> +        g_free(sz);
+> It is very simple and fast:
 >=20
-> With that,
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>   $ avocado --show=3Dapp,console run -t atf tests/acceptance
+>   JOB ID     : 1e748d7c9e9011cf0af3250ddc8ebf2389d6204e
+>   JOB LOG    : avocado/job-results/job-2020-02-16T18.08-1e748d7/job.log
+>    (1/1) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_a=
+arch64_raspi3_atf:
+>   console: NOTICE:  Booting Trusted Firmware
+>   console: NOTICE:  BL1: v2.1(release):v2.1
+>   console: NOTICE:  BL1: Built : 15:26:06, May 13 2019
+>   console: NOTICE:  rpi3: Detected: Raspberry Pi 3 Model B (1GB, Sony, =
+UK) [0x00a02082]
+>   console: NOTICE:  BL1: Booting BL2
+>   console: ERROR:   rpi3_sdhost: timeout status 0x40
+>   console: NOTICE:  BL2: v2.1(release):v2.1
+>   console: NOTICE:  BL2: Built : 15:26:01, May 13 2019
+>   console: NOTICE:  BL1: Booting BL31
+>   console: NOTICE:  BL31: v2.1(release):v2.1
+>   console: NOTICE:  BL31: Built : 15:26:04, May 13 2019
+>   console: =3DUEFI firmware (version UEFI Firmware v1.15 built at 11:58=
+:44 on Feb 14 2020)
+>   PASS (1.54 s)
+>   RESULTS    : PASS 1 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT =
+0 | CANCEL 0
+>   JOB TIME   : 1.88 s
+>=20
+> [1] https://github.com/pbatard/RPi3#summary
+> [2] https://github.com/ARM-software/arm-trusted-firmware/blob/v2.1/docs=
+/plat/rpi3.rst
+> [3] http://www.skylyrac.net/2018-02-01-port-arm-tf-to-rpi3.html
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Agreed.
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 
+> ---
+> v2: Start with a single core powered-on
+> ---
+>  tests/acceptance/boot_linux_console.py | 24 ++++++++++++++++++++++++
+>  1 file changed, 24 insertions(+)
+>=20
+> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/=
+boot_linux_console.py
+> index 34d37eba3b..d1288fb59c 100644
+> --- a/tests/acceptance/boot_linux_console.py
+> +++ b/tests/acceptance/boot_linux_console.py
+> @@ -507,6 +507,30 @@ def test_arm_cubieboard_sata(self):
+>          exec_command_and_wait_for_pattern(self, 'reboot',
+>                                                  'reboot: Restarting sy=
+stem')
+> =20
+> +    def test_aarch64_raspi3_atf(self):
+> +        """
+> +        :avocado: tags=3Darch:aarch64
+> +        :avocado: tags=3Dmachine:raspi3
+> +        :avocado: tags=3Dcpu:cortex-a53
+> +        :avocado: tags=3Ddevice:pl011
+> +        :avocado: tags=3Datf
+> +        """
+> +        zip_url =3D ('https://github.com/pbatard/RPi3/releases/downloa=
+d/'
+> +                   'v1.15/RPi3_UEFI_Firmware_v1.15.zip')
+> +        zip_hash =3D '74b3bd0de92683cadb14e008a7575e1d0c3cafb9'
+> +        zip_path =3D self.fetch_asset(zip_url, asset_hash=3Dzip_hash)
+> +
+> +        archive.extract(zip_path, self.workdir)
+> +        efi_fd =3D os.path.join(self.workdir, 'RPI_EFI.fd')
+> +
+> +        self.vm.set_console(console_index=3D1)
+> +        self.vm.add_args('-nodefaults',
+> +                         # VideoCore starts CPU with only 1 core enabl=
+ed
+> +                         '-global', 'bcm2836.enabled-cpus=3D1',
+> +                         '-device', 'loader,file=3D%s,force-raw=3Dtrue=
+' % efi_fd)
+> +        self.vm.launch()
+> +        self.wait_for_console_pattern('version UEFI Firmware v1.15')
+> +
+>      def test_s390x_s390_ccw_virtio(self):
+>          """
+>          :avocado: tags=3Darch:s390x
+>=20

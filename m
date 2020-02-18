@@ -1,82 +1,58 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6422433lfp;
-        Tue, 18 Feb 2020 10:54:45 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwoQYJmGsx4t9KiB++Wb9Ns7p/Cyoa0WHl6GDZa1Qe6+vnWdTsg+54iOpNYSIJC1O0AI88D
-X-Received: by 2002:ac8:108:: with SMTP id e8mr18912527qtg.101.1582052085360;
-        Tue, 18 Feb 2020 10:54:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582052085; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6435856lfp;
+        Tue, 18 Feb 2020 11:10:03 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw5GSGkKws2wSnIxIsNxu/4YaYdF3nCWYn2SEFasmXvEu4MubBkLxXx4UpETXwH6N/JOcar
+X-Received: by 2002:a0c:ea83:: with SMTP id d3mr1883477qvp.71.1582053002830;
+        Tue, 18 Feb 2020 11:10:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582053002; cv=none;
         d=google.com; s=arc-20160816;
-        b=k8ziJ0hqxsMrjRTPRt42JkvDsIzKRUZrrYY60gyvudYc4IKkbE+Gfqu8ylIZPyVXYY
-         QkLDCjPCs1xHta/jTCA9EREhK4Mipa6bGgMufxlLCWjseqoILoPSkD4eBsHs0JRerQhS
-         oVg1BlLFPLx8EIym4uyXMgvzS6JDsl5iaGajW18usJFcy9/ul35TiD8/96WZ7e9C6QN9
-         fCaCI46PixTheZX+b18d88f6IgKF0gMdvnfdfxPIlRdx3/gA01tQbAj6Kdzg0PjpfncZ
-         7iJh19AWGd4sUYNMn+eRLhRkq0twOeWMHnPgfMMDbc5fl07NRYruPFajRZGzx395NuNl
-         m04g==
+        b=ox3zf3drrEMDiUdpUXu67LBLV+HttDzgzXWp4ifN/IA+hg3dRjVNDRHGpuuZf3M7Rr
+         KMjmEzF/aYH/P5DHerGwI5blPlzt8EzxwX+5WQN8EV3rT6F6CRbG2wqgO3mv0TO9rk5A
+         Q13zkkYBnyHr+u6KQRyJJZVhS1QnPBbWFQpOogHIv1xYc30lfCZ3p66LW7ErK4W4fnmU
+         VvBzYcXWc2VxgSt2Fmd+SPCEn7SZoS1DKF76F/UuJx5hpgQfUjRFIrIaH4s3qfRUWokC
+         b2V1Q54Sv7zDnvy/wbU6Pwa2RKNPGUNKiDa4izlQBn2fBgG0L9GHiQZ4fVmJb3hwO4Mb
+         wsmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=CqLFDJ1ABcii2HzXgyZtrgrFJT91w7L0xl23aCTYaH0=;
-        b=BzqgjT7r1t5TDh1lIqgr5BkfTI4Nf2SU1bLL3wloxXUBKqi0vS+rmzrZwyA48/RQDA
-         Ekis06qhJxL8zeQycWyrwDCwv3FVrR8/Zujg/sLz5tKC6W7XD+ykH1jZsAZHzs7ENoL8
-         dU/b5YDA7LzDDMMehkDqp/3QrjjhAzW4bnWItatS7ZeUBBc5x3wpKuKRBSkyVpC6wAej
-         GO8AB6khBd4shYcjp5WxlYMnJloFYDI6iQM5pqIGezJbZxb0+wBGgO9cZ5poGs711+Wx
-         z4Q7Ba4dhXuyc7ONkQg4czsJPJf5bmiAsTiaTU11Uv/mlWGCxC8U8KJr/27MnmhLZ6uH
-         dTRA==
+         :message-id:autocrypt:from:references:to:subject;
+        bh=zNRNpnIb/iypiiXoGXGRarJ7vyDbsHwsUk1cf2zWOr4=;
+        b=XuQztYcvCGZFohseKZ6AAfBmqKb/Q0KRHBSuoIUFsfW3kLqAlypktpMRL3RoGYOTGx
+         76XsdS1PreaIgjQuX7cgZ7mHtXrNc4zqxIRNKWhHIp3xLdgrnJNBhhC/2gs1yfK7QJ6d
+         p/LJQvk9dHGzqP4Wn9uY8A6K/DVAR6W2ZEwLrYHe0ut0aZOXbxDZ454cG3MWQdyp/r4T
+         i9dwsBaHmkvi++X15l5Ffb01LGmnRTFCpFSAuUTlyYZlknMOuOyevq6ZBm+ZYHaUnswq
+         +Q9U8oTP6H/xcU/Vb2UA/egSdpgfZ7xj3sBszQAIEcL131oq/L8tKGpMIXiUBLPvc8VO
+         UhrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="WV33N/IP";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h1si2136668qtr.73.2020.02.18.10.54.45
+        by mx.google.com with ESMTPS id y7si2142945qvr.214.2020.02.18.11.10.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2020 10:54:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Feb 2020 11:10:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="WV33N/IP";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40194 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40344 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j4816-000360-Py
-	for alex.bennee@linaro.org; Tue, 18 Feb 2020 13:54:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45658)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j48Fu-00040f-4v
+	for alex.bennee@linaro.org; Tue, 18 Feb 2020 14:10:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45097)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <lvivier@redhat.com>) id 1j480z-00035a-1o
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 13:54:38 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j48FJ-0003yQ-UD
+ for qemu-devel@nongnu.org; Tue, 18 Feb 2020 14:09:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <lvivier@redhat.com>) id 1j480x-0007zj-Ip
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 13:54:36 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:33010
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <lvivier@redhat.com>) id 1j480x-0007xm-9Q
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 13:54:35 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582052074;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=CqLFDJ1ABcii2HzXgyZtrgrFJT91w7L0xl23aCTYaH0=;
- b=WV33N/IPiG4rUHc4RyIEv1any5BVtIIOPyeZSYxWYVzS7KJiROKEf/WvWw9jIKIOKI06MZ
- rC/WKKswCNUozQ8EdbtcWcbrHu8tOv8Sjc67X61pRKxIJAv1R4WUzfdKfGOeEgaBsD2wdB
- qiUEAxBz+ECU2cSTKtyTp3XXk61GwvE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-180-PqKxugGlMYKyMmpL2GHEGA-1; Tue, 18 Feb 2020 13:54:28 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C3461801E6C;
- Tue, 18 Feb 2020 18:54:25 +0000 (UTC)
-Received: from [10.36.116.166] (ovpn-116-166.ams2.redhat.com [10.36.116.166])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5AF2F90F55;
- Tue, 18 Feb 2020 18:54:03 +0000 (UTC)
+ (envelope-from <laurent@vivier.eu>) id 1j48FI-0000KP-O6
+ for qemu-devel@nongnu.org; Tue, 18 Feb 2020 14:09:25 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:40731)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1j48FI-0000IP-EP; Tue, 18 Feb 2020 14:09:24 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1N0G5n-1jQ2Vn41Wp-00xGFd; Tue, 18 Feb 2020 20:09:01 +0100
 Subject: Re: [PATCH RESEND 00/13] trivial: Detect and remove superfluous
  semicolons in C code
 To: Paolo Bonzini <pbonzini@redhat.com>,
@@ -84,8 +60,8 @@ To: Paolo Bonzini <pbonzini@redhat.com>,
  qemu-devel@nongnu.org
 References: <20200218094402.26625-1-philmd@redhat.com>
  <55411270-83ae-d6aa-362f-07018b44c0e1@redhat.com>
-From: Laurent Vivier <lvivier@redhat.com>
-Autocrypt: addr=lvivier@redhat.com; prefer-encrypt=mutual; keydata=
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
  WoeuLWDmXE7A3oJoIsRecD6BXHTb0OYS20lS608anr3B0xn5g0BX7es9Mw+hV/pL+63EOCVm
  SUVTEQwbGQN62guOKnJJJfphbbv82glIC/Ei4Ky8BwZkUuXd7d5NFJKC9/GDrbWdj75cDNQx
@@ -95,101 +71,103 @@ Autocrypt: addr=lvivier@redhat.com; prefer-encrypt=mutual; keydata=
  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
- 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
- D+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <db6b6d52-da28-d279-6aeb-ba76cd0f4da6@redhat.com>
-Date: Tue, 18 Feb 2020 19:54:02 +0100
+ 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
+Message-ID: <99f23c4c-5dd1-bc83-f881-a45e11fc2b37@vivier.eu>
+Date: Tue, 18 Feb 2020 20:08:57 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
 In-Reply-To: <55411270-83ae-d6aa-362f-07018b44c0e1@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: PqKxugGlMYKyMmpL2GHEGA-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:hG58ZJcFDBSamg2vHnxkdja47JKwwYVIDT8w7JxDEtE2MS+80Gw
+ nLOziodEM72gdK8MVQWm2x+MHshhRX3bPhy1rIxw7WfSJVMIIOlw2iXMhaG+Yk5HW0ixq4U
+ 3omQy/+cLlCTt0QCZWIRkeWovMf5D5Q2IKsGbfZRqONKYeJ3a/YydtIgooJKGXpVgE2CR7G
+ 3fs7bXzf+wxIy9p+/oDYQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:RIk19QkihUQ=:o7hQmilc1dsrStY9EUYqFf
+ i0ECaRBIWSSqf8zpJZ56jdr4U2lCuVkUcYahwT9219qdILNOhVwvThA8KVQwaRJ4WIkqv4Ihj
+ S5o+S6vRwYd19NiWMrw7kk/3i0wQ8CYS9JgGVXxenm0QAQQZ/HihU8/lLLvTy/SJWDejxqrxG
+ RyrHjqxQGUAhcATVBqI9CrdV8XjmC8w8HRGKb+bZ+qGPJcSCBJkgHy/18AdayDgr5ngQPe5EN
+ 3qCB0KIhhsuLK2UyrXJVZOgr603zhMjO/POMTdK3YfUS9MbDSCyNEOG0hWrvYqkNOAq9KwMFD
+ L/FgA0+5K6q03uLrotCqBKpLIJThH+ntgu6blFW1dVxf5qLyPbieACYk4nMOQy1NALvI2Rc/7
+ 8XZkXDOzR3cHuvUar/dtGWvzNODuajck4vKrdjJspHJ01/cG2HmvWGS97Q36rpkJZe2gbr2Vz
+ ndY1Hl5o/cKlCTzUETnkVkVBghlnY0yDOLW0OxB0nkaV0ZNCQXUm+rAdmXKavWY86VOoUiQj6
+ b1ctfnCIJNnaJ87n6La9oQOSODUZy1Xpxnk4ZMfV3sBg3xPgeEIqEsWAtk3X4AE6ffMkhKtnN
+ P7NN90W9PhZgR6jREMiw810+Tt0UJcS0wfi9D1ESsc4+HdNoHRvJXcGi8XqrJywkJ8wJXXmRh
+ fev3BtOhrpXO3vogYcAGXhU9KSfT94ko1ltD057vqNfHlGT+ldH5M5tv0JCus6Mg7vqCWN81E
+ DnDsNaCQomG5/Ag0I+pdz4wK12FDcwvXjS6o0htzBfbZYXc6JcRr+uGBh3gKA2wRW261DEZ5S
+ bxH7ca8/dirOd+R4fOv/1L5aScBHFHF5fFwyjTdVyynNAaLIq8+8ZQ2RJjIp+AgRdUDAybX
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 212.227.126.135
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Michael Tokarev <mjt@tls.msk.ru>, Yuval Shaia <yuval.shaia.ml@gmail.com>,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
  Juan Quintela <quintela@redhat.com>, qemu-trivial@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>, Julia Suvorova <jusual@redhat.com>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
  Stefan Hajnoczi <stefanha@redhat.com>, Aarushi Mehta <mehta.aaru20@gmail.com>,
  Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- Thomas Huth <huth@tuxfamily.org>, Laurent Vivier <laurent@vivier.eu>,
- Max Reitz <mreitz@redhat.com>, Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4DiZEraXvFuC
+ Thomas Huth <huth@tuxfamily.org>, Max Reitz <mreitz@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9IdJAS+JgQyk
 
-On 18/02/2020 18:04, Paolo Bonzini wrote:
-> On 18/02/20 10:43, Philippe Mathieu-Daud=C3=A9 wrote:
+Le 18/02/2020 à 18:04, Paolo Bonzini a écrit :
+> On 18/02/20 10:43, Philippe Mathieu-Daudé wrote:
 >> Luc noticed a superfluous trailing semicolon:
 >> https://lists.gnu.org/archive/html/qemu-devel/2020-02/msg04593.html
 >>
 >> Prevent that by modifying checkpatch.pl and clean the codebase.
 >>
->> Philippe Mathieu-Daud=C3=A9 (13):
+>> Philippe Mathieu-Daudé (13):
 >>   scripts/checkpatch.pl: Detect superfluous semicolon in C code
 >>   audio/alsaaudio: Remove superfluous semicolons
 >>   block: Remove superfluous semicolons
@@ -219,13 +197,13 @@ On 18/02/2020 18:04, Paolo Bonzini wrote:
 >>  scripts/checkpatch.pl       | 5 +++++
 >>  13 files changed, 20 insertions(+), 15 deletions(-)
 >>
->=20
+> 
 > Acked-by: Paolo Bonzini <pbonzini@redhat.com>
->=20
+> 
 > Laurent, can you queue this in qemu-trivial?
->=20
-Yes, I will.
+> 
+
+Queued, except patches 3, 4 (taken by Kevin) and 9 (by Juan)
 
 Thanks,
 Laurent
-

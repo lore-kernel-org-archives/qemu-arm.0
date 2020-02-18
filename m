@@ -1,77 +1,77 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5903152lfp;
-        Tue, 18 Feb 2020 01:00:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyjFXSTmpEeXSxf0m8eDHIgTA+g4F+AiNw2W3yD6AYz0cKLdboxpcXTo3/7gfujxQMWUg9l
-X-Received: by 2002:ac8:405a:: with SMTP id j26mr16336538qtl.88.1582016447939;
-        Tue, 18 Feb 2020 01:00:47 -0800 (PST)
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5904345lfp;
+        Tue, 18 Feb 2020 01:02:06 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxZyYbwCIN0ZrEbMtEU5nsa/MKyjwtBTReZLLZrY+p1OwJfJdBg+rLkByaujse58PeAmznb
+X-Received: by 2002:ae9:ed4a:: with SMTP id c71mr18044743qkg.501.1582016526312;
+        Tue, 18 Feb 2020 01:02:06 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h2si1431638qvk.96.2020.02.18.01.00.47
+        by mx.google.com with ESMTPS id a185si1515539qkb.305.2020.02.18.01.02.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2020 01:00:47 -0800 (PST)
+        Tue, 18 Feb 2020 01:02:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=EXjV7cgX;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=UoE6Q+9X;
        arc=fail (body hash mismatch);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58438 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58448 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3ykJ-0005Mi-6X
-	for alex.bennee@linaro.org; Tue, 18 Feb 2020 04:00:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37174)
+	id 1j3ylZ-0006HC-Jf
+	for alex.bennee@linaro.org; Tue, 18 Feb 2020 04:02:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37358)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1j3yjt-0005Jw-PZ
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:00:22 -0500
+ (envelope-from <luc.michel@greensocs.com>) id 1j3yl0-0006Gc-Af
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:01:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <luc.michel@greensocs.com>) id 1j3yjs-000368-KA
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:00:21 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:33516)
+ (envelope-from <luc.michel@greensocs.com>) id 1j3ykz-0003UJ-9C
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:01:30 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:33556)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <luc.michel@greensocs.com>)
- id 1j3yjs-00035s-Br; Tue, 18 Feb 2020 04:00:20 -0500
+ id 1j3ykz-0003Tt-0z; Tue, 18 Feb 2020 04:01:29 -0500
 Received: from [172.16.11.100] (tiramisu.bar.greensocs.com [172.16.11.100])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 377DC96EF0;
- Tue, 18 Feb 2020 09:00:19 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 822B396EF0;
+ Tue, 18 Feb 2020 09:01:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1582016419;
+ s=mail; t=1582016487;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=izkMufESYPVKSCriGMjh5aq5ASE7rx1jv3wC35Y6KOE=;
- b=EXjV7cgXMQeSG7eW70pBOd/8PMXW5f2vrTKFwVAHiLDW/HysV+Vx97e+hCyQWbtB44vxxz
- vnMIHpsGzL/STgx+KP5PsZ6Cd0JIDe9pOC4cHrJ+QtDKSM2b1THW809YnnDWQsKwOj5ADg
- gLgIlkerqGWF5FXkSNik6AMk8ZJa6nc=
-Subject: Re: [PATCH v2 08/13] hw/arm/bcm2836: Introduce
- BCM283XClass::core_count
+ bh=+LkwXdyuOlWq9/MwgDTcWPQ2XfiGySFZryCaFbnAKNI=;
+ b=UoE6Q+9Xcn3Tyy8johWZGP+VeJD24JXGI//LPtDpzEYjMUVQ/5mAanel13losnlL+NWLdI
+ S2ChqvM3u8zsS0XEppA3/jeEtnOCHqBHNpY7f23/2vco3miMn6G1ShoS1qBoO/yQoa3Lcc
+ N1brsZmPi+UnBBgt0ZsUV6ZzUgPaLrg=
+Subject: Re: [PATCH v2 09/13] hw/arm/bcm2836: Only provide "enabled-cpus"
+ property to multicore SoCs
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20200217114533.17779-1-f4bug@amsat.org>
- <20200217114533.17779-9-f4bug@amsat.org>
+ <20200217114533.17779-10-f4bug@amsat.org>
 From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <57bf830e-1456-8881-7ad3-b6bc0bdb781e@greensocs.com>
-Date: Tue, 18 Feb 2020 10:00:18 +0100
+Message-ID: <b9734521-d654-4a51-6b08-aed919616e5b@greensocs.com>
+Date: Tue, 18 Feb 2020 10:01:27 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200217114533.17779-9-f4bug@amsat.org>
+In-Reply-To: <20200217114533.17779-10-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-PH
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1582016419;
+ s=mail; t=1582016487;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=izkMufESYPVKSCriGMjh5aq5ASE7rx1jv3wC35Y6KOE=;
- b=hVFsGSx55OZAisqeQXCFqFgWgdqHzuClg4476eJPwgDE44vlKEPuScDVk1994moLeT7pgY
- IrIC0R0CJAacS9T5PpldfuG3C+RaFbB0ABrwFWdGh04JdGu0jPX3Iga/CeOEgjgzMU/En2
- NDUDdIoq/BbCzzrO8Cls7PuPE364Fp4=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582016419; a=rsa-sha256; cv=none;
- b=ovVx9cYq4COg3VB4pR8QAM0RIifvso69c4q8+uraYzIkyPfx3drCENbi+i+H4e8qtGYjzE
- xDriLck/EpII0+HddnX2V9dAS99BQ4jf1/xC6vGYKGOa71bHqYqVBzqWNpm7hRH4WIXeIe
- Anj2YWtSB56IHvIWxTRCHmViIeosAk8=
+ bh=+LkwXdyuOlWq9/MwgDTcWPQ2XfiGySFZryCaFbnAKNI=;
+ b=d/4ITs1OGobSMZ3W1h8q1Jq0SmvoxD0HTivS3xmBWP8BHWWg2kJCV5t4YZXjfXESoyTwih
+ EPolp44+H7U/pZkogHaL2waJSeoCjvV9XEkAaj4feFlJhtkm/EdR88w7KmEP506Qdlg40C
+ +KnJvajvcxizgnqcFfVBTZmyGVpxd7Q=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582016487; a=rsa-sha256; cv=none;
+ b=w7ghlVVMKlC77NNPrTofrgIerpFcehViTmmnHDhuVv2UL0dmrXFxAQv80THC6ek4vYR2+F
+ 9LynsuY2st+ox4qYvnlGT791pwCikMyCHVsF12/h+AZdOaKIxs3dhgYZzOgwcae2gV7342
+ uT20wylcC5h0FYKGXOdUoDXkIVQGX6A=
 ARC-Authentication-Results: i=1; ORIGINATING;
  auth=pass smtp.auth=luc smtp.mailfrom=luc.michel@greensocs.com
 Content-Transfer-Encoding: quoted-printable
@@ -93,67 +93,77 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cd3nwbTsH2Bp
+X-TUID: mAjMsd/1Pjc0
 
 On 2/17/20 12:45 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> The BCM2835 has only one core. Introduce the core_count field to
-> be able to use values different than BCM283X_NCPUS (4).
+> It makes no sense to set enabled-cpus=3D0 on single core SoCs.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 
 > ---
->  hw/arm/bcm2836.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
+>  hw/arm/bcm2836.c | 15 +++++++--------
+>  1 file changed, 7 insertions(+), 8 deletions(-)
 >=20
 > diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-> index 683d04d6ea..3b95ad11e9 100644
+> index 3b95ad11e9..caaa4b625e 100644
 > --- a/hw/arm/bcm2836.c
 > +++ b/hw/arm/bcm2836.c
-> @@ -21,6 +21,7 @@ typedef struct BCM283XClass {
->      DeviceClass parent_class;
->      /*< public >*/
->      const char *cpu_type;
-> +    int core_count;
->      hwaddr peri_base; /* Peripheral base address seen by the CPU */
->      hwaddr ctrl_base; /* Interrupt controller and mailboxes etc. */
->      int clusterid;
-> @@ -37,7 +38,7 @@ static void bcm2836_init(Object *obj)
->      BCM283XClass *bc =3D BCM283X_GET_CLASS(obj);
->      int n;
+> @@ -32,6 +32,9 @@ typedef struct BCM283XClass {
+>  #define BCM283X_GET_CLASS(obj) \
+>      OBJECT_GET_CLASS(BCM283XClass, (obj), TYPE_BCM283X)
 > =20
-> -    for (n =3D 0; n < BCM283X_NCPUS; n++) {
-> +    for (n =3D 0; n < bc->core_count; n++) {
->          object_initialize_child(obj, "cpu[*]", &s->cpu[n].core,
+> +static Property bcm2836_enabled_cores_property =3D
+> +    DEFINE_PROP_UINT32("enabled-cpus", BCM283XState, enabled_cpus, 0);
+> +
+>  static void bcm2836_init(Object *obj)
+>  {
+>      BCM283XState *s =3D BCM283X(obj);
+> @@ -43,6 +46,10 @@ static void bcm2836_init(Object *obj)
 >                                  sizeof(s->cpu[n].core), bc->cpu_type,
 >                                  &error_abort, NULL);
-> @@ -107,7 +108,7 @@ static void bcm2836_realize(DeviceState *dev, Error=
- **errp)
->      sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 1,
->          qdev_get_gpio_in_named(DEVICE(&s->control), "gpu-fiq", 0));
+>      }
+> +    if (bc->core_count) {
+> +        qdev_property_add_static(DEVICE(obj), &bcm2836_enabled_cores_p=
+roperty);
+> +        qdev_prop_set_uint32(DEVICE(obj), "enabled-cpus", bc->core_cou=
+nt);
+> +    }
 > =20
-> -    for (n =3D 0; n < BCM283X_NCPUS; n++) {
-> +    for (n =3D 0; n < bc->core_count; n++) {
->          /* TODO: this should be converted to a property of ARM_CPU */
->          s->cpu[n].core.mp_affinity =3D (bc->clusterid << 8) | n;
+>      sysbus_init_child_obj(obj, "control", &s->control, sizeof(s->contr=
+ol),
+>                            TYPE_BCM2836_CONTROL);
+> @@ -154,12 +161,6 @@ static void bcm2836_realize(DeviceState *dev, Erro=
+r **errp)
+>      }
+>  }
 > =20
-> @@ -173,6 +174,7 @@ static void bcm2836_class_init(ObjectClass *oc, voi=
+> -static Property bcm2836_props[] =3D {
+> -    DEFINE_PROP_UINT32("enabled-cpus", BCM283XState, enabled_cpus,
+> -                       BCM283X_NCPUS),
+> -    DEFINE_PROP_END_OF_LIST()
+> -};
+> -
+>  static void bcm283x_class_init(ObjectClass *oc, void *data)
+>  {
+>      DeviceClass *dc =3D DEVICE_CLASS(oc);
+> @@ -179,7 +180,6 @@ static void bcm2836_class_init(ObjectClass *oc, voi=
 d *data)
->      BCM283XClass *bc =3D BCM283X_CLASS(oc);
-> =20
->      bc->cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a7");
-> +    bc->core_count =3D BCM283X_NCPUS;
->      bc->peri_base =3D 0x3f000000;
 >      bc->ctrl_base =3D 0x40000000;
 >      bc->clusterid =3D 0xf;
-> @@ -187,6 +189,7 @@ static void bcm2837_class_init(ObjectClass *oc, voi=
-d *data)
->      BCM283XClass *bc =3D BCM283X_CLASS(oc);
+>      dc->realize =3D bcm2836_realize;
+> -    device_class_set_props(dc, bcm2836_props);
+>  };
 > =20
->      bc->cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a53");
-> +    bc->core_count =3D BCM283X_NCPUS;
->      bc->peri_base =3D 0x3f000000;
+>  #ifdef TARGET_AARCH64
+> @@ -194,7 +194,6 @@ static void bcm2837_class_init(ObjectClass *oc, voi=
+d *data)
 >      bc->ctrl_base =3D 0x40000000;
 >      bc->clusterid =3D 0x0;
+>      dc->realize =3D bcm2836_realize;
+> -    device_class_set_props(dc, bcm2836_props);
+>  };
+>  #endif
+> =20
 >=20

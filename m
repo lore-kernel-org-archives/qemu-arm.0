@@ -1,103 +1,102 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5947387lfp;
-        Tue, 18 Feb 2020 01:55:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwmfoZ+0oTU0Pys5KH+QpxEchK7yf5CDzZa31lhd02gcpIjwgJVQb82XB3XN2VVGvzQlMAy
-X-Received: by 2002:a0c:a281:: with SMTP id g1mr16039642qva.168.1582019748384;
-        Tue, 18 Feb 2020 01:55:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582019748; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5948192lfp;
+        Tue, 18 Feb 2020 01:57:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyqGgriQCH5dK2NCO+PoKhwn+HYD6qACKWe5upP0RRiZRSyULiYEgqJB95Rosmv0f59kH5I
+X-Received: by 2002:a0c:f685:: with SMTP id p5mr16298364qvn.44.1582019822153;
+        Tue, 18 Feb 2020 01:57:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582019822; cv=none;
         d=google.com; s=arc-20160816;
-        b=0IiqQFAlZzVdaiA3T3faju61H7cSx0M6mvI6be6W67THYzrdgUqIqovYA7B2R4Lk8K
-         OS28CSU3R89n91hnPgacC62yubouSI094hrolHn9bPdeyMh1sYg1v1xfE6JSRw1a7gkb
-         nraoTdtiO+tnn1S7mc65z7RAwLtAhshApNdxSbR5RHX7qCnj5MZH3FDbOHKHF3JIjukv
-         D+g3xYvbhvS48QV8kuez1cpdosw1O2qS+2qzHS7X6tiaue1L4Y+5hxoiEAdopOh9LJls
-         65jhtFNFf7X4D4KtsmeN3KYj7Yxm+26fkN2PJu59ldTJpq885yfcVr1kT6HTC5P0BGZH
-         yQsA==
+        b=noLcBjJaZSFUt05HuY/cl7x2GeI6wcZpp7WJHaSfGoM9oZda4QTZF/a5rviCiUDW2o
+         SOR02HPUTPODlMsWnDR8SJoZf2HVlFYiD50FccD9RNBdLbXLY4lF9h6ozTwE51Ysi/Th
+         ixl5+U5FS/+U2xdJxdxCkDPisjKhrGe134Q8xhj49yCONh8oo67EvEryBijCHwN6H4w1
+         U/iuJLcepm2G1TlOWLzgzO9W1vkgwUlYskdxl1QF27YXcNMt4DlwifCGBf1df7+RMLbu
+         rAqw+RFUMUx7uuhXLYIqDJKUu5s5ya3mJV/zUBPN8F0EMARFJa4kaWk3HECazaNrJIyv
+         prLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition
          :content-transfer-encoding:user-agent:in-reply-to:mime-version
          :references:message-id:subject:to:from:date:dkim-signature;
-        bh=uG+mVOsbeOP/NekfgFiczINtLuBGhgItgPZqznYZNGg=;
-        b=qlrq57eGIxY2EEmlOyoVa7QIf7zOSfdTXjnIpka3D++eoCqupEjRlIGyww04Kd/UOq
-         IPNEcERt+GNu0dzY/nsPq7KOUqE3xTkGK9dUriTFgOedLryIiC5ywp1QmnmjtPtBp5JJ
-         +Y2uPOGInRY9ruQMis/mRT38xueQzte13Yo+9PLRb5AbZ8bbDsuBdF6fc4W5tHHI81Bv
-         rQMEcYReV444uDdIaWEqSFXuHPHZNWc03VQpUtGu3x1h082MALwP/MupMmwbCnKJ81R7
-         NFVbapm8C44bEmTRGBEcuqy4X59BUEEkxN0DPD+ZLUTVgDrbtapiqJXkr0nI83pVSdsQ
-         2Csw==
+        bh=9bhLWeDmIRIbpw4WQFzMqL9ZUaH/2EcUzcdPU0bjoqQ=;
+        b=JGLZhgMJmBNVoi8eFSBaEWpdXpr6AbetYdXbm+QILUSXtM4sBnrTkcMWUYLPgQBAbH
+         Yf6TqJRwROBO+MhfmwCddkV8wvX+gRwcLeOuZlI7ur7Tu26nuzQXiKAmyxe9FoXsuPFl
+         kpPgLENiy/vlwHqzAxLFpHfXk3A8vFmHMcShyl+lEgoNz4EmeV1tQLswZ7CbHiGhPlEI
+         O4d15NdI4aT2L9payrZ37Cb68f8qlr4acEYJiiDdR1RoixLqvjqmvpkTdThQfLoz2NGs
+         BCWw+u6KsMEuHGigzAAeBB2Ir9i8CIcGmbPlpbNSHwdzaO4t38EjkZlyLO/n+ldtOUTX
+         6FRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eo95uE38;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iuFPcoJx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w9si1427332qvp.155.2020.02.18.01.55.48
+        by mx.google.com with ESMTPS id y20si1405990qtn.3.2020.02.18.01.57.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2020 01:55:48 -0800 (PST)
+        Tue, 18 Feb 2020 01:57:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eo95uE38;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iuFPcoJx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59582 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59622 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3zbX-0004WF-NN
-	for alex.bennee@linaro.org; Tue, 18 Feb 2020 04:55:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45611)
+	id 1j3zcj-0007LF-Iz
+	for alex.bennee@linaro.org; Tue, 18 Feb 2020 04:57:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44637)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgilbert@redhat.com>) id 1j3zbN-0004Pk-EA
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:55:38 -0500
+ (envelope-from <dgilbert@redhat.com>) id 1j3zVa-0001E2-UG
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:49:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgilbert@redhat.com>) id 1j3zbM-00039y-AS
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:55:37 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:55561
+ (envelope-from <dgilbert@redhat.com>) id 1j3zVZ-0000KI-MY
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:49:38 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:26820
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1j3zbM-00039W-6Q
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:55:36 -0500
+ (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1j3zVZ-0000JY-IF
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:49:37 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582019735;
+ s=mimecast20190719; t=1582019377;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uG+mVOsbeOP/NekfgFiczINtLuBGhgItgPZqznYZNGg=;
- b=eo95uE38fFskl2uHQw9Qd9iGkOjF9AVe0RwGLynKToqOYSkAZd8FJKkr+hNSHxCX78s5yv
- JJej17O0qQFA/l1tIhHwBlBac2nRFTG1CpQljgQ3TnnK+6679lgPq6WfJn9ai7I1xwPV0J
- sOMW9mWRT8Ymmf373uXbJKg+Gzo06GE=
+ bh=9bhLWeDmIRIbpw4WQFzMqL9ZUaH/2EcUzcdPU0bjoqQ=;
+ b=iuFPcoJxrlC3KuSvnPZcWc+iKwNukwen7Br+geqjO0P2SdTdrbLSEOwquRK/Bog44enexP
+ HABJDG1z6JnwrlEXWwlqTwkROErjT6rcQ1OTorvk0vgFY7sMLyIJXU9IMjOPdIXsHiedC6
+ e5qOFaW7FocOdxtIs07qPrWZABldFpY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-397-cnpB31cQNYKadkgpCQkfyQ-1; Tue, 18 Feb 2020 04:55:32 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-96-U8j75KKONqCjknlOdUajEA-1; Tue, 18 Feb 2020 04:49:35 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E63201882CD1;
- Tue, 18 Feb 2020 09:55:29 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 857261B2C980;
+ Tue, 18 Feb 2020 09:49:31 +0000 (UTC)
 Received: from work-vm (unknown [10.36.118.89])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C5F4E90533;
- Tue, 18 Feb 2020 09:55:09 +0000 (UTC)
-Date: Tue, 18 Feb 2020 09:55:07 +0000
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E858619756;
+ Tue, 18 Feb 2020 09:49:08 +0000 (UTC)
+Date: Tue, 18 Feb 2020 09:49:05 +0000
 From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [PATCH RESEND 06/13] hw/m68k/next-cube: Remove superfluous
- semicolon
-Message-ID: <20200218095507.GI3080@work-vm>
+Subject: Re: [PATCH RESEND 01/13] scripts/checkpatch.pl: Detect superfluous
+ semicolon in C code
+Message-ID: <20200218094905.GC3080@work-vm>
 References: <20200218094402.26625-1-philmd@redhat.com>
- <20200218094402.26625-7-philmd@redhat.com>
+ <20200218094402.26625-2-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200218094402.26625-7-philmd@redhat.com>
+In-Reply-To: <20200218094402.26625-2-philmd@redhat.com>
 User-Agent: Mutt/1.13.3 (2020-01-12)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: cnpB31cQNYKadkgpCQkfyQ-1
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: U8j75KKONqCjknlOdUajEA-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -126,31 +125,45 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Gxn2x14qAuju
+X-TUID: /trreRchegXM
 
 * Philippe Mathieu-Daud=E9 (philmd@redhat.com) wrote:
-> Fixes: 956a78118bf
+> Display error when a commit contains superfluous semicolon:
+>=20
+>   $ git show 6663a0a3376 | scripts/checkpatch.pl -q -
+>   ERROR: superfluous trailing semicolon
+>   #276: FILE: block/io_uring.c:186:
+>   +                ret =3D -ENOSPC;;
+>   total: 1 errors, 1 warnings, 485 lines checked
+>=20
+> Reported-by: Luc Michel <luc.michel@greensocs.com>
 > Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 
 > ---
->  hw/m68k/next-cube.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+>  scripts/checkpatch.pl | 5 +++++
+>  1 file changed, 5 insertions(+)
 >=20
-> diff --git a/hw/m68k/next-cube.c b/hw/m68k/next-cube.c
-> index e5343348d0..350c6fec78 100644
-> --- a/hw/m68k/next-cube.c
-> +++ b/hw/m68k/next-cube.c
-> @@ -734,7 +734,7 @@ void next_irq(void *opaque, int number, int level)
->      switch (number) {
->      /* level 3 - floppy, kbd/mouse, power, ether rx/tx, scsi, clock */
->      case NEXT_FD_I:
-> -        shift =3D 7;;
-> +        shift =3D 7;
->          break;
->      case NEXT_KBD_I:
->          shift =3D 3;
+> diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+> index ce43a306f8..11512a8a09 100755
+> --- a/scripts/checkpatch.pl
+> +++ b/scripts/checkpatch.pl
+> @@ -1830,6 +1830,11 @@ sub process {
+>  =09=09=09ERROR("suspicious ; after while (0)\n" . $herecurr);
+>  =09=09}
+> =20
+> +# Check superfluous trailing ';'
+> +=09=09if ($line =3D~ /;;$/) {
+> +=09=09=09ERROR("superfluous trailing semicolon\n" . $herecurr);
+> +=09=09}
+> +
+>  # Check relative indent for conditionals and blocks.
+>  =09=09if ($line =3D~ /\b(?:(?:if|while|for)\s*\(|do\b)/ && $line !~ /^.\=
+s*#/ && $line !~ /\}\s*while\s*/) {
+>  =09=09=09my ($s, $c) =3D ($stat, $cond);
 > --=20
 > 2.21.1
 >=20

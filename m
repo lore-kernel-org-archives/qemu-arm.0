@@ -1,121 +1,116 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5933543lfp;
-        Tue, 18 Feb 2020 01:37:07 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxuGUlq+BiG+XKMaYnRaTRmBseZerPGiIB22WXU4qQgMwlHLmxRRns+4alm9K2VY5Y7mMyg
-X-Received: by 2002:ae9:f016:: with SMTP id l22mr17890381qkg.101.1582018627027;
-        Tue, 18 Feb 2020 01:37:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582018627; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp5934015lfp;
+        Tue, 18 Feb 2020 01:37:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxdGp4yPWzORIOmn81FqDaphj4XJeHckd8+0zS8Ne1bD85o+SdiNSnlB42sZbjxua3j+Pa6
+X-Received: by 2002:aed:3fa3:: with SMTP id s32mr16071087qth.10.1582018664227;
+        Tue, 18 Feb 2020 01:37:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582018664; cv=none;
         d=google.com; s=arc-20160816;
-        b=C5aKuhJjS3jNnl2znY4BEeM1jg3o94DWYknuXveolesBax2aq94s4YiCqzHGA5N3/3
-         p/N2SymvLZHe6gXJXMeqY8cQ8t/FDfZY6FkpBDdxqIci1Vi4LRsrpBsbT9Ho8hLzOOOc
-         SOYtvOx7eLjKhHx0GUYTaUpr8ft6+mUneNSkJsnKHh0HhxYjVDkYA+p5dG7GCliV0gQW
-         NGUhaQOIY+IeuUe9pT/NHyYtyXMgjnOSXGgamcJVI9CWE3FpB5/dFz9ZZ6Te08JMVqb1
-         Uls6hHP6xWzHwjcp4insn27G0SAZyyWVDX/7/Cq0Orehjbo5Av91xFm7M8mXWCSxhjs4
-         82Hw==
+        b=kO5PiBlfFDRdAyUoKcjI9tuiRxQ11gkNkRRhEDHDjxyyWnpgb1CONHoqQlxA5lK2nZ
+         SzwT+kUuMs1TnA2oTRrYrIh+XRMTscFJSYAnI9eqmriR9t8BznOiW62CnkDnOc6gZgj7
+         y0AnA4iHkouXtR0kJWirF28cRy5pmaUom4O0QLC+UkzsvFN4huILS93K6RvQpcnXhoSA
+         /Y/T2b57b87ruVMvdLwdCmiVg8tmqkAcirMfLVwXqNMhKfSGw1VR8AucmqPUnV/e2HYu
+         NpWzfxainy6sKYh7PRqX73GMBQeuF9zQQhDe8M/IjZs4ZHGP7Plgt9/nwjqb48uo47EP
+         1z3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=RcjxodsOG8DMb48WnefJcdzANdJn3aiE9oA0FpueFxs=;
-        b=TcqLJYubawnPfBCXgok7TtFxcJxLgq539xE3llTQu/+eE7jwuh9w8leHxL2bjTI/C8
-         DPvShyNggedUVEm6lrkI/vmm15vxTgyAuMdOjVfF3Xnr6TmpcJ5V+LK9dEiyniBEwQ7j
-         Qe/9PJ+Jw01qW+cJxMYo7bWknx4mG0Q7WElRePC8kh1X2QQqdNYs8WAhoZqx7ZJTtbCZ
-         dbHX6rPSjSkycHAiPpR+4yZLlX+DD75QS9Y7mjfpbJ/3Jl8ryRpE732b6QAwPutAFQNe
-         cc2Y20W9zqCceuuDSCSTynUf1pTYQVeQ1Bg6ZRmZFctZx7qh7MO1jwzwBMSq9F4ki6+F
-         7eag==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=btZAH3Xrx0pyrx59uFmBzC/cYn5q/bWIwtOk/dCCUTM=;
+        b=dCmlPGn/U1SzLVkbI19n9OCYv92BdCpidD8wB36cyKu5JOsSoBfpeW3+ot8AgP3KjY
+         7gVRY7TjcAL0EVOVKI8gdo9gJ5BA/9rV3vuSsH98E6wkGhwg95ZD0djlG+4kUKkXjPSd
+         Lh1EZYVm6IyuuGIA/D5pIvy7ccYe3C4GCQ8jwEntF/MZ07Onp95GzdWNueh9kNsczm4a
+         DagfagugmaxSUP6u72aYa3whS54QmYSYJEJRJ38splgTusL5M2E6NgtVJD7jUmtLYKSS
+         ErSKjPfoZsPWHuJ8yXTU6lvIoS5xOSe5BA40Cbmcb867AVZnYa6WnEczPBMYqZ2xjtXg
+         zEgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ahz3EcZC;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DzInd2ZS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a188si1669348qkg.243.2020.02.18.01.37.06
+        by mx.google.com with ESMTPS id i6si1478084qtv.327.2020.02.18.01.37.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2020 01:37:07 -0800 (PST)
+        Tue, 18 Feb 2020 01:37:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ahz3EcZC;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DzInd2ZS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58970 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58998 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j3zJS-0001uq-FS
-	for alex.bennee@linaro.org; Tue, 18 Feb 2020 04:37:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42031)
+	id 1j3zK3-0002wE-LL
+	for alex.bennee@linaro.org; Tue, 18 Feb 2020 04:37:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42239)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j3zIF-0000tX-Qm
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:35:53 -0500
+ (envelope-from <philmd@redhat.com>) id 1j3zJq-0002rK-Dv
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:37:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j3zIE-0002Mo-It
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:35:51 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:28012
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1j3zJp-000302-Ed
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:37:30 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:25136
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j3zIE-0002MJ-F8
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:35:50 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j3zJp-0002zM-8J
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 04:37:29 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582018548;
+ s=mimecast20190719; t=1582018648;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RcjxodsOG8DMb48WnefJcdzANdJn3aiE9oA0FpueFxs=;
- b=Ahz3EcZCvAS3GT6v8uUZ7HUDL7TL6FI+IHxKjgwMKwE87y1gFyVfCIQ2F2Jo/AwsNV6Mcs
- H4eBWeCVqVJAD/Ts943RcceO5vXgV68gVXtn4gOCbUr3THOIKtXEXLaQSCcj1ZCywSFxmY
- 312WUaRqNmKdoOSg0MPEA1+7E75KUME=
+ bh=btZAH3Xrx0pyrx59uFmBzC/cYn5q/bWIwtOk/dCCUTM=;
+ b=DzInd2ZS2wX5GNbrbSXo/XCQMSspGjp08c3HfexZ3voNYd6nSJnuvm5/qY6z8qiJ0t55zU
+ ez5W1lrykZaGXY4ZQ3Pvj+u7U7p0s64In26TEiZIABpEHPEqTX4moIvTaevAXRUWVBajK9
+ Ad2GZeB2J+CWATRT7QTTsIRyBK/Qsj8=
 Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
  [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-54-Tp2GIuxfPhutXIpwpEuw8Q-1; Tue, 18 Feb 2020 04:35:47 -0500
-Received: by mail-wm1-f69.google.com with SMTP id g26so781126wmk.6
- for <qemu-arm@nongnu.org>; Tue, 18 Feb 2020 01:35:46 -0800 (PST)
+ us-mta-414-t4OaXm-BMDGqCOTMVBtnEQ-1; Tue, 18 Feb 2020 04:37:27 -0500
+Received: by mail-wm1-f69.google.com with SMTP id p2so874190wma.3
+ for <qemu-arm@nongnu.org>; Tue, 18 Feb 2020 01:37:26 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=TUjVBiCP7gp2AiEE7R6Zpq5tUxB3Z8DJ7tISQBl8wxM=;
- b=rSkycfgCDpK5T244YlA5ReC1HqmImBUDXwDwLffHmgfkC0kLznk2JFwfdXlojsc6ce
- C21rhRtj9Iv65qJDEFEMresCSG49SfwAjmnlLqhUdFuRNnose6Kn7MgPRdBsLAKMKr+p
- sjuA+T455bA7iFwaLXBo2g0+RCkMY8E75sq2+TMRuk4X6sJ3WJmVeC3qVzjboIy6JrDM
- fLhLCzRysd/ZHCLOjlV/wdIh+8o9Sq/O17pQmiwJoFK0zzWzRg9iyCyiLYe3m03XFm33
- GwJqLoUbVd9dmT/vLhu61m+4FgmoZWoB8xOigv2iVoxnjqk/mRqPetcuva81UYBHhncS
- oTsg==
-X-Gm-Message-State: APjAAAUBubV751qmntHjRCMgYNypg3uTUytEuH3IZjEMEeUIzv2C+cx0
- jIKSCjhuPZguYybzYUi/JzyrfoanQ+7b2AAD2AMIXXwX5yltMWWhdxesD9B0SC4TqEq0sA3oytb
- NXs4irysOIgmC
-X-Received: by 2002:adf:fe50:: with SMTP id m16mr29243337wrs.217.1582018545101; 
- Tue, 18 Feb 2020 01:35:45 -0800 (PST)
-X-Received: by 2002:adf:fe50:: with SMTP id m16mr29243310wrs.217.1582018544852; 
- Tue, 18 Feb 2020 01:35:44 -0800 (PST)
-Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net.
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=fOzWP1vq62G/ytTmsfycrX2X8S1L1HhF+6M2xyNPCUI=;
+ b=So5g2pZwoCzvMtaAy6tUqn6ynnsYJgJRZxfF32HVzbdQrS1JEK+lZH9aksVHuLOGHv
+ 1jbSn3ZO7RZXWEvYZJERvDYYrcdFyUuB3EFbKSEQGuoMVGt7ZHquNWZtEbxBeuojDFX7
+ 2g6jc6U7GOAwdN3M7HtVbX+exAnKrt2vsUmcJxVn/gaUUevsdFd05WDNkZ2tx7+o4wy4
+ HgmIUaljRlVpf9PREphLsGEkP4Xos+AnyQWg5NnoS1QSjCG9bDwjyRnhjntJXrrtzOXI
+ GrmMmaPHpHARDXCA37sKKFPEncQIW+5bQTUlUx7ug0398MEw0HeW+j3nCSXbOuuvquCk
+ RjbQ==
+X-Gm-Message-State: APjAAAUuc+ZaELgcjeWMKfZ+BiYE7gr39oXL7U0freZrL2tvWEUD2o2k
+ EOrWGbnkpciutPHu3TdbvhC1M5VP6aOXxfNmiUKdJfsMIGrmmnIU5KQqOJEvH/Ne9wT2tcxEB1o
+ gGBxaVi1Efxcg
+X-Received: by 2002:adf:fa86:: with SMTP id h6mr27392542wrr.418.1582018645947; 
+ Tue, 18 Feb 2020 01:37:25 -0800 (PST)
+X-Received: by 2002:adf:fa86:: with SMTP id h6mr27392492wrr.418.1582018645661; 
+ Tue, 18 Feb 2020 01:37:25 -0800 (PST)
+Received: from x1w.redhat.com (78.red-88-21-202.staticip.rima-tde.net.
  [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id v8sm5159607wrw.2.2020.02.18.01.35.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Feb 2020 01:35:44 -0800 (PST)
-Subject: Re: [PATCH v2 12/13] hw/arm/raspi: Add the Raspberry Pi B+ machine
-To: Luc Michel <luc.michel@greensocs.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200217114533.17779-1-f4bug@amsat.org>
- <20200217114533.17779-13-f4bug@amsat.org>
- <26d85b1f-b2b7-ff9f-1236-43e9cb761c30@greensocs.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <c56d4f85-b4df-643c-c017-350b7f64aec2@redhat.com>
-Date: Tue, 18 Feb 2020 10:35:43 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ by smtp.gmail.com with ESMTPSA id 133sm2817232wme.32.2020.02.18.01.37.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 18 Feb 2020 01:37:25 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 01/13] scripts/checkpatch.pl: Detect superfluous semicolon in
+ C code
+Date: Tue, 18 Feb 2020 10:37:08 +0100
+Message-Id: <20200218093720.25640-2-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200218093720.25640-1-philmd@redhat.com>
+References: <20200218093720.25640-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <26d85b1f-b2b7-ff9f-1236-43e9cb761c30@greensocs.com>
-Content-Language: en-US
-X-MC-Unique: Tp2GIuxfPhutXIpwpEuw8Q-1
+X-MC-Unique: t4OaXm-BMDGqCOTMVBtnEQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -127,96 +122,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, Yuval Shaia <yuval.shaia.ml@gmail.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
+ Juan Quintela <quintela@redhat.com>, qemu-trivial@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Igor Mammedov <imammedo@redhat.com>
+ Alistair Francis <alistair@alistair23.me>, Julia Suvorova <jusual@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>, Aarushi Mehta <mehta.aaru20@gmail.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ Thomas Huth <huth@tuxfamily.org>, Laurent Vivier <laurent@vivier.eu>,
+ Max Reitz <mreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZY4+en9vGKJ4
+X-TUID: enP085aLWIqK
 
-Cc'ing Eduardo/Igor.
+Display error when a commit contains superfluous semicolon:
 
-On 2/18/20 9:48 AM, Luc Michel wrote:
-> On 2/17/20 12:45 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->>    $ qemu-system-arm -M raspi1b -serial stdio \
->>        -kernel raspberrypi/firmware/boot/kernel.img \
->>        -dtb raspberrypi/firmware/boot/bcm2708-rpi-b.dtb \
->>        -append 'printk.time=3D0 earlycon=3Dpl011,0x20201000 console=3Dtt=
-yAMA0'
->>    [    0.000000] Booting Linux on physical CPU 0x0
->>    [    0.000000] Linux version 4.19.69+ (dom@buildbot) (gcc version 4.9=
-.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1261 Tue Sep 3 20:21:01=
- BST 2019
->>    [    0.000000] CPU: ARMv6-compatible processor [410fb767] revision 7 =
-(ARMv7), cr=3D00c5387d
->>    [    0.000000] CPU: VIPT aliasing data cache, unknown instruction cac=
-he
->>    [    0.000000] OF: fdt: Machine model: Raspberry Pi Model B
->>    [    0.000000] earlycon: pl11 at MMIO 0x20201000 (options '')
->>    [    0.000000] bootconsole [pl11] enabled
->>    [    0.000000] Memory policy: Data cache writeback
->>    [    0.000000] cma: Reserved 8 MiB at 0x1b800000
->>    [    0.000000] random: get_random_bytes called from start_kernel+0x8c=
-/0x49c with crng_init=3D0
->>    [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages:=
- 113680
->>    [    0.000000] Kernel command line: printk.time=3D0 earlycon=3Dpl011,=
-0x20201000 console=3DttyAMA0
->>    Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
->>    Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
->>    Memory: 434380K/458752K available (6971K kernel code, 635K rwdata, 20=
-80K rodata, 464K init, 797K bss, 16180K reserved, 8192K cma-reserved)
->>    ...
->>
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> ---
->>   hw/arm/raspi.c | 13 +++++++++++++
->>   1 file changed, 13 insertions(+)
->>
->> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
->> index 3537a329ac..2d9f4e3085 100644
->> --- a/hw/arm/raspi.c
->> +++ b/hw/arm/raspi.c
->> @@ -324,6 +324,15 @@ static void raspi_machine_class_common_init(Machine=
-Class *mc,
->>       mc->default_ram_size =3D board_ram_size(board_rev);
->>   };
->>  =20
->> +static void raspi1b_machine_class_init(ObjectClass *oc, void *data)
->> +{
->> +    MachineClass *mc =3D MACHINE_CLASS(oc);
->> +    RaspiMachineClass *rmc =3D RASPI_MACHINE_CLASS(oc);
->> +
->> +    rmc->board_rev =3D 0x900032;
->> +    raspi_machine_class_common_init(mc, rmc->board_rev);
->> +};
->> +
->>   static void raspi2b_machine_class_init(ObjectClass *oc, void *data)
->>   {
->>       MachineClass *mc =3D MACHINE_CLASS(oc);
->> @@ -348,6 +357,10 @@ static void raspi3b_machine_class_init(ObjectClass =
-*oc, void *data)
->>  =20
->>   static const TypeInfo raspi_machine_types[] =3D {
->>       {
->> +        .name           =3D MACHINE_TYPE_NAME("raspi1b"),
-> If it's the B+ model, why not call it raspi1b+ ?
+  $ git show 6663a0a3376 | scripts/checkpatch.pl -q -
+  ERROR: superfluous trailing semicolon
+  #276: FILE: block/io_uring.c:186:
+  +                ret =3D -ENOSPC;;
+  total: 1 errors, 1 warnings, 485 lines checked
 
-I thought about it (and prefer it), but I'm not sure this can have some=20
-side-effect.
+Reported-by: Luc Michel <luc.michel@greensocs.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+---
+ scripts/checkpatch.pl | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Eduardo, Igor, is that OK to use a '+' in a machine name?
-
-So far the names used match [a-zA-Z0-9-].
-
->=20
->> +        .parent         =3D TYPE_RASPI_MACHINE,
->> +        .class_init     =3D raspi1b_machine_class_init,
->> +    }, {
->>           .name           =3D MACHINE_TYPE_NAME("raspi2b"),
->>           .parent         =3D TYPE_RASPI_MACHINE,
->>           .class_init     =3D raspi2b_machine_class_init,
->>
->=20
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index ce43a306f8..11512a8a09 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -1830,6 +1830,11 @@ sub process {
+ =09=09=09ERROR("suspicious ; after while (0)\n" . $herecurr);
+ =09=09}
+=20
++# Check superfluous trailing ';'
++=09=09if ($line =3D~ /;;$/) {
++=09=09=09ERROR("superfluous trailing semicolon\n" . $herecurr);
++=09=09}
++
+ # Check relative indent for conditionals and blocks.
+ =09=09if ($line =3D~ /\b(?:(?:if|while|for)\s*\(|do\b)/ && $line !~ /^.\s*=
+#/ && $line !~ /\}\s*while\s*/) {
+ =09=09=09my ($s, $c) =3D ($stat, $cond);
+--=20
+2.21.1
 

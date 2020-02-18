@@ -1,239 +1,172 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6440112lfp;
-        Tue, 18 Feb 2020 11:14:56 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwIpH8MMhcj723IdVlH8oVGKIOG8zJXvKZswNiYY45aq+Tgj6XsyXs25LQQgRtBrtUCOw3G
-X-Received: by 2002:a37:4a48:: with SMTP id x69mr19693051qka.57.1582053296158;
-        Tue, 18 Feb 2020 11:14:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582053296; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6560592lfp;
+        Tue, 18 Feb 2020 13:51:03 -0800 (PST)
+X-Received: by 2002:a92:5e8b:: with SMTP id f11mr1436079ilg.178.1582062663657;
+        Tue, 18 Feb 2020 13:51:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582062663; cv=none;
         d=google.com; s=arc-20160816;
-        b=LPJLzDe/LZBr2BwKu1YIoQ+WzLMlHJ83eQnbDcgAUPtwkUdAvD+BBEHOEhQ5SayYsp
-         Dh1dumHYP9dwdCL6kSVS6NnajG4VvtBYjWdMU1PvEWWO20ALJi5+vqnbmkIlEj3+4XGQ
-         V4E7ymKWylzGwnrLzsY86LtSPDcxa4tlZinbNwoB4jmNCFsrDP3meMONr6UG881D5Q+W
-         fDdyNO2d9cvUPF3NCWhWV8NADdVviyRBDEkM5+N9zXJs3/Y3E60smKyiUnH6HEuYNKpv
-         r+5eEIP+JaRPl/Tw9630enumWnqk7fe/p8A3ldIEeuIXve9uFNfagERc2mKXgLRB56VC
-         gDvQ==
+        b=ytuXNe53YURWF/JxlwSYtAW2Dlasf1WvUHxKQ52cGwV6C2eRQyIFj1HMFPg9EDvzp4
+         aPS0Rc4HZ4krEBmge+DC3ntUbfRAy8jfjIBWzm2dDRS8hd+rnlARx+UbnYsKI/+0tNLj
+         qujgZHLKES5VRizN26eAQHFPYL0EKIV/dfXJ1WDXDwZRSy/3v9D0foEn1Qtq9NQRlTmS
+         QyhvSOl286ttNzb+8+fARTz7DgMqF+EzobjExNzfseRipsClgWRWC0BTDwzPmahdnPe8
+         RbQL6c2jfMSba7klA5bv2Rt69uxcydODOp6WxU17ubTcKuKzrj3goZi62yS0MPVievZK
+         0q0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=d8VQKU6rv4Pu6l3hpA5VgoL0EnHokMCgM3rMhYXv+l4=;
-        b=aslvonCbiaQk0CblIwJ96DQdkAsPPEBuVGZ7jrThyDKejLFr6bYFrUwbE7toelfe7K
-         a6kMnFKHM4dZGSUfOTC6QBozii2xSAcgnSRvcCuQ1HlDBJ7TRYLAe9defNkswW+kXBqy
-         8l3QOXJbpgCPeihj03dSCSVF6wDAM8hF/aBbBnkQJ3BMhMu5ydd6UKEAG830/u31XQeb
-         Pj37Ap6lPrvz2aekfi/17rVwHqWkeqYwOJ/cJDlCx9C7YmZzUdzkS8pKHLAwqRrdUu4e
-         LjjA5TTglqElITHtyvuJT2y1chlobFEegwZZbzg1FD/KRL9YnlK2o9RXBtZg5gF5TgbR
-         AS4Q==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=sLeGUH5OxTikEsToDHR4WZF1TwQ6mWFhg6WtSprZEOs=;
+        b=MuH8/SMa9S6EDtSuHx4lK41ra4TPY/2LGqRRGHkBCDo5i9H1KgEH7fh4A0/661B4qn
+         bVBMwKOML1BzamZMlZYr8u/0vGkkMRh9aD90SeCRmWQ5ldh/OfMtxVlvY3MPK5oRelPh
+         0pZk+iwrg2jPSDWrb6pVSBXaF503WGLih2IkBovcxbRKMfK3S9KCxtWSXcUfEtm5ajt4
+         H1R1FPq/oOue/jDwS4ymIa4EtsLpzEiNngmki3OIOZW4n4K+2YxR4MlwNh200+68kvW3
+         OXAyhOVPovBha/HIG43f6H0YTYI9N8VJqmaey7ZZbpQg2IJ8QWXB1QJXiBHhSOfQa5rs
+         P76Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iSdVw9rz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m8si2148911qvs.93.2020.02.18.11.14.55
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2020 11:14:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FUdNcz1U;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 22sor6453iof.132.2020.02.18.13.51.03
+        (Google Transport Security);
+        Tue, 18 Feb 2020 13:51:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iSdVw9rz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40576 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j48Kd-0003gG-JC
-	for alex.bennee@linaro.org; Tue, 18 Feb 2020 14:14:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47205)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1j48G5-00057t-HT
- for qemu-devel@nongnu.org; Tue, 18 Feb 2020 14:10:14 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1j48G3-00026i-SG
- for qemu-devel@nongnu.org; Tue, 18 Feb 2020 14:10:13 -0500
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:37019)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1j48G3-00020O-Gp
- for qemu-devel@nongnu.org; Tue, 18 Feb 2020 14:10:11 -0500
-Received: by mail-pg1-x543.google.com with SMTP id z12so11424350pgl.4
- for <qemu-devel@nongnu.org>; Tue, 18 Feb 2020 11:10:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=d8VQKU6rv4Pu6l3hpA5VgoL0EnHokMCgM3rMhYXv+l4=;
- b=iSdVw9rzE92iebe/A9OrratQX/Vu8tbEoCAedhD6vLfuzXejm1whRjBMyWODOhtgs2
- xD/UJpV4xLSNmGYHHdQxr3WpNxoT10JUjgLHLcDGk8u+REBMn9f3cMF9Sh3dDLOsfGEY
- 38/5i24t8saybaahzI27wnpv3CmwguwslFjSdeXV4b5MLQ8CzlvPciLvb4UcSE0mZFaY
- IsbZwU2wXMOgeCjCGK2guLsUSYCnYIQLLkOTDILSvcaWKYNmhUGKWUM2wAbOeVEerya8
- NGaWW8nDC6FRm0P0JubQiYifvj/0Nhzc+JZweDRftopftU3fXYUei3PCZwcpo15axo6n
- hG4A==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FUdNcz1U;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=sLeGUH5OxTikEsToDHR4WZF1TwQ6mWFhg6WtSprZEOs=;
+        b=FUdNcz1U74pIM+a9s1p824eVm6jdT9t6q4mq5BThIcD8lCN3rW+bh+j4t3UOcaYD1n
+         O6j9mkqV6nOfAufWEFrHl7Ba6HmA3dDGGM8y/FvKOngC0/9TvpivssKyY2T0Q2ASBSW/
+         3z/oFkLeSzoE6pE0VedOakQ9TOPcd+xHpH2eUg+1wCjaelQDLVUkq21Bs+uyH0s/7o7m
+         FBmNHGrQF3h+Lz8I4GWaPhLSxYlMsLwReqPQsgcD0rzbYUjPREAsSs5+SurLTx6RUzN4
+         Smpr4/x0WYmObFhoIdJP7MG+cmvi/6JJTM5j5IdCdzr49zaj7UDb9/IbwE6UKPHMSYZd
+         P21A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=d8VQKU6rv4Pu6l3hpA5VgoL0EnHokMCgM3rMhYXv+l4=;
- b=XBrsBqEBeydIGZKpYDeYiQJGeE/2GrsYTsHR38nqcsHtioiKo9jpwFzU9O9HB9ygtO
- KYoOHtCzqUGQGAVMRplT4J0U8EkLoOhtc3O9rVeuzOwNcveRw+7rCh0oHlSYUWTNwgPy
- /5BVDLCD6/Bzrh018QI55PvvjmLSaylAIY5ShJqHACH1JflJBAbNscG91wNQlYF7Dxjo
- Ws8hzSXUksqQb6EtpmJfHw3ke2Za3t2YZIhbLDEUGAThOHsyyuf/HV6g3JN7zOPaK4RI
- lAlZyZjpt5WRukJF3ElEOhNALnwsAR+3N+jWk9enEeUoxCyvXVBJ/eRex1c0/bXBnRGd
- dAJg==
-X-Gm-Message-State: APjAAAW5RwYXOceCbKUTH8OupCpuk6En3O6Dug3lqjFjR1ZT7ybYICfD
- TZrOVuSk4E4Rj+up7FwzONpZ1t5L0/M=
-X-Received: by 2002:a62:7681:: with SMTP id
- r123mr22675100pfc.169.1582053009053; 
- Tue, 18 Feb 2020 11:10:09 -0800 (PST)
-Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net.
- [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id i68sm5139399pfe.173.2020.02.18.11.10.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Feb 2020 11:10:08 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 6/7] target/arm: Honor the HCR_EL2.TPU bit
-Date: Tue, 18 Feb 2020 11:09:57 -0800
-Message-Id: <20200218190958.745-7-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200218190958.745-1-richard.henderson@linaro.org>
-References: <20200218190958.745-1-richard.henderson@linaro.org>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=sLeGUH5OxTikEsToDHR4WZF1TwQ6mWFhg6WtSprZEOs=;
+        b=qr4vNbCkQGhqQovnavPbBxTDsAc2LmWqWDQrsuFPRDmy1X5V1X+cmFPF2P6eRXq6oG
+         SU664PqGQUGtOEqxIfNzKo/T2iVma1/w2hwK7B8bZT/TQuHnR1ZXI3LA/mfbocT+GYtn
+         Uo6/1v+qI3yIMGhfeItCENmHR90qPBXDNJb4KzeGYc6brZK1OuDGljzMuOoj6b7TDyr4
+         reYvHlps0FcSH2xDpN1S1tTbHuDomZD6YkFFLFUe3/1dF4UB6zPhKnxp+QqTBOkwmAsq
+         m8a75wfHlpySdZ9U7z/QNSCQR96lA2Rt7tHJJuhifMqb5O5sxkaCGNpUreogOMgvqfBe
+         xnrg==
+X-Gm-Message-State: APjAAAV3jIvcvu+N11IFmwtEmmn4OsSETvEplvnqqTRS3YVHEhKLsMUr
+	jycQvEpBfai5upOu7mFlkaar84flyqg8ZQ6XkFQ4Bw==
+X-Google-Smtp-Source: APXvYqx2A7Vp1eDnko0Yog2I4SnljG7i2qroy00gwc0P+43U2XutOdHCAKQMpxwGFU2Cd5Cv50FC14LTqFq7gt94IV4=
+X-Received: by 2002:a5d:8856:: with SMTP id t22mr16716548ios.217.1582062663091;
+ Tue, 18 Feb 2020 13:51:03 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::543
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6Kgiyehb707K
+References: <20200119005102.3847-1-nieklinnenbank@gmail.com>
+ <CAPan3WpV2m9HXLXZDopKUb2EfX2KE9y530m2pJG4-D96==ggCg@mail.gmail.com>
+ <ee95179f-c15f-9615-e241-80199e6948b7@redhat.com> <CAPan3WpG0yPu5sbS=mpHk=xNVGaqwWFrBcDBcovLLRit==5dwg@mail.gmail.com>
+ <3aa04b23-80a8-21d1-7481-d52b6d8f88c1@redhat.com> <CAFEAcA-kNNWgLc8NxWgVJQk29BVr28j-A_d4M+8=7nfpTzhzcQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA-kNNWgLc8NxWgVJQk29BVr28j-A_d4M+8=7nfpTzhzcQ@mail.gmail.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Tue, 18 Feb 2020 22:50:52 +0100
+Message-ID: <CAPan3WpkFtEe-9TuaCNhW=Dz3VZHE=8qUVhJbhW9BrdiyoMkRQ@mail.gmail.com>
+Subject: Re: [PATCH v4 00/20] Add Allwinner H3 SoC and Orange Pi PC Machine
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Beniamino Galvani <b.galvani@gmail.com>, Jason Wang <jasowang@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Igor Mammedov <imammedo@redhat.com>
+Content-Type: multipart/alternative; boundary="0000000000000bcb51059ee0ab20"
+X-TUID: rEt9X9I1Po2H
 
-This bit traps EL1 access to cache maintenance insns that operate
-to the point of unification.  There are no longer any references to
-plain aa64_cacheop_access, so remove it.
+--0000000000000bcb51059ee0ab20
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/helper.c | 53 +++++++++++++++++++++++++++------------------
- 1 file changed, 32 insertions(+), 21 deletions(-)
+Hi Peter & Philippe,
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index ed34d4200f..21ee9cf7de 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -4301,19 +4301,6 @@ static const ARMCPRegInfo uao_reginfo = {
-     .readfn = aa64_uao_read, .writefn = aa64_uao_write
- };
- 
--static CPAccessResult aa64_cacheop_access(CPUARMState *env,
--                                          const ARMCPRegInfo *ri,
--                                          bool isread)
--{
--    /* Cache invalidate/clean: NOP, but EL0 must UNDEF unless
--     * SCTLR_EL1.UCI is set.
--     */
--    if (arm_current_el(env) == 0 && !(arm_sctlr(env, 0) & SCTLR_UCI)) {
--        return CP_ACCESS_TRAP;
--    }
--    return CP_ACCESS_OK;
--}
--
- static CPAccessResult aa64_cacheop_poc_access(CPUARMState *env,
-                                               const ARMCPRegInfo *ri,
-                                               bool isread)
-@@ -4336,6 +4323,28 @@ static CPAccessResult aa64_cacheop_poc_access(CPUARMState *env,
-     return CP_ACCESS_OK;
- }
- 
-+static CPAccessResult aa64_cacheop_pou_access(CPUARMState *env,
-+                                              const ARMCPRegInfo *ri,
-+                                              bool isread)
-+{
-+    /* Cache invalidate/clean to Point of Unification... */
-+    switch (arm_current_el(env)) {
-+    case 0:
-+        /* ... EL0 must UNDEF unless SCTLR_EL1.UCI is set.  */
-+        if (!(arm_sctlr(env, 0) & SCTLR_UCI)) {
-+            return CP_ACCESS_TRAP;
-+        }
-+        break;
-+    case 1:
-+        /* ... EL1 must trap to EL2 if HCR_EL2.TPU is set.  */
-+        if (arm_hcr_el2_eff(env) & HCR_TPU) {
-+            return CP_ACCESS_TRAP_EL2;
-+        }
-+        break;
-+    }
-+    return CP_ACCESS_OK;
-+}
-+
- /* See: D4.7.2 TLB maintenance requirements and the TLB maintenance instructions
-  * Page D4-1736 (DDI0487A.b)
-  */
-@@ -4733,14 +4742,16 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-     /* Cache ops: all NOPs since we don't emulate caches */
-     { .name = "IC_IALLUIS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 1, .opc2 = 0,
--      .access = PL1_W, .type = ARM_CP_NOP },
-+      .access = PL1_W, .type = ARM_CP_NOP,
-+      .accessfn = aa64_cacheop_pou_access },
-     { .name = "IC_IALLU", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 5, .opc2 = 0,
--      .access = PL1_W, .type = ARM_CP_NOP },
-+      .access = PL1_W, .type = ARM_CP_NOP,
-+      .accessfn = aa64_cacheop_pou_access },
-     { .name = "IC_IVAU", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 5, .opc2 = 1,
-       .access = PL0_W, .type = ARM_CP_NOP,
--      .accessfn = aa64_cacheop_access },
-+      .accessfn = aa64_cacheop_pou_access },
-     { .name = "DC_IVAC", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 1,
-       .access = PL1_W, .accessfn = aa64_cacheop_poc_access,
-@@ -4758,7 +4769,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-     { .name = "DC_CVAU", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 11, .opc2 = 1,
-       .access = PL0_W, .type = ARM_CP_NOP,
--      .accessfn = aa64_cacheop_access },
-+      .accessfn = aa64_cacheop_pou_access },
-     { .name = "DC_CIVAC", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 14, .opc2 = 1,
-       .access = PL0_W, .type = ARM_CP_NOP,
-@@ -4932,13 +4943,13 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .writefn = tlbiipas2_is_write },
-     /* 32 bit cache operations */
-     { .name = "ICIALLUIS", .cp = 15, .opc1 = 0, .crn = 7, .crm = 1, .opc2 = 0,
--      .type = ARM_CP_NOP, .access = PL1_W },
-+      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = aa64_cacheop_pou_access },
-     { .name = "BPIALLUIS", .cp = 15, .opc1 = 0, .crn = 7, .crm = 1, .opc2 = 6,
-       .type = ARM_CP_NOP, .access = PL1_W },
-     { .name = "ICIALLU", .cp = 15, .opc1 = 0, .crn = 7, .crm = 5, .opc2 = 0,
--      .type = ARM_CP_NOP, .access = PL1_W },
-+      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = aa64_cacheop_pou_access },
-     { .name = "ICIMVAU", .cp = 15, .opc1 = 0, .crn = 7, .crm = 5, .opc2 = 1,
--      .type = ARM_CP_NOP, .access = PL1_W },
-+      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = aa64_cacheop_pou_access },
-     { .name = "BPIALL", .cp = 15, .opc1 = 0, .crn = 7, .crm = 5, .opc2 = 6,
-       .type = ARM_CP_NOP, .access = PL1_W },
-     { .name = "BPIMVA", .cp = 15, .opc1 = 0, .crn = 7, .crm = 5, .opc2 = 7,
-@@ -4952,7 +4963,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-     { .name = "DCCSW", .cp = 15, .opc1 = 0, .crn = 7, .crm = 10, .opc2 = 2,
-       .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
-     { .name = "DCCMVAU", .cp = 15, .opc1 = 0, .crn = 7, .crm = 11, .opc2 = 1,
--      .type = ARM_CP_NOP, .access = PL1_W },
-+      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = aa64_cacheop_pou_access },
-     { .name = "DCCIMVAC", .cp = 15, .opc1 = 0, .crn = 7, .crm = 14, .opc2 = 1,
-       .type = ARM_CP_NOP, .access = PL1_W, .accessfn = aa64_cacheop_poc_access },
-     { .name = "DCCISW", .cp = 15, .opc1 = 0, .crn = 7, .crm = 14, .opc2 = 2,
--- 
-2.20.1
+On Tue, Feb 18, 2020 at 11:05 AM Peter Maydell <peter.maydell@linaro.org>
+wrote:
 
+> On Tue, 18 Feb 2020 at 06:46, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
+com>
+> wrote:
+> > IIRC from the specs, cards are block devices and the only alignment
+> > required is the size of a block (512KiB for your 4GiB card).
+>
+> Isn't there something related to erase blocks too, which impose
+> a larger granularity than just a single block?
+>
+> Anyway, in general the backing image for an SD card device
+> needs to be exactly the size of the SD card you're emulating,
+> because QEMU needs somewhere it can write back the data
+> if the guest decides to write to the last block on the card.
+> So short-length images generally don't work (true for all
+> block devices, not just SD cards, I think). This often bites users
+> if they're using some distro "here's a disk/sd card image file"
+> where the expected use with real hardware is "dd the image
+> file onto the SD card".
+>
+
+Yes, the description you gave here is indeed the issue.
+And unfortunately in this particular case, the distro did not give a very
+understandable
+diagnostic error message.
+
+Kind regards,
+Niek
+
+
+>
+> thanks
+> -- PMM
+>
+
+
+--=20
+Niek Linnenbank
+
+--0000000000000bcb51059ee0ab20
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Peter &amp; Philippe,<br></div><br><div class=3D"g=
+mail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Feb 18, 2020 at 1=
+1:05 AM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter=
+.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
+;padding-left:1ex">On Tue, 18 Feb 2020 at 06:46, Philippe Mathieu-Daud=C3=
+=A9 &lt;<a href=3D"mailto:philmd@redhat.com" target=3D"_blank">philmd@redha=
+t.com</a>&gt; wrote:<br>
+&gt; IIRC from the specs, cards are block devices and the only alignment<br=
+>
+&gt; required is the size of a block (512KiB for your 4GiB card).<br>
+<br>
+Isn&#39;t there something related to erase blocks too, which impose<br>
+a larger granularity than just a single block?<br>
+<br>
+Anyway, in general the backing image for an SD card device<br>
+needs to be exactly the size of the SD card you&#39;re emulating,<br>
+because QEMU needs somewhere it can write back the data<br>
+if the guest decides to write to the last block on the card.<br>
+So short-length images generally don&#39;t work (true for all<br>
+block devices, not just SD cards, I think). This often bites users<br>
+if they&#39;re using some distro &quot;here&#39;s a disk/sd card image file=
+&quot;<br>
+where the expected use with real hardware is &quot;dd the image<br>
+file onto the SD card&quot;.<br></blockquote><div><br></div><div>Yes, the d=
+escription you gave here is indeed the issue.</div><div>And unfortunately i=
+n this particular case, the distro did not give a very understandable</div>=
+<div>diagnostic error message.</div><div><br></div><div>Kind regards,</div>=
+<div>Niek<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex">
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--0000000000000bcb51059ee0ab20--

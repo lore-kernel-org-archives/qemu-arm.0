@@ -1,110 +1,99 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6389396lfp;
-        Tue, 18 Feb 2020 10:12:27 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyOFKvsSLlC2Gt+Lzq39U81K473D/4jStxho3f6FJ9oId5nURPT/QgUcMCMG5/fnRkEMeat
-X-Received: by 2002:ac8:a83:: with SMTP id d3mr18694120qti.228.1582049547798;
-        Tue, 18 Feb 2020 10:12:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582049547; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6393703lfp;
+        Tue, 18 Feb 2020 10:17:23 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwSPsxLSgkKS2HyTHV2q+F/xrwPuNRrW5LWoHwYYWvxjiCBgUILHqx5FK9MK/i26ko+WoYM
+X-Received: by 2002:a37:806:: with SMTP id 6mr261202qki.75.1582049843404;
+        Tue, 18 Feb 2020 10:17:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582049843; cv=none;
         d=google.com; s=arc-20160816;
-        b=FVXgU8HTfQ4DGJZAiZbw3h5sclxGbm1yCcy/tSv0YDR5H4mJZPZZCKRMHiJ6sT/99B
-         O5PK2mEkJPdUJCc9RerWqJwAU1yqnY1rjwbQ8zOxf5xVNZvR9gH3DdmwMm1FhuqqW265
-         SLOKTMu5Lb/Wf75OLHkj7R5v5lxn590UB1DziHFBE2f5W2ymvEvquZYrgJLvGGXNedOP
-         z2e/fUGAwL9tPcvee5ElIxjAQ7HU7W74/qjEpH5Ya0ye4rSUNAwbBvRr9B6rnkRwoBOE
-         CC+I+Num77DJh6YeuqCSaBSymjt7Ht8d7ZFiwbi0WIzLIEB4Svhi2W1Nj/I/9eh0SuTZ
-         HA5A==
+        b=0qM1oI7yN6kNqNENRdan/5e0cx/QYLXjM2BaFPpPrLbh8B9zFR1dN3PEbrlMMA/Sza
+         g4hrGQ01N97JQy83WyjbaG0u711LfdJd+YWsE0YUogBrv8Pu9kVZbJklZxYwOEFpBq+T
+         N0d0DT5KjsKx1jIcjOdbKtTU3E3YJNTcj7SFomx8TJCJc8EfOIJhGkPvcKuFx4LRLSzx
+         GsIPpNn3TVifSrd7ttU8N3l+wMTht9ZWQ07hozk7Xmwf5E7goS6Vn9jlO0DloRK3/c/2
+         TF3IfuRo/YeBASna/dmtOLahBr26DyTSCuvhpg/hmikilI1iKGy6nS8vBHg9fZPR5SJq
+         4rKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=wML/uJ+u0MDichbvEgerDbC1wySMifI8PwyDwt83/9s=;
-        b=RmAzbtwgVqsjTaavc3EqZ7rST3QPH0AqMH5FNm+HPhO+CSRbIFXFh2xRPwpVO1UeG7
-         ek83scuhQB8cqhx6p0j6w0tUumQSQNVVp24zVQdOuTjkwUNPlEg7IctRyWXNqoMQzgLY
-         idVAiq76CzALgVyu6N68IleO5zlMFj9UBKXyXPoWz2dfeA4e6gMZP2naO6dvWtR6H9ke
-         NB4TeLDcWVEt8vq1RrAilHceuFmJXAmgSvmtYBhKGwmlqiDkHd/m0PH5nJpU6BoC5OJ2
-         FtcKKQr8HFkBATzvLLhfIU1rrj6O74wIPvOUq6nHX1VvxcKomprJ+8w3+O2A6sAPHa36
-         8YLQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=1IU1z/lDGDjqG+SqTPFK48+J0dlcBWNFWyaGTdTIn+Y=;
+        b=L4x26zwncCEEnH/E/U0SrrbZF67fC/z5wxFtDrcaHDnnfmUXSjnH1yf1FKKatbc1Cf
+         zJjzLnwEHZk9/tiuMvr/erQ74MYF4lkKptTO9AlTV5Ve8bXmK3xSISqm320kU+T0ikwG
+         DfaHPmIVXrKsnv5Y2Lz0DkDZpcY6Hwc3VvfUgerOfnu1kbsgxj5qTlXKiJIW/ixLH+nw
+         z2IJ4nw9bn8rhrhGqu4d4dzpby2sOLJOn67nPrDy8MrO6/iqbm5Mb49h1BEINE4O0MhZ
+         3OM6itSrrYwI9j8SZgtTOxLX0Gne6yTpaLSaxV2JrSAeBGLY1oXivRCdmg06LZ101tOg
+         k3tw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ULJs8M2G;
+       dkim=fail header.i=@linaro.org header.s=google header.b=IMOEfXBW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p1si2249617qkm.148.2020.02.18.10.12.27
+        by mx.google.com with ESMTPS id q14si2051465qvr.108.2020.02.18.10.17.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2020 10:12:27 -0800 (PST)
+        Tue, 18 Feb 2020 10:17:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ULJs8M2G;
+       dkim=fail header.i=@linaro.org header.s=google header.b=IMOEfXBW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39770 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39836 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j47MB-0005tE-8a
-	for alex.bennee@linaro.org; Tue, 18 Feb 2020 13:12:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33150)
+	id 1j47Qw-0001A2-Rb
+	for alex.bennee@linaro.org; Tue, 18 Feb 2020 13:17:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40652)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pmathieu@redhat.com>) id 1j47M1-0005sN-Vl
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 13:12:19 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j47Qk-00018z-LL
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 13:17:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pmathieu@redhat.com>) id 1j47Ly-0001Ac-P3
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 13:12:16 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:53226
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pmathieu@redhat.com>) id 1j47Ly-00018D-Ga
- for qemu-arm@nongnu.org; Tue, 18 Feb 2020 13:12:14 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582049533;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wML/uJ+u0MDichbvEgerDbC1wySMifI8PwyDwt83/9s=;
- b=ULJs8M2GT64EPmfc/Y8ucf1Yx1aadAEoSMIoTpoon9CwZWJUK7xj7UvN6HWMT+eKv90yeO
- WOuy8NkC5F1xmAcfSsTpgpNkf17PflSdA6R3yXC9a8YRY41wP3q2Ri09nBXlXbdTJMX21u
- 7Go6sGSs2ud9PZIdO7o2UClkf5Hkw58=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-34-VIL9csxGNPyFAFLV-6XZ0Q-1; Tue, 18 Feb 2020 13:12:04 -0500
-Received: by mail-wr1-f69.google.com with SMTP id w6so11243938wrm.16
- for <qemu-arm@nongnu.org>; Tue, 18 Feb 2020 10:12:04 -0800 (PST)
+ (envelope-from <peter.maydell@linaro.org>) id 1j47Qj-0002Rl-Cw
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 13:17:10 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:33782)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j47Qj-0002Pf-70
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 13:17:09 -0500
+Received: by mail-ot1-x343.google.com with SMTP id w6so11254532otk.0
+ for <qemu-arm@nongnu.org>; Tue, 18 Feb 2020 10:17:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=1IU1z/lDGDjqG+SqTPFK48+J0dlcBWNFWyaGTdTIn+Y=;
+ b=IMOEfXBW1/AymufZSCU0E1TJjvP0pdJN27cX/ER8cmeSJ+CYBHawcV4vzfJoSfZcq+
+ aFurAGQETH0gKjeRXc8/B0d/DDRFTLu/kgEbTamL9RqmdasgGmRyf6rLyc48wx/TtBV9
+ 8Ungr/8xETk8h+YAiJYKP24ie4x7hiPsQsGHDQVs1HhU1kL1KM5aSB7L77bShp8alAsh
+ 4Quxkq3gZfYElzk2H6eklOCcLWOoKt9uNY9ifqUWr0tyAOLApEqkFRUHU98+WqHoCjsy
+ /Bs/mOzeKK9dUxnKsZ32yj2zxQUyr8QHi3UDqbq8WzNnQCmjMi5DbCP6yWeJSpH+ISmP
+ Tb/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=wML/uJ+u0MDichbvEgerDbC1wySMifI8PwyDwt83/9s=;
- b=Vi9qA2KL5RfW9kOKWbiuYF8DIFMweWEPVwbjcUiAKIiK+LdVS8G+dZzhrE/pUXrtoy
- 02RbT2+6NxVfBdWrRAYpo7+h93JfCLsiAPDr9p/dFBHCZxwz0CF1aVqbA1W8YJnrLa4J
- MTXq+LDUhzXWos1pP7quetEtssNVre310zqT3vP2bqJ8UrtfFzPktRoho/ar0pfvYfru
- v5z3rGjftasmRg+ToiwVNc1qub5q4AvVoJfVm29Uinv24Au0aCF/8OnbGVnwtDdcJJa8
- 3yMFtwA/dT1hhizI8rSU7HD14XCV1LfjGHZHIDq1NOqLBjvbG91hTnr+cf9AXCkBBg1R
- K/Yg==
-X-Gm-Message-State: APjAAAVoX/kEVOYbeTEaKTah5nPXWbVHcq/G8y6Gu3kE0CxI1N1DGRU7
- qnSBpdqOqVnPeGXATK6yI4t1i5xQTzTer/1XPmJV6mS9E06cyozSJ+J9OFQJsZXw42DHHQdG4Sl
- XDj+D/c0j8Z3tMRusHIwOkidl+oaP
-X-Received: by 2002:adf:fa50:: with SMTP id y16mr32281954wrr.204.1582049522915; 
- Tue, 18 Feb 2020 10:12:02 -0800 (PST)
-X-Received: by 2002:adf:fa50:: with SMTP id y16mr32281902wrr.204.1582049522527; 
- Tue, 18 Feb 2020 10:12:02 -0800 (PST)
+ :message-id:subject:to:cc;
+ bh=1IU1z/lDGDjqG+SqTPFK48+J0dlcBWNFWyaGTdTIn+Y=;
+ b=g4yxUoz2XhQZoAWCNYQzYJF8yBl+Mwm7XCROzgAL+XgklYwrzVzvP+kQ5b3Zw9onkG
+ d68JOzsXqKttzLfTO3SzY5LjjsLUomDkZzTKK6qPuAQeWv7GGYWJlMleyCjOoOUzlCRy
+ mOpuKKFLHbDT1PkWMO6nKnKNn44MUNc9vSAlki35amFkHVPboyaByqv2/swv5Fg/Ctd+
+ foP9l1PeUcjmTWxfU3ErZSqIopce+JtFsQknFXEOU2BBNMhjHlR6j/QGFycy5/QdlKdP
+ A4v1Tv0KeYDdhiFna/G/7kfNSJZ53O33jNlLKxg7WDihImkXSLSj8mvfA9oomALmQfmF
+ o/VA==
+X-Gm-Message-State: APjAAAUMg2jFKOPftkcjpiXaSXahnTJY0YQ4XgCexGsCJ3uRDKpvdMtB
+ VGWManP6Hql5ZHgTfqEjfQJu6dCAeJFVcTZlcIGYqA==
+X-Received: by 2002:a05:6830:1184:: with SMTP id
+ u4mr15946114otq.221.1582049827603; 
+ Tue, 18 Feb 2020 10:17:07 -0800 (PST)
 MIME-Version: 1.0
-References: <20200201204751.17810-1-f4bug@amsat.org>
- <CAL1e-=gLg0tDH8nKtC6W6jrooGbJ=iV=X1KXDBH--cTWOV-Jxg@mail.gmail.com>
-In-Reply-To: <CAL1e-=gLg0tDH8nKtC6W6jrooGbJ=iV=X1KXDBH--cTWOV-Jxg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Date: Tue, 18 Feb 2020 19:11:51 +0100
-Message-ID: <CAP+75-V__ACHRUWKb=U+B27Z9=FJ7_H6N_NTs=QpyDP59WK5Xw@mail.gmail.com>
-Subject: Re: [PATCH] tests/acceptance: Count multiple Tux logos displayed on
- framebuffer
-To: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-X-MC-Unique: VIL9csxGNPyFAFLV-6XZ0Q-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+References: <1581686212-9625-1-git-send-email-sai.pavan.boddu@xilinx.com>
+ <1581686212-9625-3-git-send-email-sai.pavan.boddu@xilinx.com>
+In-Reply-To: <1581686212-9625-3-git-send-email-sai.pavan.boddu@xilinx.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 18 Feb 2020 18:16:56 +0000
+Message-ID: <CAFEAcA9Bs9VuZNstbpF6Q2=MhVDN_HHMnUdwfOJSf7Qm9to2nw@mail.gmail.com>
+Subject: Re: [PATCH 2/3] cpu/a9mpcore: Add num priority bits property
+To: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,275 +105,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, Thomas Huth <huth@tuxfamily.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>, Cleber Rosa <crosa@redhat.com>,
- Leon Alrae <leon.alrae@imgtec.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Anthony Liguori <anthony@codemonkey.ws>,
+ =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O7efBum2sJWZ
+X-TUID: 60EQuy9E7Qa8
 
-Hi Aleksandar,
-
-On Tue, Feb 18, 2020 at 7:07 PM Aleksandar Markovic
-<aleksandar.m.mail@gmail.com> wrote:
-> On Saturday, February 1, 2020, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
->>
->> Add a test that verifies that each core properly displays the Tux
->> logo on the framebuffer device.
->>
->> We simply follow the OpenCV "Template Matching with Multiple Objects"
->> tutorial, replacing Lionel Messi by Tux:
->> https://docs.opencv.org/4.2.0/d4/dc6/tutorial_py_template_matching.html
->>
->> When OpenCV and NumPy are installed, this test can be run using:
->>
->>   $ avocado --show=3Dapp,framebuffer \
->>     run -t cpu:i6400 \
->>     tests/acceptance/machine_mips_malta.py
->>   JOB ID     : 54f3d8efd8674f289b8aa01a87f5d70c5814544c
->>   JOB LOG    : avocado/job-results/job-2020-02-01T20.52-54f3d8e/job.log
->>    (1/3) tests/acceptance/machine_mips_malta.py:MaltaMachineFramebuffer.=
-test_mips_malta_i6400_framebuffer_logo_1core:
->>   framebuffer: found Tux at position (x, y) =3D (0, 0)
->>   PASS (3.37 s)
->>    (2/3) tests/acceptance/machine_mips_malta.py:MaltaMachineFramebuffer.=
-test_mips_malta_i6400_framebuffer_logo_7cores:
->>   framebuffer: found Tux at position (x, y) =3D (0, 0)
->>   framebuffer: found Tux at position (x, y) =3D (88, 0)
->>   framebuffer: found Tux at position (x, y) =3D (176, 0)
->>   framebuffer: found Tux at position (x, y) =3D (264, 0)
->>   framebuffer: found Tux at position (x, y) =3D (352, 0)
->>   framebuffer: found Tux at position (x, y) =3D (440, 0)
->>   framebuffer: found Tux at position (x, y) =3D (528, 0)
->>   PASS (5.80 s)
->>    (3/3) tests/acceptance/machine_mips_malta.py:MaltaMachineFramebuffer.=
-test_mips_malta_i6400_framebuffer_logo_8cores:
->>   framebuffer: found Tux at position (x, y) =3D (0, 0)
->>   framebuffer: found Tux at position (x, y) =3D (88, 0)
->>   framebuffer: found Tux at position (x, y) =3D (176, 0)
->>   framebuffer: found Tux at position (x, y) =3D (264, 0)
->>   framebuffer: found Tux at position (x, y) =3D (352, 0)
->>   framebuffer: found Tux at position (x, y) =3D (440, 0)
->>   framebuffer: found Tux at position (x, y) =3D (528, 0)
->>   framebuffer: found Tux at position (x, y) =3D (616, 0)
->>   PASS (6.67 s)
->>   RESULTS    : PASS 3 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0=
- | CANCEL 0
->>   JOB TIME   : 16.79 s
->>
->> If the AVOCADO_CV2_SCREENDUMP_PNG_PATH environment variable is set, the
->> test will save the screenshot with matched squares to it.
->>
->> Test inspired by the following post:
->> https://www.mips.com/blog/how-to-run-smp-linux-in-qemu-on-a-mips64-relea=
-se-6-cpu/
->> Kernel built with the following Docker file:
->> https://github.com/philmd/qemu-testing-blob/blob/malta_i6400/mips/malta/=
-mips64el/Dockerfile
->>
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> ---
->> The resulting match can be visualised at https://pasteboard.co/ISIj6ZA.p=
-ng
->> Generated using:
->>
->>   $ AVOCADO_CV2_SCREENDUMP_PNG_PATH=3D/tmp/screendump_matched.png \
->>     avocado --show=3Dapp run -t cpu:i6400 \
->>     tests/acceptance/machine_mips_malta.py
->>   JOB ID     : 54f3d8efd8674f289b8aa01a87f5d70c5814544c
->>   JOB LOG    : avocado/job-results/job-2020-02-01T20.52-54f3d8e/job.log
->>    (1/3) tests/acceptance/machine_mips_malta.py:MaltaMachineFramebuffer.=
-test_mips_malta_i6400_framebuffer_logo_1core: PASS (3.37 s)
->>    (2/3) tests/acceptance/machine_mips_malta.py:MaltaMachineFramebuffer.=
-test_mips_malta_i6400_framebuffer_logo_7cores: PASS (5.80 s)
->>    (3/3) tests/acceptance/machine_mips_malta.py:MaltaMachineFramebuffer.=
-test_mips_malta_i6400_framebuffer_logo_8cores: PASS (6.67 s)
->>   RESULTS    : PASS 3 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0=
- | CANCEL 0
->>   JOB TIME   : 16.79 s
->> ---
+On Fri, 14 Feb 2020 at 13:21, Sai Pavan Boddu
+<sai.pavan.boddu@xilinx.com> wrote:
 >
+> Set number of priority bits property of gic as guided by machine
+> configuration.
 >
-> Reviewed-by: Aleksandar Markovic <amarkovic@wavecomp.com>
+> Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+> ---
+>  hw/cpu/a9mpcore.c         | 2 ++
+>  include/hw/cpu/a9mpcore.h | 1 +
+>  2 files changed, 3 insertions(+)
 >
-> I may add this file to yet another section in MAINTAINTERS (main MIPS tar=
-get section) (I'll do it while applying, no need to respin), since its impo=
-rtance is significant (tests MIPS' smp fearure).
-
-Hmm you mean the "MIPS TCG CPUs"? Yes why not.
-
+> diff --git a/hw/cpu/a9mpcore.c b/hw/cpu/a9mpcore.c
+> index 1f8bc8a..eb1e752 100644
+> --- a/hw/cpu/a9mpcore.c
+> +++ b/hw/cpu/a9mpcore.c
+> @@ -68,6 +68,7 @@ static void a9mp_priv_realize(DeviceState *dev, Error **errp)
+>      gicdev = DEVICE(&s->gic);
+>      qdev_prop_set_uint32(gicdev, "num-cpu", s->num_cpu);
+>      qdev_prop_set_uint32(gicdev, "num-irq", s->num_irq);
+> +    qdev_prop_set_uint32(gicdev, "num-prio-bits", s->n_prio_bits);
 >
-> Once again, a gorgeous test!
+>      /* Make the GIC's TZ support match the CPUs. We assume that
+>       * either all the CPUs have TZ, or none do.
+> @@ -167,6 +168,7 @@ static Property a9mp_priv_properties[] = {
+>       * Other boards may differ and should set this property appropriately.
+>       */
+>      DEFINE_PROP_UINT32("num-irq", A9MPPrivState, num_irq, 96),
+> +    DEFINE_PROP_UINT32("num-priority-bits", A9MPPrivState, n_prio_bits, 8),
+>      DEFINE_PROP_END_OF_LIST(),
 
-Thanks :)
+You should be able to just directly pass through the property
+from the GIC object by calling
+    object_property_add_alias(obj, "num-priority-bits", OBJECT(&s->gic),
+                              "num-priority-bits", &error_abort);
+at the end of a9mp_priv_initfn().
 
->
-> Aleksandar
->
->>
->>  MAINTAINERS                            |   1 +
->>  tests/acceptance/machine_mips_malta.py | 116 +++++++++++++++++++++++++
->>  2 files changed, 117 insertions(+)
->>  create mode 100644 tests/acceptance/machine_mips_malta.py
->>
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index 4ceb1ad882..65a3dfb564 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -983,6 +983,7 @@ F: hw/mips/mips_malta.c
->>  F: hw/mips/gt64xxx_pci.c
->>  F: include/hw/southbridge/piix.h
->>  F: tests/acceptance/linux_ssh_mips_malta.py
->> +F: tests/acceptance/machine_mips_malta.py
->>
->>  Mipssim
->>  M: Aleksandar Markovic <amarkovic@wavecomp.com>
->> diff --git a/tests/acceptance/machine_mips_malta.py b/tests/acceptance/m=
-achine_mips_malta.py
->> new file mode 100644
->> index 0000000000..2764143d15
->> --- /dev/null
->> +++ b/tests/acceptance/machine_mips_malta.py
->> @@ -0,0 +1,116 @@
->> +# Functional tests for the MIPS Malta board
->> +#
->> +# Copyright (c) Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> +#
->> +# This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
->> +# See the COPYING file in the top-level directory.
->> +#
->> +# SPDX-License-Identifier: GPL-2.0-or-later
->> +
->> +import os
->> +import gzip
->> +import logging
->> +
->> +from avocado import skipUnless
->> +from avocado_qemu import Test
->> +from avocado_qemu import wait_for_console_pattern
->> +from avocado.utils import archive
->> +
->> +
->> +NUMPY_AVAILABLE =3D True
->> +try:
->> +    import numpy as np
->> +except ImportError:
->> +    NUMPY_AVAILABLE =3D False
->> +
->> +CV2_AVAILABLE =3D True
->> +try:
->> +    import cv2
->> +except ImportError:
->> +    CV2_AVAILABLE =3D False
->> +
->> +
->> +@skipUnless(NUMPY_AVAILABLE, 'Python NumPy not installed')
->> +@skipUnless(CV2_AVAILABLE, 'Python OpenCV not installed')
->> +class MaltaMachineFramebuffer(Test):
->> +
->> +    timeout =3D 30
->> +
->> +    KERNEL_COMMON_COMMAND_LINE =3D 'printk.time=3D0 '
->> +
->> +    def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
->> +        """
->> +        Boot Linux kernel and check Tux logo is displayed on the frameb=
-uffer.
->> +        """
->> +        screendump_path =3D os.path.join(self.workdir, 'screendump.pbm'=
-)
->> +
->> +        kernel_url =3D ('https://github.com/philmd/qemu-testing-blob/ra=
-w/'
->> +                      'a5966ca4b5/mips/malta/mips64el/'
->> +                      'vmlinux-4.7.0-rc1.I6400.gz')
->> +        kernel_hash =3D '096f50c377ec5072e6a366943324622c312045f6'
->> +        kernel_path_gz =3D self.fetch_asset(kernel_url, asset_hash=3Dke=
-rnel_hash)
->> +        kernel_path =3D self.workdir + "vmlinux"
->> +        archive.gzip_uncompress(kernel_path_gz, kernel_path)
->> +
->> +        tuxlogo_url =3D ('https://github.com/torvalds/linux/raw/v2.6.12=
-/'
->> +                       'drivers/video/logo/logo_linux_vga16.ppm')
->> +        tuxlogo_hash =3D '3991c2ddbd1ddaecda7601f8aafbcf5b02dc86af'
->> +        tuxlogo_path =3D self.fetch_asset(tuxlogo_url, asset_hash=3Dtux=
-logo_hash)
->> +
->> +        self.vm.set_console()
->> +        kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
->> +                               'clocksource=3DGIC console=3Dtty0 consol=
-e=3DttyS0')
->> +        self.vm.add_args('-kernel', kernel_path,
->> +                         '-cpu', 'I6400',
->> +                         '-smp', '%u' % cpu_cores_count,
->> +                         '-vga', 'std',
->> +                         '-append', kernel_command_line)
->> +        self.vm.launch()
->> +        framebuffer_ready =3D 'Console: switching to colour frame buffe=
-r device'
->> +        wait_for_console_pattern(self, framebuffer_ready,
->> +                                 failure_message=3D'Kernel panic - not =
-syncing')
->> +        self.vm.command('human-monitor-command', command_line=3D'stop')
->> +        self.vm.command('human-monitor-command',
->> +                        command_line=3D'screendump %s' % screendump_pat=
-h)
->> +        logger =3D logging.getLogger('framebuffer')
->> +
->> +        match_threshold =3D 0.95
->> +        screendump_bgr =3D cv2.imread(screendump_path, cv2.IMREAD_COLOR=
-)
->> +        tuxlogo_bgr =3D cv2.imread(tuxlogo_path, cv2.IMREAD_COLOR)
->> +        result =3D cv2.matchTemplate(screendump_bgr, tuxlogo_bgr,
->> +                                   cv2.TM_CCOEFF_NORMED)
->> +        loc =3D np.where(result >=3D match_threshold)
->> +        tuxlogo_count =3D 0
->> +        h, w =3D tuxlogo_bgr.shape[:2]
->> +        debug_png =3D os.getenv('AVOCADO_CV2_SCREENDUMP_PNG_PATH')
->> +        for tuxlogo_count, pt in enumerate(zip(*loc[::-1]), start=3D1):
->> +            logger.debug('found Tux at position (x, y) =3D %s', pt)
->> +            cv2.rectangle(screendump_bgr, pt,
->> +                          (pt[0] + w, pt[1] + h), (0, 0, 255), 2)
->> +        if debug_png:
->> +            cv2.imwrite(debug_png, screendump_bgr)
->> +        self.assertGreaterEqual(tuxlogo_count, cpu_cores_count)
->> +
->> +    def test_mips_malta_i6400_framebuffer_logo_1core(self):
->> +        """
->> +        :avocado: tags=3Darch:mips64el
->> +        :avocado: tags=3Dmachine:malta
->> +        :avocado: tags=3Dcpu:i6400
->> +        """
->> +        self.do_test_i6400_framebuffer_logo(1)
->> +
->> +    def test_mips_malta_i6400_framebuffer_logo_7cores(self):
->> +        """
->> +        :avocado: tags=3Darch:mips64el
->> +        :avocado: tags=3Dmachine:malta
->> +        :avocado: tags=3Dcpu:i6400
->> +        """
->> +        self.do_test_i6400_framebuffer_logo(7)
->> +
->> +    def test_mips_malta_i6400_framebuffer_logo_8cores(self):
->> +        """
->> +        :avocado: tags=3Darch:mips64el
->> +        :avocado: tags=3Dmachine:malta
->> +        :avocado: tags=3Dcpu:i6400
->> +        """
->> +        self.do_test_i6400_framebuffer_logo(8)
->> --
->> 2.21.1
->>
->>
+Then you don't need to have a DEFINE_PROP* for it, or a field in
+the state struct, or manually pass the value on in realize.
 
+(We don't do this for the existing num-irq and num-cpu properties
+because in those cases this device itself needs to know the
+values, as well as passing them on to other devices under it.)
+
+thanks
+-- PMM

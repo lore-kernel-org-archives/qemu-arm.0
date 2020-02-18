@@ -1,172 +1,336 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6560592lfp;
-        Tue, 18 Feb 2020 13:51:03 -0800 (PST)
-X-Received: by 2002:a92:5e8b:: with SMTP id f11mr1436079ilg.178.1582062663657;
-        Tue, 18 Feb 2020 13:51:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582062663; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp6592075lfp;
+        Tue, 18 Feb 2020 14:33:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwwAJBZByz9X6zz/dD+6W/tX5mqE5gDC7nZpwKt1CarFWnQ0N9LThT7RnNGYa3BOdJkg/l6
+X-Received: by 2002:a05:620a:569:: with SMTP id p9mr21175408qkp.104.1582065191228;
+        Tue, 18 Feb 2020 14:33:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582065191; cv=none;
         d=google.com; s=arc-20160816;
-        b=ytuXNe53YURWF/JxlwSYtAW2Dlasf1WvUHxKQ52cGwV6C2eRQyIFj1HMFPg9EDvzp4
-         aPS0Rc4HZ4krEBmge+DC3ntUbfRAy8jfjIBWzm2dDRS8hd+rnlARx+UbnYsKI/+0tNLj
-         qujgZHLKES5VRizN26eAQHFPYL0EKIV/dfXJ1WDXDwZRSy/3v9D0foEn1Qtq9NQRlTmS
-         QyhvSOl286ttNzb+8+fARTz7DgMqF+EzobjExNzfseRipsClgWRWC0BTDwzPmahdnPe8
-         RbQL6c2jfMSba7klA5bv2Rt69uxcydODOp6WxU17ubTcKuKzrj3goZi62yS0MPVievZK
-         0q0A==
+        b=bMnaCA82LkDbdKVnBoA4w03hKV2P4o8mA9DS7D7XmW4C8IbFRpGf1Xvz9+D44B7+rS
+         rttuKwyryQ6d8giQKU8+AW4/RKRu2mEtkctHgj0FBd6HHCqGjBB9sZMeTNk+Xcu/aFBn
+         PCtu0ERnhTM7N55iTOL+QkYdERmpycqqVc6sPEfBOELu9kOU9y0rA9p9y/uDcogLuOUz
+         3/PXivzXhjzrzv8JgljTFbl4dMzWL2JppI4T6VPdwbgcC9tdmmcbqGjjjmtiLC5CUtPt
+         eq3HPtQOr+CRvJAy9qcdYBGN6oPgRR9qG/wyvwI6m+JKiB4EIDE3SdddJFWYhM6Bv7Ig
+         XjqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=sLeGUH5OxTikEsToDHR4WZF1TwQ6mWFhg6WtSprZEOs=;
-        b=MuH8/SMa9S6EDtSuHx4lK41ra4TPY/2LGqRRGHkBCDo5i9H1KgEH7fh4A0/661B4qn
-         bVBMwKOML1BzamZMlZYr8u/0vGkkMRh9aD90SeCRmWQ5ldh/OfMtxVlvY3MPK5oRelPh
-         0pZk+iwrg2jPSDWrb6pVSBXaF503WGLih2IkBovcxbRKMfK3S9KCxtWSXcUfEtm5ajt4
-         H1R1FPq/oOue/jDwS4ymIa4EtsLpzEiNngmki3OIOZW4n4K+2YxR4MlwNh200+68kvW3
-         OXAyhOVPovBha/HIG43f6H0YTYI9N8VJqmaey7ZZbpQg2IJ8QWXB1QJXiBHhSOfQa5rs
-         P76Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=PH57hqut1jKWd1MHIUY7LD2Vc7Fm11/Z0ViQLeEWljs=;
+        b=D+e84JLQt2twGhPMDNmv7/QRBTi43FeUrKetOLmVDvV6/oAnlPu/x5kBd+xfimVetr
+         DqfCKoK87CUHg35Z8vDLYeeDZ8yspdDPusmp8CFbapsPIik9MFQKIWVAZNOLO659JU9/
+         2MULGcbPb+fISSipH0jTMMZ2awO0mSyUv3dPMJ3uZD8z6zmnf7eK6TomWFzipxjSFbrC
+         A5csGVNM/HvL+ozwqrxFMN+26Mz7AnlrzckQDOJRmdUV2/navFJAjUa+wZuc6uY8JElX
+         M/TcrqBSby3t0X+3VrAcB92ovgDNySQkk3o0FpSV5a6NVM4+vDGtDwCaYV+IGZbtSocb
+         yPLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FUdNcz1U;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 22sor6453iof.132.2020.02.18.13.51.03
-        (Google Transport Security);
-        Tue, 18 Feb 2020 13:51:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nghk/pB/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e13si78101qtw.142.2020.02.18.14.33.11
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 18 Feb 2020 14:33:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FUdNcz1U;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=sLeGUH5OxTikEsToDHR4WZF1TwQ6mWFhg6WtSprZEOs=;
-        b=FUdNcz1U74pIM+a9s1p824eVm6jdT9t6q4mq5BThIcD8lCN3rW+bh+j4t3UOcaYD1n
-         O6j9mkqV6nOfAufWEFrHl7Ba6HmA3dDGGM8y/FvKOngC0/9TvpivssKyY2T0Q2ASBSW/
-         3z/oFkLeSzoE6pE0VedOakQ9TOPcd+xHpH2eUg+1wCjaelQDLVUkq21Bs+uyH0s/7o7m
-         FBmNHGrQF3h+Lz8I4GWaPhLSxYlMsLwReqPQsgcD0rzbYUjPREAsSs5+SurLTx6RUzN4
-         Smpr4/x0WYmObFhoIdJP7MG+cmvi/6JJTM5j5IdCdzr49zaj7UDb9/IbwE6UKPHMSYZd
-         P21A==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nghk/pB/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:42766 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j4BQU-0004rT-Lo
+	for alex.bennee@linaro.org; Tue, 18 Feb 2020 17:33:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39664)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1j4BQH-0004nJ-1T
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 17:32:58 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1j4BQF-00023F-5k
+ for qemu-arm@nongnu.org; Tue, 18 Feb 2020 17:32:56 -0500
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:39328)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1j4BQD-0001x9-EN; Tue, 18 Feb 2020 17:32:54 -0500
+Received: by mail-il1-x142.google.com with SMTP id f70so18800387ill.6;
+ Tue, 18 Feb 2020 14:32:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PH57hqut1jKWd1MHIUY7LD2Vc7Fm11/Z0ViQLeEWljs=;
+ b=nghk/pB/7ck/soqkn22e39mP8WwWXf700LZWd9wAZau8pS3GmNjq437pXlXCl2nWpV
+ aKW5vxjRmE44wE+IZ8SH33vVzoAx2w4MigLQUgpdz74MkMuxmwIbZ+Y5zARD/I90dvp0
+ 5OLmAXFSXiNvdKDnpzGFbE7QZE7/vYQwuQDs/pRuwCFkGwN0oTj5jOii397aKLhmamjU
+ ozFcuenO6x4Q9SIBv/lIWz3Ju8IMmUIcjl1ZxKyS/arYx6w2OeqxP8wDz1wUM1rREJKt
+ UTQo5cO+mwXYITQGX3Qy+jngCvblQb6bp4EqUUTyxcdmLLFjrs2fLdALb31TpZj8kWlp
+ jdSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=sLeGUH5OxTikEsToDHR4WZF1TwQ6mWFhg6WtSprZEOs=;
-        b=qr4vNbCkQGhqQovnavPbBxTDsAc2LmWqWDQrsuFPRDmy1X5V1X+cmFPF2P6eRXq6oG
-         SU664PqGQUGtOEqxIfNzKo/T2iVma1/w2hwK7B8bZT/TQuHnR1ZXI3LA/mfbocT+GYtn
-         Uo6/1v+qI3yIMGhfeItCENmHR90qPBXDNJb4KzeGYc6brZK1OuDGljzMuOoj6b7TDyr4
-         reYvHlps0FcSH2xDpN1S1tTbHuDomZD6YkFFLFUe3/1dF4UB6zPhKnxp+QqTBOkwmAsq
-         m8a75wfHlpySdZ9U7z/QNSCQR96lA2Rt7tHJJuhifMqb5O5sxkaCGNpUreogOMgvqfBe
-         xnrg==
-X-Gm-Message-State: APjAAAV3jIvcvu+N11IFmwtEmmn4OsSETvEplvnqqTRS3YVHEhKLsMUr
-	jycQvEpBfai5upOu7mFlkaar84flyqg8ZQ6XkFQ4Bw==
-X-Google-Smtp-Source: APXvYqx2A7Vp1eDnko0Yog2I4SnljG7i2qroy00gwc0P+43U2XutOdHCAKQMpxwGFU2Cd5Cv50FC14LTqFq7gt94IV4=
-X-Received: by 2002:a5d:8856:: with SMTP id t22mr16716548ios.217.1582062663091;
- Tue, 18 Feb 2020 13:51:03 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PH57hqut1jKWd1MHIUY7LD2Vc7Fm11/Z0ViQLeEWljs=;
+ b=lwK8kWb7KZemu6t/OyEeSC+x/wxLXgi1RITPlMCKdcwrGimc9jCwaCm021pjUg+heN
+ lYnH6RZUvbkQaZPFX2JzKsYaE5+Cs+ntyRbuAUYBjzEgvmLhlSg4L2vYZ0vnZfEmxtUS
+ en4IeD0yN9aNnUC1HpkcjTafZO2mGC7iXSZ9CTeWP68GmCCOxGshEU/KfLJR2Knib2tm
+ I164ANCmV6zyWsg3DtGULsX713pm1YXTQ0JYJ/XYKVdcZENUM38HAxBi4VNFIfJf6MFe
+ vTWgUSx3tH6fuu6Phe/JaxHn8K7gy2edTgTcD3R4cMAGcadmzq0nClVdK244FcoszYSn
+ +/Vg==
+X-Gm-Message-State: APjAAAUp5xG6J0FF5Tt+lKh64ni9FMXA0WD6hgyuinudCW1SUWJLaumm
+ YRTilfOMgxbP+vT1giSOGje6kby6SWc3B2ZWKTI=
+X-Received: by 2002:a92:d5cf:: with SMTP id d15mr20707569ilq.306.1582065170725; 
+ Tue, 18 Feb 2020 14:32:50 -0800 (PST)
 MIME-Version: 1.0
-References: <20200119005102.3847-1-nieklinnenbank@gmail.com>
- <CAPan3WpV2m9HXLXZDopKUb2EfX2KE9y530m2pJG4-D96==ggCg@mail.gmail.com>
- <ee95179f-c15f-9615-e241-80199e6948b7@redhat.com> <CAPan3WpG0yPu5sbS=mpHk=xNVGaqwWFrBcDBcovLLRit==5dwg@mail.gmail.com>
- <3aa04b23-80a8-21d1-7481-d52b6d8f88c1@redhat.com> <CAFEAcA-kNNWgLc8NxWgVJQk29BVr28j-A_d4M+8=7nfpTzhzcQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA-kNNWgLc8NxWgVJQk29BVr28j-A_d4M+8=7nfpTzhzcQ@mail.gmail.com>
+References: <20200217204812.9857-1-linux@roeck-us.net>
+ <1069ca0c-2902-1c76-d111-de6c6129b02b@redhat.com>
+In-Reply-To: <1069ca0c-2902-1c76-d111-de6c6129b02b@redhat.com>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Tue, 18 Feb 2020 22:50:52 +0100
-Message-ID: <CAPan3WpkFtEe-9TuaCNhW=Dz3VZHE=8qUVhJbhW9BrdiyoMkRQ@mail.gmail.com>
-Subject: Re: [PATCH v4 00/20] Add Allwinner H3 SoC and Orange Pi PC Machine
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Beniamino Galvani <b.galvani@gmail.com>, Jason Wang <jasowang@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Igor Mammedov <imammedo@redhat.com>
-Content-Type: multipart/alternative; boundary="0000000000000bcb51059ee0ab20"
-X-TUID: rEt9X9I1Po2H
+Date: Tue, 18 Feb 2020 23:32:38 +0100
+Message-ID: <CAPan3WrxkB+AAX27Qx3c6H+RQH3oYn6P-t4=bWDzjoUqf4nEEg@mail.gmail.com>
+Subject: Re: [PATCH v3 0/3] arm: allwinner: Wire up USB ports
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: multipart/alternative; boundary="0000000000008341b0059ee14063"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::142
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Guenter Roeck <linux@roeck-us.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IgO+nbVZV5Bk
 
---0000000000000bcb51059ee0ab20
+--0000000000008341b0059ee14063
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi Peter & Philippe,
+Hi Guenter, Philippe,
 
-On Tue, Feb 18, 2020 at 11:05 AM Peter Maydell <peter.maydell@linaro.org>
+On Tue, Feb 18, 2020 at 7:39 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
+com>
 wrote:
 
-> On Tue, 18 Feb 2020 at 06:46, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
-com>
-> wrote:
-> > IIRC from the specs, cards are block devices and the only alignment
-> > required is the size of a block (512KiB for your 4GiB card).
+> Cc'ing Niek.
 >
-> Isn't there something related to erase blocks too, which impose
-> a larger granularity than just a single block?
+> On 2/17/20 9:48 PM, Guenter Roeck wrote:
+> > Instantiate EHCI and OHCI controllers on Allwinner A10.
+> >
+> > The first patch in the series moves the declaration of EHCISysBusState
+> > from hcd-ohci.c to hcd-ohci.h. This lets us add the structure to
+> > AwA10State. Similar, TYPE_SYSBUS_OHCI is moved to be able to use it
+> > outside its driver.
+> >
+> > The second patch introduces the ehci-sysbus property "companion-enable"=
+.
+> > This lets us use object_property_set_bool() to enable companion mode.
+> >
+> > The third patch instantiates EHCI and OHCI ports for Allwinner-A10
+> > and marks the OHCI ports as companions of the respective EHCI ports.
+> >
+> > Tested by attaching various high speed and full speed devices, and by
+> > booting from USB drive.
+> >
+> > v3: Rebased to master
+> > v2: Add summary
+> >      Rewrite to instantiate OHCI in companion mode; add patch 2/3
+> >      Merge EHCI and OHCI instantiation into a single patch
+> >
+> > ----------------------------------------------------------------
+> > Guenter Roeck (3):
+> >        hw: usb: hcd-ohci: Move OHCISysBusState and TYPE_SYSBUS_OHCI to
+> include file
+> >        hcd-ehci: Introduce "companion-enable" sysbus property
+> >        arm: allwinner: Wire up USB ports
+> >
+> >   hw/arm/allwinner-a10.c         | 43
+> ++++++++++++++++++++++++++++++++++++++++++
+> >   hw/usb/hcd-ehci-sysbus.c       |  2 ++
+> >   hw/usb/hcd-ohci.c              | 15 ---------------
+> >   hw/usb/hcd-ohci.h              | 16 ++++++++++++++++
+> >   include/hw/arm/allwinner-a10.h |  6 ++++++
+> >   5 files changed, 67 insertions(+), 15 deletions(-)
+> >
 >
-> Anyway, in general the backing image for an SD card device
-> needs to be exactly the size of the SD card you're emulating,
-> because QEMU needs somewhere it can write back the data
-> if the guest decides to write to the last block on the card.
-> So short-length images generally don't work (true for all
-> block devices, not just SD cards, I think). This often bites users
-> if they're using some distro "here's a disk/sd card image file"
-> where the expected use with real hardware is "dd the image
-> file onto the SD card".
 >
+Thanks for contributing this! I was able to test & verify it on my local
+machine using latest Qemu master and linux 5.5.0.
+I just had to add the -usb flag to the Qemu command and re-compile linux
+with CONFIG_USB_STORAGE.
 
-Yes, the description you gave here is indeed the issue.
-And unfortunately in this particular case, the distro did not give a very
-understandable
-diagnostic error message.
+Output with buildroot on a USB mass storage disk as rootfs:
 
-Kind regards,
+++ ./arm-softmmu/qemu-system-arm -M cubieboard -kernel
+$HOME/cubie/linux.git/arch/arm/boot/zImage -nographic -append
+'console=3DttyS0,115200 earlyprintk debug rootwait root=3D/dev/sda ro
+init=3D/sbin/init' -dtb
+$HOME/cubie/linux.git/arch/arm/boot/dts/sun4i-a10-cubieboard.dtb -m 512 -s
+-usb -drive
+if=3Dnone,id=3Dstick,file=3D$HOME/cubie/buildroot-2019.11/output/images/roo=
+tfs.ext2
+-device usb-storage,bus=3Dusb-bus.1,drive=3Dstick -nic user
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 5.5.0-rc3 (me@host) (gcc version 7.4.0
+(Ubuntu/Linaro 7.4.0-1ubuntu1~18.04.1)) #6 SMP Tue Feb 18 23:21:36 CET 2020
+[    0.000000] CPU: ARMv7 Processor [410fc080] revision 0 (ARMv7),
+cr=3D10c5387d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT nonaliasing
+instruction cache
+[    0.000000] OF: fdt: Machine model: Cubietech Cubieboard
+[    0.000000] Memory policy: Data cache writeback
+...
+[    4.559154] random: fast init done
+[    5.481107] scsi 1:0:0:0: Direct-Access     QEMU     QEMU HARDDISK
+ 2.5+ PQ: 0 ANSI: 5
+[    5.493282] sd 1:0:0:0: Power-on or device reset occurred
+[    5.513539] sd 1:0:0:0: [sda] 122880 512-byte logical blocks: (62.9
+MB/60.0 MiB)
+[    5.521970] sd 1:0:0:0: [sda] Write Protect is off
+[    5.522683] sd 1:0:0:0: [sda] Mode Sense: 63 00 00 08
+[    5.524552] sd 1:0:0:0: [sda] Write cache: enabled, read cache: enabled,
+doesn't support DPO or FUA
+[    5.613064] sd 1:0:0:0: [sda] Attached SCSI disk
+[    5.681764] EXT4-fs (sda): INFO: recovery required on readonly filesyste=
+m
+[    5.682530] EXT4-fs (sda): write access will be enabled during recovery
+...
+[    6.129348] EXT4-fs (sda): re-mounted. Opts: (null)
+Starting syslogd: OK
+Starting klogd: OK
+Running sysctl: OK
+Initializing random number generator: OK
+Saving random seed: [    7.205617] random: dd: uninitialized urandom read
+(512 bytes read)
+OK
+Starting network: OK
+
+Welcome to Cubieboard2!
+Cubieboard2 login:
+
+
+Thanks!
+
+Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+
+Regards,
 Niek
-
-
->
-> thanks
-> -- PMM
->
 
 
 --=20
 Niek Linnenbank
 
---0000000000000bcb51059ee0ab20
+--0000000000008341b0059ee14063
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div>Hi Peter &amp; Philippe,<br></div><br><div class=3D"g=
-mail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Feb 18, 2020 at 1=
-1:05 AM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter=
-.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
-e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
-;padding-left:1ex">On Tue, 18 Feb 2020 at 06:46, Philippe Mathieu-Daud=C3=
-=A9 &lt;<a href=3D"mailto:philmd@redhat.com" target=3D"_blank">philmd@redha=
-t.com</a>&gt; wrote:<br>
-&gt; IIRC from the specs, cards are block devices and the only alignment<br=
+<div dir=3D"ltr"><div>Hi Guenter, Philippe,<br></div><br><div class=3D"gmai=
+l_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Feb 18, 2020 at 7:39=
+ AM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">ph=
+ilmd@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" s=
+tyle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pad=
+ding-left:1ex">Cc&#39;ing Niek.<br>
+<br></blockquote><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+On 2/17/20 9:48 PM, Guenter Roeck wrote:<br>
+&gt; Instantiate EHCI and OHCI controllers on Allwinner A10.<br>
+&gt; <br>
+&gt; The first patch in the series moves the declaration of EHCISysBusState=
+<br>
+&gt; from hcd-ohci.c to hcd-ohci.h. This lets us add the structure to<br>
+&gt; AwA10State. Similar, TYPE_SYSBUS_OHCI is moved to be able to use it<br=
 >
-&gt; required is the size of a block (512KiB for your 4GiB card).<br>
+&gt; outside its driver.<br>
+&gt; <br>
+&gt; The second patch introduces the ehci-sysbus property &quot;companion-e=
+nable&quot;.<br>
+&gt; This lets us use object_property_set_bool() to enable companion mode.<=
+br>
+&gt; <br>
+&gt; The third patch instantiates EHCI and OHCI ports for Allwinner-A10<br>
+&gt; and marks the OHCI ports as companions of the respective EHCI ports.<b=
+r>
+&gt; <br>
+&gt; Tested by attaching various high speed and full speed devices, and by<=
+br>
+&gt; booting from USB drive.<br>
+&gt; <br>
+&gt; v3: Rebased to master<br>
+&gt; v2: Add summary<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 Rewrite to instantiate OHCI in companion mode; add=
+ patch 2/3<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 Merge EHCI and OHCI instantiation into a single pa=
+tch<br>
+&gt; <br>
+&gt; ----------------------------------------------------------------<br>
+&gt; Guenter Roeck (3):<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 hw: usb: hcd-ohci: Move OHCISysBusState and=
+ TYPE_SYSBUS_OHCI to include file<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 hcd-ehci: Introduce &quot;companion-enable&=
+quot; sysbus property<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 arm: allwinner: Wire up USB ports<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0hw/arm/allwinner-a10.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| =
+43 ++++++++++++++++++++++++++++++++++++++++++<br>
+&gt;=C2=A0 =C2=A0hw/usb/hcd-ehci-sysbus.c=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0=
+ 2 ++<br>
+&gt;=C2=A0 =C2=A0hw/usb/hcd-ohci.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 | 15 ---------------<br>
+&gt;=C2=A0 =C2=A0hw/usb/hcd-ohci.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 | 16 ++++++++++++++++<br>
+&gt;=C2=A0 =C2=A0include/hw/arm/allwinner-a10.h |=C2=A0 6 ++++++<br>
+&gt;=C2=A0 =C2=A05 files changed, 67 insertions(+), 15 deletions(-)<br>
+&gt; <br>
 <br>
-Isn&#39;t there something related to erase blocks too, which impose<br>
-a larger granularity than just a single block?<br>
-<br>
-Anyway, in general the backing image for an SD card device<br>
-needs to be exactly the size of the SD card you&#39;re emulating,<br>
-because QEMU needs somewhere it can write back the data<br>
-if the guest decides to write to the last block on the card.<br>
-So short-length images generally don&#39;t work (true for all<br>
-block devices, not just SD cards, I think). This often bites users<br>
-if they&#39;re using some distro &quot;here&#39;s a disk/sd card image file=
-&quot;<br>
-where the expected use with real hardware is &quot;dd the image<br>
-file onto the SD card&quot;.<br></blockquote><div><br></div><div>Yes, the d=
-escription you gave here is indeed the issue.</div><div>And unfortunately i=
-n this particular case, the distro did not give a very understandable</div>=
-<div>diagnostic error message.</div><div><br></div><div>Kind regards,</div>=
-<div>Niek<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
+</blockquote></div><div><br></div><div>Thanks for contributing this! I was =
+able to test &amp; verify it on my local machine using latest Qemu master a=
+nd linux 5.5.0.</div><div>I just had to add the -usb flag to the Qemu comma=
+nd and re-compile linux with CONFIG_USB_STORAGE.</div><div><br></div><div>O=
+utput with buildroot on a USB mass storage disk as rootfs:<br></div><div><b=
+r></div><div>++ ./arm-softmmu/qemu-system-arm -M cubieboard -kernel $HOME/c=
+ubie/linux.git/arch/arm/boot/zImage -nographic -append &#39;console=3DttyS0=
+,115200 earlyprintk debug rootwait root=3D/dev/sda ro init=3D/sbin/init&#39=
+; -dtb $HOME/cubie/linux.git/arch/arm/boot/dts/sun4i-a10-cubieboard.dtb -m =
+512 -s -usb -drive if=3Dnone,id=3Dstick,file=3D$HOME/cubie/buildroot-2019.1=
+1/output/images/rootfs.ext2 -device usb-storage,bus=3Dusb-bus.1,drive=3Dsti=
+ck -nic user<br>[ =C2=A0 =C2=A00.000000] Booting Linux on physical CPU 0x0<=
+br>[ =C2=A0 =C2=A00.000000] Linux version 5.5.0-rc3 (me@host) (gcc version =
+7.4.0 (Ubuntu/Linaro 7.4.0-1ubuntu1~18.04.1)) #6 SMP Tue Feb 18 23:21:36 CE=
+T 2020<br>[ =C2=A0 =C2=A00.000000] CPU: ARMv7 Processor [410fc080] revision=
+ 0 (ARMv7), cr=3D10c5387d<br>[ =C2=A0 =C2=A00.000000] CPU: PIPT / VIPT nona=
+liasing data cache, VIPT nonaliasing instruction cache<br>[ =C2=A0 =C2=A00.=
+000000] OF: fdt: Machine model: Cubietech Cubieboard<br>[ =C2=A0 =C2=A00.00=
+0000] Memory policy: Data cache writeback<br></div><div>...<br></div><div>[=
+ =C2=A0 =C2=A04.559154] random: fast init done<br>[ =C2=A0 =C2=A05.481107] =
+scsi 1:0:0:0: Direct-Access =C2=A0 =C2=A0 QEMU =C2=A0 =C2=A0 QEMU HARDDISK =
+=C2=A0 =C2=A02.5+ PQ: 0 ANSI: 5<br>[ =C2=A0 =C2=A05.493282] sd 1:0:0:0: Pow=
+er-on or device reset occurred<br>[ =C2=A0 =C2=A05.513539] sd 1:0:0:0: [sda=
+] 122880 512-byte logical blocks: (62.9 MB/60.0 MiB)<br>[ =C2=A0 =C2=A05.52=
+1970] sd 1:0:0:0: [sda] Write Protect is off<br>[ =C2=A0 =C2=A05.522683] sd=
+ 1:0:0:0: [sda] Mode Sense: 63 00 00 08<br>[ =C2=A0 =C2=A05.524552] sd 1:0:=
+0:0: [sda] Write cache: enabled, read cache: enabled, doesn&#39;t support D=
+PO or FUA<br>[ =C2=A0 =C2=A05.613064] sd 1:0:0:0: [sda] Attached SCSI disk<=
+br>[ =C2=A0 =C2=A05.681764] EXT4-fs (sda): INFO: recovery required on reado=
+nly filesystem<br>[ =C2=A0 =C2=A05.682530] EXT4-fs (sda): write access will=
+ be enabled during recovery<br></div><div>...</div><div>[ =C2=A0 =C2=A06.12=
+9348] EXT4-fs (sda): re-mounted. Opts: (null)<br>Starting syslogd: OK<br>St=
+arting klogd: OK<br>Running sysctl: OK<br>Initializing random number genera=
+tor: OK<br>Saving random seed: [ =C2=A0 =C2=A07.205617] random: dd: uniniti=
+alized urandom read (512 bytes read)<br>OK<br>Starting network: OK<br><br>W=
+elcome to Cubieboard2!<br>Cubieboard2 login:</div><div><br></div><div><br><=
+/div><div>Thanks!</div><div><br></div><div>Tested-by: Niek Linnenbank &lt;<=
+a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;=
+</div><div><br></div><div>Regards,</div><div>Niek<br></div><div><br></div><=
+div><br></div>-- <br><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D=
+"ltr"><div>Niek Linnenbank<br><br></div></div></div></div>
 
---0000000000000bcb51059ee0ab20--
+--0000000000008341b0059ee14063--

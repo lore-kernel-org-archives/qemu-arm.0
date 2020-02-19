@@ -1,79 +1,102 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp119278lfp;
-        Tue, 18 Feb 2020 21:39:52 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwaefXdGX0ME8IwbLcybENU8W0FEcsAsgiylIN05Y5n+gAfWuwTo0OokSnW7+Cqx6yri5uY
-X-Received: by 2002:ac8:5208:: with SMTP id r8mr20712821qtn.131.1582090791929;
-        Tue, 18 Feb 2020 21:39:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582090791; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp216952lfp;
+        Wed, 19 Feb 2020 00:03:43 -0800 (PST)
+X-Google-Smtp-Source: APXvYqygKhe8goRtxEt3SV26pvvEn3r1SNb0sdopUFAeyvVqgCiG3sjIQqh8fTk9gSoZrPiomhaz
+X-Received: by 2002:a05:6214:11ab:: with SMTP id u11mr18912161qvv.193.1582099423067;
+        Wed, 19 Feb 2020 00:03:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582099423; cv=none;
         d=google.com; s=arc-20160816;
-        b=0NAMJmqZ+ezYEDmeiaSPSjLMHhJ+H2DKKsA7YkwKSW4MYZXWRXkHKowmuGYc1fXiVZ
-         S8v690pldrDdEltm991fVymU27KNS8/L/j14pFUI7k4faQKZZv0KFEgHfNwfE3j2/MPN
-         ZWoW5sTgZ3/gpfrVMYYDFSnA89i8wB02QqNe0VCh89Rxzvi6dGhO6x2u0v0+5uSNh+vx
-         2/4hm2NBZmWvJ6QTwPSBihN7yBm6C2kxIehOYXI8MP9u25OJAlGszUeacuX7c98e+/6p
-         OO3POEHKiRsz/J1i3Jo/2Dp343WZAUhG/+QwFTsJYyhRIdbcJdtx9PiGQSAaxxaW8A+8
-         nwOA==
+        b=I7pJVJ5tMQtxp0VpcJib6lesLtHrNbJjhi2X+/6clwHI150+sYxGgNps4Tb5ZjV3He
+         /2QLj2XfZtwoigVERsYA7SId8aTwO6wGaT0JxOeLTNrzEqYeSg6R4Wp6+R4Sf/oHnePC
+         Vt/u/t1Fs9y4yEylznhe7d70cqz2uPI3vayemO2QLw0MPSn8fskxZfSCAmS10ySuOFuI
+         nT5C1HXWCs+kfvOwc/TZUZ1g5vZLlVKvNWp4Iov7v51ffeVzODls5vUrKpq8uO33Q5Rg
+         XZ2SkIVdDbXtQeZmyfUJGQv5hQfMYM/0dO6A9IXzluFxYMGRNocXfKWQUggX416sMzm7
+         UHSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=WlPV3+jNYYOuY1TkZNpjt+QDv0r2ASQkdsh635MOKKs=;
-        b=sVtM32mOzCvYTYJ/ONPIUdnpUNGyKqo0uPlVqNPZBPqzkuOGiLpee/LLQA6YAjNG4T
-         HU1eHOf04HWBNomCd9CHlKD6WvXrXHJpf+1qkVnwG+mATC+P4UT73JDlbaBng6Zv1xKD
-         lH4VB3kSnTYxBr1FZUr8SdMYsFxLScIA6CdO+cW8Mr4ItL5u31ZRsVHrZU9hcunT2QCT
-         wylLNXm6mSDVsFzedsxExLJbEvr77c+GquqbSZq9tN8r1AkCI5czWq+i99/pXCUTQhGH
-         VAaP0fx9kujxBloQ9uWxWufgNTsK6NTw6kN7BCHxTDG7JApGClPUYZdIedr1jlwxpS1Q
-         ya3A==
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :to:from:date:dkim-signature;
+        bh=2LloX7+4M/tjlcfg9e1Kh0OTXVnze72CnS/Un//xLp8=;
+        b=BXrvOun4cBihjOdC1B4Bra8qlzZKo5GCZWfX2jSowfIsUx9Zb/KAkvObsbfvtRWvhI
+         Crjd01m7meceZK6piZtTC3gEutvF0/Yg273wcl63IXJtjJCMQiLpcIHyaQ0juEx+63i9
+         ZqdMwQVmhnW0rLO6tMZZKuNJzQl9n2cmXts5jM+++hala5QCtYS4jlEC1kIRMaol06Oa
+         b8f9ZoznTqxldXIQ4d//QtsX2GlcVkdxSzrXy0+F/us9/oXqhkFhmcyOFCNwO4FyAuwQ
+         vHIPqCt+R9Ghs08oY1T60Zz3RIN00wF8vSHKXFuwA6aNmCkJUwQoPqU8/Cvr9AlX5b70
+         imDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@kernel.org header.s=default header.b=LSmT5uO1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u15si453698qtv.103.2020.02.18.21.39.51
+        by mx.google.com with ESMTPS id 22si557466qkj.74.2020.02.19.00.03.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Feb 2020 21:39:51 -0800 (PST)
+        Wed, 19 Feb 2020 00:03:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45982 helo=lists1p.gnu.org)
+       dkim=fail header.i=@kernel.org header.s=default header.b=LSmT5uO1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:46938 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j4I5P-0005C7-D6
-	for alex.bennee@linaro.org; Wed, 19 Feb 2020 00:39:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46417)
+	id 1j4KKc-0003YY-Fx
+	for alex.bennee@linaro.org; Wed, 19 Feb 2020 03:03:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54849)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <zhukeqian1@huawei.com>) id 1j4I5G-0005Ba-Al
- for qemu-arm@nongnu.org; Wed, 19 Feb 2020 00:39:43 -0500
+ (envelope-from <maz@kernel.org>) id 1j4KKT-0003VZ-Eh
+ for qemu-arm@nongnu.org; Wed, 19 Feb 2020 03:03:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <zhukeqian1@huawei.com>) id 1j4I5F-0007WF-BV
- for qemu-arm@nongnu.org; Wed, 19 Feb 2020 00:39:42 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:56612 helo=huawei.com)
+ (envelope-from <maz@kernel.org>) id 1j4KKR-0004Dq-Cj
+ for qemu-arm@nongnu.org; Wed, 19 Feb 2020 03:03:33 -0500
+Received: from mail.kernel.org ([198.145.29.99]:37006)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
- id 1j4I5F-0007VC-00; Wed, 19 Feb 2020 00:39:41 -0500
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 8BAA0F32D9837593EF5A;
- Wed, 19 Feb 2020 13:39:38 +0800 (CST)
-Received: from [127.0.0.1] (10.173.221.230) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0;
- Wed, 19 Feb 2020 13:39:29 +0800
-Subject: Re: [PATCH] migration/throttle: Make throttle slower at tail stage
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-References: <20200214032700.25011-1-zhukeqian1@huawei.com>
- <20200214122810.GE3283@work-vm>
-From: zhukeqian <zhukeqian1@huawei.com>
-Message-ID: <9c4ea6f9-0fe9-19ae-964d-a01799879f54@huawei.com>
-Date: Wed, 19 Feb 2020 13:39:29 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.1
+ (Exim 4.71) (envelope-from <maz@kernel.org>)
+ id 1j4KKR-0004Cz-4K; Wed, 19 Feb 2020 03:03:31 -0500
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id A407621D56;
+ Wed, 19 Feb 2020 08:03:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1582099409;
+ bh=XKvbxnqDqqgvnETocVfhNBfhZu4quZNZYHFCf1GaV5M=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=LSmT5uO12PELk4nf7D77qtk0gbfe2ugUofQrtDm/70DnKFt/rNRNKfgkdIWJvBejU
+ Sr3UqQWPVun1bgZ3YHMx7QrIgqxRCYM2HQsgOZ7z2pn3JS5KxMSmIv0Rf5yJhCsRwM
+ pQPL9IRsjNg1VPhFSnMEYBAHKkz1kFe313dfeom8=
+Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
+ helo=why) by disco-boy.misterjones.org with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <maz@kernel.org>)
+ id 1j4KKN-006S6Z-VQ; Wed, 19 Feb 2020 08:03:28 +0000
+Date: Wed, 19 Feb 2020 08:03:26 +0000
+From: Marc Zyngier <maz@kernel.org>
+To: Gavin Shan <gshan@redhat.com>
+Subject: Re: [PATCH v4 1/3] target/arm: Support SError injection
+Message-ID: <20200219080326.05d552ef@why>
+In-Reply-To: <459ada75-b055-b2e2-ba5b-851f76c17f62@redhat.com>
+References: <20200218020416.50244-1-gshan@redhat.com>
+ <20200218020416.50244-2-gshan@redhat.com>
+ <60f0303b0c8d3f9a124c2e5c25814de3@kernel.org>
+ <459ada75-b055-b2e2-ba5b-851f76c17f62@redhat.com>
+Organization: Approximate
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <20200214122810.GE3283@work-vm>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.173.221.230]
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-SA-Exim-Connect-IP: 62.31.163.78
+X-SA-Exim-Rcpt-To: gshan@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, richard.henderson@linaro.org, pbonzini@redhat.com,
+ aik@ozlabs.ru, drjones@redhat.com, eric.auger@redhat.com, jthierry@redhat.com,
+ shan.gavin@gmail.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.32
+X-Received-From: 198.145.29.99
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,55 +108,315 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- wanghaibin.wang@huawei.com, Eric Blake <eblake@redhat.com>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, jthierry@redhat.com,
+ aik@ozlabs.ru, richard.henderson@linaro.org, qemu-devel@nongnu.org,
+ eric.auger@redhat.com, qemu-arm@nongnu.org, shan.gavin@gmail.com,
+ pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ey/169xkmjLw
+X-TUID: 4JuDv+3LwgS/
 
+On Wed, 19 Feb 2020 10:09:39 +1100
+Gavin Shan <gshan@redhat.com> wrote:
 
+> Hi Marc,
+>=20
+> On 2/19/20 3:28 AM, Marc Zyngier wrote:
+> > On 2020-02-18 02:04, Gavin Shan wrote: =20
+> >> This supports SError injection, which will be used by "virt" board to
+> >> simulating the behavior of NMI injection in next patch. As Peter Mayde=
+ll
+> >> suggested, this adds a new interrupt (ARM_CPU_SERROR), which is parall=
+el
+> >> to CPU_INTERRUPT_HARD. The backend depends on if kvm is enabled or not.
+> >> kvm_vcpu_ioctl(cpu, KVM_SET_VCPU_EVENTS) is leveraged to inject SError
+> >> or data abort to guest. When TCG is enabled, the behavior is simulated
+> >> by injecting SError and data abort to guest. =20
+> >=20
+> > s/and/or/ (you can't inject both at the same time).
+> >  =20
+>=20
+> Absolutely, will be corrected in v5, which will be hold. I hope to receive
+> comments from Peter and Richard before going to do another respin :)
 
-On 2020/2/14 20:28, Dr. David Alan Gilbert wrote:
-> * Keqian Zhu (zhukeqian1@huawei.com) wrote:
->> At the tail stage of throttle, VM is very sensitive to
->> CPU percentage. We just throttle 30% of remaining CPU
->> when throttle is more than 80 percentage.
-> 
-> This is a bit unusual;  all of the rest of the throttling has no
-> fixed constants; all values are set by parameters.
-> 
-> You've got the two, the '80' and the '0.3'
-> 
-> I thinkt he easy solution is to replace your parameter 'tailslow' by two
-> new parameters; 'tailstart' and 'tailrate';  both defaulting to 100%.
-> 
-> Then you make it:
-> 
->         if (cpu_throttle_now >= pct_tailstart) {
->             /* Eat some scale of CPU from remaining */
->             cpu_throttle_inc = ceil((100 - cpu_throttle_now) * pct_tailrate);
-> 
-> (with percentage scaling added).
-> 
-> Then setting 'tailstart' to 80 and 'tailrate' to 30 is equivalent to
-> what you have, but means we have no magical constants in the code.
-> 
-Yes, this is a good suggestion. Though this patch is not the final idea,
-I will apply it when throttle approach is decided.
-> Dave
-> 
-> 
-[...]
->> -- 
->> 2.19.1
->>
-> --
-> Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-> 
-> 
-> .
-> 
-Thanks,
-Keqian
+Sure, there is no hurry at all.
 
+>=20
+> >>
+> >> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> >> ---
+> >> =C2=A0target/arm/cpu.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 69 ++++++++++++=
+++++++++++++++++++++ =20
+> +++--------
+> >> =C2=A0target/arm/cpu.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 20 ++++++++-----
+> >> =C2=A0target/arm/helper.c=C2=A0=C2=A0 | 12 ++++++++
+> >> =C2=A0target/arm/m_helper.c |=C2=A0 8 +++++
+> >> =C2=A0target/arm/machine.c=C2=A0 |=C2=A0 3 +-
+> >> =C2=A05 files changed, 91 insertions(+), 21 deletions(-)
+> >>
+> >> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> >> index de733aceeb..e5750080bc 100644
+> >> --- a/target/arm/cpu.c
+> >> +++ b/target/arm/cpu.c
+> >> @@ -78,7 +78,7 @@ static bool arm_cpu_has_work(CPUState *cs)
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 && cs->interrupt_requ=
+est &
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (CPU_INTERRUPT_FIQ | =
+CPU_INTERRUPT_HARD
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | CPU_INTERRUPT=
+_VFIQ | CPU_INTERRUPT_VIRQ
+> >> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | CPU_INTERRUPT_EXIT=
+TB);
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | CPU_INTERRUPT_SERR=
+OR | CPU_INTERRUPT_EXITTB) =20
+> ;
+> >> =C2=A0}
+> >>
+> >> =C2=A0void arm_register_pre_el_change_hook(ARMCPU *cpu, ARMELChangeHoo=
+kFn * =20
+> hook,
+> >> @@ -449,6 +449,9 @@ static inline bool arm_excp_unmasked(CPUState *cs,
+> >> unsigned int excp_idx,
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 return false;
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return !(env->daif & =
+PSTATE_I);
+> >> +=C2=A0=C2=A0=C2=A0 case EXCP_SERROR:
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pstate_unmasked =3D !(env->daif =
+& PSTATE_A);
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break; =20
+> >=20
+> > nit: Consider keeping the physical interrupts together, as they are clo=
+se =20
+> ly
+> > related.
+> >  =20
+>=20
+> Sorry, I didn't get the point. Maybe you're suggesting something like bel=
+ow
+> ?
+> If yes, I'm not sure if it's necessary.
+>=20
+>      pstate_unmasked =3D !(env->daif & (PSTATE_A | PSTATE_I));
+>=20
+> I think PSTATE_A is enough to mask out SError according to ARMv8 architec=
+tu
+> re
+> reference manual (D1.7), as below:
+>=20
+>     A, I, F Asynchronous exception mask bits:
+>     A
+>        SError interrupt mask bit.
+>     I
+>        IRQ interrupt mask bit.
+>     F
+>        FIQ interrupt mask bit.
+
+No, all I'm suggesting is that you keep the cases for IRQ, FIQ and
+SError close together in the switch statement, instead of placing
+SError after the virtual interrupts. Given that they use the same code
+pattern, it makes sense to order them this way. But as I said, this is
+a nit, and not something that affects the outcome of this code.
+
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 default:
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_assert_not_reached(=
+);
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 }
+> >> @@ -538,6 +541,15 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int
+> >> interrupt_request)
+> >>
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 /* The prioritization of interrupts is IMPLEM=
+ENTATION DEFIN =20
+> ED. */
+> >>
+> >> +=C2=A0=C2=A0=C2=A0 if (interrupt_request & CPU_INTERRUPT_SERROR) {
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 excp_idx =3D EXCP_SERROR;
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 target_el =3D arm_phys_exc=
+p_target_el(cs, excp_id =20
+> x, cur_el, secure);
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (arm_excp_unmasked(cs, =
+excp_idx, target_el,
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =20
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 cur_el, secure, hcr_el2)) {
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 go=
+to found;
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+> >> +=C2=A0=C2=A0=C2=A0 }
+> >> +
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 if (interrupt_request & CPU_INTERRUPT_FIQ) {
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 excp_idx =3D EXCP_FIQ;
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 target_el =3D arm_phy=
+s_excp_target_el(cs, excp_ =20
+> idx, cur_el, secure);
+> >> @@ -570,6 +582,7 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int
+> >> interrupt_request)
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 goto found;
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 }
+> >> +
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 return false;
+> >>
+> >> =C2=A0 found:
+> >> @@ -585,7 +598,7 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState
+> >> *cs, int interrupt_request)
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 CPUClass *cc =3D CPU_GET_CLASS(cs);
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 ARMCPU *cpu =3D ARM_CPU(cs);
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 CPUARMState *env =3D &cpu->env;
+> >> -=C2=A0=C2=A0=C2=A0 bool ret =3D false;
+> >> +=C2=A0=C2=A0=C2=A0 uint32_t excp_idx;
+> >>
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 /* ARMv7-M interrupt masking works differentl=
+y than -A or - =20
+> R.
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * There is no FIQ/IRQ distinction. Inst=
+ead of I and F bi =20
+> ts
+> >> @@ -594,13 +607,26 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState
+> >> *cs, int interrupt_request)
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * (which depends on state like BASEPRI,=
+ FAULTMASK and th =20
+> e
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * currently active exception).
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
+> >> -=C2=A0=C2=A0=C2=A0 if (interrupt_request & CPU_INTERRUPT_HARD
+> >> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 && (armv7m_nvic_can_take_p=
+ending_exception(env->n =20
+> vic))) {
+> >> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 cs->exception_index =3D EX=
+CP_IRQ;
+> >> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 cc->do_interrupt(cs);
+> >> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D true;
+> >> +=C2=A0=C2=A0=C2=A0 if (!armv7m_nvic_can_take_pending_exception(env->n=
+vic)) {
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return false;
+> >> +=C2=A0=C2=A0=C2=A0 }
+> >> +
+> >> +=C2=A0=C2=A0=C2=A0 if (interrupt_request & CPU_INTERRUPT_SERROR) {
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 excp_idx =3D EXCP_SERROR;
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 goto found;
+> >> +=C2=A0=C2=A0=C2=A0 }
+> >> +
+> >> +=C2=A0=C2=A0=C2=A0 if (interrupt_request & CPU_INTERRUPT_HARD) {
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 excp_idx =3D EXCP_IRQ;
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 goto found;
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 }
+> >> -=C2=A0=C2=A0=C2=A0 return ret;
+> >> +
+> >> +=C2=A0=C2=A0=C2=A0 return false;
+> >> +
+> >> +found:
+> >> +=C2=A0=C2=A0=C2=A0 cs->exception_index =3D excp_idx;
+> >> +=C2=A0=C2=A0=C2=A0 cc->do_interrupt(cs);
+> >> +=C2=A0=C2=A0=C2=A0 return true;
+> >> =C2=A0}
+> >> =C2=A0#endif
+> >>
+> >> @@ -656,7 +682,8 @@ static void arm_cpu_set_irq(void *opaque, int irq,
+> >> int level)
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [ARM_CPU_IRQ] =3D CPU=
+_INTERRUPT_HARD,
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [ARM_CPU_FIQ] =3D CPU=
+_INTERRUPT_FIQ,
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [ARM_CPU_VIRQ] =3D CP=
+U_INTERRUPT_VIRQ,
+> >> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [ARM_CPU_VFIQ] =3D CPU_INT=
+ERRUPT_VFIQ
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [ARM_CPU_VFIQ] =3D CPU_INT=
+ERRUPT_VFIQ,
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [ARM_CPU_SERROR] =3D CPU_I=
+NTERRUPT_SERROR,
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 };
+> >>
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 if (level) {
+> >> @@ -676,6 +703,7 @@ static void arm_cpu_set_irq(void *opaque, int irq,
+> >> int level)
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 case ARM_CPU_IRQ:
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 case ARM_CPU_FIQ:
+> >> +=C2=A0=C2=A0=C2=A0 case ARM_CPU_SERROR:
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (level) {
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 cpu_interrupt(cs, mask[irq]);
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
+> >> @@ -693,8 +721,10 @@ static void arm_cpu_kvm_set_irq(void *opaque, int
+> >> irq, int level)
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 ARMCPU *cpu =3D opaque;
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 CPUARMState *env =3D &cpu->env;
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 CPUState *cs =3D CPU(cpu);
+> >> +=C2=A0=C2=A0=C2=A0 struct kvm_vcpu_events events;
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 uint32_t linestate_bit;
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 int irq_id;
+> >> +=C2=A0=C2=A0=C2=A0 bool inject_irq =3D true;
+> >>
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 switch (irq) {
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 case ARM_CPU_IRQ:
+> >> @@ -705,6 +735,14 @@ static void arm_cpu_kvm_set_irq(void *opaque, int
+> >> irq, int level)
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 irq_id =3D KVM_ARM_IR=
+Q_CPU_FIQ;
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 linestate_bit =3D CPU=
+_INTERRUPT_FIQ;
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+> >> +=C2=A0=C2=A0=C2=A0 case ARM_CPU_SERROR:
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!kvm_has_vcpu_events()=
+) {
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 re=
+turn;
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+> >> +
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 inject_irq =3D false;
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 linestate_bit =3D CPU_INTE=
+RRUPT_SERROR;
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 default:
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_assert_not_reached(=
+);
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 }
+> >> @@ -714,7 +752,14 @@ static void arm_cpu_kvm_set_irq(void *opaque, int
+> >> irq, int level)
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 } else {
+> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 env->irq_line_state &=
+=3D ~linestate_bit;
+> >> =C2=A0=C2=A0=C2=A0=C2=A0 }
+> >> -=C2=A0=C2=A0=C2=A0 kvm_arm_set_irq(cs->cpu_index, KVM_ARM_IRQ_TYPE_CP=
+U, irq_id, !!level);
+> >> +
+> >> +=C2=A0=C2=A0=C2=A0 if (inject_irq) { =20
+> >=20
+> > You could just have (linestate_bit !=3D CPU_INTERRUPT_SERROR) here, and=
+ n =20
+> ot have
+> > inject_irq at all.
+> >  =20
+>=20
+> Sure, will be improved in v5.
+>=20
+> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 kvm_arm_set_irq(cs->cpu_in=
+dex, KVM_ARM_IRQ_TYPE_C =20
+> PU, irq_id, !!level);
+> >> +=C2=A0=C2=A0=C2=A0 } else if (level) { =20
+> >=20
+> > Is there any case where you'd call this function with a SError and leve=
+l =3D=3D 0?
+> > And even if it happens, you could exit early in the above switch statem=
+en =20
+> t.
+> >  =20
+>=20
+> The combination of SError and level =3D=3D 0 isn't existing for now,
+> meaning the SError is always coming with level =3D=3D 1. We can't exit
+> early in above s witch statement because env->irq_line_state needs to
+> be updated accordingly.
+
+I'm not sure level=3D=3D0 makes much sense. A common implementation of
+SError is as an edge interrupt (it is consumed by being handled, and
+you can't "retire" it). I'm not familiar enough with QEMU's interrupt
+delivery mechanism, but I'd expect SError to differ significantly from
+IRQ/FIQ in that respect.
+
+	M.
+--=20
+Jazz is not dead. It just smells funny...

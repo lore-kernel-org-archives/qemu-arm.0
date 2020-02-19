@@ -1,85 +1,85 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp318183lfp;
-        Wed, 19 Feb 2020 02:19:07 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyArZMXtf3pNJpYGRDweaUCDjGs0QaeB18bUFcqVAXbIxbq/ZgUTr6grXwmxMtj2u+DyN6R
-X-Received: by 2002:a37:a12:: with SMTP id 18mr23488207qkk.249.1582107547073;
-        Wed, 19 Feb 2020 02:19:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582107547; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp318386lfp;
+        Wed, 19 Feb 2020 02:19:26 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx7jMcVOY9SO6pVB/10gFWcIjE1ue3eDR799tgIxSKWVmixmDC0Z4MahK4pclIz8ZXBJxVQ
+X-Received: by 2002:a05:620a:1436:: with SMTP id k22mr22495616qkj.24.1582107565987;
+        Wed, 19 Feb 2020 02:19:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582107565; cv=none;
         d=google.com; s=arc-20160816;
-        b=S/JaycjW569K8itFMONSvpuvRxXoBH4T3j8wDlsWadNzl2C9/Cx0fqeZHHUqb6fx7f
-         qydTQG55dHIzHYLX47we8m1Jx+1udW1RjPufCVTk//UeURa25DQ1Ey6aoMBwk0iAhRdu
-         TnKAJo5mbXmyG6AcuSjhgar1syigDaO/NoDe3tJ7SMgsQE/MexIXv+qeWXcPgJslJWa8
-         +MlSjWS4r1MzL1STJXVfAbzlymiCTC7noOCJRIfBsNRgHyMrBtTUDQ5Qf72Ty4hMszlF
-         tyVS/zcUlqJf6DaKpMa79ydUxl7P854hMZqR5Rv36SSI47UE+0IJLQEu6er9EhTHEZiJ
-         uYDw==
+        b=pzZc8l8VhYewnsBAbMZfR23gHhTED6ZqHPZqcqxwR6UCO175X2DuStmhTEhKORY/ne
+         JT2cpCPz1TiIB+5uQVPjb/qGpDl1jJqJDDGEJ3UxvSEoxyMKiPgwsWnX0OZpu0DVgj/K
+         scJbJXglVk2+5jbzQ+LBgvTkRQcniEikGtnfHBBdNAHKY2ZNznNUQe21Tv4KZqf9Hdo3
+         jt5EMbFiJF0YvZvcdZZ5PruU0i88hpxyJ+uehmYjXIQx2y91VnZkWHRrj3xMJ/b9UTL1
+         jXDTmwETODydX2dJq5iIth6SQrl8Zds5gkYNnQJ5UCIOpAOk1obSJme9TfaZqdvxQiq1
+         Qudg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=OQnzFpUJrVwgza/m/LVmNRA0sS1qwvCJcmV6pKyj4p4=;
-        b=H1AQe+lvwPO+RFybDV8h9a15Oyq1cmWjnFP9R+uiAGiLF49mOfj2MeNfSmIaF+aT7k
-         AtaN0thh6wlLglOGoeHh+TKhtkvqBGXlO6Xqfowhq5Q1AmIjpbiLAmNva7j3NIu/nwDn
-         a0B2SbVOt+QLs6ynr2jeBy1kCdWvGGQ4emX74fA76UejqsipJ6w2t53Lp6QEtG7MOWLj
-         Tsmd7xgVlEvb8OpguykpcrhOLz22QZ07UdlSgoTZ6Zo2hzfCT0yDvQr6ntVjZE0pBepz
-         qyuiQEP3Qcoc7Cz3MkQPX30pOspGsc1s57fr7wmf5q18/B2611KUIO7v7no6KjZwLOOY
-         iyVw==
+        bh=/vA74eJadljVcqD31KPBsQ4SbbuFKkG9AyLMR5lLMo8=;
+        b=FbzNa3iCMYz85le2p/lAxYTLPmhHYlmQ3bj7dr204Mq4+ydxglL/R6yYanOX2tEszQ
+         Ol+qFInSEQ2tykTSju3SJMAqzCbkd5Terx8DVtAQ3lsJ0wRahJwST3sxk8MSLLPoxAGL
+         yO70bAO3tZBcL/+LHCCauiUkuaBoRR9M2Em5x614OVY742ZRo+F9ow8dbnqoHwcPuzQ3
+         OHtuc/l+fKqUdgbrOyCMwTTxpkzSPXmOCCk3+ty3qOLZW3gGatiqF3AuCMa1G0aiyUUa
+         O+yjFbNWCJ2bnknJIKW76YjXVxtk7LFiK0MVV0FAGU6ctRlcqXstoP1BDHBF0D9rynnf
+         WMPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y28si205901qky.139.2020.02.19.02.19.06
+        by mx.google.com with ESMTPS id f10si816178qtm.88.2020.02.19.02.19.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Feb 2020 02:19:07 -0800 (PST)
+        Wed, 19 Feb 2020 02:19:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48348 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48352 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j4MRe-0005R0-BD
-	for alex.bennee@linaro.org; Wed, 19 Feb 2020 05:19:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53415)
+	id 1j4MRx-00064y-CM
+	for alex.bennee@linaro.org; Wed, 19 Feb 2020 05:19:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53124)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j4MPn-0003e4-8Q
- for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:15 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j4MPX-0003LL-Pi
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:16:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j4MPl-0005IH-WE
- for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:11 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:57205)
+ (envelope-from <laurent@vivier.eu>) id 1j4MPV-0004sT-EG
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:16:55 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:39821)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j4MPl-0005Cn-Hs; Wed, 19 Feb 2020 05:17:09 -0500
+ id 1j4MPU-0004pI-UQ; Wed, 19 Feb 2020 05:16:53 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1N8G6I-1jZPnm3yCm-014DQd; Wed, 19 Feb 2020 11:16:27 +0100
+ id 1MNLVU-1ipaRu3OTC-00OrHB; Wed, 19 Feb 2020 11:16:33 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Subject: [PULL 04/17] audio/alsaaudio: Remove superfluous semicolons
-Date: Wed, 19 Feb 2020 11:15:59 +0100
-Message-Id: <20200219101612.1033925-5-laurent@vivier.eu>
+Subject: [PULL 07/17] hw/scsi/esp: Remove superfluous semicolon
+Date: Wed, 19 Feb 2020 11:16:02 +0100
+Message-Id: <20200219101612.1033925-8-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200219101612.1033925-1-laurent@vivier.eu>
 References: <20200219101612.1033925-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:YLibFIpZuSQgUlfjKxWHzCGGzkzdZqeA+J1NPtaqKX3dof7T9YQ
- atnabY9tD6WWwlISncER7PKliwcQz8ZEfu31p7eb3muO7uiSkG/MiFtWKBwDzARgQtkyQqq
- iLNbN85O5fe4CzRYOMUiEQ/1Ka2p1ZpgOzHtCYLs/o7hW9mAajgu2vTnn+bJx0lbgt6uvVF
- C76EO0Z4ERETqoIp868nw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:3I0iL+lMVTY=:VCzKQXR5Xg/eAVWb074EU1
- PyX03r8ReNRQpHWI+8HEZbOMe5aNlySG1/kHRsHSpo2T7ZAurz7dUkCs4QvtDW5pAEP+1wrxs
- 2uh3+A7sl4nS483hdhPapjgHDqv091x9Y5cMufdRE9dm6KEHC6Xjt7Kk0NKylXGgRJbbj3rq1
- ouckDsNL9nHl0rL69ip+TXPSTHQeqpm0LDiS7LBQvCSgqo6Ty1lyAKAz2h33H8Cz870EC7aFw
- egISIpgTy7TMpVY6tPmNP18V9KTkqIJcP7tkh2V6fzG3zxInJiQQqrNd7BDTz+GfKk8kzgl9B
- 1DUTbfuYjhZwDJ+OOJSSa1DlaCS+MW9DqTBLMSN6bN4jv6AXkFEkqMzjJiqR3DU2IpgN3X412
- lHarYtfXAi50yNZvHWiLf+Oez6Pmh0kzJaksVUPdrP5wQwrfVZUqoZaoVD31g27ZFLRkxCInQ
- Jg/6Be2vFkmCTHhY+JgmzqwkwnLqy7jTmHoNbGfN+Tn1WSSgcpd2eqiT7MchSBQyCIAKZnhAP
- 3iDCMoRVpv+aXI0+0uRjQrNpDQGzNkEviSj2OyAtsAQ5rJ7okkxJYuAjGQPgsoeNRVuFoIYcx
- qIIvLzw1UR9Q1GqLSSk3ejPTt8o8y3dD9PcRYZXIMwL0KVnOgeBNgwNqIghYC2xiE0NyvXgUk
- g2kQd2+6RAthmnhSrEEl3jDecnmbndB2ygzxxbMyOyHIN9iG5XlHAMB/X3SbFugilHPMHlc91
- wo5iw9aId9jzu5ab1bVDBbhEFHtZNcLBg+db1zQXW9Rwube8n0KgvX5AzTpBwVYRwfADTncPS
- rATP9/fLxGHY2OseOtVLnnUrgwN9ROMfZx6kVDWYJ+UEwwAPPyqL2RRsElaO5JhjWk9jbvw
+X-Provags-ID: V03:K1:TtUMqIvOygZSymGVXMgCdx69WEZpgE/60FDyGgBnut0oG2qBKNX
+ IjpJvMfk3WcIcJMX2pv73EcYhJJBxWkXQfWCpVuJ4lxgwpa71bx+RJymoAQYdgpYcsoocRB
+ e5HzwrFY1TnYnKZMsCBOQD9dM8hNfWqwPygBt1VNfyaTzEM0wQCB8SnbM9MxhsumPWgUA33
+ 3d6YoHYAhx6AwI+W8+Unw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ZOSx72c1NTU=:D8XcRDDw6YAzHMq+3s+jZ1
+ O625pkQiV+N3S6T7Tfsr1mvkhioE4q9g/tp04AN2nYBGao5CnpPaIsj/S6WFcq9aJjOEC3HKw
+ l6x2lg+dNbUdFn5sUUm+JC+AUndhMu/cT7XhrgJb/MHXw02ixML/3ENh92k+fovVR3WwuLN68
+ EQdtLAkLtHnqG4LBaAieG/MJOcTE3g13netwq+F6mxC/AqzmakvW9PBH3qZMWRMFRGDxXvWK8
+ 2zgO7saXY6zP16b+TSQXhn8Omho4PJE0p/JLQTRsniVMHGMNls8btqjPU3VcP9F1XlMNSRjb4
+ lKrm7l96mF2fj4TDg9mFwEWJC3WiDXXnZ+VOFrpu2hv2C0X+WTJxroxmm6szo0EpfIu03fI0U
+ VmKZFkcIoHGvpc/wsXMqoU+33eiW+xBPBBjXHcgV727nIHe/sCVJwrZpbmHqAG/q1BP5IlYm/
+ whlMR06Y5FxiOQJ008ZJo36edrsGTVVJG/X/SLkz6I/BY7/GnI6LElXVQUZDVQvBvjptrRbUf
+ TE0f4TmFLP+cOwoBe65cg5CVs2K0uAULabKHyBrUo4fsb16McO6j7h4ApYX/VgcZW2FiCizou
+ aR29g/z1SKxjhwY/Sa73hNMRTLFUVz3pOCJdzUXTuV8GGcMJ7m+uf2oMF2BFQMp1vJSMuaekB
+ bLm4lGTTOpKdQ4Bx1jAVQqUkxx9GB/8h0tyP8tyFj8HeN7jYz91OUZZSuEo3wrOpu9WSE4R8Q
+ azrIseUmAB9+n/odRWdoAxXEaluslyPek0wVnGWVCnNuaNcoxtlHAIqTNQRUJG8WdbgwwAbh3
+ 6Yvyc5c7bm64lTgTUrxVfcM+mx9AKD7v5IJ6cv14n3e5uhL7g239arj7nzFOpwXNonY+6l3
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.13
 X-BeenThere: qemu-devel@nongnu.org
@@ -112,43 +112,34 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LZlIF/yschRq
+X-TUID: r47oyryEOj8a
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Fixes: 286a5d201e4
+Fixes: 74d71ea16bc
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Acked-by: Paolo Bonzini <pbonzini@redhat.com>
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
-Message-Id: <20200218094402.26625-3-philmd@redhat.com>
+Message-Id: <20200218094402.26625-8-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- audio/alsaaudio.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/scsi/esp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/audio/alsaaudio.c b/audio/alsaaudio.c
-index a23a5a0b60a1..a8e62542f97e 100644
---- a/audio/alsaaudio.c
-+++ b/audio/alsaaudio.c
-@@ -819,7 +819,7 @@ static size_t alsa_read(HWVoiceIn *hw, void *buf, size_t len)
-             switch (nread) {
-             case 0:
-                 trace_alsa_read_zero(len);
--                return pos;;
-+                return pos;
- 
-             case -EPIPE:
-                 if (alsa_recover(alsa->handle)) {
-@@ -835,7 +835,7 @@ static size_t alsa_read(HWVoiceIn *hw, void *buf, size_t len)
-             default:
-                 alsa_logerr(nread, "Failed to read %zu frames to %p\n",
-                             len, dst);
--                return pos;;
-+                return pos;
-             }
-         }
- 
+diff --git a/hw/scsi/esp.c b/hw/scsi/esp.c
+index f8fc30cccbd4..405f8b7cbcf7 100644
+--- a/hw/scsi/esp.c
++++ b/hw/scsi/esp.c
+@@ -293,7 +293,7 @@ static void handle_satn_stop(ESPState *s)
+         s->dma_cb = handle_satn_stop;
+         return;
+     }
+-    s->pdma_cb = satn_stop_pdma_cb;;
++    s->pdma_cb = satn_stop_pdma_cb;
+     s->cmdlen = get_cmd(s, s->cmdbuf, sizeof(s->cmdbuf));
+     if (s->cmdlen) {
+         trace_esp_handle_satn_stop(s->cmdlen);
 -- 
 2.24.1
 

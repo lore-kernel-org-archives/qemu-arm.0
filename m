@@ -1,148 +1,154 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp320615lfp;
-        Wed, 19 Feb 2020 02:22:14 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwcG6wpT+/earHCxUm/dXJuXBc58PyfSuUVpqwDxVlQYXrTFIPKpsG60QCY0Twx4GC3TfRY
-X-Received: by 2002:a05:6214:6aa:: with SMTP id s10mr20710230qvz.138.1582107734277;
-        Wed, 19 Feb 2020 02:22:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582107734; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp321149lfp;
+        Wed, 19 Feb 2020 02:22:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw+bM8OtEBMgflPpm/zwl3bWm9RxrnXg+JLExUoWA0C55lYJ42qiL0z6PcSEsrITsQ4kQMT
+X-Received: by 2002:ac8:7b4f:: with SMTP id m15mr21686606qtu.48.1582107776463;
+        Wed, 19 Feb 2020 02:22:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582107776; cv=none;
         d=google.com; s=arc-20160816;
-        b=afpS0hDq82/3/eYYwUIYyUMNE4BDA9rAw5nlBF3soaLN/KsbCA3e/PmEvhT0kTTuV+
-         KNRXQNFQm1Kb+ViC/5QuniYEuRESEJqGWUj7kgosThiU3tfJ98ehdr1c+Jy4yFYuC50e
-         hVfk5CQXh8Xn9hAPnhON2sz9Bq4Ab+h+uv8VRRt7SOt3SlKwRkAdQ1hWaxNQH0jVEsxp
-         l8Z75UvFBhpjr+HfKAN95w/i94710c52po4V4PwsuXS8qfjb/CxsQkaDVPHj/7fwpo81
-         IxxjqeO2s9mF2Ln7LDPxkr/mDGfvyAc4OFpm2KHdACH7xxbZ3lnM1EngR3EoBNuOvNBk
-         UlAw==
+        b=XQcG9oS5avYwgpQyEGsoKD6tyQbxEiBUwM3gUPSMiqq6hxob0n07N7KuuXudzi2xDH
+         2C4UpmP1+DLKWZk/wKpU+Wqn1C55nwcAuQkKNbhcNe39Ge7BY7i4i2Opg7dkd5CLYGJk
+         bSq5vs86msBrgJMle0tNFxI5kZ2cBiTPZ9xdLg1usIjcpTNSQdYtB8tVXs4jnUJvSHGb
+         sgB6USPwWSNyv6/J4S76kzZ0DvfL0XBMzS5oRTAR43OqToz8hACu9losr/9iRJmQ37/c
+         mQK1+0NpzK3mw7laTftPrj4Wnzhc4KiX9QOOTvoPOTdKcAJk68UoFl6Nmt0KUUHkBpsE
+         vMEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=BMzmXteKHDALC5Ej5QBCcSZ3ZPkh7thToZw45YNLqcM=;
-        b=xXZCoSLp94+wtPzCN/rSUQy6EbhgVOANq5jtp9KtaOflzi4N6Wbbv9JjKOMp5OWpqO
-         iKg8uGo6MGNbPIquQzN9hfHGR0mpgi1vgYdS7NXhLLSlFE8Z9tovJwYvWhhiWkso9sq8
-         ySQYIsLKjddb60+2JE2DN6aGOosCyJE95LcctlYYSvW3eVe0ocXusirVKlENyyUiET6x
-         1Yo1sfAqovDE9xpIeJCGpXLeV2XLJloA8Qe2WvF64fefi1IbXo/MD64ab+yf9WZmR5HT
-         qqU+paXZqcXiSO8dm4pZwnd+BsnlI1J6R+KDG+QxQ4IvI2CthOKPRfyHdmuoD8N7JoE2
-         zGxA==
+        bh=ByWAu9rs4dsRAqjqql1a2qAYy0E+pLAjs2BSQRpudPc=;
+        b=SG3YJbbUlnP6mkSLG9IdoUCC9SAM46SxfJeDb62EHa/kmD/gPx8t0PicRH+JplJOut
+         OwtT4Otjm7oMWGMwktM+VKipOjGPu9e7g8XuoUfAEvEmqXo0E1PgvHh8KzgFenovp6JC
+         PxubH/tIdYxZj4Hu/4ArxacjaCH2XoRpqSX8/bup8zv7PrVsqKu3fu8FALp6D+/+IkCw
+         74UMYYzv7KgiMVoWjenY1Tfa1RwZZrVWWTE54gh91L8NIb8zpRuEuZtcDPtpKNs2dq1b
+         JWxbsCgPebhboBiYt3kTBH9Wd5GKm2U2SNux0wtvvPutlEoeOYx/QENihWmyNFGldKI1
+         02yw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t1si671971qkh.202.2020.02.19.02.22.14
+        by mx.google.com with ESMTPS id s19si664588qkj.377.2020.02.19.02.22.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Feb 2020 02:22:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 19 Feb 2020 02:22:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48428 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48446 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j4MUf-0004h4-NG
-	for alex.bennee@linaro.org; Wed, 19 Feb 2020 05:22:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53489)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j4MVL-0005lJ-U2
+	for alex.bennee@linaro.org; Wed, 19 Feb 2020 05:22:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53307)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j4MPt-0003hO-B4
- for qemu-arm@nongnu.org; Wed, 19 Feb 2020 05:17:18 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j4MPe-0003aU-Vz
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j4MPq-0005Px-SJ
- for qemu-arm@nongnu.org; Wed, 19 Feb 2020 05:17:15 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:53445)
+ (envelope-from <laurent@vivier.eu>) id 1j4MPd-000579-V2
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:02 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:37851)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j4MPg-00058H-Mq; Wed, 19 Feb 2020 05:17:06 -0500
+ id 1j4MPa-00050Z-Pg; Wed, 19 Feb 2020 05:16:59 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MgNxZ-1jf54V1bP5-00htd2; Wed, 19 Feb 2020 11:16:44 +0100
+ id 1MHnZQ-1jH4062Uz8-00ErOT; Wed, 19 Feb 2020 11:16:40 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Subject: [PULL 13/17] hw/display/qxl: Remove unneeded variable assignment
-Date: Wed, 19 Feb 2020 11:16:08 +0100
-Message-Id: <20200219101612.1033925-14-laurent@vivier.eu>
+Subject: [PULL 11/17] tests/qtest/libqos/qgraph: Remove superfluous semicolons
+Date: Wed, 19 Feb 2020 11:16:06 +0100
+Message-Id: <20200219101612.1033925-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200219101612.1033925-1-laurent@vivier.eu>
 References: <20200219101612.1033925-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:xmLVze4fF2jn6gChYFmBkC8c3RIbPEY5H4J7Y5UtgnxBWgF54AD
- Ag+q0XW/9deubnLuPJBpDdoCAX6siUjw26WVfuE9L3m9B5PbLPCZ6zUXmhCZy6neiMYW3vw
- 97AZdpCVPLOwz0axZF79dSOpgOu+iRs+yVSUpeQ+TOztIzY0JMz6SgbKCYGM1UTlLcy47gH
- Ga05RO73lqgiGlq6ez7bg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:D8XpsZO1UK8=:OIz4CJMjqrC+YhdCUvi4EU
- wRh1hONtNA3tWUsqmkvPhVk4IqAC2jW7SAbZxSXeTCrZyoGg9TpK8hSPa6MHGkiQDnMHv9Dkr
- to9LU0Sdza4sxyIAvx+IJYdfmuuKMZltaI7xtiOLbxjFjz3kLiB6Ly0NG3TwrJwP+c/1ziT8c
- 5Ph/d8cc2Z3cffAPTIBzc29NEbn78Sjv6zFF+JfhgRG/BUTYA51OmMpAQ7xQl3VoeQWO/QcNI
- mwhG3bXAJxtGKfqPUDJKKLC8ryhlt+rrpvaEEnz8bQkw96Zvq4GnaN+vdRVYDt5kxHnwMo8Rv
- DR7f5fiov5m1NU46nH7vh8piupQNWIVlIlMhsUUon1TUKbPnBdLZTVxaHGfHZ06uqK2OnM9GO
- pu4fYTV2uHgNWljCeKCJz/x3x/q1cWRd+IWxbMPLXG+aKbg0J4Qds8szTat/34jiXN2DLKrkR
- dxbIDw9KJrFSxfOsajRByGEwqNcPzgGi4+BCgQxyzkYqj0fPAHuGMUd4Kxh8cYfyJSpuYOpGr
- WScn+8yAbtm/tgCINF4WJbw609cuMiEPYmsLSpNCEUd+zfVCu2AcgJXmb2mpnYyx+GFqrUhTy
- jT0bW5KqrpD/D8aYjcu9LQ7muGIuLi7NMEAqsdkMsbYTMpQjMr9L1hiPBksrEIJ0AWqP2lcsd
- iY1uNT0Fbr81OnsvAcElMtEMba/tCGb55F8CdzyCZXJmCfieybKUbWbDKcTXkP90xgonfoni6
- LJxU0aw7OFS75n2E7D52tlGj3jxF9vzgGZ7eQXDcQ9SGKTjDfySF6/Yi1nhBSwzg6/t8w6EqT
- nIxwqZX1SWyatARb+OFh80FtKS6YdPpQ3TPn76Mh2lbWW5Rn7Zz3WwtDIJjZmQAMlLWdWNl
+X-Provags-ID: V03:K1:JpUVUNN+S0+cpEQ7Ukn+HanppYJnz1MOzhIPtY9bWWbtdRnlNeW
+ fjmIzxWyibl5/aaGjt/3Edg+TX35x3OMfs9jkkp0lWrOWeKWGYYZEV71XfZUHhO+kXj5IpG
+ RsVNYTu7vEFqBSZVfY0U66m6UasYctRfJOKM5sGpObgMNIORDVcSsWjUhqWHysEREbhwSrf
+ 0lynHRHLcq1aaZsVnYy1w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:6VzeMLdb83I=:dcixetq2v7BjSE39LhHLZb
+ SlPSv938kldCjaw+Xl59xA+Rm9aVV5LXOfkqnNkyCd87DhhVd3KamGTTd+g2dEpgzO9te7K9n
+ hVRXu6w+f0cSHsZ3GwaA33nYwh/AEMzvONqlzTfvHoNpSdCEXOSM/Vaf3Ce9JoDCiOyN/wRVE
+ BdOLErc7SNcstp0jMxWpHcjjJzztxbdLclwsavzuN1q2Q4y11QzMsNipswGU4RnOxjFj9j1aI
+ QzX4V8v1oUHkwn5cqAoPiElHcbQfiM6VLRSucLIcBD8oz8y6yv5WNQKbCk6Fk49bc1cIreuEn
+ GPFrCXvgSUwe97hka79PZPYsy+TsX3EBiwIm02KbsgeO9j+GKDf+fzCk39BIJeT9tl2vVR8N9
+ eNs9Uajobg3xnXyZE+ZtDvnJIRygUK5uoM0zeh3UALO5HiMxRdg6IirDfSTPb5WfTcP4FaM7j
+ o1/mG70nIXVB4Wcy7muuUGYgA0fBLR62JY4X5AsRZSxKUCR62XcTZj3eiouOSFGuugGL/50It
+ ZPekopFAG5wSLpaBg4rYHO/usOnN4lwujP7tyQiauBwoW8twayiYIoFftGoCt9oN6dH/M8vj2
+ 07/7nr1sicikV0dFEk/YIRoMx36A5wByLNe4WYgtqqewoh4AY/paHJJQxQZDeuDwGxh+qIRnC
+ +pmkzVmKVRgSDy9qGDYeqBCw/ZVy5Wqwc1PnbOmho8/T+qui8Z7t+DI8VutZ45Q+MJVb7HqoM
+ Uv38HchWPngc6lP05zNTVvcfXShsesjscX0EcalDZBNrCkz6fn1Y18hFZPkP3tJFqGvoXpRfy
+ nV8h3JikpueruaW4d7qFy1gsgqyhIUGNZmgAh5psE9B0iwJoV93UHcDYcYqqixG/zvG7zLP
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 212.227.17.13
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Jason Wang <jasowang@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
  Yuval Shaia <yuval.shaia.ml@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Marek Vasut <marex@denx.de>,
- qemu-block@nongnu.org, qemu-trivial@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Marek Vasut <marex@denx.de>,
+ qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
+ qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Jiri Pirko <jiri@resnulli.us>, Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
  Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
  Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
  Thomas Huth <huth@tuxfamily.org>, Chris Wulff <crwulff@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wxESjjLybEIR
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +V2GtwdJxz8G
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Fix warning reported by Clang static code analyzer:
-
-  hw/display/qxl.c:1634:14: warning: Value stored to 'orig_io_port' during its initialization is never read
-      uint32_t orig_io_port = io_port;
-               ^~~~~~~~~~~~   ~~~~~~~
-
-Reported-by: Clang Static Analyzer
+Fixes: fc281c80202
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200215161557.4077-3-philmd@redhat.com>
+Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
+Message-Id: <20200218094402.26625-13-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/display/qxl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/qtest/libqos/qgraph.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/display/qxl.c b/hw/display/qxl.c
-index 64884da70857..21a43a1d5ec2 100644
---- a/hw/display/qxl.c
-+++ b/hw/display/qxl.c
-@@ -1631,7 +1631,7 @@ static void ioport_write(void *opaque, hwaddr addr,
-     PCIQXLDevice *d = opaque;
-     uint32_t io_port = addr;
-     qxl_async_io async = QXL_SYNC;
--    uint32_t orig_io_port = io_port;
-+    uint32_t orig_io_port;
+diff --git a/tests/qtest/libqos/qgraph.c b/tests/qtest/libqos/qgraph.c
+index 7a7ae2a19edc..ca01de07437b 100644
+--- a/tests/qtest/libqos/qgraph.c
++++ b/tests/qtest/libqos/qgraph.c
+@@ -474,7 +474,7 @@ QOSEdgeType qos_graph_edge_get_type(QOSGraphEdge *edge)
+     if (!edge) {
+         return -1;
+     }
+-    return edge->type;;
++    return edge->type;
+ }
  
-     if (d->guest_bug && io_port != QXL_IO_RESET) {
-         return;
+ char *qos_graph_edge_get_dest(QOSGraphEdge *edge)
+@@ -590,7 +590,7 @@ void qos_add_test(const char *name, const char *interface,
+                   QOSTestFunc test_func, QOSGraphTestOptions *opts)
+ {
+     QOSGraphNode *node;
+-    char *test_name = g_strdup_printf("%s-tests/%s", interface, name);;
++    char *test_name = g_strdup_printf("%s-tests/%s", interface, name);
+     QOSGraphTestOptions def_opts = { };
+ 
+     if (!opts) {
 -- 
 2.24.1
 

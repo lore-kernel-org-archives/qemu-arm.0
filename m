@@ -1,86 +1,85 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp319286lfp;
-        Wed, 19 Feb 2020 02:20:33 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzFeo711w2UHS1+E0Tit7zAK9qsQO9Yy15oGrTX6JlDV92riiM1BZGzw9tmsPsDL8Dxytrs
-X-Received: by 2002:ac8:a06:: with SMTP id b6mr21992459qti.264.1582107633184;
-        Wed, 19 Feb 2020 02:20:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582107633; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp319544lfp;
+        Wed, 19 Feb 2020 02:20:50 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxLtqsAyLJ0zVZgwYWFj/nknG7Y5lBrNFAZDlvDSXBc7nmzKbP8TMupb4fIxKsW28ezs5Gw
+X-Received: by 2002:ac8:7644:: with SMTP id i4mr21390546qtr.150.1582107650530;
+        Wed, 19 Feb 2020 02:20:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582107650; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z82tDPsnnVr3p5dYDQ5u09wsxqwW695vYpIDVS//ucNfxMpJnJzwlJxIW+wNwjCk10
-         hrIK2yzRAkwqNxaoOCmxK+dRYYN4Zz43AfLfZn9u4ZaX/3WdscwRrTt6duHbZhofGOud
-         zuklbMWESS3/t7MnkuXeBN6dUCt3sCA59dFLSsXjiBZKn+sMUtvDLDxuWM+H4UXNUK3j
-         dwXR4Su/4xZxlac8fnKK3j6/YROjCpdem3rm6fov9hoAHUOiNrfDjBBgT8bM+cEO2FFR
-         vfar1q9cqVPuHOupPB/wiIZkwhL5H5C9+/GTpetdKrYUN78VmhBvEeWV/CfVQ9VtMcVV
-         yNnQ==
+        b=q3KJCDtCsu6ZadFkznAUhVRlcijA01fFaVlb5/XoaDwdi9fX4FcsXINzmWScr529tb
+         fI9G3XTSAaLMfAsNqxlwRNsMSIMVyzPEpklFNvdIUXvokqAPaj5gp3nFkxEc/wAhi4if
+         6dBbumcViJq9cqM6We9JvGDoMl/g6vWrkj/2zIg/LsqEs08+9aVKBFyDpkB7T7xZQBha
+         kqXB+VrL94xVsnm5sIKqvXmhHlpouLvmFKqLC84/IIb+ebrprJEosQQNSMgkW6k+hQWD
+         1ZccQsQJGQIK1l6QzlAIymTfnSpQf622yAH9YjC1G4dle2AtYabnAwa8/KF3RQ/0kdC+
+         Uk/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=vzvB/qjJiqdTjEn/lLbs5mcPMANf7FSjEh2lGoQmFv0=;
-        b=D2QgMa2v6a84TsGUOUG8EKFX863qtMgpAD10gheZE5UP1L2E5x8O+F891n6oWSqeNZ
-         DSs7HgBiS/ZQOHNeHYfo93ocuDABGeazq7T5b5aCcsgH8Gt4L/gZzHwItRe6WEHqrNmh
-         g7Wh8acCKKq3IFSJ8kD1aKSQU1Z9t1tyn8spWnZJ9edezIQ0KE/nHyX6RtTmgliI7UVk
-         ta+yqFuX6uz76yFL+JDYvehAE1dt/jLMrXSz3aY40a7lpn/4755DHE/5ScGRaqqaG6q9
-         qA5cOxlUH2XVsBobN7VoGs3bQ33EJWd0CjpSiFYRG9FE7vURW6uMmjRmJfv8fzXVFfY4
-         AtCw==
+        bh=w2bO66IiqzBuT2V1Pew7OdwVdfoDy519IuOcYl7Hwks=;
+        b=H5DYcNkLqn09bxu6PO1JSFM91PIARtgD171JmI+RLhiiJcHBLiZDJCXjYtLWD+Lxa+
+         HK8GHpjlKpIVKu5M4HYepbCGKZPao/8nytLiz+Uqh0QnHkEEhMAEJJSJxyqBIYa3QGBK
+         E2vZoxRJUnSHb4W2Br3O/2w2HVBlLKXpChulx7EIIwy0LqiVmNnwWoP1QVijxB7ps8WY
+         ryX1DG1NL1AvrV9GEYqhZq3Rj3m1l/HoCcdTpdEXxnAcqTg5GsYmNkEl5fH+nZsxKI0U
+         9AIoHRmPS7m1ULMwLE1qsq3qod1T9k7qO86971TQAo2277G1Qbzh6SXBXkBUaSK06TDd
+         wwAA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h19si769412qvb.29.2020.02.19.02.20.33
+        by mx.google.com with ESMTPS id x6si750801qtb.204.2020.02.19.02.20.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Feb 2020 02:20:33 -0800 (PST)
+        Wed, 19 Feb 2020 02:20:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48366 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48388 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j4MT2-0008Dc-Kr
-	for alex.bennee@linaro.org; Wed, 19 Feb 2020 05:20:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53248)
+	id 1j4MTJ-0000Xh-TJ
+	for alex.bennee@linaro.org; Wed, 19 Feb 2020 05:20:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53370)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j4MPd-0003VN-4P
- for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:02 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j4MPn-0003dw-7E
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j4MPb-00053Y-Ur
- for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:01 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:48735)
+ (envelope-from <laurent@vivier.eu>) id 1j4MPk-0005Fg-EO
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:09 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:40357)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j4MPY-0004wJ-KJ; Wed, 19 Feb 2020 05:16:57 -0500
+ id 1j4MPX-0004s3-Lj; Wed, 19 Feb 2020 05:16:55 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MA844-1jBX864Afq-00BZbZ; Wed, 19 Feb 2020 11:16:25 +0100
+ id 1Mjjzx-1jkar72j4F-00lBPA; Wed, 19 Feb 2020 11:16:38 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Subject: [PULL 03/17] scripts/checkpatch.pl: Detect superfluous semicolon in C
- code
-Date: Wed, 19 Feb 2020 11:15:58 +0100
-Message-Id: <20200219101612.1033925-4-laurent@vivier.eu>
+Subject: [PULL 10/17] target/i386/whpx: Remove superfluous semicolon
+Date: Wed, 19 Feb 2020 11:16:05 +0100
+Message-Id: <20200219101612.1033925-11-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200219101612.1033925-1-laurent@vivier.eu>
 References: <20200219101612.1033925-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:IXjQSl0/la5Z164rm+NUocD7xxaoxaSU6n1TNuuHRPZySrnB6ZK
- ERe9mV2ShoYfilQNcB/XWW26hyR3PLF4xK4+AmGpRcGl3/5CD9liea+WM0dbL9DOi+qkCeP
- QuR2bJN3cFWKOsZNa6YfHyJndq8+/GWKYzTDzP5C74KkPHePbTCmVZg4fwhAC7USJnIHXFj
- bF47FrPpZzFc5ljlKUGag==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:AkDA87X+Y5E=:6ksXsQXRv/pp0BO0P6vdkL
- o/cUtpoes6GpFbmnioboLNgjaKlV4Dhc7/87lXiP++/TDvJGwn5TySJ3ZoJM69bl67Uh0L4S7
- jALtHU25lPO1+uif/yuHJBLir6mDnfGbLhezdXcuHLwhv7m4sTS2PWIWA3A9burkzV0jGmMC+
- OvAQumCZj8zS1BuLtg8cQFGFb6tB4qiMXbtACVYcMIo5t7lKDLgirJOrZ2GXpg/6To6V6GCwF
- //Gs7Tp0epABuZsTCsxeQJNIT/qJjsiMq2MSpvHIATR+mTIXkPYIfHLQjWliyKmGHhAS5g3ca
- Jj/Xh0A3fl1J0myDlkrFjVXprYc5IfWmYhS7AmRnDtzclQI07atDTXK6YE6njQVBwPgA2geLK
- zFi+sZgY2L4uEo17kUiNm2dIDEVRWTDQMEeg9UQd3hzictBTULpxJdYGpMhIY34AQ9s12AHx9
- dgqfVWxZ0AGDHeOPn+P9LEaQ0CleOfpuIBsvPElMrw4IMKQHAr1/HKx7cm/SjOlxf2smfsDbR
- 4s7qJQPn/vvxXvJSVacsEJTUoCp+3e036hYnbqNVlKfi4WkhU3puasGfDAk0K/1sdsmm3cHVE
- xdz7EdAhPu2HxPg9px1WILlj5xJ+pRFKhxYE9Rf30RkFDxdTw9u1SaXt0sg+dbQD5fErstm6B
- s4UEzPDCssKhyJyvhJfYAvLgvuZi1C6DChw1wk8ZjtKIW1C5agBWBcnKXk2nIHwW4LdwgqJYv
- oUniudlqOJq5RndusmdFVoHV7eGkkfZb83gISD1duhCvAxvXycl/OXK3DYnbC/cIe+awVbCt2
- ixwyqBRUOydiBRtsVzi6p/iMLnqGZ0FzObvMiR2E1DbfNcJkGXVSIVOF1xqOebA0tj8uUrj
+X-Provags-ID: V03:K1:fkHa02snvuJQT1kC46g80W+yqWWgilAKPwOIMaZZ0rfIXJl3zFW
+ BRJvL0sHaJrlWTI636tFdxcZk5MTKE89WpJPgkNQxOo6QmkNuaepT2apNVG15I+aeSNIcKf
+ LjjKWDkYdoau+4cpLTeelCwYHvIb9K5rYa34X9tBOxd2+bn556wXIajXdo+idIXme71V8lU
+ ZUjWu+EP17IbBWUUsyovw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:6lzzjanm2QQ=:GUiRVkqhwiQKhZZmYv4lUz
+ U3WJdTbu7Sm1xzFslXtWrl2dGKXZjuJI/gfSKA3lWa4Djwbn6c1gLkvn4NjLry0/TgoZE5uus
+ T+Dkq+9LdXJrZKXyDQ89NSe9e6B1IAK/XfYlZZa4svjg8tlOoU94rJXRO+2IuvDs+c0c8M7yU
+ DMGiMjdsvuOknedGzkdVUh3ZkK6l8z+7ESIfizC4efHlnAAT6q8ICGEXbdlFK/j7fUyUp3Z1j
+ UKYK2lzZCwtFZVRG6YTIzGq2V/wnOlexUhaoMYAcs9Az/GcC9p8LwdXLjsUPJDfDSZ9JF8Kou
+ O2VOGDydoEKmrv9NbqkbxgElieYDApDsS0VnR5GlpR5OgPu0mWg7w/nO4mI/mOTZ9lSYPnGxX
+ zV5rREj1/OBGQi6gzN2kUtk1dkWjrOZGrCTbtTgCIoWktELxRRx/f7qCi/bWwYA59e9sPGrbl
+ r56Sgj2gxf512cWEXP59/lywJpIyO5IV/ksWtjYIejW9+qtPZtnuldnrAu0LbFVcy1W/FQfrz
+ e9NjEj++O60GnQhzzSIYo6111ZYgUwXJtFj7M7ODXM+2h+qYa8kx0ywWJ9NhLpnIr1yWI2HFe
+ JBRUjFcqazlogaHqUo5sOTreud4/PxK/2lP44riO3hnsf2HUyGkpel1rfFydlvVb14hnciFeC
+ qQ6jBqPgBhpeyVuXNOMNXIqv5GHF1kxguLX4kUy+VP8wTrKHTgoidL1kX/mMBkpVQ6TFioj5k
+ BjcdOi7RBDOTJkfh42BuYyUmHz2LCaz/jnptSMV4H3ebAvcW6qEvJcGfO5xJU+F08ocpnECy6
+ +Oo47RPX0K+S00CYoNmcaw3I3rVYgdDFvCOlBdCV13c2PqYLFxEy5uXrQNvs5+LA63MBAoK
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 217.72.192.74
 X-BeenThere: qemu-devel@nongnu.org
@@ -110,49 +109,37 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
  Thomas Huth <huth@tuxfamily.org>, Chris Wulff <crwulff@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc.michel@greensocs.com>
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LhrElV+aGkzP
+X-TUID: sLwpEZjLLr4/
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Display error when a commit contains superfluous semicolon:
-
-  $ git show 6663a0a3376 | scripts/checkpatch.pl -q -
-  ERROR: superfluous trailing semicolon
-  #276: FILE: block/io_uring.c:186:
-  +                ret = -ENOSPC;;
-  total: 1 errors, 1 warnings, 485 lines checked
-
-Reported-by: Luc Michel <luc.michel@greensocs.com>
+Fixes: 812d49f2a3e
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Acked-by: Paolo Bonzini <pbonzini@redhat.com>
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
-Reviewed-by: Luc Michel <luc.michel@greensocs.com>
-Message-Id: <20200218094402.26625-2-philmd@redhat.com>
+Message-Id: <20200218094402.26625-12-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- scripts/checkpatch.pl | 5 +++++
- 1 file changed, 5 insertions(+)
+ target/i386/whpx-all.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index ce43a306f867..11512a8a09b8 100755
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -1830,6 +1830,11 @@ sub process {
- 			ERROR("suspicious ; after while (0)\n" . $herecurr);
- 		}
+diff --git a/target/i386/whpx-all.c b/target/i386/whpx-all.c
+index 3ed2aa1892a1..35601b81766f 100644
+--- a/target/i386/whpx-all.c
++++ b/target/i386/whpx-all.c
+@@ -511,7 +511,7 @@ static void whpx_get_registers(CPUState *cpu)
+     /* WHvX64RegisterPat - Skipped */
  
-+# Check superfluous trailing ';'
-+		if ($line =~ /;;$/) {
-+			ERROR("superfluous trailing semicolon\n" . $herecurr);
-+		}
-+
- # Check relative indent for conditionals and blocks.
- 		if ($line =~ /\b(?:(?:if|while|for)\s*\(|do\b)/ && $line !~ /^.\s*#/ && $line !~ /\}\s*while\s*/) {
- 			my ($s, $c) = ($stat, $cond);
+     assert(whpx_register_names[idx] == WHvX64RegisterSysenterCs);
+-    env->sysenter_cs = vcxt.values[idx++].Reg64;;
++    env->sysenter_cs = vcxt.values[idx++].Reg64;
+     assert(whpx_register_names[idx] == WHvX64RegisterSysenterEip);
+     env->sysenter_eip = vcxt.values[idx++].Reg64;
+     assert(whpx_register_names[idx] == WHvX64RegisterSysenterEsp);
 -- 
 2.24.1
 

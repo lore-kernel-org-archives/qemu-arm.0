@@ -1,102 +1,85 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp216952lfp;
-        Wed, 19 Feb 2020 00:03:43 -0800 (PST)
-X-Google-Smtp-Source: APXvYqygKhe8goRtxEt3SV26pvvEn3r1SNb0sdopUFAeyvVqgCiG3sjIQqh8fTk9gSoZrPiomhaz
-X-Received: by 2002:a05:6214:11ab:: with SMTP id u11mr18912161qvv.193.1582099423067;
-        Wed, 19 Feb 2020 00:03:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582099423; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp317114lfp;
+        Wed, 19 Feb 2020 02:17:30 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwrCx7E75mj1DPvPR8+wD5dTvveqZ4M8OkzLSgZFrmr6l9kp8Z2MZzeD4ZMcSA+Cvrm5GAz
+X-Received: by 2002:a37:a54b:: with SMTP id o72mr21346443qke.489.1582107450580;
+        Wed, 19 Feb 2020 02:17:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582107450; cv=none;
         d=google.com; s=arc-20160816;
-        b=I7pJVJ5tMQtxp0VpcJib6lesLtHrNbJjhi2X+/6clwHI150+sYxGgNps4Tb5ZjV3He
-         /2QLj2XfZtwoigVERsYA7SId8aTwO6wGaT0JxOeLTNrzEqYeSg6R4Wp6+R4Sf/oHnePC
-         Vt/u/t1Fs9y4yEylznhe7d70cqz2uPI3vayemO2QLw0MPSn8fskxZfSCAmS10ySuOFuI
-         nT5C1HXWCs+kfvOwc/TZUZ1g5vZLlVKvNWp4Iov7v51ffeVzODls5vUrKpq8uO33Q5Rg
-         XZ2SkIVdDbXtQeZmyfUJGQv5hQfMYM/0dO6A9IXzluFxYMGRNocXfKWQUggX416sMzm7
-         UHSQ==
+        b=fltTmQnWXCKsJ42j34JCEg6dPdcxZTunEfFM22opkvt2X0mnp6r/srdbGJhVgQDwct
+         hf1hybHuRr7x5VYijcBZxFb+Zt2Y6FJvIRXkICgwjFUWoJQw//HyeMC/l5S6qERpbs9D
+         FKqRc7pC9MVPVKgYbRHVrziMPqGs5APm4Jn7oLYEms8DGiErFsPpl/muVkYG56nR640R
+         3uBLCNTSTFdMsHc3/+VqXggyQUI48BYbMelwiEdN7QJhcoz170VPDDuDtjS/eTrBMdJr
+         ufSDdLNOul6WskQQqhg0rVvicb45TalI72okLTfntxuCLaVpMmu9sYcryjqVkCCxeV9V
+         46Ag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date:dkim-signature;
-        bh=2LloX7+4M/tjlcfg9e1Kh0OTXVnze72CnS/Un//xLp8=;
-        b=BXrvOun4cBihjOdC1B4Bra8qlzZKo5GCZWfX2jSowfIsUx9Zb/KAkvObsbfvtRWvhI
-         Crjd01m7meceZK6piZtTC3gEutvF0/Yg273wcl63IXJtjJCMQiLpcIHyaQ0juEx+63i9
-         ZqdMwQVmhnW0rLO6tMZZKuNJzQl9n2cmXts5jM+++hala5QCtYS4jlEC1kIRMaol06Oa
-         b8f9ZoznTqxldXIQ4d//QtsX2GlcVkdxSzrXy0+F/us9/oXqhkFhmcyOFCNwO4FyAuwQ
-         vHIPqCt+R9Ghs08oY1T60Zz3RIN00wF8vSHKXFuwA6aNmCkJUwQoPqU8/Cvr9AlX5b70
-         imDg==
+         :mime-version:message-id:date:subject:to:from;
+        bh=cfiaZVU/wlkV0cASZkig+GBdWLpRxWv//T1pVuMhUbQ=;
+        b=cUycFxaz3T0m2XQ35ldBkB7lW8Chqj1btfuLZ1666XuzIpy/9wX/IlK/eYO7XEFu+f
+         x7fCcHqOuBY4vFpzVGgC3Edx9RhIqHq/fcds58js91HJ62RMUDl1SorwVQgskamky8TB
+         sZET+4PrlLZhfqEg7Za6/HRx+2ws8p9XbWB6M5snjM3dW16/RsOdf9/wXLMa+CXR8NCz
+         RjZp0gL7uLp26yQr1AB1DmL3iPoK7Yk68RuW+DYG902CnLiYPNC0wPX/c2va6Gwq+TTO
+         ISf8ne3WGG0D1hXM1Hkx8/urNS3f0Vg6jVxeb7ltZ/NsoHeQpp5PNKZc4Svtut22VB25
+         3YZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@kernel.org header.s=default header.b=LSmT5uO1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 22si557466qkj.74.2020.02.19.00.03.42
+        by mx.google.com with ESMTPS id h4si725341qtp.117.2020.02.19.02.17.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Feb 2020 00:03:43 -0800 (PST)
+        Wed, 19 Feb 2020 02:17:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@kernel.org header.s=default header.b=LSmT5uO1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1]:46938 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48320 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j4KKc-0003YY-Fx
-	for alex.bennee@linaro.org; Wed, 19 Feb 2020 03:03:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54849)
+	id 1j4MQ5-0003Lj-QJ
+	for alex.bennee@linaro.org; Wed, 19 Feb 2020 05:17:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53057)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <maz@kernel.org>) id 1j4KKT-0003VZ-Eh
- for qemu-arm@nongnu.org; Wed, 19 Feb 2020 03:03:35 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j4MPR-0003GS-OH
+ for qemu-arm@nongnu.org; Wed, 19 Feb 2020 05:16:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <maz@kernel.org>) id 1j4KKR-0004Dq-Cj
- for qemu-arm@nongnu.org; Wed, 19 Feb 2020 03:03:33 -0500
-Received: from mail.kernel.org ([198.145.29.99]:37006)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <maz@kernel.org>)
- id 1j4KKR-0004Cz-4K; Wed, 19 Feb 2020 03:03:31 -0500
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A407621D56;
- Wed, 19 Feb 2020 08:03:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1582099409;
- bh=XKvbxnqDqqgvnETocVfhNBfhZu4quZNZYHFCf1GaV5M=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=LSmT5uO12PELk4nf7D77qtk0gbfe2ugUofQrtDm/70DnKFt/rNRNKfgkdIWJvBejU
- Sr3UqQWPVun1bgZ3YHMx7QrIgqxRCYM2HQsgOZ7z2pn3JS5KxMSmIv0Rf5yJhCsRwM
- pQPL9IRsjNg1VPhFSnMEYBAHKkz1kFe313dfeom8=
-Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
- helo=why) by disco-boy.misterjones.org with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <maz@kernel.org>)
- id 1j4KKN-006S6Z-VQ; Wed, 19 Feb 2020 08:03:28 +0000
-Date: Wed, 19 Feb 2020 08:03:26 +0000
-From: Marc Zyngier <maz@kernel.org>
-To: Gavin Shan <gshan@redhat.com>
-Subject: Re: [PATCH v4 1/3] target/arm: Support SError injection
-Message-ID: <20200219080326.05d552ef@why>
-In-Reply-To: <459ada75-b055-b2e2-ba5b-851f76c17f62@redhat.com>
-References: <20200218020416.50244-1-gshan@redhat.com>
- <20200218020416.50244-2-gshan@redhat.com>
- <60f0303b0c8d3f9a124c2e5c25814de3@kernel.org>
- <459ada75-b055-b2e2-ba5b-851f76c17f62@redhat.com>
-Organization: Approximate
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+ (envelope-from <laurent@vivier.eu>) id 1j4MPQ-0004mc-KY
+ for qemu-arm@nongnu.org; Wed, 19 Feb 2020 05:16:49 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:47483)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1j4MPO-0004iN-2Z; Wed, 19 Feb 2020 05:16:46 -0500
+Received: from localhost.localdomain ([78.238.229.36]) by
+ mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 1Mofx1-1joSmR1F6H-00p0ta; Wed, 19 Feb 2020 11:16:18 +0100
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Subject: [PULL 00/17] Trivial branch patches
+Date: Wed, 19 Feb 2020 11:15:55 +0100
+Message-Id: <20200219101612.1033925-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: gshan@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, richard.henderson@linaro.org, pbonzini@redhat.com,
- aik@ozlabs.ru, drjones@redhat.com, eric.auger@redhat.com, jthierry@redhat.com,
- shan.gavin@gmail.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:DWEuROI5o9vosqpwP6BG19STXPZ1c4bZ1l3abFEEupUeGg/SHvn
+ U2YGGOh5iF2r+VpvOaCT1Sjrbi0fgTB3746shs+yzKNSymH/BBC8plpl4GOHd2MQ0sFNjUO
+ p1AzteCY56soEvXbcQWA3Cx+V/noL4Hf61nWZWA9MQvRm+PQEYLVR4zRnV9inDDdY5j+v0e
+ xkZbfp7ArBmH1Vny41sBw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:5fVKbgXp3F4=:SDsfwZoehH39+FEyAxja5Q
+ 7Pd5UseZANsDD0GggysiWrTvsBUVNVrNgdXB2TV81wEgy23tCUJGCG0DPgvfAO9d3zLMIqOJD
+ ehzsj7Pi3bWz6tP7sC4dnZPw8FFf8q0510KHVr5KFZ6NVRqVPatPMHIrTTWuE5y4Bolt2EeyB
+ AXipSLiXLgQSgBHol0exaXKhCLPTYvaNC75J4BPidwaSySph1hM+7X/orL5cgL4254mBOe9BF
+ JcMD4VpxRR5e5brdNZduIs/zY5SW3t370Q6AILpm4m8+0Lar9PRe0FowX/cWKQGIhBdEk+rHm
+ hCTNz8DQpIaBTWcIoHI21I55fDpdfzFfUTlrqvFjcvGN7sc+t9kTQ1pra9nyKRWnKeMXcLeWs
+ 71TuzfpfaJ3qfxOvgAcq3H1jgnfuOkqSzPKAUp6pCpIkUJ8gWWoPXx+ALjrpgh1VPVUbfz0GX
+ n1d1qmlwyxxmqDYUA+NSTsRPsCEeKFokLAxeZ78TiZJS0Sg+sppSXN6gPSOTqMJKcz2whC0ua
+ i4yIaj+hLEUhM2ZvKoqK9wx8HyEENy5Sz82I3CzWntDxEn/1Q4S7pXmK+TyCDRvD4JFwQSOY2
+ JgARlTiSPjsSX+rV0RXLIMncdR5hZYudg/RXnXt0AGYlkT1ald7h/Losnew2DfHEShj5IAzoH
+ kJ1/JWNpo4YIMNtqCKHyc9aoKMaVtuTQgBgjhL4/NTpCZj+ON+ZMrsWwhvbkV2E1BFlEBn9G5
+ Av3hO0OVIQxHcjY5sKHmuYvgh6lAkQokKlH5hN+iyTjZILxXOpxn60NkasKb2iG1ZTlM1zUM7
+ KX2I6w/IjoAgCAtmbWKUDJr6ZgVuUWo0/PI8E4AXRTIHcRD00Wr/HpK/qT16MLiIQhRr4IQ
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 198.145.29.99
+X-Received-From: 212.227.17.10
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,315 +91,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, jthierry@redhat.com,
- aik@ozlabs.ru, richard.henderson@linaro.org, qemu-devel@nongnu.org,
- eric.auger@redhat.com, qemu-arm@nongnu.org, shan.gavin@gmail.com,
- pbonzini@redhat.com
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Jason Wang <jasowang@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Marek Vasut <marex@denx.de>,
+ qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Jiri Pirko <jiri@resnulli.us>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ Thomas Huth <huth@tuxfamily.org>, Chris Wulff <crwulff@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4JuDv+3LwgS/
+X-TUID: H2LbUpymTvCk
 
-On Wed, 19 Feb 2020 10:09:39 +1100
-Gavin Shan <gshan@redhat.com> wrote:
+The following changes since commit 6c599282f8ab382fe59f03a6cae755b89561a7b3:
 
-> Hi Marc,
->=20
-> On 2/19/20 3:28 AM, Marc Zyngier wrote:
-> > On 2020-02-18 02:04, Gavin Shan wrote: =20
-> >> This supports SError injection, which will be used by "virt" board to
-> >> simulating the behavior of NMI injection in next patch. As Peter Mayde=
-ll
-> >> suggested, this adds a new interrupt (ARM_CPU_SERROR), which is parall=
-el
-> >> to CPU_INTERRUPT_HARD. The backend depends on if kvm is enabled or not.
-> >> kvm_vcpu_ioctl(cpu, KVM_SET_VCPU_EVENTS) is leveraged to inject SError
-> >> or data abort to guest. When TCG is enabled, the behavior is simulated
-> >> by injecting SError and data abort to guest. =20
-> >=20
-> > s/and/or/ (you can't inject both at the same time).
-> >  =20
->=20
-> Absolutely, will be corrected in v5, which will be hold. I hope to receive
-> comments from Peter and Richard before going to do another respin :)
+  Merge remote-tracking branch 'remotes/armbru/tags/pull-monitor-2020-02-15-v2' into staging (2020-02-17 13:32:25 +0000)
 
-Sure, there is no hurry at all.
+are available in the Git repository at:
 
->=20
-> >>
-> >> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> >> ---
-> >> =C2=A0target/arm/cpu.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 69 ++++++++++++=
-++++++++++++++++++++ =20
-> +++--------
-> >> =C2=A0target/arm/cpu.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 20 ++++++++-----
-> >> =C2=A0target/arm/helper.c=C2=A0=C2=A0 | 12 ++++++++
-> >> =C2=A0target/arm/m_helper.c |=C2=A0 8 +++++
-> >> =C2=A0target/arm/machine.c=C2=A0 |=C2=A0 3 +-
-> >> =C2=A05 files changed, 91 insertions(+), 21 deletions(-)
-> >>
-> >> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> >> index de733aceeb..e5750080bc 100644
-> >> --- a/target/arm/cpu.c
-> >> +++ b/target/arm/cpu.c
-> >> @@ -78,7 +78,7 @@ static bool arm_cpu_has_work(CPUState *cs)
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 && cs->interrupt_requ=
-est &
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (CPU_INTERRUPT_FIQ | =
-CPU_INTERRUPT_HARD
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | CPU_INTERRUPT=
-_VFIQ | CPU_INTERRUPT_VIRQ
-> >> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | CPU_INTERRUPT_EXIT=
-TB);
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | CPU_INTERRUPT_SERR=
-OR | CPU_INTERRUPT_EXITTB) =20
-> ;
-> >> =C2=A0}
-> >>
-> >> =C2=A0void arm_register_pre_el_change_hook(ARMCPU *cpu, ARMELChangeHoo=
-kFn * =20
-> hook,
-> >> @@ -449,6 +449,9 @@ static inline bool arm_excp_unmasked(CPUState *cs,
-> >> unsigned int excp_idx,
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 return false;
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return !(env->daif & =
-PSTATE_I);
-> >> +=C2=A0=C2=A0=C2=A0 case EXCP_SERROR:
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pstate_unmasked =3D !(env->daif =
-& PSTATE_A);
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break; =20
-> >=20
-> > nit: Consider keeping the physical interrupts together, as they are clo=
-se =20
-> ly
-> > related.
-> >  =20
->=20
-> Sorry, I didn't get the point. Maybe you're suggesting something like bel=
-ow
-> ?
-> If yes, I'm not sure if it's necessary.
->=20
->      pstate_unmasked =3D !(env->daif & (PSTATE_A | PSTATE_I));
->=20
-> I think PSTATE_A is enough to mask out SError according to ARMv8 architec=
-tu
-> re
-> reference manual (D1.7), as below:
->=20
->     A, I, F Asynchronous exception mask bits:
->     A
->        SError interrupt mask bit.
->     I
->        IRQ interrupt mask bit.
->     F
->        FIQ interrupt mask bit.
+  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
 
-No, all I'm suggesting is that you keep the cases for IRQ, FIQ and
-SError close together in the switch statement, instead of placing
-SError after the virtual interrupts. Given that they use the same code
-pattern, it makes sense to order them this way. But as I said, this is
-a nit, and not something that affects the outcome of this code.
+for you to fetch changes up to d1cb67841ca213802ee789957188ec87e8b7996d:
 
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 default:
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_assert_not_reached(=
-);
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 }
-> >> @@ -538,6 +541,15 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int
-> >> interrupt_request)
-> >>
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 /* The prioritization of interrupts is IMPLEM=
-ENTATION DEFIN =20
-> ED. */
-> >>
-> >> +=C2=A0=C2=A0=C2=A0 if (interrupt_request & CPU_INTERRUPT_SERROR) {
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 excp_idx =3D EXCP_SERROR;
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 target_el =3D arm_phys_exc=
-p_target_el(cs, excp_id =20
-> x, cur_el, secure);
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (arm_excp_unmasked(cs, =
-excp_idx, target_el,
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =20
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 cur_el, secure, hcr_el2)) {
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 go=
-to found;
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
-> >> +=C2=A0=C2=A0=C2=A0 }
-> >> +
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 if (interrupt_request & CPU_INTERRUPT_FIQ) {
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 excp_idx =3D EXCP_FIQ;
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 target_el =3D arm_phy=
-s_excp_target_el(cs, excp_ =20
-> idx, cur_el, secure);
-> >> @@ -570,6 +582,7 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int
-> >> interrupt_request)
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 goto found;
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 }
-> >> +
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 return false;
-> >>
-> >> =C2=A0 found:
-> >> @@ -585,7 +598,7 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState
-> >> *cs, int interrupt_request)
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 CPUClass *cc =3D CPU_GET_CLASS(cs);
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 ARMCPU *cpu =3D ARM_CPU(cs);
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 CPUARMState *env =3D &cpu->env;
-> >> -=C2=A0=C2=A0=C2=A0 bool ret =3D false;
-> >> +=C2=A0=C2=A0=C2=A0 uint32_t excp_idx;
-> >>
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 /* ARMv7-M interrupt masking works differentl=
-y than -A or - =20
-> R.
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * There is no FIQ/IRQ distinction. Inst=
-ead of I and F bi =20
-> ts
-> >> @@ -594,13 +607,26 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState
-> >> *cs, int interrupt_request)
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * (which depends on state like BASEPRI,=
- FAULTMASK and th =20
-> e
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * currently active exception).
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
-> >> -=C2=A0=C2=A0=C2=A0 if (interrupt_request & CPU_INTERRUPT_HARD
-> >> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 && (armv7m_nvic_can_take_p=
-ending_exception(env->n =20
-> vic))) {
-> >> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 cs->exception_index =3D EX=
-CP_IRQ;
-> >> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 cc->do_interrupt(cs);
-> >> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D true;
-> >> +=C2=A0=C2=A0=C2=A0 if (!armv7m_nvic_can_take_pending_exception(env->n=
-vic)) {
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return false;
-> >> +=C2=A0=C2=A0=C2=A0 }
-> >> +
-> >> +=C2=A0=C2=A0=C2=A0 if (interrupt_request & CPU_INTERRUPT_SERROR) {
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 excp_idx =3D EXCP_SERROR;
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 goto found;
-> >> +=C2=A0=C2=A0=C2=A0 }
-> >> +
-> >> +=C2=A0=C2=A0=C2=A0 if (interrupt_request & CPU_INTERRUPT_HARD) {
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 excp_idx =3D EXCP_IRQ;
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 goto found;
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 }
-> >> -=C2=A0=C2=A0=C2=A0 return ret;
-> >> +
-> >> +=C2=A0=C2=A0=C2=A0 return false;
-> >> +
-> >> +found:
-> >> +=C2=A0=C2=A0=C2=A0 cs->exception_index =3D excp_idx;
-> >> +=C2=A0=C2=A0=C2=A0 cc->do_interrupt(cs);
-> >> +=C2=A0=C2=A0=C2=A0 return true;
-> >> =C2=A0}
-> >> =C2=A0#endif
-> >>
-> >> @@ -656,7 +682,8 @@ static void arm_cpu_set_irq(void *opaque, int irq,
-> >> int level)
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [ARM_CPU_IRQ] =3D CPU=
-_INTERRUPT_HARD,
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [ARM_CPU_FIQ] =3D CPU=
-_INTERRUPT_FIQ,
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [ARM_CPU_VIRQ] =3D CP=
-U_INTERRUPT_VIRQ,
-> >> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [ARM_CPU_VFIQ] =3D CPU_INT=
-ERRUPT_VFIQ
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [ARM_CPU_VFIQ] =3D CPU_INT=
-ERRUPT_VFIQ,
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 [ARM_CPU_SERROR] =3D CPU_I=
-NTERRUPT_SERROR,
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 };
-> >>
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 if (level) {
-> >> @@ -676,6 +703,7 @@ static void arm_cpu_set_irq(void *opaque, int irq,
-> >> int level)
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 case ARM_CPU_IRQ:
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 case ARM_CPU_FIQ:
-> >> +=C2=A0=C2=A0=C2=A0 case ARM_CPU_SERROR:
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (level) {
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 cpu_interrupt(cs, mask[irq]);
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
-> >> @@ -693,8 +721,10 @@ static void arm_cpu_kvm_set_irq(void *opaque, int
-> >> irq, int level)
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 ARMCPU *cpu =3D opaque;
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 CPUARMState *env =3D &cpu->env;
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 CPUState *cs =3D CPU(cpu);
-> >> +=C2=A0=C2=A0=C2=A0 struct kvm_vcpu_events events;
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 uint32_t linestate_bit;
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 int irq_id;
-> >> +=C2=A0=C2=A0=C2=A0 bool inject_irq =3D true;
-> >>
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 switch (irq) {
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 case ARM_CPU_IRQ:
-> >> @@ -705,6 +735,14 @@ static void arm_cpu_kvm_set_irq(void *opaque, int
-> >> irq, int level)
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 irq_id =3D KVM_ARM_IR=
-Q_CPU_FIQ;
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 linestate_bit =3D CPU=
-_INTERRUPT_FIQ;
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
-> >> +=C2=A0=C2=A0=C2=A0 case ARM_CPU_SERROR:
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!kvm_has_vcpu_events()=
-) {
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 re=
-turn;
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
-> >> +
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 inject_irq =3D false;
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 linestate_bit =3D CPU_INTE=
-RRUPT_SERROR;
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 default:
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_assert_not_reached(=
-);
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 }
-> >> @@ -714,7 +752,14 @@ static void arm_cpu_kvm_set_irq(void *opaque, int
-> >> irq, int level)
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 } else {
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 env->irq_line_state &=
-=3D ~linestate_bit;
-> >> =C2=A0=C2=A0=C2=A0=C2=A0 }
-> >> -=C2=A0=C2=A0=C2=A0 kvm_arm_set_irq(cs->cpu_index, KVM_ARM_IRQ_TYPE_CP=
-U, irq_id, !!level);
-> >> +
-> >> +=C2=A0=C2=A0=C2=A0 if (inject_irq) { =20
-> >=20
-> > You could just have (linestate_bit !=3D CPU_INTERRUPT_SERROR) here, and=
- n =20
-> ot have
-> > inject_irq at all.
-> >  =20
->=20
-> Sure, will be improved in v5.
->=20
-> >> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 kvm_arm_set_irq(cs->cpu_in=
-dex, KVM_ARM_IRQ_TYPE_C =20
-> PU, irq_id, !!level);
-> >> +=C2=A0=C2=A0=C2=A0 } else if (level) { =20
-> >=20
-> > Is there any case where you'd call this function with a SError and leve=
-l =3D=3D 0?
-> > And even if it happens, you could exit early in the above switch statem=
-en =20
-> t.
-> >  =20
->=20
-> The combination of SError and level =3D=3D 0 isn't existing for now,
-> meaning the SError is always coming with level =3D=3D 1. We can't exit
-> early in above s witch statement because env->irq_line_state needs to
-> be updated accordingly.
+  hw/xtensa/xtfpga:fix leak of fdevice tree blob (2020-02-19 10:33:38 +0100)
 
-I'm not sure level=3D=3D0 makes much sense. A common implementation of
-SError is as an edge interrupt (it is consumed by being handled, and
-you can't "retire" it). I'm not familiar enough with QEMU's interrupt
-delivery mechanism, but I'd expect SError to differ significantly from
-IRQ/FIQ in that respect.
+----------------------------------------------------------------
+Fix memory leak with fdt
+cosmetic change in code and logs
+update mailmap
 
-	M.
---=20
-Jazz is not dead. It just smells funny...
+----------------------------------------------------------------
+
+Chen Qun (2):
+  hw/nios2:fix leak of fdevice tree blob
+  hw/xtensa/xtfpga:fix leak of fdevice tree blob
+
+Michal Privoznik (1):
+  Report stringified errno in VFIO related errors
+
+Philippe Mathieu-Daudé (13):
+  scripts/checkpatch.pl: Detect superfluous semicolon in C code
+  audio/alsaaudio: Remove superfluous semicolons
+  hw/arm/xlnx-versal: Remove superfluous semicolon
+  hw/m68k/next-cube: Remove superfluous semicolon
+  hw/scsi/esp: Remove superfluous semicolon
+  hw/vfio/display: Remove superfluous semicolon
+  ui/input-barrier: Remove superfluous semicolon
+  target/i386/whpx: Remove superfluous semicolon
+  tests/qtest/libqos/qgraph: Remove superfluous semicolons
+  contrib/rdmacm-mux: Remove superfluous semicolon
+  hw/display/qxl: Remove unneeded variable assignment
+  hw/block/pflash_cfi02: Remove unneeded variable assignment
+  hw/net/rocker: Report unimplemented feature with qemu_log_mask(UNIMP)
+
+Yu-Chen Lin (1):
+  mailmap: Add entry for Yu-Chen Lin
+
+ .mailmap                    |  3 ++-
+ audio/alsaaudio.c           |  4 ++--
+ contrib/rdmacm-mux/main.c   |  2 +-
+ hw/arm/xlnx-versal-virt.c   |  2 +-
+ hw/block/pflash_cfi02.c     |  1 -
+ hw/display/qxl.c            |  2 +-
+ hw/m68k/next-cube.c         |  2 +-
+ hw/net/rocker/rocker.c      | 15 +++++++++------
+ hw/nios2/boot.c             |  1 +
+ hw/scsi/esp.c               |  2 +-
+ hw/vfio/common.c            |  4 ++--
+ hw/vfio/display.c           |  2 +-
+ hw/xtensa/xtfpga.c          |  1 +
+ scripts/checkpatch.pl       |  5 +++++
+ target/i386/whpx-all.c      |  2 +-
+ tests/qtest/libqos/qgraph.c |  4 ++--
+ ui/input-barrier.c          |  2 +-
+ util/vfio-helpers.c         |  6 +++---
+ 18 files changed, 35 insertions(+), 25 deletions(-)
+
+-- 
+2.24.1
+

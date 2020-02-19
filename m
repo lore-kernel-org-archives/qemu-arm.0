@@ -1,87 +1,87 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp322349lfp;
-        Wed, 19 Feb 2020 02:24:29 -0800 (PST)
-X-Google-Smtp-Source: APXvYqztyIw9JlKOcgWHqpIEq2UazGJpFqZfnE++j3OjbrX9IEtu+QQMXsjXbAvv/GRgbbvSCxm/
-X-Received: by 2002:a37:b09:: with SMTP id 9mr18832191qkl.327.1582107869042;
-        Wed, 19 Feb 2020 02:24:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582107869; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp322570lfp;
+        Wed, 19 Feb 2020 02:24:52 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwcrrOHkcLauFlUSXqaKn2JeJ5Xqlyfbey6tU4a2btZM1LhJa9C+u25DMWDWb9Ui/a6KAi8
+X-Received: by 2002:a37:a7d0:: with SMTP id q199mr7115344qke.488.1582107892064;
+        Wed, 19 Feb 2020 02:24:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582107892; cv=none;
         d=google.com; s=arc-20160816;
-        b=F9BJ0UIVo3nG+5iWhGPvbDdJ3kCjBo3LEVvzpvxoQl8vyIh9ACmESygSqCDqK//Vna
-         AnFfHwLe+gtjeFJ6dEVYTAFfGEmD500UGCjO6X6kSL/98Ml5FMHLBVwZ4WAH5oPRDz5L
-         cirA4r2gWKDtelJmeLMG11hs6p3uE527tWCWQpBs7o+tFUOQL9Tjwj9gQ8IVASzqZvE+
-         RTPYGyUtKVQoo/sp1AVTvo6MmvdwKfpI5PMynDi6rXPn0lbogGyL2N67Q1H3/B9zuhQ0
-         0imSkAQCzeOZu4FGyJUKKGy1nwnrNOryQA9VY9T9KGF+nnwDMRsFid9eZSu6mpy+d/6m
-         ehhg==
+        b=RTIwEPQ5ZY1riZRmI/AmpBccPobBoPKlUfoUKODhMubsLZEePRmYFgwSxIwNt7oo5d
+         DRvizFPNjf26G4dWXEK+Ggw8/dvx1GC1IdTIw6JDqhc3yodrezrZCADh+GugH2Lpo69B
+         fm6rrgLd0H0G0OHrR1eNiLW15FCKsnXaRH8VsC/mNnsfFPoMtQwcpOei0DNBgJoXQej+
+         X/HlqtoVy9P7By5jcXqIFn1dvHpcf2HVDYxSbrXvnIEjcOyBZxwHc3dqy8TipJUC9OhY
+         K5oAsMxYkqRqjCKDo44WYdSkxOWK4j5JXKBSpep7j1xCPbU6psnPuA1VJ3YnHkzgCmW6
+         CyPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=p3WtfiacGOofT8uM/WQ4oJiMv7OHdl9GdfdYZE8RbVo=;
-        b=NQpgHsIaYEf6OB4ef2W/2AzEBQwt5lp90LXkbJrW+DG3sNG/9OroaX+9P9bP5ttm2X
-         028Hk+A47iKzdwjd6zpAgJDClY8ups2L/Tune68qSE+4Yz24PW6fy780c3Yyl4jTlLp2
-         C/DRkZyr4h6VxBv8fAlqqriwIFoTptrD8FWsIFGYgODJKB7JYhHA4PdXGhqk+MC9NRyc
-         xTfi8eBFeTxQ4PfG1D88HQFnP6JmMdArELZc/GgJgqU8UKpwjGFKjbVo9edg2ps/wD4j
-         QP49YDXjgWe5mCzIwOYs1+9cjL7Nw5zG6WBwWCAsYEINQqt0ppEgeO6w5fquUBMWM4hU
-         Rtog==
+        bh=5O3pdI15pdliI3bU8k/pQFrLFPKmkKmddq0BxslTfFA=;
+        b=CsXBOiMltOz613x177ouBHBjBuUZNoDH+40s7l3rdX4/XRhac8kQ32lD8/Ef4q9fFp
+         MiaUgqQFk4K19wseE/xEWwBuYq5TW67DvRm1ti88Aw9iXO0CAULfCG1OUKw2w3yAdcYk
+         67BnOAFQuk9pW7FHFq2CHz1L+RZnc+cLvfuGGp9JAID7nOU2Z08QzXMgXv2r03RzgSLu
+         18sthSUP7cwcGeHBk+2Rc+qV7+06F0LIqqQpYef52SERq4yxNuHkoN05HkK3uj6hTZRH
+         5AjovHykWFa3uTht1edYnxi+J8iswjH1kL92Vw02CePEQJvomncCYTcEXxWnIJ8nQCcc
+         Px3A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z13si741551qtq.400.2020.02.19.02.24.28
+        by mx.google.com with ESMTPS id l79si633361qke.282.2020.02.19.02.24.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Feb 2020 02:24:29 -0800 (PST)
+        Wed, 19 Feb 2020 02:24:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48500 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48502 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j4MWq-0001B4-8x
-	for alex.bennee@linaro.org; Wed, 19 Feb 2020 05:24:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53557)
+	id 1j4MXD-0001Ub-H6
+	for alex.bennee@linaro.org; Wed, 19 Feb 2020 05:24:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53413)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j4MPu-0003iU-Vk
- for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:21 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j4MPn-0003e2-8P
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j4MPt-0005V8-BQ
- for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:18 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:56387)
+ (envelope-from <laurent@vivier.eu>) id 1j4MPl-0005I5-Vj
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:10 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:51497)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j4MPd-000543-2c; Wed, 19 Feb 2020 05:17:01 -0500
+ id 1j4MPl-0005Db-HH; Wed, 19 Feb 2020 05:17:09 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MK3iK-1ik4d83kmE-00LZU1; Wed, 19 Feb 2020 11:16:21 +0100
+ id 1N9d91-1jY2sr2w4b-015aL4; Wed, 19 Feb 2020 11:16:36 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Subject: [PULL 01/17] mailmap: Add entry for Yu-Chen Lin
-Date: Wed, 19 Feb 2020 11:15:56 +0100
-Message-Id: <20200219101612.1033925-2-laurent@vivier.eu>
+Subject: [PULL 09/17] ui/input-barrier: Remove superfluous semicolon
+Date: Wed, 19 Feb 2020 11:16:04 +0100
+Message-Id: <20200219101612.1033925-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200219101612.1033925-1-laurent@vivier.eu>
 References: <20200219101612.1033925-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:xe7wKhpW7sXLoo199dRB/P1e4/7TgICYuBSsWrRJup5IcV/QJDq
- a3CtbgancMWpc6D9W43PZRdAidSaEqYjrGaO4EZABDLuWLwsZGVSKhanQtrmHNUkoSY71Yw
- X+7zg2yuL6+yQzXjWqm4g8ZhUAo8qffqJAtPZOMDtVxO1JY7tHz68pHonIULRpI+U9wIyBt
- GcBjEZwc7K2b2iiwySwdg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:zqlyOD3cVig=:l34FrFYAmNKubln+sQibfc
- nXhE9k6YREHjSeSHnh4MWVUiIXIUevjWujFUVpGLzOhtomdgDjl9pDfDrEWGGcxnZYPGz2klw
- A//D1MYnxLZb0Ay/u2BpAI45opHZPxf/puY365Ns0yQMyGck69mRumDbRi7qd759wPVtvCL8q
- Hrg+ofqGj7v+oFcaVRXOUtsj4yas0TIN2wMRzxEv6DjSNRIaa8xXWv9+KUYgNimV2+BBHOHZs
- 3vt5fczORZqIeUisPGwZUeEYr2rWbN6A62APLezlVZB8Fc4fP/jXWU6i5rOumcJxlvosbsPDH
- hEnVjem8OdItiiBliC2UOGjUa9AW0ykME1aNrQD9c3vpZFRLljALG/ls6rPT88g1DBTILJ7iE
- UosapGHp263xeQj2mWwCpZyzQVZKpH65urLNOwHhWWcqoVBNQ23QPoJCfflADQElXKngsCLVs
- c3HMxrosmjkOGA+XmqADp3QA8QLSIIwbY4JaXxyzQUTCV0Au0iE/+jdlSCZQ8k4FAq8ECMrpJ
- c7k64HtgDklPEbHEpOG1USZuGfhkxDsMms1t/SpUNuao1mMMKDG5gpfp3pccRTv7X729zVgRK
- 2q/TINmzLbrtVw2qNSdoC/2PDmeU1IdomReLLCuSOiCbMZYneiQxj9bw9uvji/eKErbuyboFb
- VoaUWrn199W8euBQzIS9a+TIp2S5EKZF0wnTtIz6+xcFVH7nV6HVwpdASnnTSZYq5JDbtymVV
- MjZuHgohszDDcHlKk1dN2dQZrybMitFg0QjCnfv0vU6uPoJH0yd641DUth01GIL7g96OScKnt
- 2xLZegXgl5Mh7Y3xrKZmwVmw8t+VLvxafTDkiFlgJ6nSwD++/Gzg0MXJ1hyu4mjRxzwfTme
+X-Provags-ID: V03:K1:dCKqb1vUoCcOnVsEoFGgPBNlgZjVP79jxRfrS4mjxXL8SqMpwsI
+ xWH2CzHFJQI6TATjV2J9uuYb9DdLUKoroR/PRigg65uVjxB0cJSaGRbypHneZZA/TJ2pYAf
+ vZShdwYCffI27wnIZlrCx4u2+YDWgbBzfDLZMxhScfvb//RMH2Wv8HMumhCEsoEMqcn8yko
+ wg5P2CAofkgcrmsCVc3Xw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:KmzcAQTGE2k=:DKepF76/00oaWArlojOmNU
+ 2mIgrgJrQZSaCDaFoNR8PDhyXXHgDahlgFrx34k5tt//WHFQYkHbbqiU2j+MQpPWMD4QSNwDx
+ LPXFm3f2h4FTzIX2O8bKNyhQG1y+2eIleY/qocx7SYN4uctXAQXPRXLBBjJHQzLadpK5z5imd
+ REarmrPP3SFwbCrwL0YNO/MloEY7K7fuvEBispu4Nm+CuieGu/p4Y/gVnjWnjP+zA4PxD23ba
+ M2T0dJMOutyfunu7ZqCyPfTUHhdhgZSh6ZuXO5gE73xyyRCPLoy9duyv0L17m2IUL+Z65uLo6
+ kEgeuwiyfSu3tJGx3HGrQ49pofLhK7ktgDQPBYpLowY9v3LPpq345dB8pz3twxTF8/iFr3Bfg
+ XVC2LDRnsx2Sa3B+MBIyxJXmZHEJFPf4llGBB4xoP88N0pG8Zt4F/1RqnBO81YABFxXdtXfTt
+ 0nJlzgrxKaMAzQZQbHvcsziPfZHyNVnamkKgzXvrEFUzfuuDcz2PobfY1owaatVwmTjWj7kKP
+ V/pm+Qmoc5K3OZiYdrqZPS2TSItfCemdgA8L9i/5czkUQxA78aneLTZr5QsrihVYYQ55IfyVH
+ fX35Sb831XqPYgRZA6z/10q627ILrs4Aikai2IDnj4395v8r2lwMY/Op+bWKHNBYQ5qdNZ7it
+ Wb19erUBBquQNHfphDU9Zbz5AQUM6zaQTARtMpfO78gd4D2/HHTxV1xnn/+grn0GIfPxxl7mr
+ +kLUvGMfYayQYmNS0Ku2c++5T7XhnbEZ75WlqvB+7nR41szzCE3uG2H2fArDxJow+8PY2yqdz
+ afDc+1mp3BNAQ4h9RfjFF6H9YqMT30PTZ+LdoKgjWQ7daMTmBIjnsZZAOwbBVskDY2IvWTm
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
+X-Received-From: 212.227.17.10
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -98,49 +98,48 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Yuval Shaia <yuval.shaia.ml@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
  Gerd Hoffmann <kraxel@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Marek Vasut <marex@denx.de>,
- qemu-block@nongnu.org, qemu-trivial@nongnu.org,
- Yu-Chen Lin <yuchenlin@synology.com>,
+ qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
+ qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Jiri Pirko <jiri@resnulli.us>, Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
  Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
  Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- Yu-Chen Lin <npes87184@gmail.com>, Thomas Huth <huth@tuxfamily.org>,
- Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Reitz <mreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+ Thomas Huth <huth@tuxfamily.org>, Chris Wulff <crwulff@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DzF8OlUgCKzW
+X-TUID: JO+H6a3dtRwn
 
-From: Yu-Chen Lin <npes87184@gmail.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-I have two mail address, add entries for
-showing author and email correctly.
-
-Signed-off-by: Yu-Chen Lin <npes87184@gmail.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Acked-by: Yu-Chen Lin <yuchenlin@synology.com>
-Message-Id: <20200206125504.7150-1-npes87184@gmail.com>
+Fixes: 6105683da35
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
+Message-Id: <20200218094402.26625-11-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- .mailmap | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ ui/input-barrier.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/.mailmap b/.mailmap
-index a521c17b4430..76154c7d8abc 100644
---- a/.mailmap
-+++ b/.mailmap
-@@ -152,7 +152,8 @@ Xiaoqiang Zhao <zxq_yx_007@163.com>
- Xinhua Cao <caoxinhua@huawei.com>
- Xiong Zhang <xiong.y.zhang@intel.com>
- Yin Yin <yin.yin@cs2c.com.cn>
--yuchenlin <npes87184@gmail.com>
-+Yu-Chen Lin <npes87184@gmail.com>
-+Yu-Chen Lin <npes87184@gmail.com> <yuchenlin@synology.com>
- YunQiang Su <syq@debian.org>
- YunQiang Su <ysu@wavecomp.com>
- Yuri Pudgorodskiy <yur@virtuozzo.com>
+diff --git a/ui/input-barrier.c b/ui/input-barrier.c
+index fe35049b83a2..527c75e130ee 100644
+--- a/ui/input-barrier.c
++++ b/ui/input-barrier.c
+@@ -455,7 +455,7 @@ static gboolean writecmd(InputBarrier *ib, struct barrierMsg *msg)
+         break;
+     default:
+         write_cmd(p, barrierCmdEUnknown, avail);
+-        break;;
++        break;
+     }
+ 
+     len = MAX_HELLO_LENGTH - avail - sizeof(int);
 -- 
 2.24.1
 

@@ -1,87 +1,86 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp321149lfp;
-        Wed, 19 Feb 2020 02:22:56 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw+bM8OtEBMgflPpm/zwl3bWm9RxrnXg+JLExUoWA0C55lYJ42qiL0z6PcSEsrITsQ4kQMT
-X-Received: by 2002:ac8:7b4f:: with SMTP id m15mr21686606qtu.48.1582107776463;
-        Wed, 19 Feb 2020 02:22:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582107776; cv=none;
+Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp321670lfp;
+        Wed, 19 Feb 2020 02:23:33 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyweUBVHzjnMLVb0OFFqzdQmKEr0RzBV6cSbiu5dGrh66OgeLoI98bFJQBxwam/d3LsykD9
+X-Received: by 2002:ad4:4949:: with SMTP id o9mr19771113qvy.189.1582107813616;
+        Wed, 19 Feb 2020 02:23:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582107813; cv=none;
         d=google.com; s=arc-20160816;
-        b=XQcG9oS5avYwgpQyEGsoKD6tyQbxEiBUwM3gUPSMiqq6hxob0n07N7KuuXudzi2xDH
-         2C4UpmP1+DLKWZk/wKpU+Wqn1C55nwcAuQkKNbhcNe39Ge7BY7i4i2Opg7dkd5CLYGJk
-         bSq5vs86msBrgJMle0tNFxI5kZ2cBiTPZ9xdLg1usIjcpTNSQdYtB8tVXs4jnUJvSHGb
-         sgB6USPwWSNyv6/J4S76kzZ0DvfL0XBMzS5oRTAR43OqToz8hACu9losr/9iRJmQ37/c
-         mQK1+0NpzK3mw7laTftPrj4Wnzhc4KiX9QOOTvoPOTdKcAJk68UoFl6Nmt0KUUHkBpsE
-         vMEw==
+        b=Gnf2Ehv+M9JrI4+jgMBnCRHt6vUwUD1pPC3sxtvGwIs/B86uP+lcPrsaCoRM6njkzi
+         D+GHLjTjTcN2P75OIHjR6F79aqb5cvWXg05RQ1tJIh1jOagz6vlxDCUbc4SO9U38HS+a
+         JJzmqppXpKQLd9LgSEZS+N6DH69dNBm5gc5JU/krayJ4mPVMI1CPNXzEGgkU2Xg3a8Ke
+         WjAC2YyPf5vP3EBVmJeTjuWJd+qOef2DLzLScYyfrzgpt+D0oAbCgo3c40G3J+bvgu5O
+         sxkTQPTIm2orvD24dcvfIEMAmgCBK0etL273lGcQRArfDw7JCvyfANOKShy9cOkKKdZC
+         IurQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=ByWAu9rs4dsRAqjqql1a2qAYy0E+pLAjs2BSQRpudPc=;
-        b=SG3YJbbUlnP6mkSLG9IdoUCC9SAM46SxfJeDb62EHa/kmD/gPx8t0PicRH+JplJOut
-         OwtT4Otjm7oMWGMwktM+VKipOjGPu9e7g8XuoUfAEvEmqXo0E1PgvHh8KzgFenovp6JC
-         PxubH/tIdYxZj4Hu/4ArxacjaCH2XoRpqSX8/bup8zv7PrVsqKu3fu8FALp6D+/+IkCw
-         74UMYYzv7KgiMVoWjenY1Tfa1RwZZrVWWTE54gh91L8NIb8zpRuEuZtcDPtpKNs2dq1b
-         JWxbsCgPebhboBiYt3kTBH9Wd5GKm2U2SNux0wtvvPutlEoeOYx/QENihWmyNFGldKI1
-         02yw==
+        bh=J4Zt3pR9u9TMVh80kCuYFtCHnwg2Z7n01pc7XlDtFm8=;
+        b=HYxTZA21vY96H0tVEsE/LpLH+T/arioaUvPRA/U33lng7eEu0QBu0ywniRr657U7Tg
+         34k9iatKGpGFZrqw2RgfwE9CmImQ3zf2jMpQcPv0CruHFYvTr7pqoIXjUV0Lkj0Ehvbd
+         VfVHVTK3YDBJPi641uBonUVEPGiLolAXJ/Lg0rJhclVICWv87eYbV/j1JVqgFDaTiQo3
+         +e9A0raDv6K4UrQFB5zqE/FQ3W9oQCQZfylS7JR5Jd4zAaKSKUsKQEhHyfxiVC+JYO85
+         7xupn6g92aNrfWtRNunWSxfwmAu91JYDp6mGtr2ZuyjyZbxwOM1YQfuHwZg/A+Z0qhDc
+         7/VA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s19si664588qkj.377.2020.02.19.02.22.56
+        by mx.google.com with ESMTPS id 89si738370qta.317.2020.02.19.02.23.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Feb 2020 02:22:56 -0800 (PST)
+        Wed, 19 Feb 2020 02:23:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48446 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48472 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j4MVL-0005lJ-U2
-	for alex.bennee@linaro.org; Wed, 19 Feb 2020 05:22:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53307)
+	id 1j4MVw-0007JI-Uu
+	for alex.bennee@linaro.org; Wed, 19 Feb 2020 05:23:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53851)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j4MPe-0003aU-Vz
- for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:06 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j4MQ8-0004Ax-Rp
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j4MPd-000579-V2
- for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:02 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:37851)
+ (envelope-from <laurent@vivier.eu>) id 1j4MQ3-0005oo-Sb
+ for qemu-devel@nongnu.org; Wed, 19 Feb 2020 05:17:32 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:43541)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j4MPa-00050Z-Pg; Wed, 19 Feb 2020 05:16:59 -0500
+ id 1j4MPu-0005VQ-Iy; Wed, 19 Feb 2020 05:17:18 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MHnZQ-1jH4062Uz8-00ErOT; Wed, 19 Feb 2020 11:16:40 +0100
+ id 1McHM2-1jaONM07IK-00cgh9; Wed, 19 Feb 2020 11:16:52 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Subject: [PULL 11/17] tests/qtest/libqos/qgraph: Remove superfluous semicolons
-Date: Wed, 19 Feb 2020 11:16:06 +0100
-Message-Id: <20200219101612.1033925-12-laurent@vivier.eu>
+Subject: [PULL 17/17] hw/xtensa/xtfpga:fix leak of fdevice tree blob
+Date: Wed, 19 Feb 2020 11:16:12 +0100
+Message-Id: <20200219101612.1033925-18-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200219101612.1033925-1-laurent@vivier.eu>
 References: <20200219101612.1033925-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:JpUVUNN+S0+cpEQ7Ukn+HanppYJnz1MOzhIPtY9bWWbtdRnlNeW
- fjmIzxWyibl5/aaGjt/3Edg+TX35x3OMfs9jkkp0lWrOWeKWGYYZEV71XfZUHhO+kXj5IpG
- RsVNYTu7vEFqBSZVfY0U66m6UasYctRfJOKM5sGpObgMNIORDVcSsWjUhqWHysEREbhwSrf
- 0lynHRHLcq1aaZsVnYy1w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:6VzeMLdb83I=:dcixetq2v7BjSE39LhHLZb
- SlPSv938kldCjaw+Xl59xA+Rm9aVV5LXOfkqnNkyCd87DhhVd3KamGTTd+g2dEpgzO9te7K9n
- hVRXu6w+f0cSHsZ3GwaA33nYwh/AEMzvONqlzTfvHoNpSdCEXOSM/Vaf3Ce9JoDCiOyN/wRVE
- BdOLErc7SNcstp0jMxWpHcjjJzztxbdLclwsavzuN1q2Q4y11QzMsNipswGU4RnOxjFj9j1aI
- QzX4V8v1oUHkwn5cqAoPiElHcbQfiM6VLRSucLIcBD8oz8y6yv5WNQKbCk6Fk49bc1cIreuEn
- GPFrCXvgSUwe97hka79PZPYsy+TsX3EBiwIm02KbsgeO9j+GKDf+fzCk39BIJeT9tl2vVR8N9
- eNs9Uajobg3xnXyZE+ZtDvnJIRygUK5uoM0zeh3UALO5HiMxRdg6IirDfSTPb5WfTcP4FaM7j
- o1/mG70nIXVB4Wcy7muuUGYgA0fBLR62JY4X5AsRZSxKUCR62XcTZj3eiouOSFGuugGL/50It
- ZPekopFAG5wSLpaBg4rYHO/usOnN4lwujP7tyQiauBwoW8twayiYIoFftGoCt9oN6dH/M8vj2
- 07/7nr1sicikV0dFEk/YIRoMx36A5wByLNe4WYgtqqewoh4AY/paHJJQxQZDeuDwGxh+qIRnC
- +pmkzVmKVRgSDy9qGDYeqBCw/ZVy5Wqwc1PnbOmho8/T+qui8Z7t+DI8VutZ45Q+MJVb7HqoM
- Uv38HchWPngc6lP05zNTVvcfXShsesjscX0EcalDZBNrCkz6fn1Y18hFZPkP3tJFqGvoXpRfy
- nV8h3JikpueruaW4d7qFy1gsgqyhIUGNZmgAh5psE9B0iwJoV93UHcDYcYqqixG/zvG7zLP
+X-Provags-ID: V03:K1:2d2DdnBIT4QzL6xniwXm6iBbRodr9Z9EJgRhZyD11lTxEOZi5ih
+ jzkXcdw805ZSlb6qs8qrMskTlO9hiW7BdZveZ84yjog/lIFx1wRSYviWMpcjXcPI0zgAubW
+ NXKwC90SodKEbaHPzlw6hOApbQf9VEM90b94R7XuCuiutC24oWen4Tz8gyudsuQGxB/EIfE
+ FbJTPSbTwBM0rX0y4XZuA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ARdIMovQ8QM=:/udeQ+opwPyE+3PMD2T7+V
+ LV1U6CoLgQ6itRUERxmiE70V3DBGdEpWWaMs9IB3K6bXN4f1/BByhpLE9O+36Ar4pPe1HwvIH
+ TOXgnrH/qnnWVCIEUe2rTH/h5wIPATlnj8sdzWb3qJnGHJZ1fRNH4dLx6zppMCTxCYZvpJgOe
+ eeV55IDrlwpTr72z5x2LI88zvd0sInaReVNpp89HjCf9P/99WQHaqVEx4viTpHCpes20Fpcmz
+ 4wm76XRFL//ozV/V+TRQ19ouAd8LfuFNYkXoNkj5Yq8BSsVlRdhruTH2zHfjDJovglTb0OzMZ
+ zeo7Lq5T1YgbRPBaO2nPSCQR51p0qEXqEpgsDMvKlj/1gSV5Eza8uHgoZ+KK+guCQcJl3xKs0
+ RTUIs7GaNcJsmJo3cxdvpO7MKCX5BNeEtx3SrgwjXIqT3LogOnNGwtU0C1Z9m4jwYEbElEUgV
+ zJZeSSJ8nQ+wjcYatF3hE+tJ9PDd3TVFob3RXuGDkZS0mD72NS8RYRhJ8eWXWPUUpNcW71ngP
+ f8shO4TBD2W8uoShLtCpe9Bz+f0vMkL1z9/8Aihhy2A3tVFesQi1WzcjgLdGsn8j8gdY593Rk
+ PTUKcEhlHnId5M9KkGzPxjXGpLsLFnWCXVIiPu+OasCTE+UTfmQkcB9WIbRBfLMUqAFJWO4Dk
+ IIhi8BzCaYWpWqzuwa5955FTb9kYgtchip15rCD4ZxPV2cTKHQ99wOE6H6Utlnvj7osOJsEG9
+ 5J3rPAECW7z7U6AMb754HNcxu3XmyQuhRV3ujJdcV2iE6tK4S2omcn6b0pE9sopU03yXkm+oF
+ ZHND4497IU9FXGHMi6zCtg9ZP+50YP7QCiwPQQPY+4+/yUo1ouO6KBbko3Kj7FFOmaNhqDz
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
+X-Received-From: 217.72.192.73
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -98,57 +97,48 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Yuval Shaia <yuval.shaia.ml@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
  Gerd Hoffmann <kraxel@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Marek Vasut <marex@denx.de>,
- qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
- qemu-trivial@nongnu.org,
+ qemu-block@nongnu.org, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Jiri Pirko <jiri@resnulli.us>, Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
  Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- Thomas Huth <huth@tuxfamily.org>, Chris Wulff <crwulff@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
+ Chen Qun <kuhn.chenqun@huawei.com>, Richard Henderson <rth@twiddle.net>,
+ Kevin Wolf <kwolf@redhat.com>, Thomas Huth <huth@tuxfamily.org>,
+ Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Max Reitz <mreitz@redhat.com>, Euler Robot <euler.robot@huawei.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +V2GtwdJxz8G
+X-TUID: 8X4FkjNe3kf7
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Chen Qun <kuhn.chenqun@huawei.com>
 
-Fixes: fc281c80202
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
-Message-Id: <20200218094402.26625-13-philmd@redhat.com>
+The device tree blob returned by load_device_tree is malloced.
+We should free it after cpu_physical_memory_write().
+
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+Acked-by: Max Filippov <jcmvbkbc@gmail.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <20200218091154.21696-4-kuhn.chenqun@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/qtest/libqos/qgraph.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/xtensa/xtfpga.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/tests/qtest/libqos/qgraph.c b/tests/qtest/libqos/qgraph.c
-index 7a7ae2a19edc..ca01de07437b 100644
---- a/tests/qtest/libqos/qgraph.c
-+++ b/tests/qtest/libqos/qgraph.c
-@@ -474,7 +474,7 @@ QOSEdgeType qos_graph_edge_get_type(QOSGraphEdge *edge)
-     if (!edge) {
-         return -1;
-     }
--    return edge->type;;
-+    return edge->type;
- }
- 
- char *qos_graph_edge_get_dest(QOSGraphEdge *edge)
-@@ -590,7 +590,7 @@ void qos_add_test(const char *name, const char *interface,
-                   QOSTestFunc test_func, QOSGraphTestOptions *opts)
- {
-     QOSGraphNode *node;
--    char *test_name = g_strdup_printf("%s-tests/%s", interface, name);;
-+    char *test_name = g_strdup_printf("%s-tests/%s", interface, name);
-     QOSGraphTestOptions def_opts = { };
- 
-     if (!opts) {
+diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
+index 8e2dd1327a46..60ccc74f5f1d 100644
+--- a/hw/xtensa/xtfpga.c
++++ b/hw/xtensa/xtfpga.c
+@@ -380,6 +380,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
+             cur_tagptr = put_tag(cur_tagptr, BP_TAG_FDT,
+                                  sizeof(dtb_addr), &dtb_addr);
+             cur_lowmem = QEMU_ALIGN_UP(cur_lowmem + fdt_size, 4 * KiB);
++            g_free(fdt);
+         }
+ #else
+         if (dtb_filename) {
 -- 
 2.24.1
 

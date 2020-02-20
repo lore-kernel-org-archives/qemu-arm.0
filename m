@@ -1,164 +1,159 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp415789lfg;
-        Thu, 20 Feb 2020 02:52:30 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwDqZoxfqHnDrRaGsGzestBS83pPaVXzqz7pYvfjZ+m+bqLJDwLOurU27YIU7DKNqBXCMlI
-X-Received: by 2002:ac8:65ce:: with SMTP id t14mr25659246qto.72.1582195950575;
-        Thu, 20 Feb 2020 02:52:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582195950; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp543016lfg;
+        Thu, 20 Feb 2020 05:06:08 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxNS9EtryCtKz4W1gNGTSzN5XSUabl8U93yyEDJBLY1iYEXCX2EJ34QmaFlYyFO15V7sSGf
+X-Received: by 2002:a9d:171a:: with SMTP id i26mr18993493ota.202.1582203967828;
+        Thu, 20 Feb 2020 05:06:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582203967; cv=none;
         d=google.com; s=arc-20160816;
-        b=oVGNPDlNkwhJKjQOOmqzd5gLepASuc9LByVuchmF5AqgH/Z3PGHSNRM7rE6XkZT39K
-         +T6hYuseghAm4ySiKuy0J3gdECBZXYP4CetGdxRj+IfiMZjb7iTE0N1Wa2p5uyO8pXRR
-         gC9/WDKcnKZzPRY9AybE7cvFUuYlF824WwVPAqB8zehBmLVXQKgM6dpMzvIYTxqWXU5Q
-         /RtiaFfYvbYH+j6RhXA6teZytxP4kUKc1bzYEZmIv0dyi2/M+n0tym56UpEQ71lJSaB+
-         Ba7fDS+R0CTp6phoncBnb/9Tunua0Cc0OyupGoTkmuUP0utFhFkUckzFA+AsYQT0g0PF
-         zPXg==
+        b=XwajV33l89hM3E/XS3UEm9XmzSRyecRBKQea8AkljzzVtTTo6M1TZyl++My/hUgaSb
+         XcIiNIXXdw5CKushtA79heD69AFOLAlB8D6wRr7/X0WSwQKps+dvRCtgnkEydyXZAcsf
+         zceZvfWwg3Y4Q5ysTHNXG7gsMorh5D9eWx9IVdoII5Ef+tqalYBdvDtRxTe9xCH2MUdh
+         5RkM0b3QWtEcGUOMnK7yiZ5mn+t4r7Ewl0kvN3qsjgy/AfLbnG4Ejy/eCqRELiLBJBtp
+         jv4x9QwBY7O2XKxzqJ4Txcj+ZxajDEsT38Ns4YbolixL10g34W8vJBFxXughXBfumGdN
+         x7vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:to:subject
-         :message-id:date:from:mime-version:dkim-signature;
-        bh=sD2MrT4Y0kJ7NpZP4csCjzyWqkj+6vChQeOlPqIN+II=;
-        b=ruJx29yoeqVnamiEf7db1bZBb5vyg9y+sz5Wx1WnGrDiFHXce9hP14TDd9l3bg+6OB
-         D6p4m1UjwfjAlr55JM9BA0xADVM/SGvhTVO1TsPSv7QpVXB0ZPYOsqXKqTv0OmGWsXNA
-         Kbe3Zo8sZ0qDYCzyyeqqVSD59EwMQdChQUgAn2QDuowEiYTk3XR8O4mAedU7UHn3cyXg
-         pSzAU9m/0R/rrhi6F/Cb+3X6yjnTZhffLC28mSova/gaoPkuDhUzxUIyUd5g1AwgeHeP
-         5rlEehPwXiDZQRRs3tQKro5ZGgBsscvQ1Myj8UrZjdyM7TW8tupqag4bQDabdG1iFKn9
-         7Xww==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=4cFZx3MMvL5YTnq3TreW86G7x/AmeK47tUPtRXUhNQM=;
+        b=ozeSw9L7Ly8/COi0mUoIaU4jik5cxLEpAqTv3eMMAgFAUrVya6NT08wwHhrCEz172L
+         LdIBTFG4kU8L9hJZzSRWGf30ZyU5nMNTnQsp+C4wcIsEM/P4aO8aFkUG8fOq48aBNpUZ
+         tmGIjq2pQkWwUa/DMbksTSYpha9DPyvxaIrcNSNTCI5WghT/mkS7+OyE4Qqv/VxKFgrW
+         +k/1+waBk36LmjjvW8yJuMGFCY3X40O7OaucbElnEAH9zB5cesyWrEov88yYBwPoaqqe
+         hqLEmUGy041n2hwQM9HYXruHBK9oa2lMrmXVG7XoqWL9XOW4s41tUQhYcYNt36iu4bp4
+         wFMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="bQ/LBnam";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j7si1232120qtd.283.2020.02.20.02.52.30
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Feb 2020 02:52:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L5Tzuvlp;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id b2si1957201ots.284.2020.02.20.05.06.07;
+        Thu, 20 Feb 2020 05:06:07 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="bQ/LBnam";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39748 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j4jRU-0002ll-Ka
-	for alex.bennee@linaro.org; Thu, 20 Feb 2020 05:52:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35881)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kamalpr@gmail.com>) id 1j4jRO-0002lT-37
- for qemu-arm@nongnu.org; Thu, 20 Feb 2020 05:52:23 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kamalpr@gmail.com>) id 1j4jRM-0006ZU-WE
- for qemu-arm@nongnu.org; Thu, 20 Feb 2020 05:52:21 -0500
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:34640)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <kamalpr@gmail.com>) id 1j4jRM-0006YD-Oy
- for qemu-arm@nongnu.org; Thu, 20 Feb 2020 05:52:20 -0500
-Received: by mail-io1-xd41.google.com with SMTP id z193so4174279iof.1
- for <qemu-arm@nongnu.org>; Thu, 20 Feb 2020 02:52:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=sD2MrT4Y0kJ7NpZP4csCjzyWqkj+6vChQeOlPqIN+II=;
- b=bQ/LBnammtZUqmkNEbpTOvRN7OoBAUEo7mSipju5UNOed0Xj/1KOeB0CkRPUkr6mU4
- a3tHIU6g0gSfZiDu0tZSLMfmrLIpFiPmYvZUYqABk1CVDDJJ+hUqkw4tsrXHChDu4yW+
- tsq4VWMs5C9L2er0Wosg3zW4J6hFkTq/agiY6iWCtbYOa2Te2bgAZs8ThXS952EcGSdU
- Usy6tcTxZ/vy6lhVObAnF8VVmnSNtAf7e3p2JATWJpedpoB+6eQfjzv0TpDLkeZXPKz6
- nlKLufVCymKDrBEmwsAv9jr+G92qDgZcbuUaCIYUqUiDSKFgU2a7aZe7XvtnoKLT+RPw
- StUg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L5Tzuvlp;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1728111AbgBTNGE (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 20 Feb 2020 08:06:04 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:28392 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1728096AbgBTNGD (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Thu, 20 Feb 2020 08:06:03 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1582203962;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:  content-type:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=4cFZx3MMvL5YTnq3TreW86G7x/AmeK47tUPtRXUhNQM=;
+        b=L5TzuvlpkO9uNIY8gj81K7CcZbG7p3r9T2ifsbNM9N5Q72TzoQgYvkdOVGYm71TozyRz1m
+        jXctls1kEgKYuCTwdDizHLWhkCLEWq4I3G+oU4hyEVCoCN+nWsnhVtVFVdHbD9HCrcX1ur
+        A1SmwcvhR1HkKMByA1fq99HZSHvJGuM=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-263-TWaRNFNhM0eNq903i9Ik7A-1; Thu, 20 Feb 2020 08:05:59 -0500
+X-MC-Unique: TWaRNFNhM0eNq903i9Ik7A-1
+Received: by mail-wm1-f69.google.com with SMTP id g138so576732wmg.8
+        for <kvm@vger.kernel.org>; Thu, 20 Feb 2020 05:05:59 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=sD2MrT4Y0kJ7NpZP4csCjzyWqkj+6vChQeOlPqIN+II=;
- b=WDrgsIXN5Uus8l5EVDnvGsdrWhe59cihCCfYXyF7Fwq0I7fedK31oysRSmeDAnflcD
- lhRPCnAMEWJg6DU9T7qKT6pIHlkY94QDdeEISm9gBAWm1fVc+3JEwOtfv5f6NJMW7gTW
- ua/WOfqL/vIsvpgjTXfu9LrtuWkllDn+NZdSdVq4g0XoLdlWlU2ohpFlzcSLZe4e7V44
- 7TsHy28kelwtLm2xCjFCouk1LdgdeNau3SIbjHZ6Jv3Ip4T8VI64k1sVXnC7WAAOdm7a
- JT0P7ndDcF9l/u4btkTtROsuI9oNjtj0vLZ2gQr7tNOGin3emhH963HPabRVWDMZg9uK
- KyLA==
-X-Gm-Message-State: APjAAAWLryrwFmykVyDCcwU8R5rfbhB1xlsaGUKcJ+a9BV9Les9RlACk
- LeDYbu17HXA7LT2KEryGxJvsnwfqEg9g03NSW/l5aRDsyFvRpUc=
-X-Received: by 2002:a6b:fe0f:: with SMTP id x15mr22214732ioh.219.1582195939611; 
- Thu, 20 Feb 2020 02:52:19 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=4cFZx3MMvL5YTnq3TreW86G7x/AmeK47tUPtRXUhNQM=;
+        b=rZkIGQXUFNZnLO+UjKaqdaJrNj8w7QmkCB8aXZHts+hX3pD+RfszCJVqwraDUHK48f
+         bLcqboEqebsyHESmPBK1RI96GMTtAg+QtvEzHHFKEB74YqS/QZ73h3CrBq9mBapp5E9F
+         nHuBzhQg/LhufQ/n7e1f8IGm5adZXpr4GYrZg4XEDdm36Mpu6oevhBF6V5RAJci0EJ3K
+         7Jr8SI7t9VQToFF2Q5V+rgR78WwFlbj9YFtp94BTsRyIPQxHw1kW1mdWu6fycnELzuGl
+         QjDOGSw/oQt1CGgZeNiLvlpJtN3E8LxvVAl6JxuBW7IBMujrwrj3m1OS5b3Mkcy88uIw
+         Y1OA==
+X-Gm-Message-State: APjAAAXPIPtN5E2RiIVCF963ivlgLjB8qhJKgKrIFSlOcbro18UWmIOI
+        skkAj5q32UEVbXzmo0TU/+JvIsyXPCtsNoZtHU58NKYs7QCeI4fWVHG2Puy8NA5foNwRnyQn1zV
+        VdgRxZjQwdNwi
+X-Received: by 2002:a05:600c:3d1:: with SMTP id z17mr4707588wmd.90.1582203958358;
+        Thu, 20 Feb 2020 05:05:58 -0800 (PST)
+X-Received: by 2002:a05:600c:3d1:: with SMTP id z17mr4707497wmd.90.1582203957647;
+        Thu, 20 Feb 2020 05:05:57 -0800 (PST)
+Received: from localhost.localdomain (78.red-88-21-202.staticip.rima-tde.net. [88.21.202.78])
+        by smtp.gmail.com with ESMTPSA id b67sm4594690wmc.38.2020.02.20.05.05.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Feb 2020 05:05:57 -0800 (PST)
+From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To:     Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+Cc:     "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        Fam Zheng <fam@euphon.net>,
+        =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+        kvm@vger.kernel.org, Laurent Vivier <lvivier@redhat.com>,
+        Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>,
+        Eric Auger <eric.auger@redhat.com>,
+        Halil Pasic <pasic@linux.ibm.com>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        qemu-s390x@nongnu.org,
+        Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+        Gerd Hoffmann <kraxel@redhat.com>,
+        Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org,
+        Alistair Francis <alistair@alistair23.me>,
+        qemu-block@nongnu.org,
+        =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+        Jason Wang <jasowang@redhat.com>,
+        xen-devel@lists.xenproject.org,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+        Matthew Rosato <mjrosato@linux.ibm.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Richard Henderson <richard.henderson@linaro.org>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        David Hildenbrand <david@redhat.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Igor Mitsyanko <i.mitsyanko@gmail.com>,
+        Paul Durrant <paul@xen.org>,
+        Richard Henderson <rth@twiddle.net>,
+        John Snow <jsnow@redhat.com>
+Subject: [PATCH v3 01/20] scripts/git.orderfile: Display Cocci scripts before code modifications
+Date:   Thu, 20 Feb 2020 14:05:29 +0100
+Message-Id: <20200220130548.29974-2-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200220130548.29974-1-philmd@redhat.com>
+References: <20200220130548.29974-1-philmd@redhat.com>
 MIME-Version: 1.0
-From: "Kamal R. Prasad" <kamalpr@gmail.com>
-Date: Thu, 20 Feb 2020 16:22:08 +0530
-Message-ID: <CAK=yUG+jKnNYV=QiD_CHYhjKQOWky1Y2g9gGDbPnABH5hSwx-w@mail.gmail.com>
-Subject: load a freebsd derived kernel on Qemu-system-arm
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000f21746059effb2f9"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::d41
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: kamalp@acm.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bhzWnsdFjZ5n
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: jDCVPCWP05Fw
 
---000000000000f21746059effb2f9
-Content-Type: text/plain; charset="UTF-8"
+When we use a Coccinelle semantic script to do automatic
+code modifications, it makes sense to look at the semantic
+patch first.
 
-hello,
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ scripts/git.orderfile | 3 +++
+ 1 file changed, 3 insertions(+)
 
- when I try to load a freebsd kernel onto Qemu running on my Mac, I get
-this error:-
-
-# qemu-system-arm -machine versatileab -kernel ./kernel
-
-
-qemu-system-arm: GLib: g_mapped_file_unref: assertion 'file != NULL' failed
-
-
-Can someone tell me what I am missing? The code is built for arm but online
-linux, freebsd build does not generate a vmlinuz or ignited file. The
-target is a cortex -arm quad core board (from Broadcom).
-
-
-thanks
-
---000000000000f21746059effb2f9
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr">hello,<div><br></div><di=
-v>=C2=A0when I try to load a freebsd kernel onto Qemu running on my Mac, I =
-get this error:-</div><div><p style=3D"margin:0px;font-stretch:normal;font-=
-size:14px;line-height:normal;font-family:Menlo;color:rgb(0,0,0)"><span styl=
-e=3D"font-variant-ligatures:no-common-ligatures"># qemu-system-arm -machine=
- versatileab -kernel ./kernel=C2=A0</span></p><p style=3D"margin:0px;font-s=
-tretch:normal;font-size:14px;line-height:normal;font-family:Menlo;color:rgb=
-(0,0,0)"><span style=3D"font-variant-ligatures:no-common-ligatures"><br></s=
-pan></p><p style=3D"margin:0px;font-stretch:normal;font-size:14px;line-heig=
-ht:normal;font-family:Menlo;color:rgb(0,0,0)"><span style=3D"font-variant-l=
-igatures:no-common-ligatures"></span></p><p style=3D"margin:0px;font-stretc=
-h:normal;font-size:14px;line-height:normal;font-family:Menlo;color:rgb(0,0,=
-0)"><span style=3D"font-variant-ligatures:no-common-ligatures">qemu-system-=
-arm: GLib: g_mapped_file_unref: assertion &#39;file !=3D NULL&#39; failed</=
-span></p><p style=3D"margin:0px;font-stretch:normal;font-size:14px;line-hei=
-ght:normal;font-family:Menlo;color:rgb(0,0,0)"><span style=3D"font-variant-=
-ligatures:no-common-ligatures"><br></span></p><p style=3D"margin:0px;font-s=
-tretch:normal;font-size:14px;line-height:normal;font-family:Menlo;color:rgb=
-(0,0,0)"><span style=3D"font-variant-ligatures:no-common-ligatures">Can som=
-eone tell me what I am missing? The code is built for arm but online linux,=
- freebsd build does not generate a vmlinuz or ignited file. The target is a=
- cortex -arm quad core board (from Broadcom).</span></p><p style=3D"margin:=
-0px;font-stretch:normal;font-size:14px;line-height:normal;font-family:Menlo=
-;color:rgb(0,0,0)"><span style=3D"font-variant-ligatures:no-common-ligature=
-s"><br></span></p><p style=3D"margin:0px;font-stretch:normal;font-size:14px=
-;line-height:normal;font-family:Menlo;color:rgb(0,0,0)"><span style=3D"font=
--variant-ligatures:no-common-ligatures">thanks</span></p><p style=3D"margin=
-:0px;font-stretch:normal;font-size:14px;line-height:normal;font-family:Menl=
-o;color:rgb(0,0,0)"><span style=3D"font-variant-ligatures:no-common-ligatur=
-es"><br></span></p></div></div></div></div>
-
---000000000000f21746059effb2f9--
+diff --git a/scripts/git.orderfile b/scripts/git.orderfile
+index 1f747b583a..7cf22e0bf5 100644
+--- a/scripts/git.orderfile
++++ b/scripts/git.orderfile
+@@ -22,6 +22,9 @@ Makefile*
+ qapi/*.json
+ qga/*.json
+ 
++# semantic patches
++*.cocci
++
+ # headers
+ *.h
+ 
+-- 
+2.21.1

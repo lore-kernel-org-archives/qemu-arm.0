@@ -1,83 +1,85 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp543005lfg;
-        Thu, 20 Feb 2020 05:06:07 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz+ItXTniJPAIOwREBF5/rpZpr9OFxlobTdwBQvDXw33sE6rn3cm9Y1RnEa7aljze7mLKrx
-X-Received: by 2002:a05:6808:8ee:: with SMTP id d14mr1787105oic.138.1582203967440;
-        Thu, 20 Feb 2020 05:06:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582203967; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp543087lfg;
+        Thu, 20 Feb 2020 05:06:10 -0800 (PST)
+X-Google-Smtp-Source: APXvYqws8AtM/5AnyEATYmHLbvHY2qGFUVxyTOb525XQza8OBlq4atRJDbeaUMtKKji/d2+ZCRCW
+X-Received: by 2002:a9d:65cb:: with SMTP id z11mr22019091oth.348.1582203970526;
+        Thu, 20 Feb 2020 05:06:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582203970; cv=none;
         d=google.com; s=arc-20160816;
-        b=YWWWafRH7qWTpMhqJgNZNkBaw3UmPzXHE5xO++sOi4q5MxF6zxzVp2izdnip5TBHAf
-         ToLLedg7Vb8/F0D27xWKeRicps8uNoxFp+WIOnX9/mYc7kToZZQVNtxvFCOE0cNGLKmb
-         AvAQFOgx/5+5tfSD6K/OCAN190vV3inv3EF/nKJgnC3I8xPjDEwbiL6XOmdgHDWqXzdK
-         mR1V62I9jSd8UPSGxfIdKXDmjXx+/k0W6f43aZ7xOvpxbW1vyLx+AH7bjt7qhFHNb4iA
-         OmNi9R3vZjaAud1RZQf6vYDNROwriEOKFM3PUv3hDBnfGIn2GwM9GXX3255BrRPyhhnh
-         1iVg==
+        b=DOi9VnYDO9hMbymFbgrP1Jwib0ghIy0+qWnfgPP+PWhB2XBWbhq7LVZLM8eALVN9pn
+         apKlNadpdFNQK6QJF28jDZDM3nzX1vC6MLpOj9y+9tuhD4TxvbvXsbL9WmmCe58N3Ihm
+         rk1kZly7lSX7XBI9mhMvAov1iJNa3hlZQTWJ8ZJ5SHeW3IETcwl+yfPGY/0YMGT0HNn9
+         Lx7T/nnc7i1D6AWx3uo+qlEy2ULsNStv6WlETo+EaXK8GJcLBcpEMMbneR8cvu6RhlwZ
+         g3PpWTo8geZTPAV/vOvFS0AOO31wGMIvlwZWH2NQdb64VXav5sC2wNsCkEz0opezjq9g
+         7sFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=gu1OfO+Xr177r6zD7C+F/TxHFq6mosreIYv9UCpXME0=;
-        b=em0dLN9xa3myJrAdjHG+r1BkwjizFfGM1ZNf+SKq2NNnyjso6+Kl9nzMJnO5DDzLya
-         KZQ15EqSDyd0uZdwiQDUmzGgsoibnOt1i0y9EKvSlnJ+NMJ9gjvq+TLNKd5KfNmSe9/P
-         /Z9557s61JpX4g0r/fpzrwv3qZTGMN8eNVqZR1d3nzIAZMNK61RU6aag5QM5v5Ckfv6a
-         f3NJFZhuf2C3ZuaGpqDfKvNk0NMnQD0Eka+CpdgNVl+9bYpSGP38Nb3F5Mj1olCkOBi8
-         TjqjNfQEkKgouKR/2USHpiih/J/24yOhfvM0jGjuJtLXe4uDBZn1uz1Wl02LwjoutesH
-         Z32Q==
+         :references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=8odk76d2z3izhK+yPuh+zYi/Cj4FHaZPMzDDqjJ0XeE=;
+        b=LuMH1owc1ut9ontEJRZp70x43ZSdXXoSCTf7/fm1Hm3NfEEkRp1/QzZwIMJwSH7Ky6
+         y0zhVhVeziS62H0DtYwzLG5nab0aNqeEvaYnimzDvKLs27IaQf/BN8fnBLpqQLDCDlMx
+         H4ju5n9rejpdnguXXWf5xz4DtoGmnU2OKJfAINNdKg1aT95Detzem9KiHth5WJFkd8Y/
+         A6larPu/l5yZXUhJc/bLxqAs+EsatI+5DAnwDok+czs1pADZawKedVQY+MvvPR18RjeV
+         VO0pCKoQoNTw/eIRD5XsOW0gSwiipzz4ayfPqEVJsFk/8w0rcIb6TOOaXYvmqVqWBuJ6
+         yqLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MUCDutVh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YCpCq2pX;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b2si1957201ots.284.2020.02.20.05.06.07;
-        Thu, 20 Feb 2020 05:06:07 -0800 (PST)
+        by mx.google.com with ESMTP id b2si1957201ots.284.2020.02.20.05.06.10;
+        Thu, 20 Feb 2020 05:06:10 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MUCDutVh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YCpCq2pX;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728102AbgBTNGC (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 20 Feb 2020 08:06:02 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:24721 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1728091AbgBTNGC (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Thu, 20 Feb 2020 08:06:02 -0500
+        id S1728143AbgBTNGJ (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 20 Feb 2020 08:06:09 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:55176 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1728114AbgBTNGJ (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 20 Feb 2020 08:06:09 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1582203960;
+        s=mimecast20190719; t=1582203968;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:  content-type:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding;
-        bh=gu1OfO+Xr177r6zD7C+F/TxHFq6mosreIYv9UCpXME0=;
-        b=MUCDutVhDBbvX3ov+Fy1NTGQKNeK9o2RCCGMZwVhiQZnKU4Uy/2f+jQYVj8gng8mP/n+xj
-        uGQBe1IlenUeVZppYdS5QW5juQnXTs6UhS0n+Xm1Bb1qAvwbFYSVD1pCv59YkyF0zf99GX
-        +xK23nJuP5wx7gJCbcervH+B538rAU4=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-141-4YOFUXg1NmK0mY8QyJCT9A-1; Thu, 20 Feb 2020 08:05:54 -0500
-X-MC-Unique: 4YOFUXg1NmK0mY8QyJCT9A-1
-Received: by mail-wm1-f69.google.com with SMTP id g138so576653wmg.8
-        for <kvm@vger.kernel.org>; Thu, 20 Feb 2020 05:05:54 -0800 (PST)
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=8odk76d2z3izhK+yPuh+zYi/Cj4FHaZPMzDDqjJ0XeE=;
+        b=YCpCq2pXOtLFGTShEFq0RZZ/S/ZfrjkulMnvcAIoja0IOzePIQgQe9AzgjTqHBKS31FcGm
+        gHXPabK6oCBvXW4+1wKKfui7wVOIQFi2ruhvrQum0lZ0mpaWbMkbfvtL5L7n0OQwpLukMY
+        Ag/0fap2q/Uuaugx0SAQo+zN5mdXVf0=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-56--YlLcAl2PfOvzevvfk78rQ-1; Thu, 20 Feb 2020 08:06:06 -0500
+X-MC-Unique: -YlLcAl2PfOvzevvfk78rQ-1
+Received: by mail-wm1-f72.google.com with SMTP id u11so802782wmb.4
+        for <kvm@vger.kernel.org>; Thu, 20 Feb 2020 05:06:06 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=gu1OfO+Xr177r6zD7C+F/TxHFq6mosreIYv9UCpXME0=;
-        b=BhEp4ycat83vSIjyap75qQusN6HSbqeLXFCzj1zhvIyUJyHz6C63KrDLKON5aB0OIh
-         R0xvrbev8VQhMJ6o1jOYE0N7bVwno1WRLzJaW136hUKysbwq0fBmnDwtHbv1FToDjihk
-         7ijo4uAxzDHk+ksgVnG1KQk9sA78nHbYQH3o+dk2+GEnJ+K39JdPi2xpXR8GHvpRH2c1
-         UYz9kEB8f9YgJWwWe2MMTrb3ymU4/uuLUTamnQ3oLD6kEiegyp2roDjwUhG0cXOmbb3Q
-         vUNAJLD9o50N4RRQrkbAbyMwLBaLhZwSK9M/pSroHt/m2tJbR09tAyqpARcfMNjHJXiy
-         ctaQ==
-X-Gm-Message-State: APjAAAWq05mwhFG/vh+f73bHsDrIpkyN3tAM03eFWYeC3rWM5RAQMf9k
-        L3Chow91Ogr0H4GlZKh296U8p10MOjBsdLsmQccjyoykmZQohRictYBCsvrx4bfD4jPqcDxOE35
-        AltI7qxFmr1kn
-X-Received: by 2002:a1c:f713:: with SMTP id v19mr4357657wmh.113.1582203953757;
-        Thu, 20 Feb 2020 05:05:53 -0800 (PST)
-X-Received: by 2002:a1c:f713:: with SMTP id v19mr4357638wmh.113.1582203953503;
-        Thu, 20 Feb 2020 05:05:53 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=8odk76d2z3izhK+yPuh+zYi/Cj4FHaZPMzDDqjJ0XeE=;
+        b=Zgzq2TB4G4Qeg1IwTvW9gQPrpZT5Q658d81+qKgC+AwWrAo2+uYxFcFGsS8MBHCWVf
+         QT/A6uJlxTjbjgGC2AtOcGoanukgmJrHyBa1DXFOhArDEBjjEyWGfYRxzTjnEqIdw9po
+         j0cB0QWzEeZPMXd1CR1uuTptvq4yp0bqbNNvc0c3NiHgd+lOJm1Ku+bvhe7QyP1WSkLB
+         7F50ZOF3CAa3ih5uzVSiWACOGWFiygVVN2Sa0vlimGuSMyOtNrpqbgn9mPmferdshmIg
+         APynmWcNFIpqNIDW2ptEWkE2E5ezYJHRcA/UB1xZ9rN2Az/1SwsFi2AHJ3gEG2/+24BX
+         7cUg==
+X-Gm-Message-State: APjAAAXfDcMVjANF2qOIvYGCGQvxJ6t5yZtVuZq5BYQaN9+NOVCtK22n
+        0WcHqQVIeyChpCWwSkv0eFfbR6rirUTMYhJNqWXK+DZTE2i1fyYiRcAV90aMfvzkvoCbQjZbVn1
+        HarVOE1Tshz5C
+X-Received: by 2002:a5d:4e91:: with SMTP id e17mr40459252wru.233.1582203965282;
+        Thu, 20 Feb 2020 05:06:05 -0800 (PST)
+X-Received: by 2002:a5d:4e91:: with SMTP id e17mr40459189wru.233.1582203964946;
+        Thu, 20 Feb 2020 05:06:04 -0800 (PST)
 Received: from localhost.localdomain (78.red-88-21-202.staticip.rima-tde.net. [88.21.202.78])
-        by smtp.gmail.com with ESMTPSA id b67sm4594690wmc.38.2020.02.20.05.05.49
+        by smtp.gmail.com with ESMTPSA id b67sm4594690wmc.38.2020.02.20.05.06.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Feb 2020 05:05:52 -0800 (PST)
+        Thu, 20 Feb 2020 05:06:04 -0800 (PST)
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To:     Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 Cc:     "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -114,10 +116,12 @@ Cc:     "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
         Paul Durrant <paul@xen.org>,
         Richard Henderson <rth@twiddle.net>,
         John Snow <jsnow@redhat.com>
-Subject: [PATCH v3 00/20] global exec/memory/dma APIs cleanup
-Date:   Thu, 20 Feb 2020 14:05:28 +0100
-Message-Id: <20200220130548.29974-1-philmd@redhat.com>
+Subject: [PATCH v3 03/20] exec: Let qemu_ram_*() functions take a const pointer argument
+Date:   Thu, 20 Feb 2020 14:05:31 +0100
+Message-Id: <20200220130548.29974-4-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200220130548.29974-1-philmd@redhat.com>
+References: <20200220130548.29974-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
@@ -126,96 +130,105 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: iOds6O2o0PWX
+X-TUID: RuyMIk3KKMNl
 
-This series is inspired from Peter Maydel cleanup patch:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg680625.html
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ include/exec/cpu-common.h     | 6 +++---
+ include/sysemu/xen-mapcache.h | 4 ++--
+ exec.c                        | 8 ++++----
+ hw/i386/xen/xen-mapcache.c    | 2 +-
+ 4 files changed, 10 insertions(+), 10 deletions(-)
 
-- Convert 'is_write' argument to boolean
-- Use void pointer for blob buffer
-- Remove unnecessary casts (Stefan Weil)
-- Replace [API]_rw() by [API]_read/write() when is_write is constant
-
-Supersedes: <20200218112457.22712-1-peter.maydell@linaro.org>
-
-Peter Maydell (1):
-  Avoid address_space_rw() with a constant is_write argument
-
-Philippe Mathieu-Daudé (19):
-  scripts/git.orderfile: Display Cocci scripts before code modifications
-  hw: Remove unnecessary cast when calling dma_memory_read()
-  exec: Let qemu_ram_*() functions take a const pointer argument
-  exec: Rename ram_ptr variable
-  exec: Let flatview API take void pointer arguments
-  exec: Let the address_space API use void pointer arguments
-  hw/net: Avoid casting non-const pointer, use address_space_write()
-  Remove unnecessary cast when using the address_space API
-  exec: Let the cpu_[physical]_memory API use void pointer arguments
-  Remove unnecessary cast when using the cpu_[physical]_memory API
-  hw/ide/internal: Remove unused DMARestartFunc typedef
-  hw/ide: Let the DMAIntFunc prototype use a boolean 'is_write' argument
-  hw/virtio: Let virtqueue_map_iovec() use a boolean 'is_write' argument
-  hw/virtio: Let vhost_memory_map() use a boolean 'is_write' argument
-  exec: Let address_space_unmap() use a boolean 'is_write' argument
-  Let address_space_rw() calls pass a boolean 'is_write' argument
-  exec: Let cpu_[physical]_memory API use a boolean 'is_write' argument
-  Let cpu_[physical]_memory() calls pass a boolean 'is_write' argument
-  Avoid cpu_physical_memory_rw() with a constant is_write argument
-
- scripts/coccinelle/exec_rw_const.cocci | 103 +++++++++++++++++++++++++
- include/exec/cpu-all.h                 |   2 +-
- include/exec/cpu-common.h              |  18 ++---
- include/exec/memory.h                  |  16 ++--
- include/hw/ide/internal.h              |   3 +-
- include/sysemu/xen-mapcache.h          |   4 +-
- target/i386/hvf/vmx.h                  |   7 +-
- accel/kvm/kvm-all.c                    |   6 +-
- dma-helpers.c                          |   4 +-
- exec.c                                 |  75 +++++++++---------
- hw/arm/boot.c                          |   6 +-
- hw/arm/smmu-common.c                   |   3 +-
- hw/arm/smmuv3.c                        |  10 +--
- hw/display/exynos4210_fimd.c           |   3 +-
- hw/display/milkymist-tmu2.c            |   8 +-
- hw/display/omap_dss.c                  |   2 +-
- hw/display/omap_lcdc.c                 |  10 +--
- hw/display/ramfb.c                     |   2 +-
- hw/dma/etraxfs_dma.c                   |  25 +++---
- hw/dma/rc4030.c                        |  10 +--
- hw/dma/xlnx-zdma.c                     |  11 +--
- hw/i386/xen/xen-mapcache.c             |   2 +-
- hw/ide/ahci.c                          |   2 +-
- hw/ide/core.c                          |   2 +-
- hw/ide/macio.c                         |   2 +-
- hw/ide/pci.c                           |   2 +-
- hw/misc/pc-testdev.c                   |   2 +-
- hw/net/cadence_gem.c                   |  21 +++--
- hw/net/dp8393x.c                       |  70 +++++++++--------
- hw/net/i82596.c                        |  25 +++---
- hw/net/lasi_i82596.c                   |   5 +-
- hw/nvram/spapr_nvram.c                 |   4 +-
- hw/ppc/pnv_lpc.c                       |   8 +-
- hw/ppc/ppc440_uc.c                     |   6 +-
- hw/ppc/spapr_hcall.c                   |   4 +-
- hw/s390x/css.c                         |  12 +--
- hw/s390x/ipl.c                         |   2 +-
- hw/s390x/s390-pci-bus.c                |   2 +-
- hw/s390x/virtio-ccw.c                  |   2 +-
- hw/scsi/vmw_pvscsi.c                   |   8 +-
- hw/sd/sdhci.c                          |  15 ++--
- hw/virtio/vhost.c                      |   8 +-
- hw/virtio/virtio.c                     |   7 +-
- hw/xen/xen_pt_graphics.c               |   2 +-
- qtest.c                                |  52 ++++++-------
- target/i386/hax-all.c                  |   6 +-
- target/i386/hvf/x86_mmu.c              |  12 +--
- target/i386/whpx-all.c                 |   2 +-
- target/s390x/excp_helper.c             |   2 +-
- target/s390x/helper.c                  |   6 +-
- target/s390x/mmu_helper.c              |   2 +-
- scripts/git.orderfile                  |   3 +
- 52 files changed, 360 insertions(+), 266 deletions(-)
- create mode 100644 scripts/coccinelle/exec_rw_const.cocci
-
+diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
+index 81753bbb34..05ac1a5d69 100644
+--- a/include/exec/cpu-common.h
++++ b/include/exec/cpu-common.h
+@@ -48,11 +48,11 @@ typedef uint32_t CPUReadMemoryFunc(void *opaque, hwaddr addr);
+ 
+ void qemu_ram_remap(ram_addr_t addr, ram_addr_t length);
+ /* This should not be used by devices.  */
+-ram_addr_t qemu_ram_addr_from_host(void *ptr);
++ram_addr_t qemu_ram_addr_from_host(const void *ptr);
+ RAMBlock *qemu_ram_block_by_name(const char *name);
+-RAMBlock *qemu_ram_block_from_host(void *ptr, bool round_offset,
++RAMBlock *qemu_ram_block_from_host(const void *ptr, bool round_offset,
+                                    ram_addr_t *offset);
+-ram_addr_t qemu_ram_block_host_offset(RAMBlock *rb, void *host);
++ram_addr_t qemu_ram_block_host_offset(RAMBlock *rb, const void *host);
+ void qemu_ram_set_idstr(RAMBlock *block, const char *name, DeviceState *dev);
+ void qemu_ram_unset_idstr(RAMBlock *block);
+ const char *qemu_ram_get_idstr(RAMBlock *rb);
+diff --git a/include/sysemu/xen-mapcache.h b/include/sysemu/xen-mapcache.h
+index c8e7c2f6cf..81e9aa2fa6 100644
+--- a/include/sysemu/xen-mapcache.h
++++ b/include/sysemu/xen-mapcache.h
+@@ -19,7 +19,7 @@ void xen_map_cache_init(phys_offset_to_gaddr_t f,
+                         void *opaque);
+ uint8_t *xen_map_cache(hwaddr phys_addr, hwaddr size,
+                        uint8_t lock, bool dma);
+-ram_addr_t xen_ram_addr_from_mapcache(void *ptr);
++ram_addr_t xen_ram_addr_from_mapcache(const void *ptr);
+ void xen_invalidate_map_cache_entry(uint8_t *buffer);
+ void xen_invalidate_map_cache(void);
+ uint8_t *xen_replace_cache_entry(hwaddr old_phys_addr,
+@@ -40,7 +40,7 @@ static inline uint8_t *xen_map_cache(hwaddr phys_addr,
+     abort();
+ }
+ 
+-static inline ram_addr_t xen_ram_addr_from_mapcache(void *ptr)
++static inline ram_addr_t xen_ram_addr_from_mapcache(const void *ptr)
+ {
+     abort();
+ }
+diff --git a/exec.c b/exec.c
+index 8e9cc3b47c..02b4e6ea41 100644
+--- a/exec.c
++++ b/exec.c
+@@ -2614,7 +2614,7 @@ static void *qemu_ram_ptr_length(RAMBlock *ram_block, ram_addr_t addr,
+ }
+ 
+ /* Return the offset of a hostpointer within a ramblock */
+-ram_addr_t qemu_ram_block_host_offset(RAMBlock *rb, void *host)
++ram_addr_t qemu_ram_block_host_offset(RAMBlock *rb, const void *host)
+ {
+     ram_addr_t res = (uint8_t *)host - (uint8_t *)rb->host;
+     assert((uintptr_t)host >= (uintptr_t)rb->host);
+@@ -2640,11 +2640,11 @@ ram_addr_t qemu_ram_block_host_offset(RAMBlock *rb, void *host)
+  * pointer, such as a reference to the region that includes the incoming
+  * ram_addr_t.
+  */
+-RAMBlock *qemu_ram_block_from_host(void *ptr, bool round_offset,
++RAMBlock *qemu_ram_block_from_host(const void *ptr, bool round_offset,
+                                    ram_addr_t *offset)
+ {
+     RAMBlock *block;
+-    uint8_t *host = ptr;
++    const uint8_t *host = ptr;
+ 
+     if (xen_enabled()) {
+         ram_addr_t ram_addr;
+@@ -2705,7 +2705,7 @@ RAMBlock *qemu_ram_block_by_name(const char *name)
+ 
+ /* Some of the softmmu routines need to translate from a host pointer
+    (typically a TLB entry) back to a ram offset.  */
+-ram_addr_t qemu_ram_addr_from_host(void *ptr)
++ram_addr_t qemu_ram_addr_from_host(const void *ptr)
+ {
+     RAMBlock *block;
+     ram_addr_t offset;
+diff --git a/hw/i386/xen/xen-mapcache.c b/hw/i386/xen/xen-mapcache.c
+index 5b120ed44b..432ad3354d 100644
+--- a/hw/i386/xen/xen-mapcache.c
++++ b/hw/i386/xen/xen-mapcache.c
+@@ -363,7 +363,7 @@ uint8_t *xen_map_cache(hwaddr phys_addr, hwaddr size,
+     return p;
+ }
+ 
+-ram_addr_t xen_ram_addr_from_mapcache(void *ptr)
++ram_addr_t xen_ram_addr_from_mapcache(const void *ptr)
+ {
+     MapCacheEntry *entry = NULL;
+     MapCacheRev *reventry;
 -- 
 2.21.1

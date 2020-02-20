@@ -1,143 +1,135 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp659858lfg;
-        Thu, 20 Feb 2020 06:56:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyvKcWVOKcAjn1UPJ2zSQ3NuVNtlZzXhZuCjiOAM3SsVh3tbaBffHjyjJoT3u+mcDDNl5ws
-X-Received: by 2002:a37:6351:: with SMTP id x78mr29107068qkb.298.1582210601202;
-        Thu, 20 Feb 2020 06:56:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582210601; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp669596lfg;
+        Thu, 20 Feb 2020 07:05:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwkIbTM1/Nu+vBUC1jqkg8BO7NH1OyLNWrLC5B9J5EY59EuQjY5dQL9tHPXipYgRaxgoKyt
+X-Received: by 2002:ac8:42cd:: with SMTP id g13mr27106798qtm.168.1582211124730;
+        Thu, 20 Feb 2020 07:05:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582211124; cv=none;
         d=google.com; s=arc-20160816;
-        b=UXRIPxlF6BUJMYci+kR7rdLCA7myUBfM5PW5zUIdU7ZpHYJbvjC4pD7Z3ZOTmrgJJ/
-         KOs1UJm2W1V7FhA7jizO+XBwbnn9ZEAJaBeF/Kah2haj6wanB3YVKnaEBvIHvLewBl99
-         4eUDgQYp2BAGWrKEJJsYT0MSYSKh0CNdeRYZK0s8wJ6iYKS3/YHcgX5kHtCYHWBokVca
-         s1w+uOhPrNC7TcwCQu7v6UEd2DYGq71XK0AilJHr9ngOB2Cw9F40FLXg1UT0KXKxJ4RX
-         UsFflsH0g9Zu+U+3mSqVmjrYJl8rGROKc+Auule+W3iI/oCb20odbPiy21fvKTSscIdl
-         ZZjA==
+        b=j13lv+hUq8Zd2ZujNUi6vWfhQXEDX94XvsL2geGHZ7/e6E5S/IXTx+4JqEozWqjUIm
+         DIT9AA2bjrNbtoENA5USKwIxl30cyXZsQquaodNQW8X7+z6W2+evo7p4+BHjE3CYThb/
+         z6ueKIieibF9Kbq8tIv7SHI4IQHrfWNf3fbeqEt98TIzzWvJDRi7LaICGH9wHDfyrC4m
+         PfM2OTmb4Spjtajx6lmYHW7CWaqjGKwimqoLkrXCjqL56aCxK+VfoKrfaTPOLwpt2r2Y
+         ClTXZdl17lmxxxqoATza2QY1TU48KNYD/gJoaLbYS5dOCyCEGH5y0TXv7nSdQErrQE/o
+         MFlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=6/qaW5FhSSy22a1eq657fqQZKhtniwywOQUUl7vYYwg=;
-        b=xZEHmS5NpM88ua15tC+myHdKEkygrT8XkHsHGmh61+xeSSVH8qUYFje5hCM6lzeBHr
-         mp/H1E6/CE3ZTdmMPfj7i8P2z4LirzUhJbfSbnufkTcczmgQyc/Y040htUhjs0BI5ZGQ
-         z9b1Sg8C2feD+KxTy7wjbJHfJ13xD0yRKU+WDPP9Fd72Zhe5+jJ/M16yyR668tTdhI5P
-         Hzih4Cxat2vW5bsha5hDzu2H6FdEYzkptUUUvZ9O21j16R6y6ASPJnpl65xhFXzQAMoJ
-         rl1CpvgPaMWw8qRTsyBzZz51RkfNgAWNk0HjQps6KqComZbasNls1PjAGWxaKadppyIm
-         R0Yw==
+        bh=Ha7WNp34FymPkhMtZXsI3NKdYl16Zvgi/+5I5PPeEq8=;
+        b=aKbdMP+D6TdXyxYsvhcPPR7eilWCraGlkUghENahdhwGhVk1g8w+W/Y0oX+2gElgff
+         R1cWeY7DVVDx10vakpxGObjaTjmMdVkQvvSNLuNVRKrZk/5MbBMDXU05rDln3d6P35l+
+         CqRok0YxnSUtHVDPPFgqPffQWkmVO9hwLNYxiqlnsKe6+7sVsIUS8Q21igbqGOgAB/PP
+         wHhL9n9d4+4CVjvtuenFtcmn/3lHh2iSSXlqoeqGW96C5yI/uTRneI/OLwzm8kL+txZh
+         ujk5fm0lrsgx5bfh0wtz9ItOlNlagEyZ+l+KFOfMFBURcs9h0D2UttxlwQPb5H53bkRs
+         Po1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="GbLpLed/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b="p0hK/2mF";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y27si1645150qta.299.2020.02.20.06.56.40
+        by mx.google.com with ESMTPS id l184si1627106qkc.220.2020.02.20.07.05.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Feb 2020 06:56:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 20 Feb 2020 07:05:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="GbLpLed/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b="p0hK/2mF";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43758 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43928 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j4nFo-0001Oc-EE
-	for alex.bennee@linaro.org; Thu, 20 Feb 2020 09:56:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44683)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j4nOG-0006cs-4J
+	for alex.bennee@linaro.org; Thu, 20 Feb 2020 10:05:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46088)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j4nFC-0001Lt-Vu
- for qemu-devel@nongnu.org; Thu, 20 Feb 2020 09:56:03 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j4nO5-0006Xm-Uz
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2020 10:05:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j4nFB-0005NV-L7
- for qemu-devel@nongnu.org; Thu, 20 Feb 2020 09:56:02 -0500
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:38313)
+ (envelope-from <peter.maydell@linaro.org>) id 1j4nO4-0002tF-Rz
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2020 10:05:13 -0500
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:41003)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j4nFB-0005Mr-Ej
- for qemu-devel@nongnu.org; Thu, 20 Feb 2020 09:56:01 -0500
-Received: by mail-ot1-x343.google.com with SMTP id z9so3899280oth.5
- for <qemu-devel@nongnu.org>; Thu, 20 Feb 2020 06:56:01 -0800 (PST)
+ id 1j4nO4-0002sf-MN
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2020 10:05:12 -0500
+Received: by mail-oi1-x244.google.com with SMTP id i1so27793598oie.8
+ for <qemu-arm@nongnu.org>; Thu, 20 Feb 2020 07:05:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6/qaW5FhSSy22a1eq657fqQZKhtniwywOQUUl7vYYwg=;
- b=GbLpLed/sYr6s6grwE43khGlNq7oTqxVMP9PE9Y5vuNLvM4u2zBXZhUJApw3gk2kQC
- 1BGjcrSYH6N6bazg5SWMGYeZxxCOzYl2g4wZr8x2Rp/TQvdsfBcGJyfpFl8A1DeQcRRq
- ZWt27R9Ffxg5tH4vrJ9yCRGeDCMo9D3aBKaq3Z2GAaZBmEpXPvPvm5G++HZdi/xnuM5s
- gNOTzCkjkiPfVGNrHJ5SP1pkCU91J1aD9zgze7Ptsm4dmBU7tliMk1cLM0Qfaa4CJZuL
- oi1IvTK3pdLZ81imyFVhK+4SkxjS+v3zsv1bAX0z8CiKAT+o8IDB4TMWhByPkQCLAAkD
- 1VBQ==
+ :cc; bh=Ha7WNp34FymPkhMtZXsI3NKdYl16Zvgi/+5I5PPeEq8=;
+ b=p0hK/2mFOUGwjvy8WVTEvKpNn8dP1JiIbfxdhoSU71vtH0+3M/S89rLv2rMKquO4JD
+ B9sz8UX5o7ZroSjG60TKGXphm6uLNbQ1ennHZht73WDFt8Hd0jPfV4NoG3G5XyAeYMQ8
+ pMeOzG2k8a1kkFUXUPVPOfimLCpiFqjdgr+snhjJ1g2ScWd1N05Y5TH79FJiJqi7/sOp
+ AkU7CalO5jHMIC8Utr85QGlRJZsbKrbq3KjSCECK2mMEmSYJpx0slHZieRFOn9A+XF86
+ dMlhVKkDbQUKW0G0VSMOoAaRYIAmLixmUp7OCASeK9n8a5se2ykeSvGAYwr31W0bqqhB
+ R9CA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=6/qaW5FhSSy22a1eq657fqQZKhtniwywOQUUl7vYYwg=;
- b=CHAJfr9xl8Ao+xLqrQUE+loc3N1AQfyYzNqO6zWjVTVZ4QSVmGH+tFLfqeBT+67H98
- ev/A0RW3yLwS59/q/VpqeJZTBgZsV4oW8o6PTAJBrrrC2Zvqf6lLI8FMdP2UmnVtPeNQ
- l8uZT9tlJ3MiOcBN90L0rKwJy1kyP0Yi/uuUbYEeR82A1ODJ0kVPrSbavf1fIsWEQJ+5
- xFfXc6JesXXpo4D/X+gXqqXxQrfQheF3MBvsi58Ff1fckdY6aTdnBmRCGDAxpBj5+B2n
- sEvZiYAhil3otstgziYbLaQUPelALSrP5+0QCFmuwJMXO1M95FJjQBTTXgZzAkRL2OFc
- TPAQ==
-X-Gm-Message-State: APjAAAWNokG2fO7JR9wltiWNFcNjN936sGcvgMeaF+1xRgzHgpvjJfhv
- D4L3ACWQVXiSeV430IAoLAlBCXL2rDIwyNKYRL8fuUIZ
-X-Received: by 2002:a05:6830:4a4:: with SMTP id
- l4mr24119120otd.91.1582210560070; 
- Thu, 20 Feb 2020 06:56:00 -0800 (PST)
+ bh=Ha7WNp34FymPkhMtZXsI3NKdYl16Zvgi/+5I5PPeEq8=;
+ b=r1PRsDq4T5q6u1ffs9jH2dfOUMaN1cMNcOO8iF1Y8f0v8xDxMJ54AC1cuFtcBqkl2B
+ NNIxCelqUQ0fO5mEy38UFQyN4qY97B9sVup/72OW8xhN7GSQrp33Hs2DSAdydFHVmYm/
+ sZ0HkyRMZNMgwVlLkI3tpKiv4GPwOzS0DNNHzSnlRgZX2CEdNSEmkPl37zKBWlnibRHH
+ AbGkWU7C7DjfC99RlSlDNYuLoLoOJJ+77riLGLLmURJEB4VdP41y7K/km1trB6pYTbtj
+ JuyhjijHz9lirZjIGTQ82DCvkLi/Pw11ZES7MI7yZPqZQF8cy/lsmEIzqHmXPQeTPT9x
+ Ls+w==
+X-Gm-Message-State: APjAAAVDEt1TcSMGfG+ifBJfB3dlus7NtimsoPh7LkdWJIF0nOcQtp7F
+ HWS5aBzh7r3B3s8oUisxVnESrlJsX2GEFgwVT5R/oQ==
+X-Received: by 2002:a54:4f16:: with SMTP id e22mr2432193oiy.170.1582211111909; 
+ Thu, 20 Feb 2020 07:05:11 -0800 (PST)
 MIME-Version: 1.0
-References: <20200216214232.4230-1-richard.henderson@linaro.org>
-In-Reply-To: <20200216214232.4230-1-richard.henderson@linaro.org>
+References: <20200215122354.13706-1-linux@roeck-us.net>
+In-Reply-To: <20200215122354.13706-1-linux@roeck-us.net>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Feb 2020 14:55:49 +0000
-Message-ID: <CAFEAcA9DZjwazY4rVwpzWGF3ONAQBGyqNdMjBBczK0C1dB+kKg@mail.gmail.com>
-Subject: Re: [PATCH v2 0/4] target/arm vector improvements
-To: Richard Henderson <richard.henderson@linaro.org>
+Date: Thu, 20 Feb 2020 15:05:00 +0000
+Message-ID: <CAFEAcA-u=j3MYu-Ck0UbMzXXEoB41dx6UbGw15QBEnqBBX988g@mail.gmail.com>
+Subject: Re: [PATCH v2 0/2] hw/arm/xilinx_zynq: Fix USB port instantiation
+To: Guenter Roeck <linux@roeck-us.net>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::244
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qrftHnNCApZ/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ayWq0MiRVzFd
 
-On Sun, 16 Feb 2020 at 21:42, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Sat, 15 Feb 2020 at 12:23, Guenter Roeck <linux@roeck-us.net> wrote:
 >
-> Changes for v2:
+> USB ports on Xilinx Zync must be instantiated as TYPE_CHIPIDEA to work.
+> Linux expects and checks various chipidea registers, which do not exist
+> with the basic ehci emulation. This patch series fixes the problem.
 >
-> * Rename function arguments as requested by ajb.
-> * Minor optimization in helper_gvec_pmul_b.
+> The first patch in the series fixes the actual problem.
 >
-> Original blurb:
+> The second patch removes the now obsolete explicit Xilinx
+> support from the EHCI code.
 >
-> The first patch has been seen before.
+> v2: Introduced summary
 >
->   https://patchwork.ozlabs.org/patch/1115039/
->
-> It had a bug and I didn't fix it right away and then forgot.
-> Fixed now; I had mixed up the operand ordering for aarch32.
->
-> The next 3 are something that I noticed while doing other stuff.
->
-> In particular, pmull is used heavily during https transfers.
-> While cloning a repository, the old code peaks at 27% of the
-> total runtime, as measured by perf top.  The new code does
-> not quite reach 3% repeating the same clone.
->
-> In addition, the new helper functions are in the form that
-> will be required for the implementation of SVE2.
+> ----------------------------------------------------------------
+> Guenter Roeck (2):
+>       hw/arm/xilinx_zynq: Fix USB port instantiation
+>       hw/usb/hcd-ehci-sysbus: Remove obsolete xlnx,ps7-usb class
 
+Xilinx folks -- could you provide a reviewed-by or acked-by
+for this series, please?
 
-
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM

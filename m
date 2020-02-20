@@ -1,122 +1,107 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp313914lfg;
-        Thu, 20 Feb 2020 00:47:33 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzRVVZJmLNSh6mb4UjnnfoqyLHvMnbFYYG/YjKwfAUyLEuRk3H1a0Bp3sFMbc2dTe0YJaZ4
-X-Received: by 2002:a05:620a:1677:: with SMTP id d23mr27443500qko.354.1582188453820;
-        Thu, 20 Feb 2020 00:47:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582188453; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp330096lfg;
+        Thu, 20 Feb 2020 01:08:08 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzcsfklxjpxhcgs3bWip9B24CHA/y7tE3O7bzPRAobB1OSkdFKF2DPl5c3sw9ndWs9ssHvu
+X-Received: by 2002:a37:2701:: with SMTP id n1mr11221254qkn.117.1582189688306;
+        Thu, 20 Feb 2020 01:08:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582189688; cv=none;
         d=google.com; s=arc-20160816;
-        b=VAL19alpIDsGvP6dep9sKjKM/iN1YgvZunH7kygqjqY47dKM9E27EbqOpdw8RAJn4F
-         F5s6AHL48vAG4j40m6G6LeLvwJf7o8dIcvI6NgDcu7rbOYL7kFMco+zW6jUC9xKba6nF
-         PFBtzula1a5tOZRJUlX2UsRuyxgpQ0dtNITMbwTQBFUHYdV2ssrFhu+wfN9jKWr3voSR
-         35VbhhRJJv2Tes7C54qBuclEasVyCXaYy8In9OuAx6Wxghpo+NUz35lwlspCW8UCJqbJ
-         gDy+Kl7dt/6rU+EDRCocT58E6+2Gt6cOTpXSTH+hIhjwwkhU7Tqb0/C2/3+IgqV/acf7
-         HrGA==
+        b=H+5YYDpfLMSQvUXiUJPbt9Qgorxwzv15nAm7x6M9zGITFxkb9KKzcoxFHzEVigKv80
+         CLRuOzZwFWPlA5t2ZEaxdsd4sDXhaIr+jYBY+75kecPPBEeF2TSbKn+DLJmWzpne2kzY
+         cBNzCJiNEOVXwuORS6pjNa38U2fXXgJQ7FYlof3RWQSrj9k+rnhYi7OO4anV/6RcbrR7
+         E/PgmyoIFdMqvqHvZ4AvPaUhUOQCfY1BndpR9+NGjwiqnxB651putKLyGDQmar0vkgBK
+         QGdbSCCXT4/NxDuYOhrfNRanqvqMDdpNdoTJcAg7Ylk9twQtyVPvuOKDcrcUGVi2ftq+
+         nFqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=BMmbBNpThLwjwdSVK709zF6GAQfGUH/1Xbwaq+GSXt0=;
-        b=sJZLij7/8QSWSOTcg6Ic7VnigQ7sO0hQMXb8Ga8S78cQbhXPbnGyCzMrSJuj1nPQSj
-         MOAw1yEdpoIkHoF0i8wacbOHDpXzRjEPQqasVt+d7ikOauHlzpr/LWGEE1MG2D4q9jFD
-         e+KntuHyXpiRE6oHot7gnKa5R+fa6Y/bFiHdj1AWIh7yDu9Wq9v6AGm14KMQ1442q7bp
-         lUHsA2yuUHmox0l2oGt+b7FPoSrekb1UxG//2DGW3KXkc5RyjkuJtrthEV+sHThhs5LO
-         +rDdZ24fbmu2DA790elM/mUaR5ahZtYT6+Vl91GXty02xphXGri+92qMhIZl9jQUZNg5
-         iWcg==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :dkim-signature;
+        bh=lwy7+pediWNcl1I522RD5AhmgfZvRNkSfJmtJ6NNYsc=;
+        b=DeZCQz/4m2Gw/igK9OJiRCUFZfjTGX74li3edZyfTpAJYkeZHYVVpdqZ6Tk9cfy6wG
+         SVmeBWnauwaTbKOXUp8y2B1rAzRD6Gs1OOepDSSYwfekhfX89P+bzana9RsxO+n4hu1m
+         HN/dDZulgxXGlYBB6dUS6qsOeAyaydkYfFHjdVODXtLLJuLn6KLrQJiDO7XjPocodoAd
+         eHe9uIXTTJOc4UdhxXEbQKKJ2W4I/KllFanlgG8YktBcgxdxbub4rV5mOQ/tQQIchfmI
+         y6EmeKDTfa+EDs7IYWfeUXmLEDxRkzwu4aRlgvpVZQNCQ6sXQz+g+JgltnXwUiBncSmS
+         vIVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P6rveOeo;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DIZTKYjP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m29si1076227qkm.49.2020.02.20.00.47.33
+        by mx.google.com with ESMTPS id p8si1147824qtq.104.2020.02.20.01.08.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Feb 2020 00:47:33 -0800 (PST)
+        Thu, 20 Feb 2020 01:08:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P6rveOeo;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DIZTKYjP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38136 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38280 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j4hUb-0001zr-9L
-	for alex.bennee@linaro.org; Thu, 20 Feb 2020 03:47:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47438)
+	id 1j4hoV-00070S-N5
+	for alex.bennee@linaro.org; Thu, 20 Feb 2020 04:08:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50388)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j4hUI-0001xG-MH
- for qemu-arm@nongnu.org; Thu, 20 Feb 2020 03:47:19 -0500
+ (envelope-from <gshan@redhat.com>) id 1j4hoL-0006yN-4D
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2020 04:07:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j4hUG-0006ql-0l
- for qemu-arm@nongnu.org; Thu, 20 Feb 2020 03:47:13 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:52823
+ (envelope-from <gshan@redhat.com>) id 1j4hoJ-0000vt-Ae
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2020 04:07:57 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:48714
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j4hUF-0006pv-4R
- for qemu-arm@nongnu.org; Thu, 20 Feb 2020 03:47:11 -0500
+ (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1j4hoJ-0000vD-5L
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2020 04:07:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582188430;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1582189673;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=BMmbBNpThLwjwdSVK709zF6GAQfGUH/1Xbwaq+GSXt0=;
- b=P6rveOeoY145obaSgFyXnEMCj/PIpTVBin8yJswBu0qT+YBwG3hEuJl/MyP+o/5WHcGNyY
- iAYX9vAAYgSStJjgnUENYkai1iRnN4TLS4NLk/2Tui6UoECGn/mG0fe5Px6P+7qZ7F2nEX
- yEm0JjdDh/qqoDbQNvmAT3IX4cr2UDk=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-375-0tcL10_2MfibhUen1_twww-1; Thu, 20 Feb 2020 03:47:09 -0500
-Received: by mail-ed1-f72.google.com with SMTP id dd24so2171493edb.1
- for <qemu-arm@nongnu.org>; Thu, 20 Feb 2020 00:47:08 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=5n3WfXpaTTRinptHagSR3jZyiKxx0GZv3okKzR/E0j0=;
- b=TmoJAc0Z5r1gZlPVks7KVhDCxqh8N0AanzzZlS5ISWy9vEbK/Rub2oH0QBYS2o57dp
- nzq6112ETRnJKmPYD6LZLwCeznMdGMuP7jMkgv1WMOvDKUGZKNQ5co9oU7cv1RX0HnYy
- sP4zBRqlDlkg+M9YGMnRbhQg6aGPlD34zFS5jSNiSdtc9Bv6F8dioYu+/UZlmGBIgPdD
- CuKurBvwtE8UvISEcsNsWr/c9KH4e+XAEHtDH+TaPxRbxQajBC2Acy0C8jcODcw4ODUx
- 0fp4RF92Sc954qnol1eih4mSDRk2M7Bc6LPymcAfvTmju49PFqDqbNqKvufrQZ0vgThM
- 9ZlA==
-X-Gm-Message-State: APjAAAXQXcRi66Oy+nbw8w4XZQvZrN82blTYeUqZRAv9fsWdg4NdyfUJ
- qovEJIXUFe4ziL3Q9kKF2YvE3gOAVZpsV7vQCbY6LCYkrMcsbQOT4GpOuBuV8wFnH8ZJ75k2Y9p
- kxL8tmKqqBJqa
-X-Received: by 2002:a17:906:535d:: with SMTP id
- j29mr28273342ejo.230.1582188426042; 
- Thu, 20 Feb 2020 00:47:06 -0800 (PST)
-X-Received: by 2002:a17:906:535d:: with SMTP id
- j29mr28273311ejo.230.1582188425645; 
- Thu, 20 Feb 2020 00:47:05 -0800 (PST)
-Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id e3sm67876edu.3.2020.02.20.00.47.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Feb 2020 00:47:05 -0800 (PST)
+ bh=lwy7+pediWNcl1I522RD5AhmgfZvRNkSfJmtJ6NNYsc=;
+ b=DIZTKYjPiOWQOcQiRjyWmwJV1FbP9Bg36FM2DdNqPcv4VjC6F8uVlReEjBljFIFPANIrlz
+ qm1LrAth+vx5qaYcexi+DgPMw/7vuA2FcKcsX92pvnSBd+VVL7ExN7Qyi5QuigwR3pR7yM
+ Jl0OkKgi3aryYndB6vgyjJ4e5OwS2Js=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-236-hu-eyb8BM6epE1stkq_S8Q-1; Thu, 20 Feb 2020 04:07:38 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D95EA18AB2C0;
+ Thu, 20 Feb 2020 09:07:36 +0000 (UTC)
+Received: from localhost.localdomain (vpn2-54-80.bne.redhat.com [10.64.54.80])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 92A4F1BC6D;
+ Thu, 20 Feb 2020 09:07:31 +0000 (UTC)
 Subject: Re: [PATCH] hw/char/pl011: Output characters using best-effort mode
-To: Gavin Shan <gshan@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
- <marcandre.lureau@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 References: <20200220060108.143668-1-gshan@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <5740f743-f6f6-54bc-9b0e-7c5d9feed486@redhat.com>
-Date: Thu, 20 Feb 2020 09:47:03 +0100
+ <5740f743-f6f6-54bc-9b0e-7c5d9feed486@redhat.com>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <a0282662-a43e-00b9-02d1-18635ac459ae@redhat.com>
+Date: Thu, 20 Feb 2020 20:07:28 +1100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <20200220060108.143668-1-gshan@redhat.com>
+In-Reply-To: <5740f743-f6f6-54bc-9b0e-7c5d9feed486@redhat.com>
 Content-Language: en-US
-X-MC-Unique: 0tcL10_2MfibhUen1_twww-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: hu-eyb8BM6epE1stkq_S8Q-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -128,242 +113,295 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
 Cc: peter.maydell@linaro.org, shan.gavin@gmail.com, maz@kernel.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0swdq6f1MfxI
+X-TUID: GMAiELqkyNaz
 
-Hi Gavin,
+Hi Philippe,
 
-Cc'ing the chardev maintainers:
-
-./scripts/get_maintainer.pl -f chardev/char-fe.c
-"Marc-Andr=C3=A9 Lureau" <marcandre.lureau@redhat.com> (maintainer:Characte=
-r=20
-device...)
-Paolo Bonzini <pbonzini@redhat.com> (reviewer:Character device...)
-qemu-devel@nongnu.org (open list:All patches CC here)
-
-
-On 2/20/20 7:01 AM, Gavin Shan wrote:
-> Currently, PL011 is used by ARM virt board by default. It's possible to
-> block the system from booting. With below parameters in command line, the
-> backend could run into endless attempts of transmitting packets, which
-> can't succeed because of running out of sending buffer. The socket might
-> be not accepted n server side. It's not correct because disconnected
-> serial port shouldn't stop the system from booting.
+On 2/20/20 7:47 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Cc'ing the chardev maintainers:
 >=20
->     -machine virt,gic-version=3D3 -cpu max -m 4096
->     -monitor none -serial tcp:127.0.0.1:50900
+> ./scripts/get_maintainer.pl -f chardev/char-fe.c
+> "Marc-Andr=C3=A9 Lureau" <marcandre.lureau@redhat.com> (maintainer:Charac=
+ter device...)
+> Paolo Bonzini <pbonzini@redhat.com> (reviewer:Character device...)
+> qemu-devel@nongnu.org (open list:All patches CC here)
+>=20
 
-Is the behavior similar when using the 'nowait' option?
+Thanks for keeping right persons copied :)
 
 >=20
-> The issue can be reproduced by starting a program which listens on TCP
-> port 50900 and then sleep without accepting any incoming connections. On
-> the other hand, a VM is started with above parameters and modified qemu
-> where the PL011 is flooded with 5000K data after it's created. Eventually=
-,
-> the flooding won't proceed and stops after transmitting 2574K data. It's
-> basically to simulate tons of output from EDK-II and demonstrates how the
-> tons of output can block the system from booting.
+> On 2/20/20 7:01 AM, Gavin Shan wrote:
+>> Currently, PL011 is used by ARM virt board by default. It's possible to
+>> block the system from booting. With below parameters in command line, th=
+e
+>> backend could run into endless attempts of transmitting packets, which
+>> can't succeed because of running out of sending buffer. The socket might
+>> be not accepted n server side. It's not correct because disconnected
+>> serial port shouldn't stop the system from booting.
+>>
+>> =C2=A0=C2=A0=C2=A0 -machine virt,gic-version=3D3 -cpu max -m 4096
+>> =C2=A0=C2=A0=C2=A0 -monitor none -serial tcp:127.0.0.1:50900
 >=20
-> This fixes the issue by using newly added API qemu_chr_fe_try_write_all()=
-,
-> which provides another type of service (best-effort). It's different from
-> qemu_chr_fe_write_all() as the data will be dropped if the backend has
-> been running into so-called broken state or 50 attempts of transmissions.
-> The broken state is cleared if the data is transmitted at once.
+> Is the behavior similar when using the 'nowait' option?
 >=20
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
->   chardev/char-fe.c         | 15 +++++++++++++--
->   chardev/char.c            | 20 ++++++++++++++------
->   hw/char/pl011.c           |  5 +----
->   include/chardev/char-fe.h | 14 ++++++++++++++
->   include/chardev/char.h    |  6 ++++--
->   5 files changed, 46 insertions(+), 14 deletions(-)
->=20
-> diff --git a/chardev/char-fe.c b/chardev/char-fe.c
-> index f3530a90e6..6558fcfb94 100644
-> --- a/chardev/char-fe.c
-> +++ b/chardev/char-fe.c
-> @@ -39,7 +39,7 @@ int qemu_chr_fe_write(CharBackend *be, const uint8_t *b=
-uf, int len)
->           return 0;
->       }
->  =20
-> -    return qemu_chr_write(s, buf, len, false);
-> +    return qemu_chr_write(s, buf, len, false, false);
->   }
->  =20
->   int qemu_chr_fe_write_all(CharBackend *be, const uint8_t *buf, int len)
-> @@ -50,7 +50,18 @@ int qemu_chr_fe_write_all(CharBackend *be, const uint8=
-_t *buf, int len)
->           return 0;
->       }
->  =20
-> -    return qemu_chr_write(s, buf, len, true);
-> +    return qemu_chr_write(s, buf, len, true, false);
-> +}
-> +
-> +int qemu_chr_fe_try_write_all(CharBackend *be, const uint8_t *buf, int l=
-en)
-> +{
-> +    Chardev *s =3D be->chr;
-> +
-> +    if (!s) {
-> +        return 0;
-> +    }
-> +
-> +    return qemu_chr_write(s, buf, len, true, true);
->   }
->  =20
->   int qemu_chr_fe_read_all(CharBackend *be, uint8_t *buf, int len)
-> diff --git a/chardev/char.c b/chardev/char.c
-> index 87237568df..cd17fac123 100644
-> --- a/chardev/char.c
-> +++ b/chardev/char.c
-> @@ -106,9 +106,8 @@ static void qemu_chr_write_log(Chardev *s, const uint=
-8_t *buf, size_t len)
->       }
->   }
->  =20
-> -static int qemu_chr_write_buffer(Chardev *s,
-> -                                 const uint8_t *buf, int len,
-> -                                 int *offset, bool write_all)
-> +static int qemu_chr_write_buffer(Chardev *s, const uint8_t *buf, int len=
-,
-> +                                 int *offset, bool write_all, bool best_=
-effort)
->   {
->       ChardevClass *cc =3D CHARDEV_GET_CLASS(s);
->       int res =3D 0;
-> @@ -119,7 +118,14 @@ static int qemu_chr_write_buffer(Chardev *s,
->       retry:
->           res =3D cc->chr_write(s, buf + *offset, len - *offset);
->           if (res < 0 && errno =3D=3D EAGAIN && write_all) {
-> +            if (best_effort && s->retries > 50) {
-> +                break;
-> +            }
-> +
->               g_usleep(100);
-> +            if (best_effort) {
-> +                s->retries++;
-> +            }
->               goto retry;
->           }
->  =20
-> @@ -127,6 +133,7 @@ static int qemu_chr_write_buffer(Chardev *s,
->               break;
->           }
->  =20
-> +        s->retries =3D 0;
->           *offset +=3D res;
->           if (!write_all) {
->               break;
-> @@ -140,7 +147,8 @@ static int qemu_chr_write_buffer(Chardev *s,
->       return res;
->   }
->  =20
-> -int qemu_chr_write(Chardev *s, const uint8_t *buf, int len, bool write_a=
-ll)
-> +int qemu_chr_write(Chardev *s, const uint8_t *buf, int len,
-> +                   bool write_all, bool best_effort)
->   {
->       int offset =3D 0;
->       int res;
-> @@ -148,11 +156,11 @@ int qemu_chr_write(Chardev *s, const uint8_t *buf, =
-int len, bool write_all)
->       if (qemu_chr_replay(s) && replay_mode =3D=3D REPLAY_MODE_PLAY) {
->           replay_char_write_event_load(&res, &offset);
->           assert(offset <=3D len);
-> -        qemu_chr_write_buffer(s, buf, offset, &offset, true);
-> +        qemu_chr_write_buffer(s, buf, offset, &offset, true, false);
->           return res;
->       }
->  =20
-> -    res =3D qemu_chr_write_buffer(s, buf, len, &offset, write_all);
-> +    res =3D qemu_chr_write_buffer(s, buf, len, &offset, write_all, best_=
-effort);
->  =20
->       if (qemu_chr_replay(s) && replay_mode =3D=3D REPLAY_MODE_RECORD) {
->           replay_char_write_event_save(res, offset);
-> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-> index 13e784f9d9..348188f49e 100644
-> --- a/hw/char/pl011.c
-> +++ b/hw/char/pl011.c
-> @@ -179,11 +179,8 @@ static void pl011_write(void *opaque, hwaddr offset,
->  =20
->       switch (offset >> 2) {
->       case 0: /* UARTDR */
-> -        /* ??? Check if transmitter is enabled.  */
->           ch =3D value;
-> -        /* XXX this blocks entire thread. Rewrite to use
-> -         * qemu_chr_fe_write and background I/O callbacks */
-> -        qemu_chr_fe_write_all(&s->chr, &ch, 1);
-> +        qemu_chr_fe_try_write_all(&s->chr, &ch, 1);
->           s->int_level |=3D PL011_INT_TX;
->           pl011_update(s);
->           break;
-> diff --git a/include/chardev/char-fe.h b/include/chardev/char-fe.h
-> index a553843364..18281ccfca 100644
-> --- a/include/chardev/char-fe.h
-> +++ b/include/chardev/char-fe.h
-> @@ -220,6 +220,20 @@ int qemu_chr_fe_write(CharBackend *be, const uint8_t=
- *buf, int len);
->    */
->   int qemu_chr_fe_write_all(CharBackend *be, const uint8_t *buf, int len)=
+
+The issue happens on TCP client side, but 'nowait' is used for TCP
+server according to the following document. I got same behavior after
+giving a 'nowait' in my case.
+
+https://qemu.weilnetz.de/doc/qemu-doc.html   (search 'nowait')
+
+nowait specifies that QEMU should not block waiting for a client to connect
+to a listening socket.
+
+>>
+>> The issue can be reproduced by starting a program which listens on TCP
+>> port 50900 and then sleep without accepting any incoming connections. On
+>> the other hand, a VM is started with above parameters and modified qemu
+>> where the PL011 is flooded with 5000K data after it's created. Eventuall=
+y,
+>> the flooding won't proceed and stops after transmitting 2574K data. It's
+>> basically to simulate tons of output from EDK-II and demonstrates how th=
+e
+>> tons of output can block the system from booting.
+>>
+>> This fixes the issue by using newly added API qemu_chr_fe_try_write_all(=
+),
+>> which provides another type of service (best-effort). It's different fro=
+m
+>> qemu_chr_fe_write_all() as the data will be dropped if the backend has
+>> been running into so-called broken state or 50 attempts of transmissions=
+.
+>> The broken state is cleared if the data is transmitted at once.
+>>
+>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>> ---
+>> =C2=A0 chardev/char-fe.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ | 15 +++++++++++++--
+>> =C2=A0 chardev/char.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 | 20 ++++++++++++++------
+>> =C2=A0 hw/char/pl011.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 |=C2=A0 5 +----
+>> =C2=A0 include/chardev/char-fe.h | 14 ++++++++++++++
+>> =C2=A0 include/chardev/char.h=C2=A0=C2=A0=C2=A0 |=C2=A0 6 ++++--
+>> =C2=A0 5 files changed, 46 insertions(+), 14 deletions(-)
+>>
+>> diff --git a/chardev/char-fe.c b/chardev/char-fe.c
+>> index f3530a90e6..6558fcfb94 100644
+>> --- a/chardev/char-fe.c
+>> +++ b/chardev/char-fe.c
+>> @@ -39,7 +39,7 @@ int qemu_chr_fe_write(CharBackend *be, const uint8_t *=
+buf, int len)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return 0;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> -=C2=A0=C2=A0=C2=A0 return qemu_chr_write(s, buf, len, false);
+>> +=C2=A0=C2=A0=C2=A0 return qemu_chr_write(s, buf, len, false, false);
+>> =C2=A0 }
+>> =C2=A0 int qemu_chr_fe_write_all(CharBackend *be, const uint8_t *buf, in=
+t len)
+>> @@ -50,7 +50,18 @@ int qemu_chr_fe_write_all(CharBackend *be, const uint=
+8_t *buf, int len)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return 0;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> -=C2=A0=C2=A0=C2=A0 return qemu_chr_write(s, buf, len, true);
+>> +=C2=A0=C2=A0=C2=A0 return qemu_chr_write(s, buf, len, true, false);
+>> +}
+>> +
+>> +int qemu_chr_fe_try_write_all(CharBackend *be, const uint8_t *buf, int =
+len)
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 Chardev *s =3D be->chr;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 if (!s) {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return 0;
+>> +=C2=A0=C2=A0=C2=A0 }
+>> +
+>> +=C2=A0=C2=A0=C2=A0 return qemu_chr_write(s, buf, len, true, true);
+>> =C2=A0 }
+>> =C2=A0 int qemu_chr_fe_read_all(CharBackend *be, uint8_t *buf, int len)
+>> diff --git a/chardev/char.c b/chardev/char.c
+>> index 87237568df..cd17fac123 100644
+>> --- a/chardev/char.c
+>> +++ b/chardev/char.c
+>> @@ -106,9 +106,8 @@ static void qemu_chr_write_log(Chardev *s, const uin=
+t8_t *buf, size_t len)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 }
+>> -static int qemu_chr_write_buffer(Chardev *s,
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const uint8_t *buf, int le=
+n,
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int *offset, bool write_al=
+l)
+>> +static int qemu_chr_write_buffer(Chardev *s, const uint8_t *buf, int le=
+n,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int *offset, bool write_al=
+l, bool best_effort)
+>> =C2=A0 {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ChardevClass *cc =3D CHARDEV_GET_CLASS(s)=
 ;
->  =20
-> +/**
-> + * qemu_chr_fe_try_write_all:
-> + * @buf: the data
-> + * @len: the number of bytes to send
-> + *
-> + * Write data to a character backend from the front end.  This function =
-will
-> + * send data from the front end to the back end. It provides function as=
- to
-> + * @qemu_chr_fe_write_all, except the data will be dropped after 50 atte=
-mpts
-> + * of transmissions are done.
-> + *
-> + * Returns: the number of bytes consumed (0 if no associated Chardev)
-> + */
-> +int qemu_chr_fe_try_write_all(CharBackend *be, const uint8_t *buf, int l=
-en);
-> +
->   /**
->    * qemu_chr_fe_read_all:
->    * @buf: the data buffer
-> diff --git a/include/chardev/char.h b/include/chardev/char.h
-> index 00589a6025..425a007a0a 100644
-> --- a/include/chardev/char.h
-> +++ b/include/chardev/char.h
-> @@ -65,6 +65,7 @@ struct Chardev {
->       char *filename;
->       int logfd;
->       int be_open;
-> +    int retries;
->       GSource *gsource;
->       GMainContext *gcontext;
->       DECLARE_BITMAP(features, QEMU_CHAR_FEATURE_LAST);
-> @@ -221,8 +222,9 @@ void qemu_chr_set_feature(Chardev *chr,
->                             ChardevFeature feature);
->   QemuOpts *qemu_chr_parse_compat(const char *label, const char *filename=
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int res =3D 0;
+>> @@ -119,7 +118,14 @@ static int qemu_chr_write_buffer(Chardev *s,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 retry:
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 res =3D cc->chr_w=
+rite(s, buf + *offset, len - *offset);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (res < 0 && er=
+rno =3D=3D EAGAIN && write_all) {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (=
+best_effort && s->retries > 50) {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 break;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> +
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 g_usleep(100);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (=
+best_effort) {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 s->retries++;
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 goto retry;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> @@ -127,6 +133,7 @@ static int qemu_chr_write_buffer(Chardev *s,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 break;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s->retries =3D 0;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 *offset +=3D res;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!write_all) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 break;
+>> @@ -140,7 +147,8 @@ static int qemu_chr_write_buffer(Chardev *s,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return res;
+>> =C2=A0 }
+>> -int qemu_chr_write(Chardev *s, const uint8_t *buf, int len, bool write_=
+all)
+>> +int qemu_chr_write(Chardev *s, const uint8_t *buf, int len,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool write_all, bool best_effort)
+>> =C2=A0 {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int offset =3D 0;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int res;
+>> @@ -148,11 +156,11 @@ int qemu_chr_write(Chardev *s, const uint8_t *buf,=
+ int len, bool write_all)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (qemu_chr_replay(s) && replay_mode =3D=
+=3D REPLAY_MODE_PLAY) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 replay_char_write=
+_event_load(&res, &offset);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 assert(offset <=
+=3D len);
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qemu_chr_write_buffer(s, buf=
+, offset, &offset, true);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qemu_chr_write_buffer(s, buf=
+, offset, &offset, true, false);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return res;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> -=C2=A0=C2=A0=C2=A0 res =3D qemu_chr_write_buffer(s, buf, len, &offset, =
+write_all);
+>> +=C2=A0=C2=A0=C2=A0 res =3D qemu_chr_write_buffer(s, buf, len, &offset, =
+write_all, best_effort);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (qemu_chr_replay(s) && replay_mode =3D=
+=3D REPLAY_MODE_RECORD) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 replay_char_write=
+_event_save(res, offset);
+>> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+>> index 13e784f9d9..348188f49e 100644
+>> --- a/hw/char/pl011.c
+>> +++ b/hw/char/pl011.c
+>> @@ -179,11 +179,8 @@ static void pl011_write(void *opaque, hwaddr offset=
 ,
->                                   bool permit_mux_mon);
-> -int qemu_chr_write(Chardev *s, const uint8_t *buf, int len, bool write_a=
-ll);
-> -#define qemu_chr_write_all(s, buf, len) qemu_chr_write(s, buf, len, true=
-)
-> +int qemu_chr_write(Chardev *s, const uint8_t *buf, int len,
-> +                   bool write_all, bool best_effort);
-> +#define qemu_chr_write_all(s, buf, len) qemu_chr_write(s, buf, len, true=
-, false)
->   int qemu_chr_wait_connected(Chardev *chr, Error **errp);
->  =20
->   #define TYPE_CHARDEV "chardev"
->=20
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 switch (offset >> 2) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case 0: /* UARTDR */
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* ??? Check if transmitter =
+is enabled.=C2=A0 */
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ch =3D value;
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* XXX this blocks entire th=
+read. Rewrite to use
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * qemu_chr_fe_write an=
+d background I/O callbacks */
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qemu_chr_fe_write_all(&s->ch=
+r, &ch, 1);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qemu_chr_fe_try_write_all(&s=
+->chr, &ch, 1);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s->int_level |=3D=
+ PL011_INT_TX;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pl011_update(s);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> diff --git a/include/chardev/char-fe.h b/include/chardev/char-fe.h
+>> index a553843364..18281ccfca 100644
+>> --- a/include/chardev/char-fe.h
+>> +++ b/include/chardev/char-fe.h
+>> @@ -220,6 +220,20 @@ int qemu_chr_fe_write(CharBackend *be, const uint8_=
+t *buf, int len);
+>> =C2=A0=C2=A0 */
+>> =C2=A0 int qemu_chr_fe_write_all(CharBackend *be, const uint8_t *buf, in=
+t len);
+>> +/**
+>> + * qemu_chr_fe_try_write_all:
+>> + * @buf: the data
+>> + * @len: the number of bytes to send
+>> + *
+>> + * Write data to a character backend from the front end.=C2=A0 This fun=
+ction will
+>> + * send data from the front end to the back end. It provides function a=
+s to
+>> + * @qemu_chr_fe_write_all, except the data will be dropped after 50 att=
+empts
+>> + * of transmissions are done.
+>> + *
+>> + * Returns: the number of bytes consumed (0 if no associated Chardev)
+>> + */
+>> +int qemu_chr_fe_try_write_all(CharBackend *be, const uint8_t *buf, int =
+len);
+>> +
+>> =C2=A0 /**
+>> =C2=A0=C2=A0 * qemu_chr_fe_read_all:
+>> =C2=A0=C2=A0 * @buf: the data buffer
+>> diff --git a/include/chardev/char.h b/include/chardev/char.h
+>> index 00589a6025..425a007a0a 100644
+>> --- a/include/chardev/char.h
+>> +++ b/include/chardev/char.h
+>> @@ -65,6 +65,7 @@ struct Chardev {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 char *filename;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int logfd;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int be_open;
+>> +=C2=A0=C2=A0=C2=A0 int retries;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 GSource *gsource;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 GMainContext *gcontext;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 DECLARE_BITMAP(features, QEMU_CHAR_FEATUR=
+E_LAST);
+>> @@ -221,8 +222,9 @@ void qemu_chr_set_feature(Chardev *chr,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 ChardevFeature feature);
+>> =C2=A0 QemuOpts *qemu_chr_parse_compat(const char *label, const char *fi=
+lename,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool permit_mux_mon);
+>> -int qemu_chr_write(Chardev *s, const uint8_t *buf, int len, bool write_=
+all);
+>> -#define qemu_chr_write_all(s, buf, len) qemu_chr_write(s, buf, len, tru=
+e)
+>> +int qemu_chr_write(Chardev *s, const uint8_t *buf, int len,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool write_all, bool best_effort);
+>> +#define qemu_chr_write_all(s, buf, len) qemu_chr_write(s, buf, len, tru=
+e, false)
+>> =C2=A0 int qemu_chr_wait_connected(Chardev *chr, Error **errp);
+>> =C2=A0 #define TYPE_CHARDEV "chardev"
+>>
+
+Thanks,
+Gavin
 

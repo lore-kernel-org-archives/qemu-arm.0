@@ -1,85 +1,85 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp544046lfg;
-        Thu, 20 Feb 2020 05:07:01 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx5CdkkJ0sQ+c76kNJTxnkZJs3G0+4AoepvD7c2wkzJY5whWkw5ulwCY1SZb81zypGX59Xm
-X-Received: by 2002:aca:1012:: with SMTP id 18mr1796759oiq.151.1582204020818;
-        Thu, 20 Feb 2020 05:07:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582204020; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp544131lfg;
+        Thu, 20 Feb 2020 05:07:06 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyKzC7UBIK9ZV7I0yHsA6kYOk8UB14w1qpeYvneNgv3DegjdNBruE8YkPGdvXHriDpoMW/Q
+X-Received: by 2002:a9d:6e8e:: with SMTP id a14mr22182736otr.109.1582204026557;
+        Thu, 20 Feb 2020 05:07:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582204026; cv=none;
         d=google.com; s=arc-20160816;
-        b=tkKtoifuQ5vRwwvSUXy0JcTDwu8w2E3xU3cWqeSXY1FKp89/r3FHEsYtMSIH5939u5
-         rJw8rvDB74MQI5xMLFZNhL3+Gk62sTk6j7e3H6OEgbDRY6RfkMUcHoxJU0so9su6vdXS
-         4hpE7rE+bp5D6Wckv82D6yLkIga9C1ZbLEbNtAl7dmNzJ3BRIaEKdnKBdGzFMENi0Hp2
-         NRqS7neAeiu+tA497r+0eGoLoamoNad5mAg4pvsA/KuoNgONUtrDPVnE/NueUQvOgVN0
-         GlgJKK0vLpx1x9WRpoEBXfP6tLDVmxcl9W1Aq3OkPItSpYaX8YpkBeo/bzItr9S9cVLv
-         1RrQ==
+        b=bBpcoNjs3sdeJlEd/FIZKYqJLuFbsWBh0nhWFuEsubegKT2F9T/IcAPi+scCZzPp/9
+         94mIjySuHeAjeJ7qlYJTVy0npPt7vmOIoPlWgYLadzZBpxudz8jCpJBfxHG+j4sQyqSa
+         0AK6ZGfQot172lwM+h4EW7fS6zub/XCJBy4d4wW+wM/3lYj0J6tSxyvPFvv12oGPD88G
+         anlb83H6E65lTRBN6MwVaj68OwS11aEL8Bckq9q1tpzTqAbhU7kYqYwSMeMT05TFvZc8
+         jvMyywQuBIrzajoiShR8FdGBSe0ac38SDl9CxzNboglGCHCW2No0Zp+UjLdFyheOP358
+         Z+NA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=mOFaN72GDMCW5HO6VjgTUS8UF4EBg1PhikK6Z5qXel0=;
-        b=V4WB/OKTVZsFBTEwsSWyxur2663mnQH1MUMjI0xx7Qj8+iGY3jN2xZ+/me3FgxIE5F
-         qSkVDmN9YDttKFbQk94SlfGv1YqKANZWGQ22t9PqF0ljQCCQEaj2JvjPEvEbjD4J1NFC
-         2AgoJRgX9vKrRg7WruRlvq1uLowYDJEpjZEViuXH4w58kisyF5mbm9S1thwJfR2eBQBq
-         2XyZ3Gf1k355ugg52BG97IjvNv5R6Kf8g7awJBtbRFKcSyPCZdvoMHrGozO7EoJhBnRa
-         m+A8yyitQErRGT6JWH9tmH3AjFEIAS+L6vXB7oU2Ox/t93Nkf41TIvNjdmLUB+rye9gS
-         E2/w==
+        bh=3GOpiWMITxx9TtgKrEdUBt5MYBhcyKxmOeh0GtNqL3Q=;
+        b=L72k29wSU5BUL1ep9d3st4U1KlePOOEvXFKcPAwC+qi5/MiurHVlupfS7hDZNMAjbl
+         MkrUX5ayzCRmFHpQZ32dfOj7SFLE9Y/XUzSXsigXdLSAphz/8BJeZhbg7si7TgVPZ9un
+         ajQuMP9at9OF4nrxLZ14gucVM7XzDHw647XmExmwdBWWelH/pGM/yQzZ7mLowkKxjoi2
+         1oukXWuPGpACGW4AbHzUQSuM8UpV1VutXEPZZgoBTzJmEtrWlJRjtK72i/tftHjrQltT
+         +3xe5gAm1OwVffptqQH/LTvHI0NvKKj2yEtzdMKRB9YHnJJ4T3hQVIDyULC190fW8UxR
+         q8xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aCxUlqBJ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SHvFbKWJ;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b2si1957201ots.284.2020.02.20.05.07.00;
-        Thu, 20 Feb 2020 05:07:00 -0800 (PST)
+        by mx.google.com with ESMTP id b2si1957201ots.284.2020.02.20.05.07.06;
+        Thu, 20 Feb 2020 05:07:06 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aCxUlqBJ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SHvFbKWJ;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728218AbgBTNG7 (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 20 Feb 2020 08:06:59 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:55842 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1728221AbgBTNG7 (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Thu, 20 Feb 2020 08:06:59 -0500
+        id S1728229AbgBTNHF (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 20 Feb 2020 08:07:05 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27224 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1728130AbgBTNHF (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 20 Feb 2020 08:07:05 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1582204017;
+        s=mimecast20190719; t=1582204024;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:  content-type:content-type:content-type:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=mOFaN72GDMCW5HO6VjgTUS8UF4EBg1PhikK6Z5qXel0=;
-        b=aCxUlqBJB5AV2fdxx8ps6EpBzB7pBogvY/a8tyjK24lqDIsXvSW43d1Yhzue++ZZuyIDJe
-        kDD7COzngb6ntwpZ27qgwMLpt4OGN/0PSmYTAtGVaCG9OKoqqUkc+Q01WO9XosBakIPP+K
-        LRgo6giFWTS0y9lfDJKgXyefgcNZ3ec=
+        bh=3GOpiWMITxx9TtgKrEdUBt5MYBhcyKxmOeh0GtNqL3Q=;
+        b=SHvFbKWJkc2EO4i/EDTJtWjzC5yIN52VQV4GOJ+kyD52H1Z3KDPXklx2vV9l7i02pptMk/
+        CWJHqS7KuXlbaO7dD/x5S2SlM/LCaG1Ll61RobTuIXNJNxo1gWHSw0giWoWr4ylBsymY3d
+        YqLgZGutsMHpaDUr1DVrhEScH69p6yw=
 Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
  [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-40-PyMwBphRMt6MbE8UKrPkIg-1; Thu, 20 Feb 2020 08:06:56 -0500
-X-MC-Unique: PyMwBphRMt6MbE8UKrPkIg-1
-Received: by mail-wm1-f71.google.com with SMTP id f66so578357wmf.9
-        for <kvm@vger.kernel.org>; Thu, 20 Feb 2020 05:06:55 -0800 (PST)
+ us-mta-150-sCR8Z1z9NB2f9tAH9TLmeA-1; Thu, 20 Feb 2020 08:07:03 -0500
+X-MC-Unique: sCR8Z1z9NB2f9tAH9TLmeA-1
+Received: by mail-wm1-f71.google.com with SMTP id b205so807387wmh.2
+        for <kvm@vger.kernel.org>; Thu, 20 Feb 2020 05:07:02 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=mOFaN72GDMCW5HO6VjgTUS8UF4EBg1PhikK6Z5qXel0=;
-        b=Z8UWSSLRwvmdc0Rijcxm92hIjQT/VQJLNTInb+g90u60ak5IRQlczCX6PpoN6vVcZ/
-         jFJfehDXA9F/YpgtMDBgJWbveE1S886QQXtdpG9LmOLKKSrbS8+fEZtAj69J+VJvOYOV
-         k6iyJqpTzrIxmUuh4RBn+NPAIOd2duPjhvBSKYIFKvNRMXUKCbUsBpdNsvH6TuN4YUUu
-         MLHls8wAVrL4b/g8oUXHmLfvzgkR+0Pw8DzoTFtHf+BF+iQV77aDUIs6N/5HJKVPn6OH
-         C8nhUQKhzi4ZDedZNi/PJs9Zav0qd9KiNKgan93m16o4elfw3j864g0Ga7cICVjFiQ/X
-         c2lw==
-X-Gm-Message-State: APjAAAWcr9nOiX8oyDbwIRSJBLvv8LfwUCVM5IWMXi3OmjAc4nnml4bq
-        ukmV5Mur2NO8vTjAYx/jPamYZeQgDXVrC5GdzMO/0nWuDxKfWo0yohWp/419KbsHbaH7fEm6BCm
-        JVvAaUVRv2kl0
-X-Received: by 2002:a1c:bdc5:: with SMTP id n188mr4525028wmf.124.1582204014475;
-        Thu, 20 Feb 2020 05:06:54 -0800 (PST)
-X-Received: by 2002:a1c:bdc5:: with SMTP id n188mr4524974wmf.124.1582204014007;
-        Thu, 20 Feb 2020 05:06:54 -0800 (PST)
+        bh=3GOpiWMITxx9TtgKrEdUBt5MYBhcyKxmOeh0GtNqL3Q=;
+        b=pzIwXNM9Ptt46DTKVM5x/LO3k05/ZsL1wO1q2QoKcp8VcG+035FJlvs5m1gRT6R98J
+         5gdyEkuMA+EED+K+QHhlkiS7iVeqAVVBuIa6+SEf4hnJbExvpdiLWNWY97hHdtxFpbWh
+         6sb+DTnI4090LO0dZLB7ZolDMV9JYJIGLRJhe7vn2IwwBtteX3tnxcl1u8WZqrEHqZsl
+         dQWn4iW1S+UKuadHD1qCRv+JoB34pmRtinSYRzyY7Dt/FR0ZADeiU4VQDMKDAEI2rXr+
+         fVmL7DzrdeD2niXun43E7je85bvv/0/Vm1TJyUipMggnw+O866g2qNeaQSUoapd/OFA7
+         c/Yw==
+X-Gm-Message-State: APjAAAX41s3QB5fpnCv4ur0TGjp+XKfBB/pQq3c0gqRtQCZB7R4ruNAK
+        mMk16GwLA3lngcC2RcEX+oHUYhYcX5F6zqbxBd/2gO9fi6X6jSAPHXoKmi2maiLt8adsqHj9B1U
+        z6xRqrjfm4T4l
+X-Received: by 2002:a1c:a78b:: with SMTP id q133mr4438704wme.28.1582204021862;
+        Thu, 20 Feb 2020 05:07:01 -0800 (PST)
+X-Received: by 2002:a1c:a78b:: with SMTP id q133mr4438660wme.28.1582204021604;
+        Thu, 20 Feb 2020 05:07:01 -0800 (PST)
 Received: from localhost.localdomain (78.red-88-21-202.staticip.rima-tde.net. [88.21.202.78])
-        by smtp.gmail.com with ESMTPSA id b67sm4594690wmc.38.2020.02.20.05.06.50
+        by smtp.gmail.com with ESMTPSA id b67sm4594690wmc.38.2020.02.20.05.06.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Feb 2020 05:06:53 -0800 (PST)
+        Thu, 20 Feb 2020 05:07:01 -0800 (PST)
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To:     Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 Cc:     "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -116,9 +116,9 @@ Cc:     "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
         Paul Durrant <paul@xen.org>,
         Richard Henderson <rth@twiddle.net>,
         John Snow <jsnow@redhat.com>
-Subject: [PATCH v3 16/20] Let address_space_rw() calls pass a boolean 'is_write' argument
-Date:   Thu, 20 Feb 2020 14:05:44 +0100
-Message-Id: <20200220130548.29974-17-philmd@redhat.com>
+Subject: [PATCH v3 18/20] exec: Let cpu_[physical]_memory API use a boolean 'is_write' argument
+Date:   Thu, 20 Feb 2020 14:05:46 +0100
+Message-Id: <20200220130548.29974-19-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200220130548.29974-1-philmd@redhat.com>
 References: <20200220130548.29974-1-philmd@redhat.com>
@@ -130,294 +130,103 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: dmhI3ZNusitl
+X-TUID: GW5htH1tH72h
 
-Since its introduction in commit ac1970fbe8, address_space_rw()
-takes a boolean 'is_write' argument. Fix the codebase by using
-an explicit boolean type.
+The 'is_write' argument is either 0 or 1.
+Convert it to a boolean type.
 
-This commit was produced with the included Coccinelle script
-scripts/coccinelle/exec_rw_const.
-
-Inspired-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- scripts/coccinelle/exec_rw_const.cocci | 12 ++++++++++++
- target/i386/hvf/vmx.h                  |  2 +-
- exec.c                                 |  4 ++--
- hw/net/dp8393x.c                       | 27 +++++++++++++-------------
- hw/net/i82596.c                        | 11 ++++++-----
- hw/net/lasi_i82596.c                   |  4 ++--
- target/i386/hvf/x86_mmu.c              |  8 ++++----
- 7 files changed, 41 insertions(+), 27 deletions(-)
+ include/exec/cpu-all.h    |  2 +-
+ include/exec/cpu-common.h |  6 +++---
+ exec.c                    | 10 +++++-----
+ 3 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/scripts/coccinelle/exec_rw_const.cocci b/scripts/coccinelle/exec_rw_const.cocci
-index 70cf52d58e..98cb06f09f 100644
---- a/scripts/coccinelle/exec_rw_const.cocci
-+++ b/scripts/coccinelle/exec_rw_const.cocci
-@@ -1,6 +1,18 @@
- // Usage:
- //  spatch --sp-file scripts/coccinelle/exec_rw_const.cocci --dir . --in-place
+diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+index 49e96caa3f..49384bb66a 100644
+--- a/include/exec/cpu-all.h
++++ b/include/exec/cpu-all.h
+@@ -388,7 +388,7 @@ void dump_opcount_info(void);
+ #endif /* !CONFIG_USER_ONLY */
  
-+// Convert to boolean
-+@@
-+expression E1, E2, E3, E4, E5;
-+@@
-+(
-+- address_space_rw(E1, E2, E3, E4, E5, 0)
-++ address_space_rw(E1, E2, E3, E4, E5, false)
-+|
-+- address_space_rw(E1, E2, E3, E4, E5, 1)
-++ address_space_rw(E1, E2, E3, E4, E5, true)
-+)
-+
- // Use address_space_write instead of casting to non-const
- @@
- type T;
-diff --git a/target/i386/hvf/vmx.h b/target/i386/hvf/vmx.h
-index a115ca1782..19af029133 100644
---- a/target/i386/hvf/vmx.h
-+++ b/target/i386/hvf/vmx.h
-@@ -128,7 +128,7 @@ static inline void macvm_set_cr0(hv_vcpuid_t vcpu, uint64_t cr0)
-         address_space_rw(&address_space_memory,
-                          rvmcs(vcpu, VMCS_GUEST_CR3) & ~0x1f,
-                          MEMTXATTRS_UNSPECIFIED,
--                         pdpte, 32, 0);
-+                         pdpte, 32, false);
-         /* Only set PDPTE when appropriate. */
-         for (i = 0; i < 4; i++) {
-             wvmcs(vcpu, VMCS_GUEST_PDPTE0 + i * 2, pdpte[i]);
+ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
+-                        void *ptr, target_ulong len, int is_write);
++                        void *ptr, target_ulong len, bool is_write);
+ 
+ int cpu_exec(CPUState *cpu);
+ 
+diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
+index 165f8fb621..6bfe201779 100644
+--- a/include/exec/cpu-common.h
++++ b/include/exec/cpu-common.h
+@@ -70,7 +70,7 @@ size_t qemu_ram_pagesize(RAMBlock *block);
+ size_t qemu_ram_pagesize_largest(void);
+ 
+ void cpu_physical_memory_rw(hwaddr addr, void *buf,
+-                            hwaddr len, int is_write);
++                            hwaddr len, bool is_write);
+ static inline void cpu_physical_memory_read(hwaddr addr,
+                                             void *buf, hwaddr len)
+ {
+@@ -83,9 +83,9 @@ static inline void cpu_physical_memory_write(hwaddr addr,
+ }
+ void *cpu_physical_memory_map(hwaddr addr,
+                               hwaddr *plen,
+-                              int is_write);
++                              bool is_write);
+ void cpu_physical_memory_unmap(void *buffer, hwaddr len,
+-                               int is_write, hwaddr access_len);
++                               bool is_write, hwaddr access_len);
+ void cpu_register_map_client(QEMUBH *bh);
+ void cpu_unregister_map_client(QEMUBH *bh);
+ 
 diff --git a/exec.c b/exec.c
-index 16974d4f4b..73c3bcfa40 100644
+index b79919a4f7..6c39b43155 100644
 --- a/exec.c
 +++ b/exec.c
-@@ -3815,8 +3815,8 @@ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
-             address_space_write_rom(cpu->cpu_ases[asidx].as, phys_addr,
-                                     attrs, buf, l);
-         } else {
--            address_space_rw(cpu->cpu_ases[asidx].as, phys_addr,
--                             attrs, buf, l, 0);
-+            address_space_rw(cpu->cpu_ases[asidx].as, phys_addr, attrs, buf,
-+                             l, false);
-         }
-         len -= l;
-         buf += l;
-diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
-index b461101ceb..b4363e3186 100644
---- a/hw/net/dp8393x.c
-+++ b/hw/net/dp8393x.c
-@@ -276,7 +276,7 @@ static void dp8393x_do_load_cam(dp8393xState *s)
-     while (s->regs[SONIC_CDC] & 0x1f) {
-         /* Fill current entry */
-         address_space_rw(&s->as, dp8393x_cdp(s),
--                         MEMTXATTRS_UNSPECIFIED, s->data, size, 0);
-+                         MEMTXATTRS_UNSPECIFIED, s->data, size, false);
-         s->cam[index][0] = dp8393x_get(s, width, 1) & 0xff;
-         s->cam[index][1] = dp8393x_get(s, width, 1) >> 8;
-         s->cam[index][2] = dp8393x_get(s, width, 2) & 0xff;
-@@ -294,7 +294,7 @@ static void dp8393x_do_load_cam(dp8393xState *s)
- 
-     /* Read CAM enable */
-     address_space_rw(&s->as, dp8393x_cdp(s),
--                     MEMTXATTRS_UNSPECIFIED, s->data, size, 0);
-+                     MEMTXATTRS_UNSPECIFIED, s->data, size, false);
-     s->regs[SONIC_CE] = dp8393x_get(s, width, 0);
-     DPRINTF("load cam done. cam enable mask 0x%04x\n", s->regs[SONIC_CE]);
- 
-@@ -312,7 +312,7 @@ static void dp8393x_do_read_rra(dp8393xState *s)
-     width = (s->regs[SONIC_DCR] & SONIC_DCR_DW) ? 2 : 1;
-     size = sizeof(uint16_t) * 4 * width;
-     address_space_rw(&s->as, dp8393x_rrp(s),
--                     MEMTXATTRS_UNSPECIFIED, s->data, size, 0);
-+                     MEMTXATTRS_UNSPECIFIED, s->data, size, false);
- 
-     /* Update SONIC registers */
-     s->regs[SONIC_CRBA0] = dp8393x_get(s, width, 0);
-@@ -427,7 +427,7 @@ static void dp8393x_do_transmit_packets(dp8393xState *s)
-         s->regs[SONIC_TTDA] = s->regs[SONIC_CTDA];
-         DPRINTF("Transmit packet at %08x\n", dp8393x_ttda(s));
-         address_space_rw(&s->as, dp8393x_ttda(s) + sizeof(uint16_t) * width,
--                         MEMTXATTRS_UNSPECIFIED, s->data, size, 0);
-+                         MEMTXATTRS_UNSPECIFIED, s->data, size, false);
-         tx_len = 0;
- 
-         /* Update registers */
-@@ -452,7 +452,8 @@ static void dp8393x_do_transmit_packets(dp8393xState *s)
-                 len = sizeof(s->tx_buffer) - tx_len;
-             }
-             address_space_rw(&s->as, dp8393x_tsa(s),
--                MEMTXATTRS_UNSPECIFIED, &s->tx_buffer[tx_len], len, 0);
-+                             MEMTXATTRS_UNSPECIFIED,
-+                             &s->tx_buffer[tx_len], len, false);
-             tx_len += len;
- 
-             i++;
-@@ -461,7 +462,7 @@ static void dp8393x_do_transmit_packets(dp8393xState *s)
-                 size = sizeof(uint16_t) * 3 * width;
-                 address_space_rw(&s->as,
-                     dp8393x_ttda(s) + sizeof(uint16_t) * (4 + 3 * i) * width,
--                                 MEMTXATTRS_UNSPECIFIED, s->data, size, 0);
-+                                 MEMTXATTRS_UNSPECIFIED, s->data, size, false);
-                 s->regs[SONIC_TSA0] = dp8393x_get(s, width, 0);
-                 s->regs[SONIC_TSA1] = dp8393x_get(s, width, 1);
-                 s->regs[SONIC_TFS] = dp8393x_get(s, width, 2);
-@@ -496,7 +497,7 @@ static void dp8393x_do_transmit_packets(dp8393xState *s)
-         size = sizeof(uint16_t) * width;
-         address_space_rw(&s->as,
-                          dp8393x_ttda(s),
--                         MEMTXATTRS_UNSPECIFIED, s->data, size, 1);
-+                         MEMTXATTRS_UNSPECIFIED, s->data, size, true);
- 
-         if (!(s->regs[SONIC_CR] & SONIC_CR_HTX)) {
-             /* Read footer of packet */
-@@ -505,7 +506,7 @@ static void dp8393x_do_transmit_packets(dp8393xState *s)
-                              dp8393x_ttda(s) +
-                              sizeof(uint16_t) *
-                              (4 + 3 * s->regs[SONIC_TFC]) * width,
--                             MEMTXATTRS_UNSPECIFIED, s->data, size, 0);
-+                             MEMTXATTRS_UNSPECIFIED, s->data, size, false);
-             s->regs[SONIC_CTDA] = dp8393x_get(s, width, 0) & ~0x1;
-             if (dp8393x_get(s, width, 0) & 0x1) {
-                 /* EOL detected */
-@@ -768,7 +769,7 @@ static ssize_t dp8393x_receive(NetClientState *nc, const uint8_t * buf,
-         size = sizeof(uint16_t) * 1 * width;
-         address = dp8393x_crda(s) + sizeof(uint16_t) * 5 * width;
-         address_space_rw(&s->as, address, MEMTXATTRS_UNSPECIFIED,
--                         s->data, size, 0);
-+                         s->data, size, false);
-         if (dp8393x_get(s, width, 0) & 0x1) {
-             /* Still EOL ; stop reception */
-             return -1;
-@@ -790,7 +791,7 @@ static ssize_t dp8393x_receive(NetClientState *nc, const uint8_t * buf,
-     address_space_write(&s->as, address, MEMTXATTRS_UNSPECIFIED, buf, rx_len);
-     address += rx_len;
-     address_space_rw(&s->as, address,
--                     MEMTXATTRS_UNSPECIFIED, &checksum, 4, 1);
-+                     MEMTXATTRS_UNSPECIFIED, &checksum, 4, true);
-     rx_len += 4;
-     s->regs[SONIC_CRBA1] = address >> 16;
-     s->regs[SONIC_CRBA0] = address & 0xffff;
-@@ -819,12 +820,12 @@ static ssize_t dp8393x_receive(NetClientState *nc, const uint8_t * buf,
-     dp8393x_put(s, width, 4, s->regs[SONIC_RSC]); /* seq_no */
-     size = sizeof(uint16_t) * 5 * width;
-     address_space_rw(&s->as, dp8393x_crda(s),
--                     MEMTXATTRS_UNSPECIFIED, s->data, size, 1);
-+                     MEMTXATTRS_UNSPECIFIED, s->data, size, true);
- 
-     /* Move to next descriptor */
-     size = sizeof(uint16_t) * width;
-     address_space_rw(&s->as, dp8393x_crda(s) + sizeof(uint16_t) * 5 * width,
--                     MEMTXATTRS_UNSPECIFIED, s->data, size, 0);
-+                     MEMTXATTRS_UNSPECIFIED, s->data, size, false);
-     s->regs[SONIC_LLFA] = dp8393x_get(s, width, 0);
-     if (s->regs[SONIC_LLFA] & 0x1) {
-         /* EOL detected */
-@@ -838,7 +839,7 @@ static ssize_t dp8393x_receive(NetClientState *nc, const uint8_t * buf,
-         }
-         s->data[0] = 0;
-         address_space_rw(&s->as, offset, MEMTXATTRS_UNSPECIFIED,
--                         s->data, sizeof(uint16_t), 1);
-+                         s->data, sizeof(uint16_t), true);
-         s->regs[SONIC_CRDA] = s->regs[SONIC_LLFA];
-         s->regs[SONIC_ISR] |= SONIC_ISR_PKTRX;
-         s->regs[SONIC_RSC] = (s->regs[SONIC_RSC] & 0xff00) | (((s->regs[SONIC_RSC] & 0x00ff) + 1) & 0x00ff);
-diff --git a/hw/net/i82596.c b/hw/net/i82596.c
-index a292984e06..11537f72d1 100644
---- a/hw/net/i82596.c
-+++ b/hw/net/i82596.c
-@@ -149,7 +149,7 @@ static void i82596_transmit(I82596State *s, uint32_t addr)
-         if (s->nic && len) {
-             assert(len <= sizeof(s->tx_buffer));
-             address_space_rw(&address_space_memory, tba,
--                MEMTXATTRS_UNSPECIFIED, s->tx_buffer, len, 0);
-+                             MEMTXATTRS_UNSPECIFIED, s->tx_buffer, len, false);
-             DBG(PRINT_PKTHDR("Send", &s->tx_buffer));
-             DBG(printf("Sending %d bytes\n", len));
-             qemu_send_packet(qemu_get_queue(s->nic), s->tx_buffer, len);
-@@ -173,7 +173,7 @@ static void set_individual_address(I82596State *s, uint32_t addr)
-     nc = qemu_get_queue(s->nic);
-     m = s->conf.macaddr.a;
-     address_space_rw(&address_space_memory, addr + 8,
--        MEMTXATTRS_UNSPECIFIED, m, ETH_ALEN, 0);
-+                     MEMTXATTRS_UNSPECIFIED, m, ETH_ALEN, false);
-     qemu_format_nic_info_str(nc, m);
-     trace_i82596_new_mac(nc->info_str);
+@@ -3019,7 +3019,7 @@ MemoryRegion *get_system_io(void)
+ /* physical memory access (slow version, mainly for debug) */
+ #if defined(CONFIG_USER_ONLY)
+ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
+-                        void *ptr, target_ulong len, int is_write)
++                        void *ptr, target_ulong len, bool is_write)
+ {
+     int flags;
+     target_ulong l, page;
+@@ -3313,7 +3313,7 @@ MemTxResult address_space_rw(AddressSpace *as, hwaddr addr, MemTxAttrs attrs,
  }
-@@ -192,7 +192,7 @@ static void set_multicast_list(I82596State *s, uint32_t addr)
-         uint8_t multicast_addr[ETH_ALEN];
-         address_space_rw(&address_space_memory,
-             addr + i * ETH_ALEN, MEMTXATTRS_UNSPECIFIED,
--            multicast_addr, ETH_ALEN, 0);
-+                         multicast_addr, ETH_ALEN, false);
-         DBG(printf("Add multicast entry " MAC_FMT "\n",
-                     MAC_ARG(multicast_addr)));
-         unsigned mcast_idx = (net_crc32(multicast_addr, ETH_ALEN) &
-@@ -261,7 +261,8 @@ static void command_loop(I82596State *s)
-             byte_cnt = MIN(byte_cnt, sizeof(s->config));
-             /* copy byte_cnt max. */
-             address_space_rw(&address_space_memory, s->cmd_p + 8,
--                MEMTXATTRS_UNSPECIFIED, s->config, byte_cnt, 0);
-+                             MEMTXATTRS_UNSPECIFIED, s->config, byte_cnt,
-+                             false);
-             /* config byte according to page 35ff */
-             s->config[2] &= 0x82; /* mask valid bits */
-             s->config[2] |= 0x40;
-@@ -647,7 +648,7 @@ ssize_t i82596_receive(NetClientState *nc, const uint8_t *buf, size_t sz)
-             len -= num;
-             if (len == 0) { /* copy crc */
-                 address_space_rw(&address_space_memory, rba - 4,
--                    MEMTXATTRS_UNSPECIFIED, crc_ptr, 4, 1);
-+                                 MEMTXATTRS_UNSPECIFIED, crc_ptr, 4, true);
-             }
  
-             num |= 0x4000; /* set F BIT */
-diff --git a/hw/net/lasi_i82596.c b/hw/net/lasi_i82596.c
-index 427b3fbf70..8bff419378 100644
---- a/hw/net/lasi_i82596.c
-+++ b/hw/net/lasi_i82596.c
-@@ -55,8 +55,8 @@ static void lasi_82596_mem_write(void *opaque, hwaddr addr,
-          * Provided for SeaBIOS only. Write MAC of Network card to addr @val.
-          * Needed for the PDC_LAN_STATION_ID_READ PDC call.
-          */
--        address_space_rw(&address_space_memory, val,
--            MEMTXATTRS_UNSPECIFIED, d->state.conf.macaddr.a, ETH_ALEN, 1);
-+        address_space_rw(&address_space_memory, val, MEMTXATTRS_UNSPECIFIED,
-+                         d->state.conf.macaddr.a, ETH_ALEN, true);
-         break;
-     }
+ void cpu_physical_memory_rw(hwaddr addr, void *buf,
+-                            hwaddr len, int is_write)
++                            hwaddr len, bool is_write)
+ {
+     address_space_rw(&address_space_memory, addr, MEMTXATTRS_UNSPECIFIED,
+                      buf, len, is_write);
+@@ -3632,14 +3632,14 @@ void address_space_unmap(AddressSpace *as, void *buffer, hwaddr len,
+ 
+ void *cpu_physical_memory_map(hwaddr addr,
+                               hwaddr *plen,
+-                              int is_write)
++                              bool is_write)
+ {
+     return address_space_map(&address_space_memory, addr, plen, is_write,
+                              MEMTXATTRS_UNSPECIFIED);
  }
-diff --git a/target/i386/hvf/x86_mmu.c b/target/i386/hvf/x86_mmu.c
-index 6a620643c1..451dcc983a 100644
---- a/target/i386/hvf/x86_mmu.c
-+++ b/target/i386/hvf/x86_mmu.c
-@@ -89,7 +89,7 @@ static bool get_pt_entry(struct CPUState *cpu, struct gpt_translation *pt,
  
-     index = gpt_entry(pt->gva, level, pae);
-     address_space_rw(&address_space_memory, gpa + index * pte_size(pae),
--                     MEMTXATTRS_UNSPECIFIED, &pte, pte_size(pae), 0);
-+                     MEMTXATTRS_UNSPECIFIED, &pte, pte_size(pae), false);
+ void cpu_physical_memory_unmap(void *buffer, hwaddr len,
+-                               int is_write, hwaddr access_len)
++                               bool is_write, hwaddr access_len)
+ {
+     return address_space_unmap(&address_space_memory, buffer, len, is_write, access_len);
+ }
+@@ -3790,7 +3790,7 @@ address_space_write_cached_slow(MemoryRegionCache *cache, hwaddr addr,
  
-     pt->pte[level - 1] = pte;
- 
-@@ -238,8 +238,8 @@ void vmx_write_mem(struct CPUState *cpu, target_ulong gva, void *data, int bytes
-         if (!mmu_gva_to_gpa(cpu, gva, &gpa)) {
-             VM_PANIC_EX("%s: mmu_gva_to_gpa %llx failed\n", __func__, gva);
-         } else {
--            address_space_rw(&address_space_memory, gpa, MEMTXATTRS_UNSPECIFIED,
--                             data, copy, 1);
-+            address_space_rw(&address_space_memory, gpa,
-+                             MEMTXATTRS_UNSPECIFIED, data, copy, true);
-         }
- 
-         bytes -= copy;
-@@ -260,7 +260,7 @@ void vmx_read_mem(struct CPUState *cpu, void *data, target_ulong gva, int bytes)
-             VM_PANIC_EX("%s: mmu_gva_to_gpa %llx failed\n", __func__, gva);
-         }
-         address_space_rw(&address_space_memory, gpa, MEMTXATTRS_UNSPECIFIED,
--                         data, copy, 0);
-+                         data, copy, false);
- 
-         bytes -= copy;
-         gva += copy;
+ /* virtual memory access for debug (includes writing to ROM) */
+ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
+-                        void *ptr, target_ulong len, int is_write)
++                        void *ptr, target_ulong len, bool is_write)
+ {
+     hwaddr phys_addr;
+     target_ulong l, page;
 -- 
 2.21.1

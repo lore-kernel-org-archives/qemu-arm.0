@@ -1,29 +1,28 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp543016lfg;
-        Thu, 20 Feb 2020 05:06:08 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxNS9EtryCtKz4W1gNGTSzN5XSUabl8U93yyEDJBLY1iYEXCX2EJ34QmaFlYyFO15V7sSGf
-X-Received: by 2002:a9d:171a:: with SMTP id i26mr18993493ota.202.1582203967828;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp543005lfg;
+        Thu, 20 Feb 2020 05:06:07 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz+ItXTniJPAIOwREBF5/rpZpr9OFxlobTdwBQvDXw33sE6rn3cm9Y1RnEa7aljze7mLKrx
+X-Received: by 2002:a05:6808:8ee:: with SMTP id d14mr1787105oic.138.1582203967440;
         Thu, 20 Feb 2020 05:06:07 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1582203967; cv=none;
         d=google.com; s=arc-20160816;
-        b=XwajV33l89hM3E/XS3UEm9XmzSRyecRBKQea8AkljzzVtTTo6M1TZyl++My/hUgaSb
-         XcIiNIXXdw5CKushtA79heD69AFOLAlB8D6wRr7/X0WSwQKps+dvRCtgnkEydyXZAcsf
-         zceZvfWwg3Y4Q5ysTHNXG7gsMorh5D9eWx9IVdoII5Ef+tqalYBdvDtRxTe9xCH2MUdh
-         5RkM0b3QWtEcGUOMnK7yiZ5mn+t4r7Ewl0kvN3qsjgy/AfLbnG4Ejy/eCqRELiLBJBtp
-         jv4x9QwBY7O2XKxzqJ4Txcj+ZxajDEsT38Ns4YbolixL10g34W8vJBFxXughXBfumGdN
-         x7vg==
+        b=YWWWafRH7qWTpMhqJgNZNkBaw3UmPzXHE5xO++sOi4q5MxF6zxzVp2izdnip5TBHAf
+         ToLLedg7Vb8/F0D27xWKeRicps8uNoxFp+WIOnX9/mYc7kToZZQVNtxvFCOE0cNGLKmb
+         AvAQFOgx/5+5tfSD6K/OCAN190vV3inv3EF/nKJgnC3I8xPjDEwbiL6XOmdgHDWqXzdK
+         mR1V62I9jSd8UPSGxfIdKXDmjXx+/k0W6f43aZ7xOvpxbW1vyLx+AH7bjt7qhFHNb4iA
+         OmNi9R3vZjaAud1RZQf6vYDNROwriEOKFM3PUv3hDBnfGIn2GwM9GXX3255BrRPyhhnh
+         1iVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=4cFZx3MMvL5YTnq3TreW86G7x/AmeK47tUPtRXUhNQM=;
-        b=ozeSw9L7Ly8/COi0mUoIaU4jik5cxLEpAqTv3eMMAgFAUrVya6NT08wwHhrCEz172L
-         LdIBTFG4kU8L9hJZzSRWGf30ZyU5nMNTnQsp+C4wcIsEM/P4aO8aFkUG8fOq48aBNpUZ
-         tmGIjq2pQkWwUa/DMbksTSYpha9DPyvxaIrcNSNTCI5WghT/mkS7+OyE4Qqv/VxKFgrW
-         +k/1+waBk36LmjjvW8yJuMGFCY3X40O7OaucbElnEAH9zB5cesyWrEov88yYBwPoaqqe
-         hqLEmUGy041n2hwQM9HYXruHBK9oa2lMrmXVG7XoqWL9XOW4s41tUQhYcYNt36iu4bp4
-         wFMA==
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=gu1OfO+Xr177r6zD7C+F/TxHFq6mosreIYv9UCpXME0=;
+        b=em0dLN9xa3myJrAdjHG+r1BkwjizFfGM1ZNf+SKq2NNnyjso6+Kl9nzMJnO5DDzLya
+         KZQ15EqSDyd0uZdwiQDUmzGgsoibnOt1i0y9EKvSlnJ+NMJ9gjvq+TLNKd5KfNmSe9/P
+         /Z9557s61JpX4g0r/fpzrwv3qZTGMN8eNVqZR1d3nzIAZMNK61RU6aag5QM5v5Ckfv6a
+         f3NJFZhuf2C3ZuaGpqDfKvNk0NMnQD0Eka+CpdgNVl+9bYpSGP38Nb3F5Mj1olCkOBi8
+         TjqjNfQEkKgouKR/2USHpiih/J/24yOhfvM0jGjuJtLXe4uDBZn1uz1Wl02LwjoutesH
+         Z32Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L5Tzuvlp;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MUCDutVh;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
@@ -32,54 +31,53 @@ Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
         Thu, 20 Feb 2020 05:06:07 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L5Tzuvlp;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MUCDutVh;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728111AbgBTNGE (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 20 Feb 2020 08:06:04 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:28392 "EHLO
+        id S1728102AbgBTNGC (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 20 Feb 2020 08:06:02 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:24721 "EHLO
         us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1728096AbgBTNGD (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Thu, 20 Feb 2020 08:06:03 -0500
+        by vger.kernel.org with ESMTP id S1728091AbgBTNGC (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Thu, 20 Feb 2020 08:06:02 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1582203962;
+        s=mimecast20190719; t=1582203960;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:  content-type:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=4cFZx3MMvL5YTnq3TreW86G7x/AmeK47tUPtRXUhNQM=;
-        b=L5TzuvlpkO9uNIY8gj81K7CcZbG7p3r9T2ifsbNM9N5Q72TzoQgYvkdOVGYm71TozyRz1m
-        jXctls1kEgKYuCTwdDizHLWhkCLEWq4I3G+oU4hyEVCoCN+nWsnhVtVFVdHbD9HCrcX1ur
-        A1SmwcvhR1HkKMByA1fq99HZSHvJGuM=
+         content-transfer-encoding:content-transfer-encoding;
+        bh=gu1OfO+Xr177r6zD7C+F/TxHFq6mosreIYv9UCpXME0=;
+        b=MUCDutVhDBbvX3ov+Fy1NTGQKNeK9o2RCCGMZwVhiQZnKU4Uy/2f+jQYVj8gng8mP/n+xj
+        uGQBe1IlenUeVZppYdS5QW5juQnXTs6UhS0n+Xm1Bb1qAvwbFYSVD1pCv59YkyF0zf99GX
+        +xK23nJuP5wx7gJCbcervH+B538rAU4=
 Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
  [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-263-TWaRNFNhM0eNq903i9Ik7A-1; Thu, 20 Feb 2020 08:05:59 -0500
-X-MC-Unique: TWaRNFNhM0eNq903i9Ik7A-1
-Received: by mail-wm1-f69.google.com with SMTP id g138so576732wmg.8
-        for <kvm@vger.kernel.org>; Thu, 20 Feb 2020 05:05:59 -0800 (PST)
+ us-mta-141-4YOFUXg1NmK0mY8QyJCT9A-1; Thu, 20 Feb 2020 08:05:54 -0500
+X-MC-Unique: 4YOFUXg1NmK0mY8QyJCT9A-1
+Received: by mail-wm1-f69.google.com with SMTP id g138so576653wmg.8
+        for <kvm@vger.kernel.org>; Thu, 20 Feb 2020 05:05:54 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=4cFZx3MMvL5YTnq3TreW86G7x/AmeK47tUPtRXUhNQM=;
-        b=rZkIGQXUFNZnLO+UjKaqdaJrNj8w7QmkCB8aXZHts+hX3pD+RfszCJVqwraDUHK48f
-         bLcqboEqebsyHESmPBK1RI96GMTtAg+QtvEzHHFKEB74YqS/QZ73h3CrBq9mBapp5E9F
-         nHuBzhQg/LhufQ/n7e1f8IGm5adZXpr4GYrZg4XEDdm36Mpu6oevhBF6V5RAJci0EJ3K
-         7Jr8SI7t9VQToFF2Q5V+rgR78WwFlbj9YFtp94BTsRyIPQxHw1kW1mdWu6fycnELzuGl
-         QjDOGSw/oQt1CGgZeNiLvlpJtN3E8LxvVAl6JxuBW7IBMujrwrj3m1OS5b3Mkcy88uIw
-         Y1OA==
-X-Gm-Message-State: APjAAAXPIPtN5E2RiIVCF963ivlgLjB8qhJKgKrIFSlOcbro18UWmIOI
-        skkAj5q32UEVbXzmo0TU/+JvIsyXPCtsNoZtHU58NKYs7QCeI4fWVHG2Puy8NA5foNwRnyQn1zV
-        VdgRxZjQwdNwi
-X-Received: by 2002:a05:600c:3d1:: with SMTP id z17mr4707588wmd.90.1582203958358;
-        Thu, 20 Feb 2020 05:05:58 -0800 (PST)
-X-Received: by 2002:a05:600c:3d1:: with SMTP id z17mr4707497wmd.90.1582203957647;
-        Thu, 20 Feb 2020 05:05:57 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=gu1OfO+Xr177r6zD7C+F/TxHFq6mosreIYv9UCpXME0=;
+        b=BhEp4ycat83vSIjyap75qQusN6HSbqeLXFCzj1zhvIyUJyHz6C63KrDLKON5aB0OIh
+         R0xvrbev8VQhMJ6o1jOYE0N7bVwno1WRLzJaW136hUKysbwq0fBmnDwtHbv1FToDjihk
+         7ijo4uAxzDHk+ksgVnG1KQk9sA78nHbYQH3o+dk2+GEnJ+K39JdPi2xpXR8GHvpRH2c1
+         UYz9kEB8f9YgJWwWe2MMTrb3ymU4/uuLUTamnQ3oLD6kEiegyp2roDjwUhG0cXOmbb3Q
+         vUNAJLD9o50N4RRQrkbAbyMwLBaLhZwSK9M/pSroHt/m2tJbR09tAyqpARcfMNjHJXiy
+         ctaQ==
+X-Gm-Message-State: APjAAAWq05mwhFG/vh+f73bHsDrIpkyN3tAM03eFWYeC3rWM5RAQMf9k
+        L3Chow91Ogr0H4GlZKh296U8p10MOjBsdLsmQccjyoykmZQohRictYBCsvrx4bfD4jPqcDxOE35
+        AltI7qxFmr1kn
+X-Received: by 2002:a1c:f713:: with SMTP id v19mr4357657wmh.113.1582203953757;
+        Thu, 20 Feb 2020 05:05:53 -0800 (PST)
+X-Received: by 2002:a1c:f713:: with SMTP id v19mr4357638wmh.113.1582203953503;
+        Thu, 20 Feb 2020 05:05:53 -0800 (PST)
 Received: from localhost.localdomain (78.red-88-21-202.staticip.rima-tde.net. [88.21.202.78])
-        by smtp.gmail.com with ESMTPSA id b67sm4594690wmc.38.2020.02.20.05.05.53
+        by smtp.gmail.com with ESMTPSA id b67sm4594690wmc.38.2020.02.20.05.05.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Feb 2020 05:05:57 -0800 (PST)
+        Thu, 20 Feb 2020 05:05:52 -0800 (PST)
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To:     Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 Cc:     "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -116,12 +114,10 @@ Cc:     "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
         Paul Durrant <paul@xen.org>,
         Richard Henderson <rth@twiddle.net>,
         John Snow <jsnow@redhat.com>
-Subject: [PATCH v3 01/20] scripts/git.orderfile: Display Cocci scripts before code modifications
-Date:   Thu, 20 Feb 2020 14:05:29 +0100
-Message-Id: <20200220130548.29974-2-philmd@redhat.com>
+Subject: [PATCH v3 00/20] global exec/memory/dma APIs cleanup
+Date:   Thu, 20 Feb 2020 14:05:28 +0100
+Message-Id: <20200220130548.29974-1-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200220130548.29974-1-philmd@redhat.com>
-References: <20200220130548.29974-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
@@ -130,30 +126,96 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: jDCVPCWP05Fw
+X-TUID: iOds6O2o0PWX
 
-When we use a Coccinelle semantic script to do automatic
-code modifications, it makes sense to look at the semantic
-patch first.
+This series is inspired from Peter Maydel cleanup patch:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg680625.html
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- scripts/git.orderfile | 3 +++
- 1 file changed, 3 insertions(+)
+- Convert 'is_write' argument to boolean
+- Use void pointer for blob buffer
+- Remove unnecessary casts (Stefan Weil)
+- Replace [API]_rw() by [API]_read/write() when is_write is constant
 
-diff --git a/scripts/git.orderfile b/scripts/git.orderfile
-index 1f747b583a..7cf22e0bf5 100644
---- a/scripts/git.orderfile
-+++ b/scripts/git.orderfile
-@@ -22,6 +22,9 @@ Makefile*
- qapi/*.json
- qga/*.json
- 
-+# semantic patches
-+*.cocci
-+
- # headers
- *.h
- 
+Supersedes: <20200218112457.22712-1-peter.maydell@linaro.org>
+
+Peter Maydell (1):
+  Avoid address_space_rw() with a constant is_write argument
+
+Philippe Mathieu-Daudé (19):
+  scripts/git.orderfile: Display Cocci scripts before code modifications
+  hw: Remove unnecessary cast when calling dma_memory_read()
+  exec: Let qemu_ram_*() functions take a const pointer argument
+  exec: Rename ram_ptr variable
+  exec: Let flatview API take void pointer arguments
+  exec: Let the address_space API use void pointer arguments
+  hw/net: Avoid casting non-const pointer, use address_space_write()
+  Remove unnecessary cast when using the address_space API
+  exec: Let the cpu_[physical]_memory API use void pointer arguments
+  Remove unnecessary cast when using the cpu_[physical]_memory API
+  hw/ide/internal: Remove unused DMARestartFunc typedef
+  hw/ide: Let the DMAIntFunc prototype use a boolean 'is_write' argument
+  hw/virtio: Let virtqueue_map_iovec() use a boolean 'is_write' argument
+  hw/virtio: Let vhost_memory_map() use a boolean 'is_write' argument
+  exec: Let address_space_unmap() use a boolean 'is_write' argument
+  Let address_space_rw() calls pass a boolean 'is_write' argument
+  exec: Let cpu_[physical]_memory API use a boolean 'is_write' argument
+  Let cpu_[physical]_memory() calls pass a boolean 'is_write' argument
+  Avoid cpu_physical_memory_rw() with a constant is_write argument
+
+ scripts/coccinelle/exec_rw_const.cocci | 103 +++++++++++++++++++++++++
+ include/exec/cpu-all.h                 |   2 +-
+ include/exec/cpu-common.h              |  18 ++---
+ include/exec/memory.h                  |  16 ++--
+ include/hw/ide/internal.h              |   3 +-
+ include/sysemu/xen-mapcache.h          |   4 +-
+ target/i386/hvf/vmx.h                  |   7 +-
+ accel/kvm/kvm-all.c                    |   6 +-
+ dma-helpers.c                          |   4 +-
+ exec.c                                 |  75 +++++++++---------
+ hw/arm/boot.c                          |   6 +-
+ hw/arm/smmu-common.c                   |   3 +-
+ hw/arm/smmuv3.c                        |  10 +--
+ hw/display/exynos4210_fimd.c           |   3 +-
+ hw/display/milkymist-tmu2.c            |   8 +-
+ hw/display/omap_dss.c                  |   2 +-
+ hw/display/omap_lcdc.c                 |  10 +--
+ hw/display/ramfb.c                     |   2 +-
+ hw/dma/etraxfs_dma.c                   |  25 +++---
+ hw/dma/rc4030.c                        |  10 +--
+ hw/dma/xlnx-zdma.c                     |  11 +--
+ hw/i386/xen/xen-mapcache.c             |   2 +-
+ hw/ide/ahci.c                          |   2 +-
+ hw/ide/core.c                          |   2 +-
+ hw/ide/macio.c                         |   2 +-
+ hw/ide/pci.c                           |   2 +-
+ hw/misc/pc-testdev.c                   |   2 +-
+ hw/net/cadence_gem.c                   |  21 +++--
+ hw/net/dp8393x.c                       |  70 +++++++++--------
+ hw/net/i82596.c                        |  25 +++---
+ hw/net/lasi_i82596.c                   |   5 +-
+ hw/nvram/spapr_nvram.c                 |   4 +-
+ hw/ppc/pnv_lpc.c                       |   8 +-
+ hw/ppc/ppc440_uc.c                     |   6 +-
+ hw/ppc/spapr_hcall.c                   |   4 +-
+ hw/s390x/css.c                         |  12 +--
+ hw/s390x/ipl.c                         |   2 +-
+ hw/s390x/s390-pci-bus.c                |   2 +-
+ hw/s390x/virtio-ccw.c                  |   2 +-
+ hw/scsi/vmw_pvscsi.c                   |   8 +-
+ hw/sd/sdhci.c                          |  15 ++--
+ hw/virtio/vhost.c                      |   8 +-
+ hw/virtio/virtio.c                     |   7 +-
+ hw/xen/xen_pt_graphics.c               |   2 +-
+ qtest.c                                |  52 ++++++-------
+ target/i386/hax-all.c                  |   6 +-
+ target/i386/hvf/x86_mmu.c              |  12 +--
+ target/i386/whpx-all.c                 |   2 +-
+ target/s390x/excp_helper.c             |   2 +-
+ target/s390x/helper.c                  |   6 +-
+ target/s390x/mmu_helper.c              |   2 +-
+ scripts/git.orderfile                  |   3 +
+ 52 files changed, 360 insertions(+), 266 deletions(-)
+ create mode 100644 scripts/coccinelle/exec_rw_const.cocci
+
 -- 
 2.21.1

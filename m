@@ -1,85 +1,85 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp543498lfg;
-        Thu, 20 Feb 2020 05:06:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxHHld6T+ZjNp6rAhwZb4JxAUom3Shvm8kOu1j5JLo+s+Lrrbr//oQ+kyoYLgSSCAs68Y8Y
-X-Received: by 2002:aca:dc8b:: with SMTP id t133mr1920460oig.98.1582203990928;
-        Thu, 20 Feb 2020 05:06:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582203990; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp543572lfg;
+        Thu, 20 Feb 2020 05:06:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxPm7QP3RN8RPsc9C+GJd2yWTS5eCZSPDdfdRy5bOmWUME9P894ZHqfyFolsGqIHXwrPZ0h
+X-Received: by 2002:a05:6808:1:: with SMTP id u1mr1935399oic.74.1582203994719;
+        Thu, 20 Feb 2020 05:06:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582203994; cv=none;
         d=google.com; s=arc-20160816;
-        b=n5dFbB5L/D0K4eFN+1NAw7rctiRGXisRrHHB2MTcDD0BId9aoDr7kkqoxujjycibnl
-         GwjrNHtDLUJEriMhcw9zKOfvSzbgVExCR8m/RzDNOGP1VSTFVwb9lNrrkCDXwac4yH7Y
-         q+3zwLDmAicaieYCSh7+re8AfT5dYvevuE7RtcHk9Yb78ZRYGqMAJPmlOissBK/42nEx
-         320gw5VTj34EC8ZLY1s1JVHcAW0wQTKz7qLJBdhMA1Sn8v3hHT/TYmPnFukaFa7H/KGd
-         MMNC2sFThE5eHP827awC8EX4yhp7B95qlWX8czuLy4gH7hNzRpwApZFdIMSLUtrbbOPB
-         6jfg==
+        b=lGBNJTKXpB9/7I4GQkl+NjPuePoB4UuK+PYgvfgJMH37dogjKgaSfJI+8hPSiKkLNL
+         gwK1e+oZSwMglMaKDUeNMIK5I9uauK/+MsSNc4rsBv9eUc/1L9voDyWbMWhu4IrhIYR0
+         fis8SsLet5B03We0QxNpX7LNmHWSsr70piebqsY1XJ4Abjo2g5TqLFo6/qmL6ynJDsWn
+         DdRm7XKdE0enYeFEKKv+SzF/ENAEoYRqOdtSj7GkVopKfvp7HKEFJFvmGhqEUpOeymht
+         gAusLnTKJ2XR6ZM5hr15SyOaG+zpZtHN7quml2hbaJymVBO/e4VRMWHP1hCuYR8RYOq9
+         Yo5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=8pJhUP9usprCLN78RzoD9uhnYc7r5iBRfDww4Tsum+4=;
-        b=CmqrzrNgNQZoGeLntEeDq366BKZxR/FrRljy2lL0yt55fbdav6+euWAIN2SjCbMLmQ
-         0+P0h5LEDIbvUy0M8Lp6QthzbPQbZn9Svy3fqnQQ5Z8OfvUAFCuliB4wFYFpcxRcqf+P
-         Y0c/PqT+ZIhNflPvtlM/VFuh4meA7BRd0w9vjRJgUuSo+/9aGRPH29sw4lCFOTFE9051
-         EPD9vzQgitCaczttaktEgm7EEsullPEGC0jKNFua8eV9umH7um++x0lwcX2+L9snEe50
-         J+X7u6MGHgaKGekNDHMD3/oz6seKB81XG/eorF3JObTSGLXP+SwWnL+c0d10czg7XnpK
-         i6xA==
+        bh=ijbOoyrS9Jz9oM+Px+EP5Y3MCyoKyJq//TyCsQeLfQM=;
+        b=uK0fJnGzvLuFHgAsCyou22SzWHT9GirhnuPVlBmOK0loeCQMP3Yls+WU34xYJR4C/3
+         6tS6OrGR5VikXL724GxMVeUPlYUr4zbX+71mS56Qi8M8IUlf8gkgTr7BxBtzvP/KZAKl
+         xWNhesalvPi36iekwTJNG4pNVKvwuDuf/2J3IBXSNfuXooXGTiPj/psb2c+orwTUsbK5
+         unoELgSr8wi6utyaNqLpl//4bCHRu5YhCENZWdt/fsZTelbYXeXbfV5847WaHBG69nzH
+         moDz60AvApmMaR09qy0yyJZtVIOEyJYofJYev0qZfb+Gjd5L/SoLZM8iAkmZnJSw0Dpg
+         nguQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cBc0TnTu;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cC3F0XSL;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b2si1957201ots.284.2020.02.20.05.06.30;
-        Thu, 20 Feb 2020 05:06:30 -0800 (PST)
+        by mx.google.com with ESMTP id b2si1957201ots.284.2020.02.20.05.06.34;
+        Thu, 20 Feb 2020 05:06:34 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cBc0TnTu;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cC3F0XSL;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728177AbgBTNG3 (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 20 Feb 2020 08:06:29 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:36877 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1728171AbgBTNG3 (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Thu, 20 Feb 2020 08:06:29 -0500
+        id S1728186AbgBTNGd (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 20 Feb 2020 08:06:33 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:32843 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1728169AbgBTNGd (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 20 Feb 2020 08:06:33 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1582203988;
+        s=mimecast20190719; t=1582203991;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:  content-type:content-type:content-type:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=8pJhUP9usprCLN78RzoD9uhnYc7r5iBRfDww4Tsum+4=;
-        b=cBc0TnTuaCg/ANBb9E2ijM4/0ZqY1Xi6v4nDwnHUzJrcOADpjwYjl253ImcVoYqVO3n9iJ
-        uFF8d2/5Ekb+BhqoXt8tprd4PN8+NQfBCeClDErJ3PsObbb3c8Hh6gcctxZsAM2m7RFCSy
-        3JHAkYytNfS/VUfU1kll+YFJYA/MwjI=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-320-fA_Z9NGHMzaE-SjsF7RuLg-1; Thu, 20 Feb 2020 08:06:26 -0500
-X-MC-Unique: fA_Z9NGHMzaE-SjsF7RuLg-1
-Received: by mail-wm1-f70.google.com with SMTP id p26so800632wmg.5
-        for <kvm@vger.kernel.org>; Thu, 20 Feb 2020 05:06:26 -0800 (PST)
+        bh=ijbOoyrS9Jz9oM+Px+EP5Y3MCyoKyJq//TyCsQeLfQM=;
+        b=cC3F0XSL7+pfUaUaH8110zN4knVnHqJdyLf1OizFtCqnLbjr2K9DdhLy4+Gpdj/5iwv+kK
+        oHn5H60fBp43el5fGYezoK7ccAgVj5GEMytctYGEh03WP9phvYZyNwVRDqiC7w4gO+lq+7
+        GaRDoSiK+X2X4wrqPa34rt/AXuIJqgQ=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-292-d0d0nP4sP_yCeiHcAhQdnA-1; Thu, 20 Feb 2020 08:06:29 -0500
+X-MC-Unique: d0d0nP4sP_yCeiHcAhQdnA-1
+Received: by mail-wm1-f72.google.com with SMTP id q125so582423wme.1
+        for <kvm@vger.kernel.org>; Thu, 20 Feb 2020 05:06:29 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=8pJhUP9usprCLN78RzoD9uhnYc7r5iBRfDww4Tsum+4=;
-        b=P1VbLZn295Mqvxf8ARWLJNPFr6ay1ecDwLjeKkSVNBVw9AZTX5Sj91EGj0wSrbYPvf
-         Khsg+S45TVxb8FMXBRrvkanlqigzap9/ikW8KABOYdJJa9ojBLFKqzmpIeLR1HkwKWsO
-         b0K5+Vm/J3ou1P/6TtyRI5xDfKEb8Gnaz1W13Cr2rIywDZmNndT0lGSyRAMBN3/iW69G
-         B7ZO8fffOKz0WCGs519jB0DgJ3k1ndLJKI715AcsVt0o7nmrQY/FEXL+1oE3L3N+QO2p
-         BBmxQOL7dWIMBeRQq//wZatlwBv9imCmdhcB67Wip/HkC5H9GnBrcMjUKgEepsUQLdue
-         +NHg==
-X-Gm-Message-State: APjAAAUlzL+epHynn+qtdjisrTVxSrO7qVCFMJu2LCW0tKHPUxblzaj6
-        XF8JZCtg6WbH4gOj46rb1G4auzLkwuPXMKtOs5kTQ5W4zIl3QOIp2b80ifGbRISnW8oYwhzkrR+
-        AUFgUe+FNv+3o
-X-Received: by 2002:a1c:3b09:: with SMTP id i9mr4474201wma.31.1582203984781;
-        Thu, 20 Feb 2020 05:06:24 -0800 (PST)
-X-Received: by 2002:a1c:3b09:: with SMTP id i9mr4474140wma.31.1582203984067;
-        Thu, 20 Feb 2020 05:06:24 -0800 (PST)
+        bh=ijbOoyrS9Jz9oM+Px+EP5Y3MCyoKyJq//TyCsQeLfQM=;
+        b=nQmJLLm/1+Vj115MjddvCIeLhyl67eUbi+5TxCKSeMRdP0hOvx1/jvAGLQrS60R08y
+         Qo/Q3Tjkv60+eHKw2rebwZxysPSBkaZNUqNoA1WZLcqrq/VVFSZ4VrjDLgGp1sennFlL
+         8B2OB/HYsL/lS+Jwls9zE0GfO5eTk5UzpnV7vM9stAZ/Ig+ySSlQEWWqMJPUgRF9/2Eh
+         iX6zKHCyuWIFt4bE1sJh7tm9BRa26cfJ5cY1UTRX0Df+AQcu3NMaDCSpzz/I/FVQUAFR
+         0z02WV6d8iy2yGYfrbDFOWKlz1QPblkpVc0EMjTM2EMsaE0//rJP51hqiQs2IcP6T0on
+         53xw==
+X-Gm-Message-State: APjAAAW49+ycLBdMHZMOmvtu5935PM5QeHamzAZ/uBlQhsES0Y7L7yTC
+        GN1nOyC7wmHoWEBS3e6LLv9IgQcOGBoz03ZjwNphDidtnCL4hv0DY4GuERIn4jV4hq6FFbNZgNE
+        qnKgeSMNiPJ+e
+X-Received: by 2002:a7b:c19a:: with SMTP id y26mr4786399wmi.152.1582203988197;
+        Thu, 20 Feb 2020 05:06:28 -0800 (PST)
+X-Received: by 2002:a7b:c19a:: with SMTP id y26mr4786351wmi.152.1582203987812;
+        Thu, 20 Feb 2020 05:06:27 -0800 (PST)
 Received: from localhost.localdomain (78.red-88-21-202.staticip.rima-tde.net. [88.21.202.78])
-        by smtp.gmail.com with ESMTPSA id b67sm4594690wmc.38.2020.02.20.05.06.20
+        by smtp.gmail.com with ESMTPSA id b67sm4594690wmc.38.2020.02.20.05.06.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Feb 2020 05:06:23 -0800 (PST)
+        Thu, 20 Feb 2020 05:06:27 -0800 (PST)
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To:     Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 Cc:     "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -116,9 +116,9 @@ Cc:     "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
         Paul Durrant <paul@xen.org>,
         Richard Henderson <rth@twiddle.net>,
         John Snow <jsnow@redhat.com>
-Subject: [PATCH v3 08/20] Remove unnecessary cast when using the address_space API
-Date:   Thu, 20 Feb 2020 14:05:36 +0100
-Message-Id: <20200220130548.29974-9-philmd@redhat.com>
+Subject: [PATCH v3 09/20] exec: Let the cpu_[physical]_memory API use void pointer arguments
+Date:   Thu, 20 Feb 2020 14:05:37 +0100
+Message-Id: <20200220130548.29974-10-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200220130548.29974-1-philmd@redhat.com>
 References: <20200220130548.29974-1-philmd@redhat.com>
@@ -130,406 +130,83 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: zFw4nIapp1Mz
+X-TUID: O5GyZ/S1BWMp
 
-This commit was produced with the included Coccinelle script
-scripts/coccinelle/exec_rw_const.
+As we are only dealing with a blob buffer, use a void pointer
+argument. This will let us simplify other APIs.
 
-Two lines in hw/net/dp8393x.c that Coccinelle produced that
-were over 80 characters were re-wrapped by hand.
-
-Suggested-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- scripts/coccinelle/exec_rw_const.cocci | 15 +++++++++++++-
- target/i386/hvf/vmx.h                  |  2 +-
- hw/arm/boot.c                          |  6 ++----
- hw/dma/rc4030.c                        |  4 ++--
- hw/dma/xlnx-zdma.c                     |  2 +-
- hw/net/cadence_gem.c                   | 21 +++++++++----------
- hw/net/dp8393x.c                       | 28 +++++++++++++-------------
- hw/s390x/css.c                         |  4 ++--
- qtest.c                                | 12 +++++------
- target/i386/hvf/x86_mmu.c              |  2 +-
- target/i386/whpx-all.c                 |  2 +-
- target/s390x/mmu_helper.c              |  2 +-
- 12 files changed, 54 insertions(+), 46 deletions(-)
+ include/exec/cpu-all.h    | 2 +-
+ include/exec/cpu-common.h | 2 +-
+ exec.c                    | 8 +++++---
+ 3 files changed, 7 insertions(+), 5 deletions(-)
 
-diff --git a/scripts/coccinelle/exec_rw_const.cocci b/scripts/coccinelle/exec_rw_const.cocci
-index 4e459d915b..5ed956a834 100644
---- a/scripts/coccinelle/exec_rw_const.cocci
-+++ b/scripts/coccinelle/exec_rw_const.cocci
-@@ -17,10 +17,23 @@ expression E1, E2, E3, E4;
+diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+index e96781a455..49e96caa3f 100644
+--- a/include/exec/cpu-all.h
++++ b/include/exec/cpu-all.h
+@@ -388,7 +388,7 @@ void dump_opcount_info(void);
+ #endif /* !CONFIG_USER_ONLY */
  
- // Remove useless cast
- @@
--expression E1, E2, E3, E4;
-+expression E1, E2, E3, E4, E5, E6;
- type T;
- @@
- (
-+- address_space_rw(E1, E2, E3, (T *)E4, E5, E6)
-++ address_space_rw(E1, E2, E3, E4, E5, E6)
-+|
-+- address_space_read(E1, E2, E3, (T *)E4, E5)
-++ address_space_read(E1, E2, E3, E4, E5)
-+|
-+- address_space_write(E1, E2, E3, (T *)E4, E5)
-++ address_space_write(E1, E2, E3, E4, E5)
-+|
-+- address_space_write_rom(E1, E2, E3, (T *)E4, E5)
-++ address_space_write_rom(E1, E2, E3, E4, E5)
-+|
-+
- - dma_memory_read(E1, E2, (T *)E3, E4)
- + dma_memory_read(E1, E2, E3, E4)
- |
-diff --git a/target/i386/hvf/vmx.h b/target/i386/hvf/vmx.h
-index eb8894cd58..a115ca1782 100644
---- a/target/i386/hvf/vmx.h
-+++ b/target/i386/hvf/vmx.h
-@@ -128,7 +128,7 @@ static inline void macvm_set_cr0(hv_vcpuid_t vcpu, uint64_t cr0)
-         address_space_rw(&address_space_memory,
-                          rvmcs(vcpu, VMCS_GUEST_CR3) & ~0x1f,
-                          MEMTXATTRS_UNSPECIFIED,
--                         (uint8_t *)pdpte, 32, 0);
-+                         pdpte, 32, 0);
-         /* Only set PDPTE when appropriate. */
-         for (i = 0; i < 4; i++) {
-             wvmcs(vcpu, VMCS_GUEST_PDPTE0 + i * 2, pdpte[i]);
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 0c213ca627..fef4072db1 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -327,8 +327,7 @@ static void set_kernel_args(const struct arm_boot_info *info, AddressSpace *as)
+ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
+-                        uint8_t *buf, target_ulong len, int is_write);
++                        void *ptr, target_ulong len, int is_write);
  
-         cmdline_size = strlen(info->kernel_cmdline);
-         address_space_write(as, p + 8, MEMTXATTRS_UNSPECIFIED,
--                            (const uint8_t *)info->kernel_cmdline,
--                            cmdline_size + 1);
-+                            info->kernel_cmdline, cmdline_size + 1);
-         cmdline_size = (cmdline_size >> 2) + 1;
-         WRITE_WORD(p, cmdline_size + 2);
-         WRITE_WORD(p, 0x54410009);
-@@ -420,8 +419,7 @@ static void set_kernel_args_old(const struct arm_boot_info *info,
-     }
-     s = info->kernel_cmdline;
-     if (s) {
--        address_space_write(as, p, MEMTXATTRS_UNSPECIFIED,
--                            (const uint8_t *)s, strlen(s) + 1);
-+        address_space_write(as, p, MEMTXATTRS_UNSPECIFIED, s, strlen(s) + 1);
-     } else {
-         WRITE_WORD(p, 0);
-     }
-diff --git a/hw/dma/rc4030.c b/hw/dma/rc4030.c
-index c4cf8236f4..ca0becd756 100644
---- a/hw/dma/rc4030.c
-+++ b/hw/dma/rc4030.c
-@@ -513,8 +513,8 @@ static IOMMUTLBEntry rc4030_dma_translate(IOMMUMemoryRegion *iommu, hwaddr addr,
-     if (i < s->dma_tl_limit / sizeof(entry)) {
-         entry_address = (s->dma_tl_base & 0x7fffffff) + i * sizeof(entry);
-         if (address_space_read(ret.target_as, entry_address,
--                               MEMTXATTRS_UNSPECIFIED, (unsigned char *)&entry,
--                               sizeof(entry)) == MEMTX_OK) {
-+                               MEMTXATTRS_UNSPECIFIED, &entry, sizeof(entry))
-+                == MEMTX_OK) {
-             ret.translated_addr = entry.frame & ~(DMA_PAGESIZE - 1);
-             ret.perm = IOMMU_RW;
-         }
-diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
-index 8fb83f5b07..683abbe53f 100644
---- a/hw/dma/xlnx-zdma.c
-+++ b/hw/dma/xlnx-zdma.c
-@@ -364,7 +364,7 @@ static uint64_t zdma_update_descr_addr(XlnxZDMA *s, bool type,
-     } else {
-         addr = zdma_get_regaddr64(s, basereg);
-         addr += sizeof(s->dsc_dst);
--        address_space_rw(s->dma_as, addr, s->attr, (void *) &next, 8, false);
-+        address_space_rw(s->dma_as, addr, s->attr, &next, 8, false);
-         zdma_put_regaddr64(s, basereg, next);
-     }
-     return next;
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index 871fcf2031..ddabdb3f90 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -871,7 +871,7 @@ static void gem_get_rx_desc(CadenceGEMState *s, int q)
+ int cpu_exec(CPUState *cpu);
  
-     /* read current descriptor */
-     address_space_read(&s->dma_as, desc_addr, MEMTXATTRS_UNSPECIFIED,
--                       (uint8_t *)s->rx_desc[q],
-+                       s->rx_desc[q],
-                        sizeof(uint32_t) * gem_get_desc_len(s, true));
+diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
+index 05ac1a5d69..165f8fb621 100644
+--- a/include/exec/cpu-common.h
++++ b/include/exec/cpu-common.h
+@@ -69,7 +69,7 @@ void qemu_ram_unset_migratable(RAMBlock *rb);
+ size_t qemu_ram_pagesize(RAMBlock *block);
+ size_t qemu_ram_pagesize_largest(void);
  
-     /* Descriptor owned by software ? */
-@@ -1029,9 +1029,8 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
- 
-         /* Descriptor write-back.  */
-         desc_addr = gem_get_rx_desc_addr(s, q);
--        address_space_write(&s->dma_as, desc_addr,
--                            MEMTXATTRS_UNSPECIFIED,
--                            (uint8_t *)s->rx_desc[q],
-+        address_space_write(&s->dma_as, desc_addr, MEMTXATTRS_UNSPECIFIED,
-+                            s->rx_desc[q],
-                             sizeof(uint32_t) * gem_get_desc_len(s, true));
- 
-         /* Next descriptor */
-@@ -1137,7 +1136,7 @@ static void gem_transmit(CadenceGEMState *s)
- 
-         DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", packet_desc_addr);
-         address_space_read(&s->dma_as, packet_desc_addr,
--                           MEMTXATTRS_UNSPECIFIED, (uint8_t *)desc,
-+                           MEMTXATTRS_UNSPECIFIED, desc,
-                            sizeof(uint32_t) * gem_get_desc_len(s, false));
-         /* Handle all descriptors owned by hardware */
-         while (tx_desc_get_used(desc) == 0) {
-@@ -1185,14 +1184,12 @@ static void gem_transmit(CadenceGEMState *s)
-                  * the processor.
-                  */
-                 address_space_read(&s->dma_as, desc_addr,
--                                   MEMTXATTRS_UNSPECIFIED,
--                                   (uint8_t *)desc_first,
-+                                   MEMTXATTRS_UNSPECIFIED, desc_first,
-                                    sizeof(desc_first));
-                 tx_desc_set_used(desc_first);
-                 address_space_write(&s->dma_as, desc_addr,
--                                  MEMTXATTRS_UNSPECIFIED,
--                                  (uint8_t *)desc_first,
--                                   sizeof(desc_first));
-+                                    MEMTXATTRS_UNSPECIFIED, desc_first,
-+                                    sizeof(desc_first));
-                 /* Advance the hardware current descriptor past this packet */
-                 if (tx_desc_get_wrap(desc)) {
-                     s->tx_desc_addr[q] = s->regs[GEM_TXQBASE];
-@@ -1246,8 +1243,8 @@ static void gem_transmit(CadenceGEMState *s)
-             }
-             DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", packet_desc_addr);
-             address_space_read(&s->dma_as, packet_desc_addr,
--                              MEMTXATTRS_UNSPECIFIED, (uint8_t *)desc,
--                              sizeof(uint32_t) * gem_get_desc_len(s, false));
-+                               MEMTXATTRS_UNSPECIFIED, desc,
-+                               sizeof(uint32_t) * gem_get_desc_len(s, false));
-         }
- 
-         if (tx_desc_get_used(desc)) {
-diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
-index 580ae4437e..b461101ceb 100644
---- a/hw/net/dp8393x.c
-+++ b/hw/net/dp8393x.c
-@@ -276,7 +276,7 @@ static void dp8393x_do_load_cam(dp8393xState *s)
-     while (s->regs[SONIC_CDC] & 0x1f) {
-         /* Fill current entry */
-         address_space_rw(&s->as, dp8393x_cdp(s),
--            MEMTXATTRS_UNSPECIFIED, (uint8_t *)s->data, size, 0);
-+                         MEMTXATTRS_UNSPECIFIED, s->data, size, 0);
-         s->cam[index][0] = dp8393x_get(s, width, 1) & 0xff;
-         s->cam[index][1] = dp8393x_get(s, width, 1) >> 8;
-         s->cam[index][2] = dp8393x_get(s, width, 2) & 0xff;
-@@ -294,7 +294,7 @@ static void dp8393x_do_load_cam(dp8393xState *s)
- 
-     /* Read CAM enable */
-     address_space_rw(&s->as, dp8393x_cdp(s),
--        MEMTXATTRS_UNSPECIFIED, (uint8_t *)s->data, size, 0);
-+                     MEMTXATTRS_UNSPECIFIED, s->data, size, 0);
-     s->regs[SONIC_CE] = dp8393x_get(s, width, 0);
-     DPRINTF("load cam done. cam enable mask 0x%04x\n", s->regs[SONIC_CE]);
- 
-@@ -312,7 +312,7 @@ static void dp8393x_do_read_rra(dp8393xState *s)
-     width = (s->regs[SONIC_DCR] & SONIC_DCR_DW) ? 2 : 1;
-     size = sizeof(uint16_t) * 4 * width;
-     address_space_rw(&s->as, dp8393x_rrp(s),
--        MEMTXATTRS_UNSPECIFIED, (uint8_t *)s->data, size, 0);
-+                     MEMTXATTRS_UNSPECIFIED, s->data, size, 0);
- 
-     /* Update SONIC registers */
-     s->regs[SONIC_CRBA0] = dp8393x_get(s, width, 0);
-@@ -427,7 +427,7 @@ static void dp8393x_do_transmit_packets(dp8393xState *s)
-         s->regs[SONIC_TTDA] = s->regs[SONIC_CTDA];
-         DPRINTF("Transmit packet at %08x\n", dp8393x_ttda(s));
-         address_space_rw(&s->as, dp8393x_ttda(s) + sizeof(uint16_t) * width,
--            MEMTXATTRS_UNSPECIFIED, (uint8_t *)s->data, size, 0);
-+                         MEMTXATTRS_UNSPECIFIED, s->data, size, 0);
-         tx_len = 0;
- 
-         /* Update registers */
-@@ -461,7 +461,7 @@ static void dp8393x_do_transmit_packets(dp8393xState *s)
-                 size = sizeof(uint16_t) * 3 * width;
-                 address_space_rw(&s->as,
-                     dp8393x_ttda(s) + sizeof(uint16_t) * (4 + 3 * i) * width,
--                    MEMTXATTRS_UNSPECIFIED, (uint8_t *)s->data, size, 0);
-+                                 MEMTXATTRS_UNSPECIFIED, s->data, size, 0);
-                 s->regs[SONIC_TSA0] = dp8393x_get(s, width, 0);
-                 s->regs[SONIC_TSA1] = dp8393x_get(s, width, 1);
-                 s->regs[SONIC_TFS] = dp8393x_get(s, width, 2);
-@@ -495,17 +495,17 @@ static void dp8393x_do_transmit_packets(dp8393xState *s)
-                     s->regs[SONIC_TCR] & 0x0fff); /* status */
-         size = sizeof(uint16_t) * width;
-         address_space_rw(&s->as,
--            dp8393x_ttda(s),
--            MEMTXATTRS_UNSPECIFIED, (uint8_t *)s->data, size, 1);
-+                         dp8393x_ttda(s),
-+                         MEMTXATTRS_UNSPECIFIED, s->data, size, 1);
- 
-         if (!(s->regs[SONIC_CR] & SONIC_CR_HTX)) {
-             /* Read footer of packet */
-             size = sizeof(uint16_t) * width;
-             address_space_rw(&s->as,
--                dp8393x_ttda(s) +
-+                             dp8393x_ttda(s) +
-                              sizeof(uint16_t) *
-                              (4 + 3 * s->regs[SONIC_TFC]) * width,
--                MEMTXATTRS_UNSPECIFIED, (uint8_t *)s->data, size, 0);
-+                             MEMTXATTRS_UNSPECIFIED, s->data, size, 0);
-             s->regs[SONIC_CTDA] = dp8393x_get(s, width, 0) & ~0x1;
-             if (dp8393x_get(s, width, 0) & 0x1) {
-                 /* EOL detected */
-@@ -768,7 +768,7 @@ static ssize_t dp8393x_receive(NetClientState *nc, const uint8_t * buf,
-         size = sizeof(uint16_t) * 1 * width;
-         address = dp8393x_crda(s) + sizeof(uint16_t) * 5 * width;
-         address_space_rw(&s->as, address, MEMTXATTRS_UNSPECIFIED,
--                         (uint8_t *)s->data, size, 0);
-+                         s->data, size, 0);
-         if (dp8393x_get(s, width, 0) & 0x1) {
-             /* Still EOL ; stop reception */
-             return -1;
-@@ -790,7 +790,7 @@ static ssize_t dp8393x_receive(NetClientState *nc, const uint8_t * buf,
-     address_space_write(&s->as, address, MEMTXATTRS_UNSPECIFIED, buf, rx_len);
-     address += rx_len;
-     address_space_rw(&s->as, address,
--        MEMTXATTRS_UNSPECIFIED, (uint8_t *)&checksum, 4, 1);
-+                     MEMTXATTRS_UNSPECIFIED, &checksum, 4, 1);
-     rx_len += 4;
-     s->regs[SONIC_CRBA1] = address >> 16;
-     s->regs[SONIC_CRBA0] = address & 0xffff;
-@@ -819,12 +819,12 @@ static ssize_t dp8393x_receive(NetClientState *nc, const uint8_t * buf,
-     dp8393x_put(s, width, 4, s->regs[SONIC_RSC]); /* seq_no */
-     size = sizeof(uint16_t) * 5 * width;
-     address_space_rw(&s->as, dp8393x_crda(s),
--        MEMTXATTRS_UNSPECIFIED, (uint8_t *)s->data, size, 1);
-+                     MEMTXATTRS_UNSPECIFIED, s->data, size, 1);
- 
-     /* Move to next descriptor */
-     size = sizeof(uint16_t) * width;
-     address_space_rw(&s->as, dp8393x_crda(s) + sizeof(uint16_t) * 5 * width,
--        MEMTXATTRS_UNSPECIFIED, (uint8_t *)s->data, size, 0);
-+                     MEMTXATTRS_UNSPECIFIED, s->data, size, 0);
-     s->regs[SONIC_LLFA] = dp8393x_get(s, width, 0);
-     if (s->regs[SONIC_LLFA] & 0x1) {
-         /* EOL detected */
-@@ -838,7 +838,7 @@ static ssize_t dp8393x_receive(NetClientState *nc, const uint8_t * buf,
-         }
-         s->data[0] = 0;
-         address_space_rw(&s->as, offset, MEMTXATTRS_UNSPECIFIED,
--                         (uint8_t *)s->data, sizeof(uint16_t), 1);
-+                         s->data, sizeof(uint16_t), 1);
-         s->regs[SONIC_CRDA] = s->regs[SONIC_LLFA];
-         s->regs[SONIC_ISR] |= SONIC_ISR_PKTRX;
-         s->regs[SONIC_RSC] = (s->regs[SONIC_RSC] & 0xff00) | (((s->regs[SONIC_RSC] & 0x00ff) + 1) & 0x00ff);
-diff --git a/hw/s390x/css.c b/hw/s390x/css.c
-index 844caab408..f27f8c45a5 100644
---- a/hw/s390x/css.c
-+++ b/hw/s390x/css.c
-@@ -875,7 +875,7 @@ static inline int ida_read_next_idaw(CcwDataStream *cds)
-             return -EINVAL; /* channel program check */
-         }
-         ret = address_space_rw(&address_space_memory, idaw_addr,
--                               MEMTXATTRS_UNSPECIFIED, (void *) &idaw.fmt2,
-+                               MEMTXATTRS_UNSPECIFIED, &idaw.fmt2,
-                                sizeof(idaw.fmt2), false);
-         cds->cda = be64_to_cpu(idaw.fmt2);
-     } else {
-@@ -884,7 +884,7 @@ static inline int ida_read_next_idaw(CcwDataStream *cds)
-             return -EINVAL; /* channel program check */
-         }
-         ret = address_space_rw(&address_space_memory, idaw_addr,
--                               MEMTXATTRS_UNSPECIFIED, (void *) &idaw.fmt1,
-+                               MEMTXATTRS_UNSPECIFIED, &idaw.fmt1,
-                                sizeof(idaw.fmt1), false);
-         cds->cda = be64_to_cpu(idaw.fmt1);
-         if (cds->cda & 0x80000000) {
-diff --git a/qtest.c b/qtest.c
-index 12432f99cf..65e33b80e3 100644
---- a/qtest.c
-+++ b/qtest.c
-@@ -435,17 +435,17 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-             uint16_t data = value;
-             tswap16s(&data);
-             address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                             (uint8_t *) &data, 2, true);
-+                             &data, 2, true);
-         } else if (words[0][5] == 'l') {
-             uint32_t data = value;
-             tswap32s(&data);
-             address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                             (uint8_t *) &data, 4, true);
-+                             &data, 4, true);
-         } else if (words[0][5] == 'q') {
-             uint64_t data = value;
-             tswap64s(&data);
-             address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                             (uint8_t *) &data, 8, true);
-+                             &data, 8, true);
-         }
-         qtest_send_prefix(chr);
-         qtest_send(chr, "OK\n");
-@@ -469,16 +469,16 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-         } else if (words[0][4] == 'w') {
-             uint16_t data;
-             address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                             (uint8_t *) &data, 2, false);
-+                             &data, 2, false);
-             value = tswap16(data);
-         } else if (words[0][4] == 'l') {
-             uint32_t data;
-             address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                             (uint8_t *) &data, 4, false);
-+                             &data, 4, false);
-             value = tswap32(data);
-         } else if (words[0][4] == 'q') {
-             address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                             (uint8_t *) &value, 8, false);
-+                             &value, 8, false);
-             tswap64s(&value);
-         }
-         qtest_send_prefix(chr);
-diff --git a/target/i386/hvf/x86_mmu.c b/target/i386/hvf/x86_mmu.c
-index d5a0efe718..6a620643c1 100644
---- a/target/i386/hvf/x86_mmu.c
-+++ b/target/i386/hvf/x86_mmu.c
-@@ -89,7 +89,7 @@ static bool get_pt_entry(struct CPUState *cpu, struct gpt_translation *pt,
- 
-     index = gpt_entry(pt->gva, level, pae);
-     address_space_rw(&address_space_memory, gpa + index * pte_size(pae),
--                     MEMTXATTRS_UNSPECIFIED, (uint8_t *)&pte, pte_size(pae), 0);
-+                     MEMTXATTRS_UNSPECIFIED, &pte, pte_size(pae), 0);
- 
-     pt->pte[level - 1] = pte;
- 
-diff --git a/target/i386/whpx-all.c b/target/i386/whpx-all.c
-index 3ed2aa1892..0a1f244751 100644
---- a/target/i386/whpx-all.c
-+++ b/target/i386/whpx-all.c
-@@ -540,7 +540,7 @@ static HRESULT CALLBACK whpx_emu_ioport_callback(
+-void cpu_physical_memory_rw(hwaddr addr, uint8_t *buf,
++void cpu_physical_memory_rw(hwaddr addr, void *buf,
+                             hwaddr len, int is_write);
+ static inline void cpu_physical_memory_read(hwaddr addr,
+                                             void *buf, hwaddr len)
+diff --git a/exec.c b/exec.c
+index 1a80159996..01437be691 100644
+--- a/exec.c
++++ b/exec.c
+@@ -3019,11 +3019,12 @@ MemoryRegion *get_system_io(void)
+ /* physical memory access (slow version, mainly for debug) */
+ #if defined(CONFIG_USER_ONLY)
+ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
+-                        uint8_t *buf, target_ulong len, int is_write)
++                        void *ptr, target_ulong len, int is_write)
  {
-     MemTxAttrs attrs = { 0 };
-     address_space_rw(&address_space_io, IoAccess->Port, attrs,
--                     (uint8_t *)&IoAccess->Data, IoAccess->AccessSize,
-+                     &IoAccess->Data, IoAccess->AccessSize,
-                      IoAccess->Direction);
-     return S_OK;
- }
-diff --git a/target/s390x/mmu_helper.c b/target/s390x/mmu_helper.c
-index c9f3f34750..0be2f300bb 100644
---- a/target/s390x/mmu_helper.c
-+++ b/target/s390x/mmu_helper.c
-@@ -106,7 +106,7 @@ static inline bool read_table_entry(CPUS390XState *env, hwaddr gaddr,
-      * We treat them as absolute addresses and don't wrap them.
-      */
-     if (unlikely(address_space_read(cs->as, gaddr, MEMTXATTRS_UNSPECIFIED,
--                                    (uint8_t *)entry, sizeof(*entry)) !=
-+                                    entry, sizeof(*entry)) !=
-                  MEMTX_OK)) {
-         return false;
+     int flags;
+     target_ulong l, page;
+     void * p;
++    uint8_t *buf = ptr;
+ 
+     while (len > 0) {
+         page = addr & TARGET_PAGE_MASK;
+@@ -3311,7 +3312,7 @@ MemTxResult address_space_rw(AddressSpace *as, hwaddr addr, MemTxAttrs attrs,
      }
+ }
+ 
+-void cpu_physical_memory_rw(hwaddr addr, uint8_t *buf,
++void cpu_physical_memory_rw(hwaddr addr, void *buf,
+                             hwaddr len, int is_write)
+ {
+     address_space_rw(&address_space_memory, addr, MEMTXATTRS_UNSPECIFIED,
+@@ -3789,10 +3790,11 @@ address_space_write_cached_slow(MemoryRegionCache *cache, hwaddr addr,
+ 
+ /* virtual memory access for debug (includes writing to ROM) */
+ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
+-                        uint8_t *buf, target_ulong len, int is_write)
++                        void *ptr, target_ulong len, int is_write)
+ {
+     hwaddr phys_addr;
+     target_ulong l, page;
++    uint8_t *buf = ptr;
+ 
+     cpu_synchronize_state(cpu);
+     while (len > 0) {
 -- 
 2.21.1

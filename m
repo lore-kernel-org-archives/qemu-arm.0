@@ -1,72 +1,72 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp551414lfg;
-        Thu, 20 Feb 2020 05:13:24 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz/40/LfYWddhf/VpL9vuxfYHwQV92oYZ5r39S0M6wXTwxJPxL31yW0oKAxArlWHDn6fvJ9
-X-Received: by 2002:a05:6830:128e:: with SMTP id z14mr18176625otp.184.1582204404525;
-        Thu, 20 Feb 2020 05:13:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582204404; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp554963lfg;
+        Thu, 20 Feb 2020 05:16:50 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxF3SITwr6dVkTDk05luen05MkoyQIMfkLHaCVbU9Bhi7Rm81Bidgpk6g17qH6kjioIxu90
+X-Received: by 2002:a9d:4110:: with SMTP id o16mr23691079ote.101.1582204609748;
+        Thu, 20 Feb 2020 05:16:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582204609; cv=none;
         d=google.com; s=arc-20160816;
-        b=d5j97rvh7x/CrcnuyJ40IxI6uUHMp2zc9ia3IJvgktOqRrzkOcDa6O53CJlXoN1IvF
-         PyeGFBZAXmcCXxKhlVcUrzXll+hwiXNCW9NXpnpq5ufpogJC9z5hARb5iv24lljPc0h/
-         /e39fXHQT9Dd95rw3vMgJSIL7ib0drTnl2gVy9iRXQDpv9ocEuqNLnn1tqYNF/EUyzsD
-         gBYnyy3x8pdux2C1qXMT5MHnxB06CfBvpwSaau8Zn6YKrTuvrwK6EAMJNkRHTl8vg8Ge
-         kbjeMF4NIYBnAh2c495v4OvU19TZknk8GP4feOxSBkhilOfAaE4MZNVnJ0K0+xIhhf0u
-         OklQ==
+        b=n2GASgCkK7DP/td1AP/AH165+U1xAATqPx5YJr2q07UgE/9GV2EH0rlbd+KCjY8MMf
+         QZXUUNgIxw5dk76AKM0nW4XjziaUezewwnPReO8yUfCFHojUm2kKWb9S7KGvWVIYvWFj
+         jdxjoJ9xruAjcLb2YqaHRbT5DC+eGZ0pSfKmKc1eNS4yx0kh6knaM+5zGAzxTSZbiVMj
+         NJSlRxT4ka+XigD39DaVAzRYdGdctOEXgqHq3DAJDJ9ba7oJAH2+HoxyPznXQMZow0/6
+         BfRk2p6g78xY4Kn0WLilL4LjbMN91aUC3kZVFZWBjIQwQ5whVQTKld26rViliZKCAbO4
+         ohRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:organization:from:references:cc:to:subject
          :dkim-signature;
-        bh=CxRd66hXArnDbqmniqlydJMWajYnS/NgIxGrt3Sj5ig=;
-        b=XteMbmmi7rbrc9ZkXRuVdbwaB1EIsKL8qX7+cEDV2TUnfjQVaaVvC/pgQz9wRkAQ/Y
-         jRLoN9R5gFJaZfyWxb1R4zSxJUZf3sexpLI3TttpEGg70EgIF5/ed2aE2truYs88N5t0
-         q4ZU3tYCiNQfg+yVDhpYt/LTdjxo4jmVTg7sd8D3LBux/TfKVVr1VcKiGLOmqoX+InE9
-         nsFb3eLGR9kgVLgGFImIZTdgx8u1Uvjb9M601lKoNOsW0WlVwSUiImr4aI5LGpSRnf8L
-         DixPpH15zGQAKyQt6hzVwZ+sJTOVnJz8xc1j+akbF9hwA0c7GY87tp2SWAWjI+lsCgpG
-         sVXw==
+        bh=ru3ADtcHYP8MfN/oIVe5nGPDlqA+ClJ+343y1IgOloY=;
+        b=FoI6KnuCKzEucXGApraYzx8PDaNLRyB5eRQx8YmCT2p6Nv837mptASFCT9a05JkOcD
+         +1xJxrQeMEjzwbW4o7lJs8vzsovQsRgus/WXWETUQyHFvY6Qh4mjHFYin0K+kbMnJfwv
+         qttUaTcUPQ3Ah5/CrYb2tsJgiQ8aN0IXnW7iWvcOzE8KteW80GUzZcbqC1ooGj4RZLBR
+         iLH6FD+5zUKKAc4ZvaksXiNZDHCwaBLD22JjQhrPdllZekAko3erMy1/lU1vatj7G1hd
+         e9gMERwhZbaW2bBeI6D36S5vbEq9l7t4voiMl308XtwM/2/5m8sgsx71C+ym6TrYKRNB
+         bWAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Hh+JWc92;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CSck3AKE;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id f23si1661119oto.205.2020.02.20.05.13.24;
-        Thu, 20 Feb 2020 05:13:24 -0800 (PST)
+        by mx.google.com with ESMTP id m4si1627944otr.268.2020.02.20.05.16.49;
+        Thu, 20 Feb 2020 05:16:49 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Hh+JWc92;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CSck3AKE;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728054AbgBTNNV (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 20 Feb 2020 08:13:21 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:49313 "EHLO
+        id S1728072AbgBTNQs (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 20 Feb 2020 08:16:48 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:50655 "EHLO
         us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1727088AbgBTNNV (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Thu, 20 Feb 2020 08:13:21 -0500
+        by vger.kernel.org with ESMTP id S1727931AbgBTNQs (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Thu, 20 Feb 2020 08:16:48 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1582204400;
+        s=mimecast20190719; t=1582204607;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:content-type:content-type:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=CxRd66hXArnDbqmniqlydJMWajYnS/NgIxGrt3Sj5ig=;
-        b=Hh+JWc92QUzPA+Qp4ks+X97+KXSWHP83TvpRL4a6qRVj2teF5XmWrS98Pn3crqtthi1q10
-        hRQGZHsfq3dV4Qp92Uz/PtPUw4/vzlxBfKgcExyK/tt4xyY7qXBWciA6Sa6cli/bhKGjO4
-        GIPT67V5UIiGGBcfaMDXx5mPaOYt7KI=
+        bh=ru3ADtcHYP8MfN/oIVe5nGPDlqA+ClJ+343y1IgOloY=;
+        b=CSck3AKETPRi+rIlgust7ZVO+ImhQAT8qP4QFovK2zrcRgBT5xmmY19+ROetim4nhJzvpR
+        eV697Mg5X/tWObbzDzaesNEh8/vi4ICqTCzPiS7OkfM9WrKvv4WMvL0AYbOD18C+2lBuuQ
+        bjH6yL443mmL7UlvWE2/1sH3da2Wp6Y=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-57-AEN5JunrODynT6AfB31ueA-1; Thu, 20 Feb 2020 08:13:12 -0500
-X-MC-Unique: AEN5JunrODynT6AfB31ueA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+ us-mta-215-RcZlOOoRPWG_gnpP3lfEWQ-1; Thu, 20 Feb 2020 08:16:45 -0500
+X-MC-Unique: RcZlOOoRPWG_gnpP3lfEWQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6D02CDBA5;
-        Thu, 20 Feb 2020 13:13:08 +0000 (UTC)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D202C1005510;
+        Thu, 20 Feb 2020 13:16:41 +0000 (UTC)
 Received: from [10.3.116.180] (ovpn-116-180.phx2.redhat.com [10.3.116.180])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 5F2C61001B2C;
-        Thu, 20 Feb 2020 13:12:54 +0000 (UTC)
-Subject: Re: [PATCH v3 01/20] scripts/git.orderfile: Display Cocci scripts
- before code modifications
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id 1755B8B570;
+        Thu, 20 Feb 2020 13:16:28 +0000 (UTC)
+Subject: Re: [PATCH v3 02/20] hw: Remove unnecessary cast when calling
+ dma_memory_read()
 To:     =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
         Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 Cc:     Fam Zheng <fam@euphon.net>,
@@ -102,53 +102,72 @@ Cc:     Fam Zheng <fam@euphon.net>,
         Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
         Paolo Bonzini <pbonzini@redhat.com>
 References: <20200220130548.29974-1-philmd@redhat.com>
- <20200220130548.29974-2-philmd@redhat.com>
+ <20200220130548.29974-3-philmd@redhat.com>
 From:   Eric Blake <eblake@redhat.com>
 Organization: Red Hat, Inc.
-Message-ID: <6100c5a0-b6a7-4c8c-4284-6387de26690c@redhat.com>
-Date:   Thu, 20 Feb 2020 07:12:53 -0600
+Message-ID: <68120807-6f6b-1602-8208-fd76d64e74bc@redhat.com>
+Date:   Thu, 20 Feb 2020 07:16:27 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200220130548.29974-2-philmd@redhat.com>
+In-Reply-To: <20200220130548.29974-3-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Content-Transfer-Encoding: quoted-printable
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 8CSC7aCKNl+p
+X-TUID: HUzksLIVC6bV
 
 On 2/20/20 7:05 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> When we use a Coccinelle semantic script to do automatic
-> code modifications, it makes sense to look at the semantic
-> patch first.
+> Since its introduction in commit d86a77f8abb, dma_memory_read()
+> always accepted void pointer argument. Remove the unnecessary
+> casts.
+>=20
+> This commit was produced with the included Coccinelle script
+> scripts/coccinelle/exec_rw_const.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->   scripts/git.orderfile | 3 +++
->   1 file changed, 3 insertions(+)
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
+>   scripts/coccinelle/exec_rw_const.cocci | 15 +++++++++++++++
+>   hw/arm/smmu-common.c                   |  3 +--
+>   hw/arm/smmuv3.c                        | 10 ++++------
+>   hw/sd/sdhci.c                          | 15 +++++----------
+>   4 files changed, 25 insertions(+), 18 deletions(-)
+>   create mode 100644 scripts/coccinelle/exec_rw_const.cocci
 >=20
-> diff --git a/scripts/git.orderfile b/scripts/git.orderfile
-> index 1f747b583a..7cf22e0bf5 100644
-> --- a/scripts/git.orderfile
-> +++ b/scripts/git.orderfile
-> @@ -22,6 +22,9 @@ Makefile*
->   qapi/*.json
->   qga/*.json
->  =20
-> +# semantic patches
-> +*.cocci
-> +
->   # headers
->   *.h
->  =20
->=20
+> diff --git a/scripts/coccinelle/exec_rw_const.cocci b/scripts/coccinell=
+e/exec_rw_const.cocci
+> new file mode 100644
+> index 0000000000..a0054f009d
+> --- /dev/null
+> +++ b/scripts/coccinelle/exec_rw_const.cocci
+> @@ -0,0 +1,15 @@
+> +// Usage:
+> +//  spatch --sp-file scripts/coccinelle/exec_rw_const.cocci --dir . --=
+in-place
+
+This command line should also use '--macro-file=20
+scripts/cocci-macro-file.h' to cover more of the code base (Coccinelle=20
+skips portions of the code that uses macros it doesn't recognize).
+
+
+> @@ -726,13 +724,10 @@ static void get_adma_description(SDHCIState *s, A=
+DMADescr *dscr)
+>           }
+>           break;
+>       case SDHC_CTRL_ADMA2_64:
+> -        dma_memory_read(s->dma_as, entry_addr,
+> -                        (uint8_t *)(&dscr->attr), 1);
+> -        dma_memory_read(s->dma_as, entry_addr + 2,
+> -                        (uint8_t *)(&dscr->length), 2);
+> +        dma_memory_read(s->dma_as, entry_addr, (&dscr->attr), 1);
+> +        dma_memory_read(s->dma_as, entry_addr + 2, (&dscr->length), 2)=
+;
+
+The () around &dscr->length are now pointless.
 
 --=20
 Eric Blake, Principal Software Engineer

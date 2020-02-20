@@ -1,85 +1,85 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp544162lfg;
-        Thu, 20 Feb 2020 05:07:08 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzv7Mwhw+ifQ42pbzp9L9/LnY2oOBNH6vOozo8dPKfr8ldX4+tnikiz8fmkCjgslgx1IxYS
-X-Received: by 2002:aca:dc8b:: with SMTP id t133mr1923212oig.98.1582204028039;
-        Thu, 20 Feb 2020 05:07:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582204028; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp544248lfg;
+        Thu, 20 Feb 2020 05:07:13 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzzRqzw8tQloD6YLG+84A80wmU1QU7Ue8OKBIm8aGy4B+eIoWekLvxbZluTIJrBmo6Rx7xe
+X-Received: by 2002:a54:4895:: with SMTP id r21mr1937437oic.107.1582204032817;
+        Thu, 20 Feb 2020 05:07:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582204032; cv=none;
         d=google.com; s=arc-20160816;
-        b=AEFd2Rf4NzGvB3ITH/PA61p6twUeCfg3QlFgcihaeykP69XKLQ/dRluHso6K7kuTaa
-         0uUYinOiZq4xYzdZBTRYMlC3QvzN8K+4m3ZcMsBPa07GwA8qojmH4GFto4WDKSq1mlfR
-         Q7L7qB2lAnUl9Wyh+VMlXoOjBb6XBqmFJCBy67rSUbTCO2MPhWinzBsTamIb1+L+HuqW
-         PAwrTWKG13rZTe11nfb07WfyAooPnWAUSjtsGZE/rCfpCpdazxybsc+GzQ/Iew0o1uWo
-         F0tWqnH1EEVlBLlTBZ87Qqkb81VmlthqSJ8D2eCzyOcpbA7a0y+afxN5X/k6nU75gg86
-         w/Hw==
+        b=WKQJKDPohuA9w+ic9ouqYS3/iv2YtaqX8/f0JwjOEQobWkbOC2UrUZAQK17jTeMyi9
+         rSnn/flZJYuvUs/xSRbk/lSFm6f4QVLARYjO8osC2AcQ7eOHI9FXVHWXW29QCLubTUsx
+         WBlm74pIx/Ii3D+1WUCPI8SmjxuD6sGrviCuymw4bIgw4OTH4E5MvCb28hEHCpOfIF3Q
+         yzl/pUO5hdmBiB1aO0AP5xPI9H6UlEEz03rhAnlE627pLTkEn4tDieKowNxjeXKVsPz9
+         129K+TRVV24hZBGlfOvx7Liko3jA9EzEaFMv2bDj7c90uyZHSD+pwPVIsSejTlqOvQlA
+         c5fg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=Kw0XUCUaDNbVcDxMhM9BERQo40GlLRJY6LdRY3T5Lms=;
-        b=HN2A0EjSWy06HOZO41MU/6+IuNW+vriYoQ1XORUMFvxZC/d3YLfUJUb2Y08DtmRjak
-         EF8/7PuNUwOM/PbRdwKIK7m0ICj4ObeSSn6sQqjN8yDTUHCukolF+wolPN2c6VMEDYat
-         ApyKhFt0pHAc0SxluH+VR3OKyp99A7P4VlI/So39VkyPkCVDLmJvqTmqRUD7OBVweQ8i
-         mjC3AQh0x62bR8Oy/EKoT1SwFuS1MYZ+ZwqkiVuuzM24E89lshHZaIJl+Mk6t4jUgR1u
-         Iv5E8JTYqlaMnqkhDG5kj7zmd8kp99PZf8oXRd5AoW+Bm/LrP6A9x2HlYUtuFHb9UlLO
-         BzbQ==
+        bh=Du/Q9cwkYv23U8HuA6dwHrSvlC9gAA5COcpF1xlZ39I=;
+        b=0LryHa9TwCCNm6vGLKYq2Ti7NE7MGhXpzePAOMLlDQjQavGqm1dnSWm2WcF/gWE/yu
+         NFSxiAKxKQg8/k0t6LtP21c9xR9UafudPRn4QiXB1kgEHZZ6ty1Q4KPtmy/m+35LjENY
+         J3RwtssiEW82L+4P6Xb0aLoFjrklstdPHaq6Py9zrtHvaBhE+TGxTi4sItA8ygaJ8Y3e
+         ixUKdQpgtfM1o/GIM1QFRio9JKypw4AfGuOo4BKvs+W492JMMUQlPMFU2Qw9Ujr4dUVX
+         ScV+vNjCupvpnQlDWU9638Ry5CYrdR87JdQzB85eUR6Wxh9O/zpl/iV1jHoCQ+vRSluD
+         Qn9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UwuEYbxP;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i1HfNEdx;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b2si1957201ots.284.2020.02.20.05.07.07;
-        Thu, 20 Feb 2020 05:07:08 -0800 (PST)
+        by mx.google.com with ESMTP id b2si1957201ots.284.2020.02.20.05.07.12;
+        Thu, 20 Feb 2020 05:07:12 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UwuEYbxP;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i1HfNEdx;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728206AbgBTNHH (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 20 Feb 2020 08:07:07 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:25182 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1728228AbgBTNHG (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Thu, 20 Feb 2020 08:07:06 -0500
+        id S1728240AbgBTNHL (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 20 Feb 2020 08:07:11 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:56495 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1728160AbgBTNHL (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 20 Feb 2020 08:07:11 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1582204023;
+        s=mimecast20190719; t=1582204029;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:  content-type:content-type:content-type:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=Kw0XUCUaDNbVcDxMhM9BERQo40GlLRJY6LdRY3T5Lms=;
-        b=UwuEYbxPrzjdtKdwy8cBR8o9ABXkB49H40gLnFblBCQ1FNXFiul1Y/OX7EeIO+Aflxd4WO
-        7YG5Y88M0hrU+Wme2IVrmQtnGqY59QVCrzlRfYbQcCQiljSzgoX5KELZjoZMaXkO1Q/fWe
-        ZADX0WL+w3wnFMDH2AHOm3A7XvXlHeA=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-143-Ky0JMmj-MXqmUT8U_hxWVQ-1; Thu, 20 Feb 2020 08:07:00 -0500
-X-MC-Unique: Ky0JMmj-MXqmUT8U_hxWVQ-1
-Received: by mail-wr1-f71.google.com with SMTP id 50so1721475wrc.2
-        for <kvm@vger.kernel.org>; Thu, 20 Feb 2020 05:06:59 -0800 (PST)
+        bh=Du/Q9cwkYv23U8HuA6dwHrSvlC9gAA5COcpF1xlZ39I=;
+        b=i1HfNEdxdDSmDqCOM5AE3J10BlTGOJTcWeDqQ4cyr+lqavKdS5bcjnfjPZUietvzpQ/k07
+        cXOW9J73c2g+cS6WnBEtEVfOnFYRng/Ft7J7rHlJLG1652k+Wa6ecyF+Vt8KiEPPaZb9FP
+        GhCLn2fjH4AJVqKm3vOp44zjDEAx9oM=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-377-13IoNbKrMo2F4i7JBZRYnA-1; Thu, 20 Feb 2020 08:07:08 -0500
+X-MC-Unique: 13IoNbKrMo2F4i7JBZRYnA-1
+Received: by mail-wm1-f70.google.com with SMTP id y7so579645wmd.4
+        for <kvm@vger.kernel.org>; Thu, 20 Feb 2020 05:07:07 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=Kw0XUCUaDNbVcDxMhM9BERQo40GlLRJY6LdRY3T5Lms=;
-        b=h1UGWRPK8SQ2e2iQBXl65eN4z6rJQlg4z4POdziKndCEd2TYKy2MkFr1SSBo99BFJY
-         nVbx83yXMdCzOGw4Q7SYEvxptoZXuupgvH14SVv5a23oL7fQm4T2OEDffbK3817/RE64
-         hJBQbDH+YmtGmVH19GjAj38wp38hbTFwUvcBry0yEqvUgDFmUM99A+ljirO2uHDuR4qC
-         NozRK4jasGNINT2YQ3mwav/L2Enn6KFKDhRu6hN0T3N5f14odYRwQcNPoOc9dEDA/gnD
-         Tx7W1jGs56BxGAxftENWQceSKrtcvCLvZIkYop1nZ54262nwSldLkhNb7Vtm+P4dfNAY
-         HEpQ==
-X-Gm-Message-State: APjAAAU1JhTtKATQU/GRa5JOheP5GAg2m+hZ07tBxWDyriNS9We6560a
-        F6UxSeyvw3n0lQIQFn2ULEUD4meTYfB2unzADV7oeM2rZCXPy5IHv6p0EZOK/TQaZv13AspSvde
-        EK2qfw6AxUIvm
-X-Received: by 2002:a1c:41c4:: with SMTP id o187mr4444355wma.24.1582204018543;
-        Thu, 20 Feb 2020 05:06:58 -0800 (PST)
-X-Received: by 2002:a1c:41c4:: with SMTP id o187mr4444308wma.24.1582204018007;
-        Thu, 20 Feb 2020 05:06:58 -0800 (PST)
+        bh=Du/Q9cwkYv23U8HuA6dwHrSvlC9gAA5COcpF1xlZ39I=;
+        b=SlbEJBu7BL8M/Hd5pPCD9+sXicWbDjhr58tPlfhrvc4ke/vUrrx4IKZDnxj4w7tz5N
+         SI7n2QE0/c8Lpnna0F/p5iyWnKAzWMk1hb+khqR0z4cg8rhFdKpomUX+0yDpPwKyOWa5
+         Fyy1waBJy0SsiB6eSw/5bI2PKtiSXF/9l/KrfqTazH7In8rfqG55Vu+dDGjQSl+7sW4s
+         vRKEz0gh7fr7OKYgIU+0cpNE7cVQ+ECRjbgoa+7j0+gM6oxwjFnV6+SKvFPdTQZ7091t
+         T1+xWKozpvQE+5SxRnl1BaTnDc7NEHRZhmIL7/E8O96s2CHo74iDfmh+OtIULyXoBWpu
+         6R8g==
+X-Gm-Message-State: APjAAAUEvkUd4jX8/kqlGe6S0KpxbZXnlDGLuIv5/6hOhQiKEAxWMSkm
+        cUTdZU3kLP11CpamuDzxWnrMJCGAXmTFu6vpHLrLtzCQY4IbaZbuycWBjOfRYgfLyPbyZkZqlo5
+        xYDbZiYHLObOE
+X-Received: by 2002:a7b:c088:: with SMTP id r8mr4601054wmh.18.1582204025777;
+        Thu, 20 Feb 2020 05:07:05 -0800 (PST)
+X-Received: by 2002:a7b:c088:: with SMTP id r8mr4601010wmh.18.1582204025361;
+        Thu, 20 Feb 2020 05:07:05 -0800 (PST)
 Received: from localhost.localdomain (78.red-88-21-202.staticip.rima-tde.net. [88.21.202.78])
-        by smtp.gmail.com with ESMTPSA id b67sm4594690wmc.38.2020.02.20.05.06.54
+        by smtp.gmail.com with ESMTPSA id b67sm4594690wmc.38.2020.02.20.05.07.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Feb 2020 05:06:57 -0800 (PST)
+        Thu, 20 Feb 2020 05:07:04 -0800 (PST)
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To:     Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 Cc:     "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -115,12 +115,10 @@ Cc:     "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
         Igor Mitsyanko <i.mitsyanko@gmail.com>,
         Paul Durrant <paul@xen.org>,
         Richard Henderson <rth@twiddle.net>,
-        John Snow <jsnow@redhat.com>,
-        "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-        Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v3 17/20] Avoid address_space_rw() with a constant is_write argument
-Date:   Thu, 20 Feb 2020 14:05:45 +0100
-Message-Id: <20200220130548.29974-18-philmd@redhat.com>
+        John Snow <jsnow@redhat.com>
+Subject: [PATCH v3 19/20] Let cpu_[physical]_memory() calls pass a boolean 'is_write' argument
+Date:   Thu, 20 Feb 2020 14:05:47 +0100
+Message-Id: <20200220130548.29974-20-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200220130548.29974-1-philmd@redhat.com>
 References: <20200220130548.29974-1-philmd@redhat.com>
@@ -132,636 +130,342 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: DTG9wSkZigWA
+X-TUID: KyLWygBQUqNS
 
-From: Peter Maydell <peter.maydell@linaro.org>
-
-The address_space_rw() function allows either reads or writes
-depending on the is_write argument passed to it; this is useful
-when the direction of the access is determined programmatically
-(as for instance when handling the KVM_EXIT_MMIO exit reason).
-Under the hood it just calls either address_space_write() or
-address_space_read_full().
-
-We also use it a lot with a constant is_write argument, though,
-which has two issues:
- * when reading "address_space_rw(..., 1)" this is less
-   immediately clear to the reader as being a write than
-   "address_space_write(...)"
- * calling address_space_rw() bypasses the optimization
-   in address_space_read() that fast-paths reads of a
-   fixed length
+Use an explicit boolean type.
 
 This commit was produced with the included Coccinelle script
-scripts/coccinelle/exec_rw_const.cocci.
+scripts/coccinelle/exec_rw_const.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-Reviewed-by: Laurent Vivier <lvivier@redhat.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Acked-by: Christian Borntraeger <borntraeger@de.ibm.com>
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-Message-Id: <20200218112457.22712-1-peter.maydell@linaro.org>
-[PMD: Update macvm_set_cr0() reported by Laurent Vivier]
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- scripts/coccinelle/exec_rw_const.cocci | 13 +++++
- target/i386/hvf/vmx.h                  |  7 ++-
- accel/kvm/kvm-all.c                    |  6 +--
- dma-helpers.c                          |  4 +-
- exec.c                                 |  4 +-
- hw/dma/xlnx-zdma.c                     | 11 ++--
- hw/net/dp8393x.c                       | 70 ++++++++++++++------------
- hw/net/i82596.c                        | 22 ++++----
- hw/net/lasi_i82596.c                   |  5 +-
- hw/ppc/pnv_lpc.c                       |  8 +--
- hw/s390x/css.c                         | 12 ++---
- qtest.c                                | 52 +++++++++----------
- target/i386/hvf/x86_mmu.c              | 12 ++---
- 13 files changed, 119 insertions(+), 107 deletions(-)
+ scripts/coccinelle/exec_rw_const.cocci | 14 ++++++++++++++
+ include/exec/cpu-common.h              |  4 ++--
+ hw/display/exynos4210_fimd.c           |  3 ++-
+ hw/display/milkymist-tmu2.c            |  8 ++++----
+ hw/display/omap_dss.c                  |  2 +-
+ hw/display/ramfb.c                     |  2 +-
+ hw/misc/pc-testdev.c                   |  2 +-
+ hw/nvram/spapr_nvram.c                 |  4 ++--
+ hw/ppc/ppc440_uc.c                     |  6 ++++--
+ hw/ppc/spapr_hcall.c                   |  4 ++--
+ hw/s390x/ipl.c                         |  2 +-
+ hw/s390x/s390-pci-bus.c                |  2 +-
+ hw/s390x/virtio-ccw.c                  |  2 +-
+ hw/xen/xen_pt_graphics.c               |  2 +-
+ target/i386/hax-all.c                  |  4 ++--
+ target/s390x/excp_helper.c             |  2 +-
+ target/s390x/helper.c                  |  6 +++---
+ 17 files changed, 43 insertions(+), 26 deletions(-)
 
 diff --git a/scripts/coccinelle/exec_rw_const.cocci b/scripts/coccinelle/exec_rw_const.cocci
-index 98cb06f09f..ee98ce988e 100644
+index ee98ce988e..54b1cab8cd 100644
 --- a/scripts/coccinelle/exec_rw_const.cocci
 +++ b/scripts/coccinelle/exec_rw_const.cocci
-@@ -27,6 +27,19 @@ expression E1, E2, E3, E4;
- + address_space_write(E1, E2, E3, V, E4)
+@@ -11,6 +11,20 @@ expression E1, E2, E3, E4, E5;
+ |
+ - address_space_rw(E1, E2, E3, E4, E5, 1)
+ + address_space_rw(E1, E2, E3, E4, E5, true)
++|
++
++- cpu_physical_memory_rw(E1, E2, E3, 0)
+++ cpu_physical_memory_rw(E1, E2, E3, false)
++|
++- cpu_physical_memory_rw(E1, E2, E3, 1)
+++ cpu_physical_memory_rw(E1, E2, E3, true)
++|
++
++- cpu_physical_memory_map(E1, E2, 0)
+++ cpu_physical_memory_map(E1, E2, false)
++|
++- cpu_physical_memory_map(E1, E2, 1)
+++ cpu_physical_memory_map(E1, E2, true)
  )
  
-+// Avoid uses of address_space_rw() with a constant is_write argument.
-+@@
-+expression E1, E2, E3, E4, E5;
-+symbol true, false;
-+@@
-+(
-+- address_space_rw(E1, E2, E3, E4, E5, false)
-++ address_space_read(E1, E2, E3, E4, E5)
-+|
-+- address_space_rw(E1, E2, E3, E4, E5, true)
-++ address_space_write(E1, E2, E3, E4, E5)
-+)
-+
- // Remove useless cast
- @@
- expression E1, E2, E3, E4, E5, E6;
-diff --git a/target/i386/hvf/vmx.h b/target/i386/hvf/vmx.h
-index 19af029133..03d2c79b9c 100644
---- a/target/i386/hvf/vmx.h
-+++ b/target/i386/hvf/vmx.h
-@@ -125,10 +125,9 @@ static inline void macvm_set_cr0(hv_vcpuid_t vcpu, uint64_t cr0)
- 
-     if ((cr0 & CR0_PG) && (rvmcs(vcpu, VMCS_GUEST_CR4) & CR4_PAE) &&
-         !(efer & MSR_EFER_LME)) {
--        address_space_rw(&address_space_memory,
--                         rvmcs(vcpu, VMCS_GUEST_CR3) & ~0x1f,
--                         MEMTXATTRS_UNSPECIFIED,
--                         pdpte, 32, false);
-+        address_space_read(&address_space_memory,
-+                           rvmcs(vcpu, VMCS_GUEST_CR3) & ~0x1f,
-+                           MEMTXATTRS_UNSPECIFIED, pdpte, 32);
-         /* Only set PDPTE when appropriate. */
-         for (i = 0; i < 4; i++) {
-             wvmcs(vcpu, VMCS_GUEST_PDPTE0 + i * 2, pdpte[i]);
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index c111312dfd..0cfe6fd8de 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2178,9 +2178,9 @@ void kvm_flush_coalesced_mmio_buffer(void)
-             ent = &ring->coalesced_mmio[ring->first];
- 
-             if (ent->pio == 1) {
--                address_space_rw(&address_space_io, ent->phys_addr,
--                                 MEMTXATTRS_UNSPECIFIED, ent->data,
--                                 ent->len, true);
-+                address_space_write(&address_space_io, ent->phys_addr,
-+                                    MEMTXATTRS_UNSPECIFIED, ent->data,
-+                                    ent->len);
-             } else {
-                 cpu_physical_memory_write(ent->phys_addr, ent->data, ent->len);
-             }
-diff --git a/dma-helpers.c b/dma-helpers.c
-index d3871dc61e..e8a26e81e1 100644
---- a/dma-helpers.c
-+++ b/dma-helpers.c
-@@ -28,8 +28,8 @@ int dma_memory_set(AddressSpace *as, dma_addr_t addr, uint8_t c, dma_addr_t len)
-     memset(fillbuf, c, FILLBUF_SIZE);
-     while (len > 0) {
-         l = len < FILLBUF_SIZE ? len : FILLBUF_SIZE;
--        error |= address_space_rw(as, addr, MEMTXATTRS_UNSPECIFIED,
--                                  fillbuf, l, true);
-+        error |= address_space_write(as, addr, MEMTXATTRS_UNSPECIFIED,
-+                                     fillbuf, l);
-         len -= l;
-         addr += l;
+ // Use address_space_write instead of casting to non-const
+diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
+index 6bfe201779..e7fd5781ea 100644
+--- a/include/exec/cpu-common.h
++++ b/include/exec/cpu-common.h
+@@ -74,12 +74,12 @@ void cpu_physical_memory_rw(hwaddr addr, void *buf,
+ static inline void cpu_physical_memory_read(hwaddr addr,
+                                             void *buf, hwaddr len)
+ {
+-    cpu_physical_memory_rw(addr, buf, len, 0);
++    cpu_physical_memory_rw(addr, buf, len, false);
+ }
+ static inline void cpu_physical_memory_write(hwaddr addr,
+                                              const void *buf, hwaddr len)
+ {
+-    cpu_physical_memory_rw(addr, (void *)buf, len, 1);
++    cpu_physical_memory_rw(addr, (void *)buf, len, true);
+ }
+ void *cpu_physical_memory_map(hwaddr addr,
+                               hwaddr *plen,
+diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
+index c1071ecd46..ec6776680e 100644
+--- a/hw/display/exynos4210_fimd.c
++++ b/hw/display/exynos4210_fimd.c
+@@ -1164,7 +1164,8 @@ static void fimd_update_memory_section(Exynos4210fimdState *s, unsigned win)
+         goto error_return;
      }
-diff --git a/exec.c b/exec.c
-index 73c3bcfa40..b79919a4f7 100644
---- a/exec.c
-+++ b/exec.c
-@@ -3815,8 +3815,8 @@ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
-             address_space_write_rom(cpu->cpu_ases[asidx].as, phys_addr,
-                                     attrs, buf, l);
-         } else {
--            address_space_rw(cpu->cpu_ases[asidx].as, phys_addr, attrs, buf,
--                             l, false);
-+            address_space_read(cpu->cpu_ases[asidx].as, phys_addr, attrs, buf,
-+                               l);
+ 
+-    w->host_fb_addr = cpu_physical_memory_map(fb_start_addr, &fb_mapped_len, 0);
++    w->host_fb_addr = cpu_physical_memory_map(fb_start_addr, &fb_mapped_len,
++                                              false);
+     if (!w->host_fb_addr) {
+         DPRINT_ERROR("Failed to map window %u framebuffer\n", win);
+         goto error_return;
+diff --git a/hw/display/milkymist-tmu2.c b/hw/display/milkymist-tmu2.c
+index 199f1227e7..513c0d5bab 100644
+--- a/hw/display/milkymist-tmu2.c
++++ b/hw/display/milkymist-tmu2.c
+@@ -218,7 +218,7 @@ static void tmu2_start(MilkymistTMU2State *s)
+     glGenTextures(1, &texture);
+     glBindTexture(GL_TEXTURE_2D, texture);
+     fb_len = 2ULL * s->regs[R_TEXHRES] * s->regs[R_TEXVRES];
+-    fb = cpu_physical_memory_map(s->regs[R_TEXFBUF], &fb_len, 0);
++    fb = cpu_physical_memory_map(s->regs[R_TEXFBUF], &fb_len, false);
+     if (fb == NULL) {
+         glDeleteTextures(1, &texture);
+         glXMakeContextCurrent(s->dpy, None, None, NULL);
+@@ -262,7 +262,7 @@ static void tmu2_start(MilkymistTMU2State *s)
+ 
+     /* Read the QEMU dest. framebuffer into the OpenGL framebuffer */
+     fb_len = 2ULL * s->regs[R_DSTHRES] * s->regs[R_DSTVRES];
+-    fb = cpu_physical_memory_map(s->regs[R_DSTFBUF], &fb_len, 0);
++    fb = cpu_physical_memory_map(s->regs[R_DSTFBUF], &fb_len, false);
+     if (fb == NULL) {
+         glDeleteTextures(1, &texture);
+         glXMakeContextCurrent(s->dpy, None, None, NULL);
+@@ -281,7 +281,7 @@ static void tmu2_start(MilkymistTMU2State *s)
+ 
+     /* Map the texture */
+     mesh_len = MESH_MAXSIZE*MESH_MAXSIZE*sizeof(struct vertex);
+-    mesh = cpu_physical_memory_map(s->regs[R_VERTICESADDR], &mesh_len, 0);
++    mesh = cpu_physical_memory_map(s->regs[R_VERTICESADDR], &mesh_len, false);
+     if (mesh == NULL) {
+         glDeleteTextures(1, &texture);
+         glXMakeContextCurrent(s->dpy, None, None, NULL);
+@@ -298,7 +298,7 @@ static void tmu2_start(MilkymistTMU2State *s)
+ 
+     /* Write back the OpenGL framebuffer to the QEMU framebuffer */
+     fb_len = 2ULL * s->regs[R_DSTHRES] * s->regs[R_DSTVRES];
+-    fb = cpu_physical_memory_map(s->regs[R_DSTFBUF], &fb_len, 1);
++    fb = cpu_physical_memory_map(s->regs[R_DSTFBUF], &fb_len, true);
+     if (fb == NULL) {
+         glDeleteTextures(1, &texture);
+         glXMakeContextCurrent(s->dpy, None, None, NULL);
+diff --git a/hw/display/omap_dss.c b/hw/display/omap_dss.c
+index 637aae8d39..32dc0d6aa7 100644
+--- a/hw/display/omap_dss.c
++++ b/hw/display/omap_dss.c
+@@ -632,7 +632,7 @@ static void omap_rfbi_transfer_start(struct omap_dss_s *s)
+     len = s->rfbi.pixels * 2;
+ 
+     data_addr = s->dispc.l[0].addr[0];
+-    data = cpu_physical_memory_map(data_addr, &len, 0);
++    data = cpu_physical_memory_map(data_addr, &len, false);
+     if (data && len != s->rfbi.pixels * 2) {
+         cpu_physical_memory_unmap(data, len, 0, 0);
+         data = NULL;
+diff --git a/hw/display/ramfb.c b/hw/display/ramfb.c
+index cd94940223..7ba07c80f6 100644
+--- a/hw/display/ramfb.c
++++ b/hw/display/ramfb.c
+@@ -57,7 +57,7 @@ static DisplaySurface *ramfb_create_display_surface(int width, int height,
+     }
+ 
+     size = (hwaddr)linesize * height;
+-    data = cpu_physical_memory_map(addr, &size, 0);
++    data = cpu_physical_memory_map(addr, &size, false);
+     if (size != (hwaddr)linesize * height) {
+         cpu_physical_memory_unmap(data, size, 0, 0);
+         return NULL;
+diff --git a/hw/misc/pc-testdev.c b/hw/misc/pc-testdev.c
+index 0fb84ddc6b..8aa8e6549f 100644
+--- a/hw/misc/pc-testdev.c
++++ b/hw/misc/pc-testdev.c
+@@ -125,7 +125,7 @@ static void test_flush_page_write(void *opaque, hwaddr addr, uint64_t data,
+                             unsigned len)
+ {
+     hwaddr page = 4096;
+-    void *a = cpu_physical_memory_map(data & ~0xffful, &page, 0);
++    void *a = cpu_physical_memory_map(data & ~0xffful, &page, false);
+ 
+     /* We might not be able to get the full page, only mprotect what we actually
+        have mapped */
+diff --git a/hw/nvram/spapr_nvram.c b/hw/nvram/spapr_nvram.c
+index 877ddef7b9..15d08281d4 100644
+--- a/hw/nvram/spapr_nvram.c
++++ b/hw/nvram/spapr_nvram.c
+@@ -89,7 +89,7 @@ static void rtas_nvram_fetch(PowerPCCPU *cpu, SpaprMachineState *spapr,
+ 
+     assert(nvram->buf);
+ 
+-    membuf = cpu_physical_memory_map(buffer, &len, 1);
++    membuf = cpu_physical_memory_map(buffer, &len, true);
+     memcpy(membuf, nvram->buf + offset, len);
+     cpu_physical_memory_unmap(membuf, len, 1, len);
+ 
+@@ -127,7 +127,7 @@ static void rtas_nvram_store(PowerPCCPU *cpu, SpaprMachineState *spapr,
+         return;
+     }
+ 
+-    membuf = cpu_physical_memory_map(buffer, &len, 0);
++    membuf = cpu_physical_memory_map(buffer, &len, false);
+ 
+     alen = len;
+     if (nvram->blk) {
+diff --git a/hw/ppc/ppc440_uc.c b/hw/ppc/ppc440_uc.c
+index 1a6a8fac22..d5ea962249 100644
+--- a/hw/ppc/ppc440_uc.c
++++ b/hw/ppc/ppc440_uc.c
+@@ -909,8 +909,10 @@ static void dcr_write_dma(void *opaque, int dcrn, uint32_t val)
+ 
+                     sidx = didx = 0;
+                     width = 1 << ((val & DMA0_CR_PW) >> 25);
+-                    rptr = cpu_physical_memory_map(dma->ch[chnl].sa, &rlen, 0);
+-                    wptr = cpu_physical_memory_map(dma->ch[chnl].da, &wlen, 1);
++                    rptr = cpu_physical_memory_map(dma->ch[chnl].sa, &rlen,
++                                                   false);
++                    wptr = cpu_physical_memory_map(dma->ch[chnl].da, &wlen,
++                                                   true);
+                     if (rptr && wptr) {
+                         if (!(val & DMA0_CR_DEC) &&
+                             val & DMA0_CR_SAI && val & DMA0_CR_DAI) {
+diff --git a/hw/ppc/spapr_hcall.c b/hw/ppc/spapr_hcall.c
+index b8bb66b5c0..caf55ab044 100644
+--- a/hw/ppc/spapr_hcall.c
++++ b/hw/ppc/spapr_hcall.c
+@@ -832,7 +832,7 @@ static target_ulong h_page_init(PowerPCCPU *cpu, SpaprMachineState *spapr,
+     if (!is_ram_address(spapr, dst) || (dst & ~TARGET_PAGE_MASK) != 0) {
+         return H_PARAMETER;
+     }
+-    pdst = cpu_physical_memory_map(dst, &len, 1);
++    pdst = cpu_physical_memory_map(dst, &len, true);
+     if (!pdst || len != TARGET_PAGE_SIZE) {
+         return H_PARAMETER;
+     }
+@@ -843,7 +843,7 @@ static target_ulong h_page_init(PowerPCCPU *cpu, SpaprMachineState *spapr,
+             ret = H_PARAMETER;
+             goto unmap_out;
          }
-         len -= l;
-         buf += l;
-diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
-index 683abbe53f..1c1b142293 100644
---- a/hw/dma/xlnx-zdma.c
-+++ b/hw/dma/xlnx-zdma.c
-@@ -311,8 +311,7 @@ static bool zdma_load_descriptor(XlnxZDMA *s, uint64_t addr, void *buf)
-         return false;
+-        psrc = cpu_physical_memory_map(src, &len, 0);
++        psrc = cpu_physical_memory_map(src, &len, false);
+         if (!psrc || len != TARGET_PAGE_SIZE) {
+             ret = H_PARAMETER;
+             goto unmap_out;
+diff --git a/hw/s390x/ipl.c b/hw/s390x/ipl.c
+index 7773499d7f..0817874b48 100644
+--- a/hw/s390x/ipl.c
++++ b/hw/s390x/ipl.c
+@@ -626,7 +626,7 @@ static void s390_ipl_prepare_qipl(S390CPU *cpu)
+     uint8_t *addr;
+     uint64_t len = 4096;
+ 
+-    addr = cpu_physical_memory_map(cpu->env.psa, &len, 1);
++    addr = cpu_physical_memory_map(cpu->env.psa, &len, true);
+     if (!addr || len < QIPL_ADDRESS + sizeof(QemuIplParameters)) {
+         error_report("Cannot set QEMU IPL parameters");
+         return;
+diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
+index 7c6a2b3c63..ed8be124da 100644
+--- a/hw/s390x/s390-pci-bus.c
++++ b/hw/s390x/s390-pci-bus.c
+@@ -641,7 +641,7 @@ static uint8_t set_ind_atomic(uint64_t ind_loc, uint8_t to_be_set)
+     hwaddr len = 1;
+     uint8_t *ind_addr;
+ 
+-    ind_addr = cpu_physical_memory_map(ind_loc, &len, 1);
++    ind_addr = cpu_physical_memory_map(ind_loc, &len, true);
+     if (!ind_addr) {
+         s390_pci_generate_error_event(ERR_EVENT_AIRERR, 0, 0, 0, 0);
+         return -1;
+diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
+index 13f57e7b67..50cf95b781 100644
+--- a/hw/s390x/virtio-ccw.c
++++ b/hw/s390x/virtio-ccw.c
+@@ -790,7 +790,7 @@ static uint8_t virtio_set_ind_atomic(SubchDev *sch, uint64_t ind_loc,
+     hwaddr len = 1;
+     uint8_t *ind_addr;
+ 
+-    ind_addr = cpu_physical_memory_map(ind_loc, &len, 1);
++    ind_addr = cpu_physical_memory_map(ind_loc, &len, true);
+     if (!ind_addr) {
+         error_report("%s(%x.%x.%04x): unable to access indicator",
+                      __func__, sch->cssid, sch->ssid, sch->schid);
+diff --git a/hw/xen/xen_pt_graphics.c b/hw/xen/xen_pt_graphics.c
+index b69732729b..b11e4e0546 100644
+--- a/hw/xen/xen_pt_graphics.c
++++ b/hw/xen/xen_pt_graphics.c
+@@ -222,7 +222,7 @@ void xen_pt_setup_vga(XenPCIPassthroughState *s, XenHostPCIDevice *dev,
      }
  
--    address_space_rw(s->dma_as, addr, s->attr,
--                     buf, sizeof(XlnxZDMADescr), false);
-+    address_space_read(s->dma_as, addr, s->attr, buf, sizeof(XlnxZDMADescr));
-     return true;
+     /* Currently we fixed this address as a primary for legacy BIOS. */
+-    cpu_physical_memory_rw(0xc0000, bios, bios_size, 1);
++    cpu_physical_memory_rw(0xc0000, bios, bios_size, true);
  }
  
-@@ -364,7 +363,7 @@ static uint64_t zdma_update_descr_addr(XlnxZDMA *s, bool type,
-     } else {
-         addr = zdma_get_regaddr64(s, basereg);
-         addr += sizeof(s->dsc_dst);
--        address_space_rw(s->dma_as, addr, s->attr, &next, 8, false);
-+        address_space_read(s->dma_as, addr, s->attr, &next, 8);
-         zdma_put_regaddr64(s, basereg, next);
-     }
-     return next;
-@@ -416,8 +415,7 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
-             }
-         }
- 
--        address_space_rw(s->dma_as, s->dsc_dst.addr, s->attr, buf, dlen,
--                         true);
-+        address_space_write(s->dma_as, s->dsc_dst.addr, s->attr, buf, dlen);
-         if (burst_type == AXI_BURST_INCR) {
-             s->dsc_dst.addr += dlen;
-         }
-@@ -493,8 +491,7 @@ static void zdma_process_descr(XlnxZDMA *s)
-                 len = s->cfg.bus_width / 8;
-             }
-         } else {
--            address_space_rw(s->dma_as, src_addr, s->attr, s->buf, len,
--                             false);
-+            address_space_read(s->dma_as, src_addr, s->attr, s->buf, len);
-             if (burst_type == AXI_BURST_INCR) {
-                 src_addr += len;
-             }
-diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
-index b4363e3186..70451934ae 100644
---- a/hw/net/dp8393x.c
-+++ b/hw/net/dp8393x.c
-@@ -275,8 +275,8 @@ static void dp8393x_do_load_cam(dp8393xState *s)
- 
-     while (s->regs[SONIC_CDC] & 0x1f) {
-         /* Fill current entry */
--        address_space_rw(&s->as, dp8393x_cdp(s),
--                         MEMTXATTRS_UNSPECIFIED, s->data, size, false);
-+        address_space_read(&s->as, dp8393x_cdp(s),
-+                           MEMTXATTRS_UNSPECIFIED, s->data, size);
-         s->cam[index][0] = dp8393x_get(s, width, 1) & 0xff;
-         s->cam[index][1] = dp8393x_get(s, width, 1) >> 8;
-         s->cam[index][2] = dp8393x_get(s, width, 2) & 0xff;
-@@ -293,8 +293,8 @@ static void dp8393x_do_load_cam(dp8393xState *s)
-     }
- 
-     /* Read CAM enable */
--    address_space_rw(&s->as, dp8393x_cdp(s),
--                     MEMTXATTRS_UNSPECIFIED, s->data, size, false);
-+    address_space_read(&s->as, dp8393x_cdp(s),
-+                       MEMTXATTRS_UNSPECIFIED, s->data, size);
-     s->regs[SONIC_CE] = dp8393x_get(s, width, 0);
-     DPRINTF("load cam done. cam enable mask 0x%04x\n", s->regs[SONIC_CE]);
- 
-@@ -311,8 +311,8 @@ static void dp8393x_do_read_rra(dp8393xState *s)
-     /* Read memory */
-     width = (s->regs[SONIC_DCR] & SONIC_DCR_DW) ? 2 : 1;
-     size = sizeof(uint16_t) * 4 * width;
--    address_space_rw(&s->as, dp8393x_rrp(s),
--                     MEMTXATTRS_UNSPECIFIED, s->data, size, false);
-+    address_space_read(&s->as, dp8393x_rrp(s),
-+                       MEMTXATTRS_UNSPECIFIED, s->data, size);
- 
-     /* Update SONIC registers */
-     s->regs[SONIC_CRBA0] = dp8393x_get(s, width, 0);
-@@ -426,8 +426,8 @@ static void dp8393x_do_transmit_packets(dp8393xState *s)
-         size = sizeof(uint16_t) * 6 * width;
-         s->regs[SONIC_TTDA] = s->regs[SONIC_CTDA];
-         DPRINTF("Transmit packet at %08x\n", dp8393x_ttda(s));
--        address_space_rw(&s->as, dp8393x_ttda(s) + sizeof(uint16_t) * width,
--                         MEMTXATTRS_UNSPECIFIED, s->data, size, false);
-+        address_space_read(&s->as, dp8393x_ttda(s) + sizeof(uint16_t) * width,
-+                           MEMTXATTRS_UNSPECIFIED, s->data, size);
-         tx_len = 0;
- 
-         /* Update registers */
-@@ -451,18 +451,19 @@ static void dp8393x_do_transmit_packets(dp8393xState *s)
-             if (tx_len + len > sizeof(s->tx_buffer)) {
-                 len = sizeof(s->tx_buffer) - tx_len;
-             }
--            address_space_rw(&s->as, dp8393x_tsa(s),
--                             MEMTXATTRS_UNSPECIFIED,
--                             &s->tx_buffer[tx_len], len, false);
-+            address_space_read(&s->as, dp8393x_tsa(s), MEMTXATTRS_UNSPECIFIED,
-+                               &s->tx_buffer[tx_len], len);
-             tx_len += len;
- 
-             i++;
-             if (i != s->regs[SONIC_TFC]) {
-                 /* Read next fragment details */
-                 size = sizeof(uint16_t) * 3 * width;
--                address_space_rw(&s->as,
--                    dp8393x_ttda(s) + sizeof(uint16_t) * (4 + 3 * i) * width,
--                                 MEMTXATTRS_UNSPECIFIED, s->data, size, false);
-+                address_space_read(&s->as,
-+                                   dp8393x_ttda(s)
-+                                   + sizeof(uint16_t) * width * (4 + 3 * i),
-+                                   MEMTXATTRS_UNSPECIFIED, s->data,
-+                                   size);
-                 s->regs[SONIC_TSA0] = dp8393x_get(s, width, 0);
-                 s->regs[SONIC_TSA1] = dp8393x_get(s, width, 1);
-                 s->regs[SONIC_TFS] = dp8393x_get(s, width, 2);
-@@ -495,18 +496,18 @@ static void dp8393x_do_transmit_packets(dp8393xState *s)
-         dp8393x_put(s, width, 0,
-                     s->regs[SONIC_TCR] & 0x0fff); /* status */
-         size = sizeof(uint16_t) * width;
--        address_space_rw(&s->as,
--                         dp8393x_ttda(s),
--                         MEMTXATTRS_UNSPECIFIED, s->data, size, true);
-+        address_space_write(&s->as, dp8393x_ttda(s),
-+                            MEMTXATTRS_UNSPECIFIED, s->data, size);
- 
-         if (!(s->regs[SONIC_CR] & SONIC_CR_HTX)) {
-             /* Read footer of packet */
-             size = sizeof(uint16_t) * width;
--            address_space_rw(&s->as,
--                             dp8393x_ttda(s) +
--                             sizeof(uint16_t) *
--                             (4 + 3 * s->regs[SONIC_TFC]) * width,
--                             MEMTXATTRS_UNSPECIFIED, s->data, size, false);
-+            address_space_read(&s->as,
-+                               dp8393x_ttda(s)
-+                               + sizeof(uint16_t) * width
-+                                 * (4 + 3 * s->regs[SONIC_TFC]),
-+                               MEMTXATTRS_UNSPECIFIED, s->data,
-+                               size);
-             s->regs[SONIC_CTDA] = dp8393x_get(s, width, 0) & ~0x1;
-             if (dp8393x_get(s, width, 0) & 0x1) {
-                 /* EOL detected */
-@@ -768,8 +769,8 @@ static ssize_t dp8393x_receive(NetClientState *nc, const uint8_t * buf,
-         /* Are we still in resource exhaustion? */
-         size = sizeof(uint16_t) * 1 * width;
-         address = dp8393x_crda(s) + sizeof(uint16_t) * 5 * width;
--        address_space_rw(&s->as, address, MEMTXATTRS_UNSPECIFIED,
--                         s->data, size, false);
-+        address_space_read(&s->as, address, MEMTXATTRS_UNSPECIFIED,
-+                           s->data, size);
-         if (dp8393x_get(s, width, 0) & 0x1) {
-             /* Still EOL ; stop reception */
-             return -1;
-@@ -788,10 +789,11 @@ static ssize_t dp8393x_receive(NetClientState *nc, const uint8_t * buf,
-     /* Put packet into RBA */
-     DPRINTF("Receive packet at %08x\n", dp8393x_crba(s));
-     address = dp8393x_crba(s);
--    address_space_write(&s->as, address, MEMTXATTRS_UNSPECIFIED, buf, rx_len);
-+    address_space_write(&s->as, address, MEMTXATTRS_UNSPECIFIED,
-+                        buf, rx_len);
-     address += rx_len;
--    address_space_rw(&s->as, address,
--                     MEMTXATTRS_UNSPECIFIED, &checksum, 4, true);
-+    address_space_write(&s->as, address, MEMTXATTRS_UNSPECIFIED,
-+                        &checksum, 4);
-     rx_len += 4;
-     s->regs[SONIC_CRBA1] = address >> 16;
-     s->regs[SONIC_CRBA0] = address & 0xffff;
-@@ -819,13 +821,15 @@ static ssize_t dp8393x_receive(NetClientState *nc, const uint8_t * buf,
-     dp8393x_put(s, width, 3, s->regs[SONIC_TRBA1]); /* pkt_ptr1 */
-     dp8393x_put(s, width, 4, s->regs[SONIC_RSC]); /* seq_no */
-     size = sizeof(uint16_t) * 5 * width;
--    address_space_rw(&s->as, dp8393x_crda(s),
--                     MEMTXATTRS_UNSPECIFIED, s->data, size, true);
-+    address_space_write(&s->as, dp8393x_crda(s),
-+                        MEMTXATTRS_UNSPECIFIED,
-+                        s->data, size);
- 
-     /* Move to next descriptor */
-     size = sizeof(uint16_t) * width;
--    address_space_rw(&s->as, dp8393x_crda(s) + sizeof(uint16_t) * 5 * width,
--                     MEMTXATTRS_UNSPECIFIED, s->data, size, false);
-+    address_space_read(&s->as,
-+                       dp8393x_crda(s) + sizeof(uint16_t) * 5 * width,
-+                       MEMTXATTRS_UNSPECIFIED, s->data, size);
-     s->regs[SONIC_LLFA] = dp8393x_get(s, width, 0);
-     if (s->regs[SONIC_LLFA] & 0x1) {
-         /* EOL detected */
-@@ -838,8 +842,8 @@ static ssize_t dp8393x_receive(NetClientState *nc, const uint8_t * buf,
-             offset += sizeof(uint16_t);
-         }
-         s->data[0] = 0;
--        address_space_rw(&s->as, offset, MEMTXATTRS_UNSPECIFIED,
--                         s->data, sizeof(uint16_t), true);
-+        address_space_write(&s->as, offset, MEMTXATTRS_UNSPECIFIED,
-+                            s->data, sizeof(uint16_t));
-         s->regs[SONIC_CRDA] = s->regs[SONIC_LLFA];
-         s->regs[SONIC_ISR] |= SONIC_ISR_PKTRX;
-         s->regs[SONIC_RSC] = (s->regs[SONIC_RSC] & 0xff00) | (((s->regs[SONIC_RSC] & 0x00ff) + 1) & 0x00ff);
-diff --git a/hw/net/i82596.c b/hw/net/i82596.c
-index 11537f72d1..fe9f2390a9 100644
---- a/hw/net/i82596.c
-+++ b/hw/net/i82596.c
-@@ -148,8 +148,8 @@ static void i82596_transmit(I82596State *s, uint32_t addr)
- 
-         if (s->nic && len) {
-             assert(len <= sizeof(s->tx_buffer));
--            address_space_rw(&address_space_memory, tba,
--                             MEMTXATTRS_UNSPECIFIED, s->tx_buffer, len, false);
-+            address_space_read(&address_space_memory, tba,
-+                               MEMTXATTRS_UNSPECIFIED, s->tx_buffer, len);
-             DBG(PRINT_PKTHDR("Send", &s->tx_buffer));
-             DBG(printf("Sending %d bytes\n", len));
-             qemu_send_packet(qemu_get_queue(s->nic), s->tx_buffer, len);
-@@ -172,8 +172,8 @@ static void set_individual_address(I82596State *s, uint32_t addr)
- 
-     nc = qemu_get_queue(s->nic);
-     m = s->conf.macaddr.a;
--    address_space_rw(&address_space_memory, addr + 8,
--                     MEMTXATTRS_UNSPECIFIED, m, ETH_ALEN, false);
-+    address_space_read(&address_space_memory, addr + 8,
-+                       MEMTXATTRS_UNSPECIFIED, m, ETH_ALEN);
-     qemu_format_nic_info_str(nc, m);
-     trace_i82596_new_mac(nc->info_str);
- }
-@@ -190,9 +190,8 @@ static void set_multicast_list(I82596State *s, uint32_t addr)
-     }
-     for (i = 0; i < mc_count; i++) {
-         uint8_t multicast_addr[ETH_ALEN];
--        address_space_rw(&address_space_memory,
--            addr + i * ETH_ALEN, MEMTXATTRS_UNSPECIFIED,
--                         multicast_addr, ETH_ALEN, false);
-+        address_space_read(&address_space_memory, addr + i * ETH_ALEN,
-+                           MEMTXATTRS_UNSPECIFIED, multicast_addr, ETH_ALEN);
-         DBG(printf("Add multicast entry " MAC_FMT "\n",
-                     MAC_ARG(multicast_addr)));
-         unsigned mcast_idx = (net_crc32(multicast_addr, ETH_ALEN) &
-@@ -260,9 +259,8 @@ static void command_loop(I82596State *s)
-             byte_cnt = MAX(byte_cnt, 4);
-             byte_cnt = MIN(byte_cnt, sizeof(s->config));
-             /* copy byte_cnt max. */
--            address_space_rw(&address_space_memory, s->cmd_p + 8,
--                             MEMTXATTRS_UNSPECIFIED, s->config, byte_cnt,
--                             false);
-+            address_space_read(&address_space_memory, s->cmd_p + 8,
-+                               MEMTXATTRS_UNSPECIFIED, s->config, byte_cnt);
-             /* config byte according to page 35ff */
-             s->config[2] &= 0x82; /* mask valid bits */
-             s->config[2] |= 0x40;
-@@ -647,8 +645,8 @@ ssize_t i82596_receive(NetClientState *nc, const uint8_t *buf, size_t sz)
-             buf += num;
-             len -= num;
-             if (len == 0) { /* copy crc */
--                address_space_rw(&address_space_memory, rba - 4,
--                                 MEMTXATTRS_UNSPECIFIED, crc_ptr, 4, true);
-+                address_space_write(&address_space_memory, rba - 4,
-+                                    MEMTXATTRS_UNSPECIFIED, crc_ptr, 4);
-             }
- 
-             num |= 0x4000; /* set F BIT */
-diff --git a/hw/net/lasi_i82596.c b/hw/net/lasi_i82596.c
-index 8bff419378..52637a562d 100644
---- a/hw/net/lasi_i82596.c
-+++ b/hw/net/lasi_i82596.c
-@@ -55,8 +55,9 @@ static void lasi_82596_mem_write(void *opaque, hwaddr addr,
-          * Provided for SeaBIOS only. Write MAC of Network card to addr @val.
-          * Needed for the PDC_LAN_STATION_ID_READ PDC call.
+ uint32_t igd_read_opregion(XenPCIPassthroughState *s)
+diff --git a/target/i386/hax-all.c b/target/i386/hax-all.c
+index a9cc51e6ce..38936d7af6 100644
+--- a/target/i386/hax-all.c
++++ b/target/i386/hax-all.c
+@@ -376,8 +376,8 @@ static int hax_handle_fastmmio(CPUArchState *env, struct hax_fastmmio *hft)
+          *  hft->direction == 2: gpa ==> gpa2
           */
--        address_space_rw(&address_space_memory, val, MEMTXATTRS_UNSPECIFIED,
--                         d->state.conf.macaddr.a, ETH_ALEN, true);
-+        address_space_write(&address_space_memory, val,
-+                            MEMTXATTRS_UNSPECIFIED, d->state.conf.macaddr.a,
-+                            ETH_ALEN);
-         break;
-     }
- }
-diff --git a/hw/ppc/pnv_lpc.c b/hw/ppc/pnv_lpc.c
-index 5989d723c5..f150deca34 100644
---- a/hw/ppc/pnv_lpc.c
-+++ b/hw/ppc/pnv_lpc.c
-@@ -238,16 +238,16 @@ static bool opb_read(PnvLpcController *lpc, uint32_t addr, uint8_t *data,
-                      int sz)
- {
-     /* XXX Handle access size limits and FW read caching here */
--    return !address_space_rw(&lpc->opb_as, addr, MEMTXATTRS_UNSPECIFIED,
--                             data, sz, false);
-+    return !address_space_read(&lpc->opb_as, addr, MEMTXATTRS_UNSPECIFIED,
-+                               data, sz);
- }
- 
- static bool opb_write(PnvLpcController *lpc, uint32_t addr, uint8_t *data,
-                       int sz)
- {
-     /* XXX Handle access size limits here */
--    return !address_space_rw(&lpc->opb_as, addr, MEMTXATTRS_UNSPECIFIED,
--                             data, sz, true);
-+    return !address_space_write(&lpc->opb_as, addr, MEMTXATTRS_UNSPECIFIED,
-+                                data, sz);
- }
- 
- #define ECCB_CTL_READ           PPC_BIT(15)
-diff --git a/hw/s390x/css.c b/hw/s390x/css.c
-index f27f8c45a5..5d8e08667e 100644
---- a/hw/s390x/css.c
-+++ b/hw/s390x/css.c
-@@ -874,18 +874,18 @@ static inline int ida_read_next_idaw(CcwDataStream *cds)
-         if (idaw_addr & 0x07 || !cds_ccw_addrs_ok(idaw_addr, 0, ccw_fmt1)) {
-             return -EINVAL; /* channel program check */
-         }
--        ret = address_space_rw(&address_space_memory, idaw_addr,
--                               MEMTXATTRS_UNSPECIFIED, &idaw.fmt2,
--                               sizeof(idaw.fmt2), false);
-+        ret = address_space_read(&address_space_memory, idaw_addr,
-+                                 MEMTXATTRS_UNSPECIFIED, &idaw.fmt2,
-+                                 sizeof(idaw.fmt2));
-         cds->cda = be64_to_cpu(idaw.fmt2);
-     } else {
-         idaw_addr = cds->cda_orig + sizeof(idaw.fmt1) * cds->at_idaw;
-         if (idaw_addr & 0x03 || !cds_ccw_addrs_ok(idaw_addr, 0, ccw_fmt1)) {
-             return -EINVAL; /* channel program check */
-         }
--        ret = address_space_rw(&address_space_memory, idaw_addr,
--                               MEMTXATTRS_UNSPECIFIED, &idaw.fmt1,
--                               sizeof(idaw.fmt1), false);
-+        ret = address_space_read(&address_space_memory, idaw_addr,
-+                                 MEMTXATTRS_UNSPECIFIED, &idaw.fmt1,
-+                                 sizeof(idaw.fmt1));
-         cds->cda = be64_to_cpu(idaw.fmt1);
-         if (cds->cda & 0x80000000) {
-             return -EINVAL; /* channel program check */
-diff --git a/qtest.c b/qtest.c
-index 65e33b80e3..dcb57498ad 100644
---- a/qtest.c
-+++ b/qtest.c
-@@ -429,23 +429,23 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
- 
-         if (words[0][5] == 'b') {
-             uint8_t data = value;
--            address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                             &data, 1, true);
-+            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+                                &data, 1);
-         } else if (words[0][5] == 'w') {
-             uint16_t data = value;
-             tswap16s(&data);
--            address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                             &data, 2, true);
-+            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+                                &data, 2);
-         } else if (words[0][5] == 'l') {
-             uint32_t data = value;
-             tswap32s(&data);
--            address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                             &data, 4, true);
-+            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+                                &data, 4);
-         } else if (words[0][5] == 'q') {
-             uint64_t data = value;
-             tswap64s(&data);
--            address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                             &data, 8, true);
-+            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+                                &data, 8);
-         }
-         qtest_send_prefix(chr);
-         qtest_send(chr, "OK\n");
-@@ -463,22 +463,22 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
- 
-         if (words[0][4] == 'b') {
-             uint8_t data;
--            address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                             &data, 1, false);
-+            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+                               &data, 1);
-             value = data;
-         } else if (words[0][4] == 'w') {
-             uint16_t data;
--            address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                             &data, 2, false);
-+            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+                               &data, 2);
-             value = tswap16(data);
-         } else if (words[0][4] == 'l') {
-             uint32_t data;
--            address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                             &data, 4, false);
-+            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+                               &data, 4);
-             value = tswap32(data);
-         } else if (words[0][4] == 'q') {
--            address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                             &value, 8, false);
-+            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+                               &value, 8);
-             tswap64s(&value);
-         }
-         qtest_send_prefix(chr);
-@@ -498,8 +498,8 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-         g_assert(len);
- 
-         data = g_malloc(len);
--        address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                         data, len, false);
-+        address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED, data,
-+                           len);
- 
-         enc = g_malloc(2 * len + 1);
-         for (i = 0; i < len; i++) {
-@@ -524,8 +524,8 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-         g_assert(ret == 0);
- 
-         data = g_malloc(len);
--        address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                         data, len, false);
-+        address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED, data,
-+                           len);
-         b64_data = g_base64_encode(data, len);
-         qtest_send_prefix(chr);
-         qtest_sendf(chr, "OK %s\n", b64_data);
-@@ -559,8 +559,8 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-                 data[i] = 0;
-             }
-         }
--        address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                         data, len, true);
-+        address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED, data,
-+                            len);
-         g_free(data);
- 
-         qtest_send_prefix(chr);
-@@ -582,8 +582,8 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-         if (len) {
-             data = g_malloc(len);
-             memset(data, pattern, len);
--            address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                             data, len, true);
-+            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
-+                                data, len);
-             g_free(data);
-         }
- 
-@@ -616,8 +616,8 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-             out_len = MIN(out_len, len);
-         }
- 
--        address_space_rw(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                         data, len, true);
-+        address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED, data,
-+                            len);
- 
-         qtest_send_prefix(chr);
-         qtest_send(chr, "OK\n");
-diff --git a/target/i386/hvf/x86_mmu.c b/target/i386/hvf/x86_mmu.c
-index 451dcc983a..65d4603dbf 100644
---- a/target/i386/hvf/x86_mmu.c
-+++ b/target/i386/hvf/x86_mmu.c
-@@ -88,8 +88,8 @@ static bool get_pt_entry(struct CPUState *cpu, struct gpt_translation *pt,
+         uint64_t value;
+-        cpu_physical_memory_rw(hft->gpa, &value, hft->size, 0);
+-        cpu_physical_memory_rw(hft->gpa2, &value, hft->size, 1);
++        cpu_physical_memory_rw(hft->gpa, &value, hft->size, false);
++        cpu_physical_memory_rw(hft->gpa2, &value, hft->size, true);
      }
  
-     index = gpt_entry(pt->gva, level, pae);
--    address_space_rw(&address_space_memory, gpa + index * pte_size(pae),
--                     MEMTXATTRS_UNSPECIFIED, &pte, pte_size(pae), false);
-+    address_space_read(&address_space_memory, gpa + index * pte_size(pae),
-+                       MEMTXATTRS_UNSPECIFIED, &pte, pte_size(pae));
+     return 0;
+diff --git a/target/s390x/excp_helper.c b/target/s390x/excp_helper.c
+index 1e9d6f20c1..3b58d10df3 100644
+--- a/target/s390x/excp_helper.c
++++ b/target/s390x/excp_helper.c
+@@ -393,7 +393,7 @@ static int mchk_store_vregs(CPUS390XState *env, uint64_t mcesao)
+     MchkExtSaveArea *sa;
+     int i;
  
-     pt->pte[level - 1] = pte;
+-    sa = cpu_physical_memory_map(mcesao, &len, 1);
++    sa = cpu_physical_memory_map(mcesao, &len, true);
+     if (!sa) {
+         return -EFAULT;
+     }
+diff --git a/target/s390x/helper.c b/target/s390x/helper.c
+index a3a49164e4..b810ad431e 100644
+--- a/target/s390x/helper.c
++++ b/target/s390x/helper.c
+@@ -151,7 +151,7 @@ LowCore *cpu_map_lowcore(CPUS390XState *env)
+     LowCore *lowcore;
+     hwaddr len = sizeof(LowCore);
  
-@@ -238,8 +238,8 @@ void vmx_write_mem(struct CPUState *cpu, target_ulong gva, void *data, int bytes
-         if (!mmu_gva_to_gpa(cpu, gva, &gpa)) {
-             VM_PANIC_EX("%s: mmu_gva_to_gpa %llx failed\n", __func__, gva);
-         } else {
--            address_space_rw(&address_space_memory, gpa,
--                             MEMTXATTRS_UNSPECIFIED, data, copy, true);
-+            address_space_write(&address_space_memory, gpa,
-+                                MEMTXATTRS_UNSPECIFIED, data, copy);
-         }
+-    lowcore = cpu_physical_memory_map(env->psa, &len, 1);
++    lowcore = cpu_physical_memory_map(env->psa, &len, true);
  
-         bytes -= copy;
-@@ -259,8 +259,8 @@ void vmx_read_mem(struct CPUState *cpu, void *data, target_ulong gva, int bytes)
-         if (!mmu_gva_to_gpa(cpu, gva, &gpa)) {
-             VM_PANIC_EX("%s: mmu_gva_to_gpa %llx failed\n", __func__, gva);
-         }
--        address_space_rw(&address_space_memory, gpa, MEMTXATTRS_UNSPECIFIED,
--                         data, copy, false);
-+        address_space_read(&address_space_memory, gpa, MEMTXATTRS_UNSPECIFIED,
-+                           data, copy);
+     if (len < sizeof(LowCore)) {
+         cpu_abort(env_cpu(env), "Could not map lowcore\n");
+@@ -246,7 +246,7 @@ int s390_store_status(S390CPU *cpu, hwaddr addr, bool store_arch)
+     hwaddr len = sizeof(*sa);
+     int i;
  
-         bytes -= copy;
-         gva += copy;
+-    sa = cpu_physical_memory_map(addr, &len, 1);
++    sa = cpu_physical_memory_map(addr, &len, true);
+     if (!sa) {
+         return -EFAULT;
+     }
+@@ -298,7 +298,7 @@ int s390_store_adtl_status(S390CPU *cpu, hwaddr addr, hwaddr len)
+     hwaddr save = len;
+     int i;
+ 
+-    sa = cpu_physical_memory_map(addr, &save, 1);
++    sa = cpu_physical_memory_map(addr, &save, true);
+     if (!sa) {
+         return -EFAULT;
+     }
 -- 
 2.21.1

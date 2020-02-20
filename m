@@ -1,256 +1,237 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp1133303wri;
-        Thu, 31 Oct 2019 06:07:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxro4do0KWrggRTfzFt8DbhfjSmmXcId3PfBPrT7U1yMjhSWkTiq2yujzkh5qyEy6EKQHAm
-X-Received: by 2002:a17:906:76c9:: with SMTP id q9mr3846848ejn.53.1572527259757;
-        Thu, 31 Oct 2019 06:07:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572527259; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp814306lfg;
+        Thu, 20 Feb 2020 09:31:10 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxIhPhEADUet9l0rOW9dfcTXPhjqouYGw5+6iIHwE6t6CVnfag8t9rn/d2RUFqUJdOLNGDM
+X-Received: by 2002:a05:6214:907:: with SMTP id dj7mr26108231qvb.245.1582219870474;
+        Thu, 20 Feb 2020 09:31:10 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1582219870; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Oa+1dU90sRK5yjKvi4JvYtgAUiaPP2YwJLKQwyh1qEL4aWJb65WGoGdHaAitcKFrRD
-         FhXWn34tpbTaVSImLMOqoqgFxOg3nx85x7Cl6hMwBhkPwYvOGC8DyK54UaM+a3m/eLRW
-         /LyQcb2NhTxeFidZg1AioD9PCfPxysByvJOE05tWlwYSsFP3MOvhUKNQ8r8fNG0E1Wob
-         rHwlAghd4pnjxUnKrXmVmrP/qeQtxuN3DdwoSk1R4+TOzGCoYqZ5jq3Xv2NRtnI2g6nh
-         V1qp+g6f4+FypZrLOmQq1pSCkZmbkSno4W2aDIPHL1ZXG2EFawUaaTZVJSFlNdWAx7iU
-         SeUw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:in-reply-to
-         :mime-version:user-agent:date:message-id:from:cc:references:to
-         :subject;
-        bh=oNxOVeqJU/U12p8vtYMu71CUmHkWbWF/LcutKE8Ldzw=;
-        b=UbbFi0KO165HH0x3txMKyK/1DbbvzL8ZFVSwkhFYjzWgJamkwTjK4fJaiA09DHBOtT
-         IVjf1mJJWqrKE9mp/dLn00nmU8AkWlXzd/xZuPrWy7fFN9UT3gOb8KzkGICHaah/YrwR
-         DZFEtSiRiZSdbEjf8LdT2kojdjvpqmA8k4X1s9ruTz6pwIo8cUtkNy4zsWBILR2y6zm9
-         MoGla2vrKiiaRtg4XxLaqpXclPYe7+46Xs8upEdUKONJfHHIzwl8leDrJjrIAY2sOIwy
-         5VIlCw4zkB0HtKIaQ/HT+8EHdU6AFhRcm1RaL/mQScFtG5aK5CDXbVxvK0bB+BCIMZ0e
-         w3kA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
-Return-Path: <linux-kernel-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id h58si4363737eda.18.2019.10.31.06.07.39;
-        Thu, 31 Oct 2019 06:07:39 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+        b=oiAuqbBUoQVrw99vhWHcw8t+xTvNMncFdG+0mkSynkR33LzzA6D3v78MhS4kFabE1U
+         sjc7PLioTJcYz34+kkbwqhhOnFlHyxlD86MN1lQO2GyzZPUH4BbCjfhig79wi4hv88Ab
+         5r34J87c9WTgJjl7kajSq65rM9xvufJhbyhqDgGlKmIMWeoCW7/P7EAWfNuP05VT9iZ9
+         QkuxJGvLIUYWmwC+j/lY9Ijatibya1lVvnzarvjeCORxtilHvrGOPQ93DBJWSxcoKgrq
+         Bsze5hoEbUqEb/WGyI5QM/b6olrH/k6uqPCliejSY4PfdjL1nPcYkO0v5LEK488qzLbG
+         9qKQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:msip_labels:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature;
+        bh=/H+XiFxtVKVi6mcA3j5F6siX42P6ZkUhLbMWPyWe8Lo=;
+        b=XnSFnAPSu1p2jJTjlzjf6cRPPUiP2PwKTjkLLMRyC0f0khDQK/VbJCwAFs4KA4rjaO
+         /8Gq6RnUfp/SFJikrsiuxkz0cEmyvFPPufWV4w4Z7ko5L2FF5aSi5GXwHF+METU5sO/u
+         mpkHS6Lj2JKzVHcTL9hl/7mj0c6R5hyE7brHXeUNLdWwoPVCu5YpbyO80ZMoJEnvqjX9
+         b3F5hWK/D7ITVrBuk9JiYGgyFh9RnBJCTnZv+7FkmObhjLs3tVgk9TYv8ozS38YFkq02
+         A7tsmK7xnj6qnYQNSU5oQV1oAwELW05fWDBT3c+6r3IIB0r9pkcZzS3UWcIVkuUBEn4m
+         P3LQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@microsoft.com header.s=selector2 header.b=SLy5T073;
+       arc=pass (i=1 spf=pass spfdomain=microsoft.com dkim=pass dkdomain=microsoft.com dmarc=pass fromdomain=microsoft.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=microsoft.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f5si66618qtm.52.2020.02.20.09.31.10
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 20 Feb 2020 09:31:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726910AbfJaNHi (ORCPT <rfc822;lee.jones@linaro.org>
-        + 26 others); Thu, 31 Oct 2019 09:07:38 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:5240 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726462AbfJaNHi (ORCPT <rfc822;linux-kernel@vger.kernel.org>);
-        Thu, 31 Oct 2019 09:07:38 -0400
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 1D02563FB0F6D69357FD;
-        Thu, 31 Oct 2019 21:07:35 +0800 (CST)
-Received: from [127.0.0.1] (10.133.216.73) by DGGEMS409-HUB.china.huawei.com
- (10.3.19.209) with Microsoft SMTP Server id 14.3.439.0; Thu, 31 Oct 2019
- 21:07:24 +0800
-Subject: Re: [RFC PATCH 1/2] kvm/arm: add capability to forward hypercall to
- user space
-To:     James Morse <james.morse@arm.com>
-References: <1569338454-26202-1-git-send-email-guoheyi@huawei.com>
- <1569338454-26202-2-git-send-email-guoheyi@huawei.com>
- <e097fb69-1e68-4082-d310-e7666e30b5d6@arm.com>
- <d62b84ac-1a7e-de05-a1c1-c52dfb463462@huawei.com>
- <22aa23e0-cd4e-3692-ee94-e110ace49adb@arm.com>
-CC:     <linux-arm-kernel@lists.infradead.org>,
-        <linux-kernel@vger.kernel.org>, <kvm@vger.kernel.org>,
-        <qemu-arm@nongnu.org>, <wanghaibin.wang@huawei.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Dave Martin <Dave.Martin@arm.com>,
-        Marc Zyngier <marc.zyngier@arm.com>,
-        Mark Rutland <mark.rutland@arm.com>,
-        Julien Thierry <julien.thierry.kdev@gmail.com>,
-        Suzuki K Poulose <suzuki.poulose@arm.com>,
-        Russell King <linux@armlinux.org.uk>,
-        "Catalin Marinas" <catalin.marinas@arm.com>,
-        Will Deacon <will@kernel.org>, <kvmarm@lists.cs.columbia.edu>
-From:   Guoheyi <guoheyi@huawei.com>
-Message-ID: <4af47d1c-40cc-8440-d834-d721e1c0a758@huawei.com>
-Date:   Thu, 31 Oct 2019 21:07:22 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.1
+       dkim=pass header.i=@microsoft.com header.s=selector2 header.b=SLy5T073;
+       arc=pass (i=1 spf=pass spfdomain=microsoft.com dkim=pass dkdomain=microsoft.com dmarc=pass fromdomain=microsoft.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=microsoft.com
+Received: from localhost ([::1]:46850 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j4pfJ-00017M-QK
+	for alex.bennee@linaro.org; Thu, 20 Feb 2020 12:31:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41150)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <juterry@microsoft.com>) id 1j4pef-00016u-MW
+ for qemu-devel@nongnu.org; Thu, 20 Feb 2020 12:30:31 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <juterry@microsoft.com>) id 1j4peb-0007L6-Qr
+ for qemu-devel@nongnu.org; Thu, 20 Feb 2020 12:30:28 -0500
+Received: from mail-dm6nam11on2134.outbound.protection.outlook.com
+ ([40.107.223.134]:60001 helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <juterry@microsoft.com>)
+ id 1j4peb-0007KQ-Eo; Thu, 20 Feb 2020 12:30:25 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=H/o0efGE2qA8sZn5UwfSrqfsqva7u1H60DJJH9uL28fmGBb52H+30tT/62bi/u3UyhWZfdTLGAJYedKaj2YQYYXo7M8fkbGwAtOrV5dUoJZkRiGBsfUUUY2FKrwBRaGfhuTx9il8ncnNMh5SFG85kyZ7SLTmJRAWhO4PheRN6trzkhBoL74EBFYJy8XuV+hk15ns29Ndrymwh5iwkTaB5EXu/O/7hG1SXjuENaKTdxp8Cir7kRotPrX1yENJ3mnOAOh8NAmR1djYTdOey0QjQOqIhyawWZq08lejGdqdpjH4X83gRHcobB79h1Sxg1zK0sBiuzHfQJhGCmNJITtnbQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=/H+XiFxtVKVi6mcA3j5F6siX42P6ZkUhLbMWPyWe8Lo=;
+ b=kcDFsiaJh9M2QXSEkkV7H3rfks2scOuEkyGLicLR3UhngazTAOwBWgSDUF+UDnzgo0SpesBG8Sjtsxqw9LsMHBMGnGPOL5ltYGvTcYnXLuSm7MohJB6jPqmMWjwyI19oMql1HAcFLmY7yYfo8rb8zwG79QT/WDX4ub3PEeh8PQMLq2pSmNWVHBoTTM9TBHD+6NEch9vHGMb38AFT63efxjlezxBbCSpAH7qNIoBYVwYkx4ZiU8x5bqHIItm1wb0YHKVm0v++75/9/lecibp6Z2J9t3jNlZOfd4zk2aF7oYZToWcG4maZnOkCEslOaxdNQ7XjjmNpkR6xWYKRJRXF1w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microsoft.com; dmarc=pass action=none
+ header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=/H+XiFxtVKVi6mcA3j5F6siX42P6ZkUhLbMWPyWe8Lo=;
+ b=SLy5T073yXYsUBT6pBAAW4d7kVvbOZcepYJmYydDdL9Vl6Bho3O6IwBjDT3+tA9WRUKDFZnI/P1lD5rYtI5osxYCHbRSPmIztR3HUFu/+24oRd5tXq34HlY3gUAgAuGHbCkDkIurEVdJHvW0K97GIlPnmA4GCFpb1CYIkbM0bn0=
+Received: from BN8PR21MB1297.namprd21.prod.outlook.com (20.179.74.207) by
+ BN8PR21MB1265.namprd21.prod.outlook.com (20.179.74.86) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2772.4; Thu, 20 Feb 2020 17:30:22 +0000
+Received: from BN8PR21MB1297.namprd21.prod.outlook.com
+ ([fe80::b03c:f27:72c7:8b9b]) by BN8PR21MB1297.namprd21.prod.outlook.com
+ ([fe80::b03c:f27:72c7:8b9b%7]) with mapi id 15.20.2772.004; Thu, 20 Feb 2020
+ 17:30:22 +0000
+From: "Justin Terry (SF)" <juterry@microsoft.com>
+To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>, Sunil
+ Muthuswamy <sunilmut@microsoft.com>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Max Reitz
+ <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Thomas Huth
+ <thuth@redhat.com>, Fam Zheng <fam@euphon.net>, Eduardo Habkost
+ <ehabkost@redhat.com>, Alex Williamson <alex.williamson@redhat.com>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>, Richard Henderson <rth@twiddle.net>,
+ Julia Suvorova <jusual@redhat.com>, Thomas Huth <huth@tuxfamily.org>, "Edgar
+ E. Iglesias" <edgar.iglesias@gmail.com>, Aarushi Mehta
+ <mehta.aaru20@gmail.com>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>, Alistair
+ Francis <alistair@alistair23.me>, Gerd Hoffmann <kraxel@redhat.com>, Luc
+ Michel <luc.michel@greensocs.com>, Laurent Vivier <lvivier@redhat.com>, Juan
+ Quintela <quintela@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, Laurent
+ Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>, Yuval Shaia
+ <yuval.shaia.ml@gmail.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>, "qemu-block@nongnu.org"
+ <qemu-block@nongnu.org>
+Subject: RE: [EXTERNAL] Re: [PATCH RESEND 11/13] target/i386/whpx: Remove
+ superfluous semicolon
+Thread-Topic: [EXTERNAL] Re: [PATCH RESEND 11/13] target/i386/whpx: Remove
+ superfluous semicolon
+Thread-Index: AQHV5kJPYeMUg9xD2U6kjYYIlU3R0KgkWeyQ
+Date: Thu, 20 Feb 2020 17:30:22 +0000
+Message-ID: <BN8PR21MB12975CD3759819BAEC6D106DB6130@BN8PR21MB1297.namprd21.prod.outlook.com>
+References: <20200218094402.26625-1-philmd@redhat.com>
+ <20200218094402.26625-12-philmd@redhat.com> <20200218100029.GN3080@work-vm>
+In-Reply-To: <20200218100029.GN3080@work-vm>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Owner=juterry@microsoft.com;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2020-02-20T17:30:21.0165359Z;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Application=Microsoft Azure
+ Information Protection;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ActionId=d12cbcb7-1b50-4bb7-8b77-955dd54347ba;
+ MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Extended_MSFT_Method=Automatic
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=juterry@microsoft.com; 
+x-originating-ip: [67.185.128.72]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: b6bb9039-7b5a-4f8a-778b-08d7b62a90a6
+x-ms-traffictypediagnostic: BN8PR21MB1265:|BN8PR21MB1265:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BN8PR21MB12651F137C4B758D71FC6FEFB6130@BN8PR21MB1265.namprd21.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:139;
+x-forefront-prvs: 031996B7EF
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(4636009)(346002)(39860400002)(366004)(136003)(396003)(376002)(199004)(189003)(110136005)(7696005)(478600001)(316002)(9686003)(55016002)(33656002)(2906002)(8936002)(81166006)(81156014)(10290500003)(8676002)(4326008)(66476007)(52536014)(5660300002)(66446008)(6636002)(86362001)(8990500004)(7416002)(186003)(26005)(71200400001)(6506007)(53546011)(64756008)(54906003)(66946007)(66556008)(76116006);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BN8PR21MB1265;
+ H:BN8PR21MB1297.namprd21.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: microsoft.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Gmt7BNfX05hzuLHGF4proO8Uva3fJMN7cHv6mpsZbCx0F50BkShvHMch5p/M1bYfcDOlYueo1/iQxghcHHsedrk+nnWK71x8oEQd+SRlN9GiYY5qfcDWvDCYvOw+eqp11WFM2m/nPKpv6rBBUtDIbACi6s92qrLUXWuQMQ5dyy/2tTX2eCOalGlmb04eWJgIWDcLGPrAbTfcewgBQzxjbmXqTfA9hfjQsNqY9qmp3sZPSmBm5NS4AloXk597+jCVw5U0eSKNO3x2QRhR1nsBLRptD338X/8HY6akJXbbbHtUJLc2Bn0RWrm0f5MLvFmJreRsaRJBWagQjGWALDoBlbVTw0lfNc3HGWd5KHWiSY/zThtYi9XrOZqqaP8IUx5dU4GJ2h5t8QH1++g+YEJiH5JATm8Rr/Osvb51EXVVb2Wm/VM8qDvcVfJhnk9/Oxjm
+x-ms-exchange-antispam-messagedata: p/uvQ37W3KAJwJWaReveOlTxhBhB0nYuj1EzpPR7myk5pg8skiRr3kD3Pp+B9xCoNqq/449dgQEeWmARsBoU4JgRDLSdu/1HHrIlqZgbUvW9OTjIUyDQJM3wPsstVNNBeirzf3GTAS+xo925liHADw==
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-In-Reply-To: <22aa23e0-cd4e-3692-ee94-e110ace49adb@arm.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.133.216.73]
-X-CFilter-Loop: Reflected
-Sender: linux-kernel-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <linux-kernel.vger.kernel.org>
-X-Mailing-List: linux-kernel@vger.kernel.org
-X-TUID: 1MoqdZfSxKlX
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b6bb9039-7b5a-4f8a-778b-08d7b62a90a6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Feb 2020 17:30:22.5466 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: acmujX9qQ5u1h6ziFBi9N9cwVAnVzQ4lur+3wox6qyZ1rPBa+bs8KMrYwGYzzX6plaUMNhUMY5cJAMN4XdZi8w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN8PR21MB1265
+X-detected-operating-system: by eggs.gnu.org: Windows NT kernel [generic]
+ [fuzzy]
+X-Received-From: 40.107.223.134
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Gul0if5bQV2l
 
-Sorry for the late, for it took some time for me to think it over...
++Sunil Muthuswamy <sunilmut@microsoft.com>
 
+LGTM. Thanks!
 
-On 2019/10/22 0:42, James Morse wrote:
-> Hi Heyi,
->
-> On 09/10/2019 13:33, Guoheyi wrote:
->> On 2019/10/2 1:19, James Morse wrote:
->>> On 24/09/2019 16:20, Heyi Guo wrote:
->>>> As more SMC/HVC usages emerge on arm64 platforms, like SDEI, it makes
->>>> sense for kvm to have the capability of forwarding such calls to user
->>>> space for further emulation.
->>> (what do you mean by further? Doesn't user-space have to do all of it?)
->> For kvm will always handle hvc/smc guest exit for the first step, even if it is only a
->> simple forwarding, I called the user-space processing as "further emulation".
->>
->>>> We reuse the existing term "hypercall" for SMC/HVC, as well as the
->>>> hypercall structure in kvm_run to exchange arguments and return
->>>> values. The definition on arm64 is as below:
->>>>
->>>> exit_reason: KVM_EXIT_HYPERCALL
->>>>
->>>> Input:
->>>>     nr: the immediate value of SMC/HVC calls; not really used today.
->>>>     args[6]: x0..x5 (This is not fully conform with SMCCC which requires
->>>>              x6 as argument as well, but use space can use GET_ONE_REG
->>>>              ioctl for such rare case).
->>> If this structure isn't right for us, we could define a different one for arm/arm64.
->>> (we did this for kvm_vcpu_events)
->> Do you mean that we can move the hypercall struct definition to arch specific kvm_host.h?
->> For it is in the common kvm_run structure, we'll need to change every kvm supported
->> architectures, including x86, mips, powerpc, s390. Is it acceptable?
-> Ah! Sorry, I'd missed this was in the kvm_run structure. The get-events example doesn't
-> apply here as that was a separate ioctl().
->
->
->>>> Return:
->>>>     args[0..3]: x0..x3 as defined in SMCCC. We need to extract
->>>>                 args[0..3] and write them to x0..x3 when hypercall exit
->>>>                 returns.
->>> Are we saying that KVM_EXIT_HYPERCALL expects to be used with SMC-CC?
->>> (if so, we should state that).
->> Yes I followed SMC-CC when writing this.
->>> I'm not certain we should tie this to SMC-CC.
->>>
->>> If we don't tie it to SMC-CC this selection of in/out registers looks odd, there is
->>> nothing about HVC/SMC that uses these registers, its just the SMC convention.
->> Maybe we don't need to tie it to SMC-CC, and simply load all values in args[6] to GP
->> registers...
->> And then there is either no strong reason to extend hypercall structure for ARM.
->
->>>> Flag hypercall_forward is added to turn on/off hypercall forwarding
->>>> and the default is false. Another flag hypercall_excl_psci is to
->>>> exclude PSCI from forwarding for backward compatible, and it only
->>>> makes sense to check its value when hypercall_forward is enabled.
->>> Calling out PSCI like this is something we shouldn't do. There will be, (are!) other
->>> SMC-CC calls that the kernel provides emulation for, we can't easily add to this list.
->> Yes; I didn't figure out good way to keep compatibility and future extension...
-> I think the best trick is not to interpret the SMC/HVC calls from the guest. The kernel
-> obviously does, but the API shouldn't force us to.
->
->
->>> I think the best way to avoid this, is to say the hypercall mechanism forwards 'unhandled
->>> SMC/HVC' to user-space. Which things the kernel chooses to handle can change.
->>>
->>> We need a way for user-space to know which SMC/HVC calls the kernel will handle, and will
->>> not forward. A suggestion is to add a co-processor that lists these by #imm and r0/x0
->>> value. User-space can then query any call to find out if it would be exported if the guest
->>> made that call. Something like kvm_arm_get_fw_reg().
->> Do you mean we add only one co-processor to list all SMC/HVC calls kernel will handle?
-> Yes, some way of listing them.
-> e.g. user-space wants to handle HVC's with #imm==0 and w0==0x84000000, this co-processor
-> would list that as one of the things that the kernel will handle.
->
-> If we can find a way of describing 64bit register values that would save them from being a
-> problem in the future, but it may be too complicated to describe a 64bit register space
-> and 16 bits of immediate.
->
-> I think its okay for this co-processor to be SMC-CC specific, as its describing what the
-> kernel supports. The KVM-api in contrast should be flexible enough to describe anything
-> any guest may wish to do.
->
->
->> So
->> the reg size should be large enough to hold the list, each entry of which contains a #imm
->> and r0/x0 pair? Is the reg size fixed by definition or it can be queried by user-space? If
->> it is fixed, what's the size should we choose?
-> (fixed/not-fixed - its a trade-off for complexity now, but no-one may ever use the full
-> flexibility).
->
-> I think we can assume the kernel will only offer things that look like SMC-CC to the
-> guest. If the guest does something outside this space, its up to user-space to handle. (so
-> the KVM-API must support non-SMC-CC stuff). I think we should define a co-processor for
-> SMC/HVC where the #imm is 0. This then gives us 32bits of space we can map directly onto
-> the w0 values.
-Shall we setup a new class of co-processor and use the following id bit 
-patterns (assuming the type index to be 0x0016)?
+Reviewed-by: Justin Terry (VM) <juterry@microsoft.com>
 
-0x6030 <high 16 bits of SMC-CC function ID> 0016 <low 16 bits of SMC-CC 
-function ID>
-
-And the value of the co-processor returned to user space can be 0 (KVM 
-will not handle) or 1 (KVM will handle)?
-
->
->
->> Does it make sense to extend the entry to hold the function ID base and limit, so that it
->> can describe the whole range for each function group, like PSCI, SDEI, etc?
-> This may be over-complex, user-space would always need to enumerate the whole thing. I
-> think commonly user-space would only want to know about one entry: For cases where we know
-> the structure, user-space can just query the '_VERSION' call. If that isn't supported,
-> user-space can assume the rest of that space is unimplemented. (the kernel shouldn't
-> provide an incomplete emulation of these APIs)
->
->
->>> For 32bit, are we going to export SMC/HVC calls that failed their condition-code checks?
->> I'm not familiar with 32bit, either we don't have 32bit platforms to test the code. So my
->> preference is not to make many changes to 32bit...
-> I'm not that familiar with it either ... You don't have anything with aarch32 support at
-> EL1? I don't think we should add an API that only works with Aarch64 guests.
-We have some D05 which is based on cortex A72 and should support aarch32 
-guest. I can take a try.
-
-Our object is to support aarch32 guest on an aarch64 hypervisor, but not 
-on an aarch32 hypervisor, isn't it?
-
->
-> For 32bit, we either need to expose these condition-code bits, and say user-space should
-> work out if it needs to do anything. Or, handle this in the kernel, in which case we don't
-> need to expose the condition-code bits, but we should document that the kernel will do the
-> check.
->
->
-> Nested-virt may cause some 'fun' here. If user-space starts an aarch64 guest at EL2, it
-> may start its own aarch32 guest at EL1. If the aarch32 guest makes an SMC, who handles it?
-> If user-space's aarch64 guest didn't set the traps for SMC, I think this should be
-> delivered to user-space, which may be surprised by the request from an aarch32 guest.
->
-> (its also possible nested-virt has me confused, it is pretty mind bending!)
->
->
->>> The hypercall structure should probably indicate whether the SMC/HVC call came from
->>> aarch32 or aarch64, as the behaviour may be different.
->> How about to use the longmode field in hypercall structure? Standard service calls will
->> indicate this in function ID, but we may need to know before parsing the function ID,
->> isn't it?
-> Sure, as its a __u32, we could dump the guest PSTATE from SPSR in there.
->
->
-> I think the last thing is 'ret', and whether we should provide a way of passing 'x0' back
-> to the guest, or expect user-space to use set-one-reg. Most of the time user-space will
-> only want to set x0, and doing this would let us initialise it to all-ones in the kernel,
-> which means the guest gets the unknown-smc value back if user-space ignores the exit.
-The current RFC is not expecting user-space to use set-one-reg to set GP 
-registers for returning, to reduce ioctl() invocations for better 
-performance.
-I didn't use "ret" for guest to hold the returned x0, but still used 
-"args[6]" to exchange x0~x5. I agree to set quick path for x0 only, and 
-kvm doesn't bother to set the other 5 GP registers.
-
-Thanks a lot,
-
-Heyi
-
->
->
-> Thanks,
->
-> James
->
-> .
->
+> -----Original Message-----
+> From: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> Sent: Tuesday, February 18, 2020 2:00 AM
+> To: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+> Cc: qemu-devel@nongnu.org; Max Reitz <mreitz@redhat.com>; Kevin Wolf
+> <kwolf@redhat.com>; Thomas Huth <thuth@redhat.com>; Fam Zheng
+> <fam@euphon.net>; Eduardo Habkost <ehabkost@redhat.com>; Alex
+> Williamson <alex.williamson@redhat.com>; Marcel Apfelbaum
+> <marcel.apfelbaum@gmail.com>; Richard Henderson <rth@twiddle.net>;
+> Julia Suvorova <jusual@redhat.com>; Thomas Huth <huth@tuxfamily.org>;
+> Edgar E. Iglesias <edgar.iglesias@gmail.com>; Aarushi Mehta
+> <mehta.aaru20@gmail.com>; qemu-trivial@nongnu.org; Stefan Hajnoczi
+> <stefanha@redhat.com>; Alistair Francis <alistair@alistair23.me>; Gerd
+> Hoffmann <kraxel@redhat.com>; Luc Michel <luc.michel@greensocs.com>;
+> Laurent Vivier <lvivier@redhat.com>; Juan Quintela
+> <quintela@redhat.com>; Michael Tokarev <mjt@tls.msk.ru>; Laurent Vivier
+> <laurent@vivier.eu>; Paolo Bonzini <pbonzini@redhat.com>; Yuval Shaia
+> <yuval.shaia.ml@gmail.com>; qemu-arm@nongnu.org; Peter Maydell
+> <peter.maydell@linaro.org>; qemu-block@nongnu.org; Justin Terry (SF)
+> <juterry@microsoft.com>
+> Subject: [EXTERNAL] Re: [PATCH RESEND 11/13] target/i386/whpx: Remove
+> superfluous semicolon
+>=20
+> * Philippe Mathieu-Daud=E9 (philmd@redhat.com) wrote:
+> > Fixes: 812d49f2a3e
+> > Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+>=20
+> Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+>=20
+> > ---
+> > Cc: Justin Terry (VM) <juterry@microsoft.com>
+> > ---
+> >  target/i386/whpx-all.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/target/i386/whpx-all.c b/target/i386/whpx-all.c index
+> > 3ed2aa1892..35601b8176 100644
+> > --- a/target/i386/whpx-all.c
+> > +++ b/target/i386/whpx-all.c
+> > @@ -511,7 +511,7 @@ static void whpx_get_registers(CPUState *cpu)
+> >      /* WHvX64RegisterPat - Skipped */
+> >
+> >      assert(whpx_register_names[idx] =3D=3D WHvX64RegisterSysenterCs);
+> > -    env->sysenter_cs =3D vcxt.values[idx++].Reg64;;
+> > +    env->sysenter_cs =3D vcxt.values[idx++].Reg64;
+> >      assert(whpx_register_names[idx] =3D=3D WHvX64RegisterSysenterEip);
+> >      env->sysenter_eip =3D vcxt.values[idx++].Reg64;
+> >      assert(whpx_register_names[idx] =3D=3D WHvX64RegisterSysenterEsp);
+> > --
+> > 2.21.1
+> >
+> --
+> Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 

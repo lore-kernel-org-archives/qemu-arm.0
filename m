@@ -1,98 +1,98 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp654095lfg;
-        Thu, 20 Feb 2020 06:50:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzHxJheofFIUI6XctMi3n16PQ0z7O9Sb5zYE9V+AqP7rUEE3IjmRTk8ncToRd3BeFZDzQip
-X-Received: by 2002:ac8:741a:: with SMTP id p26mr26170323qtq.76.1582210254611;
-        Thu, 20 Feb 2020 06:50:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582210254; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp659858lfg;
+        Thu, 20 Feb 2020 06:56:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyvKcWVOKcAjn1UPJ2zSQ3NuVNtlZzXhZuCjiOAM3SsVh3tbaBffHjyjJoT3u+mcDDNl5ws
+X-Received: by 2002:a37:6351:: with SMTP id x78mr29107068qkb.298.1582210601202;
+        Thu, 20 Feb 2020 06:56:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582210601; cv=none;
         d=google.com; s=arc-20160816;
-        b=MoVYUEChFooLbUB0qrZzwNl+utq3rzafFMlTAAE/uxW6xooIK6AvnXQQKlFKK22tG8
-         /3eXzfQHOE/k9b4Fl1+2SgD1PnMm7ySyVCakZu93mW3H/0x1PYv/5oH/O0KEyMThUEsV
-         nrukfrWKAj9i2t3ppMU4M6qULs10rJo3sxLZIS1FUXIU9lrOxJnLO7zBaJHcu3yH2DP4
-         Zr5ZfBt5lzsXk93Bi2OcPAmc6VjcODvhPIkwoaxo1RtpiC4xRK3m/DnZVSwGO2zHDjGV
-         ZeAJACs+RIfeehO691DD6K4KUyAKKbNQu1oh/vUCwK597e0ong8F/EosYMqzMQ0Cc3jQ
-         SHUQ==
+        b=UXRIPxlF6BUJMYci+kR7rdLCA7myUBfM5PW5zUIdU7ZpHYJbvjC4pD7Z3ZOTmrgJJ/
+         KOs1UJm2W1V7FhA7jizO+XBwbnn9ZEAJaBeF/Kah2haj6wanB3YVKnaEBvIHvLewBl99
+         4eUDgQYp2BAGWrKEJJsYT0MSYSKh0CNdeRYZK0s8wJ6iYKS3/YHcgX5kHtCYHWBokVca
+         s1w+uOhPrNC7TcwCQu7v6UEd2DYGq71XK0AilJHr9ngOB2Cw9F40FLXg1UT0KXKxJ4RX
+         UsFflsH0g9Zu+U+3mSqVmjrYJl8rGROKc+Auule+W3iI/oCb20odbPiy21fvKTSscIdl
+         ZZjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=afYl0DVEoEhQ/EBMwBMpftX3lzsz91ArZ4Bz9hqJxoM=;
-        b=tNTpvTXOMbrwVGctNxZJ6K5kRsRl5YMnYIpCastbsWEXw6iaZzYy7OKEfvl4MzxEB9
-         GjOSxANUXfP7UIwarZOmCLHG9zhwabSreENKXIp3vCKCusGOfE3vxz3Te5s3lIvXySEw
-         ULn0PHafmyPa18jnkoFX5uHrhkoHAit+30SVBbGtOWqsTlB3xIW+pZhsOEjdmKc8HwJk
-         LAAJJ3bRCF4KBbSesLCWDx2CbUyio0pe4dnVG57FKGK65/EOhOvIDigX6A0DjAIQAB2Z
-         rbrleHIKSheu9XcWoHEETdeTFvDU9eQFxR/M7LMZWRLf0L0ht4Nr8sY1fSXdj6S+F2h2
-         lv3A==
+        bh=6/qaW5FhSSy22a1eq657fqQZKhtniwywOQUUl7vYYwg=;
+        b=xZEHmS5NpM88ua15tC+myHdKEkygrT8XkHsHGmh61+xeSSVH8qUYFje5hCM6lzeBHr
+         mp/H1E6/CE3ZTdmMPfj7i8P2z4LirzUhJbfSbnufkTcczmgQyc/Y040htUhjs0BI5ZGQ
+         z9b1Sg8C2feD+KxTy7wjbJHfJ13xD0yRKU+WDPP9Fd72Zhe5+jJ/M16yyR668tTdhI5P
+         Hzih4Cxat2vW5bsha5hDzu2H6FdEYzkptUUUvZ9O21j16R6y6ASPJnpl65xhFXzQAMoJ
+         rl1CpvgPaMWw8qRTsyBzZz51RkfNgAWNk0HjQps6KqComZbasNls1PjAGWxaKadppyIm
+         R0Yw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XvT9C2r5;
+       dkim=fail header.i=@linaro.org header.s=google header.b="GbLpLed/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c11si1606795qte.105.2020.02.20.06.50.54
+        by mx.google.com with ESMTPS id y27si1645150qta.299.2020.02.20.06.56.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Feb 2020 06:50:54 -0800 (PST)
+        Thu, 20 Feb 2020 06:56:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XvT9C2r5;
+       dkim=fail header.i=@linaro.org header.s=google header.b="GbLpLed/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43640 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43758 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j4nAD-0002Wo-TK
-	for alex.bennee@linaro.org; Thu, 20 Feb 2020 09:50:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43986)
+	id 1j4nFo-0001Oc-EE
+	for alex.bennee@linaro.org; Thu, 20 Feb 2020 09:56:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44683)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j4n9l-0002TQ-3e
- for qemu-devel@nongnu.org; Thu, 20 Feb 2020 09:50:26 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j4nFC-0001Lt-Vu
+ for qemu-devel@nongnu.org; Thu, 20 Feb 2020 09:56:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j4n9j-0000zU-U5
- for qemu-devel@nongnu.org; Thu, 20 Feb 2020 09:50:24 -0500
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:45723)
+ (envelope-from <peter.maydell@linaro.org>) id 1j4nFB-0005NV-L7
+ for qemu-devel@nongnu.org; Thu, 20 Feb 2020 09:56:02 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:38313)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j4n9j-0000yv-NS
- for qemu-devel@nongnu.org; Thu, 20 Feb 2020 09:50:23 -0500
-Received: by mail-ot1-x341.google.com with SMTP id 59so3838878otp.12
- for <qemu-devel@nongnu.org>; Thu, 20 Feb 2020 06:50:23 -0800 (PST)
+ id 1j4nFB-0005Mr-Ej
+ for qemu-devel@nongnu.org; Thu, 20 Feb 2020 09:56:01 -0500
+Received: by mail-ot1-x343.google.com with SMTP id z9so3899280oth.5
+ for <qemu-devel@nongnu.org>; Thu, 20 Feb 2020 06:56:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=afYl0DVEoEhQ/EBMwBMpftX3lzsz91ArZ4Bz9hqJxoM=;
- b=XvT9C2r5f+zEmvR/bgZdkDRyZhwObYqZFMl/2N4K7JfLhbUm9R72p3VKo13fij+sma
- ++TsJOS9UnPtjKBEi5kWNs1phjZRM//LnaQx8gH6Z1GqvhatrlnncxL7kg1I9MewLRfc
- z6U6KYOOgF3FB5fHYyomtIIeMnEap42cnffRfvM0wbZgy/0Op5J8Znj0YDyirj8ymMdH
- HZIGoMeATLoAvDujTYULWAcjcKdl0m85rzMTqQvulgGDmaAEPDh1N3RH5MWMRbl2bt0l
- jtSMOzUus73QsJbkTLA9fPgWpmbrb/NHXb+/RKwTT/IxX8CEDjqXNdjDxvgoCqKR3Pjv
- 1o3w==
+ :cc; bh=6/qaW5FhSSy22a1eq657fqQZKhtniwywOQUUl7vYYwg=;
+ b=GbLpLed/sYr6s6grwE43khGlNq7oTqxVMP9PE9Y5vuNLvM4u2zBXZhUJApw3gk2kQC
+ 1BGjcrSYH6N6bazg5SWMGYeZxxCOzYl2g4wZr8x2Rp/TQvdsfBcGJyfpFl8A1DeQcRRq
+ ZWt27R9Ffxg5tH4vrJ9yCRGeDCMo9D3aBKaq3Z2GAaZBmEpXPvPvm5G++HZdi/xnuM5s
+ gNOTzCkjkiPfVGNrHJ5SP1pkCU91J1aD9zgze7Ptsm4dmBU7tliMk1cLM0Qfaa4CJZuL
+ oi1IvTK3pdLZ81imyFVhK+4SkxjS+v3zsv1bAX0z8CiKAT+o8IDB4TMWhByPkQCLAAkD
+ 1VBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=afYl0DVEoEhQ/EBMwBMpftX3lzsz91ArZ4Bz9hqJxoM=;
- b=fdGpZcUPaZFkzLhqs4mWGr7dvd5VsF+eiqsHNGzHL0b7Jd+b9NiD0nhpRHdjdicEFw
- SpTu5JOAfPwckTKQvbMMR6xVFNDv7htQZ4t2ZvCgCkgyMdbwW+lVE5zyiYBdFoJGO602
- WzOJZiZmXcSCeEbl4OLSXBDkANgyOqd6w3thoonqjf/BrEaTB1+55ewMwQu744XNzOo3
- VU0+EXkUr/NJYaQX4MddNDxQi4Z8qZUMMEPf1AV3OXRErKh3J6f2WBE6vrq0GBG9Smcs
- id8+OO4oC9fQLDbv+PYEBAxT40/X8J+t59mIq3FVqfA4WY1HBa46z7wH5wKckUQYnuZo
- U8Nw==
-X-Gm-Message-State: APjAAAX/Um/5modTQQ3fZQJDJl4QRwvuRJZBXfWRXVxM3CjQ2DHd89pE
- 7u+o2Mr/wy7f4hnVOsQZwODqif3mcjuWDoDO5YM+Vq2V
+ bh=6/qaW5FhSSy22a1eq657fqQZKhtniwywOQUUl7vYYwg=;
+ b=CHAJfr9xl8Ao+xLqrQUE+loc3N1AQfyYzNqO6zWjVTVZ4QSVmGH+tFLfqeBT+67H98
+ ev/A0RW3yLwS59/q/VpqeJZTBgZsV4oW8o6PTAJBrrrC2Zvqf6lLI8FMdP2UmnVtPeNQ
+ l8uZT9tlJ3MiOcBN90L0rKwJy1kyP0Yi/uuUbYEeR82A1ODJ0kVPrSbavf1fIsWEQJ+5
+ xFfXc6JesXXpo4D/X+gXqqXxQrfQheF3MBvsi58Ff1fckdY6aTdnBmRCGDAxpBj5+B2n
+ sEvZiYAhil3otstgziYbLaQUPelALSrP5+0QCFmuwJMXO1M95FJjQBTTXgZzAkRL2OFc
+ TPAQ==
+X-Gm-Message-State: APjAAAWNokG2fO7JR9wltiWNFcNjN936sGcvgMeaF+1xRgzHgpvjJfhv
+ D4L3ACWQVXiSeV430IAoLAlBCXL2rDIwyNKYRL8fuUIZ
 X-Received: by 2002:a05:6830:4a4:: with SMTP id
- l4mr24095274otd.91.1582210222568; 
- Thu, 20 Feb 2020 06:50:22 -0800 (PST)
+ l4mr24119120otd.91.1582210560070; 
+ Thu, 20 Feb 2020 06:56:00 -0800 (PST)
 MIME-Version: 1.0
-References: <20200217204812.9857-1-linux@roeck-us.net>
-In-Reply-To: <20200217204812.9857-1-linux@roeck-us.net>
+References: <20200216214232.4230-1-richard.henderson@linaro.org>
+In-Reply-To: <20200216214232.4230-1-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Feb 2020 14:50:11 +0000
-Message-ID: <CAFEAcA88XmvNkombS=3-vpYPbbKBoDdKzrrEDAU_0kmYHAkKSA@mail.gmail.com>
-Subject: Re: [PATCH v3 0/3] arm: allwinner: Wire up USB ports
-To: Guenter Roeck <linux@roeck-us.net>
+Date: Thu, 20 Feb 2020 14:55:49 +0000
+Message-ID: <CAFEAcA9DZjwazY4rVwpzWGF3ONAQBGyqNdMjBBczK0C1dB+kKg@mail.gmail.com>
+Subject: Re: [PATCH v2 0/4] target/arm vector improvements
+To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::341
+X-Received-From: 2607:f8b0:4864:20::343
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,35 +104,37 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Gerd Hoffmann <kraxel@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q3KenYIuWkC2
+X-TUID: qrftHnNCApZ/
 
-On Mon, 17 Feb 2020 at 20:48, Guenter Roeck <linux@roeck-us.net> wrote:
+On Sun, 16 Feb 2020 at 21:42, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> Instantiate EHCI and OHCI controllers on Allwinner A10.
+> Changes for v2:
 >
-> The first patch in the series moves the declaration of EHCISysBusState
-> from hcd-ohci.c to hcd-ohci.h. This lets us add the structure to
-> AwA10State. Similar, TYPE_SYSBUS_OHCI is moved to be able to use it
-> outside its driver.
+> * Rename function arguments as requested by ajb.
+> * Minor optimization in helper_gvec_pmul_b.
 >
-> The second patch introduces the ehci-sysbus property "companion-enable".
-> This lets us use object_property_set_bool() to enable companion mode.
+> Original blurb:
 >
-> The third patch instantiates EHCI and OHCI ports for Allwinner-A10
-> and marks the OHCI ports as companions of the respective EHCI ports.
+> The first patch has been seen before.
 >
-> Tested by attaching various high speed and full speed devices, and by
-> booting from USB drive.
+>   https://patchwork.ozlabs.org/patch/1115039/
 >
-> v3: Rebased to master
-> v2: Add summary
->     Rewrite to instantiate OHCI in companion mode; add patch 2/3
->     Merge EHCI and OHCI instantiation into a single patch
+> It had a bug and I didn't fix it right away and then forgot.
+> Fixed now; I had mixed up the operand ordering for aarch32.
 >
+> The next 3 are something that I noticed while doing other stuff.
+>
+> In particular, pmull is used heavily during https transfers.
+> While cloning a repository, the old code peaks at 27% of the
+> total runtime, as measured by perf top.  The new code does
+> not quite reach 3% repeating the same clone.
+>
+> In addition, the new helper functions are in the form that
+> will be required for the implementation of SVE2.
 
 
 

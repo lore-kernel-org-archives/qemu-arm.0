@@ -1,99 +1,94 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp381404lfg;
-        Thu, 20 Feb 2020 02:10:52 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx6EBDckTX874QrspstL9ovYA+Z5okr73r7aQnWJc1mwKl9USuUCk0t/hrJtckx6Z81CqVL
-X-Received: by 2002:ac8:3418:: with SMTP id u24mr25413260qtb.87.1582193451949;
-        Thu, 20 Feb 2020 02:10:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582193451; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp415789lfg;
+        Thu, 20 Feb 2020 02:52:30 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwDqZoxfqHnDrRaGsGzestBS83pPaVXzqz7pYvfjZ+m+bqLJDwLOurU27YIU7DKNqBXCMlI
+X-Received: by 2002:ac8:65ce:: with SMTP id t14mr25659246qto.72.1582195950575;
+        Thu, 20 Feb 2020 02:52:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582195950; cv=none;
         d=google.com; s=arc-20160816;
-        b=lgDv3pT1yEqKVxJdBsAiFrRGA1ZbcwAcbGOBEwficnM/EuF8cF6xApmes27zL6SWHy
-         ps3qR3XKRVhowovp60hHpyFVyIoZs7yYWX2OD9GpVZEIaiz8j18oVqL4NZ3M/OciLVd7
-         VUtsGYt9jXOz7oV3SYyYD9vsSgJqj51xvwtBVlfppVTvVkRAIiLz5yeR3BZHCXrEYBwh
-         ErYe5iobWcXBj3LxFqS6AZDfZw1yl1ZxPj+v3xx3mbs98SFFUrJyybXkg9mAzsYpwX47
-         NELMn5VCwt1UdKQC6MTkPr4fQMpd6MxgA9q3YcCgXzK2Gwo//j4g6sXzB8CB6ikWKAbO
-         0/Ag==
+        b=oVGNPDlNkwhJKjQOOmqzd5gLepASuc9LByVuchmF5AqgH/Z3PGHSNRM7rE6XkZT39K
+         +T6hYuseghAm4ySiKuy0J3gdECBZXYP4CetGdxRj+IfiMZjb7iTE0N1Wa2p5uyO8pXRR
+         gC9/WDKcnKZzPRY9AybE7cvFUuYlF824WwVPAqB8zehBmLVXQKgM6dpMzvIYTxqWXU5Q
+         /RtiaFfYvbYH+j6RhXA6teZytxP4kUKc1bzYEZmIv0dyi2/M+n0tym56UpEQ71lJSaB+
+         Ba7fDS+R0CTp6phoncBnb/9Tunua0Cc0OyupGoTkmuUP0utFhFkUckzFA+AsYQT0g0PF
+         zPXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=/e2aIq6+KTlWo5s9WlgNylEFifK+JmjI80oq7DNCZwA=;
-        b=vAMWnV/syKv6eXBO74GiqNBpFpsnbjp7+bmKu6JEYjL6qc4NFFNwvix7Gx8GQOL4yb
-         or0U5Fu6SU8nMGRXr9lPFwO2Yz2SziYLEa7/FVTUjIJlhaaKIIqdo/UsiBbBR2r6Ndbu
-         uNGw7Pw3nFz+QU1TsqsvTwR++qxRtAsabbbivmp3rOFBfipfZyXjknU4tIG2gS+mcR1i
-         t85/yvKZGVuO50Mr/dnkfL+dhr7jJHvB9GVkl3v9QLys/uIZUmm2dHSebfIIcoOfmgGQ
-         xKoaqUGqFOOaTm4lrGbezGp2IoWSIL4N4p7pAar2EvvJFf8nIIyzanaIGk43hqgtEBYq
-         xnPw==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:to:subject
+         :message-id:date:from:mime-version:dkim-signature;
+        bh=sD2MrT4Y0kJ7NpZP4csCjzyWqkj+6vChQeOlPqIN+II=;
+        b=ruJx29yoeqVnamiEf7db1bZBb5vyg9y+sz5Wx1WnGrDiFHXce9hP14TDd9l3bg+6OB
+         D6p4m1UjwfjAlr55JM9BA0xADVM/SGvhTVO1TsPSv7QpVXB0ZPYOsqXKqTv0OmGWsXNA
+         Kbe3Zo8sZ0qDYCzyyeqqVSD59EwMQdChQUgAn2QDuowEiYTk3XR8O4mAedU7UHn3cyXg
+         pSzAU9m/0R/rrhi6F/Cb+3X6yjnTZhffLC28mSova/gaoPkuDhUzxUIyUd5g1AwgeHeP
+         5rlEehPwXiDZQRRs3tQKro5ZGgBsscvQ1Myj8UrZjdyM7TW8tupqag4bQDabdG1iFKn9
+         7Xww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CCya6m+E;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="bQ/LBnam";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m124si1140794qke.371.2020.02.20.02.10.51
+        by mx.google.com with ESMTPS id j7si1232120qtd.283.2020.02.20.02.52.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Feb 2020 02:10:51 -0800 (PST)
+        Thu, 20 Feb 2020 02:52:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CCya6m+E;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="bQ/LBnam";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38922 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39748 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j4inD-00077F-CT
-	for alex.bennee@linaro.org; Thu, 20 Feb 2020 05:10:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58185)
+	id 1j4jRU-0002ll-Ka
+	for alex.bennee@linaro.org; Thu, 20 Feb 2020 05:52:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35881)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j4in1-00072E-Em
- for qemu-arm@nongnu.org; Thu, 20 Feb 2020 05:10:44 -0500
+ (envelope-from <kamalpr@gmail.com>) id 1j4jRO-0002lT-37
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2020 05:52:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j4in0-0006iC-18
- for qemu-arm@nongnu.org; Thu, 20 Feb 2020 05:10:39 -0500
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:40749)
+ (envelope-from <kamalpr@gmail.com>) id 1j4jRM-0006ZU-WE
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2020 05:52:21 -0500
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:34640)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j4imz-0006h8-RM
- for qemu-arm@nongnu.org; Thu, 20 Feb 2020 05:10:37 -0500
-Received: by mail-oi1-x244.google.com with SMTP id a142so26971717oii.7
- for <qemu-arm@nongnu.org>; Thu, 20 Feb 2020 02:10:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/e2aIq6+KTlWo5s9WlgNylEFifK+JmjI80oq7DNCZwA=;
- b=CCya6m+EB/JlQ2duDW9Z8Ifeu0ZdD06Ajs+gswUvUK9n9BLjP2453zpam2q+cNj8vp
- fFX1E65zttDreOXkXPkYWGNuRGgYDGTQ6eW2XVAryHf9EONBbr0N5/SNOF9KoT5K60px
- /Y5z63SbN3vCKr6u0uT2r+2M5PBm97gIhuQmysQr2jzXJ/c4RrujCDTHC4aCyNUpo6Xb
- NtE9LA8bOhAY2S5vejWCCPyYNRfrshAbkR8GMRFLa3l6PzK3KKNzZjk1lY3GfarHnqIk
- dczNLjmo5GqoCRY45i/Qjtaruy7K3L76CZOJX9cGU0CKQbsle5ud/95zkgSEZV6JUcVe
- YUzA==
+ (Exim 4.71) (envelope-from <kamalpr@gmail.com>) id 1j4jRM-0006YD-Oy
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2020 05:52:20 -0500
+Received: by mail-io1-xd41.google.com with SMTP id z193so4174279iof.1
+ for <qemu-arm@nongnu.org>; Thu, 20 Feb 2020 02:52:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=sD2MrT4Y0kJ7NpZP4csCjzyWqkj+6vChQeOlPqIN+II=;
+ b=bQ/LBnammtZUqmkNEbpTOvRN7OoBAUEo7mSipju5UNOed0Xj/1KOeB0CkRPUkr6mU4
+ a3tHIU6g0gSfZiDu0tZSLMfmrLIpFiPmYvZUYqABk1CVDDJJ+hUqkw4tsrXHChDu4yW+
+ tsq4VWMs5C9L2er0Wosg3zW4J6hFkTq/agiY6iWCtbYOa2Te2bgAZs8ThXS952EcGSdU
+ Usy6tcTxZ/vy6lhVObAnF8VVmnSNtAf7e3p2JATWJpedpoB+6eQfjzv0TpDLkeZXPKz6
+ nlKLufVCymKDrBEmwsAv9jr+G92qDgZcbuUaCIYUqUiDSKFgU2a7aZe7XvtnoKLT+RPw
+ StUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/e2aIq6+KTlWo5s9WlgNylEFifK+JmjI80oq7DNCZwA=;
- b=o3ZEQSJnY8JI1HNJ+jcs1shLAYq6MklgSVHg5E/TL/R8YwuvW29+38Nf7r0w36xxvj
- DTduJF45E37HZqyOS2yYyHz9OJvc4UkJ1LMygg3Q+rO+sm/tFGieeAAPphKoeEz6nltS
- 1TvD5Q59LcypFOU9jYNjIXwwr1xZt/RYMUugXcuhwPukft4Bh6Lq9p/RsXOpOk0hRKZj
- hY1kuCTmYbbhMXj7xscepENTCuPqzlW8S9ePuGND1+7uKKiJjdGfW2ngtkaWpucRoOT5
- Cv1ws2Zr5DU/BpLoOGI+obj1+cXq0U58UbGXbf8fTalKdpYVRgIg672jK65CDqaE+oFA
- S+vg==
-X-Gm-Message-State: APjAAAWpbv6HHlseENy2DOM5doOdrn7H1ZZdBDA4KPAIEQTP3J2X9ID4
- dVZEOklU0yLHCqwUUUX8s/cmtYpKgeUxfZoVCvjkyg==
-X-Received: by 2002:a05:6808:289:: with SMTP id
- z9mr1367097oic.48.1582193436880; 
- Thu, 20 Feb 2020 02:10:36 -0800 (PST)
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=sD2MrT4Y0kJ7NpZP4csCjzyWqkj+6vChQeOlPqIN+II=;
+ b=WDrgsIXN5Uus8l5EVDnvGsdrWhe59cihCCfYXyF7Fwq0I7fedK31oysRSmeDAnflcD
+ lhRPCnAMEWJg6DU9T7qKT6pIHlkY94QDdeEISm9gBAWm1fVc+3JEwOtfv5f6NJMW7gTW
+ ua/WOfqL/vIsvpgjTXfu9LrtuWkllDn+NZdSdVq4g0XoLdlWlU2ohpFlzcSLZe4e7V44
+ 7TsHy28kelwtLm2xCjFCouk1LdgdeNau3SIbjHZ6Jv3Ip4T8VI64k1sVXnC7WAAOdm7a
+ JT0P7ndDcF9l/u4btkTtROsuI9oNjtj0vLZ2gQr7tNOGin3emhH963HPabRVWDMZg9uK
+ KyLA==
+X-Gm-Message-State: APjAAAWLryrwFmykVyDCcwU8R5rfbhB1xlsaGUKcJ+a9BV9Les9RlACk
+ LeDYbu17HXA7LT2KEryGxJvsnwfqEg9g03NSW/l5aRDsyFvRpUc=
+X-Received: by 2002:a6b:fe0f:: with SMTP id x15mr22214732ioh.219.1582195939611; 
+ Thu, 20 Feb 2020 02:52:19 -0800 (PST)
 MIME-Version: 1.0
-References: <20200220060108.143668-1-gshan@redhat.com>
- <f3c8adba729d050ba2144cc9c834fe82@kernel.org>
-In-Reply-To: <f3c8adba729d050ba2144cc9c834fe82@kernel.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Feb 2020 10:10:25 +0000
-Message-ID: <CAFEAcA8inLO75XOcCO3bUiiJQyZT+nqmp1be+z6ZtQx2a=68+g@mail.gmail.com>
-Subject: Re: [PATCH] hw/char/pl011: Output characters using best-effort mode
-To: Marc Zyngier <maz@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
+From: "Kamal R. Prasad" <kamalpr@gmail.com>
+Date: Thu, 20 Feb 2020 16:22:08 +0530
+Message-ID: <CAK=yUG+jKnNYV=QiD_CHYhjKQOWky1Y2g9gGDbPnABH5hSwx-w@mail.gmail.com>
+Subject: load a freebsd derived kernel on Qemu-system-arm
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000f21746059effb2f9"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::244
+X-Received-From: 2607:f8b0:4864:20::d41
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,70 +100,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Gavin Shan <gshan@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Shan Gavin <shan.gavin@gmail.com>
+Reply-To: kamalp@acm.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jnRXHPNZlxMG
+X-TUID: bhzWnsdFjZ5n
 
-On Thu, 20 Feb 2020 at 09:10, Marc Zyngier <maz@kernel.org> wrote:
->
-> On 2020-02-20 06:01, Gavin Shan wrote:
-> > This fixes the issue by using newly added API
-> > qemu_chr_fe_try_write_all(),
-> > which provides another type of service (best-effort). It's different
-> > from
-> > qemu_chr_fe_write_all() as the data will be dropped if the backend has
-> > been running into so-called broken state or 50 attempts of
-> > transmissions.
-> > The broken state is cleared if the data is transmitted at once.
->
-> I don't think dropping the serial port output is an acceptable outcome.
+--000000000000f21746059effb2f9
+Content-Type: text/plain; charset="UTF-8"
 
-Agreed. The correct fix for this is the one cryptically described
-in the XXX comment this patch deletes:
+hello,
 
--        /* XXX this blocks entire thread. Rewrite to use
--         * qemu_chr_fe_write and background I/O callbacks */
+ when I try to load a freebsd kernel onto Qemu running on my Mac, I get
+this error:-
 
-The idea is that essentially we end up emulating the real
-hardware's transmit FIFO:
- * as data arrives from the guest we put it in the FIFO
- * we try to send the data with qemu_chr_fe_write(), which does
-   not block
- * if qemu_chr_fe_write() tells us it did not send all the data,
-   we use qemu_chr_fe_add_watch() to set up an I/O callback
-   which will get called when the output chardev has drained
-   enough that we can try again
- * we make sure all the guest visible registers and mechanisms
-   for tracking tx fifo level (status bits, interrupts, etc) are
-   correctly wired up
+# qemu-system-arm -machine versatileab -kernel ./kernel
 
-Then we don't lose data or block QEMU if the guest sends
-faster than the chardev backend can handle, assuming the
-guest is well-behaved -- just as with a real hardware slow
-serial port, the guest will fill the tx fifo and then either poll
-or wait for an interrupt telling it that the fifo has drained
-before it tries to send more data.
 
-There is an example of this in hw/char/cadence_uart.c
-(and an example of how it works for a UART with no tx
-fifo in hw/char-cmsdk-apb-uart.c, which is basically the
-same except the 'fifo' is just one byte.)
+qemu-system-arm: GLib: g_mapped_file_unref: assertion 'file != NULL' failed
 
-You will also find an awful lot of XXX comments like the
-above one in various UART models in hw/char, because
-converting an old-style simple blocking UART implementation
-to a non-blocking one is a bit fiddly and needs knowledge
-of the specifics of the UART behaviour.
 
-The other approach here would be that we could add
-options to relevant chardev backends so the user
-could say "if you couldn't connect to the tcp server I
-specified, throw away data rather than waiting", where
-we don't have suitable options already. If the user specifically
-tells us they're ok to throw away the serial data, then it's
-fine to throw away the serial data :-)
+Can someone tell me what I am missing? The code is built for arm but online
+linux, freebsd build does not generate a vmlinuz or ignited file. The
+target is a cortex -arm quad core board (from Broadcom).
+
 
 thanks
--- PMM
+
+--000000000000f21746059effb2f9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr">hello,<div><br></div><di=
+v>=C2=A0when I try to load a freebsd kernel onto Qemu running on my Mac, I =
+get this error:-</div><div><p style=3D"margin:0px;font-stretch:normal;font-=
+size:14px;line-height:normal;font-family:Menlo;color:rgb(0,0,0)"><span styl=
+e=3D"font-variant-ligatures:no-common-ligatures"># qemu-system-arm -machine=
+ versatileab -kernel ./kernel=C2=A0</span></p><p style=3D"margin:0px;font-s=
+tretch:normal;font-size:14px;line-height:normal;font-family:Menlo;color:rgb=
+(0,0,0)"><span style=3D"font-variant-ligatures:no-common-ligatures"><br></s=
+pan></p><p style=3D"margin:0px;font-stretch:normal;font-size:14px;line-heig=
+ht:normal;font-family:Menlo;color:rgb(0,0,0)"><span style=3D"font-variant-l=
+igatures:no-common-ligatures"></span></p><p style=3D"margin:0px;font-stretc=
+h:normal;font-size:14px;line-height:normal;font-family:Menlo;color:rgb(0,0,=
+0)"><span style=3D"font-variant-ligatures:no-common-ligatures">qemu-system-=
+arm: GLib: g_mapped_file_unref: assertion &#39;file !=3D NULL&#39; failed</=
+span></p><p style=3D"margin:0px;font-stretch:normal;font-size:14px;line-hei=
+ght:normal;font-family:Menlo;color:rgb(0,0,0)"><span style=3D"font-variant-=
+ligatures:no-common-ligatures"><br></span></p><p style=3D"margin:0px;font-s=
+tretch:normal;font-size:14px;line-height:normal;font-family:Menlo;color:rgb=
+(0,0,0)"><span style=3D"font-variant-ligatures:no-common-ligatures">Can som=
+eone tell me what I am missing? The code is built for arm but online linux,=
+ freebsd build does not generate a vmlinuz or ignited file. The target is a=
+ cortex -arm quad core board (from Broadcom).</span></p><p style=3D"margin:=
+0px;font-stretch:normal;font-size:14px;line-height:normal;font-family:Menlo=
+;color:rgb(0,0,0)"><span style=3D"font-variant-ligatures:no-common-ligature=
+s"><br></span></p><p style=3D"margin:0px;font-stretch:normal;font-size:14px=
+;line-height:normal;font-family:Menlo;color:rgb(0,0,0)"><span style=3D"font=
+-variant-ligatures:no-common-ligatures">thanks</span></p><p style=3D"margin=
+:0px;font-stretch:normal;font-size:14px;line-height:normal;font-family:Menl=
+o;color:rgb(0,0,0)"><span style=3D"font-variant-ligatures:no-common-ligatur=
+es"><br></span></p></div></div></div></div>
+
+--000000000000f21746059effb2f9--

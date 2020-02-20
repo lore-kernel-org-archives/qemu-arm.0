@@ -1,85 +1,85 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp543921lfg;
-        Thu, 20 Feb 2020 05:06:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwXIosqn7WAOTYQBWyvtCBwQ2Ay0iE2VDMAt9hfOe+/iO1AX2w6h+60XJ3Xm9dvLeAgbgJO
-X-Received: by 2002:aca:90f:: with SMTP id 15mr1917262oij.18.1582204014167;
-        Thu, 20 Feb 2020 05:06:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582204014; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp543965lfg;
+        Thu, 20 Feb 2020 05:06:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxs7T9y5HgYB3kAb2GTzEkoVbRaeSw6xeUnLZ7kdL4Gwgq16grzPHW+Sv6ofVi2MBn5gylk
+X-Received: by 2002:aca:4f8e:: with SMTP id d136mr1830170oib.61.1582204016427;
+        Thu, 20 Feb 2020 05:06:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582204016; cv=none;
         d=google.com; s=arc-20160816;
-        b=iH5d+YYsQskK20OarCMhC3lIRuy4jCx8JWleCqml+nVqiAeOPOySyQ0ab7/y0Wt4w5
-         qdTdVwXD2xfPtzLMBG0sObAxVrZQQNQ/KZCRTjrzXYm29dNLQ6BUF90agPChLncEiVtb
-         HlHbzHJZieLvRTEizfNoaERQoubbybYt/Jz4MiHuzVvGfGt58Glz1t+zRZ68MKmAAa6x
-         4q3xAHd2VcJthueG5BWWia9dHw3gH8e5kdaVqI9uRGVUQMHkJ/K1egITX4u6leywtj81
-         IEQXUe4H6SWe3ixlfrTtsua6uqBk+xIdS7x0Qe49LLE2GKJT77chOZYs3ys5J1nQddYc
-         fmpg==
+        b=mj6GO+YI0M46UGMq8XK2hsQDHvSbGNjqtR2dTJqHD0YYs4gkDDF1Pt0kcqfpurhyuG
+         FAYZC2esIUcSRmNXqvsdXTUsVNl5ps/iPGN93lT+V8kbgTL8eB8dGloWSsUP82FsOyJh
+         6OJRBx8rya2cGOWywHFHJDueIE/2cYX6nCXD9GIMmO5btZgd2QIqPvk/w3QgJN++x4mm
+         bdfsXz0climRjIGntqQtrpaVl3ikVWiwiKE2QoRB/MJL2u95G3Qislm6U+1U4YgxBG7e
+         Vv+BIrNjT3Lw7YTCUFPRLVvl+n7lGrIgCIKASiEXjQNZWH8/jYcQ2lm6eRgmanx2w5gj
+         f4hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=epBBiJe/BiipnhOxinjfU345ql1651dsm1KJ2Eg1l+8=;
-        b=p3Y9CKVfsb1QDKwMbxm50v8FcOQGffgl3ioZz5ynnqHbVqktwbBHu67dQwiUCULRTF
-         tQG8x9hPKMJNWh7ZkMeWVYc6D8bnGKz/aDz5vcFMblm0M6EF3/kBGDHM825mNOYC8zIr
-         DU6qjtmidm/RhXu63Xm0KkJDLNqTM+uq7lMvctaR+RZcehGe8CyjyBWc97S+yfd4H3He
-         3k7sM+rsJ9KQuwmmyz3uytbmHAME6t5KvdJJ77qS1xxk6nyCmuukL2IskZ7+DswLLbMi
-         +nrIYnhDnisoXuCc5wo/rwSR3tBLIYa0BtQ9yPLL+rH6xWZTt/2gWhd8y8lbozlwwj+U
-         w6Bg==
+        bh=U6IlttQWg5GixafQJKz3fjDa/v6plglwkRJYH67W75E=;
+        b=SWovuPujzbAmsKY2ASh979Mgxse7xxH7aYKEc3m942VSmqqSaiFVcGS19wurXm0uHs
+         0YzAmjCVRoCz8TrRQKVI9K7qxldT4dGe9Bcgcc3JbumqTKBWQkt65dNFESsgsR96IeKM
+         BJUidK9K65dzsHyPzGk8NktJNO0i+n5J5ItBNj+Xxy02GwwpwjSDZJm0tGpqvYUrmRoP
+         cL7dnzjjplztZoLlejJN2NdRXIqji/MrTtEwBQErJM2Hu4HkZKfQDC3vV6haERuDav+P
+         NaM/yp9Lyo32v3ee6pkAdeW8Jimd5brZ2mCbA9XnRIBz8ltK96JDDCbshyXzuPU2TzAF
+         DwUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bfjYoYQI;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DTEZOrRB;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b2si1957201ots.284.2020.02.20.05.06.53;
-        Thu, 20 Feb 2020 05:06:54 -0800 (PST)
+        by mx.google.com with ESMTP id b2si1957201ots.284.2020.02.20.05.06.56;
+        Thu, 20 Feb 2020 05:06:56 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bfjYoYQI;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DTEZOrRB;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728212AbgBTNGx (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 20 Feb 2020 08:06:53 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:42857 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1728173AbgBTNGw (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 20 Feb 2020 08:06:52 -0500
+        id S1728219AbgBTNGz (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 20 Feb 2020 08:06:55 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:36393 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1728214AbgBTNGz (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Thu, 20 Feb 2020 08:06:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1582204010;
+        s=mimecast20190719; t=1582204013;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:  content-type:content-type:content-type:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=epBBiJe/BiipnhOxinjfU345ql1651dsm1KJ2Eg1l+8=;
-        b=bfjYoYQIdvSUNJgcPnZ+No7RJ0AOQUmt/GNL1KJR5bYTbYtEcQ/b8PYDmPmpp8p0XSy4LT
-        O53drFKihzHqfpQAF2n1Qf+4uMGT0x5yZIiSL1z6dwOPqEzrARgcv4a5/gp2tCxIzK/Z6t
-        WAOVEanOnP9y+U02rKOsYk03yOxaA+0=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-215-2uZLGHPBMuqj9zUDjaCzNA-1; Thu, 20 Feb 2020 08:06:48 -0500
-X-MC-Unique: 2uZLGHPBMuqj9zUDjaCzNA-1
-Received: by mail-wr1-f69.google.com with SMTP id v17so1691267wrm.17
-        for <kvm@vger.kernel.org>; Thu, 20 Feb 2020 05:06:48 -0800 (PST)
+        bh=U6IlttQWg5GixafQJKz3fjDa/v6plglwkRJYH67W75E=;
+        b=DTEZOrRBrMpSxM5rvwKDb7ENfDgZJyRYkUrciLoyMgW1TABiR6DbMEIL7Of2aICC1+b8TF
+        MRdqcw7PO3gW4apjpT69pA70w64Re4VWH/NPjg/mN6W3jlCA6pa8HG8HSn8nCBc3utLzZX
+        gdtUgox8zO7B2HL6He0PjBwAZfahNtA=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-196-WbnwfNiSPeOcvi4GOdiR_A-1; Thu, 20 Feb 2020 08:06:51 -0500
+X-MC-Unique: WbnwfNiSPeOcvi4GOdiR_A-1
+Received: by mail-wr1-f71.google.com with SMTP id 90so1712288wrq.6
+        for <kvm@vger.kernel.org>; Thu, 20 Feb 2020 05:06:51 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=epBBiJe/BiipnhOxinjfU345ql1651dsm1KJ2Eg1l+8=;
-        b=aXRPvLdjYN6+CCGkYvnWDXbvJZDhlfT1QMgKTcGVhaoDPtCEWGziZf2p3X+bwMwDyo
-         FQ5L8Sk5RYe7sfNCG9Uf3lCwusBJJmvafRN7EuwxdozjYAlsOWuBvRQFSB3LAzc426+K
-         PHKI6cqrJSKBtRZnlmE2cZ7DSXFqQOolPfq4ENOIViMYRashvpsN8T10ZgP5Th3hO545
-         qlQvNmrbM/NZCccoMrSif9CiXqIu0QeU2voQ2s92JsDVjSfivJJ6F+/nDRDgbUlkS+sG
-         RasaYR7qqpjRq3Mo9HiwAlcf+tb2euZTz6vIarKWy+NfFqv1sIBax5USUN3cgBSUifAF
-         BOjQ==
-X-Gm-Message-State: APjAAAVApOnlg2XirYaMlIIthjTvcrKPQBh9C1b+sfECexxDa1rtUK6+
-        9WySm4fqgn9MGZSjQE6X45dr3/u7Zxwa4BbQnEikNh0LCTy3RacntO1LkTT0/oOFuAZUHqka95W
-        cTU9/G7BqcUHa
-X-Received: by 2002:a05:600c:295d:: with SMTP id n29mr4504811wmd.101.1582204006819;
-        Thu, 20 Feb 2020 05:06:46 -0800 (PST)
-X-Received: by 2002:a05:600c:295d:: with SMTP id n29mr4504765wmd.101.1582204006470;
-        Thu, 20 Feb 2020 05:06:46 -0800 (PST)
+        bh=U6IlttQWg5GixafQJKz3fjDa/v6plglwkRJYH67W75E=;
+        b=fR8zBBi/awUuF+JZuBvUizEeu2YYummwd3RQaU88qsBEtxWDZ2QR4X2Z48acGzNmPG
+         0ffutIYZLWUt60K6CjHrngw66iHJ/GDlPw4SZd2657/Eg3SaWwEumCzRh2OmV76nntso
+         6E8zhKb93C7OYLggossljDV0ZX0sh63TlMFaPqcpog67tCqJWAW+VbR9nqCX+VAOJe5s
+         9b8zsjTneSbB4DUDN2KiOJtdS+PyXY5EYKxoMgwu8k0AGQsBOZPc//jn6unoyY0U8Lxc
+         9jkzTL1gvcmZkQgVKiZboxvowf8XffIbVSg8goAdzy4p/73iymhVP+iCjELiwAkJN2BV
+         iHcg==
+X-Gm-Message-State: APjAAAVSNXIzlpGZecL6wFImf0/kWrLKidLwaP+pQzqrVE/RBZ+KtQ7m
+        y1tChaFxjs7Qqc1rcHWTrX/qfXwEQl7l5ha7AADr2cmMIt0TiJYlZsBNUyMAx5ajL3nKX+CSBsx
+        lEIvn5RjHAr/L
+X-Received: by 2002:adf:cd92:: with SMTP id q18mr41684755wrj.261.1582204010378;
+        Thu, 20 Feb 2020 05:06:50 -0800 (PST)
+X-Received: by 2002:adf:cd92:: with SMTP id q18mr41684732wrj.261.1582204010138;
+        Thu, 20 Feb 2020 05:06:50 -0800 (PST)
 Received: from localhost.localdomain (78.red-88-21-202.staticip.rima-tde.net. [88.21.202.78])
-        by smtp.gmail.com with ESMTPSA id b67sm4594690wmc.38.2020.02.20.05.06.42
+        by smtp.gmail.com with ESMTPSA id b67sm4594690wmc.38.2020.02.20.05.06.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Feb 2020 05:06:45 -0800 (PST)
+        Thu, 20 Feb 2020 05:06:49 -0800 (PST)
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To:     Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 Cc:     "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -116,9 +116,9 @@ Cc:     "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
         Paul Durrant <paul@xen.org>,
         Richard Henderson <rth@twiddle.net>,
         John Snow <jsnow@redhat.com>
-Subject: [PATCH v3 14/20] hw/virtio: Let vhost_memory_map() use a boolean 'is_write' argument
-Date:   Thu, 20 Feb 2020 14:05:42 +0100
-Message-Id: <20200220130548.29974-15-philmd@redhat.com>
+Subject: [PATCH v3 15/20] exec: Let address_space_unmap() use a boolean 'is_write' argument
+Date:   Thu, 20 Feb 2020 14:05:43 +0100
+Message-Id: <20200220130548.29974-16-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200220130548.29974-1-philmd@redhat.com>
 References: <20200220130548.29974-1-philmd@redhat.com>
@@ -130,53 +130,47 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: s7p9LHpS1C5K
+X-TUID: zmFsrIPf/tVt
 
 The 'is_write' argument is either 0 or 1.
 Convert it to a boolean type.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/virtio/vhost.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ include/exec/memory.h | 2 +-
+ exec.c                | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-index 9edfadc81d..0d226dae10 100644
---- a/hw/virtio/vhost.c
-+++ b/hw/virtio/vhost.c
-@@ -294,7 +294,7 @@ static int vhost_dev_has_iommu(struct vhost_dev *dev)
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index afee185eae..1614d9a02c 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -2329,7 +2329,7 @@ void *address_space_map(AddressSpace *as, hwaddr addr,
+  * @is_write: indicates the transfer direction
+  */
+ void address_space_unmap(AddressSpace *as, void *buffer, hwaddr len,
+-                         int is_write, hwaddr access_len);
++                         bool is_write, hwaddr access_len);
+ 
+ 
+ /* Internal functions, part of the implementation of address_space_read.  */
+diff --git a/exec.c b/exec.c
+index 01437be691..16974d4f4b 100644
+--- a/exec.c
++++ b/exec.c
+@@ -3598,11 +3598,11 @@ void *address_space_map(AddressSpace *as,
  }
  
- static void *vhost_memory_map(struct vhost_dev *dev, hwaddr addr,
--                              hwaddr *plen, int is_write)
-+                              hwaddr *plen, bool is_write)
+ /* Unmaps a memory region previously mapped by address_space_map().
+- * Will also mark the memory as dirty if is_write == 1.  access_len gives
++ * Will also mark the memory as dirty if is_write is true.  access_len gives
+  * the amount of memory that was actually read or written by the caller.
+  */
+ void address_space_unmap(AddressSpace *as, void *buffer, hwaddr len,
+-                         int is_write, hwaddr access_len)
++                         bool is_write, hwaddr access_len)
  {
-     if (!vhost_dev_has_iommu(dev)) {
-         return cpu_physical_memory_map(addr, plen, is_write);
-@@ -1012,21 +1012,21 @@ static int vhost_virtqueue_start(struct vhost_dev *dev,
- 
-     vq->desc_size = s = l = virtio_queue_get_desc_size(vdev, idx);
-     vq->desc_phys = a;
--    vq->desc = vhost_memory_map(dev, a, &l, 0);
-+    vq->desc = vhost_memory_map(dev, a, &l, false);
-     if (!vq->desc || l != s) {
-         r = -ENOMEM;
-         goto fail_alloc_desc;
-     }
-     vq->avail_size = s = l = virtio_queue_get_avail_size(vdev, idx);
-     vq->avail_phys = a = virtio_queue_get_avail_addr(vdev, idx);
--    vq->avail = vhost_memory_map(dev, a, &l, 0);
-+    vq->avail = vhost_memory_map(dev, a, &l, false);
-     if (!vq->avail || l != s) {
-         r = -ENOMEM;
-         goto fail_alloc_avail;
-     }
-     vq->used_size = s = l = virtio_queue_get_used_size(vdev, idx);
-     vq->used_phys = a = virtio_queue_get_used_addr(vdev, idx);
--    vq->used = vhost_memory_map(dev, a, &l, 1);
-+    vq->used = vhost_memory_map(dev, a, &l, true);
-     if (!vq->used || l != s) {
-         r = -ENOMEM;
-         goto fail_alloc_used;
+     if (buffer != bounce.buffer) {
+         MemoryRegion *mr;
 -- 
 2.21.1

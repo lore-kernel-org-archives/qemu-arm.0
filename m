@@ -1,254 +1,176 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp588341lfg;
-        Thu, 20 Feb 2020 05:51:40 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxuvv5+CUv9DmD5XFc3AOpmfGtRcgAdpzDX/RD32NvlTaKaJab2pi+nMevKdQ/sixyt+F8u
-X-Received: by 2002:aca:b2c5:: with SMTP id b188mr2086887oif.163.1582206700422;
-        Thu, 20 Feb 2020 05:51:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582206700; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp590757lfg;
+        Thu, 20 Feb 2020 05:54:45 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwFykDD4WHExpkhu9daOiEr4GknnO2ScvzA6+mI36GUL2pxva9gxbJZLOHrhuVhuGVsuHWn
+X-Received: by 2002:aca:190b:: with SMTP id l11mr2149601oii.65.1582206884913;
+        Thu, 20 Feb 2020 05:54:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582206884; cv=none;
         d=google.com; s=arc-20160816;
-        b=j/i10UVBkKR3luPvz6cw+eTq/RFl4h4zd+V2Ul74PHLtACbtd2QJT7uej+tvumJd4l
-         tK0mCPHZeLjkq3vjFk6aflP96ePgscNfVDKUAV1FJNLuZ8x5gX3GK4Vi68sM55yov5Qg
-         sVEJnv/vC1q005ZFojWHw9G3h4ZpObf3Wt4z1H0mNifSvvOtuaSFhKJM0oSlw0eLQD9v
-         eQW/SCT8xcJttiyUm2ujvU62aPqN3YQT3RYktIK/uz0+yrD3Gt1O72NklIL2qrotJKIr
-         N3ov07GuQq0kMuXdUiYJLwKBb5CLiGop1wyih4Xo7tjuJDTaQkctGCjmijfYa5kcE5vc
-         tDrQ==
+        b=f+P0B6EIT2ZiOpVLUOWf1AFyZnboB2XgVAADdxQljyqe3SuyVl9WdZYgUvyRj/JQ8y
+         EhkU4lF8sBS9MEQyvca30ne+RQ28K1CQiT9fEF6CKi3Hp9JmGgcW+764GgrWZQqKvlNJ
+         IJHxN1jmgOv7tDxU0XXqq0Nh7+n3R5BdbgsGdrJWPKHFq0Di6p4v1LCCYu3eNAkSG9KA
+         R7cZRhrQO9TaLvF5UNUD3cXDnbI4mFmnCkPT7mt8y7UkaBzamfOt4/D2Yvrd8IvkI61c
+         UPgELZco1SSEANTBulWA3/8Ph3jANZCl56AVJuwk+BoGYFk0huhWNfv1p1FIXXE8C7DZ
+         170w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:cc:to:from:subject:dkim-signature;
-        bh=Rz0vm/fZ0lEcM/XVDnOZIU35A6myDohOkSLNpyLFR0o=;
-        b=rLG3U7AvDx+D189PzMs00NaxMzj7D+Gzfbj+fzhFAtD7NkptvjuXMOeWeMgPLDiEl4
-         65FJNo/lA3EzqJe9UqoCMOOhJQNZP81p7esBx2NobmGhHNpEp+2dtGWJ2jmQCSLr81av
-         w8X2y9AFS2eYRF+vVnaIj8ao2SltzcFCVLT0GcHACInZv11odK3+BClqqmyAC/m3D1O3
-         F2g4rJAzVBnmoNwYuL/08Ek+1ox9IYsiYELYQ7GqTAn+SQilPa6OlqzklxiMznWlj02M
-         RA6Z4Rq+PWB2n382HdiRHNAomlC+S0vk5KZDQo3O6splgltAG4DQYEz2IJdHV7VjJIjh
-         Ew3Q==
+        h=list-id:precedence:sender:mime-version:content-transfer-encoding
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:subject:cc:to:from:ironport-sdr
+         :dkim-signature;
+        bh=g4ijhDYuJ3ncYPOAmJGJ2XO3GIUAd9gN9Tr0CE9zfpo=;
+        b=p6f3oaD7BBlRsT4DLHTeo9iSkIC5TDoXLLHpfdVRN9ZYF0Hg8Xzk9tjbDOkEtaQigY
+         qhbtGuieqvED2LeA20wqc9UCZhArvbMyEC3J2WZE84350Ekquj1/sH0HwzaUKeAVbUa0
+         6IOqkk7pvhu2JfhgSQvI+4Pp2Z/vDS2yIAWvPusur+f+Kc4LADdPsG1bSEzg8zfKE2jf
+         U7n/+X2/82PDUCT0CHeEUFCzp8GZ68Hvd93GGfiS31QmBs1XPuBPAtyhMZZALLeT1ANz
+         LB6QZdn4fgHfDva/znv0teRkqpE33YgQbwzCkP7tFb8O7enmHRVtz++XD01YW3rTtFST
+         m63Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jUnssPKE;
+       dkim=pass header.i=@amazon.co.uk header.s=amazon201209 header.b=UwL23DeI;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.co.uk
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id 25si10704684oiz.230.2020.02.20.05.51.39;
-        Thu, 20 Feb 2020 05:51:40 -0800 (PST)
+        by mx.google.com with ESMTP id b10si1584135otp.124.2020.02.20.05.54.44;
+        Thu, 20 Feb 2020 05:54:44 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jUnssPKE;
+       dkim=pass header.i=@amazon.co.uk header.s=amazon201209 header.b=UwL23DeI;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.co.uk
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728180AbgBTNvj (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 20 Feb 2020 08:51:39 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:37499 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1728028AbgBTNvi (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Thu, 20 Feb 2020 08:51:38 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1582206696;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=Rz0vm/fZ0lEcM/XVDnOZIU35A6myDohOkSLNpyLFR0o=;
-        b=jUnssPKEj7rVn4WDvm8MpPfNXm48GabHYm7oUbu2hBp/qXiaGMbx11AZjnkl6KQ8eo0MPn
-        c120Kv1dBsTOPC801+bd2qJOg47Bb1FBFlLuvudadluVT6CqmJUX/80d58f6RcDAAJ2BXD
-        dNZuUP634lW0yvL85c72Q8ZAlMKwix8=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-143-7rBBbh6uNnuYG_AxV7IbUg-1; Thu, 20 Feb 2020 08:51:34 -0500
-X-MC-Unique: 7rBBbh6uNnuYG_AxV7IbUg-1
-Received: by mail-ed1-f69.google.com with SMTP id bc3so2738137edb.15
-        for <kvm@vger.kernel.org>; Thu, 20 Feb 2020 05:51:34 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:from:to:cc:references:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=Rz0vm/fZ0lEcM/XVDnOZIU35A6myDohOkSLNpyLFR0o=;
-        b=Z6/EuQoN53RlZ8ZFMzqzMERmXGVJhLxvKiNTLXzE+zfBRMiw7ech+lGXWgpKRVUvc2
-         6OueEravnPOqHARNCae/YE12TTdLMqwhOQUKcAst7KYPEy2IaNfKRA7FzvVLj4/p0LqQ
-         d8swe+QOyn2J9TEo9gZeITOl/sIO9E3zQaco/qu8tHijRd7n4mZ4PsJacxq/RhoezKsk
-         FUAD5Y1pqSZc9LaPuec7BictxQi+m+lQ8VEitwLwtbAfVAq0vTAkkIKkANnNgnUDwr5+
-         hm/s+C7VUBXuNjBnPPQc6ygikVM5d7sfMRVpkuJ4QHqF2b5GOnQ1lsiu4ndit2EE6p2m
-         4+Aw==
-X-Gm-Message-State: APjAAAVudUYLC7Iyitkmgj2hrsqwujnReAUNk216F2oRfPwQ4Fo2K/Pt
-        wz4mk676lorTHJ9G2DjHqjtZz7hoKihVVXHqTJDyo+mn0vrocEKiPPZyExl33WspZgQXaj0CJOG
-        rQpkTh69YAIKc
-X-Received: by 2002:aa7:dad0:: with SMTP id x16mr29014873eds.307.1582206692589;
-        Thu, 20 Feb 2020 05:51:32 -0800 (PST)
-X-Received: by 2002:aa7:dad0:: with SMTP id x16mr29014855eds.307.1582206692375;
-        Thu, 20 Feb 2020 05:51:32 -0800 (PST)
-Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net. [88.21.202.78])
-        by smtp.gmail.com with ESMTPSA id s12sm118618eja.79.2020.02.20.05.51.28
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 20 Feb 2020 05:51:31 -0800 (PST)
-Subject: Re: [PATCH v3 02/20] hw: Remove unnecessary cast when calling
- dma_memory_read()
-From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-To:     Eric Blake <eblake@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-Cc:     Fam Zheng <fam@euphon.net>,
+        id S1728236AbgBTNyn (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 20 Feb 2020 08:54:43 -0500
+Received: from smtp-fw-6002.amazon.com ([52.95.49.90]:56076 "EHLO
+        smtp-fw-6002.amazon.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1727868AbgBTNyn (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 20 Feb 2020 08:54:43 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=amazon.co.uk; i=@amazon.co.uk; q=dns/txt;
+  s=amazon201209; t=1582206884; x=1613742884;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=g4ijhDYuJ3ncYPOAmJGJ2XO3GIUAd9gN9Tr0CE9zfpo=;
+  b=UwL23DeIBHC1OZ7SZEQOz0vic2GuIgMc0NV+gekEk/l+bL6lL86gGNY0
+   KqzEkOUnY9qVhkTxNOWw8nViLLelipIzSI54TasuCOpk3zqTq78Aa7E1p
+   AeRzd2TgXGtuXMWEvHrfJEJ3GHZqBTSURTKlsxXKo6Jt2v3mMk4AjCYBC
+   M=;
+IronPort-SDR: i3n99YIbcDxWB3rJtRrCLdb70ZCl5dnSfu60gvIz1jYU0aalW/Uq6GB7epg09S20gthREigk4s
+ Rq348+Ihhxtg==
+X-IronPort-AV: E=Sophos;i="5.70,464,1574121600"; 
+   d="scan'208";a="17318865"
+Received: from iad12-co-svc-p1-lb1-vlan3.amazon.com (HELO email-inbound-relay-1e-27fb8269.us-east-1.amazon.com) ([10.43.8.6])
+  by smtp-border-fw-out-6002.iad6.amazon.com with ESMTP; 20 Feb 2020 13:54:29 +0000
+Received: from EX13MTAUEA002.ant.amazon.com (iad55-ws-svc-p15-lb9-vlan3.iad.amazon.com [10.40.159.166])
+        by email-inbound-relay-1e-27fb8269.us-east-1.amazon.com (Postfix) with ESMTPS id 1DF23A2DDB;
+        Thu, 20 Feb 2020 13:54:17 +0000 (UTC)
+Received: from EX13D32EUC004.ant.amazon.com (10.43.164.121) by
+ EX13MTAUEA002.ant.amazon.com (10.43.61.77) with Microsoft SMTP Server (TLS)
+ id 15.0.1236.3; Thu, 20 Feb 2020 13:54:16 +0000
+Received: from EX13D32EUC003.ant.amazon.com (10.43.164.24) by
+ EX13D32EUC004.ant.amazon.com (10.43.164.121) with Microsoft SMTP Server (TLS)
+ id 15.0.1367.3; Thu, 20 Feb 2020 13:54:15 +0000
+Received: from EX13D32EUC003.ant.amazon.com ([10.43.164.24]) by
+ EX13D32EUC003.ant.amazon.com ([10.43.164.24]) with mapi id 15.00.1367.000;
+ Thu, 20 Feb 2020 13:54:15 +0000
+From:   "Durrant, Paul" <pdurrant@amazon.co.uk>
+To:     =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
+        "Peter Maydell" <peter.maydell@linaro.org>,
+        "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC:     Fam Zheng <fam@euphon.net>,
         Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-        kvm@vger.kernel.org, "Michael S. Tsirkin" <mst@redhat.com>,
+        "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
         Jason Wang <jasowang@redhat.com>,
         Gerd Hoffmann <kraxel@redhat.com>,
         "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Stefano Stabellini <sstabellini@kernel.org>,
-        Matthew Rosato <mjrosato@linux.ibm.com>, qemu-block@nongnu.org,
+        "Stefano Stabellini" <sstabellini@kernel.org>,
+        Matthew Rosato <mjrosato@linux.ibm.com>,
+        "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
         David Hildenbrand <david@redhat.com>,
         Halil Pasic <pasic@linux.ibm.com>,
         Christian Borntraeger <borntraeger@de.ibm.com>,
-        =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+        =?utf-8?B?SGVydsOpIFBvdXNzaW5lYXU=?= <hpoussin@reactos.org>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
         Anthony Perard <anthony.perard@citrix.com>,
-        xen-devel@lists.xenproject.org,
-        Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+        "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
+        "Aleksandar Rikalo" <aleksandar.rikalo@rt-rk.com>,
         Richard Henderson <rth@twiddle.net>,
         Laurent Vivier <lvivier@redhat.com>,
         Thomas Huth <thuth@redhat.com>,
         Eduardo Habkost <ehabkost@redhat.com>,
         Stefan Weil <sw@weilnetz.de>,
-        Alistair Francis <alistair@alistair23.me>,
+        "Alistair Francis" <alistair@alistair23.me>,
         Richard Henderson <richard.henderson@linaro.org>,
         Paul Durrant <paul@xen.org>,
-        Eric Auger <eric.auger@redhat.com>, qemu-s390x@nongnu.org,
-        qemu-arm@nongnu.org,
-        =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+        Eric Auger <eric.auger@redhat.com>,
+        "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
+        "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+        =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>,
         John Snow <jsnow@redhat.com>,
         David Gibson <david@gibson.dropbear.id.au>,
-        Igor Mitsyanko <i.mitsyanko@gmail.com>,
+        "Igor Mitsyanko" <i.mitsyanko@gmail.com>,
         Cornelia Huck <cohuck@redhat.com>,
-        Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-        Paolo Bonzini <pbonzini@redhat.com>
+        "Michael Walle" <michael@walle.cc>,
+        "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+        "Paolo Bonzini" <pbonzini@redhat.com>
+Subject: RE: [Xen-devel] [PATCH v3 19/20] Let cpu_[physical]_memory() calls
+ pass a boolean 'is_write' argument
+Thread-Topic: [Xen-devel] [PATCH v3 19/20] Let cpu_[physical]_memory() calls
+ pass a boolean 'is_write' argument
+Thread-Index: AQHV5+7vcjjW/3OJHE2x9C8aUbSeQqgkGmwg
+Date:   Thu, 20 Feb 2020 13:54:15 +0000
+Message-ID: <3879f3fc2c3641a28412938601327bb7@EX13D32EUC003.ant.amazon.com>
 References: <20200220130548.29974-1-philmd@redhat.com>
- <20200220130548.29974-3-philmd@redhat.com>
- <68120807-6f6b-1602-8208-fd76d64e74bc@redhat.com>
- <be623afd-0605-0bdf-daae-f38ba5562012@redhat.com>
-Message-ID: <9b8baae3-d4f2-4b7c-604a-5f05d4db1eb2@redhat.com>
-Date:   Thu, 20 Feb 2020 14:51:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
-MIME-Version: 1.0
-In-Reply-To: <be623afd-0605-0bdf-daae-f38ba5562012@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+ <20200220130548.29974-20-philmd@redhat.com>
+In-Reply-To: <20200220130548.29974-20-philmd@redhat.com>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.43.164.112]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: VTmF75Gn3YvJ
+X-TUID: ynvRQ5PezHzM
 
-On 2/20/20 2:43 PM, Philippe Mathieu-Daudé wrote:
-> On 2/20/20 2:16 PM, Eric Blake wrote:
->> On 2/20/20 7:05 AM, Philippe Mathieu-Daudé wrote:
->>> Since its introduction in commit d86a77f8abb, dma_memory_read()
->>> always accepted void pointer argument. Remove the unnecessary
->>> casts.
->>>
->>> This commit was produced with the included Coccinelle script
->>> scripts/coccinelle/exec_rw_const.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->>> ---
->>>   scripts/coccinelle/exec_rw_const.cocci | 15 +++++++++++++++
->>>   hw/arm/smmu-common.c                   |  3 +--
->>>   hw/arm/smmuv3.c                        | 10 ++++------
->>>   hw/sd/sdhci.c                          | 15 +++++----------
->>>   4 files changed, 25 insertions(+), 18 deletions(-)
->>>   create mode 100644 scripts/coccinelle/exec_rw_const.cocci
->>>
->>> diff --git a/scripts/coccinelle/exec_rw_const.cocci 
->>> b/scripts/coccinelle/exec_rw_const.cocci
->>> new file mode 100644
->>> index 0000000000..a0054f009d
->>> --- /dev/null
->>> +++ b/scripts/coccinelle/exec_rw_const.cocci
->>> @@ -0,0 +1,15 @@
->>> +// Usage:
->>> +//  spatch --sp-file scripts/coccinelle/exec_rw_const.cocci --dir . 
->>> --in-place
->>
->> This command line should also use '--macro-file 
->> scripts/cocci-macro-file.h' to cover more of the code base (Coccinelle 
->> skips portions of the code that uses macros it doesn't recognize).
->>
->>
->>> @@ -726,13 +724,10 @@ static void get_adma_description(SDHCIState *s, 
->>> ADMADescr *dscr)
->>>           }
->>>           break;
->>>       case SDHC_CTRL_ADMA2_64:
->>> -        dma_memory_read(s->dma_as, entry_addr,
->>> -                        (uint8_t *)(&dscr->attr), 1);
->>> -        dma_memory_read(s->dma_as, entry_addr + 2,
->>> -                        (uint8_t *)(&dscr->length), 2);
->>> +        dma_memory_read(s->dma_as, entry_addr, (&dscr->attr), 1);
->>> +        dma_memory_read(s->dma_as, entry_addr + 2, (&dscr->length), 2);
->>
->> The () around &dscr->length are now pointless.
-> 
-> Thanks Eric, patch updated. Peter are you OK if I change the cocci 
-> header using /* */ as:
-> 
-> -- >8 --
-> diff --git a/scripts/coccinelle/exec_rw_const.cocci 
-> b/scripts/coccinelle/exec_rw_const.cocci
-> index a0054f009d..7e42682240 100644
-> --- a/scripts/coccinelle/exec_rw_const.cocci
-> +++ b/scripts/coccinelle/exec_rw_const.cocci
-> @@ -1,5 +1,13 @@
-> -// Usage:
-> -//  spatch --sp-file scripts/coccinelle/exec_rw_const.cocci --dir . 
-> --in-place
-> +/*
-> +  Usage:
-> +
-> +    spatch \
-> +           --macro-file scripts/cocci-macro-file.h \
-> +           --sp-file scripts/coccinelle/exec_rw_const.cocci \
-> +           --keep-comments \
-> +           --in-place \
-> +           --dir .
-> +*/
-> 
->   // Remove useless cast
->   @@
-> @@ -7,9 +15,9 @@ expression E1, E2, E3, E4;
->   type T;
->   @@
->   (
-> -- dma_memory_read(E1, E2, (T *)E3, E4)
-> +- dma_memory_read(E1, E2, (T *)(E3), E4)
->   + dma_memory_read(E1, E2, E3, E4)
->   |
-> -- dma_memory_write(E1, E2, (T *)E3, E4)
-> +- dma_memory_write(E1, E2, (T *)(E3), E4)
->   + dma_memory_write(E1, E2, E3, E4)
->   )
-> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-> index d5abdaad41..de63ffb037 100644
-> --- a/hw/sd/sdhci.c
-> +++ b/hw/sd/sdhci.c
-> @@ -724,10 +724,10 @@ static void get_adma_description(SDHCIState *s, 
-> ADMADescr *dscr)
->           }
->           break;
->       case SDHC_CTRL_ADMA2_64:
-> -        dma_memory_read(s->dma_as, entry_addr, (&dscr->attr), 1);
-> -        dma_memory_read(s->dma_as, entry_addr + 2, (&dscr->length), 2);
-> +        dma_memory_read(s->dma_as, entry_addr, &dscr->attr, 1);
-> +        dma_memory_read(s->dma_as, entry_addr + 2, &dscr->length, 2);
->           dscr->length = le16_to_cpu(dscr->length);
-> -        dma_memory_read(s->dma_as, entry_addr + 4, (&dscr->addr), 8);
-> +        dma_memory_read(s->dma_as, entry_addr + 4, &dscr->addr, 8);
->           dscr->addr = le64_to_cpu(dscr->addr);
->           dscr->attr &= (uint8_t) ~0xC0;
->           dscr->incr = 12;
-> ---
-
-Series updated here:
-https://github.com/philmd/qemu/commits/exec_rw_const_v4
-
-Relevant spatch:
-https://github.com/philmd/qemu/blob/exec_rw_const_v4/scripts/coccinelle/exec_rw_const.cocci
-
-I will respin later to let people time to review.
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBYZW4tZGV2ZWwgPHhlbi1kZXZl
+bC1ib3VuY2VzQGxpc3RzLnhlbnByb2plY3Qub3JnPiBPbiBCZWhhbGYgT2YNCj4gUGhpbGlwcGUg
+TWF0aGlldS1EYXVkw6kNCj4gU2VudDogMjAgRmVicnVhcnkgMjAyMCAxMzowNg0KPiBUbzogUGV0
+ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPjsgcWVtdS1kZXZlbEBub25nbnUu
+b3JnDQo+IENjOiBGYW0gWmhlbmcgPGZhbUBldXBob24ubmV0PjsgRG1pdHJ5IEZsZXl0bWFuDQo+
+IDxkbWl0cnkuZmxleXRtYW5AZ21haWwuY29tPjsga3ZtQHZnZXIua2VybmVsLm9yZzsgTWljaGFl
+bCBTLiBUc2lya2luDQo+IDxtc3RAcmVkaGF0LmNvbT47IEphc29uIFdhbmcgPGphc293YW5nQHJl
+ZGhhdC5jb20+OyBHZXJkIEhvZmZtYW5uDQo+IDxrcmF4ZWxAcmVkaGF0LmNvbT47IEVkZ2FyIEUu
+IElnbGVzaWFzIDxlZGdhci5pZ2xlc2lhc0BnbWFpbC5jb20+OyBTdGVmYW5vDQo+IFN0YWJlbGxp
+bmkgPHNzdGFiZWxsaW5pQGtlcm5lbC5vcmc+OyBNYXR0aGV3IFJvc2F0bw0KPiA8bWpyb3NhdG9A
+bGludXguaWJtLmNvbT47IHFlbXUtYmxvY2tAbm9uZ251Lm9yZzsgRGF2aWQgSGlsZGVuYnJhbmQN
+Cj4gPGRhdmlkQHJlZGhhdC5jb20+OyBIYWxpbCBQYXNpYyA8cGFzaWNAbGludXguaWJtLmNvbT47
+IENocmlzdGlhbg0KPiBCb3JudHJhZWdlciA8Ym9ybnRyYWVnZXJAZGUuaWJtLmNvbT47IEhlcnbD
+qSBQb3Vzc2luZWF1DQo+IDxocG91c3NpbkByZWFjdG9zLm9yZz47IE1hcmNlbCBBcGZlbGJhdW0g
+PG1hcmNlbC5hcGZlbGJhdW1AZ21haWwuY29tPjsNCj4gQW50aG9ueSBQZXJhcmQgPGFudGhvbnku
+cGVyYXJkQGNpdHJpeC5jb20+OyB4ZW4tDQo+IGRldmVsQGxpc3RzLnhlbnByb2plY3Qub3JnOyBB
+bGVrc2FuZGFyIFJpa2FsbyA8YWxla3NhbmRhci5yaWthbG9AcnQtDQo+IHJrLmNvbT47IFJpY2hh
+cmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+OyBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqQ0K
+PiA8cGhpbG1kQHJlZGhhdC5jb20+OyBMYXVyZW50IFZpdmllciA8bHZpdmllckByZWRoYXQuY29t
+PjsgVGhvbWFzIEh1dGgNCj4gPHRodXRoQHJlZGhhdC5jb20+OyBFZHVhcmRvIEhhYmtvc3QgPGVo
+YWJrb3N0QHJlZGhhdC5jb20+OyBTdGVmYW4gV2VpbA0KPiA8c3dAd2VpbG5ldHouZGU+OyBBbGlz
+dGFpciBGcmFuY2lzIDxhbGlzdGFpckBhbGlzdGFpcjIzLm1lPjsgUmljaGFyZA0KPiBIZW5kZXJz
+b24gPHJpY2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmc+OyBQYXVsIER1cnJhbnQgPHBhdWxAeGVu
+Lm9yZz47DQo+IEVyaWMgQXVnZXIgPGVyaWMuYXVnZXJAcmVkaGF0LmNvbT47IHFlbXUtczM5MHhA
+bm9uZ251Lm9yZzsgcWVtdS0NCj4gYXJtQG5vbmdudS5vcmc7IEPDqWRyaWMgTGUgR29hdGVyIDxj
+bGdAa2FvZC5vcmc+OyBKb2huIFNub3cNCj4gPGpzbm93QHJlZGhhdC5jb20+OyBEYXZpZCBHaWJz
+b24gPGRhdmlkQGdpYnNvbi5kcm9wYmVhci5pZC5hdT47IElnb3INCj4gTWl0c3lhbmtvIDxpLm1p
+dHN5YW5rb0BnbWFpbC5jb20+OyBDb3JuZWxpYSBIdWNrIDxjb2h1Y2tAcmVkaGF0LmNvbT47DQo+
+IE1pY2hhZWwgV2FsbGUgPG1pY2hhZWxAd2FsbGUuY2M+OyBxZW11LXBwY0Bub25nbnUub3JnOyBQ
+YW9sbyBCb256aW5pDQo+IDxwYm9uemluaUByZWRoYXQuY29tPg0KPiBTdWJqZWN0OiBbWGVuLWRl
+dmVsXSBbUEFUQ0ggdjMgMTkvMjBdIExldCBjcHVfW3BoeXNpY2FsXV9tZW1vcnkoKSBjYWxscw0K
+PiBwYXNzIGEgYm9vbGVhbiAnaXNfd3JpdGUnIGFyZ3VtZW50DQo+IA0KPiBVc2UgYW4gZXhwbGlj
+aXQgYm9vbGVhbiB0eXBlLg0KPiANCj4gVGhpcyBjb21taXQgd2FzIHByb2R1Y2VkIHdpdGggdGhl
+IGluY2x1ZGVkIENvY2NpbmVsbGUgc2NyaXB0DQo+IHNjcmlwdHMvY29jY2luZWxsZS9leGVjX3J3
+X2NvbnN0Lg0KPiANCj4gU2lnbmVkLW9mZi1ieTogUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kgPHBo
+aWxtZEByZWRoYXQuY29tPg0KDQpSZXZpZXdlZC1ieTogUGF1bCBEdXJyYW50IDxwYXVsQHhlbi5v
+cmc+DQo=

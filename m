@@ -1,101 +1,122 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1618756lfg;
-        Fri, 21 Feb 2020 02:21:23 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwUZ4FEkkt3TXmj60DqaApp8u+SaCW9f3Oc3bfybFRw81xPVB034QTDWX10U1Bqt5oKxuaG
-X-Received: by 2002:a0c:c68a:: with SMTP id d10mr29892709qvj.126.1582280483796;
-        Fri, 21 Feb 2020 02:21:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582280483; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1699093lfg;
+        Fri, 21 Feb 2020 03:44:30 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzgv3ElkGIw36qRFDRatQeM5H8AA8zUg6+4t9d0fFDZ43IBGqAUR+lHms4HGXgHhJ3Wexh6
+X-Received: by 2002:ac8:39c5:: with SMTP id v63mr4810922qte.134.1582285470254;
+        Fri, 21 Feb 2020 03:44:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582285470; cv=none;
         d=google.com; s=arc-20160816;
-        b=gQpXaRUbxt0WtLRgXSBEUXTAWeeme0TdvCqoitx+1jOwKGUVr/92Qkp75KLW6ufvbc
-         mfEUt3aNBgNHfkMrTsemj9fFb0u712uuVUjf6DUvmYsikUV5LzkMXVg/HnBj7PL8DEef
-         CVVx6D2ueij6yrmRpbF82bMKvIvD8P6X6SPBxoP8pp68vpD7UatFfIFwQcNRvrLViq+t
-         m3ByjdcCD4shOimNfCIZRNjGCT4GvgdH+b8cKCMUe4vpMD6snhqAq7eVIGIouza8FPVq
-         IMlt9Of3ou4QstWCppLP+x1/fWhetuoSt6+jX5uFF2eWt1pz0EwMnydTBpFbahKnF/M8
-         +6jQ==
+        b=GIWX9GnsMixK2GP1u4rr/iKMYYtxDF4jlmo/f7nq2nKIMv/K8O1BbBPIca17fGuFQQ
+         1I40g9VqfLczKOyzm/2PlqwwuwOQzA/n5OOVg6Vbh6TxuNa58bObEKDZYbvqhGnqkNOP
+         uMFU2x2sZfp+ulDlnZXdoY26z4cn52uuB2rdwbWG6ZhslLFVIVGiw+5k0chq+MOR/key
+         BLo7DYSzZ/jFeK6q1sKZ8Te9sLCE37qbBdXePDamSf65PxVGoyEJzF0B8t7E4/156ARg
+         Iwtu4DcBPEHbbpu4GWsnG70ebU+NTxkqLWBfZQToCylNCuh82tYLFc+x/tAUtBmd8OcP
+         zn9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=VkeHR2X7LWmDxA7o4sJuwqHGKBcc6KWoOwdHUepY2pM=;
-        b=BvTMr3uC9duSLSlVEgImSUFQ2seecNNI4BI/x8UEq8IaMkesGQuuQHNwfHLNaSKUpj
-         Kq2X9U5RXVOAXkx2luLRtIJWiTPilT8+jG7XEKhYCrr6zx8zW0lnhFb1ohm4meOUliQj
-         8gnlf9ZROjumZMNvEjpFZFvif+t3QPtnyFxGaQcW8nIjrZ2fzNY5wMaMBbTEnLb6chlQ
-         3ILjWH1zY9/AOwb+UZvu+Z6vI443xkBgY6Kzwg8u7O+kWnyMTaoeM+sLr7TFhRcP4JBY
-         YxoNw/YsCUC9ladfnlWILRPs4Gqqp1ZKCgLdGdV4K4zPsbLXOVTYbkbCQATibAthkjcS
-         QG4w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=BrxS/WPLSZQoq/vG0r6Ye9JuHndQSvui9uLouqeXHn0=;
+        b=JXOONgdRrK3On3wZPWcPrHILA9QerIDjx5CB8FAOPHp9RgrTHkqSn3jt2Olqx9yPEK
+         TMRug3MCbM/jkG+paiK5mU8RuMxomqchBEVqLmXJERsSCI/pn9UAZnt7DkHkVVokFRG8
+         Wra0fJvEe/AZiAPZTkGtWKdUUo8n93JQwQefuL8K0sZXDUj/kMQt2C+ew/So1CWPOehK
+         lT3g+v1koi06etwEpwQM8g6ft+DcH/0Q3ceLUMNYw5IDKd4Or73uTxyiNL/rVBC+X97O
+         ov6EuuWNvsOry6hXyBa+xFByITuKNH4t8SMsJAn0UtmsGEOuMeHDhfc/5NUaOUCH8SgP
+         590A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=fHLZduUe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MRKLprMe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u13si1135497qvn.127.2020.02.21.02.21.23
+        by mx.google.com with ESMTPS id n22si1190266qkh.11.2020.02.21.03.44.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Feb 2020 02:21:23 -0800 (PST)
+        Fri, 21 Feb 2020 03:44:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=fHLZduUe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MRKLprMe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54924 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55790 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j55Qx-0008Ty-8f
-	for alex.bennee@linaro.org; Fri, 21 Feb 2020 05:21:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44732)
+	id 1j56jN-0001zu-OO
+	for alex.bennee@linaro.org; Fri, 21 Feb 2020 06:44:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39609)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j55Qp-0008RT-Bi
- for qemu-arm@nongnu.org; Fri, 21 Feb 2020 05:21:16 -0500
+ (envelope-from <pbonzini@redhat.com>) id 1j56jH-0001zm-LO
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 06:44:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j55Qn-0008M1-UI
- for qemu-arm@nongnu.org; Fri, 21 Feb 2020 05:21:15 -0500
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:36615)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j55Qn-0008Jh-Gf
- for qemu-arm@nongnu.org; Fri, 21 Feb 2020 05:21:13 -0500
-Received: by mail-oi1-x243.google.com with SMTP id c16so1107544oic.3
- for <qemu-arm@nongnu.org>; Fri, 21 Feb 2020 02:21:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=VkeHR2X7LWmDxA7o4sJuwqHGKBcc6KWoOwdHUepY2pM=;
- b=fHLZduUe22y1NVstwqWOpzckfi/QtH2t2pp0kHtfb4QAvFuDHQksUzFBFnqkjV2vPs
- cJnlaGSvLezoWxPrmHHM65deNpmt8vt78TsvGROl6rJXqNDdbFFCOO/vtE5/TT02x3oB
- v8vmI1UhZ0Sfjpue2neUY81XSm0U1IYnr8oT75U8O7e2BdMFJYxOFxO3fU9Tp+9fyNzW
- aLeQkbe2LDkWS0gDRRLaHRbY+GmhGg55De0Ix2Mb9aT3ner6CMbSIcE9fh7hSX+MM99w
- HWwc9O3JkJ4gcXhVDlMfe8NDfp8ffEnRr4YEDfrzf6i9HMKXeVqsXhzkBiVq7nxlIyGG
- 6dcA==
+ (envelope-from <pbonzini@redhat.com>) id 1j56jG-00023w-Dr
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 06:44:23 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:45839
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1j56jG-00021t-8e
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 06:44:22 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582285461;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=BrxS/WPLSZQoq/vG0r6Ye9JuHndQSvui9uLouqeXHn0=;
+ b=MRKLprMeItt9A7TlrrPombPpSbiockDFy7XVEJJiBSICiE3d0ma3HxR2RghXqO0MNrZfe8
+ UmcvAASnc6v3PqZRrOAHUIXu6fyYWSjFMSb5HDxcTguLG6vcEgELcCtey6IQ5OltpcR/dz
+ Ie399NhSpf1ZqnUV6Qa2uUkpI5atJp0=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-400-0QsBe8u-MvaSUF53U_2J4g-1; Fri, 21 Feb 2020 06:44:19 -0500
+X-MC-Unique: 0QsBe8u-MvaSUF53U_2J4g-1
+Received: by mail-wm1-f69.google.com with SMTP id b205so512542wmh.2
+ for <qemu-arm@nongnu.org>; Fri, 21 Feb 2020 03:44:19 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=VkeHR2X7LWmDxA7o4sJuwqHGKBcc6KWoOwdHUepY2pM=;
- b=Q6pLh6LznbZin3fhPKnqBAwfWr4LgUrI0l4v0T3CS0t/g+rPyfaCtmgOIvw6PM7ajo
- ydOUV2v0YeWlfrJxBNAJm1YWvpdKP2oMT9gvuZ65EeT7rXej15W2twf90g3RIZIrLVEz
- uPOwEwLwFkhS9LXHTYIUoZlVXG7HroylVcc2j9cij3Rd5nP4Bc7TPWnT+Y433dJwiXjG
- rnGwSJFL0LYUq5nygVwLihBipf0y/NjIVcOkMvcZ1XtedwW8hxJZcR59GElx4CkuerTb
- FaYGgw23JFEM4JO/lFRV2A67hkBfF8203jvtszGff6B2zGwm3yOYpIZARx5RzG7h3eoW
- jQIw==
-X-Gm-Message-State: APjAAAW+m+rUc1L1nQMUXBavRW/OaF/qWavz0YTlbQNLG+KJ5V+iDUHo
- 8L9ePd14CVrt2au9fCgG9YBKONozGzcMP1j0rZgxREuE
-X-Received: by 2002:a05:6808:289:: with SMTP id
- z9mr1347955oic.48.1582280471747; 
- Fri, 21 Feb 2020 02:21:11 -0800 (PST)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=BrxS/WPLSZQoq/vG0r6Ye9JuHndQSvui9uLouqeXHn0=;
+ b=IHRMloqrdLWBbZnznHSmjNZfT/sz+s0qoOQY7+DzSkvdvOZu9Q3pBuNbUq+1nYyb+w
+ pjZ/MVMvXzTNFvxEcjW41GkrFV55u7G6y9dJb6gQxpE4x0mMSpOXGe6tBJQlxw6Q5a/W
+ DxNW7C2SevmFl1BmHbGM/WUpRLissZoa9+xMtxYAWUyZoJ3RCBxFp/D6AU0nWgfnXmK3
+ qrA4DP3/g9BvB1NHYLZNT66JO3A47ZK1DA50D9JQAJ9N/bNDMSdG+OnWmeIG66COaJRQ
+ Z+hmubj7g5AubKQn1qVCwVTYxhMnOoIMzAdlpiNpm2nbldmK3NxMOamdO7pI/A6GAHEq
+ HCcw==
+X-Gm-Message-State: APjAAAXT7L5aVh+/F7zA2CkQPWFO22RAvPI6W+9tihPb6fQ3JJOLT/4b
+ /shj0wLfFA05uEOSnEXlARoEIhm/7y+OkSSJkBjsEXsO+HssHytUV5Aqmgwh2SUx9Q2ctOSNkmd
+ fq5UdlUSXY72a
+X-Received: by 2002:a05:600c:295d:: with SMTP id
+ n29mr3313611wmd.101.1582285458443; 
+ Fri, 21 Feb 2020 03:44:18 -0800 (PST)
+X-Received: by 2002:a05:600c:295d:: with SMTP id
+ n29mr3313587wmd.101.1582285458173; 
+ Fri, 21 Feb 2020 03:44:18 -0800 (PST)
+Received: from [192.168.178.40] ([151.20.135.128])
+ by smtp.gmail.com with ESMTPSA id b11sm3788650wrx.89.2020.02.21.03.44.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 21 Feb 2020 03:44:17 -0800 (PST)
+Subject: Re: [PATCH] hw/char/pl011: Output characters using best-effort mode
+To: Peter Maydell <peter.maydell@linaro.org>, Gavin Shan <gshan@redhat.com>
 References: <20200220060108.143668-1-gshan@redhat.com>
  <f3c8adba729d050ba2144cc9c834fe82@kernel.org>
  <CAFEAcA8inLO75XOcCO3bUiiJQyZT+nqmp1be+z6ZtQx2a=68+g@mail.gmail.com>
  <fda602ae-43d5-728c-a5bb-f607f0acd3df@redhat.com>
-In-Reply-To: <fda602ae-43d5-728c-a5bb-f607f0acd3df@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 21 Feb 2020 10:21:00 +0000
-Message-ID: <CAFEAcA-VB1t2XDuAHgq_p2Fz8NQ+3HFgyNOzRjk8BjixNJb0qg@mail.gmail.com>
-Subject: Re: [PATCH] hw/char/pl011: Output characters using best-effort mode
-To: Gavin Shan <gshan@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::243
+ <CAFEAcA-VB1t2XDuAHgq_p2Fz8NQ+3HFgyNOzRjk8BjixNJb0qg@mail.gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <eedbac05-5a17-82e6-3cdc-c3b21983545b@redhat.com>
+Date: Fri, 21 Feb 2020 12:44:15 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-VB1t2XDuAHgq_p2Fz8NQ+3HFgyNOzRjk8BjixNJb0qg@mail.gmail.com>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,30 +128,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Marc Zyngier <maz@kernel.org>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>,
- Shan Gavin <shan.gavin@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: Marc Zyngier <maz@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Shan Gavin <shan.gavin@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: x7yVdmuK6DuN
+X-TUID: 37YqQz1U4H+1
 
-On Fri, 21 Feb 2020 at 04:24, Gavin Shan <gshan@redhat.com> wrote:
-> If above analysis is correct and the first approach doesn't work out. We have to
-> consider the 2nd approach - adding option to backend to allow losing data. I'm
-> going to add "allow-data-lost" option for TYPE_CHARDEV_SOCKET. With the option,
-> a back-off algorithm in tcp_chr_write(): The channel is consider as broken if
-> it fails to transmit data in last continuous 5 times. The transmission is still
-> issued when the channel is in broken state and recovered to normal state if
-> transmission succeeds for once.
+On 21/02/20 11:21, Peter Maydell wrote:
+> Before you do that, I would suggest investigating:
+>  * is this a problem we've already had on x86 and that there is a
+>    standard solution for
+Disconnected sockets always lose data (see tcp_chr_write in
+chardev/char-socket.c).
 
-Before you do that, I would suggest investigating:
- * is this a problem we've already had on x86 and that there is a
-   standard solution for?
- * should this be applicable to more than just the socket chardev?
-   What's special about the socket chardev?
+For connected sockets, 8250 does at most 4 retries (each retry is
+triggered by POLLOUT|POLLHUP).  After these four retries the output
+chardev is considered broken, just like in Gavin's patch, and only a
+reset will restart the output.
 
-I've added the chardev backend maintainers to the cc list.
+>  * should this be applicable to more than just the socket chardev?
+>    What's special about the socket chardev?
 
-thanks
--- PMM
+For 8250 there's no difference between socket and everything else.
+
+Paolo
+
+> I've added the chardev backend maintainers to the cc list.
+

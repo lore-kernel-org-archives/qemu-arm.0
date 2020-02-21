@@ -1,505 +1,233 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1288367lfg;
-        Thu, 20 Feb 2020 19:27:56 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy9qaM/z94PteEQuAKObHMYd/PMV7RUW6Al4gQdqOYodyNJu6LN0tWtxiKv2qByYxxQqku+
-X-Received: by 2002:a05:6830:22d8:: with SMTP id q24mr11803222otc.0.1582255676225;
-        Thu, 20 Feb 2020 19:27:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582255676; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1302110lfg;
+        Thu, 20 Feb 2020 19:46:22 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyfcpEXLNUgSdTrTQNWVazo3kdh7E/n+st62Xj14JuijP8apKqlcyyUO0usHE+8p7+DZThd
+X-Received: by 2002:ac8:6054:: with SMTP id k20mr28864711qtm.92.1582256782436;
+        Thu, 20 Feb 2020 19:46:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582256782; cv=none;
         d=google.com; s=arc-20160816;
-        b=e2syaGFseSNfNbGZUxhopoo4XjNbhu9bEzPJBVZ0l4gSkK847iQIE4VoG4kfbrVYSA
-         STi5R7rsivb9tw5gbOWABd92nJKAUj0IyJ8uaNAom7l5s/YBUw9kwZoTMQo9SkBxLyzF
-         ufoEukwMvz6eQv/fSAn7uPoZk3KPMgqOm9OxUaRqX937932/C/YZbHbCK4oGX6IZvIpT
-         Xuoqy++BDQiK0X4Q6tMKzY3b195vs/PWpKGegstcB2BymwbxaZXXZ4d82zKDg0RDIA9G
-         m4XQglGQ3fBgCqKdK4Zm7CvZeOxiI3tQTSd0zz7C/P6OrOcF7euRTbwl5+9nrDRWg9Xt
-         ifqQ==
+        b=gtpNVv6Q3kS/OtEpR9V5HanUV7WXQ5nierK1Xx3KnbvTFd2cem5Bu+Z+6rRn5iZpMj
+         EzR4d9UoTSZSUAAIxMUgMNhP85wi0V7bURweLdcX0ScxwNYcHrNfFHgsy0eM6NytH4Sn
+         LlnErMh8btnJj2BYQKqfrEWeJ6eJiWWLpJXc081PyZzXK4M4cgk3TSEfbEKU/v+h1+Wa
+         dVTcR3Z28FGOPXXdrz3HzwxzSx1eheQkjnix0RZEqVPvzoiCqEbwHXkr4vldDiC4uEvC
+         Ex1bH0v7om2agwPtsUKGiVG1W0P9YbyIP/vx7kA6qnbeaqnYKBOTQ00kG8qhpE2Q3VFk
+         rPQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=bf0waJRrsyBotCO76+OS2WXn8YhZ9A4Fh8Cn+RCxoS0=;
-        b=zCaAahIV2xqDobzBPPXSKRX5mD25e6cGXPzshXRfXwDZb+VDopMA3HCp/76g7R45wo
-         Zfpr0GidYnuEWc19XWzNLSPpIasXyvJe/FKYkNqP7WdgUW9tcTXB61XB+ImG2ZPExTp8
-         SyZFDy6U/N0y+TgVSZ5xGJH5MRYoOLav8nDUvtxfbN90+iBxDnA6dWn9eMKo+CF5C10R
-         JEb1Bkt6FGHjFq23VGcuxlvk4JIO0brf8Y7Y6iY8mZL+3tmhuKdZGLVU+lQRe0+BvHMW
-         Ti364jt4WiP9hqWCIIX2Ht6iR4gmJXO5Js0K6Fv8ltXxLxIrdzGpW3FcQ3xCCLaFRigq
-         fksg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=rHn3jEo8bMfYRQbBYh+UNSM8JaaPUjiYh/sEGURck0E=;
+        b=C6ZuVSJBlKls38EFrHj8ts44w76ELzFXitt62ktEjuhu7nyy1b63CS4Iuma8HpNPQS
+         DOHGbdSOdg0aY2lAYyuNEstKOKFuBqdcEMe8H0nihz0f7UfrcF1l14xFU3ZR/ejtWO6z
+         cKpEuOJGvFRiG2OL0LZSEaI7Xz1SLB4nNNKBzAJ9284mxe1ck5uDb+wP6Q5G9exBhIVE
+         jlfHT6ew8DW6TnUbSDlIZwCUgRC7j2tQW/MsuT9pU0ksMFvrffNCBRFw22k2EYaFZWmK
+         Q+671cq+Fp+6VGf9ZvVkAwBoGI+3fkABuunK1RMMd6NBPEpsRvBs7PFJIdQ+8g0qiNL/
+         lVwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=O6yB2NQF;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id v21si154757oie.178.2020.02.20.19.27.55;
-        Thu, 20 Feb 2020 19:27:56 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b129si820451qke.324.2020.02.20.19.46.22
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 20 Feb 2020 19:46:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=O6yB2NQF;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1729670AbgBUD1w (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 20 Feb 2020 22:27:52 -0500
-Received: from bilbo.ozlabs.org ([203.11.71.1]:45447 "EHLO ozlabs.org"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1727944AbgBUD1v (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 20 Feb 2020 22:27:51 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
-        id 48Nxjc2qP6z9sRl; Fri, 21 Feb 2020 14:27:48 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-        d=gibson.dropbear.id.au; s=201602; t=1582255668;
-        bh=G+z8gUCKUfHe/W23l+LjfK0aRoRSg3UJJl0zdqsGtkA=;
-        h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-        b=O6yB2NQFlvysAE0s4VmDFc8G+I15V9tOcocUnsHNj51bfVbTud09M7vOieapbuSl2
-         msPaElQuTEm3xyPOndTC/407lF5FUCva1iqvlEkGPbkTNMT0H2qDOQh3oCXI/2WqoQ
-         s9+sFEtOLyOdgdDQoqk5+RXF2EyhtpuYIBpyw308=
-Date:   Fri, 21 Feb 2020 08:46:33 +1100
-From:   David Gibson <david@gibson.dropbear.id.au>
-To:     Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc:     Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Anthony Perard <anthony.perard@citrix.com>,
-        Fam Zheng <fam@euphon.net>,
-        =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
-        kvm@vger.kernel.org, Laurent Vivier <lvivier@redhat.com>,
-        Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>,
-        Eric Auger <eric.auger@redhat.com>,
-        Halil Pasic <pasic@linux.ibm.com>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        qemu-s390x@nongnu.org,
-        Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
-        Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-        Gerd Hoffmann <kraxel@redhat.com>,
-        Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org,
-        Alistair Francis <alistair@alistair23.me>,
-        qemu-block@nongnu.org,
-        =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
-        Jason Wang <jasowang@redhat.com>,
-        xen-devel@lists.xenproject.org,
-        Christian Borntraeger <borntraeger@de.ibm.com>,
-        Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-        Matthew Rosato <mjrosato@linux.ibm.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Richard Henderson <richard.henderson@linaro.org>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        David Hildenbrand <david@redhat.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Stefano Stabellini <sstabellini@kernel.org>,
-        Igor Mitsyanko <i.mitsyanko@gmail.com>,
-        Paul Durrant <paul@xen.org>,
-        Richard Henderson <rth@twiddle.net>,
-        John Snow <jsnow@redhat.com>
-Subject: Re: [PATCH v3 19/20] Let cpu_[physical]_memory() calls pass a
- boolean 'is_write' argument
-Message-ID: <20200220214633.GA2298@umbus.fritz.box>
-References: <20200220130548.29974-1-philmd@redhat.com>
- <20200220130548.29974-20-philmd@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51850 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j4zGf-00012g-R1
+	for alex.bennee@linaro.org; Thu, 20 Feb 2020 22:46:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52028)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <pannengyuan@huawei.com>) id 1j4z8s-0003yg-Bv
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2020 22:38:19 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <pannengyuan@huawei.com>) id 1j4z8q-0001yZ-55
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2020 22:38:18 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:42704 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <pannengyuan@huawei.com>)
+ id 1j4z8p-0001io-Gt; Thu, 20 Feb 2020 22:38:15 -0500
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 81C338DD290A4C042835;
+ Fri, 21 Feb 2020 11:38:03 +0800 (CST)
+Received: from [10.184.39.213] (10.184.39.213) by smtp.huawei.com
+ (10.3.19.210) with Microsoft SMTP Server (TLS) id 14.3.439.0; Fri, 21 Feb
+ 2020 11:37:57 +0800
+Subject: Re: [PATCH v2 2/2] hw: move timer_new from init() into realize() to
+ avoid memleaks
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200217032127.46508-1-pannengyuan@huawei.com>
+ <20200217032127.46508-3-pannengyuan@huawei.com>
+ <CAFEAcA_AxCVaAgho3g2q=kCifSdhz9Qi72eoVAM9gRjb3-_Sog@mail.gmail.com>
+From: Pan Nengyuan <pannengyuan@huawei.com>
+Message-ID: <7e95f201-8f0b-20db-1452-9d0dde1c6f69@huawei.com>
+Date: Fri, 21 Feb 2020 11:37:53 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="k+w/mQv8wyuph6w0"
-Content-Disposition: inline
-In-Reply-To: <20200220130548.29974-20-philmd@redhat.com>
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: Di97gmVjCUSP
-
-
---k+w/mQv8wyuph6w0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <CAFEAcA_AxCVaAgho3g2q=kCifSdhz9Qi72eoVAM9gRjb3-_Sog@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+X-Originating-IP: [10.184.39.213]
+X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.32
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, QEMU
+ Developers <qemu-devel@nongnu.org>, mav2-rk.cave-ayland@ilande.co.uk,
+ qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Euler Robot <euler.robot@huawei.com>, andrzej zaborowski <balrogg@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YHaTHOodo/FJ
 
-On Thu, Feb 20, 2020 at 02:05:47PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> Use an explicit boolean type.
+
+
+On 2/21/2020 1:56 AM, Peter Maydell wrote:
+> On Mon, 17 Feb 2020 at 03:22, <pannengyuan@huawei.com> wrote:
+>>
+>> From: Pan Nengyuan <pannengyuan@huawei.com>
+>>
+>> There are some memleaks when we call 'device_list_properties'. This pa=
+tch move timer_new from init into realize to fix it.
+>> Meanwhile, do the null check in mos6522_reset() to avoid null deref if=
+ we move timer_new into realize().
+>>
+>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 >=20
-> This commit was produced with the included Coccinelle script
-> scripts/coccinelle/exec_rw_const.
 >=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-
-ppc parts
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
-> ---
->  scripts/coccinelle/exec_rw_const.cocci | 14 ++++++++++++++
->  include/exec/cpu-common.h              |  4 ++--
->  hw/display/exynos4210_fimd.c           |  3 ++-
->  hw/display/milkymist-tmu2.c            |  8 ++++----
->  hw/display/omap_dss.c                  |  2 +-
->  hw/display/ramfb.c                     |  2 +-
->  hw/misc/pc-testdev.c                   |  2 +-
->  hw/nvram/spapr_nvram.c                 |  4 ++--
->  hw/ppc/ppc440_uc.c                     |  6 ++++--
->  hw/ppc/spapr_hcall.c                   |  4 ++--
->  hw/s390x/ipl.c                         |  2 +-
->  hw/s390x/s390-pci-bus.c                |  2 +-
->  hw/s390x/virtio-ccw.c                  |  2 +-
->  hw/xen/xen_pt_graphics.c               |  2 +-
->  target/i386/hax-all.c                  |  4 ++--
->  target/s390x/excp_helper.c             |  2 +-
->  target/s390x/helper.c                  |  6 +++---
->  17 files changed, 43 insertions(+), 26 deletions(-)
+>> diff --git a/hw/misc/mos6522.c b/hw/misc/mos6522.c
+>> index 19e154b870..980eda7599 100644
+>> --- a/hw/misc/mos6522.c
+>> +++ b/hw/misc/mos6522.c
+>> @@ -465,11 +465,15 @@ static void mos6522_reset(DeviceState *dev)
+>>      s->timers[0].frequency =3D s->frequency;
+>>      s->timers[0].latch =3D 0xffff;
+>>      set_counter(s, &s->timers[0], 0xffff);
+>> -    timer_del(s->timers[0].timer);
+>> +    if (s->timers[0].timer) {
+>> +        timer_del(s->timers[0].timer);
+>> +    }
+>>
+>>      s->timers[1].frequency =3D s->frequency;
+>>      s->timers[1].latch =3D 0xffff;
+>> -    timer_del(s->timers[1].timer);
+>> +    if (s->timers[1].timer) {
+>> +        timer_del(s->timers[1].timer);
+>> +    }
+>>  }
 >=20
-> diff --git a/scripts/coccinelle/exec_rw_const.cocci b/scripts/coccinelle/=
-exec_rw_const.cocci
-> index ee98ce988e..54b1cab8cd 100644
-> --- a/scripts/coccinelle/exec_rw_const.cocci
-> +++ b/scripts/coccinelle/exec_rw_const.cocci
-> @@ -11,6 +11,20 @@ expression E1, E2, E3, E4, E5;
->  |
->  - address_space_rw(E1, E2, E3, E4, E5, 1)
->  + address_space_rw(E1, E2, E3, E4, E5, true)
-> +|
-> +
-> +- cpu_physical_memory_rw(E1, E2, E3, 0)
-> ++ cpu_physical_memory_rw(E1, E2, E3, false)
-> +|
-> +- cpu_physical_memory_rw(E1, E2, E3, 1)
-> ++ cpu_physical_memory_rw(E1, E2, E3, true)
-> +|
-> +
-> +- cpu_physical_memory_map(E1, E2, 0)
-> ++ cpu_physical_memory_map(E1, E2, false)
-> +|
-> +- cpu_physical_memory_map(E1, E2, 1)
-> ++ cpu_physical_memory_map(E1, E2, true)
->  )
-> =20
->  // Use address_space_write instead of casting to non-const
-> diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
-> index 6bfe201779..e7fd5781ea 100644
-> --- a/include/exec/cpu-common.h
-> +++ b/include/exec/cpu-common.h
-> @@ -74,12 +74,12 @@ void cpu_physical_memory_rw(hwaddr addr, void *buf,
->  static inline void cpu_physical_memory_read(hwaddr addr,
->                                              void *buf, hwaddr len)
->  {
-> -    cpu_physical_memory_rw(addr, buf, len, 0);
-> +    cpu_physical_memory_rw(addr, buf, len, false);
->  }
->  static inline void cpu_physical_memory_write(hwaddr addr,
->                                               const void *buf, hwaddr len)
->  {
-> -    cpu_physical_memory_rw(addr, (void *)buf, len, 1);
-> +    cpu_physical_memory_rw(addr, (void *)buf, len, true);
->  }
->  void *cpu_physical_memory_map(hwaddr addr,
->                                hwaddr *plen,
-> diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
-> index c1071ecd46..ec6776680e 100644
-> --- a/hw/display/exynos4210_fimd.c
-> +++ b/hw/display/exynos4210_fimd.c
-> @@ -1164,7 +1164,8 @@ static void fimd_update_memory_section(Exynos4210fi=
-mdState *s, unsigned win)
->          goto error_return;
->      }
-> =20
-> -    w->host_fb_addr =3D cpu_physical_memory_map(fb_start_addr, &fb_mappe=
-d_len, 0);
-> +    w->host_fb_addr =3D cpu_physical_memory_map(fb_start_addr, &fb_mappe=
-d_len,
-> +                                              false);
->      if (!w->host_fb_addr) {
->          DPRINT_ERROR("Failed to map window %u framebuffer\n", win);
->          goto error_return;
-> diff --git a/hw/display/milkymist-tmu2.c b/hw/display/milkymist-tmu2.c
-> index 199f1227e7..513c0d5bab 100644
-> --- a/hw/display/milkymist-tmu2.c
-> +++ b/hw/display/milkymist-tmu2.c
-> @@ -218,7 +218,7 @@ static void tmu2_start(MilkymistTMU2State *s)
->      glGenTextures(1, &texture);
->      glBindTexture(GL_TEXTURE_2D, texture);
->      fb_len =3D 2ULL * s->regs[R_TEXHRES] * s->regs[R_TEXVRES];
-> -    fb =3D cpu_physical_memory_map(s->regs[R_TEXFBUF], &fb_len, 0);
-> +    fb =3D cpu_physical_memory_map(s->regs[R_TEXFBUF], &fb_len, false);
->      if (fb =3D=3D NULL) {
->          glDeleteTextures(1, &texture);
->          glXMakeContextCurrent(s->dpy, None, None, NULL);
-> @@ -262,7 +262,7 @@ static void tmu2_start(MilkymistTMU2State *s)
-> =20
->      /* Read the QEMU dest. framebuffer into the OpenGL framebuffer */
->      fb_len =3D 2ULL * s->regs[R_DSTHRES] * s->regs[R_DSTVRES];
-> -    fb =3D cpu_physical_memory_map(s->regs[R_DSTFBUF], &fb_len, 0);
-> +    fb =3D cpu_physical_memory_map(s->regs[R_DSTFBUF], &fb_len, false);
->      if (fb =3D=3D NULL) {
->          glDeleteTextures(1, &texture);
->          glXMakeContextCurrent(s->dpy, None, None, NULL);
-> @@ -281,7 +281,7 @@ static void tmu2_start(MilkymistTMU2State *s)
-> =20
->      /* Map the texture */
->      mesh_len =3D MESH_MAXSIZE*MESH_MAXSIZE*sizeof(struct vertex);
-> -    mesh =3D cpu_physical_memory_map(s->regs[R_VERTICESADDR], &mesh_len,=
- 0);
-> +    mesh =3D cpu_physical_memory_map(s->regs[R_VERTICESADDR], &mesh_len,=
- false);
->      if (mesh =3D=3D NULL) {
->          glDeleteTextures(1, &texture);
->          glXMakeContextCurrent(s->dpy, None, None, NULL);
-> @@ -298,7 +298,7 @@ static void tmu2_start(MilkymistTMU2State *s)
-> =20
->      /* Write back the OpenGL framebuffer to the QEMU framebuffer */
->      fb_len =3D 2ULL * s->regs[R_DSTHRES] * s->regs[R_DSTVRES];
-> -    fb =3D cpu_physical_memory_map(s->regs[R_DSTFBUF], &fb_len, 1);
-> +    fb =3D cpu_physical_memory_map(s->regs[R_DSTFBUF], &fb_len, true);
->      if (fb =3D=3D NULL) {
->          glDeleteTextures(1, &texture);
->          glXMakeContextCurrent(s->dpy, None, None, NULL);
-> diff --git a/hw/display/omap_dss.c b/hw/display/omap_dss.c
-> index 637aae8d39..32dc0d6aa7 100644
-> --- a/hw/display/omap_dss.c
-> +++ b/hw/display/omap_dss.c
-> @@ -632,7 +632,7 @@ static void omap_rfbi_transfer_start(struct omap_dss_=
-s *s)
->      len =3D s->rfbi.pixels * 2;
-> =20
->      data_addr =3D s->dispc.l[0].addr[0];
-> -    data =3D cpu_physical_memory_map(data_addr, &len, 0);
-> +    data =3D cpu_physical_memory_map(data_addr, &len, false);
->      if (data && len !=3D s->rfbi.pixels * 2) {
->          cpu_physical_memory_unmap(data, len, 0, 0);
->          data =3D NULL;
-> diff --git a/hw/display/ramfb.c b/hw/display/ramfb.c
-> index cd94940223..7ba07c80f6 100644
-> --- a/hw/display/ramfb.c
-> +++ b/hw/display/ramfb.c
-> @@ -57,7 +57,7 @@ static DisplaySurface *ramfb_create_display_surface(int=
- width, int height,
->      }
-> =20
->      size =3D (hwaddr)linesize * height;
-> -    data =3D cpu_physical_memory_map(addr, &size, 0);
-> +    data =3D cpu_physical_memory_map(addr, &size, false);
->      if (size !=3D (hwaddr)linesize * height) {
->          cpu_physical_memory_unmap(data, size, 0, 0);
->          return NULL;
-> diff --git a/hw/misc/pc-testdev.c b/hw/misc/pc-testdev.c
-> index 0fb84ddc6b..8aa8e6549f 100644
-> --- a/hw/misc/pc-testdev.c
-> +++ b/hw/misc/pc-testdev.c
-> @@ -125,7 +125,7 @@ static void test_flush_page_write(void *opaque, hwadd=
-r addr, uint64_t data,
->                              unsigned len)
->  {
->      hwaddr page =3D 4096;
-> -    void *a =3D cpu_physical_memory_map(data & ~0xffful, &page, 0);
-> +    void *a =3D cpu_physical_memory_map(data & ~0xffful, &page, false);
-> =20
->      /* We might not be able to get the full page, only mprotect what we =
-actually
->         have mapped */
-> diff --git a/hw/nvram/spapr_nvram.c b/hw/nvram/spapr_nvram.c
-> index 877ddef7b9..15d08281d4 100644
-> --- a/hw/nvram/spapr_nvram.c
-> +++ b/hw/nvram/spapr_nvram.c
-> @@ -89,7 +89,7 @@ static void rtas_nvram_fetch(PowerPCCPU *cpu, SpaprMach=
-ineState *spapr,
-> =20
->      assert(nvram->buf);
-> =20
-> -    membuf =3D cpu_physical_memory_map(buffer, &len, 1);
-> +    membuf =3D cpu_physical_memory_map(buffer, &len, true);
->      memcpy(membuf, nvram->buf + offset, len);
->      cpu_physical_memory_unmap(membuf, len, 1, len);
-> =20
-> @@ -127,7 +127,7 @@ static void rtas_nvram_store(PowerPCCPU *cpu, SpaprMa=
-chineState *spapr,
->          return;
->      }
-> =20
-> -    membuf =3D cpu_physical_memory_map(buffer, &len, 0);
-> +    membuf =3D cpu_physical_memory_map(buffer, &len, false);
-> =20
->      alen =3D len;
->      if (nvram->blk) {
-> diff --git a/hw/ppc/ppc440_uc.c b/hw/ppc/ppc440_uc.c
-> index 1a6a8fac22..d5ea962249 100644
-> --- a/hw/ppc/ppc440_uc.c
-> +++ b/hw/ppc/ppc440_uc.c
-> @@ -909,8 +909,10 @@ static void dcr_write_dma(void *opaque, int dcrn, ui=
-nt32_t val)
-> =20
->                      sidx =3D didx =3D 0;
->                      width =3D 1 << ((val & DMA0_CR_PW) >> 25);
-> -                    rptr =3D cpu_physical_memory_map(dma->ch[chnl].sa, &=
-rlen, 0);
-> -                    wptr =3D cpu_physical_memory_map(dma->ch[chnl].da, &=
-wlen, 1);
-> +                    rptr =3D cpu_physical_memory_map(dma->ch[chnl].sa, &=
-rlen,
-> +                                                   false);
-> +                    wptr =3D cpu_physical_memory_map(dma->ch[chnl].da, &=
-wlen,
-> +                                                   true);
->                      if (rptr && wptr) {
->                          if (!(val & DMA0_CR_DEC) &&
->                              val & DMA0_CR_SAI && val & DMA0_CR_DAI) {
-> diff --git a/hw/ppc/spapr_hcall.c b/hw/ppc/spapr_hcall.c
-> index b8bb66b5c0..caf55ab044 100644
-> --- a/hw/ppc/spapr_hcall.c
-> +++ b/hw/ppc/spapr_hcall.c
-> @@ -832,7 +832,7 @@ static target_ulong h_page_init(PowerPCCPU *cpu, Spap=
-rMachineState *spapr,
->      if (!is_ram_address(spapr, dst) || (dst & ~TARGET_PAGE_MASK) !=3D 0)=
- {
->          return H_PARAMETER;
->      }
-> -    pdst =3D cpu_physical_memory_map(dst, &len, 1);
-> +    pdst =3D cpu_physical_memory_map(dst, &len, true);
->      if (!pdst || len !=3D TARGET_PAGE_SIZE) {
->          return H_PARAMETER;
->      }
-> @@ -843,7 +843,7 @@ static target_ulong h_page_init(PowerPCCPU *cpu, Spap=
-rMachineState *spapr,
->              ret =3D H_PARAMETER;
->              goto unmap_out;
->          }
-> -        psrc =3D cpu_physical_memory_map(src, &len, 0);
-> +        psrc =3D cpu_physical_memory_map(src, &len, false);
->          if (!psrc || len !=3D TARGET_PAGE_SIZE) {
->              ret =3D H_PARAMETER;
->              goto unmap_out;
-> diff --git a/hw/s390x/ipl.c b/hw/s390x/ipl.c
-> index 7773499d7f..0817874b48 100644
-> --- a/hw/s390x/ipl.c
-> +++ b/hw/s390x/ipl.c
-> @@ -626,7 +626,7 @@ static void s390_ipl_prepare_qipl(S390CPU *cpu)
->      uint8_t *addr;
->      uint64_t len =3D 4096;
-> =20
-> -    addr =3D cpu_physical_memory_map(cpu->env.psa, &len, 1);
-> +    addr =3D cpu_physical_memory_map(cpu->env.psa, &len, true);
->      if (!addr || len < QIPL_ADDRESS + sizeof(QemuIplParameters)) {
->          error_report("Cannot set QEMU IPL parameters");
->          return;
-> diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
-> index 7c6a2b3c63..ed8be124da 100644
-> --- a/hw/s390x/s390-pci-bus.c
-> +++ b/hw/s390x/s390-pci-bus.c
-> @@ -641,7 +641,7 @@ static uint8_t set_ind_atomic(uint64_t ind_loc, uint8=
-_t to_be_set)
->      hwaddr len =3D 1;
->      uint8_t *ind_addr;
-> =20
-> -    ind_addr =3D cpu_physical_memory_map(ind_loc, &len, 1);
-> +    ind_addr =3D cpu_physical_memory_map(ind_loc, &len, true);
->      if (!ind_addr) {
->          s390_pci_generate_error_event(ERR_EVENT_AIRERR, 0, 0, 0, 0);
->          return -1;
-> diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
-> index 13f57e7b67..50cf95b781 100644
-> --- a/hw/s390x/virtio-ccw.c
-> +++ b/hw/s390x/virtio-ccw.c
-> @@ -790,7 +790,7 @@ static uint8_t virtio_set_ind_atomic(SubchDev *sch, u=
-int64_t ind_loc,
->      hwaddr len =3D 1;
->      uint8_t *ind_addr;
-> =20
-> -    ind_addr =3D cpu_physical_memory_map(ind_loc, &len, 1);
-> +    ind_addr =3D cpu_physical_memory_map(ind_loc, &len, true);
->      if (!ind_addr) {
->          error_report("%s(%x.%x.%04x): unable to access indicator",
->                       __func__, sch->cssid, sch->ssid, sch->schid);
-> diff --git a/hw/xen/xen_pt_graphics.c b/hw/xen/xen_pt_graphics.c
-> index b69732729b..b11e4e0546 100644
-> --- a/hw/xen/xen_pt_graphics.c
-> +++ b/hw/xen/xen_pt_graphics.c
-> @@ -222,7 +222,7 @@ void xen_pt_setup_vga(XenPCIPassthroughState *s, XenH=
-ostPCIDevice *dev,
->      }
-> =20
->      /* Currently we fixed this address as a primary for legacy BIOS. */
-> -    cpu_physical_memory_rw(0xc0000, bios, bios_size, 1);
-> +    cpu_physical_memory_rw(0xc0000, bios, bios_size, true);
->  }
-> =20
->  uint32_t igd_read_opregion(XenPCIPassthroughState *s)
-> diff --git a/target/i386/hax-all.c b/target/i386/hax-all.c
-> index a9cc51e6ce..38936d7af6 100644
-> --- a/target/i386/hax-all.c
-> +++ b/target/i386/hax-all.c
-> @@ -376,8 +376,8 @@ static int hax_handle_fastmmio(CPUArchState *env, str=
-uct hax_fastmmio *hft)
->           *  hft->direction =3D=3D 2: gpa =3D=3D> gpa2
->           */
->          uint64_t value;
-> -        cpu_physical_memory_rw(hft->gpa, &value, hft->size, 0);
-> -        cpu_physical_memory_rw(hft->gpa2, &value, hft->size, 1);
-> +        cpu_physical_memory_rw(hft->gpa, &value, hft->size, false);
-> +        cpu_physical_memory_rw(hft->gpa2, &value, hft->size, true);
->      }
-> =20
->      return 0;
-> diff --git a/target/s390x/excp_helper.c b/target/s390x/excp_helper.c
-> index 1e9d6f20c1..3b58d10df3 100644
-> --- a/target/s390x/excp_helper.c
-> +++ b/target/s390x/excp_helper.c
-> @@ -393,7 +393,7 @@ static int mchk_store_vregs(CPUS390XState *env, uint6=
-4_t mcesao)
->      MchkExtSaveArea *sa;
->      int i;
-> =20
-> -    sa =3D cpu_physical_memory_map(mcesao, &len, 1);
-> +    sa =3D cpu_physical_memory_map(mcesao, &len, true);
->      if (!sa) {
->          return -EFAULT;
->      }
-> diff --git a/target/s390x/helper.c b/target/s390x/helper.c
-> index a3a49164e4..b810ad431e 100644
-> --- a/target/s390x/helper.c
-> +++ b/target/s390x/helper.c
-> @@ -151,7 +151,7 @@ LowCore *cpu_map_lowcore(CPUS390XState *env)
->      LowCore *lowcore;
->      hwaddr len =3D sizeof(LowCore);
-> =20
-> -    lowcore =3D cpu_physical_memory_map(env->psa, &len, 1);
-> +    lowcore =3D cpu_physical_memory_map(env->psa, &len, true);
-> =20
->      if (len < sizeof(LowCore)) {
->          cpu_abort(env_cpu(env), "Could not map lowcore\n");
-> @@ -246,7 +246,7 @@ int s390_store_status(S390CPU *cpu, hwaddr addr, bool=
- store_arch)
->      hwaddr len =3D sizeof(*sa);
->      int i;
-> =20
-> -    sa =3D cpu_physical_memory_map(addr, &len, 1);
-> +    sa =3D cpu_physical_memory_map(addr, &len, true);
->      if (!sa) {
->          return -EFAULT;
->      }
-> @@ -298,7 +298,7 @@ int s390_store_adtl_status(S390CPU *cpu, hwaddr addr,=
- hwaddr len)
->      hwaddr save =3D len;
->      int i;
-> =20
-> -    sa =3D cpu_physical_memory_map(addr, &save, 1);
-> +    sa =3D cpu_physical_memory_map(addr, &save, true);
->      if (!sa) {
->          return -EFAULT;
->      }
+> What code path calls a device 'reset' method on a device
+> that has not yet been realized ? I wasn't expecting that
+> to be valid...
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+I got the follow null-deref case on m68k If I move timer_new into realize=
+():
 
---k+w/mQv8wyuph6w0
-Content-Type: application/pgp-signature; name="signature.asc"
+    #0 0x55cbb0d3e9f9 in timer_del /mnt/sdb/qemu-new/qemu/util/qemu-timer=
+.c:429
+    #1 0x55cbb04f3abe in mos6522_reset /mnt/sdb/qemu-new/qemu/hw/misc/mos=
+6522.c:468
+    #2 0x55cbb02b5fd5 in mos6522_q800_via2_reset /mnt/sdb/qemu-new/qemu/h=
+w/misc/mac_via.c:1098
+    #3 0x55cbb047b926 in device_transitional_reset /mnt/sdb/qemu-new/qemu=
+/hw/core/qdev.c:1136
+    #4 0x55cbb0491a71 in resettable_phase_hold /mnt/sdb/qemu-new/qemu/hw/=
+core/resettable.c:182
+    #5 0x55cbb048700e in bus_reset_child_foreach /mnt/sdb/qemu-new/qemu/h=
+w/core/bus.c:94
+    #6 0x55cbb0490f66 in resettable_child_foreach /mnt/sdb/qemu-new/qemu/=
+hw/core/resettable.c:96
+    #7 0x55cbb0491896 in resettable_phase_hold /mnt/sdb/qemu-new/qemu/hw/=
+core/resettable.c:173
+    #8 0x55cbb0490c06 in resettable_assert_reset /mnt/sdb/qemu-new/qemu/h=
+w/core/resettable.c:60
+    #9 0x55cbb0490aec in resettable_reset /mnt/sdb/qemu-new/qemu/hw/core/=
+resettable.c:45
+    #10 0x55cbb0492668 in resettable_cold_reset_fn /mnt/sdb/qemu-new/qemu=
+/hw/core/resettable.c:269
+    #11 0x55cbb0494a04 in qemu_devices_reset /mnt/sdb/qemu-new/qemu/hw/co=
+re/reset.c:69
+    #12 0x55cbb03ab91d in qemu_system_reset /mnt/sdb/qemu-new/qemu/vl.c:1=
+412
+    #13 0x55cbb03bfe04 in main /mnt/sdb/qemu-new/qemu/vl.c:4403
 
------BEGIN PGP SIGNATURE-----
+mos6522_init was called in mac_via_realize as follow, but mos6522_realize=
+ was not called at all.
+So maybe we shouldn't move it into realize or add realize step in this co=
+de path?
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl5O/jcACgkQbDjKyiDZ
-s5LKqQ//Y0MOoydRoNQyGadMN6IsO4LqzWL2w/z5cCdHZyt3oly20oHOUETuSw1B
-OaGPs0LzoQPkBnWPUka6Rq/MWT8bkKModAuO+i1PLxnuJ08FjmVbmR0BPTmsDAAu
-OVhdRclHexYP3WrkRQde5y/I0qeHJTWViFK6rhVRFH0FBi0+x6KKvqrXHoGY1E17
-/nY9hnGICRzhyNMdJNN8dMF717JDJ4V+wEj7LsoBEekG7qDcU6daBjRJqDxmU8bn
-HrlLbZRiS9j0WCNGq3ocjIL+e8ujr3E2Egwz576dBaK4C3TBoTzYM+GpHmQVubUS
-0vkLNXwPZL/5HoH7Aab/9jPuMra4ifytppTJ9kuLBUlQ0TY1iYpGz+D4DOhNdYIf
-KonQuwAB2Uk53XHFqrrJF+PkMd7SnFqwC2BCZckJmV/Xjlm0Pu7zW1PezCpTZPCM
-5DSORkhRqcJ7Zg6d8fBurn+FfMpjCjqeTzSTU27183AEJp2bMfneeP+wQOuWuUWW
-SgnlUehymh0kcfPdNpCKCLSJlzpwJokWrBhzRsZJ+OcOzmZaLr/EJhrCx4NDkj6G
-MwiW++72a/b+VfrYH0FQys62aW5PoXK6VZ2TLuNCY2eqpoMChNkXchFgmnvga34F
-ssFw22e/Yi8fXSi0vj8QiwVqH+8lDOOaO/03w0/bcY3cc4Vu16A=
-=H5IH
------END PGP SIGNATURE-----
+    #0  0x0000555555789e40 in mos6522_init (obj=3D0x555557537b00) at /mnt=
+/sdb/qemu-new/qemu/hw/misc/mos6522.c:476
+    #1  0x000055555581b6c3 in object_init_with_type (obj=3D0x555557537b00=
+, ti=3D0x55555617c2b0) at /mnt/sdb/qemu-new/qemu/qom/object.c:372
+    #2  0x000055555581cc80 in object_initialize_with_type (data=3Ddata@en=
+try=3D0x555557537b00, size=3D1504, type=3D0x55555617c2b0) at /mnt/sdb/qem=
+u-new/qemu/qom/object.c:516
+    #3  0x000055555581cd1f in object_initialize (data=3Ddata@entry=3D0x55=
+5557537b00, size=3D<optimized out>, typename=3D<optimized out>) at /mnt/s=
+db/qemu-new/qemu/qom/object.c:529
+    #4  0x000055555581e387 in object_initialize_childv
+    (parentobj=3D0x555557537510, propname=3D0x555555a3c673 "via1", childo=
+bj=3D0x555557537b00, size=3D<optimized out>, type=3D<optimized out>, errp=
+=3D0x55555613b338 <error_abort>, vargs=3D0x7fffffffdb30)
+    at /mnt/sdb/qemu-new/qemu/qom/object.c:552
+    #5  0x000055555581e4d3 in object_initialize_child
+    (parentobj=3D<optimized out>, propname=3D<optimized out>, childobj=3D=
+childobj@entry=3D0x555557537b00, size=3D<optimized out>, type=3D<optimize=
+d out>, errp=3D<optimized out>) at /mnt/sdb/qemu-new/qemu/qom/object.c:53=
+9
+    #6  0x000055555577ba88 in sysbus_init_child_obj (parent=3D<optimized =
+out>, childname=3D<optimized out>, child=3D0x555557537b00, childsize=3D<o=
+ptimized out>, childtype=3D<optimized out>)
+    at /mnt/sdb/qemu-new/qemu/hw/core/sysbus.c:352
+    #7  0x000055555570d301 in mac_via_realize (dev=3D0x555557537510, errp=
+=3D0x7fffffffdce0) at /mnt/sdb/qemu-new/qemu/hw/misc/mac_via.c:876
+    #8  0x0000555555774444 in device_set_realized (obj=3D0x555557537510, =
+value=3D<optimized out>, errp=3D0x7fffffffddd0) at /mnt/sdb/qemu-new/qemu=
+/hw/core/qdev.c:891
+    #9  0x000055555581b266 in property_set_bool (obj=3D0x555557537510, v=3D=
+<optimized out>, name=3D<optimized out>, opaque=3D0x555556165f50, errp=3D=
+0x7fffffffddd0) at /mnt/sdb/qemu-new/qemu/qom/object.c:2238
+    #10 0x000055555581feee in object_property_set_qobject (obj=3D0x555557=
+537510, value=3D<optimized out>, name=3D0x555555a5fa67 "realized", errp=3D=
+0x7fffffffddd0) at /mnt/sdb/qemu-new/qemu/qom/qom-qobject.c:26
+    #11 0x000055555581d60f in object_property_set_bool (obj=3D0x555557537=
+510, value=3D<optimized out>, name=3D0x555555a5fa67 "realized", errp=3D0x=
+7fffffffddd0) at /mnt/sdb/qemu-new/qemu/qom/object.c:1390
+    #12 0x0000555555773381 in qdev_init_nofail (dev=3Ddev@entry=3D0x55555=
+7537510) at /mnt/sdb/qemu-new/qemu/hw/core/qdev.c:418
+    #13 0x0000555555711fcd in q800_init (machine=3D<optimized out>) at /m=
+nt/sdb/qemu-new/qemu/hw/m68k/q800.c:230
+    #14 0x0000555555686dfb in main (argc=3D<optimized out>, argv=3D<optim=
+ized out>, envp=3D<optimized out>) at /mnt/sdb/qemu-new/qemu/vl.c:4308
 
---k+w/mQv8wyuph6w0--
+And I have another quesion, how to distinguish whether the realize() will=
+ be called or not.
+
+Thanks.
+
+>=20
+> thanks
+> -- PMM
+> .
+>=20

@@ -1,82 +1,81 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1839807lfg;
-        Fri, 21 Feb 2020 06:02:45 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxiW42KcM7kL3wpTBle7Qxhb4UO1WsshMdKZxvkwa2rNOm7RuRX0M7arUHp2lsXcWC1kHRA
-X-Received: by 2002:a9d:638d:: with SMTP id w13mr27261359otk.220.1582293765073;
-        Fri, 21 Feb 2020 06:02:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582293765; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1845752lfg;
+        Fri, 21 Feb 2020 06:07:47 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz7yd8p5fvIasQ5JTIE325iV+6MZRkahHCncZmkEAK1Rjdg5HcLeDXp+7TtrIKnzThW5oQF
+X-Received: by 2002:aca:220c:: with SMTP id b12mr2044650oic.55.1582294067494;
+        Fri, 21 Feb 2020 06:07:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582294067; cv=none;
         d=google.com; s=arc-20160816;
-        b=z5NQQlU8SsQdUPKMHtF8mS6d7HOtcmAFTrRCosTAb0+YmfKZvYeczW57elIreyT907
-         VfJBok3TnOuPVMXv4Dpg7Fp5wOLd11LqNxsbOHtke8/W2z/qIIy9kUxciL9PxpwG0YVy
-         mvOJWtDdaCYmfYD7dQiskDn4Qu9Mn0cBHZ37amyJuEEsaPG2BAGT1dLLzf6wpFOp9EMZ
-         cnb55u8Q7DbiSdrWlavCJKHtZJIS7NTdtKT/UKHwqosmVE4bdKzFebsShg4o3brlwYly
-         1frMxJ+GgSoLpZCUbKs2NPrPA2OHMSoDARVdSGNZEEEMJMCjMnVZOe1qkvQUUWFQ0ctc
-         d7Bg==
+        b=fiw2YE/9QzjcRd3pozwAkvDrtW6E7hZv/2wcZj5vxtdpeKF/FWiH+ThCmDA1/Szany
+         wz6IrtDEQtmv0CRn37ieLtc0hosT7UAw9ZMV3YFuILKU3fBFeVkEYEi6gsX7321q1Tsn
+         0RYaRqAIoEjZ6PC+E8vggTMLfW7o1Fet1TjHhnM1c0U3byMYdEHs72puWAitoDrwxDd8
+         A0a6sNq0t484oFoufiChkGoCE+h3QVAMG/zu68dCOji3joYO+s/5NCCX97OCA4bk/LQZ
+         V7o8jInPX/1wl/rcriZwTtjf4Tjl4AQOZznTfZtTOlOAHafaYFPqCD7AaSDdUnUYNEwu
+         aUMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=ustmWK5mEvdAZcOBmaOSg4VtBioTYnOuWkx56ShVqRc=;
-        b=QgYZ597EHmFd7XB9jJwVYQ7DYywESgaO/3Rwr6VDskkxD7pgUsue3OJDwqSESXqDFD
-         LME3LlP/PberAfVabdLPBBv2dgtmNOgoZJWORzSxw1I2xH+Ny4C1WTyAO5GT6lKuf9AD
-         IqgauZ/wv4fjnEJ7/ovKsvyEUrW6vjoMNg216DvYBVKibRqUW9TVBYn0U0wRyxcvI4dT
-         zJeGtPa13wCO3ofp9YoHR8X8lCXaM9/yR7CmvzecHKNcutRX4vv0Wkk2RPvVbFuxbS+N
-         8GBjiJLDAOZauDxyIaN36S+pXPnIQzSYW7bUaUD9TCxruaHpIvmN34sZt68Z6L9dUFu6
-         4Zbw==
+        bh=jRrCY8ivewk2YPDDhcTANhN06ruxAxSf+AS7eQGMH4k=;
+        b=mA0i7+3bJsgai2A/esGm8OyvaylblOJGghfPDJRGNgj3gS1wtZH8hiW3qfd6SWTWy8
+         rd+gtIjKtYrrYnNePkuLprmdzIIkStCy8f++s1wwCDC70poz0Jx1zehPG8GNTy9JZG7j
+         I89N8hrLR7nzO3vcaATFHMbaY2NADbGnGWE6fIZqNTEtSjUiWB3Wda/Zd77hA8nwVmR5
+         l3Od584gOgUstn2yQQiLLqBlhR3kKpZZHEwIV7hFj3dJ8pVywwesbUtynCSzS+7Dbeac
+         R0ThZ489k3kX1xFCj3gJmgXTZSJzAboGEjzYNWEzrmD6Que88CRNMWFhVDe+leAxHNkW
+         guAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ksSrv+JQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wTnUuK2E;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id h11si1494890otr.197.2020.02.21.06.02.44;
-        Fri, 21 Feb 2020 06:02:45 -0800 (PST)
+        by mx.google.com with ESMTP id h11si1494890otr.197.2020.02.21.06.07.46;
+        Fri, 21 Feb 2020 06:07:47 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ksSrv+JQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wTnUuK2E;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728544AbgBUOCo (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Fri, 21 Feb 2020 09:02:44 -0500
-Received: from mail-oi1-f196.google.com ([209.85.167.196]:44869 "EHLO
-        mail-oi1-f196.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1728326AbgBUOCn (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 21 Feb 2020 09:02:43 -0500
-Received: by mail-oi1-f196.google.com with SMTP id d62so1625328oia.11
-        for <kvm@vger.kernel.org>; Fri, 21 Feb 2020 06:02:43 -0800 (PST)
+        id S1728228AbgBUOHq (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Fri, 21 Feb 2020 09:07:46 -0500
+Received: from mail-oi1-f193.google.com ([209.85.167.193]:45658 "EHLO
+        mail-oi1-f193.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1727836AbgBUOHp (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 21 Feb 2020 09:07:45 -0500
+Received: by mail-oi1-f193.google.com with SMTP id v19so1641181oic.12
+        for <kvm@vger.kernel.org>; Fri, 21 Feb 2020 06:07:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=ustmWK5mEvdAZcOBmaOSg4VtBioTYnOuWkx56ShVqRc=;
-        b=ksSrv+JQp6iia60+jXznBn1bDqYQPbMAYUjTQvr4KXPkqeSD2mwVnvhvOCiEd0nYMO
-         +fX3gUUCsG9jjZzmzjrXMHiRcjpNmmuHttONuw+J+gqM1rbz70fXx123EtxWjaiyUmoZ
-         QdwQXxqrzk+7yloQ46ZuZ2no4EmQOrZiRX9c3/FS4Uq6QmCtL0plHzM83fzklhUBE/kf
-         r91ZvTUhs0Oo4BE8652GkH8ZZXdXIwahEzUHL5SfSWE9AytFKP9tlQ8unhXEMNj1IH3m
-         wAlHaVkOqR53LXl85gOguvTn7u31lxWsKdGQbG9uoioc+M98IBpDaQeYFFm6EOlg8UDB
-         kNew==
+        bh=jRrCY8ivewk2YPDDhcTANhN06ruxAxSf+AS7eQGMH4k=;
+        b=wTnUuK2EkkmDJZpLj4tmgHEqKVPhULq+9DKBHUK9iU38rUMNmOc/I4zk9rDHhxEFuq
+         O/1uQiBW33+L9XDt7L+lOx+RfvBiKxJteC/df5Ub/RpCDiUgBoI9htfYdyQsRX3nA0pO
+         IhTWX3XyCBr+PFR5vOzZJT1aH96Vty28jyER/5U5p9W0xUCr9udL/jjr6F8hmNXVfnYQ
+         +gZPfYOkd77DeI9TVzjuCqDwF7nAPjYnDNnycJM7hDII9KRT4tx9hNKZ3JvIP9DQAM4E
+         FhCu1om59A5iQYmeHYP4ZYQVF58PY7JpQlCv+fFLWIJvQi3ObOsitNgfTf51YPOUz1XP
+         qcjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=ustmWK5mEvdAZcOBmaOSg4VtBioTYnOuWkx56ShVqRc=;
-        b=jkS01tRPryGVd7ZbNXg1TZpxVzLdAADRAERuj0H3Pea/oC4V6pR1Sh5qRNUg5Bmcyn
-         uoe2qJRYEHzD97Avrlsq3ZoLIoixRq3qtQruZ50axnsOQM4sYKESk9wrKcF3gFePe90s
-         TEzKF7RB5GzeG/TUg4guKsFfgaK6gdUo+RYLcWUkEE2CeBT1SYhCNUcW2QEbBcDMyIlx
-         QaGKDcMHpsaC3ZrAyc6063w3b/oBzjXHjw3MP1a4L46iWiKEvuQfAIbj4YzThX74t1RR
-         WpgulpSpJwP6+EO8Z4OzL/DowoO6dm/nNZInDVzJyGqFXbSedfXKStKp5xFKoSivDDE6
-         Qh5g==
-X-Gm-Message-State: APjAAAWBwWrfGrSC1FlalfDCs5OvB0UcopXnGI71DDZ0CgoPvRRBi9wl
-        URGToJWS7s3DPir7vYVQ2oTVJRJhyBYTmhbsJOj8yA==
-X-Received: by 2002:a05:6808:289:: with SMTP id z9mr2070195oic.48.1582293756639;
- Fri, 21 Feb 2020 06:02:36 -0800 (PST)
+        bh=jRrCY8ivewk2YPDDhcTANhN06ruxAxSf+AS7eQGMH4k=;
+        b=P4bvzlcqS8bb8b9wQuSbbEOFvtHIRetZINnfyzcP332wCeBDmDYFe9guIBOto7qVs4
+         uo9V6dllkR+ZYetQRTKOaM97fEdCUsVxTG+AK/kXdmskpBKGnL4k6AEks5123VvMK+D0
+         Mjga7Tne9qEHXShh2qh+rBTXB9iZRyzCbiBZYgA7PYcaAvqED5VKBYeSZZjSfJBI5G0W
+         zwExoQ+sLKEHOOHwioob2MTezMS2Fx9eQKnSpSM3quL8fSQ9oNNUmsw1kawqXIB1rwT6
+         5DYUaWW7YcH5Ie6peQvXgTJk7o++J3HabcqTabjEXJ+amQ3WAHoIACH3Q0CNUc1hGViS
+         +6Ng==
+X-Gm-Message-State: APjAAAXB6SuYIDsS9JfjYrbAgqPf7Gt5mAE7srYZuUFt8+ktBOr304xS
+        V8nfntf8pUVuRo3MNMN38V2F2ZPz/WixTPMXjAsX9w==
+X-Received: by 2002:aca:b2c5:: with SMTP id b188mr2127351oif.163.1582294064908;
+ Fri, 21 Feb 2020 06:07:44 -0800 (PST)
 MIME-Version: 1.0
-References: <20200217131248.28273-1-gengdongjiu@huawei.com> <20200217131248.28273-10-gengdongjiu@huawei.com>
-In-Reply-To: <20200217131248.28273-10-gengdongjiu@huawei.com>
+References: <20200217131248.28273-1-gengdongjiu@huawei.com> <20200217131248.28273-2-gengdongjiu@huawei.com>
+In-Reply-To: <20200217131248.28273-2-gengdongjiu@huawei.com>
 From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Fri, 21 Feb 2020 14:02:25 +0000
-Message-ID: <CAFEAcA9MaRDKNovYjH1FJXTbAVOL3JaA20Sc_Haa3XjnRNkGvg@mail.gmail.com>
-Subject: Re: [PATCH v24 09/10] target-arm: kvm64: handle SIGBUS signal from
- kernel or KVM
+Date:   Fri, 21 Feb 2020 14:07:34 +0000
+Message-ID: <CAFEAcA_smgw3cg=jqh_xRU1N+mYB1B6qR75EP14SNgZ4aa0zxg@mail.gmail.com>
+Subject: Re: [PATCH v24 01/10] acpi: nvdimm: change NVDIMM_UUID_LE to a common macro
 To:     Dongjiu Geng <gengdongjiu@huawei.com>
 Cc:     "Michael S. Tsirkin" <mst@redhat.com>,
         Igor Mammedov <imammedo@redhat.com>,
@@ -100,41 +99,81 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: Sf40PR4h77ST
+X-TUID: d99axr6LaPNC
 
 On Mon, 17 Feb 2020 at 13:10, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
 >
-> Add a SIGBUS signal handler. In this handler, it checks the SIGBUS type,
-> translates the host VA delivered by host to guest PA, then fills this PA
-> to guest APEI GHES memory, then notifies guest according to the SIGBUS
-> type.
->
-> When guest accesses the poisoned memory, it will generate a Synchronous
-> External Abort(SEA). Then host kernel gets an APEI notification and calls
-> memory_failure() to unmapped the affected page in stage 2, finally
-> returns to guest.
->
-> Guest continues to access the PG_hwpoison page, it will trap to KVM as
-> stage2 fault, then a SIGBUS_MCEERR_AR synchronous signal is delivered to
-> Qemu, Qemu records this error address into guest APEI GHES memory and
-> notifes guest using Synchronous-External-Abort(SEA).
->
-> In order to inject a vSEA, we introduce the kvm_inject_arm_sea() function
-> in which we can setup the type of exception and the syndrome information.
-> When switching to guest, the target vcpu will jump to the synchronous
-> external abort vector table entry.
->
-> The ESR_ELx.DFSC is set to synchronous external abort(0x10), and the
-> ESR_ELx.FnV is set to not valid(0x1), which will tell guest that FAR is
-> not valid and hold an UNKNOWN value. These values will be set to KVM
-> register structures through KVM_SET_ONE_REG IOCTL.
+> The little end UUID is used in many places, so make
+> NVDIMM_UUID_LE to a common macro to convert the UUID
+> to a little end array.
 >
 > Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> Acked-by: Xiang Zheng <zhengxiang9@huawei.com>
+> Reviewed-by: Xiang Zheng <zhengxiang9@huawei.com>
+> ---
+>  hw/acpi/nvdimm.c    | 8 ++------
+>  include/qemu/uuid.h | 5 +++++
+>  2 files changed, 7 insertions(+), 6 deletions(-)
+>
+> diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
+> index 9fdad6d..232b701 100644
+> --- a/hw/acpi/nvdimm.c
+> +++ b/hw/acpi/nvdimm.c
+> @@ -27,6 +27,7 @@
+>   */
+>
+>  #include "qemu/osdep.h"
+> +#include "qemu/uuid.h"
+>  #include "hw/acpi/acpi.h"
+>  #include "hw/acpi/aml-build.h"
+>  #include "hw/acpi/bios-linker-loader.h"
+> @@ -60,17 +61,12 @@ static GSList *nvdimm_get_device_list(void)
+>      return list;
+>  }
+>
+> -#define NVDIMM_UUID_LE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)             \
+> -   { (a) & 0xff, ((a) >> 8) & 0xff, ((a) >> 16) & 0xff, ((a) >> 24) & 0xff, \
+> -     (b) & 0xff, ((b) >> 8) & 0xff, (c) & 0xff, ((c) >> 8) & 0xff,          \
+> -     (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) }
+> -
+>  /*
+>   * define Byte Addressable Persistent Memory (PM) Region according to
+>   * ACPI 6.0: 5.2.25.1 System Physical Address Range Structure.
+>   */
+>  static const uint8_t nvdimm_nfit_spa_uuid[] =
+> -      NVDIMM_UUID_LE(0x66f0d379, 0xb4f3, 0x4074, 0xac, 0x43, 0x0d, 0x33,
+> +      UUID_LE(0x66f0d379, 0xb4f3, 0x4074, 0xac, 0x43, 0x0d, 0x33,
+>                       0x18, 0xb7, 0x8c, 0xdb);
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+You need to fix up the indentation on this following line.
+
+>
+>  /*
+> diff --git a/include/qemu/uuid.h b/include/qemu/uuid.h
+> index 129c45f..bd38af5 100644
+> --- a/include/qemu/uuid.h
+> +++ b/include/qemu/uuid.h
+> @@ -34,6 +34,11 @@ typedef struct {
+>      };
+>  } QemuUUID;
+>
+> +#define UUID_LE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)             \
+> +  { (a) & 0xff, ((a) >> 8) & 0xff, ((a) >> 16) & 0xff, ((a) >> 24) & 0xff, \
+> +     (b) & 0xff, ((b) >> 8) & 0xff, (c) & 0xff, ((c) >> 8) & 0xff,          \
+> +     (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) }
+> +
+
+If you want to make this a macro in a visible-to-the-rest-of-QEMU
+header file, can you provide a documentation comment please that
+describes what the macro is for? It would also be useful to
+give the arguments (which should be documented in the doc comment)
+more descriptive names than a, b, c...
+
+>  #define UUID_FMT "%02hhx%02hhx%02hhx%02hhx-" \
+>                   "%02hhx%02hhx-%02hhx%02hhx-" \
+>                   "%02hhx%02hhx-" \
+> --
+> 1.8.3.1
+
 
 thanks
 -- PMM

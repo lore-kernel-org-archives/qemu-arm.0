@@ -1,124 +1,207 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1848242lfg;
-        Fri, 21 Feb 2020 06:10:08 -0800 (PST)
-X-Google-Smtp-Source: APXvYqws/hERvEyhhaGByAInAsls33824cFwUSe0DoSj7PPc/uQSwH8G7h92Vq3ewGpDpw1rsaQ5
-X-Received: by 2002:aca:ebcb:: with SMTP id j194mr2179899oih.154.1582294208612;
-        Fri, 21 Feb 2020 06:10:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582294208; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1929670lfg;
+        Fri, 21 Feb 2020 07:31:03 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwJIUOIugdwgcqqmszPr7pN8xWUQbKLUImdT8P3myM0nWTMwNk5Lq+tsaJeFwzcqeIP/Qrz
+X-Received: by 2002:aed:3463:: with SMTP id w90mr31499439qtd.42.1582299063221;
+        Fri, 21 Feb 2020 07:31:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582299063; cv=none;
         d=google.com; s=arc-20160816;
-        b=w7OPk7PX71CtOEcovjQy/gP74MgHNykyt8KG4OKsZrHIvUONNCoI+YVsc7M/pAizhE
-         7HB9vBJT88VC1mxp+6dBBksX9mI7tpfJZv4Nt69HAMYBudMDjv6trAoV7oSNGD1GYsA9
-         KFh2gmLf+5r3Shdfsk5S3ueL0CSglR+9GDl6ri03WKqMzsTA6Z+I1Pp9Eb2aSUSVXaHl
-         RMfcF+AgCfS2tlTq8hhcCwnRs97ZG300JodQF1jvJXPfm5yZ66Yv/EvbDH19MdDW8nZO
-         J+30g2wkwlPs1Af/a5n9nSvtkbA6kZKGq6JTuk8wBIdwcHlkexDK+1lFXrhv2sRIzDya
-         RuuQ==
+        b=HiT3E0wdUDjePy2A2ZKpq/pTAsUk/6MUfsewVBCDS83UGceGgZPMVewQIoZNgn1HBM
+         rViANce+2xagv5U3t4IIVMB+yT06OfJ9MzAnNC9W39+eYZJX4N6q2spdp95SD50hnn0q
+         S2eQpyzYiB83dNwPpRNm7xkkci70BTdza0GuckGmb2teYhMcD+8drcctUPhySokrmIt+
+         tyGfpwZGgh+Uz5gTCTymVygysdx7Xf6g6JxTpycsT1kANPRo6iL8FWweLbl+NfimPz38
+         +Ma2WQjSl+uhBxf+YaAIWR4pLLLUYnl73I9vhZ01ChmNJpyJbxT1U3P+imBFY8uMa1yl
+         FgYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=FWVDkmsgLpByHs3eCi6sKclY4YV1R37ovc1jJnUhQAE=;
-        b=tsNc3iZnyvJk8pLSRdjBvdacJGe2jcbXnRXFD3wNlZ7a2792hXjNqEBBA2yaCrqGXE
-         21v2ATrDj5LjX5nxp9P+uIIfKYr8yoDg2aor1LlAn1Ev7YhEch8bLycWMjrzyS+9Mdo0
-         Y9IeomLuIBEfvdm/bdKZPxfJ5ZwxR7HVJVXl2rQf06+VpT8az6B+yudNIhrFkXNzdoq0
-         FTpmRS+hrhDSmIsvgbgxTTrejxO2SskmDu+AhVQ9Ht+ec2b949gipvtK5lCkONJqRD0d
-         dIX6lN+rRnDNCQvfRfJKphTtzOlTRF2WQ2S7YtzULjhWwNmhm7x3+/IE9tACpl1Ik6jr
-         1wVQ==
+        bh=8q1sawrAR7L0CtEGCE+s9tKiGKo+ZNnF45eMhlEP5bk=;
+        b=n2zbhFJUtu7SaFhTUPQJDtNwyoRpbheVf5PU/O0caBL95qCtnEf8ILtm0ZKOsh1b9q
+         6TivFJO7TR/QpC58Uqb9svKVKnkt2H59HtMkrBymVBfAIfmu9SR45+SatxUrkTfEObir
+         82UPVuVchIqugZ+V7yE5LOkAPz7uY2ZnLT5iMlETfLe8Xmb7OYn6Bw2GNEYFQ3cO/2J9
+         OFAFZ/uQq93R/Ftd/BHsCVB5KXxdZP0BClDoh5Kz9sqLX0Syzm4gSRBCpavW8NEmf4Ae
+         imWpUhixiEsruXfkvN5vLuDgGjVfk+YscIVtSS044gpBnLR1NRMIlq3LKUSnl3WMu+TV
+         U2Ug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sYZNsPMd;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id d12si1494300otc.307.2020.02.21.06.10.08;
-        Fri, 21 Feb 2020 06:10:08 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b="prw/lj0M";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x13si1519016qkj.359.2020.02.21.07.31.03
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 21 Feb 2020 07:31:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sYZNsPMd;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728392AbgBUOKH (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Fri, 21 Feb 2020 09:10:07 -0500
-Received: from mail-oi1-f194.google.com ([209.85.167.194]:38443 "EHLO
-        mail-oi1-f194.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1727836AbgBUOKH (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 21 Feb 2020 09:10:07 -0500
-Received: by mail-oi1-f194.google.com with SMTP id r137so1677540oie.5
-        for <kvm@vger.kernel.org>; Fri, 21 Feb 2020 06:10:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=FWVDkmsgLpByHs3eCi6sKclY4YV1R37ovc1jJnUhQAE=;
-        b=sYZNsPMdslZdcvPHvQQcr0WltYjiT/Uxn2SLB7obLof1d3EgJ7b4163UoteGPlJyI1
-         +s03NrPStjcs/pVGnIHr9ChIdcfXtK6BRPBd1Cp+mL8gjozESrb3QD8N1Fx1nL/MwLKa
-         pAzdzPqEtcG6RROcunEocDFvsspFUuVkJZd73lXwyt5e0llpr8oyujVqnZGKseJXdE7s
-         16ZFclOcmt6UjH8NLi0wkdjpxq76TL/EdfKJbXfCUIy88AC2t2O9c54P4yRnRISlE7eD
-         mx3AOfZ/SmkSaZOefFkfg3yyxutIppFJXE/2zrjoZtoAVP7kultq2C0dsqJzbVNwGtkJ
-         WYNg==
+       dkim=fail header.i=@linaro.org header.s=google header.b="prw/lj0M";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59800 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j5AGc-00017H-IR
+	for alex.bennee@linaro.org; Fri, 21 Feb 2020 10:31:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36385)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1j5AG0-0000PT-Gv
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 10:30:25 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1j5AFz-0002fo-5H
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 10:30:24 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:37415)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j5AFy-0002ez-UM
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 10:30:23 -0500
+Received: by mail-ot1-x343.google.com with SMTP id b3so2335396otp.4
+ for <qemu-arm@nongnu.org>; Fri, 21 Feb 2020 07:30:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=8q1sawrAR7L0CtEGCE+s9tKiGKo+ZNnF45eMhlEP5bk=;
+ b=prw/lj0MFL1ohYfunJmvfyt8+yw1W2KsB0Dkb0yrTyiVqOL1aknpqtDry7n1OmCrVA
+ DKHZjjC4V3wje41lNWrObHfuH4zowyxjvilsMENtjAdvJaL/71w1glKUwM5oG7fobItf
+ vtCR5sH/O7AsDWzJYlKXvZzntbEBhJJqFwmcG9JUf+2aZZsYmFET8xTtudRJLaAQFrPP
+ /QMaxkGKElvbCGLCgvzvIHSqn2x1cL/2cIAslJkH0naFJKQzkqzAyGP5G1MjW/8dU/CU
+ nmrXYVL2z9xlods4Q4e+uhdchgI/C+7lXrHzCC4yKFmKvPTYPjnBiY/TnJUsWfGyb8LY
+ tKiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=FWVDkmsgLpByHs3eCi6sKclY4YV1R37ovc1jJnUhQAE=;
-        b=HgVmE+EC5zazPil2i1WNTJitMq23qen1DZFBwWPlmDYRGibrEd6h1KPDPE1RpXes1j
-         vl2+No16LAkjUSyo2kfYrm7T4GUiizB0XFGva73IwoVm8BpPqhAR9oESfZZdz3wusWgG
-         uwsdYbGHb42OidNUGL7B0HVJZ811dQDAjR1aPhAATT8MNC62UoVHs8aWJTiUafG2Gtzu
-         +QrR0a5X34NkrmO82MEkNXhEFWqavoV1xroD9W163NVXWFrCvv2YFjKiRwHaCMueLUN+
-         g7jdD5/fpr5656cAvNa1EQr6vsgaaVgrQVC8zKIAo/JhRc9bXV5otOnRlyiYdnhwnB2x
-         F0nQ==
-X-Gm-Message-State: APjAAAUAGO1Rh88CA7U+WE8mRSAKzwUGp5tmdChB4XXR4fk/SIbr1J4v
-        ac7jHfOeoFAgvWo+5Wa9DdhI/ixM7IM+ek2kHX4r1Q==
-X-Received: by 2002:a05:6808:289:: with SMTP id z9mr2098991oic.48.1582294206446;
- Fri, 21 Feb 2020 06:10:06 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=8q1sawrAR7L0CtEGCE+s9tKiGKo+ZNnF45eMhlEP5bk=;
+ b=Hq5P7U3RzgS77QcuGslKv9+mAk2fQPiBVn0QqCYBNwPK216a2xzzbteYtsYweLu8M0
+ PAt7kvkHs7O7Wa7lIkO/HXFw521JTypcURNjDWoLonitI5p06qr0UB0/hTP1yyus+je6
+ WJbh8DllmGHyX6jI6wVh7bOMUF8YO8tKKgbOY7BPJkRDQQK0kdgpK8DJ2YKy7Un96xiX
+ DItIeO8qBgjlyJfrpy6VEy+hYweC6g6uLNol4Qyrz/WnNqAY4ETKHgs1LUGShXhW/pWr
+ ODc6dBOXA5ycpsqrP+1RcIIhLe46Ge1pDwBF6JeGeYypwJbcDFA/0t9zOoRnHSB5JwWA
+ EwXw==
+X-Gm-Message-State: APjAAAXDfUuzQQkFlpFbNWau4bZHTYwnhOmmqVP9OdHfe/MW7wNkhIc1
+ YSOSmVPK0zDcgo2cSPidfHGjZ3nMc01u6BTdOLnbeQ==
+X-Received: by 2002:a05:6830:4a4:: with SMTP id
+ l4mr28894585otd.91.1582299020896; 
+ Fri, 21 Feb 2020 07:30:20 -0800 (PST)
 MIME-Version: 1.0
-References: <20200217131248.28273-1-gengdongjiu@huawei.com>
-In-Reply-To: <20200217131248.28273-1-gengdongjiu@huawei.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Fri, 21 Feb 2020 14:09:55 +0000
-Message-ID: <CAFEAcA9xd8fHiigZFFM7Symh0Mkm-jQ_aGJ7ifRCrXZvFY4DqQ@mail.gmail.com>
-Subject: Re: [PATCH v24 00/10] Add ARMv8 RAS virtualization support in QEMU
-To:     Dongjiu Geng <gengdongjiu@huawei.com>
-Cc:     "Michael S. Tsirkin" <mst@redhat.com>,
-        Igor Mammedov <imammedo@redhat.com>,
-        Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        Fam Zheng <fam@euphon.net>,
-        Richard Henderson <rth@twiddle.net>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        kvm-devel <kvm@vger.kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        James Morse <james.morse@arm.com>,
-        Laszlo Ersek <lersek@redhat.com>,
-        Jonathan Cameron <jonathan.cameron@huawei.com>,
-        Shameerali Kolothum Thodi 
-        <shameerali.kolothum.thodi@huawei.com>,
-        Zheng Xiang <zhengxiang9@huawei.com>
+References: <1582270927-2568-1-git-send-email-sai.pavan.boddu@xilinx.com>
+ <1582270927-2568-2-git-send-email-sai.pavan.boddu@xilinx.com>
+In-Reply-To: <1582270927-2568-2-git-send-email-sai.pavan.boddu@xilinx.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 21 Feb 2020 15:30:10 +0000
+Message-ID: <CAFEAcA-NYkaQuJq=0Ft7j0XEPqJQz=G=wwKTWTxdbCmSRUh6uA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] arm_gic: Mask the un-supported priority bits
+To: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
 Content-Type: text/plain; charset="UTF-8"
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: f2rqy2+Dwti6
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Anthony Liguori <anthony@codemonkey.ws>,
+ =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: B1G2nH1ha85L
 
-On Mon, 17 Feb 2020 at 13:10, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+On Fri, 21 Feb 2020 at 07:46, Sai Pavan Boddu
+<sai.pavan.boddu@xilinx.com> wrote:
 >
-> In the ARMv8 platform, the CPU error types includes synchronous external abort(SEA) and SError Interrupt (SEI). If exception happens in guest, host does not know the detailed information of guest, so it is expected that guest can do the recovery.
-> For example, if an exception happens in a guest user-space application, host does
-> not know which application encounters errors, only guest knows it.
+> Priority bits implemented in arm-gic can be 8 to 4, un-implemented bits
+> are read as zeros(RAZ).
 >
-> For the ARMv8 SEA/SEI, KVM or host kernel delivers SIGBUS to notify userspace.
-> After user space gets the notification, it will record the CPER into guest GHES
-> buffer and inject an exception or IRQ to guest.
+> Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+> ---
+>  hw/intc/arm_gic.c                | 26 ++++++++++++++++++++++++--
+>  hw/intc/arm_gic_common.c         |  1 +
+>  include/hw/intc/arm_gic_common.h |  1 +
+>  3 files changed, 26 insertions(+), 2 deletions(-)
 >
-> In the current implementation, if the type of SIGBUS is BUS_MCEERR_AR, we will
-> treat it as a synchronous exception, and notify guest with ARMv8 SEA
-> notification type after recording CPER into guest.
+> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+> index 1d7da7b..dec8767 100644
+> --- a/hw/intc/arm_gic.c
+> +++ b/hw/intc/arm_gic.c
+> @@ -641,6 +641,23 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, MemTxAttrs attrs)
+>      return ret;
+>  }
+>
+> +static uint32_t gic_fullprio_mask(GICState *s, int cpu)
+> +{
+> +    /*
+> +     * Return a mask word which clears the unimplemented priority
+> +     * bits from a priority value for an interrupt. (Not to be
+> +     * confused with the group priority, whose mask depends on BPR.)
+> +     */
+> +    int unimpBits;
+> +
+> +    if (gic_is_vcpu(cpu)) {
+> +        unimpBits = GIC_VIRT_MAX_GROUP_PRIO_BITS;
+> +    } else {
+> +        unimpBits = 8 - s->n_prio_bits;
 
-Hi; I have reviewed the remaining arm bit of this series (patch 9),
-and made some comments on patch 1. Still to be reviewed are
-patches 4, 5, 6, 8: I'm going to assume that Michael or Igor
-will look at those.
+This isn't right; GIC_VIRT_MAX_GROUP_PRIO_BITS should
+be handled the same way as s->n_prio_bits. The expression
+I suggested in my comment on your v1 should work:
+
+    if (gic_is_vcpu(cpu)) {
+        pribits = GIC_VIRT_MAX_GROUP_PRIO_BITS;
+    } else {
+        pribits = s->n_prio_bits;
+    }
+    return ~0U << (8 - s->n_prio_bits);
+
+> +    }
+> +    return ~0U << unimpBits;
+> +}
+> +
+>  void gic_dist_set_priority(GICState *s, int cpu, int irq, uint8_t val,
+>                        MemTxAttrs attrs)
+>  {
+
+
+You seem to have lost the part of the patch which applies
+the mask in gic_dist_set_priority(). If the GIC only
+has 5 bits of priority we should not allow the guest to
+set more than that.
+
+> @@ -669,7 +686,7 @@ static uint32_t gic_dist_get_priority(GICState *s, int cpu, int irq,
+>          }
+>          prio = (prio << 1) & 0xff; /* Non-secure view */
+>      }
+> -    return prio;
+> +    return prio & gic_fullprio_mask(s, cpu);
+>  }
+>
+>  static void gic_set_priority_mask(GICState *s, int cpu, uint8_t pmask,
+> @@ -684,7 +701,7 @@ static void gic_set_priority_mask(GICState *s, int cpu, uint8_t pmask,
+>              return;
+>          }
+>      }
+> -    s->priority_mask[cpu] = pmask;
+> +    s->priority_mask[cpu] = pmask & gic_fullprio_mask(s, cpu);
+>  }
+>
+>  static uint32_t gic_get_priority_mask(GICState *s, int cpu, MemTxAttrs attrs)
+> @@ -2055,6 +2072,11 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
+>          return;
+>      }
+>
+> +    if (s->n_prio_bits > 8) {
+> +        error_setg(errp, "num-priority-bits cannot be greater than 8");
+> +        return;
+> +    }
+
+You need to also check that the value is at least as large
+as the lowest permitted value, as I suggested in my v1 comment.
 
 thanks
 -- PMM

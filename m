@@ -1,104 +1,75 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1007983lfg;
-        Thu, 20 Feb 2020 13:21:18 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxDPMIifAjhDUf4wl5LeEIUmTdb/u3eHxxO6nnDrwvPLQgIy0rXwXI/cj5lfYhjWpgO+PvC
-X-Received: by 2002:a05:620a:4cc:: with SMTP id 12mr29304345qks.153.1582233678519;
-        Thu, 20 Feb 2020 13:21:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582233678; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1266999lfg;
+        Thu, 20 Feb 2020 19:00:04 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz3NrKMmHbHVJqPf6/ew0GZXcVCYhREWFHSLCMjvjHuf9Haz+9/njcYGzjRTUtRTfPsY2l8
+X-Received: by 2002:a05:620a:13b8:: with SMTP id m24mr7107304qki.378.1582254003976;
+        Thu, 20 Feb 2020 19:00:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582254003; cv=none;
         d=google.com; s=arc-20160816;
-        b=gF2GSlJviS/3Uk7IOwFQ2EpeQw4jZVJVqsRkgW96iTILvUwakzlkNaLJhVKts0GP/y
-         4aczqKDizVV8ph4vtUGPVGwZftSrQTbztN/Bs6CqzqpQolXh9IQQ1eDmrSf0p0Cis35M
-         92NfG4RSEByAD0/u2nr07W8uUQUtcILh5pAXKcOyq0QM5MkcUX0srbEd6MK4dmZ39Bhy
-         N/GzqHTE4cC3fJYzjwYz8bQjs93EB3IZrnv31p6jPrgtZ38OCPSssxNqSo+BkgI39iEW
-         w5gEvyu4d/GU7cJxC2YIDEej/XMAaeK0K8KhNdHQsgjh5iGoBeoKZNda1Sv7X4Yn6rkm
-         tCKg==
+        b=JK3AKHl1OXWZp9R9P1pe7RZrqRqI+w/rGW7QDiMpdA5iMH6qVWylItXiODPaUcWyJF
+         hWRXBQ72gQjwGNMrJ03nIpd4ddabLEpfVEEDqaT9EIAZszpVZnd2qBjyEzSECPaAWyGo
+         8ft2Wg/qc560slsca6EC3HpeDcqIDH8cQkwwsFaq/IlJ7FCLF0WHFAnhhhmlVwsXfIeJ
+         4JyJicudgXNF+bELr9HRm2X2mOZKtYmwLR2cJG5Nrl/7196LcRFh7tvNaxUO8VwxQYuN
+         PKLHsaf/LxKmSTVLaeuMMEereGTWI+H9L9Cj3m8akwdjNDQfUSiRjIZSGB/lkgL2Y4ng
+         dAyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=YnFfOr1DIkvANCIdmIygvtIPcgNJtHgZY1pV50qrnYA=;
-        b=ZrzArtd4tQ81urvpPeUzTlGINwh93RWTr+lAVZNnjBrIsvuTcf7gt25WzVsyHPhslm
-         nqjDOHwxmhebgs85E3ko/E2nPZTJydP+jrw0Wd1Pe5CGdS+7hXhcEogqf2v/i5UrrCVF
-         W1lcAC9q/LiqcdU8LsmQ8a4zIom7iKQkDm9x9D+u9loibw5kCeP6JlXOGTJ87tvfs6Fw
-         g6C2m8XoXfLUtxyvZSas2VvlbVdg4pbK25ShJJ6zakpiurUBQgbPByULAaVe3b4G6Mlp
-         i3inPrACvImIVmuTH11v3IlIr+srCLnDbhL6CkFKG3LgB7gYNArHf1nF5AMoccaSo5LL
-         NVCg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=vNf3sXEiJQP0vel3T7Di6eZr8CcBZc/MO3SkviAGSXY=;
+        b=acFZvU9GZsxLDkGP4V0AgELr2KbXKRWn3DL/7qPQy2YrdKEdyxHgHjQYTEhnaaTvde
+         IG4ERRi0Tr9HIFx07z76A1Y9mGMtp9FBemTOxYGzRuHySKLhfu7bcF1NshKLLiT+nBrX
+         m1IUw/qm+xj2uaRBivqj1jv+yoRbr6dUqzYIzrnOyU/Cw42qJw8ewzKMfkmJA5Jpth8N
+         0NAJ2BVjNqFdS/G9xUr6WcfG1PqK9DNrn+Yu1N9ZJtHISUDWX4rt5akITjr88EVv549v
+         RdFFImbn0EXWyoebUNM45j2qW0Qt0tfyoRjS6XZYuZi1Rn31mh/ENvwlwxopweWczMCa
+         xCig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=auj4Et6T;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 188si393713qkl.348.2020.02.20.13.21.18
+        by mx.google.com with ESMTPS id y12si736285qtn.58.2020.02.20.19.00.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Feb 2020 13:21:18 -0800 (PST)
+        Thu, 20 Feb 2020 19:00:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=auj4Et6T;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49346 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51500 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j4tG1-0005kr-Uh
-	for alex.bennee@linaro.org; Thu, 20 Feb 2020 16:21:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47247)
+	id 1j4yXr-00045S-CX
+	for alex.bennee@linaro.org; Thu, 20 Feb 2020 22:00:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57749)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j4tFt-0005kM-2f
- for qemu-arm@nongnu.org; Thu, 20 Feb 2020 16:21:10 -0500
+ (envelope-from <zhukeqian1@huawei.com>) id 1j4yXi-00045I-Dm
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2020 21:59:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j4tFr-0002JJ-ND
- for qemu-arm@nongnu.org; Thu, 20 Feb 2020 16:21:08 -0500
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:41509)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j4tFr-0002Ir-HF
- for qemu-arm@nongnu.org; Thu, 20 Feb 2020 16:21:07 -0500
-Received: by mail-oi1-x242.google.com with SMTP id i1so29025118oie.8
- for <qemu-arm@nongnu.org>; Thu, 20 Feb 2020 13:21:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=YnFfOr1DIkvANCIdmIygvtIPcgNJtHgZY1pV50qrnYA=;
- b=auj4Et6Tlciab+LGElZTFsjgvl+7Tp5wVj0gxombpiXDbUKQWfDD14pfhUUn+X+Msk
- Bu0nCaGg0omAmKFreWQLLAP7L1T7d0/LB/l/dWuVCNfC1yROalZn+uapY6AvCYv4rPht
- tCyc0Lemk965i2UYwsrd3hz1J82OKNWtsGWTg22y0uAJWfIQmsT5YLM7eugsu0Hs19yN
- +L770TAoWYA3hO8wWFhy2xliGPYiIzwebGjVUjtSACw93blrO6p5lK9VXtnlJLrUXz3h
- nXgE0oVuMHJSb/tobgiOn/eZ35nK8GT2YQxQCVAyCjb277ME7hjiMSgTm6yngx6QXDxi
- pDMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=YnFfOr1DIkvANCIdmIygvtIPcgNJtHgZY1pV50qrnYA=;
- b=AIycnAG2ClrtwCvH8NzYxIFyUUkZV5v+n4YzZ3VRAhFvMXGDGkXdZn9yvDR/XX8/sN
- iTNZR4L6mvUsV+Ex154sTExOiZ7ILpFMz5Dk0/3/DUXe3X94FPYiyqa7ZKe1/xBBpZK8
- hYlFN1hh8wPtbMdrq6K8s55gdT5B/YoJW4yfPsXHKCl9aSi27C+qxmUBmDpCkxHvNeJ6
- 4GhZQ3CHbaT1K+Avj7fYrqH/pmeV2eMd3V5wkrTeGilT/7kaD7ycQda23Nhemi+Gurwk
- bUEnHP3pbpspfwRBJtuy/zDGLOmQo9MV4l8Lgh33wiKMTdG3+4G72gDHY4rGyQbN6X+p
- SC8w==
-X-Gm-Message-State: APjAAAWf0zFLyFwRxWRuiF1ZyDCg9rEdpc2VgCC+z5w+QZSPShXsqceI
- eIc1ZqAKJ9Nk1Fldu9Il8JFUjrE9x9I+oZwUMvzUsg==
-X-Received: by 2002:a54:4f16:: with SMTP id e22mr3695887oiy.170.1582233666323; 
- Thu, 20 Feb 2020 13:21:06 -0800 (PST)
+ (envelope-from <zhukeqian1@huawei.com>) id 1j4yXg-0002x4-Gp
+ for qemu-arm@nongnu.org; Thu, 20 Feb 2020 21:59:54 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2721 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
+ id 1j4yXf-0002le-UT; Thu, 20 Feb 2020 21:59:52 -0500
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 2C519A1C619A80C408AD;
+ Fri, 21 Feb 2020 10:59:42 +0800 (CST)
+Received: from linux-TFkxOR.huawei.com (10.175.104.212) by
+ DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
+ 14.3.439.0; Fri, 21 Feb 2020 10:59:36 +0800
+From: Keqian Zhu <zhukeqian1@huawei.com>
+To: <qemu-devel@nongnu.org>
+Subject: [PATCH] migration/throttle: Add throttle-trig-thres migration
+ parameter
+Date: Fri, 21 Feb 2020 10:57:27 +0800
+Message-ID: <20200221025727.63808-1-zhukeqian1@huawei.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-References: <20200217032127.46508-1-pannengyuan@huawei.com>
- <20200217032127.46508-3-pannengyuan@huawei.com>
- <CAFEAcA_AxCVaAgho3g2q=kCifSdhz9Qi72eoVAM9gRjb3-_Sog@mail.gmail.com>
- <747a3358-09af-d4fa-9150-57ad3e349f24@redhat.com>
-In-Reply-To: <747a3358-09af-d4fa-9150-57ad3e349f24@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Feb 2020 21:20:55 +0000
-Message-ID: <CAFEAcA8ovMyTGNB_NA8ybPLdnneKjvNFY=qyP0DEFS9cmUJo-g@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] hw: move timer_new from init() into realize() to
- avoid memleaks
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.212]
+X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::242
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.190
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,104 +81,271 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>,
- Alistair Francis <alistair@alistair23.me>,
- Pan Nengyuan <pannengyuan@huawei.com>, QEMU Developers <qemu-devel@nongnu.org>,
- mav2-rk.cave-ayland@ilande.co.uk, qemu-arm <qemu-arm@nongnu.org>,
- qemu-ppc <qemu-ppc@nongnu.org>, Euler Robot <euler.robot@huawei.com>,
- andrzej zaborowski <balrogg@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Juan Quintela <quintela@redhat.com>, Eric Blake <eblake@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Markus
+ Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org, wanghaibin.wang@huawei.com,
+ Keqian Zhu <zhukeqian1@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RFybanZrA4Lk
+X-TUID: 0Ow9C1KSyNJa
 
-On Thu, 20 Feb 2020 at 18:52, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
->
-> On 2/20/20 6:56 PM, Peter Maydell wrote:
-> > On Mon, 17 Feb 2020 at 03:22, <pannengyuan@huawei.com> wrote:
-> >>
-> >> From: Pan Nengyuan <pannengyuan@huawei.com>
-> >>
-> >> There are some memleaks when we call 'device_list_properties'. This pa=
-tch move timer_new from init into realize to fix it.
-> >> Meanwhile, do the null check in mos6522_reset() to avoid null deref if=
- we move timer_new into realize().
-> >>
-> >> Reported-by: Euler Robot <euler.robot@huawei.com>
-> >> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
-> >> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> >
-> >
-> >> diff --git a/hw/misc/mos6522.c b/hw/misc/mos6522.c
-> >> index 19e154b870..980eda7599 100644
-> >> --- a/hw/misc/mos6522.c
-> >> +++ b/hw/misc/mos6522.c
-> >> @@ -465,11 +465,15 @@ static void mos6522_reset(DeviceState *dev)
-> >>       s->timers[0].frequency =3D s->frequency;
-> >>       s->timers[0].latch =3D 0xffff;
-> >>       set_counter(s, &s->timers[0], 0xffff);
-> >> -    timer_del(s->timers[0].timer);
-> >> +    if (s->timers[0].timer) {
-> >> +        timer_del(s->timers[0].timer);
-> >> +    }
-> >>
-> >>       s->timers[1].frequency =3D s->frequency;
-> >>       s->timers[1].latch =3D 0xffff;
-> >> -    timer_del(s->timers[1].timer);
-> >> +    if (s->timers[1].timer) {
-> >> +        timer_del(s->timers[1].timer);
-> >> +    }
-> >>   }
-> >
-> > What code path calls a device 'reset' method on a device
-> > that has not yet been realized ? I wasn't expecting that
-> > to be valid...
->
-> This is not valid. What I understood while reviewing this patch is on
-> reset the timer is removed from the timers list. But this patch miss
-> setting timer =3D NULL in case the device is reset multiple times, here
-> can happen a NULL deref.
+Currently, if the bytes_dirty_period is more than the 50% of
+bytes_xfer_period, we start or increase throttling.
 
-I should have checked the APIs here.
+If we make this percentage higher, then we can tolerate higher
+dirty rate during migration, which means less impact on guest.
+The side effect of higher percentage is longer migration time.
 
-timer_new() allocates memory and initialises a timer.
-timer_del() removes a timer from any list it is on, but
-does not deallocate memory. It's the function you call
-to stop a timer (and arguably timer_stop() would be a
-better name for it).
-If you created the timer with timer_init(), then the
-code to clean it up is:
- (1) call timer_del() to make sure it's not on any
-list of active timers
- (2) call timer_free()
+We can configure this parameter to switch between migration time
+firt or guest performance first. The default value is 50.
 
-So:
- * the mos6522_reset code is fine as it is
- * if we wanted cleanup code that undoes the timer_new
-   then that would be a timer_del() + timer_free().
-   This would go in unrealize if the timer_new is put
-   in realize, but...
- * ...like the other devices touched in this patch,
-   mos6522 isn't user-creatable, so if realize succeeds
-   it won't ever be destroyed; so we don't need to
-   do that. (This is a little harder to check than
-   with most of these devices, since mos6522 is an
-   abstract base class for some other devices, but
-   I think it's correct.)
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+---
+Cc: Juan Quintela <quintela@redhat.com>
+Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: Eric Blake <eblake@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>
+---
+ migration/migration.c | 24 ++++++++++++++++++++++++
+ migration/ram.c       | 21 +++++++++++++++------
+ monitor/hmp-cmds.c    |  7 +++++++
+ qapi/migration.json   | 16 +++++++++++++++-
+ 4 files changed, 61 insertions(+), 7 deletions(-)
 
-Side notes:
- * for new code, rather than using timer_new() or one
-   of its sibling functions, prefer timer_init(),
-   timer_init_ns(), etc. These take a pointer to a
-   pre-existing QEMUTimer, typically one you have
-   directly embedded in the device state struct. So
-   they don't need to be freed on unrealize (though
-   you do still want to make sure the timer is not
-   on an active list with timer_del() before the memory
-   in the device state struct goes away).
- * maybe timer_free() should call timer_del(),
-   rather than obliging the caller to?
+diff --git a/migration/migration.c b/migration/migration.c
+index 8fb68795dc..e6c2451734 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -78,6 +78,7 @@
+ /*0: means nocompress, 1: best speed, ... 9: best compress ratio */
+ #define DEFAULT_MIGRATE_COMPRESS_LEVEL 1
+ /* Define default autoconverge cpu throttle migration parameters */
++#define DEFAULT_MIGRATE_THROTTLE_TRIG_THRES 50
+ #define DEFAULT_MIGRATE_CPU_THROTTLE_INITIAL 20
+ #define DEFAULT_MIGRATE_CPU_THROTTLE_INCREMENT 10
+ #define DEFAULT_MIGRATE_MAX_CPU_THROTTLE 99
+@@ -778,6 +779,8 @@ MigrationParameters *qmp_query_migrate_parameters(Err=
+or **errp)
+     params->compress_wait_thread =3D s->parameters.compress_wait_thread;
+     params->has_decompress_threads =3D true;
+     params->decompress_threads =3D s->parameters.decompress_threads;
++    params->has_throttle_trig_thres =3D true;
++    params->throttle_trig_thres =3D s->parameters.throttle_trig_thres;
+     params->has_cpu_throttle_initial =3D true;
+     params->cpu_throttle_initial =3D s->parameters.cpu_throttle_initial;
+     params->has_cpu_throttle_increment =3D true;
+@@ -1164,6 +1167,15 @@ static bool migrate_params_check(MigrationParamete=
+rs *params, Error **errp)
+         return false;
+     }
+=20
++    if (params->has_throttle_trig_thres &&
++        (params->throttle_trig_thres < 1 ||
++         params->throttle_trig_thres > 99)) {
++        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
++                   "throttle_trig_thres",
++                   "an integer in the range of 1 to 99");
++        return false;
++    }
++
+     if (params->has_cpu_throttle_initial &&
+         (params->cpu_throttle_initial < 1 ||
+          params->cpu_throttle_initial > 99)) {
+@@ -1279,6 +1291,10 @@ static void migrate_params_test_apply(MigrateSetPa=
+rameters *params,
+         dest->decompress_threads =3D params->decompress_threads;
+     }
+=20
++    if (params->has_throttle_trig_thres) {
++        dest->throttle_trig_thres =3D params->throttle_trig_thres;
++    }
++
+     if (params->has_cpu_throttle_initial) {
+         dest->cpu_throttle_initial =3D params->cpu_throttle_initial;
+     }
+@@ -1360,6 +1376,10 @@ static void migrate_params_apply(MigrateSetParamet=
+ers *params, Error **errp)
+         s->parameters.decompress_threads =3D params->decompress_threads;
+     }
+=20
++    if (params->has_throttle_trig_thres) {
++        s->parameters.throttle_trig_thres =3D params->throttle_trig_thre=
+s;
++    }
++
+     if (params->has_cpu_throttle_initial) {
+         s->parameters.cpu_throttle_initial =3D params->cpu_throttle_init=
+ial;
+     }
+@@ -3506,6 +3526,9 @@ static Property migration_properties[] =3D {
+     DEFINE_PROP_UINT8("x-decompress-threads", MigrationState,
+                       parameters.decompress_threads,
+                       DEFAULT_MIGRATE_DECOMPRESS_THREAD_COUNT),
++    DEFINE_PROP_UINT8("x-throttle-trig-thres", MigrationState,
++                      parameters.throttle_trig_thres,
++                      DEFAULT_MIGRATE_THROTTLE_TRIG_THRES),
+     DEFINE_PROP_UINT8("x-cpu-throttle-initial", MigrationState,
+                       parameters.cpu_throttle_initial,
+                       DEFAULT_MIGRATE_CPU_THROTTLE_INITIAL),
+@@ -3606,6 +3629,7 @@ static void migration_instance_init(Object *obj)
+     params->has_compress_level =3D true;
+     params->has_compress_threads =3D true;
+     params->has_decompress_threads =3D true;
++    params->has_throttle_trig_thres =3D true;
+     params->has_cpu_throttle_initial =3D true;
+     params->has_cpu_throttle_increment =3D true;
+     params->has_max_bandwidth =3D true;
+diff --git a/migration/ram.c b/migration/ram.c
+index ed23ed1c7c..28081cb1e1 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -901,6 +901,11 @@ static void migration_bitmap_sync(RAMState *rs)
+     RAMBlock *block;
+     int64_t end_time;
+     uint64_t bytes_xfer_now;
++    uint64_t bytes_dirty_period;
++    uint64_t bytes_xfer_period;
++    uint64_t bytes_dirty_thres;
++    uint64_t throttle_trig_thres;
++    MigrationState *s =3D migrate_get_current();
+=20
+     ram_counters.dirty_sync_count++;
+=20
+@@ -934,13 +939,17 @@ static void migration_bitmap_sync(RAMState *rs)
+          * throttling logic during the bulk phase of block migration. */
+         if (migrate_auto_converge() && !blk_mig_bulk_active()) {
+             /* The following detection logic can be refined later. For n=
+ow:
+-               Check to see if the dirtied bytes is 50% more than the ap=
+prox.
+-               amount of bytes that just got transferred since the last =
+time we
+-               were in this routine. If that happens twice, start or inc=
+rease
+-               throttling */
++               Check to see if the ratio between dirtied bytes and the a=
+pprox.
++               amount of bytes that just got transferred since the last =
+time
++               we were in this routine reaches the threshold. If that ha=
+ppens
++               twice, start or increase throttling. */
++
++            bytes_dirty_period =3D rs->num_dirty_pages_period * TARGET_P=
+AGE_SIZE;
++            bytes_xfer_period =3D bytes_xfer_now - rs->bytes_xfer_prev;
++            throttle_trig_thres =3D s->parameters.throttle_trig_thres;
++            bytes_dirty_thres =3D bytes_xfer_period * throttle_trig_thre=
+s / 100;
+=20
+-            if ((rs->num_dirty_pages_period * TARGET_PAGE_SIZE >
+-                   (bytes_xfer_now - rs->bytes_xfer_prev) / 2) &&
++            if ((bytes_dirty_period > bytes_dirty_thres) &&
+                 (++rs->dirty_rate_high_cnt >=3D 2)) {
+                     trace_migration_throttle();
+                     rs->dirty_rate_high_cnt =3D 0;
+diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
+index b237613e0d..8673f5eeb2 100644
+--- a/monitor/hmp-cmds.c
++++ b/monitor/hmp-cmds.c
+@@ -409,6 +409,10 @@ void hmp_info_migrate_parameters(Monitor *mon, const=
+ QDict *qdict)
+         monitor_printf(mon, "%s: %u\n",
+             MigrationParameter_str(MIGRATION_PARAMETER_DECOMPRESS_THREAD=
+S),
+             params->decompress_threads);
++        assert(params->has_throttle_trig_thres);
++        monitor_printf(mon, "%s: %u\n",
++            MigrationParameter_str(MIGRATION_PARAMETER_THROTTLE_TRIG_THR=
+ES),
++            params->throttle_trig_thres);
+         assert(params->has_cpu_throttle_initial);
+         monitor_printf(mon, "%s: %u\n",
+             MigrationParameter_str(MIGRATION_PARAMETER_CPU_THROTTLE_INIT=
+IAL),
+@@ -1764,6 +1768,9 @@ void hmp_migrate_set_parameter(Monitor *mon, const =
+QDict *qdict)
+         p->has_decompress_threads =3D true;
+         visit_type_int(v, param, &p->decompress_threads, &err);
+         break;
++    case MIGRATION_PARAMETER_THROTTLE_TRIG_THRES:
++        p->has_throttle_trig_thres =3D true;
++        visit_type_int(v, param, &p->throttle_trig_thres, &err);
+     case MIGRATION_PARAMETER_CPU_THROTTLE_INITIAL:
+         p->has_cpu_throttle_initial =3D true;
+         visit_type_int(v, param, &p->cpu_throttle_initial, &err);
+diff --git a/qapi/migration.json b/qapi/migration.json
+index 52f3429969..4da5385832 100644
+--- a/qapi/migration.json
++++ b/qapi/migration.json
+@@ -524,6 +524,10 @@
+ #                      compression, so set the decompress-threads to the=
+ number about 1/4
+ #                      of compress-threads is adequate.
+ #
++# @throttle-trig-thres: The ratio of bytes_dirty_period and bytes_xfer_p=
+eriod to
++#                       trigger throttling. It is expressed as percentag=
+e. The
++#                       default value is 50. (Since 5.0)
++#
+ # @cpu-throttle-initial: Initial percentage of time guest cpus are throt=
+tled
+ #                        when migration auto-converge is activated. The
+ #                        default value is 20. (Since 2.7)
+@@ -592,7 +596,7 @@
+   'data': ['announce-initial', 'announce-max',
+            'announce-rounds', 'announce-step',
+            'compress-level', 'compress-threads', 'decompress-threads',
+-           'compress-wait-thread',
++           'compress-wait-thread', 'throttle-trig-thres',
+            'cpu-throttle-initial', 'cpu-throttle-increment',
+            'tls-creds', 'tls-hostname', 'tls-authz', 'max-bandwidth',
+            'downtime-limit', 'x-checkpoint-delay', 'block-incremental',
+@@ -626,6 +630,10 @@
+ #
+ # @decompress-threads: decompression thread count
+ #
++# @throttle-trig-thres: The ratio of bytes_dirty_period and bytes_xfer_p=
+eriod to
++#                       trigger throttling. It is expressed as percentag=
+e. The
++#                       default value is 50. (Since 5.0)
++#
+ # @cpu-throttle-initial: Initial percentage of time guest cpus are
+ #                        throttled when migration auto-converge is activ=
+ated.
+ #                        The default value is 20. (Since 2.7)
+@@ -701,6 +709,7 @@
+             '*compress-threads': 'int',
+             '*compress-wait-thread': 'bool',
+             '*decompress-threads': 'int',
++            '*throttle-trig-thres': 'int',
+             '*cpu-throttle-initial': 'int',
+             '*cpu-throttle-increment': 'int',
+             '*tls-creds': 'StrOrNull',
+@@ -759,6 +768,10 @@
+ #
+ # @decompress-threads: decompression thread count
+ #
++# @throttle-trig-thres: The ratio of bytes_dirty_period and bytes_xfer_p=
+eriod to
++#                       trigger throttling. It is expressed as percentag=
+e. The
++#                       default value is 50. (Since 5.0)
++#
+ # @cpu-throttle-initial: Initial percentage of time guest cpus are
+ #                        throttled when migration auto-converge is activ=
+ated.
+ #                        (Since 2.7)
+@@ -834,6 +847,7 @@
+             '*compress-threads': 'uint8',
+             '*compress-wait-thread': 'bool',
+             '*decompress-threads': 'uint8',
++            '*throttle-trig-thres': 'uint8',
+             '*cpu-throttle-initial': 'uint8',
+             '*cpu-throttle-increment': 'uint8',
+             '*tls-creds': 'str',
+--=20
+2.19.1
 
-thanks
--- PMM

@@ -1,99 +1,100 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1929670lfg;
-        Fri, 21 Feb 2020 07:31:03 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwJIUOIugdwgcqqmszPr7pN8xWUQbKLUImdT8P3myM0nWTMwNk5Lq+tsaJeFwzcqeIP/Qrz
-X-Received: by 2002:aed:3463:: with SMTP id w90mr31499439qtd.42.1582299063221;
-        Fri, 21 Feb 2020 07:31:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582299063; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1930094lfg;
+        Fri, 21 Feb 2020 07:31:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwfb1zg3nvZJzfWGQE19tvT1EE5AxDJ3T3hqiS86SvGVFYB5BsZiNVizbBlKaLodg19iIOJ
+X-Received: by 2002:ac8:4b50:: with SMTP id e16mr31183782qts.89.1582299084762;
+        Fri, 21 Feb 2020 07:31:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582299084; cv=none;
         d=google.com; s=arc-20160816;
-        b=HiT3E0wdUDjePy2A2ZKpq/pTAsUk/6MUfsewVBCDS83UGceGgZPMVewQIoZNgn1HBM
-         rViANce+2xagv5U3t4IIVMB+yT06OfJ9MzAnNC9W39+eYZJX4N6q2spdp95SD50hnn0q
-         S2eQpyzYiB83dNwPpRNm7xkkci70BTdza0GuckGmb2teYhMcD+8drcctUPhySokrmIt+
-         tyGfpwZGgh+Uz5gTCTymVygysdx7Xf6g6JxTpycsT1kANPRo6iL8FWweLbl+NfimPz38
-         +Ma2WQjSl+uhBxf+YaAIWR4pLLLUYnl73I9vhZ01ChmNJpyJbxT1U3P+imBFY8uMa1yl
-         FgYg==
+        b=SAKNYSSuddLJ33vhDRtxZwpZtjzqhytGl356cP25cEL1aVRGo3EgvlNKbmIWd9b99t
+         2qihBckEos+LLSFhVGNVLMFyovo6YJKoLx3mRaVZxs2/VO3lSIKEWfiYpBc9mCc3s8p+
+         2J8uShHt/hh8JwJHhmS85gqmwzga21niLiSkp0Bb3oimWRa3Ur3jL0rrOYeBZuNatQrO
+         GJVhbyBexs6wwjVjQCM3QytwIuBiYACbz8FkcHsnff0+SdWrv/sdOilETM1iKGsxnntp
+         r9wlqQ0sSiYQOcKFeCP2+z2vHc6/3CZPGhmjMZrkJ8QUG2AR10PRsACWyRK3Y+dts6M1
+         SZYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=8q1sawrAR7L0CtEGCE+s9tKiGKo+ZNnF45eMhlEP5bk=;
-        b=n2zbhFJUtu7SaFhTUPQJDtNwyoRpbheVf5PU/O0caBL95qCtnEf8ILtm0ZKOsh1b9q
-         6TivFJO7TR/QpC58Uqb9svKVKnkt2H59HtMkrBymVBfAIfmu9SR45+SatxUrkTfEObir
-         82UPVuVchIqugZ+V7yE5LOkAPz7uY2ZnLT5iMlETfLe8Xmb7OYn6Bw2GNEYFQ3cO/2J9
-         OFAFZ/uQq93R/Ftd/BHsCVB5KXxdZP0BClDoh5Kz9sqLX0Syzm4gSRBCpavW8NEmf4Ae
-         imWpUhixiEsruXfkvN5vLuDgGjVfk+YscIVtSS044gpBnLR1NRMIlq3LKUSnl3WMu+TV
-         U2Ug==
+        bh=U1Bc8loQDFjm29dMTknkB+5dvxG15GcFWOZsq8q3zjw=;
+        b=tynLv5nNNHVREnDxGml/8xdo+vfIwi0jbB6uMWPBYbt0G7FDgqUX32JCGZZgVOWY1b
+         GvKSRijq3dVEtvLFMafqiGEPeor+W/oZFtXYsa7flhJLdocQPuXScO7jXl7CiTee+wC+
+         n3zHnQA56HFkdWjuoi6cvgVqXujNq+J9oQl0vfxCIwnukviMdGS5pmXQOtG+0XdlgGHT
+         7nmA2ZVR4kOz3pSd6EIxQoBrShxxuNTzrEuJv7IpTCBKTvli/WTEuOAhTrKnip7s+rLe
+         EIsxjUA6GX475a+slvUOQBC5xk10usElAQXuH/WMZYrYbFC0XWIUzlLlvIEaC2OlOCNA
+         /F7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="prw/lj0M";
+       dkim=fail header.i=@linaro.org header.s=google header.b=bnlJBnih;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x13si1519016qkj.359.2020.02.21.07.31.03
+        by mx.google.com with ESMTPS id m14si1470803qtu.118.2020.02.21.07.31.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Feb 2020 07:31:03 -0800 (PST)
+        Fri, 21 Feb 2020 07:31:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="prw/lj0M";
+       dkim=fail header.i=@linaro.org header.s=google header.b=bnlJBnih;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59800 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59830 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j5AGc-00017H-IR
-	for alex.bennee@linaro.org; Fri, 21 Feb 2020 10:31:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36385)
+	id 1j5AGy-0001gs-3V
+	for alex.bennee@linaro.org; Fri, 21 Feb 2020 10:31:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36582)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j5AG0-0000PT-Gv
- for qemu-arm@nongnu.org; Fri, 21 Feb 2020 10:30:25 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j5AGm-0001cc-3l
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 10:31:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j5AFz-0002fo-5H
- for qemu-arm@nongnu.org; Fri, 21 Feb 2020 10:30:24 -0500
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:37415)
+ (envelope-from <peter.maydell@linaro.org>) id 1j5AGl-0003EH-2Y
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 10:31:12 -0500
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:36792)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j5AFy-0002ez-UM
- for qemu-arm@nongnu.org; Fri, 21 Feb 2020 10:30:23 -0500
-Received: by mail-ot1-x343.google.com with SMTP id b3so2335396otp.4
- for <qemu-arm@nongnu.org>; Fri, 21 Feb 2020 07:30:21 -0800 (PST)
+ id 1j5AGk-0003Dv-TR
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 10:31:11 -0500
+Received: by mail-oi1-x242.google.com with SMTP id c16so1951360oic.3
+ for <qemu-arm@nongnu.org>; Fri, 21 Feb 2020 07:31:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=8q1sawrAR7L0CtEGCE+s9tKiGKo+ZNnF45eMhlEP5bk=;
- b=prw/lj0MFL1ohYfunJmvfyt8+yw1W2KsB0Dkb0yrTyiVqOL1aknpqtDry7n1OmCrVA
- DKHZjjC4V3wje41lNWrObHfuH4zowyxjvilsMENtjAdvJaL/71w1glKUwM5oG7fobItf
- vtCR5sH/O7AsDWzJYlKXvZzntbEBhJJqFwmcG9JUf+2aZZsYmFET8xTtudRJLaAQFrPP
- /QMaxkGKElvbCGLCgvzvIHSqn2x1cL/2cIAslJkH0naFJKQzkqzAyGP5G1MjW/8dU/CU
- nmrXYVL2z9xlods4Q4e+uhdchgI/C+7lXrHzCC4yKFmKvPTYPjnBiY/TnJUsWfGyb8LY
- tKiA==
+ :cc; bh=U1Bc8loQDFjm29dMTknkB+5dvxG15GcFWOZsq8q3zjw=;
+ b=bnlJBnihavmyKnvky7XWfdBkN6rVSeow2KHqhBS60tykGRbCR8UDJ0Q54XOKzXfQ8V
+ 93VXHvy9xrPtLpKpcgto+zRmosbQ/R7gQamRQQvBU0J50uyZaJN9o9XTjfjnlMIPzAyH
+ 8Htn5SpL/3Dx0NexOg66zj6adwzdXi3WK4uV1TxVzSzQIYPvrNCX0w1LyAcTy/VNh1Nx
+ IOajBnX7qdTD+cUObx920RE4Oe8BKTm2KmKF2aw6cqmohX79gmrT6xsY2U4E+xIiRRAT
+ ZaKYywVn4/r913Ex4JJZOlRDYf9w7mSKwSNg6IURS4tVm8sxzEMUCfXRPVMK5KIamC7C
+ 0ABg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=8q1sawrAR7L0CtEGCE+s9tKiGKo+ZNnF45eMhlEP5bk=;
- b=Hq5P7U3RzgS77QcuGslKv9+mAk2fQPiBVn0QqCYBNwPK216a2xzzbteYtsYweLu8M0
- PAt7kvkHs7O7Wa7lIkO/HXFw521JTypcURNjDWoLonitI5p06qr0UB0/hTP1yyus+je6
- WJbh8DllmGHyX6jI6wVh7bOMUF8YO8tKKgbOY7BPJkRDQQK0kdgpK8DJ2YKy7Un96xiX
- DItIeO8qBgjlyJfrpy6VEy+hYweC6g6uLNol4Qyrz/WnNqAY4ETKHgs1LUGShXhW/pWr
- ODc6dBOXA5ycpsqrP+1RcIIhLe46Ge1pDwBF6JeGeYypwJbcDFA/0t9zOoRnHSB5JwWA
- EwXw==
-X-Gm-Message-State: APjAAAXDfUuzQQkFlpFbNWau4bZHTYwnhOmmqVP9OdHfe/MW7wNkhIc1
- YSOSmVPK0zDcgo2cSPidfHGjZ3nMc01u6BTdOLnbeQ==
-X-Received: by 2002:a05:6830:4a4:: with SMTP id
- l4mr28894585otd.91.1582299020896; 
- Fri, 21 Feb 2020 07:30:20 -0800 (PST)
+ bh=U1Bc8loQDFjm29dMTknkB+5dvxG15GcFWOZsq8q3zjw=;
+ b=eaI4OhfC8FAQwXD0xDpoGwVgpSityjFJWQmp+Q3gtOYOUWKNmBLONQIfJrsXxSwCEg
+ 3BxKkizEX3jBJy+0wNUVuMXw558smnw3zpO8xliLhxayKkzE/fSjicRLKU7h+IlO7cVC
+ N1Y9zDjMgJl5GDeSqXb7PsbMpy4FAnjzqiIse8AfPwgesCbKStMWYLOmqJix1hVs1BM0
+ BSZxwkGd6z9zV3xr+kE9C38K/v1J9Gnk8E0mPdJD4Q/OiOFsNsi4L7yAV4PwOEOMInpk
+ CvxzlbHyGRPub+vurtWxhJfMO+bruH4i4jeM/k7xeACH9ztA6NzfUTEpasJ1DarbhY+e
+ dcLA==
+X-Gm-Message-State: APjAAAXPXwm5/u6D53flkxsBPgN7blOAx/Fm1wrTn+cHDQ0AO6nhskZ6
+ 5x7zlMSz2uTDIOFIUkNuoJvZ5GDEveMnfTeho+KfCw==
+X-Received: by 2002:a05:6808:289:: with SMTP id
+ z9mr2391309oic.48.1582299070080; 
+ Fri, 21 Feb 2020 07:31:10 -0800 (PST)
 MIME-Version: 1.0
 References: <1582270927-2568-1-git-send-email-sai.pavan.boddu@xilinx.com>
- <1582270927-2568-2-git-send-email-sai.pavan.boddu@xilinx.com>
-In-Reply-To: <1582270927-2568-2-git-send-email-sai.pavan.boddu@xilinx.com>
+ <1582270927-2568-4-git-send-email-sai.pavan.boddu@xilinx.com>
+In-Reply-To: <1582270927-2568-4-git-send-email-sai.pavan.boddu@xilinx.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 21 Feb 2020 15:30:10 +0000
-Message-ID: <CAFEAcA-NYkaQuJq=0Ft7j0XEPqJQz=G=wwKTWTxdbCmSRUh6uA@mail.gmail.com>
-Subject: Re: [PATCH v2 1/3] arm_gic: Mask the un-supported priority bits
+Date: Fri, 21 Feb 2020 15:30:59 +0000
+Message-ID: <CAFEAcA9BgmTT6-1pifQhRPNyO5KVdXpdNbr0tGYF5Waw3tN3hQ@mail.gmail.com>
+Subject: Re: [PATCH v2 3/3] cpu/arm11mpcore: Set number of GIC priority bits
+ to 4
 To: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::343
+X-Received-From: 2607:f8b0:4864:20::242
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,97 +112,44 @@ Cc: Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B1G2nH1ha85L
+X-TUID: yJVPKve+ywo9
 
 On Fri, 21 Feb 2020 at 07:46, Sai Pavan Boddu
 <sai.pavan.boddu@xilinx.com> wrote:
 >
-> Priority bits implemented in arm-gic can be 8 to 4, un-implemented bits
-> are read as zeros(RAZ).
+> ARM11MPCore GIC is implemented with 4 priority bits.
 >
 > Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/intc/arm_gic.c                | 26 ++++++++++++++++++++++++--
->  hw/intc/arm_gic_common.c         |  1 +
->  include/hw/intc/arm_gic_common.h |  1 +
->  3 files changed, 26 insertions(+), 2 deletions(-)
+>  hw/cpu/arm11mpcore.c | 5 +++++
+>  1 file changed, 5 insertions(+)
 >
-> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-> index 1d7da7b..dec8767 100644
-> --- a/hw/intc/arm_gic.c
-> +++ b/hw/intc/arm_gic.c
-> @@ -641,6 +641,23 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, MemTxAttrs attrs)
->      return ret;
->  }
+> diff --git a/hw/cpu/arm11mpcore.c b/hw/cpu/arm11mpcore.c
+> index 2e3e87c..ab9fadb 100644
+> --- a/hw/cpu/arm11mpcore.c
+> +++ b/hw/cpu/arm11mpcore.c
+> @@ -15,6 +15,7 @@
+>  #include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
 >
-> +static uint32_t gic_fullprio_mask(GICState *s, int cpu)
-> +{
-> +    /*
-> +     * Return a mask word which clears the unimplemented priority
-> +     * bits from a priority value for an interrupt. (Not to be
-> +     * confused with the group priority, whose mask depends on BPR.)
-> +     */
-> +    int unimpBits;
-> +
-> +    if (gic_is_vcpu(cpu)) {
-> +        unimpBits = GIC_VIRT_MAX_GROUP_PRIO_BITS;
-> +    } else {
-> +        unimpBits = 8 - s->n_prio_bits;
-
-This isn't right; GIC_VIRT_MAX_GROUP_PRIO_BITS should
-be handled the same way as s->n_prio_bits. The expression
-I suggested in my comment on your v1 should work:
-
-    if (gic_is_vcpu(cpu)) {
-        pribits = GIC_VIRT_MAX_GROUP_PRIO_BITS;
-    } else {
-        pribits = s->n_prio_bits;
-    }
-    return ~0U << (8 - s->n_prio_bits);
-
-> +    }
-> +    return ~0U << unimpBits;
-> +}
-> +
->  void gic_dist_set_priority(GICState *s, int cpu, int irq, uint8_t val,
->                        MemTxAttrs attrs)
+> +#define ARM11MPCORE_NUM_GIC_PRIORITY_BITS    4
+>
+>  static void mpcore_priv_set_irq(void *opaque, int irq, int level)
 >  {
-
-
-You seem to have lost the part of the patch which applies
-the mask in gic_dist_set_priority(). If the GIC only
-has 5 bits of priority we should not allow the guest to
-set more than that.
-
-> @@ -669,7 +686,7 @@ static uint32_t gic_dist_get_priority(GICState *s, int cpu, int irq,
->          }
->          prio = (prio << 1) & 0xff; /* Non-secure view */
->      }
-> -    return prio;
-> +    return prio & gic_fullprio_mask(s, cpu);
->  }
+> @@ -86,6 +87,10 @@ static void mpcore_priv_realize(DeviceState *dev, Error **errp)
 >
->  static void gic_set_priority_mask(GICState *s, int cpu, uint8_t pmask,
-> @@ -684,7 +701,7 @@ static void gic_set_priority_mask(GICState *s, int cpu, uint8_t pmask,
->              return;
->          }
->      }
-> -    s->priority_mask[cpu] = pmask;
-> +    s->priority_mask[cpu] = pmask & gic_fullprio_mask(s, cpu);
->  }
->
->  static uint32_t gic_get_priority_mask(GICState *s, int cpu, MemTxAttrs attrs)
-> @@ -2055,6 +2072,11 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
->          return;
->      }
->
-> +    if (s->n_prio_bits > 8) {
-> +        error_setg(errp, "num-priority-bits cannot be greater than 8");
-> +        return;
-> +    }
+>      qdev_prop_set_uint32(gicdev, "num-cpu", s->num_cpu);
+>      qdev_prop_set_uint32(gicdev, "num-irq", s->num_irq);
+> +    qdev_prop_set_uint32(gicdev, "num-priority-bits",
+> +                         ARM11MPCORE_NUM_GIC_PRIORITY_BITS);
+> +
+> +
+>      object_property_set_bool(OBJECT(&s->gic), true, "realized", &err);
+>      if (err != NULL) {
+>          error_propagate(errp, err);
 
-You need to also check that the value is at least as large
-as the lowest permitted value, as I suggested in my v1 comment.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

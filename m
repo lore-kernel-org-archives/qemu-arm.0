@@ -1,125 +1,102 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2085801lfg;
-        Fri, 21 Feb 2020 10:15:43 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzGJRSnWu5G8fYCtz1K0g1QpKDodVUyW27zH65Fv9pteRBzbovkiVBxD9JEy3/jITfT1Xg0
-X-Received: by 2002:a05:620a:785:: with SMTP id 5mr5521146qka.149.1582308943225;
-        Fri, 21 Feb 2020 10:15:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582308943; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2098807lfg;
+        Fri, 21 Feb 2020 10:30:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyzqmyySbMcnNnUqeuRx0tq0QXcS5GwRDP+Co0BizqZUQlAb73b+rx1L5NyLHxSSQKcmkyw
+X-Received: by 2002:ac8:19b6:: with SMTP id u51mr33664994qtj.319.1582309844470;
+        Fri, 21 Feb 2020 10:30:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582309844; cv=none;
         d=google.com; s=arc-20160816;
-        b=MRof5Ax8oY4YJhK1pAeox9S6BWtwmygivO/zsYee9p0OsCjtsecS3pZzqisbwcoZa5
-         5+KzTZLDktgvPHyTvFR78V2nP2keVK4OFWv3BAaico+12pTjvAAf1n7eTQ0tVHfie+4d
-         jF3r7eG1LFk8Clb267OQ5URsqesANG2hsuoERcCIW7SzVUC16vzXLmH7rBbcXmXTRcCN
-         sD3uDiBOFUiQ2lB7okkVVl5TzxC2szU/Ua0h6TjTluNCUpdDfa5LcqwJXc9jqTCgPjNu
-         CiDFgg8xvGH6LPOB+y0nUw13AtV0/BCdhLTx1cqVIF/FtQLwP7B9FB34anocmLT6eXvP
-         f/5w==
+        b=fcTBKNuIh33usr45fvyZ7jPNN2RbJGHKEHlTcGC6CE2ZxwSH9YvT4syz9Sn1Aoy6FX
+         +XoaeK5GxmxftFw5i8PzY5O2MwU+7guY046gsK8RzXkovaa5FghyiumjrU4wFHyMpw/W
+         DQvKBmPwOAx9yoRPFYYQNGCs7zKkZTZsnt2prT6dUUd4XnOYU05Z3NLq4ILK25qjeRV1
+         +RuXGsOY4ZL/ALIye/C84usGrhUBIKgJn78EUDsQqfFiLLRh0ck/dY2oz3NlHZzOZ/RL
+         XpP93RFSlHCcNG8OvTezf40qGWaKvz0wajbT/A87K6Vy0i1aqyOQJZTV+dk+KqdrNyZV
+         q/Rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=3srUmliW9AlMGi/4LAcEMKWwu1twTFDFmKWjMsm2Q8Q=;
-        b=pXg1/Zl2H+9TfP6L0orWnisDeihAC1Bc/S0XO3lVvKYAEvUCUDLbBREw8Rcw2PffeF
-         cPCmr32Syd9KYOofNiK8sFeRgUoEwD63UxURyPLev7afC3XvvJEeaJ/z96msPBFApfcX
-         557eXztvcxL7r8NHBxYBlDwIBQgl7dyM48X52YCQZ6n3jbOeIr9bW73qG/cETS5fIDzV
-         /BmCT298tNVQFGdcsxrFmS8dcYZBoxIfY/o3V/0akMB72C8AWMpDbgfgUNnKOew43DKO
-         qqGN82D8o9uuIesWuLmkR1p65hCGTTDImVCjscLJb+Zm+0EhPE8nsV+Tba41Jv9tTl53
-         XO6A==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=kmCMAvywZ70BUe2bx1A/nrOwN6GAdbYos9+k3nWZsO0=;
+        b=0TYxdvmkzYYHnDapOzlxkfoDn56i9wWEgG0hfoZ7aui/AczvU3GyHoSuFV+C/2punz
+         q+BhvHTnf3fLBJCrs5XkzysSEfHcfCPJXW5MwKBhem8vumCn7wgYH70Wa6ChnOChGe6X
+         QFYJ/x+bxQ11oqZoDAqasYpWW9eCmbjnKabMpcuy0EZdWLD80wtjczyzOVHo4+oG8no4
+         ErhRXN+RJ2xsNhhVTg+voHaxIbgVB2dV9SmbB6yYjyBk2lDL9VTplLD0G5ZmwEIeYaPu
+         0t+Gryg7TJ9bEhdvHN6kWKC9qHcWC8kj7+o/Aq1nUMLDNRl89aD9HA570beLSAISNsyV
+         WTKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QCuDmVal;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=H2KgLkOg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a188si1769763qkg.243.2020.02.21.10.15.43
+        by mx.google.com with ESMTPS id h78si1843972qke.299.2020.02.21.10.30.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Feb 2020 10:15:43 -0800 (PST)
+        Fri, 21 Feb 2020 10:30:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QCuDmVal;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=H2KgLkOg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34754 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34918 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j5Cpy-0007Dh-Mr
-	for alex.bennee@linaro.org; Fri, 21 Feb 2020 13:15:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47599)
+	id 1j5D4V-0006hk-Ry
+	for alex.bennee@linaro.org; Fri, 21 Feb 2020 13:30:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49605)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1j5Cpn-0007B0-Nx
- for qemu-arm@nongnu.org; Fri, 21 Feb 2020 13:15:32 -0500
+ (envelope-from <ehabkost@redhat.com>) id 1j5D4M-0006fv-8y
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 13:30:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1j5Cpm-0001Wq-Is
- for qemu-arm@nongnu.org; Fri, 21 Feb 2020 13:15:31 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:21144
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <ehabkost@redhat.com>) id 1j5D4L-0004Z4-1T
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 13:30:34 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:25536
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1j5Cpm-0001Ug-Di
- for qemu-arm@nongnu.org; Fri, 21 Feb 2020 13:15:30 -0500
+ (Exim 4.71) (envelope-from <ehabkost@redhat.com>) id 1j5D4K-0004XU-SS
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 13:30:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582308929;
+ s=mimecast20190719; t=1582309832;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3srUmliW9AlMGi/4LAcEMKWwu1twTFDFmKWjMsm2Q8Q=;
- b=QCuDmValxrWucisQO2RCMYCHA0RF18SpFRY2AGgoeH5KVgsPDs8/Ht7CBGgUvJuvxF0LAe
- 7AHMJxLzCVCADigrdotGticMhD1GlOVYDQ/B6wPDJnAKzaow+pYKQJnvHAOd4p3x6Y51xl
- GUjUH5oK4NuZBp8EhwCB0Ex2iFo8Szk=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-107-qNyd1sz2MZ-Hcvpf0sjjJA-1; Fri, 21 Feb 2020 13:15:27 -0500
-X-MC-Unique: qNyd1sz2MZ-Hcvpf0sjjJA-1
-Received: by mail-wr1-f70.google.com with SMTP id d8so1363723wrq.12
- for <qemu-arm@nongnu.org>; Fri, 21 Feb 2020 10:15:27 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=3srUmliW9AlMGi/4LAcEMKWwu1twTFDFmKWjMsm2Q8Q=;
- b=M7o5F+GRE5A2n/S4vGo5XIQ31O1EpmOZTb3UU1q3XIoJEhhq/wc+E0QXfQlH7rRLSv
- Vsj3F75OmlDukOoAt8xcvPsEzfDGNA/D6z3PUKCsHzItdIZhogbyXDbP6XeKcebw2tYQ
- kemTGBThgU5v/RH8lWjC8kLI72YScK/dEQ68kBvKkYoPeY6JO01Kj54yGkTJGNKRdaQC
- WQv2kyJR3mBT0kPPEcc/V/7VUmWRCjtshMFGBpP79XiohB5J06GHg5jvrhMiZnFdvkjW
- zI/ijuORrBQ3KmMEu2A2fVMA0zbVvyNCT2Ffz/44zpReYLAhs7bMFAXnYP1dj09EG/aZ
- ypQw==
-X-Gm-Message-State: APjAAAV20WNEDMZ7FtWYUHRV62i7j/1JCJsKDfGTmScZgn0gaaAcT7IA
- U6RxWNPo5N2ZuqfsLC3/WgYUXXQAmJobqt8/Q6wf5LFdNQuUOo9sKu8O7Sy6chNjR18ramLdZAT
- umGzMj3Ivt6hb
-X-Received: by 2002:a7b:c4c3:: with SMTP id g3mr4935522wmk.131.1582308926188; 
- Fri, 21 Feb 2020 10:15:26 -0800 (PST)
-X-Received: by 2002:a7b:c4c3:: with SMTP id g3mr4935505wmk.131.1582308925933; 
- Fri, 21 Feb 2020 10:15:25 -0800 (PST)
-Received: from [192.168.178.40] ([151.20.135.128])
- by smtp.gmail.com with ESMTPSA id w15sm4957300wrs.80.2020.02.21.10.15.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 21 Feb 2020 10:15:25 -0800 (PST)
-Subject: Re: [PATCH] hw/char/pl011: Output characters using best-effort mode
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200220060108.143668-1-gshan@redhat.com>
- <f3c8adba729d050ba2144cc9c834fe82@kernel.org>
- <CAFEAcA8inLO75XOcCO3bUiiJQyZT+nqmp1be+z6ZtQx2a=68+g@mail.gmail.com>
- <fda602ae-43d5-728c-a5bb-f607f0acd3df@redhat.com>
- <CAFEAcA-VB1t2XDuAHgq_p2Fz8NQ+3HFgyNOzRjk8BjixNJb0qg@mail.gmail.com>
- <eedbac05-5a17-82e6-3cdc-c3b21983545b@redhat.com>
- <CAFEAcA-bHCLQGkFucY5RAY-mw9wFdDeOqCkcv0xgSRg-EYh9ew@mail.gmail.com>
- <fe7f3a60-5d90-ea3c-44d1-119f8b45b15c@redhat.com>
- <CAFEAcA-1UWOfbvhEOhOvozT8RwGoPgRwn2+Lh-UzP3WH8Vw+Kg@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <1ae86c0b-d4ab-8063-747b-ebea4950e76d@redhat.com>
-Date: Fri, 21 Feb 2020 19:15:21 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ bh=kmCMAvywZ70BUe2bx1A/nrOwN6GAdbYos9+k3nWZsO0=;
+ b=H2KgLkOgWMcq8o3BYEqxqPOIk6viCopatyuRdnJXQmlSp4eJ9prJfN50sjg2OETvDLwtqG
+ +5qbcTam7/WeBs4m+UpAsS3YgJtuYZlWGNEok79VCDvL8gRufWW3Qw6ISqdkECuJ8TPpJX
+ 1pL0z17gIF+C1+4sAv4aNYzGS+10abU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-408-sX8tmzVBOpKNa2aslO4D_g-1; Fri, 21 Feb 2020 13:30:28 -0500
+X-MC-Unique: sX8tmzVBOpKNa2aslO4D_g-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 585698010F1;
+ Fri, 21 Feb 2020 18:30:27 +0000 (UTC)
+Received: from localhost (unknown [10.16.197.212])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D28BE19C70;
+ Fri, 21 Feb 2020 18:30:26 +0000 (UTC)
+Date: Fri, 21 Feb 2020 13:30:26 -0500
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Subject: Re: [PATCH v2 12/13] hw/arm/raspi: Add the Raspberry Pi B+ machine
+Message-ID: <20200221183026.GD5238@habkost.net>
+References: <20200217114533.17779-1-f4bug@amsat.org>
+ <20200217114533.17779-13-f4bug@amsat.org>
+ <26d85b1f-b2b7-ff9f-1236-43e9cb761c30@greensocs.com>
+ <c56d4f85-b4df-643c-c017-350b7f64aec2@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-1UWOfbvhEOhOvozT8RwGoPgRwn2+Lh-UzP3WH8Vw+Kg@mail.gmail.com>
-Content-Language: en-US
+In-Reply-To: <c56d4f85-b4df-643c-c017-350b7f64aec2@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -131,28 +108,103 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Gavin Shan <gshan@redhat.com>, Marc Zyngier <maz@kernel.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
- Shan Gavin <shan.gavin@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BREoj7S8tJye
+X-TUID: 7Ur4UPrMK2jN
 
-On 21/02/20 14:14, Peter Maydell wrote:
-> The initial case reported by Gavin in this thread is
-> "-serial tcp:127.0.0.1:50900" with the other end being a program which
-> listens on TCP port 50900 and then sleeps without accepting any incoming
-> connections, which blocks the serial port output and effectively blocks
-> the guest bootup. If you want to insulate the guest from badly
-> behaved consumers like that (or the related consumer who accepts
-> the connection and then just doesn't read data from it) you probably
-> need to deal with more than just POLLHUP. But I'm not sure how much
-> we should care about these cases as opposed to just telling users
-> not to do that...
+On Tue, Feb 18, 2020 at 10:35:43AM +0100, Philippe Mathieu-Daud=E9 wrote:
+> Cc'ing Eduardo/Igor.
+>=20
+> On 2/18/20 9:48 AM, Luc Michel wrote:
+> > On 2/17/20 12:45 PM, Philippe Mathieu-Daud=E9 wrote:
+> > >    $ qemu-system-arm -M raspi1b -serial stdio \
+> > >        -kernel raspberrypi/firmware/boot/kernel.img \
+> > >        -dtb raspberrypi/firmware/boot/bcm2708-rpi-b.dtb \
+> > >        -append 'printk.time=3D0 earlycon=3Dpl011,0x20201000 console=
+=3DttyAMA0'
+> > >    [    0.000000] Booting Linux on physical CPU 0x0
+> > >    [    0.000000] Linux version 4.19.69+ (dom@buildbot) (gcc version =
+4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1261 Tue Sep 3 20:21=
+:01 BST 2019
+> > >    [    0.000000] CPU: ARMv6-compatible processor [410fb767] revision=
+ 7 (ARMv7), cr=3D00c5387d
+> > >    [    0.000000] CPU: VIPT aliasing data cache, unknown instruction =
+cache
+> > >    [    0.000000] OF: fdt: Machine model: Raspberry Pi Model B
+> > >    [    0.000000] earlycon: pl11 at MMIO 0x20201000 (options '')
+> > >    [    0.000000] bootconsole [pl11] enabled
+> > >    [    0.000000] Memory policy: Data cache writeback
+> > >    [    0.000000] cma: Reserved 8 MiB at 0x1b800000
+> > >    [    0.000000] random: get_random_bytes called from start_kernel+0=
+x8c/0x49c with crng_init=3D0
+> > >    [    0.000000] Built 1 zonelists, mobility grouping on.  Total pag=
+es: 113680
+> > >    [    0.000000] Kernel command line: printk.time=3D0 earlycon=3Dpl0=
+11,0x20201000 console=3DttyAMA0
+> > >    Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
+> > >    Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
+> > >    Memory: 434380K/458752K available (6971K kernel code, 635K rwdata,=
+ 2080K rodata, 464K init, 797K bss, 16180K reserved, 8192K cma-reserved)
+> > >    ...
+> > >=20
+> > > Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> > > ---
+> > >   hw/arm/raspi.c | 13 +++++++++++++
+> > >   1 file changed, 13 insertions(+)
+> > >=20
+> > > diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> > > index 3537a329ac..2d9f4e3085 100644
+> > > --- a/hw/arm/raspi.c
+> > > +++ b/hw/arm/raspi.c
+> > > @@ -324,6 +324,15 @@ static void raspi_machine_class_common_init(Mach=
+ineClass *mc,
+> > >       mc->default_ram_size =3D board_ram_size(board_rev);
+> > >   };
+> > > +static void raspi1b_machine_class_init(ObjectClass *oc, void *data)
+> > > +{
+> > > +    MachineClass *mc =3D MACHINE_CLASS(oc);
+> > > +    RaspiMachineClass *rmc =3D RASPI_MACHINE_CLASS(oc);
+> > > +
+> > > +    rmc->board_rev =3D 0x900032;
+> > > +    raspi_machine_class_common_init(mc, rmc->board_rev);
+> > > +};
+> > > +
+> > >   static void raspi2b_machine_class_init(ObjectClass *oc, void *data)
+> > >   {
+> > >       MachineClass *mc =3D MACHINE_CLASS(oc);
+> > > @@ -348,6 +357,10 @@ static void raspi3b_machine_class_init(ObjectCla=
+ss *oc, void *data)
+> > >   static const TypeInfo raspi_machine_types[] =3D {
+> > >       {
+> > > +        .name           =3D MACHINE_TYPE_NAME("raspi1b"),
+> > If it's the B+ model, why not call it raspi1b+ ?
+>=20
+> I thought about it (and prefer it), but I'm not sure this can have some
+> side-effect.
+>=20
+> Eduardo, Igor, is that OK to use a '+' in a machine name?
 
-No, I think we don't do anything (on purpose; that is, it was considered
-the lesser evil) for x86 in that case.
+It would probably work, but I would prefer to avoid that.
 
-Paolo
+>=20
+> So far the names used match [a-zA-Z0-9-].
+>=20
+> >=20
+> > > +        .parent         =3D TYPE_RASPI_MACHINE,
+> > > +        .class_init     =3D raspi1b_machine_class_init,
+> > > +    }, {
+> > >           .name           =3D MACHINE_TYPE_NAME("raspi2b"),
+> > >           .parent         =3D TYPE_RASPI_MACHINE,
+> > >           .class_init     =3D raspi2b_machine_class_init,
+> > >=20
+> >=20
+>=20
+
+--=20
+Eduardo
 

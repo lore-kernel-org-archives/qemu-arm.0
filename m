@@ -1,103 +1,108 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2045442lfg;
-        Fri, 21 Feb 2020 09:31:12 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy6YaN/XGTMiug/0KxbuFPeadiXBOqsPW3TOVFi0ZUM0hJ+zW3yb11codlsVdMXw9WL8p/5
-X-Received: by 2002:a05:620a:63b:: with SMTP id 27mr33062039qkv.159.1582306272250;
-        Fri, 21 Feb 2020 09:31:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582306272; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2045470lfg;
+        Fri, 21 Feb 2020 09:31:13 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy9qll+ZAf36s6fOS4ir+aYEaGsHcBLCzPUcMQmQY/8GGn3ogLRPx7GEiuLSc085hjH0miS
+X-Received: by 2002:ad4:4e91:: with SMTP id dy17mr32116375qvb.83.1582306273706;
+        Fri, 21 Feb 2020 09:31:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582306273; cv=none;
         d=google.com; s=arc-20160816;
-        b=rMe3RYYVT/OQHwzYw1qrno1k7Eo3F3TWKkNDrDObbIDHHG3VuK77nKNN8lKtHFKT3/
-         aapyAMTwUr+3K166Ysa0TIvkJFyI/LPQy2Y/a5231uQNsgBePh/ZAfVVUnm++fW7sit7
-         fkkh9C401cx/sLy8smtI73lDT+tLQik6MVtmh6Lau7zflu1+yqK0WvKqH0ga8tFlh69L
-         mV+/7NaJ+lPbeMqbpd1DueNbz9YAnjbWRIg+pQ9ruk1iNTkQaHyyQaey/B1ODHf6gkDO
-         IQyxm/29lHsaKAlrSV1JF6pz0kumtQSZL86Jrs53xdi2jSpUb9jcZGfITgo04dsClV/i
-         KDOg==
+        b=kmNUBsH7fCtCY1GCMfOYStYAHbGzcAXttFnY4C1SaMawpur8gX+zAHxy0v78inN5Ed
+         DfDza6VQtSc7Z/qJT0owdLvU4AFBCOpXn0Mas8JfgGQgGkDUzQGmh9dwM5reJxcq+ct3
+         stZbh3gz9Kb2IPxBNkwpDso/I6ic+R2l1ttO/HFojITNjtH19P7FT9f+pV+mfZA3N85a
+         KtOkHf707Gn9HU8CmgHQNoJ7LZJ72CLbPx1EvbxYzobKPPLYxhcLtOp9EztGvK64ew8J
+         r7ss0tSLex3GGSEBQhdKPPUK+oKWEVfUyBthEAlSDZEvx6u/hmi7k/6pAnfbDeTteC2A
+         6cgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=DW078fSvt/wxVo8MW6RkGmUKOq8LBVvtStTwUkCFZp0=;
-        b=nGG48jC6uhdSIYR1H1t0UouuanwcFJoG43a1ZK6AzOjGWW+imHXCWFr+MIqD51linU
-         aQeUTozYQV15W015ovLuhwhFuwK6zzes1R9+MaxcYzIGtjpuvxBkRNKEQ2Z11wn+GrL/
-         /QV+hAkL0HQAK2Je9WIax55duv27gxbv5w95GF7RCvP1oWG51/UMEGbEHSBYS85rnSXL
-         jGTgENtxgwrW5LR2kfPlOCYSzSUkNMyuE12TnMfCHfqLXCq6g1/4V8ARUYF+PAEjp+hw
-         KsaFn59vZyK6HacqlV0ushHVmtbpzORT28TRa352RIQ4F+2wVGZIqvfc8plzldC9tykt
-         mm/w==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=iIJbNClAaopu3XcwBy22eUj/Xx5fmW+fWgqNqWuWF1g=;
+        b=DWkn8aG6aOLqzU7ZpxitoJ5T29lTfE/w24cq9RZ3lpiW20b2lSXWW1wLSmNk5wx1/u
+         R1vv6+raEQd0nUyxeZwP1DadWNxYJbzY5IR2XCKo5DAiRqbjPn20+yr1Ypjo8ScSqY0y
+         /b+hQwwjR6Gi2kIxCziGk9DPS/K7ppdmDm1gIBDpmPES9scGad0T0g0bOI1iZgwLRAZs
+         /1kBe8BA25vdNaG35fhmgeOidVKbOTQYvtsiU3J6Rr93bpyO17j+Vl/uuQJjfy3vc4Kl
+         5v9uQlWsd5n+gtD+4TVNYyGUQPjL+PpY4cVO36ZlCuXe+YycUdvbkXfNMO7icCThUSVk
+         ZmiA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sdx9Ohku;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AcdKK1yS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t9si1575621qtn.110.2020.02.21.09.31.12
+        by mx.google.com with ESMTPS id d17si1587794qtg.313.2020.02.21.09.31.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Feb 2020 09:31:12 -0800 (PST)
+        Fri, 21 Feb 2020 09:31:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sdx9Ohku;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AcdKK1yS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34100 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34108 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j5C8t-0005zx-8V
-	for alex.bennee@linaro.org; Fri, 21 Feb 2020 12:31:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37949)
+	id 1j5C8v-00063N-0H
+	for alex.bennee@linaro.org; Fri, 21 Feb 2020 12:31:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37986)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j5C8h-0005xM-Ci
- for qemu-arm@nongnu.org; Fri, 21 Feb 2020 12:31:00 -0500
+ (envelope-from <philmd@redhat.com>) id 1j5C8j-0005zI-Gi
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 12:31:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j5C8g-0007vF-6l
- for qemu-arm@nongnu.org; Fri, 21 Feb 2020 12:30:59 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:59621
+ (envelope-from <philmd@redhat.com>) id 1j5C8i-0007wG-B2
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 12:31:01 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:59833
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j5C8g-0007uy-31
- for qemu-arm@nongnu.org; Fri, 21 Feb 2020 12:30:58 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j5C8i-0007w9-7h
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 12:31:00 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582306257;
+ s=mimecast20190719; t=1582306259;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=DW078fSvt/wxVo8MW6RkGmUKOq8LBVvtStTwUkCFZp0=;
- b=Sdx9Ohkutd7brFHb2KRFfaTUbYq7Awab5eEak/ChNki0NndA0/2pRq+PsxXERHasvs6Pp6
- iN/Jc4tF+dcuzkApAcDlt52ZZ79ASPPjmPnKFtTfEB75oYRf2Gc+jPDVXz20C9EAHK1r8O
- 9yWUpdGf3vmo5IA7NsEo3NDMUzpy25s=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-405-MVPAtAY3NjysaXqlsxhJ6g-1; Fri, 21 Feb 2020 12:30:53 -0500
-X-MC-Unique: MVPAtAY3NjysaXqlsxhJ6g-1
-Received: by mail-wm1-f69.google.com with SMTP id z7so855386wmi.0
- for <qemu-arm@nongnu.org>; Fri, 21 Feb 2020 09:30:53 -0800 (PST)
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=iIJbNClAaopu3XcwBy22eUj/Xx5fmW+fWgqNqWuWF1g=;
+ b=AcdKK1ySoDG78zgeWUBjWgIX9pXeYGtU+Z3AAeRnAkEAx6tgZD+2dEcA5GVgeYLVt6nXz+
+ 2/9/J7yTk+6iSydbCJxFZOkdrdkYS00wBwVy3htL11RndQ8sD9Jj6IwNRVv7uKYpY7cVmM
+ c7f86RoyFd4FD208WB9S3ICdkao+rfA=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-319-j7Zl6s1AO0aIE62r04zHGg-1; Fri, 21 Feb 2020 12:30:56 -0500
+X-MC-Unique: j7Zl6s1AO0aIE62r04zHGg-1
+Received: by mail-wr1-f70.google.com with SMTP id o6so1313135wrp.8
+ for <qemu-arm@nongnu.org>; Fri, 21 Feb 2020 09:30:55 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=uAN0dTE3rfOWvsVoICSRFD9tmlR68qf+wBSCeU/ZbPU=;
- b=FDSuARjUoD1JHp7VfaXYJkknTcBY0cVttSJ2Qs84xscuDku/iAjkf/fuWapJ7J+V1h
- iT/8zaVRyrmZFSOs7GyZBYvQP/r/ImYLS5Qd+ksPVqY7h5qeQ/DTfWInjCL+IkwngLFH
- hksnQ9LtyXhxKKxPkFre02NBPA8apvENR4SVXvt9menK/gUqKJ82KBrbKfdrF5IQaRIz
- zqcfPeGS/Pvx9JHtjR6P3oOOh2F6q8BTkPa0tEdv9srogOIH9y49Ch0BhJ/lcjQWt65T
- Cc5g5La+0aJNJYb1//dHOULJMr131MdCrSHYyW05y+ffU/xDx9nLJ+AjI2FNFHbhpCC4
- siuQ==
-X-Gm-Message-State: APjAAAUJ6gOQe0mj8PE/1Cg/rZFjhYDkG+3F09oxV3oum0BcdYy+nlch
- XpAhhiyIION//yB1TXWWWNAyRkNdkmufamCbElGWFIixGjoSNtWOMsBPiqlwOpriolyWSaCn/kj
- HKUN2AES5Zt34
-X-Received: by 2002:adf:fe43:: with SMTP id m3mr52587972wrs.213.1582306252645; 
- Fri, 21 Feb 2020 09:30:52 -0800 (PST)
-X-Received: by 2002:adf:fe43:: with SMTP id m3mr52587938wrs.213.1582306252393; 
- Fri, 21 Feb 2020 09:30:52 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=WhcONAkiFDeuSeZsi9vQPsSpTSVQ47zvNIPLgZ1YRDk=;
+ b=GoDVFLITVW1RWleDLng6+NdNVCUOLJTHlGJ+v73IHx3fbQC1AK8rOgDDK50cL+wfyK
+ NoMO55I559FZWZyDQ1kN3voUY2PfN/QIUVOdjzEgbY8tI8EEuTttXr+20VLreqId/UZD
+ q7DKJDNSiUFtlGedRvKhJ4fUQIYZ60Ph+MMwfV3ftfvEdOJtfu9JjG/SnDcD6dBhRaBK
+ xIhhFrwtI+EQ0mSx2C+XnISX2tDVaCbcjYhr86h/sD+o3jk+0dgBgshV3lXJt67JOEgE
+ d9X0a1NOb/Qu50KqFxi7P99vrosJiczz3ine9FVI1UKuWwc+ducI7CePecv8GBaJzx2Z
+ V4RQ==
+X-Gm-Message-State: APjAAAXdUwFZ0lhaqcrgmbhh/S7/hH7v+LEhJKSoGHPZzjqT7m9szL3/
+ 5O1UteSQZjBJS0vizwGzL1oRFZwUlcInx6eYc1gElSXtgfqA7n1YAeX6kpGYu8fQNkiZE0iS4/H
+ wBYzpDarYYyEF
+X-Received: by 2002:a5d:4a06:: with SMTP id m6mr50053538wrq.155.1582306254964; 
+ Fri, 21 Feb 2020 09:30:54 -0800 (PST)
+X-Received: by 2002:a5d:4a06:: with SMTP id m6mr50053522wrq.155.1582306254743; 
+ Fri, 21 Feb 2020 09:30:54 -0800 (PST)
 Received: from x1w.redhat.com (78.red-88-21-202.staticip.rima-tde.net.
  [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id h18sm5000871wrv.78.2020.02.21.09.30.50
+ by smtp.gmail.com with ESMTPSA id h18sm5000871wrv.78.2020.02.21.09.30.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Feb 2020 09:30:51 -0800 (PST)
+ Fri, 21 Feb 2020 09:30:53 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 0/7] hw: Let devices own the MemoryRegion they create
-Date: Fri, 21 Feb 2020 18:30:42 +0100
-Message-Id: <20200221173049.18134-1-philmd@redhat.com>
+Subject: [PATCH 1/7] scripts/coccinelle: Add a script to let devices own their
+ MemoryRegions
+Date: Fri, 21 Feb 2020 18:30:43 +0100
+Message-Id: <20200221173049.18134-2-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200221173049.18134-1-philmd@redhat.com>
+References: <20200221173049.18134-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
@@ -137,49 +142,128 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Palmer Dabbelt <palmer@dabbelt.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /4gp+9uYgyEF
+X-TUID: I34eYGgWZjng
 
 When a device creates a MemoryRegion without setting its ownership,
 the MemoryRegion is added to the machine "/unattached" container in
 the QOM tree.
 
-Add a script to do automatically let the device take the ownership
-of the memory regions it creates, and run it.
+Example with the Samsung SMDKC210 board:
 
-Philippe Mathieu-Daud=C3=A9 (7):
-  scripts/coccinelle: Add a script to let devices own their
-    MemoryRegions
-  hw/arm: Let devices own the MemoryRegion they create
-  hw/char: Let devices own the MemoryRegion they create
-  hw/core: Let devices own the MemoryRegion they create
-  hw/display: Let devices own the MemoryRegion they create
-  hw/dma: Let devices own the MemoryRegion they create
-  hw/riscv: Let devices own the MemoryRegion they create
+  $ arm-softmmu/qemu-system-arm -M smdkc210 -S -monitor stdio
+  (qemu) info qom-tree
+  /machine (smdkc210-machine)
+    /unattached (container)
+      /io[0] (qemu:memory-region)
+      /exynos4210.dram0[0] (qemu:memory-region)
+      /exynos4210.irom[0] (qemu:memory-region)
+      /exynos4210.iram[0] (qemu:memory-region)
+      /exynos4210.chipid[0] (qemu:memory-region)
+      ...
+      /device[26] (exynos4210.uart)
+        /exynos4210.uart[0] (qemu:memory-region)
+    /soc (exynos4210)
+      ^
+       \__ [*]
 
- hw/arm/exynos4210.c                           | 14 ++--
- hw/arm/fsl-imx25.c                            | 14 ++--
- hw/arm/fsl-imx31.c                            | 10 +--
- hw/arm/fsl-imx6.c                             | 10 +--
- hw/arm/fsl-imx6ul.c                           | 14 ++--
- hw/arm/msf2-soc.c                             |  8 +-
- hw/arm/nrf51_soc.c                            |  2 +-
- hw/arm/stm32f205_soc.c                        | 10 +--
- hw/arm/stm32f405_soc.c                        | 13 +--
- hw/arm/xlnx-zynqmp.c                          | 13 ++-
- hw/char/serial.c                              |  7 +-
- hw/core/platform-bus.c                        |  3 +-
- hw/display/cg3.c                              |  4 +-
- hw/display/g364fb.c                           |  5 +-
- hw/display/macfb.c                            |  4 +-
- hw/display/vmware_vga.c                       |  4 +-
- hw/dma/i8257.c                                |  2 +-
- hw/dma/rc4030.c                               |  4 +-
- hw/riscv/sifive_e.c                           |  8 +-
- hw/riscv/sifive_u.c                           |  4 +-
+The irom/iram/chipid regions should go under 'soc' at [*].
+
+Add a coccinelle script to do automatic semantic patching.
+
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
  .../memory_region_owner_nonnull.cocci         | 80 +++++++++++++++++++
- 21 files changed, 158 insertions(+), 75 deletions(-)
+ 1 file changed, 80 insertions(+)
  create mode 100644 scripts/coccinelle/memory_region_owner_nonnull.cocci
 
+diff --git a/scripts/coccinelle/memory_region_owner_nonnull.cocci b/scripts=
+/coccinelle/memory_region_owner_nonnull.cocci
+new file mode 100644
+index 0000000000..6748a200b2
+--- /dev/null
++++ b/scripts/coccinelle/memory_region_owner_nonnull.cocci
+@@ -0,0 +1,80 @@
++/*
++  Usage:
++
++    spatch \
++        --macro-file scripts/cocci-macro-file.h \
++        --sp-file scripts/coccinelle/memory_region_owner_nonnull.cocci \
++        --keep-comments \
++        --in-place \
++        --dir .
++
++*/
++
++// Device is owner
++@@
++typedef DeviceState;
++identifier device_fn, dev, obj;
++expression E1, E2, E3, E4, E5;
++@@
++static void device_fn(DeviceState *dev, ...)
++{
++  ...
++  Object *obj =3D OBJECT(dev);
++  <+...
++(
++- memory_region_init(E1, NULL, E2, E3);
+++ memory_region_init(E1, obj, E2, E3);
++|
++- memory_region_init_io(E1, NULL, E2, E3, E4, E5);
+++ memory_region_init_io(E1, obj, E2, E3, E4, E5);
++|
++- memory_region_init_alias(E1, NULL, E2, E3, E4, E5);
+++ memory_region_init_alias(E1, obj, E2, E3, E4, E5);
++|
++- memory_region_init_rom(E1, NULL, E2, E3, E4);
+++ memory_region_init_rom(E1, obj, E2, E3, E4);
++|
++- memory_region_init_ram(E1, NULL, E2, E3, E4);
+++ memory_region_init_ram(E1, obj, E2, E3, E4);
++|
++- memory_region_init_ram_ptr(E1, NULL, E2, E3, E4);
+++ memory_region_init_ram_ptr(E1, obj, E2, E3, E4);
++|
++- memory_region_init_ram_shared_nomigrate(E1, NULL, E2, E3, E4, E5);
+++ memory_region_init_ram_shared_nomigrate(E1, obj, E2, E3, E4, E5);
++)
++  ...+>
++}
++
++// Device is owner
++@@
++identifier device_fn, dev;
++expression E1, E2, E3, E4, E5;
++@@
++static void device_fn(DeviceState *dev, ...)
++{
++  <+...
++(
++- memory_region_init(E1, NULL, E2, E3);
+++ memory_region_init(E1, OBJECT(dev), E2, E3);
++|
++- memory_region_init_io(E1, NULL, E2, E3, E4, E5);
+++ memory_region_init_io(E1, OBJECT(dev), E2, E3, E4, E5);
++|
++- memory_region_init_alias(E1, NULL, E2, E3, E4, E5);
+++ memory_region_init_alias(E1, OBJECT(dev), E2, E3, E4, E5);
++|
++- memory_region_init_rom(E1, NULL, E2, E3, E4);
+++ memory_region_init_rom(E1, OBJECT(dev), E2, E3, E4);
++|
++- memory_region_init_ram(E1, NULL, E2, E3, E4);
+++ memory_region_init_ram(E1, OBJECT(dev), E2, E3, E4);
++|
++- memory_region_init_ram_ptr(E1, NULL, E2, E3, E4);
+++ memory_region_init_ram_ptr(E1, OBJECT(dev), E2, E3, E4);
++|
++- memory_region_init_ram_shared_nomigrate(E1, NULL, E2, E3, E4, E5);
+++ memory_region_init_ram_shared_nomigrate(E1, OBJECT(dev), E2, E3, E4, E5)=
+;
++)
++  ...+>
++}
 --=20
 2.21.1
 

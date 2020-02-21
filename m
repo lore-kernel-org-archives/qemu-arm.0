@@ -1,153 +1,149 @@
-Received: by 2002:a05:6512:3aa:0:0:0:0 with SMTP id v10csp3882784lfp;
-        Sun, 16 Feb 2020 01:30:18 -0800 (PST)
-X-Received: by 2002:a63:3f4f:: with SMTP id m76mr11761044pga.353.1581845418432;
-        Sun, 16 Feb 2020 01:30:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1581845418; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1865615lfg;
+        Fri, 21 Feb 2020 06:26:59 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwFkEJmm1MbPzVK8IJH5aMpQjYppIDi1CsX+kt1HHlkQz0CnIU4dDKL1XxCjmLNP9qoQ9sR
+X-Received: by 2002:ad4:554f:: with SMTP id v15mr14339304qvy.226.1582295219730;
+        Fri, 21 Feb 2020 06:26:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582295219; cv=none;
         d=google.com; s=arc-20160816;
-        b=x8iyp1a5CYXzgmqKjNB6CesP1Zmw+AYJbDgp5lqhfqKjrs+1kQSnVbGtzE90MeeOXV
-         JXHj/AJOzx2U39Z+NKeRqHRP5BNe3C4HtO4lYvS/rjAdcNMrTH4C11Q+Go/Xqj2VBQDD
-         U8zIaJpC8cMQUkhILsqDwof5tJnX+6hsbdtjeMooW75ZP7Xh3hYwgDBeOPORLZf0Cssk
-         QiekwjiicVdbhOChZ2tu/1U/ZDFUPu+MwbNhLUUPiimpUa4Tc+6qnGq3kBmSXssNgM0H
-         Pkv3w1GRkXfALQGc2d3Xf3O36vGG49CE/QU8fLEJkERWuV2fShNZu9pohFn6rx/7JAiv
-         YBgw==
+        b=c1P1h4YvvRM0OfRYW7SjyzRd+Os/k7LpxPeRbqJEDuFotiimzG0w/6Ma1hEcFPOfBX
+         q7e19uZgPpsIDwQBpC1W2blnbqBuzjBrNIHyO6T3Ulv8vW8AA7xIXXocC7i6a9psdEVF
+         3ZsAcW1eaMI4z3o2ABQme6d9Neq4lNdMKxQ6IztPGuTnMv0CYwl41eA7umCLRjLZ3i0W
+         DJl3eZKg4wBt9XNIGAHRAu1c8th8E+d2WmoGIl00k6gK79rZs9FYLH0sYPZJCUp2n620
+         GqA9mRalv5Nd72tj5uv/uPJXbZZU4lTGn/MIzUdIXjSBQI27bQ1XYJDljZ5Vk1Fq4n/3
+         lMrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=PjV188ljJOcj5eD5Q+Bzib1gG/XuNZZpkt8IMeQJWxA=;
-        b=AkClI/G0ygf5R0HmhWN4RNC5ifHQAR0WfQHXsn7qOSufZ5xfrrD4kU9/XKb2P87cF9
-         +ScjebD6Q6si/earPMh0rtKF7z+vSolcB3F/PtlmZ3qpWdyuteUFKqi8TSiaYRfivr0X
-         UZP/HXFHoUHVUWI+0BIeWqb1xQp/yRTeDeKAeFc7hXEgXc3kvtAB3+311NUZ+6dGJ27C
-         M3uQStP7S2Mjnhu2FQNi5dutck3GVhJ35yj7Y2H2OSvWPMOSNyfYTPuKBUOKZT408Xgp
-         znYFctQKK9DrQm9+ZT1dLlPziRcO553O8TTsOj1yMtm1eH+QBy+nWJVhW/I5iUii+3qt
-         YHyA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=/2fCPIpVt94NvvPO4CigqPV2g3CIeYezuT4KDYa1ew4=;
+        b=Ht74bOxLVBIo18LvvWytl2/UUtsOJ4B6Xj8Qtv1I3/7hllQ4mop+aWSeD/Il7guBgZ
+         YVmSz0A37QlnQADrjCBeZ5HE9GsRipdCCRn6F9QOJr4RWfSlkH/Enfm1djLIeWFqdr5w
+         6AU1THkiEWhDrbPzJT7dE4PJL0Hkv0lngPcpDZUtnkS6n9V8EYOgNqN5+WOmFBhLlYLJ
+         6B0q/hhKnStcRr/B9XAe3mTR7c668dUcBdywpf+C1o0gi+DX3VUnsdf4UvCxjH5P8ogb
+         jxWn3tdNO5e5q7A/dI7nQXGUHNi6Sf0ZmRJh0rhjRrd92MRdoQxsL+mVChKcFfMhcyv7
+         y35w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="mBPEDqe/";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id y7sor13456195pff.13.2020.02.16.01.30.18
+       dkim=fail header.i=@linaro.org header.s=google header.b=Nh33IvWz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z3si1357198qvo.123.2020.02.21.06.26.59
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sun, 16 Feb 2020 01:30:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 21 Feb 2020 06:26:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="mBPEDqe/";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=PjV188ljJOcj5eD5Q+Bzib1gG/XuNZZpkt8IMeQJWxA=;
-        b=mBPEDqe/Lh0jrS3ZlXb73eGTAO+G2rYEMvR8s40NCnxQ6vGAsbtq0hXtFGkeLjqxnB
-         xAQWyLaygG7LSbbFa1jChdF+pBmilbrAWWqa/dTLapa3gZkuXfEJYGSxlX+TwypGzMXt
-         uAaFQsekdnvARbfH+5pq/OMvcrvazwYbRrMWwyXSbMrVH2x4l/Ao8AwGoPK/364LoAlV
-         4wIij/GzZ9/e+obAAjnn3P05R+NQyK5mpHufcZ3mcQrktUC9SlNP2XHopD/qvdSyz4Mc
-         HdTBtodlEK9+8nOYXgjfPxASigbrMaeWYrwWKs3E1M/hIO4PtyyukPihx3cEFAwHmfPv
-         BSPQ==
+       dkim=fail header.i=@linaro.org header.s=google header.b=Nh33IvWz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58972 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j59Gd-0008VB-3A
+	for alex.bennee@linaro.org; Fri, 21 Feb 2020 09:26:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47857)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1j59GS-0008TV-FV
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 09:26:49 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1j59GR-000661-Ie
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 09:26:48 -0500
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:38174)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j59GR-00065Y-Dm
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 09:26:47 -0500
+Received: by mail-ot1-x344.google.com with SMTP id z9so2138704oth.5
+ for <qemu-arm@nongnu.org>; Fri, 21 Feb 2020 06:26:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=/2fCPIpVt94NvvPO4CigqPV2g3CIeYezuT4KDYa1ew4=;
+ b=Nh33IvWzD1cGAius/dAaiBVbeejIvxJ9uS1+A1EdpV+fJZ38EO9k/WPySxsLIstvxO
+ U4wgRIfFQSbF1ZA2Pf1zsNq9hNYFo3sJ3gdLKgKGUs99BBPgiG84BURx6junSNENq6lG
+ g5LR7C12CWST+ipLJNQ0OqjRHym0JfH1JsQr+1ufCtgjZ2TVdhIdbhfP5IZssr2UYi8+
+ 11WwGEBSL9aLiSdlVSZIsDvxlPMyCaYdJXC1wM+a9GbaBwdL9kGSxcGiypFEinIg7ZHe
+ 1fNWZ9acj1sGqFf55EzsBCodGmK1BR52vJmhGV9ukkTKXAlogTV8NBJBEFhBantOlBaI
+ XS4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=PjV188ljJOcj5eD5Q+Bzib1gG/XuNZZpkt8IMeQJWxA=;
-        b=h943cUjncWl2J11iiFOPcglo3Tw3cjAKfA9BQT5R/Ua6vlHOWTPxRFLOWek66U0kTx
-         QgaUJ56GvWyjsIJlS6YBWHh3yOQSe1WgvA4c0FUzt9dvQFJHjoqJQxvHUcRDCnV8XAVb
-         O0bQ9k6BTlpM1QQ/K4pvE0uqf5RrHlcwgDJPcVxY+KuvyeKaEnRlKw3XSmT/wC1NoMuK
-         S18pY2HjnSFGxQxWEIT5aPVmQyZcLnm4w3CZ4Z/usi8frKr56d9VBzlDjZsobZLZnW3I
-         /KGzu3xHyo+7lC55OCtLJWUCV8J2oBvjxdzfzkD3KQgmd9XtVexYFh7MHRNs2766y7H+
-         eJmA==
-X-Gm-Message-State: APjAAAUZp0OBuXAaRT7ZBk2dozuY8prn0KobI0FpKzwdKzMUbPyy1c7I
-	iElR4TnWdDxQ+KNZIOAho7MkMhJy
-X-Google-Smtp-Source: APXvYqxyTVZV8jn9k2Gey0mBy9iJEwqt/4AzJYg+kW+9FYG3b3anof2tr2y4KVfddMUbLekFNquo6A==
-X-Received: by 2002:aa7:8815:: with SMTP id c21mr11345865pfo.81.1581845417905;
-        Sun, 16 Feb 2020 01:30:17 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
-        by smtp.gmail.com with ESMTPSA id q17sm12803261pfg.123.2020.02.16.01.30.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 16 Feb 2020 01:30:17 -0800 (PST)
-Subject: Re: [PATCH v2 19/19] tests/tcg: take into account expected clashes
- pauth-4
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: cota@braap.org, aaron@os.amperecomputing.com, peter.puhov@linaro.org,
- robert.foley@linaro.org, kuhn.chenqun@huawei.com, robhenry@microsoft.com,
- fam@euphon.net, berrange@redhat.com, f4bug@amsat.org, balrogg@gmail.com,
- aurelien@aurel32.net, pbonzini@redhat.com, stefanha@redhat.com,
- stefanb@linux.vnet.ibm.com, marcandre.lureau@redhat.com,
- Peter Maydell <peter.maydell@linaro.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-References: <20200213225109.13120-1-alex.bennee@linaro.org>
- <20200213225109.13120-20-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <ded4f25b-817e-ec52-120b-8aecb2ebdb9c@linaro.org>
-Date: Sun, 16 Feb 2020 01:30:14 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=/2fCPIpVt94NvvPO4CigqPV2g3CIeYezuT4KDYa1ew4=;
+ b=hiv6xdW0zn7dpaEk8fxeUbMmJc1JNZaOxWW5uUs/DhuFjzrLs6O0VVfiP/n36xptuy
+ jfSqcpSoFt896rofs6Mj6dGmFRtVYi/908VwpFPMxyimH5rRIlX4BGTOcrZiHOu2RjgX
+ betvrv/eSAX12RRF+aiNwHJsD1KYbAQgydw8zO6VvFi78m3Dza+dGSOGrZaYb/zC8PCi
+ aV9tgz1t8j2Hj2z1wqZei2Dz9EECAt33TFmPWuqcT9YbHIWuZZy2b9p1CWopN7oAHNuZ
+ GwWsgrS3V+TO2DFWkvCMiqkFVSEJMIhtrB6LBisPteyxw6Iel9+uTDo9kZCYEAUIojy/
+ ItVA==
+X-Gm-Message-State: APjAAAXqm1IwelKO7oZlrRN+rwWVC19Ydp4GiUOwUih5o/Bu5ik1f9Y/
+ iPQ7EPo2fy3zJtRYrRrNo+QJNbwFz2FWqfaYa4euug==
+X-Received: by 2002:a9d:68d9:: with SMTP id i25mr16283516oto.135.1582295206690; 
+ Fri, 21 Feb 2020 06:26:46 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200213225109.13120-20-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: 6ZmPDjIty/Rn
+References: <20200214132745.23392-1-eric.auger@redhat.com>
+ <20200214132745.23392-11-eric.auger@redhat.com>
+In-Reply-To: <20200214132745.23392-11-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 21 Feb 2020 14:26:35 +0000
+Message-ID: <CAFEAcA9HFAV+gPOkNWaixNqEKmsWUAAYjNcet8-tNJXvUyOrOg@mail.gmail.com>
+Subject: Re: [PATCH v16 10/10] MAINTAINERS: add virtio-iommu related files
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::344
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>, "Tian,
+ Kevin" <kevin.tian@intel.com>, tnowicki@marvell.com,
+ Juan Quintela <quintela@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, bharatb.linux@gmail.com,
+ qemu-arm <qemu-arm@nongnu.org>, Eric Auger <eric.auger.pro@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DGvG8/Oyc4kn
 
-On 2/13/20 2:51 PM, Alex Bennée wrote:
-> Pointer authentication isn't perfect so measure the percentage of
-> failed checks. As we want to vary the pointer that is authenticated we
-> recurse down the stack.
-> 
-
-You're no longer recursing.
-
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+On Fri, 14 Feb 2020 at 13:29, Eric Auger <eric.auger@redhat.com> wrote:
+>
+> Add a new "virtio-iommu" section with the new files
+> related to this device.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > ---
->  tests/tcg/aarch64/pauth-4.c | 54 +++++++++++++++++++++++++------------
->  1 file changed, 37 insertions(+), 17 deletions(-)
-> 
-> diff --git a/tests/tcg/aarch64/pauth-4.c b/tests/tcg/aarch64/pauth-4.c
-> index 1040e92aec3..24a639e36ca 100644
-> --- a/tests/tcg/aarch64/pauth-4.c
-> +++ b/tests/tcg/aarch64/pauth-4.c
-> @@ -1,25 +1,45 @@
->  #include <stdint.h>
->  #include <assert.h>
-> +#include <stdio.h>
-> +#include <stdlib.h>
+>  MAINTAINERS | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index c7717df720..b7a7a18737 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1623,6 +1623,12 @@ F: hw/input/virtio-input*.c
+>  F: include/hw/virtio/virtio-input.h
+>  F: contrib/vhost-user-input/*
+>
+> +virtio-iommu
+> +M: Eric Auger <eric.auger@redhat.com>
+> +S: Maintained
+> +F: hw/virtio/virtio-iommu*.c
+> +F: include/hw/virtio/virtio-iommu.h
 > +
-> +#define TESTS 1000
->  
->  int main()
->  {
-> -  uintptr_t x, y;
-> +    int i, count = 0;
-> +    float perc;
-> +    void *base = malloc(TESTS);
-> +
-> +    for (i = 0; i < TESTS; i++) {
-> +        uintptr_t in, x, y;
-> +
-> +        in = i + (uintptr_t) base;
+>  virtio-serial
+>  M: Laurent Vivier <lvivier@redhat.com>
+>  R: Amit Shah <amit@kernel.org>
+> --
 
-There's no reason all of these couldn't be char* or void* instead of casting to
-uintptr_t.  Nothing else would have to change.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-> +
-> +        asm("mov %0, %[in]\n\t"
-> +            "pacia %0, sp\n\t"        /* sigill if pauth not supported */
-> +            "eor %0, %0, #4\n\t"      /* corrupt single bit */
-> +            "mov %1, %0\n\t"
-> +            "autia %1, sp\n\t"        /* validate corrupted pointer */
-> +            "xpaci %0\n\t"            /* strip pac from corrupted pointer */
-> +            : /* out */ "=r"(x), "=r"(y)
-> +            : /* in */ [in] "r" (in)
-
-It's weird to have some arguments named and some not.  Why not just use %2,
-since this is simple enough?
-
-Otherwise,
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-r~
+thanks
+-- PMM

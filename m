@@ -1,233 +1,389 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1302110lfg;
-        Thu, 20 Feb 2020 19:46:22 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyfcpEXLNUgSdTrTQNWVazo3kdh7E/n+st62Xj14JuijP8apKqlcyyUO0usHE+8p7+DZThd
-X-Received: by 2002:ac8:6054:: with SMTP id k20mr28864711qtm.92.1582256782436;
-        Thu, 20 Feb 2020 19:46:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582256782; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1330219lfg;
+        Thu, 20 Feb 2020 20:25:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzmcDtMu06yRKESMXF2AtmXUF1wU0Tnzpr8Nazl8VIr2dEITxpSoEz2j4+AAqz4hsetoY3E
+X-Received: by 2002:ac8:669a:: with SMTP id d26mr29709286qtp.304.1582259102583;
+        Thu, 20 Feb 2020 20:25:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582259102; cv=none;
         d=google.com; s=arc-20160816;
-        b=gtpNVv6Q3kS/OtEpR9V5HanUV7WXQ5nierK1Xx3KnbvTFd2cem5Bu+Z+6rRn5iZpMj
-         EzR4d9UoTSZSUAAIxMUgMNhP85wi0V7bURweLdcX0ScxwNYcHrNfFHgsy0eM6NytH4Sn
-         LlnErMh8btnJj2BYQKqfrEWeJ6eJiWWLpJXc081PyZzXK4M4cgk3TSEfbEKU/v+h1+Wa
-         dVTcR3Z28FGOPXXdrz3HzwxzSx1eheQkjnix0RZEqVPvzoiCqEbwHXkr4vldDiC4uEvC
-         Ex1bH0v7om2agwPtsUKGiVG1W0P9YbyIP/vx7kA6qnbeaqnYKBOTQ00kG8qhpE2Q3VFk
-         rPQg==
+        b=bYgTlkD4BfMpjWkbYUli4xGUl2Uf3JCwu0H7mZX3Tb00uw6oXCLUk3359JTSgS27ri
+         UiM1gcn1ni7KxF+56rFGux5htZBdriiWDQlYRUN6bARKMi8O+hsRlq00bIEI5gulQtIr
+         f/44mHwRUILVDHG9d9QEIgBMNDApxKGuafmkTuxSL2XVWwOPTi+bZS5gdoVcQkstMt2g
+         qQqZ1M3EO8VEuUKY7GUUWsKfVjqlNA8EKdn9KHZxmL6iRlWH1dq4CLThE4Fm5hyS8XEO
+         7iCzZvg2zNCHU173wY/X+TNuTP9+icLp6lMdPUBl0lkJ58S6/TQgtSwWF3DqJtbZB7K+
+         MzOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:content-language
          :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=rHn3jEo8bMfYRQbBYh+UNSM8JaaPUjiYh/sEGURck0E=;
-        b=C6ZuVSJBlKls38EFrHj8ts44w76ELzFXitt62ktEjuhu7nyy1b63CS4Iuma8HpNPQS
-         DOHGbdSOdg0aY2lAYyuNEstKOKFuBqdcEMe8H0nihz0f7UfrcF1l14xFU3ZR/ejtWO6z
-         cKpEuOJGvFRiG2OL0LZSEaI7Xz1SLB4nNNKBzAJ9284mxe1ck5uDb+wP6Q5G9exBhIVE
-         jlfHT6ew8DW6TnUbSDlIZwCUgRC7j2tQW/MsuT9pU0ksMFvrffNCBRFw22k2EYaFZWmK
-         Q+671cq+Fp+6VGf9ZvVkAwBoGI+3fkABuunK1RMMd6NBPEpsRvBs7PFJIdQ+8g0qiNL/
-         lVwg==
+         :to:subject:dkim-signature;
+        bh=ha8HUzSfdDW7EZpUY09Z06RbzzpC9F7Eebh6jMS4CJ4=;
+        b=g2nz+QNeqE9EW4R0BkyHI+KwYjJ30JTnZaT5TkeQ9AN+KVINk6BhKVlplvFwHS/rz6
+         B4AHZZXxe/PvdFlVUnnpJba+OzORoJmnETMIfH4sYwxPy4XkJPCYC20ftqJuKvBab3wv
+         QRgpyla+ZytWTyOTITitdAsxZgD25CP0DucMr0TXgIpJmNrWB8v4QPqDkODDTS+VqfRB
+         PLHDMWDr12jIHk64CCeMhBe8qztyZBimOv367dWcC4sS2nl/mYlad0ARstAaTzrsTmAk
+         sHTVroJfHUgdPUfImyYDp+CpUf8CFclNFfazefN3Y8E93sGYb89UkDHQpcsf0BeVOziD
+         LhMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bpQtcjbB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b129si820451qke.324.2020.02.20.19.46.22
+        by mx.google.com with ESMTPS id c3si845267qkb.191.2020.02.20.20.25.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Feb 2020 19:46:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 20 Feb 2020 20:25:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51850 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bpQtcjbB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52164 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j4zGf-00012g-R1
-	for alex.bennee@linaro.org; Thu, 20 Feb 2020 22:46:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52028)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j4zs6-00042z-13
+	for alex.bennee@linaro.org; Thu, 20 Feb 2020 23:25:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48116)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pannengyuan@huawei.com>) id 1j4z8s-0003yg-Bv
- for qemu-arm@nongnu.org; Thu, 20 Feb 2020 22:38:19 -0500
+ (envelope-from <gshan@redhat.com>) id 1j4zrW-00042R-R7
+ for qemu-devel@nongnu.org; Thu, 20 Feb 2020 23:24:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pannengyuan@huawei.com>) id 1j4z8q-0001yZ-55
- for qemu-arm@nongnu.org; Thu, 20 Feb 2020 22:38:18 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:42704 helo=huawei.com)
+ (envelope-from <gshan@redhat.com>) id 1j4zrU-0007RX-Ay
+ for qemu-devel@nongnu.org; Thu, 20 Feb 2020 23:24:26 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:38101
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pannengyuan@huawei.com>)
- id 1j4z8p-0001io-Gt; Thu, 20 Feb 2020 22:38:15 -0500
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 81C338DD290A4C042835;
- Fri, 21 Feb 2020 11:38:03 +0800 (CST)
-Received: from [10.184.39.213] (10.184.39.213) by smtp.huawei.com
- (10.3.19.210) with Microsoft SMTP Server (TLS) id 14.3.439.0; Fri, 21 Feb
- 2020 11:37:57 +0800
-Subject: Re: [PATCH v2 2/2] hw: move timer_new from init() into realize() to
- avoid memleaks
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200217032127.46508-1-pannengyuan@huawei.com>
- <20200217032127.46508-3-pannengyuan@huawei.com>
- <CAFEAcA_AxCVaAgho3g2q=kCifSdhz9Qi72eoVAM9gRjb3-_Sog@mail.gmail.com>
-From: Pan Nengyuan <pannengyuan@huawei.com>
-Message-ID: <7e95f201-8f0b-20db-1452-9d0dde1c6f69@huawei.com>
-Date: Fri, 21 Feb 2020 11:37:53 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1j4zrU-0007PG-4W
+ for qemu-devel@nongnu.org; Thu, 20 Feb 2020 23:24:24 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582259063;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=ha8HUzSfdDW7EZpUY09Z06RbzzpC9F7Eebh6jMS4CJ4=;
+ b=bpQtcjbBlqHC/vLIH40QvK4CSUviq+dtMbcPExUl11X22zNYN9gKqM2LpGL1hEMhKnfprh
+ rer5KLYx4mmrg8LjEzkfyb7e0WNkMp1wTesTAl+odtcuav+gMHqymdYYvuz2BXa6NkFTK2
+ cO1TfuqMFQaqysSfaZv9eK70fBM0ucU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-405-H1P04UmTMeqiDDpGt73fcg-1; Thu, 20 Feb 2020 23:24:17 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 70BF113F6;
+ Fri, 21 Feb 2020 04:24:16 +0000 (UTC)
+Received: from localhost.localdomain (vpn2-54-80.bne.redhat.com [10.64.54.80])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 788505D9C5;
+ Fri, 21 Feb 2020 04:24:14 +0000 (UTC)
+Subject: Re: [PATCH] hw/char/pl011: Output characters using best-effort mode
+To: Peter Maydell <peter.maydell@linaro.org>, Marc Zyngier <maz@kernel.org>
+References: <20200220060108.143668-1-gshan@redhat.com>
+ <f3c8adba729d050ba2144cc9c834fe82@kernel.org>
+ <CAFEAcA8inLO75XOcCO3bUiiJQyZT+nqmp1be+z6ZtQx2a=68+g@mail.gmail.com>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <fda602ae-43d5-728c-a5bb-f607f0acd3df@redhat.com>
+Date: Fri, 21 Feb 2020 15:24:11 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_AxCVaAgho3g2q=kCifSdhz9Qi72eoVAM9gRjb3-_Sog@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
-X-Originating-IP: [10.184.39.213]
-X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <CAFEAcA8inLO75XOcCO3bUiiJQyZT+nqmp1be+z6ZtQx2a=68+g@mail.gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: H1P04UmTMeqiDDpGt73fcg-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/mixed; boundary="------------6EF41B11D44FC8C5AC0DCE6D"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.32
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, QEMU
- Developers <qemu-devel@nongnu.org>, mav2-rk.cave-ayland@ilande.co.uk,
- qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
- Euler Robot <euler.robot@huawei.com>, andrzej zaborowski <balrogg@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YHaTHOodo/FJ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Shan Gavin <shan.gavin@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LOhIjGYmKklf
 
+This is a multi-part message in MIME format.
+--------------6EF41B11D44FC8C5AC0DCE6D
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
+Hi Peter and Marc,
 
-On 2/21/2020 1:56 AM, Peter Maydell wrote:
-> On Mon, 17 Feb 2020 at 03:22, <pannengyuan@huawei.com> wrote:
+On 2/20/20 9:10 PM, Peter Maydell wrote:
+> On Thu, 20 Feb 2020 at 09:10, Marc Zyngier <maz@kernel.org> wrote:
+>> On 2020-02-20 06:01, Gavin Shan wrote:
+>>> This fixes the issue by using newly added API
+>>> qemu_chr_fe_try_write_all(),
+>>> which provides another type of service (best-effort). It's different
+>>> from
+>>> qemu_chr_fe_write_all() as the data will be dropped if the backend has
+>>> been running into so-called broken state or 50 attempts of
+>>> transmissions.
+>>> The broken state is cleared if the data is transmitted at once.
 >>
->> From: Pan Nengyuan <pannengyuan@huawei.com>
->>
->> There are some memleaks when we call 'device_list_properties'. This pa=
-tch move timer_new from init into realize to fix it.
->> Meanwhile, do the null check in mos6522_reset() to avoid null deref if=
- we move timer_new into realize().
->>
->> Reported-by: Euler Robot <euler.robot@huawei.com>
->> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
->> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->=20
->=20
->> diff --git a/hw/misc/mos6522.c b/hw/misc/mos6522.c
->> index 19e154b870..980eda7599 100644
->> --- a/hw/misc/mos6522.c
->> +++ b/hw/misc/mos6522.c
->> @@ -465,11 +465,15 @@ static void mos6522_reset(DeviceState *dev)
->>      s->timers[0].frequency =3D s->frequency;
->>      s->timers[0].latch =3D 0xffff;
->>      set_counter(s, &s->timers[0], 0xffff);
->> -    timer_del(s->timers[0].timer);
->> +    if (s->timers[0].timer) {
->> +        timer_del(s->timers[0].timer);
->> +    }
->>
->>      s->timers[1].frequency =3D s->frequency;
->>      s->timers[1].latch =3D 0xffff;
->> -    timer_del(s->timers[1].timer);
->> +    if (s->timers[1].timer) {
->> +        timer_del(s->timers[1].timer);
->> +    }
->>  }
->=20
-> What code path calls a device 'reset' method on a device
-> that has not yet been realized ? I wasn't expecting that
-> to be valid...
+>> I don't think dropping the serial port output is an acceptable outcome.
+> 
+> Agreed. The correct fix for this is the one cryptically described
+> in the XXX comment this patch deletes:
+> 
+> -        /* XXX this blocks entire thread. Rewrite to use
+> -         * qemu_chr_fe_write and background I/O callbacks */
+> 
+> The idea is that essentially we end up emulating the real
+> hardware's transmit FIFO:
+>   * as data arrives from the guest we put it in the FIFO
+>   * we try to send the data with qemu_chr_fe_write(), which does
+>     not block
+>   * if qemu_chr_fe_write() tells us it did not send all the data,
+>     we use qemu_chr_fe_add_watch() to set up an I/O callback
+>     which will get called when the output chardev has drained
+>     enough that we can try again
+>   * we make sure all the guest visible registers and mechanisms
+>     for tracking tx fifo level (status bits, interrupts, etc) are
+>     correctly wired up
+> 
+> Then we don't lose data or block QEMU if the guest sends
+> faster than the chardev backend can handle, assuming the
+> guest is well-behaved -- just as with a real hardware slow
+> serial port, the guest will fill the tx fifo and then either poll
+> or wait for an interrupt telling it that the fifo has drained
+> before it tries to send more data.
+> 
+> There is an example of this in hw/char/cadence_uart.c
+> (and an example of how it works for a UART with no tx
+> fifo in hw/char-cmsdk-apb-uart.c, which is basically the
+> same except the 'fifo' is just one byte.)
+> 
+> You will also find an awful lot of XXX comments like the
+> above one in various UART models in hw/char, because
+> converting an old-style simple blocking UART implementation
+> to a non-blocking one is a bit fiddly and needs knowledge
+> of the specifics of the UART behaviour.
+> 
+> The other approach here would be that we could add
+> options to relevant chardev backends so the user
+> could say "if you couldn't connect to the tcp server I
+> specified, throw away data rather than waiting", where
+> we don't have suitable options already. If the user specifically
+> tells us they're ok to throw away the serial data, then it's
+> fine to throw away the serial data :-)
+> 
 
-I got the follow null-deref case on m68k If I move timer_new into realize=
-():
+I was intended to convince Marc that it's fine to lose data if the
+serial connection is broken with an example. Now, I'm taking the
+example trying to convince both of you: Lets assume we have a ARM
+board and the UART (RS232) cable is unplugged and plugged in the middle of
+system booting. I think we would get some output lost. We're emulating
+pl011 and I think it would have same behavior. However, I'm not sure
+if it makes sense :)
 
-    #0 0x55cbb0d3e9f9 in timer_del /mnt/sdb/qemu-new/qemu/util/qemu-timer=
-.c:429
-    #1 0x55cbb04f3abe in mos6522_reset /mnt/sdb/qemu-new/qemu/hw/misc/mos=
-6522.c:468
-    #2 0x55cbb02b5fd5 in mos6522_q800_via2_reset /mnt/sdb/qemu-new/qemu/h=
-w/misc/mac_via.c:1098
-    #3 0x55cbb047b926 in device_transitional_reset /mnt/sdb/qemu-new/qemu=
-/hw/core/qdev.c:1136
-    #4 0x55cbb0491a71 in resettable_phase_hold /mnt/sdb/qemu-new/qemu/hw/=
-core/resettable.c:182
-    #5 0x55cbb048700e in bus_reset_child_foreach /mnt/sdb/qemu-new/qemu/h=
-w/core/bus.c:94
-    #6 0x55cbb0490f66 in resettable_child_foreach /mnt/sdb/qemu-new/qemu/=
-hw/core/resettable.c:96
-    #7 0x55cbb0491896 in resettable_phase_hold /mnt/sdb/qemu-new/qemu/hw/=
-core/resettable.c:173
-    #8 0x55cbb0490c06 in resettable_assert_reset /mnt/sdb/qemu-new/qemu/h=
-w/core/resettable.c:60
-    #9 0x55cbb0490aec in resettable_reset /mnt/sdb/qemu-new/qemu/hw/core/=
-resettable.c:45
-    #10 0x55cbb0492668 in resettable_cold_reset_fn /mnt/sdb/qemu-new/qemu=
-/hw/core/resettable.c:269
-    #11 0x55cbb0494a04 in qemu_devices_reset /mnt/sdb/qemu-new/qemu/hw/co=
-re/reset.c:69
-    #12 0x55cbb03ab91d in qemu_system_reset /mnt/sdb/qemu-new/qemu/vl.c:1=
-412
-    #13 0x55cbb03bfe04 in main /mnt/sdb/qemu-new/qemu/vl.c:4403
+Peter, I don't think qemu_chr_fe_add_watch() can help on the issue of
+blocking system from booting. I had the code to use qemu_chr_fe_add_watch()
+in pl011 driver as the attachment shows. The attached patch will be posted
+for review shortly as I think it's valuable to support 16-character-in-depth
+TxFIFO. The linux guest can't boot successfully if I had some code to strike
+the early console. The serial is built on tcp connection (127.0.0.1:50900)
+and the server side don't receive the incoming messages, as before. The root
+cause is guest kernel is hold until the TxFIFO has available space. On the
+other hand, the QEMU can't send the characters in TxFIFO to the backend
+successfully, which means the TxFIFO is always full.
 
-mos6522_init was called in mac_via_realize as follow, but mos6522_realize=
- was not called at all.
-So maybe we shouldn't move it into realize or add realize step in this co=
-de path?
+For the guest kernel, linux/drivers/tty/serial/amba-pl011.c::pl011_putc() is
+used to write outgoing characters to TxFIFO. The transmission can't be finished
+if there is no space in TxFIFO, indicated by UART01x_FR_TXFF.
 
-    #0  0x0000555555789e40 in mos6522_init (obj=3D0x555557537b00) at /mnt=
-/sdb/qemu-new/qemu/hw/misc/mos6522.c:476
-    #1  0x000055555581b6c3 in object_init_with_type (obj=3D0x555557537b00=
-, ti=3D0x55555617c2b0) at /mnt/sdb/qemu-new/qemu/qom/object.c:372
-    #2  0x000055555581cc80 in object_initialize_with_type (data=3Ddata@en=
-try=3D0x555557537b00, size=3D1504, type=3D0x55555617c2b0) at /mnt/sdb/qem=
-u-new/qemu/qom/object.c:516
-    #3  0x000055555581cd1f in object_initialize (data=3Ddata@entry=3D0x55=
-5557537b00, size=3D<optimized out>, typename=3D<optimized out>) at /mnt/s=
-db/qemu-new/qemu/qom/object.c:529
-    #4  0x000055555581e387 in object_initialize_childv
-    (parentobj=3D0x555557537510, propname=3D0x555555a3c673 "via1", childo=
-bj=3D0x555557537b00, size=3D<optimized out>, type=3D<optimized out>, errp=
-=3D0x55555613b338 <error_abort>, vargs=3D0x7fffffffdb30)
-    at /mnt/sdb/qemu-new/qemu/qom/object.c:552
-    #5  0x000055555581e4d3 in object_initialize_child
-    (parentobj=3D<optimized out>, propname=3D<optimized out>, childobj=3D=
-childobj@entry=3D0x555557537b00, size=3D<optimized out>, type=3D<optimize=
-d out>, errp=3D<optimized out>) at /mnt/sdb/qemu-new/qemu/qom/object.c:53=
-9
-    #6  0x000055555577ba88 in sysbus_init_child_obj (parent=3D<optimized =
-out>, childname=3D<optimized out>, child=3D0x555557537b00, childsize=3D<o=
-ptimized out>, childtype=3D<optimized out>)
-    at /mnt/sdb/qemu-new/qemu/hw/core/sysbus.c:352
-    #7  0x000055555570d301 in mac_via_realize (dev=3D0x555557537510, errp=
-=3D0x7fffffffdce0) at /mnt/sdb/qemu-new/qemu/hw/misc/mac_via.c:876
-    #8  0x0000555555774444 in device_set_realized (obj=3D0x555557537510, =
-value=3D<optimized out>, errp=3D0x7fffffffddd0) at /mnt/sdb/qemu-new/qemu=
-/hw/core/qdev.c:891
-    #9  0x000055555581b266 in property_set_bool (obj=3D0x555557537510, v=3D=
-<optimized out>, name=3D<optimized out>, opaque=3D0x555556165f50, errp=3D=
-0x7fffffffddd0) at /mnt/sdb/qemu-new/qemu/qom/object.c:2238
-    #10 0x000055555581feee in object_property_set_qobject (obj=3D0x555557=
-537510, value=3D<optimized out>, name=3D0x555555a5fa67 "realized", errp=3D=
-0x7fffffffddd0) at /mnt/sdb/qemu-new/qemu/qom/qom-qobject.c:26
-    #11 0x000055555581d60f in object_property_set_bool (obj=3D0x555557537=
-510, value=3D<optimized out>, name=3D0x555555a5fa67 "realized", errp=3D0x=
-7fffffffddd0) at /mnt/sdb/qemu-new/qemu/qom/object.c:1390
-    #12 0x0000555555773381 in qdev_init_nofail (dev=3Ddev@entry=3D0x55555=
-7537510) at /mnt/sdb/qemu-new/qemu/hw/core/qdev.c:418
-    #13 0x0000555555711fcd in q800_init (machine=3D<optimized out>) at /m=
-nt/sdb/qemu-new/qemu/hw/m68k/q800.c:230
-    #14 0x0000555555686dfb in main (argc=3D<optimized out>, argv=3D<optim=
-ized out>, envp=3D<optimized out>) at /mnt/sdb/qemu-new/qemu/vl.c:4308
+    static void pl011_putc(struct uart_port *port, int c)
+    {
+            while (readl(port->membase + UART01x_FR) & UART01x_FR_TXFF)
+                    cpu_relax();
+            if (port->iotype == UPIO_MEM32)
+                    writel(c, port->membase + UART01x_DR);
+            else
+                    writeb(c, port->membase + UART01x_DR);
+            while (readl(port->membase + UART01x_FR) & UART01x_FR_BUSY)
+                    cpu_relax();
+    }
 
-And I have another quesion, how to distinguish whether the realize() will=
- be called or not.
+If above analysis is correct and the first approach doesn't work out. We have to
+consider the 2nd approach - adding option to backend to allow losing data. I'm
+going to add "allow-data-lost" option for TYPE_CHARDEV_SOCKET. With the option,
+a back-off algorithm in tcp_chr_write(): The channel is consider as broken if
+it fails to transmit data in last continuous 5 times. The transmission is still
+issued when the channel is in broken state and recovered to normal state if
+transmission succeeds for once.
 
-Thanks.
+Thanks,
+Gavin
 
->=20
-> thanks
-> -- PMM
-> .
->=20
+
+
+
+
+--------------6EF41B11D44FC8C5AC0DCE6D
+Content-Type: text/x-patch; charset=UTF-8;
+ name="0001-hw-char-pl011-Support-TxFIFO-and-async-transmission.patch"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+ filename*0="0001-hw-char-pl011-Support-TxFIFO-and-async-transmission.pat";
+ filename*1="ch"
+
+From 7bd4a1b35b6351bc358c539e49b3a1600a124c8d Mon Sep 17 00:00:00 2001
+From: Gavin Shan <gshan@redhat.com>
+Date: Fri, 21 Feb 2020 14:26:10 +1100
+Subject: [PATCH] hw/char/pl011: Support TxFIFO and async transmission
+
+Signed-off-by: Gavin Shan <gshan@redhat.com>
+---
+ hw/char/pl011.c         | 70 +++++++++++++++++++++++++++++++++++++----
+ include/hw/char/pl011.h |  2 ++
+ 2 files changed, 66 insertions(+), 6 deletions(-)
+
+diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+index 13e784f9d9..30d5aeb90a 100644
+--- a/hw/char/pl011.c
++++ b/hw/char/pl011.c
+@@ -169,6 +169,66 @@ static void pl011_set_read_trigger(PL011State *s)
+         s->read_trigger = 1;
+ }
+ 
++static gboolean pl011_xmit(GIOChannel *chan, GIOCondition cond, void *opaque)
++{
++    PL011State *s = (PL011State *)opaque;
++    int ret;
++
++    /* instant drain the fifo when there's no back-end */
++    if (!qemu_chr_fe_backend_connected(&s->chr)) {
++        s->write_count = 0;
++        return FALSE;
++    }
++
++    if (!s->write_count) {
++        return FALSE;
++    }
++
++    ret = qemu_chr_fe_write(&s->chr, s->write_fifo, s->write_count);
++    if (ret > 0) {
++        s->write_count -= ret;
++        memmove(s->write_fifo, s->write_fifo + ret, s->write_count);
++        s->flags &= ~PL011_FLAG_TXFF;
++        if (!s->write_count) {
++            s->flags |= PL011_FLAG_TXFE;
++        }
++    }
++
++    if (s->write_count) {
++        guint r = qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_HUP,
++                                        pl011_xmit, s);
++        if (!r) {
++            s->write_count = 0;
++            s->flags &= ~PL011_FLAG_TXFF;
++            s->flags |= PL011_FLAG_TXFE;
++            return FALSE;
++        }
++    }
++
++    s->int_level |= PL011_INT_TX;
++    pl011_update(s);
++    return FALSE;
++}
++
++static void pl011_write_fifo(void *opaque, const unsigned char *buf, int size)
++{
++    PL011State *s = (PL011State *)opaque;
++    int depth = (s->lcr & 0x10) ? 16 : 1;
++
++    if (size >= (depth - s->write_count)) {
++        size = depth - s->write_count;
++        s->flags |= PL011_FLAG_TXFF;
++    }
++
++    if (size > 0) {
++        memcpy(s->write_fifo + s->write_count, buf, size);
++	s->write_count += size;
++	s->flags &= ~PL011_FLAG_TXFE;
++    }
++
++    pl011_xmit(NULL, G_IO_OUT, s);
++}
++
+ static void pl011_write(void *opaque, hwaddr offset,
+                         uint64_t value, unsigned size)
+ {
+@@ -179,13 +239,8 @@ static void pl011_write(void *opaque, hwaddr offset,
+ 
+     switch (offset >> 2) {
+     case 0: /* UARTDR */
+-        /* ??? Check if transmitter is enabled.  */
+         ch = value;
+-        /* XXX this blocks entire thread. Rewrite to use
+-         * qemu_chr_fe_write and background I/O callbacks */
+-        qemu_chr_fe_write_all(&s->chr, &ch, 1);
+-        s->int_level |= PL011_INT_TX;
+-        pl011_update(s);
++        pl011_write_fifo(opaque, &ch, 1);
+         break;
+     case 1: /* UARTRSR/UARTECR */
+         s->rsr = 0;
+@@ -207,6 +262,7 @@ static void pl011_write(void *opaque, hwaddr offset,
+         if ((s->lcr ^ value) & 0x10) {
+             s->read_count = 0;
+             s->read_pos = 0;
++            s->write_count = 0;
+         }
+         s->lcr = value;
+         pl011_set_read_trigger(s);
+@@ -306,6 +362,7 @@ static const VMStateDescription vmstate_pl011 = {
+         VMSTATE_UINT32(int_enabled, PL011State),
+         VMSTATE_UINT32(int_level, PL011State),
+         VMSTATE_UINT32_ARRAY(read_fifo, PL011State, 16),
++        VMSTATE_UINT8_ARRAY(write_fifo, PL011State, 16),
+         VMSTATE_UINT32(ilpr, PL011State),
+         VMSTATE_UINT32(ibrd, PL011State),
+         VMSTATE_UINT32(fbrd, PL011State),
+@@ -313,6 +370,7 @@ static const VMStateDescription vmstate_pl011 = {
+         VMSTATE_INT32(read_pos, PL011State),
+         VMSTATE_INT32(read_count, PL011State),
+         VMSTATE_INT32(read_trigger, PL011State),
++        VMSTATE_INT32(write_count, PL011State),
+         VMSTATE_END_OF_LIST()
+     }
+ };
+diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
+index 14187165c6..aeaf332eca 100644
+--- a/include/hw/char/pl011.h
++++ b/include/hw/char/pl011.h
+@@ -38,6 +38,7 @@ typedef struct PL011State {
+     uint32_t int_enabled;
+     uint32_t int_level;
+     uint32_t read_fifo[16];
++    uint8_t  write_fifo[16];
+     uint32_t ilpr;
+     uint32_t ibrd;
+     uint32_t fbrd;
+@@ -45,6 +46,7 @@ typedef struct PL011State {
+     int read_pos;
+     int read_count;
+     int read_trigger;
++    int write_count;
+     CharBackend chr;
+     qemu_irq irq[6];
+     const unsigned char *id;
+-- 
+2.23.0
+
+
+--------------6EF41B11D44FC8C5AC0DCE6D--
+

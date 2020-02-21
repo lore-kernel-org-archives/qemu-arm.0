@@ -1,106 +1,101 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1542185lfg;
-        Fri, 21 Feb 2020 00:57:26 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw3O0qrIVQL9KQYhsb1L9Ysl5ECrQSjvrDP5m+x3brB7HeAxxwlw9gy+sx+GrEuBlD70hBn
-X-Received: by 2002:a0c:a998:: with SMTP id a24mr29938336qvb.11.1582275446321;
-        Fri, 21 Feb 2020 00:57:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582275446; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1554059lfg;
+        Fri, 21 Feb 2020 01:10:03 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx0Ul9K+nQaad1cCWqSi3nNjpc9NSBmmCUng3An6vVHfVfb9cxEHGtqBXe2b+57suvi2gD1
+X-Received: by 2002:a37:4fc3:: with SMTP id d186mr33726998qkb.100.1582276203236;
+        Fri, 21 Feb 2020 01:10:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582276203; cv=none;
         d=google.com; s=arc-20160816;
-        b=ApfzFQjq4i7Zwb04yBkobvHaNs61d1Lk7cnKkz2/OMHiD0revuu3QfHVC68Tk26E1P
-         7KAWog+teEb2FOI2pJ//5Kj3xgjNxaOrvb+eWSBBZ2EHPr1JSBsWpDKHW1aMNlHmTiPR
-         GkYRBwJGg1TeXKWyMmQZqcxXqMRe3/NkcZNFAxpjEMGlYOdNYiBmo1QbTBTW39ZkHmPA
-         779Ai4VcLa5h0Gqe2BoAOU3ow6Sw0N953YWCgDHQiS+QOnCmj+uMxtYhuB/XAvMR0YGo
-         G9BmreneyTCIiFMvFAG96uX0CTR0P3qkm7Db7+te64e1B/ICsmt6ptqkvGfaB8mVZ3ET
-         Qd8Q==
+        b=F8zzN5YVHMiu4GtMPBOqeXiYA5gJq1riDpvalSWjS0aZafJ21cHEqzBPgk09gOJtD4
+         j/J/CqSVnpOkOUbzXjZRCUh93oYqAysa+0wZg3PS3SGR1j67FaVZqHq/ddXt6+kNtRRe
+         sOZk2Eq9KChrmO43XrJenb41/5ZcUU2EjN1FQMkLCeMsc4j1xSapRHlvK60CY0UqZFTQ
+         ELjBcM9lGsd6PlVmHw5O8JrfPXbEAWfYs57xonDaEh+dFbJ0BITLqGwh7wuqt1QARRB8
+         beHYwaB8Z4cHA5UkVul5ayypHlt0KZV9uXyoswOewa9mj1w3qbNq2S0T9mjp9sRXTgGH
+         fuBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=eI8Z5XSmzWGcnJrxPDxHmh1Gb0OHBUpDCoUA6gqF2a8=;
-        b=dJX2fvdzN36bJrIkkXXj8x4yIbJMDniIqpe1ii5VePQLV5HBDRgxAd9zLZxDgb0IEL
-         Vaxep053lOdB+LGUBj4wmMG4K8ximvFncKtR/oGEyPBCaUJfPkh1DuJmT4wx0LbKDhDV
-         PdaPUntHT9O8lOOD6+OA9wk+V5Wf+hK8+CvRveKbp39z2QMFNysM6gyx+grM+DtD0yHq
-         Ogwhtr1PwPUR+3KhmaCnnbTamXk5LzUp9PsScmaWjzZbt+NMTUufIrIZwa5BoL/QxONV
-         upFaInfjy77hJ6AsWqJiC9Iypff8ildtAMvyxJ1lJsgSpPnVt9DuKGvzXd3WHygnmbG+
-         wD1w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:user-agent:message-id
+         :references:in-reply-to:subject:to:from:date
+         :content-transfer-encoding:mime-version:dkim-signature;
+        bh=k8Rcpslm17ilyLSg1/9U+Fhh3v4akCGlcd4bshnQoQQ=;
+        b=N1K6unLQSSCI2L7QOS2hOFSvdvFPg3RmpzHze1srtj8DgWr6qDJ8Mc26GkhwADU0oS
+         TwIjsUsiiAzksjVLGyrE/YIgYdy8R4djTPVUC10NugNN9UvmWzQ5fPy9KODycuaEGA/L
+         9VnkW3MfIIGF5wRSH1iLGJgoeENp6EEB5REtXFZzfi/baTSiPw+gFISrgcqhGm3PEUbL
+         itA6uCHCKAnssp+ScKrDKnd4rqM1BeR/8s2o2OOUFvbpPShm5tDxMw7LBIJDIEu7I73n
+         5ZdUw1VT3iMpaSPDxES0ozDqs/W+o6uHfLA/zezRCkN3p+jPDZrNURCFlu9YJune2RcT
+         GgDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NsqyePm7;
+       dkim=fail header.i=@kernel.org header.s=default header.b=c+t3OfBT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i8si1042221qtv.130.2020.02.21.00.57.26
+        by mx.google.com with ESMTPS id c1si1156395qka.253.2020.02.21.01.10.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Feb 2020 00:57:26 -0800 (PST)
+        Fri, 21 Feb 2020 01:10:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NsqyePm7;
+       dkim=fail header.i=@kernel.org header.s=default header.b=c+t3OfBT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54014 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:54196 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j547h-00011y-QC
-	for alex.bennee@linaro.org; Fri, 21 Feb 2020 03:57:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49224)
+	id 1j54Ju-0007HF-MD
+	for alex.bennee@linaro.org; Fri, 21 Feb 2020 04:10:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36913)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <gshan@redhat.com>) id 1j547O-0000lo-7d
- for qemu-arm@nongnu.org; Fri, 21 Feb 2020 03:57:08 -0500
+ (envelope-from <maz@kernel.org>) id 1j54Jm-0007H8-49
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 04:09:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <gshan@redhat.com>) id 1j547L-0000Y6-1M
- for qemu-arm@nongnu.org; Fri, 21 Feb 2020 03:57:06 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:56025
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <maz@kernel.org>) id 1j54Jk-0008Qk-ND
+ for qemu-arm@nongnu.org; Fri, 21 Feb 2020 04:09:53 -0500
+Received: from mail.kernel.org ([198.145.29.99]:41140)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1j547K-0000UF-SC
- for qemu-arm@nongnu.org; Fri, 21 Feb 2020 03:57:02 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582275418;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=eI8Z5XSmzWGcnJrxPDxHmh1Gb0OHBUpDCoUA6gqF2a8=;
- b=NsqyePm7kZYsIDRx2tVN//tImZQaEsi7NXPmQAOQSQuz0H/x57icwedl/fJ2BJBhRulZaj
- skhv49I+NIhiCg3B6G/16K0VN8PD99tUhe+fCv6iJf5G3mDOcZPZqXiZkEB05OlspGMaqT
- Aylqbr23ZtkbSiD1CCDaZ90B3rIWueU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-31-1lRmlCg5OG6WiE_WsftjbA-1; Fri, 21 Feb 2020 03:56:56 -0500
-X-MC-Unique: 1lRmlCg5OG6WiE_WsftjbA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.71) (envelope-from <maz@kernel.org>)
+ id 1j54Jk-0008Mw-Ee; Fri, 21 Feb 2020 04:09:52 -0500
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C8AEB184B127;
- Fri, 21 Feb 2020 08:56:54 +0000 (UTC)
-Received: from localhost.localdomain (vpn2-54-80.bne.redhat.com [10.64.54.80])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 09F0A5D9C5;
- Fri, 21 Feb 2020 08:56:49 +0000 (UTC)
-Subject: Re: [PATCH] hw/char/pl011: Enable TxFIFO and async transmission
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-References: <20200221044908.266883-1-gshan@redhat.com>
- <12b3d4d4-736b-e861-6b6b-5b6885b7cbf1@redhat.com>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <df096c85-8a3b-6a56-53b5-fe84c67ac341@redhat.com>
-Date: Fri, 21 Feb 2020 19:56:47 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ by mail.kernel.org (Postfix) with ESMTPSA id 41CE320679;
+ Fri, 21 Feb 2020 09:09:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1582276191;
+ bh=R7+5yU6mbOOiUk6fZSEKZTK9mWI3EWQBdjFrf3WRYfU=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=c+t3OfBTAUm8KLMJLaonEfVQtbMNbtkfkMR1wut7NY4Tz1J+9+gMcRChOXGlN2JQD
+ oodgVYqxXGtwqJLPuE4dxoAbyxYTS7A9667zl8k8ypIr+cPoNn0a2UVNmAJWc1/AIw
+ +HGlt/CYgdzG+xPWxfmNseUyLFm5H6CUU/mTRxmU=
+Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
+ by disco-boy.misterjones.org with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
+ (envelope-from <maz@kernel.org>)
+ id 1j54Jh-006zi1-IF; Fri, 21 Feb 2020 09:09:49 +0000
 MIME-Version: 1.0
-In-Reply-To: <12b3d4d4-736b-e861-6b6b-5b6885b7cbf1@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
 Content-Transfer-Encoding: 7bit
+Date: Fri, 21 Feb 2020 09:09:49 +0000
+From: Marc Zyngier <maz@kernel.org>
+To: Gavin Shan <gshan@redhat.com>
+Subject: Re: [PATCH] hw/char/pl011: Output characters using best-effort mode
+In-Reply-To: <fda602ae-43d5-728c-a5bb-f607f0acd3df@redhat.com>
+References: <20200220060108.143668-1-gshan@redhat.com>
+ <f3c8adba729d050ba2144cc9c834fe82@kernel.org>
+ <CAFEAcA8inLO75XOcCO3bUiiJQyZT+nqmp1be+z6ZtQx2a=68+g@mail.gmail.com>
+ <fda602ae-43d5-728c-a5bb-f607f0acd3df@redhat.com>
+Message-ID: <69bdfa5b09791a9d148b791076f2441f@kernel.org>
+X-Sender: maz@kernel.org
+User-Agent: Roundcube Webmail/1.3.10
+X-SA-Exim-Connect-IP: 51.254.78.96
+X-SA-Exim-Rcpt-To: gshan@redhat.com, peter.maydell@linaro.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, shan.gavin@gmail.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 198.145.29.99
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,61 +107,127 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: peter.maydell@linaro.org, maz@kernel.org, shan.gavin@gmail.com,
- marcandre.lureau@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Shan Gavin <shan.gavin@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pScLsYDS/Qc0
+X-TUID: 4qTsBFhpviQy
 
-On 2/21/20 7:25 PM, Paolo Bonzini wrote:
-> On 21/02/20 05:49, Gavin Shan wrote:
->> @@ -306,6 +362,7 @@ static const VMStateDescription vmstate_pl011 = {
->>           VMSTATE_UINT32(int_enabled, PL011State),
->>           VMSTATE_UINT32(int_level, PL011State),
->>           VMSTATE_UINT32_ARRAY(read_fifo, PL011State, 16),
->> +        VMSTATE_UINT8_ARRAY(write_fifo, PL011State, 16),
->>           VMSTATE_UINT32(ilpr, PL011State),
->>           VMSTATE_UINT32(ibrd, PL011State),
->>           VMSTATE_UINT32(fbrd, PL011State),
->> @@ -313,6 +370,7 @@ static const VMStateDescription vmstate_pl011 = {
->>           VMSTATE_INT32(read_pos, PL011State),
->>           VMSTATE_INT32(read_count, PL011State),
->>           VMSTATE_INT32(read_trigger, PL011State),
->> +        VMSTATE_INT32(write_count, PL011State),
-> 
-> Hi Gavin, please add these two fields to a subsection, so that they are
-> emitted only if write_count > 0.
-> 
+Hi Gavin,
 
-Hi Paolo, sure, will do in next respin :)
+On 2020-02-21 04:24, Gavin Shan wrote:
+> Hi Peter and Marc,
+> 
+> On 2/20/20 9:10 PM, Peter Maydell wrote:
+>> On Thu, 20 Feb 2020 at 09:10, Marc Zyngier <maz@kernel.org> wrote:
+>>> On 2020-02-20 06:01, Gavin Shan wrote:
+>>>> This fixes the issue by using newly added API
+>>>> qemu_chr_fe_try_write_all(),
+>>>> which provides another type of service (best-effort). It's different
+>>>> from
+>>>> qemu_chr_fe_write_all() as the data will be dropped if the backend 
+>>>> has
+>>>> been running into so-called broken state or 50 attempts of
+>>>> transmissions.
+>>>> The broken state is cleared if the data is transmitted at once.
+>>> 
+>>> I don't think dropping the serial port output is an acceptable 
+>>> outcome.
+>> 
+>> Agreed. The correct fix for this is the one cryptically described
+>> in the XXX comment this patch deletes:
+>> 
+>> -        /* XXX this blocks entire thread. Rewrite to use
+>> -         * qemu_chr_fe_write and background I/O callbacks */
+>> 
+>> The idea is that essentially we end up emulating the real
+>> hardware's transmit FIFO:
+>>   * as data arrives from the guest we put it in the FIFO
+>>   * we try to send the data with qemu_chr_fe_write(), which does
+>>     not block
+>>   * if qemu_chr_fe_write() tells us it did not send all the data,
+>>     we use qemu_chr_fe_add_watch() to set up an I/O callback
+>>     which will get called when the output chardev has drained
+>>     enough that we can try again
+>>   * we make sure all the guest visible registers and mechanisms
+>>     for tracking tx fifo level (status bits, interrupts, etc) are
+>>     correctly wired up
+>> 
+>> Then we don't lose data or block QEMU if the guest sends
+>> faster than the chardev backend can handle, assuming the
+>> guest is well-behaved -- just as with a real hardware slow
+>> serial port, the guest will fill the tx fifo and then either poll
+>> or wait for an interrupt telling it that the fifo has drained
+>> before it tries to send more data.
+>> 
+>> There is an example of this in hw/char/cadence_uart.c
+>> (and an example of how it works for a UART with no tx
+>> fifo in hw/char-cmsdk-apb-uart.c, which is basically the
+>> same except the 'fifo' is just one byte.)
+>> 
+>> You will also find an awful lot of XXX comments like the
+>> above one in various UART models in hw/char, because
+>> converting an old-style simple blocking UART implementation
+>> to a non-blocking one is a bit fiddly and needs knowledge
+>> of the specifics of the UART behaviour.
+>> 
+>> The other approach here would be that we could add
+>> options to relevant chardev backends so the user
+>> could say "if you couldn't connect to the tcp server I
+>> specified, throw away data rather than waiting", where
+>> we don't have suitable options already. If the user specifically
+>> tells us they're ok to throw away the serial data, then it's
+>> fine to throw away the serial data :-)
+>> 
+> 
+> I was intended to convince Marc that it's fine to lose data if the
+> serial connection is broken with an example. Now, I'm taking the
+> example trying to convince both of you: Lets assume we have a ARM
+> board and the UART (RS232) cable is unplugged and plugged in the middle 
+> of
+> system booting. I think we would get some output lost. We're emulating
+> pl011 and I think it would have same behavior. However, I'm not sure
+> if it makes sense :)
+
+But the case you describe in the commit message is not that one.
+The analogy is that of a serial port *plugged* and asserting flow 
+control.
+
+Another thing is that the "system" as been constructed this way by the
+user. QEMU is not in a position to choose and output what is convenient,
+when it is convenient. In my world, the serial output is absolutely
+crucial. This is where I look for clues about failures and odd 
+behaviours,
+and I rely on the serial port emulation to be 100% reliable (and for 
+what
+it's worth, the Linux kernel can output to the serial port 
+asynchronously,
+to some extent).
+
+[...]
+
+> If above analysis is correct and the first approach doesn't work out. 
+> We have to
+> consider the 2nd approach - adding option to backend to allow losing 
+> data. I'm
+> going to add "allow-data-lost" option for TYPE_CHARDEV_SOCKET. With the 
+> option,
+> a back-off algorithm in tcp_chr_write(): The channel is consider as 
+> broken if
+> it fails to transmit data in last continuous 5 times. The transmission 
+> is still
+> issued when the channel is in broken state and recovered to normal 
+> state if
+> transmission succeeds for once.
+
+That'd be an option if you could configure the UART with something that 
+says
+"no flow control". In that case, dropping data on the floor becomes 
+perfectly
+acceptable, as it requires buy-in from the user.
 
 Thanks,
-Gavin
-> 
->>           VMSTATE_END_OF_LIST()
->>       }
->>   };
->> diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
->> index 14187165c6..aeaf332eca 100644
->> --- a/include/hw/char/pl011.h
->> +++ b/include/hw/char/pl011.h
->> @@ -38,6 +38,7 @@ typedef struct PL011State {
->>       uint32_t int_enabled;
->>       uint32_t int_level;
->>       uint32_t read_fifo[16];
->> +    uint8_t  write_fifo[16];
->>       uint32_t ilpr;
->>       uint32_t ibrd;
->>       uint32_t fbrd;
->> @@ -45,6 +46,7 @@ typedef struct PL011State {
->>       int read_pos;
->>       int read_count;
->>       int read_trigger;
->> +    int write_count;
->>       CharBackend chr;
->>       qemu_irq irq[6];
->>       const unsigned char *id;
->>
-> 
 
+         M.
+-- 
+Jazz is not dead. It just smells funny...

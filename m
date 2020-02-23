@@ -1,210 +1,158 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4426065lfg;
-        Sun, 23 Feb 2020 15:33:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy7RlkmXfbeeo9Owi858aI7fDeCe+jsTJl31fjLrwqtu2ZtpO0M5oDipYugq+geLh9UvXAx
-X-Received: by 2002:ae9:e114:: with SMTP id g20mr47157190qkm.458.1582500782426;
-        Sun, 23 Feb 2020 15:33:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582500782; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4434689lfg;
+        Sun, 23 Feb 2020 15:45:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyv/QsT5PA30tncoIKZdjMAmGPi6umU6i7WR9KMTbX7/bzlG1H91UVwk/Fu7P8XjRaL1+EG
+X-Received: by 2002:a05:620a:130b:: with SMTP id o11mr20708825qkj.444.1582501548050;
+        Sun, 23 Feb 2020 15:45:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582501548; cv=none;
         d=google.com; s=arc-20160816;
-        b=sB/pytwer4ooes/2qaC0PqHwL3pY+aZG8Y1lMCxp0drPq3vuGkCbYOV8cgu1jAl1r/
-         g/voQr3qMZVh8w+ZqytOhoLMmLyXXxYe6FjLmzoghMugECdcZpvfgpma0e11R4PLiyO/
-         3Z4Zx7CP/qFt8AyUHsmHB25n6kRPbOfFe88XkMKdMJp3TjOxjr1txdNHGQrHTHTdBsDZ
-         B+AmUyIDnImr036E1a6cx/8ehsQgbjcn7A9WCB5Eg/LKx7FgiF2fCvJuZ2yVdni23saY
-         gCf00z27MPx8I56hV5Z9JgChBqM5c3b6b9ioAHBesw1j7hKQZQ3+ke0S9LgD8lCQiKbL
-         DjlA==
+        b=qUXX885ov310an0i7dPo++4IQ3Yi4XlL4eHtgUE74+28NuNl8WmTDjXinNBSQfGppa
+         8y4wAri5QlwORJLt9x1FAeCtXamwvOlxUVdZum+D0JWbVLOlRb0k8IxXGr7K8WDUuLBZ
+         tA7whI0vzDmpad8W10vqapsHnCGLuMVkICzHA19AqS1ljeYfLBhbjZKsPz0TELJRw+Mu
+         L41YeOMlEPsloGz82tdOIs4WHVglatLowMywK05w2e0dkvIga2/c+/pdCPuQhiHSt5ay
+         aE9l2O6kx6mJZFYGtu4peUineQ/dPwvOk+rclrqI5USwObWlTx+T6OlxdtbhDWsnJsLz
+         r0vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
          :dkim-signature;
-        bh=mmzX3h5HCvKUNKd1CHnk/esd8YbYWYAXpwuKwHJY+ek=;
-        b=Xml8JKwb0DrjP3XtZvavNQ9JU5pxKtgkGs7e1BoIjpOOsm81GeDtlXj5OndgYtAlnz
-         PgvPWD8YaFCOAuzKvPiRUMmkNKx9q7JOsV8uwyUwuQsEc/a3LFZL6mse1H4bOJ4xPdrN
-         F0n25BO+moF0XVfe3Gubr0AR5qhxxYHYloOzzqPcKVl+xQmTK3OEA16tw1NPY9Up9iC8
-         yIEfogPhfG82OWWh7M156B66Fx+433CKYTOUW4N5hSrWF+Tf3Bp5SAfvOqcfVzRQ1kyx
-         0NHJG+d60ZhtZVXbC1VJr3RqP5rLel/Y576kzBU1rWbKwaBXCooT/dvqLpnpYAYusdU8
-         WfRQ==
+        bh=/rAMJ3kGj3lDsn30R3lXQuL9ztKKnhTKEoy5EuYoFpM=;
+        b=JgTjjMc3edeU1VwW935RNDZchoUdgZ6gca42qfKcaVdVTas8FZMHqii+2e+xr1NPpg
+         JJpEiqNUciIO0edSkXw+iL4C+5EBRV2GhPjq/QxFMRpZ7gaPbx1qUIdx70K3AmpV7WG1
+         /UW+arFLxJ8SraTu8JMcNoCjv7GRbC7X0obDG+/wKFvm6Eya9BWO4q+4D0JL6gMPJtkK
+         ag9VNVvXY9A9RZPeHiqUmXrJ0FLvuFNkTu1QexhMf618foGscKZ1M8mszar1VKCG/4sR
+         y67tY+P02IbI3Psmes31nly9szi9rDTLTWRulskSxMRHHX2lLuG4X10kIOHiG/s1Ni8L
+         S36w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rOetdeGI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D8LSXQbd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x30si4891618qte.281.2020.02.23.15.33.02
+        by mx.google.com with ESMTPS id j6si4518517qvo.194.2020.02.23.15.45.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 23 Feb 2020 15:33:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 23 Feb 2020 15:45:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rOetdeGI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:57850 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D8LSXQbd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57926 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j60k9-0004Gx-T0
-	for alex.bennee@linaro.org; Sun, 23 Feb 2020 18:33:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37964)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j60wV-0006od-FJ
+	for alex.bennee@linaro.org; Sun, 23 Feb 2020 18:45:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39368)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j60ht-0001m4-93
- for qemu-devel@nongnu.org; Sun, 23 Feb 2020 18:30:42 -0500
+ (envelope-from <gshan@redhat.com>) id 1j60wM-0006jy-88
+ for qemu-arm@nongnu.org; Sun, 23 Feb 2020 18:45:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j60hs-0006by-58
- for qemu-devel@nongnu.org; Sun, 23 Feb 2020 18:30:41 -0500
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:34749)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j60hr-0006b5-V4; Sun, 23 Feb 2020 18:30:40 -0500
-Received: by mail-wr1-x441.google.com with SMTP id n10so8287010wrm.1;
- Sun, 23 Feb 2020 15:30:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=mmzX3h5HCvKUNKd1CHnk/esd8YbYWYAXpwuKwHJY+ek=;
- b=rOetdeGIusYkzeKGfDglgybHzfkxOhdY0XpSqhWDweL1AzzFgf0D1NFFdbrWBlSNxZ
- WNX+B+QR+m+dqnopKSR6p0/k1WdYRfC7WfLxACKvn574QE/MxTwj/xblPK6vJ4e+/4eb
- 4/ujljPj9wo/njOevulI2MdVsouI05B7zELKWIRorCLq9MxuUnEKnDsFzvlAjXWV38of
- 33g3NsRRLEfya+qNIT7TeczC9GiOx9CBQl/J/WkZmCO263DSxxOqwoCGvDoyRi6XVhwu
- Dl2kAOTuGHNXLQ1OUnBaDapJAlxF/Kz63x0tm82xk68Thl0joaPvvE7tFIgUOCQBwhCF
- ujow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=mmzX3h5HCvKUNKd1CHnk/esd8YbYWYAXpwuKwHJY+ek=;
- b=kDl2/KxejZawn3krIAAlnmhfiDCLf+OaX/cCv97eUwUcq3ndB2EYdraUaC0ZLpyNQe
- GGmZiLlZw11fxWRQ/NG8okW9s2LcwLTSp/0lvl5WPQdJBfecLonet+B08u2zuEe3GQEZ
- 4nFP0xIzBAx5e95Q+6kqfYdZnBvGKU1eSJXwqXJN4h/g72vH01UIAVSavH7bxG8uTleU
- ecXCnacGIeCrjwUJPDbqlRC/pNd6Ipa8k1Yz6dxl1SQOjeL+1yMpOo8cGQeCosbvnIxY
- +/ZH/UTjs1FLwT1wT9r81WKi3zs5+C8Bn0Nbwe4WAFLIJ3Zj4bTsWVlTgvRcKo7fOhev
- uEqw==
-X-Gm-Message-State: APjAAAXd8WkG2LABKVUwT8m18YvbJH4DTrnyrXKydt4COLSvQ1niqIoQ
- 59AQ/ZgvRN5qz5RtAL2pEh+h5EyVymI=
-X-Received: by 2002:adf:f7c6:: with SMTP id a6mr65563822wrq.164.1582500638714; 
- Sun, 23 Feb 2020 15:30:38 -0800 (PST)
-Received: from localhost.localdomain (47.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id j11sm15322117wmi.3.2020.02.23.15.30.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 23 Feb 2020 15:30:38 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [RFC PATCH v2 2/2] hw/arm/integratorcp: Map a CFI parallel flash
-Date: Mon, 24 Feb 2020 00:30:33 +0100
-Message-Id: <20200223233033.15371-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200223233033.15371-1-f4bug@amsat.org>
-References: <20200223233033.15371-1-f4bug@amsat.org>
+ (envelope-from <gshan@redhat.com>) id 1j60wL-0004dV-7h
+ for qemu-arm@nongnu.org; Sun, 23 Feb 2020 18:45:38 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:21534
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1j60wL-0004d4-4G
+ for qemu-arm@nongnu.org; Sun, 23 Feb 2020 18:45:37 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582501536;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/rAMJ3kGj3lDsn30R3lXQuL9ztKKnhTKEoy5EuYoFpM=;
+ b=D8LSXQbdYQ6j164hXLVbdBSlaNA6/RCjCHkijXVKVHtQrjL/XSzXMmOFNNQbbBkN7xG7ek
+ A1lKL92VzEE3VHLsliholeEv+yj2XxKZ8bIjsas5+fqyMGkSV+b6KgpvOsHUY/HEjn3e7D
+ ylNOG57TNi78yZ1y+EKPwBu1bpf0kqo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-316-8Ri1HQzVPC6nhtNo6E7qfA-1; Sun, 23 Feb 2020 18:45:33 -0500
+X-MC-Unique: 8Ri1HQzVPC6nhtNo6E7qfA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A900D107ACC5;
+ Sun, 23 Feb 2020 23:45:31 +0000 (UTC)
+Received: from localhost.localdomain (vpn2-54-48.bne.redhat.com [10.64.54.48])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2E68A90797;
+ Sun, 23 Feb 2020 23:45:28 +0000 (UTC)
+Subject: Re: [PATCH] hw/char/pl011: Output characters using best-effort mode
+To: Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20200220060108.143668-1-gshan@redhat.com>
+ <f3c8adba729d050ba2144cc9c834fe82@kernel.org>
+ <CAFEAcA8inLO75XOcCO3bUiiJQyZT+nqmp1be+z6ZtQx2a=68+g@mail.gmail.com>
+ <fda602ae-43d5-728c-a5bb-f607f0acd3df@redhat.com>
+ <CAFEAcA-VB1t2XDuAHgq_p2Fz8NQ+3HFgyNOzRjk8BjixNJb0qg@mail.gmail.com>
+ <eedbac05-5a17-82e6-3cdc-c3b21983545b@redhat.com>
+ <CAFEAcA-bHCLQGkFucY5RAY-mw9wFdDeOqCkcv0xgSRg-EYh9ew@mail.gmail.com>
+ <fe7f3a60-5d90-ea3c-44d1-119f8b45b15c@redhat.com>
+ <CAFEAcA-1UWOfbvhEOhOvozT8RwGoPgRwn2+Lh-UzP3WH8Vw+Kg@mail.gmail.com>
+ <1ae86c0b-d4ab-8063-747b-ebea4950e76d@redhat.com>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <ffbb0513-e24c-d41b-d511-a4bd2340d90a@redhat.com>
+Date: Mon, 24 Feb 2020 10:45:26 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::441
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <1ae86c0b-d4ab-8063-747b-ebea4950e76d@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /GLwCmF/1KYA
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
+Cc: Marc Zyngier <maz@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Shan Gavin <shan.gavin@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZNDRiohnANnJ
 
-The Linux kernel displays errors why trying to detect the flash:
+On 2/22/20 5:15 AM, Paolo Bonzini wrote:
+> On 21/02/20 14:14, Peter Maydell wrote:
+>> The initial case reported by Gavin in this thread is
+>> "-serial tcp:127.0.0.1:50900" with the other end being a program which
+>> listens on TCP port 50900 and then sleeps without accepting any incoming
+>> connections, which blocks the serial port output and effectively blocks
+>> the guest bootup. If you want to insulate the guest from badly
+>> behaved consumers like that (or the related consumer who accepts
+>> the connection and then just doesn't read data from it) you probably
+>> need to deal with more than just POLLHUP. But I'm not sure how much
+>> we should care about these cases as opposed to just telling users
+>> not to do that...
+> 
+> No, I think we don't do anything (on purpose; that is, it was considered
+> the lesser evil) for x86 in that case.
+> 
 
-  Linux version 4.16.0 (linus@genomnajs) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #142 PREEMPT Wed May 9 13:24:55 CEST 2018
-  CPU: ARM926EJ-S [41069265] revision 5 (ARMv5TEJ), cr=00093177
-  CPU: VIVT data cache, VIVT instruction cache
-  OF: fdt: Machine model: ARM Integrator/CP
-  ...
-  of-flash 24000000.flash: Integrator/CP flash protection
-  of-flash 24000000.flash: do_map_probe() failed for type cfi_probe
-  of-flash 24000000.flash: do_map_probe() failed
+Paolo and Peter, thanks for your time on the discussion. So I think the
+conclusion is we don't do anything for pl011 either? :)
 
-Since we have a CFI pflash model available, wire it.
-The kernel properly detects it:
+Actually, the issue was reported by libvirt developer. A VM is started
+with serial on tcp socket, which is never accepted on server side. It
+practically blocks the VM to boot up. I will tell the libvirt developer
+to hack their code to avoid the race if we don't do anything in qemu.
 
-  of-flash 24000000.flash: Integrator/CP flash protection
-  24000000.flash: Found 1 x32 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
-  Intel/Sharp Extended Query Table at 0x0031
-  Using buffer write method
+Thanks,
+Gavin
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-v2: Kconfig change was not committed
-
-RFC because I have no idea of the flash model, its ID code, and which
-default CFI family (1 or 2).
----
- hw/arm/integratorcp.c | 11 +++++++++++
- hw/arm/Kconfig        |  1 +
- 2 files changed, 12 insertions(+)
-
-diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
-index 59804140cd..40cedfd55a 100644
---- a/hw/arm/integratorcp.c
-+++ b/hw/arm/integratorcp.c
-@@ -8,6 +8,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "cpu.h"
- #include "hw/sysbus.h"
-@@ -24,6 +25,7 @@
- #include "hw/char/pl011.h"
- #include "hw/hw.h"
- #include "hw/irq.h"
-+#include "hw/block/flash.h"
- 
- #define TYPE_INTEGRATOR_CM "integrator_core"
- #define INTEGRATOR_CM(obj) \
-@@ -589,6 +591,7 @@ static void integratorcp_init(MachineState *machine)
-     MemoryRegion *ram_alias = g_new(MemoryRegion, 1);
-     qemu_irq pic[32];
-     DeviceState *dev, *sic, *icp;
-+    DriveInfo *dinfo;
-     int i;
- 
-     cpuobj = object_new(machine->cpu_type);
-@@ -646,6 +649,14 @@ static void integratorcp_init(MachineState *machine)
-                           qdev_get_gpio_in_named(icp, ICP_GPIO_MMC_CARDIN, 0));
-     sysbus_create_varargs("pl041", 0x1d000000, pic[25], NULL);
- 
-+    dinfo = drive_get(IF_PFLASH, 0, 0);
-+    if (!pflash_cfi01_register(0x24000000, "pflash", 16 * MiB,
-+                               dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-+                               64 * KiB, 4, 0, 0, 0, 0, 0)) {
-+        error_report("Error registering flash memory");
-+        exit(1);
-+    }
-+
-     if (nd_table[0].used)
-         smc91c111_init(&nd_table[0], 0xc8000000, pic[27]);
- 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 61635f52c4..7f179f960f 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -73,6 +73,7 @@ config INTEGRATOR
-     select PL050 # keyboard/mouse
-     select PL110 # pl111 LCD controller
-     select PL181 # display
-+    select PFLASH_CFI01
-     select SMC91C111
- 
- config MAINSTONE
--- 
-2.21.1
 

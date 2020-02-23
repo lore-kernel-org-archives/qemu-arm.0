@@ -1,97 +1,114 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3387758lfg;
-        Sat, 22 Feb 2020 14:20:25 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyBwS44k6fAuQwt+GO9e1RS4pov5qJThcXpvOI6kXyAOfc1O0yd1ZTwWqxO676PYm6BgMdN
-X-Received: by 2002:ac8:424f:: with SMTP id r15mr39027344qtm.71.1582410025567;
-        Sat, 22 Feb 2020 14:20:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582410025; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4411288lfg;
+        Sun, 23 Feb 2020 15:11:04 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx8lOAOCZCkScdQSowKPrZZoBxEpfuDkn1Eov2W+a/6FufGK5htECbsq8OELzff3ZcTstlZ
+X-Received: by 2002:ac8:3fa9:: with SMTP id d38mr42002171qtk.333.1582499464180;
+        Sun, 23 Feb 2020 15:11:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582499464; cv=none;
         d=google.com; s=arc-20160816;
-        b=afM6sXuz3kriW8mLOfJG/c/VNBTT13GnsO/eFbNJlhq1dZFpNqJ7CzQCcNEwoiaEBv
-         fTGldG0roC0t7KuI2yOa1oyZ1KdvLWVlXhHt/v5lCqfXUOjF2grBRGG6URK8Y2nyy+LR
-         d4laqa8/r0nR0ljPyn3VVRGbrE2tDdNp7Srt34brc1MPFliA9rGy7JkhwW7U/KjbameR
-         SdicLXU0OEsrvE0Ljr7yAr0WFApDe/7ljVRArFCesOFPMoq/qFiaeZTwsKkXRd/AJ+ER
-         kKnDdlKU1VaLbHh3wngcsISzeuNcj9dC20CtQ0dC0oky0pKQZ8a0OCi3zffFrKAZUICr
-         zUlw==
+        b=RcYVw1FeBERF3MdPYj8AFJmbmyHNmX0Aom/vDviK+fjTWoF4KNb/etXCMRMjJ6xr3P
+         4hpbqSbp0cEgyaTPof2Tmq6RXWzr14zR0uBVWE8vPoSgzNg9OfZCETflPatlaFoqwSPR
+         jR6ZOybS36lLiGdqR8TMpku4Xrb6owm/pFeOaKFwstZmFrdPUmjJaZXaAqdSFyc5fx7D
+         qd8AqaVt9Yw7GGUbkQgaRAC95bafEOmt+c6+effc8KTl3SNlBsvmmw7G1z1bTUAjiIlT
+         f0RfaANpcHAUanTaNZJbajoTLpYAwd4s55rNQtkA4k+LfXPYEopDlbUAYYpmjVLPG3m1
+         QIdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=wf19ROFw0VvNQCCnFp3H1GGS0f6QDhdMaLKTKF7v1R4=;
-        b=ZeHUI1TzFpmpBI5KPPWZIR5yYyM5GYTGFpYUEpTxas/Udrd/qwYe2ziaGkCHO9fwrw
-         Dx6f+g5J4+Q7xu4rkJj5uK0/W1Eq/0higi1r+W36YvTPxdvMW4EzYoSJXjgFSpTTNu5y
-         MJtGxE3Z1Hon0vuqF9iAt5E9WnpwT4ucOm9uuHU9dVxa2GeRftWAEQJfci47nyOiu4e7
-         wn7ROk5TGI1RiRahSxxcg0pSdbRhIzIvzJbZYdcl9DCkXS6OUBadMyE2aNmUeVKk6+3n
-         4t2aN/BaQq9b0W//50fxbxdP7gazOyj+jQAqQgJubwiWhp6Y9yAAVlSWQuXGVXQMCWdQ
-         2FBQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=2JtFWCLlvKrPzw6359S9afKJXhhVBFgj6XfWSRDbCzY=;
+        b=JUJ4BSaZrYXHmd+8IQx44YjjRoorECBXSpiDCl5sjDgUxclA8joGg7qCFAzEYQwSAD
+         Ig8UnrRxy7wLvy2w4rN7t8DCqOeqdaNfP6kH4Mf67Z8KGqZOQ6fJsfTMBwsZ2F+zvAdo
+         zEWyz0iNBHQwiNDpUfFiOaodIuN4DuTNrnSgXicK/WZ/JiCfbfGVKUt0ZLk4mkD/KpJf
+         BERB0hF776xfSvCoxqztSEWmCHxfzyz4XtYkk9uldz9Y/FHSaBnH0bd9lBOwVyUylgUZ
+         Agjap9HFeiJz7v6fHiKFBo11ezUHtOVMtKUua5qNGjcFcGXKzsCBgk/zAPRu0/1+dSHO
+         k4tg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BItsVZ5n;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YrUzpcxz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 68si1615106qkm.213.2020.02.22.14.20.25
+        by mx.google.com with ESMTPS id c188si5197994qkb.310.2020.02.23.15.11.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 22 Feb 2020 14:20:25 -0800 (PST)
+        Sun, 23 Feb 2020 15:11:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BItsVZ5n;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YrUzpcxz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47484 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57614 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j5d8K-0001oF-Vn
-	for alex.bennee@linaro.org; Sat, 22 Feb 2020 17:20:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50134)
+	id 1j60Ot-0001IW-33
+	for alex.bennee@linaro.org; Sun, 23 Feb 2020 18:11:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36614)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1j5d89-0001gm-Ru
- for qemu-arm@nongnu.org; Sat, 22 Feb 2020 17:20:15 -0500
+ (envelope-from <philmd@redhat.com>) id 1j60Oj-0001Hp-Tb
+ for qemu-arm@nongnu.org; Sun, 23 Feb 2020 18:10:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1j5d87-00069T-WC
- for qemu-arm@nongnu.org; Sat, 22 Feb 2020 17:20:13 -0500
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:46169)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1j5d83-00065y-No; Sat, 22 Feb 2020 17:20:07 -0500
-Received: by mail-il1-x144.google.com with SMTP id t17so4643760ilm.13;
- Sat, 22 Feb 2020 14:20:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wf19ROFw0VvNQCCnFp3H1GGS0f6QDhdMaLKTKF7v1R4=;
- b=BItsVZ5n2XvWfJn7TpWfwfSRqvHqoDQzK4ZCmXCFwYZ0zvLxg1kiAtZK44yWFANU7f
- tuXE1rxMEBNZ9SSPvaOLomS9nYIDaW5TRV9xbc87Nuujclzcrmo6d0lvdJ7oiAaO8LiV
- i3jDIAYDVkmTybhGwvg9so0nRjeOgjmrK1NzyYlWVddKw7vl7vwjUyK8kluqx3wOzt0j
- 72oSneWZjU242K4SyyhRmJ/MJmf6bxNJ4UpY/N3G0gmFEUSud10urVoYg26kWDrX84FG
- i0URWAuCok/pAIIUL/MiuqNTyOkHwPnW42lpZN6K5DAaGGP4SylHptYPXTbVfzAhwN6i
- zDNA==
+ (envelope-from <philmd@redhat.com>) id 1j60Oi-000892-El
+ for qemu-arm@nongnu.org; Sun, 23 Feb 2020 18:10:53 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:55842
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j60Oi-00087w-5Y
+ for qemu-arm@nongnu.org; Sun, 23 Feb 2020 18:10:52 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582499450;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=2JtFWCLlvKrPzw6359S9afKJXhhVBFgj6XfWSRDbCzY=;
+ b=YrUzpcxzBkh74z1EKKz8zx4d4GrYOwBXDZCMnj28sCZf4DeUZ3P92psZwMNEKZJKgtT0tW
+ I/lqHWrmMUT09JFev70ggiMgq/ugEA4xHPVNASluXlmOnlulZ+XqBUc+3X8Yr5OxiqEX9h
+ Z1zoDQ47bcfo+cTpQAkqx7x5hn1meZk=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-281-_GuoO0pTO-GJ4lE2PrmAsQ-1; Sun, 23 Feb 2020 18:10:48 -0500
+X-MC-Unique: _GuoO0pTO-GJ4lE2PrmAsQ-1
+Received: by mail-wr1-f69.google.com with SMTP id t3so2852917wrp.2
+ for <qemu-arm@nongnu.org>; Sun, 23 Feb 2020 15:10:48 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=wf19ROFw0VvNQCCnFp3H1GGS0f6QDhdMaLKTKF7v1R4=;
- b=QqV33kFkDCjCCck0YTTFPpl1XdP1ktgJbrBABiM1VTbFt1hBbjsI4qnP3NweJYlVmf
- yz7F76hS0WvcWb7HBVB9vn4rrGVyEmFi6tLTQPvIZ7u6WYQzXgerj8WbDdp2Q3E3IooD
- S0mahDgj/sv60rUsANmguHqBZAO2KPKb3JzHn6sz5FVprJ7h7Mzm93RYnj/iCK70/3EE
- rEoOeesoV+45A2tS3TLz1bWGKMtDgqqLpXlzQP8rh2js9PUEbLdHumAyy5kZNT0465AB
- 34AlUmPWXcm+I1im0aTrsvi0cH52uzV8Yj4ewI/ZVKpqhGZ2D5WTmzLnQkecZXxs8Ru4
- UZIg==
-X-Gm-Message-State: APjAAAURAOM1hGLD2JcQ7nB/6J81+8b2Op+/18JGH7BV0vHOjVPO0P11
- q2dzAe6x3w5iueEt8q/o06NxGpjtMnphXx/Ok4g=
-X-Received: by 2002:a92:81d9:: with SMTP id q86mr45087404ilk.67.1582410006280; 
- Sat, 22 Feb 2020 14:20:06 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=r73RMxZRMG+NmOKyR3pA63JKzPvw0kuX26+4+fo0u6k=;
+ b=qhHouDOAFDY4nMmvdrK1gDalIlht2GomFdAk9QVd/0Q0x5hlhWm8UjzVUesbRTIQb9
+ 55i+rN4C6J1pqu1CH3WSOU177uOCc0Zdnx0p9clzDE/ZCWeyvBbRZWE7GO10zFRKzC66
+ un22jDwcERfGDfEwGBBtutNTL5Oq3Fgjft0P8YU9IlR5p3a5NxS46+CqQpu2dbGolEuz
+ yb7dBZe0zxkn0b7RTXh2PjVjpDUPuT11X+A5PMoMTr4OtF94b1/CfDiKjNQLCCghGw5s
+ SEzH8OnMTQDdv/SYHcyos6dyZ9g4YtHBDzqBoiWEF5cDYpouc23AdkqQ9KNrLAkiyDJY
+ jUag==
+X-Gm-Message-State: APjAAAX1LorB4vGFKQNRN4kCLb2WUr5APBEYIDVcJxAm8TxfyY/sGUWI
+ hY/e5Bc4gwHKSv/nKgbzwaQvWJo4WcRQDqrhvzPa42PZC/06/YZk9SdbrLtq9NIkPLKuhfM3s/F
+ jJhM5oJZKMLGa
+X-Received: by 2002:a05:600c:299:: with SMTP id
+ 25mr18350041wmk.68.1582499447903; 
+ Sun, 23 Feb 2020 15:10:47 -0800 (PST)
+X-Received: by 2002:a05:600c:299:: with SMTP id
+ 25mr18350022wmk.68.1582499447603; 
+ Sun, 23 Feb 2020 15:10:47 -0800 (PST)
+Received: from localhost.localdomain (47.red-88-21-205.staticip.rima-tde.net.
+ [88.21.205.47])
+ by smtp.gmail.com with ESMTPSA id r6sm15777598wrp.95.2020.02.23.15.10.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 23 Feb 2020 15:10:47 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 0/2] hw/arm/gumstix: Trivial cleanups
+Date: Mon, 24 Feb 2020 00:10:42 +0100
+Message-Id: <20200223231044.8003-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.1
 MIME-Version: 1.0
-References: <20200217114533.17779-1-f4bug@amsat.org>
- <20200217114533.17779-13-f4bug@amsat.org>
-In-Reply-To: <20200217114533.17779-13-f4bug@amsat.org>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Sat, 22 Feb 2020 23:19:55 +0100
-Message-ID: <CAPan3Wr=hxEu_XdKWEYJAZXJY4hHf774O2UfsJd0OmCHc8X0OQ@mail.gmail.com>
-Subject: Re: [PATCH v2 12/13] hw/arm/raspi: Add the Raspberry Pi B+ machine
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="000000000000503eeb059f318a90"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::144
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,311 +120,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Luc Michel <luc.michel@greensocs.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NXqGdW2fcNRq
+X-TUID: CMn0hN3buhqK
 
---000000000000503eeb059f318a90
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Hey Philippe,
+Two house keeping patches while looking at the Gumstix boards,
+to make the code slightly more readable/documented.
 
-Very nice to see that the Raspberry 1 will be supported again, thanks for
-contributing this!
+Philippe Mathieu-Daud=C3=A9 (2):
+  hw/arm/gumstix: Simplify since the machines are little-endian only
+  hw/arm/gumstix: Use the IEC binary prefix definitions
 
-I tried to bring up the machine using raspbian 2019-09-26. It ran throught
-the early kernel initialisation
-but for me it gets stuck at this point:
-
-./arm-softmmu/qemu-system-arm -M raspi1b -kernel
-$HOME/raspi/boot/kernel.img -append 'printk.time=3D0
-earlycon=3Dpl011,0x20201000 console=3DttyAMA0 rootwait root=3D/dev/mmcblk0p=
-2' \
--dtb $HOME/raspi/boot/bcm2708-rpi-b-plus.dtb -m 512 -sd
-$HOME/raspi/2019-09-26-raspbian-buster-lite.img -serial stdio -s
-
-[    0.000000] Booting Linux on physical CPU 0x0
-[    0.000000] Linux version 4.19.75+ (dom@buildbot) (gcc version 4.9.3
-(crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1270 Tue Sep 24 18:38:54
-BST 2019
-[    0.000000] CPU: ARMv6-compatible processor [410fb767] revision 7
-(ARMv7), cr=3D00c5387d
-[    0.000000] CPU: VIPT aliasing data cache, unknown instruction cache
-[    0.000000] OF: fdt: Machine model: Raspberry Pi Model B+
-[    0.000000] earlycon: pl11 at MMIO 0x20201000 (options '')
-[    0.000000] bootconsole [pl11] enabled
-[    0.000000] Memory policy: Data cache writeback
-[    0.000000] cma: Reserved 8 MiB at 0x1b800000
-[    0.000000] random: get_random_bytes called from start_kernel+0x8c/0x49c
-with crng_init=3D0
-[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 11368=
-0
-[    0.000000] Kernel command line: printk.time=3D0 earlycon=3Dpl011,0x2020=
-1000
-console=3DttyAMA0 rootwait root=3D/dev/mmcblk0p2
-Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
-Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
-Memory: 434380K/458752K available (6973K kernel code, 635K rwdata, 2080K
-rodata, 464K init, 797K bss, 16180K reserved, 8192K cma-reserved)
-Virtual kernel memory layout:
-    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
-    fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
-    vmalloc : 0xdc800000 - 0xff800000   ( 560 MB)
-    lowmem  : 0xc0000000 - 0xdc000000   ( 448 MB)
-    modules : 0xbf000000 - 0xc0000000   (  16 MB)
-      .text : 0x(ptrval) - 0x(ptrval)   (6975 kB)
-      .init : 0x(ptrval) - 0x(ptrval)   ( 464 kB)
-      .data : 0x(ptrval) - 0x(ptrval)   ( 636 kB)
-       .bss : 0x(ptrval) - 0x(ptrval)   ( 798 kB)
-SLUB: HWalign=3D32, Order=3D0-3, MinObjects=3D0, CPUs=3D1, Nodes=3D1
-ftrace: allocating 25197 entries in 74 pages
-NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
-sched_clock: 32 bits at 1000kHz, resolution 1000ns, wraps every
-2147483647500ns
-clocksource: timer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns:
-1911260446275 ns
-bcm2835: system timer (irq =3D 27)
-Console: colour dummy device 80x30
-
-Maybe it should switch to the graphical console here, but I dont see the
-boot splash logo either (when using -stdio instead of -nographic).
-With -M raspi2 and -dtb bcm2709-rpi-2-b.dtb the same raspbian image can
-fully boot to the login console.
-
-Regards,
-Niek
-
-
-
-On Mon, Feb 17, 2020 at 12:51 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg>
-wrote:
-
->   $ qemu-system-arm -M raspi1b -serial stdio \
->       -kernel raspberrypi/firmware/boot/kernel.img \
->       -dtb raspberrypi/firmware/boot/bcm2708-rpi-b.dtb \
->       -append 'printk.time=3D0 earlycon=3Dpl011,0x20201000 console=3DttyA=
-MA0'
->   [    0.000000] Booting Linux on physical CPU 0x0
->   [    0.000000] Linux version 4.19.69+ (dom@buildbot) (gcc version 4.9.3
-> (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1261 Tue Sep 3 20:21:01
-> BST 2019
->   [    0.000000] CPU: ARMv6-compatible processor [410fb767] revision 7
-> (ARMv7), cr=3D00c5387d
->   [    0.000000] CPU: VIPT aliasing data cache, unknown instruction cache
->   [    0.000000] OF: fdt: Machine model: Raspberry Pi Model B
->   [    0.000000] earlycon: pl11 at MMIO 0x20201000 (options '')
->   [    0.000000] bootconsole [pl11] enabled
->   [    0.000000] Memory policy: Data cache writeback
->   [    0.000000] cma: Reserved 8 MiB at 0x1b800000
->   [    0.000000] random: get_random_bytes called from
-> start_kernel+0x8c/0x49c with crng_init=3D0
->   [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages:
-> 113680
->   [    0.000000] Kernel command line: printk.time=3D0
-> earlycon=3Dpl011,0x20201000 console=3DttyAMA0
->   Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
->   Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
->   Memory: 434380K/458752K available (6971K kernel code, 635K rwdata, 2080=
-K
-> rodata, 464K init, 797K bss, 16180K reserved, 8192K cma-reserved)
->   ...
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/arm/raspi.c | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
->
-> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> index 3537a329ac..2d9f4e3085 100644
-> --- a/hw/arm/raspi.c
-> +++ b/hw/arm/raspi.c
-> @@ -324,6 +324,15 @@ static void
-> raspi_machine_class_common_init(MachineClass *mc,
->      mc->default_ram_size =3D board_ram_size(board_rev);
->  };
->
-> +static void raspi1b_machine_class_init(ObjectClass *oc, void *data)
-> +{
-> +    MachineClass *mc =3D MACHINE_CLASS(oc);
-> +    RaspiMachineClass *rmc =3D RASPI_MACHINE_CLASS(oc);
-> +
-> +    rmc->board_rev =3D 0x900032;
-> +    raspi_machine_class_common_init(mc, rmc->board_rev);
-> +};
-> +
->  static void raspi2b_machine_class_init(ObjectClass *oc, void *data)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(oc);
-> @@ -348,6 +357,10 @@ static void raspi3b_machine_class_init(ObjectClass
-> *oc, void *data)
->
->  static const TypeInfo raspi_machine_types[] =3D {
->      {
-> +        .name           =3D MACHINE_TYPE_NAME("raspi1b"),
-> +        .parent         =3D TYPE_RASPI_MACHINE,
-> +        .class_init     =3D raspi1b_machine_class_init,
-> +    }, {
->          .name           =3D MACHINE_TYPE_NAME("raspi2b"),
->          .parent         =3D TYPE_RASPI_MACHINE,
->          .class_init     =3D raspi2b_machine_class_init,
-> --
-> 2.21.1
->
->
->
+ hw/arm/gumstix.c | 42 ++++++++++++++----------------------------
+ 1 file changed, 14 insertions(+), 28 deletions(-)
 
 --=20
-Niek Linnenbank
+2.21.1
 
---000000000000503eeb059f318a90
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hey Philippe,</div><div><br></div><div>Very nice to s=
-ee that the Raspberry 1 will be supported again, thanks for contributing th=
-is!</div><div><br></div><div>I tried to bring up the machine using raspbian=
- 2019-09-26. It ran throught the early kernel initialisation</div><div>but =
-for me it gets stuck at this point:</div><div><br></div><div>./arm-softmmu/=
-qemu-system-arm -M raspi1b -kernel $HOME/raspi/boot/kernel.img -append &#39=
-;printk.time=3D0 earlycon=3Dpl011,0x20201000 console=3DttyAMA0 rootwait roo=
-t=3D/dev/mmcblk0p2&#39; \</div><div>-dtb $HOME/raspi/boot/bcm2708-rpi-b-plu=
-s.dtb -m 512 -sd $HOME/raspi/2019-09-26-raspbian-buster-lite.img -serial st=
-dio -s</div><div><br></div><div>[ =C2=A0 =C2=A00.000000] Booting Linux on p=
-hysical CPU 0x0<br>[ =C2=A0 =C2=A00.000000] Linux version 4.19.75+ (dom@bui=
-ldbot) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #=
-1270 Tue Sep 24 18:38:54 BST 2019<br>[ =C2=A0 =C2=A00.000000] CPU: ARMv6-co=
-mpatible processor [410fb767] revision 7 (ARMv7), cr=3D00c5387d<br>[ =C2=A0=
- =C2=A00.000000] CPU: VIPT aliasing data cache, unknown instruction cache<b=
-r>[ =C2=A0 =C2=A00.000000] OF: fdt: Machine model: Raspberry Pi Model B+<br=
->[ =C2=A0 =C2=A00.000000] earlycon: pl11 at MMIO 0x20201000 (options &#39;&=
-#39;)<br>[ =C2=A0 =C2=A00.000000] bootconsole [pl11] enabled<br>[ =C2=A0 =
-=C2=A00.000000] Memory policy: Data cache writeback<br>[ =C2=A0 =C2=A00.000=
-000] cma: Reserved 8 MiB at 0x1b800000<br>[ =C2=A0 =C2=A00.000000] random: =
-get_random_bytes called from start_kernel+0x8c/0x49c with crng_init=3D0<br>=
-[ =C2=A0 =C2=A00.000000] Built 1 zonelists, mobility grouping on.=C2=A0 Tot=
-al pages: 113680<br>[ =C2=A0 =C2=A00.000000] Kernel command line: printk.ti=
-me=3D0 earlycon=3Dpl011,0x20201000 console=3DttyAMA0 rootwait root=3D/dev/m=
-mcblk0p2<br>Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)=
-<br>Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)<br>Memor=
-y: 434380K/458752K available (6973K kernel code, 635K rwdata, 2080K rodata,=
- 464K init, 797K bss, 16180K reserved, 8192K cma-reserved)<br>Virtual kerne=
-l memory layout:<br>=C2=A0 =C2=A0 vector =C2=A0: 0xffff0000 - 0xffff1000 =
-=C2=A0 ( =C2=A0 4 kB)<br>=C2=A0 =C2=A0 fixmap =C2=A0: 0xffc00000 - 0xfff000=
-00 =C2=A0 (3072 kB)<br>=C2=A0 =C2=A0 vmalloc : 0xdc800000 - 0xff800000 =C2=
-=A0 ( 560 MB)<br>=C2=A0 =C2=A0 lowmem =C2=A0: 0xc0000000 - 0xdc000000 =C2=
-=A0 ( 448 MB)<br>=C2=A0 =C2=A0 modules : 0xbf000000 - 0xc0000000 =C2=A0 ( =
-=C2=A016 MB)<br>=C2=A0 =C2=A0 =C2=A0 .text : 0x(ptrval) - 0x(ptrval) =C2=A0=
- (6975 kB)<br>=C2=A0 =C2=A0 =C2=A0 .init : 0x(ptrval) - 0x(ptrval) =C2=A0 (=
- 464 kB)<br>=C2=A0 =C2=A0 =C2=A0 .data : 0x(ptrval) - 0x(ptrval) =C2=A0 ( 6=
-36 kB)<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0.bss : 0x(ptrval) - 0x(ptrval) =C2=A0 =
-( 798 kB)<br>SLUB: HWalign=3D32, Order=3D0-3, MinObjects=3D0, CPUs=3D1, Nod=
-es=3D1<br>ftrace: allocating 25197 entries in 74 pages<br>NR_IRQS: 16, nr_i=
-rqs: 16, preallocated irqs: 16<br>sched_clock: 32 bits at 1000kHz, resoluti=
-on 1000ns, wraps every 2147483647500ns<br>clocksource: timer: mask: 0xfffff=
-fff max_cycles: 0xffffffff, max_idle_ns: 1911260446275 ns<br>bcm2835: syste=
-m timer (irq =3D 27)<br>Console: colour dummy device 80x30</div><div><br></=
-div><div>Maybe it should switch to the graphical console here, but I dont s=
-ee the boot splash logo either (when using -stdio instead of -nographic).</=
-div><div>With -M raspi2 and -dtb bcm2709-rpi-2-b.dtb the same raspbian imag=
-e can fully boot to the login console.<br></div><div><br></div><div>Regards=
-,</div><div>Niek<br></div><div><br></div><div><br></div></div><br><div clas=
-s=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Feb 17, 202=
-0 at 12:51 PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat=
-.org">f4bug@amsat.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_qu=
-ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
-4);padding-left:1ex">=C2=A0 $ qemu-system-arm -M raspi1b -serial stdio \<br=
->
-=C2=A0 =C2=A0 =C2=A0 -kernel raspberrypi/firmware/boot/kernel.img \<br>
-=C2=A0 =C2=A0 =C2=A0 -dtb raspberrypi/firmware/boot/bcm2708-rpi-b.dtb \<br>
-=C2=A0 =C2=A0 =C2=A0 -append &#39;printk.time=3D0 earlycon=3Dpl011,0x202010=
-00 console=3DttyAMA0&#39;<br>
-=C2=A0 [=C2=A0 =C2=A0 0.000000] Booting Linux on physical CPU 0x0<br>
-=C2=A0 [=C2=A0 =C2=A0 0.000000] Linux version 4.19.69+ (dom@buildbot) (gcc =
-version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1261 Tue Sep=
- 3 20:21:01 BST 2019<br>
-=C2=A0 [=C2=A0 =C2=A0 0.000000] CPU: ARMv6-compatible processor [410fb767] =
-revision 7 (ARMv7), cr=3D00c5387d<br>
-=C2=A0 [=C2=A0 =C2=A0 0.000000] CPU: VIPT aliasing data cache, unknown inst=
-ruction cache<br>
-=C2=A0 [=C2=A0 =C2=A0 0.000000] OF: fdt: Machine model: Raspberry Pi Model =
-B<br>
-=C2=A0 [=C2=A0 =C2=A0 0.000000] earlycon: pl11 at MMIO 0x20201000 (options =
-&#39;&#39;)<br>
-=C2=A0 [=C2=A0 =C2=A0 0.000000] bootconsole [pl11] enabled<br>
-=C2=A0 [=C2=A0 =C2=A0 0.000000] Memory policy: Data cache writeback<br>
-=C2=A0 [=C2=A0 =C2=A0 0.000000] cma: Reserved 8 MiB at 0x1b800000<br>
-=C2=A0 [=C2=A0 =C2=A0 0.000000] random: get_random_bytes called from start_=
-kernel+0x8c/0x49c with crng_init=3D0<br>
-=C2=A0 [=C2=A0 =C2=A0 0.000000] Built 1 zonelists, mobility grouping on.=C2=
-=A0 Total pages: 113680<br>
-=C2=A0 [=C2=A0 =C2=A0 0.000000] Kernel command line: printk.time=3D0 earlyc=
-on=3Dpl011,0x20201000 console=3DttyAMA0<br>
-=C2=A0 Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)<br>
-=C2=A0 Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)<br>
-=C2=A0 Memory: 434380K/458752K available (6971K kernel code, 635K rwdata, 2=
-080K rodata, 464K init, 797K bss, 16180K reserved, 8192K cma-reserved)<br>
-=C2=A0 ...<br>
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
-t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
----<br>
-=C2=A0hw/arm/raspi.c | 13 +++++++++++++<br>
-=C2=A01 file changed, 13 insertions(+)<br>
-<br>
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c<br>
-index 3537a329ac..2d9f4e3085 100644<br>
---- a/hw/arm/raspi.c<br>
-+++ b/hw/arm/raspi.c<br>
-@@ -324,6 +324,15 @@ static void raspi_machine_class_common_init(MachineCla=
-ss *mc,<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;default_ram_size =3D board_ram_size(board_rev);<=
-br>
-=C2=A0};<br>
-<br>
-+static void raspi1b_machine_class_init(ObjectClass *oc, void *data)<br>
-+{<br>
-+=C2=A0 =C2=A0 MachineClass *mc =3D MACHINE_CLASS(oc);<br>
-+=C2=A0 =C2=A0 RaspiMachineClass *rmc =3D RASPI_MACHINE_CLASS(oc);<br>
-+<br>
-+=C2=A0 =C2=A0 rmc-&gt;board_rev =3D 0x900032;<br>
-+=C2=A0 =C2=A0 raspi_machine_class_common_init(mc, rmc-&gt;board_rev);<br>
-+};<br>
-+<br>
-=C2=A0static void raspi2b_machine_class_init(ObjectClass *oc, void *data)<b=
-r>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0MachineClass *mc =3D MACHINE_CLASS(oc);<br>
-@@ -348,6 +357,10 @@ static void raspi3b_machine_class_init(ObjectClass *oc=
-, void *data)<br>
-<br>
-=C2=A0static const TypeInfo raspi_machine_types[] =3D {<br>
-=C2=A0 =C2=A0 =C2=A0{<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 .name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
-=3D MACHINE_TYPE_NAME(&quot;raspi1b&quot;),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 .parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=3D T=
-YPE_RASPI_MACHINE,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 .class_init=C2=A0 =C2=A0 =C2=A0=3D raspi1b_mac=
-hine_class_init,<br>
-+=C2=A0 =C2=A0 }, {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0=3D MACHINE_TYPE_NAME(&quot;raspi2b&quot;),<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
-=3D TYPE_RASPI_MACHINE,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.class_init=C2=A0 =C2=A0 =C2=A0=3D raspi2=
-b_machine_class_init,<br>
--- <br>
-2.21.1<br>
-<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div>
-
---000000000000503eeb059f318a90--

@@ -1,100 +1,95 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp769387lfg;
-        Mon, 24 Feb 2020 12:54:50 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyVNTpCTohFSwQJxA1W+Rh2U7r4NMTmOOlxeamxBFSmpCz9/4hlBbd2zFap7GjGqhFK4JL9
-X-Received: by 2002:ad4:4a69:: with SMTP id cn9mr47996383qvb.218.1582577690572;
-        Mon, 24 Feb 2020 12:54:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582577690; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp770759lfg;
+        Mon, 24 Feb 2020 12:56:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxJGPaR9rC/ZVT7Nll1iZFTQi1OR2iOnwqg3XIFUP/MBbaKa+d29dHTgOMdpkNoZ70u69i5
+X-Received: by 2002:a37:5c9:: with SMTP id 192mr9626024qkf.103.1582577808246;
+        Mon, 24 Feb 2020 12:56:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582577808; cv=none;
         d=google.com; s=arc-20160816;
-        b=MRTGa4NGzq6hf6e23bs7rSiHPHtk+Wl/LdHFERnpuO0hq/dWPrTA1PISkJsNKzGaip
-         65JEKBSw+pivF4NVOlIHGQsJN5pUOwL+6TnFVa09z7Dzto2MwNZJyb3TsIXab1WgmR/r
-         TSSIkX4HEHSmS3c7pnvtfN0aMvC2rob0Ptn2VDa9TcX6/aipw4uo2UmQ9nGBR5VJ6XBs
-         sYH7XxW6WJ8gUzV1i4MMyQlCofmqk5TzYd52/L5QV52pCUMt5YnMqvGQP8VGNHp/2p4v
-         yqsXnUDVTLAIjy0TB3x3MyaRVYhDWbmgisNro3/gAlSXWkDA6J2s/vciCX7NMg4nIZ1Z
-         xisQ==
+        b=b2aK3xIlG6rTVjWNAKwg6QOZJOfDvA3t8JIPKzf9AV0r4ByXP7Svv3uL7NT6Hh87c+
+         lyRI1xHOqPzCEAewoWjBL6BTI8U3l3wZsxNsdeKYC0v4Pl6gM3NVhno+Us2lkXBREScx
+         a4MyT3B4wLww6tLVIT1Xu+CS5ix8Ov8C1wttqvxHXv51U3+BQ6u3do8e6k32pgQ76bQr
+         85+qpoJfh4HbXuGoW5FN4fUHgJtw0m14WtbMyPr4omd9V6c6xpM76dsf/7evGqEJuipr
+         2oKXS68C8QLrkMKrNIH1mhthRsPmA0Km8jEDXscYSDDBC2YHDyFz+ZChC/X0UrJObTlX
+         fpUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=u6kDiAWfwMpmHeIf/i3NbiDC0VYPRn8I91wHtx7A2/U=;
-        b=PWcWb8LlAKl1tnUcbCHfhawsp2Zh0BwJQ8WmgigC6W2BhealK8GF/txkhzmsZNECW2
-         uNqYVmxoE8BpJ7X6ztYamXBIFaSDAU73zMA30CL4erID5xFVtV6hkBohfwshdo/ls+n4
-         NSbR7np1pIc0OYTSEnfqcoSjivFGknG7oeuFMnldwkU23cukL8Q7TOFpvuiie+YtpaMA
-         5wEp2x3WxI135EKg/UjKleg/Cw0XZTsGaxLRDqiX37Ww1p8k0BWTFAaTkRip2eouTpOQ
-         ch0IxTaZGzB/Fs6zYIT5grkRFbnn6EfCZWXbQti+Vz3RQCcxN7yeVQaOla+HGlFLC2qq
-         9aww==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=KY0G2gAT7ify0bjXNUXV8FEj1UQWbwwkL92DRJ4rUII=;
+        b=sL6yyv8PJuXX2Q7LhbWWl0f3SjFn5SXZQH3bRoxwdKNThfMRe/OmXV1PM2acbqQpeU
+         eeABrkdvlPQ1U3NLJYrOhXZ25hPYr5J37p0151yIyCF5concJCaDFCDHRS39HX1LslmF
+         mDcCfkzhmMhfEApFm9jVgy/UaYv4KjVd0bWzxC/TEvcHcV2RF05BixAlrw6zyVEXZBwb
+         HH+TVFAQ0iepMQVrePCZ3vVz6GzCznBwmU3n554rAPVdir6g3TmjSKAgcfqsr10d7mHa
+         qzeKtmMQYqiYnxFkFQciwwTxf/2RnMYbcmVoS/yPpb/t1JwxUg0QZkBD78WCpRGRSWFY
+         Sk1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=itV2HslW;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="KLP/0Er8";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q33si6260885qtj.126.2020.02.24.12.54.50
+        by mx.google.com with ESMTPS id b11si3797168qkj.181.2020.02.24.12.56.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 12:54:50 -0800 (PST)
+        Mon, 24 Feb 2020 12:56:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=itV2HslW;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="KLP/0Er8";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42274 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42518 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6Kka-00040J-Ud
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 15:54:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49827)
+	id 1j6KmV-0006jI-Es
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 15:56:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49971)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1j6KkS-0003xN-8k
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:54:42 -0500
+ (envelope-from <philmd@redhat.com>) id 1j6Kll-0005ap-R6
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:56:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1j6KkQ-0001fm-D3
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:54:40 -0500
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:46345)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
- id 1j6KkM-0001bq-Cb; Mon, 24 Feb 2020 15:54:34 -0500
-Received: by mail-oi1-x244.google.com with SMTP id a22so10301052oid.13;
- Mon, 24 Feb 2020 12:54:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=u6kDiAWfwMpmHeIf/i3NbiDC0VYPRn8I91wHtx7A2/U=;
- b=itV2HslWXgAntx3FheMJz9VbTkgQ+BzzdGzSx3oVlfXnKnox233ib15Fzz/eDVRzcu
- FIhNH/StUTnG3C9ZDNWbepIEpZSbzk5mLbc1YtyGzz5+NJAflAJV11S/1k9wJcs72Hio
- 6IJevbt5xwp9rXVxZiBdoHZjgsVm1ZnSXXgD5zayEjk88uN3lX8IIKWaPSFKZmb2YIVS
- 1Qc+Jtus/Mu/fRfqxpeTVcTs1RuTgAs0EMlHmT6Lm+TpDg3K7K/0VgE/R/bw/qVseSOj
- cuP2j1inU4Dvp1hHIEFtp/m1wYfRWdQN3bb3MpNQKECSi/+pPXpvYrO5VnnewduX0vyd
- 2FvA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=u6kDiAWfwMpmHeIf/i3NbiDC0VYPRn8I91wHtx7A2/U=;
- b=ARr5ShncPSF2+YPkAY5R9Tqv8iKZYHH/3jrWR1xgKDwTYQyPuLKZsQb/W+2RYl37rg
- tL/0fJ8Ew9Pun6XKrqyArPjD861LqLaqfK9KuzJiPB7BX84LkwvHnFZwu7T/PF4T6HEp
- EliPKEHTwj1TTBsh+esjhoH/oNtL9erTiebjYsE2wpaxoULR1LkF6bHma2ryHrjzRI/V
- 4kaLL9dMeUMwLEfdcHH1w7y5RYfhNG0LfpNE3OC9y+d02o8eU6T+ouIBs+SX6t8C++rs
- 2FemYdmRVJcIXP4IuycAgJk+RDSvg9LxH23esiemXwH64n7bXGAeQGM4TEI3zIvFd/DC
- ZTWQ==
-X-Gm-Message-State: APjAAAX0Liolxz0PosSEUIRUgjKz8DX9cf52MgD0zcKpCaT60YcKOS7n
- A59Tx4vPpnlkrNziEsLqVmXgRHHD9oaD6SsuoK/0dQ==
-X-Received: by 2002:aca:4ece:: with SMTP id c197mr759521oib.53.1582577673033; 
- Mon, 24 Feb 2020 12:54:33 -0800 (PST)
+ (envelope-from <philmd@redhat.com>) id 1j6Klk-0002f9-9w
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:56:01 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:57269
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6Klk-0002eb-5J
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:56:00 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582577759;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=KY0G2gAT7ify0bjXNUXV8FEj1UQWbwwkL92DRJ4rUII=;
+ b=KLP/0Er81mG9vITcI2qpG25f3uTI3fhaAlbDiVtUm88VkndvEBN+sS6bvbfXJKQhh+6pOs
+ +QX65drU17XDxj0cLz3xrFjQ+PD232DwX8c4o80McXu+KzjB8g3yIBHXf65wOcYvebBtUQ
+ Jhxm+IOC2H+1rsEGGKXzPidm0d2/otc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-182-5P_0sCfFPsKylxj2cbCFAQ-1; Mon, 24 Feb 2020 15:55:57 -0500
+X-MC-Unique: 5P_0sCfFPsKylxj2cbCFAQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 55A6C800053;
+ Mon, 24 Feb 2020 20:55:52 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-205-162.brq.redhat.com [10.40.205.162])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8B1575C21B;
+ Mon, 24 Feb 2020 20:55:35 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH RESEND v2 00/32] hw: Sanitize various MemoryRegion calls
+Date: Mon, 24 Feb 2020 21:55:01 +0100
+Message-Id: <20200224205533.23798-1-philmd@redhat.com>
 MIME-Version: 1.0
-References: <20200201204751.17810-1-f4bug@amsat.org>
-In-Reply-To: <20200201204751.17810-1-f4bug@amsat.org>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Mon, 24 Feb 2020 21:54:22 +0100
-Message-ID: <CAL1e-=jqy1bcY-bt0hFxn+X_FQ095kqa__hRMUV1Bs0FjG8SiQ@mail.gmail.com>
-Subject: Re: [PATCH] tests/acceptance: Count multiple Tux logos displayed on
- framebuffer
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::244
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,263 +101,146 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, Thomas Huth <huth@tuxfamily.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- "open list:Stellaris" <qemu-arm@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>, Cleber Rosa <crosa@redhat.com>,
- Leon Alrae <leon.alrae@imgtec.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Laurent Vivier <laurent@vivier.eu>
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
+ Magnus Damm <magnus.damm@gmail.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Alistair Francis <alistair@alistair23.me>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ qemu-riscv@nongnu.org, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
+ Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8Or9Yw2CVJAL
+X-TUID: YpM51hHtoLIb
 
-On Sat, Feb 1, 2020 at 9:48 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
-> wrote:
->
-> Add a test that verifies that each core properly displays the Tux
-> logo on the framebuffer device.
->
+Resending after being kicked by gsmtp...
 
-Philippe,
+ 4.3.0 Temporary System Problem.  Try again later (10). t81sm863436wmg.6 - =
+gsmtp
 
-I would like to select this patch for the next MIPS queue, scheduled
-in next few days.
+This series simplifies various memory API calls when creating
+memory regions.
 
-It looks to me there are no prerequisites for this patch to be applied
-on current master, but I may be wrong. Philippe, is this correct or
-not (selecting the patch for the queue independently on other similar
-or any other patches not yet in master)?
+Most of the patches are generated with Coccinelle semantic
+patches (provided).
+Few more cleanups added while writting the patches have been
+added.
 
-Thanks again!
-Aleksandar
+v1 was 'Let devices own the MemoryRegion they create':
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg681960.html
 
+Since v1:
+- understood a bit more Peter Maydell comments regarding
+  how memory devices are migrated.
 
-> We simply follow the OpenCV "Template Matching with Multiple Objects"
-> tutorial, replacing Lionel Messi by Tux:
-> https://docs.opencv.org/4.2.0/d4/dc6/tutorial_py_template_matching.html
->
-> When OpenCV and NumPy are installed, this test can be run using:
->
->   $ avocado --show=3Dapp,framebuffer \
->     run -t cpu:i6400 \
->     tests/acceptance/machine_mips_malta.py
->   JOB ID     : 54f3d8efd8674f289b8aa01a87f5d70c5814544c
->   JOB LOG    : avocado/job-results/job-2020-02-01T20.52-54f3d8e/job.log
->    (1/3) tests/acceptance/machine_mips_malta.py:MaltaMachineFramebuffer.t=
-est_mips_malta_i6400_framebuffer_logo_1core:
->   framebuffer: found Tux at position (x, y) =3D (0, 0)
->   PASS (3.37 s)
->    (2/3) tests/acceptance/machine_mips_malta.py:MaltaMachineFramebuffer.t=
-est_mips_malta_i6400_framebuffer_logo_7cores:
->   framebuffer: found Tux at position (x, y) =3D (0, 0)
->   framebuffer: found Tux at position (x, y) =3D (88, 0)
->   framebuffer: found Tux at position (x, y) =3D (176, 0)
->   framebuffer: found Tux at position (x, y) =3D (264, 0)
->   framebuffer: found Tux at position (x, y) =3D (352, 0)
->   framebuffer: found Tux at position (x, y) =3D (440, 0)
->   framebuffer: found Tux at position (x, y) =3D (528, 0)
->   PASS (5.80 s)
->    (3/3) tests/acceptance/machine_mips_malta.py:MaltaMachineFramebuffer.t=
-est_mips_malta_i6400_framebuffer_logo_8cores:
->   framebuffer: found Tux at position (x, y) =3D (0, 0)
->   framebuffer: found Tux at position (x, y) =3D (88, 0)
->   framebuffer: found Tux at position (x, y) =3D (176, 0)
->   framebuffer: found Tux at position (x, y) =3D (264, 0)
->   framebuffer: found Tux at position (x, y) =3D (352, 0)
->   framebuffer: found Tux at position (x, y) =3D (440, 0)
->   framebuffer: found Tux at position (x, y) =3D (528, 0)
->   framebuffer: found Tux at position (x, y) =3D (616, 0)
->   PASS (6.67 s)
->   RESULTS    : PASS 3 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 =
-| CANCEL 0
->   JOB TIME   : 16.79 s
->
-> If the AVOCADO_CV2_SCREENDUMP_PNG_PATH environment variable is set, the
-> test will save the screenshot with matched squares to it.
->
-> Test inspired by the following post:
-> https://www.mips.com/blog/how-to-run-smp-linux-in-qemu-on-a-mips64-releas=
-e-6-cpu/
-> Kernel built with the following Docker file:
-> https://github.com/philmd/qemu-testing-blob/blob/malta_i6400/mips/malta/m=
-ips64el/Dockerfile
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> The resulting match can be visualised at https://pasteboard.co/ISIj6ZA.pn=
-g
-> Generated using:
->
->   $ AVOCADO_CV2_SCREENDUMP_PNG_PATH=3D/tmp/screendump_matched.png \
->     avocado --show=3Dapp run -t cpu:i6400 \
->     tests/acceptance/machine_mips_malta.py
->   JOB ID     : 54f3d8efd8674f289b8aa01a87f5d70c5814544c
->   JOB LOG    : avocado/job-results/job-2020-02-01T20.52-54f3d8e/job.log
->    (1/3) tests/acceptance/machine_mips_malta.py:MaltaMachineFramebuffer.t=
-est_mips_malta_i6400_framebuffer_logo_1core: PASS (3.37 s)
->    (2/3) tests/acceptance/machine_mips_malta.py:MaltaMachineFramebuffer.t=
-est_mips_malta_i6400_framebuffer_logo_7cores: PASS (5.80 s)
->    (3/3) tests/acceptance/machine_mips_malta.py:MaltaMachineFramebuffer.t=
-est_mips_malta_i6400_framebuffer_logo_8cores: PASS (6.67 s)
->   RESULTS    : PASS 3 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 =
-| CANCEL 0
->   JOB TIME   : 16.79 s
-> ---
->  MAINTAINERS                            |   1 +
->  tests/acceptance/machine_mips_malta.py | 116 +++++++++++++++++++++++++
->  2 files changed, 117 insertions(+)
->  create mode 100644 tests/acceptance/machine_mips_malta.py
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 4ceb1ad882..65a3dfb564 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -983,6 +983,7 @@ F: hw/mips/mips_malta.c
->  F: hw/mips/gt64xxx_pci.c
->  F: include/hw/southbridge/piix.h
->  F: tests/acceptance/linux_ssh_mips_malta.py
-> +F: tests/acceptance/machine_mips_malta.py
->
->  Mipssim
->  M: Aleksandar Markovic <amarkovic@wavecomp.com>
-> diff --git a/tests/acceptance/machine_mips_malta.py b/tests/acceptance/ma=
-chine_mips_malta.py
-> new file mode 100644
-> index 0000000000..2764143d15
-> --- /dev/null
-> +++ b/tests/acceptance/machine_mips_malta.py
-> @@ -0,0 +1,116 @@
-> +# Functional tests for the MIPS Malta board
-> +#
-> +# Copyright (c) Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> +#
-> +# This work is licensed under the terms of the GNU GPL, version 2 or lat=
-er.
-> +# See the COPYING file in the top-level directory.
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> +
-> +import os
-> +import gzip
-> +import logging
-> +
-> +from avocado import skipUnless
-> +from avocado_qemu import Test
-> +from avocado_qemu import wait_for_console_pattern
-> +from avocado.utils import archive
-> +
-> +
-> +NUMPY_AVAILABLE =3D True
-> +try:
-> +    import numpy as np
-> +except ImportError:
-> +    NUMPY_AVAILABLE =3D False
-> +
-> +CV2_AVAILABLE =3D True
-> +try:
-> +    import cv2
-> +except ImportError:
-> +    CV2_AVAILABLE =3D False
-> +
-> +
-> +@skipUnless(NUMPY_AVAILABLE, 'Python NumPy not installed')
-> +@skipUnless(CV2_AVAILABLE, 'Python OpenCV not installed')
-> +class MaltaMachineFramebuffer(Test):
-> +
-> +    timeout =3D 30
-> +
-> +    KERNEL_COMMON_COMMAND_LINE =3D 'printk.time=3D0 '
-> +
-> +    def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
-> +        """
-> +        Boot Linux kernel and check Tux logo is displayed on the framebu=
-ffer.
-> +        """
-> +        screendump_path =3D os.path.join(self.workdir, 'screendump.pbm')
-> +
-> +        kernel_url =3D ('https://github.com/philmd/qemu-testing-blob/raw=
-/'
-> +                      'a5966ca4b5/mips/malta/mips64el/'
-> +                      'vmlinux-4.7.0-rc1.I6400.gz')
-> +        kernel_hash =3D '096f50c377ec5072e6a366943324622c312045f6'
-> +        kernel_path_gz =3D self.fetch_asset(kernel_url, asset_hash=3Dker=
-nel_hash)
-> +        kernel_path =3D self.workdir + "vmlinux"
-> +        archive.gzip_uncompress(kernel_path_gz, kernel_path)
-> +
-> +        tuxlogo_url =3D ('https://github.com/torvalds/linux/raw/v2.6.12/=
-'
-> +                       'drivers/video/logo/logo_linux_vga16.ppm')
-> +        tuxlogo_hash =3D '3991c2ddbd1ddaecda7601f8aafbcf5b02dc86af'
-> +        tuxlogo_path =3D self.fetch_asset(tuxlogo_url, asset_hash=3Dtuxl=
-ogo_hash)
-> +
-> +        self.vm.set_console()
-> +        kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
-> +                               'clocksource=3DGIC console=3Dtty0 console=
-=3DttyS0')
-> +        self.vm.add_args('-kernel', kernel_path,
-> +                         '-cpu', 'I6400',
-> +                         '-smp', '%u' % cpu_cores_count,
-> +                         '-vga', 'std',
-> +                         '-append', kernel_command_line)
-> +        self.vm.launch()
-> +        framebuffer_ready =3D 'Console: switching to colour frame buffer=
- device'
-> +        wait_for_console_pattern(self, framebuffer_ready,
-> +                                 failure_message=3D'Kernel panic - not s=
-yncing')
-> +        self.vm.command('human-monitor-command', command_line=3D'stop')
-> +        self.vm.command('human-monitor-command',
-> +                        command_line=3D'screendump %s' % screendump_path=
-)
-> +        logger =3D logging.getLogger('framebuffer')
-> +
-> +        match_threshold =3D 0.95
-> +        screendump_bgr =3D cv2.imread(screendump_path, cv2.IMREAD_COLOR)
-> +        tuxlogo_bgr =3D cv2.imread(tuxlogo_path, cv2.IMREAD_COLOR)
-> +        result =3D cv2.matchTemplate(screendump_bgr, tuxlogo_bgr,
-> +                                   cv2.TM_CCOEFF_NORMED)
-> +        loc =3D np.where(result >=3D match_threshold)
-> +        tuxlogo_count =3D 0
-> +        h, w =3D tuxlogo_bgr.shape[:2]
-> +        debug_png =3D os.getenv('AVOCADO_CV2_SCREENDUMP_PNG_PATH')
-> +        for tuxlogo_count, pt in enumerate(zip(*loc[::-1]), start=3D1):
-> +            logger.debug('found Tux at position (x, y) =3D %s', pt)
-> +            cv2.rectangle(screendump_bgr, pt,
-> +                          (pt[0] + w, pt[1] + h), (0, 0, 255), 2)
-> +        if debug_png:
-> +            cv2.imwrite(debug_png, screendump_bgr)
-> +        self.assertGreaterEqual(tuxlogo_count, cpu_cores_count)
-> +
-> +    def test_mips_malta_i6400_framebuffer_logo_1core(self):
-> +        """
-> +        :avocado: tags=3Darch:mips64el
-> +        :avocado: tags=3Dmachine:malta
-> +        :avocado: tags=3Dcpu:i6400
-> +        """
-> +        self.do_test_i6400_framebuffer_logo(1)
-> +
-> +    def test_mips_malta_i6400_framebuffer_logo_7cores(self):
-> +        """
-> +        :avocado: tags=3Darch:mips64el
-> +        :avocado: tags=3Dmachine:malta
-> +        :avocado: tags=3Dcpu:i6400
-> +        """
-> +        self.do_test_i6400_framebuffer_logo(7)
-> +
-> +    def test_mips_malta_i6400_framebuffer_logo_8cores(self):
-> +        """
-> +        :avocado: tags=3Darch:mips64el
-> +        :avocado: tags=3Dmachine:malta
-> +        :avocado: tags=3Dcpu:i6400
-> +        """
-> +        self.do_test_i6400_framebuffer_logo(8)
-> --
-> 2.21.1
->
->
+Supersedes: <20200221173049.18134-1-philmd@redhat.com>
+
+Philippe Mathieu-Daud=C3=A9 (32):
+  memory: Correctly return alias region type
+  memory: Simplify memory_region_init_rom_nomigrate() to ease review
+  scripts/cocci: Rename memory-region-{init-ram -> housekeeping}
+  scripts/cocci: Patch to replace memory_region_init_{ram,readonly ->
+    rom}
+  hw/arm: Use memory_region_init_rom() with read-only regions
+  hw/display: Use memory_region_init_rom() with read-only regions
+  hw/mips: Use memory_region_init_rom() with read-only regions
+  hw/m68k: Use memory_region_init_rom() with read-only regions
+  hw/net: Use memory_region_init_rom() with read-only regions
+  hw/pci-host: Use memory_region_init_rom() with read-only regions
+  hw/ppc: Use memory_region_init_rom() with read-only regions
+  hw/riscv: Use memory_region_init_rom() with read-only regions
+  hw/sh4: Use memory_region_init_rom() with read-only regions
+  hw/sparc: Use memory_region_init_rom() with read-only regions
+  scripts/cocci: Patch to detect potential use of memory_region_init_rom
+  hw/arm/stm32: Use memory_region_init_rom() with read-only regions
+  hw/ppc/ppc405: Use memory_region_init_rom() with read-only regions
+  hw/i386/pc_sysfw: Simplify using memory_region_init_alias()
+  hw/i386/pc_sysfw: Remove unused 'ram_size' argument
+  scripts/cocci: Patch to remove unnecessary
+    memory_region_set_readonly()
+  hw/arm: Remove unnecessary memory_region_set_readonly() on ROM alias
+  scripts/cocci: Patch to let devices own their MemoryRegions
+  hw/arm: Let devices own the MemoryRegion they create
+  hw/char: Let devices own the MemoryRegion they create
+  hw/core: Let devices own the MemoryRegion they create
+  hw/display: Let devices own the MemoryRegion they create
+  hw/dma: Let devices own the MemoryRegion they create
+  hw/riscv: Let devices own the MemoryRegion they create
+  hw/input/milkymist-softusb: Remove unused 'pmem_ptr' field
+  hw/input/milkymist-softusb: Let devices own the MemoryRegion they
+    create
+  hw/net/milkymist-minimac2: Let devices own the MemoryRegion they
+    create
+  hw/block/onenand: Let devices own the MemoryRegion they create
+
+ .../memory-region-housekeeping.cocci          | 159 ++++++++++++++++++
+ .../coccinelle/memory-region-init-ram.cocci   |  38 -----
+ hw/arm/exynos4210.c                           |  14 +-
+ hw/arm/fsl-imx25.c                            |  10 +-
+ hw/arm/fsl-imx31.c                            |   6 +-
+ hw/arm/fsl-imx6.c                             |   6 +-
+ hw/arm/fsl-imx6ul.c                           |   9 +-
+ hw/arm/mainstone.c                            |   3 +-
+ hw/arm/msf2-soc.c                             |   6 +-
+ hw/arm/nrf51_soc.c                            |   2 +-
+ hw/arm/omap_sx1.c                             |   6 +-
+ hw/arm/palm.c                                 |   3 +-
+ hw/arm/spitz.c                                |   3 +-
+ hw/arm/stellaris.c                            |   3 +-
+ hw/arm/stm32f205_soc.c                        |  11 +-
+ hw/arm/stm32f405_soc.c                        |  12 +-
+ hw/arm/tosa.c                                 |   3 +-
+ hw/arm/xlnx-zynqmp.c                          |  11 +-
+ hw/block/onenand.c                            |   7 +-
+ hw/char/serial.c                              |   7 +-
+ hw/core/platform-bus.c                        |   3 +-
+ hw/display/cg3.c                              |   5 +-
+ hw/display/g364fb.c                           |   3 +-
+ hw/display/macfb.c                            |   4 +-
+ hw/display/tcx.c                              |   5 +-
+ hw/dma/i8257.c                                |   2 +-
+ hw/dma/rc4030.c                               |   4 +-
+ hw/i386/pc_sysfw.c                            |  29 +---
+ hw/input/milkymist-softusb.c                  |  12 +-
+ hw/m68k/q800.c                                |   3 +-
+ hw/mips/mips_fulong2e.c                       |   3 +-
+ hw/mips/mips_jazz.c                           |   6 +-
+ hw/mips/mips_mipssim.c                        |   3 +-
+ hw/mips/mips_r4k.c                            |   3 +-
+ hw/net/dp8393x.c                              |   5 +-
+ hw/net/milkymist-minimac2.c                   |   8 +-
+ hw/pci-host/prep.c                            |   5 +-
+ hw/ppc/mac_newworld.c                         |   3 +-
+ hw/ppc/mac_oldworld.c                         |   3 +-
+ hw/ppc/ppc405_boards.c                        |   6 +-
+ hw/riscv/sifive_e.c                           |   9 +-
+ hw/riscv/sifive_u.c                           |   2 +-
+ hw/sh4/shix.c                                 |   3 +-
+ hw/sparc/leon3.c                              |   3 +-
+ memory.c                                      |  16 +-
+ MAINTAINERS                                   |   1 +
+ 46 files changed, 268 insertions(+), 200 deletions(-)
+ create mode 100644 scripts/coccinelle/memory-region-housekeeping.cocci
+ delete mode 100644 scripts/coccinelle/memory-region-init-ram.cocci
+
+--=20
+2.21.1
+

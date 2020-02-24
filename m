@@ -1,90 +1,90 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp800502lfg;
-        Mon, 24 Feb 2020 13:30:27 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzxE25teep/Xy9TYKSN/mcjVNUL1erUGSNf5v6gOY+SB2AMVy0MgWkBKEq7xmMSwWG+HNc0
-X-Received: by 2002:a37:9047:: with SMTP id s68mr52422114qkd.63.1582579827164;
-        Mon, 24 Feb 2020 13:30:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582579827; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp800891lfg;
+        Mon, 24 Feb 2020 13:30:53 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwVgXwh6s6qeBslUaWNHajsdcvOg3vhB8ammhQtb2AywOwWuZGlywB+mrbBGJcRDA30dhp/
+X-Received: by 2002:ac8:7501:: with SMTP id u1mr51227608qtq.149.1582579853670;
+        Mon, 24 Feb 2020 13:30:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582579853; cv=none;
         d=google.com; s=arc-20160816;
-        b=rsGmG562KzPfCIXGG6l41UFmIEoIfA67Y5SektGhpn1o+VPfiCdF8uuQFFu4O22Cq8
-         U4/MD9YhJwRLKtmV1XT0d+IdqmJ0J4oZG6WzbK8WvFDSvVr+SR1Bta619yYpOUX3X76d
-         /tlH4/63TSFETTK5XrL5vQFO2m59KUupA7Nwrw1qlsYUh4jdZNl+DTswTUa/t9aIm/qS
-         bsVos7GWkIkyFaJ96j9y8LiuWugKjn4+XkLzeQIiaGm54mGl3hoDgcUkIY5w1+kjxx6u
-         43ruus2x3tAbFqWR+FMqL4xRGidpqJuV8WCXZPdEoD8HlKTaeEt5uphaEqo3Kz+6rDqH
-         tLaw==
+        b=dEYAZ9oQlr0zZaWpUN0yhKJc234lJ/tBCprx467o5x97s6NHcREmwe4oPf8mnhPJm3
+         cq5NdYn+jnuOJejCMdpvrjUXQy7BzJf05jH8g5D1sNSEvrIdI/uOzZ//uNv+I9ycMRGR
+         f2jCXajhvcUfZRIi/LrE6aiLmVMURmGz4PYUrygPru9RWXeBt2gptN25luuzImUKXAc/
+         cO8An8ylBp7XO5r/MsUsvJz5aDDvy2bzf1OjF/k5vCQ6Y/wYVENmlmHyECbbaVrrv9l7
+         7q3USv4J7sYDJHCFgdvFiJIAajrX8paxRfiHl7eljRuW1cUoO6bVJ4D7C/nez1NWJAo4
+         Swug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=EimZBb/wTLnnIdXn4hxLBCiwdZq9+sATqGkFdsLXgrs=;
-        b=s5OjsGmWXjLMQcPZ3hlkdQvPadsUpTXxOnY++0ZLylHEzHH5I2shu14JhAkRHqUPa8
-         43PWDXxOcjL/3kmDn5EWBoCLnk7UiGzkifUJxzJvWf0DRKitWFCDqjWYiRF0assgs6qz
-         /nygC92P3DzvZp7UXXZ5yYkdil5xboTtCwcVkMBxK8KmnezST7Oo8kpzRgamso/sLYNg
-         WcWSB5Oti66rYQOFv4FP2SHHYp/R5I5YfkwYn+JpEQ+EDDGYRZ9Cv/p4kjrlO63SNd3N
-         ERswfqKAlh+lQfmSj0vLnc/vsJjLhcJCoPVedRU0UD5Ofm5Awg5c5Fg9sC/dl1wjXz1J
-         mwtQ==
+        bh=qbvEgfMPFn79RezIvzFb5QHqmDpXn9VCeMrP2Hw3cM4=;
+        b=kdrEEc7vePy3pQn6AhN3m/OXBqJjC0PDMUqnuqYu6GDXi+4KqKq5zOpG7X3Ry300jH
+         e/Rz3G7oJpmk+SAIR68AOo/6b8CbLuwnMfITPV5ah3pTBxGPrnBgERR2HObwfkxzClpc
+         6J8DPpa1AWcnTq//WuDS7sBm+CArA9zww/1NlLdMkoUQ2oKfc9yTxFuTDlCHUTR/A41+
+         C4rtSyfv44c2PLVddQ/h5m30H4UFkSx1G9XqWarHeKx8ihWHhVa0LebwtduAfDo+it6Z
+         +GYMxdxFVWHG3Mnk774np/m4AFco+0aUMishci1oZLV9sSQ24q2S88RO7UZhYnazsVyY
+         +a4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YOhV4u2Z;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g8bPwabz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p24si6414358qkm.27.2020.02.24.13.30.26
+        by mx.google.com with ESMTPS id o24si428657qtk.369.2020.02.24.13.30.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 13:30:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Feb 2020 13:30:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YOhV4u2Z;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g8bPwabz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43956 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43986 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6LJ4-0005dT-BZ
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 16:30:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51414)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j6LJV-0006s5-3q
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 16:30:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53526)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j6Knh-0001GT-PE
- for qemu-devel@nongnu.org; Mon, 24 Feb 2020 15:58:03 -0500
+ (envelope-from <philmd@redhat.com>) id 1j6Krw-0007zS-2s
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:02:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j6Kng-0004jb-Eo
- for qemu-devel@nongnu.org; Mon, 24 Feb 2020 15:58:01 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:37899
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1j6Krt-0007y8-SJ
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:02:23 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:55841
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6Kng-0004j6-Aw
- for qemu-devel@nongnu.org; Mon, 24 Feb 2020 15:58:00 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6Krt-0007xp-Nn
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:02:21 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582577879;
+ s=mimecast20190719; t=1582578141;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=EimZBb/wTLnnIdXn4hxLBCiwdZq9+sATqGkFdsLXgrs=;
- b=YOhV4u2ZGJGL/D8Vj/E1TraHTGHYCG6LexYypjybsWeUKnCcMl9w9n4oy5ezw8sCOGIpV2
- fsWyTz/AGFQ/Y32Edkv52hCX19/B/RKs7XtBS1P4SVnqa6yL95d+rq9CChJ5GKuJ4ypb8c
- 7vEEItH8pm8gq+FkWi5TEGoErzKWFQs=
+ bh=qbvEgfMPFn79RezIvzFb5QHqmDpXn9VCeMrP2Hw3cM4=;
+ b=g8bPwabzoIE+AxKqXp2lC60bZ0fPOYQQEe+fR7YDYPPy5o3PDTPxRKVAup4FtPtXbRvVof
+ pgpE8T7tsPBdnNp2E5TdvODCTWTOZS8oMbuq1DT0HNqbdUll9JvJJsuicAXbXMLPlWt4xr
+ ibeJtrfLM6omiPc/4bEpA4fDLFlxpYo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-255-Uo2-Nbj1PWqzfAAFdLsOig-1; Mon, 24 Feb 2020 15:57:58 -0500
-X-MC-Unique: Uo2-Nbj1PWqzfAAFdLsOig-1
+ us-mta-384-5ze8_Kv6Nt2muSzsp6ULlQ-1; Mon, 24 Feb 2020 16:02:19 -0500
+X-MC-Unique: 5ze8_Kv6Nt2muSzsp6ULlQ-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 42A6C189F760;
- Mon, 24 Feb 2020 20:57:54 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 96BC51005512;
+ Mon, 24 Feb 2020 21:02:15 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-205-162.brq.redhat.com [10.40.205.162])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8B02A5C54A;
- Mon, 24 Feb 2020 20:57:39 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 679565C54A;
+ Mon, 24 Feb 2020 21:02:06 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH RESEND v2 07/32] hw/mips: Use memory_region_init_rom() with
- read-only regions
-Date: Mon, 24 Feb 2020 21:55:08 +0100
-Message-Id: <20200224205533.23798-8-philmd@redhat.com>
+Subject: [PATCH RESEND v2 28/32] hw/riscv: Let devices own the MemoryRegion
+ they create
+Date: Mon, 24 Feb 2020 21:55:29 +0100
+Message-Id: <20200224205533.23798-29-philmd@redhat.com>
 In-Reply-To: <20200224205533.23798-1-philmd@redhat.com>
 References: <20200224205533.23798-1-philmd@redhat.com>
 MIME-Version: 1.0
@@ -94,34 +94,33 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  KONRAD Frederic <frederic.konrad@adacore.com>,
  Alistair Francis <Alistair.Francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
  Magnus Damm <magnus.damm@gmail.com>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>,
+ Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
  David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Alistair Francis <alistair@alistair23.me>,
  Fabien Chouteau <chouteau@adacore.com>, qemu-arm@nongnu.org,
@@ -133,95 +132,63 @@ Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>,
  Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
  Aleksandar Markovic <amarkovic@wavecomp.com>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PcVV9YX4Vn1h
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JZ4hKa9Gl7Yg
+
+Avoid orphan memory regions being added in the /unattached QOM
+container.
 
 This commit was produced with the Coccinelle script
 scripts/coccinelle/memory-region-housekeeping.cocci.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/mips/mips_fulong2e.c | 3 +--
- hw/mips/mips_jazz.c     | 6 ++----
- hw/mips/mips_mipssim.c  | 3 +--
- hw/mips/mips_r4k.c      | 3 +--
- 4 files changed, 5 insertions(+), 10 deletions(-)
+ hw/riscv/sifive_e.c | 6 +++---
+ hw/riscv/sifive_u.c | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
-index 2e043cbb98..547a7d3a45 100644
---- a/hw/mips/mips_fulong2e.c
-+++ b/hw/mips/mips_fulong2e.c
-@@ -319,9 +319,8 @@ static void mips_fulong2e_init(MachineState *machine)
+diff --git a/hw/riscv/sifive_e.c b/hw/riscv/sifive_e.c
+index 6f6360a619..64eb8ce536 100644
+--- a/hw/riscv/sifive_e.c
++++ b/hw/riscv/sifive_e.c
+@@ -145,8 +145,8 @@ static void riscv_sifive_e_soc_realize(DeviceState *dev=
+, Error **errp)
+                             &error_abort);
 =20
-     /* allocate RAM */
-     memory_region_allocate_system_memory(ram, NULL, "fulong2e.ram", ram_si=
-ze);
--    memory_region_init_ram(bios, NULL, "fulong2e.bios", BIOS_SIZE,
-+    memory_region_init_rom(bios, NULL, "fulong2e.bios", BIOS_SIZE,
-                            &error_fatal);
--    memory_region_set_readonly(bios, true);
+     /* Mask ROM */
+-    memory_region_init_rom(&s->mask_rom, NULL, "riscv.sifive.e.mrom",
+-        memmap[SIFIVE_E_MROM].size, &error_fatal);
++    memory_region_init_rom(&s->mask_rom, OBJECT(dev), "riscv.sifive.e.mrom=
+",
++                           memmap[SIFIVE_E_MROM].size, &error_fatal);
+     memory_region_add_subregion(sys_mem,
+         memmap[SIFIVE_E_MROM].base, &s->mask_rom);
 =20
-     memory_region_add_subregion(address_space_mem, 0, ram);
-     memory_region_add_subregion(address_space_mem, 0x1fc00000LL, bios);
-diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
-index 66fd4d867d..cf47335ea5 100644
---- a/hw/mips/mips_jazz.c
-+++ b/hw/mips/mips_jazz.c
-@@ -195,9 +195,8 @@ static void mips_jazz_init(MachineState *machine,
-                                          machine->ram_size);
-     memory_region_add_subregion(address_space, 0, ram);
+@@ -208,7 +208,7 @@ static void riscv_sifive_e_soc_realize(DeviceState *dev=
+, Error **errp)
+         memmap[SIFIVE_E_PWM2].base, memmap[SIFIVE_E_PWM2].size);
 =20
--    memory_region_init_ram(bios, NULL, "mips_jazz.bios", MAGNUM_BIOS_SIZE,
-+    memory_region_init_rom(bios, NULL, "mips_jazz.bios", MAGNUM_BIOS_SIZE,
-                            &error_fatal);
--    memory_region_set_readonly(bios, true);
-     memory_region_init_alias(bios2, NULL, "mips_jazz.bios", bios,
-                              0, MAGNUM_BIOS_SIZE);
-     memory_region_add_subregion(address_space, 0x1fc00000LL, bios);
-@@ -263,9 +262,8 @@ static void mips_jazz_init(MachineState *machine,
-         {
-             /* Simple ROM, so user doesn't have to provide one */
-             MemoryRegion *rom_mr =3D g_new(MemoryRegion, 1);
--            memory_region_init_ram(rom_mr, NULL, "g364fb.rom", 0x80000,
-+            memory_region_init_rom(rom_mr, NULL, "g364fb.rom", 0x80000,
-                                    &error_fatal);
--            memory_region_set_readonly(rom_mr, true);
-             uint8_t *rom =3D memory_region_get_ram_ptr(rom_mr);
-             memory_region_add_subregion(address_space, 0x60000000, rom_mr)=
-;
-             rom[0] =3D 0x10; /* Mips G364 */
-diff --git a/hw/mips/mips_mipssim.c b/hw/mips/mips_mipssim.c
-index b934ca9d51..3fdbb21680 100644
---- a/hw/mips/mips_mipssim.c
-+++ b/hw/mips/mips_mipssim.c
-@@ -169,9 +169,8 @@ mips_mipssim_init(MachineState *machine)
-     /* Allocate RAM. */
-     memory_region_allocate_system_memory(ram, NULL, "mips_mipssim.ram",
-                                          ram_size);
--    memory_region_init_ram(bios, NULL, "mips_mipssim.bios", BIOS_SIZE,
-+    memory_region_init_rom(bios, NULL, "mips_mipssim.bios", BIOS_SIZE,
-                            &error_fatal);
--    memory_region_set_readonly(bios, true);
+     /* Flash memory */
+-    memory_region_init_rom(&s->xip_mem, NULL, "riscv.sifive.e.xip",
++    memory_region_init_rom(&s->xip_mem, OBJECT(dev), "riscv.sifive.e.xip",
+                            memmap[SIFIVE_E_XIP].size, &error_fatal);
+     memory_region_add_subregion(sys_mem, memmap[SIFIVE_E_XIP].base,
+         &s->xip_mem);
+diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
+index 0e12b3ccef..be7d438db1 100644
+--- a/hw/riscv/sifive_u.c
++++ b/hw/riscv/sifive_u.c
+@@ -497,7 +497,7 @@ static void riscv_sifive_u_soc_realize(DeviceState *dev=
+, Error **errp)
+                              &error_abort);
 =20
-     memory_region_add_subregion(address_space_mem, 0, ram);
-=20
-diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
-index b2aec434c3..54b286ceee 100644
---- a/hw/mips/mips_r4k.c
-+++ b/hw/mips/mips_r4k.c
-@@ -241,9 +241,8 @@ void mips_r4k_init(MachineState *machine)
-     dinfo =3D drive_get(IF_PFLASH, 0, 0);
-     if ((bios_size > 0) && (bios_size <=3D BIOS_SIZE)) {
-         bios =3D g_new(MemoryRegion, 1);
--        memory_region_init_ram(bios, NULL, "mips_r4k.bios", BIOS_SIZE,
-+        memory_region_init_rom(bios, NULL, "mips_r4k.bios", BIOS_SIZE,
-                                &error_fatal);
--        memory_region_set_readonly(bios, true);
-         memory_region_add_subregion(get_system_memory(), 0x1fc00000, bios)=
-;
-=20
-         load_image_targphys(filename, 0x1fc00000, BIOS_SIZE);
+     /* boot rom */
+-    memory_region_init_rom(mask_rom, NULL, "riscv.sifive.u.mrom",
++    memory_region_init_rom(mask_rom, OBJECT(dev), "riscv.sifive.u.mrom",
+                            memmap[SIFIVE_U_MROM].size, &error_fatal);
+     memory_region_add_subregion(system_memory, memmap[SIFIVE_U_MROM].base,
+                                 mask_rom);
 --=20
 2.21.1
 

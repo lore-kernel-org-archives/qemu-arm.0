@@ -1,100 +1,101 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp810202lfg;
-        Mon, 24 Feb 2020 13:43:11 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx6+wYF1R3NY5Rxi7kDI6jpVr4vsRGoAWAc5t1pBAfIsytIgzwrMhhTwJq8KUYEGR8vuL9G
-X-Received: by 2002:a05:620a:66f:: with SMTP id a15mr10576695qkh.446.1582580591340;
-        Mon, 24 Feb 2020 13:43:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582580591; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp810391lfg;
+        Mon, 24 Feb 2020 13:43:27 -0800 (PST)
+X-Google-Smtp-Source: APXvYqziYjFUf6tznCzUs9NYQLGpnDOoxHrzuRHfu9CTj1nLN+B01jfdDU5q8ZhILv7JEzihu5eR
+X-Received: by 2002:ac8:2902:: with SMTP id y2mr37191965qty.258.1582580606968;
+        Mon, 24 Feb 2020 13:43:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582580606; cv=none;
         d=google.com; s=arc-20160816;
-        b=SJ57DeoNb8qBVBq8Lg9/T+KYdbKwBs5B0fiwTk49nmo/fhLjKOUY6GNlOwGW4yYKt2
-         tSS9JdV7fdRPk1igId/Qzue6QEtXGW/0Bb9LDoBMX5PcdnV7I2ntaKlILljXoKX1V43B
-         nzwp1q499QdvuuFXXr+tI3CwVKVaRR7z7gj/N7JUL+d/zI5z6T1hr2tvdKu1dfQalv9r
-         gnVRovdZl1TW4RoOj7N7hiodJl9J1Xc2Nq2GZfy2wa8ozV8F2wqQf3xOyJxgdFCa6t4y
-         WNC2Zr9tAOaOtbJoRljG/h71mt19R9di2l7LgFl/9ydZIxu8A4tfTjSSnm61TJfqh4F7
-         FvmA==
+        b=lKHGUiJfWlTGOnPdJx5ypnaMWOmLrnagyBIAeK8YEX8U+yvPYt7sVQhOP14V3iER+Q
+         MMdBciLDRVk3qp5XGylfsd0kvSrKsLFBuukJGmZO+DSKcFw32dCDTTXG9VN8cHfVKjSE
+         BToL+FluQ9vGKV4sm2NMmVYz7j259q/8czH9xu98+vltoxD7oHWuta4KbcLLpnImbApU
+         2qMjnrcKNLR+3HKe6r0/06vlc/6+tQKbwGr3hsH38BxdzjW39mZxbEABR1vsSOG61EJ8
+         htjUX1z+qEm2WqXOSAp8890waaFHFpfxnzIDso9bKyzWq5WpzHAnoL3e3INJ9HCZcCFI
+         ya3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=k9AuazKj5Lyr5/IGPo5NEYoU+N88UD1nQwcmMZGXpLQ=;
-        b=Dm9XZ1AYskrn1X4n3bnhULykTg6P/D+dsRpt3H9k5dPZIBAdWmYrZ2NJQhp7V+vGiV
-         3/djGjsJIo8R41NE35JGBw7aOEWkSjI/LSxCJM//Oa3JqDGUgCHu3gHFn1IV9elD09Tv
-         X+CKmQILStC0vx1Rd+KuSyGrW9CZpYr6FxckFABWD6EmdgOl/s9gWRbmL8K+nzQG7haD
-         oXe85EfnnxOMycxO0BMMXiSLv5tlCTZhz9NKJdMW44yCcjvO7nB9FzuW5ybaxls16FYo
-         PwB4hYPfWpqvGlmKs2BIYTVRp6WRlftMhD6341x1T4YGbepGkgz0AqzfnqIwajMrfTAL
-         8IxQ==
+        bh=f/ifAF9KuPku19Cn2OwygyTt91U6QCUjnSpXcB6RnSA=;
+        b=rhkw+CfwO8gbqjp5FHJJcXaGSuA1sbGKGx6D2dp7ppqFlLdsVaPDzyypIRva6ID5NW
+         4Ag4hAL8Gone4nHnpxzDpieEukGcFOis8d0LOa86gbTKrYQN5xEyJ7U7NsBLK6tUfYhm
+         H7jEvPrwon8gBt7oWSqUkVeSlBkJ0VJOAEi2YSNFxKyDT+2WaH7Clx8J1VNiKkV3dHLj
+         /rX7akYTdsqs8AKADE/W3cd8RnzCEX8+2x33TspWiml0P0VGLuUHmvH0BhL6fpK17XMF
+         lC3yLXiMKkWPCXLWD5vcrHh++I5kWJuCLU7sMYS1z0cn2jesbkQMSNzJaORP/hDI7VDI
+         phPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZxCKUK7m;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Plbot5xX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1si4037003qkc.88.2020.02.24.13.43.11
+        by mx.google.com with ESMTPS id 43si6296676qta.50.2020.02.24.13.43.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 13:43:11 -0800 (PST)
+        Mon, 24 Feb 2020 13:43:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZxCKUK7m;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Plbot5xX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44354 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44366 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6LVO-0003mD-NB
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 16:43:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57135)
+	id 1j6LVe-0004IY-D5
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 16:43:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57576)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1j6LBb-0001Bv-BV
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:22:44 -0500
+ (envelope-from <alistair23@gmail.com>) id 1j6LDy-0005Uf-7z
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:25:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1j6LBa-0007ro-EU
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:22:43 -0500
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:37710)
+ (envelope-from <alistair23@gmail.com>) id 1j6LDw-00008l-AT
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:25:09 -0500
+Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:34709)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1j6LBU-0007oV-6a; Mon, 24 Feb 2020 16:22:36 -0500
-Received: by mail-lj1-x241.google.com with SMTP id q23so11753755ljm.4;
- Mon, 24 Feb 2020 13:22:36 -0800 (PST)
+ id 1j6LDq-0008VV-Bw; Mon, 24 Feb 2020 16:25:02 -0500
+Received: by mail-lf1-x144.google.com with SMTP id l18so7940475lfc.1;
+ Mon, 24 Feb 2020 13:25:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=k9AuazKj5Lyr5/IGPo5NEYoU+N88UD1nQwcmMZGXpLQ=;
- b=ZxCKUK7mnNGWgcJdPCeCbRtDmY9Dqt9OpWufgqFslAsrLrrDx3xstVR+u78xUltfOJ
- OfXkk9Qss65ugChez7fi/j3iGAJxbADwTxW4Oi+cu6E4Xc12ihzBTN68gAUewnyax+oP
- W3kQheUDSt16cswmGdviQ0+GTM6HA1JH9eRb68e3SFzOl4ykQMhxhqHWSVDGWUBR/S09
- 6FBg4P3/T/n0u0IE3Qdx1Q0WOU0Auklfwh9ltRnGihf1afahO96Tmf/6ovA4TuaYovvC
- goykd1Cx4mBz4cF98WdfjdEDeZl3dCvXzF73ZZDyvNs9WAapSxzYnNJ0nrQMBJzxmhKy
- M2zQ==
+ bh=f/ifAF9KuPku19Cn2OwygyTt91U6QCUjnSpXcB6RnSA=;
+ b=Plbot5xXUC22k6W/VTeAJm1AvN3NYvMbKqo67/KxfYVWbRkmnwPR3mUJskptCA2KIj
+ hI6Ny1bkzn8uiujqqRZwEFMMo5siZWfChYcskfACv78pRbJt8xomgP7l35C42JeCpNVJ
+ ebztbymX7FWbV3cbH3Y5bs7U6WpvfoA9rcUu3JvuAuBwo4/V/DEewzRBY5uEIvjw/Rg4
+ NU30G1iMSh7d+HcrHyYa5ubYUbu5K0WYvg2YQjWClpSFja6YxzBYgxoUCVo05yQWv5LL
+ aNHHXy1lNIKhSnStsTw/aeA9Tr3lZ7YUk4A0TlC5dzQ2Hnp3+t2BsIcIrjXflHDNVTcI
+ 7HEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=k9AuazKj5Lyr5/IGPo5NEYoU+N88UD1nQwcmMZGXpLQ=;
- b=Vb6/F6Fw46vczp+CAfWUl86D41+qQRKgRILjD64vPWbSJd/yrbKrrpvPv2xeNZ6ZHJ
- k4DOIYjnciw80jOOfeM6hVeTY3pqnBV0nX88dQNYRxNXGLITHqtS6LZ8DFfxKOlvMYWI
- ajP0baiw8pkpwjgYtMPpevHMJc16sVvmuuAsHEGJBmxyApKOCfe476Uoy5IZ3CwbfFd0
- iCY3y8YRH3CoRaYVPAp3h+37Z/VKeNroCyhwXZFEEKYqw/jER6HQjEXMWmTxDV29jz0N
- a2+Nm6twWXnqPCvgxJ5qDdODSjOlFrJG8/tTV/JMKOUowyZ/NoKJaBuYmllimHwdC/vT
- jvvg==
-X-Gm-Message-State: APjAAAW/kkCCpH5m6bdyEbSO76ed27ydY+ZwTYtWlge1F0bGz12AIT9y
- 60d5mEABn6KqI9yky8WqFYqIBr0r65iX1l9asg8=
-X-Received: by 2002:a2e:7818:: with SMTP id t24mr30769610ljc.195.1582579354670; 
- Mon, 24 Feb 2020 13:22:34 -0800 (PST)
+ bh=f/ifAF9KuPku19Cn2OwygyTt91U6QCUjnSpXcB6RnSA=;
+ b=So54aTbND/mXb/mA75FbO0NnmYOTohu/ZaJvXpeZEQW0qMdDTSBIyVAYhn/4tNklB9
+ x3dh6kZs9I7ddFvDf9mCsZ9ld7dRO0JD/GYySoHvSBLw1muQhnNCh0Hz/qYrwnCf+/XC
+ wf+1e2pvD6SaPRJkNZMoDpCt1Ej+IPRH9mfjlPjbQcRvbAmgBa87bhI/HZK004nAge2w
+ oUt23vZIFkHit4RKOZFP2+V6cRuNE74fzg+2GdKGh0nPBHjvzotEuc2VgplHxPiamZ+P
+ rHe0S6WVnqLQL+wAVmvs2H1sNMn6AcHmzBbuPtCJmibByZvGnA8bo3zxZW/cdf5ilhPU
+ vvww==
+X-Gm-Message-State: APjAAAXElYXx9EQsrDEidvjPPK87Mhvi7BLugRZRTIiJ9m60UYJ4AaPv
+ jq7NZPWrPbBm1Jgcy2Lua5gcresSRKb/tYNZAeI=
+X-Received: by 2002:a19:8585:: with SMTP id h127mr7476613lfd.196.1582579499762; 
+ Mon, 24 Feb 2020 13:24:59 -0800 (PST)
 MIME-Version: 1.0
-References: <20200224204828.23167-1-philmd@redhat.com>
- <20200224204828.23167-2-philmd@redhat.com>
-In-Reply-To: <20200224204828.23167-2-philmd@redhat.com>
+References: <20200224205533.23798-1-philmd@redhat.com>
+ <20200224205533.23798-3-philmd@redhat.com>
+In-Reply-To: <20200224205533.23798-3-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 24 Feb 2020 13:14:59 -0800
-Message-ID: <CAKmqyKMMgSmpuEdGcu1sXrinMMiQCqYz0OcatTALYJ3WVRO=Mw@mail.gmail.com>
-Subject: Re: [PATCH v2 01/32] memory: Correctly return alias region type
+Date: Mon, 24 Feb 2020 13:17:22 -0800
+Message-ID: <CAKmqyKPYOtVjK0z6JWzDv+HK6oNg0BS2RLSHWzVHreiLAFQrbQ@mail.gmail.com>
+Subject: Re: [PATCH RESEND v2 02/32] memory: Simplify
+ memory_region_init_rom_nomigrate() to ease review
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::241
+X-Received-From: 2a00:1450:4864:20::144
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -113,37 +114,38 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  KONRAD Frederic <frederic.konrad@adacore.com>,
  Alistair Francis <Alistair.Francis@wdc.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Qemu-block <qemu-block@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Magnus Damm <magnus.damm@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Qemu-block <qemu-block@nongnu.org>, Magnus Damm <magnus.damm@gmail.com>,
+ Max Reitz <mreitz@redhat.com>,
  =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
  Joel Stanley <joel@jms.id.au>,
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>,
  Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
  Peter Chubb <peter.chubb@nicta.com.au>,
  "open list:New World" <qemu-ppc@nongnu.org>,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
  "open list:RISC-V" <qemu-riscv@nongnu.org>,
  Igor Mitsyanko <i.mitsyanko@gmail.com>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
  Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
  Aleksandar Markovic <amarkovic@wavecomp.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TOaQ4FyfszIw
+X-TUID: IfrczVQ85p1s
 
-On Mon, Feb 24, 2020 at 12:49 PM Philippe Mathieu-Daud=C3=A9
+On Mon, Feb 24, 2020 at 1:10 PM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
 >
-> Since memory region aliases are neither rom nor ram, they are
-> described as i/o, which is often incorrect. Return instead the
-> type of the original region we are aliasing.
+> memory_region_init_rom_nomigrate() has the same content than
+> memory_region_init_ram_shared_nomigrate(), with setting the
+> readonly mode. The code is easier to review as creating a
+> readonly ram/shared/nomigrate region.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
@@ -152,25 +154,36 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
-> Cc: qemu-trivial@nongnu.org
->
->  memory.c | 3 +++
->  1 file changed, 3 insertions(+)
+>  memory.c | 13 +------------
+>  1 file changed, 1 insertion(+), 12 deletions(-)
 >
 > diff --git a/memory.c b/memory.c
-> index aeaa8dcc9e..ce1179874e 100644
+> index ce1179874e..6a327a54ed 100644
 > --- a/memory.c
 > +++ b/memory.c
-> @@ -2818,6 +2818,9 @@ void address_space_destroy(AddressSpace *as)
->
->  static const char *memory_region_type(MemoryRegion *mr)
+> @@ -1659,19 +1659,8 @@ void memory_region_init_rom_nomigrate(MemoryRegion=
+ *mr,
+>                                        uint64_t size,
+>                                        Error **errp)
 >  {
-> +    if (mr->alias) {
-> +        return memory_region_type(mr->alias);
-> +    }
->      if (memory_region_is_ram_device(mr)) {
->          return "ramd";
->      } else if (memory_region_is_romd(mr)) {
+> -    Error *err =3D NULL;
+> -    memory_region_init(mr, owner, name, size);
+> -    mr->ram =3D true;
+> +    memory_region_init_ram_shared_nomigrate(mr, owner, name, size, false=
+, errp);
+>      mr->readonly =3D true;
+> -    mr->terminates =3D true;
+> -    mr->destructor =3D memory_region_destructor_ram;
+> -    mr->ram_block =3D qemu_ram_alloc(size, false, mr, &err);
+> -    mr->dirty_log_mask =3D tcg_enabled() ? (1 << DIRTY_MEMORY_CODE) : 0;
+> -    if (err) {
+> -        mr->size =3D int128_zero();
+> -        object_unparent(OBJECT(mr));
+> -        error_propagate(errp, err);
+> -    }
+>  }
+>
+>  void memory_region_init_rom_device_nomigrate(MemoryRegion *mr,
 > --
 > 2.21.1
 >

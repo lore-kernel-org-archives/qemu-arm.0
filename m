@@ -1,123 +1,136 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp59841lfg;
-        Mon, 24 Feb 2020 00:55:33 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxD/DXthTqXQTnYC0wvS5FlEn6HK01WyXfc3Hb4QlaYfP4jrxOh9E4pYIjw4sXm2Om0/oOK
-X-Received: by 2002:a05:620a:135c:: with SMTP id c28mr23081484qkl.19.1582534533161;
-        Mon, 24 Feb 2020 00:55:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582534533; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp96574lfg;
+        Mon, 24 Feb 2020 01:36:35 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy/ssnZVKuJcnhxs5f1bZS/EJEjk0cre4eSaH8m1eEvgGNqyMOYiOt3jUpizCo/aYDZyJmm
+X-Received: by 2002:a0c:cdcb:: with SMTP id a11mr42871525qvn.244.1582536995399;
+        Mon, 24 Feb 2020 01:36:35 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1582536995; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Q26VpmOh8TA0XVLYkSDLs+1rJbq4KcSkZ5NkPrBKFuzp8K13RQlPNqqCRFB8r9h+I8
-         /u46mUHmrdV92ZizfhGGbSwRb+/dh10n1e/hN4B9xfTMKUHjmINuRoWAT3SCse9EtqdE
-         33aB8u3Q40QM41bnHTZL1/TkMoAG4E8mUov9HslIRhfyWQr0uES4lqUjy5yg3Mq41ok3
-         N90aEwIwU3hK18UH5KXab52hsUjRevH5LWDEsx9lIq+XdGQ5sFAFbbL91YqeR9XnEys4
-         /9gcprLKEC0BAbR8Ys618xz8eNHYoeyYXYwVtMbEV7OIt27vA7LLScScNaZMMqYWC/rO
-         JAWQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=pLE9gL+nLeJg3If5r0aaqRlSJzsU84CD0rHXWyfsUOMHgKSoLyqBa0GYlhPcRTGyZo
+         E+f9heuZGIVp52K+QIzHzayjRR+daGz6n1RmgYK1Wdr1TsJO423Vh6gDHYdgnKFQhZBX
+         VelC6s/O1qWszZdnzyixiOJB+luAnDa557KRee9lFlBDy7FdBhES1V9r7ahBKi7X1ep6
+         WSG8dEA+XWCE3yrNz9pXbnG2lczMLctXD3hSSl1qJ67tAQaYcBpjALiH/o8JmAjR5EBY
+         R+th/dL5JXH/dv992+HCduok1rVp9GFHCgLh0hrTYXU02wCC1nQ9l5tAmxAWajewL2Cn
+         khPA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ZkNmrMbSu3Nb0pRVSIntGehLRlG903huIbMFBQ4VT98=;
-        b=E5rJcqfA0FxCM7Um3lIL3+yyVAPCRUH+1877/+/ki2nr5OB6qnpv37wCcNM+22/4WX
-         Vps1UnCahOkc/D6+QRyICtmu6DybYWtTNg0oHWUq4H/4tSELqT43HFXkt4/R9uta4kFk
-         uMVnvnN6op5FcD4ffgHuUHQWqD+mnFc5eJGvQ+bxsUpBAuBN6YcNnmJNM2DWzFlT6ixA
-         UFvGRsJZNE6ONsFGkAfoltXVt98RkwTctZR8tokw+tF4lkV0udBrxAhy1tbZElrlgFL0
-         7++Sca1AgYqzlni68BR5JfWmenPzfMGir2L/8BTPjhtQUK75qjhPgmTTIP9slMh8mzTV
-         zfpQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=a+iWWYDd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from:dkim-signature;
+        bh=mE1F+tEzjJPCjd6egndwVlbSHt7tDekBeaUTbsGSbsU=;
+        b=kBq68HdXqPFIKK8VXfjIKQv7WB7mSprKrGfetZ3b7gkVK6bNRPlYC91eF5OQyixPn0
+         I9jGCmx41KU3h7mPuGc2eHksy11d8XWLLQevMtMKAh4psWHwXRoua6Bg0GuHraTQ5W/t
+         vASTtIsUHluzX6MaogCsM8FVtSYnsDN8qv18xiD02OgYAyrZud4RfU1zJkhMWBzmQZ1U
+         2HFN+thF4uFmDRl+uVCUSnOtkZrG8bU5D6C3K2AnP9K+YjpdI4umVptXToOL+4+CnBYC
+         EGRVkAwR2UW3rtekkxUggPqwgXLfiaYTBToolH0ww4bM6zuL7KSoZq4AVSnKBw2Eg1ZM
+         rbfQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=Z3uosDBX;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dkim=pass dkdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g21si5432058qtp.41.2020.02.24.00.55.32
+        by mx.google.com with ESMTPS id p18si5249143qvz.12.2020.02.24.01.36.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 00:55:33 -0800 (PST)
+        Mon, 24 Feb 2020 01:36:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=a+iWWYDd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33274 helo=lists1p.gnu.org)
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=Z3uosDBX;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dkim=pass dkdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33764 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j69WW-00055R-K1
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 03:55:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59350)
+	id 1j6AAE-00075e-P9
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 04:36:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36405)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j69WO-00054t-0M
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 03:55:25 -0500
+ (envelope-from <saipava@xilinx.com>) id 1j6AA5-00075P-KP
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 04:36:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j69WM-0006JC-H7
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 03:55:23 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:29612
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j69WM-0006Io-Dw
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 03:55:22 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582534522;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZkNmrMbSu3Nb0pRVSIntGehLRlG903huIbMFBQ4VT98=;
- b=a+iWWYDdRiRAiadgV5HQ/2xoT1LhGtRKqeK7GQ+sM3T97TENZrlER7hDRbbC12UxXbBtm5
- SrqL6kcmB/cdokeOUQJ7Ms2FxGP9CXJYdnxxEdFp6o3HGoKIo5zzzK/JqJBpfadyMGiloF
- J2zoIp69snU3H5LhIyS7U/ey6BNOr9Q=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-315-D59sYTfuMj2nEd1yhVcbkQ-1; Mon, 24 Feb 2020 03:55:20 -0500
-X-MC-Unique: D59sYTfuMj2nEd1yhVcbkQ-1
-Received: by mail-ed1-f70.google.com with SMTP id d21so6182984edy.3
- for <qemu-arm@nongnu.org>; Mon, 24 Feb 2020 00:55:20 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=5fYMjZEHwxp9ijHOKIbEy/YprHO4ogLS6F+5dH+4mQE=;
- b=qO9UjGuPf1CvNiN8VZx0eXp4nSdJRJp/RedRpDK/yLkuClgmeT9jbnSdva7+tVzSJc
- uMXwOr3ZZ+9kziLOfUsVTnyCQIhyUP7hg5F/UomdFYER8ysO45u+2ABifDGqSdi9tWmp
- c5Ykun1XhEFrTYW+U//BvnS16Tcgnn1TLDTR18frAwGWqZ/w6OLw+kAf5dnVuAyAr1wn
- JI8FMHFh1gbUMIDUfO4exZ+hVbtomxZ8kCPu7bFanaKxmWK6ztuRtkfC2+a+90+QsEIJ
- wHUlW5QGwvucT7YkUN744k5bdowzIrm5MBKUvxalZhiI2Fsh/jdvwxmxXW8GnYLb2t1B
- b0uw==
-X-Gm-Message-State: APjAAAWk519bIh2hx+vFFEXO6oYXoiKw2e2CniZ7C3RVC5It10YFuET1
- GBfVw9O/mdqP9dDbuuV5ZJFA8VKaiIBRfurbrVepQ+/J6LcgcQpGdWH0GPpZ6LYqV9YbIPSZ9YZ
- 2nyu6mcOJbFR8
-X-Received: by 2002:a05:6402:1347:: with SMTP id
- y7mr45778045edw.140.1582534518449; 
- Mon, 24 Feb 2020 00:55:18 -0800 (PST)
-X-Received: by 2002:a05:6402:1347:: with SMTP id
- y7mr45778024edw.140.1582534518194; 
- Mon, 24 Feb 2020 00:55:18 -0800 (PST)
-Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id sa9sm759075ejb.28.2020.02.24.00.55.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 Feb 2020 00:55:17 -0800 (PST)
-Subject: Re: [PATCH v2 12/13] hw/arm/raspi: Add the Raspberry Pi B+ machine
-To: Niek Linnenbank <nieklinnenbank@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <20200217114533.17779-1-f4bug@amsat.org>
- <20200217114533.17779-13-f4bug@amsat.org>
- <CAPan3Wr=hxEu_XdKWEYJAZXJY4hHf774O2UfsJd0OmCHc8X0OQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <4d419e3f-9e85-c014-7cc7-b25544eb341f@redhat.com>
-Date: Mon, 24 Feb 2020 09:55:16 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
-MIME-Version: 1.0
-In-Reply-To: <CAPan3Wr=hxEu_XdKWEYJAZXJY4hHf774O2UfsJd0OmCHc8X0OQ@mail.gmail.com>
+ (envelope-from <saipava@xilinx.com>) id 1j6AA3-0002wD-PM
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 04:36:24 -0500
+Received: from mail-dm6nam10on2086.outbound.protection.outlook.com
+ ([40.107.93.86]:61888 helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <saipava@xilinx.com>)
+ id 1j6AA3-0002vL-Gt; Mon, 24 Feb 2020 04:36:23 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=F1H4csAwAOvG8JfMNxsCDufNwbeM/Mv6IX3wYmyLsxqauzmJNAMPqxl6UzMERKuGS7NvAaxKgR3c1ndziWxqZ0ljptJgaxR6KRqVKscZ8CS1stdAcx9eDl+mGO9PfydYuStHVY5jg6QtLC6w8RDtACsomjCUc840aFmukan8UUWAdtoQhY0lOkxp0tJP2KbA9m+/QnngziBvW0BSpM50E8n767ebmC87jPsqH0lNFtvuZcanNWKc6MRwEKSbcwf5R3O5ThxxT7BEtNhIpEwV5mPrNbTKRhiahSi6PTC98EwfVHECOFZJW0O3OA5hxcnavPTeCBgqD0Nqs4TAWAA/lQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=mE1F+tEzjJPCjd6egndwVlbSHt7tDekBeaUTbsGSbsU=;
+ b=i4vpE/jo5aIyIsqsqmxy+uUds7GyGrP27QEp+cMEH0emaMfrZSAOT7nvJPnVLIMGJiJjvtByuESKzY4WKqZIl1z2hzYl7HLQAjmMnttO/sU2ufDIAJMuT96YILutgonUycsFlBCu0qN945krlvvm4abjcoJ2bJq9gQJBSuuLxi7y6qYkfDmho3+cb2FA2rkTNA8702vDRJOtwW+StCwEvzcfldD5YEjA23L2++iX1XD1k0w1Wg7G/YvJKJ3fCBhhafNT7yEiOxvx0DimXKejejIadMjiYsoZpGkok/ggqiKaIhNnLwGqHHKFH3n/V0HaVP5fWDASWhi7IWRzg08ukw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=xilinx.com; dmarc=pass action=none header.from=xilinx.com;
+ dkim=pass header.d=xilinx.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=mE1F+tEzjJPCjd6egndwVlbSHt7tDekBeaUTbsGSbsU=;
+ b=Z3uosDBXO3cCSYM/7tDb0zQNSEL7La3cIOH3A7gxpgmSc2fGUCOABko+kmSgkiuoHhT7YFMwgpyJWF59tKaBu0jc2bHXDRPOI/IRxnZi/QALFIIfDpA4sQKh2c/yGGWi+PMM1drVS3TtMzXua5KpQ7xPQbARZDLa8ZAqzBRZxdk=
+Received: from MN2PR02MB5935.namprd02.prod.outlook.com (2603:10b6:208:111::23)
+ by MN2PR02MB6094.namprd02.prod.outlook.com (2603:10b6:208:1b7::23)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2750.17; Mon, 24 Feb
+ 2020 09:36:19 +0000
+Received: from MN2PR02MB5935.namprd02.prod.outlook.com
+ ([fe80::7161:a3a3:c491:10cd]) by MN2PR02MB5935.namprd02.prod.outlook.com
+ ([fe80::7161:a3a3:c491:10cd%4]) with mapi id 15.20.2750.021; Mon, 24 Feb 2020
+ 09:36:19 +0000
+From: Sai Pavan Boddu <saipava@xilinx.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: RE: [PATCH v2 1/3] arm_gic: Mask the un-supported priority bits
+Thread-Topic: [PATCH v2 1/3] arm_gic: Mask the un-supported priority bits
+Thread-Index: AQHV6MvW5OVOjUky5kS8GDicr+iv86gqGXvQ
+Date: Mon, 24 Feb 2020 09:36:19 +0000
+Message-ID: <MN2PR02MB5935A5AFB306C8B5D513CBD2CAEC0@MN2PR02MB5935.namprd02.prod.outlook.com>
+References: <1582270927-2568-1-git-send-email-sai.pavan.boddu@xilinx.com>
+ <1582270927-2568-2-git-send-email-sai.pavan.boddu@xilinx.com>
+ <CAFEAcA-NYkaQuJq=0Ft7j0XEPqJQz=G=wwKTWTxdbCmSRUh6uA@mail.gmail.com>
+In-Reply-To: <CAFEAcA-NYkaQuJq=0Ft7j0XEPqJQz=G=wwKTWTxdbCmSRUh6uA@mail.gmail.com>
+Accept-Language: en-US
 Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+X-MS-Has-Attach: 
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=saipava@xilinx.com; 
+x-originating-ip: [149.199.50.133]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: a5577e2f-71fe-49cf-f720-08d7b90d00e5
+x-ms-traffictypediagnostic: MN2PR02MB6094:
+x-microsoft-antispam-prvs: <MN2PR02MB6094902B1D0D61F05DB88927CAEC0@MN2PR02MB6094.namprd02.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:2958;
+x-forefront-prvs: 032334F434
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(4636009)(346002)(376002)(366004)(396003)(39860400002)(136003)(199004)(189003)(33656002)(55016002)(71200400001)(478600001)(66446008)(76116006)(64756008)(66556008)(66476007)(66946007)(6916009)(7696005)(9686003)(86362001)(5660300002)(2906002)(52536014)(316002)(8936002)(53546011)(54906003)(26005)(6506007)(186003)(4326008)(81166006)(81156014)(8676002);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR02MB6094;
+ H:MN2PR02MB5935.namprd02.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: xilinx.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: lCxcuqIPZ6kz4ABpCV1sfOMiFvH1dIdMp47sh3UTFqfEpf82s3LDbuhBWrGnfkvkFlvLWQs4laJ4tFmHu5nPI9882/at6fOdPIqViFE8p7TfcWjTvrL+nesXtMiE51NyZhGTu6WbFIrUpii2o+9tHTg+zHkzpbNl9zx9pPgSYwaKFUaSh8owKZahZvfXS02cFdRBbQy8ovOKaPMbPaq+S7cMTTybm8ho/97+LHnByZmQ6geklP9wCDnhq5++nZsBGHeNUwXJ6LEro57hhrROLK8qfvos8OSA+w2x+4hAYNxxCADv7JzbE6ilBthOCufr5K6Wrwl+Gn0XImaq7QySPWneZU4EMdKNcNovdPadWgoCR0ZqjIn6wmYXdlioPF9AnnX46Ze5ojWAZBbSN0UFvx6OVt12p6pV8gHkxZlVsX/F50h94eODzIIyJXGFe7oQ
+x-ms-exchange-antispam-messagedata: 8YRAD0OVPdIYDnDvjZUXkKqbvGgoTFsudTUv7od9H7FhjFX9F9arGMx74mawJFASRsAbgZoFPl2rf9MjD6G3musjRbrdI5+1Iwf+TdNThp1LfXp/bN0W1c/UZCrxVVTRmricQGspqkLaRJueUQFwaQ==
+x-ms-exchange-transport-forked: True
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a5577e2f-71fe-49cf-f720-08d7b90d00e5
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Feb 2020 09:36:19.4650 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 2mi4Q7b8LqdQii+3o8mhY5iU1n4/b1pBFRqnr90RsmV6Lqie2PgOfrQbgCIAnbs0riGZBL754Er6jUZiKMvJbQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR02MB6094
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 40.107.93.86
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -129,193 +142,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- Luc Michel <luc.michel@greensocs.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Anthony Liguori <anthony@codemonkey.ws>,
+ =?utf-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H1mS6HTBpmcP
+X-TUID: /P0zkncHIo9J
 
-On 2/22/20 11:19 PM, Niek Linnenbank wrote:
-> Hey Philippe,
->=20
-> Very nice to see that the Raspberry 1 will be supported again, thanks=20
-> for contributing this!
->=20
-> I tried to bring up the machine using raspbian 2019-09-26. It ran=20
-> throught the early kernel initialisation
-> but for me it gets stuck at this point:
->=20
-> ./arm-softmmu/qemu-system-arm -M raspi1b -kernel=20
-> $HOME/raspi/boot/kernel.img -append 'printk.time=3D0=20
-> earlycon=3Dpl011,0x20201000 console=3DttyAMA0 rootwait root=3D/dev/mmcblk=
-0p2' \
-> -dtb $HOME/raspi/boot/bcm2708-rpi-b-plus.dtb -m 512 -sd=20
-> $HOME/raspi/2019-09-26-raspbian-buster-lite.img -serial stdio -s
->=20
-> [ =C2=A0 =C2=A00.000000] Booting Linux on physical CPU 0x0
-> [ =C2=A0 =C2=A00.000000] Linux version 4.19.75+ (dom@buildbot) (gcc versi=
-on 4.9.3=20
-> (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1270 Tue Sep 24=20
-> 18:38:54 BST 2019
-> [ =C2=A0 =C2=A00.000000] CPU: ARMv6-compatible processor [410fb767] revis=
-ion 7=20
-> (ARMv7), cr=3D00c5387d
-> [ =C2=A0 =C2=A00.000000] CPU: VIPT aliasing data cache, unknown instructi=
-on cache
-> [ =C2=A0 =C2=A00.000000] OF: fdt: Machine model: Raspberry Pi Model B+
-> [ =C2=A0 =C2=A00.000000] earlycon: pl11 at MMIO 0x20201000 (options '')
-> [ =C2=A0 =C2=A00.000000] bootconsole [pl11] enabled
-> [ =C2=A0 =C2=A00.000000] Memory policy: Data cache writeback
-> [ =C2=A0 =C2=A00.000000] cma: Reserved 8 MiB at 0x1b800000
-> [ =C2=A0 =C2=A00.000000] random: get_random_bytes called from=20
-> start_kernel+0x8c/0x49c with crng_init=3D0
-> [ =C2=A0 =C2=A00.000000] Built 1 zonelists, mobility grouping on.=C2=A0 T=
-otal pages: 113680
-> [ =C2=A0 =C2=A00.000000] Kernel command line: printk.time=3D0=20
-> earlycon=3Dpl011,0x20201000 console=3DttyAMA0 rootwait root=3D/dev/mmcblk=
-0p2
-> Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
-> Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
-> Memory: 434380K/458752K available (6973K kernel code, 635K rwdata, 2080K=
-=20
-> rodata, 464K init, 797K bss, 16180K reserved, 8192K cma-reserved)
-> Virtual kernel memory layout:
->  =C2=A0 =C2=A0 vector =C2=A0: 0xffff0000 - 0xffff1000 =C2=A0 ( =C2=A0 4 k=
-B)
->  =C2=A0 =C2=A0 fixmap =C2=A0: 0xffc00000 - 0xfff00000 =C2=A0 (3072 kB)
->  =C2=A0 =C2=A0 vmalloc : 0xdc800000 - 0xff800000 =C2=A0 ( 560 MB)
->  =C2=A0 =C2=A0 lowmem =C2=A0: 0xc0000000 - 0xdc000000 =C2=A0 ( 448 MB)
->  =C2=A0 =C2=A0 modules : 0xbf000000 - 0xc0000000 =C2=A0 ( =C2=A016 MB)
->  =C2=A0 =C2=A0 =C2=A0 .text : 0x(ptrval) - 0x(ptrval) =C2=A0 (6975 kB)
->  =C2=A0 =C2=A0 =C2=A0 .init : 0x(ptrval) - 0x(ptrval) =C2=A0 ( 464 kB)
->  =C2=A0 =C2=A0 =C2=A0 .data : 0x(ptrval) - 0x(ptrval) =C2=A0 ( 636 kB)
->  =C2=A0 =C2=A0 =C2=A0 =C2=A0.bss : 0x(ptrval) - 0x(ptrval) =C2=A0 ( 798 k=
-B)
-> SLUB: HWalign=3D32, Order=3D0-3, MinObjects=3D0, CPUs=3D1, Nodes=3D1
-> ftrace: allocating 25197 entries in 74 pages
-> NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
-> sched_clock: 32 bits at 1000kHz, resolution 1000ns, wraps every=20
-> 2147483647500ns
-> clocksource: timer: mask: 0xffffffff max_cycles: 0xffffffff,=20
-> max_idle_ns: 1911260446275 ns
-> bcm2835: system timer (irq =3D 27)
-> Console: colour dummy device 80x30
->=20
-> Maybe it should switch to the graphical console here, but I dont see the=
-=20
-> boot splash logo either (when using -stdio instead of -nographic).
-> With -M raspi2 and -dtb bcm2709-rpi-2-b.dtb the same raspbian image can=
-=20
-> fully boot to the login console.
-
-Argh this is because I split this of a bigger series and didn't included=20
-changes related to the GPU 'properties', sorry.
-
->=20
-> Regards,
-> Niek
->=20
->=20
->=20
-> On Mon, Feb 17, 2020 at 12:51 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat=
-.org=20
-> <mailto:f4bug@amsat.org>> wrote:
->=20
->      =C2=A0 $ qemu-system-arm -M raspi1b -serial stdio \
->      =C2=A0 =C2=A0 =C2=A0 -kernel raspberrypi/firmware/boot/kernel.img \
->      =C2=A0 =C2=A0 =C2=A0 -dtb raspberrypi/firmware/boot/bcm2708-rpi-b.dt=
-b \
->      =C2=A0 =C2=A0 =C2=A0 -append 'printk.time=3D0 earlycon=3Dpl011,0x202=
-01000 console=3DttyAMA0'
->      =C2=A0 [=C2=A0 =C2=A0 0.000000] Booting Linux on physical CPU 0x0
->      =C2=A0 [=C2=A0 =C2=A0 0.000000] Linux version 4.19.69+ (dom@buildbot=
-) (gcc version
->     4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1261 Tue Sep
->     3 20:21:01 BST 2019
->      =C2=A0 [=C2=A0 =C2=A0 0.000000] CPU: ARMv6-compatible processor [410=
-fb767]
->     revision 7 (ARMv7), cr=3D00c5387d
->      =C2=A0 [=C2=A0 =C2=A0 0.000000] CPU: VIPT aliasing data cache, unkno=
-wn instruction
->     cache
->      =C2=A0 [=C2=A0 =C2=A0 0.000000] OF: fdt: Machine model: Raspberry Pi=
- Model B
->      =C2=A0 [=C2=A0 =C2=A0 0.000000] earlycon: pl11 at MMIO 0x20201000 (o=
-ptions '')
->      =C2=A0 [=C2=A0 =C2=A0 0.000000] bootconsole [pl11] enabled
->      =C2=A0 [=C2=A0 =C2=A0 0.000000] Memory policy: Data cache writeback
->      =C2=A0 [=C2=A0 =C2=A0 0.000000] cma: Reserved 8 MiB at 0x1b800000
->      =C2=A0 [=C2=A0 =C2=A0 0.000000] random: get_random_bytes called from
->     start_kernel+0x8c/0x49c with crng_init=3D0
->      =C2=A0 [=C2=A0 =C2=A0 0.000000] Built 1 zonelists, mobility grouping=
- on.=C2=A0 Total
->     pages: 113680
->      =C2=A0 [=C2=A0 =C2=A0 0.000000] Kernel command line: printk.time=3D0
->     earlycon=3Dpl011,0x20201000 console=3DttyAMA0
->      =C2=A0 Dentry cache hash table entries: 65536 (order: 6, 262144 byte=
-s)
->      =C2=A0 Inode-cache hash table entries: 32768 (order: 5, 131072 bytes=
-)
->      =C2=A0 Memory: 434380K/458752K available (6971K kernel code, 635K
->     rwdata, 2080K rodata, 464K init, 797K bss, 16180K reserved, 8192K
->     cma-reserved)
->      =C2=A0 ...
->=20
->     Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org
->     <mailto:f4bug@amsat.org>>
->     ---
->      =C2=A0hw/arm/raspi.c | 13 +++++++++++++
->      =C2=A01 file changed, 13 insertions(+)
->=20
->     diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
->     index 3537a329ac..2d9f4e3085 100644
->     --- a/hw/arm/raspi.c
->     +++ b/hw/arm/raspi.c
->     @@ -324,6 +324,15 @@ static void
->     raspi_machine_class_common_init(MachineClass *mc,
->      =C2=A0 =C2=A0 =C2=A0mc->default_ram_size =3D board_ram_size(board_re=
-v);
->      =C2=A0};
->=20
->     +static void raspi1b_machine_class_init(ObjectClass *oc, void *data)
->     +{
->     +=C2=A0 =C2=A0 MachineClass *mc =3D MACHINE_CLASS(oc);
->     +=C2=A0 =C2=A0 RaspiMachineClass *rmc =3D RASPI_MACHINE_CLASS(oc);
->     +
->     +=C2=A0 =C2=A0 rmc->board_rev =3D 0x900032;
->     +=C2=A0 =C2=A0 raspi_machine_class_common_init(mc, rmc->board_rev);
->     +};
->     +
->      =C2=A0static void raspi2b_machine_class_init(ObjectClass *oc, void *=
-data)
->      =C2=A0{
->      =C2=A0 =C2=A0 =C2=A0MachineClass *mc =3D MACHINE_CLASS(oc);
->     @@ -348,6 +357,10 @@ static void
->     raspi3b_machine_class_init(ObjectClass *oc, void *data)
->=20
->      =C2=A0static const TypeInfo raspi_machine_types[] =3D {
->      =C2=A0 =C2=A0 =C2=A0{
->     +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0=3D MACHINE_TYPE_NAME("raspi1b"),
->     +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0=3D TYPE_RASPI_MACHINE,
->     +=C2=A0 =C2=A0 =C2=A0 =C2=A0 .class_init=C2=A0 =C2=A0 =C2=A0=3D raspi=
-1b_machine_class_init,
->     +=C2=A0 =C2=A0 }, {
->      =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0=3D MACHINE_TYPE_NAME("raspi2b"),
->      =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0=3D TYPE_RASPI_MACHINE,
->      =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.class_init=C2=A0 =C2=A0 =C2=A0=3D=
- raspi2b_machine_class_init,
->     --=20
->     2.21.1
->=20
->=20
->=20
->=20
-> --=20
-> Niek Linnenbank
->=20
-
+SGkgUGV0ZXIsDQoNCldpbGwgc2VuZCBWMyBmb3IgYmVsb3cgY29tbWVudHMuDQpJbiB2MiBJIG1h
+eSBoYXZlIGNvbmZ1c2VkIHdpdGggZnVuY3Rpb25hbGl0eSBvZiBncm91cCBwcmlvcml0eSBpbnRl
+cnJ1cHQgYml0cy4gTm93IHRoaW5ncyBsb29rIGNsZWFyLiBUaGFua3MuDQoNClJlZ2FyZHMsDQpT
+YWkgUGF2YW4NCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQZXRlciBN
+YXlkZWxsIDxwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc+DQo+IFNlbnQ6IEZyaWRheSwgRmVicnVh
+cnkgMjEsIDIwMjAgOTowMCBQTQ0KPiBUbzogU2FpIFBhdmFuIEJvZGR1IDxzYWlwYXZhQHhpbGlu
+eC5jb20+DQo+IENjOiBFZGdhciBFIC4gSWdsZXNpYXMgPGVkZ2FyLmlnbGVzaWFzQGdtYWlsLmNv
+bT47IEFsaXN0YWlyIEZyYW5jaXMNCj4gPGFsaXN0YWlyQGFsaXN0YWlyMjMubWU+OyBBbnRob255
+IExpZ3VvcmkgPGFudGhvbnlAY29kZW1vbmtleS53cz47DQo+IEFuZHJlYXMgRsOkcmJlciA8YWZh
+ZXJiZXJAc3VzZS5kZT47IHFlbXUtYXJtIDxxZW11LWFybUBub25nbnUub3JnPjsNCj4gUUVNVSBE
+ZXZlbG9wZXJzIDxxZW11LWRldmVsQG5vbmdudS5vcmc+DQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0gg
+djIgMS8zXSBhcm1fZ2ljOiBNYXNrIHRoZSB1bi1zdXBwb3J0ZWQgcHJpb3JpdHkgYml0cw0KPiAN
+Cj4gT24gRnJpLCAyMSBGZWIgMjAyMCBhdCAwNzo0NiwgU2FpIFBhdmFuIEJvZGR1DQo+IDxzYWku
+cGF2YW4uYm9kZHVAeGlsaW54LmNvbT4gd3JvdGU6DQo+ID4NCj4gPiBQcmlvcml0eSBiaXRzIGlt
+cGxlbWVudGVkIGluIGFybS1naWMgY2FuIGJlIDggdG8gNCwgdW4taW1wbGVtZW50ZWQNCj4gPiBi
+aXRzIGFyZSByZWFkIGFzIHplcm9zKFJBWikuDQo+ID4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBTYWkg
+UGF2YW4gQm9kZHUgPHNhaS5wYXZhbi5ib2RkdUB4aWxpbnguY29tPg0KPiA+IC0tLQ0KPiA+ICBo
+dy9pbnRjL2FybV9naWMuYyAgICAgICAgICAgICAgICB8IDI2ICsrKysrKysrKysrKysrKysrKysr
+KysrKy0tDQo+ID4gIGh3L2ludGMvYXJtX2dpY19jb21tb24uYyAgICAgICAgIHwgIDEgKw0KPiA+
+ICBpbmNsdWRlL2h3L2ludGMvYXJtX2dpY19jb21tb24uaCB8ICAxICsNCj4gPiAgMyBmaWxlcyBj
+aGFuZ2VkLCAyNiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQ0KPiA+DQo+ID4gZGlmZiAt
+LWdpdCBhL2h3L2ludGMvYXJtX2dpYy5jIGIvaHcvaW50Yy9hcm1fZ2ljLmMgaW5kZXgNCj4gPiAx
+ZDdkYTdiLi5kZWM4NzY3IDEwMDY0NA0KPiA+IC0tLSBhL2h3L2ludGMvYXJtX2dpYy5jDQo+ID4g
+KysrIGIvaHcvaW50Yy9hcm1fZ2ljLmMNCj4gPiBAQCAtNjQxLDYgKzY0MSwyMyBAQCB1aW50MzJf
+dCBnaWNfYWNrbm93bGVkZ2VfaXJxKEdJQ1N0YXRlICpzLCBpbnQNCj4gY3B1LCBNZW1UeEF0dHJz
+IGF0dHJzKQ0KPiA+ICAgICAgcmV0dXJuIHJldDsNCj4gPiAgfQ0KPiA+DQo+ID4gK3N0YXRpYyB1
+aW50MzJfdCBnaWNfZnVsbHByaW9fbWFzayhHSUNTdGF0ZSAqcywgaW50IGNwdSkgew0KPiA+ICsg
+ICAgLyoNCj4gPiArICAgICAqIFJldHVybiBhIG1hc2sgd29yZCB3aGljaCBjbGVhcnMgdGhlIHVu
+aW1wbGVtZW50ZWQgcHJpb3JpdHkNCj4gPiArICAgICAqIGJpdHMgZnJvbSBhIHByaW9yaXR5IHZh
+bHVlIGZvciBhbiBpbnRlcnJ1cHQuIChOb3QgdG8gYmUNCj4gPiArICAgICAqIGNvbmZ1c2VkIHdp
+dGggdGhlIGdyb3VwIHByaW9yaXR5LCB3aG9zZSBtYXNrIGRlcGVuZHMgb24gQlBSLikNCj4gPiAr
+ICAgICAqLw0KPiA+ICsgICAgaW50IHVuaW1wQml0czsNCj4gPiArDQo+ID4gKyAgICBpZiAoZ2lj
+X2lzX3ZjcHUoY3B1KSkgew0KPiA+ICsgICAgICAgIHVuaW1wQml0cyA9IEdJQ19WSVJUX01BWF9H
+Uk9VUF9QUklPX0JJVFM7DQo+ID4gKyAgICB9IGVsc2Ugew0KPiA+ICsgICAgICAgIHVuaW1wQml0
+cyA9IDggLSBzLT5uX3ByaW9fYml0czsNCj4gDQo+IFRoaXMgaXNuJ3QgcmlnaHQ7IEdJQ19WSVJU
+X01BWF9HUk9VUF9QUklPX0JJVFMgc2hvdWxkIGJlIGhhbmRsZWQgdGhlDQo+IHNhbWUgd2F5IGFz
+IHMtPm5fcHJpb19iaXRzLiBUaGUgZXhwcmVzc2lvbiBJIHN1Z2dlc3RlZCBpbiBteSBjb21tZW50
+IG9uDQo+IHlvdXIgdjEgc2hvdWxkIHdvcms6DQo+IA0KPiAgICAgaWYgKGdpY19pc192Y3B1KGNw
+dSkpIHsNCj4gICAgICAgICBwcmliaXRzID0gR0lDX1ZJUlRfTUFYX0dST1VQX1BSSU9fQklUUzsN
+Cj4gICAgIH0gZWxzZSB7DQo+ICAgICAgICAgcHJpYml0cyA9IHMtPm5fcHJpb19iaXRzOw0KPiAg
+ICAgfQ0KPiAgICAgcmV0dXJuIH4wVSA8PCAoOCAtIHMtPm5fcHJpb19iaXRzKTsNCj4gDQo+ID4g
+KyAgICB9DQo+ID4gKyAgICByZXR1cm4gfjBVIDw8IHVuaW1wQml0czsNCj4gPiArfQ0KPiA+ICsN
+Cj4gPiAgdm9pZCBnaWNfZGlzdF9zZXRfcHJpb3JpdHkoR0lDU3RhdGUgKnMsIGludCBjcHUsIGlu
+dCBpcnEsIHVpbnQ4X3QgdmFsLA0KPiA+ICAgICAgICAgICAgICAgICAgICAgICAgTWVtVHhBdHRy
+cyBhdHRycykgIHsNCj4gDQo+IA0KPiBZb3Ugc2VlbSB0byBoYXZlIGxvc3QgdGhlIHBhcnQgb2Yg
+dGhlIHBhdGNoIHdoaWNoIGFwcGxpZXMgdGhlIG1hc2sgaW4NCj4gZ2ljX2Rpc3Rfc2V0X3ByaW9y
+aXR5KCkuIElmIHRoZSBHSUMgb25seSBoYXMgNSBiaXRzIG9mIHByaW9yaXR5IHdlIHNob3VsZCBu
+b3QNCj4gYWxsb3cgdGhlIGd1ZXN0IHRvIHNldCBtb3JlIHRoYW4gdGhhdC4NCj4gDQo+ID4gQEAg
+LTY2OSw3ICs2ODYsNyBAQCBzdGF0aWMgdWludDMyX3QgZ2ljX2Rpc3RfZ2V0X3ByaW9yaXR5KEdJ
+Q1N0YXRlICpzLA0KPiBpbnQgY3B1LCBpbnQgaXJxLA0KPiA+ICAgICAgICAgIH0NCj4gPiAgICAg
+ICAgICBwcmlvID0gKHByaW8gPDwgMSkgJiAweGZmOyAvKiBOb24tc2VjdXJlIHZpZXcgKi8NCj4g
+PiAgICAgIH0NCj4gPiAtICAgIHJldHVybiBwcmlvOw0KPiA+ICsgICAgcmV0dXJuIHByaW8gJiBn
+aWNfZnVsbHByaW9fbWFzayhzLCBjcHUpOw0KPiA+ICB9DQo+ID4NCj4gPiAgc3RhdGljIHZvaWQg
+Z2ljX3NldF9wcmlvcml0eV9tYXNrKEdJQ1N0YXRlICpzLCBpbnQgY3B1LCB1aW50OF90DQo+ID4g
+cG1hc2ssIEBAIC02ODQsNyArNzAxLDcgQEAgc3RhdGljIHZvaWQgZ2ljX3NldF9wcmlvcml0eV9t
+YXNrKEdJQ1N0YXRlDQo+ICpzLCBpbnQgY3B1LCB1aW50OF90IHBtYXNrLA0KPiA+ICAgICAgICAg
+ICAgICByZXR1cm47DQo+ID4gICAgICAgICAgfQ0KPiA+ICAgICAgfQ0KPiA+IC0gICAgcy0+cHJp
+b3JpdHlfbWFza1tjcHVdID0gcG1hc2s7DQo+ID4gKyAgICBzLT5wcmlvcml0eV9tYXNrW2NwdV0g
+PSBwbWFzayAmIGdpY19mdWxscHJpb19tYXNrKHMsIGNwdSk7DQo+ID4gIH0NCj4gPg0KPiA+ICBz
+dGF0aWMgdWludDMyX3QgZ2ljX2dldF9wcmlvcml0eV9tYXNrKEdJQ1N0YXRlICpzLCBpbnQgY3B1
+LA0KPiA+IE1lbVR4QXR0cnMgYXR0cnMpIEBAIC0yMDU1LDYgKzIwNzIsMTEgQEAgc3RhdGljIHZv
+aWQNCj4gYXJtX2dpY19yZWFsaXplKERldmljZVN0YXRlICpkZXYsIEVycm9yICoqZXJycCkNCj4g
+PiAgICAgICAgICByZXR1cm47DQo+ID4gICAgICB9DQo+ID4NCj4gPiArICAgIGlmIChzLT5uX3By
+aW9fYml0cyA+IDgpIHsNCj4gPiArICAgICAgICBlcnJvcl9zZXRnKGVycnAsICJudW0tcHJpb3Jp
+dHktYml0cyBjYW5ub3QgYmUgZ3JlYXRlciB0aGFuIDgiKTsNCj4gPiArICAgICAgICByZXR1cm47
+DQo+ID4gKyAgICB9DQo+IA0KPiBZb3UgbmVlZCB0byBhbHNvIGNoZWNrIHRoYXQgdGhlIHZhbHVl
+IGlzIGF0IGxlYXN0IGFzIGxhcmdlIGFzIHRoZSBsb3dlc3QNCj4gcGVybWl0dGVkIHZhbHVlLCBh
+cyBJIHN1Z2dlc3RlZCBpbiBteSB2MSBjb21tZW50Lg0KPiANCj4gdGhhbmtzDQo+IC0tIFBNTQ0K

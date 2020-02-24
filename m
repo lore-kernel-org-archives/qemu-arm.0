@@ -1,74 +1,74 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp552221lfg;
-        Mon, 24 Feb 2020 09:04:14 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwgkOr3e0AL5iH4Wpvwe1knyCcWYpD5fNlzaxfEFNSSi4GaFGWXouxiad+x4yr+BTFDIMZF
-X-Received: by 2002:a0c:e014:: with SMTP id j20mr47392064qvk.165.1582563854119;
-        Mon, 24 Feb 2020 09:04:14 -0800 (PST)
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp552853lfg;
+        Mon, 24 Feb 2020 09:04:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwOjXkjTOxpnaedx0/M9KCNnlpjVQrmmgmEXNhPVW5KgyNKvAH4MFBAXG2kdzt2yM5/W13M
+X-Received: by 2002:aed:3462:: with SMTP id w89mr45976893qtd.159.1582563888506;
+        Mon, 24 Feb 2020 09:04:48 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u3si5372871qvn.179.2020.02.24.09.04.13
+        by mx.google.com with ESMTPS id n1si5332498qvi.18.2020.02.24.09.04.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 09:04:14 -0800 (PST)
+        Mon, 24 Feb 2020 09:04:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=ETQQeoQw;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=3bH2GieB;
        arc=fail (body hash mismatch);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39530 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39552 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6H9R-0003Ae-B3
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 12:04:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46784)
+	id 1j6H9z-0004Fn-Qc
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 12:04:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46765)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1j6H8Y-00036l-O7
+ (envelope-from <damien.hedde@greensocs.com>) id 1j6H8X-00035q-CA
  for qemu-arm@nongnu.org; Mon, 24 Feb 2020 12:03:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1j6H8U-0005Xb-4B
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 12:03:17 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:46576)
+ (envelope-from <damien.hedde@greensocs.com>) id 1j6H8T-0005Wp-Di
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 12:03:16 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:46534)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1j6H8T-0005WB-Rb; Mon, 24 Feb 2020 12:03:14 -0500
+ id 1j6H8T-0005VW-1K; Mon, 24 Feb 2020 12:03:13 -0500
 Received: from crumble.bar.greensocs.com (crumble.bar.greensocs.com
  [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPS id 6E17E96F52;
- Mon, 24 Feb 2020 17:03:12 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPS id D821396F50;
+ Mon, 24 Feb 2020 17:03:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1582563792;
+ s=mail; t=1582563791;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=psX42qQFxe7QgtREjOKTEOTKymNiEQ5rJKw6RGegWeI=;
- b=ETQQeoQwTcslHoJJi21QqeU+WXgKICQrb5jmETdSUjYhwrWun0nATNsRnaq43DFShEeYTk
- iNjUqBYFkVha06bVMcA54MQJ/9pc6uvHOQgOuOVYWcSV+4kij9wwzEmao3LrVcgUOkKjtX
- E+2TP86LPWaSoSPzNcxbJEznYMFrWac=
+ bh=v4G+xlL/fUt5DMmB/QGEqSlK0ypIhsRcgyJCMOphg+8=;
+ b=3bH2GieBoJbrit2fN9HPDpMhgtByLj9BeUKwPyT6ZVpMbjwp1hGFsggPH34Ynd4/kVCiWc
+ GWfjEWikr3+hxkHyCV95mjBfeQ9UzlRh3/W7RlUc+1OOuR0lR35+OZXxln1nXSpV9+ya3r
+ oWwPA1rrZnTI7fHnfnDBdIPaRE9U1l8=
 From: Damien Hedde <damien.hedde@greensocs.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v7 4/9] qdev-clock: introduce an init array to ease the device
- construction
-Date: Mon, 24 Feb 2020 18:02:56 +0100
-Message-Id: <20200224170301.246623-5-damien.hedde@greensocs.com>
+Subject: [PATCH v7 2/9] hw/core/clock-vmstate: define a vmstate entry for
+ clock state
+Date: Mon, 24 Feb 2020 18:02:54 +0100
+Message-Id: <20200224170301.246623-3-damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200224170301.246623-1-damien.hedde@greensocs.com>
 References: <20200224170301.246623-1-damien.hedde@greensocs.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1582563792;
+ s=mail; t=1582563791;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=psX42qQFxe7QgtREjOKTEOTKymNiEQ5rJKw6RGegWeI=;
- b=xksnS0ZHC+nFUTL5rK+8G9iTa6cz2NiSTu5A+ecmxzlDPnihNQFJk1Lwp76cpTDa3ikeaI
- ZbqIiCTkSMVGgdmePBgNgvl5WawLvWMHLHTmNQ/7fiCLB4N+7eBn4EJroWySRM+hMpV/t7
- hsQXUBZWPibbLhpK4AoMopvUvE/8XY8=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582563792; a=rsa-sha256; cv=none;
- b=i7MiPG1/Xfs4XjAkZ2eT513SgWA+ykV6gdRgf5xOzjQoz3noGKdw8Wf2xByVjoLsPiYA6v
- GajofcP0baoerIcghSmk7++/TmjSGCp5dmrLj+Qm6Ey7yabfg1QAp6Ho6uFe/pgM8Ew1hi
- zW2gg5C/ms+YkAxwtXdFBkW7OOC6e4M=
+ bh=v4G+xlL/fUt5DMmB/QGEqSlK0ypIhsRcgyJCMOphg+8=;
+ b=2NkdHeYpnOQZx1QmoRPG7Ecs1RNa6DBet+LqkYhvqYt4daz78AYZGggHl8l1T5eX6qcEM/
+ /mtkH2rn3e7lX4McX8JfudEOM2/dmtqBP9glsZdpan/YuuN2/uhnExVfpJDPOE7OMyb8qg
+ /83vI7Gp8zosj0m+FUU8aE49cIdJ8os=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582563791; a=rsa-sha256; cv=none;
+ b=j/+4CaaPx/vB8f0nqG2s2v1DQSEpWmYxwZofgVMZ/3mYz1GRv6kVA1NYp4/0w9X3u4+qGe
+ dr8X94dginSYUGov/ESOkvVBBjkh/PgeXi/6BusKyJ8PpNCfC7KrPGZDs33nByDVxu1ew/
+ bf5/yajH6DjsCow8is4s8PLJsITk6XQ=
 ARC-Authentication-Results: i=1;
 	beetle.greensocs.com;
 	none
@@ -92,135 +92,86 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, peter.maydell@linaro.org,
  marcandre.lureau@redhat.com, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b7KPmQWE9X1V
-
-Introduce a function and macro helpers to setup several clocks
-in a device from a static array description.
-
-An element of the array describes the clock (name and direction) as
-well as the related callback and an optional offset to store the
-created object pointer in the device state structure.
-
-The array must be terminated by a special element QDEV_CLOCK_END.
-
-This is based on the original work of Frederic Konrad.
+X-TUID: i/1yiLCGQyAr
 
 Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 --
 
-v7:
- + update ClockIn/Out types
- + remove the QDEV_CLOCK_IN_NOFIELD macro
- + remove leading underscores in macro arguments (Peter)
- + updated some comments (Peter)
- + removed trivial asserts (Peter)
+v7: remove leading underscores in macro args
 ---
- include/hw/qdev-clock.h | 55 +++++++++++++++++++++++++++++++++++++++++
- hw/core/qdev-clock.c    | 17 +++++++++++++
- 2 files changed, 72 insertions(+)
+ include/hw/clock.h      |  9 +++++++++
+ hw/core/clock-vmstate.c | 25 +++++++++++++++++++++++++
+ hw/core/Makefile.objs   |  1 +
+ 3 files changed, 35 insertions(+)
+ create mode 100644 hw/core/clock-vmstate.c
 
-diff --git a/include/hw/qdev-clock.h b/include/hw/qdev-clock.h
-index 899a95ca6a..604b25fb85 100644
---- a/include/hw/qdev-clock.h
-+++ b/include/hw/qdev-clock.h
-@@ -102,4 +102,59 @@ Clock *qdev_alias_clock(DeviceState *dev, const char=
- *name,
-  */
- void qdev_finalize_clocklist(DeviceState *dev);
+diff --git a/include/hw/clock.h b/include/hw/clock.h
+index 30ac9a9946..8c191751a1 100644
+--- a/include/hw/clock.h
++++ b/include/hw/clock.h
+@@ -74,6 +74,15 @@ struct Clock {
+     QLIST_ENTRY(Clock) sibling;
+ };
 =20
-+/**
-+ * ClockPortInitElem:
-+ * @name: name of the clock (can't be NULL)
-+ * @output: indicates whether the clock is input or output
-+ * @callback: for inputs, optional callback to be called on clock's upda=
-te
-+ * with device as opaque
-+ * @offset: optional offset to store the ClockIn or ClockOut pointer in =
-device
-+ * state structure (0 means unused)
++/*
++ * vmstate description entry to be added in device vmsd.
 + */
-+struct ClockPortInitElem {
-+    const char *name;
-+    bool is_output;
-+    ClockCallback *callback;
-+    size_t offset;
-+};
++extern const VMStateDescription vmstate_clock;
++#define VMSTATE_CLOCK(field, state) \
++    VMSTATE_CLOCK_V(field, state, 0)
++#define VMSTATE_CLOCK_V(field, state, version) \
++    VMSTATE_STRUCT_POINTER_V(field, state, version, vmstate_clock, Clock=
+)
 +
-+#define clock_offset_value(devstate, field) \
-+    (offsetof(devstate, field) + \
-+     type_check(Clock *, typeof_field(devstate, field)))
-+
-+#define QDEV_CLOCK(out_not_in, devstate, field, cb) { \
-+    .name =3D (stringify(field)), \
-+    .is_output =3D out_not_in, \
-+    .callback =3D cb, \
-+    .offset =3D clock_offset_value(devstate, field), \
-+}
-+
-+/**
-+ * QDEV_CLOCK_(IN|OUT):
-+ * @devstate: structure type. @dev argument of qdev_init_clocks below mu=
-st be
-+ * a pointer to that same type.
-+ * @field: a field in @_devstate (must be Clock*)
-+ * @callback: (for input only) callback (or NULL) to be called with the =
-device
-+ * state as argument
+ /**
+  * clock_setup_canonical_path:
+  * @clk: clock
+diff --git a/hw/core/clock-vmstate.c b/hw/core/clock-vmstate.c
+new file mode 100644
+index 0000000000..260b13fc2c
+--- /dev/null
++++ b/hw/core/clock-vmstate.c
+@@ -0,0 +1,25 @@
++/*
++ * Clock migration structure
 + *
-+ * The name of the clock will be derived from @field
++ * Copyright GreenSocs 2019-2020
++ *
++ * Authors:
++ *  Damien Hedde
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
++ * See the COPYING file in the top-level directory.
 + */
-+#define QDEV_CLOCK_IN(devstate, field, callback) \
-+    QDEV_CLOCK(false, devstate, field, callback)
 +
-+#define QDEV_CLOCK_OUT(devstate, field) \
-+    QDEV_CLOCK(true, devstate, field, NULL)
++#include "qemu/osdep.h"
++#include "migration/vmstate.h"
++#include "hw/clock.h"
 +
-+#define QDEV_CLOCK_END { .name =3D NULL }
-+
-+typedef struct ClockPortInitElem ClockPortInitArray[];
-+
-+/**
-+ * qdev_init_clocks:
-+ * @dev: the device to add clocks to
-+ * @clocks: a QDEV_CLOCK_END-terminated array which contains the
-+ * clocks information.
-+ */
-+void qdev_init_clocks(DeviceState *dev, const ClockPortInitArray clocks)=
-;
-+
- #endif /* QDEV_CLOCK_H */
-diff --git a/hw/core/qdev-clock.c b/hw/core/qdev-clock.c
-index 9af0159517..9b0ddca056 100644
---- a/hw/core/qdev-clock.c
-+++ b/hw/core/qdev-clock.c
-@@ -116,6 +116,23 @@ Clock *qdev_init_clock_in(DeviceState *dev, const ch=
-ar *name,
-     return ncl->clock;
- }
-=20
-+void qdev_init_clocks(DeviceState *dev, const ClockPortInitArray clocks)
-+{
-+    const struct ClockPortInitElem *elem;
-+
-+    for (elem =3D &clocks[0]; elem->name !=3D NULL; elem++) {
-+        Clock **clkp;
-+        /* offset cannot be inside the DeviceState part */
-+        assert(elem->offset > sizeof(DeviceState));
-+        clkp =3D (Clock **)(((void *) dev) + elem->offset);
-+        if (elem->is_output) {
-+            *clkp =3D qdev_init_clock_out(dev, elem->name);
-+        } else {
-+            *clkp =3D qdev_init_clock_in(dev, elem->name, elem->callback=
-, dev);
-+        }
++const VMStateDescription vmstate_clock =3D {
++    .name =3D "clock",
++    .version_id =3D 0,
++    .minimum_version_id =3D 0,
++    .fields =3D (VMStateField[]) {
++        VMSTATE_UINT64(period, Clock),
++        VMSTATE_END_OF_LIST()
 +    }
-+}
-+
- static NamedClockList *qdev_get_clocklist(DeviceState *dev, const char *=
-name)
- {
-     NamedClockList *ncl;
++};
+diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+index d7080edf89..e3d796fdd4 100644
+--- a/hw/core/Makefile.objs
++++ b/hw/core/Makefile.objs
+@@ -22,6 +22,7 @@ common-obj-$(CONFIG_SOFTMMU) +=3D null-machine.o
+ common-obj-$(CONFIG_SOFTMMU) +=3D loader.o
+ common-obj-$(CONFIG_SOFTMMU) +=3D machine-hmp-cmds.o
+ common-obj-$(CONFIG_SOFTMMU) +=3D numa.o
++common-obj-$(CONFIG_SOFTMMU) +=3D clock-vmstate.o
+ obj-$(CONFIG_SOFTMMU) +=3D machine-qmp-cmds.o
+=20
+ common-obj-$(CONFIG_EMPTY_SLOT) +=3D empty_slot.o
 --=20
 2.24.1
 

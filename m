@@ -1,97 +1,98 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp846277lfg;
-        Mon, 24 Feb 2020 14:26:39 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxb9yn4v2PcGBnzLg0QsiVxf/LT+uaFSRDdrDF5AwBLJdI/QfHAwg2BsJamfmDsOMmMUCKj
-X-Received: by 2002:a05:6214:5a4:: with SMTP id by4mr45778308qvb.248.1582583199607;
-        Mon, 24 Feb 2020 14:26:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582583199; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp846521lfg;
+        Mon, 24 Feb 2020 14:27:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxWiJfoKcz/53i0NYvJJaXxUUuL3MJkezn0y0398MubAJbEyDo8Azcn3jSAgh3Hyp5dX1Ef
+X-Received: by 2002:ae9:ebce:: with SMTP id b197mr14660268qkg.167.1582583222422;
+        Mon, 24 Feb 2020 14:27:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582583222; cv=none;
         d=google.com; s=arc-20160816;
-        b=PA7XPI4sMHAi2TltrUTrX1nZzLEf4j7Ni9Ly4egnBCbKGlkugsJauYKJUMA3HDpEKM
-         9h1qlRqCaOI4rStHaW69IAuaSFX3v8Kil3R+NLBKrl/BZkdI5w+bZpK9MrIr7eq0qf8n
-         SHxx+1A8rkIoN0PRxTmY/YDYFcLDO8VJBMbKB5R4RgepkEjixQI6h+li1oqCuXqDdFQ/
-         ccB+MTzgUkxMP8U2j8QSU2/rpDB6ZbT05ElJKREkQDReh1pJ5I5ZubeC3IDs8/wRHQqv
-         JLmxuAMLpNISi4tw3z+PiKo8fq9xm/NMvUtk2aQFxSW5h3JE0UpHMg5mfqquzuhxXMiA
-         XRPA==
+        b=rNtUGM5m9jxegqiH16XxM60q/OjFkY4gtMmkablKyVBjSKpnNZf1dZB5egSLxDoYtU
+         W0Lb6pB98+Dc1pGXhxlaArk0IvGgNye+WPLE6PKDtNOBWQ5jSyQgm7YxzhKaEvNRTS3q
+         dpmPFVm+Sk/Jn6h7oTPCuD7pgQumeTydRKqEe13Ujb5oc2RMBVuBU/UJFffQ65HqZ7ze
+         Sk6+wpIJiYt9yh9GU/FswPPCY7T3XF5cw0a/hW9lTxU3Mpga9AFovNwsBOpVb2caVYy3
+         6zuXyabpWQ5na3pQ1mX/oSTzLnAyGvhjQINRdELcVgXt6TQHDpkB7iP9sV1jXFaFQvjg
+         UekA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=04w4nAykREQYlFaDlCPkF+ClHIRvIg4T3qLIcZORCLQ=;
-        b=AXOvm1h3LoGY27ZFsTF2veGUwyFXsr5k76wzA2f6hIR9IhjHBd1ZB1EJVu32344SG+
-         AxdG0n5MkQB4HurNBrouVari6nI7M4UEsE+vQ4KWJturaH9G/7ZCG21mkfhokoRgb1sC
-         Ceo+VJgUUiJVe5JH6dGB3CZGXlIALmYHaepgtrAB04sfJz9ARJl0RkQP/Ptez78RdBl+
-         B2+ZM4r+qAMVDYKyzZ4/zuF1IlhmnRvxpykaI2q95MJc+NUUGowJNUQnhWIllztVItV0
-         cxRoI2vougrQokeuOnxJU7/Tk0/+IM4d1MBDiYXEWyTEDLnbIc8AxIRdq31lO6NurK2J
-         9BPA==
+        bh=/XrE+Up+cXUxsM0gL0c1JdFdbzGsxHOx44lIg6PgF9w=;
+        b=uW4YXzZJnGKER4Hgni+XAMMc3QVkQrAKaVZ5hEsCPisPatfqdwT8aHXLcPKv1BJsIl
+         buGvtorrjCf8OPPtrk6w2Uz1nyus1pPabee/QIWg8zDo8Z2aglV8oEaBTGx5fVBf/0DX
+         +jMQzuE6wtUsLS1o6vBV183haX1AX5eKuaRvEJvJ0EqUJdSnBArvmAZYuMkB0orLbWIv
+         Zc6INGPvxl5NBqd8chXuxepixeuFAI/kFLMtvUHGopuFQWKOnbAn/4h38QX7v/i2MdO3
+         2U2k1o/Xr+6xozGUnV/0Ch/SZPq7i7uY1DDjTUwA47ZonNsgsNs73A+xqdjxPeHLD2/E
+         lmPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RESOnh7Z;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DqnWzbNx;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k5si6859092qtf.271.2020.02.24.14.26.39
+        by mx.google.com with ESMTPS id l1si6904565qkl.340.2020.02.24.14.27.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 14:26:39 -0800 (PST)
+        Mon, 24 Feb 2020 14:27:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RESOnh7Z;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DqnWzbNx;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45264 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45278 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6MBT-0002b8-07
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 17:26:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37813)
+	id 1j6MBp-0003Dq-QH
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 17:27:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37932)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1j6M7h-0004FX-QY
- for qemu-devel@nongnu.org; Mon, 24 Feb 2020 17:22:47 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1j6M7n-0004UJ-DB
+ for qemu-devel@nongnu.org; Mon, 24 Feb 2020 17:22:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1j6M7g-0005q7-2O
- for qemu-devel@nongnu.org; Mon, 24 Feb 2020 17:22:45 -0500
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:34555)
+ (envelope-from <richard.henderson@linaro.org>) id 1j6M7m-0005u6-5l
+ for qemu-devel@nongnu.org; Mon, 24 Feb 2020 17:22:51 -0500
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:41734)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1j6M7f-0005pV-Qw
- for qemu-devel@nongnu.org; Mon, 24 Feb 2020 17:22:44 -0500
-Received: by mail-pg1-x543.google.com with SMTP id j4so5853440pgi.1
- for <qemu-devel@nongnu.org>; Mon, 24 Feb 2020 14:22:43 -0800 (PST)
+ id 1j6M7m-0005tc-0M
+ for qemu-devel@nongnu.org; Mon, 24 Feb 2020 17:22:50 -0500
+Received: by mail-pg1-x544.google.com with SMTP id 70so5836646pgf.8
+ for <qemu-devel@nongnu.org>; Mon, 24 Feb 2020 14:22:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=04w4nAykREQYlFaDlCPkF+ClHIRvIg4T3qLIcZORCLQ=;
- b=RESOnh7ZVqABL9e9EkhNypENrNTmIKFmCDKjHRkcvufJlnIaC9RFyKDoEJFf1Smggp
- ZHSp1nb9lEGqnGBLq73Y9irDfXnuXHdtMPad+XEFGkD4utjPp3p+Co1jO5R37pkxmhmY
- 1n2d2LjG7T/OGZA9V2uOoy6YC/RJLnH1kbxK8dU9UtV4rSsyANp6vNN4oEW64CdttH07
- MyIZwJbXfwT0pMB1M+uOd5dUVgFelzZBvOAMkyk7+bk0pSHvDbHE7y0lW3Gf7O7F2cbi
- MEGUhJT+kUlf0pCrO6X4bLOegZ+tHoUoO0424X1zVf7iqMrrEMvhhckceleTAZmOItfS
- ZFGw==
+ bh=/XrE+Up+cXUxsM0gL0c1JdFdbzGsxHOx44lIg6PgF9w=;
+ b=DqnWzbNxh8Dfu17ddDQn6T1OQZu7vWr0VryhkU2LOZ3wVTZveXG9VwFPACvyX+kotp
+ luzQ7dsUURqJH7TyJ2FN3f2GeTRWagyzbhLScn88M+tTqxsOWaK1MtYglgqD5fcuMBXL
+ lBt+Hfd8auzVoPlx62lOZK7HHNhECi3LWw+Wy75KwWRpex/bbKjlr6fWsG4im72D+yB0
+ Oi3hAUYfD/rG3jVK5glITd5G7LkywlFAiLTU8jPPyr6bGmRTVFEGUsyRkhlXzzyADx72
+ WBguXTUcEQFICZfq7KdmKtEE3hi8ZmfcU4lQDvo50Io5/5mI4LD/Nemrt/kbN5JfR3KP
+ zgUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=04w4nAykREQYlFaDlCPkF+ClHIRvIg4T3qLIcZORCLQ=;
- b=Uwj/q6BQPRIEttvUzaJgPSvn193ULyVgtN2itYuTY9/7FeXfzwr77zzQb5UPBNdXao
- yBsumYCi3pN6TCf3HOlvekR9gOZXjntdaE0RQ9xeLcXUxbVzuf6tE/v449ZYQwWn0gb1
- OBwE8NUg16GqpTFgHMCDANriqwGFPL5vS7goNdr8tH/toEK7oYXRTt6hcXjg6zftRyn/
- qQEP5ERYE/ZUt9bQh8UC3zMCI4qJqjSzonZHkC5KJ+oYBXMFIuua6Ao2XbeWRwlXjthG
- c40e3rwBzSlMXbG9jVRVxHLMvnQBt0SMSMAUuUu3pHfJPdp87zaKP2tPChFqIFwqP7ch
- DzdQ==
-X-Gm-Message-State: APjAAAVAYTzlDprM9c/dtm/t3Q7K7Ga8MewrJ4DBLan7irqLWHM5WQtG
- usVbj7da6Mo0y+jzrcsRov4RnCYPR2U=
-X-Received: by 2002:a65:65c8:: with SMTP id y8mr25943548pgv.36.1582582962103; 
- Mon, 24 Feb 2020 14:22:42 -0800 (PST)
+ bh=/XrE+Up+cXUxsM0gL0c1JdFdbzGsxHOx44lIg6PgF9w=;
+ b=HXuWHqOZ81acdgnMavu5KOeRrlnoLq90b33O80OZvghhX57baKDBFX7kkbkwi/6ne0
+ NKM8heEzrAXs66eCWNYp/eI6TJlmLyC6J4k+1rPj/86dEN/LO7QJZh7LSosNymWUdB7P
+ I/yX3LgZiRLyiKF23M8Wrs+1VYkxRl0SLEhIGzYmKtaE541wmaD2zY09i+i4TKadzUrI
+ PJcHaM13tUYAsbxaxTwWq++cBy5xXthOEaX3c7ZLuiPJd7CPB86aj9Sm30ibhmFnfnew
+ cwwoyNwKA5wDDBved6JskxrPsOlCiWc2OvqicyoPD5XTDGVK/jsIm0gPrGOtXZP8JayJ
+ OWlw==
+X-Gm-Message-State: APjAAAUqTsewjQUPgFQ5UfRcPN5qgpiW/n2K8yJturKROL0fGCINzvLr
+ dzrCDU5VWsgiQvy2+LU1L+7T0+nj3nE=
+X-Received: by 2002:a62:7b93:: with SMTP id
+ w141mr55183624pfc.226.1582582968607; 
+ Mon, 24 Feb 2020 14:22:48 -0800 (PST)
 Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net.
  [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id o6sm13897097pgg.37.2020.02.24.14.22.41
+ by smtp.gmail.com with ESMTPSA id o6sm13897097pgg.37.2020.02.24.14.22.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Feb 2020 14:22:41 -0800 (PST)
+ Mon, 24 Feb 2020 14:22:48 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 06/17] target/arm: Perform fpdp_v2 check first
-Date: Mon, 24 Feb 2020 14:22:21 -0800
-Message-Id: <20200224222232.13807-7-richard.henderson@linaro.org>
+Subject: [PATCH v2 11/17] target/arm: Move VLLDM and VLSTM to vfp.decode
+Date: Mon, 24 Feb 2020 14:22:26 -0800
+Message-Id: <20200224222232.13807-12-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200224222232.13807-1-richard.henderson@linaro.org>
 References: <20200224222232.13807-1-richard.henderson@linaro.org>
@@ -99,7 +100,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::543
+X-Received-From: 2607:f8b0:4864:20::544
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,390 +115,144 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fCgoaoN1sWD8
+X-TUID: jwc+UkHM5eJp
 
-Shuffle the order of the checks so that we test the ISA
-before we test anything else, such as the register arguments.
+Now that we no longer have an early check for ARM_FEATURE_VFP,
+we can use the proper ISA check in trans_VLLDM_VLSTM.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate-vfp.inc.c | 140 +++++++++++++++++----------------
- 1 file changed, 71 insertions(+), 69 deletions(-)
+v2: Fix !secure (pmm)
+---
+ target/arm/vfp.decode          |  2 ++
+ target/arm/translate-vfp.inc.c | 39 +++++++++++++++++++++++++
+ target/arm/translate.c         | 53 ++++++----------------------------
+ 3 files changed, 50 insertions(+), 44 deletions(-)
 
+diff --git a/target/arm/vfp.decode b/target/arm/vfp.decode
+index a67b3f29ee..592fe9e1e4 100644
+--- a/target/arm/vfp.decode
++++ b/target/arm/vfp.decode
+@@ -242,3 +242,5 @@ VCVT_sp_int  ---- 1110 1.11 110 s:1 .... 1010 rz:1 1.0 .... \
+              vd=%vd_sp vm=%vm_sp
+ VCVT_dp_int  ---- 1110 1.11 110 s:1 .... 1011 rz:1 1.0 .... \
+              vd=%vd_sp vm=%vm_dp
++
++VLLDM_VLSTM  1110 1100 001 l:1 rn:4 0000 1010 0000 0000
 diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
-index e94876c30c..ff30165045 100644
+index 03ba8d7aac..1964af3ea5 100644
 --- a/target/arm/translate-vfp.inc.c
 +++ b/target/arm/translate-vfp.inc.c
-@@ -200,13 +200,13 @@ static bool trans_VSEL(DisasContext *s, arg_VSEL *a)
-         return false;
-     }
- 
--    /* UNDEF accesses to D16-D31 if they don't exist */
--    if (dp && !dc_isar_feature(aa32_simd_r32, s) &&
--        ((a->vm | a->vn | a->vd) & 0x10)) {
-+    if (dp && !dc_isar_feature(aa32_fpdp_v2, s)) {
-         return false;
-     }
- 
--    if (dp && !dc_isar_feature(aa32_fpdp_v2, s)) {
-+    /* UNDEF accesses to D16-D31 if they don't exist */
-+    if (dp && !dc_isar_feature(aa32_simd_r32, s) &&
-+        ((a->vm | a->vn | a->vd) & 0x10)) {
-         return false;
-     }
- 
-@@ -333,13 +333,13 @@ static bool trans_VMINMAXNM(DisasContext *s, arg_VMINMAXNM *a)
-         return false;
-     }
- 
--    /* UNDEF accesses to D16-D31 if they don't exist */
--    if (dp && !dc_isar_feature(aa32_simd_r32, s) &&
--        ((a->vm | a->vn | a->vd) & 0x10)) {
-+    if (dp && !dc_isar_feature(aa32_fpdp_v2, s)) {
-         return false;
-     }
- 
--    if (dp && !dc_isar_feature(aa32_fpdp_v2, s)) {
-+    /* UNDEF accesses to D16-D31 if they don't exist */
-+    if (dp && !dc_isar_feature(aa32_simd_r32, s) &&
-+        ((a->vm | a->vn | a->vd) & 0x10)) {
-         return false;
-     }
- 
-@@ -419,13 +419,13 @@ static bool trans_VRINT(DisasContext *s, arg_VRINT *a)
-         return false;
-     }
- 
--    /* UNDEF accesses to D16-D31 if they don't exist */
--    if (dp && !dc_isar_feature(aa32_simd_r32, s) &&
--        ((a->vm | a->vd) & 0x10)) {
-+    if (dp && !dc_isar_feature(aa32_fpdp_v2, s)) {
-         return false;
-     }
- 
--    if (dp && !dc_isar_feature(aa32_fpdp_v2, s)) {
-+    /* UNDEF accesses to D16-D31 if they don't exist */
-+    if (dp && !dc_isar_feature(aa32_simd_r32, s) &&
-+        ((a->vm | a->vd) & 0x10)) {
-         return false;
-     }
- 
-@@ -483,12 +483,12 @@ static bool trans_VCVT(DisasContext *s, arg_VCVT *a)
-         return false;
-     }
- 
--    /* UNDEF accesses to D16-D31 if they don't exist */
--    if (dp && !dc_isar_feature(aa32_simd_r32, s) && (a->vm & 0x10)) {
-+    if (dp && !dc_isar_feature(aa32_fpdp_v2, s)) {
-         return false;
-     }
- 
--    if (dp && !dc_isar_feature(aa32_fpdp_v2, s)) {
-+    /* UNDEF accesses to D16-D31 if they don't exist */
-+    if (dp && !dc_isar_feature(aa32_simd_r32, s) && (a->vm & 0x10)) {
-         return false;
-     }
- 
-@@ -1308,12 +1308,12 @@ static bool do_vfp_3op_dp(DisasContext *s, VFPGen3OpDPFn *fn,
-     TCGv_i64 f0, f1, fd;
-     TCGv_ptr fpst;
- 
--    /* UNDEF accesses to D16-D31 if they don't exist */
--    if (!dc_isar_feature(aa32_simd_r32, s) && ((vd | vn | vm) & 0x10)) {
-+    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-         return false;
-     }
- 
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-+    /* UNDEF accesses to D16-D31 if they don't exist */
-+    if (!dc_isar_feature(aa32_simd_r32, s) && ((vd | vn | vm) & 0x10)) {
-         return false;
-     }
- 
-@@ -1457,12 +1457,12 @@ static bool do_vfp_2op_dp(DisasContext *s, VFPGen2OpDPFn *fn, int vd, int vm)
-     int veclen = s->vec_len;
-     TCGv_i64 f0, fd;
- 
--    /* UNDEF accesses to D16-D31 if they don't exist */
--    if (!dc_isar_feature(aa32_simd_r32, s) && ((vd | vm) & 0x10)) {
-+    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-         return false;
-     }
- 
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-+    /* UNDEF accesses to D16-D31 if they don't exist */
-+    if (!dc_isar_feature(aa32_simd_r32, s) && ((vd | vm) & 0x10)) {
-         return false;
-     }
- 
-@@ -1827,7 +1827,9 @@ static bool trans_VFM_dp(DisasContext *s, arg_VFM_dp *a)
-         return false;
-     }
- 
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-+    /* UNDEF accesses to D16-D31 if they don't exist. */
-+    if (!dc_isar_feature(aa32_simd_r32, s) &&
-+        ((a->vd | a->vn | a->vm) & 0x10)) {
-         return false;
-     }
- 
-@@ -1921,12 +1923,12 @@ static bool trans_VMOV_imm_dp(DisasContext *s, arg_VMOV_imm_dp *a)
- 
-     vd = a->vd;
- 
--    /* UNDEF accesses to D16-D31 if they don't exist. */
--    if (!dc_isar_feature(aa32_simd_r32, s) && (vd & 0x10)) {
-+    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-         return false;
-     }
- 
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-+    /* UNDEF accesses to D16-D31 if they don't exist. */
-+    if (!dc_isar_feature(aa32_simd_r32, s) && (vd & 0x10)) {
-         return false;
-     }
- 
-@@ -2060,6 +2062,10 @@ static bool trans_VCMP_dp(DisasContext *s, arg_VCMP_dp *a)
- {
-     TCGv_i64 vd, vm;
- 
-+    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
+@@ -2828,3 +2828,42 @@ static bool trans_VCVT_dp_int(DisasContext *s, arg_VCVT_dp_int *a)
+     tcg_temp_free_ptr(fpst);
+     return true;
+ }
++
++/*
++ * Decode VLLDM and VLSTM are nonstandard because:
++ *  * if there is no FPU then these insns must NOP in
++ *    Secure state and UNDEF in Nonsecure state
++ *  * if there is an FPU then these insns do not have
++ *    the usual behaviour that vfp_access_check() provides of
++ *    being controlled by CPACR/NSACR enable bits or the
++ *    lazy-stacking logic.
++ */
++static bool trans_VLLDM_VLSTM(DisasContext *s, arg_VLLDM_VLSTM *a)
++{
++    TCGv_i32 fptr;
++
++    if (!arm_dc_feature(s, ARM_FEATURE_M) ||
++        !arm_dc_feature(s, ARM_FEATURE_V8)) {
 +        return false;
 +    }
-+
-     /* Vm/M bits must be zero for the Z variant */
-     if (a->z && a->vm != 0) {
-         return false;
-@@ -2070,10 +2076,6 @@ static bool trans_VCMP_dp(DisasContext *s, arg_VCMP_dp *a)
-         return false;
-     }
- 
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
--        return false;
--    }
--
-     if (!vfp_access_check(s)) {
-         return true;
-     }
-@@ -2134,6 +2136,10 @@ static bool trans_VCVT_f64_f16(DisasContext *s, arg_VCVT_f64_f16 *a)
-     TCGv_i32 tmp;
-     TCGv_i64 vd;
- 
-+    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
++    /* If not secure, UNDEF. */
++    if (!s->v8m_secure) {
 +        return false;
 +    }
-+
-     if (!dc_isar_feature(aa32_fp16_dpconv, s)) {
-         return false;
-     }
-@@ -2143,10 +2149,6 @@ static bool trans_VCVT_f64_f16(DisasContext *s, arg_VCVT_f64_f16 *a)
-         return false;
-     }
- 
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
--        return false;
--    }
--
-     if (!vfp_access_check(s)) {
-         return true;
-     }
-@@ -2200,6 +2202,10 @@ static bool trans_VCVT_f16_f64(DisasContext *s, arg_VCVT_f16_f64 *a)
-     TCGv_i32 tmp;
-     TCGv_i64 vm;
- 
-+    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-+        return false;
++    /* If no fpu, NOP. */
++    if (!dc_isar_feature(aa32_vfp, s)) {
++        return true;
 +    }
 +
-     if (!dc_isar_feature(aa32_fp16_dpconv, s)) {
-         return false;
-     }
-@@ -2209,10 +2215,6 @@ static bool trans_VCVT_f16_f64(DisasContext *s, arg_VCVT_f16_f64 *a)
-         return false;
-     }
- 
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
--        return false;
--    }
--
-     if (!vfp_access_check(s)) {
-         return true;
-     }
-@@ -2260,6 +2262,10 @@ static bool trans_VRINTR_dp(DisasContext *s, arg_VRINTR_dp *a)
-     TCGv_ptr fpst;
-     TCGv_i64 tmp;
- 
-+    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-+        return false;
++    fptr = load_reg(s, a->rn);
++    if (a->l) {
++        gen_helper_v7m_vlldm(cpu_env, fptr);
++    } else {
++        gen_helper_v7m_vlstm(cpu_env, fptr);
 +    }
++    tcg_temp_free_i32(fptr);
 +
-     if (!dc_isar_feature(aa32_vrint, s)) {
-         return false;
-     }
-@@ -2269,10 +2275,6 @@ static bool trans_VRINTR_dp(DisasContext *s, arg_VRINTR_dp *a)
-         return false;
-     }
++    /* End the TB, because we have updated FP control bits */
++    s->base.is_jmp = DISAS_UPDATE;
++    return true;
++}
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 893911fca7..5b7cad1ea2 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -10962,53 +10962,18 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
+                 goto illegal_op; /* op0 = 0b11 : unallocated */
+             }
  
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
--        return false;
--    }
+-            /*
+-             * Decode VLLDM and VLSTM first: these are nonstandard because:
+-             *  * if there is no FPU then these insns must NOP in
+-             *    Secure state and UNDEF in Nonsecure state
+-             *  * if there is an FPU then these insns do not have
+-             *    the usual behaviour that disas_vfp_insn() provides of
+-             *    being controlled by CPACR/NSACR enable bits or the
+-             *    lazy-stacking logic.
+-             */
+-            if (arm_dc_feature(s, ARM_FEATURE_V8) &&
+-                (insn & 0xffa00f00) == 0xec200a00) {
+-                /* 0b1110_1100_0x1x_xxxx_xxxx_1010_xxxx_xxxx
+-                 *  - VLLDM, VLSTM
+-                 * We choose to UNDEF if the RAZ bits are non-zero.
+-                 */
+-                if (!s->v8m_secure || (insn & 0x0040f0ff)) {
++            if (disas_vfp_insn(s, insn)) {
++                if (((insn >> 8) & 0xe) == 10 &&
++                    dc_isar_feature(aa32_fpsp_v2, s)) {
++                    /* FP, and the CPU supports it */
+                     goto illegal_op;
++                } else {
++                    /* All other insns: NOCP */
++                    gen_exception_insn(s, s->pc_curr, EXCP_NOCP,
++                                       syn_uncategorized(),
++                                       default_exception_el(s));
+                 }
 -
-     if (!vfp_access_check(s)) {
-         return true;
-     }
-@@ -2321,6 +2323,10 @@ static bool trans_VRINTZ_dp(DisasContext *s, arg_VRINTZ_dp *a)
-     TCGv_i64 tmp;
-     TCGv_i32 tcg_rmode;
- 
-+    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-+        return false;
-+    }
-+
-     if (!dc_isar_feature(aa32_vrint, s)) {
-         return false;
-     }
-@@ -2330,10 +2336,6 @@ static bool trans_VRINTZ_dp(DisasContext *s, arg_VRINTZ_dp *a)
-         return false;
-     }
- 
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
--        return false;
--    }
+-                if (arm_dc_feature(s, ARM_FEATURE_VFP)) {
+-                    uint32_t rn = (insn >> 16) & 0xf;
+-                    TCGv_i32 fptr = load_reg(s, rn);
 -
-     if (!vfp_access_check(s)) {
-         return true;
-     }
-@@ -2380,6 +2382,10 @@ static bool trans_VRINTX_dp(DisasContext *s, arg_VRINTX_dp *a)
-     TCGv_ptr fpst;
-     TCGv_i64 tmp;
- 
-+    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-+        return false;
-+    }
-+
-     if (!dc_isar_feature(aa32_vrint, s)) {
-         return false;
-     }
-@@ -2389,10 +2395,6 @@ static bool trans_VRINTX_dp(DisasContext *s, arg_VRINTX_dp *a)
-         return false;
-     }
- 
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
--        return false;
--    }
+-                    if (extract32(insn, 20, 1)) {
+-                        gen_helper_v7m_vlldm(cpu_env, fptr);
+-                    } else {
+-                        gen_helper_v7m_vlstm(cpu_env, fptr);
+-                    }
+-                    tcg_temp_free_i32(fptr);
 -
-     if (!vfp_access_check(s)) {
-         return true;
-     }
-@@ -2412,12 +2414,12 @@ static bool trans_VCVT_sp(DisasContext *s, arg_VCVT_sp *a)
-     TCGv_i64 vd;
-     TCGv_i32 vm;
- 
--    /* UNDEF accesses to D16-D31 if they don't exist. */
--    if (!dc_isar_feature(aa32_simd_r32, s) && (a->vd & 0x10)) {
-+    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-         return false;
-     }
- 
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-+    /* UNDEF accesses to D16-D31 if they don't exist. */
-+    if (!dc_isar_feature(aa32_simd_r32, s) && (a->vd & 0x10)) {
-         return false;
-     }
- 
-@@ -2440,12 +2442,12 @@ static bool trans_VCVT_dp(DisasContext *s, arg_VCVT_dp *a)
-     TCGv_i64 vm;
-     TCGv_i32 vd;
- 
--    /* UNDEF accesses to D16-D31 if they don't exist. */
--    if (!dc_isar_feature(aa32_simd_r32, s) && (a->vm & 0x10)) {
-+    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-         return false;
-     }
- 
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-+    /* UNDEF accesses to D16-D31 if they don't exist. */
-+    if (!dc_isar_feature(aa32_simd_r32, s) && (a->vm & 0x10)) {
-         return false;
-     }
- 
-@@ -2494,12 +2496,12 @@ static bool trans_VCVT_int_dp(DisasContext *s, arg_VCVT_int_dp *a)
-     TCGv_i64 vd;
-     TCGv_ptr fpst;
- 
--    /* UNDEF accesses to D16-D31 if they don't exist. */
--    if (!dc_isar_feature(aa32_simd_r32, s) && (a->vd & 0x10)) {
-+    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-         return false;
-     }
- 
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-+    /* UNDEF accesses to D16-D31 if they don't exist. */
-+    if (!dc_isar_feature(aa32_simd_r32, s) && (a->vd & 0x10)) {
-         return false;
-     }
- 
-@@ -2530,6 +2532,10 @@ static bool trans_VJCVT(DisasContext *s, arg_VJCVT *a)
-     TCGv_i32 vd;
-     TCGv_i64 vm;
- 
-+    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-+        return false;
-+    }
-+
-     if (!dc_isar_feature(aa32_jscvt, s)) {
-         return false;
-     }
-@@ -2539,10 +2545,6 @@ static bool trans_VJCVT(DisasContext *s, arg_VJCVT *a)
-         return false;
-     }
- 
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
--        return false;
--    }
+-                    /* End the TB, because we have updated FP control bits */
+-                    s->base.is_jmp = DISAS_UPDATE;
+-                }
+-                break;
+             }
+-            if (arm_dc_feature(s, ARM_FEATURE_VFP) &&
+-                ((insn >> 8) & 0xe) == 10) {
+-                /* FP, and the CPU supports it */
+-                if (disas_vfp_insn(s, insn)) {
+-                    goto illegal_op;
+-                }
+-                break;
+-            }
 -
-     if (!vfp_access_check(s)) {
-         return true;
-     }
-@@ -2623,6 +2625,10 @@ static bool trans_VCVT_fix_dp(DisasContext *s, arg_VCVT_fix_dp *a)
-     TCGv_ptr fpst;
-     int frac_bits;
- 
-+    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-+        return false;
-+    }
-+
-     if (!arm_dc_feature(s, ARM_FEATURE_VFP3)) {
-         return false;
-     }
-@@ -2632,10 +2638,6 @@ static bool trans_VCVT_fix_dp(DisasContext *s, arg_VCVT_fix_dp *a)
-         return false;
-     }
- 
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
--        return false;
--    }
--
-     if (!vfp_access_check(s)) {
-         return true;
-     }
-@@ -2723,12 +2725,12 @@ static bool trans_VCVT_dp_int(DisasContext *s, arg_VCVT_dp_int *a)
-     TCGv_i64 vm;
-     TCGv_ptr fpst;
- 
--    /* UNDEF accesses to D16-D31 if they don't exist. */
--    if (!dc_isar_feature(aa32_simd_r32, s) && (a->vm & 0x10)) {
-+    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-         return false;
-     }
- 
--    if (!dc_isar_feature(aa32_fpdp_v2, s)) {
-+    /* UNDEF accesses to D16-D31 if they don't exist. */
-+    if (!dc_isar_feature(aa32_simd_r32, s) && (a->vm & 0x10)) {
-         return false;
-     }
- 
+-            /* All other insns: NOCP */
+-            gen_exception_insn(s, s->pc_curr, EXCP_NOCP, syn_uncategorized(),
+-                               default_exception_el(s));
+             break;
+         }
+         if ((insn & 0xfe000a00) == 0xfc000800
 -- 
 2.20.1
 

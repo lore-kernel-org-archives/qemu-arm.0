@@ -1,90 +1,90 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp808897lfg;
-        Mon, 24 Feb 2020 13:41:19 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy9yxw0Apqug7jWI25Ckt5JYyyxr/iyNS3WNN60G9oJ7MK1B9vt9LNUxZlER5e+Z/xPy19v
-X-Received: by 2002:a05:620a:5e:: with SMTP id t30mr50063515qkt.163.1582580479135;
-        Mon, 24 Feb 2020 13:41:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582580479; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp809940lfg;
+        Mon, 24 Feb 2020 13:42:51 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwPzWaLnIaBVGZLLB0tlMDHC/GU9nRwvqAJiVmv2QDc/JihNuYt6yJWLWuG4A8TEqDe/uzq
+X-Received: by 2002:a0c:cc89:: with SMTP id f9mr30258920qvl.17.1582580571183;
+        Mon, 24 Feb 2020 13:42:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582580571; cv=none;
         d=google.com; s=arc-20160816;
-        b=L80Tk19T20h/ICYeJhk6Ei4rYIMGEDsQVMQNLsMEYAKiT7TcaOa1rpLr/3ny8IviM6
-         +JcVnqmmK5bVpXdmPsFapa/dj5BBniCu05+TpY0BiiB50nSPsbBQhFD3kBoLPfc1/nyV
-         oXsIs2y16nNiJE1l6DxfBWnnVmzojXoLQL1OPf1UNrfOWrCsBbmb1rZYUCQT2PaGKkga
-         xoUv9fcm96Q0n5ISzzIBfO3d25iwYt8n8Q8xK/jP9xpacLCbsUKgll0LbAV06JBWKJOE
-         J4tXeGCYVNx8I4t1wor7JIW1EK0zu3d0O38S+1Qqh6mhYOA8vYHo28sbJWTJ5CPW07gc
-         fZcQ==
+        b=ykUenzEVwPc0O/1lCfvAo7uZNRBGXsXyWHwqg5jsk/4+LFq9YUgoN64lfbBNCD9oFi
+         rNLlDn+VuWpkdRdmRY3Ra0+hOH2NhkmFGEPjdNlclRQbyBfzzPjLQF2RBiIiGmcyOB1E
+         m2UaHMSo6L3piESuCkTKtor2cd1JPk4CRXpkiR5eGJi89HC55SwAVHSKdhIWglSMPHGz
+         cgPfStaYLd1W6r28SAlZeGGugsBDOZ/bA9MxiEdhqZwI+Wa5MFxHMfI+rG/UNsDcItIO
+         siDwHn1c+FsQ7Qg3TpxxfFajS4ElW9cstBo9QLwPIO6Rct+F9ipqJoaSI13XAm0neJ1Q
+         XNCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=AR3d9nNMRFmjviCA9QeiC7WRyBhxuQ8IV0t5Cc30NxA=;
-        b=z8mMRvHV+dlxRDbjh7QZMUaJNWy7jMWclO8aFt66TswvxmNnoAChHXve77iU+F2xYU
-         ZmvOk7D4NLiQ0tRqmRZ9iuHgec1k0Po7phmzRjkQhoAZerITeE/Ceyu+6d/Oclovy7iu
-         p9UGAOjm+QS0YaAxhmiORfjEVVCDwpLo7hktyuOhf0QFWmK6FrATQ8jl36lhcW76a+bY
-         Buz7V0ABEzQUo2C33OwM72YCNJj2w6ERwIID1mVUq3qIH6uhjBWljR9FuAYymB38il0j
-         RZKlYnR4mYdVcKN+Ea6ba8RT18nKcjGeH4yXPnIkPM4b2axe2LLtPv1UZ0hciFAoWKcY
-         YfIQ==
+        bh=rmrQdlXnA/jIW2pFbe6JSKjkAJeY5OyoEuZkOnpt8X8=;
+        b=wSG3Rdd8qzNSnX4whAP97/ddI1S5FMaWXXGbUvfJl8HSRoyJ9QucGxlNAFqmRedH5T
+         Jp/Zpw3mHZIPDfAxyZOL7n81qv0ZkmsAKkyh0vWwkUirkDqhY0sL+C4kt+f6D1xfhQ2i
+         zP1z8THEbQxwEL+nflNncb7vJlwYk6gzzzGPPPAUgnb1EL+uN423tMQdCqEq08zpE3M/
+         ZpOv3XDocO8hE2+dr1kAvg8n+S5ndUQEH3JEcO5afwA3RDuRIQXo/b/yW3ahB9vGSTKc
+         8UWvPZn8azKAGFVEmmnXBI6R5uirmtcEixvlgIoe7H6iBs3db0qlptOvGfkAyB8b5DIL
+         0g+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Tw/ez23+";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BRH70wyo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v13si6618070qkg.132.2020.02.24.13.41.18
+        by mx.google.com with ESMTPS id a73si6896290qkg.112.2020.02.24.13.42.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 13:41:19 -0800 (PST)
+        Mon, 24 Feb 2020 13:42:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Tw/ez23+";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BRH70wyo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44300 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44336 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6LTa-0008F0-IQ
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 16:41:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52918)
+	id 1j6LV4-0002Vf-KA
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 16:42:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52986)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j6Kqa-0006Q0-5m
- for qemu-devel@nongnu.org; Mon, 24 Feb 2020 16:01:01 -0500
+ (envelope-from <philmd@redhat.com>) id 1j6Kqk-0006Xm-KC
+ for qemu-devel@nongnu.org; Mon, 24 Feb 2020 16:01:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j6KqZ-0006xB-2j
- for qemu-devel@nongnu.org; Mon, 24 Feb 2020 16:01:00 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:33991
+ (envelope-from <philmd@redhat.com>) id 1j6Kqi-00072Q-Pu
+ for qemu-devel@nongnu.org; Mon, 24 Feb 2020 16:01:10 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:25959
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6KqY-0006wh-VH
- for qemu-devel@nongnu.org; Mon, 24 Feb 2020 16:00:59 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6Kqi-000715-EF
+ for qemu-devel@nongnu.org; Mon, 24 Feb 2020 16:01:08 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582578058;
+ s=mimecast20190719; t=1582578066;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=AR3d9nNMRFmjviCA9QeiC7WRyBhxuQ8IV0t5Cc30NxA=;
- b=Tw/ez23+anWkQ6DnSNH2oldW8g49glc6w5660oaug/+acnCtDig+6ncZPiSUq9S8EV4AR/
- yupTTi4hlmKcp9Uwyqjvfkpggv0EmAwjLxq1lx1qe8Xhb2coNhug7X8tcyBOZ3vCuRgMu8
- Zu+Lk/iMb3eRnvrD5ffi+57YEi93yHQ=
+ bh=rmrQdlXnA/jIW2pFbe6JSKjkAJeY5OyoEuZkOnpt8X8=;
+ b=BRH70wyoK4VLBI1cLFv5KTSI9QrMKRE6Q+afir6qf5OZPAcB5x94EWN8h7t0vnnOHXlz/x
+ bQv6+XPN2Rai7A6SHRRP6AD2GfG12GDmm8IefPp/whRc9YQiqVy9hJqS42Ll+d23HaI3eS
+ W6WPbqPzKX036g5WbEnGqSXQ9bEj8oQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-446-s20lJErAMzO7qprPBkpHUQ-1; Mon, 24 Feb 2020 16:00:54 -0500
-X-MC-Unique: s20lJErAMzO7qprPBkpHUQ-1
+ us-mta-68-IQ06hTSpOlaokjmfvr9NAA-1; Mon, 24 Feb 2020 16:01:04 -0500
+X-MC-Unique: IQ06hTSpOlaokjmfvr9NAA-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E2F93107ACC4;
- Mon, 24 Feb 2020 21:00:50 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CFA458010F0;
+ Mon, 24 Feb 2020 21:01:00 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-205-162.brq.redhat.com [10.40.205.162])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7400B5C54A;
- Mon, 24 Feb 2020 21:00:36 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 595675C651;
+ Mon, 24 Feb 2020 21:00:51 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH RESEND v2 21/32] hw/arm: Remove unnecessary
- memory_region_set_readonly() on ROM alias
-Date: Mon, 24 Feb 2020 21:55:22 +0100
-Message-Id: <20200224205533.23798-22-philmd@redhat.com>
+Subject: [PATCH RESEND v2 22/32] scripts/cocci: Patch to let devices own their
+ MemoryRegions
+Date: Mon, 24 Feb 2020 21:55:23 +0100
+Message-Id: <20200224205533.23798-23-philmd@redhat.com>
 In-Reply-To: <20200224205533.23798-1-philmd@redhat.com>
 References: <20200224205533.23798-1-philmd@redhat.com>
 MIME-Version: 1.0
@@ -134,60 +134,108 @@ Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FKpXxe+8nnVx
+X-TUID: PHZ5rxPf4Atf
 
-This commit was produced with the Coccinelle script
-scripts/coccinelle/memory-region-housekeeping.cocci.
+When a device creates a MemoryRegion without setting its ownership,
+the MemoryRegion is added to the machine "/unattached" container in
+the QOM tree.
+
+Example with the Samsung SMDKC210 board:
+
+  $ arm-softmmu/qemu-system-arm -M smdkc210 -S -monitor stdio
+  (qemu) info qom-tree
+  /machine (smdkc210-machine)
+    /unattached (container)
+      /io[0] (qemu:memory-region)
+      /exynos4210.dram0[0] (qemu:memory-region)
+      /exynos4210.irom[0] (qemu:memory-region)
+      /exynos4210.iram[0] (qemu:memory-region)
+      /exynos4210.chipid[0] (qemu:memory-region)
+      ...
+      /device[26] (exynos4210.uart)
+        /exynos4210.uart[0] (qemu:memory-region)
+    /soc (exynos4210)
+      ^
+       \__ [*]
+
+The irom/iram/chipid regions should go under 'soc' at [*].
+
+Add a semantic patch to let the device own the memory region.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/arm/exynos4210.c    | 1 -
- hw/arm/stm32f205_soc.c | 1 -
- hw/arm/stm32f405_soc.c | 1 -
- 3 files changed, 3 deletions(-)
+v2: Remove memory_region_init_ram() change which might break migration
+    (Peter Maydell)
+---
+ .../memory-region-housekeeping.cocci          | 56 +++++++++++++++++++
+ 1 file changed, 56 insertions(+)
 
-diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index 3af6502a5e..4e1fd7edb3 100644
---- a/hw/arm/exynos4210.c
-+++ b/hw/arm/exynos4210.c
-@@ -320,7 +320,6 @@ static void exynos4210_realize(DeviceState *socdev, Err=
-or **errp)
-                              &s->irom_mem,
-                              0,
-                              EXYNOS4210_IROM_SIZE);
--    memory_region_set_readonly(&s->irom_alias_mem, true);
-     memory_region_add_subregion(system_mem, EXYNOS4210_IROM_MIRROR_BASE_AD=
-DR,
-                                 &s->irom_alias_mem);
-=20
-diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
-index 2de56275b7..6e93726d45 100644
---- a/hw/arm/stm32f205_soc.c
-+++ b/hw/arm/stm32f205_soc.c
-@@ -97,7 +97,6 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, E=
-rror **errp)
-                            &error_fatal);
-     memory_region_init_alias(flash_alias, NULL, "STM32F205.flash.alias",
-                              flash, 0, FLASH_SIZE);
--    memory_region_set_readonly(flash_alias, true);
-=20
-     memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, flash);
-     memory_region_add_subregion(system_memory, 0, flash_alias);
-diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
-index b8fca13f95..d590cd040d 100644
---- a/hw/arm/stm32f405_soc.c
-+++ b/hw/arm/stm32f405_soc.c
-@@ -103,7 +103,6 @@ static void stm32f405_soc_realize(DeviceState *dev_soc,=
- Error **errp)
-     }
-     memory_region_init_alias(&s->flash_alias, NULL, "STM32F405.flash.alias=
-",
-                              &s->flash, 0, FLASH_SIZE);
--    memory_region_set_readonly(&s->flash_alias, true);
-=20
-     memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, &s->fla=
-sh);
-     memory_region_add_subregion(system_memory, 0, &s->flash_alias);
+diff --git a/scripts/coccinelle/memory-region-housekeeping.cocci b/scripts/=
+coccinelle/memory-region-housekeeping.cocci
+index 5e6b31d8ba..c768d8140a 100644
+--- a/scripts/coccinelle/memory-region-housekeeping.cocci
++++ b/scripts/coccinelle/memory-region-housekeeping.cocci
+@@ -101,3 +101,59 @@ expression ERRP;
+ +memory_region_init_rom_device(MR, NULL, OPS, OPAQUE, NAME, SIZE, ERRP);
+  ...
+ -vmstate_register_ram_global(MR);
++
++
++// Device is owner
++@@
++typedef DeviceState;
++identifier device_fn, dev, obj;
++expression E1, E2, E3, E4, E5;
++@@
++static void device_fn(DeviceState *dev, ...)
++{
++  ...
++  Object *obj =3D OBJECT(dev);
++  <+...
++(
++- memory_region_init(E1, NULL, E2, E3);
+++ memory_region_init(E1, obj, E2, E3);
++|
++- memory_region_init_io(E1, NULL, E2, E3, E4, E5);
+++ memory_region_init_io(E1, obj, E2, E3, E4, E5);
++|
++- memory_region_init_alias(E1, NULL, E2, E3, E4, E5);
+++ memory_region_init_alias(E1, obj, E2, E3, E4, E5);
++|
++- memory_region_init_rom(E1, NULL, E2, E3, E4);
+++ memory_region_init_rom(E1, obj, E2, E3, E4);
++|
++- memory_region_init_ram_shared_nomigrate(E1, NULL, E2, E3, E4, E5);
+++ memory_region_init_ram_shared_nomigrate(E1, obj, E2, E3, E4, E5);
++)
++  ...+>
++}
++@@
++identifier device_fn, dev;
++expression E1, E2, E3, E4, E5;
++@@
++static void device_fn(DeviceState *dev, ...)
++{
++  <+...
++(
++- memory_region_init(E1, NULL, E2, E3);
+++ memory_region_init(E1, OBJECT(dev), E2, E3);
++|
++- memory_region_init_io(E1, NULL, E2, E3, E4, E5);
+++ memory_region_init_io(E1, OBJECT(dev), E2, E3, E4, E5);
++|
++- memory_region_init_alias(E1, NULL, E2, E3, E4, E5);
+++ memory_region_init_alias(E1, OBJECT(dev), E2, E3, E4, E5);
++|
++- memory_region_init_rom(E1, NULL, E2, E3, E4);
+++ memory_region_init_rom(E1, OBJECT(dev), E2, E3, E4);
++|
++- memory_region_init_ram_shared_nomigrate(E1, NULL, E2, E3, E4, E5);
+++ memory_region_init_ram_shared_nomigrate(E1, OBJECT(dev), E2, E3, E4, E5)=
+;
++)
++  ...+>
++}
 --=20
 2.21.1
 

@@ -1,76 +1,72 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp552874lfg;
-        Mon, 24 Feb 2020 09:04:49 -0800 (PST)
-X-Google-Smtp-Source: APXvYqybfkwO+Pgpr+gt8QHLkJmkRr0odrlvaXRZqSeHXFJeAcqSkoPInVzjqitUyefjEnsvgzjz
-X-Received: by 2002:a05:6214:4f2:: with SMTP id cl18mr46117516qvb.89.1582563889336;
-        Mon, 24 Feb 2020 09:04:49 -0800 (PST)
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp553081lfg;
+        Mon, 24 Feb 2020 09:04:59 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwiKxawzqYvGxw5bG3UvCuTvRE2aT/EOshjMwMoFI+SR8Gc0xuuzDeGnXDRMwv7HXIcpy9/
+X-Received: by 2002:a05:620a:1583:: with SMTP id d3mr51238974qkk.290.1582563899110;
+        Mon, 24 Feb 2020 09:04:59 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j16si5934691qvy.187.2020.02.24.09.04.49
+        by mx.google.com with ESMTPS id c67si2124372qke.381.2020.02.24.09.04.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 09:04:49 -0800 (PST)
+        Mon, 24 Feb 2020 09:04:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=NAGN84jW;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=dot+21Og;
        arc=fail (body hash mismatch);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39562 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39580 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6HA0-0004Hl-Kr
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 12:04:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46771)
+	id 1j6HAA-0004ax-DT
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 12:04:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46763)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1j6H8X-00035s-BK
+ (envelope-from <damien.hedde@greensocs.com>) id 1j6H8X-00035m-6R
  for qemu-arm@nongnu.org; Mon, 24 Feb 2020 12:03:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1j6H8T-0005Wz-FP
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 12:03:17 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:46554)
+ (envelope-from <damien.hedde@greensocs.com>) id 1j6H8T-0005WR-C9
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 12:03:16 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:46498)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1j6H8T-0005Vu-6l; Mon, 24 Feb 2020 12:03:13 -0500
+ id 1j6H8S-0005Ur-Id; Mon, 24 Feb 2020 12:03:13 -0500
 Received: from crumble.bar.greensocs.com (crumble.bar.greensocs.com
  [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPS id CBBDC96F51;
- Mon, 24 Feb 2020 17:03:11 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPS id 1D84D96EF0;
+ Mon, 24 Feb 2020 17:03:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1582563792;
+ s=mail; t=1582563789;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qcOLoPFASQn3XJorHC6fsip/qZ732BfIq9RC4GPmanM=;
- b=NAGN84jWFKjU14CMUqckAimgmb3Pjl3lWDk8+nC02nzg8zPTw538w5NCCkkW3jdbH/gupO
- /UNip8qUIedtBoOf5YTNvHWNxRp5ROzeFt4eT9hmDNkWJq8gWu5gyBiT7X4zvoPK2Dqqlg
- gqJPulOAG9UsQ3y/6K0Ca0jbUlgXOv0=
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=9F5NqEQ7N9RX3+noY3q7ERfbkxjuafBp0Fg3k0WelXA=;
+ b=dot+21Og0KKS/lAhk6V5urxHyeNu/SHca/MVKmwEzCwDOnc2r0QkJxqMc2YwkIdkELfyLe
+ p4AVQqstTxKPYHnHE6X3ziXTKBXAwvHI3+bohjFwOFSlAD7Ud8gkeAH3i8SEUGlUA1QxVJ
+ 60xKawQaLHaNhpJ44zvxcGpfGM3FBtc=
 From: Damien Hedde <damien.hedde@greensocs.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v7 3/9] qdev: add clock input&output support to devices.
-Date: Mon, 24 Feb 2020 18:02:55 +0100
-Message-Id: <20200224170301.246623-4-damien.hedde@greensocs.com>
+Subject: [PATCH v7 0/9] Clock framework API
+Date: Mon, 24 Feb 2020 18:02:52 +0100
+Message-Id: <20200224170301.246623-1-damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20200224170301.246623-1-damien.hedde@greensocs.com>
-References: <20200224170301.246623-1-damien.hedde@greensocs.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1582563792;
+ s=mail; t=1582563790;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qcOLoPFASQn3XJorHC6fsip/qZ732BfIq9RC4GPmanM=;
- b=fGeyrgBbBSwhnHepEYttieNDxPChZyKCgp/9oxLkUcTezVV4wpkQUpMj8sQtWUe+y8U1wn
- gmK7bmiVsNPvp9Xm+t9ddPmTmk51hQX16MkyZ3ytc/QN5s7h3B2v0tm7Zh/5rvmlMqioc0
- PZCEDsYqvpFhR0aft/7m4rwnYXBVQuc=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582563792; a=rsa-sha256; cv=none;
- b=DIADdp4Sk40EszRkAZCXhqaG7/if1gf/iQm3HmtZuaxd+0F+wrhoNn3EXqqHUy20ghE9fP
- i4HLC4GBCqWSME3Nh6RmnPLj4mgJmc+8EDogiIHxc1T4Q7DLRjQ6Pm7zBy4hsl6alwGKTl
- ddj0lEWM/X87eVuKPnG/aACoM11/O4k=
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=9F5NqEQ7N9RX3+noY3q7ERfbkxjuafBp0Fg3k0WelXA=;
+ b=6tZY0pZu4S1qdT/cBxsJisNeJe45qawef+Yt9Xs4MToESyV86JTbxMsLeujbrRFsRaZ5bn
+ HiL3G1ajxgLFH0rzvSDGimolwU3hDWiEacf2KL9F/Yq2sL3UDAyDbTTzMUer9T1mjXzNr8
+ ik3oAhFtd2ZlZ657LDItQ1HckOTIPw4=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582563790; a=rsa-sha256; cv=none;
+ b=wzsZBPmEOpOxtAiQt6Yb93uj8xjtjKiKni/FFtY8iK02I34bjukJqDRrbGN73k8t3upUFT
+ jbzydIoQJTuCGYIWtXi0n0EzUxpSM8u/jbrDmEHCq+IXsaPbOJxgHtGojxm3PzlMURbW/0
+ oRiBQkE7x5QiNU1zjSvRyiTy+/dQgqY=
 ARC-Authentication-Results: i=1;
 	beetle.greensocs.com;
 	none
-X-Spam: Yes
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 5.135.226.135
@@ -91,452 +87,99 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, peter.maydell@linaro.org,
  marcandre.lureau@redhat.com, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZMwDL3EilBAR
+X-TUID: 34Fn39BEx0dN
 
-Add functions to easily handle clocks with devices.
-Clock inputs and outputs should be used to handle clock propagation
-between devices.
-The API is very similar the GPIO API.
+This series aims to add a way to model clock distribution in qemu.
+The proposed objet and qdev API allows to model the clock tree of
+a platform allowing us to inspect clock configuration and detect
+problems such as disabled clock or bad configured pll.
 
-This is based on the original work of Frederic Konrad.
+There's 2 notable changes since v6:
++ The value stored in clock is now a period on 64 bits integer. The
+  unit is 2^-32ns to achieve the same precision as the ptimer internal
+  representation.
++ No more ClockIn/ClockOut base types, just a single Clock type. It
+  makes things simplier for everything else (standalone clocks,
+  possibility to read device's output clocks) and allow to chain
+  several clock inputs.
 
-Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
----
+Regarding the internal represention. The precision is huge so that
+it is possible (in the future) to somehow connect a ptimer with a
+Clock with no loss of precision.
+The consequence is that we have a ~4seconds period upper bound only.
+Alternatives, allowing us to keep this precision, are to use a
+floating point or to extend the integer.
 
-I did not changed the constness of @name pointer field in
-NamedClockList structure.
-There is no obstacle to do it but the fact that we need to free the
-allocated data it points to. It is possible to make it const and
-hack/remove the const to call g_free but I don't know if its
-allowed in qemu.
+The added clock api is very similar the the GPIO API for devices. We
+can add input and output and connect them together.
 
-v7:
-+ update ClockIn/Out types
-+ qdev_connect_clock_out function removed / qdev_connect_clock_in added
-  instead
-+ qdev_pass_clock renamed to qdev_alias_clock
-+ various small fixes (typos, comment, asserts) (Peter)
-+ move device's instance_finalize code related to clock in qdev-clock.c
----
- include/hw/qdev-clock.h | 105 +++++++++++++++++++++++++
- include/hw/qdev-core.h  |  12 +++
- hw/core/qdev-clock.c    | 169 ++++++++++++++++++++++++++++++++++++++++
- hw/core/qdev.c          |  12 +++
- hw/core/Makefile.objs   |   2 +-
- tests/Makefile.include  |   1 +
- 6 files changed, 300 insertions(+), 1 deletion(-)
+Now that ressettable API is merged, the clock tree is properly
+initialized during the machine reset.
+I've tested this patchset running Xilinx's Linux on the xilinx-zynq-a9
+machine. Clocks are correctly updated and we ends up with a configured
+baudrate of 115601 on the console uart (for a theoretical 115200)
+which is nice. "cadence_uart*" and "clock*" traces can be enabled to
+see what's going on in this platform.
+
+Any comments and suggestions are welcomed.
+
+Patches 1, 3 and 5 to 8 still need some reviews.
+
+The patches are organised as follows:
++ Patches 1 to 4 adds the clock support in qemu
++ Patch 5 adds some documentation in docs/devel
++ Patches 6 to 8 adds the uart's clocks to the xilinx_zynq platform
+  as an example for this framework. It updates the zynq's slcr clock
+  controller, the cadence_uart device, and the zynq toplevel platform.
++ Patch 9 adds clock info to monitor "info qtree" command
+
+Changes since v6:
+https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg00599.html
+- switch from frequency to period based clock state
+ - single Clock type (no more ClockIn and ClockOut)
+ - doc converted in rst format (Peter)
+ - various fixes (Peter and Philippe)
+ - better migration support for zynq devices (Peter)
+
+Thanks to the Xilinx QEMU team who sponsored this development.
+
+Damien Hedde (9):
+  hw/core/clock: introduce clock object
+  hw/core/clock-vmstate: define a vmstate entry for clock state
+  qdev: add clock input&output support to devices.
+  qdev-clock: introduce an init array to ease the device construction
+  docs/clocks: add device's clock documentation
+  hw/misc/zynq_slcr: add clock generation for uarts
+  hw/char/cadence_uart: add clock support
+  hw/arm/xilinx_zynq: connect uart clocks to slcr
+  qdev-monitor: print the device's clock with info qtree
+
+ docs/devel/clocks.rst          | 356 +++++++++++++++++++++++++++++++++
+ docs/devel/index.rst           |   1 +
+ include/hw/char/cadence_uart.h |   1 +
+ include/hw/clock.h             | 225 +++++++++++++++++++++
+ include/hw/qdev-clock.h        | 160 +++++++++++++++
+ include/hw/qdev-core.h         |  12 ++
+ hw/arm/xilinx_zynq.c           |  57 +++++-
+ hw/char/cadence_uart.c         |  73 ++++++-
+ hw/core/clock-vmstate.c        |  25 +++
+ hw/core/clock.c                | 131 ++++++++++++
+ hw/core/qdev-clock.c           | 186 +++++++++++++++++
+ hw/core/qdev.c                 |  12 ++
+ hw/misc/zynq_slcr.c            | 172 +++++++++++++++-
+ qdev-monitor.c                 |   9 +
+ hw/char/trace-events           |   3 +
+ hw/core/Makefile.objs          |   3 +
+ hw/core/trace-events           |   7 +
+ tests/Makefile.include         |   1 +
+ 18 files changed, 1412 insertions(+), 22 deletions(-)
+ create mode 100644 docs/devel/clocks.rst
+ create mode 100644 include/hw/clock.h
  create mode 100644 include/hw/qdev-clock.h
+ create mode 100644 hw/core/clock-vmstate.c
+ create mode 100644 hw/core/clock.c
  create mode 100644 hw/core/qdev-clock.c
 
-diff --git a/include/hw/qdev-clock.h b/include/hw/qdev-clock.h
-new file mode 100644
-index 0000000000..899a95ca6a
---- /dev/null
-+++ b/include/hw/qdev-clock.h
-@@ -0,0 +1,105 @@
-+/*
-+ * Device's clock input and output
-+ *
-+ * Copyright GreenSocs 2016-2020
-+ *
-+ * Authors:
-+ *  Frederic Konrad
-+ *  Damien Hedde
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef QDEV_CLOCK_H
-+#define QDEV_CLOCK_H
-+
-+#include "hw/clock.h"
-+
-+/**
-+ * qdev_init_clock_in:
-+ * @dev: the device to add an input clock to
-+ * @name: the name of the clock (can't be NULL).
-+ * @callback: optional callback to be called on update or NULL.
-+ * @opaque: argument for the callback
-+ * @returns: a pointer to the newly added clock
-+ *
-+ * Add an input clock to device @dev as a clock named @name.
-+ * This adds a child<> property.
-+ * The callback will be called with @opaque as opaque parameter.
-+ */
-+Clock *qdev_init_clock_in(DeviceState *dev, const char *name,
-+                          ClockCallback *callback, void *opaque);
-+
-+/**
-+ * qdev_init_clock_out:
-+ * @dev: the device to add an output clock to
-+ * @name: the name of the clock (can't be NULL).
-+ * @callback: optional callback to be called on update or NULL.
-+ * @returns: a pointer to the newly added clock
-+ *
-+ * Add an output clock to device @dev as a clock named @name.
-+ * This adds a child<> property.
-+ */
-+Clock *qdev_init_clock_out(DeviceState *dev, const char *name);
-+
-+/**
-+ * qdev_get_clock_in:
-+ * @dev: the device which has the clock
-+ * @name: the name of the clock (can't be NULL).
-+ * @returns: a pointer to the clock
-+ *
-+ * Get the input clock @name from @dev or NULL if does not exist.
-+ */
-+Clock *qdev_get_clock_in(DeviceState *dev, const char *name);
-+
-+/**
-+ * qdev_get_clock_out:
-+ * @dev: the device which has the clock
-+ * @name: the name of the clock (can't be NULL).
-+ * @returns: a pointer to the clock
-+ *
-+ * Get the output clock @name from @dev or NULL if does not exist.
-+ */
-+Clock *qdev_get_clock_out(DeviceState *dev, const char *name);
-+
-+/**
-+ * qdev_connect_clock_in:
-+ * @dev: a device
-+ * @name: the name of an input clock in @dev
-+ * @source: the source clock (an output clock of another device for exam=
-ple)
-+ *
-+ * Set the source clock of input clock @name of device @dev to @source.
-+ * @source period update will be propagated to @name clock.
-+ */
-+static inline void qdev_connect_clock_in(DeviceState *dev, const char *n=
-ame,
-+                                         Clock *source)
-+{
-+    clock_set_source(qdev_get_clock_in(dev, name), source);
-+}
-+
-+/**
-+ * qdev_alias_clock:
-+ * @dev: the device which has the clock
-+ * @name: the name of the clock in @dev (can't be NULL)
-+ * @alias_dev: the device to add the clock
-+ * @alias_name: the name of the clock in @container
-+ * @returns: a pointer to the clock
-+ *
-+ * Add a clock @alias_name in @alias_dev which is an alias of the clock =
-@name
-+ * in @dev. The direction _in_ or _out_ will the same as the original.
-+ * An alias clock must not be modified or used by @alias_dev and should
-+ * typically be only only for device composition purpose.
-+ */
-+Clock *qdev_alias_clock(DeviceState *dev, const char *name,
-+                        DeviceState *alias_dev, const char *alias_name);
-+
-+/**
-+ * qdev_finalize_clocklist:
-+ * @dev: the device being finalize
-+ *
-+ * Clear the clocklist from @dev. Only used internally in qdev.
-+ */
-+void qdev_finalize_clocklist(DeviceState *dev);
-+
-+#endif /* QDEV_CLOCK_H */
-diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-index 1405b8a990..d87d989e72 100644
---- a/include/hw/qdev-core.h
-+++ b/include/hw/qdev-core.h
-@@ -149,6 +149,17 @@ struct NamedGPIOList {
-     QLIST_ENTRY(NamedGPIOList) node;
- };
-=20
-+typedef struct Clock Clock;
-+typedef struct NamedClockList NamedClockList;
-+
-+struct NamedClockList {
-+    char *name;
-+    Clock *clock;
-+    bool output;
-+    bool alias;
-+    QLIST_ENTRY(NamedClockList) node;
-+};
-+
- /**
-  * DeviceState:
-  * @realized: Indicates whether the device has been fully constructed.
-@@ -171,6 +182,7 @@ struct DeviceState {
-     bool allow_unplug_during_migration;
-     BusState *parent_bus;
-     QLIST_HEAD(, NamedGPIOList) gpios;
-+    QLIST_HEAD(, NamedClockList) clocks;
-     QLIST_HEAD(, BusState) child_bus;
-     int num_child_bus;
-     int instance_id_alias;
-diff --git a/hw/core/qdev-clock.c b/hw/core/qdev-clock.c
-new file mode 100644
-index 0000000000..9af0159517
---- /dev/null
-+++ b/hw/core/qdev-clock.c
-@@ -0,0 +1,169 @@
-+/*
-+ * Device's clock input and output
-+ *
-+ * Copyright GreenSocs 2016-2020
-+ *
-+ * Authors:
-+ *  Frederic Konrad
-+ *  Damien Hedde
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/qdev-clock.h"
-+#include "hw/qdev-core.h"
-+#include "qapi/error.h"
-+
-+/*
-+ * qdev_init_clocklist:
-+ * Add a new clock in a device
-+ */
-+static NamedClockList *qdev_init_clocklist(DeviceState *dev, const char =
-*name,
-+                                           bool output, Clock *clk)
-+{
-+    NamedClockList *ncl;
-+
-+    /*
-+     * Clock must be added before realize() so that we can compute the
-+     * clock's canonical path durint device_realize().
-+     */
-+    assert(!dev->realized);
-+
-+    /*
-+     * The ncl structure is freed by qdev_finalize_clocklist() which wil=
-l
-+     * be called during @dev's device_finalize().
-+     */
-+    ncl =3D g_new0(NamedClockList, 1);
-+    ncl->name =3D g_strdup(name);
-+    ncl->output =3D output;
-+    ncl->alias =3D (clk !=3D NULL);
-+
-+    /*
-+     * Trying to create a clock whose name clashes with some other
-+     * clock or property is a bug in the caller and we will abort().
-+     */
-+    if (clk =3D=3D NULL) {
-+        clk =3D CLOCK(object_new(TYPE_CLOCK));
-+        object_property_add_child(OBJECT(dev), name, OBJECT(clk), &error=
-_abort);
-+        if (output) {
-+            /*
-+             * Remove object_new()'s initial reference.
-+             * Note that for inputs, the reference created by object_new=
-()
-+             * will be deleted in qdev_finalize_clocklist().
-+             */
-+            object_unref(OBJECT(clk));
-+        }
-+    } else {
-+        object_property_add_link(OBJECT(dev), name,
-+                                 object_get_typename(OBJECT(clk)),
-+                                 (Object **) &ncl->clock,
-+                                 NULL, OBJ_PROP_LINK_STRONG, &error_abor=
-t);
-+    }
-+
-+    ncl->clock =3D clk;
-+
-+    QLIST_INSERT_HEAD(&dev->clocks, ncl, node);
-+    return ncl;
-+}
-+
-+void qdev_finalize_clocklist(DeviceState *dev)
-+{
-+    /* called by @dev's device_finalize() */
-+    NamedClockList *ncl, *ncl_next;
-+
-+    QLIST_FOREACH_SAFE(ncl, &dev->clocks, node, ncl_next) {
-+        QLIST_REMOVE(ncl, node);
-+        if (!ncl->output && !ncl->alias) {
-+            /*
-+             * We kept a reference on the input clock to ensure it lives=
- up to
-+             * this point so we can safely remove the callback.
-+             * It avoids having a callback to a deleted object if ncl->c=
-lock
-+             * is still referenced somewhere else (eg: by a clock output=
-).
-+             */
-+            clock_clear_callback(ncl->clock);
-+            object_unref(OBJECT(ncl->clock));
-+        }
-+        g_free(ncl->name);
-+        g_free(ncl);
-+    }
-+}
-+
-+Clock *qdev_init_clock_out(DeviceState *dev, const char *name)
-+{
-+    NamedClockList *ncl;
-+
-+    assert(name);
-+
-+    ncl =3D qdev_init_clocklist(dev, name, true, NULL);
-+
-+    return ncl->clock;
-+}
-+
-+Clock *qdev_init_clock_in(DeviceState *dev, const char *name,
-+                            ClockCallback *callback, void *opaque)
-+{
-+    NamedClockList *ncl;
-+
-+    assert(name);
-+
-+    ncl =3D qdev_init_clocklist(dev, name, false, NULL);
-+
-+    if (callback) {
-+        clock_set_callback(ncl->clock, callback, opaque);
-+    }
-+    return ncl->clock;
-+}
-+
-+static NamedClockList *qdev_get_clocklist(DeviceState *dev, const char *=
-name)
-+{
-+    NamedClockList *ncl;
-+
-+    QLIST_FOREACH(ncl, &dev->clocks, node) {
-+        if (strcmp(name, ncl->name) =3D=3D 0) {
-+            return ncl;
-+        }
-+    }
-+
-+    assert(false);
-+    return NULL;
-+}
-+
-+Clock *qdev_get_clock_in(DeviceState *dev, const char *name)
-+{
-+    NamedClockList *ncl;
-+
-+    assert(name);
-+
-+    ncl =3D qdev_get_clocklist(dev, name);
-+    assert(!ncl->output);
-+
-+    return ncl->clock;
-+}
-+
-+Clock *qdev_get_clock_out(DeviceState *dev, const char *name)
-+{
-+    NamedClockList *ncl;
-+
-+    assert(name);
-+
-+    ncl =3D qdev_get_clocklist(dev, name);
-+    assert(ncl->output);
-+
-+    return ncl->clock;
-+}
-+
-+Clock *qdev_alias_clock(DeviceState *dev, const char *name,
-+                        DeviceState *alias_dev, const char *alias_name)
-+{
-+    NamedClockList *ncl;
-+
-+    assert(name && alias_name);
-+
-+    ncl =3D qdev_get_clocklist(dev, name);
-+
-+    qdev_init_clocklist(alias_dev, alias_name, ncl->output, ncl->clock);
-+
-+    return ncl->clock;
-+}
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index 3937d1eb1a..f390697348 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -37,6 +37,7 @@
- #include "hw/qdev-properties.h"
- #include "hw/boards.h"
- #include "hw/sysbus.h"
-+#include "hw/qdev-clock.h"
- #include "migration/vmstate.h"
- #include "trace.h"
-=20
-@@ -855,6 +856,7 @@ static void device_set_realized(Object *obj, bool val=
-ue, Error **errp)
-     DeviceClass *dc =3D DEVICE_GET_CLASS(dev);
-     HotplugHandler *hotplug_ctrl;
-     BusState *bus;
-+    NamedClockList *ncl;
-     Error *local_err =3D NULL;
-     bool unattached_parent =3D false;
-     static int unattached_count;
-@@ -902,6 +904,13 @@ static void device_set_realized(Object *obj, bool va=
-lue, Error **errp)
-          */
-         g_free(dev->canonical_path);
-         dev->canonical_path =3D object_get_canonical_path(OBJECT(dev));
-+        QLIST_FOREACH(ncl, &dev->clocks, node) {
-+            if (ncl->alias) {
-+                continue;
-+            } else {
-+                clock_setup_canonical_path(ncl->clock);
-+            }
-+        }
-=20
-         if (qdev_get_vmsd(dev)) {
-             if (vmstate_register_with_alias_id(VMSTATE_IF(dev),
-@@ -1025,6 +1034,7 @@ static void device_initfn(Object *obj)
-     dev->allow_unplug_during_migration =3D false;
-=20
-     QLIST_INIT(&dev->gpios);
-+    QLIST_INIT(&dev->clocks);
- }
-=20
- static void device_post_init(Object *obj)
-@@ -1054,6 +1064,8 @@ static void device_finalize(Object *obj)
-          */
-     }
-=20
-+    qdev_finalize_clocklist(dev);
-+
-     /* Only send event if the device had been completely realized */
-     if (dev->pending_deleted_event) {
-         g_assert(dev->canonical_path);
-diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
-index e3d796fdd4..2fdcb7dd00 100644
---- a/hw/core/Makefile.objs
-+++ b/hw/core/Makefile.objs
-@@ -7,7 +7,7 @@ common-obj-y +=3D hotplug.o
- common-obj-y +=3D vmstate-if.o
- # irq.o needed for qdev GPIO handling:
- common-obj-y +=3D irq.o
--common-obj-y +=3D clock.o
-+common-obj-y +=3D clock.o qdev-clock.o
-=20
- common-obj-$(CONFIG_SOFTMMU) +=3D reset.o
- common-obj-$(CONFIG_SOFTMMU) +=3D qdev-fw.o
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index edcbd475aa..5a4511a86f 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -436,6 +436,7 @@ tests/test-qdev-global-props$(EXESUF): tests/test-qde=
-v-global-props.o \
- 	hw/core/fw-path-provider.o \
- 	hw/core/reset.o \
- 	hw/core/vmstate-if.o \
-+	hw/core/clock.o hw/core/qdev-clock.o \
- 	$(test-qapi-obj-y)
- tests/test-vmstate$(EXESUF): tests/test-vmstate.o \
- 	migration/vmstate.o migration/vmstate-types.o migration/qemu-file.o \
 --=20
 2.24.1
 

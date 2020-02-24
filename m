@@ -1,87 +1,91 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp770759lfg;
-        Mon, 24 Feb 2020 12:56:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxJGPaR9rC/ZVT7Nll1iZFTQi1OR2iOnwqg3XIFUP/MBbaKa+d29dHTgOMdpkNoZ70u69i5
-X-Received: by 2002:a37:5c9:: with SMTP id 192mr9626024qkf.103.1582577808246;
-        Mon, 24 Feb 2020 12:56:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582577808; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp774135lfg;
+        Mon, 24 Feb 2020 13:01:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzVkwMhzZsrNao3SowUngQnmX4sFzNBFCYiPduQH84MQXRUIyZsf6udao7P3y2JWfVCpyXH
+X-Received: by 2002:a0c:ac4e:: with SMTP id m14mr45497677qvb.37.1582578062143;
+        Mon, 24 Feb 2020 13:01:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582578062; cv=none;
         d=google.com; s=arc-20160816;
-        b=b2aK3xIlG6rTVjWNAKwg6QOZJOfDvA3t8JIPKzf9AV0r4ByXP7Svv3uL7NT6Hh87c+
-         lyRI1xHOqPzCEAewoWjBL6BTI8U3l3wZsxNsdeKYC0v4Pl6gM3NVhno+Us2lkXBREScx
-         a4MyT3B4wLww6tLVIT1Xu+CS5ix8Ov8C1wttqvxHXv51U3+BQ6u3do8e6k32pgQ76bQr
-         85+qpoJfh4HbXuGoW5FN4fUHgJtw0m14WtbMyPr4omd9V6c6xpM76dsf/7evGqEJuipr
-         2oKXS68C8QLrkMKrNIH1mhthRsPmA0Km8jEDXscYSDDBC2YHDyFz+ZChC/X0UrJObTlX
-         fpUA==
+        b=cEIpJ57wUWyaMLUhB/FaTZlIurr3k355xibp5gJCkPXoCiFQHihBRbT1TcfJcKxLyj
+         2hY10Y0OGr5cmEUCsv9N4SwxtdXnwNH5vlao09m6QvALL0onWP+Dmy+sUq+xI6x3oQUa
+         2fSPwk5S2X5ZlxGyu7/EF/tJrjrSAmTC4CPI/ujXP2Itpnv+S7rJGZZI0Et3Std4Ylng
+         CvB7dbkW2zM49Os73JgrUkMzMWOaAmKAKsGyvV07dm+2rlfrif8CE4PmEShbhKVKEHh3
+         CqvnTPN/Uh91dE4qBR+vqtAPwFDY/Cb1ygoK8P2TqexKtw6nkGm4HJsS1RhQJnWUX6+i
+         DPEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=KY0G2gAT7ify0bjXNUXV8FEj1UQWbwwkL92DRJ4rUII=;
-        b=sL6yyv8PJuXX2Q7LhbWWl0f3SjFn5SXZQH3bRoxwdKNThfMRe/OmXV1PM2acbqQpeU
-         eeABrkdvlPQ1U3NLJYrOhXZ25hPYr5J37p0151yIyCF5concJCaDFCDHRS39HX1LslmF
-         mDcCfkzhmMhfEApFm9jVgy/UaYv4KjVd0bWzxC/TEvcHcV2RF05BixAlrw6zyVEXZBwb
-         HH+TVFAQ0iepMQVrePCZ3vVz6GzCznBwmU3n554rAPVdir6g3TmjSKAgcfqsr10d7mHa
-         qzeKtmMQYqiYnxFkFQciwwTxf/2RnMYbcmVoS/yPpb/t1JwxUg0QZkBD78WCpRGRSWFY
-         Sk1A==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=aBf1Nz3dO7lmnq6x8HgckUD4/9P7/UEzlUI+mgbV/5Q=;
+        b=k6kJkflbfmIyeb86kvcKXjzCH53OvhxM61mcqpU2JQ6nHamzFzlwsAciqGO0NGPTmC
+         NlcWACZRBOBuCRRBSqQfjPJFhNJgTgF+iTyqbXu6NGK67kwGx8o3UsLi6U5op5YdB2nM
+         yGv0MNo5YkUZPWvttDc3SySyM3Z3lW/gExr8msz5QE+JVaxKMi+vTcOz3MFWKLsPRlOW
+         qGhHczMuXy0vrA1u5HloqpmwR4kztKpVAs3jjsk7mcItTO6q5JSkPOhQzJOBBx0Ztj+3
+         eQ4SQ6a4h+3MVt/YGy/I1Wzf+1TbYNu1YWLSG2wdcHNrmR8zbDPXmlEoujtAmls3jgon
+         k3NA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="KLP/0Er8";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Z7IFn7uM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b11si3797168qkj.181.2020.02.24.12.56.48
+        by mx.google.com with ESMTPS id c8si6476958qtg.53.2020.02.24.13.01.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 12:56:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Feb 2020 13:01:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="KLP/0Er8";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Z7IFn7uM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42518 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43032 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6KmV-0006jI-Es
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 15:56:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49971)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j6Kqb-0005KF-Dq
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 16:01:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50187)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j6Kll-0005ap-R6
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:56:03 -0500
+ (envelope-from <philmd@redhat.com>) id 1j6Km4-00063N-MG
+ for qemu-devel@nongnu.org; Mon, 24 Feb 2020 15:56:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j6Klk-0002f9-9w
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:56:01 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:57269
+ (envelope-from <philmd@redhat.com>) id 1j6Km2-0002xu-KL
+ for qemu-devel@nongnu.org; Mon, 24 Feb 2020 15:56:20 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:48018
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6Klk-0002eb-5J
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:56:00 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6Km2-0002wv-Dm
+ for qemu-devel@nongnu.org; Mon, 24 Feb 2020 15:56:18 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582577759;
+ s=mimecast20190719; t=1582577777;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=KY0G2gAT7ify0bjXNUXV8FEj1UQWbwwkL92DRJ4rUII=;
- b=KLP/0Er81mG9vITcI2qpG25f3uTI3fhaAlbDiVtUm88VkndvEBN+sS6bvbfXJKQhh+6pOs
- +QX65drU17XDxj0cLz3xrFjQ+PD232DwX8c4o80McXu+KzjB8g3yIBHXf65wOcYvebBtUQ
- Jhxm+IOC2H+1rsEGGKXzPidm0d2/otc=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=aBf1Nz3dO7lmnq6x8HgckUD4/9P7/UEzlUI+mgbV/5Q=;
+ b=Z7IFn7uMULPt+eEx54eV8f1N9jpH0HtqbV/jXBGsuPXv2eqlqXjaJP/arRvd559dcfotUJ
+ SpWvpQM4SwpnHK3GgYRe0Jo1RXXLlp4saq37BttCMSee1NnHQW9gHpDBr8kJ7uom03lYHk
+ jKC4UKb5LHddmKs5AUnaSDXe6MXxLi8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-182-5P_0sCfFPsKylxj2cbCFAQ-1; Mon, 24 Feb 2020 15:55:57 -0500
-X-MC-Unique: 5P_0sCfFPsKylxj2cbCFAQ-1
+ us-mta-268-vv3vpfscMoS28J8ygPcnhA-1; Mon, 24 Feb 2020 15:56:15 -0500
+X-MC-Unique: vv3vpfscMoS28J8ygPcnhA-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 55A6C800053;
- Mon, 24 Feb 2020 20:55:52 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E001B107ACC4;
+ Mon, 24 Feb 2020 20:56:10 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-205-162.brq.redhat.com [10.40.205.162])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8B1575C21B;
- Mon, 24 Feb 2020 20:55:35 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C390B5C883;
+ Mon, 24 Feb 2020 20:55:52 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH RESEND v2 00/32] hw: Sanitize various MemoryRegion calls
-Date: Mon, 24 Feb 2020 21:55:01 +0100
-Message-Id: <20200224205533.23798-1-philmd@redhat.com>
+Subject: [PATCH RESEND v2 01/32] memory: Correctly return alias region type
+Date: Mon, 24 Feb 2020 21:55:02 +0100
+Message-Id: <20200224205533.23798-2-philmd@redhat.com>
+In-Reply-To: <20200224205533.23798-1-philmd@redhat.com>
+References: <20200224205533.23798-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Mimecast-Spam-Score: 0
@@ -90,32 +94,32 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  KONRAD Frederic <frederic.konrad@adacore.com>,
  Alistair Francis <Alistair.Francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
- Magnus Damm <magnus.damm@gmail.com>,
+ qemu-trivial@nongnu.org, Magnus Damm <magnus.damm@gmail.com>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Joel Stanley <joel@jms.id.au>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
  David Gibson <david@gibson.dropbear.id.au>,
- Andrzej Zaborowski <balrogg@gmail.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Alistair Francis <alistair@alistair23.me>,
  Fabien Chouteau <chouteau@adacore.com>, qemu-arm@nongnu.org,
@@ -127,120 +131,35 @@ Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>,
  Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
  Aleksandar Markovic <amarkovic@wavecomp.com>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YpM51hHtoLIb
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 38sZ89wdlojU
 
-Resending after being kicked by gsmtp...
+Since memory region aliases are neither rom nor ram, they are
+described as i/o, which is often incorrect. Return instead the
+type of the original region we are aliasing.
 
- 4.3.0 Temporary System Problem.  Try again later (10). t81sm863436wmg.6 - =
-gsmtp
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+Cc: qemu-trivial@nongnu.org
 
-This series simplifies various memory API calls when creating
-memory regions.
+ memory.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Most of the patches are generated with Coccinelle semantic
-patches (provided).
-Few more cleanups added while writting the patches have been
-added.
-
-v1 was 'Let devices own the MemoryRegion they create':
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg681960.html
-
-Since v1:
-- understood a bit more Peter Maydell comments regarding
-  how memory devices are migrated.
-
-Supersedes: <20200221173049.18134-1-philmd@redhat.com>
-
-Philippe Mathieu-Daud=C3=A9 (32):
-  memory: Correctly return alias region type
-  memory: Simplify memory_region_init_rom_nomigrate() to ease review
-  scripts/cocci: Rename memory-region-{init-ram -> housekeeping}
-  scripts/cocci: Patch to replace memory_region_init_{ram,readonly ->
-    rom}
-  hw/arm: Use memory_region_init_rom() with read-only regions
-  hw/display: Use memory_region_init_rom() with read-only regions
-  hw/mips: Use memory_region_init_rom() with read-only regions
-  hw/m68k: Use memory_region_init_rom() with read-only regions
-  hw/net: Use memory_region_init_rom() with read-only regions
-  hw/pci-host: Use memory_region_init_rom() with read-only regions
-  hw/ppc: Use memory_region_init_rom() with read-only regions
-  hw/riscv: Use memory_region_init_rom() with read-only regions
-  hw/sh4: Use memory_region_init_rom() with read-only regions
-  hw/sparc: Use memory_region_init_rom() with read-only regions
-  scripts/cocci: Patch to detect potential use of memory_region_init_rom
-  hw/arm/stm32: Use memory_region_init_rom() with read-only regions
-  hw/ppc/ppc405: Use memory_region_init_rom() with read-only regions
-  hw/i386/pc_sysfw: Simplify using memory_region_init_alias()
-  hw/i386/pc_sysfw: Remove unused 'ram_size' argument
-  scripts/cocci: Patch to remove unnecessary
-    memory_region_set_readonly()
-  hw/arm: Remove unnecessary memory_region_set_readonly() on ROM alias
-  scripts/cocci: Patch to let devices own their MemoryRegions
-  hw/arm: Let devices own the MemoryRegion they create
-  hw/char: Let devices own the MemoryRegion they create
-  hw/core: Let devices own the MemoryRegion they create
-  hw/display: Let devices own the MemoryRegion they create
-  hw/dma: Let devices own the MemoryRegion they create
-  hw/riscv: Let devices own the MemoryRegion they create
-  hw/input/milkymist-softusb: Remove unused 'pmem_ptr' field
-  hw/input/milkymist-softusb: Let devices own the MemoryRegion they
-    create
-  hw/net/milkymist-minimac2: Let devices own the MemoryRegion they
-    create
-  hw/block/onenand: Let devices own the MemoryRegion they create
-
- .../memory-region-housekeeping.cocci          | 159 ++++++++++++++++++
- .../coccinelle/memory-region-init-ram.cocci   |  38 -----
- hw/arm/exynos4210.c                           |  14 +-
- hw/arm/fsl-imx25.c                            |  10 +-
- hw/arm/fsl-imx31.c                            |   6 +-
- hw/arm/fsl-imx6.c                             |   6 +-
- hw/arm/fsl-imx6ul.c                           |   9 +-
- hw/arm/mainstone.c                            |   3 +-
- hw/arm/msf2-soc.c                             |   6 +-
- hw/arm/nrf51_soc.c                            |   2 +-
- hw/arm/omap_sx1.c                             |   6 +-
- hw/arm/palm.c                                 |   3 +-
- hw/arm/spitz.c                                |   3 +-
- hw/arm/stellaris.c                            |   3 +-
- hw/arm/stm32f205_soc.c                        |  11 +-
- hw/arm/stm32f405_soc.c                        |  12 +-
- hw/arm/tosa.c                                 |   3 +-
- hw/arm/xlnx-zynqmp.c                          |  11 +-
- hw/block/onenand.c                            |   7 +-
- hw/char/serial.c                              |   7 +-
- hw/core/platform-bus.c                        |   3 +-
- hw/display/cg3.c                              |   5 +-
- hw/display/g364fb.c                           |   3 +-
- hw/display/macfb.c                            |   4 +-
- hw/display/tcx.c                              |   5 +-
- hw/dma/i8257.c                                |   2 +-
- hw/dma/rc4030.c                               |   4 +-
- hw/i386/pc_sysfw.c                            |  29 +---
- hw/input/milkymist-softusb.c                  |  12 +-
- hw/m68k/q800.c                                |   3 +-
- hw/mips/mips_fulong2e.c                       |   3 +-
- hw/mips/mips_jazz.c                           |   6 +-
- hw/mips/mips_mipssim.c                        |   3 +-
- hw/mips/mips_r4k.c                            |   3 +-
- hw/net/dp8393x.c                              |   5 +-
- hw/net/milkymist-minimac2.c                   |   8 +-
- hw/pci-host/prep.c                            |   5 +-
- hw/ppc/mac_newworld.c                         |   3 +-
- hw/ppc/mac_oldworld.c                         |   3 +-
- hw/ppc/ppc405_boards.c                        |   6 +-
- hw/riscv/sifive_e.c                           |   9 +-
- hw/riscv/sifive_u.c                           |   2 +-
- hw/sh4/shix.c                                 |   3 +-
- hw/sparc/leon3.c                              |   3 +-
- memory.c                                      |  16 +-
- MAINTAINERS                                   |   1 +
- 46 files changed, 268 insertions(+), 200 deletions(-)
- create mode 100644 scripts/coccinelle/memory-region-housekeeping.cocci
- delete mode 100644 scripts/coccinelle/memory-region-init-ram.cocci
-
+diff --git a/memory.c b/memory.c
+index aeaa8dcc9e..ce1179874e 100644
+--- a/memory.c
++++ b/memory.c
+@@ -2818,6 +2818,9 @@ void address_space_destroy(AddressSpace *as)
+=20
+ static const char *memory_region_type(MemoryRegion *mr)
+ {
++    if (mr->alias) {
++        return memory_region_type(mr->alias);
++    }
+     if (memory_region_is_ram_device(mr)) {
+         return "ramd";
+     } else if (memory_region_is_romd(mr)) {
 --=20
 2.21.1
 

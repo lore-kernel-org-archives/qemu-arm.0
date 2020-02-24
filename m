@@ -1,90 +1,90 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp791856lfg;
-        Mon, 24 Feb 2020 13:19:21 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzZCshWbW1BL+RWZyLfYhrVEpCXMVjWdrgIVDsi/ZBve6s/YX7IGh70JDD4Dd50s9lshOB8
-X-Received: by 2002:ae9:ec09:: with SMTP id h9mr36788335qkg.65.1582579160876;
-        Mon, 24 Feb 2020 13:19:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582579160; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp794358lfg;
+        Mon, 24 Feb 2020 13:22:29 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxmhzvxyzc/lGYQrPROUdNPSjPxWhscT0JZH/t00USK0bcoz+XjvbVIJlvQlAuAeoqDygG8
+X-Received: by 2002:ad4:490d:: with SMTP id bh13mr46914544qvb.180.1582579349578;
+        Mon, 24 Feb 2020 13:22:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582579349; cv=none;
         d=google.com; s=arc-20160816;
-        b=ER/173OJW+o+SrUEuIDxh82swPH9dMjZWrpimiBdpOJkxqqr3pLOqQ7NGCFNqVsQWU
-         2EOBCFq46GSK+7jtlebsYTBNSMDO671qnnuIqkXL8L2mbkyJmToB7FJUk4QH8D75EqUf
-         +lmd/dqEmLb5W1sKdRxTvnkgMR3zFPPRzWKUVwv8y5Jdewh9XrlQfVwbYJtbexmjgnYs
-         oSBTd/lHsa3Mg6a5NmmmgQaGWLPyl7zziON3vdBb4itx+BjNC6DRpd1Y9tcf82L02KPp
-         TmOeyLQuRiNM50+zaYARGHVZH0b3Y53UkNkc1lsiLQUKt3nDMigdb0HDW18n722PQpah
-         /I0w==
+        b=s/Pw72CJ1fWHTQRJD5o1b3dsTVCaPklJWs1k55PxePCAg8pZYKzrBVJxzPf9etMFJL
+         wtcsNTULLaR4jDItVExWth3xngjDW2IFmJqiB4K9sPukAIU6Gl7/eK8xeBgJWN+9ziLk
+         3P6K+AAWA9iXQEBWiA95kvfL4AkgIDOVCzSHqXa62muJiFGS+JEpU/xuKdzCjlb66VUW
+         2HDOXhurfGq0FDoEW+8QTtIW6LLwOf6i+r8BSmt7TjwIygwO4uGVUtY+UEik53We8lNa
+         Amiefx/8fpaZ6X+/DWo4TtLmMW689+zF9enwgkHNWCGpuYYUs+poBpbrUxb9rAkzV55N
+         r1XA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=DAKyL7Tqa+fBdxrFOnKvFsx39GH2EjqIV6ZKoapzE/Q=;
-        b=rpeh0JK7ZFBLt3zyJ1fQSDzyqsxHTQwbkkex1rod5Z6YTnfajCGiMKI05BawIZLt5P
-         lLQgcFV4cn6jlsnHhWNJZEcA7LtWLBqrhJ4sqySdxy1Hx7itwqFZPK80CYIr5IbSSJ63
-         yzwy1AkQ1KdRbt0peussG70dNAwBIM5bMviDY1x5ofJTCcb1OcF1FLMWuuyIXZ+GWyQQ
-         cA7oysDGXdv/6kJ02ZP7/i9hQif+TbWMCPxD/xUuzcJ+d3Z3LKJvXyLIcijV1IgdsRJU
-         btTeVpVZ3iudpnpyKZ0bh2p7FxgBCFDBlWKmtFCKsCJvmNnB3iVa8dR9gf6X5rPUuggW
-         j5ZQ==
+        bh=g4lGHk6QRHeMqJdDVZg1X6stDT6EwWnjYxVVB4qV32g=;
+        b=ujxAQIwLvX4vOp+zDr9xrmVFKt5KfE88up0wR07o6MRMKoa28fdLHd/1GOQ1ujdNId
+         Vq1LmhPb7HO/5ffjapFETQ88EIDzeKGLDuAhyh8jIPPUmACJtr1Kp24dKPlGfzEISguV
+         yMh/Fn/DJLDoyn5SFOIMTM3ieWMyWbpNF7lsNJLV2V2Wq0sPpygMdSWr7huhaZWmUTwj
+         uWrtj6GMSTrbqyIF12RS0I23Kn1URrC7hNvzABXTB9Zefb+HKt6CECmjd8p6/FI33wXk
+         wr2kmMCe3EBjuKMrDO8zpKrBAgEYKN/EutA27ka5gounOCeDIgkUhfrz0brWi4FNGclp
+         IS/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JRs2QhDP;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=izzDagO0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e5si5756965qvy.97.2020.02.24.13.19.20
+        by mx.google.com with ESMTPS id c48si6538292qtd.173.2020.02.24.13.22.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 13:19:20 -0800 (PST)
+        Mon, 24 Feb 2020 13:22:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JRs2QhDP;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=izzDagO0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43652 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43748 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6L8K-0003Ms-7v
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 16:19:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51285)
+	id 1j6LBM-00009z-Uu
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 16:22:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51833)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j6KnS-0000or-N4
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:57:47 -0500
+ (envelope-from <philmd@redhat.com>) id 1j6KoV-0002Zd-1H
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:58:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j6KnR-0004Xc-NL
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:57:46 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:54700
+ (envelope-from <philmd@redhat.com>) id 1j6KoT-0005I6-QZ
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:58:50 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:29720
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6KnR-0004X5-J0
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:57:45 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6KoT-0005HR-La
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:58:49 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582577865;
+ s=mimecast20190719; t=1582577929;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DAKyL7Tqa+fBdxrFOnKvFsx39GH2EjqIV6ZKoapzE/Q=;
- b=JRs2QhDPrB+Zgz0xB54Bkj7P+WmgAyBM0/cg9Ffq48VaVkhigOp0fHqfp4oJ1Kb6fFAxv1
- Uj8RgmYynhKpdgAVB7P+EISYLg/eNT7n5wqUrVyipSIoj5DaEz1IHAdXfK1Gse2+IgMvdv
- XLjAenVhPBa3UPqCue+rZ7bczOMFWA8=
+ bh=g4lGHk6QRHeMqJdDVZg1X6stDT6EwWnjYxVVB4qV32g=;
+ b=izzDagO0HYrU2/OFidNsfEOITktLcFsloEtlYdGYkYzTFCAUg1Om3eC6FWfxE9R+mJC0CG
+ cbj+oW5KrtBt6BiPuljiJtABUieCa+ppe4Eyx/1emtDFANg0+rvZkCzZWrn71xkDDrHzBA
+ v7EiWh1QNbsPR6hen26Fy/U7ANB8L+8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-92-WEuuKmVzO9K1-WgNWVdffA-1; Mon, 24 Feb 2020 15:57:43 -0500
-X-MC-Unique: WEuuKmVzO9K1-WgNWVdffA-1
+ us-mta-204-4jvavk5APjisH5JRlTDLgA-1; Mon, 24 Feb 2020 15:58:47 -0500
+X-MC-Unique: 4jvavk5APjisH5JRlTDLgA-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 17FC6800D53;
- Mon, 24 Feb 2020 20:57:39 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3F65A5EB;
+ Mon, 24 Feb 2020 20:58:43 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-205-162.brq.redhat.com [10.40.205.162])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2364C5C651;
- Mon, 24 Feb 2020 20:57:28 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DD36F5C241;
+ Mon, 24 Feb 2020 20:58:28 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH RESEND v2 06/32] hw/display: Use memory_region_init_rom() with
+Subject: [PATCH RESEND v2 11/32] hw/ppc: Use memory_region_init_rom() with
  read-only regions
-Date: Mon, 24 Feb 2020 21:55:07 +0100
-Message-Id: <20200224205533.23798-7-philmd@redhat.com>
+Date: Mon, 24 Feb 2020 21:55:12 +0100
+Message-Id: <20200224205533.23798-12-philmd@redhat.com>
 In-Reply-To: <20200224205533.23798-1-philmd@redhat.com>
 References: <20200224205533.23798-1-philmd@redhat.com>
 MIME-Version: 1.0
@@ -134,51 +134,55 @@ Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vnb+LbBtRBy6
+X-TUID: qo//91piulkr
 
 This commit was produced with the Coccinelle script
 scripts/coccinelle/memory-region-housekeeping.cocci.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/display/cg3.c | 5 ++---
- hw/display/tcx.c | 5 ++---
- 2 files changed, 4 insertions(+), 6 deletions(-)
+ hw/ppc/mac_newworld.c | 3 +--
+ hw/ppc/mac_oldworld.c | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/hw/display/cg3.c b/hw/display/cg3.c
-index 4fb67c6b1c..a1ede10394 100644
---- a/hw/display/cg3.c
-+++ b/hw/display/cg3.c
-@@ -287,9 +287,8 @@ static void cg3_initfn(Object *obj)
-     SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
-     CG3State *s =3D CG3(obj);
+diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
+index 464d012103..566413e479 100644
+--- a/hw/ppc/mac_newworld.c
++++ b/hw/ppc/mac_newworld.c
+@@ -156,13 +156,12 @@ static void ppc_core99_init(MachineState *machine)
+     memory_region_add_subregion(get_system_memory(), 0, ram);
 =20
--    memory_region_init_ram_nomigrate(&s->rom, obj, "cg3.prom", FCODE_MAX_R=
-OM_SIZE,
--                           &error_fatal);
--    memory_region_set_readonly(&s->rom, true);
-+    memory_region_init_rom_nomigrate(&s->rom, obj, "cg3.prom",
-+                                     FCODE_MAX_ROM_SIZE, &error_fatal);
-     sysbus_init_mmio(sbd, &s->rom);
+     /* allocate and load BIOS */
+-    memory_region_init_ram(bios, NULL, "ppc_core99.bios", BIOS_SIZE,
++    memory_region_init_rom(bios, NULL, "ppc_core99.bios", BIOS_SIZE,
+                            &error_fatal);
 =20
-     memory_region_init_io(&s->reg, obj, &cg3_reg_ops, s, "cg3.reg",
-diff --git a/hw/display/tcx.c b/hw/display/tcx.c
-index ca458f94fe..76de16e8ea 100644
---- a/hw/display/tcx.c
-+++ b/hw/display/tcx.c
-@@ -755,9 +755,8 @@ static void tcx_initfn(Object *obj)
-     SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
-     TCXState *s =3D TCX(obj);
+     if (bios_name =3D=3D NULL)
+         bios_name =3D PROM_FILENAME;
+     filename =3D qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
+-    memory_region_set_readonly(bios, true);
+     memory_region_add_subregion(get_system_memory(), PROM_ADDR, bios);
 =20
--    memory_region_init_ram_nomigrate(&s->rom, obj, "tcx.prom", FCODE_MAX_R=
-OM_SIZE,
--                           &error_fatal);
--    memory_region_set_readonly(&s->rom, true);
-+    memory_region_init_rom_nomigrate(&s->rom, obj, "tcx.prom",
-+                                     FCODE_MAX_ROM_SIZE, &error_fatal);
-     sysbus_init_mmio(sbd, &s->rom);
+     /* Load OpenBIOS (ELF) */
+diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
+index 7318d7e9b4..8b22ff60b8 100644
+--- a/hw/ppc/mac_oldworld.c
++++ b/hw/ppc/mac_oldworld.c
+@@ -132,13 +132,12 @@ static void ppc_heathrow_init(MachineState *machine)
+     memory_region_add_subregion(sysmem, 0, ram);
 =20
-     /* 2/STIP : Stippler */
+     /* allocate and load BIOS */
+-    memory_region_init_ram(bios, NULL, "ppc_heathrow.bios", BIOS_SIZE,
++    memory_region_init_rom(bios, NULL, "ppc_heathrow.bios", BIOS_SIZE,
+                            &error_fatal);
+=20
+     if (bios_name =3D=3D NULL)
+         bios_name =3D PROM_FILENAME;
+     filename =3D qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
+-    memory_region_set_readonly(bios, true);
+     memory_region_add_subregion(sysmem, PROM_ADDR, bios);
+=20
+     /* Load OpenBIOS (ELF) */
 --=20
 2.21.1
 

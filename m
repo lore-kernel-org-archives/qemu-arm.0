@@ -1,106 +1,106 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp766931lfg;
-        Mon, 24 Feb 2020 12:51:40 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzxDcgIloTWP0Q6WyXUY99cVmw3kDwCaPgtu3cRlVehUk7yRF8duLQlcLam6qwF7V/46MvN
-X-Received: by 2002:a37:aac4:: with SMTP id t187mr11196175qke.258.1582577500476;
-        Mon, 24 Feb 2020 12:51:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582577500; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp767282lfg;
+        Mon, 24 Feb 2020 12:52:10 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxYWlvG4uPB7rH8alX3VmPpCP1llq/4ff5fRt2mSShYCh3YhL7xuvRDsr1ojf10x41k2Yjd
+X-Received: by 2002:aed:3eee:: with SMTP id o43mr51413870qtf.33.1582577530843;
+        Mon, 24 Feb 2020 12:52:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582577530; cv=none;
         d=google.com; s=arc-20160816;
-        b=segZU3opNVVg0FDT+0XCAZoQ+EYd2khPXlsPBPuUYl58LJjZSeTSw7d4R8nnnzmBHp
-         b+pSVyy79G3nPGD8UJXRzOlD1YRH5XDfieQmEkF9xi8IUvKGUDGc+aAKSu+e+/Y8GUPK
-         9ZLtjGSUARoof5eA7eMIrkdcZG+1bvN9iLiXieOWrXpS9tljSyi4Xicz9Us885mppGgM
-         WwkOwbEZVui1d5WiLQd1h9NsJKdbycbHT35MGLeoi6oMZMqP7uURn0hdHvCBRjej7cRA
-         TCIigjcOu7omFBv4+xdPZckn7mqTzmO/8+AeP5EvGYUTKX15U5l+qH9lWXrUd4FymMWL
-         bm4A==
+        b=sTi5mBgBQ6v4DVrLLuA+KmFuqGH1wIDrP3pXobGcwLGtMNHmSdItXehDRS/V0X/7I9
+         XHEiQMvvO6pa1May2RYdwHZMjbPb7OE1OyrADLYM/ac4BzoNwnGWqHFHi+BJReVqdQXQ
+         kRBej3HzP6ESwVw8WMtUf59HNO+dvosr8sByVxZlXPFmf5LXZl+8tbX3MOszveGiylPm
+         dH8B5XSkdGibQQmsC5uhbwnFKR0oVvR3zOnAfgqCejfthSDJoyKCrnpGiylhDYYOLvZv
+         lf3vGmfxeNjdg7N/DN6l0FMTafbo/8pqvbEp4k+Y1XrfogmY1o5g91VyAKHIGj+pwGOh
+         8N4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=EimZBb/wTLnnIdXn4hxLBCiwdZq9+sATqGkFdsLXgrs=;
-        b=cphlBQ0zWtFKEepIGCs3rDSc4flKEEdwM8hb/1cbfPsuvZLXJpBxsuKKXCO8IVPJR2
-         NSxTKgGqlkbpN72vx5EiGkx+U4aw2eoCheTxQ///PnNp3lga0Q+jAW1HEZyMaany9/sM
-         UYN0POakWulauuXxBLwT9Z7M52lUCMKq10q/wsJVjhlVra4Evqk2fyziHshELXLM3BhV
-         w2Dqe6W8wLWdPzanOxjocacJSHRevlSVLrvMMHtPLobxQQErYuDAdPvXqexTbL5zpZdt
-         WvSMFZatmTVwXu8gXIh7viMAdEdAlJ50X5s3KLQ06qIzFg1D2PPI0mWr9X0PEHikyBH+
-         qY3g==
+        bh=DAKyL7Tqa+fBdxrFOnKvFsx39GH2EjqIV6ZKoapzE/Q=;
+        b=JnkZcB/895W8I9qQkWtrkR714qBByH5vJphvHHcKeVKD9UR0diCduL6F8P5l/7vfSC
+         YzUU+V9hYMh+M6D5MJ/1DSMtOXTBKJMXZizFEE/FnisULWtRJDPdd9J8HG4i398HR9RX
+         pJTiai2EAISAUiaEM1JI+sjw7WUhRsrqII1R2pj25AdMlNBvlv92L2VON0h18SR8jXlp
+         JzPjSWvAqor8iqrc0y6yoFhtXzfubfRxRUb0XMNcKgoOJmjqIsiqMxEp8ZEXL88PAzC9
+         MjTfNB24PDKVbrHN93aY9/MCElu/Scq82GH8UH1iH2VLxefYhoPlEnPJwRZnFbXOapix
+         h2FQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iKjfM+xs;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jCTeQGLk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 20si7939721qtp.249.2020.02.24.12.51.40
+        by mx.google.com with ESMTPS id w26si6341831qto.306.2020.02.24.12.52.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 12:51:40 -0800 (PST)
+        Mon, 24 Feb 2020 12:52:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iKjfM+xs;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jCTeQGLk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42185 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42196 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6KhX-0005yY-TH
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 15:51:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48867)
+	id 1j6Ki2-0007Hl-4U
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 15:52:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48786)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j6Keq-0001Ef-AO
- for qemu-devel@nongnu.org; Mon, 24 Feb 2020 15:48:53 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j6Kep-0006Br-0M
- for qemu-devel@nongnu.org; Mon, 24 Feb 2020 15:48:52 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:60738
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6Keo-0006Az-S0
+ (envelope-from <philmd@redhat.com>) id 1j6Ken-00018R-Vo
  for qemu-devel@nongnu.org; Mon, 24 Feb 2020 15:48:50 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1j6Kem-00068s-Mi
+ for qemu-devel@nongnu.org; Mon, 24 Feb 2020 15:48:49 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:31350
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6Kem-00068G-IB
+ for qemu-devel@nongnu.org; Mon, 24 Feb 2020 15:48:48 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582577330;
+ s=mimecast20190719; t=1582577328;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=EimZBb/wTLnnIdXn4hxLBCiwdZq9+sATqGkFdsLXgrs=;
- b=iKjfM+xsYVSHJ+KOmWnOJcrt+WZEkfRyn4NslG1OL3qRrDrE7uL08vSZ3qsmgJeMcYRjUD
- tFjXQ1sU5Jr/cSIEv0xM/XaBXNueKzXpNMJMCwYniAsW4injf8+TAlf2NPtch5mtRbsY8t
- 7zL1ju7mBFVjY237I/0n249Nfbg0HMc=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-97-wYYVN1lPPJmisXdLB9bOZg-1; Mon, 24 Feb 2020 15:48:48 -0500
-X-MC-Unique: wYYVN1lPPJmisXdLB9bOZg-1
-Received: by mail-wm1-f72.google.com with SMTP id p2so142107wma.3
- for <qemu-devel@nongnu.org>; Mon, 24 Feb 2020 12:48:48 -0800 (PST)
+ bh=DAKyL7Tqa+fBdxrFOnKvFsx39GH2EjqIV6ZKoapzE/Q=;
+ b=jCTeQGLkzw7doN3lNOZwZI7yCIPsvqNWqAMwZSCkUQfRrLIgo3r335BtrWmYW+dlBljj47
+ 6qnCxy23y/10B84wBzLgBY8rJ4MYliGn1MwCjh5Tomz9AZt0jmjzr5EJtHzYUqeycqNMDV
+ NgDyCp6IcLTe8+gwWoYE5qvolSoSlpk=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-164-V0SMMfEZN6-60Cyca7b3Ow-1; Mon, 24 Feb 2020 15:48:46 -0500
+X-MC-Unique: V0SMMfEZN6-60Cyca7b3Ow-1
+Received: by mail-wm1-f71.google.com with SMTP id b205so243362wmh.2
+ for <qemu-devel@nongnu.org>; Mon, 24 Feb 2020 12:48:45 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ByVIxDLRiagI4jpWyJ3PwuXt8g8+yTOCqOLmRfAD0zk=;
- b=cLC1E6yXrq9UQzril3waSlIoHSSXikDM9A1d5/QQq5HP8+Q0/tGtgNnXW4Zi8wV7kM
- A9ZhRhc+Ctm5rps3uBJZhRNLdtFo+B2LelipIY3MrRWKLLNXKNjTd7xhPS0BzvYPZWFC
- Ppf7uBQqG/AebFMjYv4dQHuj8QFZzH8NgLwzWNOUmiS7C1G77kHWY4cItuNt02D1Y3+H
- N2RlQl3GMNFP5HyrOSvb+6RA0e+dsyjBWbWwvZVsevyZNQmKlT3862O3+VSwBPim7RBb
- 73ySbwUWJ1FmX1cAzs9OdCtGNeAfldvYTtXxgp62NPdKO3CBl6RbdMrEgY8BfVcZ+2Z/
- Q+Zg==
-X-Gm-Message-State: APjAAAUBV+xE0HM5MvI+6O14A2CrEQ6ZZoQNhfkXgxTZISXKaDMZDUi/
- DQlBeaC1bStxSQ7cLQzhcFfJoRvQfnJomBzCo+ItRJwZUGNLP9wIZkx2tMWJcj8DFMLwTtWkr6W
- bxfTwvJUinQiGh2k=
-X-Received: by 2002:adf:f606:: with SMTP id t6mr68482906wrp.304.1582577327195; 
- Mon, 24 Feb 2020 12:48:47 -0800 (PST)
-X-Received: by 2002:adf:f606:: with SMTP id t6mr68482882wrp.304.1582577327002; 
- Mon, 24 Feb 2020 12:48:47 -0800 (PST)
+ bh=kHrh7HRUxq+j6HbASfjSpjwX0NBi+3mUfkSXhbTFwJw=;
+ b=cXDwiGPc6joylkjmj8aw/uIq9WKVAKVp+EVpm1u4EYMB97+xkBmnTQ43PP/0K4XeHg
+ KTP7FmGxQCa2f3pcmjyWFVOcmEvsWSXsompI5NHp/ZaahihXICyUh0Jasp9bDKlvBbAE
+ sRPSMNLCynBifrKwSz5ppdiN6Ho/F218Z+3P7b7QYP24ssHJWuVWd9d7j/E3AimvMitO
+ pntTKyd/ZgPOmA6uskzVKdz2xXlqzj90QxIyHxoIdsIbFi9XDBElUILd/kH5Acob9UOB
+ E35o4YL+/eTJ+Cz7EmaNPxiil2drSJQvEF/DGEY0Ce5xFQEkb33xmVPuLBTFbSmj7Ila
+ jYlA==
+X-Gm-Message-State: APjAAAX5PTqR2XBNJLBTqJlgJAFHWd9FC+95wIDytTWHkYazj+YGsa+f
+ nhhTExEdLAEuy9Y0tXKICZ5qXC7aVJo1UViV2tmhT8C/8HzosX44KE4CWvkW529V0QWFar6V24m
+ X7CgkwC9g4IhqIOI=
+X-Received: by 2002:a1c:9c4c:: with SMTP id f73mr767648wme.125.1582577325010; 
+ Mon, 24 Feb 2020 12:48:45 -0800 (PST)
+X-Received: by 2002:a1c:9c4c:: with SMTP id f73mr767637wme.125.1582577324771; 
+ Mon, 24 Feb 2020 12:48:44 -0800 (PST)
 Received: from x1w.redhat.com (47.red-88-21-205.staticip.rima-tde.net.
  [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id t81sm863436wmg.6.2020.02.24.12.48.44
+ by smtp.gmail.com with ESMTPSA id t81sm863436wmg.6.2020.02.24.12.48.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Feb 2020 12:48:46 -0800 (PST)
+ Mon, 24 Feb 2020 12:48:44 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Subject: [PATCH v2 07/32] hw/mips: Use memory_region_init_rom() with read-only
- regions
-Date: Mon, 24 Feb 2020 21:48:03 +0100
-Message-Id: <20200224204828.23167-8-philmd@redhat.com>
+Subject: [PATCH v2 06/32] hw/display: Use memory_region_init_rom() with
+ read-only regions
+Date: Mon, 24 Feb 2020 21:48:02 +0100
+Message-Id: <20200224204828.23167-7-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200224204828.23167-1-philmd@redhat.com>
 References: <20200224204828.23167-1-philmd@redhat.com>
@@ -111,8 +111,7 @@ Content-Type: text/plain; charset=UTF-8;
 	text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -151,93 +150,51 @@ Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2VWqTBHB3/2H
+X-TUID: YxNdh1C/0ia3
 
 This commit was produced with the Coccinelle script
 scripts/coccinelle/memory-region-housekeeping.cocci.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/mips/mips_fulong2e.c | 3 +--
- hw/mips/mips_jazz.c     | 6 ++----
- hw/mips/mips_mipssim.c  | 3 +--
- hw/mips/mips_r4k.c      | 3 +--
- 4 files changed, 5 insertions(+), 10 deletions(-)
+ hw/display/cg3.c | 5 ++---
+ hw/display/tcx.c | 5 ++---
+ 2 files changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
-index 2e043cbb98..547a7d3a45 100644
---- a/hw/mips/mips_fulong2e.c
-+++ b/hw/mips/mips_fulong2e.c
-@@ -319,9 +319,8 @@ static void mips_fulong2e_init(MachineState *machine)
+diff --git a/hw/display/cg3.c b/hw/display/cg3.c
+index 4fb67c6b1c..a1ede10394 100644
+--- a/hw/display/cg3.c
++++ b/hw/display/cg3.c
+@@ -287,9 +287,8 @@ static void cg3_initfn(Object *obj)
+     SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
+     CG3State *s =3D CG3(obj);
 =20
-     /* allocate RAM */
-     memory_region_allocate_system_memory(ram, NULL, "fulong2e.ram", ram_si=
-ze);
--    memory_region_init_ram(bios, NULL, "fulong2e.bios", BIOS_SIZE,
-+    memory_region_init_rom(bios, NULL, "fulong2e.bios", BIOS_SIZE,
-                            &error_fatal);
--    memory_region_set_readonly(bios, true);
+-    memory_region_init_ram_nomigrate(&s->rom, obj, "cg3.prom", FCODE_MAX_R=
+OM_SIZE,
+-                           &error_fatal);
+-    memory_region_set_readonly(&s->rom, true);
++    memory_region_init_rom_nomigrate(&s->rom, obj, "cg3.prom",
++                                     FCODE_MAX_ROM_SIZE, &error_fatal);
+     sysbus_init_mmio(sbd, &s->rom);
 =20
-     memory_region_add_subregion(address_space_mem, 0, ram);
-     memory_region_add_subregion(address_space_mem, 0x1fc00000LL, bios);
-diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
-index 66fd4d867d..cf47335ea5 100644
---- a/hw/mips/mips_jazz.c
-+++ b/hw/mips/mips_jazz.c
-@@ -195,9 +195,8 @@ static void mips_jazz_init(MachineState *machine,
-                                          machine->ram_size);
-     memory_region_add_subregion(address_space, 0, ram);
+     memory_region_init_io(&s->reg, obj, &cg3_reg_ops, s, "cg3.reg",
+diff --git a/hw/display/tcx.c b/hw/display/tcx.c
+index ca458f94fe..76de16e8ea 100644
+--- a/hw/display/tcx.c
++++ b/hw/display/tcx.c
+@@ -755,9 +755,8 @@ static void tcx_initfn(Object *obj)
+     SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
+     TCXState *s =3D TCX(obj);
 =20
--    memory_region_init_ram(bios, NULL, "mips_jazz.bios", MAGNUM_BIOS_SIZE,
-+    memory_region_init_rom(bios, NULL, "mips_jazz.bios", MAGNUM_BIOS_SIZE,
-                            &error_fatal);
--    memory_region_set_readonly(bios, true);
-     memory_region_init_alias(bios2, NULL, "mips_jazz.bios", bios,
-                              0, MAGNUM_BIOS_SIZE);
-     memory_region_add_subregion(address_space, 0x1fc00000LL, bios);
-@@ -263,9 +262,8 @@ static void mips_jazz_init(MachineState *machine,
-         {
-             /* Simple ROM, so user doesn't have to provide one */
-             MemoryRegion *rom_mr =3D g_new(MemoryRegion, 1);
--            memory_region_init_ram(rom_mr, NULL, "g364fb.rom", 0x80000,
-+            memory_region_init_rom(rom_mr, NULL, "g364fb.rom", 0x80000,
-                                    &error_fatal);
--            memory_region_set_readonly(rom_mr, true);
-             uint8_t *rom =3D memory_region_get_ram_ptr(rom_mr);
-             memory_region_add_subregion(address_space, 0x60000000, rom_mr)=
-;
-             rom[0] =3D 0x10; /* Mips G364 */
-diff --git a/hw/mips/mips_mipssim.c b/hw/mips/mips_mipssim.c
-index b934ca9d51..3fdbb21680 100644
---- a/hw/mips/mips_mipssim.c
-+++ b/hw/mips/mips_mipssim.c
-@@ -169,9 +169,8 @@ mips_mipssim_init(MachineState *machine)
-     /* Allocate RAM. */
-     memory_region_allocate_system_memory(ram, NULL, "mips_mipssim.ram",
-                                          ram_size);
--    memory_region_init_ram(bios, NULL, "mips_mipssim.bios", BIOS_SIZE,
-+    memory_region_init_rom(bios, NULL, "mips_mipssim.bios", BIOS_SIZE,
-                            &error_fatal);
--    memory_region_set_readonly(bios, true);
+-    memory_region_init_ram_nomigrate(&s->rom, obj, "tcx.prom", FCODE_MAX_R=
+OM_SIZE,
+-                           &error_fatal);
+-    memory_region_set_readonly(&s->rom, true);
++    memory_region_init_rom_nomigrate(&s->rom, obj, "tcx.prom",
++                                     FCODE_MAX_ROM_SIZE, &error_fatal);
+     sysbus_init_mmio(sbd, &s->rom);
 =20
-     memory_region_add_subregion(address_space_mem, 0, ram);
-=20
-diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
-index b2aec434c3..54b286ceee 100644
---- a/hw/mips/mips_r4k.c
-+++ b/hw/mips/mips_r4k.c
-@@ -241,9 +241,8 @@ void mips_r4k_init(MachineState *machine)
-     dinfo =3D drive_get(IF_PFLASH, 0, 0);
-     if ((bios_size > 0) && (bios_size <=3D BIOS_SIZE)) {
-         bios =3D g_new(MemoryRegion, 1);
--        memory_region_init_ram(bios, NULL, "mips_r4k.bios", BIOS_SIZE,
-+        memory_region_init_rom(bios, NULL, "mips_r4k.bios", BIOS_SIZE,
-                                &error_fatal);
--        memory_region_set_readonly(bios, true);
-         memory_region_add_subregion(get_system_memory(), 0x1fc00000, bios)=
-;
-=20
-         load_image_targphys(filename, 0x1fc00000, BIOS_SIZE);
+     /* 2/STIP : Stippler */
 --=20
 2.21.1
 

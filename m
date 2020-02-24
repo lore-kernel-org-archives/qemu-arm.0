@@ -1,103 +1,93 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4605038lfg;
-        Sun, 23 Feb 2020 19:43:05 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzA5Y34NxNTlt3ccZARAQM1IHlgYch7bK/ImmvrH5le94HUhhelyMDGUIqQb3u7ACK1xaBt
-X-Received: by 2002:a05:620a:2011:: with SMTP id c17mr44543517qka.447.1582515785110;
-        Sun, 23 Feb 2020 19:43:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582515785; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4628870lfg;
+        Sun, 23 Feb 2020 20:17:06 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwCJIHRS4RPZbqzrM1/+uwPOTBnApspuhAHSh/iLOwPwgDBd/L8xVZdPubC5wfx2Syxwt5K
+X-Received: by 2002:a37:742:: with SMTP id 63mr48210474qkh.31.1582517826775;
+        Sun, 23 Feb 2020 20:17:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582517826; cv=none;
         d=google.com; s=arc-20160816;
-        b=NeCa3t03djTw1Ivd/5RpTrcZiCFxJd+3BiupdmqRNRBscGrwtwupHuYAqyr8aUuP9+
-         YtpCaRfL5HT2KMkO+1iDoh6xIoK7a4Gm3YbolcOkMBIivNpKTvCINCDELP+5YJzTDbJE
-         QOC1yqilSnUPhCGHRWxq1NleydUI5rQl8APGEDt2eAk4kh+j+XIcZhjSzKLosNFR1dI2
-         5+HMdxCXvQ+z2xz7D6eh7SbsSbdPZ0EPZK1XNKxXEMecW7UrCix3WWWIAcPKn0Ir/gaQ
-         iEDCvzXTxPqKa6+5tBoiHvzha3ks1DyrKMDlrMzevsG/EcUMmdgPq+of3sy4avvv+cqa
-         8MFw==
+        b=f8iWgsV94MkhlKSMGJbgpwvqIcioXP0MP0v8i4Mbrl4b92JWQMXPszmYWI/FkGvvAE
+         mJ/PedLcgtTxoWt9sJXPdRpogY2d4goV4FiHOaQpEh6phnW7jZaG7Nj83fBEsmPkMmes
+         MpPCWbx0QQG20uE0t/XGX4SC7qu53p7PNxszonbT7djo1M8fcPHhaHHvuQWKmaDEADWH
+         rOhMNqp79V22MFnSmi9EZm5qgWTIZGifUXoqH8qgfj7/CJBbpPeKT7aobyfJaJPfRoLW
+         HX3UKzbbJb+kg/JPqGJoTJ9KrtW/kZSaHn8tkb2Tgs9KgnQlm/EoanGZNkgXUKjGtt+t
+         hkog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=iWYznB1aog+O7WLZyGgtypBDYjXWjOFl/A1ZuJAFEzo=;
-        b=q7aSs/gNh6tsmTvDqPWDwPKm8bYo/GDheAGckL6F2cK+uFSsrnmAy0BVQCO3qZ90Ci
-         uItXa4q1scvQXxhf/LIhzz4p9/FR2G0d/fyLxbE4s8EjjLqQ/llAT6g2cEHymSOL4VZb
-         /7YJk45PUpER6f+EQ1jVBQD/afUUFSRR8NBemF4xqAJGoxDaku4dnyork3kXg/emBxV4
-         BGprsc6GQ2yf6CqRLTvtgsI3KQcldwXW31P4oKURo5/ZWbMmugEIUHegmEuJYp6zo25W
-         Fs33UwnkafTkmkHFWVFtGTkPU67epm6aRJxeB6iCgHt8czX/Q3Zpgig1/s9ECrOpdEaT
-         8JXQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=JC3y6mf5XDOlqH25YUz820mAiH7SqFSX5sGPp3pIDyI=;
+        b=KqjvKdgXYe+88Ca03iNXt9MJ1dRPTX+Qdw21eQI/cqixoGFsenAphXssTL21NigrwF
+         KvV6YE12IvzXmR844gTM5VveX4zDbq3S9Z+j5iSDCqAJToyOgSWvtEQYny1JvrjFdjrZ
+         mdU0tHyvAG6OrNLPh7L8Z6kHkm5JK3X/dCQwnDbX3wxv4LvlpohWBxSa6nwGlxUTTaHU
+         jCdUxXJMbnuxuoVCcsHA7mSJNFWnW6LuFqQKvwnCqbWotf+gioJmRcDlL+gMHV8j54uQ
+         n21XRCORJfbXi2U9CXBS+z8GcZNnFdSQIxYNDX4r71YjW3ldHa9t0cvEz4w6AAq8rwpN
+         1d8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="WOw6qM/3";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iHH60lJp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w17si5183195qkj.162.2020.02.23.19.43.04
+        by mx.google.com with ESMTPS id y7si4795904qvr.214.2020.02.23.20.17.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 23 Feb 2020 19:43:05 -0800 (PST)
+        Sun, 23 Feb 2020 20:17:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="WOw6qM/3";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iHH60lJp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59238 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59550 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j64e8-0007E7-Ih
-	for alex.bennee@linaro.org; Sun, 23 Feb 2020 22:43:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58223)
+	id 1j65B4-0001fi-7D
+	for alex.bennee@linaro.org; Sun, 23 Feb 2020 23:17:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33399)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <gshan@redhat.com>) id 1j64dy-0007DS-8L
- for qemu-arm@nongnu.org; Sun, 23 Feb 2020 22:42:55 -0500
+ (envelope-from <gshan@redhat.com>) id 1j65Am-0001en-2u
+ for qemu-arm@nongnu.org; Sun, 23 Feb 2020 23:16:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <gshan@redhat.com>) id 1j64dw-0005IJ-6e
- for qemu-arm@nongnu.org; Sun, 23 Feb 2020 22:42:53 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:44625
+ (envelope-from <gshan@redhat.com>) id 1j65Ak-0007JQ-Hi
+ for qemu-arm@nongnu.org; Sun, 23 Feb 2020 23:16:47 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:53182
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1j64dw-0005Hv-3q
- for qemu-arm@nongnu.org; Sun, 23 Feb 2020 22:42:52 -0500
+ (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1j65Ak-0007Ir-EI
+ for qemu-arm@nongnu.org; Sun, 23 Feb 2020 23:16:46 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582515771;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=iWYznB1aog+O7WLZyGgtypBDYjXWjOFl/A1ZuJAFEzo=;
- b=WOw6qM/3HPZQ+pJO7cAaaDlpJzEr64M8p4bHEO+4fdB74V0n1XLuV2rFqzwKpRPVhOy3+w
- J1L5vizpRoTIYorGhFg5vZfu1W2xv4bwj/CCNBXoaUDW03yAu1LPywIWUjJieNuMRG/7cj
- v4ZqRcJWR4YuiyOFCF5Y++O2vr0Sj9o=
+ s=mimecast20190719; t=1582517805;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=JC3y6mf5XDOlqH25YUz820mAiH7SqFSX5sGPp3pIDyI=;
+ b=iHH60lJp/QAY9k39T6ij3F6FkekC3cowM7m4Rj9NkZD0884dQpTwm3A3Ye2p0EqGxz4b/E
+ tICd7CDed01ymbJYN1BvJ8F0SahgGmKQrEC//TYtyPSoSdZE6ORnbs4L2I8046KA1nuOMR
+ TWW3Tw1KCZ6cgyV2inzqaf4/CLGj1q4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-41-P8hYfd4tPGSW0lQwMTcmJg-1; Sun, 23 Feb 2020 22:42:45 -0500
-X-MC-Unique: P8hYfd4tPGSW0lQwMTcmJg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-111-t_2xYZUuO0m0Xq0sKEb1Lg-1; Sun, 23 Feb 2020 23:16:44 -0500
+X-MC-Unique: t_2xYZUuO0m0Xq0sKEb1Lg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C3B23189F762;
- Mon, 24 Feb 2020 03:42:43 +0000 (UTC)
-Received: from localhost.localdomain (vpn2-54-48.bne.redhat.com [10.64.54.48])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 85FD682063;
- Mon, 24 Feb 2020 03:42:35 +0000 (UTC)
-Subject: Re: [PATCH] hw/char/pl011: Enable TxFIFO and async transmission
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-References: <158226649422.712.7285415168506294704@a1bbccc8075a>
- <5d569175-55de-b182-a338-cc04ba9b0afd@redhat.com>
- <e24f7030-a703-0887-7dc3-0024af63678b@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 57E911005510;
+ Mon, 24 Feb 2020 04:16:42 +0000 (UTC)
+Received: from localhost.localdomain.com (vpn2-54-48.bne.redhat.com
+ [10.64.54.48])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5199039F;
+ Mon, 24 Feb 2020 04:16:37 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
-Message-ID: <e414349b-6d33-f849-0ed2-256330912714@redhat.com>
-Date: Mon, 24 Feb 2020 14:42:33 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH] hw/arm: Use TYPE_PL011 to create serial port
+Date: Mon, 24 Feb 2020 15:16:33 +1100
+Message-Id: <20200224041633.97345-1-gshan@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <e24f7030-a703-0887-7dc3-0024af63678b@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -113,86 +103,90 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: peter.maydell@linaro.org, Andrew Jones <drjones@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, maz@kernel.org, qemu-arm@nongnu.org,
- shan.gavin@gmail.com, marcandre.lureau@redhat.com, pbonzini@redhat.com
+Cc: peter.maydell@linaro.org, radoslaw.biernacki@linaro.org,
+ alistair@alistair23.me, shan.gavin@gmail.com, leif@nuviainc.com,
+ philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ju8D702YRH1h
+X-TUID: 6VFqU4g7mARU
 
-On 2/21/20 8:46 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 2/21/20 10:37 AM, Philippe Mathieu-Daud=C3=A9 wrote:
->> Cc'ing Igor & Drew.
->>
->> On 2/21/20 7:28 AM, no-reply@patchew.org wrote:
->>> Patchew URL: https://patchew.org/QEMU/20200221044908.266883-1-gshan@red=
-hat.com/
->> =C2=A0>
->>> =3D=3D=3D TEST SCRIPT BEGIN =3D=3D=3D
->>> #!/bin/bash
->>> make docker-image-centos7 V=3D1 NETWORK=3D1
->>> time make docker-test-quick@centos7 SHOW_ENV=3D1 J=3D14 NETWORK=3D1
->>> =3D=3D=3D TEST SCRIPT END =3D=3D=3D
->> [...]
->> =C2=A0=C2=A0 TEST=C2=A0=C2=A0=C2=A0 check-qtest-aarch64: tests/qtest/bio=
-s-tables-test
->>> **
->>> ERROR:/tmp/qemu-test/src/tests/qtest/acpi-utils.c:145:acpi_find_rsdp_ad=
-dress_uefi: code should not be reached
->>> ERROR - Bail out! ERROR:/tmp/qemu-test/src/tests/qtest/acpi-utils.c:145=
-:acpi_find_rsdp_address_uefi: code should not be reached
->>> make: *** [check-qtest-aarch64] Error 1
->>
->> The virt machine is not happy, busy-looping?
->>
->> $ QTEST_QEMU_BINARY=3Daarch64-softmmu/qemu-system-aarch64 \
->> =C2=A0=C2=A0 tests/qtest/bios-tables-test
->> /aarch64/acpi/virt: ^C
->=20
-> So this test runs:
->=20
-> $ qemu-system-aarch64 -M virt -pflash pc-bios/edk2-aarch64-code.fd -pflas=
-h pc-bios/edk2-arm-vars.fd -cdrom tests/data/uefi-boot-images/bios-tables-t=
-est.aarch64.iso.qcow2 -cpu cortex-a57 -serial stdio
+This uses TYPE_PL011 when creating the serial port, to make the code
+a bit more atomatic.
 
-.../...
+Signed-off-by: Gavin Shan <gshan@redhat.com>
+---
+ hw/arm/sbsa-ref.c    | 3 ++-
+ hw/arm/virt.c        | 3 ++-
+ hw/arm/xlnx-versal.c | 3 ++-
+ 3 files changed, 6 insertions(+), 3 deletions(-)
 
->=20
-> 12638@1582277983.172625:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172629:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172633:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172636:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172640:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172643:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172647:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172650:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172654:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172658:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172661:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172665:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172668:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172672:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172675:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172679:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172682:pl011_read addr 0x00000018 value 0x00000010
-> 12638@1582277983.172686:pl011_read addr 0x00000018 value 0x00000010
-> [keep looping]
->=20
-
-Thanks, Phil. It seems there is some race, which causes the PL011_FLAG_TXFF
-isn't cleared properly. It should be fixed in v2, which was just posted.
-At least, I didn't see the error locally with v2 :)
-
-    # QTEST_QEMU_BINARY=3Daarch64-softmmu/qemu-system-aarch64 tests/qtest/b=
-ios-tables-test
-      :
-    # End of virt tests
-    # End of acpi tests
-    # End of aarch64 tests
-
-Thanks,
-Gavin
-
-
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 9b5bcb5634..df0a165047 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -39,6 +39,7 @@
+ #include "hw/pci-host/gpex.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/usb.h"
++#include "hw/char/pl011.h"
+ #include "net/net.h"
+=20
+ #define RAMLIMIT_GB 8192
+@@ -409,7 +410,7 @@ static void create_uart(const SBSAMachineState *sms, in=
+t uart,
+ {
+     hwaddr base =3D sbsa_ref_memmap[uart].base;
+     int irq =3D sbsa_ref_irqmap[uart];
+-    DeviceState *dev =3D qdev_create(NULL, "pl011");
++    DeviceState *dev =3D qdev_create(NULL, TYPE_PL011);
+     SysBusDevice *s =3D SYS_BUS_DEVICE(dev);
+=20
+     qdev_prop_set_chr(dev, "chardev", chr);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index f788fe27d6..d0da513737 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -71,6 +71,7 @@
+ #include "hw/mem/pc-dimm.h"
+ #include "hw/mem/nvdimm.h"
+ #include "hw/acpi/generic_event_device.h"
++#include "hw/char/pl011.h"
+=20
+ #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+@@ -724,7 +725,7 @@ static void create_uart(const VirtMachineState *vms, in=
+t uart,
+     int irq =3D vms->irqmap[uart];
+     const char compat[] =3D "arm,pl011\0arm,primecell";
+     const char clocknames[] =3D "uartclk\0apb_pclk";
+-    DeviceState *dev =3D qdev_create(NULL, "pl011");
++    DeviceState *dev =3D qdev_create(NULL, TYPE_PL011);
+     SysBusDevice *s =3D SYS_BUS_DEVICE(dev);
+=20
+     qdev_prop_set_chr(dev, "chardev", chr);
+diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+index 1cf3daaf4f..403fc7b881 100644
+--- a/hw/arm/xlnx-versal.c
++++ b/hw/arm/xlnx-versal.c
+@@ -22,6 +22,7 @@
+ #include "hw/misc/unimp.h"
+ #include "hw/intc/arm_gicv3_common.h"
+ #include "hw/arm/xlnx-versal.h"
++#include "hw/char/pl011.h"
+=20
+ #define XLNX_VERSAL_ACPU_TYPE ARM_CPU_TYPE_NAME("cortex-a72")
+ #define GEM_REVISION        0x40070106
+@@ -144,7 +145,7 @@ static void versal_create_uarts(Versal *s, qemu_irq *pi=
+c)
+         DeviceState *dev;
+         MemoryRegion *mr;
+=20
+-        dev =3D qdev_create(NULL, "pl011");
++        dev =3D qdev_create(NULL, TYPE_PL011);
+         s->lpd.iou.uart[i] =3D SYS_BUS_DEVICE(dev);
+         qdev_prop_set_chr(dev, "chardev", serial_hd(i));
+         object_property_add_child(OBJECT(s), name, OBJECT(dev), &error_fat=
+al);
+--=20
+2.23.0
 

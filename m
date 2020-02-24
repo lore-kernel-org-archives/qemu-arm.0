@@ -1,220 +1,334 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp852945lfg;
-        Mon, 24 Feb 2020 14:34:35 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxDFvTuYpo1z4/89IIC0vI+yRzSFHf0H5JEjpPJSfEoZhsNw+J4ZZ5QA72a0TluBxuYZICh
-X-Received: by 2002:a05:6214:4f2:: with SMTP id cl18mr47603522qvb.89.1582583675816;
-        Mon, 24 Feb 2020 14:34:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582583675; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp853663lfg;
+        Mon, 24 Feb 2020 14:35:19 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxrLvKB1dJX6YbQvV24pLXZVYdj/MaiECQPYndx2a0OGF6ZyImVD+1r4rDHIYvMjjCFg/DK
+X-Received: by 2002:a05:620a:1134:: with SMTP id p20mr53164650qkk.33.1582583719009;
+        Mon, 24 Feb 2020 14:35:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582583719; cv=none;
         d=google.com; s=arc-20160816;
-        b=ofabtnoTh72ZbjtJMmKbXyFoVg6VJKfecuuj+cazmLPpbFYC6bOkWWRxTTyDFUQac0
-         bPvMI2DpM5iQLvCDSXBIFUrVVOPIqoJok5U4wGg3Z7NYgLM4KTLmhzkomhac+FaUKh3s
-         Wnd9JM1USkY+qev8tEuUK7C5KqJx2kzC5mQEf9s5HXX6yiL6/dT+tlvrSjkhZ73ShZM8
-         QhP3BnUxxM8HXp6WMz0T9ORfM3b7UDjel6k4GRv9NnjXGqFbUmZL1v7ln/a8IlEbsJZm
-         vv6PtTuRhbPm1iEKTjSAev7kEmdRuYkyt4msqpUbLKWLqg5EdElsw8soR6sN+sr2gODa
-         l6fQ==
+        b=AyH5SXrZp/iNRxJiedLfTwGk9Jt7vAbrHIa17e9ph/pRlUZwd3ZF9Qv7ifmbM7kWTq
+         GRdIUmAE4AcMiIPWATKQR/MYUPvAktZrLTPlRNqaEV6OsHa+asOB0RO5kf8xvXXCcgI7
+         Nu9e72fPo01GsENwWjc9dK08ou1sQZdikkPqVJ5mi4u3HrCOZ2PrNFC93rw+tnuE4u9S
+         2kdYCxTQwj+YMKVdo5Tp2yUlAT01OHfjCQbScoNlO/JEZ9zop3PNY9auVOsYjZOvHBzv
+         94QYp3GTqZWH2/G6Ad/F0FI8esVn7ZtnI5lWzdvRg88dEMmhZ0TZlEMTTr4WOqzt4UwZ
+         eoDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=sfPB5TpnY3oGZn07xohGC7FCr3H98PkvPpnhvVa9Elg=;
-        b=jJZQlASf3S8J/T94KG5cM82Mms18rr8BLt0/Ugc5tc+/CCazQovmIGs58pYL+yQTch
-         2zRBqGQOe4Td2CT/Jn4eaHyIJNDdgQ6P/Z5krT5H9+Ums/+v49WH0gGdewcdIMg/DzKp
-         QakjwY+rLpRiVZ+QnRRA9p/mAwcdpSIcvyIZiZ3YCkZiqc50h/UL7OdAZmunxrd/SdCP
-         P9YItnSS1WzxRPdhJECixN1kVv0Tp+UUF2WmIjGJ+T2z5YSlUqpiizuRN9fzgW/jEgo+
-         KUZwFsZiNQihogQPxPDI1ZaNWSNggBTZHVltNsyssgQpA0tjivSqioDsdocUpSL93fYL
-         dXhw==
+        bh=nZ29NUYH0rX/kvQeepGmU3q2/jzjoKfkqGWPwiKmojM=;
+        b=YpUKZQwEGSq1fdLalzJgfneYoUVow2+MW4j9AZ/6n4N0IZSQlruKVYb5CAICsFqiu8
+         N3jcxpMxrVvQy+8fNR7zINVXY657nshK7zvJgWeHlzMNkqWDoHQhsb/RWTq4Tl1SOxLD
+         BTIgBvyNPFYF6vg3xdq18JzD5OwYGM/J65h1jxFvOzzyvwGo6FzP8knQ3h7V+6WmXGKA
+         40KUL9zimYlvjFUHUpVDOY50ZPROvFPNFRhuaRMLxZi9gIkaoUGXDrp7Fvf+W0CosOlQ
+         k0JDo3rlcQaGgkRKG5VXOlmJoKCyNvnTioQb7vF/PrIkq5Z2+TAbEUIWEFD94zC+G+OS
+         kfUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XC6bN25h;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=xxvrA+og;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e4si7763983qtw.217.2020.02.24.14.34.35
+        by mx.google.com with ESMTPS id g10si578586qth.339.2020.02.24.14.35.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 14:34:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Feb 2020 14:35:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XC6bN25h;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45496 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=xxvrA+og;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45530 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6MJ9-0007Ps-7G
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 17:34:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38933)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j6MJq-0000fr-E5
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 17:35:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37852)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <gshan@redhat.com>) id 1j6MD4-00065P-6R
- for qemu-devel@nongnu.org; Mon, 24 Feb 2020 17:28:19 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1j6M7j-0004KT-Iv
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 17:22:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <gshan@redhat.com>) id 1j6MD3-0008Cn-0j
- for qemu-devel@nongnu.org; Mon, 24 Feb 2020 17:28:18 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:56463
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1j6MD1-0008BX-PA
- for qemu-devel@nongnu.org; Mon, 24 Feb 2020 17:28:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582583294;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sfPB5TpnY3oGZn07xohGC7FCr3H98PkvPpnhvVa9Elg=;
- b=XC6bN25hivUtZPTnuMC0XK9SbTBkviEst3HbjsOMM97U6JL9KZWx6EDgU06/RHydUzMF0h
- Bs3Q+EII1poU9piQvWPnJZC/HCIrL2bM/O+k/z8dPULgd5p/ZI+i4aZjyKYFzQt1xulzVI
- A7niGDnnNRg12xMDqGS1RNhCaE/iKgs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-318-DVLYaDESO1myMv1glPgHwA-1; Mon, 24 Feb 2020 17:28:10 -0500
-X-MC-Unique: DVLYaDESO1myMv1glPgHwA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 065841084420;
- Mon, 24 Feb 2020 22:28:09 +0000 (UTC)
-Received: from localhost.localdomain (vpn2-54-79.bne.redhat.com [10.64.54.79])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 534911001902;
- Mon, 24 Feb 2020 22:28:06 +0000 (UTC)
-Subject: Re: [PATCH] hw/arm: Use TYPE_PL011 to create serial port
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20200224041633.97345-1-gshan@redhat.com>
- <ea5d13ba-e736-2c73-f2c0-6e42e512afa2@redhat.com>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <1ac61bd1-024c-f596-73c7-6d9488c9fd50@redhat.com>
-Date: Tue, 25 Feb 2020 09:28:04 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ (envelope-from <richard.henderson@linaro.org>) id 1j6M7i-0005rT-1f
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 17:22:47 -0500
+Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:55949)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1j6M7h-0005r0-Qj
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 17:22:45 -0500
+Received: by mail-pj1-x1044.google.com with SMTP id d5so353588pjz.5
+ for <qemu-arm@nongnu.org>; Mon, 24 Feb 2020 14:22:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=nZ29NUYH0rX/kvQeepGmU3q2/jzjoKfkqGWPwiKmojM=;
+ b=xxvrA+ogSQK5y+8pjt/5xu+j9hsVv24loOIm+bdauHtMM2SQWn2Nq3tSXsmW6h4/Rl
+ Fx9QkPuJqgiaNXdzImh97cao6XiPvw5Gf7F9GTDKpcaAav/lVC99oH3SBGFqWFdkpxdV
+ bbVzoN0aRklZwTaO/TEVXdT55mxPY26ZHyc8Xz6xajt0T+8qtUBDEpuL7olNRJMKSKAD
+ R74cgMCYhDAfCtfQ7eH3+BIeEO9xnpazBVEWhLxiWOO6cRFUL2ZebfmV1xxz9kNxyvt8
+ 5sPxVXZBUhqSXqG8+Pry3qLsTquv6lG49B5lBx9JgPSCZEIQ5QL5mBR5Y+Co6f2x5Kx7
+ lSDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=nZ29NUYH0rX/kvQeepGmU3q2/jzjoKfkqGWPwiKmojM=;
+ b=rxSS8uRZS30zx2G5pr8q9JTF+TyZNJni5VAts7lfqAdKAJAo1eOKLJ/Ci49j50hSgW
+ PYuFuo6gkkb269+CBhWeedyZAbEJTb6YQXd33GC87Wu13wA8xZ3rC+UOlEMQljx9gZ5w
+ bBUfoiRWJOKmviMdWh9WaowegOhrgUPn2Kv6hDGiaTh+Dt/MAVs1aVi4uqeECJAzkFdf
+ QTZ6tCkAvNTndjwZ9Qscc8v9xhJlXfZ3dHCsaPMpGfy1xRaMFWmg75i7hVoZXRZPcw17
+ 7qS3dffxyLOGR6NcGx9aLu+PcEwvKM8c6u74++gH07ZuDreygQfcB2ozmmBSNRvIQXtI
+ aWRA==
+X-Gm-Message-State: APjAAAUEs0EV5mnHMh3/dRWvMj4PGFWo5sI2+R17lBKdIx3xBlh4+Etb
+ gxbEoN4aV2AmhxRPSuFKrQ6F3g==
+X-Received: by 2002:a17:902:8b85:: with SMTP id
+ ay5mr48009211plb.253.1582582964790; 
+ Mon, 24 Feb 2020 14:22:44 -0800 (PST)
+Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net.
+ [97.126.123.70])
+ by smtp.gmail.com with ESMTPSA id o6sm13897097pgg.37.2020.02.24.14.22.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 Feb 2020 14:22:44 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 08/17] target/arm: Add missing checks for fpsp_v2
+Date: Mon, 24 Feb 2020 14:22:23 -0800
+Message-Id: <20200224222232.13807-9-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200224222232.13807-1-richard.henderson@linaro.org>
+References: <20200224222232.13807-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <ea5d13ba-e736-2c73-f2c0-6e42e512afa2@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
-X-BeenThere: qemu-devel@nongnu.org
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::1044
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: peter.maydell@linaro.org, radoslaw.biernacki@linaro.org,
- alistair@alistair23.me, shan.gavin@gmail.com, edgar.iglesias@gmail.com,
- leif@nuviainc.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uZAKqPgfq6H8
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kYjq8ZEq+HJp
 
-On 2/24/20 7:41 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 2/24/20 5:16 AM, Gavin Shan wrote:
->> This uses TYPE_PL011 when creating the serial port, to make the code
->> a bit more atomatic.
->=20
-> Do you mean aUtomatic? I'm not sure this automate the code, but using the=
- TYPE definition is definitively cleaner.
->=20
-> With description fixed:
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->=20
+We will eventually remove the early ARM_FEATURE_VFP test,
+so add a proper test for each trans_* that does not already
+have another ISA test.
 
-Sure, v2 was just posted with the commit log improved according to
-your comments.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/translate-vfp.inc.c | 78 ++++++++++++++++++++++++++++++----
+ 1 file changed, 69 insertions(+), 9 deletions(-)
 
-Thanks,
-Gavin
-
->>
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> ---
->> =C2=A0 hw/arm/sbsa-ref.c=C2=A0=C2=A0=C2=A0 | 3 ++-
->> =C2=A0 hw/arm/virt.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 3 ++-
->> =C2=A0 hw/arm/xlnx-versal.c | 3 ++-
->> =C2=A0 3 files changed, 6 insertions(+), 3 deletions(-)
->>
->> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
->> index 9b5bcb5634..df0a165047 100644
->> --- a/hw/arm/sbsa-ref.c
->> +++ b/hw/arm/sbsa-ref.c
->> @@ -39,6 +39,7 @@
->> =C2=A0 #include "hw/pci-host/gpex.h"
->> =C2=A0 #include "hw/qdev-properties.h"
->> =C2=A0 #include "hw/usb.h"
->> +#include "hw/char/pl011.h"
->> =C2=A0 #include "net/net.h"
->> =C2=A0 #define RAMLIMIT_GB 8192
->> @@ -409,7 +410,7 @@ static void create_uart(const SBSAMachineState *sms,=
- int uart,
->> =C2=A0 {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 hwaddr base =3D sbsa_ref_memmap[uart].bas=
-e;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int irq =3D sbsa_ref_irqmap[uart];
->> -=C2=A0=C2=A0=C2=A0 DeviceState *dev =3D qdev_create(NULL, "pl011");
->> +=C2=A0=C2=A0=C2=A0 DeviceState *dev =3D qdev_create(NULL, TYPE_PL011);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 SysBusDevice *s =3D SYS_BUS_DEVICE(dev);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qdev_prop_set_chr(dev, "chardev", chr);
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index f788fe27d6..d0da513737 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -71,6 +71,7 @@
->> =C2=A0 #include "hw/mem/pc-dimm.h"
->> =C2=A0 #include "hw/mem/nvdimm.h"
->> =C2=A0 #include "hw/acpi/generic_event_device.h"
->> +#include "hw/char/pl011.h"
->> =C2=A0 #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 static void virt_##major##_##minor##_clas=
-s_init(ObjectClass *oc, \
->> @@ -724,7 +725,7 @@ static void create_uart(const VirtMachineState *vms,=
- int uart,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int irq =3D vms->irqmap[uart];
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const char compat[] =3D "arm,pl011\0arm,p=
-rimecell";
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const char clocknames[] =3D "uartclk\0apb=
-_pclk";
->> -=C2=A0=C2=A0=C2=A0 DeviceState *dev =3D qdev_create(NULL, "pl011");
->> +=C2=A0=C2=A0=C2=A0 DeviceState *dev =3D qdev_create(NULL, TYPE_PL011);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 SysBusDevice *s =3D SYS_BUS_DEVICE(dev);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qdev_prop_set_chr(dev, "chardev", chr);
->> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
->> index 1cf3daaf4f..403fc7b881 100644
->> --- a/hw/arm/xlnx-versal.c
->> +++ b/hw/arm/xlnx-versal.c
->> @@ -22,6 +22,7 @@
->> =C2=A0 #include "hw/misc/unimp.h"
->> =C2=A0 #include "hw/intc/arm_gicv3_common.h"
->> =C2=A0 #include "hw/arm/xlnx-versal.h"
->> +#include "hw/char/pl011.h"
->> =C2=A0 #define XLNX_VERSAL_ACPU_TYPE ARM_CPU_TYPE_NAME("cortex-a72")
->> =C2=A0 #define GEM_REVISION=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0x=
-40070106
->> @@ -144,7 +145,7 @@ static void versal_create_uarts(Versal *s, qemu_irq =
-*pic)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 DeviceState *dev;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 MemoryRegion *mr;
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dev =3D qdev_create(NULL, "p=
-l011");
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dev =3D qdev_create(NULL, TY=
-PE_PL011);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s->lpd.iou.uart[i=
-] =3D SYS_BUS_DEVICE(dev);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qdev_prop_set_chr=
-(dev, "chardev", serial_hd(i));
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 object_property_a=
-dd_child(OBJECT(s), name, OBJECT(dev), &error_fatal);
->>
->=20
+diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
+index 51d46f4302..f88a95438f 100644
+--- a/target/arm/translate-vfp.inc.c
++++ b/target/arm/translate-vfp.inc.c
+@@ -555,6 +555,13 @@ static bool trans_VMOV_to_gp(DisasContext *s, arg_VMOV_to_gp *a)
+     int pass;
+     uint32_t offset;
+ 
++    /* SIZE == 2 is a VFP instruction; otherwise NEON.  */
++    if (a->size == 2
++        ? !dc_isar_feature(aa32_fpsp_v2, s)
++        : !arm_dc_feature(s, ARM_FEATURE_NEON)) {
++        return false;
++    }
++
+     /* UNDEF accesses to D16-D31 if they don't exist */
+     if (!dc_isar_feature(aa32_simd_r32, s) && (a->vn & 0x10)) {
+         return false;
+@@ -564,10 +571,6 @@ static bool trans_VMOV_to_gp(DisasContext *s, arg_VMOV_to_gp *a)
+     pass = extract32(offset, 2, 1);
+     offset = extract32(offset, 0, 2) * 8;
+ 
+-    if (a->size != 2 && !arm_dc_feature(s, ARM_FEATURE_NEON)) {
+-        return false;
+-    }
+-
+     if (!vfp_access_check(s)) {
+         return true;
+     }
+@@ -614,6 +617,13 @@ static bool trans_VMOV_from_gp(DisasContext *s, arg_VMOV_from_gp *a)
+     int pass;
+     uint32_t offset;
+ 
++    /* SIZE == 2 is a VFP instruction; otherwise NEON.  */
++    if (a->size == 2
++        ? !dc_isar_feature(aa32_fpsp_v2, s)
++        : !arm_dc_feature(s, ARM_FEATURE_NEON)) {
++        return false;
++    }
++
+     /* UNDEF accesses to D16-D31 if they don't exist */
+     if (!dc_isar_feature(aa32_simd_r32, s) && (a->vn & 0x10)) {
+         return false;
+@@ -623,10 +633,6 @@ static bool trans_VMOV_from_gp(DisasContext *s, arg_VMOV_from_gp *a)
+     pass = extract32(offset, 2, 1);
+     offset = extract32(offset, 0, 2) * 8;
+ 
+-    if (a->size != 2 && !arm_dc_feature(s, ARM_FEATURE_NEON)) {
+-        return false;
+-    }
+-
+     if (!vfp_access_check(s)) {
+         return true;
+     }
+@@ -700,6 +706,10 @@ static bool trans_VMSR_VMRS(DisasContext *s, arg_VMSR_VMRS *a)
+     TCGv_i32 tmp;
+     bool ignore_vfp_enabled = false;
+ 
++    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++        return false;
++    }
++
+     if (arm_dc_feature(s, ARM_FEATURE_M)) {
+         /*
+          * The only M-profile VFP vmrs/vmsr sysreg is FPSCR.
+@@ -844,6 +854,10 @@ static bool trans_VMOV_single(DisasContext *s, arg_VMOV_single *a)
+ {
+     TCGv_i32 tmp;
+ 
++    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++        return false;
++    }
++
+     if (!vfp_access_check(s)) {
+         return true;
+     }
+@@ -873,6 +887,10 @@ static bool trans_VMOV_64_sp(DisasContext *s, arg_VMOV_64_sp *a)
+ {
+     TCGv_i32 tmp;
+ 
++    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++        return false;
++    }
++
+     /*
+      * VMOV between two general-purpose registers and two single precision
+      * floating point registers
+@@ -908,8 +926,12 @@ static bool trans_VMOV_64_dp(DisasContext *s, arg_VMOV_64_dp *a)
+ 
+     /*
+      * VMOV between two general-purpose registers and one double precision
+-     * floating point register
++     * floating point register.  Note that this does not require support
++     * for double precision arithmetic.
+      */
++    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++        return false;
++    }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist */
+     if (!dc_isar_feature(aa32_simd_r32, s) && (a->vm & 0x10)) {
+@@ -946,6 +968,10 @@ static bool trans_VLDR_VSTR_sp(DisasContext *s, arg_VLDR_VSTR_sp *a)
+     uint32_t offset;
+     TCGv_i32 addr, tmp;
+ 
++    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++        return false;
++    }
++
+     if (!vfp_access_check(s)) {
+         return true;
+     }
+@@ -977,6 +1003,11 @@ static bool trans_VLDR_VSTR_dp(DisasContext *s, arg_VLDR_VSTR_dp *a)
+     TCGv_i32 addr;
+     TCGv_i64 tmp;
+ 
++    /* Note that this does not require support for double arithmetic.  */
++    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++        return false;
++    }
++
+     /* UNDEF accesses to D16-D31 if they don't exist */
+     if (!dc_isar_feature(aa32_simd_r32, s) && (a->vd & 0x10)) {
+         return false;
+@@ -1013,6 +1044,10 @@ static bool trans_VLDM_VSTM_sp(DisasContext *s, arg_VLDM_VSTM_sp *a)
+     TCGv_i32 addr, tmp;
+     int i, n;
+ 
++    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++        return false;
++    }
++
+     n = a->imm;
+ 
+     if (n == 0 || (a->vd + n) > 32) {
+@@ -1086,6 +1121,11 @@ static bool trans_VLDM_VSTM_dp(DisasContext *s, arg_VLDM_VSTM_dp *a)
+     TCGv_i64 tmp;
+     int i, n;
+ 
++    /* Note that this does not require support for double arithmetic.  */
++    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++        return false;
++    }
++
+     n = a->imm >> 1;
+ 
+     if (n == 0 || (a->vd + n) > 32 || n > 16) {
+@@ -1234,6 +1274,10 @@ static bool do_vfp_3op_sp(DisasContext *s, VFPGen3OpSPFn *fn,
+     TCGv_i32 f0, f1, fd;
+     TCGv_ptr fpst;
+ 
++    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++        return false;
++    }
++
+     if (!dc_isar_feature(aa32_fpshvec, s) &&
+         (veclen != 0 || s->vec_stride != 0)) {
+         return false;
+@@ -1388,6 +1432,10 @@ static bool do_vfp_2op_sp(DisasContext *s, VFPGen2OpSPFn *fn, int vd, int vm)
+     int veclen = s->vec_len;
+     TCGv_i32 f0, fd;
+ 
++    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++        return false;
++    }
++
+     if (!dc_isar_feature(aa32_fpshvec, s) &&
+         (veclen != 0 || s->vec_stride != 0)) {
+         return false;
+@@ -2023,6 +2071,10 @@ static bool trans_VCMP_sp(DisasContext *s, arg_VCMP_sp *a)
+ {
+     TCGv_i32 vd, vm;
+ 
++    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++        return false;
++    }
++
+     /* Vm/M bits must be zero for the Z variant */
+     if (a->z && a->vm != 0) {
+         return false;
+@@ -2466,6 +2518,10 @@ static bool trans_VCVT_int_sp(DisasContext *s, arg_VCVT_int_sp *a)
+     TCGv_i32 vm;
+     TCGv_ptr fpst;
+ 
++    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++        return false;
++    }
++
+     if (!vfp_access_check(s)) {
+         return true;
+     }
+@@ -2684,6 +2740,10 @@ static bool trans_VCVT_sp_int(DisasContext *s, arg_VCVT_sp_int *a)
+     TCGv_i32 vm;
+     TCGv_ptr fpst;
+ 
++    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++        return false;
++    }
++
+     if (!vfp_access_check(s)) {
+         return true;
+     }
+-- 
+2.20.1
 

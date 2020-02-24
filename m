@@ -1,98 +1,98 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp847553lfg;
-        Mon, 24 Feb 2020 14:28:25 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwZmw+g2OrWP/1IhC0pAzTwKCDbh1dV9aupA/mhVb1O4rmr81bNPlbI1iE/3imQ7Y0A4pxa
-X-Received: by 2002:a37:4550:: with SMTP id s77mr15688514qka.336.1582583305621;
-        Mon, 24 Feb 2020 14:28:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582583305; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp847701lfg;
+        Mon, 24 Feb 2020 14:28:37 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzoqbjvsmsp0J4Bo2VjmSHkGwmXOWS5rZ/XQQf8q4WYbeTEV2zJFYUSc/LufDpxTLCuCowW
+X-Received: by 2002:a0c:c542:: with SMTP id y2mr45849508qvi.225.1582583316983;
+        Mon, 24 Feb 2020 14:28:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582583316; cv=none;
         d=google.com; s=arc-20160816;
-        b=p6tG7zGhM0THSZSZ5KHJBLD2wiaBhK4qyIB/i+7MPAiDdFKjQEWPPxvQr78SzeYXxd
-         V65DVIsHWNFifK8kvNEHwuDg96otMqSVeru9VDokuIkrQTaHqbQlaZbKrE8Bx+/ZjIFi
-         mmuY+bET4EldxtGfAfWY/Hsfs5j50gLrNRGlMF686C7HhxwUmLuT6+c/tHMCTwRRFWi1
-         zMvk7GWzdlwj3JwWsvZ7k2drphpwrJ6L9TkyE+Ko0dcre16Sr8Ypn1H4rhbigTAkFuAU
-         b/E9flObMndBYMlohuDDxqgbeSc/uuEVWFdPT9aUyB5rxur1Htzp8bbkkeZLiwilAd6I
-         85WA==
+        b=GZRAobqAU3oAJ84/j4Ya3CTTZrDob3d+/dhMhO0qzn0Dis0ucmmxKvUtOzgp1ff8t/
+         Vk5wkLq6PJbn9sj22jcopwVo4unnjr1+Bx8EAS0PyQ+1/WeOtGaGJZ7felkGFZcdHZBv
+         WTPPoosIDzAkho/bzOt6s2nJBh0r4O2rC6SIs3b5XylVcp7Y3HcXuPsuhsa0XNXx0yqx
+         5w/KAq1bKpJrUQylyy7EyIeR+jFKoe+DIBAEH3K8Y4dseABc2wiDOerpfO1t4VBPTUN3
+         fJRwOfM/F7thy+Dt/yAf/VNFQ6SIhJIhrC0MWcaweABAD7inzHnvdEv+gfd27BUIAv78
+         4O+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=N2dqLxgdt7qGgHLw+VE7Z3TBav3OjyXi4mGQvjqJ7no=;
-        b=acANsFfkET4+5Tu1F6lFBLD5LHeDUZm9+5FlYtJw6ZKaW2XLiJcmCq3IcOYPYCOYsh
-         rDwEHRJ35k1/2dTTT9KQPrKQuY4jQQbn0AwwkXzLa2perRdrmHw9COHkZ3wce4jwNe1K
-         LbfNxOaVrFXVuTpHfw9LWsRX6tH6gBZIjjhtaHF90ST8YEbcKdLoAiprLVcr6Q6xBWvj
-         JmJBea/XYOA+I0N1cHaYM67zpZn+gG8J/WVYOxGfcTTF2zSjrtD1qG6NchUbaBHSEuus
-         W8i/J9kOL5xk987mBTHeC6xCkYZ/davKD0Bgk3UynXQoum5HkInR0aM8F2QZhnXubGGb
-         urRQ==
+        bh=Ic31+5+7BISn+IpIxJxTLFKxAz0Jem6L/fKBKMDWBDA=;
+        b=p6aDEcG2TIl7u5J7/Ztj3l0k5hsM0IzekdK6AK4LAW8KyulJLhT8D1BHLa5DuxrNdH
+         REtsWI8bNURaaXqtZvTSYg2fejFhdbbWb7sPdzR8UHxmIbop9h8haFXOnDm/7MJbIj46
+         PuMBiG1ULB4xU5IRvaiOUCeZs6MTFAnrDftPgPcoMHfRBn6GEUAL4unuX03FIOkNnW0Q
+         W1ud0AzEYeZJoD+GZlh9uBPC1cgYboSlVIb+HMNsy+fhFHJS6tm+OcDVm7C2DTdftfWO
+         QSwNAqvNS5JxHADN8k/t3KATFH6/qg85J10Q042x7fz339dpNUeECofiP7NcuM6p0FU8
+         DFxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dHF8Q9QA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gcnxit0i;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dm17si6098233qvb.139.2020.02.24.14.28.25
+        by mx.google.com with ESMTPS id 16si2744441qkk.70.2020.02.24.14.28.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 14:28:25 -0800 (PST)
+        Mon, 24 Feb 2020 14:28:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dHF8Q9QA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gcnxit0i;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45328 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45344 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6MDB-00064V-0x
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 17:28:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38053)
+	id 1j6MDM-0006SR-Ch
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 17:28:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38013)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1j6M7t-0004l4-Rk
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 17:22:59 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1j6M7s-0005yO-E1
+ (envelope-from <richard.henderson@linaro.org>) id 1j6M7s-0004gf-3y
  for qemu-arm@nongnu.org; Mon, 24 Feb 2020 17:22:57 -0500
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:43378)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <richard.henderson@linaro.org>) id 1j6M7q-0005wo-8y
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 17:22:56 -0500
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:40872)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1j6M7s-0005xt-8T
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 17:22:56 -0500
-Received: by mail-pl1-x642.google.com with SMTP id p11so4611773plq.10
- for <qemu-arm@nongnu.org>; Mon, 24 Feb 2020 14:22:56 -0800 (PST)
+ id 1j6M7q-0005wO-1E
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 17:22:54 -0500
+Received: by mail-pl1-x641.google.com with SMTP id y1so4616691plp.7
+ for <qemu-arm@nongnu.org>; Mon, 24 Feb 2020 14:22:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=N2dqLxgdt7qGgHLw+VE7Z3TBav3OjyXi4mGQvjqJ7no=;
- b=dHF8Q9QAoA5L8xBMfhYW2OB4bDW1HYNPABGNrIYqYAG9fRvqaMdPbdjSCfeElQEpQy
- PwCiAAwsvjKtQ+3h0B0tP+eINa904zjIyQS61S53tcPJzYG34vjzfhgXPiveG9siUzGG
- DsK1Wz1XoSVZVWxXU+WOkbMXiOb4L0wmW8XestPSjCD4mNMxNQZPR4Xt2VKp1wtzYiPV
- NpQhAqncAKVGABN3DLqYIXbcAF0yGrb8pRON8JDmBnXFSxAvAST+BAetVXmttlwLsF0T
- oraing11oa0ncQMSbXq5/27Y1/jYfHP+Xl15hvb2h4zU3i9/RdL7V0Pe2N+Y9fgdnSeZ
- 5KDA==
+ bh=Ic31+5+7BISn+IpIxJxTLFKxAz0Jem6L/fKBKMDWBDA=;
+ b=gcnxit0i8C2xmL/KuIbp4zzhY4HYBK8VuEwDghoHNUe0dzly8T3kbpPLrk/LlUiesK
+ AqXabWKVEzIofCEpmhqNLbb1OoPDt54zsKF2nK0PbMc9a4S9kwLfnkrFCP7tW6A8I1hx
+ kBMzE8MXWh+mPB/KwUDgItGrS4LHhsuiQX3Qr7iD6cewilGFC0M4GgyqQOrtjU/8lm6U
+ SIvRktjx2isE3QVcOMn7syT8KAoAhBGv3Sm5RRBu0UYOKDYd8HstjyEndghnsymI5TVg
+ HIlsQHXR0ljhmYo/0sZ1ahIqkkzShOJq1nshNc2XHmXlvpmRSm1NO9gNMp8LRRjHweL5
+ Cq7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=N2dqLxgdt7qGgHLw+VE7Z3TBav3OjyXi4mGQvjqJ7no=;
- b=b5DS7lfvJx4DP2eU0wb5nqQCaKGiZZZSqZ9rjjTLPaWp1ofq8OtH90Cg+j2MmyD0cZ
- Ul5k6h0gMPAGE/dMbpUTv3IAQqBg+7IFw3DIPFJat4D5RiQKXcrsBADQzRg6FB+1qXOn
- 25MezYpDgCnAQ1zl2+KiXZiLQs8/CmJzmpYzxICP1AKtw8V2eYd8CC3JOC8f2veDjBQG
- rr8gCkJyWxrgn5TsBo4A4JpROHeQpPihmha3GSbB2KKumRHo3spe4u1/mDjiIWDkeXf1
- yUZcddKuPlqrB6igLSZQmMzt4dfadEFo5i004+o95kzNT9T+eWEit64fShqS+Ux6dVeA
- FSLw==
-X-Gm-Message-State: APjAAAXWfPuIZus0JRWzyf2TemHRP4gDIeGJ0p0JDYyycTPipqY0rvSX
- 09y6UDUVfFBvjrqPD6GgZmlFHw==
-X-Received: by 2002:a17:90a:36af:: with SMTP id
- t44mr1414093pjb.25.1582582975279; 
- Mon, 24 Feb 2020 14:22:55 -0800 (PST)
+ bh=Ic31+5+7BISn+IpIxJxTLFKxAz0Jem6L/fKBKMDWBDA=;
+ b=LDX2wHpFceCg0SEFLUliZoTN0okRY8nAFq/jLXuT5qob6WvOtYdo+pyXqh4Otzat6n
+ LaHn+v9qzcDK5LsKGnopw3HxhDw00syKgSND3EWjnyBPfsN82/netBPP6dIQZlpGiHAK
+ igRV5vmGRYCfRRFLW+0uWJop7gUPzIGD6lfCKGxc1g+xR0AOqd3f6OSZ/LDF8TfSPLpN
+ dwlIDLTu7nzvSejYiUMkXYcTnTspXBfE88fX3sCXGzF+fntROK4BqCMGVii2tnksz3dr
+ xgxv5JhCA8GaEbtOH9thdnq7frkdEI9c9JXDlLm4K1RDCNBYxesUc/6fAnIMC5a9+AaI
+ UZ5Q==
+X-Gm-Message-State: APjAAAVhSxkWzOQwDVtyYXGjyojFv28bja6mV3lyXRLHPfsdTYpKi7yY
+ UaczIreE6d0m8l2UFvayw+Ro7w==
+X-Received: by 2002:a17:90a:654a:: with SMTP id
+ f10mr1473976pjs.50.1582582972978; 
+ Mon, 24 Feb 2020 14:22:52 -0800 (PST)
 Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net.
  [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id o6sm13897097pgg.37.2020.02.24.14.22.54
+ by smtp.gmail.com with ESMTPSA id o6sm13897097pgg.37.2020.02.24.14.22.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Feb 2020 14:22:54 -0800 (PST)
+ Mon, 24 Feb 2020 14:22:52 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 16/17] target/arm: Split VFM decode
-Date: Mon, 24 Feb 2020 14:22:31 -0800
-Message-Id: <20200224222232.13807-17-richard.henderson@linaro.org>
+Subject: [PATCH v2 14/17] target/arm: Remove ARM_FEATURE_VFP*
+Date: Mon, 24 Feb 2020 14:22:29 -0800
+Message-Id: <20200224222232.13807-15-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200224222232.13807-1-richard.henderson@linaro.org>
 References: <20200224222232.13807-1-richard.henderson@linaro.org>
@@ -100,7 +100,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::642
+X-Received-From: 2607:f8b0:4864:20::641
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,146 +115,253 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0YItZ8DGZpBU
+X-TUID: eTydwjKDoUca
 
-Passing the raw o1 and o2 fields from the manual is less
-instructive than it might be.  Do the full decode and let
-the trans_* functions pass in booleans to a helper.
+We have converted all tests against these features
+to ISAR tests.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/vfp.decode          | 17 +++++------
- target/arm/translate-vfp.inc.c | 52 ++++++++++++++++++++++++++++++----
- 2 files changed, 55 insertions(+), 14 deletions(-)
+ target/arm/cpu.h   |  3 ---
+ target/arm/cpu.c   | 25 -------------------------
+ target/arm/cpu64.c |  3 ---
+ target/arm/kvm32.c |  5 -----
+ target/arm/kvm64.c |  1 -
+ 5 files changed, 37 deletions(-)
 
-diff --git a/target/arm/vfp.decode b/target/arm/vfp.decode
-index 4f294f88be..5fd70f975a 100644
---- a/target/arm/vfp.decode
-+++ b/target/arm/vfp.decode
-@@ -130,14 +130,15 @@ VSUB_dp      ---- 1110 0.11 .... .... 1011 .1.0 ....        @vfp_dnm_d
- VDIV_sp      ---- 1110 1.00 .... .... 1010 .0.0 ....        @vfp_dnm_s
- VDIV_dp      ---- 1110 1.00 .... .... 1011 .0.0 ....        @vfp_dnm_d
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index b29b0eddfc..05aa9711cd 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1880,7 +1880,6 @@ QEMU_BUILD_BUG_ON(ARRAY_SIZE(((ARMCPU *)0)->ccsidr) <= R_V7M_CSSELR_INDEX_MASK);
+  * mapping in linux-user/elfload.c:get_elf_hwcap().
+  */
+ enum arm_features {
+-    ARM_FEATURE_VFP,
+     ARM_FEATURE_AUXCR,  /* ARM1026 Auxiliary control register.  */
+     ARM_FEATURE_XSCALE, /* Intel XScale extensions.  */
+     ARM_FEATURE_IWMMXT, /* Intel iwMMXt extension.  */
+@@ -1889,7 +1888,6 @@ enum arm_features {
+     ARM_FEATURE_V7,
+     ARM_FEATURE_THUMB2,
+     ARM_FEATURE_PMSA,   /* no MMU; may have Memory Protection Unit */
+-    ARM_FEATURE_VFP3,
+     ARM_FEATURE_NEON,
+     ARM_FEATURE_M, /* Microcontroller profile.  */
+     ARM_FEATURE_OMAPCP, /* OMAP specific CP15 ops handling.  */
+@@ -1900,7 +1898,6 @@ enum arm_features {
+     ARM_FEATURE_V5,
+     ARM_FEATURE_STRONGARM,
+     ARM_FEATURE_VAPA, /* cp15 VA to PA lookups */
+-    ARM_FEATURE_VFP4, /* VFPv4 (implies that NEON is v2) */
+     ARM_FEATURE_GENERIC_TIMER,
+     ARM_FEATURE_MVFR, /* Media and VFP Feature Registers 0 and 1 */
+     ARM_FEATURE_DUMMY_C15_REGS, /* RAZ/WI all of cp15 crn=15 */
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index bdcaa46b8a..ebff98cb36 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1208,13 +1208,6 @@ void arm_cpu_post_init(Object *obj)
+     if (arm_feature(&cpu->env, ARM_FEATURE_M)) {
+         set_feature(&cpu->env, ARM_FEATURE_PMSA);
+     }
+-    /* Similarly for the VFP feature bits */
+-    if (arm_feature(&cpu->env, ARM_FEATURE_VFP4)) {
+-        set_feature(&cpu->env, ARM_FEATURE_VFP3);
+-    }
+-    if (arm_feature(&cpu->env, ARM_FEATURE_VFP3)) {
+-        set_feature(&cpu->env, ARM_FEATURE_VFP);
+-    }
  
--VFM_sp       ---- 1110 1.01 .... .... 1010 . o2:1 . 0 .... \
--             vm=%vm_sp vn=%vn_sp vd=%vd_sp o1=1
--VFM_dp       ---- 1110 1.01 .... .... 1011 . o2:1 . 0 .... \
--             vm=%vm_dp vn=%vn_dp vd=%vd_dp o1=1
--VFM_sp       ---- 1110 1.10 .... .... 1010 . o2:1 . 0 .... \
--             vm=%vm_sp vn=%vn_sp vd=%vd_sp o1=2
--VFM_dp       ---- 1110 1.10 .... .... 1011 . o2:1 . 0 .... \
--             vm=%vm_dp vn=%vn_dp vd=%vd_dp o1=2
-+VFMA_sp      ---- 1110 1.10 .... .... 1010 .0. 0 ....       @vfp_dnm_s
-+VFMS_sp      ---- 1110 1.10 .... .... 1010 .1. 0 ....       @vfp_dnm_s
-+VFNMA_sp     ---- 1110 1.01 .... .... 1010 .0. 0 ....       @vfp_dnm_s
-+VFNMS_sp     ---- 1110 1.01 .... .... 1010 .1. 0 ....       @vfp_dnm_s
-+
-+VFMA_dp      ---- 1110 1.10 .... .... 1011 .0.0 ....        @vfp_dnm_d
-+VFMS_dp      ---- 1110 1.10 .... .... 1011 .1.0 ....        @vfp_dnm_d
-+VFNMA_dp     ---- 1110 1.01 .... .... 1011 .0.0 ....        @vfp_dnm_d
-+VFNMS_dp     ---- 1110 1.01 .... .... 1011 .1.0 ....        @vfp_dnm_d
+     if (arm_feature(&cpu->env, ARM_FEATURE_CBAR) ||
+         arm_feature(&cpu->env, ARM_FEATURE_CBAR_RO)) {
+@@ -1431,10 +1424,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         uint64_t t;
+         uint32_t u;
  
- VMOV_imm_sp  ---- 1110 1.11 .... .... 1010 0000 .... \
-              vd=%vd_sp imm=%vmov_imm
-diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
-index 1964af3ea5..41aa67c133 100644
---- a/target/arm/translate-vfp.inc.c
-+++ b/target/arm/translate-vfp.inc.c
-@@ -1784,7 +1784,7 @@ static bool trans_VDIV_dp(DisasContext *s, arg_VDIV_dp *a)
-     return do_vfp_3op_dp(s, gen_helper_vfp_divd, a->vd, a->vn, a->vm, false);
+-        unset_feature(env, ARM_FEATURE_VFP);
+-        unset_feature(env, ARM_FEATURE_VFP3);
+-        unset_feature(env, ARM_FEATURE_VFP4);
+-
+         t = cpu->isar.id_aa64isar1;
+         t = FIELD_DP64(t, ID_AA64ISAR1, JSCVT, 0);
+         cpu->isar.id_aa64isar1 = t;
+@@ -1866,7 +1855,6 @@ static void arm926_initfn(Object *obj)
+ 
+     cpu->dtb_compatible = "arm,arm926";
+     set_feature(&cpu->env, ARM_FEATURE_V5);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP);
+     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
+     set_feature(&cpu->env, ARM_FEATURE_CACHE_TEST_CLEAN);
+     cpu->midr = 0x41069265;
+@@ -1907,7 +1895,6 @@ static void arm1026_initfn(Object *obj)
+ 
+     cpu->dtb_compatible = "arm,arm1026";
+     set_feature(&cpu->env, ARM_FEATURE_V5);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP);
+     set_feature(&cpu->env, ARM_FEATURE_AUXCR);
+     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
+     set_feature(&cpu->env, ARM_FEATURE_CACHE_TEST_CLEAN);
+@@ -1955,7 +1942,6 @@ static void arm1136_r2_initfn(Object *obj)
+ 
+     cpu->dtb_compatible = "arm,arm1136";
+     set_feature(&cpu->env, ARM_FEATURE_V6);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP);
+     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
+     set_feature(&cpu->env, ARM_FEATURE_CACHE_DIRTY_REG);
+     set_feature(&cpu->env, ARM_FEATURE_CACHE_BLOCK_OPS);
+@@ -1987,7 +1973,6 @@ static void arm1136_initfn(Object *obj)
+     cpu->dtb_compatible = "arm,arm1136";
+     set_feature(&cpu->env, ARM_FEATURE_V6K);
+     set_feature(&cpu->env, ARM_FEATURE_V6);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP);
+     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
+     set_feature(&cpu->env, ARM_FEATURE_CACHE_DIRTY_REG);
+     set_feature(&cpu->env, ARM_FEATURE_CACHE_BLOCK_OPS);
+@@ -2018,7 +2003,6 @@ static void arm1176_initfn(Object *obj)
+ 
+     cpu->dtb_compatible = "arm,arm1176";
+     set_feature(&cpu->env, ARM_FEATURE_V6K);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP);
+     set_feature(&cpu->env, ARM_FEATURE_VAPA);
+     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
+     set_feature(&cpu->env, ARM_FEATURE_CACHE_DIRTY_REG);
+@@ -2051,7 +2035,6 @@ static void arm11mpcore_initfn(Object *obj)
+ 
+     cpu->dtb_compatible = "arm,arm11mpcore";
+     set_feature(&cpu->env, ARM_FEATURE_V6K);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP);
+     set_feature(&cpu->env, ARM_FEATURE_VAPA);
+     set_feature(&cpu->env, ARM_FEATURE_MPIDR);
+     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
+@@ -2117,7 +2100,6 @@ static void cortex_m4_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_M);
+     set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
+     set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP4);
+     cpu->midr = 0x410fc240; /* r0p0 */
+     cpu->pmsav7_dregion = 8;
+     cpu->isar.mvfr0 = 0x10110021;
+@@ -2148,7 +2130,6 @@ static void cortex_m7_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_M);
+     set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
+     set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP4);
+     cpu->midr = 0x411fc272; /* r1p2 */
+     cpu->pmsav7_dregion = 8;
+     cpu->isar.mvfr0 = 0x10110221;
+@@ -2180,7 +2161,6 @@ static void cortex_m33_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
+     set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
+     set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP4);
+     cpu->midr = 0x410fd213; /* r0p3 */
+     cpu->pmsav7_dregion = 16;
+     cpu->sau_sregion = 8;
+@@ -2264,7 +2244,6 @@ static void cortex_r5f_initfn(Object *obj)
+     ARMCPU *cpu = ARM_CPU(obj);
+ 
+     cortex_r5_initfn(obj);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP3);
+     cpu->isar.mvfr0 = 0x10110221;
+     cpu->isar.mvfr1 = 0x00000011;
  }
+@@ -2283,7 +2262,6 @@ static void cortex_a8_initfn(Object *obj)
  
--static bool trans_VFM_sp(DisasContext *s, arg_VFM_sp *a)
-+static bool do_vfm_sp(DisasContext *s, arg_VFMA_sp *a, bool neg_n, bool neg_d)
- {
-     /*
-      * VFNMA : fd = muladd(-fd,  fn, fm)
-@@ -1828,12 +1828,12 @@ static bool trans_VFM_sp(DisasContext *s, arg_VFM_sp *a)
+     cpu->dtb_compatible = "arm,cortex-a8";
+     set_feature(&cpu->env, ARM_FEATURE_V7);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP3);
+     set_feature(&cpu->env, ARM_FEATURE_NEON);
+     set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
+     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
+@@ -2351,7 +2329,6 @@ static void cortex_a9_initfn(Object *obj)
  
-     neon_load_reg32(vn, a->vn);
-     neon_load_reg32(vm, a->vm);
--    if (a->o2) {
-+    if (neg_n) {
-         /* VFNMS, VFMS */
-         gen_helper_vfp_negs(vn, vn);
+     cpu->dtb_compatible = "arm,cortex-a9";
+     set_feature(&cpu->env, ARM_FEATURE_V7);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP3);
+     set_feature(&cpu->env, ARM_FEATURE_NEON);
+     set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
+@@ -2416,7 +2393,6 @@ static void cortex_a7_initfn(Object *obj)
+ 
+     cpu->dtb_compatible = "arm,cortex-a7";
+     set_feature(&cpu->env, ARM_FEATURE_V7VE);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP4);
+     set_feature(&cpu->env, ARM_FEATURE_NEON);
+     set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
+     set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+@@ -2462,7 +2438,6 @@ static void cortex_a15_initfn(Object *obj)
+ 
+     cpu->dtb_compatible = "arm,cortex-a15";
+     set_feature(&cpu->env, ARM_FEATURE_V7VE);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP4);
+     set_feature(&cpu->env, ARM_FEATURE_NEON);
+     set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
+     set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 0929401a4d..5cda580231 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -102,7 +102,6 @@ static void aarch64_a57_initfn(Object *obj)
+ 
+     cpu->dtb_compatible = "arm,cortex-a57";
+     set_feature(&cpu->env, ARM_FEATURE_V8);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP4);
+     set_feature(&cpu->env, ARM_FEATURE_NEON);
+     set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+     set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+@@ -156,7 +155,6 @@ static void aarch64_a53_initfn(Object *obj)
+ 
+     cpu->dtb_compatible = "arm,cortex-a53";
+     set_feature(&cpu->env, ARM_FEATURE_V8);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP4);
+     set_feature(&cpu->env, ARM_FEATURE_NEON);
+     set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+     set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+@@ -210,7 +208,6 @@ static void aarch64_a72_initfn(Object *obj)
+ 
+     cpu->dtb_compatible = "arm,cortex-a72";
+     set_feature(&cpu->env, ARM_FEATURE_V8);
+-    set_feature(&cpu->env, ARM_FEATURE_VFP4);
+     set_feature(&cpu->env, ARM_FEATURE_NEON);
+     set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+     set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+index 7981ae3bc4..f703c4fcad 100644
+--- a/target/arm/kvm32.c
++++ b/target/arm/kvm32.c
+@@ -147,7 +147,6 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+      * bits, but a few must be tested.
+      */
+     set_feature(&features, ARM_FEATURE_V7VE);
+-    set_feature(&features, ARM_FEATURE_VFP3);
+     set_feature(&features, ARM_FEATURE_GENERIC_TIMER);
+ 
+     if (extract32(id_pfr0, 12, 4) == 1) {
+@@ -156,10 +155,6 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     if (extract32(ahcf->isar.mvfr1, 12, 4) == 1) {
+         set_feature(&features, ARM_FEATURE_NEON);
      }
-     neon_load_reg32(vd, a->vd);
--    if (a->o1 & 1) {
-+    if (neg_d) {
-         /* VFNMA, VFNMS */
-         gen_helper_vfp_negs(vd, vd);
-     }
-@@ -1849,7 +1849,27 @@ static bool trans_VFM_sp(DisasContext *s, arg_VFM_sp *a)
-     return true;
- }
+-    if (extract32(ahcf->isar.mvfr1, 28, 4) == 1) {
+-        /* FMAC support implies VFPv4 */
+-        set_feature(&features, ARM_FEATURE_VFP4);
+-    }
  
--static bool trans_VFM_dp(DisasContext *s, arg_VFM_dp *a)
-+static bool trans_VFMA_sp(DisasContext *s, arg_VFMA_sp *a)
-+{
-+    return do_vfm_sp(s, a, false, false);
-+}
-+
-+static bool trans_VFMS_sp(DisasContext *s, arg_VFMS_sp *a)
-+{
-+    return do_vfm_sp(s, a, true, false);
-+}
-+
-+static bool trans_VFNMA_sp(DisasContext *s, arg_VFNMA_sp *a)
-+{
-+    return do_vfm_sp(s, a, false, true);
-+}
-+
-+static bool trans_VFNMS_sp(DisasContext *s, arg_VFNMS_sp *a)
-+{
-+    return do_vfm_sp(s, a, true, true);
-+}
-+
-+static bool do_vfm_dp(DisasContext *s, arg_VFMA_dp *a, bool neg_n, bool neg_d)
- {
-     /*
-      * VFNMA : fd = muladd(-fd,  fn, fm)
-@@ -1905,12 +1925,12 @@ static bool trans_VFM_dp(DisasContext *s, arg_VFM_dp *a)
+     ahcf->features = features;
  
-     neon_load_reg64(vn, a->vn);
-     neon_load_reg64(vm, a->vm);
--    if (a->o2) {
-+    if (neg_n) {
-         /* VFNMS, VFMS */
-         gen_helper_vfp_negd(vn, vn);
-     }
-     neon_load_reg64(vd, a->vd);
--    if (a->o1 & 1) {
-+    if (neg_d) {
-         /* VFNMA, VFNMS */
-         gen_helper_vfp_negd(vd, vd);
-     }
-@@ -1926,6 +1946,26 @@ static bool trans_VFM_dp(DisasContext *s, arg_VFM_dp *a)
-     return true;
- }
- 
-+static bool trans_VFMA_dp(DisasContext *s, arg_VFMA_dp *a)
-+{
-+    return do_vfm_dp(s, a, false, false);
-+}
-+
-+static bool trans_VFMS_dp(DisasContext *s, arg_VFMS_dp *a)
-+{
-+    return do_vfm_dp(s, a, true, false);
-+}
-+
-+static bool trans_VFNMA_dp(DisasContext *s, arg_VFNMA_dp *a)
-+{
-+    return do_vfm_dp(s, a, false, true);
-+}
-+
-+static bool trans_VFNMS_dp(DisasContext *s, arg_VFNMS_dp *a)
-+{
-+    return do_vfm_dp(s, a, true, true);
-+}
-+
- static bool trans_VMOV_imm_sp(DisasContext *s, arg_VMOV_imm_sp *a)
- {
-     uint32_t delta_d = 0;
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 0ad96c3500..93ba1448da 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -649,7 +649,6 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+      * feature bits.
+      */
+     set_feature(&features, ARM_FEATURE_V8);
+-    set_feature(&features, ARM_FEATURE_VFP4);
+     set_feature(&features, ARM_FEATURE_NEON);
+     set_feature(&features, ARM_FEATURE_AARCH64);
+     set_feature(&features, ARM_FEATURE_PMU);
 -- 
 2.20.1
 

@@ -1,90 +1,90 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp812351lfg;
-        Mon, 24 Feb 2020 13:46:03 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx4GqAOJjzJbyP7gZuFJ3b2HUY4w2BSwn5nd9/IWn6ugpqqTKRUf8OApiMJRyRik8nGHoSd
-X-Received: by 2002:ac8:33f8:: with SMTP id d53mr49675035qtb.86.1582580763696;
-        Mon, 24 Feb 2020 13:46:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582580763; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp814857lfg;
+        Mon, 24 Feb 2020 13:49:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxvpohGcs92s8r7Oz6AEOgaFt+zZzij9M74B7rLE5eEAx3ssszcc2WRfq77mnIEsVGeqm19
+X-Received: by 2002:a37:6393:: with SMTP id x141mr49667233qkb.134.1582580951579;
+        Mon, 24 Feb 2020 13:49:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582580951; cv=none;
         d=google.com; s=arc-20160816;
-        b=TwgT+4pmSgNbSLzc7r9F/hCV/820W39C5Tf13WqSs7W4TThPXORkeHbSt+/lbO/3kE
-         hpXAeYOVKZ11FXA4oNEPPcJiEKiABL4J1a0Ryp2KNIr9apyAIId05lyB7GjS7kaKeceo
-         6OigoeBfQq3iDIHwMMrDFNOjgXxELKJI6K77W3PcbeOdnVGUn6oZPN8Wmso/1k4JxQ1r
-         DkNmF0jZALbPY0cygWErIJmzZvZ6EbWNTQwBufrpBxOTjpFWOmPZ5K6cl3LwferX/P/7
-         kyr9q9E4a6o8HqMCEBx/Y/mw2D2CnjSDQbxDj8jonEr43+TqCs7AyL9+kXUVZWQsNUQp
-         TPqg==
+        b=lADL7gNQvYiRN9g7xORK3aqNFC2okeWORUPbcAqXja0p82/bnMiOXjhFGx3bZo1ST+
+         Yt1MWDta/RHls6mQbUA8dyyw+uODp1RtZqHC01cDSJw5aO3zQaROldQbNUWmJuDhZdds
+         Bdn46kPWKgw1cV+2sddCHL90+N0jFWMVXqjtR5esRyL4iKEBWJgPK/OiJOFAcC0fXGTQ
+         /ttEA56FfD2cSbzbHwKlw0XQVGrsdhoIHjBoe41KySr/PZQa2tpinpS17Vr+ted4xXOm
+         3+4SfTDOvuRttPyw1p2pqj9v5wkMv4nAJN+A1UptR5puhUyytmScv/3h/E9fmFM1Wa3/
+         JrvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=d82MUeKk+/4B02rjdl6yI9CuL1FxqpOnif29vr+0CBA=;
-        b=TjQDaP9oaAp418n3z7CrLkaQJ9bnqwyNr6jisNz1mLhf4OL+xUrU7LY8+CLYA1qX+U
-         M+VNXq6oGWYWUI4D5RBm6+35BP5aAyTlL2/be2qmweb1SZDuarp6my8MeMR81+UzWOb+
-         FP7lq1n5YYDIiQnmP4w8L+t/rliCai+8sjS3+Mhb1vXV1Jc/HExjU6nMJeukKhPlWYRd
-         AShQ/L3rXOBrht9XQKqe2xhTK+bheBEHozGExy8iUfC8WTkNAB7vex+nOsygVWx66buA
-         xGAc4gPTzTw6yQ29PGK6DPJVnJtAO/o8ITgLdODqqF3PhmSeLN6+0Ohn2LSdCZEm0Hti
-         aowg==
+        bh=M00bRTY5Od/jt3qLVU2pJOLmr0uFfCYFYcH1/TRboO0=;
+        b=BMWdY9lEkUPcBI2NN9zwvQYAhIS+gBWDwhKd8UnmTLDSKFvLokiipCwDKaIXdDVgC9
+         qwFSLaiiN12KM5UvqdHgFrA+XoODR1609IfZWjlZ+rrgqFiBNsPec2Hl0VES2WVkQgQ8
+         eaVBjSx4AjwE7RGzE0r4zCWbj5mx/Uy1fOjQCvfidtyAO6NU48rym+gzCZRwVURzaAfH
+         zcj7lCq+HldGvX6izcafTERr+BzBJ53TjIHHlMYHru0L3XlNBlPlf8/oJbnJ4qEggrL4
+         ukv00iEXlb9ONTzn/lDgAQkcP6GnAMtnt6guPo1rxq32Y3NqeQgc8R0vi8q3ZA7C1/X9
+         viug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XCWLZKaa;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S5JY1smV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c19si6446050qtn.378.2020.02.24.13.46.03
+        by mx.google.com with ESMTPS id v5si6091294qvw.157.2020.02.24.13.49.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 13:46:03 -0800 (PST)
+        Mon, 24 Feb 2020 13:49:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XCWLZKaa;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S5JY1smV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44460 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44518 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6LYB-0008US-31
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 16:46:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53257)
+	id 1j6LbD-000458-1m
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 16:49:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53713)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j6KrO-0006zg-2B
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:01:53 -0500
+ (envelope-from <philmd@redhat.com>) id 1j6KsM-0000Ta-JN
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:02:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j6KrM-0007Xi-SI
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:01:49 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:52727
+ (envelope-from <philmd@redhat.com>) id 1j6KsL-0008G0-Dy
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:02:50 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:53353
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6KrM-0007W5-Ib
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:01:48 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6KsL-0008Fe-9U
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:02:49 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582578108;
+ s=mimecast20190719; t=1582578168;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=d82MUeKk+/4B02rjdl6yI9CuL1FxqpOnif29vr+0CBA=;
- b=XCWLZKaaeOk/lAcvUL2fZQSXiRaMHsKj4eG2GR2WAdb5N4+YocVZFkya8NbIDuepZX1RlR
- 3faClZixKRIWybCvl3u5kku6CYfdAvjvpRtHMfT3me+p95qOsPKMIC94fuD8/dE6I6E1xP
- Q0oaluHA9Ou86BgKhIXWtBOwdbi//Bg=
+ bh=M00bRTY5Od/jt3qLVU2pJOLmr0uFfCYFYcH1/TRboO0=;
+ b=S5JY1smV2LkYB2ZV9tBkEm1Ggc4OQFiu1RcuXsmTcFRAbM79Hf80Zen4ld35Rnta3ZuHIe
+ goLsUK/+oPcEY/7kHo0kxM+XHEchzuXODaY+smlH++AIlRpd1iLdq8QLJ49QdmLyxYgoGQ
+ nNnfILHSFQG5fF5cTVp5pjRPu9fS2/A=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-243-B2jLMgkmPbOAS-FuawXTqw-1; Mon, 24 Feb 2020 16:01:45 -0500
-X-MC-Unique: B2jLMgkmPbOAS-FuawXTqw-1
+ us-mta-359-KedknbR_Pg-GkEjsoyumTg-1; Mon, 24 Feb 2020 16:02:45 -0500
+X-MC-Unique: KedknbR_Pg-GkEjsoyumTg-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 09EEB1005512;
- Mon, 24 Feb 2020 21:01:41 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C59B91005512;
+ Mon, 24 Feb 2020 21:02:41 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-205-162.brq.redhat.com [10.40.205.162])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 588485C54A;
- Mon, 24 Feb 2020 21:01:26 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 62E3B5C6DC;
+ Mon, 24 Feb 2020 21:02:32 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH RESEND v2 25/32] hw/core: Let devices own the MemoryRegion
- they create
-Date: Mon, 24 Feb 2020 21:55:26 +0100
-Message-Id: <20200224205533.23798-26-philmd@redhat.com>
+Subject: [RFC PATCH RESEND v2 30/32] hw/input/milkymist-softusb: Let devices
+ own the MemoryRegion they create
+Date: Mon, 24 Feb 2020 21:55:31 +0100
+Message-Id: <20200224205533.23798-31-philmd@redhat.com>
 In-Reply-To: <20200224205533.23798-1-philmd@redhat.com>
 References: <20200224205533.23798-1-philmd@redhat.com>
 MIME-Version: 1.0
@@ -135,35 +135,53 @@ Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fPk9GmidwFuE
+X-TUID: 8AZLMr2V953n
 
 Avoid orphan memory regions being added in the /unattached QOM
 container.
 
-This commit was produced with the Coccinelle script
-scripts/coccinelle/memory-region-housekeeping.cocci.
+Note this change break the migration of the LM32 milkymist machine.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/core/platform-bus.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/input/milkymist-softusb.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/hw/core/platform-bus.c b/hw/core/platform-bus.c
-index 22c5f76dd0..d494e5cec1 100644
---- a/hw/core/platform-bus.c
-+++ b/hw/core/platform-bus.c
-@@ -187,7 +187,8 @@ static void platform_bus_realize(DeviceState *dev, Erro=
-r **errp)
-     d =3D SYS_BUS_DEVICE(dev);
-     pbus =3D PLATFORM_BUS_DEVICE(dev);
+diff --git a/hw/input/milkymist-softusb.c b/hw/input/milkymist-softusb.c
+index 7deeb1294f..72bc7bae1e 100644
+--- a/hw/input/milkymist-softusb.c
++++ b/hw/input/milkymist-softusb.c
+@@ -259,13 +259,11 @@ static void milkymist_softusb_realize(DeviceState *de=
+v, Error **errp)
+     sysbus_init_mmio(sbd, &s->regs_region);
 =20
--    memory_region_init(&pbus->mmio, NULL, "platform bus", pbus->mmio_size)=
-;
-+    memory_region_init(&pbus->mmio, OBJECT(dev), "platform bus",
-+                       pbus->mmio_size);
-     sysbus_init_mmio(d, &pbus->mmio);
+     /* register pmem and dmem */
+-    memory_region_init_ram_nomigrate(&s->pmem, OBJECT(s), "milkymist-softu=
+sb.pmem",
++    memory_region_init_ram(&s->pmem, OBJECT(s), "milkymist-softusb.pmem",
+                            s->pmem_size, &error_fatal);
+-    vmstate_register_ram_global(&s->pmem);
+     sysbus_init_mmio(sbd, &s->pmem);
+-    memory_region_init_ram_nomigrate(&s->dmem, OBJECT(s), "milkymist-softu=
+sb.dmem",
++    memory_region_init_ram(&s->dmem, OBJECT(s), "milkymist-softusb.dmem",
+                            s->dmem_size, &error_fatal);
+-    vmstate_register_ram_global(&s->dmem);
+     s->dmem_ptr =3D memory_region_get_ram_ptr(&s->dmem);
+     sysbus_init_mmio(sbd, &s->dmem);
 =20
-     pbus->used_irqs =3D bitmap_new(pbus->num_irqs);
+@@ -275,8 +273,8 @@ static void milkymist_softusb_realize(DeviceState *dev,=
+ Error **errp)
+=20
+ static const VMStateDescription vmstate_milkymist_softusb =3D {
+     .name =3D "milkymist-softusb",
+-    .version_id =3D 1,
+-    .minimum_version_id =3D 1,
++    .version_id =3D 2,
++    .minimum_version_id =3D 2,
+     .fields =3D (VMStateField[]) {
+         VMSTATE_UINT32_ARRAY(regs, MilkymistSoftUsbState, R_MAX),
+         VMSTATE_HID_KEYBOARD_DEVICE(hid_kbd, MilkymistSoftUsbState),
 --=20
 2.21.1
 

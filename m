@@ -1,90 +1,90 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp800891lfg;
-        Mon, 24 Feb 2020 13:30:53 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwVgXwh6s6qeBslUaWNHajsdcvOg3vhB8ammhQtb2AywOwWuZGlywB+mrbBGJcRDA30dhp/
-X-Received: by 2002:ac8:7501:: with SMTP id u1mr51227608qtq.149.1582579853670;
-        Mon, 24 Feb 2020 13:30:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582579853; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp801999lfg;
+        Mon, 24 Feb 2020 13:32:09 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyU9m9bZ47NmHpqLUfHbM1+ZwYmYY0dU8i27ldNGrn2vw1HRYiCYCBbRXkM7gChedJ+SJf1
+X-Received: by 2002:ac8:7103:: with SMTP id z3mr50469390qto.172.1582579929107;
+        Mon, 24 Feb 2020 13:32:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582579929; cv=none;
         d=google.com; s=arc-20160816;
-        b=dEYAZ9oQlr0zZaWpUN0yhKJc234lJ/tBCprx467o5x97s6NHcREmwe4oPf8mnhPJm3
-         cq5NdYn+jnuOJejCMdpvrjUXQy7BzJf05jH8g5D1sNSEvrIdI/uOzZ//uNv+I9ycMRGR
-         f2jCXajhvcUfZRIi/LrE6aiLmVMURmGz4PYUrygPru9RWXeBt2gptN25luuzImUKXAc/
-         cO8An8ylBp7XO5r/MsUsvJz5aDDvy2bzf1OjF/k5vCQ6Y/wYVENmlmHyECbbaVrrv9l7
-         7q3USv4J7sYDJHCFgdvFiJIAajrX8paxRfiHl7eljRuW1cUoO6bVJ4D7C/nez1NWJAo4
-         Swug==
+        b=OCSisITvyUJAowRr+qG22mmXsYiPzDLmno/GyDslS2+KbBM4CbPllomEOHZN1JdaE5
+         emYyg8386cyFoyvuMfp9X95aUNxAw6UL8IjClRDilTCygvqKjTGpSZNPzR+nAYl/lD40
+         eaObhNsNO2aEdcGcAKzYzdptlmvw/fOerUEQDIcepXQt27pziQ9FTFS2lHdmbE++rwLP
+         IAaWSFRqDsvF1vWKippbrHYlsStc2fkBDBAa1iWAAaJXWRWDQouJ1vHby8MCgnzzvUzA
+         /BLn+ZBEvx3sQoSdDBuWS8HG+b9X+apw+Y1Jk+9zDVZJWAOr23cd3riCCwpsfL9GjDGS
+         DsFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=qbvEgfMPFn79RezIvzFb5QHqmDpXn9VCeMrP2Hw3cM4=;
-        b=kdrEEc7vePy3pQn6AhN3m/OXBqJjC0PDMUqnuqYu6GDXi+4KqKq5zOpG7X3Ry300jH
-         e/Rz3G7oJpmk+SAIR68AOo/6b8CbLuwnMfITPV5ah3pTBxGPrnBgERR2HObwfkxzClpc
-         6J8DPpa1AWcnTq//WuDS7sBm+CArA9zww/1NlLdMkoUQ2oKfc9yTxFuTDlCHUTR/A41+
-         C4rtSyfv44c2PLVddQ/h5m30H4UFkSx1G9XqWarHeKx8ihWHhVa0LebwtduAfDo+it6Z
-         +GYMxdxFVWHG3Mnk774np/m4AFco+0aUMishci1oZLV9sSQ24q2S88RO7UZhYnazsVyY
-         +a4w==
+        bh=P3w8ivNIF4UpJrLwaBVmXn62pv0y3fxnEFqqunnHBT8=;
+        b=nvb7HAtH/ZddShcpiHG/eZIndy84hmEEDIvh4uvIBMeVYan8I4SwJ6N5ukzILrIGHX
+         Hmzvu2bPmBL40ZLhtayG4a/5CAxNtkoWaE4xVflhc/WuP3lNER0BJmEeh/YuKbAUPa4+
+         0Rv9shlrT24hNXm0IwiBgO4mjTKs6V6Qx7vu8XJtvdtboNCPI/v5i2mmmEfb1aURKMib
+         iZJpfrEB9KBfqph38pSeXMbxFhI7LI7YxE2zzxe+q61spJvu7oQvWMEycaTLLTopYy1C
+         DksyyRj2OdG5ApzNkzGi+uXrGGBi8Oj3dx8Z0IDBiqsuxTzCnq3AFC7PBNuabiJQ/OV+
+         7Egw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g8bPwabz;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g+gOxBA+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o24si428657qtk.369.2020.02.24.13.30.53
+        by mx.google.com with ESMTPS id a1si4812957qko.16.2020.02.24.13.32.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 13:30:53 -0800 (PST)
+        Mon, 24 Feb 2020 13:32:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g8bPwabz;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g+gOxBA+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43986 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44036 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6LJV-0006s5-3q
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 16:30:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53526)
+	id 1j6LKi-0000py-Gx
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 16:32:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51911)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j6Krw-0007zS-2s
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:02:26 -0500
+ (envelope-from <philmd@redhat.com>) id 1j6Koe-0002kn-2E
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:59:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j6Krt-0007y8-SJ
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:02:23 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:55841
+ (envelope-from <philmd@redhat.com>) id 1j6Kod-0005SV-0I
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:58:59 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:23622
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6Krt-0007xp-Nn
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 16:02:21 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6Koc-0005Rv-Qo
+ for qemu-arm@nongnu.org; Mon, 24 Feb 2020 15:58:58 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582578141;
+ s=mimecast20190719; t=1582577938;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qbvEgfMPFn79RezIvzFb5QHqmDpXn9VCeMrP2Hw3cM4=;
- b=g8bPwabzoIE+AxKqXp2lC60bZ0fPOYQQEe+fR7YDYPPy5o3PDTPxRKVAup4FtPtXbRvVof
- pgpE8T7tsPBdnNp2E5TdvODCTWTOZS8oMbuq1DT0HNqbdUll9JvJJsuicAXbXMLPlWt4xr
- ibeJtrfLM6omiPc/4bEpA4fDLFlxpYo=
+ bh=P3w8ivNIF4UpJrLwaBVmXn62pv0y3fxnEFqqunnHBT8=;
+ b=g+gOxBA+vuocRT5jXP0K3LzBfzLr9iY+7sXZB2HNy/CV/70D8xokdF2odCHE1Y43kOR/k3
+ WJ+f3DheJMI07+mE+VB7A4RDj1a2zM158KpBLlDY0s+onrKz3q1I4DDpNnrv5Iokd/BFBR
+ NQ9eW7BV5rhkq3m6EJYm86o35oh3ykA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-384-5ze8_Kv6Nt2muSzsp6ULlQ-1; Mon, 24 Feb 2020 16:02:19 -0500
-X-MC-Unique: 5ze8_Kv6Nt2muSzsp6ULlQ-1
+ us-mta-74-dY66F7eDPRuLuatE5Zg2QQ-1; Mon, 24 Feb 2020 15:58:56 -0500
+X-MC-Unique: dY66F7eDPRuLuatE5Zg2QQ-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 96BC51005512;
- Mon, 24 Feb 2020 21:02:15 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C7DA91005512;
+ Mon, 24 Feb 2020 20:58:52 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-205-162.brq.redhat.com [10.40.205.162])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 679565C54A;
- Mon, 24 Feb 2020 21:02:06 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id AD7EE5C651;
+ Mon, 24 Feb 2020 20:58:43 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH RESEND v2 28/32] hw/riscv: Let devices own the MemoryRegion
- they create
-Date: Mon, 24 Feb 2020 21:55:29 +0100
-Message-Id: <20200224205533.23798-29-philmd@redhat.com>
+Subject: [PATCH RESEND v2 12/32] hw/riscv: Use memory_region_init_rom() with
+ read-only regions
+Date: Mon, 24 Feb 2020 21:55:13 +0100
+Message-Id: <20200224205533.23798-13-philmd@redhat.com>
 In-Reply-To: <20200224205533.23798-1-philmd@redhat.com>
 References: <20200224205533.23798-1-philmd@redhat.com>
 MIME-Version: 1.0
@@ -134,61 +134,33 @@ Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JZ4hKa9Gl7Yg
-
-Avoid orphan memory regions being added in the /unattached QOM
-container.
+X-TUID: Do9nL1LETYPB
 
 This commit was produced with the Coccinelle script
 scripts/coccinelle/memory-region-housekeeping.cocci.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/riscv/sifive_e.c | 6 +++---
- hw/riscv/sifive_u.c | 2 +-
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ hw/riscv/sifive_e.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/hw/riscv/sifive_e.c b/hw/riscv/sifive_e.c
-index 6f6360a619..64eb8ce536 100644
+index 8a6b0348df..6f6360a619 100644
 --- a/hw/riscv/sifive_e.c
 +++ b/hw/riscv/sifive_e.c
-@@ -145,8 +145,8 @@ static void riscv_sifive_e_soc_realize(DeviceState *dev=
-, Error **errp)
-                             &error_abort);
-=20
-     /* Mask ROM */
--    memory_region_init_rom(&s->mask_rom, NULL, "riscv.sifive.e.mrom",
--        memmap[SIFIVE_E_MROM].size, &error_fatal);
-+    memory_region_init_rom(&s->mask_rom, OBJECT(dev), "riscv.sifive.e.mrom=
-",
-+                           memmap[SIFIVE_E_MROM].size, &error_fatal);
-     memory_region_add_subregion(sys_mem,
-         memmap[SIFIVE_E_MROM].base, &s->mask_rom);
-=20
-@@ -208,7 +208,7 @@ static void riscv_sifive_e_soc_realize(DeviceState *dev=
+@@ -208,9 +208,8 @@ static void riscv_sifive_e_soc_realize(DeviceState *dev=
 , Error **errp)
          memmap[SIFIVE_E_PWM2].base, memmap[SIFIVE_E_PWM2].size);
 =20
      /* Flash memory */
--    memory_region_init_rom(&s->xip_mem, NULL, "riscv.sifive.e.xip",
-+    memory_region_init_rom(&s->xip_mem, OBJECT(dev), "riscv.sifive.e.xip",
-                            memmap[SIFIVE_E_XIP].size, &error_fatal);
+-    memory_region_init_ram(&s->xip_mem, NULL, "riscv.sifive.e.xip",
+-        memmap[SIFIVE_E_XIP].size, &error_fatal);
+-    memory_region_set_readonly(&s->xip_mem, true);
++    memory_region_init_rom(&s->xip_mem, NULL, "riscv.sifive.e.xip",
++                           memmap[SIFIVE_E_XIP].size, &error_fatal);
      memory_region_add_subregion(sys_mem, memmap[SIFIVE_E_XIP].base,
          &s->xip_mem);
-diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-index 0e12b3ccef..be7d438db1 100644
---- a/hw/riscv/sifive_u.c
-+++ b/hw/riscv/sifive_u.c
-@@ -497,7 +497,7 @@ static void riscv_sifive_u_soc_realize(DeviceState *dev=
-, Error **errp)
-                              &error_abort);
-=20
-     /* boot rom */
--    memory_region_init_rom(mask_rom, NULL, "riscv.sifive.u.mrom",
-+    memory_region_init_rom(mask_rom, OBJECT(dev), "riscv.sifive.u.mrom",
-                            memmap[SIFIVE_U_MROM].size, &error_fatal);
-     memory_region_add_subregion(system_memory, memmap[SIFIVE_U_MROM].base,
-                                 mask_rom);
+ }
 --=20
 2.21.1
 

@@ -1,66 +1,66 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4556332lfg;
-        Sun, 23 Feb 2020 18:34:03 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwMibvjld7t7owoDn59ndkNqL6gCpKi6+Xh0UQisPvJNRIFnMFZrOv+7kuqlRafcw87TUvB
-X-Received: by 2002:a05:620a:84a:: with SMTP id u10mr47257876qku.244.1582511642975;
-        Sun, 23 Feb 2020 18:34:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582511642; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4558984lfg;
+        Sun, 23 Feb 2020 18:37:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzCSrRT1/58PVb4VL7DQ0Y942+XPAc5YQmkXHKbQPJB7fHytJ3Iee66uhy4c2y08nxXqEGf
+X-Received: by 2002:aed:2dc2:: with SMTP id i60mr43354315qtd.8.1582511876533;
+        Sun, 23 Feb 2020 18:37:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582511876; cv=none;
         d=google.com; s=arc-20160816;
-        b=0l7MrXxAfcCvFTBul7FLJ2UqFon3D9+lzaS0tYkGJzkG9Pea8p9QF5xev1ZpCKoYZK
-         bRY63s84G2uLUDLd5Ktyp1V5mHn7/b6WUmahk7jk7EkT6O5M1OJzW4AFBHxIzmpH5axR
-         eONnVnjJFDmaKoPwCmWRinEMqbTJ/fqe6GFc3o6+yWNuFZ+4DlLVGNCZrSLAHPQ4+BL5
-         1KKQnIM4HG8Ez4CyRNtNQQkmoU4pikItTLxrMjR+/QbAZ0WaY/oss3mOwbp+REejojm1
-         AHoCAsH8Hw6vCpzPMxeGa+uOfF6WiuA+JBrf5PHf6/S1ns69G78kbAnPYUnSwAfcQs1c
-         s7bQ==
+        b=eZHL3FFnWlbPKYOsaYP8XJ97YMLm15FSU8Wfi2accfmy3cn3Yd3xl9dtZFV8UtRrW0
+         enhQwTr6Qq+rQqC6pvKw55EUpvhMq8IQY2ScT8HdK33q5bNlJOzXD16OLEkCA3+k0oEe
+         BTd1Ujx1KBPLz1p5DE6gPBKx5MHAi4AtFGdpjiqTpzujawYS3H8vRjCKlQ91LUhjvRQr
+         wl56yNp+t71JZPBuK3F/bMZxahliCsQhSvd3SNX4H/IBVFukszW+/mLF2x0nH0BMNcls
+         klfDKj3aewiKurW0ummKM/UB9hUoSdhwGhpd/iUBlYYo5hUF/ZvoKjZOc1qIpwQGZR+2
+         HX7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from;
         bh=eXawr5NYrcuijfE35M6gfSigCa8M0W8oY6q0A/PM9+A=;
-        b=mCr3GhbLmMdLcNkC34TfKY3TTPV+nMP9V2sBcXrqlNs4vT3A8vstimkvjw42cwTcL8
-         LoIbEBp757ErLdeiEvTcbjLFDFNczcynrFjMApGbjqRBCQzYegSPyWdxKWyiMFKYgbIa
-         Gd8Wfj/V7KxH/aPqlcDNbYvHwFulPeWqQ9yYR2xplsnpYOY+bh5twENFb0NaQPb99kbt
-         cDFQH3hUG3GiI4y27CQk4FFnhi+G9NQNcEfquwknAwIGWkcFsq243ezhBKIctVt2i5wt
-         At6WVCxavhkygd0ByTBjxomjc1yOsjHXpFSpooy0E9DhlvD8Kw4kJtauG8ATw12XWaYe
-         +hJg==
+        b=w5Vw8eTKSb//XXvD+I7OaPC2Vetq+A252qugOm89R79ft2Oz3iHZQBkOUBW7s+hcLH
+         xIeEMb79ckuZDdjz6oSaeLbattVWHzVrG28DqLsEwzfkDnURPUJTtE9pg01eKLC1IKHg
+         lG2mANPmd9a5U4TUag07fixR2F8xK6dncuTd38VUAYDx9Hs9/HdsYZj3+rywmE9Fba07
+         Oz0XH6UPGaEXUfsbu/U2hda74FpB2Yi2wIo3Kj1Pil+/cosQ1ewOkjc2+CCAn18IStVr
+         0iADnBSutOqsG7SKiYGUtgI+Qx6div4ApHEXPXVoOOV+L3fy6JTmfc4WIaYPiNsG0XQj
+         GEbw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l16si5556579qke.246.2020.02.23.18.34.02
+        by mx.google.com with ESMTPS id x7si5582639qkj.22.2020.02.23.18.37.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 23 Feb 2020 18:34:02 -0800 (PST)
+        Sun, 23 Feb 2020 18:37:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58882 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58914 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j63ZK-0003FT-Bw
-	for alex.bennee@linaro.org; Sun, 23 Feb 2020 21:34:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53099)
+	id 1j63d6-00053U-0M
+	for alex.bennee@linaro.org; Sun, 23 Feb 2020 21:37:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53305)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <zhukeqian1@huawei.com>) id 1j63ZA-0003CH-U3
- for qemu-arm@nongnu.org; Sun, 23 Feb 2020 21:33:54 -0500
+ (envelope-from <zhukeqian1@huawei.com>) id 1j63cw-00053J-H5
+ for qemu-arm@nongnu.org; Sun, 23 Feb 2020 21:37:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <zhukeqian1@huawei.com>) id 1j63Z9-0006P5-1h
- for qemu-arm@nongnu.org; Sun, 23 Feb 2020 21:33:52 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:60814 helo=huawei.com)
+ (envelope-from <zhukeqian1@huawei.com>) id 1j63cu-0007Yg-NE
+ for qemu-arm@nongnu.org; Sun, 23 Feb 2020 21:37:46 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2722 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
- id 1j63Z8-0006OK-Fv; Sun, 23 Feb 2020 21:33:51 -0500
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id D2F11EB34E9A46E90BCA;
- Mon, 24 Feb 2020 10:33:44 +0800 (CST)
+ id 1j63cu-0007YV-5d; Sun, 23 Feb 2020 21:37:44 -0500
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 8AD8DA45FC4AB7FA7B02;
+ Mon, 24 Feb 2020 10:37:41 +0800 (CST)
 Received: from linux-TFkxOR.huawei.com (10.175.104.212) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.439.0; Mon, 24 Feb 2020 10:33:35 +0800
+ DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
+ 14.3.439.0; Mon, 24 Feb 2020 10:37:31 +0800
 From: Keqian Zhu <zhukeqian1@huawei.com>
 To: <qemu-devel@nongnu.org>
-Subject: [PATCH] migration/throttle: Add throttle-trig-thres migration
- parameter
-Date: Mon, 24 Feb 2020 10:31:42 +0800
-Message-ID: <20200224023142.39360-1-zhukeqian1@huawei.com>
+Subject: [RESEND PATCH v2] migration/throttle: Add throttle-trig-thres
+ migration parameter
+Date: Mon, 24 Feb 2020 10:35:40 +0800
+Message-ID: <20200224023540.15147-1-zhukeqian1@huawei.com>
 X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
 Content-Type: text/plain
@@ -69,7 +69,7 @@ X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.32
+X-Received-From: 45.249.212.190
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,7 +87,7 @@ Cc: Juan Quintela <quintela@redhat.com>, Eric Blake <eblake@redhat.com>,
  Keqian Zhu <zhukeqian1@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JLWvavtrmxHS
+X-TUID: yDvdKJ7wg7cm
 
 Currently, if the bytes_dirty_period is more than the 50% of
 bytes_xfer_period, we start or increase throttling.

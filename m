@@ -1,75 +1,96 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4558984lfg;
-        Sun, 23 Feb 2020 18:37:56 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzCSrRT1/58PVb4VL7DQ0Y942+XPAc5YQmkXHKbQPJB7fHytJ3Iee66uhy4c2y08nxXqEGf
-X-Received: by 2002:aed:2dc2:: with SMTP id i60mr43354315qtd.8.1582511876533;
-        Sun, 23 Feb 2020 18:37:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582511876; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4585099lfg;
+        Sun, 23 Feb 2020 19:13:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxNeM70VYh04x5ProEc2q8Jjor6KtO79w8bCOFYt/AmVfCjDs9bu8yoND1uONPbK1iaUOSL
+X-Received: by 2002:a05:620a:2093:: with SMTP id e19mr47980636qka.355.1582514027887;
+        Sun, 23 Feb 2020 19:13:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582514027; cv=none;
         d=google.com; s=arc-20160816;
-        b=eZHL3FFnWlbPKYOsaYP8XJ97YMLm15FSU8Wfi2accfmy3cn3Yd3xl9dtZFV8UtRrW0
-         enhQwTr6Qq+rQqC6pvKw55EUpvhMq8IQY2ScT8HdK33q5bNlJOzXD16OLEkCA3+k0oEe
-         BTd1Ujx1KBPLz1p5DE6gPBKx5MHAi4AtFGdpjiqTpzujawYS3H8vRjCKlQ91LUhjvRQr
-         wl56yNp+t71JZPBuK3F/bMZxahliCsQhSvd3SNX4H/IBVFukszW+/mLF2x0nH0BMNcls
-         klfDKj3aewiKurW0ummKM/UB9hUoSdhwGhpd/iUBlYYo5hUF/ZvoKjZOc1qIpwQGZR+2
-         HX7w==
+        b=doy4qiPPntkafmUGOX/cNo2GJCX3boUsxzTUvkvztDp6AuWgWBd7PI9JygYfY0MIMQ
+         57+dFh1F55nT/YlRAGUErUp1KwBjDaJaJroXFDK7Ah6jRDjadyNVJvwUrnGjoNyQ4/Zm
+         VC98Yqc4VLpRljmkqNFIEYDgiA302HvG5OXxppjtfai4GnyrSJCmJc5iH8KPsDuOt5AT
+         SuoYv7g0SSD/8gfHfQTB5pLpD0ZftV94n51GJIwXy9MQZBjqFH7dt+kWQRSp69HbOkIH
+         ayaqQdhaCZchfJCd8cFSinC5WqaJpSLfOg9X7Ztj2zM6mvdKBb/1VE8DuNlT7kWx4GAU
+         ZF0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=eXawr5NYrcuijfE35M6gfSigCa8M0W8oY6q0A/PM9+A=;
-        b=w5Vw8eTKSb//XXvD+I7OaPC2Vetq+A252qugOm89R79ft2Oz3iHZQBkOUBW7s+hcLH
-         xIeEMb79ckuZDdjz6oSaeLbattVWHzVrG28DqLsEwzfkDnURPUJTtE9pg01eKLC1IKHg
-         lG2mANPmd9a5U4TUag07fixR2F8xK6dncuTd38VUAYDx9Hs9/HdsYZj3+rywmE9Fba07
-         Oz0XH6UPGaEXUfsbu/U2hda74FpB2Yi2wIo3Kj1Pil+/cosQ1ewOkjc2+CCAn18IStVr
-         0iADnBSutOqsG7SKiYGUtgI+Qx6div4ApHEXPXVoOOV+L3fy6JTmfc4WIaYPiNsG0XQj
-         GEbw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=4CzboXwg1gWo9TZKssbatq5M6sKvMbEROQSbtSwtE1E=;
+        b=wD4Pd1+rFBg91uNEOP2/EoXQqVXtJov+v7esYOSbhqVFy42IASrdQrAjAdnVprSADN
+         3nd5vYxIg3EdnI/oZ3Tg7QkLpAe+HAe924IN8xCxJ4nxsR336Xh+bLhlqf9QTcE7x53Y
+         DDVpbUjKeaQZobhKbY5n0Lg1fnP/5zjRcquI3RZNKlrOwbQWnHlvB/UDm/7qVW+b6co7
+         1G+Tg45q1Kf13eF5+BliWsb4r1bDn+IYMwASwm5Uqu4ak2rtJcw5tMzMc4FfUDcys4ER
+         q51iggwvGkT43uYlvRvGeYpjHo8eL1r39FleTgHmQ7KJmqHmUpYABqNrp5P6eb0z09JZ
+         /R0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Hl3u6ty8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x7si5582639qkj.22.2020.02.23.18.37.56
+        by mx.google.com with ESMTPS id dk20si4727324qvb.16.2020.02.23.19.13.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 23 Feb 2020 18:37:56 -0800 (PST)
+        Sun, 23 Feb 2020 19:13:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58914 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Hl3u6ty8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59100 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j63d6-00053U-0M
-	for alex.bennee@linaro.org; Sun, 23 Feb 2020 21:37:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53305)
+	id 1j64Bn-00039a-Ar
+	for alex.bennee@linaro.org; Sun, 23 Feb 2020 22:13:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55770)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <zhukeqian1@huawei.com>) id 1j63cw-00053J-H5
- for qemu-arm@nongnu.org; Sun, 23 Feb 2020 21:37:48 -0500
+ (envelope-from <gshan@redhat.com>) id 1j64Bd-000365-Bc
+ for qemu-arm@nongnu.org; Sun, 23 Feb 2020 22:13:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <zhukeqian1@huawei.com>) id 1j63cu-0007Yg-NE
- for qemu-arm@nongnu.org; Sun, 23 Feb 2020 21:37:46 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2722 helo=huawei.com)
+ (envelope-from <gshan@redhat.com>) id 1j64Bb-0000N2-KB
+ for qemu-arm@nongnu.org; Sun, 23 Feb 2020 22:13:36 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:52960
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
- id 1j63cu-0007YV-5d; Sun, 23 Feb 2020 21:37:44 -0500
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 8AD8DA45FC4AB7FA7B02;
- Mon, 24 Feb 2020 10:37:41 +0800 (CST)
-Received: from linux-TFkxOR.huawei.com (10.175.104.212) by
- DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
- 14.3.439.0; Mon, 24 Feb 2020 10:37:31 +0800
-From: Keqian Zhu <zhukeqian1@huawei.com>
-To: <qemu-devel@nongnu.org>
-Subject: [RESEND PATCH v2] migration/throttle: Add throttle-trig-thres
- migration parameter
-Date: Mon, 24 Feb 2020 10:35:40 +0800
-Message-ID: <20200224023540.15147-1-zhukeqian1@huawei.com>
-X-Mailer: git-send-email 2.19.1
+ (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1j64Bb-0000Mj-G5
+ for qemu-arm@nongnu.org; Sun, 23 Feb 2020 22:13:35 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582514014;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=4CzboXwg1gWo9TZKssbatq5M6sKvMbEROQSbtSwtE1E=;
+ b=Hl3u6ty8cERG98BXtGzdfqGI3rJiQ5sg7gCMO11Q1iaApa2Fiy8uWrvYCW56PmoXFRX9ir
+ K5z9DEkNHwwJ1xBfVI1H7VPwtYmDuwia9GGKDGL+HgAG0dV8sj8CyZkPGFe8LN8npk/ikz
+ wBwGWKdiQUTl/aaUoOgWj2KiIm0AeYA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-190-xNNXLyR8OymBEgbmArWC2g-1; Sun, 23 Feb 2020 22:13:32 -0500
+X-MC-Unique: xNNXLyR8OymBEgbmArWC2g-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B3E6A13E2;
+ Mon, 24 Feb 2020 03:13:31 +0000 (UTC)
+Received: from localhost.localdomain.com (vpn2-54-48.bne.redhat.com
+ [10.64.54.48])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 70C9F60BF4;
+ Mon, 24 Feb 2020 03:13:26 +0000 (UTC)
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH v2] hw/char/pl011: Enable TxFIFO and async transmission
+Date: Mon, 24 Feb 2020 14:13:19 +1100
+Message-Id: <20200224031319.84392-1-gshan@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.175.104.212]
-X-CFilter-Loop: Reflected
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.190
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,328 +102,201 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Juan Quintela <quintela@redhat.com>, Eric Blake <eblake@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Markus
- Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org, wanghaibin.wang@huawei.com,
- Keqian Zhu <zhukeqian1@huawei.com>
+Cc: peter.maydell@linaro.org, philmd@redhat.com, shan.gavin@gmail.com,
+ marcandre.lureau@redhat.com, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yDvdKJ7wg7cm
+X-TUID: PN/QK8nA43IR
 
-Currently, if the bytes_dirty_period is more than the 50% of
-bytes_xfer_period, we start or increase throttling.
+The depth of TxFIFO can be 1 or 16 depending on LCR[4]. The TxFIFO is
+disabled when its depth is 1. It's nice to have TxFIFO enabled if
+possible because more characters can be piled and transmitted at once,
+which would have less overhead. Besides, we can be blocked because of
+qemu_chr_fe_write_all(), which isn't nice.
 
-If we make this percentage higher, then we can tolerate higher
-dirty rate during migration, which means less impact on guest.
-The side effect of higher percentage is longer migration time.
-We can make this parameter configurable to switch between mig-
-ration time first or guest performance first.
+This enables TxFIFO if possible. On ther other hand, the asynchronous
+transmission is enabled if needed, as we did in hw/char/cadence_uart.c
 
-The default value is 50 and valid range is 1 to 100.
-
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
-Changelog:
-
-v1->v2
- -Use full name for parameter. Suggested by Eric Blake.
- -Change the upper bound of threshold to 100.
- -Extract the throttle strategy as function.
-
+v2: Put write_{count,fifo} into migration subsection
+    Don't start async IO handle if it has been started, to avoid race
+    Update with PL011_FLAG_{TXFF,TXFE} on changing write_count
 ---
-Cc: Juan Quintela <quintela@redhat.com>
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Cc: Eric Blake <eblake@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>
+ hw/char/pl011.c         | 105 +++++++++++++++++++++++++++++++++++++---
+ include/hw/char/pl011.h |   3 ++
+ 2 files changed, 102 insertions(+), 6 deletions(-)
 
----
- migration/migration.c | 24 ++++++++++++++++++++
- migration/ram.c       | 52 +++++++++++++++++++++++++------------------
- monitor/hmp-cmds.c    |  7 ++++++
- qapi/migration.json   | 16 ++++++++++++-
- 4 files changed, 76 insertions(+), 23 deletions(-)
-
-diff --git a/migration/migration.c b/migration/migration.c
-index 8fb68795dc..42d2d556e3 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -78,6 +78,7 @@
- /*0: means nocompress, 1: best speed, ... 9: best compress ratio */
- #define DEFAULT_MIGRATE_COMPRESS_LEVEL 1
- /* Define default autoconverge cpu throttle migration parameters */
-+#define DEFAULT_MIGRATE_THROTTLE_TRIGGER_THRESHOLD 50
- #define DEFAULT_MIGRATE_CPU_THROTTLE_INITIAL 20
- #define DEFAULT_MIGRATE_CPU_THROTTLE_INCREMENT 10
- #define DEFAULT_MIGRATE_MAX_CPU_THROTTLE 99
-@@ -778,6 +779,8 @@ MigrationParameters *qmp_query_migrate_parameters(Err=
-or **errp)
-     params->compress_wait_thread =3D s->parameters.compress_wait_thread;
-     params->has_decompress_threads =3D true;
-     params->decompress_threads =3D s->parameters.decompress_threads;
-+    params->has_throttle_trigger_threshold =3D true;
-+    params->throttle_trigger_threshold =3D s->parameters.throttle_trigge=
-r_threshold;
-     params->has_cpu_throttle_initial =3D true;
-     params->cpu_throttle_initial =3D s->parameters.cpu_throttle_initial;
-     params->has_cpu_throttle_increment =3D true;
-@@ -1164,6 +1167,15 @@ static bool migrate_params_check(MigrationParamete=
-rs *params, Error **errp)
-         return false;
-     }
-=20
-+    if (params->has_throttle_trigger_threshold &&
-+        (params->throttle_trigger_threshold < 1 ||
-+         params->throttle_trigger_threshold > 100)) {
-+        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
-+                   "throttle_trigger_threshold",
-+                   "an integer in the range of 1 to 100");
-+        return false;
-+    }
-+
-     if (params->has_cpu_throttle_initial &&
-         (params->cpu_throttle_initial < 1 ||
-          params->cpu_throttle_initial > 99)) {
-@@ -1279,6 +1291,10 @@ static void migrate_params_test_apply(MigrateSetPa=
-rameters *params,
-         dest->decompress_threads =3D params->decompress_threads;
-     }
-=20
-+    if (params->has_throttle_trigger_threshold) {
-+        dest->throttle_trigger_threshold =3D params->throttle_trigger_th=
-reshold;
-+    }
-+
-     if (params->has_cpu_throttle_initial) {
-         dest->cpu_throttle_initial =3D params->cpu_throttle_initial;
-     }
-@@ -1360,6 +1376,10 @@ static void migrate_params_apply(MigrateSetParamet=
-ers *params, Error **errp)
-         s->parameters.decompress_threads =3D params->decompress_threads;
-     }
-=20
-+    if (params->has_throttle_trigger_threshold) {
-+        s->parameters.throttle_trigger_threshold =3D params->throttle_tr=
-igger_threshold;
-+    }
-+
-     if (params->has_cpu_throttle_initial) {
-         s->parameters.cpu_throttle_initial =3D params->cpu_throttle_init=
-ial;
-     }
-@@ -3506,6 +3526,9 @@ static Property migration_properties[] =3D {
-     DEFINE_PROP_UINT8("x-decompress-threads", MigrationState,
-                       parameters.decompress_threads,
-                       DEFAULT_MIGRATE_DECOMPRESS_THREAD_COUNT),
-+    DEFINE_PROP_UINT8("x-throttle-trigger-threshold", MigrationState,
-+                      parameters.throttle_trigger_threshold,
-+                      DEFAULT_MIGRATE_THROTTLE_TRIGGER_THRESHOLD),
-     DEFINE_PROP_UINT8("x-cpu-throttle-initial", MigrationState,
-                       parameters.cpu_throttle_initial,
-                       DEFAULT_MIGRATE_CPU_THROTTLE_INITIAL),
-@@ -3606,6 +3629,7 @@ static void migration_instance_init(Object *obj)
-     params->has_compress_level =3D true;
-     params->has_compress_threads =3D true;
-     params->has_decompress_threads =3D true;
-+    params->has_throttle_trigger_threshold =3D true;
-     params->has_cpu_throttle_initial =3D true;
-     params->has_cpu_throttle_increment =3D true;
-     params->has_max_bandwidth =3D true;
-diff --git a/migration/ram.c b/migration/ram.c
-index ed23ed1c7c..3a38253903 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -896,11 +896,38 @@ static void migration_update_rates(RAMState *rs, in=
-t64_t end_time)
-     }
+diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+index 13e784f9d9..de5c4254fe 100644
+--- a/hw/char/pl011.c
++++ b/hw/char/pl011.c
+@@ -169,6 +169,73 @@ static void pl011_set_read_trigger(PL011State *s)
+         s->read_trigger =3D 1;
  }
 =20
-+static void migration_trigger_throttle(RAMState *rs)
++static gboolean pl011_xmit(GIOChannel *chan, GIOCondition cond, void *opaq=
+ue)
 +{
-+    MigrationState *s =3D migrate_get_current();
-+    uint64_t threshold =3D s->parameters.throttle_trigger_threshold;
++    PL011State *s =3D (PL011State *)opaque;
++    int ret;
 +
-+    uint64_t bytes_xfer_period =3D ram_counters.transferred - rs->bytes_=
-xfer_prev;
-+    uint64_t bytes_dirty_period =3D rs->num_dirty_pages_period * TARGET_=
-PAGE_SIZE;
-+    uint64_t bytes_dirty_threshold =3D bytes_xfer_period * threshold / 1=
-00;
++    /* Drain FIFO if there is no backend */
++    if (!qemu_chr_fe_backend_connected(&s->chr)) {
++        s->write_count =3D 0;
++        s->flags &=3D ~PL011_FLAG_TXFF;
++        s->flags |=3D PL011_FLAG_TXFE;
++        return FALSE;
++    }
 +
-+    /* During block migration the auto-converge logic incorrectly detect=
-s
-+     * that ram migration makes no progress. Avoid this by disabling the
-+     * throttling logic during the bulk phase of block migration. */
-+    if (migrate_auto_converge() && !blk_mig_bulk_active()) {
-+        /* The following detection logic can be refined later. For now:
-+           Check to see if the ratio between dirtied bytes and the appro=
-x.
-+           amount of bytes that just got transferred since the last time
-+           we were in this routine reaches the threshold. If that happen=
-s
-+           twice, start or increase throttling. */
++    /* Nothing to do */
++    if (!s->write_count) {
++        return FALSE;
++    }
 +
-+        if ((bytes_dirty_period > bytes_dirty_threshold) &&
-+            (++rs->dirty_rate_high_cnt >=3D 2)) {
-+            trace_migration_throttle();
-+            rs->dirty_rate_high_cnt =3D 0;
-+            mig_throttle_guest_down();
++    ret =3D qemu_chr_fe_write(&s->chr, s->write_fifo, s->write_count);
++    if (ret > 0) {
++        s->write_count -=3D ret;
++        memmove(s->write_fifo, s->write_fifo + ret, s->write_count);
++        s->flags &=3D ~PL011_FLAG_TXFF;
++        if (!s->write_count) {
++            s->flags |=3D PL011_FLAG_TXFE;
 +        }
++    }
++
++    if (s->write_count) {
++        s->watch_tag =3D qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_HU=
+P,
++                                             pl011_xmit, s);
++        if (!s->watch_tag) {
++            s->write_count =3D 0;
++            s->flags &=3D ~PL011_FLAG_TXFF;
++            s->flags |=3D PL011_FLAG_TXFE;
++            return FALSE;
++        }
++    }
++
++    s->int_level |=3D PL011_INT_TX;
++    pl011_update(s);
++    return FALSE;
++}
++
++static void pl011_write_fifo(void *opaque, const unsigned char *buf, int s=
+ize)
++{
++    PL011State *s =3D (PL011State *)opaque;
++    int depth =3D (s->lcr & 0x10) ? 16 : 1;
++
++    if (size >=3D (depth - s->write_count)) {
++        size =3D depth - s->write_count;
++    }
++
++    if (size > 0) {
++        memcpy(s->write_fifo + s->write_count, buf, size);
++        s->write_count +=3D size;
++        if (s->write_count >=3D depth) {
++            s->flags |=3D PL011_FLAG_TXFF;
++        }
++        s->flags &=3D ~PL011_FLAG_TXFE;
++    }
++
++    if (!s->watch_tag) {
++        pl011_xmit(NULL, G_IO_OUT, s);
 +    }
 +}
 +
- static void migration_bitmap_sync(RAMState *rs)
+ static void pl011_write(void *opaque, hwaddr offset,
+                         uint64_t value, unsigned size)
  {
-     RAMBlock *block;
-     int64_t end_time;
--    uint64_t bytes_xfer_now;
+@@ -179,13 +246,8 @@ static void pl011_write(void *opaque, hwaddr offset,
 =20
-     ram_counters.dirty_sync_count++;
-=20
-@@ -927,26 +954,7 @@ static void migration_bitmap_sync(RAMState *rs)
-=20
-     /* more than 1 second =3D 1000 millisecons */
-     if (end_time > rs->time_last_bitmap_sync + 1000) {
--        bytes_xfer_now =3D ram_counters.transferred;
--
--        /* During block migration the auto-converge logic incorrectly de=
-tects
--         * that ram migration makes no progress. Avoid this by disabling=
- the
--         * throttling logic during the bulk phase of block migration. */
--        if (migrate_auto_converge() && !blk_mig_bulk_active()) {
--            /* The following detection logic can be refined later. For n=
-ow:
--               Check to see if the dirtied bytes is 50% more than the ap=
-prox.
--               amount of bytes that just got transferred since the last =
-time we
--               were in this routine. If that happens twice, start or inc=
-rease
--               throttling */
--
--            if ((rs->num_dirty_pages_period * TARGET_PAGE_SIZE >
--                   (bytes_xfer_now - rs->bytes_xfer_prev) / 2) &&
--                (++rs->dirty_rate_high_cnt >=3D 2)) {
--                    trace_migration_throttle();
--                    rs->dirty_rate_high_cnt =3D 0;
--                    mig_throttle_guest_down();
--            }
--        }
-+        migration_trigger_throttle(rs);
-=20
-         migration_update_rates(rs, end_time);
-=20
-@@ -955,7 +963,7 @@ static void migration_bitmap_sync(RAMState *rs)
-         /* reset period counters */
-         rs->time_last_bitmap_sync =3D end_time;
-         rs->num_dirty_pages_period =3D 0;
--        rs->bytes_xfer_prev =3D bytes_xfer_now;
-+        rs->bytes_xfer_prev =3D ram_counters.transferred;
-     }
-     if (migrate_use_events()) {
-         qapi_event_send_migration_pass(ram_counters.dirty_sync_count);
-diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
-index 53bc3f76c4..de67d0bd53 100644
---- a/monitor/hmp-cmds.c
-+++ b/monitor/hmp-cmds.c
-@@ -409,6 +409,10 @@ void hmp_info_migrate_parameters(Monitor *mon, const=
- QDict *qdict)
-         monitor_printf(mon, "%s: %u\n",
-             MigrationParameter_str(MIGRATION_PARAMETER_DECOMPRESS_THREAD=
-S),
-             params->decompress_threads);
-+        assert(params->has_throttle_trigger_threshold);
-+        monitor_printf(mon, "%s: %u\n",
-+            MigrationParameter_str(MIGRATION_PARAMETER_THROTTLE_TRIGGER_=
-THRESHOLD),
-+            params->throttle_trigger_threshold);
-         assert(params->has_cpu_throttle_initial);
-         monitor_printf(mon, "%s: %u\n",
-             MigrationParameter_str(MIGRATION_PARAMETER_CPU_THROTTLE_INIT=
-IAL),
-@@ -1764,6 +1768,9 @@ void hmp_migrate_set_parameter(Monitor *mon, const =
-QDict *qdict)
-         p->has_decompress_threads =3D true;
-         visit_type_int(v, param, &p->decompress_threads, &err);
+     switch (offset >> 2) {
+     case 0: /* UARTDR */
+-        /* ??? Check if transmitter is enabled.  */
+         ch =3D value;
+-        /* XXX this blocks entire thread. Rewrite to use
+-         * qemu_chr_fe_write and background I/O callbacks */
+-        qemu_chr_fe_write_all(&s->chr, &ch, 1);
+-        s->int_level |=3D PL011_INT_TX;
+-        pl011_update(s);
++        pl011_write_fifo(opaque, &ch, 1);
          break;
-+    case MIGRATION_PARAMETER_THROTTLE_TRIGGER_THRESHOLD:
-+        p->has_throttle_trigger_threshold =3D true;
-+        visit_type_int(v, param, &p->throttle_trigger_threshold, &err);
-     case MIGRATION_PARAMETER_CPU_THROTTLE_INITIAL:
-         p->has_cpu_throttle_initial =3D true;
-         visit_type_int(v, param, &p->cpu_throttle_initial, &err);
-diff --git a/qapi/migration.json b/qapi/migration.json
-index 52f3429969..0e7ac64c98 100644
---- a/qapi/migration.json
-+++ b/qapi/migration.json
-@@ -524,6 +524,10 @@
- #                      compression, so set the decompress-threads to the=
- number about 1/4
- #                      of compress-threads is adequate.
- #
-+# @throttle-trigger-threshold: The ratio of bytes_dirty_period and bytes=
-_xfer_period
-+#                              to trigger throttling. It is expressed as=
- percentage.
-+#                              The default value is 50. (Since 5.0)
-+#
- # @cpu-throttle-initial: Initial percentage of time guest cpus are throt=
-tled
- #                        when migration auto-converge is activated. The
- #                        default value is 20. (Since 2.7)
-@@ -592,7 +596,7 @@
-   'data': ['announce-initial', 'announce-max',
-            'announce-rounds', 'announce-step',
-            'compress-level', 'compress-threads', 'decompress-threads',
--           'compress-wait-thread',
-+           'compress-wait-thread', 'throttle-trigger-threshold',
-            'cpu-throttle-initial', 'cpu-throttle-increment',
-            'tls-creds', 'tls-hostname', 'tls-authz', 'max-bandwidth',
-            'downtime-limit', 'x-checkpoint-delay', 'block-incremental',
-@@ -626,6 +630,10 @@
- #
- # @decompress-threads: decompression thread count
- #
-+# @throttle-trigger-threshold: The ratio of bytes_dirty_period and bytes=
-_xfer_period
-+#                              to trigger throttling. It is expressed as=
- percentage.
-+#                              The default value is 50. (Since 5.0)
-+#
- # @cpu-throttle-initial: Initial percentage of time guest cpus are
- #                        throttled when migration auto-converge is activ=
-ated.
- #                        The default value is 20. (Since 2.7)
-@@ -701,6 +709,7 @@
-             '*compress-threads': 'int',
-             '*compress-wait-thread': 'bool',
-             '*decompress-threads': 'int',
-+            '*throttle-trigger-threshold': 'int',
-             '*cpu-throttle-initial': 'int',
-             '*cpu-throttle-increment': 'int',
-             '*tls-creds': 'StrOrNull',
-@@ -759,6 +768,10 @@
- #
- # @decompress-threads: decompression thread count
- #
-+# @throttle-trigger-threshold: The ratio of bytes_dirty_period and bytes=
-_xfer_period
-+#                              to trigger throttling. It is expressed as=
- percentage.
-+#                              The default value is 50. (Since 5.0)
-+#
- # @cpu-throttle-initial: Initial percentage of time guest cpus are
- #                        throttled when migration auto-converge is activ=
-ated.
- #                        (Since 2.7)
-@@ -834,6 +847,7 @@
-             '*compress-threads': 'uint8',
-             '*compress-wait-thread': 'bool',
-             '*decompress-threads': 'uint8',
-+            '*throttle-trigger-threshold': 'uint8',
-             '*cpu-throttle-initial': 'uint8',
-             '*cpu-throttle-increment': 'uint8',
-             '*tls-creds': 'str',
+     case 1: /* UARTRSR/UARTECR */
+         s->rsr =3D 0;
+@@ -207,7 +269,16 @@ static void pl011_write(void *opaque, hwaddr offset,
+         if ((s->lcr ^ value) & 0x10) {
+             s->read_count =3D 0;
+             s->read_pos =3D 0;
++
++            if (s->watch_tag) {
++                g_source_remove(s->watch_tag);
++                s->watch_tag =3D 0;
++            }
++            s->write_count =3D 0;
++            s->flags &=3D ~PL011_FLAG_TXFF;
++            s->flags |=3D PL011_FLAG_TXFE;
+         }
++
+         s->lcr =3D value;
+         pl011_set_read_trigger(s);
+         break;
+@@ -292,6 +363,24 @@ static const MemoryRegionOps pl011_ops =3D {
+     .endianness =3D DEVICE_NATIVE_ENDIAN,
+ };
+=20
++static bool pl011_write_fifo_needed(void *opaque)
++{
++    PL011State *s =3D (PL011State *)opaque;
++    return s->write_count > 0;
++}
++
++static const VMStateDescription vmstate_pl011_write_fifo =3D {
++    .name =3D "pl011/write_fifo",
++    .version_id =3D 1,
++    .minimum_version_id =3D 1,
++    .needed =3D pl011_write_fifo_needed,
++    .fields =3D (VMStateField[]) {
++        VMSTATE_INT32(write_count, PL011State),
++        VMSTATE_UINT8_ARRAY(write_fifo, PL011State, 16),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static const VMStateDescription vmstate_pl011 =3D {
+     .name =3D "pl011",
+     .version_id =3D 2,
+@@ -314,6 +403,10 @@ static const VMStateDescription vmstate_pl011 =3D {
+         VMSTATE_INT32(read_count, PL011State),
+         VMSTATE_INT32(read_trigger, PL011State),
+         VMSTATE_END_OF_LIST()
++    },
++    .subsections =3D (const VMStateDescription * []) {
++        &vmstate_pl011_write_fifo,
++        NULL
+     }
+ };
+=20
+diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
+index 14187165c6..9d1c24db48 100644
+--- a/include/hw/char/pl011.h
++++ b/include/hw/char/pl011.h
+@@ -38,6 +38,7 @@ typedef struct PL011State {
+     uint32_t int_enabled;
+     uint32_t int_level;
+     uint32_t read_fifo[16];
++    uint8_t  write_fifo[16];
+     uint32_t ilpr;
+     uint32_t ibrd;
+     uint32_t fbrd;
+@@ -45,6 +46,8 @@ typedef struct PL011State {
+     int read_pos;
+     int read_count;
+     int read_trigger;
++    int write_count;
++    guint watch_tag;
+     CharBackend chr;
+     qemu_irq irq[6];
+     const unsigned char *id;
 --=20
-2.19.1
+2.23.0
 

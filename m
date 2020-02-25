@@ -1,236 +1,332 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1674202lfg;
-        Tue, 25 Feb 2020 05:18:01 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxp90QLaNa4+D/KC8Xhd1jlbs3dIr0KnS+DBjAQMkA2U69J5XUbE+BBIXMPmNVIBFPOIK4+
-X-Received: by 2002:a05:620a:2093:: with SMTP id e19mr56692538qka.355.1582636681178;
-        Tue, 25 Feb 2020 05:18:01 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j10si7136733qkk.353.2020.02.25.05.18.01
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 05:18:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1680802lfg;
+        Tue, 25 Feb 2020 05:23:55 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxS1GqIC8CTiq5yqd3p6dvyQ1Xlxae0DbRjAs5Difc0jxNr0ihNNW+Mv2wT1eJVk3rGBBZs
+X-Received: by 2002:a9d:3f5:: with SMTP id f108mr46223902otf.103.1582637034862;
+        Tue, 25 Feb 2020 05:23:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582637034; cv=none;
+        d=google.com; s=arc-20160816;
+        b=GTdHdUO87TG8fgAlQczJBDyVd4ZAHRMUbA6pvhgbo3KAwd4oIxi7rZsC9IdGZ3KccN
+         a3e8yJ1kfYJEe5QpX2tWcERnvr1iSs4pidHkVDfKLE0rLlJ1JnR+lygLHUVL26saxXPl
+         XWk5kBUyf+F0eA2rduyal+flBk9mOs5RcE9iHOZJutxIB9PS6jVJzdTNOxVjOOxY+ieY
+         qTbPmY3zleryJ4V3Im37+adSjXM7XmFzIVUX44QRotcpJESRWINSWiNSpQX6kxB5Xr5F
+         pVfLGq5530aEVG8tMU3glOZpLyNJzEK1EcpXygDxjzWs0NWgeuyIS/BzYiKYdGua5MP5
+         o1rg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=eDwDbaBrloN0/9UIxTHB+r5PAkSFUSrWWrBgDy0DRks=;
+        b=cAq9sg/ISmba+ogCob28iFm8X0fa1DyaW7j8FcxQn4COx52eYP/8f3EnnsOZSv61Z5
+         c3iVhJ/iOI8kwE07YZYLrg8gtABTOHVZRGOvW6YylYkt0lgEYiFUpt93tePc4BpxUm8J
+         cZnFVZp+BZUysPUjYiEUngHw2qTJlgSlWt/vsJUY++Env4j0ADB8rUiZPsn1w4ZKT66l
+         VWqp5zcQOJW2VMf3IsYQdG6dBC/OAUZMJKhfmGzZZEZTxTPX/js0CzKWJsmmE07pWgUM
+         3he5H0CD8JSJxUutj48fKU7QqjgNxviROf/y70QYQzgbPJLag0jK4YyQaYkfaB0VGNbI
+         R1iA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NUVSMwXQ;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id n2si8094925otq.315.2020.02.25.05.23.54;
+        Tue, 25 Feb 2020 05:23:54 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=wqG+5fnL;
-       arc=fail (body hash mismatch);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55500 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6a64-0004tY-De
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 08:18:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37407)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1j6a2o-0007yR-T7
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 08:14:40 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1j6a2n-000261-4j
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 08:14:38 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:57274)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1j6a2m-00023D-MW; Tue, 25 Feb 2020 08:14:37 -0500
-Received: from crumble.bar.greensocs.com (crumble.bar.greensocs.com
- [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPS id 43BAC96F57;
- Tue, 25 Feb 2020 13:14:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1582636470;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dRPQZ/ZK2BoNEjn5Iae8tGrhXrd6S6a/K4s/XgUw0a8=;
- b=wqG+5fnL1CDhHpdZN5to1M66ss5nJJ9V4wq4RxrjVx/S9HHh81Om+Oe5Gq8WPoAVYCM2k5
- Trw7jW4VH42IHKDq3QJabQdn3IaqBaWJeqNqpsK4KbuUb5dePsGLIgvyNRZulbaNu83fK/
- urCVCEzOVNxtuDR4thVLJ+lC01rcud4=
-From: Damien Hedde <damien.hedde@greensocs.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v8 8/9] hw/arm/xilinx_zynq: connect uart clocks to slcr
-Date: Tue, 25 Feb 2020 14:14:21 +0100
-Message-Id: <20200225131422.53368-9-damien.hedde@greensocs.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200225131422.53368-1-damien.hedde@greensocs.com>
-References: <20200225131422.53368-1-damien.hedde@greensocs.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NUVSMwXQ;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1729590AbgBYNXx (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 25 Feb 2020 08:23:53 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:53863 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1729386AbgBYNXx (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 25 Feb 2020 08:23:53 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1582637032;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=eDwDbaBrloN0/9UIxTHB+r5PAkSFUSrWWrBgDy0DRks=;
+        b=NUVSMwXQlyOLWo2u3w6yTrjT3C7UpQni0C95wjBsQsDbYhWEHy7q29RUFTyYdQPqmODYc7
+        CjSKSCDNPvXMljpaN+p7aZwS+3SHNdTm9dpZlV5lWruQjFuqMb6vvbCBikUoY4kTO9YJuw
+        BVqmk3cTc0UmgM9W4tDHk3TbWp3zqPE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-210-CYrY3AgSPbeUcNsH9vOCFw-1; Tue, 25 Feb 2020 08:23:48 -0500
+X-MC-Unique: CYrY3AgSPbeUcNsH9vOCFw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B86E2101FC6E;
+        Tue, 25 Feb 2020 13:23:45 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 3227B5C1D6;
+        Tue, 25 Feb 2020 13:23:38 +0000 (UTC)
+Date:   Tue, 25 Feb 2020 14:23:36 +0100
+From:   Igor Mammedov <imammedo@redhat.com>
+To:     Dongjiu Geng <gengdongjiu@huawei.com>
+Cc:     <mst@redhat.com>, <xiaoguangrong.eric@gmail.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <fam@euphon.net>, <rth@twiddle.net>, <ehabkost@redhat.com>,
+        <mtosatti@redhat.com>, <qemu-devel@nongnu.org>,
+        <kvm@vger.kernel.org>, <qemu-arm@nongnu.org>,
+        <pbonzini@redhat.com>, <james.morse@arm.com>, <lersek@redhat.com>,
+        <jonathan.cameron@huawei.com>,
+        <shameerali.kolothum.thodi@huawei.com>, zhengxiang9@huawei.com
+Subject: Re: [PATCH v24 05/10] ACPI: Build Hardware Error Source Table
+Message-ID: <20200225142336.16b7fc40@redhat.com>
+In-Reply-To: <20200217131248.28273-6-gengdongjiu@huawei.com>
+References: <20200217131248.28273-1-gengdongjiu@huawei.com>
+        <20200217131248.28273-6-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1582636470;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dRPQZ/ZK2BoNEjn5Iae8tGrhXrd6S6a/K4s/XgUw0a8=;
- b=OcOMTevjEHmyYNLPDIvP6YIRGVwyhBGr2Q0iel9AoeIMk0uzLQeeUZum3VPHSJvk5nDqdX
- Tz6orngak2UX0gLKg53iDI3oLxH7twY2iHepw4XyrIGEBtQre55FpmgzlwVpLlKPMCsAxM
- uUjqhqvn8vDPS7lA5pxfePLKXJxvRzA=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582636470; a=rsa-sha256; cv=none;
- b=1AkDBRjC572VUiL2K8brXzrsjisEpxxmlrSdb2+S5wyCnP72IQl27CMj25rHkIW/xk755n
- zntEOenRCoMixKgR+rqDAj6qi9WAeJmTOsoaNQRA8gamxdfvkwkVm9wJ+9jymQxBaQ2w/v
- sodxYGdg+EbkSlBc8g4mjDxWKVoK/qQ=
-ARC-Authentication-Results: i=1;
-	beetle.greensocs.com;
-	none
-X-Spam: Yes
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 5.135.226.135
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>, peter.maydell@linaro.org,
- berrange@redhat.com, ehabkost@redhat.com, pbonzini@redhat.com,
- alistair@alistair23.me, mark.burton@greensocs.com, qemu-arm@nongnu.org,
- marcandre.lureau@redhat.com, philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q0yJR28FpBcn
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: wsWI//In7umT
 
-Add the connection between the slcr's output clocks and the uarts inputs.
+On Mon, 17 Feb 2020 21:12:43 +0800
+Dongjiu Geng <gengdongjiu@huawei.com> wrote:
 
-Also add the main board clock 'ps_clk', which is hard-coded to 33.33MHz
-(the default frequency). This clock is used to feed the slcr's input
-clock.
+> This patch builds Hardware Error Source Table(HEST) via fw_cfg blobs.
+> Now it only supports ARMv8 SEA, a type of Generic Hardware Error
+> Source version 2(GHESv2) error source. Afterwards, we can extend
+> the supported types if needed. For the CPER section, currently it
+> is memory section because kernel mainly wants userspace to handle
+> the memory errors.
+> 
+> This patch follows the spec ACPI 6.2 to build the Hardware Error
+> Source table. For more detailed information, please refer to
+> document: docs/specs/acpi_hest_ghes.rst
+> 
+> build_ghes_hw_error_notification() helper will help to add Hardware
+> Error Notification to ACPI tables without using packed C structures
+> and avoid endianness issues as API doesn't need explicit conversion.
+> 
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+> Acked-by: Xiang Zheng <zhengxiang9@huawei.com>
+> ---
+>  hw/acpi/ghes.c           | 126 +++++++++++++++++++++++++++++++++++++++++++++++
+>  hw/arm/virt-acpi-build.c |   1 +
+>  include/hw/acpi/ghes.h   |  39 +++++++++++++++
+>  3 files changed, 166 insertions(+)
+> 
+> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> index e1b3f8f..7a7381d 100644
+> --- a/hw/acpi/ghes.c
+> +++ b/hw/acpi/ghes.c
+> @@ -23,6 +23,7 @@
+>  #include "qemu/units.h"
+>  #include "hw/acpi/ghes.h"
+>  #include "hw/acpi/aml-build.h"
+> +#include "qemu/error-report.h"
+>  
+>  #define ACPI_GHES_ERRORS_FW_CFG_FILE        "etc/hardware_errors"
+>  #define ACPI_GHES_DATA_ADDR_FW_CFG_FILE     "etc/hardware_errors_addr"
+> @@ -33,6 +34,42 @@
+>  /* Now only support ARMv8 SEA notification type error source */
+>  #define ACPI_GHES_ERROR_SOURCE_COUNT        1
+>  
+> +/* Generic Hardware Error Source version 2 */
+> +#define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
+> +
+> +/* Address offset in Generic Address Structure(GAS) */
+> +#define GAS_ADDR_OFFSET 4
+> +
+> +/*
+> + * Hardware Error Notification
+> + * ACPI 4.0: 17.3.2.7 Hardware Error Notification
+> + * Composes dummy Hardware Error Notification descriptor of specified type
+> + */
+> +static void build_ghes_hw_error_notification(GArray *table, const uint8_t type)
+> +{
+> +    /* Type */
+> +    build_append_int_noprefix(table, type, 1);
+> +    /*
+> +     * Length:
+> +     * Total length of the structure in bytes
+> +     */
+> +    build_append_int_noprefix(table, 28, 1);
+> +    /* Configuration Write Enable */
+> +    build_append_int_noprefix(table, 0, 2);
+> +    /* Poll Interval */
+> +    build_append_int_noprefix(table, 0, 4);
+> +    /* Vector */
+> +    build_append_int_noprefix(table, 0, 4);
+> +    /* Switch To Polling Threshold Value */
+> +    build_append_int_noprefix(table, 0, 4);
+> +    /* Switch To Polling Threshold Window */
+> +    build_append_int_noprefix(table, 0, 4);
+> +    /* Error Threshold Value */
+> +    build_append_int_noprefix(table, 0, 4);
+> +    /* Error Threshold Window */
+> +    build_append_int_noprefix(table, 0, 4);
+> +}
+> +
+>  /*
+>   * Build table for the hardware error fw_cfg blob.
+>   * Initialize "etc/hardware_errors" and "etc/hardware_errors_addr" fw_cfg blobs.
+> @@ -87,3 +124,92 @@ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
+>      bios_linker_loader_write_pointer(linker, ACPI_GHES_DATA_ADDR_FW_CFG_FILE,
+>          0, sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
+>  }
+> +
+> +/* Build Generic Hardware Error Source version 2 (GHESv2) */
+> +static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
+> +{
+> +    uint64_t address_offset;
+> +    /*
+> +     * Type:
+> +     * Generic Hardware Error Source version 2(GHESv2 - Type 10)
+> +     */
+> +    build_append_int_noprefix(table_data, ACPI_GHES_SOURCE_GENERIC_ERROR_V2, 2);
+> +    /* Source Id */
+> +    build_append_int_noprefix(table_data, source_id, 2);
+> +    /* Related Source Id */
+> +    build_append_int_noprefix(table_data, 0xffff, 2);
+> +    /* Flags */
+> +    build_append_int_noprefix(table_data, 0, 1);
+> +    /* Enabled */
+> +    build_append_int_noprefix(table_data, 1, 1);
+> +
+> +    /* Number of Records To Pre-allocate */
+> +    build_append_int_noprefix(table_data, 1, 4);
+> +    /* Max Sections Per Record */
+> +    build_append_int_noprefix(table_data, 1, 4);
+> +    /* Max Raw Data Length */
+> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
+> +
+> +    address_offset = table_data->len;
+> +    /* Error Status Address */
+> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
+> +                     4 /* QWord access */, 0);
+> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> +        address_offset + GAS_ADDR_OFFSET, sizeof(uint64_t),
+> +        ACPI_GHES_ERRORS_FW_CFG_FILE, source_id * sizeof(uint64_t));
+> +
+> +    switch (source_id) {
+> +    case ACPI_HEST_SRC_ID_SEA:
+> +        /*
+> +         * Notification Structure
+> +         * Now only enable ARMv8 SEA notification type
+> +         */
+> +        build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_SEA);
+> +        break;
+> +    default:
+> +        error_report("Not support this error source");
+> +        abort();
+> +    }
+> +
+> +    /* Error Status Block Length */
+> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
+> +
+> +    /*
+> +     * Read Ack Register
+> +     * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source
+> +     * version 2 (GHESv2 - Type 10)
+> +     */
+> +    address_offset = table_data->len;
+> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
+> +                     4 /* QWord access */, 0);
+> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> +        address_offset + GAS_ADDR_OFFSET,
+> +        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
+> +        (ACPI_GHES_ERROR_SOURCE_COUNT + source_id) * sizeof(uint64_t));
+> +
+> +    /*
+> +     * Read Ack Preserve field
+> +     * We only provide the first bit in Read Ack Register to OSPM to write
+> +     * while the other bits are preserved.
+> +     */
+> +    build_append_int_noprefix(table_data, ~0x1ULL, 8);
+> +    /* Read Ack Write */
+> +    build_append_int_noprefix(table_data, 0x1, 8);
+> +}
+> +
+> +/* Build Hardware Error Source Table */
+> +void acpi_build_hest(GArray *table_data, BIOSLinker *linker)
+> +{
+> +    uint64_t hest_start = table_data->len;
+> +
+> +    /* Hardware Error Source Table header*/
+> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
+> +
+> +    /* Error Source Count */
+> +    build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, 4);
+> +
+> +    build_ghes_v2(table_data, ACPI_HEST_SRC_ID_SEA, linker);
+> +
+> +    build_header(linker, table_data, (void *)(table_data->data + hest_start),
+> +        "HEST", table_data->len - hest_start, 1, NULL, "");
+                                                          ^^^
+is there any particular reason to make it empty instead of putting NULL there
+so that QEMU would use default value?
 
-Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
-
----
-v7
- + update ClockIn/ClockOut types
- + simplify the ps_clk frequency init
----
- hw/arm/xilinx_zynq.c | 57 +++++++++++++++++++++++++++++++++++++-------
- 1 file changed, 49 insertions(+), 8 deletions(-)
-
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 3a0fa5b23f..261a1690a8 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -34,6 +34,15 @@
- #include "hw/char/cadence_uart.h"
- #include "hw/net/cadence_gem.h"
- #include "hw/cpu/a9mpcore.h"
-+#include "hw/qdev-clock.h"
-+#include "sysemu/reset.h"
-+
-+#define TYPE_ZYNQ_MACHINE MACHINE_TYPE_NAME("xilinx-zynq-a9")
-+#define ZYNQ_MACHINE(obj) \
-+    OBJECT_CHECK(ZynqMachineState, (obj), TYPE_ZYNQ_MACHINE)
-+
-+/* board base frequency: 33.333333 MHz */
-+#define PS_CLK_FREQUENCY (100 * 1000 * 1000 / 3)
-=20
- #define NUM_SPI_FLASHES 4
- #define NUM_QSPI_FLASHES 2
-@@ -74,6 +83,11 @@ static const int dma_irqs[8] =3D {
-     0xe3401000 + ARMV7_IMM16(extract32((val), 16, 16)), /* movt r1 ... *=
-/ \
-     0xe5801000 + (addr)
-=20
-+typedef struct ZynqMachineState {
-+    MachineState parent;
-+    Clock *ps_clk;
-+} ZynqMachineState;
-+
- static void zynq_write_board_setup(ARMCPU *cpu,
-                                    const struct arm_boot_info *info)
- {
-@@ -158,12 +172,13 @@ static inline void zynq_init_spi_flashes(uint32_t b=
-ase_addr, qemu_irq irq,
-=20
- static void zynq_init(MachineState *machine)
- {
-+    ZynqMachineState *zynq_machine =3D ZYNQ_MACHINE(machine);
-     ram_addr_t ram_size =3D machine->ram_size;
-     ARMCPU *cpu;
-     MemoryRegion *address_space_mem =3D get_system_memory();
-     MemoryRegion *ext_ram =3D g_new(MemoryRegion, 1);
-     MemoryRegion *ocm_ram =3D g_new(MemoryRegion, 1);
--    DeviceState *dev;
-+    DeviceState *dev, *slcr;
-     SysBusDevice *busdev;
-     qemu_irq pic[64];
-     int n;
-@@ -208,9 +223,18 @@ static void zynq_init(MachineState *machine)
-                           1, 0x0066, 0x0022, 0x0000, 0x0000, 0x0555, 0x2=
-aa,
-                           0);
-=20
--    dev =3D qdev_create(NULL, "xilinx,zynq_slcr");
--    qdev_init_nofail(dev);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xF8000000);
-+    /* Create slcr, keep a pointer to connect clocks */
-+    slcr =3D qdev_create(NULL, "xilinx,zynq_slcr");
-+    qdev_init_nofail(slcr);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(slcr), 0, 0xF8000000);
-+
-+    /* Create the main clock source, and feed slcr with it */
-+    zynq_machine->ps_clk =3D CLOCK(object_new(TYPE_CLOCK));
-+    object_property_add_child(OBJECT(zynq_machine), "ps_clk",
-+                              OBJECT(zynq_machine->ps_clk), &error_abort=
-);
-+    object_unref(OBJECT(zynq_machine->ps_clk));
-+    clock_set_hz(zynq_machine->ps_clk, PS_CLK_FREQUENCY);
-+    qdev_connect_clock_in(slcr, "ps_clk", zynq_machine->ps_clk);
-=20
-     dev =3D qdev_create(NULL, TYPE_A9MPCORE_PRIV);
-     qdev_prop_set_uint32(dev, "num-cpu", 1);
-@@ -231,8 +255,12 @@ static void zynq_init(MachineState *machine)
-     sysbus_create_simple("xlnx,ps7-usb", 0xE0002000, pic[53-IRQ_OFFSET])=
-;
-     sysbus_create_simple("xlnx,ps7-usb", 0xE0003000, pic[76-IRQ_OFFSET])=
-;
-=20
--    cadence_uart_create(0xE0000000, pic[59 - IRQ_OFFSET], serial_hd(0));
--    cadence_uart_create(0xE0001000, pic[82 - IRQ_OFFSET], serial_hd(1));
-+    dev =3D cadence_uart_create(0xE0000000, pic[59 - IRQ_OFFSET], serial=
-_hd(0));
-+    qdev_connect_clock_in(dev, "refclk",
-+                          qdev_get_clock_out(slcr, "uart0_ref_clk"));
-+    dev =3D cadence_uart_create(0xE0001000, pic[82 - IRQ_OFFSET], serial=
-_hd(1));
-+    qdev_connect_clock_in(dev, "refclk",
-+                          qdev_get_clock_out(slcr, "uart1_ref_clk"));
-=20
-     sysbus_create_varargs("cadence_ttc", 0xF8001000,
-             pic[42-IRQ_OFFSET], pic[43-IRQ_OFFSET], pic[44-IRQ_OFFSET], =
-NULL);
-@@ -310,8 +338,9 @@ static void zynq_init(MachineState *machine)
-     arm_load_kernel(ARM_CPU(first_cpu), machine, &zynq_binfo);
- }
-=20
--static void zynq_machine_init(MachineClass *mc)
-+static void zynq_machine_class_init(ObjectClass *oc, void *data)
- {
-+    MachineClass *mc =3D MACHINE_CLASS(oc);
-     mc->desc =3D "Xilinx Zynq Platform Baseboard for Cortex-A9";
-     mc->init =3D zynq_init;
-     mc->max_cpus =3D 1;
-@@ -320,4 +349,16 @@ static void zynq_machine_init(MachineClass *mc)
-     mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a9");
- }
-=20
--DEFINE_MACHINE("xilinx-zynq-a9", zynq_machine_init)
-+static const TypeInfo zynq_machine_type =3D {
-+    .name =3D TYPE_ZYNQ_MACHINE,
-+    .parent =3D TYPE_MACHINE,
-+    .class_init =3D zynq_machine_class_init,
-+    .instance_size =3D sizeof(ZynqMachineState),
-+};
-+
-+static void zynq_machine_register_types(void)
-+{
-+    type_register_static(&zynq_machine_type);
-+}
-+
-+type_init(zynq_machine_register_types)
---=20
-2.25.1
-
+> +}
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 6819fcf..12a9a78 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -834,6 +834,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>      if (vms->ras) {
+>          acpi_add_table(table_offsets, tables_blob);
+>          build_ghes_error_table(tables->hardware_errors, tables->linker);
+> +        acpi_build_hest(tables_blob, tables->linker);
+>      }
+>  
+>      if (ms->numa_state->num_nodes > 0) {
+> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+> index 50379b0..18debd8 100644
+> --- a/include/hw/acpi/ghes.h
+> +++ b/include/hw/acpi/ghes.h
+> @@ -24,5 +24,44 @@
+>  
+>  #include "hw/acpi/bios-linker-loader.h"
+>  
+> +/*
+> + * Values for Hardware Error Notification Type field
+> + */
+> +enum AcpiGhesNotifyType {
+> +    /* Polled */
+> +    ACPI_GHES_NOTIFY_POLLED = 0,
+> +    /* External Interrupt */
+> +    ACPI_GHES_NOTIFY_EXTERNAL = 1,
+> +    /* Local Interrupt */
+> +    ACPI_GHES_NOTIFY_LOCAL = 2,
+> +    /* SCI */
+> +    ACPI_GHES_NOTIFY_SCI = 3,
+> +    /* NMI */
+> +    ACPI_GHES_NOTIFY_NMI = 4,
+> +    /* CMCI, ACPI 5.0: 18.3.2.7, Table 18-290 */
+> +    ACPI_GHES_NOTIFY_CMCI = 5,
+> +    /* MCE, ACPI 5.0: 18.3.2.7, Table 18-290 */
+> +    ACPI_GHES_NOTIFY_MCE = 6,
+> +    /* GPIO-Signal, ACPI 6.0: 18.3.2.7, Table 18-332 */
+> +    ACPI_GHES_NOTIFY_GPIO = 7,
+> +    /* ARMv8 SEA, ACPI 6.1: 18.3.2.9, Table 18-345 */
+> +    ACPI_GHES_NOTIFY_SEA = 8,
+> +    /* ARMv8 SEI, ACPI 6.1: 18.3.2.9, Table 18-345 */
+> +    ACPI_GHES_NOTIFY_SEI = 9,
+> +    /* External Interrupt - GSIV, ACPI 6.1: 18.3.2.9, Table 18-345 */
+> +    ACPI_GHES_NOTIFY_GSIV = 10,
+> +    /* Software Delegated Exception, ACPI 6.2: 18.3.2.9, Table 18-383 */
+> +    ACPI_GHES_NOTIFY_SDEI = 11,
+> +    /* 12 and greater are reserved */
+> +    ACPI_GHES_NOTIFY_RESERVED = 12
+> +};
+> +
+> +enum {
+> +    ACPI_HEST_SRC_ID_SEA = 0,
+> +    /* future ids go here */
+> +    ACPI_HEST_SRC_ID_RESERVED,
+> +};
+> +
+>  void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
+> +void acpi_build_hest(GArray *table_data, BIOSLinker *linker);
+>  #endif

@@ -1,360 +1,121 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1389367lfg;
-        Tue, 25 Feb 2020 00:48:22 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwHqy1lftNvk81DioNQuUhPk+PJYXFJiBkJvNZ/jdZNozoZN9Fp7kKcyNtNFSFaFwq9UYbh
-X-Received: by 2002:a9d:7ccd:: with SMTP id r13mr42274827otn.56.1582620502729;
-        Tue, 25 Feb 2020 00:48:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582620502; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1395053lfg;
+        Tue, 25 Feb 2020 00:54:24 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxoZ7UGcRsWEOT+zXRlbq/JLrzeOTm8erONLvXV3xgEyD0exoHJRLGhe7Hhg0TM7wl0gOgF
+X-Received: by 2002:a9d:6653:: with SMTP id q19mr44710924otm.94.1582620863931;
+        Tue, 25 Feb 2020 00:54:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582620863; cv=none;
         d=google.com; s=arc-20160816;
-        b=JK80xVGerQz25d/e1QNzH/Vy6D2UpK20JLHpazEXukMsF+vIZBcPxFPzwnlEpY3FXU
-         GmQeOplyUhcQ2m443hlHNeURuy9RhkYYtLvsSfwqkt7YRiEbP4aweWEXpD4Iu4O4EAmR
-         F8R8S2NgF0t6WEKwIk2dYf4fomHBR/ATRZovKabw6vY05P9iuNC/mdDfXHYDGKHZfyKD
-         BC1Q3NWqFF0n8TgKLJKWYHDmPwDpdF6N41uajOlktMuwjq8cmAUX7Pifbcj/PXbWHLrV
-         B3+m0xtrH9SujU8RxtTZAbwuMjjOmMx2tEtQFDFVmnXqHoRO0xQ3zPL/hJdedpfnTlm7
-         qP5w==
+        b=KJBSQqippN1RsJ0jUUhb+QcdpBbkgHZB1jjzxv8lYpACEVoP1B2KQu0vBo3Mwxro61
+         JSynp02WG+LupfUmibeTOgcJU/KRRzutxSCbEbeDle4g0QvKDSlZDozLvKBlJr1WZWYJ
+         qHIXh85lGvzH7TrSaultMyteRPdtFit90Z/hI7El2z1INvyCxiXlulmC1VEnNkUNN+os
+         Ag877uajtQy1A6IWlnHPIwtTH3KvdpG8zrWGNBxklixI6/wxmypsh3EqgDNx+LlQOEh2
+         80jVwe04M9grtKb7TXhQQsiQZhva2iXUmJlxyN6LfDSWwegyWxA6LJQ/MgwyUFe1EfTC
+         lWyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=8EWoYLKzioWXRMBvu9PrHJEE9hqJweeNrsXbqfhysoI=;
-        b=SPyv2tWqPguyIGQwsaLxHFLUCMvBDiOSVX89Cgn2e4AfnTgLfOmqAARqvsZxuFUYJn
-         jK3MDYds2igfNhrqnTSJTaCctNpMV4QWTF663hSf6CK4gw+TYnueqxFAWWRrFI35G3dz
-         5t/vyalz4oyHOjI/lsrMgbNYg8C3N/JgtBGlsNsF93Mjs8TsuHDU9LZn/DCpyYLsfY+g
-         qrmsBYcIHsFJe6k5nTZSs35zhMkVcRfIz9jGaz/YwoPA+0+zGc//hkH5JL/XN4OZEWCx
-         rimNI2wwPSv8DEervnS7Wf7lrzfyHIMv9iya7mgNtwOaG0Qzy4RVVUG8Xn71TBhGHdOi
-         mVeg==
+        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=dqnKylF5HFciLFPtzz1NDtnvwRMuPol2Wp3vrExVO8g=;
+        b=nsSw9XCXdC0J3pnrZGRMPn8skGZS0fhsuiVsXyS6MbyGVl2AASKNwP4smFaouAcQ0r
+         E1hzWKSgA5LqERFWzSSWJXOfwu0G6Oyu036SliwNYD+q3jhsRrsC3HIgG0aAfTvgbl9a
+         cZtSXvdgKt7Qnjw4yy9M9W9Jma20xEkeTvdnzGoz/7iUs70q5N5C7t/fIQ6nZqSBp9JO
+         6vV3q/JNG4pchea+Yb1IY3gHwQEZvz8o0p0IcD9p+CyId/Dt9BsIJrMYSmYS3yaGUT7i
+         m9+LXjQ64Eh4XXAxBadcAJOOQp/N/s5PMQjg1APK8b3WxZgqtV/sbWiQ1qQigj13BzhV
+         utCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HipSTOs2;
+       dkim=pass header.i=@linaro.org header.s=google header.b="r/7xbz4a";
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id s8si5880007oij.275.2020.02.25.00.48.22;
-        Tue, 25 Feb 2020 00:48:22 -0800 (PST)
+        by mx.google.com with ESMTP id h16si7632366otk.193.2020.02.25.00.54.23;
+        Tue, 25 Feb 2020 00:54:23 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HipSTOs2;
+       dkim=pass header.i=@linaro.org header.s=google header.b="r/7xbz4a";
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1729605AbgBYIsV (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Tue, 25 Feb 2020 03:48:21 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:33474 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1729475AbgBYIsV (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Tue, 25 Feb 2020 03:48:21 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1582620499;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=8EWoYLKzioWXRMBvu9PrHJEE9hqJweeNrsXbqfhysoI=;
-        b=HipSTOs2O2wt9QSTowNH9JeM4hZ56XSLPZ4KwijoZi8QfFXGsLqtQTosMYkGoTzzTvODqG
-        Q70NQ7kaSGIiM9rcMMLQ1zO3pcatKY3xgmYK6A0hNGrUBtoAX3QZEFi6tEj0ww2YLDt6tu
-        v7tdw9z0syIChnkr9GJgcCmAoZHrUeM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-440-iFV1Zub2Ney8fOOK6FhD5g-1; Tue, 25 Feb 2020 03:48:14 -0500
-X-MC-Unique: iFV1Zub2Ney8fOOK6FhD5g-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 53D94107ACC4;
-        Tue, 25 Feb 2020 08:48:12 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 1D3E491840;
-        Tue, 25 Feb 2020 08:48:05 +0000 (UTC)
-Date:   Tue, 25 Feb 2020 09:48:04 +0100
-From:   Igor Mammedov <imammedo@redhat.com>
-To:     Dongjiu Geng <gengdongjiu@huawei.com>
-Cc:     <mst@redhat.com>, <xiaoguangrong.eric@gmail.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <fam@euphon.net>, <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <mtosatti@redhat.com>, <qemu-devel@nongnu.org>,
-        <kvm@vger.kernel.org>, <qemu-arm@nongnu.org>,
-        <pbonzini@redhat.com>, <james.morse@arm.com>, <lersek@redhat.com>,
-        <jonathan.cameron@huawei.com>,
-        <shameerali.kolothum.thodi@huawei.com>, <zhengxiang9@huawei.com>
-Subject: Re: [PATCH v24 04/10] ACPI: Build related register address fields
- via hardware error fw_cfg blob
-Message-ID: <20200225094804.3ae51b86@redhat.com>
-In-Reply-To: <20200217131248.28273-5-gengdongjiu@huawei.com>
-References: <20200217131248.28273-1-gengdongjiu@huawei.com>
-        <20200217131248.28273-5-gengdongjiu@huawei.com>
+        id S1729825AbgBYIyW (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 25 Feb 2020 03:54:22 -0500
+Received: from mail-oi1-f195.google.com ([209.85.167.195]:39490 "EHLO
+        mail-oi1-f195.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1729153AbgBYIyU (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 25 Feb 2020 03:54:20 -0500
+Received: by mail-oi1-f195.google.com with SMTP id 18so8871300oij.6
+        for <kvm@vger.kernel.org>; Tue, 25 Feb 2020 00:54:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=dqnKylF5HFciLFPtzz1NDtnvwRMuPol2Wp3vrExVO8g=;
+        b=r/7xbz4aNyNr6RwlvL1OOZ+M+zLNU9Cc+UexnSCQaVAj4vHZSufgfP+s8331MkLPSJ
+         l84ei7nkwF35uRylrZJ2oRvbhoiqGrrbjTMnOlW4BawnB/99ZJdaDyBVllJAt5gw+XTf
+         6LIhJnlf845GVqJ9gPYy2drqFQWq+Yjho3O//FMro753kBrwTpevhEQ0KdGwrh2GMqOf
+         aW6HQWTpXqECuqBr/SRKdV7QPCFPFZiQVR9SOmkvGL63QkdSO200bd+Wy2SMBislYrN1
+         e3x7+uLfaiEAJa0zBmnBBwq/rILbX1mtC/KuIY88Gs+SZTzlSSCjgxBnLnbFL9I7fbig
+         tGIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=dqnKylF5HFciLFPtzz1NDtnvwRMuPol2Wp3vrExVO8g=;
+        b=p83DSMnilOAKlki/0H2mBnZteC2YYY/n0S0KqpJ38yWYAvdsgfAo0If1JSKqyb4a/d
+         9ycgJBsjA565980L4KGnNB7X9dnby/WR91wPFAJw2z36lhACQPUk752o7/GXufbeb5xt
+         RFxRxXMQbD/ghl4NfDtK3sTeNY4ayrA0DQIk1e2+uW6bU2o6j0Jdh0r4BA4E/76E1Xn7
+         V3qceIV3f8fVacLsOLN1KaZ9eYWGBA+TvFJs4ax1idngJdNLfJS+OWqIlK8KLXVEm84J
+         sxlew+4GnOWK0FT3pqcm58GfdZt7Le3K8U3S5y8ra0utgQgtqnSP4SIn6m6UEFlBNXw8
+         kR8A==
+X-Gm-Message-State: APjAAAWeCnM7aZSs5pcr0OWiwwhCet7vGjTqniaFqmilA+GQbCu8ABgJ
+        n3GDvR0ZG/GIKnqVU/tWQxe76wdYrESF9yChGTGDwQ==
+X-Received: by 2002:a05:6808:289:: with SMTP id z9mr2579495oic.48.1582620859074;
+ Tue, 25 Feb 2020 00:54:19 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+References: <20200217131248.28273-1-gengdongjiu@huawei.com>
+ <20200217131248.28273-3-gengdongjiu@huawei.com> <20200225093404.0ee40224@redhat.com>
+In-Reply-To: <20200225093404.0ee40224@redhat.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Tue, 25 Feb 2020 08:54:07 +0000
+Message-ID: <CAFEAcA9zjoa48Mth5aaOnhjDyY_qyrg9Nz5=0YEa2aE_aFcCug@mail.gmail.com>
+Subject: Re: [PATCH v24 02/10] hw/arm/virt: Introduce a RAS machine option
+To:     Igor Mammedov <imammedo@redhat.com>
+Cc:     Dongjiu Geng <gengdongjiu@huawei.com>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+        Shannon Zhao <shannon.zhaosl@gmail.com>,
+        Fam Zheng <fam@euphon.net>,
+        Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        kvm-devel <kvm@vger.kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        James Morse <james.morse@arm.com>,
+        Laszlo Ersek <lersek@redhat.com>,
+        Jonathan Cameron <jonathan.cameron@huawei.com>,
+        Shameerali Kolothum Thodi 
+        <shameerali.kolothum.thodi@huawei.com>,
+        Zheng Xiang <zhengxiang9@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: /VxYYD3EjhVQ
+X-TUID: 1QvFoBrsPoga
 
-On Mon, 17 Feb 2020 21:12:42 +0800
-Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+On Tue, 25 Feb 2020 at 08:34, Igor Mammedov <imammedo@redhat.com> wrote:
+>
+> On Mon, 17 Feb 2020 21:12:40 +0800
+> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+>
+> > RAS Virtualization feature is not supported now, so add a RAS machine
+>
+> > option and disable it by default.
+>              ^^^^
+>
+> this doesn't match the patch.
 
-> This patch builds error_block_address and read_ack_register fields
-> in hardware errors table , the error_block_address points to Generic
-> Error Status Block(GESB) via bios_linker. The max size for one GESB
-> is 1kb in bytes, For more detailed information, please refer to
+Hmm? It seems right to me -- the patch adds a machine option
+and makes it disabled-by-default, doesn't it?
 
-s/1kb in bytes/1Kb/
-
-> document: docs/specs/acpi_hest_ghes.rst
-> 
-> Now we only support one Error source, if necessary, we can extend to
-> support more.
-> 
-> Suggested-by: Laszlo Ersek <lersek@redhat.com>
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> ---
-
-otherwise looks fine to me, so
-
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
-
-here should go a list of changes made to the patch to ease review
-like:
- vX: 
-   - ....
-   - ...
- vY:
-   - ...
-
->  default-configs/arm-softmmu.mak |  1 +
->  hw/acpi/Kconfig                 |  4 ++
->  hw/acpi/Makefile.objs           |  1 +
->  hw/acpi/aml-build.c             |  2 +
->  hw/acpi/ghes.c                  | 89 +++++++++++++++++++++++++++++++++++++++++
->  hw/arm/virt-acpi-build.c        |  6 +++
->  include/hw/acpi/aml-build.h     |  1 +
->  include/hw/acpi/ghes.h          | 28 +++++++++++++
->  8 files changed, 132 insertions(+)
->  create mode 100644 hw/acpi/ghes.c
->  create mode 100644 include/hw/acpi/ghes.h
-> 
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> index 645e620..7648be0 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -41,3 +41,4 @@ CONFIG_FSL_IMX25=y
->  CONFIG_FSL_IMX7=y
->  CONFIG_FSL_IMX6UL=y
->  CONFIG_SEMIHOSTING=y
-> +CONFIG_ACPI_APEI=y
-> diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
-> index 54209c6..1932f66 100644
-> --- a/hw/acpi/Kconfig
-> +++ b/hw/acpi/Kconfig
-> @@ -28,6 +28,10 @@ config ACPI_HMAT
->      bool
->      depends on ACPI
->  
-> +config ACPI_APEI
-> +    bool
-> +    depends on ACPI
-> +
->  config ACPI_PCI
->      bool
->      depends on ACPI && PCI
-> diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
-> index 777da07..28c5ddb 100644
-> --- a/hw/acpi/Makefile.objs
-> +++ b/hw/acpi/Makefile.objs
-> @@ -8,6 +8,7 @@ common-obj-$(CONFIG_ACPI_NVDIMM) += nvdimm.o
->  common-obj-$(CONFIG_ACPI_VMGENID) += vmgenid.o
->  common-obj-$(CONFIG_ACPI_HW_REDUCED) += generic_event_device.o
->  common-obj-$(CONFIG_ACPI_HMAT) += hmat.o
-> +common-obj-$(CONFIG_ACPI_APEI) += ghes.o
->  common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
->  common-obj-$(call lnot,$(CONFIG_PC)) += acpi-x86-stub.o
->  
-> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index 2c3702b..3681ec6 100644
-> --- a/hw/acpi/aml-build.c
-> +++ b/hw/acpi/aml-build.c
-> @@ -1578,6 +1578,7 @@ void acpi_build_tables_init(AcpiBuildTables *tables)
->      tables->table_data = g_array_new(false, true /* clear */, 1);
->      tables->tcpalog = g_array_new(false, true /* clear */, 1);
->      tables->vmgenid = g_array_new(false, true /* clear */, 1);
-> +    tables->hardware_errors = g_array_new(false, true /* clear */, 1);
->      tables->linker = bios_linker_loader_init();
->  }
->  
-> @@ -1588,6 +1589,7 @@ void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre)
->      g_array_free(tables->table_data, true);
->      g_array_free(tables->tcpalog, mfre);
->      g_array_free(tables->vmgenid, mfre);
-> +    g_array_free(tables->hardware_errors, mfre);
->  }
->  
->  /*
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> new file mode 100644
-> index 0000000..e1b3f8f
-> --- /dev/null
-> +++ b/hw/acpi/ghes.c
-> @@ -0,0 +1,89 @@
-> +/*
-> + * Support for generating APEI tables and recording CPER for Guests
-> + *
-> + * Copyright (c) 2020 HUAWEI TECHNOLOGIES CO., LTD.
-> + *
-> + * Author: Dongjiu Geng <gengdongjiu@huawei.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation; either version 2 of the License, or
-> + * (at your option) any later version.
-> +
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> +
-> + * You should have received a copy of the GNU General Public License along
-> + * with this program; if not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/units.h"
-> +#include "hw/acpi/ghes.h"
-> +#include "hw/acpi/aml-build.h"
-> +
-> +#define ACPI_GHES_ERRORS_FW_CFG_FILE        "etc/hardware_errors"
-> +#define ACPI_GHES_DATA_ADDR_FW_CFG_FILE     "etc/hardware_errors_addr"
-> +
-> +/* The max size in bytes for one error block */
-> +#define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
-> +
-> +/* Now only support ARMv8 SEA notification type error source */
-> +#define ACPI_GHES_ERROR_SOURCE_COUNT        1
-> +
-> +/*
-> + * Build table for the hardware error fw_cfg blob.
-> + * Initialize "etc/hardware_errors" and "etc/hardware_errors_addr" fw_cfg blobs.
-> + * See docs/specs/acpi_hest_ghes.rst for blobs format.
-> + */
-> +void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
-> +{
-> +    int i, error_status_block_offset;
-> +
-> +    /* Build error_block_address */
-> +    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
-> +        build_append_int_noprefix(hardware_errors, 0, sizeof(uint64_t));
-> +    }
-> +
-> +    /* Build read_ack_register */
-> +    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
-> +        /*
-> +         * Initialize the value of read_ack_register to 1, so GHES can be
-> +         * writeable after (re)boot.
-> +         * ACPI 6.2: 18.3.2.8 Generic Hardware Error Source version 2
-> +         * (GHESv2 - Type 10)
-> +         */
-> +        build_append_int_noprefix(hardware_errors, 1, sizeof(uint64_t));
-> +    }
-> +
-> +    /* Generic Error Status Block offset in the hardware error fw_cfg blob */
-> +    error_status_block_offset = hardware_errors->len;
-> +
-> +    /* Reserve space for Error Status Data Block */
-> +    acpi_data_push(hardware_errors,
-> +        ACPI_GHES_MAX_RAW_DATA_LENGTH * ACPI_GHES_ERROR_SOURCE_COUNT);
-> +
-> +    /* Tell guest firmware to place hardware_errors blob into RAM */
-> +    bios_linker_loader_alloc(linker, ACPI_GHES_ERRORS_FW_CFG_FILE,
-> +                             hardware_errors, sizeof(uint64_t), false);
-> +
-> +    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
-> +        /*
-> +         * Tell firmware to patch error_block_address entries to point to
-> +         * corresponding "Generic Error Status Block"
-> +         */
-> +        bios_linker_loader_add_pointer(linker,
-> +            ACPI_GHES_ERRORS_FW_CFG_FILE, sizeof(uint64_t) * i,
-> +            sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
-> +            error_status_block_offset + i * ACPI_GHES_MAX_RAW_DATA_LENGTH);
-> +    }
-> +
-> +    /*
-> +     * tell firmware to write hardware_errors GPA into
-> +     * hardware_errors_addr fw_cfg, once the former has been initialized.
-> +     */
-> +    bios_linker_loader_write_pointer(linker, ACPI_GHES_DATA_ADDR_FW_CFG_FILE,
-> +        0, sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
-> +}
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index bd5f771..6819fcf 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -48,6 +48,7 @@
->  #include "sysemu/reset.h"
->  #include "kvm_arm.h"
->  #include "migration/vmstate.h"
-> +#include "hw/acpi/ghes.h"
->  
->  #define ARM_SPI_BASE 32
->  
-> @@ -830,6 +831,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->      acpi_add_table(table_offsets, tables_blob);
->      build_spcr(tables_blob, tables->linker, vms);
->  
-> +    if (vms->ras) {
-> +        acpi_add_table(table_offsets, tables_blob);
-> +        build_ghes_error_table(tables->hardware_errors, tables->linker);
-> +    }
-> +
->      if (ms->numa_state->num_nodes > 0) {
->          acpi_add_table(table_offsets, tables_blob);
->          build_srat(tables_blob, tables->linker, vms);
-> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-> index de4a406..8f13620 100644
-> --- a/include/hw/acpi/aml-build.h
-> +++ b/include/hw/acpi/aml-build.h
-> @@ -220,6 +220,7 @@ struct AcpiBuildTables {
->      GArray *rsdp;
->      GArray *tcpalog;
->      GArray *vmgenid;
-> +    GArray *hardware_errors;
->      BIOSLinker *linker;
->  } AcpiBuildTables;
->  
-> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-> new file mode 100644
-> index 0000000..50379b0
-> --- /dev/null
-> +++ b/include/hw/acpi/ghes.h
-> @@ -0,0 +1,28 @@
-> +/*
-> + * Support for generating APEI tables and recording CPER for Guests
-> + *
-> + * Copyright (c) 2020 HUAWEI TECHNOLOGIES CO., LTD.
-> + *
-> + * Author: Dongjiu Geng <gengdongjiu@huawei.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation; either version 2 of the License, or
-> + * (at your option) any later version.
-> +
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> +
-> + * You should have received a copy of the GNU General Public License along
-> + * with this program; if not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#ifndef ACPI_GHES_H
-> +#define ACPI_GHES_H
-> +
-> +#include "hw/acpi/bios-linker-loader.h"
-> +
-> +void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
-> +#endif
+thanks
+-- PMM

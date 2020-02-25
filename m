@@ -1,79 +1,100 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1691157lfg;
-        Tue, 25 Feb 2020 05:33:25 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw++NDooFe5pb3D3TvESvEjku7EFVSiOArJX38+rGG8+3EBvMJIVbsSfpO3VfGgtmjy+RfN
-X-Received: by 2002:a05:6214:6f0:: with SMTP id bk16mr50410502qvb.23.1582637605094;
-        Tue, 25 Feb 2020 05:33:25 -0800 (PST)
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1693633lfg;
+        Tue, 25 Feb 2020 05:35:47 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy6O+YP9/pbUFQALcyqUT38HArwfbeBv73JrzefvAmsEpZAp/4zcIFlNhgrz9Z2gsG/a3pp
+X-Received: by 2002:ac8:5190:: with SMTP id c16mr6461171qtn.200.1582637747367;
+        Tue, 25 Feb 2020 05:35:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582637747; cv=none;
+        d=google.com; s=arc-20160816;
+        b=wWf5ATTg1U/c4K7qUWiNr+LWkEAGnaNtpN9BMVECpmxTLh6PNiCy79i8I9Ljn6Kj2k
+         AscFBFYN5QSf6STtGrgC7Re6paQu4pszFzIQIzOQFiZe2y482c9Yysgse5N+jqvtl/UV
+         rx82rRfJAWVwDNeNg9e9b6dZioIx/LtZB8aM+g2KYei8Nivy4cx025p4JTH4bO0yO7i0
+         xTl7cSzF2ur7CqBDG7cwaP84dsonSj/9vzA9XiRILNA0IuMpYB5mg7eTHcR2CPTIFeWX
+         lYjcvGasVwgmQkr506/Ii/Oq3Wp28+LLbWz2n5QasPNH3bz6Rf6qFzePpVAustmJAeUg
+         fPpQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=CtEMsHBDkcHsELBZP6EN0gh6y5RoeXlZuqtlqlC8x/Y=;
+        b=ptnygT/LW5v/iHKMGAXP1gHvI3C0TtqeFaAJXJ+zZU/7yyXx58sLzYgZFLRbgc5/u2
+         zKCS74bhDCqrnG68kArpYD0pZ58v6jg8nrz6HDGWeUo6vjhcFVX0QTbqM+iOrOTdB1bv
+         gkaKqi3B7kACv3ovBz93QUuc1+UPjju976CidKa4heDUSxkz+z3+kWoVQ3oo/XUehgmw
+         YObtCcl6tWTxXJDj0DEAsfV4P6nmaVI+HBypdeU2uaBfmzwyCjVThC34lrEWMAnCPcKh
+         89ZDSb/yWsXQmO2GGFyGu2iXqhjzIxR5FJV0yEiv92rjQ+C+EOoX0p2Xg+YME5JU1iS8
+         UIhQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=J6+7oWhS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v27si7553137qkj.77.2020.02.25.05.33.24
+        by mx.google.com with ESMTPS id h20si1619769qke.240.2020.02.25.05.35.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 05:33:25 -0800 (PST)
+        Tue, 25 Feb 2020 05:35:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=BxtCVJt5;
-       arc=fail (body hash mismatch);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55940 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=J6+7oWhS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56028 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6aKy-0004Rc-Bl
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 08:33:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37536)
+	id 1j6aNG-00035d-PY
+	for alex.bennee@linaro.org; Tue, 25 Feb 2020 08:35:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38434)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1j6a2t-0008Cl-4c
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:14:46 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j6a90-0002g7-PR
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:21:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1j6a2r-0002Ae-Fz
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:14:43 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:57272)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1j6a2m-00023B-Lv; Tue, 25 Feb 2020 08:14:37 -0500
-Received: from crumble.bar.greensocs.com (crumble.bar.greensocs.com
- [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPS id A14F096F56;
- Tue, 25 Feb 2020 13:14:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1582636470;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ld7grTqskRJMW5zWDubYZqTtsklRdfw5+mTOwz2I2YE=;
- b=BxtCVJt5pOuVCx2itywcd/by29HWHubGyZ0MNdWsgHq6nN+vCJGNTAaeeGSQH4RZe3PQPe
- 3c+Dxsq1HiMAreW6i6jNHidBdpjsq7OaN5TOUQXqI03x4Mt7VrqAMse6JQ489JKTEVaWKF
- n2bjRzi0ZMfNCjoyN9t6Ua/0gz5gSn0=
-From: Damien Hedde <damien.hedde@greensocs.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v8 7/9] hw/char/cadence_uart: add clock support
-Date: Tue, 25 Feb 2020 14:14:20 +0100
-Message-Id: <20200225131422.53368-8-damien.hedde@greensocs.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200225131422.53368-1-damien.hedde@greensocs.com>
-References: <20200225131422.53368-1-damien.hedde@greensocs.com>
+ (envelope-from <peter.maydell@linaro.org>) id 1j6a8y-0004V2-7F
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:21:01 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:39462)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j6a8x-0004UM-BL
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:20:59 -0500
+Received: by mail-ot1-x343.google.com with SMTP id 77so12028258oty.6
+ for <qemu-devel@nongnu.org>; Tue, 25 Feb 2020 05:20:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=CtEMsHBDkcHsELBZP6EN0gh6y5RoeXlZuqtlqlC8x/Y=;
+ b=J6+7oWhSTxn+le2NO7qF/9xo9yKFmD//y4tx1qttHmljCru6rK9BzMi7DeshcE/BHI
+ +riMPjH9o9kLGlPYPT02LenJJoQ9Eb7VoTBo1PGJ8f7mQQCLPCEB2Wm+4nX9eusxHjl8
+ F81SdbaxojaXjV2mktHxWOFExYUzg6G4qZoEmo6Wy0No3fOpWpYy+fP8yoJM5Aabm1Vp
+ jQUvvec3v0hZ2KfDs/mgJpMJRD2jAWeDrho0/H1KnfKIDQbMXKfjRE51po9O55YZacZX
+ sT7BKw7r0eaks/Q80XGrZ1Ol9cj16FIbQ/FCgngTboPUi01lA4HLNXqvQa4TCSoDSJsO
+ imFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=CtEMsHBDkcHsELBZP6EN0gh6y5RoeXlZuqtlqlC8x/Y=;
+ b=q1PHOaXzCxoFveJw5wrWNV2RIxpChHV9PiY24YWn13lcgWNG90UPevcJWNW4Z9HtPL
+ m1t+1GPo+20ODshQ+QelgagmspvZFMHwFVtRucSpazAw7eScN9aqfmuEmF9CUCaJQ/nT
+ y2imwm2i1vLt6+JSYe9eOImUqtdFfcf0aLGLKkiled4zCdN03YoTz9+sLJFW/aSMhwl0
+ J8PQUEXg/cURZFBdJxVTNO30j6GCWUqvQZmmODuf9g1bBfatQee/JtII9HXPY6hYtulj
+ 2O/xSWqItUwfhwO8mb3+DcQKBJi0AxQG8eZ26JGrjRZVWJHl8LSPeaAWVIxQ8aHOPGcu
+ zVCA==
+X-Gm-Message-State: APjAAAXi42e/ETokhCKBl+kyEtKtQ7tsMJDTQgh9BR+uaQGVHIOGYmXv
+ +5u4H+Z4dMc1RQXh1qGvykdWeKz/MOfcky/sqA/kgw==
+X-Received: by 2002:a05:6830:4a4:: with SMTP id
+ l4mr44891573otd.91.1582636856070; 
+ Tue, 25 Feb 2020 05:20:56 -0800 (PST)
 MIME-Version: 1.0
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1582636470;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ld7grTqskRJMW5zWDubYZqTtsklRdfw5+mTOwz2I2YE=;
- b=IaWbAhi/0iQc2UZIFfqA7r6WhplsTWBn/1bq4ybojXHNPyvIITf352v9AdbK7wUTDfmZrV
- rvpoqX20wRfDkhuPk+d5QQVRKIr137P1BSQ1aM5dQNgAQ8TjrHkRYo9tDdeSqoOI67UCRr
- dZCKdV0MGp1Z14FaO/fGsIsxs2nEr/o=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582636470; a=rsa-sha256; cv=none;
- b=R5jeKe42dl/XhWQNOxv4c3gj58hPPM8a8fVf2hNlprQounqdbcTsVMIDs2vO/161+rKnDp
- zpcnsE2KXS3w6r685WjZLprLoo+HmAKRORhM5+oYZmJyZOudG7AJdowXcxqOI+TZaBMq+f
- ggOR6GCIvbhm/pjq2rTfqBnZ79YgUgo=
-ARC-Authentication-Results: i=1;
-	beetle.greensocs.com;
-	none
-X-Spam: Yes
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 5.135.226.135
+References: <20200224222232.13807-1-richard.henderson@linaro.org>
+ <20200224222232.13807-5-richard.henderson@linaro.org>
+In-Reply-To: <20200224222232.13807-5-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 25 Feb 2020 13:20:45 +0000
+Message-ID: <CAFEAcA_Oo2FQ_2BNKgcUHOS5AzHHOahvYq0ZnZ+3_5668MYMtA@mail.gmail.com>
+Subject: Re: [PATCH v2 04/17] target/arm: Add isar_feature_aa64_fp_simd,
+ isar_feature_aa32_vfp
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,254 +106,30 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>, peter.maydell@linaro.org,
- berrange@redhat.com, ehabkost@redhat.com, pbonzini@redhat.com,
- alistair@alistair23.me, mark.burton@greensocs.com, qemu-arm@nongnu.org,
- marcandre.lureau@redhat.com, edgar.iglesias@gmail.com, philmd@redhat.com
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nTbRWXCGTqnm
+X-TUID: aUY/DVegp63N
 
-Switch the cadence uart to multi-phase reset and add the
-reference clock input.
+On Mon, 24 Feb 2020 at 22:22, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> We cannot easily create "any" functions for these, because the
+> ID_AA64PFR0 fields for FP and SIMD signal "enabled" with zero.
+> Which means that an aarch32-only cpu will return incorrect results
+> when testing the aarch64 registers.
+>
+> To use these, we must either have context or additionally test
+> vs ARM_FEATURE_AARCH64.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/cpu.h     | 11 +++++++++++
+>  target/arm/cpu.c     |  9 ++++++---
+>  target/arm/machine.c |  5 +++--
+>  3 files changed, 20 insertions(+), 5 deletions(-)
 
-The input clock frequency is added to the migration structure.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-The reference clock controls the baudrate generation. If it disabled,
-any input characters and events are ignored.
-
-If this clock remains unconnected, the uart behaves as before
-(it default to a 50MHz ref clock).
-
-Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
-
----
-
-v7:
- + update ClockIn/ClockOut types
- + update due to resettable changes
- + use a versioned field instead subsection in vmstate
----
- include/hw/char/cadence_uart.h |  1 +
- hw/char/cadence_uart.c         | 73 +++++++++++++++++++++++++++++-----
- hw/char/trace-events           |  3 ++
- 3 files changed, 67 insertions(+), 10 deletions(-)
-
-diff --git a/include/hw/char/cadence_uart.h b/include/hw/char/cadence_uar=
-t.h
-index 47cec956c4..2a179a572f 100644
---- a/include/hw/char/cadence_uart.h
-+++ b/include/hw/char/cadence_uart.h
-@@ -49,6 +49,7 @@ typedef struct {
-     CharBackend chr;
-     qemu_irq irq;
-     QEMUTimer *fifo_trigger_handle;
-+    Clock *refclk;
- } CadenceUARTState;
-=20
- static inline DeviceState *cadence_uart_create(hwaddr addr,
-diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-index 22e47972f1..e196906c92 100644
---- a/hw/char/cadence_uart.c
-+++ b/hw/char/cadence_uart.c
-@@ -31,6 +31,8 @@
- #include "qemu/module.h"
- #include "hw/char/cadence_uart.h"
- #include "hw/irq.h"
-+#include "hw/qdev-clock.h"
-+#include "trace.h"
-=20
- #ifdef CADENCE_UART_ERR_DEBUG
- #define DB_PRINT(...) do { \
-@@ -97,7 +99,7 @@
- #define LOCAL_LOOPBACK         (0x2 << UART_MR_CHMODE_SH)
- #define REMOTE_LOOPBACK        (0x3 << UART_MR_CHMODE_SH)
-=20
--#define UART_INPUT_CLK         50000000
-+#define UART_DEFAULT_REF_CLK (50 * 1000 * 1000)
-=20
- #define R_CR       (0x00/4)
- #define R_MR       (0x04/4)
-@@ -171,12 +173,15 @@ static void uart_send_breaks(CadenceUARTState *s)
- static void uart_parameters_setup(CadenceUARTState *s)
- {
-     QEMUSerialSetParams ssp;
--    unsigned int baud_rate, packet_size;
-+    unsigned int baud_rate, packet_size, input_clk;
-+    input_clk =3D clock_get_hz(s->refclk);
-=20
--    baud_rate =3D (s->r[R_MR] & UART_MR_CLKS) ?
--            UART_INPUT_CLK / 8 : UART_INPUT_CLK;
-+    baud_rate =3D (s->r[R_MR] & UART_MR_CLKS) ? input_clk / 8 : input_cl=
-k;
-+    baud_rate /=3D (s->r[R_BRGR] * (s->r[R_BDIV] + 1));
-+    trace_cadence_uart_baudrate(baud_rate);
-+
-+    ssp.speed =3D baud_rate;
-=20
--    ssp.speed =3D baud_rate / (s->r[R_BRGR] * (s->r[R_BDIV] + 1));
-     packet_size =3D 1;
-=20
-     switch (s->r[R_MR] & UART_MR_PAR) {
-@@ -215,6 +220,13 @@ static void uart_parameters_setup(CadenceUARTState *=
-s)
-     }
-=20
-     packet_size +=3D ssp.data_bits + ssp.stop_bits;
-+    if (ssp.speed =3D=3D 0) {
-+        /*
-+         * Avoid division-by-zero below.
-+         * TODO: find something better
-+         */
-+        ssp.speed =3D 1;
-+    }
-     s->char_tx_time =3D (NANOSECONDS_PER_SECOND / ssp.speed) * packet_si=
-ze;
-     qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_PARAMS, &ssp);
- }
-@@ -340,6 +352,11 @@ static void uart_receive(void *opaque, const uint8_t=
- *buf, int size)
-     CadenceUARTState *s =3D opaque;
-     uint32_t ch_mode =3D s->r[R_MR] & UART_MR_CHMODE;
-=20
-+    /* ignore characters when unclocked or in reset */
-+    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
-+        return;
-+    }
-+
-     if (ch_mode =3D=3D NORMAL_MODE || ch_mode =3D=3D ECHO_MODE) {
-         uart_write_rx_fifo(opaque, buf, size);
-     }
-@@ -353,6 +370,11 @@ static void uart_event(void *opaque, QEMUChrEvent ev=
-ent)
-     CadenceUARTState *s =3D opaque;
-     uint8_t buf =3D '\0';
-=20
-+    /* ignore characters when unclocked or in reset */
-+    if (!clock_is_enabled(s->refclk) || device_is_in_reset(DEVICE(s))) {
-+        return;
-+    }
-+
-     if (event =3D=3D CHR_EVENT_BREAK) {
-         uart_write_rx_fifo(opaque, &buf, 1);
-     }
-@@ -462,9 +484,9 @@ static const MemoryRegionOps uart_ops =3D {
-     .endianness =3D DEVICE_NATIVE_ENDIAN,
- };
-=20
--static void cadence_uart_reset(DeviceState *dev)
-+static void cadence_uart_reset_init(Object *obj, ResetType type)
- {
--    CadenceUARTState *s =3D CADENCE_UART(dev);
-+    CadenceUARTState *s =3D CADENCE_UART(obj);
-=20
-     s->r[R_CR] =3D 0x00000128;
-     s->r[R_IMR] =3D 0;
-@@ -473,6 +495,11 @@ static void cadence_uart_reset(DeviceState *dev)
-     s->r[R_BRGR] =3D 0x0000028B;
-     s->r[R_BDIV] =3D 0x0000000F;
-     s->r[R_TTRIG] =3D 0x00000020;
-+}
-+
-+static void cadence_uart_reset_hold(Object *obj)
-+{
-+    CadenceUARTState *s =3D CADENCE_UART(obj);
-=20
-     uart_rx_reset(s);
-     uart_tx_reset(s);
-@@ -491,6 +518,14 @@ static void cadence_uart_realize(DeviceState *dev, E=
-rror **errp)
-                              uart_event, NULL, s, NULL, true);
- }
-=20
-+static void cadence_uart_refclk_update(void *opaque)
-+{
-+    CadenceUARTState *s =3D opaque;
-+
-+    /* recompute uart's speed on clock change */
-+    uart_parameters_setup(s);
-+}
-+
- static void cadence_uart_init(Object *obj)
- {
-     SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
-@@ -500,9 +535,23 @@ static void cadence_uart_init(Object *obj)
-     sysbus_init_mmio(sbd, &s->iomem);
-     sysbus_init_irq(sbd, &s->irq);
-=20
-+    s->refclk =3D qdev_init_clock_in(DEVICE(obj), "refclk",
-+            cadence_uart_refclk_update, s);
-+    /* initialize the frequency in case the clock remains unconnected */
-+    clock_set_hz(s->refclk, UART_DEFAULT_REF_CLK);
-+
-     s->char_tx_time =3D (NANOSECONDS_PER_SECOND / 9600) * 10;
- }
-=20
-+static int cadence_uart_pre_load(void *opaque)
-+{
-+    CadenceUARTState *s =3D opaque;
-+
-+    /* the frequency will be overriden if the refclk field is present */
-+    clock_set_hz(s->refclk, UART_DEFAULT_REF_CLK);
-+    return 0;
-+}
-+
- static int cadence_uart_post_load(void *opaque, int version_id)
- {
-     CadenceUARTState *s =3D opaque;
-@@ -521,8 +570,9 @@ static int cadence_uart_post_load(void *opaque, int v=
-ersion_id)
-=20
- static const VMStateDescription vmstate_cadence_uart =3D {
-     .name =3D "cadence_uart",
--    .version_id =3D 2,
-+    .version_id =3D 3,
-     .minimum_version_id =3D 2,
-+    .pre_load =3D cadence_uart_pre_load,
-     .post_load =3D cadence_uart_post_load,
-     .fields =3D (VMStateField[]) {
-         VMSTATE_UINT32_ARRAY(r, CadenceUARTState, CADENCE_UART_R_MAX),
-@@ -534,8 +584,9 @@ static const VMStateDescription vmstate_cadence_uart =
-=3D {
-         VMSTATE_UINT32(tx_count, CadenceUARTState),
-         VMSTATE_UINT32(rx_wpos, CadenceUARTState),
-         VMSTATE_TIMER_PTR(fifo_trigger_handle, CadenceUARTState),
-+        VMSTATE_CLOCK_V(refclk, CadenceUARTState, 3),
-         VMSTATE_END_OF_LIST()
--    }
-+    },
- };
-=20
- static Property cadence_uart_properties[] =3D {
-@@ -546,10 +597,12 @@ static Property cadence_uart_properties[] =3D {
- static void cadence_uart_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-=20
-     dc->realize =3D cadence_uart_realize;
-     dc->vmsd =3D &vmstate_cadence_uart;
--    dc->reset =3D cadence_uart_reset;
-+    rc->phases.enter =3D cadence_uart_reset_init;
-+    rc->phases.hold  =3D cadence_uart_reset_hold;
-     device_class_set_props(dc, cadence_uart_properties);
-   }
-=20
-diff --git a/hw/char/trace-events b/hw/char/trace-events
-index 6f938301d9..d20eafd56f 100644
---- a/hw/char/trace-events
-+++ b/hw/char/trace-events
-@@ -97,3 +97,6 @@ exynos_uart_wo_read(uint32_t channel, const char *name,=
- uint32_t reg) "UART%d: T
- exynos_uart_rxsize(uint32_t channel, uint32_t size) "UART%d: Rx FIFO siz=
-e: %d"
- exynos_uart_channel_error(uint32_t channel) "Wrong UART channel number: =
-%d"
- exynos_uart_rx_timeout(uint32_t channel, uint32_t stat, uint32_t intsp) =
-"UART%d: Rx timeout stat=3D0x%x intsp=3D0x%x"
-+
-+# hw/char/cadence_uart.c
-+cadence_uart_baudrate(unsigned baudrate) "baudrate %u"
---=20
-2.25.1
-
+thanks
+-- PMM

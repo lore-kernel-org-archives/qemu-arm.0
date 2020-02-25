@@ -1,146 +1,122 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1637667lfg;
-        Tue, 25 Feb 2020 04:45:40 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwTcjn1hNBRSE/WEVckL7CKBHcM3yraEY810uWpUY63BqfzJVL+rtP+WUJ8Rwla85E9D9AF
-X-Received: by 2002:a05:620a:686:: with SMTP id f6mr1920029qkh.86.1582634740635;
-        Tue, 25 Feb 2020 04:45:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582634740; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1642992lfg;
+        Tue, 25 Feb 2020 04:51:27 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxzmjXwIe1CKctNet4+rxAwB4pmYjTPoU6Ke0bvoNUejpp1v00DoK/pV0F8wEdKBNRYSOb5
+X-Received: by 2002:a05:6808:350:: with SMTP id j16mr3273879oie.168.1582635086938;
+        Tue, 25 Feb 2020 04:51:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582635086; cv=none;
         d=google.com; s=arc-20160816;
-        b=spG7iBKhha8r3TmymhXMXDH9GSraFKVDPVE9v+qt77xrSJduOhnR9454c0Fb8A5vSe
-         Ap+sMgaPlDjBJdb7Qcyomn5Qt1OLtthiIb4f6O0n+M2mlLKCKzBf3qNz6lmLSz73P/nr
-         nszTcndS+1TPb/lrYB6+AmgX9A8NQtbj92U4lHgTW5HwdTHduPMAkgcEybOBAvOGYOt9
-         tnLnp72HbihfhbBTTgWPWbpBLRv8R04XKh8IRw8Ece+r86PJ3v01iBqkOMAtAxjNWLOw
-         p63VAf2CqQoDAryiQ3nlvuwYIwVyNxmzHOro54N0GwTIEljRJ8QzgKI5FPdR4RTvC09r
-         4z7w==
+        b=x38AwSYx2Xn0sdTkSoZI+jwI2Wmw54jigGMbnz+ZNTDtjviZBS/Eiv9kgj81yR2CYz
+         VXkqy2DV6R6jqM1/N8lSX23M8DzakgEFzIgYscH89H3BRV/28V7/a4CnKtUCmj/KUEQu
+         rJWhefUBLtvqlm7WVdNn7BjT982+4d0tzb7RIqNR2YU3CAgpgPtmOoLK5KlfYNKyq9Gb
+         avvcG6u9VwvuWJOEtItnRqUVdT3biHZY+T2/YWfX9EoPZIzYel+hLZy/82pnONxypDiJ
+         OKBxp866XBmHwK9RiCBS3Cfg5vEhMvjgUvCqzRylAZFIh9F1cCUiJxTuzCJ33p2IndWH
+         xQ+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=1J7xOOcrZGCxuHJzVvyA3UwZSYQB/R1Hrc+5mY2Ikxg=;
-        b=izPklbA/0leMN8b1CgSqBqyLVm6lOrmMeQi1a8WvBmTIAATS2gJ2T3M3hRasbvg1ED
-         +JBNFq8tm46Tj5LARKiusQJVyZaKUBpS3yu87S0IGIc9Svi8/kcyYBFm9EI7jgD+95Vr
-         T2hU+OPLxsDDUvyoHVQRq7PY6DqtJmOQbL/MbxnrAKMmnOfXIkNKk1YLN7p3oy0Aom3e
-         7UPBiw+9Wu+9zH1BZ/wZnuKaqN1p+WCqEtPcmW5gyRc8eGd4G41V2KtV3M2C5z3NWzAC
-         Rv4+uC3YmTSAC/Wxr+qF+VPT8m7mcfx6y9mmC+8lDGWIkXLUl+BAubpkpJQRYDJw4rOs
-         8Yfg==
+        h=list-id:precedence:sender:mime-version:content-transfer-encoding
+         :content-language:accept-language:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=eqzC0H9sS8FfyF7GdtmtkF2TmVzcWuD3eC5qrWxeJ4I=;
+        b=iCA4a2Aj3by0a7PzO+6LHpgWdD/7oG+K51tAAsF3/7E5CxUzZtbfkH8rKJ4/zlJ7TQ
+         Xu48vD1hnRmbHwGja6vo5EeG5GQfgj39fZBqNQtJ1ifENHakXrwNGBrmbqjF6xNt2ARG
+         mMoGBJ8E5zrPAoIMbjUF6E8De5NhwpZ/v/+PLvMcf+5m4EksGhm5LEZcQJ1AWClmGP2E
+         RHF4S86va646sdp8rBUg25qb+sUYVo4KthAIebWWLX5lbIBg1WUuzO23aQbF6wAM4/g6
+         6C6XSBqyqQO4T+f+X4tUQPEpJkwvMOotsTfJXLbhStkdXg5VPUh9ZzmuaT9CtjlH1gnn
+         zEaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=EFQ4IyAh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i21si7933272qka.174.2020.02.25.04.45.40
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 04:45:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id z26si8141815oti.215.2020.02.25.04.51.26;
+        Tue, 25 Feb 2020 04:51:26 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=EFQ4IyAh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54538 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6Zal-0001mq-V9
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 07:45:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51397)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j6YuM-0002T1-Bj
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 07:01:52 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j6YuL-00079A-9k
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 07:01:50 -0500
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:43250)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j6YuL-00075p-1E
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 07:01:49 -0500
-Received: by mail-oi1-x243.google.com with SMTP id p125so12283445oif.10
- for <qemu-arm@nongnu.org>; Tue, 25 Feb 2020 04:01:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=1J7xOOcrZGCxuHJzVvyA3UwZSYQB/R1Hrc+5mY2Ikxg=;
- b=EFQ4IyAh7kPUGzXPYO/c8I7bE0S2FNGyrtBqBB9s+aUc6YF0+HFJMlyC3xh9wRsxeK
- qV32gLkdEe7c+Vfzao/fVEaohQrtpBhxYwjpsRDE0O8JE9CibD778cKvn6uLCBEGY7bG
- 3hEaFsO3T1cM+xQp5uLtiw18I1Nc+aysKW1mRDtAXpdF7PRnLZ996U+i0aN7wh4Z7bUG
- s4c+aFIJIvbyE9xFFa0Pe2UhHBZe4m64KL/wWwMuChtz8dd0VCluox7wOYYc8+lnB35d
- E3HixOvYLjKfxCcfRBzG/g3WBfNOmEXrazImRpwUX2rKmWniQCSr6hmWYQ7mwk/By9f/
- YgQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=1J7xOOcrZGCxuHJzVvyA3UwZSYQB/R1Hrc+5mY2Ikxg=;
- b=rIKlS6WMRMlfowf+mLtHGWAPPVi6R0IBrshtWGSuqnyHTHCUknCtg2C17Mawn9IhrR
- VkcepKqSi0C5bdIObeqqeCdIAyMQ/bZ1O+jMhY6r/ZzZl/n4pw/JdABZkLYjohEN3xP9
- mjA8eKKEyozL2nDXw0aczYypXBLwtYfS8Fk8BoS6XHu/6OAXl96oohngnj4S5IWeXE5R
- tGqzTwqEMC/ZLuFmbiCOggX0CXc63AwQij7us+L828NUJ0LFVKiV2allp+rN31tZ9GHD
- OuixNp5etAiMpsfG63EdmLxUfYOmqqoPxQch4eYD6TPhYrfLQheDTD8vLNYGpCM7P1f4
- JEFA==
-X-Gm-Message-State: APjAAAXYQuQ5ilge3NtlRAb+k/QpJ7VxJQWc+ZWO7QDVAnV+oOuO7qXH
- XtH3oidj9Smy3YJEtxUJKUYx4AA4xUkcj6tJrSSmWQ==
-X-Received: by 2002:a54:4f16:: with SMTP id e22mr3365366oiy.170.1582632104647; 
- Tue, 25 Feb 2020 04:01:44 -0800 (PST)
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1729566AbgBYMv0 convert rfc822-to-8bit (ORCPT
+        <rfc822;naresh.kamboju@linaro.org> + 5 others);
+        Tue, 25 Feb 2020 07:51:26 -0500
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2461 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1729525AbgBYMvZ (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 25 Feb 2020 07:51:25 -0500
+Received: from lhreml709-cah.china.huawei.com (unknown [172.18.7.106])
+        by Forcepoint Email with ESMTP id 6BD4368E743091D9D629;
+        Tue, 25 Feb 2020 12:51:22 +0000 (GMT)
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ lhreml709-cah.china.huawei.com (10.201.108.32) with Microsoft SMTP Server
+ (TLS) id 14.3.408.0; Tue, 25 Feb 2020 12:51:21 +0000
+Received: from dggeme755-chm.china.huawei.com (10.3.19.101) by
+ lhreml710-chm.china.huawei.com (10.201.108.61) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.1713.5; Tue, 25 Feb 2020 12:51:20 +0000
+Received: from dggeme755-chm.china.huawei.com ([10.7.64.71]) by
+ dggeme755-chm.china.huawei.com ([10.7.64.71]) with mapi id 15.01.1713.004;
+ Tue, 25 Feb 2020 20:51:18 +0800
+From:   gengdongjiu <gengdongjiu@huawei.com>
+To:     Igor Mammedov <imammedo@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>
+CC:     "Michael S. Tsirkin" <mst@redhat.com>,
+        Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+        Shannon Zhao <shannon.zhaosl@gmail.com>,
+        "Fam Zheng" <fam@euphon.net>, Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        kvm-devel <kvm@vger.kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        James Morse <james.morse@arm.com>,
+        Laszlo Ersek <lersek@redhat.com>,
+        Jonathan Cameron <jonathan.cameron@huawei.com>,
+        Shameerali Kolothum Thodi 
+        <shameerali.kolothum.thodi@huawei.com>,
+        "zhengxiang (A)" <zhengxiang9@huawei.com>
+Subject: Re: [PATCH v24 02/10] hw/arm/virt: Introduce a RAS machine option
+Thread-Topic: [PATCH v24 02/10] hw/arm/virt: Introduce a RAS machine option
+Thread-Index: AdXr2h074nYmm7QuZEuiffKA50KyvQ==
+Date:   Tue, 25 Feb 2020 12:51:18 +0000
+Message-ID: <e1177221d01442c29b03f551a625a7d2@huawei.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.45.185.193]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
 MIME-Version: 1.0
-References: <20200218190958.745-1-richard.henderson@linaro.org>
- <20200218190958.745-8-richard.henderson@linaro.org>
-In-Reply-To: <20200218190958.745-8-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 25 Feb 2020 12:01:33 +0000
-Message-ID: <CAFEAcA_QHoRcfv0oLgxNsuEOaRJOoM9sQHqXZEP-tDeJrziVYw@mail.gmail.com>
-Subject: Re: [PATCH v3 7/7] target/arm: Honor the HCR_EL2.TTLB bit
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::243
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nCK2A+PfAu1x
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: /EbD/w0yOtpy
 
-On Tue, 18 Feb 2020 at 19:10, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> This bit traps EL1 access to tlb maintenance insns.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/helper.c | 85 +++++++++++++++++++++++++++++----------------
->  1 file changed, 55 insertions(+), 30 deletions(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 21ee9cf7de..87c0cf4a96 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -563,6 +563,16 @@ static CPAccessResult access_tacr(CPUARMState *env, const ARMCPRegInfo *ri,
->      return CP_ACCESS_OK;
->  }
->
-> +/* Check for traps from EL1 due to HCR_EL2.TTLB. */
-> +static CPAccessResult access_ttlb(CPUARMState *env, const ARMCPRegInfo *ri,
-> +                                  bool isread)
-> +{
-> +    if (arm_current_el(env) == 1 && (arm_hcr_el2_eff(env) & HCR_TTLB)) {
-> +        return CP_ACCESS_TRAP_EL2;
-> +    }
-> +    return CP_ACCESS_OK;
-> +}
+> 
+> On Tue, 25 Feb 2020 08:54:07 +0000
+> Peter Maydell <peter.maydell@linaro.org> wrote:
+> 
+> > On Tue, 25 Feb 2020 at 08:34, Igor Mammedov <imammedo@redhat.com> wrote:
+> > >
+> > > On Mon, 17 Feb 2020 21:12:40 +0800
+> > > Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+> > >
+> > > > RAS Virtualization feature is not supported now, so add a RAS
+> > > > machine
+> > >
+> > > > option and disable it by default.
+> > >              ^^^^
+> > >
+> > > this doesn't match the patch.
+> >
+> > Hmm? It seems right to me -- the patch adds a machine option and makes
+> > it disabled-by-default, doesn't it?
+> 
+> Right, I misread 'and' as 'to' somehow.
+> My apologies
 
-The set of operations this traps differs when ARMv8.4-TLBI is
-implemented. It looks like you've applied this access fn to
-the wider with-v8.4-TLBI set? (eg TLBI_VMALLE1 is only trapped
-with ARMv8.4-TLBI, not without.)
+Thanks Peter and Igor's clarification.
 
-thanks
--- PMM
+> 
+> >
+> > thanks
+> > -- PMM
+> >

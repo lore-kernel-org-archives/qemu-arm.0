@@ -1,124 +1,106 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1473725lfg;
-        Tue, 25 Feb 2020 02:12:08 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyb/KJ7UabTKr48KX6IFYWIyS7eSi/qc+24NbunhZX1jD6GL7C16hRInJbclU5UGgSEDf93
-X-Received: by 2002:a37:4e53:: with SMTP id c80mr31010292qkb.58.1582625528371;
-        Tue, 25 Feb 2020 02:12:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582625528; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1478406lfg;
+        Tue, 25 Feb 2020 02:16:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzu1l73Xvtl1sDSDGEoKFyoVZjo4ARpKiEBLP5Q1yT5YVNT23Kubp7RK9cIsj/v6///W1zV
+X-Received: by 2002:a37:903:: with SMTP id 3mr55895991qkj.388.1582625801654;
+        Tue, 25 Feb 2020 02:16:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582625801; cv=none;
         d=google.com; s=arc-20160816;
-        b=cM+kUIH7wd3H0jnVBONFAIevYjfgmt+TSzDBfU+hZ6pLSxd+6dO/o6aTG8ytJKaEsc
-         izuOro9Ivawd30h6/Ys/iXkgaIUhfh0R7hj/lP+lB8KWU+hLyxbWO+ebMbVObzSmPcXL
-         ka5dBevqh/W0FlnoNy5jETv65K5ziD6UBUsMy2QIdceLbX7HQ1zKqo2rd0L9YUOZiWah
-         +5K5wW5CcMs7gGq10QcV7u2utU4yy26xfixuUmFe2RNE0wzsLaupel4UE8UouZJEDqv4
-         DMiWdDGgpX75zTtVgHdmdGzBhxLlxAejN9KqLepTW08k76Ds5dHHOCoT9MPa9PZJbyRF
-         /IFA==
+        b=WejIRMMD523/5K1nmNEwuH1+jbK5AN2i4zoiG4ak7Y9BEpA9+CgOkL4bU7sTBpXn7B
+         vhcmTjheCLvjbv2BuVawgSYsVyfAxKfa5P0YkPjS7hjay2HDddxr02OKZv/8N76wahQK
+         QOCfore38HfrmWpFvyXoWcOH2hABWq/7zrImLhtLKbtiFTNd8iAL0rrjALvEntjVJFyH
+         NrcaeLYj64qktKsAaBhTC3o+p5EiLSUvNJXfp5GuHE8RkX0DYllJpODGpc5Lq4QmDccR
+         xHcQmeaaltsNtBVEavdPjlD1k3NGFnMF5sBJyZzdrppa/Bsj0i4vVNFHw4epkgd20gup
+         yFFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=Z89AUevcBbbfepqU8ufYMjCxbl3BVjLSlW4FTRV6e6A=;
-        b=WUtS0xcHYEKS/CZ4D9VsRqjX7Z6vrYK1RXtGibSRq/7DVauO7plyvwS2xqLZKyo8QP
-         w6XyxnGnEDOEcX8dr7+OUVTtTE6sNNGD1MA8XvgfXUQ76L/GcLI7+uSaFwtHNWp8PVVH
-         QWhZjYAHXE5l7usuh4ZleGlo6I0823awDhKVeSd3As85mH2onRXbUWh81+2v3b09OrBE
-         gtoEa7UL3h1DVCq320MHmxuGB86UQSE52TLlJmPivEli+TpXdLq8JsUAnsP6RHIik1YI
-         /lJB8uXSuNo4rLYOoBXwNgmlgbTgDDRAy80yWWJA75+tZNf44knFOKHyTutXFfuhZisG
-         iqPw==
+        bh=8C6VrUguRMvheJSefNuRDddaoqJve1CMALV2OfJicM8=;
+        b=bIuVaH+ZEmK+cmfMQQRa2KP/AFUCjwB0hs+2R7cf1ieBlq8R5laBQp+ib60fVajHYM
+         ExdyqNUKjKo20AkLwZ3ujQ41UF3T3ukpv/Z3a2tdyQSM04VpmEeL8uWVrUt8vq80s5SM
+         LcElCDod71YfNWHbTaAqpmtJyui8+v2ow+bXvO5j/SATez7SPfvHj/juauPKisNXbxsR
+         VOyT9/ttujQ+9DH2p+BbwYfNemAsWc6J2CmGlMJRTijiW6Evha58FKutg0fkihDYkHNg
+         F3nOUkMYRaSes+Fmgll6qDytn7zEebSwheUb/Bwl+fB1PU+HdpsVrJF5DmgxyUm0KBFW
+         f6IA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hHamp8ca;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=axzbp470;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bz13si2368795qvb.185.2020.02.25.02.12.08
+        by mx.google.com with ESMTPS id m15si7511111qkg.90.2020.02.25.02.16.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 02:12:08 -0800 (PST)
+        Tue, 25 Feb 2020 02:16:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hHamp8ca;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=axzbp470;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51740 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51818 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6XCB-0007Re-QS
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 05:12:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59800)
+	id 1j6XGb-00029Z-1k
+	for alex.bennee@linaro.org; Tue, 25 Feb 2020 05:16:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60386)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j6XC3-0007RL-Ao
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 05:12:00 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1j6XGH-00029H-Oo
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 05:16:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j6XC2-0008Py-2Y
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 05:11:59 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:28557
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <eric.auger@redhat.com>) id 1j6XGG-0001gR-I3
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 05:16:21 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:58558
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6XC1-0008Pf-VX
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 05:11:58 -0500
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1j6XGG-0001g2-Ee
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 05:16:20 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582625517;
+ s=mimecast20190719; t=1582625780;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Z89AUevcBbbfepqU8ufYMjCxbl3BVjLSlW4FTRV6e6A=;
- b=hHamp8caFGOb6lzHLxj4A/cUnh5bm6Zsait4YTQipfLYbzc/Lc/+roz+SBcHsWSCQ3Fpu4
- Qj+tew+I8HNqHxL+kjnRkLSfUjuUmQkWjKy6CKdZbtyDJM/pxN8eUsWtVU61cQtTv+wg7v
- Isw5gUlPNEK/ErDbEDxllgYcuQ7+f2c=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-265-Sg5F8QdrNxusRKFnXQD25g-1; Tue, 25 Feb 2020 05:11:55 -0500
-X-MC-Unique: Sg5F8QdrNxusRKFnXQD25g-1
-Received: by mail-wr1-f72.google.com with SMTP id s13so7036185wru.7
- for <qemu-arm@nongnu.org>; Tue, 25 Feb 2020 02:11:55 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=2hg7Hfx7/td+/CIjmQYClbMLavqUkQGymLApvhUP9ZI=;
- b=S1QU0kNV0DcHU8Cn9l6fY/OCHsB9SgsOQuf6NP2BL5S2GlsixnchN+8HS7m8GWo0N6
- 1vu0PGya0ZOf0cI+5mCU2up6PFqL1IZcyzyDPrFHAHtfpnyVx2hBWtYqfwAF/4tSbbcp
- Oo+TExvWpENUm/TtL3w5ARYmCIyRuo9nAR/mbsUaxK9oNihYUN/XvSsrd1zk+gRH9A3u
- 4/Z8+un6EGjQy8noYSei7cezdAioZY6Ck19N/8oWbYveCs0VJ66bislAJNgHimZhMBg3
- YA0vS8xp0ufKXVUCQHI6q7K4FM0+IKbaLj6olgrW/wkvcSnTikR4ZeHHUrobegSgqlCe
- ZL5Q==
-X-Gm-Message-State: APjAAAU/0TKjrbjACmiG9EtEiEGFYePkOWHEclOqzpvJAxpLWpzjZHky
- zFMWD4h2H+rmF7XEPWIHxIgQNwNImiyxn110VFNkqHmRkLQ5BPVbafCFVUTjc/kdYruksEKLpjd
- oaGewYMxehLWp
-X-Received: by 2002:a1c:7205:: with SMTP id n5mr4649420wmc.9.1582625514475;
- Tue, 25 Feb 2020 02:11:54 -0800 (PST)
-X-Received: by 2002:a1c:7205:: with SMTP id n5mr4649392wmc.9.1582625514178;
- Tue, 25 Feb 2020 02:11:54 -0800 (PST)
-Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id l6sm3325069wmg.42.2020.02.25.02.11.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Feb 2020 02:11:53 -0800 (PST)
-Subject: Re: [PATCH 09/13] dma/xlnx-zdma: Remove redundant statement in
- zdma_write_dst()
-To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
- <20200225020937.25028-10-kuhn.chenqun@huawei.com>
- <6d31ac16-adc6-235e-8784-51bf86e33b72@redhat.com>
- <7412CDE03601674DA8197E2EBD8937E83B661BD7@dggemm531-mbx.china.huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <8ceb7ecc-8edc-0ced-8171-6200ded0dd05@redhat.com>
-Date: Tue, 25 Feb 2020 11:11:52 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ bh=8C6VrUguRMvheJSefNuRDddaoqJve1CMALV2OfJicM8=;
+ b=axzbp470nktt1UZ70Hi3kUKK4DbS3CCwcNNoq7PsYvDd29t9/TwWyy78TTo7jZITIkS1+Z
+ b3C78TdbkyY94vf47kbxpQwjeYTkmBVk+ysasgWQauXvzGGEV6WDv5Vz3QyXR0AFjnXEix
+ Lpwbu+XWX9pl6gdOOes9ANyb3gzuok8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-162-_aAz08fzPKyS6lrBhPaySA-1; Tue, 25 Feb 2020 05:16:18 -0500
+X-MC-Unique: _aAz08fzPKyS6lrBhPaySA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 41D7818AB2CB;
+ Tue, 25 Feb 2020 10:16:17 +0000 (UTC)
+Received: from [10.36.116.59] (ovpn-116-59.ams2.redhat.com [10.36.116.59])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5AB8D19C58;
+ Tue, 25 Feb 2020 10:16:10 +0000 (UTC)
+Subject: Re: [RFC v2 1/6] tpm: rename TPM_TIS into TPM_TIS_ISA
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ eric.auger.pro@gmail.com, stefanb@linux.ibm.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org
+References: <20200214183704.14389-1-eric.auger@redhat.com>
+ <20200214183704.14389-2-eric.auger@redhat.com>
+ <29cc9864-a016-b251-506a-8c04b37efe28@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <4dd1b4b0-7112-5a8a-9033-9c21eb01b8f9@redhat.com>
+Date: Tue, 25 Feb 2020 11:16:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B661BD7@dggemm531-mbx.china.huawei.com>
+In-Reply-To: <29cc9864-a016-b251-506a-8c04b37efe28@redhat.com>
 Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -130,128 +112,137 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bjqARFTDI6Yc
+X-TUID: UOLI0yORbD5b
 
-On 2/25/20 11:01 AM, Chenqun (kuhn) wrote:
->> -----Original Message-----
->> From: Philippe Mathieu-Daud=C3=A9 [mailto:philmd@redhat.com]
->> Sent: Tuesday, February 25, 2020 5:36 PM
->> To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; qemu-
->> devel@nongnu.org; qemu-trivial@nongnu.org
->> Cc: peter.maydell@linaro.org; Zhanghailiang
->> <zhang.zhanghailiang@huawei.com>; Alistair Francis <alistair@alistair23.=
-me>;
->> qemu-arm@nongnu.org
->> Subject: Re: [PATCH 09/13] dma/xlnx-zdma: Remove redundant statement in
->> zdma_write_dst()
->>
->> On 2/25/20 3:09 AM, kuhn.chenqun@huawei.com wrote:
->>> From: Chen Qun <kuhn.chenqun@huawei.com>
->>>
->>> Clang static code analyzer show warning:
->>> hw/dma/xlnx-zdma.c:399:13: warning: Value stored to 'dst_type' is never
->> read
->>>               dst_type =3D FIELD_EX32(s->dsc_dst.words[3],
->> ZDMA_CH_DST_DSCR_WORD3,
->>>               ^
->> ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->>>
->>> Reported-by: Euler Robot <euler.robot@huawei.com>
->>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
->>> ---
->>> Cc: Alistair Francis <alistair@alistair23.me>
->>> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
->>> Cc: Peter Maydell <peter.maydell@linaro.org>
->>> Cc: qemu-arm@nongnu.org
->>> ---
->>>    hw/dma/xlnx-zdma.c | 2 --
->>>    1 file changed, 2 deletions(-)
->>>
->>> diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c index
->>> 8fb83f5b07..45355c5d59 100644
->>> --- a/hw/dma/xlnx-zdma.c
->>> +++ b/hw/dma/xlnx-zdma.c
->>> @@ -396,8 +396,6 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t
->> *buf, uint32_t len)
->>>                zdma_load_descriptor(s, next, &s->dsc_dst);
->>>                dst_size =3D FIELD_EX32(s->dsc_dst.words[2],
->> ZDMA_CH_DST_DSCR_WORD2,
->>>                                      SIZE);
->>> -            dst_type =3D FIELD_EX32(s->dsc_dst.words[3],
->> ZDMA_CH_DST_DSCR_WORD3,
->>> -                                  TYPE);
->>
->> Maybe move dst_type to this if() statement now?
->>
-> Sorry, I don't follow you.   I didn't find where I could move dst_type.
-> Do you mean to move the first dst_type to the if().
-> Modify it like this:
->      while (len) {
->          dst_size =3D FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WO=
-RD2,
->                                SIZE);
->          if (dst_size =3D=3D 0 && ptype =3D=3D PT_MEM) {
->              uint64_t next;
->              dst_type =3D FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSC=
-R_WORD3,
->                                TYPE);
->              next =3D zdma_update_descr_addr(s, dst_type,
->                                            R_ZDMA_CH_DST_CUR_DSCR_LSB);
->              zdma_load_descriptor(s, next, &s->dsc_dst);
->              dst_size =3D FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSC=
-R_WORD2,
->                                    SIZE);
->          }
->         ...
->     }
+Hi Phil,
 
-No, like this:
+On 2/14/20 7:55 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 2/14/20 7:36 PM, Eric Auger wrote:
+>> As we plan to introduce a sysbus TPM_TIS, let's rename
+>> TPM_TIS into TPM_TIS_ISA.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>> =C2=A0 hw/i386/acpi-build.c | 6 +++---
+>> =C2=A0 hw/tpm/tpm_tis.c=C2=A0=C2=A0=C2=A0=C2=A0 | 4 ++--
+>> =C2=A0 include/sysemu/tpm.h | 6 +++---
+>> =C2=A0 3 files changed, 8 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+>> index 9c4e46fa74..26777f8828 100644
+>> --- a/hw/i386/acpi-build.c
+>> +++ b/hw/i386/acpi-build.c
+>> @@ -2026,7 +2026,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 -=C2=A0=C2=A0=C2=A0 if (TPM_IS_TIS(tpm_find())) {
+>> +=C2=A0=C2=A0=C2=A0 if (TPM_IS_TIS_ISA(tpm_find())) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 aml_append(crs, a=
+ml_memory32_fixed(TPM_TIS_ADDR_BASE,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 TPM_TIS_ADDR_SIZE, AML_REA=
+D_WRITE));
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> @@ -2197,7 +2197,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 /* Scan all PCI buses. Generate tables to support
+>> hotplug. */
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 build_append_pci_bus_devices(scope, bus,
+>> pm->pcihp_bridge_en);
+>> =C2=A0 -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 if (TPM_IS_TIS(tpm)) {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (=
+TPM_IS_TIS_ISA(tpm)) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (misc->tpm_version =3D=3D TPM_VERSION_2_0=
+) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dev =3D aml_device("=
+TPM");
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 aml_append(dev, aml_=
+name_decl("_HID",
+>> @@ -2304,7 +2304,7 @@ build_tpm2(GArray *table_data, BIOSLinker
+>> *linker, GArray *tcpalog)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (char *)&tpm2_ptr=
+->log_area_start_address - table_data->data;
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tpm2_ptr->platform_class =3D cpu_t=
+o_le16(TPM2_ACPI_CLASS_CLIENT);
+>> -=C2=A0=C2=A0=C2=A0 if (TPM_IS_TIS(tpm_find())) {
+>> +=C2=A0=C2=A0=C2=A0 if (TPM_IS_TIS_ISA(tpm_find())) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tpm2_ptr->control=
+_area_address =3D cpu_to_le64(0);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tpm2_ptr->start_m=
+ethod =3D cpu_to_le32(TPM2_START_METHOD_MMIO);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else if (TPM_IS_CRB(tpm_find())) {
+>> diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
+>> index 31facb896d..c609737272 100644
+>> --- a/hw/tpm/tpm_tis.c
+>> +++ b/hw/tpm/tpm_tis.c
+>> @@ -91,7 +91,7 @@ typedef struct TPMState {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 TPMPPI ppi;
+>> =C2=A0 } TPMState;
+>> =C2=A0 -#define TPM(obj) OBJECT_CHECK(TPMState, (obj), TYPE_TPM_TIS)
+>> +#define TPM(obj) OBJECT_CHECK(TPMState, (obj), TYPE_TPM_TIS_ISA)
+>> =C2=A0 =C2=A0 #define DEBUG_TIS 0
+>> =C2=A0 @@ -1008,7 +1008,7 @@ static void tpm_tis_class_init(ObjectClass
+>> *klass, void *data)
+>> =C2=A0 }
+>> =C2=A0 =C2=A0 static const TypeInfo tpm_tis_info =3D {
+>> -=C2=A0=C2=A0=C2=A0 .name =3D TYPE_TPM_TIS,
+>> +=C2=A0=C2=A0=C2=A0 .name =3D TYPE_TPM_TIS_ISA,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .parent =3D TYPE_ISA_DEVICE,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .instance_size =3D sizeof(TPMState),
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .instance_init =3D tpm_tis_initfn,
+>> diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
+>> index 15979a3647..1691b92c28 100644
+>> --- a/include/sysemu/tpm.h
+>> +++ b/include/sysemu/tpm.h
+>> @@ -43,12 +43,12 @@ typedef struct TPMIfClass {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 enum TPMVersion (*get_version)(TPMIf *obj=
+);
+>> =C2=A0 } TPMIfClass;
+>> =C2=A0 -#define TYPE_TPM_TIS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "tpm-tis"
+>> +#define TYPE_TPM_TIS_ISA=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 "tpm-tis"
+>=20
+> It should be safe to rename this "tpm-tis-isa" in this patch.
+This would change the name of the legacy ISA device and also the way we
+instantiate it through the cmd line. To avoid breaking the compatibility
+I kept the same name and used tpm-tis-device (?) for the new sysbus one.
 
--- >8 --
-@@ -373,7 +373,7 @@ static uint64_t zdma_update_descr_addr(XlnxZDMA *s,=20
-bool type,
-  static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
-  {
-      uint32_t dst_size, dlen;
--    bool dst_intr, dst_type;
-+    bool dst_intr;
-      unsigned int ptype =3D ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0,=20
-POINT_TYPE);
-      unsigned int rw_mode =3D ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0, MOD=
-E);
-      unsigned int burst_type =3D ARRAY_FIELD_EX32(s->regs, ZDMA_CH_DATA_AT=
-TR,
-@@ -387,17 +387,17 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t=20
-*buf, uint32_t len)
-      while (len) {
-          dst_size =3D FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WOR=
-D2,
-                                SIZE);
--        dst_type =3D FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WORD=
-3,
--                              TYPE);
-          if (dst_size =3D=3D 0 && ptype =3D=3D PT_MEM) {
-              uint64_t next;
-+            bool dst_type;
-+
-+            dst_type =3D FIELD_EX32(s->dsc_dst.words[3],=20
-ZDMA_CH_DST_DSCR_WORD3,
-+                                  TYPE);
-              next =3D zdma_update_descr_addr(s, dst_type,
-                                            R_ZDMA_CH_DST_CUR_DSCR_LSB);
-              zdma_load_descriptor(s, next, &s->dsc_dst);
-              dst_size =3D FIELD_EX32(s->dsc_dst.words[2],=20
-ZDMA_CH_DST_DSCR_WORD2,
-                                    SIZE);
--            dst_type =3D FIELD_EX32(s->dsc_dst.words[3],=20
-ZDMA_CH_DST_DSCR_WORD3,
--                                  TYPE);
-          }
----
+Thanks
+
+Eric
+>=20
+> Regardless:
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>=20
+>> =C2=A0 #define TYPE_TPM_CRB=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "tpm-crb"
+>> =C2=A0 #define TYPE_TPM_SPAPR=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "tpm-spapr"
+>> =C2=A0 -#define TPM_IS_TIS(chr)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 \
+>> -=C2=A0=C2=A0=C2=A0 object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS)
+>> +#define TPM_IS_TIS_ISA(chr)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 \
+>> +=C2=A0=C2=A0=C2=A0 object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_ISA)
+>> =C2=A0 #define TPM_IS_CRB(chr)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 \
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 object_dynamic_cast(OBJECT(chr), TYPE_TPM=
+_CRB)
+>> =C2=A0 #define TPM_IS_SPAPR(chr)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 \
+>>
+>=20
 

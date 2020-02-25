@@ -1,72 +1,72 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1684830lfg;
-        Tue, 25 Feb 2020 05:27:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw58bRwXyBMpUfpKVEXqEv8cXe9fiy4u6r04ZGlILgRZPw0IcH08NNc9BTsVmCxkNjKjsKo
-X-Received: by 2002:a37:ac16:: with SMTP id e22mr14801803qkm.269.1582637267940;
-        Tue, 25 Feb 2020 05:27:47 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1686709lfg;
+        Tue, 25 Feb 2020 05:29:33 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxnhJ+BnjVgnlVYqrqyMlGanwsYVAsP0Xm8OTlk8gCNg4XTtfiitoiT/NAOp6EJLtLHqi4r
+X-Received: by 2002:a05:620a:a94:: with SMTP id v20mr16537705qkg.153.1582637373771;
+        Tue, 25 Feb 2020 05:29:33 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p10si7214591qvy.181.2020.02.25.05.27.47
+        by mx.google.com with ESMTPS id j6si7658796qtq.27.2020.02.25.05.29.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 05:27:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Feb 2020 05:29:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=wVA9lHuP;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="f1EsQ/Sw";
        arc=fail (body hash mismatch);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55708 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55844 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6aFX-00031f-6c
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 08:27:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37466)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j6aHF-0007ep-07
+	for alex.bennee@linaro.org; Tue, 25 Feb 2020 08:29:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37461)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1j6a2q-00084g-B3
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:14:42 -0500
+ (envelope-from <damien.hedde@greensocs.com>) id 1j6a2q-00083K-0w
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 08:14:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1j6a2n-00026X-Ij
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:14:40 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:57156)
+ (envelope-from <damien.hedde@greensocs.com>) id 1j6a2n-00025r-3V
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 08:14:39 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:57256)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1j6a2d-00021E-Pj; Tue, 25 Feb 2020 08:14:29 -0500
+ id 1j6a2m-00022u-MM; Tue, 25 Feb 2020 08:14:37 -0500
 Received: from crumble.bar.greensocs.com (crumble.bar.greensocs.com
  [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPS id 6DC0696EF2;
- Tue, 25 Feb 2020 13:14:25 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPS id 611BC96F53;
+ Tue, 25 Feb 2020 13:14:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1582636465;
+ s=mail; t=1582636468;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xFmM4+kOGNsVKEPr8GUSv7xFy0fodus3YFsskyISQYY=;
- b=wVA9lHuPDOqM/BocphBuO+QpLEY8zsUT8YcSUjxOb3r9GpISlMJunSIequAACoZ808WQeO
- qANxXUNyNQSEc8FBtS61KGxSFb58qLxa+jr/qAsdcTTJjPMSuKaen2gI5xUAi4rr7HvBSc
- pe77Gj095SJwkkuA3N7/nCXsMHJorWA=
+ bh=HBdezKQlElS6Poj9kARTllYO42WnV/QmAowvM6zuyh0=;
+ b=f1EsQ/Sw1Q5k5Vz8r+0biIdVRmitHVZIN13xSaAluYwbGe0GmaQEaQRw74U6cGOdK3okIe
+ vnWlSicumkwnZ7voqYWlcht24N7a8Om6YX487UEtcRShrT8Wikop4LSS6oJPspwKJm0gDM
+ ltLYIIGeF+oORJlBIJRazZJTzJX2Als=
 From: Damien Hedde <damien.hedde@greensocs.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v8 1/9] hw/core/clock: introduce clock object
-Date: Tue, 25 Feb 2020 14:14:14 +0100
-Message-Id: <20200225131422.53368-2-damien.hedde@greensocs.com>
+Subject: [PATCH v8 5/9] docs/clocks: add device's clock documentation
+Date: Tue, 25 Feb 2020 14:14:18 +0100
+Message-Id: <20200225131422.53368-6-damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200225131422.53368-1-damien.hedde@greensocs.com>
 References: <20200225131422.53368-1-damien.hedde@greensocs.com>
 MIME-Version: 1.0
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1582636465;
+ s=mail; t=1582636468;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xFmM4+kOGNsVKEPr8GUSv7xFy0fodus3YFsskyISQYY=;
- b=7ByB7XWVjPgq83q9r1wQZ6qe3io4orZaHvkNWfiitlYzO+gQhuuM4Uh59/7HqyHQc+sQQH
- 95Mo+NgBNSb6fQzw2NiXsMLIQCzwjg/myrkwK4ULYECJQonjF0EyRNdyKRgUU5b7X8WOhg
- 8XRMzyR68s3jFLjESVUyh8uH1HSD9Ug=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582636466; a=rsa-sha256; cv=none;
- b=yvAfUWNtXyjNAcF9ksRgzZyIu5F6HpUC9Kt5M2RUGcU1G0NjZxb3B/eaKH1npB4jqIrBhg
- SVBZbZykpi6EHy6oUkxQbjyx6qjrcbJuy3k6tYaO8gjyz8bO6AuMp0HfLXtD1htQxvP8Ib
- O3b6V4uf2OXoy4xPZINv4Iqj4aVCcpg=
+ bh=HBdezKQlElS6Poj9kARTllYO42WnV/QmAowvM6zuyh0=;
+ b=xi2I88jl09uSfCl8QyHnxIDOqdR+bQos6d3zlpZLwX4w2um+VNJsdTHrxOVZmCZrqGqCnf
+ oJrTQesf9zgp9U1XaIq93mbBQomNsK8HXxVpaQ2D7ZHQFXEr4bWAbt9zSWes/yLKywwtU9
+ OfSFv/KDd/y8Okey3IbLQ2TeAi4MUnI=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582636468; a=rsa-sha256; cv=none;
+ b=TiJXcmxHuiayB9MB5BiiKo9+xLWeHstZWGAm2Yj2mLC78AjHxlUYGhOBZeAe8vMFxQkhk+
+ N+4Keokc6UcEn6/yN34eLDEHbqGWgG3SAJrV8NDnbd1ZzZ8Delbz7Tb7I1alsBDty6PE23
+ rE1KrfwPgRqmW6MBHK1BJsLejmaI+EU=
 ARC-Authentication-Results: i=1;
 	beetle.greensocs.com;
 	none
@@ -74,457 +74,491 @@ X-Spam: Yes
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 5.135.226.135
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Damien Hedde <damien.hedde@greensocs.com>, peter.maydell@linaro.org,
  berrange@redhat.com, ehabkost@redhat.com, pbonzini@redhat.com,
  alistair@alistair23.me, mark.burton@greensocs.com, qemu-arm@nongnu.org,
- marcandre.lureau@redhat.com, edgar.iglesias@gmail.com, philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: P1MmSwaUnnmA
+ marcandre.lureau@redhat.com, philmd@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oh6+CqLq8+t6
 
-This object may be used to represent a clock inside a clock tree.
-
-A clock may be connected to another clock so that it receives update,
-through a callback, whenever the source/parent clock is updated.
-
-Although only the root clock of a clock tree controls the values
-(represented as periods) of all clocks in tree, each clock holds
-a local state containing the current value so that it can be fetched
-independently. It will allows us to fullfill migration requirements
-by migrating each clock independently of others.
+Add the documentation about the clock inputs and outputs in devices.
 
 This is based on the original work of Frederic Konrad.
 
 Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
---
+---
 
 v8:
-+ fix hw/core/Makefiles.objs entry (Alistair)
-+ no more field zeroing in finalizefn (Alistair)
-+ typos (Alistair)
+ + fix list indentation
+ + reduce title size
 
 v7:
-+ merge ClockIn & ClockOut into a single type Clock
-+ switch clock state to a period with 2^-32ns unit
-+ add some Hz and ns helpers
-+ propagate clock period when setting the source so that
-  clocks with fixed period are easy to handle.
+ + update ClockIn/Out types
+ + switch to rst format
 ---
- include/hw/clock.h    | 216 ++++++++++++++++++++++++++++++++++++++++++
- hw/core/clock.c       | 130 +++++++++++++++++++++++++
- hw/core/Makefile.objs |   1 +
- hw/core/trace-events  |   7 ++
- 4 files changed, 354 insertions(+)
- create mode 100644 include/hw/clock.h
- create mode 100644 hw/core/clock.c
+ docs/devel/clocks.rst | 360 ++++++++++++++++++++++++++++++++++++++++++
+ docs/devel/index.rst  |   1 +
+ 2 files changed, 361 insertions(+)
+ create mode 100644 docs/devel/clocks.rst
 
-diff --git a/include/hw/clock.h b/include/hw/clock.h
+diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
 new file mode 100644
-index 0000000000..82a7f3c698
+index 0000000000..d3c0146bd2
 --- /dev/null
-+++ b/include/hw/clock.h
-@@ -0,0 +1,216 @@
-+/*
-+ * Hardware Clocks
-+ *
-+ * Copyright GreenSocs 2016-2020
-+ *
-+ * Authors:
-+ *  Frederic Konrad
-+ *  Damien Hedde
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ */
++++ b/docs/devel/clocks.rst
+@@ -0,0 +1,360 @@
++Modeling a clock tree in QEMU
++=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D
 +
-+#ifndef QEMU_HW_CLOCK_H
-+#define QEMU_HW_CLOCK_H
++What are clocks
++---------------
 +
-+#include "qom/object.h"
-+#include "qemu/queue.h"
++Clocks are QOM objects developed for the purpose of modeling the
++distribution of clocks in QEMU.
 +
-+#define TYPE_CLOCK "clock"
-+#define CLOCK(obj) OBJECT_CHECK(Clock, (obj), TYPE_CLOCK)
++They allow us to model the clock distribution of a platform and detect
++configuration errors in the clock tree such as badly configured PLL, clo=
+ck
++source selection or disabled clock.
 +
-+typedef void ClockCallback(void *opaque);
++The object is *Clock* and its QOM name is ``CLOCK``.
 +
-+/*
-+ * clock store a value representing the clock's period in 2^-32ns unit.
-+ * It can represent:
-+ *  + periods from 2^-32ns up to 4seconds
-+ *  + frequency from ~0.25Hz 2e10Ghz
-+ * Resolution of frequency representation decreases with frequency:
-+ * + at 100MHz, resolution is ~2mHz
-+ * + at 1Ghz,   resolution is ~0.2Hz
-+ * + at 10Ghz,  resolution is ~20Hz
-+ */
-+#define CLOCK_SECOND (1000000000llu << 32)
++Clocks are typically used with devices where they are used to model inpu=
+ts
++and outputs. They are created in a similar way as gpios. Inputs and outp=
+uts
++of different devices can be connect together.
 +
-+/*
-+ * macro helpers to convert to hertz / nanosecond
-+ */
-+#define CLOCK_PERIOD_FROM_NS(ns) ((ns) * (CLOCK_SECOND / 1000000000llu))
-+#define CLOCK_PERIOD_TO_NS(per) ((per) / (CLOCK_SECOND / 1000000000llu))
-+#define CLOCK_PERIOD_FROM_HZ(hz) (((hz) !=3D 0) ? CLOCK_SECOND / (hz) : =
-0u)
-+#define CLOCK_PERIOD_TO_HZ(per) (((per) !=3D 0) ? CLOCK_SECOND / (per) :=
- 0u)
++In these cases a Clock object is a child of a Device object but this is =
+not
++a requirement. Clocks can be independent of devices. For example it is p=
+ossible
++to create a clock outside of any device to model the main clock source o=
+f a
++machine.
 +
-+/**
-+ * Clock:
-+ * @parent_obj: parent class
-+ * @period: unsigned integer representing the period of the clock
-+ * @canonical_path: clock path string cache (used for trace purpose)
-+ * @callback: called when clock changes
-+ * @callback_opaque: argument for @callback
-+ * @source: source (or parent in clock tree) of the clock
-+ * @children: list of clocks connected to this one (it is their source)
-+ * @sibling: structure used to form a clock list
-+ */
++Here is an example of clocks::
 +
-+typedef struct Clock Clock;
++    +---------+      +----------------------+   +--------------+
++    | Clock 1 |      |       Device B       |   |   Device C   |
++    |         |      | +-------+  +-------+ |   | +-------+    |
++    |         |>>-+-->>|Clock 2|  |Clock 3|>>--->>|Clock 6|    |
++    +---------+   |  | | (in)  |  | (out) | |   | | (in)  |    |
++                  |  | +-------+  +-------+ |   | +-------+    |
++                  |  |            +-------+ |   +--------------+
++                  |  |            |Clock 4|>>
++                  |  |            | (out) | |   +--------------+
++                  |  |            +-------+ |   |   Device D   |
++                  |  |            +-------+ |   | +-------+    |
++                  |  |            |Clock 5|>>--->>|Clock 7|    |
++                  |  |            | (out) | |   | | (in)  |    |
++                  |  |            +-------+ |   | +-------+    |
++                  |  +----------------------+   |              |
++                  |                             | +-------+    |
++                  +----------------------------->>|Clock 8|    |
++                                                | | (in)  |    |
++                                                | +-------+    |
++                                                +--------------+
 +
-+struct Clock {
-+    /*< private >*/
-+    Object parent_obj;
++Clocks are defined in include/hw/clock.h header and device related funct=
+ions
++are defined in include/hw/qdev-clock.h header.
 +
-+    /* all fields are private and should not be modified directly */
++The clock state
++---------------
 +
-+    /* fields */
-+    uint64_t period;
-+    char *canonical_path;
-+    ClockCallback *callback;
-+    void *callback_opaque;
++The state of a clock is its period; it is stored as an integer represent=
+ing
++it in 2^-32ns unit. The special value of 0 is used to represent the cloc=
+k being
++inactive or gated. The clocks do not model the signal itself (pin toggli=
+ng)
++or other properties such as the duty cycle.
 +
-+    /* Clocks are organized in a clock tree */
-+    Clock *source;
-+    QLIST_HEAD(, Clock) children;
-+    QLIST_ENTRY(Clock) sibling;
-+};
++All clocks contain this state: outputs as well as inputs. It allows to f=
+etch
++the current period of a clock at any time. When a clock is updated, the
++value is immediately propagated to all connected clocks in the tree.
 +
-+/**
-+ * clock_setup_canonical_path:
-+ * @clk: clock
-+ *
-+ * compute the canonical path of the clock (used by log messages)
-+ */
-+void clock_setup_canonical_path(Clock *clk);
++To ease interaction with clocks. Helpers with a unit suffix are defined =
+for
++every clock state setter or getter. They are:
 +
-+/**
-+ * clock_set_callback:
-+ * @clk: the clock to register the callback into
-+ * @cb: the callback function
-+ * @opaque: the argument to the callback
-+ *
-+ * Register a callback called on every clock update.
-+ */
-+void clock_set_callback(Clock *clk, ClockCallback *cb, void *opaque);
++- ``_ns`` for handling periods in nanosecond,
++- ``_hz`` for handling frequencies in hertz.
 +
-+/**
-+ * clock_clear_callback:
-+ * @clk: the clock to delete the callback from
-+ *
-+ * Unregister the callback registered with clock_set_callback.
-+ */
-+void clock_clear_callback(Clock *clk);
++The 0 period value is converted to 0 in hertz and vice versa. 0 always m=
+eans
++that the clock is disabled.
 +
-+/**
-+ * clock_set_source:
-+ * @clk: the clock.
-+ * @src: the source clock
-+ *
-+ * Setup @src as the clock source of @clk. The current @src period
-+ * value is also copied to @clk and its subtree but no callback is
-+ * called.
-+ * Further @src update will be propagated to @clk and its subtree.
-+ */
-+void clock_set_source(Clock *clk, Clock *src);
++Adding a new a clock
++--------------------
 +
-+/**
-+ * clock_set:
-+ * @clk: the clock to initialize.
-+ * @value: the clock's value, 0 means unclocked
-+ *
-+ * Set the local cached period value of @clk to @value.
-+ */
-+void clock_set(Clock *clk, uint64_t value);
++Adding clocks to a device must be done during the init method of the Dev=
+ice
++instance.
 +
-+static inline void clock_set_hz(Clock *clk, unsigned hz)
-+{
-+    clock_set(clk, CLOCK_PERIOD_FROM_HZ(hz));
-+}
++To add an input clock to a device, the function qdev_init_clock_in must =
+be used.
++It takes the name, a callback and an opaque parameter for the callback (=
+this will
++be explained in a following section below).
++Output is more simple, only the name is required. Typically::
 +
-+static inline void clock_set_ns(Clock *clk, unsigned ns)
-+{
-+    clock_set(clk, CLOCK_PERIOD_FROM_NS(ns));
-+}
++    qdev_init_clock_in(DEVICE(dev), "clk_in", clk_in_callback, dev);
++    qdev_init_clock_out(DEVICE(dev), "clk_out");
 +
-+/**
-+ * clock_propagate:
-+ * @clk: the clock
-+ *
-+ * Propagate the clock period that has been previously configured using
-+ * @clock_set(). This will update recursively all connected clocks.
-+ * It is an error to call this function on a clock which has a source.
-+ * Note: this function must not be called during device inititialization
-+ * or migration.
-+ */
-+void clock_propagate(Clock *clk);
++Both functions return the created Clock pointer, which should be saved i=
+n the
++device's state structure for further use.
 +
-+/**
-+ * clock_update:
-+ * @clk: the clock to update.
-+ * @value: the new clock's value, 0 means unclocked
-+ *
-+ * Update the @clk to the new @value. All connected clocks will be infor=
-med
-+ * of this update. This is equivalent to call @clock_set() then
-+ * @clock_propagate().
-+ */
-+static inline void clock_update(Clock *clk, uint64_t value)
-+{
-+    clock_set(clk, value);
-+    clock_propagate(clk);
-+}
++These objects will be automatically deleted by the QOM reference mechani=
+sm.
 +
-+static inline void clock_update_hz(Clock *clk, unsigned hz)
-+{
-+    clock_update(clk, CLOCK_PERIOD_FROM_HZ(hz));
-+}
++Note that it is possible to create a static array describing clock input=
+s and
++outputs. The function ``qdev_init_clocks()`` must be called with the arr=
+ay as
++parameter to initialize the clocks: it has the same behaviour as calling=
+ the
++``qdev_init_clock_in/out()`` for each clock in the array. To ease the ar=
+ray
++construction, some macros are defined in include/hw/qdev-clock.h.
++As an example, the following creates 2 clocks to a device: one input and=
+ one
++output.
 +
-+static inline void clock_update_ns(Clock *clk, unsigned ns)
-+{
-+    clock_update(clk, CLOCK_PERIOD_FROM_NS(ns));
-+}
++::
 +
-+/**
-+ * clock_get:
-+ * @clk: the clk to fetch the clock
-+ *
-+ * @return: the current period.
-+ */
-+static inline uint64_t clock_get(const Clock *clk)
-+{
-+    return clk->period;
-+}
++    /* device structure containing pointer to the clock objects */
++    typedef struct MyDeviceState {
++        DeviceState parent_obj;
++        Clock *clk_in;
++        Clock *clk_out;
++    } MyDeviceState;
 +
-+static inline unsigned clock_get_hz(Clock *clk)
-+{
-+    return CLOCK_PERIOD_TO_HZ(clock_get(clk));
-+}
++    /*
++     * callback for the input clock (see "Callback on input clock
++     * change" section below for more information).
++     */
++    static void clk_in_callback(void *opaque);
 +
-+static inline unsigned clock_get_ns(Clock *clk)
-+{
-+    return CLOCK_PERIOD_TO_NS(clock_get(clk));
-+}
++    /*
++     * static array describing clocks:
++     * + a clock input named "clk_in", whose pointer is stored in
++     *   clk_in field of a MyDeviceState structure with callback
++     *   clk_in_callback.
++     * + a clock output named "clk_out" whose pointer is stored in
++     *   clk_out field of a MyDeviceState structure.
++     */
++    static const ClockPortInitArray mydev_clocks =3D {
++        QDEV_CLOCK_IN(MyDeviceState, clk_in, clk_in_callback),
++        QDEV_CLOCK_OUT(MyDeviceState, clk_out),
++        QDEV_CLOCK_END
++    };
 +
-+/**
-+ * clock_is_enabled:
-+ * @clk: a clock
-+ *
-+ * @return: true if the clock is running.
-+ */
-+static inline bool clock_is_enabled(const Clock *clk)
-+{
-+    return clock_get(clk) !=3D 0;
-+}
++    /* device initialization function */
++    static void mydev_init(Object *obj)
++    {
++        /* cast to MyDeviceState */
++        MyDeviceState *mydev =3D MYDEVICE(obj);
++        /* create and fill the pointer fields in the MyDeviceState */
++        qdev_init_clocks(mydev, mydev_clocks);
++        [...]
++    }
 +
-+static inline void clock_init(Clock *clk, uint64_t value)
-+{
-+    clock_set(clk, value);
-+}
-+static inline void clock_init_hz(Clock *clk, uint64_t value)
-+{
-+    clock_set_hz(clk, value);
-+}
-+static inline void clock_init_ns(Clock *clk, uint64_t value)
-+{
-+    clock_set_ns(clk, value);
-+}
++An alternative way to create a clock is to simply call
++``object_new(TYPE_CLOCK)``. In that case the clock will neither be an in=
+put nor
++an output of a device. After the whole QOM hieracrhy of the clock has be=
+en set
++``clock_setup_canonical_path()`` should be called.
 +
-+#endif /* QEMU_HW_CLOCK_H */
-diff --git a/hw/core/clock.c b/hw/core/clock.c
-new file mode 100644
-index 0000000000..3c0daf7d4c
---- /dev/null
-+++ b/hw/core/clock.c
-@@ -0,0 +1,130 @@
-+/*
-+ * Hardware Clocks
-+ *
-+ * Copyright GreenSocs 2016-2020
-+ *
-+ * Authors:
-+ *  Frederic Konrad
-+ *  Damien Hedde
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ */
++At creation, the period of the clock is 0: the clock is disabled. You ca=
+n
++change it using ``clock_set[_ns|_hz]()``.
 +
-+#include "qemu/osdep.h"
-+#include "hw/clock.h"
-+#include "trace.h"
++Note that if you are creating a clock with a fixed period which will nev=
+er
++change (for example the main clock source of a board), then you'll have
++nothing else to do. This value will be propagated to other clocks when
++connecting the clocks together and devices will fetch the right value du=
+ring
++the first reset.
 +
-+#define CLOCK_PATH(_clk) (_clk->canonical_path)
++Retrieving clocks from a device
++-------------------------------
 +
-+void clock_setup_canonical_path(Clock *clk)
-+{
-+    g_free(clk->canonical_path);
-+    clk->canonical_path =3D object_get_canonical_path(OBJECT(clk));
-+}
++``qdev_get_clock_in()`` and ``dev_get_clock_out()`` are available to get=
+ the clock inputs or outputs of a device. For example::
 +
-+void clock_set_callback(Clock *clk, ClockCallback *cb, void *opaque)
-+{
-+    clk->callback =3D cb;
-+    clk->callback_opaque =3D opaque;
-+}
++    Clock *clk =3D qdev_get_clock_in(DEVICE(mydev), "clk_in");
 +
-+void clock_clear_callback(Clock *clk)
-+{
-+    clock_set_callback(clk, NULL, NULL);
-+}
++or::
 +
-+void clock_set(Clock *clk, uint64_t period)
-+{
-+    trace_clock_set(CLOCK_PATH(clk), CLOCK_PERIOD_TO_NS(clk->period),
-+                    CLOCK_PERIOD_TO_NS(period));
-+    clk->period =3D period;
-+}
++    Clock *clk =3D qdev_get_clock_out(DEVICE(mydev), "clk_out");
 +
-+static void clock_propagate_period(Clock *clk, bool call_callbacks)
-+{
-+    Clock *child;
++Connecting two clocks together
++------------------------------
 +
-+    QLIST_FOREACH(child, &clk->children, sibling) {
-+        if (child->period !=3D clk->period) {
-+            child->period =3D clk->period;
-+            trace_clock_update(CLOCK_PATH(child), CLOCK_PATH(clk),
-+                               CLOCK_PERIOD_TO_NS(clk->period),
-+                               call_callbacks);
-+            if (call_callbacks && child->callback) {
-+                child->callback(child->callback_opaque);
-+            }
-+            clock_propagate_period(child, call_callbacks);
++To connect two clocks together, use the ``clock_set_source()`` function.
++Given two clocks ``clk1``, and ``clk2``, ``clock_set_source(clk2, clk1);=
+``
++configure ``clk2`` to follow the ``clk1`` period changes. Every time ``c=
+lk1``
++is updated, ``clk2`` will be updated too.
++
++When connecting clock between devices, prefer using the
++``qdev_connect_clock_in()`` function set the source of an input device c=
+lock.
++For example, to connect the input clock ``clk2`` of ``devB`` to the outp=
+ut
++clock ``clk1`` of ``devA``, do::
++
++    qdev_connect_clock_in(devB, "clk2", qdev_get_clock_out(devA, "clk1")=
+)
++
++We used ``qdev_get_clock_out()`` above, but any clock can drive an input=
+ clock,
++even another input clock. The following diagram shows some
++examples of connections. Note also that a clock can drive several other =
+clocks.
++
++::
++
++  +------------+  +--------------------------------------------------+
++  |  Device A  |  |                   Device B                       |
++  |            |  |               +---------------------+            |
++  |            |  |               |       Device C      |            |
++  |  +-------+ |  | +-------+     | +-------+ +-------+ |  +-------+ |
++  |  |Clock 1|>>-->>|Clock 2|>>+-->>|Clock 3| |Clock 5|>>>>|Clock 6|>>
++  |  | (out) | |  | | (in)  |  |  | | (in)  | | (out) | |  | (out) | |
++  |  +-------+ |  | +-------+  |  | +-------+ +-------+ |  +-------+ |
++  +------------+  |            |  +---------------------+            |
++                  |            |                                     |
++                  |            |  +--------------+                   |
++                  |            |  |   Device D   |                   |
++                  |            |  | +-------+    |                   |
++                  |            +-->>|Clock 4|    |                   |
++                  |               | | (in)  |    |                   |
++                  |               | +-------+    |                   |
++                  |               +--------------+                   |
++                  +--------------------------------------------------+
++
++In the above example, when *Clock 1* is updated by *Device A*, three clo=
+cks gets the new clock period value: *Clock 2*, Clock 3* and *Clock 4*.
++
++It is not possible to disconnect a clock or to change the clock connecti=
+on
++after it is done.
++
++Unconnected input clocks
++------------------------
++
++A newly created input clock is disabled (period of 0). It means the cloc=
+k will
++be considered as disabled until the period is updated. If the clock rema=
+ins
++unconnected it will always keep its initial value of 0. If this is not t=
+he
++wanted behaviour, ``clock_set()``, ``clock_set_ns()`` or ``clock_set_hz(=
+)``
++should be called on the Clock object during device instance init. For ex=
+ample::
++
++    clk =3D qdev_init_clock_in(DEVICE(dev), "clk-in", clk_in_callback,
++                             dev);
++    /* set initial value to 10ns / 100MHz */
++    clock_set_ns(clk, 10);
++
++Fetching clock frequency/period
++-------------------------------
++
++To get the current state of a clock, the function ``clock_get()``,
++``clock_get_ns()`` or ``clock_get_hz()`` must be used.
++
++It is also possible to register a callback on clock frequency changes.
++Here is an example::
++
++    void clock_callback(void *opaque) {
++        MyDeviceState *s =3D (MyDeviceState *) opaque;
++        /*
++         * opaque may not be the device state pointer, but most
++         * probably it is. (It depends on what is given to the
++         * qdev_init_clock_in function)
++         */
++
++        /* do something with the new period */
++        fprintf(stdout, "device new period is %" PRIu64 "ns\n",
++                        clock_get_ns(dev->my_clk_input));
++    }
++
++Changing a clock period
++-----------------------
++
++A device can change its outputs using the ``clock_update()``,
++``clock_update_ns()`` or ``clock_update_hz()`` function. It will trigger
++updates on every connected input.
++
++For example, let's say that we have an output clock *clkout* and we have=
+ a
++pointer to it in the device state because we did the following in init p=
+hase::
++
++    dev->clkout =3D qdev_init_clock_out(DEVICE(dev), "clkout");
++
++Then at any time (apart from the cases listed below), it is possible to
++change the clock value by doing::
++
++    clock_update_hz(dev->clkout, 1000 * 1000 * 1000); /* 1Ghz */
++
++Because updating a clock may trigger any side effects through connected =
+clocks
++and their callbacks, this operation must be done while holding the qemu =
+io lock.
++
++For the same reason, one can updates clocks only when it is allowed to h=
+ave
++side effects on other objects. In consequence, it is forbidden:
+++ during migration,
+++ and in the enter phase of reset.
++
++Note that calling ``clock_update[_ns|_hz]()`` is equivalent to call
++``clock_set[_ns|_hz]()`` (with the same arguments) then ``clock_propagat=
+e()`` on
++the clock. Thus, setting the clock value can separated from triggering t=
+he
++side-effects. This is often required to factorize code to handle reset a=
+nd
++migration in devices.
++
++Aliasing clocks
++---------------
++
++Sometimes, one needs to forward, or inherit, a clock from another device=
+.
++Typically, when doing device composition, a device might expose a sub-de=
+vice's
++clock without interfering with it.
++The function ``qdev_alias_clock()`` can be used to achieve this behaviou=
+r. Note
++that it is possible to expose the clock under a different name. This wor=
+ks for
++both inputs and outputs.
++
++For example, if device B is a child of device A, ``device_a_instance_ini=
+t()``
++may do something like this::
++
++    void device_a_instance_init(Object *obj)
++    {
++        AState *A =3D DEVICE_A(obj);
++        BState *B;
++        /* create B object as child of A */
++        [...]
++        qdev_alias_clock(B, "clk", A, "b_clk");
++        /*
++         * Now A has a clock "b_clk" which is an alias to
++         * the clock "clk" of its child B.
++         */
++    }
++
++This function does not return any clock object. The new clock has the sa=
+me
++direction (input or output) as the original one. This function only adds=
+ a link
++to the existing clock. In the above example, B object remains the only o=
+bject
++allowed to use the clock and device A must not try to change the clock p=
+eriod
++or set a callback to the clock. Here follows a diagram describing the ex=
+ample
++with an input clock::
++
++    +--------------------------+
++    |        Device A          |
++    |         +--------------+ |
++    |         |   Device B   | |
++    |         | +-------+    | |
++    >>"b_clk">>>| "clk" |    | |
++    |  (in)   | |  (in) |    | |
++    |         | +-------+    | |
++    |         +--------------+ |
++    +--------------------------+
++
++Migration
++---------
++
++Clock state are not migrated automatically. Every device must handle its
++clock migration. Alias clocks must not be migrated.
++
++To ensure clock states are restored correctly during migration, there is=
+ two
++solutions.
++
++Clocks states can be migrated by adding an entry into the device
++vmstate description. To this purpose, the ``VMSTATE_CLOCK`` macro define=
+s
++such an entry and should be used. This is typically used to migrate an i=
+nput
++clock state. The following example describes it::
++
++    MyDeviceState {
++        DeviceState parent_obj;
++        [...] /* some fields */
++        Clock *clk;
++    };
++
++    VMStateDescription my_device_vmstate =3D {
++        .name =3D "my_device",
++        .fields =3D (VMStateField[]) {
++            [...], /* other migrated fields */
++            VMSTATE_CLOCK(clk, MyDeviceState),
++            VMSTATE_END_OF_LIST()
 +        }
-+    }
-+}
++    };
 +
-+void clock_propagate(Clock *clk)
-+{
-+    assert(clk->source =3D=3D NULL);
-+    trace_clock_propagate(CLOCK_PATH(clk));
-+    clock_propagate_period(clk, true);
-+}
++The second solution is to restore the clock state using information alre=
+ady
++at our disposal. This can be used to restore output clocks states using =
+the
++device state. The functions ``clock_set[_ns|_hz]()`` can be used during
++``post_load()`` migration callback.
 +
-+void clock_set_source(Clock *clk, Clock *src)
-+{
-+    /* changing clock source is not supported */
-+    assert(!clk->source);
++When adding a clock support to an existing device, if you care about mig=
+ration
++compatibility. To this end, you can use ``clock_set()`` in a ``pre_load(=
+)``
++function to setup a default value in case the source virtual machine doe=
+s not
++send the clock state. You may also need to use a vmstate subsection.
 +
-+    trace_clock_set_source(CLOCK_PATH(clk), CLOCK_PATH(src));
-+
-+    clk->period =3D src->period;
-+    QLIST_INSERT_HEAD(&src->children, clk, sibling);
-+    clk->source =3D src;
-+    clock_propagate_period(clk, false);
-+}
-+
-+static void clock_disconnect(Clock *clk)
-+{
-+    if (clk->source =3D=3D NULL) {
-+        return;
-+    }
-+
-+    trace_clock_disconnect(CLOCK_PATH(clk));
-+
-+    clk->source =3D NULL;
-+    QLIST_REMOVE(clk, sibling);
-+}
-+
-+static void clock_initfn(Object *obj)
-+{
-+    Clock *clk =3D CLOCK(obj);
-+
-+    QLIST_INIT(&clk->children);
-+}
-+
-+static void clock_finalizefn(Object *obj)
-+{
-+    Clock *clk =3D CLOCK(obj);
-+    Clock *child, *next;
-+
-+    /* clear our list of children */
-+    QLIST_FOREACH_SAFE(child, &clk->children, sibling, next) {
-+        clock_disconnect(child);
-+    }
-+
-+    /* remove us from source's children list */
-+    clock_disconnect(clk);
-+
-+    g_free(clk->canonical_path);
-+}
-+
-+static const TypeInfo clock_info =3D {
-+    .name              =3D TYPE_CLOCK,
-+    .parent            =3D TYPE_OBJECT,
-+    .instance_size     =3D sizeof(Clock),
-+    .instance_init     =3D clock_initfn,
-+    .instance_finalize =3D clock_finalizefn,
-+};
-+
-+static void clock_register_types(void)
-+{
-+    type_register_static(&clock_info);
-+}
-+
-+type_init(clock_register_types)
-diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
-index 6215e7c208..1d9b0aa205 100644
---- a/hw/core/Makefile.objs
-+++ b/hw/core/Makefile.objs
-@@ -7,6 +7,7 @@ common-obj-y +=3D hotplug.o
- common-obj-y +=3D vmstate-if.o
- # irq.o needed for qdev GPIO handling:
- common-obj-y +=3D irq.o
-+common-obj-y +=3D clock.o
-=20
- common-obj-$(CONFIG_SOFTMMU) +=3D reset.o
- common-obj-$(CONFIG_SOFTMMU) +=3D qdev-fw.o
-diff --git a/hw/core/trace-events b/hw/core/trace-events
-index aecd8e160e..39301621ce 100644
---- a/hw/core/trace-events
-+++ b/hw/core/trace-events
-@@ -27,3 +27,10 @@ resettable_phase_exit_begin(void *obj, const char *obj=
-type, unsigned count, int
- resettable_phase_exit_exec(void *obj, const char *objtype, int has_metho=
-d) "obj=3D%p(%s) method=3D%d"
- resettable_phase_exit_end(void *obj, const char *objtype, unsigned count=
-) "obj=3D%p(%s) count=3D%d"
- resettable_transitional_function(void *obj, const char *objtype) "obj=3D=
-%p(%s)"
-+
-+# clock.c
-+clock_set_source(const char *clk, const char *src) "'%s', src=3D'%s'"
-+clock_disconnect(const char *clk) "'%s'"
-+clock_set(const char *clk, unsigned long long old, unsigned long long ne=
-w) "'%s', ns=3D%llu->%llu"
-+clock_propagate(const char *clk) "'%s'"
-+clock_update(const char *clk, const char *src, unsigned long long val, i=
-nt cb) "'%s', src=3D'%s', ns=3D%llu, cb=3D%d"
++Care should be taken not to use ``clock_update[_ns|_hz]()`` or
++``clock_propagate()`` during the whole migration procedure because it wi=
+ll
++trigger side effects to other devices in an unknown state.
+diff --git a/docs/devel/index.rst b/docs/devel/index.rst
+index 4dc2ca8d71..f9c8c668ee 100644
+--- a/docs/devel/index.rst
++++ b/docs/devel/index.rst
+@@ -25,3 +25,4 @@ Contents:
+    tcg-plugins
+    bitops
+    reset
++   clocks
 --=20
 2.25.1
 

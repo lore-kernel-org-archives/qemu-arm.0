@@ -1,137 +1,222 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1643644lfg;
-        Tue, 25 Feb 2020 04:52:08 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwOz+FI4DYitCQl71fkLfns2o+D+3sZ6VcPtDRY72bNGLeFMYHH0xenJveulzimjHMaXbBD
-X-Received: by 2002:a37:b5c1:: with SMTP id e184mr59093846qkf.189.1582635127879;
-        Tue, 25 Feb 2020 04:52:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582635127; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1660981lfg;
+        Tue, 25 Feb 2020 05:07:28 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyvnVOzF+jn3p6pga9bGwmPTgd8S2FNPVcE1+gkaulVtgvOTsu+o9HY+es0VALZrX5+MWvy
+X-Received: by 2002:a0c:e34e:: with SMTP id a14mr50539014qvm.73.1582636048329;
+        Tue, 25 Feb 2020 05:07:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582636048; cv=none;
         d=google.com; s=arc-20160816;
-        b=LsxLtxsBxBGDWPANov9goeLJsOIb4DcVo6Z/7eNxKH4PG6umsays1Eh/qLIFQEte/m
-         rI67buPjIwQ+0moVlUZxNOt9tKna67oqQyXTfz9IL74I4QKWPrTgY/cDN5USDsiY0t0I
-         fshYwBgcsFywgl2PzjnBg3+SWqO6ic62tmf56uhLZpooloLSelzLrvKIP7/TvWETp4kV
-         ZgU4F7+PeH+H3YVMVj2fGfLngeLhWaXpM47bJPS3k3eMULKsODg9I2UHhGjwihJ6+43T
-         5JmLRVkpdio3q4dt1rJsKNSq5nna4Vp0zOGoSGXyiJ3aNk09unmWpyjeoTVctfgxRgDw
-         mMPA==
+        b=Mtp83xGs+02K2pcr2vgAoGgqJKVrSnJZHeYdDBYNp7jGMW3Cjk+GLXlU/kWfqX7s64
+         KdLAIZAUaQsn8Nd9dHQ6/jE437zEe/wM5AejTd2T0/0j1ELejXYPUk5XD5tDfmxqqarp
+         GBehXWUs2Q2+3aVl+UWqkvRcmD+30JZcV01IsS7pisMnm/Idu/8cgTIsqgqf21Zq4aOe
+         X2LNn1jJxftfGeQX9G/Ies9+FJFsKMj5iPCXt9BWJuijDln3tycsQKQa5c04Dex1KddW
+         GvuhfHXx88HlJ8UuD8m6s+8nDfs8Et3YdWPoZmRYvNjiy+xpxmoxc3f0uvI++H8ddR4/
+         ItrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=cH4yIJ3LDfBR7fon/qGvvy8vo1wHfnVaZXHIRFCxNXA=;
-        b=u13PMgPgBclfDmVoxDtwm/+x/R3S3VO0vexpbhqWS485rfUdcy3YuVQy7KZ28EkyCV
-         Pq/zFlbRSNsMejoTWnxEl7GTcjuGP7BaReGnFgeg6yUtO7Yjl/th10m7kfUPNaXwkMaM
-         s7rsYvGZivE8Jc6KPLAd779Qdn090rt7zgWMehSai257wiUxviOXueQXfNGSr/z7xtgW
-         M8xBVzWnxeMJ/ccNdJP5JSo7mSi6C6kp103F8HbbxnPddhjH/HjxkE4rui4MLm0NZmtV
-         y9fN1FvS5+lf6vCDwbAH6EFyJx4SQU/DXL38A/OK99u8nNoOae6oFn6RSTHYPdLFrRML
-         jqgA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=prlOgWgQ9Ik+E3eF9Wnb1i83rqLIAzGc5kS9vOvkF4o=;
+        b=kLhxh+/pelZICxLlSmXbZJaiOwJFsDD0rh5sa78EdI6ikODauNvZgxMPDGPZtdUWoQ
+         eyLXZxizLR9iRd3IWvbCQd3bToxbikCnot2vUivgq/AqhahXIVfHXonHBhNDduQ9RYtJ
+         kDfFjG6PuWcvZLHHJJVPQMbGR5lqRIi4Vwzmxah4Gr9X9JciPFLtfVqPXVgtdK/NDoa2
+         OVE9DAXEyJPXghKlnmIraFS+v6XkzRZhFVnvRd2L0miU0gYcYmwebAt7CgkMp6ermT1D
+         TeZ3biE8XqLmo1nK3dhR3NCCx7MbUAG8KlFNxXEmiGXcHILqwWoIOmEz2HWs9PKzj3fd
+         tPng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xSvSpg4T;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LaclFHkb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l27si7396487qtv.19.2020.02.25.04.52.07
+        by mx.google.com with ESMTPS id z43si7080602qtj.371.2020.02.25.05.07.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 04:52:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Feb 2020 05:07:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xSvSpg4T;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54846 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LaclFHkb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55240 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6Zh1-00069d-An
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 07:52:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59490)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j6Zvr-0003My-DB
+	for alex.bennee@linaro.org; Tue, 25 Feb 2020 08:07:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57472)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j6Zdi-0007om-Ar
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 07:48:43 -0500
+ (envelope-from <pbonzini@redhat.com>) id 1j6ZUh-0004v6-MA
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 07:39:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j6Zdh-0007nI-8D
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 07:48:42 -0500
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:33378)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j6Zdh-0007mw-3A
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 07:48:41 -0500
-Received: by mail-oi1-x241.google.com with SMTP id q81so12444143oig.0
- for <qemu-arm@nongnu.org>; Tue, 25 Feb 2020 04:48:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=cH4yIJ3LDfBR7fon/qGvvy8vo1wHfnVaZXHIRFCxNXA=;
- b=xSvSpg4Tg6ciFLCOH6JWSouW85Kbzey2YaAwFNKUZC0csji6a79pk6Zu5dIut5diZW
- FCkSTBVZ30qbI8IE8iufcreQ7ilw+NvydTg9kzg1XB9m+qkHwCWI6oeKDpeML3av54BF
- 63knxb6CEg3Qri5zIdOGL9M/O4mTp1pQ6ravT0yxxx6UCZvMjhcYMGt8pBSqUiUXnoO+
- 7CR1NDDDA7WxdE3gW19IpFOa2bN0oYALsDN3JQTtCbEZBG5OEcfgwupaHRl7ZT/58EzE
- srTOja15x7xrUN1RPU/XYIItZL9eXo5pPuZBCkPX3aG3nKknNLGa8XHzq+KQcUnffrTc
- irmg==
+ (envelope-from <pbonzini@redhat.com>) id 1j6ZUg-00046Q-DV
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 07:39:23 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:30210
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1j6ZUg-00045z-9r
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 07:39:22 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582634361;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=prlOgWgQ9Ik+E3eF9Wnb1i83rqLIAzGc5kS9vOvkF4o=;
+ b=LaclFHkbyTVvUaX1oKImu1lcEsuV9onscLy4+fQP934U5eKkfT4vyxcCoVVoxxVqNoPwJc
+ 50mhbMCSz32nlpkwLqXwutRwM0qbjfwf23XW0PJAo+ahLyOqudah6sMp4Add+Wd5mMiJoP
+ WNypK9+8s7LAkQA8iwFJzuOX+1gNWxg=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-109-Dk8ekPLXODuX4FaDc2a1-A-1; Tue, 25 Feb 2020 07:39:19 -0500
+X-MC-Unique: Dk8ekPLXODuX4FaDc2a1-A-1
+Received: by mail-wm1-f72.google.com with SMTP id 7so974004wmf.9
+ for <qemu-devel@nongnu.org>; Tue, 25 Feb 2020 04:39:19 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=cH4yIJ3LDfBR7fon/qGvvy8vo1wHfnVaZXHIRFCxNXA=;
- b=Io6yO9bS4IKgbbVojB94xaKclJxBaYxc1imqJPxIAHx5x1UtKnPjGfBt2bTOg8BoYp
- /lwm8FvKYoUgeZJor1wulCN2HYj7hACyxgYzzJ/lxgGa+4mPztKlQUhbZ/sZ/VVZgtx0
- 40NdrQHMvglCixJkkJnR+ojSuSfJZRAZJnhahBfkKTkW8jkmR3lhhj3lMIE/vshlvmHu
- vBmp0k7RmvwK85MAbUTnmgGV5hx7TYWYGNMNTFfj4fCNm8iF6srUfhrNoTcLWycSiv54
- Oao5hj3R4K6f9AyyjMluCJr3fl8p89lMvBwTmG/Y15U6KADCPNCCrerIc/sRcg11sMTX
- QK/w==
-X-Gm-Message-State: APjAAAWUlV4ymPoFvRjD26HFu/AxG4W/xWlKhKbOa3x+RRzlSRxGQ+Nr
- oi6dvrdLryID0OM0YMeriY7LTTBaAhcOBww/Mm77iw==
-X-Received: by 2002:a05:6808:3b2:: with SMTP id
- n18mr3265260oie.146.1582634920399; 
- Tue, 25 Feb 2020 04:48:40 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=kztbPaVB/2XMFABxpPNGrrCj9r6pdnumsQimldYZmLg=;
+ b=SgWGmV6nOFgMfEgEfwiE1jYF/72CHnrxhBy3pN+vrbAGrGWQlv8PCn/eGxSTpxGMa3
+ EZBxSOzTZHjkXPV9qKRs4YV8eXcMEipsYiwHGDNIUe77RxDM7pyuYMdEGB9liGyx8vzy
+ wJh8W48t1oETALdxhDqmLuji+Kvg7S3KLZsmc1Vbubg+u6tzoMlbu4DEhJzBiytbLFF8
+ nJuKp+y9jzTj9aVk/itTPh38x/WNsdbeZl24VmGooQk7tLetgFqU17g+JnhrMiFGbxv4
+ z/MB5DBQldnytT1cvErpt0kyd0PVjj1vCconrfluIJJ1QKZzBcxXUX4jVE+WYX5AdAJ2
+ amqg==
+X-Gm-Message-State: APjAAAV5JtWvNByo8JFkWnpdeJkTsHBKZYgSiPL9jZsVF8e7JxooplM+
+ /ztcqOnnhpOOfMVWvuK8dHFvbkh1VOxDKP4euBU/mIqA94QymExHDicX03iFwVzRpLNjEHAqyom
+ 2WBsa6XbdenyHYWY=
+X-Received: by 2002:a1c:541b:: with SMTP id i27mr5524326wmb.137.1582634358169; 
+ Tue, 25 Feb 2020 04:39:18 -0800 (PST)
+X-Received: by 2002:a1c:541b:: with SMTP id i27mr5524296wmb.137.1582634357874; 
+ Tue, 25 Feb 2020 04:39:17 -0800 (PST)
+Received: from ?IPv6:2001:b07:6468:f312:3577:1cfe:d98a:5fb6?
+ ([2001:b07:6468:f312:3577:1cfe:d98a:5fb6])
+ by smtp.gmail.com with ESMTPSA id w8sm3982443wmm.0.2020.02.25.04.39.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 25 Feb 2020 04:39:17 -0800 (PST)
+Subject: Re: [PATCH RESEND v2 18/32] hw/i386/pc_sysfw: Simplify using
+ memory_region_init_alias()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+References: <20200224205533.23798-1-philmd@redhat.com>
+ <20200224205533.23798-19-philmd@redhat.com>
+ <532522f3-fc33-4405-1819-fe89c3ed088e@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <683355b0-cf04-d57a-92aa-500dbf1b94a8@redhat.com>
+Date: Tue, 25 Feb 2020 13:39:15 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-References: <20200223233033.15371-1-f4bug@amsat.org>
-In-Reply-To: <20200223233033.15371-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 25 Feb 2020 12:48:28 +0000
-Message-ID: <CAFEAcA9VF6LXeOPW+7jUpv_AFHdB46ZaJas4hcNt8KVfEwabAQ@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] hw/arm/integratorcp: Map Audio controller and
- parallel flash
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <532522f3-fc33-4405-1819-fe89c3ed088e@redhat.com>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::241
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GYlyc670W2nk
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
+ Magnus Damm <magnus.damm@gmail.com>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Alistair Francis <alistair@alistair23.me>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ qemu-riscv@nongnu.org, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
+ Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QMtntZ2E78GL
 
-On Sun, 23 Feb 2020 at 23:30, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> While looking whether Thomas's test patch [*] requires a respin
-> or not, I noticed we could complete the integrator model.
-> Thomas patch still applies properly ;)
->
-> Since v1:
-> - Added uncommitted Kconfig
-> - Use hobbyist git-identity
->
-> [*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg675828.html
->
-> Philippe Mathieu-Daud=C3=A9 (2):
->   hw/arm/integratorcp: Map the audio codec controller
->   hw/arm/integratorcp: Map a CFI parallel flash
+On 25/02/20 11:05, Philippe Mathieu-Daud=C3=A9 wrote:
+>>
+>> pc_isa_bios_init() does a manual copy of a part of the BIOS,
+>> from a read-only region. We can simplify by directly aliasing
+>> the same part.
+>>
+>> Before:
+>>
+>> =C2=A0=C2=A0 (qemu) info mtree
+>> =C2=A0=C2=A0 memory-region: system
+>> =C2=A0=C2=A0=C2=A0=C2=A0 0000000000000000-ffffffffffffffff (prio 0, i/o)=
+: system
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0000000000000000-0000000007ffffff (=
+prio 0, ram): alias
+>> ram-below-4g @pc.ram 0000000000000000-0000000007ffffff
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0000000000000000-ffffffffffffffff (=
+prio -1, i/o): pci
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000000a0000-000000=
+00000bffff (prio 1, i/o): vga-lowmem
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000000c0000-000000=
+00000dffff (prio 1, rom): pc.rom
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000000e0000-000000=
+00000fffff (prio 1, rom): isa-bios
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ...
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000fff00000-00000000ffffffff (=
+prio 0, romd): system.flash0
+>>
+>> After:
+>>
+>> =C2=A0=C2=A0 (qemu) info mtree
+>> =C2=A0=C2=A0 memory-region: system
+>> =C2=A0=C2=A0=C2=A0=C2=A0 0000000000000000-ffffffffffffffff (prio 0, i/o)=
+: system
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0000000000000000-0000000007ffffff (=
+prio 0, ram): alias
+>> ram-below-4g @pc.ram 0000000000000000-0000000007ffffff
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0000000000000000-ffffffffffffffff (=
+prio -1, i/o): pci
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000000a0000-000000=
+00000bffff (prio 1, i/o): vga-lowmem
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000000c0000-000000=
+00000dffff (prio 1, rom): pc.rom
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000000e0000-000000=
+00000fffff (prio 1, romd): alias
+>> isa-bios @system.flash0 00000000000e0000-00000000000fffff
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ...
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000fff00000-00000000ffffffff (=
+prio 0, romd): system.flash0
+>=20
+> IIUC migrating old -> new is OK, the previous ROM copy is discarded.
+>=20
+> What about new -> old, does it require specific handling? Do we care?
 
-I've left comments on patch 2, and taken patch 1 into
-target-arm.next.
+Old->new is broken because the "isa-bios" memory region is not found.
 
-thanks
--- PMM
+qemu-system-x86_64: Unknown ramblock "isa-bios", cannot accept migration
+qemu-system-x86_64: error while loading state for instance 0x0 of device 'r=
+am'
+qemu-system-x86_64: load of migration failed: Invalid argument
+
+Paolo
+

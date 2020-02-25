@@ -1,136 +1,300 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1767989lfg;
-        Tue, 25 Feb 2020 06:39:26 -0800 (PST)
-X-Received: by 2002:a1c:3b8a:: with SMTP id i132mr86230wma.32.1582641566198;
-        Tue, 25 Feb 2020 06:39:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582641566; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1815880lfg;
+        Tue, 25 Feb 2020 07:21:05 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyTZwHFCe5R5Bjkl4STL0KRNeeKxxanCy3Rf7OTa7gm7YYV4JX75AVn1I4kElxL6lDYs6VZ
+X-Received: by 2002:a37:6e87:: with SMTP id j129mr22883924qkc.79.1582644065817;
+        Tue, 25 Feb 2020 07:21:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582644065; cv=none;
         d=google.com; s=arc-20160816;
-        b=vWpHAxjuYiF2rgOBfQFwEDnTFZtQ0j3wlwRfjmzINkkrMCGTfstQaRombLrd5U4m2b
-         FKvY7GnpjX63qWDVBExwNpOUGyQrVZ1PFE3httWw2Brz8nQFVv9+ex4/VY8AMwXQnDm/
-         euT1y9E0L/Syh7TCxif97BOFQ2WTvme3bIXyxk7BjydbibFphr3S037KdcuPBXKG+gqB
-         v4j2GJ4O54gD/dan5OK66fmUTv0DHy181FQJ+paLD3D4wuMu4kX88ar8S80FXEI++t6H
-         2r+u7NSCB5HzvkHX+Xh0DOe56s5c9ky2f5r9l0LDP2hhSQXNRorKO0CIixY6aCjVT5wI
-         zUig==
+        b=UGXwutQAMKqaJuYBgY/LbR/M8/sPKhqedqG4xCJ4mtDesdE0L7O5heRrm6I21OXpU8
+         QdEbpDsoQmAuOOL7GJkuVlspFOxVfRGL/ouqpk68I+5GABpTQVRd6Q1osIxIe+xWnued
+         p3RMQm36vNHbXr3NQoUNhtkC8AYIaezYoStCncKQOSRjusPmAGDO1ToFUxILMxcIAD1F
+         bgwJdzCnDj8n7Z1qEMI8RjExW/5nDF3NZWmK7bNXiUFI+cx40H2Uaoal23tAzd11G2Kv
+         QYl2APMaW/fLSNtMRTfiXwJmKE+IH6qAz5tfcqjJC9eRDoBaPUjVz7ZV+l9eV7grNqwj
+         2f5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=CxC7+57klu/2mln+X9DRHhYMcaLTR/a8a6mDU1Kkwh0=;
-        b=ojvoZRneWB/P4toELrVrXwKLCem4wCYHkRZ/4uIt4UvBf01a5V4ygsyPuDBLRAWid4
-         o0H2uF9hp31fwN5wL0AXjzhOzf/HVVDTkx2WLDrCLEtV8cabp/iSrqzOH+BE/r0llaWO
-         8ZUfiq/OQfYeQHoygI4EB2v3neln9BLodUM1uFHIqDIl+w+8/3hA6fj3JpH0ISEF26aZ
-         OJaXOUPQ9G2tjrFySG06KI2vxEOghX+1GCAkCqGn1cjLJ930YH6D3Nfc0tjyMLR4hJ7x
-         Gf5R8RM4ofCFHvWBmMgDwAR8HeeMBQL2CPR00tuHj52wLxcMpbUQvZ5Tr04qEr5IsWbF
-         58dw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=mH6Uh7KB+qDOlqySuiYCwzhwjo90oVgrXa4q2w401+k=;
+        b=eJ4xSatRvc8mMb5kocXSFnTx3UIhpKg1Scr+Fx1ELDw5E3zk3l6+L9PF/rniY45fz2
+         UKYIORIz0MyuM8EAhhmvxMg9wDLImSuBw4PKRguamoiWzcWTkhro35Y6Z12zKS54mbDx
+         1syruIm6YRi4jmuxo3vPVXe2x2LM1BSe3JgElW1WGQ13TsVgS/R41Cg313//EGP9G+XK
+         mByPIoj3IV80Jt++ADwIOI2+nxeNM/ke9qvG2T2FyErQa8b8P4DQEdNujCjV9p1/LFRH
+         sovihUutRdOkT/q62jMMcHwN46esttJow5a3vKtc7TxmK9dSvNHg1YWIIMiVzIzPznbS
+         mRCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nid8GJYA;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id q17sor4165106wrp.61.2020.02.25.06.39.26
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PL5rCmf6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e65si7618318qkb.239.2020.02.25.07.21.05
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 25 Feb 2020 06:39:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 25 Feb 2020 07:21:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nid8GJYA;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=CxC7+57klu/2mln+X9DRHhYMcaLTR/a8a6mDU1Kkwh0=;
-        b=nid8GJYAJPYBPm/sS1dx1DsWD7C33KyCs1UYpq/bGeHkJz2ohx55kYP6MoXAx/BfDD
-         z22K2c68MTFWY/PHKVJAo6uKWVPNnDe4TlnYTRiH0M8F+BJkj2Tt2JwgdsLZK0UBUL4y
-         9szs8FDdtVH0lkl2VeGbZBA0PcgUkX28PklCZncEnqPnf4AAOXTFCKx27Hp25TWmwxi8
-         3DNJ7H5WSOaBcVfqfb3cpORSUJ0UMlvDVMmpgnW5TLruY10o9kH+Z+AWlIHFYPTo5qIc
-         M3L1E7bXZXShVFoXfrzv7Qri7bMVL4+UTx7Y1qvRzd5WxYuHnt9kkiTuU1/k5v7ukUOq
-         XbeQ==
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PL5rCmf6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58608 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j6c1B-0003Du-5Y
+	for alex.bennee@linaro.org; Tue, 25 Feb 2020 10:21:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55682)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <mst@redhat.com>) id 1j6bub-0000vY-Q6
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 10:14:19 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <mst@redhat.com>) id 1j6bua-0001Ty-6a
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 10:14:17 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:41486
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <mst@redhat.com>) id 1j6bua-0001TH-2m
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 10:14:16 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582643654;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=mH6Uh7KB+qDOlqySuiYCwzhwjo90oVgrXa4q2w401+k=;
+ b=PL5rCmf6X6W48oX6r72hYCx/6zX42tbuPQXSGbRQciQsYMsbJHYqcdkkYymSTByzqst12E
+ 0SDckxRU+M1rRYc4rFa0vfXUhoQqfrj64T0kHrezf5I5eaPqqK0BkTrrw/Dwpy3m5r7aUM
+ Cu2NTjjk8bNmrgRPogmDG5sCXJ3nZsM=
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-140-ewVEFSeKP0qgnAewsi8Vag-1; Tue, 25 Feb 2020 10:14:10 -0500
+X-MC-Unique: ewVEFSeKP0qgnAewsi8Vag-1
+Received: by mail-qv1-f69.google.com with SMTP id l1so13231501qvu.13
+ for <qemu-devel@nongnu.org>; Tue, 25 Feb 2020 07:14:10 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=CxC7+57klu/2mln+X9DRHhYMcaLTR/a8a6mDU1Kkwh0=;
-        b=UR+mmID5PwugE7cNLXmQonwgSI0iGeBnh9ij1VPs07vjiBtAAkwm+OhLtahYqEZTH2
-         bXY16robljG8MNs8gqbBVgayrUlXSnFBf+Du31QqOwH1cUVxsyt3JtpMlQuoeHGMmnPv
-         g/tpj8pyyGSOVJsV4sFmSoWZY8kucB0UqKh3bqBFu8ZhKX2kbkZwmkG9VaDH3KvPZBSg
-         S+ovHweqyCW/MwFx2DXBinjLnoW2cdzPl0GMO7I093thGNrzOFvSsYCsytB74xtDl2VC
-         wRA+9i/4mHh3r29bzdeOgPe1WeUmBqsXwPm2mcNNZDzQjLITMByUbCnt0FxWPWG13081
-         nVdw==
-X-Gm-Message-State: APjAAAX6j7IcilC/LA4h97+QX0iROe/QX4O4WWsUJ/wHzsfYKk2hL4NV
-	Ftd/WK2ICFXElnacQM33fzZPU5An
-X-Google-Smtp-Source: APXvYqwU4yLh/xJKjVASihiQSNbsM8wOJz7/8WYgkpIVwqsMHUF+1qKnjy77ISI080QbkY4waVrv5g==
-X-Received: by 2002:adf:a50b:: with SMTP id i11mr1369390wrb.60.1582641565849;
-        Tue, 25 Feb 2020 06:39:25 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-        by smtp.gmail.com with ESMTPSA id w8sm4388820wmm.0.2020.02.25.06.39.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Feb 2020 06:39:25 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH RISU] aarch64.risu: Add patterns for v8.3-RCPC and v8.4-RCPC insns
-Date: Tue, 25 Feb 2020 14:39:23 +0000
-Message-Id: <20200225143923.22297-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=L8WBI983W+7RiE8lzDwmxcDHbYbc+B58tFNCqwSyA9I=;
+ b=kuy3jiN+Ggx/h/AM4fE6V+FQZrpCIlS2oTp2yDCAMlH8EkCnatNAfPdCrPM0OqoDEw
+ /X5zOQMu4HRPSuXiTcjh8vLLKJ/lw1uGaHoMU7MzKsMx729ejUWE0wIRsWCLME6pCGi2
+ u8LYsyg6BUlgOrLy6nw1v8+iyaE8TRc0FEVnGxMxXIstiY3ODRVGKcV+8iQzM/0JHcwT
+ DN2qq7PbK7UahrXeJq3XRES9heufTRDZzMbOxWoFSMqh1TVJV9SrjH2PSUwW9j1yRZu9
+ IMAS0wL9fM3coFyqOly2rAWnhdCqlfit7aa5DlKAtGFvAvQ+9vrOQhuGxzPqzBIhNHWx
+ JJ8w==
+X-Gm-Message-State: APjAAAU1Gqp8GMTdLj+wBylah722P/bmMPWakixkgRKJRCJsVKm3KP2F
+ tbIZRLNHgV1uKdisltb5gtdNlLmgxIpp3T8vpp95LhARr6xd3RHmbnVgA/Hj7IgSwncUkI1djAB
+ I2dJ0yGCupx2xbFk=
+X-Received: by 2002:a05:620a:31b:: with SMTP id
+ s27mr57671603qkm.105.1582643649530; 
+ Tue, 25 Feb 2020 07:14:09 -0800 (PST)
+X-Received: by 2002:a05:620a:31b:: with SMTP id
+ s27mr57671570qkm.105.1582643649255; 
+ Tue, 25 Feb 2020 07:14:09 -0800 (PST)
+Received: from redhat.com (bzq-79-178-2-214.red.bezeqint.net. [79.178.2.214])
+ by smtp.gmail.com with ESMTPSA id
+ l19sm7379730qkl.3.2020.02.25.07.14.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 Feb 2020 07:14:08 -0800 (PST)
+Date: Tue, 25 Feb 2020 10:14:05 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PULL 20/32] hw/arm/virt: Add the virtio-iommu device tree mappings
+Message-ID: <20200225151210.647797-21-mst@redhat.com>
+References: <20200225151210.647797-1-mst@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: GvVAk0rGdwSE
+In-Reply-To: <20200225151210.647797-1-mst@redhat.com>
+X-Mailer: git-send-email 2.24.1.751.gd10ce2899c
+X-Mutt-Fcc: =sent
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Eric Auger <eric.auger@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: m0czabE11uNy
 
-Add patterns for the new instructions in the v8.3-RCPC and
-v8.4-RCPC extensions.
+From: Eric Auger <eric.auger@redhat.com>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Adds the "virtio,pci-iommu" node in the host bridge node and
+the RID mapping, excluding the IOMMU RID.
+
+This is done in the virtio-iommu-pci hotplug handler which
+gets called only if no firmware is loaded or if -no-acpi is
+passed on the command line. As non DT integration is
+not yet supported by the kernel we must make sure we
+are in DT mode. This limitation will be removed as soon
+as the topology description feature gets supported.
+
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
+Message-Id: <20200214132745.23392-10-eric.auger@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-This is what I used for testing the RCPC QEMU patches I sent out
-the other day. Did I get the @ section syntax here right?
+ include/hw/arm/virt.h |  2 ++
+ hw/arm/virt.c         | 57 +++++++++++++++++++++++++++++++++++++------
+ 2 files changed, 52 insertions(+), 7 deletions(-)
 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 71508bf40c..02f500cb8e 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -125,8 +125,10 @@ typedef struct {
+     bool virt;
+     int32_t gic_version;
+     VirtIOMMUType iommu;
++    uint16_t virtio_iommu_bdf;
+     struct arm_boot_info bootinfo;
+     MemMapEntry *memmap;
++    char *pciehb_nodename;
+     const int *irqmap;
+     int smp_cpus;
+     void *fdt;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index f788fe27d6..cfe317922f 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -32,6 +32,7 @@
+ #include "qemu-common.h"
+ #include "qemu/units.h"
+ #include "qemu/option.h"
++#include "monitor/qdev.h"
+ #include "qapi/error.h"
+ #include "hw/sysbus.h"
+ #include "hw/boards.h"
+@@ -54,6 +55,7 @@
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
+ #include "hw/pci-host/gpex.h"
++#include "hw/virtio/virtio-pci.h"
+ #include "hw/arm/sysbus-fdt.h"
+ #include "hw/platform-bus.h"
+ #include "hw/qdev-properties.h"
+@@ -71,6 +73,7 @@
+ #include "hw/mem/pc-dimm.h"
+ #include "hw/mem/nvdimm.h"
+ #include "hw/acpi/generic_event_device.h"
++#include "hw/virtio/virtio-iommu.h"
+=20
+ #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+@@ -1180,6 +1183,30 @@ static void create_smmu(const VirtMachineState *vms,
+     g_free(node);
+ }
+=20
++static void create_virtio_iommu_dt_bindings(VirtMachineState *vms, Error *=
+*errp)
++{
++    const char compat[] =3D "virtio,pci-iommu";
++    uint16_t bdf =3D vms->virtio_iommu_bdf;
++    char *node;
++
++    vms->iommu_phandle =3D qemu_fdt_alloc_phandle(vms->fdt);
++
++    node =3D g_strdup_printf("%s/virtio_iommu@%d", vms->pciehb_nodename, b=
+df);
++    qemu_fdt_add_subnode(vms->fdt, node);
++    qemu_fdt_setprop(vms->fdt, node, "compatible", compat, sizeof(compat))=
+;
++    qemu_fdt_setprop_sized_cells(vms->fdt, node, "reg",
++                                 1, bdf << 8, 1, 0, 1, 0,
++                                 1, 0, 1, 0);
++
++    qemu_fdt_setprop_cell(vms->fdt, node, "#iommu-cells", 1);
++    qemu_fdt_setprop_cell(vms->fdt, node, "phandle", vms->iommu_phandle);
++    g_free(node);
++
++    qemu_fdt_setprop_cells(vms->fdt, vms->pciehb_nodename, "iommu-map",
++                           0x0, vms->iommu_phandle, 0x0, bdf,
++                           bdf + 1, vms->iommu_phandle, bdf + 1, 0xffff - =
+bdf);
++}
++
+ static void create_pcie(VirtMachineState *vms)
+ {
+     hwaddr base_mmio =3D vms->memmap[VIRT_PCIE_MMIO].base;
+@@ -1258,7 +1285,7 @@ static void create_pcie(VirtMachineState *vms)
+         }
+     }
+=20
+-    nodename =3D g_strdup_printf("/pcie@%" PRIx64, base);
++    nodename =3D vms->pciehb_nodename =3D g_strdup_printf("/pcie@%" PRIx64=
+, base);
+     qemu_fdt_add_subnode(vms->fdt, nodename);
+     qemu_fdt_setprop_string(vms->fdt, nodename,
+                             "compatible", "pci-host-ecam-generic");
+@@ -1301,13 +1328,16 @@ static void create_pcie(VirtMachineState *vms)
+     if (vms->iommu) {
+         vms->iommu_phandle =3D qemu_fdt_alloc_phandle(vms->fdt);
+=20
+-        create_smmu(vms, pci->bus);
+-
+-        qemu_fdt_setprop_cells(vms->fdt, nodename, "iommu-map",
+-                               0x0, vms->iommu_phandle, 0x0, 0x10000);
++        switch (vms->iommu) {
++        case VIRT_IOMMU_SMMUV3:
++            create_smmu(vms, pci->bus);
++            qemu_fdt_setprop_cells(vms->fdt, nodename, "iommu-map",
++                                   0x0, vms->iommu_phandle, 0x0, 0x10000);
++            break;
++        default:
++            g_assert_not_reached();
++        }
+     }
+-
+-    g_free(nodename);
+ }
+=20
+ static void create_platform_bus(VirtMachineState *vms)
+@@ -1976,6 +2006,13 @@ static void virt_machine_device_plug_cb(HotplugHandl=
+er *hotplug_dev,
+     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+         virt_memory_plug(hotplug_dev, dev, errp);
+     }
++    if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
++        PCIDevice *pdev =3D PCI_DEVICE(dev);
++
++        vms->iommu =3D VIRT_IOMMU_VIRTIO;
++        vms->virtio_iommu_bdf =3D pci_get_bdf(pdev);
++        create_virtio_iommu_dt_bindings(vms, errp);
++    }
+ }
+=20
+ static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_=
+dev,
+@@ -1992,7 +2029,13 @@ static HotplugHandler *virt_machine_get_hotplug_hand=
+ler(MachineState *machine,
+        (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM))) {
+         return HOTPLUG_HANDLER(machine);
+     }
++    if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
++        VirtMachineState *vms =3D VIRT_MACHINE(machine);
+=20
++        if (!vms->bootinfo.firmware_loaded || !acpi_enabled) {
++            return HOTPLUG_HANDLER(machine);
++        }
++    }
+     return NULL;
+ }
+=20
+--=20
+MST
 
- aarch64.risu | 32 ++++++++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
-
-diff --git a/aarch64.risu b/aarch64.risu
-index c4eda7a..8f08cd0 100644
---- a/aarch64.risu
-+++ b/aarch64.risu
-@@ -3019,3 +3019,35 @@ SM3TT2B A64_V 1100 1110 010 rm:5 10 imm:2 11 rn:5 rd:5
- XAR A64_V 1100 1110 100 rm:5 imm:6 rn:5 rd:5
- 
- @
-+
-+# v8.3-RCPC instructions
-+@v8_3_rcpc
-+
-+# LDAPR, LDAPRH, LDAPRB
-+# As usual, the $rn != $rt constraint is risu-imposed, not architectural
-+LDAPR A64 sz:2 111000 101 11111 1100 00 rn:5 rt:5 \
-+!constraints { $rn != 31 && $rn != $rt } \
-+!memory { align(1 << $sz); reg_plus_imm($rn, 0); }
-+
-+@
-+
-+# v8.4-RCPC instructions
-+# As usual, the $rn != $rt constraint is risu-imposed, not architectural
-+@v8_4_rcpc
-+STLUR A64 sz:2 011001 00 0 imm:9 00 rn:5 rt:5 \
-+!constraints { $rn != 31 && $rn != $rt } \
-+!memory { align(1 << $sz); reg_plus_imm($rn, $imm); }
-+
-+LDAPUR A64 sz:2 011001 01 0 imm:9 00 rn:5 rt:5 \
-+!constraints { $rn != 31 && $rn != $rt } \
-+!memory { align(1 << $sz); reg_plus_imm($rn, $imm); }
-+
-+LDAPURS64 A64 sz:2 011001 10 0 imm:9 00 rn:5 rt:5 \
-+!constraints { $rn != 31 && $rn != $rt && $sz != 3 } \
-+!memory { align(1 << $sz); reg_plus_imm($rn, $imm); }
-+
-+LDAPURS32 A64 sz:2 011001 11 0 imm:9 00 rn:5 rt:5 \
-+!constraints { $rn != 31 && $rn != $rt && $sz < 2 } \
-+!memory { align(1 << $sz); reg_plus_imm($rn, $imm); }
-+
-+@
--- 
-2.20.1

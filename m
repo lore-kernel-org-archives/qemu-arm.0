@@ -1,120 +1,81 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1438406lfg;
-        Tue, 25 Feb 2020 01:36:46 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxVqss3UzK0HqhZLVmTVofr+zTj55viowVuwb92Koftx3zty03yyKLjXY0pmoUK4atbWu/I
-X-Received: by 2002:a37:4d8b:: with SMTP id a133mr54248331qkb.14.1582623406542;
-        Tue, 25 Feb 2020 01:36:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582623406; cv=none;
-        d=google.com; s=arc-20160816;
-        b=XhzX/Rzaev3yuLKUK/uX+eh7V5u10UX0XAZfMiE7AIfzNj6Z+gXsJ/JiR4lPB0x1M5
-         RxsMAoYP9ynXcZqDW0vjl6hunSDqi8Xf2D0z9AUis3UqzWZSpeglRI0nfrqIC1N71Yc/
-         dp7UqJbylsHjiMFgPriALwRpWi+pJAUvVCz1NWTBjb0YTTGJwzTuNt69qfhYARWhQYLc
-         6n5iA12gH3MGbSGcaNShRP35ofx2pMQOcC99lnfGwItKvt9MMIo9j8HwGXffckQnE/jX
-         9givUfdvigDgE29rq7NNJv6Ods2uRgkxcpHg6vGhbW3/NJXaLQqMY1RTzIm/kdwefOgg
-         vtfQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=7KjT0CTZTWIUeOqi2YG+7sHvIjQlRTpL/HxX7X+vDAY=;
-        b=TwuIAOC1E4kaBk1VkQH/Sq0oZqaPB7i90/eYHO7QftlaJuELBemQm46yd7aTH9Kr7u
-         BYjB3xbeKeViFqGpVUG5ZfmxZRzFEvdlQjUbwDMBLEEU3SoSCLgD3Qgmrwiacj9IHg00
-         tAZempSncfsNs4NSbF/sh7ipfgGyc2rngU4Wn6xVQ5+cR2VqnCk5ntrNhPpqU7cpV3TT
-         /Ql9c9nggiKeJ948HUOQoGrWV27fRS+5Sr+rqnR2I5+49YiU4G7ULYpH+yAnA7LnPwlm
-         QWRX/DVnTUyrGwTlp4CH1MezFE/BE1cS3fpfsjBVxVw6m+bBSPbPX1LUh/t8YwcQyJhp
-         3U7w==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SCq2VVH1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1451162lfg;
+        Tue, 25 Feb 2020 01:50:19 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzBMNvER5edCol+7srKTi95T1obGGOTOpNjzaJwMbbsLUmsophM7A76mBNogiACrbuaHD8x
+X-Received: by 2002:a05:620a:1279:: with SMTP id b25mr51578880qkl.385.1582624219651;
+        Tue, 25 Feb 2020 01:50:19 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a14si328824qkl.208.2020.02.25.01.36.46
+        by mx.google.com with ESMTPS id ew19si6476644qvb.129.2020.02.25.01.50.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 01:36:46 -0800 (PST)
+        Tue, 25 Feb 2020 01:50:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SCq2VVH1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51122 helo=lists1p.gnu.org)
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=U2b0PxMr;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51254 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6Wdy-000562-0K
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 04:36:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54643)
+	id 1j6Wr4-0005Hf-Vr
+	for alex.bennee@linaro.org; Tue, 25 Feb 2020 04:50:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56328)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j6Wdn-00054U-QG
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 04:36:36 -0500
+ (envelope-from <damien.hedde@greensocs.com>) id 1j6Wpf-00042V-62
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 04:48:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j6Wdm-0005ye-EJ
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 04:36:35 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:33397
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <damien.hedde@greensocs.com>) id 1j6Wpc-0004DS-TQ
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 04:48:50 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:47646)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6Wdm-0005yM-B5
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 04:36:34 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582623393;
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1j6Wpc-0004CZ-BJ; Tue, 25 Feb 2020 04:48:48 -0500
+Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id CE84B96EF0;
+ Tue, 25 Feb 2020 09:48:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1582624126;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=7KjT0CTZTWIUeOqi2YG+7sHvIjQlRTpL/HxX7X+vDAY=;
- b=SCq2VVH19ojQTLYQ1T2vRi6zuNxUb6gyAt6keAWI+OoHm/viq63FrIKiPo72Wy/mVSmNtE
- 4QUhgzi/YxlK0GocKFgir5krB5ALOOxsr3RfvzNI+vsbg8tMrBxdy8B8YKY8CpiV2i8ijV
- RRvlNSeFZpOUIrW45Oo887zDJJI9H28=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-217-1ocV_YOfOjCd1iIqp38jnw-1; Tue, 25 Feb 2020 04:36:30 -0500
-X-MC-Unique: 1ocV_YOfOjCd1iIqp38jnw-1
-Received: by mail-ed1-f72.google.com with SMTP id f25so8614636eds.22
- for <qemu-arm@nongnu.org>; Tue, 25 Feb 2020 01:36:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=7KjT0CTZTWIUeOqi2YG+7sHvIjQlRTpL/HxX7X+vDAY=;
- b=TxTjTnTv57wRuQVt7eYTmpfnFZ2Z5lEmEV44pWbHCJemEDuv+xOne2M+D8R7A+LUWT
- 8bBrOQFc7ulHR//8UWns+aLoTPzoqKXPK49R9ly4Z9P7+M3P7biQH305D7Oskp4ArF6j
- WhKgVdKCE0YWrqbRNck7VrsQZt6khduGUdeCE0gOYyAXADTrzcNxNe9Izs6OmBs3oBzT
- X/9pjcLJO102O5EGWxgzQ9kaechPMgBC03lR5D1UkT0GkK8mfuSaxsIcaAe4qPWbNZFd
- gjGd5a3vkPOQaoEv0BsyMbBkpYxn0AdlI8fik1wCYXdVPHCoX2CTPq0hgkaJ8UTb0tVb
- 1C1g==
-X-Gm-Message-State: APjAAAUu1Y1vPPyVpvpn3BHsi5eSKYhKWxySjTqMx3t8bhD/xjQ0mUFh
- q4AzTxJoDe32mrrb35tVWf2ePEl3vHhqUUHVWstSWMTpnUu3VxmiEKVfvbrxT9k07tYbkxTi6qd
- H//oRvIrhXNUW
-X-Received: by 2002:aa7:cf83:: with SMTP id z3mr49905224edx.166.1582623389081; 
- Tue, 25 Feb 2020 01:36:29 -0800 (PST)
-X-Received: by 2002:aa7:cf83:: with SMTP id z3mr49905203edx.166.1582623388888; 
- Tue, 25 Feb 2020 01:36:28 -0800 (PST)
-Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id j24sm1120838edr.57.2020.02.25.01.36.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Feb 2020 01:36:27 -0800 (PST)
-Subject: Re: [PATCH 09/13] dma/xlnx-zdma: Remove redundant statement in
- zdma_write_dst()
-To: kuhn.chenqun@huawei.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
- <20200225020937.25028-10-kuhn.chenqun@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <6d31ac16-adc6-235e-8784-51bf86e33b72@redhat.com>
-Date: Tue, 25 Feb 2020 10:36:26 +0100
+ bh=8MdC2LhTkV3RoqTUKGy+InLFT7ikd+X4LK90zRntMvE=;
+ b=U2b0PxMr6oc7t3IBF3v0Z/hXDvjtGls82BxbLcgif2gafvqY/iofWcW+oHnn5c00PearJX
+ r12jIIOMaZT6dIKJiNSMB4KwjEnqUOy5dmsWNQ6mggb49A3fzJtsv/IHu8RZMjk64x+shj
+ +Xz8p7l5BoRcB/fVVPU7D8fT+y+4tRI=
+Subject: Re: [PATCH v7 1/9] hw/core/clock: introduce clock object
+To: Alistair Francis <alistair23@gmail.com>
+References: <20200224170301.246623-1-damien.hedde@greensocs.com>
+ <20200224170301.246623-2-damien.hedde@greensocs.com>
+ <CAKmqyKP1LR3e5TmUvNWKub21sA7q6u2fK=saEH93i64furcpTQ@mail.gmail.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <51fcca2b-2258-80d7-a29d-7d7da8551ebd@greensocs.com>
+Date: Tue, 25 Feb 2020 10:48:45 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200225020937.25028-10-kuhn.chenqun@huawei.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <CAKmqyKP1LR3e5TmUvNWKub21sA7q6u2fK=saEH93i64furcpTQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
 Content-Transfer-Encoding: 7bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1582624126;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=8MdC2LhTkV3RoqTUKGy+InLFT7ikd+X4LK90zRntMvE=;
+ b=4dGRfGjx0szAOqMr81/hFXTaHvH0u9QgVb8EdabdSek2o2nOYSHjjYvUOStrQGY6K6rUjn
+ dtH1TbymTgaSYCNO41iQQyg3hc/ULPYHu5fA/VSAQ97MMuUBQTzqd/MhQll3kj2ggUrnG9
+ gNDQhFZiI1YBzfjXYSCnoSk9QJFwdKg=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582624126; a=rsa-sha256; cv=none;
+ b=R7fNxCT/zwG7E3WtJr5V4DTIRKSfv+IpqOFtgq/VAhqF4Iz6S9ICybnUTVZgDfilaTEBqu
+ RuOJrmcoInXPQxqDC9CS2vGGsD3wQHR15tXrt6JQwSYGa90xRuJ/E9n/AWpnT94XiQer6q
+ G108wxRC0ymVLKpD4egcWXQWKDz6x/g=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 5.135.226.135
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -126,46 +87,109 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Alistair Francis <alistair@alistair23.me>,
- zhang.zhanghailiang@huawei.com, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Mark Burton <mark.burton@greensocs.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H7bANsUJwa8q
+X-TUID: jY7z1r/BT3k7
 
-On 2/25/20 3:09 AM, kuhn.chenqun@huawei.com wrote:
-> From: Chen Qun <kuhn.chenqun@huawei.com>
-> 
-> Clang static code analyzer show warning:
-> hw/dma/xlnx-zdma.c:399:13: warning: Value stored to 'dst_type' is never read
->              dst_type = FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WORD3,
->              ^          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
-> Cc: Alistair Francis <alistair@alistair23.me>
-> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org
-> ---
->   hw/dma/xlnx-zdma.c | 2 --
->   1 file changed, 2 deletions(-)
-> 
-> diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
-> index 8fb83f5b07..45355c5d59 100644
-> --- a/hw/dma/xlnx-zdma.c
-> +++ b/hw/dma/xlnx-zdma.c
-> @@ -396,8 +396,6 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
->               zdma_load_descriptor(s, next, &s->dsc_dst);
->               dst_size = FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WORD2,
->                                     SIZE);
-> -            dst_type = FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WORD3,
-> -                                  TYPE);
 
-Maybe move dst_type to this if() statement now?
 
->           }
->   
->           /* Match what hardware does by ignoring the dst_size and only using
+On 2/25/20 1:02 AM, Alistair Francis wrote:
+> On Mon, Feb 24, 2020 at 9:05 AM Damien Hedde <damien.hedde@greensocs.com> wrote:
+>>
+>> This object may be used to represent a clock inside a clock tree.
+>>
+>> A clock may be connected to another clock so that it receives update,
+>> through a callback, whenever the source/parent clock is updated.
+>>
+>> Although only the root clock of a clock tree controls the values
+>> (represented as periods) of all clocks in tree, each clock holds
+>> a local state containing the current value so that it can be fetched
+>> independently. It will allows us to fullfill migration requirements
+>> by migrating each clock independently of others.
+>>
+>> This is based on the original work of Frederic Konrad.
+>>
+>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+>> --
+>>
+>> v7:
+>> + merge ClockIn & ClockOut into a single type Clock
+>> + switch clock state to a period with 2^-32ns unit
+>> + add some Hz and ns helpers
+>> + propagate clock period when setting the source so that
+>>   clocks with fixed period are easy to handle.
+>> ---
+>>  include/hw/clock.h    | 216 ++++++++++++++++++++++++++++++++++++++++++
+>>  hw/core/clock.c       | 131 +++++++++++++++++++++++++
+>>  hw/core/Makefile.objs |   2 +
+>>  hw/core/trace-events  |   7 ++
+>>  4 files changed, 356 insertions(+)
+>>  create mode 100644 include/hw/clock.h
+>>  create mode 100644 hw/core/clock.c
+>>
+>> diff --git a/include/hw/clock.h b/include/hw/clock.h
+>> new file mode 100644
+>> index 0000000000..30ac9a9946
+>> --- /dev/null
+>> +++ b/include/hw/clock.h
+>> @@ -0,0 +1,216 @@
+
+[...]
+
 > 
+>> +    clock_disconnect(clk);
+>> +
+>> +    g_free(clk->canonical_path);
+>> +    clk->canonical_path = NULL;
+> 
+> You shouldn't need to set this to NULL.
 
+ok.
+
+> 
+>> +}
+>> +
+>> +static const TypeInfo clock_info = {
+>> +    .name              = TYPE_CLOCK,
+>> +    .parent            = TYPE_OBJECT,
+>> +    .instance_size     = sizeof(Clock),
+>> +    .instance_init     = clock_initfn,
+>> +    .instance_finalize = clock_finalizefn,
+>> +};
+>> +
+>> +static void clock_register_types(void)
+>> +{
+>> +    type_register_static(&clock_info);
+>> +}
+>> +
+>> +type_init(clock_register_types)
+>> diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+>> index 6215e7c208..d7080edf89 100644
+>> --- a/hw/core/Makefile.objs
+>> +++ b/hw/core/Makefile.objs
+>> @@ -7,10 +7,12 @@ common-obj-y += hotplug.o
+>>  common-obj-y += vmstate-if.o
+>>  # irq.o needed for qdev GPIO handling:
+>>  common-obj-y += irq.o
+>> +common-obj-y += clock.o
+>>
+>>  common-obj-$(CONFIG_SOFTMMU) += reset.o
+>>  common-obj-$(CONFIG_SOFTMMU) += qdev-fw.o
+>>  common-obj-$(CONFIG_SOFTMMU) += fw-path-provider.o
+>> +common-obj-$(CONFIG_SOFTMMU) += hotplug.o
+> 
+> I don't think this should be here.
+Oops, I missed this rebase artifact.
+
+Thanks,
+Damien

@@ -1,332 +1,530 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1680802lfg;
-        Tue, 25 Feb 2020 05:23:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxS1GqIC8CTiq5yqd3p6dvyQ1Xlxae0DbRjAs5Difc0jxNr0ihNNW+Mv2wT1eJVk3rGBBZs
-X-Received: by 2002:a9d:3f5:: with SMTP id f108mr46223902otf.103.1582637034862;
-        Tue, 25 Feb 2020 05:23:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582637034; cv=none;
-        d=google.com; s=arc-20160816;
-        b=GTdHdUO87TG8fgAlQczJBDyVd4ZAHRMUbA6pvhgbo3KAwd4oIxi7rZsC9IdGZ3KccN
-         a3e8yJ1kfYJEe5QpX2tWcERnvr1iSs4pidHkVDfKLE0rLlJ1JnR+lygLHUVL26saxXPl
-         XWk5kBUyf+F0eA2rduyal+flBk9mOs5RcE9iHOZJutxIB9PS6jVJzdTNOxVjOOxY+ieY
-         qTbPmY3zleryJ4V3Im37+adSjXM7XmFzIVUX44QRotcpJESRWINSWiNSpQX6kxB5Xr5F
-         pVfLGq5530aEVG8tMU3glOZpLyNJzEK1EcpXygDxjzWs0NWgeuyIS/BzYiKYdGua5MP5
-         o1rg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=eDwDbaBrloN0/9UIxTHB+r5PAkSFUSrWWrBgDy0DRks=;
-        b=cAq9sg/ISmba+ogCob28iFm8X0fa1DyaW7j8FcxQn4COx52eYP/8f3EnnsOZSv61Z5
-         c3iVhJ/iOI8kwE07YZYLrg8gtABTOHVZRGOvW6YylYkt0lgEYiFUpt93tePc4BpxUm8J
-         cZnFVZp+BZUysPUjYiEUngHw2qTJlgSlWt/vsJUY++Env4j0ADB8rUiZPsn1w4ZKT66l
-         VWqp5zcQOJW2VMf3IsYQdG6dBC/OAUZMJKhfmGzZZEZTxTPX/js0CzKWJsmmE07pWgUM
-         3he5H0CD8JSJxUutj48fKU7QqjgNxviROf/y70QYQzgbPJLag0jK4YyQaYkfaB0VGNbI
-         R1iA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NUVSMwXQ;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id n2si8094925otq.315.2020.02.25.05.23.54;
-        Tue, 25 Feb 2020 05:23:54 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1684830lfg;
+        Tue, 25 Feb 2020 05:27:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw58bRwXyBMpUfpKVEXqEv8cXe9fiy4u6r04ZGlILgRZPw0IcH08NNc9BTsVmCxkNjKjsKo
+X-Received: by 2002:a37:ac16:: with SMTP id e22mr14801803qkm.269.1582637267940;
+        Tue, 25 Feb 2020 05:27:47 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p10si7214591qvy.181.2020.02.25.05.27.47
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 25 Feb 2020 05:27:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NUVSMwXQ;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1729590AbgBYNXx (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Tue, 25 Feb 2020 08:23:53 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:53863 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1729386AbgBYNXx (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 25 Feb 2020 08:23:53 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1582637032;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=eDwDbaBrloN0/9UIxTHB+r5PAkSFUSrWWrBgDy0DRks=;
-        b=NUVSMwXQlyOLWo2u3w6yTrjT3C7UpQni0C95wjBsQsDbYhWEHy7q29RUFTyYdQPqmODYc7
-        CjSKSCDNPvXMljpaN+p7aZwS+3SHNdTm9dpZlV5lWruQjFuqMb6vvbCBikUoY4kTO9YJuw
-        BVqmk3cTc0UmgM9W4tDHk3TbWp3zqPE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-210-CYrY3AgSPbeUcNsH9vOCFw-1; Tue, 25 Feb 2020 08:23:48 -0500
-X-MC-Unique: CYrY3AgSPbeUcNsH9vOCFw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B86E2101FC6E;
-        Tue, 25 Feb 2020 13:23:45 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 3227B5C1D6;
-        Tue, 25 Feb 2020 13:23:38 +0000 (UTC)
-Date:   Tue, 25 Feb 2020 14:23:36 +0100
-From:   Igor Mammedov <imammedo@redhat.com>
-To:     Dongjiu Geng <gengdongjiu@huawei.com>
-Cc:     <mst@redhat.com>, <xiaoguangrong.eric@gmail.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <fam@euphon.net>, <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <mtosatti@redhat.com>, <qemu-devel@nongnu.org>,
-        <kvm@vger.kernel.org>, <qemu-arm@nongnu.org>,
-        <pbonzini@redhat.com>, <james.morse@arm.com>, <lersek@redhat.com>,
-        <jonathan.cameron@huawei.com>,
-        <shameerali.kolothum.thodi@huawei.com>, zhengxiang9@huawei.com
-Subject: Re: [PATCH v24 05/10] ACPI: Build Hardware Error Source Table
-Message-ID: <20200225142336.16b7fc40@redhat.com>
-In-Reply-To: <20200217131248.28273-6-gengdongjiu@huawei.com>
-References: <20200217131248.28273-1-gengdongjiu@huawei.com>
-        <20200217131248.28273-6-gengdongjiu@huawei.com>
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=wVA9lHuP;
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55708 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j6aFX-00031f-6c
+	for alex.bennee@linaro.org; Tue, 25 Feb 2020 08:27:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37466)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <damien.hedde@greensocs.com>) id 1j6a2q-00084g-B3
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:14:42 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <damien.hedde@greensocs.com>) id 1j6a2n-00026X-Ij
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:14:40 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:57156)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1j6a2d-00021E-Pj; Tue, 25 Feb 2020 08:14:29 -0500
+Received: from crumble.bar.greensocs.com (crumble.bar.greensocs.com
+ [172.16.11.102])
+ by beetle.greensocs.com (Postfix) with ESMTPS id 6DC0696EF2;
+ Tue, 25 Feb 2020 13:14:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1582636465;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=xFmM4+kOGNsVKEPr8GUSv7xFy0fodus3YFsskyISQYY=;
+ b=wVA9lHuPDOqM/BocphBuO+QpLEY8zsUT8YcSUjxOb3r9GpISlMJunSIequAACoZ808WQeO
+ qANxXUNyNQSEc8FBtS61KGxSFb58qLxa+jr/qAsdcTTJjPMSuKaen2gI5xUAi4rr7HvBSc
+ pe77Gj095SJwkkuA3N7/nCXsMHJorWA=
+From: Damien Hedde <damien.hedde@greensocs.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v8 1/9] hw/core/clock: introduce clock object
+Date: Tue, 25 Feb 2020 14:14:14 +0100
+Message-Id: <20200225131422.53368-2-damien.hedde@greensocs.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200225131422.53368-1-damien.hedde@greensocs.com>
+References: <20200225131422.53368-1-damien.hedde@greensocs.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: wsWI//In7umT
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1582636465;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=xFmM4+kOGNsVKEPr8GUSv7xFy0fodus3YFsskyISQYY=;
+ b=7ByB7XWVjPgq83q9r1wQZ6qe3io4orZaHvkNWfiitlYzO+gQhuuM4Uh59/7HqyHQc+sQQH
+ 95Mo+NgBNSb6fQzw2NiXsMLIQCzwjg/myrkwK4ULYECJQonjF0EyRNdyKRgUU5b7X8WOhg
+ 8XRMzyR68s3jFLjESVUyh8uH1HSD9Ug=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582636466; a=rsa-sha256; cv=none;
+ b=yvAfUWNtXyjNAcF9ksRgzZyIu5F6HpUC9Kt5M2RUGcU1G0NjZxb3B/eaKH1npB4jqIrBhg
+ SVBZbZykpi6EHy6oUkxQbjyx6qjrcbJuy3k6tYaO8gjyz8bO6AuMp0HfLXtD1htQxvP8Ib
+ O3b6V4uf2OXoy4xPZINv4Iqj4aVCcpg=
+ARC-Authentication-Results: i=1;
+	beetle.greensocs.com;
+	none
+X-Spam: Yes
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 5.135.226.135
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>, peter.maydell@linaro.org,
+ berrange@redhat.com, ehabkost@redhat.com, pbonzini@redhat.com,
+ alistair@alistair23.me, mark.burton@greensocs.com, qemu-arm@nongnu.org,
+ marcandre.lureau@redhat.com, edgar.iglesias@gmail.com, philmd@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: P1MmSwaUnnmA
 
-On Mon, 17 Feb 2020 21:12:43 +0800
-Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+This object may be used to represent a clock inside a clock tree.
 
-> This patch builds Hardware Error Source Table(HEST) via fw_cfg blobs.
-> Now it only supports ARMv8 SEA, a type of Generic Hardware Error
-> Source version 2(GHESv2) error source. Afterwards, we can extend
-> the supported types if needed. For the CPER section, currently it
-> is memory section because kernel mainly wants userspace to handle
-> the memory errors.
-> 
-> This patch follows the spec ACPI 6.2 to build the Hardware Error
-> Source table. For more detailed information, please refer to
-> document: docs/specs/acpi_hest_ghes.rst
-> 
-> build_ghes_hw_error_notification() helper will help to add Hardware
-> Error Notification to ACPI tables without using packed C structures
-> and avoid endianness issues as API doesn't need explicit conversion.
-> 
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-> Acked-by: Xiang Zheng <zhengxiang9@huawei.com>
-> ---
->  hw/acpi/ghes.c           | 126 +++++++++++++++++++++++++++++++++++++++++++++++
->  hw/arm/virt-acpi-build.c |   1 +
->  include/hw/acpi/ghes.h   |  39 +++++++++++++++
->  3 files changed, 166 insertions(+)
-> 
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index e1b3f8f..7a7381d 100644
-> --- a/hw/acpi/ghes.c
-> +++ b/hw/acpi/ghes.c
-> @@ -23,6 +23,7 @@
->  #include "qemu/units.h"
->  #include "hw/acpi/ghes.h"
->  #include "hw/acpi/aml-build.h"
-> +#include "qemu/error-report.h"
->  
->  #define ACPI_GHES_ERRORS_FW_CFG_FILE        "etc/hardware_errors"
->  #define ACPI_GHES_DATA_ADDR_FW_CFG_FILE     "etc/hardware_errors_addr"
-> @@ -33,6 +34,42 @@
->  /* Now only support ARMv8 SEA notification type error source */
->  #define ACPI_GHES_ERROR_SOURCE_COUNT        1
->  
-> +/* Generic Hardware Error Source version 2 */
-> +#define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
-> +
-> +/* Address offset in Generic Address Structure(GAS) */
-> +#define GAS_ADDR_OFFSET 4
-> +
-> +/*
-> + * Hardware Error Notification
-> + * ACPI 4.0: 17.3.2.7 Hardware Error Notification
-> + * Composes dummy Hardware Error Notification descriptor of specified type
-> + */
-> +static void build_ghes_hw_error_notification(GArray *table, const uint8_t type)
-> +{
-> +    /* Type */
-> +    build_append_int_noprefix(table, type, 1);
-> +    /*
-> +     * Length:
-> +     * Total length of the structure in bytes
-> +     */
-> +    build_append_int_noprefix(table, 28, 1);
-> +    /* Configuration Write Enable */
-> +    build_append_int_noprefix(table, 0, 2);
-> +    /* Poll Interval */
-> +    build_append_int_noprefix(table, 0, 4);
-> +    /* Vector */
-> +    build_append_int_noprefix(table, 0, 4);
-> +    /* Switch To Polling Threshold Value */
-> +    build_append_int_noprefix(table, 0, 4);
-> +    /* Switch To Polling Threshold Window */
-> +    build_append_int_noprefix(table, 0, 4);
-> +    /* Error Threshold Value */
-> +    build_append_int_noprefix(table, 0, 4);
-> +    /* Error Threshold Window */
-> +    build_append_int_noprefix(table, 0, 4);
-> +}
-> +
->  /*
->   * Build table for the hardware error fw_cfg blob.
->   * Initialize "etc/hardware_errors" and "etc/hardware_errors_addr" fw_cfg blobs.
-> @@ -87,3 +124,92 @@ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
->      bios_linker_loader_write_pointer(linker, ACPI_GHES_DATA_ADDR_FW_CFG_FILE,
->          0, sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
->  }
-> +
-> +/* Build Generic Hardware Error Source version 2 (GHESv2) */
-> +static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
-> +{
-> +    uint64_t address_offset;
-> +    /*
-> +     * Type:
-> +     * Generic Hardware Error Source version 2(GHESv2 - Type 10)
-> +     */
-> +    build_append_int_noprefix(table_data, ACPI_GHES_SOURCE_GENERIC_ERROR_V2, 2);
-> +    /* Source Id */
-> +    build_append_int_noprefix(table_data, source_id, 2);
-> +    /* Related Source Id */
-> +    build_append_int_noprefix(table_data, 0xffff, 2);
-> +    /* Flags */
-> +    build_append_int_noprefix(table_data, 0, 1);
-> +    /* Enabled */
-> +    build_append_int_noprefix(table_data, 1, 1);
-> +
-> +    /* Number of Records To Pre-allocate */
-> +    build_append_int_noprefix(table_data, 1, 4);
-> +    /* Max Sections Per Record */
-> +    build_append_int_noprefix(table_data, 1, 4);
-> +    /* Max Raw Data Length */
-> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
-> +
-> +    address_offset = table_data->len;
-> +    /* Error Status Address */
-> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
-> +                     4 /* QWord access */, 0);
-> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-> +        address_offset + GAS_ADDR_OFFSET, sizeof(uint64_t),
-> +        ACPI_GHES_ERRORS_FW_CFG_FILE, source_id * sizeof(uint64_t));
-> +
-> +    switch (source_id) {
-> +    case ACPI_HEST_SRC_ID_SEA:
-> +        /*
-> +         * Notification Structure
-> +         * Now only enable ARMv8 SEA notification type
-> +         */
-> +        build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_SEA);
-> +        break;
-> +    default:
-> +        error_report("Not support this error source");
-> +        abort();
-> +    }
-> +
-> +    /* Error Status Block Length */
-> +    build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
-> +
-> +    /*
-> +     * Read Ack Register
-> +     * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source
-> +     * version 2 (GHESv2 - Type 10)
-> +     */
-> +    address_offset = table_data->len;
-> +    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
-> +                     4 /* QWord access */, 0);
-> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-> +        address_offset + GAS_ADDR_OFFSET,
-> +        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
-> +        (ACPI_GHES_ERROR_SOURCE_COUNT + source_id) * sizeof(uint64_t));
-> +
-> +    /*
-> +     * Read Ack Preserve field
-> +     * We only provide the first bit in Read Ack Register to OSPM to write
-> +     * while the other bits are preserved.
-> +     */
-> +    build_append_int_noprefix(table_data, ~0x1ULL, 8);
-> +    /* Read Ack Write */
-> +    build_append_int_noprefix(table_data, 0x1, 8);
-> +}
-> +
-> +/* Build Hardware Error Source Table */
-> +void acpi_build_hest(GArray *table_data, BIOSLinker *linker)
-> +{
-> +    uint64_t hest_start = table_data->len;
-> +
-> +    /* Hardware Error Source Table header*/
-> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
-> +
-> +    /* Error Source Count */
-> +    build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, 4);
-> +
-> +    build_ghes_v2(table_data, ACPI_HEST_SRC_ID_SEA, linker);
-> +
-> +    build_header(linker, table_data, (void *)(table_data->data + hest_start),
-> +        "HEST", table_data->len - hest_start, 1, NULL, "");
-                                                          ^^^
-is there any particular reason to make it empty instead of putting NULL there
-so that QEMU would use default value?
+A clock may be connected to another clock so that it receives update,
+through a callback, whenever the source/parent clock is updated.
 
-> +}
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 6819fcf..12a9a78 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -834,6 +834,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->      if (vms->ras) {
->          acpi_add_table(table_offsets, tables_blob);
->          build_ghes_error_table(tables->hardware_errors, tables->linker);
-> +        acpi_build_hest(tables_blob, tables->linker);
->      }
->  
->      if (ms->numa_state->num_nodes > 0) {
-> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-> index 50379b0..18debd8 100644
-> --- a/include/hw/acpi/ghes.h
-> +++ b/include/hw/acpi/ghes.h
-> @@ -24,5 +24,44 @@
->  
->  #include "hw/acpi/bios-linker-loader.h"
->  
-> +/*
-> + * Values for Hardware Error Notification Type field
-> + */
-> +enum AcpiGhesNotifyType {
-> +    /* Polled */
-> +    ACPI_GHES_NOTIFY_POLLED = 0,
-> +    /* External Interrupt */
-> +    ACPI_GHES_NOTIFY_EXTERNAL = 1,
-> +    /* Local Interrupt */
-> +    ACPI_GHES_NOTIFY_LOCAL = 2,
-> +    /* SCI */
-> +    ACPI_GHES_NOTIFY_SCI = 3,
-> +    /* NMI */
-> +    ACPI_GHES_NOTIFY_NMI = 4,
-> +    /* CMCI, ACPI 5.0: 18.3.2.7, Table 18-290 */
-> +    ACPI_GHES_NOTIFY_CMCI = 5,
-> +    /* MCE, ACPI 5.0: 18.3.2.7, Table 18-290 */
-> +    ACPI_GHES_NOTIFY_MCE = 6,
-> +    /* GPIO-Signal, ACPI 6.0: 18.3.2.7, Table 18-332 */
-> +    ACPI_GHES_NOTIFY_GPIO = 7,
-> +    /* ARMv8 SEA, ACPI 6.1: 18.3.2.9, Table 18-345 */
-> +    ACPI_GHES_NOTIFY_SEA = 8,
-> +    /* ARMv8 SEI, ACPI 6.1: 18.3.2.9, Table 18-345 */
-> +    ACPI_GHES_NOTIFY_SEI = 9,
-> +    /* External Interrupt - GSIV, ACPI 6.1: 18.3.2.9, Table 18-345 */
-> +    ACPI_GHES_NOTIFY_GSIV = 10,
-> +    /* Software Delegated Exception, ACPI 6.2: 18.3.2.9, Table 18-383 */
-> +    ACPI_GHES_NOTIFY_SDEI = 11,
-> +    /* 12 and greater are reserved */
-> +    ACPI_GHES_NOTIFY_RESERVED = 12
-> +};
-> +
-> +enum {
-> +    ACPI_HEST_SRC_ID_SEA = 0,
-> +    /* future ids go here */
-> +    ACPI_HEST_SRC_ID_RESERVED,
-> +};
-> +
->  void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
-> +void acpi_build_hest(GArray *table_data, BIOSLinker *linker);
->  #endif
+Although only the root clock of a clock tree controls the values
+(represented as periods) of all clocks in tree, each clock holds
+a local state containing the current value so that it can be fetched
+independently. It will allows us to fullfill migration requirements
+by migrating each clock independently of others.
+
+This is based on the original work of Frederic Konrad.
+
+Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+--
+
+v8:
++ fix hw/core/Makefiles.objs entry (Alistair)
++ no more field zeroing in finalizefn (Alistair)
++ typos (Alistair)
+
+v7:
++ merge ClockIn & ClockOut into a single type Clock
++ switch clock state to a period with 2^-32ns unit
++ add some Hz and ns helpers
++ propagate clock period when setting the source so that
+  clocks with fixed period are easy to handle.
+---
+ include/hw/clock.h    | 216 ++++++++++++++++++++++++++++++++++++++++++
+ hw/core/clock.c       | 130 +++++++++++++++++++++++++
+ hw/core/Makefile.objs |   1 +
+ hw/core/trace-events  |   7 ++
+ 4 files changed, 354 insertions(+)
+ create mode 100644 include/hw/clock.h
+ create mode 100644 hw/core/clock.c
+
+diff --git a/include/hw/clock.h b/include/hw/clock.h
+new file mode 100644
+index 0000000000..82a7f3c698
+--- /dev/null
++++ b/include/hw/clock.h
+@@ -0,0 +1,216 @@
++/*
++ * Hardware Clocks
++ *
++ * Copyright GreenSocs 2016-2020
++ *
++ * Authors:
++ *  Frederic Konrad
++ *  Damien Hedde
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef QEMU_HW_CLOCK_H
++#define QEMU_HW_CLOCK_H
++
++#include "qom/object.h"
++#include "qemu/queue.h"
++
++#define TYPE_CLOCK "clock"
++#define CLOCK(obj) OBJECT_CHECK(Clock, (obj), TYPE_CLOCK)
++
++typedef void ClockCallback(void *opaque);
++
++/*
++ * clock store a value representing the clock's period in 2^-32ns unit.
++ * It can represent:
++ *  + periods from 2^-32ns up to 4seconds
++ *  + frequency from ~0.25Hz 2e10Ghz
++ * Resolution of frequency representation decreases with frequency:
++ * + at 100MHz, resolution is ~2mHz
++ * + at 1Ghz,   resolution is ~0.2Hz
++ * + at 10Ghz,  resolution is ~20Hz
++ */
++#define CLOCK_SECOND (1000000000llu << 32)
++
++/*
++ * macro helpers to convert to hertz / nanosecond
++ */
++#define CLOCK_PERIOD_FROM_NS(ns) ((ns) * (CLOCK_SECOND / 1000000000llu))
++#define CLOCK_PERIOD_TO_NS(per) ((per) / (CLOCK_SECOND / 1000000000llu))
++#define CLOCK_PERIOD_FROM_HZ(hz) (((hz) !=3D 0) ? CLOCK_SECOND / (hz) : =
+0u)
++#define CLOCK_PERIOD_TO_HZ(per) (((per) !=3D 0) ? CLOCK_SECOND / (per) :=
+ 0u)
++
++/**
++ * Clock:
++ * @parent_obj: parent class
++ * @period: unsigned integer representing the period of the clock
++ * @canonical_path: clock path string cache (used for trace purpose)
++ * @callback: called when clock changes
++ * @callback_opaque: argument for @callback
++ * @source: source (or parent in clock tree) of the clock
++ * @children: list of clocks connected to this one (it is their source)
++ * @sibling: structure used to form a clock list
++ */
++
++typedef struct Clock Clock;
++
++struct Clock {
++    /*< private >*/
++    Object parent_obj;
++
++    /* all fields are private and should not be modified directly */
++
++    /* fields */
++    uint64_t period;
++    char *canonical_path;
++    ClockCallback *callback;
++    void *callback_opaque;
++
++    /* Clocks are organized in a clock tree */
++    Clock *source;
++    QLIST_HEAD(, Clock) children;
++    QLIST_ENTRY(Clock) sibling;
++};
++
++/**
++ * clock_setup_canonical_path:
++ * @clk: clock
++ *
++ * compute the canonical path of the clock (used by log messages)
++ */
++void clock_setup_canonical_path(Clock *clk);
++
++/**
++ * clock_set_callback:
++ * @clk: the clock to register the callback into
++ * @cb: the callback function
++ * @opaque: the argument to the callback
++ *
++ * Register a callback called on every clock update.
++ */
++void clock_set_callback(Clock *clk, ClockCallback *cb, void *opaque);
++
++/**
++ * clock_clear_callback:
++ * @clk: the clock to delete the callback from
++ *
++ * Unregister the callback registered with clock_set_callback.
++ */
++void clock_clear_callback(Clock *clk);
++
++/**
++ * clock_set_source:
++ * @clk: the clock.
++ * @src: the source clock
++ *
++ * Setup @src as the clock source of @clk. The current @src period
++ * value is also copied to @clk and its subtree but no callback is
++ * called.
++ * Further @src update will be propagated to @clk and its subtree.
++ */
++void clock_set_source(Clock *clk, Clock *src);
++
++/**
++ * clock_set:
++ * @clk: the clock to initialize.
++ * @value: the clock's value, 0 means unclocked
++ *
++ * Set the local cached period value of @clk to @value.
++ */
++void clock_set(Clock *clk, uint64_t value);
++
++static inline void clock_set_hz(Clock *clk, unsigned hz)
++{
++    clock_set(clk, CLOCK_PERIOD_FROM_HZ(hz));
++}
++
++static inline void clock_set_ns(Clock *clk, unsigned ns)
++{
++    clock_set(clk, CLOCK_PERIOD_FROM_NS(ns));
++}
++
++/**
++ * clock_propagate:
++ * @clk: the clock
++ *
++ * Propagate the clock period that has been previously configured using
++ * @clock_set(). This will update recursively all connected clocks.
++ * It is an error to call this function on a clock which has a source.
++ * Note: this function must not be called during device inititialization
++ * or migration.
++ */
++void clock_propagate(Clock *clk);
++
++/**
++ * clock_update:
++ * @clk: the clock to update.
++ * @value: the new clock's value, 0 means unclocked
++ *
++ * Update the @clk to the new @value. All connected clocks will be infor=
+med
++ * of this update. This is equivalent to call @clock_set() then
++ * @clock_propagate().
++ */
++static inline void clock_update(Clock *clk, uint64_t value)
++{
++    clock_set(clk, value);
++    clock_propagate(clk);
++}
++
++static inline void clock_update_hz(Clock *clk, unsigned hz)
++{
++    clock_update(clk, CLOCK_PERIOD_FROM_HZ(hz));
++}
++
++static inline void clock_update_ns(Clock *clk, unsigned ns)
++{
++    clock_update(clk, CLOCK_PERIOD_FROM_NS(ns));
++}
++
++/**
++ * clock_get:
++ * @clk: the clk to fetch the clock
++ *
++ * @return: the current period.
++ */
++static inline uint64_t clock_get(const Clock *clk)
++{
++    return clk->period;
++}
++
++static inline unsigned clock_get_hz(Clock *clk)
++{
++    return CLOCK_PERIOD_TO_HZ(clock_get(clk));
++}
++
++static inline unsigned clock_get_ns(Clock *clk)
++{
++    return CLOCK_PERIOD_TO_NS(clock_get(clk));
++}
++
++/**
++ * clock_is_enabled:
++ * @clk: a clock
++ *
++ * @return: true if the clock is running.
++ */
++static inline bool clock_is_enabled(const Clock *clk)
++{
++    return clock_get(clk) !=3D 0;
++}
++
++static inline void clock_init(Clock *clk, uint64_t value)
++{
++    clock_set(clk, value);
++}
++static inline void clock_init_hz(Clock *clk, uint64_t value)
++{
++    clock_set_hz(clk, value);
++}
++static inline void clock_init_ns(Clock *clk, uint64_t value)
++{
++    clock_set_ns(clk, value);
++}
++
++#endif /* QEMU_HW_CLOCK_H */
+diff --git a/hw/core/clock.c b/hw/core/clock.c
+new file mode 100644
+index 0000000000..3c0daf7d4c
+--- /dev/null
++++ b/hw/core/clock.c
+@@ -0,0 +1,130 @@
++/*
++ * Hardware Clocks
++ *
++ * Copyright GreenSocs 2016-2020
++ *
++ * Authors:
++ *  Frederic Konrad
++ *  Damien Hedde
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/clock.h"
++#include "trace.h"
++
++#define CLOCK_PATH(_clk) (_clk->canonical_path)
++
++void clock_setup_canonical_path(Clock *clk)
++{
++    g_free(clk->canonical_path);
++    clk->canonical_path =3D object_get_canonical_path(OBJECT(clk));
++}
++
++void clock_set_callback(Clock *clk, ClockCallback *cb, void *opaque)
++{
++    clk->callback =3D cb;
++    clk->callback_opaque =3D opaque;
++}
++
++void clock_clear_callback(Clock *clk)
++{
++    clock_set_callback(clk, NULL, NULL);
++}
++
++void clock_set(Clock *clk, uint64_t period)
++{
++    trace_clock_set(CLOCK_PATH(clk), CLOCK_PERIOD_TO_NS(clk->period),
++                    CLOCK_PERIOD_TO_NS(period));
++    clk->period =3D period;
++}
++
++static void clock_propagate_period(Clock *clk, bool call_callbacks)
++{
++    Clock *child;
++
++    QLIST_FOREACH(child, &clk->children, sibling) {
++        if (child->period !=3D clk->period) {
++            child->period =3D clk->period;
++            trace_clock_update(CLOCK_PATH(child), CLOCK_PATH(clk),
++                               CLOCK_PERIOD_TO_NS(clk->period),
++                               call_callbacks);
++            if (call_callbacks && child->callback) {
++                child->callback(child->callback_opaque);
++            }
++            clock_propagate_period(child, call_callbacks);
++        }
++    }
++}
++
++void clock_propagate(Clock *clk)
++{
++    assert(clk->source =3D=3D NULL);
++    trace_clock_propagate(CLOCK_PATH(clk));
++    clock_propagate_period(clk, true);
++}
++
++void clock_set_source(Clock *clk, Clock *src)
++{
++    /* changing clock source is not supported */
++    assert(!clk->source);
++
++    trace_clock_set_source(CLOCK_PATH(clk), CLOCK_PATH(src));
++
++    clk->period =3D src->period;
++    QLIST_INSERT_HEAD(&src->children, clk, sibling);
++    clk->source =3D src;
++    clock_propagate_period(clk, false);
++}
++
++static void clock_disconnect(Clock *clk)
++{
++    if (clk->source =3D=3D NULL) {
++        return;
++    }
++
++    trace_clock_disconnect(CLOCK_PATH(clk));
++
++    clk->source =3D NULL;
++    QLIST_REMOVE(clk, sibling);
++}
++
++static void clock_initfn(Object *obj)
++{
++    Clock *clk =3D CLOCK(obj);
++
++    QLIST_INIT(&clk->children);
++}
++
++static void clock_finalizefn(Object *obj)
++{
++    Clock *clk =3D CLOCK(obj);
++    Clock *child, *next;
++
++    /* clear our list of children */
++    QLIST_FOREACH_SAFE(child, &clk->children, sibling, next) {
++        clock_disconnect(child);
++    }
++
++    /* remove us from source's children list */
++    clock_disconnect(clk);
++
++    g_free(clk->canonical_path);
++}
++
++static const TypeInfo clock_info =3D {
++    .name              =3D TYPE_CLOCK,
++    .parent            =3D TYPE_OBJECT,
++    .instance_size     =3D sizeof(Clock),
++    .instance_init     =3D clock_initfn,
++    .instance_finalize =3D clock_finalizefn,
++};
++
++static void clock_register_types(void)
++{
++    type_register_static(&clock_info);
++}
++
++type_init(clock_register_types)
+diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+index 6215e7c208..1d9b0aa205 100644
+--- a/hw/core/Makefile.objs
++++ b/hw/core/Makefile.objs
+@@ -7,6 +7,7 @@ common-obj-y +=3D hotplug.o
+ common-obj-y +=3D vmstate-if.o
+ # irq.o needed for qdev GPIO handling:
+ common-obj-y +=3D irq.o
++common-obj-y +=3D clock.o
+=20
+ common-obj-$(CONFIG_SOFTMMU) +=3D reset.o
+ common-obj-$(CONFIG_SOFTMMU) +=3D qdev-fw.o
+diff --git a/hw/core/trace-events b/hw/core/trace-events
+index aecd8e160e..39301621ce 100644
+--- a/hw/core/trace-events
++++ b/hw/core/trace-events
+@@ -27,3 +27,10 @@ resettable_phase_exit_begin(void *obj, const char *obj=
+type, unsigned count, int
+ resettable_phase_exit_exec(void *obj, const char *objtype, int has_metho=
+d) "obj=3D%p(%s) method=3D%d"
+ resettable_phase_exit_end(void *obj, const char *objtype, unsigned count=
+) "obj=3D%p(%s) count=3D%d"
+ resettable_transitional_function(void *obj, const char *objtype) "obj=3D=
+%p(%s)"
++
++# clock.c
++clock_set_source(const char *clk, const char *src) "'%s', src=3D'%s'"
++clock_disconnect(const char *clk) "'%s'"
++clock_set(const char *clk, unsigned long long old, unsigned long long ne=
+w) "'%s', ns=3D%llu->%llu"
++clock_propagate(const char *clk) "'%s'"
++clock_update(const char *clk, const char *src, unsigned long long val, i=
+nt cb) "'%s', src=3D'%s', ns=3D%llu, cb=3D%d"
+--=20
+2.25.1
+

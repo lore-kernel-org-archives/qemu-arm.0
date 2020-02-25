@@ -1,273 +1,200 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1484560lfg;
-        Tue, 25 Feb 2020 02:23:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzvkObVcvLuh58bHjgASCp2+1XT38veoBR5Em1JGXbAdtuNPWnig+glRQZimLN4w0YEXM1o
-X-Received: by 2002:a37:9647:: with SMTP id y68mr53251055qkd.300.1582626185972;
-        Tue, 25 Feb 2020 02:23:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582626185; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1487921lfg;
+        Tue, 25 Feb 2020 02:26:20 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzmnHu0L2fx7xrDcPRn7LnAB3H0J1gvsE2HCE/X8ya6SfsdAhaJrNc/E/8e+GUdbaM86409
+X-Received: by 2002:ae9:e8c4:: with SMTP id a187mr12207758qkg.243.1582626380430;
+        Tue, 25 Feb 2020 02:26:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582626380; cv=none;
         d=google.com; s=arc-20160816;
-        b=OHsQjnLOwa4gRes25NuQPD0YzdiE+UFGAYfvGDSZIMvV3X+ATJeLafK2MseEAp5Bup
-         6Dfj8ATFQ5lvI2rDVixkIxPY9XoguhEVOx1Js4F9jKVp6TxRAyM+ci4nEvdMxDnkAecW
-         yKJn3j5Z3kIiNLQXP/zXUzu+m/pk7XZf5DOYBKu2yUX7lIz3KrweT4+PyVatBARWHjLs
-         vmAJ7nTn0ZudFBjx03/IMp53PKk7vxO372xAcJOHs4pelUWbcj2k3meT67mJ3Z6b6oah
-         yvUX1GE2phPstx1fOm7ONZfFNPnYWsrd3p5HM+L96dRfBnN5E4Igo5Jkl19+1s2Dvqa+
-         xIiA==
+        b=WuHMmTgtaCYhuzFB58Fu9QpDTYwZ9LUqYkrcZKFs9cDcQWUn+/9ZR5SByZ0BkEipEG
+         TKerw3YMospO8pI4YADe6YJFdMkyUhHwjQqEkYpLGeEa+G/4XS201FsBdthFEfPmmKzd
+         zC09s6donZFt5cClO9KqZYDU706IJJkfozzhJQQkZ/+u7MAPMFk6Eep3c/PhbYzkzMn5
+         dBtKQqNleoBeobE4shIn0aHrgA/LWAYlQ5GcBPmhSyrB8eowRxXE+JWJAh8kl36Lj6vS
+         tzBIFCZ1yCg7Yx+rsx0WWJnP2L7RY6AGbFqIvLcfLgJEz2q3VpnPr/HFO+n8HKcG1UIZ
+         KQdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=dKn4Tnt6fOGp+0puDIDA9nWRl5GTl0KmTTRO0LJlKks=;
-        b=AfXcHGbMan+wlvS+dajXJviGhHHVAcmXLs1naP5+Q3Se1Fy+oWL83b3uKyea9/RFrg
-         nJ2NNvVQfoRQNhP3tLNMCxspyj2QaZXSwm3i2Y72wb+IqnanC81MFhEcQJv7BxE01YQL
-         UHpMAnNxokiYbfLX8DU1aOVHCcdeSdubF6bpdu2ls0Uy4i9DH8dlyS+YYEwtw82vGlXx
-         c7csb/GrVaH+bg/tnqufPrPt5Fe3QVETTP2+yum9eBSoSPjfPH/xNnD77/sE7+8bp2xa
-         P51mlisMe/zrqqIkFL8WGUpBh6BlxPE2y1Pktd89AbM1liED1BQaTm4OUSikBnWQo3u5
-         8y3w==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=QkVErps+Z2fcgtM0lyZCja1Yw+ViI6FKprW8QSTAnyQ=;
+        b=mk6uUo5K5ZT0QqAMqyDpz3MP4dt1K+2D1Lt004cBWcyHg7YDYBcuwRd4r+hK8UasNA
+         RyjE/1ZAQMhIq1XTCnKepf5pvdIJmD6e2TRp7BjR81SM1Nqjv/ThKzUp0iVf8Z+IVJDY
+         W3ct+pNZABSpgm76raOlIKt4UDv4P7P2o4+ULItZ35MafcE85EvglqvmbtZ7QEWnoy6c
+         c5S64la7iBGkVC2TnAd0yS8NA4Ol7lGjOZjnuFh198TSmuW3DM2VeoXDGu7BRC2+I9em
+         sM82QRDTx5A6HkfSVYIY2oaLsdTOEArYOO4eXmk+at595WF4oX725iXc82ZCAooXyQ0a
+         wKrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="CX46E3/y";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m70si2841380qke.224.2020.02.25.02.23.05
+        by mx.google.com with ESMTPS id 22si7556787qkk.69.2020.02.25.02.26.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 02:23:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Feb 2020 02:26:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="CX46E3/y";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51974 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52034 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6XMn-0008DQ-Dt
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 05:23:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33531)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j6XPv-0002GJ-SD
+	for alex.bennee@linaro.org; Tue, 25 Feb 2020 05:26:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33984)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j6XM5-0007if-7e
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 05:22:22 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6XPm-0002G5-NW
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 05:26:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j6XM3-0004sN-Rf
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 05:22:21 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:34541
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6XPl-0006Fx-AR
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 05:26:10 -0500
+Received: from szxga08-in.huawei.com ([45.249.212.255]:39366 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6XM3-0004s6-Nt
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 05:22:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582626139;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dKn4Tnt6fOGp+0puDIDA9nWRl5GTl0KmTTRO0LJlKks=;
- b=CX46E3/ymt+5QbZw2GsA6hI/go496VK6kmUuQJLSGdbwpY6ytjiXO61NePQT0SkNWEQF+f
- DMkZNVOMD+dpEQw8p+AdEbY8ceY97/Klrbbw5cgnCwZWqxAxomsUfXQZuwyK/SoHqqRWJx
- KSmFTBbmoHZTA/nE1D68eNzkZYCdrBo=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-63-N9wAGlxwM8CE6ccCWASL2Q-1; Tue, 25 Feb 2020 05:22:17 -0500
-X-MC-Unique: N9wAGlxwM8CE6ccCWASL2Q-1
-Received: by mail-wr1-f72.google.com with SMTP id t3so5304744wrp.2
- for <qemu-devel@nongnu.org>; Tue, 25 Feb 2020 02:22:17 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=1NJi2K7UjwSr2HUwR7JTKY+bLosDCpUHB6UjxyTOpc4=;
- b=HmPBrnJBBt0ocnxdPGkAeuEdmmb2kGjEnWk0mPzZpZL2k/kzNQ+gEU57izTNaOl9V3
- PiS2tb2ZdrKxzx2O/hoUagJ431bmVbcl3hzNstnvU1pl4ppVgmhdhkpSa6GnyJe9TvKm
- zt4Ri5H0dy5cWKvkQu6uBNYFjYT0r0rWi5ZL9ccAVBPYn2JNkXHCRkg67bGlI1tnBRCB
- zdweUwLX5wjob0py86Lxs0KjvLIBTvbfBiMEVBpWta5K+NmZdzK6kRP5tTRp7wO7LbcD
- pNvq33pLTlBTTn/+xm7WyNIfGxlTSXuvS9FvmLUTCybvmyDdKkgvyhX+xhHpFC95D5Cy
- SVRQ==
-X-Gm-Message-State: APjAAAWH7Kkui3CtbH1rVGLR2gYeW8T2ldj0/4oUloGHC+DIVlj2UFON
- BvOn+MUKGhSbrDsxhnlAmkhR4rMFvPEFchAicVm9PSPFoi59EMZ6jQdK8fClHb5PiSevXf+R/LI
- HHyhmm79qBwoHuCc=
-X-Received: by 2002:a5d:69cb:: with SMTP id s11mr7449320wrw.47.1582626136460; 
- Tue, 25 Feb 2020 02:22:16 -0800 (PST)
-X-Received: by 2002:a5d:69cb:: with SMTP id s11mr7449308wrw.47.1582626136267; 
- Tue, 25 Feb 2020 02:22:16 -0800 (PST)
-Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id b10sm23235940wrt.90.2020.02.25.02.22.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Feb 2020 02:22:15 -0800 (PST)
-Subject: Re: [RFC v2 1/6] tpm: rename TPM_TIS into TPM_TIS_ISA
-To: Auger Eric <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- stefanb@linux.ibm.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org
-References: <20200214183704.14389-1-eric.auger@redhat.com>
- <20200214183704.14389-2-eric.auger@redhat.com>
- <29cc9864-a016-b251-506a-8c04b37efe28@redhat.com>
- <4dd1b4b0-7112-5a8a-9033-9c21eb01b8f9@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <5eb51283-2bfd-bd02-3bbd-492961e842ff@redhat.com>
-Date: Tue, 25 Feb 2020 11:22:14 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1j6XPk-0006ED-PB; Tue, 25 Feb 2020 05:26:09 -0500
+Received: from DGGEMM403-HUB.china.huawei.com (unknown [172.30.72.56])
+ by Forcepoint Email with ESMTP id 92BFCEE6EE1832367D8B;
+ Tue, 25 Feb 2020 18:26:02 +0800 (CST)
+Received: from DGGEMM424-HUB.china.huawei.com (10.1.198.41) by
+ DGGEMM403-HUB.china.huawei.com (10.3.20.211) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 25 Feb 2020 18:26:02 +0800
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.163]) by
+ dggemm424-hub.china.huawei.com ([10.1.198.41]) with mapi id 14.03.0439.000;
+ Tue, 25 Feb 2020 18:25:51 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>
+Subject: RE: [PATCH 09/13] dma/xlnx-zdma: Remove redundant statement in
+ zdma_write_dst()
+Thread-Topic: [PATCH 09/13] dma/xlnx-zdma: Remove redundant statement in
+ zdma_write_dst()
+Thread-Index: AQHV64DJX5oKQCUBD0CAP5e60Hgha6grIPsAgACILuD//4G4AIAAh5mQ
+Date: Tue, 25 Feb 2020 10:25:51 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B661C30@dggemm531-mbx.china.huawei.com>
+References: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
+ <20200225020937.25028-10-kuhn.chenqun@huawei.com>
+ <6d31ac16-adc6-235e-8784-51bf86e33b72@redhat.com>
+ <7412CDE03601674DA8197E2EBD8937E83B661BD7@dggemm531-mbx.china.huawei.com>
+ <8ceb7ecc-8edc-0ced-8171-6200ded0dd05@redhat.com>
+In-Reply-To: <8ceb7ecc-8edc-0ced-8171-6200ded0dd05@redhat.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <4dd1b4b0-7112-5a8a-9033-9c21eb01b8f9@redhat.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 45.249.212.255
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: unoD/WQlFqxE
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: boHdxDUk/8b5
 
-On 2/25/20 11:16 AM, Auger Eric wrote:
-> Hi Phil,
->=20
-> On 2/14/20 7:55 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->> On 2/14/20 7:36 PM, Eric Auger wrote:
->>> As we plan to introduce a sysbus TPM_TIS, let's rename
->>> TPM_TIS into TPM_TIS_ISA.
->>>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>> ---
->>>  =C2=A0 hw/i386/acpi-build.c | 6 +++---
->>>  =C2=A0 hw/tpm/tpm_tis.c=C2=A0=C2=A0=C2=A0=C2=A0 | 4 ++--
->>>  =C2=A0 include/sysemu/tpm.h | 6 +++---
->>>  =C2=A0 3 files changed, 8 insertions(+), 8 deletions(-)
->>>
->>> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
->>> index 9c4e46fa74..26777f8828 100644
->>> --- a/hw/i386/acpi-build.c
->>> +++ b/hw/i386/acpi-build.c
->>> @@ -2026,7 +2026,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker=
-,
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>>  =C2=A0 -=C2=A0=C2=A0=C2=A0 if (TPM_IS_TIS(tpm_find())) {
->>> +=C2=A0=C2=A0=C2=A0 if (TPM_IS_TIS_ISA(tpm_find())) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 aml_append(crs,=
- aml_memory32_fixed(TPM_TIS_ADDR_BASE,
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 TPM_TIS_ADDR_SIZE, AML_=
-READ_WRITE));
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>> @@ -2197,7 +2197,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker=
-,
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 /* Scan all PCI buses. Generate tables to support
->>> hotplug. */
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 build_append_pci_bus_devices(scope, bus,
->>> pm->pcihp_bridge_en);
->>>  =C2=A0 -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 if (TPM_IS_TIS(tpm)) {
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if =
-(TPM_IS_TIS_ISA(tpm)) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (misc->tpm_version =3D=3D TPM_VERSION_=
-2_0) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dev =3D aml_devic=
-e("TPM");
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 aml_append(dev, a=
-ml_name_decl("_HID",
->>> @@ -2304,7 +2304,7 @@ build_tpm2(GArray *table_data, BIOSLinker
->>> *linker, GArray *tcpalog)
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (char *)&tpm2_p=
-tr->log_area_start_address - table_data->data;
->>>  =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tpm2_ptr->platform_class =3D cpu=
-_to_le16(TPM2_ACPI_CLASS_CLIENT);
->>> -=C2=A0=C2=A0=C2=A0 if (TPM_IS_TIS(tpm_find())) {
->>> +=C2=A0=C2=A0=C2=A0 if (TPM_IS_TIS_ISA(tpm_find())) {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tpm2_ptr->contr=
-ol_area_address =3D cpu_to_le64(0);
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tpm2_ptr->start=
-_method =3D cpu_to_le32(TPM2_START_METHOD_MMIO);
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else if (TPM_IS_CRB(tpm_find())) {
->>> diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
->>> index 31facb896d..c609737272 100644
->>> --- a/hw/tpm/tpm_tis.c
->>> +++ b/hw/tpm/tpm_tis.c
->>> @@ -91,7 +91,7 @@ typedef struct TPMState {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 TPMPPI ppi;
->>>  =C2=A0 } TPMState;
->>>  =C2=A0 -#define TPM(obj) OBJECT_CHECK(TPMState, (obj), TYPE_TPM_TIS)
->>> +#define TPM(obj) OBJECT_CHECK(TPMState, (obj), TYPE_TPM_TIS_ISA)
->>>  =C2=A0 =C2=A0 #define DEBUG_TIS 0
->>>  =C2=A0 @@ -1008,7 +1008,7 @@ static void tpm_tis_class_init(ObjectClas=
-s
->>> *klass, void *data)
->>>  =C2=A0 }
->>>  =C2=A0 =C2=A0 static const TypeInfo tpm_tis_info =3D {
->>> -=C2=A0=C2=A0=C2=A0 .name =3D TYPE_TPM_TIS,
->>> +=C2=A0=C2=A0=C2=A0 .name =3D TYPE_TPM_TIS_ISA,
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .parent =3D TYPE_ISA_DEVICE,
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .instance_size =3D sizeof(TPMState),
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .instance_init =3D tpm_tis_initfn,
->>> diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
->>> index 15979a3647..1691b92c28 100644
->>> --- a/include/sysemu/tpm.h
->>> +++ b/include/sysemu/tpm.h
->>> @@ -43,12 +43,12 @@ typedef struct TPMIfClass {
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 enum TPMVersion (*get_version)(TPMIf *o=
-bj);
->>>  =C2=A0 } TPMIfClass;
->>>  =C2=A0 -#define TYPE_TPM_TIS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "tpm-tis"
->>> +#define TYPE_TPM_TIS_ISA=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 "tpm-tis"
->>
->> It should be safe to rename this "tpm-tis-isa" in this patch.
-> This would change the name of the legacy ISA device and also the way we
-> instantiate it through the cmd line. To avoid breaking the compatibility
-> I kept the same name and used tpm-tis-device (?) for the new sysbus one.
-
-I thought ISA devices were not user-creatable...
-
->=20
-> Thanks
->=20
-> Eric
->>
->> Regardless:
->> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->>
->>>  =C2=A0 #define TYPE_TPM_CRB=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "tpm-crb"
->>>  =C2=A0 #define TYPE_TPM_SPAPR=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "tpm-spapr"
->>>  =C2=A0 -#define TPM_IS_TIS(chr)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 \
->>> -=C2=A0=C2=A0=C2=A0 object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS)
->>> +#define TPM_IS_TIS_ISA(chr)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 \
->>> +=C2=A0=C2=A0=C2=A0 object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_ISA)
->>>  =C2=A0 #define TPM_IS_CRB(chr)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 \
->>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 object_dynamic_cast(OBJECT(chr), TYPE_T=
-PM_CRB)
->>>  =C2=A0 #define TPM_IS_SPAPR(chr)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 \
->>>
->>
->=20
-
+DQoNCj4tLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPkZyb206IFBoaWxpcHBlIE1hdGhpZXUt
+RGF1ZMOpIFttYWlsdG86cGhpbG1kQHJlZGhhdC5jb21dDQo+U2VudDogVHVlc2RheSwgRmVicnVh
+cnkgMjUsIDIwMjAgNjoxMiBQTQ0KPlRvOiBDaGVucXVuIChrdWhuKSA8a3Vobi5jaGVucXVuQGh1
+YXdlaS5jb20+OyBxZW11LQ0KPmRldmVsQG5vbmdudS5vcmc7IHFlbXUtdHJpdmlhbEBub25nbnUu
+b3JnDQo+Q2M6IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgWmhhbmdoYWlsaWFuZw0KPjx6aGFu
+Zy56aGFuZ2hhaWxpYW5nQGh1YXdlaS5jb20+OyBBbGlzdGFpciBGcmFuY2lzIDxhbGlzdGFpckBh
+bGlzdGFpcjIzLm1lPjsNCj5xZW11LWFybUBub25nbnUub3JnDQo+U3ViamVjdDogUmU6IFtQQVRD
+SCAwOS8xM10gZG1hL3hsbngtemRtYTogUmVtb3ZlIHJlZHVuZGFudCBzdGF0ZW1lbnQgaW4NCj56
+ZG1hX3dyaXRlX2RzdCgpDQo+DQo+T24gMi8yNS8yMCAxMTowMSBBTSwgQ2hlbnF1biAoa3Vobikg
+d3JvdGU6DQo+Pj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4+PiBGcm9tOiBQaGlsaXBw
+ZSBNYXRoaWV1LURhdWTDqSBbbWFpbHRvOnBoaWxtZEByZWRoYXQuY29tXQ0KPj4+IFNlbnQ6IFR1
+ZXNkYXksIEZlYnJ1YXJ5IDI1LCAyMDIwIDU6MzYgUE0NCj4+PiBUbzogQ2hlbnF1biAoa3Vobikg
+PGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPjsgcWVtdS0NCj5kZXZlbEBub25nbnUub3JnOw0KPj4+
+IHFlbXUtdHJpdmlhbEBub25nbnUub3JnDQo+Pj4gQ2M6IHBldGVyLm1heWRlbGxAbGluYXJvLm9y
+ZzsgWmhhbmdoYWlsaWFuZw0KPj4+IDx6aGFuZy56aGFuZ2hhaWxpYW5nQGh1YXdlaS5jb20+OyBB
+bGlzdGFpciBGcmFuY2lzDQo+Pj4gPGFsaXN0YWlyQGFsaXN0YWlyMjMubWU+OyBxZW11LWFybUBu
+b25nbnUub3JnDQo+Pj4gU3ViamVjdDogUmU6IFtQQVRDSCAwOS8xM10gZG1hL3hsbngtemRtYTog
+UmVtb3ZlIHJlZHVuZGFudCBzdGF0ZW1lbnQNCj4+PiBpbg0KPj4+IHpkbWFfd3JpdGVfZHN0KCkN
+Cj4+Pg0KPj4+IE9uIDIvMjUvMjAgMzowOSBBTSwga3Vobi5jaGVucXVuQGh1YXdlaS5jb20gd3Jv
+dGU6DQo+Pj4+IEZyb206IENoZW4gUXVuIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4+Pj4N
+Cj4+Pj4gQ2xhbmcgc3RhdGljIGNvZGUgYW5hbHl6ZXIgc2hvdyB3YXJuaW5nOg0KPj4+PiBody9k
+bWEveGxueC16ZG1hLmM6Mzk5OjEzOiB3YXJuaW5nOiBWYWx1ZSBzdG9yZWQgdG8gJ2RzdF90eXBl
+JyBpcw0KPj4+PiBuZXZlcg0KPj4+IHJlYWQNCj4+Pj4gICAgICAgICAgICAgICBkc3RfdHlwZSA9
+IEZJRUxEX0VYMzIocy0+ZHNjX2RzdC53b3Jkc1szXSwNCj4+PiBaRE1BX0NIX0RTVF9EU0NSX1dP
+UkQzLA0KPj4+PiAgICAgICAgICAgICAgIF4NCj4+PiB+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+
+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+DQo+Pj4+DQo+Pj4+IFJlcG9ydGVkLWJ5OiBF
+dWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4+Pj4gU2lnbmVkLW9mZi1ieTog
+Q2hlbiBRdW4gPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPg0KPj4+PiAtLS0NCj4+Pj4gQ2M6IEFs
+aXN0YWlyIEZyYW5jaXMgPGFsaXN0YWlyQGFsaXN0YWlyMjMubWU+DQo+Pj4+IENjOiAiRWRnYXIg
+RS4gSWdsZXNpYXMiIDxlZGdhci5pZ2xlc2lhc0BnbWFpbC5jb20+DQo+Pj4+IENjOiBQZXRlciBN
+YXlkZWxsIDxwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc+DQo+Pj4+IENjOiBxZW11LWFybUBub25n
+bnUub3JnDQo+Pj4+IC0tLQ0KPj4+PiAgICBody9kbWEveGxueC16ZG1hLmMgfCAyIC0tDQo+Pj4+
+ICAgIDEgZmlsZSBjaGFuZ2VkLCAyIGRlbGV0aW9ucygtKQ0KPj4+Pg0KPj4+PiBkaWZmIC0tZ2l0
+IGEvaHcvZG1hL3hsbngtemRtYS5jIGIvaHcvZG1hL3hsbngtemRtYS5jIGluZGV4DQo+Pj4+IDhm
+YjgzZjViMDcuLjQ1MzU1YzVkNTkgMTAwNjQ0DQo+Pj4+IC0tLSBhL2h3L2RtYS94bG54LXpkbWEu
+Yw0KPj4+PiArKysgYi9ody9kbWEveGxueC16ZG1hLmMNCj4+Pj4gQEAgLTM5Niw4ICszOTYsNiBA
+QCBzdGF0aWMgdm9pZCB6ZG1hX3dyaXRlX2RzdChYbG54WkRNQSAqcywgdWludDhfdA0KPj4+ICpi
+dWYsIHVpbnQzMl90IGxlbikNCj4+Pj4gICAgICAgICAgICAgICAgemRtYV9sb2FkX2Rlc2NyaXB0
+b3IocywgbmV4dCwgJnMtPmRzY19kc3QpOw0KPj4+PiAgICAgICAgICAgICAgICBkc3Rfc2l6ZSA9
+IEZJRUxEX0VYMzIocy0+ZHNjX2RzdC53b3Jkc1syXSwNCj4+PiBaRE1BX0NIX0RTVF9EU0NSX1dP
+UkQyLA0KPj4+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgU0laRSk7DQo+
+Pj4+IC0gICAgICAgICAgICBkc3RfdHlwZSA9IEZJRUxEX0VYMzIocy0+ZHNjX2RzdC53b3Jkc1sz
+XSwNCj4+PiBaRE1BX0NIX0RTVF9EU0NSX1dPUkQzLA0KPj4+PiAtICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIFRZUEUpOw0KPj4+DQo+Pj4gTWF5YmUgbW92ZSBkc3RfdHlwZSB0byB0
+aGlzIGlmKCkgc3RhdGVtZW50IG5vdz8NCj4+Pg0KPj4gU29ycnksIEkgZG9uJ3QgZm9sbG93IHlv
+dS4gICBJIGRpZG4ndCBmaW5kIHdoZXJlIEkgY291bGQgbW92ZSBkc3RfdHlwZS4NCj4+IERvIHlv
+dSBtZWFuIHRvIG1vdmUgdGhlIGZpcnN0IGRzdF90eXBlIHRvIHRoZSBpZigpLg0KPj4gTW9kaWZ5
+IGl0IGxpa2UgdGhpczoNCj4+ICAgICAgd2hpbGUgKGxlbikgew0KPj4gICAgICAgICAgZHN0X3Np
+emUgPSBGSUVMRF9FWDMyKHMtPmRzY19kc3Qud29yZHNbMl0sDQo+WkRNQV9DSF9EU1RfRFNDUl9X
+T1JEMiwNCj4+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBTSVpFKTsNCj4+ICAgICAg
+ICAgIGlmIChkc3Rfc2l6ZSA9PSAwICYmIHB0eXBlID09IFBUX01FTSkgew0KPj4gICAgICAgICAg
+ICAgIHVpbnQ2NF90IG5leHQ7DQo+PiAgICAgICAgICAgICAgZHN0X3R5cGUgPSBGSUVMRF9FWDMy
+KHMtPmRzY19kc3Qud29yZHNbM10sDQo+WkRNQV9DSF9EU1RfRFNDUl9XT1JEMywNCj4+ICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICBUWVBFKTsNCj4+ICAgICAgICAgICAgICBuZXh0ID0g
+emRtYV91cGRhdGVfZGVzY3JfYWRkcihzLCBkc3RfdHlwZSwNCj4+ICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICBSX1pETUFfQ0hfRFNUX0NVUl9EU0NSX0xTQik7DQo+
+PiAgICAgICAgICAgICAgemRtYV9sb2FkX2Rlc2NyaXB0b3IocywgbmV4dCwgJnMtPmRzY19kc3Qp
+Ow0KPj4gICAgICAgICAgICAgIGRzdF9zaXplID0gRklFTERfRVgzMihzLT5kc2NfZHN0LndvcmRz
+WzJdLA0KPlpETUFfQ0hfRFNUX0RTQ1JfV09SRDIsDQo+PiAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIFNJWkUpOw0KPj4gICAgICAgICAgfQ0KPj4gICAgICAgICAuLi4NCj4+ICAg
+ICB9DQo+DQo+Tm8sIGxpa2UgdGhpczoNCj4NCj4tLSA+OCAtLQ0KPkBAIC0zNzMsNyArMzczLDcg
+QEAgc3RhdGljIHVpbnQ2NF90IHpkbWFfdXBkYXRlX2Rlc2NyX2FkZHIoWGxueFpETUENCj4qcywg
+Ym9vbCB0eXBlLA0KPiAgc3RhdGljIHZvaWQgemRtYV93cml0ZV9kc3QoWGxueFpETUEgKnMsIHVp
+bnQ4X3QgKmJ1ZiwgdWludDMyX3QgbGVuKQ0KPiAgew0KPiAgICAgIHVpbnQzMl90IGRzdF9zaXpl
+LCBkbGVuOw0KPi0gICAgYm9vbCBkc3RfaW50ciwgZHN0X3R5cGU7DQo+KyAgICBib29sIGRzdF9p
+bnRyOw0KPiAgICAgIHVuc2lnbmVkIGludCBwdHlwZSA9IEFSUkFZX0ZJRUxEX0VYMzIocy0+cmVn
+cywgWkRNQV9DSF9DVFJMMCwNCj5QT0lOVF9UWVBFKTsNCj4gICAgICB1bnNpZ25lZCBpbnQgcndf
+bW9kZSA9IEFSUkFZX0ZJRUxEX0VYMzIocy0+cmVncywgWkRNQV9DSF9DVFJMMCwNCj5NT0RFKTsN
+Cj4gICAgICB1bnNpZ25lZCBpbnQgYnVyc3RfdHlwZSA9IEFSUkFZX0ZJRUxEX0VYMzIocy0+cmVn
+cywNCj5aRE1BX0NIX0RBVEFfQVRUUiwgQEAgLTM4NywxNyArMzg3LDE3IEBAIHN0YXRpYyB2b2lk
+DQo+emRtYV93cml0ZV9kc3QoWGxueFpETUEgKnMsIHVpbnQ4X3QgKmJ1ZiwgdWludDMyX3QgbGVu
+KQ0KPiAgICAgIHdoaWxlIChsZW4pIHsNCj4gICAgICAgICAgZHN0X3NpemUgPSBGSUVMRF9FWDMy
+KHMtPmRzY19kc3Qud29yZHNbMl0sDQo+WkRNQV9DSF9EU1RfRFNDUl9XT1JEMiwNCj4gICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIFNJWkUpOw0KPi0gICAgICAgIGRzdF90eXBlID0gRklF
+TERfRVgzMihzLT5kc2NfZHN0LndvcmRzWzNdLA0KPlpETUFfQ0hfRFNUX0RTQ1JfV09SRDMsDQo+
+LSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFRZUEUpOw0KPiAgICAgICAgICBpZiAoZHN0
+X3NpemUgPT0gMCAmJiBwdHlwZSA9PSBQVF9NRU0pIHsNCj4gICAgICAgICAgICAgIHVpbnQ2NF90
+IG5leHQ7DQo+KyAgICAgICAgICAgIGJvb2wgZHN0X3R5cGU7DQo+Kw0KPisgICAgICAgICAgICBk
+c3RfdHlwZSA9IEZJRUxEX0VYMzIocy0+ZHNjX2RzdC53b3Jkc1szXSwNCj5aRE1BX0NIX0RTVF9E
+U0NSX1dPUkQzLA0KPisgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgVFlQRSk7DQo+
+ICAgICAgICAgICAgICBuZXh0ID0gemRtYV91cGRhdGVfZGVzY3JfYWRkcihzLCBkc3RfdHlwZSwN
+Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJfWkRNQV9DSF9E
+U1RfQ1VSX0RTQ1JfTFNCKTsNCj4gICAgICAgICAgICAgIHpkbWFfbG9hZF9kZXNjcmlwdG9yKHMs
+IG5leHQsICZzLT5kc2NfZHN0KTsNCj4gICAgICAgICAgICAgIGRzdF9zaXplID0gRklFTERfRVgz
+MihzLT5kc2NfZHN0LndvcmRzWzJdLA0KPlpETUFfQ0hfRFNUX0RTQ1JfV09SRDIsDQo+ICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgU0laRSk7DQo+LSAgICAgICAgICAgIGRzdF90
+eXBlID0gRklFTERfRVgzMihzLT5kc2NfZHN0LndvcmRzWzNdLA0KPlpETUFfQ0hfRFNUX0RTQ1Jf
+V09SRDMsDQo+LSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBUWVBFKTsNCj4gICAg
+ICAgICAgfQ0KSG1tLCAgdGhpcyBpcyBiZXR0ZXIuIA0KSSB3aWxsIG1vZGlmeSBpdCBsYXRlciBp
+biBWMi4NCg0KVGhhbmtzLg0KPi0tLQ0KDQo=

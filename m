@@ -1,184 +1,572 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp947309lfg;
-        Mon, 24 Feb 2020 16:24:43 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzZN4dhztUv6Ah1Q5H6nI7a3fPqdVkFh/EIIDFWINU6nnc1Z075WPWjIe6y4EB2zK2pG1nt
-X-Received: by 2002:a0c:fac7:: with SMTP id p7mr47931755qvo.46.1582590283239;
-        Mon, 24 Feb 2020 16:24:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582590283; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1011451lfg;
+        Mon, 24 Feb 2020 17:35:30 -0800 (PST)
+X-Google-Smtp-Source: APXvYqybT4X3c6XSqxzi244ZGRcNT5+0sFsxuxMejn5Nd7vmBGTWIT7lTCvqxPTb/wf53c0K5+BB
+X-Received: by 2002:ac8:3694:: with SMTP id a20mr918643qtc.362.1582594529936;
+        Mon, 24 Feb 2020 17:35:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582594529; cv=none;
         d=google.com; s=arc-20160816;
-        b=KKa6Kc4N/8w8dhit/vZMNCxO3HJWCxIyVgkd5ivCstgf1aHSKziZYcJ4DOUbVIci6U
-         2BsB6Ue6eS8KvAWpsK/2RybVxTlfipD9sMWp/CVRmG1sx92WHoZQUF9l+s8WuBsMGMTk
-         2DHlGNMV2r/ygYg40NcV23QmTOLcvKy9JHhmbraK4h2+JH4/vgOhp4VbSR9Ti+Lyv4/9
-         2XKt3zjbXvqKA1wQaAb+oW5mfmrDekHwjvqry0kXGFlcx5k66nHRYmQLkHERp3BbywoY
-         ZcQIv9i8URRSgDtjZ01/H/0MMDFpQPbcR8cbZ+H3efOUp98zfRC1ReergL5z4jwcyISV
-         Ph4w==
+        b=kF6fFPmBemNq9Hrd/jNSrfyiwQqDavMK23EKWDH7Up+PxOk/y31uYPYZzOjfdQMgp+
+         7Jh16SfpLoUZS0Z4SLURhbIsuDvniUDxO8KVWjJ9shnhCbCuHsCq7FuEj4qqqdSDR2gk
+         VZmolbF9bLXNFeEJMrF5Bpn26ers1gL6ceA9hFk+VyCdB6qI0Q7NVdfqRFOrxGLdOt+w
+         J3Z3xLR2nS8PrBmjK76ZEK8pCLb3jtHroUbySCBN7ciMf4f/Mqev+8UV3Lm4wk2xM6Co
+         rewJDFNJNWjgv/ofSFYbelKpES2a6eOmXbwuP8YIThk32H7dG/nWIRxEjxRRWAE3kULX
+         sLJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=o1FfDs17BWykeGlSdiujcH2KUKoNZQ9gKeuaznq3r0Y=;
-        b=QSXBptFHtG4gC+askjOboAJoDE+j7mpER58g51+tWuNhLAP6l+xCCgp48bG9rr5ocQ
-         Vra5Y7qBrH1q8THrHvKCvAapilrDZRsbAwqWaOGIuMGfego4lDtmQAtxujtBB4pe7PwT
-         GvZLMB9vWh32jHJH+0zmcgckn6YFQhEH3VcMfLK+8e+yvU5E2h0ihoV49DJTBZykNEVC
-         sakychaecpKkwmENQ5QtzMeWGE5gYYhmlU4wQs5J+tny8XR5amZw+AafKFubHwBtxArl
-         /lad9TVKYsCTY6kZ3vG9wcejEjUlQtt15veetZ3/4YOO2QuvCTu2jzfTtInCS/3TVW8M
-         C44w==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=VKBY3GKiuRTZlaGuIF2p+aXfjR06vuUQCjePzWitANg=;
+        b=a7Y067Qx93oYqDkrSFIV8CUwcCtZODNSF2rx0acWXkN++/tSdHOSdwCqK8g9TbHwJm
+         TjqtX0LV83yQoSZ2cQyoTlL1Uc9xwNw8ObVXVx0kWLlDJW/IjF2NsqDvuIxlr3Bm6TaO
+         sXp6go76JMAS3a1iqTSjoTPmQeC3UclBShXoLfH+DNvPdNagKBqDFIhOhy/FRlpH1K33
+         oz4FB3fcxslbqOQMrI0O8WSXn3nLayFc7BClEMOcXr0Gm5EAYz5MAQeB62L1OiHDOOMo
+         qevdgSdiu+6eKlEtrLQWKzzb+MPTl79Gpo2WYbmimbl/iy6jys5Oe4IKYlVH1mrgQpjS
+         NwcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=d6NhK1hY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TiOpoSeR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e14si6571158qkg.280.2020.02.24.16.24.43
+        by mx.google.com with ESMTPS id i7si6869306qkh.186.2020.02.24.17.35.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Feb 2020 16:24:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Feb 2020 17:35:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=d6NhK1hY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46578 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TiOpoSeR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:47272 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6O1i-0001BF-Io
-	for alex.bennee@linaro.org; Mon, 24 Feb 2020 19:24:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52401)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j6P8D-0004yZ-8b
+	for alex.bennee@linaro.org; Mon, 24 Feb 2020 20:35:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60440)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1j6O1P-0000ja-2d
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 19:24:24 -0500
+ (envelope-from <alistair23@gmail.com>) id 1j6P7S-0004Y6-Jy
+ for qemu-devel@nongnu.org; Mon, 24 Feb 2020 20:34:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1j6O1O-0000Kc-09
- for qemu-arm@nongnu.org; Mon, 24 Feb 2020 19:24:23 -0500
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:36027 helo=ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1j6O1N-0000Iv-L5; Mon, 24 Feb 2020 19:24:21 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 48RKS00vBDz9sPk; Tue, 25 Feb 2020 11:24:16 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1582590256;
- bh=cun3UG0RH1Z9pqffGg41V0R5H4abPrUo0JHVCdwl8DM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=d6NhK1hYXytACCdz50B0nIeq/pqkhsGd9Cf4y/mFfwuua8B8tNulEvn1q6IHWfhkx
- h6uWw/oUL++nq3fSHxWM/g9cH3oKEBM8m8G+uNe1FFyjYknckA5CcLy38hzzMnIMtn
- Y+aT9dz84IxlX7OLrT9CbyTe8PBYED7vp2S5MasQ=
-Date: Tue, 25 Feb 2020 11:23:23 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [PATCH RESEND v2 10/32] hw/pci-host: Use
- memory_region_init_rom() with read-only regions
-Message-ID: <20200225002323.GB41629@umbus.fritz.box>
-References: <20200224205533.23798-1-philmd@redhat.com>
- <20200224205533.23798-11-philmd@redhat.com>
+ (envelope-from <alistair23@gmail.com>) id 1j6P7Q-0001Yb-Nf
+ for qemu-devel@nongnu.org; Mon, 24 Feb 2020 20:34:42 -0500
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:35405)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1j6P7Q-0001WI-AZ; Mon, 24 Feb 2020 20:34:40 -0500
+Received: by mail-lj1-x242.google.com with SMTP id q8so12219516ljb.2;
+ Mon, 24 Feb 2020 17:34:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=VKBY3GKiuRTZlaGuIF2p+aXfjR06vuUQCjePzWitANg=;
+ b=TiOpoSeR7NlHLP99USsa+bxxXY1mqA8ASDClF+ySPmsZiKyaAdQgl3ORw1T4yWb5v7
+ T0rLg4+QiKOxg04YZ4Aj04USceRxx7QRWakxI3nas8dBVuSOitc90cX0+XIUNGD7nAvG
+ yox89whSh5E7pWfFJJskA+vGqmM2mZ8/UsUeV8lYPZqjXlymijhrUNnU2y75+tkKIesj
+ zhjhycFuD9Bjm/SHSvw8iM5XGowWWJEr98TpbEqhpfD57Tlun9/wDdwHPyJpv9Piv1og
+ TXcA9YFA3Kr1pMcKUDeZRgXMsoJYf0JApcZJX6Uu5fDz5umAhHrCb0C5E31qbn6ppSDt
+ rfJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=VKBY3GKiuRTZlaGuIF2p+aXfjR06vuUQCjePzWitANg=;
+ b=MfqMVUn1OGlTijtV42S2LSDHeUmOqhonFHobquCdVeuKVexXCaOXVNW4eRbIsyS2s5
+ OwKoVLVwnYvcTXVjEDCBDZRetNym1H61ueZ1JRO+OgDYNrBWLWEC9vHj1j/K73V/6NSl
+ tkDbaZcZG7Pi0U5Pmx8OeJrIdRR3swpudb7YgiRzqzg6wWdnVxeTBOHJ4VjxlXVsRMsI
+ VMarKaoqOjhkKP34CbYTNYPXShsByqk0DuoDTfZlv1xHt0vs6LcxK1SyBzVQ9sB843zd
+ JU9OG7wp4Eo4tlrORwWeGapSLGoNj4IsaZpR0oByKWg6dXf1RUrsyflMl6AzKa0mqbEB
+ ZGuQ==
+X-Gm-Message-State: APjAAAVQjRn1TYJ2pySTyI9OXIdOLbGpIFhKdIx/EbA+bW2dYl/Uzumt
+ a8CyGGV7QNM3m7W6h7I2VpuXDkj3ytJi0g0b8IY=
+X-Received: by 2002:a2e:8119:: with SMTP id d25mr32471261ljg.76.1582594478529; 
+ Mon, 24 Feb 2020 17:34:38 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="PmA2V3Z32TCmWXqI"
-Content-Disposition: inline
-In-Reply-To: <20200224205533.23798-11-philmd@redhat.com>
+References: <20200224170301.246623-1-damien.hedde@greensocs.com>
+ <20200224170301.246623-4-damien.hedde@greensocs.com>
+In-Reply-To: <20200224170301.246623-4-damien.hedde@greensocs.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 24 Feb 2020 17:27:03 -0800
+Message-ID: <CAKmqyKPe5Y7zH6-WpnCmcoVqvBJu5m5hynHVcfWy7qb9iWHGzA@mail.gmail.com>
+Subject: Re: [PATCH v7 3/9] qdev: add clock input&output support to devices.
+To: Damien Hedde <damien.hedde@greensocs.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2401:3900:2:1::2
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::242
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Max Reitz <mreitz@redhat.com>,
- qemu-block@nongnu.org, Magnus Damm <magnus.damm@gmail.com>,
- =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Andrzej Zaborowski <balrogg@gmail.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
  Alistair Francis <alistair@alistair23.me>,
- Fabien Chouteau <chouteau@adacore.com>, qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- qemu-riscv@nongnu.org, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Laurent Vivier <laurent@vivier.eu>, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JsnUrc4u3DLt
+ Mark Burton <mark.burton@greensocs.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Edgar Iglesias <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iUc27QDDBWv4
 
-
---PmA2V3Z32TCmWXqI
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Feb 24, 2020 at 09:55:11PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> This commit was produced with the Coccinelle script
-> scripts/coccinelle/memory-region-housekeeping.cocci.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
+/On Mon, Feb 24, 2020 at 9:12 AM Damien Hedde <damien.hedde@greensocs.com> wrote
+>
+> Add functions to easily handle clocks with devices.
+> Clock inputs and outputs should be used to handle clock propagation
+> between devices.
+> The API is very similar the GPIO API.
+>
+> This is based on the original work of Frederic Konrad.
+>
+> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 > ---
->  hw/pci-host/prep.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
->=20
-> diff --git a/hw/pci-host/prep.c b/hw/pci-host/prep.c
-> index 1aff72bec6..1a02e9a670 100644
-> --- a/hw/pci-host/prep.c
-> +++ b/hw/pci-host/prep.c
-> @@ -325,9 +325,8 @@ static void raven_realize(PCIDevice *d, Error **errp)
->      d->config[0x0D] =3D 0x10; // latency_timer
->      d->config[0x34] =3D 0x00; // capabilities_pointer
-> =20
-> -    memory_region_init_ram_nomigrate(&s->bios, OBJECT(s), "bios", BIOS_S=
-IZE,
-> -                           &error_fatal);
-> -    memory_region_set_readonly(&s->bios, true);
-> +    memory_region_init_rom_nomigrate(&s->bios, OBJECT(s), "bios", BIOS_S=
-IZE,
-> +                                     &error_fatal);
->      memory_region_add_subregion(get_system_memory(), (uint32_t)(-BIOS_SI=
-ZE),
->                                  &s->bios);
->      if (s->bios_name) {
+>
+> I did not changed the constness of @name pointer field in
+> NamedClockList structure.
+> There is no obstacle to do it but the fact that we need to free the
+> allocated data it points to. It is possible to make it const and
+> hack/remove the const to call g_free but I don't know if its
+> allowed in qemu.
+>
+> v7:
+> + update ClockIn/Out types
+> + qdev_connect_clock_out function removed / qdev_connect_clock_in added
+>   instead
+> + qdev_pass_clock renamed to qdev_alias_clock
+> + various small fixes (typos, comment, asserts) (Peter)
+> + move device's instance_finalize code related to clock in qdev-clock.c
+> ---
+>  include/hw/qdev-clock.h | 105 +++++++++++++++++++++++++
+>  include/hw/qdev-core.h  |  12 +++
+>  hw/core/qdev-clock.c    | 169 ++++++++++++++++++++++++++++++++++++++++
+>  hw/core/qdev.c          |  12 +++
+>  hw/core/Makefile.objs   |   2 +-
+>  tests/Makefile.include  |   1 +
+>  6 files changed, 300 insertions(+), 1 deletion(-)
+>  create mode 100644 include/hw/qdev-clock.h
+>  create mode 100644 hw/core/qdev-clock.c
+>
+> diff --git a/include/hw/qdev-clock.h b/include/hw/qdev-clock.h
+> new file mode 100644
+> index 0000000000..899a95ca6a
+> --- /dev/null
+> +++ b/include/hw/qdev-clock.h
+> @@ -0,0 +1,105 @@
+> +/*
+> + * Device's clock input and output
+> + *
+> + * Copyright GreenSocs 2016-2020
+> + *
+> + * Authors:
+> + *  Frederic Konrad
+> + *  Damien Hedde
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#ifndef QDEV_CLOCK_H
+> +#define QDEV_CLOCK_H
+> +
+> +#include "hw/clock.h"
+> +
+> +/**
+> + * qdev_init_clock_in:
+> + * @dev: the device to add an input clock to
+> + * @name: the name of the clock (can't be NULL).
+> + * @callback: optional callback to be called on update or NULL.
+> + * @opaque: argument for the callback
+> + * @returns: a pointer to the newly added clock
+> + *
+> + * Add an input clock to device @dev as a clock named @name.
+> + * This adds a child<> property.
+> + * The callback will be called with @opaque as opaque parameter.
+> + */
+> +Clock *qdev_init_clock_in(DeviceState *dev, const char *name,
+> +                          ClockCallback *callback, void *opaque);
+> +
+> +/**
+> + * qdev_init_clock_out:
+> + * @dev: the device to add an output clock to
+> + * @name: the name of the clock (can't be NULL).
+> + * @callback: optional callback to be called on update or NULL.
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+qdev_init_clock_out() doesn't have a callback.
 
---PmA2V3Z32TCmWXqI
-Content-Type: application/pgp-signature; name="signature.asc"
+> + * @returns: a pointer to the newly added clock
 
------BEGIN PGP SIGNATURE-----
+> + *
+> + * Add an output clock to device @dev as a clock named @name.
+> + * This adds a child<> property.
+> + */
+> +Clock *qdev_init_clock_out(DeviceState *dev, const char *name);
+> +
+> +/**
+> + * qdev_get_clock_in:
+> + * @dev: the device which has the clock
+> + * @name: the name of the clock (can't be NULL).
+> + * @returns: a pointer to the clock
+> + *
+> + * Get the input clock @name from @dev or NULL if does not exist.
+> + */
+> +Clock *qdev_get_clock_in(DeviceState *dev, const char *name);
+> +
+> +/**
+> + * qdev_get_clock_out:
+> + * @dev: the device which has the clock
+> + * @name: the name of the clock (can't be NULL).
+> + * @returns: a pointer to the clock
+> + *
+> + * Get the output clock @name from @dev or NULL if does not exist.
+> + */
+> +Clock *qdev_get_clock_out(DeviceState *dev, const char *name);
+> +
+> +/**
+> + * qdev_connect_clock_in:
+> + * @dev: a device
+> + * @name: the name of an input clock in @dev
+> + * @source: the source clock (an output clock of another device for example)
+> + *
+> + * Set the source clock of input clock @name of device @dev to @source.
+> + * @source period update will be propagated to @name clock.
+> + */
+> +static inline void qdev_connect_clock_in(DeviceState *dev, const char *name,
+> +                                         Clock *source)
+> +{
+> +    clock_set_source(qdev_get_clock_in(dev, name), source);
+> +}
+> +
+> +/**
+> + * qdev_alias_clock:
+> + * @dev: the device which has the clock
+> + * @name: the name of the clock in @dev (can't be NULL)
+> + * @alias_dev: the device to add the clock
+> + * @alias_name: the name of the clock in @container
+> + * @returns: a pointer to the clock
+> + *
+> + * Add a clock @alias_name in @alias_dev which is an alias of the clock @name
+> + * in @dev. The direction _in_ or _out_ will the same as the original.
+> + * An alias clock must not be modified or used by @alias_dev and should
+> + * typically be only only for device composition purpose.
+> + */
+> +Clock *qdev_alias_clock(DeviceState *dev, const char *name,
+> +                        DeviceState *alias_dev, const char *alias_name);
+> +
+> +/**
+> + * qdev_finalize_clocklist:
+> + * @dev: the device being finalize
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl5UaPsACgkQbDjKyiDZ
-s5Jz/BAAyL0YcNW8OyEoEcaBBOAUlpAd/mqoO8OMFJMygGZtJ4Sgqi7l2Z6uC0I7
-G22idvtISCYsuylCjvkVJg96QHuXGdnMyBR+g8CvU4lZcYkBKAD2d0mK2LYzq32q
-89TdYgtkHZl5fQQf2zLkdqJqzfBIjFQ7/v5tEAvirPgdfX0Vpj7r/AEIxTgfXmh3
-6RojUYtqB1iWjLF7AJi4LY0ZPdR5d+Ia2+Uz7tTQPnc6bPKeYS+dWmHkkQV8IWrH
-TLfAnmtOQ+hH1RBXTb0TvPhYP0AIjcdaG9ZKyE1X/JLmvnjZcSU5okOv2RMY26D5
-RhyJf0Z6V7rN6Y/FFapF6hML0hE9zqJMm11s3yq1IG3LH8ZmFrBJu8YB8+nDbtuk
-p/vhuFjoGHuKwadYD4Q63iYvCJIJIQZkgXB0I1m32sMF16M8Y4DM8N1Tticaa37E
-f4EWX0Sn/Jadxah62JUNPrHpqHLo4MaS2YWpR4+mc/MlAhVOyony5viRqQeuLlKq
-apJILrBlbOsZ73Fd/zdwwgyYLAwuZ1TC2DxxJayjBKDdc5aAAtmnrD+aQnZQSnum
-qu2AGC53z2+bpNQ5gKJz4IjXYi/DrOGEw42VPArpa+B366Sbn0g0DNiE2bGsoUXl
-KgWAg1Q31OLCf4Rb1RGJvLd8mes5SNwiHdSmqISZE9nBs5L7Wp8=
-=g5T0
------END PGP SIGNATURE-----
+It probably should be:
 
---PmA2V3Z32TCmWXqI--
+@dev: the device being finalized
+
+> + *
+> + * Clear the clocklist from @dev. Only used internally in qdev.
+> + */
+> +void qdev_finalize_clocklist(DeviceState *dev);
+> +
+> +#endif /* QDEV_CLOCK_H */
+> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+> index 1405b8a990..d87d989e72 100644
+> --- a/include/hw/qdev-core.h
+> +++ b/include/hw/qdev-core.h
+> @@ -149,6 +149,17 @@ struct NamedGPIOList {
+>      QLIST_ENTRY(NamedGPIOList) node;
+>  };
+>
+> +typedef struct Clock Clock;
+> +typedef struct NamedClockList NamedClockList;
+> +
+> +struct NamedClockList {
+> +    char *name;
+> +    Clock *clock;
+> +    bool output;
+> +    bool alias;
+> +    QLIST_ENTRY(NamedClockList) node;
+> +};
+> +
+>  /**
+>   * DeviceState:
+>   * @realized: Indicates whether the device has been fully constructed.
+> @@ -171,6 +182,7 @@ struct DeviceState {
+>      bool allow_unplug_during_migration;
+>      BusState *parent_bus;
+>      QLIST_HEAD(, NamedGPIOList) gpios;
+> +    QLIST_HEAD(, NamedClockList) clocks;
+>      QLIST_HEAD(, BusState) child_bus;
+>      int num_child_bus;
+>      int instance_id_alias;
+> diff --git a/hw/core/qdev-clock.c b/hw/core/qdev-clock.c
+> new file mode 100644
+> index 0000000000..9af0159517
+> --- /dev/null
+> +++ b/hw/core/qdev-clock.c
+> @@ -0,0 +1,169 @@
+> +/*
+> + * Device's clock input and output
+> + *
+> + * Copyright GreenSocs 2016-2020
+> + *
+> + * Authors:
+> + *  Frederic Konrad
+> + *  Damien Hedde
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/qdev-clock.h"
+> +#include "hw/qdev-core.h"
+> +#include "qapi/error.h"
+> +
+> +/*
+> + * qdev_init_clocklist:
+> + * Add a new clock in a device
+> + */
+> +static NamedClockList *qdev_init_clocklist(DeviceState *dev, const char *name,
+> +                                           bool output, Clock *clk)
+> +{
+> +    NamedClockList *ncl;
+> +
+> +    /*
+> +     * Clock must be added before realize() so that we can compute the
+> +     * clock's canonical path durint device_realize().
+
+s/durint/during/g
+
+> +     */
+> +    assert(!dev->realized);
+> +
+> +    /*
+> +     * The ncl structure is freed by qdev_finalize_clocklist() which will
+> +     * be called during @dev's device_finalize().
+> +     */
+> +    ncl = g_new0(NamedClockList, 1);
+> +    ncl->name = g_strdup(name);
+> +    ncl->output = output;
+> +    ncl->alias = (clk != NULL);
+> +
+> +    /*
+> +     * Trying to create a clock whose name clashes with some other
+> +     * clock or property is a bug in the caller and we will abort().
+> +     */
+> +    if (clk == NULL) {
+> +        clk = CLOCK(object_new(TYPE_CLOCK));
+> +        object_property_add_child(OBJECT(dev), name, OBJECT(clk), &error_abort);
+> +        if (output) {
+> +            /*
+> +             * Remove object_new()'s initial reference.
+> +             * Note that for inputs, the reference created by object_new()
+> +             * will be deleted in qdev_finalize_clocklist().
+> +             */
+> +            object_unref(OBJECT(clk));
+> +        }
+> +    } else {
+> +        object_property_add_link(OBJECT(dev), name,
+> +                                 object_get_typename(OBJECT(clk)),
+> +                                 (Object **) &ncl->clock,
+> +                                 NULL, OBJ_PROP_LINK_STRONG, &error_abort);
+> +    }
+> +
+> +    ncl->clock = clk;
+> +
+> +    QLIST_INSERT_HEAD(&dev->clocks, ncl, node);
+> +    return ncl;
+> +}
+> +
+> +void qdev_finalize_clocklist(DeviceState *dev)
+> +{
+> +    /* called by @dev's device_finalize() */
+> +    NamedClockList *ncl, *ncl_next;
+> +
+> +    QLIST_FOREACH_SAFE(ncl, &dev->clocks, node, ncl_next) {
+> +        QLIST_REMOVE(ncl, node);
+> +        if (!ncl->output && !ncl->alias) {
+> +            /*
+> +             * We kept a reference on the input clock to ensure it lives up to
+> +             * this point so we can safely remove the callback.
+> +             * It avoids having a callback to a deleted object if ncl->clock
+> +             * is still referenced somewhere else (eg: by a clock output).
+> +             */
+> +            clock_clear_callback(ncl->clock);
+> +            object_unref(OBJECT(ncl->clock));
+> +        }
+> +        g_free(ncl->name);
+> +        g_free(ncl);
+> +    }
+> +}
+> +
+> +Clock *qdev_init_clock_out(DeviceState *dev, const char *name)
+> +{
+> +    NamedClockList *ncl;
+> +
+> +    assert(name);
+> +
+> +    ncl = qdev_init_clocklist(dev, name, true, NULL);
+> +
+> +    return ncl->clock;
+> +}
+> +
+> +Clock *qdev_init_clock_in(DeviceState *dev, const char *name,
+> +                            ClockCallback *callback, void *opaque)
+> +{
+> +    NamedClockList *ncl;
+> +
+> +    assert(name);
+> +
+> +    ncl = qdev_init_clocklist(dev, name, false, NULL);
+> +
+> +    if (callback) {
+> +        clock_set_callback(ncl->clock, callback, opaque);
+> +    }
+> +    return ncl->clock;
+> +}
+> +
+> +static NamedClockList *qdev_get_clocklist(DeviceState *dev, const char *name)
+> +{
+> +    NamedClockList *ncl;
+> +
+> +    QLIST_FOREACH(ncl, &dev->clocks, node) {
+> +        if (strcmp(name, ncl->name) == 0) {
+> +            return ncl;
+> +        }
+> +    }
+> +
+> +    assert(false);
+
+Remove this.
+
+Otherwise it looks good.
+
+Alistair
+
+> +    return NULL;
+> +}
+> +
+> +Clock *qdev_get_clock_in(DeviceState *dev, const char *name)
+> +{
+> +    NamedClockList *ncl;
+> +
+> +    assert(name);
+> +
+> +    ncl = qdev_get_clocklist(dev, name);
+> +    assert(!ncl->output);
+> +
+> +    return ncl->clock;
+> +}
+> +
+> +Clock *qdev_get_clock_out(DeviceState *dev, const char *name)
+> +{
+> +    NamedClockList *ncl;
+> +
+> +    assert(name);
+> +
+> +    ncl = qdev_get_clocklist(dev, name);
+> +    assert(ncl->output);
+> +
+> +    return ncl->clock;
+> +}
+> +
+> +Clock *qdev_alias_clock(DeviceState *dev, const char *name,
+> +                        DeviceState *alias_dev, const char *alias_name)
+> +{
+> +    NamedClockList *ncl;
+> +
+> +    assert(name && alias_name);
+> +
+> +    ncl = qdev_get_clocklist(dev, name);
+> +
+> +    qdev_init_clocklist(alias_dev, alias_name, ncl->output, ncl->clock);
+> +
+> +    return ncl->clock;
+> +}
+> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+> index 3937d1eb1a..f390697348 100644
+> --- a/hw/core/qdev.c
+> +++ b/hw/core/qdev.c
+> @@ -37,6 +37,7 @@
+>  #include "hw/qdev-properties.h"
+>  #include "hw/boards.h"
+>  #include "hw/sysbus.h"
+> +#include "hw/qdev-clock.h"
+>  #include "migration/vmstate.h"
+>  #include "trace.h"
+>
+> @@ -855,6 +856,7 @@ static void device_set_realized(Object *obj, bool value, Error **errp)
+>      DeviceClass *dc = DEVICE_GET_CLASS(dev);
+>      HotplugHandler *hotplug_ctrl;
+>      BusState *bus;
+> +    NamedClockList *ncl;
+>      Error *local_err = NULL;
+>      bool unattached_parent = false;
+>      static int unattached_count;
+> @@ -902,6 +904,13 @@ static void device_set_realized(Object *obj, bool value, Error **errp)
+>           */
+>          g_free(dev->canonical_path);
+>          dev->canonical_path = object_get_canonical_path(OBJECT(dev));
+> +        QLIST_FOREACH(ncl, &dev->clocks, node) {
+> +            if (ncl->alias) {
+> +                continue;
+> +            } else {
+> +                clock_setup_canonical_path(ncl->clock);
+> +            }
+> +        }
+>
+>          if (qdev_get_vmsd(dev)) {
+>              if (vmstate_register_with_alias_id(VMSTATE_IF(dev),
+> @@ -1025,6 +1034,7 @@ static void device_initfn(Object *obj)
+>      dev->allow_unplug_during_migration = false;
+>
+>      QLIST_INIT(&dev->gpios);
+> +    QLIST_INIT(&dev->clocks);
+>  }
+>
+>  static void device_post_init(Object *obj)
+> @@ -1054,6 +1064,8 @@ static void device_finalize(Object *obj)
+>           */
+>      }
+>
+> +    qdev_finalize_clocklist(dev);
+> +
+>      /* Only send event if the device had been completely realized */
+>      if (dev->pending_deleted_event) {
+>          g_assert(dev->canonical_path);
+> diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+> index e3d796fdd4..2fdcb7dd00 100644
+> --- a/hw/core/Makefile.objs
+> +++ b/hw/core/Makefile.objs
+> @@ -7,7 +7,7 @@ common-obj-y += hotplug.o
+>  common-obj-y += vmstate-if.o
+>  # irq.o needed for qdev GPIO handling:
+>  common-obj-y += irq.o
+> -common-obj-y += clock.o
+> +common-obj-y += clock.o qdev-clock.o
+>
+>  common-obj-$(CONFIG_SOFTMMU) += reset.o
+>  common-obj-$(CONFIG_SOFTMMU) += qdev-fw.o
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index edcbd475aa..5a4511a86f 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -436,6 +436,7 @@ tests/test-qdev-global-props$(EXESUF): tests/test-qdev-global-props.o \
+>         hw/core/fw-path-provider.o \
+>         hw/core/reset.o \
+>         hw/core/vmstate-if.o \
+> +       hw/core/clock.o hw/core/qdev-clock.o \
+>         $(test-qapi-obj-y)
+>  tests/test-vmstate$(EXESUF): tests/test-vmstate.o \
+>         migration/vmstate.o migration/vmstate-types.o migration/qemu-file.o \
+> --
+> 2.24.1
+>
+>

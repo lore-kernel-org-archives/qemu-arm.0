@@ -1,137 +1,136 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1657729lfg;
-        Tue, 25 Feb 2020 05:04:56 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw1y/H2SkMRRCRbjCZGNFsrvrDxl/0X4/tT7q4fsSW1OirZNhksdMvJHkABBNwc4XFKm03S
-X-Received: by 2002:a0c:f412:: with SMTP id h18mr51673331qvl.124.1582635895958;
-        Tue, 25 Feb 2020 05:04:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582635895; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1767989lfg;
+        Tue, 25 Feb 2020 06:39:26 -0800 (PST)
+X-Received: by 2002:a1c:3b8a:: with SMTP id i132mr86230wma.32.1582641566198;
+        Tue, 25 Feb 2020 06:39:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582641566; cv=none;
         d=google.com; s=arc-20160816;
-        b=qId9U90fkn6bk0SFi2BaTUABXM58csMkau07Guua5Jx7iGvTNzd4MSTZYTWucKUEt5
-         k7PmI/MiROXkDYl2zKpJ68gge2lBLBop19gAiZKZvlDJQiiSBSYogzmtjDOSNS+anm+T
-         QV31SNwwpZ1iHMhmgsw3y+BD52MFwZPAyZML6xQLbJiGcO4Rtsc/6MwRIbxkth8MyXTJ
-         xIFkEU5tMZ/bvO+H3FB4T+hCLB/qomsbh5w2njZZWmpqln6lfmxgFlznEBhmPUf5eqtp
-         +MQekraMPV+8u4oIhg36EZGEDwRnuCDp1EGUWRnFIaNRetZvTsJVFEA8GJhJLaQw7IMW
-         mRdQ==
+        b=vWpHAxjuYiF2rgOBfQFwEDnTFZtQ0j3wlwRfjmzINkkrMCGTfstQaRombLrd5U4m2b
+         FKvY7GnpjX63qWDVBExwNpOUGyQrVZ1PFE3httWw2Brz8nQFVv9+ex4/VY8AMwXQnDm/
+         euT1y9E0L/Syh7TCxif97BOFQ2WTvme3bIXyxk7BjydbibFphr3S037KdcuPBXKG+gqB
+         v4j2GJ4O54gD/dan5OK66fmUTv0DHy181FQJ+paLD3D4wuMu4kX88ar8S80FXEI++t6H
+         2r+u7NSCB5HzvkHX+Xh0DOe56s5c9ky2f5r9l0LDP2hhSQXNRorKO0CIixY6aCjVT5wI
+         zUig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Acw6Js8G5cqiyhObPuNAuN3cnonY0/zHBkQOyuuBJU0=;
-        b=SxCc2u2TL4zDTLrjYCPBBJN2XzG/qBk6NTa31ec29eTTisHRo0LRcuEI2Ke8oV2RMm
-         PcIr4oHnV44Q8p25KwRDA/BvyKfxS5AHSywiyQD8kpxKjXdIqTJAJIHYJFOOzdRJiv8k
-         I3yBhn37mm8qdRP0aH7pwhJ6JiP38B71Kf/kI4tHCrs6MyzWJwQJXaoT4gRnrg53KEws
-         gU/jVHOedbG6Opgr6z8gGofP3y9G9LcMZzmKMMesd6FTyzG5+ghRWvXYsc7CiXD1umtw
-         +TULYLioxsst43C0XvEtQWjJEwqcmtnET4kA7TsObOj2+KqW2ZwAYxp5ym8BnQnwwr6r
-         QgjA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=CxC7+57klu/2mln+X9DRHhYMcaLTR/a8a6mDU1Kkwh0=;
+        b=ojvoZRneWB/P4toELrVrXwKLCem4wCYHkRZ/4uIt4UvBf01a5V4ygsyPuDBLRAWid4
+         o0H2uF9hp31fwN5wL0AXjzhOzf/HVVDTkx2WLDrCLEtV8cabp/iSrqzOH+BE/r0llaWO
+         8ZUfiq/OQfYeQHoygI4EB2v3neln9BLodUM1uFHIqDIl+w+8/3hA6fj3JpH0ISEF26aZ
+         OJaXOUPQ9G2tjrFySG06KI2vxEOghX+1GCAkCqGn1cjLJ930YH6D3Nfc0tjyMLR4hJ7x
+         Gf5R8RM4ofCFHvWBmMgDwAR8HeeMBQL2CPR00tuHj52wLxcMpbUQvZ5Tr04qEr5IsWbF
+         58dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=zCbUrq2O;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w26si7310871qto.306.2020.02.25.05.04.55
+       dkim=pass header.i=@linaro.org header.s=google header.b=nid8GJYA;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id q17sor4165106wrp.61.2020.02.25.06.39.26
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 05:04:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 25 Feb 2020 06:39:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=zCbUrq2O;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55184 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6ZtP-0007Te-9H
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 08:04:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35595)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j6ZsQ-0007PS-Bv
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:03:56 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j6ZsP-00012g-8j
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:03:54 -0500
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:34481)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j6ZsP-00011N-1U
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:03:53 -0500
-Received: by mail-oi1-x244.google.com with SMTP id l136so12442261oig.1
- for <qemu-devel@nongnu.org>; Tue, 25 Feb 2020 05:03:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Acw6Js8G5cqiyhObPuNAuN3cnonY0/zHBkQOyuuBJU0=;
- b=zCbUrq2OJlviLLGzmr9QI0s6YRHcpqy6/CN8Zvy6Drs2fOwySwbT++2ZUYGZBlwf7K
- gV7vwILhtAP9UvuTJtgE27+r1d4/8siO2sac8REPNlPgE+uxAPoihEGKnZJiZL8M7jXm
- wq69XlhnDwPvcjH+s334uA9jeakCZKtil4WpOSogtVMaCxjReVF5/WKIqw8igYbL5iBc
- T+t84K2jx8Tmw+nkqbFBwBCe7nXONv/cuF8HrPw/X5m8eI4W33NoULa+XWzwubE7C4j1
- /0ubKM7OJRrWA3CXKhezYzfNSa2PsBre4e2HDigKr3rNkR3rSDfqYTrvVf9hOrXtoxUB
- BsZw==
+       dkim=pass header.i=@linaro.org header.s=google header.b=nid8GJYA;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=CxC7+57klu/2mln+X9DRHhYMcaLTR/a8a6mDU1Kkwh0=;
+        b=nid8GJYAJPYBPm/sS1dx1DsWD7C33KyCs1UYpq/bGeHkJz2ohx55kYP6MoXAx/BfDD
+         z22K2c68MTFWY/PHKVJAo6uKWVPNnDe4TlnYTRiH0M8F+BJkj2Tt2JwgdsLZK0UBUL4y
+         9szs8FDdtVH0lkl2VeGbZBA0PcgUkX28PklCZncEnqPnf4AAOXTFCKx27Hp25TWmwxi8
+         3DNJ7H5WSOaBcVfqfb3cpORSUJ0UMlvDVMmpgnW5TLruY10o9kH+Z+AWlIHFYPTo5qIc
+         M3L1E7bXZXShVFoXfrzv7Qri7bMVL4+UTx7Y1qvRzd5WxYuHnt9kkiTuU1/k5v7ukUOq
+         XbeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Acw6Js8G5cqiyhObPuNAuN3cnonY0/zHBkQOyuuBJU0=;
- b=VAA8YSxkUctbOrgGt6CtLigRvP/MKQ8kX/gmRndTh2mzE40FZZNf4mGTf09/JqeTU9
- pU1XS6CHyPRtZKEcwPrfJul/yJToMlgHcSEbSkPiBXUZD2T21EOxksPyPJqJyUQyrpK2
- Pe4WrGVzIGOZpTa4cMxA28jlzk+uvig480e3CbO+bRRQewSgB9q0m9vqMCxvdrbLiDIO
- XF3UC31GbC2Sdz/KD8CduPsDsQNq2ysnjpSL3PfrsOA8C56yeAXfiCHU+ukawJr6SLfh
- whNMEHLXI062cquT8VBEEcywmvl1BRtBonq1Fd/eyAgegZovmVrBlKxLz20P5rldaBX8
- N/Rg==
-X-Gm-Message-State: APjAAAWgmxccl4vO5Jd734lhY+oGGg4M9PakfJKnhGec/UOw/x4wTvzG
- 9n42Hd9+q0ZDrOf085yPvV8ccj5m4M6BNJWxe+2AKw==
-X-Received: by 2002:a05:6808:289:: with SMTP id
- z9mr3339127oic.48.1582635831963; 
- Tue, 25 Feb 2020 05:03:51 -0800 (PST)
-MIME-Version: 1.0
-References: <1582537164-764-1-git-send-email-sai.pavan.boddu@xilinx.com>
-In-Reply-To: <1582537164-764-1-git-send-email-sai.pavan.boddu@xilinx.com>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=CxC7+57klu/2mln+X9DRHhYMcaLTR/a8a6mDU1Kkwh0=;
+        b=UR+mmID5PwugE7cNLXmQonwgSI0iGeBnh9ij1VPs07vjiBtAAkwm+OhLtahYqEZTH2
+         bXY16robljG8MNs8gqbBVgayrUlXSnFBf+Du31QqOwH1cUVxsyt3JtpMlQuoeHGMmnPv
+         g/tpj8pyyGSOVJsV4sFmSoWZY8kucB0UqKh3bqBFu8ZhKX2kbkZwmkG9VaDH3KvPZBSg
+         S+ovHweqyCW/MwFx2DXBinjLnoW2cdzPl0GMO7I093thGNrzOFvSsYCsytB74xtDl2VC
+         wRA+9i/4mHh3r29bzdeOgPe1WeUmBqsXwPm2mcNNZDzQjLITMByUbCnt0FxWPWG13081
+         nVdw==
+X-Gm-Message-State: APjAAAX6j7IcilC/LA4h97+QX0iROe/QX4O4WWsUJ/wHzsfYKk2hL4NV
+	Ftd/WK2ICFXElnacQM33fzZPU5An
+X-Google-Smtp-Source: APXvYqwU4yLh/xJKjVASihiQSNbsM8wOJz7/8WYgkpIVwqsMHUF+1qKnjy77ISI080QbkY4waVrv5g==
+X-Received: by 2002:adf:a50b:: with SMTP id i11mr1369390wrb.60.1582641565849;
+        Tue, 25 Feb 2020 06:39:25 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+        by smtp.gmail.com with ESMTPSA id w8sm4388820wmm.0.2020.02.25.06.39.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 25 Feb 2020 06:39:25 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 25 Feb 2020 13:03:40 +0000
-Message-ID: <CAFEAcA9_SvWkqiq67noeHEfkOT7nMX=yHNuikUkBPkM=_bi0jA@mail.gmail.com>
-Subject: Re: [PATCH v3 0/3] Fix number of priority bits for arm boards
-To: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Anthony Liguori <anthony@codemonkey.ws>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wxy/BzmrcBVU
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH RISU] aarch64.risu: Add patterns for v8.3-RCPC and v8.4-RCPC insns
+Date: Tue, 25 Feb 2020 14:39:23 +0000
+Message-Id: <20200225143923.22297-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-TUID: GvVAk0rGdwSE
 
-On Mon, 24 Feb 2020 at 09:44, Sai Pavan Boddu
-<sai.pavan.boddu@xilinx.com> wrote:
->
-> This patch series implements the mask for unimplemented priority bits in
-> arm-gic. Which will return the expected number of priority bits on read.
->
-> Changes for V2:
->     Followed gicv3 code for defining mask for unimplemented bits
->     Hardcoded num priority bits for A9 and ARM11MPCore boards
-> Changes for V3:
->     Fixed the code as suggested in V1.
->     Implemented checks for max and min priority bits.
->
-> Sai Pavan Boddu (3):
->   arm_gic: Mask the un-supported priority bits
->   cpu/a9mpcore: Set number of GIC priority bits to 5
->   cpu/arm11mpcore: Set number of GIC priority bits to 4
+Add patterns for the new instructions in the v8.3-RCPC and
+v8.4-RCPC extensions.
 
-Applied to target-arm.next, thanks. (I tweaked a few of
-the commit messages to give a little more detail.)
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+This is what I used for testing the RCPC QEMU patches I sent out
+the other day. Did I get the @ section syntax here right?
 
--- PMM
+
+ aarch64.risu | 32 ++++++++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+
+diff --git a/aarch64.risu b/aarch64.risu
+index c4eda7a..8f08cd0 100644
+--- a/aarch64.risu
++++ b/aarch64.risu
+@@ -3019,3 +3019,35 @@ SM3TT2B A64_V 1100 1110 010 rm:5 10 imm:2 11 rn:5 rd:5
+ XAR A64_V 1100 1110 100 rm:5 imm:6 rn:5 rd:5
+ 
+ @
++
++# v8.3-RCPC instructions
++@v8_3_rcpc
++
++# LDAPR, LDAPRH, LDAPRB
++# As usual, the $rn != $rt constraint is risu-imposed, not architectural
++LDAPR A64 sz:2 111000 101 11111 1100 00 rn:5 rt:5 \
++!constraints { $rn != 31 && $rn != $rt } \
++!memory { align(1 << $sz); reg_plus_imm($rn, 0); }
++
++@
++
++# v8.4-RCPC instructions
++# As usual, the $rn != $rt constraint is risu-imposed, not architectural
++@v8_4_rcpc
++STLUR A64 sz:2 011001 00 0 imm:9 00 rn:5 rt:5 \
++!constraints { $rn != 31 && $rn != $rt } \
++!memory { align(1 << $sz); reg_plus_imm($rn, $imm); }
++
++LDAPUR A64 sz:2 011001 01 0 imm:9 00 rn:5 rt:5 \
++!constraints { $rn != 31 && $rn != $rt } \
++!memory { align(1 << $sz); reg_plus_imm($rn, $imm); }
++
++LDAPURS64 A64 sz:2 011001 10 0 imm:9 00 rn:5 rt:5 \
++!constraints { $rn != 31 && $rn != $rt && $sz != 3 } \
++!memory { align(1 << $sz); reg_plus_imm($rn, $imm); }
++
++LDAPURS32 A64 sz:2 011001 11 0 imm:9 00 rn:5 rt:5 \
++!constraints { $rn != 31 && $rn != $rt && $sz < 2 } \
++!memory { align(1 << $sz); reg_plus_imm($rn, $imm); }
++
++@
+-- 
+2.20.1

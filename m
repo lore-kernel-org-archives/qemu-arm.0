@@ -1,552 +1,403 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1898813lfg;
-        Tue, 25 Feb 2020 08:37:42 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyQGrta/fo4yxiySTHVETfHG40orLl2bO9wd11jMvRFxOZ5mLzNADE1ctdilNxFAzfbyWhj
-X-Received: by 2002:a05:6214:707:: with SMTP id b7mr48852988qvz.97.1582648661909;
-        Tue, 25 Feb 2020 08:37:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582648661; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1918475lfg;
+        Tue, 25 Feb 2020 08:58:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzO1CoqqiA7R9yh6elX7+3CoVRvfHHqUEHuUeG0iQePZUXSF7PRM5rhqlUHMLz3qopTLVa8
+X-Received: by 2002:a05:6808:45:: with SMTP id v5mr4150708oic.90.1582649923957;
+        Tue, 25 Feb 2020 08:58:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582649923; cv=none;
         d=google.com; s=arc-20160816;
-        b=cKlKraAl3BxhxZ05aUlLjazKkJ8LIxKpVV/F9383DkIdxvjj5PNGFiSfPaX8u2XJhb
-         zpWCQvZY3fqnwoR0HZ3tXDE0aKvTSPRovmKx6wfMsqJYZyQDkFaUZtjlQiz1T2fgra0f
-         PO0VEKjs/rbZnjEYCQTVWRkPkP7pO7xRURkt5fnHgHA4I6dHLYAOH/BbQsWJBmG2NF+m
-         QIaYD9YBnRh+lMcUIS9+FUXrw39quw50XYZ0GoPFsP332Kc2WfhSBzYvFAbXIgRbP4Az
-         CnqUZXpWIDmIATcdMO+n/pE+0Rst1ZG+kUtiEYZeAGKq23zJ6eQIy1l2UjwQVoIyxUDE
-         Cifg==
+        b=AA+/5wlQ91obhtNYbROyYuYs2hkSqnp5GENu3TMd/cZq/d/3X0PRTk8TUGNPsir9wS
+         9Z4yolOyzYp2NEHCHQ/+ET7vPVyJpDBNGUvHcMqoRnv4UxXcGft7pGDFcGVPoU2mXlZh
+         MSvT7uIOPj1aZYC32tL4oxAfyDie8eufz10lrQsTY/PDO5uOyPY1OnzOQoUjlqeLG4IO
+         T8yNxfRJYwLlcTmPlnvGvRdGqB0pmQYXx3R1XLtkc0nXsoxQEFccqPLZ+BXU5WiQqMVK
+         CRSoLeIAdcoDbNDXaBXjwYJWE5jyYt9Ztb0Z1zg8uN0j4s/CTvpxT9QxZ3Fy2GEPDUmz
+         E60Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=6P39t6OwqgO7s3hoSwBxyI2ANpbI/mNX4eAo2Bc6UAk=;
-        b=RfOoSq7bfe1SK2sCC8sO8sNt0J6wl0r257OJ/TUflFJqOG1monitQpyRuuVpLXFWV9
-         3U76wB8/2A5rY2efBJVlNCXVlhd33onpMiFc2wDsi20GCyFxCg+AIBTcmwjcgIdRyVU+
-         iwsISpCeBksWDexgwOPI3LutMbLeLdio+te7XjxG/MoS5nKfzb3wlyIENyNj+MIjrrA+
-         n4LGPy3mPZF7f8Z7+vgey9RhB9LwOTldXooSE2GkPGnt2LXdIhJjyeRRuH4TPpHVAywW
-         L4HqoWS8AvHXbbgEvNZuwnmUvzcdurYyeekrNLzYkZUDKBzMPUuG29f1u5Z77XsPGCty
-         5WUQ==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=gXW28zJUpvw3NXmTDTUoykn+LcXNIS5DQpLRPFzNEOs=;
+        b=RxA/g6/MuDm/ZR+wjmVkzd1PZcRaYGEs4IO+OhmUyhM2uUge7yH79rgR7/kGo+1q4j
+         XGd4gtgilnu6I3PD2od8uRhTVCWuJacDi5b41nsyJdGqG8VDFFQ20+gBLWclzhkJSb9l
+         w3No5BgHA8V8oYL9bXYVtfypg8z8YcdKcCVAhtVeGMCTMLaCAKMvVX5xDBND1m8jFY5M
+         oHoAHVBi9IQU/X0pT4HtDukWoAbqa6IJO3Cj+iYtwoUlANKLpcdRIfHDv/Uo3HQ3wkZ2
+         UcMEt1tFiAoNuasYhTEgHWRW/xE+4xl+YcutMZ3rBHnJ/LdaxYks8Mv7xWHC88s+9Pnz
+         5tKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=epj2lbs3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s191si16703qke.49.2020.02.25.08.37.41
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 08:37:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Whqg9UOG;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id e9si8479071otk.318.2020.02.25.08.58.43;
+        Tue, 25 Feb 2020 08:58:43 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=epj2lbs3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60092 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6dDJ-0004xi-BM
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 11:37:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42703)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1j6dD6-0004qo-1G
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 11:37:32 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1j6dD1-0004Ag-NE
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 11:37:27 -0500
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:44773)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1j6dCt-00045C-30; Tue, 25 Feb 2020 11:37:15 -0500
-Received: by mail-lj1-x243.google.com with SMTP id q8so14725329ljj.11;
- Tue, 25 Feb 2020 08:37:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6P39t6OwqgO7s3hoSwBxyI2ANpbI/mNX4eAo2Bc6UAk=;
- b=epj2lbs3rZNqiYBPU9FhNAzZi9ZpvsNPy9hZbUwVA+OwUFh8lx0Vzgu5NIxhVywDR2
- slnY5wnT7997U1fM4rK7rKiDzi5dWCRD5inEOPmsmYAjOV57Iy2STQ6cIDeXgnNJF004
- 6WfeN6PVbATT0htJkAtMDlCHyUMA8e0cKMX/vMpOnFfgdTYyGSQTgVafMgbEUAYHNOyk
- AavbJAJMYQltw7S2wNOE11o/D7L11MqJbIQsKRsczpglVVc4Mb0RrSEs5+LUphIAG3Ky
- 0ISPHfKbctqh/pgbvnDoUrubBBsCmksC69bagRwSf8+uB9Sj6H+ZmSGUw90LJ3J9MdYf
- maeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=6P39t6OwqgO7s3hoSwBxyI2ANpbI/mNX4eAo2Bc6UAk=;
- b=gAeA1qLPLz6xVoM14oDHhdo9hKAceeiCl8JDzhP/SddIjwKPVDqPxmr43cAWKsMcZz
- i+T+GuimKN126It2wzHCcKw5p90keenVJaK6pshjWMlIP8tATMZA2D9KVen6bHdMBjOL
- jCwJW2tyeRpCl/D5syMQCd4RvhOAM0cQwxyjUc/kcEJux27yM8g6wJC7jcgSh+etjAZ9
- wmKSwvbDn/VcC9JcYhqtySP+hPNqJDGgsIBNkFdrohDt9t37bCoJobCpGvtdX64dl1V7
- pfbHrpaPBKe93SCTRF/govYkLPlZEVO6yVZEWAQU9dhng+lExkcZM5XipBsswK8l2kwu
- 0f6w==
-X-Gm-Message-State: APjAAAVP+xXirKkbXWyJXOVC5jVyajgo/TSiQ9jsaFMBQXQsFAzSfuee
- Tjef6nGCuq6prFOFL+anaSQ1mgiwTx7mh3xeyxw=
-X-Received: by 2002:a2e:b4ac:: with SMTP id q12mr32029770ljm.285.1582648633799; 
- Tue, 25 Feb 2020 08:37:13 -0800 (PST)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Whqg9UOG;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1731056AbgBYQ6m (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 25 Feb 2020 11:58:42 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:27489 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1730143AbgBYQ6m (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Tue, 25 Feb 2020 11:58:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1582649920;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=gXW28zJUpvw3NXmTDTUoykn+LcXNIS5DQpLRPFzNEOs=;
+        b=Whqg9UOG24MspF5iIwbDmnfYCetXkfecTLgkMsN8w17dC+99zdHmQRsdoNuK9lIB4orjnu
+        OABYH3SzuX224wDH4kaZuilAqMHEl103+Sj1y3EBMkWKcyRntIG6KiJWUa6uuXRa3QQSUj
+        Jz+pi91/BrlpzSk0MdZvwdnvq+Fve8c=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-174-jxqfovQeNIG1XIcRAznOeA-1; Tue, 25 Feb 2020 11:58:34 -0500
+X-MC-Unique: jxqfovQeNIG1XIcRAznOeA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E00291005513;
+        Tue, 25 Feb 2020 16:58:32 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id B97AE88859;
+        Tue, 25 Feb 2020 16:58:26 +0000 (UTC)
+Date:   Tue, 25 Feb 2020 17:58:23 +0100
+From:   Igor Mammedov <imammedo@redhat.com>
+To:     Dongjiu Geng <gengdongjiu@huawei.com>
+Cc:     <mst@redhat.com>, <xiaoguangrong.eric@gmail.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <fam@euphon.net>, <rth@twiddle.net>, <ehabkost@redhat.com>,
+        <mtosatti@redhat.com>, <qemu-devel@nongnu.org>,
+        <kvm@vger.kernel.org>, <qemu-arm@nongnu.org>,
+        <pbonzini@redhat.com>, <james.morse@arm.com>, <lersek@redhat.com>,
+        <jonathan.cameron@huawei.com>,
+        <shameerali.kolothum.thodi@huawei.com>, <zhengxiang9@huawei.com>
+Subject: Re: [PATCH v24 08/10] ACPI: Record Generic Error Status Block(GESB)
+ table
+Message-ID: <20200225175823.52c284c2@redhat.com>
+In-Reply-To: <20200217131248.28273-9-gengdongjiu@huawei.com>
+References: <20200217131248.28273-1-gengdongjiu@huawei.com>
+        <20200217131248.28273-9-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-References: <20200225131422.53368-1-damien.hedde@greensocs.com>
- <20200225131422.53368-4-damien.hedde@greensocs.com>
-In-Reply-To: <20200225131422.53368-4-damien.hedde@greensocs.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 25 Feb 2020 08:36:47 -0800
-Message-ID: <CAKmqyKM9neBsjLFeamWU16zzSCse7nzTmmyPwx6EJ1rnR85PRg@mail.gmail.com>
-Subject: Re: [PATCH v8 3/9] qdev: add clock input&output support to devices.
-To: Damien Hedde <damien.hedde@greensocs.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::243
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Mark Burton <mark.burton@greensocs.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r+mB3Nep4k+G
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: CcSQ6YAW5NsY
 
-On Tue, Feb 25, 2020 at 6:01 AM Damien Hedde <damien.hedde@greensocs.com> wrote:
->
-> Add functions to easily handle clocks with devices.
-> Clock inputs and outputs should be used to handle clock propagation
-> between devices.
-> The API is very similar the GPIO API.
->
-> This is based on the original work of Frederic Konrad.
->
-> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+On Mon, 17 Feb 2020 21:12:46 +0800
+Dongjiu Geng <gengdongjiu@huawei.com> wrote:
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
+> kvm_arch_on_sigbus_vcpu() error injection uses source_id as
+> index in etc/hardware_errors to find out Error Status Data
+> Block entry corresponding to error source. So supported source_id
+> values should be assigned here and not be changed afterwards to
+> make sure that guest will write error into expected Error Status
+> Data Block.
+> 
+> Before QEMU writes a new error to ACPI table, it will check whether
+> previous error has been acknowledged. If not acknowledged, the new
+> errors will be ignored and not be recorded. For the errors section
+> type, QEMU simulate it to memory section error.
+> 
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
 > ---
->
-> v8:
-> + remove another useless assert (Alistair)
-> + typos, comments (Alistair)
->
-> v7:
-> + update ClockIn/Out types
-> + qdev_connect_clock_out function removed / qdev_connect_clock_in added
->   instead
-> + qdev_pass_clock renamed to qdev_alias_clock
-> + various small fixes (typos, comment, asserts) (Peter)
-> + move device's instance_finalize code related to clock in qdev-clock.c
-> ---
->  include/hw/qdev-clock.h | 104 +++++++++++++++++++++++++
->  include/hw/qdev-core.h  |  12 +++
->  hw/core/qdev-clock.c    | 168 ++++++++++++++++++++++++++++++++++++++++
->  hw/core/qdev.c          |  12 +++
->  hw/core/Makefile.objs   |   2 +-
->  tests/Makefile.include  |   1 +
->  6 files changed, 298 insertions(+), 1 deletion(-)
->  create mode 100644 include/hw/qdev-clock.h
->  create mode 100644 hw/core/qdev-clock.c
->
-> diff --git a/include/hw/qdev-clock.h b/include/hw/qdev-clock.h
-> new file mode 100644
-> index 0000000000..b3b3a3e021
-> --- /dev/null
-> +++ b/include/hw/qdev-clock.h
-> @@ -0,0 +1,104 @@
+>  hw/acpi/ghes.c         | 218 +++++++++++++++++++++++++++++++++++++++++++++++++
+>  include/hw/acpi/ghes.h |   1 +
+>  2 files changed, 219 insertions(+)
+> 
+> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> index cea2bff..41ddad9 100644
+> --- a/hw/acpi/ghes.c
+> +++ b/hw/acpi/ghes.c
+> @@ -26,6 +26,7 @@
+>  #include "qemu/error-report.h"
+>  #include "hw/acpi/generic_event_device.h"
+>  #include "hw/nvram/fw_cfg.h"
+> +#include "qemu/uuid.h"
+>  
+>  #define ACPI_GHES_ERRORS_FW_CFG_FILE        "etc/hardware_errors"
+>  #define ACPI_GHES_DATA_ADDR_FW_CFG_FILE     "etc/hardware_errors_addr"
+> @@ -43,6 +44,36 @@
+>  #define GAS_ADDR_OFFSET 4
+>  
+>  /*
+> + * The total size of Generic Error Data Entry
+> + * ACPI 6.1/6.2: 18.3.2.7.1 Generic Error Data,
+> + * Table 18-343 Generic Error Data Entry
+> + */
+> +#define ACPI_GHES_DATA_LENGTH               72
+> +
+> +/* The memory section CPER size, UEFI 2.6: N.2.5 Memory Error Section */
+> +#define ACPI_GHES_MEM_CPER_LENGTH           80
+> +
+> +/* Masks for block_status flags */
+> +#define ACPI_GEBS_UNCORRECTABLE         1
+> +
 > +/*
-> + * Device's clock input and output
-> + *
-> + * Copyright GreenSocs 2016-2020
-> + *
-> + * Authors:
-> + *  Frederic Konrad
-> + *  Damien Hedde
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
+> + * Total size for Generic Error Status Block except Generic Error Data Entries
+> + * ACPI 6.2: 18.3.2.7.1 Generic Error Data,
+> + * Table 18-380 Generic Error Status Block
 > + */
+> +#define ACPI_GHES_GESB_SIZE                 20
 > +
-> +#ifndef QDEV_CLOCK_H
-> +#define QDEV_CLOCK_H
-> +
-> +#include "hw/clock.h"
-> +
-> +/**
-> + * qdev_init_clock_in:
-> + * @dev: the device to add an input clock to
-> + * @name: the name of the clock (can't be NULL).
-> + * @callback: optional callback to be called on update or NULL.
-> + * @opaque: argument for the callback
-> + * @returns: a pointer to the newly added clock
-> + *
-> + * Add an input clock to device @dev as a clock named @name.
-> + * This adds a child<> property.
-> + * The callback will be called with @opaque as opaque parameter.
+> +/*
+> + * Values for error_severity field
 > + */
-> +Clock *qdev_init_clock_in(DeviceState *dev, const char *name,
-> +                          ClockCallback *callback, void *opaque);
-> +
-> +/**
-> + * qdev_init_clock_out:
-> + * @dev: the device to add an output clock to
-> + * @name: the name of the clock (can't be NULL).
-> + * @returns: a pointer to the newly added clock
-> + *
-> + * Add an output clock to device @dev as a clock named @name.
-> + * This adds a child<> property.
-> + */
-> +Clock *qdev_init_clock_out(DeviceState *dev, const char *name);
-> +
-> +/**
-> + * qdev_get_clock_in:
-> + * @dev: the device which has the clock
-> + * @name: the name of the clock (can't be NULL).
-> + * @returns: a pointer to the clock
-> + *
-> + * Get the input clock @name from @dev or NULL if does not exist.
-> + */
-> +Clock *qdev_get_clock_in(DeviceState *dev, const char *name);
-> +
-> +/**
-> + * qdev_get_clock_out:
-> + * @dev: the device which has the clock
-> + * @name: the name of the clock (can't be NULL).
-> + * @returns: a pointer to the clock
-> + *
-> + * Get the output clock @name from @dev or NULL if does not exist.
-> + */
-> +Clock *qdev_get_clock_out(DeviceState *dev, const char *name);
-> +
-> +/**
-> + * qdev_connect_clock_in:
-> + * @dev: a device
-> + * @name: the name of an input clock in @dev
-> + * @source: the source clock (an output clock of another device for example)
-> + *
-> + * Set the source clock of input clock @name of device @dev to @source.
-> + * @source period update will be propagated to @name clock.
-> + */
-> +static inline void qdev_connect_clock_in(DeviceState *dev, const char *name,
-> +                                         Clock *source)
-> +{
-> +    clock_set_source(qdev_get_clock_in(dev, name), source);
-> +}
-> +
-> +/**
-> + * qdev_alias_clock:
-> + * @dev: the device which has the clock
-> + * @name: the name of the clock in @dev (can't be NULL)
-> + * @alias_dev: the device to add the clock
-> + * @alias_name: the name of the clock in @container
-> + * @returns: a pointer to the clock
-> + *
-> + * Add a clock @alias_name in @alias_dev which is an alias of the clock @name
-> + * in @dev. The direction _in_ or _out_ will the same as the original.
-> + * An alias clock must not be modified or used by @alias_dev and should
-> + * typically be only only for device composition purpose.
-> + */
-> +Clock *qdev_alias_clock(DeviceState *dev, const char *name,
-> +                        DeviceState *alias_dev, const char *alias_name);
-> +
-> +/**
-> + * qdev_finalize_clocklist:
-> + * @dev: the device being finalized
-> + *
-> + * Clear the clocklist from @dev. Only used internally in qdev.
-> + */
-> +void qdev_finalize_clocklist(DeviceState *dev);
-> +
-> +#endif /* QDEV_CLOCK_H */
-> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-> index 1405b8a990..d87d989e72 100644
-> --- a/include/hw/qdev-core.h
-> +++ b/include/hw/qdev-core.h
-> @@ -149,6 +149,17 @@ struct NamedGPIOList {
->      QLIST_ENTRY(NamedGPIOList) node;
->  };
->
-> +typedef struct Clock Clock;
-> +typedef struct NamedClockList NamedClockList;
-> +
-> +struct NamedClockList {
-> +    char *name;
-> +    Clock *clock;
-> +    bool output;
-> +    bool alias;
-> +    QLIST_ENTRY(NamedClockList) node;
+> +enum AcpiGenericErrorSeverity {
+> +    ACPI_CPER_SEV_RECOVERABLE = 0,
+> +    ACPI_CPER_SEV_FATAL = 1,
+> +    ACPI_CPER_SEV_CORRECTED = 2,
+> +    ACPI_CPER_SEV_NONE = 3,
 > +};
 > +
->  /**
->   * DeviceState:
->   * @realized: Indicates whether the device has been fully constructed.
-> @@ -171,6 +182,7 @@ struct DeviceState {
->      bool allow_unplug_during_migration;
->      BusState *parent_bus;
->      QLIST_HEAD(, NamedGPIOList) gpios;
-> +    QLIST_HEAD(, NamedClockList) clocks;
->      QLIST_HEAD(, BusState) child_bus;
->      int num_child_bus;
->      int instance_id_alias;
-> diff --git a/hw/core/qdev-clock.c b/hw/core/qdev-clock.c
-> new file mode 100644
-> index 0000000000..62035aef83
-> --- /dev/null
-> +++ b/hw/core/qdev-clock.c
-> @@ -0,0 +1,168 @@
 > +/*
-> + * Device's clock input and output
-> + *
-> + * Copyright GreenSocs 2016-2020
-> + *
-> + * Authors:
-> + *  Frederic Konrad
-> + *  Damien Hedde
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/qdev-clock.h"
-> +#include "hw/qdev-core.h"
-> +#include "qapi/error.h"
-> +
-> +/*
-> + * qdev_init_clocklist:
-> + * Add a new clock in a device
-> + */
-> +static NamedClockList *qdev_init_clocklist(DeviceState *dev, const char *name,
-> +                                           bool output, Clock *clk)
-> +{
-> +    NamedClockList *ncl;
-> +
-> +    /*
-> +     * Clock must be added before realize() so that we can compute the
-> +     * clock's canonical path during device_realize().
-> +     */
-> +    assert(!dev->realized);
-> +
-> +    /*
-> +     * The ncl structure is freed by qdev_finalize_clocklist() which will
-> +     * be called during @dev's device_finalize().
-> +     */
-> +    ncl = g_new0(NamedClockList, 1);
-> +    ncl->name = g_strdup(name);
-> +    ncl->output = output;
-> +    ncl->alias = (clk != NULL);
-> +
-> +    /*
-> +     * Trying to create a clock whose name clashes with some other
-> +     * clock or property is a bug in the caller and we will abort().
-> +     */
-> +    if (clk == NULL) {
-> +        clk = CLOCK(object_new(TYPE_CLOCK));
-> +        object_property_add_child(OBJECT(dev), name, OBJECT(clk), &error_abort);
-> +        if (output) {
-> +            /*
-> +             * Remove object_new()'s initial reference.
-> +             * Note that for inputs, the reference created by object_new()
-> +             * will be deleted in qdev_finalize_clocklist().
-> +             */
-> +            object_unref(OBJECT(clk));
-> +        }
-> +    } else {
-> +        object_property_add_link(OBJECT(dev), name,
-> +                                 object_get_typename(OBJECT(clk)),
-> +                                 (Object **) &ncl->clock,
-> +                                 NULL, OBJ_PROP_LINK_STRONG, &error_abort);
-> +    }
-> +
-> +    ncl->clock = clk;
-> +
-> +    QLIST_INSERT_HEAD(&dev->clocks, ncl, node);
-> +    return ncl;
-> +}
-> +
-> +void qdev_finalize_clocklist(DeviceState *dev)
-> +{
-> +    /* called by @dev's device_finalize() */
-> +    NamedClockList *ncl, *ncl_next;
-> +
-> +    QLIST_FOREACH_SAFE(ncl, &dev->clocks, node, ncl_next) {
-> +        QLIST_REMOVE(ncl, node);
-> +        if (!ncl->output && !ncl->alias) {
-> +            /*
-> +             * We kept a reference on the input clock to ensure it lives up to
-> +             * this point so we can safely remove the callback.
-> +             * It avoids having a callback to a deleted object if ncl->clock
-> +             * is still referenced somewhere else (eg: by a clock output).
-> +             */
-> +            clock_clear_callback(ncl->clock);
-> +            object_unref(OBJECT(ncl->clock));
-> +        }
-> +        g_free(ncl->name);
-> +        g_free(ncl);
-> +    }
-> +}
-> +
-> +Clock *qdev_init_clock_out(DeviceState *dev, const char *name)
-> +{
-> +    NamedClockList *ncl;
-> +
-> +    assert(name);
-> +
-> +    ncl = qdev_init_clocklist(dev, name, true, NULL);
-> +
-> +    return ncl->clock;
-> +}
-> +
-> +Clock *qdev_init_clock_in(DeviceState *dev, const char *name,
-> +                            ClockCallback *callback, void *opaque)
-> +{
-> +    NamedClockList *ncl;
-> +
-> +    assert(name);
-> +
-> +    ncl = qdev_init_clocklist(dev, name, false, NULL);
-> +
-> +    if (callback) {
-> +        clock_set_callback(ncl->clock, callback, opaque);
-> +    }
-> +    return ncl->clock;
-> +}
-> +
-> +static NamedClockList *qdev_get_clocklist(DeviceState *dev, const char *name)
-> +{
-> +    NamedClockList *ncl;
-> +
-> +    QLIST_FOREACH(ncl, &dev->clocks, node) {
-> +        if (strcmp(name, ncl->name) == 0) {
-> +            return ncl;
-> +        }
-> +    }
-> +
-> +    return NULL;
-> +}
-> +
-> +Clock *qdev_get_clock_in(DeviceState *dev, const char *name)
-> +{
-> +    NamedClockList *ncl;
-> +
-> +    assert(name);
-> +
-> +    ncl = qdev_get_clocklist(dev, name);
-> +    assert(!ncl->output);
-> +
-> +    return ncl->clock;
-> +}
-> +
-> +Clock *qdev_get_clock_out(DeviceState *dev, const char *name)
-> +{
-> +    NamedClockList *ncl;
-> +
-> +    assert(name);
-> +
-> +    ncl = qdev_get_clocklist(dev, name);
-> +    assert(ncl->output);
-> +
-> +    return ncl->clock;
-> +}
-> +
-> +Clock *qdev_alias_clock(DeviceState *dev, const char *name,
-> +                        DeviceState *alias_dev, const char *alias_name)
-> +{
-> +    NamedClockList *ncl;
-> +
-> +    assert(name && alias_name);
-> +
-> +    ncl = qdev_get_clocklist(dev, name);
-> +
-> +    qdev_init_clocklist(alias_dev, alias_name, ncl->output, ncl->clock);
-> +
-> +    return ncl->clock;
-> +}
-> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-> index 3937d1eb1a..f390697348 100644
-> --- a/hw/core/qdev.c
-> +++ b/hw/core/qdev.c
-> @@ -37,6 +37,7 @@
->  #include "hw/qdev-properties.h"
->  #include "hw/boards.h"
->  #include "hw/sysbus.h"
-> +#include "hw/qdev-clock.h"
->  #include "migration/vmstate.h"
->  #include "trace.h"
->
-> @@ -855,6 +856,7 @@ static void device_set_realized(Object *obj, bool value, Error **errp)
->      DeviceClass *dc = DEVICE_GET_CLASS(dev);
->      HotplugHandler *hotplug_ctrl;
->      BusState *bus;
-> +    NamedClockList *ncl;
->      Error *local_err = NULL;
->      bool unattached_parent = false;
->      static int unattached_count;
-> @@ -902,6 +904,13 @@ static void device_set_realized(Object *obj, bool value, Error **errp)
->           */
->          g_free(dev->canonical_path);
->          dev->canonical_path = object_get_canonical_path(OBJECT(dev));
-> +        QLIST_FOREACH(ncl, &dev->clocks, node) {
-> +            if (ncl->alias) {
-> +                continue;
-> +            } else {
-> +                clock_setup_canonical_path(ncl->clock);
-> +            }
-> +        }
->
->          if (qdev_get_vmsd(dev)) {
->              if (vmstate_register_with_alias_id(VMSTATE_IF(dev),
-> @@ -1025,6 +1034,7 @@ static void device_initfn(Object *obj)
->      dev->allow_unplug_during_migration = false;
->
->      QLIST_INIT(&dev->gpios);
-> +    QLIST_INIT(&dev->clocks);
+>   * Hardware Error Notification
+>   * ACPI 4.0: 17.3.2.7 Hardware Error Notification
+>   * Composes dummy Hardware Error Notification descriptor of specified type
+> @@ -73,6 +104,135 @@ static void build_ghes_hw_error_notification(GArray *table, const uint8_t type)
 >  }
->
->  static void device_post_init(Object *obj)
-> @@ -1054,6 +1064,8 @@ static void device_finalize(Object *obj)
->           */
->      }
->
-> +    qdev_finalize_clocklist(dev);
+>  
+>  /*
+> + * Generic Error Data Entry
+> + * ACPI 6.1: 18.3.2.7.1 Generic Error Data
+> + */
+> +static void acpi_ghes_generic_error_data(GArray *table,
+> +                const uint8_t *section_type, uint32_t error_severity,
+> +                uint8_t validation_bits, uint8_t flags,
+> +                uint32_t error_data_length, QemuUUID fru_id,
+> +                uint64_t time_stamp)
+> +{
+> +    /* Section Type */
+> +    g_array_append_vals(table, section_type, 16);
 > +
->      /* Only send event if the device had been completely realized */
->      if (dev->pending_deleted_event) {
->          g_assert(dev->canonical_path);
-> diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
-> index 115df55087..1d540ed6e7 100644
-> --- a/hw/core/Makefile.objs
-> +++ b/hw/core/Makefile.objs
-> @@ -7,7 +7,7 @@ common-obj-y += hotplug.o
->  common-obj-y += vmstate-if.o
->  # irq.o needed for qdev GPIO handling:
->  common-obj-y += irq.o
-> -common-obj-y += clock.o
-> +common-obj-y += clock.o qdev-clock.o
->
->  common-obj-$(CONFIG_SOFTMMU) += reset.o
->  common-obj-$(CONFIG_SOFTMMU) += qdev-fw.o
-> diff --git a/tests/Makefile.include b/tests/Makefile.include
-> index edcbd475aa..5a4511a86f 100644
-> --- a/tests/Makefile.include
-> +++ b/tests/Makefile.include
-> @@ -436,6 +436,7 @@ tests/test-qdev-global-props$(EXESUF): tests/test-qdev-global-props.o \
->         hw/core/fw-path-provider.o \
->         hw/core/reset.o \
->         hw/core/vmstate-if.o \
-> +       hw/core/clock.o hw/core/qdev-clock.o \
->         $(test-qapi-obj-y)
->  tests/test-vmstate$(EXESUF): tests/test-vmstate.o \
->         migration/vmstate.o migration/vmstate-types.o migration/qemu-file.o \
-> --
-> 2.25.1
->
->
+> +    /* Error Severity */
+> +    build_append_int_noprefix(table, error_severity, 4);
+> +    /* Revision */
+> +    build_append_int_noprefix(table, 0x300, 2);
+> +    /* Validation Bits */
+> +    build_append_int_noprefix(table, validation_bits, 1);
+> +    /* Flags */
+> +    build_append_int_noprefix(table, flags, 1);
+> +    /* Error Data Length */
+> +    build_append_int_noprefix(table, error_data_length, 4);
+> +
+> +    /* FRU Id */
+> +    g_array_append_vals(table, fru_id.data, ARRAY_SIZE(fru_id.data));
+> +
+> +    /* FRU Text */
+> +    build_append_int_noprefix(table, 0, 20);
+
+       that ends up calling:
+
+           for (i = 0; i < size; ++i) { 
+              uint64_t = uint64_t >> 8
+           }
+
+       with size > 8 it's probably undefined behavior
+
+it's safer to use here
+      
+      g_array_append_vals(table, zerro_array, sizeof(zerro_array))
+
+> +    /* Timestamp */
+> +    build_append_int_noprefix(table, time_stamp, 8);
+> +}
+> +
+> +/*
+> + * Generic Error Status Block
+> + * ACPI 6.1: 18.3.2.7.1 Generic Error Data
+> + */
+> +static void acpi_ghes_generic_error_status(GArray *table, uint32_t block_status,
+> +                uint32_t raw_data_offset, uint32_t raw_data_length,
+> +                uint32_t data_length, uint32_t error_severity)
+> +{
+> +    /* Block Status */
+> +    build_append_int_noprefix(table, block_status, 4);
+> +    /* Raw Data Offset */
+> +    build_append_int_noprefix(table, raw_data_offset, 4);
+> +    /* Raw Data Length */
+> +    build_append_int_noprefix(table, raw_data_length, 4);
+> +    /* Data Length */
+> +    build_append_int_noprefix(table, data_length, 4);
+> +    /* Error Severity */
+> +    build_append_int_noprefix(table, error_severity, 4);
+> +}
+> +
+> +/* UEFI 2.6: N.2.5 Memory Error Section */
+> +static void acpi_ghes_build_append_mem_cper(GArray *table,
+> +                                            uint64_t error_physical_addr)
+> +{
+> +    /*
+> +     * Memory Error Record
+> +     */
+> +
+> +    /* Validation Bits */
+> +    build_append_int_noprefix(table,
+> +                              (1ULL << 14) | /* Type Valid */
+> +                              (1ULL << 1) /* Physical Address Valid */,
+> +                              8);
+> +    /* Error Status */
+> +    build_append_int_noprefix(table, 0, 8);
+> +    /* Physical Address */
+> +    build_append_int_noprefix(table, error_physical_addr, 8);
+> +    /* Skip all the detailed information normally found in such a record */
+> +    build_append_int_noprefix(table, 0, 48);
+> +    /* Memory Error Type */
+> +    build_append_int_noprefix(table, 0 /* Unknown error */, 1);
+> +    /* Skip all the detailed information normally found in such a record */
+> +    build_append_int_noprefix(table, 0, 7);
+> +}
+> +
+> +static int acpi_ghes_record_mem_error(uint64_t error_block_address,
+> +                                      uint64_t error_physical_addr)
+> +{
+> +    GArray *block;
+> +
+> +    /* Memory Error Section Type */
+> +    const uint8_t uefi_cper_mem_sec[] =
+> +          UUID_LE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
+> +                  0xED, 0x7C, 0x83, 0xB1);
+> +
+> +    /* invalid fru id: ACPI 4.0: 17.3.2.6.1 Generic Error Data,
+> +     * Table 17-13 Generic Error Data Entry
+> +     */
+> +    QemuUUID fru_id = {};
+> +    uint32_t data_length;
+> +
+> +    block = g_array_new(false, true /* clear */, 1);
+> +
+> +    /* This is the length if adding a new generic error data entry*/
+> +    data_length = ACPI_GHES_DATA_LENGTH + ACPI_GHES_MEM_CPER_LENGTH;
+> +
+> +    /*
+> +     * Check whether it will run out of the preallocated memory if adding a new
+> +     * generic error data entry
+> +     */
+> +    if ((data_length + ACPI_GHES_GESB_SIZE) > ACPI_GHES_MAX_RAW_DATA_LENGTH) {
+> +        error_report("Not enough memory to record new CPER!!!");
+> +        g_array_free(block, true);
+> +        return -1;
+> +    }
+> +
+> +    /* Build the new generic error status block header */
+> +    acpi_ghes_generic_error_status(block, ACPI_GEBS_UNCORRECTABLE,
+> +        0, 0, data_length, ACPI_CPER_SEV_RECOVERABLE);
+> +
+> +    /* Build this new generic error data entry header */
+> +    acpi_ghes_generic_error_data(block, uefi_cper_mem_sec,
+> +        ACPI_CPER_SEV_RECOVERABLE, 0, 0,
+> +        ACPI_GHES_MEM_CPER_LENGTH, fru_id, 0);
+> +
+> +    /* Build the memory section CPER for above new generic error data entry */
+> +    acpi_ghes_build_append_mem_cper(block, error_physical_addr);
+> +
+> +    /* Write the generic error data entry into guest memory */
+> +    cpu_physical_memory_write(error_block_address, block->data, block->len);
+> +
+> +    g_array_free(block, true);
+> +
+> +    return 0;
+> +}
+> +
+> +/*
+>   * Build table for the hardware error fw_cfg blob.
+>   * Initialize "etc/hardware_errors" and "etc/hardware_errors_addr" fw_cfg blobs.
+>   * See docs/specs/acpi_hest_ghes.rst for blobs format.
+> @@ -230,3 +390,61 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+>      fw_cfg_add_file_callback(s, ACPI_GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
+>          NULL, &(ags->ghes_addr_le), sizeof(ags->ghes_addr_le), false);
+>  }
+> +
+> +int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
+> +{
+> +    uint64_t error_block_addr, read_ack_register_addr, read_ack_register = 0;
+> +    uint64_t start_addr;
+> +    bool ret = -1;
+> +    AcpiGedState *acpi_ged_state;
+> +    AcpiGhesState *ags;
+> +
+> +    assert(source_id < ACPI_HEST_SRC_ID_RESERVED);
+> +
+> +    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
+> +                                                       NULL));
+
+> +    if (acpi_ged_state) {
+> +        ags = &acpi_ged_state->ghes_state;
+> +    } else {
+> +        error_report("ACPI GED device not found");
+> +        return -1;
+> +    }
+
+This function is not reachable unless RAS is enabled and therefore GED device
+already present. So I'd replace this block with just
+
+         g_assert(acpi_ged_state)
+         ags = &acpi_ged_state->ghes_state;
+
+> +
+> +    start_addr = le64_to_cpu(ags->ghes_addr_le);
+> +
+> +    if (physical_address) {
+> +
+> +        if (source_id < ACPI_HEST_SRC_ID_RESERVED) {
+> +            start_addr += source_id * sizeof(uint64_t);
+> +        }
+> +
+> +        cpu_physical_memory_read(start_addr, &error_block_addr,
+> +                                 sizeof(error_block_addr));
+
+error_block_addr value is in guest byte order at this point
+and then ...
+
+> +
+> +        read_ack_register_addr = start_addr +
+> +            ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t);
+> +
+> +        cpu_physical_memory_read(read_ack_register_addr,
+> +                                 &read_ack_register, sizeof(read_ack_register));
+> +
+> +        /* zero means OSPM does not acknowledge the error */
+> +        if (!read_ack_register) {
+> +                error_report("OSPM does not acknowledge previous error,"
+> +                    " so can not record CPER for current error anymore");
+> +        } else if (error_block_addr) {
+> +                read_ack_register = cpu_to_le64(0);
+> +                /*
+> +                 * Clear the Read Ack Register, OSPM will write it to 1 when
+> +                 * it acknowledges this error.
+> +                 */
+> +                cpu_physical_memory_write(read_ack_register_addr,
+> +                    &read_ack_register, sizeof(uint64_t));
+> +
+> +                ret = acpi_ghes_record_mem_error(error_block_addr,
+
+it's passed to  cpu_physical_memory_write(error_block_address, ...
+which uses host byte order.
+It looks like le64_to_cpu() was lost somewhere in between.
+
+
+> +                                                 physical_address);
+> +        } else
+> +                error_report("can not find Generic Error Status Block");
+> +    }
+> +
+> +    return ret;
+> +}
+> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+> index a3420fc..4ad025e 100644
+> --- a/include/hw/acpi/ghes.h
+> +++ b/include/hw/acpi/ghes.h
+> @@ -70,4 +70,5 @@ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
+>  void acpi_build_hest(GArray *table_data, BIOSLinker *linker);
+>  void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
+>                            GArray *hardware_errors);
+> +int acpi_ghes_record_errors(uint8_t notify, uint64_t error_physical_addr);
+>  #endif

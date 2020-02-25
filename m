@@ -1,334 +1,552 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1875967lfg;
-        Tue, 25 Feb 2020 08:16:28 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzIqXyDlma3BT70pCiwXL1+h9jB02jd+Yv/gD/ITnU/8QYXWQUvhKyq3O33Gaa7hWkgrwhq
-X-Received: by 2002:a37:64cb:: with SMTP id y194mr14534018qkb.364.1582647388221;
-        Tue, 25 Feb 2020 08:16:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582647388; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1898805lfg;
+        Tue, 25 Feb 2020 08:37:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwesUNHZ5Xyw9klXhTpKf1iuotWla+x/8rifWWWxhYCTfBEjoFDJP3IaR2SPNNlUKP3Lgzx
+X-Received: by 2002:aed:29a4:: with SMTP id o33mr14724881qtd.316.1582648661382;
+        Tue, 25 Feb 2020 08:37:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582648661; cv=none;
         d=google.com; s=arc-20160816;
-        b=eH67YW0ePue9+UGPEJpxNQ8aruv4npYtMYl2IJfKmMKLEic7Y4Ui2ynetORVDiJn/R
-         nOTKbGG/6BizSro+Kq9YMqQJJ8rqKNkQJnOluC6WG+sd91vsaxZcmz0PB0VOdV84SfuK
-         YNykCOVmjKP2o1+p2q/slLruIUdOfNkRInCIARabkj8RXeOKhCYKgMLf43oFoqQqvPhk
-         banjrAWqXmA5BKxsILON1361g+lJPhWsLWm/mR/IYnoCtoYrXXeWgtbW5QsWeZbr13NV
-         f6vVWhrriqdXmP3waoZTSsAvI0JqhNh7l56Z2sHb1lHUXLL85RFoBrRqtN27sDllBd2M
-         8W2A==
+        b=0NXaTmp3EgiQKWI3g0b0X+MDIkN9mOGTdJwnLkLXIAPkyeuX2Bm9hGMS3Dy7j8uCmV
+         /kqOCfmm5f1XKeIxjkgOsFu2/+Gf7Te2jeflOl3KB9vFDCxjFAdpSuUtLXyPDfvJUt8s
+         vBmmAg0G2iLiOUpg9HjilzCNERkpzQ46iMvS4f7wrRPz1+szHteAmuLvfdB96mFSSRd1
+         tgchcAz17vUDnpPai+LJkkPyRAqCEqNN5bbQBKs5uvV5pfvpgGT4bn1i+h2PhDEbCGTA
+         HbmNUtL2Y1J3HFP+MNKrxd/Mn/8qWPy6G/0RWZU2n9ArZJG/kztek3rI4n8aRBY1YUC0
+         DEJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=NzPOyzyLyH0k2YO7pwRMfVAMiuzgA+gJggVDYCtlzXY=;
-        b=LTIOI9I9shmgIoJ0j3I81o+54Wnw2FeXo3xyxp2tttr6tRNW8ePfqi3t0o/X8ELBma
-         XO8ugUHugDKpTI39kdGoFEbnulko4adl61tp+EFJZ4LMhCsEoDSz2G6Exvu/YwYvBfyO
-         yr0g8dg+CjkOF1R7t7C0P8i0891SM5VXTYzznn0XnYigP7HOrDaKhj5SR+soEspjgvq/
-         WibRHx92N5XCsR2QCyZCHa4kMJuYEX/K5V57LiT+z1E2H+Q9UJWcJWbIIAy4TbsE6yry
-         NoR4GZes026IM5grBBwJqmSCXJ1ac7YU2+4DYB7TdjzFedXucT23vtbmp+mzSpmHE7TN
-         083A==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=O9BFonl1P9D2TofO5FditgLrsKSNw7IMCHz941W92jU=;
+        b=PYpDLDU2pn75WYKpNlBBEa6N0WL6uwC6wUz3FkA35UlktfsSVVCMCpOkIlSebANLsx
+         2/T6R+f4rujEiaLuYarAqYcHC1M6IrLltSfpzgehbiXWNxj596x5hzbzP6lccjNY7AKR
+         HUi4RD/jtihiTKu6Q7KNWLFO57RFNqmG1G+/MNLNcKGjR1sNTSH5Q/C3xqNFg6t6EFby
+         lN5SC4K+pgbvRUFNGLqSXKQsZPGnNjZwtFKIo9NpK/7URf3dwzuZtHdIcSnO1PWekluj
+         4CZKiNaslbKs9tAxqopdpZgSx2k9f4k9qWxjO8e/y/yJhXgLt2egUebVaO3/fcZRusXf
+         I1cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KoyPPNDM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aj0XPxMW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q17si8199019qkc.341.2020.02.25.08.16.28
+        by mx.google.com with ESMTPS id o13si7403154qtr.338.2020.02.25.08.37.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 08:16:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Feb 2020 08:37:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KoyPPNDM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aj0XPxMW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:59864 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60082 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6csl-0006oW-KS
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 11:16:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39727)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j6dDI-0004Ye-Ml
+	for alex.bennee@linaro.org; Tue, 25 Feb 2020 11:37:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42503)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1j6csX-0006ko-P9
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 11:16:19 -0500
+ (envelope-from <alistair23@gmail.com>) id 1j6dC0-00043z-0v
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 11:36:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1j6csT-0003eg-MW
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 11:16:13 -0500
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:46739)
+ (envelope-from <alistair23@gmail.com>) id 1j6dBx-0003Rb-Rt
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 11:36:19 -0500
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:40125)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1j6cs9-0003ZA-LO; Tue, 25 Feb 2020 11:15:49 -0500
-Received: by mail-lj1-x241.google.com with SMTP id x14so14642346ljd.13;
- Tue, 25 Feb 2020 08:15:48 -0800 (PST)
+ id 1j6dBx-0003Pl-Ee; Tue, 25 Feb 2020 11:36:17 -0500
+Received: by mail-lj1-x243.google.com with SMTP id n18so14762280ljo.7;
+ Tue, 25 Feb 2020 08:36:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=NzPOyzyLyH0k2YO7pwRMfVAMiuzgA+gJggVDYCtlzXY=;
- b=KoyPPNDMsaV6YCaBg9WkCNNY8PbA6hx8nFVxHOq8p/WZvob7eC4VHVHUwgjeFkEK5A
- 34krWD037peMcgDZiMICakOpMAUZRQioDiRORTisj8WzZsl6PCvZarKIzEl0fBbzYq8e
- ZHvcMYKAzreUSPZ1JSuhCNd1IbF3oQ67lxzqK1Grxdiz42F8T0KmVY/6fvmMduSfu/NU
- Vn8Uvpc8lYsAQIXp7UD1wyUA23W+gixyfacsM17HCcBGqjFz9MSzeVkfJOdITsjrrtAd
- MOOZNBK9zwGjXcRgCTTg4NFM7k/Aq7/vLy4Y6NsmhWoRlWxw5sSEVu4wyxPLFw4I4JRs
- 8U/g==
+ :cc; bh=O9BFonl1P9D2TofO5FditgLrsKSNw7IMCHz941W92jU=;
+ b=aj0XPxMW0U1xm0+LzLAx5P/p3YUvu54zlsOS0KioEj+XOurwrTpXkMGB6a+Nq0x4jG
+ 38uh75JHfOEnPpmHxN2pecXTULCPONqu/hK8Hh6iIZu0alJbslQuVZISyVkjWsqvPvT6
+ WYK2yVSepeF/yv+SycpJFgZDfJsOcv2MP+OfJT8phee3SMTbrNd3F8T/bYOu6bd3AH20
+ KZrnI9jAHshZtaDT2HCcJDV5v0ZE3fhW9Qhcvb9LrsDTVRdWxaIwcxtYhsX9FO1kMtTm
+ J1+5bIZgolxdiiAoVt5hbp0egQvORac70cv1agxXdcr/Dug1pFVRAoozRutPsKPSACJq
+ JdBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=NzPOyzyLyH0k2YO7pwRMfVAMiuzgA+gJggVDYCtlzXY=;
- b=jyaDiACaoCZXNkzYL5qTvctnqZMgz8qlFDNj+pHF3JOs/8ObshqEskkLSfBwCx500y
- uG7wAGsJLJgfDOYK1RtpzUaOrArVylxvf3DGPX/tQWJgt+72QPPpF4lugKt2BS/4jqEg
- b0mY5D38l9mQ6BZBJQzmEorvpF4uXb8NekF6cip6e+zjmII8H8Dm5N0rb/H2oiuH+9YF
- 0aOLWcbYtheSnw7ajsJcfE4BCcXwp9H7+ndVRy0g+0qfFTYlXizQbz68ChhhGmfq9rts
- kEYMHyqLKKrbKFO74LOOsfF0BaxT3WVEIUAtE7WKAFvYI+BiLpFDP+eed39bAD0HeALV
- GDYg==
-X-Gm-Message-State: APjAAAXZYBmnieJ0qUhUWqJYaWjHKNgWaw0cOgRBCAVdDXeHw22FAaNF
- GMCV54SbC67lVucjUq9UHVhBCP96BiUbb+2W+LI=
-X-Received: by 2002:a2e:a36a:: with SMTP id i10mr33008013ljn.107.1582647347518; 
- Tue, 25 Feb 2020 08:15:47 -0800 (PST)
+ :message-id:subject:to:cc;
+ bh=O9BFonl1P9D2TofO5FditgLrsKSNw7IMCHz941W92jU=;
+ b=G/TuDDn6IxFz+/GcAOn+d6xbpVi6zJbuUof4qC9mK+x+LdpDQOZclaz88PFNPWU3MU
+ 74nGs/TRH3S7WJ97pbzVQEauJ7ANWE5cy1z6kfeh3lvQytGuGe/3/ywpytLdQyBhz9U1
+ 6UNGacbx+6g7rbQPp+T00zPeS8w6o7+bhj9rKT8p2aQnhrBDaNgLT20hXDpOGi+hK8IM
+ BE/rF43PZ3pm6wsBvcoAw4LSEZGRAUqkDnQjkj3v8ELTr7wTuYpOM4FmxWbMVyrNEh2O
+ xfOM/SwXE/tADVcIy/r4iIYVNcUV/QkSsLvKn1cb8wCBwt8C5tiQhOGmROXBxQQqYC19
+ ZI8w==
+X-Gm-Message-State: APjAAAX4O77YQTfdLjltX3Vt05Jtc3C9e89S682pbEfnzJxmSK17G3ke
+ EQdeOx044z3Oc3EE/nu6DOtlPAXbfKYJqyVJibU=
+X-Received: by 2002:a2e:a36a:: with SMTP id i10mr33058930ljn.107.1582648573624; 
+ Tue, 25 Feb 2020 08:36:13 -0800 (PST)
 MIME-Version: 1.0
-References: <20200224204828.23167-1-philmd@redhat.com>
- <20200224204828.23167-6-philmd@redhat.com>
- <CAKmqyKPcWkN4fhu+kmU8d+wsPLt_4BJB74Tao-P7nJpBQa1jZA@mail.gmail.com>
- <62f0a8f5-82ff-e543-964a-a8759169e01f@redhat.com>
-In-Reply-To: <62f0a8f5-82ff-e543-964a-a8759169e01f@redhat.com>
+References: <20200225131422.53368-1-damien.hedde@greensocs.com>
+ <20200225131422.53368-2-damien.hedde@greensocs.com>
+In-Reply-To: <20200225131422.53368-2-damien.hedde@greensocs.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 25 Feb 2020 08:15:20 -0800
-Message-ID: <CAKmqyKNPuQT2MSmOTHWGb4+X48vkbdt9DpQQ5RfMDxdeYLG6qQ@mail.gmail.com>
-Subject: Re: [PATCH v2 05/32] hw/arm: Use memory_region_init_rom() with
- read-only regions
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Date: Tue, 25 Feb 2020 08:35:46 -0800
+Message-ID: <CAKmqyKO6cib8Bz92cf2BvCqXBZEU3_Ovf22TXWpEXBzVWisWsQ@mail.gmail.com>
+Subject: Re: [PATCH v8 1/9] hw/core/clock: introduce clock object
+To: Damien Hedde <damien.hedde@greensocs.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::241
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::243
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Qemu-block <qemu-block@nongnu.org>,
- Magnus Damm <magnus.damm@gmail.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>,
- Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>,
- "open list:New World" <qemu-ppc@nongnu.org>,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
- Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RLSgtyc+Ol2I
+ Mark Burton <mark.burton@greensocs.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Edgar Iglesias <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: M4vHhSkeXs4c
 
-On Tue, Feb 25, 2020 at 2:02 AM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
+On Tue, Feb 25, 2020 at 5:23 AM Damien Hedde <damien.hedde@greensocs.com> wrote:
 >
-> On 2/24/20 10:20 PM, Alistair Francis wrote:
-> > On Mon, Feb 24, 2020 at 12:51 PM Philippe Mathieu-Daud=C3=A9
-> > <philmd@redhat.com> wrote:
-> >>
-> >> This commit was produced with the Coccinelle script
-> >> scripts/coccinelle/memory-region-housekeeping.cocci.
-> >>
-> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> >
-> > This looks good for the ROM regions, for the flash regions this
-> > doesn't change the current functionality but I'm not sure it's any
-> > clearer.
+> This object may be used to represent a clock inside a clock tree.
 >
-> Less code makes easier review.
+> A clock may be connected to another clock so that it receives update,
+> through a callback, whenever the source/parent clock is updated.
 >
-> These regions behave as ROM on the bus, any write to the address space
-> is illegal (they are programmable via I/O registers in another address
-> space).
+> Although only the root clock of a clock tree controls the values
+> (represented as periods) of all clocks in tree, each clock holds
+> a local state containing the current value so that it can be fetched
+> independently. It will allows us to fullfill migration requirements
+> by migrating each clock independently of others.
+>
+> This is based on the original work of Frederic Konrad.
+>
+> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 
-Good point.
-
->
-> >
-> > Either way though:
-> >
-> > Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
->
-> Thanks, do you want me to improve the commit description?
-
-Nope, it's fine :)
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
+> --
 >
-> >
-> > Alistair
-> >
-> >> ---
-> >>   hw/arm/exynos4210.c | 3 +--
-> >>   hw/arm/mainstone.c  | 3 +--
-> >>   hw/arm/omap_sx1.c   | 6 ++----
-> >>   hw/arm/palm.c       | 3 +--
-> >>   hw/arm/spitz.c      | 3 +--
-> >>   hw/arm/stellaris.c  | 3 +--
-> >>   hw/arm/tosa.c       | 3 +--
-> >>   7 files changed, 8 insertions(+), 16 deletions(-)
-> >>
-> >> diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-> >> index 59a27bdd68..3af6502a5e 100644
-> >> --- a/hw/arm/exynos4210.c
-> >> +++ b/hw/arm/exynos4210.c
-> >> @@ -311,9 +311,8 @@ static void exynos4210_realize(DeviceState *socdev=
-, Error **errp)
-> >>                                   &s->chipid_mem);
-> >>
-> >>       /* Internal ROM */
-> >> -    memory_region_init_ram(&s->irom_mem, NULL, "exynos4210.irom",
-> >> +    memory_region_init_rom(&s->irom_mem, NULL, "exynos4210.irom",
-> >>                              EXYNOS4210_IROM_SIZE, &error_fatal);
-> >> -    memory_region_set_readonly(&s->irom_mem, true);
-> >>       memory_region_add_subregion(system_mem, EXYNOS4210_IROM_BASE_ADD=
-R,
-> >>                                   &s->irom_mem);
-> >>       /* mirror of iROM */
-> >> diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
-> >> index 6e64dfab50..05a806b422 100644
-> >> --- a/hw/arm/mainstone.c
-> >> +++ b/hw/arm/mainstone.c
-> >> @@ -125,9 +125,8 @@ static void mainstone_common_init(MemoryRegion *ad=
-dress_space_mem,
-> >>       /* Setup CPU & memory */
-> >>       mpu =3D pxa270_init(address_space_mem, mainstone_binfo.ram_size,
-> >>                         machine->cpu_type);
-> >> -    memory_region_init_ram(rom, NULL, "mainstone.rom", MAINSTONE_ROM,
-> >> +    memory_region_init_rom(rom, NULL, "mainstone.rom", MAINSTONE_ROM,
-> >>                              &error_fatal);
-> >> -    memory_region_set_readonly(rom, true);
-> >>       memory_region_add_subregion(address_space_mem, 0, rom);
-> >>
-> >>   #ifdef TARGET_WORDS_BIGENDIAN
-> >> diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
-> >> index be245714db..6c3fd1b271 100644
-> >> --- a/hw/arm/omap_sx1.c
-> >> +++ b/hw/arm/omap_sx1.c
-> >> @@ -126,9 +126,8 @@ static void sx1_init(MachineState *machine, const =
-int version)
-> >>       mpu =3D omap310_mpu_init(dram, machine->cpu_type);
-> >>
-> >>       /* External Flash (EMIFS) */
-> >> -    memory_region_init_ram(flash, NULL, "omap_sx1.flash0-0", flash_si=
-ze,
-> >> +    memory_region_init_rom(flash, NULL, "omap_sx1.flash0-0", flash_si=
-ze,
-> >>                              &error_fatal);
-> >> -    memory_region_set_readonly(flash, true);
-> >>       memory_region_add_subregion(address_space, OMAP_CS0_BASE, flash)=
-;
-> >>
-> >>       memory_region_init_io(&cs[0], NULL, &static_ops, &cs0val,
-> >> @@ -168,9 +167,8 @@ static void sx1_init(MachineState *machine, const =
-int version)
-> >>       if ((version =3D=3D 1) &&
-> >>               (dinfo =3D drive_get(IF_PFLASH, 0, fl_idx)) !=3D NULL) {
-> >>           MemoryRegion *flash_1 =3D g_new(MemoryRegion, 1);
-> >> -        memory_region_init_ram(flash_1, NULL, "omap_sx1.flash1-0",
-> >> +        memory_region_init_rom(flash_1, NULL, "omap_sx1.flash1-0",
-> >>                                  flash1_size, &error_fatal);
-> >> -        memory_region_set_readonly(flash_1, true);
-> >>           memory_region_add_subregion(address_space, OMAP_CS1_BASE, fl=
-ash_1);
-> >>
-> >>           memory_region_init_io(&cs[1], NULL, &static_ops, &cs1val,
-> >> diff --git a/hw/arm/palm.c b/hw/arm/palm.c
-> >> index 72eca8cc55..265d5891a6 100644
-> >> --- a/hw/arm/palm.c
-> >> +++ b/hw/arm/palm.c
-> >> @@ -206,9 +206,8 @@ static void palmte_init(MachineState *machine)
-> >>       mpu =3D omap310_mpu_init(dram, machine->cpu_type);
-> >>
-> >>       /* External Flash (EMIFS) */
-> >> -    memory_region_init_ram(flash, NULL, "palmte.flash", flash_size,
-> >> +    memory_region_init_rom(flash, NULL, "palmte.flash", flash_size,
-> >>                              &error_fatal);
-> >> -    memory_region_set_readonly(flash, true);
-> >>       memory_region_add_subregion(address_space_mem, OMAP_CS0_BASE, fl=
-ash);
-> >>
-> >>       memory_region_init_io(&cs[0], NULL, &static_ops, &cs0val, "palmt=
-e-cs0",
-> >> diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-> >> index e001088103..1d27399721 100644
-> >> --- a/hw/arm/spitz.c
-> >> +++ b/hw/arm/spitz.c
-> >> @@ -924,8 +924,7 @@ static void spitz_common_init(MachineState *machin=
-e,
-> >>
-> >>       sl_flash_register(mpu, (model =3D=3D spitz) ? FLASH_128M : FLASH=
-_1024M);
-> >>
-> >> -    memory_region_init_ram(rom, NULL, "spitz.rom", SPITZ_ROM, &error_=
-fatal);
-> >> -    memory_region_set_readonly(rom, true);
-> >> +    memory_region_init_rom(rom, NULL, "spitz.rom", SPITZ_ROM, &error_=
-fatal);
-> >>       memory_region_add_subregion(address_space_mem, 0, rom);
-> >>
-> >>       /* Setup peripherals */
-> >> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-> >> index 221a78674e..d136ba1a92 100644
-> >> --- a/hw/arm/stellaris.c
-> >> +++ b/hw/arm/stellaris.c
-> >> @@ -1300,9 +1300,8 @@ static void stellaris_init(MachineState *ms, ste=
-llaris_board_info *board)
-> >>       sram_size =3D ((board->dc0 >> 18) + 1) * 1024;
-> >>
-> >>       /* Flash programming is done via the SCU, so pretend it is ROM. =
- */
-> >> -    memory_region_init_ram(flash, NULL, "stellaris.flash", flash_size=
-,
-> >> +    memory_region_init_rom(flash, NULL, "stellaris.flash", flash_size=
-,
-> >>                              &error_fatal);
-> >> -    memory_region_set_readonly(flash, true);
-> >>       memory_region_add_subregion(system_memory, 0, flash);
-> >>
-> >>       memory_region_init_ram(sram, NULL, "stellaris.sram", sram_size,
-> >> diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-> >> index 4d95a1f3e2..5dee2d76c6 100644
-> >> --- a/hw/arm/tosa.c
-> >> +++ b/hw/arm/tosa.c
-> >> @@ -226,8 +226,7 @@ static void tosa_init(MachineState *machine)
-> >>
-> >>       mpu =3D pxa255_init(address_space_mem, tosa_binfo.ram_size);
-> >>
-> >> -    memory_region_init_ram(rom, NULL, "tosa.rom", TOSA_ROM, &error_fa=
-tal);
-> >> -    memory_region_set_readonly(rom, true);
-> >> +    memory_region_init_rom(rom, NULL, "tosa.rom", TOSA_ROM, &error_fa=
-tal);
-> >>       memory_region_add_subregion(address_space_mem, 0, rom);
-> >>
-> >>       tmio =3D tc6393xb_init(address_space_mem, 0x10000000,
-> >> --
-> >> 2.21.1
-> >>
-> >>
-> >
+> v8:
+> + fix hw/core/Makefiles.objs entry (Alistair)
+> + no more field zeroing in finalizefn (Alistair)
+> + typos (Alistair)
+>
+> v7:
+> + merge ClockIn & ClockOut into a single type Clock
+> + switch clock state to a period with 2^-32ns unit
+> + add some Hz and ns helpers
+> + propagate clock period when setting the source so that
+>   clocks with fixed period are easy to handle.
+> ---
+>  include/hw/clock.h    | 216 ++++++++++++++++++++++++++++++++++++++++++
+>  hw/core/clock.c       | 130 +++++++++++++++++++++++++
+>  hw/core/Makefile.objs |   1 +
+>  hw/core/trace-events  |   7 ++
+>  4 files changed, 354 insertions(+)
+>  create mode 100644 include/hw/clock.h
+>  create mode 100644 hw/core/clock.c
+>
+> diff --git a/include/hw/clock.h b/include/hw/clock.h
+> new file mode 100644
+> index 0000000000..82a7f3c698
+> --- /dev/null
+> +++ b/include/hw/clock.h
+> @@ -0,0 +1,216 @@
+> +/*
+> + * Hardware Clocks
+> + *
+> + * Copyright GreenSocs 2016-2020
+> + *
+> + * Authors:
+> + *  Frederic Konrad
+> + *  Damien Hedde
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#ifndef QEMU_HW_CLOCK_H
+> +#define QEMU_HW_CLOCK_H
+> +
+> +#include "qom/object.h"
+> +#include "qemu/queue.h"
+> +
+> +#define TYPE_CLOCK "clock"
+> +#define CLOCK(obj) OBJECT_CHECK(Clock, (obj), TYPE_CLOCK)
+> +
+> +typedef void ClockCallback(void *opaque);
+> +
+> +/*
+> + * clock store a value representing the clock's period in 2^-32ns unit.
+> + * It can represent:
+> + *  + periods from 2^-32ns up to 4seconds
+> + *  + frequency from ~0.25Hz 2e10Ghz
+> + * Resolution of frequency representation decreases with frequency:
+> + * + at 100MHz, resolution is ~2mHz
+> + * + at 1Ghz,   resolution is ~0.2Hz
+> + * + at 10Ghz,  resolution is ~20Hz
+> + */
+> +#define CLOCK_SECOND (1000000000llu << 32)
+> +
+> +/*
+> + * macro helpers to convert to hertz / nanosecond
+> + */
+> +#define CLOCK_PERIOD_FROM_NS(ns) ((ns) * (CLOCK_SECOND / 1000000000llu))
+> +#define CLOCK_PERIOD_TO_NS(per) ((per) / (CLOCK_SECOND / 1000000000llu))
+> +#define CLOCK_PERIOD_FROM_HZ(hz) (((hz) != 0) ? CLOCK_SECOND / (hz) : 0u)
+> +#define CLOCK_PERIOD_TO_HZ(per) (((per) != 0) ? CLOCK_SECOND / (per) : 0u)
+> +
+> +/**
+> + * Clock:
+> + * @parent_obj: parent class
+> + * @period: unsigned integer representing the period of the clock
+> + * @canonical_path: clock path string cache (used for trace purpose)
+> + * @callback: called when clock changes
+> + * @callback_opaque: argument for @callback
+> + * @source: source (or parent in clock tree) of the clock
+> + * @children: list of clocks connected to this one (it is their source)
+> + * @sibling: structure used to form a clock list
+> + */
+> +
+> +typedef struct Clock Clock;
+> +
+> +struct Clock {
+> +    /*< private >*/
+> +    Object parent_obj;
+> +
+> +    /* all fields are private and should not be modified directly */
+> +
+> +    /* fields */
+> +    uint64_t period;
+> +    char *canonical_path;
+> +    ClockCallback *callback;
+> +    void *callback_opaque;
+> +
+> +    /* Clocks are organized in a clock tree */
+> +    Clock *source;
+> +    QLIST_HEAD(, Clock) children;
+> +    QLIST_ENTRY(Clock) sibling;
+> +};
+> +
+> +/**
+> + * clock_setup_canonical_path:
+> + * @clk: clock
+> + *
+> + * compute the canonical path of the clock (used by log messages)
+> + */
+> +void clock_setup_canonical_path(Clock *clk);
+> +
+> +/**
+> + * clock_set_callback:
+> + * @clk: the clock to register the callback into
+> + * @cb: the callback function
+> + * @opaque: the argument to the callback
+> + *
+> + * Register a callback called on every clock update.
+> + */
+> +void clock_set_callback(Clock *clk, ClockCallback *cb, void *opaque);
+> +
+> +/**
+> + * clock_clear_callback:
+> + * @clk: the clock to delete the callback from
+> + *
+> + * Unregister the callback registered with clock_set_callback.
+> + */
+> +void clock_clear_callback(Clock *clk);
+> +
+> +/**
+> + * clock_set_source:
+> + * @clk: the clock.
+> + * @src: the source clock
+> + *
+> + * Setup @src as the clock source of @clk. The current @src period
+> + * value is also copied to @clk and its subtree but no callback is
+> + * called.
+> + * Further @src update will be propagated to @clk and its subtree.
+> + */
+> +void clock_set_source(Clock *clk, Clock *src);
+> +
+> +/**
+> + * clock_set:
+> + * @clk: the clock to initialize.
+> + * @value: the clock's value, 0 means unclocked
+> + *
+> + * Set the local cached period value of @clk to @value.
+> + */
+> +void clock_set(Clock *clk, uint64_t value);
+> +
+> +static inline void clock_set_hz(Clock *clk, unsigned hz)
+> +{
+> +    clock_set(clk, CLOCK_PERIOD_FROM_HZ(hz));
+> +}
+> +
+> +static inline void clock_set_ns(Clock *clk, unsigned ns)
+> +{
+> +    clock_set(clk, CLOCK_PERIOD_FROM_NS(ns));
+> +}
+> +
+> +/**
+> + * clock_propagate:
+> + * @clk: the clock
+> + *
+> + * Propagate the clock period that has been previously configured using
+> + * @clock_set(). This will update recursively all connected clocks.
+> + * It is an error to call this function on a clock which has a source.
+> + * Note: this function must not be called during device inititialization
+> + * or migration.
+> + */
+> +void clock_propagate(Clock *clk);
+> +
+> +/**
+> + * clock_update:
+> + * @clk: the clock to update.
+> + * @value: the new clock's value, 0 means unclocked
+> + *
+> + * Update the @clk to the new @value. All connected clocks will be informed
+> + * of this update. This is equivalent to call @clock_set() then
+> + * @clock_propagate().
+> + */
+> +static inline void clock_update(Clock *clk, uint64_t value)
+> +{
+> +    clock_set(clk, value);
+> +    clock_propagate(clk);
+> +}
+> +
+> +static inline void clock_update_hz(Clock *clk, unsigned hz)
+> +{
+> +    clock_update(clk, CLOCK_PERIOD_FROM_HZ(hz));
+> +}
+> +
+> +static inline void clock_update_ns(Clock *clk, unsigned ns)
+> +{
+> +    clock_update(clk, CLOCK_PERIOD_FROM_NS(ns));
+> +}
+> +
+> +/**
+> + * clock_get:
+> + * @clk: the clk to fetch the clock
+> + *
+> + * @return: the current period.
+> + */
+> +static inline uint64_t clock_get(const Clock *clk)
+> +{
+> +    return clk->period;
+> +}
+> +
+> +static inline unsigned clock_get_hz(Clock *clk)
+> +{
+> +    return CLOCK_PERIOD_TO_HZ(clock_get(clk));
+> +}
+> +
+> +static inline unsigned clock_get_ns(Clock *clk)
+> +{
+> +    return CLOCK_PERIOD_TO_NS(clock_get(clk));
+> +}
+> +
+> +/**
+> + * clock_is_enabled:
+> + * @clk: a clock
+> + *
+> + * @return: true if the clock is running.
+> + */
+> +static inline bool clock_is_enabled(const Clock *clk)
+> +{
+> +    return clock_get(clk) != 0;
+> +}
+> +
+> +static inline void clock_init(Clock *clk, uint64_t value)
+> +{
+> +    clock_set(clk, value);
+> +}
+> +static inline void clock_init_hz(Clock *clk, uint64_t value)
+> +{
+> +    clock_set_hz(clk, value);
+> +}
+> +static inline void clock_init_ns(Clock *clk, uint64_t value)
+> +{
+> +    clock_set_ns(clk, value);
+> +}
+> +
+> +#endif /* QEMU_HW_CLOCK_H */
+> diff --git a/hw/core/clock.c b/hw/core/clock.c
+> new file mode 100644
+> index 0000000000..3c0daf7d4c
+> --- /dev/null
+> +++ b/hw/core/clock.c
+> @@ -0,0 +1,130 @@
+> +/*
+> + * Hardware Clocks
+> + *
+> + * Copyright GreenSocs 2016-2020
+> + *
+> + * Authors:
+> + *  Frederic Konrad
+> + *  Damien Hedde
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/clock.h"
+> +#include "trace.h"
+> +
+> +#define CLOCK_PATH(_clk) (_clk->canonical_path)
+> +
+> +void clock_setup_canonical_path(Clock *clk)
+> +{
+> +    g_free(clk->canonical_path);
+> +    clk->canonical_path = object_get_canonical_path(OBJECT(clk));
+> +}
+> +
+> +void clock_set_callback(Clock *clk, ClockCallback *cb, void *opaque)
+> +{
+> +    clk->callback = cb;
+> +    clk->callback_opaque = opaque;
+> +}
+> +
+> +void clock_clear_callback(Clock *clk)
+> +{
+> +    clock_set_callback(clk, NULL, NULL);
+> +}
+> +
+> +void clock_set(Clock *clk, uint64_t period)
+> +{
+> +    trace_clock_set(CLOCK_PATH(clk), CLOCK_PERIOD_TO_NS(clk->period),
+> +                    CLOCK_PERIOD_TO_NS(period));
+> +    clk->period = period;
+> +}
+> +
+> +static void clock_propagate_period(Clock *clk, bool call_callbacks)
+> +{
+> +    Clock *child;
+> +
+> +    QLIST_FOREACH(child, &clk->children, sibling) {
+> +        if (child->period != clk->period) {
+> +            child->period = clk->period;
+> +            trace_clock_update(CLOCK_PATH(child), CLOCK_PATH(clk),
+> +                               CLOCK_PERIOD_TO_NS(clk->period),
+> +                               call_callbacks);
+> +            if (call_callbacks && child->callback) {
+> +                child->callback(child->callback_opaque);
+> +            }
+> +            clock_propagate_period(child, call_callbacks);
+> +        }
+> +    }
+> +}
+> +
+> +void clock_propagate(Clock *clk)
+> +{
+> +    assert(clk->source == NULL);
+> +    trace_clock_propagate(CLOCK_PATH(clk));
+> +    clock_propagate_period(clk, true);
+> +}
+> +
+> +void clock_set_source(Clock *clk, Clock *src)
+> +{
+> +    /* changing clock source is not supported */
+> +    assert(!clk->source);
+> +
+> +    trace_clock_set_source(CLOCK_PATH(clk), CLOCK_PATH(src));
+> +
+> +    clk->period = src->period;
+> +    QLIST_INSERT_HEAD(&src->children, clk, sibling);
+> +    clk->source = src;
+> +    clock_propagate_period(clk, false);
+> +}
+> +
+> +static void clock_disconnect(Clock *clk)
+> +{
+> +    if (clk->source == NULL) {
+> +        return;
+> +    }
+> +
+> +    trace_clock_disconnect(CLOCK_PATH(clk));
+> +
+> +    clk->source = NULL;
+> +    QLIST_REMOVE(clk, sibling);
+> +}
+> +
+> +static void clock_initfn(Object *obj)
+> +{
+> +    Clock *clk = CLOCK(obj);
+> +
+> +    QLIST_INIT(&clk->children);
+> +}
+> +
+> +static void clock_finalizefn(Object *obj)
+> +{
+> +    Clock *clk = CLOCK(obj);
+> +    Clock *child, *next;
+> +
+> +    /* clear our list of children */
+> +    QLIST_FOREACH_SAFE(child, &clk->children, sibling, next) {
+> +        clock_disconnect(child);
+> +    }
+> +
+> +    /* remove us from source's children list */
+> +    clock_disconnect(clk);
+> +
+> +    g_free(clk->canonical_path);
+> +}
+> +
+> +static const TypeInfo clock_info = {
+> +    .name              = TYPE_CLOCK,
+> +    .parent            = TYPE_OBJECT,
+> +    .instance_size     = sizeof(Clock),
+> +    .instance_init     = clock_initfn,
+> +    .instance_finalize = clock_finalizefn,
+> +};
+> +
+> +static void clock_register_types(void)
+> +{
+> +    type_register_static(&clock_info);
+> +}
+> +
+> +type_init(clock_register_types)
+> diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+> index 6215e7c208..1d9b0aa205 100644
+> --- a/hw/core/Makefile.objs
+> +++ b/hw/core/Makefile.objs
+> @@ -7,6 +7,7 @@ common-obj-y += hotplug.o
+>  common-obj-y += vmstate-if.o
+>  # irq.o needed for qdev GPIO handling:
+>  common-obj-y += irq.o
+> +common-obj-y += clock.o
+>
+>  common-obj-$(CONFIG_SOFTMMU) += reset.o
+>  common-obj-$(CONFIG_SOFTMMU) += qdev-fw.o
+> diff --git a/hw/core/trace-events b/hw/core/trace-events
+> index aecd8e160e..39301621ce 100644
+> --- a/hw/core/trace-events
+> +++ b/hw/core/trace-events
+> @@ -27,3 +27,10 @@ resettable_phase_exit_begin(void *obj, const char *objtype, unsigned count, int
+>  resettable_phase_exit_exec(void *obj, const char *objtype, int has_method) "obj=%p(%s) method=%d"
+>  resettable_phase_exit_end(void *obj, const char *objtype, unsigned count) "obj=%p(%s) count=%d"
+>  resettable_transitional_function(void *obj, const char *objtype) "obj=%p(%s)"
+> +
+> +# clock.c
+> +clock_set_source(const char *clk, const char *src) "'%s', src='%s'"
+> +clock_disconnect(const char *clk) "'%s'"
+> +clock_set(const char *clk, unsigned long long old, unsigned long long new) "'%s', ns=%llu->%llu"
+> +clock_propagate(const char *clk) "'%s'"
+> +clock_update(const char *clk, const char *src, unsigned long long val, int cb) "'%s', src='%s', ns=%llu, cb=%d"
+> --
+> 2.25.1
+>
 >

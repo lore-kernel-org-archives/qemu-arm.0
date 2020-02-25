@@ -1,222 +1,179 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1660981lfg;
-        Tue, 25 Feb 2020 05:07:28 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyvnVOzF+jn3p6pga9bGwmPTgd8S2FNPVcE1+gkaulVtgvOTsu+o9HY+es0VALZrX5+MWvy
-X-Received: by 2002:a0c:e34e:: with SMTP id a14mr50539014qvm.73.1582636048329;
-        Tue, 25 Feb 2020 05:07:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582636048; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Mtp83xGs+02K2pcr2vgAoGgqJKVrSnJZHeYdDBYNp7jGMW3Cjk+GLXlU/kWfqX7s64
-         KdLAIZAUaQsn8Nd9dHQ6/jE437zEe/wM5AejTd2T0/0j1ELejXYPUk5XD5tDfmxqqarp
-         GBehXWUs2Q2+3aVl+UWqkvRcmD+30JZcV01IsS7pisMnm/Idu/8cgTIsqgqf21Zq4aOe
-         X2LNn1jJxftfGeQX9G/Ies9+FJFsKMj5iPCXt9BWJuijDln3tycsQKQa5c04Dex1KddW
-         GvuhfHXx88HlJ8UuD8m6s+8nDfs8Et3YdWPoZmRYvNjiy+xpxmoxc3f0uvI++H8ddR4/
-         ItrA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=prlOgWgQ9Ik+E3eF9Wnb1i83rqLIAzGc5kS9vOvkF4o=;
-        b=kLhxh+/pelZICxLlSmXbZJaiOwJFsDD0rh5sa78EdI6ikODauNvZgxMPDGPZtdUWoQ
-         eyLXZxizLR9iRd3IWvbCQd3bToxbikCnot2vUivgq/AqhahXIVfHXonHBhNDduQ9RYtJ
-         kDfFjG6PuWcvZLHHJJVPQMbGR5lqRIi4Vwzmxah4Gr9X9JciPFLtfVqPXVgtdK/NDoa2
-         OVE9DAXEyJPXghKlnmIraFS+v6XkzRZhFVnvRd2L0miU0gYcYmwebAt7CgkMp6ermT1D
-         TeZ3biE8XqLmo1nK3dhR3NCCx7MbUAG8KlFNxXEmiGXcHILqwWoIOmEz2HWs9PKzj3fd
-         tPng==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LaclFHkb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1673587lfg;
+        Tue, 25 Feb 2020 05:17:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyTilh1BYJI0TdTIYdUxt1JWPo034s3tefiuINPqoZ2i7dcU34QG3I771jIpgBCAbNWCVB+
+X-Received: by 2002:a37:bc06:: with SMTP id m6mr38186946qkf.383.1582636651971;
+        Tue, 25 Feb 2020 05:17:31 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z43si7080602qtj.371.2020.02.25.05.07.27
+        by mx.google.com with ESMTPS id g26si7707121qtv.230.2020.02.25.05.17.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 05:07:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Feb 2020 05:17:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LaclFHkb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55240 helo=lists1p.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=FswM0EPG;
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55466 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6Zvr-0003My-DB
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 08:07:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57472)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j6a5a-0003sW-W7
+	for alex.bennee@linaro.org; Tue, 25 Feb 2020 08:17:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37334)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1j6ZUh-0004v6-MA
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 07:39:24 -0500
+ (envelope-from <damien.hedde@greensocs.com>) id 1j6a2m-0007s6-K2
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 08:14:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1j6ZUg-00046Q-DV
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 07:39:23 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:30210
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <damien.hedde@greensocs.com>) id 1j6a2i-00023Q-5j
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 08:14:34 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:57170)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1j6ZUg-00045z-9r
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 07:39:22 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582634361;
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1j6a2e-00021S-ST; Tue, 25 Feb 2020 08:14:29 -0500
+Received: from crumble.bar.greensocs.com (crumble.bar.greensocs.com
+ [172.16.11.102])
+ by beetle.greensocs.com (Postfix) with ESMTPS id 1AC3F96F50;
+ Tue, 25 Feb 2020 13:14:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1582636466;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=prlOgWgQ9Ik+E3eF9Wnb1i83rqLIAzGc5kS9vOvkF4o=;
- b=LaclFHkbyTVvUaX1oKImu1lcEsuV9onscLy4+fQP934U5eKkfT4vyxcCoVVoxxVqNoPwJc
- 50mhbMCSz32nlpkwLqXwutRwM0qbjfwf23XW0PJAo+ahLyOqudah6sMp4Add+Wd5mMiJoP
- WNypK9+8s7LAkQA8iwFJzuOX+1gNWxg=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-109-Dk8ekPLXODuX4FaDc2a1-A-1; Tue, 25 Feb 2020 07:39:19 -0500
-X-MC-Unique: Dk8ekPLXODuX4FaDc2a1-A-1
-Received: by mail-wm1-f72.google.com with SMTP id 7so974004wmf.9
- for <qemu-devel@nongnu.org>; Tue, 25 Feb 2020 04:39:19 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=kztbPaVB/2XMFABxpPNGrrCj9r6pdnumsQimldYZmLg=;
- b=SgWGmV6nOFgMfEgEfwiE1jYF/72CHnrxhBy3pN+vrbAGrGWQlv8PCn/eGxSTpxGMa3
- EZBxSOzTZHjkXPV9qKRs4YV8eXcMEipsYiwHGDNIUe77RxDM7pyuYMdEGB9liGyx8vzy
- wJh8W48t1oETALdxhDqmLuji+Kvg7S3KLZsmc1Vbubg+u6tzoMlbu4DEhJzBiytbLFF8
- nJuKp+y9jzTj9aVk/itTPh38x/WNsdbeZl24VmGooQk7tLetgFqU17g+JnhrMiFGbxv4
- z/MB5DBQldnytT1cvErpt0kyd0PVjj1vCconrfluIJJ1QKZzBcxXUX4jVE+WYX5AdAJ2
- amqg==
-X-Gm-Message-State: APjAAAV5JtWvNByo8JFkWnpdeJkTsHBKZYgSiPL9jZsVF8e7JxooplM+
- /ztcqOnnhpOOfMVWvuK8dHFvbkh1VOxDKP4euBU/mIqA94QymExHDicX03iFwVzRpLNjEHAqyom
- 2WBsa6XbdenyHYWY=
-X-Received: by 2002:a1c:541b:: with SMTP id i27mr5524326wmb.137.1582634358169; 
- Tue, 25 Feb 2020 04:39:18 -0800 (PST)
-X-Received: by 2002:a1c:541b:: with SMTP id i27mr5524296wmb.137.1582634357874; 
- Tue, 25 Feb 2020 04:39:17 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:3577:1cfe:d98a:5fb6?
- ([2001:b07:6468:f312:3577:1cfe:d98a:5fb6])
- by smtp.gmail.com with ESMTPSA id w8sm3982443wmm.0.2020.02.25.04.39.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Feb 2020 04:39:17 -0800 (PST)
-Subject: Re: [PATCH RESEND v2 18/32] hw/i386/pc_sysfw: Simplify using
- memory_region_init_alias()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-References: <20200224205533.23798-1-philmd@redhat.com>
- <20200224205533.23798-19-philmd@redhat.com>
- <532522f3-fc33-4405-1819-fe89c3ed088e@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <683355b0-cf04-d57a-92aa-500dbf1b94a8@redhat.com>
-Date: Tue, 25 Feb 2020 13:39:15 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ bh=islzJ3dtZ7UUO4t6RapBooYgTjjRcixcXvr9KLyxFa4=;
+ b=FswM0EPGhJv8+TdI65IJixlmJZJOL7Mi0yfyiBeSlmiVTJiifPcTw2Oz5v0CDaYT1jOsHW
+ k5nX3FGUoc3DSf3OZFL1UqfVVjZC395PP7XEM4bxvv4Tsdiih5adtniIquKEgDc9Su282l
+ slfTjlIRRsa0qJEN5Afb99e+bYovXSU=
+From: Damien Hedde <damien.hedde@greensocs.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v8 2/9] hw/core/clock-vmstate: define a vmstate entry for
+ clock state
+Date: Tue, 25 Feb 2020 14:14:15 +0100
+Message-Id: <20200225131422.53368-3-damien.hedde@greensocs.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200225131422.53368-1-damien.hedde@greensocs.com>
+References: <20200225131422.53368-1-damien.hedde@greensocs.com>
 MIME-Version: 1.0
-In-Reply-To: <532522f3-fc33-4405-1819-fe89c3ed088e@redhat.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1582636466;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=islzJ3dtZ7UUO4t6RapBooYgTjjRcixcXvr9KLyxFa4=;
+ b=0khKbIB7Jf/XHHfWa+WZKRqhZpW/JU11RKrv/IInegQje8aKBqHSqU9tdJks2MfnjzLxT8
+ cu2Ei39dA7MVYPlgT38+rn1u2wHDL9zMQoELnMfqFgd9zDYlANoeKGotgg39vACwq+OV+m
+ pgj/BXJ4T6vNQtulNSgQvQoNu0SbNnQ=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582636466; a=rsa-sha256; cv=none;
+ b=vvamLY7PsCCemQifN4HqxX/xtN9ynJ5Ijjtzmtp4Fz8uQbvD91F/Ql64LjHgYeG+e/0tOa
+ Rr3aBP9RZNyc3RZHFSN+f39xhOxk9DQJ3uEBd49pbgh10WMb6MtUIe8B/wemrOJD02iSrb
+ PRks4bwf2gyyVcIih8x0TPHS09ybUPM=
+ARC-Authentication-Results: i=1;
+	beetle.greensocs.com;
+	none
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 5.135.226.135
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
- Magnus Damm <magnus.damm@gmail.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Alistair Francis <alistair@alistair23.me>,
- Fabien Chouteau <chouteau@adacore.com>, qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>, Palmer Dabbelt <palmer@dabbelt.com>,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- qemu-riscv@nongnu.org, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
- Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QMtntZ2E78GL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>, peter.maydell@linaro.org,
+ berrange@redhat.com, ehabkost@redhat.com, pbonzini@redhat.com,
+ alistair@alistair23.me, mark.burton@greensocs.com, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, marcandre.lureau@redhat.com,
+ philmd@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: X/RjZIfjdMMd
 
-On 25/02/20 11:05, Philippe Mathieu-Daud=C3=A9 wrote:
->>
->> pc_isa_bios_init() does a manual copy of a part of the BIOS,
->> from a read-only region. We can simplify by directly aliasing
->> the same part.
->>
->> Before:
->>
->> =C2=A0=C2=A0 (qemu) info mtree
->> =C2=A0=C2=A0 memory-region: system
->> =C2=A0=C2=A0=C2=A0=C2=A0 0000000000000000-ffffffffffffffff (prio 0, i/o)=
-: system
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0000000000000000-0000000007ffffff (=
-prio 0, ram): alias
->> ram-below-4g @pc.ram 0000000000000000-0000000007ffffff
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0000000000000000-ffffffffffffffff (=
-prio -1, i/o): pci
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000000a0000-000000=
-00000bffff (prio 1, i/o): vga-lowmem
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000000c0000-000000=
-00000dffff (prio 1, rom): pc.rom
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000000e0000-000000=
-00000fffff (prio 1, rom): isa-bios
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ...
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000fff00000-00000000ffffffff (=
-prio 0, romd): system.flash0
->>
->> After:
->>
->> =C2=A0=C2=A0 (qemu) info mtree
->> =C2=A0=C2=A0 memory-region: system
->> =C2=A0=C2=A0=C2=A0=C2=A0 0000000000000000-ffffffffffffffff (prio 0, i/o)=
-: system
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0000000000000000-0000000007ffffff (=
-prio 0, ram): alias
->> ram-below-4g @pc.ram 0000000000000000-0000000007ffffff
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0000000000000000-ffffffffffffffff (=
-prio -1, i/o): pci
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000000a0000-000000=
-00000bffff (prio 1, i/o): vga-lowmem
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000000c0000-000000=
-00000dffff (prio 1, rom): pc.rom
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000000e0000-000000=
-00000fffff (prio 1, romd): alias
->> isa-bios @system.flash0 00000000000e0000-00000000000fffff
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ...
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 00000000fff00000-00000000ffffffff (=
-prio 0, romd): system.flash0
->=20
-> IIUC migrating old -> new is OK, the previous ROM copy is discarded.
->=20
-> What about new -> old, does it require specific handling? Do we care?
+Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+--
 
-Old->new is broken because the "isa-bios" memory region is not found.
+v7: remove leading underscores in macro args
+---
+ include/hw/clock.h      |  9 +++++++++
+ hw/core/clock-vmstate.c | 25 +++++++++++++++++++++++++
+ hw/core/Makefile.objs   |  1 +
+ 3 files changed, 35 insertions(+)
+ create mode 100644 hw/core/clock-vmstate.c
 
-qemu-system-x86_64: Unknown ramblock "isa-bios", cannot accept migration
-qemu-system-x86_64: error while loading state for instance 0x0 of device 'r=
-am'
-qemu-system-x86_64: load of migration failed: Invalid argument
-
-Paolo
+diff --git a/include/hw/clock.h b/include/hw/clock.h
+index 82a7f3c698..f3e44e9460 100644
+--- a/include/hw/clock.h
++++ b/include/hw/clock.h
+@@ -74,6 +74,15 @@ struct Clock {
+     QLIST_ENTRY(Clock) sibling;
+ };
+=20
++/*
++ * vmstate description entry to be added in device vmsd.
++ */
++extern const VMStateDescription vmstate_clock;
++#define VMSTATE_CLOCK(field, state) \
++    VMSTATE_CLOCK_V(field, state, 0)
++#define VMSTATE_CLOCK_V(field, state, version) \
++    VMSTATE_STRUCT_POINTER_V(field, state, version, vmstate_clock, Clock=
+)
++
+ /**
+  * clock_setup_canonical_path:
+  * @clk: clock
+diff --git a/hw/core/clock-vmstate.c b/hw/core/clock-vmstate.c
+new file mode 100644
+index 0000000000..260b13fc2c
+--- /dev/null
++++ b/hw/core/clock-vmstate.c
+@@ -0,0 +1,25 @@
++/*
++ * Clock migration structure
++ *
++ * Copyright GreenSocs 2019-2020
++ *
++ * Authors:
++ *  Damien Hedde
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "migration/vmstate.h"
++#include "hw/clock.h"
++
++const VMStateDescription vmstate_clock =3D {
++    .name =3D "clock",
++    .version_id =3D 0,
++    .minimum_version_id =3D 0,
++    .fields =3D (VMStateField[]) {
++        VMSTATE_UINT64(period, Clock),
++        VMSTATE_END_OF_LIST()
++    }
++};
+diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+index 1d9b0aa205..115df55087 100644
+--- a/hw/core/Makefile.objs
++++ b/hw/core/Makefile.objs
+@@ -21,6 +21,7 @@ common-obj-$(CONFIG_SOFTMMU) +=3D null-machine.o
+ common-obj-$(CONFIG_SOFTMMU) +=3D loader.o
+ common-obj-$(CONFIG_SOFTMMU) +=3D machine-hmp-cmds.o
+ common-obj-$(CONFIG_SOFTMMU) +=3D numa.o
++common-obj-$(CONFIG_SOFTMMU) +=3D clock-vmstate.o
+ obj-$(CONFIG_SOFTMMU) +=3D machine-qmp-cmds.o
+=20
+ common-obj-$(CONFIG_EMPTY_SLOT) +=3D empty_slot.o
+--=20
+2.25.1
 

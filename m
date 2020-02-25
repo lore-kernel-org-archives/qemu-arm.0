@@ -1,100 +1,75 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1693633lfg;
-        Tue, 25 Feb 2020 05:35:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy6O+YP9/pbUFQALcyqUT38HArwfbeBv73JrzefvAmsEpZAp/4zcIFlNhgrz9Z2gsG/a3pp
-X-Received: by 2002:ac8:5190:: with SMTP id c16mr6461171qtn.200.1582637747367;
-        Tue, 25 Feb 2020 05:35:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582637747; cv=none;
-        d=google.com; s=arc-20160816;
-        b=wWf5ATTg1U/c4K7qUWiNr+LWkEAGnaNtpN9BMVECpmxTLh6PNiCy79i8I9Ljn6Kj2k
-         AscFBFYN5QSf6STtGrgC7Re6paQu4pszFzIQIzOQFiZe2y482c9Yysgse5N+jqvtl/UV
-         rx82rRfJAWVwDNeNg9e9b6dZioIx/LtZB8aM+g2KYei8Nivy4cx025p4JTH4bO0yO7i0
-         xTl7cSzF2ur7CqBDG7cwaP84dsonSj/9vzA9XiRILNA0IuMpYB5mg7eTHcR2CPTIFeWX
-         lYjcvGasVwgmQkr506/Ii/Oq3Wp28+LLbWz2n5QasPNH3bz6Rf6qFzePpVAustmJAeUg
-         fPpQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=CtEMsHBDkcHsELBZP6EN0gh6y5RoeXlZuqtlqlC8x/Y=;
-        b=ptnygT/LW5v/iHKMGAXP1gHvI3C0TtqeFaAJXJ+zZU/7yyXx58sLzYgZFLRbgc5/u2
-         zKCS74bhDCqrnG68kArpYD0pZ58v6jg8nrz6HDGWeUo6vjhcFVX0QTbqM+iOrOTdB1bv
-         gkaKqi3B7kACv3ovBz93QUuc1+UPjju976CidKa4heDUSxkz+z3+kWoVQ3oo/XUehgmw
-         YObtCcl6tWTxXJDj0DEAsfV4P6nmaVI+HBypdeU2uaBfmzwyCjVThC34lrEWMAnCPcKh
-         89ZDSb/yWsXQmO2GGFyGu2iXqhjzIxR5FJV0yEiv92rjQ+C+EOoX0p2Xg+YME5JU1iS8
-         UIhQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=J6+7oWhS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1697572lfg;
+        Tue, 25 Feb 2020 05:39:13 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw3Czt6jm1EW8QDND9XlHjBiSd3oGtAWxPtwcHVsDR8tLoqZrDOe06qDgbWkO7w9ibVNKXZ
+X-Received: by 2002:ac8:1a8c:: with SMTP id x12mr56168251qtj.297.1582637953116;
+        Tue, 25 Feb 2020 05:39:13 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h20si1619769qke.240.2020.02.25.05.35.47
+        by mx.google.com with ESMTPS id y8si6728859qvn.213.2020.02.25.05.39.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 05:35:47 -0800 (PST)
+        Tue, 25 Feb 2020 05:39:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=J6+7oWhS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56028 helo=lists1p.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=r7iOOZge;
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56098 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6aNG-00035d-PY
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 08:35:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38434)
+	id 1j6aQa-0007Cf-Cb
+	for alex.bennee@linaro.org; Tue, 25 Feb 2020 08:39:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37429)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j6a90-0002g7-PR
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:21:03 -0500
+ (envelope-from <damien.hedde@greensocs.com>) id 1j6a2p-0007zV-80
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:14:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j6a8y-0004V2-7F
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:21:01 -0500
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:39462)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j6a8x-0004UM-BL
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:20:59 -0500
-Received: by mail-ot1-x343.google.com with SMTP id 77so12028258oty.6
- for <qemu-devel@nongnu.org>; Tue, 25 Feb 2020 05:20:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=CtEMsHBDkcHsELBZP6EN0gh6y5RoeXlZuqtlqlC8x/Y=;
- b=J6+7oWhSTxn+le2NO7qF/9xo9yKFmD//y4tx1qttHmljCru6rK9BzMi7DeshcE/BHI
- +riMPjH9o9kLGlPYPT02LenJJoQ9Eb7VoTBo1PGJ8f7mQQCLPCEB2Wm+4nX9eusxHjl8
- F81SdbaxojaXjV2mktHxWOFExYUzg6G4qZoEmo6Wy0No3fOpWpYy+fP8yoJM5Aabm1Vp
- jQUvvec3v0hZ2KfDs/mgJpMJRD2jAWeDrho0/H1KnfKIDQbMXKfjRE51po9O55YZacZX
- sT7BKw7r0eaks/Q80XGrZ1Ol9cj16FIbQ/FCgngTboPUi01lA4HLNXqvQa4TCSoDSJsO
- imFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=CtEMsHBDkcHsELBZP6EN0gh6y5RoeXlZuqtlqlC8x/Y=;
- b=q1PHOaXzCxoFveJw5wrWNV2RIxpChHV9PiY24YWn13lcgWNG90UPevcJWNW4Z9HtPL
- m1t+1GPo+20ODshQ+QelgagmspvZFMHwFVtRucSpazAw7eScN9aqfmuEmF9CUCaJQ/nT
- y2imwm2i1vLt6+JSYe9eOImUqtdFfcf0aLGLKkiled4zCdN03YoTz9+sLJFW/aSMhwl0
- J8PQUEXg/cURZFBdJxVTNO30j6GCWUqvQZmmODuf9g1bBfatQee/JtII9HXPY6hYtulj
- 2O/xSWqItUwfhwO8mb3+DcQKBJi0AxQG8eZ26JGrjRZVWJHl8LSPeaAWVIxQ8aHOPGcu
- zVCA==
-X-Gm-Message-State: APjAAAXi42e/ETokhCKBl+kyEtKtQ7tsMJDTQgh9BR+uaQGVHIOGYmXv
- +5u4H+Z4dMc1RQXh1qGvykdWeKz/MOfcky/sqA/kgw==
-X-Received: by 2002:a05:6830:4a4:: with SMTP id
- l4mr44891573otd.91.1582636856070; 
- Tue, 25 Feb 2020 05:20:56 -0800 (PST)
+ (envelope-from <damien.hedde@greensocs.com>) id 1j6a2n-00026c-It
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 08:14:39 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:57132)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1j6a2e-000211-SL; Tue, 25 Feb 2020 08:14:29 -0500
+Received: from crumble.bar.greensocs.com (crumble.bar.greensocs.com
+ [172.16.11.102])
+ by beetle.greensocs.com (Postfix) with ESMTPS id 49D6896EF0;
+ Tue, 25 Feb 2020 13:14:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1582636464;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=cmVeIIg2UhMQ9LFYRp1vgnoqu4rjk3OUjpnIKS+p5iw=;
+ b=r7iOOZgeQ/sdI+YNE4kyNt5fQHfhoWlWG//KG8QmluFN7uMymJ4J+TD8FBkVBgFIddMLjm
+ b1bXOGucqJgpfwjLCQ72H6fR+BvQ9wrmxDDraS/V0eyxsrulZUG89pzxIVSNp96lRc0hDw
+ b2wyypUDV4RzuLoAAY58Zi73n0wIL84=
+From: Damien Hedde <damien.hedde@greensocs.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v8 0/9] Clock framework API
+Date: Tue, 25 Feb 2020 14:14:13 +0100
+Message-Id: <20200225131422.53368-1-damien.hedde@greensocs.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20200224222232.13807-1-richard.henderson@linaro.org>
- <20200224222232.13807-5-richard.henderson@linaro.org>
-In-Reply-To: <20200224222232.13807-5-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 25 Feb 2020 13:20:45 +0000
-Message-ID: <CAFEAcA_Oo2FQ_2BNKgcUHOS5AzHHOahvYq0ZnZ+3_5668MYMtA@mail.gmail.com>
-Subject: Re: [PATCH v2 04/17] target/arm: Add isar_feature_aa64_fp_simd,
- isar_feature_aa32_vfp
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::343
+Content-Type: text/plain; charset=UTF-8
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1582636464;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=cmVeIIg2UhMQ9LFYRp1vgnoqu4rjk3OUjpnIKS+p5iw=;
+ b=bnTs1OJ4FhCAxWiVDLMACe/PhgzYx1NvGmP4QmI4D6HuGA9Gsp2Yr5p8ehn/Y0TQCOG4In
+ fdo2ZihNj9BmQPWWZQMtsGmh+Km7ICrH253ixFfMiJ/K1yh3yOC9yGyrbTT41G0GZuLbf3
+ rqcPbB3tDn3g2Fsv6tV8P+RV6wv6crA=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582636464; a=rsa-sha256; cv=none;
+ b=5Yrbo8jZMITrnhmeRA2PsTNN35FOuy9z3FW2z6x901upCHSHknUkdkAmTtZ0bOHKKABL44
+ WZ8+yKoLl5tlpW1U7EVLocykf3VcjQgkcbVtxRiM3HgDKE6mw6wOY5qQJ00nK0kjjQSX10
+ cwmFijd0Kr39CATnwJ1x19AFgMOphj8=
+ARC-Authentication-Results: i=1;
+	beetle.greensocs.com;
+	none
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 5.135.226.135
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,30 +81,113 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Damien Hedde <damien.hedde@greensocs.com>, peter.maydell@linaro.org,
+ berrange@redhat.com, ehabkost@redhat.com, pbonzini@redhat.com,
+ alistair@alistair23.me, mark.burton@greensocs.com, qemu-arm@nongnu.org,
+ marcandre.lureau@redhat.com, edgar.iglesias@gmail.com, philmd@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aUY/DVegp63N
+X-TUID: hBHRhVlYC83H
 
-On Mon, 24 Feb 2020 at 22:22, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> We cannot easily create "any" functions for these, because the
-> ID_AA64PFR0 fields for FP and SIMD signal "enabled" with zero.
-> Which means that an aarch32-only cpu will return incorrect results
-> when testing the aarch64 registers.
->
-> To use these, we must either have context or additionally test
-> vs ARM_FEATURE_AARCH64.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/cpu.h     | 11 +++++++++++
->  target/arm/cpu.c     |  9 ++++++---
->  target/arm/machine.c |  5 +++--
->  3 files changed, 20 insertions(+), 5 deletions(-)
+This series aims to add a way to model clock distribution in qemu.
+The proposed objet and qdev API allows to model the clock tree of
+a platform allowing us to inspect clock configuration and detect
+problems such as disabled clock or bad configured pll.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+This fast v8 fixes the documentation rst patchew errors and includes
+Alistair's review on v7.
 
-thanks
--- PMM
+There's 2 notable changes since v6:
++ The value stored in clock is now a period on 64 bits integer. The
+  unit is 2^-32ns to achieve the same precision as the ptimer internal
+  representation.
++ No more ClockIn/ClockOut base types, just a single Clock type. It
+  makes things simplier for everything else (standalone clocks,
+  possibility to read device's output clocks) and allow to chain
+  several clock inputs.
+
+Regarding the internal represention. The precision is huge so that
+it is possible (in the future) to somehow connect a ptimer with a
+Clock with no loss of precision.
+The consequence is that we have a ~4seconds period upper bound only.
+Alternatives, allowing us to keep this precision, are to use a
+floating point or to extend the integer.
+
+The added clock api is very similar the the GPIO API for devices. We
+can add input and output and connect them together.
+
+Now that ressettable API is merged, the clock tree is properly
+initialized during the machine reset.
+I've tested this patchset running Xilinx's Linux on the xilinx-zynq-a9
+machine. Clocks are correctly updated and we ends up with a configured
+baudrate of 115601 on the console uart (for a theoretical 115200)
+which is nice. "cadence_uart*" and "clock*" traces can be enabled to
+see what's going on in this platform.
+
+Any comments and suggestions are welcomed.
+
+Patches 1, 3 and 5 to 8 still need some reviews.
+
+The patches are organised as follows:
++ Patches 1 to 4 adds the clock support in qemu
++ Patch 5 adds some documentation in docs/devel
++ Patches 6 to 8 adds the uart's clocks to the xilinx_zynq platform
+  as an example for this framework. It updates the zynq's slcr clock
+  controller, the cadence_uart device, and the zynq toplevel platform.
++ Patch 9 adds clock info to monitor "info qtree" command
+
+Changes since v7:
+https://lists.gnu.org/archive/html/qemu-devel/2020-02/msg06451.html
+ - rst errors in doc
+ - Alistair's comments on patch 1 and 3
+
+Changes since v6:
+https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg00599.html
+ - switch from frequency to period based clock state
+ - single Clock type (no more ClockIn and ClockOut)
+ - doc converted in rst format (Peter)
+ - various fixes (Peter and Philippe)
+ - better migration support for zynq devices (Peter)
+
+Thanks to the Xilinx QEMU team who sponsored this development.
+
+Damien Hedde (9):
+  hw/core/clock: introduce clock object
+  hw/core/clock-vmstate: define a vmstate entry for clock state
+  qdev: add clock input&output support to devices.
+  qdev-clock: introduce an init array to ease the device construction
+  docs/clocks: add device's clock documentation
+  hw/misc/zynq_slcr: add clock generation for uarts
+  hw/char/cadence_uart: add clock support
+  hw/arm/xilinx_zynq: connect uart clocks to slcr
+  qdev-monitor: print the device's clock with info qtree
+
+ docs/devel/clocks.rst          | 360 +++++++++++++++++++++++++++++++++
+ docs/devel/index.rst           |   1 +
+ include/hw/char/cadence_uart.h |   1 +
+ include/hw/clock.h             | 225 +++++++++++++++++++++
+ include/hw/qdev-clock.h        | 159 +++++++++++++++
+ include/hw/qdev-core.h         |  12 ++
+ hw/arm/xilinx_zynq.c           |  57 +++++-
+ hw/char/cadence_uart.c         |  73 ++++++-
+ hw/core/clock-vmstate.c        |  25 +++
+ hw/core/clock.c                | 130 ++++++++++++
+ hw/core/qdev-clock.c           | 185 +++++++++++++++++
+ hw/core/qdev.c                 |  12 ++
+ hw/misc/zynq_slcr.c            | 172 +++++++++++++++-
+ qdev-monitor.c                 |   9 +
+ hw/char/trace-events           |   3 +
+ hw/core/Makefile.objs          |   2 +
+ hw/core/trace-events           |   7 +
+ tests/Makefile.include         |   1 +
+ 18 files changed, 1412 insertions(+), 22 deletions(-)
+ create mode 100644 docs/devel/clocks.rst
+ create mode 100644 include/hw/clock.h
+ create mode 100644 include/hw/qdev-clock.h
+ create mode 100644 hw/core/clock-vmstate.c
+ create mode 100644 hw/core/clock.c
+ create mode 100644 hw/core/qdev-clock.c
+
+--=20
+2.25.1
+

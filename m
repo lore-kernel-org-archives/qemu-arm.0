@@ -1,179 +1,133 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1615665lfg;
-        Tue, 25 Feb 2020 04:23:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqztYkIzpdFIMAmx4KdQGEIHZkwuJ6JAcBk9uKpSK1ZGfzKGTtQaLqlxftxfqRFAUBl+d81m
-X-Received: by 2002:a05:620a:130b:: with SMTP id o11mr29415276qkj.444.1582633417923;
-        Tue, 25 Feb 2020 04:23:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582633417; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1616515lfg;
+        Tue, 25 Feb 2020 04:24:28 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwCTvT107EkXU/rR7wNzEDsnGTdRFQZz/x3OQvwRxvI9Q+FgRoDfs6M9rc4ugU5PA6a4iKS
+X-Received: by 2002:ac8:7446:: with SMTP id h6mr54878563qtr.274.1582633468641;
+        Tue, 25 Feb 2020 04:24:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582633468; cv=none;
         d=google.com; s=arc-20160816;
-        b=tnW8dGOAXxiGpYWQrbk2bXKVatPho634Udy138qz+cjIRYUCD8IxwTPXfqCuE9TeSl
-         04GaSSc22i/99ZwXtBoQow9iEI24JU4AOY/aRhgGZOvj3iQY72oNnKodLj0z2hnrsLCl
-         7SeM0HwIP3VTBD4KrewnStx5zLMlrM41WJTU4iHfkFGb9+w7/0qRv7ygeufZ/gIKdjBI
-         +hY4mT+2X1U3cUUJ9yMcIv6aFD2AuIlAoiT1f1g0BbPRcZrHrPOyc/YBfXXl18AXDBxI
-         ydejj08lTGej7pGRjPkD/ZI53iyWMcVrEIUc663EOMZNUFjTPbQ5UY0V1CMalKMGMy3P
-         b6oA==
+        b=tOfn1vXlEDgPVqI/IwWZfBIB3Lq7Kf6RSGaiR6C9wzkcdQNuWsrn+UkZfBwPUCGlmx
+         60u519I5pqW+tauKnJzBpUVQTjuoaFTun1R+wf5PZjzv213xpUrHEUP2TWqa7tuFuodc
+         WdJJaPSbqRoNfGX+SMb6w4n1BJYJQEAUuVAHIei9bI1fEPJ/lIDZ2SOpxpj94kihsPQ1
+         oy3ICwFyjgrym2/3DLcMZMEj01fQRMGyvdmnPU2UeoKZM/xIDvURYNH8tGJzhRlC0awe
+         DQtgxy1yCbbzIw7sluvsx01hImWpu3KgQN2gPAuNErT+UTMjYlZ86kNj7i/SJFLs1ldr
+         i7WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=5yEcJudPsSKynUdTsOA6q32GCiSnAoOzrKCJ4IpFVN4=;
-        b=Nyy9maL/MXci0j0lw9eifOJjWbLevfnIwmkNhQHu5/2ZucKOS2eqAgyQOAd7RqkrpF
-         Fccq5TTvPyItkoNVp4jPamStz6zV3VXe6uYVHJaDUXALRFAMIzDXMOZ30nDuEk436bO1
-         KTlodRH9qfybxC/ResNW1qOSU0GqlF/z666k1vI0astxKTDVT6mZ1HtK0GokuN6LmSl0
-         M62VOc1SX2ZUQvDzY61W0jsSN7QmvkI5u+UaBpOH/F+OUf/UUJIhTJAf6Lrwq4a02/Ml
-         OVO24xEe6nWczVwaPkKpWPNbWAALHQDKeAirnOhdHgsf0F39dbmJUL4uWB1vqWj/GtfB
-         haqA==
+        bh=OalDj38vAYtArGZEfUFVIwvsdCbBvjJMoAXbjYxn3eU=;
+        b=EM6sZUBXjkhbGs4rof3Wum7jSvLrjAcRa7V77kH8cmAc2XdaH7EutF01uDpQYaqKls
+         9ADQmU95jcEFfjB58q/hTLv8/Vmejym5B8GhV1/6KKPxNlAA8uhtXFHcTfAv7e8lNsp9
+         1vzXlxDaLjSuzGXJUYHme7Iy8NuYZBahJmmbgU5NR1k+5ophjKfZTmM12v7evZoBn6m7
+         //W+AFe98oKQi2kklpBEePsqqkWQFM/Q4NxkhGHOCWGbxAOp7UdINsuiV6liT790Jnjz
+         LXR7pJ3MdcMsw8Zkgfqb3yZtcdgFbl8tqLOeRKbcJGhI+abSFV/DGsHs83rYc8z5F28N
+         PwWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Ncd/l9CA";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=t8iCH6Gq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w8si444961qki.325.2020.02.25.04.23.37
+        by mx.google.com with ESMTPS id z3si6550938qvo.123.2020.02.25.04.24.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 04:23:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Feb 2020 04:24:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Ncd/l9CA";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=t8iCH6Gq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54028 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54038 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6ZFR-0007Cg-A7
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 07:23:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50717)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j6ZGF-0007hA-VE
+	for alex.bennee@linaro.org; Tue, 25 Feb 2020 07:24:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51678)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j6YpW-0002Uj-3K
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 06:56:54 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j6YvC-0003Ki-Vl
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 07:02:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j6YpS-0003S6-1S
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 06:56:50 -0500
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:36092)
+ (envelope-from <peter.maydell@linaro.org>) id 1j6YvA-0007lF-Sz
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 07:02:42 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:47080)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j6YpR-0003R0-RN
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 06:56:45 -0500
-Received: by mail-ot1-x342.google.com with SMTP id j20so11846478otq.3
- for <qemu-arm@nongnu.org>; Tue, 25 Feb 2020 03:56:45 -0800 (PST)
+ id 1j6YvA-0007i2-K0
+ for qemu-devel@nongnu.org; Tue, 25 Feb 2020 07:02:40 -0500
+Received: by mail-ot1-x343.google.com with SMTP id g64so11785578otb.13
+ for <qemu-devel@nongnu.org>; Tue, 25 Feb 2020 04:02:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=5yEcJudPsSKynUdTsOA6q32GCiSnAoOzrKCJ4IpFVN4=;
- b=Ncd/l9CAT2rVt9Nsutg3JlLCh1Jf+Cb1g10T5dCWiA/pH4pGDfv5OdL6Nb+nkDmzOj
- /89/sGA3AAtVSNYmbF+QzPzbGfezFmBmYASUmsPZFMHZyNCWK9CiUKWGo9cy745uUvkc
- HTuUbD/fXtROjPHjRKMNEKbIxYB2xjiSCMYBh1g64h7zDWV3JNZAgxtrFaqT26Vq0ubJ
- AoSL1T2g/BMgPSvwjHZjlh3j7dQde3eTRw5qz0qxyCZ583I7fKFHStmKMS7WsYmVlfE9
- wJt7xhgraHfLYfmDwkHW3Vcy/XUTqqo6r+UNFRGN5+BdQ2iQXnEbWlB5z9Ugu8DPa44L
- QMxw==
+ :cc; bh=OalDj38vAYtArGZEfUFVIwvsdCbBvjJMoAXbjYxn3eU=;
+ b=t8iCH6GqFC3kuMAgqjoNXv2AGGVat1EMbI4K3BK4GeoFtaYMgGEd1DD+yrmrUqXnnd
+ /KXcrUBlqwjbi7YwesROnT3j9YTnsvCu+PP2EZ7pEvweqLuo3ENskBFxWefimLt9OTpw
+ 9JxsOwkJDdvJfyt7uNECy/IKqN9afDzhZz7tMeIIXF/SYLYr6tYvtA9RlJjlZFVxb+v6
+ S5+IkC83dOGNo20497xerN3qWJ+z2SjQ3yd1q+TTrEoSHXhysDwsSuLDsYqSV+C1ONYO
+ DXwcO8yZBr3+ilQvJZD4FnM4Em3nwz4TE+1Lxsqm0vJ0+vT5XLGD06sAuq/PJCdnaqRD
+ 5GyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=5yEcJudPsSKynUdTsOA6q32GCiSnAoOzrKCJ4IpFVN4=;
- b=q13SoBComWNC0RmZQ3H4HicD9KU+8CfZkFcEILaOQMzjMNHUN1OI/eeLmwZluOwNK0
- zD36kEbahZUNVARf9y44t0lKkvwKzhub0Z9aeEoGABDkv7iwGDQ5oOtv+nmKjntKxoSC
- kT/ga7ARealFxO2ZuFm9yojfmowsKmtUFHjl22WV4vzMC6Yo0z9dbQwyphiEBS/0VSDZ
- OLMwEbYwDpTMObrjXBBHfrcZr7uV8IZ9eoutT23PvvfOp0hoKyz/llMmD7eATpb0F0QS
- b9AW89mAknfE9Y6bPMOMgRYsHV/1fkdKKcdFFcabbyUQI9H4L/RdCsIho9jQQk7IRexG
- glBw==
-X-Gm-Message-State: APjAAAVRMnKu8ubBfiym7TFmaTpFErAaluP3lw6ajEnEJRjjBAsVVBmB
- CLooh/iKdkKYMRlAl16EMSFfeE7sSnc2KaBOvya79g==
-X-Received: by 2002:a05:6830:184:: with SMTP id
- q4mr44674013ota.232.1582631804724; 
- Tue, 25 Feb 2020 03:56:44 -0800 (PST)
+ bh=OalDj38vAYtArGZEfUFVIwvsdCbBvjJMoAXbjYxn3eU=;
+ b=h2q7a/fm6Td6MGIcROvbzvGr1I9SLOhoM36P48NDMrervzY+ZWN4cpqK3qX/Eelj1S
+ T/ZC3Pzzs+i95jillMVJqeHGsupAgZ7FikZ9+J/6drq9fKxGqlltExZ+4IByiHWhpZAA
+ uWc5g+tp4GBqjaEW9bpjL/rre81aMci4AbNiFeMIic/PWG4+5Gl4F1006XB3s5kJltT0
+ IDmUM2iZy87B3Lk2uH3OEzUfg5eEQRtZW7aP9D1CJLIfM8jkwLKA7kNzlgkjyie+S4mc
+ O/uykswYbnzlsbU4BrR3Rt3brroZ86B9GCZgpONJLQXyQhwUjQWyIRX6Mv6DWtJkIIFO
+ TZ6A==
+X-Gm-Message-State: APjAAAVsNJydf5R5niinkBBb/IhTjX2QapQt2vD4oUyPkGrzgE8+SH99
+ xjlKrxF97gTHjtfvX/rPrDDyT9BV798GvmhrFjGMXg==
+X-Received: by 2002:a05:6830:1184:: with SMTP id
+ u4mr42212075otq.221.1582632158436; 
+ Tue, 25 Feb 2020 04:02:38 -0800 (PST)
 MIME-Version: 1.0
 References: <20200218190958.745-1-richard.henderson@linaro.org>
- <20200218190958.745-7-richard.henderson@linaro.org>
-In-Reply-To: <20200218190958.745-7-richard.henderson@linaro.org>
+In-Reply-To: <20200218190958.745-1-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 25 Feb 2020 11:56:33 +0000
-Message-ID: <CAFEAcA91aWV45=ozUbekqKzx3EgDm3kamkzM=tROdK7wMndx8A@mail.gmail.com>
-Subject: Re: [PATCH v3 6/7] target/arm: Honor the HCR_EL2.TPU bit
+Date: Tue, 25 Feb 2020 12:02:27 +0000
+Message-ID: <CAFEAcA8qzoWxZ7ffqBaOqZ8Kicq7Zz43jRwxkyt7gTLy7kBEiQ@mail.gmail.com>
+Subject: Re: [PATCH v3 0/7] target/arm: Honor more HCR_EL2 traps
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::342
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::343
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HH3Qgp/DV5B1
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nIQZbF5e3kTE
 
 On Tue, 18 Feb 2020 at 19:10, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> This bit traps EL1 access to cache maintenance insns that operate
-> to the point of unification.  There are no longer any references to
-> plain aa64_cacheop_access, so remove it.
+> Based-on: 20200214175116.9164-1-peter.maydell@linaro.org
+> ("arm: ARMv8.1- and v8.4-PMU, ID reg cleanup, [H]ACTLR2")
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/helper.c | 53 +++++++++++++++++++++++++++------------------
->  1 file changed, 32 insertions(+), 21 deletions(-)
+> Patch 1 is a latent error that I noticed while reviewing
+> Peter's patch set.
 >
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index ed34d4200f..21ee9cf7de 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -4301,19 +4301,6 @@ static const ARMCPRegInfo uao_reginfo = {
->      .readfn = aa64_uao_read, .writefn = aa64_uao_write
->  };
+> Patches 2 and 3 have already appeared separately on list,
+> with patch 2 bearing a v2.  Thus this patch set is labeled v3.
 >
-> -static CPAccessResult aa64_cacheop_access(CPUARMState *env,
-> -                                          const ARMCPRegInfo *ri,
-> -                                          bool isread)
-> -{
-> -    /* Cache invalidate/clean: NOP, but EL0 must UNDEF unless
-> -     * SCTLR_EL1.UCI is set.
-> -     */
-> -    if (arm_current_el(env) == 0 && !(arm_sctlr(env, 0) & SCTLR_UCI)) {
-> -        return CP_ACCESS_TRAP;
-> -    }
-> -    return CP_ACCESS_OK;
-> -}
-> -
->  static CPAccessResult aa64_cacheop_poc_access(CPUARMState *env,
->                                                const ARMCPRegInfo *ri,
->                                                bool isread)
-> @@ -4336,6 +4323,28 @@ static CPAccessResult aa64_cacheop_poc_access(CPUARMState *env,
->      return CP_ACCESS_OK;
->  }
->
-> +static CPAccessResult aa64_cacheop_pou_access(CPUARMState *env,
-> +                                              const ARMCPRegInfo *ri,
-> +                                              bool isread)
-> +{
-> +    /* Cache invalidate/clean to Point of Unification... */
-> +    switch (arm_current_el(env)) {
-> +    case 0:
-> +        /* ... EL0 must UNDEF unless SCTLR_EL1.UCI is set.  */
-> +        if (!(arm_sctlr(env, 0) & SCTLR_UCI)) {
-> +            return CP_ACCESS_TRAP;
-> +        }
-> +        break;
+> Patch 4 is dependant on Peter's [H]ACTLR2 fix, and the reason
+> for the Based-on tag.
 
-Again, we want to fall through here rather than breaking.
-
-> +    case 1:
-> +        /* ... EL1 must trap to EL2 if HCR_EL2.TPU is set.  */
-> +        if (arm_hcr_el2_eff(env) & HCR_TPU) {
-> +            return CP_ACCESS_TRAP_EL2;
-> +        }
-> +        break;
-> +    }
-> +    return CP_ACCESS_OK;
-> +}
+I've applied patch 1 to target-arm.next, but feel free
+to keep it in the series if you spin a v4 before I get
+round to doing the next arm pullreq. I've left review
+comments on the rest.
 
 thanks
 -- PMM

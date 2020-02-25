@@ -1,121 +1,113 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1738550lfg;
-        Tue, 25 Feb 2020 06:15:29 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyE2gwADxx5fFEIis2YxZ6oUe+rRyyTKMgn4Bm/S1XAf3C6i+mn5zV0L6uwT3HCQLk3oAGN
-X-Received: by 2002:a0c:f193:: with SMTP id m19mr47100173qvl.154.1582640129431;
-        Tue, 25 Feb 2020 06:15:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582640129; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1853786lfg;
+        Tue, 25 Feb 2020 07:57:00 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwK5zAY4Cq+9t3ldZSGgydb3yzqZtrNQKS3qSa02cGOSYsnqSVOdjF5g5Bhsh2CZZNW2D0+
+X-Received: by 2002:ac8:1a30:: with SMTP id v45mr53678169qtj.80.1582646220146;
+        Tue, 25 Feb 2020 07:57:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582646220; cv=none;
         d=google.com; s=arc-20160816;
-        b=hktZYc5pX7FErsk5dVREKK7KwoDmEOUEuEgxYmVpnHIal8WXE/c49OxnB83TFrFYe+
-         4IbNX7BKMXhqb4v7BElUc6nFSm0LNfCQLuul4pJDtDEdS7aAZ0RHozKiegrfaCdNf051
-         bgQPrPDN5dXwyebV2rl7SfyjPfX7f0x3LbfLxdLQScJiJ6NN7ukp85yA6OOnprHvVSbg
-         8UFVXcjwmcQ0JzkqWWpFD0D8aTze66+VNlGDHCy3ZlaOeaAL7s2rCI7uv81OZUWbm06R
-         5v2dftuPeGQ0e9Os5SzTS4FTs9em4/Ge9Epz6FpWIZekco+SqfOc1GGQiBdt+8eWoZem
-         po/g==
+        b=Yy6IOB7/w/QWNBY4T8pZ/YGiO+tTq7BxSNcDr05+kXBZlpt+lmTZFSC5Xryg7RQR6B
+         pHYLjcodpd2iAV8HTN0U353lwYMzVMTOVh60ipMnD5nWw0S0lKNcqgBX+HBf/LOoj+10
+         d1VFEZmXnM0EIi9g7tljoOzaA4Ygs1whDmg+fyWOXR6M6j3PjWtDtIOHl3wo6Ga6mGbR
+         +Mv7BU4Sm+BXeazE2y40MGgEOvSF1IMZQQN485RkhJI14O01TZzWsik7pXB33lZIT9Ci
+         ZgFBjoS/WX0B5teJ14n7nufAgm4saMOP+tJhzURYskztKBUhswfkAHcoVyjHlUmGnMZj
+         wWAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=mplXFz9XhI87VPN32Jx6WUqNvWODeZuWVw5OoOQxrjM=;
-        b=ZED68da+MlvYR3er2hLAgscz2oLM2SjugKfOVHGE1GYK229BLCPpXd6H+/V+4w5fmz
-         C012fyjcz9M+ok9v8l2uIH5aBmblzclORmNyALTqhZWeAOCRcGlYYH2sm9pIv8gRtEZ/
-         Ic3++5p55pgBuVhH1ePz38nmNAy4j7Crp3p/NAlITg8a7lOzYy7bfsGlZGV7DVy9bLzH
-         KfRO0MzeHLu6c8nJrXNjqKolcRrEVHt/Qua5iCNcqJlIwCxkPpZ2YlhN1CNGHYEu720G
-         nJGHxgdwKQ2EmT2Kvba9Hlwug7Bcek8dx2PgGiA2u+qGLBzhJKEJOvg95bItTDeEFjTO
-         s3HA==
+        bh=5T4zoGkohe+BCUHPUlsCXWuDwV2ufiEtB/JT6ZKH1O4=;
+        b=TL2f1/kWojcBD0C79lWC6gLX9xUbqIFTGRo3x1qWte+hutGHPG61uTJUAxmKtFTstu
+         2P4kSX4d47jJHUCqXJS7ZLG1mcIw84qBEfi8vPzElXhRFcIIkqSbnXTBYIs8hdgtROzS
+         8pyVyoBAxn2WAJnO2cRc4R2wb3ZyVUBnjCx6JVeqEvMuuLReHr5ZhnI0DdvUYTMWQT0N
+         Ic8VM1OMZ9AeZ7FZU7lOwb0vh1MsIVlOxSaTbQBIXBE3oZmi7MUhcq04RIco64t78Exg
+         YTyy0KFKpl1dsjaicod36auoNfIL6TTXJdebbZrpsJULY8GQc4+7XtfX2Ypm8jyNR3fb
+         rssg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZEHGxMJD;
+       dkim=fail header.i=@linaro.org header.s=google header.b=sgynCbD6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s17si6350834qvm.205.2020.02.25.06.15.29
+        by mx.google.com with ESMTPS id u22si451036qkk.299.2020.02.25.07.56.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 06:15:29 -0800 (PST)
+        Tue, 25 Feb 2020 07:57:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZEHGxMJD;
+       dkim=fail header.i=@linaro.org header.s=google header.b=sgynCbD6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57586 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59436 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6azg-00015I-OT
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 09:15:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45508)
+	id 1j6cZv-0008Hw-J4
+	for alex.bennee@linaro.org; Tue, 25 Feb 2020 10:56:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36234)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j6atu-0007Ds-46
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 09:09:32 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1j6cYn-0006Hy-TA
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 10:55:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j6ats-0006Yc-KI
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 09:09:29 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:34571
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6ats-0006Y4-FX
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 09:09:28 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582639767;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=mplXFz9XhI87VPN32Jx6WUqNvWODeZuWVw5OoOQxrjM=;
- b=ZEHGxMJDGHNJtCn1EXuyqgLLnNEn83M7OlfoVqMpkTr5XtTUPDw8uZyMxcqEWQsX0irs85
- NR8S5rI7iTtgogI0a+LGiXiqDUD/pWi27mpuGp0VGAzpx9M1NifyalAdb4cMng2jHLdkWO
- pNbpajrC2i4RcIYMHB8TS+GXBGbCS4c=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-69-RRUef0qDPQuw7VF_KBr87Q-1; Tue, 25 Feb 2020 09:09:25 -0500
-X-MC-Unique: RRUef0qDPQuw7VF_KBr87Q-1
-Received: by mail-wr1-f71.google.com with SMTP id n12so5461796wrp.19
- for <qemu-arm@nongnu.org>; Tue, 25 Feb 2020 06:09:25 -0800 (PST)
+ (envelope-from <richard.henderson@linaro.org>) id 1j6cYm-0007do-N5
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 10:55:49 -0500
+Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:50323)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1j6cYm-0007dW-F6
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 10:55:48 -0500
+Received: by mail-pj1-x1044.google.com with SMTP id r67so1432202pjb.0
+ for <qemu-arm@nongnu.org>; Tue, 25 Feb 2020 07:55:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=5T4zoGkohe+BCUHPUlsCXWuDwV2ufiEtB/JT6ZKH1O4=;
+ b=sgynCbD6TrZO4f80YloovP9v2tHwlEzsWK1Wi/b3Up5KqhAyvM4YMVqIbl8HZ+RTo0
+ QK1HSsOvcVRFt9aPh+RWg42ESnFZo3Ydq2sojYJVME9dg4RowLa4b3j8ZEvKgDZo1af1
+ F7dedbOrtwOoDxyLQdMMHsRKZ59JWl1vu2SZLBpeZj1l2A0f4ZU9QeVCqpYImFoUKo9f
+ FlnnYF+EtHcxSODiJXP2dwmxCuxeJ/XakInc06hhI1OwuIDtdrZ6GaQBWRxTiO/SjKrM
+ 72iUgkB3DiLe3Ip4J6+EuCUjTzOHB9ib+JXAx21H62YdTpOr8a0Zv/f8hpkizwpBM8Al
+ D+tQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=qEoTyBPH0U7wxGlqvxw7ToAiex8GCPJH26NUCkpeNTI=;
- b=Uhd2sAyz4hrnfXZv9EfVdcEBQcesYwqBn0wdoHQlXIAvBpwhgIKT/8nSSf0MpNiDR+
- qLKXLQciwtWDumYha343W7S0wuZHKe/ntuRAS2MOe38wDoWSAqdLeaCYu2GpjWCqNvKZ
- xlhUjV+pgnq8vouRZaIPRRrQ7EeZuA9IG+wpzK24aOu1rUeYJ9Jc933Ly8LhXOWtWtEz
- anHJwEGwd230gNpKwJj4M6C5v52EEDSQ9G9YpwYulCnAlMq+TLFP2seSACKZxizIsnl0
- o5+hUHb/a9fGE/HpuLY0EDSvQA06aOyxSILCyxu9RT/TvSDLukqsZpvlqycKxnHKmYOQ
- iUYg==
-X-Gm-Message-State: APjAAAXQoX0b54V5JWyaIt0rnJTaMgTAzcxIj0vDjeZ92C5z9LY5Bi+x
- tiZ+VHfLPxLyeX2Zy2Ph8ULi8OYogdubKnqd/42Pn3P6yZ3L4nZG4+tLSXWVOg3PoC0nvG8oNGC
- 72CJ4TOTWKQaK
-X-Received: by 2002:a1c:610a:: with SMTP id v10mr5365097wmb.44.1582639764636; 
- Tue, 25 Feb 2020 06:09:24 -0800 (PST)
-X-Received: by 2002:a1c:610a:: with SMTP id v10mr5365071wmb.44.1582639764355; 
- Tue, 25 Feb 2020 06:09:24 -0800 (PST)
-Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id 25sm4358911wmi.32.2020.02.25.06.09.23
+ bh=5T4zoGkohe+BCUHPUlsCXWuDwV2ufiEtB/JT6ZKH1O4=;
+ b=s0BqAi9mI0dHQYVi7WALk48Pm6AJfNeHWSMe1zn5HlLfHUbYNsxA085ZJ2RbGf5pfh
+ 2a3Qct1/IRqZA43B4V0BzeKGECRm/vvIPKtgnmBl0FZdEk5Q8GKgfaJ7PUM+BRVllrd7
+ yLw38qnx91oBlbhaip2XLKIO8luYB9w0Ve3dRBYsdRB1G5cwUlb2kf6WfZTV2EYa6AEC
+ FfaEyNzubfFjAeUPKE+KWRL7GRuOc8u/0P+KXr1QFeu4n4uG37ofgTzrIX8PbWhsOrq+
+ e0U/Z+JXpuyQF/eiw3xZq0ZZDOHg20jvY4LSTlJVbuiUJ+9ki9xdPvE4jPJg2LmsWY1K
+ BGtQ==
+X-Gm-Message-State: APjAAAUOu6yUz7r2P6z5tZk5vjKMSoYyqJoFq2fW7fYtzzM/1yTmwhiJ
+ TgWEB83TvfFZTgSnGHBfI+vre+BemP8=
+X-Received: by 2002:a17:90a:f492:: with SMTP id
+ bx18mr6190570pjb.118.1582646146910; 
+ Tue, 25 Feb 2020 07:55:46 -0800 (PST)
+Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
+ by smtp.gmail.com with ESMTPSA id
+ b3sm17873768pft.73.2020.02.25.07.55.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Feb 2020 06:09:23 -0800 (PST)
-Subject: Re: [RFC PATCH v2 2/2] hw/arm/integratorcp: Map a CFI parallel flash
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <20200223233033.15371-1-f4bug@amsat.org>
- <20200223233033.15371-3-f4bug@amsat.org>
- <CAFEAcA9bZJ9X20SX-5J2M6rWEhNC=un3Re3RVhGGHD1qMEdWtw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <d8c64ad4-1c72-04fd-400a-ac003b3090cb@redhat.com>
-Date: Tue, 25 Feb 2020 15:09:23 +0100
+ Tue, 25 Feb 2020 07:55:46 -0800 (PST)
+Subject: Re: [PATCH v2 05/17] target/arm: Improve ID_AA64PFR0 FP/SIMD
+ validation
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200224222232.13807-1-richard.henderson@linaro.org>
+ <20200224222232.13807-6-richard.henderson@linaro.org>
+ <CAFEAcA9WZbZj_hPemTGr+Rkh--VmZt1eis189+ExuPVNipgo_A@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <49741058-7dbf-d20f-95ce-5bf9b5e5bdb2@linaro.org>
+Date: Tue, 25 Feb 2020 07:55:44 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9bZJ9X20SX-5J2M6rWEhNC=un3Re3RVhGGHD1qMEdWtw@mail.gmail.com>
+In-Reply-To: <CAFEAcA9WZbZj_hPemTGr+Rkh--VmZt1eis189+ExuPVNipgo_A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::1044
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -130,87 +122,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ftVBYMLYhaAC
+X-TUID: hSuX18YW74eU
 
-On 2/25/20 1:47 PM, Peter Maydell wrote:
-> On Sun, 23 Feb 2020 at 23:30, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
->>
->> The Linux kernel displays errors why trying to detect the flash:
->>
->>    Linux version 4.16.0 (linus@genomnajs) (gcc version 7.2.1 20171011 (L=
-inaro GCC 7.2-2017.11)) #142 PREEMPT Wed May 9 13:24:55 CEST 2018
->>    CPU: ARM926EJ-S [41069265] revision 5 (ARMv5TEJ), cr=3D00093177
->>    CPU: VIVT data cache, VIVT instruction cache
->>    OF: fdt: Machine model: ARM Integrator/CP
->>    ...
->>    of-flash 24000000.flash: Integrator/CP flash protection
->>    of-flash 24000000.flash: do_map_probe() failed for type cfi_probe
->>    of-flash 24000000.flash: do_map_probe() failed
->>
->> Since we have a CFI pflash model available, wire it.
->> The kernel properly detects it:
->>
->>    of-flash 24000000.flash: Integrator/CP flash protection
->>    24000000.flash: Found 1 x32 devices at 0x0 in 32-bit bank. Manufactur=
-er ID 0x000000 Chip ID 0x000000
->>    Intel/Sharp Extended Query Table at 0x0031
->>    Using buffer write method
->>
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> ---
->> v2: Kconfig change was not committed
->>
->> RFC because I have no idea of the flash model, its ID code, and which
->> default CFI family (1 or 2).
->=20
-> ARM DUI 0102G ("ARM Firmware Suite Reference Guide") helpfully has
-> a few details:
->=20
-> Device                                  Size  Organization     Flash part
-> Integrator/AP Boot flash               512KB  1x512K block     Atmel AT49=
-LV040
-> Integrator/AP Application flash         32MB  256x128K blocks  Intel 28F3=
-20S3
-> Integrator/CP Boot/Application flash    16MB  64x256K blocks   Intel 28F6=
-40J3A
->=20
-> (of which we only model the CP.) With luck that's enough to
-> nail down the relevant device properties.
+On 2/25/20 5:24 AM, Peter Maydell wrote:
+> This check is supposed to be "did the user accidentally specify
+> some incompatible settings on their '-cpu,+this,-that' option?".
+> By making it check the actual ID register values, you're turning
+> it into also a check on "does the implementation specify sane
+> ID register values", which (a) is useful for TCG but ought to
+> be an assert and (b) we shouldn't be checking for KVM in case
+> the h/w is giving us dubious ID values.
 
-"Intel 28F640J3A" is everything we need, thanks!
+Hmm.  Because kvm64 unconditionally set VFP and NEON, you're right.  It was
+only kvm32 that was examining id registers.
 
->=20
->> @@ -646,6 +649,14 @@ static void integratorcp_init(MachineState *machine=
-)
->>                             qdev_get_gpio_in_named(icp, ICP_GPIO_MMC_CAR=
-DIN, 0));
->>       sysbus_create_varargs("pl041", 0x1d000000, pic[25], NULL);
->>
->> +    dinfo =3D drive_get(IF_PFLASH, 0, 0);
->> +    if (!pflash_cfi01_register(0x24000000, "pflash", 16 * MiB,
->> +                               dinfo ? blk_by_legacy_dinfo(dinfo) : NUL=
-L,
->> +                               64 * KiB, 4, 0, 0, 0, 0, 0)) {
->> +        error_report("Error registering flash memory");
->> +        exit(1);
->> +    }
->=20
-> Passing a 'width' argument of 0 means "weird legacy backcompat
-> device that's a bad emulation of a pair of 16-bit devices";
-> we should avoid that for new code, and instead set
-> the width and device-width properties to whatever the
-> hardware has. (This in turn means you can't use the old
-> pflash_cfi01_register() function.)
+The only consequence of kvm giving us dubious id values that I can see is if
+ADVSIMD is on, but FP is off, we won't migrate the register set.
 
-OK I'll try to document that.
+Do you want me to add a tcg_enabled check, or shall we just drop the patch?
+The existing test is good enough for just checking the command-line.
 
-> Should we be using blk_by_legacy_dinfo() in new code?
-> I'm not sure if there's a better way to do this if we don't
-> need to maintain back-compat with old commandline specifications
-> of the flash contents.
->=20
-> thanks
-> -- PMM
->=20
 
+r~

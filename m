@@ -1,114 +1,101 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3367424lfg;
-        Wed, 26 Feb 2020 09:57:56 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwnxq57uq9qP10ky8y+s0NNx1a4I7PvdKFR0EVusye2IMLpqW6cqeE5/8McTHmZrk6PVVCl
-X-Received: by 2002:a37:a00e:: with SMTP id j14mr337153qke.464.1582739876728;
-        Wed, 26 Feb 2020 09:57:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582739876; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3379098lfg;
+        Wed, 26 Feb 2020 10:08:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzt5Ddlf7tJMtSE0i/XHwkNbd8xJKpqFnAvI+1PXSrGD/tKrJMxSjAs1uPP+/Yo4yPSlySZ
+X-Received: by 2002:a05:6214:1633:: with SMTP id e19mr352011qvw.104.1582740501538;
+        Wed, 26 Feb 2020 10:08:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582740501; cv=none;
         d=google.com; s=arc-20160816;
-        b=xGLy6WtOc/A7irb8QPJMRsWek3GhNzx2dveKaYe+DiHSOhtbO+w8GOZ9SQ0hG8Wo8K
-         a8e8UE8rOTGIDoNS3c2AzkMv3Wq7FuScT317VtuCP5Y5SLFSfC2yu7rIlhS59qh+XoAr
-         O/+tQ6XTSVNNo0ayueBNGGB5215gnZPxHGZzHFX/AcwR+QmuLnAQI3fUl+OTJY1UmzVv
-         o8DwxKLsi13h0CT8HtllzBEcSvueS3u9kaoTanWSBScSbngb0V6sS8xBUNYdxNunDUfT
-         w9iodP3URC91DJXbt2iqq5G1kX7bHmjVFWu+BT1OspNZThMmA00WMDkwDqvdvCrYsO4n
-         Sztw==
+        b=Xa0t1gjQbWp4w58R2i8OS1tP1O7OWsphQe5AgSz3EubNHMj1BPFIHosZ+ltKHe7Rxr
+         Q/LA/fzczy6nN+nkiM5F2ItUtXWdPtwfuHot5cRb+4m7XYC1hqXxcgB8vuX2sM47HPqp
+         5V+qwTPuRRTLbUp0ueSdXI/F7Q1p4114ir+3RHIc7KW/Mb9+L7lrIW3wQtS2jRdZHbVX
+         ScG6p59S9UpETvxRF4DycVF34Tq1AFifYsOVXgyRFF3PXZe3gkKSF854M2QIBjq/T6OU
+         q6intgUO5ks07ADy/Clsk24JhiiCbYe9yp1y46nR44lpJ79XD3IPubEg9QuCsZzgTER2
+         ceHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=sebDUYLrDxN15HjxAKvkmNDKIlwQORdu5M9DKS14gEc=;
-        b=gjmMjCg6hkmSQ7Rm6TX4BQfsbduR5TS2avm2/RoouJZ/cZWRXB9pQNTQ06LGFY0eNl
-         zBHagEhaIO48pMjUNwgZOKOcDkoOpqs7Ayvc4fwrYy0KWZOvEnSIUJAfjcrU0rLcSZE7
-         TFqnS9W9dlAzkYGLqqRwh22fk46mLKiHncy2b34LFfeGyCJhG1ants68LKIW9XhYQXKB
-         nr+T2UEbnmg+/vIV6lNg+Z1Yj5Euj9AmB9vosfHW4s26JLjQioCvWMNlcgHWx72/fTJw
-         A05PLQ6s0sLPhDvbDKSEZUV4zSzCpWClcNpHK4cioEbm6pyA0DsljJBs5eZgBX5QSQ6A
-         8w9g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=LMPU1kRD84wPi625eY4a3VdFBmAdtYN7HHupO0TFJhw=;
+        b=T5cp99V5Q/HRQnYJNgUzEOeyA6QOnyo80HA/QH/VuWKYIoOV9VrwdyawL/Dq8SXjl4
+         EbZaaBJdtTDB+luoKXuCVF9fq06/pnXvtFSJBfFDdTSVLC26gWuhL+MNTaDjanvrSkdv
+         nCMXBihze5Nd6Law1Ji5huopAfWePhioEYbi/lY+oYf0EpIJ8UU5Lu5yA7DN9vaWfoKB
+         16X4gu0mCN5tPkB4zKeBfc54R+iDrPU3bXKCQ+VgT2BA8G8S0tmZZjGYFPtMIX3BSC0y
+         0BXgUU8rpJ3qsOyXI9ymQgQk0R04JSxeRnkTQs4SxZYki3JxwSnIJSCLBNPgIJd3t0FT
+         zQuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bpC41Mul;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="ZLeluk/z";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g23si81079qto.236.2020.02.26.09.57.56
+        by mx.google.com with ESMTPS id h5si88087qtj.357.2020.02.26.10.08.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2020 09:57:56 -0800 (PST)
+        Wed, 26 Feb 2020 10:08:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bpC41Mul;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="ZLeluk/z";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48060 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48190 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j70wW-0005aQ-5P
-	for alex.bennee@linaro.org; Wed, 26 Feb 2020 12:57:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33631)
+	id 1j716a-0004yV-W9
+	for alex.bennee@linaro.org; Wed, 26 Feb 2020 13:08:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39361)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peterx@redhat.com>) id 1j70wO-0005XX-46
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 12:57:48 -0500
+ (envelope-from <alistair23@gmail.com>) id 1j716T-0004wN-3b
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 13:08:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peterx@redhat.com>) id 1j70wN-0004wb-84
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 12:57:48 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:24823
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1j70wN-0004vF-4J
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 12:57:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582739866;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sebDUYLrDxN15HjxAKvkmNDKIlwQORdu5M9DKS14gEc=;
- b=bpC41MulwqQEgj1DlWe/l7eexHCIRv3OvhN7g+vkNv5JOmg4bsDYAGtQncMt7oe3ELONNw
- sNWuCxtmmUc78RmpuilV0vtEu4Jf53WHl18Q8tbkAr2N2NyoK4cCvyrhv5wdnt5YDSr4bC
- 9EHBZUpTNqkemWZz7UUp65daIIhxRxk=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-304-eYZkNjGjNhyzPEOQpecPEA-1; Wed, 26 Feb 2020 12:57:40 -0500
-X-MC-Unique: eYZkNjGjNhyzPEOQpecPEA-1
-Received: by mail-qk1-f199.google.com with SMTP id c66so159839qkb.13
- for <qemu-arm@nongnu.org>; Wed, 26 Feb 2020 09:57:40 -0800 (PST)
+ (envelope-from <alistair23@gmail.com>) id 1j716R-0002w3-LL
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 13:08:13 -0500
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:42105)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1j716O-0002aO-LV; Wed, 26 Feb 2020 13:08:08 -0500
+Received: by mail-lj1-x242.google.com with SMTP id d10so78803ljl.9;
+ Wed, 26 Feb 2020 10:08:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=LMPU1kRD84wPi625eY4a3VdFBmAdtYN7HHupO0TFJhw=;
+ b=ZLeluk/zdnf24X+tjiLyM93lKGcePSoU7HZluJi5cXaR9ZYFjNUh8O6GP664DDezNt
+ ZsgyW48ac+1VRw6jWEhkVB+LOiC/QZXUn+RhQDGlD7X22AG1akQuWequelzOu33e8trY
+ h1pt7fvLiVM4aOx+pN0uBJl/Dez8AEZHgI+nEwulTpUxNcO0Ey00Fmh4UDrsLfLXEI+g
+ MCbs/K61raKghejx6Tl9gsQ4mNRZPsaxn7UbEOQ/xs9N/xmwVnd5AgM8JNIQWDp5tHrw
+ flVkanJZlNPJIMHMUOcyrMkQAUqaGGRQJ/koeFp+IStfLBND9bh4BlEs7akNZx/mFayB
+ 5+AA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=zIyV6cYTxtRMRBEZz9p+gZhtydpVS4YQXL45UhS0xXI=;
- b=HND22NaRbtF3ao61SY4g//9bbCv4EJIXSPBXPmI5vj4DDWKDOmlLHWrCQ4RGbd+/hk
- wPve2+02ZZca2c+CbDADG6xDTyLFeEPAR0fS46tZxAOh11VTYKEvemRYChRnJSKmo3F9
- Rcqy7EyhJafzWR+Jq+zbpwFnDtv/jJgbthE3d+13DFMVEakk3OvfITNWd+qSKy38+2pA
- zzZLopTsC0RWo11DKUlroTOagnkh2o521qhSN05wTUk8f9sW21PrnhqwajjwcVIKAKe1
- NAYQya+2j8b3A+zvghH527FOVxf+wGM6/983iCSMhDFzfOYz+xphE9fEA24ezlxlNDRI
- 49ew==
-X-Gm-Message-State: APjAAAWF1sGxLwjNO+yK+vF6g+S569eWC5w/vkQzsce68tRy8/O/DcYU
- POwYG9y8BFJ6x5+jP+yJz7phJYTtFhlducBnCPGoz1ZYtu9s2iDg29nJwOiUZhbVL34+P6bWa5P
- YUw69lfE+voag
-X-Received: by 2002:a0c:e408:: with SMTP id o8mr284434qvl.236.1582739860030;
- Wed, 26 Feb 2020 09:57:40 -0800 (PST)
-X-Received: by 2002:a0c:e408:: with SMTP id o8mr284407qvl.236.1582739859731;
- Wed, 26 Feb 2020 09:57:39 -0800 (PST)
-Received: from xz-x1 (CPEf81d0fb19163-CMf81d0fb19160.cpe.net.fido.ca.
- [72.137.123.47])
- by smtp.gmail.com with ESMTPSA id r37sm1463731qtj.44.2020.02.26.09.57.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Feb 2020 09:57:38 -0800 (PST)
-Date: Wed, 26 Feb 2020 12:57:37 -0500
-From: Peter Xu <peterx@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH] hw/arm/smmu-common: a fix to smmu_find_smmu_pcibus
-Message-ID: <20200226175737.GE140200@xz-x1>
-References: <20200226172628.17449-1-eric.auger@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=LMPU1kRD84wPi625eY4a3VdFBmAdtYN7HHupO0TFJhw=;
+ b=QSiHvCbin9qkH22DBEmrx5TcQPnTpl0Q8BJmKJdrda5gw/IZZROgsEPsMMyye4yjLq
+ PLOArbX2jiU+TflYwqKEicp1mbCVjHZBPRk1SleGM9XkUOZt+J50cnPEgcVlWPhhAwi3
+ xHlR8+MPjS4rOiBcKgozs/Nd+vT+bdUrMZq5sYVc7FoMFQ54jtAYm53hezpb5Y70hzuz
+ IQV+zvnq+AgIdadD/FYV6mD5O6sTJXqhE0p+RSbtZt1X3Aw5ZvpeN5WI9jinysDiVdPO
+ bH79PyFnfRpgqzXe68la6vfko6oiQovoUtyC/82icdLQORq+G6BbIwGqrlQXInvXIQ+9
+ 4wVg==
+X-Gm-Message-State: ANhLgQ3j3nWkLfHYOWhWgFFplsPd4jG0OtuVgNnxZtjrSekZmFA1AOgA
+ OhQEaTdjR2cGN3nj9QgCJ2V4BPJ1ltPjupeoNkI=
+X-Received: by 2002:a2e:7609:: with SMTP id r9mr120290ljc.238.1582740486539;
+ Wed, 26 Feb 2020 10:08:06 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200226172628.17449-1-eric.auger@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+References: <20200225131422.53368-1-damien.hedde@greensocs.com>
+ <20200225131422.53368-5-damien.hedde@greensocs.com>
+In-Reply-To: <20200225131422.53368-5-damien.hedde@greensocs.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Wed, 26 Feb 2020 10:00:26 -0800
+Message-ID: <CAKmqyKOzR9RKEbdv_BUxJmwNNsnAOdupMXAMJ=kfDh0u4FsM4A@mail.gmail.com>
+Subject: Re: [PATCH v8 4/9] qdev-clock: introduce an init array to ease the
+ device construction
+To: Damien Hedde <damien.hedde@greensocs.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::242
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -120,23 +107,156 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- eric.auger.pro@gmail.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Mark Burton <mark.burton@greensocs.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aeVIk+nPOFJy
+X-TUID: ld8XFV653Po5
 
-On Wed, Feb 26, 2020 at 06:26:28PM +0100, Eric Auger wrote:
-> Make sure a null SMMUPciBus is returned in case we were
-> not able to identify a pci bus matching the @bus_num.
->=20
-> This matches the fix done on intel iommu in commit:
-> a2e1cd41ccfe796529abfd1b6aeb1dd4393762a2
->=20
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+On Tue, Feb 25, 2020 at 5:56 AM Damien Hedde <damien.hedde@greensocs.com> w=
+rote:
+>
+> Introduce a function and macro helpers to setup several clocks
+> in a device from a static array description.
+>
+> An element of the array describes the clock (name and direction) as
+> well as the related callback and an optional offset to store the
+> created object pointer in the device state structure.
+>
+> The array must be terminated by a special element QDEV_CLOCK_END.
+>
+> This is based on the original work of Frederic Konrad.
+>
+> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-Reviewed-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
---=20
-Peter Xu
+Alistair
 
+> --
+>
+> v7:
+>  + update ClockIn/Out types
+>  + remove the QDEV_CLOCK_IN_NOFIELD macro
+>  + remove leading underscores in macro arguments (Peter)
+>  + updated some comments (Peter)
+>  + removed trivial asserts (Peter)
+> ---
+>  include/hw/qdev-clock.h | 55 +++++++++++++++++++++++++++++++++++++++++
+>  hw/core/qdev-clock.c    | 17 +++++++++++++
+>  2 files changed, 72 insertions(+)
+>
+> diff --git a/include/hw/qdev-clock.h b/include/hw/qdev-clock.h
+> index b3b3a3e021..a340f65ff9 100644
+> --- a/include/hw/qdev-clock.h
+> +++ b/include/hw/qdev-clock.h
+> @@ -101,4 +101,59 @@ Clock *qdev_alias_clock(DeviceState *dev, const char=
+ *name,
+>   */
+>  void qdev_finalize_clocklist(DeviceState *dev);
+>
+> +/**
+> + * ClockPortInitElem:
+> + * @name: name of the clock (can't be NULL)
+> + * @output: indicates whether the clock is input or output
+> + * @callback: for inputs, optional callback to be called on clock's upda=
+te
+> + * with device as opaque
+> + * @offset: optional offset to store the ClockIn or ClockOut pointer in =
+device
+> + * state structure (0 means unused)
+> + */
+> +struct ClockPortInitElem {
+> +    const char *name;
+> +    bool is_output;
+> +    ClockCallback *callback;
+> +    size_t offset;
+> +};
+> +
+> +#define clock_offset_value(devstate, field) \
+> +    (offsetof(devstate, field) + \
+> +     type_check(Clock *, typeof_field(devstate, field)))
+> +
+> +#define QDEV_CLOCK(out_not_in, devstate, field, cb) { \
+> +    .name =3D (stringify(field)), \
+> +    .is_output =3D out_not_in, \
+> +    .callback =3D cb, \
+> +    .offset =3D clock_offset_value(devstate, field), \
+> +}
+> +
+> +/**
+> + * QDEV_CLOCK_(IN|OUT):
+> + * @devstate: structure type. @dev argument of qdev_init_clocks below mu=
+st be
+> + * a pointer to that same type.
+> + * @field: a field in @_devstate (must be Clock*)
+> + * @callback: (for input only) callback (or NULL) to be called with the =
+device
+> + * state as argument
+> + *
+> + * The name of the clock will be derived from @field
+> + */
+> +#define QDEV_CLOCK_IN(devstate, field, callback) \
+> +    QDEV_CLOCK(false, devstate, field, callback)
+> +
+> +#define QDEV_CLOCK_OUT(devstate, field) \
+> +    QDEV_CLOCK(true, devstate, field, NULL)
+> +
+> +#define QDEV_CLOCK_END { .name =3D NULL }
+> +
+> +typedef struct ClockPortInitElem ClockPortInitArray[];
+> +
+> +/**
+> + * qdev_init_clocks:
+> + * @dev: the device to add clocks to
+> + * @clocks: a QDEV_CLOCK_END-terminated array which contains the
+> + * clocks information.
+> + */
+> +void qdev_init_clocks(DeviceState *dev, const ClockPortInitArray clocks)=
+;
+> +
+>  #endif /* QDEV_CLOCK_H */
+> diff --git a/hw/core/qdev-clock.c b/hw/core/qdev-clock.c
+> index 62035aef83..a94cc44437 100644
+> --- a/hw/core/qdev-clock.c
+> +++ b/hw/core/qdev-clock.c
+> @@ -116,6 +116,23 @@ Clock *qdev_init_clock_in(DeviceState *dev, const ch=
+ar *name,
+>      return ncl->clock;
+>  }
+>
+> +void qdev_init_clocks(DeviceState *dev, const ClockPortInitArray clocks)
+> +{
+> +    const struct ClockPortInitElem *elem;
+> +
+> +    for (elem =3D &clocks[0]; elem->name !=3D NULL; elem++) {
+> +        Clock **clkp;
+> +        /* offset cannot be inside the DeviceState part */
+> +        assert(elem->offset > sizeof(DeviceState));
+> +        clkp =3D (Clock **)(((void *) dev) + elem->offset);
+> +        if (elem->is_output) {
+> +            *clkp =3D qdev_init_clock_out(dev, elem->name);
+> +        } else {
+> +            *clkp =3D qdev_init_clock_in(dev, elem->name, elem->callback=
+, dev);
+> +        }
+> +    }
+> +}
+> +
+>  static NamedClockList *qdev_get_clocklist(DeviceState *dev, const char *=
+name)
+>  {
+>      NamedClockList *ncl;
+> --
+> 2.25.1
+>
+>

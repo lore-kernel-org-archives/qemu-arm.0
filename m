@@ -1,98 +1,122 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3597887lfg;
-        Wed, 26 Feb 2020 14:04:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyJLiEvRfGVkBGF4MR+gE83FK8f6KxIMXZg9zRvBpwfC3dNogUaF2Qjic5nCt0MOqFMdMst
-X-Received: by 2002:ac8:19b6:: with SMTP id u51mr1125462qtj.319.1582754681647;
-        Wed, 26 Feb 2020 14:04:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582754681; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3634495lfg;
+        Wed, 26 Feb 2020 14:44:33 -0800 (PST)
+X-Google-Smtp-Source: APXvYqza9MEvxMLWKhWwIGjKZ9BTWveUlRA+WdmB0foaIojn5/99pAIwQrDqFz4+gYuNcl1iqgFm
+X-Received: by 2002:a05:620a:15b3:: with SMTP id f19mr1706721qkk.15.1582757073141;
+        Wed, 26 Feb 2020 14:44:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582757073; cv=none;
         d=google.com; s=arc-20160816;
-        b=vWrj7TVq5FsG9i1IOu2mAJjJnLlka2qQA1vfvAhVXO0+68jCC0x7ZPcn9/FJzcMvVk
-         56Hf8QJxwcch8fg5FWVlrviMMwEmDFY2BMjB+kp467pOFGejxWin2xtgz8SAQlsr8r0n
-         9/H4fgl0/raroJyjaMAN2SGsmv52kFG6vJVOJdQwqIbwg7orwWVSOt8auVNYPzQzta3Q
-         2O0qYCTLzEp9q27xokRuQsJAly5csah60oerZe/Z//XwRN80lAiYtWqvLMCbpxp1N7sH
-         IvIRVj1GznjeblZbaRvpATtkWDgwZ+qRF6kAyGnibGup3lCs/cMjOnR0UCp8o5TfxnfQ
-         bJPA==
+        b=I9lpEHPScswjE3nHrGzIjBnp1I9lwYPJROfqWHT7+SyW9Dgeu82fh3TVsTgXPxt1pN
+         ZPN8oYKF+tlnhnPP7+aobOPWqXpH5Mo52AiXfdd7efUZCwJ6ZPMdvwz9GTyuvwkYl+93
+         wLsxZI/5wdvmNxfclhp3FlWbFo4zufn+bIAAGgjvbvPHT70NObU7kGQlZ4ZrenRXPLJQ
+         cyogbWpX8H+vKibGT9fsE8uS0IUXOlGO8bUh3aYP/NnsvrI9yvjfho3Sp4/982DUmtwU
+         i5SUWUoS6MkxQfVPzM92dpfgM8mhYEiacCIfUA3T2glmxtaOgPpWFUTMvritqMKoKPvo
+         kUpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=1HYW/pv97PxvhdVIRVxTMcH+Z79rJFhSr0wA3xZRSZo=;
-        b=f7JnJeC1biVNYYdFKbXeguHD9jwNyjQdfAL1v0NCd50ReUZZLU5vkTADjHGuVwbadw
-         pS1dL6xD1cst/tIfmgUawZX9EN9tB6NzzM/VH7XIzTa1hbT1fOQ+13OWT5jO3fJP/Yfm
-         Epnku+xmyCzmkGs1UFkJSg6pLVWdlx2HMm/DB4benwcICSlBDOs3Wx3jNtWmfPhvFN9A
-         mYTj5OWMZ9n8IvrN8kT6If2p8MTbqF3ctJClTn8XnSKLnn1aryZ6417TSHR7TUrSqtao
-         Q1OrFh61FbjNtwXFrXB0BKEvfDFeLM9pUocNn0hc04lTC7DE2VRiaGZSGd/RsBX1+DcN
-         nW0A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=yUL50wnrA7AkMmW3SRSyuR09Fr0RgWKPTmShTSs4jus=;
+        b=xanpB6gDpZhqO8UNPX9e6C5Jd87Z84X7dcRdlQv6aiKgCq9wAPYXPnwv6B4OObdAky
+         bsSGij71s42QcKEOjjlwqgbFmoWAYCsk3YEMdkNiB74ANzbEIZdPVyPgGoNlszMrjb6V
+         jsRy/Im2geGpPvPJQdgyszmc8gpzVS/KiPclTEBKqUUaTTO+otU+2FyM4FVBhAcNxyfN
+         Unb9rfm8DFh+NhYPO9eJ9dg37lBkz7v/8PbA5OCwm0+gz0f/qzwsPAbS843iccaFpUe3
+         /wtUxmM3gU6JH5ppk+gnUTAXEwtkwI8ty2U/FpQzcEA412rnTRj8Tft6eNu+VLcOSJV6
+         WI8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DhHUbdhP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b9si390829qtq.286.2020.02.26.14.04.41
+        by mx.google.com with ESMTPS id b3si477462qkh.286.2020.02.26.14.44.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2020 14:04:41 -0800 (PST)
+        Wed, 26 Feb 2020 14:44:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DhHUbdhP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:50722 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:51010 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j74nJ-0002Kt-1s
-	for alex.bennee@linaro.org; Wed, 26 Feb 2020 17:04:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49896)
+	id 1j75Ps-0004q1-I5
+	for alex.bennee@linaro.org; Wed, 26 Feb 2020 17:44:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36610)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1j74n0-0002IJ-Kq
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 17:04:27 -0500
+ (envelope-from <stefanb@linux.ibm.com>) id 1j75Pi-0004pm-0a
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 17:44:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1j74my-00018v-97
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 17:04:22 -0500
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:41374)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1j74mt-00013J-32; Wed, 26 Feb 2020 17:04:15 -0500
-Received: by mail-lf1-x141.google.com with SMTP id y17so480583lfe.8;
- Wed, 26 Feb 2020 14:04:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=1HYW/pv97PxvhdVIRVxTMcH+Z79rJFhSr0wA3xZRSZo=;
- b=DhHUbdhPf6ULww4Ek+tIeUfF93fgf2b8gLv75hj9+fZ6Q1nUV6kfLGjBryXRsZBd7C
- 0woDCRnkJjAR4lgUoj9PTZjhDX/uC4AmZWMAiAw5N/O1ZusoG3zLNG/djmvlaJeWLglE
- /rLnIulSlWvPHi8hZIXuGhTmsXmXvKVmGH66AHZkCL873BKBHNiqZzeXuTIElYF6MTm1
- qPEkXhy3/My1XWz9jAX+a6Fv8fRrQzrjtpoceiLCBHNniK5JDBOYn1RTCefcjp/8nsAs
- eJXxuynQTB0Npb6QykU+KM2eCkqM06Dc35d9U6CcbYXl3p82JvdsMvi08Z/KfXB8OzHS
- RuHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=1HYW/pv97PxvhdVIRVxTMcH+Z79rJFhSr0wA3xZRSZo=;
- b=gSnWGiTPyZdNITfJ1VLSIAUn3VIN8VRD7cqmf+dOpiOhqYjkKZ9fTm8nnYulQYkJ4v
- NRjJCmI1NA7gKeXC16W1mHDdRuQotx1zUk0cNGQvSNB7ciVXChx2QnY+/dKjIuv+mK4z
- q8smO9Gz8hc207evQJi/7kk7w3wSoQUGHFXBd9zS7dVoq8gZZRm6I2aQD/eY6m+UgVtV
- LbQP++UNHOtxpY0JbqYhwAWiUKRr8HcvVF+qFvEPr7ZRIX1XeL26Uj+yoZ/yZJkfKC70
- CER+Byh5nqY7Im48Bb6cyMJjbEdx7fedRjaeju+OYpMEDAfGS3oqV/qMXQGGhSNhJ5C2
- IgKw==
-X-Gm-Message-State: ANhLgQ297qfOF8JMgr/I278Z4kfX1yy+9wGPFBA3jKajYpvtG+r924ey
- b+5qXKsUd3/PQWdwiHQmPbAtEEVJWtuKKh/2AmI=
-X-Received: by 2002:a05:6512:31d3:: with SMTP id
- j19mr379829lfe.178.1582754652405; 
- Wed, 26 Feb 2020 14:04:12 -0800 (PST)
+ (envelope-from <stefanb@linux.ibm.com>) id 1j75Pg-0004ig-Gk
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 17:44:21 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:35703)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <stefanb@linux.ibm.com>)
+ id 1j75Pg-0004aa-7r; Wed, 26 Feb 2020 17:44:20 -0500
+Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 01QMfnj7156416; Wed, 26 Feb 2020 17:44:17 -0500
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2ydh91mx2v-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 26 Feb 2020 17:44:17 -0500
+Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 01QMgRwT157720;
+ Wed, 26 Feb 2020 17:44:16 -0500
+Received: from ppma05wdc.us.ibm.com (1b.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.27])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2ydh91mx2h-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 26 Feb 2020 17:44:16 -0500
+Received: from pps.filterd (ppma05wdc.us.ibm.com [127.0.0.1])
+ by ppma05wdc.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id 01QMeYZE028220;
+ Wed, 26 Feb 2020 22:44:15 GMT
+Received: from b01cxnp23032.gho.pok.ibm.com (b01cxnp23032.gho.pok.ibm.com
+ [9.57.198.27]) by ppma05wdc.us.ibm.com with ESMTP id 2ydcmkrm0n-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 26 Feb 2020 22:44:15 +0000
+Received: from b01ledav001.gho.pok.ibm.com (b01ledav001.gho.pok.ibm.com
+ [9.57.199.106])
+ by b01cxnp23032.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 01QMiEZY48300340
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 26 Feb 2020 22:44:14 GMT
+Received: from b01ledav001.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id CE73728059;
+ Wed, 26 Feb 2020 22:44:14 +0000 (GMT)
+Received: from b01ledav001.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id B8AD828058;
+ Wed, 26 Feb 2020 22:44:14 +0000 (GMT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+ by b01ledav001.gho.pok.ibm.com (Postfix) with ESMTP;
+ Wed, 26 Feb 2020 22:44:14 +0000 (GMT)
+Subject: Re: [PATCH v4 00/10] vTPM for aarch64
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
+References: <20200226205942.11424-1-eric.auger@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+Message-ID: <4fb16117-f9d3-61af-9198-931590a46e3d@linux.ibm.com>
+Date: Wed, 26 Feb 2020 17:44:14 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
 MIME-Version: 1.0
-References: <20200225131422.53368-1-damien.hedde@greensocs.com>
- <20200225131422.53368-6-damien.hedde@greensocs.com>
-In-Reply-To: <20200225131422.53368-6-damien.hedde@greensocs.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 26 Feb 2020 13:56:34 -0800
-Message-ID: <CAKmqyKN03vtaxAttdxO7VVCa+Y3B1t8VPujt8H+qzFWtm6m8sw@mail.gmail.com>
-Subject: Re: [PATCH v8 5/9] docs/clocks: add device's clock documentation
-To: Damien Hedde <damien.hedde@greensocs.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::141
+In-Reply-To: <20200226205942.11424-1-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.572
+ definitions=2020-02-26_09:2020-02-26,
+ 2020-02-26 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 spamscore=0
+ malwarescore=0 priorityscore=1501 lowpriorityscore=0 impostorscore=0
+ mlxlogscore=999 adultscore=0 bulkscore=0 mlxscore=0 suspectscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2001150001 definitions=main-2002260135
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by
+ mx0a-001b2d01.pphosted.com id 01QMfnj7156416
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.156.1
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,439 +128,148 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Mark Burton <mark.burton@greensocs.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org,
+ philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8Zmoc4Ba8UK7
+X-TUID: oH8G3/x7kKnt
 
-On Tue, Feb 25, 2020 at 6:01 AM Damien Hedde <damien.hedde@greensocs.com> wrote:
+On 2/26/20 3:59 PM, Eric Auger wrote:
+> This series adds the capability to instantiate an MMIO TPM TIS
+> in ARM virt. It is candidate to qemu 5.0.
+
+I queued it now here:=20
+https://github.com/stefanberger/qemu-tpm/commits/tpm-next
+
+I will send the PR within a few days. Thanks!
+
+Cheers,
+
+ =C2=A0=C2=A0 Stefan
+
+
+
 >
-> Add the documentation about the clock inputs and outputs in devices.
+> The existing TPM TIS code is reshuffled into a generic part,
+> the ISA device and the sysbus device. The sysbus TPM-TIS
+> device gets dynamically instantiated in machvirt on the
+> platform bus.
 >
-> This is based on the original work of Frederic Konrad.
+> ACPI boot is not yet supported on ARM. Note that the UEFI
+> firmware is itself a consumer of the DT description, so we
+> need the DT related changes regardless of whether the VM
+> boots in DT or ACPI mode.
 >
-> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
-> ---
+> Related qtests are reshuffled to allow the reuse of existing
+> tests for both the ISA and the sysbus devices: Adaption
+> consists in changing the qemu command line (change in the
+> device name and provide explicit machine options) and adapt
+> to the relocation of the TPM-TIS device in the memory map.
 >
-> v8:
->  + fix list indentation
->  + reduce title size
+> The series was tested with the swtpm/libtpms emulator.
+> Automatic guest LUKS volume unlocking (tpm2) was successful.
+> EDK2 support is under development [3]. Thanks to Ard
+> for supporting me when setting up the test environment.
 >
-> v7:
->  + update ClockIn/Out types
->  + switch to rst format
-> ---
->  docs/devel/clocks.rst | 360 ++++++++++++++++++++++++++++++++++++++++++
->  docs/devel/index.rst  |   1 +
->  2 files changed, 361 insertions(+)
->  create mode 100644 docs/devel/clocks.rst
+> Best Regards
 >
-> diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
-> new file mode 100644
-> index 0000000000..d3c0146bd2
-> --- /dev/null
-> +++ b/docs/devel/clocks.rst
-> @@ -0,0 +1,360 @@
-> +Modeling a clock tree in QEMU
-> +=============================
-> +
-> +What are clocks
-> +---------------
-> +
-> +Clocks are QOM objects developed for the purpose of modeling the
-> +distribution of clocks in QEMU.
-> +
-> +They allow us to model the clock distribution of a platform and detect
-> +configuration errors in the clock tree such as badly configured PLL, clock
-> +source selection or disabled clock.
-> +
-> +The object is *Clock* and its QOM name is ``CLOCK``.
-> +
-> +Clocks are typically used with devices where they are used to model inputs
-> +and outputs. They are created in a similar way as gpios. Inputs and outputs
-> +of different devices can be connect together.
-> +
-> +In these cases a Clock object is a child of a Device object but this is not
-> +a requirement. Clocks can be independent of devices. For example it is possible
-> +to create a clock outside of any device to model the main clock source of a
-> +machine.
-> +
-> +Here is an example of clocks::
-> +
-> +    +---------+      +----------------------+   +--------------+
-> +    | Clock 1 |      |       Device B       |   |   Device C   |
-> +    |         |      | +-------+  +-------+ |   | +-------+    |
-> +    |         |>>-+-->>|Clock 2|  |Clock 3|>>--->>|Clock 6|    |
-> +    +---------+   |  | | (in)  |  | (out) | |   | | (in)  |    |
-> +                  |  | +-------+  +-------+ |   | +-------+    |
-> +                  |  |            +-------+ |   +--------------+
-> +                  |  |            |Clock 4|>>
-> +                  |  |            | (out) | |   +--------------+
-> +                  |  |            +-------+ |   |   Device D   |
-> +                  |  |            +-------+ |   | +-------+    |
-> +                  |  |            |Clock 5|>>--->>|Clock 7|    |
-> +                  |  |            | (out) | |   | | (in)  |    |
-> +                  |  |            +-------+ |   | +-------+    |
-> +                  |  +----------------------+   |              |
-> +                  |                             | +-------+    |
-> +                  +----------------------------->>|Clock 8|    |
-> +                                                | | (in)  |    |
-> +                                                | +-------+    |
-> +                                                +--------------+
-> +
-> +Clocks are defined in include/hw/clock.h header and device related functions
-> +are defined in include/hw/qdev-clock.h header.
-> +
-> +The clock state
-> +---------------
-> +
-> +The state of a clock is its period; it is stored as an integer representing
-> +it in 2^-32ns unit. The special value of 0 is used to represent the clock being
-> +inactive or gated. The clocks do not model the signal itself (pin toggling)
-> +or other properties such as the duty cycle.
-> +
-> +All clocks contain this state: outputs as well as inputs. It allows to fetch
-> +the current period of a clock at any time. When a clock is updated, the
-> +value is immediately propagated to all connected clocks in the tree.
-> +
-> +To ease interaction with clocks. Helpers with a unit suffix are defined for
-> +every clock state setter or getter. They are:
-> +
-> +- ``_ns`` for handling periods in nanosecond,
-> +- ``_hz`` for handling frequencies in hertz.
-> +
-> +The 0 period value is converted to 0 in hertz and vice versa. 0 always means
-> +that the clock is disabled.
-> +
-> +Adding a new a clock
-> +--------------------
-> +
-> +Adding clocks to a device must be done during the init method of the Device
-> +instance.
-> +
-> +To add an input clock to a device, the function qdev_init_clock_in must be used.
-> +It takes the name, a callback and an opaque parameter for the callback (this will
-> +be explained in a following section below).
-> +Output is more simple, only the name is required. Typically::
-> +
-> +    qdev_init_clock_in(DEVICE(dev), "clk_in", clk_in_callback, dev);
-> +    qdev_init_clock_out(DEVICE(dev), "clk_out");
-> +
-> +Both functions return the created Clock pointer, which should be saved in the
-> +device's state structure for further use.
-> +
-> +These objects will be automatically deleted by the QOM reference mechanism.
-> +
-> +Note that it is possible to create a static array describing clock inputs and
-> +outputs. The function ``qdev_init_clocks()`` must be called with the array as
-> +parameter to initialize the clocks: it has the same behaviour as calling the
-> +``qdev_init_clock_in/out()`` for each clock in the array. To ease the array
-> +construction, some macros are defined in include/hw/qdev-clock.h.
-> +As an example, the following creates 2 clocks to a device: one input and one
-> +output.
-> +
-> +::
-> +
-> +    /* device structure containing pointer to the clock objects */
-> +    typedef struct MyDeviceState {
-> +        DeviceState parent_obj;
-> +        Clock *clk_in;
-> +        Clock *clk_out;
-> +    } MyDeviceState;
-> +
-> +    /*
-> +     * callback for the input clock (see "Callback on input clock
-> +     * change" section below for more information).
-> +     */
-> +    static void clk_in_callback(void *opaque);
-> +
-> +    /*
-> +     * static array describing clocks:
-> +     * + a clock input named "clk_in", whose pointer is stored in
-> +     *   clk_in field of a MyDeviceState structure with callback
-> +     *   clk_in_callback.
-> +     * + a clock output named "clk_out" whose pointer is stored in
-> +     *   clk_out field of a MyDeviceState structure.
-> +     */
-> +    static const ClockPortInitArray mydev_clocks = {
-> +        QDEV_CLOCK_IN(MyDeviceState, clk_in, clk_in_callback),
-> +        QDEV_CLOCK_OUT(MyDeviceState, clk_out),
-> +        QDEV_CLOCK_END
-> +    };
-> +
-> +    /* device initialization function */
-> +    static void mydev_init(Object *obj)
-> +    {
-> +        /* cast to MyDeviceState */
-> +        MyDeviceState *mydev = MYDEVICE(obj);
-> +        /* create and fill the pointer fields in the MyDeviceState */
-> +        qdev_init_clocks(mydev, mydev_clocks);
-> +        [...]
-> +    }
-> +
-> +An alternative way to create a clock is to simply call
-> +``object_new(TYPE_CLOCK)``. In that case the clock will neither be an input nor
-> +an output of a device. After the whole QOM hieracrhy of the clock has been set
-> +``clock_setup_canonical_path()`` should be called.
-> +
-> +At creation, the period of the clock is 0: the clock is disabled. You can
-> +change it using ``clock_set[_ns|_hz]()``.
-> +
-> +Note that if you are creating a clock with a fixed period which will never
-> +change (for example the main clock source of a board), then you'll have
-> +nothing else to do. This value will be propagated to other clocks when
-> +connecting the clocks together and devices will fetch the right value during
-> +the first reset.
-> +
-> +Retrieving clocks from a device
-> +-------------------------------
-> +
-> +``qdev_get_clock_in()`` and ``dev_get_clock_out()`` are available to get the clock inputs or outputs of a device. For example::
-> +
-> +    Clock *clk = qdev_get_clock_in(DEVICE(mydev), "clk_in");
-> +
-> +or::
-> +
-> +    Clock *clk = qdev_get_clock_out(DEVICE(mydev), "clk_out");
-> +
-> +Connecting two clocks together
-> +------------------------------
-> +
-> +To connect two clocks together, use the ``clock_set_source()`` function.
-> +Given two clocks ``clk1``, and ``clk2``, ``clock_set_source(clk2, clk1);``
-> +configure ``clk2`` to follow the ``clk1`` period changes. Every time ``clk1``
-> +is updated, ``clk2`` will be updated too.
-> +
-> +When connecting clock between devices, prefer using the
-> +``qdev_connect_clock_in()`` function set the source of an input device clock.
-> +For example, to connect the input clock ``clk2`` of ``devB`` to the output
-> +clock ``clk1`` of ``devA``, do::
-> +
-> +    qdev_connect_clock_in(devB, "clk2", qdev_get_clock_out(devA, "clk1"))
-> +
-> +We used ``qdev_get_clock_out()`` above, but any clock can drive an input clock,
-> +even another input clock. The following diagram shows some
-> +examples of connections. Note also that a clock can drive several other clocks.
-> +
-> +::
-> +
-> +  +------------+  +--------------------------------------------------+
-> +  |  Device A  |  |                   Device B                       |
-> +  |            |  |               +---------------------+            |
-> +  |            |  |               |       Device C      |            |
-> +  |  +-------+ |  | +-------+     | +-------+ +-------+ |  +-------+ |
-> +  |  |Clock 1|>>-->>|Clock 2|>>+-->>|Clock 3| |Clock 5|>>>>|Clock 6|>>
-> +  |  | (out) | |  | | (in)  |  |  | | (in)  | | (out) | |  | (out) | |
-> +  |  +-------+ |  | +-------+  |  | +-------+ +-------+ |  +-------+ |
-> +  +------------+  |            |  +---------------------+            |
-> +                  |            |                                     |
-> +                  |            |  +--------------+                   |
-> +                  |            |  |   Device D   |                   |
-> +                  |            |  | +-------+    |                   |
-> +                  |            +-->>|Clock 4|    |                   |
-> +                  |               | | (in)  |    |                   |
-> +                  |               | +-------+    |                   |
-> +                  |               +--------------+                   |
-> +                  +--------------------------------------------------+
-> +
-> +In the above example, when *Clock 1* is updated by *Device A*, three clocks gets the new clock period value: *Clock 2*, Clock 3* and *Clock 4*.
-> +
-> +It is not possible to disconnect a clock or to change the clock connection
-> +after it is done.
-> +
-> +Unconnected input clocks
-> +------------------------
-> +
-> +A newly created input clock is disabled (period of 0). It means the clock will
-> +be considered as disabled until the period is updated. If the clock remains
-> +unconnected it will always keep its initial value of 0. If this is not the
-> +wanted behaviour, ``clock_set()``, ``clock_set_ns()`` or ``clock_set_hz()``
-> +should be called on the Clock object during device instance init. For example::
-> +
-> +    clk = qdev_init_clock_in(DEVICE(dev), "clk-in", clk_in_callback,
-> +                             dev);
-> +    /* set initial value to 10ns / 100MHz */
-> +    clock_set_ns(clk, 10);
-> +
-> +Fetching clock frequency/period
-> +-------------------------------
-> +
-> +To get the current state of a clock, the function ``clock_get()``,
-> +``clock_get_ns()`` or ``clock_get_hz()`` must be used.
-> +
-> +It is also possible to register a callback on clock frequency changes.
-> +Here is an example::
-> +
-> +    void clock_callback(void *opaque) {
-> +        MyDeviceState *s = (MyDeviceState *) opaque;
-> +        /*
-> +         * opaque may not be the device state pointer, but most
-> +         * probably it is. (It depends on what is given to the
-> +         * qdev_init_clock_in function)
-> +         */
-> +
-> +        /* do something with the new period */
-> +        fprintf(stdout, "device new period is %" PRIu64 "ns\n",
-> +                        clock_get_ns(dev->my_clk_input));
-> +    }
-> +
-> +Changing a clock period
-> +-----------------------
-> +
-> +A device can change its outputs using the ``clock_update()``,
-> +``clock_update_ns()`` or ``clock_update_hz()`` function. It will trigger
-> +updates on every connected input.
-> +
-> +For example, let's say that we have an output clock *clkout* and we have a
-> +pointer to it in the device state because we did the following in init phase::
-> +
-> +    dev->clkout = qdev_init_clock_out(DEVICE(dev), "clkout");
-> +
-> +Then at any time (apart from the cases listed below), it is possible to
-> +change the clock value by doing::
-> +
-> +    clock_update_hz(dev->clkout, 1000 * 1000 * 1000); /* 1Ghz */
-> +
-> +Because updating a clock may trigger any side effects through connected clocks
-> +and their callbacks, this operation must be done while holding the qemu io lock.
-> +
-> +For the same reason, one can updates clocks only when it is allowed to have
-
-s/updates/update/g
-
-> +side effects on other objects. In consequence, it is forbidden:
-> ++ during migration,
-> ++ and in the enter phase of reset.
-> +
-> +Note that calling ``clock_update[_ns|_hz]()`` is equivalent to call
-
-s/call/calling/g
-
-> +``clock_set[_ns|_hz]()`` (with the same arguments) then ``clock_propagate()`` on
-> +the clock. Thus, setting the clock value can separated from triggering the
-
-can be separated
-
-> +side-effects. This is often required to factorize code to handle reset and
-> +migration in devices.
-> +
-> +Aliasing clocks
-> +---------------
-> +
-> +Sometimes, one needs to forward, or inherit, a clock from another device.
-> +Typically, when doing device composition, a device might expose a sub-device's
-> +clock without interfering with it.
-> +The function ``qdev_alias_clock()`` can be used to achieve this behaviour. Note
-> +that it is possible to expose the clock under a different name. This works for
-> +both inputs and outputs.
-> +
-> +For example, if device B is a child of device A, ``device_a_instance_init()``
-> +may do something like this::
-> +
-> +    void device_a_instance_init(Object *obj)
-> +    {
-> +        AState *A = DEVICE_A(obj);
-> +        BState *B;
-> +        /* create B object as child of A */
-> +        [...]
-> +        qdev_alias_clock(B, "clk", A, "b_clk");
-> +        /*
-> +         * Now A has a clock "b_clk" which is an alias to
-> +         * the clock "clk" of its child B.
-> +         */
-> +    }
-> +
-> +This function does not return any clock object. The new clock has the same
-> +direction (input or output) as the original one. This function only adds a link
-> +to the existing clock. In the above example, B object remains the only object
-> +allowed to use the clock and device A must not try to change the clock period
-> +or set a callback to the clock. Here follows a diagram describing the example
-> +with an input clock::
-> +
-> +    +--------------------------+
-> +    |        Device A          |
-> +    |         +--------------+ |
-> +    |         |   Device B   | |
-> +    |         | +-------+    | |
-> +    >>"b_clk">>>| "clk" |    | |
-> +    |  (in)   | |  (in) |    | |
-> +    |         | +-------+    | |
-> +    |         +--------------+ |
-> +    +--------------------------+
-> +
-> +Migration
-> +---------
-> +
-> +Clock state are not migrated automatically. Every device must handle its
-
-s/are/is/g
-
-> +clock migration. Alias clocks must not be migrated.
-> +
-> +To ensure clock states are restored correctly during migration, there is two
-> +solutions.
-> +
-> +Clocks states can be migrated by adding an entry into the device
-> +vmstate description. To this purpose, the ``VMSTATE_CLOCK`` macro defines
-> +such an entry and should be used. This is typically used to migrate an input
-> +clock state. The following example describes it::
-> +
-> +    MyDeviceState {
-> +        DeviceState parent_obj;
-> +        [...] /* some fields */
-> +        Clock *clk;
-> +    };
-> +
-> +    VMStateDescription my_device_vmstate = {
-> +        .name = "my_device",
-> +        .fields = (VMStateField[]) {
-> +            [...], /* other migrated fields */
-> +            VMSTATE_CLOCK(clk, MyDeviceState),
-> +            VMSTATE_END_OF_LIST()
-> +        }
-> +    };
-> +
-> +The second solution is to restore the clock state using information already
-> +at our disposal. This can be used to restore output clocks states using the
-> +device state. The functions ``clock_set[_ns|_hz]()`` can be used during
-> +``post_load()`` migration callback.
-
-during the ``post_load()`` migration callback.
-
-Besides the small typos:
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
-> +
-> +When adding a clock support to an existing device, if you care about migration
-> +compatibility. To this end, you can use ``clock_set()`` in a ``pre_load()``
-> +function to setup a default value in case the source virtual machine does not
-> +send the clock state. You may also need to use a vmstate subsection.
-> +
-> +Care should be taken not to use ``clock_update[_ns|_hz]()`` or
-> +``clock_propagate()`` during the whole migration procedure because it will
-> +trigger side effects to other devices in an unknown state.
-> diff --git a/docs/devel/index.rst b/docs/devel/index.rst
-> index 4dc2ca8d71..f9c8c668ee 100644
-> --- a/docs/devel/index.rst
-> +++ b/docs/devel/index.rst
-> @@ -25,3 +25,4 @@ Contents:
->     tcg-plugins
->     bitops
->     reset
-> +   clocks
-> --
-> 2.25.1
+> Eric
 >
+> Testing:
 >
+> mkdir /tmp/tpm
+> swtpm socket \
+> --tpm2 \
+> -t -d \
+> --tpmstate dir=3D/tmp/tpm \
+> --ctrl type=3Dunixio,path=3D/tmp/swtpm-sock
+>
+> qemu command line must be augmented with the following options:
+>
+> -chardev socket,id=3Dchrtpm,path=3D/tmp/swtpm-sock \
+> -tpmdev emulator,id=3Dtpm0,chardev=3Dchrtpm \
+> -device tpm-tis-device,tpmdev=3Dtpm0 \
+>
+> References:
+> [1] libtpms: https://github.com/stefanberger/libtpms/wiki
+> [2] swtpm: https://github.com/stefanberger/swtpm/wiki
+> [3] [PATCH v3 0/9] ArmVirtPkg: implement measured boot for ArmVirtQemu
+>
+> This series can be found at:
+> https://github.com/eauger/qemu/tree/v4.2.0-tpm-patch-v4
+>
+> History:
+>
+> v3 -> v4:
+> - collect additional R-b's
+> - add 'Not used but needed for linking' mention related to
+>    tpm_tis_base_addr in CRB test files
+> - fix comment style
+>
+> RFCv2 -> PATCH v3:
+> - Updated the doc for ARM
+> - Adapted existing tests for ARM
+> - use qemu_fdt_setprop_string in add_tpm_tis_fdt_node
+> - Collected R-b's
+> - Comments not taken into account:
+>    - I have kept the tpm-tis-device name for now despite Stefan's
+>      suggestion to rename it into tpm-tis-sysbus. This is not
+>      frozen though
+>    - Common state still is not a QOM object (no double inheritence)
+>
+> RFC v1 -> RFC v2:
+> - restructure the existing code with common, ISA and sysbus part.
+> - both ARM and x86 integration were tested.
+>
+> Eric Auger (10):
+>    tpm: rename TPM_TIS into TPM_TIS_ISA
+>    tpm: Use TPMState as a common struct
+>    tpm: Separate tpm_tis common functions from isa code
+>    tpm: Separate TPM_TIS and TPM_TIS_ISA configs
+>    tpm: Add the SysBus TPM TIS device
+>    hw/arm/virt: vTPM support
+>    docs/specs/tpm: Document TPM_TIS sysbus device for ARM
+>    test: tpm: pass optional machine options to swtpm test functions
+>    test: tpm-tis: Get prepared to share tests between ISA and sysbus
+>      devices
+>    test: tpm-tis: Add Sysbus TPM-TIS device test
+>
+>   default-configs/i386-softmmu.mak        |   2 +-
+>   docs/specs/tpm.rst                      |  25 +-
+>   hw/arm/Kconfig                          |   1 +
+>   hw/arm/sysbus-fdt.c                     |  33 ++
+>   hw/arm/virt.c                           |   7 +
+>   hw/i386/Kconfig                         |   2 +-
+>   hw/i386/acpi-build.c                    |   6 +-
+>   hw/tpm/Kconfig                          |  12 +-
+>   hw/tpm/Makefile.objs                    |   4 +-
+>   hw/tpm/tpm_tis.h                        |  91 +++++
+>   hw/tpm/{tpm_tis.c =3D> tpm_tis_common.c}  | 181 +---------
+>   hw/tpm/tpm_tis_isa.c                    | 170 +++++++++
+>   hw/tpm/tpm_tis_sysbus.c                 | 159 +++++++++
+>   include/sysemu/tpm.h                    |   7 +-
+>   tests/qtest/Makefile.include            |  11 +-
+>   tests/qtest/tpm-crb-swtpm-test.c        |   9 +-
+>   tests/qtest/tpm-crb-test.c              |   3 +
+>   tests/qtest/tpm-tests.c                 |  10 +-
+>   tests/qtest/tpm-tests.h                 |   5 +-
+>   tests/qtest/tpm-tis-device-swtpm-test.c |  76 ++++
+>   tests/qtest/tpm-tis-device-test.c       |  87 +++++
+>   tests/qtest/tpm-tis-swtpm-test.c        |   8 +-
+>   tests/qtest/tpm-tis-test.c              | 414 +---------------------
+>   tests/qtest/tpm-tis-util.c              | 451 +++++++++++++++++++++++=
++
+>   tests/qtest/tpm-tis-util.h              |  23 ++
+>   tests/qtest/tpm-util.c                  |  11 +-
+>   tests/qtest/tpm-util.h                  |   8 +-
+>   27 files changed, 1207 insertions(+), 609 deletions(-)
+>   create mode 100644 hw/tpm/tpm_tis.h
+>   rename hw/tpm/{tpm_tis.c =3D> tpm_tis_common.c} (85%)
+>   create mode 100644 hw/tpm/tpm_tis_isa.c
+>   create mode 100644 hw/tpm/tpm_tis_sysbus.c
+>   create mode 100644 tests/qtest/tpm-tis-device-swtpm-test.c
+>   create mode 100644 tests/qtest/tpm-tis-device-test.c
+>   create mode 100644 tests/qtest/tpm-tis-util.c
+>   create mode 100644 tests/qtest/tpm-tis-util.h
+>
+

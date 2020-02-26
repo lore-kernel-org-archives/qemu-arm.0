@@ -1,109 +1,112 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3643769lfg;
-        Wed, 26 Feb 2020 14:56:29 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyNpnScn7c3jzFiPkk6j3rg4AalJRlAHDCVmm8X9ZlibVNckKGR3p9HbrNejyZfiUe3EzpT
-X-Received: by 2002:ac8:38a6:: with SMTP id f35mr1454631qtc.39.1582757788857;
-        Wed, 26 Feb 2020 14:56:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582757788; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3646351lfg;
+        Wed, 26 Feb 2020 15:00:01 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz1kXcKJev6JG6VXeHtAvWWN1chrLHX0r0Drofyf9jNS9JF3ST3zxobTvrZLDLSSoygsnkc
+X-Received: by 2002:ae9:e115:: with SMTP id g21mr1910625qkm.83.1582758001522;
+        Wed, 26 Feb 2020 15:00:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582758001; cv=none;
         d=google.com; s=arc-20160816;
-        b=yBnwYiwgGHU2L3yQGiV5rB4RQ1EeHBJVObeIDViegWqD6413Wm516TgQp5twSsIsXG
-         PeVGiHycjTrZ69iDoqsgSiW5txiD+JsyJlJofOgvKSuY/kOSqGhi6FBagGLeD97c16g4
-         yYHqoKTNyr85OjVq0W3rMfRVqFBQz4OFQBfyIv+FUkbXJrPtTw1HIGD8fgc+bBg2V+IY
-         m13Ia65ehx66mAk+wQmi/Cs+pPIGpdmSvrn65rfbyQ2V2DhbiUdGiL66I5AuItso576a
-         JcQr37PF3fGN+uDdxntuDYpaYmf7pXFUgNHp2Ebv7wa2k10s3I+E587qHPW0v2Va2DiN
-         ukVg==
+        b=v47cfb/n/VkJTt/8V5PBiy21gMpCMWlX1Hi3e+56HWFuWzzyHxcwb6G7l1/bYTVnPC
+         kWjZ11nsC59vZejyjTa25vFGA86nGlcp5RY3Z7Gtr5GsFP7N9hF9g8Lmj72lIhtMKH/o
+         UZ2USZWpIJmC0ODrxKhf75gtaWfO/FaECbl3N17GmvZ+ZhpE9L/IsEArF2Bm6NaRJyTr
+         agI4cuyTIq+4TGAcHfQg+4UxnUgfVJAqC+BVSiGTrBpYzBlRmAcz07TUV7RKG8nhprIv
+         yLhYS8vDjnFyjvI5kPeBe5WLscsPErGg37u9anpuDR6JeKiuXhmqW4UYbgHMq1bO4pqP
+         tA2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=9T1PEZ94rXwwPATh7T6h6oYRt0LLjg2suPggv+gHdaY=;
-        b=aH80BYki2uXGna0MtuRCCj8CHpeKPK/RO6o/zqH+L/yxz5G5f92umK8AuU9R91giHQ
-         YRKsuNrEOTGjjJUToWnypk9HYwzxrvrXS8IMgm/x55uiOG9YrJZ+u2hVjbhnb6KCKtkX
-         8UtqJ13+rjs/1IaRZOajYQCa2Zqycv0UFRcEMXIhxGe0KCblN4ua5YZiErM98Hdz+9qk
-         shn1UMjxBBEVGDT89QR1Te2erhQ5buMt4YPkXexvtqc8kkWxxUJ3ixoy560DzIBV+vz1
-         UADWptJas56v+/UJELKqxnG7q+xixqrK0K1AeQ5bWAEe8wIOOe+6DlxGPL3FFgfi/puO
-         mzVQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=w7Cz7S4ZUXHvWEvf7YTm3LirUiL1aqC6vptuu99D+tg=;
+        b=v5KIgerOO9qtQDgalVOltN+g2kqs2RW9rV97PNIK6e1Qbz/z+ep6g3e48aw4becb52
+         60yukcxA0HydL7xvVydzVprm8qfd7fXprd3ABwjigyfQ+aboKa+h8jlhbSjfFHO/94BJ
+         nOGAzD6DmTA7sRwLChZ9z16lhqhbAUOnZ5ka6Pu2SnjTQEaNS00PWiF/lZL+iZ2S4W1Z
+         Z8B74tKBPohDxcXWfydknveLcVA4hZy5bbX9i0lzQzwuQ5BnVuIl46ZQnUMXjcM8Pi0i
+         lx3BWjJoz9ghtTs75HCeEe8e2sFKB7nwKlAVMoVLXzeYcSfckU8iPzgrsVysHRewlnk5
+         X04g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IQayDWfU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b2MGh55S;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c58si499450qtd.312.2020.02.26.14.56.28
+        by mx.google.com with ESMTPS id e3si482204qts.25.2020.02.26.15.00.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2020 14:56:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 26 Feb 2020 15:00:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IQayDWfU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b2MGh55S;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51274 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51324 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j75bQ-0000Mn-81
-	for alex.bennee@linaro.org; Wed, 26 Feb 2020 17:56:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39885)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j75eq-0004bn-VL
+	for alex.bennee@linaro.org; Wed, 26 Feb 2020 18:00:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40364)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1j75b2-0000Fn-E0
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 17:56:07 -0500
+ (envelope-from <alistair23@gmail.com>) id 1j75cG-0001jr-B6
+ for qemu-devel@nongnu.org; Wed, 26 Feb 2020 17:57:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1j75b0-0003Km-OL
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 17:56:04 -0500
-Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:41734)
+ (envelope-from <alistair23@gmail.com>) id 1j75cF-0007pQ-6Z
+ for qemu-devel@nongnu.org; Wed, 26 Feb 2020 17:57:20 -0500
+Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:38268)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1j75aw-0003DY-UX; Wed, 26 Feb 2020 17:55:59 -0500
-Received: by mail-lf1-x143.google.com with SMTP id y17so558362lfe.8;
- Wed, 26 Feb 2020 14:55:58 -0800 (PST)
+ id 1j75cE-0007hO-V0; Wed, 26 Feb 2020 17:57:19 -0500
+Received: by mail-lf1-x144.google.com with SMTP id r14so573393lfm.5;
+ Wed, 26 Feb 2020 14:57:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9T1PEZ94rXwwPATh7T6h6oYRt0LLjg2suPggv+gHdaY=;
- b=IQayDWfUz+Qc4wIS2Pc3ZnLqwnXbW3Bw31nXvCPrf0xUDtcotr/0MOm6Z6uWzbcUSJ
- Er4ZlHZOnkvlF3Q5FyEw9+S5wCDPQeBcBM0SSTrXdwkksjpqdyb0IClbe86RSlHcWveX
- OPvc6f8OFMmfJMFyNHPDnxCN8EfRiUHyoCaP22Y7I1qn62w38ZvbITaOdGmO859GZuW5
- 3PsUFuv2ljPSPtRS+ZsSPil9NM20cBBAwZO0HfPZ2aH3GIIAByriL/L+CBnrrRRa9nZ4
- mfLUaAFFcCJZKD03CCZ1M59ocm/tRYNJAbYLSG3ig8xqt4B78Bh8f+hYXb3c8gnShg7A
- eXdA==
+ :cc:content-transfer-encoding;
+ bh=w7Cz7S4ZUXHvWEvf7YTm3LirUiL1aqC6vptuu99D+tg=;
+ b=b2MGh55S1jX/TrJ21xjCnVdFk7kU17eXQPTkylm9iiwEjno+T1OgJCyruBSHqGfC+O
+ RNWRyxV10+yp1x+iSeqkWuiR8WycNNlQPSgc74Y5KijS9lDlzuuFmtTB1hLBrRJhH+UE
+ r9f5l2dWKe1m9oU4ZCahGdTsR6/IcGE+Gv5A2L9oy4wKPqDtJj4IF70P7I+j96Hugjmz
+ ow4Es3MImqGrp4oKxXqJD6nMwdntF/qBVKFHCPKKMn1u1yNDcPYODlcYfpouK3IPVKPW
+ pJ3p36PppHiO24HDhY7MdHd/w+a7uxcnZWRsS/vmuflkk3NjnSayyLXFaw8/DRJBvk6n
+ bAcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=9T1PEZ94rXwwPATh7T6h6oYRt0LLjg2suPggv+gHdaY=;
- b=W9UbyaAc475loLZ0FLwaTMAcxAzESt5hI3PCAdHkbFulA+/M5f3JmsB9wCPCH7CVY7
- hu4cIL/wVS7j7U/cATvM3sWA3ocEjrt9rf2RR4fuEbqorRSnE6vi/UYYgni4oH07EFo9
- A0jp3MttPfWgx9OznblBVAvRxAQLySKZhqsWHSS6u4s1sctkfeNAikCnfUDl5mQFdoTY
- 9n7vF786farBD+WGaosiQ8/7NEBrAZPNWpYG6wWW9WRPf/bOmNw6rjRWFwWwc1msbN0Q
- OQxmtETFRw+hHLX+NYBHtaSOc2h1mrMjmRBBLnn65HVbE02m3VcZWXli0YfQm9uAa64f
- m2Tw==
-X-Gm-Message-State: ANhLgQ1XXqv2WhyO5oecckD3cGys8YHgKR9WN3VY0MKfECGXTuZDKZ1L
- AMAI4FXzOxVVp+eFmNJSDlZ/OOqeI4OjKvCd9dc=
-X-Received: by 2002:a05:6512:3048:: with SMTP id
- b8mr471804lfb.102.1582757757068; 
- Wed, 26 Feb 2020 14:55:57 -0800 (PST)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=w7Cz7S4ZUXHvWEvf7YTm3LirUiL1aqC6vptuu99D+tg=;
+ b=YPC98sNyC2mBjvLH9bWkVp5ztgHz06Nss0a6Iodl4DW4EdExMfhy8vI5Tg2GHBJD/I
+ WZojlc74Md16jJbnOt4+cWzxYno79o80J7WoCpuyIFl0Hx9mS2XWQVm2njXEPMmycr2u
+ /5KCmCe1kaWn5QRGJ9wysvJx8PJiqAeCZTWpdA8/ik+LkYOt7/G2fMVHuvAJZFF3jmfd
+ wkS7JYCiaPU+7M+eoPbCZ9+YcQN1Sh/gU+Px8KfH86GO8lBuwCWeM8P4LNrE4pGq0XDh
+ kYN4fArnPmBAnm9rGVeDdKAPCTR4l4WuU9fBhzasrrgErrx89heRB5izQvejLyFmPl6/
+ EOMg==
+X-Gm-Message-State: ANhLgQ1CVuRF7QlhSiAj+CpqdCKLPBy5Zvopq7R4OwL2Y8gbFcwQ1vK3
+ 4L+p9h9pUMctQeFL7IhUQDRkjqWt5sciez69ZUU=
+X-Received: by 2002:ac2:5198:: with SMTP id u24mr448618lfi.137.1582757837534; 
+ Wed, 26 Feb 2020 14:57:17 -0800 (PST)
 MIME-Version: 1.0
 References: <20200225131422.53368-1-damien.hedde@greensocs.com>
- <20200225131422.53368-7-damien.hedde@greensocs.com>
-In-Reply-To: <20200225131422.53368-7-damien.hedde@greensocs.com>
+ <20200225131422.53368-10-damien.hedde@greensocs.com>
+In-Reply-To: <20200225131422.53368-10-damien.hedde@greensocs.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 26 Feb 2020 14:48:19 -0800
-Message-ID: <CAKmqyKMfytsugQ0XewgTcohu8Ko6TdH0VkEKrnQktpa2qzD8yA@mail.gmail.com>
-Subject: Re: [PATCH v8 6/9] hw/misc/zynq_slcr: add clock generation for uarts
+Date: Wed, 26 Feb 2020 14:49:40 -0800
+Message-ID: <CAKmqyKP5VAiHe5PL4crr0KfSwup7vmmys70=6BT5hcMYF37Azw@mail.gmail.com>
+Subject: Re: [PATCH v8 9/9] qdev-monitor: print the device's clock with info
+ qtree
 To: Damien Hedde <damien.hedde@greensocs.com>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::143
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::144
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  "Daniel P. Berrange" <berrange@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
@@ -113,293 +116,99 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm <qemu-arm@nongnu.org>,
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RG/mkK7miB7U
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Edgar Iglesias <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1/9c7VYPoNJl
 
-On Tue, Feb 25, 2020 at 5:56 AM Damien Hedde <damien.hedde@greensocs.com> wrote:
+On Tue, Feb 25, 2020 at 5:52 AM Damien Hedde <damien.hedde@greensocs.com> w=
+rote:
 >
-> Add some clocks to zynq_slcr
-> + the main input clock (ps_clk)
-> + the reference clock outputs for each uart (uart0 & 1)
+> This prints the clocks attached to a DeviceState when using
+> "info qtree" monitor command. For every clock, it displays the
+> direction, the name and if the clock is forwarded. For input clock,
+> it displays also the frequency.
 >
-> This commit also transitional the slcr to multi-phase reset as it is
-> required to initialize the clocks correctly.
+> This is based on the original work of Frederic Konrad.
 >
-> The clock frequencies are computed using the internal pll & uart configuration
-> registers and the input ps_clk frequency.
+> Here follows a sample of `info qtree` output on xilinx_zynq machine
+> after linux boot with only one uart clocked:
+> > bus: main-system-bus
+> >  type System
+> >  [...]
+> >  dev: cadence_uart, id ""
+> >    gpio-out "sysbus-irq" 1
+> >    clock-in "refclk" freq_hz=3D0.000000e+00
+> >    chardev =3D ""
+> >    mmio 00000000e0001000/0000000000001000
+> >  dev: cadence_uart, id ""
+> >    gpio-out "sysbus-irq" 1
+> >    clock-in "refclk" freq_hz=3D1.375661e+07
+> >    chardev =3D "serial0"
+> >    mmio 00000000e0000000/0000000000001000
+> >  [...]
+> >  dev: xilinx,zynq_slcr, id ""
+> >    clock-out "uart1_ref_clk" freq_hz=3D0.000000e+00
+> >    clock-out "uart0_ref_clk" freq_hz=3D1.375661e+07
+> >    clock-in "ps_clk" freq_hz=3D3.333333e+07
+> >    mmio 00000000f8000000/0000000000001000
 >
 > Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-This looks fine, although I didn't compare it to the datasheet, I'll
-leave that for a Xilinx person to do.
-
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
 > ---
 >
 > v7:
->   + handle migration of input clock
->   + update ClockIn/ClockOut types
->   + comments correction/precision (Peter)
+>  + print output clocks frequencies too
+>  + add sample of qtree message above
+>  + display frequencies in floating-point
 > ---
->  hw/misc/zynq_slcr.c | 172 ++++++++++++++++++++++++++++++++++++++++++--
->  1 file changed, 168 insertions(+), 4 deletions(-)
+>  qdev-monitor.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
 >
-> diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
-> index b9a38272d9..f7472d1f3c 100644
-> --- a/hw/misc/zynq_slcr.c
-> +++ b/hw/misc/zynq_slcr.c
-> @@ -22,6 +22,7 @@
->  #include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "hw/registerfields.h"
-> +#include "hw/qdev-clock.h"
+> diff --git a/qdev-monitor.c b/qdev-monitor.c
+> index 8ce71a206b..1d84b4e416 100644
+> --- a/qdev-monitor.c
+> +++ b/qdev-monitor.c
+> @@ -38,6 +38,7 @@
+>  #include "migration/misc.h"
+>  #include "migration/migration.h"
+>  #include "qemu/cutils.h"
+> +#include "hw/clock.h"
 >
->  #ifndef ZYNQ_SLCR_ERR_DEBUG
->  #define ZYNQ_SLCR_ERR_DEBUG 0
-> @@ -45,6 +46,12 @@ REG32(LOCKSTA, 0x00c)
->  REG32(ARM_PLL_CTRL, 0x100)
->  REG32(DDR_PLL_CTRL, 0x104)
->  REG32(IO_PLL_CTRL, 0x108)
-> +/* fields for [ARM|DDR|IO]_PLL_CTRL registers */
-> +    FIELD(xxx_PLL_CTRL, PLL_RESET, 0, 1)
-> +    FIELD(xxx_PLL_CTRL, PLL_PWRDWN, 1, 1)
-> +    FIELD(xxx_PLL_CTRL, PLL_BYPASS_QUAL, 3, 1)
-> +    FIELD(xxx_PLL_CTRL, PLL_BYPASS_FORCE, 4, 1)
-> +    FIELD(xxx_PLL_CTRL, PLL_FPDIV, 12, 7)
->  REG32(PLL_STATUS, 0x10c)
->  REG32(ARM_PLL_CFG, 0x110)
->  REG32(DDR_PLL_CFG, 0x114)
-> @@ -64,6 +71,10 @@ REG32(SMC_CLK_CTRL, 0x148)
->  REG32(LQSPI_CLK_CTRL, 0x14c)
->  REG32(SDIO_CLK_CTRL, 0x150)
->  REG32(UART_CLK_CTRL, 0x154)
-> +    FIELD(UART_CLK_CTRL, CLKACT0, 0, 1)
-> +    FIELD(UART_CLK_CTRL, CLKACT1, 1, 1)
-> +    FIELD(UART_CLK_CTRL, SRCSEL,  4, 2)
-> +    FIELD(UART_CLK_CTRL, DIVISOR, 8, 6)
->  REG32(SPI_CLK_CTRL, 0x158)
->  REG32(CAN_CLK_CTRL, 0x15c)
->  REG32(CAN_MIOCLK_CTRL, 0x160)
-> @@ -179,11 +190,127 @@ typedef struct ZynqSLCRState {
->      MemoryRegion iomem;
+>  /*
+>   * Aliases were a bad idea from the start.  Let's keep them
+> @@ -736,6 +737,7 @@ static void qdev_print(Monitor *mon, DeviceState *dev=
+, int indent)
+>      ObjectClass *class;
+>      BusState *child;
+>      NamedGPIOList *ngl;
+> +    NamedClockList *ncl;
 >
->      uint32_t regs[ZYNQ_SLCR_NUM_REGS];
-> +
-> +    Clock *ps_clk;
-> +    Clock *uart0_ref_clk;
-> +    Clock *uart1_ref_clk;
->  } ZynqSLCRState;
->
-> -static void zynq_slcr_reset(DeviceState *d)
-> +/*
-> + * return the output frequency of ARM/DDR/IO pll
-> + * using input frequency and PLL_CTRL register
-> + */
-> +static uint64_t zynq_slcr_compute_pll(uint64_t input, uint32_t ctrl_reg)
->  {
-> -    ZynqSLCRState *s = ZYNQ_SLCR(d);
-> +    uint32_t mult = ((ctrl_reg & R_xxx_PLL_CTRL_PLL_FPDIV_MASK) >>
-> +            R_xxx_PLL_CTRL_PLL_FPDIV_SHIFT);
-> +
-> +    /* first, check if pll is bypassed */
-> +    if (ctrl_reg & R_xxx_PLL_CTRL_PLL_BYPASS_FORCE_MASK) {
-> +        return input;
-> +    }
-> +
-> +    /* is pll disabled ? */
-> +    if (ctrl_reg & (R_xxx_PLL_CTRL_PLL_RESET_MASK |
-> +                    R_xxx_PLL_CTRL_PLL_PWRDWN_MASK)) {
-> +        return 0;
-> +    }
-> +
-> +    /* frequency multiplier -> period division */
-> +    return input / mult;
-> +}
-> +
-> +/*
-> + * return the output period of a clock given:
-> + * + the periods in an array corresponding to input mux selector
-> + * + the register xxx_CLK_CTRL value
-> + * + enable bit index in ctrl register
-> + *
-> + * This function makes the assumption that the ctrl_reg value is organized as
-> + * follows:
-> + * + bits[13:8]  clock frequency divisor
-> + * + bits[5:4]   clock mux selector (index in array)
-> + * + bits[index] clock enable
-> + */
-> +static uint64_t zynq_slcr_compute_clock(const uint64_t periods[],
-> +                                        uint32_t ctrl_reg,
-> +                                        unsigned index)
-> +{
-> +    uint32_t srcsel = extract32(ctrl_reg, 4, 2); /* bits [5:4] */
-> +    uint32_t divisor = extract32(ctrl_reg, 8, 6); /* bits [13:8] */
-> +
-> +    /* first, check if clock is disabled */
-> +    if (((ctrl_reg >> index) & 1u) == 0) {
-> +        return 0;
-> +    }
-> +
-> +    /*
-> +     * according to the Zynq technical ref. manual UG585 v1.12.2 in
-> +     * Clocks chapter, section 25.10.1 page 705:
-> +     * "The 6-bit divider provides a divide range of 1 to 63"
-> +     * We follow here what is implemented in linux kernel and consider
-> +     * the 0 value as a bypass (no division).
-> +     */
-> +    /* frequency divisor -> period multiplication */
-> +    return periods[srcsel] * (divisor ? divisor : 1u);
-> +}
-> +
-> +/*
-> + * macro helper around zynq_slcr_compute_clock to avoid repeating
-> + * the register name.
-> + */
-> +#define ZYNQ_COMPUTE_CLK(state, plls, reg, enable_field) \
-> +    zynq_slcr_compute_clock((plls), (state)->regs[reg], \
-> +                            reg ## _ ## enable_field ## _SHIFT)
-> +
-> +/**
-> + * Compute and set the ouputs clocks periods.
-> + * But do not propagate them further. Connected clocks
-> + * will not receive any updates (See zynq_slcr_compute_clocks())
-> + */
-> +static void zynq_slcr_compute_clocks(ZynqSLCRState *s)
-> +{
-> +    uint64_t ps_clk = clock_get(s->ps_clk);
-> +
-> +    /* consider outputs clocks are disabled while in reset */
-> +    if (device_is_in_reset(DEVICE(s))) {
-> +        ps_clk = 0;
-> +    }
-> +
-> +    uint64_t io_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_IO_PLL_CTRL]);
-> +    uint64_t arm_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_ARM_PLL_CTRL]);
-> +    uint64_t ddr_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_DDR_PLL_CTRL]);
-> +
-> +    uint64_t uart_mux[4] = {io_pll, io_pll, arm_pll, ddr_pll};
-> +
-> +    /* compute uartX reference clocks */
-> +    clock_set(s->uart0_ref_clk,
-> +              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT0));
-> +    clock_set(s->uart1_ref_clk,
-> +              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT1));
-> +}
-> +
-> +/**
-> + * Propagate the outputs clocks.
-> + * zynq_slcr_compute_clocks() should have been called before
-> + * to configure them.
-> + */
-> +static void zynq_slcr_propagate_clocks(ZynqSLCRState *s)
-> +{
-> +    clock_propagate(s->uart0_ref_clk);
-> +    clock_propagate(s->uart1_ref_clk);
-> +}
-> +
-> +static void zynq_slcr_ps_clk_callback(void *opaque)
-> +{
-> +    ZynqSLCRState *s = (ZynqSLCRState *) opaque;
-> +    zynq_slcr_compute_clocks(s);
-> +    zynq_slcr_propagate_clocks(s);
-> +}
-> +
-> +static void zynq_slcr_reset_init(Object *obj, ResetType type)
-> +{
-> +    ZynqSLCRState *s = ZYNQ_SLCR(obj);
->      int i;
->
->      DB_PRINT("RESET\n");
-> @@ -277,6 +404,23 @@ static void zynq_slcr_reset(DeviceState *d)
->      s->regs[R_DDRIOB + 12] = 0x00000021;
->  }
->
-> +static void zynq_slcr_reset_hold(Object *obj)
-> +{
-> +    ZynqSLCRState *s = ZYNQ_SLCR(obj);
-> +
-> +    /* will disable all output clocks */
-> +    zynq_slcr_compute_clocks(s);
-> +    zynq_slcr_propagate_clocks(s);
-> +}
-> +
-> +static void zynq_slcr_reset_exit(Object *obj)
-> +{
-> +    ZynqSLCRState *s = ZYNQ_SLCR(obj);
-> +
-> +    /* will compute output clocks according to ps_clk and registers */
-> +    zynq_slcr_compute_clocks(s);
-> +    zynq_slcr_propagate_clocks(s);
-> +}
->
->  static bool zynq_slcr_check_offset(hwaddr offset, bool rnw)
->  {
-> @@ -409,6 +553,13 @@ static void zynq_slcr_write(void *opaque, hwaddr offset,
->              qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+>      qdev_printf("dev: %s, id \"%s\"\n", object_get_typename(OBJECT(dev))=
+,
+>                  dev->id ? dev->id : "");
+> @@ -750,6 +752,13 @@ static void qdev_print(Monitor *mon, DeviceState *de=
+v, int indent)
+>                          ngl->num_out);
 >          }
->          break;
-> +    case R_IO_PLL_CTRL:
-> +    case R_ARM_PLL_CTRL:
-> +    case R_DDR_PLL_CTRL:
-> +    case R_UART_CLK_CTRL:
-> +        zynq_slcr_compute_clocks(s);
-> +        zynq_slcr_propagate_clocks(s);
-> +        break;
 >      }
->  }
->
-> @@ -418,6 +569,13 @@ static const MemoryRegionOps slcr_ops = {
->      .endianness = DEVICE_NATIVE_ENDIAN,
->  };
->
-> +static const ClockPortInitArray zynq_slcr_clocks = {
-> +    QDEV_CLOCK_IN(ZynqSLCRState, ps_clk, zynq_slcr_ps_clk_callback),
-> +    QDEV_CLOCK_OUT(ZynqSLCRState, uart0_ref_clk),
-> +    QDEV_CLOCK_OUT(ZynqSLCRState, uart1_ref_clk),
-> +    QDEV_CLOCK_END
-> +};
-> +
->  static void zynq_slcr_init(Object *obj)
->  {
->      ZynqSLCRState *s = ZYNQ_SLCR(obj);
-> @@ -425,14 +583,17 @@ static void zynq_slcr_init(Object *obj)
->      memory_region_init_io(&s->iomem, obj, &slcr_ops, s, "slcr",
->                            ZYNQ_SLCR_MMIO_SIZE);
->      sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-> +
-> +    qdev_init_clocks(DEVICE(obj), zynq_slcr_clocks);
->  }
->
->  static const VMStateDescription vmstate_zynq_slcr = {
->      .name = "zynq_slcr",
-> -    .version_id = 2,
-> +    .version_id = 3,
->      .minimum_version_id = 2,
->      .fields = (VMStateField[]) {
->          VMSTATE_UINT32_ARRAY(regs, ZynqSLCRState, ZYNQ_SLCR_NUM_REGS),
-> +        VMSTATE_CLOCK_V(ps_clk, ZynqSLCRState, 3),
->          VMSTATE_END_OF_LIST()
->      }
->  };
-> @@ -440,9 +601,12 @@ static const VMStateDescription vmstate_zynq_slcr = {
->  static void zynq_slcr_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(klass);
-> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
->
->      dc->vmsd = &vmstate_zynq_slcr;
-> -    dc->reset = zynq_slcr_reset;
-> +    rc->phases.enter = zynq_slcr_reset_init;
-> +    rc->phases.hold  = zynq_slcr_reset_hold;
-> +    rc->phases.exit  = zynq_slcr_reset_exit;
->  }
->
->  static const TypeInfo zynq_slcr_info = {
+> +    QLIST_FOREACH(ncl, &dev->clocks, node) {
+> +        qdev_printf("clock-%s%s \"%s\" freq_hz=3D%e\n",
+> +                    ncl->output ? "out" : "in",
+> +                    ncl->alias ? " (alias)" : "",
+> +                    ncl->name,
+> +                    CLOCK_PERIOD_TO_HZ(1.0 * clock_get(ncl->clock)));
+> +    }
+>      class =3D object_get_class(OBJECT(dev));
+>      do {
+>          qdev_print_props(mon, dev, DEVICE_CLASS(class)->props_, indent);
 > --
 > 2.25.1
 >

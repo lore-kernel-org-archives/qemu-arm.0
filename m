@@ -1,258 +1,1226 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3542758lfg;
-        Wed, 26 Feb 2020 13:03:00 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw7pCseBzU1l1Ov7O7Uxsd3gMk2ki+lv8pGwuOJR7sKZECw9XhGQzEO8+I/GSY6+IBQGwdr
-X-Received: by 2002:a0c:edcd:: with SMTP id i13mr1007896qvr.99.1582750979834;
-        Wed, 26 Feb 2020 13:02:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582750979; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3545261lfg;
+        Wed, 26 Feb 2020 13:05:24 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyn/1yiPmlJVPyDls+/X535I2TNKmTjTcnQettcf6wf9ZRHOb4qzgfrFmABf+dqZjUSi8fD
+X-Received: by 2002:a05:620a:5b3:: with SMTP id q19mr1356976qkq.346.1582751124356;
+        Wed, 26 Feb 2020 13:05:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582751124; cv=none;
         d=google.com; s=arc-20160816;
-        b=kiF+dM+HGGTtb1BKFiPOGvAEaVMngKTq6pF0gncSySaUWedgLcqA862e18Rfj68izr
-         T1z257vgG3bLOAaF15sESom4qjY1hlsV/l2lfsR7Jx6IyTZBJbm5Efo8Pjqclv4ubdJn
-         8Lz81Ec6SmK0Cd9JKt9jbFS+LDpu6hopSyS+1U6NRe42MqBqMaExeZRe5tFJSdY5rvW2
-         iZs/vfBqvCVgJ2uGA3JclJBFFo8DCt+TfsPV8gtkV95s0KicmN46/cSWvgJiLw0lw/as
-         SMvuh4Ajq8X53ynD+wV39XdlB3ritDsz7Nrda+PAsZN5xUIvB7TTSeezl5zmyjFWagmc
-         soUg==
+        b=f91bC82jntrphyLOg60KsC9GxXX7Q3+b605vBRdnQ8m3Mk9oawjPFznW/K6CcO5QmK
+         NZzAKwasGZrGFRwgjCqNCh+T8MXhIC7egpGhTAVCwP5mM7pmlKFIy+9/xus1b59GdoJV
+         ULysixvG3I6f0EOKgOJBVPM54tT9dnxxz0QfICp67UhfYnt6T8cC6+6PbaZMVLvlufLJ
+         Abhh7jGsGoGVrId2gMUOLEbenUCQ/JIoVjerpT0AA0fs7CwCAy0YRaDujoIgecUPjk13
+         SNkr4lxuqH5wGAJCjphhU4RH2my882tttDZi5AoF/85oEV1b1Qlx+DsRVsxyEebnKdVp
+         Y/SQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=+mw0afqltp/7o7lSOKiJsT4n/lFmaePFvbi3ppE50xQ=;
-        b=jkaHPF+wJwcKaPqW9xFj4Fvk+ARiTIl/0ZC+EWEho8/97fxiq/uSQNnhT51YhrWAnr
-         lRq2cgAA41dgfCu0jJQfrdDuwV1P53kuz/AEKp6Kt3wmsDlL9RoFpmpZCZMR/vxs+CBD
-         FIwNuz8N/g3Y0RDF/2cqQvCIBxybASH+3AuqdX/6T+TKFUxIsMVJCmGHDKFPJS2VPCBE
-         8hIJLDwKunu0taHLuficvMNw/5rVbLMxjuhB3Im5QjlNjneuykVQDIqZDOhOOsH0Iw6Y
-         a0jtDNCBGSXpo2yZ557V4qg4DqADRhCYYPx+ZAf0czVPRAvJpvP7KL9HvMIW4qkmXd89
-         XHoA==
+        bh=jQC2UogFBYzQv/FXR26g8akyMDPcf7635NiruspxF0k=;
+        b=TAjlDsZzbPXzwRerNyIg1UyU7NuyZMjYRmqlsKp4uYXWvhevRLeFL6Hq8bKPbqlwoH
+         WaRgyxI0MHmYFFmHVXf+XMDWRoDyiwi+cbvO/Jxo+J0txm1M4HV+X2DCdurMOswJ5JxQ
+         PeOIODyZiqvK89HM4E6tTedbcSz7v2GxqYMWaIeMLpih11Qcsxx3RrhJZ0BVUZQHEeZv
+         2+I+4sHAj7ZL7rYbHlO74K3jG5w7k/B3o0nJWLFDnZbz0hY7/W2RTNDDMo0W5cCMwtvg
+         DjmtyMMDLkdOwhJ3uZGL9n8xt05PNoW1sjBKgLraAop4jpvz/gcbX0CLbIsojgbYDY3D
+         3BgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=I4AQoMZB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=e3sDg74s;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h3si139034qvs.71.2020.02.26.13.02.59
+        by mx.google.com with ESMTPS id p1si347834qkk.158.2020.02.26.13.05.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2020 13:02:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 26 Feb 2020 13:05:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=I4AQoMZB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=e3sDg74s;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49976 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50011 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j73pY-0001C3-0j
-	for alex.bennee@linaro.org; Wed, 26 Feb 2020 16:02:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45967)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j73rv-0005C1-NA
+	for alex.bennee@linaro.org; Wed, 26 Feb 2020 16:05:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46381)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j73nc-0007bs-9c
- for qemu-devel@nongnu.org; Wed, 26 Feb 2020 16:00:57 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1j73oH-0000PG-V1
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 16:01:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j73na-0003I5-VZ
- for qemu-devel@nongnu.org; Wed, 26 Feb 2020 16:00:56 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:46959
+ (envelope-from <eric.auger@redhat.com>) id 1j73oD-0004oN-QO
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 16:01:37 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:58692
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j73na-0003HB-Ql
- for qemu-devel@nongnu.org; Wed, 26 Feb 2020 16:00:54 -0500
+ id 1j73oD-0004lU-Ah
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 16:01:33 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582750854;
+ s=mimecast20190719; t=1582750892;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=+mw0afqltp/7o7lSOKiJsT4n/lFmaePFvbi3ppE50xQ=;
- b=I4AQoMZBjs+xdH5wySXlqhr+mVipp+HSEp0Tzf6OdLuESo19MiRmzx5Bf056b0PiNQmW8e
- Ma3AjBY90l6kkKyS8DLjj8mn9+RD/6KX1ewuVumq1KISBHl7WvbH0T7+RDTpAaFlYJxwOG
- JphmTOszGXrIBtLlWHOtOEjZ7mudlaQ=
+ bh=jQC2UogFBYzQv/FXR26g8akyMDPcf7635NiruspxF0k=;
+ b=e3sDg74s/79GtO3PwtYZQN5+pMpDYj+VD6/XhienNR9iRfahN2j/B2TCPdL31Z0YgpaZVM
+ fBP/xhX/KmfrXhdwHXdh8soEnKwUz7KyAwZeJtmBYHKY4guKyD4jc6FIf83gRKwfoYJs+W
+ VXujnqZnIDPRhqFjzQJSI9rHlccehYw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-127-JkVeckKCPxS4iufebrzuJw-1; Wed, 26 Feb 2020 16:00:52 -0500
-X-MC-Unique: JkVeckKCPxS4iufebrzuJw-1
+ us-mta-416-si38HVSaP-2fZ7FsySHbFQ-1; Wed, 26 Feb 2020 16:01:31 -0500
+X-MC-Unique: si38HVSaP-2fZ7FsySHbFQ-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4C9A78017DF;
- Wed, 26 Feb 2020 21:00:51 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EADDE801FB3;
+ Wed, 26 Feb 2020 21:01:29 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-59.ams2.redhat.com [10.36.116.59])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 25A775E1AF;
- Wed, 26 Feb 2020 21:00:26 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 46B365C28D;
+ Wed, 26 Feb 2020 21:01:18 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
-Subject: [PATCH v4 06/10] hw/arm/virt: vTPM support
-Date: Wed, 26 Feb 2020 21:59:38 +0100
-Message-Id: <20200226205942.11424-7-eric.auger@redhat.com>
+Subject: [PATCH v4 09/10] test: tpm-tis: Get prepared to share tests between
+ ISA and sysbus devices
+Date: Wed, 26 Feb 2020 21:59:41 +0100
+Message-Id: <20200226205942.11424-10-eric.auger@redhat.com>
 In-Reply-To: <20200226205942.11424-1-eric.auger@redhat.com>
 References: <20200226205942.11424-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org,
  philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fCmXlKSkPZcZ
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Odg4TBjdtWpZ
 
-Let the TPM TIS SYSBUS device be dynamically instantiable
-in ARM virt.  A device tree node is dynamically created
-(TPM via MMIO).
+ISA and sysbus TPM-TIS devices will share their tests. Only
+the main() will change (instantiation option is different).
+Also the base address of the TPM-TIS device is going to be
+different. on x86 it is located at 0xFED40000 while on ARM
+it can be located at any location, discovered through the
+device tree description.
 
-The TPM Physical Presence interface (PPI) is not supported.
+So we put shared test functions in a new object module.
+Each test needs to set tpm_tis_base_addr global variable.
 
-To run with the swtmp TPM emulator, the qemu command line must
-be augmented with:
-
-        -chardev socket,id=3Dchrtpm,path=3Dswtpm-sock \
-        -tpmdev emulator,id=3Dtpm0,chardev=3Dchrtpm \
-        -device tpm-tis-device,tpmdev=3Dtpm0 \
-
-swtpm/libtpms command line example:
-
-swtpm socket --tpm2 -t -d --tpmstate dir=3D/tmp/tpm \
---ctrl type=3Dunixio,path=3Dswtpm-sock
+Also take benefit of this move to fix "block comments using
+a leading */ on a separate line" checkpatch warnings.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-Tested-by: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Acked-by: Ard Biesheuvel <ard.biesheuvel@linaro.org>
 
 ---
 
-v2 -> v3:
-- use qemu_fdt_setprop_string()
+v3 -> v4:
+- added 'not used but needed for linking' (TPM_TIS_ADDR_BASE)
+  in crb files
+- fix comment style warnings
 ---
- hw/arm/Kconfig      |  1 +
- hw/arm/sysbus-fdt.c | 33 +++++++++++++++++++++++++++++++++
- hw/arm/virt.c       |  7 +++++++
- 3 files changed, 41 insertions(+)
+ tests/qtest/Makefile.include     |   2 +-
+ tests/qtest/tpm-crb-swtpm-test.c |   4 +
+ tests/qtest/tpm-crb-test.c       |   3 +
+ tests/qtest/tpm-tis-swtpm-test.c |   3 +
+ tests/qtest/tpm-tis-test.c       | 414 +---------------------------
+ tests/qtest/tpm-tis-util.c       | 451 +++++++++++++++++++++++++++++++
+ tests/qtest/tpm-tis-util.h       |  23 ++
+ tests/qtest/tpm-util.c           |   3 -
+ tests/qtest/tpm-util.h           |   5 +
+ 9 files changed, 493 insertions(+), 415 deletions(-)
+ create mode 100644 tests/qtest/tpm-tis-util.c
+ create mode 100644 tests/qtest/tpm-tis-util.h
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 3d86691ae0..b6f03f7f53 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -5,6 +5,7 @@ config ARM_VIRT
-     imply VFIO_AMD_XGBE
-     imply VFIO_PLATFORM
-     imply VFIO_XGMAC
-+    imply TPM_TIS_SYSBUS
-     select A15MPCORE
-     select ACPI
-     select ARM_SMMUV3
-diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-index 022fc97ecd..f603787b65 100644
---- a/hw/arm/sysbus-fdt.c
-+++ b/hw/arm/sysbus-fdt.c
-@@ -30,6 +30,7 @@
- #include "hw/arm/sysbus-fdt.h"
- #include "qemu/error-report.h"
- #include "sysemu/device_tree.h"
-+#include "sysemu/tpm.h"
- #include "hw/platform-bus.h"
- #include "hw/vfio/vfio-platform.h"
- #include "hw/vfio/vfio-calxeda-xgmac.h"
-@@ -434,6 +435,37 @@ static bool vfio_platform_match(SysBusDevice *sbdev,
- #define VFIO_PLATFORM_BINDING(compat, add_fn) \
-     {TYPE_VFIO_PLATFORM, (compat), (add_fn), vfio_platform_match}
+diff --git a/tests/qtest/Makefile.include b/tests/qtest/Makefile.include
+index 028af5b782..44aac68b25 100644
+--- a/tests/qtest/Makefile.include
++++ b/tests/qtest/Makefile.include
+@@ -302,7 +302,7 @@ tests/qtest/tpm-crb-swtpm-test$(EXESUF): tests/qtest/tp=
+m-crb-swtpm-test.o tests/
+ tests/qtest/tpm-crb-test$(EXESUF): tests/qtest/tpm-crb-test.o tests/qtest/=
+tpm-emu.o $(test-io-obj-y)
+ tests/qtest/tpm-tis-swtpm-test$(EXESUF): tests/qtest/tpm-tis-swtpm-test.o =
+tests/qtest/tpm-emu.o \
+ =09tests/qtest/tpm-util.o tests/qtest/tpm-tests.o $(test-io-obj-y)
+-tests/qtest/tpm-tis-test$(EXESUF): tests/qtest/tpm-tis-test.o tests/qtest/=
+tpm-emu.o $(test-io-obj-y)
++tests/qtest/tpm-tis-test$(EXESUF): tests/qtest/tpm-tis-test.o tests/qtest/=
+tpm-tis-util.o tests/qtest/tpm-emu.o $(test-io-obj-y)
 =20
-+/*
-+ * add_tpm_tis_fdt_node: Create a DT node for TPM TIS
-+ *
-+ * See kernel documentation:
-+ * Documentation/devicetree/bindings/security/tpm/tpm_tis_mmio.txt
-+ * Optional interrupt for command completion is not exposed
-+ */
-+static int add_tpm_tis_fdt_node(SysBusDevice *sbdev, void *opaque)
-+{
-+    PlatformBusFDTData *data =3D opaque;
-+    PlatformBusDevice *pbus =3D data->pbus;
-+    void *fdt =3D data->fdt;
-+    const char *parent_node =3D data->pbus_node_name;
-+    char *nodename;
-+    uint32_t reg_attr[2];
-+    uint64_t mmio_base;
+ # QTest rules
+=20
+diff --git a/tests/qtest/tpm-crb-swtpm-test.c b/tests/qtest/tpm-crb-swtpm-t=
+est.c
+index 5228cb7af4..55fdb5657d 100644
+--- a/tests/qtest/tpm-crb-swtpm-test.c
++++ b/tests/qtest/tpm-crb-swtpm-test.c
+@@ -18,6 +18,10 @@
+ #include "libqtest.h"
+ #include "qemu/module.h"
+ #include "tpm-tests.h"
++#include "hw/acpi/tpm.h"
 +
-+    mmio_base =3D platform_bus_get_mmio_addr(pbus, sbdev, 0);
-+    nodename =3D g_strdup_printf("%s/tpm_tis@%" PRIx64, parent_node, mmio_=
-base);
-+    qemu_fdt_add_subnode(fdt, nodename);
++/* Not used but needed for linking */
++uint64_t tpm_tis_base_addr =3D TPM_TIS_ADDR_BASE;
+=20
+ typedef struct TestState {
+     char *src_tpm_path;
+diff --git a/tests/qtest/tpm-crb-test.c b/tests/qtest/tpm-crb-test.c
+index 632fb7fbd8..ed533900d1 100644
+--- a/tests/qtest/tpm-crb-test.c
++++ b/tests/qtest/tpm-crb-test.c
+@@ -19,6 +19,9 @@
+ #include "qemu/module.h"
+ #include "tpm-emu.h"
+=20
++/* Not used but needed for linking */
++uint64_t tpm_tis_base_addr =3D TPM_TIS_ADDR_BASE;
 +
-+    qemu_fdt_setprop_string(fdt, nodename, "compatible", "tcg,tpm-tis-mmio=
-");
+ #define TPM_CMD "\x80\x01\x00\x00\x00\x0c\x00\x00\x01\x44\x00\x00"
+=20
+ static void tpm_crb_test(const void *data)
+diff --git a/tests/qtest/tpm-tis-swtpm-test.c b/tests/qtest/tpm-tis-swtpm-t=
+est.c
+index 9470f15751..90131cb3c4 100644
+--- a/tests/qtest/tpm-tis-swtpm-test.c
++++ b/tests/qtest/tpm-tis-swtpm-test.c
+@@ -18,6 +18,9 @@
+ #include "libqtest.h"
+ #include "qemu/module.h"
+ #include "tpm-tests.h"
++#include "hw/acpi/tpm.h"
 +
-+    reg_attr[0] =3D cpu_to_be32(mmio_base);
-+    reg_attr[1] =3D cpu_to_be32(0x5000);
-+    qemu_fdt_setprop(fdt, nodename, "reg", reg_attr, 2 * sizeof(uint32_t))=
++uint64_t tpm_tis_base_addr =3D TPM_TIS_ADDR_BASE;
+=20
+ typedef struct TestState {
+     char *src_tpm_path;
+diff --git a/tests/qtest/tpm-tis-test.c b/tests/qtest/tpm-tis-test.c
+index dcf30e05b7..79ffbc943e 100644
+--- a/tests/qtest/tpm-tis-test.c
++++ b/tests/qtest/tpm-tis-test.c
+@@ -1,5 +1,5 @@
+ /*
+- * QTest testcase for TPM TIS
++ * QTest testcase for ISA TPM TIS
+  *
+  * Copyright (c) 2018 Red Hat, Inc.
+  * Copyright (c) 2018 IBM Corporation
+@@ -20,417 +20,9 @@
+ #include "libqtest-single.h"
+ #include "qemu/module.h"
+ #include "tpm-emu.h"
++#include "tpm-tis-util.h"
+=20
+-#define TIS_REG(LOCTY, REG) \
+-    (TPM_TIS_ADDR_BASE + ((LOCTY) << 12) + REG)
+-
+-#define DEBUG_TIS_TEST 0
+-
+-#define DPRINTF(fmt, ...) do { \
+-    if (DEBUG_TIS_TEST) { \
+-        printf(fmt, ## __VA_ARGS__); \
+-    } \
+-} while (0)
+-
+-#define DPRINTF_ACCESS \
+-    DPRINTF("%s: %d: locty=3D%d l=3D%d access=3D0x%02x pending_request_fla=
+g=3D0x%x\n", \
+-            __func__, __LINE__, locty, l, access, pending_request_flag)
+-
+-#define DPRINTF_STS \
+-    DPRINTF("%s: %d: sts =3D 0x%08x\n", __func__, __LINE__, sts)
+-
+-static const uint8_t TPM_CMD[12] =3D
+-    "\x80\x01\x00\x00\x00\x0c\x00\x00\x01\x44\x00\x00";
+-
+-static void tpm_tis_test_check_localities(const void *data)
+-{
+-    uint8_t locty;
+-    uint8_t access;
+-    uint32_t ifaceid;
+-    uint32_t capability;
+-    uint32_t didvid;
+-    uint32_t rid;
+-
+-    for (locty =3D 0; locty < TPM_TIS_NUM_LOCALITIES; locty++) {
+-        access =3D readb(TIS_REG(0, TPM_TIS_REG_ACCESS));
+-        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
+-                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-        capability =3D readl(TIS_REG(locty, TPM_TIS_REG_INTF_CAPABILITY));
+-        g_assert_cmpint(capability, =3D=3D, TPM_TIS_CAPABILITIES_SUPPORTED=
+2_0);
+-
+-        ifaceid =3D readl(TIS_REG(locty, TPM_TIS_REG_INTERFACE_ID));
+-        g_assert_cmpint(ifaceid, =3D=3D, TPM_TIS_IFACE_ID_SUPPORTED_FLAGS2=
+_0);
+-
+-        didvid =3D readl(TIS_REG(locty, TPM_TIS_REG_DID_VID));
+-        g_assert_cmpint(didvid, !=3D, 0);
+-        g_assert_cmpint(didvid, !=3D, 0xffffffff);
+-
+-        rid =3D readl(TIS_REG(locty, TPM_TIS_REG_RID));
+-        g_assert_cmpint(rid, !=3D, 0);
+-        g_assert_cmpint(rid, !=3D, 0xffffffff);
+-    }
+-}
+-
+-static void tpm_tis_test_check_access_reg(const void *data)
+-{
+-    uint8_t locty;
+-    uint8_t access;
+-
+-    /* do not test locality 4 (hw only) */
+-    for (locty =3D 0; locty < TPM_TIS_NUM_LOCALITIES - 1; locty++) {
+-        access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
+-        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
+-                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-        /* request use of locality */
+-        writeb(TIS_REG(locty, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_REQUEST_=
+USE);
+-
+-        access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
+-        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
+-                                    TPM_TIS_ACCESS_ACTIVE_LOCALITY |
+-                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-        /* release access */
+-        writeb(TIS_REG(locty, TPM_TIS_REG_ACCESS),
+-               TPM_TIS_ACCESS_ACTIVE_LOCALITY);
+-        access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
+-        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
+-                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-    }
+-}
+-
+-/*
+- * Test case for seizing access by a higher number locality
+- */
+-static void tpm_tis_test_check_access_reg_seize(const void *data)
+-{
+-    int locty, l;
+-    uint8_t access;
+-    uint8_t pending_request_flag;
+-
+-    /* do not test locality 4 (hw only) */
+-    for (locty =3D 0; locty < TPM_TIS_NUM_LOCALITIES - 1; locty++) {
+-        pending_request_flag =3D 0;
+-
+-        access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
+-        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
+-                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-        /* request use of locality */
+-        writeb(TIS_REG(locty, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_REQUEST_=
+USE);
+-        access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
+-        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
+-                                    TPM_TIS_ACCESS_ACTIVE_LOCALITY |
+-                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-        /* lower localities cannot seize access */
+-        for (l =3D 0; l < locty; l++) {
+-            /* lower locality is not active */
+-            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
+-            DPRINTF_ACCESS;
+-            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
+-                                        pending_request_flag |
+-                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-            /* try to request use from 'l' */
+-            writeb(TIS_REG(l, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_REQUEST_=
+USE);
+-
+-            /* requesting use from 'l' was not possible;
+-               we must see REQUEST_USE and possibly PENDING_REQUEST */
+-            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
+-            DPRINTF_ACCESS;
+-            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
+-                                        TPM_TIS_ACCESS_REQUEST_USE |
+-                                        pending_request_flag |
+-                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-            /* locality 'locty' must be unchanged;
+-               we must see PENDING_REQUEST */
+-            access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
+-            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
+-                                        TPM_TIS_ACCESS_ACTIVE_LOCALITY |
+-                                        TPM_TIS_ACCESS_PENDING_REQUEST |
+-                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-            /* try to seize from 'l' */
+-            writeb(TIS_REG(l, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_SEIZE);
+-            /* seize from 'l' was not possible */
+-            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
+-            DPRINTF_ACCESS;
+-            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
+-                                        TPM_TIS_ACCESS_REQUEST_USE |
+-                                        pending_request_flag |
+-                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-            /* locality 'locty' must be unchanged */
+-            access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
+-            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
+-                                        TPM_TIS_ACCESS_ACTIVE_LOCALITY |
+-                                        TPM_TIS_ACCESS_PENDING_REQUEST |
+-                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-            /* on the next loop we will have a PENDING_REQUEST flag
+-               set for locality 'l' */
+-            pending_request_flag =3D TPM_TIS_ACCESS_PENDING_REQUEST;
+-        }
+-
+-        /* higher localities can 'seize' access but not 'request use';
+-           note: this will activate first l+1, then l+2 etc. */
+-        for (l =3D locty + 1; l < TPM_TIS_NUM_LOCALITIES - 1; l++) {
+-            /* try to 'request use' from 'l' */
+-            writeb(TIS_REG(l, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_REQUEST_=
+USE);
+-
+-            /* requesting use from 'l' was not possible; we should see
+-               REQUEST_USE and may see PENDING_REQUEST */
+-            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
+-            DPRINTF_ACCESS;
+-            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
+-                                        TPM_TIS_ACCESS_REQUEST_USE |
+-                                        pending_request_flag |
+-                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-            /* locality 'l-1' must be unchanged; we should always
+-               see PENDING_REQUEST from 'l' requesting access */
+-            access =3D readb(TIS_REG(l - 1, TPM_TIS_REG_ACCESS));
+-            DPRINTF_ACCESS;
+-            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
+-                                        TPM_TIS_ACCESS_ACTIVE_LOCALITY |
+-                                        TPM_TIS_ACCESS_PENDING_REQUEST |
+-                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-            /* try to seize from 'l' */
+-            writeb(TIS_REG(l, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_SEIZE);
+-
+-            /* seize from 'l' was possible */
+-            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
+-            DPRINTF_ACCESS;
+-            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
+-                                        TPM_TIS_ACCESS_ACTIVE_LOCALITY |
+-                                        pending_request_flag |
+-                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-            /* l - 1 should show that it has BEEN_SEIZED */
+-            access =3D readb(TIS_REG(l - 1, TPM_TIS_REG_ACCESS));
+-            DPRINTF_ACCESS;
+-            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
+-                                        TPM_TIS_ACCESS_BEEN_SEIZED |
+-                                        pending_request_flag |
+-                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-            /* clear the BEEN_SEIZED flag and make sure it's gone */
+-            writeb(TIS_REG(l - 1, TPM_TIS_REG_ACCESS),
+-                   TPM_TIS_ACCESS_BEEN_SEIZED);
+-
+-            access =3D readb(TIS_REG(l - 1, TPM_TIS_REG_ACCESS));
+-            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
+-                                        pending_request_flag |
+-                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-        }
+-
+-        /* PENDING_REQUEST will not be set if locty =3D 0 since all locali=
+ties
+-           were active; in case of locty =3D 1, locality 0 will be active
+-           but no PENDING_REQUEST anywhere */
+-        if (locty <=3D 1) {
+-            pending_request_flag =3D 0;
+-        }
+-
+-        /* release access from l - 1; this activates locty - 1 */
+-        l--;
+-
+-        access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
+-        DPRINTF_ACCESS;
+-
+-        DPRINTF("%s: %d: relinquishing control on l =3D %d\n",
+-                __func__, __LINE__, l);
+-        writeb(TIS_REG(l, TPM_TIS_REG_ACCESS),
+-               TPM_TIS_ACCESS_ACTIVE_LOCALITY);
+-
+-        access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
+-        DPRINTF_ACCESS;
+-        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
+-                                    pending_request_flag |
+-                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-        for (l =3D locty - 1; l >=3D 0; l--) {
+-            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
+-            DPRINTF_ACCESS;
+-            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
+-                                        TPM_TIS_ACCESS_ACTIVE_LOCALITY |
+-                                        pending_request_flag |
+-                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-            /* release this locality */
+-            writeb(TIS_REG(l, TPM_TIS_REG_ACCESS),
+-                   TPM_TIS_ACCESS_ACTIVE_LOCALITY);
+-
+-            if (l =3D=3D 1) {
+-                pending_request_flag =3D 0;
+-            }
+-        }
+-
+-        /* no locality may be active now */
+-        for (l =3D 0; l < TPM_TIS_NUM_LOCALITIES - 1; l++) {
+-            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
+-            DPRINTF_ACCESS;
+-            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
+-                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-        }
+-    }
+-}
+-
+-/*
+- * Test case for getting access when higher number locality relinquishes a=
+ccess
+- */
+-static void tpm_tis_test_check_access_reg_release(const void *data)
+-{
+-    int locty, l;
+-    uint8_t access;
+-    uint8_t pending_request_flag;
+-
+-    /* do not test locality 4 (hw only) */
+-    for (locty =3D TPM_TIS_NUM_LOCALITIES - 2; locty >=3D 0; locty--) {
+-        pending_request_flag =3D 0;
+-
+-        access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
+-        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
+-                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-        /* request use of locality */
+-        writeb(TIS_REG(locty, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_REQUEST_=
+USE);
+-        access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
+-        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
+-                                    TPM_TIS_ACCESS_ACTIVE_LOCALITY |
+-                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-        /* request use of all other localities */
+-        for (l =3D 0; l < TPM_TIS_NUM_LOCALITIES - 1; l++) {
+-            if (l =3D=3D locty) {
+-                continue;
+-            }
+-            /* request use of locality 'l' -- we MUST see REQUEST USE and
+-               may see PENDING_REQUEST */
+-            writeb(TIS_REG(l, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_REQUEST_=
+USE);
+-            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
+-            DPRINTF_ACCESS;
+-            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
+-                                        TPM_TIS_ACCESS_REQUEST_USE |
+-                                        pending_request_flag |
+-                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-            pending_request_flag =3D TPM_TIS_ACCESS_PENDING_REQUEST;
+-        }
+-        /* release locality 'locty' */
+-        writeb(TIS_REG(locty, TPM_TIS_REG_ACCESS),
+-               TPM_TIS_ACCESS_ACTIVE_LOCALITY);
+-        /* highest locality should now be active; release it and make sure=
+ the
+-           next higest locality is active afterwards */
+-        for (l =3D TPM_TIS_NUM_LOCALITIES - 2; l >=3D 0; l--) {
+-            if (l =3D=3D locty) {
+-                continue;
+-            }
+-            /* 'l' should be active now */
+-            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
+-            DPRINTF_ACCESS;
+-            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
+-                                        TPM_TIS_ACCESS_ACTIVE_LOCALITY |
+-                                        pending_request_flag |
+-                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-            /* 'l' relinquishes access */
+-            writeb(TIS_REG(l, TPM_TIS_REG_ACCESS),
+-                   TPM_TIS_ACCESS_ACTIVE_LOCALITY);
+-            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
+-            DPRINTF_ACCESS;
+-            if (l =3D=3D 1 || (locty <=3D 1 && l =3D=3D 2)) {
+-                pending_request_flag =3D 0;
+-            }
+-            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
+-                                        pending_request_flag |
+-                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-        }
+-    }
+-}
+-
+-/*
+- * Test case for transmitting packets
+- */
+-static void tpm_tis_test_check_transmit(const void *data)
+-{
+-    const TestState *s =3D data;
+-    uint8_t access;
+-    uint32_t sts;
+-    uint16_t bcount;
+-    size_t i;
+-
+-    /* request use of locality 0 */
+-    writeb(TIS_REG(0, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_REQUEST_USE);
+-    access =3D readb(TIS_REG(0, TPM_TIS_REG_ACCESS));
+-    g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
+-                                TPM_TIS_ACCESS_ACTIVE_LOCALITY |
+-                                TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
+-
+-    sts =3D readl(TIS_REG(0, TPM_TIS_REG_STS));
+-    DPRINTF_STS;
+-
+-    g_assert_cmpint(sts & 0xff, =3D=3D, 0);
+-    g_assert_cmpint(sts & TPM_TIS_STS_TPM_FAMILY_MASK, =3D=3D,
+-                    TPM_TIS_STS_TPM_FAMILY2_0);
+-
+-    bcount =3D (sts >> 8) & 0xffff;
+-    g_assert_cmpint(bcount, >=3D, 128);
+-
+-    writel(TIS_REG(0, TPM_TIS_REG_STS), TPM_TIS_STS_COMMAND_READY);
+-    sts =3D readl(TIS_REG(0, TPM_TIS_REG_STS));
+-    DPRINTF_STS;
+-    g_assert_cmpint(sts & 0xff, =3D=3D, TPM_TIS_STS_COMMAND_READY);
+-
+-    /* transmit command */
+-    for (i =3D 0; i < sizeof(TPM_CMD); i++) {
+-        writeb(TIS_REG(0, TPM_TIS_REG_DATA_FIFO), TPM_CMD[i]);
+-        sts =3D readl(TIS_REG(0, TPM_TIS_REG_STS));
+-        DPRINTF_STS;
+-        if (i < sizeof(TPM_CMD) - 1) {
+-            g_assert_cmpint(sts & 0xff, =3D=3D,
+-                            TPM_TIS_STS_EXPECT | TPM_TIS_STS_VALID);
+-        } else {
+-            g_assert_cmpint(sts & 0xff, =3D=3D, TPM_TIS_STS_VALID);
+-        }
+-        g_assert_cmpint((sts >> 8) & 0xffff, =3D=3D, --bcount);
+-    }
+-    /* start processing */
+-    writeb(TIS_REG(0, TPM_TIS_REG_STS), TPM_TIS_STS_TPM_GO);
+-
+-    uint64_t end_time =3D g_get_monotonic_time() + 50 * G_TIME_SPAN_SECOND=
 ;
+-    do {
+-        sts =3D readl(TIS_REG(0, TPM_TIS_REG_STS));
+-        if ((sts & TPM_TIS_STS_DATA_AVAILABLE) !=3D 0) {
+-            break;
+-        }
+-    } while (g_get_monotonic_time() < end_time);
+-
+-    sts =3D readl(TIS_REG(0, TPM_TIS_REG_STS));
+-    DPRINTF_STS;
+-    g_assert_cmpint(sts & 0xff, =3D=3D ,
+-                    TPM_TIS_STS_VALID | TPM_TIS_STS_DATA_AVAILABLE);
+-    bcount =3D (sts >> 8) & 0xffff;
+-
+-    /* read response */
+-    uint8_t tpm_msg[sizeof(struct tpm_hdr)];
+-    g_assert_cmpint(sizeof(tpm_msg), =3D=3D, bcount);
+-
+-    for (i =3D 0; i < sizeof(tpm_msg); i++) {
+-        tpm_msg[i] =3D readb(TIS_REG(0, TPM_TIS_REG_DATA_FIFO));
+-        sts =3D readl(TIS_REG(0, TPM_TIS_REG_STS));
+-        DPRINTF_STS;
+-        if (sts & TPM_TIS_STS_DATA_AVAILABLE) {
+-            g_assert_cmpint((sts >> 8) & 0xffff, =3D=3D, --bcount);
+-        }
+-    }
+-    g_assert_cmpmem(tpm_msg, sizeof(tpm_msg), s->tpm_msg, sizeof(*s->tpm_m=
+sg));
+-
+-    /* relinquish use of locality 0 */
+-    writeb(TIS_REG(0, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_ACTIVE_LOCALITY)=
+;
+-    access =3D readb(TIS_REG(0, TPM_TIS_REG_ACCESS));
+-}
++uint64_t tpm_tis_base_addr =3D TPM_TIS_ADDR_BASE;
+=20
+ int main(int argc, char **argv)
+ {
+diff --git a/tests/qtest/tpm-tis-util.c b/tests/qtest/tpm-tis-util.c
+new file mode 100644
+index 0000000000..9aff503fd8
+--- /dev/null
++++ b/tests/qtest/tpm-tis-util.c
+@@ -0,0 +1,451 @@
++/*
++ * QTest testcase for TPM TIS: common test functions used for both
++ * the ISA and SYSBUS devices
++ *
++ * Copyright (c) 2018 Red Hat, Inc.
++ * Copyright (c) 2018 IBM Corporation
++ *
++ * Authors:
++ *   Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
++ *   Stefan Berger <stefanb@linux.vnet.ibm.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or late=
+r.
++ * See the COPYING file in the top-level directory.
++ */
 +
-+    g_free(nodename);
-+    return 0;
++#include "qemu/osdep.h"
++#include <glib/gstdio.h>
++
++#include "hw/acpi/tpm.h"
++#include "io/channel-socket.h"
++#include "libqtest-single.h"
++#include "qemu/module.h"
++#include "tpm-emu.h"
++#include "tpm-util.h"
++#include "tpm-tis-util.h"
++
++#define DEBUG_TIS_TEST 0
++
++#define DPRINTF(fmt, ...) do { \
++    if (DEBUG_TIS_TEST) { \
++        printf(fmt, ## __VA_ARGS__); \
++    } \
++} while (0)
++
++#define DPRINTF_ACCESS \
++    DPRINTF("%s: %d: locty=3D%d l=3D%d access=3D0x%02x pending_request_fla=
+g=3D0x%x\n", \
++            __func__, __LINE__, locty, l, access, pending_request_flag)
++
++#define DPRINTF_STS \
++    DPRINTF("%s: %d: sts =3D 0x%08x\n", __func__, __LINE__, sts)
++
++static const uint8_t TPM_CMD[12] =3D
++    "\x80\x01\x00\x00\x00\x0c\x00\x00\x01\x44\x00\x00";
++
++void tpm_tis_test_check_localities(const void *data)
++{
++    uint8_t locty;
++    uint8_t access;
++    uint32_t ifaceid;
++    uint32_t capability;
++    uint32_t didvid;
++    uint32_t rid;
++
++    for (locty =3D 0; locty < TPM_TIS_NUM_LOCALITIES; locty++) {
++        access =3D readb(TIS_REG(0, TPM_TIS_REG_ACCESS));
++        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
++                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++        capability =3D readl(TIS_REG(locty, TPM_TIS_REG_INTF_CAPABILITY));
++        g_assert_cmpint(capability, =3D=3D, TPM_TIS_CAPABILITIES_SUPPORTED=
+2_0);
++
++        ifaceid =3D readl(TIS_REG(locty, TPM_TIS_REG_INTERFACE_ID));
++        g_assert_cmpint(ifaceid, =3D=3D, TPM_TIS_IFACE_ID_SUPPORTED_FLAGS2=
+_0);
++
++        didvid =3D readl(TIS_REG(locty, TPM_TIS_REG_DID_VID));
++        g_assert_cmpint(didvid, !=3D, 0);
++        g_assert_cmpint(didvid, !=3D, 0xffffffff);
++
++        rid =3D readl(TIS_REG(locty, TPM_TIS_REG_RID));
++        g_assert_cmpint(rid, !=3D, 0);
++        g_assert_cmpint(rid, !=3D, 0xffffffff);
++    }
 +}
 +
- #endif /* CONFIG_LINUX */
-=20
- static int no_fdt_node(SysBusDevice *sbdev, void *opaque)
-@@ -455,6 +487,7 @@ static const BindingEntry bindings[] =3D {
-     TYPE_BINDING(TYPE_VFIO_CALXEDA_XGMAC, add_calxeda_midway_xgmac_fdt_nod=
-e),
-     TYPE_BINDING(TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node),
-     VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
-+    TYPE_BINDING(TYPE_TPM_TIS_SYSBUS, add_tpm_tis_fdt_node),
- #endif
-     TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
-     TYPE_BINDING("", NULL), /* last element */
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index f788fe27d6..4b967e39d1 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -47,6 +47,7 @@
- #include "sysemu/numa.h"
- #include "sysemu/runstate.h"
- #include "sysemu/sysemu.h"
-+#include "sysemu/tpm.h"
- #include "sysemu/kvm.h"
- #include "hw/loader.h"
- #include "exec/address-spaces.h"
-@@ -2041,6 +2042,7 @@ static void virt_machine_class_init(ObjectClass *oc, =
-void *data)
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_AMD_XGBE);
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
-     mc->block_default_type =3D IF_VIRTIO;
-     mc->no_cdrom =3D 1;
-     mc->pci_allow_0_address =3D true;
-@@ -2153,6 +2155,11 @@ type_init(machvirt_machine_init);
-=20
- static void virt_machine_5_0_options(MachineClass *mc)
- {
-+    static GlobalProperty compat[] =3D {
-+        { TYPE_TPM_TIS_SYSBUS, "ppi", "false" },
-+    };
++void tpm_tis_test_check_access_reg(const void *data)
++{
++    uint8_t locty;
++    uint8_t access;
 +
-+    compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));
- }
- DEFINE_VIRT_MACHINE_AS_LATEST(5, 0)
++    /* do not test locality 4 (hw only) */
++    for (locty =3D 0; locty < TPM_TIS_NUM_LOCALITIES - 1; locty++) {
++        access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
++        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
++                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++        /* request use of locality */
++        writeb(TIS_REG(locty, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_REQUEST_=
+USE);
++
++        access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
++        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
++                                    TPM_TIS_ACCESS_ACTIVE_LOCALITY |
++                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++        /* release access */
++        writeb(TIS_REG(locty, TPM_TIS_REG_ACCESS),
++               TPM_TIS_ACCESS_ACTIVE_LOCALITY);
++        access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
++        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
++                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++    }
++}
++
++/*
++ * Test case for seizing access by a higher number locality
++ */
++void tpm_tis_test_check_access_reg_seize(const void *data)
++{
++    int locty, l;
++    uint8_t access;
++    uint8_t pending_request_flag;
++
++    /* do not test locality 4 (hw only) */
++    for (locty =3D 0; locty < TPM_TIS_NUM_LOCALITIES - 1; locty++) {
++        pending_request_flag =3D 0;
++
++        access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
++        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
++                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++        /* request use of locality */
++        writeb(TIS_REG(locty, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_REQUEST_=
+USE);
++        access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
++        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
++                                    TPM_TIS_ACCESS_ACTIVE_LOCALITY |
++                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++        /* lower localities cannot seize access */
++        for (l =3D 0; l < locty; l++) {
++            /* lower locality is not active */
++            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
++            DPRINTF_ACCESS;
++            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
++                                        pending_request_flag |
++                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++            /* try to request use from 'l' */
++            writeb(TIS_REG(l, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_REQUEST_=
+USE);
++
++            /*
++             * requesting use from 'l' was not possible;
++             * we must see REQUEST_USE and possibly PENDING_REQUEST
++             */
++            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
++            DPRINTF_ACCESS;
++            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
++                                        TPM_TIS_ACCESS_REQUEST_USE |
++                                        pending_request_flag |
++                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++            /*
++             * locality 'locty' must be unchanged;
++             * we must see PENDING_REQUEST
++             */
++            access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
++            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
++                                        TPM_TIS_ACCESS_ACTIVE_LOCALITY |
++                                        TPM_TIS_ACCESS_PENDING_REQUEST |
++                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++            /* try to seize from 'l' */
++            writeb(TIS_REG(l, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_SEIZE);
++            /* seize from 'l' was not possible */
++            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
++            DPRINTF_ACCESS;
++            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
++                                        TPM_TIS_ACCESS_REQUEST_USE |
++                                        pending_request_flag |
++                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++            /* locality 'locty' must be unchanged */
++            access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
++            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
++                                        TPM_TIS_ACCESS_ACTIVE_LOCALITY |
++                                        TPM_TIS_ACCESS_PENDING_REQUEST |
++                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++            /*
++             * on the next loop we will have a PENDING_REQUEST flag
++             * set for locality 'l'
++             */
++            pending_request_flag =3D TPM_TIS_ACCESS_PENDING_REQUEST;
++        }
++
++        /*
++         * higher localities can 'seize' access but not 'request use';
++         * note: this will activate first l+1, then l+2 etc.
++         */
++        for (l =3D locty + 1; l < TPM_TIS_NUM_LOCALITIES - 1; l++) {
++            /* try to 'request use' from 'l' */
++            writeb(TIS_REG(l, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_REQUEST_=
+USE);
++
++            /*
++             * requesting use from 'l' was not possible; we should see
++             * REQUEST_USE and may see PENDING_REQUEST
++             */
++            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
++            DPRINTF_ACCESS;
++            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
++                                        TPM_TIS_ACCESS_REQUEST_USE |
++                                        pending_request_flag |
++                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++            /*
++             * locality 'l-1' must be unchanged; we should always
++             * see PENDING_REQUEST from 'l' requesting access
++             */
++            access =3D readb(TIS_REG(l - 1, TPM_TIS_REG_ACCESS));
++            DPRINTF_ACCESS;
++            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
++                                        TPM_TIS_ACCESS_ACTIVE_LOCALITY |
++                                        TPM_TIS_ACCESS_PENDING_REQUEST |
++                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++            /* try to seize from 'l' */
++            writeb(TIS_REG(l, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_SEIZE);
++
++            /* seize from 'l' was possible */
++            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
++            DPRINTF_ACCESS;
++            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
++                                        TPM_TIS_ACCESS_ACTIVE_LOCALITY |
++                                        pending_request_flag |
++                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++            /* l - 1 should show that it has BEEN_SEIZED */
++            access =3D readb(TIS_REG(l - 1, TPM_TIS_REG_ACCESS));
++            DPRINTF_ACCESS;
++            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
++                                        TPM_TIS_ACCESS_BEEN_SEIZED |
++                                        pending_request_flag |
++                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++            /* clear the BEEN_SEIZED flag and make sure it's gone */
++            writeb(TIS_REG(l - 1, TPM_TIS_REG_ACCESS),
++                   TPM_TIS_ACCESS_BEEN_SEIZED);
++
++            access =3D readb(TIS_REG(l - 1, TPM_TIS_REG_ACCESS));
++            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
++                                        pending_request_flag |
++                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++        }
++
++        /*
++         * PENDING_REQUEST will not be set if locty =3D 0 since all locali=
+ties
++         * were active; in case of locty =3D 1, locality 0 will be active
++         * but no PENDING_REQUEST anywhere
++         */
++        if (locty <=3D 1) {
++            pending_request_flag =3D 0;
++        }
++
++        /* release access from l - 1; this activates locty - 1 */
++        l--;
++
++        access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
++        DPRINTF_ACCESS;
++
++        DPRINTF("%s: %d: relinquishing control on l =3D %d\n",
++                __func__, __LINE__, l);
++        writeb(TIS_REG(l, TPM_TIS_REG_ACCESS),
++               TPM_TIS_ACCESS_ACTIVE_LOCALITY);
++
++        access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
++        DPRINTF_ACCESS;
++        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
++                                    pending_request_flag |
++                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++        for (l =3D locty - 1; l >=3D 0; l--) {
++            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
++            DPRINTF_ACCESS;
++            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
++                                        TPM_TIS_ACCESS_ACTIVE_LOCALITY |
++                                        pending_request_flag |
++                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++            /* release this locality */
++            writeb(TIS_REG(l, TPM_TIS_REG_ACCESS),
++                   TPM_TIS_ACCESS_ACTIVE_LOCALITY);
++
++            if (l =3D=3D 1) {
++                pending_request_flag =3D 0;
++            }
++        }
++
++        /* no locality may be active now */
++        for (l =3D 0; l < TPM_TIS_NUM_LOCALITIES - 1; l++) {
++            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
++            DPRINTF_ACCESS;
++            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
++                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++        }
++    }
++}
++
++/*
++ * Test case for getting access when higher number locality relinquishes a=
+ccess
++ */
++void tpm_tis_test_check_access_reg_release(const void *data)
++{
++    int locty, l;
++    uint8_t access;
++    uint8_t pending_request_flag;
++
++    /* do not test locality 4 (hw only) */
++    for (locty =3D TPM_TIS_NUM_LOCALITIES - 2; locty >=3D 0; locty--) {
++        pending_request_flag =3D 0;
++
++        access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
++        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
++                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++        /* request use of locality */
++        writeb(TIS_REG(locty, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_REQUEST_=
+USE);
++        access =3D readb(TIS_REG(locty, TPM_TIS_REG_ACCESS));
++        g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
++                                    TPM_TIS_ACCESS_ACTIVE_LOCALITY |
++                                    TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++        /* request use of all other localities */
++        for (l =3D 0; l < TPM_TIS_NUM_LOCALITIES - 1; l++) {
++            if (l =3D=3D locty) {
++                continue;
++            }
++            /*
++             * request use of locality 'l' -- we MUST see REQUEST USE and
++             * may see PENDING_REQUEST
++             */
++            writeb(TIS_REG(l, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_REQUEST_=
+USE);
++            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
++            DPRINTF_ACCESS;
++            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
++                                        TPM_TIS_ACCESS_REQUEST_USE |
++                                        pending_request_flag |
++                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++            pending_request_flag =3D TPM_TIS_ACCESS_PENDING_REQUEST;
++        }
++        /* release locality 'locty' */
++        writeb(TIS_REG(locty, TPM_TIS_REG_ACCESS),
++               TPM_TIS_ACCESS_ACTIVE_LOCALITY);
++        /*
++         * highest locality should now be active; release it and make sure=
+ the
++         * next higest locality is active afterwards
++         */
++        for (l =3D TPM_TIS_NUM_LOCALITIES - 2; l >=3D 0; l--) {
++            if (l =3D=3D locty) {
++                continue;
++            }
++            /* 'l' should be active now */
++            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
++            DPRINTF_ACCESS;
++            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
++                                        TPM_TIS_ACCESS_ACTIVE_LOCALITY |
++                                        pending_request_flag |
++                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++            /* 'l' relinquishes access */
++            writeb(TIS_REG(l, TPM_TIS_REG_ACCESS),
++                   TPM_TIS_ACCESS_ACTIVE_LOCALITY);
++            access =3D readb(TIS_REG(l, TPM_TIS_REG_ACCESS));
++            DPRINTF_ACCESS;
++            if (l =3D=3D 1 || (locty <=3D 1 && l =3D=3D 2)) {
++                pending_request_flag =3D 0;
++            }
++            g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_S=
+TS |
++                                        pending_request_flag |
++                                        TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++        }
++    }
++}
++
++/*
++ * Test case for transmitting packets
++ */
++void tpm_tis_test_check_transmit(const void *data)
++{
++    const TestState *s =3D data;
++    uint8_t access;
++    uint32_t sts;
++    uint16_t bcount;
++    size_t i;
++
++    /* request use of locality 0 */
++    writeb(TIS_REG(0, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_REQUEST_USE);
++    access =3D readb(TIS_REG(0, TPM_TIS_REG_ACCESS));
++    g_assert_cmpint(access, =3D=3D, TPM_TIS_ACCESS_TPM_REG_VALID_STS |
++                                TPM_TIS_ACCESS_ACTIVE_LOCALITY |
++                                TPM_TIS_ACCESS_TPM_ESTABLISHMENT);
++
++    sts =3D readl(TIS_REG(0, TPM_TIS_REG_STS));
++    DPRINTF_STS;
++
++    g_assert_cmpint(sts & 0xff, =3D=3D, 0);
++    g_assert_cmpint(sts & TPM_TIS_STS_TPM_FAMILY_MASK, =3D=3D,
++                    TPM_TIS_STS_TPM_FAMILY2_0);
++
++    bcount =3D (sts >> 8) & 0xffff;
++    g_assert_cmpint(bcount, >=3D, 128);
++
++    writel(TIS_REG(0, TPM_TIS_REG_STS), TPM_TIS_STS_COMMAND_READY);
++    sts =3D readl(TIS_REG(0, TPM_TIS_REG_STS));
++    DPRINTF_STS;
++    g_assert_cmpint(sts & 0xff, =3D=3D, TPM_TIS_STS_COMMAND_READY);
++
++    /* transmit command */
++    for (i =3D 0; i < sizeof(TPM_CMD); i++) {
++        writeb(TIS_REG(0, TPM_TIS_REG_DATA_FIFO), TPM_CMD[i]);
++        sts =3D readl(TIS_REG(0, TPM_TIS_REG_STS));
++        DPRINTF_STS;
++        if (i < sizeof(TPM_CMD) - 1) {
++            g_assert_cmpint(sts & 0xff, =3D=3D,
++                            TPM_TIS_STS_EXPECT | TPM_TIS_STS_VALID);
++        } else {
++            g_assert_cmpint(sts & 0xff, =3D=3D, TPM_TIS_STS_VALID);
++        }
++        g_assert_cmpint((sts >> 8) & 0xffff, =3D=3D, --bcount);
++    }
++    /* start processing */
++    writeb(TIS_REG(0, TPM_TIS_REG_STS), TPM_TIS_STS_TPM_GO);
++
++    uint64_t end_time =3D g_get_monotonic_time() + 50 * G_TIME_SPAN_SECOND=
+;
++    do {
++        sts =3D readl(TIS_REG(0, TPM_TIS_REG_STS));
++        if ((sts & TPM_TIS_STS_DATA_AVAILABLE) !=3D 0) {
++            break;
++        }
++    } while (g_get_monotonic_time() < end_time);
++
++    sts =3D readl(TIS_REG(0, TPM_TIS_REG_STS));
++    DPRINTF_STS;
++    g_assert_cmpint(sts & 0xff, =3D=3D ,
++                    TPM_TIS_STS_VALID | TPM_TIS_STS_DATA_AVAILABLE);
++    bcount =3D (sts >> 8) & 0xffff;
++
++    /* read response */
++    uint8_t tpm_msg[sizeof(struct tpm_hdr)];
++    g_assert_cmpint(sizeof(tpm_msg), =3D=3D, bcount);
++
++    for (i =3D 0; i < sizeof(tpm_msg); i++) {
++        tpm_msg[i] =3D readb(TIS_REG(0, TPM_TIS_REG_DATA_FIFO));
++        sts =3D readl(TIS_REG(0, TPM_TIS_REG_STS));
++        DPRINTF_STS;
++        if (sts & TPM_TIS_STS_DATA_AVAILABLE) {
++            g_assert_cmpint((sts >> 8) & 0xffff, =3D=3D, --bcount);
++        }
++    }
++    g_assert_cmpmem(tpm_msg, sizeof(tpm_msg), s->tpm_msg, sizeof(*s->tpm_m=
+sg));
++
++    /* relinquish use of locality 0 */
++    writeb(TIS_REG(0, TPM_TIS_REG_ACCESS), TPM_TIS_ACCESS_ACTIVE_LOCALITY)=
+;
++    access =3D readb(TIS_REG(0, TPM_TIS_REG_ACCESS));
++}
+diff --git a/tests/qtest/tpm-tis-util.h b/tests/qtest/tpm-tis-util.h
+new file mode 100644
+index 0000000000..d10efe86ae
+--- /dev/null
++++ b/tests/qtest/tpm-tis-util.h
+@@ -0,0 +1,23 @@
++/*
++ * QTest TPM TIS: Common test functions used for both the
++ * ISA and SYSBUS devices
++ *
++ * Copyright (c) 2018 IBM Corporation
++ *
++ * Authors:
++ *   Stefan Berger <stefanb@linux.vnet.ibm.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or late=
+r.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef TESTS_TPM_TIS_UTIL_H
++#define TESTS_TPM_TIS_UTIL_H
++
++void tpm_tis_test_check_localities(const void *data);
++void tpm_tis_test_check_access_reg(const void *data);
++void tpm_tis_test_check_access_reg_seize(const void *data);
++void tpm_tis_test_check_access_reg_release(const void *data);
++void tpm_tis_test_check_transmit(const void *data);
++
++#endif /* TESTS_TPM_TIS_UTIL_H */
+diff --git a/tests/qtest/tpm-util.c b/tests/qtest/tpm-util.c
+index 7ecdae2fc6..34efae8f18 100644
+--- a/tests/qtest/tpm-util.c
++++ b/tests/qtest/tpm-util.c
+@@ -19,9 +19,6 @@
+ #include "tpm-util.h"
+ #include "qapi/qmp/qdict.h"
 =20
+-#define TIS_REG(LOCTY, REG) \
+-    (TPM_TIS_ADDR_BASE + ((LOCTY) << 12) + REG)
+-
+ void tpm_util_crb_transfer(QTestState *s,
+                            const unsigned char *req, size_t req_size,
+                            unsigned char *rsp, size_t rsp_size)
+diff --git a/tests/qtest/tpm-util.h b/tests/qtest/tpm-util.h
+index 15e3924942..3b97d69017 100644
+--- a/tests/qtest/tpm-util.h
++++ b/tests/qtest/tpm-util.h
+@@ -15,6 +15,11 @@
+=20
+ #include "io/channel-socket.h"
+=20
++extern uint64_t tpm_tis_base_addr;
++
++#define TIS_REG(LOCTY, REG) \
++    (tpm_tis_base_addr + ((LOCTY) << 12) + REG)
++
+ typedef void (tx_func)(QTestState *s,
+                        const unsigned char *req, size_t req_size,
+                        unsigned char *rsp, size_t rsp_size);
 --=20
 2.20.1
 

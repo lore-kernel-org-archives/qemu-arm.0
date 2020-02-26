@@ -1,117 +1,100 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2798281lfg;
-        Wed, 26 Feb 2020 01:07:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx8qsg1hfe0W4HyPS2XAUY1gmoU5UcZFjv8KTPe/LZ8Bvj3tt8wvJLh6jaUyFSAmgW7vrLg
-X-Received: by 2002:ac8:430c:: with SMTP id z12mr4103028qtm.299.1582708050941;
-        Wed, 26 Feb 2020 01:07:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582708050; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2880376lfg;
+        Wed, 26 Feb 2020 02:26:27 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy5SRyG0GQ+o4lOpH1lAEQ6hllEsE7Sh4DWVq5fw2DApUZ9ybjyBzCjuJGnTYS+hkUQBkzr
+X-Received: by 2002:aed:3786:: with SMTP id j6mr4610309qtb.62.1582712787720;
+        Wed, 26 Feb 2020 02:26:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582712787; cv=none;
         d=google.com; s=arc-20160816;
-        b=IZRnosXT7zlFeaKNh0UiQ5dWHhfLvfWErC+WqVCWwmmG20AiLX/tYs31joIIUjWQqz
-         n7ZT1W9D59fgKXrMcDs1+I8Ywd8z9b11mtjiLwObWWBl1j1nlqo6mTbZ4VXAgL9dfb9N
-         rhS7A0LGvnHlf8TDtBekQAlXNSzdZphKMtbmBNEjHSn8CGyc7QCbXv6EkuVrBWVJSPUm
-         UY/66faOr1UBFCeQRwtq1MTLVaZlUDThBotTR9g9t0THz+e2wrZ7QKUvd6aF5f60jph/
-         3JM/63gaq4PD2U5wDxrokFKYbn0k1Bfrc4W1RBpb1mSLzyGFvSY7a1zLux6B41cWKUsL
-         4MRA==
+        b=eiSRae/eKZAbvlShy2GWtvHULfYoShtl09EV1qM1wXzqRmFztPLaszIXH9V/qdq/BS
+         JkGQa4vQuc/3uYujnGSspUXfGKA7VFWsOc4dJnVUa50/bLOf15jCQaNv0mx8hf4b/2HK
+         zkE++wF4lKLrbWh9tLW4sArljLjMO+fLA2+vZf1uQjAbr6TQAgbYT9BHmZIuma7RgFQx
+         TvkiwKe//5Js26LO7H+B4xagnizIVLcV9zwUCYAcVO3flQDsABiR6dmjKwI+ULevmn82
+         4oQ5HRvocWIHLpC4URyLywyl4M3/GZsrChyzqXbHDO6LTTTNvMle6poPGKz4VUW5HUVX
+         uxNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=mH6Uh7KB+qDOlqySuiYCwzhwjo90oVgrXa4q2w401+k=;
-        b=B+8RFxO8HilgnUnSGhlUBSTd+9ncac3V+71uyQJC4b3/A8MGkUbAU6ezajuuuqz+cW
-         qDB2v1/DLsJJwnQCGHemcQg8jPbMIyOEHpZcROCD8zpNemxc+GLAPEG6qS7S39EnnVTZ
-         8+i6M5Pjt7hPjgscOo4GjHrY410EZpZdYHUgsdl5yI63MRI1W6doLhRGdKpTL5C4npEz
-         2nGWnoc3jGBLvchNtwSu4/jZjZktLcBmw7bkyfg7g69SPgm2AU2ixuwG6Wmh9BqKnatt
-         zdguoHcKM4nBTjJhJxDPRwQ5w4kv0Ig4ThvioDlPruZSIg6BjedM9p3XwjyCUG4OVbmf
-         yIXQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=dczexdrzKnZ7PKgnzotlQQq1ZEpy0uEpqYyknsl6HD4=;
+        b=UPArcJi7yOwW1gghO4gYVP+MBXTLAourn3bklmbRIhsLVBNuFp/JOHxpgiV2kzykkR
+         TOG9byFtDyZMzYHNjRTf80URxdo5jOW7QJdgP9eH6zPjrMGz4YRwOx1w3GwNI5ebp/c3
+         z/1zIacA6vDebkhFsLz0ppYnHSOtS3lq4hgw5ABRhiyAJ5eXmsMIaJPGSQlIvD+B/Yzx
+         eiyNguJ3CwJxjrVT+AWqaTDdNAFO7Lm7kXn9WdtYFtRyGZ0IclLQXzokgq51X9+6BVKg
+         rVWnmwMZoFbqthYRjz8M2O0oohMNDVRJ8ciNA91WNa07kBx5ngBff2pXLzoMw2TfENSa
+         PfBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Z6uL71fM;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KSfNHdpI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k5si812442qtf.271.2020.02.26.01.07.30
+        by mx.google.com with ESMTPS id p1si869804qtn.31.2020.02.26.02.26.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2020 01:07:30 -0800 (PST)
+        Wed, 26 Feb 2020 02:26:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Z6uL71fM;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KSfNHdpI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40480 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41978 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6sfC-0005WV-Am
-	for alex.bennee@linaro.org; Wed, 26 Feb 2020 04:07:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59177)
+	id 1j6ttb-0004MA-3O
+	for alex.bennee@linaro.org; Wed, 26 Feb 2020 05:26:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51954)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mst@redhat.com>) id 1j6sf3-0005RB-Dp
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 04:07:22 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1j6ttM-00046p-DY
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 05:26:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mst@redhat.com>) id 1j6sf1-0000J2-UU
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 04:07:21 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:42378
+ (envelope-from <eric.auger@redhat.com>) id 1j6ttL-0003Jz-BE
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 05:26:12 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:42764
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mst@redhat.com>) id 1j6sf1-0000IO-OV
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 04:07:19 -0500
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1j6ttL-0003Jm-7O
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 05:26:11 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582708039;
+ s=mimecast20190719; t=1582712770;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mH6Uh7KB+qDOlqySuiYCwzhwjo90oVgrXa4q2w401+k=;
- b=Z6uL71fMvs5cLOiq0lQVKPUe1u9IBzig5UrqRzKAF7fGgX90x/bh2CN8/ufz4cK3+QBH4H
- dbyb3Z6+0dFRBPWMRTFMXC1gI1eqLi3FmhFUf0VQRP9wYkd+5peuTsiRvAZ/PECDK4KpOU
- YG3kXejhjQ27SOFWoeH5nK6msFuL7Lw=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-195-gDC5xE5HNLuBTDaPHgVk_g-1; Wed, 26 Feb 2020 04:07:17 -0500
-X-MC-Unique: gDC5xE5HNLuBTDaPHgVk_g-1
-Received: by mail-wm1-f72.google.com with SMTP id n17so470331wmk.1
- for <qemu-arm@nongnu.org>; Wed, 26 Feb 2020 01:07:17 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=L8WBI983W+7RiE8lzDwmxcDHbYbc+B58tFNCqwSyA9I=;
- b=bxZtnfKvz4rY1LPb6v+TSzu49qW/qmleLgHBrrvxtS3+fPCBWM7zcxfFtgLqLn958Q
- cEh49bvTBYKLuM2FjoN2Ub8ssO8wJ5CObqnPJCQrW+jF68FmzLHbYKTLyu7bAoIp3VJa
- QH7FgaCRzI5vD8W27RsP5lmT//XkDvE7mM5ULYGkpy4khWv2AQei5175SEg0X1407OBf
- kQGkhOSaF2ghUW4pCx/NnXBEImj+bp2PHiPCYO9eXmt6+//zORhAbsVMc/61w8NwXCMc
- edaqQHwINd2PnJG32l87KDTUlTFNxIxfb47TK37IhijgIstaM9AoDLiuHTjZ5B71Ga7+
- sJrQ==
-X-Gm-Message-State: APjAAAVvOr66tsQQ1+f8vFCIgxgL+UORMzIkIQ3gdtS399W9N06vp2qf
- phEEaBoII1LK1bXGz9APWnveenIuwdGHEBRSL+MTU8yb/eLPDLHULSy9Rm3kX9EVXjiK+AQ6KTj
- qkRjlo9topbW0
-X-Received: by 2002:adf:fe4c:: with SMTP id m12mr4344439wrs.386.1582708036183; 
- Wed, 26 Feb 2020 01:07:16 -0800 (PST)
-X-Received: by 2002:adf:fe4c:: with SMTP id m12mr4344413wrs.386.1582708035947; 
- Wed, 26 Feb 2020 01:07:15 -0800 (PST)
-Received: from redhat.com (bzq-79-178-2-214.red.bezeqint.net. [79.178.2.214])
- by smtp.gmail.com with ESMTPSA id
- y7sm7010112wmd.1.2020.02.26.01.07.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Feb 2020 01:07:15 -0800 (PST)
-Date: Wed, 26 Feb 2020 04:07:14 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PULL v2 20/30] hw/arm/virt: Add the virtio-iommu device tree mappings
-Message-ID: <20200226090010.708934-21-mst@redhat.com>
-References: <20200226090010.708934-1-mst@redhat.com>
+ bh=dczexdrzKnZ7PKgnzotlQQq1ZEpy0uEpqYyknsl6HD4=;
+ b=KSfNHdpIKCpvLr+DeJ1mrGPmEF30LstThsmqaH0ntOVUxOZ+WqoR7BCtAORkCeW+mRL9tG
+ 9XYUmmlnRnQ5p2X7prqlOJUocDM7+V+ULIUUfwy/ScvQelA18ODJLTTdzegOe7+gLLLUhO
+ iiP0oHiljhy0iEWygab3Jh32lLJpzt4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-40-heVrupBnO3iOb6I5zH8k1A-1; Wed, 26 Feb 2020 05:26:09 -0500
+X-MC-Unique: heVrupBnO3iOb6I5zH8k1A-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 223FB1882CCC;
+ Wed, 26 Feb 2020 10:26:08 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-59.ams2.redhat.com [10.36.116.59])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A5ECE60BE1;
+ Wed, 26 Feb 2020 10:26:05 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
+Subject: [PATCH v3 01/10] tpm: rename TPM_TIS into TPM_TIS_ISA
+Date: Wed, 26 Feb 2020 11:25:40 +0100
+Message-Id: <20200226102549.12158-2-eric.auger@redhat.com>
+In-Reply-To: <20200226102549.12158-1-eric.auger@redhat.com>
+References: <20200226102549.12158-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200226090010.708934-1-mst@redhat.com>
-X-Mailer: git-send-email 2.24.1.751.gd10ce2899c
-X-Mutt-Fcc: =sent
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,177 +106,104 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Eric Auger <eric.auger@redhat.com>
+Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org,
+ philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: naHRZGPsB71m
+X-TUID: HK2hAI8FcOEg
 
-From: Eric Auger <eric.auger@redhat.com>
-
-Adds the "virtio,pci-iommu" node in the host bridge node and
-the RID mapping, excluding the IOMMU RID.
-
-This is done in the virtio-iommu-pci hotplug handler which
-gets called only if no firmware is loaded or if -no-acpi is
-passed on the command line. As non DT integration is
-not yet supported by the kernel we must make sure we
-are in DT mode. This limitation will be removed as soon
-as the topology description feature gets supported.
+As we plan to introduce a sysbus TPM_TIS, let's rename
+TPM_TIS into TPM_TIS_ISA.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-Message-Id: <20200214132745.23392-10-eric.auger@redhat.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/virt.h |  2 ++
- hw/arm/virt.c         | 57 +++++++++++++++++++++++++++++++++++++------
- 2 files changed, 52 insertions(+), 7 deletions(-)
 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 71508bf40c..02f500cb8e 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -125,8 +125,10 @@ typedef struct {
-     bool virt;
-     int32_t gic_version;
-     VirtIOMMUType iommu;
-+    uint16_t virtio_iommu_bdf;
-     struct arm_boot_info bootinfo;
-     MemMapEntry *memmap;
-+    char *pciehb_nodename;
-     const int *irqmap;
-     int smp_cpus;
-     void *fdt;
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index f788fe27d6..cfe317922f 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -32,6 +32,7 @@
- #include "qemu-common.h"
- #include "qemu/units.h"
- #include "qemu/option.h"
-+#include "monitor/qdev.h"
- #include "qapi/error.h"
- #include "hw/sysbus.h"
- #include "hw/boards.h"
-@@ -54,6 +55,7 @@
- #include "qemu/error-report.h"
- #include "qemu/module.h"
- #include "hw/pci-host/gpex.h"
-+#include "hw/virtio/virtio-pci.h"
- #include "hw/arm/sysbus-fdt.h"
- #include "hw/platform-bus.h"
- #include "hw/qdev-properties.h"
-@@ -71,6 +73,7 @@
- #include "hw/mem/pc-dimm.h"
- #include "hw/mem/nvdimm.h"
- #include "hw/acpi/generic_event_device.h"
-+#include "hw/virtio/virtio-iommu.h"
-=20
- #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-@@ -1180,6 +1183,30 @@ static void create_smmu(const VirtMachineState *vms,
-     g_free(node);
- }
-=20
-+static void create_virtio_iommu_dt_bindings(VirtMachineState *vms, Error *=
-*errp)
-+{
-+    const char compat[] =3D "virtio,pci-iommu";
-+    uint16_t bdf =3D vms->virtio_iommu_bdf;
-+    char *node;
-+
-+    vms->iommu_phandle =3D qemu_fdt_alloc_phandle(vms->fdt);
-+
-+    node =3D g_strdup_printf("%s/virtio_iommu@%d", vms->pciehb_nodename, b=
-df);
-+    qemu_fdt_add_subnode(vms->fdt, node);
-+    qemu_fdt_setprop(vms->fdt, node, "compatible", compat, sizeof(compat))=
-;
-+    qemu_fdt_setprop_sized_cells(vms->fdt, node, "reg",
-+                                 1, bdf << 8, 1, 0, 1, 0,
-+                                 1, 0, 1, 0);
-+
-+    qemu_fdt_setprop_cell(vms->fdt, node, "#iommu-cells", 1);
-+    qemu_fdt_setprop_cell(vms->fdt, node, "phandle", vms->iommu_phandle);
-+    g_free(node);
-+
-+    qemu_fdt_setprop_cells(vms->fdt, vms->pciehb_nodename, "iommu-map",
-+                           0x0, vms->iommu_phandle, 0x0, bdf,
-+                           bdf + 1, vms->iommu_phandle, bdf + 1, 0xffff - =
-bdf);
-+}
-+
- static void create_pcie(VirtMachineState *vms)
- {
-     hwaddr base_mmio =3D vms->memmap[VIRT_PCIE_MMIO].base;
-@@ -1258,7 +1285,7 @@ static void create_pcie(VirtMachineState *vms)
+RFC v2 -> PATCH:
+- added Philippe and Stefan's R-b
+---
+ hw/i386/acpi-build.c | 6 +++---
+ hw/tpm/tpm_tis.c     | 4 ++--
+ include/sysemu/tpm.h | 6 +++---
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 9c4e46fa74..26777f8828 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -2026,7 +2026,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
          }
      }
 =20
--    nodename =3D g_strdup_printf("/pcie@%" PRIx64, base);
-+    nodename =3D vms->pciehb_nodename =3D g_strdup_printf("/pcie@%" PRIx64=
-, base);
-     qemu_fdt_add_subnode(vms->fdt, nodename);
-     qemu_fdt_setprop_string(vms->fdt, nodename,
-                             "compatible", "pci-host-ecam-generic");
-@@ -1301,13 +1328,16 @@ static void create_pcie(VirtMachineState *vms)
-     if (vms->iommu) {
-         vms->iommu_phandle =3D qemu_fdt_alloc_phandle(vms->fdt);
-=20
--        create_smmu(vms, pci->bus);
--
--        qemu_fdt_setprop_cells(vms->fdt, nodename, "iommu-map",
--                               0x0, vms->iommu_phandle, 0x0, 0x10000);
-+        switch (vms->iommu) {
-+        case VIRT_IOMMU_SMMUV3:
-+            create_smmu(vms, pci->bus);
-+            qemu_fdt_setprop_cells(vms->fdt, nodename, "iommu-map",
-+                                   0x0, vms->iommu_phandle, 0x0, 0x10000);
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
+-    if (TPM_IS_TIS(tpm_find())) {
++    if (TPM_IS_TIS_ISA(tpm_find())) {
+         aml_append(crs, aml_memory32_fixed(TPM_TIS_ADDR_BASE,
+                    TPM_TIS_ADDR_SIZE, AML_READ_WRITE));
      }
--
--    g_free(nodename);
+@@ -2197,7 +2197,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+             /* Scan all PCI buses. Generate tables to support hotplug. */
+             build_append_pci_bus_devices(scope, bus, pm->pcihp_bridge_en);
+=20
+-            if (TPM_IS_TIS(tpm)) {
++            if (TPM_IS_TIS_ISA(tpm)) {
+                 if (misc->tpm_version =3D=3D TPM_VERSION_2_0) {
+                     dev =3D aml_device("TPM");
+                     aml_append(dev, aml_name_decl("_HID",
+@@ -2304,7 +2304,7 @@ build_tpm2(GArray *table_data, BIOSLinker *linker, GA=
+rray *tcpalog)
+         (char *)&tpm2_ptr->log_area_start_address - table_data->data;
+=20
+     tpm2_ptr->platform_class =3D cpu_to_le16(TPM2_ACPI_CLASS_CLIENT);
+-    if (TPM_IS_TIS(tpm_find())) {
++    if (TPM_IS_TIS_ISA(tpm_find())) {
+         tpm2_ptr->control_area_address =3D cpu_to_le64(0);
+         tpm2_ptr->start_method =3D cpu_to_le32(TPM2_START_METHOD_MMIO);
+     } else if (TPM_IS_CRB(tpm_find())) {
+diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
+index 31facb896d..c609737272 100644
+--- a/hw/tpm/tpm_tis.c
++++ b/hw/tpm/tpm_tis.c
+@@ -91,7 +91,7 @@ typedef struct TPMState {
+     TPMPPI ppi;
+ } TPMState;
+=20
+-#define TPM(obj) OBJECT_CHECK(TPMState, (obj), TYPE_TPM_TIS)
++#define TPM(obj) OBJECT_CHECK(TPMState, (obj), TYPE_TPM_TIS_ISA)
+=20
+ #define DEBUG_TIS 0
+=20
+@@ -1008,7 +1008,7 @@ static void tpm_tis_class_init(ObjectClass *klass, vo=
+id *data)
  }
 =20
- static void create_platform_bus(VirtMachineState *vms)
-@@ -1976,6 +2006,13 @@ static void virt_machine_device_plug_cb(HotplugHandl=
-er *hotplug_dev,
-     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-         virt_memory_plug(hotplug_dev, dev, errp);
-     }
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
-+        PCIDevice *pdev =3D PCI_DEVICE(dev);
-+
-+        vms->iommu =3D VIRT_IOMMU_VIRTIO;
-+        vms->virtio_iommu_bdf =3D pci_get_bdf(pdev);
-+        create_virtio_iommu_dt_bindings(vms, errp);
-+    }
- }
+ static const TypeInfo tpm_tis_info =3D {
+-    .name =3D TYPE_TPM_TIS,
++    .name =3D TYPE_TPM_TIS_ISA,
+     .parent =3D TYPE_ISA_DEVICE,
+     .instance_size =3D sizeof(TPMState),
+     .instance_init =3D tpm_tis_initfn,
+diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
+index 15979a3647..1691b92c28 100644
+--- a/include/sysemu/tpm.h
++++ b/include/sysemu/tpm.h
+@@ -43,12 +43,12 @@ typedef struct TPMIfClass {
+     enum TPMVersion (*get_version)(TPMIf *obj);
+ } TPMIfClass;
 =20
- static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_=
-dev,
-@@ -1992,7 +2029,13 @@ static HotplugHandler *virt_machine_get_hotplug_hand=
-ler(MachineState *machine,
-        (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM))) {
-         return HOTPLUG_HANDLER(machine);
-     }
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
-+        VirtMachineState *vms =3D VIRT_MACHINE(machine);
+-#define TYPE_TPM_TIS                "tpm-tis"
++#define TYPE_TPM_TIS_ISA            "tpm-tis"
+ #define TYPE_TPM_CRB                "tpm-crb"
+ #define TYPE_TPM_SPAPR              "tpm-spapr"
 =20
-+        if (!vms->bootinfo.firmware_loaded || !acpi_enabled) {
-+            return HOTPLUG_HANDLER(machine);
-+        }
-+    }
-     return NULL;
- }
-=20
+-#define TPM_IS_TIS(chr)                             \
+-    object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS)
++#define TPM_IS_TIS_ISA(chr)                         \
++    object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_ISA)
+ #define TPM_IS_CRB(chr)                             \
+     object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB)
+ #define TPM_IS_SPAPR(chr)                           \
 --=20
-MST
+2.20.1
 

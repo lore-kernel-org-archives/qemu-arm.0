@@ -1,103 +1,96 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2474530lfg;
-        Tue, 25 Feb 2020 19:03:40 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxx4aVy/wZXR0WB/E27PcZ17BnkyeVLLNzs3Jzo43SeZEGvHrOx+isCOtQpbshopfH0Hw3Y
-X-Received: by 2002:a05:620a:13e1:: with SMTP id h1mr2883385qkl.462.1582686219844;
-        Tue, 25 Feb 2020 19:03:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582686219; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2511071lfg;
+        Tue, 25 Feb 2020 19:46:29 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz/AMi93SgQVJyO5Tvf07y+/MqH+3Kvw0AXZGjskAmkmlF9qE5FkpecwyNshQkX+gph6ZiO
+X-Received: by 2002:ac8:6f0d:: with SMTP id g13mr2729955qtv.56.1582688789641;
+        Tue, 25 Feb 2020 19:46:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582688789; cv=none;
         d=google.com; s=arc-20160816;
-        b=pHMqXxlgPeUPD3Cdsa11yp0p4C0b0mlnEFhEHUdug+igIr8CeBURTQ7tSwXafsq5hE
-         1xjgS0J5A5rZkKTEvvEh/Bc0WU7ah+JQJpx/V4l1aB39kEMUMTtVw3/q+MYBTTj+Hf38
-         OR8IKlBheOnlina56b5UfTrgPFM8g+AKLPLGEL83DJcGZN6xNiQvq/LHCTYMsc+HT0ha
-         GhXUSoYngfsjkQTZmgIR+2HPwymZHzs08xZwPMmb63rOBDrTXaveloCaYNm4Py5ZGXaa
-         96NW5kh0uLPcNjupV/xB3LIh4zP4LTwDQSQkgCR+fJBjm8kINrEy6OC/vllI6DMyPprz
-         GLUQ==
+        b=D90ml4wYIwZE0lPRwquH1/lqgid34wBf8slUP2OiepQ11dEe9Hy/WqFft4aRPxXt6M
+         83iWQbrYv6xl1OgB63rqSBe9cBC4w9jSXS0C40g/jtwH0GfvJ2JR+VPWAOnVNDCsY7Od
+         adCYcv7G3/Dq6uUtbO8cukv4YHf9XBqGUoGncdm4mNImGDWV9bD1+g1vfms3TE1AYk6l
+         D5/xwNTqZoY0CC2co7st1orGNUjU4MTLVNc10W0Qx/nRinZVsDJb+ISSrR9sZRDmtNG/
+         s+8dHwKIbcjazkLj53gJFkW7fmmbyRRVDm/6/B7EvYH+EPz9u5GKvgB+kwT3KsuKZP/L
+         3PVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=2zKs5bLq9Rp65Ty9SQjKjFhjAMDJT91D9JmD0xAKM+4=;
-        b=jXGewiTU6rmueqpqHrCwBf8XCV65nOOOSKd/hw1BwnK1KRnzCYLXwwn/TqNv4o5Kax
-         V+Zx+LV+piqM7udF5EaKhm/T2EHxh/wRuhztnuoFGCKPmEqkQNMyC9hT//Tg4pm6+o9V
-         4nfr9EIlutoOk5vDAhfTPrs9A2DlLofEKwVS0ZJmwTp6kNADR5Usq9YK3iDFMJSU/ceX
-         QxCnruNXuQOoj+2rKBfxrQjeL4O9fhKVWolT0/CeMMQpTAU8TmcLoGWvc/+hljFEFKaM
-         Rrk+SWtEF/e7Z22/MzquuxFMsIP42kPfG9LDf4sc10mfqIpU8jvFlVLt4ztw8QWdzHm0
-         vzUg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=RdUwzPHr0EsP2DPfTpOPFqh3f4LQ7hBAEwsEVS+4tEs=;
+        b=ciX1JtzUu/GKS6ktpTGJpm2S/bKZy2yleOiQRNZJ9I1itRMuS2lPmTn6AenDGvUGPH
+         6xdkQcc8B3VQqwelMdUsd1rHw4cmzTqY15OuiU1AQjAjgQU/c+9GAU9LGqjFuv8D0FNs
+         YnJS060K624LG841hzpJeiedEDeKo1StLkt5WaC393/gDEME2T8cYESEJc3tBSMIwHgF
+         eXjMBe0CPeLcR1nRTIdhNiT7pG/fodfieaAjsl1aWtlprTegvMHfWTE+6/Yk4q8y0Jfp
+         yV1d20tQ+LIYfRdvpRTb67TNLvXqH2I5HcddC/7EqcsGynsTXTaTnGaH7+9OQOz6YoEe
+         0ZQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gdrwcdE2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@jms.id.au header.s=google header.b=TOdfVf2D;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o11si265279qkh.136.2020.02.25.19.03.39
+        by mx.google.com with ESMTPS id c8si506988qtg.53.2020.02.25.19.46.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 19:03:39 -0800 (PST)
+        Tue, 25 Feb 2020 19:46:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gdrwcdE2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37394 helo=lists1p.gnu.org)
+       dkim=fail header.i=@jms.id.au header.s=google header.b=TOdfVf2D;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37720 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6mz5-0003r5-9I
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 22:03:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38502)
+	id 1j6neV-0000Im-Pg
+	for alex.bennee@linaro.org; Tue, 25 Feb 2020 22:46:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60752)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jasowang@redhat.com>) id 1j6myt-0003qi-T9
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 22:03:28 -0500
+ (envelope-from <joel.stan@gmail.com>) id 1j6ndv-0000Ic-VB
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 22:45:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jasowang@redhat.com>) id 1j6mys-0004oD-Fn
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 22:03:27 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:35203
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jasowang@redhat.com>) id 1j6mys-0004dx-CE
- for qemu-arm@nongnu.org; Tue, 25 Feb 2020 22:03:26 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582686204;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2zKs5bLq9Rp65Ty9SQjKjFhjAMDJT91D9JmD0xAKM+4=;
- b=gdrwcdE2YbC960vEOQLeC2NBgIg4ANf3d7NwUZjwxOioZe3bdgjhs/fqIIenGJTWHxyhFB
- NleZKBUS2v9ek8BduUR1zvJ+zie9HXNk6DVW3jLwumfbVGTH4tUeXYV2snegyKn0yblGf5
- 0p43/31uk8/ZSXLHKZVO32Pc6re5fwY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-294-NVg7D-73NpOG-lInkh4Hvw-1; Tue, 25 Feb 2020 22:03:20 -0500
-X-MC-Unique: NVg7D-73NpOG-lInkh4Hvw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1164313E4;
- Wed, 26 Feb 2020 03:03:19 +0000 (UTC)
-Received: from [10.72.13.217] (ovpn-13-217.pek2.redhat.com [10.72.13.217])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BC29760BE1;
- Wed, 26 Feb 2020 03:03:09 +0000 (UTC)
-Subject: Re: [PATCH] hw/net/imx_fec: write TGSR and TCSR3 in imx_enet_write()
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200225025923.19328-1-kuhn.chenqun@huawei.com>
- <9206dda7-0e12-b68e-87ca-1985b61381bc@redhat.com>
- <CAFEAcA-W+brVEmGr29i6JO4GFrnoLAce-qoMQpQc56x6B4BY3A@mail.gmail.com>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <9fc2581c-56a1-0969-6a13-1454a1865264@redhat.com>
-Date: Wed, 26 Feb 2020 11:03:04 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ (envelope-from <joel.stan@gmail.com>) id 1j6ndu-0001g2-Bf
+ for qemu-arm@nongnu.org; Tue, 25 Feb 2020 22:45:51 -0500
+Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43]:44144)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <joel.stan@gmail.com>)
+ id 1j6ndt-0001ch-VB; Tue, 25 Feb 2020 22:45:50 -0500
+Received: by mail-qv1-xf43.google.com with SMTP id by15so614853qvb.11;
+ Tue, 25 Feb 2020 19:45:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=RdUwzPHr0EsP2DPfTpOPFqh3f4LQ7hBAEwsEVS+4tEs=;
+ b=TOdfVf2DcFqYrq6ET+Breltgoa8ckCqfhz5qYZBQolSo400w2XSVZroXyq+aZU0Bho
+ pTIN3fHGtFdXJSomEdttWn0me6BG6xSjjxrYP4IcJMttSWSS/AnQ/aFcnEWrRvZxAAaK
+ rJ6UFbLydd+DVlQNUu9qrvNOwjNveKi1jM1X4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=RdUwzPHr0EsP2DPfTpOPFqh3f4LQ7hBAEwsEVS+4tEs=;
+ b=Lpr02OOxmaTMvDHyvqX+YGpR5eOsMi9VgeyuihDLY5hKDSAsJiFaRT4pPZcG9CCXMA
+ /+BeiLL2/LOf8P3dAWo34Kk3XfxNfV0YDfSqArOihE/I8ZGRVEH5Kw+dh+2PgxrIEmU4
+ Aah6kX9y22pJ4h3zp3mutE+seEDUvBTHh8WNk6yZwamikxuh3FdiMZxjvB5bBY9+hcYG
+ mPYs/x1d0LGs1ubmISEYVyZAN+mIH5Pwstu91bdQC3+Sgr6CpN7Mg6yD9yhYmassoeWC
+ rO8zGq8L7y/Tmna9kCoBlqdB4KXxIPi93r5/4NNeFTTXbW4gkmlB34AmYm/WIxuoqkYq
+ dhSw==
+X-Gm-Message-State: APjAAAXNy5q3HDqunzd0XoAUbGDGqkB1rr/VVNSuRUbiGKDJtiI6MSw7
+ HchmEJyR39ka3OAGoRwza7m/ix7tN4QP0f4N6Ns=
+X-Received: by 2002:a05:6214:17c5:: with SMTP id
+ cu5mr2491460qvb.210.1582688748986; 
+ Tue, 25 Feb 2020 19:45:48 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-W+brVEmGr29i6JO4GFrnoLAce-qoMQpQc56x6B4BY3A@mail.gmail.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+References: <20200206112645.21275-1-clg@kaod.org>
+ <20200206112645.21275-2-clg@kaod.org>
+In-Reply-To: <20200206112645.21275-2-clg@kaod.org>
+From: Joel Stanley <joel@jms.id.au>
+Date: Wed, 26 Feb 2020 03:45:37 +0000
+Message-ID: <CACPK8XcDdfUVj9APG8N=E8Fm28F-ZsAqDXjx4YmCUR3HLWA4ig@mail.gmail.com>
+Subject: Re: [PATCH 1/2] aspeed/smc: Add some tracing
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::f43
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,77 +102,151 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>, Chen Qun <kuhn.chenqun@huawei.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Geissler <geissonator@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MwIfqs3j5UaO
+X-TUID: mVa9OL4dt2bC
 
+n
 
-On 2020/2/25 =E4=B8=8B=E5=8D=886:18, Peter Maydell wrote:
-> On Tue, 25 Feb 2020 at 05:41, Jason Wang <jasowang@redhat.com> wrote:
->>
->> On 2020/2/25 =E4=B8=8A=E5=8D=8810:59, Chen Qun wrote:
->>> The current code causes clang static code analyzer generate warning:
->>> hw/net/imx_fec.c:858:9: warning: Value stored to 'value' is never read
->>>           value =3D value & 0x0000000f;
->>>           ^       ~~~~~~~~~~~~~~~~~~
->>> hw/net/imx_fec.c:864:9: warning: Value stored to 'value' is never read
->>>           value =3D value & 0x000000fd;
->>>           ^       ~~~~~~~~~~~~~~~~~~
->>>
->>> According to the definition of the function, the two =E2=80=9Cvalue=E2=
-=80=9D assignments
->>>    should be written to registers.
->>>
->>> Reported-by: Euler Robot <euler.robot@huawei.com>
->>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
->>> ---
->>> I'm not sure if this modification is correct, just from the function
->>>    definition, it is correct.
->>> ---
->>>    hw/net/imx_fec.c | 4 ++--
->>>    1 file changed, 2 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
->>> index 6a124a154a..92f6215712 100644
->>> --- a/hw/net/imx_fec.c
->>> +++ b/hw/net/imx_fec.c
->>> @@ -855,13 +855,13 @@ static void imx_enet_write(IMXFECState *s, uint32=
-_t index, uint32_t value)
->>>            break;
->>>        case ENET_TGSR:
->>>            /* implement clear timer flag */
->>> -        value =3D value & 0x0000000f;
->>> +        s->regs[index] =3D value & 0x0000000f;
->>>            break;
-> Hi; the datasheet for this SoC says that these bits
-> of the register are write-1-to-clear, so while this
-> is definitely a bug I don't think this is the right fix.
+On Thu, 6 Feb 2020 at 11:27, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
->>>        case ENET_TCSR0:
->>>        case ENET_TCSR1:
->>>        case ENET_TCSR2:
->>>        case ENET_TCSR3:
->>> -        value =3D value & 0x000000fd;
->>> +        s->regs[index] =3D value & 0x000000fd;
->>>            break;
-> Here bit 7 is write-1-to-clear, though bits 0 and
-> 2..5 are simple write-the-value.
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+
+
+> ---
+>  Makefile.objs       |  1 +
+>  hw/ssi/aspeed_smc.c | 17 +++++++++++++++++
+>  hw/ssi/trace-events |  9 +++++++++
+>  3 files changed, 27 insertions(+)
+>  create mode 100644 hw/ssi/trace-events
 >
->>>        case ENET_TCCR0:
->>>        case ENET_TCCR1:
->>
->> Applied.
-> Could you drop this from your queue, please?
+> diff --git a/Makefile.objs b/Makefile.objs
+> index 26b9cff95436..9e4ba95794e9 100644
+> --- a/Makefile.objs
+> +++ b/Makefile.objs
+> @@ -168,6 +168,7 @@ trace-events-subdirs +=3D hw/scsi
+>  trace-events-subdirs +=3D hw/sd
+>  trace-events-subdirs +=3D hw/sparc
+>  trace-events-subdirs +=3D hw/sparc64
+> +trace-events-subdirs +=3D hw/ssi
+>  trace-events-subdirs +=3D hw/timer
+>  trace-events-subdirs +=3D hw/tpm
+>  trace-events-subdirs +=3D hw/usb
+> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+> index 23c8d2f06245..e5621bf728ca 100644
+> --- a/hw/ssi/aspeed_smc.c
+> +++ b/hw/ssi/aspeed_smc.c
+> @@ -31,6 +31,7 @@
+>  #include "qapi/error.h"
+>  #include "exec/address-spaces.h"
+>  #include "qemu/units.h"
+> +#include "trace.h"
 >
-> thanks
-> -- PMM
-
-
-Sure, Chen please send V2 to address Peter's comment.
-
-Thanks
-
+>  #include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
+> @@ -513,6 +514,8 @@ static void aspeed_smc_flash_set_segment(AspeedSMCSta=
+te *s, int cs,
+>
+>      s->ctrl->reg_to_segment(s, new, &seg);
+>
+> +    trace_aspeed_smc_flash_set_segment(cs, new, seg.addr, seg.addr + seg=
+.size);
+> +
+>      /* The start address of CS0 is read-only */
+>      if (cs =3D=3D 0 && seg.addr !=3D s->ctrl->flash_window_base) {
+>          qemu_log_mask(LOG_GUEST_ERROR,
+> @@ -753,6 +756,8 @@ static uint64_t aspeed_smc_flash_read(void *opaque, h=
+waddr addr, unsigned size)
+>                        __func__, aspeed_smc_flash_mode(fl));
+>      }
+>
+> +    trace_aspeed_smc_flash_read(fl->id, addr, size, ret,
+> +                                aspeed_smc_flash_mode(fl));
+>      return ret;
+>  }
+>
+> @@ -808,6 +813,9 @@ static bool aspeed_smc_do_snoop(AspeedSMCFlash *fl,  =
+uint64_t data,
+>      AspeedSMCState *s =3D fl->controller;
+>      uint8_t addr_width =3D aspeed_smc_flash_is_4byte(fl) ? 4 : 3;
+>
+> +    trace_aspeed_smc_do_snoop(fl->id, s->snoop_index, s->snoop_dummies,
+> +                              (uint8_t) data & 0xff);
+> +
+>      if (s->snoop_index =3D=3D SNOOP_OFF) {
+>          return false; /* Do nothing */
+>
+> @@ -858,6 +866,9 @@ static void aspeed_smc_flash_write(void *opaque, hwad=
+dr addr, uint64_t data,
+>      AspeedSMCState *s =3D fl->controller;
+>      int i;
+>
+> +    trace_aspeed_smc_flash_write(fl->id, addr, size, data,
+> +                                 aspeed_smc_flash_mode(fl));
+> +
+>      if (!aspeed_smc_is_writable(fl)) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "%s: flash is not writable at 0x%=
+"
+>                        HWADDR_PRIx "\n", __func__, addr);
+> @@ -972,6 +983,9 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr =
+addr, unsigned int size)
+>          (s->ctrl->has_dma && addr =3D=3D R_DMA_CHECKSUM) ||
+>          (addr >=3D R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_slav=
+es) ||
+>          (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->ctrl->max_slaves=
+)) {
+> +
+> +        trace_aspeed_smc_read(addr, size, s->regs[addr]);
+> +
+>          return s->regs[addr];
+>      } else {
+>          qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx =
+"\n",
+> @@ -1091,6 +1105,7 @@ static void aspeed_smc_dma_checksum(AspeedSMCState =
+*s)
+>                            __func__, s->regs[R_DMA_FLASH_ADDR]);
+>              return;
+>          }
+> +        trace_aspeed_smc_dma_checksum(s->regs[R_DMA_FLASH_ADDR], data);
+>
+>          /*
+>           * When the DMA is on-going, the DMA registers are updated
+> @@ -1225,6 +1240,8 @@ static void aspeed_smc_write(void *opaque, hwaddr a=
+ddr, uint64_t data,
+>
+>      addr >>=3D 2;
+>
+> +    trace_aspeed_smc_write(addr, size, data);
+> +
+>      if (addr =3D=3D s->r_conf ||
+>          (addr >=3D s->r_timings &&
+>           addr < s->r_timings + s->ctrl->nregs_timings) ||
+> diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
+> new file mode 100644
+> index 000000000000..ffe531a500aa
+> --- /dev/null
+> +++ b/hw/ssi/trace-events
+> @@ -0,0 +1,9 @@
+> +# aspeed_smc.c
+> +
+> +aspeed_smc_flash_set_segment(int cs, uint64_t reg, uint64_t start, uint6=
+4_t end) "CS%d segreg=3D0x%"PRIx64" [ 0x%"PRIx64" - 0x%"PRIx64" ]"
+> +aspeed_smc_flash_read(int cs, uint64_t addr,  uint32_t size, uint64_t da=
+ta, int mode) "CS%d @0x%" PRIx64 " size %u: 0x%" PRIx64" mode:%d"
+> +aspeed_smc_do_snoop(int cs, int index, int dummies, int data) "CS%d inde=
+x:0x%x dummies:%d data:0x%x"
+> +aspeed_smc_flash_write(int cs, uint64_t addr,  uint32_t size, uint64_t d=
+ata, int mode) "CS%d @0x%" PRIx64 " size %u: 0x%" PRIx64" mode:%d"
+> +aspeed_smc_read(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PRI=
+x64 " size %u: 0x%" PRIx64
+> +aspeed_smc_dma_checksum(uint32_t addr, uint32_t data) "0x%08x: 0x%08x"
+> +aspeed_smc_write(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PR=
+Ix64 " size %u: 0x%" PRIx64
+> --
+> 2.21.1
+>

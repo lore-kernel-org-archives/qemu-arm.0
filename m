@@ -1,393 +1,320 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2961146lfg;
-        Wed, 26 Feb 2020 03:39:09 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwpqWZp2O8P6nCXaZSLINgb5gGo3eUxD1DPR4UV8MnDOLyG0Dmyn1S81zDdNjFizldeLBgK
-X-Received: by 2002:ac8:540f:: with SMTP id b15mr4742511qtq.237.1582717149495;
-        Wed, 26 Feb 2020 03:39:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582717149; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3015741lfg;
+        Wed, 26 Feb 2020 04:30:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyX+zM1F9fcr6tV5MRyKIYJZpWCvuJ53x5Q5ynfrg+y6w9fxFAAlRBsJR2yrHxofnLi3uMq
+X-Received: by 2002:ad4:4b21:: with SMTP id s1mr5077115qvw.81.1582720232597;
+        Wed, 26 Feb 2020 04:30:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582720232; cv=none;
         d=google.com; s=arc-20160816;
-        b=vTne1wvbOtaa1ExcQJYocTYJhCm5+D1vwU5jUZMeFrDYjA0wwIeDaislL5rIlKOqdG
-         0ScjcbOxLdvJ9iezTDUSfngwLWNw43H7BhrwSuVZuIAgzS8tvxN3ie9syGRhFwsmUMrg
-         6Y7PaRnqL4/mATEFD514h4XY/JFCmzGPvuLc1ZOJ5w6y4KqCFAYAVeKL9brjbSNxxrIq
-         SmMZw7btw6B6GTknBfO55/l29WEdmvHVkRRSO0AALT0i+fC1tkx269jhAHj0ovS9mLxS
-         4Oc4XhvDbG+gvW5nKkGS5xFpEHGxTKiXYEiCq5fod8Jyde5rzx3ocosXVOLezZU5tm76
-         K/pw==
+        b=ZMooG2ZSlsHSWyw+EM4nORf2iXWBgnCX+m4AfXDsaS85Rb3Xt9lUrwuUL9qW+x7c+9
+         5P6n/4RCbtkcWJHHrVKWHH3gmgyZxtvabcphGE1lE1nrDJcGT4YXg+LX4/i2145UH0ac
+         w1s1pZGjDscwzQE7kGuIL+s+VWletDlqqB/g/cVFfZVPQuE6yM0+F3o1LmZwBHFPuXaR
+         XKt17sMbVn6ATT27uwZ3IKtdxxhSQxQDwCMqia0ra4HAXgPzkWuTdb8lx5Vf47z8BwBA
+         eiko48n3TGDP/wT9Al9+Z5XQ/KxdC28PEHOjM+P59RvSUKWU0Vw0zIIUrufSqxxjyBme
+         8gBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=ccsFE83qNAPbqZpbD6TR1q94Avth12/WtUGJcx1UV4U=;
-        b=mPiHHQeQBDbnxKF+m547kP1dqtARX2ymvnFnlN8bFasC/3E4kmvdsvU4JTD0FCDciU
-         irMtkmrODxpLO+tjRcFn/58J8b29hOd8ggxSWKH9gGIz53k9NY62kra1TUfNmGP/BLWw
-         cMYRgKvYD997TtXbgYqFRKia4uf2jjwVCt74zKJtv4p+T8DU2pwBZ5uC6pQNMKWNuj48
-         bt2Jo3kBlo8eEYThW7PGBQCe4ydDVnPGvC//M+yMginUHnRY6z8McsNJrGnQIHu334tf
-         w/VlB1fl7SOj/CAqsfCJLDuAaRuBoIQz0yrtlrLSTkeOvaZ5D9ycZxdLGsVu58fTy60O
-         RkPA==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=DiKHpUntwDZxFBS4KktF3HEsRYVaTsQSVsAF5sRJzLE=;
+        b=KXhE16IJPgBFvsZeBxdHGkWf+ChkzH7+JH3TJcbaKnosq5mEV2LXf0L3LVb+w+ALFO
+         +gbGEKwRfpxGHbILyEreJXdY0r416M9jft0IWBx2wp3cHvwKhIfM/hVyANHanCAv+B2D
+         HwwGEb+rNJsMuziBEHA0rimzERqTUWlpo+RQfVGO+OkwIfX1qz4xKr766Ko96ASd5PkI
+         wOLGpyaML2vQ3P5ES69S2SxkrJhqlbaKBIgQAHLRReCqeRyspEj/HcezIGMWl9mOhXEA
+         qRH/HPoEEyoTn0XmyxXsPHdNi5IBhO0NxHCjuKMzXDia25wir2h7GlIYbP+EXqVV/FDZ
+         G5VA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nVt3YuRB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l16si937618qtp.30.2020.02.26.03.39.09
+        by mx.google.com with ESMTPS id i3si918548qkl.302.2020.02.26.04.30.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2020 03:39:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 26 Feb 2020 04:30:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nVt3YuRB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42826 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:43614 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6v1w-0003ee-Se
-	for alex.bennee@linaro.org; Wed, 26 Feb 2020 06:39:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56729)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j6vpf-0001uJ-0Z
+	for alex.bennee@linaro.org; Wed, 26 Feb 2020 07:30:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59492)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1j6v1S-0003L3-FQ
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 06:38:40 -0500
+ (envelope-from <stefanb@linux.ibm.com>) id 1j6vnu-00005B-Ly
+ for qemu-devel@nongnu.org; Wed, 26 Feb 2020 07:28:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1j6v1Q-0001TS-N4
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 06:38:38 -0500
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:44368)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
- id 1j6v1I-0001B2-FC; Wed, 26 Feb 2020 06:38:28 -0500
-Received: by mail-ot1-x342.google.com with SMTP id h9so2612734otj.11;
- Wed, 26 Feb 2020 03:38:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :cc; bh=ccsFE83qNAPbqZpbD6TR1q94Avth12/WtUGJcx1UV4U=;
- b=nVt3YuRB0mdL7ae7kuUct1iBfuvWAeq70L0IFy1al3TiBW9qLXpgKM5McxpGfjV3I5
- Uc/wK719kxtt0zzgWKACVpvO5GPVs6W4vTF24weGpoqMFGXDG/SgJre/afgAhRAXXGJg
- Op/kUYsotTEtlcMIGygau76e10Shz3ot2YlH1oikDpuR6tNEhjOP9T2kPazV7SOshbHE
- k+plPLEAWD9YDZeZYntIDHEQZMs01icvcJn5x//sYtjsZUiQdZccRFGr5KAec/Melhty
- YSxvCKokzun4M7MoJI9O/mkPQZOcYC04rIkeSIzreCOwwvlKJCQlzmblId8GAMMj4lfE
- oPHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
- :message-id:subject:to:cc;
- bh=ccsFE83qNAPbqZpbD6TR1q94Avth12/WtUGJcx1UV4U=;
- b=I+Q0O8Q50yeI+Topwb+Ytiviav0ace2sVBPyorr1Z481XmWITWCd/4wTujfKqqb1nB
- +5ciP2p03bG1gFOHquvMubW/ch/xPR99zNpUF0yDXur5teIKtWlYDXw8HGDcBGEFw0oe
- k72ubwZXd14O0Id448mEFO9mP6/NRjxBskf1gvzRI2kylgpt9Jb+X/CQwduP5tZmXtDr
- 56sUMKBR6I/2kubHrrMjNUR4jXqXgMj3ywrLlaUiKSyL0LlLD1PYntiWl9pBimd20sIj
- MyBFZ4q6huUmFiE9DBeS9KdRj16P2BI8O//1DTde7mKDCPSYfRn4kyXW+ks7ezEjEWAd
- YbGg==
-X-Gm-Message-State: APjAAAW/ci+Ad7NgKUzh3pV3fJVNYwUFhDz4LZAizfNymc9OKC2YQZD/
- cgGAVIMl7y+omOBqLoi+eDe6kETQXsQqW/76nsM=
-X-Received: by 2002:a05:6830:1042:: with SMTP id
- b2mr2577487otp.306.1582717107523; 
- Wed, 26 Feb 2020 03:38:27 -0800 (PST)
+ (envelope-from <stefanb@linux.ibm.com>) id 1j6vnt-000147-53
+ for qemu-devel@nongnu.org; Wed, 26 Feb 2020 07:28:42 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:45258
+ helo=mx0a-001b2d01.pphosted.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <stefanb@linux.ibm.com>)
+ id 1j6vnm-0000ku-PV; Wed, 26 Feb 2020 07:28:35 -0500
+Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 01QCPfOF077043; Wed, 26 Feb 2020 07:28:32 -0500
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2ydqkatn4a-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 26 Feb 2020 07:28:32 -0500
+Received: from m0098417.ppops.net (m0098417.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 01QCQOFt079113;
+ Wed, 26 Feb 2020 07:28:31 -0500
+Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.26])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2ydqkatn42-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 26 Feb 2020 07:28:31 -0500
+Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
+ by ppma04wdc.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id 01QCR2Vv014477;
+ Wed, 26 Feb 2020 12:28:31 GMT
+Received: from b01cxnp23033.gho.pok.ibm.com (b01cxnp23033.gho.pok.ibm.com
+ [9.57.198.28]) by ppma04wdc.us.ibm.com with ESMTP id 2ydcmkn4b0-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 26 Feb 2020 12:28:31 +0000
+Received: from b01ledav003.gho.pok.ibm.com (b01ledav003.gho.pok.ibm.com
+ [9.57.199.108])
+ by b01cxnp23033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 01QCSUGm19792236
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 26 Feb 2020 12:28:30 GMT
+Received: from b01ledav003.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 8C121B205F;
+ Wed, 26 Feb 2020 12:28:30 +0000 (GMT)
+Received: from b01ledav003.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 7215DB2066;
+ Wed, 26 Feb 2020 12:28:30 +0000 (GMT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+ by b01ledav003.gho.pok.ibm.com (Postfix) with ESMTP;
+ Wed, 26 Feb 2020 12:28:30 +0000 (GMT)
+Subject: Re: [PATCH v3 08/10] test: tpm: pass optional machine options to
+ swtpm test functions
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
+References: <20200226102549.12158-1-eric.auger@redhat.com>
+ <20200226102549.12158-9-eric.auger@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+Message-ID: <953ccab1-b863-4543-e25d-50629551af24@linux.ibm.com>
+Date: Wed, 26 Feb 2020 07:28:30 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
 MIME-Version: 1.0
-Received: by 2002:a9d:d21:0:0:0:0:0 with HTTP;
- Wed, 26 Feb 2020 03:38:27 -0800 (PST)
-In-Reply-To: <20200224205533.23798-8-philmd@redhat.com>
-References: <20200224205533.23798-1-philmd@redhat.com>
- <20200224205533.23798-8-philmd@redhat.com>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Wed, 26 Feb 2020 12:38:27 +0100
-Message-ID: <CAL1e-=hJaaS4s=FnRhD4Bs7HOVom6WDvOMWya3359xzMPufYgA@mail.gmail.com>
-Subject: Re: [PATCH RESEND v2 07/32] hw/mips: Use memory_region_init_rom()
- with read-only regions
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000f955f9059f790a2a"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::342
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <20200226102549.12158-9-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.572
+ definitions=2020-02-26_04:2020-02-26,
+ 2020-02-26 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 phishscore=0
+ malwarescore=0 priorityscore=1501 suspectscore=2 lowpriorityscore=0
+ mlxscore=0 spamscore=0 adultscore=0 mlxlogscore=999 impostorscore=0
+ clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2001150001 definitions=main-2002260093
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.158.5
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- Magnus Damm <magnus.damm@gmail.com>, Max Reitz <mreitz@redhat.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Fabien Chouteau <chouteau@adacore.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
- "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Laurent Vivier <laurent@vivier.eu>, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qrHL/XP97jjJ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org,
+ philmd@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qRdXPc+8BcNi
 
---000000000000f955f9059f790a2a
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Monday, February 24, 2020, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m>
-wrote:
-
-> This commit was produced with the Coccinelle script
-> scripts/coccinelle/memory-region-housekeeping.cocci.
+On 2/26/20 5:25 AM, Eric Auger wrote:
+> We plan to use swtpm test functions on ARM for testing the
+> sysbus TPM-TIS device. However on ARM there is no default machine
+> type. So we need to explictly pass some machine options on startup.
+> Let's allow this by adding a new parameter to both swtpm test
+> functions and update all call sites.
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
+
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+
+
+
 > ---
+>   tests/qtest/tpm-crb-swtpm-test.c |  5 +++--
+>   tests/qtest/tpm-tests.c          | 10 ++++++----
+>   tests/qtest/tpm-tests.h          |  5 +++--
+>   tests/qtest/tpm-tis-swtpm-test.c |  5 +++--
+>   tests/qtest/tpm-util.c           |  8 ++++++--
+>   tests/qtest/tpm-util.h           |  3 ++-
+>   6 files changed, 23 insertions(+), 13 deletions(-)
+>
+> diff --git a/tests/qtest/tpm-crb-swtpm-test.c b/tests/qtest/tpm-crb-swtpm-test.c
+> index 2c4fb8ae29..5228cb7af4 100644
+> --- a/tests/qtest/tpm-crb-swtpm-test.c
+> +++ b/tests/qtest/tpm-crb-swtpm-test.c
+> @@ -29,7 +29,8 @@ static void tpm_crb_swtpm_test(const void *data)
+>   {
+>       const TestState *ts = data;
+>   
+> -    tpm_test_swtpm_test(ts->src_tpm_path, tpm_util_crb_transfer, "tpm-crb");
+> +    tpm_test_swtpm_test(ts->src_tpm_path, tpm_util_crb_transfer,
+> +                        "tpm-crb", NULL);
+>   }
+>   
+>   static void tpm_crb_swtpm_migration_test(const void *data)
+> @@ -37,7 +38,7 @@ static void tpm_crb_swtpm_migration_test(const void *data)
+>       const TestState *ts = data;
+>   
+>       tpm_test_swtpm_migration_test(ts->src_tpm_path, ts->dst_tpm_path, ts->uri,
+> -                                  tpm_util_crb_transfer, "tpm-crb");
+> +                                  tpm_util_crb_transfer, "tpm-crb", NULL);
+>   }
+>   
+>   int main(int argc, char **argv)
+> diff --git a/tests/qtest/tpm-tests.c b/tests/qtest/tpm-tests.c
+> index 6e45a0ba85..a2f2838e15 100644
+> --- a/tests/qtest/tpm-tests.c
+> +++ b/tests/qtest/tpm-tests.c
+> @@ -30,7 +30,7 @@ tpm_test_swtpm_skip(void)
+>   }
+>   
+>   void tpm_test_swtpm_test(const char *src_tpm_path, tx_func *tx,
+> -                         const char *ifmodel)
+> +                         const char *ifmodel, const char *machine_options)
+>   {
+>       char *args = NULL;
+>       QTestState *s;
+> @@ -47,10 +47,11 @@ void tpm_test_swtpm_test(const char *src_tpm_path, tx_func *tx,
+>       g_assert_true(succ);
+>   
+>       args = g_strdup_printf(
+> +        "%s "
+>           "-chardev socket,id=chr,path=%s "
+>           "-tpmdev emulator,id=dev,chardev=chr "
+>           "-device %s,tpmdev=dev",
+> -        addr->u.q_unix.path, ifmodel);
+> +        machine_options ? : "", addr->u.q_unix.path, ifmodel);
+>   
+>       s = qtest_start(args);
+>       g_free(args);
+> @@ -78,7 +79,8 @@ void tpm_test_swtpm_test(const char *src_tpm_path, tx_func *tx,
+>   void tpm_test_swtpm_migration_test(const char *src_tpm_path,
+>                                      const char *dst_tpm_path,
+>                                      const char *uri, tx_func *tx,
+> -                                   const char *ifmodel)
+> +                                   const char *ifmodel,
+> +                                   const char *machine_options)
+>   {
+>       gboolean succ;
+>       GPid src_tpm_pid, dst_tpm_pid;
+> @@ -100,7 +102,7 @@ void tpm_test_swtpm_migration_test(const char *src_tpm_path,
+>   
+>       tpm_util_migration_start_qemu(&src_qemu, &dst_qemu,
+>                                     src_tpm_addr, dst_tpm_addr, uri,
+> -                                  ifmodel);
+> +                                  ifmodel, machine_options);
+>   
+>       tpm_util_startup(src_qemu, tx);
+>       tpm_util_pcrextend(src_qemu, tx);
+> diff --git a/tests/qtest/tpm-tests.h b/tests/qtest/tpm-tests.h
+> index b97688fe75..a5df35ab5b 100644
+> --- a/tests/qtest/tpm-tests.h
+> +++ b/tests/qtest/tpm-tests.h
+> @@ -16,11 +16,12 @@
+>   #include "tpm-util.h"
+>   
+>   void tpm_test_swtpm_test(const char *src_tpm_path, tx_func *tx,
+> -                         const char *ifmodel);
+> +                         const char *ifmodel, const char *machine_options);
+>   
+>   void tpm_test_swtpm_migration_test(const char *src_tpm_path,
+>                                      const char *dst_tpm_path,
+>                                      const char *uri, tx_func *tx,
+> -                                   const char *ifmodel);
+> +                                   const char *ifmodel,
+> +                                   const char *machine_options);
+>   
+>   #endif /* TESTS_TPM_TESTS_H */
+> diff --git a/tests/qtest/tpm-tis-swtpm-test.c b/tests/qtest/tpm-tis-swtpm-test.c
+> index 9f58a3a92b..9470f15751 100644
+> --- a/tests/qtest/tpm-tis-swtpm-test.c
+> +++ b/tests/qtest/tpm-tis-swtpm-test.c
+> @@ -29,7 +29,8 @@ static void tpm_tis_swtpm_test(const void *data)
+>   {
+>       const TestState *ts = data;
+>   
+> -    tpm_test_swtpm_test(ts->src_tpm_path, tpm_util_tis_transfer, "tpm-tis");
+> +    tpm_test_swtpm_test(ts->src_tpm_path, tpm_util_tis_transfer,
+> +                        "tpm-tis", NULL);
+>   }
+>   
+>   static void tpm_tis_swtpm_migration_test(const void *data)
+> @@ -37,7 +38,7 @@ static void tpm_tis_swtpm_migration_test(const void *data)
+>       const TestState *ts = data;
+>   
+>       tpm_test_swtpm_migration_test(ts->src_tpm_path, ts->dst_tpm_path, ts->uri,
+> -                                  tpm_util_tis_transfer, "tpm-tis");
+> +                                  tpm_util_tis_transfer, "tpm-tis", NULL);
+>   }
+>   
+>   int main(int argc, char **argv)
+> diff --git a/tests/qtest/tpm-util.c b/tests/qtest/tpm-util.c
+> index e08b137651..7ecdae2fc6 100644
+> --- a/tests/qtest/tpm-util.c
+> +++ b/tests/qtest/tpm-util.c
+> @@ -258,23 +258,27 @@ void tpm_util_migration_start_qemu(QTestState **src_qemu,
+>                                      SocketAddress *src_tpm_addr,
+>                                      SocketAddress *dst_tpm_addr,
+>                                      const char *miguri,
+> -                                   const char *ifmodel)
+> +                                   const char *ifmodel,
+> +                                   const char *machine_options)
+>   {
+>       char *src_qemu_args, *dst_qemu_args;
+>   
+>       src_qemu_args = g_strdup_printf(
+> +        "%s "
+>           "-chardev socket,id=chr,path=%s "
+>           "-tpmdev emulator,id=dev,chardev=chr "
+>           "-device %s,tpmdev=dev ",
+> -        src_tpm_addr->u.q_unix.path, ifmodel);
+> +        machine_options ? : "", src_tpm_addr->u.q_unix.path, ifmodel);
+>   
+>       *src_qemu = qtest_init(src_qemu_args);
+>   
+>       dst_qemu_args = g_strdup_printf(
+> +        "%s "
+>           "-chardev socket,id=chr,path=%s "
+>           "-tpmdev emulator,id=dev,chardev=chr "
+>           "-device %s,tpmdev=dev "
+>           "-incoming %s",
+> +        machine_options ? : "",
+>           dst_tpm_addr->u.q_unix.path,
+>           ifmodel, miguri);
+>   
+> diff --git a/tests/qtest/tpm-util.h b/tests/qtest/tpm-util.h
+> index 5755698ad2..15e3924942 100644
+> --- a/tests/qtest/tpm-util.h
+> +++ b/tests/qtest/tpm-util.h
+> @@ -44,7 +44,8 @@ void tpm_util_migration_start_qemu(QTestState **src_qemu,
+>                                      SocketAddress *src_tpm_addr,
+>                                      SocketAddress *dst_tpm_addr,
+>                                      const char *miguri,
+> -                                   const char *ifmodel);
+> +                                   const char *ifmodel,
+> +                                   const char *machine_options);
+>   
+>   void tpm_util_wait_for_migration_complete(QTestState *who);
+>   
 
 
-Reviewed-by: Aleksandar Markovic <amarkovic@wavecomp.com>
-
-Will be applied to the next MIPS queue, planned to be sent in next few days=
-.
-
-
->  hw/mips/mips_fulong2e.c | 3 +--
->  hw/mips/mips_jazz.c     | 6 ++----
->  hw/mips/mips_mipssim.c  | 3 +--
->  hw/mips/mips_r4k.c      | 3 +--
->  4 files changed, 5 insertions(+), 10 deletions(-)
->
-> diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
-> index 2e043cbb98..547a7d3a45 100644
-> --- a/hw/mips/mips_fulong2e.c
-> +++ b/hw/mips/mips_fulong2e.c
-> @@ -319,9 +319,8 @@ static void mips_fulong2e_init(MachineState *machine)
->
->      /* allocate RAM */
->      memory_region_allocate_system_memory(ram, NULL, "fulong2e.ram",
-> ram_size);
-> -    memory_region_init_ram(bios, NULL, "fulong2e.bios", BIOS_SIZE,
-> +    memory_region_init_rom(bios, NULL, "fulong2e.bios", BIOS_SIZE,
->                             &error_fatal);
-> -    memory_region_set_readonly(bios, true);
->
->      memory_region_add_subregion(address_space_mem, 0, ram);
->      memory_region_add_subregion(address_space_mem, 0x1fc00000LL, bios);
-> diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
-> index 66fd4d867d..cf47335ea5 100644
-> --- a/hw/mips/mips_jazz.c
-> +++ b/hw/mips/mips_jazz.c
-> @@ -195,9 +195,8 @@ static void mips_jazz_init(MachineState *machine,
->                                           machine->ram_size);
->      memory_region_add_subregion(address_space, 0, ram);
->
-> -    memory_region_init_ram(bios, NULL, "mips_jazz.bios", MAGNUM_BIOS_SIZ=
-E,
-> +    memory_region_init_rom(bios, NULL, "mips_jazz.bios", MAGNUM_BIOS_SIZ=
-E,
->                             &error_fatal);
-> -    memory_region_set_readonly(bios, true);
->      memory_region_init_alias(bios2, NULL, "mips_jazz.bios", bios,
->                               0, MAGNUM_BIOS_SIZE);
->      memory_region_add_subregion(address_space, 0x1fc00000LL, bios);
-> @@ -263,9 +262,8 @@ static void mips_jazz_init(MachineState *machine,
->          {
->              /* Simple ROM, so user doesn't have to provide one */
->              MemoryRegion *rom_mr =3D g_new(MemoryRegion, 1);
-> -            memory_region_init_ram(rom_mr, NULL, "g364fb.rom", 0x80000,
-> +            memory_region_init_rom(rom_mr, NULL, "g364fb.rom", 0x80000,
->                                     &error_fatal);
-> -            memory_region_set_readonly(rom_mr, true);
->              uint8_t *rom =3D memory_region_get_ram_ptr(rom_mr);
->              memory_region_add_subregion(address_space, 0x60000000,
-> rom_mr);
->              rom[0] =3D 0x10; /* Mips G364 */
-> diff --git a/hw/mips/mips_mipssim.c b/hw/mips/mips_mipssim.c
-> index b934ca9d51..3fdbb21680 100644
-> --- a/hw/mips/mips_mipssim.c
-> +++ b/hw/mips/mips_mipssim.c
-> @@ -169,9 +169,8 @@ mips_mipssim_init(MachineState *machine)
->      /* Allocate RAM. */
->      memory_region_allocate_system_memory(ram, NULL, "mips_mipssim.ram",
->                                           ram_size);
-> -    memory_region_init_ram(bios, NULL, "mips_mipssim.bios", BIOS_SIZE,
-> +    memory_region_init_rom(bios, NULL, "mips_mipssim.bios", BIOS_SIZE,
->                             &error_fatal);
-> -    memory_region_set_readonly(bios, true);
->
->      memory_region_add_subregion(address_space_mem, 0, ram);
->
-> diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
-> index b2aec434c3..54b286ceee 100644
-> --- a/hw/mips/mips_r4k.c
-> +++ b/hw/mips/mips_r4k.c
-> @@ -241,9 +241,8 @@ void mips_r4k_init(MachineState *machine)
->      dinfo =3D drive_get(IF_PFLASH, 0, 0);
->      if ((bios_size > 0) && (bios_size <=3D BIOS_SIZE)) {
->          bios =3D g_new(MemoryRegion, 1);
-> -        memory_region_init_ram(bios, NULL, "mips_r4k.bios", BIOS_SIZE,
-> +        memory_region_init_rom(bios, NULL, "mips_r4k.bios", BIOS_SIZE,
->                                 &error_fatal);
-> -        memory_region_set_readonly(bios, true);
->          memory_region_add_subregion(get_system_memory(), 0x1fc00000,
-> bios);
->
->          load_image_targphys(filename, 0x1fc00000, BIOS_SIZE);
-> --
-> 2.21.1
->
->
->
-
---000000000000f955f9059f790a2a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<br><br>On Monday, February 24, 2020, Philippe Mathieu-Daud=C3=A9 &lt;<a hr=
-ef=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; wrote:<br><blockq=
-uote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc =
-solid;padding-left:1ex">This commit was produced with the Coccinelle script=
-<br>
-scripts/coccinelle/memory-<wbr>region-housekeeping.cocci.<br>
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@red=
-hat.com">philmd@redhat.com</a>&gt;<br>
----</blockquote><div><br></div><div>Reviewed-by: Aleksandar Markovic &lt;<a=
- href=3D"mailto:amarkovic@wavecomp.com">amarkovic@wavecomp.com</a>&gt;<br><=
-/div><div><br></div><div>Will be applied to the next MIPS queue, planned to=
- be sent in next few days.</div><div>=C2=A0</div><blockquote class=3D"gmail=
-_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:=
-1ex">
-=C2=A0hw/mips/mips_fulong2e.c | 3 +--<br>
-=C2=A0hw/mips/mips_jazz.c=C2=A0 =C2=A0 =C2=A0| 6 ++----<br>
-=C2=A0hw/mips/mips_mipssim.c=C2=A0 | 3 +--<br>
-=C2=A0hw/mips/mips_r4k.c=C2=A0 =C2=A0 =C2=A0 | 3 +--<br>
-=C2=A04 files changed, 5 insertions(+), 10 deletions(-)<br>
-<br>
-diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c<br>
-index 2e043cbb98..547a7d3a45 100644<br>
---- a/hw/mips/mips_fulong2e.c<br>
-+++ b/hw/mips/mips_fulong2e.c<br>
-@@ -319,9 +319,8 @@ static void mips_fulong2e_init(<wbr>MachineState *machi=
-ne)<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0/* allocate RAM */<br>
-=C2=A0 =C2=A0 =C2=A0memory_region_allocate_system_<wbr>memory(ram, NULL, &q=
-uot;fulong2e.ram&quot;, ram_size);<br>
--=C2=A0 =C2=A0 memory_region_init_ram(bios, NULL, &quot;fulong2e.bios&quot;=
-, BIOS_SIZE,<br>
-+=C2=A0 =C2=A0 memory_region_init_rom(bios, NULL, &quot;fulong2e.bios&quot;=
-, BIOS_SIZE,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 &amp;error_fatal);<br>
--=C2=A0 =C2=A0 memory_region_set_readonly(<wbr>bios, true);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0memory_region_add_subregion(<wbr>address_space_mem, 0, =
-ram);<br>
-=C2=A0 =C2=A0 =C2=A0memory_region_add_subregion(<wbr>address_space_mem, 0x1=
-fc00000LL, bios);<br>
-diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c<br>
-index 66fd4d867d..cf47335ea5 100644<br>
---- a/hw/mips/mips_jazz.c<br>
-+++ b/hw/mips/mips_jazz.c<br>
-@@ -195,9 +195,8 @@ static void mips_jazz_init(MachineState *machine,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 m=
-achine-&gt;ram_size);<br>
-=C2=A0 =C2=A0 =C2=A0memory_region_add_subregion(<wbr>address_space, 0, ram)=
-;<br>
-<br>
--=C2=A0 =C2=A0 memory_region_init_ram(bios, NULL, &quot;mips_jazz.bios&quot=
-;, MAGNUM_BIOS_SIZE,<br>
-+=C2=A0 =C2=A0 memory_region_init_rom(bios, NULL, &quot;mips_jazz.bios&quot=
-;, MAGNUM_BIOS_SIZE,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 &amp;error_fatal);<br>
--=C2=A0 =C2=A0 memory_region_set_readonly(<wbr>bios, true);<br>
-=C2=A0 =C2=A0 =C2=A0memory_region_init_alias(<wbr>bios2, NULL, &quot;mips_j=
-azz.bios&quot;, bios,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 0, MAGNUM_BIOS_SIZE);<br>
-=C2=A0 =C2=A0 =C2=A0memory_region_add_subregion(<wbr>address_space, 0x1fc00=
-000LL, bios);<br>
-@@ -263,9 +262,8 @@ static void mips_jazz_init(MachineState *machine,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Simple ROM, so user does=
-n&#39;t have to provide one */<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0MemoryRegion *rom_mr =3D g_=
-new(MemoryRegion, 1);<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 memory_region_init_ram(rom_mr, N=
-ULL, &quot;g364fb.rom&quot;, 0x80000,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 memory_region_init_rom(rom_mr, N=
-ULL, &quot;g364fb.rom&quot;, 0x80000,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;error_fatal);<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 memory_region_set_readonly(<wbr>=
-rom_mr, true);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0uint8_t *rom =3D memory_reg=
-ion_get_ram_ptr(rom_<wbr>mr);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0memory_region_add_subregion=
-(<wbr>address_space, 0x60000000, rom_mr);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0rom[0] =3D 0x10; /* Mips G3=
-64 */<br>
-diff --git a/hw/mips/mips_mipssim.c b/hw/mips/mips_mipssim.c<br>
-index b934ca9d51..3fdbb21680 100644<br>
---- a/hw/mips/mips_mipssim.c<br>
-+++ b/hw/mips/mips_mipssim.c<br>
-@@ -169,9 +169,8 @@ mips_mipssim_init(MachineState *machine)<br>
-=C2=A0 =C2=A0 =C2=A0/* Allocate RAM. */<br>
-=C2=A0 =C2=A0 =C2=A0memory_region_allocate_system_<wbr>memory(ram, NULL, &q=
-uot;mips_mipssim.ram&quot;,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 r=
-am_size);<br>
--=C2=A0 =C2=A0 memory_region_init_ram(bios, NULL, &quot;mips_mipssim.bios&q=
-uot;, BIOS_SIZE,<br>
-+=C2=A0 =C2=A0 memory_region_init_rom(bios, NULL, &quot;mips_mipssim.bios&q=
-uot;, BIOS_SIZE,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 &amp;error_fatal);<br>
--=C2=A0 =C2=A0 memory_region_set_readonly(<wbr>bios, true);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0memory_region_add_subregion(<wbr>address_space_mem, 0, =
-ram);<br>
-<br>
-diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c<br>
-index b2aec434c3..54b286ceee 100644<br>
---- a/hw/mips/mips_r4k.c<br>
-+++ b/hw/mips/mips_r4k.c<br>
-@@ -241,9 +241,8 @@ void mips_r4k_init(MachineState *machine)<br>
-=C2=A0 =C2=A0 =C2=A0dinfo =3D drive_get(IF_PFLASH, 0, 0);<br>
-=C2=A0 =C2=A0 =C2=A0if ((bios_size &gt; 0) &amp;&amp; (bios_size &lt;=3D BI=
-OS_SIZE)) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bios =3D g_new(MemoryRegion, 1);<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 memory_region_init_ram(bios, NULL, &quot;mips_=
-r4k.bios&quot;, BIOS_SIZE,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 memory_region_init_rom(bios, NULL, &quot;mips_=
-r4k.bios&quot;, BIOS_SIZE,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;error_fatal);<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 memory_region_set_readonly(<wbr>bios, true);<b=
-r>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0memory_region_add_subregion(<wbr>get_syst=
-em_memory(), 0x1fc00000, bios);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0load_image_targphys(filename, 0x1fc00000,=
- BIOS_SIZE);<br>
--- <br>
-2.21.1<br>
-<br>
-<br>
-</blockquote>
-
---000000000000f955f9059f790a2a--

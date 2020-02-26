@@ -1,158 +1,149 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3162273lfg;
-        Wed, 26 Feb 2020 06:45:35 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxw5ZUNM9g5lxkwsfg2TqOT2rD+H03eWgwRmzgh0lwbUmiPPeeCzN6hMMwx5MctBnFX3j6s
-X-Received: by 2002:a17:906:4a5a:: with SMTP id a26mr4897867ejv.49.1582728335475;
-        Wed, 26 Feb 2020 06:45:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582728335; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3313875lfg;
+        Wed, 26 Feb 2020 09:05:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz6mQrUjG4aIy+c5mc9nFh57zknoq6LVpsLBIBNsjDu/t/eNJhEgKKJXhnxpGdzTJi7KaK/
+X-Received: by 2002:ad4:4f90:: with SMTP id em16mr88263qvb.38.1582736744049;
+        Wed, 26 Feb 2020 09:05:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582736744; cv=none;
         d=google.com; s=arc-20160816;
-        b=du2OaCGBpDfEw0x2K/KlIg+l33YZoFhuP4vY7mP+Li2uZd49EEddS6kViUoBHfhEM1
-         c559wp2bnYPU/lVWjdrfqw6WywJS7CC6PVlIgEmlpZgA9B4xK0/9Iyyt8n3sxTccD18K
-         aTvGORmFfhhQADDZ5N7geiu9S6IM3YmtBky1rPf9szqndPmXP9u0C63sMRSVlfrgigYe
-         VuZru8fof9yzO6Ot8EDjyWhcmdgEBEs+GCAySxADdGj1q7JnpF8Oyk9MjdBRydENE0LT
-         8hT8YSEndRPETld+t3QwSxrLquZZqwkqAvVAUOGqW0Sgoo1Hq9wVzH2HfF0w7GBF6jTT
-         RCJg==
+        b=DzmR/Hdswxk/jJ4oTHT4j3KVEC1tjiBIgrtzniE5GMOoFut6HtJG1O4i1HeE3X4M+z
+         0wc/xROpmSxrtoAv+FSStF6XV/ga/TUP6Qap3DsKO6CH5KCMxv+7RiBYf1wuJSVaEi7e
+         GRBpLnXmc1hYyPB0J+fWQzNMwGL/6az1G4q+JrdHSkQda+qGWeTjKwPsrkMBSrxh+VVa
+         zYfctZsmJ44sJz5JWrRALvyKwAV6BhhhJk/6gbkg7EnR4gVDDahaK/gzj1gHSDGGQCLf
+         zxDrTgjxzFbhKrVvWHvoKPL4QOdRqMxs4684lpBYi8FqlxoJ90XHU0tGt1cvqQKN0ltk
+         IgUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=qlVXF2tk1qgD8ay0foIDoyXWCm75nANb9zMd0kEiJDc=;
-        b=s9KGdcpZedhsVQBup6kAMkEHhtvxxhb3fd6wTnPy1CGkRPcdKN03WvRuFccYtsATcF
-         Ousv12YcqGGys0jOPjxrAnFAf/A7d9dekI1YfPFHm1S0OQ/XmqjHEqfsM2qrlYVCKv7P
-         HSpUmXq/OnfBbHflwj4qjX4T+W2++E7hwC5be00ggU7J2f4ZYVleyZnA7JGGY4ZFF9OL
-         EkCIEJ7YWP6jP0I2EqvHkS0yEd9tQyX0bxifBIQk9zVsPIrsP0bmrnp2Jh15uN4Lvlkw
-         hlQUDaGnUsjoinIP1zDT308ild5/JLfr6J73FTgeHN/JWGsFS0JXJgRQrUUePp79wLmS
-         Zyaw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=Q2FBRF2GnFjWJL/ZPum6bV29UkLuQo6IIE5h/kxtwqM=;
+        b=Ep9T+c+qHz9aZr5Ky6r+kxYOr5+Mv2qpcTG/MPHBxPxU8veiyagIukUYq/7TVx4zoc
+         YUI07ryQnpEiih5oBGC1MKHBa97ozhPKnIY5PqHCvN0uIzjgedtThb3ZRmtZic/m2nWq
+         kY+38vNNZIfGn9X44h+KH3GBEDUG6tn4OLiX55WiRrpgXlBcXoeGIV1jPnBfXnBgzLQl
+         OfFGnEwyzrSk79BiQZ8unTanW6vmE1X7/Qi+7+9XgvUAcc5bgqwLfvP1q+PifPnLtvLB
+         Wqdgk+fKYKA3eBPw76tgjcpIPYOchh7KFbxz92LsQp4TqPGu8hiqVnj/WVC8VTYKGEid
+         QjKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cfyGLRA2;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gO2aWafY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by mx.google.com with ESMTPS id l6si1930399edn.221.2020.02.26.06.45.35
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x30si13407qte.281.2020.02.26.09.05.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 Feb 2020 06:45:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 26 Feb 2020 09:05:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cfyGLRA2;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gO2aWafY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47388 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j707z-00051T-DL
+	for alex.bennee@linaro.org; Wed, 26 Feb 2020 12:05:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38747)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <eric.auger@redhat.com>) id 1j707b-0004z9-8v
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 12:05:22 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <eric.auger@redhat.com>) id 1j707Z-0002b0-Mo
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 12:05:18 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:43583
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1j707Z-0002VO-HZ
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 12:05:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1582728334;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=qlVXF2tk1qgD8ay0foIDoyXWCm75nANb9zMd0kEiJDc=;
-	b=cfyGLRA2hcU/peZmgfmvn8jMd/txnj7gMCroM3Kv+0M2ikxVg+KmRrQ6tMEWuzUAZpH11n
-	FMQ8dWAwGnqOr30aqsiQVW5gmd6/xjysDeRTkjYlcMWn3k3QOy6oNZLG7XaqHJ3xMRliry
-	i14W1ceg01KUsuM5u1B+MvyLEMnhgD4=
+ s=mimecast20190719; t=1582736716;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=Q2FBRF2GnFjWJL/ZPum6bV29UkLuQo6IIE5h/kxtwqM=;
+ b=gO2aWafY5AQfeDUOM9ibL7GLrWDy7y2DUZ/lrIi+ebnNkteiTAUOKdsclX+1LTZAs+1EYG
+ QWIq1Fw52CCRZOi90N8cBrwYs2Z24y/3lh/ktoZwa7p80chau4B1guROHqwFCuTAXoCtw0
+ 7w+3dljD9eLaN+lsbClahpOCmajzTKY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-383-sXoOkyq4M4OKUo4ufgTqQg-1; Wed, 26 Feb 2020 09:45:30 -0500
-X-MC-Unique: sXoOkyq4M4OKUo4ufgTqQg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2EA0418A5517;
-	Wed, 26 Feb 2020 14:45:29 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 451D18C086;
-	Wed, 26 Feb 2020 14:45:27 +0000 (UTC)
-Date: Wed, 26 Feb 2020 15:45:25 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Alex =?UTF-8?B?QmVubsOpZQ==?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Howard Spoelstra
- <hsp.cat7@gmail.com>, Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel@nongnu.org, Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm
- <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, Philippe
- =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Subject: Re: Sudden slowdown of ARM emulation in master
-Message-ID: <20200226154525.5c4c0ac9@redhat.com>
-In-Reply-To: <87k149xwqw.fsf@linaro.org>
-References: <CAPan3Wq-MVwcJQELP8n+g33CR7tsiGXQ698gA177nd2my9hWCw@mail.gmail.com>
-	<20200226101948.786be4b0@redhat.com>
-	<CAFEAcA80K+h-nkiHrh15mmgomBaqDpdhRwb34zwKqF31dp3KDw@mail.gmail.com>
-	<87k149xwqw.fsf@linaro.org>
+ us-mta-289-9qGOtC0vMpSUnUlEKR1t6w-1; Wed, 26 Feb 2020 12:05:15 -0500
+X-MC-Unique: 9qGOtC0vMpSUnUlEKR1t6w-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AA13D8010F8;
+ Wed, 26 Feb 2020 17:05:13 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-59.ams2.redhat.com [10.36.116.59])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id CB76760C63;
+ Wed, 26 Feb 2020 17:05:04 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org
+Subject: [RFC 0/2] hw/arm/virt: kvm: allow gicv3 by default if host does not
+ support v2
+Date: Wed, 26 Feb 2020 18:04:58 +0100
+Message-Id: <20200226170500.17028-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
-X-TUID: uSm365XgbEHo
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: maz@kernel.org, drjones@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KlPVhzLfOf6s
 
-On Wed, 26 Feb 2020 14:13:11 +0000
-Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
+At the moment if the end-user does not specify the gic-version along
+with KVM acceleration, v2 is set by default. However most of the
+systems now have GICv3 and sometimes they do not support GICv2
+compatibility. In that case we end up with this error:
 
-> Peter Maydell <peter.maydell@linaro.org> writes:
->=20
-> > On Wed, 26 Feb 2020 at 09:19, Igor Mammedov <imammedo@redhat.com> wrote=
-: =20
-> >>
-> >> On Wed, 26 Feb 2020 00:07:55 +0100
-> >> Niek Linnenbank <nieklinnenbank@gmail.com> wrote:
-> >> =20
-> >> > Hello Igor and Paolo, =20
-> >>
-> >> does following hack solves issue?
-> >>
-> >> diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-> >> index a08ab11f65..ab2448c5aa 100644
-> >> --- a/accel/tcg/translate-all.c
-> >> +++ b/accel/tcg/translate-all.c
-> >> @@ -944,7 +944,7 @@ static inline size_t size_code_gen_buffer(size_t t=
-b_size)
-> >>          /* ??? If we relax the requirement that CONFIG_USER_ONLY use =
-the
-> >>             static buffer, we could size this on RESERVED_VA, on the t=
-ext
-> >>             segment size of the executable, or continue to use the def=
-ault.  */
-> >> -        tb_size =3D (unsigned long)(ram_size / 4);
-> >> +        tb_size =3D MAX_CODE_GEN_BUFFER_SIZE;
-> >>  #endif
-> >>      }
-> >>      if (tb_size < MIN_CODE_GEN_BUFFER_SIZE) { =20
-> >
-> > Cc'ing Richard to ask: does it still make sense for TCG
-> > to pick a codegen buffer size based on the guest RAM size? =20
->=20
-> Arguably you would never get more than ram_size * tcg gen overhead of
-> active TBs at any one point although you can come up with pathological
-> patterns where only a subset of pages are flushed in and out at a time.
->=20
-> However the backing for the code is mmap'ed anyway so surely the kernel
-> can work out the kinks here. We will never allocate more than the code
-> generator can generate jumps for anyway.
->=20
-> Looking at the SoftMMU version of alloc_code_gen_buffer it looks like
-> everything now falls under the:
->=20
->   # if defined(__PIE__) || defined(__PIC__)
->=20
-> leg so there is a bunch of code to be deleted there. The remaining
-> question is what to do for linux-user because there is a bit more logic
-> to deal with some corner cases on the static code generation buffer.
->=20
-> I'd be tempted to rename DEFAULT_CODE_GEN_BUFFER_SIZE to
-> SMALL_CODE_GEN_BUFFER_SIZE and only bother with a static allocation for
-> 32 bit linux-user hosts. Otherwise why not default to
-> MAX_CODE_GEN_BUFFER_SIZE on 64 bit systems and let the kernel deal with
-> it?
+qemu-system-aarch64: PMU: KVM_SET_DEVICE_ATTR: Invalid argument
+qemu-system-aarch64: failed to set irq for PMU
+and qemu aborts.
 
-*-user call
-  tcg_exec_init(0);
-which in in the end results in
-  DEFAULT_CODE_GEN_BUFFER_SIZE -> DEFAULT_CODE_GEN_BUFFER_SIZE_1
+This patch keeps the default v2 selection in all cases except
+in the KVM accelerated mode when the host does not support v2.
+This case did not work anyway so we do not break any compatibility.
+Now we get v3 selected in such a case. Also if the end-user explicitly
+sets v2 whereas this latter is not supported, we also are
+informed that v2 is not selected by thos host instead of getting the
+above PMU related message.
 
-so for *-user cases we can just always call
-   code_gen_alloc(DEFAULT_CODE_GEN_BUFFER_SIZE)
+Best Regards
 
-> > (We should fix the regression anyway, but it surprised me
-> > slightly to find a config detail of the guest machine being
-> > used here.)
-> >
-> > thanks
-> > -- PMM =20
->=20
->=20
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/gic_version_rfc_v1
+
+
+Eric Auger (2):
+  target/arm/kvm: Let kvm_arm_vgic_probe() return a bitmap
+  hw/arm/virt: kvm: allow gicv3 by default if host does not support v2
+
+ hw/arm/virt.c         | 41 +++++++++++++++++++++++++++++++++++++++--
+ include/hw/arm/virt.h |  1 +
+ target/arm/kvm.c      | 14 ++++++++------
+ target/arm/kvm_arm.h  |  3 +++
+ 4 files changed, 51 insertions(+), 8 deletions(-)
+
+--=20
+2.20.1
+

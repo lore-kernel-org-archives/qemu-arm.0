@@ -1,128 +1,108 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3487169lfg;
-        Wed, 26 Feb 2020 12:02:16 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxBGSG8sFNIoSgIzJKQCvjAlDsbRuqQpGgG0qLZCvwHPigcm4ws32LctLMOekXqxB4j5Q3+
-X-Received: by 2002:a0c:bf0b:: with SMTP id m11mr823624qvi.63.1582747336681;
-        Wed, 26 Feb 2020 12:02:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582747336; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3503283lfg;
+        Wed, 26 Feb 2020 12:17:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwaDG0jSpHJauespn4pvfkLXajltS2uu4ulMhi6CXS/or+p6XE7Y9N7Wt9kU+DYswub6o9K
+X-Received: by 2002:a05:620a:13a2:: with SMTP id m2mr937160qki.459.1582748268098;
+        Wed, 26 Feb 2020 12:17:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582748268; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zf7si3VqLVJwuY/T8GxQ2kENOhlg6cwLuhpOrv9ZUdW6pd5o7tf/rsq0Dx8Wc5pORv
-         bNbzQEkz2gxzLovg+bDHP5YZESfUHjKojPwUQxXVeITwH+8gOv2AqWI5lSLJqwMtPAnH
-         7vrqIIf4kZbK+7/Wv8qFpGGdUzH5z+KHcQmCHQdLJNHDx29XzV7aEOHhHMBdGoqYdylj
-         LGFww6Au08fLuOuKyuz+aX3563Px/ijSlAJc1raQBMPl51XVPxeqb08hoT1ixVanx5Yi
-         uPXB+F+2MyACLMDNLkrlKrQZ0Af+vZRXdRs4bJEPRd462CmNRsngValAhdfldwXQeh9U
-         tjIQ==
+        b=Awa5bvu+oea7PmGrJubs6wMfLcROJGSNnQrYSzsBvg5XmXgN9XlNojqUTeYZq97UEv
+         yvNtNkVE/HoHP4zkKAj6x+D2XxEV26tzSmhMDXkr2geHNdbVteYlS1J4dSrHvbDBy9m1
+         XSVAN18gZC5vNqJLnC0TFH8DmUw61zjxrqTz3OQHjkXDtJWIdYK61QRfKudoytoDT4Ws
+         jgOa2jWN1KCT7FgaB/ZwlrT2diPrwnijAGIHc3M20LDAWYiZhGU6r4ME1t6bOn9BvI07
+         35RhWL7S1zmbkBRV+nIIS1DXivxkxEUxvB4+rJfGtGlTXX7aLWFjh+xWRXtmOHJwopv2
+         snHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=QVAYVXYHvkT9JL7kChGrZ3mZXN69ZwUzjKCoy/q5ZNE=;
-        b=NZKgVGKM0G6YzsslEHnDNL4mszwZGcMZ4uhoWMX7MZiF+Hnq0SKWfNVoOYdHvJK5Ou
-         OV/sAFm6OVmLrGaf8e6p04zgg8PH0yaGtUBPVl39x5H6x+YE/1xYPqF9EJRZKZ7tk5+A
-         jRTaJdbNkes0jwBF2OjFw1kBHJFoX1zwrsjTgZTHK3/N9GfJj0NQuY3uyzzAvdqBFdD6
-         Fua3TIyiVHhncmcMNv7CfHNQLpv0pkJ8pjxOku+lhaREPbVTkl8LTi+K2R7STluokwTQ
-         vkPMoYyeR2PWGrTOihAWHt0nH2nGOgTmjDIHxab8iLpqadCeurZNH5OtPRkFCLstO/t+
-         Ph/g==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=y98vfniHRFb61OhIt/0l0Rgi2qs8fZMqB5W8SagSPlg=;
+        b=PWa8IV+xSezRI36mb7hMKurpdkoAVpJ+ISwitsFSSoDNOXuLVy79TaZQqjXKor1YeY
+         t2awmBBiwTpWX6dFc2gdOvdOWNh5ksgn8fa6VFp0v73piepUh9jS1xYx+9snV3qwtC4j
+         kUKhWQcMYQ26mDGkUSVpyinX1qPDHVl3NWm3Wtf9VDhQOApSq5Pol64tPJ4ItkT3BDjL
+         UHDMQu1ftNmisjqveAYR0Ri0zge+0n/Zn1zD+juTDE/MskgOHJ4cVhmeAeVKOAwTUjPe
+         JapKtQcOUXi9aTWVXl3An0/4EPvKKdZBKMCWZaxxbCgWoDSO8InSAffbiLHpfngOjiMP
+         Vepw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UO8pTzpr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 142si298221qkh.201.2020.02.26.12.02.16
+        by mx.google.com with ESMTPS id d129si306116qkc.350.2020.02.26.12.17.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2020 12:02:16 -0800 (PST)
+        Wed, 26 Feb 2020 12:17:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UO8pTzpr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:49294 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49460 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j72sq-0002sF-4F
-	for alex.bennee@linaro.org; Wed, 26 Feb 2020 15:02:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43051)
+	id 1j737r-0001z3-IS
+	for alex.bennee@linaro.org; Wed, 26 Feb 2020 15:17:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53565)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <stefanb@linux.ibm.com>) id 1j72se-0002rp-2h
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 15:02:05 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1j737U-0001k9-Sj
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 15:17:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <stefanb@linux.ibm.com>) id 1j72sc-0002nj-Eh
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 15:02:03 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:9938
- helo=mx0a-001b2d01.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <stefanb@linux.ibm.com>)
- id 1j72sb-0002gl-FJ; Wed, 26 Feb 2020 15:02:02 -0500
-Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 01QJtadP058204; Wed, 26 Feb 2020 15:01:57 -0500
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 2ydqf7sgs1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 26 Feb 2020 15:01:57 -0500
-Received: from m0098419.ppops.net (m0098419.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 01QJtj97058584;
- Wed, 26 Feb 2020 15:01:57 -0500
-Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com
- [169.62.189.10])
- by mx0b-001b2d01.pphosted.com with ESMTP id 2ydqf7sgrb-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 26 Feb 2020 15:01:57 -0500
-Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
- by ppma02dal.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id 01QK1L7l024900;
- Wed, 26 Feb 2020 20:01:56 GMT
-Received: from b03cxnp07028.gho.boulder.ibm.com
- (b03cxnp07028.gho.boulder.ibm.com [9.17.130.15])
- by ppma02dal.us.ibm.com with ESMTP id 2ydcmksqkq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 26 Feb 2020 20:01:56 +0000
-Received: from b03ledav003.gho.boulder.ibm.com
- (b03ledav003.gho.boulder.ibm.com [9.17.130.234])
- by b03cxnp07028.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 01QK1tGG40173834
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 26 Feb 2020 20:01:55 GMT
-Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E3C3D6A051;
- Wed, 26 Feb 2020 20:01:54 +0000 (GMT)
-Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 310506A054;
- Wed, 26 Feb 2020 20:01:54 +0000 (GMT)
-Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
- by b03ledav003.gho.boulder.ibm.com (Postfix) with ESMTP;
- Wed, 26 Feb 2020 20:01:53 +0000 (GMT)
+ (envelope-from <eric.auger@redhat.com>) id 1j737T-0004Qx-9X
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 15:17:24 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:31563
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1j737T-0004Kp-5q
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 15:17:23 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582748241;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=y98vfniHRFb61OhIt/0l0Rgi2qs8fZMqB5W8SagSPlg=;
+ b=UO8pTzprxdjVhH4Mo1PIzkOsVQyfWPkxCtprbc02CMCl77bTBYBko1E1BOkX0rj7qT5duR
+ B6eldNUbAiSQwsEmHR2/sthTzfexBqIvwe9WJoSw6jS33saNRNR58ZKJq84BcW3f7tTDYb
+ RJxUc+oehB6+8MvOwP+43mSn8Plph/g=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-390-gdhqA84FNa-Si9SjRrc2cg-1; Wed, 26 Feb 2020 15:17:20 -0500
+X-MC-Unique: gdhqA84FNa-Si9SjRrc2cg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E20BFDBA6;
+ Wed, 26 Feb 2020 20:17:18 +0000 (UTC)
+Received: from [10.36.116.59] (ovpn-116-59.ams2.redhat.com [10.36.116.59])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A560227096;
+ Wed, 26 Feb 2020 20:17:13 +0000 (UTC)
 Subject: Re: [PATCH v3 00/10] vTPM for aarch64
-To: Auger Eric <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+To: Stefan Berger <stefanb@linux.ibm.com>, eric.auger.pro@gmail.com,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
 References: <20200226102549.12158-1-eric.auger@redhat.com>
  <31e81f4b-ef00-692e-540f-ef3d9be5bb9a@linux.ibm.com>
  <22380cd3-b13e-aede-a7f5-158d86ca6136@redhat.com>
  <a8913524-4de3-dc0a-0b2c-2deb88c33859@linux.ibm.com>
  <df345076-8def-9ba5-6c11-2bcaa2293ca1@redhat.com>
-From: Stefan Berger <stefanb@linux.ibm.com>
-Message-ID: <bf008b7d-e6dc-5eeb-03e0-a141db367b6d@linux.ibm.com>
-Date: Wed, 26 Feb 2020 15:01:53 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.1
+ <bf008b7d-e6dc-5eeb-03e0-a141db367b6d@linux.ibm.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <75165938-db89-7580-630e-ba748cb32a07@redhat.com>
+Date: Wed, 26 Feb 2020 21:17:11 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <df345076-8def-9ba5-6c11-2bcaa2293ca1@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <bf008b7d-e6dc-5eeb-03e0-a141db367b6d@linux.ibm.com>
 Content-Language: en-US
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.572
- definitions=2020-02-26_07:2020-02-26,
- 2020-02-26 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 suspectscore=0
- mlxlogscore=999 bulkscore=0 priorityscore=1501 impostorscore=0
- phishscore=0 malwarescore=0 adultscore=0 clxscore=1015 lowpriorityscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2001150001 definitions=main-2002260121
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by
- mx0b-001b2d01.pphosted.com id 01QJtadP058204
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 148.163.158.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -138,65 +118,75 @@ Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org,
  philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v5E56xBvJA4R
+X-TUID: lSky4fWIusHt
 
-On 2/26/20 1:18 PM, Auger Eric wrote:
-> Hi Stefan,
->
-> On 2/26/20 6:53 PM, Stefan Berger wrote:
->> On 2/26/20 12:47 PM, Auger Eric wrote:
->>> Hi Stefan,
->>>
->>> On 2/26/20 2:32 PM, Stefan Berger wrote:
->>>> On 2/26/20 5:25 AM, Eric Auger wrote:
->>>>> This series adds the capability to instantiate an MMIO TPM TIS
->>>>> in ARM virt. It is candidate to qemu 5.0.
->>>> Looks good. Can you run the checkpatch script over the patches and
->>>> address the warnings?
+Hi Stefan,
+
+On 2/26/20 9:01 PM, Stefan Berger wrote:
+> On 2/26/20 1:18 PM, Auger Eric wrote:
+>> Hi Stefan,
+>>
+>> On 2/26/20 6:53 PM, Stefan Berger wrote:
+>>> On 2/26/20 12:47 PM, Auger Eric wrote:
+>>>> Hi Stefan,
 >>>>
+>>>> On 2/26/20 2:32 PM, Stefan Berger wrote:
+>>>>> On 2/26/20 5:25 AM, Eric Auger wrote:
+>>>>>> This series adds the capability to instantiate an MMIO TPM TIS
+>>>>>> in ARM virt. It is candidate to qemu 5.0.
+>>>>> Looks good. Can you run the checkpatch script over the patches and
+>>>>> address the warnings?
+>>>>>
+>>>>>
+>>>> Thank you for you review!
 >>>>
->>> Thank you for you review!
+>>>> About warnings
+>>>>
+>>>> - There are warnings due to new files added but I think they all
+>>>> have an
+>>>> entry in MAINTAINERS as wildcards are used.
+>>>>
+>>>> - In tpm: Add the SysBus TPM TIS device.
+>>>> =C2=A0=C2=A0=C2=A0 There is line over 80 chars but I think it is fine
+>>>>
+>>>> #define TPM_TIS_SYSBUS(obj) OBJECT_CHECK(TPMStateSysBus, (obj),
+>>>> TYPE_TPM_TIS_SYSBUS)
 >>>
->>> About warnings
+>>> Ok, leave it as it is.
+>> and sorry, what about the comment style issues derived from existing
+>> files?
+>>
+>> "
+>> - test: tpm-tis: Get prepared to share tests between ISA and sysbus
+>> devices
+>> has lots of warnings due to old comment style being used in
+>> tests/qtest/tpm-tis-test.c. I did not fix the style issue because I just
+>> copy the code into tpm-tis-util.c
+>>
+>> Do you want me to fix them in the same patch, in a separate patch or
+>> ignore the style issue for now?
+>=20
+>=20
+> if you could fix them that would be great...
+
+Sure, I will fix them.
+
+Thanks
+
+Eric
+>=20
+>=20
+>> "
+>>
+>> Thanks
+>>
+>> Eric
+>>
+>>
 >>>
->>> - There are warnings due to new files added but I think they all have=
- an
->>> entry in MAINTAINERS as wildcards are used.
+>>> =C2=A0=C2=A0=C2=A0 Stefan
 >>>
->>> - In tpm: Add the SysBus TPM TIS device.
->>>  =C2=A0=C2=A0 There is line over 80 chars but I think it is fine
 >>>
->>> #define TPM_TIS_SYSBUS(obj) OBJECT_CHECK(TPMStateSysBus, (obj),
->>> TYPE_TPM_TIS_SYSBUS)
->>
->> Ok, leave it as it is.
-> and sorry, what about the comment style issues derived from existing fi=
-les?
->
-> "
-> - test: tpm-tis: Get prepared to share tests between ISA and sysbus dev=
-ices
-> has lots of warnings due to old comment style being used in
-> tests/qtest/tpm-tis-test.c. I did not fix the style issue because I jus=
-t
-> copy the code into tpm-tis-util.c
->
-> Do you want me to fix them in the same patch, in a separate patch or
-> ignore the style issue for now?
-
-
-if you could fix them that would be great...
-
-
-> "
->
-> Thanks
->
-> Eric
->
->
->>
->>  =C2=A0=C2=A0 Stefan
->>
->>
+>=20
+>=20
 

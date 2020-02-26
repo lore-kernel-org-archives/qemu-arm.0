@@ -1,218 +1,45 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2264800lfg;
-        Tue, 25 Feb 2020 15:08:33 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyC0/fy8sOs1GnIUMnHwsFaXrKLnvIm6IsxW8tqSzkQmUTJr1MdeKOiqcYKaknNpCkzU4UW
-X-Received: by 2002:a05:620a:8d6:: with SMTP id z22mr1596189qkz.420.1582672112940;
-        Tue, 25 Feb 2020 15:08:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582672112; cv=none;
-        d=google.com; s=arc-20160816;
-        b=UBOcJNgD+WIIhdkAVbjPczeBUBCKB1Ym3SyAkaLclNONvXrvvPpdUuwT7pRDDGLGCz
-         y4txSBoJ4reN837xXUTOSnv0+Waqub+AimXVwcD9SW9BRJ3wHmeNFwwhzcC7aPwUHi2g
-         EAUNCE1T/C2dNgSbUjb81xO+WeZ0aVCoTK8dP1/tuJ4i2oSNsRL3Ewra9CO/evdC3eRZ
-         0dq/GSi2bTdm3KZTsDv9YI09UYMzfPhO/OjoCXNUnJSMELg4Xh+lQQgq/rvhJtj6FiGu
-         kAbAOT5PSXgbrGUsjJuhMkvTxwpD4iHKW8+SE0ooEKxCt2UMc1z86aKH39Y1IYaUGeUz
-         3BsA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=uwhRSZ3g9ZtGSoenxD0eDfT6hiKCVQJkJGUCdxiEVdk=;
-        b=etFKDrtBA2JyH/s7jaBZo8mFQnqp+J2dt0whLAczLUvIa91GRxPZnTpsIizvTltOxO
-         ym5mDfpr2C6dPWBWsne8nxUsjYm6x5gvbBXQ1BiXekX08PwRtuAuYFfnBJlUbAyLX/L5
-         F4jTG3jv/5uMEci1bzRSTfhytTZ+3Ua4koprNR4Or4C9Ikmb0QL9NKqGGs4s1UZINFgk
-         RPipiJMxpT9Kg79BZxlHa2uiyA34mkw28gZrSucTs7nJe/OSZnMyBNG4fcyhxFHO/QTA
-         8NhVReUNRRzPsxDk/2F1tjHTSeQFxgbqgQ81IQ8ZAp4CW4D1hzI2BUihrxqiJ216Bk6x
-         1iwA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ntMIJPrS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j26si542500qka.48.2020.02.25.15.08.32
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Feb 2020 15:08:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ntMIJPrS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35904 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j6jJY-00033k-Bu
-	for alex.bennee@linaro.org; Tue, 25 Feb 2020 18:08:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38403)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1j6jJD-00033I-25
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 18:08:12 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1j6jJB-00077B-Be
- for qemu-devel@nongnu.org; Tue, 25 Feb 2020 18:08:10 -0500
-Received: from mail-il1-x12f.google.com ([2607:f8b0:4864:20::12f]:34856)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1j6jJB-00072n-21; Tue, 25 Feb 2020 18:08:09 -0500
-Received: by mail-il1-x12f.google.com with SMTP id g126so712322ilh.2;
- Tue, 25 Feb 2020 15:08:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to:cc;
- bh=uwhRSZ3g9ZtGSoenxD0eDfT6hiKCVQJkJGUCdxiEVdk=;
- b=ntMIJPrSens1Mi3ojhL7iqksmCO22sYMoIIPVkxlmGSjqxeCleckXcE0L8wKOeMfG1
- nNDkme4OvLTB++yOHEvQiHvhNrllteS4LCN6QrjQCtFUO6a9V1Zd7jmMI5pTp++4BGxP
- jGGJGSeZ8P9IpiBGpEi79XzweFOTTEIyP89hhwB33+9VvyVvskGEhoqekjounLrOvhcJ
- PE+LfL427nJNvC/zzBgBX98R6ZoHaRJQ5FECruq54pPcy2IWD3d9GM3oiAXZJ6Gzv7tS
- R2RRhZy+e7yYWDXTjbscAH/ZfpihQCLJ05gWRbunbD8lQoEXoCsQ1xm78XimhihY4Ifx
- ZshA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
- bh=uwhRSZ3g9ZtGSoenxD0eDfT6hiKCVQJkJGUCdxiEVdk=;
- b=o3uU+C5q2YQ4T556LSvtQpM4JesrVZ5NvZMEMJgY+kWpU0XBwStgVDXmju9DhQx2Ww
- r/E89KB+YO0OMBxoH8U66gMQU6U+rWKM8UHJERmVMp5o+i+ixBFqxLQtMKqgid/D5VQC
- EZ/5Ynt2bB/h4Ihuite9oXuSRTvqicHWEfDbydxiqGjZG6XH5V8JNrDl4H9TcyB8By8N
- AJrgotMT/RImBwhGu+FZO6/HMO2b/m9ajoe/Y6xvufAVR/7eVk1WUz2HMIWzD1+qIZmm
- CGsKRql9WZTx34ibF5EJVnWrzzG2w1hqiRAhLJtLBQVbOezBxPTRytFJRlQhW1sZxf2q
- NbcA==
-X-Gm-Message-State: APjAAAUIjsGVRazT8DhZw+c62EoOeLQcUK6mmIh2CzMjDrdyBi+f5KWq
- e6K7y72FqKtk/cx6AdEMdEfrPXG+lFr0nxWE/bM=
-X-Received: by 2002:a92:d5cf:: with SMTP id d15mr1029773ilq.306.1582672086198; 
- Tue, 25 Feb 2020 15:08:06 -0800 (PST)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id y7sm6732756wmd.1.2020.02.25.23.39.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 25 Feb 2020 23:39:30 -0800 (PST)
+Received: from zen.home.arpa (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 58DD61FF8C;
+	Wed, 26 Feb 2020 07:39:29 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: peter.maydell@linaro.org
+Cc: qemu-devel@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Robert Foley <robert.foley@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PULL 01/19] tests/tcg: include a skip runner for pauth3 with plugins
+Date: Wed, 26 Feb 2020 07:39:11 +0000
+Message-Id: <20200226073929.28237-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200226073929.28237-1-alex.bennee@linaro.org>
+References: <20200226073929.28237-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Wed, 26 Feb 2020 00:07:55 +0100
-Message-ID: <CAPan3Wq-MVwcJQELP8n+g33CR7tsiGXQ698gA177nd2my9hWCw@mail.gmail.com>
-Subject: Sudden slowdown of ARM emulation in master
-To: Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: multipart/alternative; boundary="0000000000007e6dbf059f6e8f0e"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::12f
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: p6KlWA6UZdXS
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: OHQYm2stot20
 
---0000000000007e6dbf059f6e8f0e
-Content-Type: text/plain; charset="UTF-8"
+If we have plugins enabled we still need to have built the test to be
+able to run it.
 
-Hello Igor and Paolo,
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Robert Foley <robert.foley@linaro.org>
+Message-Id: <20200225124710.14152-2-alex.bennee@linaro.org>
 
-Just now I was working on some small fixes for the cubieboard machine and
-rebasing my Allwinner H3 branches.
-While doing some testing, I noticed that suddenly the machines were much
-slower than before.
-I only see this happening when I rebase to this commit:
-   ca6155c0f2bd39b4b4162533be401c98bd960820 ("Merge tag 'patchew/
-20200219160953.13771-1-imammedo@redhat.com' of
-https://github.com/patchew-project/qemu into HEAD")
-
-Also the avocado tests I'm running started to timeout:
-
-+ AVOCADO_ALLOW_LARGE_STORAGE=yes avocado --show=app,console run -t
-machine:cubieboard tests/acceptance/boot_linux_console.py
-...
-(1/2)
-tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_cubieboard_initrd:
-|console: Uncompressing Linux... done, booting the kernel.
-|console: Booting Linux on physical CPU 0x0
-console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version 7.2.1
-20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019
-console: CPU: ARMv7 Processor [410fc080] revision 0 (ARMv7), cr=50c5387d
-console: CPU: PIPT / VIPT nonaliasing data cache, VIPT nonaliasing
-instruction cache
-console: OF: fdt: Machine model: Cubietech Cubieboard
-...
-INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred: Timeout
-reached\n
-Original status: ERROR\n{'name':
-'1-tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_cubieboard_initrd',
-'logdir': '/home/me/avocado/job-results/job-2020-02-25T23.58-d43884...
-(90.41 s)
-...
-console: random: crng init done
-/console: mount: mounting devtmpfs on /dev failed: Device or resource busy
--console: EXT4-fs (sda): re-mounted. Opts:
-block_validity,barrier,user_xattr,acl
-/console: Starting logging: OK
-INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred: Timeout
-reached\nOriginal status: ERROR\n{'name':
-'2-tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_cubieboard_sata',
-'logdir': '/home/fox/avocado/job-results/job-2020-02-25T23.58-d438849/...
-(90.53 s)
-RESULTS    : PASS 0 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 2 |
-CANCEL 0
-JOB TIME   : 181.22 s
- ....
-
-Have you noticed a similar performance change?
-Do you have any clue if there may be something changed here that could
-cause a slowdown?
-
-Regards,
-Niek
-
-
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+index d2299b98b76..71f72cfbe34 100644
+--- a/tests/tcg/aarch64/Makefile.softmmu-target
++++ b/tests/tcg/aarch64/Makefile.softmmu-target
+@@ -70,4 +70,6 @@ pauth-3:
+ 	$(call skip-test, "BUILD of $@", "missing compiler support")
+ run-pauth-3:
+ 	$(call skip-test, "RUN of pauth-3", "not built")
++run-plugin-pauth-3-with-%:
++	$(call skip-test, "RUN of pauth-3 ($*)", "not built")
+ endif
 -- 
-Niek Linnenbank
-
---0000000000007e6dbf059f6e8f0e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hello Igor and Paolo,</div><div><br></div><div>Just n=
-ow I was working on some small fixes for the cubieboard machine and rebasin=
-g my Allwinner H3 branches.</div><div>While doing some testing, I noticed t=
-hat suddenly the machines were much slower than before.</div><div>I only se=
-e this happening when I rebase to this commit:</div><div>=C2=A0=C2=A0 ca615=
-5c0f2bd39b4b4162533be401c98bd960820 (&quot;Merge tag &#39;patchew/<a href=
-=3D"mailto:20200219160953.13771-1-imammedo@redhat.com">20200219160953.13771=
--1-imammedo@redhat.com</a>&#39; of <a href=3D"https://github.com/patchew-pr=
-oject/qemu">https://github.com/patchew-project/qemu</a> into HEAD&quot;)</d=
-iv><div><br> </div><div>Also the avocado tests I&#39;m running started to t=
-imeout:</div><div><br></div><div>+ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes avocad=
-o --show=3Dapp,console run -t machine:cubieboard tests/acceptance/boot_linu=
-x_console.py</div><div>...<br></div><div>(1/2) tests/acceptance/boot_linux_=
-console.py:BootLinuxConsole.test_arm_cubieboard_initrd: |console: Uncompres=
-sing Linux... done, booting the kernel.<br>|console: Booting Linux on physi=
-cal CPU 0x0<br>console: Linux version 4.20.7-sunxi (<a href=3D"mailto:root@=
-armbian.com">root@armbian.com</a>) (gcc version 7.2.1 20171011 (Linaro GCC =
-7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019<br>console: CPU: ARMv7 =
-Processor [410fc080] revision 0 (ARMv7), cr=3D50c5387d<br>console: CPU: PIP=
-T / VIPT nonaliasing data cache, VIPT nonaliasing instruction cache<br>cons=
-ole: OF: fdt: Machine model: Cubietech Cubieboard</div><div>...<br></div><d=
-iv>INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred: Timeout=
- reached\n</div><div>Original status: ERROR\n{&#39;name&#39;: &#39;1-tests/=
-acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_cubieboard_initr=
-d&#39;, &#39;logdir&#39;: &#39;/home/me/avocado/job-results/job-2020-02-25T=
-23.58-d43884... (90.41 s)</div><div>...</div><div>console: random: crng ini=
-t done<br>/console: mount: mounting devtmpfs on /dev failed: Device or reso=
-urce busy<br>-console: EXT4-fs (sda): re-mounted. Opts: block_validity,barr=
-ier,user_xattr,acl<br>/console: Starting logging: OK<br>INTERRUPTED: Test i=
-nterrupted by SIGTERM\nRunner error occurred: Timeout reached\nOriginal sta=
-tus: ERROR\n{&#39;name&#39;: &#39;2-tests/acceptance/boot_linux_console.py:=
-BootLinuxConsole.test_arm_cubieboard_sata&#39;, &#39;logdir&#39;: &#39;/hom=
-e/fox/avocado/job-results/job-2020-02-25T23.58-d438849/... (90.53 s)<br>RES=
-ULTS =C2=A0 =C2=A0: PASS 0 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT=
- 2 | CANCEL 0<br>JOB TIME =C2=A0 : 181.22 s</div><div>=C2=A0....</div><div>=
-<br></div><div>Have you noticed a similar performance change?<br></div><div=
->Do you have any clue if there may be something changed here that could cau=
-se a slowdown?</div><div><br></div><div>Regards,</div><div>Niek<br></div><d=
-iv><br></div><div><br>-- <br><div dir=3D"ltr" class=3D"gmail_signature" dat=
-a-smartmail=3D"gmail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><b=
-r></div></div></div></div></div>
-
---0000000000007e6dbf059f6e8f0e--
+2.20.1

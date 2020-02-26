@@ -1,105 +1,94 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3318589lfg;
-        Wed, 26 Feb 2020 09:09:49 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz6K2o6HEg8j8UBbAu00domhIb1u+8FXKcm3qqSHU08wxTsz4uaAV0L144mp4NATab+ozt7
-X-Received: by 2002:a37:644b:: with SMTP id y72mr67184qkb.193.1582736989176;
-        Wed, 26 Feb 2020 09:09:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582736989; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3337571lfg;
+        Wed, 26 Feb 2020 09:26:57 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwGoISbTtXt1nb2MlBreBvmQDoP9HbaaxC5OAM2i3DE/Jueq0Zymyy3/9yiXHjgC2TPz2Oi
+X-Received: by 2002:a37:5206:: with SMTP id g6mr140112qkb.287.1582738017720;
+        Wed, 26 Feb 2020 09:26:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582738017; cv=none;
         d=google.com; s=arc-20160816;
-        b=jY9QmpSXjunbkp16+Yocju8f6XZ6pEZsFdJrJCfFtqDTSB1xkA8asGs9g51808PXJL
-         Pe4XDhV3fOTrOoF01/9NInQ3TauDSIW7D7uhIDLyjfkX1/NmtaJTNBoQe99GEHe/5trs
-         KvgX1DcVZOspXGdZEtMU3hMOxqs2LICcwYIYW8nhLS9WuDPgnLoj4YiNNzHX0gFrtPpi
-         XuPFHnbM/PwFOkHNM9/n11I2FLYWKVQ0jIy8dmLKXeYDWuiEFA/ooGhEmydzI4xeVST9
-         s6b5GGnGmHRC81W3ip52rLgEqMROAYJYKtjF18jIqAFgg5dMspVoR1p9wwfoCi2wky9r
-         ki7w==
+        b=dR7xt3Of4F4VIxDggTSKLoOTjmXIUg5+C3LrnKpF168nH96gL4wgqZK0PObEPKDLM8
+         oX6o1mCP5EGdh1p+vI2g4TSCJPRGc6i2CsryEpNFtpahQ1/3dI0PyZxP3YV4ZrBzEcPv
+         1M/O5vSrZtMQ3LmN2CrhfhXNh9rlgSjDAA/4sPWmdnFrcIuGuqPkcbnB7NOzE/xy19p9
+         /dsUqQXWFVH0zVnv3n5Au4PvQXB8tUcQQZ4GxXA62uQXshJdaYrZTviq/69y+/RfvLMc
+         Ily+9mlL4EN5H1ucZDxQO7+htUAn1TCY6O1BsdlIc/5IkUiuB80LdxWJDZ8qIYArt4+j
+         ncpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject:dkim-signature;
-        bh=tbipDMXaSAJp7zG5J+AE8EDo2UW8S1OiLcsauThJr7s=;
-        b=mqw5+gjrafhGXNjfEXsEzCESW8izVgkS3SYfGh2C0DYcBhpgg0k8meQjw6Oudmrxkp
-         tFiFsMSRfTvHO+f9xQA6r2IOh/GksU7fgnDvsAVFrOTEHG0mgJ+7Vg8l2VSJwnwZfZnl
-         q5sCFfYLR6JOB4Hkfk1mG1c1VpaxHt04gEVzZXbg31RIZUur/FMLa0Hudq5lVJNJfZ0c
-         aU2DC/E3d1wxx61ls/nL0zeTFuD01oXxZBnJQxtE6o4S8+9lUiDXbfe8rwAmaaooyqNj
-         vnA4Jd0iRW8yfjG2yOS0rR9kUINzmXIsZvUEszJlnbEjnHUeGwFDiBij8egVIkddjLG8
-         28SQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=J9wll+plIfhDIdmgkRRYJeSJEE3Lh0NPJHy67PoM9Ss=;
+        b=jTQAwDWca+muHi7+3AE9VCFzB0ajgs5lppgCJbas97MisbWlF76G1FXyrrc4zPMN4P
+         R4q4MJ+V9OAeNprkhnJFeckYZnYHt9ys9UZwEsOYDJxwQaUqebkMG0l71HasCgDWn8S4
+         yiQ9aR/75jX2LrFvSF4Aw0cSkptCMbfoCA8/l6RspoKxihM+uiil6xLraX1ihQZZ+1SP
+         tNEUMfv2r4TxT12OlY6agvFG3UVSiIDdPAPDAZlpfaVs/F6fKpctM3Fe24+peCqfR6FD
+         N3Yf95l9wE0lgOXrA7vxtL7mk2Hk0NsLrQHm7fjfmCDSPlxntrMPszfPK8vhSpQDtiL6
+         dIag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HnxvlbUH;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PeyUcFAj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h24si60859qkl.44.2020.02.26.09.09.49
+        by mx.google.com with ESMTPS id c65si74751qke.156.2020.02.26.09.26.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2020 09:09:49 -0800 (PST)
+        Wed, 26 Feb 2020 09:26:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HnxvlbUH;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PeyUcFAj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47484 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47664 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j70Bv-00010A-5x
-	for alex.bennee@linaro.org; Wed, 26 Feb 2020 12:09:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40721)
+	id 1j70SX-00083k-2n
+	for alex.bennee@linaro.org; Wed, 26 Feb 2020 12:26:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48250)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j70Bh-0000zO-W1
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 12:09:34 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1j70SM-00082k-TD
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 12:26:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j70Bg-0006ZO-K1
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 12:09:33 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:60526
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <eric.auger@redhat.com>) id 1j70SL-0005Ln-BW
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 12:26:46 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:56284
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j70Bg-0006WL-FK
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 12:09:32 -0500
+ id 1j70SL-0005Fq-6M
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 12:26:45 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582736971;
+ s=mimecast20190719; t=1582738004;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=tbipDMXaSAJp7zG5J+AE8EDo2UW8S1OiLcsauThJr7s=;
- b=HnxvlbUHYbhutiHHrcYC9KwU/GJvwiFpTwIimdr6TjIA1n/WzyRA9MIFabClhrZBZFqMNe
- a8OKyt/ZyOjYfVPw7sI/5jFxFdkCw+GarXZrS3Xu8EJpls5ClU3OOGKoEWWIek5ZCJEIY5
- 5vNBqBT8eScPHkRNDuj4KEPF7gPPU60=
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=J9wll+plIfhDIdmgkRRYJeSJEE3Lh0NPJHy67PoM9Ss=;
+ b=PeyUcFAjobH5RTPQCD2u54L/5hlhTltz0hkgc0H2SzeFbWueHIb3MH+d6ceVOaEf/1j3H1
+ y74zOE1U4Kf8DIm1SYdnIvdu9lXf1TUWU4Z6EwQAp7wHmI1mr8N4V7hUt8dPKyAtjxeLKH
+ E98tKYkLH8qNI4xGb4d1CK4UCbzT7Q0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-234-Bk8DxKsVPgGzUpCRct9uYg-1; Wed, 26 Feb 2020 12:09:23 -0500
-X-MC-Unique: Bk8DxKsVPgGzUpCRct9uYg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-6-_5ErXceoMQCESc6wiSA_0g-1; Wed, 26 Feb 2020 12:26:42 -0500
+X-MC-Unique: _5ErXceoMQCESc6wiSA_0g-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 22612800D48;
- Wed, 26 Feb 2020 17:09:22 +0000 (UTC)
-Received: from [10.36.116.59] (ovpn-116-59.ams2.redhat.com [10.36.116.59])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C3C3F27180;
- Wed, 26 Feb 2020 17:09:20 +0000 (UTC)
-Subject: Re: [PATCH] hw/intc/arm_gic_kvm: Don't assume kernel can provide a
- GICv2
-From: Auger Eric <eric.auger@redhat.com>
-To: Andrew Jones <drjones@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-References: <20200225182435.1131-1-peter.maydell@linaro.org>
- <20200226085209.ni7oph6odt24warq@kamzik.brq.redhat.com>
- <CAFEAcA-Bhuy+2dU3joZoip5=tOkiTSoC+LzdNzyd+urUnoRNXw@mail.gmail.com>
- <20200226091750.mqkbqffod247bori@kamzik.brq.redhat.com>
- <85d78328-0843-3f11-7a79-6010aea3d3dd@redhat.com>
-Message-ID: <a307e207-cf11-e664-1a3f-a2723a8b9852@redhat.com>
-Date: Wed, 26 Feb 2020 18:09:18 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 971F4100726B;
+ Wed, 26 Feb 2020 17:26:40 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-59.ams2.redhat.com [10.36.116.59])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F095491851;
+ Wed, 26 Feb 2020 17:26:33 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, peterx@redhat.com
+Subject: [PATCH] hw/arm/smmu-common: a fix to smmu_find_smmu_pcibus
+Date: Wed, 26 Feb 2020 18:26:28 +0100
+Message-Id: <20200226172628.17449-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <85d78328-0843-3f11-7a79-6010aea3d3dd@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
@@ -113,65 +102,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Marc Zyngier <maz@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AD8aNPW/JFv9
+X-TUID: rnNkgMi0vt+5
 
-Hi Peter,
+Make sure a null SMMUPciBus is returned in case we were
+not able to identify a pci bus matching the @bus_num.
 
-On 2/26/20 12:58 PM, Auger Eric wrote:
-> Hi Peter,
-> 
-> On 2/26/20 10:17 AM, Andrew Jones wrote:
->> On Wed, Feb 26, 2020 at 08:56:03AM +0000, Peter Maydell wrote:
->>> On Wed, 26 Feb 2020 at 08:52, Andrew Jones <drjones@redhat.com> wrote:
->>>> Although, many QEMU command line users still won't know what to do
->>>> without an explicit "Try -machine gic-version=host" hint, so that
->>>> might be nice to add too.
->>>
->>> In the GIC code we don't know if the machine even has a
->>> gic-version property, so we're not in the right place to try to
->>> produce that message.
->>>
->>
->> Ah yes, we use qdev_init_nofail() in virt::create_gic(), so there's
->> no chance to append another hint at the machine level.
->>
->> And what about when machine.gic-version is not provided and KVM is
->> in use? Shouldn't we try version '2', as we do now, but then also
->> '3', if '2' fails, before erroring out?
-> 
-> In case of KVM accelerated mode we could effectively probe v2 first and
-> if not supported choose v3, as mentioned by Drew.
-> 
-> Couldn't kvm_arm_vgic_probe() return a bitmap by calling
-> kvm_create_device on both versions in dryrun mode?
+This matches the fix done on intel iommu in commit:
+a2e1cd41ccfe796529abfd1b6aeb1dd4393762a2
 
-I sent an RFC prototyping what we had in mind - I think - together with
-Drew.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+---
+ hw/arm/smmu-common.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-[RFC 0/2] hw/arm/virt: kvm: allow gicv3 by default if host does not
-support v2
-
-This was discussed earlier in that thread:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg674469.html.
-
-It should not break any compatibility as the only case we are supposed
-to change here was aborting before.
-
-Thanks
-
-Eric
-> 
-> Thanks
-> 
-> Eric
-> 
->>
->> Thanks,
->> drew
->>
->>
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 0f2573f004..67d7b2d0fd 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -301,6 +301,7 @@ SMMUPciBus *smmu_find_smmu_pcibus(SMMUState *s, uint8_t=
+ bus_num)
+                 return smmu_pci_bus;
+             }
+         }
++        smmu_pci_bus =3D NULL;
+     }
+     return smmu_pci_bus;
+ }
+--=20
+2.20.1
 

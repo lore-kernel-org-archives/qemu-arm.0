@@ -1,107 +1,100 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4213643lfg;
-        Thu, 27 Feb 2020 01:48:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxlC53l84lGYoeIdavR84b2BgRbV/GrTkY5SFATpQfBjuH6OFurk88HfboFXSMTnOtTlpFv
-X-Received: by 2002:a0c:8c46:: with SMTP id o6mr3896190qvb.133.1582796934690;
-        Thu, 27 Feb 2020 01:48:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582796934; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4295785lfg;
+        Thu, 27 Feb 2020 03:07:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzOASW2DagzEP075LAhHjRSH1NlUHblHUubfa9w4N9a6FyG9m+mHZdctjuKIgZquW8EmWKN
+X-Received: by 2002:ac8:4505:: with SMTP id q5mr4309791qtn.84.1582801631216;
+        Thu, 27 Feb 2020 03:07:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582801631; cv=none;
         d=google.com; s=arc-20160816;
-        b=hXWtqbR9riUe65AT8ONMW2pJi3ynO8E4iiSH8i8cimtGMIIZM/aW+/nNntKpWAUL7e
-         IPSRTZRVUtLPNdf5lYAKV5ub2RZuSTEpcjLGBf624zn1Qi9may3GhdXxL7iekWzMfj2M
-         whLYl3nJ29t+ST1xq1gV3EQKjqf97igNu1P2Y4V7PycaAYghDQITtt/ZeIrp6IopTQNf
-         v+uvLPwnimyxaxpTfxgSnhqrODAygJH6EPzJ343inIZDXVtR1BxD9QmJNkAboQ18rrK7
-         wtUmrKSlygeeLiTHa5vwEUJcl7P9vZjbK1ufR7HML7vEv/KX+811Js5xKU6hguhOM6fc
-         v6xA==
+        b=q5XBK5shHyMtRs5rmNp7G4N3wEojGwf6nayh693gfK5nahZK7uhQ4WL2wdWhw/HV8V
+         o0FX+bbrTJpM6Z0LWFnK6/yCKMTnBkUkpWqAqtS0mvg0t3SnDgFyeFhKZnejDs95uI/b
+         rpZ/jULNNh4XOc5OOIO6XSErirLt/In3b67+EeTNoAlhLOpuXfcgG7Z1zBWxBxT8DLte
+         8oc9XxOPrSeIHn2zwdAuJsQG8Fa7HLFzfPBU1jTagfu0jNvoquZqZkqUdPAzmTvilHnb
+         RKua266Le8o32Q2whvpv4Phse+zHszgPIoz6b57yuw1le5yHgEYVAD3/0+b3Wcg7owCz
+         U5Og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=sovmJqWLi+w6r7aj57g8jsX5oYThDt/U4Hfb0qHizf8=;
-        b=DL02Lds2GwDQVJO/N3F0bbfSviWHMXiPVBGP9d2YzL1knyWBbNli4oyJjhr5QhNY4c
-         jcZ+4eL+TdTG3RIL7VWxDg3AQTXcooK9w8jdskc3+FYOfgBgquT9U7N2vrfAvw6bczfV
-         h09eWaEbUT4YQXwxhEos54HrG4SeRam1fkyiOYwXvZ6p6cOy/l5PhiQZ8pJkFD5Q0sgB
-         VIdNcLCgFhAOlXQDKE+ZeS5WJnpdeBwQZZoqf4q8OEkZWMk5K8Pdg1lS/UEAubYz0Rq4
-         ZpmF7a7O/FwaY1t7HCBpwbQsXAzJWsui83uL3fEbZhEHEdp+K6KHs59CBfUqEkQYY3l6
-         1tEA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :to:from:date:dkim-signature;
+        bh=f1RDikHjMuEMm5c5nGEz67lZrv93tK+Qel+QeJZrsug=;
+        b=PDMUVnSFV0IrO+vw8GO5CEWwIcVlTeHdnF2oo1XrTO0qVrDMWIRvih6IFKrD7d7OIY
+         n35bQydm0oumwnkz9NlocLfxo2nQKzDRtXvmVrmYTP0z/SYLkhO+heANihkiSeFlrDcj
+         by8l/nQjHJ+hdwrxdnbTKGS+RUJTJY6ppLp4OXavL4V35rHwgKP4czsvknv+3kWn2V9c
+         OnE8fxQIYnit2MpUONNVO+Sn6kXX6y79GXfTzgEkoZE6FiKLFpfEP5BJXzgV5TEW6NqF
+         f9B+kRKFpRo69OVEzHKPJL3tJHpw1odJxtZvzbH1siOJb25cngVVKgUB4wXrBmoXxo5z
+         4IoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TIi5yvWl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AxfrjXU9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d21si1146977qtq.40.2020.02.27.01.48.54
+        by mx.google.com with ESMTPS id 72si1256120qkm.276.2020.02.27.03.07.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2020 01:48:54 -0800 (PST)
+        Thu, 27 Feb 2020 03:07:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TIi5yvWl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AxfrjXU9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:56192 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57370 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j7Fmo-0008Pj-3T
-	for alex.bennee@linaro.org; Thu, 27 Feb 2020 04:48:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57144)
+	id 1j7H0Y-0001v2-Mk
+	for alex.bennee@linaro.org; Thu, 27 Feb 2020 06:07:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59182)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <frasse.iglesias@gmail.com>) id 1j7Fmb-0008Nb-T6
- for qemu-arm@nongnu.org; Thu, 27 Feb 2020 04:48:42 -0500
+ (envelope-from <cohuck@redhat.com>) id 1j7H0Q-0001uj-6m
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2020 06:07:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <frasse.iglesias@gmail.com>) id 1j7Fma-0006rh-T8
- for qemu-arm@nongnu.org; Thu, 27 Feb 2020 04:48:41 -0500
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:37770)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <frasse.iglesias@gmail.com>)
- id 1j7FmY-0006kH-Iw; Thu, 27 Feb 2020 04:48:38 -0500
-Received: by mail-lj1-x244.google.com with SMTP id q23so2629835ljm.4;
- Thu, 27 Feb 2020 01:48:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=sovmJqWLi+w6r7aj57g8jsX5oYThDt/U4Hfb0qHizf8=;
- b=TIi5yvWlZrkUEh6NGhCRcrYQadVDjEtPdZv0emlKyp2WB13hFDmYP9QZLZYzRoEK9o
- WipxuxeELa5IB5J7+JyqU6FqFRDcopAV2n4Ayc1Apppyoy0/m66sGvYWLEJ7QWumtmWe
- 4fsELxPKVxum1KOzksdAm/nnaPkBQC0WbJmys4pOtkWSVXTgGz63drt3vYaq7Aola2xp
- 5i1+aP0hPENrb/FXH46VImzDvg2Hfb5uLMQblHoUbehJpcKSvF1indaBXPGsjc0VfZQu
- +IfjXdZg/aWWyTsa2qJLMb2BLpKtq84w3oNrVPTT6C6yco+SejSuxNSDJfIRyBMM7aRX
- 13Xw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=sovmJqWLi+w6r7aj57g8jsX5oYThDt/U4Hfb0qHizf8=;
- b=PMluU2ay82mh1EHfB5vy4r6JFL/yT636mIRvkv6sqydeKG4YpTXMbCV4WtlULfIXot
- lhiTbVzN0mBFOn1f2OGA8FwzP7XxrP0cAwdTGWyYGmpyyZk9Cr5XLVUOuuhQi0xY9Ebr
- YZVkqK4jD57/i8D1HExGEvuX/wbpIY7tUvzAEFVLLm6p0b/dBmmy9MRYRVwsNw7sk9yC
- plqIRhXkn3AM+w/PsyH+TW+pBGwEcoep3kmrEnnXaL7KfqVCRGs44k70x9/POywZXlcG
- 9CHqbrGcQLNOL+gSSYFV44IdBUHq+wEMINqV5NHhmzGm5NZD0c3Bzyc40u4fQgXUw6Dk
- CA3A==
-X-Gm-Message-State: ANhLgQ2lk3BGjiv9ywtdyWjSQeqLVBDc2KZMgxSINag5xIN/u0uB/tZy
- WlJD4/PdiVecN1PdlvTmRx9oDiowfSw=
-X-Received: by 2002:a2e:7c08:: with SMTP id x8mr2231141ljc.185.1582796915972; 
- Thu, 27 Feb 2020 01:48:35 -0800 (PST)
-Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
- by smtp.gmail.com with ESMTPSA id
- c203sm2464108lfg.28.2020.02.27.01.48.34
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 27 Feb 2020 01:48:35 -0800 (PST)
-Date: Thu, 27 Feb 2020 10:48:33 +0100
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH v1 2/2] hw/arm: versal: Generate xlnx-versal-virt zdma
- FDT nodes
-Message-ID: <20200227094832.mzigobojdqrw6hv7@fralle-msi>
-References: <20200227154424.6849-1-edgar.iglesias@gmail.com>
- <20200227154424.6849-3-edgar.iglesias@gmail.com>
+ (envelope-from <cohuck@redhat.com>) id 1j7H0O-0000Lj-Jp
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2020 06:07:02 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:54801
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1j7H0O-0000KK-GH
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2020 06:07:00 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582801620;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=f1RDikHjMuEMm5c5nGEz67lZrv93tK+Qel+QeJZrsug=;
+ b=AxfrjXU92zzrpC9/w4jrigDMjhf4iQyT7Yo8YN0TEXP2t7m1gwsvp9DNUUedYNdo77dzxY
+ 3HN1uKvGu4J3V02T/4LKwRRxdbcCc02E0k3SrvaNHCOWqGG+dg4wwphLeCCEzV/Wbph8Rf
+ a3aI8uai2eqNImAk3Z/yj9WA5oZTyRo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-318-g-kMWyd0MyOmAQoYKspYWQ-1; Thu, 27 Feb 2020 06:06:58 -0500
+X-MC-Unique: g-kMWyd0MyOmAQoYKspYWQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id ED58013E5;
+ Thu, 27 Feb 2020 11:06:56 +0000 (UTC)
+Received: from gondolin (ovpn-117-2.ams2.redhat.com [10.36.117.2])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8CDE260BE2;
+ Thu, 27 Feb 2020 11:06:52 +0000 (UTC)
+Date: Thu, 27 Feb 2020 12:06:49 +0100
+From: Cornelia Huck <cohuck@redhat.com>
+To: Pan Nengyuan <pannengyuan@huawei.com>
+Subject: Re: [PATCH v3 1/6] s390x: fix memleaks in cpu_finalize
+Message-ID: <20200227120649.50e6ea68.cohuck@redhat.com>
+In-Reply-To: <20200227025055.14341-2-pannengyuan@huawei.com>
+References: <20200227025055.14341-1-pannengyuan@huawei.com>
+ <20200227025055.14341-2-pannengyuan@huawei.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200227154424.6849-3-edgar.iglesias@gmail.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::244
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -113,74 +106,87 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
- edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com, alistair@alistair23.me,
- richard.henderson@linaro.org, qemu-devel@nongnu.org,
- frederic.konrad@adacore.com, qemu-arm@nongnu.org, philmd@redhat.com,
- luc.michel@greensocs.com
+Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com, David
+ Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, euler.robot@huawei.com,
+ Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aXFgedNPzhbI
+X-TUID: YmvPFkPcc8yn
 
-On [2020 Feb 27] Thu 16:44:24, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-> 
-> Generate xlnx-versal-virt zdma FDT nodes.
-> 
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+On Thu, 27 Feb 2020 10:50:50 +0800
+Pan Nengyuan <pannengyuan@huawei.com> wrote:
 
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-
+> This patch fix memleaks when we call tests/qtest/cpu-plug-test on s390x. =
+The leak stack is as follow:
+>=20
+> Direct leak of 48 byte(s) in 1 object(s) allocated from:
+>     #0 0x7fb43c7cd970 in __interceptor_calloc (/lib64/libasan.so.5+0xef97=
+0)
+>     #1 0x7fb43be2149d in g_malloc0 (/lib64/libglib-2.0.so.0+0x5249d)
+>     #2 0x558ba96da716 in timer_new_full /mnt/sdb/qemu-new/qemu/include/qe=
+mu/timer.h:530
+>     #3 0x558ba96da716 in timer_new /mnt/sdb/qemu-new/qemu/include/qemu/ti=
+mer.h:551
+>     #4 0x558ba96da716 in timer_new_ns /mnt/sdb/qemu-new/qemu/include/qemu=
+/timer.h:569
+>     #5 0x558ba96da716 in s390_cpu_initfn /mnt/sdb/qemu-new/qemu/target/s3=
+90x/cpu.c:285
+>     #6 0x558ba9c969ab in object_init_with_type /mnt/sdb/qemu-new/qemu/qom=
+/object.c:372
+>     #7 0x558ba9c9eb5f in object_initialize_with_type /mnt/sdb/qemu-new/qe=
+mu/qom/object.c:516
+>     #8 0x558ba9c9f053 in object_new_with_type /mnt/sdb/qemu-new/qemu/qom/=
+object.c:684
+>     #9 0x558ba967ede6 in s390x_new_cpu /mnt/sdb/qemu-new/qemu/hw/s390x/s3=
+90-virtio-ccw.c:64
+>     #10 0x558ba99764b3 in hmp_cpu_add /mnt/sdb/qemu-new/qemu/hw/core/mach=
+ine-hmp-cmds.c:57
+>     #11 0x558ba9b1c27f in handle_hmp_command /mnt/sdb/qemu-new/qemu/monit=
+or/hmp.c:1082
+>     #12 0x558ba96c1b02 in qmp_human_monitor_command /mnt/sdb/qemu-new/qem=
+u/monitor/misc.c:142
+>=20
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
 > ---
->  hw/arm/xlnx-versal-virt.c | 28 ++++++++++++++++++++++++++++
->  1 file changed, 28 insertions(+)
-> 
-> diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-> index e7f4ca8bf9..878a275140 100644
-> --- a/hw/arm/xlnx-versal-virt.c
-> +++ b/hw/arm/xlnx-versal-virt.c
-> @@ -229,6 +229,33 @@ static void fdt_add_gem_nodes(VersalVirt *s)
->      }
->  }
->  
-> +static void fdt_add_zdma_nodes(VersalVirt *s)
-> +{
-> +    const char clocknames[] = "clk_main\0clk_apb";
-> +    const char compat[] = "xlnx,zynqmp-dma-1.0";
-> +    int i;
+> Cc: Richard Henderson <rth@twiddle.net>
+> Cc: David Hildenbrand <david@redhat.com>
+> Cc: Cornelia Huck <cohuck@redhat.com>
+> Cc: qemu-s390x@nongnu.org
+> ---
+> v2->v1:
+> - Similarly to other cleanups, move timer_new into realize(Suggested by P=
+hilippe Mathieu-Daud=C3=83=C2=A9)
+> v3->v2:
+> - Also do the timer_free in unrealize, it seems more balance.
+> ---
+>  target/s390x/cpu.c | 22 ++++++++++++++++++----
+>  1 file changed, 18 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
+> index cf84d307c6..cc63c9db22 100644
+> --- a/target/s390x/cpu.c
+> +++ b/target/s390x/cpu.c
+> @@ -170,7 +170,12 @@ static void s390_cpu_realizefn(DeviceState *dev, Err=
+or **errp)
+>      S390CPUClass *scc =3D S390_CPU_GET_CLASS(dev);
+>  #if !defined(CONFIG_USER_ONLY)
+>      S390CPU *cpu =3D S390_CPU(dev);
+> +    cpu->env.tod_timer =3D
+> +        timer_new_ns(QEMU_CLOCK_VIRTUAL, s390x_tod_timer, cpu);
+> +    cpu->env.cpu_timer =3D
+> +        timer_new_ns(QEMU_CLOCK_VIRTUAL, s390x_cpu_timer, cpu);
+>  #endif
+
+It does not seem you addressed the comments I had last time, namely
+- memory leak on error (we do not go through unrealize if the device
+  was never completely realized)
+- coding style (initialization in middle of declaration section)
+
 > +
-> +    for (i = XLNX_VERSAL_NR_ADMAS - 1; i >= 0; i--) {
-> +        uint64_t addr = MM_ADMA_CH0 + MM_ADMA_CH0_SIZE * i;
-> +        char *name = g_strdup_printf("/dma@%" PRIx64, addr);
-> +
-> +        qemu_fdt_add_subnode(s->fdt, name);
-> +
-> +        qemu_fdt_setprop_cell(s->fdt, name, "xlnx,bus-width", 64);
-> +        qemu_fdt_setprop_cells(s->fdt, name, "clocks",
-> +                               s->phandle.clk_25Mhz, s->phandle.clk_25Mhz);
-> +        qemu_fdt_setprop(s->fdt, name, "clock-names",
-> +                         clocknames, sizeof(clocknames));
-> +        qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
-> +                               GIC_FDT_IRQ_TYPE_SPI, VERSAL_ADMA_IRQ_0 + i,
-> +                               GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-> +        qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
-> +                                     2, addr, 2, 0x1000);
-> +        qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
-> +        g_free(name);
-> +    }
-> +}
-> +
->  static void fdt_nop_memory_nodes(void *fdt, Error **errp)
->  {
->      Error *err = NULL;
-> @@ -427,6 +454,7 @@ static void versal_virt_init(MachineState *machine)
->      fdt_add_uart_nodes(s);
->      fdt_add_gic_nodes(s);
->      fdt_add_timer_nodes(s);
-> +    fdt_add_zdma_nodes(s);
->      fdt_add_cpu_nodes(s, psci_conduit);
->      fdt_add_clk_node(s, "/clk125", 125000000, s->phandle.clk_125Mhz);
->      fdt_add_clk_node(s, "/clk25", 25000000, s->phandle.clk_25Mhz);
-> -- 
-> 2.20.1
-> 
+>      Error *err =3D NULL;
+> =20
+>      /* the model has to be realized before qemu_init_vcpu() due to kvm *=
+/
+

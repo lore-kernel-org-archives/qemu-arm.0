@@ -1,97 +1,76 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3653816lfg;
-        Wed, 26 Feb 2020 15:06:32 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxex9iDr8Dp1GAeGcdHAvXd38tPN+riPZULCheH+PN8kbnWYjd0rMsqC36MkiI4tHkG59gk
-X-Received: by 2002:a37:7a05:: with SMTP id v5mr1998010qkc.329.1582758392511;
-        Wed, 26 Feb 2020 15:06:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582758392; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3835549lfg;
+        Wed, 26 Feb 2020 18:35:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwvFzWQuxI6Gz9b7EeDzavjmEaI/wFzCsJf6cYKF7ibj0OYkEzHdMOz3tmZAWIXDn+AuFm3
+X-Received: by 2002:a37:a87:: with SMTP id 129mr2713681qkk.270.1582770945918;
+        Wed, 26 Feb 2020 18:35:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582770945; cv=none;
         d=google.com; s=arc-20160816;
-        b=V12ZLdb6ZnkHqqrLQmP40v67oPVLmVlJqF2sBFi8/r7axplppc42PBRBXyJiOY3DlX
-         wxse6wagzKplRYlCbWr3Zu1webXHXVwLJIkKe8E/wBf4zqiYvLM7r7yhmzoSyv0lsDZr
-         9CdvF55RN3tG99UaKMU4owHsKg9dtxQAPol9ynNZQRS1mqaopjC1dD0ATvyw7PQe7hrh
-         UL8z0mQquSto6AUvVdD2m47PMzNEfc02H/CkfDnEcF8HFhFnibJ7aIPg1DagLunY/aSN
-         Oasb+6VmTPYpkhoI+CelhPrKEKH9cDALlxPmQsKejhYpkjqbXJ8cYkdKRWdAm9/PuKKf
-         ttNg==
+        b=tcUI32nU2rqpM3MgfO4+6MOYxL8Dh4L0DmjXqbFovk94OqxAM7o7XAPqlyreQZkOLb
+         ah3h2b2HaumbGw/VCTd9jbcYV66bM5MyUxCJXyQ9WayG5KlzXeBs2nXEGD8EHp9iDF6g
+         pxyZnf+9Dumbc3Ky45FIpC/NNaVDJkclO0DDUQhUIMLMAPKFaPaTfsqq6w72vrCs6tY6
+         QRgaDDyJkJC7YALbK75KN7v7wU3R1jg0BYt7jgNzd1/iHkNAbCeWXTiK6ugwjAuaA8Dz
+         arCk0YBvp2OiXRE7hwDXF9bTSPfk3lGORA2uHOyTi2aXDURLChgJtmsvBdcaosj4zv/q
+         VVWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=X1fyWx7cUYHPiMoRyKUX3oonI6sX83xhsfDJLl+1Lg8=;
-        b=0QhsQRCvuJIHThrx9XMqef65h9fH0F+BuzJ36HXrtSbrMOfbEaDnVhDfQcui7+NXGj
-         KUUL/JhZ138NMggxKX541qZkekWvNU8Jtkl8Y3A31/CyUzmN26YZAneRxxr3oZdwXLgI
-         OouJAXAOOuVwy6OflD5NkfmBU0fnVtCXyrscNsza/It77YudVLF3R6UfzxyDOvaWFoEg
-         UgnR7X7Ca6RrMLpwopyqsTJuYROC2+yMJ4E7f8EepN1YwkmYJOksdnycWF4SaBUpGevS
-         WWb/hj8oa8QjH9fqRu9kBhWNT40BmkYLprFJ+jrN4hRJhNdyU6+lvA5ix+s1Mzi4jdWI
-         Q5vA==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=Iv105vkxIe0Uy2naZRZUTtJcw1gfTsk/nHorpSEHeHM=;
+        b=A8a7RLnjCVT65kXElcbcWOSN1yOFN+KhZ+EVHL/WPg0Dnh82osy32UB3UThaSsWvwY
+         m9IP4I2dpIOoC+V7KvOvjblLi1iWo3x1agA7o2x0qV2STz4HZUlT/lsDWWRi1d7rh9S6
+         /LnISy6vq/hw1CeIxESM2AEw59nd1S5eWZB5UnvEpMOcCJFGMiKX8ZwvkMoN2xwL/rjO
+         nQqtZuhPhVI5wL+1WD/qr7sv8C142U6atnZu5H9sO8S6D8Rzr7OBvcw5E+OMmq0T5/0k
+         mSvHYNgQPl5yA5qHCpoQ3Xmc1LIRaMSfMCB7hcWFPN2P4WVjnlxB5vcCKXkEplsfEvFS
+         UqGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sP8VlGvG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f89si487810qtd.212.2020.02.26.15.06.32
+        by mx.google.com with ESMTPS id o24si694447qki.330.2020.02.26.18.35.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2020 15:06:32 -0800 (PST)
+        Wed, 26 Feb 2020 18:35:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sP8VlGvG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51398 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52910 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j75l9-0007rG-UX
-	for alex.bennee@linaro.org; Wed, 26 Feb 2020 18:06:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43784)
+	id 1j791c-0007wx-BD
+	for alex.bennee@linaro.org; Wed, 26 Feb 2020 21:35:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60024)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1j75ka-0007Fh-TT
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 18:05:58 -0500
+ (envelope-from <pannengyuan@huawei.com>) id 1j791P-0007wI-CP
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 21:35:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1j75kZ-0005VG-Jm
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 18:05:56 -0500
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:33136)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1j75kV-0005PN-8j; Wed, 26 Feb 2020 18:05:51 -0500
-Received: by mail-lj1-x241.google.com with SMTP id y6so1090406lji.0;
- Wed, 26 Feb 2020 15:05:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=X1fyWx7cUYHPiMoRyKUX3oonI6sX83xhsfDJLl+1Lg8=;
- b=sP8VlGvGDVv+e8mMJxA9+wF67Jp/csbzjyumwOPIjYvnEamEAEWkbGqLwlMOGQpNI4
- syguRa9/t1xoxwx/wnXd6xAJGY8FT9ztkVzOHGPexUjI/J3h/WDSD5tPWY/GaYGZJu+r
- xT/P32NbSWHCQ1sNkhFK/etu2kD9C+hlHvY04pNdM+ryqempIvUIkfm1/yHbP0zk+iED
- Pt4tHg8w8iDkIzqDCco04MdNSRe9kGJRT+PcnvfUg0lCQHhmiHyt/BgLrk0lZ4NVoqDf
- sxdLfCH0PzlKxb85AdYoEHtFvx+pB9uFa37nST5iuonpYygkeQSJ0Ul4C93fYin212cu
- cOyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=X1fyWx7cUYHPiMoRyKUX3oonI6sX83xhsfDJLl+1Lg8=;
- b=n+Gw9NxDBlK72CftOGhpQvP9OhPXFPDXEfzuJ+bWI4ZAbxYTgwykRN+vSB2xTRbb01
- YvWI8QDUIwrhhCnHRXwD1daC7EAvb1e4o0cHn7pU6y4I8baTJ8swAL7xcfdCJ0mkfIkR
- taTdrrmIvEFiVPxjPr//tQ+Ihb+z0ycp4E50zNMuQVtj6bN7OfjG4L7p2waWGraHr0Pj
- xjGXYd7y7ds1bkfrRa2iVr9IRiomFyxsgCianMBPeR85MkAnNxEWEMfKXu04U+It3eCl
- BuWtqJ+2gdicIhT5F/Ki0h9N9IDPZhksOUHtVnpcCPZarvy4hNUU/KCH8ysRFTok0NX0
- FcNw==
-X-Gm-Message-State: ANhLgQ0ioXb+V5s/EhKH+dOk0CAehoSyGNu4otkhYM5ZuPSUbiOw5Qlp
- uQNjNlW/ELY9hsJYgXjPSPZhllZc7KpICfs7khs=
-X-Received: by 2002:a2e:a36a:: with SMTP id i10mr781220ljn.107.1582758350047; 
- Wed, 26 Feb 2020 15:05:50 -0800 (PST)
+ (envelope-from <pannengyuan@huawei.com>) id 1j791O-0001VH-BH
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 21:35:31 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3173 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <pannengyuan@huawei.com>)
+ id 1j791O-0001OE-0L; Wed, 26 Feb 2020 21:35:30 -0500
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 8DEEA4DC289EFDFADFF7;
+ Thu, 27 Feb 2020 10:35:26 +0800 (CST)
+Received: from localhost.localdomain (10.175.104.216) by
+ DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
+ 14.3.439.0; Thu, 27 Feb 2020 10:35:18 +0800
+From: Pan Nengyuan <pannengyuan@huawei.com>
+To: <peter.maydell@linaro.org>
+Subject: [PATCH v3 3/6] hw/arm/spitz: move timer_new from init() into
+ realize() to avoid memleaks
+Date: Thu, 27 Feb 2020 10:50:52 +0800
+Message-ID: <20200227025055.14341-4-pannengyuan@huawei.com>
+X-Mailer: git-send-email 2.18.2
+In-Reply-To: <20200227025055.14341-1-pannengyuan@huawei.com>
+References: <20200227025055.14341-1-pannengyuan@huawei.com>
 MIME-Version: 1.0
-References: <20200225131422.53368-1-damien.hedde@greensocs.com>
- <20200225131422.53368-9-damien.hedde@greensocs.com>
-In-Reply-To: <20200225131422.53368-9-damien.hedde@greensocs.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 26 Feb 2020 14:58:13 -0800
-Message-ID: <CAKmqyKPmkjjAe-4M_-NXP=dEjLb7WUkhV-bGSmYnCnPUZT0n6w@mail.gmail.com>
-Subject: Re: [PATCH v8 8/9] hw/arm/xilinx_zynq: connect uart clocks to slcr
-To: Damien Hedde <damien.hedde@greensocs.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::241
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.216]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.190
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,157 +82,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Mark Burton <mark.burton@greensocs.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: zhang.zhanghailiang@huawei.com, Pan Nengyuan <pannengyuan@huawei.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, euler.robot@huawei.com,
+ Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 96kq8ElyGmpr
+X-TUID: LqHn+NtAY1R7
 
-On Tue, Feb 25, 2020 at 5:40 AM Damien Hedde <damien.hedde@greensocs.com> wrote:
->
-> Add the connection between the slcr's output clocks and the uarts inputs.
->
-> Also add the main board clock 'ps_clk', which is hard-coded to 33.33MHz
-> (the default frequency). This clock is used to feed the slcr's input
-> clock.
->
-> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+There are some memleaks when we call 'device_list_properties'. This patch move timer_new from init into realize to fix it.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+---
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
+---
+ hw/arm/spitz.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-Alistair
+diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+index e001088103..cbfa6934cf 100644
+--- a/hw/arm/spitz.c
++++ b/hw/arm/spitz.c
+@@ -524,11 +524,16 @@ static void spitz_keyboard_init(Object *obj)
+ 
+     spitz_keyboard_pre_map(s);
+ 
+-    s->kbdtimer = timer_new_ns(QEMU_CLOCK_VIRTUAL, spitz_keyboard_tick, s);
+     qdev_init_gpio_in(dev, spitz_keyboard_strobe, SPITZ_KEY_STROBE_NUM);
+     qdev_init_gpio_out(dev, s->sense, SPITZ_KEY_SENSE_NUM);
+ }
+ 
++static void spitz_keyboard_realize(DeviceState *dev, Error **errp)
++{
++    SpitzKeyboardState *s = SPITZ_KEYBOARD(dev);
++    s->kbdtimer = timer_new_ns(QEMU_CLOCK_VIRTUAL, spitz_keyboard_tick, s);
++}
++
+ /* LCD backlight controller */
+ 
+ #define LCDTG_RESCTL	0x00
+@@ -1115,6 +1120,7 @@ static void spitz_keyboard_class_init(ObjectClass *klass, void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+     dc->vmsd = &vmstate_spitz_kbd;
++    dc->realize = spitz_keyboard_realize;
+ }
+ 
+ static const TypeInfo spitz_keyboard_info = {
+-- 
+2.18.2
 
->
-> ---
-> v7
->  + update ClockIn/ClockOut types
->  + simplify the ps_clk frequency init
-> ---
->  hw/arm/xilinx_zynq.c | 57 +++++++++++++++++++++++++++++++++++++-------
->  1 file changed, 49 insertions(+), 8 deletions(-)
->
-> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> index 3a0fa5b23f..261a1690a8 100644
-> --- a/hw/arm/xilinx_zynq.c
-> +++ b/hw/arm/xilinx_zynq.c
-> @@ -34,6 +34,15 @@
->  #include "hw/char/cadence_uart.h"
->  #include "hw/net/cadence_gem.h"
->  #include "hw/cpu/a9mpcore.h"
-> +#include "hw/qdev-clock.h"
-> +#include "sysemu/reset.h"
-> +
-> +#define TYPE_ZYNQ_MACHINE MACHINE_TYPE_NAME("xilinx-zynq-a9")
-> +#define ZYNQ_MACHINE(obj) \
-> +    OBJECT_CHECK(ZynqMachineState, (obj), TYPE_ZYNQ_MACHINE)
-> +
-> +/* board base frequency: 33.333333 MHz */
-> +#define PS_CLK_FREQUENCY (100 * 1000 * 1000 / 3)
->
->  #define NUM_SPI_FLASHES 4
->  #define NUM_QSPI_FLASHES 2
-> @@ -74,6 +83,11 @@ static const int dma_irqs[8] = {
->      0xe3401000 + ARMV7_IMM16(extract32((val), 16, 16)), /* movt r1 ... */ \
->      0xe5801000 + (addr)
->
-> +typedef struct ZynqMachineState {
-> +    MachineState parent;
-> +    Clock *ps_clk;
-> +} ZynqMachineState;
-> +
->  static void zynq_write_board_setup(ARMCPU *cpu,
->                                     const struct arm_boot_info *info)
->  {
-> @@ -158,12 +172,13 @@ static inline void zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
->
->  static void zynq_init(MachineState *machine)
->  {
-> +    ZynqMachineState *zynq_machine = ZYNQ_MACHINE(machine);
->      ram_addr_t ram_size = machine->ram_size;
->      ARMCPU *cpu;
->      MemoryRegion *address_space_mem = get_system_memory();
->      MemoryRegion *ext_ram = g_new(MemoryRegion, 1);
->      MemoryRegion *ocm_ram = g_new(MemoryRegion, 1);
-> -    DeviceState *dev;
-> +    DeviceState *dev, *slcr;
->      SysBusDevice *busdev;
->      qemu_irq pic[64];
->      int n;
-> @@ -208,9 +223,18 @@ static void zynq_init(MachineState *machine)
->                            1, 0x0066, 0x0022, 0x0000, 0x0000, 0x0555, 0x2aa,
->                            0);
->
-> -    dev = qdev_create(NULL, "xilinx,zynq_slcr");
-> -    qdev_init_nofail(dev);
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xF8000000);
-> +    /* Create slcr, keep a pointer to connect clocks */
-> +    slcr = qdev_create(NULL, "xilinx,zynq_slcr");
-> +    qdev_init_nofail(slcr);
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(slcr), 0, 0xF8000000);
-> +
-> +    /* Create the main clock source, and feed slcr with it */
-> +    zynq_machine->ps_clk = CLOCK(object_new(TYPE_CLOCK));
-> +    object_property_add_child(OBJECT(zynq_machine), "ps_clk",
-> +                              OBJECT(zynq_machine->ps_clk), &error_abort);
-> +    object_unref(OBJECT(zynq_machine->ps_clk));
-> +    clock_set_hz(zynq_machine->ps_clk, PS_CLK_FREQUENCY);
-> +    qdev_connect_clock_in(slcr, "ps_clk", zynq_machine->ps_clk);
->
->      dev = qdev_create(NULL, TYPE_A9MPCORE_PRIV);
->      qdev_prop_set_uint32(dev, "num-cpu", 1);
-> @@ -231,8 +255,12 @@ static void zynq_init(MachineState *machine)
->      sysbus_create_simple("xlnx,ps7-usb", 0xE0002000, pic[53-IRQ_OFFSET]);
->      sysbus_create_simple("xlnx,ps7-usb", 0xE0003000, pic[76-IRQ_OFFSET]);
->
-> -    cadence_uart_create(0xE0000000, pic[59 - IRQ_OFFSET], serial_hd(0));
-> -    cadence_uart_create(0xE0001000, pic[82 - IRQ_OFFSET], serial_hd(1));
-> +    dev = cadence_uart_create(0xE0000000, pic[59 - IRQ_OFFSET], serial_hd(0));
-> +    qdev_connect_clock_in(dev, "refclk",
-> +                          qdev_get_clock_out(slcr, "uart0_ref_clk"));
-> +    dev = cadence_uart_create(0xE0001000, pic[82 - IRQ_OFFSET], serial_hd(1));
-> +    qdev_connect_clock_in(dev, "refclk",
-> +                          qdev_get_clock_out(slcr, "uart1_ref_clk"));
->
->      sysbus_create_varargs("cadence_ttc", 0xF8001000,
->              pic[42-IRQ_OFFSET], pic[43-IRQ_OFFSET], pic[44-IRQ_OFFSET], NULL);
-> @@ -310,8 +338,9 @@ static void zynq_init(MachineState *machine)
->      arm_load_kernel(ARM_CPU(first_cpu), machine, &zynq_binfo);
->  }
->
-> -static void zynq_machine_init(MachineClass *mc)
-> +static void zynq_machine_class_init(ObjectClass *oc, void *data)
->  {
-> +    MachineClass *mc = MACHINE_CLASS(oc);
->      mc->desc = "Xilinx Zynq Platform Baseboard for Cortex-A9";
->      mc->init = zynq_init;
->      mc->max_cpus = 1;
-> @@ -320,4 +349,16 @@ static void zynq_machine_init(MachineClass *mc)
->      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a9");
->  }
->
-> -DEFINE_MACHINE("xilinx-zynq-a9", zynq_machine_init)
-> +static const TypeInfo zynq_machine_type = {
-> +    .name = TYPE_ZYNQ_MACHINE,
-> +    .parent = TYPE_MACHINE,
-> +    .class_init = zynq_machine_class_init,
-> +    .instance_size = sizeof(ZynqMachineState),
-> +};
-> +
-> +static void zynq_machine_register_types(void)
-> +{
-> +    type_register_static(&zynq_machine_type);
-> +}
-> +
-> +type_init(zynq_machine_register_types)
-> --
-> 2.25.1
->
->

@@ -1,66 +1,66 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3835599lfg;
-        Wed, 26 Feb 2020 18:35:49 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz7sUT+Pk8/bieqtLTv4PspRXsNwdvldOx6desCYyUVdCj61feiYUGn/mod9aeU2wqD7d34
-X-Received: by 2002:a37:551:: with SMTP id 78mr2636020qkf.46.1582770949836;
-        Wed, 26 Feb 2020 18:35:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582770949; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3835716lfg;
+        Wed, 26 Feb 2020 18:36:00 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwSfZG5KcmFrX0YP+oO1zf9bqZDjerUTCQkxHb0BPmIR7ttbQrawJ/+GZDBKIVnK990LlNy
+X-Received: by 2002:a37:b15:: with SMTP id 21mr2376635qkl.291.1582770960120;
+        Wed, 26 Feb 2020 18:36:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582770960; cv=none;
         d=google.com; s=arc-20160816;
-        b=d2VV4hI53CcShYMl7aZ7CsSRH1Ifs91nxlewcTT6Og2tSVvEMGKk2MMQ2J1bEb1gzH
-         O9uO7Ft4FIGru+x8bbtWBwVHMlhcJvqE5h2dC9GTxmLfIu/qOHd+yGwsyeuo32dNiEAx
-         unBZMZh+XWUMRS68Qqv5Xh0/sKjG3eWOqG0wYbwnoVSg81mpWnu9GO3WRB//MEsNoGXl
-         zmawPHAuomT1YRzQMXl98eRdBxXXeIHaBKIN1aiFOEBMUzehaAh0ZZIS8ndgxGR6NKZf
-         PKNmOPXWNMt1TovsM+QunVYyuKbtq8uSr5zsevoJWMpMpNxucOC2t4yTRG80GyXYetnK
-         CkWQ==
+        b=AZuDX5H3fmIEcUZ4mmAncYqU+P5eyGXVEaHx4nUHDK0Lq2392R3XKwGF/fRttY9eTK
+         j7dZSHFW9Z7F8KRDfr1qlB7m5Yu9jTgHW9b/QKgYf1zXaNLDpN9OgjpbrHtVA0Citpk8
+         pT3YfUxBGekZ66hHgj4C2dGzqTM1hqXC9wnHEgyAckBo1z5rHLW1cogPkX298fkqx55U
+         ByI/6jlAjIDjd+PXlPSSsIIDgXxDwCF9L0OykgVGyMBfTSkJOhc+kqZm/s8AKLTkdy99
+         FnWt3O/XmOMGIt1x94+tCF8P+H81Ug8aeZPPP0sjue7n9RaU5i0Y+z7XEZSSBDF8L5lN
+         gGLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=UVK3kE5ftprVdEVs6FpI0ue5ySl3DKFSTudG/sSM1jM=;
-        b=Mpp3TwKmKWpDxkIIghffUBJfkYTTZiUv0Uo8QEjm/PVZT27Sai19DatELbSjOlgPjS
-         9fqfWZyop29QpflzQzbseimPxE/Mkr2efgITURsIoik0lJ5wyupBIZtXBUQN1Cet39bz
-         a6P3j17dFogrZlKteIn0suSAl0Fiv4Mh2JnxiXvakmIsohKKfgO3sSbIZCZKI0HgK8pR
-         lNuooc+lsAIvx2n/1OfSIBfZPNgOLNTJBb+dNsNi3KgKKSrlpYgPh+DCInxP/2xYgqOl
-         oEgvNwDA8h8zMtryRkMDd51J9orpIuvmdGF0gdXeHkEEzpjCEU5CQ6u1WHjz4HqAVTR+
-         uRmA==
+        bh=OcctjUq1mh6dsDK+AG7FcjMvK08p4/jeTXH4R0VwdhQ=;
+        b=Bukp+4Pm4FFoya9encc/1Nk/2sKKLrezpeW4phrJarJupvDwQWX7Y6IYAZykByBuNf
+         C6JExxQbphmSOmEQG7zzaQFv/+czl8BsI/lQzoBbGhrryUcHwkdXma/8bguTxAlQDe7X
+         fo2deNRL31IX4PwkZh0/wPiMeJux1EEw3uSqt5gV99v407LvUzyHTw1yoamRyenQD4Mh
+         wtbMoyfSDPYZaNco2LNRKmyCX35vSoFE4A0CRPq0+JqAOV7dBT0PYAF0aR2QdemZIWFO
+         HxTDZcayU/O04cLOjUi15tLwFy7HgESZxf4rQ2iDg3xNIv28EkINJ9Tyjhhd2fqm5jj8
+         KGVg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s8si159117qke.41.2020.02.26.18.35.49
+        by mx.google.com with ESMTPS id x60si690541qte.334.2020.02.26.18.35.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2020 18:35:49 -0800 (PST)
+        Wed, 26 Feb 2020 18:36:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52928 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52936 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j791h-00084N-8J
-	for alex.bennee@linaro.org; Wed, 26 Feb 2020 21:35:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60134)
+	id 1j791q-0008Pd-I1
+	for alex.bennee@linaro.org; Wed, 26 Feb 2020 21:35:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60029)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pannengyuan@huawei.com>) id 1j791T-0007zq-8N
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 21:35:36 -0500
+ (envelope-from <pannengyuan@huawei.com>) id 1j791P-0007wJ-Gn
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 21:35:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pannengyuan@huawei.com>) id 1j791S-0001fg-14
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 21:35:35 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3174 helo=huawei.com)
+ (envelope-from <pannengyuan@huawei.com>) id 1j791O-0001Vl-Fr
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 21:35:31 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3171 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <pannengyuan@huawei.com>)
- id 1j791R-0001ZC-MH; Wed, 26 Feb 2020 21:35:33 -0500
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 9D6DC12A53F73219C1E5;
- Thu, 27 Feb 2020 10:35:31 +0800 (CST)
+ id 1j791O-0001O6-4z; Wed, 26 Feb 2020 21:35:30 -0500
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 854A496A2BE4FCDFB2BD;
+ Thu, 27 Feb 2020 10:35:26 +0800 (CST)
 Received: from localhost.localdomain (10.175.104.216) by
  DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.439.0; Thu, 27 Feb 2020 10:35:21 +0800
+ 14.3.439.0; Thu, 27 Feb 2020 10:35:19 +0800
 From: Pan Nengyuan <pannengyuan@huawei.com>
 To: <peter.maydell@linaro.org>
-Subject: [PATCH v3 5/6] hw/misc/mos6522: move timer_new from init() into
+Subject: [PATCH v3 4/6] hw/arm/strongarm: move timer_new from init() into
  realize() to avoid memleaks
-Date: Thu, 27 Feb 2020 10:50:54 +0800
-Message-ID: <20200227025055.14341-6-pannengyuan@huawei.com>
+Date: Thu, 27 Feb 2020 10:50:53 +0800
+Message-ID: <20200227025055.14341-5-pannengyuan@huawei.com>
 X-Mailer: git-send-email 2.18.2
 In-Reply-To: <20200227025055.14341-1-pannengyuan@huawei.com>
 References: <20200227025055.14341-1-pannengyuan@huawei.com>
@@ -82,70 +82,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: zhang.zhanghailiang@huawei.com, Pan Nengyuan <pannengyuan@huawei.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- euler.robot@huawei.com
+Cc: euler.robot@huawei.com, qemu-arm@nongnu.org,
+ Pan Nengyuan <pannengyuan@huawei.com>, qemu-devel@nongnu.org,
+ zhang.zhanghailiang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Gx7iGX+Gbr1Q
+X-TUID: XDpwAbjKrAD2
 
 There are some memleaks when we call 'device_list_properties'. This patch move timer_new from init into realize to fix it.
-Meanwhile, add calls to mos6522_realize() in mac_via_realize to make this move to be valid.
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
 ---
-Cc: Laurent Vivier <laurent@vivier.eu>
----
-v2->v1:
-- no changes in this patch.
-v3->v2:
-- remove null check in reset, and add calls to mos6522_realize() in mac_via_realize to make this move to be valid.
----
- hw/misc/mac_via.c | 5 +++++
- hw/misc/mos6522.c | 6 ++++++
- 2 files changed, 11 insertions(+)
+ hw/arm/strongarm.c | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
 
-diff --git a/hw/misc/mac_via.c b/hw/misc/mac_via.c
-index b7d0012794..1d72d4ef35 100644
---- a/hw/misc/mac_via.c
-+++ b/hw/misc/mac_via.c
-@@ -879,6 +879,11 @@ static void mac_via_realize(DeviceState *dev, Error **errp)
-     sysbus_init_child_obj(OBJECT(dev), "via2", &m->mos6522_via2,
-                           sizeof(m->mos6522_via2), TYPE_MOS6522_Q800_VIA2);
+diff --git a/hw/arm/strongarm.c b/hw/arm/strongarm.c
+index cd8a99aaf2..3010d765bb 100644
+--- a/hw/arm/strongarm.c
++++ b/hw/arm/strongarm.c
+@@ -399,9 +399,6 @@ static void strongarm_rtc_init(Object *obj)
+     s->last_rcnr = (uint32_t) mktimegm(&tm);
+     s->last_hz = qemu_clock_get_ms(rtc_clock);
  
-+    object_property_set_bool(OBJECT(&m->mos6522_via1), true, "realized",
-+                             &error_abort);
-+    object_property_set_bool(OBJECT(&m->mos6522_via2), true, "realized",
-+                             &error_abort);
-+
-     /* Pass through mos6522 output IRQs */
-     ms = MOS6522(&m->mos6522_via1);
-     object_property_add_alias(OBJECT(dev), "irq[0]", OBJECT(ms),
-diff --git a/hw/misc/mos6522.c b/hw/misc/mos6522.c
-index 19e154b870..c1cd154a84 100644
---- a/hw/misc/mos6522.c
-+++ b/hw/misc/mos6522.c
-@@ -485,6 +485,11 @@ static void mos6522_init(Object *obj)
-     for (i = 0; i < ARRAY_SIZE(s->timers); i++) {
-         s->timers[i].index = i;
-     }
+-    s->rtc_alarm = timer_new_ms(rtc_clock, strongarm_rtc_alarm_tick, s);
+-    s->rtc_hz = timer_new_ms(rtc_clock, strongarm_rtc_hz_tick, s);
+-
+     sysbus_init_irq(dev, &s->rtc_irq);
+     sysbus_init_irq(dev, &s->rtc_hz_irq);
+ 
+@@ -410,6 +407,13 @@ static void strongarm_rtc_init(Object *obj)
+     sysbus_init_mmio(dev, &s->iomem);
+ }
+ 
++static void strongarm_rtc_realize(DeviceState *dev, Error **errp)
++{
++    StrongARMRTCState *s = STRONGARM_RTC(dev);
++    s->rtc_alarm = timer_new_ms(rtc_clock, strongarm_rtc_alarm_tick, s);
++    s->rtc_hz = timer_new_ms(rtc_clock, strongarm_rtc_hz_tick, s);
 +}
 +
-+static void mos6522_realize(DeviceState *dev, Error **errp)
-+{
-+    MOS6522State *s = MOS6522(dev);
+ static int strongarm_rtc_pre_save(void *opaque)
+ {
+     StrongARMRTCState *s = opaque;
+@@ -451,6 +455,7 @@ static void strongarm_rtc_sysbus_class_init(ObjectClass *klass, void *data)
  
-     s->timers[0].timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, mos6522_timer1, s);
-     s->timers[1].timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, mos6522_timer2, s);
-@@ -502,6 +507,7 @@ static void mos6522_class_init(ObjectClass *oc, void *data)
+     dc->desc = "StrongARM RTC Controller";
+     dc->vmsd = &vmstate_strongarm_rtc_regs;
++    dc->realize = strongarm_rtc_realize;
+ }
  
-     dc->reset = mos6522_reset;
-     dc->vmsd = &vmstate_mos6522;
-+    dc->realize = mos6522_realize;
-     device_class_set_props(dc, mos6522_properties);
-     mdc->parent_reset = dc->reset;
-     mdc->set_sr_int = mos6522_set_sr_int;
+ static const TypeInfo strongarm_rtc_sysbus_info = {
+@@ -1240,15 +1245,16 @@ static void strongarm_uart_init(Object *obj)
+                           "uart", 0x10000);
+     sysbus_init_mmio(dev, &s->iomem);
+     sysbus_init_irq(dev, &s->irq);
+-
+-    s->rx_timeout_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, strongarm_uart_rx_to, s);
+-    s->tx_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, strongarm_uart_tx, s);
+ }
+ 
+ static void strongarm_uart_realize(DeviceState *dev, Error **errp)
+ {
+     StrongARMUARTState *s = STRONGARM_UART(dev);
+ 
++    s->rx_timeout_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
++                                       strongarm_uart_rx_to,
++                                       s);
++    s->tx_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, strongarm_uart_tx, s);
+     qemu_chr_fe_set_handlers(&s->chr,
+                              strongarm_uart_can_receive,
+                              strongarm_uart_receive,
 -- 
 2.18.2
 

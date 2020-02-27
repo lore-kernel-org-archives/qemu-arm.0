@@ -1,106 +1,183 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp188952lfi;
-        Tue, 3 Mar 2020 02:26:36 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vsfkO3gUCjRul48Qu7G4Zh0xkCqf/SBerVMaUZWPYm9V1Ngo9ho3ITHUBn0mT9rvDnmD+su
-X-Received: by 2002:a05:620a:22c3:: with SMTP id o3mr3318458qki.315.1583231196213;
-        Tue, 03 Mar 2020 02:26:36 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4956164lfg;
+        Thu, 27 Feb 2020 13:38:06 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyiy2COHZ0raDm3rGHINI97K9NRWZ3LkwSbBDUuV6SInS9nJwHV/fDpwOfRj2ywwKelyYZJ
+X-Received: by 2002:ac8:7388:: with SMTP id t8mr1422921qtp.244.1582839486805;
+        Thu, 27 Feb 2020 13:38:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582839486; cv=none;
+        d=google.com; s=arc-20160816;
+        b=K6qfuXVB+yLw5ah6jgtT+lXeaGuf8BoKp1HWajfRc+AU5UNaEXlWp3ODvxqZvmEGft
+         MsAMAGzRH94v3gHMZ9pMBeBBxxVhMnZY6bkQYrIljttkr/JKc/jsLZY360zNvsHT0lTC
+         nPPKCQeUNXvWqJ7MxnS4OD7POayCYrqrV2p77TrX+eUXirRC4Zc0quFuFgJ9XD+rag5S
+         ub46xV8dN8TKdrhqnyGTjG4N6GpcIcw1AF6kysZYhv2Q0Zq/QFjMZiuu3kB0ql1BVEYe
+         C9HpNKPO9SWmR6m7x/bntXyXKWCsl3vcPaHjv/G6W4AKG5G1F8ya4vOvR22RJmsH3jSI
+         tHuA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=UZVzMiJRShPlueonyaoikwmNMD6aFXintv3DsagvrH0=;
+        b=y+DsPqGszNDdRJMIHUxub8n3QZ4wiii0QFS7jpoDKH1CTvUga0EViHKFI+jcgzuswJ
+         /sZj1QuMGmpPAKKPB9pqGxLbbIOfJqJVS+UophSu/L+sEDJ4jhBIxN5gEQ7rMkisUi+n
+         FC+BFmEj7on3fJJP/Xw3SzMB5OtgCKjSbLGHvKh35EeW2ej+DcvVwhw37rw9zU8EuE3b
+         GKYgjjqybX/mjult8GdT48MTDQa+YeeBSZq3+avpz+yNINR7Qtio+9+yjgrV00W62rKN
+         Hq8U30MLdTNMcqz5K5Vp38KUtylM5CRcr1EhQLBGJuBlQMC28BCaCom76DsS5e8Pb6pI
+         Asyw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SRayFQF4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m3si507245qtf.134.2020.03.03.02.26.36
+        by mx.google.com with ESMTPS id j15si426523qvl.84.2020.02.27.13.38.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Mar 2020 02:26:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Feb 2020 13:38:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44963 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SRayFQF4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:38728 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j94l1-0003lu-LK
-	for alex.bennee@linaro.org; Tue, 03 Mar 2020 05:26:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53032)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j7Qr8-0005u5-9i
+	for alex.bennee@linaro.org; Thu, 27 Feb 2020 16:38:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41108)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1j94XQ-0002V0-AT
- for qemu-devel@nongnu.org; Tue, 03 Mar 2020 05:12:33 -0500
+ (envelope-from <alistair23@gmail.com>) id 1j7Qqu-0005lF-53
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2020 16:37:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1j94XP-0006mN-7E
- for qemu-devel@nongnu.org; Tue, 03 Mar 2020 05:12:32 -0500
-Resent-Date: Tue, 03 Mar 2020 05:12:32 -0500
-Resent-Message-Id: <E1j94XP-0006mN-7E@eggs.gnu.org>
-Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21130)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1j94XO-0006lv-UX; Tue, 03 Mar 2020 05:12:31 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1583230287; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=dKEOIBy27+5BgJICCmW803DOlhWhBINADwox40HuPtB55y/SmAGrDomjOdq48P8J5HnpbvCCw3KRxic/BbaCKMqs/UMrnh1rViFhOSnqtTmTHr/ve1Z8O1wnX+kbwK7L37Ydgd3EaHgmX58Svu8zG6Sq51CMWYvGALWQ4cl816Y=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1583230287;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=B86zk3AKywV2F/1/w8NsRWPTJJEDclgVIqaNGRuVrCQ=; 
- b=BHzgCP/5QeUUsneCF2qwsh/6598ym+ncPmNSxcPXGFfYD3w6QT2dVRK4W0UYWZmkcTbEIfhvza54P/IVyJRGejDAM7CRylkXjSh+Onaq4DxwbwzptGh2tHiKDUCGcX2DajoEHDKIItO8Q3pWoA0E1DYcCOTczcwYQeZHQAthOPs=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1583230285988902.7039268774963;
- Tue, 3 Mar 2020 02:11:25 -0800 (PST)
-In-Reply-To: <20200303100511.5498-1-peter.maydell@linaro.org>
-Subject: Re: [PATCH] cpu: Use DeviceClass reset instead of a special CPUClass
- reset
-Message-ID: <158323028289.8962.16946898666612915768@abdcc9e1aa82>
+ (envelope-from <alistair23@gmail.com>) id 1j7Qqt-0002Ih-35
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2020 16:37:52 -0500
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:42402)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1j7Qqs-0002Hr-SL; Thu, 27 Feb 2020 16:37:51 -0500
+Received: by mail-lj1-x242.google.com with SMTP id d10so899501ljl.9;
+ Thu, 27 Feb 2020 13:37:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=UZVzMiJRShPlueonyaoikwmNMD6aFXintv3DsagvrH0=;
+ b=SRayFQF4K8ZX5PNl/v5pzJ6YdRbXtIjy5aoY/qPp0OtzonVtQhSjWyf56PgRY9//9b
+ mYxZTUv9TJMyEjTZE2stN6aZdHt3XL0oJ2xMad4tlx03jcOyPhWz4shiBXlLsFbRdy9W
+ yG/u9maxuKcDpZpdcbU+tLemQHVySE5xNu7rSh8ksjKUFRwIHUGYY4Av7z9XEsgvK/Vz
+ qpGzbiAo2GNf+RMgLC1Qb6heS0sMRIBoLmBXbNjOv0uf4sGge1dU3sHtY5iITHZpW+w9
+ Kpi7isnJDseMsOY8cYuBnsPwNq+caQ/aOe2yAXCGJnv/BcGqFlnPWgt1yRmBmKtXRqiv
+ r0+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=UZVzMiJRShPlueonyaoikwmNMD6aFXintv3DsagvrH0=;
+ b=dn54t0OYQ4vDLItIMw2yuqJraJyyuNtF5V5MLL6skzK4gPDht6vY6VoUYg7V+GkS1b
+ e2PT/frGz42KUtYVJ5QMHzMEzGI3TLg814qlZ5crTDGLDR2v1Kc49Hp66CTksbGLenq4
+ kXqCCGjfoNmajYr8oApBWzhI2hjSybNZxfeBrVW6nV38MdFnxbOniuO6ZDzIDrSsHnH9
+ mXZ0uDu6Y24+sBHTFo2aT+5gp550TpJYDsCoS1J5Q+RFPPaOZz8lR63t54SHoeYQUDQo
+ LnhN1HKqESkqIsxIsB2QGfnauX6+noQ6FWD4y/BP2YCLIsjUEj3aPF0/d9Ip0vM6jQBX
+ xnoQ==
+X-Gm-Message-State: ANhLgQ2MIghgXlRQ/aE4FlQlPbKbCOAY18p4I3aFUMdihEIfxz2xk0/h
+ zmabg2FjjWIUAx7cM+kUrCXAUjsqMhnu1fLjJwA=
+X-Received: by 2002:a2e:a36a:: with SMTP id i10mr664142ljn.107.1582839468777; 
+ Thu, 27 Feb 2020 13:37:48 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: peter.maydell@linaro.org
-Date: Tue, 3 Mar 2020 02:11:25 -0800 (PST)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.51
-X-BeenThere: qemu-devel@nongnu.org
+References: <20200227115005.66349-1-root@stephanos.io>
+ <20200227115005.66349-3-root@stephanos.io>
+ <88ad7129-9654-088d-6569-066949973a86@redhat.com>
+In-Reply-To: <88ad7129-9654-088d-6569-066949973a86@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 27 Feb 2020 13:30:03 -0800
+Message-ID: <CAKmqyKMkTsgqSEWhrkCmbQ3LMNz1OgdeHE6zFaMsZdRjAFvdRA@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] hw/arm/armv7m: Downgrade CPU reset handler priority
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::242
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: crwulff@gmail.com, sagark@eecs.berkeley.edu, david@redhat.com,
- green@moxielogic.com, mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org,
- jcmvbkbc@gmail.com, Alistair.Francis@wdc.com, edgar.iglesias@gmail.com,
- marex@denx.de, palmer@dabbelt.com, aleksandar.rikalo@rt-rk.com,
- rth@twiddle.net, atar4qemu@gmail.com, ehabkost@redhat.com,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, shorne@gmail.com,
- david@gibson.dropbear.id.au, qemu-riscv@nongnu.org,
- kbastian@mail.uni-paderborn.de, cohuck@redhat.com, laurent@vivier.eu,
- michael@walle.cc, qemu-ppc@nongnu.org, amarkovic@wavecomp.com,
- pbonzini@redhat.com, aurelien@aurel32.net
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +LwXZPunbna9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Stephanos Ioannidis <root@stephanos.io>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: N+8iL5DzjydF
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDMwMzEwMDUxMS41NDk4
-LTEtcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCBi
-dWlsZCB0ZXN0IG9uIEZyZWVCU0QgaG9zdC4gUGxlYXNlIGZpbmQgdGhlIGRldGFpbHMgYmVsb3cu
-Cgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCiMgVGVzdGluZyBzY3JpcHQg
-d2lsbCBiZSBpbnZva2VkIHVuZGVyIHRoZSBnaXQgY2hlY2tvdXQgd2l0aAojIEhFQUQgcG9pbnRp
-bmcgdG8gYSBjb21taXQgdGhhdCBoYXMgdGhlIHBhdGNoZXMgYXBwbGllZCBvbiB0b3Agb2YgImJh
-c2UiCiMgYnJhbmNoCmlmIHFlbXUtc3lzdGVtLXg4Nl82NCAtLWhlbHAgPi9kZXYvbnVsbCAyPiYx
-OyB0aGVuCiAgUUVNVT1xZW11LXN5c3RlbS14ODZfNjQKZWxpZiAvdXNyL2xpYmV4ZWMvcWVtdS1r
-dm0gLS1oZWxwID4vZGV2L251bGwgMj4mMTsgdGhlbgogIFFFTVU9L3Vzci9saWJleGVjL3FlbXUt
-a3ZtCmVsc2UKICBleGl0IDEKZmkKbWFrZSB2bS1idWlsZC1mcmVlYnNkIEo9MjEgUUVNVT0kUUVN
-VQpleGl0IDAKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCgoKClRoZSBmdWxsIGxvZyBpcyBhdmFp
-bGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDAzMDMxMDA1MTEuNTQ5OC0xLXBl
-dGVyLm1heWRlbGxAbGluYXJvLm9yZy90ZXN0aW5nLkZyZWVCU0QvP3R5cGU9bWVzc2FnZS4KLS0t
-CkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hl
-dy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhh
-dC5jb20=
+On Thu, Feb 27, 2020 at 5:32 AM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
+>
+> Hi Stephanos,
+>
+> On 2/27/20 12:51 PM, Stephanos Ioannidis wrote:
+> > The ARMv7-M CPU reset handler, which loads the initial SP and PC
+> > register values from the vector table, is currently executed before
+> > the ROM reset handler (rom_reset), and this causes the devices that
+> > alias low memory region (e.g. STM32F405 that aliases the flash memory
+> > located at 0x8000000 to 0x0) to load an invalid reset vector of 0 when
+> > the kernel image is linked to be loaded at the high memory address.
+>
+> So we have armv7m_load_kernel -> load_elf_as -> rom_add_blob_fixed_as ->
+> rom_add_blob -> rom_insert.
+>
+> arm_cpu_reset is called before rom_reset, rom_ptr is NULL, we call
+> initial_pc =3D ldl_phys(cpu_as) from an empty flash.
+>
+> Then later rom_reset -> address_space_write_rom.
+>
+> I think Alistair and myself use the 'loader' device with Cortex-M boards
+> and never hit this problem.
+
+I do hit this problem, Peter described a workaround in the previous
+version of this patch, that is to link at address 0 instead of the
+alias address.
+
+Alistair
+
+>
+> >
+> > For instance, it is norm for the STM32F405 firmware ELF image to have
+> > the text and rodata sections linked at 0x8000000, as this facilitates
+> > proper image loading by the firmware burning utility, and the processor
+> > can execute in place from the high flash memory address region as well.
+> >
+> > In order to resolve this issue, this commit downgrades the ARMCPU reset
+> > handler invocation priority level to -1 such that it is always executed
+> > after the ROM reset handler, which has a priority level of 0.
+> >
+> > Signed-off-by: Stephanos Ioannidis <root@stephanos.io>
+> > ---
+> >   hw/arm/armv7m.c | 3 ++-
+> >   1 file changed, 2 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+> > index 7531b97ccd..8b7c4b12a6 100644
+> > --- a/hw/arm/armv7m.c
+> > +++ b/hw/arm/armv7m.c
+> > @@ -352,7 +352,8 @@ void armv7m_load_kernel(ARMCPU *cpu, const char *ke=
+rnel_filename, int mem_size)
+> >        * way A-profile does it. Note that this means that every M profi=
+le
+> >        * board must call this function!
+> >        */
+> > -    qemu_register_reset(armv7m_reset, cpu);
+> > +    qemu_register_reset_with_priority(
+> > +        QEMU_RESET_PRIORITY_LEVEL(-1), armv7m_reset, cpu);
+> >   }
+> >
+> >   static Property bitband_properties[] =3D {
+> >
+>
+>

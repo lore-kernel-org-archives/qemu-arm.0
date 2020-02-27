@@ -1,145 +1,136 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3837864lfg;
-        Wed, 26 Feb 2020 18:38:39 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw1kQdHgWzBDersS6BHfiRQFVvUPBMZ1tKk+DUVpeRFYahgYHHvSfvsP7dl7qW0xAQUn7qV
-X-Received: by 2002:ad4:4d94:: with SMTP id cv20mr2336136qvb.105.1582771119002;
-        Wed, 26 Feb 2020 18:38:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582771118; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3870596lfg;
+        Wed, 26 Feb 2020 19:17:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyKx9uxdgCEEuHorgB/D3HBAfl8W1f3gTtkLU29jTOb8d+LNZTfgoMAyeYFyvIuN5lOXamg
+X-Received: by 2002:ac8:7103:: with SMTP id z3mr2413604qto.172.1582773475963;
+        Wed, 26 Feb 2020 19:17:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582773475; cv=none;
         d=google.com; s=arc-20160816;
-        b=h6h6gYnV63O1I/DxvOxtRfCs/26Wjm1K1Br9DCdOqVC1P5MA8YKWGfLvUVx0syoQ3T
-         XykSwp586xbLurh1NFtAgrMIm5g2CWP08lByobIhtLHmKxdGgkoRvyp+vEZoOfATBZSY
-         2by5wu6xnMJwZlW9tZmgIceXl2KjSecdfw48JI/9VxKKDMgMnTkQrN6pMJIuWxSKaelJ
-         GLazSMNG//+UrnReP6bCz75YCc4WN9BDK1Czv2d6UBgaAwr5ibO794aXz69N1Vnpg6kj
-         s0Ko04Eka+WUuLQfJY+lh90EaKl3alKiAWzyppmSDY+VfRYKSadLM6M6z7eXXB4Fhp+2
-         bYHw==
+        b=lHJYPPiIU0ZbbRjQQTecwrD4f5GIuESYvF9CA7W03zcH3v/I4ygZ8gZkWz7mLXOQLw
+         R1kKMD+Tts8fhrBtrlCx1LEs3JHm3fgsZUDWqVuxV56g7d5ZRKAsFmFAAey+F654Dpxh
+         eTwJVSo4aRizpoLzP3hSnIx7nRVn/N/A9/KSxOjjvXRbb1DgXJEKkBe1Y/gdmReXrx+w
+         UKNmYthFTBsIl8nF3J/l5qt9+YmCpnPY8BrMsLpVnE/OZ0gYfc2noh7sLAOWo8dqsJPW
+         8qDsHsiCAwUYfYRhUdL6vrlq3qlLPf3/jjAUqEtk4BMkjc2LRUZjGX37ZWuUnu23FMZz
+         8+2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from;
-        bh=p/F+4x4UkdW18ehpRURv5+muCDGDvBF/a+QAMr/dAYk=;
-        b=EDc/1z9IwnWSN6vqcx0WZ3NzDP/9c88MKVyOd9WLfT9lrHbop8ObJYGlzLJR9lPpGV
-         vGfHUQznO8GM4CHV6q4T+DGEZBIr1qkofuzWtYFlGGrU2Jd7I7Q3gc3os3lCjELQejCM
-         4GIVEBZcXOamYJNzfXxlIA19YR3qG0x8ahg6aZxcOgVs94buLuL1fXuPMnAmSUtBhlP4
-         dUiC7J0OHPcomEONUdT5F8yI2ov1W/M35lxSyjS+58oqk2JXpNekYXmAlIspAh5PGaSY
-         DS8WSN8lYcE1Ing7TQB692vp+2Emyv3TXAQ71Xr/Z35efBUCo8oerc/ZPIXCJpFjVg4z
-         nkMg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=hSejYaCs7IfHJXCU0iAn87QmN7uPaTvX4osKYJJq1xk=;
+        b=JQIZo+WliZYu1rztzh4XBZIa9i3UJ7fzvidHBK4aZDoovLGm8LvvKKAMm0Wuyx8ufd
+         6p7+lwIP963vu05pjrTBM2pNa/vwZaQN0NM+kZucNRvjHKk2y1rCILRmkbdl+1KOo2jE
+         lceYrPAphlyv43NjjvQczgRUJU2zONZY9s6fAoN0B9varMEZWy7k/mNA20b/GPQLBoTp
+         Jdjb6WRnjHcwAKJfid0CagMuR/i3ZIyGP/5KMJjwsrsqcTTLOYR+rFbvhDZOMU2v97W0
+         D4GsHA4O4qob0a2cuv/b7vR4Kv71abMngjSaQcENkS0Sy524doFLZOz9wI4yOiPd8GSJ
+         TlZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ezzIEn34;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t9si496361qvw.81.2020.02.26.18.38.38
+        by mx.google.com with ESMTPS id j21si703908qtq.227.2020.02.26.19.17.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2020 18:38:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 26 Feb 2020 19:17:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52966 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ezzIEn34;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53348 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j794Q-0003qH-Dp
-	for alex.bennee@linaro.org; Wed, 26 Feb 2020 21:38:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60165)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j79gR-0007ni-D7
+	for alex.bennee@linaro.org; Wed, 26 Feb 2020 22:17:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53103)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pannengyuan@huawei.com>) id 1j791V-00083l-Cm
- for qemu-devel@nongnu.org; Wed, 26 Feb 2020 21:35:38 -0500
+ (envelope-from <edgar.iglesias@gmail.com>) id 1j79gK-0007mA-0A
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 22:17:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pannengyuan@huawei.com>) id 1j791U-0001lB-Au
- for qemu-devel@nongnu.org; Wed, 26 Feb 2020 21:35:37 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3175 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pannengyuan@huawei.com>)
- id 1j791R-0001ZP-MZ; Wed, 26 Feb 2020 21:35:33 -0500
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id A23DBA7A5288C2477CB3;
- Thu, 27 Feb 2020 10:35:31 +0800 (CST)
-Received: from localhost.localdomain (10.175.104.216) by
- DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.439.0; Thu, 27 Feb 2020 10:35:22 +0800
-From: Pan Nengyuan <pannengyuan@huawei.com>
-To: <peter.maydell@linaro.org>
-Subject: [PATCH v3 6/6] hw/timer/cadence_ttc: move timer_new from init() into
- realize() to avoid memleaks
-Date: Thu, 27 Feb 2020 10:50:55 +0800
-Message-ID: <20200227025055.14341-7-pannengyuan@huawei.com>
-X-Mailer: git-send-email 2.18.2
-In-Reply-To: <20200227025055.14341-1-pannengyuan@huawei.com>
-References: <20200227025055.14341-1-pannengyuan@huawei.com>
+ (envelope-from <edgar.iglesias@gmail.com>) id 1j79gJ-0003HE-55
+ for qemu-arm@nongnu.org; Wed, 26 Feb 2020 22:17:47 -0500
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:46629)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1j79gG-0003Ac-Rn; Wed, 26 Feb 2020 22:17:45 -0500
+Received: by mail-lj1-x242.google.com with SMTP id w19so1557369lje.13;
+ Wed, 26 Feb 2020 19:17:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=hSejYaCs7IfHJXCU0iAn87QmN7uPaTvX4osKYJJq1xk=;
+ b=ezzIEn343OXbejVpX3wulBzsw+ibzl1CS18pRis9PGLFpMExdOuzsayXKCueU5+Yl1
+ GiSyrrJGztYgzNj2qwcSYYbVtWm9AYLn7TFIFqYOYQqMW3zoVd9ha5LqVC1bf1kaYCD+
+ ii0cM64tboW9MxFH4mnjJw+uqEBLCB5vUMIn0x5aG44vAQO70Gf1K4CFWFDzKxNhDY9s
+ p6Ykq8BQkjNOPTTgjxIWy4CjCr30ZrpEbxQEWt6H5OJxqotIhOOXzJVInKRdvWBULHq2
+ D7laDF+I88CBM1lzi7Uxy/rM4FxQKv5nyiWX9yny/SlAlWvsxu6mVfTZzUljtX/Qyz97
+ T1bA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=hSejYaCs7IfHJXCU0iAn87QmN7uPaTvX4osKYJJq1xk=;
+ b=VX9WV74Q/wkvKTIK/OBquNYA5EcrquMW6YRRMzGUHq5cim9QOSu8s6eEmX3OAuCOt5
+ dngV35yMfwjUI8uGaz9pMtRPgEu3Qvc7ttVoQlZrY6Ij6ZSaWq9SHVYXTp2E2tC/ZSmh
+ AAvA/knWXoh9I+OYD2qcAbShOrMsWm/PoZmPN1lxyqElTJgFwcDE1iD35WGMEafqZ/xC
+ a6jNzmFSZ8uOmfWfaiYG5urALg89VyVapHGxY7w6BgflxEp5WZKIkaLVmlqJYD3QAhZm
+ PLE7/LnzPZt5tq5Kt2qENrxigx3PqANIIWSdGUezpnz0np5Lzrky/6hIJmDAk1RyWX44
+ Xjlg==
+X-Gm-Message-State: ANhLgQ2zrVx15KH5S02j/7ghUepYX/wMcNQPwzkOGLxCEKeStWPgvb91
+ TDiDeqkjfjtTCqSUCPsgKZ7SgLUQsRCgZw==
+X-Received: by 2002:a2e:9d92:: with SMTP id c18mr1400542ljj.265.1582773462465; 
+ Wed, 26 Feb 2020 19:17:42 -0800 (PST)
+Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id f9sm1895739lfp.24.2020.02.26.19.17.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 26 Feb 2020 19:17:41 -0800 (PST)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v1 0/2] hw/arm: versal: Add the LPD zDMAs
+Date: Thu, 27 Feb 2020 16:44:22 +0100
+Message-Id: <20200227154424.6849-1-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.175.104.216]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.190
-X-BeenThere: qemu-devel@nongnu.org
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::242
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: zhang.zhanghailiang@huawei.com, Alistair Francis <alistair@alistair23.me>,
- Pan Nengyuan <pannengyuan@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, euler.robot@huawei.com,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qDrMLLOs3x87
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
+ edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
+ frasse.iglesias@gmail.com, alistair@alistair23.me,
+ richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
+ philmd@redhat.com, luc.michel@greensocs.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kKvuzt+BjCTY
 
-There are some memleaks when we call 'device_list_properties'. This patch move timer_new from init into realize to fix it.
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
----
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: Alistair Francis <alistair@alistair23.me>
----
- hw/timer/cadence_ttc.c | 16 +++++++++++-----
- 1 file changed, 11 insertions(+), 5 deletions(-)
+Instantiate the Versal LPD zDMAs.
 
-diff --git a/hw/timer/cadence_ttc.c b/hw/timer/cadence_ttc.c
-index 5e3128c1e3..b0ba6b2bba 100644
---- a/hw/timer/cadence_ttc.c
-+++ b/hw/timer/cadence_ttc.c
-@@ -412,16 +412,21 @@ static void cadence_timer_init(uint32_t freq, CadenceTimerState *s)
- static void cadence_ttc_init(Object *obj)
- {
-     CadenceTTCState *s = CADENCE_TTC(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &cadence_ttc_ops, s,
-+                          "timer", 0x1000);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-+}
-+
-+static void cadence_ttc_realize(DeviceState *dev, Error **errp)
-+{
-+    CadenceTTCState *s = CADENCE_TTC(dev);
-     int i;
- 
-     for (i = 0; i < 3; ++i) {
-         cadence_timer_init(133000000, &s->timer[i]);
--        sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->timer[i].irq);
-+        sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->timer[i].irq);
-     }
--
--    memory_region_init_io(&s->iomem, obj, &cadence_ttc_ops, s,
--                          "timer", 0x1000);
--    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
- }
- 
- static int cadence_timer_pre_save(void *opaque)
-@@ -479,6 +484,7 @@ static void cadence_ttc_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     dc->vmsd = &vmstate_cadence_ttc;
-+    dc->realize = cadence_ttc_realize;
- }
- 
- static const TypeInfo cadence_ttc_info = {
+Cheers,
+Edgar
+
+Edgar E. Iglesias (2):
+  hw/arm: versal: Add support for the LPD ADMAs
+  hw/arm: versal: Generate xlnx-versal-virt zdma FDT nodes
+
+ hw/arm/xlnx-versal-virt.c    | 28 ++++++++++++++++++++++++++++
+ hw/arm/xlnx-versal.c         | 24 ++++++++++++++++++++++++
+ include/hw/arm/xlnx-versal.h |  6 ++++++
+ 3 files changed, 58 insertions(+)
+
 -- 
-2.18.2
+2.20.1
 

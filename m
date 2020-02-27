@@ -1,117 +1,100 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4500270lfg;
-        Thu, 27 Feb 2020 06:13:20 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxnjjcHgeof0jOEvXf6/6bDusM3/jczFofuyw58FQGj/UF16prkHv14vnjpkdiYCessD8+0
-X-Received: by 2002:a25:5e87:: with SMTP id s129mr3736732ybb.231.1582812800707;
-        Thu, 27 Feb 2020 06:13:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582812800; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4718997lfg;
+        Thu, 27 Feb 2020 09:27:13 -0800 (PST)
+X-Received: by 2002:aca:54cc:: with SMTP id i195mr102125oib.126.1582824433024;
+        Thu, 27 Feb 2020 09:27:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582824433; cv=none;
         d=google.com; s=arc-20160816;
-        b=KU4c3Yhpnc2NFpmO5jX6Dyzf9Wn0eU+lBuMeUIkIspoctZ4imA1XSSDRFFnW1xnh2R
-         UdbyfEq9XoYRxS6LsotEWP18lFBRgEcoMwtI2RKTvpGlA7HvSMAFJoakm9JB5T6RQdEc
-         kQna4xEQPdU8AlGOGYp2K/ND9o/P3XfOkTpfxgvK+M51svRHMoFzIWlSXGl13mQlKLYD
-         QmvHAWt1nI6fmPw+G90sZgQE8PHJmsDlSI/HPoUz/YAcROm8qBCl3vjPIvxOOgVeKl2f
-         0V+B9VPPUy3hk6GgpRpFOiT6aXi75QE+7b3q5kecsGNI9CRP8D/TSsNvQz72ohD8/BCU
-         yPJg==
+        b=lb1uWoDYaygUHepaRIgV1i1oL0ob8BcLrsYktrY9X7xkXbWXYaOZYkVBpi3XJPjQbK
+         7EZ82zBP9WnvoYB7r/MhVh35/UpPA91rL9nwzE31VP217hR8CcDFwmL06SXhsRCoVWo1
+         cFuVU1+X/0Ax3j12ngvT8dIcOaAEZ4vnUpdu3r1bg9h4wV2Ea0wA0cOBiw09n4LBpa29
+         wMgbikBrVYvHmLwcxmaGq5P/n4fYhlGOBbgYhpMaJ4XKe5U2tZIvcQqgjmxrmEbavmV8
+         WDeuDG+hlXBUOpI0YFqG5NzYYj7e6/lmFFb9k9lK3TSVPGbhdmt/iaMDs40jxyR+GyFD
+         i/Fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=+eWiKI/VVlEEq63rGQvQJ+kE6pcSeHfnXA0xz1Tbp8k=;
-        b=t2u9Hdur5qRDuzU69unvi+ZThuMnLqloUgd5cXuWL0oHsrdiqGbDUa0+YQ13RUEj3X
-         98XEHkHR0A+lbVe8xtJ6SjoznFKyuazyFmwWyQ2BpA1Ygv4xaQnsCojZjKgxmBU7DtpN
-         Y5jU9A9iJ1szIlQmc3qmHbSYjh/fewOEum2Yvl3/IiineF4SWlvIboQtN5gkAIMiTGQo
-         uTsnrw6WgKnaaLUfE5mD8zjlZwB4wfYsfSrDXQpZr16v/85RC7arsw45G+uF/d3H0oaK
-         EEnBLsSwLTg77oPwSIqxzw+/L0gShz/EFk+096qdxwkdhyGpsKtA9d0l3Cp/Rw0SkI2k
-         hC5Q==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=m9GJkvOTFPmF5ByiAdPJ3FRuMQFMw48QSAuhngnrSXo=;
+        b=EihoBkzOhqw5j+MRYyFM7ItmN9EFrQMzhlHNnmD7KawurMOk0/0G/SAZhDDAQoqF1y
+         ck2DaeMBj7TZhLhU9LnUg2LL6KftdYL3w/KKmrvxcw+D3XZkkx7F2ebIOZEvwMlZ+B/I
+         gnVHvStcg8aNbuYyLIfFSnvTAopjaa3KDquJaYroBU2RbiN9mb40qieHM8FE4jeEHaa7
+         8tdFXf0KtGCTE7xsDVTsiQw9WB9/+Fju6lsx864SfAymx4yVYxGxtBqzqbxQSd7/iAo3
+         f+7eBlvWgi3kqPFteUgwwaexlw/MHzCk5wiJnIe5idVo+aPfBZUbQh3p+12jOgP5aEuM
+         wSbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AbL5Kcve;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
-        by mx.google.com with ESMTPS id i6si1263751ywm.308.2020.02.27.06.13.20
+       dkim=pass header.i=@linaro.org header.s=google header.b=Og2ck7V5;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id p3sor55504oic.20.2020.02.27.09.27.12
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 27 Feb 2020 06:13:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
+        (Google Transport Security);
+        Thu, 27 Feb 2020 09:27:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AbL5Kcve;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1582812800;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=+eWiKI/VVlEEq63rGQvQJ+kE6pcSeHfnXA0xz1Tbp8k=;
-	b=AbL5Kcve3GB4aIKy5FfNe2oRVra6ceZ72iwnLMMLG/ikQNAQk9GsGIOAF8cwaSCEZWOOM0
-	/AA6jj40LHlXiSw+Yzp1+qBF/kgKQ424D+cDfnmcNc2e8MF/BxkTgz0qo1X6vBWlwMncTE
-	qd/cW6JtlNPTss4FdOpZjF0N0Ur+k1I=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-76-eYHn4upUMDquFVFqigMpTw-1; Thu, 27 Feb 2020 09:13:18 -0500
-X-MC-Unique: eYHn4upUMDquFVFqigMpTw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CC73518C8C01;
-	Thu, 27 Feb 2020 14:13:16 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 823C96E3EE;
-	Thu, 27 Feb 2020 14:13:15 +0000 (UTC)
-Date: Thu, 27 Feb 2020 15:13:13 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: Alex =?UTF-8?B?QmVubsOpZQ==?= <alex.bennee@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org, Laurent
- Vivier <laurent@vivier.eu>
-Subject: Re: [PATCH v1 4/4] accel/tcg: increase default code gen buffer size
- for 64 bit
-Message-ID: <20200227151313.7b2f188b@redhat.com>
-In-Reply-To: <56f5e355-9357-e212-e92b-9db1d8424dea@linaro.org>
-References: <20200226181020.19592-1-alex.bennee@linaro.org>
-	<20200226181020.19592-5-alex.bennee@linaro.org>
-	<2ca7b55b-5674-370d-5c4d-dc8b7782ca64@linaro.org>
-	<87pne0w6rt.fsf@linaro.org>
-	<56f5e355-9357-e212-e92b-9db1d8424dea@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Og2ck7V5;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=m9GJkvOTFPmF5ByiAdPJ3FRuMQFMw48QSAuhngnrSXo=;
+        b=Og2ck7V5aMwa1z894SWLCSUKSDxMHxKk+gZ3tFOqy0sv8DronlEcSapPOVvDNwnj+7
+         CtWvVqGObibgJ5rNBCZi7sdB/f+DEY/9m1B8yx8hYh6FrHTxqn3raVjG5fCfyMvYGsZ3
+         nUMmLA9lPOjYEpu4idqpSMNrSDsOEZxtx3dg+CKQPvqPH7kvIsG3za1DX9ac12EjpoY2
+         3rRLB/1HIk8kIxH49VTtYhJu6ICdzfuKKVtXbaQjicosueFtoMklnUyPm67sDv8jz4Rx
+         lqyMwKqqGs/WsCNEhpy8ijkdGzlCABQgS4UdwMqMg3SxwkVN2qb5/3c8e7wp1Gn3ZUt1
+         rDZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=m9GJkvOTFPmF5ByiAdPJ3FRuMQFMw48QSAuhngnrSXo=;
+        b=l9C0g+7mY6dNPAr5qeskukKVXE/Iwz65llfZEsZx5VkBYF90POzwQBmQR9FzJHN35h
+         0CBuhHHIaTs+eh+07MArLpNwBDN3n+aTSXB7WVMsNNUoxwB9NZSrrxi1kwNGI/TInsRV
+         tZ505fTlJman6g0/FaOSUFB52VHqDBwWaHYf+EATIYpgDyDGUMpJEpwGmU2lUnlDcbk8
+         A5oaDVZIzIOAoNCJII2YIUVKuyG3Zw/HJoMlBNa85xFo61/wIfIMtYONzspGEb5EgjC0
+         /WD2cR0Faab6ZvG7MUZBBf4ZArERGM5ETI4s3aETfVZfemzfQouzpy5Ukqtg2de1GI/1
+         VRqQ==
+X-Gm-Message-State: APjAAAUF+IEk2+JfhFKzvTMkXVPoxgIftLLNP5hR4BwNo+F8mfKgh/MR
+	faUyLQ6FWTkSVMa/Az28KpMXulLe5MVa8uzRH+cRsnpIrhE=
+X-Google-Smtp-Source: APXvYqxI+42Qv63LSyl5MxHHQ4otO9wwBXpiQdjCqMMKmhM2Db0/PP+fFPjdsejRmyz5kRV3pplv/MQqRO+5gwtvOeI=
+X-Received: by 2002:a54:4f16:: with SMTP id e22mr91087oiy.170.1582824432519;
+ Thu, 27 Feb 2020 09:27:12 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+References: <20200225143923.22297-1-peter.maydell@linaro.org> <87v9nuxv9t.fsf@linaro.org>
+In-Reply-To: <87v9nuxv9t.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 27 Feb 2020 17:27:01 +0000
+Message-ID: <CAFEAcA8LvupcqdsXudKpPyARz52jCJ0C9P2Cc7JeECv_mej0PA@mail.gmail.com>
+Subject: Re: [PATCH RISU] aarch64.risu: Add patterns for v8.3-RCPC and
+ v8.4-RCPC insns
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: R32FR9/obmsM
+X-TUID: oVFLPf+X7OtD
 
-On Thu, 27 Feb 2020 04:56:46 -0800
-Richard Henderson <richard.henderson@linaro.org> wrote:
+On Tue, 25 Feb 2020 at 20:32, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+>
+> Peter Maydell <peter.maydell@linaro.org> writes:
+>
+> > Add patterns for the new instructions in the v8.3-RCPC and
+> > v8.4-RCPC extensions.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> > This is what I used for testing the RCPC QEMU patches I sent out
+> > the other day. Did I get the @ section syntax here right?
+>
+> Yep ;-)
+>
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-> On 2/27/20 4:31 AM, Alex Benn=C3=A9e wrote:
-> >> It does not make sense for a linux-user chroot, running make -jN, on j=
-ust about
-> >> any host.  For linux-user, I could be happy with a modest increase, bu=
-t not all
-> >> the way out to 2GiB.
-> >>
-> >> Discuss. =20
-> >=20
-> > Does it matter that much? Surely for small programs the kernel just
-> > never pages in the used portions of the mmap? =20
->=20
-> That's why I used the example of a build under the chroot, because the co=
-mpiler
-> is not a small program.
->=20
-> Consider when the memory *is* used, and N * 2GB implies lots of paging, w=
-here
-> the previous N * 32MB did not.
->=20
-> I'm saying that we should consider a setting more like 128MB or so, since=
- the
-> value cannot be changed from the command-line, or through the environment=
-.
+Thanks; applied to risu master.
 
-That's what BSD guys force tb-size to, to speed up system emulation.
-
->=20
->=20
-> r~
->=20
+-- PMM

@@ -1,181 +1,148 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4830451lfg;
-        Thu, 27 Feb 2020 11:20:25 -0800 (PST)
-X-Received: by 2002:a05:6638:44a:: with SMTP id r10mr327947jap.36.1582831225744;
-        Thu, 27 Feb 2020 11:20:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582831225; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4976344lfg;
+        Thu, 27 Feb 2020 14:02:17 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyF71G7IELXPSeLRGGKKX4ktDIiSrOvm02GHpZQ7CC4sI/NcXwJAnfoNGSSlq0fn15cpaqC
+X-Received: by 2002:a37:a496:: with SMTP id n144mr1677036qke.126.1582840937218;
+        Thu, 27 Feb 2020 14:02:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582840937; cv=none;
         d=google.com; s=arc-20160816;
-        b=J0WI7Zc6EiXDG3LRSZiYkLxS1YjeK85g6XMu9f1tu/0RNL/XDUT5cICPbQVwwYmLv7
-         aElrWXZk1mkOuePR5bmJYjpXG3bRymfU1ZytQ/1pTw/9JmFGRnLq91XYxKBHwr0oD7Oj
-         whThKla0qbWOj4DjQiKYsZLpzRZB+KgTO2j1DdXfIzkU5Sc6Di6ryyi4cUImWlco0Yce
-         6hrphbVy4amKKHzDH5CxZp0WOtaRmCNzYsNliTr0pJdYOp1lQ9Yawnm8BhzXPUxbxxg0
-         jdiQJM3riMpudHAIHtQpX791HnYflJXped2/NZGbavVWmTov8Mx1j+3zr80D5T6yyIar
-         9v9g==
+        b=mlir4LfJc/+Iufj0LUhkdZHQ+r2PHl5gTr1ryzcYN7xubJy+c2C7Tuu7Fcgtu8cBP5
+         ZGsBBpP1QRikp3vGl8LMIFcdFMe8l0+j5wGD1ehKQ3nCaAhHi2+YXB07Z3PVBW8KAjA5
+         wGX35NX8h/MAuOJrGxeSTo24GlLsi/2Rm2Aq2YMpArxNuF1hQJudmDdCt1GfidJBgkvD
+         kGT6Vmlqvg0NQR/jimjgkm1Em8yL53b87pQyDW2YCxG9SDJSxAu4UWPZ9j1RiBo0ExGn
+         2qyuq3bBHG2/MnDacpc0jZIu476PLIukL+Ad1u5sXoaKVgRXNktspQ3IDnyx9clHQB4J
+         cR7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=uei+Q55y4h9fZrlb1rValsZkG5GHnuVT5+jSW+UWrfc=;
-        b=Jfj5M5MFLr8Ctihaa8d5TNbD6Z5x+/CmPBvmcNqtkyxVrIu6KdqLx12sShE7dxhf5Z
-         kMT4H6DAjg0izD2bVRsV0qHcA59jh1GP2ZylXoOcCCHWhkmnlllj2RII8CSpNrgHPIi8
-         DgxtgaW5VogKMY0i0VGw2xX7UmHHpadyj0TBPMiatNidDag9jCTa1H4Rpn2VM+ut3Mbw
-         HoAJfN+530fHNsBbuHsq79M/PT/L9TvkLXzLEwfGlenx/zJvlt9HrEDW/6PV/UwvGOYE
-         aDYUcP0VjXDvW2C/pucEuaWth+L02/XeRsrjgrY3Z8voH2LNmB2Nbiqa6K5/G0xSxgJc
-         FarA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=zZS79vliNn3E7I89zlAY0tg2EKwBR1ZC6u6n1nsEkUU=;
+        b=SSMnrNLJNDD5eX7YUeoA71TNuwZ7H5ygzjhDIIfcGuMezC9tOhFSScHBEen0jwWTA7
+         1yHItbKLFhFLIi5NCb154ZCox1017GW3LBxF/w/OiUwhk39ON/bhrlEG0vZjme5Y7Svj
+         N9irTzaCEYI2PxMO9D4U7nm2jF64uGsi5zOEmY4b+NfoiFFZJFo1DgZR3mGRZnjOk70I
+         Cb7grxZTJLmKOQWsu1Tde1mHWNTg8/AkZkJW/FnjEbD7+afAjiVWJ8tWm5zLU3VlwD9N
+         +BArLsPJc2GjeHcj+nGxtsccLGS4h8VZSx5lAE6M3iWNINilRcCWKHjRE20ShecqObtW
+         x2tA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="q0/vNIM+";
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id i15sor321327ilj.66.2020.02.27.11.20.25
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LCG+xv0L;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v123si341874qka.217.2020.02.27.14.02.17
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 27 Feb 2020 11:20:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 27 Feb 2020 14:02:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="q0/vNIM+";
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=uei+Q55y4h9fZrlb1rValsZkG5GHnuVT5+jSW+UWrfc=;
-        b=q0/vNIM+NuDG8Dm47cjMgM1nhLYoJmc3+2oiEEg1koPXlPK5oCm2zCViSzM9Gr0P1k
-         jE6J+Nj67Vcj6lhapHm3Rvufl0vXVgDsQui3CC0GZQraewsC/s4dI+tHhdKwFF8b387z
-         K1U73QwqC5iOk/NzOJP+SzAWYocHsg67UIQ1j/sNGi+Hic88/qu7QGPaS4DRYP6U+BWM
-         In+SLt2ythR0UfBlcOTKBHYU8yqAa2OBKeOTQpUwNVCCDLRqPFF8eWhrUhk4+t4lotW1
-         cnvMkBoFnCBPUqI3DojJjj6DbUroPij4le32VcokG3OClausp/zUscBotqnSgU80yNrO
-         59hA==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LCG+xv0L;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39034 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j7REW-0001C4-Lr
+	for alex.bennee@linaro.org; Thu, 27 Feb 2020 17:02:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44971)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1j7REL-00019J-AE
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2020 17:02:06 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1j7REI-0003lR-R1
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2020 17:02:05 -0500
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:38887)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1j7REE-0003jz-IY; Thu, 27 Feb 2020 17:01:58 -0500
+Received: by mail-wm1-x344.google.com with SMTP id a9so1106670wmj.3;
+ Thu, 27 Feb 2020 14:01:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=zZS79vliNn3E7I89zlAY0tg2EKwBR1ZC6u6n1nsEkUU=;
+ b=LCG+xv0LPzhtZK/Yv0BWy/bhOzHLYl7LC+6NEIni3/gV1ZbTowfSj8riwYKHqVDLnf
+ RO7hRGDt+PeM/fGE5l/R/tnvMrWAs2fwTFY4S+DZO/GznZKAZGL/AIxnDRBI2LY4Myra
+ /my2IHlvj05hAyF/0fF8P/0+5Fw8QJS9W9U3TWfnqR7d/9F2Qj5myYCtR+cTtJBE9UAa
+ St+tPNtinqHGFPn8Mdx66NFQyphtW2dHaeHrjJwGVTZH68ccpWk4QOy/d30q85X91bhQ
+ ZV46fZSGU+IUpkw+S7hFr1y0o0clHOr1hMX7pOot152EH24sGVWPiouHiyYfkN9Cr6gK
+ PbOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=uei+Q55y4h9fZrlb1rValsZkG5GHnuVT5+jSW+UWrfc=;
-        b=Q1Xg4jW/cpDKKarcGEIl1GPgeOSTRHI1Bnu5hJ2SdU8lhP5Bkz8awc4q2yMrfA07DE
-         ipJtSh8dJRdmkJETKZMsYAOFfjZW21l6SG/NOq0rQLW7hhCKPYAHoJySKi/WRlQ6+sKY
-         /TVN67AtqbiNUD7d9SCo0vx1LEXO3Z5oj5GICU1nU39MyeGvwEuPDkBFeN8QlW9x69GM
-         FjQmopZG8AxeAetsJs/S7MmheAR1FUeXXKCl+gG3Sy+Ls5yTShkQGUwL3mjdliaXzaUd
-         +qX+j+n0v3D52Q4SbKuVs81dylNX2QuAagziPduj9RlDjyrnf7ZT/lls3fjbDy/CK1SN
-         bpJw==
-X-Gm-Message-State: APjAAAW6kyJnSeQUg6CDrFlPORGMW82x72Y+eMGr84n5kaHXny8xLMP2
-	GYqwvyWhrD4WitFCpsme0wJr82w396CjNeJmtXPA5Q==
-X-Google-Smtp-Source: APXvYqytSBT2k2y7/yCH3uj00NfJaJEw3K8jTLfULXGWWtYSDL895kpXeWTtJCHaJhl4OQR2jnszXJRC/EJrPbFgZYo=
-X-Received: by 2002:a92:5f45:: with SMTP id t66mr894726ilb.28.1582831225169;
- Thu, 27 Feb 2020 11:20:25 -0800 (PST)
-MIME-Version: 1.0
-References: <20200226181020.19592-1-alex.bennee@linaro.org> <20200226181020.19592-4-alex.bennee@linaro.org>
-In-Reply-To: <20200226181020.19592-4-alex.bennee@linaro.org>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=zZS79vliNn3E7I89zlAY0tg2EKwBR1ZC6u6n1nsEkUU=;
+ b=N7sU6RNk/xzxi8IzL4hy4dxInJqiUmD/5iN7Xa3gE2x2vpklV2lfXU+Oe7565WMx3p
+ lOdrrVY+dHQ/apHF/Ueaaf9EsD8k9LPB9v936XHkohD3Lv70OlD2g7olESGE5TT5VkNV
+ ZBTlr+1Qxy5aOTGXtSuu7xVursurufitZjRwohNsp+kLWWuxwRMdcuMkx9bvuTPZLMtq
+ K2HY8lf0sVwNxvHV+CllACJlPr+pQnCTK+N1tm6/Gmtn1wVE2Kqvh5D2yfETuE0WUc9K
+ hYD9DbOT9Xrw73si7Hzs7U9DGfD2PGu9xRkkyDc8pRCL3NFeGZ5pzl2Kfm3FDYMeyIVj
+ sPRQ==
+X-Gm-Message-State: APjAAAW3WP+nuSJ3xNJtCAwbqLy2RWE0JiZNzpOoCXuUnB8m3hDyYAkM
+ XlpPbZL0Fxg1fLAyYInt+k2nILOK
+X-Received: by 2002:a7b:c392:: with SMTP id s18mr806466wmj.169.1582840916604; 
+ Thu, 27 Feb 2020 14:01:56 -0800 (PST)
+Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
+ by smtp.gmail.com with ESMTPSA id z14sm6447040wrg.76.2020.02.27.14.01.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 27 Feb 2020 14:01:55 -0800 (PST)
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Thu, 27 Feb 2020 20:20:14 +0100
-Message-ID: <CAPan3WquVnHMGDur2_eQ57CzhekH-Ct3avjoxcct5xMv7_P+Fw@mail.gmail.com>
-Subject: Re: [PATCH v1 3/4] accel/tcg: only USE_STATIC_CODE_GEN_BUFFER on 32
- bit hosts
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
-	qemu-arm <qemu-arm@nongnu.org>, Richard Henderson <rth@twiddle.net>
-Content-Type: multipart/alternative; boundary="000000000000ea6b7b059f939c98"
-X-TUID: eRE5g3kaXVEk
+To: qemu-devel@nongnu.org
+Subject: [PATCH v1 1/4] hw/arm/cubieboard: use ARM Cortex-A8 as the default
+ CPU in machine definition
+Date: Thu, 27 Feb 2020 23:01:46 +0100
+Message-Id: <20200227220149.6845-2-nieklinnenbank@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200227220149.6845-1-nieklinnenbank@gmail.com>
+References: <20200227220149.6845-1-nieklinnenbank@gmail.com>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::344
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: b.galvani@gmail.com, peter.maydell@linaro.org,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ philmd@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 22YVtE821oce
 
---000000000000ea6b7b059f939c98
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The Cubieboard is a singleboard computer with an Allwinner A10 System-on-Chip [1].
+As documented in the Allwinner A10 User Manual V1.5 [2], the SoC has an ARM
+Cortex-A8 processor. Currently the Cubieboard machine definition specifies the
+ARM Cortex-A9 in its description and as the default CPU.
 
-On Wed, Feb 26, 2020 at 7:12 PM Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
-rote:
+This patch corrects the Cubieboard machine definition to use the ARM Cortex-A8.
 
-> There is no particular reason to use a static codegen buffer on 64 bit
-> hosts as we have address space to burn. Allow the common CONFIG_USER
-> case to use the mmap'ed buffers like SoftMMU.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> ---
->  accel/tcg/translate-all.c | 11 ++++++-----
->  1 file changed, 6 insertions(+), 5 deletions(-)
->
-> diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-> index 5b66af783b5..4ce5d1b3931 100644
-> --- a/accel/tcg/translate-all.c
-> +++ b/accel/tcg/translate-all.c
-> @@ -892,11 +892,12 @@ static void page_lock_pair(PageDesc **ret_p1,
-> tb_page_addr_t phys1,
->      }
->  }
->
-> -#if defined(CONFIG_USER_ONLY)
-> -/* Currently it is not recommended to allocate big chunks of data in
-> -   user mode. It will change when a dedicated libc will be used.  */
-> -/* ??? 64-bit hosts ought to have no problem mmaping data outside the
-> -   region in which the guest needs to run.  Revisit this.  */
-> +#if defined(CONFIG_USER_ONLY) && TCG_TARGET_REG_BITS =3D=3D 32
-> +/*
-> + * For user mode on smaller 32 bit systems we may run into trouble
-> + * allocating big chunks of data in the right place. On these systems
-> + * we utilise a static code generation buffer directly in the binary.
-> + */
->  #define USE_STATIC_CODE_GEN_BUFFER
->  #endif
->
-> --
-> 2.20.1
->
->
-> Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+ [1] http://docs.cubieboard.org/products/start#cubieboard1
+ [2] https://linux-sunxi.org/File:Allwinner_A10_User_manual_V1.5.pdf
 
---=20
-Niek Linnenbank
+Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+---
+ hw/arm/cubieboard.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
---000000000000ea6b7b059f939c98
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
+index 089f9a30c1..0195925c73 100644
+--- a/hw/arm/cubieboard.c
++++ b/hw/arm/cubieboard.c
+@@ -68,8 +68,8 @@ static void cubieboard_init(MachineState *machine)
+ 
+ static void cubieboard_machine_init(MachineClass *mc)
+ {
+-    mc->desc = "cubietech cubieboard (Cortex-A9)";
+-    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a9");
++    mc->desc = "cubietech cubieboard (Cortex-A8)";
++    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a8");
+     mc->init = cubieboard_init;
+     mc->block_default_type = IF_IDE;
+     mc->units_per_default_bus = 1;
+-- 
+2.17.1
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Feb 26, 2020 at 7:12 PM Alex =
-Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.org">alex.bennee@linar=
-o.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
-rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
-1ex">There is no particular reason to use a static codegen buffer on 64 bit=
-<br>
-hosts as we have address space to burn. Allow the common CONFIG_USER<br>
-case to use the mmap&#39;ed buffers like SoftMMU.<br>
-<br>
-Signed-off-by: Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.or=
-g" target=3D"_blank">alex.bennee@linaro.org</a>&gt;<br>
----<br>
-=C2=A0accel/tcg/translate-all.c | 11 ++++++-----<br>
-=C2=A01 file changed, 6 insertions(+), 5 deletions(-)<br>
-<br>
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c<br>
-index 5b66af783b5..4ce5d1b3931 100644<br>
---- a/accel/tcg/translate-all.c<br>
-+++ b/accel/tcg/translate-all.c<br>
-@@ -892,11 +892,12 @@ static void page_lock_pair(PageDesc **ret_p1, tb_page=
-_addr_t phys1,<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-=C2=A0}<br>
-<br>
--#if defined(CONFIG_USER_ONLY)<br>
--/* Currently it is not recommended to allocate big chunks of data in<br>
--=C2=A0 =C2=A0user mode. It will change when a dedicated libc will be used.=
-=C2=A0 */<br>
--/* ??? 64-bit hosts ought to have no problem mmaping data outside the<br>
--=C2=A0 =C2=A0region in which the guest needs to run.=C2=A0 Revisit this.=
-=C2=A0 */<br>
-+#if defined(CONFIG_USER_ONLY) &amp;&amp; TCG_TARGET_REG_BITS =3D=3D 32<br>
-+/*<br>
-+ * For user mode on smaller 32 bit systems we may run into trouble<br>
-+ * allocating big chunks of data in the right place. On these systems<br>
-+ * we utilise a static code generation buffer directly in the binary.<br>
-+ */<br>
-=C2=A0#define USE_STATIC_CODE_GEN_BUFFER<br>
-=C2=A0#endif<br>
-<br>
--- <br>
-2.20.1<br>
-<br>
-<br>
-</blockquote></div>Reviewed-by: Niek Linnenbank &lt;<a href=3D"mailto:niekl=
-innenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;<br clear=3D"all"><div=
-><br>-- <br><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"ltr"><di=
-v>Niek Linnenbank<br><br></div></div></div></div></div>
-
---000000000000ea6b7b059f939c98--

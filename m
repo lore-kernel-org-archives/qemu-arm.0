@@ -1,149 +1,174 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3313875lfg;
-        Wed, 26 Feb 2020 09:05:44 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz6mQrUjG4aIy+c5mc9nFh57zknoq6LVpsLBIBNsjDu/t/eNJhEgKKJXhnxpGdzTJi7KaK/
-X-Received: by 2002:ad4:4f90:: with SMTP id em16mr88263qvb.38.1582736744049;
-        Wed, 26 Feb 2020 09:05:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582736744; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4280856lfg;
+        Thu, 27 Feb 2020 02:54:42 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz8ZiIgN9Oipg2bFhfs02ywCGZT+VAbgiaQ/68XHfbKJ+iDzS6HRvLqfM3dIFudWcXgKlpn
+X-Received: by 2002:a17:906:1e56:: with SMTP id i22mr3482286ejj.314.1582800882142;
+        Thu, 27 Feb 2020 02:54:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582800882; cv=none;
         d=google.com; s=arc-20160816;
-        b=DzmR/Hdswxk/jJ4oTHT4j3KVEC1tjiBIgrtzniE5GMOoFut6HtJG1O4i1HeE3X4M+z
-         0wc/xROpmSxrtoAv+FSStF6XV/ga/TUP6Qap3DsKO6CH5KCMxv+7RiBYf1wuJSVaEi7e
-         GRBpLnXmc1hYyPB0J+fWQzNMwGL/6az1G4q+JrdHSkQda+qGWeTjKwPsrkMBSrxh+VVa
-         zYfctZsmJ44sJz5JWrRALvyKwAV6BhhhJk/6gbkg7EnR4gVDDahaK/gzj1gHSDGGQCLf
-         zxDrTgjxzFbhKrVvWHvoKPL4QOdRqMxs4684lpBYi8FqlxoJ90XHU0tGt1cvqQKN0ltk
-         IgUQ==
+        b=q0p9jsN8VhPj70eq3C9MACWzCB+UlVk7fmc6WgiGmmQ7M1oqJZjV+Ae7hdxP0PI8JW
+         wQZix48m8c4MOlXkdBl7VdmSP16614Oh5kanBlMDRk9qGH+IFw0ySMu/efI99xo4Td1u
+         v1qRgMNfPXXkIUEITLKrlkZgUsZKBn3zim9XzQ95jJg1Pyx2y8pIDeVog0dTZ09qEqVg
+         cVmlol30/d8ij2d09/SoPFKnkqUqdL3pKt/9a9asOtM5XM1pb2/C9qab6SDr1tE/cFNy
+         /VlYPc+bp+M9DmO2bC2Aol9ggw1ssogUNpdLbdoFhlBXHE6hukK1nUIJTwfSAmD6FFG3
+         KKog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=Q2FBRF2GnFjWJL/ZPum6bV29UkLuQo6IIE5h/kxtwqM=;
-        b=Ep9T+c+qHz9aZr5Ky6r+kxYOr5+Mv2qpcTG/MPHBxPxU8veiyagIukUYq/7TVx4zoc
-         YUI07ryQnpEiih5oBGC1MKHBa97ozhPKnIY5PqHCvN0uIzjgedtThb3ZRmtZic/m2nWq
-         kY+38vNNZIfGn9X44h+KH3GBEDUG6tn4OLiX55WiRrpgXlBcXoeGIV1jPnBfXnBgzLQl
-         OfFGnEwyzrSk79BiQZ8unTanW6vmE1X7/Qi+7+9XgvUAcc5bgqwLfvP1q+PifPnLtvLB
-         Wqdgk+fKYKA3eBPw76tgjcpIPYOchh7KFbxz92LsQp4TqPGu8hiqVnj/WVC8VTYKGEid
-         QjKw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=dzsuHGiWKbJjz/GBd39TzvO4he9cbTBOd7/2LLsaGp8=;
+        b=J6Ed892oSrgPKiy2bbMy/fC38i4MIFJyNcEUCQwulGJWlsvWve+JjcyT3Vgvur4w3g
+         LINIGGynEpHk/guCp5aD2N3KjdKa9O7IHVA8hUcqedMxBiaDq/35nojukrj4Dy54gxPM
+         qXL72zaZ3abLrkhk/xsWEVQxg64qQosnHhg8CtQB7a8SAYpvhZKlBTLcxwQ4+W9zn6qb
+         vSV7nUnGbB/P+syuCe2IbMp8kBIPg0K4ZjkexTRO0uj4n9xKYEfGX9GuAIcOA3w/21ZK
+         AmUOXdsiDjpAXNEq/Ko/zqwDNu/a+4YBXt5au7L2Y+bPovC26zfxPj64SlWV84wax5u6
+         UIBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gO2aWafY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ORczkZtE;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x30si13407qte.281.2020.02.26.09.05.43
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by mx.google.com with ESMTPS id c14si1737088eds.9.2020.02.27.02.54.41
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Feb 2020 09:05:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 27 Feb 2020 02:54:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gO2aWafY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ORczkZtE;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47388 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j707z-00051T-DL
-	for alex.bennee@linaro.org; Wed, 26 Feb 2020 12:05:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38747)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j707b-0004z9-8v
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 12:05:22 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j707Z-0002b0-Mo
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 12:05:18 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:43583
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j707Z-0002VO-HZ
- for qemu-arm@nongnu.org; Wed, 26 Feb 2020 12:05:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582736716;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=Q2FBRF2GnFjWJL/ZPum6bV29UkLuQo6IIE5h/kxtwqM=;
- b=gO2aWafY5AQfeDUOM9ibL7GLrWDy7y2DUZ/lrIi+ebnNkteiTAUOKdsclX+1LTZAs+1EYG
- QWIq1Fw52CCRZOi90N8cBrwYs2Z24y/3lh/ktoZwa7p80chau4B1guROHqwFCuTAXoCtw0
- 7w+3dljD9eLaN+lsbClahpOCmajzTKY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-289-9qGOtC0vMpSUnUlEKR1t6w-1; Wed, 26 Feb 2020 12:05:15 -0500
-X-MC-Unique: 9qGOtC0vMpSUnUlEKR1t6w-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AA13D8010F8;
- Wed, 26 Feb 2020 17:05:13 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-59.ams2.redhat.com [10.36.116.59])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CB76760C63;
- Wed, 26 Feb 2020 17:05:04 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org
-Subject: [RFC 0/2] hw/arm/virt: kvm: allow gicv3 by default if host does not
- support v2
-Date: Wed, 26 Feb 2020 18:04:58 +0100
-Message-Id: <20200226170500.17028-1-eric.auger@redhat.com>
+	s=mimecast20190719; t=1582800881;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=dzsuHGiWKbJjz/GBd39TzvO4he9cbTBOd7/2LLsaGp8=;
+	b=ORczkZtEtWkZ+YuweC8S1GHw8IpVa7xQZiTOa8xksmR15Mm8fKHZm9XTm2ILY9cvWLyBiL
+	ahW5hAu89bPn8KIP+R7so2HLgD/pJO5QvcXgrffoAbuboKp4+RT7dr74zYvwgiiER9WyVQ
+	Y6dDYZoWRwxyqWS3eGgNjEHa06a9Rsc=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-269-9tDL45thNXScnFQSS908BA-1; Thu, 27 Feb 2020 05:54:39 -0500
+X-MC-Unique: 9tDL45thNXScnFQSS908BA-1
+Received: by mail-wr1-f72.google.com with SMTP id f10so1154380wrv.1
+        for <alex.bennee@linaro.org>; Thu, 27 Feb 2020 02:54:39 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=RvJYGb5l2LvhAtvzDaHsI6pAzF4cLaE643pQi22+ER4=;
+        b=dhcY107Ro6b99wW3zVjRvTp38t1h6BtXo4lp99yIGbX6MiqZ6yZbEbzFLOxVzBR50O
+         GtOzON61OrXl4s/MhplbHMPk3eELe8kndP6Lp68oCyTpjoV/E47HyD2Be0UEhx/dEhEv
+         OjAQ28h1quq3KFpb4axarxhXEvXehtWEPGKPOsEI+yQALrXEkW6dHUC3InZsy0QefO7z
+         BwRvB0zggJd+e6AvU2T0jxubBpi8/6qqGoJytKe7iSfejgbCRRJTC5hBUfRdww1uz1gj
+         hPB7oywk4/bFOtm++hAPVCnzOJwqwN3NJcQub75IeEQSDNgwXLwhEdcRbCdbUscWgrcg
+         LsTw==
+X-Gm-Message-State: APjAAAVQWBf0QIGemXcin48CAgHg2LvAzp6VIsYXY8ppniF0Jsa8KwPE
+	uPIVbipNsl9fGv8OdIFKTPOivXrwZcoS4Y0nA/ewQnFFm5tEIQeELG6Dzcnd3GKyxx/qA/7jIES
+	x2TN1q7/a/jwLe/sT
+X-Received: by 2002:a1c:9dcb:: with SMTP id g194mr4771273wme.114.1582800877548;
+        Thu, 27 Feb 2020 02:54:37 -0800 (PST)
+X-Received: by 2002:a1c:9dcb:: with SMTP id g194mr4771243wme.114.1582800877308;
+        Thu, 27 Feb 2020 02:54:37 -0800 (PST)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net. [88.21.205.47])
+        by smtp.gmail.com with ESMTPSA id j5sm7599168wrx.56.2020.02.27.02.54.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 27 Feb 2020 02:54:36 -0800 (PST)
+Subject: Re: [PATCH v1 1/4] accel/tcg: use units.h for defining code gen
+ buffer sizes
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Richard Henderson <rth@twiddle.net>
+References: <20200226181020.19592-1-alex.bennee@linaro.org>
+ <20200226181020.19592-2-alex.bennee@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <4b3b8d43-25db-6ac2-dbc6-04f2aae56638@redhat.com>
+Date: Thu, 27 Feb 2020 11:54:35 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+In-Reply-To: <20200226181020.19592-2-alex.bennee@linaro.org>
+Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: maz@kernel.org, drjones@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KlPVhzLfOf6s
+X-TUID: cpesXNS7lOsT
 
-At the moment if the end-user does not specify the gic-version along
-with KVM acceleration, v2 is set by default. However most of the
-systems now have GICv3 and sometimes they do not support GICv2
-compatibility. In that case we end up with this error:
+On 2/26/20 7:10 PM, Alex Benn=C3=A9e wrote:
+> It's easier to read.
+>=20
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> ---
+>   accel/tcg/translate-all.c | 19 ++++++++++---------
+>   1 file changed, 10 insertions(+), 9 deletions(-)
+>=20
+> diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+> index a08ab11f657..238b0e575bf 100644
+> --- a/accel/tcg/translate-all.c
+> +++ b/accel/tcg/translate-all.c
+> @@ -18,6 +18,7 @@
+>    */
+>  =20
+>   #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>   #include "qemu-common.h"
+>  =20
+>   #define NO_CPU_IO_DEFS
+> @@ -901,33 +902,33 @@ static void page_lock_pair(PageDesc **ret_p1, tb_pa=
+ge_addr_t phys1,
+>  =20
+>   /* Minimum size of the code gen buffer.  This number is randomly chosen=
+,
+>      but not so small that we can't have a fair number of TB's live.  */
+> -#define MIN_CODE_GEN_BUFFER_SIZE     (1024u * 1024)
+> +#define MIN_CODE_GEN_BUFFER_SIZE     (1 * MiB)
+>  =20
+>   /* Maximum size of the code gen buffer we'd like to use.  Unless otherw=
+ise
+>      indicated, this is constrained by the range of direct branches on th=
+e
+>      host cpu, as used by the TCG implementation of goto_tb.  */
+>   #if defined(__x86_64__)
+> -# define MAX_CODE_GEN_BUFFER_SIZE  (2ul * 1024 * 1024 * 1024)
+> +# define MAX_CODE_GEN_BUFFER_SIZE  (2 * GiB)
+>   #elif defined(__sparc__)
+> -# define MAX_CODE_GEN_BUFFER_SIZE  (2ul * 1024 * 1024 * 1024)
+> +# define MAX_CODE_GEN_BUFFER_SIZE  (2 * GiB)
+>   #elif defined(__powerpc64__)
+> -# define MAX_CODE_GEN_BUFFER_SIZE  (2ul * 1024 * 1024 * 1024)
+> +# define MAX_CODE_GEN_BUFFER_SIZE  (2 * GiB)
+>   #elif defined(__powerpc__)
+> -# define MAX_CODE_GEN_BUFFER_SIZE  (32u * 1024 * 1024)
+> +# define MAX_CODE_GEN_BUFFER_SIZE  (32 * MiB)
+>   #elif defined(__aarch64__)
+> -# define MAX_CODE_GEN_BUFFER_SIZE  (2ul * 1024 * 1024 * 1024)
+> +# define MAX_CODE_GEN_BUFFER_SIZE  (2 * GiB)
+>   #elif defined(__s390x__)
+>     /* We have a +- 4GB range on the branches; leave some slop.  */
+> -# define MAX_CODE_GEN_BUFFER_SIZE  (3ul * 1024 * 1024 * 1024)
+> +# define MAX_CODE_GEN_BUFFER_SIZE  (3 * GiB)
+>   #elif defined(__mips__)
+>     /* We have a 256MB branch region, but leave room to make sure the
+>        main executable is also within that region.  */
+> -# define MAX_CODE_GEN_BUFFER_SIZE  (128ul * 1024 * 1024)
+> +# define MAX_CODE_GEN_BUFFER_SIZE  (128 * MiB)
+>   #else
+>   # define MAX_CODE_GEN_BUFFER_SIZE  ((size_t)-1)
+>   #endif
+>  =20
+> -#define DEFAULT_CODE_GEN_BUFFER_SIZE_1 (32u * 1024 * 1024)
+> +#define DEFAULT_CODE_GEN_BUFFER_SIZE_1 (32 * MiB)
+>  =20
+>   #define DEFAULT_CODE_GEN_BUFFER_SIZE \
+>     (DEFAULT_CODE_GEN_BUFFER_SIZE_1 < MAX_CODE_GEN_BUFFER_SIZE \
+>=20
 
-qemu-system-aarch64: PMU: KVM_SET_DEVICE_ATTR: Invalid argument
-qemu-system-aarch64: failed to set irq for PMU
-and qemu aborts.
+Thanks!
 
-This patch keeps the default v2 selection in all cases except
-in the KVM accelerated mode when the host does not support v2.
-This case did not work anyway so we do not break any compatibility.
-Now we get v3 selected in such a case. Also if the end-user explicitly
-sets v2 whereas this latter is not supported, we also are
-informed that v2 is not selected by thos host instead of getting the
-above PMU related message.
-
-Best Regards
-
-Eric
-
-This series can be found at:
-https://github.com/eauger/qemu/tree/gic_version_rfc_v1
-
-
-Eric Auger (2):
-  target/arm/kvm: Let kvm_arm_vgic_probe() return a bitmap
-  hw/arm/virt: kvm: allow gicv3 by default if host does not support v2
-
- hw/arm/virt.c         | 41 +++++++++++++++++++++++++++++++++++++++--
- include/hw/arm/virt.h |  1 +
- target/arm/kvm.c      | 14 ++++++++------
- target/arm/kvm_arm.h  |  3 +++
- 4 files changed, 51 insertions(+), 8 deletions(-)
-
---=20
-2.20.1
-
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>

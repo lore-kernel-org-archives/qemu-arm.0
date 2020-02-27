@@ -1,16 +1,16 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4320928lfg;
-        Thu, 27 Feb 2020 03:29:25 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxNsAKff+bEn1zwChp8xGQP3Xg/47X+7P6GWUcZjHKhpQjb7ct1kYblqRuwsV+wqSC4zIs1
-X-Received: by 2002:a05:620a:22f3:: with SMTP id p19mr4829425qki.200.1582802965496;
-        Thu, 27 Feb 2020 03:29:25 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1582802965; cv=pass;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4346282lfg;
+        Thu, 27 Feb 2020 03:53:07 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwBM2dVlWJVLMfbDm2t3gova9ZdPV0a3nrC5vybXuispIYUtHxFZmlbyTDGb3JYTr1mSWm0
+X-Received: by 2002:ac8:6f27:: with SMTP id i7mr4310245qtv.253.1582804386991;
+        Thu, 27 Feb 2020 03:53:06 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1582804386; cv=pass;
         d=google.com; s=arc-20160816;
-        b=AgpTcFOG4nOfycut1QYhrFs31/Y3dcVUDTSdYBqPVR+QND8RiM9vedx+0u9M15seDr
-         qwivjq3welz96RKK/me7MrqOPrYcbLen5JUJLCVayiBguPy9E834YAihmjzGPhMsw68W
-         gU2t4N6D2xhMOonoVLXyvetQd+KtKgIcYaRnFXeT1uTbdB4gf7Qe97OhVmhkxGwFMmHO
-         xAdaOC050pnPaAPQcKeG+dzbLzyq6vWLhkvjKdDyPLHxQWZ+74wWOyEAw0ZUlltC4Lml
-         mzAIqeS8wNveOfJ4l7i1pbLXTgvmXiN2gYvARxz0qcm7RgEtRdZJ598cYZSOYmQ3haFC
-         E8zw==
+        b=pGtL9iL4c75erPN9/GC216IHrH1zKgf1PBKPr72lrdYhO+72fepDpCChkhLU+KzAIv
+         fdWMgA153MPHGCfucz5516LK4LGKC9HSiSjZUHXvPd5LkJXgJMcPJYz5lxu6txsYkH/h
+         ZW5dGvs26ZU/ekM9Do0299NARu/0as+mg5a4rXJpH+rLkJejfHW6o1JFQCjfBz7I/Jn0
+         +UnJaXnlPtue+EbiMfwrObsZL1lvg4BFhvbnpoN0XN2bLUrn0DV1vRPYH+1dQiPYcbv/
+         dgCsheKLurtUoY/1qi1zApBgvHXWvEwAKa93QFH/5LupLdyg9UI83gOaNfGj1nxOa3A8
+         AWKA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
@@ -18,51 +18,51 @@ ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc
          :in-reply-to:references:message-id:date:thread-index:thread-topic
          :subject:from:dkim-signature;
         bh=ow0FlfI6mqJho6v+kQ479IpbDkXfBlVrdY42XHlMWBI=;
-        b=ER/thZUdcRGJ3m+LbrtW3LPh6VUW5gtSkT6O57dJv0G7zRgqeIs07Xk6s9REa+Haiw
-         /Tpp51UBPGZHHTqr5fP9yvbwyfpAIncW8s5wFYljiP0WvqKrVpx0IBiZdczqcZC+3BBY
-         UshXbomOUKjsnYsRa3rU1tPA+VQVYZ4q+Ak2Quu3yi4VgvIBcW+jUKH9oDlts38I9z5D
-         UXlOMPB7ujo7+LrC/mKQNo8kg1/z+Bcrb44sLZcf/tHDABEoFtzzVmnkncjmNAncb7io
-         Aost8DJNcXWRgkVM4pt8we6fjy42onAih/W0EiaPgV/m/jN+HuM0LW6OG5qzxwNEelGk
-         q26Q==
+        b=fOmpe/jBAAnpQfZSQpDbuDY+5yOpbTHRHK6ZqLHN3v5mate1o9O8hYJz/D4J6Qac2p
+         tf8RD3AOf7d8Bgz/7hczBbe8K991bH1qCQAcfNG/z9/eY1uqMOyK1JeQRnL5/UJg2vYV
+         j5hmFlASizXDDypAowxccEj7eQEeF3G/ms/ROZ0nHybfIGxhnbt0T1oMc8TzsWobCG4s
+         qXMRGd6cUmSwbSZpbu9QTAHhli+uulwcR4p06XmOJ8fek3OIqwY4oOzlhTy4c881A2aJ
+         kWoqAr+M1OjhKMok8qS/jS+Bj/KwAGjy3/C1g4q0HBvBuQ1kxiaghwWhUjgGutOJcwP8
+         1kfA==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@stephanosio.onmicrosoft.com header.s=selector1-stephanosio-onmicrosoft-com header.b=YJbGXb1I;
+       dkim=pass header.i=@stephanosio.onmicrosoft.com header.s=selector1-stephanosio-onmicrosoft-com header.b=Qs+d50mH;
        arc=pass (i=1 spf=pass spfdomain=stephanos.io dkim=pass dkdomain=stephanos.io dmarc=pass fromdomain=stephanos.io);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z17si1295951qkj.195.2020.02.27.03.29.25
+        by mx.google.com with ESMTPS id 142si1332247qkh.201.2020.02.27.03.53.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2020 03:29:25 -0800 (PST)
+        Thu, 27 Feb 2020 03:53:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@stephanosio.onmicrosoft.com header.s=selector1-stephanosio-onmicrosoft-com header.b=YJbGXb1I;
+       dkim=pass header.i=@stephanosio.onmicrosoft.com header.s=selector1-stephanosio-onmicrosoft-com header.b=Qs+d50mH;
        arc=pass (i=1 spf=pass spfdomain=stephanos.io dkim=pass dkdomain=stephanos.io dmarc=pass fromdomain=stephanos.io);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57664 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57984 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j7HM4-0006Cs-NL
-	for alex.bennee@linaro.org; Thu, 27 Feb 2020 06:29:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39573)
+	id 1j7Hj0-0005vT-E7
+	for alex.bennee@linaro.org; Thu, 27 Feb 2020 06:53:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49388)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <root@stephanos.io>) id 1j7HK3-0004F0-Pq
- for qemu-devel@nongnu.org; Thu, 27 Feb 2020 06:27:20 -0500
+ (envelope-from <root@stephanos.io>) id 1j7HhX-0004dd-A5
+ for qemu-devel@nongnu.org; Thu, 27 Feb 2020 06:51:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <root@stephanos.io>) id 1j7HK2-0002JL-OI
- for qemu-devel@nongnu.org; Thu, 27 Feb 2020 06:27:19 -0500
-Received: from mail-eopbgr1280101.outbound.protection.outlook.com
- ([40.107.128.101]:30592 helo=KOR01-PS2-obe.outbound.protection.outlook.com)
+ (envelope-from <root@stephanos.io>) id 1j7HhW-0002vR-9M
+ for qemu-devel@nongnu.org; Thu, 27 Feb 2020 06:51:35 -0500
+Received: from mail-eopbgr1280119.outbound.protection.outlook.com
+ ([40.107.128.119]:30380 helo=KOR01-PS2-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <root@stephanos.io>)
- id 1j7HK0-0001zN-0E; Thu, 27 Feb 2020 06:27:16 -0500
+ id 1j7HhT-0002Xq-KC; Thu, 27 Feb 2020 06:51:31 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FKq1RNrpvKw1Fq2N+2n4GjF9ktCGbln7fSQBbQKQTtdkjqjcFSitAqvmbg4uCnif02tXUiEPt34MocD1kDIJytHWElxMoO9I5eaXTAYxq3obUnBK6rDMdLg8QFsITx7B/cet4f546AhYEpc1nBmioRC/szBP5p9HBg3pshAEZRMKqn/MIRGw/st5nEs4sjkVYunJQkak02mH8chqukEzjSV3gsNE2m5JIWCA2Rx7EIXCTy0SN9u//ZhXuCvb8aXnwxsoVDI6zRRDFXxmUqXXgCkHzxTWuaQrzoUP8ZL8vP6DARhruB6HHSPfTiII0By3GwAFPCA5ZXN362psMY5cSg==
+ b=frc/yp1U8s53NOGQS3ZPV163R/3C6QddBtytZliOiyrBFoHjiFlVvW2QkDTCXF8DJ5Xp26g5oUDgYu+cOefyaSpBJplYr+2SjN0C5yom+jXHlX7YqgI2uhQ/B/1askBLJfQPdV1pHLiF5cSFl2OFalqHnSfNdpM5SJlQ4LPt7htxTpevujf9RqkrZ1Dw/68avAel7CV5nxgE4cG7/QGdq34n4XZ4PmGhBH9lF99JbCJShH0/25UAFzCxyjcnmKGKPA46PZ4nHtB2Az2TYunXOnCKqMbaPtTz+SjqewOBStzWzc8jnZeYtB25P82DL9GIt8SBnw1DJ9mIMOEVBuiVpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
  bh=ow0FlfI6mqJho6v+kQ479IpbDkXfBlVrdY42XHlMWBI=;
- b=JTzQbnQf7Jhn0Hlh01lHLeLIOi/dSpzBwkhrktekR4BZVld6mDaw5IUQImEYWO8tLvlYmfRNuv67rZWDCLEiR2yKY9PyLrNz5ht/8LuBZUWKtOo51xuxiKrAQlp9s/DYtfhHk5M5Qx+1UB9ameNI62LhWnhqvettEpVqKVMQDJUxHpddbqzIwPt+oShEbM7Qvympg6lL716hUXSp7oxYVos1/HpXsjdFwAJwGVb7Rw1P1ayyDodO0s+WCNo2B5qtxPde6pc34SRfJoeNKuvHRqH8sWoc4LpP+uFFs00EL/MdMRgGKsqytQN4wVh/g0IiGQWJkxC8XXzmyqam4vkfhg==
+ b=gM12JiSee1cc7C9Q/ZwkliHu/xsueNkjEuDlaqJW80lOIVdIZ5V+iVp+X0ceuF5MuQqUr9xaxDLnJKdLC2z7tjlbBrkrc1zCun62LnfCRAbOwwLT9mllW6ihiW0qC4LApUZ/nwHiJcxy18r0J03K7eOg+9nBCpe70sHGiZ+SI1Xce8Ew2jBargaG3VSwCcu9BwSHiunA8SjxkDIl1z0PiovIcQesAuZYW3xmemSSjxZ+iA9b/A/lXy1RSf5KY47oAhTwBJWxKlR7X1wR664oDcfARMlB8OUVbP3dM8GPaW6xDtTIo/BtiVLjBi9/dX4nM1FuV85YRS0AdBYSt5dZgg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=stephanos.io; dmarc=pass action=none header.from=stephanos.io;
  dkim=pass header.d=stephanos.io; arc=none
@@ -70,33 +70,34 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=stephanosio.onmicrosoft.com; s=selector1-stephanosio-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
  bh=ow0FlfI6mqJho6v+kQ479IpbDkXfBlVrdY42XHlMWBI=;
- b=YJbGXb1INYY/SXQrojwnehDRkR60Lvxutt5LP1baxUY9recdCWHLxh7oohF5NzzjefE5IZGZdwYZDpa7s2sPYq6te73zW79K2GJjA2cBPVMexytlR3Qe8x7Ou2OgkqFIK9MTNmSEdlLyVJ9eRBg7/miS2JR05EmAUd+a2m7q2qQ=
+ b=Qs+d50mHsHFIyufuoZ/0i+jktWM/QtjgzaonzFxijXYyuLCznJR5tlOLFKixGjJhJWhmZ0tnJKYbKHB6gMDf1c2TvCjVauIs3T6qsUQ5ZkTUdcB3AxTOxsYpoKGYneQ7IayTe34FUP9AgCO2KTr62HPeW8LzgfsR+X8gAy+60Jw=
 Received: from SLXP216MB0285.KORP216.PROD.OUTLOOK.COM (10.174.35.136) by
- SLXP216MB0031.KORP216.PROD.OUTLOOK.COM (10.174.39.141) with Microsoft SMTP
+ SLXP216MB0351.KORP216.PROD.OUTLOOK.COM (10.174.41.8) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2750.21; Thu, 27 Feb 2020 11:27:11 +0000
+ 15.20.2772.15; Thu, 27 Feb 2020 11:51:28 +0000
 Received: from SLXP216MB0285.KORP216.PROD.OUTLOOK.COM
  ([fe80::d10f:962f:91d7:b1b]) by SLXP216MB0285.KORP216.PROD.OUTLOOK.COM
  ([fe80::d10f:962f:91d7:b1b%8]) with mapi id 15.20.2750.024; Thu, 27 Feb 2020
- 11:27:11 +0000
+ 11:51:28 +0000
 Received: from DOMINUS.corp.kimin.kr (1.214.196.86) by
- HK2PR03CA0063.apcprd03.prod.outlook.com (2603:1096:202:17::33) with Microsoft
+ HK2PR02CA0191.apcprd02.prod.outlook.com (2603:1096:201:21::27) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2772.11 via Frontend Transport; Thu, 27 Feb 2020 11:27:09 +0000
+ 15.20.2750.18 via Frontend Transport; Thu, 27 Feb 2020 11:51:27 +0000
 From: Stephanos Ioannidis <root@stephanos.io>
-Subject: [PATCH 2/2] hw/arm/armv7m: Downgrade CPU reset handler priority
-Thread-Topic: [PATCH 2/2] hw/arm/armv7m: Downgrade CPU reset handler priority
-Thread-Index: AQHV7WDamNGXYjwsUEm9K1g4p+T2pA==
-Date: Thu, 27 Feb 2020 11:27:10 +0000
-Message-ID: <20200227112617.66044-2-root@stephanos.io>
-References: <20200227112617.66044-1-root@stephanos.io>
-In-Reply-To: <20200227112617.66044-1-root@stephanos.io>
+Subject: [PATCH v2 2/2] hw/arm/armv7m: Downgrade CPU reset handler priority
+Thread-Topic: [PATCH v2 2/2] hw/arm/armv7m: Downgrade CPU reset handler
+ priority
+Thread-Index: AQHV7WQ/RCF2oAiXBUCnUB+VwCKjkQ==
+Date: Thu, 27 Feb 2020 11:51:28 +0000
+Message-ID: <20200227115005.66349-3-root@stephanos.io>
+References: <20200227115005.66349-1-root@stephanos.io>
+In-Reply-To: <20200227115005.66349-1-root@stephanos.io>
 Accept-Language: en-GB, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-clientproxiedby: HK2PR03CA0063.apcprd03.prod.outlook.com
- (2603:1096:202:17::33) To SLXP216MB0285.KORP216.PROD.OUTLOOK.COM
+x-clientproxiedby: HK2PR02CA0191.apcprd02.prod.outlook.com
+ (2603:1096:201:21::27) To SLXP216MB0285.KORP216.PROD.OUTLOOK.COM
  (2603:1096:100:9::8)
 x-mailer: git-send-email 2.17.1
 authentication-results: spf=none (sender IP is )
@@ -104,36 +105,36 @@ authentication-results: spf=none (sender IP is )
 x-ms-exchange-messagesentrepresentingtype: 1
 x-originating-ip: [1.214.196.86]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: f5a23963-5b5e-4f05-5988-08d7bb77fc7a
-x-ms-traffictypediagnostic: SLXP216MB0031:
+x-ms-office365-filtering-correlation-id: 864a5210-f431-4280-e84d-08d7bb7b6170
+x-ms-traffictypediagnostic: SLXP216MB0351:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <SLXP216MB00312180BE62B09C889B2237BDEB0@SLXP216MB0031.KORP216.PROD.OUTLOOK.COM>
+x-microsoft-antispam-prvs: <SLXP216MB035158FC5893AB2DB31E2F6ABDEB0@SLXP216MB0351.KORP216.PROD.OUTLOOK.COM>
 x-ms-oob-tlc-oobclassifiers: OLM:873;
 x-forefront-prvs: 03264AEA72
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(366004)(136003)(346002)(39830400003)(376002)(396003)(189003)(199004)(478600001)(16526019)(6666004)(4326008)(64756008)(66556008)(6506007)(109986005)(86362001)(54906003)(2906002)(66446008)(26005)(1076003)(186003)(66476007)(66946007)(316002)(2616005)(81166006)(71200400001)(956004)(5660300002)(52116002)(8676002)(36756003)(81156014)(6486002)(6512007)(8936002)(36456003)(42976004);
- DIR:OUT; SFP:1102; SCL:1; SRVR:SLXP216MB0031;
+ SFS:(10019020)(39830400003)(136003)(396003)(346002)(376002)(366004)(189003)(199004)(26005)(316002)(54906003)(956004)(4326008)(2616005)(36756003)(109986005)(2906002)(478600001)(16526019)(186003)(6486002)(81166006)(8676002)(81156014)(71200400001)(8936002)(1076003)(5660300002)(86362001)(52116002)(6506007)(66946007)(6512007)(66476007)(66556008)(64756008)(66446008)(36456003)(42976004);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:SLXP216MB0351;
  H:SLXP216MB0285.KORP216.PROD.OUTLOOK.COM; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; MX:1; A:1; 
 received-spf: None (protection.outlook.com: stephanos.io does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: hWYO4gQIr2y19K0zXGZItOpmAAROlo9lJtFQgiIGO9mXwTnfTkWqK0xSAAPCEiqZOhenD5yXpsHa0dbeze/3ppFNEBW0oJXKVrhagEsmMORGYH09z2lp5KeKQnQmohS+L4z+EBKDMssuhAiI0NJ9bJqqrfmdu+bQ/pW0lJ61LGYRnJiKWZV3cx1Qrenj/M3m7CtgKKXX8P49VFRmBbtqsXeVBJgeie5cQ85j6BL1AcD32+PWUf3tn15zS+XOWg/vbeEpTP/8mXPbBcoFZd6e1xKjv3Pq0vNMffe/NKzkAAKbJjKtBbqOLvE5ub6vhpGFoi8wEi6cdkebK7wUWZEchZBhwragWCrYqNb3OnQzPkkgqfzZyCEXqn1CInqUQs6IgraLQ/Ii8lw5BsfqJyWGxQpjVt3HPxqwtvnoHRgGHafpppCQqfDmb5/BwSRcXaALNxSVz8o0npwx6so813JZz8Fo+n8o8QwNzDHE4+SpyXIkqtH6IDMOc70H+sqW9gvYHws3vciiUnfUoV9FSi8FFA==
-x-ms-exchange-antispam-messagedata: CvBObwq0Lwcc9II0LN/fW0N7GSduRbeqTfJibRLclRsceSabHnZ/ic49YTGXjEDkDSuHC45t5W165rr8qplRXmN1ckD0EJCIGwbigzYt0msh985N8GR2cge9N6o5qiMIen5hHYl8EOwVsa2rJGBhWw==
+x-microsoft-antispam-message-info: l/xM858PiLrxabv6ZAFWlAdMA+vtNs/G70G7Mb/OSHPhRWkZd24qcgBB71+CKc2LbxBH3ewPAjVGZltVmOu9BL6l1F/WFSaGOnupG5TtytF+vfN4O103a48TPwH+annrM2DDI/vG/Z7VVEgXB+oN7bPHmTUWZFGYpcsD78+QcPO0ab1rWQ95yYFB8+HGnytW574uMKT+l9TP6KeWOnv+0RIFrbF41YmgH3pU2hkJtzwKKovUmUQYmEK6rpxO+YeyxGJGNBcmpt3jN5eLG5yw+ZBNVj7P+QYpiXopF/HoHsZWXaIPONpVEJLHZcSmFZo9lPOAr0DmxvEgoAL0JD/uwDf3TWgx0eiEbDW9lrpT9pZP+IdOmlwZSzPEIycdTmLEGD0oYgehfkooxiHhbPrDiNFwiL7NlkCnRB22skPIUXYh+5PvtcGN2xciKdinqSfQCS+BilJ/mzM81PDjCslQFK9OcRfVoXt7VKz9tjnTjCS6MRDOr//NhVELRs5UoGRIEm/nY+p2UHtALv2nwKuLpQ==
+x-ms-exchange-antispam-messagedata: btNrkfSqEB7iYePsevFIC2uVmKrULyHXhWdRHjjP7FPkfoP8U8b0i2KiuBzkfsyvssYLmm4PThqHWuTPrwDjTSlVJtVTnnT05xnFwX7tYDpT7huZCSsjsi4osDNPMD9Ic/xKtxjniTszH3kUVfqu6A==
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-OriginatorOrg: stephanos.io
-X-MS-Exchange-CrossTenant-Network-Message-Id: f5a23963-5b5e-4f05-5988-08d7bb77fc7a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Feb 2020 11:27:11.0472 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 864a5210-f431-4280-e84d-08d7bb7b6170
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Feb 2020 11:51:28.8344 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: c98113d8-f05d-4479-8605-bfc8e93dc16d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: iw4AYUkIIiW5Nk9jPQmEsYPVorXz8pqFR+10p6FNZGAdC8jjBdfmqNIbH0bVBowmqddzzBJKgp26IqmV4XkeVg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SLXP216MB0031
+X-MS-Exchange-CrossTenant-userprincipalname: lzMtDlS1r6ZXdFrEn70aQdMZl4PAN8OF8mM+53BHzzSCRpEDjH1YdI+cE2MwCtLxPKLZ1cNGXhlGgUHp0NDOVQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SLXP216MB0351
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.128.101
+X-Received-From: 40.107.128.119
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -151,7 +152,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VPPv44Xua8Ld
+X-TUID: sB+naEqpVMXs
 
 The ARMv7-M CPU reset handler, which loads the initial SP and PC
 register values from the vector table, is currently executed before

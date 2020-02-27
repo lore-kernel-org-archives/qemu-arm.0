@@ -1,143 +1,150 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4284319lfg;
-        Thu, 27 Feb 2020 02:58:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwoEQWTCGh2QBk8Qm1+UwNDQAmuNfBHcf5aw02lB3h25p46X/BOuDF4ZDrQhrHTlQytomuC
-X-Received: by 2002:a81:82c5:: with SMTP id s188mr3590175ywf.59.1582801111367;
-        Thu, 27 Feb 2020 02:58:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582801111; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4308380lfg;
+        Thu, 27 Feb 2020 03:17:51 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwOA4cweOQklersF2V6xNElKZsA+TX2dckPj14k2RqUXt7Ic0BzSvaTlx6xGhBP9IkpC4py
+X-Received: by 2002:ac8:4e2c:: with SMTP id d12mr4476887qtw.219.1582802271067;
+        Thu, 27 Feb 2020 03:17:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582802271; cv=none;
         d=google.com; s=arc-20160816;
-        b=PoW+QkPsatW1sdbDprAN2bY2cC2447b3FW/VNadeg8HFrWc9VhaOUG7j2JDJ+AlIPp
-         t07GTf0aPFGwhuXczdM2vIpyVTRAzqP4U7BZN2nC5QR7IYMMnxyaQIP4jMSbP/ZJvmOF
-         nz2SYe4kF9IS+dbpMoCjpDnac+mCqqYSP/43g1SP5uOlizlKoI6QSnTrjUA7YjzDcRpI
-         4btL4kF3/9HUbSvfX+uOec2ON3WLGAjmUODN+2Tk4nbHKnnsV+yqF21v2hMn54Mvpu+D
-         v8MeSkyM2hGJGNhIXDzrAAayO+mQEaYrx9ZiM5CQtAo/GSlSHWSAWNUcUBagymz31bBP
-         VwhA==
+        b=iNBuaw7xbMLXmYMgYtPZ6TNtbuINBIqOgaxY8GOV7obgf0ChCUyae/9+lRgfuWtLPV
+         PHKpPpyT78dTboFYdqr7AKerTzcZAJX5XvP81ZOX2SxAKnE4drdYGNXp7JCGk/kimXpv
+         OIqpayPBW+K/ri70b1imJKrbvpzVyExSUTp62iUKqM+bgGN508OSsg04fK0ry0YZ3OAU
+         tj02jKNksFXmdvehyreSRKfFL2uPwOjEIjqc1RPYhKCi6iOSOpXfJ944U2e/spHAznJS
+         5rfMkD0+NGBHHjlYjIiEfCZ44tMWrV2/Qmw4ykFA7ncGKzjqYaAmH/6UKWfXB0odZSJJ
+         1exA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-disposition:content-transfer-encoding:user-agent
+         :in-reply-to:mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=UrdnczjsEWWNjtotmmqNLls3aVkmAt5pMu4j0pbKRrU=;
-        b=jL1hBAzeLXOhIasMDSEBduFMuGHq50b372uiAl8vEtzCtOQx9GizY7o3+L3x56ybNi
-         D0wl54RKaCKPScV5X0DD3qViEEkQp9EkZ4kiHoY7uScAKGuI8flGyoWQ4zIXERcH+8P6
-         WWmeeAnyx8rWLtg4m9NeK571/tv5NHTYM4sODE00trhqz5o1Jvsxl9eBclgitttQzCw0
-         rAY99xrbRBmC3Hp4K8vRSJtVeDWFu7pRNKjxMUZcz4li3GT8esDMRcwiJYqtejnIQv3q
-         jZ/95lyqTIlutOLt9UoiLBp+hU0m61a5sn2RMpDWnc6Mk8zMCXPibJmRA88GF8/IawWN
-         Rh7A==
+        bh=8/Qao5mVrMLtiFprpgRK9mpQ8H/RGFsXAG8L+fjZqCI=;
+        b=JQJZGxh421XXxgLJWe99Z3nAi1uKnvPeZSrF2kPZNmy0XPOsT7argsYqP/J8R+0srz
+         XgW+oyJyyswY98+4e3G9OMLqvt+o17moTDhZCwtEfnQhg3KsE3WhJvBi4gEQddn0iDhc
+         4iYhmJFNmuhTfOWXcV7qe/YO5VrOB65Xz7BKyxaGP2H44YRI5BfI4IG8ptGbGOlzaqQt
+         TDYaWA13+oyBzaPP9PpWn0bCfQJgDsP1tBjQvsatUQNWZ3ReoIdOeiLhQNy7Ub+jzg/v
+         TAyJJiaOIy5OD7Xe+PFNqNe6KboQtHVAkIHyGxyXuG0MTM6+eFMfO8PcOYPInB4fJiP6
+         VNvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GQdN6Hr5;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
-        by mx.google.com with ESMTPS id a3si1217095ybk.474.2020.02.27.02.58.31
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="B/n7yag2";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p8si1183703qtq.104.2020.02.27.03.17.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 27 Feb 2020 02:58:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 27 Feb 2020 03:17:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GQdN6Hr5;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="B/n7yag2";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57498 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j7HAr-0007cg-Ez
+	for alex.bennee@linaro.org; Thu, 27 Feb 2020 06:17:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34522)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <berrange@redhat.com>) id 1j7HAg-0007c0-7g
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2020 06:17:39 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <berrange@redhat.com>) id 1j7HAe-0007zE-Gw
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2020 06:17:37 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:52770
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <berrange@redhat.com>) id 1j7HAe-0007yt-CA
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2020 06:17:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1582801110;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=UrdnczjsEWWNjtotmmqNLls3aVkmAt5pMu4j0pbKRrU=;
-	b=GQdN6Hr5Bkd6bRLlrHY4cQVBI01DLBp5hKppRqYxJCg7EevLYJNJAzStFZA1wm4Uzg/mMh
-	LWTkp1MUcaMVuGK8+CDVGZtTwsRbW81QSBeVQOMEAiufGr/zBjVfNc9qrzWGm3WilEg1Hv
-	g5qZ9QqiDqnF6UED2AsTalCZnzIyNx4=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-218-qsThTFYqPamdXUukRNTJng-1; Thu, 27 Feb 2020 05:58:29 -0500
-X-MC-Unique: qsThTFYqPamdXUukRNTJng-1
-Received: by mail-wm1-f70.google.com with SMTP id p2so858863wma.3
-        for <alex.bennee@linaro.org>; Thu, 27 Feb 2020 02:58:28 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=QOFvF90OznVufott3/i8QcVk7EhMvYsLQ0aGYHPLWt4=;
-        b=FCLnIXT6jAK3wggF/IkAM3Da4KDyGrkBayigTykuSA/jEwlyeyK88V5f9VYSgMyhq7
-         pqs7R96aurNjkjui5Xe6PLOX4YR+kuAD+zAsFbqHL6GbjSYlxYMX6RPdhIbc/flwml+b
-         YT1uDY33RjwUcM0TI1MWVCZDszyANjNYI3jjZQ6zao5jyEkkrAwI9WnVCdZDV0K3eaVn
-         WzoVpfdi8GYFT5aC9saOVHkcc03lDzMNt7E7zlMxo21cH5UVC2qIJ1AQNs4adYQwkwrE
-         ps3rFPBnVni5UyHjJzvb/aIMkfkz0sSg05W+U0f8ZwpJbTU8mS4E4exMeZwPnV3CM25M
-         pndQ==
-X-Gm-Message-State: APjAAAUO9W+M/TnAymsx1X2YtCOfxj9rPhWFQNYqymIkO7yLHLqdU52g
-	450B5abK5nMvg3x8eRJN+kKet9xhA8F8w9KBwzFJq/W+3ERH2pb+6snM349YTJ86mV4Xe5vS3sj
-	wW2Afl+kpwRuEXrie
-X-Received: by 2002:adf:fa43:: with SMTP id y3mr4177465wrr.404.1582801107947;
-        Thu, 27 Feb 2020 02:58:27 -0800 (PST)
-X-Received: by 2002:adf:fa43:: with SMTP id y3mr4177440wrr.404.1582801107699;
-        Thu, 27 Feb 2020 02:58:27 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net. [88.21.205.47])
-        by smtp.gmail.com with ESMTPSA id s8sm7699090wrt.57.2020.02.27.02.58.25
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Feb 2020 02:58:26 -0800 (PST)
-Subject: Re: [PATCH v1 2/4] accel/tcg: remove link between guest ram and TCG
- cache size
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Richard Henderson <rth@twiddle.net>
-References: <20200226181020.19592-1-alex.bennee@linaro.org>
- <20200226181020.19592-3-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <74b1fa34-59c1-f7de-cb91-10f1387087fc@redhat.com>
-Date: Thu, 27 Feb 2020 11:58:25 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ s=mimecast20190719; t=1582802255;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=8/Qao5mVrMLtiFprpgRK9mpQ8H/RGFsXAG8L+fjZqCI=;
+ b=B/n7yag2G89osl7BghQf1NnqGDtJ8rBueUwru58GIsNyHAKX7S9BN3Bqfpi+/yS1cluATQ
+ K8WZw/z8zJ4R5+JnCvSW94SpjyWxPH/5X3IiFn026oLXqlkSan8Xkgnfhge3EbCQ8eUi2N
+ 6IcHJNBUFWwkCnJI0AM4cFKbIxVgU8o=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-372-W2xLvMUCNqyqmdRH4pt75A-1; Thu, 27 Feb 2020 06:17:32 -0500
+X-MC-Unique: W2xLvMUCNqyqmdRH4pt75A-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 697281005512;
+ Thu, 27 Feb 2020 11:17:31 +0000 (UTC)
+Received: from redhat.com (ovpn-112-43.ams2.redhat.com [10.36.112.43])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2C4BF60BE2;
+ Thu, 27 Feb 2020 11:17:20 +0000 (UTC)
+Date: Thu, 27 Feb 2020 11:17:17 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v16 00/10] VIRTIO-IOMMU device
+Message-ID: <20200227111717.GG1645630@redhat.com>
+References: <20200214132745.23392-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200226181020.19592-3-alex.bennee@linaro.org>
-Content-Language: en-US
+In-Reply-To: <20200214132745.23392-1-eric.auger@redhat.com>
+User-Agent: Mutt/1.13.3 (2020-01-12)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: ydt0E6MyD9OH
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
+ jean-philippe@linaro.org, quintela@redhat.com, qemu-devel@nongnu.org,
+ peterx@redhat.com, dgilbert@redhat.com, bharatb.linux@gmail.com,
+ qemu-arm@nongnu.org, mst@redhat.com, eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /3NVKyDRakY9
 
-On 2/26/20 7:10 PM, Alex Benn=C3=A9e wrote:
-> Basing the TB cache size on the ram_size was always a little heuristic
-> and was broken by a1b18df9a4 which caused ram_size not to be fully
-> realised at the time we initialise the TCG translation cache.
+On Fri, Feb 14, 2020 at 02:27:35PM +0100, Eric Auger wrote:
+> This series implements the QEMU virtio-iommu device.
 >=20
-> The current DEFAULT_CODE_GEN_BUFFER_SIZE may still be a little small
-> but follow-up patches will address that.
+> This matches the v0.12 spec (voted) and the corresponding
+> virtio-iommu driver upstreamed in 5.3. All kernel dependencies
+> are resolved for DT integration. The virtio-iommu can be
+> instantiated in ARM virt using:
 >=20
-> Fixes: a1b18df9a4
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Cc: Niek Linnenbank <nieklinnenbank@gmail.com>
-> Cc: Igor Mammedov <imammedo@redhat.com>
-> ---
->   accel/tcg/translate-all.c | 8 --------
->   1 file changed, 8 deletions(-)
->=20
-> diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-> index 238b0e575bf..5b66af783b5 100644
-> --- a/accel/tcg/translate-all.c
-> +++ b/accel/tcg/translate-all.c
-> @@ -938,15 +938,7 @@ static inline size_t size_code_gen_buffer(size_t tb_=
-size)
->   {
->       /* Size the buffer.  */
->       if (tb_size =3D=3D 0) {
-> -#ifdef USE_STATIC_CODE_GEN_BUFFER
->           tb_size =3D DEFAULT_CODE_GEN_BUFFER_SIZE;
-> -#else
-> -        /* ??? Needs adjustments.  */
-> -        /* ??? If we relax the requirement that CONFIG_USER_ONLY use the
-> -           static buffer, we could size this on RESERVED_VA, on the text
-> -           segment size of the executable, or continue to use the defaul=
-t.  */
-> -        tb_size =3D (unsigned long)(ram_size / 4);
-> -#endif
->       }
->       if (tb_size < MIN_CODE_GEN_BUFFER_SIZE) {
->           tb_size =3D MIN_CODE_GEN_BUFFER_SIZE;
->=20
+> "-device virtio-iommu-pci".
 
-Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Is there any more documentation besides this ?
+
+I'm wondering on the intended usage of this, and its relation
+or pros/cons vs other iommu devices
+
+You mention Arm here, but can this virtio-iommu-pci be used on
+ppc64, s390x, x86_64 too ?  If so, is it a better choice than
+using intel-iommu on x86_64 ?  Anything else that is relevant
+for management applications to know about when using this ?
+
+
+Regards,
+Daniel
+--=20
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange=
+ :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com=
+ :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange=
+ :|
+

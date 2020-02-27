@@ -1,105 +1,116 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4574515lfg;
-        Thu, 27 Feb 2020 07:14:36 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyDtQPOALw8PXs6COnevLIyLYUskwLRZEjgE1J4Xj+G7tJP9lhaojRzaMWGpFY15ZnffJp8
-X-Received: by 2002:ac8:4cc9:: with SMTP id l9mr5132057qtv.207.1582816476791;
-        Thu, 27 Feb 2020 07:14:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582816476; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4616360lfg;
+        Thu, 27 Feb 2020 07:52:40 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz5kyjUKM1A/+gj3xckFBX2raw0Y7jbm1ds1ksNWhHwDi2qk1C30JCb/WaaLN1zAr+QMAuM
+X-Received: by 2002:a17:906:3746:: with SMTP id e6mr4791286ejc.165.1582818760455;
+        Thu, 27 Feb 2020 07:52:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582818760; cv=none;
         d=google.com; s=arc-20160816;
-        b=dyJpSzMkz/NDKGw8yAu/AwwUUTsiADjvU1T1BCarNgy3G4RuiUhs7wjAUrYNx4b86q
-         zhnQNxPJ+20TFp48oKVH7G+O10nRNdwlIHWizMXcgcAWDK70wfkIkpawAEAoqvKCnKBl
-         IXvWcgjh+fOGWH2kC0jRezbzwWzQrBxok9ErJvGvSmYaFkjEpcpYGt8G7OG48K/TGznz
-         5AkPMIDhJXU/I/jB4ZvENZ7Lru9brqGu3+v4XjUuB71t4YXIugHd77bVTDonIAFGqstk
-         Eb2NSyp13ie5fxyL72wepHL/ng3jOltnzJ6xAxonSz1GWCYkk7bWQRoNjOErILGF/6Vo
-         AQ4w==
+        b=rIpuMx0G3niAgM+57s9xfqZhtrF1QXyDafCEz1fNdadh9SPmEDAv3AsnlpTH1//bvx
+         mwoqaDYFAKlPR9UQqpTNjiDwU4UGFbHDkgdCjBUjA9Do6rSIp4xsDSECcWXXqfw2MvOq
+         QZdnJ4LMGmtHmYTBVpoRtyFEmnVIkk/i5MmgL7h7g8Dd3ryihgdP8NOKGZlMOJgKIK67
+         XkwrLgYtUCe2HiPJ0xGIDa0ilsIthjSUmPFjzN0k2NPnp5zYNkQjll5P/Ai9RNVBrPMF
+         yUfAxg8Ypj6CJIluAWI5NssS2418TRxLWvpt/g639+kHNPCngGlTNs6VOmRycVg8Pz4H
+         UA3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=tBunEO6n1Cf3cqibwNADI9A/VhZGvU7kq5vzac51UFs=;
-        b=sXwuPp7hppJyVynDTP84FLGB01WVMF1g42MQegi6uw2YXNNCidzw/MXzqrHYmu0dga
-         AEnWs+24/lfp3M8rrUrgEGqWW1c7VGfBLdMKNdp3v2qToAMSCzHhnxdQtiOCufUlaDEX
-         SfUjkETzCxFnhtoqf1HpFj8dj/8bd/OEEc0c6KI4UTqgbB9JbKc5LP4a3HHfU2UqAqbG
-         cr5TqMFV1GxFp4cElEzyymKkXMKlWEClBt7qMoHWZPdMuo3R8t1C1my1EbXuRKgB8DVk
-         CUb4NEEy/+/VJEFxXZsFYwtRfDwKxBiI3821/rUD7LP7lUWd7daDuD7OtuJ3vG7aVUlC
-         9Dtw==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=5KwB+4nPPWFT9Zo+52l+UcQYm3R48JujDx1PXyBuh3I=;
+        b=AANxm7VS1N4VGwiqXctxxrRRHLpqrygRDQ2JygsaO420z5DRE3g3Q0cmU3u9R3sW9c
+         Ax1vz75FWDqQPH7O1Nbroj6GhiAiVvOdQNQrHZfPauiGnOljN/Y6femy0aj6aaVvAiLr
+         i/hDhYq7LjqGVO0RvjIutNhvEEzoT3sss7fC3bCyuJImu6OENRoeQL34BpCKkxbtrZsQ
+         327pQXWVMswyq3DNRL8E4j42KiG5C7bU1jpAf35fY4tFjyafHZ/qxhgUYCqTCI1UD6p6
+         /SPoGNzPWUsF/ReeSkX36d3zNPX+twmJadtqh6ddsOkG2XQuiF30aWkQ0afMz9O9X1tS
+         aDoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JBemmj6f;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dqBBmDre;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p22si1310413qtn.382.2020.02.27.07.14.36
+        by mx.google.com with ESMTPS id j24si2082276edp.230.2020.02.27.07.52.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2020 07:14:36 -0800 (PST)
+        Thu, 27 Feb 2020 07:52:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JBemmj6f;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dqBBmDre;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33298 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33642 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j7Ks0-0000bu-7J
-	for alex.bennee@linaro.org; Thu, 27 Feb 2020 10:14:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54996)
+	id 1j7LSp-0008SC-DD
+	for alex.bennee@linaro.org; Thu, 27 Feb 2020 10:52:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34222)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j7Krq-0000bV-Ei
- for qemu-arm@nongnu.org; Thu, 27 Feb 2020 10:14:28 -0500
+ (envelope-from <peterx@redhat.com>) id 1j7LSh-0008Pz-8C
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2020 10:52:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j7Krp-0003DC-Bv
- for qemu-arm@nongnu.org; Thu, 27 Feb 2020 10:14:26 -0500
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:38337)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j7Krp-0003CO-3k
- for qemu-arm@nongnu.org; Thu, 27 Feb 2020 10:14:25 -0500
-Received: by mail-ot1-x341.google.com with SMTP id z9so3216907oth.5
- for <qemu-arm@nongnu.org>; Thu, 27 Feb 2020 07:14:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=tBunEO6n1Cf3cqibwNADI9A/VhZGvU7kq5vzac51UFs=;
- b=JBemmj6fDzrzZHcTQqIF5ooil6h9GdvALZS29ShHp/Ao5mTXmNOQJvqdtrSyUwseqy
- euy2Zv46C3pOxM3Q7kO3YFmKHKM3PoVunxZdKgXcsKOSZP+DtFGAf3H6wEcAK0zyTQe5
- 5j3tgVHfgpB6Z1FP0ZJzpu1+rGW5UNMO1Dqjbj9y9Wq2vnS1FVKsnUq1oEVaqhyvYO0g
- kRgu7jtNdj1lReKucp03nRmlBmw7yRO6W9hAdOgsEcM24+/QuD2umDViwhekAjnrlGlE
- RC780l6NX8vrDDHPnIih9cFnQfL04Kb+vmzspPefOJ8Z/JM3myQDBJ5aoImeKxNxhcmv
- lCAQ==
+ (envelope-from <peterx@redhat.com>) id 1j7LSg-0004jv-DW
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2020 10:52:31 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:38819
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1j7LSg-0004j0-9c
+ for qemu-arm@nongnu.org; Thu, 27 Feb 2020 10:52:30 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582818749;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5KwB+4nPPWFT9Zo+52l+UcQYm3R48JujDx1PXyBuh3I=;
+ b=dqBBmDrefQycFPfdmp9z3iHMlcT6QrQavtWQSEJ2rrBewT9vZ2mZ4J7XVn0k0PV/fZz8ES
+ hCsz1jZhu1QdOoBjvJ/qSY2uLpVJW7UhBrIB/hsyljx549QuUL001R3pN9katZ5o35a8KZ
+ Iv/JWcdPrwzQurTls5q2Uj4k4VbwQL8=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-166-h3GUMbb0MxemeGvGS8vwKg-1; Thu, 27 Feb 2020 10:52:28 -0500
+X-MC-Unique: h3GUMbb0MxemeGvGS8vwKg-1
+Received: by mail-qv1-f71.google.com with SMTP id s5so4146339qvr.15
+ for <qemu-arm@nongnu.org>; Thu, 27 Feb 2020 07:52:28 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=tBunEO6n1Cf3cqibwNADI9A/VhZGvU7kq5vzac51UFs=;
- b=UIqddToGkPcs7+kJBd94hjz6YgFSaWJ+xsKVpSCbz/aVg8YPN+iPCqizexmxLPS5tb
- sa7AYUtMjabIZT82gzMXgxjC4MPvPdC6d5PhrbZkwIKzW/eoT27QKMNVXl1DkyRWddhL
- jo84ONhdmKdgPSQQFS+ARekpzr2kaal/IvYruTpYPGeNcTswg6VmydafQJf38iM8+KwS
- UvAFlUqhgqLRD8Z6aevJVGt764xNzvXJk/LNh14i95gsn1volM+hs3X3/uyxQ70SPf/I
- 4Wn+BNYxTm8qyUFBpIFMEMUTnN/0Lpq3vFUps2YjkKfltrr9RIB78WQTvU67pMa0PKfd
- P/8w==
-X-Gm-Message-State: APjAAAXo/OaOvj/FcQVVSpHNQzIlKktv1aFygWq+MApA/4jg2+uMUD91
- MpEH8L7prbmYWr0jm4hWxOF3vPnXCYfHY/0uRHNzYg==
-X-Received: by 2002:a05:6830:13da:: with SMTP id
- e26mr89504otq.97.1582816463293; 
- Thu, 27 Feb 2020 07:14:23 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=HbpZ79Vvpf6y5qlqo/6aoznhZgU8GmfHB3anv411c9o=;
+ b=PWg6dcfkOG0lCnpeT1rVImVsBj96c/rQav1ocqJk02g5MQjfvBoJdFRFBczPyuSUl/
+ zkVg/v/IvdC5z5fM6/nU2EAwDVgQMiIH+A9gxtX5+WlQR9E5I6LwvXb6W9UPryL4c6ig
+ pUeIUUNYuVSDfhLZnmgShvGeb/zpOaLAp5KHFWhiE2l57uTTRFOZHoZnVOnn/Q/+VF1M
+ MlUDnOtOv6zlxi0CRNQRImeM2kUBs6X9UyrjxhHeoA0MsRCuljayiqr2+2PFGuaymBnx
+ 098I/EpujVjGPQY4tsBEgOvCchJBgetuKMVi1Y7/Hi6c5kY5Q9tS0NVlph7Ix5qCml2b
+ w3ZQ==
+X-Gm-Message-State: APjAAAWBoyWB4OcKBGhyEv15vefUGtODQFDdpoClkcCN37kEgddu9ecg
+ rCXyoHsZ7DBfKovoFaxf5eHLwFfc23UrjySyF4V1LCIpqe5X6g9izlpsb82kOsqXmDQg3ta+/9+
+ hUBiaqZTSSCn1
+X-Received: by 2002:ac8:5510:: with SMTP id j16mr5789093qtq.262.1582818747680; 
+ Thu, 27 Feb 2020 07:52:27 -0800 (PST)
+X-Received: by 2002:ac8:5510:: with SMTP id j16mr5789067qtq.262.1582818747455; 
+ Thu, 27 Feb 2020 07:52:27 -0800 (PST)
+Received: from xz-x1 ([2607:9880:19c0:32::2])
+ by smtp.gmail.com with ESMTPSA id i91sm3362620qtd.70.2020.02.27.07.52.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 27 Feb 2020 07:52:26 -0800 (PST)
+Date: Thu, 27 Feb 2020 10:52:25 -0500
+From: Peter Xu <peterx@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: Re: [PATCH v2 2/2] hw/arm/smmu-common: Simplify
+ smmu_find_smmu_pcibus() logic
+Message-ID: <20200227155225.GE180973@xz-x1>
+References: <20200227075111.15275-1-philmd@redhat.com>
+ <20200227075111.15275-3-philmd@redhat.com>
 MIME-Version: 1.0
-References: <20200227112617.66044-1-root@stephanos.io>
- <20200227112617.66044-2-root@stephanos.io>
- <CAFEAcA9qbndHqoW1oaUAKMZY5hNYjP+mMt-K_WqoT9Z=Q=ct7g@mail.gmail.com>
- <e1813f57-57ac-e6ad-d119-dd6c2cdc90e1@redhat.com>
- <SLXP216MB0285F1E97DBA3FDED2ED72D2BDEB0@SLXP216MB0285.KORP216.PROD.OUTLOOK.COM>
-In-Reply-To: <SLXP216MB0285F1E97DBA3FDED2ED72D2BDEB0@SLXP216MB0285.KORP216.PROD.OUTLOOK.COM>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 27 Feb 2020 15:14:12 +0000
-Message-ID: <CAFEAcA_s_UgtRJKjHnwFrPj0PSzbEuPEpdePnTpJ0bbuBrCJug@mail.gmail.com>
-Subject: Re: [PATCH 2/2] hw/arm/armv7m: Downgrade CPU reset handler priority
-To: Stephanos Ioannidis <root@stephanos.io>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <20200227075111.15275-3-philmd@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::341
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,38 +122,25 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NnujbElPcFsO
+X-TUID: e8J+EPfDVL3z
 
-On Thu, 27 Feb 2020 at 15:08, Stephanos Ioannidis <root@stephanos.io> wrote=
+On Thu, Feb 27, 2020 at 08:51:11AM +0100, Philippe Mathieu-Daud=C3=A9 wrote=
 :
-> On 2/27/20 10:31 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > I think Alistair and myself use the 'loader' device with Cortex-M board=
-s and never hit this problem.
->
-> I tried both `-kernel [ELF IMAGE]` and `-device loader,file=3D[ELF IMAGE]=
-` without any success; in both cases, without this patch, QEMU hard-faults =
-during start-up due to the unavailability of the vector table content at th=
-e time of CPU reset.
+> The smmu_find_smmu_pcibus() function was introduced (in commit
+> cac994ef43b) in a code format that could return an incorrect
+> pointer, which was then fixed by the previous commit.
+> We could have avoid this by writing the if() statement differently.
+> Do it now, in case this function is re-used. The code is easier to
+> review (harder to miss bugs).
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-You only run into this bug if:
- * you're using a Cortex-M CPU
- * and the board model has aliased memory regions so that the
-   flash or memory you're loading the ELF file into appears at
-   multiple addresses in the memory map
- * and the ELF file loads the data into the aliased address
-   rather than the CPU's VTOR register reset value (which is
-   0 for CPUs without the Security Extension)
- * but it doesn't matter whether you use -kernel or -device loader
+Reviewed-by: Peter Xu <peterx@redhat.com>
 
-So you can work around it by linking your images to be loaded
-at 0 rather than the higher address. It is definitely a bug
-that we don't correctly handle these ELF images.
+--=20
+Peter Xu
 
-thanks
--- PMM

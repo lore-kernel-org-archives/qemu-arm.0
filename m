@@ -1,192 +1,181 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4817279lfg;
-        Thu, 27 Feb 2020 11:07:37 -0800 (PST)
-X-Received: by 2002:a92:4a08:: with SMTP id m8mr785702ilf.41.1582830457003;
-        Thu, 27 Feb 2020 11:07:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582830457; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4830451lfg;
+        Thu, 27 Feb 2020 11:20:25 -0800 (PST)
+X-Received: by 2002:a05:6638:44a:: with SMTP id r10mr327947jap.36.1582831225744;
+        Thu, 27 Feb 2020 11:20:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582831225; cv=none;
         d=google.com; s=arc-20160816;
-        b=rv1L8KyvdQIaz4oRSaHcxwQbYDOIHg1PIbYtudZPF/CaWA16K3Oqs77dtuRACCrQVa
-         dIUuA7nIwarAZCJr7bA19fQnralKuB29z014tifk8SY+T6i2W4MXI1PdiyNosrdhWpzt
-         aLUPN0o0GNi0tjswtOYgbY9liXaGn0NKatjMfXnsaBzg5QwiCSNSZwsqLNTAYh9NdLJq
-         Ms2AGQt5QULd9OTuRHjRVc24SpYXrzIsvZgLSKFYBs76UPQhkCqUmrj0yUFJckNuGlsc
-         BDx4qejSIMpDjMIloB8+AcEabcpPRg1U6dE37E5pJ/nefpZ8I3YBiDoQvg+FqkDVVx/t
-         9LMA==
+        b=J0WI7Zc6EiXDG3LRSZiYkLxS1YjeK85g6XMu9f1tu/0RNL/XDUT5cICPbQVwwYmLv7
+         aElrWXZk1mkOuePR5bmJYjpXG3bRymfU1ZytQ/1pTw/9JmFGRnLq91XYxKBHwr0oD7Oj
+         whThKla0qbWOj4DjQiKYsZLpzRZB+KgTO2j1DdXfIzkU5Sc6Di6ryyi4cUImWlco0Yce
+         6hrphbVy4amKKHzDH5CxZp0WOtaRmCNzYsNliTr0pJdYOp1lQ9Yawnm8BhzXPUxbxxg0
+         jdiQJM3riMpudHAIHtQpX791HnYflJXped2/NZGbavVWmTov8Mx1j+3zr80D5T6yyIar
+         9v9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=xIaAzOO7CiQeAH4qsbtZ0X6RjIuzPqsDnaVRY+vJMyg=;
-        b=rn4z0m1hae9GxytQqaoRcNW08grR+rSfMEb7TiIlJbriMcCyT+mVdtaQPpM4VRZ2oT
-         jGSuloja0+OT4ExS2tGaf1+g1DGptqc2axhb9uyU197vew971dflYNrSJuUukOCwoXxx
-         G1to1bUfWLjKTxVd/RNl5ixhc9PMSO7vvDzQ6ov8fZTZDnZutGS7yBhlKzs3s3cUwBEk
-         L2JR5TVAtgpGXxd0ho9yQzZZIEed8gTU+fuy+Ph/t3ZMDsffsJB76rhLtq0gwxu98lq0
-         j/7qsNt8PxfqwcLS8OpRH4QZBfbxWIQVIKt0O8kN7AaE2N3JTmf2t50cLAmgbm0sKYr7
-         6rVA==
+        bh=uei+Q55y4h9fZrlb1rValsZkG5GHnuVT5+jSW+UWrfc=;
+        b=Jfj5M5MFLr8Ctihaa8d5TNbD6Z5x+/CmPBvmcNqtkyxVrIu6KdqLx12sShE7dxhf5Z
+         kMT4H6DAjg0izD2bVRsV0qHcA59jh1GP2ZylXoOcCCHWhkmnlllj2RII8CSpNrgHPIi8
+         DgxtgaW5VogKMY0i0VGw2xX7UmHHpadyj0TBPMiatNidDag9jCTa1H4Rpn2VM+ut3Mbw
+         HoAJfN+530fHNsBbuHsq79M/PT/L9TvkLXzLEwfGlenx/zJvlt9HrEDW/6PV/UwvGOYE
+         aDYUcP0VjXDvW2C/pucEuaWth+L02/XeRsrjgrY3Z8voH2LNmB2Nbiqa6K5/G0xSxgJc
+         FarA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NnCBUaR+;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="q0/vNIM+";
        spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <nieklinnenbank@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id p19sor200562ioh.32.2020.02.27.11.07.36
+        by mx.google.com with SMTPS id i15sor321327ilj.66.2020.02.27.11.20.25
+        for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 27 Feb 2020 11:07:36 -0800 (PST)
+        Thu, 27 Feb 2020 11:20:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NnCBUaR+;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="q0/vNIM+";
        spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=xIaAzOO7CiQeAH4qsbtZ0X6RjIuzPqsDnaVRY+vJMyg=;
-        b=NnCBUaR+zBYH8eIiTe9Si9RoGFPIRzyCL6SYG0xdClQwmeJgfCgWApXTpjHYs3Xrk/
-         p8FnOSG76FfmQVWoOO2yrxuyS/tiDmCwkhumbTIcpnqN+jcgtEmzK9bzfBmb5qcT/AwX
-         KIDDuwKVHhV7DFqTsAA01LmE3gWKFM0qbsVy+WDMrn5MLx2zCa3tTCefUqWbR5kMKABN
-         W+qsGgyemJNBa3pE+jFnbyjO28Vhd/hW58A5L+kIR5whD74jODaD9ucWoNSJSzp/8rTE
-         21PzfBUXv1EblBl6ISlywPLhaJj0zZP2BGm3fd7yYY9pAQPRHOWffVM433IjFdb5oatS
-         HOcA==
+        bh=uei+Q55y4h9fZrlb1rValsZkG5GHnuVT5+jSW+UWrfc=;
+        b=q0/vNIM+NuDG8Dm47cjMgM1nhLYoJmc3+2oiEEg1koPXlPK5oCm2zCViSzM9Gr0P1k
+         jE6J+Nj67Vcj6lhapHm3Rvufl0vXVgDsQui3CC0GZQraewsC/s4dI+tHhdKwFF8b387z
+         K1U73QwqC5iOk/NzOJP+SzAWYocHsg67UIQ1j/sNGi+Hic88/qu7QGPaS4DRYP6U+BWM
+         In+SLt2ythR0UfBlcOTKBHYU8yqAa2OBKeOTQpUwNVCCDLRqPFF8eWhrUhk4+t4lotW1
+         cnvMkBoFnCBPUqI3DojJjj6DbUroPij4le32VcokG3OClausp/zUscBotqnSgU80yNrO
+         59hA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=xIaAzOO7CiQeAH4qsbtZ0X6RjIuzPqsDnaVRY+vJMyg=;
-        b=QyR//tq2l/idOTP6mxMpemQb9AbfZleWwvZgNEDegBI/dUd6tPiuivIZm9aNlPSq25
-         zzGhFl6+Ko25pwVMFqo/8rOsmA9joKlXWaYFpyX3hwshd3gqfnrNbnjbYuXXExn0cM3G
-         h7reqOV4+9MktJqDib9Z5ngosgVDTUyhPORemPOYX2+YR86dF9m49AYpb3aprMynxo+E
-         haDboJqIZUeYkUJ/2XlRTdO+/lR613qNunkFJ3FOr8jp0q5QnAmyesBjSvmX25/73Lpm
-         Xuf8pVGaU9OPOnPdUUzzMZxD2FjrwQ8sXIcT02YkGn58QbI3+2Ws0SLwfvDbFV9qouvA
-         S4sQ==
-X-Gm-Message-State: APjAAAUyC2FVhvi3AIg9KSOfk7HcEJi8nQI/cbwRP2c4jdB4IFBcmD5E
-	LQQy7UZHlCXKseMjjGt4ZMQRaMAXTPbVmr4cWaPMbMmD
-X-Google-Smtp-Source: APXvYqwMmSKe6zMqgVBTvSvaC0BkVyDodskrCdOT/NZO07wSJA6kB0s0wipVEGOz9FzW8fxqBxFjepP4OIMwBcMxAG4=
-X-Received: by 2002:a05:6602:158e:: with SMTP id e14mr584466iow.217.1582830455947;
- Thu, 27 Feb 2020 11:07:35 -0800 (PST)
+        bh=uei+Q55y4h9fZrlb1rValsZkG5GHnuVT5+jSW+UWrfc=;
+        b=Q1Xg4jW/cpDKKarcGEIl1GPgeOSTRHI1Bnu5hJ2SdU8lhP5Bkz8awc4q2yMrfA07DE
+         ipJtSh8dJRdmkJETKZMsYAOFfjZW21l6SG/NOq0rQLW7hhCKPYAHoJySKi/WRlQ6+sKY
+         /TVN67AtqbiNUD7d9SCo0vx1LEXO3Z5oj5GICU1nU39MyeGvwEuPDkBFeN8QlW9x69GM
+         FjQmopZG8AxeAetsJs/S7MmheAR1FUeXXKCl+gG3Sy+Ls5yTShkQGUwL3mjdliaXzaUd
+         +qX+j+n0v3D52Q4SbKuVs81dylNX2QuAagziPduj9RlDjyrnf7ZT/lls3fjbDy/CK1SN
+         bpJw==
+X-Gm-Message-State: APjAAAW6kyJnSeQUg6CDrFlPORGMW82x72Y+eMGr84n5kaHXny8xLMP2
+	GYqwvyWhrD4WitFCpsme0wJr82w396CjNeJmtXPA5Q==
+X-Google-Smtp-Source: APXvYqytSBT2k2y7/yCH3uj00NfJaJEw3K8jTLfULXGWWtYSDL895kpXeWTtJCHaJhl4OQR2jnszXJRC/EJrPbFgZYo=
+X-Received: by 2002:a92:5f45:: with SMTP id t66mr894726ilb.28.1582831225169;
+ Thu, 27 Feb 2020 11:20:25 -0800 (PST)
 MIME-Version: 1.0
-References: <20200226181020.19592-1-alex.bennee@linaro.org>
- <20200226181020.19592-5-alex.bennee@linaro.org> <2ca7b55b-5674-370d-5c4d-dc8b7782ca64@linaro.org>
- <87pne0w6rt.fsf@linaro.org> <56f5e355-9357-e212-e92b-9db1d8424dea@linaro.org>
-In-Reply-To: <56f5e355-9357-e212-e92b-9db1d8424dea@linaro.org>
+References: <20200226181020.19592-1-alex.bennee@linaro.org> <20200226181020.19592-4-alex.bennee@linaro.org>
+In-Reply-To: <20200226181020.19592-4-alex.bennee@linaro.org>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Thu, 27 Feb 2020 20:07:24 +0100
-Message-ID: <CAPan3WrSRm986EfwJdXV2MduNLE5BS+QmCv0Bo5-BD+QfT-=dg@mail.gmail.com>
-Subject: Re: [PATCH v1 4/4] accel/tcg: increase default code gen buffer size
- for 64 bit
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>
-Content-Type: multipart/alternative; boundary="00000000000011092f059f936f1b"
-X-TUID: t/lfR5VwRxju
+Date: Thu, 27 Feb 2020 20:20:14 +0100
+Message-ID: <CAPan3WquVnHMGDur2_eQ57CzhekH-Ct3avjoxcct5xMv7_P+Fw@mail.gmail.com>
+Subject: Re: [PATCH v1 3/4] accel/tcg: only USE_STATIC_CODE_GEN_BUFFER on 32
+ bit hosts
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+	qemu-arm <qemu-arm@nongnu.org>, Richard Henderson <rth@twiddle.net>
+Content-Type: multipart/alternative; boundary="000000000000ea6b7b059f939c98"
+X-TUID: eRE5g3kaXVEk
 
---00000000000011092f059f936f1b
+--000000000000ea6b7b059f939c98
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi Richard,
+On Wed, Feb 26, 2020 at 7:12 PM Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
+rote:
 
-On Thu, Feb 27, 2020 at 1:57 PM Richard Henderson <
-richard.henderson@linaro.org> wrote:
-
-> On 2/27/20 4:31 AM, Alex Benn=C3=A9e wrote:
-> >> It does not make sense for a linux-user chroot, running make -jN, on
-> just about
-> >> any host.  For linux-user, I could be happy with a modest increase, bu=
-t
-> not all
-> >> the way out to 2GiB.
-> >>
-> >> Discuss.
-> >
-> > Does it matter that much? Surely for small programs the kernel just
-> > never pages in the used portions of the mmap?
+> There is no particular reason to use a static codegen buffer on 64 bit
+> hosts as we have address space to burn. Allow the common CONFIG_USER
+> case to use the mmap'ed buffers like SoftMMU.
 >
-> That's why I used the example of a build under the chroot, because the
-> compiler
-> is not a small program.
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> ---
+>  accel/tcg/translate-all.c | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
 >
-> Consider when the memory *is* used, and N * 2GB implies lots of paging,
-> where
-> the previous N * 32MB did not.
+> diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+> index 5b66af783b5..4ce5d1b3931 100644
+> --- a/accel/tcg/translate-all.c
+> +++ b/accel/tcg/translate-all.c
+> @@ -892,11 +892,12 @@ static void page_lock_pair(PageDesc **ret_p1,
+> tb_page_addr_t phys1,
+>      }
+>  }
 >
-> I agree that a lower default value probably is safer until we have more
-proof that a larger value does not give any issues.
-
-
-> I'm saying that we should consider a setting more like 128MB or so, since
-> the
-> value cannot be changed from the command-line, or through the environment=
-.
+> -#if defined(CONFIG_USER_ONLY)
+> -/* Currently it is not recommended to allocate big chunks of data in
+> -   user mode. It will change when a dedicated libc will be used.  */
+> -/* ??? 64-bit hosts ought to have no problem mmaping data outside the
+> -   region in which the guest needs to run.  Revisit this.  */
+> +#if defined(CONFIG_USER_ONLY) && TCG_TARGET_REG_BITS =3D=3D 32
+> +/*
+> + * For user mode on smaller 32 bit systems we may run into trouble
+> + * allocating big chunks of data in the right place. On these systems
+> + * we utilise a static code generation buffer directly in the binary.
+> + */
+>  #define USE_STATIC_CODE_GEN_BUFFER
+>  #endif
 >
-
-Proposal: can we then introduce a new command line parameter for this?
-Maybe in a new patch?
-Since the size of the code generation buffer appears to have an impact on
-performance,
-in my opinion it would make sense to make it configurable by the user.
-
-Regards,
-Niek
-
-
+> --
+> 2.20.1
 >
 >
-> r~
->
->
+> Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 
 --=20
 Niek Linnenbank
 
---00000000000011092f059f936f1b
+--000000000000ea6b7b059f939c98
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div>Hi Richard,<br></div><br><div class=3D"gmail_quote"><=
-div dir=3D"ltr" class=3D"gmail_attr">On Thu, Feb 27, 2020 at 1:57 PM Richar=
-d Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.hen=
-derson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote"=
- style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);p=
-adding-left:1ex">On 2/27/20 4:31 AM, Alex Benn=C3=A9e wrote:<br>
-&gt;&gt; It does not make sense for a linux-user chroot, running make -jN, =
-on just about<br>
-&gt;&gt; any host.=C2=A0 For linux-user, I could be happy with a modest inc=
-rease, but not all<br>
-&gt;&gt; the way out to 2GiB.<br>
-&gt;&gt;<br>
-&gt;&gt; Discuss.<br>
-&gt; <br>
-&gt; Does it matter that much? Surely for small programs the kernel just<br=
->
-&gt; never pages in the used portions of the mmap?<br>
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Feb 26, 2020 at 7:12 PM Alex =
+Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.org">alex.bennee@linar=
+o.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
+1ex">There is no particular reason to use a static codegen buffer on 64 bit=
 <br>
-That&#39;s why I used the example of a build under the chroot, because the =
-compiler<br>
-is not a small program.<br>
+hosts as we have address space to burn. Allow the common CONFIG_USER<br>
+case to use the mmap&#39;ed buffers like SoftMMU.<br>
 <br>
-Consider when the memory *is* used, and N * 2GB implies lots of paging, whe=
-re<br>
-the previous N * 32MB did not.<br>
-<br></blockquote><div><div>I agree that a lower default value probably is s=
-afer until we have more proof that a larger value does not give any issues.=
-</div></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"mar=
-gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
-ex">
-I&#39;m saying that we should consider a setting more like 128MB or so, sin=
-ce the<br>
-value cannot be changed from the command-line, or through the environment.<=
-br></blockquote><div><br></div><div>Proposal: can we then introduce a new c=
-ommand line parameter for this? Maybe in a new patch?</div><div>Since the s=
-ize of the code generation buffer appears to have an impact on performance,=
-</div><div>in my opinion it would make sense to make it configurable by the=
- user.<br></div><div><br></div><div>Regards,</div><div>Niek<br></div><div>=
-=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
-.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+Signed-off-by: Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.or=
+g" target=3D"_blank">alex.bennee@linaro.org</a>&gt;<br>
+---<br>
+=C2=A0accel/tcg/translate-all.c | 11 ++++++-----<br>
+=C2=A01 file changed, 6 insertions(+), 5 deletions(-)<br>
+<br>
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c<br>
+index 5b66af783b5..4ce5d1b3931 100644<br>
+--- a/accel/tcg/translate-all.c<br>
++++ b/accel/tcg/translate-all.c<br>
+@@ -892,11 +892,12 @@ static void page_lock_pair(PageDesc **ret_p1, tb_page=
+_addr_t phys1,<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0}<br>
+<br>
+-#if defined(CONFIG_USER_ONLY)<br>
+-/* Currently it is not recommended to allocate big chunks of data in<br>
+-=C2=A0 =C2=A0user mode. It will change when a dedicated libc will be used.=
+=C2=A0 */<br>
+-/* ??? 64-bit hosts ought to have no problem mmaping data outside the<br>
+-=C2=A0 =C2=A0region in which the guest needs to run.=C2=A0 Revisit this.=
+=C2=A0 */<br>
++#if defined(CONFIG_USER_ONLY) &amp;&amp; TCG_TARGET_REG_BITS =3D=3D 32<br>
++/*<br>
++ * For user mode on smaller 32 bit systems we may run into trouble<br>
++ * allocating big chunks of data in the right place. On these systems<br>
++ * we utilise a static code generation buffer directly in the binary.<br>
++ */<br>
+=C2=A0#define USE_STATIC_CODE_GEN_BUFFER<br>
+=C2=A0#endif<br>
+<br>
+-- <br>
+2.20.1<br>
 <br>
 <br>
-r~<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
+</blockquote></div>Reviewed-by: Niek Linnenbank &lt;<a href=3D"mailto:niekl=
+innenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;<br clear=3D"all"><div=
+><br>-- <br><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"ltr"><di=
+v>Niek Linnenbank<br><br></div></div></div></div></div>
 
---00000000000011092f059f936f1b--
+--000000000000ea6b7b059f939c98--

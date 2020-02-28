@@ -1,195 +1,168 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp455423lfg;
-        Fri, 28 Feb 2020 01:36:57 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx6sGrs77d3BB/oIczF/Vi36j9C6EmQaucV1xa0svYLEEbMoIxh+8LFphdNMT0m5EuYmK/Q
-X-Received: by 2002:a37:aac4:: with SMTP id t187mr3889249qke.258.1582882617292;
-        Fri, 28 Feb 2020 01:36:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582882617; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp571422lfg;
+        Fri, 28 Feb 2020 03:50:29 -0800 (PST)
+X-Google-Smtp-Source: APXvYqykcXyFxc4G+tvSV8QNWz3nCmxl1hfb7TkcAvvGQlJWC9oHvuK61L2Mga6jGt1VGuDECmF3
+X-Received: by 2002:aed:3786:: with SMTP id j6mr3994187qtb.62.1582890629047;
+        Fri, 28 Feb 2020 03:50:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582890629; cv=none;
         d=google.com; s=arc-20160816;
-        b=uhyZuhZWz8hzxzPaS2/+/BqFqHKxlZG/oAj9NfvohmLSW9DqEfmTNc0XkbbcAd1bAL
-         Au+HEZ0IBwI7kuJ8xJP1VK/nntaivenlCptaJA5T6YstPRkZ8c5IrdQrdH8kg0//EDuE
-         Hka31puAXsp++BUmDbPQYoJ5nxlUnM6ZL/8nC+tB1jHR5h+cUQ/irf3MqfY1mIgbZ3+O
-         RmVJvDaQgEeJir6g3H3tdvk7HPu9YF0ZIggSZbnd785XElWt1v7fSZKxKUDRyqYQl0rI
-         NmnU2VGIXLBcQVMV8smUC7i1tFWgNs0ilB+f4IkeCAPycianwdZhIJIpp7acnFpDhjcI
-         RerQ==
+        b=a+LOuvudNISOm8NvNQzHvFm0v1ACnMk0s2TCznI+BJygi79O/nTDoau9chE1pTfXNb
+         gvrqFy1gRz8ijEygz6lBilLFc7wfGKJNPmeTNSQvC3fCp0t+S5PxvoPXN/WJwkHMCHRJ
+         Q+0DJCjatEUOi8ko9dyH2jxGKyvLS9QmdL8KXosO2VNb8o/AhGFNDo/zvwYPH7Rwjh0I
+         B+gZnoyXJttVnM7SlBqW1HFt1LkLAicG2RsyAeoLJkwMNA3tWp8t2ryJyY2BIIWIwtos
+         yOhonNtCGObhI536NQZejkH0LnH+352dD7QjzLrNaRTs+auv8Jk/pyxRZX1MN9bInVwk
+         dueA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=HP8A3+C66u8HbtY/yUcAxtdPrN7FNKfQYdzMxvL5bqs=;
-        b=g7wahavZV/V9dxm5J6Cl9kB1jrauaOdl3uRVh2gG7t0WrWHR2ZYjXU2WVDfOh/YrEe
-         kM7yMwfetN0ELIsdGu53W44Ofwrhr6I7fcz0EfmHcM4T0tvomxWf7NkpjVenOfnbnPGI
-         X0ApKKFA+K1lXkTxnuS9rednE6rZyn/xDk3YtEE0SXNUp19p/ABl2/rPrCOb3+2cI2oc
-         EEvgza/rIK/uHuolVVBffaD0IiArD4lNAFYjqZMsBHTKLbUr2n2g14xAV3UxvSpfrOrF
-         7rTZiV/X1JFv/pmu5B6UnrRFOpratb/ERwvNjZddaHa7jkj0Z1BRwtJjFznp1k0kHsq6
-         J7+Q==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=HcSl9tYPSfjtJ+NOfqsYRSXGvzeBOGmRpnqHEMwcJn8=;
+        b=m0Q1uUD25iZjeqVDqGuZQTF8N4Ez9sVqdV0yVa+wxUkkAqpe4ERYEy06H/Ex+j/3NK
+         CYb15DuBze7qk5JPb60+P9ObbcPKAjitphhyjI2S2FbUeDebA4sMm0k6vDne096NTYnL
+         GbRicTrq4B/GYIgM9cz9yoPiahPD0SlFSwUmuk76oVvYR4SM9CuhAKiN68pUF1/rZE+O
+         DoEwSBzccySfPUBnvGghfDe8rSvhr2DGFcAX0m++7oPDU6T/yE+M2r4OABw253ZvG3Lb
+         n3d9+aGOfyJ3htP8i/iMM/aRq72Tst8BQ3tpvePVP7kOPFMcnE3/b6Oil3wJi9wwwtne
+         mkpw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ODcGa/3z";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XDeZf28k;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g6si1187711qtj.61.2020.02.28.01.36.57
+        by mx.google.com with ESMTPS id m16si1175993qvo.41.2020.02.28.03.50.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Feb 2020 01:36:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 28 Feb 2020 03:50:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ODcGa/3z";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XDeZf28k;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44270 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45808 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j7c4m-0005KL-PH
-	for alex.bennee@linaro.org; Fri, 28 Feb 2020 04:36:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51890)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j7eA0-0004Im-Ag
+	for alex.bennee@linaro.org; Fri, 28 Feb 2020 06:50:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41249)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j7c4f-0005K8-Pu
- for qemu-arm@nongnu.org; Fri, 28 Feb 2020 04:36:50 -0500
+ (envelope-from <philmd@redhat.com>) id 1j7e79-00082b-GI
+ for qemu-devel@nongnu.org; Fri, 28 Feb 2020 06:47:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j7c4e-0008A5-Ha
- for qemu-arm@nongnu.org; Fri, 28 Feb 2020 04:36:49 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:59456
+ (envelope-from <philmd@redhat.com>) id 1j7e76-0001Ho-8I
+ for qemu-devel@nongnu.org; Fri, 28 Feb 2020 06:47:29 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:53694
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j7c4e-00089X-El
- for qemu-arm@nongnu.org; Fri, 28 Feb 2020 04:36:48 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j7e75-0001HP-PT
+ for qemu-devel@nongnu.org; Fri, 28 Feb 2020 06:47:28 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582882607;
+ s=mimecast20190719; t=1582890447;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=HP8A3+C66u8HbtY/yUcAxtdPrN7FNKfQYdzMxvL5bqs=;
- b=ODcGa/3ztFjyuWtdzNreGT0GCrn2migpsv0qyPvhBz0V+RNE/JnQY3TMpC3dNO08bIyJuS
- GyFXKho5ueqofRSD/EsezNELaVElJVWomHfph/k9JGioSwn11D7h0DZJ26N6goV+kfDYu7
- ffFfXT88JvHAKciM9CFFmNZzPEY6XE4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-147-vhHdnjwyPRy8xDoAhMRWrg-1; Fri, 28 Feb 2020 04:36:42 -0500
-X-MC-Unique: vhHdnjwyPRy8xDoAhMRWrg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id ABCDA8014CA;
- Fri, 28 Feb 2020 09:36:40 +0000 (UTC)
-Received: from [10.36.116.59] (ovpn-116-59.ams2.redhat.com [10.36.116.59])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BDB4B5C28E;
- Fri, 28 Feb 2020 09:36:29 +0000 (UTC)
-Subject: Re: [Qemu-devel] [PATCH RFC v5 0/5] virtio-iommu: VFIO integration
-To: Bharat Bhushan <bharatb.linux@gmail.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "kevin.tian@intel.com" <kevin.tian@intel.com>,
- "mst@redhat.com" <mst@redhat.com>, Tomasz Nowicki <tnowicki@marvell.com>,
- "drjones@redhat.com" <drjones@redhat.com>,
- "linu.cherian@cavium.com" <linu.cherian@cavium.com>,
- "linuc.decode@gmail.com" <linuc.decode@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-References: <20181127064101.25887-1-Bharat.Bhushan@nxp.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <2a788c05-cd9b-1e69-14dd-864633a1df95@redhat.com>
-Date: Fri, 28 Feb 2020 10:36:27 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ bh=HcSl9tYPSfjtJ+NOfqsYRSXGvzeBOGmRpnqHEMwcJn8=;
+ b=XDeZf28kYIGoxy4pG0EropZLszb0LOm3CmM1Rz2hxxQAbT9SzzVHyPp3pOhoUBntSrSP+Y
+ PxwlXfPV4yAbsHvmIUCdTQ+qwycti3Vf7HFVg4Lc6Hnw5pOSFo74zxLityy8/eU39P/RJn
+ IrnXlPWFR8MekQViCLgvkJNRggKKplE=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-260-IvtZlMjQNIi-T1eXS9p_4Q-1; Fri, 28 Feb 2020 06:47:25 -0500
+X-MC-Unique: IvtZlMjQNIi-T1eXS9p_4Q-1
+Received: by mail-wm1-f71.google.com with SMTP id g26so602810wmk.6
+ for <qemu-devel@nongnu.org>; Fri, 28 Feb 2020 03:47:25 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=z3tIZiyEES4D3l4DiwJs/XjoxuErI+/O6hJWeBZfg4c=;
+ b=rQE2BpoK2jjX571FQM/dd5KepTG/zzomrZlS6wleK61/kEYSdtFUXLG5Rvm2c890/j
+ WCAWd0glkOgrzpQJDX3Y7xQvfkvhRmFhSaLdnpY+Ndk78nxgrImj+BLQYP7vfGFg36gI
+ 2uqPAGAPYdU8qJNUEGQ9wmFTXAqZAd9C5/HXUZ6qJAAVt5CzbcIxOFoOBWIpq3Fp3wLa
+ Vjt9bmBmIL/7y/3i7Wyf39esd5bc75PRLn9zQN5ZvkH4/Ec2/Px+yGhlWIReHa8bGfBb
+ zydnWsq/xl6gnrPRNwwiddzX8+L5vXdSO8PwAcZSPACsV/qtQpRiD52sX8zLX5tk+2KZ
+ JGTA==
+X-Gm-Message-State: APjAAAVGiTprfyKV+NNoQsIV5bKy+FxgXA7TmSvvJOdDza9gVSwgKgaE
+ X/sz/Umfc01PjFw5ZC/CxQ9HCd08y3YC8vqDzeNv9DKt3J5ScwvajxjjChMvK6zfUH1+vn9/PaV
+ vi6zD6wZXpeoZf9c=
+X-Received: by 2002:a1c:8041:: with SMTP id b62mr3826747wmd.76.1582890444565; 
+ Fri, 28 Feb 2020 03:47:24 -0800 (PST)
+X-Received: by 2002:a1c:8041:: with SMTP id b62mr3826732wmd.76.1582890444345; 
+ Fri, 28 Feb 2020 03:47:24 -0800 (PST)
+Received: from x1w.moovbox.local ([185.102.219.36])
+ by smtp.gmail.com with ESMTPSA id f1sm12392933wro.85.2020.02.28.03.47.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 28 Feb 2020 03:47:23 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 04/18] hw/timer: Remove unused "ui/console.h" header
+Date: Fri, 28 Feb 2020 12:46:35 +0100
+Message-Id: <20200228114649.12818-5-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200228114649.12818-1-philmd@redhat.com>
+References: <20200228114649.12818-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20181127064101.25887-1-Bharat.Bhushan@nxp.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "peterx@redhat.com" <peterx@redhat.com>,
- "bharatb.yadav@gmail.com" <bharatb.yadav@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Jd5otHQ9s+qT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ John Snow <jsnow@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ "open list:nSeries" <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DceU2YznSAXs
 
-Hi Bharat,
+The timer models don't need anything from "ui/console.h".
+Remove it.
 
-On 11/27/18 7:52 AM, Bharat Bhushan wrote:
-> This patch series integrates VFIO with virtio-iommu. This is
-> tested with assigning 2 pci devices to Virtual Machine.
-> 
-> This version is mainly about rebasing on v9 version on
-> virtio-iommu device framework from Eric Augur.
-> 
-> This patch series allows PCI pass-through using virtio-iommu.
-> 
-> This series is based on:
->  - virtio-iommu kernel driver by Jean-Philippe Brucker
->     [PATCH v5 0/7] Add virtio-iommu driver
->     git://linux-arm.org/kvmtool-jpb.git virtio-iommu/v0.9
-> 
->  - virtio-iommu device emulation by Eric Augur.
->    [RFC,v9,00/17] VIRTIO-IOMMU device
->    https://github.com/eauger/qemu/tree/v3.1.0-rc2-virtio-iommu-v0.9
+Acked-by: John Snow <jsnow@redhat.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/rtc/twl92230.c | 1 -
+ hw/timer/hpet.c   | 1 -
+ 2 files changed, 2 deletions(-)
 
-Now we have the driver and the base qemu device upstream we may resume
-this activity to complete the VFIO integration. Do you intend the
-respin? Otherwise let me know if you want me to help.
-
-Thanks
-
-Eric
-> 
-> v4->v5:
->  - Rebase to v9 version from Eric
->  - PCIe device hotplug fix
->  - Added Patch 1/5 from Eric previous series (Eric somehow dropped in
->    last version.
->  - Patch "Translate the MSI doorbell in kvm_arch_fixup_msi_route"
->    already integrated with vsmmu3
-> 
-> v3->v4:
->  - Rebase to v4 version from Eric
->  - Fixes from Eric with DPDK in VM
->  - Logical division in multiple patches
-> 
-> v2->v3:
->  - This series is based on "[RFC v3 0/8] VIRTIO-IOMMU device"
->    Which is based on top of v2.10-rc0 that
->  - Fixed issue with two PCI devices
->  - Addressed review comments
-> 
-> v1->v2:
->   - Added trace events
->   - removed vSMMU3 link in patch description
-> 
-> Bharat Bhushan (4):
->   virtio-iommu: Add iommu notifier for iommu-map/unmap
->   virtio-iommu: Call iommu notifier on attach/detach
->   virtio-iommu: add virtio-iommu replay
->   virtio-iommu: handle IOMMU Notifier flag changes
-> 
-> Eric Auger (1):
->   hw/vfio/common: Do not print error when viommu translates into an mmio
->     region
-> 
->  hw/vfio/common.c                 |   2 -
->  hw/virtio/trace-events           |   5 +
->  hw/virtio/virtio-iommu.c         | 190 ++++++++++++++++++++++++++++++-
->  include/hw/virtio/virtio-iommu.h |   6 +
->  4 files changed, 198 insertions(+), 5 deletions(-)
-> 
+diff --git a/hw/rtc/twl92230.c b/hw/rtc/twl92230.c
+index 63bd13d2ca..d0011be89e 100644
+--- a/hw/rtc/twl92230.c
++++ b/hw/rtc/twl92230.c
+@@ -27,7 +27,6 @@
+ #include "migration/qemu-file-types.h"
+ #include "migration/vmstate.h"
+ #include "sysemu/sysemu.h"
+-#include "ui/console.h"
+ #include "qemu/bcd.h"
+ #include "qemu/module.h"
+=20
+diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
+index 8dbcbdca16..4f30dd50a4 100644
+--- a/hw/timer/hpet.c
++++ b/hw/timer/hpet.c
+@@ -27,7 +27,6 @@
+ #include "qemu/osdep.h"
+ #include "hw/i386/pc.h"
+ #include "hw/irq.h"
+-#include "ui/console.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "qemu/timer.h"
+--=20
+2.21.1
 

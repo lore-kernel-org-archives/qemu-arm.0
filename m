@@ -1,111 +1,126 @@
-Received: by 2002:a05:6214:603:0:0:0:0 with SMTP id z3csp2439148qvw;
-        Fri, 28 Feb 2020 09:27:58 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyF9G98jw5qsH01v0wRhtKEx8uZzb+2RS2U1m+3t2qK2D5FOuqqEzRNQZNOSu44ezGDIjdv
-X-Received: by 2002:a37:b201:: with SMTP id b1mr5283816qkf.111.1582910878542;
-        Fri, 28 Feb 2020 09:27:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582910878; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp942444lfg;
+        Fri, 28 Feb 2020 09:52:30 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyGFbuqa4ILr/RscYPY7WSffdPkhqCtTVyye0V/xa91phMoHWCdhvUO9jE/bArjpto/rD7P
+X-Received: by 2002:ac8:45d1:: with SMTP id e17mr5296757qto.145.1582912350723;
+        Fri, 28 Feb 2020 09:52:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582912350; cv=none;
         d=google.com; s=arc-20160816;
-        b=ctNCOgaPfchwJ8RXoH0CbZKtxHo8IYZU89ZbhMkYw8ewEPpUtUJ3u7OYZrFySN2Jvt
-         3DpqlR7QIgOS1h/Eh6w2GlS/C8av61/dFWknh8O4uQ5zwGUpkpTvcaKRT4+bLJTRtn43
-         FrAoyYib0cVFca3sUbsW+vxeF+YblFNhY08H3sxS8HZrNXBg2uxwchu9P42o4Cm2+m9J
-         OKFnQDzDboOGSt3J2BSXDwb4T3fmWOmO999BDQgtamtzLRE6cd+MdefZYdoI5O8oMAgW
-         OKC0D6tw605l0PnjqwDn6roKtDbVkKsibSC2Bb3zHoqibjuRqmyt9RXZn4r9DlRe40et
-         XTKg==
+        b=KXJ7aBieDJiV7/s1OWKWL3cwCmZCMOnVqn1JQEMRfPdD1fWoqRjl1uEfE+G/t1ozMN
+         Hoh8Cc2z+zHCR4fm+rT/HIs2ZqfV1S9D+g6/ZoPd5bG6Z8BPZenbnJTwpUQndOTP5vpy
+         BW6QnyPAIfCkMbHmnL909WRLHWpepsLpl1e2BXW26TvtDHV33+PKeQKUl5umTsW4RKnj
+         dmry3OSDFYphKT/Xr0BYnsyOVdaEpOBa55nC3Q5Zi24TtbmTFzhshWG1kWPSHSLcL8wv
+         dsu2yOQ7FZydyb1HaW212salGG+skUTc1Vbm5M2QBGGVsctGHbVxOfZDqypDd34/19y/
+         SAcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=NyyNvVhnYJHIczPw/f5c3DkY4N32IG+HArV5OxG016U=;
-        b=wKE1Nyf6tESqHEGZQt8xMDhIDzhNy3/605I0Bevct4mS3t7vCX8Oqs4VX6xpkd3SAh
-         t1zR+3SWFCpKyVUEibwJUTj0eQczjyJpsRpXnryOyUDT6FmDlfj41Ka8L4mYx3OFgKor
-         BZYoxvln09jYB+aE30Dk/F/BIB0BrGJQQFlKvlW+/QnCJdseYhAcfEdo5nklp8WLOnC0
-         2lrI3b/IAHvbhJMqKpORDsWBQwaX+YN/ws5nqsY/2IZawYQQXnDicnWp+dewLcYOEiAJ
-         yCM8+SkxtuQpTyWa9VvVWW45oQVXtN9fdGRIYgFIr/fTzZiGJ+pxiZHJci6GZxxKMIW6
-         dHpw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=MzyS+UeY21C1vvFrF9F/4iDdRkDkr+uYhhjr47GcwFs=;
+        b=m2ZuMBYUMKqd7OwYsieTcJN/zikq/Icz0DV5+Ypm2O/PVGZD4APiEoXLNofsctbUPM
+         C1BcwL9mvg5wbhBXGYVQ6h2dUPakKM2GfKBtHN7Ty93Om6TD7ar5uwtYjF7sY+qB4cfP
+         h2+EGn/2YPAiCpLFC1IoiJB+qeErXnG3K9RVsnEOe4WdlFIqJpp87lteEKIDpq//r3DS
+         nnl4s03ekPrUftSZ/Hz/PXBlJgOO+C37wprg+j94zREG3LYtzo7Bmc43UgXS6C0Ia5lq
+         f4NVcTYjJgo3iDv3IvyW22zvcaj9NSnpq19ySKGfW0rg3iF3lhJB/uxOQsjlbzQFonTQ
+         g0BQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x74si1617481qka.199.2020.02.28.09.27.58
+        by mx.google.com with ESMTPS id h6si1846760qtr.366.2020.02.28.09.52.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Feb 2020 09:27:58 -0800 (PST)
+        Fri, 28 Feb 2020 09:52:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51294 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:51926 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j7jQc-0005ZS-16
-	for alex.bennee@linaro.org; Fri, 28 Feb 2020 12:27:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59224)
+	id 1j7joL-00019d-0l
+	for alex.bennee@linaro.org; Fri, 28 Feb 2020 12:52:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51397)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1j7ipl-0002c4-Hv
- for qemu-arm@nongnu.org; Fri, 28 Feb 2020 11:49:54 -0500
+ (envelope-from <stefanb@linux.ibm.com>) id 1j7joD-00019G-Ac
+ for qemu-arm@nongnu.org; Fri, 28 Feb 2020 12:52:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1j7ipk-0002Ug-76
- for qemu-arm@nongnu.org; Fri, 28 Feb 2020 11:49:53 -0500
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2079 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1j7ipk-0002Sy-1R; Fri, 28 Feb 2020 11:49:52 -0500
-Received: from lhreml709-cah.china.huawei.com (unknown [172.18.7.107])
- by Forcepoint Email with ESMTP id B993E46D76A342E9820D;
- Fri, 28 Feb 2020 16:49:46 +0000 (GMT)
-Received: from lhreml706-chm.china.huawei.com (10.201.108.55) by
- lhreml709-cah.china.huawei.com (10.201.108.32) with Microsoft SMTP Server
- (TLS) id 14.3.408.0; Fri, 28 Feb 2020 16:49:45 +0000
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- lhreml706-chm.china.huawei.com (10.201.108.55) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1713.5; Fri, 28 Feb 2020 16:49:46 +0000
-Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
- lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
- 15.01.1713.004; Fri, 28 Feb 2020 16:49:46 +0000
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: David Hildenbrand <david@redhat.com>, Igor Mammedov <imammedo@redhat.com>
-Subject: RE: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
-Thread-Topic: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
-Thread-Index: AQHVzV43w2nN4JnxQEOUTwT8NpSKx6gLQ1MAgAAWtoCAACc+AIABYS3wgAAIyYCAAR1e4IAAFJiAgAAHflCAADtYAIABo1pQgARLAwCAAABbwIAABn8AgAN5SJCAADkTAIABctiAgAAIuACAAAKygIAXjGsw
-Date: Fri, 28 Feb 2020 16:49:46 +0000
-Message-ID: <8f27608fd02147bfb11bdfca38316f4c@huawei.com>
-References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
- <20200117174522.22044-2-shameerali.kolothum.thodi@huawei.com>
- <20200204162320.67e5d353@redhat.com>
- <74eaaa45-0d20-9a21-fbf8-6d29deb248eb@redhat.com>
- <4ce41554-8b8e-dbb5-5fe9-43af09950f23@redhat.com>
- <8e0b2c762e914c64bebfab5fc7441661@huawei.com>
- <133f274e-e942-7008-93d2-8edb1bc4d7ae@redhat.com>
- <52fff289cca14874ad493fc25806fe3d@huawei.com>
- <f041380c-afcb-f8d8-89db-8f48c7b46767@redhat.com>
- <e97fa28c653044b8bab66aeca2374682@huawei.com>
- <0ff4d2c1-ebd3-1d2f-07e8-a4f13be07ceb@redhat.com>
- <6bf255ecb88446f1b08ee4ab21a85f02@huawei.com>
- <69848dd3-fac4-ec6b-78a8-a052124f4fc3@redhat.com>
- <49b54eea65cd49ae832cd6ec21eae64a@huawei.com>
- <b4ccf1d9-4514-6b63-5ef9-1d337f539267@redhat.com>
- <fad66252aa8f4b46816f21b5315b6358@huawei.com>
- <8f10dd72-9a19-b910-489c-eacc6a772046@redhat.com>
- <04adb50079bc45888f514721edb3cfa3@huawei.com>
- <69ab2339-f4c3-dbd6-1be7-5d6eef28d027@redhat.com>
- <b78f892f-c917-a3a8-4c6b-8d03af02782d@redhat.com>
-In-Reply-To: <b78f892f-c917-a3a8-4c6b-8d03af02782d@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (envelope-from <stefanb@linux.ibm.com>) id 1j7joC-0006ex-4V
+ for qemu-arm@nongnu.org; Fri, 28 Feb 2020 12:52:21 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:50324)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <stefanb@linux.ibm.com>)
+ id 1j7joB-0006e3-TL; Fri, 28 Feb 2020 12:52:20 -0500
+Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 01SHnWEp105156; Fri, 28 Feb 2020 12:52:17 -0500
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2yepwsynx1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 28 Feb 2020 12:52:17 -0500
+Received: from m0098396.ppops.net (m0098396.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 01SHoYQc108494;
+ Fri, 28 Feb 2020 12:52:17 -0500
+Received: from ppma02wdc.us.ibm.com (aa.5b.37a9.ip4.static.sl-reverse.com
+ [169.55.91.170])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2yepwsynwb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 28 Feb 2020 12:52:17 -0500
+Received: from pps.filterd (ppma02wdc.us.ibm.com [127.0.0.1])
+ by ppma02wdc.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id 01SHoKl0025364;
+ Fri, 28 Feb 2020 17:52:15 GMT
+Received: from b01cxnp22034.gho.pok.ibm.com (b01cxnp22034.gho.pok.ibm.com
+ [9.57.198.24]) by ppma02wdc.us.ibm.com with ESMTP id 2yepv2p7aw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 28 Feb 2020 17:52:15 +0000
+Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com
+ [9.57.199.111])
+ by b01cxnp22034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 01SHqFVG54723012
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 28 Feb 2020 17:52:15 GMT
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 83CBBAC05B;
+ Fri, 28 Feb 2020 17:52:15 +0000 (GMT)
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 725D9AC059;
+ Fri, 28 Feb 2020 17:52:15 +0000 (GMT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+ by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP;
+ Fri, 28 Feb 2020 17:52:15 +0000 (GMT)
+Subject: Re: [PATCH v4 00/10] vTPM for aarch64
+To: Auger Eric <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
+References: <20200226205942.11424-1-eric.auger@redhat.com>
+ <4fb16117-f9d3-61af-9198-931590a46e3d@linux.ibm.com>
+ <ee98e8ab-06df-e422-1ca5-f3f6a48145f2@redhat.com>
+ <2413ead7-3707-acc6-7900-bb3896082051@linux.ibm.com>
+ <8ae6ca7b-34b5-b752-2bfd-4b7c2c9663f5@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+Message-ID: <61c4ec54-e7ab-21a2-c446-b45d906ca4e1@linux.ibm.com>
+Date: Fri, 28 Feb 2020 12:52:15 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 185.176.76.210
+In-Reply-To: <8ae6ca7b-34b5-b752-2bfd-4b7c2c9663f5@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.572
+ definitions=2020-02-28_06:2020-02-28,
+ 2020-02-28 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ spamscore=0 phishscore=0 clxscore=1015 adultscore=0 mlxscore=0
+ lowpriorityscore=0 suspectscore=0 bulkscore=0 mlxlogscore=839
+ impostorscore=0 malwarescore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2001150001 definitions=main-2002280135
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by
+ mx0a-001b2d01.pphosted.com id 01SHnWEp105156
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.156.1
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,68 +132,61 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
- "mst@redhat.com" <mst@redhat.com>,
- Juan Jose Quintela Carreira <quintela@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- "lersek@redhat.com" <lersek@redhat.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "dgilbert@redhat.com" <dgilbert@redhat.com>
+Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org,
+ philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A4vYhSavNwnY
+X-TUID: xS1cBqCAwIv2
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRGF2aWQgSGlsZGVuYnJh
-bmQgW21haWx0bzpkYXZpZEByZWRoYXQuY29tXQ0KPiBTZW50OiAxMyBGZWJydWFyeSAyMDIwIDE3
-OjA5DQo+IFRvOiBTaGFtZWVyYWxpIEtvbG90aHVtIFRob2RpIDxzaGFtZWVyYWxpLmtvbG90aHVt
-LnRob2RpQGh1YXdlaS5jb20+Ow0KPiBJZ29yIE1hbW1lZG92IDxpbWFtbWVkb0ByZWRoYXQuY29t
-Pg0KPiBDYzogcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyB4aWFvZ3Vhbmdyb25nLmVyaWNAZ21h
-aWwuY29tOw0KPiBtc3RAcmVkaGF0LmNvbTsgc2hhbm5vbi56aGFvc2xAZ21haWwuY29tOyBxZW11
-LWRldmVsQG5vbmdudS5vcmc7DQo+IHh1d2VpIChPKSA8eHV3ZWk1QGh1YXdlaS5jb20+OyBMaW51
-eGFybSA8bGludXhhcm1AaHVhd2VpLmNvbT47DQo+IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgcWVt
-dS1hcm1Abm9uZ251Lm9yZzsgbGVyc2VrQHJlZGhhdC5jb207DQo+IGRnaWxiZXJ0QHJlZGhhdC5j
-b207IEp1YW4gSm9zZSBRdWludGVsYSBDYXJyZWlyYSA8cXVpbnRlbGFAcmVkaGF0LmNvbT4NCj4g
-U3ViamVjdDogUmU6IFtQQVRDSCB2MiAxLzddIGV4ZWM6IEZpeCBmb3IgcWVtdV9yYW1fcmVzaXpl
-KCkgY2FsbGJhY2sNCg0KWy4uLl0NCg0KPiA+PiBUaGFua3MgZm9yIHRoYXQuIEkgaGFkIGEgZ28g
-d2l0aCB0aGUgYmVsb3cgcGF0Y2ggYW5kIGl0IGluZGVlZCBmaXhlcyB0aGUgaXNzdWUNCj4gPj4g
-b2YgY2FsbGJhY2sgbm90IGJlaW5nIGNhbGxlZCBvbiByZXNpemUuIEJ1dCB0aGUgbWlncmF0aW9u
-IGZhaWxzIHdpdGggdGhlIGJlbG93DQo+ID4+IGVycm9yLA0KPiA+Pg0KPiA+PiBGb3IgeDg2DQo+
-ID4+IC0tLS0tLS0tLQ0KPiA+PiBxZW11LXN5c3RlbS14ODZfNjQ6IFVua25vd24gY29tYmluYXRp
-b24gb2YgbWlncmF0aW9uIGZsYWdzOiAweDE0DQo+ID4+IHFlbXUtc3lzdGVtLXg4Nl82NDogZXJy
-b3Igd2hpbGUgbG9hZGluZyBzdGF0ZSBmb3IgaW5zdGFuY2UgMHgwIG9mIGRldmljZQ0KPiAncmFt
-Jw0KPiA+PiBxZW11LXN5c3RlbS14ODZfNjQ6IGxvYWQgb2YgbWlncmF0aW9uIGZhaWxlZDogSW52
-YWxpZCBhcmd1bWVudA0KPiA+Pg0KPiA+PiBGb3IgYXJtNjQNCj4gPj4gLS0tLS0tLS0tLS0tLS0N
-Cj4gPj4gcWVtdS1zeXN0ZW0tYWFyY2g2NDogUmVjZWl2ZWQgYW4gdW5leHBlY3RlZCBjb21wcmVz
-c2VkIHBhZ2UNCj4gPj4gcWVtdS1zeXN0ZW0tYWFyY2g2NDogZXJyb3Igd2hpbGUgbG9hZGluZyBz
-dGF0ZSBmb3IgaW5zdGFuY2UgMHgwIG9mIGRldmljZQ0KPiAncmFtJw0KPiA+PiBxZW11LXN5c3Rl
-bS1hYXJjaDY0OiBsb2FkIG9mIG1pZ3JhdGlvbiBmYWlsZWQ6IEludmFsaWQgYXJndW1lbnQNCj4g
-Pj4NCj4gPj4gSSBoYXZlbuKAmXQgZGVidWdnZWQgdGhpcyBmdXJ0aGVyIGJ1dCBsb29rcyBsaWtl
-IHRoZXJlIGlzIGEgY29ycnVwdGlvbg0KPiBoYXBwZW5pbmcuDQo+ID4+IFBsZWFzZSBsZXQgbWUg
-a25vdyBpZiB5b3UgaGF2ZSBhbnkgY2x1ZS4NCj4gPg0KPiA+IFRoZSBpc3N1ZSBpcw0KPiA+DQo+
-ID4gcWVtdV9wdXRfYmU2NChmLCByYW1fYnl0ZXNfdG90YWxfY29tbW9uKHRydWUpIHwNCj4gUkFN
-X1NBVkVfRkxBR19NRU1fU0laRSkNCj4gPg0KPiA+IFRoZSB0b3RhbCByYW0gc2l6ZSB3ZSBzdG9y
-ZSBtdXN0IGJlIHBhZ2UgYWxpZ25lZCwgb3RoZXJ3aXNlIGl0IHdpbGwgYmUNCj4gPiBkZXRlY3Rl
-ZCBhcyBmbGFncy4gSG0gLi4uIG1heWJlIHdlIGNhbiByb3VuZCBpdCB1cCAuLi4NCj4gPg0KPiAN
-Cj4gSSdtIGFmcmFpZCB3ZSBjYW4ndCBvdGhlcndpc2Ugd2Ugd2lsbCBydW4gaW50byBpc3N1ZXMg
-aW4NCj4gcmFtX2xvYWRfcHJlY29weSgpLiBIbSAuLi4NCg0KU29ycnksIHRvb2sgYSB3aGlsZSB0
-byBnZXQgYmFjayBvbiB0aGlzLiBZZXMsIHJvdW5kIHVwIGluZGVlZCBicmVha3MgaW4NCnJhbV9s
-b2FkX3ByZWNvcHkoKSAuIEkgaGFkIHRoZSBiZWxvdyBvbiB0b3Agb2YgeW91ciBwYXRjaCBhbmQg
-dGhhdCANCnNlZW1zIHRvIGRvIHRoZSBqb2IgKHNhbml0eSB0ZXN0ZWQgb24gYXJtL3ZpcnQpLg0K
-DQpQbGVhc2UgdGFrZSBhIGxvb2sgYW5kIGxldCBtZSBrbm93IGlmIHlvdSBzZWUgYW55IGlzc3Vl
-cyB3aXRoIHRoaXMgYXBwcm9hY2guDQoNClRoYW5rcywNClNoYW1lZXINCg0KZGlmZiAtLWdpdCBh
-L21pZ3JhdGlvbi9yYW0uYyBiL21pZ3JhdGlvbi9yYW0uYw0KaW5kZXggMmFjYzRiODVjYS4uNzQ0
-N2YwY2VmYSAxMDA2NDQNCi0tLSBhL21pZ3JhdGlvbi9yYW0uYw0KKysrIGIvbWlncmF0aW9uL3Jh
-bS5jDQpAQCAtMTc4Miw3ICsxNzgyLDcgQEAgc3RhdGljIHVpbnQ2NF90IHJhbV9ieXRlc190b3Rh
-bF9taWdyYXRpb24odm9pZCkNCiAgICAgUkNVX1JFQURfTE9DS19HVUFSRCgpOw0KIA0KICAgICBS
-QU1CTE9DS19GT1JFQUNIX01JR1JBVEFCTEUoYmxvY2spIHsNCi0gICAgICAgIHRvdGFsICs9IHJh
-bWJsb2NrX3JhbV9ieXRlc19taWdyYXRpb24oYmxvY2spOw0KKyAgICAgICAgdG90YWwgKz0gYmxv
-Y2stPnVzZWRfbGVuZ3RoOw0KICAgICB9DQogICAgIHJldHVybiB0b3RhbDsNCiB9DQpAQCAtMzQ3
-OSw3ICszNDc5LDcgQEAgc3RhdGljIGludCByYW1fbG9hZF9wcmVjb3B5KFFFTVVGaWxlICpmKQ0K
-ICAgICAgICAgICAgICAgICAgICAgcmV0ID0gLUVJTlZBTDsNCiAgICAgICAgICAgICAgICAgfQ0K
-IA0KLSAgICAgICAgICAgICAgICB0b3RhbF9yYW1fYnl0ZXMgLT0gbGVuZ3RoOw0KKyAgICAgICAg
-ICAgICAgICB0b3RhbF9yYW1fYnl0ZXMgLT0gYmxvY2stPnVzZWRfbGVuZ3RoOw0KICAgICAgICAg
-ICAgIH0NCiAgICAgICAgICAgICBicmVhazsNCg0KDQoNCg==
+On 2/28/20 9:49 AM, Auger Eric wrote:
+> Hi Stefan,
+> On 2/28/20 3:37 PM, Stefan Berger wrote:
+>> On 2/27/20 3:07 AM, Auger Eric wrote:
+>>> Hi Stefan,
+>>> On 2/26/20 11:44 PM, Stefan Berger wrote:
+>>>> On 2/26/20 3:59 PM, Eric Auger wrote:
+>>>>> This series adds the capability to instantiate an MMIO TPM TIS
+>>>>> in ARM virt. It is candidate to qemu 5.0.
+>>>> I queued it now here:
+>>>> https://github.com/stefanberger/qemu-tpm/commits/tpm-next
+>>>>
+>>>> I will send the PR within a few days. Thanks!
+>>> Thank you. I will just ping Peter to make sure he has no comments on
+>>>
+>>> [PATCH v4 06/10] hw/arm/virt: vTPM support
+>>
+>> The little dent is now an arm boot failure:
+>>
+>>
+>> https://travis-ci.org/stefanberger/qemu-tpm/jobs/655573347?utm_medium=3D=
+notification&utm_source=3Demail
+> is this really related to the sysbus TPM-TIS addition? I have the
+> impression cubieboard acceptance tests (ARM 32b) are failing. I touched
+> ARM virt machine.
+
+I hadn't seen this one here before:
+
+https://travis-ci.org/qemu/qemu/jobs/656327906
+
+
+We're good.
+
+
+ =C2=A0=C2=A0 Stefan
+
+
+
+>
+> Thanks
+>
+> Eric
+>>
+>>
+>> Have a look at the raw log.
+>>
+>>
+>>  =C2=A0=C2=A0 Stefan
+>>
+>>
+>>
+

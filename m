@@ -1,151 +1,161 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4979825lfg;
-        Thu, 27 Feb 2020 14:05:29 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxReiDPeovIS6baPEZOEhsM/4nUywVI2CBLRB+YXO1BwCiVXQAIVPTAKPCHA3bOoSwBB8HH
-X-Received: by 2002:ac8:3f91:: with SMTP id d17mr1574309qtk.41.1582841129459;
-        Thu, 27 Feb 2020 14:05:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582841129; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp363579lfg;
+        Thu, 27 Feb 2020 23:47:37 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzwzvKAG4U53m1unD6zi0FNRc7egcKBNsBc/UBdjMV5nAFslkGriLu3rQC2qVOROnN0GpFj
+X-Received: by 2002:a50:f787:: with SMTP id h7mr2817051edn.301.1582876057153;
+        Thu, 27 Feb 2020 23:47:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582876057; cv=none;
         d=google.com; s=arc-20160816;
-        b=sk5Gl2NbS21UEA0JLKLEMlRBfe0BI8R1XbN7bIaHigQcctKa/9M0H1VCmNf6A6mgUo
-         gWRIV6fm/1X2huk2bT1ypTEuZ/90nWN3ik5aw/KxwiVJtP7h4au7Lo+BSSPXQO6rVJcg
-         GYV4HD0yUNznP+uGNf7H2guyyXdwf3DKH5GKhrOLQFmzJuHQ/YoQu3ogxYwVke8Ig0v9
-         ususZXuMK+7lHgjR8inq0curLmuJgQuPdj8EnGQuEf/F+ToOiZjAuqImDLP/EXlxAqUW
-         xp6ulp2Bm5m2YgT79+w2b+RVCokJHwXFzFRunfHD6tzJ+wo485yvUALv2Gelhj8npc5h
-         RT0g==
+        b=UqToJkNAOvL1Ylkiy7AAR3pT6yt7zDm4Ld+FjmSGpulvcK+05YBS/O+Uv8/UzeBHU+
+         O2O7BkdYIyifZn/WRVNpitwxuSNrFkWsN29u0LVWQzaudPD6oje6ffwmZQB97z83MjGa
+         OXKw8yq7ZZf2tmHwsNbqGLYaWajkNmu2UwBLL+bGIjHA0gQcoxqX4M/cEdJTgtGBIOCP
+         YUMlRT0Uu4hXnZ6Qi/CJw3JfXxlKNCLu1dGBcZKCNng5FGtY6o2oHxwkl8kOKJTzqMQB
+         5qC9s1LZdAUbI9UORpLEyezVbeE6c1iuiaDk1hVlhqaJAUWvMBzGW025bKpo/MTTxL2N
+         KMSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=ct19YN8D477GfCKm2ge3aSrXHQgydJt2ZJDeu9sZUbE=;
-        b=RzY10wE4Dbno01asRjxXwPHNUNaOFZ+LZCTWU2Ph0NefXPv5oabrEwr7eFUvY+Bius
-         YIpFxcK0iiVeX1qIT/wb4M0IrwQ7qLzrMxCJQCvLqGK5aA/QXquZV/gP2OMnTThzo81N
-         OsJCuN28zfxQRfTzYVmGkkiezmyn622y6369+1qAMKu2IXuP9C1IkAtkQr8Op2iBuuQk
-         C6eke23Z9E6q8zjYIzfJ/oSgxQDMfBqh7puFim+Bnhq8mk02tG660S+NQJ7m3CLWztG8
-         MlswAa/FZ/S4eP/7wr235ExSnd9iSHvES4tTURF0hqGjdT+3kRY175oo+Nl5O+EnCgAQ
-         nm8g==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=a+D8DOie91iTmWTa82CCKy55oa4ppjpizVpeCrtHLaI=;
+        b=AWwaE1pZww7yGUgFNl6Zftlp7EeO30b3mSuvLPvCdUdHI/CvAweKe7Jg2QrXm9/pjS
+         aX3Gh3NHv/GgiUqHrCsxYLeptq1nqGQv3vK9muQmzEwCaym1UWTfHEjXfFgqbqe6ujiz
+         SS694ZaImm7F28OIU4Tv86M9DTwceXrHRaIASh5rOiDqzmbzf4V5JM2yAQXPGOHR0pMU
+         DwAjSanwJC2MY7wEF604RXx3EferZVj9BaWa3he2EafxBuo6vk/6FhNWzWsVWXSF5bA2
+         oCpLsojsivoXadI3C5SjN8M35LxtOLNXCL3othJ2LDzhujPJ/OixwUJ/OjOxl6dTe0P8
+         3f4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Hyd6ONjy;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a197si394850qkg.30.2020.02.27.14.05.29
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ye9gMgd5;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
+        by mx.google.com with ESMTPS id be1si1283024edb.593.2020.02.27.23.47.36
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2020 14:05:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 27 Feb 2020 23:47:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Hyd6ONjy;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39080 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j7RHc-0004yI-VJ
-	for alex.bennee@linaro.org; Thu, 27 Feb 2020 17:05:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44972)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1j7REL-00019K-Ad
- for qemu-devel@nongnu.org; Thu, 27 Feb 2020 17:02:06 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1j7REK-0003lu-CD
- for qemu-devel@nongnu.org; Thu, 27 Feb 2020 17:02:05 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:52848)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1j7REI-0003l0-Q7; Thu, 27 Feb 2020 17:02:02 -0500
-Received: by mail-wm1-x341.google.com with SMTP id p9so1147073wmc.2;
- Thu, 27 Feb 2020 14:02:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=ct19YN8D477GfCKm2ge3aSrXHQgydJt2ZJDeu9sZUbE=;
- b=Hyd6ONjyl4QfpbJ65iDBNOqBwvbPE8A0YWtVVDBsD8MiHmHGeDY46lN9xn33I/Ix+j
- ST6ly4uqoMEtdlELPgotCGoz42Uidlg79pNHD5s6yJDx6DG4GcC8QIbQhQfpk4T+uxb/
- eA57+0DgvgHDCKt7GCtoYONjtiJq7AMKzyQStfQd6UI3uK+hEnEcULAn0e3rIB2U2Ko4
- gJGUjdmMk4ySHe/f0rMMpPHmxJtT4LBaZ3VGLZoIzQYnR1C9kCTw0bhteNUnvudmg9d9
- vYlVxGAlgyb0YZz+6YaLeojPfNwQG4zxwV/t/Elz0TARc+xw3dk/qNlVWmdL4a0u8Xm0
- FYlA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=ct19YN8D477GfCKm2ge3aSrXHQgydJt2ZJDeu9sZUbE=;
- b=a1HBAwO8Kjb6HJgpNZ0k6hKBwDV9RgbE+k3RPE1TGtdC7mezMai46FYMveeaxiXqBS
- GH4W4edbSxXMD6DOan08IYc6FdZ9xJXC5BQES5OM2WlbLhy1KHJo9B26lcnm0VMa3BC7
- I8/FSYT4JdbcIG1FnNV3Bocf4WTm+mzpz1JkXV3h+W0jiZqxRfL3iUe8Ec0csgTe8GH+
- 1R5DfILsxwU3F83oKeJBQ2mKn7+TPknNZjuW/ozxWjMhyKkMHctTKePXqk8Kwcd7zgFx
- il+60Ar3LISL4qloZhOAwdxSe/pSB0SDZe9GDFq6/q8olnt71jA5QrOBtaxZFBLabMo7
- xHMA==
-X-Gm-Message-State: APjAAAWSEcpWsIKO/FU5GWSv/SFwnwYMK56/2l4UsyxPMu/7NG1DoIOZ
- XnOCHNkv6JMc36fiMIQqt0Qregz+
-X-Received: by 2002:a7b:cc69:: with SMTP id n9mr856189wmj.163.1582840919861;
- Thu, 27 Feb 2020 14:01:59 -0800 (PST)
-Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
- by smtp.gmail.com with ESMTPSA id z14sm6447040wrg.76.2020.02.27.14.01.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Feb 2020 14:01:59 -0800 (PST)
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v1 4/4] hw/arm/cubieboard: report error when using unsupported
- -bios argument
-Date: Thu, 27 Feb 2020 23:01:49 +0100
-Message-Id: <20200227220149.6845-5-nieklinnenbank@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200227220149.6845-1-nieklinnenbank@gmail.com>
-References: <20200227220149.6845-1-nieklinnenbank@gmail.com>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::341
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: b.galvani@gmail.com, peter.maydell@linaro.org,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4JGCK6gMD842
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ye9gMgd5;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1582876056;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=a+D8DOie91iTmWTa82CCKy55oa4ppjpizVpeCrtHLaI=;
+	b=Ye9gMgd5La25MEtlGkCnw1iIXfBJ0XedcCD9bUqs11oOsDEz1PhL+irxlqM/g2x0HEjF/y
+	XEfSwdUV/navgPc8d3xVpOvKoN132aL9aScQq27JivDC6pKncUh1ys9IcFhqbKxE7BZtKi
+	QOGJr4Np5ODRrui2b9arI/XkPivtcpE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-267--HuvCzA2PEKbsW-hwEAi9w-1; Fri, 28 Feb 2020 02:47:34 -0500
+X-MC-Unique: -HuvCzA2PEKbsW-hwEAi9w-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 04D1213E4;
+	Fri, 28 Feb 2020 07:47:33 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9CCB360C18;
+	Fri, 28 Feb 2020 07:47:31 +0000 (UTC)
+Date: Fri, 28 Feb 2020 08:47:29 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
+Cc: Richard Henderson <richard.henderson@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, Alex
+ =?UTF-8?B?QmVubsOpZQ==?= <alex.bennee@linaro.org>, QEMU Developers
+ <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>
+Subject: Re: [PATCH v1 4/4] accel/tcg: increase default code gen buffer size
+ for 64 bit
+Message-ID: <20200228084729.3bb8bf11@redhat.com>
+In-Reply-To: <CAPan3WrSRm986EfwJdXV2MduNLE5BS+QmCv0Bo5-BD+QfT-=dg@mail.gmail.com>
+References: <20200226181020.19592-1-alex.bennee@linaro.org>
+	<20200226181020.19592-5-alex.bennee@linaro.org>
+	<2ca7b55b-5674-370d-5c4d-dc8b7782ca64@linaro.org>
+	<87pne0w6rt.fsf@linaro.org>
+	<56f5e355-9357-e212-e92b-9db1d8424dea@linaro.org>
+	<CAPan3WrSRm986EfwJdXV2MduNLE5BS+QmCv0Bo5-BD+QfT-=dg@mail.gmail.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 0zH3/Rc/h9Hr
 
-The Cubieboard machine does not support the -bios argument.
-Report an error when -bios is used and exit immediately.
+On Thu, 27 Feb 2020 20:07:24 +0100
+Niek Linnenbank <nieklinnenbank@gmail.com> wrote:
 
-Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
----
- hw/arm/cubieboard.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+> Hi Richard,
+>=20
+> On Thu, Feb 27, 2020 at 1:57 PM Richard Henderson <
+> richard.henderson@linaro.org> wrote: =20
+>=20
+> > On 2/27/20 4:31 AM, Alex Benn=C3=A9e wrote: =20
+> > >> It does not make sense for a linux-user chroot, running make -jN, on=
+ =20
+> > just about =20
+> > >> any host.  For linux-user, I could be happy with a modest increase, =
+but =20
+> > not all =20
+> > >> the way out to 2GiB.
+> > >>
+> > >> Discuss. =20
+> > >
+> > > Does it matter that much? Surely for small programs the kernel just
+> > > never pages in the used portions of the mmap? =20
+> >
+> > That's why I used the example of a build under the chroot, because the
+> > compiler
+> > is not a small program.
+> >
+> > Consider when the memory *is* used, and N * 2GB implies lots of paging,
+> > where
+> > the previous N * 32MB did not.
+> >
+> > I agree that a lower default value probably is safer until we have more=
+ =20
+> proof that a larger value does not give any issues.
+>=20
+>=20
+> > I'm saying that we should consider a setting more like 128MB or so, sin=
+ce
+> > the
+> > value cannot be changed from the command-line, or through the environme=
+nt.
+> > =20
+>=20
+> Proposal: can we then introduce a new command line parameter for this?
+> Maybe in a new patch?
 
-diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
-index 6c55d9056f..871b1beef4 100644
---- a/hw/arm/cubieboard.c
-+++ b/hw/arm/cubieboard.c
-@@ -19,6 +19,7 @@
- #include "exec/address-spaces.h"
- #include "qapi/error.h"
- #include "cpu.h"
-+#include "sysemu/sysemu.h"
- #include "hw/sysbus.h"
- #include "hw/boards.h"
- #include "hw/arm/allwinner-a10.h"
-@@ -33,6 +34,12 @@ static void cubieboard_init(MachineState *machine)
-     AwA10State *a10;
-     Error *err = NULL;
- 
-+    /* BIOS is not supported by this board */
-+    if (bios_name) {
-+        error_report("BIOS not supported for this machine");
-+        exit(1);
-+    }
-+
-     /* This board has fixed size RAM (512MiB or 1GiB) */
-     if (machine->ram_size != 512 * MiB &&
-         machine->ram_size != 1 * GiB) {
--- 
-2.17.1
+linux-user currently uses 32Mb static buffer so it probably fine to
+leave it as is or bump it to 128Mb regardless of the 32/64bit host.
 
+for system emulation, we already have tb-size option to set user
+specified buffer size.
+
+Issue is with system emulation is that it sizes buffer to 1/4 of
+ram_size and dependency on ram_size is what we are trying to get
+rid of. If we consider unit/acceptance tests as main target/user,
+then they mostly use default ram_size value which varies mostly
+from 16Mb to 1Gb depending on the board. So used buffer size is
+in 4-256Mb range.
+Considering that current CI runs fine with max 256Mb buffer,
+it might make sense to use it as new heuristic which would not
+regress our test infrastructure and might improve performance
+for boards where smaller default buffer was used.
+
+
+> Since the size of the code generation buffer appears to have an impact on
+> performance,
+> in my opinion it would make sense to make it configurable by the user.
+>=20
+> Regards,
+>=20
+>=20
+> >
+> >
+> > r~
+> >
+> > =20
+>=20

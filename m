@@ -1,183 +1,112 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp4956164lfg;
-        Thu, 27 Feb 2020 13:38:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyiy2COHZ0raDm3rGHINI97K9NRWZ3LkwSbBDUuV6SInS9nJwHV/fDpwOfRj2ywwKelyYZJ
-X-Received: by 2002:ac8:7388:: with SMTP id t8mr1422921qtp.244.1582839486805;
-        Thu, 27 Feb 2020 13:38:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582839486; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp52118lfg;
+        Thu, 27 Feb 2020 17:17:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwUhNWsuVTvfTVcD8OiBbmKMvGuldi99OMq/yx3qxy+t1RIc3s30H4229+yXRSnztmRgoLt
+X-Received: by 2002:a37:4b48:: with SMTP id y69mr2373797qka.216.1582852654854;
+        Thu, 27 Feb 2020 17:17:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582852654; cv=none;
         d=google.com; s=arc-20160816;
-        b=K6qfuXVB+yLw5ah6jgtT+lXeaGuf8BoKp1HWajfRc+AU5UNaEXlWp3ODvxqZvmEGft
-         MsAMAGzRH94v3gHMZ9pMBeBBxxVhMnZY6bkQYrIljttkr/JKc/jsLZY360zNvsHT0lTC
-         nPPKCQeUNXvWqJ7MxnS4OD7POayCYrqrV2p77TrX+eUXirRC4Zc0quFuFgJ9XD+rag5S
-         ub46xV8dN8TKdrhqnyGTjG4N6GpcIcw1AF6kysZYhv2Q0Zq/QFjMZiuu3kB0ql1BVEYe
-         C9HpNKPO9SWmR6m7x/bntXyXKWCsl3vcPaHjv/G6W4AKG5G1F8ya4vOvR22RJmsH3jSI
-         tHuA==
+        b=CF/3HZAGFfF3GJSelw4riHhHidChCqlNoajl3xvQ0T56Vn2QyGzCj7q+RP6wpnWPnc
+         Ck5/2bCP/SecZPTE4LwiXx8OLbJbWOXCaqjgxhsojHEMVk29I7evqXfsUTqnn4cs2O24
+         mKOVlz3moOnyuy8QC2a+bn3vSFxBoBPxpwcSJftwcvdeD9asZV+UqLT4Tgnn6sbIqOHm
+         ujtPtpN+SdHQyiJ/ds298WX44hF5wYcktlKiqgJTUPJUdQHx1oYBxuJW/yHDLveb7ZNn
+         borVYtONSnqXPfChL0G1bsJhd/3NvdvJB3tkvu+5VBupOSNjavag1TAjvN3vgiPH0Fuo
+         eJkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=UZVzMiJRShPlueonyaoikwmNMD6aFXintv3DsagvrH0=;
-        b=y+DsPqGszNDdRJMIHUxub8n3QZ4wiii0QFS7jpoDKH1CTvUga0EViHKFI+jcgzuswJ
-         /sZj1QuMGmpPAKKPB9pqGxLbbIOfJqJVS+UophSu/L+sEDJ4jhBIxN5gEQ7rMkisUi+n
-         FC+BFmEj7on3fJJP/Xw3SzMB5OtgCKjSbLGHvKh35EeW2ej+DcvVwhw37rw9zU8EuE3b
-         GKYgjjqybX/mjult8GdT48MTDQa+YeeBSZq3+avpz+yNINR7Qtio+9+yjgrV00W62rKN
-         Hq8U30MLdTNMcqz5K5Vp38KUtylM5CRcr1EhQLBGJuBlQMC28BCaCom76DsS5e8Pb6pI
-         Asyw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from:user-agent;
+        bh=K/lWYK1Gb8L3C7yMIpc4yf5ypi3rXO5fXsZAOFYXlsk=;
+        b=0AGQsTcx1gc+fblC+4VuHQ43pHgLpDISLaTchrk1GeOkFIBGRq8l1GUtrdBBmd12AB
+         6e5nbi6FPpFl/+pp+sgFVcC0enKIiBd5RJZ6t3u+15A43MHcDtJTyZm9fx3iw0scHyad
+         wnXzKQdefZ4xKK3M6eiwqQaah4yDJ13aEnqNIUoqb9A4nHuZaVHNoqDRxxMlqBDfrFv3
+         Z45IdwMx2/qPwIrwttm2K7rsgSUMBuA1wTxjpO+VlLS90cCbobk4JsR1tnYze6YQqXHX
+         sb5nrq0wB7N7NWkaXiUnpXlpau6n9oesbhReFim4MTzivQ5vOCudzY2Bc5fx1vV1yo3Z
+         hN2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SRayFQF4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fsf.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j15si426523qvl.84.2020.02.27.13.38.06
+        by mx.google.com with ESMTPS id x74si545328qka.199.2020.02.27.17.17.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Feb 2020 13:38:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Feb 2020 17:17:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SRayFQF4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38728 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fsf.org
+Received: from localhost ([::1]:40258 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j7Qr8-0005u5-9i
-	for alex.bennee@linaro.org; Thu, 27 Feb 2020 16:38:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41108)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j7UHW-0007Rw-Ag
+	for alex.bennee@linaro.org; Thu, 27 Feb 2020 20:17:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46614)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1j7Qqu-0005lF-53
- for qemu-arm@nongnu.org; Thu, 27 Feb 2020 16:37:53 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1j7Qqt-0002Ih-35
- for qemu-arm@nongnu.org; Thu, 27 Feb 2020 16:37:52 -0500
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:42402)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1j7Qqs-0002Hr-SL; Thu, 27 Feb 2020 16:37:51 -0500
-Received: by mail-lj1-x242.google.com with SMTP id d10so899501ljl.9;
- Thu, 27 Feb 2020 13:37:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=UZVzMiJRShPlueonyaoikwmNMD6aFXintv3DsagvrH0=;
- b=SRayFQF4K8ZX5PNl/v5pzJ6YdRbXtIjy5aoY/qPp0OtzonVtQhSjWyf56PgRY9//9b
- mYxZTUv9TJMyEjTZE2stN6aZdHt3XL0oJ2xMad4tlx03jcOyPhWz4shiBXlLsFbRdy9W
- yG/u9maxuKcDpZpdcbU+tLemQHVySE5xNu7rSh8ksjKUFRwIHUGYY4Av7z9XEsgvK/Vz
- qpGzbiAo2GNf+RMgLC1Qb6heS0sMRIBoLmBXbNjOv0uf4sGge1dU3sHtY5iITHZpW+w9
- Kpi7isnJDseMsOY8cYuBnsPwNq+caQ/aOe2yAXCGJnv/BcGqFlnPWgt1yRmBmKtXRqiv
- r0+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=UZVzMiJRShPlueonyaoikwmNMD6aFXintv3DsagvrH0=;
- b=dn54t0OYQ4vDLItIMw2yuqJraJyyuNtF5V5MLL6skzK4gPDht6vY6VoUYg7V+GkS1b
- e2PT/frGz42KUtYVJ5QMHzMEzGI3TLg814qlZ5crTDGLDR2v1Kc49Hp66CTksbGLenq4
- kXqCCGjfoNmajYr8oApBWzhI2hjSybNZxfeBrVW6nV38MdFnxbOniuO6ZDzIDrSsHnH9
- mXZ0uDu6Y24+sBHTFo2aT+5gp550TpJYDsCoS1J5Q+RFPPaOZz8lR63t54SHoeYQUDQo
- LnhN1HKqESkqIsxIsB2QGfnauX6+noQ6FWD4y/BP2YCLIsjUEj3aPF0/d9Ip0vM6jQBX
- xnoQ==
-X-Gm-Message-State: ANhLgQ2MIghgXlRQ/aE4FlQlPbKbCOAY18p4I3aFUMdihEIfxz2xk0/h
- zmabg2FjjWIUAx7cM+kUrCXAUjsqMhnu1fLjJwA=
-X-Received: by 2002:a2e:a36a:: with SMTP id i10mr664142ljn.107.1582839468777; 
- Thu, 27 Feb 2020 13:37:48 -0800 (PST)
+ (envelope-from <iank@fsf.org>)
+ id 1j7UGR-00070K-Ec; Thu, 27 Feb 2020 20:16:28 -0500
+Received: from mail.fsf.org ([209.51.188.13]:45338)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <iank@fsf.org>)
+ id 1j7UGR-00074Y-9u; Thu, 27 Feb 2020 20:16:27 -0500
+Received: from mail.iankelling.org ([72.14.176.105]:32870)
+ by mail.fsf.org with esmtps (TLS-1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.69) (envelope-from <iank@fsf.org>)
+ id 1j7UGQ-0002wk-WB; Thu, 27 Feb 2020 20:16:27 -0500
+Received: from iank by mail.iankelling.org with local (Exim 4.90_1)
+ (envelope-from <iank@fsf.org>)
+ id 1j7UGP-00029I-Ml; Thu, 27 Feb 2020 20:16:25 -0500
+User-agent: mu4e 1.3.6; emacs 28.0.50
+From: Ian Kelling <iank@fsf.org>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: FYI: The daily digest email for qemu-devel/qemu-arm didn't go out
+ today
+Date: Thu, 27 Feb 2020 20:16:25 -0500
+Message-ID: <87r1yfo6ja.fsf@fsf.org>
 MIME-Version: 1.0
-References: <20200227115005.66349-1-root@stephanos.io>
- <20200227115005.66349-3-root@stephanos.io>
- <88ad7129-9654-088d-6569-066949973a86@redhat.com>
-In-Reply-To: <88ad7129-9654-088d-6569-066949973a86@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 27 Feb 2020 13:30:03 -0800
-Message-ID: <CAKmqyKMkTsgqSEWhrkCmbQ3LMNz1OgdeHE6zFaMsZdRjAFvdRA@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] hw/arm/armv7m: Downgrade CPU reset handler priority
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::242
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain
+X-detected-operating-system: by mail.fsf.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- Stephanos Ioannidis <root@stephanos.io>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N+8iL5DzjydF
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uhtonQ6gtti8
 
-On Thu, Feb 27, 2020 at 5:32 AM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> Hi Stephanos,
->
-> On 2/27/20 12:51 PM, Stephanos Ioannidis wrote:
-> > The ARMv7-M CPU reset handler, which loads the initial SP and PC
-> > register values from the vector table, is currently executed before
-> > the ROM reset handler (rom_reset), and this causes the devices that
-> > alias low memory region (e.g. STM32F405 that aliases the flash memory
-> > located at 0x8000000 to 0x0) to load an invalid reset vector of 0 when
-> > the kernel image is linked to be loaded at the high memory address.
->
-> So we have armv7m_load_kernel -> load_elf_as -> rom_add_blob_fixed_as ->
-> rom_add_blob -> rom_insert.
->
-> arm_cpu_reset is called before rom_reset, rom_ptr is NULL, we call
-> initial_pc =3D ldl_phys(cpu_as) from an empty flash.
->
-> Then later rom_reset -> address_space_write_rom.
->
-> I think Alistair and myself use the 'loader' device with Cortex-M boards
-> and never hit this problem.
+I hope to fix it tomorrow, but I can't be sure. Maybe it will fix itself
+and I'll just abandon the digest for today. Very few people use the
+digest feature, normally it goes out at noonish eastern time.
 
-I do hit this problem, Peter described a workaround in the previous
-version of this patch, that is to link at address 0 instead of the
-alias address.
+All I've had time to do done is grab a stack trace, seems like there's
+some characters in an email that mailman doesn't like. If anyone wants
+to lend a hand, this is from a lightly modified senddigests from mailman
+to get a stack trace:
 
-Alistair
+Traceback (most recent call last):
+  File "/usr/lib/mailman/cron/sd", line 106, in <module>
+    main()
+  File "/usr/lib/mailman/cron/sd", line 89, in main
+    mlist.send_digest_now()
+  File "/var/lib/mailman/Mailman/Digester.py", line 60, in send_digest_now
+    ToDigest.send_digests(self, mboxfp)
+  File "/var/lib/mailman/Mailman/Handlers/ToDigest.py", line 147, in send_digests
+    send_i18n_digests(mlist, mboxfp)
+  File "/var/lib/mailman/Mailman/Handlers/ToDigest.py", line 347, in send_i18n_digests
+    payload = unicode(payload, mcset, 'replace'
+  File "/usr/lib/python2.7/encodings/base64_codec.py", line 41, in base64_decode
+    assert errors == 'strict'
+AssertionError
 
->
-> >
-> > For instance, it is norm for the STM32F405 firmware ELF image to have
-> > the text and rodata sections linked at 0x8000000, as this facilitates
-> > proper image loading by the firmware burning utility, and the processor
-> > can execute in place from the high flash memory address region as well.
-> >
-> > In order to resolve this issue, this commit downgrades the ARMCPU reset
-> > handler invocation priority level to -1 such that it is always executed
-> > after the ROM reset handler, which has a priority level of 0.
-> >
-> > Signed-off-by: Stephanos Ioannidis <root@stephanos.io>
-> > ---
-> >   hw/arm/armv7m.c | 3 ++-
-> >   1 file changed, 2 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-> > index 7531b97ccd..8b7c4b12a6 100644
-> > --- a/hw/arm/armv7m.c
-> > +++ b/hw/arm/armv7m.c
-> > @@ -352,7 +352,8 @@ void armv7m_load_kernel(ARMCPU *cpu, const char *ke=
-rnel_filename, int mem_size)
-> >        * way A-profile does it. Note that this means that every M profi=
-le
-> >        * board must call this function!
-> >        */
-> > -    qemu_register_reset(armv7m_reset, cpu);
-> > +    qemu_register_reset_with_priority(
-> > +        QEMU_RESET_PRIORITY_LEVEL(-1), armv7m_reset, cpu);
-> >   }
-> >
-> >   static Property bitband_properties[] =3D {
-> >
->
->
+-- 
+Ian Kelling | Senior Systems Administrator, Free Software Foundation
+GPG Key: B125 F60B 7B28 7FF6 A2B7  DF8F 170A F0E2 9542 95DF
+https://fsf.org | https://gnu.org

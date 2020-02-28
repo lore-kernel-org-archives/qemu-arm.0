@@ -1,167 +1,115 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp949366lfg;
-        Fri, 28 Feb 2020 10:00:44 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz0q2sOmDdZftVMPgDddeSddMRGF6w6RHs3ehLDz9CDFHDN3SBv0he1KGKP4cbONbdWOiDn
-X-Received: by 2002:a05:620a:1414:: with SMTP id d20mr5775520qkj.42.1582912844305;
-        Fri, 28 Feb 2020 10:00:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582912844; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1177472lfg;
+        Fri, 28 Feb 2020 14:24:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyEa1mvbeJGSJVh7+jiZRet9r0zNrgqDE0eyVi3G0Pgi8hgP9rUrbvsuDCbvScpF6RP7w5J
+X-Received: by 2002:a0c:fe10:: with SMTP id x16mr5659680qvr.188.1582928675892;
+        Fri, 28 Feb 2020 14:24:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582928675; cv=none;
         d=google.com; s=arc-20160816;
-        b=ItJ7WlZgAT8FAHuNTR/fH65SnjErLhW8RdjwgGfstnOoMjpD4IhRihRoMQ09vWHEbf
-         jZeiHiTwyYu8488sggDwDfN/XscwRwxSfjLpCDPE4Xv5hXlgq/mQdTyW2MuSp5I1r91V
-         PwdHf+Y3FBRM49ayCTzRWu75mKCsa399hDeRJpoYraQjS3TXNMs7H1DGXg4KJxEzMbFx
-         YPymQBmrGpXY5VVUkq1ybtf7dzNx+sSwxHujBzDrAP/KLi9N+tANI/KqWKDz3oL5r0dP
-         EWuDt0t4Cf3kAoIX+sXxRDz+bCzTbMRLrYIrCWHGw3y60rZ/jdHNwvpkhnecEZ6oFW6t
-         5gFQ==
+        b=tAYwYIlj+1w28mmaAwMiDyOx/aWSikiL2LQU12VdF42jKZeeuNrWTMvegl+WsPoFRk
+         AANc6D5IS3cEkKcjLGAOy3UwsG9AZYEh0vZWGis030eAxCYhwnDT/Pp2QHHnW+3vtFhn
+         6U3ymg484sLyxNz350KhRlxfauuvKqtwXtERgOYSgpsAXFiUvTkYUXle790Cpc6ofRwO
+         GbiADH8jcKje+u+Cu5YvR6rGoqnqG8FaRACDfLtcc75uHN3Hg4p7wp0uvwZWNPY1MRQi
+         GbGfnvTLFXAfRc1ZTV0ZxX7QjJzrdwK5tT4AzGADKqv/5vzq821KqrYnp2ifkwZgQud9
+         tv9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:from:references:to:subject
-         :dkim-signature;
-        bh=YZWXiQLKCnvA+mE/uF1xUy5rCkp9YR6wzlA0q+6F+uo=;
-        b=G7WDFeLKZPCkh4zY4R77Ny+k1I6YzZpGYTgVDTy5y5fJH2lcHw6kj05ybi2VJbaVx/
-         EJFkpaRLRHlmHNHhlskbj5nyqA1HoR8yfUlwJxRoq7+qscL/92sY+mLrfLDjRrU7vn1a
-         dzh7pbWB7gPgUT5lS00tkuSeD1O0eA5L8Qxi2FAyCPT19OhGd2oKLsIT57JUrnenbb7V
-         Ud2wy3iFnDRlEM2vGEDQVTPHEpyQETdg4N8BlRFHL/ky8IZQUCCwkDV2dKmdF7evCcFr
-         SvGhMfwBG1TXT7KwrjEPWj5DuwKkkYvIhBwtXUfOftMFInDL26+MW6c1AFucOkiN2uM3
-         aSyw==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=LDKcCQrJ4exTysNpbESaXVg67i7nnbIKyjv3uxqKM8c=;
+        b=HvNZMEma+WFsodXyyIrQmmhJExDUBPa7ug6lGGtc/PxPPxFD0F81BRd9m9mhTOSSJE
+         Q9F+7ugxLVREcsqisufvK4ThBqYv6WDJIiXuTVYafhWdwXDIhblDOE16HZ+mxiUvArhA
+         xPsqyfi6FQR5XOn9lQdQjubNBSKrmF1Gez6Hev2UgNpgvHqZXNresj6T5K2ZiZ4Fg8Qo
+         5nU57kpx4v2dPocAVnu6idzK5gg1ZE+jA3N6jdCp+c+LnMBQ7V3/Xt53O6bCJ+GqDxie
+         TxaJCdW+St6Ac1/qgaiujU9eEXHcOAQpfdPq11LczV1L7elSzJR8Nud9xVPk0NuxXcdE
+         OYmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="NzR/F//f";
+       dkim=fail header.i=@linaro.org header.s=google header.b=ODMhL+jh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f10si1193588qkk.195.2020.02.28.10.00.44
+        by mx.google.com with ESMTPS id y7si1939123qvr.214.2020.02.28.14.24.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Feb 2020 10:00:44 -0800 (PST)
+        Fri, 28 Feb 2020 14:24:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="NzR/F//f";
+       dkim=fail header.i=@linaro.org header.s=google header.b=ODMhL+jh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52068 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54540 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j7jwJ-0005x0-Mm
-	for alex.bennee@linaro.org; Fri, 28 Feb 2020 13:00:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53140)
+	id 1j7o3f-0008Oj-Bx
+	for alex.bennee@linaro.org; Fri, 28 Feb 2020 17:24:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44278)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <david@redhat.com>) id 1j7jvw-0005dD-JF
- for qemu-arm@nongnu.org; Fri, 28 Feb 2020 13:00:22 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1j7o3U-0008Nz-OK
+ for qemu-arm@nongnu.org; Fri, 28 Feb 2020 17:24:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <david@redhat.com>) id 1j7jvv-00049w-0n
- for qemu-arm@nongnu.org; Fri, 28 Feb 2020 13:00:20 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:37238
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <david@redhat.com>) id 1j7jvu-00049S-So
- for qemu-arm@nongnu.org; Fri, 28 Feb 2020 13:00:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582912818;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=YZWXiQLKCnvA+mE/uF1xUy5rCkp9YR6wzlA0q+6F+uo=;
- b=NzR/F//fpw9KR4zg6akOEH5c1XBTiqn8CnINMm9zZmiFCdsKX3DM4+UZNDdDJQbCKlzkC0
- 9LCaaFpTq6jkJL3QTyV2Ye+qeDU55H/nzLTD1OEVN7LLTboe8LCh/S+JkP7oFtABpcWdtt
- eIzUdKXOKxbZEpxa4cYxVobjcf9kTM8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-187-Agjh-tYmNayfnwAE6mKhaw-1; Fri, 28 Feb 2020 13:00:14 -0500
-X-MC-Unique: Agjh-tYmNayfnwAE6mKhaw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 86462800D5C;
- Fri, 28 Feb 2020 18:00:12 +0000 (UTC)
-Received: from [10.36.117.192] (ovpn-117-192.ams2.redhat.com [10.36.117.192])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D1B881CB;
- Fri, 28 Feb 2020 17:59:57 +0000 (UTC)
-Subject: Re: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>
-References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
- <20200204162320.67e5d353@redhat.com>
- <74eaaa45-0d20-9a21-fbf8-6d29deb248eb@redhat.com>
- <4ce41554-8b8e-dbb5-5fe9-43af09950f23@redhat.com>
- <8e0b2c762e914c64bebfab5fc7441661@huawei.com>
- <133f274e-e942-7008-93d2-8edb1bc4d7ae@redhat.com>
- <52fff289cca14874ad493fc25806fe3d@huawei.com>
- <f041380c-afcb-f8d8-89db-8f48c7b46767@redhat.com>
- <e97fa28c653044b8bab66aeca2374682@huawei.com>
- <0ff4d2c1-ebd3-1d2f-07e8-a4f13be07ceb@redhat.com>
- <6bf255ecb88446f1b08ee4ab21a85f02@huawei.com>
- <69848dd3-fac4-ec6b-78a8-a052124f4fc3@redhat.com>
- <49b54eea65cd49ae832cd6ec21eae64a@huawei.com>
- <b4ccf1d9-4514-6b63-5ef9-1d337f539267@redhat.com>
- <fad66252aa8f4b46816f21b5315b6358@huawei.com>
- <8f10dd72-9a19-b910-489c-eacc6a772046@redhat.com>
- <04adb50079bc45888f514721edb3cfa3@huawei.com>
- <69ab2339-f4c3-dbd6-1be7-5d6eef28d027@redhat.com>
- <b78f892f-c917-a3a8-4c6b-8d03af02782d@redhat.com>
- <8f27608fd02147bfb11bdfca38316f4c@huawei.com>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat GmbH
-Message-ID: <01aa6f4a-cfa7-6a35-8a7a-5189b66e2c9e@redhat.com>
-Date: Fri, 28 Feb 2020 18:59:57 +0100
+ (envelope-from <richard.henderson@linaro.org>) id 1j7o3T-0005Hy-Ku
+ for qemu-arm@nongnu.org; Fri, 28 Feb 2020 17:24:24 -0500
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:34969)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1j7o3T-0005Do-Dk
+ for qemu-arm@nongnu.org; Fri, 28 Feb 2020 17:24:23 -0500
+Received: by mail-pf1-x441.google.com with SMTP id i19so2422701pfa.2
+ for <qemu-arm@nongnu.org>; Fri, 28 Feb 2020 14:24:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=LDKcCQrJ4exTysNpbESaXVg67i7nnbIKyjv3uxqKM8c=;
+ b=ODMhL+jh1Jyj14pdOKkkwznHPVvdTu25FHkvzUTbDTiUxVtokR0+6AFDl5l661J44q
+ E5/WrigMrRRaUKwpC5Uu1+jyWff3yD9qi5Q3IGWwpny0WTWVpMj9CLYTLwd79E48eHY/
+ LK+vAfxZoy3z8uJ3WYKf3p8phqPKy2ukQe79CKQBvR5AnfKMM0fw1tbYcCZFkk8v6JrO
+ qnxeMazHghCvnnJKOmyv8fI+BY+jNFu1xqBjT1lbq0t4BvpySpNtOtTQeLmEChQb+i1h
+ 2D+RfMwBBHqBcR+wUbAqv1iFWnjy8VMkOYhZQ7EN/uFceru+1nVBDWXZgQ4Wh3ca3qlB
+ VQpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=LDKcCQrJ4exTysNpbESaXVg67i7nnbIKyjv3uxqKM8c=;
+ b=LoIewWhYRdEqHn+Gn8NaYMBDKmIT/XAiFrU7lFreA5oGLYLe9ZxBF5qLoKnJ73vGlO
+ TdAIAlfd8GwPFWcl7bgnW4jI92mXkjQ8pUWrNLvuwbxOvveJO/ECRNYtCX1FqHwn4Xu1
+ laW02Sfw+8yuKp/E81jH70fbeCeyX//8AANs9h51hmxGQIQKgxNUIOeEtqUMzbKEdDkw
+ QyO/kok+Nhoy7i0UTLy2OwWVeH5P3+GgPVH5zey2wpnN+r6vyxTAfnxcdXoT23sDVpt2
+ BLDKs+Q9d8ZM2HLFmmn/4AG/x1PleUA4ph3aCTuHQ9RMbZ+1vBL4n26rjQ4AXmTuBTAH
+ yQXQ==
+X-Gm-Message-State: APjAAAVDM70QpagX20AmSTOLnh/qbCdUSuYHpjfaWdi+qd5tBQ5PAK/0
+ 6rzsl3fqIUJd8bgft0ROL0vQT90Z+AY=
+X-Received: by 2002:aa7:8299:: with SMTP id s25mr6256714pfm.261.1582928661951; 
+ Fri, 28 Feb 2020 14:24:21 -0800 (PST)
+Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
+ by smtp.gmail.com with ESMTPSA id
+ f9sm11994710pfd.141.2020.02.28.14.24.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 28 Feb 2020 14:24:21 -0800 (PST)
+Subject: Re: [PATCH v4 1/7] target/arm: Improve masking of HCR RES0 bits
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200225180831.26078-1-richard.henderson@linaro.org>
+ <20200225180831.26078-2-richard.henderson@linaro.org>
+ <CAFEAcA8ipK0nZioEgbNq5B1L-tqA+rzn-C2yyfet4_4yNVnYqA@mail.gmail.com>
+ <e4a70637-f4b7-eaa7-237a-57053c5a63cc@linaro.org>
+ <CAFEAcA-8a4eQXf+LRS3KLURyyEPpPm9uh6q6r6D-1-sh3t8Pdw@mail.gmail.com>
+ <5c484ae5-b4da-8eae-c10a-547c670c89e5@linaro.org>
+ <CAFEAcA96AZB765TizrPLJYfXhx=KUcb_feL3JK1WNmf5dRSR0w@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <08a6a113-4082-246c-2aeb-4424b921caa4@linaro.org>
+Date: Fri, 28 Feb 2020 14:24:19 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <8f27608fd02147bfb11bdfca38316f4c@huawei.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <CAFEAcA96AZB765TizrPLJYfXhx=KUcb_feL3JK1WNmf5dRSR0w@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::441
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -173,221 +121,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
- "mst@redhat.com" <mst@redhat.com>,
- Juan Jose Quintela Carreira <quintela@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- "lersek@redhat.com" <lersek@redhat.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "dgilbert@redhat.com" <dgilbert@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nxRavw/l8DXl
+X-TUID: toQW9rkV+Pvd
 
-On 28.02.20 17:49, Shameerali Kolothum Thodi wrote:
->=20
->=20
->> -----Original Message-----
->> From: David Hildenbrand [mailto:david@redhat.com]
->> Sent: 13 February 2020 17:09
->> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
->> Igor Mammedov <imammedo@redhat.com>
->> Cc: peter.maydell@linaro.org; xiaoguangrong.eric@gmail.com;
->> mst@redhat.com; shannon.zhaosl@gmail.com; qemu-devel@nongnu.org;
->> xuwei (O) <xuwei5@huawei.com>; Linuxarm <linuxarm@huawei.com>;
->> eric.auger@redhat.com; qemu-arm@nongnu.org; lersek@redhat.com;
->> dgilbert@redhat.com; Juan Jose Quintela Carreira <quintela@redhat.com>
->> Subject: Re: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
->=20
-> [...]
->=20
->>>> Thanks for that. I had a go with the below patch and it indeed fixes t=
-he issue
->>>> of callback not being called on resize. But the migration fails with t=
-he below
->>>> error,
->>>>
->>>> For x86
->>>> ---------
->>>> qemu-system-x86_64: Unknown combination of migration flags: 0x14
->>>> qemu-system-x86_64: error while loading state for instance 0x0 of devi=
-ce
->> 'ram'
->>>> qemu-system-x86_64: load of migration failed: Invalid argument
->>>>
->>>> For arm64
->>>> --------------
->>>> qemu-system-aarch64: Received an unexpected compressed page
->>>> qemu-system-aarch64: error while loading state for instance 0x0 of dev=
-ice
->> 'ram'
->>>> qemu-system-aarch64: load of migration failed: Invalid argument
->>>>
->>>> I haven=E2=80=99t debugged this further but looks like there is a corr=
-uption
->> happening.
->>>> Please let me know if you have any clue.
->>>
->>> The issue is
->>>
->>> qemu_put_be64(f, ram_bytes_total_common(true) |
->> RAM_SAVE_FLAG_MEM_SIZE)
->>>
->>> The total ram size we store must be page aligned, otherwise it will be
->>> detected as flags. Hm ... maybe we can round it up ...
->>>
->>
->> I'm afraid we can't otherwise we will run into issues in
->> ram_load_precopy(). Hm ...
->=20
-> Sorry, took a while to get back on this. Yes, round up indeed breaks in
-> ram_load_precopy() . I had the below on top of your patch and that=20
-> seems to do the job (sanity tested on arm/virt).
->=20
-> Please take a look and let me know if you see any issues with this approa=
-ch.
->=20
-> Thanks,
-> Shameer
->=20
-> diff --git a/migration/ram.c b/migration/ram.c
-> index 2acc4b85ca..7447f0cefa 100644
-> --- a/migration/ram.c
-> +++ b/migration/ram.c
-> @@ -1782,7 +1782,7 @@ static uint64_t ram_bytes_total_migration(void)
->      RCU_READ_LOCK_GUARD();
-> =20
->      RAMBLOCK_FOREACH_MIGRATABLE(block) {
-> -        total +=3D ramblock_ram_bytes_migration(block);
-> +        total +=3D block->used_length;
->      }
->      return total;
->  }
-> @@ -3479,7 +3479,7 @@ static int ram_load_precopy(QEMUFile *f)
->                      ret =3D -EINVAL;
->                  }
-> =20
-> -                total_ram_bytes -=3D length;
-> +                total_ram_bytes -=3D block->used_length;
->              }
->              break;
->=20
->=20
->=20
+On 2/28/20 11:03 AM, Peter Maydell wrote:
+> It occurs to me that we should check what the required
+> semantics are for the opposite half of the register
+> if the guest writes to one half of it via hcr_writehigh()
+> or hcr_writelow() -- is the un-accessed half supposed
+> to stay exactly as it is, or is it ok for the
+> RES0-for-aarch32 bits to get squashed in the process?
+> That would seem at least a bit odd even if it's valid,
+> so maybe better to do aarch32 RES0 masking in
+> hcr_writehigh() and hcr_writelow()?
 
-What you mean is the following:
+Hmm.  You're thinking of a situation in which
+
+ 1) EL3 invokes EL2 with aa64 which sets HCR_EL2,
+ 2) EL3 invokes EL2 in aa32 which sets HCR which
+    as a side-effect clears some of the bits in HCR2
+ 3) EL3 invokes EL2 with aa64 again and HCR_EL2
+    incorrectly has some high bits clear.
+
+I can't find any language that explicitly says, but "architecturally mapped"
+means that the bits backing the storage must be the same.  So while it isn't
+legal for aa32 to set HCR2 bit 8 (HCR_EL2.APK), I imagine that it would still
+read as written.
+
+So I think you're correct that we shouldn't alter the half B when writing to
+half A.
+
+Perhaps I should do some masking for aa32 in arm_hcr_el2_eff.
 
 
-commit 702f4325086c3a8d6083787f8bc8503f7523bac8 (HEAD -> master)
-Author: David Hildenbrand <david@redhat.com>
-Date:   Wed Feb 12 19:16:34 2020 +0100
-
-    tmp
-   =20
-    Signed-off-by: David Hildenbrand <david@redhat.com>
-
-diff --git a/exec.c b/exec.c
-index 67e520d18e..cec643b914 100644
---- a/exec.c
-+++ b/exec.c
-@@ -2125,11 +2125,21 @@ static int memory_try_enable_merging(void *addr, si=
-ze_t len)
-  */
- int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp)
- {
-+    const ram_addr_t unaligned_size =3D newsize;
-+
-     assert(block);
-=20
-     newsize =3D HOST_PAGE_ALIGN(newsize);
-=20
-     if (block->used_length =3D=3D newsize) {
-+        /*
-+         * We don't have to resize the ram block (which only knows aligned
-+         * sizes), however, we have to notify if the unaligned size change=
-d.
-+         */
-+        if (block->resized && unaligned_size !=3D memory_region_size(block=
-->mr)) {
-+            block->resized(block->idstr, unaligned_size, block->host);
-+            memory_region_set_size(block->mr, unaligned_size);
-+        }
-         return 0;
-     }
-=20
-@@ -2153,9 +2163,9 @@ int qemu_ram_resize(RAMBlock *block, ram_addr_t newsi=
-ze, Error **errp)
-     block->used_length =3D newsize;
-     cpu_physical_memory_set_dirty_range(block->offset, block->used_length,
-                                         DIRTY_CLIENTS_ALL);
--    memory_region_set_size(block->mr, newsize);
-+    memory_region_set_size(block->mr, unaligned_size);
-     if (block->resized) {
--        block->resized(block->idstr, newsize, block->host);
-+        block->resized(block->idstr, unaligned_size, block->host);
-     }
-     return 0;
- }
-diff --git a/migration/ram.c b/migration/ram.c
-index d2208b5534..249d3edede 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -3412,7 +3412,15 @@ static int ram_save_setup(QEMUFile *f, void *opaque)
-         RAMBLOCK_FOREACH_MIGRATABLE(block) {
-             qemu_put_byte(f, strlen(block->idstr));
-             qemu_put_buffer(f, (uint8_t *)block->idstr, strlen(block->idst=
-r));
--            qemu_put_be64(f, block->used_length);
-+            /*
-+             * When resizing on the target, we need the unaligned size,
-+             * otherwise we lose the unaligned sise during migration.
-+             *
-+             * Note: The sum of all ram blocks will differ to
-+             * ram_bytes_total_common(true) stored above.
-+             */
-+            qemu_put_be64(f, ramblock_ram_bytes_migration(block));
-+
-             if (migrate_postcopy_ram() && block->page_size !=3D
-                                           qemu_host_page_size) {
-                 qemu_put_be64(f, block->page_size);
-@@ -4429,7 +4437,7 @@ static int ram_load_precopy(QEMUFile *f)
-                     ret =3D -EINVAL;
-                 }
-=20
--                total_ram_bytes -=3D length;
-+                total_ram_bytes -=3D block->used_length;
-             }
-             break;
-=20
-
-Please note that this will *for sure* break migration between QEMU versions=
-.
-So I don't think this will work.
-
-
-We should instead think about
-
-1. Migrating the actual size of the 3 memory regions separately and setting=
- them via
-memory_region_ram_resize() when loading the vmstate. This will trigger anot=
-her FW cfg
-fixup and should be fine (with the same qemu_ram_resize() above).
-
-2. Introduce a new RAM_SAVE_FLAG_MEM_SIZE_2, that e.g., stores the number o=
-f ramblocks,
-not the total amount of memory of the ram blocks. But it's hacky, because w=
-e migrate
-something for RAM blocks, that is not a RAM block concept (sub-block sizes)=
-.
-
-I think you should look into 1. Shouldn't be too hard I think.
-
---=20
-Thanks,
-
-David / dhildenb
-
+r~

@@ -1,171 +1,167 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp631121lfg;
-        Fri, 28 Feb 2020 04:56:07 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwvFWa998of28e3CU782vUXJZ3T0BdFuLr00fTJVNehWuXMs0Vd11i13X/AUEQzUqiw7T1K
-X-Received: by 2002:a05:620a:1262:: with SMTP id b2mr4358420qkl.430.1582894567134;
-        Fri, 28 Feb 2020 04:56:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582894567; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp738584lfg;
+        Fri, 28 Feb 2020 06:37:31 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyxyP2s1P02m76cFlgIXKbnbFhZF43HusgBjyljb6K4Tc5zxQMWL2kDtK8SNoGU9s44mftY
+X-Received: by 2002:ac8:7517:: with SMTP id u23mr4361827qtq.11.1582900651439;
+        Fri, 28 Feb 2020 06:37:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582900651; cv=none;
         d=google.com; s=arc-20160816;
-        b=j51j8mAPCmMiZivHveR+SUPr404tBFybrXc+2dxek7d+iPPHpuQYX8/0ztnxxsPCBv
-         nKe6IooGwybJPDjecdDMHoebVFSfim58UMXite5aIiLSXrESG+KuA9KDuHtNTlLPceru
-         CjU60idCPX9lffn5cIkF9p9JQSng7U2mv+IObxe5R0uIMSEmcF8fGgs7NKw7EpusHOby
-         CZS9HSVaJR4fR7cLVHAQNwMIaA5SyDF7bdJH5PEnsdnwlYDG1O7Jd3ZN6pyZl2ap5vJU
-         C5obzAS0ng3JUS0gyTVwWFB5uNoYXqTvvhcC55YqqIpXE/h0xag+v9k2I/u9niGu5BQd
-         dvBQ==
+        b=YJcFNumcQmjKCK1x/iIWFgfmAYJc0iFyyEBKx8geIVlhlwIkK8URNsK7wrwjrEikm7
+         MJgCy9Tm4P/wupWC+485WcEOaqPeUjbMLGDt9gIJ0QlfaGfST1Sp/aDtMwDVL382+tz8
+         dXXFjhqWlWVT4NAy0WdE94JdQaTHjFFVXkJwx9jCQrep4L0Fp4UknsENfSZqsqpsSjaL
+         toD1Wr1nvlnTUfFWT2miUmIaWQYs8AIV8XJwMamEJdlSV2gcfFf4bSy3NQX1O0WSwjUA
+         UIYIiynI4PRGkj9nDKz80SCqVz8ruuPzSRTkc/Ul2qTizReJ1PF2QeaPddeDsNqAHHSS
+         eo2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=fGbS/zlE8uJcFaugSfNNCFiui8oNM2qeJ1yh+1ke7gM=;
-        b=JFwmtm8CpK2ENZkxlHFDfoyM0oM7nX3jm3PrD7Hx/rd0GmTbgt9q6+bgUTZfMlcEI+
-         PqsHaDoc37T02BAH2anS+ga7n1ng5RYCH8VP7RmCo8oS2JJPxW/4P4qi0IlQ6Lv6h4Q8
-         gTy4h7LF8DeaUdwcK1Fj/fmo1XAGKOko73kmw7fSqLYfFGQFGwcje6OpQmqMUMTSgdDK
-         C9k33vXFMrh4o6qmuWu43RAEUSGhTWS4b+nFGXi3XVzRYXu8uion1xn0kUAeTDzRVIN9
-         sq/JmELDCclxYRulTrrFF8MoykGET/wjuAvwkyzYkckRdw6AiKML1mAb2BUG/FjLl2WS
-         8pwQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=PCJVIWMijvKjZG3Sch9PfBm/5R02ZQSPfvPck/ZoD98=;
+        b=WQypuxWb2c+R0GaFav2vbi8xqDUOm4erLRqMv3YShUUi8/0/6BgwzEogFJTbMLMJM0
+         IKACwzPxanGj/wQw0JbCvI6jBTS8xdX5hqoSsjxXZHQPyFODfHeqnaPhBYqCghNnqWOe
+         pbxUFijq9O7HhQCqEi2dm6ZaJ5atzGbX6VXkyZKEwhe6riW/GThwuWvK2PKIIlBAK1vl
+         4HEyykeBOU/6ovydxkErTc3oh+Wd0uA2Fox3715ZdeAcD0PYLZ8gHRLNNrJRe98jHdro
+         ppdwZ6i5RDRvQgJdjhkOckdMLTyFO93lqoZigYEu8xK3LKQBzlqzw5VzNs0pjlrnuTjg
+         xP+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=P0p+w1pA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j7si1346522qkm.175.2020.02.28.04.56.06
+        by mx.google.com with ESMTPS id c27si226808qtv.109.2020.02.28.06.37.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Feb 2020 04:56:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 28 Feb 2020 06:37:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=P0p+w1pA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46526 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:47968 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j7fBW-00087g-JX
-	for alex.bennee@linaro.org; Fri, 28 Feb 2020 07:56:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50150)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j7gle-0005Jr-TB
+	for alex.bennee@linaro.org; Fri, 28 Feb 2020 09:37:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37487)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j7fA1-0005kl-Lb
- for qemu-devel@nongnu.org; Fri, 28 Feb 2020 07:54:34 -0500
+ (envelope-from <stefanb@linux.ibm.com>) id 1j7glW-0005Jd-IJ
+ for qemu-arm@nongnu.org; Fri, 28 Feb 2020 09:37:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j7fA0-0002uz-Jo
- for qemu-devel@nongnu.org; Fri, 28 Feb 2020 07:54:33 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:37362
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j7fA0-0002uG-GE
- for qemu-devel@nongnu.org; Fri, 28 Feb 2020 07:54:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582894467;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fGbS/zlE8uJcFaugSfNNCFiui8oNM2qeJ1yh+1ke7gM=;
- b=P0p+w1pAFzwHKjiPJp/UyCPEFZhmx/W5CxVhR0nBcNDRUozd6u2MUjVuDuv1LVLBbsa8aW
- UCDJ5C6iwsLtde3RQqaeTjVg3A/x73uIt4pokMOKbZ38le5xSNPaKi7LXZDWPZGMH4eTcM
- TR9iMRa8sKRzF/4niNXSMHWZSkTdwM0=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-158-DDbzvcI2OEmDvDnd87G1Yw-1; Fri, 28 Feb 2020 07:54:26 -0500
-X-MC-Unique: DDbzvcI2OEmDvDnd87G1Yw-1
-Received: by mail-wr1-f69.google.com with SMTP id n23so1278689wra.20
- for <qemu-devel@nongnu.org>; Fri, 28 Feb 2020 04:54:26 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=4y3/KK4nBcHl83eeBXH6BEe9dO9OSqQV02N1QOTozm8=;
- b=l6mGTDamWLs3LiUxv+3Qe+iPorau7sPBIAPsnOaPyMn4byxgWBVVqXkdHvfZ+XmNeN
- vD+SzkIhboqubO4SeDWhNX4stANgIldyEhQzzJ7/L3uTHJRV4MVkPcS1E8JRut6PZtp4
- gkp4yRwkTFyTic4xg1KuVQFNyO6lajqd5iWte9lx0DtYvCxt1XQWVDFrX9cCz9BMfYUA
- GDXj69KSv98b+iHFrIkr+W3lYM02Eu6yZbvhvpFIGEZ+n07ytMZzxn0OdsXI1rkfB2Wv
- Ir2TSyF7RPaBN9cgspnpEV7++mhq/bppoln1nxCyyTw0zqhtMiu5AAMvikyVjwkgQ9MC
- g2CQ==
-X-Gm-Message-State: APjAAAXmRUQ8MzV4Dsk6Adhrwso6WFyki0meywuiEc5Vn7FUhQ3MPKVP
- /0HlSHVlK1L/AMbN26osorxHT6LGHC0TERPpLeRBxZMI3qinQXqcYPfLbJjNVtTzOqLM7VN0/XM
- R3Buv2MQoy/37+Zg=
-X-Received: by 2002:a1c:f401:: with SMTP id z1mr4725374wma.103.1582894464760; 
- Fri, 28 Feb 2020 04:54:24 -0800 (PST)
-X-Received: by 2002:a1c:f401:: with SMTP id z1mr4725353wma.103.1582894464487; 
- Fri, 28 Feb 2020 04:54:24 -0800 (PST)
-Received: from x1w.moovbox.local ([185.102.219.36])
- by smtp.gmail.com with ESMTPSA id y7sm340988wrl.26.2020.02.28.04.54.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Feb 2020 04:54:23 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 4/5] hw/arm/z2: Simplify since the machines are little-endian
- only
-Date: Fri, 28 Feb 2020 13:53:50 +0100
-Message-Id: <20200228125351.29482-5-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200228125351.29482-1-philmd@redhat.com>
-References: <20200228125351.29482-1-philmd@redhat.com>
+ (envelope-from <stefanb@linux.ibm.com>) id 1j7glV-0001yi-9c
+ for qemu-arm@nongnu.org; Fri, 28 Feb 2020 09:37:22 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:20988
+ helo=mx0a-001b2d01.pphosted.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <stefanb@linux.ibm.com>)
+ id 1j7glV-0001xR-50; Fri, 28 Feb 2020 09:37:21 -0500
+Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 01SEYoZ6164383; Fri, 28 Feb 2020 09:37:18 -0500
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 2yepwj8tmg-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 28 Feb 2020 09:37:18 -0500
+Received: from m0098420.ppops.net (m0098420.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 01SEbHda172271;
+ Fri, 28 Feb 2020 09:37:17 -0500
+Received: from ppma01wdc.us.ibm.com (fd.55.37a9.ip4.static.sl-reverse.com
+ [169.55.85.253])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 2yepwj8tkt-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 28 Feb 2020 09:37:17 -0500
+Received: from pps.filterd (ppma01wdc.us.ibm.com [127.0.0.1])
+ by ppma01wdc.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id 01SEZDk6001283;
+ Fri, 28 Feb 2020 14:37:16 GMT
+Received: from b01cxnp23033.gho.pok.ibm.com (b01cxnp23033.gho.pok.ibm.com
+ [9.57.198.28]) by ppma01wdc.us.ibm.com with ESMTP id 2yepv2d2xb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 28 Feb 2020 14:37:16 +0000
+Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com
+ [9.57.199.111])
+ by b01cxnp23033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 01SEbG5c45875550
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 28 Feb 2020 14:37:16 GMT
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 4C9A2AC059;
+ Fri, 28 Feb 2020 14:37:16 +0000 (GMT)
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 39F69AC062;
+ Fri, 28 Feb 2020 14:37:16 +0000 (GMT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+ by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP;
+ Fri, 28 Feb 2020 14:37:16 +0000 (GMT)
+Subject: Re: [PATCH v4 00/10] vTPM for aarch64
+To: Auger Eric <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
+References: <20200226205942.11424-1-eric.auger@redhat.com>
+ <4fb16117-f9d3-61af-9198-931590a46e3d@linux.ibm.com>
+ <ee98e8ab-06df-e422-1ca5-f3f6a48145f2@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+Message-ID: <2413ead7-3707-acc6-7900-bb3896082051@linux.ibm.com>
+Date: Fri, 28 Feb 2020 09:37:16 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
+In-Reply-To: <ee98e8ab-06df-e422-1ca5-f3f6a48145f2@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.572
+ definitions=2020-02-28_04:2020-02-28,
+ 2020-02-28 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 phishscore=0
+ adultscore=0 suspectscore=0 malwarescore=0 spamscore=0 impostorscore=0
+ lowpriorityscore=0 clxscore=1015 priorityscore=1501 mlxlogscore=862
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2001150001 definitions=main-2002280115
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
-X-BeenThere: qemu-devel@nongnu.org
+X-MIME-Autoconverted: from 8bit to quoted-printable by
+ mx0b-001b2d01.pphosted.com id 01SEYoZ6164383
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.158.5
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Jan Kiszka <jan.kiszka@web.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VKEnOxZ4PaGV
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org,
+ philmd@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0MgNx0qVH5yp
 
-We only build the little-endian softmmu configurations. Checking
-for big endian is pointless, remove the unused code.
+On 2/27/20 3:07 AM, Auger Eric wrote:
+> Hi Stefan,
+> On 2/26/20 11:44 PM, Stefan Berger wrote:
+>> On 2/26/20 3:59 PM, Eric Auger wrote:
+>>> This series adds the capability to instantiate an MMIO TPM TIS
+>>> in ARM virt. It is candidate to qemu 5.0.
+>> I queued it now here:
+>> https://github.com/stefanberger/qemu-tpm/commits/tpm-next
+>>
+>> I will send the PR within a few days. Thanks!
+> Thank you. I will just ping Peter to make sure he has no comments on
+>
+> [PATCH v4 06/10] hw/arm/virt: vTPM support
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/arm/z2.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
 
-diff --git a/hw/arm/z2.c b/hw/arm/z2.c
-index 4bb237f22d..a0f4095990 100644
---- a/hw/arm/z2.c
-+++ b/hw/arm/z2.c
-@@ -300,7 +300,6 @@ static void z2_init(MachineState *machine)
-     uint32_t sector_len =3D 0x10000;
-     PXA2xxState *mpu;
-     DriveInfo *dinfo;
--    int be;
-     void *z2_lcd;
-     I2CBus *bus;
-     DeviceState *wm;
-@@ -308,15 +307,10 @@ static void z2_init(MachineState *machine)
-     /* Setup CPU & memory */
-     mpu =3D pxa270_init(address_space_mem, z2_binfo.ram_size, machine->cpu=
-_type);
-=20
--#ifdef TARGET_WORDS_BIGENDIAN
--    be =3D 1;
--#else
--    be =3D 0;
--#endif
-     dinfo =3D drive_get(IF_PFLASH, 0, 0);
-     if (!pflash_cfi01_register(Z2_FLASH_BASE, "z2.flash0", Z2_FLASH_SIZE,
-                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                               sector_len, 4, 0, 0, 0, 0, be)) {
-+                               sector_len, 4, 0, 0, 0, 0, 0)) {
-         error_report("Error registering flash memory");
-         exit(1);
-     }
---=20
-2.21.1
+The little dent is now an arm boot failure:
+
+
+https://travis-ci.org/stefanberger/qemu-tpm/jobs/655573347?utm_medium=3Dn=
+otification&utm_source=3Demail
+
+
+Have a look at the raw log.
+
+
+ =C2=A0=C2=A0 Stefan
+
 

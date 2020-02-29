@@ -1,98 +1,98 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1318882lfg;
-        Fri, 28 Feb 2020 17:30:42 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxC3qSnXiAKctXO2DEbxjJfe+OHZmxo9kVlE7bEMkceiwb9ei9eCQM9dO/0X9yAHH/9lZO3
-X-Received: by 2002:a05:6214:10c1:: with SMTP id r1mr6243152qvs.70.1582939842537;
-        Fri, 28 Feb 2020 17:30:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582939842; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1319415lfg;
+        Fri, 28 Feb 2020 17:31:22 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzOud3hReEs7ZQ0KmvRxEO3SZN6nSs7F4jpP+7TmFwXrf3Xtsz1Z/hnuFVLmFsetdVmOpSU
+X-Received: by 2002:aed:2667:: with SMTP id z94mr6347001qtc.96.1582939882222;
+        Fri, 28 Feb 2020 17:31:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582939882; cv=none;
         d=google.com; s=arc-20160816;
-        b=uRWyN1lBTeIa4oLERH8AxlDGX5jQ5xff7f40KIOvUSUrvpmP50J3QQw2YAidpS5k7d
-         hl/7JZcEi7rbmaG/wNf/S4uC1wUlckxl6IfEyjhfoPIlpfIkhdnTtnuUV3uiZdgCDDCC
-         KpaRYDGYlNvk3qszOXQUGsPRJQ7UjR+xxvMbzoZom8g81vk6QQvTcJE8ekSoJYGb0N8w
-         1EXQ4UaR0dgkiTbibJl0O7OYaSsajwsqgJ9Wj3Rfv6mS+6ugHyYFhoGBCppvofR9Eon7
-         nVK8HIuPqD8N4mJkJYaHF5zhde2wGLO2K01hFrGbK0DKOkuzVBxE6v0lkKfuaaBz03zN
-         hGWw==
+        b=yhaTf0JPt9njO8drOEjVokvrd7EtoyhCAyB5SsAd2j6GXi//odFyEzndLO7H0diJsY
+         wg/ZgVzZsTcRtyP+zRub2A/DwSh9DQyR9fX9e1rl1iVyCL/u+jFmMJDnO/tn66cMlLq3
+         FToo5h91yN60yWYm+q91GxugQiHrjWwVJjE4bvZCsrkwBgHLBHfQbd5/X37e2fwpxyXO
+         TRCffx5gzqpEL0oWktOnqLWJ9qi8mlQMozvv1pk/An8jnnjbtBRYIN8/pqkVSoHJqdq0
+         1JpHosZkvaEofiX+BvUGE2thTeuWjncHct88UuBn/sKdgputE0Q8fUa2SzaKoSa45l7C
+         yl9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=4ajglCXwTcimWMRoub0cmqXlu4Sl0gLTr8uSkY1gHjo=;
-        b=oPWiFK7hXPHavrdk0YDIX4ywnglTSlcjFBB1UBy4jSmpV1B5V3tNT2Vz51fLFK3uWW
-         RN1piYKBB9QITS6p+Lsy5l5DlY1xbTOYmebVPWGhXcDJPItFEPrzKT501hNPPsAxOL9T
-         8AQft8dZo0TaSJckMDfieEaUFgfPGKouiFdG5EHsGuYgQqxWC5BlAJrGGa8rId1H6mFh
-         wKTVIl3wodyCQqN9yq0GnWFhyh/j8ZFZIjrm8d529jPIKnPmt0M8Vj9vEwWOJ3QT3Exg
-         iF7CNNstNnBrblRTz1hzSwG3L6PcsB9aTrjAGOpVLuaR7O67nAHupyNOXOalqiA47Aqv
-         /+GA==
+        bh=efqTpSOjpSCCNnyOhAFLjdUflto9CJ4CEmzuEd6bw/4=;
+        b=TejmPJy4UBN0o5yOgYsFcsiD9jF43xwdrg1ZpztHdeSg/U//YTKKmJjGQTV5O2YoBy
+         teDhxHLxUNxmY+DnwSxwhWwxkWpSKtPOo4H9IjL/n7j5G0g2eMl4rn1/V40HHIef/qOs
+         ET0w4zGRbmhth4eWTcUv/XSG/sbFpnkcdJNi+kgP4ZOGuzjIhBiZ4mKS2ukWmREHhfOx
+         um1a977kBvxsoLLz8jYYOyjPzdhRrhD/gowXZG6VVj4/pN831rZmefoNA3lwnThRUqji
+         pI2jP+r7itSyyGoKNLE4JC7O7i+RkA6YIhqmBqWU1VojEnTe9Y+cjhUnCdNciNoO5LG/
+         YsqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PjYVbNuY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KSKJdm1M;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f10si2333496qtq.6.2020.02.28.17.30.42
+        by mx.google.com with ESMTPS id k123si2529838qke.150.2020.02.28.17.31.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Feb 2020 17:30:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 28 Feb 2020 17:31:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PjYVbNuY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KSKJdm1M;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55868 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55876 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j7qxl-0001Mu-LZ
-	for alex.bennee@linaro.org; Fri, 28 Feb 2020 20:30:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37098)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j7qyP-0001wc-GG
+	for alex.bennee@linaro.org; Fri, 28 Feb 2020 20:31:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37166)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1j7qvc-0004uV-2v
- for qemu-arm@nongnu.org; Fri, 28 Feb 2020 20:28:29 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1j7qvf-0004wk-3q
+ for qemu-devel@nongnu.org; Fri, 28 Feb 2020 20:28:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1j7qvZ-00064r-QU
- for qemu-arm@nongnu.org; Fri, 28 Feb 2020 20:28:27 -0500
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:33534)
+ (envelope-from <richard.henderson@linaro.org>) id 1j7qvd-00067G-FK
+ for qemu-devel@nongnu.org; Fri, 28 Feb 2020 20:28:31 -0500
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:44141)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1j7qvY-00063h-JT
- for qemu-arm@nongnu.org; Fri, 28 Feb 2020 20:28:25 -0500
-Received: by mail-pl1-x643.google.com with SMTP id ay11so1920081plb.0
- for <qemu-arm@nongnu.org>; Fri, 28 Feb 2020 17:28:24 -0800 (PST)
+ id 1j7qvd-00066Z-1P
+ for qemu-devel@nongnu.org; Fri, 28 Feb 2020 20:28:29 -0500
+Received: by mail-pl1-x641.google.com with SMTP id d9so1900342plo.11
+ for <qemu-devel@nongnu.org>; Fri, 28 Feb 2020 17:28:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=4ajglCXwTcimWMRoub0cmqXlu4Sl0gLTr8uSkY1gHjo=;
- b=PjYVbNuYXVZoO+Mh/NKpUDUhSzgPCyft37XZStvJiaTAIM1YCc5dFu3SipLwyMAKx7
- MCZWF6PZms87SW5nHBZyqJNEGX4PSNPXXdIijvbNcW9LBy8YEaXYbkCuyBvNN0tg6kc+
- yBpt7khsm31kTgPzDNntZyRfAi8HCeymDo0Xu6W7oA3dEkfGWAGsXLiDh4K4Y4eGJg6k
- aCEGzl872u5UgCehWevbnapogNuwwxAHuW73yCSsJsAcTFf1UEGAcThkdrytO/tHtHjk
- hNf+s75ia5bP7qgDj2XpHUS5u3tA/zwIK/UGaTHoEWTGxO1UK2rAs0hh2xHfHMyPhq4L
- lkaA==
+ bh=efqTpSOjpSCCNnyOhAFLjdUflto9CJ4CEmzuEd6bw/4=;
+ b=KSKJdm1MWHzP4+FvHsH/rsgi5SDI7HyZ06m1p5Ow1bNKKarULv0AuXB938wRximmtJ
+ X42qmN0Royp3cbfS9oqQ7jS1ykjwNf0bWFbvwFs/PTb100ZA6YKyUt8rVMqzWZ/daJ30
+ vZDRLE3o2YOMa/qsJAHvwJsLaNVbmfx8K+LDOzonydZlBhwOllKKtCGLzA3pERtvoc38
+ 92X8DSLdbxcU7os87CCZzwRNL3gIrJs3arlNCwaMUDb4Cic8IyST74yEkvKbJg9U+hdx
+ JcKAQYmaU9ZH0dGxcD1hFmqwFPtHtHETPKFT9Xkj5+G5ur3x5nGVk+a9vCrACYmTTQy/
+ pJFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=4ajglCXwTcimWMRoub0cmqXlu4Sl0gLTr8uSkY1gHjo=;
- b=gZDbHSkC5ihbgCCBoZbQSi/g+li3DT5b3rprb3qQVPgYoBMCx3murWg7BI6q6K2Qkc
- hemqh/zbDWxoQsiy8cp1Lq3fFBfCxQV9lVGlInQHgJPoTsX9t48g8Q31OdUWQDuGlJJZ
- MkolevPxRNGXarICfzaKCvqxGBsOiGcDQ3L8np8hO9VLvfxFRr1cNL2jHEHTRTG0MZrR
- PTlo4qmXauMC28uy3IrRtPGpf4dMfZUGGZKicFLngM8bywnXDR0nAEVBOxM2jmaQbP0x
- pW1cad4XumpEc4U6ZGHz1nIrEDpqd50Ja/fXMhCfPjJCP451CDz3LXxJ02VZFMYry6Lf
- 9gpA==
-X-Gm-Message-State: APjAAAUN70zpjr1fNOOODnRK4xAGS9PYxqWeWmZJ7fzAE5nssJLMkavc
- NqdoG+SCEZ9KCGurPgYQ6tG7Q3766dA=
-X-Received: by 2002:a17:902:bf41:: with SMTP id
- u1mr6547110pls.207.1582939703650; 
- Fri, 28 Feb 2020 17:28:23 -0800 (PST)
+ bh=efqTpSOjpSCCNnyOhAFLjdUflto9CJ4CEmzuEd6bw/4=;
+ b=Q1kFeNF4oudOa3QlyCAyowgQfSH22SyE07ZAg+aKIwDSbT/qmD697k5ACIiuiSrEy2
+ 03S1ZTCiOot2+GfWhjM6UA/t9TUCf6J4wK6ruODfTUwM9Fme5aDDwr3Grp+rAuptrVXZ
+ pQIU9/GAWuGEPD0WxoYAk/oyDl0MjyJb5menQB+e+9D6zzGynDmRYJ1XVNoWULFnp0P1
+ rXsrpii2i0OGnO5Gwo9JpTCklTa0RahXKHaSOa6kqJa3vRJwpYy+DmUGipEiOMAZDfjW
+ eJy8UfbhYTpQC9Y4W1qGB2Vib9LaGT0womAyEQXYDWWWc8M/KIOC5AA1Onp7Gx69LieO
+ AXcw==
+X-Gm-Message-State: APjAAAWcQAXRAdzcHvlo+SIIVpgH7ob37v9Z1YCyW3KeOdFN9nfhdQBd
+ Ygx3DrvFvsCgwZK6838bwHWpO7EltNo=
+X-Received: by 2002:a17:902:b7c2:: with SMTP id
+ v2mr6204491plz.54.1582939707425; 
+ Fri, 28 Feb 2020 17:28:27 -0800 (PST)
 Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net.
  [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id r3sm4606313pfq.126.2020.02.28.17.28.22
+ by smtp.gmail.com with ESMTPSA id r3sm4606313pfq.126.2020.02.28.17.28.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Feb 2020 17:28:22 -0800 (PST)
+ Fri, 28 Feb 2020 17:28:26 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 07/12] target/arm: Honor the HCR_EL2.TSW bit
-Date: Fri, 28 Feb 2020 17:28:06 -0800
-Message-Id: <20200229012811.24129-8-richard.henderson@linaro.org>
+Subject: [PATCH v5 10/12] target/arm: Honor the HCR_EL2.TPU bit
+Date: Fri, 28 Feb 2020 17:28:09 -0800
+Message-Id: <20200229012811.24129-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200229012811.24129-1-richard.henderson@linaro.org>
 References: <20200229012811.24129-1-richard.henderson@linaro.org>
@@ -100,100 +100,143 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::643
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::641
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RMA3zdXwODEj
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: E5bbZr5yEpkU
 
-These bits trap EL1 access to set/way cache maintenance insns.
+This bit traps EL1 access to cache maintenance insns that operate
+to the point of unification.  There are no longer any references to
+plain aa64_cacheop_access, so remove it.
 
-Buglink: https://bugs.launchpad.net/bugs/1863685
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 22 ++++++++++++++++------
- 1 file changed, 16 insertions(+), 6 deletions(-)
+v3: Fix el0 fallthru (pmm).
+---
+ target/arm/helper.c | 53 +++++++++++++++++++++++++++------------------
+ 1 file changed, 32 insertions(+), 21 deletions(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 1f371b0391..ddef3d7dc3 100644
+index e87a76c6f5..40faa70cb7 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -543,6 +543,16 @@ static CPAccessResult access_tvm_trvm(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -4301,19 +4301,6 @@ static const ARMCPRegInfo uao_reginfo = {
+     .readfn = aa64_uao_read, .writefn = aa64_uao_write
+ };
+ 
+-static CPAccessResult aa64_cacheop_access(CPUARMState *env,
+-                                          const ARMCPRegInfo *ri,
+-                                          bool isread)
+-{
+-    /* Cache invalidate/clean: NOP, but EL0 must UNDEF unless
+-     * SCTLR_EL1.UCI is set.
+-     */
+-    if (arm_current_el(env) == 0 && !(arm_sctlr(env, 0) & SCTLR_UCI)) {
+-        return CP_ACCESS_TRAP;
+-    }
+-    return CP_ACCESS_OK;
+-}
+-
+ static CPAccessResult aa64_cacheop_poc_access(CPUARMState *env,
+                                               const ARMCPRegInfo *ri,
+                                               bool isread)
+@@ -4336,6 +4323,28 @@ static CPAccessResult aa64_cacheop_poc_access(CPUARMState *env,
      return CP_ACCESS_OK;
  }
  
-+/* Check for traps from EL1 due to HCR_EL2.TSW.  */
-+static CPAccessResult access_tsw(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                 bool isread)
++static CPAccessResult aa64_cacheop_pou_access(CPUARMState *env,
++                                              const ARMCPRegInfo *ri,
++                                              bool isread)
 +{
-+    if (arm_current_el(env) == 1 && (arm_hcr_el2_eff(env) & HCR_TSW)) {
-+        return CP_ACCESS_TRAP_EL2;
++    /* Cache invalidate/clean to Point of Unification... */
++    switch (arm_current_el(env)) {
++    case 0:
++        /* ... EL0 must UNDEF unless SCTLR_EL1.UCI is set.  */
++        if (!(arm_sctlr(env, 0) & SCTLR_UCI)) {
++            return CP_ACCESS_TRAP;
++        }
++        /* fall through */
++    case 1:
++        /* ... EL1 must trap to EL2 if HCR_EL2.TPU is set.  */
++        if (arm_hcr_el2_eff(env) & HCR_TPU) {
++            return CP_ACCESS_TRAP_EL2;
++        }
++        break;
 +    }
 +    return CP_ACCESS_OK;
 +}
 +
- static void dacr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
- {
-     ARMCPU *cpu = env_archcpu(env);
-@@ -4704,14 +4714,14 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .access = PL1_W, .type = ARM_CP_NOP },
-     { .name = "DC_ISW", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 2,
+ /* See: D4.7.2 TLB maintenance requirements and the TLB maintenance instructions
+  * Page D4-1736 (DDI0487A.b)
+  */
+@@ -4733,14 +4742,16 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+     /* Cache ops: all NOPs since we don't emulate caches */
+     { .name = "IC_IALLUIS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 1, .opc2 = 0,
 -      .access = PL1_W, .type = ARM_CP_NOP },
-+      .access = PL1_W, .accessfn = access_tsw, .type = ARM_CP_NOP },
-     { .name = "DC_CVAC", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 10, .opc2 = 1,
++      .access = PL1_W, .type = ARM_CP_NOP,
++      .accessfn = aa64_cacheop_pou_access },
+     { .name = "IC_IALLU", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 5, .opc2 = 0,
+-      .access = PL1_W, .type = ARM_CP_NOP },
++      .access = PL1_W, .type = ARM_CP_NOP,
++      .accessfn = aa64_cacheop_pou_access },
+     { .name = "IC_IVAU", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 5, .opc2 = 1,
        .access = PL0_W, .type = ARM_CP_NOP,
-       .accessfn = aa64_cacheop_access },
-     { .name = "DC_CSW", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 10, .opc2 = 2,
--      .access = PL1_W, .type = ARM_CP_NOP },
-+      .access = PL1_W, .accessfn = access_tsw, .type = ARM_CP_NOP },
+-      .accessfn = aa64_cacheop_access },
++      .accessfn = aa64_cacheop_pou_access },
+     { .name = "DC_IVAC", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 1,
+       .access = PL1_W, .accessfn = aa64_cacheop_poc_access,
+@@ -4758,7 +4769,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
      { .name = "DC_CVAU", .state = ARM_CP_STATE_AA64,
        .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 11, .opc2 = 1,
        .access = PL0_W, .type = ARM_CP_NOP,
-@@ -4722,7 +4732,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .accessfn = aa64_cacheop_access },
-     { .name = "DC_CISW", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 14, .opc2 = 2,
--      .access = PL1_W, .type = ARM_CP_NOP },
-+      .access = PL1_W, .accessfn = access_tsw, .type = ARM_CP_NOP },
-     /* TLBI operations */
-     { .name = "TLBI_VMALLE1IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 0,
-@@ -4903,17 +4913,17 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-     { .name = "DCIMVAC", .cp = 15, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 1,
-       .type = ARM_CP_NOP, .access = PL1_W },
-     { .name = "DCISW", .cp = 15, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 2,
+-      .accessfn = aa64_cacheop_access },
++      .accessfn = aa64_cacheop_pou_access },
+     { .name = "DC_CIVAC", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 14, .opc2 = 1,
+       .access = PL0_W, .type = ARM_CP_NOP,
+@@ -4932,13 +4943,13 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .writefn = tlbiipas2_is_write },
+     /* 32 bit cache operations */
+     { .name = "ICIALLUIS", .cp = 15, .opc1 = 0, .crn = 7, .crm = 1, .opc2 = 0,
 -      .type = ARM_CP_NOP, .access = PL1_W },
-+      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
-     { .name = "DCCMVAC", .cp = 15, .opc1 = 0, .crn = 7, .crm = 10, .opc2 = 1,
++      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = aa64_cacheop_pou_access },
+     { .name = "BPIALLUIS", .cp = 15, .opc1 = 0, .crn = 7, .crm = 1, .opc2 = 6,
        .type = ARM_CP_NOP, .access = PL1_W },
+     { .name = "ICIALLU", .cp = 15, .opc1 = 0, .crn = 7, .crm = 5, .opc2 = 0,
+-      .type = ARM_CP_NOP, .access = PL1_W },
++      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = aa64_cacheop_pou_access },
+     { .name = "ICIMVAU", .cp = 15, .opc1 = 0, .crn = 7, .crm = 5, .opc2 = 1,
+-      .type = ARM_CP_NOP, .access = PL1_W },
++      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = aa64_cacheop_pou_access },
+     { .name = "BPIALL", .cp = 15, .opc1 = 0, .crn = 7, .crm = 5, .opc2 = 6,
+       .type = ARM_CP_NOP, .access = PL1_W },
+     { .name = "BPIMVA", .cp = 15, .opc1 = 0, .crn = 7, .crm = 5, .opc2 = 7,
+@@ -4952,7 +4963,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
      { .name = "DCCSW", .cp = 15, .opc1 = 0, .crn = 7, .crm = 10, .opc2 = 2,
--      .type = ARM_CP_NOP, .access = PL1_W },
-+      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
+       .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
      { .name = "DCCMVAU", .cp = 15, .opc1 = 0, .crn = 7, .crm = 11, .opc2 = 1,
-       .type = ARM_CP_NOP, .access = PL1_W },
-     { .name = "DCCIMVAC", .cp = 15, .opc1 = 0, .crn = 7, .crm = 14, .opc2 = 1,
-       .type = ARM_CP_NOP, .access = PL1_W },
-     { .name = "DCCISW", .cp = 15, .opc1 = 0, .crn = 7, .crm = 14, .opc2 = 2,
 -      .type = ARM_CP_NOP, .access = PL1_W },
-+      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
-     /* MMU Domain access control / MPU write buffer control */
-     { .name = "DACR", .cp = 15, .opc1 = 0, .crn = 3, .crm = 0, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_tvm_trvm, .resetvalue = 0,
++      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = aa64_cacheop_pou_access },
+     { .name = "DCCIMVAC", .cp = 15, .opc1 = 0, .crn = 7, .crm = 14, .opc2 = 1,
+       .type = ARM_CP_NOP, .access = PL1_W, .accessfn = aa64_cacheop_poc_access },
+     { .name = "DCCISW", .cp = 15, .opc1 = 0, .crn = 7, .crm = 14, .opc2 = 2,
 -- 
 2.20.1
 

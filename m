@@ -1,113 +1,112 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1541119lfg;
-        Sun, 1 Mar 2020 09:39:22 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzzRmYv5RbV4okHry7iviqS1cnHWAcoGn0nebh0NLRfIINp1wxOL1PEe7O7UB7Oxza7CRiA
-X-Received: by 2002:a0c:fb0f:: with SMTP id c15mr11518989qvp.209.1583084362318;
-        Sun, 01 Mar 2020 09:39:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583084362; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1544567lfg;
+        Sun, 1 Mar 2020 09:45:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyS2dEAoi/ZGkAUZffFKihNmJAKm2h6/yV0WKhUtWgB08Wf9e3aNwmufurVj/FBDeVfEJfW
+X-Received: by 2002:a05:620a:994:: with SMTP id x20mr10263744qkx.489.1583084711521;
+        Sun, 01 Mar 2020 09:45:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583084711; cv=none;
         d=google.com; s=arc-20160816;
-        b=lFJUL+fn54IH9DjB+x7++r+sQ7aTknaPwC1hcKPtVtt1ifDS+8vbhQCqxJuZbnbLNl
-         bf9DioFTScVMI2HM1HAphGV9yB21LJohgx/vSzFv1xze9ZXYll0/sx7Ww1aplicT1at0
-         Vk/Uui4IOI+qSv19+sHDl224kG9ZYlv/P+IyWo7YXewfgwF88BEqK9GXFhSpJDL81jZr
-         Ob6KO05t6Cxj6XJ4Digy7uoS4EDauHc/HHqk0YgqAUkAJucmK6ZxZ6GA0JROli1SgxFP
-         eO00JxJ8u2a64UlJdmWqHzzIoCCL1wCaFuiYbguVHXzhicn60ybiseClIOKcVfXVvqX2
-         iy3A==
+        b=bhQdywhshJjDm3XRWzJqgyjNqvpi9jF12gYMi85fjikta9sr+xzR9yvto8TQDIEQpX
+         uDubdbYlDoiY7u+YvgRVmrmb4AEO1PqNHFdSreqOFCQVX/R21ZtTGbW3bnCkTHR/yQHs
+         Eforg/bhC9khEXw/4OKcT2tP4jiDFeg12yZYIUi+6wO2SuTnQJ6kzR23VV9wvZDk2ZxU
+         cp1x4pbzpwLElD8UpcX09abcZwy/H2AjyAq1XI5sqc8AhbP1j9NoL4Nnmxy8NXEgB4OQ
+         4KsskJzDUQsjR5HuHSGZGxRZXZtvySwwtjX83suY3uZ+g9NTKrvXMwYqQ6eHt0UEcsuv
+         I1uA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=zPf2ELswWbCzCNFcU/z1N+mq3I+1pGGuQpnnhEqMtVY=;
-        b=W7F5BNsKXngObyfQQETw7bsS88WJQ4lFiJ0IyDwUZQOzc/DdKA//BSmznkfB27gymC
-         o5xXfQRTtvdaOitLOd+B2lOZD43mhpffSBQMNwj2YuuQN0+I0uZiJaATATRjXlUtglwU
-         xYCNa2BKsyzXNL4ZmkUYaanwm0kX3QW1b7IoeDBt0B/1PHG8T0bwajxxRzEwv222+okz
-         iCpDhRcUCCB3ktnLOFJUOb2wxOOmJ6icqL5u6OL5DdJQh4Imtr70KZJwNIcgwD2JK1Sv
-         06wxazeqTrxIMwf1kDXq1IyjjqXPIByp4p0895oIn8GovMK4rytema9uEMSzGlfMMCAy
-         4wCQ==
+        bh=nkQT6rGBKPnYMtm8URmV1zH8tf60jZBKAmIPjfh9ms0=;
+        b=sIarL9W6+GuJ+WubzLxQpnaFZ4F+oN9Pbsba5Yrgft9H3kkPCgCXO0cZ0CQug2zV3v
+         9uoowptLt9OrAx/Csq/IMTnTAnCsV62RdQFlD3hRQwsb7ROwKYChB/NCycW9slI1IEI3
+         BOYpl3kD7uKt4hHe3mdn0BjA84W4lOA+pSWgkHMFrSuWM7xzLpWVQu+UxwNNdyAIlvHa
+         5MxIkKrDQY5D4Cgb3czwkM6Rv01zeZU0pc/9ebNa8shuCTQsCJGayXlrQjPun4cewdD1
+         yRgrl5KVWZzHUcfyhk+XHDFE1TWCWCz+7VERf2xHdKmTrBL9et/rAM1ILaQv1QzwL+nR
+         Jr0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qsDnRFKi;
+       dkim=pass header.i=@linaro.org header.s=google header.b="owD4r6/4";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h15si3665942qvk.0.2020.03.01.09.39.22
+        by mx.google.com with ESMTPS id v37si4791479qth.263.2020.03.01.09.45.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 01 Mar 2020 09:39:22 -0800 (PST)
+        Sun, 01 Mar 2020 09:45:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qsDnRFKi;
+       dkim=pass header.i=@linaro.org header.s=google header.b="owD4r6/4";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50458 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50520 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j8SYj-0006fp-PL
-	for alex.bennee@linaro.org; Sun, 01 Mar 2020 12:39:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60628)
+	id 1j8SeN-0000dp-0I
+	for alex.bennee@linaro.org; Sun, 01 Mar 2020 12:45:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32818)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1j8SYa-0006fQ-LZ
- for qemu-arm@nongnu.org; Sun, 01 Mar 2020 12:39:13 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1j8SeC-0000ce-Uw
+ for qemu-arm@nongnu.org; Sun, 01 Mar 2020 12:45:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1j8SYZ-00055K-MV
- for qemu-arm@nongnu.org; Sun, 01 Mar 2020 12:39:12 -0500
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:38773)
+ (envelope-from <richard.henderson@linaro.org>) id 1j8SeB-0006eL-Uz
+ for qemu-arm@nongnu.org; Sun, 01 Mar 2020 12:45:00 -0500
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:51696)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1j8SYZ-00054r-FW
- for qemu-arm@nongnu.org; Sun, 01 Mar 2020 12:39:11 -0500
-Received: by mail-pl1-x641.google.com with SMTP id p7so3244834pli.5
- for <qemu-arm@nongnu.org>; Sun, 01 Mar 2020 09:39:11 -0800 (PST)
+ id 1j8SeB-0006e4-O1
+ for qemu-arm@nongnu.org; Sun, 01 Mar 2020 12:44:59 -0500
+Received: by mail-pj1-x1041.google.com with SMTP id fa20so3413875pjb.1
+ for <qemu-arm@nongnu.org>; Sun, 01 Mar 2020 09:44:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=zPf2ELswWbCzCNFcU/z1N+mq3I+1pGGuQpnnhEqMtVY=;
- b=qsDnRFKijUsyNilUPJ8pe4BIY09jF058/idooEHv+OwsWIYi9g7kpq0h52y3Pe0U5F
- t8G9bdv08k7Ovhlhh+6jZbEd4Ry15ibW/V1P6IIepLcfGAlBbR/IGuFHtUNc87adjk+y
- dihsWf0NxFfxqmotSrYJR5Y83L5erP73I+kuB/aeWHYiLYepMxueb1gz+JuopmeHaYHp
- o02rcEBH60aqRZ47DgD0O8xc7QNaXlwK6+3fR0aSMWCphJbi2D4l1U6lYIQsRx9lPxrV
- nFPY/2Q3S+O5JrGLG3KUCQydvnyw9h9+qaFUzUtpkyUOIYnhhL/CyHTSs0i+Y4ZLOatn
- 9DAw==
+ bh=nkQT6rGBKPnYMtm8URmV1zH8tf60jZBKAmIPjfh9ms0=;
+ b=owD4r6/4DLF8lGJ2ttx9PBrPkMS2THxsYk7XSO3cfqkxg6vv7IvbloSbhachO5ex/q
+ lL5eKKxOIIw/aU5w5kNIqw66S9dSXehGFwdgj3dxVIVf+H4XObAXSHS6HPidjK6dgr3B
+ 0fHj5kwICq9INdxoz4jo/Os+4Sou5jiiXVzhs+XgjbpyyJ6V6lWNT5m3lQnixbFHpPXg
+ Jjjeuldl/04o0FwaDt7R4Y9doBgt318y7+ihXsdyWCPPM94Kaug24a9xQqhMR6LHjHtw
+ cY2GxS4OMm26v6ptCHGTU6YPCgBBLobistY3f4vKI18TLUCBVmvyEhx1nvIQwxOovWtI
+ G4Dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=zPf2ELswWbCzCNFcU/z1N+mq3I+1pGGuQpnnhEqMtVY=;
- b=NsZnPZzRoc/XjU2z5ET41bFK+KVXc12XP9iYjY2dI9nsyCaeQoF15jT0h7bsnPC5Kc
- opWV9SgF72FF1AIzQ69Mxa91l2gTt1x8j15qr8JQHlcB0mz7795XuUvLTOGoE6jWl6hP
- KCqv+uJZL6W4KX67liHyGHTjpHuqHe7vyltEkjedl6dB4kyJiHuxfiYECROrnQhLSZAX
- lLgkIVwdeiu7vx5gDST5KTSfsBXCRgNlVvza7WE4EhA1rbfyJDnAhs5vwNGQDV1cE9vk
- g088b9Uek2bLB7ns1YO1eMsyiBxjPW1JnFoBFqKjdwERWvGQSLa+Fv4wICU4qskwuOI3
- h9mg==
-X-Gm-Message-State: APjAAAWI2l9djhqUI+CzGF58/lzZ1vZVbTONUqtH8NFol5Kuhib6eczU
- 30ZYqpy9GOYhhpKgQQXotLBopA==
-X-Received: by 2002:a17:902:7203:: with SMTP id
- ba3mr13745352plb.249.1583084350136; 
- Sun, 01 Mar 2020 09:39:10 -0800 (PST)
+ bh=nkQT6rGBKPnYMtm8URmV1zH8tf60jZBKAmIPjfh9ms0=;
+ b=C8cnj7NovbbNt57wXSQTcLQ9sMqXMa72MMkPVussDUWI8Ze0ifwRjTtpXHEv0geRjV
+ NXohy0yHt3sFLMoTbabvG7cHxkc+5xLSL7y81bIJex7OtElGobkY/T9k+4lY3j52/Xrj
+ DQcfpZd6Bzjg/hZp+4PTpjm70J+7oOjoOfSFlMSpAyGwZpAB8wCHJqMB0tJeuLwO2nQV
+ /jrivE7XXK27HsU91JPWPECHcKwxLmVgKMPX3BoX4+K5M3DMp4V5cm6HXUggPGauiPHb
+ +QTA4ugk5+tfAGiSC/8GJiNSycIMueY8lCm7jFwZYpftIg8En9XTG47NuKH6vNRW2bzn
+ vIEg==
+X-Gm-Message-State: ANhLgQ3SFClaJMmw1fF2x0QDWxvmiZwfAi5LgEuRTuDprg2pGFQss6oT
+ uy63dAxegAcdhqHskTlQRQdj5w==
+X-Received: by 2002:a17:902:8c91:: with SMTP id
+ t17mr775590plo.98.1583084698558; 
+ Sun, 01 Mar 2020 09:44:58 -0800 (PST)
 Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
  by smtp.gmail.com with ESMTPSA id
- 22sm1577573pfc.14.2020.03.01.09.39.08
+ p14sm16866957pgm.49.2020.03.01.09.44.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 01 Mar 2020 09:39:09 -0800 (PST)
-Subject: Re: [PATCH v2 1/6] hw/arm/virt: Document 'max' value in gic-version
- property description
+ Sun, 01 Mar 2020 09:44:57 -0800 (PST)
+Subject: Re: [PATCH v2 2/6] hw/arm/virt: Use VIRT_GIC_VERSION defines
 To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
 References: <20200301104040.15186-1-eric.auger@redhat.com>
- <20200301104040.15186-2-eric.auger@redhat.com>
+ <20200301104040.15186-3-eric.auger@redhat.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <dfcd4971-f581-52ef-4726-a524b336f889@linaro.org>
-Date: Sun, 1 Mar 2020 09:39:07 -0800
+Message-ID: <7cdcb20d-4490-8f5c-2af0-0114142327d4@linaro.org>
+Date: Sun, 1 Mar 2020 09:44:55 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200301104040.15186-2-eric.auger@redhat.com>
+In-Reply-To: <20200301104040.15186-3-eric.auger@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::641
+X-Received-From: 2607:f8b0:4864:20::1041
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -122,17 +121,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: maz@kernel.org, drjones@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XRKjlWhiy9hs
+X-TUID: rr7+GubXNrUe
 
 On 3/1/20 2:40 AM, Eric Auger wrote:
-> Mention 'max' value in the gic-version property description.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  hw/arm/virt.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+> +#define VIRT_GIC_VERSION_MAX    (-1)
+> +#define VIRT_GIC_VERSION_HOST   0
+> +#define VIRT_GIC_VERSION_2      2
+> +#define VIRT_GIC_VERSION_3      3
 
+Any reason this shouldn't be enum VirtGICType?
+
+Anyway, this is an improvement.
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~
+

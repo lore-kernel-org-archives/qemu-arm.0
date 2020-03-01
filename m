@@ -1,71 +1,71 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1709122lfg;
-        Sun, 1 Mar 2020 13:50:39 -0800 (PST)
-X-Received: by 2002:a7b:c081:: with SMTP id r1mr224758wmh.12.1583099439231;
-        Sun, 01 Mar 2020 13:50:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583099439; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1709143lfg;
+        Sun, 1 Mar 2020 13:50:40 -0800 (PST)
+X-Received: by 2002:adf:f087:: with SMTP id n7mr971563wro.328.1583099440668;
+        Sun, 01 Mar 2020 13:50:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583099440; cv=none;
         d=google.com; s=arc-20160816;
-        b=RXgGirAgWd/5s0Mkdit+UMjfSgnUmYA2LfqkuLw69oMCaMkzQB7wUBeEU6Dp5zemr+
-         mQqDyUcnP6g/HfAMv3t9o/4YhXHSTUSiXqEn8iuO9P7lvSwIbkNZ8Ti7NXSBxYdbjg5F
-         Jsi5CXiw8IuTFg5JcUEWi9oz7JB3NDSR9U3D72C3GlKJ1WH/yp9bhEaNIg6G5xp5PoLO
-         b021qP4+HW9t4jUXQ0dpFIkB8xPwQix9r/OA03FJ5kUjAChW0ekdJc750cbDUv64C6qj
-         Y8C0CurrrDpC2WOZ5+dD8MrVXt1tt0rOXWuIwBZSL3BlWzOIFpIC0OZFUTmUc6tG6TIZ
-         lSug==
+        b=tlO8+SttmzDKChoNBgZD27Ps5/0xidOZBhsWZ+yLLUdH4n2VTeXRTOzgjRkG67i96Y
+         canL3bPoQ4Y8N4ENiUnIXflwOma1lRqsPBtYXGUgZHyXQF3pcdP1vJHZeJHbAqaSjxL8
+         RmPUKCmn7F8VuGPXy58eMSb85N7WnqgiAS2DVZ5N1hq/hkSxcYOcNu5xuVYe90s/ITUt
+         MDbDyt5p3UIzNP8aJltYEC3m6Us36eNz3aQls8+AN5gNS0erLKAnN5d5o7l078TBSXCl
+         6bSezRwyH+QcNSNngmOFkRasO9u3VBs84xIdVj9+Xg8DvmetLYRxh7MIBYbQohxKu58U
+         ptfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=L1FnAzdtR9MNO/HQBAnrBs6oX00SyfNqXXnCXADIrV8=;
-        b=GzgE76HIt66RmqngCvbF5DjpqsWeKR6yKE09h2RvaIEOWYlkHdWtl5y8WmrQ/oyMUE
-         w5OBAscS81OtBmGCKcXOSqXYNQUPHCfaZQXNf9oHBgrOqqBegU1yf+3kNIFWg9rBfwn2
-         LqR7zO2+oxKZgltju8e9uhLg3XBOJFQAdvFLP+0gN8jkYEauDtzkVSbuKjtjSMB7OqUd
-         8YpcDKae6vsOd+pEoqweQNxmuBgnbso09xh8Y+rNC0vQkgpe/5f2YGP8QlLghDEUMuGW
-         tqYumfdcn/k5NRq8REqBVfo5qxc83+i0xmgTVyc/VeJW/kQZaO1ZlVL01+QXMtSsZYR7
-         tTNg==
+        bh=O+4eW2wb9dPcJw9kLxMUTsYGI4o6DHS9Bo7+wthubgM=;
+        b=TFaWddoNB5p5RhDDAGdziOnKIFbo7dX+iJoYHgYu5a6UxTFAj/Ib9JYbFYEZojAwRF
+         VgKbmsz1xGWF2fZgBwrlZx46nhVzW17pYwpy4SOqY/iUCuRWb4XjmSQk/GWaBvTtc0f1
+         DkJYbG74CfEYgjnJg93lZgLatjBb5EDFFMFk6cSRJbYnY57HRFdN8uWON1qcCPBSrSaQ
+         qvLtlgDsxr1BLu1TxJkGkR8FgkEylYzTfklcWLDvbPcCSMpFaO/T2z4MzAj9kNx4NcPN
+         g4KeD2A2vsAvMmTz8F/5Dnlz9oQd5knhIgF3DCtrwPg82h2Fdy1pI7ysqJd62a34ytFZ
+         7Dog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HZGcWTg5;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qRTPpB9R;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9sor258775wrj.64.2020.03.01.13.50.39
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id m1sor4988822wrs.49.2020.03.01.13.50.40
         (Google Transport Security);
-        Sun, 01 Mar 2020 13:50:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Sun, 01 Mar 2020 13:50:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HZGcWTg5;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qRTPpB9R;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=L1FnAzdtR9MNO/HQBAnrBs6oX00SyfNqXXnCXADIrV8=;
-        b=HZGcWTg5yEVsRbwbx0O8M39BBgmFipGvWUPQwUnxO2bCjGS2tL/V2LJw+OXWwWt9rn
-         cD+0he2O7YZMbL+E4WZiCAq9YXa+dag1YpnYyySgWli7qyPPMNCu0tGqedERS38CanZ6
-         1nh4A/zbJbdlj6kqdymLfLNV9L7V31xH8vs9w7rmB2oucHYjPwdLEQBJc6R7fvpq7/nB
-         mRi2WG0Uh0KlF5FORy57ZZuYoecDXUPvjuu03vlfVp2P1KqqHOQ8pI0HViKdyX4g7MvW
-         uKQ7uqLflE86xSwjqzKkbxPhP2q6V6FxuHi/gFeQ3+rHP80xiSSYuShkwMVmIonA7h8+
-         oXRA==
+        bh=O+4eW2wb9dPcJw9kLxMUTsYGI4o6DHS9Bo7+wthubgM=;
+        b=qRTPpB9RBMy+qOWQHbetDBg7Gz5Fvx7TvKExv06m7JpzhAbQAqYxvPkmXc+FVhE6Rq
+         gGonHoxdfBjYdW0cN6nTVFBzx86MM9rqzsYpu/yirJ1ueIaqfFQ/Bz4FuF5Pgr7bESK8
+         cUsltxtweUQnmcwwiM9fU4gKejin/TKMJZAU2okFL+/A5W8QbMhuvfQcHTDbPo8U6JQG
+         hEj+nxCJ7rfoDAS1r7UFbC8qyFwrFqAGi9svNHcq5SeZLm3jxLIIsrzaNl7VCAKK41+q
+         AOSc2BI3ruHeV5T4bhvCt84VPTnPrjpFmolknSqIyq2yW/Q+5rxFxvifOvGikDNth91t
+         Jewg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=L1FnAzdtR9MNO/HQBAnrBs6oX00SyfNqXXnCXADIrV8=;
-        b=TWD8soaYXXAq4PlCQbxGqzngorcNe199OgZT3YENOzbrlmJJm6KJ1E8N6qHD0eT9W2
-         zuXe4vjnUBmcY7mGEq66Ne8hmBjIFBByuTEP3AVgEK7c3I4EfpPYI7gTzHoSzxt/hTaM
-         SrUrsuxI2lkO+pWe/GV8Y5SCvOD5lB4MIzXLapav66UsiCr/vdo9zWihCS0vkDfhDCz6
-         QxVJ1Idw/j0TJZ1B4QV8idVhCQX9hrxKM2Be64SyziINMbvuR4NPus7rb/M0X936h7RP
-         a7eDNzGBkMqf/cbNe1hZ0pi4zAFOrfQCxyBcYLB9xPyavPY8MIlXnUwNfgaYRdNOiPrv
-         W9MA==
-X-Gm-Message-State: APjAAAV5kZm6zNmzcqaHFtXg5dmUR7icBvTHpOsA5Y1pZ34u3jdHmwmI
-	EHh2tMSZSR0TT2a6B/AYkaqs+nV9
-X-Google-Smtp-Source: APXvYqzthzUj8DLLXs/AcbMOar/YNiZgB5tB04TURMOkloBe8syyGbKSzEcX9AdM0jVG7ZU7PbqF+A==
-X-Received: by 2002:adf:dfcc:: with SMTP id q12mr17654496wrn.171.1583099438586;
-        Sun, 01 Mar 2020 13:50:38 -0800 (PST)
+        bh=O+4eW2wb9dPcJw9kLxMUTsYGI4o6DHS9Bo7+wthubgM=;
+        b=umvLPKxaT7FDYCQFcOTjKAF6rSIk6MNdKAgPu0jJB6JdwmiUZXQ9OQko6O9N+4RgWX
+         ouuyP+Z6eByOtWgGn0YOP31totq1X/lAsM3Ifok00ZYR+F1bBDv0aFj02D/nIRmcQcrs
+         Obpj9zehnbsHaZw6PSfziojDq1E3NJ4S+UAXjKFD2iPTZRh/TGW6BBbuV51fVwXw/1ki
+         xcxffyHf58glYBG4XVTci5FZAquWip1L88oZDPalTYVSzAjBv18a0KHtjfTvVwBvmkrs
+         ZlGY0N2S22wNtrcDp7EnAvntCFPfpXnSPod/fowaw93BvxjNYrSyIydVYw9gokX+4VIq
+         GWEA==
+X-Gm-Message-State: APjAAAUMT8GPi9r/9bI3yBGzR979jERL6fH78HFJZdxdaT08AsSpLKOf
+	bxFuqyAsmjJ4xWAsS/SbDQI=
+X-Google-Smtp-Source: APXvYqybaaeXHsfIwwEDBEr7esTFqKcn2Ur1YTp0ZwGDNr5/ZJrDw78qCc5zw3TgwBVmoFME9ZlwPA==
+X-Received: by 2002:adf:ff84:: with SMTP id j4mr13590287wrr.426.1583099440211;
+        Sun, 01 Mar 2020 13:50:40 -0800 (PST)
 Return-Path: <nieklinnenbank@gmail.com>
 Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
-        by smtp.gmail.com with ESMTPSA id e8sm25033124wrr.69.2020.03.01.13.50.37
+        by smtp.gmail.com with ESMTPSA id e8sm25033124wrr.69.2020.03.01.13.50.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 01 Mar 2020 13:50:37 -0800 (PST)
+        Sun, 01 Mar 2020 13:50:39 -0800 (PST)
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -76,71 +76,71 @@ Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	imammedo@redhat.com,
 	Niek Linnenbank <nieklinnenbank@gmail.com>
-Subject: [PATCH v6 03/18] hw/arm/allwinner-h3: add Clock Control Unit
-Date: Sun,  1 Mar 2020 22:50:14 +0100
-Message-Id: <20200301215029.15196-4-nieklinnenbank@gmail.com>
+Subject: [PATCH v6 05/18] hw/arm/allwinner-h3: add System Control module
+Date: Sun,  1 Mar 2020 22:50:16 +0100
+Message-Id: <20200301215029.15196-6-nieklinnenbank@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200301215029.15196-1-nieklinnenbank@gmail.com>
 References: <20200301215029.15196-1-nieklinnenbank@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: HhXc1m0JCL4F
+X-TUID: znSdLSwcNWgp
 
-The Clock Control Unit is responsible for clock signal generation,
-configuration and distribution in the Allwinner H3 System on Chip.
-This commit adds support for the Clock Control Unit which emulates
-a simple read/write register interface.
+The Allwinner H3 System on Chip has an System Control
+module that provides system wide generic controls and
+device information. This commit adds support for the
+Allwinner H3 System Control module.
 
 Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- include/hw/arm/allwinner-h3.h      |   3 +
- include/hw/misc/allwinner-h3-ccu.h |  66 ++++++++
- hw/arm/allwinner-h3.c              |   9 +-
- hw/misc/allwinner-h3-ccu.c         | 242 +++++++++++++++++++++++++++++
- hw/misc/Makefile.objs              |   1 +
- 5 files changed, 320 insertions(+), 1 deletion(-)
- create mode 100644 include/hw/misc/allwinner-h3-ccu.h
- create mode 100644 hw/misc/allwinner-h3-ccu.c
+ include/hw/arm/allwinner-h3.h          |   3 +
+ include/hw/misc/allwinner-h3-sysctrl.h |  67 ++++++++++++
+ hw/arm/allwinner-h3.c                  |   9 +-
+ hw/misc/allwinner-h3-sysctrl.c         | 140 +++++++++++++++++++++++++
+ hw/misc/Makefile.objs                  |   1 +
+ 5 files changed, 219 insertions(+), 1 deletion(-)
+ create mode 100644 include/hw/misc/allwinner-h3-sysctrl.h
+ create mode 100644 hw/misc/allwinner-h3-sysctrl.c
 
 diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
-index 2aac9b78ec..abdc20871a 100644
+index 4f4dcbcd17..43500c4262 100644
 --- a/include/hw/arm/allwinner-h3.h
 +++ b/include/hw/arm/allwinner-h3.h
-@@ -39,6 +39,7 @@
- #include "hw/arm/boot.h"
+@@ -40,6 +40,7 @@
  #include "hw/timer/allwinner-a10-pit.h"
  #include "hw/intc/arm_gic.h"
-+#include "hw/misc/allwinner-h3-ccu.h"
+ #include "hw/misc/allwinner-h3-ccu.h"
++#include "hw/misc/allwinner-h3-sysctrl.h"
  #include "target/arm/cpu.h"
  
  /**
-@@ -55,6 +56,7 @@ enum {
+@@ -56,6 +57,7 @@ enum {
      AW_H3_SRAM_A1,
      AW_H3_SRAM_A2,
      AW_H3_SRAM_C,
-+    AW_H3_CCU,
-     AW_H3_PIT,
-     AW_H3_UART0,
-     AW_H3_UART1,
-@@ -97,6 +99,7 @@ typedef struct AwH3State {
-     ARMCPU cpus[AW_H3_NUM_CPUS];
++    AW_H3_SYSCTRL,
+     AW_H3_EHCI0,
+     AW_H3_OHCI0,
+     AW_H3_EHCI1,
+@@ -108,6 +110,7 @@ typedef struct AwH3State {
      const hwaddr *memmap;
      AwA10PITState timer;
-+    AwH3ClockCtlState ccu;
+     AwH3ClockCtlState ccu;
++    AwH3SysCtrlState sysctrl;
      GICState gic;
      MemoryRegion sram_a1;
      MemoryRegion sram_a2;
-diff --git a/include/hw/misc/allwinner-h3-ccu.h b/include/hw/misc/allwinner-h3-ccu.h
+diff --git a/include/hw/misc/allwinner-h3-sysctrl.h b/include/hw/misc/allwinner-h3-sysctrl.h
 new file mode 100644
-index 0000000000..eec59649f3
+index 0000000000..af4119e026
 --- /dev/null
-+++ b/include/hw/misc/allwinner-h3-ccu.h
-@@ -0,0 +1,66 @@
++++ b/include/hw/misc/allwinner-h3-sysctrl.h
+@@ -0,0 +1,67 @@
 +/*
-+ * Allwinner H3 Clock Control Unit emulation
++ * Allwinner H3 System Control emulation
 + *
 + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
 + *
@@ -158,8 +158,8 @@ index 0000000000..eec59649f3
 + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 + */
 +
-+#ifndef HW_MISC_ALLWINNER_H3_CCU_H
-+#define HW_MISC_ALLWINNER_H3_CCU_H
++#ifndef HW_MISC_ALLWINNER_H3_SYSCTRL_H
++#define HW_MISC_ALLWINNER_H3_SYSCTRL_H
 +
 +#include "qom/object.h"
 +#include "hw/sysbus.h"
@@ -169,11 +169,12 @@ index 0000000000..eec59649f3
 + * @{
 + */
 +
-+/** Size of register I/O address space used by CCU device */
-+#define AW_H3_CCU_IOSIZE        (0x400)
++/** Highest register address used by System Control device */
++#define AW_H3_SYSCTRL_REGS_MAXADDR   (0x30)
 +
 +/** Total number of known registers */
-+#define AW_H3_CCU_REGS_NUM      (AW_H3_CCU_IOSIZE / sizeof(uint32_t))
++#define AW_H3_SYSCTRL_REGS_NUM       ((AW_H3_SYSCTRL_REGS_MAXADDR / \
++                                      sizeof(uint32_t)) + 1)
 +
 +/** @} */
 +
@@ -182,16 +183,16 @@ index 0000000000..eec59649f3
 + * @{
 + */
 +
-+#define TYPE_AW_H3_CCU    "allwinner-h3-ccu"
-+#define AW_H3_CCU(obj) \
-+    OBJECT_CHECK(AwH3ClockCtlState, (obj), TYPE_AW_H3_CCU)
++#define TYPE_AW_H3_SYSCTRL    "allwinner-h3-sysctrl"
++#define AW_H3_SYSCTRL(obj) \
++    OBJECT_CHECK(AwH3SysCtrlState, (obj), TYPE_AW_H3_SYSCTRL)
 +
 +/** @} */
 +
 +/**
-+ * Allwinner H3 CCU object instance state.
++ * Allwinner H3 System Control object instance state
 + */
-+typedef struct AwH3ClockCtlState {
++typedef struct AwH3SysCtrlState {
 +    /*< private >*/
 +    SysBusDevice parent_obj;
 +    /*< public >*/
@@ -200,60 +201,60 @@ index 0000000000..eec59649f3
 +    MemoryRegion iomem;
 +
 +    /** Array of hardware registers */
-+    uint32_t regs[AW_H3_CCU_REGS_NUM];
++    uint32_t regs[AW_H3_SYSCTRL_REGS_NUM];
 +
-+} AwH3ClockCtlState;
++} AwH3SysCtrlState;
 +
-+#endif /* HW_MISC_ALLWINNER_H3_CCU_H */
++#endif /* HW_MISC_ALLWINNER_H3_SYSCTRL_H */
 diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-index 7958f37685..1fff3c317b 100644
+index c205f06738..0aa46712db 100644
 --- a/hw/arm/allwinner-h3.c
 +++ b/hw/arm/allwinner-h3.c
-@@ -36,6 +36,7 @@ const hwaddr allwinner_h3_memmap[] = {
+@@ -37,6 +37,7 @@ const hwaddr allwinner_h3_memmap[] = {
      [AW_H3_SRAM_A1]    = 0x00000000,
      [AW_H3_SRAM_A2]    = 0x00044000,
      [AW_H3_SRAM_C]     = 0x00010000,
-+    [AW_H3_CCU]        = 0x01c20000,
-     [AW_H3_PIT]        = 0x01c20c00,
-     [AW_H3_UART0]      = 0x01c28000,
-     [AW_H3_UART1]      = 0x01c28400,
-@@ -77,7 +78,6 @@ struct AwH3Unimplemented {
-     { "usb2-phy",  0x01c1c000, 4 * KiB },
-     { "usb3-phy",  0x01c1d000, 4 * KiB },
-     { "smc",       0x01c1e000, 4 * KiB },
--    { "ccu",       0x01c20000, 1 * KiB },
-     { "pio",       0x01c20800, 1 * KiB },
-     { "owa",       0x01c21000, 1 * KiB },
-     { "pwm",       0x01c21400, 1 * KiB },
-@@ -172,6 +172,9 @@ static void allwinner_h3_init(Object *obj)
-                               "clk0-freq", &error_abort);
-     object_property_add_alias(obj, "clk1-freq", OBJECT(&s->timer),
-                               "clk1-freq", &error_abort);
++    [AW_H3_SYSCTRL]    = 0x01c00000,
+     [AW_H3_EHCI0]      = 0x01c1a000,
+     [AW_H3_OHCI0]      = 0x01c1a400,
+     [AW_H3_EHCI1]      = 0x01c1b000,
+@@ -66,7 +67,6 @@ struct AwH3Unimplemented {
+ } unimplemented[] = {
+     { "d-engine",  0x01000000, 4 * MiB },
+     { "d-inter",   0x01400000, 128 * KiB },
+-    { "syscon",    0x01c00000, 4 * KiB },
+     { "dma",       0x01c02000, 4 * KiB },
+     { "nfdc",      0x01c03000, 4 * KiB },
+     { "ts",        0x01c06000, 4 * KiB },
+@@ -192,6 +192,9 @@ static void allwinner_h3_init(Object *obj)
+ 
+     sysbus_init_child_obj(obj, "ccu", &s->ccu, sizeof(s->ccu),
+                           TYPE_AW_H3_CCU);
 +
-+    sysbus_init_child_obj(obj, "ccu", &s->ccu, sizeof(s->ccu),
-+                          TYPE_AW_H3_CCU);
++    sysbus_init_child_obj(obj, "sysctrl", &s->sysctrl, sizeof(s->sysctrl),
++                          TYPE_AW_H3_SYSCTRL);
  }
  
  static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-@@ -277,6 +280,10 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-     memory_region_add_subregion(get_system_memory(), s->memmap[AW_H3_SRAM_C],
-                                 &s->sram_c);
+@@ -301,6 +304,10 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
+     qdev_init_nofail(DEVICE(&s->ccu));
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccu), 0, s->memmap[AW_H3_CCU]);
  
-+    /* Clock Control Unit */
-+    qdev_init_nofail(DEVICE(&s->ccu));
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccu), 0, s->memmap[AW_H3_CCU]);
++    /* System Control */
++    qdev_init_nofail(DEVICE(&s->sysctrl));
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sysctrl), 0, s->memmap[AW_H3_SYSCTRL]);
 +
-     /* UART0. For future clocktree API: All UARTS are connected to APB2_CLK. */
-     serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART0], 2,
-                    qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_UART0),
-diff --git a/hw/misc/allwinner-h3-ccu.c b/hw/misc/allwinner-h3-ccu.c
+     /* Universal Serial Bus */
+     sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI0],
+                          qdev_get_gpio_in(DEVICE(&s->gic),
+diff --git a/hw/misc/allwinner-h3-sysctrl.c b/hw/misc/allwinner-h3-sysctrl.c
 new file mode 100644
-index 0000000000..18d1074545
+index 0000000000..1d07efa880
 --- /dev/null
-+++ b/hw/misc/allwinner-h3-ccu.c
-@@ -0,0 +1,242 @@
++++ b/hw/misc/allwinner-h3-sysctrl.c
+@@ -0,0 +1,140 @@
 +/*
-+ * Allwinner H3 Clock Control Unit emulation
++ * Allwinner H3 System Control emulation
 + *
 + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
 + *
@@ -277,91 +278,29 @@ index 0000000000..18d1074545
 +#include "migration/vmstate.h"
 +#include "qemu/log.h"
 +#include "qemu/module.h"
-+#include "hw/misc/allwinner-h3-ccu.h"
++#include "hw/misc/allwinner-h3-sysctrl.h"
 +
-+/* CCU register offsets */
++/* System Control register offsets */
 +enum {
-+    REG_PLL_CPUX             = 0x0000, /* PLL CPUX Control */
-+    REG_PLL_AUDIO            = 0x0008, /* PLL Audio Control */
-+    REG_PLL_VIDEO            = 0x0010, /* PLL Video Control */
-+    REG_PLL_VE               = 0x0018, /* PLL VE Control */
-+    REG_PLL_DDR              = 0x0020, /* PLL DDR Control */
-+    REG_PLL_PERIPH0          = 0x0028, /* PLL Peripherals 0 Control */
-+    REG_PLL_GPU              = 0x0038, /* PLL GPU Control */
-+    REG_PLL_PERIPH1          = 0x0044, /* PLL Peripherals 1 Control */
-+    REG_PLL_DE               = 0x0048, /* PLL Display Engine Control */
-+    REG_CPUX_AXI             = 0x0050, /* CPUX/AXI Configuration */
-+    REG_APB1                 = 0x0054, /* ARM Peripheral Bus 1 Config */
-+    REG_APB2                 = 0x0058, /* ARM Peripheral Bus 2 Config */
-+    REG_DRAM_CFG             = 0x00F4, /* DRAM Configuration */
-+    REG_MBUS                 = 0x00FC, /* MBUS Reset */
-+    REG_PLL_TIME0            = 0x0200, /* PLL Stable Time 0 */
-+    REG_PLL_TIME1            = 0x0204, /* PLL Stable Time 1 */
-+    REG_PLL_CPUX_BIAS        = 0x0220, /* PLL CPUX Bias */
-+    REG_PLL_AUDIO_BIAS       = 0x0224, /* PLL Audio Bias */
-+    REG_PLL_VIDEO_BIAS       = 0x0228, /* PLL Video Bias */
-+    REG_PLL_VE_BIAS          = 0x022C, /* PLL VE Bias */
-+    REG_PLL_DDR_BIAS         = 0x0230, /* PLL DDR Bias */
-+    REG_PLL_PERIPH0_BIAS     = 0x0234, /* PLL Peripherals 0 Bias */
-+    REG_PLL_GPU_BIAS         = 0x023C, /* PLL GPU Bias */
-+    REG_PLL_PERIPH1_BIAS     = 0x0244, /* PLL Peripherals 1 Bias */
-+    REG_PLL_DE_BIAS          = 0x0248, /* PLL Display Engine Bias */
-+    REG_PLL_CPUX_TUNING      = 0x0250, /* PLL CPUX Tuning */
-+    REG_PLL_DDR_TUNING       = 0x0260, /* PLL DDR Tuning */
++    REG_VER               = 0x24,  /* Version */
++    REG_EMAC_PHY_CLK      = 0x30,  /* EMAC PHY Clock */
 +};
 +
-+#define REG_INDEX(offset)    (offset / sizeof(uint32_t))
++#define REG_INDEX(offset)   (offset / sizeof(uint32_t))
 +
-+/* CCU register flags */
++/* System Control register reset values */
 +enum {
-+    REG_DRAM_CFG_UPDATE      = (1 << 16),
++    REG_VER_RST           = 0x0,
++    REG_EMAC_PHY_CLK_RST  = 0x58000,
 +};
 +
-+enum {
-+    REG_PLL_ENABLE           = (1 << 31),
-+    REG_PLL_LOCK             = (1 << 28),
-+};
-+
-+
-+/* CCU register reset values */
-+enum {
-+    REG_PLL_CPUX_RST         = 0x00001000,
-+    REG_PLL_AUDIO_RST        = 0x00035514,
-+    REG_PLL_VIDEO_RST        = 0x03006207,
-+    REG_PLL_VE_RST           = 0x03006207,
-+    REG_PLL_DDR_RST          = 0x00001000,
-+    REG_PLL_PERIPH0_RST      = 0x00041811,
-+    REG_PLL_GPU_RST          = 0x03006207,
-+    REG_PLL_PERIPH1_RST      = 0x00041811,
-+    REG_PLL_DE_RST           = 0x03006207,
-+    REG_CPUX_AXI_RST         = 0x00010000,
-+    REG_APB1_RST             = 0x00001010,
-+    REG_APB2_RST             = 0x01000000,
-+    REG_DRAM_CFG_RST         = 0x00000000,
-+    REG_MBUS_RST             = 0x80000000,
-+    REG_PLL_TIME0_RST        = 0x000000FF,
-+    REG_PLL_TIME1_RST        = 0x000000FF,
-+    REG_PLL_CPUX_BIAS_RST    = 0x08100200,
-+    REG_PLL_AUDIO_BIAS_RST   = 0x10100000,
-+    REG_PLL_VIDEO_BIAS_RST   = 0x10100000,
-+    REG_PLL_VE_BIAS_RST      = 0x10100000,
-+    REG_PLL_DDR_BIAS_RST     = 0x81104000,
-+    REG_PLL_PERIPH0_BIAS_RST = 0x10100010,
-+    REG_PLL_GPU_BIAS_RST     = 0x10100000,
-+    REG_PLL_PERIPH1_BIAS_RST = 0x10100010,
-+    REG_PLL_DE_BIAS_RST      = 0x10100000,
-+    REG_PLL_CPUX_TUNING_RST  = 0x0A101000,
-+    REG_PLL_DDR_TUNING_RST   = 0x14880000,
-+};
-+
-+static uint64_t allwinner_h3_ccu_read(void *opaque, hwaddr offset,
-+                                      unsigned size)
++static uint64_t allwinner_h3_sysctrl_read(void *opaque, hwaddr offset,
++                                          unsigned size)
 +{
-+    const AwH3ClockCtlState *s = AW_H3_CCU(opaque);
++    const AwH3SysCtrlState *s = AW_H3_SYSCTRL(opaque);
 +    const uint32_t idx = REG_INDEX(offset);
 +
-+    switch (offset) {
-+    case 0x308 ... AW_H3_CCU_IOSIZE:
++    if (idx >= AW_H3_SYSCTRL_REGS_NUM) {
 +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
 +                      __func__, (uint32_t)offset);
 +        return 0;
@@ -370,45 +309,30 @@ index 0000000000..18d1074545
 +    return s->regs[idx];
 +}
 +
-+static void allwinner_h3_ccu_write(void *opaque, hwaddr offset,
-+                                   uint64_t val, unsigned size)
++static void allwinner_h3_sysctrl_write(void *opaque, hwaddr offset,
++                                       uint64_t val, unsigned size)
 +{
-+    AwH3ClockCtlState *s = AW_H3_CCU(opaque);
++    AwH3SysCtrlState *s = AW_H3_SYSCTRL(opaque);
 +    const uint32_t idx = REG_INDEX(offset);
 +
-+    switch (offset) {
-+    case REG_DRAM_CFG:    /* DRAM Configuration */
-+        val &= ~REG_DRAM_CFG_UPDATE;
-+        break;
-+    case REG_PLL_CPUX:    /* PLL CPUX Control */
-+    case REG_PLL_AUDIO:   /* PLL Audio Control */
-+    case REG_PLL_VIDEO:   /* PLL Video Control */
-+    case REG_PLL_VE:      /* PLL VE Control */
-+    case REG_PLL_DDR:     /* PLL DDR Control */
-+    case REG_PLL_PERIPH0: /* PLL Peripherals 0 Control */
-+    case REG_PLL_GPU:     /* PLL GPU Control */
-+    case REG_PLL_PERIPH1: /* PLL Peripherals 1 Control */
-+    case REG_PLL_DE:      /* PLL Display Engine Control */
-+        if (val & REG_PLL_ENABLE) {
-+            val |= REG_PLL_LOCK;
-+        }
-+        break;
-+    case 0x308 ... AW_H3_CCU_IOSIZE:
++    if (idx >= AW_H3_SYSCTRL_REGS_NUM) {
 +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
 +                      __func__, (uint32_t)offset);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: unimplemented write offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        break;
++        return;
 +    }
 +
-+    s->regs[idx] = (uint32_t) val;
++    switch (offset) {
++    case REG_VER:       /* Version */
++        break;
++    default:
++        s->regs[idx] = (uint32_t) val;
++        break;
++    }
 +}
 +
-+static const MemoryRegionOps allwinner_h3_ccu_ops = {
-+    .read = allwinner_h3_ccu_read,
-+    .write = allwinner_h3_ccu_write,
++static const MemoryRegionOps allwinner_h3_sysctrl_ops = {
++    .read = allwinner_h3_sysctrl_read,
++    .write = allwinner_h3_sysctrl_write,
 +    .endianness = DEVICE_NATIVE_ENDIAN,
 +    .valid = {
 +        .min_access_size = 4,
@@ -417,92 +341,67 @@ index 0000000000..18d1074545
 +    .impl.min_access_size = 4,
 +};
 +
-+static void allwinner_h3_ccu_reset(DeviceState *dev)
++static void allwinner_h3_sysctrl_reset(DeviceState *dev)
 +{
-+    AwH3ClockCtlState *s = AW_H3_CCU(dev);
++    AwH3SysCtrlState *s = AW_H3_SYSCTRL(dev);
 +
 +    /* Set default values for registers */
-+    s->regs[REG_INDEX(REG_PLL_CPUX)] = REG_PLL_CPUX_RST;
-+    s->regs[REG_INDEX(REG_PLL_AUDIO)] = REG_PLL_AUDIO_RST;
-+    s->regs[REG_INDEX(REG_PLL_VIDEO)] = REG_PLL_VIDEO_RST;
-+    s->regs[REG_INDEX(REG_PLL_VE)] = REG_PLL_VE_RST;
-+    s->regs[REG_INDEX(REG_PLL_DDR)] = REG_PLL_DDR_RST;
-+    s->regs[REG_INDEX(REG_PLL_PERIPH0)] = REG_PLL_PERIPH0_RST;
-+    s->regs[REG_INDEX(REG_PLL_GPU)] = REG_PLL_GPU_RST;
-+    s->regs[REG_INDEX(REG_PLL_PERIPH1)] = REG_PLL_PERIPH1_RST;
-+    s->regs[REG_INDEX(REG_PLL_DE)] = REG_PLL_DE_RST;
-+    s->regs[REG_INDEX(REG_CPUX_AXI)] = REG_CPUX_AXI_RST;
-+    s->regs[REG_INDEX(REG_APB1)] = REG_APB1_RST;
-+    s->regs[REG_INDEX(REG_APB2)] = REG_APB2_RST;
-+    s->regs[REG_INDEX(REG_DRAM_CFG)] = REG_DRAM_CFG_RST;
-+    s->regs[REG_INDEX(REG_MBUS)] = REG_MBUS_RST;
-+    s->regs[REG_INDEX(REG_PLL_TIME0)] = REG_PLL_TIME0_RST;
-+    s->regs[REG_INDEX(REG_PLL_TIME1)] = REG_PLL_TIME1_RST;
-+    s->regs[REG_INDEX(REG_PLL_CPUX_BIAS)] = REG_PLL_CPUX_BIAS_RST;
-+    s->regs[REG_INDEX(REG_PLL_AUDIO_BIAS)] = REG_PLL_AUDIO_BIAS_RST;
-+    s->regs[REG_INDEX(REG_PLL_VIDEO_BIAS)] = REG_PLL_VIDEO_BIAS_RST;
-+    s->regs[REG_INDEX(REG_PLL_VE_BIAS)] = REG_PLL_VE_BIAS_RST;
-+    s->regs[REG_INDEX(REG_PLL_DDR_BIAS)] = REG_PLL_DDR_BIAS_RST;
-+    s->regs[REG_INDEX(REG_PLL_PERIPH0_BIAS)] = REG_PLL_PERIPH0_BIAS_RST;
-+    s->regs[REG_INDEX(REG_PLL_GPU_BIAS)] = REG_PLL_GPU_BIAS_RST;
-+    s->regs[REG_INDEX(REG_PLL_PERIPH1_BIAS)] = REG_PLL_PERIPH1_BIAS_RST;
-+    s->regs[REG_INDEX(REG_PLL_DE_BIAS)] = REG_PLL_DE_BIAS_RST;
-+    s->regs[REG_INDEX(REG_PLL_CPUX_TUNING)] = REG_PLL_CPUX_TUNING_RST;
-+    s->regs[REG_INDEX(REG_PLL_DDR_TUNING)] = REG_PLL_DDR_TUNING_RST;
++    s->regs[REG_INDEX(REG_VER)] = REG_VER_RST;
++    s->regs[REG_INDEX(REG_EMAC_PHY_CLK)] = REG_EMAC_PHY_CLK_RST;
 +}
 +
-+static void allwinner_h3_ccu_init(Object *obj)
++static void allwinner_h3_sysctrl_init(Object *obj)
 +{
 +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    AwH3ClockCtlState *s = AW_H3_CCU(obj);
++    AwH3SysCtrlState *s = AW_H3_SYSCTRL(obj);
 +
 +    /* Memory mapping */
-+    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_h3_ccu_ops, s,
-+                          TYPE_AW_H3_CCU, AW_H3_CCU_IOSIZE);
++    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_h3_sysctrl_ops, s,
++                           TYPE_AW_H3_SYSCTRL, 4 * KiB);
 +    sysbus_init_mmio(sbd, &s->iomem);
 +}
 +
-+static const VMStateDescription allwinner_h3_ccu_vmstate = {
-+    .name = "allwinner-h3-ccu",
++static const VMStateDescription allwinner_h3_sysctrl_vmstate = {
++    .name = "allwinner-h3-sysctrl",
 +    .version_id = 1,
 +    .minimum_version_id = 1,
 +    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, AwH3ClockCtlState, AW_H3_CCU_REGS_NUM),
++        VMSTATE_UINT32_ARRAY(regs, AwH3SysCtrlState, AW_H3_SYSCTRL_REGS_NUM),
 +        VMSTATE_END_OF_LIST()
 +    }
 +};
 +
-+static void allwinner_h3_ccu_class_init(ObjectClass *klass, void *data)
++static void allwinner_h3_sysctrl_class_init(ObjectClass *klass, void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+    dc->reset = allwinner_h3_ccu_reset;
-+    dc->vmsd = &allwinner_h3_ccu_vmstate;
++    dc->reset = allwinner_h3_sysctrl_reset;
++    dc->vmsd = &allwinner_h3_sysctrl_vmstate;
 +}
 +
-+static const TypeInfo allwinner_h3_ccu_info = {
-+    .name          = TYPE_AW_H3_CCU,
++static const TypeInfo allwinner_h3_sysctrl_info = {
++    .name          = TYPE_AW_H3_SYSCTRL,
 +    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_init = allwinner_h3_ccu_init,
-+    .instance_size = sizeof(AwH3ClockCtlState),
-+    .class_init    = allwinner_h3_ccu_class_init,
++    .instance_init = allwinner_h3_sysctrl_init,
++    .instance_size = sizeof(AwH3SysCtrlState),
++    .class_init    = allwinner_h3_sysctrl_class_init,
 +};
 +
-+static void allwinner_h3_ccu_register(void)
++static void allwinner_h3_sysctrl_register(void)
 +{
-+    type_register_static(&allwinner_h3_ccu_info);
++    type_register_static(&allwinner_h3_sysctrl_info);
 +}
 +
-+type_init(allwinner_h3_ccu_register)
++type_init(allwinner_h3_sysctrl_register)
 diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index da993f45b7..5e635b74d5 100644
+index 5e635b74d5..63b2e528f9 100644
 --- a/hw/misc/Makefile.objs
 +++ b/hw/misc/Makefile.objs
-@@ -28,6 +28,7 @@ common-obj-$(CONFIG_MACIO) += macio/
- 
+@@ -29,6 +29,7 @@ common-obj-$(CONFIG_MACIO) += macio/
  common-obj-$(CONFIG_IVSHMEM_DEVICE) += ivshmem.o
  
-+common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-ccu.o
+ common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-ccu.o
++common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-sysctrl.o
  common-obj-$(CONFIG_REALVIEW) += arm_sysctl.o
  common-obj-$(CONFIG_NSERIES) += cbus.o
  common-obj-$(CONFIG_ECCMEMCTL) += eccmemctl.o

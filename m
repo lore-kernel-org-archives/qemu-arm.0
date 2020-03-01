@@ -1,101 +1,95 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1242785lfg;
-        Sun, 1 Mar 2020 02:43:01 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzCUTbtIiqSeipN7RrNi8OrDQQZBlKBfj3LDiyhyOLmFf/RW2DyeMpwoJN3QS2H2pm0t/KK
-X-Received: by 2002:a0c:c250:: with SMTP id w16mr10360805qvh.24.1583059380958;
-        Sun, 01 Mar 2020 02:43:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583059380; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1516165lfg;
+        Sun, 1 Mar 2020 09:05:03 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vsCeL3jaU9az5Pf6gyUyy5AROhlypXKHxqsawlhuYKL03qsQMKEwoUYYC3G/1HVCIQskXUR
+X-Received: by 2002:ad4:4351:: with SMTP id q17mr5343678qvs.248.1583082303313;
+        Sun, 01 Mar 2020 09:05:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583082303; cv=none;
         d=google.com; s=arc-20160816;
-        b=0w+l++hDKywfpWINLdxXxz2gl+9jZ9JLh6YE9NIjIRkCSDelZS49v1xexAAQ4M1KUp
-         O6T6Um99ycrFx4Bc14texciJo3Btlnjgtkp4FZdL8Ok8x3I3kckn8jm86U1N0gkJtYlw
-         EOtUtKEkG4/YiyQE+EXmSwUK64WSpQ2ytNBZPsDZKL7Z+EifGObEJ/EUVBShvxyYsWWs
-         MiQVZcX+CYdN3tPOsiorELtiSkY6AzLfOfBZHLOFlm5z/yCBedhPM/A5dO4sn+n84fjP
-         WdXdABsO1AGqw2HwYJInuMoNDosvx9B/mNgWOwnXquOiVXkgVMLhB/YtEJ4EGfvDjSgW
-         PXPA==
+        b=knonfSHG/LebWzSQkZeUbN0cwN61N0d9ZK44Te3DnpFnmJpVI6+geCoex+w8RFf2DS
+         qXX/SAomnRQaaeZ+HqcWtgxJwQEJAAhWbAOh41TvgqOLO5X4HM7v+paICWETpRkDN/GL
+         c4NJcwueu8AIT5/U1VB4BnzEgWDowMw53ShIKYbczonkfOF56TK2l6pJw9XEMofVLtq6
+         B6TsXVkU9n9f34soT2xrfgwoP66Tx6vJIY8UylyvN2zaYwZPbh4Nlikyo4cdWMLFMFhz
+         YaMNYvbeQ3TzMzNLLTC/VoloRpK/3J1uUlhTr7dWwW3OnqvfBapymy4/KELpSOpuNih5
+         VliA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
          :dkim-signature;
-        bh=/PfT/l8PmlPfpYXOLH7rb/lsJEybZL4C79XAA00tJhE=;
-        b=o9KmsQGmIYUa0cCP0B8CwR5KF3huM5ls0Bv7zp3HwZBNCCaf+VoJVar0OXfkOvj1o1
-         LZF1189Ugv0o5VL6datqVQf4umQ8293k2HCTR/Y/Fynw0lEWSh6MkzT0HmTmDqQKerNy
-         VrlrkitBg4wRe1LVgBF1bJ4C00cvjqiuu63AGr/iEh7svpHzEg/mqN0ezvc353XCCniC
-         jpC0WH5YWvlke/COhUKdmRu0XFKZlHors2+FVSPbu3qGId75yH1U5LVZjsabynSYIOwJ
-         0Fr14vwCsgcjZ232uFvRBeyocQGMINkAUWeztHqAS4De+x0QpxGfuxbrftTKAdS57/Gz
-         xQEA==
+        bh=lc1bYhcnqPFlmGbgR5g3n8tVkAtrQ0yFMcwg1XhjNQ0=;
+        b=JSS1pDkVruD4pzZCPFLHZRvK1f2JLIEm7UdxdATS05a7lARY8djR7ftww40Ox+tha0
+         mPs9I2t4lEy8M4W3XQYlEBiaU4OsJHU4pUdK5d4LtaTZyaC33rmkxxpPai4z4C/V+zKI
+         pYMuY3sYjkcBatZZg0cMu8U8yVz9kYCPC7KdLjGXa4Yd/CZUrK3Cbr3VYUXL0TssxGb6
+         A1aGv3CHAi2S8IKRyE0JnVtyeItQ4RLqEaU1It8VXvN8gmi/Pewzhe1sPmZ9T9Si4nwV
+         0+eJ98P1t6c9+kHUcb1iZP1EP1CJNVXxlN0tmkAazPfmb7cbEjM6aX/Otp9uHBOCv6su
+         UB/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dFQRdYej;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZFrpcICa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p18si251872qki.235.2020.03.01.02.43.00
+        by mx.google.com with ESMTPS id r26si2313164qtm.388.2020.03.01.09.05.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 01 Mar 2020 02:43:00 -0800 (PST)
+        Sun, 01 Mar 2020 09:05:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dFQRdYej;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47554 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZFrpcICa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50206 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j8M3o-0005qb-Df
-	for alex.bennee@linaro.org; Sun, 01 Mar 2020 05:43:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53123)
+	id 1j8S1W-0005qu-Lj
+	for alex.bennee@linaro.org; Sun, 01 Mar 2020 12:05:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56698)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j8M23-0001wf-FL
- for qemu-arm@nongnu.org; Sun, 01 Mar 2020 05:41:12 -0500
+ (envelope-from <groeck7@gmail.com>) id 1j8S1N-0005pF-JV
+ for qemu-arm@nongnu.org; Sun, 01 Mar 2020 12:04:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j8M22-0001oq-F7
- for qemu-arm@nongnu.org; Sun, 01 Mar 2020 05:41:11 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:43897
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j8M22-0001ok-BY
- for qemu-arm@nongnu.org; Sun, 01 Mar 2020 05:41:10 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583059270;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/PfT/l8PmlPfpYXOLH7rb/lsJEybZL4C79XAA00tJhE=;
- b=dFQRdYeju6sMEcbz1KFQahH9K2UHg5xSPlcPRU2KwxqC1B7w3zP5HRL2PQW1e9OLyjp3a3
- j8+ZvIm6kBbjyhBo9wyP+mkyVtblf6vxRW/ETObkkgcse8z0xUNOtuti6TyJECxx6p+6gG
- hxGUQ1hIq+VUql/VQ7qH5ytaFd2Io5I=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-236-jskvppMnNkanzehtZpWQ2g-1; Sun, 01 Mar 2020 05:41:06 -0500
-X-MC-Unique: jskvppMnNkanzehtZpWQ2g-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1F22B189F760;
- Sun,  1 Mar 2020 10:41:05 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-59.ams2.redhat.com [10.36.116.59])
- by smtp.corp.redhat.com (Postfix) with ESMTP id ECA4560C80;
- Sun,  1 Mar 2020 10:41:00 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org
-Subject: [PATCH v2 6/6] hw/arm/virt: kvm: allow gicv3 by default if v2 cannot
- work
-Date: Sun,  1 Mar 2020 11:40:40 +0100
-Message-Id: <20200301104040.15186-7-eric.auger@redhat.com>
-In-Reply-To: <20200301104040.15186-1-eric.auger@redhat.com>
-References: <20200301104040.15186-1-eric.auger@redhat.com>
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+ (envelope-from <groeck7@gmail.com>) id 1j8S1M-0001f1-I7
+ for qemu-arm@nongnu.org; Sun, 01 Mar 2020 12:04:53 -0500
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:35201)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1j8S1M-0001eZ-DC; Sun, 01 Mar 2020 12:04:52 -0500
+Received: by mail-pl1-x643.google.com with SMTP id g6so3230186plt.2;
+ Sun, 01 Mar 2020 09:04:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id;
+ bh=lc1bYhcnqPFlmGbgR5g3n8tVkAtrQ0yFMcwg1XhjNQ0=;
+ b=ZFrpcICaWwXThfkufMdPHgSpHrfyorhQjdKSLmHNJSlewSa09bKkJDa0xCZ3RI1tbw
+ qQVI+HTmF5Tmkkqg6M3jZAB+OXoAMTQxbFctpOe3mstkaDRHTiN9nnqFHs6jRYe5lKLO
+ +a/p6bIsKccitkJGGgdFftx3H2ZizRRNE3iaE9W24l4PkAPtXrw4u2rq7Ha113y35AoC
+ WGaMHL6BZC9OhwPl78rtzBM4pZEkTGMiRTr0W2uZEFliixuadMozibkMpTRjdyH2T2Yp
+ RuENomUk4+StVIDlR2dE7aVyaYddGUbnw/MTzK6z6x8qAjT/zKZK6hnHtO+LtoEC/JWb
+ rQnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
+ bh=lc1bYhcnqPFlmGbgR5g3n8tVkAtrQ0yFMcwg1XhjNQ0=;
+ b=qILtqOA2dKVjPGkBBYouckqWRVskHgw6oep9jaH/ytJzfizmoTY7QbEIxKhKjKFOBa
+ yhDBfdvD2bPDe5cOwLR+nU/zGR2FRE2d+8C0EUhKl+GuB/hVzXhnbP4FJTKBJPr9Ueaq
+ c6J1qIHCNfS+3/OvK9CbxZw3O60xnZmD8ubx4fsE91P/QcmH7IKsX9eNFOApPPuoPJRz
+ iHKLtdvmPRWFwEp5CzIU9cu9rCCHCNJxaonKv8y1elSOoSrirl0+equHrHwRfyJHDyWL
+ wXOBVYnYM+MiMV3nPnpxvzjczuczOoSblpZFa9nztheq4cCsH6Aeuqvl0YBiurRE2Dx9
+ r5KA==
+X-Gm-Message-State: APjAAAV9L08978BaxcmFZb6iLc/0M6VLJj29pF+EdeEje1RL+NmuPpI3
+ tV5yA23n6oXVhEO/wpEzYSE=
+X-Received: by 2002:a17:902:7046:: with SMTP id
+ h6mr13075808plt.231.1583082290624; 
+ Sun, 01 Mar 2020 09:04:50 -0800 (PST)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id y5sm17791710pfr.169.2020.03.01.09.04.49
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Sun, 01 Mar 2020 09:04:49 -0800 (PST)
+From: Guenter Roeck <linux@roeck-us.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH 0/3] Wire up USB controllers on fsl-imx6 and fsl-imx6ul
+Date: Sun,  1 Mar 2020 09:04:40 -0800
+Message-Id: <20200301170443.12904-1-linux@roeck-us.net>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::643
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,65 +101,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: maz@kernel.org, drjones@redhat.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Guenter Roeck <linux@roeck-us.net>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D5skVXVRxRwI
+X-TUID: jQS+/Y7AFwCA
 
-At the moment if the end-user does not specify the gic-version along
-with KVM acceleration, v2 is set by default. However most of the
-systems now have GICv3 and sometimes they do not support GICv2
-compatibility.
+This patch series wires up the USB controllers on fsl-imx6 and fsl-imx6ul
+emulations.
 
-This patch keeps the default v2 selection in all cases except
-in the KVM accelerated mode when either
-- the host does not support GICv2 in-kernel emulation or
-- number of VCPUS exceeds 8.
+The first patch is a prerequisite for the following patches. It provides
+a dummy implementation of a register widely used on i.MX systems, and
+specifically the reset behavior of this register. This is needed to make
+the USB ports operational without full implementation of an emulation
+of its PHY controller.
 
-Those cases did not work anyway so we do not break any compatibility.
-Now we get v3 selected in such a case.
+----------------------------------------------------------------
+Guenter Roeck (3):
+      Add dummy i.MXS STMP register support
+      arm: fsl-imx6ul: Wire up USB controllers
+      hw/arm/fsl-imx6: Wire up USB controllers
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reported-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
----
- hw/arm/virt.c | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 610bfc9ee9..2d12a7b0b8 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1542,6 +1542,8 @@ static void virt_set_memmap(VirtMachineState *vms)
-  */
- static void finalize_gic_version(VirtMachineState *vms)
- {
-+    unsigned int max_cpus =3D MACHINE(vms)->smp.max_cpus;
-+
-     if (kvm_enabled()) {
-         int probe_bitmap =3D kvm_arm_vgic_probe();
-=20
-@@ -1552,7 +1554,17 @@ static void finalize_gic_version(VirtMachineState *v=
-ms)
-=20
-         switch (vms->gic_version) {
-         case VIRT_GIC_VERSION_NOSEL:
--            vms->gic_version =3D VIRT_GIC_VERSION_2;
-+            if ((probe_bitmap & KVM_ARM_VGIC_V2 && max_cpus <=3D GIC_NCPU)=
- ||
-+                !kvm_irqchip_in_kernel()) {
-+                vms->gic_version =3D VIRT_GIC_VERSION_2;
-+            } else {
-+                /*
-+                 * in case the host does not support v2 in-kernel emulatio=
-n or
-+                 * the end-user requested more than 8 VCPUs we now default
-+                 * to v3. In any case defaulting to v2 would be broken.
-+                 */
-+                vms->gic_version =3D VIRT_GIC_VERSION_3;
-+            }
-             break;
-         case VIRT_GIC_VERSION_HOST:
-         case VIRT_GIC_VERSION_MAX:
---=20
-2.20.1
-
+ hw/arm/Kconfig              |   3 ++
+ hw/arm/fsl-imx6.c           |  36 +++++++++++++
+ hw/arm/fsl-imx6ul.c         |  35 +++++++++++++
+ hw/misc/Kconfig             |   3 ++
+ hw/misc/Makefile.objs       |   1 +
+ hw/misc/stmp.c              | 121 ++++++++++++++++++++++++++++++++++++++++++++
+ include/hw/arm/fsl-imx6.h   |   3 ++
+ include/hw/arm/fsl-imx6ul.h |   7 +++
+ include/hw/misc/stmp.h      |  47 +++++++++++++++++
+ 9 files changed, 256 insertions(+)
+ create mode 100644 hw/misc/stmp.c
+ create mode 100644 include/hw/misc/stmp.h

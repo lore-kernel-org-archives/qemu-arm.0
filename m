@@ -1,111 +1,139 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp650390lfg;
-        Sat, 29 Feb 2020 11:39:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzTd4pDTYeBqGoy9Lnq6Un4Za88Gj8c4sVB6oGZcR8v208PjJqk/iZt2mr9SvcXWR1wJYUx
-X-Received: by 2002:ae9:c114:: with SMTP id z20mr8265430qki.19.1583005142839;
-        Sat, 29 Feb 2020 11:39:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583005142; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1165813lfg;
+        Sun, 1 Mar 2020 00:47:13 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyvgQX+50TKL5ZCRwBoVmkWGg4FrnHl7aepJyLUTCK9VlHWMxYXw/WOSYeXDrMEh+1Cwnc2
+X-Received: by 2002:a37:688f:: with SMTP id d137mr11147003qkc.54.1583052433662;
+        Sun, 01 Mar 2020 00:47:13 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1583052433; cv=pass;
         d=google.com; s=arc-20160816;
-        b=IgQbO/tQqnn+51NTydEeATJ/z1UMjUOdKSRgb1GxfBf1tBXDdKwgYYsvImn0EMBx3+
-         +DoyzDbzr0UbXJ+AjMfldqLlMBF9Qct4k6WQ4zfSXMxBy9+mSUhRNrEA1xYa5wAaUTjY
-         V29gQPPMVegPTDIl4SFMLlimVZdFBE43dd/nwOQFwSecdcPTimrlABm6/A+GqaW8rNIk
-         jtxY30TloeRPtGDjd/82UMPGvLS8p6GEBwkR/neY6Y/mNr/vcaV9vQVk0L7TAgQIJz7a
-         nbKGM/uqy7kfom3nqZiN71eCBFcw0kVzu/ddezklXGMITJnVhrVBlk3FYtP6wEJMA6+5
-         C2vw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=0JxrFypQ3vhvSdFQy5sjqPhfPXHGyrJu1rpsmWLQ9Iec2/kOIDapHckxdBTzDGl8Ap
+         yK5hLfjWinvZcyuH8yOA1gUtGTf6hXYdwFgLlGCZwW+Cxb3FQ0NX4W51ODmj9/34q0Bf
+         Ser05bnun0xX3yfrqiwozl5C0thp0aHwtYS9a1xwWf/obxz0wuXMXk8EdJC8KqRnFL8G
+         nIInsyo4OB1uUdPa8M8fpfzDIIoP/eEyC2XQNl/6VeXVAO+A0jnSLxhbyERDLSLNtRzP
+         tOxCiDaiVxo+U+24Id7KhkfG6hN9D/KSbYGgkO4wZ7VJ0WhIJO2rvTum1J8TitP5qk45
+         QIAg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=StRG4BSuxFQ2H38OzVfgarWR3LEb8zLZ+DGlIBRMe7c=;
-        b=rVLyJxsFZdPpKgAS0PJXrcPp3M3Ks8x5Osnmrl7/CgkYfgxSPw1e+sNH8Dr1WjpxNk
-         8aKsEyMGNSv+njHRRZIC6iTR3FOIjaU1wxbXMmaD2XFjoSy5VzxBp9XfdqTcxlOJOsaA
-         EwmJ+5Coligm0I1dcwhHSOVm72ghiM3wfjl80S1f8isaUiV5xHxuoenqfzV2CXWHMS8r
-         PTqTmvhtfPtLkNQKuDxqrReUJLQvfFNKfRCpsRyUgWqNCVF9eFJXj/ew1+atMzdoFrvH
-         UBUo5caRbfeDDwVMbaGS+aQfyBB6N9nT4AjrS4LEqIpHCZtpIKb2JZd53dfj/qLbd+f9
-         nbJA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZgbJV2S5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :message-id:date:thread-index:thread-topic:subject:from
+         :dkim-signature;
+        bh=3s3Ksu5dVLWBvyTcTMfp9/hivIDFfS+lkBtJzsq8GtA=;
+        b=fcJmHclKG2pXHOHF70+wbWenx8UpUM/qZmAEOxF5kqrHTuXi3gYeN8n8+eA8kndq1+
+         ho4onNYH2pb4wb7lvMIzctH40a/5IP12QD1Bs5oRP8ryv2IRfOaBn0YKmwrK9fmMAoR7
+         l2A1tTzaECqiaTltD60Sj6tYC+4bYihobdKowCCaossKW1x1+DKKUyBk1FCZsIPBn3eF
+         EWuHg9G4YButdlojS9huYw1bs+tCOJtqLpkTaBSac6DyA/OQqE0NzktdeUxl0VZh3S3p
+         BrZEDb6XCETyeDAiQuYnu215j9CNd7eDClla6HuXDBz+uArxOvy8aX7w+E2kW6s3J1Uq
+         8lpw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@stephanosio.onmicrosoft.com header.s=selector1-stephanosio-onmicrosoft-com header.b=Xokx8CWP;
+       arc=pass (i=1 spf=pass spfdomain=stephanos.io dkim=pass dkdomain=stephanos.io dmarc=pass fromdomain=stephanos.io);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t9si3298547qto.189.2020.02.29.11.39.02
+        by mx.google.com with ESMTPS id d126si4249599qke.18.2020.03.01.00.47.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 29 Feb 2020 11:39:02 -0800 (PST)
+        Sun, 01 Mar 2020 00:47:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZgbJV2S5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35224 helo=lists1p.gnu.org)
+       dkim=pass header.i=@stephanosio.onmicrosoft.com header.s=selector1-stephanosio-onmicrosoft-com header.b=Xokx8CWP;
+       arc=pass (i=1 spf=pass spfdomain=stephanos.io dkim=pass dkdomain=stephanos.io dmarc=pass fromdomain=stephanos.io);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39522 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j87x0-0003W7-9Q
-	for alex.bennee@linaro.org; Sat, 29 Feb 2020 14:39:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44215)
+	id 1j8KFl-00074x-3k
+	for alex.bennee@linaro.org; Sun, 01 Mar 2020 03:47:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43995)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1j87ws-0003Vd-Ky
- for qemu-arm@nongnu.org; Sat, 29 Feb 2020 14:38:55 -0500
+ (envelope-from <root@stephanos.io>) id 1j8KFc-00074n-6W
+ for qemu-arm@nongnu.org; Sun, 01 Mar 2020 03:47:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1j87wr-0003zm-FJ
- for qemu-arm@nongnu.org; Sat, 29 Feb 2020 14:38:54 -0500
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:37953)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1j87wr-0003zQ-9d
- for qemu-arm@nongnu.org; Sat, 29 Feb 2020 14:38:53 -0500
-Received: by mail-pl1-x644.google.com with SMTP id p7so2582886pli.5
- for <qemu-arm@nongnu.org>; Sat, 29 Feb 2020 11:38:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=StRG4BSuxFQ2H38OzVfgarWR3LEb8zLZ+DGlIBRMe7c=;
- b=ZgbJV2S5fvjPN7e3KnkuHzeJz6ffDFLb5zJJc3LbX6T9ALwhJ/Dp/YjtCmnBykg5dl
- hjcVh6MaYBwY5aJLue9AlGkx9Lte4fCCLBIFFt4y/9rAT81L2DhUd694J914kueVKAlT
- fowdmdHpjBx0vW4HA6NzDV/iiHjkWVd8Mr4zYXHXRyGvcyt6S7VsHPT8iqccZ+2Zoh0/
- hkObkqyWD6EDBXeLMshaZQxCazue0Xr/pC1uniu0RIaEMSR1KszGCHiy2BvX6314BM+U
- mzdrBFNvo/4QB7ZpVSzkP1n2DrxsMAWrN+rKGcy83y6+ydHxrjicJnmuuqA/ZrN/WWdB
- hCCQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=StRG4BSuxFQ2H38OzVfgarWR3LEb8zLZ+DGlIBRMe7c=;
- b=dV6lhjypg1Yboo5O3l+qVMXB1/jfbuXIXmToBICxoCN6fqD5ojym5mAw1Tc874Njxf
- 5ACS/v0eNgnmniFsZLUsxZnR6cy+ZUA+4i6Xn0xTEPgzuoncTuHY5FjRk2YxaA3IcTEP
- JYGvDdXQQajsvikDAmC1qcUVPKmmlx92bHrqGijYSaEoGws93227Z16sf3MxGvLaNeZl
- bHl21no/1kkODVTlxxYJGPmV2eKklrbNMZRV7BDhjQMCMCkZ2JbjmW9rBtCGtSOMPY60
- qfFB3Gb84AyxDaNAh4l1LTrrrVppQozVqTenZRyicZVwGANCM/EmwACG3gkGcM1Zjz1z
- zzhg==
-X-Gm-Message-State: APjAAAXCidK8sUA17/NWVCobsVvCJWrpWqRrYJ96nvudI+YAw66PX5u+
- dF1111FvIUBQCZIpWW1mL//mBw==
-X-Received: by 2002:a17:902:6504:: with SMTP id
- b4mr10129785plk.291.1583005131985; 
- Sat, 29 Feb 2020 11:38:51 -0800 (PST)
-Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id
- s206sm15912403pfs.100.2020.02.29.11.38.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 29 Feb 2020 11:38:51 -0800 (PST)
-Subject: Re: [PATCH 0/5] hw/arm: Remove big-endian checks on machine code
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-References: <20200228125351.29482-1-philmd@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <0899e78b-0082-a826-2e15-b44c76e6c716@linaro.org>
-Date: Sat, 29 Feb 2020 11:38:49 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
-MIME-Version: 1.0
-In-Reply-To: <20200228125351.29482-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
+ (envelope-from <root@stephanos.io>) id 1j8KFZ-0003Kb-Pw
+ for qemu-arm@nongnu.org; Sun, 01 Mar 2020 03:47:03 -0500
+Received: from mail-eopbgr1280138.outbound.protection.outlook.com
+ ([40.107.128.138]:20960 helo=KOR01-PS2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <root@stephanos.io>)
+ id 1j8KFZ-0003Id-5i; Sun, 01 Mar 2020 03:47:01 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Y1DDUKcSmtw6iqgUmFA3//8cSlBH/zMHxruTDHnuRYEbT3TaMPcl1SZ7Fu4A2I+Ut31VXYBSJAL8i+KzMP8C4eLsN6fuMhGp9qZv7mD+oOBwgG65g/IVsOKRw7xQzLHWrO72Di0l3A1QD7glgBzMHZx00q24M+WJDzSxodKcHl78BmkamOIwRBwErmAcL0p5aZvZE+QRTmyg/Ry2zXxUFhxRsEXn+IVSJ2iZ05ir8NI67vxFQMYIax5aV/a3QE1i9lh4z7/3d680W7RfIV5M1dYcUhChiY1BiNegXP/8bGufBBGLPw78IPGr4y7BhmWeTS5oeIgpNohxkUZZok64kA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3s3Ksu5dVLWBvyTcTMfp9/hivIDFfS+lkBtJzsq8GtA=;
+ b=jAmuNhXUCXr/3PuIqDWerM8BxrV9urVzgozMXSqkPDgxpodWBgrSC6OL+ripOJ1q3u49s3iHkgKWc0TnhPg66eWgRnG+iR5rQjj1d11hzXF3WQ7sUJ/5LgPKlJ5glP2kWENJCXR3O+0UJjTZUaWxjc+I1Mp3hrXQf6VZ7CFW251/0H2QgX21NanKHNWBREBtC2f5P1iYIigBSt3hRrWee8BlxWOfLzqy3RWw5GtLnR62NY+WBaRWkRASpx6ZUpLSc/YHIPXYWF1PLkJ9yNdKikgx3q6AGaza8M6+XGfpcGvBORU1Iqiubc8AiStzzuE3OzeQ4m6PdJkmWkwedy4HFw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=stephanos.io; dmarc=pass action=none header.from=stephanos.io;
+ dkim=pass header.d=stephanos.io; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=stephanosio.onmicrosoft.com; s=selector1-stephanosio-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3s3Ksu5dVLWBvyTcTMfp9/hivIDFfS+lkBtJzsq8GtA=;
+ b=Xokx8CWPjT9aPp6tmvGT9PPnwrkP21Lpa5TYhO90kCB8DXZFwsvvRhWGV1Unj/GeAcwBN/hssrG0mAhbYbqjcCbGURKh7m/wz/wX/vb+LIn3IFA8XpdDaCQFGhPbrCS8IA8Bgnu8WI5bUaW1js7NnJkCa4n6Wbmfcp66KgFj5LA=
+Received: from SLXP216MB0285.KORP216.PROD.OUTLOOK.COM (10.174.35.136) by
+ SLXP216MB0032.KORP216.PROD.OUTLOOK.COM (10.174.35.148) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2772.18; Sun, 1 Mar 2020 08:45:01 +0000
+Received: from SLXP216MB0285.KORP216.PROD.OUTLOOK.COM
+ ([fe80::d10f:962f:91d7:b1b]) by SLXP216MB0285.KORP216.PROD.OUTLOOK.COM
+ ([fe80::d10f:962f:91d7:b1b%8]) with mapi id 15.20.2772.019; Sun, 1 Mar 2020
+ 08:45:01 +0000
+Received: from DOMINUS.corp.kimin.kr (1.214.196.86) by
+ HK2P15301CA0010.APCP153.PROD.OUTLOOK.COM (2603:1096:202:1::20) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2793.5 via Frontend Transport; Sun, 1 Mar 2020 08:45:00 +0000
+From: Stephanos Ioannidis <root@stephanos.io>
+Subject: [PATCH] hw/arm/stm32f405: Add preliminary flash interface emulation
+ support
+Thread-Topic: [PATCH] hw/arm/stm32f405: Add preliminary flash interface
+ emulation support
+Thread-Index: AQHV76WxZe46p89OQkyRrUq4sIubZA==
+Date: Sun, 1 Mar 2020 08:45:01 +0000
+Message-ID: <20200301084427.93823-1-root@stephanos.io>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::644
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: HK2P15301CA0010.APCP153.PROD.OUTLOOK.COM
+ (2603:1096:202:1::20) To SLXP216MB0285.KORP216.PROD.OUTLOOK.COM
+ (2603:1096:100:9::8)
+x-mailer: git-send-email 2.17.1
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=root@stephanos.io; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-originating-ip: [1.214.196.86]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 3ceb679d-a187-419b-1c39-08d7bdbcd458
+x-ms-traffictypediagnostic: SLXP216MB0032:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <SLXP216MB0032296D00E22BFE7A99DC5EBDE60@SLXP216MB0032.KORP216.PROD.OUTLOOK.COM>
+x-ms-oob-tlc-oobclassifiers: OLM:109;
+x-forefront-prvs: 0329B15C8A
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(396003)(366004)(39830400003)(376002)(136003)(346002)(189003)(199004)(86362001)(66946007)(52116002)(186003)(16526019)(26005)(478600001)(19627235002)(956004)(2616005)(66446008)(64756008)(66556008)(66476007)(81166006)(8676002)(81156014)(5660300002)(8936002)(1076003)(36756003)(6512007)(109986005)(2906002)(30864003)(316002)(71200400001)(54906003)(6506007)(66574012)(6486002)(4326008)(36456003)(42976004);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:SLXP216MB0032;
+ H:SLXP216MB0285.KORP216.PROD.OUTLOOK.COM; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: stephanos.io does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 2ri9I0zsPQ2DA1i0hNjY/rY0rg9KYFsPfQ3Nljj+IJlxrVpV0zHVg4iuRE78lFXd7wC/vV45l1B0c+CFP9GB1GIE+SkxBR7dNx4Jn+b1pELeVcw4s/TUMT0pO6ZhYWhO3zCLsKi//9qwjdFC4cePouamDEMogl5WSo8Zzg5wCclO5N8spQ1R1IyKac8MBNY21y0VO4e03srU5Me0ykdOZjcFGzZs2W1OobfHYFjdLG8UuRJDF6s06LJ0G6cKrROhSb7S/7HfvKJSBTAgPqiaPugzPj+EIf42ryMMybK2xOlGzZ0yW5KKoIahEUv2s0Z+1A2LSBmkWwuoiOIkIdsttB1Dtn4VRhs4Bs16WF9UUuYZ4LUo+khKFYF1e2TtBG+pBDonMTBDMVpGabclvCmn1lJBGVWgRzsW39dSvSgOTwZMteKp5JgCgo3Bl3IvV2V+Tl4ZI32FKuPWemkEqK0Oa0NX5L1glh3VB1Wti+oFdD04YuCL0AgX08DRLu9GohwDnrfr31qqI2mghkyByMAu+Q==
+x-ms-exchange-antispam-messagedata: Wc1+KQChZpnfhoxjQzlaLiFjBsRpYlRDOOHfVNsXkrGHuVURUNmHAQGW+jZwMhUXyxsARPbyG64sDz/JR9O4IIgS9Rperux8BDEdqARpCN2oqdmUnCx/+7VwJ66wURZ06fMOVHS2YlV60J+oxa8MKA==
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: stephanos.io
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3ceb679d-a187-419b-1c39-08d7bdbcd458
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Mar 2020 08:45:01.3348 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: c98113d8-f05d-4479-8605-bfc8e93dc16d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: JpBXxjnaVF8Yq4+ek0J9VnCKoEqWyOH+XH8e2km4pDaR1K+lW4yxLNKZN+98bMVQhNvri3mY30L2h7RiSFScqg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SLXP216MB0032
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 40.107.128.138
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,23 +145,558 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Jan Kiszka <jan.kiszka@web.de>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Stephanos Ioannidis <root@stephanos.io>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>, "open
+ list:ARM TCG CPUs" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jDR+jzKTHX6d
+X-TUID: PxNOOw9ctsRR
 
-On 2/28/20 4:53 AM, Philippe Mathieu-Daudé wrote:
-> We only build the little-endian softmmu configurations.
-> Checking for big endian is pointless, remove the unused code.
-> 
-> Philippe Mathieu-Daudé (5):
->   hw/arm/gumstix: Simplify since the machines are little-endian only
->   hw/arm/mainstone: Simplify since the machines are little-endian only
->   hw/arm/omap_sx1: Simplify since the machines are little-endian only
->   hw/arm/z2: Simplify since the machines are little-endian only
->   hw/arm/musicpal: Simplify since the machines are little-endian only
+The flash interface (FLASHIF) peripheral provides a control interface
+for the SoC embedded flash memory on the STM32F4xx series devices.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+This commit adds preliminary support for the flash interface peripheral
+emulation, in order to support proper emulation of the firmware images
+that use the STM32Cube driver, which configures and validates the
+FLASH_ACR register during system initialisation.
 
-r~
+Signed-off-by: Stephanos Ioannidis <root@stephanos.io>
+---
+ hw/arm/Kconfig                      |   1 +
+ hw/arm/stm32f405_soc.c              |  15 +-
+ hw/misc/Kconfig                     |   3 +
+ hw/misc/Makefile.objs               |   1 +
+ hw/misc/stm32f4xx_flashif.c         | 215 ++++++++++++++++++++++++++++
+ hw/misc/trace-events                |   4 +
+ include/hw/arm/stm32f405_soc.h      |   2 +
+ include/hw/misc/stm32f4xx_flashif.h | 144 +++++++++++++++++++
+ 8 files changed, 384 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/stm32f4xx_flashif.c
+ create mode 100644 include/hw/misc/stm32f4xx_flashif.h
+
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 3d86691ae0..179696ec91 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -314,6 +314,7 @@ config STM32F205_SOC
+ config STM32F405_SOC
+     bool
+     select ARM_V7M
++    select STM32F4XX_FLASHIF
+     select STM32F4XX_SYSCFG
+     select STM32F4XX_EXTI
+=20
+diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
+index 9bcad97853..72b16910c7 100644
+--- a/hw/arm/stm32f405_soc.c
++++ b/hw/arm/stm32f405_soc.c
+@@ -30,6 +30,7 @@
+ #include "hw/arm/stm32f405_soc.h"
+ #include "hw/misc/unimp.h"
+=20
++#define FLASHIF_ADDR                   0x40023C00
+ #define SYSCFG_ADD                     0x40013800
+ static const uint32_t usart_addr[] =3D { 0x40011000, 0x40004400, 0x4000480=
+0,
+                                        0x40004C00, 0x40005000, 0x40011400,
+@@ -59,6 +60,9 @@ static void stm32f405_soc_initfn(Object *obj)
+     sysbus_init_child_obj(obj, "armv7m", &s->armv7m, sizeof(s->armv7m),
+                           TYPE_ARMV7M);
+=20
++    sysbus_init_child_obj(obj, "flashif", &s->flashif, sizeof(s->flashif),
++                          TYPE_STM32F4XX_FLASHIF);
++
+     sysbus_init_child_obj(obj, "syscfg", &s->syscfg, sizeof(s->syscfg),
+                           TYPE_STM32F4XX_SYSCFG);
+=20
+@@ -130,6 +134,16 @@ static void stm32f405_soc_realize(DeviceState *dev_soc=
+, Error **errp)
+         return;
+     }
+=20
++    /* Flash interface */
++    dev =3D DEVICE(&s->flashif);
++    object_property_set_bool(OBJECT(&s->flashif), true, "realized", &err);
++    if (err !=3D NULL) {
++        error_propagate(errp, err);
++        return;
++    }
++    busdev =3D SYS_BUS_DEVICE(dev);
++    sysbus_mmio_map(busdev, 0, FLASHIF_ADDR);
++
+     /* System configuration controller */
+     dev =3D DEVICE(&s->syscfg);
+     object_property_set_bool(OBJECT(&s->syscfg), true, "realized", &err);
+@@ -261,7 +275,6 @@ static void stm32f405_soc_realize(DeviceState *dev_soc,=
+ Error **errp)
+     create_unimplemented_device("GPIOI",       0x40022000, 0x400);
+     create_unimplemented_device("CRC",         0x40023000, 0x400);
+     create_unimplemented_device("RCC",         0x40023800, 0x400);
+-    create_unimplemented_device("Flash Int",   0x40023C00, 0x400);
+     create_unimplemented_device("BKPSRAM",     0x40024000, 0x400);
+     create_unimplemented_device("DMA1",        0x40026000, 0x400);
+     create_unimplemented_device("DMA2",        0x40026400, 0x400);
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index bdd77d8020..e333a955b2 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -79,6 +79,9 @@ config IMX
+     select SSI
+     select USB_EHCI_SYSBUS
+=20
++config STM32F4XX_FLASHIF
++    bool
++
+ config STM32F2XX_SYSCFG
+     bool
+=20
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index da993f45b7..1aea0b9bb9 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -58,6 +58,7 @@ common-obj-$(CONFIG_RASPI) +=3D bcm2835_thermal.o
+ common-obj-$(CONFIG_SLAVIO) +=3D slavio_misc.o
+ common-obj-$(CONFIG_ZYNQ) +=3D zynq_slcr.o
+ common-obj-$(CONFIG_ZYNQ) +=3D zynq-xadc.o
++common-obj-$(CONFIG_STM32F4XX_FLASHIF) +=3D stm32f4xx_flashif.o
+ common-obj-$(CONFIG_STM32F2XX_SYSCFG) +=3D stm32f2xx_syscfg.o
+ common-obj-$(CONFIG_STM32F4XX_SYSCFG) +=3D stm32f4xx_syscfg.o
+ common-obj-$(CONFIG_STM32F4XX_EXTI) +=3D stm32f4xx_exti.o
+diff --git a/hw/misc/stm32f4xx_flashif.c b/hw/misc/stm32f4xx_flashif.c
+new file mode 100644
+index 0000000000..d280fc5b2c
+--- /dev/null
++++ b/hw/misc/stm32f4xx_flashif.c
+@@ -0,0 +1,215 @@
++/*
++ * STM32F4xx FLASHIF
++ *
++ * Copyright (c) 2020 Stephanos Ioannidis <root@stephanos.io>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a=
+ copy
++ * of this software and associated documentation files (the "Software"), t=
+o deal
++ * in the Software without restriction, including without limitation the r=
+ights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or se=
+ll
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included=
+ in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS=
+ OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY=
+,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OT=
+HER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING=
+ FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS =
+IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "trace.h"
++#include "hw/irq.h"
++#include "migration/vmstate.h"
++#include "hw/misc/stm32f4xx_flashif.h"
++
++static void stm32f4xx_flashif_reset(DeviceState *dev)
++{
++    STM32F4xxFlashIfState *s =3D STM32F4XX_FLASHIF(dev);
++
++    /* Initialise states */
++    s->cr_key_index =3D 0;
++    s->optcr_key_index =3D 0;
++
++    /* Initialise register values */
++    s->flash_acr.reg =3D 0x00000000;
++    s->flash_keyr.reg =3D 0x00000000;
++    s->flash_optkeyr.reg =3D 0x00000000;
++    s->flash_sr.reg =3D 0x00000000;
++    s->flash_cr.reg =3D 0x80000000;
++    s->flash_optcr.reg =3D 0x0FFFAAED;
++}
++
++static uint64_t stm32f4xx_flashif_read(void * opaque, hwaddr addr,
++                                       unsigned int size)
++{
++    STM32F4xxFlashIfState *s =3D opaque;
++
++    trace_stm32f4xx_flashif_read(addr);
++
++    switch (addr) {
++    case FLASH_ACR:
++        return s->flash_acr.reg;
++    case FLASH_SR:
++        return s->flash_sr.reg;
++    case FLASH_CR:
++        return s->flash_cr.reg;
++    case FLASH_OPTCR:
++        return s->flash_optcr.reg;
++    default:
++        qemu_log_mask(
++            LOG_GUEST_ERROR,
++            "%s: Bad offset 0x%"HWADDR_PRIx"\n", __func__, addr);
++        return 0;
++    }
++}
++
++static void flash_acr_write(STM32F4xxFlashIfState *s, FlashAcrType val)
++{
++    /* Set latency */
++    s->flash_acr.latency =3D val.latency;
++    /* Set prefetch status */
++    s->flash_acr.prften =3D val.prften;
++    /* Set instruction cache status */
++    s->flash_acr.icen =3D val.icen;
++    /* Set data cache status */
++    s->flash_acr.dcen =3D val.dcen;
++}
++
++static void flash_cr_write(STM32F4xxFlashIfState *s, FlashCrType val)
++{
++    /* Lock FLASH_CR if lock bit is set */
++    if (val.lock) {
++        s->flash_cr.lock =3D 1;
++        s->cr_key_index =3D 0;
++        return;
++    }
++}
++
++static void flash_optcr_write(STM32F4xxFlashIfState *s, FlashOptcrType val=
+)
++{
++    /* Lock FLASH_OPTCR if lock bit is set */
++    if (val.optlock) {
++        s->flash_optcr.optlock =3D 1;
++        s->optcr_key_index =3D 0;
++        return;
++    }
++}
++
++static void stm32f4xx_flashif_write(void *opaque, hwaddr addr,
++                                    uint64_t val64, unsigned int size)
++{
++    STM32F4xxFlashIfState *s =3D opaque;
++    uint32_t value =3D val64;
++
++    trace_stm32f4xx_flashif_write(value, addr);
++
++    switch (addr) {
++    case FLASH_ACR:
++        flash_acr_write(s, (FlashAcrType)value);
++        return;
++    case FLASH_KEYR:
++        if (s->cr_key_index =3D=3D 0 && value =3D=3D 0x45670123) {
++            s->cr_key_index =3D 1;
++        } else if (s->cr_key_index =3D=3D 1 && value =3D=3D 0xCDEF89AB) {
++            /* Valid key; unlock FLASH_CR */
++            s->flash_cr.lock =3D 0;
++            s->cr_key_index =3D 0;
++        } else {
++            /* Invalid key; permanently lock FLASH_CR until reset */
++            s->flash_cr.lock =3D 1;
++            s->cr_key_index =3D -1;
++        }
++        return;
++    case FLASH_OPTKEYR:
++        if (s->optcr_key_index =3D=3D 0 && value =3D=3D 0x08192A3B) {
++            s->optcr_key_index =3D 1;
++        } else if (s->optcr_key_index =3D=3D 1 && value =3D=3D 0x4C5D6E7F)=
+ {
++            /* Valid key; unlock FLASH_OPTCR */
++            s->flash_optcr.optlock =3D 0;
++            s->optcr_key_index =3D 0;
++        } else {
++            /* Invalid key; lock FLASH_OPTCR until reset */
++            s->flash_optcr.optlock =3D 1;
++            s->optcr_key_index =3D -1;
++        }
++        return;
++    case FLASH_SR:
++        if (s->flash_sr.eop)        s->flash_sr.eop =3D 0;
++        if (s->flash_sr.operr)      s->flash_sr.operr =3D 0;
++        if (s->flash_sr.wrperr)     s->flash_sr.wrperr =3D 0;
++        if (s->flash_sr.pgaerr)     s->flash_sr.pgaerr =3D 0;
++        if (s->flash_sr.pgperr)     s->flash_sr.pgperr =3D 0;
++        if (s->flash_sr.pgserr)     s->flash_sr.pgserr =3D 0;
++        return;
++    case FLASH_CR:
++        flash_cr_write(s, (FlashCrType)value);
++        return;
++    case FLASH_OPTCR:
++        flash_optcr_write(s, (FlashOptcrType)value);
++        return;
++    default:
++        qemu_log_mask(
++            LOG_GUEST_ERROR,
++            "%s: Bad offset 0x%"HWADDR_PRIx"\n", __func__, addr);
++    }
++}
++
++static const MemoryRegionOps stm32f4xx_flashif_ops =3D {
++    .read =3D stm32f4xx_flashif_read,
++    .write =3D stm32f4xx_flashif_write,
++    .endianness =3D DEVICE_NATIVE_ENDIAN
++};
++
++static void stm32f4xx_flashif_init(Object *obj)
++{
++    STM32F4xxFlashIfState *s =3D STM32F4XX_FLASHIF(obj);
++
++    memory_region_init_io(&s->mmio, obj, &stm32f4xx_flashif_ops, s,
++                          TYPE_STM32F4XX_FLASHIF, 0x400);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
++}
++
++static const VMStateDescription vmstate_stm32f4xx_flashif =3D {
++    .name =3D TYPE_STM32F4XX_FLASHIF,
++    .version_id =3D 1,
++    .minimum_version_id =3D 1,
++    .fields =3D (VMStateField[]) {
++        VMSTATE_UINT32(flash_acr.reg, STM32F4xxFlashIfState),
++        VMSTATE_UINT32(flash_keyr.reg, STM32F4xxFlashIfState),
++        VMSTATE_UINT32(flash_optkeyr.reg, STM32F4xxFlashIfState),
++        VMSTATE_UINT32(flash_sr.reg, STM32F4xxFlashIfState),
++        VMSTATE_UINT32(flash_cr.reg, STM32F4xxFlashIfState),
++        VMSTATE_UINT32(flash_optcr.reg, STM32F4xxFlashIfState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void stm32f4xx_flashif_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++
++    dc->reset =3D stm32f4xx_flashif_reset;
++    dc->vmsd =3D &vmstate_stm32f4xx_flashif;
++}
++
++static const TypeInfo stm32f4xx_flashif_info =3D {
++    .name          =3D TYPE_STM32F4XX_FLASHIF,
++    .parent        =3D TYPE_SYS_BUS_DEVICE,
++    .instance_size =3D sizeof(STM32F4xxFlashIfState),
++    .instance_init =3D stm32f4xx_flashif_init,
++    .class_init    =3D stm32f4xx_flashif_class_init
++};
++
++static void stm32f4xx_flashif_register_types(void)
++{
++    type_register_static(&stm32f4xx_flashif_info);
++}
++
++type_init(stm32f4xx_flashif_register_types)
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 7f0f5dff3a..bd9a5dd483 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -84,6 +84,10 @@ mos6522_set_sr_int(void) "set sr_int"
+ mos6522_write(uint64_t addr, uint64_t val) "reg=3D0x%"PRIx64 " val=3D0x%"P=
+RIx64
+ mos6522_read(uint64_t addr, unsigned val) "reg=3D0x%"PRIx64 " val=3D0x%x"
+=20
++# stm32f4xx_flashif
++stm32f4xx_flashif_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
++stm32f4xx_flashif_write(uint64_t addr, uint64_t data) "reg write: addr: 0x=
+%" PRIx64 " val: 0x%" PRIx64 ""
++
+ # stm32f4xx_syscfg
+ stm32f4xx_syscfg_set_irq(int gpio, int line, int level) "Interupt: GPIO: %=
+d, Line: %d; Level: %d"
+ stm32f4xx_pulse_exti(int irq) "Pulse EXTI: %d"
+diff --git a/include/hw/arm/stm32f405_soc.h b/include/hw/arm/stm32f405_soc.=
+h
+index 1fe97f8c3a..a94c3c51ac 100644
+--- a/include/hw/arm/stm32f405_soc.h
++++ b/include/hw/arm/stm32f405_soc.h
+@@ -25,6 +25,7 @@
+ #ifndef HW_ARM_STM32F405_SOC_H
+ #define HW_ARM_STM32F405_SOC_H
+=20
++#include "hw/misc/stm32f4xx_flashif.h"
+ #include "hw/misc/stm32f4xx_syscfg.h"
+ #include "hw/timer/stm32f2xx_timer.h"
+ #include "hw/char/stm32f2xx_usart.h"
+@@ -57,6 +58,7 @@ typedef struct STM32F405State {
+=20
+     ARMv7MState armv7m;
+=20
++    STM32F4xxFlashIfState flashif;
+     STM32F4xxSyscfgState syscfg;
+     STM32F4xxExtiState exti;
+     STM32F2XXUsartState usart[STM_NUM_USARTS];
+diff --git a/include/hw/misc/stm32f4xx_flashif.h b/include/hw/misc/stm32f4x=
+x_flashif.h
+new file mode 100644
+index 0000000000..e364ca39c7
+--- /dev/null
++++ b/include/hw/misc/stm32f4xx_flashif.h
+@@ -0,0 +1,144 @@
++/*
++ * STM32F4xx FLASHIF
++ *
++ * Copyright (c) 2020 Stephanos Ioannidis <root@stephanos.io>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a=
+ copy
++ * of this software and associated documentation files (the "Software"), t=
+o deal
++ * in the Software without restriction, including without limitation the r=
+ights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or se=
+ll
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included=
+ in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS=
+ OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY=
+,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OT=
+HER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING=
+ FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS =
+IN
++ * THE SOFTWARE.
++ */
++
++#ifndef HW_STM_FLASHIF_H
++#define HW_STM_FLASHIF_H
++
++#include "hw/sysbus.h"
++#include "hw/hw.h"
++
++#define TYPE_STM32F4XX_FLASHIF "stm32f4xx-flashif"
++#define STM32F4XX_FLASHIF(obj) \
++    OBJECT_CHECK(STM32F4xxFlashIfState, (obj), TYPE_STM32F4XX_FLASHIF)
++
++#define FLASH_ACR       0x00
++#define FLASH_KEYR      0x04
++#define FLASH_OPTKEYR   0x08
++#define FLASH_SR        0x0C
++#define FLASH_CR        0x10
++#define FLASH_OPTCR     0x14
++
++typedef union {
++    struct {
++        uint32_t latency : 3;
++        uint32_t reserved0 : 5;
++        uint32_t prften : 1;
++        uint32_t icen : 1;
++        uint32_t dcen : 1;
++        uint32_t icrst : 1;
++        uint32_t dcrst : 1;
++        uint32_t reserved1 : 19;
++    };
++    uint32_t reg;
++} FlashAcrType;
++
++typedef union {
++    struct {
++        uint32_t key : 32;
++    };
++    uint32_t reg;
++} FlashKeyrType;
++
++typedef union {
++    struct {
++        uint32_t optkey : 32;
++    };
++    uint32_t reg;
++} FlashOptkeyrType;
++
++typedef union {
++    struct {
++        uint32_t eop : 1;
++        uint32_t operr : 1;
++        uint32_t reserved0 : 2;
++        uint32_t wrperr : 1;
++        uint32_t pgaerr : 1;
++        uint32_t pgperr : 1;
++        uint32_t pgserr : 1;
++        uint32_t reserved1 : 8;
++        uint32_t bsy : 1;
++        uint32_t reserved2 : 15;
++    };
++    uint32_t reg;
++} FlashSrType;
++
++typedef union {
++    struct {
++        uint32_t pg : 1;
++        uint32_t ser : 1;
++        uint32_t mer : 1;
++        uint32_t snb : 4;
++        uint32_t reserved0 : 1;
++        uint32_t psize : 2;
++        uint32_t reserved1 : 6;
++        uint32_t strt : 1;
++        uint32_t reserved2 : 7;
++        uint32_t eopie : 1;
++        uint32_t reserved3 : 6;
++        uint32_t lock : 1;
++    };
++    uint32_t reg;
++} FlashCrType;
++
++typedef union {
++    struct {
++        uint32_t optlock : 1;
++        uint32_t optstrt : 1;
++        uint32_t bor_lev : 2;
++        uint32_t reserved0 : 1;
++        uint32_t wdg_sw : 1;
++        uint32_t nrst_stop : 1;
++        uint32_t nrst_stdby : 1;
++        uint32_t rdp : 8;
++        uint32_t nwrp : 12;
++        uint32_t reserved1 : 4;
++    };
++    uint32_t reg;
++} FlashOptcrType;
++
++typedef struct {
++    /* <private> */
++    SysBusDevice parent_obj;
++
++    /* <public> */
++    MemoryRegion mmio;
++
++    int32_t cr_key_index;
++    int32_t optcr_key_index;
++
++    /* Access control register (FLASH_ACR) */
++    FlashAcrType flash_acr;
++    /* Key register (FLASH_KEYR) */
++    FlashKeyrType flash_keyr;
++    /* Option key register (FLASH_OPTKEYR) */
++    FlashOptkeyrType flash_optkeyr;
++    /* Status register (FLASH_SR) */
++    FlashSrType flash_sr;
++    /* Control register (FLASH_CR) */
++    FlashCrType flash_cr;
++    /* Option control register (FLASH_OPTCR) */
++    FlashOptcrType flash_optcr;
++} STM32F4xxFlashIfState;
++
++#endif
+--=20
+2.17.1
+

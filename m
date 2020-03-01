@@ -1,161 +1,236 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1555824lfg;
-        Sun, 1 Mar 2020 10:02:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxoYYWgMZB1n1LryMaEpuRwLzzquQTXyuA7qrXfVpP12AxIyvX85hQD3QM4r5s2gPjRqlu6
-X-Received: by 2002:a37:4808:: with SMTP id v8mr11756561qka.263.1583085768107;
-        Sun, 01 Mar 2020 10:02:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583085768; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1709229lfg;
+        Sun, 1 Mar 2020 13:50:48 -0800 (PST)
+X-Received: by 2002:adf:828b:: with SMTP id 11mr17744151wrc.169.1583099448221;
+        Sun, 01 Mar 2020 13:50:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583099448; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZXXN3LyeRObguwlrWBO/1X6pfPYUTuqqaf29N9MfJLDX8MLgpzuCZjl3DYnMWI+ICa
-         nJok5T7JGONBa7v9mplQ3aasHyEkYMPmnZ9avKo0bZdh9bMbTBW69WlfodRJmmTijeCa
-         2Y5uEbYsNHEL5sJlWoFQ9+K+0EnjyGnP2wm4OGIs9i5kD1YO9KeO6kTZzLuStaDsH9vn
-         7hZBs5pa8JIyaxK3Darmy8Se9mRoyiTPg/UT2Gresa61GUUttf3MpI1FioPsDD9xUzRO
-         xjE8MfUzftqq8vK1BaepKY6AM0gcVNY7YTlbrqNDOdr3cEmzYi/DQfCsJhOrQUy/rI/n
-         4AVQ==
+        b=bS2JZCkvYOCtkPXuDw75VV4UEWC6GL6LosCGClV1MsiJ+2ymmEtSVeGKxeeMqNFS3q
+         O45ssBc9JChhhH7MxjjWBWE9ZqT/cZDVHyCcrUJJr7deAm8RBGGHUD84dZ1/FqA/VqQd
+         hAJxcsZwoDQ6UzD/gVU1bawZkgOUMSnmq3ml47gQb9awQmtJoPAqlZWGOdDe0AV92ofS
+         bcbMI5sO4aRpFfiiSdtWAq/DFk3tQgIW/7oBT2CZ/SN4Ythf9ciTa608LnkmbvEhxdZf
+         ayx8eRqDGA7sAIbMkZTQknwX51LVqtxeV7DII9wyvcWWfgu6XJMJKpx3nPIvjKSlNfDj
+         qMnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=LlzD60oAKSC1pVP/MvadAVwk3d13Ai9e2kxegP32/bs=;
-        b=NM92133ItDgSV14N1gyJAhtFLp0eFNmOUx9m7BwwbGr43gDzH6B7q2lWxDzNdUa68q
-         F9YLfR65wjxiHDObad4+lYAjmnhm71NIswWDGPwfeJV303ItCJcu5xRaqj/iDbW7Wt1x
-         7e8PatHXLC1F9Cscq7O70OMEFmgTQnes0r9j2llOMnXslCjcFHYQn0JEQyKtJ9Y2c/DR
-         Nmtf+zniafp1aC0vk7eFnkea3ZsUt2AkN7EByv5zYGu68TVtR99vW/4jRmVwNHJLY1AU
-         IFn2QExwiuKVG3e1FviSX9/KB/UXt3JIZdEH7m4K23W2ZBPUn+20FioLEwegP11mKLx2
-         r7CQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=/HJybUpdOHqvFv3N4GdlfFuG/BjvM7fIXK9BS11nCpY=;
+        b=0PhzIfYSYxji/24LH/Iw/FK7CBw4hmOBJr/D7DHgL8qX6NrDry1+nP7h9qn5c+6VMC
+         QnKU/MZLFuz/+1eXrzxThAMdLyz7IDfPjb9DK8fTpP5m6boM3WTmX1mV+AZfc257cO8+
+         fxK6IiiW2/NFEWZdZLORUltEQaLtMVucSM40HjYdfyl7azsxWuZ6t7n/fKQ+FFRMTbck
+         u8hrrVrOIQlqyF83MxIvq1Zq5tB9ZPAVTvm0+spPsoAPJAefTe7MRdjpNPzNLj+cczf6
+         1JXCFgo9xD2GhXhR1g0yQz38aF/y/lpmNFraBdw0NDnKAcb3m98GtMFHZajQs2ibWpBF
+         uDEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TjaJVVic;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v35si4821593qtj.36.2020.03.01.10.02.47
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 01 Mar 2020 10:02:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m2PUvE5X;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a6sor4935954wrv.53.2020.03.01.13.50.48
+        (Google Transport Security);
+        Sun, 01 Mar 2020 13:50:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TjaJVVic;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50796 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j8SvP-00032v-Ii
-	for alex.bennee@linaro.org; Sun, 01 Mar 2020 13:02:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35168)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j8SvF-0002yq-98
- for qemu-arm@nongnu.org; Sun, 01 Mar 2020 13:02:38 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j8SvD-0004Qx-Nw
- for qemu-arm@nongnu.org; Sun, 01 Mar 2020 13:02:36 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:48842
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j8SvD-0004Qo-K1
- for qemu-arm@nongnu.org; Sun, 01 Mar 2020 13:02:35 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583085754;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LlzD60oAKSC1pVP/MvadAVwk3d13Ai9e2kxegP32/bs=;
- b=TjaJVVicQl6YeGr4lNlZkBoIqJ1N+mmlgR/JpCEsZ1B5LeHa02wK+UzH0XeGNtQ9CC4kHQ
- jKAB4r4O9OYU5rWgMbyzsD9y4jSw02QAzLwRdZ8l3if4uOVD+McphN2wj9XgIhs82wy90k
- KQKTyQEIMmq050v4C9dIjpTwZU5TauQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-224-XsF9UwFTN1y11C579abZhg-1; Sun, 01 Mar 2020 13:02:31 -0500
-X-MC-Unique: XsF9UwFTN1y11C579abZhg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A90C68017CC;
- Sun,  1 Mar 2020 18:02:29 +0000 (UTC)
-Received: from [10.36.116.59] (ovpn-116-59.ams2.redhat.com [10.36.116.59])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9297D48;
- Sun,  1 Mar 2020 18:02:27 +0000 (UTC)
-Subject: Re: [PATCH v2 5/6] hw/arm/virt: kvm: Check the chosen gic version is
- supported by the host
-To: Richard Henderson <richard.henderson@linaro.org>,
- eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org
-References: <20200301104040.15186-1-eric.auger@redhat.com>
- <20200301104040.15186-6-eric.auger@redhat.com>
- <30b6269e-e22f-347c-8e42-5af964bd14b7@linaro.org>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <165d40a0-8308-d4d2-e935-a7caf633462c@redhat.com>
-Date: Sun, 1 Mar 2020 19:02:25 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m2PUvE5X;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=/HJybUpdOHqvFv3N4GdlfFuG/BjvM7fIXK9BS11nCpY=;
+        b=m2PUvE5XQNc3PhvWK7Ffet/pXjaGzJKyF+UBrxQ8Q9Sek3ZiyEkxfByL5Tq7/3T7dc
+         FxoMtHusIIEfTpdBMCgHSpQ6yprxnt1s6+L6GwN7MH1JWMRW/ZjIdbgTiGHmVyXoF3A4
+         TT3C5JbFIDHVR5A7iu4GMgDqFmHx/J9ctfJVfqOBxLhRHGOoNnCPPtJiY0hIVF2OJAO7
+         Ks1nBSMV3/uJcALhmh+SJd28iYgYHzfi9a0vQhxA2T0U4X8OD2W92e3kzCZlDjOf2nQM
+         JLJYmzAbV+L2BrJEcHjb0k93B5zC7BEzGnBtQdHRaPnht0gsYR03GgFh9rE1tBc14DvZ
+         +cgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=/HJybUpdOHqvFv3N4GdlfFuG/BjvM7fIXK9BS11nCpY=;
+        b=IQnY0upbOtrvNz/T/8mSlsS52lJ8EhjGznFVYYqUR+2KZA/+iMq7EuZy8tBxeLc8zO
+         FCAuv6iMIOduTL1KQ8UQDsBkpdipF9t28CYKk9YdZauWtYe/16q7IHT3OcYm6Ol4R370
+         SpcxB3bu5cmz5sqGrQZfTIG4XKAlGgCox1fKhqzN/mukLYGjUK0HuDilM+F3A+JNmIBi
+         V+EccKlfWUyCwVNXjZkfN7PDGEi4t17LFhzz0jYUTP2gkqnsn6CtpOrvqVCWQ9xEneJN
+         qLCpoqDQ0xRMta4gQGSDi93PATVp1W4T/rtMcM4ifzHwyOX271WcnMMdavNG3euFkPWo
+         OBfA==
+X-Gm-Message-State: APjAAAXU69B55eGy0lDYKQzBDORIteXKmnaRKHGrjWo4yWWKqJyed2BG
+	+X86z1I8I9GgC9wtoD1ijqo=
+X-Google-Smtp-Source: APXvYqzBDvATEr41+Kd8yzqDWHibFK3vG0lB7ZAq/zX5b4JmkYoutNBJwrB+CFzxe1SL2WCFo8/Ogw==
+X-Received: by 2002:a5d:4f8f:: with SMTP id d15mr17596458wru.316.1583099447789;
+        Sun, 01 Mar 2020 13:50:47 -0800 (PST)
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
+        by smtp.gmail.com with ESMTPSA id e8sm25033124wrr.69.2020.03.01.13.50.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 01 Mar 2020 13:50:47 -0800 (PST)
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	peter.maydell@linaro.org,
+	philmd@redhat.com,
+	b.galvani@gmail.com,
+	jasowang@redhat.com,
+	alex.bennee@linaro.org,
+	imammedo@redhat.com,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Niek Linnenbank <nieklinnenbank@gmail.com>
+Subject: [PATCH v6 14/18] tests/boot_linux_console: Add initrd test for the Orange Pi PC board
+Date: Sun,  1 Mar 2020 22:50:25 +0100
+Message-Id: <20200301215029.15196-15-nieklinnenbank@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200301215029.15196-1-nieklinnenbank@gmail.com>
+References: <20200301215029.15196-1-nieklinnenbank@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <30b6269e-e22f-347c-8e42-5af964bd14b7@linaro.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: maz@kernel.org, drjones@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2sCMFDLZ2rlh
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: rXym2p59A8el
 
-Hi Richard,
-On 3/1/20 6:56 PM, Richard Henderson wrote:
-> On 3/1/20 2:40 AM, Eric Auger wrote:
->> +        /* Check chosen version is effectively supported by the host */
->> +        if (vms->gic_version == VIRT_GIC_VERSION_2 &&
->> +               !(probe_bitmap & KVM_ARM_VGIC_V2)) {
->> +                error_report("host does not support in-kernel GICv2 emulation");
->> +                exit(1);
->> +        } else if (vms->gic_version == VIRT_GIC_VERSION_3 &&
->> +               !(probe_bitmap & KVM_ARM_VGIC_V3)) {
->> +                error_report("host does not support in-kernel GICv3 emulation");
->> +                exit(1);
->> +        }
-> 
-> Indentation is wrong here.
-OK
-> 
->> +    case VIRT_GIC_VERSION_HOST:
->> +        error_report("gic-version=host requires KVM");
->> +        exit(1);
->> +    default: /* explicit V2/V3 are left untouched */
->> +        break;
->>      }
-> 
-> I'd prefer to just list V2 and V3 here explicitly, instead of the default.
-> It'll be nicer with gic_version changed to an enum.
-OK I will respin with those changes.
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Thank you for the review!
+This test boots a Linux kernel on a OrangePi PC board and verify
+the serial output is working.
 
-Best Regards
+The kernel image and DeviceTree blob are built by the Armbian
+project (based on Debian):
+https://www.armbian.com/orange-pi-pc/
 
-Eric
-> 
-> With those changes,
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> 
-> 
-> r~
-> 
+The cpio image used comes from the linux-build-test project:
+https://github.com/groeck/linux-build-test
 
+If ARM is a target being built, "make check-acceptance" will
+automatically include this test by the use of the "arch:arm" tags.
+
+Alternatively, this test can be run using:
+
+  $ avocado --show=console run -t machine:orangepi-pc tests/acceptance/boot_linux_console.py
+  console: Uncompressing Linux... done, booting the kernel.
+  console: Booting Linux on physical CPU 0x0
+  console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019
+  console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=50c5387d
+  console: CPU: div instructions available: patching division code
+  console: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+  console: OF: fdt: Machine model: Xunlong Orange Pi PC
+  [...]
+  console: Trying to unpack rootfs image as initramfs...
+  console: Freeing initrd memory: 3256K
+  console: Freeing unused kernel memory: 1024K
+  console: Run /init as init process
+  console: mount: mounting devtmpfs on /dev failed: Device or resource busy
+  console: Starting logging: OK
+  console: Initializing random number generator... random: dd: uninitialized urandom read (512 bytes read)
+  console: done.
+  console: Starting network: OK
+  console: Found console ttyS0
+  console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019
+  console: Boot successful.
+  console: cat /proc/cpuinfo
+  console: / # cat /proc/cpuinfo
+  console: processor      : 0
+  console: model name     : ARMv7 Processor rev 5 (v7l)
+  console: BogoMIPS       : 125.00
+  console: Features       : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm
+  console: CPU implementer        : 0x41
+  console: CPU architecture: 7
+  console: CPU variant    : 0x0
+  console: CPU part       : 0xc07
+  console: CPU revision   : 5
+  [...]
+  console: processor      : 3
+  console: model name     : ARMv7 Processor rev 5 (v7l)
+  console: BogoMIPS       : 125.00
+  console: Features       : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm
+  console: CPU implementer        : 0x41
+  console: CPU architecture: 7
+  console: CPU variant    : 0x0
+  console: CPU part       : 0xc07
+  console: CPU revision   : 5
+  console: Hardware       : Allwinner sun8i Family
+  console: Revision       : 0000
+  console: Serial         : 0000000000000000
+  console: cat /proc/iomem
+  console: / # cat /proc/iomem
+  console: 01000000-010fffff : clock@1000000
+  console: 01c00000-01c00fff : system-control@1c00000
+  console: 01c02000-01c02fff : dma-controller@1c02000
+  [...]
+  console: reboot
+  console: / # reboot
+  console: / # Found console ttyS0
+  console: Stopping network: OK
+  console: hrtimer: interrupt took 21852064 ns
+  console: Saving random seed... random: dd: uninitialized urandom read (512 bytes read)
+  console: done.
+  console: Stopping logging: OK
+  console: umount: devtmpfs busy - remounted read-only
+  console: umount: can't unmount /: Invalid argument
+  console: The system is going down NOW!
+  console: Sent SIGTERM to all processes
+  console: Sent SIGKILL to all processes
+  console: Requesting system reboot
+  console: reboot: Restarting system
+  PASS (48.32 s)
+  JOB TIME   : 49.16 s
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+[NL: rename in commit message Raspbian to Armbian, remove vm.set_machine()]
+Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+---
+ tests/acceptance/boot_linux_console.py | 40 ++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
+
+diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
+index 6f5af582f3..dabc8ef2af 100644
+--- a/tests/acceptance/boot_linux_console.py
++++ b/tests/acceptance/boot_linux_console.py
+@@ -532,6 +532,46 @@ class BootLinuxConsole(Test):
+         console_pattern = 'Kernel command line: %s' % kernel_command_line
+         self.wait_for_console_pattern(console_pattern)
+ 
++    def test_arm_orangepi_initrd(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=machine:orangepi-pc
++        """
++        deb_url = ('https://apt.armbian.com/pool/main/l/'
++                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
++        deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
++        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
++        kernel_path = self.extract_from_deb(deb_path,
++                                            '/boot/vmlinuz-4.20.7-sunxi')
++        dtb_path = '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
++        dtb_path = self.extract_from_deb(deb_path, dtb_path)
++        initrd_url = ('https://github.com/groeck/linux-build-test/raw/'
++                      '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
++                      'arm/rootfs-armv7a.cpio.gz')
++        initrd_hash = '604b2e45cdf35045846b8bbfbf2129b1891bdc9c'
++        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
++        initrd_path = os.path.join(self.workdir, 'rootfs.cpio')
++        archive.gzip_uncompress(initrd_path_gz, initrd_path)
++
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'console=ttyS0,115200 '
++                               'panic=-1 noreboot')
++        self.vm.add_args('-kernel', kernel_path,
++                         '-dtb', dtb_path,
++                         '-initrd', initrd_path,
++                         '-append', kernel_command_line,
++                         '-no-reboot')
++        self.vm.launch()
++        self.wait_for_console_pattern('Boot successful.')
++
++        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
++                                                'Allwinner sun8i Family')
++        exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
++                                                'system-control@1c00000')
++        exec_command_and_wait_for_pattern(self, 'reboot',
++                                                'reboot: Restarting system')
++
+     def test_s390x_s390_ccw_virtio(self):
+         """
+         :avocado: tags=arch:s390x
+-- 
+2.17.1

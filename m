@@ -1,106 +1,100 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2373216lfg;
-        Mon, 2 Mar 2020 04:18:59 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxv/G/5J2CliRdxLEA2b6RVJxaDOq+c25O8yegmN0V/xws2SWkH26l8tQqzit4TYqN3fRxa
-X-Received: by 2002:a37:4dc4:: with SMTP id a187mr16010932qkb.436.1583151538952;
-        Mon, 02 Mar 2020 04:18:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583151538; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2434159lfg;
+        Mon, 2 Mar 2020 05:21:54 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy9lEhmx+jUZMhWgUFk2fulb4UONzxZ3zEfOcbJ/Ot0p6DwzERUiJTI0XnUqIiQH5GkF8ex
+X-Received: by 2002:a37:96c6:: with SMTP id y189mr16031539qkd.150.1583155314614;
+        Mon, 02 Mar 2020 05:21:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583155314; cv=none;
         d=google.com; s=arc-20160816;
-        b=vlbFRcm6hOsnvoZUBoUCEKZDt6ppXHk1jB2H080cZfSQliZ7jSUPKRByXQ3QO/YxE2
-         /vSEAxwSQtBMqC9lDBvA38cfb1XqO0Sa2TEZsiKdsleL2kSSyIq1+XFQ65q9txlK1C3x
-         P/CQKW7U1MocxTc9i5ugpip+AVshM4jOB/4TiZi7giJcoGW+5FLxlQrS3swRbtHLjDOj
-         a5omP9keMjBs+0jQSWIwYQdNT8nNbrKMvWjeBQp+cH8ei3+H5pyAicZfr0pL4qHbOwUO
-         gpA0JvaPjscm/AO/7gl67SjVVY7iKuktVSN5DrF17NSK1bVO4REw/Tr2fuhleYZmX1am
-         tJ1Q==
+        b=w79KkAAtjmHQrP+qae+VNs8wZFJVW3xL8/Mt94kYne4eAsw2wClGR6FhU4/KE1+VCP
+         cWqc0mxZezorf2vHTFSvfYCdmErRsnaR6UVtEUY9PaWhDCdgAfJFVfOZwrWqllINTb3O
+         uzHyBthfyjYSsAzUuCZ5VvBzj4WVY6czogttQuqwogFBJUSDiRkXBCW61FgzzsMldpzB
+         Hhue3DoMAaTl9TRwusEFM1R22qf2bxM0M8vPD6pAfTRzZw+uaEC2AIC67EMkLdKaH8B0
+         fhe3jlh2V2SvxPbUafTYcN2MxHJjGo0phsyMYoD2s4Tvbam2XJmn61/etYJ63h5Vi8tl
+         UFGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ndq0s0LH5UTL/DOzi6Pi7RusPHrHXRSqQxipPR2epEY=;
-        b=jl/QTDMJs7O/D59uMRvIHuUx6B6l5lDjqxT6fs7+o8bZPWGG9p9V8b0nF/Dnro+epK
-         NZgpupPKtq0pRG5v7sbLTiRIxzWffv6VbXaVpebcimlOOa3dDQb+Zzlq0q5aIh1vN3s4
-         dvMDPl7h/BQCp4TAXAG4JEgErtCxrUPUHbXFRmVfVLd84y+xQKhHFMDWz9thqiek3BvZ
-         TGG/7yLN2XFMfrR6sq7vSKxPq6C06y9gEayelx3DTN0er/yf1NO9gMQxwHiHupVXKFA2
-         GJcmotI5i1hJ0tHdIUBw6IdEP2IMrnth3cdKcwIPQgNKULan58PexkYMIIBEAPbmpZOE
-         1ASA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=lgi8huHg7JypWseRljj3J6mY8B1BwBwq3IJ94gGxoA0=;
+        b=F1C2Zk21uvYP2cmWhZaNVD17fY+c9XXNlnnFvfchEuz6gEjfqaj1c8v+asvr3Q6go3
+         g8ua02RkmeCaSAMDkTMhF0hLCqNfdUQ9Obokv7/6mYI6RxlTEQmpRgsZMaE3UXqN0Ug8
+         7nTdX4dtT66+cgWcLYqjv2hTsbtY8l2gwoJLJYyOFjAPD4+hydd1fgruJqBzpA2YWln2
+         dlEBCW08aVP1Z5Hvz9guCrU9/0rwlYH8xb2IoqjeP5vz691Qa2y3RpTwqGpVemJdKBlL
+         56xdYE2Yi3VX2rNmgd8ZUyW8yp+aO1l5Qzhjca6HYeFnGOMNhn7OSYZLZiDzbl8SjRtK
+         HdYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K5R7MoPY;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Xb2Ovmrm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 205si4148526qkl.180.2020.03.02.04.18.58
+        by mx.google.com with ESMTPS id s23si5837310qtq.163.2020.03.02.05.21.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Mar 2020 04:18:58 -0800 (PST)
+        Mon, 02 Mar 2020 05:21:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K5R7MoPY;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Xb2Ovmrm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59882 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:32768 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j8k2E-0002B0-Dy
-	for alex.bennee@linaro.org; Mon, 02 Mar 2020 07:18:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42067)
+	id 1j8l18-0006eC-2H
+	for alex.bennee@linaro.org; Mon, 02 Mar 2020 08:21:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51306)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j8k25-00026v-JT
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 07:18:51 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j8l10-0006dx-4V
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 08:21:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j8k23-0001Xa-Vn
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 07:18:49 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35179
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j8k23-0001XN-Qo
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 07:18:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583151527;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ndq0s0LH5UTL/DOzi6Pi7RusPHrHXRSqQxipPR2epEY=;
- b=K5R7MoPYAy2X81hUaILYl142h6WgdGGsm7UJd2iOcSzfEGblrjnV1RNCO0InZPf+pIrVLp
- skMAz2PQovu5HWF6E8U9VtseamCILjuRMg8GOO0e0710GZRwceD2AoOcMKa+Nuw01+f6p9
- tyhCowSwHVfxZtU76xSmB9SDsnKHEQI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-60-0GvsD5yhMm2ztRKn7U_bvg-1; Mon, 02 Mar 2020 07:18:43 -0500
-X-MC-Unique: 0GvsD5yhMm2ztRKn7U_bvg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 81E921B2C986;
- Mon,  2 Mar 2020 12:18:42 +0000 (UTC)
-Received: from [10.36.116.59] (ovpn-116-59.ams2.redhat.com [10.36.116.59])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 536035DA2C;
- Mon,  2 Mar 2020 12:18:40 +0000 (UTC)
-Subject: Re: [PATCH v3 2/6] hw/arm/virt: Introduce VirtGICType enum type
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org
-References: <20200302105516.5972-1-eric.auger@redhat.com>
- <20200302105516.5972-3-eric.auger@redhat.com>
- <ff498491-820a-498a-2951-6e46951dd23e@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <9b27e2d4-8076-7c1f-b62e-6692ea9b3090@redhat.com>
-Date: Mon, 2 Mar 2020 13:18:38 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ (envelope-from <peter.maydell@linaro.org>) id 1j8l0y-0006sG-Tf
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 08:21:45 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:41045)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j8l0y-0006rf-Nv
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 08:21:44 -0500
+Received: by mail-oi1-x241.google.com with SMTP id i1so10212836oie.8
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 05:21:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=lgi8huHg7JypWseRljj3J6mY8B1BwBwq3IJ94gGxoA0=;
+ b=Xb2OvmrmYu9aAncfEJ3FXgchR8e6EecGnmNUXBG6Ok3T2ViMI9ws6DXys8b8jXaXXA
+ /fCwfq67aZNnFJzLUFyRu8BRB3Olno2JFv+LLYDj0fTtMSvEmRWtIR43l7fiD5zCpeho
+ BrnFfM1ydCr/ooWvUaB9CSa0LGj+kHAukOmREbLVr6sNbuptr+EWjnax5VDAcc87kSg7
+ dIDv6x3CcUoRo6SXebg5eaNLNnkOOsAoYOBtQFOMzu8urXCXjZZjZfeTRLyxWpR2HLKm
+ 63KZoWfVTD5EtGSmiqkZ6yMJJQDgJS//eO/hUUVd3BgVj9axE8pAf9qb8Pi2s0Ck9uLW
+ 5HXQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=lgi8huHg7JypWseRljj3J6mY8B1BwBwq3IJ94gGxoA0=;
+ b=KBJWzDLaWmb3fLSPjyA+4WQK7JWsLhsctPu/mUdVK39yr3y90/G3KggcfvHlOC9DDx
+ zJjjzQMCwJs67Mt1xLHn1UUPaRcQ7HvVKDua184jWpD/tHlDJln668DWgfEbf/FIDgpP
+ 7uKwrpMay+3cjyvKfyS93qyz7FKJviCMypRdsFvJ9GRkS3+nKGHS74pMSGtMR9TKh5rS
+ nqCxfFyttegdHFVVA+4uoClqmwInh1plqXWupWcCTUuBljWx9JhPRiwMsf6e5ScsQtpl
+ iUdKvD11wWCV7hm1FI8MpzjK+ZZ4SthawsxNgAdFgQ6o+2TFgD20qzjHrdvNeYU3zToc
+ cnJg==
+X-Gm-Message-State: APjAAAXfSjPs6l1ZF+dvZIQxDtnl9GVyIaaHkcmzcSPniN/l9RI+FeIJ
+ QHnM4lTlsw8dScpO1h3JCq+VYtZd+UuMRy5LS652bQ==
+X-Received: by 2002:aca:b2c5:: with SMTP id
+ b188mr11625368oif.163.1583155303743; 
+ Mon, 02 Mar 2020 05:21:43 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <ff498491-820a-498a-2951-6e46951dd23e@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+References: <20200227025055.14341-1-pannengyuan@huawei.com>
+ <20200227025055.14341-6-pannengyuan@huawei.com>
+In-Reply-To: <20200227025055.14341-6-pannengyuan@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 2 Mar 2020 13:21:32 +0000
+Message-ID: <CAFEAcA8yvrYrBONtW46iswbEvMF-WC-j7fHOOfcoEC_RV66BkQ@mail.gmail.com>
+Subject: Re: [PATCH v3 5/6] hw/misc/mos6522: move timer_new from init() into
+ realize() to avoid memleaks
+To: Pan Nengyuan <pannengyuan@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::241
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,251 +106,97 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: maz@kernel.org, drjones@redhat.com
+Cc: Euler Robot <euler.robot@huawei.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Laurent Vivier <laurent@vivier.eu>, QEMU Developers <qemu-devel@nongnu.org>,
+ zhanghailiang <zhang.zhanghailiang@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WxiLNEuSTmF2
+X-TUID: 876CraSk81fr
 
-Hi Philippe,
+On Thu, 27 Feb 2020 at 02:35, Pan Nengyuan <pannengyuan@huawei.com> wrote:
+>
+> There are some memleaks when we call 'device_list_properties'. This patch move timer_new from init into realize to fix it.
+> Meanwhile, add calls to mos6522_realize() in mac_via_realize to make this move to be valid.
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+> ---
+> Cc: Laurent Vivier <laurent@vivier.eu>
+> ---
+> v2->v1:
+> - no changes in this patch.
+> v3->v2:
+> - remove null check in reset, and add calls to mos6522_realize() in mac_via_realize to make this move to be valid.
 
-On 3/2/20 12:18 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 3/2/20 11:55 AM, Eric Auger wrote:
->> We plan to introduce yet another value for the gic version (nosel).
->> As we already use exotic values such as 0 and -1, let's introduce
->> a dedicated enum type and let vms->gic_version take this
->> type.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->>
->> v2 -> v3:
->> - replaced defines by enum VirtGICType
->> - use that new type for vms->gic_version
->> ---
->> =C2=A0 hw/arm/virt.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 3=
-0 +++++++++++++++---------------
->> =C2=A0 include/hw/arm/virt.h | 11 +++++++++--
->=20
-> Please have a look at scripts/git.orderfile, it helps making review
-> easier/quicker.
-OK I added it to my .git/config. Thanks for pointer
->=20
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Hi; this is really fixing two bugs in one patch:
 
-Thanks!
+> ---
+>  hw/misc/mac_via.c | 5 +++++
+>  hw/misc/mos6522.c | 6 ++++++
+>  2 files changed, 11 insertions(+)
+>
+> diff --git a/hw/misc/mac_via.c b/hw/misc/mac_via.c
+> index b7d0012794..1d72d4ef35 100644
+> --- a/hw/misc/mac_via.c
+> +++ b/hw/misc/mac_via.c
+> @@ -879,6 +879,11 @@ static void mac_via_realize(DeviceState *dev, Error **errp)
+>      sysbus_init_child_obj(OBJECT(dev), "via2", &m->mos6522_via2,
+>                            sizeof(m->mos6522_via2), TYPE_MOS6522_Q800_VIA2);
+>
+> +    object_property_set_bool(OBJECT(&m->mos6522_via1), true, "realized",
+> +                             &error_abort);
+> +    object_property_set_bool(OBJECT(&m->mos6522_via2), true, "realized",
+> +                             &error_abort);
+> +
+>      /* Pass through mos6522 output IRQs */
+>      ms = MOS6522(&m->mos6522_via1);
+>      object_property_add_alias(OBJECT(dev), "irq[0]", OBJECT(ms),
 
-Eric
->=20
->> =C2=A0 2 files changed, 24 insertions(+), 17 deletions(-)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index c093f0ab85..b449a445de 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -298,7 +298,7 @@ static void fdt_add_timer_nodes(const
->> VirtMachineState *vms)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 irqflags =3D GIC_=
-FDT_IRQ_FLAGS_EDGE_LO_HI;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->> =C2=A0 -=C2=A0=C2=A0=C2=A0 if (vms->gic_version =3D=3D 2) {
->> +=C2=A0=C2=A0=C2=A0 if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 irqflags =3D depo=
-sit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 GIC_FDT_IRQ_PPI_CPU_WIDTH,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << vms->smp_cpus) - 1);
->> @@ -439,7 +439,7 @@ static void fdt_add_gic_node(VirtMachineState *vms)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qemu_fdt_setprop_cell(vms->fdt, nodename,=
- "#address-cells", 0x2);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qemu_fdt_setprop_cell(vms->fdt, nodename,=
- "#size-cells", 0x2);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qemu_fdt_setprop(vms->fdt, nodename, "ran=
-ges", NULL, 0);
->> -=C2=A0=C2=A0=C2=A0 if (vms->gic_version =3D=3D 3) {
->> +=C2=A0=C2=A0=C2=A0 if (vms->gic_version =3D=3D VIRT_GIC_VERSION_3) {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int nb_redist_reg=
-ions =3D virt_gicv3_redist_region_count(vms);
->> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qemu_fdt_s=
-etprop_string(vms->fdt, nodename, "compatible",
->> @@ -518,7 +518,7 @@ static void fdt_add_pmu_nodes(const
->> VirtMachineState *vms)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->> =C2=A0 -=C2=A0=C2=A0=C2=A0 if (vms->gic_version =3D=3D 2) {
->> +=C2=A0=C2=A0=C2=A0 if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 irqflags =3D depo=
-sit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 GIC_FDT_IRQ_PPI_CPU_WIDTH,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 << vms->smp_cpus) - 1);
->> @@ -1469,7 +1469,7 @@ static uint64_t
->> virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * purposes =
-are to make TCG consistent (with 64-bit KVM hosts)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * and to im=
-prove SGI efficiency.
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (vms->gic_version =3D=3D =
-3) {
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (vms->gic_version =3D=3D =
-VIRT_GIC_VERSION_3) {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 clustersz =3D GICV3_TARGETLIST_BITS;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 clustersz =3D GIC_TARGETLIST_BITS;
->> @@ -1560,15 +1560,15 @@ static void machvirt_init(MachineState *machine)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* We can probe only here because during =
-property set
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * KVM is not available yet
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
->> -=C2=A0=C2=A0=C2=A0 if (vms->gic_version <=3D 0) {
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* "host" or "max" */
->> +=C2=A0=C2=A0=C2=A0 if (vms->gic_version =3D=3D VIRT_GIC_VERSION_HOST ||
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vms->gic_version =3D=3D VIRT=
-_GIC_VERSION_MAX) {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!kvm_enabled(=
-)) {
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (=
-vms->gic_version =3D=3D 0) {
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (=
-vms->gic_version =3D=3D VIRT_GIC_VERSION_HOST) {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_report("gic-version=3Dhost requires KV=
-M");
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exit(1);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 } else {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* "max": currently means 3 for TCG */
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 vms->gic_version =3D 3;
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 vms->gic_version =3D VIRT_GIC_VERSION_3;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 }
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 vms->gic_version =3D kvm_arm_vgic_probe();
->> @@ -1627,7 +1627,7 @@ static void machvirt_init(MachineState *machine)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* The maximum number of CPUs depends on =
-the GIC version, or on how
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * many redistributors we can fit in=
-to the memory map.
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
->> -=C2=A0=C2=A0=C2=A0 if (vms->gic_version =3D=3D 3) {
->> +=C2=A0=C2=A0=C2=A0 if (vms->gic_version =3D=3D VIRT_GIC_VERSION_3) {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 virt_max_cpus =3D
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 vms->memmap[VIRT_GIC_REDIST].size / GICV3_REDIST_SIZE;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 virt_max_cpus +=
-=3D
->> @@ -1855,7 +1855,7 @@ static void virt_set_its(Object *obj, bool
->> value, Error **errp)
->> =C2=A0 static char *virt_get_gic_version(Object *obj, Error **errp)
->> =C2=A0 {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VirtMachineState *vms =3D VIRT_MACHINE(ob=
-j);
->> -=C2=A0=C2=A0=C2=A0 const char *val =3D vms->gic_version =3D=3D 3 ? "3" =
-: "2";
->> +=C2=A0=C2=A0=C2=A0 const char *val =3D vms->gic_version =3D=3D VIRT_GIC=
-_VERSION_3 ? "3" :
->> "2";
->> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return g_strdup(val);
->> =C2=A0 }
->> @@ -1865,13 +1865,13 @@ static void virt_set_gic_version(Object *obj,
->> const char *value, Error **errp)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VirtMachineState *vms =3D VIRT_MACHINE(ob=
-j);
->> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!strcmp(value, "3")) {
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vms->gic_version =3D 3;
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vms->gic_version =3D VIRT_GI=
-C_VERSION_3;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else if (!strcmp(value, "2")) {
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vms->gic_version =3D 2;
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vms->gic_version =3D VIRT_GI=
-C_VERSION_2;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else if (!strcmp(value, "host")) {
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vms->gic_version =3D 0; /* W=
-ill probe later */
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vms->gic_version =3D VIRT_GI=
-C_VERSION_HOST; /* Will probe later */
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else if (!strcmp(value, "max")) {
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vms->gic_version =3D -1; /* =
-Will probe later */
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vms->gic_version =3D VIRT_GI=
-C_VERSION_MAX; /* Will probe later */
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp, =
-"Invalid gic-version value");
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_append_hint=
-(errp, "Valid values are 3, 2, host, max.\n");
->> @@ -2139,7 +2139,7 @@ static void virt_instance_init(Object *obj)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- "physical address space above 32
->> bits",
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- NULL);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* Default GIC type is v2 */
->> -=C2=A0=C2=A0=C2=A0 vms->gic_version =3D 2;
->> +=C2=A0=C2=A0=C2=A0 vms->gic_version =3D VIRT_GIC_VERSION_2;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 object_property_add_str(obj, "gic-version=
-", virt_get_gic_version,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 virt_set_gic_version, NULL);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 object_property_set_description(obj, "gic=
--version",
->> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
->> index 02f500cb8e..c0827cacdf 100644
->> --- a/include/hw/arm/virt.h
->> +++ b/include/hw/arm/virt.h
->> @@ -95,6 +95,13 @@ typedef enum VirtIOMMUType {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VIRT_IOMMU_VIRTIO,
->> =C2=A0 } VirtIOMMUType;
->> =C2=A0 +typedef enum VirtGICType {
->> +=C2=A0=C2=A0=C2=A0 VIRT_GIC_VERSION_MAX,
->> +=C2=A0=C2=A0=C2=A0 VIRT_GIC_VERSION_HOST,
->> +=C2=A0=C2=A0=C2=A0 VIRT_GIC_VERSION_2,
->> +=C2=A0=C2=A0=C2=A0 VIRT_GIC_VERSION_3,
->> +} VirtGICType;
->> +
->> =C2=A0 typedef struct MemMapEntry {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 hwaddr base;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 hwaddr size;
->> @@ -123,7 +130,7 @@ typedef struct {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool highmem_ecam;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool its;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool virt;
->> -=C2=A0=C2=A0=C2=A0 int32_t gic_version;
->> +=C2=A0=C2=A0=C2=A0 VirtGICType gic_version;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VirtIOMMUType iommu;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 uint16_t virtio_iommu_bdf;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct arm_boot_info bootinfo;
->> @@ -162,7 +169,7 @@ static inline int
->> virt_gicv3_redist_region_count(VirtMachineState *vms)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 uint32_t redist0_capacity =3D
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vms->memmap[VIRT_GIC_REDIST].size / GICV3_RE=
-DIST_SIZE;
->> =C2=A0 -=C2=A0=C2=A0=C2=A0 assert(vms->gic_version =3D=3D 3);
->> +=C2=A0=C2=A0=C2=A0 assert(vms->gic_version =3D=3D VIRT_GIC_VERSION_3);
->> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return vms->smp_cpus > redist0_cap=
-acity ? 2 : 1;
->> =C2=A0 }
->>
->=20
->=20
+This is fixing a bug in mac_via where it failed to actually
+realize devices it was using. That's a dependency for the bug
+you're trying to fix, but it's a separate one and should be
+in its own patch.
 
+You also want to pass the error back up to the caller, rather
+than using error_abort. To do that, at the top of the function:
+
+    Error *err = NULL;
+
+and then here you can do:
+    object_property_set_bool(OBJECT(&m->mos6522_via1), true, "realized", &err);
+    if (err) {
+        error_propagate(errp, err);
+        return;
+    }
+
+The existing code which inits the mos6522 objects and
+calls object_property_add_alias on them which is in
+the mac_via realize function should be moved to the init
+function. (init should init child objects and set up
+properties; realize should realize them.)
+
+This is all fixing the incorrect creation of the mos6522
+devices in mac_via (which has been wrong since the mac_via
+was first added in commit 6dca62a0000f9), so that can all
+be one patch I think.
+
+> +static void mos6522_realize(DeviceState *dev, Error **errp)
+> +{
+> +    MOS6522State *s = MOS6522(dev);
+>
+>      s->timers[0].timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, mos6522_timer1, s);
+>      s->timers[1].timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, mos6522_timer2, s);
+> @@ -502,6 +507,7 @@ static void mos6522_class_init(ObjectClass *oc, void *data)
+>
+>      dc->reset = mos6522_reset;
+>      dc->vmsd = &vmstate_mos6522;
+> +    dc->realize = mos6522_realize;
+>      device_class_set_props(dc, mos6522_properties);
+>      mdc->parent_reset = dc->reset;
+>      mdc->set_sr_int = mos6522_set_sr_int;
+
+The changes to hw/misc/mos_6522.c are good, but should be in
+their own patch.
+
+thanks
+-- PMM

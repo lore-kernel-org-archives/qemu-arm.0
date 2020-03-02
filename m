@@ -1,101 +1,97 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2341472lfg;
-        Mon, 2 Mar 2020 03:45:10 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vt/sp73mlRSbt9OKyamRvz1sTy2oHPB10numaJxFBKGCXOykUccLnQzjXshOrvobwzjAP2E
-X-Received: by 2002:a0c:f98f:: with SMTP id t15mr4466464qvn.44.1583149510125;
-        Mon, 02 Mar 2020 03:45:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583149510; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2560242lfg;
+        Mon, 2 Mar 2020 07:23:21 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vugFfRj1V8AQxsJ1M9NSH52S0SrvEUxUV6XpMjJTlqhtgGsWZxsjUPnqlFTgVsUGKg1b/mW
+X-Received: by 2002:ac8:6f02:: with SMTP id g2mr261100qtv.52.1583162601375;
+        Mon, 02 Mar 2020 07:23:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583162601; cv=none;
         d=google.com; s=arc-20160816;
-        b=DywrNBL2rqaYFTf12O7B57CFr4MoWuQM4/lDU9R8hVzCuLv5Gdc2O5vdp5W5IoUCtN
-         AaTqkR/6fTC+zE+7wBdBs6rLof4B2S8Ihf0ur9yXLr6swtIJnhLbyYXrkQm5oa+LZ5VM
-         sreO8IVjpPO8UT/U/vlVK7/cdSq99eePQnNfDZ3FQCqpdj45esvW0/Zx+I3q3tpHkGlM
-         sS3DHZg8AYQtS/mw8iB3zA5WgV38Si7RY++eXNgSDJsFaV2DD7U3CWQM4l1bODnnvWnI
-         Nl9jWLumXKJFwpJkkijihRVzzmFFdehQOPG19LzPX3BlVsqypaM1ExgxorWrNTci2mqT
-         uhpQ==
+        b=G9gmf49Vjf4uhzUkLQgIi2fuuTzE3VGiMFctwGdBjcB7syBk2G9zzDCeDKjbNDrvhG
+         fzEcJPyBIW9Y+DlWZQar3mgwsjtW7S+GRrqI+2q2MMqyEyLa3p5vfskRaQ3NKZ5qrAJD
+         QtHsxgPyGVU0BlVxT/4G5isz6gts5Ck/xfzee7kpTnsXauE2d5l0pFgiThaOTnniQMRW
+         yscOdue8i4NEQVqYHUKMrgaACGhwUTGmNP/B2oNt+V2edIiVXBfwd5bhUc9NnQsXY5Iv
+         eYKAnVqKH8lkGC2/Aurgej9kmX0AhIuoh33LH3BWBwJAtPnnQ50jV3PvMUo9Topgu3h6
+         6kwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=HzUbiyFOIAhKBOLtvU0wcuoLQzSWzvKiUf4HyRWED/k=;
-        b=nhHYZg3R9Yzcg2sFz5UC1U0UwHFhSwHcr7RuJLeVfuW47HE6PHzi0fjliM61Xn4mFf
-         rpSwv3ikIiCM+Urr2UgzpUWsN20crIG33B7Wc0nSGHH5mqnQiV89Cz5Uq2yPP741pX1E
-         DXkvTrSbBJB7QWtw1tT55lMiuiTFrsF9jxN7Lm6guBOsgsMwSGOzBvyD9As+AkR4dgXv
-         r6tASvZBysFHhmG0VHP8LJbzJDwovIFLA2VyYTvjpcxwNQExrG9xl8wX+ptNFX8jG/U3
-         +atvkHkCu4zmTamgdA58um3IY6433/iEuPk06+vAIFjTlndTTWMHenbwM5Msi4QLzCgj
-         gWKw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Ar178Ow+M8KlrfAPmtxPZRxPSqC9pr2DuMH2dk+bRAk=;
+        b=VseZqsECEL0TdiJ313/AzA0E5Ufusw0sSGmcPZg/kcjyNW8fEk9MnQwYtbMqYFkWI2
+         yc1zAeyMTtQFuUj/zy+tgD0FlVUKgobpbxyf313AgkzvvOUiDuLZ+pYXoLMj0qAr92BJ
+         +4iqP7si6g5k/cEjyWvLzuNG0w+3PL44/VEqueOqQ4yVYtzYlABmD5y6Tc1TkccRsgzM
+         la+PqlCUTY9A2m6+tDa31zrP++Ti5U4eHabbfnZ5Lj3xoJrA1COhKLwYO3yCR+l2BOPh
+         JV9STVqkiKpfSK9kBUu02Jzw0dWcdvPs3KaEuaFIELO+rAhJCH0p9bgr5AENWlBumjrL
+         m23w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=d5nfF6Ei;
+       dkim=fail header.i=@linaro.org header.s=google header.b=JvQ9vm5m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n90si5420661qtd.107.2020.03.02.03.45.09
+        by mx.google.com with ESMTPS id z5si5134537qvn.157.2020.03.02.07.23.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Mar 2020 03:45:10 -0800 (PST)
+        Mon, 02 Mar 2020 07:23:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=d5nfF6Ei;
+       dkim=fail header.i=@linaro.org header.s=google header.b=JvQ9vm5m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59352 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33946 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j8jVV-0003Td-K8
-	for alex.bennee@linaro.org; Mon, 02 Mar 2020 06:45:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37519)
+	id 1j8mue-00013Q-Qc
+	for alex.bennee@linaro.org; Mon, 02 Mar 2020 10:23:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39750)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j8jVM-0003Sz-82
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:45:01 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j8muW-000135-61
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 10:23:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j8jVL-000572-1p
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:44:59 -0500
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:38366)
+ (envelope-from <peter.maydell@linaro.org>) id 1j8muU-00014k-Vp
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 10:23:11 -0500
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:46284)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j8jVK-00056g-Sl
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:44:58 -0500
-Received: by mail-ot1-x343.google.com with SMTP id i14so2269477otp.5
- for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 03:44:58 -0800 (PST)
+ id 1j8muU-00014W-Pa
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 10:23:10 -0500
+Received: by mail-ot1-x342.google.com with SMTP id g96so10025104otb.13
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 07:23:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=HzUbiyFOIAhKBOLtvU0wcuoLQzSWzvKiUf4HyRWED/k=;
- b=d5nfF6EiGCLrlhk/zQoYA4Oi3l/X+sYzzgck+sTDOOhqWVFaSPkboNAI21ta9aFg7K
- brD54B+LFgeYwuOhjg1wb+yd8riCXo5ZbeheWJSXW29YPSy4ygpz6moFr0MIL9aKFx/V
- 4K4J8MT7mEz0tqSTwJJAL2gz9SnCDQRGmMzqFiR/3VpimSLNvh0uhA+rlvvJUNgE5lQz
- DXQgitj+F5pyAwDsYyqBR1fWzHyOn1x+1PxI5f6msa4ng9+wi2bx36MfieA+kdX/M4jj
- BUNIi52eFBudEelw2Lwr/DRD3zlBo9Xa/vc93kXP4NIalR7d0xpSeXkRtKYJDN9PMOEX
- gtwQ==
+ :cc; bh=Ar178Ow+M8KlrfAPmtxPZRxPSqC9pr2DuMH2dk+bRAk=;
+ b=JvQ9vm5mGlLl6qYV3GJFvBe/CZpSYz4om4vmCQUeExiUqDmff18Bfb/KkrUt/H6sK4
+ 8nN7VLZ4TMS48+EdkoxakG0/PkrUyLQ0XosW6uEuk0jHpT5wRJTmQlQGCXrnd1Bo7uk5
+ +Iacu6DoioUUCad/fHgeR5KIj3UGaaLtCENKnSHPV0GnFvlwkEJi/vG3+i0P8dh8cvfO
+ 4ZlqX2iRz5o9vWY6t4Z2sz5/4rX2c4rSctA/fi0mpKXCAes4RsUva0BDuAR5RCgzG+/A
+ S1I/WjvQY5E0I3WBuBfqKrm0FGM7B3Fon6JNCRsi7sICLaWihfZ5yU/6HQupDqAfQKLQ
+ +Sjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=HzUbiyFOIAhKBOLtvU0wcuoLQzSWzvKiUf4HyRWED/k=;
- b=cVKMXN2haUAEy++VDmDo8ssRvMoQSW9a+m7oOaIbur4zsUNOsxQAEOryP+jwiWwlQU
- bJo4kCGrE2yxF8gpKXrsKPm4w1coR3zCudZDXxJCMhA/yH7BN9jZeZlUG1uIQu79EeYr
- SQH0baZtOGBHDs1hBg1iP80QnVeOQ5aEpsXM6rvclkQ8w6wxU1vZA9vN5GLjs5n9XklG
- H8IMYX0gSbOTeiKgugsQ58YH000nSrBGqCvvORRp25b0Or3d/D2pMT7jUthoDmiremYf
- kKV+FxnDWmhEIjKV/WOPM9oiU8P+7gH5WMkTrrqSSLCuvUUHkeg65aWskdix4g8m+mSi
- KvQg==
-X-Gm-Message-State: ANhLgQ37HQ+yepGbD5mVND7rQEwx+jXPlPWcpq8O/SWf6M1PcAj9xOj+
- wt6xb4QQWcSaVZibnrbimkEZMX6IMJpy/ikqbpswrg==
-X-Received: by 2002:a05:6830:1406:: with SMTP id
- v6mr3688045otp.232.1583149497899; 
- Mon, 02 Mar 2020 03:44:57 -0800 (PST)
+ :message-id:subject:to:cc;
+ bh=Ar178Ow+M8KlrfAPmtxPZRxPSqC9pr2DuMH2dk+bRAk=;
+ b=fJuvmitbnmOL/6QX+DAqnDbXMjHJRvi4TUmrdDrCKT50gyp4oPC992+41IovssuOuQ
+ Ft2kRCsXFwE3Ez2QrSSjq0b8s9l0lS8d7XkijEbpe2vSCWE2A6kQe/+g325KvMgOLAzR
+ 1zinnJAWZioalQVpYna8ZMiR+xi9MctiDF3U2L3sBRCHGuR7CwUm8pFR0tMv9/hHLaiv
+ /pparsKNCL/1l1ewXiLByc3o03esynU8AqgzvLOFfCG1c5rqZBGKBxkfZ6NFw0sqU9J0
+ uxFNblVkMrk3b+3ZQaMU9KVhRYWHCcYgzo+ztbk+NmXPEmCJcRZO3prSi3PLSG0zbIDA
+ GcnA==
+X-Gm-Message-State: ANhLgQ2ajwEzEhGbx9gIYBz8aNYv43kbkIdxTwp5GOIffBnb1zFFM1UH
+ JI8R0NLNgNwqTpZFugm4M6xd8wwTQE7GCX3RfUqtJg==
+X-Received: by 2002:a9d:6f88:: with SMTP id h8mr5316509otq.91.1583162589997;
+ Mon, 02 Mar 2020 07:23:09 -0800 (PST)
 MIME-Version: 1.0
-References: <20200228125351.29482-1-philmd@redhat.com>
-In-Reply-To: <20200228125351.29482-1-philmd@redhat.com>
+References: <20200229012811.24129-1-richard.henderson@linaro.org>
+In-Reply-To: <20200229012811.24129-1-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 2 Mar 2020 11:44:47 +0000
-Message-ID: <CAFEAcA-AUSLBirS+1_JHCVQAH5-ZJz+YL+Qp8StALRW7b6EzJg@mail.gmail.com>
-Subject: Re: [PATCH 0/5] hw/arm: Remove big-endian checks on machine code
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Date: Mon, 2 Mar 2020 15:22:59 +0000
+Message-ID: <CAFEAcA9nk7T34TGLiiET-nVNOOzCZYsO1VU-zm25XMvifpavoA@mail.gmail.com>
+Subject: Re: [PATCH v5 00/12] target/arm: Honor more HCR_EL2 traps
+To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::343
+X-Received-From: 2607:f8b0:4864:20::342
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,33 +103,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrzej Zaborowski <balrogg@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Jan Kiszka <jan.kiszka@web.de>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HB552PkqjiUd
+X-TUID: NzuqUpg9/kzm
 
-On Fri, 28 Feb 2020 at 12:53, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
+On Sat, 29 Feb 2020 at 01:28, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> We only build the little-endian softmmu configurations.
-> Checking for big endian is pointless, remove the unused code.
+> Changes for v5:
+>   * Patch 1 was broken for aa32.  Not just the masking vs the "other"
+>     32-bit register that Peter noticed, but more explicitly in that
+>     "ri" was dereferenced as NULL -- hcr_write{high,low} did not pass
+>     along the structure.  Oops.
 >
-> Philippe Mathieu-Daud=C3=A9 (5):
->   hw/arm/gumstix: Simplify since the machines are little-endian only
->   hw/arm/mainstone: Simplify since the machines are little-endian only
->   hw/arm/omap_sx1: Simplify since the machines are little-endian only
->   hw/arm/z2: Simplify since the machines are little-endian only
->   hw/arm/musicpal: Simplify since the machines are little-endian only
+>     Break out a new helper that is passed a starting mask, which is
+>     used to preserve bits from the "other" 32-bit register.
 >
->  hw/arm/gumstix.c   | 16 ++--------------
->  hw/arm/mainstone.c |  8 +-------
->  hw/arm/musicpal.c  | 10 ----------
->  hw/arm/omap_sx1.c  | 11 ++---------
->  hw/arm/z2.c        |  8 +-------
->  5 files changed, 6 insertions(+), 47 deletions(-)
-
-
+>     Check the aa64 isar registers only if aarch64 is enabled.
+>
+>   * Add HCR bits from armv8.6.
+>   * Remove EL2 & EL3 from user-only.
+>
+>   * Mask hcr_el2 bits that are res0 in aa32.
+>     This didn't work at first because we weren't configuring SCR_RW
+>     for user-only, so aarch64-linux-user thought EL2 was aa32, which
+>     disabled pauth.  Rather than find other corner cases like this,
+>     I think it makes more sense for user-only to only contend with EL1.
+>
+> Patches 1-5, 12 require review.
 
 Applied to target-arm.next, thanks.
 

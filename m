@@ -1,119 +1,99 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2320374lfg;
-        Mon, 2 Mar 2020 03:19:27 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyLZtHJN6DtbMN2zmDoLjqn20d/PZ9n3THwPXzqY/IZtTKk5NS8DxTwdRPBaTWJinJeuv2b
-X-Received: by 2002:a37:91c6:: with SMTP id t189mr14838392qkd.137.1583147966906;
-        Mon, 02 Mar 2020 03:19:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583147966; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2323569lfg;
+        Mon, 2 Mar 2020 03:23:18 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw9MzdFHWz6HAZeyXEk93x2xa/GxH3ejKobZcgap5shRKxoYSO56GH9Qms9oeoM1qbSASnZ
+X-Received: by 2002:ac8:1ca:: with SMTP id b10mr14973356qtg.314.1583148198508;
+        Mon, 02 Mar 2020 03:23:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583148198; cv=none;
         d=google.com; s=arc-20160816;
-        b=f4ziw1y2XmjQoTjdqkIZF7WJ1NVAICE2mA1SNwE6thG3Mo7o7GExqOu4pBJ6jKrgTV
-         hMwb3PlaScfF3UX1QaAyW/M6+UIuWppQefeykyBrIBcDqpJ+eCaMj+KWb3XG7H0TbBS5
-         qdJSNINkUdTnEKHp3eF1gcoHhTdIfslkEVjHm9HkZXgU+O5ScX8D6QLTScSDKduMbo8B
-         q1SKVuLckp6zX36/efgy0ewrD4t9XIDYJcPMFIHTkcPaSQ6EBSxTcuWjoKU1f8dcOugf
-         9OfUvi2R7kmN6T0Ish5DzxD/Jj5d0qCd7VsmyU3J4889E0qmep68zjgU/Kp8lr5vcVfD
-         ZZZQ==
+        b=MlRZlx6pRkWOUgCpxCW4f153ZPFGYXuq1GtQXB9EZueN4XVQxGn+luBtRvlSsky3uh
+         6EkjkTDY2OtMxvAfuDpnx5pBR3opAuOZvt7kWUaDhKp1U958auFNv+3RezTbIkYCiU3a
+         JKbV085UnIleRsTpUbUHjgFnnaeZBdSjN/Aw24ItgVJ3dj345LZiwPdJ0K2CchaBOjaB
+         cULvyMVN7RtkPGAoTiBcDGFlUaK7QlGqCom+69bKZNfWrbpihi9Wni2O5GWgg2Es1jkF
+         aN0KPYjcDX7sujTU7JqFEnb/ZIPJunv0LP/W4DYmBdmrocGs1UFJORBhepFDep90u7Lm
+         P6Fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=LyYbusHqkV7O2CQidgGkMeNh+438YXMlYqcU1o8X5oU=;
-        b=JP6vF37rTcNQ2CgWoEtEqZGp7Y/fS2YLY1PWtlJN47JZa4IoR3+LCJn42ZBLuKCFpY
-         G7ySuhq7RMCkvVwhz+xkXlyVDDIKYynAoGICwe2G1NEG2h+xxyHjMbg2oiPzNSYFzhuT
-         0mVfKPK890IphzddIssM+TGNg1FdlpwM0j0h2gyVF6sVez45BlPlAmeWWiYOQkxgW47k
-         TOqTUnicupXnxqQTK+KgftRm8bIS1G8sXmJqiQID+7B1fU7VmAul5wumG7m0z+GQOuCt
-         8ncJLYOWbrQdxDrUlmd0t9fNpMXljdu9UAXIf7HAEfM5t5r+kXCDZUTNepayeeRza7YQ
-         eeJg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=/Axy/r17mlcKBB2b5GnWrMnEY/Pjs/UUWkrC5McDPdg=;
+        b=yQvOZm5Ws5404m2Z91qYv8T7hpy22TynxrMQT0Ecy2P1pSBnqWLGBPBDYOHhir4pIR
+         Wox85aoFHR6rQ7V4k9FwTp08Mf5BaSNdNj81sxBWsJZI3JIROGYWPEQrWMsAl2Iv7WQc
+         MHWaFKDwcVaNqb9aLXil6mvRXFSdASGxdeK3gaqxJqqQPDw1li6pwoqTM9tcQIbHnXRn
+         yM7nk5ItQdNw7Y0LC2fgDq3DgY6PorMEe4gixhr5ruBgSmSkQA9jI7Q6ELgN8QBqmypw
+         O0fDNQlKx//o14RYIryC8vc44Fe49dwS7/YcsUggY+X9TwL8NzjqqIq3rVncWA924kjt
+         V3nQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NT4e327F;
+       dkim=fail header.i=@linaro.org header.s=google header.b=XQqXr+pj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n13si2453651qkk.47.2020.03.02.03.19.26
+        by mx.google.com with ESMTPS id k9si1358063qvw.150.2020.03.02.03.23.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Mar 2020 03:19:26 -0800 (PST)
+        Mon, 02 Mar 2020 03:23:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NT4e327F;
+       dkim=fail header.i=@linaro.org header.s=google header.b=XQqXr+pj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58866 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58932 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j8j6c-0000rD-Be
-	for alex.bennee@linaro.org; Mon, 02 Mar 2020 06:19:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32932)
+	id 1j8jAL-0003cb-V0
+	for alex.bennee@linaro.org; Mon, 02 Mar 2020 06:23:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33515)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j8j6E-0000Wp-2G
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:19:03 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j8jAE-0003ap-B8
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:23:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j8j6B-0004iM-Kt
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:19:01 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:32305
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j8j6B-0004iA-EB
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:18:59 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583147938;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LyYbusHqkV7O2CQidgGkMeNh+438YXMlYqcU1o8X5oU=;
- b=NT4e327FelEcskdBM1wxEcaQ0S50dR5W0bdprIJqMfEK2aHd2JKnjJXWWiM/wrOzdS5dax
- qab/DXCujtK908KInnxFFmwwFXwE/y5uKd0ZzPOCfiplOyTBshovqACqLmZ7BVXNFFcjeT
- q5iUA+OIg7AszB3qGyjWmIWXB3ZBlpE=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-230-42WRiv4QMy-D_ztI76Al_Q-1; Mon, 02 Mar 2020 06:18:57 -0500
-X-MC-Unique: 42WRiv4QMy-D_ztI76Al_Q-1
-Received: by mail-wm1-f72.google.com with SMTP id y7so2773380wmd.4
- for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 03:18:56 -0800 (PST)
+ (envelope-from <peter.maydell@linaro.org>) id 1j8jAD-0005lT-CS
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:23:10 -0500
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:34454)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j8jAD-0005lH-7r
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:23:09 -0500
+Received: by mail-oi1-x243.google.com with SMTP id g6so8199669oiy.1
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 03:23:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=/Axy/r17mlcKBB2b5GnWrMnEY/Pjs/UUWkrC5McDPdg=;
+ b=XQqXr+pj+ebDznUxaHFEl6QMw9MFOy0HJELLEWE25FDoACcZqWwQXS2LQadk7WTIHJ
+ d4GzYP4scZHRQaSG1PD5k8Ql2jOOggfGgbiJ7+VK/PwoD+cFH2XkRfBIGaArnJDr77s1
+ wC2XPWYvfeQrPOAnQdhNgAErUH25pmw3N7Tdaw5jA4BjuLnk71mio7QApqhOGRAWG3t1
+ gt3xOkLp+0rlKqYtcsZXzfsUza81YDPLfbMyljIFMQzGvcxRj3hR33mrOmpb3+/nU/EB
+ ZDj+H8plyCu9UGJY/3BpfDep9bHKyhf9AWK0mD8JhmUQB1MDvfJZcCbBHiGLk/svc/lv
+ Syxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=YQA6g/jSFAX204Wo4d/KbsPMP3CGdZr6T6ta2cKO92o=;
- b=pLRoRGCEvttMKD4YP3yElvb1BXZ0rILjDIMkglZXLOJ/+/BqIku2bV1yUpnJrISBEE
- imzptFrVbbLcpHQQk4Izz7RkDvKoncTl6rlTj1gWG8kDIovCTnuG2uShcK2mzKwbfXfL
- YL1ggGyPVw+bnP1C1QT5aNQ5LPtt7sUKaV+2tcFhpoRPmUUWQ6rDrxEALp5mqkDUAeMt
- VEZHN1Nr07SF/040jD2oXO/GOhS/xlXKnAbD4ntqYcV3adQwfTBG7UhPYpbzn1ghtcYB
- w9k1A07K78vOhLjPmyYuXDenxrlcVd3qZZ0/tKNyI1PFZh6MlCljjspWknESQQXW2m5q
- g1mg==
-X-Gm-Message-State: APjAAAWlTCO20TQ5EQ14qfLOrBElgxRrPrUqKC9VSQN0TDV3cShU80eC
- GwoC+zmEGWrtE97ri/QV1JrSdEwbE2IqdJePplz4PPnJsVjtIEUWUV+Vnf3eD/bvMuZWRak6O0L
- XNc4cAoaA3ZxV
-X-Received: by 2002:a5d:4484:: with SMTP id j4mr23544911wrq.153.1583147935733; 
- Mon, 02 Mar 2020 03:18:55 -0800 (PST)
-X-Received: by 2002:a5d:4484:: with SMTP id j4mr23544886wrq.153.1583147935459; 
- Mon, 02 Mar 2020 03:18:55 -0800 (PST)
-Received: from ?IPv6:2a01:e35:2fb0:49e0:3f7b:4b69:b9c:cdc0?
- ([2a01:e35:2fb0:49e0:3f7b:4b69:b9c:cdc0])
- by smtp.gmail.com with ESMTPSA id j5sm27807803wrx.56.2020.03.02.03.18.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Mar 2020 03:18:54 -0800 (PST)
-Subject: Re: [PATCH v3 2/6] hw/arm/virt: Introduce VirtGICType enum type
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
-References: <20200302105516.5972-1-eric.auger@redhat.com>
- <20200302105516.5972-3-eric.auger@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <ff498491-820a-498a-2951-6e46951dd23e@redhat.com>
-Date: Mon, 2 Mar 2020 12:18:48 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=/Axy/r17mlcKBB2b5GnWrMnEY/Pjs/UUWkrC5McDPdg=;
+ b=gv4EyG9N4yoKC0EFSAngqL2ugisvdAOkC1uU2eMbV5DSw/ePXWClW5jUiVyD0MnJct
+ hFXJux2wIRTmMAINuM9jjUiijf6kU+hkveFiY5dItrMaXtl34HRKrQOP0/aRcBMXl9zT
+ MBwjjGfwLvCC62vj4L3SV5YpcWegtPcxkjOtuXD+pDEHuLYqZTc4oXniRjnkW5sJDyFJ
+ MKOvzN+pbl2/wQ8roO8QMb0KQa/4Tsdp2ly6DWBCKiFg7tfC6zWLevmqaRbF0sPI3ZdR
+ yWKRTBeIE5l0Z0KR6KbwyjmOXr26Tow97f9oRlFb1JtpEjmTkjx8JxD4UsD0WIdkxvs4
+ EqLg==
+X-Gm-Message-State: APjAAAVPx0DemcNwKuzzvajQbE99Z3mK+ZxcJFwTs8WBHOmFDfRxaLi1
+ ixuJxaPl2xLcHV6nyuLY5jutxfHC6thtRPRK8A/xCw==
+X-Received: by 2002:aca:b2c5:: with SMTP id
+ b188mr11333058oif.163.1583148187792; 
+ Mon, 02 Mar 2020 03:23:07 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200302105516.5972-3-eric.auger@redhat.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+References: <20200227154424.6849-1-edgar.iglesias@gmail.com>
+ <20200227154424.6849-2-edgar.iglesias@gmail.com>
+In-Reply-To: <20200227154424.6849-2-edgar.iglesias@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 2 Mar 2020 11:22:56 +0000
+Message-ID: <CAFEAcA9ap6MLmQvdD82HaioDeQj3vxtsyLaTN-OGEu0BDygBCg@mail.gmail.com>
+Subject: Re: [PATCH v1 1/2] hw/arm: versal: Add support for the LPD ADMAs
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::243
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -125,185 +105,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: maz@kernel.org, drjones@redhat.com
+Cc: figlesia@xilinx.com, Edgar Iglesias <edgar.iglesias@xilinx.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: m+hmIC9FXFcf
+X-TUID: /gFjKqk4uw4i
 
-On 3/2/20 11:55 AM, Eric Auger wrote:
-> We plan to introduce yet another value for the gic version (nosel).
-> As we already use exotic values such as 0 and -1, let's introduce
-> a dedicated enum type and let vms->gic_version take this
-> type.
->=20
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->=20
+On Thu, 27 Feb 2020 at 03:17, Edgar E. Iglesias
+<edgar.iglesias@gmail.com> wrote:
+>
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+>
+> Add support for the Versal LPD ADMAs.
+>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 > ---
->=20
-> v2 -> v3:
-> - replaced defines by enum VirtGICType
-> - use that new type for vms->gic_version
-> ---
->   hw/arm/virt.c         | 30 +++++++++++++++---------------
->   include/hw/arm/virt.h | 11 +++++++++--
-
-Please have a look at scripts/git.orderfile, it helps making review=20
-easier/quicker.
-
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-
->   2 files changed, 24 insertions(+), 17 deletions(-)
->=20
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index c093f0ab85..b449a445de 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -298,7 +298,7 @@ static void fdt_add_timer_nodes(const VirtMachineStat=
-e *vms)
->           irqflags =3D GIC_FDT_IRQ_FLAGS_EDGE_LO_HI;
->       }
->  =20
-> -    if (vms->gic_version =3D=3D 2) {
-> +    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
->           irqflags =3D deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
->                                GIC_FDT_IRQ_PPI_CPU_WIDTH,
->                                (1 << vms->smp_cpus) - 1);
-> @@ -439,7 +439,7 @@ static void fdt_add_gic_node(VirtMachineState *vms)
->       qemu_fdt_setprop_cell(vms->fdt, nodename, "#address-cells", 0x2);
->       qemu_fdt_setprop_cell(vms->fdt, nodename, "#size-cells", 0x2);
->       qemu_fdt_setprop(vms->fdt, nodename, "ranges", NULL, 0);
-> -    if (vms->gic_version =3D=3D 3) {
-> +    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_3) {
->           int nb_redist_regions =3D virt_gicv3_redist_region_count(vms);
->  =20
->           qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
-> @@ -518,7 +518,7 @@ static void fdt_add_pmu_nodes(const VirtMachineState =
-*vms)
->           }
->       }
->  =20
-> -    if (vms->gic_version =3D=3D 2) {
-> +    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
->           irqflags =3D deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
->                                GIC_FDT_IRQ_PPI_CPU_WIDTH,
->                                (1 << vms->smp_cpus) - 1);
-> @@ -1469,7 +1469,7 @@ static uint64_t virt_cpu_mp_affinity(VirtMachineSta=
-te *vms, int idx)
->            * purposes are to make TCG consistent (with 64-bit KVM hosts)
->            * and to improve SGI efficiency.
->            */
-> -        if (vms->gic_version =3D=3D 3) {
-> +        if (vms->gic_version =3D=3D VIRT_GIC_VERSION_3) {
->               clustersz =3D GICV3_TARGETLIST_BITS;
->           } else {
->               clustersz =3D GIC_TARGETLIST_BITS;
-> @@ -1560,15 +1560,15 @@ static void machvirt_init(MachineState *machine)
->       /* We can probe only here because during property set
->        * KVM is not available yet
->        */
-> -    if (vms->gic_version <=3D 0) {
-> -        /* "host" or "max" */
-> +    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_HOST ||
-> +        vms->gic_version =3D=3D VIRT_GIC_VERSION_MAX) {
->           if (!kvm_enabled()) {
-> -            if (vms->gic_version =3D=3D 0) {
-> +            if (vms->gic_version =3D=3D VIRT_GIC_VERSION_HOST) {
->                   error_report("gic-version=3Dhost requires KVM");
->                   exit(1);
->               } else {
->                   /* "max": currently means 3 for TCG */
-> -                vms->gic_version =3D 3;
-> +                vms->gic_version =3D VIRT_GIC_VERSION_3;
->               }
->           } else {
->               vms->gic_version =3D kvm_arm_vgic_probe();
-> @@ -1627,7 +1627,7 @@ static void machvirt_init(MachineState *machine)
->       /* The maximum number of CPUs depends on the GIC version, or on how
->        * many redistributors we can fit into the memory map.
->        */
-> -    if (vms->gic_version =3D=3D 3) {
-> +    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_3) {
->           virt_max_cpus =3D
->               vms->memmap[VIRT_GIC_REDIST].size / GICV3_REDIST_SIZE;
->           virt_max_cpus +=3D
-> @@ -1855,7 +1855,7 @@ static void virt_set_its(Object *obj, bool value, E=
-rror **errp)
->   static char *virt_get_gic_version(Object *obj, Error **errp)
->   {
->       VirtMachineState *vms =3D VIRT_MACHINE(obj);
-> -    const char *val =3D vms->gic_version =3D=3D 3 ? "3" : "2";
-> +    const char *val =3D vms->gic_version =3D=3D VIRT_GIC_VERSION_3 ? "3"=
- : "2";
->  =20
->       return g_strdup(val);
->   }
-> @@ -1865,13 +1865,13 @@ static void virt_set_gic_version(Object *obj, con=
-st char *value, Error **errp)
->       VirtMachineState *vms =3D VIRT_MACHINE(obj);
->  =20
->       if (!strcmp(value, "3")) {
-> -        vms->gic_version =3D 3;
-> +        vms->gic_version =3D VIRT_GIC_VERSION_3;
->       } else if (!strcmp(value, "2")) {
-> -        vms->gic_version =3D 2;
-> +        vms->gic_version =3D VIRT_GIC_VERSION_2;
->       } else if (!strcmp(value, "host")) {
-> -        vms->gic_version =3D 0; /* Will probe later */
-> +        vms->gic_version =3D VIRT_GIC_VERSION_HOST; /* Will probe later =
-*/
->       } else if (!strcmp(value, "max")) {
-> -        vms->gic_version =3D -1; /* Will probe later */
-> +        vms->gic_version =3D VIRT_GIC_VERSION_MAX; /* Will probe later *=
-/
->       } else {
->           error_setg(errp, "Invalid gic-version value");
->           error_append_hint(errp, "Valid values are 3, 2, host, max.\n");
-> @@ -2139,7 +2139,7 @@ static void virt_instance_init(Object *obj)
->                                       "physical address space above 32 bi=
-ts",
->                                       NULL);
->       /* Default GIC type is v2 */
-> -    vms->gic_version =3D 2;
-> +    vms->gic_version =3D VIRT_GIC_VERSION_2;
->       object_property_add_str(obj, "gic-version", virt_get_gic_version,
->                           virt_set_gic_version, NULL);
->       object_property_set_description(obj, "gic-version",
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 02f500cb8e..c0827cacdf 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -95,6 +95,13 @@ typedef enum VirtIOMMUType {
->       VIRT_IOMMU_VIRTIO,
->   } VirtIOMMUType;
->  =20
-> +typedef enum VirtGICType {
-> +    VIRT_GIC_VERSION_MAX,
-> +    VIRT_GIC_VERSION_HOST,
-> +    VIRT_GIC_VERSION_2,
-> +    VIRT_GIC_VERSION_3,
-> +} VirtGICType;
+>  hw/arm/xlnx-versal.c         | 24 ++++++++++++++++++++++++
+>  include/hw/arm/xlnx-versal.h |  6 ++++++
+>  2 files changed, 30 insertions(+)
+>
+> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+> index 1cf3daaf4f..f9beba07ed 100644
+> --- a/hw/arm/xlnx-versal.c
+> +++ b/hw/arm/xlnx-versal.c
+> @@ -193,6 +193,29 @@ static void versal_create_gems(Versal *s, qemu_irq *pic)
+>      }
+>  }
+>
+> +static void versal_create_admas(Versal *s, qemu_irq *pic)
+> +{
+> +    int i;
 > +
->   typedef struct MemMapEntry {
->       hwaddr base;
->       hwaddr size;
-> @@ -123,7 +130,7 @@ typedef struct {
->       bool highmem_ecam;
->       bool its;
->       bool virt;
-> -    int32_t gic_version;
-> +    VirtGICType gic_version;
->       VirtIOMMUType iommu;
->       uint16_t virtio_iommu_bdf;
->       struct arm_boot_info bootinfo;
-> @@ -162,7 +169,7 @@ static inline int virt_gicv3_redist_region_count(Virt=
-MachineState *vms)
->       uint32_t redist0_capacity =3D
->                   vms->memmap[VIRT_GIC_REDIST].size / GICV3_REDIST_SIZE;
->  =20
-> -    assert(vms->gic_version =3D=3D 3);
-> +    assert(vms->gic_version =3D=3D VIRT_GIC_VERSION_3);
->  =20
->       return vms->smp_cpus > redist0_capacity ? 2 : 1;
->   }
->=20
+> +    for (i = 0; i < ARRAY_SIZE(s->lpd.iou.adma); i++) {
+> +        char *name = g_strdup_printf("adma%d", i);
+> +        DeviceState *dev;
+> +        MemoryRegion *mr;
+> +
+> +        dev = qdev_create(NULL, "xlnx.zdma");
+> +        s->lpd.iou.adma[i] = SYS_BUS_DEVICE(dev);
+> +        object_property_add_child(OBJECT(s), name, OBJECT(dev), &error_fatal);
+> +        qdev_init_nofail(dev);
+> +
+> +        mr = sysbus_mmio_get_region(s->lpd.iou.adma[i], 0);
+> +        memory_region_add_subregion(&s->mr_ps,
+> +                                    MM_ADMA_CH0 + i * MM_ADMA_CH0_SIZE, mr);
+> +
+> +        sysbus_connect_irq(s->lpd.iou.adma[i], 0, pic[VERSAL_ADMA_IRQ_0 + i]);
+> +        g_free(name);
+> +    }
+> +}
 
+It would be more in the modern style to write it with the child device
+struct embedded in the parent struct, object_initialize_child() in the
+parent init, and object_property_set_bool(..., true, "realized", ...)
+in the parent realized, but I guess this fits with the way the
+rest of the existing device is written.
+
+Series applied to target-arm.next, thanks.
+
+thanks
+-- PMM

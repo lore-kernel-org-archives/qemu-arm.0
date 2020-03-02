@@ -1,345 +1,140 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1709265lfg;
-        Sun, 1 Mar 2020 13:50:52 -0800 (PST)
-X-Received: by 2002:adf:f2ca:: with SMTP id d10mr2921331wrp.247.1583099452140;
-        Sun, 01 Mar 2020 13:50:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583099452; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2341472lfg;
+        Mon, 2 Mar 2020 03:45:10 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vt/sp73mlRSbt9OKyamRvz1sTy2oHPB10numaJxFBKGCXOykUccLnQzjXshOrvobwzjAP2E
+X-Received: by 2002:a0c:f98f:: with SMTP id t15mr4466464qvn.44.1583149510125;
+        Mon, 02 Mar 2020 03:45:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583149510; cv=none;
         d=google.com; s=arc-20160816;
-        b=pwuTYTrnV/tngmlWU2x411abm3qTA21zLgnqg7+CD213LWLRo29pg8KQfPBM9tAXsz
-         QC4aCrtcO0UJVYdMyg7DFdb5gDQ5NGhoBmEOLEK916msrtfPt4Gu2CJcS2AugF8SRNLd
-         FwzzPTVakHB4idaeAheFm2+01CLAUlXEVxzx5PQXecc2CtDPSAuRA2hdGLyYFSYn/SV/
-         WACYSMp7paLczgxkMPh3SwTaiARU0fPObx6YY9FLX/dHfBFLza5eA8aIoacX/W7cM2ft
-         34/vZJ+dTieJap+1lqXoAZOYjrRM0AZtEDQTiLGcau+kI+MiHdfeJU6eq5lhCaYF8gru
-         y9fQ==
+        b=DywrNBL2rqaYFTf12O7B57CFr4MoWuQM4/lDU9R8hVzCuLv5Gdc2O5vdp5W5IoUCtN
+         AaTqkR/6fTC+zE+7wBdBs6rLof4B2S8Ihf0ur9yXLr6swtIJnhLbyYXrkQm5oa+LZ5VM
+         sreO8IVjpPO8UT/U/vlVK7/cdSq99eePQnNfDZ3FQCqpdj45esvW0/Zx+I3q3tpHkGlM
+         sS3DHZg8AYQtS/mw8iB3zA5WgV38Si7RY++eXNgSDJsFaV2DD7U3CWQM4l1bODnnvWnI
+         Nl9jWLumXKJFwpJkkijihRVzzmFFdehQOPG19LzPX3BlVsqypaM1ExgxorWrNTci2mqT
+         uhpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=ZcDH5zaXlnVesehM+A/XdcvhwS1VBGfED/LsFvtDTeM=;
-        b=zq8dCzBAa09IhMwUpqX56HET6HMNAOIPkAEY4+Qv8YC9T9VcZGDZn9nIjU6seqFyFm
-         0HghFFKkFW7My3WyeWaIiOxI7BHs1tVTaqsb3jPgwnpWD7z5mIh1eLKYRk57+kqC0WxB
-         Jk9SjAQqLAYRzZouYjRLhfautwQGMCxcFZ9f6CWJtsb5IbCzMJdXK/EJRm+O+dcIUKdT
-         gncaHyqtbQ24rSKkq7WzrFc5NN+aF5ksMUJRfA8ELTVx3YeCTYIp/qELZxO/Rd/zks9/
-         LwoZH91z7FTbttXx1DfMJt75+1LgFnSlktYbY7D4m+5WZCAjRXO+UYLtIf7rA+DsNNR1
-         Bbew==
+        bh=HzUbiyFOIAhKBOLtvU0wcuoLQzSWzvKiUf4HyRWED/k=;
+        b=nhHYZg3R9Yzcg2sFz5UC1U0UwHFhSwHcr7RuJLeVfuW47HE6PHzi0fjliM61Xn4mFf
+         rpSwv3ikIiCM+Urr2UgzpUWsN20crIG33B7Wc0nSGHH5mqnQiV89Cz5Uq2yPP741pX1E
+         DXkvTrSbBJB7QWtw1tT55lMiuiTFrsF9jxN7Lm6guBOsgsMwSGOzBvyD9As+AkR4dgXv
+         r6tASvZBysFHhmG0VHP8LJbzJDwovIFLA2VyYTvjpcxwNQExrG9xl8wX+ptNFX8jG/U3
+         +atvkHkCu4zmTamgdA58um3IY6433/iEuPk06+vAIFjTlndTTWMHenbwM5Msi4QLzCgj
+         gWKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OmtKAFUL;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id o6sor3210771wrq.26.2020.03.01.13.50.51
-        (Google Transport Security);
-        Sun, 01 Mar 2020 13:50:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=fail header.i=@linaro.org header.s=google header.b=d5nfF6Ei;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n90si5420661qtd.107.2020.03.02.03.45.09
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 02 Mar 2020 03:45:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OmtKAFUL;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=ZcDH5zaXlnVesehM+A/XdcvhwS1VBGfED/LsFvtDTeM=;
-        b=OmtKAFULGS/ORIbSyo6s3lwEbNncO1hy2FKum5RuKObhXhwDN6TRpjA/lgkgFkLCy0
-         WhmIpR39Xe5/nRlg6mkiYwnH8w9VyFjMM3PyiH29gvNvMx+UfstUXO9UBsCYtUmjJlL2
-         j+42RvaKgnhOznPbMqlIlZ1/7ocZAjglY3jmldlVMCMkXJqYJG5vzOwzFgcXjcHDcXgu
-         9S5oNpOY81gCcHBbJqR4c7dhzD9yXFlkw1Wo0Na3gFJc9hNvRyGwHLhoz45NZyeVoMPw
-         yfWFryrablKDeui8tBH07j9mG541x2cDyGRXBJMsCD6f8GU3LrT0CLozQmzaeb9rB4NI
-         f6Lg==
+       dkim=fail header.i=@linaro.org header.s=google header.b=d5nfF6Ei;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59352 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j8jVV-0003Td-K8
+	for alex.bennee@linaro.org; Mon, 02 Mar 2020 06:45:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37519)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1j8jVM-0003Sz-82
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:45:01 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1j8jVL-000572-1p
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:44:59 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:38366)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j8jVK-00056g-Sl
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:44:58 -0500
+Received: by mail-ot1-x343.google.com with SMTP id i14so2269477otp.5
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 03:44:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=HzUbiyFOIAhKBOLtvU0wcuoLQzSWzvKiUf4HyRWED/k=;
+ b=d5nfF6EiGCLrlhk/zQoYA4Oi3l/X+sYzzgck+sTDOOhqWVFaSPkboNAI21ta9aFg7K
+ brD54B+LFgeYwuOhjg1wb+yd8riCXo5ZbeheWJSXW29YPSy4ygpz6moFr0MIL9aKFx/V
+ 4K4J8MT7mEz0tqSTwJJAL2gz9SnCDQRGmMzqFiR/3VpimSLNvh0uhA+rlvvJUNgE5lQz
+ DXQgitj+F5pyAwDsYyqBR1fWzHyOn1x+1PxI5f6msa4ng9+wi2bx36MfieA+kdX/M4jj
+ BUNIi52eFBudEelw2Lwr/DRD3zlBo9Xa/vc93kXP4NIalR7d0xpSeXkRtKYJDN9PMOEX
+ gtwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=ZcDH5zaXlnVesehM+A/XdcvhwS1VBGfED/LsFvtDTeM=;
-        b=KuB5E7cFGcS0qwT521VmL7X70GhQhcVsBTX65scFn9Iy8OLVok2FjiRbNVTd2w/Yw9
-         rtL4yO6m5SYCMTLatOA0d34/0BtqspKgbJL2Q9OVmmnod0gDvIa+36zogw2luFDvORyi
-         vcsdS3WbzDzw36qEHqc9ZuZ1DboRvwxEhLQpuVAPH65gsE16Dyc7pwXPt4/Y+ldoVYdn
-         +LUxSvXOs+xKxE5jP4Mp08WilNwbPq5say0vobaTxBofmN1wtBot0cND+lXlS9ygtAmU
-         9aBKjaGmUBdNbVe3maUM+fH/bdzBAn49iu6xiBPBSAuwK8dp7qLANHT3iCH2vcHIaoxm
-         b4+w==
-X-Gm-Message-State: APjAAAXovVEeMiWywu0daiez8Q8UZenFt4uEHTq9MCw2VDr69T5+t+M5
-	j1VxyifKoCqoNe+pyzhURdE=
-X-Google-Smtp-Source: APXvYqw9vXU3KR9OzORtFH9XIKqdzZhd9HNZTiBXxBtxbRwrJX0TLb08DR6XUnjpXUJ+n4TbcZdRfQ==
-X-Received: by 2002:adf:fa4a:: with SMTP id y10mr17747639wrr.322.1583099451451;
-        Sun, 01 Mar 2020 13:50:51 -0800 (PST)
-Return-Path: <nieklinnenbank@gmail.com>
-Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
-        by smtp.gmail.com with ESMTPSA id e8sm25033124wrr.69.2020.03.01.13.50.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 01 Mar 2020 13:50:50 -0800 (PST)
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	peter.maydell@linaro.org,
-	philmd@redhat.com,
-	b.galvani@gmail.com,
-	jasowang@redhat.com,
-	alex.bennee@linaro.org,
-	imammedo@redhat.com,
-	Niek Linnenbank <nieklinnenbank@gmail.com>
-Subject: [PATCH v6 18/18] docs: add Orange Pi PC document
-Date: Sun,  1 Mar 2020 22:50:29 +0100
-Message-Id: <20200301215029.15196-19-nieklinnenbank@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200301215029.15196-1-nieklinnenbank@gmail.com>
-References: <20200301215029.15196-1-nieklinnenbank@gmail.com>
-X-TUID: pB3ZHCbnp8a2
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=HzUbiyFOIAhKBOLtvU0wcuoLQzSWzvKiUf4HyRWED/k=;
+ b=cVKMXN2haUAEy++VDmDo8ssRvMoQSW9a+m7oOaIbur4zsUNOsxQAEOryP+jwiWwlQU
+ bJo4kCGrE2yxF8gpKXrsKPm4w1coR3zCudZDXxJCMhA/yH7BN9jZeZlUG1uIQu79EeYr
+ SQH0baZtOGBHDs1hBg1iP80QnVeOQ5aEpsXM6rvclkQ8w6wxU1vZA9vN5GLjs5n9XklG
+ H8IMYX0gSbOTeiKgugsQ58YH000nSrBGqCvvORRp25b0Or3d/D2pMT7jUthoDmiremYf
+ kKV+FxnDWmhEIjKV/WOPM9oiU8P+7gH5WMkTrrqSSLCuvUUHkeg65aWskdix4g8m+mSi
+ KvQg==
+X-Gm-Message-State: ANhLgQ37HQ+yepGbD5mVND7rQEwx+jXPlPWcpq8O/SWf6M1PcAj9xOj+
+ wt6xb4QQWcSaVZibnrbimkEZMX6IMJpy/ikqbpswrg==
+X-Received: by 2002:a05:6830:1406:: with SMTP id
+ v6mr3688045otp.232.1583149497899; 
+ Mon, 02 Mar 2020 03:44:57 -0800 (PST)
+MIME-Version: 1.0
+References: <20200228125351.29482-1-philmd@redhat.com>
+In-Reply-To: <20200228125351.29482-1-philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 2 Mar 2020 11:44:47 +0000
+Message-ID: <CAFEAcA-AUSLBirS+1_JHCVQAH5-ZJz+YL+Qp8StALRW7b6EzJg@mail.gmail.com>
+Subject: Re: [PATCH 0/5] hw/arm: Remove big-endian checks on machine code
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrzej Zaborowski <balrogg@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Jan Kiszka <jan.kiszka@web.de>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HB552PkqjiUd
 
-The Xunlong Orange Pi PC machine is a functional ARM machine
-based on the Allwinner H3 System-on-Chip. It supports mainline
-Linux, U-Boot, NetBSD and is covered by acceptance tests.
+On Fri, 28 Feb 2020 at 12:53, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> We only build the little-endian softmmu configurations.
+> Checking for big endian is pointless, remove the unused code.
+>
+> Philippe Mathieu-Daud=C3=A9 (5):
+>   hw/arm/gumstix: Simplify since the machines are little-endian only
+>   hw/arm/mainstone: Simplify since the machines are little-endian only
+>   hw/arm/omap_sx1: Simplify since the machines are little-endian only
+>   hw/arm/z2: Simplify since the machines are little-endian only
+>   hw/arm/musicpal: Simplify since the machines are little-endian only
+>
+>  hw/arm/gumstix.c   | 16 ++--------------
+>  hw/arm/mainstone.c |  8 +-------
+>  hw/arm/musicpal.c  | 10 ----------
+>  hw/arm/omap_sx1.c  | 11 ++---------
+>  hw/arm/z2.c        |  8 +-------
+>  5 files changed, 6 insertions(+), 47 deletions(-)
 
-This commit adds a documentation text file with a description
-of the machine and instructions for the user.
 
-Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
----
- docs/orangepi.rst | 226 ++++++++++++++++++++++++++++++++++++++++++++++
- MAINTAINERS       |   1 +
- 2 files changed, 227 insertions(+)
- create mode 100644 docs/orangepi.rst
 
-diff --git a/docs/orangepi.rst b/docs/orangepi.rst
-new file mode 100644
-index 0000000000..a9b46f553c
---- /dev/null
-+++ b/docs/orangepi.rst
-@@ -0,0 +1,226 @@
-+=========================
-+Orange Pi PC Machine Type
-+=========================
-+
-+The Xunlong Orange Pi PC is an Allwinner H3 System on Chip
-+based embedded computer with mainline support in both U-Boot
-+and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,
-+1GiB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and
-+various other I/O.
-+
-+Supported devices
-+-----------------
-+
-+The Orange Pi PC machine supports the following devices:
-+
-+ * SMP (Quad Core Cortex A7)
-+ * Generic Interrupt Controller configuration
-+ * SRAM mappings
-+ * SDRAM controller
-+ * Real Time Clock
-+ * Timer device (re-used from Allwinner A10)
-+ * UART
-+ * SD/MMC storage controller
-+ * EMAC ethernet
-+ * USB 2.0 interfaces
-+ * Clock Control Unit
-+ * System Control module
-+ * Security Identifier device
-+
-+Limitations
-+-----------
-+
-+Currently, Orange Pi PC does *not* support the following features:
-+
-+- Graphical output via HDMI, GPU and/or the Display Engine
-+- Audio output
-+- Hardware Watchdog
-+
-+Also see the 'unimplemented' array in the Allwinner H3 SoC module
-+for a complete list of unimplemented I/O devices:
-+  ./hw/arm/allwinner-h3.c
-+
-+Using the Orange Pi PC machine type
-+-----------------------------------
-+
-+Boot options
-+~~~~~~~~~~~~
-+
-+The Orange Pi PC machine can start using the standard -kernel functionality
-+for loading a Linux kernel or ELF executable. Additionally, the Orange Pi PC
-+machine can also emulate the BootROM which is present on an actual Allwinner H3
-+based SoC, which loads the bootloader from a SD card, specified via the -sd argument
-+to qemu-system-arm.
-+
-+Machine-specific options
-+~~~~~~~~~~~~~~~~~~~~~~~~
-+
-+The following machine-specific options are supported:
-+
-+- allwinner-rtc.base-year=YYYY
-+
-+  The Allwinner RTC device is automatically created by the Orange Pi PC machine
-+  and uses a default base year value which can be overridden using the 'base-year' property.
-+  The base year is the actual represented year when the RTC year value is zero.
-+  This option can be used in case the target operating system driver uses a different
-+  base year value. The minimum value for the base year is 1900.
-+
-+- allwinner-sid.identifier=abcd1122-a000-b000-c000-12345678ffff
-+
-+  The Security Identifier value can be read by the guest.
-+  For example, U-Boot uses it to determine a unique MAC address.
-+
-+The above machine-specific options can be specified in qemu-system-arm
-+via the '-global' argument, for example:
-+
-+  $ qemu-system-arm -M orangepi-pc -sd mycard.img \
-+       -global allwinner-rtc.base-year=2000
-+
-+Running mainline Linux
-+~~~~~~~~~~~~~~~~~~~~~~
-+
-+Mainline Linux kernels from 4.19 up to latest master are known to work.
-+To build a Linux mainline kernel that can be booted by the Orange Pi PC machine,
-+simply configure the kernel using the sunxi_defconfig configuration:
-+
-+  $ ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- make mrproper
-+  $ ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- make sunxi_defconfig
-+
-+To be able to use USB storage, you need to manually enable the corresponding
-+configuration item. Start the kconfig configuration tool:
-+
-+  $ ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- make menuconfig
-+
-+Navigate to the following item, enable it and save your configuration:
-+
-+  Device Drivers > USB support > USB Mass Storage support
-+
-+Build the Linux kernel with:
-+
-+  $ ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- make
-+
-+To boot the newly build linux kernel in QEMU with the Orange Pi PC machine, use:
-+
-+  $ qemu-system-arm -M orangepi-pc -nic user -nographic \
-+      -kernel /path/to/linux/arch/arm/boot/zImage \
-+      -append 'console=ttyS0,115200' \
-+      -dtb /path/to/linux/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dtb
-+
-+Orange Pi PC images
-+~~~~~~~~~~~~~~~~~~~
-+
-+Note that the mainline kernel does not have a root filesystem. You may provide it
-+with an official Orange Pi PC image from the official website:
-+
-+  http://www.orangepi.org/downloadresources/
-+
-+Another possibility is to run an Armbian image for Orange Pi PC which
-+can be downloaded from:
-+
-+   https://www.armbian.com/orange-pi-pc/
-+
-+Alternatively, you can also choose to build you own image with buildroot
-+using the orangepi_pc_defconfig. Also see https://buildroot.org for more information.
-+
-+You can choose to attach the selected image either as an SD card or as USB mass storage.
-+For example, to boot using the Orange Pi PC Debian image on SD card, simply add the -sd
-+argument and provide the proper root= kernel parameter:
-+
-+  $ qemu-system-arm -M orangepi-pc -nic user -nographic \
-+      -kernel /path/to/linux/arch/arm/boot/zImage \
-+      -append 'console=ttyS0,115200 root=/dev/mmcblk0p2' \
-+      -dtb /path/to/linux/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dtb \
-+      -sd OrangePi_pc_debian_stretch_server_linux5.3.5_v1.0.img
-+
-+To attach the image as an USB mass storage device to the machine,
-+simply append to the command:
-+
-+  -drive if=none,id=stick,file=myimage.img \
-+  -device usb-storage,bus=usb-bus.0,drive=stick
-+
-+Instead of providing a custom Linux kernel via the -kernel command you may also
-+choose to let the Orange Pi PC machine load the bootloader from SD card, just like
-+a real board would do using the BootROM. Simply pass the selected image via the -sd
-+argument and remove the -kernel, -append, -dbt and -initrd arguments:
-+
-+  $ qemu-system-arm -M orangepi-pc -nic user -nographic \
-+       -sd Armbian_19.11.3_Orangepipc_buster_current_5.3.9.img
-+
-+Note that both the official Orange Pi PC images and Armbian images start
-+a lot of userland programs via systemd. Depending on the host hardware and OS,
-+they may be slow to emulate, especially due to emulating the 4 cores.
-+To help reduce the performance slow down due to emulating the 4 cores, you can
-+give the following kernel parameters (or via -append):
-+
-+  => setenv extraargs 'systemd.default_timeout_start_sec=9000 loglevel=7 nosmp console=ttyS0,115200'
-+
-+Running U-Boot
-+~~~~~~~~~~~~~~
-+
-+U-Boot mainline can be build and configured using the orangepi_pc_defconfig
-+using similar commands as describe above for Linux. Note that it is recommended
-+for development/testing to select the following configuration setting in U-Boot:
-+
-+  Device Tree Control > Provider for DTB for DT Control > Embedded DTB
-+
-+To start U-Boot using the Orange Pi PC machine, provide the
-+u-boot binary to the -kernel argument:
-+
-+  $ qemu-system-arm -M orangepi-pc -nic user -nographic \
-+      -kernel /path/to/uboot/u-boot -sd disk.img
-+
-+Use the following U-boot commands to load and boot a Linux kernel from SD card:
-+
-+  -> setenv bootargs console=ttyS0,115200
-+  -> ext2load mmc 0 0x42000000 zImage
-+  -> ext2load mmc 0 0x43000000 sun8i-h3-orangepi-pc.dtb
-+  -> bootz 0x42000000 - 0x43000000
-+
-+Running NetBSD
-+~~~~~~~~~~~~~~
-+
-+The NetBSD operating system also includes support for Allwinner H3 based boards,
-+including the Orange Pi PC. NetBSD 9.0 is known to work best for the Orange Pi PC
-+board and provides a fully working system with serial console, networking and storage.
-+For the Orange Pi PC machine, get the 'evbarm-earmv7hf' based image from:
-+
-+  https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.0/evbarm-earmv7hf/binary/gzimg/armv7.img.gz
-+
-+The image requires manually installing U-Boot in the image. Build U-Boot with
-+the orangepi_pc_defconfig configuration as described in the previous section.
-+Next, unzip the NetBSD image and write the U-Boot binary including SPL using:
-+
-+  $ gunzip armv7.img.gz
-+  $ dd if=/path/to/u-boot-sunxi-with-spl.bin of=armv7.img bs=1024 seek=8 conv=notrunc
-+
-+Finally, before starting the machine the SD image must be extended such
-+that the NetBSD kernel will not conclude the NetBSD partition is larger than
-+the emulated SD card:
-+
-+  $ dd if=/dev/zero bs=1M count=64 >> armv7.img
-+
-+Start the machine using the following command:
-+
-+  $ qemu-system-arm -M orangepi-pc -nic user -nographic \
-+        -sd armv7.img -global allwinner-rtc.base-year=2000
-+
-+At the U-Boot stage, interrupt the automatic boot process by pressing a key
-+and set the following environment variables before booting:
-+
-+  => setenv bootargs root=ld0a
-+  => setenv kernel netbsd-GENERIC.ub
-+  => setenv fdtfile dtb/sun8i-h3-orangepi-pc.dtb
-+  => setenv bootcmd 'fatload mmc 0:1 ${kernel_addr_r} ${kernel}; fatload mmc 0:1 ${fdt_addr_r} ${fdtfile}; fdt addr ${fdt_addr_r}; bootm ${kernel_addr_r} - ${fdt_addr_r}'
-+
-+Optionally you may save the environment variables to SD card with 'saveenv'.
-+To continue booting simply give the 'boot' command and NetBSD boots.
-+
-+Orange Pi PC acceptance tests
-+-----------------------------
-+
-+The Orange Pi PC machine has several acceptance tests included.
-+To run the whole set of tests, build QEMU from source and simply
-+provide the following command:
-+
-+  $ AVOCADO_ALLOW_LARGE_STORAGE=yes avocado --show=app,console run \
-+     -t machine:orangepi-pc tests/acceptance/boot_linux_console.py
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 02ecba8d9c..643906bd18 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -497,6 +497,7 @@ S: Maintained
- F: hw/*/allwinner-h3*
- F: include/hw/*/allwinner-h3*
- F: hw/arm/orangepi.c
-+F: docs/orangepi.rst
- 
- ARM PrimeCell and CMSDK devices
- M: Peter Maydell <peter.maydell@linaro.org>
--- 
-2.17.1
+Applied to target-arm.next, thanks.
+
+-- PMM

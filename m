@@ -1,221 +1,211 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2784958lfg;
-        Mon, 2 Mar 2020 11:18:17 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vuZPSI6NOTUD4HEZwHXexGP6cVegvzOD6lhp6WRsvHzaf2XiQast6S8JItV7jnEU4QfBlHM
-X-Received: by 2002:ac8:6c48:: with SMTP id z8mr1182304qtu.88.1583176697403;
-        Mon, 02 Mar 2020 11:18:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583176697; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2939234lfg;
+        Mon, 2 Mar 2020 14:22:01 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vtI1o+JNZ6fCJ1dQ6crqZSyTUh6gg9YV5z0xwuBllonABw+pgqRsUW5cI+fF1epPuJb0Bk1
+X-Received: by 2002:a37:b285:: with SMTP id b127mr1326889qkf.413.1583187721047;
+        Mon, 02 Mar 2020 14:22:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583187721; cv=none;
         d=google.com; s=arc-20160816;
-        b=xn/1Bm4mU3RaQx1aSeq/obfQYxSY6x4WO9cFvFEQuvhGicoiK+h/6PX/nHL9PrWMp3
-         SnqX2ZIE4DAjuNHf5Ro0b++JlSUs9VdvG37xocp6Bk3BMJKwfa8C4EvZUlFpZwmExnDt
-         4RckXcHcdCv/SKpq9FlO11HjIAEVqtj1uPpS1PqQE743i5wCiSIPPGb0lSP1flFucUA9
-         fNNXWfQSWE6SYg64x+UbbGlMvuQTXZGITgW6MkY+N8xDsAjADYyQy0Myow8vXbVIo3z+
-         fR9gLjs6dG3QfnZ6AwjoH4rcy9mWEWElD6TwxH/FeEkHD37hIPgvq3duPhc4fYEI/Bzi
-         BGdA==
+        b=lUBhkopFXyivrOKz0E5yLEUQSLtYdvcrXkvKiVUwlevYihqiSNh0nKy8F2xfOYTV5E
+         Hdvvu612QNV+RG9HV/HRPFjhapCw5b+Psat+KKRxi+Mc5QrU2uLvPjrp8SbozDeF/4ui
+         RIvamdtaIRPEyAfDoxdhZlcCIsyr0sX7hRhMFgsl20wbuIdK93XNunHYLXgnK5jWk53B
+         Mt305LDVWmBYOqWrXKaDssc3heOXw3ou+uH4xlMhaa4VlWf230c/2sPj4Nd9f1Hc0HkE
+         qs1SQFeU7dLpfvGl+tlIvLdQVCEvqc8+jzhN6MDKDakM7AAH2301jQXOPUXFra5bytPk
+         twyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:from:references:to;
-        bh=GjtVzc1D+C5vIhLi/Lkoq2ESvXQE5bcq3iH+ltfer5s=;
-        b=ETIgHqOz5+Ar/cCCP6hiWisSm/wrTDnvF60lTb39RerFfsNAiKICu1XQAtyNatCblz
-         xXQeU4Je9fPrmAaKw8IqgjY8mDrcFcws2tFbI+CrC/mUxf5zhr53kqZll86PId9daxGa
-         i+cHqyU03M4tPOrPHFpTgxt+BNjFmPwxwYsm/YyyaC3mGnvdgmHMAIz5GbiBTXMNKt2e
-         CrOQIAuH+pAGaMaA+Ngtt4r29mbj+Bxr7dh7nlhamYucoNnuag6I4nbCVbbBvLlJ0jbK
-         oJgIeKPvSLLr1eEBTuhQLvfQvkmxU/I+pnT2T7DTS+MR27k5CZNLTnaw/Z6OHTL3jEqX
-         x2+Q==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=O0nm6twvES1OV6+jbGXO4+jNcXTeR0V4Bbun41/J21g=;
+        b=Dk7QEEgVTc3VgAqCCalUQfP1nifE2pdTFIOAyMzs1PKC5w56CMEAd6AkiysfvkIF1S
+         VJFidCc7sjuQBHwfQSHIEHkJAhHHCcsIeL+JB7LSy9lPTU6i6CJfHeEFIm7J039ifrpn
+         PBdD1Sh+mdprzxR0++w3DwC2DULqwSjNwF0gFXCCqivQeqPD9lkZntic8x9rbnYe3m+d
+         pXVZUUBp1cyrg8S6SiYWoFvNwlWqeIsCXgO/908Md8Ayp95fiy/fNfZY2urCkkEG0IHP
+         +bRmmT2kv8RW+UBctlkjW4TiTOt1YpLSRhDWUc4YUB5nexHnKwGpFC1OBrJ7xMUsF8e3
+         KUKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IwnXHVtU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q17si6869614qtj.381.2020.03.02.11.18.17
+        by mx.google.com with ESMTPS id z188si7138843qkb.249.2020.03.02.14.22.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Mar 2020 11:18:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 02 Mar 2020 14:22:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37592 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IwnXHVtU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39274 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j8qa0-0003Ev-Pi
-	for alex.bennee@linaro.org; Mon, 02 Mar 2020 14:18:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54667)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j8tRo-0003xt-Hv
+	for alex.bennee@linaro.org; Mon, 02 Mar 2020 17:22:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54322)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mark.cave-ayland@ilande.co.uk>) id 1j8qZ3-0002VN-4l
- for qemu-devel@nongnu.org; Mon, 02 Mar 2020 14:17:18 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1j8tRf-0003xa-VE
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 17:21:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mark.cave-ayland@ilande.co.uk>) id 1j8qZ1-0001Gn-W9
- for qemu-devel@nongnu.org; Mon, 02 Mar 2020 14:17:17 -0500
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:55246
- helo=mail.default.ilande.uk0.bigv.io)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1j8qZ1-0001F2-P4; Mon, 02 Mar 2020 14:17:15 -0500
-Received: from host86-162-6-80.range86-162.btcentralplus.com ([86.162.6.80]
- helo=[192.168.1.65]) by mail.default.ilande.uk0.bigv.io with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.89)
- (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1j8qZD-0003RU-IO; Mon, 02 Mar 2020 19:17:33 +0000
-To: Peter Maydell <peter.maydell@linaro.org>,
- Pan Nengyuan <pannengyuan@huawei.com>
-References: <20200227025055.14341-1-pannengyuan@huawei.com>
- <20200227025055.14341-6-pannengyuan@huawei.com>
- <CAFEAcA8yvrYrBONtW46iswbEvMF-WC-j7fHOOfcoEC_RV66BkQ@mail.gmail.com>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
- mQENBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
- 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
- E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
- PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
- PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
- AAG0ME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPokB
- OAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
- NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
- mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
- z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
- T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
- DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63LkBDQRUCbs8AQgA
- y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
- 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
- 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
- YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
- Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABiQEfBBgBAgAJ
- BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
- opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
- NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
- Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
- KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
- imgcU9TTGC5qd9g=
-Message-ID: <c2b9eab3-f589-ecb6-0115-f8e673d52998@ilande.co.uk>
-Date: Mon, 2 Mar 2020 19:17:05 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (envelope-from <nieklinnenbank@gmail.com>) id 1j8tRe-0002xD-NA
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 17:21:51 -0500
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:36444)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1j8tRb-0002td-UE; Mon, 02 Mar 2020 17:21:48 -0500
+Received: by mail-il1-x144.google.com with SMTP id b15so968667iln.3;
+ Mon, 02 Mar 2020 14:21:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=O0nm6twvES1OV6+jbGXO4+jNcXTeR0V4Bbun41/J21g=;
+ b=IwnXHVtUjLC0ySATbVievCZ03j0mFdySUOXV0qdJFJ7kYCC/Y/xT4pk/AuyClAZDSD
+ 9j45Ijq8M18A+42qSPa4IdrA2jz3HwHZo82ie2V/V/yiIBLVB4sHIpWP+842n42Uy8um
+ Vym0qzElAjaR65aeMa7j4a+AzLvAdMwg3OavLT7mUjkpOVl7d5/3Gr73epb/7TZzoBd9
+ vNgvN4x+zlxowfkQLl23IOeCQv9BCMm1YZfnoUv8JZWlX6XEuYUIEnqktvfC5HKfM+xC
+ 47SZ6g1bYEYNw+dEg1eIcLV2lx9/8afR7A7fo6DQ/s/gNOKPvjVJMDg0RPOVuf9K0efR
+ gC5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=O0nm6twvES1OV6+jbGXO4+jNcXTeR0V4Bbun41/J21g=;
+ b=iNAdS8OFiQWa+C3ea0uBRf853F/lW2+NPYaLTVfgOFqT0Ym3SMJJQ0kjpnP2NZLc0o
+ pf4TEqgaMhl2oC3+xgioqjJmbztCQ6PAynJPjCJ8/Gtdop0j1f709z0HbfUuv9WcBd8G
+ cOTlxLXXZa/47ew1HFRdjqD0wKIPm5hI6aiqtn2taCaPGeZwnAmQnJEpp0vh729dECJy
+ p5+DYxki6vYWKZMO+G3EJpsrudQoiD3u2dBCSjWnD4+4I6g60EV04dnTT9ZDvNqduDDK
+ NL/8fp7gu8563/vQ2nP6ZHIdZflTSkhFh5M8rnF+j/9ylQLhfa4tMYKN+M0ALYjUYGJI
+ UbgQ==
+X-Gm-Message-State: ANhLgQ2kb/VOFw0CH2LWJz5khJJqltBh+WWaWpTwoOx7PfK4rDRuCngI
+ 0AtjG8xVABaaGs8PVxzhulmyRnVpmOJJGKR653I=
+X-Received: by 2002:a92:aaca:: with SMTP id p71mr1710228ill.67.1583187706999; 
+ Mon, 02 Mar 2020 14:21:46 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8yvrYrBONtW46iswbEvMF-WC-j7fHOOfcoEC_RV66BkQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 86.162.6.80
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH v3 5/6] hw/misc/mos6522: move timer_new from init() into
- realize() to avoid memleaks
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
+References: <20200227220149.6845-1-nieklinnenbank@gmail.com>
+ <CAFEAcA8uEd_RqNi6iQDxZmGaAGpYoy=bgXFJVj-ow0Ci_Vz+DQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA8uEd_RqNi6iQDxZmGaAGpYoy=bgXFJVj-ow0Ci_Vz+DQ@mail.gmail.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Mon, 2 Mar 2020 23:21:36 +0100
+Message-ID: <CAPan3WqZ8p6ooSxnbYqE+wvNQ2NJETPLXeuaLLKQwskYaSxbNQ@mail.gmail.com>
+Subject: Re: [PATCH v1 0/4] hw/arm/cubieboard: correct CPU type and add
+ machine argument checks
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="000000000000e3785d059fe69c08"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2001:41c9:1:41f::167
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::144
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- zhanghailiang <zhang.zhanghailiang@huawei.com>, qemu-arm <qemu-arm@nongnu.org>,
- Laurent Vivier <laurent@vivier.eu>, Euler Robot <euler.robot@huawei.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7EXjasS3xcEd
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AE5riiWGAH2p
 
-On 02/03/2020 13:21, Peter Maydell wrote:
+--000000000000e3785d059fe69c08
+Content-Type: text/plain; charset="UTF-8"
 
-> On Thu, 27 Feb 2020 at 02:35, Pan Nengyuan <pannengyuan@huawei.com> wrote:
->>
->> There are some memleaks when we call 'device_list_properties'. This patch move timer_new from init into realize to fix it.
->> Meanwhile, add calls to mos6522_realize() in mac_via_realize to make this move to be valid.
->>
->> Reported-by: Euler Robot <euler.robot@huawei.com>
->> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
->> ---
->> Cc: Laurent Vivier <laurent@vivier.eu>
->> ---
->> v2->v1:
->> - no changes in this patch.
->> v3->v2:
->> - remove null check in reset, and add calls to mos6522_realize() in mac_via_realize to make this move to be valid.
-> 
-> Hi; this is really fixing two bugs in one patch:
-> 
->> ---
->>  hw/misc/mac_via.c | 5 +++++
->>  hw/misc/mos6522.c | 6 ++++++
->>  2 files changed, 11 insertions(+)
->>
->> diff --git a/hw/misc/mac_via.c b/hw/misc/mac_via.c
->> index b7d0012794..1d72d4ef35 100644
->> --- a/hw/misc/mac_via.c
->> +++ b/hw/misc/mac_via.c
->> @@ -879,6 +879,11 @@ static void mac_via_realize(DeviceState *dev, Error **errp)
->>      sysbus_init_child_obj(OBJECT(dev), "via2", &m->mos6522_via2,
->>                            sizeof(m->mos6522_via2), TYPE_MOS6522_Q800_VIA2);
->>
->> +    object_property_set_bool(OBJECT(&m->mos6522_via1), true, "realized",
->> +                             &error_abort);
->> +    object_property_set_bool(OBJECT(&m->mos6522_via2), true, "realized",
->> +                             &error_abort);
->> +
->>      /* Pass through mos6522 output IRQs */
->>      ms = MOS6522(&m->mos6522_via1);
->>      object_property_add_alias(OBJECT(dev), "irq[0]", OBJECT(ms),
-> 
-> This is fixing a bug in mac_via where it failed to actually
-> realize devices it was using. That's a dependency for the bug
-> you're trying to fix, but it's a separate one and should be
-> in its own patch.
+Hi Peter, Philippe,
 
-Sigh. Thanks for this - I actually discovered this a little while back and have some
-local patches to do the same, but due to lack of time I never managed to tidy them up
-for submission.
+On Mon, Mar 2, 2020 at 5:06 PM Peter Maydell <peter.maydell@linaro.org>
+wrote:
 
-> You also want to pass the error back up to the caller, rather
-> than using error_abort. To do that, at the top of the function:
-> 
->     Error *err = NULL;
-> 
-> and then here you can do:
->     object_property_set_bool(OBJECT(&m->mos6522_via1), true, "realized", &err);
->     if (err) {
->         error_propagate(errp, err);
->         return;
->     }
-> 
-> The existing code which inits the mos6522 objects and
-> calls object_property_add_alias on them which is in
-> the mac_via realize function should be moved to the init
-> function. (init should init child objects and set up
-> properties; realize should realize them.)
+> On Thu, 27 Feb 2020 at 22:01, Niek Linnenbank <nieklinnenbank@gmail.com>
+> wrote:
+> >
+> > These patches change the Cubieboard machine definition to use the
+> > correct CPU type, which is ARM Cortex-A8 instead of ARM Cortex-A9.
+> >
+> > Additionally, add some sanity checks for the machine input
+> > arguments in the initialization function.
+> >
+> > Niek Linnenbank (4):
+> >   hw/arm/cubieboard: use ARM Cortex-A8 as the default CPU in machine
+> >     definition
+> >   hw/arm/cubieboard: restrict allowed CPU type to ARM Cortex-A8
+> >   hw/arm/cubieboard: restrict allowed RAM size to 512MiB and 1GiB
+> >   hw/arm/cubieboard: report error when using unsupported -bios argument
+>
+>
+> Applied to target-arm.next, thanks. (I tweaked a couple of commit
+> messages as mentioned in replies to those patches.)
+>
 
-And I believe at some point I had a patch lying around to do this too...
+Great, and thanks for your quick and detailed responses Peter.
 
-> This is all fixing the incorrect creation of the mos6522
-> devices in mac_via (which has been wrong since the mac_via
-> was first added in commit 6dca62a0000f9), so that can all
-> be one patch I think.
-> 
->> +static void mos6522_realize(DeviceState *dev, Error **errp)
->> +{
->> +    MOS6522State *s = MOS6522(dev);
->>
->>      s->timers[0].timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, mos6522_timer1, s);
->>      s->timers[1].timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, mos6522_timer2, s);
->> @@ -502,6 +507,7 @@ static void mos6522_class_init(ObjectClass *oc, void *data)
->>
->>      dc->reset = mos6522_reset;
->>      dc->vmsd = &vmstate_mos6522;
->> +    dc->realize = mos6522_realize;
->>      device_class_set_props(dc, mos6522_properties);
->>      mdc->parent_reset = dc->reset;
->>      mdc->set_sr_int = mos6522_set_sr_int;
-> 
-> The changes to hw/misc/mos_6522.c are good, but should be in
-> their own patch.
+And to be clear, these improvements came from the excellent reviews done by
+Philippe on the Allwinner H3 patch series
+which I submitted earlier. Since that series is quite big and will take
+more time to complete, I thought it would be nice
+to take a few of those improvements and meanwhile apply them to the other
+similar boards as well.
+
+Regards,
+Niek
+
+>
+> -- PMM
+>
 
 
-ATB,
+-- 
+Niek Linnenbank
 
-Mark.
+--000000000000e3785d059fe69c08
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Peter, Philippe,<br></div><br><div class=3D"gmail_=
+quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Mar 2, 2020 at 5:06 PM=
+ Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydel=
+l@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" styl=
+e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
+g-left:1ex">On Thu, 27 Feb 2020 at 22:01, Niek Linnenbank &lt;<a href=3D"ma=
+ilto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</=
+a>&gt; wrote:<br>
+&gt;<br>
+&gt; These patches change the Cubieboard machine definition to use the<br>
+&gt; correct CPU type, which is ARM Cortex-A8 instead of ARM Cortex-A9.<br>
+&gt;<br>
+&gt; Additionally, add some sanity checks for the machine input<br>
+&gt; arguments in the initialization function.<br>
+&gt;<br>
+&gt; Niek Linnenbank (4):<br>
+&gt;=C2=A0 =C2=A0hw/arm/cubieboard: use ARM Cortex-A8 as the default CPU in=
+ machine<br>
+&gt;=C2=A0 =C2=A0 =C2=A0definition<br>
+&gt;=C2=A0 =C2=A0hw/arm/cubieboard: restrict allowed CPU type to ARM Cortex=
+-A8<br>
+&gt;=C2=A0 =C2=A0hw/arm/cubieboard: restrict allowed RAM size to 512MiB and=
+ 1GiB<br>
+&gt;=C2=A0 =C2=A0hw/arm/cubieboard: report error when using unsupported -bi=
+os argument<br>
+<br>
+<br>
+Applied to target-arm.next, thanks. (I tweaked a couple of commit<br>
+messages as mentioned in replies to those patches.)<br></blockquote><div><b=
+r></div><div>Great, and thanks for your quick and detailed responses Peter.=
+</div><div><br></div><div>And to be clear, these improvements came from the=
+ excellent reviews done by Philippe on the Allwinner H3 patch series</div><=
+div>which I submitted earlier. Since that series is quite big and will take=
+ more time to complete, I thought it would be nice</div><div>to take a few =
+of those improvements and meanwhile apply them to the other similar boards =
+as well.<br></div><div><br></div><div>Regards,</div><div>Niek<br></div><blo=
+ckquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left=
+:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+-- PMM<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--000000000000e3785d059fe69c08--

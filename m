@@ -1,100 +1,120 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2945907lfg;
-        Mon, 2 Mar 2020 14:30:55 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vuFaF9ISfG8BcKaDtZfSCRbF4y0DZpc4K8Zuj4Ilag25zrgmNRTDcBnw0x94TAJywFUf/6y
-X-Received: by 2002:a05:620a:16d4:: with SMTP id a20mr1490855qkn.168.1583188255050;
-        Mon, 02 Mar 2020 14:30:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583188255; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3011435lfg;
+        Mon, 2 Mar 2020 15:51:26 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vunpb3Kpg72rnPE3E0QBAA46BVmiw3vrWqz7IeeSTZ+yEntish8Jlz6Ot4+s8AcUhSPL1Tg
+X-Received: by 2002:ac8:741a:: with SMTP id p26mr2031288qtq.76.1583193086725;
+        Mon, 02 Mar 2020 15:51:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583193086; cv=none;
         d=google.com; s=arc-20160816;
-        b=c7LCgOxwixnHiBMRS+11GAd20cpcGrzlMZeeCm2oSH6t9Goh7WQe79v0JgRE54cpP2
-         S+DzK+uhaS7QN11iEAHD9DrxjUUesw/zUfCiBoItM8sl8UsfQvcOTS4a8eRNG8SwUg5/
-         WyADPPdFTFXv3uKAkUJkXXjRyk0oYiZqey3i8TdPpZaJfcr1JWaJISFJoOCW8xsw5By+
-         QEhCBYxiLphl927ik2spkPz/9ttLA53Ab3aBltHlLCSbH+dZUbporsRta/01ed0vO8zk
-         YaAwsKaRLrEYCnKyrAYY3JjBohEt4LrxiK9sxUXW7pAUBiNQcQE1WsaLl/Xf6oVdmh8M
-         pHHg==
+        b=TNZanp4NWaYcl6Osukbs41TaYUy9NLfWa0wA95ijeLtBN9Pdsc5XMSzWgY6T5Egczk
+         dBgNRPImAK0cTSZmV+nrKBH1nfSJ6K0mcCPISOQM0oaWnF3unocgztwJxuQGGlNYs/nV
+         L+Se0ZX0b6ldFf1+BEzTUZYXVJwuryRAd5BAj7iFZ3Z9rqkB0Ia7FHbDXJfkSo4z9Fyr
+         /Yjhh+TiHip41aiJoLc6qZAYub33O+etdNWc0eMsT6ZmS+xrvIgf36dZcnAS+coZWJun
+         WHchxMOFGLI0YIxnunBe+kDALljLho1JgEcb4MamFTboro5YqyiHKLuwNnxO9MwyQCSB
+         XVAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=NgTZJCDP2zYC69UZQveIYx4xZDbGiYCQza/jbo3H32E=;
-        b=gG87Bg+3oZeCMy9ZDIB8pYM4AA4RIX+uo49sq0FbVIKNwH/4MyiVOTtCmd+Fn8Qtc2
-         av2n5manJrK9Cin9zddyZGeijF+f2CL6Aw0W0HIN9dfQXdcGbomgXXucXIlpeZl+De4f
-         ptMCY2YMGg8tJ6IfbVDZceBZ4REng51cgwPATrsQkJCHoQwmNQecLhwKuS8dvm+WTKuf
-         cDJfE2vq+3wamUTICm93BUsnSbdvVT7kzkgUeogU07YtUNprggnu+sL1+pNBboUQH02d
-         cqlw01V0I9J/lEKZnw3wWe2j06engLFaa+Gik5Q1+MWASgUmSp1fO/iuVQr28B07u/PX
-         a54g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=iuPz6n+BeBVA7+PsSxRCyYsGG4BT486cTX3EaSuJfTU=;
+        b=ps9wkzvZb7KZRnX2bvFf6M0BMTAeuTY2OQXXEWVNxgjfswqTjBNGBMEEVQKruDz0Vr
+         JmWhiHxxe78RyD169IMv4lUo3DhFBCmyIHvZ0W3CXx5H8P+Eg2CFn356cnECe5SkuL+o
+         i6I9m5tnapZJalXM3kt4kssLsZTmiJCTrbRCV1kQeoXdW4VZXx2+18PWHwxbGU60tfA2
+         GdgHUM8ahwTZ7P3o282BJTBel8q0EiNnClVIvpDeg60GArJPESrQA0tCTtwiFgmAngle
+         LsbzxC8n3kbKoLyrkEiuCsCngHYNHCV/AEGU9pmXwUd3qJtrvrfcH3HO/ksGc0cZ4mlv
+         NaIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=K723MdNt;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H5THGtS4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v37si6858562qth.263.2020.03.02.14.30.54
+        by mx.google.com with ESMTPS id k26si3484218qtf.281.2020.03.02.15.51.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Mar 2020 14:30:55 -0800 (PST)
+        Mon, 02 Mar 2020 15:51:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=K723MdNt;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H5THGtS4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39330 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39840 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j8taQ-0006N0-Ep
-	for alex.bennee@linaro.org; Mon, 02 Mar 2020 17:30:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55763)
+	id 1j8uqM-0005FE-6x
+	for alex.bennee@linaro.org; Mon, 02 Mar 2020 18:51:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37733)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1j8taH-0006Jq-RY
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 17:30:47 -0500
+ (envelope-from <philmd@redhat.com>) id 1j8uq8-0005CQ-Vf
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 18:51:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1j8taG-0006Yy-KQ
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 17:30:45 -0500
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:34753)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1j8taD-0006Xd-QX; Mon, 02 Mar 2020 17:30:41 -0500
-Received: by mail-io1-xd43.google.com with SMTP id z190so1329235iof.1;
- Mon, 02 Mar 2020 14:30:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=NgTZJCDP2zYC69UZQveIYx4xZDbGiYCQza/jbo3H32E=;
- b=K723MdNt6lfCWb/RkrJ8rnLoDFq+xXJEWCAlQNsDb3RQ+9HIEka1D0GxPJzoX3g3wA
- Z2OFfnn8euor7Vel06EcSEUg6KxtDwIYHZ8ozPKW3LhmWZ6AdLWZEsgJ8BcKUMRAlLfe
- UgCbfABp7lS9fRHlXcQF+wUFYl4sxIWZSNTid8y88HBYYeVKBPPqfJ6G3+40VdPVeVNH
- Zksst7C5TDRMduySWeTINZWBiq8oCMOM0Vky1NB+BYgaLhXs0NTNgujbVHqZyZp1SWKg
- iWgrtAKi+e8OUAUb9eukzeWMTDGhCnDEAQf5zKEtQP7Hf8sHe6d6GEiScnVgLIF1U5Yb
- zNtQ==
+ (envelope-from <philmd@redhat.com>) id 1j8uq8-00017s-1N
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 18:51:12 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:43319
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j8uq7-00017V-UN
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 18:51:11 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583193071;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=iuPz6n+BeBVA7+PsSxRCyYsGG4BT486cTX3EaSuJfTU=;
+ b=H5THGtS4lTZaKYkwrCe7VUqaXV7SksbCOwpO2zfi+BRGtFDuRJJj1IUdiREoQjd85xD6CW
+ yWxXOtNyTnMlDAgoBu3lCvWofMAu1i/Jh/i3I92p0GLM0vSPZ3xGvmspwqQ3/1CcgS0CzM
+ ELYANEPc9SpDPIAVEyS24SUDpL+48o4=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-369-zwTZeq99Pfm1QXxmPwrf0Q-1; Mon, 02 Mar 2020 18:51:10 -0500
+X-MC-Unique: zwTZeq99Pfm1QXxmPwrf0Q-1
+Received: by mail-wr1-f72.google.com with SMTP id d7so424237wrr.0
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 15:51:09 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=NgTZJCDP2zYC69UZQveIYx4xZDbGiYCQza/jbo3H32E=;
- b=uKucxEDn0as7J3bK0m1RjZTnlhFnogfVxrbKOV/XdU0Sgc0sX6ETLSqrCrwNK+H1bA
- Ovp0N8eAQlH0n8B32T55s4E9lu9GzuciR2IqqI6aichLD8WtGaZGpgrqD4wB6XIFBla1
- REhppP31Cxx5sNtlWwsIyO6WtSb0iDqeR0DZCQ7T3g/zyjV5hwtjjlX8S9ouOaZ7/nI5
- Vgquv9r1Y1ts38/wKAKOJrE5HTncX7WVQPwrBk8yFuBsymNt3iIh99FZDTo60sMgmQYV
- IquIoQuk0dMb3G+KP2OJ8mFXtYwJkmV3AUEecUEf6RKfPgsAmAnxrHVfWOz+PalQSIN4
- NQMw==
-X-Gm-Message-State: ANhLgQ3+ZC1Lv+lmI9DD7hz9KcRkQPqcD4leZ1ZVHscPoGSF2N/hFvmn
- DaBUPaO88B/2XNM3OLrnfk9xzwsE4SvnlrAc8ps=
-X-Received: by 2002:a02:17c2:: with SMTP id 185mr1261385jah.120.1583188240974; 
- Mon, 02 Mar 2020 14:30:40 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=n36ZH3tfqOtKU4lEeXMPPAyLS3rveIOnCwDlc1J1iLM=;
+ b=EHNET51FHIC6Cnbp/M/qkd0tgfiJwR3WeoYxPtN0jbEdXE9oMcekz6ANYEnX39CG7B
+ ybIGnBIR9h8HphNsy1yqWw5Z4US+FlcCRs8raDStN9Zi3Li+ZjMFm568EK3FdYWjMxoU
+ ncjZaK9DT0T8MRk2JB6rwzlRqYIhtxG6+Xiy7RlmthIZiiI7TrKCqZ5o1omZ3D1wrT35
+ jwYmK6ripXK58ad7Yt51O7IDNk3tzrx+DgvKX0RYLn0Cog19lZHUp8RIzWUQPsFJcYIH
+ RH0AQiiaOGCwKcNk4hxuZ83LkzAJNFfFCUQtjBm43PYR0Ep1eiVJ8LKWbvMBgR59eupP
+ sE3g==
+X-Gm-Message-State: ANhLgQ2LIbdpR1GHiu/wBPQijt047pdWtSTJ00PSngOQKaQV7b2WBY38
+ 8rSGOJOldL3u+F5j6/p6Zzz3ZFuXV3UQXh3TgG2z8mCVW7+Nkev8+klbbUaBw9Fppn+2o3AWJZ2
+ OQrdeB2XeUPQp
+X-Received: by 2002:a1c:5457:: with SMTP id p23mr771040wmi.45.1583193067495;
+ Mon, 02 Mar 2020 15:51:07 -0800 (PST)
+X-Received: by 2002:a1c:5457:: with SMTP id p23mr770991wmi.45.1583193066708;
+ Mon, 02 Mar 2020 15:51:06 -0800 (PST)
+Received: from ?IPv6:2a01:e35:2fb0:49e0:3f7b:4b69:b9c:cdc0?
+ ([2a01:e35:2fb0:49e0:3f7b:4b69:b9c:cdc0])
+ by smtp.gmail.com with ESMTPSA id j5sm30794631wrx.56.2020.03.02.15.51.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Mar 2020 15:51:06 -0800 (PST)
+Subject: Re: [PATCH v2 1/9] target/arm: Replicate TBI/TBID bits for single
+ range regimes
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+References: <20200302175829.2183-1-richard.henderson@linaro.org>
+ <20200302175829.2183-2-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <e7cb1c45-6143-3301-1404-3145d6dcecdc@redhat.com>
+Date: Tue, 3 Mar 2020 00:51:05 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-References: <20200227220149.6845-1-nieklinnenbank@gmail.com>
- <20200227220149.6845-5-nieklinnenbank@gmail.com>
- <CAFEAcA94U=G7Bhiayt5YyJHFUMjyKwT1m5VNOH+1rV-NMysR7Q@mail.gmail.com>
- <52400d43-3890-68cb-0e63-35c3636be19a@redhat.com>
-In-Reply-To: <52400d43-3890-68cb-0e63-35c3636be19a@redhat.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Mon, 2 Mar 2020 23:30:30 +0100
-Message-ID: <CAPan3Wpcfrf9PcaPEbWQvagKJbaOnSnumk9yvX9-ZibXzgnEaA@mail.gmail.com>
-Subject: Re: [PATCH v1 4/4] hw/arm/cubieboard: report error when using
- unsupported -bios argument
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000b7492c059fe6bc13"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::d43
+In-Reply-To: <20200302175829.2183-2-richard.henderson@linaro.org>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,167 +126,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3cAInRpgT621
+X-TUID: FC7CYhHYhsfh
 
---000000000000b7492c059fe6bc13
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 3/2/20 6:58 PM, Richard Henderson wrote:
+> Replicate the single TBI bit from TCR_EL2 and TCR_EL3 so that
+> we can unconditionally use pointer bit 55 to index into our
+> composite TBI1:TBI0 field.
+>=20
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   target/arm/helper.c | 6 ++++--
+>   1 file changed, 4 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 6be9ffa09e..37ffe06c05 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -10316,7 +10316,8 @@ static int aa64_va_parameter_tbi(uint64_t tcr, AR=
+MMMUIdx mmu_idx)
+>       } else if (mmu_idx =3D=3D ARMMMUIdx_Stage2) {
+>           return 0; /* VTCR_EL2 */
+>       } else {
+> -        return extract32(tcr, 20, 1);
+> +        /* Replicate the single TBI bit so we always have 2 bits.  */
+> +        return extract32(tcr, 20, 1) * 3;
+>       }
+>   }
+>  =20
+> @@ -10327,7 +10328,8 @@ static int aa64_va_parameter_tbid(uint64_t tcr, A=
+RMMMUIdx mmu_idx)
+>       } else if (mmu_idx =3D=3D ARMMMUIdx_Stage2) {
+>           return 0; /* VTCR_EL2 */
+>       } else {
+> -        return extract32(tcr, 29, 1);
+> +        /* Replicate the single TBID bit so we always have 2 bits.  */
+> +        return extract32(tcr, 29, 1) * 3;
+>       }
+>   }
+>  =20
+>=20
 
-Hi Philippe,
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-On Mon, Mar 2, 2020 at 7:04 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om>
-wrote:
-
-> On 3/2/20 4:44 PM, Peter Maydell wrote:
-> > On Thu, 27 Feb 2020 at 22:02, Niek Linnenbank <nieklinnenbank@gmail.com=
->
-> wrote:
-> >>
-> >> The Cubieboard machine does not support the -bios argument.
-> >> Report an error when -bios is used and exit immediately.
-> >>
-> >> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> >> ---
-> >>   hw/arm/cubieboard.c | 7 +++++++
-> >>   1 file changed, 7 insertions(+)
-> >>
-> >> diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
-> >> index 6c55d9056f..871b1beef4 100644
-> >> --- a/hw/arm/cubieboard.c
-> >> +++ b/hw/arm/cubieboard.c
-> >> @@ -19,6 +19,7 @@
-> >>   #include "exec/address-spaces.h"
-> >>   #include "qapi/error.h"
-> >>   #include "cpu.h"
-> >> +#include "sysemu/sysemu.h"
-> >>   #include "hw/sysbus.h"
-> >>   #include "hw/boards.h"
-> >>   #include "hw/arm/allwinner-a10.h"
-> >> @@ -33,6 +34,12 @@ static void cubieboard_init(MachineState *machine)
-> >>       AwA10State *a10;
-> >>       Error *err =3D NULL;
-> >>
-> >> +    /* BIOS is not supported by this board */
-> >> +    if (bios_name) {
-> >> +        error_report("BIOS not supported for this machine");
-> >> +        exit(1);
-> >> +    }
-> >
-> > We don't usually bother to check this, but I guess there's
-> > no reason not to.
->
-> I agree this is confusing to expect the machine boot from a flash when
-> using -bios and having to debug until figuring out the reason.
->
-> This -bios is a generic machine option, maybe we could move this check
-> to the common machine code.
->
-
-Agreed, that sounds logical indeed.
-
-When we have a common machine code/class I presume that boards which do
-support the -bios
-option could simply set somekind of flag/field to enable the -bios
-functionality. And for boards
-which do not support it, the common machine code would then by default give
-an error and exit.
-
-Regards,
-Niek
-
-
-> >
-> > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> >
-> > thanks
-> > -- PMM
-> >
->
->
-
---=20
-Niek Linnenbank
-
---000000000000b7492c059fe6bc13
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">Hi Philippe,<br></div><br><div class=3D"g=
-mail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Mar 2, 2020 at 7:=
-04 PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">=
-philmd@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote"=
- style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);p=
-adding-left:1ex">On 3/2/20 4:44 PM, Peter Maydell wrote:<br>
-&gt; On Thu, 27 Feb 2020 at 22:02, Niek Linnenbank &lt;<a href=3D"mailto:ni=
-eklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt; =
-wrote:<br>
-&gt;&gt;<br>
-&gt;&gt; The Cubieboard machine does not support the -bios argument.<br>
-&gt;&gt; Report an error when -bios is used and exit immediately.<br>
-&gt;&gt;<br>
-&gt;&gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenban=
-k@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
-&gt;&gt; ---<br>
-&gt;&gt;=C2=A0 =C2=A0hw/arm/cubieboard.c | 7 +++++++<br>
-&gt;&gt;=C2=A0 =C2=A01 file changed, 7 insertions(+)<br>
-&gt;&gt;<br>
-&gt;&gt; diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c<br>
-&gt;&gt; index 6c55d9056f..871b1beef4 100644<br>
-&gt;&gt; --- a/hw/arm/cubieboard.c<br>
-&gt;&gt; +++ b/hw/arm/cubieboard.c<br>
-&gt;&gt; @@ -19,6 +19,7 @@<br>
-&gt;&gt;=C2=A0 =C2=A0#include &quot;exec/address-spaces.h&quot;<br>
-&gt;&gt;=C2=A0 =C2=A0#include &quot;qapi/error.h&quot;<br>
-&gt;&gt;=C2=A0 =C2=A0#include &quot;cpu.h&quot;<br>
-&gt;&gt; +#include &quot;sysemu/sysemu.h&quot;<br>
-&gt;&gt;=C2=A0 =C2=A0#include &quot;hw/sysbus.h&quot;<br>
-&gt;&gt;=C2=A0 =C2=A0#include &quot;hw/boards.h&quot;<br>
-&gt;&gt;=C2=A0 =C2=A0#include &quot;hw/arm/allwinner-a10.h&quot;<br>
-&gt;&gt; @@ -33,6 +34,12 @@ static void cubieboard_init(MachineState *machi=
-ne)<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0AwA10State *a10;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0Error *err =3D NULL;<br>
-&gt;&gt;<br>
-&gt;&gt; +=C2=A0 =C2=A0 /* BIOS is not supported by this board */<br>
-&gt;&gt; +=C2=A0 =C2=A0 if (bios_name) {<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;BIOS not supported=
- for this machine&quot;);<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
-&gt;&gt; +=C2=A0 =C2=A0 }<br>
-&gt; <br>
-&gt; We don&#39;t usually bother to check this, but I guess there&#39;s<br>
-&gt; no reason not to.<br>
-<br>
-I agree this is confusing to expect the machine boot from a flash when <br>
-using -bios and having to debug until figuring out the reason.<br>
-<br>
-This -bios is a generic machine option, maybe we could move this check <br>
-to the common machine code.<br></blockquote><div><br></div><div>Agreed, tha=
-t sounds logical indeed.=C2=A0</div><div><br></div><div>When we have a comm=
-on machine code/class I presume that boards which do support the -bios</div=
-><div>option could simply set somekind of flag/field to enable the -bios fu=
-nctionality. And for boards</div><div>which do not support it, the common m=
-achine code would then by default give an error and exit.</div><div><br></d=
-iv><div>Regards,</div><div>Niek<br></div><div><br></div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">
-<br>
-&gt; <br>
-&gt; Reviewed-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.=
-org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-&gt; <br>
-&gt; thanks<br>
-&gt; -- PMM<br>
-&gt; <br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
-
---000000000000b7492c059fe6bc13--

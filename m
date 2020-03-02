@@ -1,99 +1,98 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2582333lfg;
-        Mon, 2 Mar 2020 07:44:58 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vvRgLHvUU4q2sUXlyilGcbug/oLkqniHAEbfVUQ/LvcSZ/B7WAwbtEZ9pVre/8Rt5hp1Wfx
-X-Received: by 2002:a37:4254:: with SMTP id p81mr3398413qka.98.1583163898121;
-        Mon, 02 Mar 2020 07:44:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583163898; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2605374lfg;
+        Mon, 2 Mar 2020 08:07:02 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vvid/sBVDI1eYKsJHpebFfqTANFHM56KhtTLmXDuMGzYz/PWryVzH/17CGTXkia41u8gWDD
+X-Received: by 2002:ac8:6f2c:: with SMTP id i12mr400313qtv.145.1583165222641;
+        Mon, 02 Mar 2020 08:07:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583165222; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fh+ziJZjuGrGeIc/k2xBYdnK1+ZLyR82aJJA2BrEm9zv4KwIUBmONCSQFCOO1OExk+
-         eBJOZQaCyhORAsOHNvw9iOYiqk5qnCqLevwK8B1XFH0r33cB2glr2YE44tinIrtXSOgK
-         6ZZ/uEUq4XBz0Zx9D7l8+72RobwWXavUXDXenfFms6A+hxsLMByc56rgCuXwoy5cqyc+
-         EEWrVH0Hpai0T6rp/dUO4pV6RUp0aRP4XIBuh+1o1LzGo/0Bdykas2DLxg9uBvlmyzCo
-         aczkM/dpXZhpAAhPrrwmKNwgjCH3XuRGWHWTCLeSHjApgzgvMf8UqjvGw5uBRg0jsHoB
-         cW/g==
+        b=nWMrI3qEd1nFOh5e+3Mhk0MsVbqcRpWekLMFOf3HxyqRh8TFoHz6uTLbadxwH/RhLF
+         l5eDeNIgKSnHy5t2+p7/wSJdzYUoZJNoZjnGYDa+nRM0D6DxsqBEcp6VIV9IGlqVIzOV
+         Xrs6a82U6dkYu4lyhlEasboBL9F7G2nMYa7AF/FWv5FgD+u4pzYwLCkPBreNFRAMs0uH
+         kmQkEuNWKC2OkBA7uiUrNNe8427CnyQu7AUcbUdlHGCsdbwuu3bAQPAUJfzJpuQb5bkz
+         sU5eG/kH+V6sqT6kUseS0h5Aqe8LaVn6C5EDSHOaOKO1Lz/OkfsD4q6A5RzFHJspvu9+
+         E72w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=yyRwetK4iaXS3mSeej/UIS0tNCUXW66arMw8aU9xvNI=;
-        b=WZKek4dnshSuLxg48A+nqkGVbw1NvZNawDmUVQi8PuxCJ/5dDRmo87l9ufkdCBDeOg
-         GlnV5tgNxMdPPtupAv9WMDojErFT9DdEz5ggs6jWxxb0ailmp6c+i8lBgzyHeAkHGPXi
-         GGxCKfS/qhm5apmtwG+pYKccm5BdjZ6jxT/z2FNLJU0OITWuyZbn4/bVhWX0K/pe7c+3
-         700jcrMsk/7R3jygmSk+GA1nhmv2/Im4yC219VLmRZSv7p+Bb0+CMWCfSraP98BzsI8c
-         qrx6ghVTvR0DlPGdA7AieqnLhnH+Fh9M8wzcUXkoQZq2i823XOeBzz1VO01UInRXiUKb
-         ACYQ==
+        bh=uwBp1BC/e+YqE2Z+qU+tY2wILWfkCO4jHo1fvAz565Y=;
+        b=bg4DNEVZcKcD7Gk1/n4+jw/tSQ25sSSEMGXthMUh1f8linUnp/sCXEnlEUJ0doYOnU
+         29RWCDxKAtlhltqu0titN2O9xw6MeKFCJjx5hM2+hsKmoXN5YIH02yMrasTo4m4EquX/
+         2LfW9rfebM/LGWm1qWxSLVeCPfp98L6jFNcffRmumQgNzqkeR+/kEIEptwntW77JbnxK
+         3mrLw95JS2GBjJYp3wk9K9OfYbrWycYjk6XFvLQjpnBvTueu2NOzER/1MXfvu/BkS5p0
+         3VLLykoFt32yNinoil+0JWdaKZij/nYAnqiS5Y6DuK/iXj3M+Vb+2anWoXfBRf+mbWUr
+         G6hg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JJUFiFMs;
+       dkim=fail header.i=@linaro.org header.s=google header.b="i/+R/S4p";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i12si5842602qtj.330.2020.03.02.07.44.57
+        by mx.google.com with ESMTPS id p54si5967151qtk.198.2020.03.02.08.07.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Mar 2020 07:44:58 -0800 (PST)
+        Mon, 02 Mar 2020 08:07:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JJUFiFMs;
+       dkim=fail header.i=@linaro.org header.s=google header.b="i/+R/S4p";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34338 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34552 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j8nFZ-0008Cz-Ib
-	for alex.bennee@linaro.org; Mon, 02 Mar 2020 10:44:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43783)
+	id 1j8naw-00007k-28
+	for alex.bennee@linaro.org; Mon, 02 Mar 2020 11:07:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46999)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j8nFQ-0008Cd-2W
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 10:44:48 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j8nan-00007C-GP
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 11:06:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j8nFP-0001A2-5Q
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 10:44:48 -0500
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:42058)
+ (envelope-from <peter.maydell@linaro.org>) id 1j8nam-0005iv-Gq
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 11:06:53 -0500
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:35454)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j8nFP-00019f-0X
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 10:44:47 -0500
-Received: by mail-ot1-x342.google.com with SMTP id 66so10121916otd.9
- for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 07:44:46 -0800 (PST)
+ id 1j8nam-0005hu-B9
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 11:06:52 -0500
+Received: by mail-oi1-x244.google.com with SMTP id b18so10828611oie.2
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 08:06:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yyRwetK4iaXS3mSeej/UIS0tNCUXW66arMw8aU9xvNI=;
- b=JJUFiFMs54cUkZhLrk6Vk/vK7JEYU28xrp/2KTtyJ8iJ/OXBCEVBk0cPoHeanyhNtp
- L7bQe1Hxlc7KmxbuM6Z8bmZ0UtKMzKTDrizCpVbNGXA0G5gyYGZ9uVCfH6uHKcl80+sq
- baPZPl7MguNXUEEiTjslkmLre/tINC24lzJbCG3rNtuWfA3ZBIjs6g6a+M/68lwZTInG
- I940CDIUTrFqt5oetALzIdsU6l1r6ITbgSWRwqgEXL20xoeb0sxT4gXZYtvhVkooxocv
- 6jhr9mv+Yha/6NJ2pRU+O47qq9C4woWnJpQ+i5bjWpWWlKbEIT7T/ZBVFuYUrLsqrxEi
- MjaA==
+ :cc; bh=uwBp1BC/e+YqE2Z+qU+tY2wILWfkCO4jHo1fvAz565Y=;
+ b=i/+R/S4peD+idb/yJGVYpIRlYpyi7QJr+GPvHv7MtOMVOqfAnm26teIG72jTncw2Ay
+ 16Q/wjLKLyC8aURPZD8a8mQguxOvqpI0+5094lUOOZsNKHcQNEvGW+Tv9vszkfbKhdXU
+ hnATSknI12xRtFNY++OwftMMOyhFYns1y0O0f5w5EadTe5DOspl+qV4yhc/yPZ+NXCdo
+ ZQvdGCpii7fQciKuxjtRzYSNlcuQ+KxJ+Gf3xcMNQqg9joORH5Yam51xaFus+SMo/1a4
+ wRZcCsEVMm/CNz9NGwxhwWfFWsd8/bFMyjRNX3WfA20Wvf539DDjhs+unxr7GBOKX4eB
+ AhUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=yyRwetK4iaXS3mSeej/UIS0tNCUXW66arMw8aU9xvNI=;
- b=MitDLLx7vQ49EcLD/bSrtJlUp2Y0Wuvtw5see9XgKO9jkn6iX+P73UaDztb3GxCS3U
- DIdT5jxshriqlp/KqOnXFYwPxDIFJb2+meXtzwJ0652ouqBMJ3R6JXINiYV/oUyCYxEP
- 7p1FpKhR9dCRgre7MuholSK9J/5VrX0VqLbweS16A/x4eEAiC6dZ0/D4bLGvRrGYW+c9
- x/96vWLkuvUN0Pq+Y9LgHuU//5Z0vwoPW0O6vLPgv7tiOiTwVRT+QsFEKdAvMgJiXCqk
- rwBFm/zJy+QnknZepq8svgThVKs8L9aKb8F4kMelmuQlIW1+RvpBC7LZ+/S4FQHAw8us
- yLtA==
-X-Gm-Message-State: ANhLgQ0WsoAsbONL3yX/hvb1thWLJ2AfwvydMfdKZwWgQHRrcwdJC00Q
- ZHN/wJH5N3R6G5Z7pbnmJ+U2p3YI2wkDTn6LDPhNHQ==
-X-Received: by 2002:a9d:6f88:: with SMTP id h8mr5387723otq.91.1583163886316;
- Mon, 02 Mar 2020 07:44:46 -0800 (PST)
+ bh=uwBp1BC/e+YqE2Z+qU+tY2wILWfkCO4jHo1fvAz565Y=;
+ b=AkpRWVeh9k2u/u3iY94PocFgtKAblTaxDYBOYqMDNWurHzkHP3G3syPFnTwHr1U9VL
+ /NRO8IAgpAYsRY9gp3vgqDQ3K6QWwuXSFwB8jWenhRUqKM/7XLJDhFWf6Wa0j+ZiMbnJ
+ D+yy0XvIxNWzjkw+fCWPYK7g6sonEn0L3mfmQjOfmS57gMIlye0sySZFKT296glsUgJw
+ LzCGVArAVBk48ajXFDzt20qgQiN8p29cmmBPIQ8mEToRr7e4LobXTspSEk+czId2Qz+g
+ zm8TjXSXyjjkWXDEkm5PHXkiuR7QT/u5+rzJh3AAxwaXYQNvsgZszoJ5xnd+m+U6TK3y
+ RLgw==
+X-Gm-Message-State: ANhLgQ3jJVEXH9qpu7odhtlHpylUXEHXTOMKtP4um9emImAdDBobsXDI
+ bBGKdCbzmZpGJTnGBleYb+NJFHcBF/38AWn3ETOQ0A==
+X-Received: by 2002:aca:b2c5:: with SMTP id b188mr121936oif.163.1583165211392; 
+ Mon, 02 Mar 2020 08:06:51 -0800 (PST)
 MIME-Version: 1.0
 References: <20200227220149.6845-1-nieklinnenbank@gmail.com>
- <20200227220149.6845-5-nieklinnenbank@gmail.com>
-In-Reply-To: <20200227220149.6845-5-nieklinnenbank@gmail.com>
+In-Reply-To: <20200227220149.6845-1-nieklinnenbank@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 2 Mar 2020 15:44:35 +0000
-Message-ID: <CAFEAcA94U=G7Bhiayt5YyJHFUMjyKwT1m5VNOH+1rV-NMysR7Q@mail.gmail.com>
-Subject: Re: [PATCH v1 4/4] hw/arm/cubieboard: report error when using
- unsupported -bios argument
+Date: Mon, 2 Mar 2020 16:06:39 +0000
+Message-ID: <CAFEAcA8uEd_RqNi6iQDxZmGaAGpYoy=bgXFJVj-ow0Ci_Vz+DQ@mail.gmail.com>
+Subject: Re: [PATCH v1 0/4] hw/arm/cubieboard: correct CPU type and add
+ machine argument checks
 To: Niek Linnenbank <nieklinnenbank@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::342
+X-Received-From: 2607:f8b0:4864:20::244
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,44 +109,25 @@ Cc: Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
  QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dYFGFdtXCfSn
+X-TUID: Y6p+DBPAWDmU
 
-On Thu, 27 Feb 2020 at 22:02, Niek Linnenbank <nieklinnenbank@gmail.com> wrote:
+On Thu, 27 Feb 2020 at 22:01, Niek Linnenbank <nieklinnenbank@gmail.com> wrote:
 >
-> The Cubieboard machine does not support the -bios argument.
-> Report an error when -bios is used and exit immediately.
+> These patches change the Cubieboard machine definition to use the
+> correct CPU type, which is ARM Cortex-A8 instead of ARM Cortex-A9.
 >
-> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> ---
->  hw/arm/cubieboard.c | 7 +++++++
->  1 file changed, 7 insertions(+)
+> Additionally, add some sanity checks for the machine input
+> arguments in the initialization function.
 >
-> diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
-> index 6c55d9056f..871b1beef4 100644
-> --- a/hw/arm/cubieboard.c
-> +++ b/hw/arm/cubieboard.c
-> @@ -19,6 +19,7 @@
->  #include "exec/address-spaces.h"
->  #include "qapi/error.h"
->  #include "cpu.h"
-> +#include "sysemu/sysemu.h"
->  #include "hw/sysbus.h"
->  #include "hw/boards.h"
->  #include "hw/arm/allwinner-a10.h"
-> @@ -33,6 +34,12 @@ static void cubieboard_init(MachineState *machine)
->      AwA10State *a10;
->      Error *err = NULL;
->
-> +    /* BIOS is not supported by this board */
-> +    if (bios_name) {
-> +        error_report("BIOS not supported for this machine");
-> +        exit(1);
-> +    }
+> Niek Linnenbank (4):
+>   hw/arm/cubieboard: use ARM Cortex-A8 as the default CPU in machine
+>     definition
+>   hw/arm/cubieboard: restrict allowed CPU type to ARM Cortex-A8
+>   hw/arm/cubieboard: restrict allowed RAM size to 512MiB and 1GiB
+>   hw/arm/cubieboard: report error when using unsupported -bios argument
 
-We don't usually bother to check this, but I guess there's
-no reason not to.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Applied to target-arm.next, thanks. (I tweaked a couple of commit
+messages as mentioned in replies to those patches.)
 
-thanks
 -- PMM

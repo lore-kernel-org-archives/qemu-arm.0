@@ -1,97 +1,97 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2711340lfg;
-        Mon, 2 Mar 2020 09:58:52 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vtd8XI5K8kGEa53xBoHFU9skqlRCxVEmOFdbvITqQP3xIkdSS0+nbSaVw976fSwJS12+D4X
-X-Received: by 2002:a05:620a:845:: with SMTP id u5mr394036qku.399.1583171932156;
-        Mon, 02 Mar 2020 09:58:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583171932; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2711381lfg;
+        Mon, 2 Mar 2020 09:58:55 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vvCB0z+KKewiP35Qqu0OE0EbfibxtF3KiV/YJ6AnHgukKlj+/SpkYANGd6P/SX9QUZQNRhD
+X-Received: by 2002:ad4:5051:: with SMTP id m17mr543124qvq.53.1583171935609;
+        Mon, 02 Mar 2020 09:58:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583171935; cv=none;
         d=google.com; s=arc-20160816;
-        b=QE3Kmim8zZtxtWTbSP1nnD9akltbP2uT5kV31p/4GXYxNuJjGiFLpfjjZ3P7sRNKAb
-         QzHFuxnpBugmQhcT24uj0UNlMJnDPaRKxFUI5X5stXqHOhSNpPuFj7OT7sKBP5lRHg3w
-         iMMzbQIETolV3TyeBJeTrOvQ55tAdRQ0cTvlElnZlaqEXgxDcxiEmpB/yYTRW5l+fCRp
-         gSl+zyPw/Y1sWvxFe2KL/acjL0Rq4Eu1ZfqW4CuD7+enE3YN4J1QPDP2DKknYgCVK4Oy
-         2nKAxQOqfqNUb5FVUiZS9msnveo+aR+plZ09vt5lf2HxZ8nlHNUA72WkAerSB3MowRHR
-         Wedw==
+        b=XMReHoLu+BtvdmNs7QWqpwVxEmVAhXoEFmYfp5u8JbdeXHSe8ZF36d6/eaf8vr8kJL
+         J8vkY4rff3vVePyzJqh9ZFuPWe5/4dwBtiRz8nATRXamowIaDJ3HhWxBUZIrjyVqewOs
+         HL7BDSOh/7WEqviKDn5OJHUOe5LRzy7mDNNP2cbekvGtZXUnR07prHK7nUMLuMWf8W1l
+         24XrYs1ir6mK9rB5fvY6ifNgdEg9DwsEJF7LIcFTl416SM64u2W9XIN6zhHaM7ID+d2J
+         vNXMPTZ5whRGDoa0H/P3uuQEt5fVNg5l7ipC+DO8WD34q7TGoDzxFnA7vs6fdLCapttg
+         UZyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=nnZb8apL5HPwafrnPocDxPavn/5fOqQOkEGFTZ+nDV0=;
-        b=gf6O/M7hSUeaRIn1YdKBoGI28YIWL5ruex0pa8CrsS3D7aZtR9ULjikAowwdRudTq2
-         whXJwwKhaRNn84Dwbf+UIsHJv/2beyH3euSPum2zL/0xvxdv/P0vdgHuw0oPXQtPXS6l
-         H64zia/302pzvHmyJ4x4bug+ejFodHFpyC5vNCGggrsj1tF8Mf1kavC6g2ZXEch85dy6
-         /Ubg9X6zeyGJO+C2T9q4NAWA5VNt6nOs+U7FxenC/vwSVDqWsAVgzSjiEb1153nGR+1k
-         p8ox83g2kZPjwFav0NPwljeBZDiQmu73QsYitOr9r6DZWIAyGMfnmV0wgqvJvBf1eK81
-         vOTg==
+        bh=uuvmt8nnRxpkzrlRvGkzXacr9M5W6UoCPdAN4Hxg8gg=;
+        b=L4MoZvWrWpu4epydwDBAC1nLbU5vlBZ7igsvprEH/rBuGdJ7lysO0x14dVu68CX7vk
+         sNoDjSxckdKz0HO2AF6Tt//nGmbDxhDR4WWzmSH4b26sQih+aHIJ7GtowIXCl8ENOulK
+         sjieriHYEz8SWI5aQL9Lfc21shAMQy5kP8Enfc1hEnWa5sHxFR2+bfyCXFke2qni4P+0
+         LR5CsaiqnVsAei+JCLpEWISbRSgL9eGwnI+W6O7ILxkaiwmxABWINH8WhNJ4B6WdkbkS
+         gewV9m18DDdgj90KMWs965HoxltUk3DNPN/jJ658mqpqFa/jXeCf51BSb82oUMnAuQQ+
+         +ePA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VhZvQJ5+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JgQTd5Ua;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s4si3180298qtj.147.2020.03.02.09.58.51
+        by mx.google.com with ESMTPS id l184si6013365qkc.220.2020.03.02.09.58.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Mar 2020 09:58:52 -0800 (PST)
+        Mon, 02 Mar 2020 09:58:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VhZvQJ5+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JgQTd5Ua;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36278 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36310 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j8pL9-0006n6-Hg
-	for alex.bennee@linaro.org; Mon, 02 Mar 2020 12:58:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39038)
+	id 1j8pLC-0006ty-UJ
+	for alex.bennee@linaro.org; Mon, 02 Mar 2020 12:58:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39160)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1j8pKu-0006b0-8l
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 12:58:37 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1j8pL0-0006jV-1a
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 12:58:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1j8pKt-0007Y8-6o
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 12:58:36 -0500
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:39318)
+ (envelope-from <richard.henderson@linaro.org>) id 1j8pKz-0007bF-1Q
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 12:58:41 -0500
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:33663)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1j8pKt-0007Xg-1G
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 12:58:35 -0500
-Received: by mail-pg1-x544.google.com with SMTP id s2so179860pgv.6
- for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 09:58:34 -0800 (PST)
+ id 1j8pKy-0007ap-R8
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 12:58:40 -0500
+Received: by mail-pg1-x541.google.com with SMTP id m5so195434pgg.0
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 09:58:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=nnZb8apL5HPwafrnPocDxPavn/5fOqQOkEGFTZ+nDV0=;
- b=VhZvQJ5+cEChkiR9dxCzGSXsj/jtGkqJTGx1BXvvtyqFUGAMI57XDLSJoLzR0/1vS8
- 7v56MN29PvZvjR+d/fTNJRIlIvVUutbWdPLmlq7gzoIboMHF6LSCI3W7PUiZpVY9PGwj
- JMYJBBJrAiOoA2oRCAOGULv5+Z1I27T7XTeKf39B12c0Asr2A/9zSU23x4vtJN/l67iK
- lbyRkdqsGW3DZyI0xjVtI5krWchs/EgAOARB6FCCWvL3CMbE/OphCGVjYLFhjBT6FOSj
- oTBPvGS839DwAw2RAzxcDk/irP8MdkWwoNus9P1o78joaP/y10xj1oXziOIiV8xAj6GP
- ADLA==
+ bh=uuvmt8nnRxpkzrlRvGkzXacr9M5W6UoCPdAN4Hxg8gg=;
+ b=JgQTd5Uam3c76kYxK5iuzGdkmvCMFZaz2gRBOAzcas+O7KsG7sexziMGBYq5Ih3sQK
+ L7YRkafhys+Ik7+Toag/mRHmKmep7sFRPe8mzj3Bn13ragNfmBXrq/zSDgtDbGTJ6MvK
+ 904SNobNuOdZrEmMQGEXDPpfTEd83OC3WFkCsG5ds0vJ5hliqXfhDTK56Sy2eYHP5cum
+ el1L274mOlUTHMDz7mLzsS3tYKTuizryQI7Qr9yxqKjnp3KmEBm3EE0RtXVvTLg3Jeob
+ BmdY+QGRby4yHiLbErUTsLWN+WwbvIOcTBbcjCjoN8mnDxrGikz2XtIFt8ykZtpHO+Oo
+ sLyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=nnZb8apL5HPwafrnPocDxPavn/5fOqQOkEGFTZ+nDV0=;
- b=k8DfbyzI6YkgChJydAxf6jV6f5yDqwRi8XB7qXY0T0dWa6ep1YuhUZ5XA3TiFDdnqD
- lzzCfjyuv2FxK66iOb3pnWQnfsbQmYNodUHJYqEkoVVQ8kicv1KvyAC1wdOC0ktpVYSB
- hBYw7ZTRglr1ASTKAEG98z+YtY9CNrz2frh8rOVwZH2xDedNDM8NvvUbRCRb9hlssErc
- l/RyQkzpK+CCcXJdeo2cdc9x8zLv8P6irY8A2n2OlaG84WWBxct2SnWpsGQ/bMh35fbd
- uiL/Z7WgeXxC302H4OYq7r3LIO3ebTQ8iLuK2oQ8swVEHFom5d4T7iQTqWq91t8M6UOg
- OKKA==
-X-Gm-Message-State: ANhLgQ3wTNzK1h2QPFPLBJDlNwPwlL11ko3REvrVp2OP2p1G0m+oYcL1
- 4qRivAmMNEf3Y9DZNLT2HMO3Ow==
-X-Received: by 2002:a62:1dd8:: with SMTP id d207mr234054pfd.78.1583171914087; 
- Mon, 02 Mar 2020 09:58:34 -0800 (PST)
+ bh=uuvmt8nnRxpkzrlRvGkzXacr9M5W6UoCPdAN4Hxg8gg=;
+ b=Cz43RnOHoXEOJvUooF+lSMvaXT6Uuw658uPsHBDv+iAULHQ8KGtf2c33GraUaMp2Dg
+ 6l/+lTfDvfYg0Rm9CoQZGZlsssCJIUtcZ+rYQ4EBqNj//DpHdAymVEG9No3Hu6rL3K6A
+ aY4r8lOc8wDWUsx0/P51q/PnEMXs3IQPrvdNNcHrrkXSH4vtmcLXFfwpgxu8w4euEZWv
+ KnpZxpCUAUJWD+a+7fTzSPaUBUumJ45VcOboBehHnJ6YMjBjt9zOVCXgPBm9b2gnIqfz
+ /zrGbVZBSOrQlK5cu7uskBclYY3F58Wt8NbsbQz+xP26OEtwXlVn8pseAS2Fb5nYand8
+ Lg+g==
+X-Gm-Message-State: ANhLgQ3Upvp4+G/y0y+geBRzZjaBiToKAf+4VYiUJleB2adrex4SF+P3
+ VYprpDWEuOXWcvqv6TQ7q3ERew==
+X-Received: by 2002:a62:be0a:: with SMTP id l10mr250698pff.110.1583171920020; 
+ Mon, 02 Mar 2020 09:58:40 -0800 (PST)
 Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net.
  [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id s18sm99510pjp.24.2020.03.02.09.58.33
+ by smtp.gmail.com with ESMTPSA id s18sm99510pjp.24.2020.03.02.09.58.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Mar 2020 09:58:33 -0800 (PST)
+ Mon, 02 Mar 2020 09:58:39 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 2/9] target/arm: Optimize cpu_mmu_index
-Date: Mon,  2 Mar 2020 09:58:22 -0800
-Message-Id: <20200302175829.2183-3-richard.henderson@linaro.org>
+Subject: [PATCH v2 7/9] target/arm: Clean address for DC ZVA
+Date: Mon,  2 Mar 2020 09:58:27 -0800
+Message-Id: <20200302175829.2183-8-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200302175829.2183-1-richard.henderson@linaro.org>
 References: <20200302175829.2183-1-richard.henderson@linaro.org>
@@ -99,7 +99,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::544
+X-Received-From: 2607:f8b0:4864:20::541
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,76 +114,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lAkFqXIEGokf
+X-TUID: KyVn4VP8IJVi
 
-We now cache the core mmu_idx in env->hflags.  Rather than recompute
-from scratch, extract the field.  All of the uses of cpu_mmu_index
-within target/arm are within helpers, and env->hflags is always stable
-within a translation block from whence helpers are called.
+This data access was forgotten when we added support for cleaning
+addresses of TBI information.
 
+Fixes: 3a471103ac1823ba
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h    | 23 +++++++++++++----------
- target/arm/helper.c |  5 -----
- 2 files changed, 13 insertions(+), 15 deletions(-)
+ target/arm/translate-a64.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 0b84742b66..8f1b949c88 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2936,16 +2936,6 @@ typedef enum ARMMMUIdxBit {
- 
- #define MMU_USER_IDX 0
- 
--/**
-- * cpu_mmu_index:
-- * @env: The cpu environment
-- * @ifetch: True for code access, false for data access.
-- *
-- * Return the core mmu index for the current translation regime.
-- * This function is used by generic TCG code paths.
-- */
--int cpu_mmu_index(CPUARMState *env, bool ifetch);
--
- /* Indexes used when registering address spaces with cpu_address_space_init */
- typedef enum ARMASIdx {
-     ARMASIdx_NS = 0,
-@@ -3225,6 +3215,19 @@ FIELD(TBFLAG_A64, BTYPE, 10, 2)         /* Not cached. */
- FIELD(TBFLAG_A64, TBID, 12, 2)
- FIELD(TBFLAG_A64, UNPRIV, 14, 1)
- 
-+/**
-+ * cpu_mmu_index:
-+ * @env: The cpu environment
-+ * @ifetch: True for code access, false for data access.
-+ *
-+ * Return the core mmu index for the current translation regime.
-+ * This function is used by generic TCG code paths.
-+ */
-+static inline int cpu_mmu_index(CPUARMState *env, bool ifetch)
-+{
-+    return FIELD_EX32(env->hflags, TBFLAG_ANY, MMUIDX);
-+}
-+
- static inline bool bswap_code(bool sctlr_b)
- {
- #ifdef CONFIG_USER_ONLY
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 37ffe06c05..addbec91d8 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -12128,11 +12128,6 @@ ARMMMUIdx arm_mmu_idx(CPUARMState *env)
-     return arm_mmu_idx_el(env, arm_current_el(env));
- }
- 
--int cpu_mmu_index(CPUARMState *env, bool ifetch)
--{
--    return arm_to_core_mmu_idx(arm_mmu_idx(env));
--}
--
- #ifndef CONFIG_USER_ONLY
- ARMMMUIdx arm_stage1_mmu_idx(CPUARMState *env)
- {
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index c910a49b4e..fefe8af7f5 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -1784,7 +1784,7 @@ static void handle_sys(DisasContext *s, uint32_t insn, bool isread,
+         return;
+     case ARM_CP_DC_ZVA:
+         /* Writes clear the aligned block of memory which rt points into. */
+-        tcg_rt = cpu_reg(s, rt);
++        tcg_rt = clean_data_tbi(s, cpu_reg(s, rt));
+         gen_helper_dc_zva(cpu_env, tcg_rt);
+         return;
+     default:
 -- 
 2.20.1
 

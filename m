@@ -1,214 +1,239 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp1709231lfg;
-        Sun, 1 Mar 2020 13:50:49 -0800 (PST)
-X-Received: by 2002:a5d:4490:: with SMTP id j16mr1098977wrq.165.1583099449131;
-        Sun, 01 Mar 2020 13:50:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583099449; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2106705lfg;
+        Sun, 1 Mar 2020 23:00:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyvW585q0VOu+Te3HZE+PLwj3pRzDoqlE7VJUlRqmuVGi4auXbCY3dNiUyM9wzGfK1D/NdV
+X-Received: by 2002:a0c:ef4f:: with SMTP id t15mr8109404qvs.137.1583132440863;
+        Sun, 01 Mar 2020 23:00:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583132440; cv=none;
         d=google.com; s=arc-20160816;
-        b=D4CoioxplCdCTcAIO3UMkLnRBK2s4Atr2EVO2NMwajhzlu//yTtgha9qoFS1214jje
-         jaAthy+locJmvFGcIWnw5dcFrzBiL0JQX3WokPw0RFkD0zfHxTtducGAWTuEAG9hCHC6
-         B6KrUuYSgXysxcBC921aJk+fBqL24F89fV3RHUeB38p81bMmjVw5eLAzpWE5PI8J6rHP
-         HG3N8dbgMfhrikFtbvLtnr9PWvjAHsuaGVSpcyWMwSkTMdOPerlG9x80lwmIEPR6B5sv
-         K6Tz4XZ/t3mOoYrwUNmweetdw8nmc6N7DnJONkvqmKGcoQdGYbxDdxzQ/g2TtIKzJqGe
-         ma4w==
+        b=pEUM3+HnGQmtUw5xPiukkbZoTNAMuySVHAbzgrVofsXBU+UQ4BmVMflPfLPmWQupLb
+         FcVEV6aAW19qBL3gax9Lm4LZUcEQA3NHYqIh8BtGCGhJ3bS42pI8z7Y0NQkubq+z4hLW
+         g4MSziuR5IyassiKj+AfASB0W8LGizvPnnlYwvy5tiiFW/NqQk00L7niw3M5zULJDcR+
+         WMSUh3Hec9OjrF086X6JsIpSGF97Wd3kaPTqbDd4CBMWWu2QI6Fpcst4HVDost4XhhT9
+         hRZKRp+S+hexodVbvpy0Q/+EtSYmY/IkB44IVGSNHVi1hKRLuWjvlk1mwXAnjgeoURvV
+         0F3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=FU9N2QwY0KBXx2FL+IQpwvRT5WjHXUfq+3rdC6n0pFg=;
-        b=XlPOxaWr01+cbGHAcQgSVjSrZNe/qRqNYumsoxv6D3ga6QjR7drbXm0sjbpnZtH1rT
-         n11EnNLGsBo4bJ2vRLupn04h4gkiPjymRgW8PNlJ3MCbGT675zwmhRNC0B/TVy/l39Dm
-         NLGQaGwHqtiIVhYWujRovKeG0l8YVAp7+L38Lti1T3ZLpVXE0BZsVzuLHiRvFjYb/yot
-         phZPZgpo05m0v6YhxXCuRc88QGM0MiV7+8Aehpl66/asof5nn8IpmvpvQlpk6dXqfv46
-         iqjPF7rUOi1OzGU3E/U9Lb6LPl5tzEjtqAmVOrP9/Znxu0EHzk204fAmID9171w3Cs/a
-         rZRQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=pJPHW/B4K/ertS9fqXtY7QcFEbntxL3B6NcflKIdZrc=;
+        b=VcbL0Ks/N7SwoeJHvzYf9NUZdTKKhtziSJDSceLW1VRJBvU+LeN5Cc7ttclr0lkfIf
+         ZSGyNrkD5qnfmeSHq5cHvMKLGYajE+RyP/QQCzXk20xeeIt1VIDZQd1io7t7NPSadwBw
+         KqFs6HP4QG3W6ctlmPxuVaeVDZokMGasDvhjSpWIkiDujhY+RnJAPObK6YsIAYexAU/c
+         b1ueUvE4e5jlNp5a4PMsYwEJ6cGu6tAzWYVE68B4xDeNZexeHffllevG5TS9odnifsRz
+         /LauguUOAUbH7x0IAcET09jPgbMpW9QuLduePeFYx6Ahk00ROmlIZLinz0Qzz97IGuzC
+         OjIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=agDflG0U;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id v65sor4441327wma.8.2020.03.01.13.50.48
-        (Google Transport Security);
-        Sun, 01 Mar 2020 13:50:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fr8JjFfd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x62si2737260qkb.112.2020.03.01.23.00.40
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 01 Mar 2020 23:00:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=agDflG0U;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=FU9N2QwY0KBXx2FL+IQpwvRT5WjHXUfq+3rdC6n0pFg=;
-        b=agDflG0URUJYxehXjEr0iQosRiRMDCZw1+VD1dpq9lEnyQb48Ph2XZ0YuvglX4yBkq
-         8skZYMDXt41LZqQ2u1KfycC7y+f3TjmsAjjMLLBy1HTN7IJP9QF7hrdp7KLG8Umm4moF
-         eySO2krkiLI+WfQMxuBt2UDx7G7Y9OAg/FQOKmi85K7runH6AcuME4sR+TcH2Kj54WW8
-         qzSzea2G0sv6eAfywROOse4xZjnv9ZTKsfbGMEXIz2XVcK2/ZzpMwOuV9/qh4qiNciAB
-         4Txdg9Lq6Ywe9wYtvi6OZPavxbih8wEYJG++Z5gYoo+aD4Og+tl9BGp9OcVGW4uDaROJ
-         JYeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=FU9N2QwY0KBXx2FL+IQpwvRT5WjHXUfq+3rdC6n0pFg=;
-        b=lWiaXs5+Q0o5MbOTocVKpXKQjEEFqA3qHJI/ToX2g+GFiALRJVEiAqwzqXtYf4KP+3
-         NnPMExq0F99ft62xMQkHl28q/U5mGmSIH7YMCPjhFWu0lGEPuB2jJtlcXIokBRG00gY4
-         7Q/u3IQPE9OmdoCFEYOA/RFhpJp5siPtMdl+6sKaYcUUxHFhBmPPPVqesoJBxLDQtXDl
-         2a0H6OgttVfY0ZP0g8N+93XsXZQXeUddgjE0YJYy9FXLWtc3n4Z79vzCbchbuoCnF1jy
-         WRSWOX6Wyv17LdLbVEhjFnl8z/H5z6nsIGpvTt30yfZPxLzpkxifR45mKIcZBEevRLUM
-         PsmQ==
-X-Gm-Message-State: APjAAAXfHi0ur9TMJbQZI94r/25oVmqq33/EmPYFNn4vK9NHUr6vagEI
-	1uTSx6b1xUzuDJNUg7FHdH4=
-X-Google-Smtp-Source: APXvYqwiK6f0JOAi5keD7ZXNa906XVo7KAy4nYOFk6qmNPA2OErYWkik5eoynGdSjWjrC+soOp/WLw==
-X-Received: by 2002:a7b:c34f:: with SMTP id l15mr15849923wmj.103.1583099448722;
-        Sun, 01 Mar 2020 13:50:48 -0800 (PST)
-Return-Path: <nieklinnenbank@gmail.com>
-Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
-        by smtp.gmail.com with ESMTPSA id e8sm25033124wrr.69.2020.03.01.13.50.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 01 Mar 2020 13:50:48 -0800 (PST)
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	peter.maydell@linaro.org,
-	philmd@redhat.com,
-	b.galvani@gmail.com,
-	jasowang@redhat.com,
-	alex.bennee@linaro.org,
-	imammedo@redhat.com,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Niek Linnenbank <nieklinnenbank@gmail.com>
-Subject: [PATCH v6 15/18] tests/boot_linux_console: Add a SD card test for the OrangePi PC board
-Date: Sun,  1 Mar 2020 22:50:26 +0100
-Message-Id: <20200301215029.15196-16-nieklinnenbank@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200301215029.15196-1-nieklinnenbank@gmail.com>
-References: <20200301215029.15196-1-nieklinnenbank@gmail.com>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fr8JjFfd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55666 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j8f4C-000494-79
+	for alex.bennee@linaro.org; Mon, 02 Mar 2020 02:00:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55543)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <eric.auger@redhat.com>) id 1j8f45-00047j-3A
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 02:00:34 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <eric.auger@redhat.com>) id 1j8f43-0006lO-7W
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 02:00:32 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:55450
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1j8f43-0006l4-0m
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 02:00:31 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583132430;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=pJPHW/B4K/ertS9fqXtY7QcFEbntxL3B6NcflKIdZrc=;
+ b=fr8JjFfdi73VOYbYz64wJzGV9iddLtKs9yYaiKMxCpLpAD8akFd2m9aqsNolRjQjAv6Yax
+ rkD1UiZSg0SR+5j7hKSlvGRUHUuGdZUUrYdLkc0JC0GvzWyyUhcFvPakC3WWP0wTwPFGUD
+ JBdc6+UkvwyvfXdetpLBBKQ0VcWfEAE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-99-L4rHQvSfPH-H1DD393_o6w-1; Mon, 02 Mar 2020 02:00:24 -0500
+X-MC-Unique: L4rHQvSfPH-H1DD393_o6w-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 42213107B274;
+ Mon,  2 Mar 2020 07:00:22 +0000 (UTC)
+Received: from [10.36.116.59] (ovpn-116-59.ams2.redhat.com [10.36.116.59])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5E82010027AB;
+ Mon,  2 Mar 2020 07:00:05 +0000 (UTC)
+Subject: Re: [Qemu-devel] [PATCH RFC v5 0/5] virtio-iommu: VFIO integration
+To: Bharat Bhushan <bharatb.yadav@gmail.com>
+References: <20181127064101.25887-1-Bharat.Bhushan@nxp.com>
+ <2a788c05-cd9b-1e69-14dd-864633a1df95@redhat.com>
+ <CAHS=5b3g_6rHzFvF4-RDu2cn_tsP4TmJp+rFxPgiWpo-2kdnYA@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <7393a1e7-d5ea-c87f-6f36-6e4e8ad2d8e7@redhat.com>
+Date: Mon, 2 Mar 2020 08:00:03 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: UywpGD0Z4hDS
+In-Reply-To: <CAHS=5b3g_6rHzFvF4-RDu2cn_tsP4TmJp+rFxPgiWpo-2kdnYA@mail.gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "kevin.tian@intel.com" <kevin.tian@intel.com>,
+ "drjones@redhat.com" <drjones@redhat.com>,
+ Tomasz Nowicki <tnowicki@marvell.com>, "mst@redhat.com" <mst@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Bharat Bhushan <bharatb.linux@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "linu.cherian@cavium.com" <linu.cherian@cavium.com>,
+ "linuc.decode@gmail.com" <linuc.decode@gmail.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9rPiV66h73Fm
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Hi Bharat,
 
-The kernel image and DeviceTree blob are built by the Armbian
-project (based on Debian):
-https://www.armbian.com/orange-pi-pc/
+On 3/2/20 6:12 AM, Bharat Bhushan wrote:
+>=20
+> Hi Eric,=C2=A0
+>=20
+> On Fri, Feb 28, 2020 at 3:06 PM Auger Eric <eric.auger@redhat.com
+> <mailto:eric.auger@redhat.com>> wrote:
+>=20
+>     Hi Bharat,
+>=20
+>     On 11/27/18 7:52 AM, Bharat Bhushan wrote:
+>     > This patch series integrates VFIO with virtio-iommu. This is
+>     > tested with assigning 2 pci devices to Virtual Machine.
+>     >
+>     > This version is mainly about rebasing on v9 version on
+>     > virtio-iommu device framework from Eric Augur.
+>     >
+>     > This patch series allows PCI pass-through using virtio-iommu.
+>     >
+>     > This series is based on:
+>     >=C2=A0 - virtio-iommu kernel driver by Jean-Philippe Brucker
+>     >=C2=A0 =C2=A0 =C2=A0[PATCH v5 0/7] Add virtio-iommu driver
+>     >=C2=A0 =C2=A0 =C2=A0git://linux-arm.org/kvmtool-jpb.git
+>     <http://linux-arm.org/kvmtool-jpb.git> virtio-iommu/v0.9
+>     >
+>     >=C2=A0 - virtio-iommu device emulation by Eric Augur.
+>     >=C2=A0 =C2=A0 [RFC,v9,00/17] VIRTIO-IOMMU device
+>     >=C2=A0 =C2=A0 https://github.com/eauger/qemu/tree/v3.1.0-rc2-virtio-=
+iommu-v0.9
+>=20
+>     Now we have the driver and the base qemu device upstream we may resum=
+e
+>     this activity to complete the VFIO integration. Do you intend the
+>     respin? Otherwise let me know if you want me to help.
+>=20
+>=20
+> Yes Eric, I am planning to respin the changes.
+>=20
+> Can you please point to latest changes (qemu/Linux both).
+the driver and the base qemu device are upstream. This only boots in DT
+mode at the moment with machvirt. Use -virtio-iommu-pci to instantiate
+the device. About the qemu device, you will find latest changes in the
+v16 history log: https://patchwork.kernel.org/cover/11382271/
 
-The SD image is from the kernelci.org project:
-https://kernelci.org/faq/#the-code
+Thanks
 
-If ARM is a target being built, "make check-acceptance" will
-automatically include this test by the use of the "arch:arm" tags.
+Eric
 
-Alternatively, this test can be run using:
+>=20
+> Thanks
+> -Bharat
+>=20
+>     Thanks
+>=20
+>     Eric
+>     >
+>     > v4->v5:
+>     >=C2=A0 - Rebase to v9 version from Eric
+>     >=C2=A0 - PCIe device hotplug fix
+>     >=C2=A0 - Added Patch 1/5 from Eric previous series (Eric somehow dro=
+pped in
+>     >=C2=A0 =C2=A0 last version.
+>     >=C2=A0 - Patch "Translate the MSI doorbell in kvm_arch_fixup_msi_rou=
+te"
+>     >=C2=A0 =C2=A0 already integrated with vsmmu3
+>     >
+>     > v3->v4:
+>     >=C2=A0 - Rebase to v4 version from Eric
+>     >=C2=A0 - Fixes from Eric with DPDK in VM
+>     >=C2=A0 - Logical division in multiple patches
+>     >
+>     > v2->v3:
+>     >=C2=A0 - This series is based on "[RFC v3 0/8] VIRTIO-IOMMU device"
+>     >=C2=A0 =C2=A0 Which is based on top of v2.10-rc0 that
+>     >=C2=A0 - Fixed issue with two PCI devices
+>     >=C2=A0 - Addressed review comments
+>     >
+>     > v1->v2:
+>     >=C2=A0 =C2=A0- Added trace events
+>     >=C2=A0 =C2=A0- removed vSMMU3 link in patch description
+>     >
+>     > Bharat Bhushan (4):
+>     >=C2=A0 =C2=A0virtio-iommu: Add iommu notifier for iommu-map/unmap
+>     >=C2=A0 =C2=A0virtio-iommu: Call iommu notifier on attach/detach
+>     >=C2=A0 =C2=A0virtio-iommu: add virtio-iommu replay
+>     >=C2=A0 =C2=A0virtio-iommu: handle IOMMU Notifier flag changes
+>     >
+>     > Eric Auger (1):
+>     >=C2=A0 =C2=A0hw/vfio/common: Do not print error when viommu translat=
+es into
+>     an mmio
+>     >=C2=A0 =C2=A0 =C2=A0region
+>     >
+>     >=C2=A0 hw/vfio/common.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A02 -
+>     >=C2=A0 hw/virtio/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0|=C2=A0 =C2=A05 +
+>     >=C2=A0 hw/virtio/virtio-iommu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 1=
+90
+>     ++++++++++++++++++++++++++++++-
+>     >=C2=A0 include/hw/virtio/virtio-iommu.h |=C2=A0 =C2=A06 +
+>     >=C2=A0 4 files changed, 198 insertions(+), 5 deletions(-)
+>     >
+>=20
+>=20
+>=20
+> --=20
+> -Bharat
 
-  $ avocado --show=console run -t machine:orangepi-pc tests/acceptance/boot_linux_console.py
-  console: Uncompressing Linux... done, booting the kernel.
-  console: Booting Linux on physical CPU 0x0
-  console: Linux version 4.20.7-sunxi (root@armbian.com) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #5.75 SMP Fri Feb 8 09:02:10 CET 2019
-  console: CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=50c5387d
-  [...]
-  console: sunxi-wdt 1c20ca0.watchdog: Watchdog enabled (timeout=16 sec, nowayout=0)
-  console: sunxi-mmc 1c0f000.mmc: Linked as a consumer to regulator.2
-  console: sunxi-mmc 1c0f000.mmc: Got CD GPIO
-  console: ledtrig-cpu: registered to indicate activity on CPUs
-  console: hidraw: raw HID events driver (C) Jiri Kosina
-  console: usbcore: registered new interface driver usbhid
-  console: usbhid: USB HID core driver
-  console: Initializing XFRM netlink socket
-  console: sunxi-mmc 1c0f000.mmc: initialized, max. request size: 16384 KB
-  console: NET: Registered protocol family 10
-  console: mmc0: host does not support reading read-only switch, assuming write-enable
-  console: mmc0: Problem switching card into high-speed mode!
-  console: mmc0: new SD card at address 4567
-  console: mmcblk0: mmc0:4567 QEMU! 60.0 MiB
-  [...]
-  console: EXT4-fs (mmcblk0): mounting ext2 file system using the ext4 subsystem
-  console: EXT4-fs (mmcblk0): mounted filesystem without journal. Opts: (null)
-  console: VFS: Mounted root (ext2 filesystem) on device 179:0.
-  console: Run /sbin/init as init process
-  console: EXT4-fs (mmcblk0): re-mounted. Opts: block_validity,barrier,user_xattr,acl
-  console: Starting syslogd: OK
-  console: Starting klogd: OK
-  console: Populating /dev using udev: udevd[203]: starting version 3.2.7
-  console: /bin/sh: can't access tty; job control turned off
-  console: cat /proc/partitions
-  console: / # cat /proc/partitions
-  console: major minor  #blocks  name
-  console: 1        0       4096 ram0
-  console: 1        1       4096 ram1
-  console: 1        2       4096 ram2
-  console: 1        3       4096 ram3
-  console: 179        0      61440 mmcblk0
-  console: reboot
-  console: / # reboot
-  console: umount: devtmpfs busy - remounted read-only
-  console: EXT4-fs (mmcblk0): re-mounted. Opts: (null)
-  console: The system is going down NOW!
-  console: Sent SIGTERM to all processes
-  console: Sent SIGKILL to all processes
-  console: Requesting system reboot
-  console: reboot: Restarting system
-  JOB TIME   : 68.64 s
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-[NL: rename in commit message Raspbian to Armbian, remove vm.set_machine()]
-Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
----
- tests/acceptance/boot_linux_console.py | 41 ++++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
-
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index dabc8ef2af..7ef69c7bac 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -572,6 +572,47 @@ class BootLinuxConsole(Test):
-         exec_command_and_wait_for_pattern(self, 'reboot',
-                                                 'reboot: Restarting system')
- 
-+    def test_arm_orangepi_sd(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=machine:orangepi-pc
-+        """
-+        deb_url = ('https://apt.armbian.com/pool/main/l/'
-+                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
-+        deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        kernel_path = self.extract_from_deb(deb_path,
-+                                            '/boot/vmlinuz-4.20.7-sunxi')
-+        dtb_path = '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
-+        dtb_path = self.extract_from_deb(deb_path, dtb_path)
-+        rootfs_url = ('http://storage.kernelci.org/images/rootfs/buildroot/'
-+                      'kci-2019.02/armel/base/rootfs.ext2.xz')
-+        rootfs_hash = '692510cb625efda31640d1de0a8d60e26040f061'
-+        rootfs_path_xz = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash)
-+        rootfs_path = os.path.join(self.workdir, 'rootfs.cpio')
-+        archive.lzma_uncompress(rootfs_path_xz, rootfs_path)
-+
-+        self.vm.set_console()
-+        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'console=ttyS0,115200 '
-+                               'root=/dev/mmcblk0 rootwait rw '
-+                               'panic=-1 noreboot')
-+        self.vm.add_args('-kernel', kernel_path,
-+                         '-dtb', dtb_path,
-+                         '-drive', 'file=' + rootfs_path + ',if=sd,format=raw',
-+                         '-append', kernel_command_line,
-+                         '-no-reboot')
-+        self.vm.launch()
-+        shell_ready = "/bin/sh: can't access tty; job control turned off"
-+        self.wait_for_console_pattern(shell_ready)
-+
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
-+                                                'Allwinner sun8i Family')
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/partitions',
-+                                                'mmcblk0')
-+        exec_command_and_wait_for_pattern(self, 'reboot',
-+                                                'reboot: Restarting system')
-+
-     def test_s390x_s390_ccw_virtio(self):
-         """
-         :avocado: tags=arch:s390x
--- 
-2.17.1

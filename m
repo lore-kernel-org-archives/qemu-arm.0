@@ -1,111 +1,121 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2659392lfg;
-        Mon, 2 Mar 2020 09:02:47 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vucMROFuC7/eX3mVJm4BtX9aFJQQiFRtApDoYqv+9DkJOXiJ7QuVvwMEuzWezJXqDWsOyEN
-X-Received: by 2002:a05:620a:a1d:: with SMTP id i29mr180645qka.343.1583168567108;
-        Mon, 02 Mar 2020 09:02:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583168567; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2708198lfg;
+        Mon, 2 Mar 2020 09:55:16 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vu9Jmcjk0qXUkvfPQn3SbfbUyNEgOiOo+KmWl/EiOAE82ajDfQ6KBTZ42V/PqjnMVehVqNF
+X-Received: by 2002:aed:304e:: with SMTP id 72mr822783qte.113.1583171716822;
+        Mon, 02 Mar 2020 09:55:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583171716; cv=none;
         d=google.com; s=arc-20160816;
-        b=hPvd+7mp4TUTfzF6SSkt/SggkQ59OWrFsukfoCswpBnYQpMZeZZQ3bNb0Nd6o+Rn6D
-         XwfOAfdTLH01HGPOhOnhxHRl05Njoi4BWaMQbzHALPM6/G5WL/Sipxo9/yh3dr+KbCUL
-         TRYo8yKeBcIIX/6G//aYPX2yqcIa9IqqqNRkIjCOAsAGnd+uEEvuYnpBChtI7m1elftr
-         VX4LvVpm+D0NEKFDkz1ZUJ/n2XZJoQkSk66S0IvQ1OSkv3jrIWrL9cw2jqBNrkUk/qOf
-         Sj3ub1/HFEGYA4M/hflyiSQ1H9CRCLSzHSJmBQbe0+eoRYrfpUOHBrjbL7Sv4M++61Xo
-         Vjtw==
+        b=nUqg2FlWQTvfhyVt5CHIzqF5wT7yyJVQo6wojG01r0/dqVaSBp2qoDf5XKZXP0QrAV
+         3uxij+MubEMnXo2AhnSw++bnmalwee3CC53PTH84K1blnIJkPNMdFhhdR85FLfJgBSAF
+         AN+107zRE/q71h144YlyTaPoxFdLhNWmfsBGvSzcUcIPFoGM3EVgNFamvbUuOyZrKwfd
+         YswHM/jMhB0WgWzYsFrxumjv/Ge57yezliLFx9EtwMx7ejRZTg2JlT2HJHa2mTeawqk8
+         Sl7kINfYoHc3dTXjcMsF2isJBJ7/JrlKeHqh281e48qDB+jRT0VVFf8AJzkAhrAdegrG
+         bQRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=3vVT2JT1q6CZ5+QQmZemp+xWla5xDqktDRGl38dcfPo=;
-        b=JIQOFZAJ5Mf6+wqekY3mbMY8fXBo/hzQpsyVKpbTWioWygMctm+HZOhiroi5xcBgKF
-         tcB0QsipKPoPOdXZzf8ZfdKggOD566v2dH6ij2LY3Ogfv0c+Td5p+xk1t54/YD1Y2Y+2
-         77ygTUfkNWBxca939DWme36EeqB9ZL+c7nHkXlD8ZrIkM7raVYQS63NP1eLX3h7qEis4
-         O2HgopMzhSz+X8sjQOMNRlgvbgOo6E+l4n9adT3Jg03emlwZHcM2+tNzi2+ezgWrgkit
-         Mv+p1iXg1SJODCKLxke4LT4Rc1PEVueKJD1CHUbo5LHFxM8BhbwPOjpersZhrd4QCvMZ
-         wvZw==
+        bh=qV/n+9E+KvPiSQBkYJToe7Cqz4DZjwM9HXO4lcmyJCA=;
+        b=Gw+DwB99fnU9otZv13GGgJdl4cH/GGEjCCrd0kl1R9Tx9gx2Cwac9UKWHw0qRVcm7l
+         a9zETImB0xpfIVsIu7xj3ZayPaSCIniMubd6uiBiR15yqk/SptHDQN+LuMNeovom0GoN
+         SIY4WGJXjUUuLE+vX9Qn65o4gvLLfK8va2MBlkQrRckNxZ5w9P9FeTbzzgjafMZqsl/x
+         Ziu05Sjgkw+e+p+rfaOn2LAPpx2Ju1ZJ7TKE0NGI9ThNiq2i39C1RW16PxuruUeCC2+r
+         z75+35DSq4oYXf25x9dv32xjHkJHX9HaieZ4C5vZzKJJWDZAH7ATgOCPjr9zAB4wq5Aw
+         QYOA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FP85tpGy;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ey6DjKiW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v4si865823qtp.231.2020.03.02.09.02.46
+        by mx.google.com with ESMTPS id e16si6220773qkn.133.2020.03.02.09.55.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Mar 2020 09:02:47 -0800 (PST)
+        Mon, 02 Mar 2020 09:55:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FP85tpGy;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ey6DjKiW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35472 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36138 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j8oSr-0001vH-Fc
-	for alex.bennee@linaro.org; Mon, 02 Mar 2020 12:02:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56799)
+	id 1j8pHg-00055Q-6A
+	for alex.bennee@linaro.org; Mon, 02 Mar 2020 12:55:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38227)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1j8oQq-0007Tt-8c
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 12:00:41 -0500
+ (envelope-from <philmd@redhat.com>) id 1j8pHX-000558-IL
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 12:55:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1j8oQp-0003GA-4h
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 12:00:40 -0500
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:33419)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1j8oQo-0003Fp-T5
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 12:00:39 -0500
-Received: by mail-pf1-x443.google.com with SMTP id n7so28220pfn.0
- for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 09:00:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=3vVT2JT1q6CZ5+QQmZemp+xWla5xDqktDRGl38dcfPo=;
- b=FP85tpGyQeIA1E0wB/KzwnKscUnAEqkcwQtz6JC8p3YkIjhazdfTM7ZxnQK539iZ2o
- S7sLdqGqrzzDFcfZm0CnTL9Sx1QvQDcjQhqV3AjQp4IWahuEYbWYL4xcvSMZyISWoe30
- VcRMR/E85FRjj9DAtM3Nisry+1uOBK/PyIDGa587BxtRUgzjilLT5RfxiHXzi6pRj+3E
- XDL7YucFNrVyDfeERsiksIBtXfQrW3Fud/niqvmo1UN4pLLOgTtBgPy6gi0ixB0c5bw/
- GM2VkWmmJ2dwp+UtGHbbqh4GbDAtF5n5JoNJACYgntTnaeP/L3TjH2tWmvIrWbuvSJdL
- jYVg==
+ (envelope-from <philmd@redhat.com>) id 1j8pHW-0005lp-8d
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 12:55:07 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:29283
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j8pHW-0005lg-5h
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 12:55:06 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583171705;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qV/n+9E+KvPiSQBkYJToe7Cqz4DZjwM9HXO4lcmyJCA=;
+ b=ey6DjKiW2UzjsILKwGpY7+E/KRZK0Hl8Qjv2IdH86WPCCJQQzbOLGKWycQ0ruZPF7OzlrS
+ Rwi/9lk60EF3xPFJJ3qOLMNXBwsO1ZpIXD5aV+ZlkBHHYnnySmFNhL0H/pmqRsE1chCa2U
+ 2T7xDAwwq3ssuSb3ML92fI0IjfKADhY=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-32-Sp4At40WPey2Vf5J1J0MaA-1; Mon, 02 Mar 2020 12:55:02 -0500
+X-MC-Unique: Sp4At40WPey2Vf5J1J0MaA-1
+Received: by mail-wr1-f70.google.com with SMTP id w6so30097wrm.16
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 09:55:02 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=3vVT2JT1q6CZ5+QQmZemp+xWla5xDqktDRGl38dcfPo=;
- b=pz5PyIpHjeKtcKjhk26tbmsr7o26XneIWo1uCAELs+o3DZJs0nNERQXijGxBByg5aq
- MAUWeWEEAFFBGZ4k7cyRAAB8nr69toO3lfFwl+F8mrfOigt53cqMMpyxCdNl8mvGKCrm
- 5DqHtVc3OIcYftEA57iuZOoCkEWRjTLAykWPZAkv0wo7Bas9quIYQoVrDlYco1piuuET
- GBgSejgmu2VjsBhq6B5ZAlwr/JbOJF0iaq++HZQl7AWNR7llfrDcTPNYVb+aBG6pPcH+
- 2Kuk7HOlGZ0b04HFA+tKM6/bGlsj7kSZ9skD6meaK8ikt2aDTaD5u/DSSpdyrJBBTAlh
- cCnQ==
-X-Gm-Message-State: APjAAAW+vPmC8Hl0UtwQI2vgpggzznC6zoRuh7U9sx2PEDjkjm6mSWPe
- dzR3h/njviihn8aJEWYwt69nOA==
-X-Received: by 2002:a63:120f:: with SMTP id h15mr20964581pgl.235.1583168437896; 
- Mon, 02 Mar 2020 09:00:37 -0800 (PST)
-Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id
- d1sm13446842pfc.3.2020.03.02.09.00.36
+ bh=qV/n+9E+KvPiSQBkYJToe7Cqz4DZjwM9HXO4lcmyJCA=;
+ b=D5Z3+AofPEDIFa2X/JjYcS0Wz8qo6wEEZNee4tmjIDKrxmlGIKuAsvZCpM8NHhenYN
+ tUHa9HNLDpVTLMzdK5bMqcF0Z/ImcJx/Auxqxsf3IGPjOk2+nZIAvx3bFCZKUCpdINRA
+ xHfXsXVYnIfGjc5Z0aaPwin2EIsEZVIniKKiuuAfqbVmTAo2XYl0k7VDAjqLWqQnZOB7
+ DjontQDuMxNWjMwfW/lVSajwtAnEX2YDR/YaJvaBmRqwh3vW7wrgv6UGSp51Jb1vGgl5
+ UK9JAVNnoIvu4Kv+pGaz2bsWf3rxMD93XI1sC0bBESMT/ffj0b+fe750BY2c1Aw/6MER
+ ZXnQ==
+X-Gm-Message-State: ANhLgQ2mnpM0LiAqjc9MPg0ePteXJKLNqe9yiZSEjWPBS2OMuZnZfMdh
+ uMAbcdZDh7AJay8WKFb/zkQ9Q+njEh9pwSEKUJjARx4jmMMw3HmBBo8k3NCj0nPcHQwm6frv7aT
+ +zGI2VY/x/ujS
+X-Received: by 2002:adf:a50b:: with SMTP id i11mr833081wrb.60.1583171698561;
+ Mon, 02 Mar 2020 09:54:58 -0800 (PST)
+X-Received: by 2002:adf:a50b:: with SMTP id i11mr833063wrb.60.1583171698324;
+ Mon, 02 Mar 2020 09:54:58 -0800 (PST)
+Received: from ?IPv6:2a01:e35:2fb0:49e0:3f7b:4b69:b9c:cdc0?
+ ([2a01:e35:2fb0:49e0:3f7b:4b69:b9c:cdc0])
+ by smtp.gmail.com with ESMTPSA id e22sm168991wme.45.2020.03.02.09.54.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Mar 2020 09:00:37 -0800 (PST)
-Subject: Re: [PATCH v3 2/6] hw/arm/virt: Introduce VirtGICType enum type
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
-References: <20200302105516.5972-1-eric.auger@redhat.com>
- <20200302105516.5972-3-eric.auger@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <e3b8d9c2-d5c3-e266-caad-1050ae843024@linaro.org>
-Date: Mon, 2 Mar 2020 09:00:35 -0800
+ Mon, 02 Mar 2020 09:54:57 -0800 (PST)
+Subject: Re: [PATCH v1 1/4] hw/arm/cubieboard: use ARM Cortex-A8 as the
+ default CPU in machine definition
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>
+References: <20200227220149.6845-1-nieklinnenbank@gmail.com>
+ <20200227220149.6845-2-nieklinnenbank@gmail.com>
+ <CAFEAcA_xB_dMfcALk6sirmRJyJ0rw7_JPK6aqBoZMxh=wH+d-g@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <3ad40e56-6afc-6dc2-7e73-41dadb2b7c6b@redhat.com>
+Date: Mon, 2 Mar 2020 18:54:57 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200302105516.5972-3-eric.auger@redhat.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <CAFEAcA_xB_dMfcALk6sirmRJyJ0rw7_JPK6aqBoZMxh=wH+d-g@mail.gmail.com>
 Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::443
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,30 +127,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: maz@kernel.org, drjones@redhat.com
+Cc: Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dNvhtaMAMcaq
+X-TUID: +A1vIfr7NpWB
 
-On 3/2/20 2:55 AM, Eric Auger wrote:
-> We plan to introduce yet another value for the gic version (nosel).
-> As we already use exotic values such as 0 and -1, let's introduce
-> a dedicated enum type and let vms->gic_version take this
-> type.
+On 3/2/20 4:32 PM, Peter Maydell wrote:
+> On Thu, 27 Feb 2020 at 22:01, Niek Linnenbank <nieklinnenbank@gmail.com> wrote:
+>>
+>> The Cubieboard is a singleboard computer with an Allwinner A10 System-on-Chip [1].
+>> As documented in the Allwinner A10 User Manual V1.5 [2], the SoC has an ARM
+>> Cortex-A8 processor. Currently the Cubieboard machine definition specifies the
+>> ARM Cortex-A9 in its description and as the default CPU.
+>>
+>> This patch corrects the Cubieboard machine definition to use the ARM Cortex-A8.
+>>
+>>   [1] http://docs.cubieboard.org/products/start#cubieboard1
+>>   [2] https://linux-sunxi.org/File:Allwinner_A10_User_manual_V1.5.pdf
+>>
+>> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+>> ---
+>>   hw/arm/cubieboard.c | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
+>> index 089f9a30c1..0195925c73 100644
+>> --- a/hw/arm/cubieboard.c
+>> +++ b/hw/arm/cubieboard.c
+>> @@ -68,8 +68,8 @@ static void cubieboard_init(MachineState *machine)
+>>
+>>   static void cubieboard_machine_init(MachineClass *mc)
+>>   {
+>> -    mc->desc = "cubietech cubieboard (Cortex-A9)";
+>> -    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a9");
+>> +    mc->desc = "cubietech cubieboard (Cortex-A8)";
+>> +    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a8");
+>>       mc->init = cubieboard_init;
+>>       mc->block_default_type = IF_IDE;
+>>       mc->units_per_default_bus = 1;
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> This is worth fixing, but I'm pretty sure it doesn't have
+> any user-visible effects, because the CPU is created by
+> hw/arm/allwinner-a10.c:aw_a10_init(), which always uses
+> cortex-a8 regardless of what the user specified on the command
+> line or what the mc->default_cpu_type is.
+
+It is worth fixing if we continue the MachineClass code cleanup Igor 
+wants (moving the ram size / cpu type checks in the machine common code).
+
 > 
-> ---
+> Fixes: 8a863c8120994981a099
 > 
-> v2 -> v3:
-> - replaced defines by enum VirtGICType
-> - use that new type for vms->gic_version
-> ---
->  hw/arm/virt.c         | 30 +++++++++++++++---------------
->  include/hw/arm/virt.h | 11 +++++++++--
->  2 files changed, 24 insertions(+), 17 deletions(-)
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> if you tweak the commit message to mention that it
+> wasn't a user-visible bug (but I'll do that myself if there
+> isn't anything else in the series that means it needs a respin).
+> 
+> thanks
+> -- PMM
+> 
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-r~

@@ -1,102 +1,80 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2304261lfg;
-        Mon, 2 Mar 2020 03:02:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyCuvI/1cBB1mC5Qm0HbvVGBUJefLfPKzsfUU6TAGLRWfpBOIPIOCSmprS7C1FQTIjNCoWa
-X-Received: by 2002:aed:2926:: with SMTP id s35mr13101952qtd.368.1583146961416;
-        Mon, 02 Mar 2020 03:02:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583146961; cv=none;
-        d=google.com; s=arc-20160816;
-        b=CYBOfKPsdOzD4aXu+8YoVuLoTkldThQtbqYGfAUWphj/EKaF6LFeESMdUIXpiAt+0e
-         A3adj7QFJB6Laa6P7ZIEirzKbziXgKjE0fNOl2Hrd5aQ17w7Kw7hviloqMh0CSbWy6EZ
-         5Gw4XU5eyXXj7Iw0TAolhpfpGMmNmPh1Jfgco2E1UM2F1RLjf14NAh9vr1fzf5YwUTBa
-         Pt8zk3olwij0WRc8SEAY93J06Dhm30J7wRr6DO3p2qXq03Nev7SKYsuXlfa8pkVfu7QI
-         F0VlR8p5I6hBpmIKYNh2SdveG+T4GfTJiDx2QA9T6ai9bp3ZXO1E9eAutRpPLz6GP5KU
-         ysjg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=3xPkDCTTQpgwTNewKIg9eQaVQEz55A6GJLb1Cab3MjA=;
-        b=URh2pnFGz75y3izX15XRpCez3PAmkO7NdtS+tnfdeiQOGqsvU/Y9EU3x6wV9iLb2An
-         rM9645GX9Se7SKyhyWDRvg5xvEc64ObIUl5nfRRkoiKbTZw5tTXc3XxiPi53PftxsT5C
-         tK5vveMAaEOdhlZrW5hXClCB7OiEO2yebwqnorttt9JHb4Qy6GJMDWu98uXz3cCJ1PGO
-         53WPvn+87jCY00RTDvRMPfCRIWfso1xqr/KC4TdZOrxbgKnA0jnYgHfwoGh+J4WMhIXg
-         2Owmkkmejkbs/hrUmfSUqTsPzpCSisYM++NRUq49YP/ijvLnEABcXqlNVQN511AWuAuM
-         7bFQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Z2hOXrlR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2309778lfg;
+        Mon, 2 Mar 2020 03:07:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzeXNbelIoOM5giEMeAjkPX/O/m/GqVYpbDasEYdqcZIOTFZbvLQci2ciPQ76IB56er/Kzh
+X-Received: by 2002:a05:620a:2007:: with SMTP id c7mr16039202qka.471.1583147264659;
+        Mon, 02 Mar 2020 03:07:44 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k17si4209687qtq.97.2020.03.02.03.02.41
+        by mx.google.com with ESMTPS id i3si5899856qkl.302.2020.03.02.03.07.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Mar 2020 03:02:41 -0800 (PST)
+        Mon, 02 Mar 2020 03:07:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Z2hOXrlR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58604 helo=lists1p.gnu.org)
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=plY1Ofbo;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58698 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j8iqN-0007U7-SQ
-	for alex.bennee@linaro.org; Mon, 02 Mar 2020 06:02:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58692)
+	id 1j8ivH-0002eQ-VL
+	for alex.bennee@linaro.org; Mon, 02 Mar 2020 06:07:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59327)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j8iqB-0007Th-5D
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:02:31 -0500
+ (envelope-from <luc.michel@greensocs.com>) id 1j8iub-0002Kp-PB
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:07:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j8iq9-0000Su-TG
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:02:26 -0500
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:40721)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j8iq9-0000Rb-NZ
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:02:25 -0500
-Received: by mail-oi1-x241.google.com with SMTP id j80so7857047oih.7
- for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 03:02:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=3xPkDCTTQpgwTNewKIg9eQaVQEz55A6GJLb1Cab3MjA=;
- b=Z2hOXrlRBA/1WtvUbm77PZs5AALAyp/UqXFAW/58Qw0MZNVEPhD7eg4jC6h0rYnaEW
- CtGeeb2STDfEU+25vLzzHK5mln3b04tSBNakjULGfu6x4jVLKX5FmChusiNllRt+WO4y
- /MvFV9TUj67zfNnTHW60ueQqRO8tXP11yI1OrsGYP4VAYh4YtZ6Q5t5bnfAgPyqXn9JQ
- frqp7b9Pwuge7Hi400P63AriqkW7qJ1t7+epe62ebcb+wCQvam9fIZdmKhC/Tf19hA4f
- U+ajsrgfnoVhysjrsDQv7CPvqyxzOdlGx6lMdfx3m9CvpGralurXRnkeY7sYiqzXq6d3
- YSFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=3xPkDCTTQpgwTNewKIg9eQaVQEz55A6GJLb1Cab3MjA=;
- b=R1s47JJbJboP/5NwC/MZC/w7j9RPUn33jGNo6Pu2XTvc7cntYkYVPuBSWPEgMAVp2H
- bq1kkLurJfcmOBP5Z4wOGiEqIIlpL4VPS1whcHzAnig9syZHomdagWBlhPf0cQYUgUNe
- q6mPRyMcJ9/0NGf04dow+fUAelmw5riXn3JRRVJkLgCGQt2v+DcVJst0TUAcIaMSsJ2t
- QtB0Zpa+CC8xrlh2gV1PxbN8vtLkU5wUvO+Z4bW2SWM3ZReRrx5UkNAfB8ORteshew9e
- iKxbozZMvW/9roiQSY9DtAC0m2BKBfahIW/8WM4QX1PyakGfL3haK6ZftCEkqCV3CLf7
- +tKQ==
-X-Gm-Message-State: APjAAAU4rNBGHOEqadwWsBMA8l8UHDea5darMjt4hYXa7UmstmGkCxYO
- eCDsx8TFdoZpIaOC7uz7ikvPcRztdVhh5RdwAme5uw==
-X-Received: by 2002:a05:6808:289:: with SMTP id
- z9mr10742225oic.48.1583146944865; 
- Mon, 02 Mar 2020 03:02:24 -0800 (PST)
+ (envelope-from <luc.michel@greensocs.com>) id 1j8iua-0006qy-Hg
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 06:07:01 -0500
+Received: from beetle.greensocs.com ([5.135.226.135]:56634)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <luc.michel@greensocs.com>)
+ id 1j8iua-0006o0-1G; Mon, 02 Mar 2020 06:07:00 -0500
+Received: from [172.16.11.100] (tiramisu.bar.greensocs.com [172.16.11.100])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id A03FB96EF0;
+ Mon,  2 Mar 2020 11:06:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1583147217;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=8tqr80Gmb4Vsg8r4+Y8tb98TPEaXHIi9GT3Kj4m2KoY=;
+ b=plY1OfboyrX1VR3OZpTyJRzZs5V5lL9tctFyVEReF2B8sEao1pCMDrGFzBO38TdafX+hrR
+ mUi+WColrdgw98Myz3wxD/M5sbeiiQaSFlv7gqvSUoAHzH9SI72OrXwPTF7wnKI8HRgc5Q
+ CICYrxz1nv9Gr0HaK4/3TGrQkB15PEo=
+Subject: Re: [PATCH v1 1/2] hw/arm: versal: Add support for the LPD ADMAs
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
+References: <20200227154424.6849-1-edgar.iglesias@gmail.com>
+ <20200227154424.6849-2-edgar.iglesias@gmail.com>
+From: Luc Michel <luc.michel@greensocs.com>
+Message-ID: <74e99888-71fd-d6ed-2029-0cef097c12e4@greensocs.com>
+Date: Mon, 2 Mar 2020 12:06:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-References: <20200226172628.17449-1-eric.auger@redhat.com>
- <6f82ec7a-fb74-a47a-100b-325d5de36a7d@redhat.com>
-In-Reply-To: <6f82ec7a-fb74-a47a-100b-325d5de36a7d@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 2 Mar 2020 11:02:13 +0000
-Message-ID: <CAFEAcA-2DJ_Bw2NhWtJdNugkHKwAHmxiFv+tGO_y9wRm8aCp4A@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/smmu-common: a fix to smmu_find_smmu_pcibus
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::241
+In-Reply-To: <20200227154424.6849-2-edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1583147217;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=8tqr80Gmb4Vsg8r4+Y8tb98TPEaXHIi9GT3Kj4m2KoY=;
+ b=v9z32Re1AmPmkBi0ir/Kq4utMYbl3Iwo90Zlg6GA1KiDNKOc8QNR2QgJlGGax2BQU78Q3N
+ DfBDWGzcJ1+hlh94ZmLtDhrHqfvtiwoAfAz6gMUaF/0+Y1LTGlW/1nkZIHLUQ5XuSRVx0C
+ jo0t79NNfl3ji8nuOyJTGSUxJjzxMeI=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1583147217; a=rsa-sha256; cv=none;
+ b=uKo/MEYMKk4FfPrPqlScMgZ/6j1ujkC/9fRepao66a0pEOjENlKVkkrQ0kvnQfpIqfcQhH
+ Ykur1Bv5iktsBXCWDxFHXi2GD9rW6cilLN9R1GLfbI0TDZl/MDnrL9OlylCVVG7ciGxwhW
+ qKOn4SaMo/JGyPIfQ7ayNs15w2O0F3M=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=luc smtp.mailfrom=luc.michel@greensocs.com
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 5.135.226.135
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,59 +86,107 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
- Eric Auger <eric.auger.pro@gmail.com>
+Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
+ edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
+ frasse.iglesias@gmail.com, alistair@alistair23.me,
+ richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
+ philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MBIclGIuiMrI
+X-TUID: JcwTBZAZgDuy
 
-On Wed, 26 Feb 2020 at 17:37, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
->
-> Hi Eric,
+On 2/27/20 4:44 PM, Edgar E. Iglesias wrote:
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+> 
+> Add support for the Versal LPD ADMAs.
+> 
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-> Patch is easy to review but code not. By inverting the if() statement I
-> find the code easier to review.
+Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 
-
-
-> SMMUPciBus *smmu_find_smmu_pcibus(SMMUState *s, uint8_t bus_num)
-> {
->      SMMUPciBus *smmu_pci_bus =3D s->smmu_pcibus_by_bus_num[bus_num];
->      GHashTableIter iter;
->
->      if (smmu_pci_bus) {
->          return smmu_pci_bus;
+> ---
+>  hw/arm/xlnx-versal.c         | 24 ++++++++++++++++++++++++
+>  include/hw/arm/xlnx-versal.h |  6 ++++++
+>  2 files changed, 30 insertions(+)
+> 
+> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+> index 1cf3daaf4f..f9beba07ed 100644
+> --- a/hw/arm/xlnx-versal.c
+> +++ b/hw/arm/xlnx-versal.c
+> @@ -193,6 +193,29 @@ static void versal_create_gems(Versal *s, qemu_irq *pic)
 >      }
->
->      g_hash_table_iter_init(&iter, s->smmu_pcibus_by_busptr);
->      while (g_hash_table_iter_next(&iter, NULL, (void **)&smmu_pci_bus)) =
-{
->          if (pci_bus_num(smmu_pci_bus->bus) =3D=3D bus_num) {
->              s->smmu_pcibus_by_bus_num[bus_num] =3D smmu_pci_bus;
->              return smmu_pci_bus;
->          }
->      }
->
->      return NULL;
-> }
->
-> What do you think?
-
-I think I agree with Philippe here -- the current code is already
-a bit confusing in that it looks at first glance as if the "find
-the bus in the hash table" code works by falling through into
-the "we already had the cached value" code on success, but in
-fact the success case is dealt with by the return in the middle
-of the while loop and it's only the not-found case that falls
-through. Adding this patch on top fixes the bug but leaves in
-place the odd code structure that caused it. Rearranging it as
-Philippe does above makes it much clearer what's happening,
-I think.
-
-Would one of you like to submit a patch that does it that way
-round, please?
-
-thanks
--- PMM
+>  }
+>  
+> +static void versal_create_admas(Versal *s, qemu_irq *pic)
+> +{
+> +    int i;
+> +
+> +    for (i = 0; i < ARRAY_SIZE(s->lpd.iou.adma); i++) {
+> +        char *name = g_strdup_printf("adma%d", i);
+> +        DeviceState *dev;
+> +        MemoryRegion *mr;
+> +
+> +        dev = qdev_create(NULL, "xlnx.zdma");
+> +        s->lpd.iou.adma[i] = SYS_BUS_DEVICE(dev);
+> +        object_property_add_child(OBJECT(s), name, OBJECT(dev), &error_fatal);
+> +        qdev_init_nofail(dev);
+> +
+> +        mr = sysbus_mmio_get_region(s->lpd.iou.adma[i], 0);
+> +        memory_region_add_subregion(&s->mr_ps,
+> +                                    MM_ADMA_CH0 + i * MM_ADMA_CH0_SIZE, mr);
+> +
+> +        sysbus_connect_irq(s->lpd.iou.adma[i], 0, pic[VERSAL_ADMA_IRQ_0 + i]);
+> +        g_free(name);
+> +    }
+> +}
+> +
+>  /* This takes the board allocated linear DDR memory and creates aliases
+>   * for each split DDR range/aperture on the Versal address map.
+>   */
+> @@ -274,6 +297,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
+>      versal_create_apu_gic(s, pic);
+>      versal_create_uarts(s, pic);
+>      versal_create_gems(s, pic);
+> +    versal_create_admas(s, pic);
+>      versal_map_ddr(s);
+>      versal_unimp(s);
+>  
+> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
+> index d844c4ffe4..6c0a692b2f 100644
+> --- a/include/hw/arm/xlnx-versal.h
+> +++ b/include/hw/arm/xlnx-versal.h
+> @@ -22,6 +22,7 @@
+>  #define XLNX_VERSAL_NR_ACPUS   2
+>  #define XLNX_VERSAL_NR_UARTS   2
+>  #define XLNX_VERSAL_NR_GEMS    2
+> +#define XLNX_VERSAL_NR_ADMAS   8
+>  #define XLNX_VERSAL_NR_IRQS    192
+>  
+>  typedef struct Versal {
+> @@ -50,6 +51,7 @@ typedef struct Versal {
+>          struct {
+>              SysBusDevice *uart[XLNX_VERSAL_NR_UARTS];
+>              SysBusDevice *gem[XLNX_VERSAL_NR_GEMS];
+> +            SysBusDevice *adma[XLNX_VERSAL_NR_ADMAS];
+>          } iou;
+>      } lpd;
+>  
+> @@ -74,6 +76,7 @@ typedef struct Versal {
+>  #define VERSAL_GEM0_WAKE_IRQ_0     57
+>  #define VERSAL_GEM1_IRQ_0          58
+>  #define VERSAL_GEM1_WAKE_IRQ_0     59
+> +#define VERSAL_ADMA_IRQ_0          60
+>  
+>  /* Architecturally reserved IRQs suitable for virtualization.  */
+>  #define VERSAL_RSVD_IRQ_FIRST 111
+> @@ -96,6 +99,9 @@ typedef struct Versal {
+>  #define MM_GEM1                     0xff0d0000U
+>  #define MM_GEM1_SIZE                0x10000
+>  
+> +#define MM_ADMA_CH0                 0xffa80000U
+> +#define MM_ADMA_CH0_SIZE            0x10000
+> +
+>  #define MM_OCM                      0xfffc0000U
+>  #define MM_OCM_SIZE                 0x40000
+>  
+> 

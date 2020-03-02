@@ -1,100 +1,101 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2434159lfg;
-        Mon, 2 Mar 2020 05:21:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy9lEhmx+jUZMhWgUFk2fulb4UONzxZ3zEfOcbJ/Ot0p6DwzERUiJTI0XnUqIiQH5GkF8ex
-X-Received: by 2002:a37:96c6:: with SMTP id y189mr16031539qkd.150.1583155314614;
-        Mon, 02 Mar 2020 05:21:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583155314; cv=none;
+Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp2434568lfg;
+        Mon, 2 Mar 2020 05:22:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxufjFxTPQ5pIF6HRg7t23FQp7JGIWlIZBQbPlqs+tFBg5rnPKlM1QSK6njw8qGh9xM7Xjy
+X-Received: by 2002:ae9:e40e:: with SMTP id q14mr15646421qkc.419.1583155341358;
+        Mon, 02 Mar 2020 05:22:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583155341; cv=none;
         d=google.com; s=arc-20160816;
-        b=w79KkAAtjmHQrP+qae+VNs8wZFJVW3xL8/Mt94kYne4eAsw2wClGR6FhU4/KE1+VCP
-         cWqc0mxZezorf2vHTFSvfYCdmErRsnaR6UVtEUY9PaWhDCdgAfJFVfOZwrWqllINTb3O
-         uzHyBthfyjYSsAzUuCZ5VvBzj4WVY6czogttQuqwogFBJUSDiRkXBCW61FgzzsMldpzB
-         Hhue3DoMAaTl9TRwusEFM1R22qf2bxM0M8vPD6pAfTRzZw+uaEC2AIC67EMkLdKaH8B0
-         fhe3jlh2V2SvxPbUafTYcN2MxHJjGo0phsyMYoD2s4Tvbam2XJmn61/etYJ63h5Vi8tl
-         UFGA==
+        b=kccDMoKVSEyc/2R46ApdMwQjCCG3jKGYYJEi59l14ChlUKhekTUJ4svduGFzDE0nsT
+         TlkWyiRfkEgcg7F/4XfbLqXdzr1Dlp+iRBThJH5QCwyxkR9XRgMHBHNkqAqaa5UXlqSu
+         f/PNeTsFOdwDodzC5Z1ercV+pEo93kN7AuBBhPcGc2xxn+TAQkjPKazz8fzfzmRecpAU
+         0EttnM7PyazX4cCNyZIOPtRaAdjzY96mtY/CvynC6S5A1TaU/qmlr4KFRBo7xtD/2pps
+         D1rQagYDYB6he2fW1KAmHEflZhSV6aYB6mCIsmVJvk/HWIXLfcKecdDvoC6INDfb8vkl
+         +sDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=lgi8huHg7JypWseRljj3J6mY8B1BwBwq3IJ94gGxoA0=;
-        b=F1C2Zk21uvYP2cmWhZaNVD17fY+c9XXNlnnFvfchEuz6gEjfqaj1c8v+asvr3Q6go3
-         g8ua02RkmeCaSAMDkTMhF0hLCqNfdUQ9Obokv7/6mYI6RxlTEQmpRgsZMaE3UXqN0Ug8
-         7nTdX4dtT66+cgWcLYqjv2hTsbtY8l2gwoJLJYyOFjAPD4+hydd1fgruJqBzpA2YWln2
-         dlEBCW08aVP1Z5Hvz9guCrU9/0rwlYH8xb2IoqjeP5vz691Qa2y3RpTwqGpVemJdKBlL
-         56xdYE2Yi3VX2rNmgd8ZUyW8yp+aO1l5Qzhjca6HYeFnGOMNhn7OSYZLZiDzbl8SjRtK
-         HdYQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=2XcAUaTOQNOWzMmbgQ3MBenvHZtifL5/JzGKBHBsYTk=;
+        b=ElR969IeOlQauK9QxUqh2/fi+VYZRs1ym1ebuXQJcNCS5p3ZtYI2N6nERTNXHAbfEX
+         dQpAaaYSDgOcFF3zssshyiu1keRVfo1aaSxdB1+KvTHwdyEBvRMUuxeS6i65sHpD8HiL
+         6v063cJUQmBmnq/y8+mAYQMN+Ig/lQ0EbPV6To/aPKqTo00lpuPQJv9pO7kxACQmXpdD
+         55UDiiFjkVHWBNoJBDAm2LVSYRI8McNia181UQWAyBptBDqJibrE0LsZImHc4Sthx0/b
+         59oTNwHFGo0RIOLJ3U5NPpdRzsKaiLLm2sSbXfFEjyu9gsidS47UVNnMSiqr/ROMIXj5
+         Zrdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Xb2Ovmrm;
+       dkim=fail header.i=@linaro.org header.s=google header.b=xxNHkC8T;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s23si5837310qtq.163.2020.03.02.05.21.54
+        by mx.google.com with ESMTPS id g7si5648955qth.127.2020.03.02.05.22.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Mar 2020 05:21:54 -0800 (PST)
+        Mon, 02 Mar 2020 05:22:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Xb2Ovmrm;
+       dkim=fail header.i=@linaro.org header.s=google header.b=xxNHkC8T;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:32768 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:32788 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j8l18-0006eC-2H
-	for alex.bennee@linaro.org; Mon, 02 Mar 2020 08:21:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51306)
+	id 1j8l1Y-0007IS-QX
+	for alex.bennee@linaro.org; Mon, 02 Mar 2020 08:22:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51423)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j8l10-0006dx-4V
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 08:21:47 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j8l1Q-0007G5-9i
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 08:22:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j8l0y-0006sG-Tf
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 08:21:45 -0500
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:41045)
+ (envelope-from <peter.maydell@linaro.org>) id 1j8l1P-0007DG-7R
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 08:22:12 -0500
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:34119)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j8l0y-0006rf-Nv
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 08:21:44 -0500
-Received: by mail-oi1-x241.google.com with SMTP id i1so10212836oie.8
- for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 05:21:44 -0800 (PST)
+ id 1j8l1P-0007Cs-2r
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2020 08:22:11 -0500
+Received: by mail-oi1-x242.google.com with SMTP id g6so8523766oiy.1
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2020 05:22:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=lgi8huHg7JypWseRljj3J6mY8B1BwBwq3IJ94gGxoA0=;
- b=Xb2OvmrmYu9aAncfEJ3FXgchR8e6EecGnmNUXBG6Ok3T2ViMI9ws6DXys8b8jXaXXA
- /fCwfq67aZNnFJzLUFyRu8BRB3Olno2JFv+LLYDj0fTtMSvEmRWtIR43l7fiD5zCpeho
- BrnFfM1ydCr/ooWvUaB9CSa0LGj+kHAukOmREbLVr6sNbuptr+EWjnax5VDAcc87kSg7
- dIDv6x3CcUoRo6SXebg5eaNLNnkOOsAoYOBtQFOMzu8urXCXjZZjZfeTRLyxWpR2HLKm
- 63KZoWfVTD5EtGSmiqkZ6yMJJQDgJS//eO/hUUVd3BgVj9axE8pAf9qb8Pi2s0Ck9uLW
- 5HXQ==
+ :cc:content-transfer-encoding;
+ bh=2XcAUaTOQNOWzMmbgQ3MBenvHZtifL5/JzGKBHBsYTk=;
+ b=xxNHkC8TEOna7j9xp1yD9C3Ikkbj8NfNJ4aBc0IY6lan0O0XYaEthXTOt2r3HhuyNP
+ W246zcfou9Jm1XHwIKGoBtVXC+w5j/ERPSRmT8w3fBSH9/UPT8LUv+S7gJF5drR6FS6p
+ 8EkvOV5Qik4FUNCHE1XKiIf6puGNk+PeAzTpZzwMrWZtiTujEg/5shYEhNqgxkKyLPNa
+ 3z6q6f1tKaKPE++vtMNEIafae5Ni02UsTOwaAbSemJs7To6PPMBXTdDzxkQCYDjIJLYC
+ eUpgXHiamnlL4auc8rIk6Otm4GefWeyRcs0panyNQT1hHmnvqL2C+9Sex0cWoaHSJZky
+ EliA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=lgi8huHg7JypWseRljj3J6mY8B1BwBwq3IJ94gGxoA0=;
- b=KBJWzDLaWmb3fLSPjyA+4WQK7JWsLhsctPu/mUdVK39yr3y90/G3KggcfvHlOC9DDx
- zJjjzQMCwJs67Mt1xLHn1UUPaRcQ7HvVKDua184jWpD/tHlDJln668DWgfEbf/FIDgpP
- 7uKwrpMay+3cjyvKfyS93qyz7FKJviCMypRdsFvJ9GRkS3+nKGHS74pMSGtMR9TKh5rS
- nqCxfFyttegdHFVVA+4uoClqmwInh1plqXWupWcCTUuBljWx9JhPRiwMsf6e5ScsQtpl
- iUdKvD11wWCV7hm1FI8MpzjK+ZZ4SthawsxNgAdFgQ6o+2TFgD20qzjHrdvNeYU3zToc
- cnJg==
-X-Gm-Message-State: APjAAAXfSjPs6l1ZF+dvZIQxDtnl9GVyIaaHkcmzcSPniN/l9RI+FeIJ
- QHnM4lTlsw8dScpO1h3JCq+VYtZd+UuMRy5LS652bQ==
-X-Received: by 2002:aca:b2c5:: with SMTP id
- b188mr11625368oif.163.1583155303743; 
- Mon, 02 Mar 2020 05:21:43 -0800 (PST)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=2XcAUaTOQNOWzMmbgQ3MBenvHZtifL5/JzGKBHBsYTk=;
+ b=WoXZj9/xso9L+R9wONd6eMJddbHCJd3ak7Hp74ajHo+uHQpI0F56IsLC4n9aQfkS87
+ P4txxvN+Q57LJ0746vK62d1D6N5nYSvmUXZPFpvrOAWhok5ZbNYKS8g+TrQUW0VV5Uj2
+ 8yCWlCmmE/P42zVnYoxW2lxJFKMpHkPzFMNdBjK3dHJwnGn4Bl3a1SxQA7g4lFt5mrZ0
+ E5VFLE0FqhPSwFas9kzG9spGqNRpza4IbiPNl2o5FDj0RnqhB/6/1h6ALM//CK4goYR/
+ a9H4ZggHOTAfIr8YQTm6BMZGEQOq2liNoFLkt28I0ICXARM0B9LpUs4xQoX1gmpdI+Nc
+ LDtg==
+X-Gm-Message-State: APjAAAX2dvMruBENspISKYWQ5cJadVTxnOcjcUNKc8vOA2buATXjJfWQ
+ Y2T1tVTSl0TS3HHXdJH7dkSb/846BwLh+ZaXYF5EZA==
+X-Received: by 2002:aca:3d7:: with SMTP id 206mr11569695oid.98.1583155330305; 
+ Mon, 02 Mar 2020 05:22:10 -0800 (PST)
 MIME-Version: 1.0
 References: <20200227025055.14341-1-pannengyuan@huawei.com>
- <20200227025055.14341-6-pannengyuan@huawei.com>
-In-Reply-To: <20200227025055.14341-6-pannengyuan@huawei.com>
+In-Reply-To: <20200227025055.14341-1-pannengyuan@huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 2 Mar 2020 13:21:32 +0000
-Message-ID: <CAFEAcA8yvrYrBONtW46iswbEvMF-WC-j7fHOOfcoEC_RV66BkQ@mail.gmail.com>
-Subject: Re: [PATCH v3 5/6] hw/misc/mos6522: move timer_new from init() into
- realize() to avoid memleaks
+Date: Mon, 2 Mar 2020 13:21:58 +0000
+Message-ID: <CAFEAcA9stgfbRGdn0x2q38vVS9NDyysW656+XkjfyVui3OXXQw@mail.gmail.com>
+Subject: Re: [PATCH v3 0/6] delay timer_new from init to realize to fix
+ memleaks.
 To: Pan Nengyuan <pannengyuan@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::241
+X-Received-From: 2607:f8b0:4864:20::242
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,96 +108,41 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Euler Robot <euler.robot@huawei.com>, qemu-arm <qemu-arm@nongnu.org>,
- Laurent Vivier <laurent@vivier.eu>, QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
  zhanghailiang <zhang.zhanghailiang@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 876CraSk81fr
+X-TUID: rZLsx2acWMl/
 
 On Thu, 27 Feb 2020 at 02:35, Pan Nengyuan <pannengyuan@huawei.com> wrote:
 >
-> There are some memleaks when we call 'device_list_properties'. This patch move timer_new from init into realize to fix it.
-> Meanwhile, add calls to mos6522_realize() in mac_via_realize to make this move to be valid.
+> This series delay timer_new from init into realize to avoid memleaks when=
+ we call 'device_list_properties'.
+> And do timer_free only in s390x_cpu_finalize because it's hotplugable. Ho=
+wever, It's not valid in mos6522
+> if we move timer_new from init to realize, because it's never called at a=
+ll. So we also add calls to mos6522_realize()
+> in mac_via_realize to make this move to be valid.
 >
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
-> ---
-> Cc: Laurent Vivier <laurent@vivier.eu>
-> ---
-> v2->v1:
-> - no changes in this patch.
-> v3->v2:
-> - remove null check in reset, and add calls to mos6522_realize() in mac_via_realize to make this move to be valid.
+> v1:
+>    - Delay timer_new() from init() to realize() to fix memleaks.
+> v2:
+>    - Similarly to other cleanups, move timer_new into realize in target/s=
+390x/cpu.c (Suggested by Philippe Mathieu-Daud=C3=A9).
+>    - Send these two patches as a series instead of send each as a single =
+patch but with wrong subject in v1.
+> v3:
+>    - It's not valid in mos6522 if we move timer_new from init to realize,=
+ because it's never called at all.
+>      Thus, we remove null check in reset, and add calls to mos6522_realiz=
+e() in mac_via_realize to make this move to be valid.
+>    - split patch by device to make it more clear.
 
-Hi; this is really fixing two bugs in one patch:
+Hi; I've applied patches 2, 3, 4 and 6 to target-arm.next,
+since I think those ones are OK and they're all arm related.
 
-> ---
->  hw/misc/mac_via.c | 5 +++++
->  hw/misc/mos6522.c | 6 ++++++
->  2 files changed, 11 insertions(+)
->
-> diff --git a/hw/misc/mac_via.c b/hw/misc/mac_via.c
-> index b7d0012794..1d72d4ef35 100644
-> --- a/hw/misc/mac_via.c
-> +++ b/hw/misc/mac_via.c
-> @@ -879,6 +879,11 @@ static void mac_via_realize(DeviceState *dev, Error **errp)
->      sysbus_init_child_obj(OBJECT(dev), "via2", &m->mos6522_via2,
->                            sizeof(m->mos6522_via2), TYPE_MOS6522_Q800_VIA2);
->
-> +    object_property_set_bool(OBJECT(&m->mos6522_via1), true, "realized",
-> +                             &error_abort);
-> +    object_property_set_bool(OBJECT(&m->mos6522_via2), true, "realized",
-> +                             &error_abort);
-> +
->      /* Pass through mos6522 output IRQs */
->      ms = MOS6522(&m->mos6522_via1);
->      object_property_add_alias(OBJECT(dev), "irq[0]", OBJECT(ms),
-
-This is fixing a bug in mac_via where it failed to actually
-realize devices it was using. That's a dependency for the bug
-you're trying to fix, but it's a separate one and should be
-in its own patch.
-
-You also want to pass the error back up to the caller, rather
-than using error_abort. To do that, at the top of the function:
-
-    Error *err = NULL;
-
-and then here you can do:
-    object_property_set_bool(OBJECT(&m->mos6522_via1), true, "realized", &err);
-    if (err) {
-        error_propagate(errp, err);
-        return;
-    }
-
-The existing code which inits the mos6522 objects and
-calls object_property_add_alias on them which is in
-the mac_via realize function should be moved to the init
-function. (init should init child objects and set up
-properties; realize should realize them.)
-
-This is all fixing the incorrect creation of the mos6522
-devices in mac_via (which has been wrong since the mac_via
-was first added in commit 6dca62a0000f9), so that can all
-be one patch I think.
-
-> +static void mos6522_realize(DeviceState *dev, Error **errp)
-> +{
-> +    MOS6522State *s = MOS6522(dev);
->
->      s->timers[0].timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, mos6522_timer1, s);
->      s->timers[1].timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, mos6522_timer2, s);
-> @@ -502,6 +507,7 @@ static void mos6522_class_init(ObjectClass *oc, void *data)
->
->      dc->reset = mos6522_reset;
->      dc->vmsd = &vmstate_mos6522;
-> +    dc->realize = mos6522_realize;
->      device_class_set_props(dc, mos6522_properties);
->      mdc->parent_reset = dc->reset;
->      mdc->set_sr_int = mos6522_set_sr_int;
-
-The changes to hw/misc/mos_6522.c are good, but should be in
-their own patch.
+You've already got review comment for patch 1 (s390)
+and 5 (m68k mac_via/mos6522).
 
 thanks
 -- PMM

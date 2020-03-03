@@ -1,106 +1,101 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp153227lfi;
-        Tue, 3 Mar 2020 01:41:37 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vu8H0nVk7hB/gc14WJH3j1BWlBcA7nNnMufT5fgKUkDRy8eLF+yEXkU29sXfoICgI2u4soX
-X-Received: by 2002:a37:9a82:: with SMTP id c124mr3390959qke.434.1583228496861;
-        Tue, 03 Mar 2020 01:41:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583228496; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp171371lfi;
+        Tue, 3 Mar 2020 02:05:44 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vsa5jBHODEEjSOaudVLZvVzSbnWSGRMQ8YUfyB5XPXxI4AxmOPTdibNdLqj7oX8t+g3Vnor
+X-Received: by 2002:a0c:e58e:: with SMTP id t14mr3183192qvm.131.1583229944057;
+        Tue, 03 Mar 2020 02:05:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583229944; cv=none;
         d=google.com; s=arc-20160816;
-        b=QajS3pfSgNkCzuYCEBmTYMQrSx9S4sUASKMrIxBBlBhJoLCym2YnjGTnqFjdEap6UX
-         7iJi6rLT7V6ET18/3DNt8bnJwGJUPSN30MSUVOBTtcxHk1iflNn/NPTj4qyLxdXRbdp1
-         VncYFIydtghJtPrzOjkyABrpfamGlMN30JAlCqqB/krAC5PmkiS1QeMFrb6OE5JGvxaJ
-         UqnSArds9pzNsH5rCysq5/gplM8HZ3HiRt9ahm8g2BYXe73ofe2s8zWJKWUzprZD2zqo
-         g8D3VA3N7WwZY4gC6a4gZvlrqJHyP9GLmdIPgIfncjq/SvIw/+BKVANOQkbATQpfm8qd
-         EqJQ==
+        b=afvgcbybwp4tQupc2tXawWABjY8TxemCE4CnxkUtXi/GZ2m45ROASrn8oWzVS4r4C6
+         IklgRiK52sKgkAmkdXvGk9J1J3hf92tDNU29MpSAGJKM/ODZNuOBolOnsrIeqIQGRJXG
+         CSA/ULZtgcPUGZ/4C3i74+I1/ZWYOZccK+XWQ4JTi3DRAoe3049iBjQwkysPHcy4coZw
+         jJNB7FQ1ppd8mfEBDKmC/gZ3B6hcX0C5Qk5s5cPn2LW48t/AWPg5tzoWuJU+jvjdGBDt
+         9hgEKMbhnATsIcjQSHag4wN+uDYK6b6TONRP0mSLfjG3opbskW656cxquXyCGdU+KU4f
+         8Cxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=0bZsUZX3JwEsEM0cUl/sPAOimjlcxFt+l8FcLrIa9b8=;
-        b=pNs1bdB6UtIWkQrvl15I4YUcMs10CRKIXuXOtoPiBjRuuV3HMX6CsuL8rzS5+/eWZP
-         3dE3RTs88G3dibjd6BqHMl2+C02HbQu26UBQ1YXUkDbuLGQcDzuaPSN0aW2E6D0zsTFb
-         k2z/JLyRqzho1V9yjHGFgxxsC48L5MugqQUXJ6JqZQBk/nho0oqk8frcERf54ih8Vtrf
-         aitJQYEDQdn7tWg8lCz1uo/wXngxywQBUUeYk527OI5+AU3Wcj4AQh1u4WNb/ZkeCNMR
-         PH9hFCYLCiGsahiHaser/+T7TzA7vjl5v5pPNrK3o68WXBLjse4HsmJM30pL9DZc+PI+
-         D3Bg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=PbCLdVLTZ0u03HkxX8ujZ8LhLRlUovzKqITmjuVBLsk=;
+        b=VVQE5seqpPiwX2yUBqm0nEwW30AZXebfBWfpJR2a6xx27aQoHG9cDtaYpRjTQMoJ7r
+         2Cwumh+VlWbsNhRXSJhvDGp36hUawudgZsNp3oEMor7ui0xKsFaiMnBbMftqC7k1RrYN
+         wFaID/9AUu82Zn861mxVo2WrTiWFFoMovqxglDCyFJVy8JkBsFekWJy9ZoKjk3A3AsL9
+         33LmzIJ9rNUc1W/Id3ozvfItWJLWZ06pjHXCOUoU+q5r6Vco75i7PNwNgSOeTYV1iSrZ
+         Dvdbgpnkvkr/nsrUTazcWMtOa/1icOhL0k2yG8to6I//o7NeudN4MurPTOs4/u+d+WCY
+         MArQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=byEq3FOn;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nIs1NFh3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 64si7639397qkd.374.2020.03.03.01.41.36
+        by mx.google.com with ESMTPS id l11si4629091qkl.317.2020.03.03.02.05.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Mar 2020 01:41:36 -0800 (PST)
+        Tue, 03 Mar 2020 02:05:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=byEq3FOn;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nIs1NFh3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44236 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44552 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j943U-0002RX-9y
-	for alex.bennee@linaro.org; Tue, 03 Mar 2020 04:41:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48151)
+	id 1j94Qp-0004Zk-Bq
+	for alex.bennee@linaro.org; Tue, 03 Mar 2020 05:05:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51616)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j943G-0002Mt-9c
- for qemu-arm@nongnu.org; Tue, 03 Mar 2020 04:41:24 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j94QU-0004HR-7Y
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2020 05:05:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j943C-00020B-S2
- for qemu-arm@nongnu.org; Tue, 03 Mar 2020 04:41:21 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:55241
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j943C-0001zs-K2
- for qemu-arm@nongnu.org; Tue, 03 Mar 2020 04:41:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583228477;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0bZsUZX3JwEsEM0cUl/sPAOimjlcxFt+l8FcLrIa9b8=;
- b=byEq3FOnRMlKHjiER1lBBi9KLRQ21XW1msTZmnvCVifYRSwPMARL6oxaYp2yB33/yoYWXj
- 63DoFa3cZgoj/bxJ4V4Pp2VlLNXz8IvA0w3e7gZSfW5YoUK2sihXpP/KJ4YtZbhyWmDh+/
- yoaIpnwRzZrIIITr40Gt8B2B/INOYx0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-73-Ybd9wDgCP4-umTW-7IWIyw-1; Tue, 03 Mar 2020 04:41:13 -0500
-X-MC-Unique: Ybd9wDgCP4-umTW-7IWIyw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1A6BB13E2;
- Tue,  3 Mar 2020 09:41:11 +0000 (UTC)
-Received: from [10.36.116.59] (ovpn-116-59.ams2.redhat.com [10.36.116.59])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 811668D568;
- Tue,  3 Mar 2020 09:41:01 +0000 (UTC)
-Subject: Re: [PATCH v16 00/10] VIRTIO-IOMMU device
-To: Zhangfei Gao <zhangfei.gao@gmail.com>
-References: <20200214132745.23392-1-eric.auger@redhat.com>
- <20200227111717.GG1645630@redhat.com>
- <431cb39d-833c-6d02-d7b3-02b3e90446e2@redhat.com>
- <CAMj5Bkib3CTzCB02ScueFR84r28LGowF7uxYO8Ygmnj9X7oNOg@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <fea625f1-b58e-6da6-8e2a-f32fc9391fc8@redhat.com>
-Date: Tue, 3 Mar 2020 10:40:59 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ (envelope-from <peter.maydell@linaro.org>) id 1j94QP-0004Pv-UZ
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2020 05:05:22 -0500
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:52471)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j94QP-0004PN-Ha
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2020 05:05:17 -0500
+Received: by mail-wm1-x344.google.com with SMTP id p9so2392002wmc.2
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2020 02:05:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=PbCLdVLTZ0u03HkxX8ujZ8LhLRlUovzKqITmjuVBLsk=;
+ b=nIs1NFh3Sfsh9qdfGe5CL1EcxetInFIKg/KstRrucRqsNBUBjU1ERxaC2R/6SrixbC
+ oqr1vTFKYDzSsn9oZVME2Jc3n+BiycabbOFvthiIZCa6KUV/bSMLgxzELj+LaxM8TMFm
+ Fa1JBz6W/nH8pv3SiJcSwJTwt34VKt7FIKkp6vkeL2M3e2LP89sf9fGdyFW/sGw01QmY
+ 1IaHnZq5xAMOPs4eBAxQbUErzSEMxUpu7+rD8rj1pxFSTiEjNj9BIWNTU9zBt2XtxbSs
+ pKXKhKBeF1vU3oJIO260i9IPHxes4pX+FBoZob3X7EwtlUW/wIWyS7XI/iIzwbYWGKD7
+ c8Ew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=PbCLdVLTZ0u03HkxX8ujZ8LhLRlUovzKqITmjuVBLsk=;
+ b=M+pditfqKcthlLVDOELSpLODvz4PUll3WIV4fV2IT2frlWecIbpjjU4rtfCtGPEiG8
+ Z+AORazjYYYcu4jI+V1oCaHI1AabdYKikiwbWQ/8zu+RcYXb2YN0Ytk5CW4yKt4W/mbV
+ AstNSENME21qF2uYGnMGbo3gzCBBDepATia//fgPXBO7Q01hkx6ifIQio6bnAX5GDhqc
+ F1VUUsiSDH/PJ9wrx9aARJjjvdUwWSwrhy8GGjInfGfG1S8QyF3aQ1htA60JkhMzeME+
+ TKWcPVe1d/gmKfwDZ3CZCJ2AB3Gfu/Q0R6CQA4binoghml+LW5JD/jPBuOpsfNQnShtb
+ GHKQ==
+X-Gm-Message-State: ANhLgQ2DNWPn98OywvgEMgTxVwc/e48CjRsfqnUytiIURlEF1MzTlCZJ
+ 5cmZSFB56fRaGyGCy/SAa1NlOg==
+X-Received: by 2002:a1c:f21a:: with SMTP id s26mr3538175wmc.39.1583229915552; 
+ Tue, 03 Mar 2020 02:05:15 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id b10sm3106337wmh.48.2020.03.03.02.05.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Mar 2020 02:05:14 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] cpu: Use DeviceClass reset instead of a special CPUClass reset
+Date: Tue,  3 Mar 2020 10:05:11 +0000
+Message-Id: <20200303100511.5498-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <CAMj5Bkib3CTzCB02ScueFR84r28LGowF7uxYO8Ygmnj9X7oNOg@mail.gmail.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::344
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,115 +107,1087 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, kevin.tian@intel.com,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- kenneth-lee-2012@foxmail.com, tnowicki@marvell.com,
- "Michael S. Tsirkin" <mst@redhat.com>, quintela@redhat.com,
- zhangfei.gao@foxmail.com, qemu-devel@nongnu.org, peterx@redhat.com,
- dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- "Wangzhou \(B\)" <wangzhou1@hisilicon.com>, jean-philippe@linaro.org,
- eric.auger.pro@gmail.com
+Cc: Chris Wulff <crwulff@gmail.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Marek Vasut <marex@denx.de>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ qemu-ppc@nongnu.org, Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l22MPl9xJDnN
+X-TUID: nEXojGIAU0dg
 
-Hi Zhangfei,
-On 3/3/20 4:23 AM, Zhangfei Gao wrote:
-> Hi Eric
->=20
-> On Thu, Feb 27, 2020 at 9:50 PM Auger Eric <eric.auger@redhat.com> wrote:
->>
->> Hi Daniel,
->>
->> On 2/27/20 12:17 PM, Daniel P. Berrang=C3=A9 wrote:
->>> On Fri, Feb 14, 2020 at 02:27:35PM +0100, Eric Auger wrote:
->>>> This series implements the QEMU virtio-iommu device.
->>>>
->>>> This matches the v0.12 spec (voted) and the corresponding
->>>> virtio-iommu driver upstreamed in 5.3. All kernel dependencies
->>>> are resolved for DT integration. The virtio-iommu can be
->>>> instantiated in ARM virt using:
->>>>
->>>> "-device virtio-iommu-pci".
->>>
->>> Is there any more documentation besides this ?
->>
->> not yet in qemu.
->>>
->>> I'm wondering on the intended usage of this, and its relation
->>> or pros/cons vs other iommu devices
->>
->> Maybe if you want to catch up on the topic, looking at the very first
->> kernel RFC may be a good starting point. Motivation, pros & cons were
->> discussed in that thread (hey, April 2017!)
->> https://lists.linuxfoundation.org/pipermail/iommu/2017-April/021217.html
->>
->> on ARM we have SMMUv3 emulation. But the VFIO integration is not
->> possible because SMMU does not have any "caching mode" and my nested
->> paging kernel series is blocked. So the only solution to integrate with
->> VFIO is looming virtio-iommu.
->>
->> In general the pros that were put forward are: virtio-iommu is
->> architecture agnostic, removes the burden to accurately model complex
->> device states, driver can support virtualization specific optimizations
->> without being constrained by production driver maintenance. Cons is perf
->> and mem footprint if we do not consider any optimization.
->>
->> You can have a look at
->>
->> http://events17.linuxfoundation.org/sites/events/files/slides/viommu_arm=
-.pdf
->>
-> Thanks for the patches.
->=20
-> Could I ask one question?
-> To support vSVA and pasid in guest, which direction you recommend,
-> virtio-iommu or vSMMU (your nested paging)
->=20
-> Do we still have any obstacles?
-you can ask the question but not sure I can answer ;-)
+The CPUClass has a 'reset' method.  This is a legacy from when
+TYPE_CPU used not to inherit from TYPE_DEVICE.  We don't need it any
+more, as we can simply use the TYPE_DEVICE reset.  The 'cpu_reset()'
+function is kept as the API which most places use to reset a CPU; it
+is now a wrapper which calls device_cold_reset() and then the
+tracepoint function.
 
-1) SMMUv3 2stage implementation is blocked by Will at kernel level.
+This change should not cause CPU objects to be reset more often
+than they are at the moment, because:
+ * nobody is directly calling device_cold_reset() or
+   qdev_reset_all() on CPU objects
+ * no CPU object is on a qbus, so they will not be reset either
+   by somebody calling qbus_reset_all()/bus_cold_reset(), or
+   by the main "reset sysbus and everything in the qbus tree"
+   reset that most devices are reset by
 
-Despite this situation I may/can respin as Marvell said they were
-interested in this effort. If you are also interested in (I know you
-tested it several times and I am grateful to you for that), please reply
-to:
-[PATCH v9 00/14] SMMUv3 Nested Stage Setup (IOMMU part)
-(https://patchwork.kernel.org/cover/11039871/) and say you are
-interested in that work so that maintainers are aware there are
-potential users.
+Note that this does not change the need for each machine or whatever
+to use qemu_register_reset() to arrange to call cpu_reset() -- that
+is necessary because CPU objects are not on any qbus, so they don't
+get reset when the qbus tree rooted at the sysbus bus is reset, and
+this isn't being changed here.
 
-At the moment I have not supported multiple CDs because it introduced
-other dependencies.
+All the changes to the files under target/ were made using the
+included Coccinelle script, except:
 
-2) virtio-iommu
+(1) the deletion of the now-inaccurate and not terribly useful
+"CPUClass::reset" comments was done with a perl one-liner afterwards:
+  perl -n -i -e '/ CPUClass::reset/ or print' target/*/*.c
 
-So only virtio-iommu dt boot on machvirt is currently supported. For non
-DT, Jean respinned his kernel series
-"[PATCH v2 0/3] virtio-iommu on x86 and non-devicetree platforms" as you
-may know. However non DT integration still is controversial. Michael is
-pushing for putting the binding info the PCI config space. Joerg
-yesterday challenged this solution and said he would prefer ACPI
-integration. ACPI support depends on ACPI spec update & vote anyway.
+(2) this bit of the s390 change was done by hand, because the
+Coccinelle script is not sophisticated enough to handle the
+parent_reset call being inside another function:
 
-To support PASID at virtio-iommu level you also need virtio-iommu API
-extensions to be proposed and written + kernel works. So that's a long
-road. I will let Jean-Philippe comment on that.
+| @@ -96,8 +96,9 @@ static void s390_cpu_reset(CPUState *s, cpu_reset_type type)
+|     S390CPU *cpu = S390_CPU(s);
+|     S390CPUClass *scc = S390_CPU_GET_CLASS(cpu);
+|     CPUS390XState *env = &cpu->env;
+|+    DeviceState *dev = DEVICE(s);
+|
+|-    scc->parent_reset(s);
+|+    scc->parent_reset(dev);
+|     cpu->env.sigp_order = 0;
+|     s390_cpu_set_state(S390_CPU_STATE_STOPPED, cpu);
 
-I would just say that Intel is working on nested paging solution with
-their emulated intel-iommu. We can help them getting that upstream and
-partly benefit from this work.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Testing was by 'make check' and 'make check-acceptance'.
 
-> Would you mind give some breakdown.
-> Jean mentioned PASID still not supported in QEMU.
-Do you mean support of multiple CDs in the emulated SMMU? That's a thing
-I could implement quite easily. What is more tricky is how to test it.
+I need this patch as a preliminary to some arm stuff I'm
+doing, but I think it makes sense as a cleanup in its own
+right so I'm sending it out early for review. If it's not
+yet in master before I get round to finishing the stuff
+that depends on it I'll resend it as part of that series.
+---
+ include/hw/core/cpu.h              |  6 ----
+ target/alpha/cpu-qom.h             |  2 +-
+ target/arm/cpu-qom.h               |  2 +-
+ target/cris/cpu-qom.h              |  2 +-
+ target/hppa/cpu-qom.h              |  2 +-
+ target/i386/cpu-qom.h              |  2 +-
+ target/lm32/cpu-qom.h              |  2 +-
+ target/m68k/cpu-qom.h              |  2 +-
+ target/microblaze/cpu-qom.h        |  2 +-
+ target/mips/cpu-qom.h              |  2 +-
+ target/moxie/cpu.h                 |  2 +-
+ target/nios2/cpu.h                 |  2 +-
+ target/openrisc/cpu.h              |  2 +-
+ target/ppc/cpu-qom.h               |  2 +-
+ target/riscv/cpu.h                 |  2 +-
+ target/s390x/cpu-qom.h             |  2 +-
+ target/sh4/cpu-qom.h               |  2 +-
+ target/sparc/cpu-qom.h             |  2 +-
+ target/tilegx/cpu.h                |  2 +-
+ target/tricore/cpu-qom.h           |  2 +-
+ target/xtensa/cpu-qom.h            |  2 +-
+ hw/core/cpu.c                      | 19 +++---------
+ target/arm/cpu.c                   |  8 ++---
+ target/cris/cpu.c                  |  8 ++---
+ target/i386/cpu.c                  |  8 ++---
+ target/lm32/cpu.c                  |  8 ++---
+ target/m68k/cpu.c                  |  8 ++---
+ target/microblaze/cpu.c            |  8 ++---
+ target/mips/cpu.c                  |  8 ++---
+ target/moxie/cpu.c                 |  7 +++--
+ target/nios2/cpu.c                 |  8 ++---
+ target/openrisc/cpu.c              |  8 ++---
+ target/ppc/translate_init.inc.c    |  8 ++---
+ target/riscv/cpu.c                 |  7 +++--
+ target/s390x/cpu.c                 |  8 +++--
+ target/sh4/cpu.c                   |  8 ++---
+ target/sparc/cpu.c                 |  8 ++---
+ target/tilegx/cpu.c                |  7 +++--
+ target/tricore/cpu.c               |  7 +++--
+ target/xtensa/cpu.c                |  8 ++---
+ scripts/coccinelle/cpu-reset.cocci | 47 ++++++++++++++++++++++++++++++
+ 41 files changed, 144 insertions(+), 108 deletions(-)
+ create mode 100644 scripts/coccinelle/cpu-reset.cocci
 
-Thanks
-
-Eric
->=20
-> Thanks
->=20
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 73e9a869a41..88ee543722d 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -79,7 +79,6 @@ struct TranslationBlock;
+  * @class_by_name: Callback to map -cpu command line model name to an
+  * instantiatable CPU type.
+  * @parse_features: Callback to parse command line arguments.
+- * @reset: Callback to reset the #CPUState to its initial state.
+  * @reset_dump_flags: #CPUDumpFlags to use for reset logging.
+  * @has_work: Callback for checking if there is work to do.
+  * @do_interrupt: Callback for interrupt handling.
+@@ -165,7 +164,6 @@ typedef struct CPUClass {
+     ObjectClass *(*class_by_name)(const char *cpu_model);
+     void (*parse_features)(const char *typename, char *str, Error **errp);
+ 
+-    void (*reset)(CPUState *cpu);
+     int reset_dump_flags;
+     bool (*has_work)(CPUState *cpu);
+     void (*do_interrupt)(CPUState *cpu);
+@@ -1135,10 +1133,6 @@ void cpu_exec_unrealizefn(CPUState *cpu);
+  */
+ bool target_words_bigendian(void);
+ 
+-void cpu_class_set_parent_reset(CPUClass *cc,
+-                                void (*child_reset)(CPUState *cpu),
+-                                void (**parent_reset)(CPUState *cpu));
+-
+ #ifdef NEED_CPU_H
+ 
+ #ifdef CONFIG_SOFTMMU
+diff --git a/target/alpha/cpu-qom.h b/target/alpha/cpu-qom.h
+index 6f0a0adb9ef..08832fa7672 100644
+--- a/target/alpha/cpu-qom.h
++++ b/target/alpha/cpu-qom.h
+@@ -44,7 +44,7 @@ typedef struct AlphaCPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ } AlphaCPUClass;
+ 
+ typedef struct AlphaCPU AlphaCPU;
+diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
+index 3a9d31ea9df..d95568bf052 100644
+--- a/target/arm/cpu-qom.h
++++ b/target/arm/cpu-qom.h
+@@ -51,7 +51,7 @@ typedef struct ARMCPUClass {
+ 
+     const ARMCPUInfo *info;
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ } ARMCPUClass;
+ 
+ typedef struct ARMCPU ARMCPU;
+diff --git a/target/cris/cpu-qom.h b/target/cris/cpu-qom.h
+index 308c1f95bdf..f1de6041dcb 100644
+--- a/target/cris/cpu-qom.h
++++ b/target/cris/cpu-qom.h
+@@ -45,7 +45,7 @@ typedef struct CRISCPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ 
+     uint32_t vr;
+ } CRISCPUClass;
+diff --git a/target/hppa/cpu-qom.h b/target/hppa/cpu-qom.h
+index 6367dc47939..b1f60454953 100644
+--- a/target/hppa/cpu-qom.h
++++ b/target/hppa/cpu-qom.h
+@@ -44,7 +44,7 @@ typedef struct HPPACPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ } HPPACPUClass;
+ 
+ typedef struct HPPACPU HPPACPU;
+diff --git a/target/i386/cpu-qom.h b/target/i386/cpu-qom.h
+index 0efab2fc670..3e96f8d668e 100644
+--- a/target/i386/cpu-qom.h
++++ b/target/i386/cpu-qom.h
+@@ -71,7 +71,7 @@ typedef struct X86CPUClass {
+ 
+     DeviceRealize parent_realize;
+     DeviceUnrealize parent_unrealize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ } X86CPUClass;
+ 
+ typedef struct X86CPU X86CPU;
+diff --git a/target/lm32/cpu-qom.h b/target/lm32/cpu-qom.h
+index dc9ac9ac9f7..bdedb3759ac 100644
+--- a/target/lm32/cpu-qom.h
++++ b/target/lm32/cpu-qom.h
+@@ -44,7 +44,7 @@ typedef struct LM32CPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ } LM32CPUClass;
+ 
+ typedef struct LM32CPU LM32CPU;
+diff --git a/target/m68k/cpu-qom.h b/target/m68k/cpu-qom.h
+index b56da8a2137..88b11b60f13 100644
+--- a/target/m68k/cpu-qom.h
++++ b/target/m68k/cpu-qom.h
+@@ -44,7 +44,7 @@ typedef struct M68kCPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ } M68kCPUClass;
+ 
+ typedef struct M68kCPU M68kCPU;
+diff --git a/target/microblaze/cpu-qom.h b/target/microblaze/cpu-qom.h
+index 49b07cc697b..053ba44ee8c 100644
+--- a/target/microblaze/cpu-qom.h
++++ b/target/microblaze/cpu-qom.h
+@@ -44,7 +44,7 @@ typedef struct MicroBlazeCPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ } MicroBlazeCPUClass;
+ 
+ typedef struct MicroBlazeCPU MicroBlazeCPU;
+diff --git a/target/mips/cpu-qom.h b/target/mips/cpu-qom.h
+index a430c0fe4bb..9d0df6c034b 100644
+--- a/target/mips/cpu-qom.h
++++ b/target/mips/cpu-qom.h
+@@ -48,7 +48,7 @@ typedef struct MIPSCPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+     const struct mips_def_t *cpu_def;
+ } MIPSCPUClass;
+ 
+diff --git a/target/moxie/cpu.h b/target/moxie/cpu.h
+index 01dca548e5d..455553b794a 100644
+--- a/target/moxie/cpu.h
++++ b/target/moxie/cpu.h
+@@ -69,7 +69,7 @@ typedef struct MoxieCPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ } MoxieCPUClass;
+ 
+ /**
+diff --git a/target/nios2/cpu.h b/target/nios2/cpu.h
+index 78f633f9703..4dddf9c3a10 100644
+--- a/target/nios2/cpu.h
++++ b/target/nios2/cpu.h
+@@ -50,7 +50,7 @@ typedef struct Nios2CPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ } Nios2CPUClass;
+ 
+ #define TARGET_HAS_ICE 1
+diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
+index 0ad02eab794..e7fb06445eb 100644
+--- a/target/openrisc/cpu.h
++++ b/target/openrisc/cpu.h
+@@ -48,7 +48,7 @@ typedef struct OpenRISCCPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ } OpenRISCCPUClass;
+ 
+ #define TARGET_INSN_START_EXTRA_WORDS 1
+diff --git a/target/ppc/cpu-qom.h b/target/ppc/cpu-qom.h
+index e499575dc87..b5281317611 100644
+--- a/target/ppc/cpu-qom.h
++++ b/target/ppc/cpu-qom.h
+@@ -166,7 +166,7 @@ typedef struct PowerPCCPUClass {
+ 
+     DeviceRealize parent_realize;
+     DeviceUnrealize parent_unrealize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+     void (*parent_parse_features)(const char *type, char *str, Error **errp);
+ 
+     uint32_t pvr;
+diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+index de0a8d893a3..10aabead499 100644
+--- a/target/riscv/cpu.h
++++ b/target/riscv/cpu.h
+@@ -185,7 +185,7 @@ typedef struct RISCVCPUClass {
+     CPUClass parent_class;
+     /*< public >*/
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ } RISCVCPUClass;
+ 
+ /**
+diff --git a/target/s390x/cpu-qom.h b/target/s390x/cpu-qom.h
+index dbe5346ec90..1630818c280 100644
+--- a/target/s390x/cpu-qom.h
++++ b/target/s390x/cpu-qom.h
+@@ -61,7 +61,7 @@ typedef struct S390CPUClass {
+     const char *desc;
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+     void (*load_normal)(CPUState *cpu);
+     void (*reset)(CPUState *cpu, cpu_reset_type type);
+ } S390CPUClass;
+diff --git a/target/sh4/cpu-qom.h b/target/sh4/cpu-qom.h
+index 0c56d055bad..72a63f3fd3f 100644
+--- a/target/sh4/cpu-qom.h
++++ b/target/sh4/cpu-qom.h
+@@ -51,7 +51,7 @@ typedef struct SuperHCPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ 
+     uint32_t pvr;
+     uint32_t prr;
+diff --git a/target/sparc/cpu-qom.h b/target/sparc/cpu-qom.h
+index 7442e2768e8..8b4d33c21e5 100644
+--- a/target/sparc/cpu-qom.h
++++ b/target/sparc/cpu-qom.h
+@@ -49,7 +49,7 @@ typedef struct SPARCCPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+     sparc_def_t *cpu_def;
+ } SPARCCPUClass;
+ 
+diff --git a/target/tilegx/cpu.h b/target/tilegx/cpu.h
+index 9cbec247d23..193b6bbccba 100644
+--- a/target/tilegx/cpu.h
++++ b/target/tilegx/cpu.h
+@@ -118,7 +118,7 @@ typedef struct TileGXCPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ } TileGXCPUClass;
+ 
+ /**
+diff --git a/target/tricore/cpu-qom.h b/target/tricore/cpu-qom.h
+index 7c1e130b4ed..cd819e6f240 100644
+--- a/target/tricore/cpu-qom.h
++++ b/target/tricore/cpu-qom.h
+@@ -36,7 +36,7 @@ typedef struct TriCoreCPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ } TriCoreCPUClass;
+ 
+ typedef struct TriCoreCPU TriCoreCPU;
+diff --git a/target/xtensa/cpu-qom.h b/target/xtensa/cpu-qom.h
+index 9ac54241bd6..3ea93ce1f93 100644
+--- a/target/xtensa/cpu-qom.h
++++ b/target/xtensa/cpu-qom.h
+@@ -56,7 +56,7 @@ typedef struct XtensaCPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+-    void (*parent_reset)(CPUState *cpu);
++    DeviceReset parent_reset;
+ 
+     const XtensaConfig *config;
+ } XtensaCPUClass;
+diff --git a/hw/core/cpu.c b/hw/core/cpu.c
+index fe65ca62ace..b889878f3cc 100644
+--- a/hw/core/cpu.c
++++ b/hw/core/cpu.c
+@@ -239,27 +239,16 @@ void cpu_dump_statistics(CPUState *cpu, int flags)
+     }
+ }
+ 
+-void cpu_class_set_parent_reset(CPUClass *cc,
+-                                void (*child_reset)(CPUState *cpu),
+-                                void (**parent_reset)(CPUState *cpu))
+-{
+-    *parent_reset = cc->reset;
+-    cc->reset = child_reset;
+-}
+-
+ void cpu_reset(CPUState *cpu)
+ {
+-    CPUClass *klass = CPU_GET_CLASS(cpu);
+-
+-    if (klass->reset != NULL) {
+-        (*klass->reset)(cpu);
+-    }
++    device_cold_reset(DEVICE(cpu));
+ 
+     trace_guest_cpu_reset(cpu);
+ }
+ 
+-static void cpu_common_reset(CPUState *cpu)
++static void cpu_common_reset(DeviceState *dev)
+ {
++    CPUState *cpu = CPU(dev);
+     CPUClass *cc = CPU_GET_CLASS(cpu);
+ 
+     if (qemu_loglevel_mask(CPU_LOG_RESET)) {
+@@ -419,7 +408,6 @@ static void cpu_class_init(ObjectClass *klass, void *data)
+     CPUClass *k = CPU_CLASS(klass);
+ 
+     k->parse_features = cpu_common_parse_features;
+-    k->reset = cpu_common_reset;
+     k->get_arch_id = cpu_common_get_arch_id;
+     k->has_work = cpu_common_has_work;
+     k->get_paging_enabled = cpu_common_get_paging_enabled;
+@@ -440,6 +428,7 @@ static void cpu_class_init(ObjectClass *klass, void *data)
+     set_bit(DEVICE_CATEGORY_CPU, dc->categories);
+     dc->realize = cpu_common_realizefn;
+     dc->unrealize = cpu_common_unrealizefn;
++    dc->reset = cpu_common_reset;
+     device_class_set_props(dc, cpu_common_props);
+     /*
+      * Reason: CPUs still need special care by board code: wiring up
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index e6016e33cec..56cd3d725b1 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -155,14 +155,14 @@ static void cp_reg_check_reset(gpointer key, gpointer value,  gpointer opaque)
+     assert(oldvalue == newvalue);
+ }
+ 
+-/* CPUClass::reset() */
+-static void arm_cpu_reset(CPUState *s)
++static void arm_cpu_reset(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     ARMCPU *cpu = ARM_CPU(s);
+     ARMCPUClass *acc = ARM_CPU_GET_CLASS(cpu);
+     CPUARMState *env = &cpu->env;
+ 
+-    acc->parent_reset(s);
++    acc->parent_reset(dev);
+ 
+     memset(env, 0, offsetof(CPUARMState, end_reset_fields));
+ 
+@@ -2804,7 +2804,7 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+                                     &acc->parent_realize);
+ 
+     device_class_set_props(dc, arm_cpu_properties);
+-    cpu_class_set_parent_reset(cc, arm_cpu_reset, &acc->parent_reset);
++    device_class_set_parent_reset(dc, arm_cpu_reset, &acc->parent_reset);
+ 
+     cc->class_by_name = arm_cpu_class_by_name;
+     cc->has_work = arm_cpu_has_work;
+diff --git a/target/cris/cpu.c b/target/cris/cpu.c
+index 17c6712e298..cff6b9eabf6 100644
+--- a/target/cris/cpu.c
++++ b/target/cris/cpu.c
+@@ -40,15 +40,15 @@ static bool cris_cpu_has_work(CPUState *cs)
+     return cs->interrupt_request & (CPU_INTERRUPT_HARD | CPU_INTERRUPT_NMI);
+ }
+ 
+-/* CPUClass::reset() */
+-static void cris_cpu_reset(CPUState *s)
++static void cris_cpu_reset(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     CRISCPU *cpu = CRIS_CPU(s);
+     CRISCPUClass *ccc = CRIS_CPU_GET_CLASS(cpu);
+     CPUCRISState *env = &cpu->env;
+     uint32_t vr;
+ 
+-    ccc->parent_reset(s);
++    ccc->parent_reset(dev);
+ 
+     vr = env->pregs[PR_VR];
+     memset(env, 0, offsetof(CPUCRISState, end_reset_fields));
+@@ -264,7 +264,7 @@ static void cris_cpu_class_init(ObjectClass *oc, void *data)
+     device_class_set_parent_realize(dc, cris_cpu_realizefn,
+                                     &ccc->parent_realize);
+ 
+-    cpu_class_set_parent_reset(cc, cris_cpu_reset, &ccc->parent_reset);
++    device_class_set_parent_reset(dc, cris_cpu_reset, &ccc->parent_reset);
+ 
+     cc->class_by_name = cris_cpu_class_by_name;
+     cc->has_work = cris_cpu_has_work;
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index 92fafa26591..d18bf983237 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -5855,9 +5855,9 @@ void cpu_x86_cpuid(CPUX86State *env, uint32_t index, uint32_t count,
+     }
+ }
+ 
+-/* CPUClass::reset() */
+-static void x86_cpu_reset(CPUState *s)
++static void x86_cpu_reset(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     X86CPU *cpu = X86_CPU(s);
+     X86CPUClass *xcc = X86_CPU_GET_CLASS(cpu);
+     CPUX86State *env = &cpu->env;
+@@ -5865,7 +5865,7 @@ static void x86_cpu_reset(CPUState *s)
+     uint64_t xcr0;
+     int i;
+ 
+-    xcc->parent_reset(s);
++    xcc->parent_reset(dev);
+ 
+     memset(env, 0, offsetof(CPUX86State, end_reset_fields));
+ 
+@@ -7169,7 +7169,7 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
+                                       &xcc->parent_unrealize);
+     device_class_set_props(dc, x86_cpu_properties);
+ 
+-    cpu_class_set_parent_reset(cc, x86_cpu_reset, &xcc->parent_reset);
++    device_class_set_parent_reset(dc, x86_cpu_reset, &xcc->parent_reset);
+     cc->reset_dump_flags = CPU_DUMP_FPU | CPU_DUMP_CCOP;
+ 
+     cc->class_by_name = x86_cpu_class_by_name;
+diff --git a/target/lm32/cpu.c b/target/lm32/cpu.c
+index 687bf35e658..c50ad5fa15a 100644
+--- a/target/lm32/cpu.c
++++ b/target/lm32/cpu.c
+@@ -99,14 +99,14 @@ static bool lm32_cpu_has_work(CPUState *cs)
+     return cs->interrupt_request & CPU_INTERRUPT_HARD;
+ }
+ 
+-/* CPUClass::reset() */
+-static void lm32_cpu_reset(CPUState *s)
++static void lm32_cpu_reset(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     LM32CPU *cpu = LM32_CPU(s);
+     LM32CPUClass *lcc = LM32_CPU_GET_CLASS(cpu);
+     CPULM32State *env = &cpu->env;
+ 
+-    lcc->parent_reset(s);
++    lcc->parent_reset(dev);
+ 
+     /* reset cpu state */
+     memset(env, 0, offsetof(CPULM32State, end_reset_fields));
+@@ -218,7 +218,7 @@ static void lm32_cpu_class_init(ObjectClass *oc, void *data)
+ 
+     device_class_set_parent_realize(dc, lm32_cpu_realizefn,
+                                     &lcc->parent_realize);
+-    cpu_class_set_parent_reset(cc, lm32_cpu_reset, &lcc->parent_reset);
++    device_class_set_parent_reset(dc, lm32_cpu_reset, &lcc->parent_reset);
+ 
+     cc->class_by_name = lm32_cpu_class_by_name;
+     cc->has_work = lm32_cpu_has_work;
+diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
+index f0653cda2ff..9445fcd6df5 100644
+--- a/target/m68k/cpu.c
++++ b/target/m68k/cpu.c
+@@ -41,16 +41,16 @@ static void m68k_set_feature(CPUM68KState *env, int feature)
+     env->features |= (1u << feature);
+ }
+ 
+-/* CPUClass::reset() */
+-static void m68k_cpu_reset(CPUState *s)
++static void m68k_cpu_reset(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     M68kCPU *cpu = M68K_CPU(s);
+     M68kCPUClass *mcc = M68K_CPU_GET_CLASS(cpu);
+     CPUM68KState *env = &cpu->env;
+     floatx80 nan = floatx80_default_nan(NULL);
+     int i;
+ 
+-    mcc->parent_reset(s);
++    mcc->parent_reset(dev);
+ 
+     memset(env, 0, offsetof(CPUM68KState, end_reset_fields));
+ #ifdef CONFIG_SOFTMMU
+@@ -273,7 +273,7 @@ static void m68k_cpu_class_init(ObjectClass *c, void *data)
+ 
+     device_class_set_parent_realize(dc, m68k_cpu_realizefn,
+                                     &mcc->parent_realize);
+-    cpu_class_set_parent_reset(cc, m68k_cpu_reset, &mcc->parent_reset);
++    device_class_set_parent_reset(dc, m68k_cpu_reset, &mcc->parent_reset);
+ 
+     cc->class_by_name = m68k_cpu_class_by_name;
+     cc->has_work = m68k_cpu_has_work;
+diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+index 8c90110e525..a2c2f271dfa 100644
+--- a/target/microblaze/cpu.c
++++ b/target/microblaze/cpu.c
+@@ -102,14 +102,14 @@ static void microblaze_cpu_set_irq(void *opaque, int irq, int level)
+ }
+ #endif
+ 
+-/* CPUClass::reset() */
+-static void mb_cpu_reset(CPUState *s)
++static void mb_cpu_reset(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     MicroBlazeCPU *cpu = MICROBLAZE_CPU(s);
+     MicroBlazeCPUClass *mcc = MICROBLAZE_CPU_GET_CLASS(cpu);
+     CPUMBState *env = &cpu->env;
+ 
+-    mcc->parent_reset(s);
++    mcc->parent_reset(dev);
+ 
+     memset(env, 0, offsetof(CPUMBState, end_reset_fields));
+     env->res_addr = RES_ADDR_NONE;
+@@ -292,7 +292,7 @@ static void mb_cpu_class_init(ObjectClass *oc, void *data)
+ 
+     device_class_set_parent_realize(dc, mb_cpu_realizefn,
+                                     &mcc->parent_realize);
+-    cpu_class_set_parent_reset(cc, mb_cpu_reset, &mcc->parent_reset);
++    device_class_set_parent_reset(dc, mb_cpu_reset, &mcc->parent_reset);
+ 
+     cc->class_by_name = mb_cpu_class_by_name;
+     cc->has_work = mb_cpu_has_work;
+diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+index 6cd6b9650ba..e86cd065483 100644
+--- a/target/mips/cpu.c
++++ b/target/mips/cpu.c
+@@ -96,14 +96,14 @@ static bool mips_cpu_has_work(CPUState *cs)
+     return has_work;
+ }
+ 
+-/* CPUClass::reset() */
+-static void mips_cpu_reset(CPUState *s)
++static void mips_cpu_reset(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     MIPSCPU *cpu = MIPS_CPU(s);
+     MIPSCPUClass *mcc = MIPS_CPU_GET_CLASS(cpu);
+     CPUMIPSState *env = &cpu->env;
+ 
+-    mcc->parent_reset(s);
++    mcc->parent_reset(dev);
+ 
+     memset(env, 0, offsetof(CPUMIPSState, end_reset_fields));
+ 
+@@ -189,7 +189,7 @@ static void mips_cpu_class_init(ObjectClass *c, void *data)
+ 
+     device_class_set_parent_realize(dc, mips_cpu_realizefn,
+                                     &mcc->parent_realize);
+-    cpu_class_set_parent_reset(cc, mips_cpu_reset, &mcc->parent_reset);
++    device_class_set_parent_reset(dc, mips_cpu_reset, &mcc->parent_reset);
+ 
+     cc->class_by_name = mips_cpu_class_by_name;
+     cc->has_work = mips_cpu_has_work;
+diff --git a/target/moxie/cpu.c b/target/moxie/cpu.c
+index cf47bc709b5..6e0443ccb73 100644
+--- a/target/moxie/cpu.c
++++ b/target/moxie/cpu.c
+@@ -35,13 +35,14 @@ static bool moxie_cpu_has_work(CPUState *cs)
+     return cs->interrupt_request & CPU_INTERRUPT_HARD;
+ }
+ 
+-static void moxie_cpu_reset(CPUState *s)
++static void moxie_cpu_reset(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     MoxieCPU *cpu = MOXIE_CPU(s);
+     MoxieCPUClass *mcc = MOXIE_CPU_GET_CLASS(cpu);
+     CPUMoxieState *env = &cpu->env;
+ 
+-    mcc->parent_reset(s);
++    mcc->parent_reset(dev);
+ 
+     memset(env, 0, offsetof(CPUMoxieState, end_reset_fields));
+     env->pc = 0x1000;
+@@ -101,7 +102,7 @@ static void moxie_cpu_class_init(ObjectClass *oc, void *data)
+ 
+     device_class_set_parent_realize(dc, moxie_cpu_realizefn,
+                                     &mcc->parent_realize);
+-    cpu_class_set_parent_reset(cc, moxie_cpu_reset, &mcc->parent_reset);
++    device_class_set_parent_reset(dc, moxie_cpu_reset, &mcc->parent_reset);
+ 
+     cc->class_by_name = moxie_cpu_class_by_name;
+ 
+diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
+index 1c0c855a6f0..0a4075949e5 100644
+--- a/target/nios2/cpu.c
++++ b/target/nios2/cpu.c
+@@ -39,9 +39,9 @@ static bool nios2_cpu_has_work(CPUState *cs)
+     return cs->interrupt_request & (CPU_INTERRUPT_HARD | CPU_INTERRUPT_NMI);
+ }
+ 
+-/* CPUClass::reset() */
+-static void nios2_cpu_reset(CPUState *cs)
++static void nios2_cpu_reset(DeviceState *dev)
+ {
++    CPUState *cs = CPU(dev);
+     Nios2CPU *cpu = NIOS2_CPU(cs);
+     Nios2CPUClass *ncc = NIOS2_CPU_GET_CLASS(cpu);
+     CPUNios2State *env = &cpu->env;
+@@ -51,7 +51,7 @@ static void nios2_cpu_reset(CPUState *cs)
+         log_cpu_state(cs, 0);
+     }
+ 
+-    ncc->parent_reset(cs);
++    ncc->parent_reset(dev);
+ 
+     memset(env->regs, 0, sizeof(uint32_t) * NUM_CORE_REGS);
+     env->regs[R_PC] = cpu->reset_addr;
+@@ -188,7 +188,7 @@ static void nios2_cpu_class_init(ObjectClass *oc, void *data)
+     device_class_set_parent_realize(dc, nios2_cpu_realizefn,
+                                     &ncc->parent_realize);
+     device_class_set_props(dc, nios2_properties);
+-    cpu_class_set_parent_reset(cc, nios2_cpu_reset, &ncc->parent_reset);
++    device_class_set_parent_reset(dc, nios2_cpu_reset, &ncc->parent_reset);
+ 
+     cc->class_by_name = nios2_cpu_class_by_name;
+     cc->has_work = nios2_cpu_has_work;
+diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+index 5cd04dafab6..5528c0918f4 100644
+--- a/target/openrisc/cpu.c
++++ b/target/openrisc/cpu.c
+@@ -41,13 +41,13 @@ static void openrisc_disas_set_info(CPUState *cpu, disassemble_info *info)
+     info->print_insn = print_insn_or1k;
+ }
+ 
+-/* CPUClass::reset() */
+-static void openrisc_cpu_reset(CPUState *s)
++static void openrisc_cpu_reset(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     OpenRISCCPU *cpu = OPENRISC_CPU(s);
+     OpenRISCCPUClass *occ = OPENRISC_CPU_GET_CLASS(cpu);
+ 
+-    occ->parent_reset(s);
++    occ->parent_reset(dev);
+ 
+     memset(&cpu->env, 0, offsetof(CPUOpenRISCState, end_reset_fields));
+ 
+@@ -150,7 +150,7 @@ static void openrisc_cpu_class_init(ObjectClass *oc, void *data)
+ 
+     device_class_set_parent_realize(dc, openrisc_cpu_realizefn,
+                                     &occ->parent_realize);
+-    cpu_class_set_parent_reset(cc, openrisc_cpu_reset, &occ->parent_reset);
++    device_class_set_parent_reset(dc, openrisc_cpu_reset, &occ->parent_reset);
+ 
+     cc->class_by_name = openrisc_cpu_class_by_name;
+     cc->has_work = openrisc_cpu_has_work;
+diff --git a/target/ppc/translate_init.inc.c b/target/ppc/translate_init.inc.c
+index 53995f62eab..7e9780e875c 100644
+--- a/target/ppc/translate_init.inc.c
++++ b/target/ppc/translate_init.inc.c
+@@ -10669,16 +10669,16 @@ static bool ppc_cpu_has_work(CPUState *cs)
+     return msr_ee && (cs->interrupt_request & CPU_INTERRUPT_HARD);
+ }
+ 
+-/* CPUClass::reset() */
+-static void ppc_cpu_reset(CPUState *s)
++static void ppc_cpu_reset(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     PowerPCCPU *cpu = POWERPC_CPU(s);
+     PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cpu);
+     CPUPPCState *env = &cpu->env;
+     target_ulong msr;
+     int i;
+ 
+-    pcc->parent_reset(s);
++    pcc->parent_reset(dev);
+ 
+     msr = (target_ulong)0;
+     msr |= (target_ulong)MSR_HVB;
+@@ -10885,7 +10885,7 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
+     pcc->interrupts_big_endian = ppc_cpu_interrupts_big_endian_always;
+     device_class_set_props(dc, ppc_cpu_properties);
+ 
+-    cpu_class_set_parent_reset(cc, ppc_cpu_reset, &pcc->parent_reset);
++    device_class_set_parent_reset(dc, ppc_cpu_reset, &pcc->parent_reset);
+ 
+     cc->class_by_name = ppc_cpu_class_by_name;
+     pcc->parent_parse_features = cc->parse_features;
+diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+index 8c86ebc1093..e2ccd820736 100644
+--- a/target/riscv/cpu.c
++++ b/target/riscv/cpu.c
+@@ -286,13 +286,14 @@ void restore_state_to_opc(CPURISCVState *env, TranslationBlock *tb,
+     env->pc = data[0];
+ }
+ 
+-static void riscv_cpu_reset(CPUState *cs)
++static void riscv_cpu_reset(DeviceState *dev)
+ {
++    CPUState *cs = CPU(dev);
+     RISCVCPU *cpu = RISCV_CPU(cs);
+     RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cpu);
+     CPURISCVState *env = &cpu->env;
+ 
+-    mcc->parent_reset(cs);
++    mcc->parent_reset(dev);
+ #ifndef CONFIG_USER_ONLY
+     env->priv = PRV_M;
+     env->mstatus &= ~(MSTATUS_MIE | MSTATUS_MPRV);
+@@ -462,7 +463,7 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
+     device_class_set_parent_realize(dc, riscv_cpu_realize,
+                                     &mcc->parent_realize);
+ 
+-    cpu_class_set_parent_reset(cc, riscv_cpu_reset, &mcc->parent_reset);
++    device_class_set_parent_reset(dc, riscv_cpu_reset, &mcc->parent_reset);
+ 
+     cc->class_by_name = riscv_cpu_class_by_name;
+     cc->has_work = riscv_cpu_has_work;
+diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
+index 3dd396e8703..427a46e3e1b 100644
+--- a/target/s390x/cpu.c
++++ b/target/s390x/cpu.c
+@@ -96,8 +96,9 @@ static void s390_cpu_reset(CPUState *s, cpu_reset_type type)
+     S390CPU *cpu = S390_CPU(s);
+     S390CPUClass *scc = S390_CPU_GET_CLASS(cpu);
+     CPUS390XState *env = &cpu->env;
++    DeviceState *dev = DEVICE(s);
+ 
+-    scc->parent_reset(s);
++    scc->parent_reset(dev);
+     cpu->env.sigp_order = 0;
+     s390_cpu_set_state(S390_CPU_STATE_STOPPED, cpu);
+ 
+@@ -450,8 +451,9 @@ static Property s390x_cpu_properties[] = {
+     DEFINE_PROP_END_OF_LIST()
+ };
+ 
+-static void s390_cpu_reset_full(CPUState *s)
++static void s390_cpu_reset_full(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     return s390_cpu_reset(s, S390_CPU_RESET_CLEAR);
+ }
+ 
+@@ -466,7 +468,7 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
+     device_class_set_props(dc, s390x_cpu_properties);
+     dc->user_creatable = true;
+ 
+-    cpu_class_set_parent_reset(cc, s390_cpu_reset_full, &scc->parent_reset);
++    device_class_set_parent_reset(dc, s390_cpu_reset_full, &scc->parent_reset);
+ #if !defined(CONFIG_USER_ONLY)
+     scc->load_normal = s390_cpu_load_normal;
+ #endif
+diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
+index 70c8d8170ff..3c68021c565 100644
+--- a/target/sh4/cpu.c
++++ b/target/sh4/cpu.c
+@@ -47,14 +47,14 @@ static bool superh_cpu_has_work(CPUState *cs)
+     return cs->interrupt_request & CPU_INTERRUPT_HARD;
+ }
+ 
+-/* CPUClass::reset() */
+-static void superh_cpu_reset(CPUState *s)
++static void superh_cpu_reset(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     SuperHCPU *cpu = SUPERH_CPU(s);
+     SuperHCPUClass *scc = SUPERH_CPU_GET_CLASS(cpu);
+     CPUSH4State *env = &cpu->env;
+ 
+-    scc->parent_reset(s);
++    scc->parent_reset(dev);
+ 
+     memset(env, 0, offsetof(CPUSH4State, end_reset_fields));
+ 
+@@ -214,7 +214,7 @@ static void superh_cpu_class_init(ObjectClass *oc, void *data)
+     device_class_set_parent_realize(dc, superh_cpu_realizefn,
+                                     &scc->parent_realize);
+ 
+-    cpu_class_set_parent_reset(cc, superh_cpu_reset, &scc->parent_reset);
++    device_class_set_parent_reset(dc, superh_cpu_reset, &scc->parent_reset);
+ 
+     cc->class_by_name = superh_cpu_class_by_name;
+     cc->has_work = superh_cpu_has_work;
+diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+index eeaecbd8d69..3f05aba9d66 100644
+--- a/target/sparc/cpu.c
++++ b/target/sparc/cpu.c
+@@ -28,14 +28,14 @@
+ 
+ //#define DEBUG_FEATURES
+ 
+-/* CPUClass::reset() */
+-static void sparc_cpu_reset(CPUState *s)
++static void sparc_cpu_reset(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     SPARCCPU *cpu = SPARC_CPU(s);
+     SPARCCPUClass *scc = SPARC_CPU_GET_CLASS(cpu);
+     CPUSPARCState *env = &cpu->env;
+ 
+-    scc->parent_reset(s);
++    scc->parent_reset(dev);
+ 
+     memset(env, 0, offsetof(CPUSPARCState, end_reset_fields));
+     env->cwp = 0;
+@@ -859,7 +859,7 @@ static void sparc_cpu_class_init(ObjectClass *oc, void *data)
+                                     &scc->parent_realize);
+     device_class_set_props(dc, sparc_cpu_properties);
+ 
+-    cpu_class_set_parent_reset(cc, sparc_cpu_reset, &scc->parent_reset);
++    device_class_set_parent_reset(dc, sparc_cpu_reset, &scc->parent_reset);
+ 
+     cc->class_by_name = sparc_cpu_class_by_name;
+     cc->parse_features = sparc_cpu_parse_features;
+diff --git a/target/tilegx/cpu.c b/target/tilegx/cpu.c
+index cd422a0467a..1fee87c094b 100644
+--- a/target/tilegx/cpu.c
++++ b/target/tilegx/cpu.c
+@@ -68,13 +68,14 @@ static bool tilegx_cpu_has_work(CPUState *cs)
+     return true;
+ }
+ 
+-static void tilegx_cpu_reset(CPUState *s)
++static void tilegx_cpu_reset(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     TileGXCPU *cpu = TILEGX_CPU(s);
+     TileGXCPUClass *tcc = TILEGX_CPU_GET_CLASS(cpu);
+     CPUTLGState *env = &cpu->env;
+ 
+-    tcc->parent_reset(s);
++    tcc->parent_reset(dev);
+ 
+     memset(env, 0, offsetof(CPUTLGState, end_reset_fields));
+ }
+@@ -142,7 +143,7 @@ static void tilegx_cpu_class_init(ObjectClass *oc, void *data)
+     device_class_set_parent_realize(dc, tilegx_cpu_realizefn,
+                                     &tcc->parent_realize);
+ 
+-    cpu_class_set_parent_reset(cc, tilegx_cpu_reset, &tcc->parent_reset);
++    device_class_set_parent_reset(dc, tilegx_cpu_reset, &tcc->parent_reset);
+ 
+     cc->class_by_name = tilegx_cpu_class_by_name;
+     cc->has_work = tilegx_cpu_has_work;
+diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+index 85bc9f03a1e..743b404a95a 100644
+--- a/target/tricore/cpu.c
++++ b/target/tricore/cpu.c
+@@ -53,13 +53,14 @@ static void tricore_cpu_synchronize_from_tb(CPUState *cs,
+     env->PC = tb->pc;
+ }
+ 
+-static void tricore_cpu_reset(CPUState *s)
++static void tricore_cpu_reset(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     TriCoreCPU *cpu = TRICORE_CPU(s);
+     TriCoreCPUClass *tcc = TRICORE_CPU_GET_CLASS(cpu);
+     CPUTriCoreState *env = &cpu->env;
+ 
+-    tcc->parent_reset(s);
++    tcc->parent_reset(dev);
+ 
+     cpu_state_reset(env);
+ }
+@@ -153,7 +154,7 @@ static void tricore_cpu_class_init(ObjectClass *c, void *data)
+     device_class_set_parent_realize(dc, tricore_cpu_realizefn,
+                                     &mcc->parent_realize);
+ 
+-    cpu_class_set_parent_reset(cc, tricore_cpu_reset, &mcc->parent_reset);
++    device_class_set_parent_reset(dc, tricore_cpu_reset, &mcc->parent_reset);
+     cc->class_by_name = tricore_cpu_class_by_name;
+     cc->has_work = tricore_cpu_has_work;
+ 
+diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
+index 4856aee8eca..82c2ee0679f 100644
+--- a/target/xtensa/cpu.c
++++ b/target/xtensa/cpu.c
+@@ -67,14 +67,14 @@ bool xtensa_abi_call0(void)
+ }
+ #endif
+ 
+-/* CPUClass::reset() */
+-static void xtensa_cpu_reset(CPUState *s)
++static void xtensa_cpu_reset(DeviceState *dev)
+ {
++    CPUState *s = CPU(dev);
+     XtensaCPU *cpu = XTENSA_CPU(s);
+     XtensaCPUClass *xcc = XTENSA_CPU_GET_CLASS(cpu);
+     CPUXtensaState *env = &cpu->env;
+ 
+-    xcc->parent_reset(s);
++    xcc->parent_reset(dev);
+ 
+     env->exception_taken = 0;
+     env->pc = env->config->exception_vector[EXC_RESET0 + env->static_vectors];
+@@ -184,7 +184,7 @@ static void xtensa_cpu_class_init(ObjectClass *oc, void *data)
+     device_class_set_parent_realize(dc, xtensa_cpu_realizefn,
+                                     &xcc->parent_realize);
+ 
+-    cpu_class_set_parent_reset(cc, xtensa_cpu_reset, &xcc->parent_reset);
++    device_class_set_parent_reset(dc, xtensa_cpu_reset, &xcc->parent_reset);
+ 
+     cc->class_by_name = xtensa_cpu_class_by_name;
+     cc->has_work = xtensa_cpu_has_work;
+diff --git a/scripts/coccinelle/cpu-reset.cocci b/scripts/coccinelle/cpu-reset.cocci
+new file mode 100644
+index 00000000000..396a724e514
+--- /dev/null
++++ b/scripts/coccinelle/cpu-reset.cocci
+@@ -0,0 +1,47 @@
++// Convert targets using the old CPUState reset to DeviceState reset
++//
++// Copyright Linaro Ltd 2020
++// This work is licensed under the terms of the GNU GPLv2 or later.
++//
++// spatch --macro-file scripts/cocci-macro-file.h \
++//        --sp-file scripts/coccinelle/cpu-reset.cocci \
++//        --keep-comments --smpl-spacing --in-place --include-headers --dir target
++//
++// For simplicity we assume some things about the code we're modifying
++// that happen to be true for all our targets:
++//  * all cpu_class_set_parent_reset() callsites have a 'DeviceClass *dc' local
++//  * the parent reset field in the target CPU class is 'parent_reset'
++//  * no reset function already has a 'dev' local
++
++@@
++identifier cpu, x;
++typedef CPUState;
++@@
++struct x {
++...
++- void (*parent_reset)(CPUState *cpu);
+++ DeviceReset parent_reset;
++...
++};
++@ rule1 @
++identifier resetfn;
++expression resetfield;
++identifier cc;
++@@
++- cpu_class_set_parent_reset(cc, resetfn, resetfield)
+++ device_class_set_parent_reset(dc, resetfn, resetfield)
++@@
++identifier rule1.resetfn;
++identifier cpu, cc;
++typedef CPUState, DeviceState;
++@@
++-resetfn(CPUState *cpu)
++-{
+++resetfn(DeviceState *dev)
+++{
+++    CPUState *cpu = CPU(dev);
++<...
++-    cc->parent_reset(cpu);
+++    cc->parent_reset(dev);
++...>
++}
+-- 
+2.20.1
 

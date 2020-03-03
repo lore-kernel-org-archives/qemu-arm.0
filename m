@@ -1,202 +1,291 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp641760lfi;
-        Tue, 3 Mar 2020 09:51:26 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vvoVNHHv821hjR7NsDv0s+4PP4+djAXRIJ66Q7D0/yhu4spENSUBApNsYg3lBniif6TKM40
-X-Received: by 2002:a05:620a:141a:: with SMTP id d26mr5276050qkj.312.1583257886043;
-        Tue, 03 Mar 2020 09:51:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583257886; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp682921lfi;
+        Tue, 3 Mar 2020 10:34:04 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vtOHMTDabw7pfxZRK5Z+0YKZOW7EJOwpZUO2PcxfR29yIuwxNzPDquRApVTGkI9mLeJBWtL
+X-Received: by 2002:ae9:d887:: with SMTP id u129mr5500540qkf.357.1583260444422;
+        Tue, 03 Mar 2020 10:34:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583260444; cv=none;
         d=google.com; s=arc-20160816;
-        b=EA5Oamv1xI8DqKLQ74l+omzeNK0wSpSE0bMBJlWYVwtafKVej0uqkoOa8DaVk0asRD
-         sj9DQBEbkeYoQxAYvgM3u+Y6qfJJj5J8AeciQ4lDANBVQMNmDwuUXSUnJPknbR6i8AX4
-         Ob1yz43brHECAxUeaS4rQmWAYFXEEn0/R7LOio/APacJ5FuGe3OBUXTlVYGlQqsXLsnt
-         Y/rQUSVT3Dpso1yTQvtagg+UU/Wn+i4m/Mpk91jwKXHj6p1fPG5IE8ULhCe+YvGejZt6
-         9XAAa0tpDipUAkz61pT9esHhbGjPr29p/m3CfinDuVDkGoCGKIGxpqyst9467nQGZRfL
-         RRUQ==
+        b=BwnGhJ2pQaM1WNHf7JlTslHEeCcSFeVBHXwwefWdooXSAuIoD90NeqgbeEGqBFEyHo
+         mbxa8Fl/L1Jp+N7pMv+mhwZMFl6Bmg3QAbeF3FaNC8K9+3WpHwm+qV/eRZ7Lkmqh54LY
+         t+X7Kt3fZHeXYVLGyL3hrdGeR7qRircsIrTqF++oObXS3q20U7L65gB8XtMsrMhoeiGP
+         pYzbfBOo0ZUQHciHzEbj4NPmPLptMaPxYjZHXPnttjU6FNOKbp82TEyTUF/eKiKv6yZY
+         KUY4s+hzz2OaMgQdPF12lrBDbzAE5l0wc15uoiQbDAhxexaTXxAh4C4Jvk7i8gXzvZLn
+         iGEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=YrErCxdPD0FB72C1AvkhsFUhJwKacmb/G8K5xzzB0Es=;
-        b=hqP8Zr0fGN9xnjLRKuP5z28DbDTPSPNFfPt/4zyQzF6pQU886UYukdweWl6/oGiQrG
-         Tn1rydmMJi/hBVLegBeLB37MDE00S0XAh1EVhbzrHJKznKjkMMprM4JucO8zr3dp2Uor
-         9LxClskWmqxUPK9aO2idrSzYhl+e+b8fv4s4+sqPPgXNF5yzZJVPWjzdzlXmMrEGyUk2
-         N8f1XOjY49vEo6nGKxb1pQ/wd7MuTOTtz+Yo5Ev9OB7nT5pOd/VAA8O/m6WeRD3iw+Xo
-         NaiMztryRPn56YhGLT9xkIpnkR7Dgb3kmtG8HnE/7FVt/zhO0mg2A0Joy2EWNHDvUvvU
-         oaDQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=IZNETiz7EbXiLfwg7ORQ38ayvqgzQzpI5I9Bowlm0jk=;
+        b=KbEvJ7REZKLQqOU/V6Q3WRXR27QSkADpS5PeUTyBcpafXRYbXAKnzxN+VAomvwAKB3
+         kDytf1w1DKnFCBYsTfltQ6UW2JCHbFwJnrOtQPjvqb7QatIk5TF6UitLqs8wgdjkeAGT
+         xsOTnKZtdvnGaNI3uKWyVTNDqpLozKUVmN7mTBQO5nZPVQFdKII0JTaD9sNxvMFUYkBF
+         Vg5Q3QFycsknocqy42Q2HeXfQYRtm4hxIWt5G7jnMlYC898FghWVe+VCWUjFqZkVdG+D
+         D0eZJK4mFChuZ2N9JGSOrogmmQRrjxZO0hyvd2ACWkpp9jYiQhlmj2aMxD7ZmfHpIgwz
+         wZtA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VH9HZj4k;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XMLpKWol;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n7si8703315qtl.44.2020.03.03.09.51.25
+        by mx.google.com with ESMTPS id v18si4077866qto.91.2020.03.03.10.34.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Mar 2020 09:51:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Mar 2020 10:34:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VH9HZj4k;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51248 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XMLpKWol;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51650 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9BhV-0000zS-CD
-	for alex.bennee@linaro.org; Tue, 03 Mar 2020 12:51:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41145)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j9CMl-0004Ck-Q9
+	for alex.bennee@linaro.org; Tue, 03 Mar 2020 13:34:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49267)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j9Bg5-0007VH-Ud
- for qemu-devel@nongnu.org; Tue, 03 Mar 2020 12:49:59 -0500
+ (envelope-from <philmd@redhat.com>) id 1j9CMY-00042Y-Ru
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:33:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j9Bg4-0006Ke-R7
- for qemu-devel@nongnu.org; Tue, 03 Mar 2020 12:49:57 -0500
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:32962)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j9Bg4-0006KE-Ks
- for qemu-devel@nongnu.org; Tue, 03 Mar 2020 12:49:56 -0500
-Received: by mail-wm1-x344.google.com with SMTP id a25so2898124wmm.0
- for <qemu-devel@nongnu.org>; Tue, 03 Mar 2020 09:49:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=YrErCxdPD0FB72C1AvkhsFUhJwKacmb/G8K5xzzB0Es=;
- b=VH9HZj4kdw+98MsTFuffbD0riDElu6ZAEL7Z1/aF/roWyIv3rj1tpjftPAqTrXCfTq
- DxK0YlbpYLBfFkHFpYbklmxMiRVZJ3jpO5krV4iLqOIIWBryyG1wGP3xonegd41lxjCa
- oRsci3/RemWGFmUFb8HHDqVgk10br8axwsQWgommwmrObGWaIivqrB1Ti3JqJKIJjP7T
- fWIAR1bl9MAyte+VGoZY7LJqA/jfq3VjQSoNRjGiVnqcOKSxWYkxlwzLsdMrsuxUs8m1
- DREmdgGH3I7fwFnwslPaPx0w4it+1B3CcFlZB0P0kBho0V1dHyDra3X5tswy5BBVmFX0
- zvWw==
+ (envelope-from <philmd@redhat.com>) id 1j9CMX-0000au-5r
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:33:50 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:41491
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j9CMW-0000aS-UK
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:33:49 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583260428;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=IZNETiz7EbXiLfwg7ORQ38ayvqgzQzpI5I9Bowlm0jk=;
+ b=XMLpKWolMCNsQbFsbi1QMN+v6grswYp8k4InvhbgcqHOmIA35P6myYmRUKu7Fscip5IOck
+ g7iqN7ZHnVMw9nHfis0WJCG+LKjfZv67PQalVgsFpy7wDgxoVx2TmAGJnmjGi7TIeEjXkT
+ FmGnNHbE1CZcein1a9EW/MfKpDlLoaU=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-467-zUPtoDl4PYaPBCRPBDQsrA-1; Tue, 03 Mar 2020 13:33:44 -0500
+X-MC-Unique: zUPtoDl4PYaPBCRPBDQsrA-1
+Received: by mail-ed1-f71.google.com with SMTP id y23so2907001edt.2
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2020 10:33:44 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=YrErCxdPD0FB72C1AvkhsFUhJwKacmb/G8K5xzzB0Es=;
- b=DKSzlJQVT+8CcNa0V9v/4YN3h8lrou8Cq35XGJ7/3nVD2inSaGKyQTCI7oBBf9dzHH
- wpXj5kdzyjEu/gFBrpbXQ5MAVqlamQ12tQ0FNOlGv5pkWydAN+K5PN2TfBwr4svYocal
- /ZCJ1O2GqfLaE+jGMpobes48wftqk9KlymPJ21Ogj8glBUVhU2UlgY/7gRUxzoI8Q3Dy
- vvkQSwaYRL+HTOTtM3EXTiRwtoEQiepG1oOliYxXd4K5zaGht7FzTqmyv2PjndbSF9IM
- SlyWQwvhd7vcBX8V5anjDiOKDBjs4gywm4aVsRKIgnvVK+6/rzl+N4UEkDk/65/5yC1W
- eVKA==
-X-Gm-Message-State: ANhLgQ3T8TlIh9gwg4KetmAvDVjOAiELFvVKh3Cmz9HvZ9FHmUzckOSJ
- b3H1h2i1E4RA8OetqMXFk04Ikst/y9mppA==
-X-Received: by 2002:a05:600c:552:: with SMTP id
- k18mr5507694wmc.171.1583257795766; 
- Tue, 03 Mar 2020 09:49:55 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id d63sm4867576wmd.44.2020.03.03.09.49.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Mar 2020 09:49:55 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 3/4] target/arm: Recalculate hflags correctly after writes to
- CONTROL
-Date: Tue,  3 Mar 2020 17:49:49 +0000
-Message-Id: <20200303174950.3298-4-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200303174950.3298-1-peter.maydell@linaro.org>
-References: <20200303174950.3298-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:subject:from:to:cc:references:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=K5BW9sStMUjfdr8a3tqhgjQikjArA8kWcXItHbdi/fw=;
+ b=pg0qKyCrYeaJtH6Gl8bj3HFzGBjXYiwBh12bTqENd0iJR1ye00364bX83rOAl0Epwl
+ 8Gi2Sw/5IK08H0ixHDTg7+Wqomxo0CHvZVhm2AD2IbdYNrG05FNqeeptNQwx/XW0eg7n
+ NkLQcuqU3fURl+m1Mz1um0n7w5KdQLJhW1WG7NZ+xyZ5QiZYea3MtK1BKtQe64JtM1h6
+ HMgW3hyHL/DSSfm1HkeebVhPv7+iQYsbLa9jPl6lOTxxZLNnlVmBNiYwYEyIOiKkXm7g
+ vp5Ftk0YRdQUuDiYezyt7RAUsoWbLDmriTGrZYWQ8ziV9KUi3mnmAePWjtYpPwok5nH8
+ q0mQ==
+X-Gm-Message-State: ANhLgQ0qTELjO5yRFKJ/G5boPNKkyqdDLgKXa/f91I/kQtQ6d5Q1TViG
+ xGY4Y6V+aexy37IbtKIm+ALvTjN09ACKqMu9kebN28J034I2ey0CTkpPd2EiG8RtUO05giFF/Op
+ 0Y7LhWoTgA4YO
+X-Received: by 2002:a17:906:f24e:: with SMTP id
+ gy14mr5263285ejb.165.1583260423255; 
+ Tue, 03 Mar 2020 10:33:43 -0800 (PST)
+X-Received: by 2002:a17:906:f24e:: with SMTP id
+ gy14mr5263235ejb.165.1583260422839; 
+ Tue, 03 Mar 2020 10:33:42 -0800 (PST)
+Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net.
+ [88.21.205.47])
+ by smtp.gmail.com with ESMTPSA id c24sm1390966eds.40.2020.03.03.10.33.40
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 03 Mar 2020 10:33:42 -0800 (PST)
+Subject: Re: [PATCH] cpu: Use DeviceClass reset instead of a special CPUClass
+ reset
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+References: <20200303100511.5498-1-peter.maydell@linaro.org>
+ <226c0d6b-feb5-d202-2fdf-ba4ae910e463@redhat.com>
+Message-ID: <4f960fe0-e5f5-1f8c-76a1-b1df2bef4bd9@redhat.com>
+Date: Tue, 3 Mar 2020 19:33:39 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::344
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <226c0d6b-feb5-d202-2fdf-ba4ae910e463@redhat.com>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zstWwnTFlq2k
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Chris Wulff <crwulff@gmail.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Marek Vasut <marex@denx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MjYGsmcjozxu
 
-A write to the CONTROL register can change our current EL (by
-writing to the nPRIV bit). That means that we can't assume
-that s->current_el is still valid in trans_MSR_v7m() when
-we try to rebuild the hflags.
+On 3/3/20 3:19 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 3/3/20 11:05 AM, Peter Maydell wrote:
+>> The CPUClass has a 'reset' method.=C2=A0 This is a legacy from when
+>> TYPE_CPU used not to inherit from TYPE_DEVICE.=C2=A0 We don't need it an=
+y
+>> more, as we can simply use the TYPE_DEVICE reset.=C2=A0 The 'cpu_reset()=
+'
+>> function is kept as the API which most places use to reset a CPU; it
+>> is now a wrapper which calls device_cold_reset() and then the
+>> tracepoint function.
+>>
+>> This change should not cause CPU objects to be reset more often
+>> than they are at the moment, because:
+>> =C2=A0 * nobody is directly calling device_cold_reset() or
+>> =C2=A0=C2=A0=C2=A0 qdev_reset_all() on CPU objects
+>> =C2=A0 * no CPU object is on a qbus, so they will not be reset either
+>> =C2=A0=C2=A0=C2=A0 by somebody calling qbus_reset_all()/bus_cold_reset()=
+, or
+>> =C2=A0=C2=A0=C2=A0 by the main "reset sysbus and everything in the qbus =
+tree"
+>> =C2=A0=C2=A0=C2=A0 reset that most devices are reset by
+>>
+>> Note that this does not change the need for each machine or whatever
+>> to use qemu_register_reset() to arrange to call cpu_reset() -- that
+>> is necessary because CPU objects are not on any qbus, so they don't
+>> get reset when the qbus tree rooted at the sysbus bus is reset, and
+>> this isn't being changed here.
+>>
+>> All the changes to the files under target/ were made using the
+>> included Coccinelle script, except:
+>>
+>> (1) the deletion of the now-inaccurate and not terribly useful
+>> "CPUClass::reset" comments was done with a perl one-liner afterwards:
+>> =C2=A0=C2=A0 perl -n -i -e '/ CPUClass::reset/ or print' target/*/*.c
+>>
+>> (2) this bit of the s390 change was done by hand, because the
+>> Coccinelle script is not sophisticated enough to handle the
+>> parent_reset call being inside another function:
+>>
+>> | @@ -96,8 +96,9 @@ static void s390_cpu_reset(CPUState *s,=20
+>> cpu_reset_type type)
+>> |=C2=A0=C2=A0=C2=A0=C2=A0 S390CPU *cpu =3D S390_CPU(s);
+>> |=C2=A0=C2=A0=C2=A0=C2=A0 S390CPUClass *scc =3D S390_CPU_GET_CLASS(cpu);
+>> |=C2=A0=C2=A0=C2=A0=C2=A0 CPUS390XState *env =3D &cpu->env;
+>> |+=C2=A0=C2=A0=C2=A0 DeviceState *dev =3D DEVICE(s);
+>> |
+>> |-=C2=A0=C2=A0=C2=A0 scc->parent_reset(s);
+>> |+=C2=A0=C2=A0=C2=A0 scc->parent_reset(dev);
+>> |=C2=A0=C2=A0=C2=A0=C2=A0 cpu->env.sigp_order =3D 0;
+>> |=C2=A0=C2=A0=C2=A0=C2=A0 s390_cpu_set_state(S390_CPU_STATE_STOPPED, cpu=
+);
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>> Testing was by 'make check' and 'make check-acceptance'.
+>>
+>> I need this patch as a preliminary to some arm stuff I'm
+>> doing, but I think it makes sense as a cleanup in its own
+>> right so I'm sending it out early for review. If it's not
+>> yet in master before I get round to finishing the stuff
+>> that depends on it I'll resend it as part of that series.
+>=20
+> Nice cleanup, thanks.
+>=20
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>=20
+[...]
+>> diff --git a/scripts/coccinelle/cpu-reset.cocci=20
+>> b/scripts/coccinelle/cpu-reset.cocci
+>> new file mode 100644
+>> index 00000000000..396a724e514
+>> --- /dev/null
+>> +++ b/scripts/coccinelle/cpu-reset.cocci
+>> @@ -0,0 +1,47 @@
+>> +// Convert targets using the old CPUState reset to DeviceState reset
+>> +//
+>> +// Copyright Linaro Ltd 2020
+>> +// This work is licensed under the terms of the GNU GPLv2 or later.
+>> +//
+>> +// spatch --macro-file scripts/cocci-macro-file.h \
+>> +//=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 --sp-file scripts/coccinel=
+le/cpu-reset.cocci \
+>> +//=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 --keep-comments --smpl-spa=
+cing --in-place --include-headers=20
+>> --dir target
+>> +//
+>> +// For simplicity we assume some things about the code we're modifying
+>> +// that happen to be true for all our targets:
+>> +//=C2=A0 * all cpu_class_set_parent_reset() callsites have a 'DeviceCla=
+ss=20
+>> *dc' local
+>> +//=C2=A0 * the parent reset field in the target CPU class is 'parent_re=
+set'
+>> +//=C2=A0 * no reset function already has a 'dev' local
+>> +
+>> +@@
+>> +identifier cpu, x;
+>> +typedef CPUState;
+>> +@@
+>> +struct x {
+>> +...
+>> +- void (*parent_reset)(CPUState *cpu);
+>> ++ DeviceReset parent_reset;
+>> +...
+>> +};
+>> +@ rule1 @
+>> +identifier resetfn;
+>> +expression resetfield;
+>> +identifier cc;
+>> +@@
+>> +- cpu_class_set_parent_reset(cc, resetfn, resetfield)
+>> ++ device_class_set_parent_reset(dc, resetfn, resetfield)
+>> +@@
+>> +identifier rule1.resetfn;
+>> +identifier cpu, cc;
+>> +typedef CPUState, DeviceState;
+>> +@@
+>> +-resetfn(CPUState *cpu)
+>> +-{
+>> ++resetfn(DeviceState *dev)
+>> ++{
 
-Add a new helper rebuild_hflags_m32_newel() which, like the
-existing rebuild_hflags_a32_newel(), recalculates the current
-EL from scratch, and use it in trans_MSR_v7m().
+Nitpick: you don't need to include the bracket symbol in the diff:
 
-This fixes an assertion about an hflags mismatch when the
-guest changes privilege by writing to CONTROL.
+   @@
+   -resetfn(CPUState *cpu)
+   +resetfn(DeviceState *dev)
+    {
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/helper.h    |  1 +
- target/arm/helper.c    | 12 ++++++++++++
- target/arm/translate.c |  7 +++----
- 3 files changed, 16 insertions(+), 4 deletions(-)
+(simply indent it with a space).
 
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index fcbf5041213..a63fd5dfb73 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -90,6 +90,7 @@ DEF_HELPER_4(msr_banked, void, env, i32, i32, i32)
- DEF_HELPER_2(get_user_reg, i32, env, i32)
- DEF_HELPER_3(set_user_reg, void, env, i32, i32)
- 
-+DEF_HELPER_FLAGS_1(rebuild_hflags_m32_newel, TCG_CALL_NO_RWG, void, env)
- DEF_HELPER_FLAGS_2(rebuild_hflags_m32, TCG_CALL_NO_RWG, void, env, int)
- DEF_HELPER_FLAGS_1(rebuild_hflags_a32_newel, TCG_CALL_NO_RWG, void, env)
- DEF_HELPER_FLAGS_2(rebuild_hflags_a32, TCG_CALL_NO_RWG, void, env, int)
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 6be9ffa09ef..2eec812b80b 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -12325,6 +12325,18 @@ void arm_rebuild_hflags(CPUARMState *env)
-     env->hflags = rebuild_hflags_internal(env);
- }
- 
-+/*
-+ * If we have triggered a EL state change we can't rely on the
-+ * translator having passed it to us, we need to recompute.
-+ */
-+void HELPER(rebuild_hflags_m32_newel)(CPUARMState *env)
-+{
-+    int el = arm_current_el(env);
-+    int fp_el = fp_exception_el(env, el);
-+    ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
-+    env->hflags = rebuild_hflags_m32(env, fp_el, mmu_idx);
-+}
-+
- void HELPER(rebuild_hflags_m32)(CPUARMState *env, int el)
- {
-     int fp_el = fp_exception_el(env, el);
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 7f0154194cf..4715ca0d2ad 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -8551,7 +8551,7 @@ static bool trans_MRS_v7m(DisasContext *s, arg_MRS_v7m *a)
- 
- static bool trans_MSR_v7m(DisasContext *s, arg_MSR_v7m *a)
- {
--    TCGv_i32 addr, reg, el;
-+    TCGv_i32 addr, reg;
- 
-     if (!arm_dc_feature(s, ARM_FEATURE_M)) {
-         return false;
-@@ -8561,9 +8561,8 @@ static bool trans_MSR_v7m(DisasContext *s, arg_MSR_v7m *a)
-     gen_helper_v7m_msr(cpu_env, addr, reg);
-     tcg_temp_free_i32(addr);
-     tcg_temp_free_i32(reg);
--    el = tcg_const_i32(s->current_el);
--    gen_helper_rebuild_hflags_m32(cpu_env, el);
--    tcg_temp_free_i32(el);
-+    /* If we wrote to CONTROL, the EL might have changed */
-+    gen_helper_rebuild_hflags_m32_newel(cpu_env);
-     gen_lookup_tb(s);
-     return true;
- }
--- 
-2.20.1
+>> ++=C2=A0=C2=A0=C2=A0 CPUState *cpu =3D CPU(dev);
+>> +<...
+>> +-=C2=A0=C2=A0=C2=A0 cc->parent_reset(cpu);
+>> ++=C2=A0=C2=A0=C2=A0 cc->parent_reset(dev);
+>> +...>
+>> +}
+>>
+>=20
 

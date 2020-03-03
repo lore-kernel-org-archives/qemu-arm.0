@@ -1,80 +1,67 @@
-Received: by 2002:a19:cb43:0:0:0:0:0 with SMTP id b64csp3106255lfg;
-        Mon, 2 Mar 2020 17:39:39 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vuNmOXmxnlmb/NJzphD8EI9OWpGGUskJKmGzT64jGWMMqfRhUWuO1r5cDGw+G4ET+vlNl2j
-X-Received: by 2002:ac8:4b7c:: with SMTP id g28mr2382442qts.180.1583199579542;
-        Mon, 02 Mar 2020 17:39:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583199579; cv=none;
-        d=google.com; s=arc-20160816;
-        b=l14XeTovGn0iwm9d2JrOkrdJE0pnDPVoEpo8A/r8x4VDe9Qtr2BqI44z64a1n7XD2t
-         gbzYEKnCpm7jWcUxaIeZroU+XRzUwkQc3FPD7Ve19JB7vvyixlwAukd3H/lUjqQdl94D
-         ZFCdzmVm69W1ItMDsf6TuvIGS3Nid79ZzRckE55y+4L3e5M4DsjUte0JhycsRzsgwG1S
-         kiJsuLBc5WxfRlzmrARo2vToT7R6eTC1zGfC+cT0Dmf9NpHhrBK9Ho8bRX69OMQT33EZ
-         4B9QUFWp/ToM/CI6J+iA4rHD4i4A8Brh1bIgFC+TQGmA7Qk4Ib+TStFhvRSk6RJBTia/
-         pMbQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=ZltqHhwS73h/7qtuYpvtC/t9vVgQw9qF8CzslqPe/Yc=;
-        b=BVFTMOZb3hcMn3XIDotzi6Zc6pWon+SpMCwrJrUbwCbdA+sTeHwse0zMiUtEhFEJKr
-         pU4YHqibVvE2Qgb7YEz/Ikflj4LSOOzgH2QgLRrYHyJTgytyhw0PV9sAWuZ/poFMVGe8
-         vPaBSeqagK4YzD7PW3M7oZH1Jeyl5Xfmjy72uuZPibq1zFGm+cFam4H4LdEYoyZibEHG
-         ee9Z6+zctDM9yFi2hN6xSuKHZpWmoWAS1qBzVFSjXsDxAlr1kZfNMEMZmerrQmXFdRsd
-         XxSobWm2BCvPI4mTtUJjUolpncGK4CJounAmlFDqtkKpdFiZthGRdc/mpglBq41ysESw
-         hYpw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp176334lfi;
+        Tue, 3 Mar 2020 02:11:05 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vvi+YvKnX+dvWxdhIwtf755qUoKboETtZd6JXWnqDUs7dqceS28TQWR+XOTmDb8Vy/eRkbh
+X-Received: by 2002:a37:a705:: with SMTP id q5mr3300144qke.344.1583230264978;
+        Tue, 03 Mar 2020 02:11:04 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o6si6998864qkh.173.2020.03.02.17.39.39
+        by mx.google.com with ESMTPS id p186si7411146qkc.318.2020.03.03.02.11.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Mar 2020 17:39:39 -0800 (PST)
+        Tue, 03 Mar 2020 02:11:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40864 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44598 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j8wX5-0005GI-0g
-	for alex.bennee@linaro.org; Mon, 02 Mar 2020 20:39:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51134)
+	id 1j94W0-0007K4-E7
+	for alex.bennee@linaro.org; Tue, 03 Mar 2020 05:11:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52364)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pannengyuan@huawei.com>) id 1j8wWt-0005Fw-KZ
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 20:39:28 -0500
+ (envelope-from <no-reply@patchew.org>) id 1j94Vl-0007ET-BP
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2020 05:10:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pannengyuan@huawei.com>) id 1j8wWs-0001cf-Ev
- for qemu-arm@nongnu.org; Mon, 02 Mar 2020 20:39:27 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:60122 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pannengyuan@huawei.com>)
- id 1j8wWs-0001a9-45; Mon, 02 Mar 2020 20:39:26 -0500
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 6EC95B4B880CE3007BD5;
- Tue,  3 Mar 2020 09:39:22 +0800 (CST)
-Received: from [10.184.39.213] (10.184.39.213) by smtp.huawei.com
- (10.3.19.204) with Microsoft SMTP Server (TLS) id 14.3.439.0; Tue, 3 Mar 2020
- 09:39:12 +0800
-Subject: Re: [PATCH v3 1/6] s390x: fix memleaks in cpu_finalize
-To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <20200227025055.14341-1-pannengyuan@huawei.com>
- <20200227025055.14341-2-pannengyuan@huawei.com>
- <CAJSP0QXqOhrEz9T9=2bBO2kCqdRh+_O1+FM+TY66_gHMHY0mJw@mail.gmail.com>
-From: Pan Nengyuan <pannengyuan@huawei.com>
-Message-ID: <b2d6ad2a-22cc-f8bb-40f1-14fd02554492@huawei.com>
-Date: Tue, 3 Mar 2020 09:39:09 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ (envelope-from <no-reply@patchew.org>) id 1j94Vk-00064S-8B
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2020 05:10:49 -0500
+Resent-Date: Tue, 03 Mar 2020 05:10:49 -0500
+Resent-Message-Id: <E1j94Vk-00064S-8B@eggs.gnu.org>
+Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21126)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1j94VZ-00062G-CV; Tue, 03 Mar 2020 05:10:37 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1583230154; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=hF05EEDZ/R/RRCiWySf+ahfHfJVv0aSgb8m+jgmudZPbHpwWXUncuFooyiccbKQerxJ9cMKbuWULi32cXZcJRZsu5F6ZKyzDNXZC53Rr3X7urg4Am9XLjIPZ7+HdCurKF/b+iwcxXu22bGCv3AdR8PtE1ormIWr1uFu3m11Pwko=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1583230154;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=7cRha4H6zR8EzAsY+tgWYdZgtgoXcQBzPnkrUERbfWU=; 
+ b=bGd2zPP0cR6br5+F/fqdbLoWgG9RmdT9qN0S7Mmk/ort2wRXm33ww5nLvLg6FfYyTb5lo3Bk9ymFWMZ5DlT9kEHQ66zFolUTgDpdT3yT2AIL+eeyNvbR6qUnlHMSzmh2S54kOda+URZO4oqrc6zDe65zLg2EiFXLLTi4KATUI5w=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1583230151847454.90347562379486;
+ Tue, 3 Mar 2020 02:09:11 -0800 (PST)
+In-Reply-To: <20200303100511.5498-1-peter.maydell@linaro.org>
+Subject: Re: [PATCH] cpu: Use DeviceClass reset instead of a special CPUClass
+ reset
+Message-ID: <158323014888.8962.13276626887115773596@abdcc9e1aa82>
 MIME-Version: 1.0
-In-Reply-To: <CAJSP0QXqOhrEz9T9=2bBO2kCqdRh+_O1+FM+TY66_gHMHY0mJw@mail.gmail.com>
 Content-Type: text/plain; charset="utf-8"
-X-Originating-IP: [10.184.39.213]
-X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: peter.maydell@linaro.org
+Date: Tue, 3 Mar 2020 02:09:11 -0800 (PST)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.32
+X-Received-From: 136.143.188.51
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -86,95 +73,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- David Hildenbrand <david@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- qemu-devel <qemu-devel@nongnu.org>, qemu-s390x@nongnu.org,
- qemu-arm <qemu-arm@nongnu.org>, Euler Robot <euler.robot@huawei.com>,
- Richard Henderson <rth@twiddle.net>
+Reply-To: qemu-devel@nongnu.org
+Cc: crwulff@gmail.com, sagark@eecs.berkeley.edu, david@redhat.com,
+ green@moxielogic.com, mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org,
+ jcmvbkbc@gmail.com, Alistair.Francis@wdc.com, marex@denx.de,
+ palmer@dabbelt.com, aleksandar.rikalo@rt-rk.com, rth@twiddle.net,
+ atar4qemu@gmail.com, ehabkost@redhat.com, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, shorne@gmail.com, david@gibson.dropbear.id.au,
+ qemu-riscv@nongnu.org, kbastian@mail.uni-paderborn.de, cohuck@redhat.com,
+ laurent@vivier.eu, michael@walle.cc, qemu-ppc@nongnu.org,
+ amarkovic@wavecomp.com, pbonzini@redhat.com, aurelien@aurel32.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R/xxoziAzjGb
+X-TUID: YvT9Y7iq/0LY
 
-
-
-On 3/2/2020 10:34 PM, Stefan Hajnoczi wrote:
-> On Thu, Feb 27, 2020 at 2:42 AM Pan Nengyuan <pannengyuan@huawei.com> w=
-rote:
->>
->> This patch fix memleaks when we call tests/qtest/cpu-plug-test on s390=
-x. The leak stack is as follow:
->>
->> Direct leak of 48 byte(s) in 1 object(s) allocated from:
->>     #0 0x7fb43c7cd970 in __interceptor_calloc (/lib64/libasan.so.5+0xe=
-f970)
->>     #1 0x7fb43be2149d in g_malloc0 (/lib64/libglib-2.0.so.0+0x5249d)
->>     #2 0x558ba96da716 in timer_new_full /mnt/sdb/qemu-new/qemu/include=
-/qemu/timer.h:530
->>     #3 0x558ba96da716 in timer_new /mnt/sdb/qemu-new/qemu/include/qemu=
-/timer.h:551
->>     #4 0x558ba96da716 in timer_new_ns /mnt/sdb/qemu-new/qemu/include/q=
-emu/timer.h:569
->>     #5 0x558ba96da716 in s390_cpu_initfn /mnt/sdb/qemu-new/qemu/target=
-/s390x/cpu.c:285
->>     #6 0x558ba9c969ab in object_init_with_type /mnt/sdb/qemu-new/qemu/=
-qom/object.c:372
->>     #7 0x558ba9c9eb5f in object_initialize_with_type /mnt/sdb/qemu-new=
-/qemu/qom/object.c:516
->>     #8 0x558ba9c9f053 in object_new_with_type /mnt/sdb/qemu-new/qemu/q=
-om/object.c:684
->>     #9 0x558ba967ede6 in s390x_new_cpu /mnt/sdb/qemu-new/qemu/hw/s390x=
-/s390-virtio-ccw.c:64
->>     #10 0x558ba99764b3 in hmp_cpu_add /mnt/sdb/qemu-new/qemu/hw/core/m=
-achine-hmp-cmds.c:57
->>     #11 0x558ba9b1c27f in handle_hmp_command /mnt/sdb/qemu-new/qemu/mo=
-nitor/hmp.c:1082
->>     #12 0x558ba96c1b02 in qmp_human_monitor_command /mnt/sdb/qemu-new/=
-qemu/monitor/misc.c:142
->>
->> Reported-by: Euler Robot <euler.robot@huawei.com>
->> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
->> ---
->> Cc: Richard Henderson <rth@twiddle.net>
->> Cc: David Hildenbrand <david@redhat.com>
->> Cc: Cornelia Huck <cohuck@redhat.com>
->> Cc: qemu-s390x@nongnu.org
->> ---
->> v2->v1:
->> - Similarly to other cleanups, move timer_new into realize(Suggested b=
-y Philippe Mathieu-Daud=C3=A9)
->=20
-> Hi,
-> This email is invalid and cannot be parsed by the patches
-> (https://github.com/stefanha/patches) tool that is used by some QEMU
-> maintainers to apply patches.
->=20
-> The character set is incorrectly set to "base64", which is a content
-> transfer encoding and not a character set:
->=20
->   Content-Type: text/plain; charset=3D"base64"
->   Content-Transfer-Encoding: quoted-printable
->=20
-> There is a UTF-8 =C3=A9 character here:
->=20
->   - Similarly to other cleanups, move timer_new into realize(Suggested =
-by Phi=3D
->   lippe Mathieu-Daud=3DC3=3DA9)
->=20
-> Since there is no valid charset the =C3=A9 character cannot be decoded.
->=20
-> This might be a mail server problem but it could also be due to your
-> git-send-email(1) configuration.
->=20
-> Did you set the charset to "base64" or override the content transfer
-> encoding?  I think other people on the list will have trouble
-> receiving emails like this too.
-
-Yes, it's set to "base64", I will correct it.
-
-Thanks.
-
->=20
-> Stefan
-> .
->=20
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDMwMzEwMDUxMS41NDk4
+LTEtcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0
+aGUgZG9ja2VyLW1pbmd3QGZlZG9yYSBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGlu
+ZyBjb21tYW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5z
+dGFsbGVkLCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1Qg
+U0NSSVBUIEJFR0lOID09PQojISAvYmluL2Jhc2gKZXhwb3J0IEFSQ0g9eDg2XzY0Cm1ha2UgZG9j
+a2VyLWltYWdlLWZlZG9yYSBWPTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1taW5n
+d0BmZWRvcmEgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCgoKClRoZSBm
+dWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDAzMDMx
+MDA1MTEuNTQ5OC0xLXBldGVyLm1heWRlbGxAbGluYXJvLm9yZy90ZXN0aW5nLmRvY2tlci1taW5n
+d0BmZWRvcmEvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5
+IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVk
+YmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=

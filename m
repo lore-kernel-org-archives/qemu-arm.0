@@ -1,186 +1,283 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp693314lfi;
-        Tue, 3 Mar 2020 10:46:42 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vuL4oxd1QQz1uFh4DZPSs8Lf38aPg9TTRKeNro5tEoXv93NvIukCQtdASU/XPEUQ2VlLZ9A
-X-Received: by 2002:a37:68c6:: with SMTP id d189mr5593908qkc.307.1583261202803;
-        Tue, 03 Mar 2020 10:46:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583261202; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp769992lfi;
+        Tue, 3 Mar 2020 12:15:28 -0800 (PST)
+X-Received: by 2002:a92:5845:: with SMTP id m66mr6558568ilb.69.1583266528331;
+        Tue, 03 Mar 2020 12:15:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583266528; cv=none;
         d=google.com; s=arc-20160816;
-        b=ykh5OrNM3RR4cQ6vYhrei7r9C02N8GLoa8cO1BPuu+pajOagsgZ+8YIob0Lv9+hf+Y
-         Ur+eTLqbUaMWY1htM8lO6a50VigcuQUaJbXTnid2ifEPxn4jffiH/ubgx1Pu8qrlOOFr
-         BCd/JS1UoP07ck+Ua1VOYFiR22a5RkfIgAxY7O083DdVEo8u8+2d0o3KmzQfjLXVMdxV
-         DnsCdsSxfeLH3aJafUOaeix2J82Zoq8ydif9iyc2cEkgFDLvpekmOybKrCGSyTrt6+61
-         H27hi7OAS1O4MprmQi9mIJL/8YPhuKbUs2w9xCD6stBZ2QCsP4r2bPEG8pZ3LzXV1bXs
-         dtDQ==
+        b=bPloZf8VKLbhEZRt6ECFCb+QWAnMPhGTWiwa32he68+To9QfJBka1YPCmA14pPIQ5V
+         Ad+n4fAcSIA3YA79y41I/5IcOhI0mQj6bGGKG3qsjmogmm/yOFtcRYZ0LDwQXsFX5UbR
+         Ek8yKBgId4UFP7FXzNf8a/GEBLWP8xXFIlC+QX7sU12YSV8h7K0zRG4IfzDIv/EzcLYR
+         6XT7S7ukIE6C9Rphg+sXNgbPEHn7nR7lQ5uvD/c0l4lhT/SezFGZYq2MxsWo3Ozm93la
+         VPLiHh7rAii/iPWxuabAvmU8EZ28In6Z5ZRgAz75nYdPm005vievTzxjjGE+39GsQnax
+         wtUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=wdaek6mH06AiyslCL6zYAbFOzmlp52saOdk1aO6RPWk=;
-        b=qcY+nGQrA4PZXHtIbwamaGIOypdYa3mPeOstuS24BO1l7Outsh2HkRnMVWz9IrMgep
-         ZWCJliSSD7K7cBwonwTZ/tbd2ivpJbGrzmlW+u+ed8mf9t0RbADfu47d+rdS1yqDnVIt
-         3C9r0hF1WD3iQWi1QNC07o0AUqCMSaTfqLjEVgZsYMjEvlnqbbiKVhjS3q1j/539RRTp
-         9qA3MJU74oeVYGFQzeukZHxT36xiIqxtuIXgsvFIUlXVze0u8Rg2sbDAITdKPvufzYWv
-         GaNL5Cp8xdoa9w63G8vjZ/+NvQ0GIv6smtrSjgLc32XtzpMyr9x65CBAKMfmZ184IUYj
-         mnYA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=x0/OgHW8syNUTp4RdLAXqlwfKECnZr120+Xj23NB9d0=;
+        b=rOBT5dP+rrgZfzyBZYZPtXIrOXgnUFPQoYZP30gxGarpOKOErTmF+RKxDPjca/KScO
+         nIhD7p8TyTzL2kwRf1jyIJnbkCz/2XOznh11h5C70BTvPZXDgKgwDR4qItxHD1uFluZ6
+         AjgY2dMkBtQutNYKl/f4I3DA551/WYcbVXqVDkVE7vrKTHhlY5UnL2WxHEBD0pLoXYPV
+         VeoSIKsZ045E+DrQ/glm4RlQdvX9ZPEKIX2Eq85RAt4/SaqxskBcPRU1JkxdizkgFy9I
+         0HkxzVMJ/Bg3ovSmj0hspyMa8EZAbEYjX3N83dkqRDXFX4j28J1Vxhok1I3MB7oDWyA5
+         aCrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L7vfY7UH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m9si7606934qtp.76.2020.03.03.10.46.42
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Mar 2020 10:46:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z5Qe4GyS;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x2sor11134862ilg.101.2020.03.03.12.15.28
+        (Google Transport Security);
+        Tue, 03 Mar 2020 12:15:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L7vfY7UH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52000 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9CZ0-0007Wf-79
-	for alex.bennee@linaro.org; Tue, 03 Mar 2020 13:46:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51386)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <ehabkost@redhat.com>) id 1j9CYn-0007RY-Qw
- for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:46:30 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <ehabkost@redhat.com>) id 1j9CYl-0006c4-IK
- for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:46:29 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:50961
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <ehabkost@redhat.com>) id 1j9CYl-0006XJ-Ec
- for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:46:27 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583261171;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wdaek6mH06AiyslCL6zYAbFOzmlp52saOdk1aO6RPWk=;
- b=L7vfY7UHWwrNrLeyR6NjXBWUcF1S3idPp/wcDznkPD7FOzhyqxPf7rEaNuyU/ANh9FdLCD
- 1ydvEHUNz015qw977PFVeW814L8eCUJJQMCcWYh9H1BuomnCTUeFXcPkatZWZBpfz1p1zC
- VPGlivHfO7cVwJZMl18aFU+5hnSARFY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-311-VEHNHEayPreLKV5sshcqLA-1; Tue, 03 Mar 2020 13:46:07 -0500
-X-MC-Unique: VEHNHEayPreLKV5sshcqLA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2B88F101FC64;
- Tue,  3 Mar 2020 18:46:03 +0000 (UTC)
-Received: from localhost (ovpn-122-157.rdu2.redhat.com [10.10.122.157])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3D69A5C1D4;
- Tue,  3 Mar 2020 18:45:58 +0000 (UTC)
-Date: Tue, 3 Mar 2020 13:45:57 -0500
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH] cpu: Use DeviceClass reset instead of a special CPUClass
- reset
-Message-ID: <20200303184557.GV4440@habkost.net>
-References: <20200303100511.5498-1-peter.maydell@linaro.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z5Qe4GyS;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=x0/OgHW8syNUTp4RdLAXqlwfKECnZr120+Xj23NB9d0=;
+        b=Z5Qe4GySC3e3GKdFdX4HkvEddV4zfFQYWOe52RBw0NBHwuE3e1VxyhXobCCevQPVQK
+         FrkxnWSbHUuIva3Pxy2gKn3b4DL0IyKjdZs8trDKHPwbFLAuhZ7ecC/9tfe+1PlDa75O
+         uR5E6Lyk9dq+Z2KwQsXJdC6ePfwW4hHQIa4g04F8snpMovVVcLgvTGsDJ9syMogromDs
+         T8p/L8gukbq/ZeNhw2D5GaJRglsGkwi5rQPYbO5FTBz+WGc+hY9hslUcAC7qPRT7w914
+         Qor6ocxAcDS5FOzHvgB2UkIMGrNnj4DAPpExNMqDB+Pa2+0jzJ5j2BHnzdCJvTrQIWQH
+         ghQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=x0/OgHW8syNUTp4RdLAXqlwfKECnZr120+Xj23NB9d0=;
+        b=XWwt0rkAj1ngPeylQK+nmM1ZA3L3FzXnpXVAUd0kCy4X3vqGBTyXbObTF/3GjKtALu
+         gmVUvtVAG7Cwk1oqzax/u/V0mhz0WcFfpjrto55h5lj6l4OFCdt6O38TM0gTvGTKKBL/
+         5afVbVXxnuy1GW27WDOjwnA0Es1yMrgQNa5VV/mftBOS7sGN2hHC8W+ADdxVyHYCLA9Q
+         jQWUO8FbyLLuUwBTBRy4uH6PQELrXDgdltHcQcJ0sf9+UBQXDd68yqBfHkocRzT77fit
+         vnNsDkTQVLICqIeKQKW+I5VRlmcICKplC5zSCtGGWmzfK1HMbzElM3998S3pkN67rVlf
+         EgYg==
+X-Gm-Message-State: ANhLgQ0q56UVJ1u8N/M6nYZSCVEYhu2o3hdxJXzqVLfLlQ3JImIOCzn5
+	jOmRx0EQd4ajjrcB/IkZarAr2pam7ErbVttr8511csrL
+X-Google-Smtp-Source: ADFU+vvKzcMvYYvzsHq8RkySZjmVUoX0tIlOWq1uh8q/Wg0OyCFnpr+TpkHCeDOJrqUwWchnKH82siG8jpOlMDMlWtA=
+X-Received: by 2002:a92:d5cf:: with SMTP id d15mr6267383ilq.306.1583266527760;
+ Tue, 03 Mar 2020 12:15:27 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200303100511.5498-1-peter.maydell@linaro.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+References: <20200301215029.15196-1-nieklinnenbank@gmail.com>
+ <20200301215029.15196-7-nieklinnenbank@gmail.com> <87d09t7i8i.fsf@linaro.org>
+In-Reply-To: <87d09t7i8i.fsf@linaro.org>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Tue, 3 Mar 2020 21:15:16 +0100
+Message-ID: <CAPan3Wo6_15zFSHJwf0hVq9CVUSfOBU+frwSLQX21SWrXW03iA@mail.gmail.com>
+Subject: Re: [PATCH v6 06/18] hw/arm/allwinner: add CPU Configuration module
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+	Beniamino Galvani <b.galvani@gmail.com>, Jason Wang <jasowang@redhat.com>, 
+	Igor Mammedov <imammedo@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000f8d7e3059ff8f6b5"
+X-TUID: OoTAgdMclghN
+
+--000000000000f8d7e3059ff8f6b5
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Chris Wulff <crwulff@gmail.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- Marek Vasut <marex@denx.de>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- qemu-ppc@nongnu.org, Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B7beUYDqYB1g
 
-On Tue, Mar 03, 2020 at 10:05:11AM +0000, Peter Maydell wrote:
-> The CPUClass has a 'reset' method.  This is a legacy from when
-> TYPE_CPU used not to inherit from TYPE_DEVICE.  We don't need it any
-> more, as we can simply use the TYPE_DEVICE reset.  The 'cpu_reset()'
-> function is kept as the API which most places use to reset a CPU; it
-> is now a wrapper which calls device_cold_reset() and then the
-> tracepoint function.
->=20
-> This change should not cause CPU objects to be reset more often
-> than they are at the moment, because:
->  * nobody is directly calling device_cold_reset() or
->    qdev_reset_all() on CPU objects
->  * no CPU object is on a qbus, so they will not be reset either
->    by somebody calling qbus_reset_all()/bus_cold_reset(), or
->    by the main "reset sysbus and everything in the qbus tree"
->    reset that most devices are reset by
->=20
-> Note that this does not change the need for each machine or whatever
-> to use qemu_register_reset() to arrange to call cpu_reset() -- that
-> is necessary because CPU objects are not on any qbus, so they don't
-> get reset when the qbus tree rooted at the sysbus bus is reset, and
-> this isn't being changed here.
->=20
-> All the changes to the files under target/ were made using the
-> included Coccinelle script, except:
->=20
-> (1) the deletion of the now-inaccurate and not terribly useful
-> "CPUClass::reset" comments was done with a perl one-liner afterwards:
->   perl -n -i -e '/ CPUClass::reset/ or print' target/*/*.c
->=20
-> (2) this bit of the s390 change was done by hand, because the
-> Coccinelle script is not sophisticated enough to handle the
-> parent_reset call being inside another function:
->=20
-> | @@ -96,8 +96,9 @@ static void s390_cpu_reset(CPUState *s, cpu_reset_typ=
-e type)
-> |     S390CPU *cpu =3D S390_CPU(s);
-> |     S390CPUClass *scc =3D S390_CPU_GET_CLASS(cpu);
-> |     CPUS390XState *env =3D &cpu->env;
-> |+    DeviceState *dev =3D DEVICE(s);
-> |
-> |-    scc->parent_reset(s);
-> |+    scc->parent_reset(dev);
-> |     cpu->env.sigp_order =3D 0;
-> |     s390_cpu_set_state(S390_CPU_STATE_STOPPED, cpu);
->=20
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Hi Alex,
 
-Queued, thanks.
+First thanks for all your reviews, I'll add the tags in the next version of
+this series.
 
-However, if you want to do additional arch-specific work on top
-of this patch, feel free to merge it through your tree.
+On Tue, Mar 3, 2020 at 1:09 PM Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
+ote:
 
-Acked-by: Eduardo Habkost <ehabkost@redhat.com>
+>
+> Niek Linnenbank <nieklinnenbank@gmail.com> writes:
+>
+> > Various Allwinner System on Chip designs contain multiple processors
+> > that can be configured and reset using the generic CPU Configuration
+> > module interface. This commit adds support for the Allwinner CPU
+> > configuration interface which emulates the following features:
+> >
+> >  * CPU reset
+> >  * CPU status
+> >
+> > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> <snip>
+> > +
+> > +/* CPUCFG constants */
+> > +enum {
+> > +    CPU_EXCEPTION_LEVEL_ON_RESET =3D 3, /* EL3 */
+> > +};
+> > +
+> > +static void allwinner_cpucfg_cpu_reset(AwCpuCfgState *s, uint8_t cpu_i=
+d)
+> > +{
+> > +    int ret;
+> > +
+> > +    trace_allwinner_cpucfg_cpu_reset(cpu_id, s->entry_addr);
+> > +
+> > +    ret =3D arm_set_cpu_on(cpu_id, s->entry_addr, 0,
+> > +                         CPU_EXCEPTION_LEVEL_ON_RESET, false);
+>
+> According to the arm_set_cpu_on code:
+>
+>     if (!target_aa64 && arm_feature(&target_cpu->env,
+> ARM_FEATURE_AARCH64)) {
+>         /*
+>          * For now we don't support booting an AArch64 CPU in AArch32 mod=
+e
+>          * TODO: We should add this support later
+>          */
+>         qemu_log_mask(LOG_UNIMP,
+>                       "[ARM]%s: Starting AArch64 CPU %" PRId64
+>                       " in AArch32 mode is not supported yet\n",
+>                       __func__, cpuid);
+>         return QEMU_ARM_POWERCTL_INVALID_PARAM;
+>     }
+>
+> Do you really want to reboot in aarch32 mode on a reset? If so we should
+> fix the TODO.
+>
+
+Very good remark, I'll try to clarify what I did here. In earlier version
+of this series, I made this CPU Configuration Module specific
+to the Allwinner H3 SoC, as I thought it was a SoC specific component.
+Later I discovered that the CPU Configuration Module is
+actually a generic Allwinner component and used in multiple SoCs. Taking
+that into account, I renamed it to allwinner-cpucfg.c and
+updated the comments/docs. That way it should be re-usable in future SoC
+modules.
+
+The Allwinner H3 has four ARM Cortex-A7 cores and are 32-bit, so in the
+early version I filled the @target_aa64 parameter with false to
+keep it in 32-bit mode. And for usage in the current Allwinner H3 SoC that
+is sufficient, but as soon as a potential new SoC implementation
+with a 64-bit CPU starts to use this module, the hardcoded @target_aa64
+parameter will become a problem.
+
+And the TODO inside the arm_set_cpu_on() function I was not yet aware of as
+well, so that will also need to be resolved
+indeed once this module is going to be used for a new SoC with a 64-bit CPU=
+.
+
+Maybe I should just use some function to check if the current emulated CPU
+its 32-bit or 64-bit and use that for @target_aa64?
+That way the CPU Configuration Module itself should be ready for 64-bit and
+the TODO for arm_set_cpu_on() can be
+resolved in a later series for newer SoCs.
+
+Regards,
+Niek
+
+
+
+
+
+>
+> --
+> Alex Benn=C3=A9e
+>
+
 
 --=20
-Eduardo
+Niek Linnenbank
 
+--000000000000f8d7e3059ff8f6b5
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Alex,</div><div><br></div><div>First thanks for al=
+l your reviews, I&#39;ll add the tags in the next version of this series.<b=
+r></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr=
+">On Tue, Mar 3, 2020 at 1:09 PM Alex Benn=C3=A9e &lt;<a href=3D"mailto:ale=
+x.bennee@linaro.org">alex.bennee@linaro.org</a>&gt; wrote:<br></div><blockq=
+uote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1p=
+x solid rgb(204,204,204);padding-left:1ex"><br>
+Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com" target=3D"_=
+blank">nieklinnenbank@gmail.com</a>&gt; writes:<br>
+<br>
+&gt; Various Allwinner System on Chip designs contain multiple processors<b=
+r>
+&gt; that can be configured and reset using the generic CPU Configuration<b=
+r>
+&gt; module interface. This commit adds support for the Allwinner CPU<br>
+&gt; configuration interface which emulates the following features:<br>
+&gt;<br>
+&gt;=C2=A0 * CPU reset<br>
+&gt;=C2=A0 * CPU status<br>
+&gt;<br>
+&gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gm=
+ail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
+&lt;snip&gt;<br>
+&gt; +<br>
+&gt; +/* CPUCFG constants */<br>
+&gt; +enum {<br>
+&gt; +=C2=A0 =C2=A0 CPU_EXCEPTION_LEVEL_ON_RESET =3D 3, /* EL3 */<br>
+&gt; +};<br>
+&gt; +<br>
+&gt; +static void allwinner_cpucfg_cpu_reset(AwCpuCfgState *s, uint8_t cpu_=
+id)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 int ret;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 trace_allwinner_cpucfg_cpu_reset(cpu_id, s-&gt;entry_ad=
+dr);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 ret =3D arm_set_cpu_on(cpu_id, s-&gt;entry_addr, 0,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0CPU_EXCEPTION_LEVEL_ON_RESET, false);<br>
+<br>
+According to the arm_set_cpu_on code:<br>
+<br>
+=C2=A0 =C2=A0 if (!target_aa64 &amp;&amp; arm_feature(&amp;target_cpu-&gt;e=
+nv, ARM_FEATURE_AARCH64)) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* For now we don&#39;t support booting an=
+ AArch64 CPU in AArch32 mode<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* TODO: We should add this support later<=
+br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*/<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &quot;[ARM]%s: Starting AArch64 CPU %&quot; PRId64<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &quot; in AArch32 mode is not supported yet\n&quot;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 __func__, cpuid);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 return QEMU_ARM_POWERCTL_INVALID_PARAM;<br>
+=C2=A0 =C2=A0 }<br>
+<br>
+Do you really want to reboot in aarch32 mode on a reset? If so we should<br=
+>
+fix the TODO.<br></blockquote><div><br></div><div>Very good remark, I&#39;l=
+l try to clarify what I did here. In earlier version of this series, I made=
+ this CPU Configuration Module specific</div><div>to the Allwinner H3 SoC, =
+as I thought it was a SoC specific component. Later I discovered that the C=
+PU Configuration Module is</div><div>actually a generic Allwinner component=
+ and used in multiple SoCs. Taking that into account, I renamed it to allwi=
+nner-cpucfg.c and</div><div>updated the comments/docs. That way it should b=
+e re-usable in future SoC modules.<br></div><div><br></div><div>The Allwinn=
+er H3 has four ARM Cortex-A7 cores and are 32-bit, so in the early version =
+I filled the @target_aa64 parameter with false to</div><div>keep it in 32-b=
+it mode. And for usage in the current Allwinner H3 SoC that is sufficient, =
+but as soon as a potential new SoC implementation</div><div>with a 64-bit C=
+PU starts to use this module, the hardcoded @target_aa64 parameter will bec=
+ome a problem.</div><div><br></div><div><div>And the TODO inside the arm_se=
+t_cpu_on() function I was not yet aware of as well, so that will also need =
+to be resolved</div><div>indeed once this module is going to be used for a =
+new SoC with a 64-bit CPU.</div></div><div><br></div><div>Maybe I should ju=
+st use some function to check if the current emulated CPU its 32-bit or 64-=
+bit and use that for @target_aa64?</div><div>That way the CPU Configuration=
+ Module itself should be ready for 64-bit and the TODO for arm_set_cpu_on()=
+ can be</div><div>resolved in a later series for newer SoCs.<br></div><div>=
+<br></div><div>Regards,</div><div>Niek<br></div><div><br></div><div><br></d=
+iv><div><br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex">
+<br>
+-- <br>
+Alex Benn=C3=A9e<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--000000000000f8d7e3059ff8f6b5--

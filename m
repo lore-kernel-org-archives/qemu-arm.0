@@ -1,111 +1,110 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp686628lfi;
-        Tue, 3 Mar 2020 10:38:38 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vupxxynBihYe/U2a0xA1YHnz+o4uV/M90cpMdvtgUcc3Om2xEUYFzmBQ9/16ihE5p0vitSf
-X-Received: by 2002:aed:2519:: with SMTP id v25mr5795881qtc.176.1583260718014;
-        Tue, 03 Mar 2020 10:38:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583260718; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp689740lfi;
+        Tue, 3 Mar 2020 10:42:23 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vu2ViCIql6XdH2iRhkhDPMm5FE/iAXd2NykWkGFalqbMJjiaAl7bhonvglthEngXktnSW9m
+X-Received: by 2002:ad4:4e83:: with SMTP id dy3mr5199081qvb.185.1583260943403;
+        Tue, 03 Mar 2020 10:42:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583260943; cv=none;
         d=google.com; s=arc-20160816;
-        b=aKkKfT/SYpJbGXWFQYDjQPKGRcxFqXss39Q66lR+5dr8A6QFVgbAo/NpCARcBinmpz
-         8PtDJRiOCiQzn3/kd/pD0jlviUDuXbqbW9BdGrNHs1mOt2Y7DIfILTILf6+HboNtoLq2
-         j05pJAfgn+7eM7XFwhG4fbbyMkKZUxOc9djNc9xWwE0urjOy3r31uf0l0l0lB/J7AJKH
-         T4/MRsroQjTfpG2aFSQ5y5S/eZqd2ugW5SDA5Ma62QPEohL2k8HmshVCOHS5cyWaNB9A
-         aib/FYruaysyHLkA+8aqK4OZ4hdFTsvAVMmp1M6UScInc3c5E019OsJdK6DEQ+dIhBqa
-         Ping==
+        b=QPk1VmqeLBeBsTgYOqcl3QHnSS7wQx0HSO8VysSJiU1/i1AA0BwQKFYxCv7ekWIW0T
+         cciXsMBLE1rLAtJE8oCoyw9ZnHK3ql9fqwxz8IX4ITBREL3cD1VG/Op8D61myMhU5hx1
+         +1gWBj6u7dViEwZ7g0n0dSHkeU0gXAJirr/11eIsaJXO9lUQHlpdd7wmqhbGMXTscqQA
+         /iEWlbnEInmPetWiF4S6Lf/9MYDNtDHE5YG4bw7vJ2xJbgEx23nIAMb6bq3bopN+zPHM
+         gtNVdN9k133XQdMO880KDUd2NtoKCIIA1ulIs76kD7M2/9XQVjevTkOuHJdE+K4rMeTp
+         w0Vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=k+7tOhEXwdjozauRtLq+EcVaLKO1erWvppheX1SzlHM=;
-        b=GL/c5zD2rMW8hNEv/ou5FJ6zc3pKqwyeESLR1NlsWk/DIRyItY5LxBhgpe7C60fZfW
-         yt///jovSZt3mfPe4VWJaLf6sSO8DVg6UE7IR1Cgc9Nf5CcQg3CDa4ytk1wMeRzkFQ9a
-         Sqipga0XC7GgmyUCyhw5eEwhypqGYAU/7Exfvzh5AyVlS8+XoATRBPzSy0Y5SYPoR99t
-         GTpT6Rh0kPdjafqVNBXeJpkQ8jIkcxMV0Lv/P91OInausH/Jyqg/ir9LZiYIANuGQ27V
-         +iLaKuUKzkNfQzz+sU4+ydol6SjO3l6vIeAfwXhbiOnAoPExBi5l64B460c3smWmGgD7
-         Sl/A==
+        bh=ihGb95fli6TTZlBLRskT6NVEplBL96MsAsHOeKH3oNU=;
+        b=fZnH2yYO9rOyhDTl91OenwFAE+2xXn6IH0k3FgZ0vOtRwPBp86GOt5eircBr9Ye+/G
+         I9Z1IASHRyWjLaqgIOSfO4+4XAIA6yoB86pxMjzMsDNol3QczgGyaRAIBfdy/0rfVAXb
+         wbashefmv2fUZQMRXHPk514ZMcWzHCeAnQm3lEnE7vOFaa4R+XHvusZOFYQE2PGfFbgx
+         GwsE5WllFbXMReskbewBZxA9/TiWBsSySbFYfLYbtEHiCbFfKMk72KbloIr8EhdWC9EM
+         rqD/mR6MKwo/zX0cn4x6OGTPP0A1DUCQ7r9QH10uIk7qHjNWf4TTdltYsJDb097B7XeQ
+         WJhA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MfeBj9e8;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GPJF7rqS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g54si1296804qtb.236.2020.03.03.10.38.37
+        by mx.google.com with ESMTPS id g36si6080178qtk.352.2020.03.03.10.42.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Mar 2020 10:38:38 -0800 (PST)
+        Tue, 03 Mar 2020 10:42:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MfeBj9e8;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GPJF7rqS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51828 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51906 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9CRB-0001cj-E5
-	for alex.bennee@linaro.org; Tue, 03 Mar 2020 13:38:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50112)
+	id 1j9CUg-0004Dx-SG
+	for alex.bennee@linaro.org; Tue, 03 Mar 2020 13:42:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50664)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1j9CR1-0001Y3-Lh
- for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:38:28 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1j9CUX-0004B9-Ph
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:42:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1j9CR0-0002l2-HO
- for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:38:27 -0500
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:40979)
+ (envelope-from <richard.henderson@linaro.org>) id 1j9CUV-0004kx-Tx
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:42:05 -0500
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:35128)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1j9CR0-0002km-9W
- for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:38:26 -0500
-Received: by mail-pf1-x443.google.com with SMTP id j9so1899483pfa.8
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2020 10:38:26 -0800 (PST)
+ id 1j9CUU-0004iO-1s
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:42:03 -0500
+Received: by mail-pf1-x442.google.com with SMTP id i19so1920992pfa.2
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2020 10:42:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=k+7tOhEXwdjozauRtLq+EcVaLKO1erWvppheX1SzlHM=;
- b=MfeBj9e8VfYJaEHtFu3Ha+EjwE2bDlFu7jip1NyiferRvIVbebthIde7mRaBMJYR4s
- g/rcPOSu3cTuaGNDuWLwCP0OHueMhpIR+TmmxU7x6MAJ/VonAfgFF04T9V7QsWcloYN4
- vcklidFSbeff7YhK06v7qzD9tEGIpFMJG2v8tB6CRyRAI8sgmK51V1FtLsL6h+ToDABZ
- 7gFx4/lE9v60WXwx74wzYyWXFXGXIPDyKL5EQM0uw4sNv+uowr9esj7HlyW3TzJNkVM1
- oy5B0XqZRLNCSUsaGmRzkL2n5hmcZuKA+45VCnIMdtrIhykqRIZ8G2lVeCMCT76Y5cTw
- c+Jw==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ihGb95fli6TTZlBLRskT6NVEplBL96MsAsHOeKH3oNU=;
+ b=GPJF7rqS2uXhp9Zp1ihYIyooWwy1HXu/JLDUTZpeWFLj3YNWB2e2EWaMEuSS17xJFm
+ t5VqQBqmXIYk9b4TFHlSrUren4v+3AFTNL7BiYSWfHd1Nv2278FyzTNFVimv/FTmvxb0
+ 4ggvamMihoI3xvlaFitqGWjo5FnCu+Rsn91g7ZmpwRlGefJPr+kxIf4CFigEMMll+K6U
+ XuEdpVi7mAezg5iR/6+Yh6fYu1m3JIo4ou6NhPQd2wAh88VS/iBw5q7Udfle7bRwLuRG
+ Cvw89cEYepV/S9YYlrOvNpdGE+9vkxz+D/zrRpf4N+pcHKfGC8sZeaiUSeV6u5WXpCrW
+ z+TA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=k+7tOhEXwdjozauRtLq+EcVaLKO1erWvppheX1SzlHM=;
- b=G1TV5/QSYbyvfHOH+U23kA62Ka7xk3FB+lWPwj40E54YmzD96PhRUucw0KUH9WU0OF
- AwMnkUP/hVQzL1P4MgurGQlKtddHbMTTA+xsobASbt6SmYd1nA3f1cryq8NzGh4Dy/EJ
- 74aOBcCrcxRYUmY4tJFe4G/r7pDeO+NO4I9oItfFnAmDDLuLx0v8X9tTi0wsI4OBpjwo
- H6VujypxDirILxqkPPrOC6sq6ECTuR4e4/wlP1RrrSVXwtEul0UZb+9J/V7C8G0CbPWk
- cZD8gsxAbjjTdRXVp060vbjYAFRWeEoR3KIWmm6ghRtrTYH0cFFW7/DIRaBHXNSni6CQ
- 6r6Q==
-X-Gm-Message-State: ANhLgQ1Qjdk8/sM1DwgQU0/QHAM6LLPwy8XfOcuxDPEs+4cLpMBTVU+G
- GqKy9oFpojmWba03RQuMj7A6Kiht39g=
-X-Received: by 2002:aa7:8545:: with SMTP id y5mr5475285pfn.185.1583260705381; 
- Tue, 03 Mar 2020 10:38:25 -0800 (PST)
+ bh=ihGb95fli6TTZlBLRskT6NVEplBL96MsAsHOeKH3oNU=;
+ b=N401MxgDSMJBkm8DkN3hAVKDkSSJibWksmykwpTF8kqXts72htEBxfzSzHsI0MH+U/
+ vyd2AReeobBpCXNHUsLlZ2KLguH3eSzvYdjMkx+GWCzblvUXiaKMkrm2rTZxkb2qufFS
+ d/9TCk61sff9Vx7AkGxuHn7lS7GKD2/GI7xZKSLoXiUU94iPNGQ/GiqzF8vkQzLdKRjb
+ Ax16JOzlRTNrIBcrRNGA3hjM4ADnTkFsfBBEiGSXRO3WdiLawr9Uf+L2xgcasP+Agdmx
+ uObiIX42l32WnFqlRuyrBsIFcoN/uhkbrgpSwip80wjYdv5N40StKfhnabOuRMHD73Yi
+ J4Lg==
+X-Gm-Message-State: ANhLgQ2fEfeJaMUq/jPeN2VHIbS3rWPyB+WMbIjWOgy2ya8+K8ayuJrY
+ iVFOVAJz1txJ+POr7A/9vzj5ug==
+X-Received: by 2002:a63:f752:: with SMTP id f18mr5306129pgk.196.1583260919257; 
+ Tue, 03 Mar 2020 10:41:59 -0800 (PST)
 Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
  by smtp.gmail.com with ESMTPSA id
- c3sm25518463pfb.85.2020.03.03.10.38.24
+ d5sm19768937pga.36.2020.03.03.10.41.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Mar 2020 10:38:24 -0800 (PST)
-Subject: Re: [PATCH 4/4] target/arm: Fix some comment typos
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20200303174950.3298-1-peter.maydell@linaro.org>
- <20200303174950.3298-5-peter.maydell@linaro.org>
+ Tue, 03 Mar 2020 10:41:58 -0800 (PST)
+Subject: Re: [PATCH] cpu: Use DeviceClass reset instead of a special CPUClass
+ reset
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+References: <20200303100511.5498-1-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <0a61e270-7116-eb2e-7dd7-e847f56d9614@linaro.org>
-Date: Tue, 3 Mar 2020 10:38:22 -0800
+Message-ID: <0bea66f5-c9d6-c605-22dc-8700f022729a@linaro.org>
+Date: Tue, 3 Mar 2020 10:41:55 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200303174950.3298-5-peter.maydell@linaro.org>
+In-Reply-To: <20200303100511.5498-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::443
+X-Received-From: 2607:f8b0:4864:20::442
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,20 +116,81 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Chris Wulff <crwulff@gmail.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Marek Vasut <marex@denx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mivmb210Oz/B
+X-TUID: ggFTNQp/ypOb
 
-On 3/3/20 9:49 AM, Peter Maydell wrote:
-> Fix a couple of comment typos.
+On 3/3/20 2:05 AM, Peter Maydell wrote:
+> The CPUClass has a 'reset' method.  This is a legacy from when
+> TYPE_CPU used not to inherit from TYPE_DEVICE.  We don't need it any
+> more, as we can simply use the TYPE_DEVICE reset.  The 'cpu_reset()'
+> function is kept as the API which most places use to reset a CPU; it
+> is now a wrapper which calls device_cold_reset() and then the
+> tracepoint function.
+> 
+> This change should not cause CPU objects to be reset more often
+> than they are at the moment, because:
+>  * nobody is directly calling device_cold_reset() or
+>    qdev_reset_all() on CPU objects
+>  * no CPU object is on a qbus, so they will not be reset either
+>    by somebody calling qbus_reset_all()/bus_cold_reset(), or
+>    by the main "reset sysbus and everything in the qbus tree"
+>    reset that most devices are reset by
+> 
+> Note that this does not change the need for each machine or whatever
+> to use qemu_register_reset() to arrange to call cpu_reset() -- that
+> is necessary because CPU objects are not on any qbus, so they don't
+> get reset when the qbus tree rooted at the sysbus bus is reset, and
+> this isn't being changed here.
+> 
+> All the changes to the files under target/ were made using the
+> included Coccinelle script, except:
+> 
+> (1) the deletion of the now-inaccurate and not terribly useful
+> "CPUClass::reset" comments was done with a perl one-liner afterwards:
+>   perl -n -i -e '/ CPUClass::reset/ or print' target/*/*.c
+> 
+> (2) this bit of the s390 change was done by hand, because the
+> Coccinelle script is not sophisticated enough to handle the
+> parent_reset call being inside another function:
+> 
+> | @@ -96,8 +96,9 @@ static void s390_cpu_reset(CPUState *s, cpu_reset_type type)
+> |     S390CPU *cpu = S390_CPU(s);
+> |     S390CPUClass *scc = S390_CPU_GET_CLASS(cpu);
+> |     CPUS390XState *env = &cpu->env;
+> |+    DeviceState *dev = DEVICE(s);
+> |
+> |-    scc->parent_reset(s);
+> |+    scc->parent_reset(dev);
+> |     cpu->env.sigp_order = 0;
+> |     s390_cpu_set_state(S390_CPU_STATE_STOPPED, cpu);
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
-> Noticed these while writing the other patches...
+> Testing was by 'make check' and 'make check-acceptance'.
+> 
+> I need this patch as a preliminary to some arm stuff I'm
+> doing, but I think it makes sense as a cleanup in its own
+> right so I'm sending it out early for review. If it's not
+> yet in master before I get round to finishing the stuff
+> that depends on it I'll resend it as part of that series.
 > ---
->  target/arm/helper.c    | 2 +-
->  target/arm/translate.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

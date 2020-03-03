@@ -1,110 +1,101 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp689740lfi;
-        Tue, 3 Mar 2020 10:42:23 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vu2ViCIql6XdH2iRhkhDPMm5FE/iAXd2NykWkGFalqbMJjiaAl7bhonvglthEngXktnSW9m
-X-Received: by 2002:ad4:4e83:: with SMTP id dy3mr5199081qvb.185.1583260943403;
-        Tue, 03 Mar 2020 10:42:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583260943; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp693314lfi;
+        Tue, 3 Mar 2020 10:46:42 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vuL4oxd1QQz1uFh4DZPSs8Lf38aPg9TTRKeNro5tEoXv93NvIukCQtdASU/XPEUQ2VlLZ9A
+X-Received: by 2002:a37:68c6:: with SMTP id d189mr5593908qkc.307.1583261202803;
+        Tue, 03 Mar 2020 10:46:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583261202; cv=none;
         d=google.com; s=arc-20160816;
-        b=QPk1VmqeLBeBsTgYOqcl3QHnSS7wQx0HSO8VysSJiU1/i1AA0BwQKFYxCv7ekWIW0T
-         cciXsMBLE1rLAtJE8oCoyw9ZnHK3ql9fqwxz8IX4ITBREL3cD1VG/Op8D61myMhU5hx1
-         +1gWBj6u7dViEwZ7g0n0dSHkeU0gXAJirr/11eIsaJXO9lUQHlpdd7wmqhbGMXTscqQA
-         /iEWlbnEInmPetWiF4S6Lf/9MYDNtDHE5YG4bw7vJ2xJbgEx23nIAMb6bq3bopN+zPHM
-         gtNVdN9k133XQdMO880KDUd2NtoKCIIA1ulIs76kD7M2/9XQVjevTkOuHJdE+K4rMeTp
-         w0Vg==
+        b=ykh5OrNM3RR4cQ6vYhrei7r9C02N8GLoa8cO1BPuu+pajOagsgZ+8YIob0Lv9+hf+Y
+         Ur+eTLqbUaMWY1htM8lO6a50VigcuQUaJbXTnid2ifEPxn4jffiH/ubgx1Pu8qrlOOFr
+         BCd/JS1UoP07ck+Ua1VOYFiR22a5RkfIgAxY7O083DdVEo8u8+2d0o3KmzQfjLXVMdxV
+         DnsCdsSxfeLH3aJafUOaeix2J82Zoq8ydif9iyc2cEkgFDLvpekmOybKrCGSyTrt6+61
+         H27hi7OAS1O4MprmQi9mIJL/8YPhuKbUs2w9xCD6stBZ2QCsP4r2bPEG8pZ3LzXV1bXs
+         dtDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ihGb95fli6TTZlBLRskT6NVEplBL96MsAsHOeKH3oNU=;
-        b=fZnH2yYO9rOyhDTl91OenwFAE+2xXn6IH0k3FgZ0vOtRwPBp86GOt5eircBr9Ye+/G
-         I9Z1IASHRyWjLaqgIOSfO4+4XAIA6yoB86pxMjzMsDNol3QczgGyaRAIBfdy/0rfVAXb
-         wbashefmv2fUZQMRXHPk514ZMcWzHCeAnQm3lEnE7vOFaa4R+XHvusZOFYQE2PGfFbgx
-         GwsE5WllFbXMReskbewBZxA9/TiWBsSySbFYfLYbtEHiCbFfKMk72KbloIr8EhdWC9EM
-         rqD/mR6MKwo/zX0cn4x6OGTPP0A1DUCQ7r9QH10uIk7qHjNWf4TTdltYsJDb097B7XeQ
-         WJhA==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=wdaek6mH06AiyslCL6zYAbFOzmlp52saOdk1aO6RPWk=;
+        b=qcY+nGQrA4PZXHtIbwamaGIOypdYa3mPeOstuS24BO1l7Outsh2HkRnMVWz9IrMgep
+         ZWCJliSSD7K7cBwonwTZ/tbd2ivpJbGrzmlW+u+ed8mf9t0RbADfu47d+rdS1yqDnVIt
+         3C9r0hF1WD3iQWi1QNC07o0AUqCMSaTfqLjEVgZsYMjEvlnqbbiKVhjS3q1j/539RRTp
+         9qA3MJU74oeVYGFQzeukZHxT36xiIqxtuIXgsvFIUlXVze0u8Rg2sbDAITdKPvufzYWv
+         GaNL5Cp8xdoa9w63G8vjZ/+NvQ0GIv6smtrSjgLc32XtzpMyr9x65CBAKMfmZ184IUYj
+         mnYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GPJF7rqS;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L7vfY7UH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g36si6080178qtk.352.2020.03.03.10.42.23
+        by mx.google.com with ESMTPS id m9si7606934qtp.76.2020.03.03.10.46.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Mar 2020 10:42:23 -0800 (PST)
+        Tue, 03 Mar 2020 10:46:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GPJF7rqS;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L7vfY7UH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51906 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52000 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9CUg-0004Dx-SG
-	for alex.bennee@linaro.org; Tue, 03 Mar 2020 13:42:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50664)
+	id 1j9CZ0-0007Wf-79
+	for alex.bennee@linaro.org; Tue, 03 Mar 2020 13:46:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51386)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1j9CUX-0004B9-Ph
- for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:42:06 -0500
+ (envelope-from <ehabkost@redhat.com>) id 1j9CYn-0007RY-Qw
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:46:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1j9CUV-0004kx-Tx
- for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:42:05 -0500
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:35128)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1j9CUU-0004iO-1s
- for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:42:03 -0500
-Received: by mail-pf1-x442.google.com with SMTP id i19so1920992pfa.2
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2020 10:42:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ihGb95fli6TTZlBLRskT6NVEplBL96MsAsHOeKH3oNU=;
- b=GPJF7rqS2uXhp9Zp1ihYIyooWwy1HXu/JLDUTZpeWFLj3YNWB2e2EWaMEuSS17xJFm
- t5VqQBqmXIYk9b4TFHlSrUren4v+3AFTNL7BiYSWfHd1Nv2278FyzTNFVimv/FTmvxb0
- 4ggvamMihoI3xvlaFitqGWjo5FnCu+Rsn91g7ZmpwRlGefJPr+kxIf4CFigEMMll+K6U
- XuEdpVi7mAezg5iR/6+Yh6fYu1m3JIo4ou6NhPQd2wAh88VS/iBw5q7Udfle7bRwLuRG
- Cvw89cEYepV/S9YYlrOvNpdGE+9vkxz+D/zrRpf4N+pcHKfGC8sZeaiUSeV6u5WXpCrW
- z+TA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ihGb95fli6TTZlBLRskT6NVEplBL96MsAsHOeKH3oNU=;
- b=N401MxgDSMJBkm8DkN3hAVKDkSSJibWksmykwpTF8kqXts72htEBxfzSzHsI0MH+U/
- vyd2AReeobBpCXNHUsLlZ2KLguH3eSzvYdjMkx+GWCzblvUXiaKMkrm2rTZxkb2qufFS
- d/9TCk61sff9Vx7AkGxuHn7lS7GKD2/GI7xZKSLoXiUU94iPNGQ/GiqzF8vkQzLdKRjb
- Ax16JOzlRTNrIBcrRNGA3hjM4ADnTkFsfBBEiGSXRO3WdiLawr9Uf+L2xgcasP+Agdmx
- uObiIX42l32WnFqlRuyrBsIFcoN/uhkbrgpSwip80wjYdv5N40StKfhnabOuRMHD73Yi
- J4Lg==
-X-Gm-Message-State: ANhLgQ2fEfeJaMUq/jPeN2VHIbS3rWPyB+WMbIjWOgy2ya8+K8ayuJrY
- iVFOVAJz1txJ+POr7A/9vzj5ug==
-X-Received: by 2002:a63:f752:: with SMTP id f18mr5306129pgk.196.1583260919257; 
- Tue, 03 Mar 2020 10:41:59 -0800 (PST)
-Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id
- d5sm19768937pga.36.2020.03.03.10.41.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Mar 2020 10:41:58 -0800 (PST)
+ (envelope-from <ehabkost@redhat.com>) id 1j9CYl-0006c4-IK
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:46:29 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:50961
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <ehabkost@redhat.com>) id 1j9CYl-0006XJ-Ec
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2020 13:46:27 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583261171;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=wdaek6mH06AiyslCL6zYAbFOzmlp52saOdk1aO6RPWk=;
+ b=L7vfY7UHWwrNrLeyR6NjXBWUcF1S3idPp/wcDznkPD7FOzhyqxPf7rEaNuyU/ANh9FdLCD
+ 1ydvEHUNz015qw977PFVeW814L8eCUJJQMCcWYh9H1BuomnCTUeFXcPkatZWZBpfz1p1zC
+ VPGlivHfO7cVwJZMl18aFU+5hnSARFY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-311-VEHNHEayPreLKV5sshcqLA-1; Tue, 03 Mar 2020 13:46:07 -0500
+X-MC-Unique: VEHNHEayPreLKV5sshcqLA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2B88F101FC64;
+ Tue,  3 Mar 2020 18:46:03 +0000 (UTC)
+Received: from localhost (ovpn-122-157.rdu2.redhat.com [10.10.122.157])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3D69A5C1D4;
+ Tue,  3 Mar 2020 18:45:58 +0000 (UTC)
+Date: Tue, 3 Mar 2020 13:45:57 -0500
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Subject: Re: [PATCH] cpu: Use DeviceClass reset instead of a special CPUClass
  reset
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+Message-ID: <20200303184557.GV4440@habkost.net>
 References: <20200303100511.5498-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <0bea66f5-c9d6-c605-22dc-8700f022729a@linaro.org>
-Date: Tue, 3 Mar 2020 10:41:55 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
 MIME-Version: 1.0
 In-Reply-To: <20200303100511.5498-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::442
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -119,31 +110,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Chris Wulff <crwulff@gmail.com>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
  David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
  Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- Marek Vasut <marex@denx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Marek Vasut <marex@denx.de>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ qemu-ppc@nongnu.org, Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
  Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
  David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+ Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
  Aleksandar Markovic <amarkovic@wavecomp.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ggFTNQp/ypOb
+X-TUID: B7beUYDqYB1g
 
-On 3/3/20 2:05 AM, Peter Maydell wrote:
+On Tue, Mar 03, 2020 at 10:05:11AM +0000, Peter Maydell wrote:
 > The CPUClass has a 'reset' method.  This is a legacy from when
 > TYPE_CPU used not to inherit from TYPE_DEVICE.  We don't need it any
 > more, as we can simply use the TYPE_DEVICE reset.  The 'cpu_reset()'
 > function is kept as the API which most places use to reset a CPU; it
 > is now a wrapper which calls device_cold_reset() and then the
 > tracepoint function.
-> 
+>=20
 > This change should not cause CPU objects to be reset more often
 > than they are at the moment, because:
 >  * nobody is directly calling device_cold_reset() or
@@ -152,47 +142,45 @@ On 3/3/20 2:05 AM, Peter Maydell wrote:
 >    by somebody calling qbus_reset_all()/bus_cold_reset(), or
 >    by the main "reset sysbus and everything in the qbus tree"
 >    reset that most devices are reset by
-> 
+>=20
 > Note that this does not change the need for each machine or whatever
 > to use qemu_register_reset() to arrange to call cpu_reset() -- that
 > is necessary because CPU objects are not on any qbus, so they don't
 > get reset when the qbus tree rooted at the sysbus bus is reset, and
 > this isn't being changed here.
-> 
+>=20
 > All the changes to the files under target/ were made using the
 > included Coccinelle script, except:
-> 
+>=20
 > (1) the deletion of the now-inaccurate and not terribly useful
 > "CPUClass::reset" comments was done with a perl one-liner afterwards:
 >   perl -n -i -e '/ CPUClass::reset/ or print' target/*/*.c
-> 
+>=20
 > (2) this bit of the s390 change was done by hand, because the
 > Coccinelle script is not sophisticated enough to handle the
 > parent_reset call being inside another function:
-> 
-> | @@ -96,8 +96,9 @@ static void s390_cpu_reset(CPUState *s, cpu_reset_type type)
-> |     S390CPU *cpu = S390_CPU(s);
-> |     S390CPUClass *scc = S390_CPU_GET_CLASS(cpu);
-> |     CPUS390XState *env = &cpu->env;
-> |+    DeviceState *dev = DEVICE(s);
+>=20
+> | @@ -96,8 +96,9 @@ static void s390_cpu_reset(CPUState *s, cpu_reset_typ=
+e type)
+> |     S390CPU *cpu =3D S390_CPU(s);
+> |     S390CPUClass *scc =3D S390_CPU_GET_CLASS(cpu);
+> |     CPUS390XState *env =3D &cpu->env;
+> |+    DeviceState *dev =3D DEVICE(s);
 > |
 > |-    scc->parent_reset(s);
 > |+    scc->parent_reset(dev);
-> |     cpu->env.sigp_order = 0;
+> |     cpu->env.sigp_order =3D 0;
 > |     s390_cpu_set_state(S390_CPU_STATE_STOPPED, cpu);
-> 
+>=20
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> Testing was by 'make check' and 'make check-acceptance'.
-> 
-> I need this patch as a preliminary to some arm stuff I'm
-> doing, but I think it makes sense as a cleanup in its own
-> right so I'm sending it out early for review. If it's not
-> yet in master before I get round to finishing the stuff
-> that depends on it I'll resend it as part of that series.
-> ---
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Queued, thanks.
 
+However, if you want to do additional arch-specific work on top
+of this patch, feel free to merge it through your tree.
 
-r~
+Acked-by: Eduardo Habkost <ehabkost@redhat.com>
+
+--=20
+Eduardo
+

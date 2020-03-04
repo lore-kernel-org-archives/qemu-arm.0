@@ -1,92 +1,94 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp1594944lfi;
-        Wed, 4 Mar 2020 05:08:51 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vsyCZfVkthQB7/u8daL+bL1zJPFsfDwu8BW+lfq8c/1GIqDos4aLZCTEGh3GEv5HjoASdi/
-X-Received: by 2002:a0c:eb92:: with SMTP id x18mr2046879qvo.15.1583327331431;
-        Wed, 04 Mar 2020 05:08:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583327331; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp1595177lfi;
+        Wed, 4 Mar 2020 05:09:05 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vtgjMVQI0r5t3uvyIKURCPJEyHQJvDl6tc9usEauVuihDdU7lGv+lLDMPWIXiqzj4HPB4gs
+X-Received: by 2002:aed:2a5c:: with SMTP id k28mr2326999qtf.132.1583327327548;
+        Wed, 04 Mar 2020 05:08:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583327327; cv=none;
         d=google.com; s=arc-20160816;
-        b=NmaCn1fPZlARTn3tHgeGiwT6DEyTnkx1l9hF9a5Afj1X67lTskvv0oB7NKp13oG31Q
-         Za3yp1t6mJHvLUODDNBpXJNxFVS+ITL+gxYa9cSWHlyg5FfA/56J8qoLRUo8mTgFwNvt
-         H2lz3uZdc13njNuVwhBdJJcyKILM+9cBk77buGtvfDsntru0h3T/Qy0W2GIGqiODDmiB
-         NVESgL2IaCg4SuMebIcsViI/dQq8pXsnAlhfqYX1YQin1i5/jW1l4RR4gt9GXdQ8gHue
-         4oxFbLT87VcoTPNqXtFAG/iJIJanJethC/vYDnDvPAxxAkqq96KmtCxWkCGlpv2Zn2TU
-         3Teg==
+        b=Ufuyau0wWkVjG82lLJVnit3l2pSCiu0S4eyyoVnZt9rj9w6yCUpUfPREJKiDJWhZCy
+         28FAmAt/tYKRVc6tQYWLZ5OLbId06OTwppXoTuvOfu60KdSWPH6ufNr3alRQfysBQcP2
+         dXomzOKhQJZWYsIBcqfjLAiK7JRt15B7/mqklHlKOEgjkx7DUq+b4D4IlIpvVjziSoo6
+         9teS1NKgntcukFGTjwz752YuGOtsSM7jF1h0Oo8jJi6oAv1h/L0NRO7+rQmq2+eUpK2w
+         zTJks3mDb7uSUqFPuVrkbuVAudSNnIo7wM48qoF6PhZysuRltn1dXrUzXeBpS86csZ1C
+         81JA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:message-id:date:subject:to:from
-         :dkim-signature:precedence;
-        bh=Buqm9BU7btNF5ftlu+o2Q8ZAjGnwQ5hYELyGAUYeBH0=;
-        b=L2MZ8S22/gAgKcHdVigdGMlLqydzf+R8tehpqwn5u4l99LnAlXAL/Z8jg0RpwFI6GA
-         QjJc/8uFE/JJw29at3K5wqGF9k1jyMiyfYryte9/EoWtTpZ23EcxCvJjYDj00XV+rFUN
-         Ta5si6CmDHT/OgBvjnH8SSF/U91zO8PiB8PZJWsROOJWZrmFHHLiHs2AmgFPB6hafesF
-         /KyIBGU9+B7gz9Tn/kF5fMpGhN7aoEg1EJbRbtrIvZOGswqtho5DSwAKLb55G6STZb+n
-         iWFFNeUy9AYlGHIluFhjJ8HLYhx3u2TL0SOb6ulia1Rm08O01d98D+pqN289CAt4DidM
-         QA/A==
+         :list-unsubscribe:list-id:references:in-reply-to:message-id:date
+         :subject:to:from:dkim-signature:precedence;
+        bh=RzA7COy6OjGENVG5q5PdG3mDLFc4iPpo75ImpI9/idQ=;
+        b=rkv8zjQ203kQJkeEJjmqgYZVNTBYOEkxnn69MvvhomzaOpiw/jfLSr6Z+NPWVHBe2E
+         F5sDH+raa8jJQQmBRr+6BbsK8Hn0Zcuvdr+abn1E6sVGF5U11v4cAjTuPXfBH6JsfAbL
+         +0VnkzGgnA9ZX5eKx4VuvNKLF9EFBp3HFsWnyuJSSiDct0m1pZBbToQ0QLs2tHbnE4kb
+         gRtG09JA5HmgEke1ZexmnDoJFOuGfniekbFS3s0QeW4WIkD86rcnQqCv0zkh5vQ9jOuV
+         2X0LhQochYWzwSnv15ADdUtzvxmWFgkfCq/YDGjPjSFbUhL6igR9XDycQ5u4821mBtXX
+         rv2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@yandex-team.ru header.s=default header.b=n3wK1KI8;
+       dkim=fail header.i=@yandex-team.ru header.s=default header.b=InvlNaS+;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=yandex-team.ru
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i17si886435qtw.226.2020.03.04.05.08.51
+        by mx.google.com with ESMTPS id l201si848953qke.331.2020.03.04.05.08.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Mar 2020 05:08:51 -0800 (PST)
+        Wed, 04 Mar 2020 05:08:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@yandex-team.ru header.s=default header.b=n3wK1KI8;
+       dkim=fail header.i=@yandex-team.ru header.s=default header.b=InvlNaS+;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=yandex-team.ru
-Received: from localhost ([::1]:34054 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34052 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9Tla-0004aU-R9
-	for alex.bennee@linaro.org; Wed, 04 Mar 2020 08:08:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37156)
+	id 1j9TlX-0004U4-0g
+	for alex.bennee@linaro.org; Wed, 04 Mar 2020 08:08:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37180)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <lekiravi@yandex-team.ru>) id 1j9TkG-0002kT-1Z
- for qemu-devel@nongnu.org; Wed, 04 Mar 2020 08:07:29 -0500
+ (envelope-from <lekiravi@yandex-team.ru>) id 1j9TkH-0002mn-SZ
+ for qemu-devel@nongnu.org; Wed, 04 Mar 2020 08:07:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <lekiravi@yandex-team.ru>) id 1j9TkE-00017g-R3
- for qemu-devel@nongnu.org; Wed, 04 Mar 2020 08:07:27 -0500
-Received: from forwardcorp1o.mail.yandex.net ([2a02:6b8:0:1a2d::193]:43130)
+ (envelope-from <lekiravi@yandex-team.ru>) id 1j9TkG-0001CP-K8
+ for qemu-devel@nongnu.org; Wed, 04 Mar 2020 08:07:29 -0500
+Received: from forwardcorp1j.mail.yandex.net ([2a02:6b8:0:1619::183]:40464)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <lekiravi@yandex-team.ru>)
- id 1j9Tk9-0000mr-Ce; Wed, 04 Mar 2020 08:07:22 -0500
-Received: from mxbackcorp1g.mail.yandex.net (mxbackcorp1g.mail.yandex.net
- [IPv6:2a02:6b8:0:1402::301])
- by forwardcorp1o.mail.yandex.net (Yandex) with ESMTP id C66D32E15B5;
- Wed,  4 Mar 2020 16:07:14 +0300 (MSK)
+ id 1j9TkD-00012X-Oh; Wed, 04 Mar 2020 08:07:26 -0500
+Received: from mxbackcorp2j.mail.yandex.net (mxbackcorp2j.mail.yandex.net
+ [IPv6:2a02:6b8:0:1619::119])
+ by forwardcorp1j.mail.yandex.net (Yandex) with ESMTP id E6B6B2E1695;
+ Wed,  4 Mar 2020 16:07:22 +0300 (MSK)
 Received: from sas1-9998cec34266.qloud-c.yandex.net
  (sas1-9998cec34266.qloud-c.yandex.net [2a02:6b8:c14:3a0e:0:640:9998:cec3])
- by mxbackcorp1g.mail.yandex.net (mxbackcorp/Yandex) with ESMTP id
- Ozy1oH08C4-77ECqaxH; Wed, 04 Mar 2020 16:07:14 +0300
+ by mxbackcorp2j.mail.yandex.net (mxbackcorp/Yandex) with ESMTP id
+ fDcZyQkbLf-7JJKZglc; Wed, 04 Mar 2020 16:07:22 +0300
 Precedence: bulk
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
  s=default; 
- t=1583327234; bh=Buqm9BU7btNF5ftlu+o2Q8ZAjGnwQ5hYELyGAUYeBH0=;
- h=Message-Id:Date:Subject:To:From:Cc;
- b=n3wK1KI85tfhFycwUO1cQ8tecrbNpXxSvCBq+7f6hkbXsr3zupioaSUS6AH4ZhxHG
- jj+cpqRdsukX5aSyyVx5n6DiNRd7Fq9hbL8sOTv8SnGaFPrcX4j6pi2NXBA7sIjQY6
- JAGFEjXC0keTAWvEjMfT1DQqd/blA+R42ljmMxv0=
-Authentication-Results: mxbackcorp1g.mail.yandex.net;
+ t=1583327242; bh=RzA7COy6OjGENVG5q5PdG3mDLFc4iPpo75ImpI9/idQ=;
+ h=In-Reply-To:Message-Id:References:Date:Subject:To:From:Cc;
+ b=InvlNaS+6VR8q2ihOkE87gsAyKN7LhYTRQObXdwhw7Zc39oH3dBVLg1PkzoD/5Iox
+ vh7w995083AolKuaLn3q1GpsyysEnHLG2OLsBtnFS8alONLPesN/dQ7rIZA+K2jHsb
+ JemjMrst8VWPU1Y0q5zVcEzSdnyOG+Osf3rwfgbE=
+Authentication-Results: mxbackcorp2j.mail.yandex.net;
  dkim=pass header.i=@yandex-team.ru
 Received: from dynamic-red.dhcp.yndx.net (dynamic-red.dhcp.yndx.net
  [2a02:6b8:0:40c:b4f7:3f29:4fea:8822])
  by sas1-9998cec34266.qloud-c.yandex.net (smtpcorp/Yandex) with ESMTPSA id
- ujb0Gsh6CR-76WO2P6J; Wed, 04 Mar 2020 16:07:07 +0300
+ ujb0Gsh6CR-7IWOaIsp; Wed, 04 Mar 2020 16:07:19 +0300
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
  (Client certificate not present)
 From: Alexey Kirillov <lekiravi@yandex-team.ru>
 To: Eric Blake <eblake@redhat.com>, Thomas Huth <huth@tuxfamily.org>,
  Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH v2 0/4] Introducing QMP query-netdevs command
-Date: Wed,  4 Mar 2020 16:06:52 +0300
-Message-Id: <20200304130656.16859-1-lekiravi@yandex-team.ru>
+Subject: [PATCH v2 2/4] tests: Add tests for query-netdevs command
+Date: Wed,  4 Mar 2020 16:06:54 +0300
+Message-Id: <20200304130656.16859-3-lekiravi@yandex-team.ru>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200304130656.16859-1-lekiravi@yandex-team.ru>
+References: <20200304130656.16859-1-lekiravi@yandex-team.ru>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a02:6b8:0:1a2d::193
+X-Received-From: 2a02:6b8:0:1619::183
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 List-Id: <qemu-devel.nongnu.org>
@@ -122,115 +124,161 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Alexey Kirillov <lekiravi@yandex-team.ru>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ak9KTiNNvL27
+X-TUID: hIrVLpv7JniG
 
-This patch series introduces a new QMP command "query-netdevs" to get
-information about currently attached network devices.
-Also, since the "info_str" field of "NetClientState" is now deprecated,
-it has been completely removed.
-The HMP command "info network" now also uses the new QMP command inside.
-
-Usage example:
-
--> { "execute": "query-netdevs" }
-<- { "return": [
-         {
-             "peer": "netdev0",
-             "netdev": "netdev0",
-             "perm-mac": "52:54:00:12:34:56"
-             "model": "virtio-net-pci",
-             "macaddr": "52:54:00:12:34:56",
-             "queues-count": 1,
-             "type": "nic",
-             "id": "net0"
-         },
-         {
-             "peer": "net0",
-             "ipv6": true,
-             "ipv4": true,
-             "host": "10.0.2.2",
-             "queues-count": 1,
-             "ipv6-dns": "fec0::3",
-             "ipv6-prefix": "fec0::",
-             "net": "10.0.2.0/255.255.255.0",
-             "ipv6-host": "fec0::2",
-             "type": "user",
-             "dns": "10.0.2.3",
-             "hostfwd": [
-                 {
-                     "str": "tcp::20004-:22"
-                 }
-             ],
-             "ipv6-prefixlen": 64,
-             "id": "netdev0",
-             "restrict": false
-         }
-     ]
-   }
-
-v2->v1:
-- Rewrite HMP "info network" to get information from results of QMP command.
-- Remove obsolete field "info_str" from "NetClientState".
-
-Alexey Kirillov (4):
-  qapi: net: Add query-netdevs command
-  tests: Add tests for query-netdevs command
-  hmp: Use QMP query-netdevs in hmp_info_network
-  net: Remove field info_str of NetClientState
-
- hw/net/allwinner_emac.c          |   2 +-
- hw/net/dp8393x.c                 |   2 +-
- hw/net/e1000.c                   |   4 +-
- hw/net/e1000e.c                  |   2 +-
- hw/net/e1000e_core.c             |   2 +-
- hw/net/e1000x_common.c           |   2 +-
- hw/net/eepro100.c                |   5 +-
- hw/net/etraxfs_eth.c             |   2 +-
- hw/net/fsl_etsec/etsec.c         |   2 +-
- hw/net/ftgmac100.c               |   2 +-
- hw/net/i82596.c                  |   6 +-
- hw/net/imx_fec.c                 |   2 +-
- hw/net/lan9118.c                 |   4 +-
- hw/net/mcf_fec.c                 |   2 +-
- hw/net/milkymist-minimac2.c      |   2 +-
- hw/net/mipsnet.c                 |   2 +-
- hw/net/ne2000-isa.c              |   2 +-
- hw/net/ne2000-pci.c              |   2 +-
- hw/net/pcnet.c                   |   2 +-
- hw/net/rocker/rocker_fp.c        |   4 +-
- hw/net/rtl8139.c                 |   6 +-
- hw/net/smc91c111.c               |   2 +-
- hw/net/spapr_llan.c              |   6 +-
- hw/net/stellaris_enet.c          |   2 +-
- hw/net/sungem.c                  |   4 +-
- hw/net/sunhme.c                  |   2 +-
- hw/net/tulip.c                   |   2 +-
- hw/net/virtio-net.c              |   8 +-
- hw/net/vmxnet3.c                 |   4 +-
- hw/net/xen_nic.c                 |   4 -
- hw/net/xgmac.c                   |   2 +-
- hw/net/xilinx_axienet.c          |   2 +-
- hw/net/xilinx_ethlite.c          |   2 +-
- hw/usb/dev-network.c             |   2 +-
- include/net/net.h                |   7 +-
- net/clients.h                    |   1 +
- net/hub.c                        |  12 +-
- net/hub.h                        |   2 +-
- net/l2tpv3.c                     |  20 ++-
- net/net.c                        | 272 +++++++++++++++++++++++++++++--
- net/netmap.c                     |  13 ++
- net/slirp.c                      | 128 ++++++++++++++-
- net/socket.c                     |  93 ++++++++---
- net/tap-win32.c                  |   9 +
- net/tap.c                        | 107 ++++++++++--
- net/vde.c                        |  40 ++++-
- net/vhost-user.c                 |  20 ++-
- qapi/net.json                    |  89 ++++++++++
+Signed-off-by: Alexey Kirillov <lekiravi@yandex-team.ru>
+---
  tests/qtest/Makefile.include     |   2 +
- tests/qtest/test-query-netdevs.c | 120 ++++++++++++++
- 50 files changed, 917 insertions(+), 119 deletions(-)
+ tests/qtest/test-query-netdevs.c | 120 +++++++++++++++++++++++++++++++
+ 2 files changed, 122 insertions(+)
  create mode 100644 tests/qtest/test-query-netdevs.c
 
+diff --git a/tests/qtest/Makefile.include b/tests/qtest/Makefile.include
+index e769c1ad70..6924843ef9 100644
+--- a/tests/qtest/Makefile.include
++++ b/tests/qtest/Makefile.include
+@@ -9,6 +9,7 @@ check-qtest-generic-y += qmp-cmd-test
+ check-qtest-generic-y += qom-test
+ check-qtest-generic-$(CONFIG_MODULES) += modules-test
+ check-qtest-generic-y += test-hmp
++check-qtest-generic-$(CONFIG_SLIRP) += test-query-netdevs
+ 
+ check-qtest-pci-$(CONFIG_RTL8139_PCI) += rtl8139-test
+ check-qtest-pci-$(CONFIG_VGA) += display-vga-test
+@@ -303,6 +304,7 @@ tests/qtest/tpm-crb-test$(EXESUF): tests/qtest/tpm-crb-test.o tests/qtest/tpm-em
+ tests/qtest/tpm-tis-swtpm-test$(EXESUF): tests/qtest/tpm-tis-swtpm-test.o tests/qtest/tpm-emu.o \
+ 	tests/qtest/tpm-util.o tests/qtest/tpm-tests.o $(test-io-obj-y)
+ tests/qtest/tpm-tis-test$(EXESUF): tests/qtest/tpm-tis-test.o tests/qtest/tpm-emu.o $(test-io-obj-y)
++tests/qtest/test-query-netdevs$(EXESUF): tests/qtest/test-query-netdevs.o
+ 
+ # QTest rules
+ 
+diff --git a/tests/qtest/test-query-netdevs.c b/tests/qtest/test-query-netdevs.c
+new file mode 100644
+index 0000000000..e077358a50
+--- /dev/null
++++ b/tests/qtest/test-query-netdevs.c
+@@ -0,0 +1,120 @@
++/*
++ * QTest testcase for the query-netdevs
++ *
++ * Copyright Yandex N.V., 2019
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ *
++ */
++
++#include "qemu/osdep.h"
++
++#include "libqtest.h"
++#include "qapi/qmp/qdict.h"
++#include "qapi/qmp/qlist.h"
++
++/*
++ * Events can get in the way of responses we are actually waiting for.
++ */
++GCC_FMT_ATTR(2, 3)
++static QObject *wait_command(QTestState *who, const char *command, ...)
++{
++    va_list ap;
++    QDict *response;
++    QObject *result;
++
++    va_start(ap, command);
++    qtest_qmp_vsend(who, command, ap);
++    va_end(ap);
++
++    response = qtest_qmp_receive(who);
++
++    result = qdict_get(response, "return");
++    g_assert(result);
++    qobject_ref(result);
++    qobject_unref(response);
++
++    return result;
++}
++
++static void qmp_query_netdevs_no_error(QTestState *qts,
++                                       size_t netdevs_count)
++{
++    QObject *resp;
++    QList *netdevs;
++
++    resp = wait_command(qts, "{'execute': 'query-netdevs'}");
++
++    netdevs = qobject_to(QList, resp);
++    g_assert(netdevs);
++    g_assert(qlist_size(netdevs) == netdevs_count);
++
++    qobject_unref(resp);
++}
++
++static void test_query_netdevs(void)
++{
++    const char *arch = qtest_get_arch();
++    size_t correction = 0;
++    QObject *resp;
++    QTestState *state;
++
++    /* Archs which still have a netdev despite of -nodefaults */
++    if (g_str_equal(arch, "cris") ||
++        g_str_equal(arch, "microblaze") ||
++        g_str_equal(arch, "microblazeel") ||
++        g_str_equal(arch, "sparc")) {
++        correction = 1;
++    }
++
++    if (g_str_equal(arch, "arm") ||
++        g_str_equal(arch, "aarch64")) {
++        state = qtest_init(
++            "-nodefaults "
++            "-M virt "
++            "-netdev user,id=slirp0");
++    } else if (g_str_equal(arch, "tricore")) {
++        state = qtest_init(
++            "-nodefaults "
++            "-M tricore_testboard "
++            "-netdev user,id=slirp0");
++    } else {
++        state = qtest_init(
++            "-nodefaults "
++            "-netdev user,id=slirp0");
++    }
++    g_assert(state);
++
++    qmp_query_netdevs_no_error(state, 1 + correction);
++
++    resp = wait_command(state,
++        "{'execute': 'netdev_add', 'arguments': {"
++        " 'id': 'slirp1',"
++        " 'type': 'user'}}");
++    qobject_unref(resp);
++
++    qmp_query_netdevs_no_error(state, 2 + correction);
++
++    resp = wait_command(state,
++        "{'execute': 'netdev_del', 'arguments': {"
++        " 'id': 'slirp1'}}");
++    qobject_unref(resp);
++
++    qmp_query_netdevs_no_error(state, 1 + correction);
++
++    qtest_quit(state);
++}
++
++int main(int argc, char **argv)
++{
++    int ret = 0;
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/net/qapi/query_netdevs",
++        test_query_netdevs);
++
++    ret = g_test_run();
++
++    return ret;
++}
 -- 
 2.17.1
 

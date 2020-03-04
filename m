@@ -1,279 +1,98 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp1357614lfi;
-        Wed, 4 Mar 2020 00:42:17 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vt2hJsYopt2PJU/TVxhPByC79okIhE91srl6VU3fKrJvmaIYYxrbM+0z1F0mHsKbU00Iv4I
-X-Received: by 2002:ae9:edd6:: with SMTP id c205mr1851639qkg.463.1583311337640;
-        Wed, 04 Mar 2020 00:42:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583311337; cv=none;
-        d=google.com; s=arc-20160816;
-        b=ARegPJOuijIXFLnIYwJeQrM8AIzYbgCioPPi/WsXq4WTiVjKKIyMrKLDLWsvdLiCol
-         JiLlFbVqcR+lDWT0eYosBXchZuK42Ls/m/XGdLXrO/z+pCo/JfwoPIx6V6fI/WsVmRUQ
-         U9tzufKDNHnhmAF25sucGzKZ5OPS7bBCmnGnogSgzLdWre7Oh126ciomn155+g4RkdS7
-         0NoXet4JEkU9t8T7GHtPYuVwMNBLD7+mouhzjzQETkn6ftsDFOJCY+rkmnevRiR62ZBn
-         LyXH1qBWUIo3na8LKozV6rG7b1dTMGbUq7sGUPeNkS/hff883EagAkbBCb7a/ay5eNWe
-         ri6w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=OgNwV5USrQJeZxZK5OBrqBjk/XsntILUUNhBku8etPs=;
-        b=Xs5JMvjw/dEBYKRA9EjVchXOjofWe/Xcs83MwGC2cI4kSfWZe9YbZM40x2vq7VAxMX
-         caVX7wWwBKFNDhlLQPs3hrik6FtM/krfewYNyO2jFQwFfs1HTKHUMNKK1xKWoMThjtmS
-         Y2ES6/lglAHyM34kDcSlocGFzOQc3Os+cWKN7usPOpMJc+beVlwhvyqkV0lAqLEtHRXh
-         +AuliVzP1w+dW/BfYzXIVHK+gbYFTqxHc3QAppVfIzrcvELL5iIfqRxiDOA1OvNjIVEL
-         zag1XGZgTJjCCO1E+AAyzF7hfVqNcnsyWnCikzQyVeFGgq/WFzvzGp0QPdKA1B79TbnC
-         XHOw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=a0rL1ck3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j61si560570qte.159.2020.03.04.00.42.17
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Mar 2020 00:42:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=a0rL1ck3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58954 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9Pbd-0005hY-30
-	for alex.bennee@linaro.org; Wed, 04 Mar 2020 03:42:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41084)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j9PbU-0005ei-9q
- for qemu-arm@nongnu.org; Wed, 04 Mar 2020 03:42:09 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j9PbS-00082R-ED
- for qemu-arm@nongnu.org; Wed, 04 Mar 2020 03:42:07 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:37968
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j9PbS-00081O-BC
- for qemu-arm@nongnu.org; Wed, 04 Mar 2020 03:42:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583311326;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=OgNwV5USrQJeZxZK5OBrqBjk/XsntILUUNhBku8etPs=;
- b=a0rL1ck3e56+Ssi39qHpkMH0dgKd8DjvgknS9P/7/1K48m0Y4yFU/6/YdGbHxVRFeSpvh4
- V8921r5neg1O+HwKohTP6UddxJIE08LrTimUXZr/qhedpUakMYqf9Yd0xLomkcC6tKZsOU
- fWem0u5WKjRgQ6h5pyvek3qnrbg8Vfw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-91-FIMHvM-5M3-CkriYpLjw-A-1; Wed, 04 Mar 2020 03:42:00 -0500
-X-MC-Unique: FIMHvM-5M3-CkriYpLjw-A-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 782DB190D340;
- Wed,  4 Mar 2020 08:41:58 +0000 (UTC)
-Received: from [10.36.116.59] (ovpn-116-59.ams2.redhat.com [10.36.116.59])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 211985DA60;
- Wed,  4 Mar 2020 08:41:45 +0000 (UTC)
-Subject: Re: [PATCH v16 00/10] VIRTIO-IOMMU device
-To: Zhangfei Gao <zhangfei.gao@gmail.com>
-References: <20200214132745.23392-1-eric.auger@redhat.com>
- <20200227111717.GG1645630@redhat.com>
- <431cb39d-833c-6d02-d7b3-02b3e90446e2@redhat.com>
- <CAMj5Bkib3CTzCB02ScueFR84r28LGowF7uxYO8Ygmnj9X7oNOg@mail.gmail.com>
- <fea625f1-b58e-6da6-8e2a-f32fc9391fc8@redhat.com>
- <CAMj5Bkgm1LKbN3E2qTTxmrGhpmdL9NWarSfX-mYCWF0yt5E9eg@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <88e3b669-2998-41c0-83f7-de42a72a73e7@redhat.com>
-Date: Wed, 4 Mar 2020 09:41:44 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id n11sm28318380wrq.40.2020.03.04.02.35.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Mar 2020 02:35:38 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id BD2241FF87;
+	Wed,  4 Mar 2020 10:35:36 +0000 (GMT)
+References: <20200301215029.15196-1-nieklinnenbank@gmail.com>
+ <20200301215029.15196-19-nieklinnenbank@gmail.com>
+User-agent: mu4e 1.3.9; emacs 27.0.90
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ philmd@redhat.com, b.galvani@gmail.com, jasowang@redhat.com,
+ imammedo@redhat.com
+Subject: Re: [PATCH v6 18/18] docs: add Orange Pi PC document
+In-reply-to: <20200301215029.15196-19-nieklinnenbank@gmail.com>
+Date: Wed, 04 Mar 2020 10:35:36 +0000
+Message-ID: <871rq876h3.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <CAMj5Bkgm1LKbN3E2qTTxmrGhpmdL9NWarSfX-mYCWF0yt5E9eg@mail.gmail.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, kevin.tian@intel.com,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- kenneth-lee-2012@foxmail.com, tnowicki@marvell.com,
- "Michael S. Tsirkin" <mst@redhat.com>, quintela@redhat.com,
- zhangfei.gao@foxmail.com, qemu-devel@nongnu.org, peterx@redhat.com,
- dgilbert@redhat.com, bharatb.linux@gmail.com, qemu-arm@nongnu.org,
- "Wangzhou \(B\)" <wangzhou1@hisilicon.com>, jean-philippe@linaro.org,
- eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HWiyRSODmwEG
+X-TUID: Fc37Os+64Na7
 
-Hi Zhangfei,
 
-On 3/4/20 7:08 AM, Zhangfei Gao wrote:
-> On Tue, Mar 3, 2020 at 5:41 PM Auger Eric <eric.auger@redhat.com> wrote:
->>
->> Hi Zhangfei,
->> On 3/3/20 4:23 AM, Zhangfei Gao wrote:
->>> Hi Eric
->>>
->>> On Thu, Feb 27, 2020 at 9:50 PM Auger Eric <eric.auger@redhat.com> wrot=
-e:
->>>>
->>>> Hi Daniel,
->>>>
->>>> On 2/27/20 12:17 PM, Daniel P. Berrang=C3=A9 wrote:
->>>>> On Fri, Feb 14, 2020 at 02:27:35PM +0100, Eric Auger wrote:
->>>>>> This series implements the QEMU virtio-iommu device.
->>>>>>
->>>>>> This matches the v0.12 spec (voted) and the corresponding
->>>>>> virtio-iommu driver upstreamed in 5.3. All kernel dependencies
->>>>>> are resolved for DT integration. The virtio-iommu can be
->>>>>> instantiated in ARM virt using:
->>>>>>
->>>>>> "-device virtio-iommu-pci".
->>>>>
->>>>> Is there any more documentation besides this ?
->>>>
->>>> not yet in qemu.
->>>>>
->>>>> I'm wondering on the intended usage of this, and its relation
->>>>> or pros/cons vs other iommu devices
->>>>
->>>> Maybe if you want to catch up on the topic, looking at the very first
->>>> kernel RFC may be a good starting point. Motivation, pros & cons were
->>>> discussed in that thread (hey, April 2017!)
->>>> https://lists.linuxfoundation.org/pipermail/iommu/2017-April/021217.ht=
-ml
->>>>
->>>> on ARM we have SMMUv3 emulation. But the VFIO integration is not
->>>> possible because SMMU does not have any "caching mode" and my nested
->>>> paging kernel series is blocked. So the only solution to integrate wit=
-h
->>>> VFIO is looming virtio-iommu.
->>>>
->>>> In general the pros that were put forward are: virtio-iommu is
->>>> architecture agnostic, removes the burden to accurately model complex
->>>> device states, driver can support virtualization specific optimization=
-s
->>>> without being constrained by production driver maintenance. Cons is pe=
-rf
->>>> and mem footprint if we do not consider any optimization.
->>>>
->>>> You can have a look at
->>>>
->>>> http://events17.linuxfoundation.org/sites/events/files/slides/viommu_a=
-rm.pdf
->>>>
->>> Thanks for the patches.
->>>
->>> Could I ask one question?
->>> To support vSVA and pasid in guest, which direction you recommend,
->>> virtio-iommu or vSMMU (your nested paging)
->>>
->>> Do we still have any obstacles?
->> you can ask the question but not sure I can answer ;-)
->>
->> 1) SMMUv3 2stage implementation is blocked by Will at kernel level.
->>
->> Despite this situation I may/can respin as Marvell said they were
->> interested in this effort. If you are also interested in (I know you
->> tested it several times and I am grateful to you for that), please reply
->> to:
->> [PATCH v9 00/14] SMMUv3 Nested Stage Setup (IOMMU part)
->> (https://patchwork.kernel.org/cover/11039871/) and say you are
->> interested in that work so that maintainers are aware there are
->> potential users.
->>
->> At the moment I have not supported multiple CDs because it introduced
->> other dependencies.
->>
->> 2) virtio-iommu
->>
->> So only virtio-iommu dt boot on machvirt is currently supported. For non
->> DT, Jean respinned his kernel series
->> "[PATCH v2 0/3] virtio-iommu on x86 and non-devicetree platforms" as you
->> may know. However non DT integration still is controversial. Michael is
->> pushing for putting the binding info the PCI config space. Joerg
->> yesterday challenged this solution and said he would prefer ACPI
->> integration. ACPI support depends on ACPI spec update & vote anyway.
->>
->> To support PASID at virtio-iommu level you also need virtio-iommu API
->> extensions to be proposed and written + kernel works. So that's a long
->> road. I will let Jean-Philippe comment on that.
->>
->> I would just say that Intel is working on nested paging solution with
->> their emulated intel-iommu. We can help them getting that upstream and
->> partly benefit from this work.
->>
->>> Would you mind give some breakdown.
->>> Jean mentioned PASID still not supported in QEMU.
->> Do you mean support of multiple CDs in the emulated SMMU? That's a thing
->> I could implement quite easily. What is more tricky is how to test it.
->=20
-> Thanks Eric
->=20
-> Discussed with Jean before, here are some obstacles for vSVA via nested p=
-aging.
-> Do you think they are still big issues?
->=20
-> Copy "
-> * PASID support in QEMU, I don't think there is anything yet
-> // this is not a big issue as your comments.
->=20
-> * Page response support in VFIO and QEMU. With Eric's series we can
-> inject recoverable faults into the guest, but there is no channel for
-> the guest to RESUME the stall after fixing it.
-I guess this matches a command sent through the SMMUv3 command queue
-(CMD_PRI_RESP) that should be trapped by QEMU and injected to the
-physical SMMU, right?
+Niek Linnenbank <nieklinnenbank@gmail.com> writes:
 
-I think everybody misses that injection path and that's not specific to
-virtio-iommu. PRS is not currently addressed by in-flight Intel's kernel
-series ([PATCH V9 00/10] Nested Shared Virtual Address (SVA) VT-d
-support) either.
+> The Xunlong Orange Pi PC machine is a functional ARM machine
+> based on the Allwinner H3 System-on-Chip. It supports mainline
+> Linux, U-Boot, NetBSD and is covered by acceptance tests.
+>
+> This commit adds a documentation text file with a description
+> of the machine and instructions for the user.
 
-I think the topic is complex enough to separate the concerns and try to
-move forward in incremental steps hence my efforts to push for simple
-nested use case. Can't you support vSVA without PRS first (I think this
-Intel's strategy too)
->=20
-> * We can't use DVM in nested mode unless the VMID is shared with the
-> CPU. For that we'll need the host SMMU driver to hook into the KVM VMID
-> allocator, just like we do for the ASID allocator. I haven't yet
-> investigated how to do that. It's possible to do vSVA without DVM
-> though, by sending all TLB invalidations through the SMMU command queue.
-> "
-OK.
+This is great, thanks for taking the time to include documentation.
 
-From the above arguments I am not sure there are technical blockers with
-nested paging implementation. For sure there are things that are not
-supported, because I did not address this topic yet.
+>
+> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> ---
+>  docs/orangepi.rst | 226
+> ++++++++++++++++++++++++++++++++++++++++++++++
 
-If I were to work on this, you did not answer bout the testing feasibility.
+I suspect there is a better place to put this is than the top level. I
+wonder if it should be docs/specs?
 
-Thanks
+>  MAINTAINERS       |   1 +
+>  2 files changed, 227 insertions(+)
+>  create mode 100644 docs/orangepi.rst
+>
+> diff --git a/docs/orangepi.rst b/docs/orangepi.rst
+> new file mode 100644
+> index 0000000000..a9b46f553c
+> --- /dev/null
+> +++ b/docs/orangepi.rst
+> @@ -0,0 +1,226 @@
+> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D
+> +Orange Pi PC Machine Type
+> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D
+> +
+> +The Xunlong Orange Pi PC is an Allwinner H3 System on Chip
+> +based embedded computer with mainline support in both U-Boot
+> +and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,
+> +1GiB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and
+> +various other I/O.
 
-Eric
->=20
-> Thanks
->=20
+When Peter's document PR goes in later this week there will also be a:
 
+  docs/system/target-arm.rst
+
+which would benefit from a section for the Orange Pi in it.
+
+> +
+> +Supported devices
+> +-----------------
+> +
+> +The Orange Pi PC machine supports the following devices:
+> +
+> + * SMP (Quad Core Cortex A7)
+> + * Generic Interrupt Controller configuration
+> + * SRAM mappings
+> + * SDRAM controller
+> + * Real Time Clock
+> + * Timer device (re-used from Allwinner A10)
+> + * UART
+> + * SD/MMC storage controller
+> + * EMAC ethernet
+
+Do we ever exercise the ethernet in the acceptance tests? I see we have
+some that boots a full OS but boot console only seems to touch the
+serial console.
+
+<snip>
+
+--=20
+Alex Benn=C3=A9e

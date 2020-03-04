@@ -1,320 +1,186 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp1605792lfi;
-        Wed, 4 Mar 2020 05:18:45 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vsx+liJBb7LxuHMqQf6av/OpTHXacY/PSFwO6RUoN7Sx3EsBoXedyRCQa/JywoaK45IOXfm
-X-Received: by 2002:ac8:1c0d:: with SMTP id a13mr2297633qtk.253.1583327925425;
-        Wed, 04 Mar 2020 05:18:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583327925; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp1630836lfi;
+        Wed, 4 Mar 2020 05:44:52 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vvIj3KrNGv8tvoFQtSYtlnMD3yQRDb9IYS6qtpsmN11ZMf/x51w8JMG5nSfLsosoOtWkz02
+X-Received: by 2002:a37:b984:: with SMTP id j126mr2807405qkf.3.1583329492726;
+        Wed, 04 Mar 2020 05:44:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583329492; cv=none;
         d=google.com; s=arc-20160816;
-        b=jQb/8z3pSjX1suOG2jKwPZKxtOyjYgIaOVkD6V0LbqV0L7nwEQHl/W/AMf3JBfTQ2d
-         UwLKiS0r1KZ0VwMnlD58iCTqG36wEqim1YD+DSXwjaJTcLwL4OqLox0bX9xg7d68K1fM
-         503jDWILHU0hl6Zagaqru44ukuoUSBuDAr9aCO5vQddRQq7sHBRca+wkkAjv/285dI0U
-         76/kI95qSbcU2lCt/t7c8rkQ2iQ3ntoPRA5VUK9k00qnqqlxwsu8M/WGeUBQGO/vYFeF
-         BKSnX/O8IASL7Ei7p0YnC++hMiyv4/Uk/TFIaz7EMtELuN5/AsnIcyQwzuF7aaMzf5oi
-         2ZeQ==
+        b=bcr0hlLHAl3s1Eq3VQZy8AROXHUdcmRO+UcSDlKUFV6PLhTlpY8+P9SdLg92BHcIkL
+         ye0qgCylHYqzFK0t5WA2QK+SYV+ElVl31DuEcFAZojZeB8y06Fr0RNlikALj9kXapwQa
+         DdHA2myO/sFluu5CSiDMR25WDedQ7CtAkgeb4JLC0P1JMXWJE4uLhjxq+sPqIpFeZHe+
+         LwCB09yCSfvCD2Qa2yl3SYHY+uhAIB5slUVVcofyKRmN5GjlhQdn+Eb4DVAtIyRjRkfK
+         /Fnh+e/kURJyQNK9jwCGHpgW/Ee5gx6zhv6xJhCDcGXkjDslChIIHUz4LLW7Tfm/wCH7
+         XlCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=3p/fFbxB5ezcsfdq9MHESgqC9UtCWJvZwUNOkF4Zu30=;
-        b=PyAgrbgJK5SWimiIMnxMVcT2uP7DeNhTE3W0vZkX09I6WeoTw+mgKxu50kiKV7GadS
-         GJ/OZDFcqRYjawtgxB6p41ocgYs81WbP38R+RVLH9b+9l0Am4gASM0u0Z+cQ2D1Z5ejy
-         hNlO3p3bq0X/7lpzeykM/cY1AY047h3QJjdH2ZKwlGFEjJgoDvmXRT8oVXFykVGQVNfp
-         TXkeWGLVpB0oeVWX8c5uBaTujpjQfqLi54O/dIAbCPNihk8fwjQNiDX028iO/E1yK55f
-         ZdbzyqlJM/fxWaNs5VtIlyPkwgULf/uPP7pnGCUx6jeTjgo8/sCkKRuLgA9dkmqoy8+3
-         ScNA==
+        bh=l1KhDTV6bVBYBYHnWDxWWNOY+j5WAiV2buvrkHO4Q18=;
+        b=zuReeAiMAXeQLG4bYpRoJNxMwgI2+JdtGOwgSzJR5gdLouq0UH3+I6krKGn0AtKSwZ
+         9pFDwaSxxAXkapT8gDn/yhXFY13iBU6vNK7eB5jS+odoiJrQlIiUg3eB1+m/qCqGZdzI
+         1aPy8U4ego69s1H3j849/1AoxW7ub+ELDLYvdrQNTFmqLcS26st2MxgTauTlp/iNMS9Z
+         DLfKcnNCEmeAFwKNHvKAYuoxl0wPPg8A/a8xX+bNmITH8M8jeEbiZecZC0X0wluAC5Gr
+         d4x/rxU980faDO4LjAakC+eYzlEC7tDcb7h19B3ClmjLRJ6gtou4/vi7VCfPud+G3uow
+         8Ylw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bcSefQps;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HJgFkhGI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e6si954735qtk.336.2020.03.04.05.18.45
+        by mx.google.com with ESMTPS id x4si944307qvo.86.2020.03.04.05.44.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Mar 2020 05:18:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Mar 2020 05:44:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bcSefQps;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HJgFkhGI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34258 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34582 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9TvA-0000Hb-Qt
-	for alex.bennee@linaro.org; Wed, 04 Mar 2020 08:18:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39031)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j9UKS-0004Gn-67
+	for alex.bennee@linaro.org; Wed, 04 Mar 2020 08:44:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46137)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j9TpU-0000CM-7h
- for qemu-devel@nongnu.org; Wed, 04 Mar 2020 08:12:53 -0500
+ (envelope-from <pbonzini@redhat.com>) id 1j9UKF-0004D5-DK
+ for qemu-arm@nongnu.org; Wed, 04 Mar 2020 08:44:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j9TpS-0004y5-2W
- for qemu-devel@nongnu.org; Wed, 04 Mar 2020 08:12:51 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:26673
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <pbonzini@redhat.com>) id 1j9UKE-00020l-Gg
+ for qemu-arm@nongnu.org; Wed, 04 Mar 2020 08:44:39 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:51549
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j9TpR-0004wX-Us
- for qemu-devel@nongnu.org; Wed, 04 Mar 2020 08:12:50 -0500
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1j9UKE-0001yB-Dd
+ for qemu-arm@nongnu.org; Wed, 04 Mar 2020 08:44:38 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583327568;
+ s=mimecast20190719; t=1583329477;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3p/fFbxB5ezcsfdq9MHESgqC9UtCWJvZwUNOkF4Zu30=;
- b=bcSefQpsLtDUfcyjn/kGdotGvC+naPVGykV83i//iBfXtaR+YsyfiGOW09dcL0yOXIWttf
- KGrKFFkZv46TUo0DJMRZALJmPJ6Od1N4O8xYjA/nN6PfHQHuIC+ztslZXePS3mmU6PahMC
- MSVwu7+I4J3KAmLID1vuN0k9jE3DIiU=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-58-C_ahjHcAN4-pIQEpcsNJmQ-1; Wed, 04 Mar 2020 08:12:44 -0500
-X-MC-Unique: C_ahjHcAN4-pIQEpcsNJmQ-1
-Received: by mail-ed1-f71.google.com with SMTP id k6so1558903edq.8
- for <qemu-devel@nongnu.org>; Wed, 04 Mar 2020 05:12:44 -0800 (PST)
+ bh=l1KhDTV6bVBYBYHnWDxWWNOY+j5WAiV2buvrkHO4Q18=;
+ b=HJgFkhGIA5UNCzAXOTqieyydn8Fj2xhUSE71aJ7dOmoWE0WXpiuB5QXmMzkybV0IQVcJRA
+ +TPYinMOPWsUynWr8QSpE5tUrIBRmTEelybLr9uRBx5cJH6mBCCClkB/Pox93Myhn0aOyY
+ RqjEOUuMzfzBdumoNUQelQQ6p+TzDSw=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-67-iEKa51XHOoG-E_Y_zfKmLg-1; Wed, 04 Mar 2020 08:44:33 -0500
+X-MC-Unique: iEKa51XHOoG-E_Y_zfKmLg-1
+Received: by mail-wr1-f72.google.com with SMTP id w11so857667wrp.20
+ for <qemu-arm@nongnu.org>; Wed, 04 Mar 2020 05:44:33 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Wrv00mxDOOqpdemOYspMDZ/TSsZzjo/OCltlEBUziv8=;
- b=pU5Oh+uPgdq/L7iTn99I3qDAl7gA9TMhMKM0mJslhAIUS1rOa5FSd3bvFj5UUBA+wf
- ciPQtJvnAbIGww1sAAG11ThLpt3ZHEioapKqTy6ROtlDlLCMq022ABoTCqA5jEiWgcLV
- gqXNOgLzkJFtNzxuKWsVu5zxrTLJud63yoXERldoHzeLLPmCSOvQWCKSPGHr20jqowV7
- zFlpk3Xec8zWfDnwP41QeWv/4sqqnj0AscaEd4LMWAixSjO+C84z+jtxf7u7mwadufDb
- wc1/2HA3PwhtQIGwqqUf7a1VnFuidmBLooTbPfEC2Lr8xVZ0iLHxx6rOyqUIQvCQfz5W
- 4A8g==
-X-Gm-Message-State: ANhLgQ1poajzIvt2W/mftcY4Qa/SiwFZ1B5mBZJw+/72Sdg4lipfU7IM
- 4jLRpHF0Kwe+FLWgw40ba/GqJNHNem0BYK7fFgVmvbqlUQSyLNO45KtocGHVp/TKdiBZcE2Jfqy
- AJD9foTmGAX3sCDg=
-X-Received: by 2002:a17:906:bb0c:: with SMTP id
- jz12mr2497664ejb.298.1583327562972; 
- Wed, 04 Mar 2020 05:12:42 -0800 (PST)
-X-Received: by 2002:a17:906:bb0c:: with SMTP id
- jz12mr2497606ejb.298.1583327562540; 
- Wed, 04 Mar 2020 05:12:42 -0800 (PST)
-Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id dm24sm296392edb.57.2020.03.04.05.12.39
+ bh=cwtpJISE4+PKDpLucCLSKmtD6ahPfpNV5KVXN5QcR7Q=;
+ b=lzFI9ums2IfQToM0XKUBRoX11/4PJM//B4MdYRdyNhfeaawQAsobnIfwReA69pJPKZ
+ xVeP360W4Mc3d1E8I1GotBp8BmzGEc27M2hlqu8MullazH2u4PIWPHJ8bUKBtJS/hSnV
+ 3GIZHtN8YUtKXY8Ruf7H6gFsFmkTnDgICskdzptDT9MhGUzPGu3hyu7dc4OGaJmKJm7K
+ KMiArAHSkw6WN/IKhvg03j4Cbb8LZWGxyDaDcnZkyx2laeok9cuCZpN7GIFzXLbHNsnz
+ cfE+6/GXLPQANAFevzvU+DQv07adABneTefJvU/E0qNjyrm8/QbhfY/zoPqvY1iSTUx6
+ aLkQ==
+X-Gm-Message-State: ANhLgQ1X2p/3vRxgRFfsUy3wkCC8AtmuaGRXNMMSt2utlMXjCuXPVTqC
+ 7N8Ll/44Fdzaw8QlddflSsDg7HMsO05FCOpIkKKZ9uAI+9n267UHZ7r0T9WLITd9SDjCnXqFTjt
+ C6yLRiD72N5DX
+X-Received: by 2002:a5d:6891:: with SMTP id h17mr4104445wru.259.1583329472404; 
+ Wed, 04 Mar 2020 05:44:32 -0800 (PST)
+X-Received: by 2002:a5d:6891:: with SMTP id h17mr4104420wru.259.1583329472179; 
+ Wed, 04 Mar 2020 05:44:32 -0800 (PST)
+Received: from ?IPv6:2001:b07:6468:f312:9def:34a0:b68d:9993?
+ ([2001:b07:6468:f312:9def:34a0:b68d:9993])
+ by smtp.gmail.com with ESMTPSA id h20sm18051714wrc.47.2020.03.04.05.44.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 04 Mar 2020 05:12:41 -0800 (PST)
+ Wed, 04 Mar 2020 05:44:31 -0800 (PST)
 Subject: Re: [PATCH 1/2] misc: Replace zero-length arrays with flexible array
  member (automatic)
-To: qemu-devel@nongnu.org
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
 References: <20200304005105.27454-1-philmd@redhat.com>
  <20200304005105.27454-2-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <1e1a1491-15ca-29d4-8bd6-1bf14edb4ad5@redhat.com>
-Date: Wed, 4 Mar 2020 14:12:38 +0100
+ <1e1a1491-15ca-29d4-8bd6-1bf14edb4ad5@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <38b55649-b1cd-8891-5c13-ec4c6ef3ae5e@redhat.com>
+Date: Wed, 4 Mar 2020 14:44:29 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200304005105.27454-2-philmd@redhat.com>
+In-Reply-To: <1e1a1491-15ca-29d4-8bd6-1bf14edb4ad5@redhat.com>
 Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-devel@nongnu.org
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Yuval Shaia <yuval.shaia.ml@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
- David Hildenbrand <david@redhat.com>,
+ Eric Blake <eblake@redhat.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ qemu-block@nongnu.org, David Hildenbrand <david@redhat.com>,
  "Gustavo A . R . Silva" <gustavo@embeddedor.com>,
  Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
  "Gonglei \(Arei\)" <arei.gonglei@huawei.com>,
- Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Paul Durrant <paul@xen.org>, Eric Auger <eric.auger@redhat.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Anthony Perard <anthony.perard@citrix.com>,
  =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Kevin Wolf <kwolf@redhat.com>, Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Paul Durrant <paul@xen.org>,
+ Eric Auger <eric.auger@redhat.com>, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ xen-devel@lists.xenproject.org, John Snow <jsnow@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
  Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Reitz <mreitz@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z76vZLfBC4zt
+ Max Reitz <mreitz@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5eo27C8CySiR
 
-On 3/4/20 1:51 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Description copied from Linux kernel commit from Gustavo A. R. Silva
-> (see [3]):
+On 04/03/20 14:12, Philippe Mathieu-Daud=C3=A9 wrote:
 >=20
-> --v-- description start --v--
+> hw/scsi/spapr_vscsi.c:69:29: error: field 'iu' with variable sized type
+> 'union viosrp_iu' not at the end of a struct or class is a GNU extension
+> [-Werror,-Wgnu-variable-sized-type-not-at-end]
+> =C2=A0=C2=A0=C2=A0 union viosrp_iu=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 iu;
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 ^
 >=20
->    The current codebase makes use of the zero-length array language
->    extension to the C90 standard, but the preferred mechanism to
->    declare variable-length types such as these ones is a flexible
->    array member [1], introduced in C99:
+> Yay we found a bug! Thanks Gustavo :)
 >=20
->    struct foo {
->        int stuff;
->        struct boo array[];
->    };
->=20
->    By making use of the mechanism above, we will get a compiler
->    warning in case the flexible array does not occur last in the
->    structure, which will help us prevent some kind of undefined
->    behavior bugs from being unadvertenly introduced [2] to the
->    Linux codebase from now on.
->=20
-> --^-- description end --^--
->=20
-> Do the similar housekeeping in the QEMU codebase (which uses
-> C99 since commit 7be41675f7cb).
->=20
-> All these instances of code were found with the help of the
-> following Coccinelle script:
->=20
->    @@
->    identifier s, a;
->    type T;
->    @@
->     struct s {
->        ...
->    -   T a[0];
->    +   T a[];
->    };
->    @@
->    identifier s, a;
->    type T;
->    @@
->     struct s {
->        ...
->    -   T a[0];
->    +   T a[];
->     } QEMU_PACKED;
->=20
-> [1] https://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html
-> [2] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/co=
-mmit/?id=3D76497732932f
-> [3] https://git.kernel.org/pub/scm/linux/kernel/git/gustavoars/linux.git/=
-commit/?id=3D17642a2fbd2c1
->=20
-> Inspired-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->   bsd-user/qemu.h                       |  2 +-
->   contrib/libvhost-user/libvhost-user.h |  2 +-
->   hw/m68k/bootinfo.h                    |  2 +-
->   hw/scsi/srp.h                         |  6 +++---
->   hw/xen/xen_pt.h                       |  2 +-
->   include/hw/acpi/acpi-defs.h           | 12 ++++++------
->   include/hw/arm/smmu-common.h          |  2 +-
->   include/hw/i386/intel_iommu.h         |  3 ++-
->   include/hw/virtio/virtio-iommu.h      |  2 +-
->   include/sysemu/cryptodev.h            |  2 +-
->   include/tcg/tcg.h                     |  2 +-
->   pc-bios/s390-ccw/bootmap.h            |  2 +-
->   pc-bios/s390-ccw/sclp.h               |  2 +-
->   tests/qtest/libqos/ahci.h             |  2 +-
->   block/linux-aio.c                     |  2 +-
->   hw/acpi/nvdimm.c                      |  6 +++---
->   hw/dma/soc_dma.c                      |  2 +-
->   hw/i386/x86.c                         |  2 +-
->   hw/misc/omap_l4.c                     |  2 +-
->   hw/nvram/eeprom93xx.c                 |  2 +-
->   hw/rdma/vmw/pvrdma_qp_ops.c           |  4 ++--
->   hw/usb/dev-network.c                  |  2 +-
->   hw/usb/dev-smartcard-reader.c         |  4 ++--
->   hw/virtio/virtio.c                    |  4 ++--
->   net/queue.c                           |  2 +-
->   25 files changed, 38 insertions(+), 37 deletions(-)
->=20
-[...]
-> diff --git a/hw/scsi/srp.h b/hw/scsi/srp.h
-> index d27f31d2d5..54c954badd 100644
-> --- a/hw/scsi/srp.h
-> +++ b/hw/scsi/srp.h
-> @@ -112,7 +112,7 @@ struct srp_direct_buf {
->   struct srp_indirect_buf {
->       struct srp_direct_buf    table_desc;
->       uint32_t                 len;
-> -    struct srp_direct_buf    desc_list[0];
-> +    struct srp_direct_buf    desc_list[];
->   } QEMU_PACKED;
->  =20
->   enum {
-> @@ -211,7 +211,7 @@ struct srp_cmd {
->       uint8_t    reserved4;
->       uint8_t    add_cdb_len;
->       uint8_t    cdb[16];
-> -    uint8_t    add_data[0];
-> +    uint8_t    add_data[];
->   } QEMU_PACKED;
->  =20
->   enum {
-> @@ -241,7 +241,7 @@ struct srp_rsp {
->       uint32_t   data_in_res_cnt;
->       uint32_t   sense_data_len;
->       uint32_t   resp_data_len;
-> -    uint8_t    data[0];
-> +    uint8_t    data[];
->   } QEMU_PACKED;
+> union srp_iu {
+> =C2=A0=C2=A0=C2=A0 struct srp_login_req login_req;
+> =C2=A0=C2=A0=C2=A0 struct srp_login_rsp login_rsp;
+> =C2=A0=C2=A0=C2=A0 struct srp_login_rej login_rej;
+> =C2=A0=C2=A0=C2=A0 struct srp_i_logout i_logout;
+> =C2=A0=C2=A0=C2=A0 struct srp_t_logout t_logout;
+> =C2=A0=C2=A0=C2=A0 struct srp_tsk_mgmt tsk_mgmt;
+> =C2=A0=C2=A0=C2=A0 struct srp_cmd cmd;
+> =C2=A0=C2=A0=C2=A0 struct srp_rsp rsp;
+> =C2=A0=C2=A0=C2=A0 uint8_t reserved[SRP_MAX_IU_LEN];
+> };
 
-hw/scsi/spapr_vscsi.c:69:29: error: field 'iu' with variable sized type=20
-'union viosrp_iu' not at the end of a struct or class is a GNU extension=20
-[-Werror,-Wgnu-variable-sized-type-not-at-end]
-     union viosrp_iu         iu;
-                             ^
+It's variable-sized but it's okay as long as the total size doesn't
+exceed SRP_MAX_IU_LEN.  So it's not a bug, but I agree it's a time bomb.
+ Moving the field last should work, but it would still be quite
+dangerous code.
 
-Yay we found a bug! Thanks Gustavo :)
-
-union srp_iu {
-     struct srp_login_req login_req;
-     struct srp_login_rsp login_rsp;
-     struct srp_login_rej login_rej;
-     struct srp_i_logout i_logout;
-     struct srp_t_logout t_logout;
-     struct srp_tsk_mgmt tsk_mgmt;
-     struct srp_cmd cmd;
-     struct srp_rsp rsp;
-     uint8_t reserved[SRP_MAX_IU_LEN];
-};
-
-union viosrp_iu {
-     union srp_iu srp;
-     union mad_iu mad;
-};
-
-typedef struct vscsi_req {
-     vscsi_crq               crq;
-     union viosrp_iu         iu;
-
-     /* SCSI request tracking */
-     SCSIRequest             *sreq;
-     uint32_t                qtag; /* qemu tag !=3D srp tag */
-     bool                    active;
-     bool                    writing;
-     bool                    dma_error;
-     uint32_t                data_len;
-     uint32_t                senselen;
-     uint8_t                 sense[SCSI_SENSE_BUF_SIZE];
-
-     /* RDMA related bits */
-     uint8_t                 dma_fmt;
-     uint16_t                local_desc;
-     uint16_t                total_desc;
-     uint16_t                cdb_offset;
-     uint16_t                cur_desc_num;
-     uint16_t                cur_desc_offset;
-} vscsi_req;
-
->  =20
->   #endif /* SCSI_SRP_H */
-[...]
+Paolo
 

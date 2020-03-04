@@ -1,178 +1,111 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp1972658lfi;
-        Wed, 4 Mar 2020 11:24:55 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vvwN940ossugMK/DskI4Vl20Ak3lZz3atvVLMexIjdmTENszO9LBn9DBRbAiD5Ro3hNRvjB
-X-Received: by 2002:ae9:e104:: with SMTP id g4mr4269844qkm.133.1583349895298;
-        Wed, 04 Mar 2020 11:24:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583349895; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2041277lfi;
+        Wed, 4 Mar 2020 12:41:32 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vsUP6ZiPlpmk9MjycxEvloCm88GBcjoU2e+PjhOvvlvEuP4aFIf8mp5cceQS3xR9T4++zMB
+X-Received: by 2002:aed:3ecd:: with SMTP id o13mr4054992qtf.309.1583354492418;
+        Wed, 04 Mar 2020 12:41:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583354492; cv=none;
         d=google.com; s=arc-20160816;
-        b=FWXbCG2rUXbmMfe3IcSHCaQeMpxMjB/zaafyvJlwAlcIboiLWDRiX0Vnb/S1OBNS+c
-         t8CFk9cq/cP8oSXJLFv6yieFnWY3sJ681preIKYef9FyRcacsM3de5UC+nDhnr0Ydv2K
-         gJqqJJkFzvVNUcw1DRE2wro6h5KF3Md4xhoh5DJiQ7KJUWvk02DX+RPfpZG5q7cpU9Cr
-         E3swoJ59uCvgnBpxmsUV71S08oLEHaHbNc6zf91XGUVGvsGCbUD/7nqnR45V8O6gIVOA
-         q2L7bpsLAAjNf6joz0uab8nIWlnuE3+0yBK58vDiittQMeDirH3RbJv8L6PfIBW3oGNc
-         d2Cg==
+        b=IzvR90IxRAXXV+nA7f6vdXk83XhM6nddHltepTXnwZ/OYI3QwobBSGfkAz5M5jng5C
+         DiHZKtEVLWHMTBQmFesgrXaFZMhl7CFhN3TQMwUFO1q1rqnEOrjk+7bLWPtaFQ/cxFJ5
+         c/4B8K11qNITDJ2Syqvxy3sxq/8znolCssyTBzzHLAfBplVUz0Li8rYcKS3IhVqdtDyd
+         9spNfz7szBwxQ4PSKQ7W9dquBCbvQQpLlzVg+hDUZFiPTcR+N0dxhowiTedclHSbCc9O
+         FUn27enVDUJhpVpJyhvc8Az3HO4Qk5M5TS3AqI2fh/NfvyZ1slmzMG3Mr2o1YSu0Wasp
+         XDMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=0rG2HB/ZWOGbqAIZqdkpv339Oj+avR+3dQO+NZqkfms=;
-        b=FwHpcTuK2g0iSeQx9pR8B5qOs+fA5LkLzcm2cnrOYabzjCXfCsSAuwzTGpr3ufdh5b
-         tLlni+lahl4V/b0uFPKG6bDRe+BnBefX4NQDU1BL+5O1mSwfHRK0rxRU+GL26L3JBxh7
-         UbdP54nV7bg9f9ltmqWkxqTfK4mZmO9c+90YERUhjrxNMA5lVyf8W1abcLkeRdiweVTd
-         nGllAHkqdCN+xKX7LQq6ctV3eBy+9zXgJm6TTHGzIUV6RAHfagxvHLzW0Ngp6RrAH2Jo
-         s92nW49En3PdcyU15GudU3Zfc5dYgEJvY3/+352Tyb0IUOPOH+oYG/I6N4aUtjdVn6FS
-         EwBg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:from:references:to;
+        bh=Bv+slasXQP8gQvDk1Y2rlWHJUI83KsrVrjy8v/ozjjU=;
+        b=Y72+2j0AAMJ55tAw7gwVEntVK3PY/ocPKhwYV0f7GnuplFEd+CY7RtypmATqV1MrO2
+         0xxYTnkxoDW27fgocZR/Sd6gx1Tilx0fzWbIA51eUWSCK9nl+WZWbu73iUFphMG/HBv+
+         RWqnTm27GT4XCNQ6J//CWyCgIniGg9CuQ9jZB3NuMkbepsY/+I/z8EOFt+96R+LrcGpm
+         F5Uj1hduk8tRoqyA6cJ6CnLa2Vnt5st/1wK50G6c7px/VkAxcaCQBGmCAZdzfAfF7XBY
+         /0cViCjhTa0zcxuWcgzFwPuAagrMbC1zJPEY6YhQ5IokqMQVSYs6SF7Q3jdTjPgiUZFx
+         hGuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FTJ0MxxC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o5si1413955qkm.105.2020.03.04.11.24.55
+        by mx.google.com with ESMTPS id e16si1564803qkn.133.2020.03.04.12.41.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Mar 2020 11:24:55 -0800 (PST)
+        Wed, 04 Mar 2020 12:41:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FTJ0MxxC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38716 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39516 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9ZdW-00062v-O1
-	for alex.bennee@linaro.org; Wed, 04 Mar 2020 14:24:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42533)
+	id 1j9apf-00015Y-TV
+	for alex.bennee@linaro.org; Wed, 04 Mar 2020 15:41:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57851)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jsnow@redhat.com>) id 1j9ZdN-000618-1a
- for qemu-arm@nongnu.org; Wed, 04 Mar 2020 14:24:46 -0500
+ (envelope-from <mark.cave-ayland@ilande.co.uk>) id 1j9apM-00015D-Cd
+ for qemu-arm@nongnu.org; Wed, 04 Mar 2020 15:41:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jsnow@redhat.com>) id 1j9ZdL-0007f2-Ev
- for qemu-arm@nongnu.org; Wed, 04 Mar 2020 14:24:44 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:52988
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jsnow@redhat.com>) id 1j9ZdL-0007dG-8m
- for qemu-arm@nongnu.org; Wed, 04 Mar 2020 14:24:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583349882;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=0rG2HB/ZWOGbqAIZqdkpv339Oj+avR+3dQO+NZqkfms=;
- b=FTJ0MxxCOLj9PlgKm/rJC0ZGmtrCaaMcYv31zqELD1OT0x0+XmVZvrbnpiJ4ZrPsSjZKaR
- zVe7x0o3mrQa2bCQneJ+0yvFe6+A2+4Vu41mR5wZdglWDKtLs8YnAIp+zNV4cxMvqdTxT6
- 2q7mjxMgRRcoVjIlAZ5rbVkuqqMuFkA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-381-XVuj3nSbOXG5c6fNqUVHIg-1; Wed, 04 Mar 2020 14:24:39 -0500
-X-MC-Unique: XVuj3nSbOXG5c6fNqUVHIg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DF336107ACC7;
- Wed,  4 Mar 2020 19:24:35 +0000 (UTC)
-Received: from [10.10.120.212] (ovpn-120-212.rdu2.redhat.com [10.10.120.212])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9E22A19C69;
- Wed,  4 Mar 2020 19:24:16 +0000 (UTC)
-Subject: Re: [PATCH v2 0/2] misc: Replace zero-length arrays with flexible
- array member
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-References: <20200304153816.23636-1-philmd@redhat.com>
-From: John Snow <jsnow@redhat.com>
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <c1aa79e8-a759-8917-c930-2b7018089699@redhat.com>
-Date: Wed, 4 Mar 2020 14:24:16 -0500
+ (envelope-from <mark.cave-ayland@ilande.co.uk>) id 1j9apL-00023j-58
+ for qemu-arm@nongnu.org; Wed, 04 Mar 2020 15:41:12 -0500
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:60088
+ helo=mail.default.ilande.uk0.bigv.io)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1j9apK-0001zo-VN; Wed, 04 Mar 2020 15:41:11 -0500
+Received: from host86-162-6-80.range86-162.btcentralplus.com ([86.162.6.80]
+ helo=[192.168.1.65]) by mail.default.ilande.uk0.bigv.io with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.89)
+ (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1j9apV-0003VG-9f; Wed, 04 Mar 2020 20:41:27 +0000
+To: Pan Nengyuan <pannengyuan@huawei.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20200227025055.14341-1-pannengyuan@huawei.com>
+ <20200227025055.14341-6-pannengyuan@huawei.com>
+ <CAFEAcA8yvrYrBONtW46iswbEvMF-WC-j7fHOOfcoEC_RV66BkQ@mail.gmail.com>
+ <c2b9eab3-f589-ecb6-0115-f8e673d52998@ilande.co.uk>
+ <fc807125-1281-707f-0080-cc9b1d3c863e@huawei.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ mQENBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAG0ME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPokB
+ OAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63LkBDQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABiQEfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+Message-ID: <cac957ca-39b7-2453-9a1b-3bc844e0b13f@ilande.co.uk>
+Date: Wed, 4 Mar 2020 20:40:55 +0000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200304153816.23636-1-philmd@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <fc807125-1281-707f-0080-cc9b1d3c863e@huawei.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 86.162.6.80
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH v3 5/6] hw/misc/mos6522: move timer_new from init() into
+ realize() to avoid memleaks
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2001:41c9:1:41f::167
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -184,148 +117,75 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Paul Durrant <paul@xen.org>, Jason Wang <jasowang@redhat.com>,
- David Hildenbrand <david@redhat.com>, Yuval Shaia <yuval.shaia.ml@gmail.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Stefano Stabellini <sstabellini@kernel.org>,
- qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- "Gonglei \(Arei\)" <arei.gonglei@huawei.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Kevin Wolf <kwolf@redhat.com>, Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Eric Auger <eric.auger@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: Laurent Vivier <laurent@vivier.eu>, Euler Robot <euler.robot@huawei.com>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ zhanghailiang <zhang.zhanghailiang@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vv2DoHf+sZOI
+X-TUID: H7lcadri0qUw
+
+On 03/03/2020 01:36, Pan Nengyuan wrote:
+
+> On 3/3/2020 3:17 AM, Mark Cave-Ayland wrote:
+>> On 02/03/2020 13:21, Peter Maydell wrote:
+>>
+>>> On Thu, 27 Feb 2020 at 02:35, Pan Nengyuan <pannengyuan@huawei.com> wrote:
+>>>>
+>>>> There are some memleaks when we call 'device_list_properties'. This patch move timer_new from init into realize to fix it.
+>>>> Meanwhile, add calls to mos6522_realize() in mac_via_realize to make this move to be valid.
+>>>>
+>>>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>>>> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+>>>> ---
+>>>> Cc: Laurent Vivier <laurent@vivier.eu>
+>>>> ---
+>>>> v2->v1:
+>>>> - no changes in this patch.
+>>>> v3->v2:
+>>>> - remove null check in reset, and add calls to mos6522_realize() in mac_via_realize to make this move to be valid.
+>>>
+>>> Hi; this is really fixing two bugs in one patch:
+>>>
+>>>> ---
+>>>>  hw/misc/mac_via.c | 5 +++++
+>>>>  hw/misc/mos6522.c | 6 ++++++
+>>>>  2 files changed, 11 insertions(+)
+>>>>
+>>>> diff --git a/hw/misc/mac_via.c b/hw/misc/mac_via.c
+>>>> index b7d0012794..1d72d4ef35 100644
+>>>> --- a/hw/misc/mac_via.c
+>>>> +++ b/hw/misc/mac_via.c
+>>>> @@ -879,6 +879,11 @@ static void mac_via_realize(DeviceState *dev, Error **errp)
+>>>>      sysbus_init_child_obj(OBJECT(dev), "via2", &m->mos6522_via2,
+>>>>                            sizeof(m->mos6522_via2), TYPE_MOS6522_Q800_VIA2);
+>>>>
+>>>> +    object_property_set_bool(OBJECT(&m->mos6522_via1), true, "realized",
+>>>> +                             &error_abort);
+>>>> +    object_property_set_bool(OBJECT(&m->mos6522_via2), true, "realized",
+>>>> +                             &error_abort);
+>>>> +
+>>>>      /* Pass through mos6522 output IRQs */
+>>>>      ms = MOS6522(&m->mos6522_via1);
+>>>>      object_property_add_alias(OBJECT(dev), "irq[0]", OBJECT(ms),
+>>>
+>>> This is fixing a bug in mac_via where it failed to actually
+>>> realize devices it was using. That's a dependency for the bug
+>>> you're trying to fix, but it's a separate one and should be
+>>> in its own patch.
+>>
+>> Sigh. Thanks for this - I actually discovered this a little while back and have some
+>> local patches to do the same, but due to lack of time I never managed to tidy them up
+>> for submission.
+> 
+> Hmm, maybe you can take this other changes(fix memleaks) into your local patches and send it together?
+> Or If you have no time, I can help to do it about this device. :)
+
+My patches are part of various q800 branches I have been playing with over the past
+couple of months, and so are lagging quite far behind master. If you are able to
+update them based upon Peter's comments them I'm happy to review them (and perhaps
+could perhaps take them along with my cmd646 patchset if required).
 
 
+ATB,
 
-On 3/4/20 10:38 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> v2:
-> - do not modify qed.h (structure with single member)
-> - based on hw/scsi/spapr_vscsi fix series:
->   https://mid.mail-archive.com/20200304153311.22959-1-philmd@redhat.com
->=20
-> This is a tree-wide cleanup inspired by a Linux kernel commit
-> (from Gustavo A. R. Silva).
->=20
-> --v-- description start --v--
->=20
->   The current codebase makes use of the zero-length array language
->   extension to the C90 standard, but the preferred mechanism to
->   declare variable-length types such as these ones is a flexible
->   array member [1], introduced in C99:
->=20
->   struct foo {
->       int stuff;
->       struct boo array[];
->   };
->=20
->   By making use of the mechanism above, we will get a compiler
->   warning in case the flexible array does not occur last in the
->   structure, which will help us prevent some kind of undefined
->   behavior bugs from being unadvertenly introduced [2] to the
->   Linux codebase from now on.
->=20
-> --^-- description end --^--
->=20
-> Do the similar housekeeping in the QEMU codebase (which uses
-> C99 since commit 7be41675f7cb).
->=20
-> The first patch is done with the help of a coccinelle semantic
-> patch. However Coccinelle does not recognize:
->=20
->   struct foo {
->       int stuff;
->       struct boo array[];
->   } QEMU_PACKED;
->=20
-> but does recognize:
->=20
->   struct QEMU_PACKED foo {
->       int stuff;
->       struct boo array[];
->   };
->=20
-> I'm not sure why, neither it is worth refactoring all QEMU
-> structures to use the attributes before the structure name,
-> so I did the 2nd patch manually.
->=20
-> Anyway this is annoying, because many structures are not handled
-> by coccinelle. Maybe this needs to be reported to upstream
-> coccinelle?
->=20
-> I used spatch 1.0.8 with:
->=20
->   -I include --include-headers \
->   --macro-file scripts/cocci-macro-file.h \
->   --keep-comments --indent 4
->=20
-> Regards,
->=20
-> Phil.
->=20
-> Based-on: <20200304153311.22959-1-philmd@redhat.com>
-> Supersedes: <20200304005105.27454-1-philmd@redhat.com>
->=20
-> Philippe Mathieu-Daud=C3=A9 (2):
->   misc: Replace zero-length arrays with flexible array member
->     (automatic)
->   misc: Replace zero-length arrays with flexible array member (manual)
->=20
->  docs/interop/vhost-user.rst           |  4 ++--
->  bsd-user/qemu.h                       |  2 +-
->  contrib/libvhost-user/libvhost-user.h |  2 +-
->  hw/m68k/bootinfo.h                    |  2 +-
->  hw/scsi/srp.h                         |  6 +++---
->  hw/xen/xen_pt.h                       |  2 +-
->  include/hw/acpi/acpi-defs.h           | 16 ++++++++--------
->  include/hw/arm/smmu-common.h          |  2 +-
->  include/hw/boards.h                   |  2 +-
->  include/hw/i386/intel_iommu.h         |  3 ++-
->  include/hw/s390x/event-facility.h     |  2 +-
->  include/hw/s390x/sclp.h               |  8 ++++----
->  include/hw/virtio/virtio-iommu.h      |  2 +-
->  include/sysemu/cryptodev.h            |  2 +-
->  include/tcg/tcg.h                     |  2 +-
->  pc-bios/s390-ccw/bootmap.h            |  2 +-
->  pc-bios/s390-ccw/sclp.h               |  2 +-
->  tests/qtest/libqos/ahci.h             |  2 +-
->  block/linux-aio.c                     |  2 +-
->  block/vmdk.c                          |  2 +-
->  hw/acpi/nvdimm.c                      |  6 +++---
->  hw/char/sclpconsole-lm.c              |  2 +-
->  hw/char/sclpconsole.c                 |  2 +-
->  hw/dma/soc_dma.c                      |  2 +-
->  hw/i386/x86.c                         |  2 +-
->  hw/misc/omap_l4.c                     |  2 +-
->  hw/nvram/eeprom93xx.c                 |  2 +-
->  hw/rdma/vmw/pvrdma_qp_ops.c           |  4 ++--
->  hw/s390x/virtio-ccw.c                 |  2 +-
->  hw/usb/dev-network.c                  |  2 +-
->  hw/usb/dev-smartcard-reader.c         |  4 ++--
->  hw/virtio/virtio.c                    |  4 ++--
->  net/queue.c                           |  2 +-
->  target/s390x/ioinst.c                 |  2 +-
->  34 files changed, 53 insertions(+), 52 deletions(-)
->=20
-
-I'll admit I did not manually verify ALL of this, but instead trust that:
-
-1. The conversion is correct, and this is a desirable change to make.
-2. Sample conversions I looked at appear correct.
-3. It builds.
-4. It passes tests.
-
-So:
-
-Acked-by: John Snow <jsnow@redhat.com>
-
+Mark.

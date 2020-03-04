@@ -1,89 +1,89 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp1754072lfi;
-        Wed, 4 Mar 2020 07:42:15 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vuxharxnyVymVcUe1xOf5lpxExJBozhWn/HU2owCztwygvoIS7ldSbroRIOwH4b3KriY/mN
-X-Received: by 2002:a05:6214:927:: with SMTP id dk7mr2628679qvb.200.1583336535223;
-        Wed, 04 Mar 2020 07:42:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583336535; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp1768250lfi;
+        Wed, 4 Mar 2020 07:58:31 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vt4WQmgtW/ZwfNG/QNtdDRvv6Y223dPl2pIYWT/sP7dbRB3NwCoUTmDnMncxo2rqmXd1/Ml
+X-Received: by 2002:aed:3fa3:: with SMTP id s32mr2920957qth.10.1583337510854;
+        Wed, 04 Mar 2020 07:58:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583337510; cv=none;
         d=google.com; s=arc-20160816;
-        b=i2qGjZibittH+yYY0LGLVLo8s+uBRuA99BQQc4g1BWH9m1Lk7nYKgow+J+gAE3dDHI
-         olIRFExbIpqCAvsX1ItPsdkBxKRIevp456XF+qC1aCr1c/JC7SZm8XsqUbZEjX52aopV
-         BCD7rhMVF/GVOAJ//tf2ylB3/e9tnykI3PFIp4o6uSvSc3STL6wlJfxdiES05y1Zxr7C
-         aELOKqZbve1buoZkbchkCh3YjuXAZwXhWfnZ/Mb2JcscG1z2n4ywijk7ps18sKbCxTux
-         9NZzXXurhe3CFb4tRI+G3OXCE4ctdRfS2O8O/ekZ7A0WKF6xr/dGD6d8LYbQiBqyKZIB
-         mH2w==
+        b=M5ByBk4LFIGmquPJlEHwR5ELRr7fshMXAGRH5zDackfB6LTJ91J/1Obt0dCY+FVMV0
+         8PnC9XmTepaOPP97+4S1JE30ZCfxTwGPeHgx6/YLXXwQHyQPCsBd9OLivFgUoPOOJNd0
+         O1PALIplf9F3r6rXkclbNnWR9Tyq6AfSoZiAY9R6yspw7POyFuRfuYLN5FMu22i3hjRi
+         742Y0AYK5QncEdjEHtv7HyTBKcnbWFUfP4rlPsLHF/c3eFjyW9hl2QSYMbQ3nIwT6ztg
+         hB0hIwst8uFjzF+HFMoKtmin4tl9Z41tzZYHutZFc1QOAeP3F4V/rnvnfcJsR/UXyZew
+         XNAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=lAdNuAjGjgv4SYnURhSbZNmraG7CFf6sWkfpiNz24Bk=;
-        b=I7JNohhC/rshy7tkjXO4i+NtJjTSSQKoF516XmY2czX9uyROCpd6E7QfY37lHZ3dRP
-         ZIqDbLO81A29VFnmNy6ALujqHhlRsBlUbpDNi9DUekZXHA0HttCxKbrmyGcUFKowBSAA
-         VzVzDhfwVZ5uc3xgKAaclEP26C/wHIg6i+OqqV4184oMzKRk4JdVtPWldeKGrZ32iCzf
-         zYruB02JhDYb8LsH9SLMpL0lpD+AlyrSNEGIhgAQnv0k7UcXbJsidNmynIxtLzieuO9c
-         BBcmRVJl4w0Z/7R4kk+sDaqShRoBm5o14puuzOFQBbW6WeUB5wnKzoh/KT3CgPo7xKbb
-         +wvg==
+        bh=VQN8PrcXw10uqt+hfC3SWPfef1I0Io5JDE6z0yOc224=;
+        b=udS4fSUnCnbU398ZrR5iLRQ0Hsa47NHSJdNiIMqaOXnBXzqLhw7G7NKWPvE/FFznN3
+         7AL8WGENm3Er15ljD2w0yKB63j4EtEySeIYZmTyjOzKvF2NXsfvMHU79Xqhl9G4gPNQ7
+         16d+Sth7UBprASO3YL+sDAHSGuKaSxJ5DX9ThMp3TUuDj5MqEpxzVaiydtScmdNZ2OFb
+         B5aYXGehn53pwyWNbZbiJEEth5cvw92O8QO/C7WWZKZEb3lUMkMvwjSsZtya73+chCVl
+         hkhbbyScVjz1i+DD/A09bNm/9qr18h82+l2Q+Ll6RbXenFKQRl8ZufnasQp3d+Iqp0He
+         maKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UiKh+6A1;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UxNQNYci;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x35si304324qtk.260.2020.03.04.07.42.15
+        by mx.google.com with ESMTPS id 18si1070955qki.266.2020.03.04.07.58.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Mar 2020 07:42:15 -0800 (PST)
+        Wed, 04 Mar 2020 07:58:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UiKh+6A1;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UxNQNYci;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35926 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36102 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9WA2-00051M-JK
-	for alex.bennee@linaro.org; Wed, 04 Mar 2020 10:42:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47538)
+	id 1j9WPm-00083T-A2
+	for alex.bennee@linaro.org; Wed, 04 Mar 2020 10:58:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51248)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <lvivier@redhat.com>) id 1j9W9T-0004mF-TF
- for qemu-devel@nongnu.org; Wed, 04 Mar 2020 10:41:40 -0500
+ (envelope-from <lvivier@redhat.com>) id 1j9WOx-0007SQ-9T
+ for qemu-devel@nongnu.org; Wed, 04 Mar 2020 10:57:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <lvivier@redhat.com>) id 1j9W9S-0005hi-Qz
- for qemu-devel@nongnu.org; Wed, 04 Mar 2020 10:41:39 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35046
+ (envelope-from <lvivier@redhat.com>) id 1j9WOw-0006Cu-Af
+ for qemu-devel@nongnu.org; Wed, 04 Mar 2020 10:57:39 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:34820
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <lvivier@redhat.com>) id 1j9W9S-0005gj-Mz
- for qemu-devel@nongnu.org; Wed, 04 Mar 2020 10:41:38 -0500
+ (Exim 4.71) (envelope-from <lvivier@redhat.com>) id 1j9WOw-0006CU-7L
+ for qemu-devel@nongnu.org; Wed, 04 Mar 2020 10:57:38 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583336498;
+ s=mimecast20190719; t=1583337457;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=lAdNuAjGjgv4SYnURhSbZNmraG7CFf6sWkfpiNz24Bk=;
- b=UiKh+6A1L+zfyRzono9b7yGSl7y8ZiVsYlXpkg72Xd/y5UtKI/66FJAFO1tlUDD/Ejj/Py
- qD/UZGmqp5vYozxj4EQyA+GluQc8X/OeoNChP8OGk/ehTN7rjhLR0uh0LFdkM03L8MjMrL
- MNDIBE6DmCsnlnnBYrNtzK5QnGq09fo=
+ bh=VQN8PrcXw10uqt+hfC3SWPfef1I0Io5JDE6z0yOc224=;
+ b=UxNQNYcityg5IVRCCTAysKsVODxSpnk71AD0ncxGKrsjuPkbUYZAyFihrjzyOfkDKwh/Z8
+ gcgeBXW1ZhgZ4CdXdMN/mA4auho3I+rSnwUhM1LYw3wOVvbFM3OV7pSbZH3yO3DBN2zFXR
+ PFOFpPWhgRex92MUoCejB6M8osGpTrQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-272-9VZBta-_P16OSJWBCocMRQ-1; Wed, 04 Mar 2020 10:41:34 -0500
-X-MC-Unique: 9VZBta-_P16OSJWBCocMRQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-344-0Bel6gqsMDiDWdGSNuW3yg-1; Wed, 04 Mar 2020 10:57:33 -0500
+X-MC-Unique: 0Bel6gqsMDiDWdGSNuW3yg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 78249800053;
- Wed,  4 Mar 2020 15:41:28 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 96C13A434C;
+ Wed,  4 Mar 2020 15:57:26 +0000 (UTC)
 Received: from [10.36.117.17] (ovpn-117-17.ams2.redhat.com [10.36.117.17])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C4AE227186;
- Wed,  4 Mar 2020 15:41:11 +0000 (UTC)
-Subject: Re: [PATCH v2 4/4] net: Remove field info_str of NetClientState
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6BA685DA7D;
+ Wed,  4 Mar 2020 15:57:12 +0000 (UTC)
+Subject: Re: [PATCH v2 1/4] qapi: net: Add query-netdevs command
 To: Alexey Kirillov <lekiravi@yandex-team.ru>, Eric Blake
  <eblake@redhat.com>, Thomas Huth <huth@tuxfamily.org>,
  Markus Armbruster <armbru@redhat.com>
 References: <20200304130656.16859-1-lekiravi@yandex-team.ru>
- <20200304130656.16859-5-lekiravi@yandex-team.ru>
+ <20200304130656.16859-2-lekiravi@yandex-team.ru>
 From: Laurent Vivier <lvivier@redhat.com>
 Autocrypt: addr=lvivier@redhat.com; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -139,14 +139,14 @@ Autocrypt: addr=lvivier@redhat.com; prefer-encrypt=mutual; keydata=
  pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyxFCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbL
  XiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsBkmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZ
  D+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <5976574b-8546-dc15-2c79-18c277fb2eff@redhat.com>
-Date: Wed, 4 Mar 2020 16:41:10 +0100
+Message-ID: <274ce4fc-f7ef-791c-7c25-c99b694c1e78@redhat.com>
+Date: Wed, 4 Mar 2020 16:57:11 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200304130656.16859-5-lekiravi@yandex-team.ru>
+In-Reply-To: <20200304130656.16859-2-lekiravi@yandex-team.ru>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
@@ -188,61 +188,63 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5Zrh2z3KgxtI
+X-TUID: 4X5nr0wBcPaM
 
 On 04/03/2020 14:06, Alexey Kirillov wrote:
-> Completely remove the info_str field of struct NetClientState because
-> it is no longer required due to the addition of the QMP query-netdevs command.
+> Add a qmp command that provides information about currently attached
+> network devices and their configuration.
 > 
 > Signed-off-by: Alexey Kirillov <lekiravi@yandex-team.ru>
 > ---
->  hw/net/allwinner_emac.c     |  2 +-
->  hw/net/dp8393x.c            |  2 +-
->  hw/net/e1000.c              |  4 ++--
->  hw/net/e1000e.c             |  2 +-
->  hw/net/e1000e_core.c        |  2 +-
->  hw/net/e1000x_common.c      |  2 +-
->  hw/net/eepro100.c           |  5 +++--
->  hw/net/etraxfs_eth.c        |  2 +-
->  hw/net/fsl_etsec/etsec.c    |  2 +-
->  hw/net/ftgmac100.c          |  2 +-
->  hw/net/i82596.c             |  6 +++---
->  hw/net/imx_fec.c            |  2 +-
->  hw/net/lan9118.c            |  4 ++--
->  hw/net/mcf_fec.c            |  2 +-
->  hw/net/milkymist-minimac2.c |  2 +-
->  hw/net/mipsnet.c            |  2 +-
->  hw/net/ne2000-isa.c         |  2 +-
->  hw/net/ne2000-pci.c         |  2 +-
->  hw/net/pcnet.c              |  2 +-
->  hw/net/rocker/rocker_fp.c   |  4 ++--
->  hw/net/rtl8139.c            |  6 +++---
->  hw/net/smc91c111.c          |  2 +-
->  hw/net/spapr_llan.c         |  6 +++---
->  hw/net/stellaris_enet.c     |  2 +-
->  hw/net/sungem.c             |  4 ++--
->  hw/net/sunhme.c             |  2 +-
->  hw/net/tulip.c              |  2 +-
->  hw/net/virtio-net.c         |  8 ++++----
->  hw/net/vmxnet3.c            |  4 ++--
->  hw/net/xen_nic.c            |  4 ----
->  hw/net/xgmac.c              |  2 +-
->  hw/net/xilinx_axienet.c     |  2 +-
->  hw/net/xilinx_ethlite.c     |  2 +-
->  hw/usb/dev-network.c        |  2 +-
->  include/net/net.h           |  3 +--
->  net/l2tpv3.c                |  3 ---
->  net/net.c                   |  8 +-------
->  net/slirp.c                 |  4 ----
->  net/socket.c                | 24 ------------------------
->  net/tap.c                   | 12 ------------
->  net/vde.c                   |  4 ----
->  net/vhost-user.c            |  2 --
->  42 files changed, 51 insertions(+), 110 deletions(-)
+>  include/net/net.h |   1 +
+>  net/hub.c         |   8 +++
+>  net/l2tpv3.c      |  19 +++++++
+>  net/net.c         |  91 +++++++++++++++++++++++++++++++++
+>  net/netmap.c      |  13 +++++
+>  net/slirp.c       | 126 ++++++++++++++++++++++++++++++++++++++++++++++
+>  net/socket.c      |  71 ++++++++++++++++++++++++++
+>  net/tap-win32.c   |   9 ++++
+>  net/tap.c         | 103 +++++++++++++++++++++++++++++++++++--
+>  net/vde.c         |  26 ++++++++++
+>  net/vhost-user.c  |  18 +++++--
+>  qapi/net.json     |  89 ++++++++++++++++++++++++++++++++
+>  12 files changed, 566 insertions(+), 8 deletions(-)
 > 
+...
+> diff --git a/net/net.c b/net/net.c
+> index 9e93c3f8a1..01e0548295 100644
+> --- a/net/net.c
+> +++ b/net/net.c
+> @@ -54,6 +54,7 @@
+>  #include "sysemu/sysemu.h"
+>  #include "net/filter.h"
+>  #include "qapi/string-output-visitor.h"
+> +#include "qapi/clone-visitor.h"
+>  
+>  /* Net bridge is currently not supported for W32. */
+>  #if !defined(_WIN32)
+> @@ -128,6 +129,12 @@ char *qemu_mac_strdup_printf(const uint8_t *macaddr)
+>  
+>  void qemu_format_nic_info_str(NetClientState *nc, uint8_t macaddr[6])
+>  {
+> +    g_assert(nc->stored_config);
+> +
+> +    g_free(nc->stored_config->u.nic.macaddr);
+> +    nc->stored_config->u.nic.macaddr = g_strdup_printf(MAC_FMT,
+> +                                                       MAC_ARG(macaddr));
+> +
 
-Reviewed-by: Laurent Vivier <lvivier@redhat.com>
-Tested-by: Laurent Vivier <lvivier@redhat.com>
+Why do you use this rather than the qemu_mac_strdup_printf() function
+defined above?
 
+qemu_mac_strdup_printf():
+  890ee6abb385 ("net: add MAC address string printer")
 
+MAC_FMT/MAC_ARG:
+  6d1d4939a647 ("net: Add macros for MAC address tracing")
+
+MAC_FMT/MAC_ARG seems to be reserved for tracing.
+
+Thanks,
+Laurent
 

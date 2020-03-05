@@ -1,256 +1,642 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp3324987lfi;
-        Thu, 5 Mar 2020 12:08:04 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vupoQYHlbmyQCqyxE93dwEpMuTDGR+1GGCQfYoYAj9yedNpEcu0b36r62vv4vr4lRGTplYl
-X-Received: by 2002:a05:620a:10b3:: with SMTP id h19mr10013794qkk.440.1583438883902;
-        Thu, 05 Mar 2020 12:08:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583438883; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp3486833lfi;
+        Thu, 5 Mar 2020 15:16:03 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vtH1LPQlu/aYw1IwxuoEMSQmQ3626j+z0nIrcqmLzeuJquddMQqPl6DosYw9RHlJd5MQlT3
+X-Received: by 2002:a0c:b669:: with SMTP id q41mr636633qvf.20.1583450163334;
+        Thu, 05 Mar 2020 15:16:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583450163; cv=none;
         d=google.com; s=arc-20160816;
-        b=IdBQ0IGsP6fcN+y6PR3aF11YA+8lLimlF9l/E36olRLeQOcSQui9clF30O0u8f+Oup
-         sb/DB4PllR5lKq6jN9HIWRzOp1Fu7IkaKjnp8KKF1YWZzV93fmAUWKQUNFWPPlo2k225
-         43y9UrBRpTk06OZ8rk42wYxPl0rGeQPv2jCMqEQnfg2o4f7nDtfMqwii9wgN95Yn0E5I
-         duB++cIcTv85m0z4bxq683HHdca9gaOaqsPnpDVqvdTMmzkshG3cTg9bHCRbny0tWIKl
-         Na/oTJe3/fgfM49JglglX33/uHa/pU1nESvBHwi16UY2c6Q89/dJYfInM138TiLU5veM
-         TuLQ==
+        b=XXzim/Ke6POjbGSfLJR1yLhvOXYoqTF959nS6RYhVvCbl3bZCtQ2DH1/ONnt4BRLor
+         AVnMRHUjnpnIRSWVarfpXgUenRfGfkc0KK9wt6B+SJB56/DzdLHnuTZ2HaTQWd2ms7xJ
+         IiDKtb20x40McEIemjyR4GDszdnhBfpRVjYx5nnyxezjw+st9N/9tEu9ErZSru9w629z
+         wIT5IRQ+t/FbB8M1Vbv5CvSsJuObyoclwCYI195LB+L9NCuzl+DfBNHXfBQfvoDYSa+S
+         c6MfMGjpt4tDFtwbE8IDLCJwM1YilG9OpOr3bfNeA4tYUfGUjv8orTS/9D1NZkHAubQf
+         Ycqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=KEzPboJB6JCs5k214g5oOJeAWpMAUeoVymAHK5jdb0U=;
-        b=iwI6cEuhArNH5ZZqi+oWXExb3okI6n9FY1l5GxBGVHlaND87o52zTAyVxYRe5nh1Ah
-         DK4TQE3cpa6MUwn1wnJiG6AJ8uVn3iQ7YI/ztdIrzauZYcdoOgHY8BqHw+v3brSdZAhq
-         L6IU/8bokw0xc1i3K7bzy5B/7JaaXd/3GBipNqMOBUyC8Naup1PMNQwKudBGoH0+Ivcd
-         oaEJomiYnXP2AZ/YxguEvUGKyy5hH/obPwdkzau/OV/QtRWjGgQDb/ZBm9667VhJ6fCv
-         +jCIn+rhTFIEWznbTCKPrllrekgX9oh8xm/kAJlUPALWNXP7uqmtsBjmYzIP0QLoQTqN
-         YQ5Q==
+        bh=5wFdJSUv8OJDWHyAv6VOM4BEjKHjrrhV5SGaHLR1Gs4=;
+        b=t55OkFKQ/ThBfnKpUNFVFmF8G5ChySIXy1RKRXCAJLhTJcsSHo9Ze6QslqXACvQ2tJ
+         NTf12vmrHYi/nBqe2mtZDGBFn1XDhHdc+bGTc7yuWM0uafS/a4Rl0h28obLaFUQHH2sp
+         LhQoZdE6ARVQ+SkmXLKad5RWrWl9hBoilrzhpPfI7n8Y13ZK9LBBuXwsMz3sfMVKUh29
+         6KfKcANdgRpTnz4bmEU/gKt66ZGn5PX753gRWn+EmPA0AkLhADBs0KRfwxm94XMzs1Pk
+         Fk7R6dZ1EyFOKLw9faQ5auXIPGOecmRNwg+ch1vCL923Vf0yfNnFpnY76JZWC2oxeu84
+         RJwA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ew4+zdbB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aVVQ64jS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a14si30626qkl.208.2020.03.05.12.08.03
+        by mx.google.com with ESMTPS id k64si114195qtd.59.2020.03.05.15.16.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Mar 2020 12:08:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 05 Mar 2020 15:16:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ew4+zdbB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55704 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aVVQ64jS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:57326 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9wmp-0003ta-A8
-	for alex.bennee@linaro.org; Thu, 05 Mar 2020 15:08:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40411)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j9zik-0006ZA-Ol
+	for alex.bennee@linaro.org; Thu, 05 Mar 2020 18:16:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42675)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1j9wmA-0003F1-8a
- for qemu-devel@nongnu.org; Thu, 05 Mar 2020 15:07:23 -0500
+ (envelope-from <alistair23@gmail.com>) id 1j9zia-0006VA-N2
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2020 18:15:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1j9wm8-0001AR-P5
- for qemu-devel@nongnu.org; Thu, 05 Mar 2020 15:07:22 -0500
-Received: from mail-il1-x12e.google.com ([2607:f8b0:4864:20::12e]:38544)
+ (envelope-from <alistair23@gmail.com>) id 1j9ziY-0008G5-6s
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2020 18:15:52 -0500
+Received: from mail-ua1-x941.google.com ([2607:f8b0:4864:20::941]:33262)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1j9wm8-0001A6-GE; Thu, 05 Mar 2020 15:07:20 -0500
-Received: by mail-il1-x12e.google.com with SMTP id f5so6199489ilq.5;
- Thu, 05 Mar 2020 12:07:20 -0800 (PST)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1j9ziT-0008Ah-1d; Thu, 05 Mar 2020 18:15:45 -0500
+Received: by mail-ua1-x941.google.com with SMTP id 94so53185uat.0;
+ Thu, 05 Mar 2020 15:15:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=KEzPboJB6JCs5k214g5oOJeAWpMAUeoVymAHK5jdb0U=;
- b=Ew4+zdbBWdux/czmoU/zebNdM7su8m0gnxumYsbuP3/9JggPjPs+rtNZGddzA+I75c
- ufkaw1zudVhFopWrN2cAtOEZhRicl9ixlRJnnB2vf62wI7nw4hNeL/1ZhuuNPIvu1ftP
- E5VPzCxGb1YbhlVWZARya6NGgMjZX/PBQiakfCG/NOA3OPC+PSuF5gprzXYlWwJwjrgT
- rym4TMLsGJCduTXxKFqBjBOBKbM+YUqT4Q53WqlX6QS7WMR7R+CkdCOo+/TwpkDF7aGk
- yJfGqrLQmmx7ThTANUD9WI1rZsNGl2Zbw3hiwv3rWSE0Ry8ry9g3gT6sspirInZh9TVv
- da8Q==
+ :cc; bh=5wFdJSUv8OJDWHyAv6VOM4BEjKHjrrhV5SGaHLR1Gs4=;
+ b=aVVQ64jSd0M1uz+ux0GZkSeGSJGszdBOamwvr7ypYBsluDWt6nQiUGsPYksBz2NUL3
+ uzAhnDy+uSNNGW80fQkRdOl5940f+XteX46ve6qeukUMuTyW9u6tI7M/ZOHBkYbKnqXx
+ /sV/fDyDDGuApIvZNM6c9AOxmleDF50emW3OfnXEHd7T/ejzAUQGlZ6KPJ4jmg9aFIAl
+ encxuIf973TzpBaHR/rRxh+O7e8MQtLLTILNLVrmADNF3sT1P5kUlYO90GEwnTtenzrX
+ DK+3JCz7EITELl/7hvdd7wCBgHB1VEr9BoYDG3yBpUWyZI7cNy+K9RTUQ7c0QsFTGmK7
+ cwww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=KEzPboJB6JCs5k214g5oOJeAWpMAUeoVymAHK5jdb0U=;
- b=t9LOCpPwJcQFg4ZxyH7bH///lMunrSCTcaIm+w2TvLLh4ttm/Ac8PORusOWyjk2bfF
- yFLlCV02yqcM4dtcdpgZXCJru/rDnF8jj/aizHdCx5UtDg85m7zqv1zgoRG4qAj13Hef
- W/1oJAg6mYj5u6qjnFvgFzUWc3MBE8yCyDrQwCtMiPVW1BOGaZEEAQ6o5ERxUC8bVIpX
- hGQhCgfxuafEN8MzMmvy7/WwpQe582oOXlwKSKyg0Zxhn47XC5muM1rVZx/W8j7AJWFx
- GkJ1n92fMvDGKn0PwajV9sS0lhEvGv01fMt5j1fyVGhSgaplBh2HAhS5MjtBMYlI0ejn
- 87Mw==
-X-Gm-Message-State: ANhLgQ2C/SsA8KFJcmJI0fYfFZWPM1tkAgYo2S01OaJ5pUjmSAAlprvK
- BcjrsxaC1FjJtIqjmPGm/0gkpiox1Xa4+AWvWD0=
-X-Received: by 2002:a92:90c:: with SMTP id y12mr656860ilg.306.1583438839867;
- Thu, 05 Mar 2020 12:07:19 -0800 (PST)
+ bh=5wFdJSUv8OJDWHyAv6VOM4BEjKHjrrhV5SGaHLR1Gs4=;
+ b=hJpCCsSBXRFSdkBeNKhBZCi8rOT0OuIHt6QFXY4rcG1YX8uGBBfAqNOeCZiUnuTbCM
+ z2Lpo/33D0dWb77M5zEbuauSYSZgkSPuRTm1mL3gpoq4zUk4/foH/lBNLaUpT5NsbjG6
+ 39rEFLCz0x/QCuQYRxVwJGztPuOuof+jSSP0lSfTFg5jX62GV3GygVg6LQYK1G/f3S27
+ RUx3XXr/tNe09dcrCSrNm8rBz71zZLs5n7iNfwEMWJ6KiRZgcoHGNY8V9RhV+JrG4Jxu
+ 2XB3LjTKoxdMzlETbsIsmzRXS2foxhYF469fyjgvFJAA/G7Hp21S18afanX+Sn4Cs3Dx
+ sHKA==
+X-Gm-Message-State: ANhLgQ2/WF6SRBz6s3IPQx5HZJ90YvazvkDsiB/RuADn2bcwWbLCkiIE
+ 7Nn/2iqQhHrXMJ8wT8jtnSjKL6fVyR5L1VPMyjLuMLsh
+X-Received: by 2002:a9f:3311:: with SMTP id o17mr186190uab.30.1583450143823;
+ Thu, 05 Mar 2020 15:15:43 -0800 (PST)
 MIME-Version: 1.0
-References: <20200303091254.22373-1-imammedo@redhat.com>
-In-Reply-To: <20200303091254.22373-1-imammedo@redhat.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Thu, 5 Mar 2020 21:07:08 +0100
-Message-ID: <CAPan3Wqr8HuXSmZL1DZTSjD_PfcoxNO5FkKAr36rzY8+vyOORg@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/cubieboard: make sure SOC object isn't leaked
-To: Igor Mammedov <imammedo@redhat.com>
-Content-Type: multipart/alternative; boundary="00000000000092f06005a021157f"
+References: <20200301084427.93823-1-root@stephanos.io>
+In-Reply-To: <20200301084427.93823-1-root@stephanos.io>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 5 Mar 2020 15:08:01 -0800
+Message-ID: <CAKmqyKNJ_qR2P72RXNGHC-3iuN+HL5Rhy5V_ehTGTmBDpUdi0Q@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/stm32f405: Add preliminary flash interface
+ emulation support
+To: Stephanos Ioannidis <root@stephanos.io>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::12e
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::941
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, drjones@redhat.com,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XGWKCpgnX2kr
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uY+0ta5W0w+j
 
---00000000000092f06005a021157f
-Content-Type: text/plain; charset="UTF-8"
-
-Hi Igor,
-
-On Tue, Mar 3, 2020 at 10:13 AM Igor Mammedov <imammedo@redhat.com> wrote:
-
-> SOC object returned by object_new() is leaked in current code.
-> Set SOC parent explicitly to board and then unref to SOC object
-> to make sure that refererence returned by object_new() is taken
-> care of.
+On Sun, Mar 1, 2020 at 12:47 AM Stephanos Ioannidis <root@stephanos.io> wrote:
 >
-> The SOC object will be kept alive by its parent (machine) and
-> will be automatically freed when MachineState is destroyed.
+> The flash interface (FLASHIF) peripheral provides a control interface
+> for the SoC embedded flash memory on the STM32F4xx series devices.
 >
-
-Thanks for reporting this issue. In the Allwinner H3 series, I actually
-inherited this pattern as well,
-so I'll include this fix as well in the next version of that series.
-
-
+> This commit adds preliminary support for the flash interface peripheral
+> emulation, in order to support proper emulation of the firmware images
+> that use the STM32Cube driver, which configures and validates the
+> FLASH_ACR register during system initialisation.
 >
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> Reported-by: Andrew Jones <drjones@redhat.com>
+> Signed-off-by: Stephanos Ioannidis <root@stephanos.io>
+
+Hey Stephanos,
+
+I think a lot of comments from your other patch apply to this patch as
+well (about bit fields and splitting the patch specifically).
+
+Do you mind sending a v2 addressing those comments?
+
+Alistair
+
 > ---
->  hw/arm/cubieboard.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
+>  hw/arm/Kconfig                      |   1 +
+>  hw/arm/stm32f405_soc.c              |  15 +-
+>  hw/misc/Kconfig                     |   3 +
+>  hw/misc/Makefile.objs               |   1 +
+>  hw/misc/stm32f4xx_flashif.c         | 215 ++++++++++++++++++++++++++++
+>  hw/misc/trace-events                |   4 +
+>  include/hw/arm/stm32f405_soc.h      |   2 +
+>  include/hw/misc/stm32f4xx_flashif.h | 144 +++++++++++++++++++
+>  8 files changed, 384 insertions(+), 1 deletion(-)
+>  create mode 100644 hw/misc/stm32f4xx_flashif.c
+>  create mode 100644 include/hw/misc/stm32f4xx_flashif.h
 >
-> diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
-> index 089f9a30c1..12f8ac798d 100644
-> --- a/hw/arm/cubieboard.c
-> +++ b/hw/arm/cubieboard.c
-> @@ -30,9 +30,14 @@ static struct arm_boot_info cubieboard_binfo = {
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 3d86691ae0..179696ec91 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -314,6 +314,7 @@ config STM32F205_SOC
+>  config STM32F405_SOC
+>      bool
+>      select ARM_V7M
+> +    select STM32F4XX_FLASHIF
+>      select STM32F4XX_SYSCFG
+>      select STM32F4XX_EXTI
 >
->  static void cubieboard_init(MachineState *machine)
->  {
-> -    AwA10State *a10 = AW_A10(object_new(TYPE_AW_A10));
-> +    AwA10State *a10;
->      Error *err = NULL;
+> diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
+> index 9bcad97853..72b16910c7 100644
+> --- a/hw/arm/stm32f405_soc.c
+> +++ b/hw/arm/stm32f405_soc.c
+> @@ -30,6 +30,7 @@
+>  #include "hw/arm/stm32f405_soc.h"
+>  #include "hw/misc/unimp.h"
 >
-> +    a10 = AW_A10(object_new(TYPE_AW_A10));
-> +    object_property_add_child(OBJECT(machine), "soc", OBJECT(a10),
-> +                              &error_abort);
-> +    object_unref(OBJECT(a10));
+> +#define FLASHIF_ADDR                   0x40023C00
+>  #define SYSCFG_ADD                     0x40013800
+>  static const uint32_t usart_addr[] = { 0x40011000, 0x40004400, 0x40004800,
+>                                         0x40004C00, 0x40005000, 0x40011400,
+> @@ -59,6 +60,9 @@ static void stm32f405_soc_initfn(Object *obj)
+>      sysbus_init_child_obj(obj, "armv7m", &s->armv7m, sizeof(s->armv7m),
+>                            TYPE_ARMV7M);
 >
-
-I see that there are a few machines which also do
-object_property_add_child() to add its
-SoC object to the machine, but they do not do the object_unref(). Can you
-explain why it is needed here?
-Or do the other machines still have a leak due to the missing
-object_unref()? Examples are:
-  hw/arm/sabrelite.c
-  hw/arm/mcimx7d-sabre.c
-  hw/arm/mcimx6ul-evk.c
-
-Regards,
-Niek
-
-
+> +    sysbus_init_child_obj(obj, "flashif", &s->flashif, sizeof(s->flashif),
+> +                          TYPE_STM32F4XX_FLASHIF);
 > +
->      object_property_set_int(OBJECT(&a10->emac), 1, "phy-addr", &err);
->      if (err != NULL) {
->          error_reportf_err(err, "Couldn't set phy address: ");
+>      sysbus_init_child_obj(obj, "syscfg", &s->syscfg, sizeof(s->syscfg),
+>                            TYPE_STM32F4XX_SYSCFG);
+>
+> @@ -130,6 +134,16 @@ static void stm32f405_soc_realize(DeviceState *dev_soc, Error **errp)
+>          return;
+>      }
+>
+> +    /* Flash interface */
+> +    dev = DEVICE(&s->flashif);
+> +    object_property_set_bool(OBJECT(&s->flashif), true, "realized", &err);
+> +    if (err != NULL) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +    busdev = SYS_BUS_DEVICE(dev);
+> +    sysbus_mmio_map(busdev, 0, FLASHIF_ADDR);
+> +
+>      /* System configuration controller */
+>      dev = DEVICE(&s->syscfg);
+>      object_property_set_bool(OBJECT(&s->syscfg), true, "realized", &err);
+> @@ -261,7 +275,6 @@ static void stm32f405_soc_realize(DeviceState *dev_soc, Error **errp)
+>      create_unimplemented_device("GPIOI",       0x40022000, 0x400);
+>      create_unimplemented_device("CRC",         0x40023000, 0x400);
+>      create_unimplemented_device("RCC",         0x40023800, 0x400);
+> -    create_unimplemented_device("Flash Int",   0x40023C00, 0x400);
+>      create_unimplemented_device("BKPSRAM",     0x40024000, 0x400);
+>      create_unimplemented_device("DMA1",        0x40026000, 0x400);
+>      create_unimplemented_device("DMA2",        0x40026400, 0x400);
+> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> index bdd77d8020..e333a955b2 100644
+> --- a/hw/misc/Kconfig
+> +++ b/hw/misc/Kconfig
+> @@ -79,6 +79,9 @@ config IMX
+>      select SSI
+>      select USB_EHCI_SYSBUS
+>
+> +config STM32F4XX_FLASHIF
+> +    bool
+> +
+>  config STM32F2XX_SYSCFG
+>      bool
+>
+> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> index da993f45b7..1aea0b9bb9 100644
+> --- a/hw/misc/Makefile.objs
+> +++ b/hw/misc/Makefile.objs
+> @@ -58,6 +58,7 @@ common-obj-$(CONFIG_RASPI) += bcm2835_thermal.o
+>  common-obj-$(CONFIG_SLAVIO) += slavio_misc.o
+>  common-obj-$(CONFIG_ZYNQ) += zynq_slcr.o
+>  common-obj-$(CONFIG_ZYNQ) += zynq-xadc.o
+> +common-obj-$(CONFIG_STM32F4XX_FLASHIF) += stm32f4xx_flashif.o
+>  common-obj-$(CONFIG_STM32F2XX_SYSCFG) += stm32f2xx_syscfg.o
+>  common-obj-$(CONFIG_STM32F4XX_SYSCFG) += stm32f4xx_syscfg.o
+>  common-obj-$(CONFIG_STM32F4XX_EXTI) += stm32f4xx_exti.o
+> diff --git a/hw/misc/stm32f4xx_flashif.c b/hw/misc/stm32f4xx_flashif.c
+> new file mode 100644
+> index 0000000000..d280fc5b2c
+> --- /dev/null
+> +++ b/hw/misc/stm32f4xx_flashif.c
+> @@ -0,0 +1,215 @@
+> +/*
+> + * STM32F4xx FLASHIF
+> + *
+> + * Copyright (c) 2020 Stephanos Ioannidis <root@stephanos.io>
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+> + * of this software and associated documentation files (the "Software"), to deal
+> + * in the Software without restriction, including without limitation the rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> + * THE SOFTWARE.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "trace.h"
+> +#include "hw/irq.h"
+> +#include "migration/vmstate.h"
+> +#include "hw/misc/stm32f4xx_flashif.h"
+> +
+> +static void stm32f4xx_flashif_reset(DeviceState *dev)
+> +{
+> +    STM32F4xxFlashIfState *s = STM32F4XX_FLASHIF(dev);
+> +
+> +    /* Initialise states */
+> +    s->cr_key_index = 0;
+> +    s->optcr_key_index = 0;
+> +
+> +    /* Initialise register values */
+> +    s->flash_acr.reg = 0x00000000;
+> +    s->flash_keyr.reg = 0x00000000;
+> +    s->flash_optkeyr.reg = 0x00000000;
+> +    s->flash_sr.reg = 0x00000000;
+> +    s->flash_cr.reg = 0x80000000;
+> +    s->flash_optcr.reg = 0x0FFFAAED;
+> +}
+> +
+> +static uint64_t stm32f4xx_flashif_read(void * opaque, hwaddr addr,
+> +                                       unsigned int size)
+> +{
+> +    STM32F4xxFlashIfState *s = opaque;
+> +
+> +    trace_stm32f4xx_flashif_read(addr);
+> +
+> +    switch (addr) {
+> +    case FLASH_ACR:
+> +        return s->flash_acr.reg;
+> +    case FLASH_SR:
+> +        return s->flash_sr.reg;
+> +    case FLASH_CR:
+> +        return s->flash_cr.reg;
+> +    case FLASH_OPTCR:
+> +        return s->flash_optcr.reg;
+> +    default:
+> +        qemu_log_mask(
+> +            LOG_GUEST_ERROR,
+> +            "%s: Bad offset 0x%"HWADDR_PRIx"\n", __func__, addr);
+> +        return 0;
+> +    }
+> +}
+> +
+> +static void flash_acr_write(STM32F4xxFlashIfState *s, FlashAcrType val)
+> +{
+> +    /* Set latency */
+> +    s->flash_acr.latency = val.latency;
+> +    /* Set prefetch status */
+> +    s->flash_acr.prften = val.prften;
+> +    /* Set instruction cache status */
+> +    s->flash_acr.icen = val.icen;
+> +    /* Set data cache status */
+> +    s->flash_acr.dcen = val.dcen;
+> +}
+> +
+> +static void flash_cr_write(STM32F4xxFlashIfState *s, FlashCrType val)
+> +{
+> +    /* Lock FLASH_CR if lock bit is set */
+> +    if (val.lock) {
+> +        s->flash_cr.lock = 1;
+> +        s->cr_key_index = 0;
+> +        return;
+> +    }
+> +}
+> +
+> +static void flash_optcr_write(STM32F4xxFlashIfState *s, FlashOptcrType val)
+> +{
+> +    /* Lock FLASH_OPTCR if lock bit is set */
+> +    if (val.optlock) {
+> +        s->flash_optcr.optlock = 1;
+> +        s->optcr_key_index = 0;
+> +        return;
+> +    }
+> +}
+> +
+> +static void stm32f4xx_flashif_write(void *opaque, hwaddr addr,
+> +                                    uint64_t val64, unsigned int size)
+> +{
+> +    STM32F4xxFlashIfState *s = opaque;
+> +    uint32_t value = val64;
+> +
+> +    trace_stm32f4xx_flashif_write(value, addr);
+> +
+> +    switch (addr) {
+> +    case FLASH_ACR:
+> +        flash_acr_write(s, (FlashAcrType)value);
+> +        return;
+> +    case FLASH_KEYR:
+> +        if (s->cr_key_index == 0 && value == 0x45670123) {
+> +            s->cr_key_index = 1;
+> +        } else if (s->cr_key_index == 1 && value == 0xCDEF89AB) {
+> +            /* Valid key; unlock FLASH_CR */
+> +            s->flash_cr.lock = 0;
+> +            s->cr_key_index = 0;
+> +        } else {
+> +            /* Invalid key; permanently lock FLASH_CR until reset */
+> +            s->flash_cr.lock = 1;
+> +            s->cr_key_index = -1;
+> +        }
+> +        return;
+> +    case FLASH_OPTKEYR:
+> +        if (s->optcr_key_index == 0 && value == 0x08192A3B) {
+> +            s->optcr_key_index = 1;
+> +        } else if (s->optcr_key_index == 1 && value == 0x4C5D6E7F) {
+> +            /* Valid key; unlock FLASH_OPTCR */
+> +            s->flash_optcr.optlock = 0;
+> +            s->optcr_key_index = 0;
+> +        } else {
+> +            /* Invalid key; lock FLASH_OPTCR until reset */
+> +            s->flash_optcr.optlock = 1;
+> +            s->optcr_key_index = -1;
+> +        }
+> +        return;
+> +    case FLASH_SR:
+> +        if (s->flash_sr.eop)        s->flash_sr.eop = 0;
+> +        if (s->flash_sr.operr)      s->flash_sr.operr = 0;
+> +        if (s->flash_sr.wrperr)     s->flash_sr.wrperr = 0;
+> +        if (s->flash_sr.pgaerr)     s->flash_sr.pgaerr = 0;
+> +        if (s->flash_sr.pgperr)     s->flash_sr.pgperr = 0;
+> +        if (s->flash_sr.pgserr)     s->flash_sr.pgserr = 0;
+> +        return;
+> +    case FLASH_CR:
+> +        flash_cr_write(s, (FlashCrType)value);
+> +        return;
+> +    case FLASH_OPTCR:
+> +        flash_optcr_write(s, (FlashOptcrType)value);
+> +        return;
+> +    default:
+> +        qemu_log_mask(
+> +            LOG_GUEST_ERROR,
+> +            "%s: Bad offset 0x%"HWADDR_PRIx"\n", __func__, addr);
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps stm32f4xx_flashif_ops = {
+> +    .read = stm32f4xx_flashif_read,
+> +    .write = stm32f4xx_flashif_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN
+> +};
+> +
+> +static void stm32f4xx_flashif_init(Object *obj)
+> +{
+> +    STM32F4xxFlashIfState *s = STM32F4XX_FLASHIF(obj);
+> +
+> +    memory_region_init_io(&s->mmio, obj, &stm32f4xx_flashif_ops, s,
+> +                          TYPE_STM32F4XX_FLASHIF, 0x400);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+> +}
+> +
+> +static const VMStateDescription vmstate_stm32f4xx_flashif = {
+> +    .name = TYPE_STM32F4XX_FLASHIF,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32(flash_acr.reg, STM32F4xxFlashIfState),
+> +        VMSTATE_UINT32(flash_keyr.reg, STM32F4xxFlashIfState),
+> +        VMSTATE_UINT32(flash_optkeyr.reg, STM32F4xxFlashIfState),
+> +        VMSTATE_UINT32(flash_sr.reg, STM32F4xxFlashIfState),
+> +        VMSTATE_UINT32(flash_cr.reg, STM32F4xxFlashIfState),
+> +        VMSTATE_UINT32(flash_optcr.reg, STM32F4xxFlashIfState),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void stm32f4xx_flashif_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->reset = stm32f4xx_flashif_reset;
+> +    dc->vmsd = &vmstate_stm32f4xx_flashif;
+> +}
+> +
+> +static const TypeInfo stm32f4xx_flashif_info = {
+> +    .name          = TYPE_STM32F4XX_FLASHIF,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(STM32F4xxFlashIfState),
+> +    .instance_init = stm32f4xx_flashif_init,
+> +    .class_init    = stm32f4xx_flashif_class_init
+> +};
+> +
+> +static void stm32f4xx_flashif_register_types(void)
+> +{
+> +    type_register_static(&stm32f4xx_flashif_info);
+> +}
+> +
+> +type_init(stm32f4xx_flashif_register_types)
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index 7f0f5dff3a..bd9a5dd483 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -84,6 +84,10 @@ mos6522_set_sr_int(void) "set sr_int"
+>  mos6522_write(uint64_t addr, uint64_t val) "reg=0x%"PRIx64 " val=0x%"PRIx64
+>  mos6522_read(uint64_t addr, unsigned val) "reg=0x%"PRIx64 " val=0x%x"
+>
+> +# stm32f4xx_flashif
+> +stm32f4xx_flashif_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
+> +stm32f4xx_flashif_write(uint64_t addr, uint64_t data) "reg write: addr: 0x%" PRIx64 " val: 0x%" PRIx64 ""
+> +
+>  # stm32f4xx_syscfg
+>  stm32f4xx_syscfg_set_irq(int gpio, int line, int level) "Interupt: GPIO: %d, Line: %d; Level: %d"
+>  stm32f4xx_pulse_exti(int irq) "Pulse EXTI: %d"
+> diff --git a/include/hw/arm/stm32f405_soc.h b/include/hw/arm/stm32f405_soc.h
+> index 1fe97f8c3a..a94c3c51ac 100644
+> --- a/include/hw/arm/stm32f405_soc.h
+> +++ b/include/hw/arm/stm32f405_soc.h
+> @@ -25,6 +25,7 @@
+>  #ifndef HW_ARM_STM32F405_SOC_H
+>  #define HW_ARM_STM32F405_SOC_H
+>
+> +#include "hw/misc/stm32f4xx_flashif.h"
+>  #include "hw/misc/stm32f4xx_syscfg.h"
+>  #include "hw/timer/stm32f2xx_timer.h"
+>  #include "hw/char/stm32f2xx_usart.h"
+> @@ -57,6 +58,7 @@ typedef struct STM32F405State {
+>
+>      ARMv7MState armv7m;
+>
+> +    STM32F4xxFlashIfState flashif;
+>      STM32F4xxSyscfgState syscfg;
+>      STM32F4xxExtiState exti;
+>      STM32F2XXUsartState usart[STM_NUM_USARTS];
+> diff --git a/include/hw/misc/stm32f4xx_flashif.h b/include/hw/misc/stm32f4xx_flashif.h
+> new file mode 100644
+> index 0000000000..e364ca39c7
+> --- /dev/null
+> +++ b/include/hw/misc/stm32f4xx_flashif.h
+> @@ -0,0 +1,144 @@
+> +/*
+> + * STM32F4xx FLASHIF
+> + *
+> + * Copyright (c) 2020 Stephanos Ioannidis <root@stephanos.io>
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+> + * of this software and associated documentation files (the "Software"), to deal
+> + * in the Software without restriction, including without limitation the rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> + * THE SOFTWARE.
+> + */
+> +
+> +#ifndef HW_STM_FLASHIF_H
+> +#define HW_STM_FLASHIF_H
+> +
+> +#include "hw/sysbus.h"
+> +#include "hw/hw.h"
+> +
+> +#define TYPE_STM32F4XX_FLASHIF "stm32f4xx-flashif"
+> +#define STM32F4XX_FLASHIF(obj) \
+> +    OBJECT_CHECK(STM32F4xxFlashIfState, (obj), TYPE_STM32F4XX_FLASHIF)
+> +
+> +#define FLASH_ACR       0x00
+> +#define FLASH_KEYR      0x04
+> +#define FLASH_OPTKEYR   0x08
+> +#define FLASH_SR        0x0C
+> +#define FLASH_CR        0x10
+> +#define FLASH_OPTCR     0x14
+> +
+> +typedef union {
+> +    struct {
+> +        uint32_t latency : 3;
+> +        uint32_t reserved0 : 5;
+> +        uint32_t prften : 1;
+> +        uint32_t icen : 1;
+> +        uint32_t dcen : 1;
+> +        uint32_t icrst : 1;
+> +        uint32_t dcrst : 1;
+> +        uint32_t reserved1 : 19;
+> +    };
+> +    uint32_t reg;
+> +} FlashAcrType;
+> +
+> +typedef union {
+> +    struct {
+> +        uint32_t key : 32;
+> +    };
+> +    uint32_t reg;
+> +} FlashKeyrType;
+> +
+> +typedef union {
+> +    struct {
+> +        uint32_t optkey : 32;
+> +    };
+> +    uint32_t reg;
+> +} FlashOptkeyrType;
+> +
+> +typedef union {
+> +    struct {
+> +        uint32_t eop : 1;
+> +        uint32_t operr : 1;
+> +        uint32_t reserved0 : 2;
+> +        uint32_t wrperr : 1;
+> +        uint32_t pgaerr : 1;
+> +        uint32_t pgperr : 1;
+> +        uint32_t pgserr : 1;
+> +        uint32_t reserved1 : 8;
+> +        uint32_t bsy : 1;
+> +        uint32_t reserved2 : 15;
+> +    };
+> +    uint32_t reg;
+> +} FlashSrType;
+> +
+> +typedef union {
+> +    struct {
+> +        uint32_t pg : 1;
+> +        uint32_t ser : 1;
+> +        uint32_t mer : 1;
+> +        uint32_t snb : 4;
+> +        uint32_t reserved0 : 1;
+> +        uint32_t psize : 2;
+> +        uint32_t reserved1 : 6;
+> +        uint32_t strt : 1;
+> +        uint32_t reserved2 : 7;
+> +        uint32_t eopie : 1;
+> +        uint32_t reserved3 : 6;
+> +        uint32_t lock : 1;
+> +    };
+> +    uint32_t reg;
+> +} FlashCrType;
+> +
+> +typedef union {
+> +    struct {
+> +        uint32_t optlock : 1;
+> +        uint32_t optstrt : 1;
+> +        uint32_t bor_lev : 2;
+> +        uint32_t reserved0 : 1;
+> +        uint32_t wdg_sw : 1;
+> +        uint32_t nrst_stop : 1;
+> +        uint32_t nrst_stdby : 1;
+> +        uint32_t rdp : 8;
+> +        uint32_t nwrp : 12;
+> +        uint32_t reserved1 : 4;
+> +    };
+> +    uint32_t reg;
+> +} FlashOptcrType;
+> +
+> +typedef struct {
+> +    /* <private> */
+> +    SysBusDevice parent_obj;
+> +
+> +    /* <public> */
+> +    MemoryRegion mmio;
+> +
+> +    int32_t cr_key_index;
+> +    int32_t optcr_key_index;
+> +
+> +    /* Access control register (FLASH_ACR) */
+> +    FlashAcrType flash_acr;
+> +    /* Key register (FLASH_KEYR) */
+> +    FlashKeyrType flash_keyr;
+> +    /* Option key register (FLASH_OPTKEYR) */
+> +    FlashOptkeyrType flash_optkeyr;
+> +    /* Status register (FLASH_SR) */
+> +    FlashSrType flash_sr;
+> +    /* Control register (FLASH_CR) */
+> +    FlashCrType flash_cr;
+> +    /* Option control register (FLASH_OPTCR) */
+> +    FlashOptcrType flash_optcr;
+> +} STM32F4xxFlashIfState;
+> +
+> +#endif
 > --
-> 2.18.1
+> 2.17.1
 >
 >
->
-
--- 
-Niek Linnenbank
-
---00000000000092f06005a021157f
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi Igor,<br></div><br><div class=3D"gmail_quote"><div=
- dir=3D"ltr" class=3D"gmail_attr">On Tue, Mar 3, 2020 at 10:13 AM Igor Mamm=
-edov &lt;<a href=3D"mailto:imammedo@redhat.com">imammedo@redhat.com</a>&gt;=
- wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
-0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">SOC obje=
-ct returned by object_new() is leaked in current code.<br>
-Set SOC parent explicitly to board and then unref to SOC object<br>
-to make sure that refererence returned by object_new() is taken<br>
-care of.<br>
-<br>
-The SOC object will be kept alive by its parent (machine) and<br>
-will be automatically freed when MachineState is destroyed.<br></blockquote=
-><div><br></div><div>Thanks for reporting this issue. In the Allwinner H3 s=
-eries, I actually inherited this pattern as well,</div><div>so I&#39;ll inc=
-lude this fix as well in the next version of that series.<br></div><div>=C2=
-=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
-x;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-Signed-off-by: Igor Mammedov &lt;<a href=3D"mailto:imammedo@redhat.com" tar=
-get=3D"_blank">imammedo@redhat.com</a>&gt;<br>
-Reported-by: Andrew Jones &lt;<a href=3D"mailto:drjones@redhat.com" target=
-=3D"_blank">drjones@redhat.com</a>&gt;<br>
----<br>
-=C2=A0hw/arm/cubieboard.c | 7 ++++++-<br>
-=C2=A01 file changed, 6 insertions(+), 1 deletion(-)<br>
-<br>
-diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c<br>
-index 089f9a30c1..12f8ac798d 100644<br>
---- a/hw/arm/cubieboard.c<br>
-+++ b/hw/arm/cubieboard.c<br>
-@@ -30,9 +30,14 @@ static struct arm_boot_info cubieboard_binfo =3D {<br>
-<br>
-=C2=A0static void cubieboard_init(MachineState *machine)<br>
-=C2=A0{<br>
--=C2=A0 =C2=A0 AwA10State *a10 =3D AW_A10(object_new(TYPE_AW_A10));<br>
-+=C2=A0 =C2=A0 AwA10State *a10;<br>
-=C2=A0 =C2=A0 =C2=A0Error *err =3D NULL;<br>
-<br>
-+=C2=A0 =C2=A0 a10 =3D AW_A10(object_new(TYPE_AW_A10));<br>
-+=C2=A0 =C2=A0 object_property_add_child(OBJECT(machine), &quot;soc&quot;, =
-OBJECT(a10),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;error_abort);<br>
-+=C2=A0 =C2=A0 object_unref(OBJECT(a10));<br></blockquote><div><br></div><d=
-iv>I see that there are a few machines which also do object_property_add_ch=
-ild() to add its</div><div>SoC object to the machine, but they do not do th=
-e object_unref(). Can you explain why it is needed here?</div><div>Or do th=
-e other machines still have a leak due to the missing object_unref()? Examp=
-les are:</div><div>=C2=A0 hw/arm/sabrelite.c</div><div>=C2=A0 hw/arm/mcimx7=
-d-sabre.c</div><div>=C2=A0 hw/arm/mcimx6ul-evk.c</div><div><br></div><div>R=
-egards,</div><div>Niek<br></div><div>=C2=A0</div><blockquote class=3D"gmail=
-_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204=
-,204);padding-left:1ex">
-+<br>
-=C2=A0 =C2=A0 =C2=A0object_property_set_int(OBJECT(&amp;a10-&gt;emac), 1, &=
-quot;phy-addr&quot;, &amp;err);<br>
-=C2=A0 =C2=A0 =C2=A0if (err !=3D NULL) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0error_reportf_err(err, &quot;Couldn&#39;t=
- set phy address: &quot;);<br>
--- <br>
-2.18.1<br>
-<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
-
---00000000000092f06005a021157f--

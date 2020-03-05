@@ -1,334 +1,190 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2727433lfi;
-        Thu, 5 Mar 2020 02:17:35 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vvgs0B7NlZhz/q5Jt/BGM5ZGgkpMvovISTcrWS1jkRpdvDXJ+B/7Eu0i0trWx36y49RnT5j
-X-Received: by 2002:aca:b608:: with SMTP id g8mr5307597oif.142.1583403455554;
-        Thu, 05 Mar 2020 02:17:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583403455; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2771231lfi;
+        Thu, 5 Mar 2020 03:05:16 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vtOKpSlb/KcIZb6zFh70dw5fDj86CreElFh/x2xd7J9v6BiQryBWvoljct0YIwOQwKVVIGa
+X-Received: by 2002:ac8:5484:: with SMTP id h4mr6572180qtq.209.1583406315597;
+        Thu, 05 Mar 2020 03:05:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583406315; cv=none;
         d=google.com; s=arc-20160816;
-        b=CyVZJh7ZzlPyw9C5p91Hn20DZAMfrLZstBTOk4h5WdmOYpUeNAiR1NWUhZSEHhnMDg
-         bLJBmrWOsXCvJIjhV9ARMsmFkkF/7aZjlDHPcgnUaQjtHJhKgivxegW/uXM2FunW46as
-         latFVKtNEhkWcjvx3nunTptGlN7Tk2Z5YdOzbCj+qBi8zQIOYVEjb4yY5Pp+ZvLRvbvD
-         FTItKnQuwDfDi5tHkmvkpDznO4RfMjHjoc79XoHRx/5XRa4RwIR745sdYw4V/JElUPJw
-         lpx6MxAakOgI5bZyGuBfz+YoKKOv5+mdunJRFujGWS5QbYfkkn9qOetIVibzvbNq2ULB
-         bdeA==
+        b=sxXtxsCSPgwyHazdWPVPAwBHffSkmSm1rm68SnTGFx1Tu8rQey7THueBL2Eqb5K3BK
+         tnGD98Qc64NxkolD58ZME8LQnRKhc08a9e5/VeE+1aBZtEAds5Jh30njJY1FHcZPb4mp
+         3jcPdEBZKK/opiLQ6fONCBNZQlB6H029oxSdsmg8s2AQ3XeVkAOjXptRXm2GNENnVMJl
+         gMm6gu0j9kNbM9WQbfQ26of97vDsfAKDUv4Mx1a9LH0rW0rQ0q6CnniRiH/IG/z3getu
+         roAK/1zO/BfEqQXmXWlmSgRBbJ1OHMEfZnc2u5Zc38EF2YLUTKZM5EbEsrYl4F1IZqMW
+         vAeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=CzsK3zceYUk/3h6Cd/jkI4QYfVwTVQONrR1Eh0uvmok=;
-        b=bSiZLtyOHysUIQMOUImxq4CHY26yogaiajJ01sNdqid69CcILUn0M1zFbhnL8QOGDx
-         FVmHbphOoP0eAJAIMsllk6Ey/RuDy+bOSO1TmvnphpIzIuGadaEBtzHeiIvHvEBL6q1p
-         4HF5VNBE/P3Hf1y31Qm1T1L1JNdYm0NSiyGpDrTQPHMLkB6f4LjwKiNBSxRTWkjvlQWT
-         +nXnPDzk7IkcAXyksN2Ys5HRpjf4R8ipQ8BNdgg0QWiQXIftMiQ8QMj0D/Gz1OUYJ+Dc
-         Syi+JM8pFcLYMtALViKSa5R3AQDj2ChwvbsRUWAig3waHc6w7gTFjBYC3SQJzEugpWF5
-         1wfQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=DZdqMh4lkKUPXZUiVFm3HTy2SG0x3qjZye+yTYMwsw0=;
+        b=s5Vk8N4bqrHSx6isEN6sjqqYNEwW3JUQdvLzFv4ZKM2092wYxk4U7zIvwyKhs/7oh5
+         nsd4siidmcGJYhgi9+8n79EdKVsYU8+RP1HxN5g0EdsOUcFwv1Dpe2F51ZEMmSf8F8BM
+         uM+TRziu4g6zq4uSu8Sx62XAt1KlceibMxxSNy9Ml9QSZHXd1rRysjPJONnSQzXnS//I
+         3pscDySc02RQH4huXSvwwCBgYJwKR8Rbkui+ErMkVNp+sYB7lVgbb5B3Dxs5Gqrb8+av
+         +qmd9p7NgIHNrgIx0hc/A05/I/f74qNYuUTDIwyXkCAUkLva5BRQoUL6jvP+LTNnMnqi
+         0AJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fadbj+M3;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id i4si3142271oib.219.2020.03.05.02.17.35;
-        Thu, 05 Mar 2020 02:17:35 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h1si1697257qto.125.2020.03.05.03.05.15
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 05 Mar 2020 03:05:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fadbj+M3;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726101AbgCEKRe (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 5 Mar 2020 05:17:34 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:47817 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1725937AbgCEKRe (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Thu, 5 Mar 2020 05:17:34 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1583403452;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         in-reply-to:in-reply-to:references:references;
-        bh=CzsK3zceYUk/3h6Cd/jkI4QYfVwTVQONrR1Eh0uvmok=;
-        b=fadbj+M3J2VFHEURuJ+v+WJKG+Bu0D1FsjuLoNMBS8sqwNngPK/MsWv7fSsvxWiYS9nUdO
-        i1n/oBsNXF9CFXmfdqoU0tzuCUSIPcy4vrpcz5t16JlpZYkViWKABmtzTd4ZjGa0BKh36E
-        +6CCHBE0HgHPCnCdZb0ubhPDbAy1vZ0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-205-ug75qkquN9W3KMaQ028lbg-1; Thu, 05 Mar 2020 05:17:26 -0500
-X-MC-Unique: ug75qkquN9W3KMaQ028lbg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E8D6218FF660;
-        Thu,  5 Mar 2020 10:17:24 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (ovpn-204-110.brq.redhat.com [10.40.204.110])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id CC4CB5C1D8;
-        Thu,  5 Mar 2020 10:17:18 +0000 (UTC)
-Date:   Thu, 5 Mar 2020 11:17:16 +0100
-From:   Andrew Jones <drjones@redhat.com>
-To:     Eric Auger <eric.auger@redhat.com>
-Cc:     eric.auger.pro@gmail.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-        peter.maydell@linaro.org, andrew.murray@arm.com,
-        alexandru.elisei@arm.com, andre.przywara@arm.com
-Subject: Re: [kvm-unit-tests PATCH v2 9/9] arm: pmu: Test overflow interrupts
-Message-ID: <20200305101716.fgh4hmzdtg7pnacy@kamzik.brq.redhat.com>
-References: <20200130112510.15154-1-eric.auger@redhat.com>
- <20200130112510.15154-10-eric.auger@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47158 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j9oJW-0006Oc-Uq
+	for alex.bennee@linaro.org; Thu, 05 Mar 2020 06:05:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52310)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j9oJN-0006OI-VM
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2020 06:05:07 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j9oJM-0002cE-CI
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2020 06:05:05 -0500
+Received: from szxga08-in.huawei.com ([45.249.212.255]:51302 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1j9oJM-0002Xb-2E; Thu, 05 Mar 2020 06:05:04 -0500
+Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.55])
+ by Forcepoint Email with ESMTP id 54C90AAAFE4961260910;
+ Thu,  5 Mar 2020 19:04:58 +0800 (CST)
+Received: from DGGEMM424-HUB.china.huawei.com (10.1.198.41) by
+ DGGEMM406-HUB.china.huawei.com (10.3.20.214) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 5 Mar 2020 19:04:57 +0800
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.163]) by
+ dggemm424-hub.china.huawei.com ([10.1.198.41]) with mapi id 14.03.0439.000;
+ Thu, 5 Mar 2020 19:04:47 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>
+Subject: RE: [PATCH v2] hw/net/imx_fec: write TGSR and TCSR3 in
+ imx_enet_write()
+Thread-Topic: [PATCH v2] hw/net/imx_fec: write TGSR and TCSR3 in
+ imx_enet_write()
+Thread-Index: AQHV8txXWFydji2esEaJwP7bouY1uqg507VQ
+Date: Thu, 5 Mar 2020 11:04:46 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B66DA01@dggemm531-mbx.china.huawei.com>
+References: <20200305105325.31264-1-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200305105325.31264-1-kuhn.chenqun@huawei.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200130112510.15154-10-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: St2JxU6VJvF4
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.255
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "peter.chubb@nicta.com.au" <peter.chubb@nicta.com.au>,
+ Euler Robot <euler.robot@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gJ0bpkBz+oXd
 
-On Thu, Jan 30, 2020 at 12:25:10PM +0100, Eric Auger wrote:
-> Test overflows for MEM_ACCESS and SW_INCR events. Also tests
-> overflows with 64-bit events.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
-> ---
-> 
-> v1 -> v2:
-> - inline setup_irq() code
-> ---
->  arm/pmu.c         | 137 ++++++++++++++++++++++++++++++++++++++++++++++
->  arm/unittests.cfg |   6 ++
->  2 files changed, 143 insertions(+)
-> 
-> diff --git a/arm/pmu.c b/arm/pmu.c
-> index fa77ab3..ada28a4 100644
-> --- a/arm/pmu.c
-> +++ b/arm/pmu.c
-> @@ -45,6 +45,11 @@ struct pmu {
->  	uint32_t pmcr_ro;
->  };
->  
-> +struct pmu_stats {
-> +	unsigned long bitmap;
-> +	uint32_t interrupts[32];
-> +};
-> +
->  static struct pmu pmu;
->  
->  #if defined(__arm__)
-> @@ -116,6 +121,7 @@ static void test_mem_access(void) {}
->  static void test_chained_counters(void) {}
->  static void test_chained_sw_incr(void) {}
->  static void test_chain_promotion(void) {}
-> +static void test_overflow_interrupt(void) {}
->  
->  #elif defined(__aarch64__)
->  #define ID_AA64DFR0_PERFMON_SHIFT 8
-> @@ -261,6 +267,44 @@ asm volatile(
->  	: "x9", "x10", "cc");
->  }
->  
-> +static struct pmu_stats pmu_stats;
-> +
-> +static void irq_handler(struct pt_regs *regs)
-> +{
-> +	uint32_t irqstat, irqnr;
-> +
-> +	irqstat = gic_read_iar();
-> +	irqnr = gic_iar_irqnr(irqstat);
-> +	gic_write_eoir(irqstat);
-
-Should we clear the overflows before EOIRing? Otherwise I think it may be
-possible for another interrupt to be delivered. See
-
-https://patchwork.kernel.org/patch/11368853/
-
-for a similar issue.
-
-> +
-> +	if (irqnr == 23) {
-
-Why 23? And how about a define?
-
-> +		unsigned long overflows = read_sysreg(pmovsclr_el0);
-> +		int i;
-> +
-> +		report_info("--> PMU overflow interrupt %d (counter bitmask 0x%lx)",
-> +			    irqnr, overflows);
-> +		for (i = 0; i < 32; i++) {
-> +			if (test_and_clear_bit(i, &overflows)) {
-> +				pmu_stats.interrupts[i]++;
-> +				pmu_stats.bitmap |= 1 << i;
-> +			}
-> +		}
-> +		write_sysreg(0xFFFFFFFF, pmovsclr_el0);
-> +	} else {
-> +		report_info("Unexpected interrupt: %d\n", irqnr);
-
-We should probably avoid calling any print functions from interrupt
-handlers. I see the timer test irq handler has this too, though. Also
-the pl031 test has a bunch of reporting in its irq handler. We do
-better with the gic tests where we only write results to arrays and
-then report later.
-
-> +	}
-> +}
-> +
-> +static void pmu_reset_stats(void)
-> +{
-> +	int i;
-> +
-> +	for (i = 0; i < 32; i++)
-> +		pmu_stats.interrupts[i] = 0;
-> +
-> +	pmu_stats.bitmap = 0;
-> +}
-> +
->  static void pmu_reset(void)
->  {
->  	/* reset all counters, counting disabled at PMCR level*/
-> @@ -271,6 +315,7 @@ static void pmu_reset(void)
->  	write_sysreg(0xFFFFFFFF, pmovsclr_el0);
->  	/* disable overflow interrupts on all counters */
->  	write_sysreg(0xFFFFFFFF, pmintenclr_el1);
-> +	pmu_reset_stats();
->  	isb();
->  }
->  
-> @@ -713,6 +758,95 @@ static void test_chain_promotion(void)
->  			read_sysreg(pmovsclr_el0));
->  }
->  
-> +static bool expect_interrupts(uint32_t bitmap)
-> +{
-> +	int i;
-> +
-> +	if (pmu_stats.bitmap ^ bitmap)
-> +		return false;
-> +
-> +	for (i = 0; i < 32; i++) {
-> +		if (test_and_clear_bit(i, &pmu_stats.bitmap))
-> +			if (pmu_stats.interrupts[i] != 1)
-> +				return false;
-> +	}
-> +	return true;
-> +}
-> +
-> +static void test_overflow_interrupt(void)
-> +{
-> +	uint32_t events[] = { 0x13 /* MEM_ACCESS */, 0x00 /* SW_INCR */};
-> +	void *addr = malloc(PAGE_SIZE);
-> +	int i;
-> +
-> +	if (!satisfy_prerequisites(events, ARRAY_SIZE(events)))
-> +		return;
-> +
-> +	gic_enable_defaults();
-> +	install_irq_handler(EL1H_IRQ, irq_handler);
-> +	local_irq_enable();
-> +	gic_enable_irq(23);
-> +
-> +	pmu_reset();
-> +
-> +	write_regn(pmevtyper, 0, events[0] | PMEVTYPER_EXCLUDE_EL0);
-> +	write_regn(pmevtyper, 1, events[1] | PMEVTYPER_EXCLUDE_EL0);
-> +	write_sysreg_s(0x3, PMCNTENSET_EL0);
-> +	write_regn(pmevcntr, 0, 0xFFFFFFF0);
-> +	write_regn(pmevcntr, 1, 0xFFFFFFF0);
-> +	isb();
-> +
-> +	/* interrupts are disabled */
-> +
-> +	mem_access_loop(addr, 200, pmu.pmcr_ro | PMU_PMCR_E);
-> +	report(expect_interrupts(0), "no overflow interrupt received");
-> +
-> +	set_pmcr(pmu.pmcr_ro | PMU_PMCR_E);
-> +	for (i = 0; i < 100; i++)
-> +		write_sysreg(0x2, pmswinc_el0);
-> +
-> +	set_pmcr(pmu.pmcr_ro);
-> +	report(expect_interrupts(0), "no overflow interrupt received");
-> +
-> +	/* enable interrupts */
-> +
-> +	pmu_reset_stats();
-> +
-> +	write_regn(pmevcntr, 0, 0xFFFFFFF0);
-> +	write_regn(pmevcntr, 1, 0xFFFFFFF0);
-> +	write_sysreg(0xFFFFFFFF, pmintenset_el1);
-> +	isb();
-> +
-> +	mem_access_loop(addr, 200, pmu.pmcr_ro | PMU_PMCR_E);
-> +	for (i = 0; i < 100; i++)
-> +		write_sysreg(0x3, pmswinc_el0);
-> +
-> +	mem_access_loop(addr, 200, pmu.pmcr_ro);
-> +	report_info("overflow=0x%lx", read_sysreg(pmovsclr_el0));
-> +	report(expect_interrupts(0x3),
-> +		"overflow interrupts expected on #0 and #1");
-> +
-> +	/* promote to 64-b */
-> +
-> +	pmu_reset_stats();
-> +
-> +	events[1] = 0x1E /* CHAIN */;
-> +	write_regn(pmevtyper, 1, events[1] | PMEVTYPER_EXCLUDE_EL0);
-> +	write_regn(pmevcntr, 0, 0xFFFFFFF0);
-> +	isb();
-> +	mem_access_loop(addr, 200, pmu.pmcr_ro | PMU_PMCR_E);
-> +	report(expect_interrupts(0),
-> +		"no overflow interrupt expected on 32b boundary");
-> +
-> +	/* overflow on odd counter */
-> +	pmu_reset_stats();
-> +	write_regn(pmevcntr, 0, 0xFFFFFFF0);
-> +	write_regn(pmevcntr, 1, 0xFFFFFFFF);
-> +	isb();
-> +	mem_access_loop(addr, 400, pmu.pmcr_ro | PMU_PMCR_E);
-> +	report(expect_interrupts(0x2),
-> +		"expect overflow interrupt on odd counter");
-> +}
->  #endif
->  
->  /*
-> @@ -921,6 +1055,9 @@ int main(int argc, char *argv[])
->  	} else if (strcmp(argv[1], "chain-promotion") == 0) {
->  		report_prefix_push(argv[1]);
->  		test_chain_promotion();
-> +	} else if (strcmp(argv[1], "overflow-interrupt") == 0) {
-> +		report_prefix_push(argv[1]);
-> +		test_overflow_interrupt();
->  	} else {
->  		report_abort("Unknown sub-test '%s'", argv[1]);
->  	}
-> diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-> index eb6e87e..1d1bc27 100644
-> --- a/arm/unittests.cfg
-> +++ b/arm/unittests.cfg
-> @@ -108,6 +108,12 @@ groups = pmu
->  arch = arm64
->  extra_params = -append 'chain-promotion'
->  
-> +[overflow-interrupt]
-
-Need "pmu-" prefix on this name, like the others, otherwise its standalone
-test won't have an appropriate name.
-
-> +file = pmu.flat
-> +groups = pmu
-> +arch = arm64
-> +extra_params = -append 'overflow-interrupt'
-> +
->  # Test PMU support (TCG) with -icount IPC=1
->  #[pmu-tcg-icount-1]
->  #file = pmu.flat
-> -- 
-> 2.20.1
-> 
-> 
-
-also same comments as previous patches
-
-Thanks,
-drew
+Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogQ2hlbnF1biAoa3VobikNCj5TZW50
+OiBUaHVyc2RheSwgTWFyY2ggNSwgMjAyMCA2OjUzIFBNDQo+VG86IHFlbXUtZGV2ZWxAbm9uZ251
+Lm9yZzsgcWVtdS10cml2aWFsQG5vbmdudS5vcmcNCj5DYzogcGV0ZXIubWF5ZGVsbEBsaW5hcm8u
+b3JnOyBaaGFuZ2hhaWxpYW5nDQo+PHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IGph
+c293YW5nQHJlZGhhdC5jb207DQo+cGV0ZXIuY2h1YmJAbmljdGEuY29tLmF1OyBxZW11LWFybUBu
+b25nbnUub3JnOyBDaGVucXVuIChrdWhuKQ0KPjxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT47IEV1
+bGVyIFJvYm90IDxldWxlci5yb2JvdEBodWF3ZWkuY29tPg0KPlN1YmplY3Q6IFtQQVRDSCB2Ml0g
+aHcvbmV0L2lteF9mZWM6IHdyaXRlIFRHU1IgYW5kIFRDU1IzIGluDQo+aW14X2VuZXRfd3JpdGUo
+KQ0KPg0KPlRoZSBjdXJyZW50IGNvZGUgY2F1c2VzIGNsYW5nIHN0YXRpYyBjb2RlIGFuYWx5emVy
+IGdlbmVyYXRlIHdhcm5pbmc6DQo+aHcvbmV0L2lteF9mZWMuYzo4NTg6OTogd2FybmluZzogVmFs
+dWUgc3RvcmVkIHRvICd2YWx1ZScgaXMgbmV2ZXIgcmVhZA0KPiAgICAgICAgdmFsdWUgPSB2YWx1
+ZSAmIDB4MDAwMDAwMGY7DQo+ICAgICAgICBeICAgICAgIH5+fn5+fn5+fn5+fn5+fn5+fg0KPmh3
+L25ldC9pbXhfZmVjLmM6ODY0Ojk6IHdhcm5pbmc6IFZhbHVlIHN0b3JlZCB0byAndmFsdWUnIGlz
+IG5ldmVyIHJlYWQNCj4gICAgICAgIHZhbHVlID0gdmFsdWUgJiAweDAwMDAwMGZkOw0KPiAgICAg
+ICAgXiAgICAgICB+fn5+fn5+fn5+fn5+fn5+fn4NCj4NCj5BY2NvcmRpbmcgdG8gdGhlIGRlZmlu
+aXRpb24gb2YgdGhlIGZ1bmN0aW9uLCB0aGUgdHdvIOKAnHZhbHVl4oCdIGFzc2lnbm1lbnRzDQo+
+c2hvdWxkIGJlIHdyaXR0ZW4gdG8gcmVnaXN0ZXJzLg0KPg0KPlJlcG9ydGVkLWJ5OiBFdWxlciBS
+b2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj5TaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8
+a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+LS0tDQo+djEtPnYyOg0KPiAgVGhlIHJlZ2lzdGVy
+ICdFTkVUX1RHU1InIHdyaXRlLTEtdG8tY2xlYXIgdGltZXIgZmxhZy4NCj4gIFRoZSByZWdpc3Rl
+ciAnRU5FVF9UQ1NSbicgN2JpdChURikgd3JpdGUtMS10by1jbGVhciB0aW1lciBmbGFnLg0KPi0t
+LQ0KPiBody9uZXQvaW14X2ZlYy5jIHwgNiArKysrLS0NCj4gMSBmaWxlIGNoYW5nZWQsIDQgaW5z
+ZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkNCj4NCj5kaWZmIC0tZ2l0IGEvaHcvbmV0L2lteF9m
+ZWMuYyBiL2h3L25ldC9pbXhfZmVjLmMgaW5kZXgNCj42YTEyNGExNTRhLi4zMjJjYmRjYzE3IDEw
+MDY0NA0KPi0tLSBhL2h3L25ldC9pbXhfZmVjLmMNCj4rKysgYi9ody9uZXQvaW14X2ZlYy5jDQo+
+QEAgLTg1NSwxMyArODU1LDE1IEBAIHN0YXRpYyB2b2lkIGlteF9lbmV0X3dyaXRlKElNWEZFQ1N0
+YXRlICpzLA0KPnVpbnQzMl90IGluZGV4LCB1aW50MzJfdCB2YWx1ZSkNCj4gICAgICAgICBicmVh
+azsNCj4gICAgIGNhc2UgRU5FVF9UR1NSOg0KPiAgICAgICAgIC8qIGltcGxlbWVudCBjbGVhciB0
+aW1lciBmbGFnICovDQo+LSAgICAgICAgdmFsdWUgPSB2YWx1ZSAmIDB4MDAwMDAwMGY7DQo+KyAg
+ICAgICAgcy0+cmVnc1tpbmRleF0gXj0gcy0+cmVnc1tpbmRleF0gJiB2YWx1ZTsNCj4rICAgICAg
+ICBzLT5yZWdzW2luZGV4XSAmPSAweDAwMDAwMDBmOw0KPg0KSW4gImkuTVggNkR1YWwvNlF1YWQg
+QXBwbGljYXRpb25zIFByb2Nlc3NvciBSZWZlcmVuY2UgTWFudWFsIiBkb2N1bWVudGF0aW9uLCAg
+DQp0aGUgcmVnaXN0ZXIgICdFTkVUX1RHU1InICBhbGwgIGZpZWxkcyBURm4gIGlzIHdyaXRlLTEt
+dG8tY2xlYXIuIA0KSXQgaXMgZGVzY3JpYmVkIGluIGRldGFpbCBhcyBmb2xsb3dz77yaDQotLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQpGaWVs
+ZCAgICAgICAgICBEZXNjcmlwdGlvbg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KMzHigJM0ICAgICAgICAgVGhpcyBmaWVsZCBpcyByZXNl
+cnZlZC4gIA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLQ0KMyAgICAgICAgICAgICAgQ29weSBPZiBUaW1lciBGbGFnIEZvciBDaGFubmVsIDMN
+ClRGMyAgICAgICAgIDAgVGltZXIgRmxhZyBmb3IgQ2hhbm5lbCAzIGlzIGNsZWFyDQogICAgICAg
+ICAgICAgICAgMSBUaW1lciBGbGFnIGZvciBDaGFubmVsIDMgaXMgc2V0DQotLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQoyICAgICAgICAgICAg
+IENvcHkgT2YgVGltZXIgRmxhZyBGb3IgQ2hhbm5lbCAyDQpURjIgICAgICAgICAwIFRpbWVyIEZs
+YWcgZm9yIENoYW5uZWwgMiBpcyBjbGVhcg0KICAgICAgICAgICAgICAgIDEgVGltZXIgRmxhZyBm
+b3IgQ2hhbm5lbCAyIGlzIHNldA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLQ0KMSAgICAgICAgICAgICAgQ29weSBPZiBUaW1lciBGbGFnIEZv
+ciBDaGFubmVsIDENClRGMSAgICAgICAgIDAgVGltZXIgRmxhZyBmb3IgQ2hhbm5lbCAxIGlzIGNs
+ZWFyDQogICAgICAgICAgICAgICAgMSBUaW1lciBGbGFnIGZvciBDaGFubmVsIDEgaXMgc2V0DQot
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQow
+ICAgICAgICAgICAgICBDb3B5IE9mIFRpbWVyIEZsYWcgRm9yIENoYW5uZWwgMA0KVEYwICAgICAg
+ICAgMCBUaW1lciBGbGFnIGZvciBDaGFubmVsIDAgaXMgY2xlYXINCiAgICAgICAgICAgICAgICAx
+IFRpbWVyIEZsYWcgZm9yIENoYW5uZWwgMCBpcyBzZXQNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KPiAgICAgICAgIGJyZWFrOw0KPiAgICAg
+Y2FzZSBFTkVUX1RDU1IwOg0KPiAgICAgY2FzZSBFTkVUX1RDU1IxOg0KPiAgICAgY2FzZSBFTkVU
+X1RDU1IyOg0KPiAgICAgY2FzZSBFTkVUX1RDU1IzOg0KPi0gICAgICAgIHZhbHVlID0gdmFsdWUg
+JiAweDAwMDAwMGZkOw0KPisgICAgICAgIHMtPnJlZ3NbaW5kZXhdID0gKHZhbHVlICYgMHgwMDAw
+MDA4MCkgPyAoMHgwMDAwMDA3ZCAmIHZhbHVlKSA6DQo+KyAgICAgICAgICAgICAgICAgICAgICAg
+ICAodmFsdWUgJiAweDAwMDAwMGZkKTsNCj4NClRoZSBFTkVUX1RDU1JuIGZpZWxkIGRlc2NyaXB0
+aW9uczoNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0NCkZpZWxkICAgICAgICAgIERlc2NyaXB0aW9uDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQozMeKAkzggICAgICBUaGlzIGZpZWxk
+IGlzIHJlc2VydmVkLg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tDQo3ICAgICAgICAgICAgICBUaW1lciBGbGFnDQpURiAgICAgICAgICAgIFNl
+dHMgd2hlbiBpbnB1dCBjYXB0dXJlIG9yIG91dHB1dCBjb21wYXJlIG9jY3Vycy4gDQogICAgICAg
+ICAgICAgICAgVGhpcyBmbGFnIGlzIGRvdWJsZSBidWZmZXJlZCBiZXR3ZWVuIHRoZSBtb2R1bGUg
+Y2xvY2sgYW5kIDE1ODggY2xvY2sgZG9tYWlucy4gDQogICAgICAgICAgICAgICAgV2hlbiB0aGlz
+IGZpZWxkIGlzIDEsIGl0IGNhbiBiZSBjbGVhcmVkIHRvIDAgYnkgd3JpdGluZyAxdG8gaXQuDQoN
+CiAgICAgICAgICAgICAgICAgMCBJbnB1dCBDYXB0dXJlIG9yIE91dHB1dCBDb21wYXJlIGhhcyBu
+b3Qgb2NjdXJyZWQNCiAgICAgICAgICAgICAgICAgMSBJbnB1dCBDYXB0dXJlIG9yIE91dHB1dCBD
+b21wYXJlIGhhcyBvY2N1cnJlZA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0NCjYgICAgICAgICAgICAgIFRpbWVyIEludGVycnVwdCBFbmFi
+bGUNClRJRSAgICAgICAgICAgMCBJbnRlcnJ1cHQgaXMgZGlzYWJsZWQNCiAgICAgICAgICAgICAg
+ICAgMSBJbnRlcnJ1cHQgaXMgZW5hYmxlZA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCjItNSAgICAgICAgICAgVGltZXIgTW9kZQ0KICAg
+ICAgICAgICAgICAgICAuLi4uLi4uLi4uLi4uLi4uLi4NCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQoxICAgICAgICAgICAgICBUaGlzIGZp
+ZWxkIGlzIHJlc2VydmVkLg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0NCjAgICAgICAgICAgICAgICAgVGltZXIgRE1BIFJlcXVlc3QgRW5h
+YmxlICAgDQpURFJFICAgICAgICAwIERNQSByZXF1ZXN0IGlzIGRpc2FibGVkDQogICAgICAgICAg
+ICAgICAgICAgMSBETUEgcmVxdWVzdCBpcyBlbmFibGVkDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KDQo+ICAgICAgICAgYnJlYWs7DQo+
+ICAgICBjYXNlIEVORVRfVENDUjA6DQo+ICAgICBjYXNlIEVORVRfVENDUjE6DQo+LS0NCj4yLjIz
+LjANCj4NCg0K

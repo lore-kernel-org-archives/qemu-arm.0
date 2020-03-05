@@ -1,191 +1,221 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2041277lfi;
-        Wed, 4 Mar 2020 12:41:32 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vsUP6ZiPlpmk9MjycxEvloCm88GBcjoU2e+PjhOvvlvEuP4aFIf8mp5cceQS3xR9T4++zMB
-X-Received: by 2002:aed:3ecd:: with SMTP id o13mr4054992qtf.309.1583354492418;
-        Wed, 04 Mar 2020 12:41:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583354492; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2238264lfi;
+        Wed, 4 Mar 2020 16:37:28 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vtYe518V0qR3hl1Ykf0ri/0pOMFUbpAxj0rbXQ7rI4wJqtPihdLr91vzwtGcXdEBYW9k0bM
+X-Received: by 2002:a05:6830:154b:: with SMTP id l11mr4327227otp.57.1583368648479;
+        Wed, 04 Mar 2020 16:37:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583368648; cv=none;
         d=google.com; s=arc-20160816;
-        b=IzvR90IxRAXXV+nA7f6vdXk83XhM6nddHltepTXnwZ/OYI3QwobBSGfkAz5M5jng5C
-         DiHZKtEVLWHMTBQmFesgrXaFZMhl7CFhN3TQMwUFO1q1rqnEOrjk+7bLWPtaFQ/cxFJ5
-         c/4B8K11qNITDJ2Syqvxy3sxq/8znolCssyTBzzHLAfBplVUz0Li8rYcKS3IhVqdtDyd
-         9spNfz7szBwxQ4PSKQ7W9dquBCbvQQpLlzVg+hDUZFiPTcR+N0dxhowiTedclHSbCc9O
-         FUn27enVDUJhpVpJyhvc8Az3HO4Qk5M5TS3AqI2fh/NfvyZ1slmzMG3Mr2o1YSu0Wasp
-         XDMQ==
+        b=XwVOhzwzXFcoyCl4nbM+oEWKAHv/B1xT1mUirny121F36H8NE46w3jbxhcVXVxBN/v
+         YTy6XVxI45cbkQJOpNvt8XuiHTkKnWykz/XhgCyn4ch5TXwZ2FDReoqtkO6FYiE+4SRL
+         F+obmc5K69Ye68fWGi5AhGwlAihIoTzb7t/6yfCElJvWAPpDDIU7Bc25NZ1fj9ZNPADj
+         Zr1zGsgFEhiF9iJZ9EIfpAq6AB1AzEAJwG4OdLcO2Z2+0ac60fL8Q0ZJxsf/PCoXB6GS
+         yEFVbOdj6Sk/8wrZV6F3F20nkhZ/nKMND6+TtAgwEZIUqpMPQ1Lg3S4FjMJzKJ4qLmmO
+         ExFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:from:references:to;
-        bh=Bv+slasXQP8gQvDk1Y2rlWHJUI83KsrVrjy8v/ozjjU=;
-        b=Y72+2j0AAMJ55tAw7gwVEntVK3PY/ocPKhwYV0f7GnuplFEd+CY7RtypmATqV1MrO2
-         0xxYTnkxoDW27fgocZR/Sd6gx1Tilx0fzWbIA51eUWSCK9nl+WZWbu73iUFphMG/HBv+
-         RWqnTm27GT4XCNQ6J//CWyCgIniGg9CuQ9jZB3NuMkbepsY/+I/z8EOFt+96R+LrcGpm
-         F5Uj1hduk8tRoqyA6cJ6CnLa2Vnt5st/1wK50G6c7px/VkAxcaCQBGmCAZdzfAfF7XBY
-         /0cViCjhTa0zcxuWcgzFwPuAagrMbC1zJPEY6YhQ5IokqMQVSYs6SF7Q3jdTjPgiUZFx
-         hGuQ==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:cc:to:subject:dkim-signature;
+        bh=nD+OmfcSCsKdImRCgX0hC12kDkEb9r+c4gCCAaOpOSg=;
+        b=AAScNhI8jhfgMzv/ZN0rTTDF1yds/xk0zz0qru/2IpyIVwvWcTNd8DgCnEBs8qmt8J
+         BkE6YGZQ/SKXzJKcdUuuVhF6U1qHfqhsURkRUxqHemJxfuJRHVrVpEc0JSbJi7AUHiU5
+         ZSsoo1VkE5+9lYmckPz4D28lSQFXfLVN79gsxHQ2yq/6XkewlrMCnh1aE8xiyT14gr4z
+         FJfYGYbZpxAggfz1MJdtNrHbuUAqCBfzgaL9pE/VQVmyy5/m9WSiwyYKUeV6ZfxmQLqm
+         0zdO1Jz03D7WrX5lgU51KSzF8xY42UZwDNkCPxMDWBdDR4UyrnRW09hD0v//N8jM/vrM
+         bgzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e16si1564803qkn.133.2020.03.04.12.41.32
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Mar 2020 12:41:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kk7NuXoV;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id 9si2230953oiq.104.2020.03.04.16.37.28;
+        Wed, 04 Mar 2020 16:37:28 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39516 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9apf-00015Y-TV
-	for alex.bennee@linaro.org; Wed, 04 Mar 2020 15:41:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57851)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mark.cave-ayland@ilande.co.uk>) id 1j9apM-00015D-Cd
- for qemu-arm@nongnu.org; Wed, 04 Mar 2020 15:41:13 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mark.cave-ayland@ilande.co.uk>) id 1j9apL-00023j-58
- for qemu-arm@nongnu.org; Wed, 04 Mar 2020 15:41:12 -0500
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:60088
- helo=mail.default.ilande.uk0.bigv.io)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1j9apK-0001zo-VN; Wed, 04 Mar 2020 15:41:11 -0500
-Received: from host86-162-6-80.range86-162.btcentralplus.com ([86.162.6.80]
- helo=[192.168.1.65]) by mail.default.ilande.uk0.bigv.io with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.89)
- (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1j9apV-0003VG-9f; Wed, 04 Mar 2020 20:41:27 +0000
-To: Pan Nengyuan <pannengyuan@huawei.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20200227025055.14341-1-pannengyuan@huawei.com>
- <20200227025055.14341-6-pannengyuan@huawei.com>
- <CAFEAcA8yvrYrBONtW46iswbEvMF-WC-j7fHOOfcoEC_RV66BkQ@mail.gmail.com>
- <c2b9eab3-f589-ecb6-0115-f8e673d52998@ilande.co.uk>
- <fc807125-1281-707f-0080-cc9b1d3c863e@huawei.com>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
- mQENBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
- 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
- E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
- PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
- PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
- AAG0ME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPokB
- OAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
- NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
- mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
- z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
- T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
- DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63LkBDQRUCbs8AQgA
- y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
- 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
- 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
- YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
- Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABiQEfBBgBAgAJ
- BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
- opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
- NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
- Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
- KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
- imgcU9TTGC5qd9g=
-Message-ID: <cac957ca-39b7-2453-9a1b-3bc844e0b13f@ilande.co.uk>
-Date: Wed, 4 Mar 2020 20:40:55 +0000
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kk7NuXoV;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S2388597AbgCEAhY (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Wed, 4 Mar 2020 19:37:24 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:24856 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S2388547AbgCEAhX (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 4 Mar 2020 19:37:23 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1583368641;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+        bh=nD+OmfcSCsKdImRCgX0hC12kDkEb9r+c4gCCAaOpOSg=;
+        b=Kk7NuXoV+URXsybPJ4CYDUSMtqULwrdKEboTsHiWPSxvuTxH2+1xuBzHhPs4PLrmTWAxKZ
+        okIOGUFg2UABHgmwb+NT46gf/HWqm8vDIRk//kuvIdjokCF/sWRCvvWoUVc0BO/oyz5Rsa
+        j9MnAPZIPYWc0/YmOjoaQYET0v3k9jg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-18-GLrhnu4HOtSFp2aoBb-oTw-1; Wed, 04 Mar 2020 19:37:17 -0500
+X-MC-Unique: GLrhnu4HOtSFp2aoBb-oTw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D445C1034B38;
+        Thu,  5 Mar 2020 00:37:13 +0000 (UTC)
+Received: from [10.10.120.212] (ovpn-120-212.rdu2.redhat.com [10.10.120.212])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 0D9AA5C1D4;
+        Thu,  5 Mar 2020 00:36:40 +0000 (UTC)
+Subject: Re: [PATCH v3 11/20] hw/ide/internal: Remove unused DMARestartFunc
+ typedef
+To:     =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+Cc:     "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        Fam Zheng <fam@euphon.net>,
+        =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+        kvm@vger.kernel.org, Laurent Vivier <lvivier@redhat.com>,
+        Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>,
+        Eric Auger <eric.auger@redhat.com>,
+        Halil Pasic <pasic@linux.ibm.com>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        qemu-s390x@nongnu.org,
+        Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+        Gerd Hoffmann <kraxel@redhat.com>,
+        Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org,
+        Alistair Francis <alistair@alistair23.me>,
+        qemu-block@nongnu.org,
+        =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+        Jason Wang <jasowang@redhat.com>,
+        xen-devel@lists.xenproject.org,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+        Matthew Rosato <mjrosato@linux.ibm.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Richard Henderson <richard.henderson@linaro.org>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        David Hildenbrand <david@redhat.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Igor Mitsyanko <i.mitsyanko@gmail.com>,
+        Paul Durrant <paul@xen.org>,
+        Richard Henderson <rth@twiddle.net>
+References: <20200220130548.29974-1-philmd@redhat.com>
+ <20200220130548.29974-12-philmd@redhat.com>
+From:   John Snow <jsnow@redhat.com>
+Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <88be6686-e966-7faa-757e-40eae101088e@redhat.com>
+Date:   Wed, 4 Mar 2020 19:36:38 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <fc807125-1281-707f-0080-cc9b1d3c863e@huawei.com>
+In-Reply-To: <20200220130548.29974-12-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 86.162.6.80
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH v3 5/6] hw/misc/mos6522: move timer_new from init() into
- realize() to avoid memleaks
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2001:41c9:1:41f::167
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <laurent@vivier.eu>, Euler Robot <euler.robot@huawei.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- zhanghailiang <zhang.zhanghailiang@huawei.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H7lcadri0qUw
-
-On 03/03/2020 01:36, Pan Nengyuan wrote:
-
-> On 3/3/2020 3:17 AM, Mark Cave-Ayland wrote:
->> On 02/03/2020 13:21, Peter Maydell wrote:
->>
->>> On Thu, 27 Feb 2020 at 02:35, Pan Nengyuan <pannengyuan@huawei.com> wrote:
->>>>
->>>> There are some memleaks when we call 'device_list_properties'. This patch move timer_new from init into realize to fix it.
->>>> Meanwhile, add calls to mos6522_realize() in mac_via_realize to make this move to be valid.
->>>>
->>>> Reported-by: Euler Robot <euler.robot@huawei.com>
->>>> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
->>>> ---
->>>> Cc: Laurent Vivier <laurent@vivier.eu>
->>>> ---
->>>> v2->v1:
->>>> - no changes in this patch.
->>>> v3->v2:
->>>> - remove null check in reset, and add calls to mos6522_realize() in mac_via_realize to make this move to be valid.
->>>
->>> Hi; this is really fixing two bugs in one patch:
->>>
->>>> ---
->>>>  hw/misc/mac_via.c | 5 +++++
->>>>  hw/misc/mos6522.c | 6 ++++++
->>>>  2 files changed, 11 insertions(+)
->>>>
->>>> diff --git a/hw/misc/mac_via.c b/hw/misc/mac_via.c
->>>> index b7d0012794..1d72d4ef35 100644
->>>> --- a/hw/misc/mac_via.c
->>>> +++ b/hw/misc/mac_via.c
->>>> @@ -879,6 +879,11 @@ static void mac_via_realize(DeviceState *dev, Error **errp)
->>>>      sysbus_init_child_obj(OBJECT(dev), "via2", &m->mos6522_via2,
->>>>                            sizeof(m->mos6522_via2), TYPE_MOS6522_Q800_VIA2);
->>>>
->>>> +    object_property_set_bool(OBJECT(&m->mos6522_via1), true, "realized",
->>>> +                             &error_abort);
->>>> +    object_property_set_bool(OBJECT(&m->mos6522_via2), true, "realized",
->>>> +                             &error_abort);
->>>> +
->>>>      /* Pass through mos6522 output IRQs */
->>>>      ms = MOS6522(&m->mos6522_via1);
->>>>      object_property_add_alias(OBJECT(dev), "irq[0]", OBJECT(ms),
->>>
->>> This is fixing a bug in mac_via where it failed to actually
->>> realize devices it was using. That's a dependency for the bug
->>> you're trying to fix, but it's a separate one and should be
->>> in its own patch.
->>
->> Sigh. Thanks for this - I actually discovered this a little while back and have some
->> local patches to do the same, but due to lack of time I never managed to tidy them up
->> for submission.
-> 
-> Hmm, maybe you can take this other changes(fix memleaks) into your local patches and send it together?
-> Or If you have no time, I can help to do it about this device. :)
-
-My patches are part of various q800 branches I have been playing with over the past
-couple of months, and so are lagging quite far behind master. If you are able to
-update them based upon Peter's comments them I'm happy to review them (and perhaps
-could perhaps take them along with my cmd646 patchset if required).
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Content-Transfer-Encoding: quoted-printable
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: nvlc+FISk5qZ
 
 
-ATB,
 
-Mark.
+On 2/20/20 8:05 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> The IDE DMA restart callback has been removed in commit fe09c7c9f0.
+>=20
+> Fixes: fe09c7c9f0
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  include/hw/ide/internal.h | 1 -
+>  1 file changed, 1 deletion(-)
+>=20
+> diff --git a/include/hw/ide/internal.h b/include/hw/ide/internal.h
+> index 52ec197da0..ce766ac485 100644
+> --- a/include/hw/ide/internal.h
+> +++ b/include/hw/ide/internal.h
+> @@ -326,7 +326,6 @@ typedef int DMAIntFunc(IDEDMA *, int);
+>  typedef int32_t DMAInt32Func(IDEDMA *, int32_t len);
+>  typedef void DMAu32Func(IDEDMA *, uint32_t);
+>  typedef void DMAStopFunc(IDEDMA *, bool);
+> -typedef void DMARestartFunc(void *, int, RunState);
+> =20
+>  struct unreported_events {
+>      bool eject_request;
+>=20
+
+Acked-by: John Snow <jsnow@redhat.com>

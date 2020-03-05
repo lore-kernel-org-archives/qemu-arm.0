@@ -1,172 +1,329 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp3203396lfi;
-        Thu, 5 Mar 2020 09:59:21 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vuakkCfr9NGxc5ErCvxDV/m9Tkun00hqZTq7z4hgbSEYF8X09l2TlGi6VoV/G/84Gc1aV2+
-X-Received: by 2002:a0c:fde7:: with SMTP id m7mr4850508qvu.53.1583431161168;
-        Thu, 05 Mar 2020 09:59:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583431161; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp3203673lfi;
+        Thu, 5 Mar 2020 09:59:36 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vueoL7CkAo4e/6/qDOj2y7uF3pB+C07utOa27GSPm1varDJPk+5MRuPVo9LYQjgGpGfSpeP
+X-Received: by 2002:a05:620a:1395:: with SMTP id k21mr9155443qki.81.1583431176759;
+        Thu, 05 Mar 2020 09:59:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583431176; cv=none;
         d=google.com; s=arc-20160816;
-        b=md0HamdJkaHlCoIPGk7ysHiWrxBeALjS04aYnQHK04QHL79dOMHqKjMzBmvgcxYvUr
-         2uaAlaZ6KzEGDmzMju1FKS7Z6+jcNRyAx8mUXhu0F+hdOkJtzAsh/oVZsoE+zulL36Za
-         45S+BQfT2hs5CS+UC/gxnu45CyV5YfYBT54RUVHg+lk5Xvlz8gvb0PbsoaaCqHsqkZm+
-         cp+WQztNLGPCHKFXyHc+k8MMcweRpMj4kggvXM45Xc4kLqmva62e/J72vV6LMLuyXEST
-         8TL7SSsJfStB4JQZjkkGyex5ClpZdIBiTselxdPgPKxRE0OhYSbLvkO246aN5g0hawy1
-         O1Ww==
+        b=FFXj+YX6wyw1zNoxVE7JvhlaHBnsj9xNMsLs3AWWSIbVdyrFAqkHrNVxRUwjmB0fNa
+         AI6VzbfggI6Z59hJfVfllO2g7P4CEqR+WgNSlqbAZaz8pM9xDNz/RlZEEFFurSPXIEKS
+         o7NXEFKQ0ftHLmj2ZQ5MhDV/w0G4P9mrz3IOhvW0XriPj12DywjT69dH8y0fnSs4ZXzw
+         9xoKCyNSxTg32uEjsXAB9OY7uN+SkwKXjifheCvGgQ3lBL0Bs3IrCMvtFfL21XXL4Uou
+         UrVl/Xmqz8xNylRJP4HNMB/UVZ5q0LMdfI0cSjent7aRvxnHiO2KxJ5jwVNyatRAedIM
+         yBHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=hFzOf21mMRMWBpr53hzhWDWl6EUS9wSXvSla5EkKK0o=;
-        b=F5FnAApkmHM2KdlcQ0O9/Hv4ZkN5Gmx78az0/mV7SLgrU5moa4pN6/w+06y61AQ1qI
-         97KrYgAcDq+58GjIJFDc7Xy2EkLeTMC8kE4INd47ebAz3VAmQ/yAAWeFX3qol3+IPXID
-         vwoGkS9OlZp41hP6bZy5jdw/HEPUT8PGQxOx2ChEd5SEj1yiTffoEBcpRvom85xAgcza
-         ztUZEpxQ1LFVT1qmHZaqd6RerYush7MnOV2gHQ2T/iB3WSfDEG4z+uU56Mno6UJlBs2R
-         8pCghOrbGRAjaG0rxBTc3DtzEYsQXpoG2yvKJs1O70VtxhLMfx9wWjoVcZ24Hz/4gpiO
-         DgbQ==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:to:subject:from:dkim-signature;
+        bh=7ho70i/nZIlQXdm3jGDwtCt7A5XJkKCK2x5X0BOZ47U=;
+        b=q5ovkcWNymKU61DIb7OOFVVwqjJnyQr7rHR1iUv5a0ggqPn48MOUhtNQdyn1bhTz7l
+         qasvr9iZi8r6IkC7KG+MyFiNPQjigcDmAHOXu67RjUtWk23gp71x5LGG5BlUji79Iuhh
+         hj8eACxqfuja0Eww/o99oNlW+BEbi9xKnP4aHg6ZkN0y7m3MntQYf+Gmv9jjcZT5OGTm
+         yGLKw1oL9Q2naaDpRyRzTS0ZHepfrity5WrW2TiUeKlAD/GhjdDKdTUH41eK3yr8TJ++
+         tytDJO8iIOhLVX4c72SCuozl3U46Ebug2lnHw7oKbCmnrlNC+KFBelxKDMGltuswfM9W
+         aoPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EfFQqDHT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=dyX8P0Q4;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a8si3494969qkl.152.2020.03.05.09.59.21
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Mar 2020 09:59:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id h24si3226226qtm.206.2020.03.05.09.59.36;
+        Thu, 05 Mar 2020 09:59:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EfFQqDHT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=dyX8P0Q4;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54388 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9umG-0002rl-Iu
-	for alex.bennee@linaro.org; Thu, 05 Mar 2020 12:59:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47159)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j9ukI-0007dR-65
- for qemu-arm@nongnu.org; Thu, 05 Mar 2020 12:57:19 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j9ukH-0002uM-3I
- for qemu-arm@nongnu.org; Thu, 05 Mar 2020 12:57:18 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:24466
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j9ukG-0002tw-W8
- for qemu-arm@nongnu.org; Thu, 05 Mar 2020 12:57:17 -0500
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 57CF94AEC5;
+	Thu,  5 Mar 2020 12:59:36 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id y2t-1OO4+XEt; Thu,  5 Mar 2020 12:59:35 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 3EE724ACB7;
+	Thu,  5 Mar 2020 12:59:35 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id E9F6C4A959
+ for <kvmarm@lists.cs.columbia.edu>; Thu,  5 Mar 2020 12:59:33 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2m-RRElp+HaX for <kvmarm@lists.cs.columbia.edu>;
+ Thu,  5 Mar 2020 12:59:32 -0500 (EST)
+Received: from us-smtp-1.mimecast.com (us-smtp-2.mimecast.com [207.211.31.81])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 0C9D24A536
+ for <kvmarm@lists.cs.columbia.edu>; Thu,  5 Mar 2020 12:59:32 -0500 (EST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583431036;
+ s=mimecast20190719; t=1583431171;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hFzOf21mMRMWBpr53hzhWDWl6EUS9wSXvSla5EkKK0o=;
- b=EfFQqDHTUEg4jFEla9iviswXvoCTW1AM9UBrFdvs3LOGgstRyzKr+WEV4dNjsAfezDkWgG
- SquDItZc8wqGiMaQF4QENJrjqjervRk9lnMvYMtBl8QsGFuVy8OPAPSclM+cg7KekzYzsY
- JJ5KXIBOPD3qUEdJX84EEmWf/Y7r0A4=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-265-jLfmTb2gOImu0ISXk252Xg-1; Thu, 05 Mar 2020 12:57:15 -0500
-X-MC-Unique: jLfmTb2gOImu0ISXk252Xg-1
-Received: by mail-wr1-f71.google.com with SMTP id p11so2598638wrn.10
- for <qemu-arm@nongnu.org>; Thu, 05 Mar 2020 09:57:14 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=KuZu0l8YBqYXQOonzFZy05S+UvA1gUT1JdqmPkqMlAs=;
- b=dEtLhEPJsPdSQaIfp40FR5byiOenaUWjWb57l1A95nILR2skhjeXO8VroHyUM37Ecq
- 4IcFB19VfCE0QZfDcXxxV9WGj378l4P8bwv5Jr0lwOh18+ek0RPpWm4Q6c76/MIHdK6p
- ID4Fsuluf+GnxaSYnfj1boDX/yEjJyrnTgd5GLdRbZOa/i+ExfaKKYxAjjvulMACSrQl
- ZguUY3zTh4bJT7zJwMlv37XeIcK+PCfQEf3SvYo/FvL+5vjv+kPBf3BvWbfSeI68b+Ij
- mv9d4IIr02KXqBALcGZbTBd7MwKOE73diBIJi3xj24xCdKj6AUkUZLmUp2elXuzXR8VV
- glJA==
-X-Gm-Message-State: ANhLgQ1tkKhYSNweWrI22DJamGM8OvX50PXIanHWwyzqGdLDbFYn4wX/
- jMqGPZ4xH6hP/+n9iSrisXDp8viVHW8MezWjKKb1VyVmrfLRZoYD4AJ69VAfE9tv5TbvwAjW5iB
- iwrUgBIyX+pkv
-X-Received: by 2002:a1c:750e:: with SMTP id o14mr10482413wmc.156.1583431033782; 
- Thu, 05 Mar 2020 09:57:13 -0800 (PST)
-X-Received: by 2002:a1c:750e:: with SMTP id o14mr10482398wmc.156.1583431033617; 
- Thu, 05 Mar 2020 09:57:13 -0800 (PST)
-Received: from x1w.redhat.com (47.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id a1sm5164615wru.75.2020.03.05.09.57.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Mar 2020 09:57:13 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 4/6] hw/net/rtl8139: Update coding style to make checkpatch.pl
- happy
-Date: Thu,  5 Mar 2020 18:56:48 +0100
-Message-Id: <20200305175651.4563-5-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200305175651.4563-1-philmd@redhat.com>
-References: <20200305175651.4563-1-philmd@redhat.com>
+ bh=AjX8gnoueqBbmMKw0egA5SqCiGTGwQ5xjmXeuE6ZQV0=;
+ b=dyX8P0Q4CY+GUkwKNHyBNmGKvDVpg7ICo2rEI87mJ17rcE/y0ul/mRoxSA7vELZWnykMRw
+ bPYjfw0zyW1/42y7bfi08Y67fnzLLlTgcTrIFZYBoJkmDWJb1uvP5Q6dCVTmhpE6PdHQN7
+ zX8x/nO68pjOwEtqVoyFCNrGt1RgcBk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-31-LXPsODH5MC-yBzgezpdthA-1; Thu, 05 Mar 2020 12:59:22 -0500
+X-MC-Unique: LXPsODH5MC-yBzgezpdthA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4CD1E8017CC;
+ Thu,  5 Mar 2020 17:59:20 +0000 (UTC)
+Received: from [10.36.116.59] (ovpn-116-59.ams2.redhat.com [10.36.116.59])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DCBE78D57C;
+ Thu,  5 Mar 2020 17:59:16 +0000 (UTC)
+From: Auger Eric <eric.auger@redhat.com>
+Subject: Re: [kvm-unit-tests PATCH v3 08/14] arm/arm64: ITS:
+ its_enable_defaults
+To: Andrew Jones <drjones@redhat.com>
+References: <20200128103459.19413-1-eric.auger@redhat.com>
+ <20200128103459.19413-9-eric.auger@redhat.com>
+ <20200207124108.wtgghuwoka42oj4i@kamzik.brq.redhat.com>
+Message-ID: <242511fe-34e4-c9b9-631a-b360f58a3fa2@redhat.com>
+Date: Thu, 5 Mar 2020 18:59:15 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+In-Reply-To: <20200207124108.wtgghuwoka42oj4i@kamzik.brq.redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Cc: thuth@redhat.com, kvm@vger.kernel.org, maz@kernel.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
+ kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-ppc@nongnu.org, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- Joel Stanley <joel@jms.id.au>, Beniamino Galvani <b.galvani@gmail.com>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vRzsg728ctQ8
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: 55A5eSWV5JNJ
 
-We will modify this code in the next commit. Clean it up
-first to avoid checkpatch.pl errors.
+Hi Drew,
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/net/rtl8139.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+On 2/7/20 1:41 PM, Andrew Jones wrote:
+> On Tue, Jan 28, 2020 at 11:34:53AM +0100, Eric Auger wrote:
+>> its_enable_defaults() is the top init function that allocates the
+>> command queue and all the requested tables (device, collection,
+>> lpi config and pending tables), enable LPIs at distributor level
+>> and ITS level.
+>>
+>> gicv3_enable_defaults must be called before.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>
+>> ---
+>>
+>> v2 -> v3:
+>> - introduce its_setup_baser in this patch
+>> - squash "arm/arm64: ITS: Init the command queue" in this patch.
+>> ---
+>>  lib/arm/asm/gic-v3-its.h |  8 ++++
+>>  lib/arm/gic-v3-its.c     | 89 ++++++++++++++++++++++++++++++++++++++++
+>>  2 files changed, 97 insertions(+)
+>>
+>> diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
+>> index 815c515..fe73c04 100644
+>> --- a/lib/arm/asm/gic-v3-its.h
+>> +++ b/lib/arm/asm/gic-v3-its.h
+>> @@ -36,6 +36,8 @@ struct its_data {
+>>  	void *base;
+>>  	struct its_typer typer;
+>>  	struct its_baser baser[GITS_BASER_NR_REGS];
+>> +	struct its_cmd_block *cmd_base;
+>> +	struct its_cmd_block *cmd_write;
+>>  };
+>>  
+>>  extern struct its_data its_data;
+>> @@ -88,10 +90,16 @@ extern struct its_data its_data;
+>>  #define GITS_BASER_TYPE_DEVICE		1
+>>  #define GITS_BASER_TYPE_COLLECTION	4
+>>  
+>> +
+>> +struct its_cmd_block {
+>> +	u64 raw_cmd[4];
+>> +};
+>> +
+>>  extern void its_parse_typer(void);
+>>  extern void its_init(void);
+>>  extern int its_parse_baser(int i, struct its_baser *baser);
+>>  extern struct its_baser *its_lookup_baser(int type);
+>> +extern void its_enable_defaults(void);
+>>  
+>>  #else /* __arm__ */
+>>  
+>> diff --git a/lib/arm/gic-v3-its.c b/lib/arm/gic-v3-its.c
+>> index 2c0ce13..d1e7e52 100644
+>> --- a/lib/arm/gic-v3-its.c
+>> +++ b/lib/arm/gic-v3-its.c
+>> @@ -86,3 +86,92 @@ void its_init(void)
+>>  		its_parse_baser(i, &its_data.baser[i]);
+>>  }
+>>  
+>> +static void its_setup_baser(int i, struct its_baser *baser)
+>> +{
+>> +	unsigned long n = (baser->nr_pages * baser->psz) >> PAGE_SHIFT;
+>> +	unsigned long order = is_power_of_2(n) ? fls(n) : fls(n) + 1;
+>> +	u64 val;
+>> +
+>> +	baser->table_addr = (u64)virt_to_phys(alloc_pages(order));
+>> +
+>> +	val = ((u64)baser->table_addr					|
+>> +		((u64)baser->type	<< GITS_BASER_TYPE_SHIFT)	|
+>> +		((u64)(baser->esz - 1)	<< GITS_BASER_ENTRY_SIZE_SHIFT)	|
+>> +		((baser->nr_pages - 1)	<< GITS_BASER_PAGES_SHIFT)	|
+>> +		(u64)baser->indirect	<< 62				|
+>> +		(u64)baser->valid	<< 63);
+> 
+>  << GITS_BASER_INDIRECT
+>  << GITS_BASER_VALID
+Those are BIT()
+        if (baser->indirect)
+                val |= GITS_BASER_INDIRECT;
+        if (baser->valid)
+                val |= GITS_BASER_VALID;
 
-diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
-index ef3211537f..be9a0af629 100644
---- a/hw/net/rtl8139.c
-+++ b/hw/net/rtl8139.c
-@@ -799,10 +799,12 @@ static int rtl8139_can_receive(NetClientState *nc)
-     int avail;
-=20
-     /* Receive (drop) packets if card is disabled.  */
--    if (!s->clock_enabled)
--      return 1;
--    if (!rtl8139_receiver_enabled(s))
--      return 1;
-+    if (!s->clock_enabled) {
-+        return 1;
-+    }
-+    if (!rtl8139_receiver_enabled(s)) {
-+        return 1;
-+    }
-=20
-     if (rtl8139_cp_receiver_enabled(s) && rtl8139_cp_rx_valid(s)) {
-         /* ??? Flow control not implemented in c+ mode.
---=20
-2.21.1
+> 
+>> +
+>> +	switch (baser->psz) {
+>> +	case SZ_4K:
+>> +		val |= GITS_BASER_PAGE_SIZE_4K;
+>> +		break;
+>> +	case SZ_16K:
+>> +		val |= GITS_BASER_PAGE_SIZE_16K;
+>> +		break;
+>> +	case SZ_64K:
+>> +		val |= GITS_BASER_PAGE_SIZE_64K;
+>> +		break;
+>> +	}
+>> +
+>> +	writeq(val, gicv3_its_base() + GITS_BASER + i * 8);
+>> +}
+>> +
+>> +/**
+>> + * init_cmd_queue: Allocate the command queue and initialize
+>> + * CBASER, CREADR, CWRITER
+>> + */
+>> +static void its_cmd_queue_init(void)
+>> +{
+>> +	unsigned long n = SZ_64K >> PAGE_SHIFT;
+>> +	unsigned long order = fls(n);
+>> +	u64 cbaser;
+>> +
+>> +	its_data.cmd_base = (void *)virt_to_phys(alloc_pages(order));
+>> +
+>> +	cbaser = ((u64)its_data.cmd_base | (SZ_64K / SZ_4K - 1)	| GITS_CBASER_VALID);
+>> +
+>> +	writeq(cbaser, its_data.base + GITS_CBASER);
+>> +
+>> +	its_data.cmd_write = its_data.cmd_base;
+>> +	writeq(0, its_data.base + GITS_CWRITER);
+>> +}
+>> +
+>> +void its_enable_defaults(void)
+>> +{
+>> +	unsigned int i;
+>> +
+>> +	its_parse_typer();
+>> +
+>> +	/* Allocate BASER tables (device and collection tables) */
+>> +	for (i = 0; i < GITS_BASER_NR_REGS; i++) {
+>> +		struct its_baser *baser = &its_data.baser[i];
+>> +		int ret;
+>> +
+>> +		ret = its_parse_baser(i, baser);
+>> +		if (ret)
+>> +			continue;
+> 
+> Didn't we already parse typer and baser at its_init time? How/why would
+> its_parse_baser fail? Should we assert when it does?
+Yes we parsed them already so I can directly use
+baser = &its_data.baser[i];
 
+More generally I have simplified and only cares about the device 	and
+collection baser now.
+> 
+>> +
+>> +		switch (baser->type) {
+>> +		case GITS_BASER_TYPE_DEVICE:
+>> +			baser->valid = true;
+>> +			its_setup_baser(i, baser);
+>> +			break;
+>> +		case GITS_BASER_TYPE_COLLECTION:
+>> +			baser->valid = true;
+>> +			its_setup_baser(i, baser);
+>> +			break;
+>> +		default:
+>> +			break;
+> 
+> assert() ?
+> 
+>> +		}
+>> +	}
+>> +
+>> +	/* Allocate LPI config and pending tables */
+>> +	gicv3_lpi_alloc_tables();
+>> +
+>> +	its_cmd_queue_init();
+>> +
+>> +	for (i = 0; i < nr_cpus; i++)
+>> +		gicv3_lpi_rdist_ctrl(i, true);
+>> +
+>> +	writel(GITS_CTLR_ENABLE, its_data.base + GITS_CTLR);
+>> +}
+>> -- 
+>> 2.20.1
+>>
+>>
+> 
+> It's looking like we don't have a clean separation between its_init and
+> its_enable_defaults. I'd expect its_init to do all the allocating of
+> memory and its_enable_defaults to do all the write's to the device.
+> We should only do its_init once and its_enable should be something
+> we can do again (after a disable, on reset, etc.). Is that not possible
+> with the ITS device?
+
+I can moved the BASER device & collection table allocation, + the queue
+init in its_init()
+
+However gicv3_lpi_alloc_tables() must be called after
+gicv3_enable_defaults as it uses the redist_base[] initialized there.
+
+Thanks
+
+Eric
+
+
+> 
+> Thanks,
+> drew
+> 
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

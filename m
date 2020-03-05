@@ -1,100 +1,99 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2977207lfi;
-        Thu, 5 Mar 2020 06:26:13 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vv6wdkkkDzIZKapf/T9dtT6i23U8tYcGmtd4Arz5mOHoMWFAI107jOtDLjgWswSos4eusLj
-X-Received: by 2002:a05:620a:2191:: with SMTP id g17mr7335477qka.427.1583418373469;
-        Thu, 05 Mar 2020 06:26:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583418373; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2978965lfi;
+        Thu, 5 Mar 2020 06:27:48 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vv4KYGrIpND20tkwRtSuaNNI4t3v+ojKeFRXuFZ7ZHNeAwB9Fj7s6ysd4zw8r1OHN3P5ly9
+X-Received: by 2002:a05:6214:2a8:: with SMTP id m8mr6762237qvv.87.1583418467936;
+        Thu, 05 Mar 2020 06:27:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583418467; cv=none;
         d=google.com; s=arc-20160816;
-        b=NGxx8gA5k8RyFSx/tDZkNKYCaYicFAiE+fQBII4uxf0GO1XM+R2d/RwuZtPQtqOSkE
-         i05KPzhNzF5hbid0FLBSdyCJEfU1++iYa6Fp+nSOs3Ig9OeNpryD30HpcKn4zC7c6WUA
-         kDL12h8uVpvFNPHIWE/O5tEGTWbDmdF6jpraY1Rn+PR+FKTMiyK05iJ87rIyKunqE/XD
-         aBFaL2FSUisXIRbopXzUwZbZZU35DaGF7PW1Nj5xvgP7bw2PPsbo8W56qbubIbu9lG+J
-         t2XXu4TJx07XP1l60l5y8EWKV+82rO0XuBCvyTQZYF+7Zy/O33PXzStxh91ZZC/Wu2WS
-         ojzA==
+        b=dxvkqwpZoUby26o6KsYqtj1duhmW+BQdKHB59DMHi3m/t85UM9HFhtBXBK6s2PdgyE
+         8mtO3FNDUltuM1myCdv36dqEBss14LBMQB8ACb98g4ofBL+MbZFtW4XRKveEBdK2nhlQ
+         8jpx/RRqx7iQ/IYF5JeoUrVCFB3hFTckNvbQl2IdDWsrCOAWSCR49vIdzJtjO7Aoe9MO
+         cOSir4y1mk9HDqxtgD79GUWIzdrPlGeegUysOfaXUa6QROHyKrIXK/eXmo6eDqF9nEQR
+         FnTrHldpwKguCIK188L+ddosa3N0SwrPjj3gNCya0amC4ZGhMTs9oAfDPEoKaiQyuzCZ
+         zVPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:content-transfer-encoding:message-id:date
          :mime-version:subject:references:in-reply-to:to:from:dkim-signature
          :precedence;
-        bh=kklBsHwqHz0mHomd3SuArn/pLwTElmjqphBMbCWWWwE=;
-        b=IRhGw+AOVfTgtmw3xnCv6Gy5l0iwZWdcVsxrSQR1tTsEi8tE0A40wxqpxsHv7WGc+c
-         z/DxYOU4tCQQtc6mr1xmQAa7TowVsff+0hw65dKmMTwgZ09zhgHS8aV2ih6KkgAtsGDR
-         NIxhNgQmGFEimaSOW4UdCh5obWjtZ4W1GUwAXoMO4MjQedK3h66ED+tHt9Hhul4l3i7/
-         3HTKAG33dsaCyjA6cw6i6Tmv67pKb702Jp7JyJqRjeq0bDOjB7u1sxVKUCic4G49f977
-         9sndH1AZKH59D1q8TlCZAqkssy5Qxa5Du5kXCiKNyXSLYqfLdxz0fwhLR0WZY7vp70ld
-         VeFg==
+        bh=cD0FUWWM98H8bVTRIrUhuN4E9Vdo5ruJ4BfDaH7+mgc=;
+        b=XJ7k6tn8/fcD/b3xKlehcNSoEphFuyCOGxgTqkOpINq1p+H/pdTkNS4bqfqhZGyG+A
+         CYNELYnfEl4l8u5aA79BbdrZLxiuNs4PSjOmdH0KS/Q6pQhTygeJYQb9PEBiAnAfP4Le
+         sTYw5LxVNrxv+SRmxAh7i+lut/cRcTW843DSKBG0qHDIT1QSFQY71oxKKDsizc4T9Q4G
+         5Npw7fz4+bcmnkYFmUA/AMI+79qQvtE9kvrV7fB/kZxXqgXRwFX3ZAxGr6fu8idfsJPl
+         ftorIQH2RW7fQWCiKzsKjsx1LGWrbMupI5PVwm0dBbSZYv0O49rFX1jQWp9xlwRSA0ft
+         8WlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@yandex-team.ru header.s=default header.b=mclYmM0T;
+       dkim=neutral (body hash did not verify) header.i=@yandex-team.ru header.s=default header.b=xfMj54Yt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=yandex-team.ru
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d17si3082889qkc.151.2020.03.05.06.26.13
+        by mx.google.com with ESMTPS id a187si3117761qkc.76.2020.03.05.06.27.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Mar 2020 06:26:13 -0800 (PST)
+        Thu, 05 Mar 2020 06:27:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@yandex-team.ru header.s=default header.b=mclYmM0T;
+       dkim=neutral (body hash did not verify) header.i=@yandex-team.ru header.s=default header.b=xfMj54Yt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=yandex-team.ru
-Received: from localhost ([::1]:50125 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50172 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9rS0-0006Ux-R6
-	for alex.bennee@linaro.org; Thu, 05 Mar 2020 09:26:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34319)
+	id 1j9rTX-0002Kx-CI
+	for alex.bennee@linaro.org; Thu, 05 Mar 2020 09:27:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34487)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <lekiravi@yandex-team.ru>) id 1j9rRO-00061o-08
- for qemu-devel@nongnu.org; Thu, 05 Mar 2020 09:25:35 -0500
+ (envelope-from <lekiravi@yandex-team.ru>) id 1j9rS3-00089r-8C
+ for qemu-devel@nongnu.org; Thu, 05 Mar 2020 09:26:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <lekiravi@yandex-team.ru>) id 1j9rRM-00060f-Qc
- for qemu-devel@nongnu.org; Thu, 05 Mar 2020 09:25:33 -0500
-Received: from forwardcorp1o.mail.yandex.net ([95.108.205.193]:41258)
+ (envelope-from <lekiravi@yandex-team.ru>) id 1j9rS1-0006Uc-Pz
+ for qemu-devel@nongnu.org; Thu, 05 Mar 2020 09:26:15 -0500
+Received: from forwardcorp1j.mail.yandex.net ([2a02:6b8:0:1619::183]:50416)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <lekiravi@yandex-team.ru>)
- id 1j9rR9-0005lY-D9; Thu, 05 Mar 2020 09:25:20 -0500
-Received: from mxbackcorp2j.mail.yandex.net (mxbackcorp2j.mail.yandex.net
- [IPv6:2a02:6b8:0:1619::119])
- by forwardcorp1o.mail.yandex.net (Yandex) with ESMTP id 9AE9B2E154F;
- Thu,  5 Mar 2020 17:25:14 +0300 (MSK)
+ id 1j9rRw-0006Pa-E7; Thu, 05 Mar 2020 09:26:08 -0500
+Received: from mxbackcorp1j.mail.yandex.net (mxbackcorp1j.mail.yandex.net
+ [IPv6:2a02:6b8:0:1619::162])
+ by forwardcorp1j.mail.yandex.net (Yandex) with ESMTP id 7F6512E150E;
+ Thu,  5 Mar 2020 17:26:04 +0300 (MSK)
 Received: from localhost (localhost [::1])
- by mxbackcorp2j.mail.yandex.net (mxbackcorp/Yandex) with ESMTP id
- z5MNPQhVm2-PBO06DpE; Thu, 05 Mar 2020 17:25:14 +0300
+ by mxbackcorp1j.mail.yandex.net (mxbackcorp/Yandex) with ESMTP id
+ lmIY5ZYDjo-Q1JafvBO; Thu, 05 Mar 2020 17:26:04 +0300
 Precedence: bulk
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
  s=default; 
- t=1583418314; bh=YyF2qBT8dm3IZGrfiOfUkAj9l9sxVno25dxtEJYNu9s=;
+ t=1583418364; bh=Srk5hoK6N/ILVxS/BdFaqyldfaW+4xH22sDBZLRIUKo=;
  h=Subject:In-Reply-To:Cc:Date:References:To:From:Message-Id;
- b=mclYmM0T5/GYKQWvd06n/AP7uK3ujTwm+rq5ZfUyy7ssRi+6foz4CwBc506ZleAaA
- 9Mwe4pQ12xO/Xuiv70sxX/Uu3NNlloZG8VC92BGPknHEYN0TOcYDPSe2h0nM7IOLDJ
- kVh2HZoqnwxdVfYWPpOr9CBpKmZFQB/G+EvpMuZA=
-Authentication-Results: mxbackcorp2j.mail.yandex.net;
+ b=xfMj54YtmzrxGsfNyyBmS+T5yHIheJNguvkvQ+6fVi+x9J5uRgkr8o+MXC/FnKe6/
+ y3jm1ZRS9qO7WrzEJD1zj2t0cqyolQYpvpb3/otn2Enfs4T5XR535sC116wgUCoB22
+ Sy7l+SaqRqXg7XOzxH43Q6v2df+z92YsAgl2xg8w=
+Authentication-Results: mxbackcorp1j.mail.yandex.net;
  dkim=pass header.i=@yandex-team.ru
 X-Yandex-Sender-Uid: 1120000000161690
 X-Yandex-Avir: 1
-Received: from mxbackcorp1g.mail.yandex.net (localhost [::1])
- by mxbackcorp1g.mail.yandex.net with LMTP id iUMswpJpt2-EsudiJzi
- for <lekiravi@yandex-team.ru>; Thu, 05 Mar 2020 17:25:01 +0300
-Received: by vla1-bfecef18a7a0.qloud-c.yandex.net with HTTP;
- Thu, 05 Mar 2020 17:25:01 +0300
+Received: from mxbackcorp1j.mail.yandex.net (localhost [::1])
+ by mxbackcorp1j.mail.yandex.net with LMTP id 2XQNYKuRZl-2ePGDZXI
+ for <lekiravi@yandex-team.ru>; Thu, 05 Mar 2020 17:25:51 +0300
+Received: by sas2-b8502101ee6d.qloud-c.yandex.net with HTTP;
+ Thu, 05 Mar 2020 17:25:50 +0300
 From: Alexey Kirillov <lekiravi@yandex-team.ru>
-To: Laurent Vivier <lvivier@redhat.com>, Eric Blake <eblake@redhat.com>,
- Thomas Huth <huth@tuxfamily.org>, Markus Armbruster <armbru@redhat.com>
-In-Reply-To: <274ce4fc-f7ef-791c-7c25-c99b694c1e78@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+In-Reply-To: <87y2sff1qo.fsf@dusky.pond.sub.org>
 References: <20200304130656.16859-1-lekiravi@yandex-team.ru>
  <20200304130656.16859-2-lekiravi@yandex-team.ru>
- <274ce4fc-f7ef-791c-7c25-c99b694c1e78@redhat.com>
+ <87y2sff1qo.fsf@dusky.pond.sub.org>
 Subject: Re: [PATCH v2 1/4] qapi: net: Add query-netdevs command
 MIME-Version: 1.0
 X-Mailer: Yamail [ http://yandex.ru ] 5.0
-Date: Thu, 05 Mar 2020 17:25:11 +0300
-Message-Id: <1039831583412539@myt4-457577cc370d.qloud-c.yandex.net>
+Date: Thu, 05 Mar 2020 17:26:00 +0300
+Message-Id: <1041781583412683@myt4-457577cc370d.qloud-c.yandex.net>
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 95.108.205.193
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a02:6b8:0:1619::183
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 List-Id: <qemu-devel.nongnu.org>
@@ -116,8 +115,8 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Joel Stanley <joel@jms.id.au>, Anthony Perard <anthony.perard@citrix.com>,
  Samuel Thibault <samuel.thibault@ens-lyon.org>,
  Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- David Gibson <david@gibson.dropbear.id.au>, Jiri Pirko <jiri@resnulli.us>,
- "yc-core@yandex-team.ru" <yc-core@yandex-team.ru>,
+ Richard Henderson <rth@twiddle.net>, Laurent Vivier <lvivier@redhat.com>,
+ Jiri Pirko <jiri@resnulli.us>, Aleksandar Markovic <amarkovic@wavecomp.com>,
  Stefan Weil <sw@weilnetz.de>, Alistair Francis <alistair@alistair23.me>,
  Beniamino Galvani <b.galvani@gmail.com>,
  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
@@ -125,81 +124,241 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>,
  "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
  Giuseppe Lettieri <g.lettieri@iet.unipi.it>, Luigi Rizzo <rizzo@iet.unipi.it>,
- Richard Henderson <rth@twiddle.net>, Andrew Jeffery <andrew@aj.id.au>,
- Michael Walle <michael@walle.cc>, "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Thomas Huth <huth@tuxfamily.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Michael Walle <michael@walle.cc>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ "yc-core@yandex-team.ru" <yc-core@yandex-team.ru>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mOE2r4JPCndm
+X-TUID: jiUo94E3H32/
 
 
 
-04.03.2020, 18:57, "Laurent Vivier" <lvivier@redhat.com>:
-> On 04/03/2020 14:06, Alexey Kirillov wrote:
+05.03.2020, 15:03, "Markus Armbruster" <armbru@redhat.com>:
+> Alexey Kirillov <lekiravi@yandex-team.ru> writes:
+>
 >> =C2=A0Add a qmp command that provides information about currently atta=
 ched
 >> =C2=A0network devices and their configuration.
->>
+>
+> Closes a gap in QMP; appreciated!
+>
 >> =C2=A0Signed-off-by: Alexey Kirillov <lekiravi@yandex-team.ru>
->> =C2=A0---
->> =C2=A0=C2=A0include/net/net.h | 1 +
->> =C2=A0=C2=A0net/hub.c | 8 +++
->> =C2=A0=C2=A0net/l2tpv3.c | 19 +++++++
->> =C2=A0=C2=A0net/net.c | 91 +++++++++++++++++++++++++++++++++
->> =C2=A0=C2=A0net/netmap.c | 13 +++++
->> =C2=A0=C2=A0net/slirp.c | 126 ++++++++++++++++++++++++++++++++++++++++=
-++++++
->> =C2=A0=C2=A0net/socket.c | 71 ++++++++++++++++++++++++++
->> =C2=A0=C2=A0net/tap-win32.c | 9 ++++
->> =C2=A0=C2=A0net/tap.c | 103 +++++++++++++++++++++++++++++++++++--
->> =C2=A0=C2=A0net/vde.c | 26 ++++++++++
->> =C2=A0=C2=A0net/vhost-user.c | 18 +++++--
->> =C2=A0=C2=A0qapi/net.json | 89 ++++++++++++++++++++++++++++++++
->> =C2=A0=C2=A012 files changed, 566 insertions(+), 8 deletions(-)
 >
-> ...
->> =C2=A0diff --git a/net/net.c b/net/net.c
->> =C2=A0index 9e93c3f8a1..01e0548295 100644
->> =C2=A0--- a/net/net.c
->> =C2=A0+++ b/net/net.c
->> =C2=A0@@ -54,6 +54,7 @@
->> =C2=A0=C2=A0#include "sysemu/sysemu.h"
->> =C2=A0=C2=A0#include "net/filter.h"
->> =C2=A0=C2=A0#include "qapi/string-output-visitor.h"
->> =C2=A0+#include "qapi/clone-visitor.h"
->>
->> =C2=A0=C2=A0/* Net bridge is currently not supported for W32. */
->> =C2=A0=C2=A0#if !defined(_WIN32)
->> =C2=A0@@ -128,6 +129,12 @@ char *qemu_mac_strdup_printf(const uint8_t =
-*macaddr)
->>
->> =C2=A0=C2=A0void qemu_format_nic_info_str(NetClientState *nc, uint8_t =
-macaddr[6])
->> =C2=A0=C2=A0{
->> =C2=A0+ g_assert(nc->stored_config);
+> [...]
+>> =C2=A0diff --git a/qapi/net.json b/qapi/net.json
+>> =C2=A0index 1cb9a7d782..4f329a1de0 100644
+>> =C2=A0--- a/qapi/net.json
+>> =C2=A0+++ b/qapi/net.json
+>> =C2=A0@@ -750,3 +750,92 @@
+>> =C2=A0=C2=A0##
+>> =C2=A0=C2=A0{ 'event': 'FAILOVER_NEGOTIATED',
+>> =C2=A0=C2=A0=C2=A0=C2=A0'data': {'device-id': 'str'} }
 >> =C2=A0+
->> =C2=A0+ g_free(nc->stored_config->u.nic.macaddr);
->> =C2=A0+ nc->stored_config->u.nic.macaddr =3D g_strdup_printf(MAC_FMT,
->> =C2=A0+ MAC_ARG(macaddr));
->> =C2=A0+
+>> =C2=A0+##
+>> =C2=A0+# @NetdevInfo:
+>> =C2=A0+#
+>> =C2=A0+# Configuration of a network device.
+>> =C2=A0+#
+>> =C2=A0+# @id: Device identifier.
+>> =C2=A0+#
+>> =C2=A0+# @type: Specify the driver used for interpreting remaining arg=
+uments.
+>> =C2=A0+#
+>> =C2=A0+# @peer: Connected network device.
 >
-> Why do you use this rather than the qemu_mac_strdup_printf() function
-> defined above?
+> @peer is optional. I assume its present when the device is connected
+> (frontend to backend or vice versa). Correct?
 >
-> qemu_mac_strdup_printf():
-> =C2=A0=C2=A0890ee6abb385 ("net: add MAC address string printer")
->
-> MAC_FMT/MAC_ARG:
-> =C2=A0=C2=A06d1d4939a647 ("net: Add macros for MAC address tracing")
->
-> MAC_FMT/MAC_ARG seems to be reserved for tracing.
->
-> Thanks,
-> Laurent
 
-Somehow, I managed not to notice this feature.
-Thank you for pointing this out, I will definitely fix this place.
+Yes, this field stores connected frontend/backend device @id.
+
+>> =C2=A0+#
+>> =C2=A0+# @queues-count: Number of queues.
+>
+> We use plain @queues elsewhere in the schema.
+>
+
+It can conflict with fields inside Netdev*Options, isn't it?
+
+>> =C2=A0+#
+>> =C2=A0+# @hub: hubid of hub, if connected to.
+>
+> How @hub is related to @peer is not quite obvious to me. Can you give
+> an example where @hub is present?
+>
+
+NetdevHubPortOptions has an option @hubid. @hub gives that id, if
+netdev is connected to the hub via hubport. As example:
+
+HMP:
+
+hub 0
+ \ hub0port1: socket.0: index=3D0,type=3Dsocket,
+ \ hub0port0: virtio-net-pci.0: index=3D0,type=3Dnic,model=3Dvirtio-net-p=
+ci,macaddr=3D52:54:00:12:34:56
+
+QMP:
+
+[
+  {
+    "peer": "hub0port0",
+    "netdev": "hub0port0",
+    "hub": 0,
+    "model": "virtio-net-pci",
+    "macaddr": "52:54:00:12:34:56",
+    "type": "nic",
+    "queues-count": 1,
+    "id": "virtio-net-pci.0"
+  },
+  {
+    "peer": "hub0port1",
+    "listen": "127.0.0.1:90",
+    "hub": 0,
+    "type": "socket",
+    "queues-count": 1,
+    "id": "socket.0"
+  },
+  {
+    "peer": "socket.0",
+    "netdev": "socket.0",
+    "hub": 0,
+    "hubid": 0,
+    "type": "hubport",
+    "queues-count": 1,
+    "id": "hub0port1"
+  },
+  {
+    "peer": "virtio-net-pci.0",
+    "netdev": "virtio-net-pci.0",
+    "hub": 0,
+    "hubid": 0,
+    "type": "hubport",
+    "queues-count": 1,
+    "id": "hub0port0"
+  }
+]
+
+>> =C2=A0+#
+>> =C2=A0+# @perm-mac: Original MAC address.
+>
+> What does "perm-" mean?
+>
+> It's optional. When exactly is it present?
+>
+
+@perm-mac is the permanent (original) MAC address. It only used
+for nic, because most of nic realizations can change MAC at
+runtime and/or reset it to default (permanent) value.
+
+>> =C2=A0+#
+>> =C2=A0+# Since: 5.0
+>> =C2=A0+##
+>> =C2=A0+{ 'union': 'NetdevInfo',
+>> =C2=A0+ 'base': { 'id': 'str',
+>> =C2=A0+ 'type': 'NetClientDriver',
+>> =C2=A0+ '*peer': 'str',
+>> =C2=A0+ 'queues-count': 'int',
+>> =C2=A0+ '*hub': 'int',
+>> =C2=A0+ '*perm-mac': 'str' },
+>> =C2=A0+ 'discriminator': 'type',
+>> =C2=A0+ 'data': {
+>> =C2=A0+ 'nic': 'NetLegacyNicOptions',
+>> =C2=A0+ 'user': 'NetdevUserOptions',
+>> =C2=A0+ 'tap': 'NetdevTapOptions',
+>> =C2=A0+ 'l2tpv3': 'NetdevL2TPv3Options',
+>> =C2=A0+ 'socket': 'NetdevSocketOptions',
+>> =C2=A0+ 'vde': 'NetdevVdeOptions',
+>> =C2=A0+ 'bridge': 'NetdevBridgeOptions',
+>> =C2=A0+ 'hubport': 'NetdevHubPortOptions',
+>> =C2=A0+ 'netmap': 'NetdevNetmapOptions',
+>> =C2=A0+ 'vhost-user': 'NetdevVhostUserOptions' } }
+>
+> This is a copy of union 'Netdev' with a few additional common members
+> (@peer, @queues-count, @hub, @perm-mac). I can't see how to avoid the
+> duplication without adding nesting on the wire.
+>
+>> =C2=A0+
+>> =C2=A0+##
+>> =C2=A0+# @query-netdevs:
+>> =C2=A0+#
+>> =C2=A0+# Get a list of @NetdevInfo for all virtual network devices.
+>> =C2=A0+#
+>> =C2=A0+# Returns: a list of @NetdevInfo describing each virtual networ=
+k device.
+>> =C2=A0+#
+>> =C2=A0+# Since: 5.0
+>> =C2=A0+#
+>> =C2=A0+# Example:
+>> =C2=A0+#
+>> =C2=A0+# -> { "execute": "query-netdevs" }
+>> =C2=A0+# <- { "return": [
+>> =C2=A0+# {
+>> =C2=A0+# "peer": "netdev0",
+>> =C2=A0+# "netdev": "netdev0",
+>> =C2=A0+# "perm-mac": "52:54:00:12:34:56"
+>> =C2=A0+# "model": "virtio-net-pci",
+>> =C2=A0+# "macaddr": "52:54:00:12:34:56",
+>> =C2=A0+# "queues-count": 1,
+>> =C2=A0+# "type": "nic",
+>> =C2=A0+# "id": "net0"
+>> =C2=A0+# },
+>> =C2=A0+# {
+>> =C2=A0+# "peer": "net0",
+>> =C2=A0+# "ipv6": true,
+>> =C2=A0+# "ipv4": true,
+>> =C2=A0+# "host": "10.0.2.2",
+>> =C2=A0+# "queues-count": 1,
+>> =C2=A0+# "ipv6-dns": "fec0::3",
+>> =C2=A0+# "ipv6-prefix": "fec0::",
+>> =C2=A0+# "net": "10.0.2.0/255.255.255.0",
+>> =C2=A0+# "ipv6-host": "fec0::2",
+>> =C2=A0+# "type": "user",
+>> =C2=A0+# "dns": "10.0.2.3",
+>> =C2=A0+# "hostfwd": [
+>> =C2=A0+# {
+>> =C2=A0+# "str": "tcp::20004-:22"
+>> =C2=A0+# }
+>> =C2=A0+# ],
+>> =C2=A0+# "ipv6-prefixlen": 64,
+>> =C2=A0+# "id": "netdev0",
+>> =C2=A0+# "restrict": false
+>> =C2=A0+# }
+>> =C2=A0+# ]
+>> =C2=A0+# }
+>> =C2=A0+#
+>> =C2=A0+##
+>> =C2=A0+{ 'command': 'query-netdevs', 'returns': ['NetdevInfo'] }
+>
+> Like HMP "info network" and -net, this mixes frontends ("type": "nic")
+> and backends. Unlike query-chardev and query-block. Hmm.
+>
+> A long time ago, all we had was -net: "-net nic" for configuring
+> frontends, "-net none" for suppressing a default frontend + backend, an=
+d
+> "-net anything-else" for configuring backends. "info network" showed
+> the stuff set up with -net.
+>
+> In v0.12, we got -device for configuring frontends, and -netdev for
+> backends. -netdev is like -net less "none", "nic", and the hub
+> weirdness. "info network" was extended to also show all this.
+>
+> In v2.12, we got -nic, replacing -net nic.
+>
+> Unless I'm missing something, -net is just for backward compatibility
+> now.
+>
+> What's the use case for query-networks reporting frontends?
+
+In my vision, new QMP command is the replacement for old
+HMP command. It must provide information about all
+network devices, mainly for recreate similar net topology.
+Currently, there are no differrence between fronted and
+backend devices in context of my command, because
+all of them use the same interface in NetClientState.
+
+>
 
 --=C2=A0
 Alexey Kirillov

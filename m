@@ -1,278 +1,112 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2777108lfi;
-        Thu, 5 Mar 2020 03:10:43 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vsu2e8xqjs0QiGb1S0/r49GmHtB8tIodwIX6TB5M3zHI0+BB/wJqT9a1O+Lu/yQCTJXT6Is
-X-Received: by 2002:a9d:4787:: with SMTP id b7mr6406272otf.323.1583406642803;
-        Thu, 05 Mar 2020 03:10:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583406642; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Y8galjF18/oGBVYGyiWA8DQASYs62mkYK7dozEyuKkVT6U5UUeUub+YW7pVXc3I5R9
-         zMozoKqaUm6pb85VRhgEODxCxtHB5fzTg3L0havGW3UoA0l426TigOfrmFpmgyNUJdn7
-         wm70oVo64Mij9n17//hB07B0onj0aENBLKA8fZB7eNVsB66O9cB5pc5PovUBgMqxCSJY
-         k0wY2VJHEHLWCdspIeWiXmjNUjbaOiVJqP44ZaJzUr3g82yEWbglYAswVJO0CilZ/7L7
-         vpm642p6RIj2aOZPWiQfF53JfThllEQt7tjE83ouJFpEqYE2FjfYzTajLFmuDFbbRa70
-         LboQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=dRLXUZHtlKZ3Yu9M1Qwhz6RWb8Nj+x+fyUaiaZYyc2s=;
-        b=IP0jykqBKoimg0ezlPCRPsoWNXrPZXr19rnJenMP0Dl4Vsl3DSAsEUIH4A53Lj1lOh
-         GZrQzV/5h/k4Fo+m0Sta8jlA6K7bo9JpwTxdIUBFmz+ye0kOex2X8vbi3POyVhCpv4/k
-         pGPDAED7nECqq2RHraJOU1GjheUnx0vaWzO3PdjUWxyi/CNA7Uq+9n+UNrg1uKYIku+0
-         lxZXa7s+3zDkaWgdRoCP5iQr3wl7dkW0xe+5I6eilkI8TbW8OCj8j3fBd3plDXD7/BOg
-         PwaFU0cwwgFTjdpah3OMXC84Xmkez8cQomZdHm84VKqd7Cx2D48zXLtQRrmYL5Vtfw71
-         C06g==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id q72si3224518oic.148.2020.03.05.03.10.41;
-        Thu, 05 Mar 2020 03:10:42 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2814693lfi;
+        Thu, 5 Mar 2020 03:52:11 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vt8IxI+Trvkf56TpZJa8xCEuQ7zTYhfJoqkmBTW7bNSZvAwReA75LjkeXTsQMffgMOADW1a
+X-Received: by 2002:a05:620a:90e:: with SMTP id v14mr7365016qkv.128.1583409131086;
+        Thu, 05 Mar 2020 03:52:11 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 198si2765522qkf.279.2020.03.05.03.52.10
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 05 Mar 2020 03:52:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727194AbgCELKj (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 5 Mar 2020 06:10:39 -0500
-Received: from foss.arm.com ([217.140.110.172]:47210 "EHLO foss.arm.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1725816AbgCELKj (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 5 Mar 2020 06:10:39 -0500
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-        by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 33FA831B;
-        Thu,  5 Mar 2020 03:10:38 -0800 (PST)
-Received: from [10.1.196.63] (e123195-lin.cambridge.arm.com [10.1.196.63])
-        by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C02B33F6C4;
-        Thu,  5 Mar 2020 03:10:36 -0800 (PST)
-Subject: Re: [kvm-unit-tests PATCH v2 8/9] arm: gic: Provide per-IRQ helper
- functions
-To:     Andrew Jones <drjones@redhat.com>,
-        Eric Auger <eric.auger@redhat.com>
-Cc:     eric.auger.pro@gmail.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-        peter.maydell@linaro.org, andrew.murray@arm.com,
-        andre.przywara@arm.com
-References: <20200130112510.15154-1-eric.auger@redhat.com>
- <20200130112510.15154-9-eric.auger@redhat.com>
- <20200305095529.hkdyhghkofquat75@kamzik.brq.redhat.com>
-From:   Alexandru Elisei <alexandru.elisei@arm.com>
-Message-ID: <80417be0-b897-2e09-ad56-05ae6b6a5fd6@arm.com>
-Date:   Thu, 5 Mar 2020 11:10:35 +0000
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47578 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j9p2w-0006UD-JG
+	for alex.bennee@linaro.org; Thu, 05 Mar 2020 06:52:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59575)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <no-reply@patchew.org>) id 1j9p1s-0005uZ-9C
+ for qemu-devel@nongnu.org; Thu, 05 Mar 2020 06:51:05 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <no-reply@patchew.org>) id 1j9p1q-0008OD-Le
+ for qemu-devel@nongnu.org; Thu, 05 Mar 2020 06:51:03 -0500
+Resent-Date: Thu, 05 Mar 2020 06:51:03 -0500
+Resent-Message-Id: <E1j9p1q-0008OD-Le@eggs.gnu.org>
+Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21178)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1j9p1q-0008Id-E8; Thu, 05 Mar 2020 06:51:02 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1583409043; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=FZo36Klv87yBwocJ1jjU4MnFIBhIUiOXayEDEd6nX9frLr2USAjw9k2fAv+qXFUK/we4hSpLUNNlzqbUJVXefQFy10laWsejM2q5jmYoZql+O0BQrTEVcwtJWe5q/ESpgl9VrThwo+iSeWQnyhpuPhp4q9m9n7Kh8Dzs9P1J36w=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1583409043;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=ObuItj0yVyl7r+k1sW1+9JRYY6PxUTnKFj0mFzn1Isg=; 
+ b=cNFAX/3RY4qJsC9ZnQnOor7vu5dD447KaOjGyi/6uZGj8sGKW2TTDwvBvbZbruii/coYeAbr3lszDj+lgHNrD2IQ02QceBNRFfTYzlbKc8MBk3d46C5duw+1vQPvCIueX9fXGHQ+eDBgbiPwgFTXPgI8Guq9ZEHOAXQlJ7PNpu8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1583409040195125.2156715996407;
+ Thu, 5 Mar 2020 03:50:40 -0800 (PST)
+In-Reply-To: <20200305105325.31264-1-kuhn.chenqun@huawei.com>
+Subject: Re: [PATCH v2] hw/net/imx_fec: write TGSR and TCSR3 in
+ imx_enet_write()
+Message-ID: <158340903834.357.4597260091882685075@39012742ff91>
 MIME-Version: 1.0
-In-Reply-To: <20200305095529.hkdyhghkofquat75@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 3rucw5G8Bz9l
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: kuhn.chenqun@huawei.com
+Date: Thu, 5 Mar 2020 03:50:40 -0800 (PST)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 136.143.188.51
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
+ qemu-trivial@nongnu.org, jasowang@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.chubb@nicta.com.au, euler.robot@huawei.com,
+ kuhn.chenqun@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Aef45JEok7sg
 
-Hi,
-
-I'm going to reiterate the comments I posted on this exact same patch sent by
-Andre [1], and add a few new ones.
-
-[1] https://www.spinics.net/lists/arm-kernel/msg767690.html
-
-On 3/5/20 9:55 AM, Andrew Jones wrote:
-> On Thu, Jan 30, 2020 at 12:25:09PM +0100, Eric Auger wrote:
->> From: Andre Przywara <andre.przywara@arm.com>
->>
->> A common theme when accessing per-IRQ parameters in the GIC distributor
->> is to set fields of a certain bit width in a range of MMIO registers.
->> Examples are the enabled status (one bit per IRQ), the level/edge
->> configuration (2 bits per IRQ) or the priority (8 bits per IRQ).
->>
->> Add a generic helper function which is able to mask and set the
->> respective number of bits, given the IRQ number and the MMIO offset.
->> Provide wrappers using this function to easily allow configuring an IRQ.
->>
->> For now assume that private IRQ numbers always refer to the current CPU.
->> In a GICv2 accessing the "other" private IRQs is not easily doable (the
->> registers are banked per CPU on the same MMIO address), so we impose the
->> same limitation on GICv3, even though those registers are not banked
->> there anymore.
->>
->> Signed-off-by: Andre Przywara <andre.przywara@arm.com>
-> Missing Eric's s-b.
->
->> ---
->>
->> initialize reg
->> ---
->>  lib/arm/asm/gic-v3.h |  2 +
->>  lib/arm/asm/gic.h    |  9 +++++
->>  lib/arm/gic.c        | 90 ++++++++++++++++++++++++++++++++++++++++++++
->>  3 files changed, 101 insertions(+)
->>
->> diff --git a/lib/arm/asm/gic-v3.h b/lib/arm/asm/gic-v3.h
->> index 347be2f..4a445a5 100644
->> --- a/lib/arm/asm/gic-v3.h
->> +++ b/lib/arm/asm/gic-v3.h
->> @@ -23,6 +23,8 @@
->>  #define GICD_CTLR_ENABLE_G1A		(1U << 1)
->>  #define GICD_CTLR_ENABLE_G1		(1U << 0)
->>  
->> +#define GICD_IROUTER			0x6000
->> +
->>  /* Re-Distributor registers, offsets from RD_base */
->>  #define GICR_TYPER			0x0008
->>  
->> diff --git a/lib/arm/asm/gic.h b/lib/arm/asm/gic.h
->> index 1fc10a0..21cdb58 100644
->> --- a/lib/arm/asm/gic.h
->> +++ b/lib/arm/asm/gic.h
->> @@ -15,6 +15,7 @@
->>  #define GICD_IIDR			0x0008
->>  #define GICD_IGROUPR			0x0080
->>  #define GICD_ISENABLER			0x0100
->> +#define GICD_ICENABLER			0x0180
->>  #define GICD_ISPENDR			0x0200
->>  #define GICD_ICPENDR			0x0280
->>  #define GICD_ISACTIVER			0x0300
->> @@ -73,5 +74,13 @@ extern void gic_write_eoir(u32 irqstat);
->>  extern void gic_ipi_send_single(int irq, int cpu);
->>  extern void gic_ipi_send_mask(int irq, const cpumask_t *dest);
->>  
->> +void gic_set_irq_bit(int irq, int offset);
->> +void gic_enable_irq(int irq);
->> +void gic_disable_irq(int irq);
->> +void gic_set_irq_priority(int irq, u8 prio);
->> +void gic_set_irq_target(int irq, int cpu);
->> +void gic_set_irq_group(int irq, int group);
->> +int gic_get_irq_group(int irq);
->> +
->>  #endif /* !__ASSEMBLY__ */
->>  #endif /* _ASMARM_GIC_H_ */
->> diff --git a/lib/arm/gic.c b/lib/arm/gic.c
->> index 9430116..aa9cb86 100644
->> --- a/lib/arm/gic.c
->> +++ b/lib/arm/gic.c
->> @@ -146,3 +146,93 @@ void gic_ipi_send_mask(int irq, const cpumask_t *dest)
->>  	assert(gic_common_ops && gic_common_ops->ipi_send_mask);
->>  	gic_common_ops->ipi_send_mask(irq, dest);
->>  }
->> +
->> +enum gic_bit_access {
->> +	ACCESS_READ,
->> +	ACCESS_SET,
->> +	ACCESS_RMW
->> +};
->> +
->> +static u8 gic_masked_irq_bits(int irq, int offset, int bits, u8 value,
->> +			      enum gic_bit_access access)
->> +{
->> +	void *base;
->> +	int split = 32 / bits;
->> +	int shift = (irq % split) * bits;
->> +	u32 reg = 0, mask = ((1U << bits) - 1) << shift;
->> +
->> +	switch (gic_version()) {
->> +	case 2:
->> +		base = gicv2_dist_base();
->> +		break;
->> +	case 3:
->> +		if (irq < 32)
->> +			base = gicv3_sgi_base();
->> +		else
->> +			base = gicv3_dist_base();
->> +		break;
->> +	default:
->> +		return 0;
->> +	}
->> +	base += offset + (irq / split) * 4;
->> +
->> +	switch (access) {
->> +	case ACCESS_READ:
->> +		return (readl(base) & mask) >> shift;
->> +	case ACCESS_SET:
->> +		reg = 0;
->> +		break;
->> +	case ACCESS_RMW:
->> +		reg = readl(base) & ~mask;
->> +		break;
->> +	}
->> +
->> +	writel(reg | ((u32)value << shift), base);
->> +
->> +	return 0;
->> +}
-
-This function looks a bit out of place:
-- the function name has a verb in the past tense ('masked'), which makes me think
-it should return a bool, but the function actually performs an access to a GIC
-register.
-- the return value is an u8, but it returns an u32 on a read, because readl
-returns an u32.
-- the semantics of the function and the return value change based on the access
-parameter; worse yet, the return value on a write is completely ignored by the
-callers and the value parameter is ignored on reads.
-
-And a few new niggles:
-- the accessor functions are hard to read: git_masked_irq_bits(irq, offset, 1, 1, ACCESS_SET). What the 1's represent is not obvious without reading the gic_masked_irq_bits functions.
-- Andrew introduced a function to check the IRQ state at the GIC level [2]. The function is clear and nice to read because it has no indirection. How about we follow this pattern for all the accessors below and we remove the calls to gic_masked_irq_bits entirely? 
-
-[2] https://www.spinics.net/lists/kvm/msg207073.html
-
-Thanks,
-Alex
-
->> +
->> +void gic_set_irq_bit(int irq, int offset)
->> +{
->> +	gic_masked_irq_bits(irq, offset, 1, 1, ACCESS_SET);
->> +}
->> +
->> +void gic_enable_irq(int irq)
->> +{
->> +	gic_set_irq_bit(irq, GICD_ISENABLER);
->> +}
->> +
->> +void gic_disable_irq(int irq)
->> +{
->> +	gic_set_irq_bit(irq, GICD_ICENABLER);
->> +}
->> +
->> +void gic_set_irq_priority(int irq, u8 prio)
->> +{
->> +	gic_masked_irq_bits(irq, GICD_IPRIORITYR, 8, prio, ACCESS_RMW);
->> +}
->> +
->> +void gic_set_irq_target(int irq, int cpu)
->> +{
->> +	if (irq < 32)
->> +		return;
->> +
->> +	if (gic_version() == 2) {
->> +		gic_masked_irq_bits(irq, GICD_ITARGETSR, 8, 1U << cpu,
->> +				    ACCESS_RMW);
->> +
->> +		return;
->> +	}
->> +
->> +	writeq(cpus[cpu], gicv3_dist_base() + GICD_IROUTER + irq * 8);
->> +}
->> +
->> +void gic_set_irq_group(int irq, int group)
->> +{
->> +	gic_masked_irq_bits(irq, GICD_IGROUPR, 1, group, ACCESS_RMW);
->> +}
->> +
->> +int gic_get_irq_group(int irq)
->> +{
->> +	return gic_masked_irq_bits(irq, GICD_IGROUPR, 1, 0, ACCESS_READ);
->> +}
->> -- 
->> 2.20.1
->>
->>
-> Looks good to me.
->
-> Thanks,
-> drew
->
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDMwNTEwNTMyNS4zMTI2
+NC0xLWt1aG4uY2hlbnF1bkBodWF3ZWkuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0
+aGUgZG9ja2VyLXF1aWNrQGNlbnRvczcgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRlc3Rp
+bmcgY29tbWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2VyIGlu
+c3RhbGxlZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBURVNU
+IFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKbWFrZSBkb2NrZXItaW1hZ2UtY2VudG9zNyBW
+PTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1xdWlja0BjZW50b3M3IFNIT1dfRU5W
+PTEgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClN1Ym1vZHVsZSAnc2xp
+cnAnIChodHRwczovL2dpdC5xZW11Lm9yZy9naXQvbGlic2xpcnAuZ2l0KSByZWdpc3RlcmVkIGZv
+ciBwYXRoICdzbGlycCcKQ2xvbmluZyBpbnRvICdzbGlycCcuLi4KcmVtb3RlOiBDb3VudGluZyBv
+YmplY3RzOiAzMDk1LCBkb25lLiAgICAgICAgCmVycm9yOiBSUEMgZmFpbGVkOyByZXN1bHQ9MTgs
+IEhUVFAgY29kZSA9IDIwMApmYXRhbDogVGhlIHJlbW90ZSBlbmQgaHVuZyB1cCB1bmV4cGVjdGVk
+bHkKZmF0YWw6IHByb3RvY29sIGVycm9yOiBiYWQgcGFjayBoZWFkZXIKQ2xvbmUgb2YgJ2h0dHBz
+Oi8vZ2l0LnFlbXUub3JnL2dpdC9saWJzbGlycC5naXQnIGludG8gc3VibW9kdWxlIHBhdGggJ3Ns
+aXJwJyBmYWlsZWQKZmFpbGVkIHRvIHVwZGF0ZSBzdWJtb2R1bGUgc2xpcnAKQ2xlYXJlZCBkaXJl
+Y3RvcnkgJ2R0YycKU3VibW9kdWxlICdkdGMnIChodHRwczovL2dpdC5xZW11Lm9yZy9naXQvZHRj
+LmdpdCkgdW5yZWdpc3RlcmVkIGZvciBwYXRoICdkdGMnClN1Ym1vZHVsZSAnc2xpcnAnIChodHRw
+czovL2dpdC5xZW11Lm9yZy9naXQvbGlic2xpcnAuZ2l0KSB1bnJlZ2lzdGVyZWQgZm9yIHBhdGgg
+J3NsaXJwJwptYWtlWzFdOiAqKiogWy92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC12bWRwaXFl
+Zi9zcmMvZG9ja2VyLXNyYy4yMDIwLTAzLTA1LTA2LjQxLjAyLjE0NTY5XSBFcnJvciAxCm1ha2Vb
+MV06IExlYXZpbmcgZGlyZWN0b3J5IGAvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtdm1kcGlx
+ZWYvc3JjJwptYWtlOiAqKiogW2RvY2tlci1ydW4tdGVzdC1xdWlja0BjZW50b3M3XSBFcnJvciAy
+CgpyZWFsICAgIDltMzYuNjMwcwp1c2VyICAgIDBtNC4xMTdzCgoKVGhlIGZ1bGwgbG9nIGlzIGF2
+YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDIwMDMwNTEwNTMyNS4zMTI2NC0x
+LWt1aG4uY2hlbnF1bkBodWF3ZWkuY29tL3Rlc3RpbmcuZG9ja2VyLXF1aWNrQGNlbnRvczcvP3R5
+cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcg
+W2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRj
+aGV3LWRldmVsQHJlZGhhdC5jb20=

@@ -1,182 +1,256 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2589341lfi;
-        Wed, 4 Mar 2020 23:43:06 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vsBB+LjcyPKCpslfWhv9W1wwOmkSksY6kWuK8ptvnh+1nHBajfiEhH+ceetS/MdbH6hp5fq
-X-Received: by 2002:a37:6395:: with SMTP id x143mr6726014qkb.209.1583394186461;
-        Wed, 04 Mar 2020 23:43:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583394186; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp3324987lfi;
+        Thu, 5 Mar 2020 12:08:04 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vupoQYHlbmyQCqyxE93dwEpMuTDGR+1GGCQfYoYAj9yedNpEcu0b36r62vv4vr4lRGTplYl
+X-Received: by 2002:a05:620a:10b3:: with SMTP id h19mr10013794qkk.440.1583438883902;
+        Thu, 05 Mar 2020 12:08:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583438883; cv=none;
         d=google.com; s=arc-20160816;
-        b=HENpFeRJFg+MdAo5nlS8G4Sjww0gOU6Yy1LutmeVC/XONIyoqRXtntCHFfDw/HmqAE
-         ZECc2IpOsLCke3CMrb0HOgiYP0UbOKapUUzeb0cHuU6ivXzw2pM2XEXaELne+MQRhNNp
-         uNRpPvTMobvbR3hxZlE2ry+NCevxZASoh0d7fWMKCodUGJBiAKYIG+Msb6zcsVe0mxqT
-         drrcHKfwNbbEU05+b7WoA8ZgRJkKK0H0MS1Vjl25hQKI3j78M8SxIS6KEjF+6fGqTABh
-         is6YQK8V+srbBCVQD5JdBjuG6pgubKrH9/fqKvW9Z7gaowQGMq5uAY7UF6Zb8ItfQckq
-         kmZQ==
+        b=IdBQ0IGsP6fcN+y6PR3aF11YA+8lLimlF9l/E36olRLeQOcSQui9clF30O0u8f+Oup
+         sb/DB4PllR5lKq6jN9HIWRzOp1Fu7IkaKjnp8KKF1YWZzV93fmAUWKQUNFWPPlo2k225
+         43y9UrBRpTk06OZ8rk42wYxPl0rGeQPv2jCMqEQnfg2o4f7nDtfMqwii9wgN95Yn0E5I
+         duB++cIcTv85m0z4bxq683HHdca9gaOaqsPnpDVqvdTMmzkshG3cTg9bHCRbny0tWIKl
+         Na/oTJe3/fgfM49JglglX33/uHa/pU1nESvBHwi16UY2c6Q89/dJYfInM138TiLU5veM
+         TuLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:dlp-reaction:dlp-version:dlp-product
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:subject:to:from;
-        bh=Uav9GG2aY67WuBXydYjBQDp10W75bQsXM6w6wNSp88k=;
-        b=alLjcIzZNdv++M/Id5Tf8fqhVUIuXF8utKOcwZBu5FLeNQ1yEA2bjJvJE5ZCoQFInu
-         pv8JW8f8uRrWBCpqs0AWJ6KrpyplPLS2KkZFqS0yeoMY8h8fvnq/NTnlKrt4sJfENCSm
-         aP2W186p2nM3drqGmvst1OcuzSF6qNiu4zKMVFnt6XCSP2dCaTred20NcNLFBj/ecJaU
-         paS3sYYEyWhk9uFn2CbQXybzXsnu0rff2R/PTPY6xYSS+r5fgqS60KJWJVXSc/4PB6eV
-         jWHw0AGduZT6axieuKgef8mHwuUpRNawtViWjQD4cYnOOzz2SsibCgJs1GsEGHvZhYtg
-         2Xzg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=KEzPboJB6JCs5k214g5oOJeAWpMAUeoVymAHK5jdb0U=;
+        b=iwI6cEuhArNH5ZZqi+oWXExb3okI6n9FY1l5GxBGVHlaND87o52zTAyVxYRe5nh1Ah
+         DK4TQE3cpa6MUwn1wnJiG6AJ8uVn3iQ7YI/ztdIrzauZYcdoOgHY8BqHw+v3brSdZAhq
+         L6IU/8bokw0xc1i3K7bzy5B/7JaaXd/3GBipNqMOBUyC8Naup1PMNQwKudBGoH0+Ivcd
+         oaEJomiYnXP2AZ/YxguEvUGKyy5hH/obPwdkzau/OV/QtRWjGgQDb/ZBm9667VhJ6fCv
+         +jCIn+rhTFIEWznbTCKPrllrekgX9oh8xm/kAJlUPALWNXP7uqmtsBjmYzIP0QLoQTqN
+         YQ5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ew4+zdbB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g55si929371qtb.278.2020.03.04.23.43.06
+        by mx.google.com with ESMTPS id a14si30626qkl.208.2020.03.05.12.08.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Mar 2020 23:43:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 05 Mar 2020 12:08:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:44482 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ew4+zdbB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:55704 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9l9t-0004jD-VA
-	for alex.bennee@linaro.org; Thu, 05 Mar 2020 02:43:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40400)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j9wmp-0003ta-A8
+	for alex.bennee@linaro.org; Thu, 05 Mar 2020 15:08:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40411)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kevin.tian@intel.com>) id 1j9l9l-0004ip-SR
- for qemu-arm@nongnu.org; Thu, 05 Mar 2020 02:42:59 -0500
+ (envelope-from <nieklinnenbank@gmail.com>) id 1j9wmA-0003F1-8a
+ for qemu-devel@nongnu.org; Thu, 05 Mar 2020 15:07:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kevin.tian@intel.com>) id 1j9l9k-0006EB-RX
- for qemu-arm@nongnu.org; Thu, 05 Mar 2020 02:42:57 -0500
-Received: from mga02.intel.com ([134.134.136.20]:6540)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kevin.tian@intel.com>)
- id 1j9l9h-00067s-Ob; Thu, 05 Mar 2020 02:42:54 -0500
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 04 Mar 2020 23:42:47 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,517,1574150400"; d="scan'208";a="259101461"
-Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
- by orsmga002.jf.intel.com with ESMTP; 04 Mar 2020 23:42:47 -0800
-Received: from fmsmsx116.amr.corp.intel.com (10.18.116.20) by
- FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 4 Mar 2020 23:42:47 -0800
-Received: from shsmsx108.ccr.corp.intel.com (10.239.4.97) by
- fmsmsx116.amr.corp.intel.com (10.18.116.20) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 4 Mar 2020 23:42:46 -0800
-Received: from shsmsx104.ccr.corp.intel.com ([169.254.5.206]) by
- SHSMSX108.ccr.corp.intel.com ([169.254.8.235]) with mapi id 14.03.0439.000;
- Thu, 5 Mar 2020 15:42:44 +0800
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: RE: [PATCH v16 00/10] VIRTIO-IOMMU device
-Thread-Topic: [PATCH v16 00/10] VIRTIO-IOMMU device
-Thread-Index: AQHV4zqd/jWB2C+M5UeA/xtNxWrsyqgucl6AgAAqcACAByzBAIAAaY+AgAFXAoCAACrFAIAAh6qAgAEu9sD//8jdgIAAiFHg
-Date: Thu, 5 Mar 2020 07:42:44 +0000
-Message-ID: <AADFC41AFE54684AB9EE6CBC0274A5D19D7BE360@SHSMSX104.ccr.corp.intel.com>
-References: <20200214132745.23392-1-eric.auger@redhat.com>
- <20200227111717.GG1645630@redhat.com>
- <431cb39d-833c-6d02-d7b3-02b3e90446e2@redhat.com>
- <CAMj5Bkib3CTzCB02ScueFR84r28LGowF7uxYO8Ygmnj9X7oNOg@mail.gmail.com>
- <fea625f1-b58e-6da6-8e2a-f32fc9391fc8@redhat.com>
- <CAMj5Bkgm1LKbN3E2qTTxmrGhpmdL9NWarSfX-mYCWF0yt5E9eg@mail.gmail.com>
- <88e3b669-2998-41c0-83f7-de42a72a73e7@redhat.com>
- <20200304164717.GF646000@myrica>
- <AADFC41AFE54684AB9EE6CBC0274A5D19D7BDFBB@SHSMSX104.ccr.corp.intel.com>
- <20200305073417.GA717767@myrica>
-In-Reply-To: <20200305073417.GA717767@myrica>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMmM2NTc0YmYtMzcyZi00NWU0LWFhYjItNDRmNDZmZjFkM2NkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiQjNiK0ZFcjIzWXp0RWtvT3hMemZDRTg1c0QrcGkxaWJ4UjNJRlRiRzZjejlNZ3NFZjZKbDArRWZ0eW04T25xUCJ9
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.239.127.40]
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (envelope-from <nieklinnenbank@gmail.com>) id 1j9wm8-0001AR-P5
+ for qemu-devel@nongnu.org; Thu, 05 Mar 2020 15:07:22 -0500
+Received: from mail-il1-x12e.google.com ([2607:f8b0:4864:20::12e]:38544)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1j9wm8-0001A6-GE; Thu, 05 Mar 2020 15:07:20 -0500
+Received: by mail-il1-x12e.google.com with SMTP id f5so6199489ilq.5;
+ Thu, 05 Mar 2020 12:07:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KEzPboJB6JCs5k214g5oOJeAWpMAUeoVymAHK5jdb0U=;
+ b=Ew4+zdbBWdux/czmoU/zebNdM7su8m0gnxumYsbuP3/9JggPjPs+rtNZGddzA+I75c
+ ufkaw1zudVhFopWrN2cAtOEZhRicl9ixlRJnnB2vf62wI7nw4hNeL/1ZhuuNPIvu1ftP
+ E5VPzCxGb1YbhlVWZARya6NGgMjZX/PBQiakfCG/NOA3OPC+PSuF5gprzXYlWwJwjrgT
+ rym4TMLsGJCduTXxKFqBjBOBKbM+YUqT4Q53WqlX6QS7WMR7R+CkdCOo+/TwpkDF7aGk
+ yJfGqrLQmmx7ThTANUD9WI1rZsNGl2Zbw3hiwv3rWSE0Ry8ry9g3gT6sspirInZh9TVv
+ da8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KEzPboJB6JCs5k214g5oOJeAWpMAUeoVymAHK5jdb0U=;
+ b=t9LOCpPwJcQFg4ZxyH7bH///lMunrSCTcaIm+w2TvLLh4ttm/Ac8PORusOWyjk2bfF
+ yFLlCV02yqcM4dtcdpgZXCJru/rDnF8jj/aizHdCx5UtDg85m7zqv1zgoRG4qAj13Hef
+ W/1oJAg6mYj5u6qjnFvgFzUWc3MBE8yCyDrQwCtMiPVW1BOGaZEEAQ6o5ERxUC8bVIpX
+ hGQhCgfxuafEN8MzMmvy7/WwpQe582oOXlwKSKyg0Zxhn47XC5muM1rVZx/W8j7AJWFx
+ GkJ1n92fMvDGKn0PwajV9sS0lhEvGv01fMt5j1fyVGhSgaplBh2HAhS5MjtBMYlI0ejn
+ 87Mw==
+X-Gm-Message-State: ANhLgQ2C/SsA8KFJcmJI0fYfFZWPM1tkAgYo2S01OaJ5pUjmSAAlprvK
+ BcjrsxaC1FjJtIqjmPGm/0gkpiox1Xa4+AWvWD0=
+X-Received: by 2002:a92:90c:: with SMTP id y12mr656860ilg.306.1583438839867;
+ Thu, 05 Mar 2020 12:07:19 -0800 (PST)
 MIME-Version: 1.0
+References: <20200303091254.22373-1-imammedo@redhat.com>
+In-Reply-To: <20200303091254.22373-1-imammedo@redhat.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Thu, 5 Mar 2020 21:07:08 +0100
+Message-ID: <CAPan3Wqr8HuXSmZL1DZTSjD_PfcoxNO5FkKAr36rzY8+vyOORg@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/cubieboard: make sure SOC object isn't leaked
+To: Igor Mammedov <imammedo@redhat.com>
+Content-Type: multipart/alternative; boundary="00000000000092f06005a021157f"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 134.134.136.20
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::12e
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?iso-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
- "kenneth-lee-2012@foxmail.com" <kenneth-lee-2012@foxmail.com>,
- "tnowicki@marvell.com" <tnowicki@marvell.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- "quintela@redhat.com" <quintela@redhat.com>,
- "zhangfei.gao@foxmail.com" <zhangfei.gao@foxmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "peterx@redhat.com" <peterx@redhat.com>,
- "dgilbert@redhat.com" <dgilbert@redhat.com>,
- Auger Eric <eric.auger@redhat.com>,
- "bharatb.linux@gmail.com" <bharatb.linux@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "Wangzhou \(B\)" <wangzhou1@hisilicon.com>,
- Zhangfei Gao <zhangfei.gao@gmail.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HF7Yk9KPrlPB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, drjones@redhat.com,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XGWKCpgnX2kr
 
-> From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> Sent: Thursday, March 5, 2020 3:34 PM
->=20
-> On Thu, Mar 05, 2020 at 02:56:20AM +0000, Tian, Kevin wrote:
-> > > From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > > Sent: Thursday, March 5, 2020 12:47 AM
-> > >
-> > [...]
-> > > > >
-> > > > > * We can't use DVM in nested mode unless the VMID is shared with
-> the
-> > > > > CPU. For that we'll need the host SMMU driver to hook into the KV=
-M
-> > > VMID
-> > > > > allocator, just like we do for the ASID allocator. I haven't yet
-> > > > > investigated how to do that. It's possible to do vSVA without DVM
-> > > > > though, by sending all TLB invalidations through the SMMU command
-> > > queue.
-> > > > > "
-> > >
-> > > Hm we're already mandating DVM for host SVA, so I'd say mandate it fo=
-r
-> > > vSVA as well. We'd avoid a ton of context switches, especially for th=
-e zip
-> > > accelerator which doesn't require ATC invalidations. The host needs t=
-o
-> pin
-> > > the VMID allocated by KVM and write it in the endpoint's STE.
-> > >
-> >
-> > Curious... what is DVM and how is it related to SVA? Is it SMMU specifi=
-c?
->=20
-> Yes it stands for "Distributed Virtual Memory", an Arm interconnect
-> protocol. When sharing a process address space, TLB invalidations from th=
-e
-> CPU are broadcasted to the SMMU, so we don't have to send commands
-> through
-> the SMMU queue to invalidate IOTLBs. However ATCs from PCIe endpoints
-> do
-> not participate in DVM and still have to be invalidated by hand.
->=20
+--00000000000092f06005a021157f
+Content-Type: text/plain; charset="UTF-8"
 
-ah, got it. Thanks for explanation!
+Hi Igor,
+
+On Tue, Mar 3, 2020 at 10:13 AM Igor Mammedov <imammedo@redhat.com> wrote:
+
+> SOC object returned by object_new() is leaked in current code.
+> Set SOC parent explicitly to board and then unref to SOC object
+> to make sure that refererence returned by object_new() is taken
+> care of.
+>
+> The SOC object will be kept alive by its parent (machine) and
+> will be automatically freed when MachineState is destroyed.
+>
+
+Thanks for reporting this issue. In the Allwinner H3 series, I actually
+inherited this pattern as well,
+so I'll include this fix as well in the next version of that series.
+
+
+>
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> Reported-by: Andrew Jones <drjones@redhat.com>
+> ---
+>  hw/arm/cubieboard.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
+> index 089f9a30c1..12f8ac798d 100644
+> --- a/hw/arm/cubieboard.c
+> +++ b/hw/arm/cubieboard.c
+> @@ -30,9 +30,14 @@ static struct arm_boot_info cubieboard_binfo = {
+>
+>  static void cubieboard_init(MachineState *machine)
+>  {
+> -    AwA10State *a10 = AW_A10(object_new(TYPE_AW_A10));
+> +    AwA10State *a10;
+>      Error *err = NULL;
+>
+> +    a10 = AW_A10(object_new(TYPE_AW_A10));
+> +    object_property_add_child(OBJECT(machine), "soc", OBJECT(a10),
+> +                              &error_abort);
+> +    object_unref(OBJECT(a10));
+>
+
+I see that there are a few machines which also do
+object_property_add_child() to add its
+SoC object to the machine, but they do not do the object_unref(). Can you
+explain why it is needed here?
+Or do the other machines still have a leak due to the missing
+object_unref()? Examples are:
+  hw/arm/sabrelite.c
+  hw/arm/mcimx7d-sabre.c
+  hw/arm/mcimx6ul-evk.c
+
+Regards,
+Niek
+
+
+> +
+>      object_property_set_int(OBJECT(&a10->emac), 1, "phy-addr", &err);
+>      if (err != NULL) {
+>          error_reportf_err(err, "Couldn't set phy address: ");
+> --
+> 2.18.1
+>
+>
+>
+
+-- 
+Niek Linnenbank
+
+--00000000000092f06005a021157f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Igor,<br></div><br><div class=3D"gmail_quote"><div=
+ dir=3D"ltr" class=3D"gmail_attr">On Tue, Mar 3, 2020 at 10:13 AM Igor Mamm=
+edov &lt;<a href=3D"mailto:imammedo@redhat.com">imammedo@redhat.com</a>&gt;=
+ wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">SOC obje=
+ct returned by object_new() is leaked in current code.<br>
+Set SOC parent explicitly to board and then unref to SOC object<br>
+to make sure that refererence returned by object_new() is taken<br>
+care of.<br>
+<br>
+The SOC object will be kept alive by its parent (machine) and<br>
+will be automatically freed when MachineState is destroyed.<br></blockquote=
+><div><br></div><div>Thanks for reporting this issue. In the Allwinner H3 s=
+eries, I actually inherited this pattern as well,</div><div>so I&#39;ll inc=
+lude this fix as well in the next version of that series.<br></div><div>=C2=
+=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+Signed-off-by: Igor Mammedov &lt;<a href=3D"mailto:imammedo@redhat.com" tar=
+get=3D"_blank">imammedo@redhat.com</a>&gt;<br>
+Reported-by: Andrew Jones &lt;<a href=3D"mailto:drjones@redhat.com" target=
+=3D"_blank">drjones@redhat.com</a>&gt;<br>
+---<br>
+=C2=A0hw/arm/cubieboard.c | 7 ++++++-<br>
+=C2=A01 file changed, 6 insertions(+), 1 deletion(-)<br>
+<br>
+diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c<br>
+index 089f9a30c1..12f8ac798d 100644<br>
+--- a/hw/arm/cubieboard.c<br>
++++ b/hw/arm/cubieboard.c<br>
+@@ -30,9 +30,14 @@ static struct arm_boot_info cubieboard_binfo =3D {<br>
+<br>
+=C2=A0static void cubieboard_init(MachineState *machine)<br>
+=C2=A0{<br>
+-=C2=A0 =C2=A0 AwA10State *a10 =3D AW_A10(object_new(TYPE_AW_A10));<br>
++=C2=A0 =C2=A0 AwA10State *a10;<br>
+=C2=A0 =C2=A0 =C2=A0Error *err =3D NULL;<br>
+<br>
++=C2=A0 =C2=A0 a10 =3D AW_A10(object_new(TYPE_AW_A10));<br>
++=C2=A0 =C2=A0 object_property_add_child(OBJECT(machine), &quot;soc&quot;, =
+OBJECT(a10),<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;error_abort);<br>
++=C2=A0 =C2=A0 object_unref(OBJECT(a10));<br></blockquote><div><br></div><d=
+iv>I see that there are a few machines which also do object_property_add_ch=
+ild() to add its</div><div>SoC object to the machine, but they do not do th=
+e object_unref(). Can you explain why it is needed here?</div><div>Or do th=
+e other machines still have a leak due to the missing object_unref()? Examp=
+les are:</div><div>=C2=A0 hw/arm/sabrelite.c</div><div>=C2=A0 hw/arm/mcimx7=
+d-sabre.c</div><div>=C2=A0 hw/arm/mcimx6ul-evk.c</div><div><br></div><div>R=
+egards,</div><div>Niek<br></div><div>=C2=A0</div><blockquote class=3D"gmail=
+_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204=
+,204);padding-left:1ex">
++<br>
+=C2=A0 =C2=A0 =C2=A0object_property_set_int(OBJECT(&amp;a10-&gt;emac), 1, &=
+quot;phy-addr&quot;, &amp;err);<br>
+=C2=A0 =C2=A0 =C2=A0if (err !=3D NULL) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0error_reportf_err(err, &quot;Couldn&#39;t=
+ set phy address: &quot;);<br>
+-- <br>
+2.18.1<br>
+<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--00000000000092f06005a021157f--

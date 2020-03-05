@@ -1,212 +1,171 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2238508lfi;
-        Wed, 4 Mar 2020 16:37:48 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vt44nCvXtOmUD8lWPP+QB5/4omfhs1P37iOkuPzZ/kaqvT4gyQpCUce4oRnW7BH8BnG2Ywa
-X-Received: by 2002:a05:6830:168b:: with SMTP id k11mr4607183otr.156.1583368668271;
-        Wed, 04 Mar 2020 16:37:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583368668; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2526901lfi;
+        Wed, 4 Mar 2020 22:30:34 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vv+cRnQcwHwhy1yYnVvSztlegCD5JgwXZpuJHvAAp/lBJi5m91q4PbI9ns0HfLXs0OmH0tl
+X-Received: by 2002:a9d:4810:: with SMTP id c16mr1814993otf.248.1583389834418;
+        Wed, 04 Mar 2020 22:30:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583389834; cv=none;
         d=google.com; s=arc-20160816;
-        b=teQqjrfTzqw3TofXuC1BT6SuVCMxPieZSefIJ0iFqcaRkAm26tKzIh00DjcnFDsBBe
-         EQ4BXPmc5RKemF9KQy9DWHQH6cGKiYKaWU44ukspfxPJR1Vjz9uTnsx7ZELnTV8KCWTa
-         9nT9Nl1CNthz0o7LS58bdoJaoDWDZdDf4FHRBjTOMJgpYNHx4wEAwlEsZHTKqTvNtHRu
-         /8iDuIs4cmzDTKty+7Zo2oeDpE1pL23wRAloHzv78FWMnTChsxmsCvnJbq1rXv+EHa+M
-         iqmCUUIEFQYbL4+rjuR4VsMUSm1aQkLbeA57f+8Dqc3vo1XjeUhm4zHojYpo8gKIY6l1
-         iPsg==
+        b=BlF7+dONcvS5lsCFEeOMgf+V8Nxip4w0pH4JGoVlJ7GaAT+KxuWJTX0htaFWY+lYvq
+         74V31OiHMLVbAgupnSKOw8mj+gwJocUWXuuEOT8R8T4D2xxscr4tK8WJpqt+ssavmxht
+         BeGv7YnlYlkS5s7CSOJt5VDoW/sQGOBY68fzGpxP0uMW6krBtLLupOt6QDu1sx+8fxwb
+         ji+Kh3jczZaZKUP4XG7gCgMH5N2iCt3cGA0Kiu/BJhlLKEiUUaypOuGINSFIdidjekZf
+         Ngikezb1DMvD9xPNJLGoCeJWQ5rY6wAC+h7Z8Z/1Xpym6khoSk2m65dpcvQ/9+kSDRcB
+         9PEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:cc:to:subject:dkim-signature;
-        bh=nnDap56KxMb+y/ocxflqGm7aqIkBs/MznNpvS4SOrGs=;
-        b=NJaFkVJ1lznC4+3u/x1Edly8Ree+I+gvU7VCharCKl7BWKUg39BhVYgNE2EMRxVRgL
-         e5eefB71Hj2612JJo8HKAP5ipCjHHOA/RvwGYUhwHL3NXVnr0PX8KkFGaP279YUtzzsk
-         tcp5EIHUB9Qj9ICZ911wp4M8CkO8KAb4TGXUMqqHvNG1KqPkRBF7lbCuIaANXQqggq91
-         bFLy5P9OIUzZ4/WTBMk2heBdCxtPYP7mJzcD6V1O+QJYGZw2IjZaCK2XjbUW7pqf3A8q
-         fOtzMNCefgluY4Fh8kJXqqsXdggqgME8lktf+UoFlsNEaoDLdigeLEmsQpThiIzOEA6U
-         XMRg==
+         :message-id:from:references:cc:to:subject;
+        bh=9FLf0kSwJI2C187GBsYhKR3cc8t6kUMWA4lXoOk3244=;
+        b=KtgKs9wxGmTi249YUqVrHHGxtAbZdMs7ypljPmexLaknktavk4Zs0apTKI3IavLgbP
+         J7EAFTiGFRQoV90dwCZIxN1mv/wmYr4ceRgnCxIUo5krLyps/zZodJkf71PQU7J8721D
+         4rvn3Y6O0zFcpN8AtOGmWlTVlSjsBNdLN29m9pPrqRZnKEim15pLLt+fG+anFX7Ro8bH
+         iCbzmjRWtRdtptqb7Asc7JhMLP5gvHBhs8ePaCYaTr4ZVh/27hn6jsKjsxGTMUgGlp4E
+         +IZy30jrYabdm4kS/bMcR9YBgLO9S3ELIOtLHkrY1BcMC9dx3PfkI7FyzkDNAhaSJt4B
+         FKxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fSiOyF0U;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id 9si2230953oiq.104.2020.03.04.16.37.48;
-        Wed, 04 Mar 2020 16:37:48 -0800 (PST)
+        by mx.google.com with ESMTP id u4si2815847oic.115.2020.03.04.22.30.33;
+        Wed, 04 Mar 2020 22:30:34 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fSiOyF0U;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S2388612AbgCEAhr (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Wed, 4 Mar 2020 19:37:47 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:22847 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S2388547AbgCEAhq (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 4 Mar 2020 19:37:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1583368665;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-        bh=nnDap56KxMb+y/ocxflqGm7aqIkBs/MznNpvS4SOrGs=;
-        b=fSiOyF0U+eSsmIHio2iEsvw/xki1sCyycFRVnXh1T807kNAckha1r7RyIma3Ip6OiSY4UZ
-        PdU0uVgQWh/J57Sks+VYg3Cb4owS6lauH1Qf/jPwJj5XkGs2/Qie41WtejcHTRFE3DgeM7
-        DLvU6Qr7xrZ1NDdgniw8H5aJkVuA9GU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-466-mvugJWbaOp27ifkfg7T7TQ-1; Wed, 04 Mar 2020 19:37:41 -0500
-X-MC-Unique: mvugJWbaOp27ifkfg7T7TQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3920B19057AD;
-        Thu,  5 Mar 2020 00:37:38 +0000 (UTC)
-Received: from [10.10.120.212] (ovpn-120-212.rdu2.redhat.com [10.10.120.212])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 447E948;
-        Thu,  5 Mar 2020 00:37:20 +0000 (UTC)
-Subject: Re: [PATCH v3 12/20] hw/ide: Let the DMAIntFunc prototype use a
- boolean 'is_write' argument
-To:     =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-Cc:     "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Anthony Perard <anthony.perard@citrix.com>,
-        Fam Zheng <fam@euphon.net>,
-        =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
-        kvm@vger.kernel.org, Laurent Vivier <lvivier@redhat.com>,
-        Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>,
-        Eric Auger <eric.auger@redhat.com>,
-        Halil Pasic <pasic@linux.ibm.com>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        qemu-s390x@nongnu.org,
-        Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-        Gerd Hoffmann <kraxel@redhat.com>,
-        Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org,
-        Alistair Francis <alistair@alistair23.me>,
-        qemu-block@nongnu.org,
-        =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-        Jason Wang <jasowang@redhat.com>,
-        xen-devel@lists.xenproject.org,
-        Christian Borntraeger <borntraeger@de.ibm.com>,
-        Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-        Matthew Rosato <mjrosato@linux.ibm.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Richard Henderson <richard.henderson@linaro.org>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        David Hildenbrand <david@redhat.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Stefano Stabellini <sstabellini@kernel.org>,
-        Igor Mitsyanko <i.mitsyanko@gmail.com>,
-        Paul Durrant <paul@xen.org>,
-        Richard Henderson <rth@twiddle.net>
-References: <20200220130548.29974-1-philmd@redhat.com>
- <20200220130548.29974-13-philmd@redhat.com>
-From:   John Snow <jsnow@redhat.com>
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <42bee269-a32b-8c11-cb2f-779f6f936dd6@redhat.com>
-Date:   Wed, 4 Mar 2020 19:37:19 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+        id S1725866AbgCEGad (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 5 Mar 2020 01:30:33 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:11165 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1725818AbgCEGac (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 5 Mar 2020 01:30:32 -0500
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 4BB4BA99A342402E1B34;
+        Thu,  5 Mar 2020 14:30:29 +0800 (CST)
+Received: from [127.0.0.1] (10.173.222.27) by DGGEMS413-HUB.china.huawei.com
+ (10.3.19.213) with Microsoft SMTP Server id 14.3.439.0; Thu, 5 Mar 2020
+ 14:30:18 +0800
+Subject: Re: [kvm-unit-tests PATCH v3 08/14] arm/arm64: ITS:
+ its_enable_defaults
+To:     Auger Eric <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
+        <maz@kernel.org>, <kvmarm@lists.cs.columbia.edu>,
+        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>
+CC:     <drjones@redhat.com>, <andre.przywara@arm.com>,
+        <peter.maydell@linaro.org>, <alexandru.elisei@arm.com>,
+        <thuth@redhat.com>
+References: <20200128103459.19413-1-eric.auger@redhat.com>
+ <20200128103459.19413-9-eric.auger@redhat.com>
+ <10d0630f-1464-b12a-5ad5-ee617eaa5cca@huawei.com>
+ <a49227ce-355a-be35-c006-441e2adca8e1@redhat.com>
+From:   Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <1b91ddb6-5139-5deb-2325-c18af7657825@huawei.com>
+Date:   Thu, 5 Mar 2020 14:30:16 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <20200220130548.29974-13-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <a49227ce-355a-be35-c006-441e2adca8e1@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.173.222.27]
+X-CFilter-Loop: Reflected
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: mb2Imb7YRX0O
+X-TUID: uhwEl0hV4twP
+
+Hi Eric,
+
+On 2020/3/4 22:26, Auger Eric wrote:
+> Hi Zenghui,
+> On 2/7/20 4:20 AM, Zenghui Yu wrote:
+>> Hi Eric,
+>>
+>> On 2020/1/28 18:34, Eric Auger wrote:
+>>> its_enable_defaults() is the top init function that allocates the
+>>> command queue and all the requested tables (device, collection,
+>>> lpi config and pending tables), enable LPIs at distributor level
+>>> and ITS level.
+>>>
+>>> gicv3_enable_defaults must be called before.
+>>>
+>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>
+>>> ---
+>>>
+>>> v2 -> v3:
+>>> - introduce its_setup_baser in this patch
+>>> - squash "arm/arm64: ITS: Init the command queue" in this patch.
+>>> ---
+>>>    lib/arm/asm/gic-v3-its.h |  8 ++++
+>>>    lib/arm/gic-v3-its.c     | 89 ++++++++++++++++++++++++++++++++++++++++
+>>>    2 files changed, 97 insertions(+)
+>>>
+>>> diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
+>>> index 815c515..fe73c04 100644
+>>> --- a/lib/arm/asm/gic-v3-its.h
+>>> +++ b/lib/arm/asm/gic-v3-its.h
+>>> @@ -36,6 +36,8 @@ struct its_data {
+>>>        void *base;
+>>>        struct its_typer typer;
+>>>        struct its_baser baser[GITS_BASER_NR_REGS];
+>>> +    struct its_cmd_block *cmd_base;
+>>> +    struct its_cmd_block *cmd_write;
+>>>    };
+>>>      extern struct its_data its_data;
+>>> @@ -88,10 +90,16 @@ extern struct its_data its_data;
+>>>    #define GITS_BASER_TYPE_DEVICE        1
+>>>    #define GITS_BASER_TYPE_COLLECTION    4
+>>>    +
+>>> +struct its_cmd_block {
+>>> +    u64 raw_cmd[4];
+>>> +};
+>>> +
+>>>    extern void its_parse_typer(void);
+>>>    extern void its_init(void);
+>>>    extern int its_parse_baser(int i, struct its_baser *baser);
+>>>    extern struct its_baser *its_lookup_baser(int type);
+>>> +extern void its_enable_defaults(void);
+>>>      #else /* __arm__ */
+>>>    diff --git a/lib/arm/gic-v3-its.c b/lib/arm/gic-v3-its.c
+>>> index 2c0ce13..d1e7e52 100644
+>>> --- a/lib/arm/gic-v3-its.c
+>>> +++ b/lib/arm/gic-v3-its.c
+>>> @@ -86,3 +86,92 @@ void its_init(void)
+>>>            its_parse_baser(i, &its_data.baser[i]);
+>>>    }
+>>>    +static void its_setup_baser(int i, struct its_baser *baser)
+>>> +{
+>>> +    unsigned long n = (baser->nr_pages * baser->psz) >> PAGE_SHIFT;
+>>> +    unsigned long order = is_power_of_2(n) ? fls(n) : fls(n) + 1;
+>>> +    u64 val;
+>>> +
+>>> +    baser->table_addr = (u64)virt_to_phys(alloc_pages(order));
+>>> +
+>>> +    val = ((u64)baser->table_addr                    |
+>>> +        ((u64)baser->type    << GITS_BASER_TYPE_SHIFT)    |
+>>> +        ((u64)(baser->esz - 1)    << GITS_BASER_ENTRY_SIZE_SHIFT)    |
+>>> +        ((baser->nr_pages - 1)    << GITS_BASER_PAGES_SHIFT)    |
+>>> +        (u64)baser->indirect    << 62                |
+>>
+>> I haven't seen the 'nr_pages' and 'indirect' are programmed anywhere
+>> except in its_parse_baser(). It looks like they're treated as RO (but
+>> they shouldn't) and I now don't think it makes sense to parse them in
+>> its_parse_baser(), in patch#5.
+> 
+> First of all please forgive me for the delay.
+
+Never mind.
+
+> 
+> I agree with you on nr_pages. However indirect also indicates the BASER
+> capability to support or not 2 level tables. So I think it makes sense
+> to read it on init.
+
+Yes, you're right. As the spec says, the Indirect field "is RAZ/WI for
+GIC implementations that only support flat tables".
 
 
-
-On 2/20/20 8:05 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> The 'is_write' argument is either 0 or 1.
-> Convert it to a boolean type.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  include/hw/ide/internal.h | 2 +-
->  hw/dma/rc4030.c           | 6 +++---
->  hw/ide/ahci.c             | 2 +-
->  hw/ide/core.c             | 2 +-
->  hw/ide/macio.c            | 2 +-
->  hw/ide/pci.c              | 2 +-
->  6 files changed, 8 insertions(+), 8 deletions(-)
-
-Acked-by: John Snow <jsnow@redhat.com>
+Thanks,
+Zenghui

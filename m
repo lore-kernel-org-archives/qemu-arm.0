@@ -1,176 +1,245 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp3147997lfi;
-        Thu, 5 Mar 2020 09:05:06 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vuMJaGzsbkyQ9CoGnnFbC00f42ICRt50PxNNoriLDz8Kx6YXTv1SPG//tu7xJK6TXCctgfu
-X-Received: by 2002:a37:a70c:: with SMTP id q12mr9288371qke.36.1583427906519;
-        Thu, 05 Mar 2020 09:05:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583427906; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp3149529lfi;
+        Thu, 5 Mar 2020 09:06:21 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vu7EsCT89dm0ucNh3id6tcT+6ejYJn6/X19IpcTdJ32gc8tEzOXbhMolc5LuWmsQhQOxCJy
+X-Received: by 2002:a0c:eb50:: with SMTP id c16mr4963910qvq.25.1583427981479;
+        Thu, 05 Mar 2020 09:06:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583427981; cv=none;
         d=google.com; s=arc-20160816;
-        b=hgJyQC0ymDm7dOh/q7WhrGqe/oaLuzBnRihAjlYyW5OVeeaHFzh9dsvfJuFoMAtGLT
-         yVSJUB2ArV/feURH38vJksPWbsJjDz0cfdHPUE2A7Ki1OH3tenc633D1dVKpzxeYi1i3
-         ky3mGGWsi59n2+Kyi8gMj7CGm2Hx4QOnCbn/qit6CyHyhZJHh3aLEPCu6S0k4t7Kdkg3
-         jKW7+dgCTAuMHby+A0OjTMCgxAN94yitSpHdyjK9k2Xd36zeG7YZA7pVJYWKOISBck1a
-         uIFBMOIV8ESoATrWRrRnjYurv1reIWpxK60SdGD536mrzo9Q/sQYk4qxRzwQj9GPDbyg
-         NLgQ==
+        b=rGe7NNIy3HTvxNZkKmlkuPUloFbNR+gRUeAN0H9lSyN+5fnZG06kBD8zBFbDRLdwez
+         Wzt3ScUJU0MrIWwwPR/OddoDJhrARMNfEvotwgKXqHBh1jOlUQ6u94JxZRNzXBpxnTFu
+         fm8Kix/Aqi6cCajqvxMCC/QpqNrSE4BoD8WVXRF1552J7npY6q7xTSelZaOofet/d+dO
+         RhZgt746Z/5hMPmNaHM0X+exigNIqgg3tsqk9S20omcHA9b7BYLduYVm9k5HF1KHMokZ
+         WSHA71ujgQ7hylO2Bg47Mc76yqvHurJcsT/BLArER6Dk0z8yVTXDMCV73Dob0abR1sVF
+         Xgsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=ihSDbjWEY/23aUSasZkkqE3PIsszjWjdQaLKX0nSMsc=;
-        b=Bzfm4BaIUhMiYlBg6T7tvPFe+gHtuk7mFVzxPyw7fBbA86x6PH+yVQEYlaakOMJHSk
-         MQGAro45vKqmXRC6jupt1sz/tLehSegA0wiJRYdGms7mTfDWP5S9sMgNzxCfCwVyjOKM
-         ckW2QkA8ikV9KKNIB/OgYF88/Vv2J5tyLs5UUWGJ9hL0IxivwpsfN2iRT2PX7mLzGR+v
-         3Vxz/gvMbfq1AECTrJ3QLXsvY8vJ0FVM0iNP3g3ZmTBm3WtJyOWp32wh/c/xdOes6G9L
-         XQ1rXiJlM/QfXocWXehkA4pAAA1LpzLNX8/Qq/WXusml/oPWm+rCcEu7dhPTUQD1V2yb
-         y++w==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=8cL38r9cxiYQQfHCD9Jb/6kyOc/fYElccL153YTjP4c=;
+        b=ibNOoHLxD9ZMrMX+kllfssO3jBt7sSSBHBN71NnHuDDR5+ZTp8F6+VlW0Lk68r0x63
+         lLECLzt/fr4kB0XIiCU52RsIZlIvEfnheRHclQXsuYLwfS4gIHvwKM8gNPetb+XH7j6U
+         e1tDkYoq42KvoNTWA30iCemMZ+ZVoLINHUavyWyU6ixGwJ8jNRKaE32SjOYstcoqJelZ
+         fBQSIx9GRpoGCL8gA/ZwJHk3sooJhQaBEMZY4o3HtbiG64DA061wSs6dDrASg0wfp5rp
+         v57kz1OtSZuEGYAGBBK0o0z2AvoNar4gfy0IZ3mTqYNXQR9xEwR00kIm4kOxLl7D2WVH
+         a5XQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DKfRbzSe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WFvxunTf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a12si3184144qkn.155.2020.03.05.09.05.06
+        by mx.google.com with ESMTPS id w14si3282106qkj.161.2020.03.05.09.06.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Mar 2020 09:05:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 05 Mar 2020 09:06:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DKfRbzSe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WFvxunTf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53434 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53484 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9tvl-000134-PI
-	for alex.bennee@linaro.org; Thu, 05 Mar 2020 12:05:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34765)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j9twy-0004yt-V0
+	for alex.bennee@linaro.org; Thu, 05 Mar 2020 12:06:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34490)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j9tjq-0005ef-PC
- for qemu-devel@nongnu.org; Thu, 05 Mar 2020 11:52:47 -0500
+ (envelope-from <eric.auger@redhat.com>) id 1j9tjK-0004j8-SJ
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2020 11:52:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j9tjl-0007h1-Pw
- for qemu-devel@nongnu.org; Thu, 05 Mar 2020 11:52:46 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:21920
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <eric.auger@redhat.com>) id 1j9tjI-00076i-PR
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2020 11:52:14 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:28227
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j9tjl-0007gI-MR
- for qemu-devel@nongnu.org; Thu, 05 Mar 2020 11:52:41 -0500
+ id 1j9tjI-00075v-LW
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2020 11:52:12 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583427161;
+ s=mimecast20190719; t=1583427131;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ihSDbjWEY/23aUSasZkkqE3PIsszjWjdQaLKX0nSMsc=;
- b=DKfRbzSeaGqJOUhxzJE6aaGLY49fsF/4VTiv5uB/3w5nFjXnq/VOTLO24tGLiF5XxvL2F1
- Iv5xdlFqZ7fC8FrdqyvXA8LDzp9fEM5QlOmdf0SRk+0xAoFb2lrKOP2W/H8u7XhAGxooNi
- JCgQ/UxiQf5ICG69chrQCWhtTPN5sqU=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=8cL38r9cxiYQQfHCD9Jb/6kyOc/fYElccL153YTjP4c=;
+ b=WFvxunTfspaXMhB5rMyFJZLXW2utH7dE0+i+wD3HrHdSPooYr4RAqPrvStOnRD47Cvqvx1
+ UxLdsTRe6anmU5/Rt9mXIcH8RkflcKlo+IQHqOYwDARJchxO5f+F5dHdlq3MjgI48njOrO
+ X7IlUUIw4ZENF4L6NVIjGiF+/IVaAaY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-460-YxxJjCnOMHaCD7DrsYfO0Q-1; Thu, 05 Mar 2020 11:52:37 -0500
-X-MC-Unique: YxxJjCnOMHaCD7DrsYfO0Q-1
+ us-mta-79-DG_q5HZFPL-z2obX_5GOFg-1; Thu, 05 Mar 2020 11:52:09 -0500
+X-MC-Unique: DG_q5HZFPL-z2obX_5GOFg-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9756E8018C4;
- Thu,  5 Mar 2020 16:52:36 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D825D107ACC4;
+ Thu,  5 Mar 2020 16:52:07 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-59.ams2.redhat.com [10.36.116.59])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 414FD2719A;
- Thu,  5 Mar 2020 16:52:34 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 59D3A39A;
+ Thu,  5 Mar 2020 16:52:00 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
-Subject: [PATCH v5 07/10] docs/specs/tpm: Document TPM_TIS sysbus device for
- ARM
-Date: Thu,  5 Mar 2020 17:51:46 +0100
-Message-Id: <20200305165149.618-8-eric.auger@redhat.com>
-In-Reply-To: <20200305165149.618-1-eric.auger@redhat.com>
-References: <20200305165149.618-1-eric.auger@redhat.com>
+Subject: [PATCH v5 00/10] vTPM for aarch64
+Date: Thu,  5 Mar 2020 17:51:39 +0100
+Message-Id: <20200305165149.618-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-devel@nongnu.org
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: marcandre.lureau@redhat.com, lersek@redhat.com, ardb@kernel.org,
  philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JeI3GxONyr4t
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YEnOlHbYPg2d
 
-Update the documentation with recent changes related to the
-sysbus TPM_TIS device addition and add the command line
-to be used with arm VIRT.
+This series adds the capability to instantiate an MMIO TPM TIS
+in ARM virt. It is candidate to qemu 5.0.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
----
- docs/specs/tpm.rst | 25 ++++++++++++++++++++++++-
- 1 file changed, 24 insertions(+), 1 deletion(-)
+The existing TPM TIS code is reshuffled into a generic part,
+the ISA device and the sysbus device. The sysbus TPM-TIS
+device gets dynamically instantiated in machvirt on the
+platform bus.
 
-diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
-index 2bdf637f55..da9eb39ca9 100644
---- a/docs/specs/tpm.rst
-+++ b/docs/specs/tpm.rst
-@@ -18,9 +18,15 @@ The TIS interface makes a memory mapped IO region in the=
- area
- 0xfed40000-0xfed44fff available to the guest operating system.
-=20
- QEMU files related to TPM TIS interface:
-- - ``hw/tpm/tpm_tis.c``
-+ - ``hw/tpm/tpm_tis_common.c``
-+ - ``hw/tpm/tpm_tis_isa.c``
-+ - ``hw/tpm/tpm_tis_sysbus.c``
-  - ``hw/tpm/tpm_tis.h``
-=20
-+Both an ISA device and a sysbus device are available. The former is
-+used with pc/q35 machine while the latter can be instantiated in the
-+ARM virt machine.
-+
- CRB interface
- -------------
-=20
-@@ -325,6 +331,23 @@ In case a pSeries machine is emulated, use the followi=
-ng command line:
-     -device virtio-blk-pci,scsi=3Doff,bus=3Dpci.0,addr=3D0x3,drive=3Ddrive=
--virtio-disk0,id=3Dvirtio-disk0 \
-     -drive file=3Dtest.img,format=3Draw,if=3Dnone,id=3Ddrive-virtio-disk0
-=20
-+In case an ARM virt machine is emulated, use the following command line:
-+
-+.. code-block:: console
-+
-+  qemu-system-aarch64 -machine virt,gic-version=3D3,accel=3Dkvm \
-+    -cpu host -m 4G \
-+    -nographic -no-acpi \
-+    -chardev socket,id=3Dchrtpm,path=3D/tmp/mytpm1/swtpm-sock \
-+    -tpmdev emulator,id=3Dtpm0,chardev=3Dchrtpm \
-+    -device tpm-tis-device,tpmdev=3Dtpm0 \
-+    -device virtio-blk-pci,drive=3Ddrv0 \
-+    -drive format=3Dqcow2,file=3Dhda.qcow2,if=3Dnone,id=3Ddrv0 \
-+    -drive if=3Dpflash,format=3Draw,file=3Dflash0.img,readonly \
-+    -drive if=3Dpflash,format=3Draw,file=3Dflash1.img
-+
-+  On ARM, ACPI boot with TPM is not yet supported.
-+
- In case SeaBIOS is used as firmware, it should show the TPM menu item
- after entering the menu with 'ESC'.
-=20
+ACPI boot is not yet supported on ARM. Note that the UEFI
+firmware is itself a consumer of the DT description, so we
+need the DT related changes regardless of whether the VM
+boots in DT or ACPI mode.
+
+Related qtests are reshuffled to allow the reuse of existing
+tests for both the ISA and the sysbus devices: Adaption
+consists in changing the qemu command line (change in the
+device name and provide explicit machine options) and adapt
+to the relocation of the TPM-TIS device in the memory map.
+
+The series was tested with the swtpm/libtpms emulator.
+Automatic guest LUKS volume unlocking (tpm2) was successful.
+Thanks to Ard for supporting me when setting up the test
+environment.
+
+Best Regards
+
+Eric
+
+Testing:
+
+mkdir /tmp/tpm
+swtpm socket \
+--tpm2 \
+-t -d \
+--tpmstate dir=3D/tmp/tpm \
+--ctrl type=3Dunixio,path=3D/tmp/swtpm-sock
+
+qemu command line must be augmented with the following options:
+
+-chardev socket,id=3Dchrtpm,path=3D/tmp/swtpm-sock \
+-tpmdev emulator,id=3Dtpm0,chardev=3Dchrtpm \
+-device tpm-tis-device,tpmdev=3Dtpm0 \
+
+References:
+[1] libtpms: https://github.com/stefanberger/libtpms/wiki
+[2] swtpm: https://github.com/stefanberger/swtpm/wiki
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/v4.2.0-tpm-patch-v5
+
+History:
+
+v4 -> v5:
+- Fix osx make check error in
+  [PATCH v4 06/10] hw/arm/virt: vTPM support
+  (put TYPE_BINDING(TYPE_TPM_TIS_SYSBUS, add_tpm_tis_fdt_node)
+   outside of CONFIG_LINUX)
+  Tested with make vm-build-openbsd
+
+v3 -> v4:
+- collect additional R-b's
+- add 'Not used but needed for linking' mention related to
+  tpm_tis_base_addr in CRB test files
+- fix comment style
+
+RFCv2 -> PATCH v3:
+- Updated the doc for ARM
+- Adapted existing tests for ARM
+- use qemu_fdt_setprop_string in add_tpm_tis_fdt_node
+- Collected R-b's
+- Comments not taken into account:
+  - I have kept the tpm-tis-device name for now despite Stefan's
+    suggestion to rename it into tpm-tis-sysbus. This is not
+    frozen though
+  - Common state still is not a QOM object (no double inheritence)
+
+RFC v1 -> RFC v2:
+- restructure the existing code with common, ISA and sysbus part.
+- both ARM and x86 integration were tested.
+
+
+Eric Auger (10):
+  tpm: rename TPM_TIS into TPM_TIS_ISA
+  tpm: Use TPMState as a common struct
+  tpm: Separate tpm_tis common functions from isa code
+  tpm: Separate TPM_TIS and TPM_TIS_ISA configs
+  tpm: Add the SysBus TPM TIS device
+  hw/arm/virt: vTPM support
+  docs/specs/tpm: Document TPM_TIS sysbus device for ARM
+  test: tpm: pass optional machine options to swtpm test functions
+  test: tpm-tis: Get prepared to share tests between ISA and sysbus
+    devices
+  test: tpm-tis: Add Sysbus TPM-TIS device test
+
+ docs/specs/tpm.rst                      |  25 +-
+ default-configs/i386-softmmu.mak        |   2 +-
+ hw/tpm/tpm_tis.h                        |  91 +++++
+ include/sysemu/tpm.h                    |   7 +-
+ tests/qtest/tpm-tests.h                 |   5 +-
+ tests/qtest/tpm-tis-util.h              |  23 ++
+ tests/qtest/tpm-util.h                  |   8 +-
+ hw/arm/sysbus-fdt.c                     |  33 ++
+ hw/arm/virt.c                           |   7 +
+ hw/i386/acpi-build.c                    |   6 +-
+ hw/tpm/{tpm_tis.c =3D> tpm_tis_common.c}  | 181 +---------
+ hw/tpm/tpm_tis_isa.c                    | 170 +++++++++
+ hw/tpm/tpm_tis_sysbus.c                 | 159 +++++++++
+ tests/qtest/tpm-crb-swtpm-test.c        |   9 +-
+ tests/qtest/tpm-crb-test.c              |   3 +
+ tests/qtest/tpm-tests.c                 |  10 +-
+ tests/qtest/tpm-tis-device-swtpm-test.c |  76 ++++
+ tests/qtest/tpm-tis-device-test.c       |  87 +++++
+ tests/qtest/tpm-tis-swtpm-test.c        |   8 +-
+ tests/qtest/tpm-tis-test.c              | 414 +---------------------
+ tests/qtest/tpm-tis-util.c              | 451 ++++++++++++++++++++++++
+ tests/qtest/tpm-util.c                  |  11 +-
+ hw/arm/Kconfig                          |   1 +
+ hw/i386/Kconfig                         |   2 +-
+ hw/tpm/Kconfig                          |  12 +-
+ hw/tpm/Makefile.objs                    |   4 +-
+ tests/qtest/Makefile.include            |  11 +-
+ 27 files changed, 1207 insertions(+), 609 deletions(-)
+ create mode 100644 hw/tpm/tpm_tis.h
+ create mode 100644 tests/qtest/tpm-tis-util.h
+ rename hw/tpm/{tpm_tis.c =3D> tpm_tis_common.c} (85%)
+ create mode 100644 hw/tpm/tpm_tis_isa.c
+ create mode 100644 hw/tpm/tpm_tis_sysbus.c
+ create mode 100644 tests/qtest/tpm-tis-device-swtpm-test.c
+ create mode 100644 tests/qtest/tpm-tis-device-test.c
+ create mode 100644 tests/qtest/tpm-tis-util.c
+
 --=20
 2.20.1
 

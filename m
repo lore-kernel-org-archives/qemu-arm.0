@@ -1,327 +1,159 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2052325lfi;
-        Wed, 4 Mar 2020 12:55:27 -0800 (PST)
-X-Received: by 2002:a6b:740c:: with SMTP id s12mr3877184iog.108.1583355327534;
-        Wed, 04 Mar 2020 12:55:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583355327; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2356064lfi;
+        Wed, 4 Mar 2020 18:56:46 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vufJr8tKPQzqINJJjnAyuP90V1Gj8po0rKC4EKlVwHQLC+eWIiKRvpXFqbl5skhRV7WkkPd
+X-Received: by 2002:a37:de0d:: with SMTP id h13mr6082377qkj.332.1583377005933;
+        Wed, 04 Mar 2020 18:56:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583377005; cv=none;
         d=google.com; s=arc-20160816;
-        b=LwMzaxKC2O3P/MiC1aGCrQsU2UIbGvcPnjEFP94w3LGddruk6OFW/v6Cjiov89ihri
-         gH3hx+MntPW4W906rLgx6DVUAaUEjQqVw2QjdT7ZqS+/DtVuSQkxC68KVrt6mVEDJiCN
-         36JlmJnI21gP0IV0Y60yRYh6iVGLHEAllIPMvtOroyGFmoU9L+aWGy2k6zfRdmq0q6jj
-         uhKzNbBkJJTDXKkgr1lrZj2Av8u08S01GwdIQ6+dtHFRq/BWQ95Ddg1GtnLJLv9ploal
-         pqNLKDbAHCV83P0RQfOwXpR4YUJQcSt2YX828aIge0wL1VaGflNqtq4wRmPxCGWz1R4H
-         VQbQ==
+        b=V+6V+26u2iMPuZVdx8lfZIowI6Q/zanFkpmnoUotobuA8VdIqiWeGuw5JTJSRJZqOF
+         yZABq5oMR/FCBCuC38PQRiHz7LRK8h7bOkXCtxTp3HM6RVmJtGV5ujUfJMAKKhbzuKOX
+         7LUNK+1ikyJ1l1O4vnpWCiYlkjYVk0zfqOPbtFjSLDDFPCk/X9DF7vm1m/Ebw02yVw5a
+         FteZx6qYLxQvK4O73TwxW9ZfkArZ9iHJ9mFLB2wnRyOqcsA7HR69lJbXK36KMI38D6Fa
+         ltzsDkSWeLjV9gndJroqctOUldYmOoqn4q8bv1brrzZr8euyNm5oyAJEFHoWKSDlawU0
+         DrIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=tCYBHibbb2c0kOq2/NWI7/bnXq/tZU8evQiteP6O2K4=;
-        b=cdcQY/KiI04qRcOu1Fp4hOZrXA+9IN2H/XnupQkL041IrwMwSWx/qJqiL9xBGypB2M
-         WGd4vuQ3TQBufientoDR/QjntYobR4YcIezDU8uaFOMitATOELqQZ+4uprCfcVOOva9b
-         oqYBWuzcQ0uPo3eHuYtcBURE+P4wk/rulc07j6DUMuQdrOj+WrmwNTS1a9HSw39lHqy1
-         vZOztBAjPFDCaHEbcjZS6DncS6c0VWT963dQGjYtzCe83vpi9n4drPQBKmZrfkIrIml8
-         e5/nVOv7BWzLFAxEtLdYjLZZUXXVM1SQY1BH8s4yTrM//s87BkxWYk89MapEDY7aDyT7
-         wBoA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:dlp-reaction:dlp-version:dlp-product
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:subject:to:from;
+        bh=LbaCqUokkUuI3xHsg5Pxz65cftlMFCYYk1I3uPAxNII=;
+        b=DWzZWZ4eMnMN6tHPczJGFqVf3EAhEbXIwPz95u2UmLuDCStxAxvDxvJHr5WFB7r3lU
+         T5iFAT960EFeowSo7dfP7IaFt0sjISU8XBiQZ0crl6r6V2vO53/k2Qq20r13UVaTAtkI
+         Nibi3rlAEAmdjNuHEEKSdX2tO3GkOR7TxGUV/ESzGJzsED0tvSlYcQAj9sUn2vuE0c0f
+         B7o8sjp4yXwgSPy62awjQjooZLr7YjnYRnLGywwOafUs0Hy7+aH1qtvoT+2Y+gyFG0iF
+         LH7u3rWP6riVpKgDZxCfW4AgO1IdPp57NLnjG5T7/VqSJYI8FG6WSM+zMBSn7x3Rydrf
+         mauA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="r732cWA/";
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id t4sor2438083ioc.36.2020.03.04.12.55.27
-        (Google Transport Security);
-        Wed, 04 Mar 2020 12:55:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h8si2103743qkm.128.2020.03.04.18.56.45
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 04 Mar 2020 18:56:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="r732cWA/";
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=tCYBHibbb2c0kOq2/NWI7/bnXq/tZU8evQiteP6O2K4=;
-        b=r732cWA/FW4udgN24NkT+TgnhylOuXn7dTbT0Nkko6aPS3TM4c2zlJpOXiHIhYzAQP
-         gUmkWK+P4OK8bADvQEOBuOMLJnmNeCzpH2Spm7N+Tmt64C9kLMJZPLAwTT+ELsuyUV4S
-         32R6+yNY5b5XFEnxMp/h3fXESkKu8q8yY3Dqr+GqnNH4I5Lpas2OLqwwcoT/TFBJFIso
-         B1WrFh4T/D4GQ7JOaGM42cmnu9UlDnnwcFtBDb3APxA8wKOYdI61ivJ41+AfwvJTWB5A
-         Vp62+jTtiEAm1lI3K4lSa1CVNgJKFE7xdQIPPTIHt0gr5HpegGvtSz8wZWgv+AZoFpu3
-         U2Sg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=tCYBHibbb2c0kOq2/NWI7/bnXq/tZU8evQiteP6O2K4=;
-        b=He76OJ3XQbGRQ4q9rn54CbsaFr98EwYh5RjSTOTc8z6Ff+AxTAbYgPtxInodBHEqGO
-         MpNpHlQy+WbW54dvYVn3CHsLrCkDI9/sTu4mzXB69lb+bezKnyzSD5ER9jQWRVeuYNiz
-         tlmHpB7ZDWz5DqOZg3BKp9A3JIHXacdorGi5VGdmDgY5kwYNTbeT7RcKYiIBS3CK70Dl
-         wwTX/0NgLuxxowPx9UGZK6Dl0FbGxowa4TO/Ti0VFLZrqGQw+9djap+sScGJ07rCttCF
-         htr8Fhl90Gp2KuQNUqMtPWuKeYzkBxhkyKuqrT/QLFTc4LQajXsJqhMYn8bDjHrAwz4J
-         Bi8Q==
-X-Gm-Message-State: ANhLgQ1Y1WWGz1R1JkryCoCYeeJKMn9U4Qy/tj7giDtoGQZIe+WDsLnq
-	3OaRMwGLiXc4buCsHFk5SAByObicyBlNWqf3zcYzPeEd
-X-Google-Smtp-Source: ADFU+vvAe2J/yt+oGJMdKuj5frcC9FF8UYgN931ICOso9gqaBMCyOMhNuzoKppvy6DpiTkBFEuuWuInHg48CejvWCSs=
-X-Received: by 2002:a6b:b7d8:: with SMTP id h207mr3594261iof.306.1583355326852;
- Wed, 04 Mar 2020 12:55:26 -0800 (PST)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1]:42710 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j9ggn-0005aS-Cx
+	for alex.bennee@linaro.org; Wed, 04 Mar 2020 21:56:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56008)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <kevin.tian@intel.com>) id 1j9ggf-0005aI-VU
+ for qemu-arm@nongnu.org; Wed, 04 Mar 2020 21:56:38 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <kevin.tian@intel.com>) id 1j9gge-0007ax-Vc
+ for qemu-arm@nongnu.org; Wed, 04 Mar 2020 21:56:37 -0500
+Received: from mga07.intel.com ([134.134.136.100]:34446)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kevin.tian@intel.com>)
+ id 1j9ggb-00079S-Lm; Wed, 04 Mar 2020 21:56:33 -0500
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 04 Mar 2020 18:56:26 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,516,1574150400"; d="scan'208";a="274920144"
+Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
+ by fmsmga002.fm.intel.com with ESMTP; 04 Mar 2020 18:56:26 -0800
+Received: from fmsmsx116.amr.corp.intel.com (10.18.116.20) by
+ fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 4 Mar 2020 18:56:26 -0800
+Received: from shsmsx108.ccr.corp.intel.com (10.239.4.97) by
+ fmsmsx116.amr.corp.intel.com (10.18.116.20) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 4 Mar 2020 18:56:25 -0800
+Received: from shsmsx104.ccr.corp.intel.com ([169.254.5.206]) by
+ SHSMSX108.ccr.corp.intel.com ([169.254.8.235]) with mapi id 14.03.0439.000;
+ Thu, 5 Mar 2020 10:56:21 +0800
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>, Auger Eric
+ <eric.auger@redhat.com>
+Subject: RE: [PATCH v16 00/10] VIRTIO-IOMMU device
+Thread-Topic: [PATCH v16 00/10] VIRTIO-IOMMU device
+Thread-Index: AQHV4zqd/jWB2C+M5UeA/xtNxWrsyqgucl6AgAAqcACAByzBAIAAaY+AgAFXAoCAACrFAIAAh6qAgAEu9sA=
+Date: Thu, 5 Mar 2020 02:56:20 +0000
+Message-ID: <AADFC41AFE54684AB9EE6CBC0274A5D19D7BDFBB@SHSMSX104.ccr.corp.intel.com>
+References: <20200214132745.23392-1-eric.auger@redhat.com>
+ <20200227111717.GG1645630@redhat.com>
+ <431cb39d-833c-6d02-d7b3-02b3e90446e2@redhat.com>
+ <CAMj5Bkib3CTzCB02ScueFR84r28LGowF7uxYO8Ygmnj9X7oNOg@mail.gmail.com>
+ <fea625f1-b58e-6da6-8e2a-f32fc9391fc8@redhat.com>
+ <CAMj5Bkgm1LKbN3E2qTTxmrGhpmdL9NWarSfX-mYCWF0yt5E9eg@mail.gmail.com>
+ <88e3b669-2998-41c0-83f7-de42a72a73e7@redhat.com>
+ <20200304164717.GF646000@myrica>
+In-Reply-To: <20200304164717.GF646000@myrica>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYjM2NzUyZWEtODNmZi00N2YzLThmYjAtYjcyM2I3MjVmYzQ1IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiRExuWnlNUTJIYWtPSHVNVzJuKzZxekEwczl4MU9hNG4yTXNmaGZjNEt2UzFUYUthc0xUQVFYSll0NGJjbm9KWSJ9
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.239.127.40]
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-References: <20200301215029.15196-1-nieklinnenbank@gmail.com>
- <20200301215029.15196-19-nieklinnenbank@gmail.com> <871rq876h3.fsf@linaro.org>
-In-Reply-To: <871rq876h3.fsf@linaro.org>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Wed, 4 Mar 2020 21:55:15 +0100
-Message-ID: <CAPan3WrNnrnngwE4pGeYpR9HS7Vr936-ojPZZovNo8ZdoAA0sg@mail.gmail.com>
-Subject: Re: [PATCH v6 18/18] docs: add Orange Pi PC document
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	Beniamino Galvani <b.galvani@gmail.com>, Jason Wang <jasowang@redhat.com>, 
-	Igor Mammedov <imammedo@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000cf72ba05a00da3b1"
-X-TUID: yjtCYaj4W9Vz
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 134.134.136.100
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?iso-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
+ "kenneth-lee-2012@foxmail.com" <kenneth-lee-2012@foxmail.com>,
+ "tnowicki@marvell.com" <tnowicki@marvell.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ "quintela@redhat.com" <quintela@redhat.com>,
+ "zhangfei.gao@foxmail.com" <zhangfei.gao@foxmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ "dgilbert@redhat.com" <dgilbert@redhat.com>,
+ "bharatb.linux@gmail.com" <bharatb.linux@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "Wangzhou \(B\)" <wangzhou1@hisilicon.com>,
+ Zhangfei Gao <zhangfei.gao@gmail.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LbsqfgwVHjeF
 
---000000000000cf72ba05a00da3b1
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hello Alex,
-
-On Wed, Mar 4, 2020 at 11:35 AM Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
-rote:
-
+> From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> Sent: Thursday, March 5, 2020 12:47 AM
 >
-> Niek Linnenbank <nieklinnenbank@gmail.com> writes:
->
-> > The Xunlong Orange Pi PC machine is a functional ARM machine
-> > based on the Allwinner H3 System-on-Chip. It supports mainline
-> > Linux, U-Boot, NetBSD and is covered by acceptance tests.
-> >
-> > This commit adds a documentation text file with a description
-> > of the machine and instructions for the user.
->
-> This is great, thanks for taking the time to include documentation.
->
+[...]
+> > >
+> > > * We can't use DVM in nested mode unless the VMID is shared with the
+> > > CPU. For that we'll need the host SMMU driver to hook into the KVM
+> VMID
+> > > allocator, just like we do for the ASID allocator. I haven't yet
+> > > investigated how to do that. It's possible to do vSVA without DVM
+> > > though, by sending all TLB invalidations through the SMMU command
+> queue.
+> > > "
+>=20
+> Hm we're already mandating DVM for host SVA, so I'd say mandate it for
+> vSVA as well. We'd avoid a ton of context switches, especially for the zi=
+p
+> accelerator which doesn't require ATC invalidations. The host needs to pi=
+n
+> the VMID allocated by KVM and write it in the endpoint's STE.
+>=20
 
-Sure, I'm happy to contribute it. I tried to include most relevant
-information
-in there for developers and potential users of the machine. If something is
-missing
-just let me know and I'll make an update for it.
-
-
->
-> >
-> > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> > ---
-> >  docs/orangepi.rst | 226
-> > ++++++++++++++++++++++++++++++++++++++++++++++
->
-> I suspect there is a better place to put this is than the top level. I
-> wonder if it should be docs/specs?
->
-
-Yeah I'm fine to move it to a different subdirectory if needed. Right now
-its placed in docs,
-as it seems that documents for machines are also placed there, for example
-docs/microvm.rst
-
-
->
-> >  MAINTAINERS       |   1 +
-> >  2 files changed, 227 insertions(+)
-> >  create mode 100644 docs/orangepi.rst
-> >
-> > diff --git a/docs/orangepi.rst b/docs/orangepi.rst
-> > new file mode 100644
-> > index 0000000000..a9b46f553c
-> > --- /dev/null
-> > +++ b/docs/orangepi.rst
-> > @@ -0,0 +1,226 @@
-> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D
-> > +Orange Pi PC Machine Type
-> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D
-> > +
-> > +The Xunlong Orange Pi PC is an Allwinner H3 System on Chip
-> > +based embedded computer with mainline support in both U-Boot
-> > +and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,
-> > +1GiB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and
-> > +various other I/O.
->
-> When Peter's document PR goes in later this week there will also be a:
->
->   docs/system/target-arm.rst
->
-> which would benefit from a section for the Orange Pi in it.
->
-
-Nice, I'll have a look at it when it gets merged and add a section for
-Orange Pi.
-I'll try to include that in the next version of this series.
-
-
->
-> > +
-> > +Supported devices
-> > +-----------------
-> > +
-> > +The Orange Pi PC machine supports the following devices:
-> > +
-> > + * SMP (Quad Core Cortex A7)
-> > + * Generic Interrupt Controller configuration
-> > + * SRAM mappings
-> > + * SDRAM controller
-> > + * Real Time Clock
-> > + * Timer device (re-used from Allwinner A10)
-> > + * UART
-> > + * SD/MMC storage controller
-> > + * EMAC ethernet
->
-> Do we ever exercise the ethernet in the acceptance tests? I see we have
-> some that boots a full OS but boot console only seems to touch the
-> serial console.
->
-
-Good point. Currently in the acceptance tests U-Boot and Linux detect
-the ethernet device, but there are no explicit checks for that in the
-acceptance tests
-nor any actual packet transmission.
-
-I'll try to extend the current tests in the next version of this series to
-include some
-basic checks for the ethernet device, perhaps with DHCP or a ping.
-I'm open to suggestions for the preferred way to do this.
-
-Regards,
-Niek
-
-
-
-
-
-
->
-> <snip>
->
-> --
-> Alex Benn=C3=A9e
->
-
-
---=20
-Niek Linnenbank
-
---000000000000cf72ba05a00da3b1
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">Hello Alex,<br></div><br><div class=3D"gm=
-ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Mar 4, 2020 at 11:=
-35 AM Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.org">alex.b=
-ennee@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" =
-style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pa=
-dding-left:1ex"><br>
-Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com" target=3D"_=
-blank">nieklinnenbank@gmail.com</a>&gt; writes:<br>
-<br>
-&gt; The Xunlong Orange Pi PC machine is a functional ARM machine<br>
-&gt; based on the Allwinner H3 System-on-Chip. It supports mainline<br>
-&gt; Linux, U-Boot, NetBSD and is covered by acceptance tests.<br>
-&gt;<br>
-&gt; This commit adds a documentation text file with a description<br>
-&gt; of the machine and instructions for the user.<br>
-<br>
-This is great, thanks for taking the time to include documentation.<br></bl=
-ockquote><div><br></div><div>Sure, I&#39;m happy to contribute it. I tried =
-to include most relevant information</div><div>in there for developers and =
-potential users of the machine. If something is missing</div><div>just let =
-me know and I&#39;ll make an update for it.<br></div><div>=C2=A0</div><bloc=
-kquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:=
-1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt;<br>
-&gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gm=
-ail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 docs/orangepi.rst | 226<br>
-&gt; ++++++++++++++++++++++++++++++++++++++++++++++<br>
-<br>
-I suspect there is a better place to put this is than the top level. I<br>
-wonder if it should be docs/specs?<br></blockquote><div><br></div><div>Yeah=
- I&#39;m fine to move it to a different subdirectory if needed. Right now i=
-ts placed in docs,</div><div>as it seems that documents for machines are al=
-so placed there, for example docs/microvm.rst<br></div><div>=C2=A0</div><bl=
-ockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-lef=
-t:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt;=C2=A0 MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
-&gt;=C2=A0 2 files changed, 227 insertions(+)<br>
-&gt;=C2=A0 create mode 100644 docs/orangepi.rst<br>
-&gt;<br>
-&gt; diff --git a/docs/orangepi.rst b/docs/orangepi.rst<br>
-&gt; new file mode 100644<br>
-&gt; index 0000000000..a9b46f553c<br>
-&gt; --- /dev/null<br>
-&gt; +++ b/docs/orangepi.rst<br>
-&gt; @@ -0,0 +1,226 @@<br>
-&gt; +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D<br>
-&gt; +Orange Pi PC Machine Type<br>
-&gt; +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D<br>
-&gt; +<br>
-&gt; +The Xunlong Orange Pi PC is an Allwinner H3 System on Chip<br>
-&gt; +based embedded computer with mainline support in both U-Boot<br>
-&gt; +and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,<br>
-&gt; +1GiB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and<br>
-&gt; +various other I/O.<br>
-<br>
-When Peter&#39;s document PR goes in later this week there will also be a:<=
-br>
-<br>
-=C2=A0 docs/system/target-arm.rst<br>
-<br>
-which would benefit from a section for the Orange Pi in it.<br></blockquote=
-><div><br></div><div>Nice, I&#39;ll have a look at it when it gets merged a=
-nd add a section for Orange Pi.</div><div>I&#39;ll try to include that in t=
-he next version of this series.<br></div><div>=C2=A0</div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">
-<br>
-&gt; +<br>
-&gt; +Supported devices<br>
-&gt; +-----------------<br>
-&gt; +<br>
-&gt; +The Orange Pi PC machine supports the following devices:<br>
-&gt; +<br>
-&gt; + * SMP (Quad Core Cortex A7)<br>
-&gt; + * Generic Interrupt Controller configuration<br>
-&gt; + * SRAM mappings<br>
-&gt; + * SDRAM controller<br>
-&gt; + * Real Time Clock<br>
-&gt; + * Timer device (re-used from Allwinner A10)<br>
-&gt; + * UART<br>
-&gt; + * SD/MMC storage controller<br>
-&gt; + * EMAC ethernet<br>
-<br>
-Do we ever exercise the ethernet in the acceptance tests? I see we have<br>
-some that boots a full OS but boot console only seems to touch the<br>
-serial console.<br></blockquote><div><br></div><div>Good point. Currently i=
-n the acceptance tests U-Boot and Linux detect</div><div>the ethernet devic=
-e, but there are no explicit checks for that in the acceptance tests</div><=
-div>nor any actual packet transmission. <br></div><div><br></div><div>I&#39=
-;ll try to extend the current tests in the next version of this series to i=
-nclude some</div><div>basic checks for the ethernet device, perhaps with DH=
-CP or a ping.</div><div>I&#39;m open to suggestions for the preferred way t=
-o do this.<br></div><div><br></div><div>Regards,</div><div>Niek<br></div><d=
-iv><br></div><div><br></div><br><div><br></div><div>=C2=A0</div><blockquote=
- class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px so=
-lid rgb(204,204,204);padding-left:1ex">
-<br>
-&lt;snip&gt;<br>
-<br>
--- <br>
-Alex Benn=C3=A9e<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
-
---000000000000cf72ba05a00da3b1--
+Curious... what is DVM and how is it related to SVA? Is it SMMU specific?

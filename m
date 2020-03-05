@@ -1,284 +1,210 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp3300203lfi;
-        Thu, 5 Mar 2020 11:41:11 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vtr78o50F5RLhbSrr1u0gxrIT1OqCrPuFDq0b0Gv8c6r7LALkyXQ9wQZ3rR2Cffjazs/L9D
-X-Received: by 2002:aca:7552:: with SMTP id q79mr15703oic.109.1583437271646;
-        Thu, 05 Mar 2020 11:41:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583437271; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp3301291lfi;
+        Thu, 5 Mar 2020 11:42:34 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vusiScQYUm/IQ8JwCkZeuHZzFg2S8k2kpAFz7Ur1/nL8u9UFEACIYyVmfQNKmL0gu5kYpnp
+X-Received: by 2002:a05:620a:b93:: with SMTP id k19mr8930299qkh.48.1583437354330;
+        Thu, 05 Mar 2020 11:42:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583437354; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nwuv63q+nBbixJ7prB6b5VOb/oZer/5cR7XAUY3J1AugAbZ1IWB/yvhbGl8JswP/yT
-         UOyzIrrl0sY8jxovMGEF9qVtHeFPs3YpptS+MF78cCA/vAl/CjmF7Z4FNHys1/0I+2Bp
-         GJ8oVRb+Zjk9fN1gufeK4QGZ5NXeSQ7AMot1SIS8C8wTVNc0NkWLQMVb7olPt0IM3fg8
-         UoRHgq329DLHCEVggxGIogHdfJpJFK8IKgYzsE4m6c+NtQqcNdgJee6WVvwnUcUEPocR
-         UyP9I6n9qAiGqlYgLsMZ74wVY4D0r4Go5U57IPY4GfuEPKeuQk/OGXHkBcRdJUbyW4oH
-         1s6Q==
+        b=w3V4T6QiXmddC53gYbMLGsvOloYGdpnVk5aNe9zWdf6c5ukA59TJMLXuLWo3G/Uu/8
+         JdAbWApmfNqnjp/IA7rKsJU9us4TtDQ90Rx0xlGKCceQpfw5L9dklMT0+9iit1Fv0obT
+         nj+jBy/rLLl5vwegZkdwppX9IErH4QCeDpqs4ug1rkBH08HlI8GSgomFJ2PsjRe2pXa5
+         GrJZ15AZOd3yj0JwrmnuJsLvk2MMVA8lGCfKOM7k5CrT6DrYPhVmQS9Q5hgkgIfGmWMR
+         Y33GwvMBNjJIQUyBgrQh/hdIGvaG5h5y8hgH2Se7bwL06LnsJUbzskyn7GmVUvSDlrOH
+         xxLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:dkim-signature;
-        bh=XTwc7utWzKzyAhBWCE6+Bn/zt36VL3m2kIIGjJFea4w=;
-        b=xEybVix5/ganBfOzyIzxCP4blMX3+dwNassfizV1St8+/1+WjxYbgaf58d4i4vWpHb
-         mhVKLJRscfhahuf/0MBWKWrRwwZyIZHLiSE5K5A2qE77IWzNDUypel11cjoPGWkCG60E
-         aiKqkj1kH5PxQvlvVf0bs8fq4ZmqYgz/HAaGshR9c4v4jit1e//lEQE6L11wjww2oCij
-         ztkc8ZYwPGALbGg6/ClIovZGVkWV9pA5lN2KIpHApjIdUGGAHUfpkPT3dYWQNM7EWkyw
-         B5enhIGxwBP3E+oa3Z9ARiVNiQZITCEfdaZeBg5MGV4LPKbzn1lclLBmIFH3X6Y8R/AT
-         OWRg==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=F6JcsYzZRhHNkEXdy+BJ/OR76qqxUSjcLAPJ7wq8uDk=;
+        b=NZ89/5RscFfuNV1P9231RhjHghuxh9fF4B66oIQPzgg3HNGNQgyOpQgJEPu1D+H0PA
+         rcOWKu8e2JlYKClU/iePQ3W2404dZ/l8zWk7wKda3sQQKosiPt3uShMRnM9tpZpTZU5x
+         J91urQ0CiY4d9oSjC1evL6irrKs2MlMzn0i+dc48gPFDCmulex4rZcPDGHqJk0pkeOBN
+         xoOEuxVN7iw805eyOzrJztRiVGnGsb6ziesDbEA24tFyqceqwXgmfXSBaC1NpVPr4bQg
+         R8IIDFRsjZ3ZuzHNhxf7TkYt7weIkfolrxEiVcqYD3rz+0gMY3V9oShjwwIkCN5eCeDP
+         C6Lg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="NJJv/g16";
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id x72si3592956oia.194.2020.03.05.11.41.11;
-        Thu, 05 Mar 2020 11:41:11 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=FCZRFwfA;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id o11si1833914qvw.95.2020.03.05.11.42.34;
+        Thu, 05 Mar 2020 11:42:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="NJJv/g16";
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1725977AbgCETlH (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 5 Mar 2020 14:41:07 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:38570 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1725944AbgCETlH (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Thu, 5 Mar 2020 14:41:07 -0500
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=FCZRFwfA;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 04A624AEBB;
+	Thu,  5 Mar 2020 14:42:34 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id QcmgAZWcg2gb; Thu,  5 Mar 2020 14:42:32 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id CCB1B4AEB1;
+	Thu,  5 Mar 2020 14:42:32 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 5C9D14AEB1
+ for <kvmarm@lists.cs.columbia.edu>; Thu,  5 Mar 2020 14:42:31 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id b4x0tFpqkcRM for <kvmarm@lists.cs.columbia.edu>;
+ Thu,  5 Mar 2020 14:42:30 -0500 (EST)
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
+ [207.211.31.81])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 5E5434AEAF
+ for <kvmarm@lists.cs.columbia.edu>; Thu,  5 Mar 2020 14:42:30 -0500 (EST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1583437266;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=XTwc7utWzKzyAhBWCE6+Bn/zt36VL3m2kIIGjJFea4w=;
-        b=NJJv/g16fuj+di17SEHg8b5aJgj95mAf9kbxpSUS69G1YtwZwo9q35SM6L7O1dLYtLVgGA
-        oMkF7XpTh1uUqhPziDukoRnfWESMoiAyaSswLHs7CBLua0AITuzI7MfUqhPJ/1BN8cdD3p
-        QnCnlQY1m5YqGlUuZDtrV3Dwm+Q+Esk=
+ s=mimecast20190719; t=1583437350;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=o2QOFnMMcZZ+uHhgLltxx0kXPKpZY9J5vvEiymhKIFA=;
+ b=FCZRFwfAQIG7MCMIN8Vxo7Hmn6wJZMYNQjR/qLCRhN99HGaUVtoOhICpCEWmQn2XI4nXPu
+ szkLmMQSQus6q3LqT9VIvgVgABGhixBcwrdZPTx8JxUBExN2O6C3sDhzDja8a7UQfc+TXZ
+ FGzxeTZrMrh845gDQ6jeLpRP0cLTq/Y=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-493-p2KwtOX8PpWqemKazDTNyg-1; Thu, 05 Mar 2020 14:41:04 -0500
-X-MC-Unique: p2KwtOX8PpWqemKazDTNyg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 80EA98010F2;
-        Thu,  5 Mar 2020 19:41:01 +0000 (UTC)
+ us-mta-473-bSZWOfNyOa-fM50ncwp2lg-1; Thu, 05 Mar 2020 14:42:28 -0500
+X-MC-Unique: bSZWOfNyOa-fM50ncwp2lg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5D738107ACC4;
+ Thu,  5 Mar 2020 19:42:26 +0000 (UTC)
 Received: from [10.36.116.59] (ovpn-116-59.ams2.redhat.com [10.36.116.59])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 9F9938FBE0;
-        Thu,  5 Mar 2020 19:40:56 +0000 (UTC)
-Subject: Re: [kvm-unit-tests PATCH v3 06/14] arm/arm64: gicv3: Set the LPI
- config and pending tables
-To:     Zenghui Yu <yuzenghui@huawei.com>, eric.auger.pro@gmail.com,
-        maz@kernel.org, kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc:     drjones@redhat.com, andre.przywara@arm.com,
-        peter.maydell@linaro.org, alexandru.elisei@arm.com,
-        thuth@redhat.com
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6ABF460BF1;
+ Thu,  5 Mar 2020 19:42:23 +0000 (UTC)
+Subject: Re: [kvm-unit-tests PATCH v3 09/14] arm/arm64: ITS: Device and
+ collection Initialization
+To: Zenghui Yu <yuzenghui@huawei.com>, eric.auger.pro@gmail.com,
+ maz@kernel.org, kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
 References: <20200128103459.19413-1-eric.auger@redhat.com>
- <20200128103459.19413-7-eric.auger@redhat.com>
- <5e188428-11c9-aad4-3d5e-fca89cc41b7f@huawei.com>
-From:   Auger Eric <eric.auger@redhat.com>
-Message-ID: <11ff332b-6634-7d9a-c12e-921e8dc592e9@redhat.com>
-Date:   Thu, 5 Mar 2020 20:40:55 +0100
+ <20200128103459.19413-10-eric.auger@redhat.com>
+ <42a8964a-af3d-0117-bfac-5db6b7b832dd@huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <aac8e67f-1733-9f8e-f7bf-6870af4605c0@redhat.com>
+Date: Thu, 5 Mar 2020 20:42:21 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <5e188428-11c9-aad4-3d5e-fca89cc41b7f@huawei.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <42a8964a-af3d-0117-bfac-5db6b7b832dd@huawei.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: fskTsuaNVGxo
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Cc: andre.przywara@arm.com, thuth@redhat.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: slkLh9vgjImC
 
-Hi Zenghui,
-
-On 2/7/20 3:12 AM, Zenghui Yu wrote:
-> Hi Eric,
->=20
-> On 2020/1/28 18:34, Eric Auger wrote:
->> Allocate the LPI configuration and per re-distributor pending table.
->> Set redistributor's PROPBASER and PENDBASER. The LPIs are enabled
->> by default in the config table.
->>
->> Also introduce a helper routine that allows to set the pending table
->> bit for a given LPI.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->>
->> v2 -> v3:
->> - Move the helpers in lib/arm/gic-v3.c and prefix them with "gicv3_"
->> =C2=A0=C2=A0 and add _lpi prefix too
->>
->> v1 -> v2:
->> - remove memory attributes
->> ---
->> =C2=A0 lib/arm/asm/gic-v3.h | 16 +++++++++++
->> =C2=A0 lib/arm/gic-v3.c=C2=A0=C2=A0=C2=A0=C2=A0 | 64 +++++++++++++++++=
-+++++++++++++++++++++++++++
->> =C2=A0 2 files changed, 80 insertions(+)
->>
->> diff --git a/lib/arm/asm/gic-v3.h b/lib/arm/asm/gic-v3.h
->> index ffb2e26..ec2a6f0 100644
->> --- a/lib/arm/asm/gic-v3.h
->> +++ b/lib/arm/asm/gic-v3.h
->> @@ -48,6 +48,16 @@
->> =C2=A0 #define MPIDR_TO_SGI_AFFINITY(cluster_id, level) \
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (MPIDR_AFFINITY_LEVEL(cluster_id, level=
-) <<
->> ICC_SGI1R_AFFINITY_## level ## _SHIFT)
->> =C2=A0 +#define GICR_PROPBASER_IDBITS_MASK=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 (0x1f)
->=20
-> This is not being used.=C2=A0 You can use it when calculating prop_val
-> or just drop it.
-yep dropped it.
->=20
->> +
->> +#define GICR_PENDBASER_PTZ=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 BIT_ULL(62)
->> +
->> +#define LPI_PROP_GROUP1=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 =
-<< 1)
->> +#define LPI_PROP_ENABLED=C2=A0=C2=A0=C2=A0 (1 << 0)
->> +#define LPI_PROP_DEFAULT_PRIO=C2=A0=C2=A0 0xa0
->> +#define LPI_PROP_DEFAULT=C2=A0=C2=A0=C2=A0 (LPI_PROP_DEFAULT_PRIO | L=
-PI_PROP_GROUP1 | \
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 LPI_PROP_ENABLED)
->> +
->> =C2=A0 #include <asm/arch_gicv3.h>
->> =C2=A0 =C2=A0 #ifndef __ASSEMBLY__
->> @@ -64,6 +74,8 @@ struct gicv3_data {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 void *dist_base;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 void *redist_bases[GICV3_NR_REDISTS];
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 void *redist_base[NR_CPUS];
->> +=C2=A0=C2=A0=C2=A0 void *lpi_prop;
->> +=C2=A0=C2=A0=C2=A0 void *lpi_pend[NR_CPUS];
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 unsigned int irq_nr;
->> =C2=A0 };
->> =C2=A0 extern struct gicv3_data gicv3_data;
->> @@ -80,6 +92,10 @@ extern void gicv3_write_eoir(u32 irqstat);
->> =C2=A0 extern void gicv3_ipi_send_single(int irq, int cpu);
->> =C2=A0 extern void gicv3_ipi_send_mask(int irq, const cpumask_t *dest)=
-;
->> =C2=A0 extern void gicv3_set_redist_base(size_t stride);
->> +extern void gicv3_lpi_set_config(int n, u8 val);
->> +extern u8 gicv3_lpi_get_config(int n);
->> +extern void gicv3_lpi_set_pending_table_bit(int rdist, int n, bool se=
-t);
->> +extern void gicv3_lpi_alloc_tables(void);
->> =C2=A0 =C2=A0 static inline void gicv3_do_wait_for_rwp(void *base)
->> =C2=A0 {
->> diff --git a/lib/arm/gic-v3.c b/lib/arm/gic-v3.c
->> index feecb5e..c33f883 100644
->> --- a/lib/arm/gic-v3.c
->> +++ b/lib/arm/gic-v3.c
->> @@ -5,6 +5,7 @@
->> =C2=A0=C2=A0 */
->> =C2=A0 #include <asm/gic.h>
->> =C2=A0 #include <asm/io.h>
->> +#include <alloc_page.h>
->> =C2=A0 =C2=A0 void gicv3_set_redist_base(size_t stride)
->> =C2=A0 {
->> @@ -147,3 +148,66 @@ void gicv3_ipi_send_single(int irq, int cpu)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 cpumask_set_cpu(cpu, &dest);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 gicv3_ipi_send_mask(irq, &dest);
->> =C2=A0 }
->> +
->> +#if defined(__aarch64__)
->> +/* alloc_lpi_tables: Allocate LPI config and pending tables */
->> +void gicv3_lpi_alloc_tables(void)
->> +{
->> +=C2=A0=C2=A0=C2=A0 unsigned long n =3D SZ_64K >> PAGE_SHIFT;
->> +=C2=A0=C2=A0=C2=A0 unsigned long order =3D fls(n);
->> +=C2=A0=C2=A0=C2=A0 u64 prop_val;
->> +=C2=A0=C2=A0=C2=A0 int cpu;
->> +
->> +=C2=A0=C2=A0=C2=A0 gicv3_data.lpi_prop =3D (void *)virt_to_phys(alloc=
-_pages(order));
->> +
->> +=C2=A0=C2=A0=C2=A0 /* ID bits =3D 13, ie. up to 14b LPI INTID */
->> +=C2=A0=C2=A0=C2=A0 prop_val =3D (u64)gicv3_data.lpi_prop | 13;
->> +
->> +=C2=A0=C2=A0=C2=A0 /*
->> +=C2=A0=C2=A0=C2=A0=C2=A0 * Allocate pending tables for each redistrib=
-utor
->> +=C2=A0=C2=A0=C2=A0=C2=A0 * and set PROPBASER and PENDBASER
->> +=C2=A0=C2=A0=C2=A0=C2=A0 */
->> +=C2=A0=C2=A0=C2=A0 for_each_present_cpu(cpu) {
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 u64 pend_val;
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 void *ptr;
->> +
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ptr =3D gicv3_data.redist_=
-base[cpu];
->> +
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 writeq(prop_val, ptr + GIC=
-R_PROPBASER);
->> +
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 gicv3_data.lpi_pend[cpu] =3D=
- (void
->> *)virt_to_phys(alloc_pages(order));
->> +
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pend_val =3D (u64)gicv3_da=
-ta.lpi_pend[cpu];
->> +
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 writeq(pend_val, ptr + GIC=
-R_PENDBASER);
->> +=C2=A0=C2=A0=C2=A0 }
->> +}
->> +
->> +void gicv3_lpi_set_config(int n, u8 value)
->> +{
->> +=C2=A0=C2=A0=C2=A0 u8 *entry =3D (u8 *)(gicv3_data.lpi_prop + (n - 81=
-92));
->=20
-> But this is actually the *physical* address, shouldn't it be
-> converted by phys_to_virt() before reading/writing something?
-> Like what you've done for the 'lpi_pend[rdist]' before writing
-> pending bit.=C2=A0 Or I'm missing some points here?
-Agreed! Thanks
-
-Eric
->=20
->> +
->> +=C2=A0=C2=A0=C2=A0 *entry =3D value;
->> +}
->> +
->> +u8 gicv3_lpi_get_config(int n)
->> +{
->> +=C2=A0=C2=A0=C2=A0 u8 *entry =3D (u8 *)(gicv3_data.lpi_prop + (n - 81=
-92));
->=20
-> The same as above.
->=20
->=20
-> Thanks,
-> Zenghui
->=20
->> +
->> +=C2=A0=C2=A0=C2=A0 return *entry;
->> +}
->> +
->> +void gicv3_lpi_set_pending_table_bit(int rdist, int n, bool set)
->> +{
->> +=C2=A0=C2=A0=C2=A0 u8 *ptr =3D phys_to_virt((phys_addr_t)gicv3_data.l=
-pi_pend[rdist]);
->> +=C2=A0=C2=A0=C2=A0 u8 mask =3D 1 << (n % 8), byte;
->> +
->> +=C2=A0=C2=A0=C2=A0 ptr +=3D (n / 8);
->> +=C2=A0=C2=A0=C2=A0 byte =3D *ptr;
->> +=C2=A0=C2=A0=C2=A0 if (set)
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 byte |=3D=C2=A0 mask;
->> +=C2=A0=C2=A0=C2=A0 else
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 byte &=3D ~mask;
->> +=C2=A0=C2=A0=C2=A0 *ptr =3D byte;
->> +}
->> +#endif /* __aarch64__ */
->>
->=20
+SGkgWmVuZ2h1aSwKCk9uIDIvNy8yMCA2OjQxIEFNLCBaZW5naHVpIFl1IHdyb3RlOgo+IEhpIEVy
+aWMsCj4gCj4gT24gMjAyMC8xLzI4IDE4OjM0LCBFcmljIEF1Z2VyIHdyb3RlOgo+PiBJbnRyb2R1
+Y2UgYW4gaGVscGVyIGZ1bmN0aW9ucyB0byByZWdpc3Rlcgo+PiAtIGEgbmV3IGRldmljZSwgY2hh
+cmFjdGVyaXplZCBieSBpdHMgZGV2aWNlIGlkIGFuZCB0aGUKPj4gwqDCoCBtYXggbnVtYmVyIG9m
+IGV2ZW50IElEcyB0aGF0IGRpbWVuc2lvbiBpdHMgSVRUIChJbnRlcnJ1cHQKPj4gwqDCoCBUcmFu
+c2xhdGlvbiBUYWJsZSkuwqAgVGhlIGZ1bmN0aW9uIGFsbG9jYXRlcyB0aGUgSVRULgo+Pgo+PiAt
+IGEgbmV3IGNvbGxlY3Rpb24sIGNoYXJhY3Rlcml6ZWQgYnkgaXRzIElEIGFuZCB0aGUKPj4gwqDC
+oCB0YXJnZXQgcHJvY2Vzc2luZyBlbmdpbmUgKFBFKS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogRXJp
+YyBBdWdlciA8ZXJpYy5hdWdlckByZWRoYXQuY29tPgo+Pgo+PiAtLS0KPj4KPj4gdjIgLT4gdjM6
+Cj4+IC0gcy9yZXBvcnRfYWJvcnQvYXNzZXJ0Cj4+Cj4+IHYxIC0+IHYyOgo+PiAtIHMvbmJfL25y
+Xwo+PiAtLS0KPj4gwqAgbGliL2FybS9hc20vZ2ljLXYzLWl0cy5oIHwgMjAgKysrKysrKysrKysr
+KysrKystCj4+IMKgIGxpYi9hcm0vZ2ljLXYzLWl0cy5jwqDCoMKgwqAgfCA0NCArKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4+IMKgIDIgZmlsZXMgY2hhbmdlZCwgNjMg
+aW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvbGliL2FybS9h
+c20vZ2ljLXYzLWl0cy5oIGIvbGliL2FybS9hc20vZ2ljLXYzLWl0cy5oCj4+IGluZGV4IGZlNzNj
+MDQuLmFjZDk3YTkgMTAwNjQ0Cj4+IC0tLSBhL2xpYi9hcm0vYXNtL2dpYy12My1pdHMuaAo+PiAr
+KysgYi9saWIvYXJtL2FzbS9naWMtdjMtaXRzLmgKPj4gQEAgLTMxLDYgKzMxLDE5IEBAIHN0cnVj
+dCBpdHNfYmFzZXIgewo+PiDCoCB9Owo+PiDCoCDCoCAjZGVmaW5lIEdJVFNfQkFTRVJfTlJfUkVH
+U8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDgKPj4gKyNkZWZpbmUgR0lUU19NQVhfREVWSUNF
+U8KgwqDCoMKgwqDCoMKgIDgKPj4gKyNkZWZpbmUgR0lUU19NQVhfQ09MTEVDVElPTlPCoMKgwqDC
+oMKgwqDCoCA4Cj4+ICsKPj4gK3N0cnVjdCBpdHNfZGV2aWNlIHsKPj4gK8KgwqDCoCB1MzIgZGV2
+aWNlX2lkO8KgwqDCoCAvKiBkZXZpY2UgSUQgKi8KPj4gK8KgwqDCoCB1MzIgbnJfaXRlczvCoMKg
+wqAgLyogTWF4IEludGVycnVwdCBUcmFuc2xhdGlvbiBFbnRyaWVzICovCj4+ICvCoMKgwqAgdm9p
+ZCAqaXR0O8KgwqDCoCAvKiBJbnRlcnJ1cHQgVHJhbnNsYXRpb24gVGFibGUgR1BBICovCj4+ICt9
+Owo+PiArCj4+ICtzdHJ1Y3QgaXRzX2NvbGxlY3Rpb24gewo+PiArwqDCoMKgIHU2NCB0YXJnZXRf
+YWRkcmVzczsKPj4gK8KgwqDCoCB1MTYgY29sX2lkOwo+PiArfTsKPj4gwqAgwqAgc3RydWN0IGl0
+c19kYXRhIHsKPj4gwqDCoMKgwqDCoCB2b2lkICpiYXNlOwo+PiBAQCAtMzgsNiArNTEsMTAgQEAg
+c3RydWN0IGl0c19kYXRhIHsKPj4gwqDCoMKgwqDCoCBzdHJ1Y3QgaXRzX2Jhc2VyIGJhc2VyW0dJ
+VFNfQkFTRVJfTlJfUkVHU107Cj4+IMKgwqDCoMKgwqAgc3RydWN0IGl0c19jbWRfYmxvY2sgKmNt
+ZF9iYXNlOwo+PiDCoMKgwqDCoMKgIHN0cnVjdCBpdHNfY21kX2Jsb2NrICpjbWRfd3JpdGU7Cj4+
+ICvCoMKgwqAgc3RydWN0IGl0c19kZXZpY2UgZGV2aWNlc1tHSVRTX01BWF9ERVZJQ0VTXTsKPj4g
+K8KgwqDCoCB1MzIgbnJfZGV2aWNlczvCoMKgwqDCoMKgwqDCoCAvKiBBbGxvY2F0ZWQgRGV2aWNl
+cyAqLwo+PiArwqDCoMKgIHN0cnVjdCBpdHNfY29sbGVjdGlvbiBjb2xsZWN0aW9uc1tHSVRTX01B
+WF9DT0xMRUNUSU9OU107Cj4+ICvCoMKgwqAgdTMyIG5yX2NvbGxlY3Rpb25zO8KgwqDCoCAvKiBB
+bGxvY2F0ZWQgQ29sbGVjdGlvbnMgKi8KPj4gwqAgfTsKPj4gwqAgwqAgZXh0ZXJuIHN0cnVjdCBp
+dHNfZGF0YSBpdHNfZGF0YTsKPj4gQEAgLTkwLDcgKzEwNyw2IEBAIGV4dGVybiBzdHJ1Y3QgaXRz
+X2RhdGEgaXRzX2RhdGE7Cj4+IMKgICNkZWZpbmUgR0lUU19CQVNFUl9UWVBFX0RFVklDRcKgwqDC
+oMKgwqDCoMKgIDEKPj4gwqAgI2RlZmluZSBHSVRTX0JBU0VSX1RZUEVfQ09MTEVDVElPTsKgwqDC
+oCA0Cj4+IMKgIC0KPj4gwqAgc3RydWN0IGl0c19jbWRfYmxvY2sgewo+PiDCoMKgwqDCoMKgIHU2
+NCByYXdfY21kWzRdOwo+PiDCoCB9Owo+PiBAQCAtMTAwLDYgKzExNiw4IEBAIGV4dGVybiB2b2lk
+IGl0c19pbml0KHZvaWQpOwo+PiDCoCBleHRlcm4gaW50IGl0c19wYXJzZV9iYXNlcihpbnQgaSwg
+c3RydWN0IGl0c19iYXNlciAqYmFzZXIpOwo+PiDCoCBleHRlcm4gc3RydWN0IGl0c19iYXNlciAq
+aXRzX2xvb2t1cF9iYXNlcihpbnQgdHlwZSk7Cj4+IMKgIGV4dGVybiB2b2lkIGl0c19lbmFibGVf
+ZGVmYXVsdHModm9pZCk7Cj4+ICtleHRlcm4gc3RydWN0IGl0c19kZXZpY2UgKml0c19jcmVhdGVf
+ZGV2aWNlKHUzMiBkZXZfaWQsIGludCBucl9pdGVzKTsKPj4gK2V4dGVybiBzdHJ1Y3QgaXRzX2Nv
+bGxlY3Rpb24gKml0c19jcmVhdGVfY29sbGVjdGlvbih1MzIgY29sX2lkLCB1MzIKPj4gdGFyZ2V0
+X3BlKTsKPj4gwqAgwqAgI2Vsc2UgLyogX19hcm1fXyAqLwo+PiDCoCBkaWZmIC0tZ2l0IGEvbGli
+L2FybS9naWMtdjMtaXRzLmMgYi9saWIvYXJtL2dpYy12My1pdHMuYwo+PiBpbmRleCBkMWU3ZTUy
+Li5jMmRjZDAxIDEwMDY0NAo+PiAtLS0gYS9saWIvYXJtL2dpYy12My1pdHMuYwo+PiArKysgYi9s
+aWIvYXJtL2dpYy12My1pdHMuYwo+PiBAQCAtMTc1LDMgKzE3NSw0NyBAQCB2b2lkIGl0c19lbmFi
+bGVfZGVmYXVsdHModm9pZCkKPj4gwqAgwqDCoMKgwqDCoCB3cml0ZWwoR0lUU19DVExSX0VOQUJM
+RSwgaXRzX2RhdGEuYmFzZSArIEdJVFNfQ1RMUik7Cj4+IMKgIH0KPj4gKwo+PiArc3RydWN0IGl0
+c19kZXZpY2UgKml0c19jcmVhdGVfZGV2aWNlKHUzMiBkZXZpY2VfaWQsIGludCBucl9pdGVzKQo+
+PiArewo+PiArwqDCoMKgIHN0cnVjdCBpdHNfYmFzZXIgKmJhc2VyOwo+PiArwqDCoMKgIHN0cnVj
+dCBpdHNfZGV2aWNlICpuZXc7Cj4+ICvCoMKgwqAgdW5zaWduZWQgbG9uZyBuLCBvcmRlcjsKPj4g
+Kwo+PiArwqDCoMKgIGFzc2VydChpdHNfZGF0YS5ucl9kZXZpY2VzIDwgR0lUU19NQVhfREVWSUNF
+Uyk7Cj4+ICsKPiAKPiAKPj4gK8KgwqDCoCBiYXNlciA9IGl0c19sb29rdXBfYmFzZXIoR0lUU19C
+QVNFUl9UWVBFX0RFVklDRSk7Cj4+ICvCoMKgwqAgaWYgKCFiYXNlcikKPj4gK8KgwqDCoMKgwqDC
+oMKgIHJldHVybiBOVUxMOwo+IAo+IEkgdGhpbmsgdGhlcmUncyBubyBuZWVkIHRvIGxvb2t1cCB0
+aGUgZGV2aWNlIGJhc2VyIGhlcmUuIEFzIHRoZQo+IGRldmljZSBiYXNlciBzaG91bGQgaGF2ZSBh
+bHJlYWR5IGJlZW4gc2V0dXAgYXQgaW5pdGlhbGl6YXRpb24KPiB0aW1lIChpLmUuIGluIGl0c19l
+bmFibGVfZGVmYXVsdHMpLiBBbmQgYW55d2F5LCAnYmFzZXInIGlzIG5vdAo+IGJlaW5nIHVzZWQg
+aW4gdGhpcyBmdW5jdGlvbi4KSSBmdWxseSBhZ3JlZS4gSSBSZW1vdmVkIHRoYXQuCgpUaGFua3Mh
+CgpFcmljCj4gCj4gCj4gVGhhbmtzLAo+IFplbmdodWkKPiAKPj4gKwo+PiArwqDCoMKgIG5ldyA9
+ICZpdHNfZGF0YS5kZXZpY2VzW2l0c19kYXRhLm5yX2RldmljZXNdOwo+PiArCj4+ICvCoMKgwqAg
+bmV3LT5kZXZpY2VfaWQgPSBkZXZpY2VfaWQ7Cj4+ICvCoMKgwqAgbmV3LT5ucl9pdGVzID0gbnJf
+aXRlczsKPj4gKwo+PiArwqDCoMKgIG4gPSAoaXRzX2RhdGEudHlwZXIuaXRlX3NpemUgKiBucl9p
+dGVzKSA+PiBQQUdFX1NISUZUOwo+PiArwqDCoMKgIG9yZGVyID0gaXNfcG93ZXJfb2ZfMihuKSA/
+IGZscyhuKSA6IGZscyhuKSArIDE7Cj4+ICvCoMKgwqAgbmV3LT5pdHQgPSAodm9pZCAqKXZpcnRf
+dG9fcGh5cyhhbGxvY19wYWdlcyhvcmRlcikpOwo+PiArCj4+ICvCoMKgwqAgaXRzX2RhdGEubnJf
+ZGV2aWNlcysrOwo+PiArwqDCoMKgIHJldHVybiBuZXc7Cj4+ICt9Cj4+ICsKPj4gK3N0cnVjdCBp
+dHNfY29sbGVjdGlvbiAqaXRzX2NyZWF0ZV9jb2xsZWN0aW9uKHUzMiBjb2xfaWQsIHUzMiBwZSkK
+Pj4gK3sKPj4gK8KgwqDCoCBzdHJ1Y3QgaXRzX2NvbGxlY3Rpb24gKm5ldzsKPj4gKwo+PiArwqDC
+oMKgIGFzc2VydChpdHNfZGF0YS5ucl9jb2xsZWN0aW9ucyA8IEdJVFNfTUFYX0NPTExFQ1RJT05T
+KTsKPj4gKwo+PiArwqDCoMKgIG5ldyA9ICZpdHNfZGF0YS5jb2xsZWN0aW9uc1tpdHNfZGF0YS5u
+cl9jb2xsZWN0aW9uc107Cj4+ICsKPj4gK8KgwqDCoCBuZXctPmNvbF9pZCA9IGNvbF9pZDsKPj4g
+Kwo+PiArwqDCoMKgIGlmIChpdHNfZGF0YS50eXBlci5wdGEpCj4+ICvCoMKgwqDCoMKgwqDCoCBu
+ZXctPnRhcmdldF9hZGRyZXNzID0gKHU2NClnaWN2M19kYXRhLnJlZGlzdF9iYXNlW3BlXTsKPj4g
+K8KgwqDCoCBlbHNlCj4+ICvCoMKgwqDCoMKgwqDCoCBuZXctPnRhcmdldF9hZGRyZXNzID0gcGUg
+PDwgMTY7Cj4+ICsKPj4gK8KgwqDCoCBpdHNfZGF0YS5ucl9jb2xsZWN0aW9ucysrOwo+PiArwqDC
+oMKgIHJldHVybiBuZXc7Cj4+ICt9Cj4+Cj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwprdm1hcm0gbWFpbGluZyBsaXN0Cmt2bWFybUBsaXN0cy5jcy5j
+b2x1bWJpYS5lZHUKaHR0cHM6Ly9saXN0cy5jcy5jb2x1bWJpYS5lZHUvbWFpbG1hbi9saXN0aW5m
+by9rdm1hcm0K

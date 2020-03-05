@@ -1,97 +1,83 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2581828lfi;
-        Wed, 4 Mar 2020 23:34:42 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vtMvg9VB74efwYVeDvG25Ro6a2nV/SH88IvkxoF+MIdauMSHCw/vhiTyywYAJ851NGmAFXi
-X-Received: by 2002:aed:2ee5:: with SMTP id k92mr5928624qtd.373.1583393682528;
-        Wed, 04 Mar 2020 23:34:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583393682; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2589341lfi;
+        Wed, 4 Mar 2020 23:43:06 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vsBB+LjcyPKCpslfWhv9W1wwOmkSksY6kWuK8ptvnh+1nHBajfiEhH+ceetS/MdbH6hp5fq
+X-Received: by 2002:a37:6395:: with SMTP id x143mr6726014qkb.209.1583394186461;
+        Wed, 04 Mar 2020 23:43:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583394186; cv=none;
         d=google.com; s=arc-20160816;
-        b=bdmwOdMhTpVim/7Al+3SiugY/sizKsjiW1vMLCgjUs4DWSiqiidm/8GYvbb+MlpXYS
-         M2foNJN6Co3CYBZEWpFuARIiV8ZaBTHqSo9Jp3KonB9pejGwHVq8mbq2anCoH+vpWCQB
-         53kNS6uT96oLdm535IKMlhmX3VOipJVK7H00DGyigDbAwaRnOUrFKO/jEVMzsRd8W8HQ
-         VoHgQs2sF1ojvPiolOIoArm1RyuaIkmQoCLVKhknsExcHUMvzv/pmCbeC67+xzqXyxw8
-         c3eeV8UdF2izgaj7roXnwOmQwbkMjVZUwWl3Zno/p4f3XNAcy6+C5cWh40altRHuUCVn
-         W8Bw==
+        b=HENpFeRJFg+MdAo5nlS8G4Sjww0gOU6Yy1LutmeVC/XONIyoqRXtntCHFfDw/HmqAE
+         ZECc2IpOsLCke3CMrb0HOgiYP0UbOKapUUzeb0cHuU6ivXzw2pM2XEXaELne+MQRhNNp
+         uNRpPvTMobvbR3hxZlE2ry+NCevxZASoh0d7fWMKCodUGJBiAKYIG+Msb6zcsVe0mxqT
+         drrcHKfwNbbEU05+b7WoA8ZgRJkKK0H0MS1Vjl25hQKI3j78M8SxIS6KEjF+6fGqTABh
+         is6YQK8V+srbBCVQD5JdBjuG6pgubKrH9/fqKvW9Z7gaowQGMq5uAY7UF6Zb8ItfQckq
+         kmZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=+pDy9FnIci/486fRFg3zNv+7rl2N5+6KSvJjal3zpd0=;
-        b=GIjPs+wLmWQgUS7TVHVDtFFNyEPskDHN+rbh1KrMe67MV3/fQlsrM1xovXaVFl7Hwv
-         gLHobxUjqkQdIa0s28QTu4eZ4mZH+5m5KDHMdXKwRUdKqZxyxKyn9E9VlI5WpSpdnHZM
-         gammWeZvPT/g8Pg7PL7MkFIaL4Nif8n4XnQEnFQNJ3D3LMgIhuzJj8cWlk62KOAn7MT8
-         ziCmRu7H3NqW6uXKXaT7E0Ogosdsi78td9DBHZmYXF7Ht/Hx17SrSM+yWFdSfd1j6sIo
-         Z0wdm04k+1eq0lbHM9laVcivUb9MfnOPMJ8sW9rHMbq6T6hhA+pqBMfj/C1BNO4EDbED
-         WOdg==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:dlp-reaction:dlp-version:dlp-product
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:subject:to:from;
+        bh=Uav9GG2aY67WuBXydYjBQDp10W75bQsXM6w6wNSp88k=;
+        b=alLjcIzZNdv++M/Id5Tf8fqhVUIuXF8utKOcwZBu5FLeNQ1yEA2bjJvJE5ZCoQFInu
+         pv8JW8f8uRrWBCpqs0AWJ6KrpyplPLS2KkZFqS0yeoMY8h8fvnq/NTnlKrt4sJfENCSm
+         aP2W186p2nM3drqGmvst1OcuzSF6qNiu4zKMVFnt6XCSP2dCaTred20NcNLFBj/ecJaU
+         paS3sYYEyWhk9uFn2CbQXybzXsnu0rff2R/PTPY6xYSS+r5fgqS60KJWJVXSc/4PB6eV
+         jWHw0AGduZT6axieuKgef8mHwuUpRNawtViWjQD4cYnOOzz2SsibCgJs1GsEGHvZhYtg
+         2Xzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LF33uuEc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w13si2581146qtt.376.2020.03.04.23.34.42
+        by mx.google.com with ESMTPS id g55si929371qtb.278.2020.03.04.23.43.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Mar 2020 23:34:42 -0800 (PST)
+        Wed, 04 Mar 2020 23:43:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LF33uuEc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44382 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1]:44482 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9l1k-0000vM-W9
-	for alex.bennee@linaro.org; Thu, 05 Mar 2020 02:34:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39389)
+	id 1j9l9t-0004jD-VA
+	for alex.bennee@linaro.org; Thu, 05 Mar 2020 02:43:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40400)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jean-philippe@linaro.org>) id 1j9l1Z-0000u8-2F
- for qemu-arm@nongnu.org; Thu, 05 Mar 2020 02:34:30 -0500
+ (envelope-from <kevin.tian@intel.com>) id 1j9l9l-0004ip-SR
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2020 02:42:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jean-philippe@linaro.org>) id 1j9l1Y-0000Uz-2v
- for qemu-arm@nongnu.org; Thu, 05 Mar 2020 02:34:29 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:39698)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <jean-philippe@linaro.org>)
- id 1j9l1X-0000Su-TS
- for qemu-arm@nongnu.org; Thu, 05 Mar 2020 02:34:28 -0500
-Received: by mail-wm1-x341.google.com with SMTP id j1so4527592wmi.4
- for <qemu-arm@nongnu.org>; Wed, 04 Mar 2020 23:34:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=+pDy9FnIci/486fRFg3zNv+7rl2N5+6KSvJjal3zpd0=;
- b=LF33uuEcHbXStInwCscULzeg/nQ8rvs8HWq6u4U7eNxy27xg/qXa5NNUiVNATRypW0
- TScVGqIUzghxr8unsZuhhmk+5+ErBmEJus362zVc04HKvSSHYoKTvyV3G03sV5R3Ajhf
- QcD8u9L8WYsIbrqFTkBTkxF4xAHafVXpWjqAtuZO6XB4WDkLRNnIMkR0L60sCbuC9JTs
- haMoGdUJ4dlpoC/L9n5442HCix0y4MLGncD5MkR4AqvVXOoIL7fJEjm7QCDRzX6MRBPK
- 598NZFtjNz8drgSV8INTQ284tgatEWfeaz9uQP0Qg+jkxgrYr80EE1EbDouxfr3J8qlK
- KFTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=+pDy9FnIci/486fRFg3zNv+7rl2N5+6KSvJjal3zpd0=;
- b=uAujzyzvSmQqdjhStQy8LLFUS5E5G/pUPrfau8gCidkh+06R8eDi9WlrzyOqL6nlLz
- Qgbdlq9b446QKm/0L6GNlQFlPrr3HiaOn2GqMAu05vjyH9zJO5A09XjYPzOR0uzTogAK
- oRoKunmqhxD1DxHOP+LcR8vRz+1TnN9twCER5WwAg6/+f088u4jZV7aRvD2+wK6waQLS
- uK2L/Jz/3DcYbR8s2vhcHFuGHN7TkIhyYRlapwGAOXZb0yLeedMaJ+zg3NQ7pJ+KvpfL
- eVyEYanV1YB4MP+M+xLUf8d3aBYCKXVRfNNZNYiZU8LTBZNZ4h4utIsSdSvqfHxqdZVR
- 6rXA==
-X-Gm-Message-State: ANhLgQ2Qg4DcDwaatVU7+Ur9fOZVrxV0lY9+l6lJyexiXzdDBGgH6AdB
- VpxkJFajt7xkExj0lbRN4+ktww==
-X-Received: by 2002:a05:600c:217:: with SMTP id
- 23mr8161293wmi.32.1583393665441; 
- Wed, 04 Mar 2020 23:34:25 -0800 (PST)
-Received: from myrica ([2001:171b:c9a8:fbc0:116c:c27a:3e7f:5eaf])
- by smtp.gmail.com with ESMTPSA id c9sm9720274wmc.3.2020.03.04.23.34.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Mar 2020 23:34:24 -0800 (PST)
-Date: Thu, 5 Mar 2020 08:34:17 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: "Tian, Kevin" <kevin.tian@intel.com>
-Subject: Re: [PATCH v16 00/10] VIRTIO-IOMMU device
-Message-ID: <20200305073417.GA717767@myrica>
+ (envelope-from <kevin.tian@intel.com>) id 1j9l9k-0006EB-RX
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2020 02:42:57 -0500
+Received: from mga02.intel.com ([134.134.136.20]:6540)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kevin.tian@intel.com>)
+ id 1j9l9h-00067s-Ob; Thu, 05 Mar 2020 02:42:54 -0500
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 04 Mar 2020 23:42:47 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,517,1574150400"; d="scan'208";a="259101461"
+Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
+ by orsmga002.jf.intel.com with ESMTP; 04 Mar 2020 23:42:47 -0800
+Received: from fmsmsx116.amr.corp.intel.com (10.18.116.20) by
+ FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 4 Mar 2020 23:42:47 -0800
+Received: from shsmsx108.ccr.corp.intel.com (10.239.4.97) by
+ fmsmsx116.amr.corp.intel.com (10.18.116.20) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 4 Mar 2020 23:42:46 -0800
+Received: from shsmsx104.ccr.corp.intel.com ([169.254.5.206]) by
+ SHSMSX108.ccr.corp.intel.com ([169.254.8.235]) with mapi id 14.03.0439.000;
+ Thu, 5 Mar 2020 15:42:44 +0800
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Subject: RE: [PATCH v16 00/10] VIRTIO-IOMMU device
+Thread-Topic: [PATCH v16 00/10] VIRTIO-IOMMU device
+Thread-Index: AQHV4zqd/jWB2C+M5UeA/xtNxWrsyqgucl6AgAAqcACAByzBAIAAaY+AgAFXAoCAACrFAIAAh6qAgAEu9sD//8jdgIAAiFHg
+Date: Thu, 5 Mar 2020 07:42:44 +0000
+Message-ID: <AADFC41AFE54684AB9EE6CBC0274A5D19D7BE360@SHSMSX104.ccr.corp.intel.com>
 References: <20200214132745.23392-1-eric.auger@redhat.com>
  <20200227111717.GG1645630@redhat.com>
  <431cb39d-833c-6d02-d7b3-02b3e90446e2@redhat.com>
@@ -101,13 +87,24 @@ References: <20200214132745.23392-1-eric.auger@redhat.com>
  <88e3b669-2998-41c0-83f7-de42a72a73e7@redhat.com>
  <20200304164717.GF646000@myrica>
  <AADFC41AFE54684AB9EE6CBC0274A5D19D7BDFBB@SHSMSX104.ccr.corp.intel.com>
+ <20200305073417.GA717767@myrica>
+In-Reply-To: <20200305073417.GA717767@myrica>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMmM2NTc0YmYtMzcyZi00NWU0LWFhYjItNDRmNDZmZjFkM2NkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiQjNiK0ZFcjIzWXp0RWtvT3hMemZDRTg1c0QrcGkxaWJ4UjNJRlRiRzZjejlNZ3NFZjZKbDArRWZ0eW04T25xUCJ9
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.239.127.40]
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <AADFC41AFE54684AB9EE6CBC0274A5D19D7BDFBB@SHSMSX104.ccr.corp.intel.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::341
+X-Received-From: 134.134.136.20
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -120,7 +117,7 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
+ =?iso-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
  "kenneth-lee-2012@foxmail.com" <kenneth-lee-2012@foxmail.com>,
  "tnowicki@marvell.com" <tnowicki@marvell.com>,
  "Michael S. Tsirkin" <mst@redhat.com>,
@@ -137,36 +134,49 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SWeLY1ILnEp+
+X-TUID: HF7Yk9KPrlPB
 
-On Thu, Mar 05, 2020 at 02:56:20AM +0000, Tian, Kevin wrote:
-> > From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > Sent: Thursday, March 5, 2020 12:47 AM
+> From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> Sent: Thursday, March 5, 2020 3:34 PM
+>=20
+> On Thu, Mar 05, 2020 at 02:56:20AM +0000, Tian, Kevin wrote:
+> > > From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> > > Sent: Thursday, March 5, 2020 12:47 AM
+> > >
+> > [...]
+> > > > >
+> > > > > * We can't use DVM in nested mode unless the VMID is shared with
+> the
+> > > > > CPU. For that we'll need the host SMMU driver to hook into the KV=
+M
+> > > VMID
+> > > > > allocator, just like we do for the ASID allocator. I haven't yet
+> > > > > investigated how to do that. It's possible to do vSVA without DVM
+> > > > > though, by sending all TLB invalidations through the SMMU command
+> > > queue.
+> > > > > "
+> > >
+> > > Hm we're already mandating DVM for host SVA, so I'd say mandate it fo=
+r
+> > > vSVA as well. We'd avoid a ton of context switches, especially for th=
+e zip
+> > > accelerator which doesn't require ATC invalidations. The host needs t=
+o
+> pin
+> > > the VMID allocated by KVM and write it in the endpoint's STE.
+> > >
 > >
-> [...]
-> > > >
-> > > > * We can't use DVM in nested mode unless the VMID is shared with the
-> > > > CPU. For that we'll need the host SMMU driver to hook into the KVM
-> > VMID
-> > > > allocator, just like we do for the ASID allocator. I haven't yet
-> > > > investigated how to do that. It's possible to do vSVA without DVM
-> > > > though, by sending all TLB invalidations through the SMMU command
-> > queue.
-> > > > "
-> > 
-> > Hm we're already mandating DVM for host SVA, so I'd say mandate it for
-> > vSVA as well. We'd avoid a ton of context switches, especially for the zip
-> > accelerator which doesn't require ATC invalidations. The host needs to pin
-> > the VMID allocated by KVM and write it in the endpoint's STE.
-> > 
-> 
-> Curious... what is DVM and how is it related to SVA? Is it SMMU specific?
+> > Curious... what is DVM and how is it related to SVA? Is it SMMU specifi=
+c?
+>=20
+> Yes it stands for "Distributed Virtual Memory", an Arm interconnect
+> protocol. When sharing a process address space, TLB invalidations from th=
+e
+> CPU are broadcasted to the SMMU, so we don't have to send commands
+> through
+> the SMMU queue to invalidate IOTLBs. However ATCs from PCIe endpoints
+> do
+> not participate in DVM and still have to be invalidated by hand.
+>=20
 
-Yes it stands for "Distributed Virtual Memory", an Arm interconnect
-protocol. When sharing a process address space, TLB invalidations from the
-CPU are broadcasted to the SMMU, so we don't have to send commands through
-the SMMU queue to invalidate IOTLBs. However ATCs from PCIe endpoints do
-not participate in DVM and still have to be invalidated by hand.
-
-Thanks,
-Jean
+ah, got it. Thanks for explanation!

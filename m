@@ -1,285 +1,144 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2826170lfi;
-        Thu, 5 Mar 2020 04:04:04 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vtv9J6MsSarK/EIutQEk+Ujt/d9HrT5ZEQgINZ8jYlgokTtc2zZMMiILFg2b0sgbPxsOkni
-X-Received: by 2002:a0c:eb50:: with SMTP id c16mr3720328qvq.25.1583409844688;
-        Thu, 05 Mar 2020 04:04:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583409844; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2972192lfi;
+        Thu, 5 Mar 2020 06:21:39 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vsMtwSC3XD9f8ngym/PTyhOuCOf3uwEd5LNkm9OesYx96HNdRdvqwRIv/Fck9MHBAtpXEsT
+X-Received: by 2002:ac8:76c1:: with SMTP id q1mr7659300qtr.66.1583418099765;
+        Thu, 05 Mar 2020 06:21:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583418099; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jh262dbHvefaPaUzpmJTepGJabf7CjvEEoMma2qe6LpSDdQi7ubuNMRyEeGZCQiEnb
-         DZW3K62mmPPl+la73VKrkYnsqkDR9Yl8xVf6OwyxyULEvKhk3ZTjB300yIG5d2qMPgR9
-         q58crbE0Vs3OKHybnDsTSZ7gKC6BRNRDlgonXj5hEcY+eeMTh0Rl4QBgMjgXghfncTHN
-         UR8bkNc4Em/9YyLGlv6eQlELMnnZfZGuHum8BpUNCChJDd1VFTaZ2eZ1QIl7dsqoT3XA
-         Nw0pv6Q4VzDQ/ssdmUbiuVKuBFFWnwNxXnbe3zxBiiof50NLYB/EiYipZMuuLv85S1eh
-         bYxw==
+        b=a0vfNUbKhAylL8B3qoTq1IskStfJgtWAk/sAIqUCYD0hRdlTxKZRREr11BHctQAixh
+         q5ZB9APBGZ3F424Rj11XegsQz5OHjq97qFODaEVA96OlS4oODU2BstI65Eb8I3l7YqnA
+         ag/KDp0ThSafmuLI9cNhSnOCZcvNSN03qaRwi/MAoj+k2wMxYJP+ziouohHtTOd+bflZ
+         5Fw9upo/C2+Zxh4Wpwip/v+FhhDGQxOQxwmI4yA517Orn5GlZ46fzPuIsNwVoNDwYQbu
+         qsnRuyW97BPbYEUUCFmVSNfhXWgP0PT/FGcr22fHaqVd8misC3Cqb91DXlU+GCgDYFNO
+         7dgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=jy5m06Y1gfVleTehqDJPHx/Z3tuSrj2h9J7pHbqABfs=;
-        b=brXxluyV43Oo+mR9+BNu9ZP3jDzWINny0a1iMevWFh87VtBq/0tWNmqMfQ0J5z8PRc
-         cHvaJz/o2XcTcwJFdENlijSUGpi9h0lC6XoF1OXe06u3tuCUIN3LTmcALJ1aoEO6Q7Ek
-         EKBRqAlCs2+2JeREzLdpi2wtg7gcTfqTCGP3RmK58h1TVLfPqFd0jyeVWp4r7lNeUAJT
-         BPlokGLzBYyzOfxKC5B13XPxswOgxhwsMUxe4HQ4139xi1Fthlrs1HnR6fo6BA2MrfM6
-         otj4I/zb5czITRUVyJi792vAxznOL5PwExTua1e+dcAPRJkW6vrotw4BOUpSZn+eix5O
-         9Pfg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=MmVNlVoG5+r9EgwrJZuwCWK7AZ0/9oroAwsFmb1pWHs=;
+        b=J4rcd2C1NbMtpTFJv8O4aFQFUZXxUdtn000lALk621Os74IfTFIk3wUR6Y5Yb34LlR
+         toCbNQpKgWp/zwUP2u/fzfDX+EHxgPXN+BB2CFp6bRt+N+NhvIJb0JZ9ec+qUy7fJjlJ
+         Va5MRGTAsAcRC8zrE8CpPd7wvpDffZEjloX6IVCqjuSeDqDLlFMfc/VZ1IReWvsg437A
+         0tu6L1MNdZQBoeyn5mtHQlpaIqKnWYxhtuicmFkQaF5dzqBAbMWSwuVHGISNJkORyZCr
+         mQRVPgib5DhjVOGxjN1J7Kob9V1+8Mjx0YY3glviwe9XM0lddTpid8FuDxT5AmJpsr+d
+         /sdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PqXHw8ig;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=zGoyRrPe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o16si2726654qkg.97.2020.03.05.04.04.04
+        by mx.google.com with ESMTPS id 4si3683692qtp.242.2020.03.05.06.21.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Mar 2020 04:04:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 05 Mar 2020 06:21:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PqXHw8ig;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47760 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=zGoyRrPe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49974 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1j9pES-0007cl-10
-	for alex.bennee@linaro.org; Thu, 05 Mar 2020 07:04:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33949)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1j9rNb-0007rL-5T
+	for alex.bennee@linaro.org; Thu, 05 Mar 2020 09:21:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33096)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1j9pDt-0007RC-NO
- for qemu-devel@nongnu.org; Thu, 05 Mar 2020 07:03:31 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j9rNR-0007lZ-Cp
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2020 09:21:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1j9pDs-0008Ht-FO
- for qemu-devel@nongnu.org; Thu, 05 Mar 2020 07:03:29 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:51492
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1j9pDs-0008HD-CD
- for qemu-devel@nongnu.org; Thu, 05 Mar 2020 07:03:28 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583409808;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=jy5m06Y1gfVleTehqDJPHx/Z3tuSrj2h9J7pHbqABfs=;
- b=PqXHw8igJOQsRbh+whL6REU7YapSqiq0YpjxUzgI3bGEzLAGTaubrYrAY/GpJrjjSbCTOQ
- tbDJy9ZN2nQeb2Z62RVLxVK/FgW4ZJn/DtwQnHRUJnxscaRbX+iVGg42PWMvCyb39eHdno
- vLnzUAqtvGz/7MU4mxiVrRY6QHYVgY4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-116-1xhqVD7RMcOqWdQpop5M7A-1; Thu, 05 Mar 2020 07:03:10 -0500
-X-MC-Unique: 1xhqVD7RMcOqWdQpop5M7A-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5BA62184C801;
- Thu,  5 Mar 2020 12:03:05 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-129.ams2.redhat.com
- [10.36.116.129])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 24FBF5C1D8;
- Thu,  5 Mar 2020 12:02:57 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 9952511386A6; Thu,  5 Mar 2020 13:02:55 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Alexey Kirillov <lekiravi@yandex-team.ru>
-Subject: Re: [PATCH v2 1/4] qapi: net: Add query-netdevs command
-References: <20200304130656.16859-1-lekiravi@yandex-team.ru>
- <20200304130656.16859-2-lekiravi@yandex-team.ru>
-Date: Thu, 05 Mar 2020 13:02:55 +0100
-In-Reply-To: <20200304130656.16859-2-lekiravi@yandex-team.ru> (Alexey
- Kirillov's message of "Wed, 4 Mar 2020 16:06:53 +0300")
-Message-ID: <87y2sff1qo.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ (envelope-from <peter.maydell@linaro.org>) id 1j9rNQ-00020y-At
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2020 09:21:29 -0500
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:44403)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j9rNQ-0001zI-5u
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2020 09:21:28 -0500
+Received: by mail-ot1-x341.google.com with SMTP id v22so5787618otq.11
+ for <qemu-arm@nongnu.org>; Thu, 05 Mar 2020 06:21:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=MmVNlVoG5+r9EgwrJZuwCWK7AZ0/9oroAwsFmb1pWHs=;
+ b=zGoyRrPeSq5RPtJL+rqfrcS5WrsKke3+ZWZUS8L9Em8xhosmhEQ8a5DaUQMEJUDel8
+ j1CB9h0wXh3pSw0QaDs4t37AFgwJFlDQeJvZzekp/6YdfJN9RkuYwIDlN09QIhRSoVTR
+ YvPQD5mD+vuMNNJpK8oxR+XQvhohg4xzSg5REJ7JeGxGuQmEXUCpLMnuyBYiRyMK8+Mu
+ 2XiCpPpcaV0QuRLI5Vp1a+m2nFczApV5HBtcB7xsads42AqAbbhySqrzqOSqBYiZB4O9
+ 8ZchsHsdjfzFv9u9pzeGjmNvU5GIYEiFgOQYU7zRwkfMklS2/xmEJtA4CFlI852VYc56
+ je9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=MmVNlVoG5+r9EgwrJZuwCWK7AZ0/9oroAwsFmb1pWHs=;
+ b=Dp+Z6O1gluMa03QCxWDgEv0mmupD9gVDprVXcLmtfX9yJ8l8Cj+5oi2gSvJmDqE8zE
+ u5e1vjIjLYdLkUoAObLp+apM+Lv7wNh6lgy2+VzgPnJoB+Pr/0zwpaU1zR1zzpnC80Q8
+ 0ymndkIwZK0eYEA4NMVVGO2G6JdGQMa4xahGdP+s9psm/MwQnMEFVU0plkahnGiFdtpT
+ 2qqnUEkyDfprBLWFYWihCnkNw0HVQQTKl0X5RdgJ+GMpxaM3YIqjZ72S/KTBYgp1+0bz
+ +zmlrsq478Yewm8dKTtAdaHk2WnpdczUbURodAqBAfGkLs2RZdMts81BuPXUlsHVoVaP
+ 6IoA==
+X-Gm-Message-State: ANhLgQ1DRmg2wOk7zIEPrhC7ORV4E7sDZkfTxkQ3BU4OTzfkbv3QkKUW
+ xQ7hlaonnNpx/8RkoFH1ct+U1SATAiVBgUOcuco6hQ==
+X-Received: by 2002:a05:6830:30ac:: with SMTP id
+ g12mr5538264ots.221.1583418086899; 
+ Thu, 05 Mar 2020 06:21:26 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
-X-BeenThere: qemu-devel@nongnu.org
+References: <20200302175829.2183-1-richard.henderson@linaro.org>
+ <20200302175829.2183-9-richard.henderson@linaro.org>
+In-Reply-To: <20200302175829.2183-9-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 5 Mar 2020 14:21:14 +0000
+Message-ID: <CAFEAcA8vEHctFuYfaziQs1QobbrHJgMioATwF7QkWL-e=gLxJw@mail.gmail.com>
+Subject: Re: [PATCH v2 8/9] target/arm: Check addresses for disabled regimes
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- qemu-devel@nongnu.org, Vincenzo Maffione <v.maffione@gmail.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Sven Schnelle <svens@stackframe.org>, Rob Herring <robh@kernel.org>,
- Stefano Stabellini <sstabellini@kernel.org>, Paul Durrant <paul@xen.org>,
- Joel Stanley <joel@jms.id.au>, Anthony Perard <anthony.perard@citrix.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Richard Henderson <rth@twiddle.net>, Laurent Vivier <lvivier@redhat.com>,
- Jiri Pirko <jiri@resnulli.us>, Aleksandar Markovic <amarkovic@wavecomp.com>,
- Stefan Weil <sw@weilnetz.de>, Alistair Francis <alistair@alistair23.me>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- xen-devel@lists.xenproject.org, Giuseppe Lettieri <g.lettieri@iet.unipi.it>,
- Luigi Rizzo <rizzo@iet.unipi.it>, David Gibson <david@gibson.dropbear.id.au>,
- Thomas Huth <huth@tuxfamily.org>, Andrew Jeffery <andrew@aj.id.au>,
- Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org, yc-core@yandex-team.ru,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qxaJXnQf7Hmz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kRrx4NBq43GJ
 
-Alexey Kirillov <lekiravi@yandex-team.ru> writes:
+On Mon, 2 Mar 2020 at 17:58, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> We fail to validate the upper bits of a virtual address on a
+> translation disabled regime, as per AArch64.TranslateAddressS1Off.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/helper.c | 33 ++++++++++++++++++++++++++++++++-
+>  1 file changed, 32 insertions(+), 1 deletion(-)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index addbec91d8..0ef32d3c24 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -11634,7 +11634,38 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+>      /* Definitely a real MMU, not an MPU */
+>
+>      if (regime_translation_disabled(env, mmu_idx)) {
+> -        /* MMU disabled. */
+> +        /*
+> +         * MMU disabled.  S1 addresses are still checked for bounds.
+> +         * C.f. AArch64.TranslateAddressS1Off.
+> +         */
+> +        if (is_a64(env) && mmu_idx != ARMMMUIdx_Stage2) {
 
-> Add a qmp command that provides information about currently attached
-> network devices and their configuration.
+This looks weird -- why do we care about whether the current
+EL is aarch64, rather than looking at the controlling EL
+for the translation regime ?
 
-Closes a gap in QMP; appreciated!
-
-> Signed-off-by: Alexey Kirillov <lekiravi@yandex-team.ru>
-[...]
-> diff --git a/qapi/net.json b/qapi/net.json
-> index 1cb9a7d782..4f329a1de0 100644
-> --- a/qapi/net.json
-> +++ b/qapi/net.json
-> @@ -750,3 +750,92 @@
->  ##
->  { 'event': 'FAILOVER_NEGOTIATED',
->    'data': {'device-id': 'str'} }
-> +
-> +##
-> +# @NetdevInfo:
-> +#
-> +# Configuration of a network device.
-> +#
-> +# @id: Device identifier.
-> +#
-> +# @type: Specify the driver used for interpreting remaining arguments.
-> +#
-> +# @peer: Connected network device.
-
-@peer is optional.  I assume its present when the device is connected
-(frontend to backend or vice versa).  Correct?
-
-> +#
-> +# @queues-count: Number of queues.
-
-We use plain @queues elsewhere in the schema.
-
-> +#
-> +# @hub: hubid of hub, if connected to.
-
-How @hub is related to @peer is not quite obvious to me.  Can you give
-an example where @hub is present?
-
-> +#
-> +# @perm-mac: Original MAC address.
-
-What does "perm-" mean?
-
-It's optional.  When exactly is it present?
-
-> +#
-> +# Since: 5.0
-> +##
-> +{ 'union': 'NetdevInfo',
-> +  'base': { 'id': 'str',
-> +            'type': 'NetClientDriver',
-> +            '*peer': 'str',
-> +            'queues-count': 'int',
-> +            '*hub': 'int',
-> +            '*perm-mac': 'str' },
-> +  'discriminator': 'type',
-> +  'data': {
-> +      'nic':        'NetLegacyNicOptions',
-> +      'user':       'NetdevUserOptions',
-> +      'tap':        'NetdevTapOptions',
-> +      'l2tpv3':     'NetdevL2TPv3Options',
-> +      'socket':     'NetdevSocketOptions',
-> +      'vde':        'NetdevVdeOptions',
-> +      'bridge':     'NetdevBridgeOptions',
-> +      'hubport':    'NetdevHubPortOptions',
-> +      'netmap':     'NetdevNetmapOptions',
-> +      'vhost-user': 'NetdevVhostUserOptions' } }
-
-This is a copy of union 'Netdev' with a few additional common members
-(@peer, @queues-count, @hub, @perm-mac).  I can't see how to avoid the
-duplication without adding nesting on the wire.
-
-> +
-> +##
-> +# @query-netdevs:
-> +#
-> +# Get a list of @NetdevInfo for all virtual network devices.
-> +#
-> +# Returns: a list of @NetdevInfo describing each virtual network device.
-> +#
-> +# Since: 5.0
-> +#
-> +# Example:
-> +#
-> +# -> { "execute": "query-netdevs" }
-> +# <- { "return": [
-> +#          {
-> +#              "peer": "netdev0",
-> +#              "netdev": "netdev0",
-> +#              "perm-mac": "52:54:00:12:34:56"
-> +#              "model": "virtio-net-pci",
-> +#              "macaddr": "52:54:00:12:34:56",
-> +#              "queues-count": 1,
-> +#              "type": "nic",
-> +#              "id": "net0"
-> +#          },
-> +#          {
-> +#              "peer": "net0",
-> +#              "ipv6": true,
-> +#              "ipv4": true,
-> +#              "host": "10.0.2.2",
-> +#              "queues-count": 1,
-> +#              "ipv6-dns": "fec0::3",
-> +#              "ipv6-prefix": "fec0::",
-> +#              "net": "10.0.2.0/255.255.255.0",
-> +#              "ipv6-host": "fec0::2",
-> +#              "type": "user",
-> +#              "dns": "10.0.2.3",
-> +#              "hostfwd": [
-> +#                  {
-> +#                      "str": "tcp::20004-:22"
-> +#                  }
-> +#              ],
-> +#              "ipv6-prefixlen": 64,
-> +#              "id": "netdev0",
-> +#              "restrict": false
-> +#          }
-> +#      ]
-> +#    }
-> +#
-> +##
-> +{ 'command': 'query-netdevs', 'returns': ['NetdevInfo'] }
-
-Like HMP "info network" and -net, this mixes frontends ("type": "nic")
-and backends.  Unlike query-chardev and query-block.  Hmm.
-
-A long time ago, all we had was -net: "-net nic" for configuring
-frontends, "-net none" for suppressing a default frontend + backend, and
-"-net anything-else" for configuring backends.  "info network" showed
-the stuff set up with -net.
-
-In v0.12, we got -device for configuring frontends, and -netdev for
-backends.  -netdev is like -net less "none", "nic", and the hub
-weirdness.  "info network" was extended to also show all this.
-
-In v2.12, we got -nic, replacing -net nic.
-
-Unless I'm missing something, -net is just for backward compatibility
-now.
-
-What's the use case for query-networks reporting frontends?
-
+thanks
+-- PMM

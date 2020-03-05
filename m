@@ -1,218 +1,161 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2643756lfi;
-        Thu, 5 Mar 2020 00:45:04 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vv9gwSOf9RgjNXtAKM8jSuqbkE+nNVe5hjR544rt7EITEtZ8uR8ibrBgl0U4RnMBieF3/G9
-X-Received: by 2002:a37:7c47:: with SMTP id x68mr7108498qkc.8.1583397904716;
-        Thu, 05 Mar 2020 00:45:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583397904; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp2650758lfi;
+        Thu, 5 Mar 2020 00:53:59 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vuHbwHy3zrj6wvm4g6HZObLNeSXLT8xXTtY3Qh4pDG5tF/lwj7Krhf6mphzO/vgaIpgmoNC
+X-Received: by 2002:a05:6830:22ca:: with SMTP id q10mr6224746otc.280.1583398438933;
+        Thu, 05 Mar 2020 00:53:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583398438; cv=none;
         d=google.com; s=arc-20160816;
-        b=SOvpiHiIC01qMUnpHDRC8F9WewzZdUNuTYJ6If44Sf4dbhRJsHu1DI6H+AlMWZce7h
-         HpU/RWl3PYS+nvClB2ML7Xo9nUrXvfYFh8hAt8Rc3tVTborDkZzM/s5fiuwTbDovUryi
-         xpZ+EUY8LrIIJ+Z7KioLrdNHJ+t4ipfj9e9G9oE7s25AM8IM5BH1DHfPhTZjVUZ0SWdE
-         K3hCAmSJcESwMazbE9w4Kugthoo15CD51e7hVbXuiYblFxuy87R2iiqvsGqH1mYIll9d
-         7dlFFK+m1RaIJMLCxEcZM/mBH9ENSbusW3Z8iEQqY6hbQm+/e7H2pbWoiOofi2ReC7oh
-         0kKw==
+        b=zqAozT7BCRCVySlG4tGLDNxYOqTxAcdeSLLu8ugZYXmTFvwicGzHFlqWVhA6Vwk6YQ
+         GRdzAF4jhTu2ejd4dL8sfB+kXoDtiPxng/zyA+wFUGMTnswaUOllvL+DAJvqlOP3ZML2
+         bwGoK1UhOTgGxjkReN9jss7iXZWObadHxQslLaOg0zL8lETqkR2QhaBddqwS43Sqk+hF
+         ezZ2I0eZujHWqsY8DHxoqlinShw9DzrdwSnr6r6qE1TUaXRqnTFtLFzstXoyI4AjDfDf
+         5YQtwpknnwiwz0fiL2/4xfxNhgtk5Zu6gfYDIKzirs/9kP6KDrQj+jx+9uRZSeF0MvkW
+         IbbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=OL0QWEYz6JlZawY6YBVGRqHfHopmcLqt3vPOgWeKWis=;
-        b=lskwaQhxcGpRHwxxuHj9o3niVsQA7lKsKTHXXzub59qW1VyxFDiMAA5DayTk1ZgTc4
-         4UcamgJk7tKdLQvcRx+3/XMGuCfn7tKixKscpqpz7PA5lepEyANjolh9YXvac8eP/nMx
-         9kc3R1Ieohq4/le62BjnbsDy7hgiY5o1nECU6pTFSF463c13VldxZE6VTO6Z/K7q7exA
-         1LPIeGEG74jap8unfp0V2K9ozOY9AfKVOb7fs/w+Zbhpyle178Oj73BR6CTruXRwKUWs
-         BHHj2vdx93BiHeYL3TM1EtQ7O/JgtF+l4ss/006Nj1F2YbrckPuAbtLFvkUyOB499SBD
-         kNDA==
+        h=list-id:precedence:sender:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=REwAfEqoAMNUtUrRyylagH0asZ7fuhCqPFcvT/oML0s=;
+        b=RE+41B0wwXCcpdeYEyGWymnDfwB1DUB9ZLXjEzAlluSNKBE2Bo9oQfD2N+ofq1Gzo6
+         3gWHX6+/QVpo3x17A2zzMlP0OhC7XK6CLM0BXdPyfs/ETZwSs3nuqfh55wUkkqtW0peN
+         eJucBEWt8EtWVTo7UknI00Q972NLl2A82nrxHlg+z+4XjUJ/4UCs88B6At+Ij+I651BI
+         KiyUq0D5frhoBSuOB3jTU6md7dfWi5IPsX8jx12oUVamJi3Sc/I7qGfPW5H8+c1eNbK7
+         t0WylSc/ufVnuCIR6qc+koDMWDR0CqB8GxItRR8GGRjQq1LbG2xj4h7rlSSDwOO2wl27
+         IOPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=WXp7oT71;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id p21si2537908qtj.295.2020.03.05.00.45.04;
-        Thu, 05 Mar 2020 00:45:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bay0Jdqq;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id m7si3142316oie.138.2020.03.05.00.53.58;
+        Thu, 05 Mar 2020 00:53:58 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=WXp7oT71;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 686364AECB;
-	Thu,  5 Mar 2020 03:45:04 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZNRBarRiWDg5; Thu,  5 Mar 2020 03:45:03 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 581DC4AEB3;
-	Thu,  5 Mar 2020 03:45:03 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 4F1F54AE9F
- for <kvmarm@lists.cs.columbia.edu>; Thu,  5 Mar 2020 03:45:02 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eAmXLEBwR9zB for <kvmarm@lists.cs.columbia.edu>;
- Thu,  5 Mar 2020 03:45:01 -0500 (EST)
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [207.211.31.120])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 5C2324A541
- for <kvmarm@lists.cs.columbia.edu>; Thu,  5 Mar 2020 03:45:01 -0500 (EST)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bay0Jdqq;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726036AbgCEIx6 (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 5 Mar 2020 03:53:58 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:26501 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1725816AbgCEIx5 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 5 Mar 2020 03:53:57 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583397901;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=4sdxw0YGoXsaIv0ZpropG02ysIrWI8wiKoZ0OhhrAhk=;
- b=WXp7oT71AJ8Z4DP+8ofRKkSC0Uoa6SUNnA7IVOUx3tq/nafWqR4+hlona5TeF2T60UWArB
- gOMmWczXymg9RTXhQz8ko8PhHD7xCGvhNSa6QvSGPDKHdykofakhZ1xYuvNOYc+2CHjdbm
- HeSBMDq6sfRemVKfZeFubaUX7ySYoFM=
+        s=mimecast20190719; t=1583398436;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         in-reply-to:in-reply-to:references:references;
+        bh=REwAfEqoAMNUtUrRyylagH0asZ7fuhCqPFcvT/oML0s=;
+        b=Bay0JdqqcoCnaeufJ7s8jhWSYRVMnmeyrzdBzNiBcBbO6ldEH7NqKYLKX7MJL2RVmPEtJQ
+        5KzUTByh8MiYDkCxR93XxfsDAvbdYJHs1m17hSklF1seA4ymlwSkPpgBXVYMdf94HL/Q3D
+        JGuhCFiBY1XFKwYeU9l+ippAsgeNJMk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-163-lHqpbisRPi2TOCAtFQhntg-1; Thu, 05 Mar 2020 03:44:57 -0500
-X-MC-Unique: lHqpbisRPi2TOCAtFQhntg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 715FD107B7E7;
- Thu,  5 Mar 2020 08:44:55 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (ovpn-204-110.brq.redhat.com
- [10.40.204.110])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6414691D8C;
- Thu,  5 Mar 2020 08:44:46 +0000 (UTC)
-Date: Thu, 5 Mar 2020 09:44:44 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [kvm-unit-tests PATCH v2 2/9] arm: pmu: Let pmu tests take a
- sub-test parameter
-Message-ID: <20200305084444.jh5jr4hbuecfae73@kamzik.brq.redhat.com>
+ us-mta-9-JRYXs1EUPCq2MT_nKzgVwg-1; Thu, 05 Mar 2020 03:53:54 -0500
+X-MC-Unique: JRYXs1EUPCq2MT_nKzgVwg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 86DC31093839;
+        Thu,  5 Mar 2020 08:53:52 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (ovpn-204-110.brq.redhat.com [10.40.204.110])
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id 4683D92D00;
+        Thu,  5 Mar 2020 08:53:46 +0000 (UTC)
+Date:   Thu, 5 Mar 2020 09:53:43 +0100
+From:   Andrew Jones <drjones@redhat.com>
+To:     Eric Auger <eric.auger@redhat.com>
+Cc:     eric.auger.pro@gmail.com, maz@kernel.org,
+        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+        peter.maydell@linaro.org, andrew.murray@arm.com,
+        alexandru.elisei@arm.com, andre.przywara@arm.com
+Subject: Re: [kvm-unit-tests PATCH v2 3/9] arm: pmu: Add a pmu struct
+Message-ID: <20200305085343.g4li2y2prnlyapx2@kamzik.brq.redhat.com>
 References: <20200130112510.15154-1-eric.auger@redhat.com>
- <20200130112510.15154-3-eric.auger@redhat.com>
+ <20200130112510.15154-4-eric.auger@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200130112510.15154-3-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Cc: kvm@vger.kernel.org, maz@kernel.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, andre.przywara@arm.com, andrew.murray@arm.com,
- kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: yH6kP6yb0khR
+In-Reply-To: <20200130112510.15154-4-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 7aAXCOahxsPI
 
-On Thu, Jan 30, 2020 at 12:25:03PM +0100, Eric Auger wrote:
-> As we intend to introduce more PMU tests, let's add
-> a sub-test parameter that will allow to categorize
-> them. Existing tests are in the cycle-counter category.
+On Thu, Jan 30, 2020 at 12:25:04PM +0100, Eric Auger wrote:
+> This struct aims at storing information potentially used by
+> all tests such as the pmu version, the read-only part of the
+> PMCR, the number of implemented event counters, ...
 > 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > ---
->  arm/pmu.c         | 24 +++++++++++++++---------
->  arm/unittests.cfg |  7 ++++---
->  2 files changed, 19 insertions(+), 12 deletions(-)
+>  arm/pmu.c | 30 +++++++++++++++++++++++++-----
+>  1 file changed, 25 insertions(+), 5 deletions(-)
 > 
 > diff --git a/arm/pmu.c b/arm/pmu.c
-> index d5a03a6..e5e012d 100644
+> index e5e012d..d24857e 100644
 > --- a/arm/pmu.c
 > +++ b/arm/pmu.c
-> @@ -287,22 +287,28 @@ int main(int argc, char *argv[])
->  {
->  	int cpi = 0;
+> @@ -33,7 +33,14 @@
 >  
-> -	if (argc > 1)
-> -		cpi = atol(argv[1]);
-> -
->  	if (!pmu_probe()) {
->  		printf("No PMU found, test skipped...\n");
->  		return report_summary();
->  	}
+>  #define NR_SAMPLES 10
 >  
-> +	if (argc < 2)
-> +		report_abort("no test specified");
+> -static unsigned int pmu_version;
+> +struct pmu {
+> +	unsigned int version;
+> +	unsigned int nb_implemented_counters;
+> +	uint32_t pmcr_ro;
+> +};
 > +
->  	report_prefix_push("pmu");
->  
-> -	report(check_pmcr(), "Control register");
-> -	report(check_cycles_increase(),
-> -	       "Monotonically increasing cycle count");
-> -	report(check_cpi(cpi), "Cycle/instruction ratio");
-> -
-> -	pmccntr64_test();
-> +	if (strcmp(argv[1], "cycle-counter") == 0) {
-> +		report_prefix_push(argv[1]);
-> +		if (argc > 2)
-> +			cpi = atol(argv[2]);
-> +		report(check_pmcr(), "Control register");
-> +		report(check_cycles_increase(),
-> +		       "Monotonically increasing cycle count");
-> +		report(check_cpi(cpi), "Cycle/instruction ratio");
-> +		pmccntr64_test();
+> +static struct pmu pmu;
+> +
+>  #if defined(__arm__)
+>  #define ID_DFR0_PERFMON_SHIFT 24
+>  #define ID_DFR0_PERFMON_MASK  0xf
+> @@ -265,7 +272,7 @@ static bool check_cpi(int cpi)
+>  static void pmccntr64_test(void)
+>  {
+>  #ifdef __arm__
+> -	if (pmu_version == 0x3) {
+> +	if (pmu.version == 0x3) {
+>  		if (ERRATA(9e3f7a296940)) {
+>  			write_sysreg(0xdead, PMCCNTR64);
+>  			report(read_sysreg(PMCCNTR64) == 0xdead, "pmccntr64");
+> @@ -278,9 +285,22 @@ static void pmccntr64_test(void)
+>  /* Return FALSE if no PMU found, otherwise return TRUE */
+>  static bool pmu_probe(void)
+>  {
+> -	pmu_version = get_pmu_version();
+> -	report_info("PMU version: %d", pmu_version);
+> -	return pmu_version != 0 && pmu_version != 0xf;
+> +	uint32_t pmcr;
+> +
+> +	pmu.version = get_pmu_version();
+> +	report_info("PMU version: %d", pmu.version);
+> +
+> +	if (pmu.version == 0 || pmu.version == 0xF)
+> +		return false;
+> +
+> +	pmcr = get_pmcr();
+> +	pmu.pmcr_ro = pmcr & 0xFFFFFF80;
 
-Could put a report_prefix_pop here to balance things.
+I'd prefer we spell out what fields we consider RO. Also this mask doesn't
+seem right to me. BIT[7] isn't RO, is it?
 
-> +	} else {
-> +		report_abort("Unknown sub-test '%s'", argv[1]);
-> +	}
->  
->  	return report_summary();
+> +	pmu.nb_implemented_counters =
+> +		(pmcr >> PMU_PMCR_N_SHIFT) & PMU_PMCR_N_MASK;
+> +	report_info("Implements %d event counters",
+> +		    pmu.nb_implemented_counters);
+> +
+> +	return true;
 >  }
-> diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-> index daeb5a0..79f0d7a 100644
-> --- a/arm/unittests.cfg
-> +++ b/arm/unittests.cfg
-> @@ -61,21 +61,22 @@ file = pci-test.flat
->  groups = pci
 >  
->  # Test PMU support
-> -[pmu]
-> +[pmu-cycle-counter]
->  file = pmu.flat
->  groups = pmu
-> +extra_params = -append 'cycle-counter 0'
->  
->  # Test PMU support (TCG) with -icount IPC=1
->  #[pmu-tcg-icount-1]
->  #file = pmu.flat
-> -#extra_params = -icount 0 -append '1'
-> +#extra_params = -icount 0 -append 'cycle-counter 1'
->  #groups = pmu
->  #accel = tcg
->  
->  # Test PMU support (TCG) with -icount IPC=256
->  #[pmu-tcg-icount-256]
->  #file = pmu.flat
-> -#extra_params = -icount 8 -append '256'
-> +#extra_params = -icount 8 -append 'cycle-counter 256'
->  #groups = pmu
->  #accel = tcg
->  
+>  int main(int argc, char *argv[])
 > -- 
 > 2.20.1
 > 
 > 
-
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

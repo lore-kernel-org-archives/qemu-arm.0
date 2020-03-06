@@ -1,83 +1,84 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp4333128lfi;
-        Fri, 6 Mar 2020 07:27:05 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vt5TBniy7pv4yi5meA2I7E1n/o4t9L+nti5MvuUMDnHIu+avz+3P0GXL+4+hD0My3qYIESG
-X-Received: by 2002:ac8:754f:: with SMTP id b15mr3043248qtr.342.1583508424847;
-        Fri, 06 Mar 2020 07:27:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583508424; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp4333771lfi;
+        Fri, 6 Mar 2020 07:27:43 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vsijO4mNjVN+hNhNnVQB/3OhgrDyRcrYPpEdes1kumnWN90cgCWV5RvRihQXq61iXKUWdxQ
+X-Received: by 2002:ac8:7c9b:: with SMTP id y27mr3524392qtv.300.1583508463692;
+        Fri, 06 Mar 2020 07:27:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583508463; cv=none;
         d=google.com; s=arc-20160816;
-        b=az+4cyE0Coe/tbmdpjyuarqczg6jKTTC0vN4awwaafF3ZQKFogF/AVUaft83T8dgKq
-         LxwdroRoA4CfIgMRNp5KhnFHaqPF9O8wl+WKjAoWdNxY9GTZGk933Tib9obJl8+AAXkc
-         nTQs2BRfOwdhO0ia0M24+kpwlaWpodH8dw/NDIQLIXoFGa32lS3+VWcbY4rPsQOUGqGg
-         sHZTx6nwNi1PJxpsJaXL2bLhMmAwxoiUoDM8s3U0CZdbPKOGFKvQNHyqdDyqqXV8QD/5
-         gvyRUzitaEP4N5rwMffTcwqx00JV/n4uDMdRVwOcgDACcTq3G2n6C+e4xEkifbZ5G5ZF
-         HMGA==
+        b=P1YcF8VU8TkQRvYeoJJxs66i0xQ9diMTQSnjxcEh2Ak/OvjC25Tg/VGHBA7tHDD4nu
+         rc9GovtJ9swBjWDY9o3aLO8nRgdSEXQocTXwxufN6KTo/frlEdDGiQUtQ6ZaO+Mv5L+4
+         hMe8okelylCAtTShiXJ6+It9YwWRUuXuYtri36RmJaEoi9S8gtUCn9DRXD3hfDtjUvvg
+         wEz7caC3eYViHpSSzKqAWnq+U06FtLwZB6trqBJ0s+0ng0C49XM2H/5z9un3avXnGKD4
+         sCMV+Cuv2JAJaJn2bdWKW8GS2HXXMJnO53WqjVQR11MPAmIcVDpou58m+Al1bMUrevqb
+         1K0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=SmKbef1K1bn3gPNovfSeYozznacE1/UtTcbvPnbnux4=;
-        b=NOMXeVTor18Jyc+2PtwgjdiXfdKKb1C3Q8VSgn+HGZFxlaokxckUGftT2aCrX5suJA
-         54LeVVwMSaaqDddGaJz2/bjmoKr1S/0lVJUvcJj53MvOwOsP6kwgXcKzfkCrzrJYEujQ
-         wMEf3zWcv2zkiytmzYWHExec47VVKT+NIRw+bY9q0KgM+NfHK+NZdXdUcf4jGgKFqH+m
-         O8uuE9VSX1j/zpriKgf5Gv2YD+M65OQeugsS3y9N3/Jc80EEtlBXvm5zknWBvuxnobOh
-         Pb5H9pfwLfJSDXMW757SsUX5Coc59FQqToLylnUm6BdUjLOnXWh7xXmUOdUqUAPOorKo
-         LzJA==
+        bh=ObPG4dnuCRi/Lfeq3Vk3fwHQMIoKsgefbG2wBv+pY/0=;
+        b=wZ+ZdrFXPVXWo6Qwwl16ZatdsXPjHNKkHUeeUA0HMI9EH3woJx4QUyIUmZkB+OY8nG
+         BH2pdz8zMxYO5GdMZrYp4No0BrHxg7rND3sqpJEqRIm2pVDgZbifWXu1u7VpzWrFTczg
+         CA88VfwFL69ZPhvVg95dhThMHe52vqXodvao7pE5L1fr6hHkDIiTvRVvhR4p2fjmw6UT
+         MwQnqUe/V4PkQtakSOoIemzMhOaTib/sQYwUbR0NRiRoMQIMRY+U+q8kTPNqOAZvTD6w
+         pzGYFRSCzk7tWZ0wBJU4tFGHc2cXVt3vqc+S2IQsyMjuxThVToM/GWPn7jp9jn20whPb
+         78cQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g11si1281397qvy.137.2020.03.06.07.27.04
+        by mx.google.com with ESMTPS id k11si1385939qkh.95.2020.03.06.07.27.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Mar 2020 07:27:04 -0800 (PST)
+        Fri, 06 Mar 2020 07:27:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38177 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38188 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jAEsS-0007kY-AJ
-	for alex.bennee@linaro.org; Fri, 06 Mar 2020 10:27:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51111)
+	id 1jAEt5-0000Y5-63
+	for alex.bennee@linaro.org; Fri, 06 Mar 2020 10:27:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51241)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1jAEsJ-0007hB-2i
- for qemu-arm@nongnu.org; Fri, 06 Mar 2020 10:26:56 -0500
+ (envelope-from <clg@kaod.org>) id 1jAEsW-00088g-6L
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2020 10:27:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1jAEsI-0005za-0o
- for qemu-arm@nongnu.org; Fri, 06 Mar 2020 10:26:55 -0500
-Received: from 9.mo179.mail-out.ovh.net ([46.105.76.148]:57047)
+ (envelope-from <clg@kaod.org>) id 1jAEsV-0006KU-5u
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2020 10:27:08 -0500
+Received: from 8.mo5.mail-out.ovh.net ([178.32.116.78]:57906)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1jAEsH-0005xm-Qu
- for qemu-arm@nongnu.org; Fri, 06 Mar 2020 10:26:53 -0500
-Received: from player789.ha.ovh.net (unknown [10.108.42.145])
- by mo179.mail-out.ovh.net (Postfix) with ESMTP id 6D1CD15E3B7
- for <qemu-arm@nongnu.org>; Fri,  6 Mar 2020 16:26:52 +0100 (CET)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1jAEsU-0006JK-VY
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2020 10:27:07 -0500
+Received: from player787.ha.ovh.net (unknown [10.110.208.89])
+ by mo5.mail-out.ovh.net (Postfix) with ESMTP id 69FE726BF03
+ for <qemu-arm@nongnu.org>; Fri,  6 Mar 2020 16:27:05 +0100 (CET)
 Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
  (Authenticated sender: clg@kaod.org)
- by player789.ha.ovh.net (Postfix) with ESMTPSA id 7EDB9102D211E;
- Fri,  6 Mar 2020 15:26:32 +0000 (UTC)
-Subject: Re: [PATCH 3/6] hw/net/rtl8139: Simplify if/else statement
+ by player787.ha.ovh.net (Postfix) with ESMTPSA id 09F821052F4B3;
+ Fri,  6 Mar 2020 15:26:47 +0000 (UTC)
+Subject: Re: [PATCH 4/6] hw/net/rtl8139: Update coding style to make
+ checkpatch.pl happy
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 References: <20200305175651.4563-1-philmd@redhat.com>
- <20200305175651.4563-4-philmd@redhat.com>
+ <20200305175651.4563-5-philmd@redhat.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <b53d8a77-544b-c7c4-b208-13dacc437913@kaod.org>
-Date: Fri, 6 Mar 2020 16:26:31 +0100
+Message-ID: <c8988327-3fdb-3568-2df6-1101b7ccf445@kaod.org>
+Date: Fri, 6 Mar 2020 16:26:46 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200305175651.4563-4-philmd@redhat.com>
+In-Reply-To: <20200305175651.4563-5-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Ovh-Tracer-Id: 7763079858530520019
+X-Ovh-Tracer-Id: 7766739036414118867
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrudduvddgjeekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedvnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejkeelrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrudduvddgjeelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpeehnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejkeejrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.76.148
+X-Received-From: 178.32.116.78
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -100,59 +101,41 @@ Cc: qemu-ppc@nongnu.org, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OEui29jrOgu0
+X-TUID: YTEH8I5XzrrX
 
 On 3/5/20 6:56 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Rewrite:
->=20
->       if (E) {
->           return A;
->       } else {
->           return B;
->       }
->       /* EOF */
->   }
->=20
-> as:
->=20
->       if (E) {
->           return A;
->       }
->       return B;
->   }
+> We will modify this code in the next commit. Clean it up
+> first to avoid checkpatch.pl errors.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
 Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
 > ---
->  hw/net/rtl8139.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  hw/net/rtl8139.c | 10 ++++++----
+>  1 file changed, 6 insertions(+), 4 deletions(-)
 >=20
 > diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
-> index ae4739bc09..ef3211537f 100644
+> index ef3211537f..be9a0af629 100644
 > --- a/hw/net/rtl8139.c
 > +++ b/hw/net/rtl8139.c
-> @@ -808,11 +808,11 @@ static int rtl8139_can_receive(NetClientState *nc=
+> @@ -799,10 +799,12 @@ static int rtl8139_can_receive(NetClientState *nc=
 )
->          /* ??? Flow control not implemented in c+ mode.
->             This is a hack to work around slirp deficiencies anyway.  *=
-/
->          return 1;
-> -    } else {
-> -        avail =3D MOD2(s->RxBufferSize + s->RxBufPtr - s->RxBufAddr,
-> -                     s->RxBufferSize);
-> -        return (avail =3D=3D 0 || avail >=3D 1514 || (s->IntrMask & Rx=
-Overflow));
->      }
-> +
-> +    avail =3D MOD2(s->RxBufferSize + s->RxBufPtr - s->RxBufAddr,
-> +                 s->RxBufferSize);
-> +    return avail =3D=3D 0 || avail >=3D 1514 || (s->IntrMask & RxOverf=
-low);
->  }
+>      int avail;
 > =20
->  static ssize_t rtl8139_do_receive(NetClientState *nc, const uint8_t *b=
-uf, size_t size_, int do_interrupt)
+>      /* Receive (drop) packets if card is disabled.  */
+> -    if (!s->clock_enabled)
+> -      return 1;
+> -    if (!rtl8139_receiver_enabled(s))
+> -      return 1;
+> +    if (!s->clock_enabled) {
+> +        return 1;
+> +    }
+> +    if (!rtl8139_receiver_enabled(s)) {
+> +        return 1;
+> +    }
+> =20
+>      if (rtl8139_cp_receiver_enabled(s) && rtl8139_cp_rx_valid(s)) {
+>          /* ??? Flow control not implemented in c+ mode.
 >=20
 

@@ -1,243 +1,167 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp4079044lfi;
-        Fri, 6 Mar 2020 03:23:21 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vtBPCb0t3a+2YYS5vzk+Ji7G81fsB0ZmcMXOhwjjWrsSYPxkXmrHFNZO7zfzEc3e4cxoSsh
-X-Received: by 2002:ac8:1ca:: with SMTP id b10mr2394415qtg.314.1583493800982;
-        Fri, 06 Mar 2020 03:23:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583493800; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp4268108lfi;
+        Fri, 6 Mar 2020 06:28:32 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vv/SvOdP8izuHka/sQcezJFxlJSEMWyUkzlo5E+WoKE5HItc0rTQrsQstYUXyxvGLIwNSBU
+X-Received: by 2002:a0c:fc46:: with SMTP id w6mr3155800qvp.46.1583504912381;
+        Fri, 06 Mar 2020 06:28:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583504912; cv=none;
         d=google.com; s=arc-20160816;
-        b=StjbRBYjSMUaU74nC/3gBvVu/Aq4RNQCn9Eu8etwXRoa+VjGjbiuhCeNK8Tj5jeleB
-         w3I1ejWP8ESQzPEGj11Yl0sNeCR2GZ90XaPmsDC99lmLSPRqpnyS1tlJ0ylmpTQkEiay
-         HHr/ZdfTYvWGfRenPDNbFHYomJOB1pGdhtr674qT7pxCNZEUuCB/aqOM2TKws4RlAGFc
-         yJ6AM2e3QEtfSfJ+5CGQls622+U7N7Yl6TRnmeQz7Cz7M7wTHTJj78AoSPOFi7kARdOz
-         Ejk6gfwH/PY0Rs9bXKF9zkTFuXcYmzqYa/qyDxmmAs+pTdmescY7AKJfUNElbSN+fXhK
-         CSDQ==
+        b=0bvjRd3J1u99k1cE8NBRy41MkD1RFz4LHRmorHU4OhMXQEj28ICAdN9gXtdTYbSSwX
+         PxXzRNGI2pdBpGh/jpiUET8mlV1wgnfozMqlHYHAaiz/e9f3F9NRQB+jDGua227rsvw5
+         UvLOtsnx/APo3ASWZKQFBN+EuyTBKaboM6rOYymXBB4xLiyyGMS5ymgneF5UGzx5iEUi
+         eu9WnXMnjwXMFhVUzgBZ4XiT3fviV+u9ImkuXWWZf3d5AVHCMwTePTdhWEADxAXVayvP
+         xX3iq1RsmOeSln2Kf34GEMZH+2c5SaABC2ECrVnTxsdrrDhF3RERKj2Lu0TQTQEGxg4V
+         yvCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=2s9JXeDz4EqltLl6mL+qavCzz0ZKxnmqBZNo8uPIpzA=;
-        b=eWZrKPyMM5ofwpKz0JSc8xkofAcz0ZmANJIvVWEqVTFzK5mhBAZex6ouOXMGggoWBm
-         qSm7R7crnWVJDwE1Pp1ljRipyCXlsKDVWV+GcptzXsYVdv9wg2r2ZD3mUk1m1FRs6i1M
-         BKH6I1Kwp5Lw/IHNzzOEazK/5YQa+rA/0pxBP+Y7GfdaJgH/+ri3RCtbBm27J+hUJWhi
-         TRxlc/3dHNp8YnQ2LsfKCnFyMwkN3HmIyFRLQ5U9iXuvxXdn/Sq9pa98vpaW3pd5gYNe
-         rJvM5JBwsz0AUNKMqmHA2oMritvxan9zdqf9E7j0016tOrrSn2KHIwWIQ90Jq4w4Rz+/
-         xxLw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=zexsaYdz6DQAfVaaPXw2T/xuvAPNnGudtHfXvjWogFw=;
+        b=Ud3LY8oZTuNKxYkaubbLUN4gbgVbGGYX2ZjUZeGCu1/MqVwaEpHBVVyn5UUJXFX7fB
+         wXXTPRI615boMaC3Zw+pVaKNST9ubYfamB5HN8oRKQffvJ96vsnrZQPYl1JLZS3zLiOz
+         G8rW67rks9tvB+e/RQ+vVLNZv39cgTvYZkGeCDpPzgAgEb2Jb30gKVYmafP33OUKyhcE
+         HEcO7Zlf5UE7uRBrUMv3OvVOMReye94pq+8AXF2eewPNgzH/FQrTpZ2kl/E0k5nFeMp7
+         L+8EY5hS1AeT6G/jiPdtigz/hC6CbYeWFqxymqHlNAl4Igi2n4DlfFXNEQFMtxfOAjDf
+         pr0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Uqz0dG8n;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MCCzm824;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bn15si874316qvb.221.2020.03.06.03.23.20
+        by mx.google.com with ESMTPS id j9si1386391qkl.363.2020.03.06.06.28.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Mar 2020 03:23:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 06 Mar 2020 06:28:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Uqz0dG8n;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35120 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MCCzm824;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37567 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jAB4a-0002HA-Cg
-	for alex.bennee@linaro.org; Fri, 06 Mar 2020 06:23:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51565)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jADxn-0001G1-Ss
+	for alex.bennee@linaro.org; Fri, 06 Mar 2020 09:28:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58318)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1jAAyv-0008Ai-LN
- for qemu-devel@nongnu.org; Fri, 06 Mar 2020 06:17:30 -0500
+ (envelope-from <tanaygupta0x00@gmail.com>) id 1jA74i-0001ok-U5
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2020 02:07:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1jAAyu-0003iO-4R
- for qemu-devel@nongnu.org; Fri, 06 Mar 2020 06:17:29 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:48053
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1jAAyt-0003es-Uy
- for qemu-devel@nongnu.org; Fri, 06 Mar 2020 06:17:28 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583493447;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2s9JXeDz4EqltLl6mL+qavCzz0ZKxnmqBZNo8uPIpzA=;
- b=Uqz0dG8nMIq/Vg03LKLd/eDsXuYalEKrb8ho1z7p37COXynQuh+XuGhaSAKVotCt9cPoqY
- eyl+eAGqak4ff45ZVG6JN+Yo9Wzc2dGWWYeuWaPJ4OvLrhje1LI0Jg3aVHBapcmQSd28my
- 3PP9zPXmX99WPj7Bv2hewQaPLbWYVA4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-26-8KIxNJuBPBm6Gz2RDngudg-1; Fri, 06 Mar 2020 06:17:25 -0500
-X-MC-Unique: 8KIxNJuBPBm6Gz2RDngudg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0789F800D50;
- Fri,  6 Mar 2020 11:17:23 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AB76384D90;
- Fri,  6 Mar 2020 11:17:01 +0000 (UTC)
-Date: Fri, 6 Mar 2020 12:16:59 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Subject: Re: [PATCH 0/2] misc: Replace zero-length arrays with flexible
- array member
-Message-ID: <20200306121659.5365e50b@redhat.com>
-In-Reply-To: <20200304153601.23423-1-philmd@redhat.com>
-References: <20200304153601.23423-1-philmd@redhat.com>
+ (envelope-from <tanaygupta0x00@gmail.com>) id 1jA74h-0001Rq-TF
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2020 02:07:12 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:33156)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <tanaygupta0x00@gmail.com>)
+ id 1jA74h-0001Lu-Mz
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2020 02:07:11 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id a25so8720827wmm.0
+ for <qemu-arm@nongnu.org>; Thu, 05 Mar 2020 23:07:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=zexsaYdz6DQAfVaaPXw2T/xuvAPNnGudtHfXvjWogFw=;
+ b=MCCzm824aWxJU7EL44KBVClb800OmTGqaDI+w+BYllmIzvme0L4SCFmx5lcFjXW4Z2
+ GH9m/nCqubcT7Ni7Sfox5aOSNlzJ4retjrOtPut2YkXbMr1/osOkfGrKaaysslb6fcyC
+ ykl/9V4I9fnm29Ftwwtga55YrRkZ2sJVNTL37RJ1Q/v9PHViSeg7hkZPmntfmEQtr7iB
+ p1I32nsfpkSGG1nM+CHpWNMu5fiLAKveC0851Q+0w5MZ8sxVImBtVBfDQl0yK/TxH0Fz
+ FFT8QznV6vtZHSRJm3T+hmnXc/1sPb2UvOv8rn+Sg/upkg7PwySCbONiVMT5pJWUZWur
+ M4mw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=zexsaYdz6DQAfVaaPXw2T/xuvAPNnGudtHfXvjWogFw=;
+ b=qh9Uhfpi5pgD0RQUVYD6YpzHgyoflmMyUS8JrOcGIk8gjBDDdzw3AR00/ju55TkZ58
+ E4TAPXLVi2D7Q7qhvkalCXtcnSWsoXLodFvAKr81kap6B/pKy0XhklKJIuIY2uj9x69i
+ GsvFXQR9bfilg75nuUmUjdAHOfOVAegjhaEC+U2yJQw7amxbBthdrDstMXiq9Af9dXtE
+ ytKbTqC8DKmkSynapkrjU+Pnr0Spip5QUCuO573BNcNrIlzxWlF1AEeBHeqfPW+/jd2m
+ NCpMbGLkiq4wysD+8LDDeNDK9JUVB+7mRWiHrwCpzaKxXjG/gLa42VVIKbHennZ+OCi8
+ S86g==
+X-Gm-Message-State: ANhLgQ3bbedDtyLu/+dOud33PEp869TLSMtItQPVrnhCFgLhjSXeiZSA
+ rPILeRyCOLjn3gwhy6wmnpNG+OG6j/9GVMrXb8MI3g==
+X-Received: by 2002:a1c:7e57:: with SMTP id z84mr2277129wmc.148.1583478429563; 
+ Thu, 05 Mar 2020 23:07:09 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-devel@nongnu.org
+From: Tanay Gupta <tanaygupta0x00@gmail.com>
+Date: Fri, 6 Mar 2020 12:36:58 +0530
+Message-ID: <CALUW38uZL2PLM=GvBY=6uC=Fp0OE5ABJAKwUgebTEmPX5gK6eA@mail.gmail.com>
+Subject: Custom ARM Board: Setting BE32 endianness
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000004dc16405a02a4d51"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::32e
+X-Mailman-Approved-At: Fri, 06 Mar 2020 09:27:02 -0500
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
- qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
- Paul Durrant <paul@xen.org>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- "Gonglei \(Arei\)" <arei.gonglei@huawei.com>,
- Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Eric Auger <eric.auger@redhat.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>,
- John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Kevin Wolf <kwolf@redhat.com>, Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Reitz <mreitz@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7Pq9rXpUaUFq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HzuwhC1FbSz8
 
-On Wed,  4 Mar 2020 16:35:59 +0100
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+--0000000000004dc16405a02a4d51
+Content-Type: text/plain; charset="UTF-8"
 
-> v2:
-> - do not modify qed.h (structure with single member)
-> - based on hw/scsi/spapr_vscsi fix series
->=20
-> This is a tree-wide cleanup inspired by a Linux kernel commit
-> (from Gustavo A. R. Silva).
->=20
-> --v-- description start --v--
->=20
->   The current codebase makes use of the zero-length array language
->   extension to the C90 standard, but the preferred mechanism to
->   declare variable-length types such as these ones is a flexible
->   array member [1], introduced in C99:
->=20
->   struct foo {
->       int stuff;
->       struct boo array[];
->   };
->=20
->   By making use of the mechanism above, we will get a compiler
->   warning in case the flexible array does not occur last in the
->   structure, which will help us prevent some kind of undefined
->   behavior bugs from being unadvertenly introduced [2] to the
->   Linux codebase from now on.
->=20
-> --^-- description end --^--
->=20
-> Do the similar housekeeping in the QEMU codebase (which uses
-> C99 since commit 7be41675f7cb).
->=20
-> The first patch is done with the help of a coccinelle semantic
-> patch. However Coccinelle does not recognize:
->=20
->   struct foo {
->       int stuff;
->       struct boo array[];
->   } QEMU_PACKED;
->=20
-> but does recognize:
->=20
->   struct QEMU_PACKED foo {
->       int stuff;
->       struct boo array[];
->   };
->=20
-> I'm not sure why, neither it is worth refactoring all QEMU
-> structures to use the attributes before the structure name,
-> so I did the 2nd patch manually.
->=20
-> Anyway this is annoying, because many structures are not handled
-> by coccinelle. Maybe this needs to be reported to upstream
-> coccinelle?
->=20
-> I used spatch 1.0.8 with:
->=20
->   -I include --include-headers \
->   --macro-file scripts/cocci-macro-file.h \
->   --keep-comments --indent 4
->=20
-> Regards,
->=20
-> Phil.
->=20
-> Based-on: <20200304153311.22959-1-philmd@redhat.com>
-> Supersedes: <20200304005105.27454-1-philmd@redhat.com>
+Hi all!
 
-For acpi parts
-Acked-by: Igor Mammedov <imammedo@redhat.com>
+I'm trying to write my own board, and I'm not quite sure how to set the
+endianness to BE32.
 
->=20
-> Philippe Mathieu-Daud=C3=A9 (2):
->   misc: Replace zero-length arrays with flexible array member
->     (automatic)
->   misc: Replace zero-length arrays with flexible array member (manual)
->=20
->  docs/interop/vhost-user.rst           |  4 ++--
->  bsd-user/qemu.h                       |  2 +-
->  contrib/libvhost-user/libvhost-user.h |  2 +-
->  hw/m68k/bootinfo.h                    |  2 +-
->  hw/scsi/srp.h                         |  6 +++---
->  hw/xen/xen_pt.h                       |  2 +-
->  include/hw/acpi/acpi-defs.h           | 16 ++++++++--------
->  include/hw/arm/smmu-common.h          |  2 +-
->  include/hw/boards.h                   |  2 +-
->  include/hw/i386/intel_iommu.h         |  3 ++-
->  include/hw/s390x/event-facility.h     |  2 +-
->  include/hw/s390x/sclp.h               |  8 ++++----
->  include/hw/virtio/virtio-iommu.h      |  2 +-
->  include/sysemu/cryptodev.h            |  2 +-
->  include/tcg/tcg.h                     |  2 +-
->  pc-bios/s390-ccw/bootmap.h            |  2 +-
->  pc-bios/s390-ccw/sclp.h               |  2 +-
->  tests/qtest/libqos/ahci.h             |  2 +-
->  block/linux-aio.c                     |  2 +-
->  block/vmdk.c                          |  2 +-
->  hw/acpi/nvdimm.c                      |  6 +++---
->  hw/char/sclpconsole-lm.c              |  2 +-
->  hw/char/sclpconsole.c                 |  2 +-
->  hw/dma/soc_dma.c                      |  2 +-
->  hw/i386/x86.c                         |  2 +-
->  hw/misc/omap_l4.c                     |  2 +-
->  hw/nvram/eeprom93xx.c                 |  2 +-
->  hw/rdma/vmw/pvrdma_qp_ops.c           |  4 ++--
->  hw/s390x/virtio-ccw.c                 |  2 +-
->  hw/usb/dev-network.c                  |  2 +-
->  hw/usb/dev-smartcard-reader.c         |  4 ++--
->  hw/virtio/virtio.c                    |  4 ++--
->  net/queue.c                           |  2 +-
->  target/s390x/ioinst.c                 |  2 +-
->  34 files changed, 53 insertions(+), 52 deletions(-)
->=20
+I am loading binaries to memory using load_image_targphys_as.
 
+I have tried:
+- passing -cpu arm1136,cfgend=yes
+- using the setend be instruction
+- using mrc/mcr to change CP15
+
+In all the above cases, I check whether the endianness has changed in these
+ways:
+
+- xp /10i 0x40000000 in qemu monitor; which prints the LE interpretation of
+the code no matter what I do
+- running the binary; which always ends in an ABORT32
+
+The binary which I'm loading works on actual hardware, and I'm trying to
+emulate it using qemu.
+
+I don't have the elf, so I can't use the -kernel option.
+
+Can someone please help me figure out what I'm doing wrong?
+
+Any help is greatly appreciated.
+
+Thanks,
+Tanay
+
+--0000000000004dc16405a02a4d51
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Hi all!<div dir=3D"auto"><br></div><div dir=3D"auto">I&#3=
+9;m trying to write my own board, and I&#39;m not quite sure how to set the=
+ endianness to BE32.</div><div dir=3D"auto"><br></div><div dir=3D"auto">I a=
+m loading binaries to memory using load_image_targphys_as.</div><div dir=3D=
+"auto"><br></div><div dir=3D"auto">I have tried:</div><div dir=3D"auto">- p=
+assing -cpu arm1136,cfgend=3Dyes</div><div dir=3D"auto">- using the setend =
+be instruction</div><div dir=3D"auto">- using mrc/mcr to change CP15</div><=
+div dir=3D"auto"><br></div><div dir=3D"auto">In all the above cases, I chec=
+k whether the endianness has changed in these ways:</div><div dir=3D"auto">=
+<br></div><div dir=3D"auto">- xp /10i 0x40000000 in qemu monitor; which pri=
+nts the LE interpretation of the code no matter what I do</div><div dir=3D"=
+auto">- running the binary; which always ends in an ABORT32</div><div dir=
+=3D"auto"><br></div><div dir=3D"auto">The binary which I&#39;m loading work=
+s on actual hardware, and I&#39;m trying to emulate it using qemu.</div><di=
+v dir=3D"auto"><br></div><div dir=3D"auto">I don&#39;t have the elf, so I c=
+an&#39;t use the -kernel option.</div><div dir=3D"auto"><br></div><div dir=
+=3D"auto">Can someone please help me figure out what I&#39;m doing wrong?</=
+div><div dir=3D"auto"><br></div><div dir=3D"auto">Any help is greatly appre=
+ciated.</div><div dir=3D"auto"><br></div><div dir=3D"auto">Thanks,</div><di=
+v dir=3D"auto">Tanay</div></div>
+
+--0000000000004dc16405a02a4d51--

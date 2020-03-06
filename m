@@ -1,333 +1,528 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp4077611lfi;
-        Fri, 6 Mar 2020 03:21:39 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vtbk0o2Gcez3uz1R583KzQWehenylXsIeAwbKtW0zeNkUehh7N0D1P/gJ/+zDwY5D/NxuDc
-X-Received: by 2002:ac8:6957:: with SMTP id n23mr2432870qtr.79.1583493699046;
-        Fri, 06 Mar 2020 03:21:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583493699; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp4164649lfi;
+        Fri, 6 Mar 2020 04:55:25 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vuHJJ0qkW60OqzzkmKWh9W5XyidVav3YpyHNqDm1vbU06LyHdXfvMFK15DLn+E65OikIzwU
+X-Received: by 2002:aed:2b83:: with SMTP id e3mr2805318qtd.25.1583499325483;
+        Fri, 06 Mar 2020 04:55:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583499325; cv=none;
         d=google.com; s=arc-20160816;
-        b=W+Ku7k6CvJWjvNdnAxHzwNDRMwiOZwrJABYsql3OZeUZf/JRJPGLD+i34fTAeRHgPw
-         Zz6RbRPDLqdMzUJJuiUZB98QsE4XYcstdbFmr1Ov59yMFvUDYqJmPpaAWcsQVMCb+VaS
-         9Fx+1M5Itu1POMPgIghIotBmwQkQrnUAyfURdkwGRnfbB94bcqcaTLyyK1kaZvmRrojX
-         5fpJRPVQ0ryMcLyaz9NVyauSj/isKVoJU0/n+QsWAvUHwGGmtPoZlHtGbCVErOkH01PA
-         4MYWaC2I9xgljMruRvgp37SDcMIsMc5Ex5h6Kqpy/tcwAD4f4Tw8b7yfoYrxzRe0QfI+
-         GdiQ==
+        b=uaVob4BCp+4AsJztLnZ83dYqm4MfAOr2dVbZNH4zAdrIaIrQYL8VCAxY8TrASUbo63
+         YuXLb6TRuCbuMQ/4Q9AL+mP5DL+tExvl4QdL0Ijqs8xAWa9tLnVw8StAMzr2umcb/P1t
+         +7rdEQ33zpN3lJvqBijQBHQgNxAsr/Ko881Eed/Y9mjB+g1oZrzvpVMvpZaZ7qEnkJ4B
+         vIYwgc61Sr6C4Scg5eRfLMYlCMHPpMQbiKhMU1QQSyG03GJs5+BlAbUl3zuvHOgTYKAR
+         5FMzY+S3Tyiu9b2z7J+NpXE/dB+q3GAdpIAbo3pfSzLQCw5EXBJUPVsbjX3QwqBRuXqJ
+         Wxgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=oCZBJIEBCvrQGpahK+7VEXYVj3F5dRm7ZwQ1Yq1AzY0=;
-        b=nlwgoIXcIxQ6JVwfPo7vCb0NiWlcO2KYYAvcCHMS66M0KtUxapln8f3Faz70Ceji0r
-         TvNk4NML9/W6XSa3YJ3kL1r8VvBoq7HBVLe1paDSB9HED4pKEFQWjzK2tyzTzZb9nkWl
-         pyunOjeQVnN1StVcCjF7zsa1QEMrwSwoPwGukxFQ8h8fgHx/6r4UAFGxzxHoOY7OgfNG
-         g1MQFN+tOVwYde3m3Q8mZwumhcGMUT+HkBH0Y4KsKMC//lQd4r54ncKxdmbnhSpKmpvT
-         Wu3T41KHMutnxC8Nf6oEbIMuNViANfJOvtr4NGjwfv+LPnCJB+FEekCfNDn9QdtLkDt/
-         1WAA==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=1U19xdi6G+fCZnrR0o7u5Xg3TZdY7C39HuM5X+v6jKk=;
+        b=qThRGxQ7H+EUxJwecDDjiT4Vqk0TplRFncHsXsHrZs7JGido92asf2lVI5WG7d8tKq
+         9wrK4CQmiUSbIjXx1TjgeuE5Ndv8y8WXJBC/tBAxRUj6vKc3NxvoPmCmV1Ngvl1vv5Mi
+         ATX+Kj0BqwefvzEGw7UqsCX/UyVPLkS9OOjRLShi15zKbOTH8b+jeCnx8v+LFcZCxJu9
+         7D6nmXq96wkC4AZoMAk0ioshJQ7I/y9z5G/qN5QwfTWQ5OLFf7m2s0gPDRikg1e9lZZU
+         0tM4Qp+N5+AXKk/tKRp+CeN/oBcIf47+XWSpsMZ4iVIj/L1QQorEqVC/LdGxETa9tAv8
+         KgcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="OhX4W5/A";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g54si880093qtk.392.2020.03.06.03.21.38
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Mar 2020 03:21:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=CbnJkDkv;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id t25si980004qtr.245.2020.03.06.04.55.25;
+        Fri, 06 Mar 2020 04:55:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="OhX4W5/A";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35074 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jAB2w-00084r-B0
-	for alex.bennee@linaro.org; Fri, 06 Mar 2020 06:21:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47931)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <marcandre.lureau@gmail.com>) id 1jAAwu-0004ht-N6
- for qemu-arm@nongnu.org; Fri, 06 Mar 2020 06:15:26 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@gmail.com>) id 1jAAws-0004zk-IR
- for qemu-arm@nongnu.org; Fri, 06 Mar 2020 06:15:24 -0500
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:33951)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
- id 1jAAwm-0004s6-Vg; Fri, 06 Mar 2020 06:15:18 -0500
-Received: by mail-wr1-x443.google.com with SMTP id z15so1900895wrl.1;
- Fri, 06 Mar 2020 03:15:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=oCZBJIEBCvrQGpahK+7VEXYVj3F5dRm7ZwQ1Yq1AzY0=;
- b=OhX4W5/AlTFIKNZ37yDRGA6A48yphq+SKvRlOfttruPg8Uq3UMALwp56LNiU6pk68y
- zvB4GkNnE1sUNSpWibwC1bK+r6gcd7ouwLMRmfNM7LEb2oq6ChL+EGp61YGyd1sETfEq
- ouO9jYeZiAbwQsLltODvQozg8arG8PH1ml309hrl8MPaHmm67HE9vWcpyz4RNqmta2Ra
- 1IDZlm7BirN13WWdzdp7MhTA4vj+4coMd09lky4f3gecIjNOW83On2dPgo5larY96/mU
- xYZQscMAumOVe7DcoSWHJpEvtEQJp0SnUhbVada+TYj1suCs+8avVz2nBQAdk3nzU92i
- A4HQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=oCZBJIEBCvrQGpahK+7VEXYVj3F5dRm7ZwQ1Yq1AzY0=;
- b=LPukTCjpq1Lzcam3LiBB/BaPaDXN+PqM6zYWkB2SD67JwdjebhWhTWKrD/rmCmCpKh
- e7CMPCfGK29UANhh0OB240MXPbhV+EnfgS1HtwxQWAkLdn7xLt+p75X4kO3FANy+zzcK
- 6VG/SHwRyJNMRgzBzTUEFbMOoDAuLrzGKLNzN3sni/Q/p7dP/vbSkj0a4/jp700xFdfB
- FU4I1tudaIFvqMnjkXRcGUJVm+PUT1jWg3eeZl3Xm4Ea93HyYWcmKrbeAT+UG9h9r2/+
- k70n/mBhYaz2LBxKM1N5VcuI4tyDyxOHCcWtSPvXMMtvqqIWF/xh0enHyJTRpxgRSV8V
- STZA==
-X-Gm-Message-State: ANhLgQ0XbAcczLDWCkd9ddKdBJoWOLxFznyeS4XMXWIAnLKpiTA2qDcd
- RfdyDnhqCCB2S0sEoP3TJuePj7e7LBW9gOT7PKE=
-X-Received: by 2002:adf:cc85:: with SMTP id p5mr3525999wrj.196.1583493314778; 
- Fri, 06 Mar 2020 03:15:14 -0800 (PST)
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=CbnJkDkv;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 22C444ACB8;
+	Fri,  6 Mar 2020 07:55:25 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GRrBR1aMZ+Ry; Fri,  6 Mar 2020 07:55:23 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 849E44ACBA;
+	Fri,  6 Mar 2020 07:55:23 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 484BD4A968
+ for <kvmarm@lists.cs.columbia.edu>; Fri,  6 Mar 2020 07:55:22 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0X1XPHT-tR1E for <kvmarm@lists.cs.columbia.edu>;
+ Fri,  6 Mar 2020 07:55:21 -0500 (EST)
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
+ [205.139.110.120])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 0434C4A5A3
+ for <kvmarm@lists.cs.columbia.edu>; Fri,  6 Mar 2020 07:55:20 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583499320;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=BS2sHCAJbUny8bpNra/rSz2PCY1IUuHwtqJcEhk2CwE=;
+ b=CbnJkDkvxnf/3Z18sTUyVmQzUmEjTWy6Au3d2zU1h3DXcXcs8uEklBMbRDgD1ccqQIqL1G
+ 3CmJLvXkOtb+sUDpWWlxYIL2wWjBmkXADrQWt3z7BYt22CJv35ZsagZrBl5ckaq1YE0S4z
+ K5NMvkMAkrIFQ6jv2sOjWCDyMhzQG/o=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-250-D1Gfp_0lNeKbdwou4tPsKQ-1; Fri, 06 Mar 2020 07:55:16 -0500
+X-MC-Unique: D1Gfp_0lNeKbdwou4tPsKQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8E21518FF661;
+ Fri,  6 Mar 2020 12:55:14 +0000 (UTC)
+Received: from [10.36.116.59] (ovpn-116-59.ams2.redhat.com [10.36.116.59])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9180D5E1AE;
+ Fri,  6 Mar 2020 12:55:11 +0000 (UTC)
+Subject: Re: [kvm-unit-tests PATCH v3 11/14] arm/arm64: ITS: INT functional
+ tests
+To: Andrew Jones <drjones@redhat.com>
+References: <20200128103459.19413-1-eric.auger@redhat.com>
+ <20200128103459.19413-12-eric.auger@redhat.com>
+ <20200207131547.rlj44nwu32xa4tyd@kamzik.brq.redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <5f5b7136-61e5-6464-f359-5925ceaa49a2@redhat.com>
+Date: Fri, 6 Mar 2020 13:55:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-References: <20200224031319.84392-1-gshan@redhat.com>
-In-Reply-To: <20200224031319.84392-1-gshan@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Fri, 6 Mar 2020 12:15:01 +0100
-Message-ID: <CAJ+F1C+NiqauJzufJ5qeR78UPBgAZ3tEBSnJu0Y-hv0-nYHuhA@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/char/pl011: Enable TxFIFO and async transmission
-To: Gavin Shan <gshan@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::443
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+In-Reply-To: <20200207131547.rlj44nwu32xa4tyd@kamzik.brq.redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Cc: thuth@redhat.com, kvm@vger.kernel.org, maz@kernel.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
+ kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, QEMU <qemu-devel@nongnu.org>,
- "open list:ARM" <qemu-arm@nongnu.org>, shan.gavin@gmail.com,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HwVmhu/w3KMH
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: U2VYVcYSvEUa
 
-Hi
+Hi Drew,
 
-On Mon, Feb 24, 2020 at 4:13 AM Gavin Shan <gshan@redhat.com> wrote:
->
-> The depth of TxFIFO can be 1 or 16 depending on LCR[4]. The TxFIFO is
-> disabled when its depth is 1. It's nice to have TxFIFO enabled if
-> possible because more characters can be piled and transmitted at once,
-> which would have less overhead. Besides, we can be blocked because of
-> qemu_chr_fe_write_all(), which isn't nice.
->
-> This enables TxFIFO if possible. On ther other hand, the asynchronous
-> transmission is enabled if needed, as we did in hw/char/cadence_uart.c
->
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
-> v2: Put write_{count,fifo} into migration subsection
->     Don't start async IO handle if it has been started, to avoid race
->     Update with PL011_FLAG_{TXFF,TXFE} on changing write_count
-> ---
->  hw/char/pl011.c         | 105 +++++++++++++++++++++++++++++++++++++---
->  include/hw/char/pl011.h |   3 ++
->  2 files changed, 102 insertions(+), 6 deletions(-)
->
-> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-> index 13e784f9d9..de5c4254fe 100644
-> --- a/hw/char/pl011.c
-> +++ b/hw/char/pl011.c
-> @@ -169,6 +169,73 @@ static void pl011_set_read_trigger(PL011State *s)
->          s->read_trigger =3D 1;
->  }
->
-> +static gboolean pl011_xmit(GIOChannel *chan, GIOCondition cond, void *op=
-aque)
-> +{
-> +    PL011State *s =3D (PL011State *)opaque;
+On 2/7/20 2:15 PM, Andrew Jones wrote:
+> On Tue, Jan 28, 2020 at 11:34:56AM +0100, Eric Auger wrote:
+>> Triggers LPIs through the INT command.
+>>
+>> the test checks the LPI hits the right CPU and triggers
+>> the right LPI intid, ie. the translation is correct.
+>>
+>> Updates to the config table also are tested, along with inv
+>> and invall commands.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>
+>> ---
+>>
+>> v2 -> v3:
+>> - add comments
+>> - keep the report_skip in case there aren't 4 vcpus to be able to
+>>   run other tests in the its category.
+>> - fix the prefix pop
+>> - move its_event and its_stats to arm/gic.c
+>> ---
+>>  arm/gic.c         | 228 +++++++++++++++++++++++++++++++++++++++++++---
+>>  arm/unittests.cfg |   7 ++
+>>  2 files changed, 224 insertions(+), 11 deletions(-)
+>>
+>> diff --git a/arm/gic.c b/arm/gic.c
+>> index 4d7dd03..50104b1 100644
+>> --- a/arm/gic.c
+>> +++ b/arm/gic.c
+>> @@ -160,6 +160,87 @@ static void ipi_handler(struct pt_regs *regs __unused)
+>>  	}
+>>  }
+>>  
+>> +static void setup_irq(handler_t handler)
+>> +{
+>> +	gic_enable_defaults();
+>> +#ifdef __arm__
+>> +	install_exception_handler(EXCPTN_IRQ, handler);
+>> +#else
+>> +	install_irq_handler(EL1H_IRQ, handler);
+>> +#endif
+>> +	local_irq_enable();
+>> +}
+>> +
+>> +#if defined(__aarch64__)
+>> +struct its_event {
+>> +	int cpu_id;
+>> +	int lpi_id;
+>> +};
+>> +
+>> +struct its_stats {
+>> +	struct its_event expected;
+>> +	struct its_event observed;
+>> +};
+>> +
+>> +static struct its_stats lpi_stats;
+>> +
+>> +static void lpi_handler(struct pt_regs *regs __unused)
+>> +{
+>> +	u32 irqstat = gic_read_iar();
+>> +	int irqnr = gic_iar_irqnr(irqstat);
+>> +
+>> +	gic_write_eoir(irqstat);
+>> +	if (irqnr < 8192)
+>> +		report(false, "Unexpected non LPI interrupt received");
+> 
+> report_info
+why? This is an error case. We do not expect other interrupts than LPIs
+> 
+>> +	smp_rmb(); /* pairs with wmb in lpi_stats_expect */
+>> +	lpi_stats.observed.cpu_id = smp_processor_id();
+>> +	lpi_stats.observed.lpi_id = irqnr;
+>> +	smp_wmb(); /* pairs with rmb in check_lpi_stats */
+>> +}
+>> +
+>> +static void lpi_stats_expect(int exp_cpu_id, int exp_lpi_id)
+>> +{
+>> +	lpi_stats.expected.cpu_id = exp_cpu_id;
+>> +	lpi_stats.expected.lpi_id = exp_lpi_id;
+>> +	lpi_stats.observed.cpu_id = -1;
+>> +	lpi_stats.observed.lpi_id = -1;
+>> +	smp_wmb(); /* pairs with rmb in handler */
+>> +}
+>> +
+>> +static void check_lpi_stats(void)
+> 
+> static void check_lpi_stats(const char *testname)
+> {
+>    bool pass = false;
+> 
+>> +{
+>> +	mdelay(100);
+>> +	smp_rmb(); /* pairs with wmb in lpi_handler */
+>> +	if ((lpi_stats.observed.cpu_id != lpi_stats.expected.cpu_id) ||
+>> +	    (lpi_stats.observed.lpi_id != lpi_stats.expected.lpi_id)) {
+> 
+> nit: extra ()
+> 
+>> +		if (lpi_stats.observed.cpu_id == -1 &&
+>> +		    lpi_stats.observed.lpi_id == -1) {
+>> +			report(false,
+>> +			       "No LPI received whereas (cpuid=%d, intid=%d) "
+>> +			       "was expected", lpi_stats.expected.cpu_id,
+>> +			       lpi_stats.expected.lpi_id);
+> 
+> report_info
+What's the problem keeping those. Those are error reports. The message
+is something like that:
+FAIL: gicv3: its-trigger: mapc valid=false: No LPI received whereas
+(cpuid=1, intid=8192) was expected.
 
-Useless casts, perhaps use PL011() instead?
+So the testname is already part of the message.
+> 
+>> +		} else {
+>> +			report(false, "Unexpected LPI (cpuid=%d, intid=%d)",
+>> +			       lpi_stats.observed.cpu_id,
+>> +			       lpi_stats.observed.lpi_id);
+> 
+> report_info
+> 
+>> +		}
+> 
+> pass = false;
+> 
+>> +	} else if (lpi_stats.expected.lpi_id != -1) {
+>> +		report(true, "LPI %d on CPU %d", lpi_stats.observed.lpi_id,
+>> +		       lpi_stats.observed.cpu_id);
+> 
+> report_info
+> 
+>> +	} else {
+>> +		report(true, "no LPI received, as expected");
+> 
+> report_info
+> 
+> 
+>> +	}
+> 
+> report(pass, "%s", testname);
+> 
+>> +}
+>> +
+>> +static void secondary_lpi_test(void)
+>> +{
+>> +	setup_irq(lpi_handler);
+>> +	cpumask_set_cpu(smp_processor_id(), &ready);
+>> +	while (1)
+>> +		wfi();
+>> +}
+>> +#endif
+>> +
+>>  static void gicv2_ipi_send_self(void)
+>>  {
+>>  	writel(2 << 24 | IPI_IRQ, gicv2_dist_base() + GICD_SGIR);
+>> @@ -217,17 +298,6 @@ static void ipi_test_smp(void)
+>>  	report_prefix_pop();
+>>  }
+>>  
+>> -static void setup_irq(handler_t handler)
+>> -{
+>> -	gic_enable_defaults();
+>> -#ifdef __arm__
+>> -	install_exception_handler(EXCPTN_IRQ, handler);
+>> -#else
+>> -	install_irq_handler(EL1H_IRQ, handler);
+>> -#endif
+>> -	local_irq_enable();
+>> -}
+>> -
+>>  static void ipi_send(void)
+>>  {
+>>  	setup_irq(ipi_handler);
+>> @@ -522,6 +592,7 @@ static void gic_test_mmio(void)
+>>  #if defined(__arm__)
+>>  
+>>  static void test_its_introspection(void) {}
+>> +static void test_its_trigger(void) {}
+>>  
+>>  #else /* __arch64__ */
+>>  
+>> @@ -561,6 +632,137 @@ static void test_its_introspection(void)
+>>  	report_info("collection baser entry_size = 0x%x", coll_baser->esz);
+>>  }
+>>  
+>> +static bool its_prerequisites(int nb_cpus)
+>> +{
+>> +	int cpu;
+>> +
+>> +	if (!gicv3_its_base()) {
+>> +		report_skip("No ITS, skip ...");
+>> +		return true;
+>> +	}
+>> +
+>> +	if (nr_cpus < 4) {
+> 
+> nr_cpus < nb_cpus, or just drop the nb_cpus parameter and hard code 4
+> here.
+sure
+> 
+>> +		report_skip("Test requires at least %d vcpus", nb_cpus);
+>> +		return true;
+>> +	}
+>> +
+>> +	stats_reset();
+>> +
+>> +	setup_irq(lpi_handler);
+>> +
+>> +	for_each_present_cpu(cpu) {
+>> +		if (cpu == 0)
+>> +			continue;
+>> +		smp_boot_secondary(cpu, secondary_lpi_test);
+>> +	}
+>> +	wait_on_ready();
+>> +
+>> +	its_enable_defaults();
+>> +
+>> +	lpi_stats_expect(-1, -1);
+>> +	check_lpi_stats();
+>> +
+>> +	return false;
+> 
+> Reverse logic. I'd expect 'return true' for success.
+I am going to return an int. In case of error a std negative error will
+be returned.
+> 
+>> +}
+>> +
+>> +static void test_its_trigger(void)
+>> +{
+>> +	struct its_collection *col3, *col2;
+>> +	struct its_device *dev2, *dev7;
+>> +
+>> +	if (its_prerequisites(4))
+> 
+> if (!its_prerequisites(...))
+> 
+>> +		return;
+>> +
+>> +	dev2 = its_create_device(2 /* dev id */, 8 /* nb_ites */);
+>> +	dev7 = its_create_device(7 /* dev id */, 8 /* nb_ites */);
+>> +
+>> +	col3 = its_create_collection(3 /* col id */, 3/* target PE */);
+>> +	col2 = its_create_collection(2 /* col id */, 2/* target PE */);
+>> +
+>> +	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
+>> +	gicv3_lpi_set_config(8196, LPI_PROP_DEFAULT);
+>> +
+>> +	its_send_invall(col2);
+>> +	its_send_invall(col3);
+>> +
+>> +	report_prefix_push("int");
+>> +	/*
+>> +	 * dev=2, eventid=20  -> lpi= 8195, col=3
+>> +	 * dev=7, eventid=255 -> lpi= 8196, col=2
+>> +	 * Trigger dev2, eventid=20 and dev7, eventid=255
+>> +	 * Check both LPIs hit
+>> +	 */
+>> +
+>> +	its_send_mapd(dev2, true);
+>> +	its_send_mapd(dev7, true);
+>> +
+>> +	its_send_mapc(col3, true);
+>> +	its_send_mapc(col2, true);
+>> +
+>> +	its_send_mapti(dev2, 8195 /* lpi id */,
+>> +		       20 /* event id */, col3);
+>> +	its_send_mapti(dev7, 8196 /* lpi id */,
+>> +		       255 /* event id */, col2);
+> 
+> No need for line breaks, with the embedded comments it's hard to read
+OK
+> 
+>> +
+>> +	lpi_stats_expect(3, 8195);
+>> +	its_send_int(dev2, 20);
+>> +	check_lpi_stats();
+>> +
+>> +	lpi_stats_expect(2, 8196);
+>> +	its_send_int(dev7, 255);
+>> +	check_lpi_stats();
+>> +
+>> +	report_prefix_pop();
+> 
+> I think a table of parameters and loop would be nicer than all the
+> repeated function calls.
+Frankly speaking I am not sure this would really help. We are just
+enabling 2 translation paths. I think I prefer to manipulate the low
+level objects and helpers rather than playing with a loop and potential
+new structs of params.
+> 
+>> +
+>> +	report_prefix_push("inv/invall");
+>> +
+>> +	/*
+>> +	 * disable 8195, check dev2/eventid=20 does not trigger the
+>> +	 * corresponding LPI
+>> +	 */
+>> +	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT & ~0x1);
+> 
+> LPI_PROP_DEFAULT & ~LPI_PROP_ENABLED
+ok
+> 
+>> +	its_send_inv(dev2, 20);
+>> +
+>> +	lpi_stats_expect(-1, -1);
+>> +	its_send_int(dev2, 20);
+>> +	check_lpi_stats();
+>> +
+>> +	/*
+>> +	 * re-enable the LPI but willingly do not call invall
+>> +	 * so the change in config is not taken into account.
+>> +	 * The LPI should not hit
+>> +	 */
+>> +	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
+>> +	lpi_stats_expect(-1, -1);
+>> +	its_send_int(dev2, 20);
+>> +	check_lpi_stats();
+>> +
+>> +	/* Now call the invall and check the LPI hits */
+>> +	its_send_invall(col3);
+>> +	lpi_stats_expect(3, 8195);
+>> +	its_send_int(dev2, 20);
+>> +	check_lpi_stats();
+>> +
+>> +	report_prefix_pop();
+> 
+> Need blank line here.
+OK
+> 
+>> +	/*
+>> +	 * Unmap device 2 and check the eventid 20 formerly
+>> +	 * attached to it does not hit anymore
+>> +	 */
+>> +	report_prefix_push("mapd valid=false");
+> 
+> Above you have the prefix-push before the comment explaining the test.
+> After is probably better, but whatever, as long as it's consistent.
+moved after
+> 
+>> +	its_send_mapd(dev2, false);
+>> +	lpi_stats_expect(-1, -1);
+>> +	its_send_int(dev2, 20);
+>> +	check_lpi_stats();
+>> +	report_prefix_pop();
+>> +
+>> +	/* Unmap the collection this time and check no LPI does hit */
+>> +	report_prefix_push("mapc valid=false");
+>> +	its_send_mapc(col2, false);
+>> +	lpi_stats_expect(-1, -1);
+>> +	its_send_int(dev7, 255);
+>> +	check_lpi_stats();
+>> +	report_prefix_pop();
+>> +}
+>>  #endif
+>>  
+>>  int main(int argc, char **argv)
+>> @@ -594,6 +796,10 @@ int main(int argc, char **argv)
+>>  		report_prefix_push(argv[1]);
+>>  		gic_test_mmio();
+>>  		report_prefix_pop();
+>> +	} else if (!strcmp(argv[1], "its-trigger")) {
+>> +		report_prefix_push(argv[1]);
+>> +		test_its_trigger();
+>> +		report_prefix_pop();
+>>  	} else if (strcmp(argv[1], "its-introspection") == 0) {
+>>  		report_prefix_push(argv[1]);
+>>  		test_its_introspection();
+>> diff --git a/arm/unittests.cfg b/arm/unittests.cfg
+>> index ba2b31b..bfafec5 100644
+>> --- a/arm/unittests.cfg
+>> +++ b/arm/unittests.cfg
+>> @@ -129,6 +129,13 @@ extra_params = -machine gic-version=3 -append 'its-introspection'
+>>  groups = its
+>>  arch = arm64
+>>  
+>> +[its-trigger]
+>> +file = gic.flat
+>> +smp = $MAX_SMP
+>> +extra_params = -machine gic-version=3 -append 'its-trigger'
+>> +groups = its
+>> +arch = arm64
+>> +
+>>  # Test PSCI emulation
+>>  [psci]
+>>  file = psci.flat
+>> -- 
+>> 2.20.1
+>>
+> 
+> Thanks,
+> drew 
+> 
+Thanks
 
-> +    int ret;
-> +
-> +    /* Drain FIFO if there is no backend */
-> +    if (!qemu_chr_fe_backend_connected(&s->chr)) {
-> +        s->write_count =3D 0;
-> +        s->flags &=3D ~PL011_FLAG_TXFF;
-> +        s->flags |=3D PL011_FLAG_TXFE;
-> +        return FALSE;
+Eric
 
-Perhaps use G_SOURCE_REMOVE ?
-
-> +    }
-> +
-> +    /* Nothing to do */
-> +    if (!s->write_count) {
-> +        return FALSE;
-> +    }
-> +
-> +    ret =3D qemu_chr_fe_write(&s->chr, s->write_fifo, s->write_count);
-> +    if (ret > 0) {
-> +        s->write_count -=3D ret;
-> +        memmove(s->write_fifo, s->write_fifo + ret, s->write_count);
-> +        s->flags &=3D ~PL011_FLAG_TXFF;
-> +        if (!s->write_count) {
-> +            s->flags |=3D PL011_FLAG_TXFE;
-> +        }
-> +    }
-> +
-> +    if (s->write_count) {
-> +        s->watch_tag =3D qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_=
-HUP,
-> +                                             pl011_xmit, s);
-> +        if (!s->watch_tag) {
-> +            s->write_count =3D 0;
-> +            s->flags &=3D ~PL011_FLAG_TXFF;
-> +            s->flags |=3D PL011_FLAG_TXFE;
-> +            return FALSE;
-> +        }
-> +    }
-> +
-> +    s->int_level |=3D PL011_INT_TX;
-> +    pl011_update(s);
-> +    return FALSE;
-> +}
-> +
-> +static void pl011_write_fifo(void *opaque, const unsigned char *buf, int=
- size)
-> +{
-> +    PL011State *s =3D (PL011State *)opaque;
-> +    int depth =3D (s->lcr & 0x10) ? 16 : 1;
-> +
-> +    if (size >=3D (depth - s->write_count)) {
-
-parenthesis could be dropped
-
-> +        size =3D depth - s->write_count;
-> +    }
-> +
-
-Why make a function that accepts size !=3D 1 (and may silently drop
-data), when the only caller is pl011_write_fifo(opaque, &ch, 1); ?
-
-> +    if (size > 0) {
-
-I don't think other cases are supposed to happen.
-
-> +        memcpy(s->write_fifo + s->write_count, buf, size);
-> +        s->write_count +=3D size;
-> +        if (s->write_count >=3D depth) {
-> +            s->flags |=3D PL011_FLAG_TXFF;
-> +        }
-> +        s->flags &=3D ~PL011_FLAG_TXFE;
-> +    }
-> +
-> +    if (!s->watch_tag) {
-> +        pl011_xmit(NULL, G_IO_OUT, s);
-> +    }
-> +}
-> +
->  static void pl011_write(void *opaque, hwaddr offset,
->                          uint64_t value, unsigned size)
->  {
-> @@ -179,13 +246,8 @@ static void pl011_write(void *opaque, hwaddr offset,
->
->      switch (offset >> 2) {
->      case 0: /* UARTDR */
-> -        /* ??? Check if transmitter is enabled.  */
->          ch =3D value;
-> -        /* XXX this blocks entire thread. Rewrite to use
-> -         * qemu_chr_fe_write and background I/O callbacks */
-> -        qemu_chr_fe_write_all(&s->chr, &ch, 1);
-> -        s->int_level |=3D PL011_INT_TX;
-> -        pl011_update(s);
-> +        pl011_write_fifo(opaque, &ch, 1);
->          break;
->      case 1: /* UARTRSR/UARTECR */
->          s->rsr =3D 0;
-> @@ -207,7 +269,16 @@ static void pl011_write(void *opaque, hwaddr offset,
->          if ((s->lcr ^ value) & 0x10) {
->              s->read_count =3D 0;
->              s->read_pos =3D 0;
-> +
-> +            if (s->watch_tag) {
-> +                g_source_remove(s->watch_tag);
-> +                s->watch_tag =3D 0;
-> +            }
-> +            s->write_count =3D 0;
-> +            s->flags &=3D ~PL011_FLAG_TXFF;
-> +            s->flags |=3D PL011_FLAG_TXFE;
->          }
-> +
->          s->lcr =3D value;
->          pl011_set_read_trigger(s);
->          break;
-> @@ -292,6 +363,24 @@ static const MemoryRegionOps pl011_ops =3D {
->      .endianness =3D DEVICE_NATIVE_ENDIAN,
->  };
->
-> +static bool pl011_write_fifo_needed(void *opaque)
-> +{
-> +    PL011State *s =3D (PL011State *)opaque;
-> +    return s->write_count > 0;
-> +}
-> +
-> +static const VMStateDescription vmstate_pl011_write_fifo =3D {
-> +    .name =3D "pl011/write_fifo",
-> +    .version_id =3D 1,
-> +    .minimum_version_id =3D 1,
-> +    .needed =3D pl011_write_fifo_needed,
-> +    .fields =3D (VMStateField[]) {
-> +        VMSTATE_INT32(write_count, PL011State),
-> +        VMSTATE_UINT8_ARRAY(write_fifo, PL011State, 16),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  static const VMStateDescription vmstate_pl011 =3D {
->      .name =3D "pl011",
->      .version_id =3D 2,
-> @@ -314,6 +403,10 @@ static const VMStateDescription vmstate_pl011 =3D {
->          VMSTATE_INT32(read_count, PL011State),
->          VMSTATE_INT32(read_trigger, PL011State),
->          VMSTATE_END_OF_LIST()
-> +    },
-> +    .subsections =3D (const VMStateDescription * []) {
-> +        &vmstate_pl011_write_fifo,
-> +        NULL
->      }
->  };
->
-> diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
-> index 14187165c6..9d1c24db48 100644
-> --- a/include/hw/char/pl011.h
-> +++ b/include/hw/char/pl011.h
-> @@ -38,6 +38,7 @@ typedef struct PL011State {
->      uint32_t int_enabled;
->      uint32_t int_level;
->      uint32_t read_fifo[16];
-> +    uint8_t  write_fifo[16];
->      uint32_t ilpr;
->      uint32_t ibrd;
->      uint32_t fbrd;
-> @@ -45,6 +46,8 @@ typedef struct PL011State {
->      int read_pos;
->      int read_count;
->      int read_trigger;
-> +    int write_count;
-> +    guint watch_tag;
->      CharBackend chr;
->      qemu_irq irq[6];
->      const unsigned char *id;
-> --
-> 2.23.0
->
->
-
-Looks ok otherwise
-
---=20
-Marc-Andr=C3=A9 Lureau
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

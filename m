@@ -1,109 +1,109 @@
-Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp6143961lfi;
-        Sat, 7 Mar 2020 23:56:02 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vvOMd3U8h5g4zMYq2hxkBCZhckJHn9ycCS1yVtTfrf47W+kwLBXVzM9rI7JTu9jGukf3ADo
-X-Received: by 2002:a37:6cc7:: with SMTP id h190mr10441702qkc.358.1583654161994;
-        Sat, 07 Mar 2020 23:56:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583654161; cv=none;
+Received: by 2002:ac2:4942:0:0:0:0:0 with SMTP id o2csp6144552lfi;
+        Sat, 7 Mar 2020 23:56:46 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vt0oe72XwncOi4jn/QegqvUR7fV7FmTTlM/JUA7r5SmiDzSAWj/bbTRsw7NVs1ybabdMke5
+X-Received: by 2002:a0c:ec02:: with SMTP id y2mr3975865qvo.171.1583654206277;
+        Sat, 07 Mar 2020 23:56:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583654206; cv=none;
         d=google.com; s=arc-20160816;
-        b=lWpvW3hsLwcb4c6AKxFPdn3hlQdjwHNbJiVMHk97hMSU2MmT52cnmk3FU9cnFYAfX7
-         L5qMnX/twI3aYTU08FifXf0bPOaeJjeHr0plOOe3qFZfsuLlF27JTDUdnIDmONxXFif1
-         S7ozu/t2Ur2fOw/UXyR8Rf/Isi+z3J3Uudnjp4o4Uhz6nFchkJNTZh3Hs/T+W/hclGpw
-         jjFEtPBk7aATY6dP/Xucl/lcfMGS0WkBEopzu1KrN/PkhWSiqrXdjSjs+MQkSUyDdH68
-         wMf4V4toSgVm8pSLdezjD9L2rG2iAHdzU1nP30zh0cAcHd+Px6MQU5zjkaao/WCH0d8W
-         jrXA==
+        b=ldNbcK8fiqDAgxI9Ae3/QNGuCKyrugwvgltckIFe7tvd7gNi9KXdqCtHUml2TdJAE0
+         UGA4SbJVr3AK301sAVeim2l7txqkhSDyrtwl2gBwY/u70B/SVY5sLdcfcu09XstXf6nn
+         /7s92c99NTg5R+JrgV5G74zBdl6ZgYkTf8d73b2pSiMq8OdZiQ4ho6lyXRS5mhVzPekZ
+         tzwpFOC4RxNAoCnr3QEobybOrJTiJw3Tz5F269LsEarC0xmDrjjbrxOwM6N4WNE4BXhS
+         OeAVGfdZQeOlYsLu7Q7uapjid1l10+N9b/DVyeqGKHGq2PFIGw8EIWO5niFtW0LG+5D0
+         44Pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition
          :content-transfer-encoding:in-reply-to:mime-version:references
          :message-id:subject:to:from:date:dkim-signature;
-        bh=bk1eJFHWPNYwXgmgIgrCTgUnIxpdqLjzS3WY9m+6e2s=;
-        b=lGZRRo/BMn7++UvUQvXi++Emjke2OxKXUG6rBbNO9CJpquy3JNUXczn8lky+B0tRcJ
-         GV3LAtGd5f2pB7pnRi6Jirg4knnEqGLCah13iAFB9hu+fForu6t4LHcQMKMxyKHug3z4
-         FSJzlrJ1Qu3/NUUq1QFRAOZwHr+WtF3ELXV24qX6yqHfaFJjJOwOGbNcpuE1r5NlBIrj
-         /7OtrwsdyiJeph99j4jAY+V9g0y4gdu1y1pkyMjORfcW+RpSSFAW2cOiIsZ+E4CWB9jF
-         /qAV7E8z3fB5SNEAIsMH/hgWR7vpe31u4xODUHaAkI3Kbn2hut8ayk+i+7+4FoXajlFt
-         VKiQ==
+        bh=ynFyiQeM454w8E0H4H7s8WljySZMe1a49ecpNjlpYQM=;
+        b=YGEeKf61n0vqa2LOYHt8vXvkpIC5eKe151kESXNvzFQFFOtOvZd9WQ+ZOxqwXWGOoF
+         9FYhsApVwJr4VHmk0sKrrPCVpV5rkY4PuuvNDoKCBrnxP8i8u8zCSiUX/pcXJ/soWBT7
+         tC5LUBPRzAsXbyeIDtL4oJNtUhxfsz8cuhQFEXdygUQtRbfCiLuTiVNfT68/cPxAQOeF
+         XijZnMfvB9th+ENdYeSQHnTebe3Sjk5kE7CiSH8BuUY9CeKQJu4sKJngIfZ3vwFekk2W
+         0sjboROJEBpiGmcPqnnqhKdlyXsBjGMKlQK/4MpbIuUxI7VJj+f3e13zVnK8FZKeRer4
+         holQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KfV13wsw;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=e0i5cehi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o13si53088qtb.383.2020.03.07.23.56.01
+        by mx.google.com with ESMTPS id e28si4401979qkl.165.2020.03.07.23.56.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 07 Mar 2020 23:56:01 -0800 (PST)
+        Sat, 07 Mar 2020 23:56:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KfV13wsw;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=e0i5cehi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55694 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55714 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jAqn3-0008HF-Da
-	for alex.bennee@linaro.org; Sun, 08 Mar 2020 03:56:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46178)
+	id 1jAqnl-0000c3-LO
+	for alex.bennee@linaro.org; Sun, 08 Mar 2020 03:56:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46330)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mst@redhat.com>) id 1jAqmr-0008Ff-B5
- for qemu-arm@nongnu.org; Sun, 08 Mar 2020 03:55:51 -0400
+ (envelope-from <mst@redhat.com>) id 1jAqnY-0000Yl-3N
+ for qemu-arm@nongnu.org; Sun, 08 Mar 2020 03:56:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mst@redhat.com>) id 1jAqmo-00009z-Rw
- for qemu-arm@nongnu.org; Sun, 08 Mar 2020 03:55:49 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:40599
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <mst@redhat.com>) id 1jAqnW-0001ng-8j
+ for qemu-arm@nongnu.org; Sun, 08 Mar 2020 03:56:32 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:32390
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mst@redhat.com>) id 1jAqmo-00008b-MM
- for qemu-arm@nongnu.org; Sun, 08 Mar 2020 03:55:46 -0400
+ (Exim 4.71) (envelope-from <mst@redhat.com>) id 1jAqnW-0001nV-3w
+ for qemu-arm@nongnu.org; Sun, 08 Mar 2020 03:56:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583654146;
+ s=mimecast20190719; t=1583654189;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=bk1eJFHWPNYwXgmgIgrCTgUnIxpdqLjzS3WY9m+6e2s=;
- b=KfV13wswq/tXlwWjmlEilvlGpel6LlN0sRj6ZrmZAmc78qVs5FG61bE/Zzux3PzsBH0XgD
- xXymj3VoCs6nWegYo5LpDR5IOeybPYF81T703QzAdl2ZiBl7j/L2o09D+4lzvuYiFzUtKw
- FuOOsxM7K6B0GcKQsWfx46x/r3n1HWc=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-235-Fc9qWXFtNm2ygM-D-etvvg-1; Sun, 08 Mar 2020 03:55:40 -0400
-X-MC-Unique: Fc9qWXFtNm2ygM-D-etvvg-1
-Received: by mail-qk1-f198.google.com with SMTP id x21so4951868qkn.18
- for <qemu-arm@nongnu.org>; Sat, 07 Mar 2020 23:55:40 -0800 (PST)
+ bh=ynFyiQeM454w8E0H4H7s8WljySZMe1a49ecpNjlpYQM=;
+ b=e0i5cehiLuL2uCYC5518ZvID5Dbwy44ZToGOlkTEs/l/FLu4SeXtSXmOrhSjbogrFqbSyk
+ nB5i50hFe0ksRHtusNjpuc1MUd8RIfZfHXjUZ8nbli504Az0UiHH+MPuEBiAng2QZ97Byf
+ Z5aXpv7AkwiW8E2v6iVtF28xJth+iUU=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-17-0TAStY7jNBK4xJ9p7QfnnA-1; Sun, 08 Mar 2020 03:56:27 -0400
+X-MC-Unique: 0TAStY7jNBK4xJ9p7QfnnA-1
+Received: by mail-qk1-f199.google.com with SMTP id d2so4998960qko.3
+ for <qemu-arm@nongnu.org>; Sat, 07 Mar 2020 23:56:27 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:content-transfer-encoding
  :in-reply-to;
- bh=dcVUm4B4vO68jLIPB1CjCTQUpwYAA3Uz1MtdhFz4cpA=;
- b=OzH9fuXFhaMiwBP1TZ/m2M0CctOn1g3GWD1rdsDTLtVC1fjcjESQZ+pQxLtwdCcv8b
- PdnQVglCL6II7QMC6oAriU5jw5ETdP8Gb4FORpl1z/J/oSHEFdoKMvb303gASb3IhNOq
- YtdvW/j26HzGDmNCwEHEVuRZRBHeGpOMx54eoPLL1RaDHz2MghEZWMFDH0+/f2GY8nt2
- CV1UHjT6KvlLCc/KyawCc6OZAtvqEy8dwvMirq7/DMiYSjjXidOP8lWO4piaWTAVFhWP
- UbYgc4Eyy0QVhCKuL/H9plHWDIAKh0uVaN5FlkJPXXHk0QwLC1NqZmZMsJH4HISFmhFU
- 557g==
-X-Gm-Message-State: ANhLgQ1zHDmaqAZD/3qtBWMtPbj7KVPvOaqEugDdnOh9+L/2P/IWxTLR
- regTPbI/G+67AAN1+JKwL3+xaKOoEbsTm+It/FxjYBItmgZ+pL33pTkqgB46otT3tDks3R0Sk6R
- vjdQ82swK/0Co
-X-Received: by 2002:ac8:3003:: with SMTP id f3mr3937568qte.293.1583654139350; 
- Sat, 07 Mar 2020 23:55:39 -0800 (PST)
-X-Received: by 2002:ac8:3003:: with SMTP id f3mr3937531qte.293.1583654138862; 
- Sat, 07 Mar 2020 23:55:38 -0800 (PST)
+ bh=eNlNeV0cCqtLqdRwzb8GyuXIKo2c9XoG4YAsMmS1GFs=;
+ b=Ic4LpjQ22kOpuKGDkf+ZHpoHYZqQa5DZiEbnrswpUcwxoRRbidAlpXTU5pwaL0MCyG
+ UQqQzSMSDUqDu1eeFshUnGSpagJsmdEPbo5WWFWL20VXP+wzJEttUfyEVb87PkuGgejR
+ +V5TVMvfbOSI1eAYRVKbQzJai1lKxHquWELPZ0JX4msAPgayUC3ao+tshy8yTJy0dg5O
+ 0r5qdgEbtRB6cw4VWdoQT8+/GW7iy/54qJj14oZ/o0wa64e/QbbOmmmzVIbiugza051y
+ AuMR2uVTpjLWkJzRKpl6gYXlkzjRsBiufC1ZQ2+pSJDh/IPB/esxZFXapJmEEMyW0XGH
+ 9AVg==
+X-Gm-Message-State: ANhLgQ2UXDmVlCn32W9Yuz+MhL1z4UiRJeBWhhEExG1JFu6p1/4aLHJ9
+ 7e1TWH1WQ9ylR7PG9+zh5FHPNScv/fIUDOlbqmdPiWjyPWcgI3QSLN5K2Qed8LDHorTGwQomGQJ
+ oqkhMeahisBH9
+X-Received: by 2002:a37:b902:: with SMTP id j2mr8192010qkf.247.1583654187091; 
+ Sat, 07 Mar 2020 23:56:27 -0800 (PST)
+X-Received: by 2002:a37:b902:: with SMTP id j2mr8191977qkf.247.1583654186728; 
+ Sat, 07 Mar 2020 23:56:26 -0800 (PST)
 Received: from redhat.com (bzq-79-178-2-19.red.bezeqint.net. [79.178.2.19])
- by smtp.gmail.com with ESMTPSA id 6sm7644717qky.30.2020.03.07.23.55.31
+ by smtp.gmail.com with ESMTPSA id t55sm21320959qte.24.2020.03.07.23.56.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 07 Mar 2020 23:55:38 -0800 (PST)
-Date: Sun, 8 Mar 2020 03:55:28 -0400
+ Sat, 07 Mar 2020 23:56:26 -0800 (PST)
+Date: Sun, 8 Mar 2020 03:56:16 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [PATCH v2 1/2] misc: Replace zero-length arrays with flexible
- array member (automatic)
-Message-ID: <20200308035457-mutt-send-email-mst@kernel.org>
+Subject: Re: [PATCH v2 2/2] misc: Replace zero-length arrays with flexible
+ array member (manual)
+Message-ID: <20200308035558-mutt-send-email-mst@kernel.org>
 References: <20200304153816.23636-1-philmd@redhat.com>
- <20200304153816.23636-2-philmd@redhat.com>
+ <20200304153816.23636-3-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200304153816.23636-2-philmd@redhat.com>
+In-Reply-To: <20200304153816.23636-3-philmd@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=iso-8859-1
@@ -111,7 +111,7 @@ Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -146,9 +146,9 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EgudBln/Dm9r
+X-TUID: 6Q7mQIj8/HfK
 
-On Wed, Mar 04, 2020 at 04:38:15PM +0100, Philippe Mathieu-Daud=E9 wrote:
+On Wed, Mar 04, 2020 at 04:38:16PM +0100, Philippe Mathieu-Daud=E9 wrote:
 > Description copied from Linux kernel commit from Gustavo A. R. Silva
 > (see [3]):
 >=20
@@ -176,28 +176,11 @@ On Wed, Mar 04, 2020 at 04:38:15PM +0100, Philippe Mathieu-Daud=E9 wrote:
 > C99 since commit 7be41675f7cb).
 >=20
 > All these instances of code were found with the help of the
-> following Coccinelle script:
+> following command (then manual analysis, without modifying
+> structures only having a single flexible array member, such
+> QEDTable in block/qed.h):
 >=20
->   @@
->   identifier s, m, a;
->   type t, T;
->   @@
->    struct s {
->       ...
->       t m;
->   -   T a[0];
->   +   T a[];
->   };
->   @@
->   identifier s, m, a;
->   type t, T;
->   @@
->    struct s {
->       ...
->       t m;
->   -   T a[0];
->   +   T a[];
->    } QEMU_PACKED;
+>   git grep -F '[0];'
 >=20
 > [1] https://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html
 > [2] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/co=
@@ -209,497 +192,212 @@ commit/?id=3D17642a2fbd2c1
 > Reviewed-by: David Hildenbrand <david@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 
+
+
 > ---
-> v2: cocci script updated to not match structures of onlyi
-> a single flexible array member:
+> v2: Do not modify block/qed.h:
 >=20
 >   block/qed.h:106:14: error: flexible array member 'offsets' not allowed =
 in otherwise empty struct
 >       uint64_t offsets[];             /* in bytes */
 >                ^
 > ---
->  bsd-user/qemu.h                       |  2 +-
->  contrib/libvhost-user/libvhost-user.h |  2 +-
->  hw/m68k/bootinfo.h                    |  2 +-
->  hw/scsi/srp.h                         |  6 +++---
->  hw/xen/xen_pt.h                       |  2 +-
->  include/hw/acpi/acpi-defs.h           | 12 ++++++------
->  include/hw/arm/smmu-common.h          |  2 +-
->  include/hw/i386/intel_iommu.h         |  3 ++-
->  include/hw/virtio/virtio-iommu.h      |  2 +-
->  include/sysemu/cryptodev.h            |  2 +-
->  include/tcg/tcg.h                     |  2 +-
->  pc-bios/s390-ccw/bootmap.h            |  2 +-
->  pc-bios/s390-ccw/sclp.h               |  2 +-
->  tests/qtest/libqos/ahci.h             |  2 +-
->  block/linux-aio.c                     |  2 +-
->  hw/acpi/nvdimm.c                      |  6 +++---
->  hw/dma/soc_dma.c                      |  2 +-
->  hw/i386/x86.c                         |  2 +-
->  hw/misc/omap_l4.c                     |  2 +-
->  hw/nvram/eeprom93xx.c                 |  2 +-
->  hw/rdma/vmw/pvrdma_qp_ops.c           |  4 ++--
->  hw/usb/dev-network.c                  |  2 +-
->  hw/usb/dev-smartcard-reader.c         |  4 ++--
->  hw/virtio/virtio.c                    |  4 ++--
->  net/queue.c                           |  2 +-
->  25 files changed, 38 insertions(+), 37 deletions(-)
+>  docs/interop/vhost-user.rst       | 4 ++--
+>  include/hw/acpi/acpi-defs.h       | 4 ++--
+>  include/hw/boards.h               | 2 +-
+>  include/hw/s390x/event-facility.h | 2 +-
+>  include/hw/s390x/sclp.h           | 8 ++++----
+>  block/vmdk.c                      | 2 +-
+>  hw/char/sclpconsole-lm.c          | 2 +-
+>  hw/char/sclpconsole.c             | 2 +-
+>  hw/s390x/virtio-ccw.c             | 2 +-
+>  target/s390x/ioinst.c             | 2 +-
+>  10 files changed, 15 insertions(+), 15 deletions(-)
 >=20
-> diff --git a/bsd-user/qemu.h b/bsd-user/qemu.h
-> index 09e8aed9c7..f8bb1e5459 100644
-> --- a/bsd-user/qemu.h
-> +++ b/bsd-user/qemu.h
-> @@ -95,7 +95,7 @@ typedef struct TaskState {
->      struct sigqueue *first_free; /* first free siginfo queue entry */
->      int signal_pending; /* non zero if a signal may be pending */
+> diff --git a/docs/interop/vhost-user.rst b/docs/interop/vhost-user.rst
+> index 401652397c..3b1b6602c7 100644
+> --- a/docs/interop/vhost-user.rst
+> +++ b/docs/interop/vhost-user.rst
+> @@ -568,7 +568,7 @@ For split virtqueue, queue region can be implemented =
+as:
+>        uint16_t used_idx;
 > =20
-> -    uint8_t stack[0];
-> +    uint8_t stack[];
->  } __attribute__((aligned(16))) TaskState;
+>        /* Used to track the state of each descriptor in descriptor table =
+*/
+> -      DescStateSplit desc[0];
+> +      DescStateSplit desc[];
+>    } QueueRegionSplit;
 > =20
->  void init_task_state(TaskState *ts);
-> diff --git a/contrib/libvhost-user/libvhost-user.h b/contrib/libvhost-use=
-r/libvhost-user.h
-> index 6fc8000e99..f30394fab6 100644
-> --- a/contrib/libvhost-user/libvhost-user.h
-> +++ b/contrib/libvhost-user/libvhost-user.h
-> @@ -286,7 +286,7 @@ typedef struct VuVirtqInflight {
->      uint16_t used_idx;
+>  To track inflight I/O, the queue region should be processed as follows:
+> @@ -690,7 +690,7 @@ For packed virtqueue, queue region can be implemented=
+ as:
+>        uint8_t padding[7];
 > =20
->      /* Used to track the state of each descriptor in descriptor table */
-> -    VuDescStateSplit desc[0];
-> +    VuDescStateSplit desc[];
->  } VuVirtqInflight;
+>        /* Used to track the state of each descriptor fetched from descrip=
+tor ring */
+> -      DescStatePacked desc[0];
+> +      DescStatePacked desc[];
+>    } QueueRegionPacked;
 > =20
->  typedef struct VuVirtqInflightDesc {
-> diff --git a/hw/m68k/bootinfo.h b/hw/m68k/bootinfo.h
-> index 5f8ded2686..c954270aad 100644
-> --- a/hw/m68k/bootinfo.h
-> +++ b/hw/m68k/bootinfo.h
-> @@ -14,7 +14,7 @@
->  struct bi_record {
->      uint16_t tag;        /* tag ID */
->      uint16_t size;       /* size of record */
-> -    uint32_t data[0];    /* data */
-> +    uint32_t data[];     /* data */
->  };
-> =20
->  /* machine independent tags */
-> diff --git a/hw/scsi/srp.h b/hw/scsi/srp.h
-> index d27f31d2d5..54c954badd 100644
-> --- a/hw/scsi/srp.h
-> +++ b/hw/scsi/srp.h
-> @@ -112,7 +112,7 @@ struct srp_direct_buf {
->  struct srp_indirect_buf {
->      struct srp_direct_buf    table_desc;
->      uint32_t                 len;
-> -    struct srp_direct_buf    desc_list[0];
-> +    struct srp_direct_buf    desc_list[];
->  } QEMU_PACKED;
-> =20
->  enum {
-> @@ -211,7 +211,7 @@ struct srp_cmd {
->      uint8_t    reserved4;
->      uint8_t    add_cdb_len;
->      uint8_t    cdb[16];
-> -    uint8_t    add_data[0];
-> +    uint8_t    add_data[];
->  } QEMU_PACKED;
-> =20
->  enum {
-> @@ -241,7 +241,7 @@ struct srp_rsp {
->      uint32_t   data_in_res_cnt;
->      uint32_t   sense_data_len;
->      uint32_t   resp_data_len;
-> -    uint8_t    data[0];
-> +    uint8_t    data[];
->  } QEMU_PACKED;
-> =20
->  #endif /* SCSI_SRP_H */
-> diff --git a/hw/xen/xen_pt.h b/hw/xen/xen_pt.h
-> index 9167bbaf6d..179775db7b 100644
-> --- a/hw/xen/xen_pt.h
-> +++ b/hw/xen/xen_pt.h
-> @@ -203,7 +203,7 @@ typedef struct XenPTMSIX {
->      uint64_t mmio_base_addr;
->      MemoryRegion mmio;
->      void *phys_iomem_base;
-> -    XenPTMSIXEntry msix_entry[0];
-> +    XenPTMSIXEntry msix_entry[];
->  } XenPTMSIX;
-> =20
->  struct XenPCIPassthroughState {
+>  To track inflight I/O, the queue region should be processed as follows:
 > diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-> index 57a3f58b0c..19f7ba7b70 100644
+> index 19f7ba7b70..c13327fa78 100644
 > --- a/include/hw/acpi/acpi-defs.h
 > +++ b/include/hw/acpi/acpi-defs.h
-> @@ -518,7 +518,7 @@ struct AcpiDmarDeviceScope {
->      struct {
->          uint8_t device;
->          uint8_t function;
-> -    } path[0];
-> +    } path[];
+> @@ -152,7 +152,7 @@ typedef struct AcpiSerialPortConsoleRedirection
+>   */
+>  struct AcpiRsdtDescriptorRev1 {
+>      ACPI_TABLE_HEADER_DEF       /* ACPI common table header */
+> -    uint32_t table_offset_entry[0];  /* Array of pointers to other */
+> +    uint32_t table_offset_entry[];  /* Array of pointers to other */
+>      /* ACPI tables */
 >  } QEMU_PACKED;
->  typedef struct AcpiDmarDeviceScope AcpiDmarDeviceScope;
-> =20
-> @@ -530,7 +530,7 @@ struct AcpiDmarHardwareUnit {
->      uint8_t reserved;
->      uint16_t pci_segment;   /* The PCI Segment associated with this unit=
- */
->      uint64_t address;   /* Base address of remapping hardware register-s=
-et */
-> -    AcpiDmarDeviceScope scope[0];
-> +    AcpiDmarDeviceScope scope[];
+>  typedef struct AcpiRsdtDescriptorRev1 AcpiRsdtDescriptorRev1;
+> @@ -162,7 +162,7 @@ typedef struct AcpiRsdtDescriptorRev1 AcpiRsdtDescrip=
+torRev1;
+>   */
+>  struct AcpiXsdtDescriptorRev2 {
+>      ACPI_TABLE_HEADER_DEF       /* ACPI common table header */
+> -    uint64_t table_offset_entry[0];  /* Array of pointers to other */
+> +    uint64_t table_offset_entry[];  /* Array of pointers to other */
+>      /* ACPI tables */
 >  } QEMU_PACKED;
->  typedef struct AcpiDmarHardwareUnit AcpiDmarHardwareUnit;
+>  typedef struct AcpiXsdtDescriptorRev2 AcpiXsdtDescriptorRev2;
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index 9bc42dfb22..c96120d15f 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -71,7 +71,7 @@ typedef struct CPUArchId {
+>   */
+>  typedef struct {
+>      int len;
+> -    CPUArchId cpus[0];
+> +    CPUArchId cpus[];
+>  } CPUArchIdList;
 > =20
-> @@ -541,7 +541,7 @@ struct AcpiDmarRootPortATS {
->      uint8_t flags;
->      uint8_t reserved;
->      uint16_t pci_segment;
-> -    AcpiDmarDeviceScope scope[0];
-> +    AcpiDmarDeviceScope scope[];
->  } QEMU_PACKED;
->  typedef struct AcpiDmarRootPortATS AcpiDmarRootPortATS;
+>  /**
+> diff --git a/include/hw/s390x/event-facility.h b/include/hw/s390x/event-f=
+acility.h
+> index bdc32a3c09..700a610f33 100644
+> --- a/include/hw/s390x/event-facility.h
+> +++ b/include/hw/s390x/event-facility.h
+> @@ -122,7 +122,7 @@ typedef struct MDBO {
 > =20
-> @@ -604,7 +604,7 @@ typedef struct AcpiIortMemoryAccess AcpiIortMemoryAcc=
-ess;
->  struct AcpiIortItsGroup {
->      ACPI_IORT_NODE_HEADER_DEF
->      uint32_t its_count;
-> -    uint32_t identifiers[0];
-> +    uint32_t identifiers[];
->  } QEMU_PACKED;
->  typedef struct AcpiIortItsGroup AcpiIortItsGroup;
+>  typedef struct MDB {
+>      MdbHeader header;
+> -    MDBO mdbo[0];
+> +    MDBO mdbo[];
+>  } QEMU_PACKED MDB;
 > =20
-> @@ -621,7 +621,7 @@ struct AcpiIortSmmu3 {
->      uint32_t pri_gsiv;
->      uint32_t gerr_gsiv;
->      uint32_t sync_gsiv;
-> -    AcpiIortIdMapping id_mapping_array[0];
-> +    AcpiIortIdMapping id_mapping_array[];
->  } QEMU_PACKED;
->  typedef struct AcpiIortSmmu3 AcpiIortSmmu3;
+>  typedef struct SclpMsg {
+> diff --git a/include/hw/s390x/sclp.h b/include/hw/s390x/sclp.h
+> index c54413b78c..cd7b24359f 100644
+> --- a/include/hw/s390x/sclp.h
+> +++ b/include/hw/s390x/sclp.h
+> @@ -132,7 +132,7 @@ typedef struct ReadInfo {
+>      uint16_t highest_cpu;
+>      uint8_t  _reserved5[124 - 122];     /* 122-123 */
+>      uint32_t hmfai;
+> -    struct CPUEntry entries[0];
+> +    struct CPUEntry entries[];
+>  } QEMU_PACKED ReadInfo;
 > =20
-> @@ -630,7 +630,7 @@ struct AcpiIortRC {
->      AcpiIortMemoryAccess memory_properties;
->      uint32_t ats_attribute;
->      uint32_t pci_segment_number;
-> -    AcpiIortIdMapping id_mapping_array[0];
-> +    AcpiIortIdMapping id_mapping_array[];
->  } QEMU_PACKED;
->  typedef struct AcpiIortRC AcpiIortRC;
+>  typedef struct ReadCpuInfo {
+> @@ -142,7 +142,7 @@ typedef struct ReadCpuInfo {
+>      uint16_t nr_standby;            /* 12-13 */
+>      uint16_t offset_standby;        /* 14-15 */
+>      uint8_t reserved0[24-16];       /* 16-23 */
+> -    struct CPUEntry entries[0];
+> +    struct CPUEntry entries[];
+>  } QEMU_PACKED ReadCpuInfo;
 > =20
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index 1f37844e5c..ca4a4b1ad1 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -85,7 +85,7 @@ typedef struct SMMUDevice {
+>  typedef struct ReadStorageElementInfo {
+> @@ -151,7 +151,7 @@ typedef struct ReadStorageElementInfo {
+>      uint16_t assigned;
+>      uint16_t standby;
+>      uint8_t _reserved0[16 - 14]; /* 14-15 */
+> -    uint32_t entries[0];
+> +    uint32_t entries[];
+>  } QEMU_PACKED ReadStorageElementInfo;
 > =20
->  typedef struct SMMUPciBus {
->      PCIBus       *bus;
-> -    SMMUDevice   *pbdev[0]; /* Parent array is sparse, so dynamically al=
-loc */
-> +    SMMUDevice   *pbdev[]; /* Parent array is sparse, so dynamically all=
-oc */
->  } SMMUPciBus;
+>  typedef struct AttachStorageElement {
+> @@ -159,7 +159,7 @@ typedef struct AttachStorageElement {
+>      uint8_t _reserved0[10 - 8];  /* 8-9 */
+>      uint16_t assigned;
+>      uint8_t _reserved1[16 - 12]; /* 12-15 */
+> -    uint32_t entries[0];
+> +    uint32_t entries[];
+>  } QEMU_PACKED AttachStorageElement;
 > =20
->  typedef struct SMMUIOTLBKey {
-> diff --git a/include/hw/i386/intel_iommu.h b/include/hw/i386/intel_iommu.=
-h
-> index 66b931e526..67aaa64c1b 100644
-> --- a/include/hw/i386/intel_iommu.h
-> +++ b/include/hw/i386/intel_iommu.h
-> @@ -118,7 +118,8 @@ struct VTDAddressSpace {
+>  typedef struct AssignStorage {
+> diff --git a/block/vmdk.c b/block/vmdk.c
+> index 20e909d997..8466051bc9 100644
+> --- a/block/vmdk.c
+> +++ b/block/vmdk.c
+> @@ -187,7 +187,7 @@ typedef struct VmdkMetaData {
+>  typedef struct VmdkGrainMarker {
+>      uint64_t lba;
+>      uint32_t size;
+> -    uint8_t  data[0];
+> +    uint8_t  data[];
+>  } QEMU_PACKED VmdkGrainMarker;
 > =20
->  struct VTDBus {
->      PCIBus* bus;=09=09/* A reference to the bus to provide translation f=
-or */
-> -    VTDAddressSpace *dev_as[0];=09/* A table of VTDAddressSpace objects =
-indexed by devfn */
-> +    /* A table of VTDAddressSpace objects indexed by devfn */
-> +    VTDAddressSpace *dev_as[];
->  };
+>  enum {
+> diff --git a/hw/char/sclpconsole-lm.c b/hw/char/sclpconsole-lm.c
+> index c420dc066e..2b5f37b6a2 100644
+> --- a/hw/char/sclpconsole-lm.c
+> +++ b/hw/char/sclpconsole-lm.c
+> @@ -31,7 +31,7 @@
+>  typedef struct OprtnsCommand {
+>      EventBufferHeader header;
+>      MDMSU message_unit;
+> -    char data[0];
+> +    char data[];
+>  } QEMU_PACKED OprtnsCommand;
 > =20
->  struct VTDIOTLBEntry {
-> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-=
-iommu.h
-> index 6f67f1020a..e653004d7c 100644
-> --- a/include/hw/virtio/virtio-iommu.h
-> +++ b/include/hw/virtio/virtio-iommu.h
-> @@ -41,7 +41,7 @@ typedef struct IOMMUDevice {
+>  /* max size for line-mode data in 4K SCCB page */
+> diff --git a/hw/char/sclpconsole.c b/hw/char/sclpconsole.c
+> index 1fa124dab9..5c7664905e 100644
+> --- a/hw/char/sclpconsole.c
+> +++ b/hw/char/sclpconsole.c
+> @@ -25,7 +25,7 @@
 > =20
->  typedef struct IOMMUPciBus {
->      PCIBus       *bus;
-> -    IOMMUDevice  *pbdev[0]; /* Parent array is sparse, so dynamically al=
-loc */
-> +    IOMMUDevice  *pbdev[]; /* Parent array is sparse, so dynamically all=
-oc */
->  } IOMMUPciBus;
-> =20
->  typedef struct VirtIOIOMMU {
-> diff --git a/include/sysemu/cryptodev.h b/include/sysemu/cryptodev.h
-> index a9afb7e5b5..35eab06d0e 100644
-> --- a/include/sysemu/cryptodev.h
-> +++ b/include/sysemu/cryptodev.h
-> @@ -143,7 +143,7 @@ typedef struct CryptoDevBackendSymOpInfo {
->      uint8_t *dst;
->      uint8_t *aad_data;
->      uint8_t *digest_result;
-> -    uint8_t data[0];
-> +    uint8_t data[];
->  } CryptoDevBackendSymOpInfo;
-> =20
->  typedef struct CryptoDevBackendClass {
-> diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
-> index 54e5446880..c48bd76b0a 100644
-> --- a/include/tcg/tcg.h
-> +++ b/include/tcg/tcg.h
-> @@ -267,7 +267,7 @@ struct TCGLabel {
->  typedef struct TCGPool {
->      struct TCGPool *next;
->      int size;
-> -    uint8_t data[0] __attribute__ ((aligned));
-> +    uint8_t data[] __attribute__ ((aligned));
->  } TCGPool;
-> =20
->  #define TCG_POOL_CHUNK_SIZE 32768
-> diff --git a/pc-bios/s390-ccw/bootmap.h b/pc-bios/s390-ccw/bootmap.h
-> index 94f53a5f1e..12a0166aae 100644
-> --- a/pc-bios/s390-ccw/bootmap.h
-> +++ b/pc-bios/s390-ccw/bootmap.h
-> @@ -136,7 +136,7 @@ typedef struct BootMapScriptHeader {
-> =20
->  typedef struct BootMapScript {
->      BootMapScriptHeader header;
-> -    BootMapScriptEntry  entry[0];
-> +    BootMapScriptEntry  entry[];
->  } __attribute__ ((packed)) BootMapScript;
-> =20
->  /*
-> diff --git a/pc-bios/s390-ccw/sclp.h b/pc-bios/s390-ccw/sclp.h
-> index 8450161ba7..64b53cad29 100644
-> --- a/pc-bios/s390-ccw/sclp.h
-> +++ b/pc-bios/s390-ccw/sclp.h
-> @@ -95,7 +95,7 @@ typedef struct EventBufferHeader {
->  typedef struct WriteEventData {
->      SCCBHeader h;
+>  typedef struct ASCIIConsoleData {
 >      EventBufferHeader ebh;
 > -    char data[0];
 > +    char data[];
->  } __attribute__((packed)) WriteEventData;
+>  } QEMU_PACKED ASCIIConsoleData;
 > =20
->  typedef struct ReadEventData {
-> diff --git a/tests/qtest/libqos/ahci.h b/tests/qtest/libqos/ahci.h
-> index f05b3e5fce..44ab1104b5 100644
-> --- a/tests/qtest/libqos/ahci.h
-> +++ b/tests/qtest/libqos/ahci.h
-> @@ -351,7 +351,7 @@ typedef struct AHCIQState {
->  typedef struct FIS {
->      uint8_t fis_type;
->      uint8_t flags;
+>  /* max size for ASCII data in 4K SCCB page */
+> diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
+> index 50cf95b781..64f928fc7d 100644
+> --- a/hw/s390x/virtio-ccw.c
+> +++ b/hw/s390x/virtio-ccw.c
+> @@ -193,7 +193,7 @@ typedef struct VirtioThinintInfo {
+>  typedef struct VirtioRevInfo {
+>      uint16_t revision;
+>      uint16_t length;
+> -    uint8_t data[0];
+> +    uint8_t data[];
+>  } QEMU_PACKED VirtioRevInfo;
+> =20
+>  /* Specify where the virtqueues for the subchannel are in guest memory. =
+*/
+> diff --git a/target/s390x/ioinst.c b/target/s390x/ioinst.c
+> index c437a1d8c6..0e840cc579 100644
+> --- a/target/s390x/ioinst.c
+> +++ b/target/s390x/ioinst.c
+> @@ -347,7 +347,7 @@ typedef struct ChscResp {
+>      uint16_t len;
+>      uint16_t code;
+>      uint32_t param;
 > -    char data[0];
 > +    char data[];
->  } __attribute__((__packed__)) FIS;
+>  } QEMU_PACKED ChscResp;
 > =20
->  /**
-> diff --git a/block/linux-aio.c b/block/linux-aio.c
-> index 91204a25a2..3c0527c2bf 100644
-> --- a/block/linux-aio.c
-> +++ b/block/linux-aio.c
-> @@ -121,7 +121,7 @@ struct aio_ring {
->      unsigned    incompat_features;
->      unsigned    header_length;  /* size of aio_ring */
-> =20
-> -    struct io_event io_events[0];
-> +    struct io_event io_events[];
->  };
-> =20
->  /**
-> diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-> index 5219dd0e2e..eb6a37b14e 100644
-> --- a/hw/acpi/nvdimm.c
-> +++ b/hw/acpi/nvdimm.c
-> @@ -485,7 +485,7 @@ struct NvdimmFuncGetLabelDataOut {
->      /* the size of buffer filled by QEMU. */
->      uint32_t len;
->      uint32_t func_ret_status; /* return status code. */
-> -    uint8_t out_buf[0]; /* the data got via Get Namesapce Label function=
-. */
-> +    uint8_t out_buf[]; /* the data got via Get Namesapce Label function.=
- */
->  } QEMU_PACKED;
->  typedef struct NvdimmFuncGetLabelDataOut NvdimmFuncGetLabelDataOut;
->  QEMU_BUILD_BUG_ON(sizeof(NvdimmFuncGetLabelDataOut) > NVDIMM_DSM_MEMORY_=
-SIZE);
-> @@ -493,7 +493,7 @@ QEMU_BUILD_BUG_ON(sizeof(NvdimmFuncGetLabelDataOut) >=
- NVDIMM_DSM_MEMORY_SIZE);
->  struct NvdimmFuncSetLabelDataIn {
->      uint32_t offset; /* the offset in the namespace label data area. */
->      uint32_t length; /* the size of data is to be written via the functi=
-on. */
-> -    uint8_t in_buf[0]; /* the data written to label data area. */
-> +    uint8_t in_buf[]; /* the data written to label data area. */
->  } QEMU_PACKED;
->  typedef struct NvdimmFuncSetLabelDataIn NvdimmFuncSetLabelDataIn;
->  QEMU_BUILD_BUG_ON(sizeof(NvdimmFuncSetLabelDataIn) +
-> @@ -510,7 +510,7 @@ struct NvdimmFuncReadFITOut {
->      /* the size of buffer filled by QEMU. */
->      uint32_t len;
->      uint32_t func_ret_status; /* return status code. */
-> -    uint8_t fit[0]; /* the FIT data. */
-> +    uint8_t fit[]; /* the FIT data. */
->  } QEMU_PACKED;
->  typedef struct NvdimmFuncReadFITOut NvdimmFuncReadFITOut;
->  QEMU_BUILD_BUG_ON(sizeof(NvdimmFuncReadFITOut) > NVDIMM_DSM_MEMORY_SIZE)=
-;
-> diff --git a/hw/dma/soc_dma.c b/hw/dma/soc_dma.c
-> index c3e41581b6..3a430057f5 100644
-> --- a/hw/dma/soc_dma.c
-> +++ b/hw/dma/soc_dma.c
-> @@ -80,7 +80,7 @@ struct dma_s {
->      } *memmap;
->      int memmap_size;
-> =20
-> -    struct soc_dma_ch_s ch[0];
-> +    struct soc_dma_ch_s ch[];
->  };
-> =20
->  static void soc_dma_ch_schedule(struct soc_dma_ch_s *ch, int delay_bytes=
-)
-> diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-> index 7f38e6ba8b..08246523f2 100644
-> --- a/hw/i386/x86.c
-> +++ b/hw/i386/x86.c
-> @@ -328,7 +328,7 @@ struct setup_data {
->      uint64_t next;
->      uint32_t type;
->      uint32_t len;
-> -    uint8_t data[0];
-> +    uint8_t data[];
->  } __attribute__((packed));
-> =20
-> =20
-> diff --git a/hw/misc/omap_l4.c b/hw/misc/omap_l4.c
-> index 61b6df564a..54aeaecd69 100644
-> --- a/hw/misc/omap_l4.c
-> +++ b/hw/misc/omap_l4.c
-> @@ -24,7 +24,7 @@ struct omap_l4_s {
->      MemoryRegion *address_space;
->      hwaddr base;
->      int ta_num;
-> -    struct omap_target_agent_s ta[0];
-> +    struct omap_target_agent_s ta[];
->  };
-> =20
->  struct omap_l4_s *omap_l4_init(MemoryRegion *address_space,
-> diff --git a/hw/nvram/eeprom93xx.c b/hw/nvram/eeprom93xx.c
-> index 07f09549ed..ca6f591c84 100644
-> --- a/hw/nvram/eeprom93xx.c
-> +++ b/hw/nvram/eeprom93xx.c
-> @@ -86,7 +86,7 @@ struct _eeprom_t {
->      uint8_t  addrbits;
->      uint16_t size;
->      uint16_t data;
-> -    uint16_t contents[0];
-> +    uint16_t contents[];
->  };
-> =20
->  /* Code for saving and restoring of EEPROM state. */
-> diff --git a/hw/rdma/vmw/pvrdma_qp_ops.c b/hw/rdma/vmw/pvrdma_qp_ops.c
-> index bd6db858de..8050287a6c 100644
-> --- a/hw/rdma/vmw/pvrdma_qp_ops.c
-> +++ b/hw/rdma/vmw/pvrdma_qp_ops.c
-> @@ -34,13 +34,13 @@ typedef struct CompHandlerCtx {
->  /* Send Queue WQE */
->  typedef struct PvrdmaSqWqe {
->      struct pvrdma_sq_wqe_hdr hdr;
-> -    struct pvrdma_sge sge[0];
-> +    struct pvrdma_sge sge[];
->  } PvrdmaSqWqe;
-> =20
->  /* Recv Queue WQE */
->  typedef struct PvrdmaRqWqe {
->      struct pvrdma_rq_wqe_hdr hdr;
-> -    struct pvrdma_sge sge[0];
-> +    struct pvrdma_sge sge[];
->  } PvrdmaRqWqe;
-> =20
->  /*
-> diff --git a/hw/usb/dev-network.c b/hw/usb/dev-network.c
-> index 9a78ad928b..6210427544 100644
-> --- a/hw/usb/dev-network.c
-> +++ b/hw/usb/dev-network.c
-> @@ -626,7 +626,7 @@ static const uint32_t oid_supported_list[] =3D
->  struct rndis_response {
->      QTAILQ_ENTRY(rndis_response) entries;
->      uint32_t length;
-> -    uint8_t buf[0];
-> +    uint8_t buf[];
->  };
-> =20
->  typedef struct USBNetState {
-> diff --git a/hw/usb/dev-smartcard-reader.c b/hw/usb/dev-smartcard-reader.=
-c
-> index 02693a26ad..ef72738ced 100644
-> --- a/hw/usb/dev-smartcard-reader.c
-> +++ b/hw/usb/dev-smartcard-reader.c
-> @@ -227,7 +227,7 @@ typedef struct QEMU_PACKED CCID_Parameter {
->  typedef struct QEMU_PACKED CCID_DataBlock {
->      CCID_BULK_IN b;
->      uint8_t      bChainParameter;
-> -    uint8_t      abData[0];
-> +    uint8_t      abData[];
->  } CCID_DataBlock;
-> =20
->  /* 6.1.4 PC_to_RDR_XfrBlock */
-> @@ -235,7 +235,7 @@ typedef struct QEMU_PACKED CCID_XferBlock {
->      CCID_Header  hdr;
->      uint8_t      bBWI; /* Block Waiting Timeout */
->      uint16_t     wLevelParameter; /* XXX currently unused */
-> -    uint8_t      abData[0];
-> +    uint8_t      abData[];
->  } CCID_XferBlock;
-> =20
->  typedef struct QEMU_PACKED CCID_IccPowerOn {
-> diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
-> index b2d415e5dd..b6c8ef5bc0 100644
-> --- a/hw/virtio/virtio.c
-> +++ b/hw/virtio/virtio.c
-> @@ -54,7 +54,7 @@ typedef struct VRingAvail
->  {
->      uint16_t flags;
->      uint16_t idx;
-> -    uint16_t ring[0];
-> +    uint16_t ring[];
->  } VRingAvail;
-> =20
->  typedef struct VRingUsedElem
-> @@ -67,7 +67,7 @@ typedef struct VRingUsed
->  {
->      uint16_t flags;
->      uint16_t idx;
-> -    VRingUsedElem ring[0];
-> +    VRingUsedElem ring[];
->  } VRingUsed;
-> =20
->  typedef struct VRingMemoryRegionCaches {
-> diff --git a/net/queue.c b/net/queue.c
-> index 61276ca4be..0164727e39 100644
-> --- a/net/queue.c
-> +++ b/net/queue.c
-> @@ -46,7 +46,7 @@ struct NetPacket {
->      unsigned flags;
->      int size;
->      NetPacketSent *sent_cb;
-> -    uint8_t data[0];
-> +    uint8_t data[];
->  };
-> =20
->  struct NetQueue {
+>  #define CHSC_MIN_RESP_LEN 0x0008
 > --=20
 > 2.21.1
 

@@ -1,244 +1,608 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1007106lfc;
-        Mon, 9 Mar 2020 04:03:07 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuh0A/Ic2vYaMhQy+avY1xsEm7+h4wLbSBVnXoV6+Np2TvH4Zsgv4Wfy9uKQv/o7Pfq/3No
-X-Received: by 2002:a05:6214:8c1:: with SMTP id da1mr14114349qvb.66.1583751787141;
-        Mon, 09 Mar 2020 04:03:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583751787; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1023713lfc;
+        Mon, 9 Mar 2020 04:19:47 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvUio1sIbquWW0IS2M2H3kZKthyFAJqhYHL0UBKyliKMSkIIf07xlvGofxXRIboeULcywfg
+X-Received: by 2002:a05:620a:10b3:: with SMTP id h19mr14710170qkk.440.1583752787536;
+        Mon, 09 Mar 2020 04:19:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583752787; cv=none;
         d=google.com; s=arc-20160816;
-        b=EuS/Z/mezmAxZXtRWI9VTHuPvQ2hoFF/do4uu8xdYYq9KO+AZ4em4WOfC3a/QAi/DV
-         g9wWw8iW1GH6n23cNlHsv1SLMBlk7OodTBPfot9T0D/Dqnv7TUq8LZ4pLT9xh1MnDgZw
-         z023bRpRhTuiVrLOBsU0qgC35czy/QzsvVNVP2Gd70CTg/8mrLbWCTRWXuQUM9ljvxMN
-         Ror7Tc1aZ6BFA+aIekZ3xt+si0e8LSmc2s0H/Ja67PIhGyxihjZBlOdF43VbOkl+J+ud
-         PuJygnociePjzDdRghANrQten7HKAcpLNM0jxK4+/DAMPzNyRQZnlqH//pbh5AR5vF4n
-         ltFA==
+        b=oA0sqRVt6HrHOK/vhtxQ3AntDhmD1jhks+c7sR/wiSSRPXq5sQ79Rr2yMovNzwQu4P
+         3V+usqWFG2xHQVpa0jkBNNjbLl7AqJvxoh/bv15dZghvgh6YLXxW2Mpcw6GUxY5Dz/hk
+         QdFp11bGLuEaoU4Wkh4fTrkcyAGoN1Fq+AsZsnjgAGl9ZuASxDE6TSupeEaCrRI1eQED
+         G9oczugAq5mivNJqzaPHroHV6P0CazEJ4+x+v/6+3DiuqSWgpZcoNYYCuM6egKG+VXVF
+         tOkWww2Wa6gxUEDNGMkJSDiKoMtcZr2O/XOibGDI4s3+OuSRS4kmLczn9meNNjYfdaR5
+         cFsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:autocrypt:from:references:to:subject;
-        bh=Ue91e7gVEpCUbQA0TnBsyd6dvqWCtupb7Xzv9MGL0Uo=;
-        b=WNaOenFBqsJBvxvLrh7Z4hD5Qk7wuxu/9mV76cPqloMOUWfEjg01VDGA/KDW/QB+HY
-         Pk8JIVt3AvWWnmyZfDsXvfNbVmxZUo0yaRRfkxi+Cruz8k+9LPQeKFuuaAzNp3KyiOIF
-         6aOEX8UlF7eMKV3SpOvPkAtAv18AyuI5r6JZRH+h3gIerCA1Va1P5vqtGa/OEA5hhupO
-         NO4G/N307urm+vkXGZybIRaPJxIzEwLAcxivYJD/uPbrxyyifNcf0x1BYbbFvtRYNK1x
-         P6Ng3J2+bTDPb8ocdVO1fYRuB2h96iSmjpJYHxwPgTCmoPCK9eFPtxMtzQn/igYsBgdi
-         BuwA==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=/vzYDMx1dt/6TFxFQ42RzOymsb2Bp/UE7NCThvnsdng=;
+        b=1BF+8G0JIcdu/EyWXLDgd+H5Qo6/ug9OZtpAy/rS8Jtc7uHAjn9ojPFKBBBqM70ou6
+         XdHK4/Dbi0+/+Jgyd3LH3x8usaHyuVsWWgGCc7Tlw7YHaVq1G3+XRrXkm3KfFwJGGI/M
+         XRQBb4gmRjmfm1bkfonEDcGHs5XgWIDEn7Lfw/U9CpzknLbP9KcYEUYq+SnlTYn8d4WI
+         WQTgOpaLKY+i2Un+5tMl5DtztHyqIrgco3PTMQR9FepaxWbRTBfLISd5DqigzjahM9uj
+         TVVvlz0dtlSxuYR/GWugFIZt0lHrzPKruTHthqu18ignb9Sowhh6sWiQFVXuFnvxqia1
+         WIlg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l57si3331605qtb.68.2020.03.09.04.03.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Mar 2020 04:03:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=N77NGiYE;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id n52si5639702qtf.250.2020.03.09.04.19.47;
+        Mon, 09 Mar 2020 04:19:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:40806 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBGBe-0001nf-Ip
-	for alex.bennee@linaro.org; Mon, 09 Mar 2020 07:03:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44556)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <borntraeger@de.ibm.com>) id 1jBGBI-0001kU-Ll
- for qemu-devel@nongnu.org; Mon, 09 Mar 2020 07:02:45 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <borntraeger@de.ibm.com>) id 1jBGBH-0003Bw-Go
- for qemu-devel@nongnu.org; Mon, 09 Mar 2020 07:02:44 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:39622
- helo=mx0a-001b2d01.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <borntraeger@de.ibm.com>)
- id 1jBGBH-0003BZ-BH
- for qemu-devel@nongnu.org; Mon, 09 Mar 2020 07:02:43 -0400
-Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 029AsApP081790
- for <qemu-devel@nongnu.org>; Mon, 9 Mar 2020 07:02:42 -0400
-Received: from e06smtp05.uk.ibm.com (e06smtp05.uk.ibm.com [195.75.94.101])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2ym8g32jff-1
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
- for <qemu-devel@nongnu.org>; Mon, 09 Mar 2020 07:02:42 -0400
-Received: from localhost
- by e06smtp05.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
- Violators will be prosecuted
- for <qemu-devel@nongnu.org> from <borntraeger@de.ibm.com>;
- Mon, 9 Mar 2020 11:02:40 -0000
-Received: from b06avi18626390.portsmouth.uk.ibm.com (9.149.26.192)
- by e06smtp05.uk.ibm.com (192.168.101.135) with IBM ESMTP SMTP Gateway:
- Authorized Use Only! Violators will be prosecuted; 
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
- Mon, 9 Mar 2020 11:02:32 -0000
-Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
- [9.149.105.59])
- by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id 029B1W8x36176214
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 9 Mar 2020 11:01:32 GMT
-Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 82C7DA405B;
- Mon,  9 Mar 2020 11:02:31 +0000 (GMT)
-Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id A8CFDA4069;
- Mon,  9 Mar 2020 11:02:30 +0000 (GMT)
-Received: from oc7455500831.ibm.com (unknown [9.152.224.141])
- by d06av23.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Mon,  9 Mar 2020 11:02:30 +0000 (GMT)
-Subject: Re: [PATCH] cpu: Use DeviceClass reset instead of a special CPUClass
- reset
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-References: <20200303100511.5498-1-peter.maydell@linaro.org>
-From: Christian Borntraeger <borntraeger@de.ibm.com>
-Autocrypt: addr=borntraeger@de.ibm.com; prefer-encrypt=mutual; keydata=
- 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
- nS4h0HDFPrrp1C2EMVYIQrMokWvlFZbCpsdYbBI=
-Date: Mon, 9 Mar 2020 12:02:30 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=N77NGiYE;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id E07974A4F6;
+	Mon,  9 Mar 2020 07:19:46 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qNerjY8aVs5A; Mon,  9 Mar 2020 07:19:45 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 37A844A1FA;
+	Mon,  9 Mar 2020 07:19:45 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 788BE40456
+ for <kvmarm@lists.cs.columbia.edu>; Mon,  9 Mar 2020 07:19:43 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id D44o31uy3tVn for <kvmarm@lists.cs.columbia.edu>;
+ Mon,  9 Mar 2020 07:19:42 -0400 (EDT)
+Received: from us-smtp-1.mimecast.com (us-smtp-2.mimecast.com [205.139.110.61])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id F2E1D40217
+ for <kvmarm@lists.cs.columbia.edu>; Mon,  9 Mar 2020 07:19:41 -0400 (EDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583752781;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=WPKjGxI/CtV5UF01rT9bf4zv9EkxXcn090JrU41bD2w=;
+ b=N77NGiYEuCNi4BBXUAxvsPOjUUOK+yAUdZ/wucVjaDfcnhGgQtLVx5i7aW5LcZy13gwLR/
+ JzcbSpuv3wSD+yLRCpHE2hTnUMCcHiI1SVwb1Nfl9wQDeMwtkjDfW80ee5vcnCjcohEg2U
+ 968FwEaAtSvAhc70JgNPTHoAnhHnAiM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-488-m-BswTOyPOKtbJ01kwn-bQ-1; Mon, 09 Mar 2020 07:19:40 -0400
+X-MC-Unique: m-BswTOyPOKtbJ01kwn-bQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 45F30801E5C;
+ Mon,  9 Mar 2020 11:19:38 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DDC1C1001925;
+ Mon,  9 Mar 2020 11:19:32 +0000 (UTC)
+Date: Mon, 9 Mar 2020 12:19:30 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [kvm-unit-tests PATCH v4 06/13] arm/arm64: ITS: Introspection
+ tests
+Message-ID: <20200309111930.zj6e4yzpzehcdr7e@kamzik.brq.redhat.com>
+References: <20200309102420.24498-1-eric.auger@redhat.com>
+ <20200309102420.24498-7-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200303100511.5498-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-x-cbid: 20030911-0020-0000-0000-000003B1DDBA
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 20030911-0021-0000-0000-0000220A2486
-Message-Id: <27475af3-2cc5-40bf-d469-f1ca6195e1ce@de.ibm.com>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.572
- definitions=2020-03-09_02:2020-03-08,
- 2020-03-09 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 mlxscore=0
- suspectscore=0 priorityscore=1501 lowpriorityscore=0 clxscore=1015
- impostorscore=0 mlxlogscore=999 spamscore=0 malwarescore=0 bulkscore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2001150001 definitions=main-2003090077
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 148.163.158.5
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
+Content-Disposition: inline
+In-Reply-To: <20200309102420.24498-7-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Cc: thuth@redhat.com, kvm@vger.kernel.org, maz@kernel.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
+ kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Chris Wulff <crwulff@gmail.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Marek Vasut <marex@denx.de>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4HhRhNxuzNV8
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: qiDZkqt0cQ71
 
+On Mon, Mar 09, 2020 at 11:24:13AM +0100, Eric Auger wrote:
+> Detect the presence of an ITS as part of the GICv3 init
+> routine, initialize its base address and read few registers
+> the IIDR, the TYPER to store its dimensioning parameters.
+> Parse the BASER registers. As part of the init sequence we
+> also init all the requested tables.
+> 
+> This is our first ITS test, belonging to a new "its" group.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> 
+> ---
+> 
+> v3 -> v4:
+> - fixed some typos, refine trace msgs
+> - move its files to lib/arm64 instead of lib/arm
+> - create lib/arm/asm/gic-v3-its.h containing stubs
+> - rework gic_get_dt_bases
+> - rework baser parsing
+> - move table allocation to init routine
+> - use get_order()
+> 
+> v2 -> v3:
+> - updated dates and changed author
+> - squash "arm/arm64: ITS: Test BASER" into this patch but
+>   removes setup_baser which will be introduced later.
+> - only compile on aarch64
+> - restrict the new test to aarch64
+> 
+> v1 -> v2:
+> - clean GITS_TYPER macros and unused fields in typer struct
+> - remove memory attribute related macros
+> - remove everything related to memory attributes
+> - s/dev_baser/coll_baser/ in report_info
+> - add extra line
+> - removed index filed in its_baser
+> ---
+>  arm/Makefile.arm64         |   1 +
+>  arm/gic.c                  |  44 ++++++++++++++++
+>  arm/unittests.cfg          |   7 +++
+>  lib/arm/asm/gic-v3-its.h   |  23 +++++++++
+>  lib/arm/gic.c              |  34 +++++++++++--
+>  lib/arm64/asm/gic-v3-its.h |  92 +++++++++++++++++++++++++++++++++
+>  lib/arm64/gic-v3-its.c     | 102 +++++++++++++++++++++++++++++++++++++
+>  7 files changed, 298 insertions(+), 5 deletions(-)
+>  create mode 100644 lib/arm/asm/gic-v3-its.h
+>  create mode 100644 lib/arm64/asm/gic-v3-its.h
+>  create mode 100644 lib/arm64/gic-v3-its.c
+> 
+> diff --git a/arm/Makefile.arm64 b/arm/Makefile.arm64
+> index 6d3dc2c..60182ae 100644
+> --- a/arm/Makefile.arm64
+> +++ b/arm/Makefile.arm64
+> @@ -19,6 +19,7 @@ endef
+>  cstart.o = $(TEST_DIR)/cstart64.o
+>  cflatobjs += lib/arm64/processor.o
+>  cflatobjs += lib/arm64/spinlock.o
+> +cflatobjs += lib/arm64/gic-v3-its.o
+>  
+>  OBJDIRS += lib/arm64
+>  
+> diff --git a/arm/gic.c b/arm/gic.c
+> index abf08c7..67989f6 100644
+> --- a/arm/gic.c
+> +++ b/arm/gic.c
+> @@ -16,6 +16,7 @@
+>  #include <asm/processor.h>
+>  #include <asm/delay.h>
+>  #include <asm/gic.h>
+> +#include <asm/gic-v3-its.h>
+>  #include <asm/smp.h>
+>  #include <asm/barrier.h>
+>  #include <asm/io.h>
+> @@ -518,6 +519,45 @@ static void gic_test_mmio(void)
+>  		test_targets(nr_irqs);
+>  }
+>  
+> +#if defined(__aarch64__)
+> +
+> +static void test_its_introspection(void)
+> +{
+> +	struct its_baser *dev_baser = &its_data.device_baser;
+> +	struct its_baser *coll_baser = &its_data.coll_baser;
+> +	struct its_typer *typer = &its_data.typer;
+> +
+> +	if (!gicv3_its_base()) {
+> +		report_skip("No ITS, skip ...");
+> +		return;
+> +	}
+> +
+> +	/* IIDR */
+> +	report(test_readonly_32(gicv3_its_base() + GITS_IIDR, false),
+> +	       "GITS_IIDR is read-only"),
+> +
+> +	/* TYPER */
+> +	report(test_readonly_32(gicv3_its_base() + GITS_TYPER, false),
+> +	       "GITS_TYPER is read-only");
+> +
+> +	report(typer->phys_lpi, "ITS supports physical LPIs");
+> +	report_info("vLPI support: %s", typer->virt_lpi ? "yes" : "no");
+> +	report_info("ITT entry size = 0x%x", typer->ite_size);
+> +	report_info("Bit Count: EventID=%d DeviceId=%d CollId=%d",
+> +		    typer->eventid_bits, typer->deviceid_bits,
+> +		    typer->collid_bits);
+> +	report(typer->eventid_bits && typer->deviceid_bits &&
+> +	       typer->collid_bits, "ID spaces");
+> +	report_info("Target address format %s",
+> +			typer->pta ? "Redist base address" : "PE #");
+> +
+> +	report(dev_baser && coll_baser, "detect device and collection BASER");
+> +	report_info("device table entry_size = 0x%x", dev_baser->esz);
+> +	report_info("collection table entry_size = 0x%x", coll_baser->esz);
+> +}
+> +
+> +#endif
+> +
+>  int main(int argc, char **argv)
+>  {
+>  	if (!gic_init()) {
+> @@ -549,6 +589,10 @@ int main(int argc, char **argv)
+>  		report_prefix_push(argv[1]);
+>  		gic_test_mmio();
+>  		report_prefix_pop();
+> +	} else if (strcmp(argv[1], "its-introspection") == 0) {
+> +		report_prefix_push(argv[1]);
+> +		test_its_introspection();
+> +		report_prefix_pop();
+>  	} else {
+>  		report_abort("Unknown subtest '%s'", argv[1]);
+>  	}
+> diff --git a/arm/unittests.cfg b/arm/unittests.cfg
+> index 017958d..23d378e 100644
+> --- a/arm/unittests.cfg
+> +++ b/arm/unittests.cfg
+> @@ -122,6 +122,13 @@ smp = $MAX_SMP
+>  extra_params = -machine gic-version=3 -append 'active'
+>  groups = gic
+>  
+> +[its-introspection]
+> +file = gic.flat
+> +smp = $MAX_SMP
+> +extra_params = -machine gic-version=3 -append 'its-introspection'
+> +groups = its
+> +arch = arm64
+> +
+>  # Test PSCI emulation
+>  [psci]
+>  file = psci.flat
+> diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
+> new file mode 100644
+> index 0000000..0096de6
+> --- /dev/null
+> +++ b/lib/arm/asm/gic-v3-its.h
+> @@ -0,0 +1,23 @@
+> +/*
+> + * ITS 32-bit stubs
+> + *
+> + * Copyright (C) 2020, Red Hat Inc, Eric Auger <eric.auger@redhat.com>
+> + *
+> + * This work is licensed under the terms of the GNU LGPL, version 2.
+> + */
+> +
+> +#ifndef _ASMARM_GICv3_ITS
+> +#define _ASMARM_GICv3_ITS
+> +
+> +/* dummy its_data struct to allow gic_get_dt_bases() call */
+> +struct its_data {
+> +	void *base;
+> +};
+> +
+> +static inline void its_init(void) {}
+> +static inline void test_its_introspection(void)
+> +{
+> +	report_abort("not supported on 32-bit");
 
+I suggested report_abort() in this function when it was in arm/gic.c,
+but we don't want report_* functions in the library code, nor do we
+want functions named test_*. This test_* stub should go back to
+arm/gic.c, where it can be empty, because the 32-bit its_init() stub
+here could get an assert_msg("not supported on 32-bit") instead.
 
-On 03.03.20 11:05, Peter Maydell wrote:
-> The CPUClass has a 'reset' method.  This is a legacy from when
-> TYPE_CPU used not to inherit from TYPE_DEVICE.  We don't need it any
-> more, as we can simply use the TYPE_DEVICE reset.  The 'cpu_reset()'
-> function is kept as the API which most places use to reset a CPU; it
-> is now a wrapper which calls device_cold_reset() and then the
-> tracepoint function.
-> 
-> This change should not cause CPU objects to be reset more often
-> than they are at the moment, because:
->  * nobody is directly calling device_cold_reset() or
->    qdev_reset_all() on CPU objects
->  * no CPU object is on a qbus, so they will not be reset either
->    by somebody calling qbus_reset_all()/bus_cold_reset(), or
->    by the main "reset sysbus and everything in the qbus tree"
->    reset that most devices are reset by
-> 
-> Note that this does not change the need for each machine or whatever
-> to use qemu_register_reset() to arrange to call cpu_reset() -- that
-> is necessary because CPU objects are not on any qbus, so they don't
-> get reset when the qbus tree rooted at the sysbus bus is reset, and
-> this isn't being changed here.
-> 
-> All the changes to the files under target/ were made using the
-> included Coccinelle script, except:
-> 
-> (1) the deletion of the now-inaccurate and not terribly useful
-> "CPUClass::reset" comments was done with a perl one-liner afterwards:
->   perl -n -i -e '/ CPUClass::reset/ or print' target/*/*.c
-> 
-> (2) this bit of the s390 change was done by hand, because the
-> Coccinelle script is not sophisticated enough to handle the
-> parent_reset call being inside another function:
-> 
-> | @@ -96,8 +96,9 @@ static void s390_cpu_reset(CPUState *s, cpu_reset_type type)
-> |     S390CPU *cpu = S390_CPU(s);
-> |     S390CPUClass *scc = S390_CPU_GET_CLASS(cpu);
-> |     CPUS390XState *env = &cpu->env;
-> |+    DeviceState *dev = DEVICE(s);
-> |
-> |-    scc->parent_reset(s);
-> |+    scc->parent_reset(dev);
-> |     cpu->env.sigp_order = 0;
-> |     s390_cpu_set_state(S390_CPU_STATE_STOPPED, cpu);
-> 
+> +}
+> +
+> +#endif /* _ASMARM_GICv3_ITS */
+> diff --git a/lib/arm/gic.c b/lib/arm/gic.c
+> index c3c5f6b..4f6f15b 100644
+> --- a/lib/arm/gic.c
+> +++ b/lib/arm/gic.c
+> @@ -6,9 +6,11 @@
+>  #include <devicetree.h>
+>  #include <asm/gic.h>
+>  #include <asm/io.h>
+> +#include <asm/gic-v3-its.h>
+>  
+>  struct gicv2_data gicv2_data;
+>  struct gicv3_data gicv3_data;
+> +struct its_data its_data;
+>  
+>  struct gic_common_ops {
+>  	void (*enable_defaults)(void);
+> @@ -44,12 +46,13 @@ static const struct gic_common_ops gicv3_common_ops = {
+>   * Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.txt
+>   */
+>  static bool
+> -gic_get_dt_bases(const char *compatible, void **base1, void **base2)
+> +gic_get_dt_bases(const char *compatible, void **base1, void **base2, void **base3)
+>  {
+>  	struct dt_pbus_reg reg;
+> -	struct dt_device gic;
+> +	struct dt_device gic, its;
+>  	struct dt_bus bus;
+> -	int node, ret, i;
+> +	int node, subnode, ret, i, len;
+> +	const void *fdt = dt_fdt();
+>  
+>  	dt_bus_init_defaults(&bus);
+>  	dt_device_init(&gic, &bus, NULL);
+> @@ -74,19 +77,39 @@ gic_get_dt_bases(const char *compatible, void **base1, void **base2)
+>  		base2[i] = ioremap(reg.addr, reg.size);
+>  	}
+>  
+> +	if (!base3) {
+> +		assert(!strcmp(compatible, "arm,cortex-a15-gic"));
+> +		return true;
+> +	}
+> +
+> +	assert(!strcmp(compatible, "arm,gic-v3"));
+> +
+> +	dt_for_each_subnode(node, subnode) {
+> +		const struct fdt_property *prop;
+> +
+> +		prop = fdt_get_property(fdt, subnode, "compatible", &len);
+> +		if (!strcmp((char *)prop->data, "arm,gic-v3-its")) {
+> +			dt_device_bind_node(&its, subnode);
+> +			ret = dt_pbus_translate(&its, 0, &reg);
+> +			assert(ret == 0);
+> +			*base3 = ioremap(reg.addr, reg.size);
+> +			break;
+> +		}
+> +	}
+> +
+>  	return true;
+>  }
+>  
+>  int gicv2_init(void)
+>  {
+>  	return gic_get_dt_bases("arm,cortex-a15-gic",
+> -			&gicv2_data.dist_base, &gicv2_data.cpu_base);
+> +			&gicv2_data.dist_base, &gicv2_data.cpu_base, NULL);
+>  }
+>  
+>  int gicv3_init(void)
+>  {
+>  	return gic_get_dt_bases("arm,gic-v3", &gicv3_data.dist_base,
+> -			&gicv3_data.redist_bases[0]);
+> +			&gicv3_data.redist_bases[0], &its_data.base);
+>  }
+>  
+>  int gic_version(void)
+> @@ -104,6 +127,7 @@ int gic_init(void)
+>  		gic_common_ops = &gicv2_common_ops;
+>  	else if (gicv3_init())
+>  		gic_common_ops = &gicv3_common_ops;
+> +	its_init();
+>  	return gic_version();
+>  }
+>  
+> diff --git a/lib/arm64/asm/gic-v3-its.h b/lib/arm64/asm/gic-v3-its.h
+> new file mode 100644
+> index 0000000..331ba0e
+> --- /dev/null
+> +++ b/lib/arm64/asm/gic-v3-its.h
+> @@ -0,0 +1,92 @@
+> +/*
+> + * All ITS* defines are lifted from include/linux/irqchip/arm-gic-v3.h
+> + *
+> + * Copyright (C) 2020, Red Hat Inc, Eric Auger <eric.auger@redhat.com>
+> + *
+> + * This work is licensed under the terms of the GNU LGPL, version 2.
+> + */
+> +#ifndef _ASMARM64_GIC_V3_ITS_H_
+> +#define _ASMARM64_GIC_V3_ITS_H_
+> +
+> +struct its_typer {
+> +	unsigned int ite_size;
+> +	unsigned int eventid_bits;
+> +	unsigned int deviceid_bits;
+> +	unsigned int collid_bits;
+> +	bool pta;
+> +	bool phys_lpi;
+> +	bool virt_lpi;
+> +};
+> +
+> +struct its_baser {
+> +	int index;
+> +	size_t psz;
+> +	int esz;
+> +	bool indirect;
+> +	phys_addr_t table_addr;
+> +};
+> +
+> +#define GITS_BASER_NR_REGS              8
+> +
+> +struct its_data {
+> +	void *base;
+> +	struct its_typer typer;
+> +	struct its_baser device_baser;
+> +	struct its_baser coll_baser;
+> +	struct its_cmd_block *cmd_base;
+> +	struct its_cmd_block *cmd_write;
+> +};
+> +
+> +extern struct its_data its_data;
+> +
+> +#define gicv3_its_base()		(its_data.base)
+> +
+> +#define GITS_CTLR			0x0000
+> +#define GITS_IIDR			0x0004
+> +#define GITS_TYPER			0x0008
+> +#define GITS_CBASER			0x0080
+> +#define GITS_CWRITER			0x0088
+> +#define GITS_CREADR			0x0090
+> +#define GITS_BASER			0x0100
+> +
+> +#define GITS_TYPER_PLPIS                BIT(0)
+> +#define GITS_TYPER_VLPIS		BIT(1)
+> +#define GITS_TYPER_ITT_ENTRY_SIZE	GENMASK_ULL(7, 4)
+> +#define GITS_TYPER_ITT_ENTRY_SIZE_SHIFT	4
+> +#define GITS_TYPER_IDBITS		GENMASK_ULL(8, 12)
+> +#define GITS_TYPER_IDBITS_SHIFT         8
+> +#define GITS_TYPER_DEVBITS		GENMASK_ULL(13, 17)
+> +#define GITS_TYPER_DEVBITS_SHIFT        13
+> +#define GITS_TYPER_PTA                  BIT(19)
+> +#define GITS_TYPER_CIDBITS		GENMASK_ULL(32, 35)
+> +#define GITS_TYPER_CIDBITS_SHIFT	32
+> +#define GITS_TYPER_CIL			BIT(36)
+> +
+> +#define GITS_CTLR_ENABLE		(1U << 0)
+> +
+> +#define GITS_CBASER_VALID		(1UL << 63)
+> +
+> +#define GITS_BASER_VALID		BIT(63)
+> +#define GITS_BASER_INDIRECT		BIT(62)
+> +#define GITS_BASER_TYPE_SHIFT		(56)
+> +#define GITS_BASER_TYPE(r)		(((r) >> GITS_BASER_TYPE_SHIFT) & 7)
+> +#define GITS_BASER_ENTRY_SIZE_SHIFT	(48)
+> +#define GITS_BASER_ENTRY_SIZE(r)	((((r) >> GITS_BASER_ENTRY_SIZE_SHIFT) & 0x1f) + 1)
+> +#define GITS_BASER_PAGE_SIZE_SHIFT	(8)
+> +#define GITS_BASER_PAGE_SIZE_4K		(0UL << GITS_BASER_PAGE_SIZE_SHIFT)
+> +#define GITS_BASER_PAGE_SIZE_16K	(1UL << GITS_BASER_PAGE_SIZE_SHIFT)
+> +#define GITS_BASER_PAGE_SIZE_64K	(2UL << GITS_BASER_PAGE_SIZE_SHIFT)
+> +#define GITS_BASER_PAGE_SIZE_MASK	(3UL << GITS_BASER_PAGE_SIZE_SHIFT)
+> +#define GITS_BASER_PAGES_MAX		256
+> +#define GITS_BASER_PAGES_SHIFT		(0)
+> +#define GITS_BASER_NR_PAGES(r)		(((r) & 0xff) + 1)
+> +#define GITS_BASER_PHYS_ADDR_MASK	0xFFFFFFFFF000
+> +#define GITS_BASER_TYPE_NONE		0
+> +#define GITS_BASER_TYPE_DEVICE		1
+> +#define GITS_BASER_TYPE_COLLECTION	4
+> +
+> +extern void its_parse_typer(void);
+> +extern void its_init(void);
+> +extern int its_baser_lookup(int i, struct its_baser *baser);
+> +
+> +#endif /* _ASMARM64_GIC_V3_ITS_H_ */
+> diff --git a/lib/arm64/gic-v3-its.c b/lib/arm64/gic-v3-its.c
+> new file mode 100644
+> index 0000000..23b0d06
+> --- /dev/null
+> +++ b/lib/arm64/gic-v3-its.c
+> @@ -0,0 +1,102 @@
+> +/*
+> + * Copyright (C) 2020, Red Hat Inc, Eric Auger <eric.auger@redhat.com>
+> + *
+> + * This work is licensed under the terms of the GNU LGPL, version 2.
+> + */
+> +#include <asm/gic.h>
+> +#include <alloc_page.h>
+> +#include <asm/gic-v3-its.h>
+> +
+> +void its_parse_typer(void)
+> +{
+> +	u64 typer = readq(gicv3_its_base() + GITS_TYPER);
+> +	struct its_typer *t = &its_data.typer;
+> +
+> +	t->ite_size = ((typer & GITS_TYPER_ITT_ENTRY_SIZE) >> GITS_TYPER_ITT_ENTRY_SIZE_SHIFT) + 1;
+> +	t->pta = typer & GITS_TYPER_PTA;
+> +	t->eventid_bits = ((typer & GITS_TYPER_IDBITS) >> GITS_TYPER_IDBITS_SHIFT) + 1;
+> +	t->deviceid_bits = ((typer & GITS_TYPER_DEVBITS) >> GITS_TYPER_DEVBITS_SHIFT) + 1;
+> +
+> +	if (typer & GITS_TYPER_CIL)
+> +		t->collid_bits = ((typer & GITS_TYPER_CIDBITS) >> GITS_TYPER_CIDBITS_SHIFT) + 1;
+> +	else
+> +		t->collid_bits = 16;
+> +
+> +	t->virt_lpi = typer & GITS_TYPER_VLPIS;
+> +	t->phys_lpi = typer & GITS_TYPER_PLPIS;
+> +}
+> +
+> +int its_baser_lookup(int type, struct its_baser *baser)
+> +{
+> +	int i;
+> +
+> +	for (i = 0; i < GITS_BASER_NR_REGS; i++) {
+> +		void *reg_addr = gicv3_its_base() + GITS_BASER + i * 8;
+> +		u64 val = readq(reg_addr);
+> +
+> +		if (GITS_BASER_TYPE(val) == type) {
+> +			assert((val & GITS_BASER_PAGE_SIZE_MASK) == GITS_BASER_PAGE_SIZE_64K);
+> +			baser->esz = GITS_BASER_ENTRY_SIZE(val);
+> +			baser->indirect = val & GITS_BASER_INDIRECT;
+> +			baser->index = i;
+> +			return 0;
+> +		}
+> +	}
+> +	return -1;
+> +}
+> +
+> +/*
+> + * Allocate the BASER table (a single page of size @baser->psz)
+> + * and set the BASER valid
+> + */
+> +static void its_baser_alloc_table(struct its_baser *baser, size_t size)
+> +{
+> +	unsigned long order = get_order(size >> PAGE_SHIFT);
+> +	void *reg_addr = gicv3_its_base() + GITS_BASER + baser->index * 8;
+> +	u64 val = readq(reg_addr);
+> +
+> +	baser->table_addr = (u64)virt_to_phys(alloc_pages(order));
+> +
+> +	val |= (u64)baser->table_addr | GITS_BASER_VALID;
+> +
+> +	writeq(val, reg_addr);
+> +}
+> +
+> +/**
 
-s390 parts look sane.
+nit: this isn't a kernel-doc comment, one * is enough
 
+> + * init_cmd_queue - Allocate the command queue and initialize
+> + * CBASER, CWRITER
+> + */
+> +static void its_cmd_queue_init(void)
+> +{
+> +	unsigned long order = get_order(SZ_64K >> PAGE_SHIFT);
+> +	u64 cbaser;
+> +
+> +	its_data.cmd_base = (void *)virt_to_phys(alloc_pages(order));
+> +
+> +	cbaser = ((u64)its_data.cmd_base | (SZ_64K / SZ_4K - 1)	| GITS_CBASER_VALID);
+> +
+> +	writeq(cbaser, its_data.base + GITS_CBASER);
+> +
+> +	its_data.cmd_write = its_data.cmd_base;
+> +	writeq(0, its_data.base + GITS_CWRITER);
+> +}
+> +
+> +void its_init(void)
+> +{
+> +	if (!its_data.base)
+> +		return;
+> +
+> +	its_parse_typer();
+> +
+> +	assert(!its_baser_lookup(GITS_BASER_TYPE_DEVICE, &its_data.device_baser));
+> +	assert(!its_baser_lookup(GITS_BASER_TYPE_COLLECTION, &its_data.coll_baser));
+> +
+> +	its_baser_alloc_table(&its_data.device_baser, SZ_64K);
+> +	its_baser_alloc_table(&its_data.coll_baser, SZ_64K);
+> +
+> +	/* Allocate LPI config and pending tables */
+> +	gicv3_lpi_alloc_tables();
+> +
+> +	its_cmd_queue_init();
+> +}
+> +
+> -- 
+> 2.20.1
+>
 
+Thanks,
+drew 
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

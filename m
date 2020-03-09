@@ -1,477 +1,105 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1631600lfc;
-        Mon, 9 Mar 2020 15:01:04 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtu0GuDW+61qhL5uHoB05RcPtm6TEnWO2B0pCf1LDZXETXjjQScLhXZNjzJ5cFVGU3LHqA9
-X-Received: by 2002:ae9:efd0:: with SMTP id d199mr9510708qkg.406.1583791264101;
-        Mon, 09 Mar 2020 15:01:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583791264; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1632452lfc;
+        Mon, 9 Mar 2020 15:01:49 -0700 (PDT)
+X-Received: by 2002:aca:534d:: with SMTP id h74mr901180oib.173.1583791309089;
+        Mon, 09 Mar 2020 15:01:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583791309; cv=none;
         d=google.com; s=arc-20160816;
-        b=xwNtaO7uxLPpgraIvptpB2PwPJvuKGZaqY7thi6Bjwxc6fvnpXxpoTJVzFI7eNfu9p
-         ThE4JRVeKXCiou72Zi2u8q3lcxXlvPuegMLGDOUZ0RzRn+RLHIhGnG8nwz1iQCl3tnn2
-         7FUrqKmzBEweAhQEUHF5373g//Uc2nG3MV4q5C4pYUMm6Z5uUud57MdwFvw0P5nYCwmB
-         gG5Wvez4Thin9FGxmmyaEIlTR25QCiZvpsCtaqVSC7Xs3Z6JHdEA7+neKkp56wljNuof
-         ucNGv1pC9AZrja5qFwhahmx4NX8fyyNFzSd7fOGUW4x9KokBrryvoCzHP2bpB0tTUOqI
-         /RJQ==
+        b=qKTp6CioFBiqmQqHFRy1MlAHcb9TL537Cc3x8kIaGxAiFjjdT3QYRMiQtrhv+coCMA
+         0341a0kvNl69uRnM3umWske1VJTKPShGgbTSFw5rVhK/qlhwEfbS1w3mDBoZ04XRY27W
+         jtJ+nLyaSYRvcknD1GRDvrqQDndlMgfzV+5rd5ULcFcei8dLaoCrHf3K8H3e9Cmc5O3Y
+         Pq6zRlkPkn7GzHcZ2Og7acShTzI784artFsFHc3GsBkDjfzR8nSAAftPPUdyXtdURHW/
+         53fKQdU31rR+DMKDyRYons2V3c9nU7eaoXxm/Yv+ObxCnIugHxd+IXborfy72TMtv4uw
+         9qvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=e/H6e6OnZYU3B9qqPIddUuN368JkSEB2cY7sQs/JKEU=;
-        b=edwBdTQtq2/r9c80MbV1jToixH3aXOWXFBIqBwai4g7MNbtM6fFYxQWXtcDAJecyQE
-         /QIqS+ohzFAvJ0xKakU/jr/cVgS9lhohwKd/ItjKU6X3JtPZrumjGruONM6KxVJJts7n
-         aS+teMLqxLX9PjKYuX685IpFpXzytSTw5Y9vpvnsQBAX1EotIu9miIu2P0u43Mwze4Nt
-         w/VZEr3goI3gjxKRAAOHJOA1m4UeAV/lIdRlz/7c+aEDIh0Vxr+BeY5GH75++R+mfiL4
-         vk95Jh/cSIwLorLdJkX7lMAezZltx71ezCCVWPmyAfK60pw4XSkAxpzKuta2Qa1wT4Mw
-         6b4A==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=3D5R0ByUMwnpIn847TV33cL0I9HbhgiAN2Aan/suScM=;
+        b=IP8ENUvMn7ebL8d0GPBpOJF2828LddXuWByngQIgtgcSJsq2aUXsz6Eok1RTQg492z
+         BvBuN0ZNiyv+np7naWvugWiGJ3m11m914A0Oy5a5jxmDr/IAuLEs+0ewAjEDlB7Rhz/5
+         bFCVbPS3Rf6TuaMGOwoJMHnwtUYKoTpOEFi3w6jQhl7UcTozm/XSAy0WwIPqpCpgTzmh
+         WKXYFovvsrrHv6fgIN1X+AjHkW9O1W6be5LaneqlJI7zhGDwK3PtEXdU4KvXwJ0AoqDG
+         3zq1is0o1UFsj34kQCqygg74Hrv34olyZvI0ccQgCaRhNY8jRNegewdYAybajDF89CiH
+         ifcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B2lvcL9m;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="ry/FyWth";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n11si4470079qtn.52.2020.03.09.15.01.03
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id l18sor6651526otd.80.2020.03.09.15.01.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Mar 2020 15:01:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 09 Mar 2020 15:01:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B2lvcL9m;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="ry/FyWth";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50432 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBQSN-0006tx-Fh
-	for alex.bennee@linaro.org; Mon, 09 Mar 2020 18:01:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46934)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jBQPw-0003OH-7a
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 17:58:34 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jBQPt-0005ib-Bk
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 17:58:32 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:36484)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jBQPt-0005hp-4b
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 17:58:29 -0400
-Received: by mail-wr1-x431.google.com with SMTP id s5so9281489wrg.3
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2020 14:58:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=e/H6e6OnZYU3B9qqPIddUuN368JkSEB2cY7sQs/JKEU=;
- b=B2lvcL9mYQ4lduihJIgeGb1RO9bwhxjeI7NkSvoKLbBzRO0G2EfZ7NQg4IWJchNB5y
- YSR0q8t0hMtXikDGRGK61r8imUgN97fK8n1n7n1t2t9Ew6f/60DPId4YQf/xUymW7Sw0
- OFU1IhivZO+lJiCLFPV8l2Ci7arQ1AszEb8607EdA6t1x0PbeLBidL7Rfdgf7kqqkBHw
- 5ZDv0AH5qeBfyioomaPpPP6WL9wckovb74QA+1fO1lFsGzuIjhRs8TcdxfITj/Tr9Zwe
- Eh9FtZylInAT0FTFzy5AEMHTAoloIKXJ9cov/OZCqAZ5MaIVaBpKft0r5/INf5Wh30IL
- bByQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=3D5R0ByUMwnpIn847TV33cL0I9HbhgiAN2Aan/suScM=;
+        b=ry/FyWthWse39bybxdnEG99rkuMhdOLa5GMlrOblPoLE9hjofdNwoLojVN6/T3xg2D
+         DWx3ssd2rjPJ10A5dVGQszGfoXTbsuyNC4tPxEQtcYwUvsmBJ8E18CZ8ntaJdNNBOZ5s
+         rwVN6tu71h4xyR0LtRPO78mL1cjmaBWTNqHypIZIiIK+AOEWA6DSThT+bU87QmjdvZMn
+         jttkiDvSczzmWEoWGS5/F0KFPwSCFC7MlBoPi6AVxnexcs5jcjX5ldsSb4qcY8vJxnYG
+         5g8t1el57eJUu5ZWfSq4HdSGP3fMnXDINDVFqxtIqLV81q5JvuptiHO3feHlRlgrR2TX
+         0p4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=e/H6e6OnZYU3B9qqPIddUuN368JkSEB2cY7sQs/JKEU=;
- b=P5NWjFggRElwui9WQd+svDuehOkfRCcYSKn4FK36jOFNkrQ8+Q2ZQKfVR3rIhvVgDp
- U1T7q9xc8ZGc+cv+ScNquwmabdlqvuQSL1cytionTbUxf5P8aVWgUX/lZZq7vjqwHsdZ
- EwwmrV9/osGXJO3dr+jR5fwXXzXUhthjiS4s5Dw12ThE+JGp2wTTuLKAQPyonmvOb4At
- BX0zGqn2X9QKsqFY7ZRzrWLLpQtwEUIvdpAyI00ZKZzn8AoaGgcG+om6ZWYl1NfPRqRP
- J5q1bKAdcA2S4PjGwJN1p8ylLoIS+vHy4DmZDFA2Em3ssc9Ahi+zKIuFhx5Tm3V8WBaz
- O0Vg==
-X-Gm-Message-State: ANhLgQ2DfQpXg36o2abR0ScGlPzcWLjv07W/d7Afg1OA2P9w8REevmkV
- ArzUCV5K6MtlUYmn1VZ2xiewbcLB1VVgwQ==
-X-Received: by 2002:adf:eb51:: with SMTP id u17mr24410532wrn.29.1583791107287; 
- Mon, 09 Mar 2020 14:58:27 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id f17sm42207068wrm.3.2020.03.09.14.58.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Mar 2020 14:58:26 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 5/5] docs: Be consistent about capitalization of 'Arm'
-Date: Mon,  9 Mar 2020 21:58:18 +0000
-Message-Id: <20200309215818.2021-6-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200309215818.2021-1-peter.maydell@linaro.org>
-References: <20200309215818.2021-1-peter.maydell@linaro.org>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=3D5R0ByUMwnpIn847TV33cL0I9HbhgiAN2Aan/suScM=;
+        b=HIHjU1mUX1Cua7tLOJmTrVVz0lQW6k9HIc/ugOG1xh99cpDwdO5r9w997ptLivJeAC
+         VTqfEYoCfVVlL7wJ52+Ej63t1PK2elrgAZz+5aqwzoklExtb0RGKDLm+Rg8uXg1+OF6R
+         Fz8RGX3E9Fy5eUd6HJSncCRLoVjnw3Gss/b84lK2FZPiv3Wf+E/tdjbxzZ8uQpB/zK9z
+         4Dg0IAEWGNv5Nm2TZ1/OD/K33IWqITpxPEwDUh4CFyuXWDtY6RoIqy+Ox7JipbDiWVyv
+         Wxm4kj9cn1BHuftbJN8EOPQyI/YfZkT099nd8L7x05wbPo7qhKAGXPFlbRI3QNGc5rG2
+         PQ+w==
+X-Gm-Message-State: ANhLgQ0kaMGaytv6o4wNjFLrwPM8Hz7zRraHR/sHtsHktwl2uwlHEdlu
+	8+mlCunFtUh0FXH453C8YrYEnxEVGJImA4mZMNcQnhbg
+X-Google-Smtp-Source: ADFU+vsOPsYBcEuBVILDzLeVArfQdLdefbUjXFSF0jilPRltyA4UBnMuIW45MdPVbg4LnuXXVSWM4s00rfXvCCOvqjo=
+X-Received: by 2002:a9d:1920:: with SMTP id j32mr5938639ota.221.1583791308605;
+ Mon, 09 Mar 2020 15:01:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::431
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Niek Linnenbank <nieklinnenbank@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +OBfLSb7LjYZ
+References: <20200301215029.15196-1-nieklinnenbank@gmail.com>
+ <20200301215029.15196-19-nieklinnenbank@gmail.com> <871rq876h3.fsf@linaro.org>
+ <CAPan3WrNnrnngwE4pGeYpR9HS7Vr936-ojPZZovNo8ZdoAA0sg@mail.gmail.com>
+ <CAFEAcA_6Lm-JwbXFLWeetc7+fhnrc5m2+YU28ymFw0MSoKOhwg@mail.gmail.com>
+ <CAPan3Wo2Nf_d4AxsV5=sfOxv66rmQNfN==rpMn9=FtM5cZG9rw@mail.gmail.com>
+ <CAFEAcA-2-tz7F1vmbggpLnc1SSX+_W5pij-w8Vgjx+vqr-LRUA@mail.gmail.com>
+ <CAPan3Wr-oS-QRxmCDPXLRBG81yqjnp56B2WNuxtBMOxr2b9D6A@mail.gmail.com> <CAFEAcA_rY1hXNbzsj6EJvKzODX_EWdTOK1Gfxi2Jbv+UsYxRtQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA_rY1hXNbzsj6EJvKzODX_EWdTOK1Gfxi2Jbv+UsYxRtQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 9 Mar 2020 22:01:37 +0000
+Message-ID: <CAFEAcA-m2GJ01=-aEW0VLrY-nJgOpAMFOBF8+0jXeW+H7wkM-A@mail.gmail.com>
+Subject: Re: [PATCH v6 18/18] docs: add Orange Pi PC document
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+	Beniamino Galvani <b.galvani@gmail.com>, Jason Wang <jasowang@redhat.com>, 
+	Igor Mammedov <imammedo@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: OBRysDe7HR2H
 
-The company 'Arm' went through a rebranding some years back
-involving a recapitalization from 'ARM' to 'Arm'. As a result
-our documentation is a bit inconsistent between the two forms.
-It's not worth trying to update everywhere in QEMU, but it's
-easy enough to make docs/ consistent.
+On Mon, 9 Mar 2020 at 20:12, Peter Maydell <peter.maydell@linaro.org> wrote:
+> If you're ready to send out the next version before that,
+> then leave it with the include:: directive and we can
+> fix it up to the new structure later.
 
-Note that "ARMv8" and similar architecture names, and
-older CPU names like "ARM926" still retain all-caps.
+PS: in case you weren't aware, softfreeze for the 5.0 release
+is 17th March, so if this series is going to go in for 5.0
+then (a) people interested in reviewing it should hurry up
+and review patches 9..18 and (b) the final version would
+need to be on the list sometime this week so it can go into
+a pull request by the 17th.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-I don't feel very strongly about this change, but it
-looked a bit odd where earlier rearrangements in this
-series meant that some documents had a mix of both styles,
-so I thought I might as well fix all of docs/.
----
- docs/can.txt                     | 2 +-
- docs/devel/atomics.txt           | 2 +-
- docs/devel/multi-thread-tcg.txt  | 8 ++++----
- docs/replay.txt                  | 2 +-
- docs/specs/fw_cfg.txt            | 2 +-
- docs/devel/kconfig.rst           | 2 +-
- docs/devel/loads-stores.rst      | 2 +-
- docs/devel/tcg.rst               | 2 +-
- docs/specs/tpm.rst               | 6 +++---
- docs/system/arm/cpu-features.rst | 4 ++--
- docs/system/arm/integratorcp.rst | 2 +-
- docs/system/arm/musicpal.rst     | 2 +-
- docs/system/arm/nseries.rst      | 2 +-
- docs/system/arm/palm.rst         | 2 +-
- docs/system/arm/realview.rst     | 4 ++--
- docs/system/arm/sx1.rst          | 2 +-
- docs/system/arm/versatile.rst    | 2 +-
- docs/system/arm/xscale.rst       | 2 +-
- docs/user/main.rst               | 8 ++++----
- 19 files changed, 29 insertions(+), 29 deletions(-)
+It's no big deal if it goes into 5.1 instead I guess,
+but it feels like the series is nearly ready so I figured
+I'd set out the timeline if people want to push to get it
+into 5.0.
 
-diff --git a/docs/can.txt b/docs/can.txt
-index 9fa6ed51c82..11ed8f2d68b 100644
---- a/docs/can.txt
-+++ b/docs/can.txt
-@@ -13,7 +13,7 @@ controller is implemented.
- 
- The PCI addon card hardware has been selected as the first CAN
- interface to implement because such device can be easily connected
--to systems with different CPU architectures (x86, PowerPC, ARM, etc.).
-+to systems with different CPU architectures (x86, PowerPC, Arm, etc.).
- 
- The project has been initially started in frame of RTEMS GSoC 2013
- slot by Jin Yang under our mentoring  The initial idea was to provide generic
-diff --git a/docs/devel/atomics.txt b/docs/devel/atomics.txt
-index a4db3a4aaad..67bdf826280 100644
---- a/docs/devel/atomics.txt
-+++ b/docs/devel/atomics.txt
-@@ -87,7 +87,7 @@ Sequentially consistent loads and stores can be done using:
-     atomic_xchg(ptr, val) for stores
- 
- However, they are quite expensive on some platforms, notably POWER and
--ARM.  Therefore, qemu/atomic.h provides two primitives with slightly
-+Arm.  Therefore, qemu/atomic.h provides two primitives with slightly
- weaker constraints:
- 
-     typeof(*ptr) atomic_mb_read(ptr)
-diff --git a/docs/devel/multi-thread-tcg.txt b/docs/devel/multi-thread-tcg.txt
-index 782bebc28b4..3c85ac0eab9 100644
---- a/docs/devel/multi-thread-tcg.txt
-+++ b/docs/devel/multi-thread-tcg.txt
-@@ -227,7 +227,7 @@ minimise contention.
- (Current solution)
- 
- MMIO access automatically serialises hardware emulation by way of the
--BQL. Currently ARM targets serialise all ARM_CP_IO register accesses
-+BQL. Currently Arm targets serialise all ARM_CP_IO register accesses
- and also defer the reset/startup of vCPUs to the vCPU context by way
- of async_run_on_cpu().
- 
-@@ -268,7 +268,7 @@ ordered backends this could become a NOP.
- Aside from explicit standalone memory barrier instructions there are
- also implicit memory ordering semantics which comes with each guest
- memory access instruction. For example all x86 load/stores come with
--fairly strong guarantees of sequential consistency where as ARM has
-+fairly strong guarantees of sequential consistency whereas Arm has
- special variants of load/store instructions that imply acquire/release
- semantics.
- 
-@@ -317,7 +317,7 @@ x86 cmpxchg instruction.
- 
- The second type offer a pair of load/store instructions which offer a
- guarantee that a region of memory has not been touched between the
--load and store instructions. An example of this is ARM's ldrex/strex
-+load and store instructions. An example of this is Arm's ldrex/strex
- pair where the strex instruction will return a flag indicating a
- successful store only if no other CPU has accessed the memory region
- since the ldrex.
-@@ -339,7 +339,7 @@ CURRENT OPEN QUESTIONS:
- 
- The TCG provides a number of atomic helpers (tcg_gen_atomic_*) which
- can be used directly or combined to emulate other instructions like
--ARM's ldrex/strex instructions. While they are susceptible to the ABA
-+Arm's ldrex/strex instructions. While they are susceptible to the ABA
- problem so far common guests have not implemented patterns where
- this may be a problem - typically presenting a locking ABI which
- assumes cmpxchg like semantics.
-diff --git a/docs/replay.txt b/docs/replay.txt
-index f4619a62a3d..70c27edb362 100644
---- a/docs/replay.txt
-+++ b/docs/replay.txt
-@@ -19,7 +19,7 @@ Deterministic replay has the following features:
-    the memory, state of the hardware devices, clocks, and screen of the VM.
-  * Writes execution log into the file for later replaying for multiple times
-    on different machines.
-- * Supports i386, x86_64, and ARM hardware platforms.
-+ * Supports i386, x86_64, and Arm hardware platforms.
-  * Performs deterministic replay of all operations with keyboard and mouse
-    input devices.
- 
-diff --git a/docs/specs/fw_cfg.txt b/docs/specs/fw_cfg.txt
-index 08c00bdf44a..8f1ebc66fa4 100644
---- a/docs/specs/fw_cfg.txt
-+++ b/docs/specs/fw_cfg.txt
-@@ -82,7 +82,7 @@ Selector Register IOport: 0x510
- Data Register IOport:     0x511
- DMA Address IOport:       0x514
- 
--=== ARM Register Locations ===
-+=== Arm Register Locations ===
- 
- Selector Register address: Base + 8 (2 bytes)
- Data Register address:     Base + 0 (8 bytes)
-diff --git a/docs/devel/kconfig.rst b/docs/devel/kconfig.rst
-index b7bca447046..e5df72b3422 100644
---- a/docs/devel/kconfig.rst
-+++ b/docs/devel/kconfig.rst
-@@ -8,7 +8,7 @@ time different targets can share large amounts of code.  For example,
- a POWER and an x86 board can run the same code to emulate a PCI network
- card, even though the boards use different PCI host bridges, and they
- can run the same code to emulate a SCSI disk while using different
--SCSI adapters.  ARM, s390 and x86 boards can all present a virtio-blk
-+SCSI adapters.  Arm, s390 and x86 boards can all present a virtio-blk
- disk to their guests, but with three different virtio guest interfaces.
- 
- Each QEMU target enables a subset of the boards, devices and buses that
-diff --git a/docs/devel/loads-stores.rst b/docs/devel/loads-stores.rst
-index 03aa9e7ff80..0d99eb24c1b 100644
---- a/docs/devel/loads-stores.rst
-+++ b/docs/devel/loads-stores.rst
-@@ -302,7 +302,7 @@ way QEMU defines the view of memory that a device or CPU has.
- or bus fabric.)
- 
- Each CPU has an AddressSpace. Some kinds of CPU have more than
--one AddressSpace (for instance ARM guest CPUs have an AddressSpace
-+one AddressSpace (for instance Arm guest CPUs have an AddressSpace
- for the Secure world and one for NonSecure if they implement TrustZone).
- Devices which can do DMA-type operations should generally have an
- AddressSpace. There is also a "system address space" which typically
-diff --git a/docs/devel/tcg.rst b/docs/devel/tcg.rst
-index 4956a30a4e6..4ebde44b9d7 100644
---- a/docs/devel/tcg.rst
-+++ b/docs/devel/tcg.rst
-@@ -83,7 +83,7 @@ memory until the end of the translation block.  This is done for internal
- emulation state that is rarely accessed directly by the program and/or changes
- very often throughout the execution of a translation block---this includes
- condition codes on x86, delay slots on SPARC, conditional execution on
--ARM, and so on.  This state is stored for each target instruction, and
-+Arm, and so on.  This state is stored for each target instruction, and
- looked up on exceptions.
- 
- MMU emulation
-diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
-index da9eb39ca97..5e61238bc5f 100644
---- a/docs/specs/tpm.rst
-+++ b/docs/specs/tpm.rst
-@@ -25,7 +25,7 @@ QEMU files related to TPM TIS interface:
- 
- Both an ISA device and a sysbus device are available. The former is
- used with pc/q35 machine while the latter can be instantiated in the
--ARM virt machine.
-+Arm virt machine.
- 
- CRB interface
- -------------
-@@ -331,7 +331,7 @@ In case a pSeries machine is emulated, use the following command line:
-     -device virtio-blk-pci,scsi=off,bus=pci.0,addr=0x3,drive=drive-virtio-disk0,id=virtio-disk0 \
-     -drive file=test.img,format=raw,if=none,id=drive-virtio-disk0
- 
--In case an ARM virt machine is emulated, use the following command line:
-+In case an Arm virt machine is emulated, use the following command line:
- 
- .. code-block:: console
- 
-@@ -346,7 +346,7 @@ In case an ARM virt machine is emulated, use the following command line:
-     -drive if=pflash,format=raw,file=flash0.img,readonly \
-     -drive if=pflash,format=raw,file=flash1.img
- 
--  On ARM, ACPI boot with TPM is not yet supported.
-+  On Arm, ACPI boot with TPM is not yet supported.
- 
- In case SeaBIOS is used as firmware, it should show the TPM menu item
- after entering the menu with 'ESC'.
-diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-index 7495b7b672b..2d5c06cd016 100644
---- a/docs/system/arm/cpu-features.rst
-+++ b/docs/system/arm/cpu-features.rst
-@@ -5,9 +5,9 @@ CPU features are optional features that a CPU of supporting type may
- choose to implement or not.  In QEMU, optional CPU features have
- corresponding boolean CPU proprieties that, when enabled, indicate
- that the feature is implemented, and, conversely, when disabled,
--indicate that it is not implemented. An example of an ARM CPU feature
-+indicate that it is not implemented. An example of an Arm CPU feature
- is the Performance Monitoring Unit (PMU).  CPU types such as the
--Cortex-A15 and the Cortex-A57, which respectively implement ARM
-+Cortex-A15 and the Cortex-A57, which respectively implement Arm
- architecture reference manuals ARMv7-A and ARMv8-A, may both optionally
- implement PMUs.  For example, if a user wants to use a Cortex-A15 without
- a PMU, then the `-cpu` parameter should contain `pmu=off` on the QEMU
-diff --git a/docs/system/arm/integratorcp.rst b/docs/system/arm/integratorcp.rst
-index 3232b43a08b..e6f050f602b 100644
---- a/docs/system/arm/integratorcp.rst
-+++ b/docs/system/arm/integratorcp.rst
-@@ -1,7 +1,7 @@
- Integrator/CP (``integratorcp``)
- ================================
- 
--The ARM Integrator/CP board is emulated with the following devices:
-+The Arm Integrator/CP board is emulated with the following devices:
- 
- -  ARM926E, ARM1026E, ARM946E, ARM1136 or Cortex-A8 CPU
- 
-diff --git a/docs/system/arm/musicpal.rst b/docs/system/arm/musicpal.rst
-index 35c22212486..9de380edf81 100644
---- a/docs/system/arm/musicpal.rst
-+++ b/docs/system/arm/musicpal.rst
-@@ -4,7 +4,7 @@ Freecom MusicPal (``musicpal``)
- The Freecom MusicPal internet radio emulation includes the following
- elements:
- 
---  Marvell MV88W8618 ARM core.
-+-  Marvell MV88W8618 Arm core.
- 
- -  32 MB RAM, 256 KB SRAM, 8 MB flash.
- 
-diff --git a/docs/system/arm/nseries.rst b/docs/system/arm/nseries.rst
-index b000b6d13bb..cd9edf5d88b 100644
---- a/docs/system/arm/nseries.rst
-+++ b/docs/system/arm/nseries.rst
-@@ -4,7 +4,7 @@ Nokia N800 and N810 tablets (``n800``, ``n810``)
- Nokia N800 and N810 internet tablets (known also as RX-34 and RX-44 /
- 48) emulation supports the following elements:
- 
---  Texas Instruments OMAP2420 System-on-chip (ARM 1136 core)
-+-  Texas Instruments OMAP2420 System-on-chip (ARM1136 core)
- 
- -  RAM and non-volatile OneNAND Flash memories
- 
-diff --git a/docs/system/arm/palm.rst b/docs/system/arm/palm.rst
-index 0eabf63e0e7..47ff9b36d46 100644
---- a/docs/system/arm/palm.rst
-+++ b/docs/system/arm/palm.rst
-@@ -4,7 +4,7 @@ Palm Tungsten|E PDA (``cheetah``)
- The Palm Tungsten|E PDA (codename \"Cheetah\") emulation includes the
- following elements:
- 
---  Texas Instruments OMAP310 System-on-chip (ARM 925T core)
-+-  Texas Instruments OMAP310 System-on-chip (ARM925T core)
- 
- -  ROM and RAM memories (ROM firmware image can be loaded with
-    -option-rom)
-diff --git a/docs/system/arm/realview.rst b/docs/system/arm/realview.rst
-index 8e08eb5da16..65f5be346b1 100644
---- a/docs/system/arm/realview.rst
-+++ b/docs/system/arm/realview.rst
-@@ -1,7 +1,7 @@
- Arm Realview boards (``realview-eb``, ``realview-eb-mpcore``, ``realview-pb-a8``, ``realview-pbx-a9``)
- ======================================================================================================
- 
--Several variants of the ARM RealView baseboard are emulated, including
-+Several variants of the Arm RealView baseboard are emulated, including
- the EB, PB-A8 and PBX-A9. Due to interactions with the bootloader, only
- certain Linux kernel configurations work out of the box on these boards.
- 
-@@ -14,7 +14,7 @@ The following devices are emulated:
- 
- -  ARM926E, ARM1136, ARM11MPCore, Cortex-A8 or Cortex-A9 MPCore CPU
- 
---  ARM AMBA Generic/Distributed Interrupt Controller
-+-  Arm AMBA Generic/Distributed Interrupt Controller
- 
- -  Four PL011 UARTs
- 
-diff --git a/docs/system/arm/sx1.rst b/docs/system/arm/sx1.rst
-index 321993bc098..8bce30d4b25 100644
---- a/docs/system/arm/sx1.rst
-+++ b/docs/system/arm/sx1.rst
-@@ -4,7 +4,7 @@ Siemens SX1 (``sx1``, ``sx1-v1``)
- The Siemens SX1 models v1 and v2 (default) basic emulation. The
- emulation includes the following elements:
- 
---  Texas Instruments OMAP310 System-on-chip (ARM 925T core)
-+-  Texas Instruments OMAP310 System-on-chip (ARM925T core)
- 
- -  ROM and RAM memories (ROM firmware image can be loaded with
-    -pflash) V1 1 Flash of 16MB and 1 Flash of 8MB V2 1 Flash of 32MB
-diff --git a/docs/system/arm/versatile.rst b/docs/system/arm/versatile.rst
-index 48b6ca0a020..51221c30a48 100644
---- a/docs/system/arm/versatile.rst
-+++ b/docs/system/arm/versatile.rst
-@@ -1,7 +1,7 @@
- Arm Versatile boards (``versatileab``, ``versatilepb``)
- =======================================================
- 
--The ARM Versatile baseboard is emulated with the following devices:
-+The Arm Versatile baseboard is emulated with the following devices:
- 
- -  ARM926E, ARM1136 or Cortex-A8 CPU
- 
-diff --git a/docs/system/arm/xscale.rst b/docs/system/arm/xscale.rst
-index 19da2eff352..89ec93e904e 100644
---- a/docs/system/arm/xscale.rst
-+++ b/docs/system/arm/xscale.rst
-@@ -4,7 +4,7 @@ Sharp XScale-based PDA models (``akita``, ``borzoi``, ``spitz``, ``terrier``)
- The XScale-based clamshell PDA models (\"Spitz\", \"Akita\", \"Borzoi\"
- and \"Terrier\") emulation includes the following peripherals:
- 
---  Intel PXA270 System-on-chip (ARM V5TE core)
-+-  Intel PXA270 System-on-chip (ARMv5TE core)
- 
- -  NAND Flash memory
- 
-diff --git a/docs/user/main.rst b/docs/user/main.rst
-index ca69f7727d5..bd99b0fdbe9 100644
---- a/docs/user/main.rst
-+++ b/docs/user/main.rst
-@@ -35,7 +35,7 @@ QEMU user space emulation has the following notable features:
-    On Linux, QEMU can emulate the ``clone`` syscall and create a real
-    host thread (with a separate virtual CPU) for each emulated thread.
-    Note that not all targets currently emulate atomic operations
--   correctly. x86 and ARM use a global lock in order to preserve their
-+   correctly. x86 and Arm use a global lock in order to preserve their
-    semantics.
- 
- QEMU was conceived so that ultimately it can emulate itself. Although it
-@@ -173,11 +173,11 @@ Other binaries
- user mode (Alpha)
- ``qemu-alpha`` TODO.
- 
--user mode (ARM)
-+user mode (Arm)
- ``qemu-armeb`` TODO.
- 
--user mode (ARM)
--``qemu-arm`` is also capable of running ARM \"Angel\" semihosted ELF
-+user mode (Arm)
-+``qemu-arm`` is also capable of running Arm \"Angel\" semihosted ELF
- binaries (as implemented by the arm-elf and arm-eabi Newlib/GDB
- configurations), and arm-uclinux bFLT format binaries.
- 
--- 
-2.20.1
-
+thanks
+-- PMM

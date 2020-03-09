@@ -1,102 +1,97 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1353683lfc;
-        Mon, 9 Mar 2020 09:54:25 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvonQJuDKUq/noMIAy2Be4BgR3AsL3ZUxI9FvRgZfRo1HH3RLy/stHiuLJz8Ajs5EHw9Z1n
-X-Received: by 2002:aed:2284:: with SMTP id p4mr14841980qtc.329.1583772865115;
-        Mon, 09 Mar 2020 09:54:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583772865; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1368221lfc;
+        Mon, 9 Mar 2020 10:09:44 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuqXUSdxLrc1LDWaII22EbMhoxtBcZn6z/jRkth96sLJlDP4wP2P/VNGV5zLuCxJufZoQzM
+X-Received: by 2002:a05:620a:a90:: with SMTP id v16mr9824651qkg.46.1583773783849;
+        Mon, 09 Mar 2020 10:09:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583773783; cv=none;
         d=google.com; s=arc-20160816;
-        b=P0G5pNthSpIPnPh7zppPAqVXC9dknDSbgWmNFCV4jH60tETZn9fz60X0aqTvYD3DBF
-         /NSq1rnrc5H6ys1QStGO/C8TVsVW76oWca8JQS2uHy41IwV1TiMpLA5MRVeX2ishrxs0
-         y//G/zEXKStHphIXrFpcJAKejsK8CS/9W6vnNGcTRlc0unVTUqPs3BUQ94fxuYX33t1l
-         EZGn2JSEhUPUkE5bLLFOqAi907qbPA9g9erMaeLdhwXQoUZGhMfO9obpvdo/ZQz3RjNC
-         OkHD5Kgdi6RwIGmv0vZg9+wTpQPHQnDaOXvJ+VjG9z0GWg8S/DVCTF93di1lTriUBs5K
-         eEDw==
+        b=Cou8FjjexkZrN3Z0SNLiTH4v/nPUGJmx+vOVmRNR9KcS9Fsulc0arp0BddpbeIYKwz
+         SSmf+XsmsIAXXnsg+cDes8I9z083R9E5dXnEfz+3AthyUyh/Sqladd433SRAv1kdXQB6
+         SgnMaT+/DpRTQ8Og7XDHO/0/o1T7pREuYQU9ZffFYmdwIfHvVhu5h3ftIecb+3BDJfME
+         Xvurc0p1/Lvk1TW5qX+xcJHvS6l+ayAJS3tjYLRstmAOSZLF+bb6VKJ/ff15D63r7LKy
+         u2FlatSOtHbbrO6+W6hoqwvMbGvk8wZ2/y3OhEYjbYWbVYcjPIEPNdNIrrH6/qpZk9cu
+         V0ZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=BQnAqPzr5DDvBpluWBDNO8W8klH/WinH9MZYi++wetc=;
-        b=J90WsgGAkmeAMa4nrs4SPSYGg8UySUDi8umRLEv7ZEfJXQikPRIF3An5O36g0YUpkv
-         TVxcqieoQOn6IcPRUL61BuSebng4SUXxnxWmq+VX77kM4Xp6g07x12VTRx4tjrm8DvLp
-         hG7GjtiBJODndzF5nqhCEXAdYiDEz6F3zhLCUmNfKWPA+oZ513PBtuVsPI9hitqQ/aIk
-         3IAg9enGcx8C86MIv0S3SdPf80JUi21LgOxO9sadaQntP4AX1WD1g2IaAX+mxnagCoC3
-         ycn8G/SpDOfPGFt3NOXWQQgEyGgKF9tmB/ykO0VN4uWmfb3V/gp0Q4TB8URl1Fg9TfZF
-         q8GA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=4YR3WLemMhh2GvPEM0MGp2LdO687Q4RFVclOD9Kaf7M=;
+        b=L6fnw17Z0bZPW4rmsLc3dkXTwdePwXqm5IC17C75N58joluVcdbQejJbbORK60bm/w
+         1YPvh3LVokkB6DVCPx/3SNCt3ADlzKNjBo8jLH13T6jmnaiz8nkXIbYjF0osczDXqiBb
+         0MB0sHqzv8/nF/3IKQbqcMOrbHdlvnabe4yO0noZOYNWV7Ar0jGX7OevQDscNiQ1b+4n
+         /Itvq7jebgqXupxjAPcPh6jChxTAfcHHCR/5Kpbp2mFI1UczUhVUx737WWzZ7YmV2D+E
+         zD0Wr50qFmxlbpcCIDRZI+Ec1ZASra7cvCL9a/CLKb6fNveWmidXVy12hiumlsqx8WpA
+         ZuuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ATH0JDLb;
+       dkim=fail header.i=@linaro.org header.s=google header.b=qpdMTxR9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b11si6031283qtr.8.2020.03.09.09.54.24
+        by mx.google.com with ESMTPS id e50si1160402qtk.304.2020.03.09.10.09.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Mar 2020 09:54:25 -0700 (PDT)
+        Mon, 09 Mar 2020 10:09:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ATH0JDLb;
+       dkim=fail header.i=@linaro.org header.s=google header.b=qpdMTxR9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46970 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47092 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBLfc-0000e6-Is
-	for alex.bennee@linaro.org; Mon, 09 Mar 2020 12:54:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53895)
+	id 1jBLuR-0004qB-9o
+	for alex.bennee@linaro.org; Mon, 09 Mar 2020 13:09:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56364)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jBLfP-0000Y2-8H
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 12:54:12 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jBLuJ-0004pq-L6
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 13:09:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jBLfO-000186-5O
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 12:54:11 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:37039)
+ (envelope-from <peter.maydell@linaro.org>) id 1jBLuI-0004Sb-HH
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 13:09:35 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:39764)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jBLfO-000155-0E
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 12:54:10 -0400
-Received: by mail-ot1-x341.google.com with SMTP id b3so10264872otp.4
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2020 09:54:09 -0700 (PDT)
+ id 1jBLuI-0004SM-CD
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 13:09:34 -0400
+Received: by mail-ot1-x342.google.com with SMTP id a9so4098704otl.6
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2020 10:09:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=BQnAqPzr5DDvBpluWBDNO8W8klH/WinH9MZYi++wetc=;
- b=ATH0JDLbOjq/PDbEGeLwUeIzkkbtEyo2IYRZRvnIjJE9NFHLG73jydaHTx3XATqPHr
- 1P2jbyZvmp5Dz2A6cKZQ/8XQuEI1q8vzabxNn4ykypT/21LU7U7w0YyuYrBMq0NwOl4I
- qjbXIuoafV7Iz03lhzGj/YE+nN9JJlNuUaTLy+qOBQRDmvFu3iN344j7lIUIvMNm813H
- 1wD7C4yfto3S6lE0yCdKSDQq6Ygh2nZNK/fkiGXgpfe8qtBaBr3R2sBvABIElnWeHtNC
- W3zT/K7fuvdiORRHZk5jvTiv1H4ePwcgr9u0JOd7G7iwdHcN4s6/Th/LtYbwbm5R+xxH
- 6SXA==
+ :cc; bh=4YR3WLemMhh2GvPEM0MGp2LdO687Q4RFVclOD9Kaf7M=;
+ b=qpdMTxR9Y7falk+VKMteP7Jm0YUVuQeqKwswC1pJQ81EHL0oZjnAwsTdCbXW4TCJLz
+ XhIvh4FXklZYPNn9Gf4u+GjHXs2nwQ8JuXyRZAGARCO+s0V7ARAne8wDcLEzkrNTTRpT
+ 45MZ9lcqJUp+84ekceVV2AkUlIdL1NW4ThW2EBEFmP4rJ6vv3BYxF1WBrm7VatOqBujz
+ O/k7ylJdH57/mRzj12BQ3ZUDFfRYBUsdCNOfJc2jxAPdqR98o7MQ3bNmQNKHxuYe6Q4Y
+ 6IorAJ10UcbVxBZA/cvEq/cNKNQm2/gsbxZQ7ScNgxrg0Km3AdqIYWUbrwOwkNsAlv88
+ A+3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=BQnAqPzr5DDvBpluWBDNO8W8klH/WinH9MZYi++wetc=;
- b=CRsr6HoPlRUygpzvS5X+mrp+LAYP2ZD3yqK5UXeOAF0icMFl27M+2eA70bUuXiYmv2
- TNfaCo2ZL3M6bBIAR4O1GK0orFJkzG2Wk86ilxv9QN5+lPiCixfL0pjYnrMCdBuC0WLw
- kkOomaLwtIopKkcqqSCJUGQzzggKRbWU1y3qeolCMZOer1679Tcpvgq+1RMXOuR82LZ5
- cCccCTEPUgdiahs5y0C22cDMFLEMie+7slphLv2VVtxnxsGDpJ7welO5+SU5sG9PIvph
- TjsCRW1Mhs+f2fEHhpAydpH19P5QtvQy4K0lz0hMTwzLsiR4R28vhqRtLmOTLieXdRym
- ySkg==
-X-Gm-Message-State: ANhLgQ1tgpykojxANlwql66jbUT1hFNyZ+z7s1nfx/a4Rr/X/fAvXO1s
- xWdi6vOScoLUHseMtyqxpG6hWvzc5d9dMsUCyHqfsw==
-X-Received: by 2002:a9d:1920:: with SMTP id j32mr5077156ota.221.1583772848922; 
- Mon, 09 Mar 2020 09:54:08 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=4YR3WLemMhh2GvPEM0MGp2LdO687Q4RFVclOD9Kaf7M=;
+ b=ixgbhHsK2/L0sbps3xThhuXyCiZdjcY6PfszWPcV/On0MN7PUTz/VJp8OkNiqs6qdn
+ IQHo2y2vPfBvXo/lxx9nFNaofjR+0OCLyhKK9Z8Hvu+ytccfF6Gjcc59a+vKMfKNs+JC
+ ywRdNMZJfmWAtCK1itP7YgTe01abPHjSdR6hhYUjiMl5KY4D1Bauwx9/trEtrAVhp9HJ
+ 4YhSY5l1iGjBV29avU/xfDMrxxamG4/+4fA1z8FxvfmvaUab/ABprluugboZ8pky6LMu
+ J4coqpHlwn9Uv6LxK1vOVkpaqCMJCA0k9md8V/BKYgjTD2OaQH65lipUM9LFZu7PjbpL
+ mEZA==
+X-Gm-Message-State: ANhLgQ37cn7Cskr1E2o2WZtqIgoo4GwfusJURdzr+8NMHn/nfQ8GdLda
+ wvCo1TAFZgb2eFufYaBoXT+8JVJBS0b0p7Pv76pCoQ==
+X-Received: by 2002:a9d:6c05:: with SMTP id f5mr2940112otq.232.1583773773037; 
+ Mon, 09 Mar 2020 10:09:33 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200206112645.21275-1-clg@kaod.org>
- <7ab3522d-54ae-ca24-592e-68d54e47de7d@kaod.org>
-In-Reply-To: <7ab3522d-54ae-ca24-592e-68d54e47de7d@kaod.org>
+References: <20200301170443.12904-1-linux@roeck-us.net>
+In-Reply-To: <20200301170443.12904-1-linux@roeck-us.net>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 9 Mar 2020 16:53:56 +0000
-Message-ID: <CAFEAcA9cQx82NgpXR5h7pX+NJY4dxjy-JaLk14d7GriNLeTpCg@mail.gmail.com>
-Subject: Re: [PATCH 0/2] aspeed/smc: fix data corruption on witherspoon
- machines
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Date: Mon, 9 Mar 2020 17:09:21 +0000
+Message-ID: <CAFEAcA_VuY+1egn8B6=Tk8PKGuhAPuP4-=pwuWHQGQsfdXB=dw@mail.gmail.com>
+Subject: Re: [PATCH 0/3] Wire up USB controllers on fsl-imx6 and fsl-imx6ul
+To: Guenter Roeck <linux@roeck-us.net>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::341
+X-Received-From: 2607:f8b0:4864:20::342
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,33 +103,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Andrew Geissler <geissonator@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DpU4+wUSu7Kx
+X-TUID: xXZ1UBccVQQv
 
-On Mon, 9 Mar 2020 at 16:32, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Sun, 1 Mar 2020 at 17:04, Guenter Roeck <linux@roeck-us.net> wrote:
 >
-> On 2/6/20 12:26 PM, C=C3=A9dric Le Goater wrote:
-> > Hello,
-> >
-> > We have been seeing a squashfs corruption on the witherspoon-bmc
-> > machine for quite some time. It boots but quickly after boot
-> > corruption errors start to fill the console. This machine has two BMC
-> > chips with UBIfs on them. The romulus-bmc machine has a similar
-> > problem when both PNOR are enabled.
-
-
-> Hello Peter,
+> This patch series wires up the USB controllers on fsl-imx6 and fsl-imx6ul
+> emulations.
 >
-> If you have some time to take a look, it would be nice to get this
-> fix in QEMU 5.0.
+> The first patch is a prerequisite for the following patches. It provides
+> a dummy implementation of a register widely used on i.MX systems, and
+> specifically the reset behavior of this register. This is needed to make
+> the USB ports operational without full implementation of an emulation
+> of its PHY controller.
+>
+> ----------------------------------------------------------------
+> Guenter Roeck (3):
+>       Add dummy i.MXS STMP register support
+>       arm: fsl-imx6ul: Wire up USB controllers
+>       hw/arm/fsl-imx6: Wire up USB controllers
 
-Oops, I think this just fell off my list somehow.
+I'm not a huge fan of the "dummy device that's really just
+implementing 4 registers from the middle of some other
+device" approach. Unless you think we're strongly likely
+to want to use it in other places, I think I'd prefer
+to just implement a (minimal/no-functionality) model of
+the PHY register block.
 
-
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM

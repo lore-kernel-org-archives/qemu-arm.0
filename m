@@ -1,112 +1,186 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1053022lfc;
-        Mon, 9 Mar 2020 04:53:10 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvO+J57rUOM1R14TgxwOU3SSyaETccLxQ5cF/uaiRqi6LCQkKZJ/EddRvglJL7zx/kW7FfI
-X-Received: by 2002:a9d:6a06:: with SMTP id g6mr11796801otn.305.1583754790379;
-        Mon, 09 Mar 2020 04:53:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583754790; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1057120lfc;
+        Mon, 9 Mar 2020 04:57:59 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsTBIvBNV2EPS3KBNQhsx0lL40/NnYJjFtyQlEUNRLvFPr3YU39hejkfhoP8KtfehEwU0Wg
+X-Received: by 2002:aca:c552:: with SMTP id v79mr2171423oif.156.1583755079344;
+        Mon, 09 Mar 2020 04:57:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583755079; cv=none;
         d=google.com; s=arc-20160816;
-        b=MCzS/PJS5Z+c/pvusYCel1PQN5F4w3YuMDvEWTP6WvlH6yLRzv0g+c0XbFwrhMNi+6
-         rc3x/qR9YVRvynOBZlMPkJUgsQt+bE/I3vnr0tfYBUgyqM5CV3mi8MlM9Ovhiw4ONS5x
-         KWRFw60zrIKVWG/QZyhHiNa2u51ApAgElLsg5/2fgM0wbiwRl7KsX8JGXit/DI3D0Qkm
-         GOnnL+mlWUoPJ41l2IKY8/zP1A+mC57RvSIFCJNcspZXkwi9fZ51Zp7P8h0eWGcArMsl
-         x/bTV14xu7+SA7DBA9eCVuOZjpVgUX+kZzDtfKrXT8eptxIrnIqhSHRRt+qLYDczhuGN
-         sxWg==
+        b=fAsatZvf/pQYfJLidPg3WCcb59wmlHwX7u7QrCDi3leIU/4kgoOqZxY+XC/GKISBbN
+         lu6LEE9STedn8SG6IlUSjzsE4UYXWuq79/IvVcHbfsm2pHk2mu08rCIUvVXAppJthvmt
+         YwOaBeQB/z5Rv+nRao989gzWGr1zKnvhzomWl9NUHUw5+RZz5Y8DhC1G9WUj8PxqkF4c
+         n76SexxAT7X8Azd/K/AUCJ/GjxQZ3KAYt335bIoVUj4+NlZq74fTAmgJ8pYSQpuNMDDO
+         XeAalms/tn0ymgjg62kMgHqSpz9+t7EwgFum4XXqJiFex8lXQV+dvzDYKagQqrOe1hGr
+         u0Cw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=KBLLFAeCjCkZQxE+M1dfsu6NPU5v8sNcOYuqxDc862s=;
-        b=0693v9daz35xpj39yChXklIaNFlsTEkI64//vdYwGosQL9U6rElVb7iq2/JXXAQsGV
-         06kblvGfggk+ebe6JQ3ejY33nsjwmHwkgysLJxQXZ12WOPJbLM/Yrj1JZg4aTRNzAj1s
-         ZSWpAko29BfAhcZRSPPY5AUagGkrh+grZfOIhmKO3TI21ftWxrgqOC4woLD+YOaV1F32
-         Dw87h7lhNzGlUrEKXeIy4obTLnrpHzOdM8BmrbZ2F+WHlXTxpIWy0J7s6U1wUrS9EXZs
-         eO9frm6zJOf8pYn/vdKIfKnc1lb69ZONj2m1+Ru1Hr/O3jS5Id7q8V5WOe9bsDbAh6rb
-         CGTQ==
+        bh=JlRj9Vqw5kVHj8y9+BpywPdNrroWVPcoF5Lt1CkGwdM=;
+        b=pv/cYPFDv9LfCV/rJYQSvM73pvAVXqMm1RFnvF2ycDmnHNwZ4u5Te9xnxxVRtysZ44
+         GpHein3t+ju21Svmc6bFiMplOG/jvnlhfry+53CH/5S919WF5hCPBFNmkB9rG8jQr9W3
+         /gQrqNA2HY7PlxhxmlVd4yMyFGNCimCxkQrFoJnafI/8vSHhx5z0oXLnkYpsrunuhQa+
+         o7y39iU1dHRv11ZAZ4CXaCid/btQPwxbZB+XiKTZBZ6Bbbh7L7RELTzxaJVDCUPUsqlZ
+         BnJQZz+dpmB7R3brkW48IOcJj82NoiiaFa1W6BGOJcKhSlS6SMsi0R6yeRjhuwXPlbdP
+         EDTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eYl96P4Z;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OP6qrEHf;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id c2si6894548ots.130.2020.03.09.04.53.09;
-        Mon, 09 Mar 2020 04:53:10 -0700 (PDT)
+        by mx.google.com with ESMTP id i66si4144763oib.237.2020.03.09.04.57.59;
+        Mon, 09 Mar 2020 04:57:59 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eYl96P4Z;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OP6qrEHf;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726402AbgCILxJ (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 9 Mar 2020 07:53:09 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:46319 "EHLO
+        id S1726536AbgCIL56 (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Mon, 9 Mar 2020 07:57:58 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:35409 "EHLO
         us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1725796AbgCILxJ (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Mon, 9 Mar 2020 07:53:09 -0400
+        by vger.kernel.org with ESMTP id S1726215AbgCIL56 (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Mon, 9 Mar 2020 07:57:58 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1583754788;
+        s=mimecast20190719; t=1583755077;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:content-type:content-type:
          in-reply-to:in-reply-to:references:references;
-        bh=KBLLFAeCjCkZQxE+M1dfsu6NPU5v8sNcOYuqxDc862s=;
-        b=eYl96P4Zuy5RbKGX7vPU1G4gc9TkRS3jr8AKcaSTDVB6rW3t3GumTk8f30PYRogyaTWj8l
-        08NKR3ynpL2rNm5aa0IUb5wSDL1UpzHOJCSbDrQwzzzXobGChg1+igBLJKKAOTUVBh/HUV
-        2TczM5ULTvlZrg4dHyRbX8erjiM6K+w=
+        bh=JlRj9Vqw5kVHj8y9+BpywPdNrroWVPcoF5Lt1CkGwdM=;
+        b=OP6qrEHfWwHt2W3TI9sOxohG2UqXGuN6kVYHZTJeQvDn33/8SwKVoCgxNF9nPGxbD9mcwU
+        MhEW7CQcnU1kiHTQr9qP616fGCN9N4EpaI7tmFSwruQAnmXhFSThMKJ1EvHrYBS1LHo0fR
+        zsikMwvK/IOdmYfsgvn13UWHKRzjeBU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-236-0VGg1kgrM-SYTigNxxjiNg-1; Mon, 09 Mar 2020 07:53:06 -0400
-X-MC-Unique: 0VGg1kgrM-SYTigNxxjiNg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+ us-mta-175-Sr7-7OUHPOuxLwTebliNgQ-1; Mon, 09 Mar 2020 07:57:53 -0400
+X-MC-Unique: Sr7-7OUHPOuxLwTebliNgQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 815AD1401;
-        Mon,  9 Mar 2020 11:53:04 +0000 (UTC)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A88C48010C7;
+        Mon,  9 Mar 2020 11:57:51 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id C2F1F1001B30;
-        Mon,  9 Mar 2020 11:52:59 +0000 (UTC)
-Date:   Mon, 9 Mar 2020 12:52:56 +0100
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id 9B26960C05;
+        Mon,  9 Mar 2020 11:57:43 +0000 (UTC)
+Date:   Mon, 9 Mar 2020 12:57:41 +0100
 From:   Andrew Jones <drjones@redhat.com>
-To:     Auger Eric <eric.auger@redhat.com>
-Cc:     peter.maydell@linaro.org, thuth@redhat.com, kvm@vger.kernel.org,
-        maz@kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-        andre.przywara@arm.com, yuzenghui@huawei.com,
-        alexandru.elisei@arm.com, kvmarm@lists.cs.columbia.edu,
-        eric.auger.pro@gmail.com
-Subject: Re: [kvm-unit-tests PATCH v4 07/13] arm/arm64: ITS:
- its_enable_defaults
-Message-ID: <20200309115256.beb3uwc2lyukavey@kamzik.brq.redhat.com>
+To:     Eric Auger <eric.auger@redhat.com>
+Cc:     eric.auger.pro@gmail.com, maz@kernel.org,
+        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+        peter.maydell@linaro.org, andre.przywara@arm.com, thuth@redhat.com,
+        yuzenghui@huawei.com, alexandru.elisei@arm.com
+Subject: Re: [kvm-unit-tests PATCH v4 00/13] arm/arm64: Add ITS tests
+Message-ID: <20200309115741.6stx5tpkb6s6ejzh@kamzik.brq.redhat.com>
 References: <20200309102420.24498-1-eric.auger@redhat.com>
- <20200309102420.24498-8-eric.auger@redhat.com>
- <20200309113914.pg5522tvwazgrfec@kamzik.brq.redhat.com>
- <73691fc7-45f3-6274-019f-aa5b0d2a0c1b@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <73691fc7-45f3-6274-019f-aa5b0d2a0c1b@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <20200309102420.24498-1-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 5onaHAXpfCOn
+X-TUID: 8fnJB2RC0TVv
 
-On Mon, Mar 09, 2020 at 12:45:34PM +0100, Auger Eric wrote:
-> >> -	for_each_present_cpu(cpu) {
-> >> +	for (cpu = 0; cpu < nr_cpus; cpu++) {
-> > 
-> > You don't mention this change in the changelog.
-> Hey, you can see the changelog is pretty long already & accurate. But
-> you're right I missed that one and listing those changes too would have
-> avoided me to put those changes in that patch.
+On Mon, Mar 09, 2020 at 11:24:07AM +0100, Eric Auger wrote:
+> This series is a revival of an RFC series sent in Dec 2016 [1].
+> Given the amount of code and the lack of traction at that time,
+> I haven't respinned until now. However a recent bug found related
+> to the ITS migration convinced me that this work may deserve to be
+> respinned and enhanced.
 > 
->  What's wrong with
-> > using for_each_present_cpu() here?
-> As you encouraged me to move the alloc into the it, I tried to do so but
-> then discovered this was feasible for such kind of issue. At init time,
-> CPUs have nott booted yet.
+> Tests exercise main ITS commands and also test migration.
+> With the migration framework, we are able to trigger the
+> migration from guest and that is very practical actually.
+> 
+> What is particular with the ITS programming is that most of
+> the commands are passed through queues and there is real error
+> handling. Invalid commands are just ignored and that is not
+> really tester friendly.
+> 
+> The series can be fount at:
+> https://github.com/eauger/kut/tree/its-v4
+> 
+> Best Regards
+> 
+> Eric
+> 
+> History:
+> v3 -> v4:
+> - addressed comments from Drew and Zenghui
+> - added "page_alloc: Introduce get_order()"
+> - removed "arm: gic: Provide per-IRQ helper functions"
+> - ITS files moved to lib64
+> - and many more, see individual logs
+> 
+> v2 -> v3:
+> - fix 32b compilation
+> - take into account Drew's comments (see individual diff logs)
+> 
+> v1 -> v2:
+> - took into account Zenghui's comments
+> - collect R-b's from Thomas
+> 
+> References:
+> [1] [kvm-unit-tests RFC 00/15] arm/arm64: add ITS framework
+>     https://lists.gnu.org/archive/html/qemu-devel/2016-12/msg00575.html
+> 
+> Execution:
+> x For other ITS tests:
+>   ./run_tests.sh -g its
+> 
+> x non migration tests can be launched invidually. For instance:
+>   ./arm-run arm/gic.flat -smp 8 -append 'its-trigger'
+> 
+> Eric Auger (13):
+>   libcflat: Add other size defines
+>   page_alloc: Introduce get_order()
+>   arm/arm64: gic: Introduce setup_irq() helper
+>   arm/arm64: gicv3: Add some re-distributor defines
+>   arm/arm64: gicv3: Set the LPI config and pending tables
+>   arm/arm64: ITS: Introspection tests
+>   arm/arm64: ITS: its_enable_defaults
+>   arm/arm64: ITS: Device and collection Initialization
+>   arm/arm64: ITS: Commands
+>   arm/arm64: ITS: INT functional tests
+>   arm/run: Allow Migration tests
+>   arm/arm64: ITS: migration tests
+>   arm/arm64: ITS: pending table migration test
+> 
+>  arm/Makefile.arm64         |   1 +
+>  arm/Makefile.common        |   2 +-
+>  arm/gic.c                  | 469 +++++++++++++++++++++++++++++++++++--
+>  arm/run                    |   2 +-
+>  arm/unittests.cfg          |  38 +++
+>  lib/alloc_page.c           |   7 +-
+>  lib/alloc_page.h           |   1 +
+>  lib/arm/asm/gic-v3-its.h   |  39 +++
+>  lib/arm/asm/gic-v3.h       |  32 +++
+>  lib/arm/gic-v3.c           |  76 ++++++
+>  lib/arm/gic.c              |  34 ++-
+>  lib/arm/io.c               |  28 +++
+>  lib/arm64/asm/gic-v3-its.h | 172 ++++++++++++++
+>  lib/arm64/gic-v3-its-cmd.c | 463 ++++++++++++++++++++++++++++++++++++
+>  lib/arm64/gic-v3-its.c     | 172 ++++++++++++++
+>  lib/libcflat.h             |   3 +
+>  16 files changed, 1510 insertions(+), 29 deletions(-)
+>  create mode 100644 lib/arm/asm/gic-v3-its.h
+>  create mode 100644 lib/arm64/asm/gic-v3-its.h
+>  create mode 100644 lib/arm64/gic-v3-its-cmd.c
+>  create mode 100644 lib/arm64/gic-v3-its.c
+> 
+> -- 
+> 2.20.1
+> 
+>
 
-They may not have booted, but for_each_present_cpu() should still work
-because the present mask is initialized at setup() time before the unit
-test even starts.
+This looks pretty good to me. It just needs some resquashing cleanups.
+Does Andre plan to review? I've only been reviewing with respect to
+the framework, not ITS. If no other reviews are expected, then I'll
+queue the next version.
 
 Thanks,
 drew

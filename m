@@ -1,174 +1,148 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1253756lfc;
-        Mon, 9 Mar 2020 08:11:47 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt1LRpAmqIOpatM0IqHz2d3R9W0qGb7MW4cw5aylNvqToTOJsmZaA3YjSwUgIXSzcG2O3x2
-X-Received: by 2002:a05:620a:1354:: with SMTP id c20mr5345305qkl.295.1583766707819;
-        Mon, 09 Mar 2020 08:11:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583766707; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1254241lfc;
+        Mon, 9 Mar 2020 08:12:17 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsKu5WZ/8IIOAiQ29G/DaWB0wa6Q1o/oU4w2sqxd3le8hCPDX6XIIo2iIeL+4OxHeUiJxBI
+X-Received: by 2002:aed:31e2:: with SMTP id 89mr15102646qth.35.1583766736995;
+        Mon, 09 Mar 2020 08:12:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583766736; cv=none;
         d=google.com; s=arc-20160816;
-        b=zz4jv96n0U3jhExVekpgu57bvkEW0WZqOF1rxqOsfhost2WRIKNw6SwOT1X2/PnURZ
-         Zzi30eL+Bej3HgaHffDRkWTMe/XsEnAWlaCyJPm9D2bStTMD1HC3KacIt1obiZSyAAGB
-         8iSRndJDzCiSsI4zDxJnweHcnA/ayMYCeh3dEalCJNKCRCcBIh5AmdRBY7uwr0+qfSei
-         WNxJGmS/56LQU3KVg7cL8ytTBZplfuK673aR9NoqAl2R9hxC6JKk9GLTpil6duv7GJwM
-         Mak3D/My9ydx++QazE2i5UtPdrE0S1KS7I//SZCreV0MCPwxWlzhwnTvJYc5qN/YZEBY
-         yk0Q==
+        b=dG6RjZzFXLS4KUI7R7914b2YlC3MqjJsZfydSUW3XIRQrALy8CzaOnD5/bgqamIBoK
+         2cXI1cvjqM9UyV2QWvpSea+N4MKBgHSl1RNl+kqmviKzV8ghGP+0pAQ/Zz2rxzpdes+Z
+         fVhK8Tpx7vljsjcRTz+HrDhpsi6S1R8/GvK5MriPyvwqececoS4SYtu/yshhmGDNHCyR
+         pVG+TT58CaYVIYSiiBoHfUYBC2byVlP6SWuFg1eRiKqtom7hfrWjMS1wUZs0U0xcZv3a
+         2aNmvB50jK3/6uUwZNwOnFVYQPQg7vM4TsLV90ODkjI5L2rMPDk+cPItUl6vhXmt2du0
+         mwJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=8/TTwDGhWKAHi8kyACt/M5g3epmuKskktGOpey1x/iM=;
-        b=PZmzZxigwxSSv9yUqAYAjyOlJix3xYu/rt8YGa/3dDslwcyykxSBnbHmAH/886WgLj
-         SgLLPg3/u84ajWwK6vLjTu4v86fpVF2HVq89VRX7tl9OwXAYXRcJomiLZZN4OYQxgzKW
-         4yDoh+Ml1eQVqTclHNEo8W9dRJ/xgSFdiVIBJMgClt7tDCXre9a9+0GMiGaheuxNmA4x
-         INfpTvOUxqcYBUedh5NSbAP7VmP7F9N5eHMWMQtImk6no1/Z1+OAb5P1Ms2ibqZt5NS2
-         TJh3brO+9PdjlQBjQ69SG1Gpsofv/MBqlHSx4JubPr4n4Rv2/RTbPQMIn8MXl3KiFguq
-         ZNAg==
+        bh=8AxNPFUOhN48RtnT3O1mgfAtP0L6t2F92Mqv0VJcv3A=;
+        b=N0I2fDQz8CPa3ojhoIW+8huVbhORuocqLw2Zt8AW7s3sFgH8KhNV1/jHVd7LsuYJfb
+         HCceL73Rvl39n9MHXleCxCq6G2pljRSmjzCvPxX3buaVWAWPRMHgswJhendD3ZFE924q
+         iL2ShVRS9yYLGPBJ5V+mLqMgPhnQEx5uejrrU7Lt0SyM9Qm6r+eQInD+HXDCXipW6oI2
+         eCLOvBgyxy0PAKzMsEA08dbBO/H3X8BcBoHjZ9zpiKHIzICTUDG7XlECpf9O6Qsm0leA
+         7XESeb67Hf0XyLjlgpZWsZpix2Hlwjn10QBt6TjKQCTm4O8np/vlTgKwU+SRxYk3jobN
+         wECg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c12si6708955qkl.344.2020.03.09.08.11.47
+        by mx.google.com with ESMTPS id bu10si4679432qvb.13.2020.03.09.08.12.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Mar 2020 08:11:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Mar 2020 08:12:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44550 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44568 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBK4J-0001Fd-6Z
-	for alex.bennee@linaro.org; Mon, 09 Mar 2020 11:11:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33083)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jBK4m-00039F-C3
+	for alex.bennee@linaro.org; Mon, 09 Mar 2020 11:12:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33593)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBK2G-0007H5-8n
- for qemu-devel@nongnu.org; Mon, 09 Mar 2020 11:09:41 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBK2d-0008ER-8Q
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 11:10:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBK2F-0007YP-7t
- for qemu-devel@nongnu.org; Mon, 09 Mar 2020 11:09:40 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:39165)
+ (envelope-from <laurent@vivier.eu>) id 1jBK2c-0007rC-4u
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 11:10:03 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:33815)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBK29-0007U2-EG; Mon, 09 Mar 2020 11:09:33 -0400
+ id 1jBK2U-0007iF-TR; Mon, 09 Mar 2020 11:09:55 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MJm8N-1iw7ce3yYr-00K8ZL; Mon, 09 Mar 2020 16:08:50 +0100
+ id 1N0X4c-1jWGih02Fg-00wT7y; Mon, 09 Mar 2020 16:09:11 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Subject: [PULL 03/33] build-sys: Move the print-variable rule to rules.mak
-Date: Mon,  9 Mar 2020 16:08:07 +0100
-Message-Id: <20200309150837.3193387-4-laurent@vivier.eu>
+Subject: [PULL 12/33] hw/usb/dev-storage: Remove unused "ui/console.h" header
+Date: Mon,  9 Mar 2020 16:08:16 +0100
+Message-Id: <20200309150837.3193387-13-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200309150837.3193387-1-laurent@vivier.eu>
 References: <20200309150837.3193387-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Ai7ynpyxzGre05ka6l4GHxtd8qdyahqT071p9CAte9wTwaVdbM3
- pHDOymBtC/BvQqlP10iUnTuKFyHWpDKASXeJ/bW6G0v0fVTGSF5Ljp4PCjGqP+TIJ9ZNDRF
- K6HMcD16Vs7MQh6h8BIGO8yntewAIqBTOekGCjOlFf2vEJIEV7rOrXubkpjFZ57I8MB07eU
- O+rjV/JwLevP1eAGA39mw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Sfa1dDNsXDU=:9u5wgKBUFXudeh8bQQnT2U
- hdCTsT6kbqwpRz7WgE7IHH/m+OwP6e+qOyrrV37mgpctyPzGgwd4pVO4zhtJJZMGm3K9fmsmr
- cfMDp+t3pwTTrcyCCsrlKo5ljsWP6qyu1dFFt4mtJKol1kOpoU7kudYcjRmR+yX9rT2sGvsuQ
- k2wiNcXnuJzvUze1hfR6MS3HSLrjGRk3u1KHYBnA+JDnraMuhRnfSXbR/VBhAH/9WzGKiTQUf
- c38sngokSEH+Kdx7DZs7U1rz70Ln/+5eDQmuUq0Snbclge1aZnKt8iEfaAQPh4pJh5BGJql7K
- Xp6NryO9xJrV/V8ekAZwWB8Q6QY3LFDEFuxkWbSDFtsVOgY1Bhq6HjKQ1r/Iy9OUvhEXhYJab
- ClcnAPME1ZKDIuLThJl0DHvkahAhJVFJhiz9yaQlGoJ5KSwFf12kc7VQy8ufGNcRfwMOUQ1iN
- rPmNU4x5+VM5TaDJP1kTA4StxGQMQXFZAm5+9kk2PpSnIX9ct9DRK6O8X1G0IXeskjiR0Hsmx
- D3gx/WAf4Fn17MUQvQE5txRg7MEE8LoBgwhiOazCpMzRHHRxZ1t0T15Rx30W9AIOLdc9r+iOl
- n2diFPff6lpEso40mpvi/sUNl8N1qyFoWOYnDJEY99qXC8Pb0kMy2mduiT18q0k6ys18+HPIE
- sAVLRQ8EoOLIL6P1b39TtKEdOmKHKj4VQzvuMpG1khli4vSfSgdyIA8LSnJqGeGDP9iHxhAXT
- 8xdPd7qOaGHPh4ugoblbVTAM4oI+1I4vLASJXigLq2UzBmbJqxof15K69EzZKFp/ok+Zql7JY
- ERfm375SNigSccT6w0HvKAEPc5CeXgtBPj5Oq4PwtCUb+YWjF1Sj2e3Vy2FNf5KHIewmKww
+X-Provags-ID: V03:K1:cx4oEENfxr2esELXcSzclJo1ER6icxlnYhY9ZGi8Hz1d0GQw3/J
+ V3O8tJqht91pGcTQkOnoKk2gaJ3MEQhwcCuCxma5dLH2fGpYBzuiIjAkk2djRj8xuvgKUK5
+ FEtpQUeaqrZP1Kilxgjn5td/+H4RHB1hM1EYmBjG20ped+UMXbcq8XRLava2nvAqORnu9qD
+ tjzauQTLhL51KPtlXORug==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:neaUZy5AqdU=:ZxWR/fHhRlXmI8Ju/HKRUJ
+ /8aRdKLbKre+x7HHGW2sq4nuiF8rwxXP+iAeJqpG7MU/qFRae00K8wDu07lxyGY3RgwYkhj1A
+ J+A5yzcc6+CM59lShCT7gzckvbSEClR4XEdj3sf6rRWMEffEvIzpSbDUyRmX8KpDgP0awjUxu
+ W29kueU4rEWxv9ydm+Uh01fW+DOt5m6QMYT9QhbpbxbVgg03Qe/qMyRBnKAbLGcLbDjEQsgQf
+ k+F8hPsFkWzPlCiTU7yQq8ofB9Y3Akwq8ftyEySGE2QmbJMtOjUwVtgBl3bKpvtIBNClo1t86
+ pWvtdhg6rKRiT+AgNuWwZFarmgqyBrEr9AC/OmUhm742hJ/kRw8ZqJOm4lGRrdiNgXp+2EsaM
+ Uu4IsQX9o6Ps15JHrx/oNwuLhH763tEg7+R7UXOLxRg6HtS25EyyA4RUEnfae4aaD3Q5sEibW
+ Nyy4EyaXY3UCsH8uSGgKZ4IFrIfqr9gcPWtoq46/oGZwGOFa8C9562S+26fp8QwlV4SbedHAH
+ jp2Mg6CSy5mC3CeXRu5Hv+1vdO2BjnqM3gNgXPZ0DDq9XlzPCCIyL3IgA3TsNekcOTbcv/+vS
+ urwoKZ0YtKaRyhR97XE/zUJt+uVur/UxIYLEIgJgPGnL+/xdvrjmGZz9ne2kCJfGZgbbvgNcN
+ bJGVk73Rk/Hg6Z+VpiqOICixyNG+vNkrUxoEhYRsw2vO7m6KSiYYpphSgAFxLBj4h+Ua3bOIw
+ Me8CVhqYmc2c/vDYdTmL1kXNVxRg93J6Hr2M/ITzFGYiQXhdsJWcT6k0/P35AKjfq4TLjz/Bs
+ FYZWfBsBPRX0ZX8fJxyD5X7Nn3KRa4SppXZz9DNFibkODng+z2nO5j+sS6RDFNSyBbAw0XL
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.73
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 217.72.192.74
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
  qemu-trivial@nongnu.org, Helge Deller <deller@gmx.de>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Alistair Francis <alistair@alistair23.me>, Greg Kurz <groug@kaod.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
  Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Reitz <mreitz@redhat.com>, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
  Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RNHFg1BpFsqc
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Qmy+j/uSn5N8
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Currently the print-variable rule can only be used in the
-root directory:
+The USB models related to storage don't need anything from
+"ui/console.h". Remove it.
 
-  $ make print-vhost-user-json-y
-  vhost-user-json-y= contrib/vhost-user-gpu/50-qemu-gpu.json tools/virtiofsd/50-qemu-virtiofsd.json
-
-  $ make -C i386-softmmu print-obj-y
-  make: Entering directory 'build/i386-softmmu'
-  make: *** No rule to make target 'print-obj-y'.  Stop.
-  make: Leaving directory 'build/i386-softmmu'
-
-Move it to rules.mak so we can use it from other directories:
-
-  $ make -C i386-softmmu print-obj-y
-  make: Entering directory 'build/i386-softmmu'
-  obj-y=qapi-introspect.o qapi-types-machine-target.o qapi-types-misc-target.o qapi-types.o qapi-visit-machine-target.o qapi-visit-misc-target.o qapi-visit.o qapi-events-machine-target.o qapi-events-misc-target.o qapi-events.o qapi-commands-machine-target.o qapi-commands-misc-target.o qapi-commands.o qapi-init-commands.o
-  make: Leaving directory 'build/i386-softmmu'
-
+Acked-by: John Snow <jsnow@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Message-Id: <20200306170456.21977-1-philmd@redhat.com>
+Acked-by: Gerd Hoffmann <kraxel@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20200228114649.12818-6-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- Makefile  | 3 ---
- rules.mak | 3 +++
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ hw/usb/dev-storage.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/Makefile b/Makefile
-index 2e930688942b..37aed4a24422 100644
---- a/Makefile
-+++ b/Makefile
-@@ -15,9 +15,6 @@ UNCHECKED_GOALS := %clean TAGS cscope ctags dist \
-     help check-help print-% \
-     docker docker-% vm-help vm-test vm-build-%
- 
--print-%:
--	@echo '$*=$($*)'
--
- # All following code might depend on configuration variables
- ifneq ($(wildcard config-host.mak),)
- # Put the all: rule here so that config-host.mak can contain dependencies.
-diff --git a/rules.mak b/rules.mak
-index e39b073d4648..694865b63ee8 100644
---- a/rules.mak
-+++ b/rules.mak
-@@ -435,3 +435,6 @@ sentinel = .$(subst $(SPACE),_,$(subst /,_,$1)).sentinel.
- atomic = $(eval $1: $(call sentinel,$1) ; @:) \
-          $(call sentinel,$1) : $2 ; @touch $$@ \
-          $(foreach t,$1,$(if $(wildcard $t),,$(shell rm -f $(call sentinel,$1))))
-+
-+print-%:
-+	@echo '$*=$($*)'
+diff --git a/hw/usb/dev-storage.c b/hw/usb/dev-storage.c
+index 90da008df18c..4883c1d89e0c 100644
+--- a/hw/usb/dev-storage.c
++++ b/hw/usb/dev-storage.c
+@@ -17,7 +17,6 @@
+ #include "desc.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/scsi/scsi.h"
+-#include "ui/console.h"
+ #include "migration/vmstate.h"
+ #include "monitor/monitor.h"
+ #include "sysemu/sysemu.h"
 -- 
 2.24.1
 

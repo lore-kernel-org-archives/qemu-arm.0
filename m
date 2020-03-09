@@ -1,149 +1,138 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1278900lfc;
-        Mon, 9 Mar 2020 08:36:27 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuY7LOKPJmvDgJjFdAptKvOquJ3Z2I1J3BeYf3rnpNfiGYbH+LPhVgBAyILjS51zaz6iuu6
-X-Received: by 2002:a37:4f8d:: with SMTP id d135mr15509002qkb.394.1583768187486;
-        Mon, 09 Mar 2020 08:36:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583768187; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1335320lfc;
+        Mon, 9 Mar 2020 09:33:35 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvCtVLF4XJbsopQt54OlAnbEAlGGE1gLlhkxeIH9oF94Oq9Mj/A2eQTNP9mgNd0tnfRoY0m
+X-Received: by 2002:ae9:e306:: with SMTP id v6mr16132008qkf.2.1583771615618;
+        Mon, 09 Mar 2020 09:33:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583771615; cv=none;
         d=google.com; s=arc-20160816;
-        b=WUVVxjEKDeZMPXMafxCSIU4Uu/wSvUGUN6QFQ36NGTNI6jYoZe8MAdwGAY7L6Smvds
-         U25XipnTZOzzG4bTKh5ATza76srcaCqs6eQMfSis1yB2xPnTdC9/QHK6BETfxVwQxpXf
-         qg2klCb1GtWpxi5/duyJnaa30TNtxTozwYS4fRx10vcglFz5EmgDdS6SoEcllv9HJs+X
-         5SCSkydk8bVzLxt29sBXfzeB7eLHlP27yfHQJOwlkzWToEbcXp1oNSsJZjnZWHcAp1Rr
-         kX+IaTAJfLCNBWOrXPKs7u2BgLawgYEwp752R31Ek1sjECICnJcdWNC2wRnEaLxSPyz0
-         bxsA==
+        b=G/i+t6ay4C+UxKOef5bOj6g5akuNUni0AIdUz4r/kgWvFCe1gLB0ejHGqEO3RUM9ja
+         EA4TbY2utsdlThn8RlwK5nXRje09eAOwnWc1kAkmALARg0SeE3VjtHDyYGnAIAekpjkh
+         7Oo0I8I5OMnHy++QUitnppV7npIr4+NZ7mLyGSNpf/PaBrIrBTb9eBvWKdEMp0TEGwSE
+         BcYF0ZZdNQiFdXa+uWRuL0HUWjt7/khbxP0Ha1SmANksQxgKjqxY0b4t1nN3ufkpFdjF
+         vUilim5HOUICx60bRSixtchlE+1XKGaMhHYIovVVuLHNZZtQHcg2G9cYWW7PdExJ3Du6
+         YIxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=pvfMBPXHHmmBszxVy3s0poc+U0PETahT7S44dOKlcwo=;
-        b=BD6aBkCKZjheV5acw6sraHoPbmfhCM58yAOye9Md5CsE8XtbfYXXxO/PpfudFy5k3f
-         Aj3wOSuhx4Jwdey1UH1TznWv+Xv078sqaHcyu4TtyvxFLUEWVs+7z2m0U7CDNqu89Gvi
-         F8itQofPuz8wUcCYoL4atXhC/emz3psCHNA7jsQ3kb9ZV2FlZjmwrjWREi4Wht6qqOfS
-         p8i1r/aN/JNjqbV60wls/xA5Bia6WU9R1LfPE/oD/Q0LAIvqjS2tC093ZHhpSmyupLJ/
-         LEGl6OtaSWKMHJ2moOPjc37jeapobEtpMpvR8S0Do8+aArtPB0dmBoAVNHWs0XJ+u69q
-         MFwA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=ro84gkukAh4jcOa5e6p+8u7CRJgZqptM6ajcB2TEWzE=;
+        b=joDWSGYlsaN3+aIw3nlzH7/F8eKShk/jNRQ/if9dNXuEI+qaFkaG9vnICjIQ7PSutR
+         MkKBze85O7NKqgt1DJw6xLq/fOYkolVb2bkAytZfFQJZcKVKsLAHO3v2x5UJdjv46q5A
+         aML7jyh31rQUt3X3NOwjO5Ye2cGjkuN9jF0hewJSV0lXKAf2jA88QW2uK+omAsQyGtsY
+         hzY1LvztR7Vb55Fa1+poEfaA548ejvD9yym8tn7pX+B/RwwcPlapVSUluUj7Q7dPTXUm
+         W2N25YMrpF3etIpvUdsLptG7Y3NoLNBTytCXa2nYGNGL8H50HZGf0bYrsWxri0xDe2JN
+         VGnw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j25si6213065qki.286.2020.03.09.08.36.27
+        by mx.google.com with ESMTPS id 7si5141009qkg.257.2020.03.09.09.33.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Mar 2020 08:36:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Mar 2020 09:33:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45096 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46671 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBKSA-0003IF-Tw
-	for alex.bennee@linaro.org; Mon, 09 Mar 2020 11:36:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34384)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jBLLS-0005FW-Nd
+	for alex.bennee@linaro.org; Mon, 09 Mar 2020 12:33:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50437)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBK3L-000133-VO
- for qemu-devel@nongnu.org; Mon, 09 Mar 2020 11:10:51 -0400
+ (envelope-from <clg@kaod.org>) id 1jBLKZ-0003yL-Fj
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 12:32:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBK3K-0008Rc-U3
- for qemu-devel@nongnu.org; Mon, 09 Mar 2020 11:10:47 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:48315)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBK3K-0008QD-KH; Mon, 09 Mar 2020 11:10:46 -0400
-Received: from localhost.localdomain ([82.252.135.106]) by
- mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1Mnq0K-1jhv381qnK-00pMwm; Mon, 09 Mar 2020 16:09:56 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Subject: [PULL 31/33] display/pxa2xx_lcd: Remove redundant statement in
- pxa2xx_palette_parse()
-Date: Mon,  9 Mar 2020 16:08:35 +0100
-Message-Id: <20200309150837.3193387-32-laurent@vivier.eu>
-X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20200309150837.3193387-1-laurent@vivier.eu>
-References: <20200309150837.3193387-1-laurent@vivier.eu>
+ (envelope-from <clg@kaod.org>) id 1jBLKX-0007Yq-Da
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 12:32:39 -0400
+Received: from 17.mo5.mail-out.ovh.net ([46.105.56.132]:46798)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1jBLKX-0007Am-7j
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 12:32:37 -0400
+Received: from player762.ha.ovh.net (unknown [10.108.57.95])
+ by mo5.mail-out.ovh.net (Postfix) with ESMTP id A010A2719AD
+ for <qemu-arm@nongnu.org>; Mon,  9 Mar 2020 17:32:24 +0100 (CET)
+Received: from kaod.org (unknown [129.41.47.1])
+ (Authenticated sender: clg@kaod.org)
+ by player762.ha.ovh.net (Postfix) with ESMTPSA id 78E5C1038647F;
+ Mon,  9 Mar 2020 16:32:16 +0000 (UTC)
+Subject: Re: [PATCH 0/2] aspeed/smc: fix data corruption on witherspoon
+ machines
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200206112645.21275-1-clg@kaod.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <7ab3522d-54ae-ca24-592e-68d54e47de7d@kaod.org>
+Date: Mon, 9 Mar 2020 17:32:15 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:0ZarNXicwnBKj9J9FMdMNcdU3DRCu0rkKMaoTuRHns0GqwH3ZvJ
- N14XFeavkwMTWI4zaDmKiaQdapB0uzbHlSrNBFE9B6eTbYoJrLepzSJVlF1pXBLKo88fMP2
- P0qpb0etOg5/BSz/bTRTZdYZbWPBowIaxCg7NKX/lZtUXNk6zTqaRPMivTvIRDZIErdH7wo
- BG4vKVERVC1sx3TLIjdVw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:kjGuiN/P8HU=:rT5JMBaeRa6M9Vlj0MdT/Y
- Pl7es7mxm+MfAt4MnjJtzfzmDv2xe6rCQf++J156YGGkasOoma8krVX7KOYC/DAAWCZxW5FKx
- nFbcSZU009zR4zFKaMABf5DgTLrVFdduWtOW4A19Jm9cYnOMhmiw656EkOmesWbwWKPSDCELp
- wMC41K3oKgWo84p5DnFjkZo2jv0wJvut1xuaLP26llgzt9L3A+2lZG+wG0Z/b0vR04q3cOSyn
- ArV/yuqJKrPZGimphVTQFmH4gX3uwdAck26/VfYBqZWAKRCYgqI9ANfhupb3MfNe3JgJe8jM2
- YQYNV5JRkjbxgYUEEsf3E7QzuFbqsnk8DlsADUcKa9admhrEJqztFUpH43R8bEB26w1/Zmvfi
- kXnPsuDPyVWjgb9CRPrVUCIgEoRmPEpfJnr2Fd6+ugJtJIFDSdYU1eeLWI8MI0uQtiiMq0D1P
- +qr90FEnNvSSOXyntUjbzL/uXYK3wa6HbTKq2VRmGeUMgPrI/bt2llNvLJzRG4EoA++6JBczq
- 8olLJFnLtNc04MDVEgags9FsM2+27l7z0Haw1M7+PZLvU+/etB8px/FRdrn6qZhBEYjjB/E4D
- JK8s+jOyp6wLYy4sz1hn1kehmjiJEY0LaAwF6k7oVFvGFtAb6SIvWk6wJg1yeSJfaA80EGwLZ
- pI/e/Ov02oRRPl13OK1eP1byqDzFc6XaA4T75LZuotnZRJPqj8GfplPCCWcpg2uXzwqAMPNSH
- mzQLmw+kZPIJMR4/uvWRlb7chTMAeyBsPzjM3ppnGpGu/V6c5E7WMmoT2tRMhPn0Bp3ip2tJ2
- edFskB9w09y66oJ9apTzuFxOE3sWz7yPjtl97hJAwIMcWBq0HCTY5TA8Qv18ZrlsNUGe7O2
+In-Reply-To: <20200206112645.21275-1-clg@kaod.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 8041177135570979648
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedruddukedgleduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpuddvledrgedurdegjedrudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejiedvrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 46.105.56.132
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, Helge Deller <deller@gmx.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Alistair Francis <alistair@alistair23.me>, Greg Kurz <groug@kaod.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Chen Qun <kuhn.chenqun@huawei.com>,
- John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Kevin Wolf <kwolf@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Reitz <mreitz@redhat.com>, Aleksandar Markovic <amarkovic@wavecomp.com>,
- Euler Robot <euler.robot@huawei.com>, Igor Mammedov <imammedo@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WDqEFVmW4inB
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Andrew Geissler <geissonator@gmail.com>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: M/Z/zsRZfNou
 
-From: Chen Qun <kuhn.chenqun@huawei.com>
+On 2/6/20 12:26 PM, C=C3=A9dric Le Goater wrote:
+> Hello,
+>=20
+> We have been seeing a squashfs corruption on the witherspoon-bmc
+> machine for quite some time. It boots but quickly after boot
+> corruption errors start to fill the console. This machine has two BMC
+> chips with UBIfs on them. The romulus-bmc machine has a similar
+> problem when both PNOR are enabled.
+>=20
+> After some investigation, it appeared that the SPI transfers on the
+> two chips were getting mixed and after more investigation, the User
+> mode select/unselect scheme of the Aspeed SMC model proved to be
+> broken. It's been there since the right beginning of the model. Here
+> is a fix.
+>=20
+> Kudos to Andrew J. for the time he spent on this and Andrew G. for his
+> patience.
+>=20
+> I pushed the code on my github branch aspeed-5.0 for more testing.
+>=20
+> Thanks,
+>=20
+> C.
+>=20
+> C=C3=A9dric Le Goater (2):
+>   aspeed/smc: Add some tracing
+>   aspeed/smc: Fix User mode select/unselect scheme
+>=20
+>  Makefile.objs       |  1 +
+>  hw/ssi/aspeed_smc.c | 56 ++++++++++++++++++++++++++++++++-------------
+>  hw/ssi/trace-events | 10 ++++++++
+>  3 files changed, 51 insertions(+), 16 deletions(-)
+>  create mode 100644 hw/ssi/trace-events
 
-Clang static code analyzer show warning:
-hw/display/pxa2xx_lcd.c:596:9: warning: Value stored to 'format' is never read
-        format = 0;
-        ^        ~
+Hello Peter,=20
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20200302130715.29440-8-kuhn.chenqun@huawei.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/display/pxa2xx_lcd.c | 1 -
- 1 file changed, 1 deletion(-)
+If you have some time to take a look, it would be nice to get this=20
+fix in QEMU 5.0.=20
 
-diff --git a/hw/display/pxa2xx_lcd.c b/hw/display/pxa2xx_lcd.c
-index 05f5f8467123..464e93161a21 100644
---- a/hw/display/pxa2xx_lcd.c
-+++ b/hw/display/pxa2xx_lcd.c
-@@ -593,7 +593,6 @@ static void pxa2xx_palette_parse(PXA2xxLCDState *s, int ch, int bpp)
-         n = 256;
-         break;
-     default:
--        format = 0;
-         return;
-     }
- 
--- 
-2.24.1
+Thanks,
 
+C.

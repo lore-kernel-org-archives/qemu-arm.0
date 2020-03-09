@@ -1,212 +1,196 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1000803lfc;
-        Mon, 9 Mar 2020 03:56:16 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuGiz6aU2+UjwpDr0k9Cho6wGNQrH3Q99NrJu9rdoMealFeGm/HlkY3IyhN28rcHcwUXJwd
-X-Received: by 2002:ad4:4241:: with SMTP id l1mr14293781qvq.82.1583751376473;
-        Mon, 09 Mar 2020 03:56:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583751376; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1001988lfc;
+        Mon, 9 Mar 2020 03:57:51 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvkQQ/nKUvJDpsZFuWiiKQf9pJxmvAlKIvNwxpS1q35Q5A0FgyJuXXKHAygIet8otCiocXx
+X-Received: by 2002:a05:620a:22ea:: with SMTP id p10mr14114083qki.75.1583751471643;
+        Mon, 09 Mar 2020 03:57:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583751471; cv=none;
         d=google.com; s=arc-20160816;
-        b=mnSvUSt/Qa0ZxV3g0Let9TmNHpOj206D81wrvdDowA28iT7YiDmSmALZ8naDmGWTJu
-         rRtmZNnfxsejeIeiCe7hEJFIUGIR2Hu6JEReBZRwvsRVZPREeVRy5KUw1ZVs66zBh/hr
-         fOcsJxrag/mtASX4mG/rB8PoVhZn2A93o2MtgSqZnbxtyheqWcIt+XV8DTPUzv9iruf3
-         qfN8DOoJiQIgRSsoNxu5fqsmcSJ6Y9PzY5Gms7rcu6K4Jfa/2OgjOAbCxH1Rmm7uK3II
-         MsPuRnY7g/w4pTIcvyppgloBJfkEiS6JihU9gb/fhxBBU60WjPkvdwEDL9Ynyz+mfm43
-         WkZw==
+        b=g6/TG2NzfnXxV0XmTa9ObIzgNXdku7gJNWCDrvWWHedAe0iONpTQbsj6MvkrPKTiR/
+         ijVtnw5SSjo+1i0E5ihC5j9SPubu3l7edxXVabR6kksvCBEQ3sk12wBFQVCU1RnUMggF
+         GAjdhRpRUNQTyCktLJpePQKQFI1xuT30DwrM9W7F+9XZUQic5zPXrFH6lS0ygAnUmdCs
+         FVtc8KqR80h8LIV/yHMtu65wNeDghLwXCafJHBqEAKByGWiGAHa+BmjDoaGGdoC4tv4N
+         TgjRmmQrHHs6T4ieXh7N7GgdnaGkI+7UTR66CqBjI6+eI1i02j9xso6Ys1CTbLX4sd8Y
+         UqUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=7hMZVD15ZbaO4WFZsSLiDT1OVYnEMdxD7dWmO/5JLvE=;
-        b=IM8OzciHyfnLxU20PvfzMgXmMi0Uxp0m2bYoTS1+S+yju13sL9Ob9068WnDJ5V0a7k
-         iBMC1e9qC7XTB90jIh91Q4v1kPa76RyZz25GyRQysV2tvAzUYWf43qi+pxpBhmDIZnx4
-         FlrKdSszDLuYihfJZYwY9llBTxAjCftLJ7w+o9JupM7QjIXrsAcbK8x4+Nch9SOELS1a
-         w2irLWaYw7LXv8QrbDpG/El/XsBJdJouO4v+F1fWsv7EkqYlh2nk7IrdKzLBnmDD/4IT
-         6MB7PSD6+xFC/kSfULAkAAX6xtQvMQYnbDmL5CJObJAGsRGX++YosQM7K1Ogz34H0BZB
-         dA9Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=FyF79uDSNowMiBaGgFXRj7LyLnmpVBSm3VGRAE8Sw/I=;
+        b=o4fUdVLIOgWx2wrAo2QgT2wP2/5NKIOL7gkWRghnsOOcvrlS7kDBtdWToVWjpfPk9x
+         DMdKVzF2jAEbbl9eB3EVU3lqr0RrBo5JUhW4Bk4kPRfEbhytv2p2Iwum51JLUjM7zJo6
+         2FYb0XJA9FAfnAfGc8Q37+BIsLd1pNacTf294Cs7KJWSw4dBYxXWbmHRjmpkmEBp7Z3r
+         seyHA55Qf+mVMf7f2zEVo4wJOn4Ihs4NJFN0yG18TxvSL9NkehHTfPOfObLukSQVeKJy
+         oudIiRFEcohjN5c1Mq4JZGF+raXuQ+harb+kINySAVR/4Syo8ZaJXqRt+AM9PtGyK5ah
+         8c8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=VZlMWOBS;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id v19si6097802qkv.275.2020.03.09.03.56.16;
-        Mon, 09 Mar 2020 03:56:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OsZkklko;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b5si5178063qvq.211.2020.03.09.03.57.51
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 09 Mar 2020 03:57:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=VZlMWOBS;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 15CF44A483;
-	Mon,  9 Mar 2020 06:56:16 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zzoA7oNGDxXr; Mon,  9 Mar 2020 06:56:15 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 015C24A1FA;
-	Mon,  9 Mar 2020 06:56:15 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 1262D40456
- for <kvmarm@lists.cs.columbia.edu>; Mon,  9 Mar 2020 06:56:14 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IAKJ5ouvuIQ3 for <kvmarm@lists.cs.columbia.edu>;
- Mon,  9 Mar 2020 06:56:13 -0400 (EDT)
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [205.139.110.120])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 2077340152
- for <kvmarm@lists.cs.columbia.edu>; Mon,  9 Mar 2020 06:56:13 -0400 (EDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OsZkklko;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40750 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jBG6Z-0007wm-3B
+	for alex.bennee@linaro.org; Mon, 09 Mar 2020 06:57:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43846)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philmd@redhat.com>) id 1jBG6Q-0007wV-QS
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 06:57:43 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1jBG6P-0000Ki-KF
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 06:57:42 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:33036
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jBG6P-0000KI-Gd
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 06:57:41 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583751372;
+ s=mimecast20190719; t=1583751461;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=9KEMpMRCvbmPoDMJrLlIGlGrbBg9uKjS59wDa02j2VA=;
- b=VZlMWOBSOb/mijwGCh2CvN3b0sDaHV6gfyIthB60b1yig4klfj35ijWl6Ien4luhp5qSud
- /WknrBNdg2Vk0ir6bm9paquNHOSv2KMMpCQ5LdC+APOkSYZZocxXYLg2x2WMnbpBFaks8i
- VrPWm29wB3wUs16OjIM2V0Se73JyMnY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-14-cfS3j-H4Pq2WMi0xP_RiZw-1; Mon, 09 Mar 2020 06:56:11 -0400
-X-MC-Unique: cfS3j-H4Pq2WMi0xP_RiZw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8130C13F7;
- Mon,  9 Mar 2020 10:56:09 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D30A21001920;
- Mon,  9 Mar 2020 10:56:03 +0000 (UTC)
-Date: Mon, 9 Mar 2020 11:56:01 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [kvm-unit-tests PATCH v4 03/13] arm/arm64: gic: Introduce
- setup_irq() helper
-Message-ID: <20200309105601.3hm2kfhuufgxoydl@kamzik.brq.redhat.com>
-References: <20200309102420.24498-1-eric.auger@redhat.com>
- <20200309102420.24498-4-eric.auger@redhat.com>
+ bh=FyF79uDSNowMiBaGgFXRj7LyLnmpVBSm3VGRAE8Sw/I=;
+ b=OsZkklko/JZWlkz1zQ++eelSJNnuP/Lb3lNKCmCDwS1s2wq+xz7ma8S4y/OHgF3EM0HvEz
+ tuHsbDvmuAMKU9Vp0JU8kTYK/zQf3tTyHfQLnx1z76zF9lZNrZQw/6fk/qGk9YRe9sf1Jq
+ syqljwBnJUYypO5+NzA7wQGZOcEnxEI=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-96-I9u7XajlM52q9V1mrYka6Q-1; Mon, 09 Mar 2020 06:57:39 -0400
+X-MC-Unique: I9u7XajlM52q9V1mrYka6Q-1
+Received: by mail-ed1-f70.google.com with SMTP id d11so7662247eds.7
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2020 03:57:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:from:to:cc:references:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=1K5028EpyDpycuXB8fjyFJB5EeKvDdUsMI8EIJHMlMI=;
+ b=jUjYNrTV8GyoZ+VAVWWFFJsCQERK2ZxcvUtdq+1qhWKVYG9tzrE2KmFry7bC1Awg8T
+ GeuBVL9m33AmBKGkHjO0kVt4C2zcALz/eBu3R76jhZCRkRWDE9XrLj37eKnIvJ0Rj9rm
+ sG+Svzb9OF0OjejKfQLRbpPrG64U4Y+4yji1UCcFCEUjaZItHjky7aNuDToWcuq2fr/o
+ 3E9Oupbe6b9+i24aFehxAkoWJmOFM1ljbJOwtaoWsFEM4GZDBiWqNsHdOBEd4J8r5MSA
+ Tgincz0XX9bK/uyCIY5KvSpydvVZL/0dSG49Vi57CirELM2uEI/R/5FRxEnJk/8XKzgI
+ QO2w==
+X-Gm-Message-State: ANhLgQ0+QGOUveihI6TDrh/fJMriK24iWTdbZo2imG8mrQAstg/1GpR5
+ ygScTz0vtVOb4rnurOFZ1iPSE1mqBNjUxxHy6Nl9o0eLQmmfASHrnZvlR0UPF2ydzJPkL5ZKMgs
+ 2zw1hqhOgB54Q
+X-Received: by 2002:a17:906:37d5:: with SMTP id
+ o21mr14585319ejc.366.1583751458110; 
+ Mon, 09 Mar 2020 03:57:38 -0700 (PDT)
+X-Received: by 2002:a17:906:37d5:: with SMTP id
+ o21mr14585304ejc.366.1583751457862; 
+ Mon, 09 Mar 2020 03:57:37 -0700 (PDT)
+Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net.
+ [88.21.205.47])
+ by smtp.gmail.com with ESMTPSA id b72sm844087edf.95.2020.03.09.03.57.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 09 Mar 2020 03:57:37 -0700 (PDT)
+Subject: Re: [PATCH 2/2] hw/arm/armv7m: Downgrade CPU reset handler priority
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Stephanos Ioannidis <root@stephanos.io>
+References: <20200227112617.66044-1-root@stephanos.io>
+ <20200227112617.66044-2-root@stephanos.io>
+ <CAFEAcA9qbndHqoW1oaUAKMZY5hNYjP+mMt-K_WqoT9Z=Q=ct7g@mail.gmail.com>
+ <e1813f57-57ac-e6ad-d119-dd6c2cdc90e1@redhat.com>
+Message-ID: <34d14a57-812d-5898-9dfc-ac896f657c9b@redhat.com>
+Date: Mon, 9 Mar 2020 11:57:36 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200309102420.24498-4-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Cc: thuth@redhat.com, kvm@vger.kernel.org, maz@kernel.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
- kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+In-Reply-To: <e1813f57-57ac-e6ad-d119-dd6c2cdc90e1@redhat.com>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: IjdYk5znXFdp
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1EYfrdLsWp5S
 
-On Mon, Mar 09, 2020 at 11:24:10AM +0100, Eric Auger wrote:
-> ipi_enable() code would be reusable for other interrupts
-> than IPI. Let's rename it setup_irq() and pass an interrupt
-> handler pointer.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
-> ---
-> 
-> v2 -> v3:
-> - do not export setup_irq anymore
-> ---
->  arm/gic.c | 20 +++++++-------------
->  1 file changed, 7 insertions(+), 13 deletions(-)
-> 
-> diff --git a/arm/gic.c b/arm/gic.c
-> index fcf4c1f..abf08c7 100644
-> --- a/arm/gic.c
-> +++ b/arm/gic.c
-> @@ -34,6 +34,7 @@ static struct gic *gic;
->  static int acked[NR_CPUS], spurious[NR_CPUS];
->  static int bad_sender[NR_CPUS], bad_irq[NR_CPUS];
->  static cpumask_t ready;
-> +typedef void (*handler_t)(struct pt_regs *regs __unused);
+Hi Peter,
 
-This is just irq_handler_fn, which is already defined in processor.h.
-We don't need the __unused, not since 6b07148d06b1 ("Replace -Wextra
-with a saner list of warning flags").
+On 2/27/20 2:35 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 2/27/20 1:13 PM, Peter Maydell wrote:
+>> On Thu, 27 Feb 2020 at 11:27, Stephanos Ioannidis <root@stephanos.io>=20
+>> wrote:
+>>>
+>>> The ARMv7-M CPU reset handler, which loads the initial SP and PC
+>>> register values from the vector table, is currently executed before
+>>> the ROM reset handler (rom_reset), and this causes the devices that
+>>> alias low memory region (e.g. STM32F405 that aliases the flash memory
+>>> located at 0x8000000 to 0x0) to load an invalid reset vector of 0 when
+>>> the kernel image is linked to be loaded at the high memory address.
+>>>
+>>> For instance, it is norm for the STM32F405 firmware ELF image to have
+>>> the text and rodata sections linked at 0x8000000, as this facilitates
+>>> proper image loading by the firmware burning utility, and the processor
+>>> can execute in place from the high flash memory address region as well.
+>>>
+>>> In order to resolve this issue, this commit downgrades the ARMCPU reset
+>>> handler invocation priority level to -1 such that it is always executed
+>>> after the ROM reset handler, which has a priority level of 0.
+>>
+>>
+>> I think we should be able to do this with the new 3-phase
+>> reset API : the rom loader reset should happen in phase 2,
+>> and the Arm CPU should only load the new PC and SP in
+>> phase 3. It's on my todo list to write some code for this
+>> to see if this theory works out.
+>>
+>> I'd prefer it if we do it that way, or alternatively find
+>> out for certain that that approach does not work, before
+>> we add a reset-priority concept to the reset APIs.
 
->  
->  static void nr_cpu_check(int nr)
->  {
-> @@ -215,20 +216,20 @@ static void ipi_test_smp(void)
->  	report_prefix_pop();
->  }
->  
-> -static void ipi_enable(void)
-> +static void setup_irq(handler_t handler)
->  {
->  	gic_enable_defaults();
->  #ifdef __arm__
-> -	install_exception_handler(EXCPTN_IRQ, ipi_handler);
-> +	install_exception_handler(EXCPTN_IRQ, handler);
->  #else
-> -	install_irq_handler(EL1H_IRQ, ipi_handler);
-> +	install_irq_handler(EL1H_IRQ, handler);
->  #endif
->  	local_irq_enable();
->  }
->  
->  static void ipi_send(void)
->  {
-> -	ipi_enable();
-> +	setup_irq(ipi_handler);
->  	wait_on_ready();
->  	ipi_test_self();
->  	ipi_test_smp();
-> @@ -238,7 +239,7 @@ static void ipi_send(void)
->  
->  static void ipi_recv(void)
->  {
-> -	ipi_enable();
-> +	setup_irq(ipi_handler);
->  	cpumask_set_cpu(smp_processor_id(), &ready);
->  	while (1)
->  		wfi();
-> @@ -295,14 +296,7 @@ static void ipi_clear_active_handler(struct pt_regs *regs __unused)
->  static void run_active_clear_test(void)
->  {
->  	report_prefix_push("active");
-> -	gic_enable_defaults();
-> -#ifdef __arm__
-> -	install_exception_handler(EXCPTN_IRQ, ipi_clear_active_handler);
-> -#else
-> -	install_irq_handler(EL1H_IRQ, ipi_clear_active_handler);
-> -#endif
-> -	local_irq_enable();
-> -
-> +	setup_irq(ipi_clear_active_handler);
->  	ipi_test_self();
->  	report_prefix_pop();
->  }
-> -- 
-> 2.20.1
-> 
+FYI I hit the same problem testing the RX port which on reset loads $PC=20
+at 0xfffffffc. Using Stephanos's previous patch and=20
+qemu_register_reset_with_priority() in cpu_realize(), the issue is fixed.
+I plan to carry the patch in the RX series until we find an alternative.
 
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+>=20
+> Agreed.
+>=20
+>>
+>> (In particular, this use of qemu_register_reset to arrange for
+>> the CPU to be reset should ideally go away in favour of having
+>> the CPU reset handled by the SoC which owns the CPU, so it's
+>> not a good long-term way to look at trying to fix ordering issues.)
+
+And your "cpu: Use DeviceClass reset instead of a special CPUClass=20
+reset=E2=80=8B" patch goes into that direction :)
+
+>=20
+> It would be nice to get ride of qemu_register_reset with the reset API :)
+>=20
+>>
+>> thanks
+>> -- PMM
+>>
+

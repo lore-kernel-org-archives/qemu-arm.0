@@ -1,146 +1,154 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1257687lfc;
-        Mon, 9 Mar 2020 08:15:27 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvclcnr9tpitbTP7wRFqViX7E8r8qO7N/U6/eQCWtEajMO0hz/O/ZqdDd3bX1y99Chc1+pE
-X-Received: by 2002:a37:6285:: with SMTP id w127mr15142633qkb.138.1583766927118;
-        Mon, 09 Mar 2020 08:15:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583766927; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1258158lfc;
+        Mon, 9 Mar 2020 08:15:50 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuIOTdQOFMuKM/5Yy5FLiKbKCod1/jacIhFBmeUtbX+M22YdHBQS6p9j2+lmuwaz2xVU7dv
+X-Received: by 2002:ae9:e003:: with SMTP id m3mr15959767qkk.250.1583766949913;
+        Mon, 09 Mar 2020 08:15:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583766949; cv=none;
         d=google.com; s=arc-20160816;
-        b=wK+N2dpunSNkyprmRntzUqsUXXpcZe1ZWPzrl3hzWzTnwx2Hm4lsOBOsSEGnTooBL8
-         E+ZgI3A8K+5FapH5rxZN0OOVoCEbdTA4JejIQ2zWNW84qmM1hBkEhPXMu+DUwq+zYvXA
-         VudnMPkMMiVcHA2LyWpUJ/GuiwZfBpBa1HqrhbwFYxBfxwDU/+rodO76U9kGJprWSpGu
-         SYgq0UaWiooXB266BjR/aCPwF77a7IAEPDenfCc6Sb3FpcUMTJ7iUxD+JjSKQdfeiPvM
-         LNS/E2q4JPMKKkxHOuMMs+UQXNjCAzCb8zTYDk3JSIUjkXzLkAEGVrFy25p1LLX9P0mX
-         3p9g==
+        b=il1ZIo4fZiQ49wiclWX04D7o/Lkc1hrsuDJCW7iFlg1ky0XbihW8eXm/JXly1LlOBk
+         iajickgHyjeiQaA/cFqBWGz/Da76ZioaQsp4bXW9Bg4toBV8XElXrHK3IxkMBDCDREOx
+         DiOhymBUFZ2bNhtFS4gcwHk3nKqx5sTYE6VoE+upuZ4+CgoYpTKA4tpVMPXzI18bIOdq
+         rmLZH1DpAiCO+DpvW07ABQfQj11h/xeLSWU/LSU7uLDSK1m22QDvRXr0zjmuLkZaYIOX
+         fhiQpZcWjPfqx3CEr/C+qQ7TWs1oHCxS8hrEWXBJlfHySOHSNWUufvWNRrk2aEAaBR7G
+         ILFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=2BG8xjZUClVNIVKA70w3CHga9YnND0J6LkwtiF3T1hA=;
-        b=mfnTNC5kyfMv9nTFZzedpfBI4EDCnPpnjyiuGEAyk4VPT7w69fTMRfTGmyrhZo8JO4
-         9IR22tMBjmhjyP6sQK72lloz2IOsfUzenXKQYxyyETiCvqlgZyRz8Jsqbwyv7z7EuR+x
-         7kqX1H9gO5z3cebGQGi0L8xpTh2AUv9w1/1h5htqGq0JbrGj23kLUHyZzzjx+kEGmRTK
-         S+OlRxs6YLacUT5e8sR+SO1VhdwvUfzOo73Bjgdq8YVHGoHg8fR1LBevc2+Fi+IfhMsU
-         3hH0JTqcfG+q4Qfl/v+8nijKHKWE5ljwvW/sZTwj9i+sqFdQWjeuOYCAGtv0n9OBZia4
-         xPMw==
+        bh=Wxxq+RX2MssInL0adNo1z61cwIAT6WQXWyIXo+GuJGk=;
+        b=lS3Ddda+EpyWNCeqtieFciaME0yWjsa9k2yPTvcJG/0BDsJBjS7ouZ6Yc5vr4/GULX
+         ZelIePOGwwhv7DB+ToYBBJTUDtsgT69UENXXCbdB3tW+urPlgUos6QjAtTySdUvCOSM+
+         egmkTCQfR2TYBW+QJjoKCvtmpUK/w5HWJ3gesQ0lQRWI4QV4gRpf7OmFpjWxehx/Pej+
+         Vfn0CT00QMnp1aYTKFuss5qiMlwuz5ua50h8aR1pOYlfxeaEJBu1W38rXGoxhXVdvANH
+         o47rMOqCZ8h2m345QlFo4RFht/eFleusglyRd+6di5cpmy5gWmwsbuGYf0UCrwIR3rCv
+         syIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c3si6387313qkb.191.2020.03.09.08.15.26
+        by mx.google.com with ESMTPS id q23si3910317qtn.361.2020.03.09.08.15.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Mar 2020 08:15:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Mar 2020 08:15:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44632 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44662 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBK7q-00087x-Dv
-	for alex.bennee@linaro.org; Mon, 09 Mar 2020 11:15:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33836)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jBK8D-00012J-8P
+	for alex.bennee@linaro.org; Mon, 09 Mar 2020 11:15:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33338)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBK2x-0000HV-WE
- for qemu-devel@nongnu.org; Mon, 09 Mar 2020 11:10:31 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBK2S-0007pB-Fy
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 11:09:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBK2v-00083a-Pg
- for qemu-devel@nongnu.org; Mon, 09 Mar 2020 11:10:23 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:34875)
+ (envelope-from <laurent@vivier.eu>) id 1jBK2R-0007gX-EZ
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 11:09:52 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:42163)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBK2j-0007w1-29; Mon, 09 Mar 2020 11:10:09 -0400
+ id 1jBK2L-0007bH-3U; Mon, 09 Mar 2020 11:09:45 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1N79q6-1jPh9b2kkm-017RUo; Mon, 09 Mar 2020 16:09:15 +0100
+ id 1MLA6m-1it6gQ1PvO-00ICtI; Mon, 09 Mar 2020 16:08:52 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Subject: [PULL 14/33] hw/alpha/alpha_sys: Remove unused "hw/ide.h" header
-Date: Mon,  9 Mar 2020 16:08:18 +0100
-Message-Id: <20200309150837.3193387-15-laurent@vivier.eu>
+Subject: [PULL 04/33] hw/audio/fmopl: Fix a typo twice
+Date: Mon,  9 Mar 2020 16:08:08 +0100
+Message-Id: <20200309150837.3193387-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200309150837.3193387-1-laurent@vivier.eu>
 References: <20200309150837.3193387-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:uccyuDrkFn+a+xEWYIJHFbgT2Icbc+Sj4ndp1MFnVVx0HLwwqeP
- la9vjsB5CnghR36yGzsOk/Y3AFTd4A0nSrBItsgyjXayc5Kqho29niLo2I0mAGJg3DhS8n4
- Q+3IuMpRobwcsbq5qzU/QqonQVILD/6FaMWYTVqJEpWXowNdJ1ZUhQA2ZDAduZJi2q1l5io
- 80LRGFOeaxEqdTTN6oYpw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:H0CLhIOz0Nk=:xUwZiqy5V4yKaT2+xD0mEx
- /i05Kz0KbWFGvNO6EQDyHLnZvGTxMZbWdKSphC0934APVF+KRPVIyI0ToU8H6ALe1xdrQKmn2
- ItJVtcaCBUsbs7XLOgAVnAVs6lcdmnpUZ6wHqI/rFPxFfrbmbzvOyKKZzmaWkVwGJsbeur35f
- QA3kABJFi4PhJpQddnWHmol8Uzi+cVrNUdpQkXTa/S9XJtoh9J4ZBwSd92z8vdall+pML6dZv
- d+08yl1DWjlS2w5fQmPFm1PSOiHgVKW17rfdhWpi6TXAz3Y38lS+OJzsl1plEMWX77xK4/Jq3
- t6fB+rNYyNnnsiONlu9IKLcoqJJHwvgfPak47GlGgGraEhdD7iymLqoJhytytlK4Ypk55siFW
- CKxAKmGFadVrlBvCZ6coVyKytOO011kzqYu0u0DqUpfwLqFEF9sXdz0N/KTG4o+lM4cGELBM6
- 9kY79RvfPTbupLP0xtPHIa0VSaFy+/sa88FUbYoJcv2gu7GA1bmuzYsn1985HiZV8yD22EdnB
- 8ozbw/JtcwZMW9ek2V3m5W0OLFfTkmd5t+VMSQegKihM0pdXFDmSv53mZQg0AxGJYSd8SEXMX
- 3m6/HwKKNwPzDuvSp0aBw/8EQNNUymE+j61ExzGWzW6rGa9ZqwuTBso/wTlLBYoXeUJemOXgG
- zUyzobqsrXJkNWwC2w+vHlmKMhOwbXvLBcVpK+hIH3tAiSAHRgSk/FlpkXUxhmNGqe8eBeG43
- Hi8/6/onj+SjANFK6AP1ok+Gog3VT2uWKnDvYP2p6+kwxMIw2lNj77X2I+Rav4+xG+/PyH/x4
- I4Ezc4WUJoxXiE60qdBr1b0BDrgzq6n8LqgX447FRAQ+g7L4Ef6xAFHK18Q6OOFc+NCtuSa
+X-Provags-ID: V03:K1:UW5nFl3f49l8EiqWcfH03Ht250um51CqWYk29wqkrHzC4CE9/8v
+ yvNVfXE6dwOJmOKLhm1rMwsd2FKEPF8KExXy1sjgLYb8o7YUNLn0xL5tObTiul3rg/iJ3R8
+ yZrQgO/JHzMPIznk/T8XviRYpr1UopbO4Ledubv6MxDlLgoeQ7EqB+GOtiu8WDJEMoEK1Tj
+ SM0ey6TJpqQa5oAMnGufQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:PKcDQf/GEU0=:NYOCc4WQHMU5AT87QeR0WP
+ wgmyeLkw8DoGQnnPhw2UJ1tHCnK/DR2s34/VLUlp2KZE2Jd9IucAAAGCxqa516KS/qVEU0cXr
+ xcarRNVNjequblZzPzs3o5jsYpaU/W94DqzginImn1mWNpWBCVdi7RIG8nKdU8IghpEqPuh/1
+ XEskxxrrrcYX9w5kGqASWqlcIEW2Vq74d7ZXK6D6RUb4YyBkQGnBtZWVpgfQVy/XlNTimp+ni
+ ytabDwqgN5geI99zsa+YsOavglqs+Z+Cw1smyI4BoLfecKSj6BeReyUhlJxlD8T9ubQ1Yv3HS
+ EmTaAWH2SenB/Ngjv5OKdHj0YJMm15BLf9pCTavl6Gp21NR8uZZdfTnezukBkZ2nZu84f+IVK
+ wRfSsz8peXfxV5G3IXfB31zbE3FZ2LDrooOGw0xM5OITcpgD1tyvCb781RrpwFZ6wzK72XdHm
+ VzV9gEk1LUkENAPZIG6w8IfY/0BM32DJM/s7CyPOdfWiIrwdTipWIX7ME4IfubbFdBK7hrupn
+ Y+cVnFnrjMMNkgbrX7zTgF25xm853uDyTnkJY5tqoTxH8d0xJp5wkXVvTBVpm4RmwDUxblC7q
+ dvTxBCEykduxUMj440r1JOT4N1xYWJw6jgNZIQb1YUZFuAtM5tMONI9rjNa3E6cbgEGk14S4P
+ bZxXgBqPBcUG0DCbe4L3ofcvOA4ZFDEUJIOvDWlfWdYVV95ak68XJycOGzKystn6w1nDBmZsO
+ v40onrSU9yo6MMLktRWK7OU8ZAjFbu1RUVLeW+HiXCqw770JLYMynKpzfJCEOTJc4UUtD8BM4
+ Irr26i1hFfbJOI0z8ApQ3mU77QjcQbF44yrulu64Z8Iv6VMo84dhTUzucd/m3LeaH0WsZ2I
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 217.72.192.75
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
  qemu-trivial@nongnu.org, Helge Deller <deller@gmx.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Stefano Garzarella <sgarzare@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ Alistair Francis <alistair@alistair23.me>, Greg Kurz <groug@kaod.org>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
  Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Reitz <mreitz@redhat.com>, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
  Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kB+tyFeOznAj
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1rQmjXrY2eJ7
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-alpha_sys.h does not use anything from the "hw/ide.h" header.
-Remove it.
-
-Acked-by: John Snow <jsnow@redhat.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200228114649.12818-8-philmd@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20200305124525.14555-2-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/alpha/alpha_sys.h | 1 -
- 1 file changed, 1 deletion(-)
+ hw/audio/fmopl.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/alpha/alpha_sys.h b/hw/alpha/alpha_sys.h
-index bc0a286226f1..e2c02e2bbe1d 100644
---- a/hw/alpha/alpha_sys.h
-+++ b/hw/alpha/alpha_sys.h
-@@ -6,7 +6,6 @@
- #include "target/alpha/cpu-qom.h"
- #include "hw/pci/pci.h"
- #include "hw/pci/pci_host.h"
--#include "hw/ide.h"
- #include "hw/boards.h"
- #include "hw/intc/i8259.h"
+diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
+index 9f50a89b4a88..173a7521f2a7 100644
+--- a/hw/audio/fmopl.c
++++ b/hw/audio/fmopl.c
+@@ -1066,7 +1066,7 @@ static void OPLResetChip(FM_OPL *OPL)
+ 	}
+ }
  
+-/* ----------  Create one of vietual YM3812 ----------       */
++/* ----------  Create one of virtual YM3812 ----------       */
+ /* 'rate'  is sampling rate and 'bufsiz' is the size of the  */
+ FM_OPL *OPLCreate(int clock, int rate)
+ {
+@@ -1115,7 +1115,7 @@ FM_OPL *OPLCreate(int clock, int rate)
+ 	return OPL;
+ }
+ 
+-/* ----------  Destroy one of vietual YM3812 ----------       */
++/* ----------  Destroy one of virtual YM3812 ----------       */
+ void OPLDestroy(FM_OPL *OPL)
+ {
+ #ifdef OPL_OUTPUT_LOG
 -- 
 2.24.1
 

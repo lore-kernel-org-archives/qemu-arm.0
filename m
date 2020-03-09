@@ -1,175 +1,174 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1253709lfc;
-        Mon, 9 Mar 2020 08:11:45 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuMaRIBCutI9uHHchWWX5e/6IYny0KcwNSeuqsUnVvU1fZ2hfmiPsNTtypDDRcCN0cHZm2W
-X-Received: by 2002:a37:a854:: with SMTP id r81mr5155020qke.384.1583766705384;
-        Mon, 09 Mar 2020 08:11:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583766705; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1253756lfc;
+        Mon, 9 Mar 2020 08:11:47 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt1LRpAmqIOpatM0IqHz2d3R9W0qGb7MW4cw5aylNvqToTOJsmZaA3YjSwUgIXSzcG2O3x2
+X-Received: by 2002:a05:620a:1354:: with SMTP id c20mr5345305qkl.295.1583766707819;
+        Mon, 09 Mar 2020 08:11:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583766707; cv=none;
         d=google.com; s=arc-20160816;
-        b=E4hNHYJ4bOR5iy7HrbGBfcHYX1hJ+IHD2RBQ2CqknEyuptiIZluM5Y7XdC67kIk4fF
-         ZXaPFAciIjhMox7FpJE6Mn9/OobYevDPdKN1S0QJtKGrX3aApUQaO732n4p+2Qaidkxl
-         2y5hLxGim6rFwSyM6truHhpVNg53V5EwQm8AvOJpJNuGAyAxNlt6S1LruKfpCt/xr/QQ
-         WeBdxzOf+RKU7FymvydkmFq/MNESCF14YHV8mqafw2M/zerjwhvApMu/Kp4Yllun0tPB
-         FJ5E8My9DLG/SSRYniom+inRjMWcw+oh4x4/kKuOmE9esN4biQx4JcIuvFNr3bNGFwwZ
-         /skw==
+        b=zz4jv96n0U3jhExVekpgu57bvkEW0WZqOF1rxqOsfhost2WRIKNw6SwOT1X2/PnURZ
+         Zzi30eL+Bej3HgaHffDRkWTMe/XsEnAWlaCyJPm9D2bStTMD1HC3KacIt1obiZSyAAGB
+         8iSRndJDzCiSsI4zDxJnweHcnA/ayMYCeh3dEalCJNKCRCcBIh5AmdRBY7uwr0+qfSei
+         WNxJGmS/56LQU3KVg7cL8ytTBZplfuK673aR9NoqAl2R9hxC6JKk9GLTpil6duv7GJwM
+         Mak3D/My9ydx++QazE2i5UtPdrE0S1KS7I//SZCreV0MCPwxWlzhwnTvJYc5qN/YZEBY
+         yk0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=IflMpxdpbRtrFv7JNRMlLWar0K4DBT9cS77TO71kktw=;
-        b=WlAsqLnL2ynNBb9yO2D/UO6Dk3AMDNoWYP+FTkKyIRPK0HZa3biAIVyRo0mxgPeq9e
-         E2pgWmLYFs3CaqjzPhjcuTv7BogoTNHpo1BAs/8rfAae3SooekYNBXhyoDcMR/ImLDZU
-         Y2steGFeWIDf6iYe6ChDNkRWZ6TWgBVzPel+V9FSUsYKHAIpxVBwILmNlhv95iW/ZSR3
-         eATvPN5aNILYm4RL2LOXQtF8JRw2Kqi0NZb83XgaZkOZi4W/DlBlSNb1f45Hssy+R47F
-         bkReWwV6P1VUh3iR1bccq3QNaeF7yl7IdufH26682ARl4wOFhSyH41jgUf3LhWFElkYR
-         68JA==
+        bh=8/TTwDGhWKAHi8kyACt/M5g3epmuKskktGOpey1x/iM=;
+        b=PZmzZxigwxSSv9yUqAYAjyOlJix3xYu/rt8YGa/3dDslwcyykxSBnbHmAH/886WgLj
+         SgLLPg3/u84ajWwK6vLjTu4v86fpVF2HVq89VRX7tl9OwXAYXRcJomiLZZN4OYQxgzKW
+         4yDoh+Ml1eQVqTclHNEo8W9dRJ/xgSFdiVIBJMgClt7tDCXre9a9+0GMiGaheuxNmA4x
+         INfpTvOUxqcYBUedh5NSbAP7VmP7F9N5eHMWMQtImk6no1/Z1+OAb5P1Ms2ibqZt5NS2
+         TJh3brO+9PdjlQBjQ69SG1Gpsofv/MBqlHSx4JubPr4n4Rv2/RTbPQMIn8MXl3KiFguq
+         ZNAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d12si6611710qki.177.2020.03.09.08.11.45
+        by mx.google.com with ESMTPS id c12si6708955qkl.344.2020.03.09.08.11.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Mar 2020 08:11:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Mar 2020 08:11:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44558 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44550 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBK4G-0001y8-Q1
-	for alex.bennee@linaro.org; Mon, 09 Mar 2020 11:11:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33462)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jBK4J-0001Fd-6Z
+	for alex.bennee@linaro.org; Mon, 09 Mar 2020 11:11:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33083)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBK2Y-00083J-Ey
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 11:09:59 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jBK2G-0007H5-8n
+ for qemu-devel@nongnu.org; Mon, 09 Mar 2020 11:09:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBK2X-0007ky-BR
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 11:09:58 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:39435)
+ (envelope-from <laurent@vivier.eu>) id 1jBK2F-0007YP-7t
+ for qemu-devel@nongnu.org; Mon, 09 Mar 2020 11:09:40 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:39165)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBK2X-0007ju-1I; Mon, 09 Mar 2020 11:09:57 -0400
+ id 1jBK29-0007U2-EG; Mon, 09 Mar 2020 11:09:33 -0400
 Received: from localhost.localdomain ([82.252.135.106]) by
  mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1N3Kc8-1jJg4w01ac-010J9Q; Mon, 09 Mar 2020 16:09:04 +0100
+ id 1MJm8N-1iw7ce3yYr-00K8ZL; Mon, 09 Mar 2020 16:08:50 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Subject: [PULL 09/33] hw/southbridge/ich9: Removed unused headers
-Date: Mon,  9 Mar 2020 16:08:13 +0100
-Message-Id: <20200309150837.3193387-10-laurent@vivier.eu>
+Subject: [PULL 03/33] build-sys: Move the print-variable rule to rules.mak
+Date: Mon,  9 Mar 2020 16:08:07 +0100
+Message-Id: <20200309150837.3193387-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200309150837.3193387-1-laurent@vivier.eu>
 References: <20200309150837.3193387-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:He56TwfhJa52GOGz0EJqZEjoGZlFdNLZsoH3h/kooJRBmO3UGxH
- tKyYkftvnQTlB+T1skORNFDy8AzTmEPvISinUrtkUNnNj45ZqRv2R7bSrs3ee3Cnx5cT0WI
- YGYoZAhBpGPOwmc5FGBsBGyk8uJKJc2HOrkXlVlO1n3vR1bcnjFftYXy63DXylETT2vk1EQ
- kj11Rtk709JH9zDXwjusA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:nkohTncFmnU=:X8IHw1mNLvGEWBqMFnaX5Y
- Q1CvPz3i/rGpm7UY2HJlWtdWiMMccEFNdmxNyYsPtBR10fUnC7QXg+IykaTAjlJDO85a0+YLm
- PTJS8WiCnIvMT8h9rbKLZEyMvkwRaBmLzDHgfRFKjFKEef/UawYHvuIs9zLbao7gHResGUcof
- HSySVUlY1rFX7pm/BQ9rdcpW40AVPRKalvEETCU3m4zJbWj0xEkD/dKMpL7ZXaNwtRE15npsy
- itvmFfF+OVpVcj6Zs9m0LuHyTGnmnnhY6PVVpKdHIrXpODm06dPYsGUC5BN6fiHvfDkJKbSAU
- TElOp5Vds0k4cM8ol6aK8XeJQe/dIuzHoWaJQgJ7SBzcb+oOI0HK2KtfVOBlgoCWx33LdAM7O
- sYQCHNCezbeOxlNJNnA5FzPZQZmXiJkNbH5b5vDygWhiBRG9fKSsYkUwR6VmxSsmdrsxd5kaK
- ZWJvUpwycNp5tALkXiCsJX/IUbER+DasVzZ0tjAL0wqHYfB84yPxugjH0uC+eP61dFPw2Kax7
- tHHptPy+nUmKyEXSqbXgIPtcGs9oP8fPRtQqEe+L/+wN1j7bDNoP/4ukKPMSfmrJRBHGRFRyC
- /JEqkc2ZmCL3YmhWRCR+OhTXgIIYuNHVAXICwJh3Eq/2HwlXRzeTwBvMOgR//tZ2Fnvn3agLY
- sQ99S4XvwSGTtuZ8ayxyU3xKe2dR9VkPC13yTHJcjxB7HBqTWP/MRNRdyTOWftguhMfrADiDl
- FaVzu0JsLwDDI6hqXjJCMndVvdz/LKv3DgHT+GWGExDbi870hyEq2orl/FdIsykPpbGbKE8ut
- ADNHx6UurIWeSmhdi9OEDkFr9wyZ67jsbaAJ8V9UJZq6Cg5GDV+wFqy9eikoKHPLHnfQg/P
+X-Provags-ID: V03:K1:Ai7ynpyxzGre05ka6l4GHxtd8qdyahqT071p9CAte9wTwaVdbM3
+ pHDOymBtC/BvQqlP10iUnTuKFyHWpDKASXeJ/bW6G0v0fVTGSF5Ljp4PCjGqP+TIJ9ZNDRF
+ K6HMcD16Vs7MQh6h8BIGO8yntewAIqBTOekGCjOlFf2vEJIEV7rOrXubkpjFZ57I8MB07eU
+ O+rjV/JwLevP1eAGA39mw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Sfa1dDNsXDU=:9u5wgKBUFXudeh8bQQnT2U
+ hdCTsT6kbqwpRz7WgE7IHH/m+OwP6e+qOyrrV37mgpctyPzGgwd4pVO4zhtJJZMGm3K9fmsmr
+ cfMDp+t3pwTTrcyCCsrlKo5ljsWP6qyu1dFFt4mtJKol1kOpoU7kudYcjRmR+yX9rT2sGvsuQ
+ k2wiNcXnuJzvUze1hfR6MS3HSLrjGRk3u1KHYBnA+JDnraMuhRnfSXbR/VBhAH/9WzGKiTQUf
+ c38sngokSEH+Kdx7DZs7U1rz70Ln/+5eDQmuUq0Snbclge1aZnKt8iEfaAQPh4pJh5BGJql7K
+ Xp6NryO9xJrV/V8ekAZwWB8Q6QY3LFDEFuxkWbSDFtsVOgY1Bhq6HjKQ1r/Iy9OUvhEXhYJab
+ ClcnAPME1ZKDIuLThJl0DHvkahAhJVFJhiz9yaQlGoJ5KSwFf12kc7VQy8ufGNcRfwMOUQ1iN
+ rPmNU4x5+VM5TaDJP1kTA4StxGQMQXFZAm5+9kk2PpSnIX9ct9DRK6O8X1G0IXeskjiR0Hsmx
+ D3gx/WAf4Fn17MUQvQE5txRg7MEE8LoBgwhiOazCpMzRHHRxZ1t0T15Rx30W9AIOLdc9r+iOl
+ n2diFPff6lpEso40mpvi/sUNl8N1qyFoWOYnDJEY99qXC8Pb0kMy2mduiT18q0k6ys18+HPIE
+ sAVLRQ8EoOLIL6P1b39TtKEdOmKHKj4VQzvuMpG1khli4vSfSgdyIA8LSnJqGeGDP9iHxhAXT
+ 8xdPd7qOaGHPh4ugoblbVTAM4oI+1I4vLASJXigLq2UzBmbJqxof15K69EzZKFp/ok+Zql7JY
+ ERfm375SNigSccT6w0HvKAEPc5CeXgtBPj5Oq4PwtCUb+YWjF1Sj2e3Vy2FNf5KHIewmKww
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 217.72.192.73
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
  qemu-trivial@nongnu.org, Helge Deller <deller@gmx.de>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ Alistair Francis <alistair@alistair23.me>, Greg Kurz <groug@kaod.org>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
  Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, Andrzej Zaborowski <balrogg@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Max Reitz <mreitz@redhat.com>, Aleksandar Markovic <amarkovic@wavecomp.com>,
  Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zdAui488QIgt
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RNHFg1BpFsqc
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-The ICH9 chipset is not X86/PC specific.
+Currently the print-variable rule can only be used in the
+root directory:
 
-These files don't use anything declared by the "hw/i386/pc.h"
-or "hw/i386/ioapic.h" headers. Remove them.
+  $ make print-vhost-user-json-y
+  vhost-user-json-y= contrib/vhost-user-gpu/50-qemu-gpu.json tools/virtiofsd/50-qemu-virtiofsd.json
 
-Reviewed-by: John Snow <jsnow@redhat.com>
+  $ make -C i386-softmmu print-obj-y
+  make: Entering directory 'build/i386-softmmu'
+  make: *** No rule to make target 'print-obj-y'.  Stop.
+  make: Leaving directory 'build/i386-softmmu'
+
+Move it to rules.mak so we can use it from other directories:
+
+  $ make -C i386-softmmu print-obj-y
+  make: Entering directory 'build/i386-softmmu'
+  obj-y=qapi-introspect.o qapi-types-machine-target.o qapi-types-misc-target.o qapi-types.o qapi-visit-machine-target.o qapi-visit-misc-target.o qapi-visit.o qapi-events-machine-target.o qapi-events-misc-target.o qapi-events.o qapi-commands-machine-target.o qapi-commands-misc-target.o qapi-commands.o qapi-init-commands.o
+  make: Leaving directory 'build/i386-softmmu'
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200228114649.12818-3-philmd@redhat.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Message-Id: <20200306170456.21977-1-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/acpi/ich9.c         | 1 -
- hw/isa/lpc_ich9.c      | 1 -
- include/hw/i386/ich9.h | 1 -
- 3 files changed, 3 deletions(-)
+ Makefile  | 3 ---
+ rules.mak | 3 +++
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
-index 2034dd749edc..fdd0a6c79e11 100644
---- a/hw/acpi/ich9.c
-+++ b/hw/acpi/ich9.c
-@@ -27,7 +27,6 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "qapi/visitor.h"
--#include "hw/i386/pc.h"
- #include "hw/pci/pci.h"
- #include "migration/vmstate.h"
- #include "qemu/timer.h"
-diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
-index f85b484eac63..cb79616cede8 100644
---- a/hw/isa/lpc_ich9.c
-+++ b/hw/isa/lpc_ich9.c
-@@ -37,7 +37,6 @@
- #include "migration/vmstate.h"
- #include "hw/irq.h"
- #include "hw/isa/apm.h"
--#include "hw/i386/ioapic.h"
- #include "hw/pci/pci.h"
- #include "hw/pci/pci_bridge.h"
- #include "hw/i386/ich9.h"
-diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
-index 72e803f6e2e0..a98d10b252df 100644
---- a/include/hw/i386/ich9.h
-+++ b/include/hw/i386/ich9.h
-@@ -5,7 +5,6 @@
- #include "hw/sysbus.h"
- #include "hw/i386/pc.h"
- #include "hw/isa/apm.h"
--#include "hw/i386/ioapic.h"
- #include "hw/pci/pci.h"
- #include "hw/pci/pcie_host.h"
- #include "hw/pci/pci_bridge.h"
+diff --git a/Makefile b/Makefile
+index 2e930688942b..37aed4a24422 100644
+--- a/Makefile
++++ b/Makefile
+@@ -15,9 +15,6 @@ UNCHECKED_GOALS := %clean TAGS cscope ctags dist \
+     help check-help print-% \
+     docker docker-% vm-help vm-test vm-build-%
+ 
+-print-%:
+-	@echo '$*=$($*)'
+-
+ # All following code might depend on configuration variables
+ ifneq ($(wildcard config-host.mak),)
+ # Put the all: rule here so that config-host.mak can contain dependencies.
+diff --git a/rules.mak b/rules.mak
+index e39b073d4648..694865b63ee8 100644
+--- a/rules.mak
++++ b/rules.mak
+@@ -435,3 +435,6 @@ sentinel = .$(subst $(SPACE),_,$(subst /,_,$1)).sentinel.
+ atomic = $(eval $1: $(call sentinel,$1) ; @:) \
+          $(call sentinel,$1) : $2 ; @touch $$@ \
+          $(foreach t,$1,$(if $(wildcard $t),,$(shell rm -f $(call sentinel,$1))))
++
++print-%:
++	@echo '$*=$($*)'
 -- 
 2.24.1
 

@@ -1,44 +1,44 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp975113lfc;
-        Mon, 9 Mar 2020 03:24:50 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuDbfk4wA/6U8fpg7zWAMqeefYHWItoT6X5BXetdauubOkO7Ykdpq01oQRd4NOknAzxR0el
-X-Received: by 2002:ae9:f707:: with SMTP id s7mr6805493qkg.5.1583749490399;
-        Mon, 09 Mar 2020 03:24:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583749490; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp975141lfc;
+        Mon, 9 Mar 2020 03:24:52 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt7dMSmVjlCTkkqNtcjVFxu55PVYlGQg/WPqCvoTCJdRbWBbo1G2J5XZ9l7tXPnOfEXjX+1
+X-Received: by 2002:ac8:7210:: with SMTP id a16mr14167389qtp.167.1583749492543;
+        Mon, 09 Mar 2020 03:24:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583749492; cv=none;
         d=google.com; s=arc-20160816;
-        b=zmZdxWIryCH2w7h7XxwChf33rOpSXex0PY8iSfy1vPyS4/6WuAqDpQ/jn8hN5aOES/
-         viK1vCRQ3fQWnhqqmr27EUsaaKGHBIwMXv5Fhh0GoBxzchlSmT5pDEpvGY993nmyAGRi
-         Ml9KWRgU+UnszNxZMoh7pKKWpksiWANGuvc4PBFEbTrfTZ7DlslhI63uABrnccqs66g8
-         p/mPhvU0LCulQgdB79aeAoU1BLvTUUgS8Asfy8paqCrhZMlopOXoccy24t59rheBCcXC
-         kQTMhiQxWzLQCbKsRgdjxMpew2sDkvD8lgjlqh5zazPrpaANDAIjjIqmshWftzultde8
-         Iu4w==
+        b=zSaEHKLppPkGIT2jDvKT2dG0iORhXg6HlRweQ79BsU0t2NgBbjGvdNUj6kXLWpIqUx
+         gY3928vRq/0EGFZHumlLyg2/dp9dPs/xCIDOgmnF81kt4Bg7Xl45P69Vnf1CrrYSGuQ6
+         SVekUtlEqkq0cxzRYx9YOwxf3QRF+QjAp48Q1i2wQOAgr1+NnrctO3ZuQOO7g7ji/c0q
+         +YtS/w+PEZXih1CScF7MXA3llYCkMtJuIlsHlDpxvRA+Ukx458t0C9rn2cNCx/KPIyEm
+         INSv5oieB1pD+MEhWImiKtjr6kezl8lAcPP0eIudW0DOdsQCLCtT1ZBUPO52WJWc0+Ud
+         2/hA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=XgzdoaXT8yLeZom82aUYMFdOH/u5U78Ozh9Q39iwhvI=;
-        b=HnJwCfgaWMz+eTo7BM9MhjwVfFrnchmSqZshSZ1zk0OT5Hlf2IyzBU+Y0UOBjGwB89
-         WOuQ/0h6EQaD4p1hl2gB0KNMG4O8nfMS2oiNff5vy+k1Zu5DEbmCVuif4cCAjpfopGzw
-         2Q1wt+BABYdWdzdP8+Aah7CuaYtoVENLVbfdZRc8Y9U/94rFXT7Wxy91eKBCuBl9E2iq
-         zeDioCoZqCjVgo+beEL7T+E88LpkVtIhuHAagDVuWsrjGCEhiO1R5RBkbBXlkjN0oHu/
-         LER5t8aIJHPap4KvndV9/d9cPQZljaGBciZQ4Qo7romlkuzwRv5zqhfUzpkuvx+msq9f
-         vMFQ==
+        bh=pmaatA3/r4OrV7Q9QbgmT/bl5BnXdQzGPFzwm/vi4NI=;
+        b=inaSykagO8V1bZNGVj3fD7Az7py26Pi0v/qdWJgShRNWarZE8e8w/pTinJgja+bi6p
+         3lHQf7i6T5b/igXk+N4IKKUXiC0wgOROpNfzgo9mDfj552SdmSq3DVz7PUGsJWWszfQ7
+         SQslz6MyNP9CK8qFl7KY3+oCAGe4VOe+ETjhjxBouLuxYHpMn3Ps8KXSDc+sYjd3T7kA
+         kMEFwwMj02UM4ndQ5i59bme/ilZmCIhHLkIp5v9kIY1TqYEE83NYrZmHWkC4EqYZK3me
+         svgAzi+Oy0aFrL3sdXl6JltLUaWePWiSq7fwrKwKG77Acv89Vd6dZyM8RlBF6NxR5A0z
+         uQ2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=UTUqO30T;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=L+ozH3ru;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id w8si5749988qth.81.2020.03.09.03.24.50;
-        Mon, 09 Mar 2020 03:24:50 -0700 (PDT)
+        by mx.google.com with ESMTP id g7si2839484qto.325.2020.03.09.03.24.52;
+        Mon, 09 Mar 2020 03:24:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=UTUqO30T;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=L+ozH3ru;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1D5204A591;
-	Mon,  9 Mar 2020 06:24:50 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 43ECA4A4FF;
+	Mon,  9 Mar 2020 06:24:52 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
 X-Spam-Score: 0.909
@@ -50,52 +50,53 @@ Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
 	(fail, message has been altered) header.i=@redhat.com
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id f2Bma5ujR25W; Mon,  9 Mar 2020 06:24:49 -0400 (EDT)
+	with ESMTP id LXViLbQGWpjc; Mon,  9 Mar 2020 06:24:51 -0400 (EDT)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 294DB4A51E;
-	Mon,  9 Mar 2020 06:24:49 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 598E24A541;
+	Mon,  9 Mar 2020 06:24:51 -0400 (EDT)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 40E014A500
- for <kvmarm@lists.cs.columbia.edu>; Mon,  9 Mar 2020 06:24:47 -0400 (EDT)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id EAFFD4A4CD
+ for <kvmarm@lists.cs.columbia.edu>; Mon,  9 Mar 2020 06:24:50 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PWsDwi66GCHx for <kvmarm@lists.cs.columbia.edu>;
- Mon,  9 Mar 2020 06:24:46 -0400 (EDT)
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
- [207.211.31.81])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 673CD4A4FC
- for <kvmarm@lists.cs.columbia.edu>; Mon,  9 Mar 2020 06:24:46 -0400 (EDT)
+ with ESMTP id 9+F7pw+xzV7z for <kvmarm@lists.cs.columbia.edu>;
+ Mon,  9 Mar 2020 06:24:50 -0400 (EDT)
+Received: from us-smtp-delivery-1.mimecast.com
+ (us-smtp-delivery-1.mimecast.com [207.211.31.120])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 441714A523
+ for <kvmarm@lists.cs.columbia.edu>; Mon,  9 Mar 2020 06:24:49 -0400 (EDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583749486;
+ s=mimecast20190719; t=1583749489;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=jUPGPmIvaDDGzVaAE49y1ve21avwQxlD6sBJrt5aqiw=;
- b=UTUqO30TPKFqz/Znns9sVN+bEOm+a0tJt/Lmp3Bw0QJQf7qsGR0ccEtIwlwrv1wW3gYYdN
- kNaOeM7WqqyIKdUqDjbd7Otiaif4ykYiE22sy/5hKh/osqyGXxBe7IYF9i17XOqN2bjJc3
- /EwL/vyE3sxnLp1FqeW4bKOsfYIGv88=
+ bh=MvayPD2KrkjvVludp3nPmXgg5XhOf+bBUlyipWBvYKU=;
+ b=L+ozH3rudY9vHAlZErViOP10OdoYp4zH/88HEpf2tOLoN57SVig1spxu4gjuUfnPKzBV5Z
+ aV6yXmfA5U8d2Xe8efLoGAQnu8mRz+cJK8lC3xVWDxPnIgvC92e8ahEyzKHn3Sai0TbjuU
+ YkE+FM+IhbOE3KobaaSPe7fVUFIecU8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-349-kn_oEwKnOn2anCLGpUgNTg-1; Mon, 09 Mar 2020 06:24:44 -0400
-X-MC-Unique: kn_oEwKnOn2anCLGpUgNTg-1
+ us-mta-373-jnfEeXoHOma61Zys7wINog-1; Mon, 09 Mar 2020 06:24:47 -0400
+X-MC-Unique: jnfEeXoHOma61Zys7wINog-1
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
  [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7FDD0800D48;
- Mon,  9 Mar 2020 10:24:42 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C7F078017CC;
+ Mon,  9 Mar 2020 10:24:45 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-59.ams2.redhat.com [10.36.116.59])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1269587B08;
- Mon,  9 Mar 2020 10:24:36 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D85CB90779;
+ Mon,  9 Mar 2020 10:24:42 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
  kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
-Subject: [kvm-unit-tests PATCH v4 02/13] page_alloc: Introduce get_order()
-Date: Mon,  9 Mar 2020 11:24:09 +0100
-Message-Id: <20200309102420.24498-3-eric.auger@redhat.com>
+Subject: [kvm-unit-tests PATCH v4 03/13] arm/arm64: gic: Introduce setup_irq()
+ helper
+Date: Mon,  9 Mar 2020 11:24:10 +0100
+Message-Id: <20200309102420.24498-4-eric.auger@redhat.com>
 In-Reply-To: <20200309102420.24498-1-eric.auger@redhat.com>
 References: <20200309102420.24498-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -116,50 +117,84 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: t3m1HLSXJqu/
+X-TUID: YV9/ID8dlRKU
 
-Compute the power of 2 order of a size. Use it in
-page_memalign. Other users are looming.
+ipi_enable() code would be reusable for other interrupts
+than IPI. Let's rename it setup_irq() and pass an interrupt
+handler pointer.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- lib/alloc_page.c | 7 ++++++-
- lib/alloc_page.h | 1 +
- 2 files changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/lib/alloc_page.c b/lib/alloc_page.c
-index ed23638..7c8461a 100644
---- a/lib/alloc_page.c
-+++ b/lib/alloc_page.c
-@@ -155,7 +155,7 @@ static void *page_memalign(size_t alignment, size_t size)
- 	if (!size)
- 		return NULL;
+---
+
+v2 -> v3:
+- do not export setup_irq anymore
+---
+ arm/gic.c | 20 +++++++-------------
+ 1 file changed, 7 insertions(+), 13 deletions(-)
+
+diff --git a/arm/gic.c b/arm/gic.c
+index fcf4c1f..abf08c7 100644
+--- a/arm/gic.c
++++ b/arm/gic.c
+@@ -34,6 +34,7 @@ static struct gic *gic;
+ static int acked[NR_CPUS], spurious[NR_CPUS];
+ static int bad_sender[NR_CPUS], bad_irq[NR_CPUS];
+ static cpumask_t ready;
++typedef void (*handler_t)(struct pt_regs *regs __unused);
  
--	order = is_power_of_2(n) ? fls(n) : fls(n) + 1;
-+	order = get_order(n);
- 
- 	return alloc_pages(order);
- }
-@@ -175,3 +175,8 @@ void page_alloc_ops_enable(void)
+ static void nr_cpu_check(int nr)
  {
- 	alloc_ops = &page_alloc_ops;
+@@ -215,20 +216,20 @@ static void ipi_test_smp(void)
+ 	report_prefix_pop();
  }
-+
-+int get_order(size_t size)
-+{
-+	return is_power_of_2(size) ? fls(size) : fls(size) + 1;
-+}
-diff --git a/lib/alloc_page.h b/lib/alloc_page.h
-index 739a91d..e6a51d2 100644
---- a/lib/alloc_page.h
-+++ b/lib/alloc_page.h
-@@ -15,5 +15,6 @@ void *alloc_pages(unsigned long order);
- void free_page(void *page);
- void free_pages(void *mem, unsigned long size);
- void free_pages_by_order(void *mem, unsigned long order);
-+int get_order(size_t size);
  
+-static void ipi_enable(void)
++static void setup_irq(handler_t handler)
+ {
+ 	gic_enable_defaults();
+ #ifdef __arm__
+-	install_exception_handler(EXCPTN_IRQ, ipi_handler);
++	install_exception_handler(EXCPTN_IRQ, handler);
+ #else
+-	install_irq_handler(EL1H_IRQ, ipi_handler);
++	install_irq_handler(EL1H_IRQ, handler);
  #endif
+ 	local_irq_enable();
+ }
+ 
+ static void ipi_send(void)
+ {
+-	ipi_enable();
++	setup_irq(ipi_handler);
+ 	wait_on_ready();
+ 	ipi_test_self();
+ 	ipi_test_smp();
+@@ -238,7 +239,7 @@ static void ipi_send(void)
+ 
+ static void ipi_recv(void)
+ {
+-	ipi_enable();
++	setup_irq(ipi_handler);
+ 	cpumask_set_cpu(smp_processor_id(), &ready);
+ 	while (1)
+ 		wfi();
+@@ -295,14 +296,7 @@ static void ipi_clear_active_handler(struct pt_regs *regs __unused)
+ static void run_active_clear_test(void)
+ {
+ 	report_prefix_push("active");
+-	gic_enable_defaults();
+-#ifdef __arm__
+-	install_exception_handler(EXCPTN_IRQ, ipi_clear_active_handler);
+-#else
+-	install_irq_handler(EL1H_IRQ, ipi_clear_active_handler);
+-#endif
+-	local_irq_enable();
+-
++	setup_irq(ipi_clear_active_handler);
+ 	ipi_test_self();
+ 	report_prefix_pop();
+ }
 -- 
 2.20.1
 

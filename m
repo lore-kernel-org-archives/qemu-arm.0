@@ -1,171 +1,176 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp974965lfc;
-        Mon, 9 Mar 2020 03:24:39 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuLDM91/k+NJl7Di7vGd7bEDwVBbyZV37AuoFk8Vq3dnz6Mg4VOXm+J45QpW5Av63cJGxS/
-X-Received: by 2002:aca:2804:: with SMTP id 4mr5575997oix.120.1583749479360;
-        Mon, 09 Mar 2020 03:24:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583749479; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1148801lfc;
+        Mon, 9 Mar 2020 06:28:59 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsqXhlCBb5SBVyXGfdOPOoyeHfDIOeMpXKj5nb/uczSOUwnu+UdwHAt26/U5LdGQp9CQfdH
+X-Received: by 2002:ac8:5485:: with SMTP id h5mr14178440qtq.56.1583760539054;
+        Mon, 09 Mar 2020 06:28:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583760539; cv=none;
         d=google.com; s=arc-20160816;
-        b=TOmRGhzQWeTQ1+JtoC+B9Wqc3qsj861bDrnQPJoiaw7KQOWwpRx21H1j2N7SUaPb+B
-         JXBgRU8O7RXDymAh/A/j+965qxjnNcmcxFysg2DzGhEnABRryB+TlxxIl131KiEqaDUE
-         kwbGzlZpi0RJuPyqj5B7DXdfr2xwWksMRqPhXQD/aS+tMGXOGR1xMJECP1p70d1DPGuH
-         su2Z4gdkBK1L7paIbVGRPUNbb9cDI7+t1PfWT+vjCgeHRiy2TSOjG8KSLX9RAUCn+YPo
-         TJ72GSWADAVOE/ZQy+2fWb2/wRZqFPiRSjatoEjZgiEQPbYCSDS7zZJfvjAotdFfraV7
-         eWcw==
+        b=uYKVK5ood7xJT7D/1HlXYYM18SG3fsQl3iRIVemZwMSuAlI2ZcQx0I1NSjEeu0N18b
+         DVIlpthLS3+0tEcOBw39GzF5JgorN27GkV2Hhg1A+1O6tLst0bZmy8EFN+IzA7teX5kn
+         +2cddKXq/b9Uj6XEvohIjt4RVriEdoFs0fRBjlEfYww7Xjsv6PQlk7cRAPbrKcPacfaQ
+         xB6ESu9mTNpPMifDHARh5hyc9gVJTtGjyzh2GZn2muhiovjlLGUxtHd02GSthB/GrsWy
+         F9AjpG4EwXm67Ta6sDHkeWeCVlGXy2b4EWsU6UsAuxsuBMpOIiX+H2U5XDPGiTTZiIK4
+         5Xog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=xsESJb0v2tbgzsnXysDr2pQil6qkLSgz3wrtXC2dgwQ=;
-        b=Fdl5o/GWdNEqgkmyEN//EKy4jMuaiDhfzFba/gAJZKN7to/CnwReYSVc90kavtrwBg
-         wdO8SjPygqaI4SZSop/9/B3XuaJq6jlXDabC9kUluO07cJfrbu9xu8r/saKPXOa9e6xy
-         /Qa1ANIf4mfjqSHDg1sxnKQrMGBKgZSel8OrAYKwODg3zU5bqaXKHbz/QYcNNcW2LdXI
-         ofZ5ZX1l6OrQybzhWCAN+sGPx974Iq7waGtdETd4RMD1se+1BU2XOOKbO0qClhCrvgkN
-         iBvKYLVPoJZgGxtycoLa5a3q2ZHhO/E7XE0XE1hGLWcFPwWBUIfiJpZ2OEi/wbYSEnWA
-         OTRQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=cfPlssygrlRP1RqqE9U9UFYMY69kVxQSNIUP9JvVdvg=;
+        b=gkFBwG+5P7rBUS0X/R54rMbVbo7nVELxLXPGurY6KwfXrOqeKd5xX0iU3vnUom/s/D
+         2Zc1fFbTzVIYMUezTnJhvUKU0dOzr86q3wrlsdnJ2xjpWBaw2OF5nuODcNeqqjcATBX7
+         lxd0wH9iQqzzrFttgLiEn1+F6yvqMja4jqqRk+sCeyeqswCW+168qCw1sZFkj1lcxG/9
+         oNd8tzNpcS9gR7GvHqqxeChNO0Ie6nE3powWLeQ96PZl6UQcU7j8rpQwCGlblSYRVldW
+         FHOc/EHC/BdJLUxn4rm5gvpRU5L4fQTNSDi9mRh/OgMJYJ3odNMo1K/1rhlnVCy24zBG
+         Q26w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HktzG3ng;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id l15si4042879oic.220.2020.03.09.03.24.39;
-        Mon, 09 Mar 2020 03:24:39 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b=L2OJkH2U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v7si6157714qkv.351.2020.03.09.06.28.58
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 09 Mar 2020 06:28:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HktzG3ng;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726635AbgCIKYi (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 9 Mar 2020 06:24:38 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:40759 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1725956AbgCIKYi (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 9 Mar 2020 06:24:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1583749476;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:
-         content-transfer-encoding:content-transfer-encoding;
-        bh=xsESJb0v2tbgzsnXysDr2pQil6qkLSgz3wrtXC2dgwQ=;
-        b=HktzG3ng2If5BrpV5UGpR7vuo5H2HqOo7vcrreQUqrrxGBEU8gxIrdYFsKmPUnq2S5CIyi
-        hiTB9l56uvP7T3NP/bu92ONrqkRzk856piSwsme3dFJ5kVP4b5ozGM5keW3gYOFmDnTcuK
-        eVTUWvjKmrEyPn2sP0eu2ljb+khLHXc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-286-QjWGG_wBNjinhNMo74aRwQ-1; Mon, 09 Mar 2020 06:24:35 -0400
-X-MC-Unique: QjWGG_wBNjinhNMo74aRwQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 59858477;
-        Mon,  9 Mar 2020 10:24:33 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-59.ams2.redhat.com [10.36.116.59])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 9FD8987B08;
-        Mon,  9 Mar 2020 10:24:27 +0000 (UTC)
-From:   Eric Auger <eric.auger@redhat.com>
-To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc:     drjones@redhat.com, andre.przywara@arm.com,
-        peter.maydell@linaro.org, yuzenghui@huawei.com,
-        alexandru.elisei@arm.com, thuth@redhat.com
-Subject: [kvm-unit-tests PATCH v4 00/13] arm/arm64: Add ITS tests
-Date:   Mon,  9 Mar 2020 11:24:07 +0100
-Message-Id: <20200309102420.24498-1-eric.auger@redhat.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=L2OJkH2U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43218 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jBISo-0006c5-Gh
+	for alex.bennee@linaro.org; Mon, 09 Mar 2020 09:28:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40886)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1jBISe-0006b2-4b
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 09:28:49 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1jBISc-0002YB-UK
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 09:28:47 -0400
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:37946)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jBISc-0002Xo-Og
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 09:28:46 -0400
+Received: by mail-oi1-x244.google.com with SMTP id k21so3199156oij.5
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2020 06:28:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=cfPlssygrlRP1RqqE9U9UFYMY69kVxQSNIUP9JvVdvg=;
+ b=L2OJkH2USO3acp42xe0i5l+YSXk+/71fFTdqCZx1MpAwIBKkMtEzE1IFPoyEZE2Zha
+ oiESSd5adLnZ5MmHi5y6go4v1S6oQsC0FsEHt+DEdPhWx/AlSkBjWzMwYPEB5uGRcYwO
+ bAQt8CFUc1DEh81T1JGWuidLF+7XnWQTAWOcNJM/La5E8K6RBLxxt9xgJJe7GZoj9WYy
+ J9nEjv48jONGKoPyylokgW8ZJ9YPUxygBIetiTuBw+VYVp/KJZg6hZuVC8TpuAFJanvu
+ hAhgMHihjTCcUabaEVY5Df50o4FO24SvzHW8Nz0nhUuEYeynX7/tLftE8ZnZwyM2cDLH
+ 4dsA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=cfPlssygrlRP1RqqE9U9UFYMY69kVxQSNIUP9JvVdvg=;
+ b=b2NrjlTq0OxIkQBrCb4/Cvq/aDM4Kgi0OmylSq+2ddecSaejvu6FHgWXW6bTurvLZx
+ U9GaPXin7rrMpCZI93NC0tnlXKc739hdOZ27WRoBGIhqfJIMCytOu87HFlT41hg7cH4A
+ VZJGMEPj1SzVkgf51yv5heC2eBZbCDiO13jUM8XX6tKMR6FEeDiQ/J/eevDa4KO7FyWm
+ DOI+iq7PuSy0lOEBherZTtPI61gwEbVWL7tKdImypJqY9fBZWWV8Q6C5VJX/FnJvcvZ/
+ bKBB+qLpGdHQIHpNP+33N9ByV4UO0/a3h8FVIIYrwqtf9WT/11MVGOskrMNAIMPAanX9
+ 5+HA==
+X-Gm-Message-State: ANhLgQ2u2Wlagxh6eGnX/Ih2TeyXM5PZPVpoyWEZjvwwkXZWPskd0/fP
+ Ap8Yk7DKm5qUhXhFF2eeMOLN8gyGPzLK4npkQ7j1vA==
+X-Received: by 2002:a54:478b:: with SMTP id o11mr10839846oic.146.1583760525661; 
+ Mon, 09 Mar 2020 06:28:45 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: FGiG7tMDZ5MX
+References: <20200302105516.5972-1-eric.auger@redhat.com>
+ <20200302105516.5972-6-eric.auger@redhat.com>
+In-Reply-To: <20200302105516.5972-6-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 9 Mar 2020 13:28:34 +0000
+Message-ID: <CAFEAcA-XD9LiokquaHj+kCYWA3N=7k3V3R8r5gA1HZM9Adus1A@mail.gmail.com>
+Subject: Re: [PATCH v3 5/6] hw/arm/virt: kvm: Check the chosen gic version is
+ supported by the host
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::244
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Marc Zyngier <maz@kernel.org>, Andrew Jones <drjones@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Eric Auger <eric.auger.pro@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qT0ZfbJZdmJe
 
-This series is a revival of an RFC series sent in Dec 2016 [1].
-Given the amount of code and the lack of traction at that time,
-I haven't respinned until now. However a recent bug found related
-to the ITS migration convinced me that this work may deserve to be
-respinned and enhanced.
+On Mon, 2 Mar 2020 at 10:55, Eric Auger <eric.auger@redhat.com> wrote:
+>
+> Restructure the finalize_gic_version with switch cases and, in
+> KVM mode, explictly check whether the chosen version is supported
+> by the host.
+>
+> if the end-user explicitly sets v2/v3 and this is not supported by
+> the host, then the user gets an explicit error message.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Reviewed-by: Andrew Jones <drjones@redhat.com>
+>
+> ---
+>
+> v2 -> v3:
+> - explictly list V2 and V3 in the switch/case
+> - fix indent
+> ---
+>  hw/arm/virt.c | 77 +++++++++++++++++++++++++++++++++++----------------
+>  1 file changed, 53 insertions(+), 24 deletions(-)
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index eb8c57c85e..aeb6c45e51 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1542,33 +1542,62 @@ static void virt_set_memmap(VirtMachineState *vms)
+>   */
+>  static void finalize_gic_version(VirtMachineState *vms)
+>  {
+> -    if (vms->gic_version == VIRT_GIC_VERSION_HOST ||
+> -        vms->gic_version == VIRT_GIC_VERSION_MAX) {
+> -        if (!kvm_enabled()) {
+> -            if (vms->gic_version == VIRT_GIC_VERSION_HOST) {
+> -                error_report("gic-version=host requires KVM");
+> -                exit(1);
+> -            } else {
+> -                /* "max": currently means 3 for TCG */
+> -                vms->gic_version = VIRT_GIC_VERSION_3;
+> -            }
+> -        } else {
+> -            int probe_bitmap = kvm_arm_vgic_probe();
+> +    if (kvm_enabled()) {
+> +        int probe_bitmap = kvm_arm_vgic_probe();
 
-Tests exercise main ITS commands and also test migration.
-With the migration framework, we are able to trigger the
-migration from guest and that is very practical actually.
+Previously we would only do kvm_arm_vgic_probe() if the
+user asked for 'host' or 'max'. Now we do it always,
+which means that if the user is on a really old kernel
+where the CREATE_DEVICE ioctl doesn't exist then we
+will now fail if the user specifically asked for gicv2,
+where previously we (probably) would have succeeded.
+I don't think we should put too much weight on continuing
+to theoretically support ancient kernels which we're not
+actually testing against, but it does seem a bit odd to
+probe even if we don't need to know the answer.
 
-What is particular with the ITS programming is that most of
-the commands are passed through queues and there is real error
-handling. Invalid commands are just ignored and that is not
-really tester friendly.
+More relevant to actual plausible use cases, if
+kvm_irqchip_in_kernel() == false, we shouldn't be
+probing the kernel to ask what kind of GIC to use.
 
-The series can be fount at:
-https://github.com/eauger/kut/tree/its-v4
-
-Best Regards
-
-Eric
-
-History:
-v3 -> v4:
-- addressed comments from Drew and Zenghui
-- added "page_alloc: Introduce get_order()"
-- removed "arm: gic: Provide per-IRQ helper functions"
-- ITS files moved to lib64
-- and many more, see individual logs
-
-v2 -> v3:
-- fix 32b compilation
-- take into account Drew's comments (see individual diff logs)
-
-v1 -> v2:
-- took into account Zenghui's comments
-- collect R-b's from Thomas
-
-References:
-[1] [kvm-unit-tests RFC 00/15] arm/arm64: add ITS framework
-    https://lists.gnu.org/archive/html/qemu-devel/2016-12/msg00575.html
-
-Execution:
-x For other ITS tests:
-  ./run_tests.sh -g its
-
-x non migration tests can be launched invidually. For instance:
-  ./arm-run arm/gic.flat -smp 8 -append 'its-trigger'
-
-Eric Auger (13):
-  libcflat: Add other size defines
-  page_alloc: Introduce get_order()
-  arm/arm64: gic: Introduce setup_irq() helper
-  arm/arm64: gicv3: Add some re-distributor defines
-  arm/arm64: gicv3: Set the LPI config and pending tables
-  arm/arm64: ITS: Introspection tests
-  arm/arm64: ITS: its_enable_defaults
-  arm/arm64: ITS: Device and collection Initialization
-  arm/arm64: ITS: Commands
-  arm/arm64: ITS: INT functional tests
-  arm/run: Allow Migration tests
-  arm/arm64: ITS: migration tests
-  arm/arm64: ITS: pending table migration test
-
- arm/Makefile.arm64         |   1 +
- arm/Makefile.common        |   2 +-
- arm/gic.c                  | 469 +++++++++++++++++++++++++++++++++++--
- arm/run                    |   2 +-
- arm/unittests.cfg          |  38 +++
- lib/alloc_page.c           |   7 +-
- lib/alloc_page.h           |   1 +
- lib/arm/asm/gic-v3-its.h   |  39 +++
- lib/arm/asm/gic-v3.h       |  32 +++
- lib/arm/gic-v3.c           |  76 ++++++
- lib/arm/gic.c              |  34 ++-
- lib/arm/io.c               |  28 +++
- lib/arm64/asm/gic-v3-its.h | 172 ++++++++++++++
- lib/arm64/gic-v3-its-cmd.c | 463 ++++++++++++++++++++++++++++++++++++
- lib/arm64/gic-v3-its.c     | 172 ++++++++++++++
- lib/libcflat.h             |   3 +
- 16 files changed, 1510 insertions(+), 29 deletions(-)
- create mode 100644 lib/arm/asm/gic-v3-its.h
- create mode 100644 lib/arm64/asm/gic-v3-its.h
- create mode 100644 lib/arm64/gic-v3-its-cmd.c
- create mode 100644 lib/arm64/gic-v3-its.c
-
---=20
-2.20.1
+thanks
+-- PMM

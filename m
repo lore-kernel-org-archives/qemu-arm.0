@@ -1,193 +1,198 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1572484lfc;
-        Mon, 9 Mar 2020 13:47:58 -0700 (PDT)
-X-Received: by 2002:a92:6b03:: with SMTP id g3mr17210920ilc.201.1583786878064;
-        Mon, 09 Mar 2020 13:47:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583786878; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1629428lfc;
+        Mon, 9 Mar 2020 14:58:34 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuLST1wxKvAMUZ/1Qo3SoihB5vPUWxbueYacjwUzoyXLk504xVmsYIXScNBFe14CaB70kzQ
+X-Received: by 2002:a37:546:: with SMTP id 67mr16404276qkf.272.1583791114631;
+        Mon, 09 Mar 2020 14:58:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583791114; cv=none;
         d=google.com; s=arc-20160816;
-        b=YEvnwBpFVjElDPuLTIaVrKJIobl5+adm3wHHQAsn6csLrGbhoJYKJAI5K3hTeIECdM
-         hNm5vzG0o4UlZztq42WiUonEEKHkX3DCDRrit1cl/v8adCZinzUkU62JGUp15sxG8vze
-         quunAkin1+XJuBej+GPgUCNPXSVxFHXInqSRL6IUAcSk5OhxD4pUotjDyFLqt30QGQgp
-         AAul29JaNq9dxyJpH5gqXYZ1poBuV7mS3QKpJptFTWigSHVAUc5Kk4oUDo5vzCV7M1X8
-         PeybS0rSH5zbD3kEQ29zvO0qx4s3oCRL0EQnurpiPGtCrXc/YdCS+te8nH+ASuHzwhee
-         pWgQ==
+        b=Ef7a8TZJsRVZswPHSvh9Y8ricnzZ/8vC5H0AeQGmly3WmlrEQgTALpUtBAsBSimYTP
+         fAO4XyXFD3IPX5XlnD+U3gE+PV9m4KDs2cXtJeljSzQRupZS6XRx/6mKpg2aHPPIdoWB
+         GqsYh4irDGeG1qXRmsGpJztU+SP77ClCgj8aQ1/QzegWlg/cpatltSpW1MqKknn/c1G+
+         LuHK3z3meGfP6TeQEOJINvV+kP+ioFfB+I4SR7GP7qlNWzyygI99ca4SMIlFTEIdZZtW
+         ZyRtzxATXDtOpV9nrG+RKNA06I2nLh2cqfH0d/CZhuLOs+KprqTE0L8OasoLR/x4eqry
+         a4Cw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=ClDmCOXkIqwUS0OK+foMTDvWaVdbjsZ1J3i3yHgwa4Y=;
-        b=fRGkN3Tnj6SuDgb1aXETWV+Wp95CrFI/+Uy8CxtOGFzM1l7dGBe+aY22Fhl9cPe2xI
-         wIoEJtkCNZ9YErPeFVEzK+7MLsQwg3hTPN55d3lNtV3C3kYaLtGMDnoBl/+pMwGHXUVd
-         7uRD5waJj+d2nnSRM40fOlOEMbAF0uUh/OhPBU5dHfsC9+bPwf2W+UgHR6NA55H5/GfZ
-         Lx7Zd9m/nB2l1BPH0C4vAviwjrU/iUwXr6ShZDgiQwGXfy4+up61ykOo8OQjuH+eg8XG
-         OGlLTOYIiTiVW9MLEds7tAsho7lAs9PMlCJ6s1lvYaEMEKvFcLqoVnjYWYWjU/L73D79
-         zaLA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=I+5a9zEgMMFR0bDZiCYRjxV9Bygk+g13EGfEiLMSujY=;
+        b=PUr8xbBU5r88OioKa1qTm5zJn1fFWxDns16OXUD/r/lPxTDJBpDeI+n4zAEeWoCTDQ
+         4kmqYfG9iHeVWURHtz+opSQ+Vz1tzdSKZ9bWAOmJfMlG06+h1uzvJV4ijcnFJV41jYyB
+         /C7RI/TtEw+A9RqtgO2aOkfH2eQVqR+uPIO4w1mIceqnNjfftEZihsnsl/GoLH5aig8K
+         2KoAp8a4tX/MrnlTew3PnQrmQm+mO0XYjuRlHxDVJtzCIyzBPC1eFWvJkfqTNFcLuLzG
+         7d8iuoQggy4xLaEPJImcW2a7jCZjKlqgkaPqP+FHlSYbGBxJsK23Ly2WS4W/7s4yBRsl
+         rqcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Mgdk4T88;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id x6sor8736873ilm.86.2020.03.09.13.47.57
-        (Google Transport Security);
-        Mon, 09 Mar 2020 13:47:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NSMFt2rM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 2si2988366qks.88.2020.03.09.14.58.34
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 09 Mar 2020 14:58:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Mgdk4T88;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=ClDmCOXkIqwUS0OK+foMTDvWaVdbjsZ1J3i3yHgwa4Y=;
-        b=Mgdk4T88XigrkH2+AnADnu4SOCuUfl5/mU4s1Mg1bDbl2A1ZOtGJJ4d2V3wEFwNR85
-         mjAYHktatIYlqbaEw54Peh8C/dXfokJ5/VImGWB3wyrooxt9KosIQKJSRt3/6oeUJmIw
-         LenvpvthLOVwyZRPjazsncPigLETqNA+sV8Jhg+AXWgcFeK5eihXelUcJykTMnKJp5rA
-         00eRuXFh+qrdZ4ujc8GUujymLHw076jbh7eCaDwOldecNHRs6zVQqs9HmtUQ4WzglFI0
-         FmfEi2ZL2r4jZJPxyCnuR1cCVCdWLXd1B3PNCU6IepY7afOYaC8G24N5eWCJsSLtOubX
-         s1cQ==
+       dkim=pass header.i=@linaro.org header.s=google header.b=NSMFt2rM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50284 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jBQPx-0003BE-SQ
+	for alex.bennee@linaro.org; Mon, 09 Mar 2020 17:58:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46785)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1jBQPo-0003AC-1m
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 17:58:25 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1jBQPm-0005cj-PH
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 17:58:23 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:51202)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jBQPm-0005bD-Jk
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 17:58:22 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id a132so1209515wme.1
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2020 14:58:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=I+5a9zEgMMFR0bDZiCYRjxV9Bygk+g13EGfEiLMSujY=;
+ b=NSMFt2rMi1DKZ+ESjSQfMbWSAEKiLzndHEKXIUCvpzHXfcaObj11OHNMyaBsdwbsQW
+ jKblpArBHezoNI88URb0UcTDaUBt6Q4od9/f6sezMdIoxTax7pPncCML7IOt2zSslATB
+ 1nkJ5CcowWJNyy/bIiBlEl5bQMoG0AwSuuNYxdknVVY6pYuRcYvM8qHs5eeP5PEqnXzt
+ ZjwkSwdtfPQ4nD4VHqSXPBPoLjTox291yD7N9WBZEs21LYNulVj2lIZ/FQ+LZM7wrUYv
+ M/nyMAtj7UiQofFisu2D6IAXv3DwQe4pMVNPI22hqlbcnqoOIYmKTwlJXLllUZw3lQdx
+ WDlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=ClDmCOXkIqwUS0OK+foMTDvWaVdbjsZ1J3i3yHgwa4Y=;
-        b=SfefCIVm132XZllB37uYga96nHNrJKWU9XEL9wFSOFUJJcTxpmt7n9f36fTNeh42aQ
-         kMKOQDkEfquLh95vvYkvgmTM9JZ7Ly35Cpf9j1e/5oB2RGV+Jh1QhiKporv5ck56sk/C
-         hdtwWOXGLY6eYdyHLfxz/tJX1g/ZJcpQktE6Mf140cf9siLgjKR1E4sFo7s9BhZ3xZt/
-         ZpsNhK4yEjc2PI3BFqr9LD9rwy3uy9cN7+SgrVkjQ58Hkm9ap/w8wIaH/TLIGSDNmkz4
-         Jh0lU7h/Q61c8Zg18TCU6XYhIW8bi9F7M2q+6/7JRE2FjPjbYOzaGNFskFofrykoENO0
-         uWaA==
-X-Gm-Message-State: ANhLgQ2bUai4Y2SxcNLr0E4k+vJKLmT+IBX1pyzq7awW2/wgTOtkGY6W
-	wYtFFFqoSeMEZLPKAcjhbDVf9MIfkHkOacGEmN8FEw==
-X-Google-Smtp-Source: ADFU+vvbd4JGzatVFvHKi91xnfeFyS3z8obA05VJncM1wvffC1cqudEVIcxc6jFFBsODveCbcHMal5PfYFwlfyF06FA=
-X-Received: by 2002:a92:d3c7:: with SMTP id c7mr2760951ilh.265.1583786877495;
- Mon, 09 Mar 2020 13:47:57 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=I+5a9zEgMMFR0bDZiCYRjxV9Bygk+g13EGfEiLMSujY=;
+ b=fRl1huPKOgfn0O1OTP/+ta75dbSlu/TvG04297qifpguS7ZNSEpX3diDBFw3h+ZTiK
+ uMGzXutf+ja4cA+ov6M7Jza4WW6f/a5yFQ2wxX16onIiulEMusSdVlrau+p+08Xb8ekf
+ VPVT0aP2+2nd6WzuFGCdMZkqTOEvz+CsTa8ET8Qc2LjWI+y9e41/UADUJgoasJtuQ22Z
+ lmpkuLDlmhfUWcwMJTAuhUgy1SEcHm96CrkCA7aJ5M+4FdUKMaec5YdLCtkzSuz9yv+E
+ B9bsHcZPqkdIgZPxc66WAnHAEvBxzwDrEsCR30erfX8yynQsBNyCqKXoLIg59i8FYoyF
+ sfyA==
+X-Gm-Message-State: ANhLgQ3cOiWYVb2L3ocJwtPbdAHCbaDWrysD9ODROwQaaakOu4cnOWZ1
+ AKvgr1gM9c4rpjUyncd39YknQy9tWogMMg==
+X-Received: by 2002:a1c:e442:: with SMTP id b63mr1267839wmh.174.1583791101100; 
+ Mon, 09 Mar 2020 14:58:21 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id f17sm42207068wrm.3.2020.03.09.14.58.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 09 Mar 2020 14:58:20 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 0/5] docs/system: Split target-arm.rst
+Date: Mon,  9 Mar 2020 21:58:13 +0000
+Message-Id: <20200309215818.2021-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20200301215029.15196-1-nieklinnenbank@gmail.com>
- <20200301215029.15196-19-nieklinnenbank@gmail.com> <871rq876h3.fsf@linaro.org>
- <CAPan3WrNnrnngwE4pGeYpR9HS7Vr936-ojPZZovNo8ZdoAA0sg@mail.gmail.com>
- <CAFEAcA_6Lm-JwbXFLWeetc7+fhnrc5m2+YU28ymFw0MSoKOhwg@mail.gmail.com>
- <CAPan3Wo2Nf_d4AxsV5=sfOxv66rmQNfN==rpMn9=FtM5cZG9rw@mail.gmail.com>
- <CAFEAcA-2-tz7F1vmbggpLnc1SSX+_W5pij-w8Vgjx+vqr-LRUA@mail.gmail.com>
- <CAPan3Wr-oS-QRxmCDPXLRBG81yqjnp56B2WNuxtBMOxr2b9D6A@mail.gmail.com> <CAFEAcA_rY1hXNbzsj6EJvKzODX_EWdTOK1Gfxi2Jbv+UsYxRtQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA_rY1hXNbzsj6EJvKzODX_EWdTOK1Gfxi2Jbv+UsYxRtQ@mail.gmail.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Mon, 9 Mar 2020 21:47:46 +0100
-Message-ID: <CAPan3Wq8GZWRrKo3tBuz+jqttSTg_qeW7AfJEBLMasjBROOF1w@mail.gmail.com>
-Subject: Re: [PATCH v6 18/18] docs: add Orange Pi PC document
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	Beniamino Galvani <b.galvani@gmail.com>, Jason Wang <jasowang@redhat.com>, 
-	Igor Mammedov <imammedo@redhat.com>
-Content-Type: multipart/alternative; boundary="0000000000003baf6305a0721ea3"
-X-TUID: OAgdyaaY4j/u
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::32b
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Niek Linnenbank <nieklinnenbank@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6jrwMN6Ocf3o
 
---0000000000003baf6305a0721ea3
-Content-Type: text/plain; charset="UTF-8"
+This patchseries splits the 'target-arm.rst' file in the System
+manual into one file per board or family of boards.  It's not
+sensible for us to document all 50-odd boards in a single enormous
+page, and the split will encourage more detailed and useful per-board
+information.
 
-On Mon, Mar 9, 2020 at 9:12 PM Peter Maydell <peter.maydell@linaro.org>
-wrote:
+The impetus for doing this split is that it gives somewhere for the
+documentation for the upcoming Orangepi board model to live.  It also
+means we can move arm-cpu-features.rst out of being an orphan unused
+file in the docs/ directory.
 
-> On Mon, 9 Mar 2020 at 20:05, Niek Linnenbank <nieklinnenbank@gmail.com>
-> wrote:
-> > Ah now I see what is going on here. So the new rst files are ment to
-> automatically generate
-> > documentation in various formats using the Python sphinx tool, correct?
->
-> Yep. Assuming you have Sphinx installed, "make" should build the
-> documentation as well as the executables (ie you don't need
-> specifically 'make html').
->
-> > I played around a bit with running 'make html' and using the include
-> directive you suggested in
-> > the target-arm.rst file like:
-> >
-> >   .. include:: orangepi.rst
->
-> I'm currently writing a patchset which splits the existing
-> target-arm.rst into a bunch of per-board files in
-> docs/system/arm/. If that patchset goes in before you
-> roll the next verison of the series then it should
-> just be a matter of putting orangepi.rst in the
-> docs/system/arm/ directory and adding a line to the
-> table-of-contents in docs/system/target-arm.rst.
->
+I've also added some of the text I originally wrote for the wiki as a
+general introduction to the Arm system emulation and to how to choose
+a board model, plus some apologetic text about how most of our boards
+are undocumented.
 
-Ah yes, that makes sense indeed. I'll keep an eye out for your new patchset.
+The last patch in this series smooths out an inconsistency in how we
+spell 'Arm' (there was a corporate rebranding back in 2017, so we
+have a mix of old-style 'ARM' and new-style 'Arm'); I don't feel very
+strongly about this but the inconsistency did look a bit odd in some
+of the docs that this series moves around, and it was 5 minutes work
+to make docs/ consistent on one style.
 
+Side notes:
+ (1) I still think it would be nice to be able to generate some of
+this from doc comments and/or the board declaration macros; that
+would be definitely not 5.0 material, though
 
-> If you're ready to send out the next version before that,
-> then leave it with the include:: directive and we can
-> fix it up to the new structure later.
->
+ (2) Anybody want to tackle the target-x86 part?  There's a
+docs/microvm.rst which would naturally live in
+docs/system/x86/microvm.rst if target-x86.rst was restructured along
+the same lines as this series, but it would need something
+writing for the other x86 machine types...
 
-OK Peter!
-
-Regards,
-Niek
+thanks
+-- PMM
 
 
+Peter Maydell (5):
+  Makefile: Allow for subdirectories in Sphinx manual dependencies
+  docs/system: Split target-arm.rst into sub-documents
+  docs/system/target-arm.rst: Add some introductory text
+  docs: Move arm-cpu-features.rst into the system manual
+  docs: Be consistent about capitalization of 'Arm'
 
-> thanks
-> -- PMM
->
-
+ docs/can.txt                                  |   2 +-
+ docs/devel/atomics.txt                        |   2 +-
+ docs/devel/multi-thread-tcg.txt               |   8 +-
+ docs/replay.txt                               |   2 +-
+ docs/specs/fw_cfg.txt                         |   2 +-
+ Makefile                                      |   2 +-
+ MAINTAINERS                                   |   9 +
+ docs/devel/kconfig.rst                        |   2 +-
+ docs/devel/loads-stores.rst                   |   2 +-
+ docs/devel/tcg.rst                            |   2 +-
+ docs/specs/tpm.rst                            |   6 +-
+ .../arm/cpu-features.rst}                     |  12 +-
+ docs/system/arm/integratorcp.rst              |  16 +
+ docs/system/arm/musicpal.rst                  |  19 ++
+ docs/system/arm/nseries.rst                   |  33 ++
+ docs/system/arm/palm.rst                      |  23 ++
+ docs/system/arm/realview.rst                  |  34 ++
+ docs/system/arm/stellaris.rst                 |  26 ++
+ docs/system/arm/sx1.rst                       |  18 ++
+ docs/system/arm/versatile.rst                 |  29 ++
+ docs/system/arm/xscale.rst                    |  29 ++
+ docs/system/target-arm.rst                    | 295 +++++-------------
+ docs/user/main.rst                            |   8 +-
+ 23 files changed, 340 insertions(+), 241 deletions(-)
+ rename docs/{arm-cpu-features.rst => system/arm/cpu-features.rst} (98%)
+ create mode 100644 docs/system/arm/integratorcp.rst
+ create mode 100644 docs/system/arm/musicpal.rst
+ create mode 100644 docs/system/arm/nseries.rst
+ create mode 100644 docs/system/arm/palm.rst
+ create mode 100644 docs/system/arm/realview.rst
+ create mode 100644 docs/system/arm/stellaris.rst
+ create mode 100644 docs/system/arm/sx1.rst
+ create mode 100644 docs/system/arm/versatile.rst
+ create mode 100644 docs/system/arm/xscale.rst
 
 -- 
-Niek Linnenbank
+2.20.1
 
---0000000000003baf6305a0721ea3
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Mar 9, 2020 at 9:12 PM Peter =
-Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linar=
-o.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
-rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
-1ex">On Mon, 9 Mar 2020 at 20:05, Niek Linnenbank &lt;<a href=3D"mailto:nie=
-klinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt; w=
-rote:<br>
-&gt; Ah now I see what is going on here. So the new rst files are ment to a=
-utomatically generate<br>
-&gt; documentation in various formats using the Python sphinx tool, correct=
-?<br>
-<br>
-Yep. Assuming you have Sphinx installed, &quot;make&quot; should build the<=
-br>
-documentation as well as the executables (ie you don&#39;t need<br>
-specifically &#39;make html&#39;).<br>
-<br>
-&gt; I played around a bit with running &#39;make html&#39; and using the i=
-nclude directive you suggested in<br>
-&gt; the target-arm.rst file like:<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0.. include:: orangepi.rst<br>
-<br>
-I&#39;m currently writing a patchset which splits the existing<br>
-target-arm.rst into a bunch of per-board files in<br>
-docs/system/arm/. If that patchset goes in before you<br>
-roll the next verison of the series then it should<br>
-just be a matter of putting orangepi.rst in the<br>
-docs/system/arm/ directory and adding a line to the<br>
-table-of-contents in docs/system/target-arm.rst.<br></blockquote><div><br><=
-/div><div>Ah yes, that makes sense indeed. I&#39;ll keep an eye out for you=
-r new patchset.<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote"=
- style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);p=
-adding-left:1ex">
-If you&#39;re ready to send out the next version before that,<br>
-then leave it with the include:: directive and we can<br>
-fix it up to the new structure later.<br></blockquote><div><br></div><div>O=
-K Peter!<br></div><div>=C2=A0</div><div>Regards,</div><div>Niek<br></div><d=
-iv><br></div><div><br></div><blockquote class=3D"gmail_quote" style=3D"marg=
-in:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1e=
-x">
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
-
---0000000000003baf6305a0721ea3--

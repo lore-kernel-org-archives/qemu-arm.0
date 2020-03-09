@@ -1,114 +1,121 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1490613lfc;
-        Mon, 9 Mar 2020 12:18:08 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vteLu93fU8jciRYQmDJYhonq5+s+UOamUZRLwUL/sM8iq+O+YinkBqExgmC2cmtTYkbocjZ
-X-Received: by 2002:a05:620a:9d5:: with SMTP id y21mr9808005qky.427.1583781488811;
-        Mon, 09 Mar 2020 12:18:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583781488; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1502414lfc;
+        Mon, 9 Mar 2020 12:31:01 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuDfekgRMwMmgh4IDedNIw6Y7aa3H454qodNLW0sHtX+HfeQLoo3uVH1YRbTyqCCYXLm0Cq
+X-Received: by 2002:aed:3a89:: with SMTP id o9mr5217532qte.375.1583782261152;
+        Mon, 09 Mar 2020 12:31:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583782261; cv=none;
         d=google.com; s=arc-20160816;
-        b=bBgbGYmi/bq+G5c9Nfm0lB5ENjf8RCry4yiGKmNnaijGXoDwJMNtL1z1GsggTd1/zg
-         oa03g1gO1n3UFTzDL36VzzvOQaRVFbPX2I9SxQ2SjJ1EkmbmLwhLuMpvfL7WYv6ATqAP
-         Pdc0uGs7zf2KSvQMpQemw8XYRvRUYe2+1f5nxMGrYJNhQb2UjNaa+H3G0SxaoMfNgkL4
-         Q6Rlbl4Rv1kiyYioYcNf/2UD6aJdH5c6ISvHWr+zWg1AompLK+m0twMCd5tkEOIssYH9
-         Hubp/ActCa8MEJwu3dZQ55xSvnKK0RBfDXYD7QOHp7GBEtK0tgfNr4/Ra4NjE2DyBWQg
-         iH/A==
+        b=jWWx9pOFMEZhIGVHUGle/iqirhbJltcZ1LYvhzWMo+t1o6uuY3Ni+TTHBr2wHKJa4N
+         cfxxr43CQlIPpVWMq3tde+EdFGtU8MBWfWBQlAeKGtVEqIWA8dj4AmTNeSmx9GjMMR4X
+         cQ8AlsfHaoGvxIijiWQm/Onba7psCHunGdygTjKqoYMpV7eldRuonwmY51KDmQsqfvd3
+         GILH3hgxaBCC79cg0NuKglx8ufxnUAVfIDL0oNt2I4g89ZoE5hyqJfUR6zTxMFper7D1
+         7/sydLkoKaFVMvaSftD9JVaECadwL8FRT3fDahm6BBSVIikR6XoKLlC8EKJJ4CMZTSQ8
+         MN7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=KN5Lztumt4MT507GNyJ7s1Z0S9UNEQ0wlWNZR4FSe4M=;
-        b=dusSWQJR2+NDTQ1JMT0SibYb4xDX0rQ6DC9gHqmwuRJ6Cd9UUSGc+J3nfouDQ1HTgw
-         NG17fMa3h6Ux/vDtdmFzyAVwqVp2vcIVJTM8CLv/Nm9Uf2XwihhqSCBNekmmpDOT3wiu
-         N4VxGMCq+m3g2E1vi26T69ZeWTIED1de61hhMFTrAj6fLunS4bxHlOJGHOQ1KBOSFegO
-         Fgo81ZxcqfIfq2qIYytqtTAsY3l8A7g4fxx3fWQ1e7CC5jR2DM5m1V416BnbzBFBlL/g
-         6Ki/ObkcGWggyHtjNwGJ50pZQYU3jGQjUnmQBJxpJRPFTG0j57kvlz/KDIhF+VqH2kaz
-         7i2A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=KgSJZz+7N/XmtB00LpHxgmUeu7UHgxPmmEpXRLIPeGI=;
+        b=zzBnw2r16FA1upN6nEMMYwBsCd/2okp9HNOcUxaL4WprISXFoWZFjp8khXPwBNxbYX
+         ZmN8C3Cf6Jjr19TMU0hfKZHljy/sNDMDhj11duvuOmKOX6JJ+PPQ8/NHEQSU4Jv5rxoq
+         h1a0fbM0pCi9M885JEUo2QiGJwBnmxxJFiNRKLQ2z7vWTiC5d+x6J+oQXvx2Gf5kD0Xo
+         MUQ/znK/wm5wQoUkthMRS5latHFwE3RZr8Iw2zl8xr3kHht6mo1kQgbx1LyIoX5wz4GJ
+         je7h3/8ScbDZk1bQR+21XQ4ZsUcyiF9+ssMzbJONifGv9dq0z0b35FGawUnlRQ0sZIPL
+         4F7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RD0HioCP;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WQuKtjPC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c18si1357018qko.51.2020.03.09.12.18.08
+        by mx.google.com with ESMTPS id x7si6722664qkj.22.2020.03.09.12.31.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Mar 2020 12:18:08 -0700 (PDT)
+        Mon, 09 Mar 2020 12:31:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RD0HioCP;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WQuKtjPC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48324 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48560 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBNui-0003jD-6X
-	for alex.bennee@linaro.org; Mon, 09 Mar 2020 15:18:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48924)
+	id 1jBO7A-0001zN-H0
+	for alex.bennee@linaro.org; Mon, 09 Mar 2020 15:31:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51675)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mst@redhat.com>) id 1jBNuZ-0003iw-F3
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 15:18:00 -0400
+ (envelope-from <philmd@redhat.com>) id 1jBO70-0001wp-PO
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 15:30:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mst@redhat.com>) id 1jBNuX-00063q-Rf
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 15:17:59 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:46101
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1jBO6z-0006Vl-42
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 15:30:50 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:50717
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mst@redhat.com>) id 1jBNuX-000630-CJ
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 15:17:57 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jBO6z-0006Uy-0Y
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 15:30:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583781476;
+ s=mimecast20190719; t=1583782248;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KN5Lztumt4MT507GNyJ7s1Z0S9UNEQ0wlWNZR4FSe4M=;
- b=RD0HioCPrv/LmtuaqSSqGTI9TVdpWs5TIsaa55d7+I7hby8lBW1LFvOLMBvKVQWIcgvE9x
- hR4rGEUXC6sxSHdsgV+pzLMaVPzLql3FHzdJPAn9ZLrtb7U1bJTXeTcCXMewj0eUiwG1yo
- bQkGr+4PhlNNttWziIwBgsD4Knujl2A=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-330-b1CSqtgIMdiuQFzYsGmaYg-1; Mon, 09 Mar 2020 15:17:54 -0400
-X-MC-Unique: b1CSqtgIMdiuQFzYsGmaYg-1
-Received: by mail-qv1-f70.google.com with SMTP id v2so7204113qvi.6
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2020 12:17:54 -0700 (PDT)
+ bh=KgSJZz+7N/XmtB00LpHxgmUeu7UHgxPmmEpXRLIPeGI=;
+ b=WQuKtjPCKQ/IVko2BCpKD2S9mrhybssIfkmVWMmvX+o/tINA5TtjhrgtYmiutClIJ+2UL5
+ LGr2inlTs3btXDvlRMtkHegyXg61FIQwNz9uKHLqcG4OARoxc5lYdUml69wGG7zjRaldtN
+ gcTOWyqfGPqnaVT1+BDJPIp8/zM9NZY=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-424-h8NlK40ROU6K5rdWBTAlJg-1; Mon, 09 Mar 2020 15:30:46 -0400
+X-MC-Unique: h8NlK40ROU6K5rdWBTAlJg-1
+Received: by mail-ed1-f69.google.com with SMTP id ce13so3353375edb.11
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2020 12:30:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=duaZiTgTxNvQrcdo/ncFZBotrmtLMlOJLCKEjcPeZ+k=;
- b=uUJOzqevcN4KP2eoPxUex07tG/ny73od7B4QLPpOKyr2mZblMpxlxmlBCcYpERX042
- nindhd04u1ImJzcd07Qw0qO7ESA5+YBUnSxZMkHFzkGAhXMXb6wmSUHkhL3eOiETWvMF
- 6yu6dutepXpPTtBLyQe7fqGGuIHhUSl5PE42JhvZ/WGlT0JG6Rl0UVfqPypC7GPVOpUO
- qsZ6pUDDD0+Gznrf87n6I9ojzp0tn03Q6ZR4iiz+ieYcfKXyTSSEoAfSZEIEgGWwdYLt
- f0O3UH5cAyJ1MfxWvgf3vHpUofydXEFrr7kQW7iQULniAI3NOghd2G1LKsjnGswkCZ9f
- 8tJA==
-X-Gm-Message-State: ANhLgQ0siuiQtzsWpqtFgRaOxmLri5GhOV+S8TKz9Dg2gdPMM0p1lCiL
- jc8NodWKmZBEz5PNjSLAqwL6DtqrJnFOUF/6V3DzETFDclB2DlbMWhfa40Ri4vqYiiSeftdJf3V
- hhqyCPrg+n0Yq
-X-Received: by 2002:a0c:8402:: with SMTP id l2mr15434787qva.227.1583781474267; 
- Mon, 09 Mar 2020 12:17:54 -0700 (PDT)
-X-Received: by 2002:a0c:8402:: with SMTP id l2mr15434739qva.227.1583781473955; 
- Mon, 09 Mar 2020 12:17:53 -0700 (PDT)
-Received: from redhat.com (bzq-79-178-2-19.red.bezeqint.net. [79.178.2.19])
- by smtp.gmail.com with ESMTPSA id r46sm6835526qtb.87.2020.03.09.12.17.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Mar 2020 12:17:53 -0700 (PDT)
-Date: Mon, 9 Mar 2020 15:17:44 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Laurent Vivier <laurent@vivier.eu>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=U5+hxV+pTb4wFwWjLPVekY2Ubg939vPBJHcCEcGKxmE=;
+ b=pdYBBlOt5eDrxREFqaVeLh1FH+85rz7UJ+y7vGvGvC0YVjHtokalc3LEOfTx2hsg7h
+ 1rRLnWgJ8APlYzdlR13zu3+Vq1qcgtyJyv1JOF31YfwELZWw/4uC5YOHq0i/xfRrtrrE
+ 1mxMyI94APUEH1L7VtxihpY0U7HH5a/uuKmSGgkUOPlI1xX0sAmSRO0F1O5xjKrPGQJI
+ dDNIXRLGjSAzzeuOXMtus+m4PCb3OLSHJHdtmTpFPAUhnnSWZ1LwCl5neH3zlMT02gjx
+ 64EQAIaxb1phs/E4MfyFKa+9RFcv6c20D8VxCrojhS4nmYbCnEj0W6lWD3hQFW+rKA3K
+ 5IUQ==
+X-Gm-Message-State: ANhLgQ3DgFJjWeu3R5ZohPntSKwcoCL3rwPLPwQjxfLiJJOVf/V31nzU
+ RMohdGi90XfWi4jJnsx89q2ZqFidEoxo5GIsd6/4naiY7eVBZKiSYl9ffilFSyugT+d9e7GeDIS
+ KNIyC4tTR0jqh
+X-Received: by 2002:a05:6402:b71:: with SMTP id
+ cb17mr2188476edb.190.1583782245485; 
+ Mon, 09 Mar 2020 12:30:45 -0700 (PDT)
+X-Received: by 2002:a05:6402:b71:: with SMTP id
+ cb17mr2188423edb.190.1583782245110; 
+ Mon, 09 Mar 2020 12:30:45 -0700 (PDT)
+Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net.
+ [88.21.205.47])
+ by smtp.gmail.com with ESMTPSA id h17sm1137078ejc.11.2020.03.09.12.30.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 09 Mar 2020 12:30:44 -0700 (PDT)
 Subject: Re: [PULL 00/33] Trivial branch patches
-Message-ID: <20200309151621-mutt-send-email-mst@kernel.org>
+To: "Michael S. Tsirkin" <mst@redhat.com>, Laurent Vivier
+ <laurent@vivier.eu>, Stefan Hajnoczi <stefanha@redhat.com>
 References: <20200309150837.3193387-1-laurent@vivier.eu>
+ <20200309151621-mutt-send-email-mst@kernel.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <8db36062-b45d-6c2e-c7d8-98dd2b9db06f@redhat.com>
+Date: Mon, 9 Mar 2020 20:30:40 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200309150837.3193387-1-laurent@vivier.eu>
+In-Reply-To: <20200309151621-mutt-send-email-mst@kernel.org>
+Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -126,140 +133,145 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
  qemu-trivial@nongnu.org, Helge Deller <deller@gmx.de>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Alistair Francis <alistair@alistair23.me>, Greg Kurz <groug@kaod.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, Andrzej Zaborowski <balrogg@gmail.com>,
- Max Reitz <mreitz@redhat.com>, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, Alistair Francis <alistair@alistair23.me>,
+ Greg Kurz <groug@kaod.org>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Kevin Wolf <kwolf@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Max Reitz <mreitz@redhat.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
  Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AtPiyoKBdD/k
+X-TUID: VVrUB9L3foW6
 
-On Mon, Mar 09, 2020 at 04:08:04PM +0100, Laurent Vivier wrote:
-> The following changes since commit 7a5853cec479a448edae0fb2aaf4e2f78c9c77=
-4d:
+On 3/9/20 8:17 PM, Michael S. Tsirkin wrote:
+> On Mon, Mar 09, 2020 at 04:08:04PM +0100, Laurent Vivier wrote:
+>> The following changes since commit 7a5853cec479a448edae0fb2aaf4e2f78c9c7=
+74d:
+>>
+>>    Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into sta=
+ging (2020-03-09 10:32:53 +0000)
+>>
+>> are available in the Git repository at:
+>>
+>>    git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+>>
+>> for you to fetch changes up to 916c92503bd5348a33e561db600d8894bde636bb:
+>>
+>>    monitor/hmp-cmds: Remove redundant statement in hmp_rocker_of_dpa_gro=
+ups() (2020-03-09 15:59:31 +0100)
 >=20
->   Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into stagi=
-ng (2020-03-09 10:32:53 +0000)
 >=20
-> are available in the Git repository at:
->=20
->   git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
->=20
-> for you to fetch changes up to 916c92503bd5348a33e561db600d8894bde636bb:
->=20
->   monitor/hmp-cmds: Remove redundant statement in hmp_rocker_of_dpa_group=
-s() (2020-03-09 15:59:31 +0100)
+> Could you avoid CC everyone involved on the whole PULL req?
+> I was involved in a patch or two and don't really need to see
+> the whole series. Just the cover and the relevant patches
+> would be enough - if I do want it there's always lore.
 
+I suppose Laurent used git-publish, which has this limitation.
 
-Could you avoid CC everyone involved on the whole PULL req?
-I was involved in a patch or two and don't really need to see
-the whole series. Just the cover and the relevant patches
-would be enough - if I do want it there's always lore.
-
-
-> ----------------------------------------------------------------
-> - includes cleanup
-> - reduce .data footprint
-> - fix warnings reported by Clang static code analyzer
-> - fix dp8393x part lost in merge
-> - update git.orderfile and rules.mak
 >=20
-> ----------------------------------------------------------------
+>> ----------------------------------------------------------------
+>> - includes cleanup
+>> - reduce .data footprint
+>> - fix warnings reported by Clang static code analyzer
+>> - fix dp8393x part lost in merge
+>> - update git.orderfile and rules.mak
+>>
+>> ----------------------------------------------------------------
+>>
+>> Chen Qun (7):
+>>    block/stream: Remove redundant statement in stream_run()
+>>    block/file-posix: Remove redundant statement in raw_handle_perm_lock(=
+)
+>>    dma/xlnx-zdma: Remove redundant statement in zdma_write_dst()
+>>    scsi/scsi-disk: Remove redundant statement in
+>>      scsi_disk_emulate_command()
+>>    display/pxa2xx_lcd: Remove redundant statement in
+>>      pxa2xx_palette_parse()
+>>    display/exynos4210_fimd: Remove redundant statement in
+>>      exynos4210_fimd_update()
+>>    monitor/hmp-cmds: Remove redundant statement in
+>>      hmp_rocker_of_dpa_groups()
+>>
+>> Eric Blake (1):
+>>    maint: Include top-level *.rst files early in git diff
+>>
+>> Finn Thain (1):
+>>    dp8393x: Mask EOL bit from descriptor addresses, take 2
+>>
+>> Pan Nengyuan (1):
+>>    core/qdev: fix memleak in qdev_get_gpio_out_connector()
+>>
+>> Philippe Mathieu-Daud=C3=A9 (23):
+>>    build-sys: Move the print-variable rule to rules.mak
+>>    hw/audio/fmopl: Fix a typo twice
+>>    hw/net/e1000: Add readops/writeops typedefs
+>>    hw/net/e1000: Move macreg[] arrays to .rodata to save 1MiB of .data
+>>    virtfs-proxy-helper: Make the helper_opts[] array const
+>>    vl: Add missing "hw/boards.h" include
+>>    hw/southbridge/ich9: Removed unused headers
+>>    hw/i386/ioapic_internal: Remove unused "hw/i386/ioapic.h" header
+>>    hw/timer: Remove unused "ui/console.h" header
+>>    hw/usb/dev-storage: Remove unused "ui/console.h" header
+>>    hw/i386/intel_iommu: Remove unused includes
+>>    hw/alpha/alpha_sys: Remove unused "hw/ide.h" header
+>>    hw/alpha/dp264: Include "net/net.h"
+>>    hw/hppa/machine: Include "net/net.h"
+>>    hw/acpi/cpu_hotplug: Include "hw/pci/pci.h"
+>>    hw/timer/hpet: Include "exec/address-spaces.h"
+>>    hw/pci-host/q35: Include "qemu/range.h"
+>>    hw/i2c/smbus_ich9: Include "qemu/range.h"
+>>    hw/pci-host/piix: Include "qemu/range.h"
+>>    hw/acpi: Include "hw/mem/nvdimm.h"
+>>    hw/i386: Include "hw/mem/nvdimm.h"
+>>    hw/pci-host/q35: Remove unused includes
+>>    hw/i386/pc: Clean up includes
+>>
+>>   Makefile                          |  3 ---
+>>   block/file-posix.c                |  1 -
+>>   block/stream.c                    |  3 +--
+>>   fsdev/virtfs-proxy-helper.c       |  2 +-
+>>   hw/acpi/cpu_hotplug.c             |  1 +
+>>   hw/acpi/ich9.c                    |  2 +-
+>>   hw/acpi/piix4.c                   |  1 +
+>>   hw/alpha/alpha_sys.h              |  1 -
+>>   hw/alpha/dp264.c                  |  1 +
+>>   hw/audio/fmopl.c                  |  4 ++--
+>>   hw/core/qdev.c                    |  2 +-
+>>   hw/display/exynos4210_fimd.c      |  1 -
+>>   hw/display/pxa2xx_lcd.c           |  1 -
+>>   hw/dma/xlnx-zdma.c                | 10 +++++-----
+>>   hw/hppa/machine.c                 |  1 +
+>>   hw/i2c/smbus_ich9.c               |  1 +
+>>   hw/i386/acpi-build.c              |  1 +
+>>   hw/i386/pc.c                      |  1 +
+>>   hw/i386/pc_piix.c                 |  1 +
+>>   hw/i386/pc_q35.c                  |  1 +
+>>   hw/isa/lpc_ich9.c                 |  1 -
+>>   hw/net/dp8393x.c                  |  4 ++--
+>>   hw/net/e1000.c                    |  6 ++++--
+>>   hw/net/e1000e_core.c              |  6 ++++--
+>>   hw/pci-host/i440fx.c              |  1 +
+>>   hw/pci-host/q35.c                 |  1 +
+>>   hw/rtc/twl92230.c                 |  1 -
+>>   hw/scsi/scsi-disk.c               |  1 -
+>>   hw/timer/hpet.c                   |  2 +-
+>>   hw/usb/dev-storage.c              |  1 -
+>>   include/hw/i386/ich9.h            |  1 -
+>>   include/hw/i386/intel_iommu.h     |  4 ----
+>>   include/hw/i386/ioapic_internal.h |  1 -
+>>   include/hw/i386/pc.h              | 11 +++--------
+>>   include/hw/pci-host/q35.h         |  8 +-------
+>>   monitor/hmp-cmds.c                |  5 +----
+>>   rules.mak                         |  3 +++
+>>   scripts/git.orderfile             |  1 +
+>>   softmmu/vl.c                      |  1 +
+>>   39 files changed, 43 insertions(+), 55 deletions(-)
+>>
+>> --=20
+>> 2.24.1
 >=20
-> Chen Qun (7):
->   block/stream: Remove redundant statement in stream_run()
->   block/file-posix: Remove redundant statement in raw_handle_perm_lock()
->   dma/xlnx-zdma: Remove redundant statement in zdma_write_dst()
->   scsi/scsi-disk: Remove redundant statement in
->     scsi_disk_emulate_command()
->   display/pxa2xx_lcd: Remove redundant statement in
->     pxa2xx_palette_parse()
->   display/exynos4210_fimd: Remove redundant statement in
->     exynos4210_fimd_update()
->   monitor/hmp-cmds: Remove redundant statement in
->     hmp_rocker_of_dpa_groups()
->=20
-> Eric Blake (1):
->   maint: Include top-level *.rst files early in git diff
->=20
-> Finn Thain (1):
->   dp8393x: Mask EOL bit from descriptor addresses, take 2
->=20
-> Pan Nengyuan (1):
->   core/qdev: fix memleak in qdev_get_gpio_out_connector()
->=20
-> Philippe Mathieu-Daud=E9 (23):
->   build-sys: Move the print-variable rule to rules.mak
->   hw/audio/fmopl: Fix a typo twice
->   hw/net/e1000: Add readops/writeops typedefs
->   hw/net/e1000: Move macreg[] arrays to .rodata to save 1MiB of .data
->   virtfs-proxy-helper: Make the helper_opts[] array const
->   vl: Add missing "hw/boards.h" include
->   hw/southbridge/ich9: Removed unused headers
->   hw/i386/ioapic_internal: Remove unused "hw/i386/ioapic.h" header
->   hw/timer: Remove unused "ui/console.h" header
->   hw/usb/dev-storage: Remove unused "ui/console.h" header
->   hw/i386/intel_iommu: Remove unused includes
->   hw/alpha/alpha_sys: Remove unused "hw/ide.h" header
->   hw/alpha/dp264: Include "net/net.h"
->   hw/hppa/machine: Include "net/net.h"
->   hw/acpi/cpu_hotplug: Include "hw/pci/pci.h"
->   hw/timer/hpet: Include "exec/address-spaces.h"
->   hw/pci-host/q35: Include "qemu/range.h"
->   hw/i2c/smbus_ich9: Include "qemu/range.h"
->   hw/pci-host/piix: Include "qemu/range.h"
->   hw/acpi: Include "hw/mem/nvdimm.h"
->   hw/i386: Include "hw/mem/nvdimm.h"
->   hw/pci-host/q35: Remove unused includes
->   hw/i386/pc: Clean up includes
->=20
->  Makefile                          |  3 ---
->  block/file-posix.c                |  1 -
->  block/stream.c                    |  3 +--
->  fsdev/virtfs-proxy-helper.c       |  2 +-
->  hw/acpi/cpu_hotplug.c             |  1 +
->  hw/acpi/ich9.c                    |  2 +-
->  hw/acpi/piix4.c                   |  1 +
->  hw/alpha/alpha_sys.h              |  1 -
->  hw/alpha/dp264.c                  |  1 +
->  hw/audio/fmopl.c                  |  4 ++--
->  hw/core/qdev.c                    |  2 +-
->  hw/display/exynos4210_fimd.c      |  1 -
->  hw/display/pxa2xx_lcd.c           |  1 -
->  hw/dma/xlnx-zdma.c                | 10 +++++-----
->  hw/hppa/machine.c                 |  1 +
->  hw/i2c/smbus_ich9.c               |  1 +
->  hw/i386/acpi-build.c              |  1 +
->  hw/i386/pc.c                      |  1 +
->  hw/i386/pc_piix.c                 |  1 +
->  hw/i386/pc_q35.c                  |  1 +
->  hw/isa/lpc_ich9.c                 |  1 -
->  hw/net/dp8393x.c                  |  4 ++--
->  hw/net/e1000.c                    |  6 ++++--
->  hw/net/e1000e_core.c              |  6 ++++--
->  hw/pci-host/i440fx.c              |  1 +
->  hw/pci-host/q35.c                 |  1 +
->  hw/rtc/twl92230.c                 |  1 -
->  hw/scsi/scsi-disk.c               |  1 -
->  hw/timer/hpet.c                   |  2 +-
->  hw/usb/dev-storage.c              |  1 -
->  include/hw/i386/ich9.h            |  1 -
->  include/hw/i386/intel_iommu.h     |  4 ----
->  include/hw/i386/ioapic_internal.h |  1 -
->  include/hw/i386/pc.h              | 11 +++--------
->  include/hw/pci-host/q35.h         |  8 +-------
->  monitor/hmp-cmds.c                |  5 +----
->  rules.mak                         |  3 +++
->  scripts/git.orderfile             |  1 +
->  softmmu/vl.c                      |  1 +
->  39 files changed, 43 insertions(+), 55 deletions(-)
->=20
-> --=20
-> 2.24.1
 

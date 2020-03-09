@@ -1,113 +1,169 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp975007lfc;
-        Mon, 9 Mar 2020 03:24:43 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vs6YT0ia4hD26CPLgDDfRGG3MiUG6ud1CJAEcpWWhh79emWY/cvPxnqHzgDg4CjPKWDQ/q+
-X-Received: by 2002:a9d:638a:: with SMTP id w10mr12814273otk.103.1583749483486;
-        Mon, 09 Mar 2020 03:24:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583749483; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp975113lfc;
+        Mon, 9 Mar 2020 03:24:50 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuDbfk4wA/6U8fpg7zWAMqeefYHWItoT6X5BXetdauubOkO7Ykdpq01oQRd4NOknAzxR0el
+X-Received: by 2002:ae9:f707:: with SMTP id s7mr6805493qkg.5.1583749490399;
+        Mon, 09 Mar 2020 03:24:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583749490; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qsw5eQ91/g1XLTl7V/0w/Ex93ErWU3Buk2yzxz5nIfcjR3SFQ8ExEsMTfGwB6deOat
-         ook/Af/wmLBaS0g/SDih2YzQvg6sozYoWTG9RoB/fcRzcEYgkQOsW6PJcQkhJ1lxW6hF
-         oS1dUTI9Al9hUDyvrCYXudPwUAMp7D7JwPkqvrceXZXKtyrFVPtKbQRHogUwl02qIeyC
-         VtqDGbhRpZKI8uuKuf79we/KY+XzY6BRktQLm88MiMRJRtXQ6wBzJmKQCWm8TWF6G7TU
-         czM4+MNDFZoYouC69fxQroemBTk+c9wuWpvtyZ3FZA3W5Uno1JCnvZ6Gg0affyqyMSHF
-         wYSg==
+        b=zmZdxWIryCH2w7h7XxwChf33rOpSXex0PY8iSfy1vPyS4/6WuAqDpQ/jn8hN5aOES/
+         viK1vCRQ3fQWnhqqmr27EUsaaKGHBIwMXv5Fhh0GoBxzchlSmT5pDEpvGY993nmyAGRi
+         Ml9KWRgU+UnszNxZMoh7pKKWpksiWANGuvc4PBFEbTrfTZ7DlslhI63uABrnccqs66g8
+         p/mPhvU0LCulQgdB79aeAoU1BLvTUUgS8Asfy8paqCrhZMlopOXoccy24t59rheBCcXC
+         kQTMhiQxWzLQCbKsRgdjxMpew2sDkvD8lgjlqh5zazPrpaANDAIjjIqmshWftzultde8
+         Iu4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=g1Y7SAIkQ6YKL70iv+PevVOHVnPkk+5bW/+E3fVVoME=;
-        b=f92G4vxM4SWJsoTrRn6zE8v8w0aR9Oh12q91ZLn7eur+azT0d4FZLjK6RQ2zNVsRTT
-         HNtZ3zDR+na/bFl6Dwt/5aVNTDDJ7wII0rgER+26zahB35dAwxhixZVtqHl09LcZCWkQ
-         /+fzxFrH+UEcsgpxUa7rTeppOuWQ9VqN5cISyESkgvG2Sd7WRwdO0+8DObk4j/sZR3sq
-         V9GIC5TrkMtBw/HL9VNmb2bi3WKpuv30EToekvkkwAQCRJveHPjthSRfPJqNXLtc05HN
-         xDsqJyzv6d177sbaJwkrf2VGOFTvg+BsgdOUhvTOQdDvyNecGkOGY38CpOpG9gJ9qrw3
-         j8iA==
+        bh=XgzdoaXT8yLeZom82aUYMFdOH/u5U78Ozh9Q39iwhvI=;
+        b=HnJwCfgaWMz+eTo7BM9MhjwVfFrnchmSqZshSZ1zk0OT5Hlf2IyzBU+Y0UOBjGwB89
+         WOuQ/0h6EQaD4p1hl2gB0KNMG4O8nfMS2oiNff5vy+k1Zu5DEbmCVuif4cCAjpfopGzw
+         2Q1wt+BABYdWdzdP8+Aah7CuaYtoVENLVbfdZRc8Y9U/94rFXT7Wxy91eKBCuBl9E2iq
+         zeDioCoZqCjVgo+beEL7T+E88LpkVtIhuHAagDVuWsrjGCEhiO1R5RBkbBXlkjN0oHu/
+         LER5t8aIJHPap4KvndV9/d9cPQZljaGBciZQ4Qo7romlkuzwRv5zqhfUzpkuvx+msq9f
+         vMFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JrkgJR3k;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id l15si4042879oic.220.2020.03.09.03.24.43;
-        Mon, 09 Mar 2020 03:24:43 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=UTUqO30T;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id w8si5749988qth.81.2020.03.09.03.24.50;
+        Mon, 09 Mar 2020 03:24:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JrkgJR3k;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726643AbgCIKYm (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 9 Mar 2020 06:24:42 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:55778 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1726637AbgCIKYm (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 9 Mar 2020 06:24:42 -0400
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=UTUqO30T;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1D5204A591;
+	Mon,  9 Mar 2020 06:24:50 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id f2Bma5ujR25W; Mon,  9 Mar 2020 06:24:49 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 294DB4A51E;
+	Mon,  9 Mar 2020 06:24:49 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 40E014A500
+ for <kvmarm@lists.cs.columbia.edu>; Mon,  9 Mar 2020 06:24:47 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PWsDwi66GCHx for <kvmarm@lists.cs.columbia.edu>;
+ Mon,  9 Mar 2020 06:24:46 -0400 (EDT)
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
+ [207.211.31.81])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 673CD4A4FC
+ for <kvmarm@lists.cs.columbia.edu>; Mon,  9 Mar 2020 06:24:46 -0400 (EDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1583749481;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=g1Y7SAIkQ6YKL70iv+PevVOHVnPkk+5bW/+E3fVVoME=;
-        b=JrkgJR3k5ausWefJvBkltKkWZ+ctGVvpV7+/wcqgrmyKQPSMTqDwVKOqCgvdfgQqIKI+S0
-        jUk7Im42t+AOThYvjyG9ZmXyz+gJvlZdRR/cIYbmzRsFQzE9zlDlykITbl1afbMU5wqPte
-        CexF811yQajm52e3xcuXljCbHZQ+1fs=
+ s=mimecast20190719; t=1583749486;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=jUPGPmIvaDDGzVaAE49y1ve21avwQxlD6sBJrt5aqiw=;
+ b=UTUqO30TPKFqz/Znns9sVN+bEOm+a0tJt/Lmp3Bw0QJQf7qsGR0ccEtIwlwrv1wW3gYYdN
+ kNaOeM7WqqyIKdUqDjbd7Otiaif4ykYiE22sy/5hKh/osqyGXxBe7IYF9i17XOqN2bjJc3
+ /EwL/vyE3sxnLp1FqeW4bKOsfYIGv88=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-154-o3NGrAlvMNy5JyZNJLr89w-1; Mon, 09 Mar 2020 06:24:38 -0400
-X-MC-Unique: o3NGrAlvMNy5JyZNJLr89w-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AF398800D53;
-        Mon,  9 Mar 2020 10:24:36 +0000 (UTC)
+ us-mta-349-kn_oEwKnOn2anCLGpUgNTg-1; Mon, 09 Mar 2020 06:24:44 -0400
+X-MC-Unique: kn_oEwKnOn2anCLGpUgNTg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7FDD0800D48;
+ Mon,  9 Mar 2020 10:24:42 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-59.ams2.redhat.com [10.36.116.59])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id B323490779;
-        Mon,  9 Mar 2020 10:24:33 +0000 (UTC)
-From:   Eric Auger <eric.auger@redhat.com>
-To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc:     drjones@redhat.com, andre.przywara@arm.com,
-        peter.maydell@linaro.org, yuzenghui@huawei.com,
-        alexandru.elisei@arm.com, thuth@redhat.com
-Subject: [kvm-unit-tests PATCH v4 01/13] libcflat: Add other size defines
-Date:   Mon,  9 Mar 2020 11:24:08 +0100
-Message-Id: <20200309102420.24498-2-eric.auger@redhat.com>
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1269587B08;
+ Mon,  9 Mar 2020 10:24:36 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
+ kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Subject: [kvm-unit-tests PATCH v4 02/13] page_alloc: Introduce get_order()
+Date: Mon,  9 Mar 2020 11:24:09 +0100
+Message-Id: <20200309102420.24498-3-eric.auger@redhat.com>
 In-Reply-To: <20200309102420.24498-1-eric.auger@redhat.com>
 References: <20200309102420.24498-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: S1bhs7xwjpoK
+Cc: andre.przywara@arm.com, thuth@redhat.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: t3m1HLSXJqu/
 
-Introduce additional SZ_256, SZ_8K, SZ_16K macros that will
-be used by ITS tests.
+Compute the power of 2 order of a size. Use it in
+page_memalign. Other users are looming.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- lib/libcflat.h | 3 +++
- 1 file changed, 3 insertions(+)
+ lib/alloc_page.c | 7 ++++++-
+ lib/alloc_page.h | 1 +
+ 2 files changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/lib/libcflat.h b/lib/libcflat.h
-index ea19f61..7092af2 100644
---- a/lib/libcflat.h
-+++ b/lib/libcflat.h
-@@ -36,7 +36,10 @@
- #define ALIGN(x, a)		__ALIGN((x), (a))
- #define IS_ALIGNED(x, a)	(((x) & ((typeof(x))(a) - 1)) =3D=3D 0)
-=20
-+#define SZ_256			(1 << 8)
- #define SZ_4K			(1 << 12)
-+#define SZ_8K			(1 << 13)
-+#define SZ_16K			(1 << 14)
- #define SZ_64K			(1 << 16)
- #define SZ_2M			(1 << 21)
- #define SZ_1G			(1 << 30)
---=20
+diff --git a/lib/alloc_page.c b/lib/alloc_page.c
+index ed23638..7c8461a 100644
+--- a/lib/alloc_page.c
++++ b/lib/alloc_page.c
+@@ -155,7 +155,7 @@ static void *page_memalign(size_t alignment, size_t size)
+ 	if (!size)
+ 		return NULL;
+ 
+-	order = is_power_of_2(n) ? fls(n) : fls(n) + 1;
++	order = get_order(n);
+ 
+ 	return alloc_pages(order);
+ }
+@@ -175,3 +175,8 @@ void page_alloc_ops_enable(void)
+ {
+ 	alloc_ops = &page_alloc_ops;
+ }
++
++int get_order(size_t size)
++{
++	return is_power_of_2(size) ? fls(size) : fls(size) + 1;
++}
+diff --git a/lib/alloc_page.h b/lib/alloc_page.h
+index 739a91d..e6a51d2 100644
+--- a/lib/alloc_page.h
++++ b/lib/alloc_page.h
+@@ -15,5 +15,6 @@ void *alloc_pages(unsigned long order);
+ void free_page(void *page);
+ void free_pages(void *mem, unsigned long size);
+ void free_pages_by_order(void *mem, unsigned long order);
++int get_order(size_t size);
+ 
+ #endif
+-- 
 2.20.1
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

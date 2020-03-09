@@ -1,196 +1,244 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1001988lfc;
-        Mon, 9 Mar 2020 03:57:51 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvkQQ/nKUvJDpsZFuWiiKQf9pJxmvAlKIvNwxpS1q35Q5A0FgyJuXXKHAygIet8otCiocXx
-X-Received: by 2002:a05:620a:22ea:: with SMTP id p10mr14114083qki.75.1583751471643;
-        Mon, 09 Mar 2020 03:57:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583751471; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1007106lfc;
+        Mon, 9 Mar 2020 04:03:07 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuh0A/Ic2vYaMhQy+avY1xsEm7+h4wLbSBVnXoV6+Np2TvH4Zsgv4Wfy9uKQv/o7Pfq/3No
+X-Received: by 2002:a05:6214:8c1:: with SMTP id da1mr14114349qvb.66.1583751787141;
+        Mon, 09 Mar 2020 04:03:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583751787; cv=none;
         d=google.com; s=arc-20160816;
-        b=g6/TG2NzfnXxV0XmTa9ObIzgNXdku7gJNWCDrvWWHedAe0iONpTQbsj6MvkrPKTiR/
-         ijVtnw5SSjo+1i0E5ihC5j9SPubu3l7edxXVabR6kksvCBEQ3sk12wBFQVCU1RnUMggF
-         GAjdhRpRUNQTyCktLJpePQKQFI1xuT30DwrM9W7F+9XZUQic5zPXrFH6lS0ygAnUmdCs
-         FVtc8KqR80h8LIV/yHMtu65wNeDghLwXCafJHBqEAKByGWiGAHa+BmjDoaGGdoC4tv4N
-         TgjRmmQrHHs6T4ieXh7N7GgdnaGkI+7UTR66CqBjI6+eI1i02j9xso6Ys1CTbLX4sd8Y
-         UqUg==
+        b=EuS/Z/mezmAxZXtRWI9VTHuPvQ2hoFF/do4uu8xdYYq9KO+AZ4em4WOfC3a/QAi/DV
+         g9wWw8iW1GH6n23cNlHsv1SLMBlk7OodTBPfot9T0D/Dqnv7TUq8LZ4pLT9xh1MnDgZw
+         z023bRpRhTuiVrLOBsU0qgC35czy/QzsvVNVP2Gd70CTg/8mrLbWCTRWXuQUM9ljvxMN
+         Ror7Tc1aZ6BFA+aIekZ3xt+si0e8LSmc2s0H/Ja67PIhGyxihjZBlOdF43VbOkl+J+ud
+         PuJygnociePjzDdRghANrQten7HKAcpLNM0jxK4+/DAMPzNyRQZnlqH//pbh5AR5vF4n
+         ltFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject:dkim-signature;
-        bh=FyF79uDSNowMiBaGgFXRj7LyLnmpVBSm3VGRAE8Sw/I=;
-        b=o4fUdVLIOgWx2wrAo2QgT2wP2/5NKIOL7gkWRghnsOOcvrlS7kDBtdWToVWjpfPk9x
-         DMdKVzF2jAEbbl9eB3EVU3lqr0RrBo5JUhW4Bk4kPRfEbhytv2p2Iwum51JLUjM7zJo6
-         2FYb0XJA9FAfnAfGc8Q37+BIsLd1pNacTf294Cs7KJWSw4dBYxXWbmHRjmpkmEBp7Z3r
-         seyHA55Qf+mVMf7f2zEVo4wJOn4Ihs4NJFN0yG18TxvSL9NkehHTfPOfObLukSQVeKJy
-         oudIiRFEcohjN5c1Mq4JZGF+raXuQ+harb+kINySAVR/4Syo8ZaJXqRt+AM9PtGyK5ah
-         8c8g==
+         :list-unsubscribe:list-id:precedence:message-id
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:autocrypt:from:references:to:subject;
+        bh=Ue91e7gVEpCUbQA0TnBsyd6dvqWCtupb7Xzv9MGL0Uo=;
+        b=WNaOenFBqsJBvxvLrh7Z4hD5Qk7wuxu/9mV76cPqloMOUWfEjg01VDGA/KDW/QB+HY
+         Pk8JIVt3AvWWnmyZfDsXvfNbVmxZUo0yaRRfkxi+Cruz8k+9LPQeKFuuaAzNp3KyiOIF
+         6aOEX8UlF7eMKV3SpOvPkAtAv18AyuI5r6JZRH+h3gIerCA1Va1P5vqtGa/OEA5hhupO
+         NO4G/N307urm+vkXGZybIRaPJxIzEwLAcxivYJD/uPbrxyyifNcf0x1BYbbFvtRYNK1x
+         P6Ng3J2+bTDPb8ocdVO1fYRuB2h96iSmjpJYHxwPgTCmoPCK9eFPtxMtzQn/igYsBgdi
+         BuwA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OsZkklko;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b5si5178063qvq.211.2020.03.09.03.57.51
+        by mx.google.com with ESMTPS id l57si3331605qtb.68.2020.03.09.04.03.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Mar 2020 03:57:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Mar 2020 04:03:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OsZkklko;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40750 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:40806 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBG6Z-0007wm-3B
-	for alex.bennee@linaro.org; Mon, 09 Mar 2020 06:57:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43846)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jBGBe-0001nf-Ip
+	for alex.bennee@linaro.org; Mon, 09 Mar 2020 07:03:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44556)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jBG6Q-0007wV-QS
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 06:57:43 -0400
+ (envelope-from <borntraeger@de.ibm.com>) id 1jBGBI-0001kU-Ll
+ for qemu-devel@nongnu.org; Mon, 09 Mar 2020 07:02:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jBG6P-0000Ki-KF
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 06:57:42 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:33036
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jBG6P-0000KI-Gd
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 06:57:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583751461;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FyF79uDSNowMiBaGgFXRj7LyLnmpVBSm3VGRAE8Sw/I=;
- b=OsZkklko/JZWlkz1zQ++eelSJNnuP/Lb3lNKCmCDwS1s2wq+xz7ma8S4y/OHgF3EM0HvEz
- tuHsbDvmuAMKU9Vp0JU8kTYK/zQf3tTyHfQLnx1z76zF9lZNrZQw/6fk/qGk9YRe9sf1Jq
- syqljwBnJUYypO5+NzA7wQGZOcEnxEI=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-96-I9u7XajlM52q9V1mrYka6Q-1; Mon, 09 Mar 2020 06:57:39 -0400
-X-MC-Unique: I9u7XajlM52q9V1mrYka6Q-1
-Received: by mail-ed1-f70.google.com with SMTP id d11so7662247eds.7
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2020 03:57:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=1K5028EpyDpycuXB8fjyFJB5EeKvDdUsMI8EIJHMlMI=;
- b=jUjYNrTV8GyoZ+VAVWWFFJsCQERK2ZxcvUtdq+1qhWKVYG9tzrE2KmFry7bC1Awg8T
- GeuBVL9m33AmBKGkHjO0kVt4C2zcALz/eBu3R76jhZCRkRWDE9XrLj37eKnIvJ0Rj9rm
- sG+Svzb9OF0OjejKfQLRbpPrG64U4Y+4yji1UCcFCEUjaZItHjky7aNuDToWcuq2fr/o
- 3E9Oupbe6b9+i24aFehxAkoWJmOFM1ljbJOwtaoWsFEM4GZDBiWqNsHdOBEd4J8r5MSA
- Tgincz0XX9bK/uyCIY5KvSpydvVZL/0dSG49Vi57CirELM2uEI/R/5FRxEnJk/8XKzgI
- QO2w==
-X-Gm-Message-State: ANhLgQ0+QGOUveihI6TDrh/fJMriK24iWTdbZo2imG8mrQAstg/1GpR5
- ygScTz0vtVOb4rnurOFZ1iPSE1mqBNjUxxHy6Nl9o0eLQmmfASHrnZvlR0UPF2ydzJPkL5ZKMgs
- 2zw1hqhOgB54Q
-X-Received: by 2002:a17:906:37d5:: with SMTP id
- o21mr14585319ejc.366.1583751458110; 
- Mon, 09 Mar 2020 03:57:38 -0700 (PDT)
-X-Received: by 2002:a17:906:37d5:: with SMTP id
- o21mr14585304ejc.366.1583751457862; 
- Mon, 09 Mar 2020 03:57:37 -0700 (PDT)
-Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id b72sm844087edf.95.2020.03.09.03.57.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Mar 2020 03:57:37 -0700 (PDT)
-Subject: Re: [PATCH 2/2] hw/arm/armv7m: Downgrade CPU reset handler priority
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- Stephanos Ioannidis <root@stephanos.io>
-References: <20200227112617.66044-1-root@stephanos.io>
- <20200227112617.66044-2-root@stephanos.io>
- <CAFEAcA9qbndHqoW1oaUAKMZY5hNYjP+mMt-K_WqoT9Z=Q=ct7g@mail.gmail.com>
- <e1813f57-57ac-e6ad-d119-dd6c2cdc90e1@redhat.com>
-Message-ID: <34d14a57-812d-5898-9dfc-ac896f657c9b@redhat.com>
-Date: Mon, 9 Mar 2020 11:57:36 +0100
+ (envelope-from <borntraeger@de.ibm.com>) id 1jBGBH-0003Bw-Go
+ for qemu-devel@nongnu.org; Mon, 09 Mar 2020 07:02:44 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:39622
+ helo=mx0a-001b2d01.pphosted.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <borntraeger@de.ibm.com>)
+ id 1jBGBH-0003BZ-BH
+ for qemu-devel@nongnu.org; Mon, 09 Mar 2020 07:02:43 -0400
+Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 029AsApP081790
+ for <qemu-devel@nongnu.org>; Mon, 9 Mar 2020 07:02:42 -0400
+Received: from e06smtp05.uk.ibm.com (e06smtp05.uk.ibm.com [195.75.94.101])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2ym8g32jff-1
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <qemu-devel@nongnu.org>; Mon, 09 Mar 2020 07:02:42 -0400
+Received: from localhost
+ by e06smtp05.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ Violators will be prosecuted
+ for <qemu-devel@nongnu.org> from <borntraeger@de.ibm.com>;
+ Mon, 9 Mar 2020 11:02:40 -0000
+Received: from b06avi18626390.portsmouth.uk.ibm.com (9.149.26.192)
+ by e06smtp05.uk.ibm.com (192.168.101.135) with IBM ESMTP SMTP Gateway:
+ Authorized Use Only! Violators will be prosecuted; 
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+ Mon, 9 Mar 2020 11:02:32 -0000
+Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
+ [9.149.105.59])
+ by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
+ id 029B1W8x36176214
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 9 Mar 2020 11:01:32 GMT
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 82C7DA405B;
+ Mon,  9 Mar 2020 11:02:31 +0000 (GMT)
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id A8CFDA4069;
+ Mon,  9 Mar 2020 11:02:30 +0000 (GMT)
+Received: from oc7455500831.ibm.com (unknown [9.152.224.141])
+ by d06av23.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Mon,  9 Mar 2020 11:02:30 +0000 (GMT)
+Subject: Re: [PATCH] cpu: Use DeviceClass reset instead of a special CPUClass
+ reset
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+References: <20200303100511.5498-1-peter.maydell@linaro.org>
+From: Christian Borntraeger <borntraeger@de.ibm.com>
+Autocrypt: addr=borntraeger@de.ibm.com; prefer-encrypt=mutual; keydata=
+ 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
+ nS4h0HDFPrrp1C2EMVYIQrMokWvlFZbCpsdYbBI=
+Date: Mon, 9 Mar 2020 12:02:30 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <e1813f57-57ac-e6ad-d119-dd6c2cdc90e1@redhat.com>
+In-Reply-To: <20200303100511.5498-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+x-cbid: 20030911-0020-0000-0000-000003B1DDBA
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 20030911-0021-0000-0000-0000220A2486
+Message-Id: <27475af3-2cc5-40bf-d469-f1ca6195e1ce@de.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.572
+ definitions=2020-03-09_02:2020-03-08,
+ 2020-03-09 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ phishscore=0 mlxscore=0
+ suspectscore=0 priorityscore=1501 lowpriorityscore=0 clxscore=1015
+ impostorscore=0 mlxlogscore=999 spamscore=0 malwarescore=0 bulkscore=0
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2001150001 definitions=main-2003090077
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.158.5
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1EYfrdLsWp5S
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Chris Wulff <crwulff@gmail.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Marek Vasut <marex@denx.de>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4HhRhNxuzNV8
 
-Hi Peter,
 
-On 2/27/20 2:35 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 2/27/20 1:13 PM, Peter Maydell wrote:
->> On Thu, 27 Feb 2020 at 11:27, Stephanos Ioannidis <root@stephanos.io>=20
->> wrote:
->>>
->>> The ARMv7-M CPU reset handler, which loads the initial SP and PC
->>> register values from the vector table, is currently executed before
->>> the ROM reset handler (rom_reset), and this causes the devices that
->>> alias low memory region (e.g. STM32F405 that aliases the flash memory
->>> located at 0x8000000 to 0x0) to load an invalid reset vector of 0 when
->>> the kernel image is linked to be loaded at the high memory address.
->>>
->>> For instance, it is norm for the STM32F405 firmware ELF image to have
->>> the text and rodata sections linked at 0x8000000, as this facilitates
->>> proper image loading by the firmware burning utility, and the processor
->>> can execute in place from the high flash memory address region as well.
->>>
->>> In order to resolve this issue, this commit downgrades the ARMCPU reset
->>> handler invocation priority level to -1 such that it is always executed
->>> after the ROM reset handler, which has a priority level of 0.
->>
->>
->> I think we should be able to do this with the new 3-phase
->> reset API : the rom loader reset should happen in phase 2,
->> and the Arm CPU should only load the new PC and SP in
->> phase 3. It's on my todo list to write some code for this
->> to see if this theory works out.
->>
->> I'd prefer it if we do it that way, or alternatively find
->> out for certain that that approach does not work, before
->> we add a reset-priority concept to the reset APIs.
 
-FYI I hit the same problem testing the RX port which on reset loads $PC=20
-at 0xfffffffc. Using Stephanos's previous patch and=20
-qemu_register_reset_with_priority() in cpu_realize(), the issue is fixed.
-I plan to carry the patch in the RX series until we find an alternative.
+On 03.03.20 11:05, Peter Maydell wrote:
+> The CPUClass has a 'reset' method.  This is a legacy from when
+> TYPE_CPU used not to inherit from TYPE_DEVICE.  We don't need it any
+> more, as we can simply use the TYPE_DEVICE reset.  The 'cpu_reset()'
+> function is kept as the API which most places use to reset a CPU; it
+> is now a wrapper which calls device_cold_reset() and then the
+> tracepoint function.
+> 
+> This change should not cause CPU objects to be reset more often
+> than they are at the moment, because:
+>  * nobody is directly calling device_cold_reset() or
+>    qdev_reset_all() on CPU objects
+>  * no CPU object is on a qbus, so they will not be reset either
+>    by somebody calling qbus_reset_all()/bus_cold_reset(), or
+>    by the main "reset sysbus and everything in the qbus tree"
+>    reset that most devices are reset by
+> 
+> Note that this does not change the need for each machine or whatever
+> to use qemu_register_reset() to arrange to call cpu_reset() -- that
+> is necessary because CPU objects are not on any qbus, so they don't
+> get reset when the qbus tree rooted at the sysbus bus is reset, and
+> this isn't being changed here.
+> 
+> All the changes to the files under target/ were made using the
+> included Coccinelle script, except:
+> 
+> (1) the deletion of the now-inaccurate and not terribly useful
+> "CPUClass::reset" comments was done with a perl one-liner afterwards:
+>   perl -n -i -e '/ CPUClass::reset/ or print' target/*/*.c
+> 
+> (2) this bit of the s390 change was done by hand, because the
+> Coccinelle script is not sophisticated enough to handle the
+> parent_reset call being inside another function:
+> 
+> | @@ -96,8 +96,9 @@ static void s390_cpu_reset(CPUState *s, cpu_reset_type type)
+> |     S390CPU *cpu = S390_CPU(s);
+> |     S390CPUClass *scc = S390_CPU_GET_CLASS(cpu);
+> |     CPUS390XState *env = &cpu->env;
+> |+    DeviceState *dev = DEVICE(s);
+> |
+> |-    scc->parent_reset(s);
+> |+    scc->parent_reset(dev);
+> |     cpu->env.sigp_order = 0;
+> |     s390_cpu_set_state(S390_CPU_STATE_STOPPED, cpu);
+> 
 
->=20
-> Agreed.
->=20
->>
->> (In particular, this use of qemu_register_reset to arrange for
->> the CPU to be reset should ideally go away in favour of having
->> the CPU reset handled by the SoC which owns the CPU, so it's
->> not a good long-term way to look at trying to fix ordering issues.)
+s390 parts look sane.
 
-And your "cpu: Use DeviceClass reset instead of a special CPUClass=20
-reset=E2=80=8B" patch goes into that direction :)
-
->=20
-> It would be nice to get ride of qemu_register_reset with the reset API :)
->=20
->>
->> thanks
->> -- PMM
->>
 

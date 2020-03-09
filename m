@@ -1,97 +1,104 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1368221lfc;
-        Mon, 9 Mar 2020 10:09:44 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuqXUSdxLrc1LDWaII22EbMhoxtBcZn6z/jRkth96sLJlDP4wP2P/VNGV5zLuCxJufZoQzM
-X-Received: by 2002:a05:620a:a90:: with SMTP id v16mr9824651qkg.46.1583773783849;
-        Mon, 09 Mar 2020 10:09:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583773783; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1386849lfc;
+        Mon, 9 Mar 2020 10:27:38 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvylM7QFS9YTwrnMtpHzEhj2iFGn9xFoMTegU6osyq+5dbphLCHa+wv7Y28pOSrPH9nA69i
+X-Received: by 2002:a37:a746:: with SMTP id q67mr16511615qke.215.1583774857872;
+        Mon, 09 Mar 2020 10:27:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583774857; cv=none;
         d=google.com; s=arc-20160816;
-        b=Cou8FjjexkZrN3Z0SNLiTH4v/nPUGJmx+vOVmRNR9KcS9Fsulc0arp0BddpbeIYKwz
-         SSmf+XsmsIAXXnsg+cDes8I9z083R9E5dXnEfz+3AthyUyh/Sqladd433SRAv1kdXQB6
-         SgnMaT+/DpRTQ8Og7XDHO/0/o1T7pREuYQU9ZffFYmdwIfHvVhu5h3ftIecb+3BDJfME
-         Xvurc0p1/Lvk1TW5qX+xcJHvS6l+ayAJS3tjYLRstmAOSZLF+bb6VKJ/ff15D63r7LKy
-         u2FlatSOtHbbrO6+W6hoqwvMbGvk8wZ2/y3OhEYjbYWbVYcjPIEPNdNIrrH6/qpZk9cu
-         V0ZQ==
+        b=dVd0WkprwjNvrnZ+bxJm5dza8KvoZZWrCsN+avA6GPIlxGbhjAt0iyZgl2t3zMAuwS
+         nR8fpXkpFmVHGRBegTnBli/gXnzL/4hVSPQ796OrKt8Ew5L24ln8oKqHN90iunpOb+u4
+         9pWMaJ501VJSkOS5XHVP8e7t755y/1jrDSlt8zgAVG1Bal0+9/V9QK7kAi2snJiZDun+
+         OKJaOGuM3c7W6SXS6rNIz3Rt9qBUZspq4RQawgGU39gVO5d7q95vCanz/mM8e/onbgPL
+         itpgTT3bSpPSQirC+LIdIW6oFHwIuKnpc6B0BuwmiysqRXN9ilrFg+PeE6ECObNdt1/W
+         JD1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=4YR3WLemMhh2GvPEM0MGp2LdO687Q4RFVclOD9Kaf7M=;
-        b=L6fnw17Z0bZPW4rmsLc3dkXTwdePwXqm5IC17C75N58joluVcdbQejJbbORK60bm/w
-         1YPvh3LVokkB6DVCPx/3SNCt3ADlzKNjBo8jLH13T6jmnaiz8nkXIbYjF0osczDXqiBb
-         0MB0sHqzv8/nF/3IKQbqcMOrbHdlvnabe4yO0noZOYNWV7Ar0jGX7OevQDscNiQ1b+4n
-         /Itvq7jebgqXupxjAPcPh6jChxTAfcHHCR/5Kpbp2mFI1UczUhVUx737WWzZ7YmV2D+E
-         zD0Wr50qFmxlbpcCIDRZI+Ec1ZASra7cvCL9a/CLKb6fNveWmidXVy12hiumlsqx8WpA
-         ZuuA==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=BZngQXGMUcd9HSfvr8IOy8qIk/2ixiIy5QrDgre2vx0=;
+        b=eKyhd6u+t5JqIqiyDAzZmOXi64cSvoSkciH9K56+PhLtBYLyenOw7096rxRvPF/3VZ
+         U+JDSkrlAcYZ6E6ia7GeIJXtUYrB/2EEfr2InYgIs++cDe0ozl0Spur3yhhrUSmsSEfx
+         xevgYZF0rs8wPcLu14Hg/s84XwN3VtQEax78EgD++Ebqwxmgj7w37pWqHFZf+U2rEH4v
+         AN/x+AHg3ItslQRMHX8XPdY0R4Db18o9U0uEIPHhE2ii2Gnt5E3Ph9nsQvZ1mauPdbrV
+         01+Qb5XUc+gX+JEhVv6cC5O1qJmqpcNDxF04bwaXwoiyugA56ti7V6DUywkNhgBtrrIt
+         +Uqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qpdMTxR9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AKS2M+gW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e50si1160402qtk.304.2020.03.09.10.09.43
+        by mx.google.com with ESMTPS id m9si5671227qvt.198.2020.03.09.10.27.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Mar 2020 10:09:43 -0700 (PDT)
+        Mon, 09 Mar 2020 10:27:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qpdMTxR9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47092 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AKS2M+gW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47286 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBLuR-0004qB-9o
-	for alex.bennee@linaro.org; Mon, 09 Mar 2020 13:09:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56364)
+	id 1jBMBl-0007cf-Bi
+	for alex.bennee@linaro.org; Mon, 09 Mar 2020 13:27:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59582)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jBLuJ-0004pq-L6
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 13:09:36 -0400
+ (envelope-from <groeck7@gmail.com>) id 1jBMBd-0007Zz-66
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 13:27:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jBLuI-0004Sb-HH
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 13:09:35 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:39764)
+ (envelope-from <groeck7@gmail.com>) id 1jBMBc-0002nW-7K
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2020 13:27:29 -0400
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:39318)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jBLuI-0004SM-CD
- for qemu-arm@nongnu.org; Mon, 09 Mar 2020 13:09:34 -0400
-Received: by mail-ot1-x342.google.com with SMTP id a9so4098704otl.6
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2020 10:09:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4YR3WLemMhh2GvPEM0MGp2LdO687Q4RFVclOD9Kaf7M=;
- b=qpdMTxR9Y7falk+VKMteP7Jm0YUVuQeqKwswC1pJQ81EHL0oZjnAwsTdCbXW4TCJLz
- XhIvh4FXklZYPNn9Gf4u+GjHXs2nwQ8JuXyRZAGARCO+s0V7ARAne8wDcLEzkrNTTRpT
- 45MZ9lcqJUp+84ekceVV2AkUlIdL1NW4ThW2EBEFmP4rJ6vv3BYxF1WBrm7VatOqBujz
- O/k7ylJdH57/mRzj12BQ3ZUDFfRYBUsdCNOfJc2jxAPdqR98o7MQ3bNmQNKHxuYe6Q4Y
- 6IorAJ10UcbVxBZA/cvEq/cNKNQm2/gsbxZQ7ScNgxrg0Km3AdqIYWUbrwOwkNsAlv88
- A+3Q==
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1jBMBc-0002nG-1g; Mon, 09 Mar 2020 13:27:28 -0400
+Received: by mail-pl1-x642.google.com with SMTP id j20so4254802pll.6;
+ Mon, 09 Mar 2020 10:27:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=BZngQXGMUcd9HSfvr8IOy8qIk/2ixiIy5QrDgre2vx0=;
+ b=AKS2M+gWUJ28ir7RFBtbVPchPt7iyBv4j4AtB6Vlroyn2fO9vFg+4QJ5jpqdwxm97Z
+ T5lxsD6QneeIiSC1mrQa2a6A8ARkBbHs7ZNwKBpabErQ2zzyBJ1v30SoTkzPpuEqvHlR
+ QBHNIv1rblMiWOzAUDuy/Hyak7rN9u288iGgzgn3Tv4pQmS4flu69M8phfPT8JjkkiUa
+ Rucv1WfFOQ6uraScFo7ySNDUcMxhAWbvJAotYbD3uZSNqH8L6ags23wGiil3HleUgG/d
+ DlRpI/0GGNfhx/nnVPL0MhP+Q6QoeKUs4oyDC7PD/qL6PIzjzPaRB37MpfdI9sF4Zuuv
+ 6pzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4YR3WLemMhh2GvPEM0MGp2LdO687Q4RFVclOD9Kaf7M=;
- b=ixgbhHsK2/L0sbps3xThhuXyCiZdjcY6PfszWPcV/On0MN7PUTz/VJp8OkNiqs6qdn
- IQHo2y2vPfBvXo/lxx9nFNaofjR+0OCLyhKK9Z8Hvu+ytccfF6Gjcc59a+vKMfKNs+JC
- ywRdNMZJfmWAtCK1itP7YgTe01abPHjSdR6hhYUjiMl5KY4D1Bauwx9/trEtrAVhp9HJ
- 4YhSY5l1iGjBV29avU/xfDMrxxamG4/+4fA1z8FxvfmvaUab/ABprluugboZ8pky6LMu
- J4coqpHlwn9Uv6LxK1vOVkpaqCMJCA0k9md8V/BKYgjTD2OaQH65lipUM9LFZu7PjbpL
- mEZA==
-X-Gm-Message-State: ANhLgQ37cn7Cskr1E2o2WZtqIgoo4GwfusJURdzr+8NMHn/nfQ8GdLda
- wvCo1TAFZgb2eFufYaBoXT+8JVJBS0b0p7Pv76pCoQ==
-X-Received: by 2002:a9d:6c05:: with SMTP id f5mr2940112otq.232.1583773773037; 
- Mon, 09 Mar 2020 10:09:33 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200301170443.12904-1-linux@roeck-us.net>
-In-Reply-To: <20200301170443.12904-1-linux@roeck-us.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 9 Mar 2020 17:09:21 +0000
-Message-ID: <CAFEAcA_VuY+1egn8B6=Tk8PKGuhAPuP4-=pwuWHQGQsfdXB=dw@mail.gmail.com>
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :references:mime-version:content-disposition:in-reply-to:user-agent;
+ bh=BZngQXGMUcd9HSfvr8IOy8qIk/2ixiIy5QrDgre2vx0=;
+ b=U6zgqC67zE494zfbOeRsAzH2Gq6QAMQdrGD6B05bbXxakih5OEq8/Gh5ukQlQnd3AC
+ NIP5D9sktRO2OlKwpNg1FqNiEgz0F5Y0a5uzagqzP4tUUuwKTChzyZSmyyi5Q3eApJT7
+ D0bBdCtiftHtbTSvm1w9bpsXidrMkstSgWPlNMIozrZwAWhpDM2zrg29Ai3aDr0ixxL+
+ dBqCm2JfTVenZci9iSJix9QWarkaLhYKRZawaDtdfutlhppCQFRfhI6dIim9QoxYBvam
+ TzFqzRb7F1YMIqdyk+DcxCsAAJODGoa2M/If/8ewWvanlTGCe+FQBOUhfSjS1P3m3+UI
+ c9xA==
+X-Gm-Message-State: ANhLgQ2Hqx5AMt3OibBC1i3mV9snw8gOI1OEAeZDN4i4lOR3C7RXTo8J
+ Y6UqmqIKUeJ7TcpIrjAf3AY=
+X-Received: by 2002:a17:902:8b8a:: with SMTP id
+ ay10mr17112803plb.288.1583774846907; 
+ Mon, 09 Mar 2020 10:27:26 -0700 (PDT)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id k9sm147850pjo.19.2020.03.09.10.27.25
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 09 Mar 2020 10:27:26 -0700 (PDT)
+Date: Mon, 9 Mar 2020 10:27:24 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Peter Maydell <peter.maydell@linaro.org>
 Subject: Re: [PATCH 0/3] Wire up USB controllers on fsl-imx6 and fsl-imx6ul
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
+Message-ID: <20200309172724.GA25106@roeck-us.net>
+References: <20200301170443.12904-1-linux@roeck-us.net>
+ <CAFEAcA_VuY+1egn8B6=Tk8PKGuhAPuP4-=pwuWHQGQsfdXB=dw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA_VuY+1egn8B6=Tk8PKGuhAPuP4-=pwuWHQGQsfdXB=dw@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::342
+X-Received-From: 2607:f8b0:4864:20::642
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,31 +114,36 @@ Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
  Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xXZ1UBccVQQv
+X-TUID: 5s+Fz/nBRo1f
 
-On Sun, 1 Mar 2020 at 17:04, Guenter Roeck <linux@roeck-us.net> wrote:
->
-> This patch series wires up the USB controllers on fsl-imx6 and fsl-imx6ul
-> emulations.
->
-> The first patch is a prerequisite for the following patches. It provides
-> a dummy implementation of a register widely used on i.MX systems, and
-> specifically the reset behavior of this register. This is needed to make
-> the USB ports operational without full implementation of an emulation
-> of its PHY controller.
->
-> ----------------------------------------------------------------
-> Guenter Roeck (3):
->       Add dummy i.MXS STMP register support
->       arm: fsl-imx6ul: Wire up USB controllers
->       hw/arm/fsl-imx6: Wire up USB controllers
+On Mon, Mar 09, 2020 at 05:09:21PM +0000, Peter Maydell wrote:
+> On Sun, 1 Mar 2020 at 17:04, Guenter Roeck <linux@roeck-us.net> wrote:
+> >
+> > This patch series wires up the USB controllers on fsl-imx6 and fsl-imx6ul
+> > emulations.
+> >
+> > The first patch is a prerequisite for the following patches. It provides
+> > a dummy implementation of a register widely used on i.MX systems, and
+> > specifically the reset behavior of this register. This is needed to make
+> > the USB ports operational without full implementation of an emulation
+> > of its PHY controller.
+> >
+> > ----------------------------------------------------------------
+> > Guenter Roeck (3):
+> >       Add dummy i.MXS STMP register support
+> >       arm: fsl-imx6ul: Wire up USB controllers
+> >       hw/arm/fsl-imx6: Wire up USB controllers
+> 
+> I'm not a huge fan of the "dummy device that's really just
+> implementing 4 registers from the middle of some other
+> device" approach. Unless you think we're strongly likely
+> to want to use it in other places, I think I'd prefer
+> to just implement a (minimal/no-functionality) model of
+> the PHY register block.
+> 
 
-I'm not a huge fan of the "dummy device that's really just
-implementing 4 registers from the middle of some other
-device" approach. Unless you think we're strongly likely
-to want to use it in other places, I think I'd prefer
-to just implement a (minimal/no-functionality) model of
-the PHY register block.
+Sure, no problem; I don't really have a preference. What would be
+the best place for such a dummy phy ?
 
-thanks
--- PMM
+Thanks,
+Guenter

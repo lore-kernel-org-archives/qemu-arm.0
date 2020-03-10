@@ -1,125 +1,285 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp849569lfc;
-        Tue, 10 Mar 2020 07:56:25 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsjad2ftNYfoX7UamKoFEM7aCPItAHLMEcc+y9yXriQxTCYjhJxA631OZplZ/YVA9DFN+hZ
-X-Received: by 2002:a05:6830:1d95:: with SMTP id y21mr16419993oti.90.1583852185450;
-        Tue, 10 Mar 2020 07:56:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583852185; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1138334lfc;
+        Tue, 10 Mar 2020 12:49:33 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsK32SRsU2IL8E87izTtfJq+INvu9EurMS84Sojc3ygWOmmzgnPDyeS2rmtwuNaBygw3Y5B
+X-Received: by 2002:a37:6811:: with SMTP id d17mr13546167qkc.29.1583869773265;
+        Tue, 10 Mar 2020 12:49:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583869773; cv=none;
         d=google.com; s=arc-20160816;
-        b=jQovEzbFBMWoj186lxO+/v5QTE85wtZxyY8QPDI2f2Xeusd3IVhOtvoGBcEZE+tnCl
-         BdLA2DLC+NbzVgwkcNgWWi4jsV/Gqw+rrIUWAXb3x1OBc1UzejLqQ06lsB1o7DXTHsh7
-         Z2Y+Of8edyf3+bmh3bVsHTiBVzTNd0DUxBJu0HiEinHECBDgxIIZ2ZoYrmO/9Cq4b9jm
-         YSJ7GiihsUhASK4s2Md9a/WuMzOkF9dSE1uOeWCq6v1yHcMItx10Jy3qFwfVNMmlxPKh
-         T9FOQxJ7l2sPHwGu0t21+J+0u8F55Vt6gL6KC/b8IZgjVq+BseERkdcUwhrm0551tIzX
-         UyVA==
+        b=a1gU8KK6jSXt7XiuhA5yJKFpDrOGoiatOFUpnyIP4/nb6GBGSnQRWm6bjGLeWS9CY8
+         NX+UJ99CjeFBNGVysWk6o0gsZaM2BMElbOM7FceWc9Jw05/BxyK6pPmXD6VWDRh4LsMK
+         bRUehDs7ErRtyrggqrynN0eLTO64Ng5n5hPyDhxJbwrS2MzRYKoqttS1clg9wp3/xTec
+         iljusA87pD3EviwinmjiVkNx9wXc4cqTt5JwKKnM0hl/zEBdrhcnDON0Tb3ZoVJuY56F
+         2/Pav+N4taJbx6CfX1Fxir/sG9fDtQqSwqb8Bzvem173qeju56fQZF+SGqUjYWHSiM+0
+         5f3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:dkim-signature;
-        bh=F6Y9O3L6ux6zcyjxR98H17Ex0dxMm2pHA4GBIrRUtcw=;
-        b=mwHttHFPc5AMykEO8NwSVE43Yf7HSysGXAaDv7AHxu+Zjm+m0QYCKqxdDml3xsjYvq
-         uvmFmwjpFjJAgj9+TytWGE7C+o/T4gEMVnlB/tmcey+GY5LiHzkEN0FYaht1mIYEh38Y
-         Yx78AcUPSM2zGtYVQIUZeV+40KYEelfeukGtnRO6sIVG45in2GWO/2LlX+FJ4iRgVRQy
-         tqgGieANnxLyrL3IaXeO7tJJIlmyo+npiFo2MimAmVtZiNyzghlo9aaGPn+4dXx9y0+H
-         eSJ6LHlbCobiKp6uYKx7uhoKnnacRPLkGFV3qPgVeOEh6xAysoC1xbOSEOysTqOrRYdG
-         m89g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=uI3JFUHhKOPjEYddkRjvpoV1Wbus4myLT0ZKlUz2e8k=;
+        b=wQvp/uYnWSCpwzYCI67YHIPpgOaDh9Jtd5ZA3FRlBFnYh727tApEuVlprxtA1IYIWp
+         7iU7WpaRSf1M6enwPYrzAm+x/6R0IDYZM+TeBhJ4S5j776fwh2mirhORbDefNzkC/UZ4
+         Lxv3ny2/lp2Hp/xL8IwHDVLUwjMvv1bKrBHe06nFI1q8g+vDudcisajc3o2PxtjWsrjf
+         dBcfbzXLa27tyiJ1W4RezM1n/GdcPLgAynDntWbDkLb3PFa/4gu9BchyPpz4VF1+ofNZ
+         dE3vgr9G2mkvXMt86p7cZvfOYQC2ta0CiLDi9yO9pzelZrT93ByKPZCVzqscoTHy+T5G
+         nD7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fx9SAMIs;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id i7si5431916oth.143.2020.03.10.07.56.25;
-        Tue, 10 Mar 2020 07:56:25 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FbXt4QTP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c72si8943007qke.234.2020.03.10.12.49.33
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 10 Mar 2020 12:49:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fx9SAMIs;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727598AbgCJO4Y (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Tue, 10 Mar 2020 10:56:24 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:39369 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1727532AbgCJO4Y (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Tue, 10 Mar 2020 10:56:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1583852183;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=F6Y9O3L6ux6zcyjxR98H17Ex0dxMm2pHA4GBIrRUtcw=;
-        b=Fx9SAMIsXOanlte0TY5PpiAEXhzuF3byF7Iq6JwbYeXjGEgjJ8MOa+8EGgAOMcHanwrQs6
-        C+L5F1dDbyYDipDwHhcvN1OSDm6+e5uHzTpJTZ91mx3rfaG53ZrxdtZJbDoqsXFs9jjymt
-        lljEyQ7/m9/zYL4LSKeEQ8s5c99Vjaw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-240-sfzD9SM5NJ6iyJlr4oKb0Q-1; Tue, 10 Mar 2020 10:56:19 -0400
-X-MC-Unique: sfzD9SM5NJ6iyJlr4oKb0Q-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 47CA919067E1;
-        Tue, 10 Mar 2020 14:56:17 +0000 (UTC)
-Received: from [10.36.117.85] (ovpn-117-85.ams2.redhat.com [10.36.117.85])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id A6F5E5C28D;
-        Tue, 10 Mar 2020 14:56:14 +0000 (UTC)
-Subject: Re: [kvm-unit-tests PATCH v4 00/13] arm/arm64: Add ITS tests
-To:     Zenghui Yu <yuzenghui@huawei.com>,
-        Andrew Jones <drjones@redhat.com>
-Cc:     eric.auger.pro@gmail.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-        peter.maydell@linaro.org, andre.przywara@arm.com, thuth@redhat.com,
-        alexandru.elisei@arm.com
-References: <20200309102420.24498-1-eric.auger@redhat.com>
- <20200309115741.6stx5tpkb6s6ejzh@kamzik.brq.redhat.com>
- <20200309120012.xkgmlbvd5trm6ewk@kamzik.brq.redhat.com>
- <5cfe64d3-e609-cd1e-4f92-e24cf5f62c77@huawei.com>
-From:   Auger Eric <eric.auger@redhat.com>
-Message-ID: <4a80c1d0-e33f-b1d9-c8d5-3a2fb01104db@redhat.com>
-Date:   Tue, 10 Mar 2020 15:56:13 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FbXt4QTP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39464 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jBkse-0003iF-MU
+	for alex.bennee@linaro.org; Tue, 10 Mar 2020 15:49:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35861)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1jBksL-0003gr-V0
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2020 15:49:15 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1jBksK-0001ys-Jr
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2020 15:49:13 -0400
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:35141)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1jBksK-0001xx-DY; Tue, 10 Mar 2020 15:49:12 -0400
+Received: by mail-io1-xd42.google.com with SMTP id h8so14085707iob.2;
+ Tue, 10 Mar 2020 12:49:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=uI3JFUHhKOPjEYddkRjvpoV1Wbus4myLT0ZKlUz2e8k=;
+ b=FbXt4QTPtEBYhXNQIALGPjvlKbzjTdneQdPmS+GAwxXzThsUQI7iLsTPT1ON08wfxu
+ Yb6UCt8VKs86ZS2/vadlI1OG5EBT5kbC7mmVHYMQwO4o0UYEoqps0s1hurLtm+slIRv9
+ yYrFfRC6tqMePKk6TvuzKn9vnH3MZUQZ9wyLB3axobBHvC7KA+GtKgzAX7ERnnGrkTvO
+ /rNdOSp31k2xIAmH0M00c54rUeV2NCHNcLwbPjtASouoyU1xWTR2aTih0nMREEFR6+NI
+ MKvfvtqLUWz5muSBJLmWKwFQOa9y7EnXqcH0bJ0tHDmx4zqfkLbcLK3sVPtbJRrKt2Xs
+ qAUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=uI3JFUHhKOPjEYddkRjvpoV1Wbus4myLT0ZKlUz2e8k=;
+ b=cyuydcsQy5yy77yWYdhACGTqIUoLDuZ6uDksV42CJRgaT9LUWzXjokJHxHrJ22pLB9
+ QifnSx+MkL66lAUFSafXDHWhw/rPXskCOYyBcAU7fx4ibz6/3h+sUfzWKTOnPBpnPQtM
+ db/piCvaB9RzL/zPJoO/PHQzGTl14JJyqiVh3liH1REZzXOU41IKtUs7JhK6fHziW0bG
+ +YIZNKtTrjKjFVGQYTkWVbsgH5i7ogxzJMy5zQ2N1ycG2WcksbrldwLMLA71/0f0b6vI
+ NpgGdzLp5q5tKcWd2bKKmGls7dwRtSGa82mGPsZbYXVVWUmXTEUh68ZaqQdKd0UT2dwh
+ yGTA==
+X-Gm-Message-State: ANhLgQ01OB2mtSDlLfsH3Y7t1sKKzBn1fOmwNK/9wy4X5Bg8aOlKh3IA
+ hJGATm+lq3gB6GEUSRLXuPM2XqlXBSzM2fm6Z2o=
+X-Received: by 2002:a02:caa8:: with SMTP id e8mr22139910jap.126.1583869751241; 
+ Tue, 10 Mar 2020 12:49:11 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <5cfe64d3-e609-cd1e-4f92-e24cf5f62c77@huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+References: <20200303091254.22373-1-imammedo@redhat.com>
+ <aef518d0-d8e5-7972-0530-8f8a4c64f1e1@redhat.com>
+ <20200306114838.27603031@redhat.com>
+In-Reply-To: <20200306114838.27603031@redhat.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Tue, 10 Mar 2020 20:49:00 +0100
+Message-ID: <CAPan3WqN4dFcsLz6eCrfA_MT-iQoOvmKxFYyq0=mZnVkEPG8QQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/cubieboard: make sure SOC object isn't leaked
+To: Igor Mammedov <imammedo@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000e4b07405a0856905"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::d42
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, drjones@redhat.com,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fGWdiU5riedj
+
+--000000000000e4b07405a0856905
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: zgBJV8BuibZC
 
-Hi Zenghui,
+Hi Igor,
 
-On 3/10/20 11:18 AM, Zenghui Yu wrote:
-> On 2020/3/9 20:00, Andrew Jones wrote:
->> On Mon, Mar 09, 2020 at 12:57:51PM +0100, Andrew Jones wrote:
->>> This looks pretty good to me. It just needs some resquashing cleanups=
-.
->>> Does Andre plan to review? I've only been reviewing with respect to
->>> the framework, not ITS. If no other reviews are expected, then I'll
->>> queue the next version.
->>
->> Oops, sorry Zenghui, I forgot to ask if you'll be reviewing again as
->> well.
->=20
-> I'd like to have a look again this week if time permits :-).=C2=A0 Than=
-ks
-> for reminding me.
-I have just sent:
+On Fri, Mar 6, 2020 at 11:49 AM Igor Mammedov <imammedo@redhat.com> wrote:
 
-[kvm-unit-tests PATCH v5 00/13] arm/arm64: Add ITS tests
+> On Fri, 6 Mar 2020 11:33:07 +0100
+> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+>
+> > On 3/3/20 10:12 AM, Igor Mammedov wrote:
+> > > SOC object returned by object_new() is leaked in current code.
+> > > Set SOC parent explicitly to board and then unref to SOC object
+> > > to make sure that refererence returned by object_new() is taken
+> > > care of.
+> > >
+> > > The SOC object will be kept alive by its parent (machine) and
+> > > will be automatically freed when MachineState is destroyed.
+> > >
+> > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > > Reported-by: Andrew Jones <drjones@redhat.com>
+> > > ---
+> > >   hw/arm/cubieboard.c | 7 ++++++-
+> > >   1 file changed, 6 insertions(+), 1 deletion(-)
+> > >
+> > > diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
+> > > index 089f9a30c1..12f8ac798d 100644
+> > > --- a/hw/arm/cubieboard.c
+> > > +++ b/hw/arm/cubieboard.c
+> > > @@ -30,9 +30,14 @@ static struct arm_boot_info cubieboard_binfo =3D {
+> > >
+> > >   static void cubieboard_init(MachineState *machine)
+> > >   {
+> > > -    AwA10State *a10 =3D AW_A10(object_new(TYPE_AW_A10));
+> > > +    AwA10State *a10;
+> > >       Error *err =3D NULL;
+> > >
+> >
+> > What about using object_new_with_props similarly to commit e4c81e3a451f=
+?
+> I prefer explicit object_property_add_child() and would use
+> above only if there are list of properties to feed to it.
+>
+>
+> >      a10 =3D AW_A10(object_new_with_props(TYPE_AW_A10, OBJECT(s), "soc"=
+,
+> >                                         &err, NULL));
+> >      if (err !=3D NULL) {
+> >          error_propagate(errp, err);
+> >          return;
+> >      }
+> >
+> > > +    a10 =3D AW_A10(object_new(TYPE_AW_A10));
+> > > +    object_property_add_child(OBJECT(machine), "soc", OBJECT(a10),
+> > > +                              &error_abort);
+> > > +    object_unref(OBJECT(a10));
+>
 
-where I took last Drew's comments
+Thanks, I added this same solution to the Allwinner H3 series, and its
+working fine there.
 
-Thanks
+Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 
-Eric
->=20
->=20
-> Zenghui
->=20
+
+> > > +
+> > >       object_property_set_int(OBJECT(&a10->emac), 1, "phy-addr", &err=
+);
+> > >       if (err !=3D NULL) {
+> > >           error_reportf_err(err, "Couldn't set phy address: ");
+> > >
+> >
+>
+>
+>
+
+--=20
+Niek Linnenbank
+
+--000000000000e4b07405a0856905
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hi Igor,<br></div><br><div class=3D"gmail=
+_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Mar 6, 2020 at 11:49 =
+AM Igor Mammedov &lt;<a href=3D"mailto:imammedo@redhat.com">imammedo@redhat=
+.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"mar=
+gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
+ex">On Fri, 6 Mar 2020 11:33:07 +0100<br>
+Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com" target=
+=3D"_blank">philmd@redhat.com</a>&gt; wrote:<br>
+<br>
+&gt; On 3/3/20 10:12 AM, Igor Mammedov wrote:<br>
+&gt; &gt; SOC object returned by object_new() is leaked in current code.<br=
+>
+&gt; &gt; Set SOC parent explicitly to board and then unref to SOC object<b=
+r>
+&gt; &gt; to make sure that refererence returned by object_new() is taken<b=
+r>
+&gt; &gt; care of.<br>
+&gt; &gt; <br>
+&gt; &gt; The SOC object will be kept alive by its parent (machine) and<br>
+&gt; &gt; will be automatically freed when MachineState is destroyed.<br>
+&gt; &gt; <br>
+&gt; &gt; Signed-off-by: Igor Mammedov &lt;<a href=3D"mailto:imammedo@redha=
+t.com" target=3D"_blank">imammedo@redhat.com</a>&gt;<br>
+&gt; &gt; Reported-by: Andrew Jones &lt;<a href=3D"mailto:drjones@redhat.co=
+m" target=3D"_blank">drjones@redhat.com</a>&gt;<br>
+&gt; &gt; ---<br>
+&gt; &gt;=C2=A0 =C2=A0hw/arm/cubieboard.c | 7 ++++++-<br>
+&gt; &gt;=C2=A0 =C2=A01 file changed, 6 insertions(+), 1 deletion(-)<br>
+&gt; &gt; <br>
+&gt; &gt; diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c<br>
+&gt; &gt; index 089f9a30c1..12f8ac798d 100644<br>
+&gt; &gt; --- a/hw/arm/cubieboard.c<br>
+&gt; &gt; +++ b/hw/arm/cubieboard.c<br>
+&gt; &gt; @@ -30,9 +30,14 @@ static struct arm_boot_info cubieboard_binfo =
+=3D {<br>
+&gt; &gt;=C2=A0 =C2=A0<br>
+&gt; &gt;=C2=A0 =C2=A0static void cubieboard_init(MachineState *machine)<br=
+>
+&gt; &gt;=C2=A0 =C2=A0{<br>
+&gt; &gt; -=C2=A0 =C2=A0 AwA10State *a10 =3D AW_A10(object_new(TYPE_AW_A10)=
+);<br>
+&gt; &gt; +=C2=A0 =C2=A0 AwA10State *a10;<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0Error *err =3D NULL;<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0<br>
+&gt; <br>
+&gt; What about using object_new_with_props similarly to commit e4c81e3a451=
+f?<br>
+I prefer explicit object_property_add_child() and would use<br>
+above only if there are list of properties to feed to it.<br>
+<br>
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 a10 =3D AW_A10(object_new_with_props(TYPE_AW_A10, =
+OBJECT(s), &quot;soc&quot;,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0&amp;err, NULL));<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 if (err !=3D NULL) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 error_propagate(errp, err);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; <br>
+&gt; &gt; +=C2=A0 =C2=A0 a10 =3D AW_A10(object_new(TYPE_AW_A10));<br>
+&gt; &gt; +=C2=A0 =C2=A0 object_property_add_child(OBJECT(machine), &quot;s=
+oc&quot;, OBJECT(a10),<br>
+&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;error_abort);<br>
+&gt; &gt; +=C2=A0 =C2=A0 object_unref(OBJECT(a10));<br></blockquote><div><b=
+r></div><div>Thanks, I added this same solution to the Allwinner H3 series,=
+ and its working fine there.</div><div><br></div><div>Tested-by: Niek Linne=
+nbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.=
+com</a>&gt;<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" sty=
+le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
+ng-left:1ex">
+&gt; &gt; +<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0object_property_set_int(OBJECT(&amp;a10=
+-&gt;emac), 1, &quot;phy-addr&quot;, &amp;err);<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (err !=3D NULL) {<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0error_reportf_err(err, &q=
+uot;Couldn&#39;t set phy address: &quot;);<br>
+&gt; &gt;=C2=A0 =C2=A0<br>
+&gt; <br>
+<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--000000000000e4b07405a0856905--

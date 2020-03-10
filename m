@@ -1,175 +1,229 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp646430lfc;
-        Tue, 10 Mar 2020 04:46:58 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvA1zv91ZnlUX7VrNf2hFRzrWZE6kRqJayUBcRsB1rLlFaDY9tuIr2zLrpEjqLpTdou7C4B
-X-Received: by 2002:a05:6214:118d:: with SMTP id t13mr17912933qvv.192.1583840818622;
-        Tue, 10 Mar 2020 04:46:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583840818; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp655999lfc;
+        Tue, 10 Mar 2020 04:56:56 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuh/mc74f3KGJR1CjCXz74Y8xhHkgxgSSMx1TqX2WNV18PQPCq8bYKR16JzhRvIXAwXBsra
+X-Received: by 2002:aed:2591:: with SMTP id x17mr6881633qtc.380.1583841416641;
+        Tue, 10 Mar 2020 04:56:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583841416; cv=none;
         d=google.com; s=arc-20160816;
-        b=uSmbLuPOWicL1eEILkcD4kZ3YI22Z/adR1WHhRYUfcs/mn0oJQVXG3R5HKCGWmKQay
-         ozPNn05s+QeXiiy3FK5AfrRhmHYpSQSHvXLNCx/NP8FsIFo3IattMdKhYrl9YzdXhROg
-         +0AozI7nD2M2l1jQrKEZOety38P0lNlfJ93CAz8q8VP5581m5Zv+UAq80fn5AF4fpK+9
-         g0FpurlASaK0LhcYWTFsqVLE6mefyUYi24cWBsgVOeOewbxeXGn6rEioRb1Dxue6DiS7
-         /b2C3G+4RzvkCa1nRJL5UsnYqCSKJzNMXI31JILGsNVgPz+nfow6VvqfWvRZMg4sOgGm
-         xnug==
+        b=hHBhkHorsiaTlgNtSVbP4cLutajrpiJtGHR2hu03F6KX40eCfDn0Fd3CK7UUkzHQSS
+         uSCMelKl5h2iigKMcYG2DEVoBKInDu5DdZDzlNhwqf90nz0nCSCT4ObyXAL4F8F9XHB1
+         JtDhJB0FA3Qn09xlcGalScLZUwhjBuhnHnRrvlyWJdiIcTDFVNON4Ow3JXWW+8Mm469E
+         au7BMy7VBCPIWzX8INSVvzhcjaYpESBStJz+fyBGvfhZQkiCRkSUYYZnEZev5D82AHMj
+         zAv7vEdsfDbQg/mvxc3Q27SqqUMIExOpjpdG3E9x/yhTAqv4iimfaum1M8uRNdF3B6Qv
+         SimA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:user-agent:in-reply-to:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=ZGqiBJ0CZ5WpkyFas6I7eUP/AIVUqtGGfpTG+U12qXY=;
-        b=aMMG4BFAhFBiQg+pE6+lsvA7dd5S/RuDpUlqwMcrUumvxkhTRLFM4ifTdRPnJccvz6
-         r527Hup2D6nV7i5VsmK3U5muejgEXScnSYzlsgmkPUFW6kM/GFR+XAifi6VG1ThFwY2a
-         ikiAxdaHDq1WDiUxxXOnBQXVPp0u3x3vp58Y+xELKKsHSDJ9MesYCiVPRfMXK39El985
-         Y+7GOdqi9UdKFVmRCLuBsUNye1XbPur/s7oNPIfxL6n6pultDALtghU1Zq6XjKZT6Al2
-         XzEMhjry0M7/zIeo0ONPOefzPhHgtHBkAX8jg6w+61hnYQx/mSMXFZkW/ey6KiyzpCKM
-         p4PQ==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=UF2oj+cKgMJeYLI2XQRz3YSlwHHTmmuAvfdu2Iex05Q=;
+        b=wq5hBLf0cs2mwGRLzjcIj86gvcuznOD69W6n2XgK3PkWEZeE1SPLwGkX/qg2IeOPdq
+         arVUoI9GdbC4CCjr1zZFjya8OZTIoLiSuc/1k/QLEERq7s4PAHQmqen8PW48kzz+wDW/
+         lFIetQysdTs+4ULtszKEjMOpv1/f2PRoZO5IZQfYlZGc1s2qCVgL+hF6H0INSgW9wB6T
+         PVK0Oxx6JsDrL9vOaLW28ysdV73rMLVuejE7gEefACOsWKSA6Hd5jOTWJxMdxT9mQ1JX
+         nQssvYKSF6TFVPgJa9L9ibtT0jkakKyUxY4988azVD8+0jfhtZxDsasMgBd0uegZx7Qo
+         xhrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=h0dMmd+X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=Fj5t5XMn;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t25si7304996qtr.245.2020.03.10.04.46.58
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Mar 2020 04:46:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id d26si7153746qto.210.2020.03.10.04.56.56;
+        Tue, 10 Mar 2020 04:56:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=h0dMmd+X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=Fj5t5XMn;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58608 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBdLd-0006LR-Vp
-	for alex.bennee@linaro.org; Tue, 10 Mar 2020 07:46:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42256)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kwolf@redhat.com>) id 1jBdKv-0005Vt-HX
- for qemu-arm@nongnu.org; Tue, 10 Mar 2020 07:46:14 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kwolf@redhat.com>) id 1jBdKt-0006Pg-Ip
- for qemu-arm@nongnu.org; Tue, 10 Mar 2020 07:46:13 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:44835
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kwolf@redhat.com>) id 1jBdKt-0006Mr-Bd
- for qemu-arm@nongnu.org; Tue, 10 Mar 2020 07:46:11 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 3D36F4A500;
+	Tue, 10 Mar 2020 07:56:56 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1KLwyaghtwdo; Tue, 10 Mar 2020 07:56:55 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 325954A51F;
+	Tue, 10 Mar 2020 07:56:55 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 877C24A4A0
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 10 Mar 2020 07:56:54 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2PvpZ6DPl0+2 for <kvmarm@lists.cs.columbia.edu>;
+ Tue, 10 Mar 2020 07:56:53 -0400 (EDT)
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
+ [205.139.110.61])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 741D14A1B0
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 10 Mar 2020 07:56:53 -0400 (EDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583840769;
+ s=mimecast20190719; t=1583841413;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZGqiBJ0CZ5WpkyFas6I7eUP/AIVUqtGGfpTG+U12qXY=;
- b=h0dMmd+X39KdVSWpSIfikExeFVd77UuA1MK1qR7ck0PPMDWcjwuOyMX1YrIRYrNLjSqtvn
- fnlaVpxs5wV2uHmVm2Q+nVWQEgezG4MPPqd9GPTIxbdXReMD+FX0G40zaal1eWhsg4cVX4
- DAy3NTTNlW5R8w2TKgW0WqSImxbPFGo=
+ bh=mkbbEKW7QEXShSOEzrtREPglmDREmtovE720FoZTixg=;
+ b=Fj5t5XMnV1YL3LKRFGqEAgpyYeGy+0kCX5hX/oCGEi5TvUlqDCI86rrK+ae2NIbDFcR0cV
+ 2Bpe26cp46cro89qnTLFmGl7hICkLxv5F7RhBCMLKUNm5ZZNDi1YUidXMmSDyJtqLgg1Cn
+ 4Aa1c7+OrnbjHd7mkgFZ4PCvxBFdKHw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-75-Sc4CF4rQPUqcyMlVXzSYDQ-1; Tue, 10 Mar 2020 07:46:05 -0400
-X-MC-Unique: Sc4CF4rQPUqcyMlVXzSYDQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-302-7XoWPANpNouHhszEpiwCag-1; Tue, 10 Mar 2020 07:56:51 -0400
+X-MC-Unique: 7XoWPANpNouHhszEpiwCag-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B2CCA108442C;
- Tue, 10 Mar 2020 11:46:02 +0000 (UTC)
-Received: from linux.fritz.box (unknown [10.36.118.104])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 74EEA10013A1;
- Tue, 10 Mar 2020 11:45:49 +0000 (UTC)
-Date: Tue, 10 Mar 2020 12:45:48 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Subject: Re: [PULL 00/33] Trivial branch patches
-Message-ID: <20200310114548.GA6926@linux.fritz.box>
-References: <20200309150837.3193387-1-laurent@vivier.eu>
- <20200309151621-mutt-send-email-mst@kernel.org>
- <8db36062-b45d-6c2e-c7d8-98dd2b9db06f@redhat.com>
- <0bb2eac1-74ab-bee8-e8d0-bac542562cdd@vivier.eu>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E5F13800EBD;
+ Tue, 10 Mar 2020 11:56:49 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 58D325C545;
+ Tue, 10 Mar 2020 11:56:44 +0000 (UTC)
+Date: Tue, 10 Mar 2020 12:56:42 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Subject: Re: [kvm-unit-tests PATCH v4 03/13] arm/arm64: gic: Introduce
+ setup_irq() helper
+Message-ID: <20200310115642.vr7rx3gacl6xpjrf@kamzik.brq.redhat.com>
+References: <20200309102420.24498-1-eric.auger@redhat.com>
+ <20200309102420.24498-4-eric.auger@redhat.com>
+ <20200309105601.3hm2kfhuufgxoydl@kamzik.brq.redhat.com>
+ <3e1e2c24-2f30-03f2-ca9c-a2d99aba0740@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <0bb2eac1-74ab-bee8-e8d0-bac542562cdd@vivier.eu>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+In-Reply-To: <3e1e2c24-2f30-03f2-ca9c-a2d99aba0740@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Cc: thuth@redhat.com, kvm@vger.kernel.org, maz@kernel.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
+ kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>, qemu-devel@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, Helge Deller <deller@gmx.de>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Alistair Francis <alistair@alistair23.me>, Greg Kurz <groug@kaod.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, Andrzej Zaborowski <balrogg@gmail.com>,
- Max Reitz <mreitz@redhat.com>, Aleksandar Markovic <amarkovic@wavecomp.com>,
- Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q2KqDo6DLrKT
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: myF+9DreFC31
 
-Am 10.03.2020 um 09:02 hat Laurent Vivier geschrieben:
-> Le 09/03/2020 =E0 20:30, Philippe Mathieu-Daud=E9 a =E9crit=A0:
-> > On 3/9/20 8:17 PM, Michael S. Tsirkin wrote:
-> >> On Mon, Mar 09, 2020 at 04:08:04PM +0100, Laurent Vivier wrote:
-> >>> The following changes since commit
-> >>> 7a5853cec479a448edae0fb2aaf4e2f78c9c774d:
-> >>>
-> >>> =A0=A0 Merge remote-tracking branch 'remotes/mst/tags/for_upstream' i=
-nto
-> >>> staging (2020-03-09 10:32:53 +0000)
-> >>>
-> >>> are available in the Git repository at:
-> >>>
-> >>> =A0=A0 git://github.com/vivier/qemu.git tags/trivial-branch-pull-requ=
-est
-> >>>
-> >>> for you to fetch changes up to 916c92503bd5348a33e561db600d8894bde636=
-bb:
-> >>>
-> >>> =A0=A0 monitor/hmp-cmds: Remove redundant statement in
-> >>> hmp_rocker_of_dpa_groups() (2020-03-09 15:59:31 +0100)
+On Tue, Mar 10, 2020 at 12:00:19PM +0100, Auger Eric wrote:
+> Hi Drew,
+> On 3/9/20 11:56 AM, Andrew Jones wrote:
+> > On Mon, Mar 09, 2020 at 11:24:10AM +0100, Eric Auger wrote:
+> >> ipi_enable() code would be reusable for other interrupts
+> >> than IPI. Let's rename it setup_irq() and pass an interrupt
+> >> handler pointer.
 > >>
+> >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > >>
-> >> Could you avoid CC everyone involved on the whole PULL req?
-> >> I was involved in a patch or two and don't really need to see
-> >> the whole series. Just the cover and the relevant patches
-> >> would be enough - if I do want it there's always lore.
-> >=20
-> > I suppose Laurent used git-publish, which has this limitation.
-> >=20
->=20
-> Yes, I use git publish and CC are automatically added.
->=20
-> Philippe, you told me some time ago you have a patch to fix this
-> behaviour and only CC people on a patch base. Is it available?
+> >> ---
+> >>
+> >> v2 -> v3:
+> >> - do not export setup_irq anymore
+> >> ---
+> >>  arm/gic.c | 20 +++++++-------------
+> >>  1 file changed, 7 insertions(+), 13 deletions(-)
+> >>
+> >> diff --git a/arm/gic.c b/arm/gic.c
+> >> index fcf4c1f..abf08c7 100644
+> >> --- a/arm/gic.c
+> >> +++ b/arm/gic.c
+> >> @@ -34,6 +34,7 @@ static struct gic *gic;
+> >>  static int acked[NR_CPUS], spurious[NR_CPUS];
+> >>  static int bad_sender[NR_CPUS], bad_irq[NR_CPUS];
+> >>  static cpumask_t ready;
+> >> +typedef void (*handler_t)(struct pt_regs *regs __unused);
+> > 
+> > This is just irq_handler_fn, which is already defined in processor.h.
+> > We don't need the __unused, not since 6b07148d06b1 ("Replace -Wextra
+> > with a saner list of warning flags").
+> Shall I duplicate it into ./lib/arm/asm/processor.h as well?
 
-Actually, I don't think it's even necessary to CC anyone at all (except
-the relevant lists) for pull requests. These patches were already
-reviewed.
+Yes, please do
 
-Kevin
+Thanks,
+drew
+> 
+> Thanks
+> 
+> Eric
+> > 
+> >>  
+> >>  static void nr_cpu_check(int nr)
+> >>  {
+> >> @@ -215,20 +216,20 @@ static void ipi_test_smp(void)
+> >>  	report_prefix_pop();
+> >>  }
+> >>  
+> >> -static void ipi_enable(void)
+> >> +static void setup_irq(handler_t handler)
+> >>  {
+> >>  	gic_enable_defaults();
+> >>  #ifdef __arm__
+> >> -	install_exception_handler(EXCPTN_IRQ, ipi_handler);
+> >> +	install_exception_handler(EXCPTN_IRQ, handler);
+> >>  #else
+> >> -	install_irq_handler(EL1H_IRQ, ipi_handler);
+> >> +	install_irq_handler(EL1H_IRQ, handler);
+> >>  #endif
+> >>  	local_irq_enable();
+> >>  }
+> >>  
+> >>  static void ipi_send(void)
+> >>  {
+> >> -	ipi_enable();
+> >> +	setup_irq(ipi_handler);
+> >>  	wait_on_ready();
+> >>  	ipi_test_self();
+> >>  	ipi_test_smp();
+> >> @@ -238,7 +239,7 @@ static void ipi_send(void)
+> >>  
+> >>  static void ipi_recv(void)
+> >>  {
+> >> -	ipi_enable();
+> >> +	setup_irq(ipi_handler);
+> >>  	cpumask_set_cpu(smp_processor_id(), &ready);
+> >>  	while (1)
+> >>  		wfi();
+> >> @@ -295,14 +296,7 @@ static void ipi_clear_active_handler(struct pt_regs *regs __unused)
+> >>  static void run_active_clear_test(void)
+> >>  {
+> >>  	report_prefix_push("active");
+> >> -	gic_enable_defaults();
+> >> -#ifdef __arm__
+> >> -	install_exception_handler(EXCPTN_IRQ, ipi_clear_active_handler);
+> >> -#else
+> >> -	install_irq_handler(EL1H_IRQ, ipi_clear_active_handler);
+> >> -#endif
+> >> -	local_irq_enable();
+> >> -
+> >> +	setup_irq(ipi_clear_active_handler);
+> >>  	ipi_test_self();
+> >>  	report_prefix_pop();
+> >>  }
+> >> -- 
+> >> 2.20.1
+> >>
+> 
+> 
 
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

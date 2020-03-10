@@ -1,234 +1,126 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp699494lfc;
-        Tue, 10 Mar 2020 05:36:27 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsHSQkX4wHs2W47XBfMwlrRB2RfvnKm0dS8/LOGPL1LWCblTWXf/9wlp6uM54Gqb9RHT8cV
-X-Received: by 2002:ad4:5882:: with SMTP id dz2mr18031013qvb.132.1583843787628;
-        Tue, 10 Mar 2020 05:36:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583843787; cv=none;
-        d=google.com; s=arc-20160816;
-        b=C4uWskZTF+cOaO8lj7UokuDUmz9xz3hUkZ4BdiekKzvs6Ti9frqa+OUlJQlfEYoavU
-         lS0CsBhy+PSeygiwvAszg9ovWeUN7iUz+4KQD0tH/62xUeQQGgpQqTcjEhRLZ4GYP/42
-         07VvE+zrbD92iB54ixBoIGuC8EoXoy3eueWQC4vr+GFcoYTMrC9Uybi1rx8Sg9J/o9Gj
-         TbPxTB7EeCkPVrol546bceI/ABwbHhFDeEETCS+qKcwOdjdkMUI9Juk9DkrRheZ2tC6s
-         Ky6dR1IfGhbZ7MIRBl7Uj1gKCYpP0xo0m3UityMaR59zKxjp2o5HkrOXxL26MlunXXlQ
-         Anbw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject;
-        bh=zZ7Rq2SU6QuPO3hgMFiZM812Ce4Cschym5F5nmlSWFg=;
-        b=xD/HNkHAzOO78UeLr/1U/jrZnC9jFz6hEragCXGyqnSbzjLgJ+GgP3x7jplsjxChSZ
-         /ql6wfhndkcuBfPVYXvlrIBihBOrs/MHgMqPJHM2z8ECChsYeT/kuyHM5BKYrtV2ihqD
-         9UBn4+W15m81A4fQoq0ejhnMM8glP5m7wZR9biJkhY80V3f+yQb3M45buCos1mK1Q894
-         rtaNS0iDgM8TVFtwJmntGYMVR01gucjjfzDb9PBJ+w9T4gyyRNiHYoR9IPVcFFTSTvBi
-         ZC+nFy39l3pmHJSlNjm69ZEMhnePReoaJcWwGW+MVSo41Hx2nTioIKF2AC9PnRsdcQFP
-         /D/g==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g19si7410400qtu.254.2020.03.10.05.36.27
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Mar 2020 05:36:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59920 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBe7X-0000PA-22
-	for alex.bennee@linaro.org; Tue, 10 Mar 2020 08:36:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33615)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jBe6c-0007p2-Db
- for qemu-devel@nongnu.org; Tue, 10 Mar 2020 08:35:31 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jBe6b-0008L5-54
- for qemu-devel@nongnu.org; Tue, 10 Mar 2020 08:35:30 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:59779)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jBe6V-0007wZ-8H; Tue, 10 Mar 2020 08:35:23 -0400
-Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1McXs5-1jlWfn0Gx3-00d0AR; Tue, 10 Mar 2020 13:34:34 +0100
-Subject: Re: [PULL 00/33] Trivial branch patches
-To: Kevin Wolf <kwolf@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>
-References: <20200309150837.3193387-1-laurent@vivier.eu>
- <20200309151621-mutt-send-email-mst@kernel.org>
- <8db36062-b45d-6c2e-c7d8-98dd2b9db06f@redhat.com>
- <0bb2eac1-74ab-bee8-e8d0-bac542562cdd@vivier.eu>
- <20200310114548.GA6926@linux.fritz.box>
- <ced636a7-dbda-9247-5dd7-37e8c2ccabce@redhat.com>
- <20200310121300.GD6926@linux.fritz.box>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <28fb5e38-48c1-e640-90d2-830924ad93d3@vivier.eu>
-Date: Tue, 10 Mar 2020 13:34:29 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id y69sm4254503wmd.46.2020.03.10.06.30.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Mar 2020 06:30:26 -0700 (PDT)
+Received: from zen.home.arpa (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id C0ECD1FF7E;
+	Tue, 10 Mar 2020 13:30:24 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: peter.maydell@linaro.org,
+	qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH] docs/system: add a little more detail to ARM machines
+Date: Tue, 10 Mar 2020 13:30:20 +0000
+Message-Id: <20200310133020.27196-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <20200310121300.GD6926@linux.fritz.box>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:qPob5bEhxxf2oCVXsTbluzu1WU+AQrrkifSiGqobVrxhsys/OtP
- ryZ4/C5bvOmzc+UP8oiWHmPgxFtXXE9pDMnsiup+l1F8YqlScZoh9uMukHPzDFOWWyhotGf
- zu72Cevt1vCkrmaw52cK91GiSqx7950cZRRP1U6El19F32NQci2KlC9ST0WcSkMTzisGYw4
- Ngg8HTrern4qb8Ai3eccA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:s9+upii/4B0=:oC45h7Z1mZynwAEsAFOGKS
- iQ6Ukc/r9TLf7pWDUUcVLajK727W5bvK5N4IXQswLJQHiuF/ylZAlElXDE49es1zy8XtZ4qdj
- Nn2FRoLcXtQ2owh1cBrEDMW/QPIFXEYfiA6lE/WX+JxERgX9ObcRbCp24YqfmSDezgb3woghl
- YN71HwCrG9WV0B5rUMPvUFl2l5xLcekYofIWnEAs+guDHNJgjD3kUhgZNTS5i9U0HEoZqEI6P
- bo+nQYgE8jLO8Q/dgu5ii49+EA2h/iBR5aIG63WYfhbH5udZkNzsr7Jng7c5JNGF4mjOypWll
- pT/3MtFboKJ7az8JCMrhCvi+eUda6NbXvtCg22XrRfvq42OfHRdsfvCc/v0uWhjNeSU2nA/R4
- gZcvDCIgCkZ8sGdML3e0x8dH2CpiIO0/wDeHWfAOBQbCphWDMgxNalImbMlJqE51RMKpUCCr9
- UfYc67Kr7L5AkNYFOImOcdycPXJfrTLvF/GZXY4zCRiVV9q7ysmC0zsylS+mRZ+0RESQVfkHZ
- fkm8RtDaP9jz4DpZL7gX37mpl1uoe19iUtdIhWJZdPJWCtO/WcVicjPoV6Ije1o2n/aSukSQJ
- CHM1GG0CHUIcZGSMBKvg9ISVsp57uuUqpv4Q2ZvaJtc6nf0psUXXljYn//m0YD9Rw/dMHkmQK
- OFABbKlIROZqnLd4FktmNEp0pCStGpi0cFjy5QkocpcIkCUVnjZjYH/MvP8KSc4ioIA/nw5F9
- f4h91Gfb77ClnLqVnL1009+2B1VQM4dXC07VVgG9vs5oXV2mCI45+EC8bu7wyFyJsZker2upP
- nB/vE1wSuU0N9k4KS9leX8HFwoybcURdjvHPUrAEieAHbJUu8GP28zIdJM8zyfSIjyUUfNm
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>, qemu-devel@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, Helge Deller <deller@gmx.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Alistair Francis <alistair@alistair23.me>, Greg Kurz <groug@kaod.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, Max Reitz <mreitz@redhat.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 75ipiaHFUQnf
+X-TUID: 6y3XGHG48eA6
 
-Le 10/03/2020 à 13:13, Kevin Wolf a écrit :
-> Am 10.03.2020 um 13:00 hat Philippe Mathieu-Daudé geschrieben:
->> On 3/10/20 12:45 PM, Kevin Wolf wrote:
->>> Am 10.03.2020 um 09:02 hat Laurent Vivier geschrieben:
->>>> Le 09/03/2020 à 20:30, Philippe Mathieu-Daudé a écrit :
->>>>> On 3/9/20 8:17 PM, Michael S. Tsirkin wrote:
->>>>>> On Mon, Mar 09, 2020 at 04:08:04PM +0100, Laurent Vivier wrote:
->>>>>>> The following changes since commit
->>>>>>> 7a5853cec479a448edae0fb2aaf4e2f78c9c774d:
->>>>>>>
->>>>>>>     Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into
->>>>>>> staging (2020-03-09 10:32:53 +0000)
->>>>>>>
->>>>>>> are available in the Git repository at:
->>>>>>>
->>>>>>>     git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
->>>>>>>
->>>>>>> for you to fetch changes up to 916c92503bd5348a33e561db600d8894bde636bb:
->>>>>>>
->>>>>>>     monitor/hmp-cmds: Remove redundant statement in
->>>>>>> hmp_rocker_of_dpa_groups() (2020-03-09 15:59:31 +0100)
->>>>>>
->>>>>>
->>>>>> Could you avoid CC everyone involved on the whole PULL req?
->>>>>> I was involved in a patch or two and don't really need to see
->>>>>> the whole series. Just the cover and the relevant patches
->>>>>> would be enough - if I do want it there's always lore.
->>>>>
->>>>> I suppose Laurent used git-publish, which has this limitation.
->>>>>
->>>>
->>>> Yes, I use git publish and CC are automatically added.
->>>>
->>>> Philippe, you told me some time ago you have a patch to fix this
->>>> behaviour and only CC people on a patch base. Is it available?
->>
->> I guess you mean https://github.com/philmd/git-publish/commit/5bab6e2cc77, I
->> haven't improved it but plan to spend time on it during my next holidays.
->>
->>> Actually, I don't think it's even necessary to CC anyone at all (except
->>> the relevant lists) for pull requests. These patches were already
->>> reviewed.
->>
->> Well as a contributor I find useful to get notified when patches are merged.
-> 
-> Hm, I guess a matter of different preferences then.
-> 
->> I guess remember some time ago patchew (or another bot?) was sending a
->> notification on pull request merged, this was even more useful than Cc'ing
->> ppl on pull-req. It is also helpful when you track someone else patch on the
->> list.
->> Since most of the maintainers now include the patch RFC822 Message-Id, it is
->> now easy for a bot to reply to patch taken from the last.
-> 
-> I don't remember anything like this, but having an automatic reply to
-> the email thread of each merged patch series might be a good idea.
+Taking from the wiki page mention:
 
-I receive an email for each merge [1]
+  - both 32 and 64 bit architectures
+  - the roll of A/M profile chips
+  - warn about kernel portability
+  - gently suggest -M virt
+  - add headlines for groups of boards
 
-There is a mailing list for that:
+This is still incomplete but hopefully is a less of a straight dive
+into a dry list of peripherals.
 
-https://lists.nongnu.org/mailman/listinfo/qemu-commits
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ docs/system/target-arm.rst | 47 +++++++++++++++++++++++++++++++++++---
+ 1 file changed, 44 insertions(+), 3 deletions(-)
 
-Thanks,
-Laurent
-
-[1] https://lists.nongnu.org/archive/html/qemu-commits/2020-03/index.html
+diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+index d2a3b44ce88..28aaef011d6 100644
+--- a/docs/system/target-arm.rst
++++ b/docs/system/target-arm.rst
+@@ -3,8 +3,35 @@
+ ARM System emulator
+ -------------------
+ 
+-Use the executable ``qemu-system-arm`` to simulate a ARM machine. The
+-ARM Integrator/CP board is emulated with the following devices:
++Use the executable ``qemu-system-arm`` to simulate a 32 bit ARM
++machine. The ``qemu-system-aarch64`` executable is used to simulate
++the 64 bit ARM AArch64 architecture. AArch64 CPUs can often include an
++AArch32 execution unit and execute a mix of 64 and 32 bit code.
++
++The emulator supports both "A-profile" and "M-profile" CPUs. The
++A-profile CPUs have a full MMU and can run things like the Linux while
++the M-profile CPUs are typically used in embedded micro-controller
++boards.
++
++Because ARM systems differ so much and in fundamental ways, typically
++operating system or firmware images intended to run on one machine
++will not run at all on any other.
++
++If you don't care about running on a particular piece of hardware the
++``-M virt`` board provides a PCI based virtio board which can be
++configured with a range of RAM sizes, CPU types and virtio based
++peripherals. It is generally the target you want to use if general
++purpose operating systems.
++
++Otherwise a range of other machine types are available. Passing ``-M
++help`` to the command line will list them all. They include the
++following:
++
++ARM Integrator/CP
++~~~~~~~~~~~~~~~~~
++
++This is a development board intended for prototyping and developing
++ARM-based devices.
+ 
+ -  ARM926E, ARM1026E, ARM946E, ARM1136 or Cortex-A8 CPU
+ 
+@@ -18,7 +45,11 @@ ARM Integrator/CP board is emulated with the following devices:
+ 
+ -  PL181 MultiMedia Card Interface with SD card.
+ 
+-The ARM Versatile baseboard is emulated with the following devices:
++ARM Versatile/Versatile Express
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++
++Another family of development boards. The more recent Versatile
++Express boards are designed for modern Cortex processors.
+ 
+ -  ARM926E, ARM1136 or Cortex-A8 CPU
+ 
+@@ -45,6 +76,9 @@ The ARM Versatile baseboard is emulated with the following devices:
+ 
+ -  PL181 MultiMedia Card Interface with SD card.
+ 
++ARM RealView
++~~~~~~~~~~~~
++
+ Several variants of the ARM RealView baseboard are emulated, including
+ the EB, PB-A8 and PBX-A9. Due to interactions with the bootloader, only
+ certain Linux kernel configurations work out of the box on these boards.
+@@ -77,6 +111,9 @@ The following devices are emulated:
+ 
+ -  PL181 MultiMedia Card Interface with SD card.
+ 
++Various PDA machines
++~~~~~~~~~~~~~~~~~~~~
++
+ The XScale-based clamshell PDA models (\"Spitz\", \"Akita\", \"Borzoi\"
+ and \"Terrier\") emulation includes the following peripherals:
+ 
+@@ -156,6 +193,10 @@ Nokia N800 and N810 internet tablets (known also as RX-34 and RX-44 /
+ -  Nokia RETU and TAHVO multi-purpose chips with an RTC, connected
+    through CBUS
+ 
++
++M-profile boards
++~~~~~~~~~~~~~~~~
++
+ The Luminary Micro Stellaris LM3S811EVB emulation includes the following
+ devices:
+ 
+-- 
+2.20.1

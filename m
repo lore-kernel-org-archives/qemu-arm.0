@@ -1,145 +1,90 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp500109lfc;
-        Tue, 10 Mar 2020 02:19:45 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuMNeZLsYuQl2PnD3s5Tzcb4IGrOHxJXsm771L/5u7OuCSuyxMCa1xZrlFflL0MljFRMdyW
-X-Received: by 2002:a0c:fa03:: with SMTP id q3mr1477302qvn.228.1583831985687;
-        Tue, 10 Mar 2020 02:19:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583831985; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp558063lfc;
+        Tue, 10 Mar 2020 03:19:12 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vu7o3S1JPEYcTIfNJfOT80FBJLPdkeuQXlmnqgybWjvnrFoARO/6Z8+9lMBOYVP8r5xqFcA
+X-Received: by 2002:aca:a9d4:: with SMTP id s203mr615049oie.106.1583835552592;
+        Tue, 10 Mar 2020 03:19:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583835552; cv=none;
         d=google.com; s=arc-20160816;
-        b=ERdVfQcSIa/GRd0fI8A0CjgY0XlFpAHSC5c+BAw6rst+fkwj5P2T70ZWaCElPOmsEr
-         oWr6rA0jET5GUGbDGojcrt0KKh6H4cmk5YlvRw+XFWyUQvHgtiAVhOhKqneuAzFAoohv
-         76jNJNvuU5mZhe/9P1Q3ffesnmm6x6HhBtXalfHJxrFisv9/Em7S2toj8toL/ye2TsGl
-         zmTsiOiF941w6la2rZ582QhOhqruLPvj67GlJy7bk90ZzeivJyPkqytTKJHLpiXXigBO
-         C66z4fZla9LTV1RRD0cqd9dlh8pGis2djeQlooaO0XMmVmWNSUMXM1+IsMmgkwNZN2fx
-         hawQ==
+        b=xvaBlq12m7zb3gZorf2KJidE7lEU+WR8rA5FmK9RMSqNTfBHG+8zTUM6geFnlVMX45
+         3zHuMkAF69fwzVRVzgEx+XSKVN9rbSXsS/jYOvzEi0IMPezF7umm2eR2CwEW9AxdQ9ht
+         8MOKfnbIhNkesvDEZJ5lwE3KC4ZHAyOSjOiCFaoVDE3CC8X/GBMJ4ouXN3eBNeHuqfxR
+         ISR6ZPZIj0WNn3TOMwZ3uTTyHuHBCEQ6v4wExS7eVMq0itYm7NbcvvuLhwZVmcuCFM9s
+         P6r6xjqHmnIdPR/kZwNGN2O7OGe5MXq+ZS0eQzGJJkrWktd2IPiPti0+TvuvUveAnM2R
+         HLug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=FK+haxzUA06DO7rGgwpajrWZiXXMklajLbEYs4yThOM=;
-        b=fR4ZswTI5IB2q6yGnP/6g5NyVh/R4B8YAO5qVtzQV+4WWcZnXyTP4qaXdYIUnXMOfw
-         1pjxCXTQbUSZFZfSOw2sE/u0Rxd4seqN4plqKMp4/nu0nNtRfhKcO0tzzyYO0fQSWzpL
-         cYnxnD/j4KrHhvoJteMjsbevWQk36e+rXf5/zQjwumHrQxvs1XbwP1eTVQVLVjyLwjsD
-         aUBTtP7v0/gZfQ6T0ul9VajYskWdVgWy5px/LuMzUwVW2fmUfcSx453MW7WAkOY2Di5h
-         ZU84biPDMKg4TeGRf4e4doyxb75cFqcIa2ZhUKI/wVytRtOVbT4suWrH2T5wHhuKPzo5
-         YcZg==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=+p4hsvJjbI9xui00AeEptqJEi+UQFyMFOxMUh/5tAmc=;
+        b=xetCDAhraqrJEzFOEPdAVRjF3oXFu6qsc8DUgcqajxXcRXvXsjTjE+4XYGJRuKRnlF
+         g5RhO6s66PU/kO7xXPQz9tFhQlXN+OOmNI8vIa++ASzD2L24GKvafuD6Sv0B+wJ/BOnX
+         Ka0KRsEyI4PipQ/DK3eUArgtzrV1LD3LwCCJW9ckR/J131VLwAjmxuaK1VKIFhrGALqv
+         x0aZa1dfrkjHLfVpEZha0YN+8cqBx8ZUamFtjea1ao5uBW5CFt60iN8uvu+xCiX2JWxm
+         RmqAE/5O8ysZHRHD9uCCbX7zwghgE5j2yzTO69yYrtANLwmt1QkrCONwJZN9Xa/F/WQ9
+         MqmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z67si7358721qka.219.2020.03.10.02.19.45
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Mar 2020 02:19:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id p9si7712282oth.91.2020.03.10.03.19.12;
+        Tue, 10 Mar 2020 03:19:12 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55886 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBb3B-00029E-6V
-	for alex.bennee@linaro.org; Tue, 10 Mar 2020 05:19:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37401)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <zhukeqian1@huawei.com>) id 1jBb2r-0001lH-7X
- for qemu-arm@nongnu.org; Tue, 10 Mar 2020 05:19:27 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <zhukeqian1@huawei.com>) id 1jBb2q-0005xH-3V
- for qemu-arm@nongnu.org; Tue, 10 Mar 2020 05:19:25 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3269 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
- id 1jBb2p-0005ih-N1; Tue, 10 Mar 2020 05:19:24 -0400
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 3DD00CAF2E97E0FBE086;
- Tue, 10 Mar 2020 17:19:19 +0800 (CST)
-Received: from linux-kDCJWP.huawei.com (10.175.104.212) by
- DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
- 14.3.487.0; Tue, 10 Mar 2020 17:19:09 +0800
-From: Keqian Zhu <zhukeqian1@huawei.com>
-To: <qemu-devel@nongnu.org>
-Subject: [PATCH v2 1/2] memory: Introduce start_global variable in dirty
- bitmap sync
-Date: Tue, 10 Mar 2020 17:17:03 +0800
-Message-ID: <20200310091704.42340-2-zhukeqian1@huawei.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20200310091704.42340-1-zhukeqian1@huawei.com>
-References: <20200310091704.42340-1-zhukeqian1@huawei.com>
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726199AbgCJKTI (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 10 Mar 2020 06:19:08 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:51360 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1726164AbgCJKTI (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 10 Mar 2020 06:19:08 -0400
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id A427CD65A2219E0EC76E;
+        Tue, 10 Mar 2020 18:19:05 +0800 (CST)
+Received: from [127.0.0.1] (10.173.222.27) by DGGEMS405-HUB.china.huawei.com
+ (10.3.19.205) with Microsoft SMTP Server id 14.3.487.0; Tue, 10 Mar 2020
+ 18:18:51 +0800
+Subject: Re: [kvm-unit-tests PATCH v4 00/13] arm/arm64: Add ITS tests
+To:     Andrew Jones <drjones@redhat.com>,
+        Eric Auger <eric.auger@redhat.com>
+CC:     <eric.auger.pro@gmail.com>, <maz@kernel.org>,
+        <kvmarm@lists.cs.columbia.edu>, <kvm@vger.kernel.org>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+        <peter.maydell@linaro.org>, <andre.przywara@arm.com>,
+        <thuth@redhat.com>, <alexandru.elisei@arm.com>
+References: <20200309102420.24498-1-eric.auger@redhat.com>
+ <20200309115741.6stx5tpkb6s6ejzh@kamzik.brq.redhat.com>
+ <20200309120012.xkgmlbvd5trm6ewk@kamzik.brq.redhat.com>
+From:   Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <5cfe64d3-e609-cd1e-4f92-e24cf5f62c77@huawei.com>
+Date:   Tue, 10 Mar 2020 18:18:50 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.175.104.212]
+In-Reply-To: <20200309120012.xkgmlbvd5trm6ewk@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.173.222.27]
 X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.191
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Keqian Zhu <zhukeqian1@huawei.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>, wanghaibin.wang@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OsocD3lQz86f
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: a5D6Xj2cIo8d
 
-In the cpu_physical_memory_sync_dirty_bitmap func, use start_global
-variable to make code more clear. And the addr variable is only used
-in slow path, so move it to slow path.
+On 2020/3/9 20:00, Andrew Jones wrote:
+> On Mon, Mar 09, 2020 at 12:57:51PM +0100, Andrew Jones wrote:
+>> This looks pretty good to me. It just needs some resquashing cleanups.
+>> Does Andre plan to review? I've only been reviewing with respect to
+>> the framework, not ITS. If no other reviews are expected, then I'll
+>> queue the next version.
+> 
+> Oops, sorry Zenghui, I forgot to ask if you'll be reviewing again as
+> well.
 
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
----
- include/exec/ram_addr.h | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+I'd like to have a look again this week if time permits :-).  Thanks
+for reminding me.
 
-diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
-index 5e59a3d8d7..8311efb7bc 100644
---- a/include/exec/ram_addr.h
-+++ b/include/exec/ram_addr.h
-@@ -445,14 +445,13 @@ uint64_t cpu_physical_memory_sync_dirty_bitmap(RAMB=
-lock *rb,
-                                                ram_addr_t length,
-                                                uint64_t *real_dirty_page=
-s)
- {
--    ram_addr_t addr;
--    unsigned long word =3D BIT_WORD((start + rb->offset) >> TARGET_PAGE_=
-BITS);
-+    ram_addr_t start_global =3D start + rb->offset;
-+    unsigned long word =3D BIT_WORD(start_global >> TARGET_PAGE_BITS);
-     uint64_t num_dirty =3D 0;
-     unsigned long *dest =3D rb->bmap;
-=20
-     /* start address and length is aligned at the start of a word? */
--    if (((word * BITS_PER_LONG) << TARGET_PAGE_BITS) =3D=3D
--         (start + rb->offset) &&
-+    if (((word * BITS_PER_LONG) << TARGET_PAGE_BITS) =3D=3D start_global=
- &&
-         !(length & ((BITS_PER_LONG << TARGET_PAGE_BITS) - 1))) {
-         int k;
-         int nr =3D BITS_TO_LONGS(length >> TARGET_PAGE_BITS);
-@@ -495,11 +494,11 @@ uint64_t cpu_physical_memory_sync_dirty_bitmap(RAMB=
-lock *rb,
-             memory_region_clear_dirty_bitmap(rb->mr, start, length);
-         }
-     } else {
--        ram_addr_t offset =3D rb->offset;
-+        ram_addr_t addr;
-=20
-         for (addr =3D 0; addr < length; addr +=3D TARGET_PAGE_SIZE) {
-             if (cpu_physical_memory_test_and_clear_dirty(
--                        start + addr + offset,
-+                        start_global + addr,
-                         TARGET_PAGE_SIZE,
-                         DIRTY_MEMORY_MIGRATION)) {
-                 *real_dirty_pages +=3D 1;
---=20
-2.19.1
 
+Zenghui

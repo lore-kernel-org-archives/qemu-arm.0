@@ -1,97 +1,97 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1193391lfc;
-        Tue, 10 Mar 2020 13:54:22 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuWiV+3JW7JQNYjQ+O1DuZWJ07jlZqFrmhRxBllqxslvevONODrSVdkP5nizUCUcqIo2D3z
-X-Received: by 2002:a05:620a:895:: with SMTP id b21mr21617014qka.318.1583873662599;
-        Tue, 10 Mar 2020 13:54:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583873662; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1196704lfc;
+        Tue, 10 Mar 2020 13:58:35 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuYlrxfFV3FLDC8xQ4F/TKB4Xm6LLhKEIn2kDIF2NgGnMzCBrrs3YKTAHZoAfnBgE+NsJX/
+X-Received: by 2002:ad4:45a7:: with SMTP id y7mr100372qvu.146.1583873915304;
+        Tue, 10 Mar 2020 13:58:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583873915; cv=none;
         d=google.com; s=arc-20160816;
-        b=qbFgu3OjN/jfngaxWSzvehgI+V9Ga0OibhOO/2jD0UL5UimwYblpxgIqlczzkk4xk7
-         1clHws6/J4PJJiAFMSjlHQKN50mRrEo7roWQIlqygfNcM78wQY0FCiYysShqD7Di7MTY
-         2k50Wy7QrQBA+YonFIMZao6bIkZDKr31JOCZVh4mCQZRiDGbGC0L7eVlzYMdPphLNF5z
-         TqqXpzUvBVCR9szuHgklo5wQ0NgactaWEOH45+iqgKE+TSsBRS2c7lIc5TOeNsBfX08s
-         3qXlVSwLfRHTlyYbTu6UfO0EWtjGFd/bFBmE2/6lr8qaF1xZlA4ps1cEdWAGxRBp0SfN
-         oofA==
+        b=Ti171nyfIIkG/tbJjnEMvFm+o4r3+K3KS0Dv+FLd60eQgxmrStWWAMa9UhJchN5G1g
+         hfh0x9t9wP42+DHhVruHLNYEYo/hSmNqRbhvXNjai/5tRrZ89fCQSzHhMo6PCkAFr2cJ
+         8ZGLcjltTiQ2uD0RSV84oro1quSNthMJJu7Z3lSSsW2/HRCLCqwW4SAdqpWS+g4O8jx9
+         kkZDuIhB/WMgvgeiPvNs4ynHDpDO7j1hqFro+AeSEjZ04y1jCy3l9lD0ZlkyQJOtdPKy
+         WHQBQ5etEh4XJhUjGBHXGNngjXrV1n76bFnZkj6wHbNn1G3GjMb8g5VpUf4q/T01gEc6
+         +UpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=lUFLPcazjwZSnqvjJ233PgYZdDDi3AdDtEXYGJBfnnA=;
-        b=e6IaQ2RtRK4LVW/lSw5hxe5DhZbV1YbuZKMBEPHyLKP2QmkZQ0sbUo4rslyvZ3JDHe
-         dHi3P4+hMbRLl9QuzerJocClcLUTvkLQUITTvfkZzml98fOJJuAgx+Bsmclj/pHQW0JT
-         l4y6Sc50HJo7pozDaOr3UVovF9BTwGjZ7pvi5zue+IVJqkOA2J96GUbaRPigMciolKtW
-         nUuRi/qKzXT/HIhw//CzjzsmEv9zjuQBllJs1w25RXb88z+rJY3VrEKwBJdXEHrXnP0N
-         eZY8RYp8FgCq/XhewkAGs6Egsmf0ix+n+hTqFoC/Lg2FaH2BpoiGe1wXr3liUNzLjhDl
-         QTtQ==
+        bh=dWn1NarZ6s09E6vxcTM6bLFFnz2rgiHJF6JcNWe8fuY=;
+        b=uIpjrS+bjn3BpqkAuXDleLuPzbnLwQjkxKg1/aRHEeCF4Tb9F28fnSo1WuXfNQgr2C
+         wFCredesNU3rmfGp2ttr63y5zPkEe8VhV8dj/2lDaVRavoinJUznlK52gXuF1fqA/95k
+         YnAtl5D0I2kMB3t7MLcMVWEDGD1/vqfC3/LJ03vgw1GVmLtJIkFH5b6cUbiSFMHD+3gw
+         cWVcR7MQSrQUW29KJZylynEHL+KAj/OnR1aNWIoNK3Fzgqzd7S4PuA4+wVOlkx2nTrqI
+         gp82EmjpbXyd1qWhXGtzEcQO8WRrURmpDlLEyheE/A5Jo0o0+bCixq565edzft34HzIi
+         btew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=p6XB9PjB;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pnWO9w5s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f6si4455636qvo.134.2020.03.10.13.54.22
+        by mx.google.com with ESMTPS id w54si3492614qtb.103.2020.03.10.13.58.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Mar 2020 13:54:22 -0700 (PDT)
+        Tue, 10 Mar 2020 13:58:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=p6XB9PjB;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pnWO9w5s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:40112 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40190 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBltN-0008O1-VO
-	for alex.bennee@linaro.org; Tue, 10 Mar 2020 16:54:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36754)
+	id 1jBlxS-0004gJ-ON
+	for alex.bennee@linaro.org; Tue, 10 Mar 2020 16:58:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38582)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nieklinnenbank@gmail.com>) id 1jBlt9-0008D3-3Z
- for qemu-arm@nongnu.org; Tue, 10 Mar 2020 16:54:12 -0400
+ (envelope-from <nieklinnenbank@gmail.com>) id 1jBlxL-0004g0-59
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2020 16:58:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nieklinnenbank@gmail.com>) id 1jBlt4-0007FZ-HL
- for qemu-arm@nongnu.org; Tue, 10 Mar 2020 16:54:07 -0400
-Received: from mail-il1-x131.google.com ([2607:f8b0:4864:20::131]:37184)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1jBlxJ-0007Xb-4S
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2020 16:58:27 -0400
+Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:43126)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
- id 1jBlt4-0007DS-7a; Tue, 10 Mar 2020 16:54:02 -0400
-Received: by mail-il1-x131.google.com with SMTP id a6so13351737ilc.4;
- Tue, 10 Mar 2020 13:54:02 -0700 (PDT)
+ id 1jBlxI-0007XA-UU; Tue, 10 Mar 2020 16:58:25 -0400
+Received: by mail-il1-x141.google.com with SMTP id o18so13306023ilg.10;
+ Tue, 10 Mar 2020 13:58:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=lUFLPcazjwZSnqvjJ233PgYZdDDi3AdDtEXYGJBfnnA=;
- b=p6XB9PjBOe73aWYYgqMDxL3RKpFyxo/RITHtLMx5d7yzTTuRuTwF9LWN6HRagcibfp
- kEvqed6YF0aXIcrV0UB4Ed+lZWd7ob4cy5IZS6ExaUDMMt+Nh984QpFdvTVjK/Ps8ToL
- 3L3mcEf0Y+Hw64d8IveNjQXfNH85inu5HbGca+wBP9cChaDNrN2iqWYBu6FNzfudse7Y
- TDMAagk5xia5av/8KE5QWRW2NdhHMfWSmrMDs3Bom8kDw9tNg1GUeLkfyRKN/FUtSn6t
- 5wNff3idegjhjhRguwJRL7hQrSZQY/uQi7otKeSekpsqMuZf29wIXcQhRFys5XgPYRGo
- Ijxw==
+ :cc; bh=dWn1NarZ6s09E6vxcTM6bLFFnz2rgiHJF6JcNWe8fuY=;
+ b=pnWO9w5sgegDfzzvwLLW4dG2mjQfsGceFdtovIypDsGZDAjzlCJJjBHi7mfgXQepgY
+ SkKKHOmgJIEzzCnKiRMJUsBiFZ3iTTxPEKrXwYehH3etyq6J7DLOBikM/9058jXAW0Zh
+ R/iN1kxNjQOZBX08kBRvc3sNHQmCnAVh6lrKpIjYfxLXTpwhg2AvlxD9gTH5D0oqZLRN
+ 65Itx6X7WOMxOikzJbWB1gcfpiUT5Hon5o1KSH6NSgDbi4PDQIRVi1M+X7TXOz/D9eEV
+ Tbod0pKqIFkriCuuEC4UfZ/NNFaQwZ503bh9yX/51gsu0/4sM85yivBREDE/nR2uKAXn
+ fAEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=lUFLPcazjwZSnqvjJ233PgYZdDDi3AdDtEXYGJBfnnA=;
- b=isFQ2LSqedLP9pXO/FJm5p6LXDlwdtFoQEEwDHVt3dxLAYk4qiYv12aAMU2LEO6BI7
- woXqOxQLPvxWvnqomAAyzOAqK9TXFF8nujTW6lsWPtpJ+6aFHUaUm+s5Mg93nYOl72S9
- 1+kJ8mv6sRViq/dymWg0/d0AzixzjrgRqW/fs2TcmzExeAJOLycBOTZXc4sVBnqr7Ohf
- kryWyWTzly06REdFd64X69Qw2D2nBOh29CSD3ra8Ul0o36ncFBt1CUJxFFEau+Ac+r8v
- 7sTVjrT4qe+CKxm3+Rf3NURv+PRqGN43xiyAShsiS84Ph21J0UWzrJWj0Gw4Piv8qSbX
- UhZA==
-X-Gm-Message-State: ANhLgQ21OatZ6pUt6m3GK1uHw4HlE5XURjuDkv54Xy6pIri/F59Jyv0q
- CXSG7OYNfrx6sy6f2F3PY4+umOWBjfeXaHdKgkc=
-X-Received: by 2002:a92:58d0:: with SMTP id z77mr13745382ilf.67.1583873641302; 
- Tue, 10 Mar 2020 13:54:01 -0700 (PDT)
+ bh=dWn1NarZ6s09E6vxcTM6bLFFnz2rgiHJF6JcNWe8fuY=;
+ b=nz5/7KHL5KWdyuONWcsDpCvm+3wu3tvj3liZQoU8y/LWK7TkwqbC2HEHTcf5iIPKz6
+ V1uo5yhpkFoJ0YCdvP1cPwImm7ehxHHZ7RMy5jbkuG/N1Iai7flnh+V7NEQVS9HYpFld
+ fHn4zxl5eesbp3DF2wMVjPVjxkrkVv/4eUFRUJNCAZa3vlntQ2Y6WlIC0ScbKta3s82M
+ el8bf0gUHSl2Ogfc/hhTCPw+rr0y+TnPyw7Pv4JO2Bi4Lvwy0AQvjUK6S+E8Nh3mXZ4V
+ TkY+VOFqQ0x6ebtAWUeCQ9G9QFzow20w8868WwW7UgLnFdJjgEGqcmz/00t9LQCmgpQa
+ R8yg==
+X-Gm-Message-State: ANhLgQ2x1sZLj2b1XkqwEZHHue36dgLsMWnS2DNAHjEcPbiWdtVHH496
+ R4008v8+0llk2L6SnojyXAFg1oJzmh//CCxnHXJl5A==
+X-Received: by 2002:a92:9e99:: with SMTP id s25mr6736674ilk.306.1583873904348; 
+ Tue, 10 Mar 2020 13:58:24 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200309215818.2021-1-peter.maydell@linaro.org>
- <20200309215818.2021-3-peter.maydell@linaro.org>
-In-Reply-To: <20200309215818.2021-3-peter.maydell@linaro.org>
+ <20200309215818.2021-4-peter.maydell@linaro.org>
+In-Reply-To: <20200309215818.2021-4-peter.maydell@linaro.org>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Tue, 10 Mar 2020 21:53:49 +0100
-Message-ID: <CAPan3Wo9XH8ziPTjFJJa=q4p9bXd-VzA2DkL+iApHOZm0rnS7w@mail.gmail.com>
-Subject: Re: [PATCH 2/5] docs/system: Split target-arm.rst into sub-documents
+Date: Tue, 10 Mar 2020 21:58:13 +0100
+Message-ID: <CAPan3WqmOAwOqJkEKBTp9vtJq0uUGcAp92vXRQyzu8_Quv38PA@mail.gmail.com>
+Subject: Re: [PATCH 3/5] docs/system/target-arm.rst: Add some introductory text
 To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000c2505b05a0865193"
+Content-Type: multipart/alternative; boundary="00000000000070137005a08661ee"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::131
+X-Received-From: 2607:f8b0:4864:20::141
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,9 +106,9 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R4yT3zNvUZAx
+X-TUID: i1jpAfBOYY1P
 
---000000000000c2505b05a0865193
+--00000000000070137005a08661ee
 Content-Type: text/plain; charset="UTF-8"
 
 Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
@@ -116,656 +116,98 @@ Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 On Mon, Mar 9, 2020 at 10:58 PM Peter Maydell <peter.maydell@linaro.org>
 wrote:
 
-> Currently the documentation for Arm system emulator targets is in a
-> single target-arm.rst.  This describes only some of the boards and
-> often in a fairly abbreviated fashion. Restructure it so that each
-> board has its own documentation file in the docs/system/arm/
-> subdirectory.
+> Now we've moved the various bits of per-board documentation into
+> their own files, the top level document is a little bare. Add
+> some introductory information, including a note that many
+> of the board models we support are currently undocumented.
 >
-> This will hopefully encourage us to write board documentation that
-> describes the board in detail, rather than a few brief paragraphs
-> in a single long page. The table of contents should also help users
-> to find the board they care about faster.
->
-> Once the structure is in place we'll be able to move microvm.rst
-> from the top-level docs/ directory.
->
-> All the text from the old page is retained, except for the final
-> paragraph ("A Linux 2.6 test image is available on the QEMU web site.
-> More information is available in the QEMU mailing-list archive."),
-> which is deleted. The git history shows this was originally added
-> in reference to the integratorcp board (at that time the only
-> Arm board that was supported), and has subsequently gradually been
-> further and further separated from the integratorcp documentation
-> by the insertion of other board documentation sections. It's
-> extremely out of date and no longer accurate, since AFAICT there
-> isn't an integratorcp kernel on the website any more; so better
-> deleted than retained.
+> (Most sections of this new text were originally written by me
+> for the wiki page https://wiki.qemu.org/Documentation/Platforms/ARM)
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
-> A subsequent patch will add some text that at least gestures
-> in the direction of some of the more obvious missing info,
-> eg 64-bit boards.
 > ---
->  MAINTAINERS                      |   9 ++
->  docs/system/arm/integratorcp.rst |  16 +++
->  docs/system/arm/musicpal.rst     |  19 +++
->  docs/system/arm/nseries.rst      |  33 +++++
->  docs/system/arm/palm.rst         |  23 ++++
->  docs/system/arm/realview.rst     |  34 +++++
->  docs/system/arm/stellaris.rst    |  26 ++++
->  docs/system/arm/sx1.rst          |  18 +++
->  docs/system/arm/versatile.rst    |  29 ++++
->  docs/system/arm/xscale.rst       |  29 ++++
->  docs/system/target-arm.rst       | 225 ++-----------------------------
->  11 files changed, 249 insertions(+), 212 deletions(-)
->  create mode 100644 docs/system/arm/integratorcp.rst
->  create mode 100644 docs/system/arm/musicpal.rst
->  create mode 100644 docs/system/arm/nseries.rst
->  create mode 100644 docs/system/arm/palm.rst
->  create mode 100644 docs/system/arm/realview.rst
->  create mode 100644 docs/system/arm/stellaris.rst
->  create mode 100644 docs/system/arm/sx1.rst
->  create mode 100644 docs/system/arm/versatile.rst
->  create mode 100644 docs/system/arm/xscale.rst
+>  docs/system/target-arm.rst | 66 ++++++++++++++++++++++++++++++++++++--
+>  1 file changed, 64 insertions(+), 2 deletions(-)
 >
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 36d0c6887a9..31a1b423df1 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -155,6 +155,7 @@ F: include/hw/cpu/a*mpcore.h
->  F: disas/arm.c
->  F: disas/arm-a64.cc
->  F: disas/libvixl/
-> +F: docs/system/target-arm.rst
->
->  ARM SMMU
->  M: Eric Auger <eric.auger@redhat.com>
-> @@ -615,6 +616,7 @@ F: hw/arm/integratorcp.c
->  F: hw/misc/arm_integrator_debug.c
->  F: include/hw/misc/arm_integrator_debug.h
->  F: tests/acceptance/machine_arm_integratorcp.py
-> +F: docs/system/arm/integratorcp.rst
->
->  MCIMX6UL EVK / i.MX6ul
->  M: Peter Maydell <peter.maydell@linaro.org>
-> @@ -673,6 +675,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
->  L: qemu-arm@nongnu.org
->  S: Odd Fixes
->  F: hw/arm/musicpal.c
-> +F: docs/system/arm/musicpal.rst
->
->  nSeries
->  M: Andrzej Zaborowski <balrogg@gmail.com>
-> @@ -689,6 +692,7 @@ F: include/hw/display/blizzard.h
->  F: include/hw/input/tsc2xxx.h
->  F: include/hw/misc/cbus.h
->  F: tests/acceptance/machine_arm_n8x0.py
-> +F: docs/system/arm/nseries.rst
->
->  Palm
->  M: Andrzej Zaborowski <balrogg@gmail.com>
-> @@ -698,6 +702,7 @@ S: Odd Fixes
->  F: hw/arm/palm.c
->  F: hw/input/tsc210x.c
->  F: include/hw/input/tsc2xxx.h
-> +F: docs/system/arm/palm.rst
->
->  Raspberry Pi
->  M: Peter Maydell <peter.maydell@linaro.org>
-> @@ -719,6 +724,7 @@ F: hw/arm/realview*
->  F: hw/cpu/realview_mpcore.c
->  F: hw/intc/realview_gic.c
->  F: include/hw/intc/realview_gic.h
-> +F: docs/system/arm/realview.rst
->
->  PXA2XX
->  M: Andrzej Zaborowski <balrogg@gmail.com>
-> @@ -738,6 +744,7 @@ F: hw/misc/max111x.c
->  F: include/hw/arm/pxa.h
->  F: include/hw/arm/sharpsl.h
->  F: include/hw/display/tc6393xb.h
-> +F: docs/system/arm/xscale.rst
->
->  SABRELITE / i.MX6
->  M: Peter Maydell <peter.maydell@linaro.org>
-> @@ -773,6 +780,7 @@ L: qemu-arm@nongnu.org
->  S: Maintained
->  F: hw/*/stellaris*
->  F: include/hw/input/gamepad.h
-> +F: docs/system/arm/stellaris.rst
->
->  Versatile Express
->  M: Peter Maydell <peter.maydell@linaro.org>
-> @@ -786,6 +794,7 @@ L: qemu-arm@nongnu.org
->  S: Maintained
->  F: hw/*/versatile*
->  F: hw/misc/arm_sysctl.c
-> +F: docs/system/arm/versatile.rst
->
->  Virt
->  M: Peter Maydell <peter.maydell@linaro.org>
-> diff --git a/docs/system/arm/integratorcp.rst
-> b/docs/system/arm/integratorcp.rst
-> new file mode 100644
-> index 00000000000..3232b43a08b
-> --- /dev/null
-> +++ b/docs/system/arm/integratorcp.rst
-> @@ -0,0 +1,16 @@
-> +Integrator/CP (``integratorcp``)
-> +================================
-> +
-> +The ARM Integrator/CP board is emulated with the following devices:
-> +
-> +-  ARM926E, ARM1026E, ARM946E, ARM1136 or Cortex-A8 CPU
-> +
-> +-  Two PL011 UARTs
-> +
-> +-  SMC 91c111 Ethernet adapter
-> +
-> +-  PL110 LCD controller
-> +
-> +-  PL050 KMI with PS/2 keyboard and mouse.
-> +
-> +-  PL181 MultiMedia Card Interface with SD card.
-> diff --git a/docs/system/arm/musicpal.rst b/docs/system/arm/musicpal.rst
-> new file mode 100644
-> index 00000000000..35c22212486
-> --- /dev/null
-> +++ b/docs/system/arm/musicpal.rst
-> @@ -0,0 +1,19 @@
-> +Freecom MusicPal (``musicpal``)
-> +===============================
-> +
-> +The Freecom MusicPal internet radio emulation includes the following
-> +elements:
-> +
-> +-  Marvell MV88W8618 ARM core.
-> +
-> +-  32 MB RAM, 256 KB SRAM, 8 MB flash.
-> +
-> +-  Up to 2 16550 UARTs
-> +
-> +-  MV88W8xx8 Ethernet controller
-> +
-> +-  MV88W8618 audio controller, WM8750 CODEC and mixer
-> +
-> +-  128x64 display with brightness control
-> +
-> +-  2 buttons, 2 navigation wheels with button function
-> diff --git a/docs/system/arm/nseries.rst b/docs/system/arm/nseries.rst
-> new file mode 100644
-> index 00000000000..b000b6d13bb
-> --- /dev/null
-> +++ b/docs/system/arm/nseries.rst
-> @@ -0,0 +1,33 @@
-> +Nokia N800 and N810 tablets (``n800``, ``n810``)
-> +================================================
->
-+
-> +Nokia N800 and N810 internet tablets (known also as RX-34 and RX-44 /
-> +48) emulation supports the following elements:
-> +
-> +-  Texas Instruments OMAP2420 System-on-chip (ARM 1136 core)
-> +
-> +-  RAM and non-volatile OneNAND Flash memories
-> +
-> +-  Display connected to EPSON remote framebuffer chip and OMAP on-chip
-> +   display controller and a LS041y3 MIPI DBI-C controller
-> +
-> +-  TI TSC2301 (in N800) and TI TSC2005 (in N810) touchscreen
-> +   controllers driven through SPI bus
-> +
-> +-  National Semiconductor LM8323-controlled qwerty keyboard driven
-> +   through |I2C| bus
-> +
-> +-  Secure Digital card connected to OMAP MMC/SD host
-> +
-> +-  Three OMAP on-chip UARTs and on-chip STI debugging console
-> +
-> +-  Mentor Graphics \"Inventra\" dual-role USB controller embedded in a
-> +   TI TUSB6010 chip - only USB host mode is supported
-> +
-> +-  TI TMP105 temperature sensor driven through |I2C| bus
-> +
-> +-  TI TWL92230C power management companion with an RTC on
-> +   |I2C| bus
-> +
-> +-  Nokia RETU and TAHVO multi-purpose chips with an RTC, connected
-> +   through CBUS
-> diff --git a/docs/system/arm/palm.rst b/docs/system/arm/palm.rst
-> new file mode 100644
-> index 00000000000..0eabf63e0e7
-> --- /dev/null
-> +++ b/docs/system/arm/palm.rst
-> @@ -0,0 +1,23 @@
-> +Palm Tungsten|E PDA (``cheetah``)
-> +=================================
-> +
-> +The Palm Tungsten|E PDA (codename \"Cheetah\") emulation includes the
-> +following elements:
-> +
-> +-  Texas Instruments OMAP310 System-on-chip (ARM 925T core)
-> +
-> +-  ROM and RAM memories (ROM firmware image can be loaded with
-> +   -option-rom)
-> +
-> +-  On-chip LCD controller
-> +
-> +-  On-chip Real Time Clock
-> +
-> +-  TI TSC2102i touchscreen controller / analog-digital converter /
-> +   Audio CODEC, connected through MicroWire and |I2S| busses
-> +
-> +-  GPIO-connected matrix keypad
-> +
-> +-  Secure Digital card connected to OMAP MMC/SD host
-> +
-> +-  Three on-chip UARTs
-> diff --git a/docs/system/arm/realview.rst b/docs/system/arm/realview.rst
-> new file mode 100644
-> index 00000000000..8e08eb5da16
-> --- /dev/null
-> +++ b/docs/system/arm/realview.rst
-> @@ -0,0 +1,34 @@
-> +Arm Realview boards (``realview-eb``, ``realview-eb-mpcore``,
-> ``realview-pb-a8``, ``realview-pbx-a9``)
->
-> +======================================================================================================
-> +
-> +Several variants of the ARM RealView baseboard are emulated, including
-> +the EB, PB-A8 and PBX-A9. Due to interactions with the bootloader, only
-> +certain Linux kernel configurations work out of the box on these boards.
-> +
-> +Kernels for the PB-A8 board should have CONFIG_REALVIEW_HIGH_PHYS_OFFSET
-> +enabled in the kernel, and expect 512M RAM. Kernels for The PBX-A9 board
-> +should have CONFIG_SPARSEMEM enabled, CONFIG_REALVIEW_HIGH_PHYS_OFFSET
-> +disabled and expect 1024M RAM.
-> +
-> +The following devices are emulated:
-> +
-> +-  ARM926E, ARM1136, ARM11MPCore, Cortex-A8 or Cortex-A9 MPCore CPU
-> +
-> +-  ARM AMBA Generic/Distributed Interrupt Controller
-> +
-> +-  Four PL011 UARTs
-> +
-> +-  SMC 91c111 or SMSC LAN9118 Ethernet adapter
-> +
-> +-  PL110 LCD controller
-> +
-> +-  PL050 KMI with PS/2 keyboard and mouse
-> +
-> +-  PCI host bridge
-> +
-> +-  PCI OHCI USB controller
-> +
-> +-  LSI53C895A PCI SCSI Host Bus Adapter with hard disk and CD-ROM
-> +   devices
-> +
-> +-  PL181 MultiMedia Card Interface with SD card.
-> diff --git a/docs/system/arm/stellaris.rst b/docs/system/arm/stellaris.rst
-> new file mode 100644
-> index 00000000000..8af4ad79c79
-> --- /dev/null
-> +++ b/docs/system/arm/stellaris.rst
-> @@ -0,0 +1,26 @@
-> +Stellaris boards (``lm3s6965evb``, ``lm3s811evb``)
-> +==================================================
-> +
-> +The Luminary Micro Stellaris LM3S811EVB emulation includes the following
-> +devices:
-> +
-> +-  Cortex-M3 CPU core.
-> +
-> +-  64k Flash and 8k SRAM.
-> +
-> +-  Timers, UARTs, ADC and |I2C| interface.
-> +
-> +-  OSRAM Pictiva 96x16 OLED with SSD0303 controller on
-> +   |I2C| bus.
-> +
-> +The Luminary Micro Stellaris LM3S6965EVB emulation includes the
-> +following devices:
-> +
-> +-  Cortex-M3 CPU core.
-> +
-> +-  256k Flash and 64k SRAM.
-> +
-> +-  Timers, UARTs, ADC, |I2C| and SSI interfaces.
-> +
-> +-  OSRAM Pictiva 128x64 OLED with SSD0323 controller connected via
-> +   SSI.
-> diff --git a/docs/system/arm/sx1.rst b/docs/system/arm/sx1.rst
-> new file mode 100644
-> index 00000000000..321993bc098
-> --- /dev/null
-> +++ b/docs/system/arm/sx1.rst
-> @@ -0,0 +1,18 @@
-> +Siemens SX1 (``sx1``, ``sx1-v1``)
-> +=================================
-> +
-> +The Siemens SX1 models v1 and v2 (default) basic emulation. The
-> +emulation includes the following elements:
-> +
-> +-  Texas Instruments OMAP310 System-on-chip (ARM 925T core)
-> +
-> +-  ROM and RAM memories (ROM firmware image can be loaded with
-> +   -pflash) V1 1 Flash of 16MB and 1 Flash of 8MB V2 1 Flash of 32MB
-> +
-> +-  On-chip LCD controller
-> +
-> +-  On-chip Real Time Clock
-> +
-> +-  Secure Digital card connected to OMAP MMC/SD host
-> +
-> +-  Three on-chip UARTs
-> diff --git a/docs/system/arm/versatile.rst b/docs/system/arm/versatile.rst
-> new file mode 100644
-> index 00000000000..48b6ca0a020
-> --- /dev/null
-> +++ b/docs/system/arm/versatile.rst
-> @@ -0,0 +1,29 @@
-> +Arm Versatile boards (``versatileab``, ``versatilepb``)
-> +=======================================================
-> +
-> +The ARM Versatile baseboard is emulated with the following devices:
-> +
-> +-  ARM926E, ARM1136 or Cortex-A8 CPU
-> +
-> +-  PL190 Vectored Interrupt Controller
-> +
-> +-  Four PL011 UARTs
-> +
-> +-  SMC 91c111 Ethernet adapter
-> +
-> +-  PL110 LCD controller
-> +
-> +-  PL050 KMI with PS/2 keyboard and mouse.
-> +
-> +-  PCI host bridge. Note the emulated PCI bridge only provides access
-> +   to PCI memory space. It does not provide access to PCI IO space. This
-> +   means some devices (eg. ne2k_pci NIC) are not usable, and others (eg.
-> +   rtl8139 NIC) are only usable when the guest drivers use the memory
-> +   mapped control registers.
-> +
-> +-  PCI OHCI USB controller.
-> +
-> +-  LSI53C895A PCI SCSI Host Bus Adapter with hard disk and CD-ROM
-> +   devices.
-> +
-> +-  PL181 MultiMedia Card Interface with SD card.
-> diff --git a/docs/system/arm/xscale.rst b/docs/system/arm/xscale.rst
-> new file mode 100644
-> index 00000000000..19da2eff352
-> --- /dev/null
-> +++ b/docs/system/arm/xscale.rst
-> @@ -0,0 +1,29 @@
-> +Sharp XScale-based PDA models (``akita``, ``borzoi``, ``spitz``,
-> ``terrier``)
->
-> +=============================================================================
-> +
-> +The XScale-based clamshell PDA models (\"Spitz\", \"Akita\", \"Borzoi\"
-> +and \"Terrier\") emulation includes the following peripherals:
-> +
-> +-  Intel PXA270 System-on-chip (ARM V5TE core)
-> +
-> +-  NAND Flash memory
-> +
-> +-  IBM/Hitachi DSCM microdrive in a PXA PCMCIA slot - not in \"Akita\"
-> +
-> +-  On-chip OHCI USB controller
-> +
-> +-  On-chip LCD controller
-> +
-> +-  On-chip Real Time Clock
-> +
-> +-  TI ADS7846 touchscreen controller on SSP bus
-> +
-> +-  Maxim MAX1111 analog-digital converter on |I2C| bus
-> +
-> +-  GPIO-connected keyboard controller and LEDs
-> +
-> +-  Secure Digital card connected to PXA MMC/SD host
-> +
-> +-  Three on-chip UARTs
-> +
-> +-  WM8750 audio CODEC on |I2C| and |I2S| busses
 > diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-> index d2a3b44ce88..c7df6fc1f97 100644
+> index c7df6fc1f97..86ea6f2f568 100644
 > --- a/docs/system/target-arm.rst
 > +++ b/docs/system/target-arm.rst
-> @@ -3,215 +3,16 @@
->  ARM System emulator
+> @@ -1,9 +1,71 @@
+>  .. _ARM-System-emulator:
+>
+> -ARM System emulator
+> +Arm System emulator
 >  -------------------
 >
-> -Use the executable ``qemu-system-arm`` to simulate a ARM machine. The
-> -ARM Integrator/CP board is emulated with the following devices:
-> -
-> --  ARM926E, ARM1026E, ARM946E, ARM1136 or Cortex-A8 CPU
-> -
-> --  Two PL011 UARTs
-> -
-> --  SMC 91c111 Ethernet adapter
-> -
-> --  PL110 LCD controller
-> -
-> --  PL050 KMI with PS/2 keyboard and mouse.
-> -
-> --  PL181 MultiMedia Card Interface with SD card.
-> -
-> -The ARM Versatile baseboard is emulated with the following devices:
-> -
-> --  ARM926E, ARM1136 or Cortex-A8 CPU
-> -
-> --  PL190 Vectored Interrupt Controller
-> -
-> --  Four PL011 UARTs
-> -
-> --  SMC 91c111 Ethernet adapter
-> -
-> --  PL110 LCD controller
-> -
-> --  PL050 KMI with PS/2 keyboard and mouse.
-> -
-> --  PCI host bridge. Note the emulated PCI bridge only provides access
-> -   to PCI memory space. It does not provide access to PCI IO space. This
-> -   means some devices (eg. ne2k_pci NIC) are not usable, and others (eg.
-> -   rtl8139 NIC) are only usable when the guest drivers use the memory
-> -   mapped control registers.
-> -
-> --  PCI OHCI USB controller.
-> -
-> --  LSI53C895A PCI SCSI Host Bus Adapter with hard disk and CD-ROM
-> -   devices.
-> -
-> --  PL181 MultiMedia Card Interface with SD card.
-> -
-> -Several variants of the ARM RealView baseboard are emulated, including
-> -the EB, PB-A8 and PBX-A9. Due to interactions with the bootloader, only
-> -certain Linux kernel configurations work out of the box on these boards.
-> -
-> -Kernels for the PB-A8 board should have CONFIG_REALVIEW_HIGH_PHYS_OFFSET
-> -enabled in the kernel, and expect 512M RAM. Kernels for The PBX-A9 board
-> -should have CONFIG_SPARSEMEM enabled, CONFIG_REALVIEW_HIGH_PHYS_OFFSET
-> -disabled and expect 1024M RAM.
-> -
-> -The following devices are emulated:
-> -
-> --  ARM926E, ARM1136, ARM11MPCore, Cortex-A8 or Cortex-A9 MPCore CPU
-> -
-> --  ARM AMBA Generic/Distributed Interrupt Controller
-> -
-> --  Four PL011 UARTs
-> -
-> --  SMC 91c111 or SMSC LAN9118 Ethernet adapter
-> -
-> --  PL110 LCD controller
-> -
-> --  PL050 KMI with PS/2 keyboard and mouse
-> -
-> --  PCI host bridge
-> -
-> --  PCI OHCI USB controller
-> -
-> --  LSI53C895A PCI SCSI Host Bus Adapter with hard disk and CD-ROM
-> -   devices
-> -
-> --  PL181 MultiMedia Card Interface with SD card.
-> -
-> -The XScale-based clamshell PDA models (\"Spitz\", \"Akita\", \"Borzoi\"
-> -and \"Terrier\") emulation includes the following peripherals:
-> -
-> --  Intel PXA270 System-on-chip (ARM V5TE core)
-> -
-> --  NAND Flash memory
-> -
-> --  IBM/Hitachi DSCM microdrive in a PXA PCMCIA slot - not in \"Akita\"
-> -
-> --  On-chip OHCI USB controller
-> -
-> --  On-chip LCD controller
-> -
-> --  On-chip Real Time Clock
-> -
-> --  TI ADS7846 touchscreen controller on SSP bus
-> -
-> --  Maxim MAX1111 analog-digital converter on |I2C| bus
-> -
-> --  GPIO-connected keyboard controller and LEDs
-> -
-> --  Secure Digital card connected to PXA MMC/SD host
-> -
-> --  Three on-chip UARTs
-> -
-> --  WM8750 audio CODEC on |I2C| and |I2S| busses
-> -
-> -The Palm Tungsten|E PDA (codename \"Cheetah\") emulation includes the
-> -following elements:
-> -
-> --  Texas Instruments OMAP310 System-on-chip (ARM 925T core)
-> -
-> --  ROM and RAM memories (ROM firmware image can be loaded with
-> -   -option-rom)
-> -
-> --  On-chip LCD controller
-> -
-> --  On-chip Real Time Clock
-> -
-> --  TI TSC2102i touchscreen controller / analog-digital converter /
-> -   Audio CODEC, connected through MicroWire and |I2S| busses
-> -
-> --  GPIO-connected matrix keypad
-> -
-> --  Secure Digital card connected to OMAP MMC/SD host
-> -
-> --  Three on-chip UARTs
-> -
-> -Nokia N800 and N810 internet tablets (known also as RX-34 and RX-44 /
-> -48) emulation supports the following elements:
-> -
-> --  Texas Instruments OMAP2420 System-on-chip (ARM 1136 core)
-> -
-> --  RAM and non-volatile OneNAND Flash memories
-> -
-> --  Display connected to EPSON remote framebuffer chip and OMAP on-chip
-> -   display controller and a LS041y3 MIPI DBI-C controller
-> -
-> --  TI TSC2301 (in N800) and TI TSC2005 (in N810) touchscreen
-> -   controllers driven through SPI bus
-> -
-> --  National Semiconductor LM8323-controlled qwerty keyboard driven
-> -   through |I2C| bus
-> -
-> --  Secure Digital card connected to OMAP MMC/SD host
-> -
-> --  Three OMAP on-chip UARTs and on-chip STI debugging console
-> -
-> --  Mentor Graphics \"Inventra\" dual-role USB controller embedded in a
-> -   TI TUSB6010 chip - only USB host mode is supported
-> -
-> --  TI TMP105 temperature sensor driven through |I2C| bus
-> -
-> --  TI TWL92230C power management companion with an RTC on
-> -   |I2C| bus
-> -
-> --  Nokia RETU and TAHVO multi-purpose chips with an RTC, connected
-> -   through CBUS
-> -
-> -The Luminary Micro Stellaris LM3S811EVB emulation includes the following
-> -devices:
-> -
-> --  Cortex-M3 CPU core.
-> -
-> --  64k Flash and 8k SRAM.
-> -
-> --  Timers, UARTs, ADC and |I2C| interface.
-> -
-> --  OSRAM Pictiva 96x16 OLED with SSD0303 controller on
-> -   |I2C| bus.
-> -
-> -The Luminary Micro Stellaris LM3S6965EVB emulation includes the
-> -following devices:
-> -
-> --  Cortex-M3 CPU core.
-> -
-> --  256k Flash and 64k SRAM.
-> -
-> --  Timers, UARTs, ADC, |I2C| and SSI interfaces.
-> -
-> --  OSRAM Pictiva 128x64 OLED with SSD0323 controller connected via
-> -   SSI.
-> -
-> -The Freecom MusicPal internet radio emulation includes the following
-> -elements:
-> -
-> --  Marvell MV88W8618 ARM core.
-> -
-> --  32 MB RAM, 256 KB SRAM, 8 MB flash.
-> -
-> --  Up to 2 16550 UARTs
-> -
-> --  MV88W8xx8 Ethernet controller
-> -
-> --  MV88W8618 audio controller, WM8750 CODEC and mixer
-> -
-> --  128x64 display with brightness control
-> -
-> --  2 buttons, 2 navigation wheels with button function
-> -
-> -The Siemens SX1 models v1 and v2 (default) basic emulation. The
-> -emulation includes the following elements:
-> -
-> --  Texas Instruments OMAP310 System-on-chip (ARM 925T core)
-> -
-> --  ROM and RAM memories (ROM firmware image can be loaded with
-> -   -pflash) V1 1 Flash of 16MB and 1 Flash of 8MB V2 1 Flash of 32MB
-> -
-> --  On-chip LCD controller
-> -
-> --  On-chip Real Time Clock
-> -
-> --  Secure Digital card connected to OMAP MMC/SD host
-> -
-> --  Three on-chip UARTs
-> -
-> -A Linux 2.6 test image is available on the QEMU web site. More
-> -information is available in the QEMU mailing-list archive.
-> +Use the executable ``qemu-system-arm`` to simulate a ARM machine.
+> -Use the executable ``qemu-system-arm`` to simulate a ARM machine.
+> +QEMU can emulate both 32-bit and 64-bit Arm CPUs. Use the
+> +``qemu-system-aarch64`` executable to simulate a 64-bit Arm machine.
+> +You can use either ``qemu-system-arm`` or ``qemu-system-aarch64``
+> +to simulate a 32-bit Arm machine: in general, command lines that
+> +work for ``qemu-system-arm`` will behave the same when used with
+> +``qemu-system-aarch64``.
 > +
-> +.. toctree::
+> +QEMU has generally good support for Arm guests. It has support for
+> +nearly fifty different machines. The reason we support so many is that
+> +Arm hardware is much more widely varying than x86 hardware. Arm CPUs
+> +are generally built into "system-on-chip" (SoC) designs created by
+> +many different companies with different devices, and these SoCs are
+> +then built into machines which can vary still further even if they use
+> +the same SoC. Even with fifty boards QEMU does not cover more than a
+> +small fraction of the Arm hardware ecosystem.
 > +
-> +   arm/integratorcp
-> +   arm/versatile
-> +   arm/realview
-> +   arm/xscale
-> +   arm/palm
-> +   arm/nseries
-> +   arm/stellaris
-> +   arm/musicpal
-> +   arm/sx1
+> +The situation for 64-bit Arm is fairly similar, except that we don't
+> +implement so many different machines.
+> +
+> +As well as the more common "A-profile" CPUs (which have MMUs and will
+> +run Linux) QEMU also supports "M-profile" CPUs such as the Cortex-M0,
+> +Cortex-M4 and Cortex-M33 (which are microcontrollers used in very
+> +embedded boards). For most boards the CPU type is fixed (matching what
+> +the hardware has), so typically you don't need to specify the CPU type
+> +by hand, except for special cases like the ``virt`` board.
+> +
+> +Choosing a board model
+> +======================
+> +
+> +For QEMU's Arm system emulation, you must specify which board
+> +model you want to use with the ``-M`` or ``--machine`` option;
+> +there is no default.
+> +
+> +Because Arm systems differ so much and in fundamental ways, typically
+> +operating system or firmware images intended to run on one machine
+> +will not run at all on any other. This is often surprising for new
+> +users who are used to the x86 world where every system looks like a
+> +standard PC. (Once the kernel has booted, most userspace software
+> +cares much less about the detail of the hardware.)
+> +
+> +If you already have a system image or a kernel that works on hardware
+> +and you want to boot with QEMU, check whether QEMU lists that machine
+> +in its ``-machine help`` output. If it is listed, then you can probably
+> +use that board model. If it is not listed, then unfortunately your image
+> +will almost certainly not boot on QEMU. (You might be able to
+> +extract the filesystem and use that with a different kernel which
+> +boots on a system that QEMU does emulate.)
+> +
+> +If you don't care about reproducing the idiosyncrasies of a particular
+> +bit of hardware, such as small amount of RAM, no PCI or other hard
+> +disk, etc., and just want to run Linux, the best option is to use the
+> +``virt`` board. This is a platform which doesn't correspond to any
+> +real hardware and is designed for use in virtual machines. You'll
+> +need to compile Linux with a suitable configuration for running on
+> +the ``virt`` board. ``virt`` supports PCI, virtio, recent CPUs and
+> +large amounts of RAM. It also supports 64-bit CPUs.
+> +
+> +Board-specific documentation
+> +============================
+> +
+> +Unfortunately many of the Arm boards QEMU supports are currently
+> +undocumented; you can get a complete list by running
+> +``qemu-system-aarch64 --machine help``.
+>
+>  .. toctree::
+>
 > --
 > 2.20.1
 >
@@ -774,753 +216,127 @@ wrote:
 -- 
 Niek Linnenbank
 
---000000000000c2505b05a0865193
+--00000000000070137005a08661ee
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div>Reviewed-by: Niek Linnenbank &lt;<a href=3D"mailto:ni=
-eklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;<br></div><br><div =
-class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Mar 9, =
-2020 at 10:58 PM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.o=
-rg">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"g=
-mail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
-,204,204);padding-left:1ex">Currently the documentation for Arm system emul=
-ator targets is in a<br>
-single target-arm.rst.=C2=A0 This describes only some of the boards and<br>
-often in a fairly abbreviated fashion. Restructure it so that each<br>
-board has its own documentation file in the docs/system/arm/<br>
-subdirectory.<br>
+<div dir=3D"ltr">Reviewed-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklin=
+nenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;<br></div><br><div class=
+=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Mar 9, 2020 =
+at 10:58 PM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">p=
+eter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_=
+quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,=
+204);padding-left:1ex">Now we&#39;ve moved the various bits of per-board do=
+cumentation into<br>
+their own files, the top level document is a little bare. Add<br>
+some introductory information, including a note that many<br>
+of the board models we support are currently undocumented.<br>
 <br>
-This will hopefully encourage us to write board documentation that<br>
-describes the board in detail, rather than a few brief paragraphs<br>
-in a single long page. The table of contents should also help users<br>
-to find the board they care about faster.<br>
-<br>
-Once the structure is in place we&#39;ll be able to move microvm.rst<br>
-from the top-level docs/ directory.<br>
-<br>
-All the text from the old page is retained, except for the final<br>
-paragraph (&quot;A Linux 2.6 test image is available on the QEMU web site.<=
-br>
-More information is available in the QEMU mailing-list archive.&quot;),<br>
-which is deleted. The git history shows this was originally added<br>
-in reference to the integratorcp board (at that time the only<br>
-Arm board that was supported), and has subsequently gradually been<br>
-further and further separated from the integratorcp documentation<br>
-by the insertion of other board documentation sections. It&#39;s<br>
-extremely out of date and no longer accurate, since AFAICT there<br>
-isn&#39;t an integratorcp kernel on the website any more; so better<br>
-deleted than retained.<br>
+(Most sections of this new text were originally written by me<br>
+for the wiki page <a href=3D"https://wiki.qemu.org/Documentation/Platforms/=
+ARM" rel=3D"noreferrer" target=3D"_blank">https://wiki.qemu.org/Documentati=
+on/Platforms/ARM</a>)<br>
 <br>
 Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org=
 " target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
 ---<br>
-A subsequent patch will add some text that at least gestures<br>
-in the direction of some of the more obvious missing info,<br>
-eg 64-bit boards.<br>
 ---<br>
-=C2=A0MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A09 ++<br>
-=C2=A0docs/system/arm/integratorcp.rst |=C2=A0 16 +++<br>
-=C2=A0docs/system/arm/musicpal.rst=C2=A0 =C2=A0 =C2=A0|=C2=A0 19 +++<br>
-=C2=A0docs/system/arm/nseries.rst=C2=A0 =C2=A0 =C2=A0 |=C2=A0 33 +++++<br>
-=C2=A0docs/system/arm/palm.rst=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 23 =
-++++<br>
-=C2=A0docs/system/arm/realview.rst=C2=A0 =C2=A0 =C2=A0|=C2=A0 34 +++++<br>
-=C2=A0docs/system/arm/stellaris.rst=C2=A0 =C2=A0 |=C2=A0 26 ++++<br>
-=C2=A0docs/system/arm/sx1.rst=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 18 =
-+++<br>
-=C2=A0docs/system/arm/versatile.rst=C2=A0 =C2=A0 |=C2=A0 29 ++++<br>
-=C2=A0docs/system/arm/xscale.rst=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 29 ++++<=
-br>
-=C2=A0docs/system/target-arm.rst=C2=A0 =C2=A0 =C2=A0 =C2=A0| 225 ++--------=
----------------------<br>
-=C2=A011 files changed, 249 insertions(+), 212 deletions(-)<br>
-=C2=A0create mode 100644 docs/system/arm/integratorcp.rst<br>
-=C2=A0create mode 100644 docs/system/arm/musicpal.rst<br>
-=C2=A0create mode 100644 docs/system/arm/nseries.rst<br>
-=C2=A0create mode 100644 docs/system/arm/palm.rst<br>
-=C2=A0create mode 100644 docs/system/arm/realview.rst<br>
-=C2=A0create mode 100644 docs/system/arm/stellaris.rst<br>
-=C2=A0create mode 100644 docs/system/arm/sx1.rst<br>
-=C2=A0create mode 100644 docs/system/arm/versatile.rst<br>
-=C2=A0create mode 100644 docs/system/arm/xscale.rst<br>
+=C2=A0docs/system/target-arm.rst | 66 ++++++++++++++++++++++++++++++++++++-=
+-<br>
+=C2=A01 file changed, 64 insertions(+), 2 deletions(-)<br>
 <br>
-diff --git a/MAINTAINERS b/MAINTAINERS<br>
-index 36d0c6887a9..31a1b423df1 100644<br>
---- a/MAINTAINERS<br>
-+++ b/MAINTAINERS<br>
-@@ -155,6 +155,7 @@ F: include/hw/cpu/a*mpcore.h<br>
-=C2=A0F: disas/arm.c<br>
-=C2=A0F: disas/arm-a64.cc<br>
-=C2=A0F: disas/libvixl/<br>
-+F: docs/system/target-arm.rst<br>
-<br>
-=C2=A0ARM SMMU<br>
-=C2=A0M: Eric Auger &lt;<a href=3D"mailto:eric.auger@redhat.com" target=3D"=
-_blank">eric.auger@redhat.com</a>&gt;<br>
-@@ -615,6 +616,7 @@ F: hw/arm/integratorcp.c<br>
-=C2=A0F: hw/misc/arm_integrator_debug.c<br>
-=C2=A0F: include/hw/misc/arm_integrator_debug.h<br>
-=C2=A0F: tests/acceptance/machine_arm_integratorcp.py<br>
-+F: docs/system/arm/integratorcp.rst<br>
-<br>
-=C2=A0MCIMX6UL EVK / i.MX6ul<br>
-=C2=A0M: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" targ=
-et=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-@@ -673,6 +675,7 @@ M: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@li=
-naro.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-=C2=A0L: <a href=3D"mailto:qemu-arm@nongnu.org" target=3D"_blank">qemu-arm@=
-nongnu.org</a><br>
-=C2=A0S: Odd Fixes<br>
-=C2=A0F: hw/arm/musicpal.c<br>
-+F: docs/system/arm/musicpal.rst<br>
-<br>
-=C2=A0nSeries<br>
-=C2=A0M: Andrzej Zaborowski &lt;<a href=3D"mailto:balrogg@gmail.com" target=
-=3D"_blank">balrogg@gmail.com</a>&gt;<br>
-@@ -689,6 +692,7 @@ F: include/hw/display/blizzard.h<br>
-=C2=A0F: include/hw/input/tsc2xxx.h<br>
-=C2=A0F: include/hw/misc/cbus.h<br>
-=C2=A0F: tests/acceptance/machine_arm_n8x0.py<br>
-+F: docs/system/arm/nseries.rst<br>
-<br>
-=C2=A0Palm<br>
-=C2=A0M: Andrzej Zaborowski &lt;<a href=3D"mailto:balrogg@gmail.com" target=
-=3D"_blank">balrogg@gmail.com</a>&gt;<br>
-@@ -698,6 +702,7 @@ S: Odd Fixes<br>
-=C2=A0F: hw/arm/palm.c<br>
-=C2=A0F: hw/input/tsc210x.c<br>
-=C2=A0F: include/hw/input/tsc2xxx.h<br>
-+F: docs/system/arm/palm.rst<br>
-<br>
-=C2=A0Raspberry Pi<br>
-=C2=A0M: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" targ=
-et=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-@@ -719,6 +724,7 @@ F: hw/arm/realview*<br>
-=C2=A0F: hw/cpu/realview_mpcore.c<br>
-=C2=A0F: hw/intc/realview_gic.c<br>
-=C2=A0F: include/hw/intc/realview_gic.h<br>
-+F: docs/system/arm/realview.rst<br>
-<br>
-=C2=A0PXA2XX<br>
-=C2=A0M: Andrzej Zaborowski &lt;<a href=3D"mailto:balrogg@gmail.com" target=
-=3D"_blank">balrogg@gmail.com</a>&gt;<br>
-@@ -738,6 +744,7 @@ F: hw/misc/max111x.c<br>
-=C2=A0F: include/hw/arm/pxa.h<br>
-=C2=A0F: include/hw/arm/sharpsl.h<br>
-=C2=A0F: include/hw/display/tc6393xb.h<br>
-+F: docs/system/arm/xscale.rst<br>
-<br>
-=C2=A0SABRELITE / i.MX6<br>
-=C2=A0M: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" targ=
-et=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-@@ -773,6 +780,7 @@ L: <a href=3D"mailto:qemu-arm@nongnu.org" target=3D"_bl=
-ank">qemu-arm@nongnu.org</a><br>
-=C2=A0S: Maintained<br>
-=C2=A0F: hw/*/stellaris*<br>
-=C2=A0F: include/hw/input/gamepad.h<br>
-+F: docs/system/arm/stellaris.rst<br>
-<br>
-=C2=A0Versatile Express<br>
-=C2=A0M: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" targ=
-et=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-@@ -786,6 +794,7 @@ L: <a href=3D"mailto:qemu-arm@nongnu.org" target=3D"_bl=
-ank">qemu-arm@nongnu.org</a><br>
-=C2=A0S: Maintained<br>
-=C2=A0F: hw/*/versatile*<br>
-=C2=A0F: hw/misc/arm_sysctl.c<br>
-+F: docs/system/arm/versatile.rst<br>
-<br>
-=C2=A0Virt<br>
-=C2=A0M: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" targ=
-et=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-diff --git a/docs/system/arm/integratorcp.rst b/docs/system/arm/integratorc=
-p.rst<br>
-new file mode 100644<br>
-index 00000000000..3232b43a08b<br>
---- /dev/null<br>
-+++ b/docs/system/arm/integratorcp.rst<br>
-@@ -0,0 +1,16 @@<br>
-+Integrator/CP (``integratorcp``)<br>
-+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D<br>
-+<br>
-+The ARM Integrator/CP board is emulated with the following devices:<br>
-+<br>
-+-=C2=A0 ARM926E, ARM1026E, ARM946E, ARM1136 or Cortex-A8 CPU<br>
-+<br>
-+-=C2=A0 Two PL011 UARTs<br>
-+<br>
-+-=C2=A0 SMC 91c111 Ethernet adapter<br>
-+<br>
-+-=C2=A0 PL110 LCD controller<br>
-+<br>
-+-=C2=A0 PL050 KMI with PS/2 keyboard and mouse.<br>
-+<br>
-+-=C2=A0 PL181 MultiMedia Card Interface with SD card.<br>
-diff --git a/docs/system/arm/musicpal.rst b/docs/system/arm/musicpal.rst<br=
->
-new file mode 100644<br>
-index 00000000000..35c22212486<br>
---- /dev/null<br>
-+++ b/docs/system/arm/musicpal.rst<br>
-@@ -0,0 +1,19 @@<br>
-+Freecom MusicPal (``musicpal``)<br>
-+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D<br>
-+<br>
-+The Freecom MusicPal internet radio emulation includes the following<br>
-+elements:<br>
-+<br>
-+-=C2=A0 Marvell MV88W8618 ARM core.<br>
-+<br>
-+-=C2=A0 32 MB RAM, 256 KB SRAM, 8 MB flash.<br>
-+<br>
-+-=C2=A0 Up to 2 16550 UARTs<br>
-+<br>
-+-=C2=A0 MV88W8xx8 Ethernet controller<br>
-+<br>
-+-=C2=A0 MV88W8618 audio controller, WM8750 CODEC and mixer<br>
-+<br>
-+-=C2=A0 128x64 display with brightness control<br>
-+<br>
-+-=C2=A0 2 buttons, 2 navigation wheels with button function<br>
-diff --git a/docs/system/arm/nseries.rst b/docs/system/arm/nseries.rst<br>
-new file mode 100644<br>
-index 00000000000..b000b6d13bb<br>
---- /dev/null<br>
-+++ b/docs/system/arm/nseries.rst<br>
-@@ -0,0 +1,33 @@<br>
-+Nokia N800 and N810 tablets (``n800``, ``n810``)<br>
-+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br=
-></blockquote><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
- 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-+<br>
-+Nokia N800 and N810 internet tablets (known also as RX-34 and RX-44 /<br>
-+48) emulation supports the following elements:<br>
-+<br>
-+-=C2=A0 Texas Instruments OMAP2420 System-on-chip (ARM 1136 core)<br>
-+<br>
-+-=C2=A0 RAM and non-volatile OneNAND Flash memories<br>
-+<br>
-+-=C2=A0 Display connected to EPSON remote framebuffer chip and OMAP on-chi=
-p<br>
-+=C2=A0 =C2=A0display controller and a LS041y3 MIPI DBI-C controller<br>
-+<br>
-+-=C2=A0 TI TSC2301 (in N800) and TI TSC2005 (in N810) touchscreen<br>
-+=C2=A0 =C2=A0controllers driven through SPI bus<br>
-+<br>
-+-=C2=A0 National Semiconductor LM8323-controlled qwerty keyboard driven<br=
->
-+=C2=A0 =C2=A0through |I2C| bus<br>
-+<br>
-+-=C2=A0 Secure Digital card connected to OMAP MMC/SD host<br>
-+<br>
-+-=C2=A0 Three OMAP on-chip UARTs and on-chip STI debugging console<br>
-+<br>
-+-=C2=A0 Mentor Graphics \&quot;Inventra\&quot; dual-role USB controller em=
-bedded in a<br>
-+=C2=A0 =C2=A0TI TUSB6010 chip - only USB host mode is supported<br>
-+<br>
-+-=C2=A0 TI TMP105 temperature sensor driven through |I2C| bus<br>
-+<br>
-+-=C2=A0 TI TWL92230C power management companion with an RTC on<br>
-+=C2=A0 =C2=A0|I2C| bus<br>
-+<br>
-+-=C2=A0 Nokia RETU and TAHVO multi-purpose chips with an RTC, connected<br=
->
-+=C2=A0 =C2=A0through CBUS<br>
-diff --git a/docs/system/arm/palm.rst b/docs/system/arm/palm.rst<br>
-new file mode 100644<br>
-index 00000000000..0eabf63e0e7<br>
---- /dev/null<br>
-+++ b/docs/system/arm/palm.rst<br>
-@@ -0,0 +1,23 @@<br>
-+Palm Tungsten|E PDA (``cheetah``)<br>
-+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D<br>
-+<br>
-+The Palm Tungsten|E PDA (codename \&quot;Cheetah\&quot;) emulation include=
-s the<br>
-+following elements:<br>
-+<br>
-+-=C2=A0 Texas Instruments OMAP310 System-on-chip (ARM 925T core)<br>
-+<br>
-+-=C2=A0 ROM and RAM memories (ROM firmware image can be loaded with<br>
-+=C2=A0 =C2=A0-option-rom)<br>
-+<br>
-+-=C2=A0 On-chip LCD controller<br>
-+<br>
-+-=C2=A0 On-chip Real Time Clock<br>
-+<br>
-+-=C2=A0 TI TSC2102i touchscreen controller / analog-digital converter /<br=
->
-+=C2=A0 =C2=A0Audio CODEC, connected through MicroWire and |I2S| busses<br>
-+<br>
-+-=C2=A0 GPIO-connected matrix keypad<br>
-+<br>
-+-=C2=A0 Secure Digital card connected to OMAP MMC/SD host<br>
-+<br>
-+-=C2=A0 Three on-chip UARTs<br>
-diff --git a/docs/system/arm/realview.rst b/docs/system/arm/realview.rst<br=
->
-new file mode 100644<br>
-index 00000000000..8e08eb5da16<br>
---- /dev/null<br>
-+++ b/docs/system/arm/realview.rst<br>
-@@ -0,0 +1,34 @@<br>
-+Arm Realview boards (``realview-eb``, ``realview-eb-mpcore``, ``realview-p=
-b-a8``, ``realview-pbx-a9``)<br>
-+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D<br>
-+<br>
-+Several variants of the ARM RealView baseboard are emulated, including<br>
-+the EB, PB-A8 and PBX-A9. Due to interactions with the bootloader, only<br=
->
-+certain Linux kernel configurations work out of the box on these boards.<b=
-r>
-+<br>
-+Kernels for the PB-A8 board should have CONFIG_REALVIEW_HIGH_PHYS_OFFSET<b=
-r>
-+enabled in the kernel, and expect 512M RAM. Kernels for The PBX-A9 board<b=
-r>
-+should have CONFIG_SPARSEMEM enabled, CONFIG_REALVIEW_HIGH_PHYS_OFFSET<br>
-+disabled and expect 1024M RAM.<br>
-+<br>
-+The following devices are emulated:<br>
-+<br>
-+-=C2=A0 ARM926E, ARM1136, ARM11MPCore, Cortex-A8 or Cortex-A9 MPCore CPU<b=
-r>
-+<br>
-+-=C2=A0 ARM AMBA Generic/Distributed Interrupt Controller<br>
-+<br>
-+-=C2=A0 Four PL011 UARTs<br>
-+<br>
-+-=C2=A0 SMC 91c111 or SMSC LAN9118 Ethernet adapter<br>
-+<br>
-+-=C2=A0 PL110 LCD controller<br>
-+<br>
-+-=C2=A0 PL050 KMI with PS/2 keyboard and mouse<br>
-+<br>
-+-=C2=A0 PCI host bridge<br>
-+<br>
-+-=C2=A0 PCI OHCI USB controller<br>
-+<br>
-+-=C2=A0 LSI53C895A PCI SCSI Host Bus Adapter with hard disk and CD-ROM<br>
-+=C2=A0 =C2=A0devices<br>
-+<br>
-+-=C2=A0 PL181 MultiMedia Card Interface with SD card.<br>
-diff --git a/docs/system/arm/stellaris.rst b/docs/system/arm/stellaris.rst<=
-br>
-new file mode 100644<br>
-index 00000000000..8af4ad79c79<br>
---- /dev/null<br>
-+++ b/docs/system/arm/stellaris.rst<br>
-@@ -0,0 +1,26 @@<br>
-+Stellaris boards (``lm3s6965evb``, ``lm3s811evb``)<br>
-+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D<br>
-+<br>
-+The Luminary Micro Stellaris LM3S811EVB emulation includes the following<b=
-r>
-+devices:<br>
-+<br>
-+-=C2=A0 Cortex-M3 CPU core.<br>
-+<br>
-+-=C2=A0 64k Flash and 8k SRAM.<br>
-+<br>
-+-=C2=A0 Timers, UARTs, ADC and |I2C| interface.<br>
-+<br>
-+-=C2=A0 OSRAM Pictiva 96x16 OLED with SSD0303 controller on<br>
-+=C2=A0 =C2=A0|I2C| bus.<br>
-+<br>
-+The Luminary Micro Stellaris LM3S6965EVB emulation includes the<br>
-+following devices:<br>
-+<br>
-+-=C2=A0 Cortex-M3 CPU core.<br>
-+<br>
-+-=C2=A0 256k Flash and 64k SRAM.<br>
-+<br>
-+-=C2=A0 Timers, UARTs, ADC, |I2C| and SSI interfaces.<br>
-+<br>
-+-=C2=A0 OSRAM Pictiva 128x64 OLED with SSD0323 controller connected via<br=
->
-+=C2=A0 =C2=A0SSI.<br>
-diff --git a/docs/system/arm/sx1.rst b/docs/system/arm/sx1.rst<br>
-new file mode 100644<br>
-index 00000000000..321993bc098<br>
---- /dev/null<br>
-+++ b/docs/system/arm/sx1.rst<br>
-@@ -0,0 +1,18 @@<br>
-+Siemens SX1 (``sx1``, ``sx1-v1``)<br>
-+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D<br>
-+<br>
-+The Siemens SX1 models v1 and v2 (default) basic emulation. The<br>
-+emulation includes the following elements:<br>
-+<br>
-+-=C2=A0 Texas Instruments OMAP310 System-on-chip (ARM 925T core)<br>
-+<br>
-+-=C2=A0 ROM and RAM memories (ROM firmware image can be loaded with<br>
-+=C2=A0 =C2=A0-pflash) V1 1 Flash of 16MB and 1 Flash of 8MB V2 1 Flash of =
-32MB<br>
-+<br>
-+-=C2=A0 On-chip LCD controller<br>
-+<br>
-+-=C2=A0 On-chip Real Time Clock<br>
-+<br>
-+-=C2=A0 Secure Digital card connected to OMAP MMC/SD host<br>
-+<br>
-+-=C2=A0 Three on-chip UARTs<br>
-diff --git a/docs/system/arm/versatile.rst b/docs/system/arm/versatile.rst<=
-br>
-new file mode 100644<br>
-index 00000000000..48b6ca0a020<br>
---- /dev/null<br>
-+++ b/docs/system/arm/versatile.rst<br>
-@@ -0,0 +1,29 @@<br>
-+Arm Versatile boards (``versatileab``, ``versatilepb``)<br>
-+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D<br>
-+<br>
-+The ARM Versatile baseboard is emulated with the following devices:<br>
-+<br>
-+-=C2=A0 ARM926E, ARM1136 or Cortex-A8 CPU<br>
-+<br>
-+-=C2=A0 PL190 Vectored Interrupt Controller<br>
-+<br>
-+-=C2=A0 Four PL011 UARTs<br>
-+<br>
-+-=C2=A0 SMC 91c111 Ethernet adapter<br>
-+<br>
-+-=C2=A0 PL110 LCD controller<br>
-+<br>
-+-=C2=A0 PL050 KMI with PS/2 keyboard and mouse.<br>
-+<br>
-+-=C2=A0 PCI host bridge. Note the emulated PCI bridge only provides access=
-<br>
-+=C2=A0 =C2=A0to PCI memory space. It does not provide access to PCI IO spa=
-ce. This<br>
-+=C2=A0 =C2=A0means some devices (eg. ne2k_pci NIC) are not usable, and oth=
-ers (eg.<br>
-+=C2=A0 =C2=A0rtl8139 NIC) are only usable when the guest drivers use the m=
-emory<br>
-+=C2=A0 =C2=A0mapped control registers.<br>
-+<br>
-+-=C2=A0 PCI OHCI USB controller.<br>
-+<br>
-+-=C2=A0 LSI53C895A PCI SCSI Host Bus Adapter with hard disk and CD-ROM<br>
-+=C2=A0 =C2=A0devices.<br>
-+<br>
-+-=C2=A0 PL181 MultiMedia Card Interface with SD card.<br>
-diff --git a/docs/system/arm/xscale.rst b/docs/system/arm/xscale.rst<br>
-new file mode 100644<br>
-index 00000000000..19da2eff352<br>
---- /dev/null<br>
-+++ b/docs/system/arm/xscale.rst<br>
-@@ -0,0 +1,29 @@<br>
-+Sharp XScale-based PDA models (``akita``, ``borzoi``, ``spitz``, ``terrier=
-``)<br>
-+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D<br>
-+<br>
-+The XScale-based clamshell PDA models (\&quot;Spitz\&quot;, \&quot;Akita\&=
-quot;, \&quot;Borzoi\&quot;<br>
-+and \&quot;Terrier\&quot;) emulation includes the following peripherals:<b=
-r>
-+<br>
-+-=C2=A0 Intel PXA270 System-on-chip (ARM V5TE core)<br>
-+<br>
-+-=C2=A0 NAND Flash memory<br>
-+<br>
-+-=C2=A0 IBM/Hitachi DSCM microdrive in a PXA PCMCIA slot - not in \&quot;A=
-kita\&quot;<br>
-+<br>
-+-=C2=A0 On-chip OHCI USB controller<br>
-+<br>
-+-=C2=A0 On-chip LCD controller<br>
-+<br>
-+-=C2=A0 On-chip Real Time Clock<br>
-+<br>
-+-=C2=A0 TI ADS7846 touchscreen controller on SSP bus<br>
-+<br>
-+-=C2=A0 Maxim MAX1111 analog-digital converter on |I2C| bus<br>
-+<br>
-+-=C2=A0 GPIO-connected keyboard controller and LEDs<br>
-+<br>
-+-=C2=A0 Secure Digital card connected to PXA MMC/SD host<br>
-+<br>
-+-=C2=A0 Three on-chip UARTs<br>
-+<br>
-+-=C2=A0 WM8750 audio CODEC on |I2C| and |I2S| busses<br>
 diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst<br>
-index d2a3b44ce88..c7df6fc1f97 100644<br>
+index c7df6fc1f97..86ea6f2f568 100644<br>
 --- a/docs/system/target-arm.rst<br>
 +++ b/docs/system/target-arm.rst<br>
-@@ -3,215 +3,16 @@<br>
-=C2=A0ARM System emulator<br>
+@@ -1,9 +1,71 @@<br>
+=C2=A0.. _ARM-System-emulator:<br>
+<br>
+-ARM System emulator<br>
++Arm System emulator<br>
 =C2=A0-------------------<br>
 <br>
--Use the executable ``qemu-system-arm`` to simulate a ARM machine. The<br>
--ARM Integrator/CP board is emulated with the following devices:<br>
--<br>
---=C2=A0 ARM926E, ARM1026E, ARM946E, ARM1136 or Cortex-A8 CPU<br>
--<br>
---=C2=A0 Two PL011 UARTs<br>
--<br>
---=C2=A0 SMC 91c111 Ethernet adapter<br>
--<br>
---=C2=A0 PL110 LCD controller<br>
--<br>
---=C2=A0 PL050 KMI with PS/2 keyboard and mouse.<br>
--<br>
---=C2=A0 PL181 MultiMedia Card Interface with SD card.<br>
--<br>
--The ARM Versatile baseboard is emulated with the following devices:<br>
--<br>
---=C2=A0 ARM926E, ARM1136 or Cortex-A8 CPU<br>
--<br>
---=C2=A0 PL190 Vectored Interrupt Controller<br>
--<br>
---=C2=A0 Four PL011 UARTs<br>
--<br>
---=C2=A0 SMC 91c111 Ethernet adapter<br>
--<br>
---=C2=A0 PL110 LCD controller<br>
--<br>
---=C2=A0 PL050 KMI with PS/2 keyboard and mouse.<br>
--<br>
---=C2=A0 PCI host bridge. Note the emulated PCI bridge only provides access=
+-Use the executable ``qemu-system-arm`` to simulate a ARM machine.<br>
++QEMU can emulate both 32-bit and 64-bit Arm CPUs. Use the<br>
++``qemu-system-aarch64`` executable to simulate a 64-bit Arm machine.<br>
++You can use either ``qemu-system-arm`` or ``qemu-system-aarch64``<br>
++to simulate a 32-bit Arm machine: in general, command lines that<br>
++work for ``qemu-system-arm`` will behave the same when used with<br>
++``qemu-system-aarch64``.<br>
++<br>
++QEMU has generally good support for Arm guests. It has support for<br>
++nearly fifty different machines. The reason we support so many is that<br>
++Arm hardware is much more widely varying than x86 hardware. Arm CPUs<br>
++are generally built into &quot;system-on-chip&quot; (SoC) designs created =
+by<br>
++many different companies with different devices, and these SoCs are<br>
++then built into machines which can vary still further even if they use<br>
++the same SoC. Even with fifty boards QEMU does not cover more than a<br>
++small fraction of the Arm hardware ecosystem.<br>
++<br>
++The situation for 64-bit Arm is fairly similar, except that we don&#39;t<b=
+r>
++implement so many different machines.<br>
++<br>
++As well as the more common &quot;A-profile&quot; CPUs (which have MMUs and=
+ will<br>
++run Linux) QEMU also supports &quot;M-profile&quot; CPUs such as the Corte=
+x-M0,<br>
++Cortex-M4 and Cortex-M33 (which are microcontrollers used in very<br>
++embedded boards). For most boards the CPU type is fixed (matching what<br>
++the hardware has), so typically you don&#39;t need to specify the CPU type=
 <br>
--=C2=A0 =C2=A0to PCI memory space. It does not provide access to PCI IO spa=
-ce. This<br>
--=C2=A0 =C2=A0means some devices (eg. ne2k_pci NIC) are not usable, and oth=
-ers (eg.<br>
--=C2=A0 =C2=A0rtl8139 NIC) are only usable when the guest drivers use the m=
-emory<br>
--=C2=A0 =C2=A0mapped control registers.<br>
--<br>
---=C2=A0 PCI OHCI USB controller.<br>
--<br>
---=C2=A0 LSI53C895A PCI SCSI Host Bus Adapter with hard disk and CD-ROM<br>
--=C2=A0 =C2=A0devices.<br>
--<br>
---=C2=A0 PL181 MultiMedia Card Interface with SD card.<br>
--<br>
--Several variants of the ARM RealView baseboard are emulated, including<br>
--the EB, PB-A8 and PBX-A9. Due to interactions with the bootloader, only<br=
->
--certain Linux kernel configurations work out of the box on these boards.<b=
-r>
--<br>
--Kernels for the PB-A8 board should have CONFIG_REALVIEW_HIGH_PHYS_OFFSET<b=
-r>
--enabled in the kernel, and expect 512M RAM. Kernels for The PBX-A9 board<b=
-r>
--should have CONFIG_SPARSEMEM enabled, CONFIG_REALVIEW_HIGH_PHYS_OFFSET<br>
--disabled and expect 1024M RAM.<br>
--<br>
--The following devices are emulated:<br>
--<br>
---=C2=A0 ARM926E, ARM1136, ARM11MPCore, Cortex-A8 or Cortex-A9 MPCore CPU<b=
-r>
--<br>
---=C2=A0 ARM AMBA Generic/Distributed Interrupt Controller<br>
--<br>
---=C2=A0 Four PL011 UARTs<br>
--<br>
---=C2=A0 SMC 91c111 or SMSC LAN9118 Ethernet adapter<br>
--<br>
---=C2=A0 PL110 LCD controller<br>
--<br>
---=C2=A0 PL050 KMI with PS/2 keyboard and mouse<br>
--<br>
---=C2=A0 PCI host bridge<br>
--<br>
---=C2=A0 PCI OHCI USB controller<br>
--<br>
---=C2=A0 LSI53C895A PCI SCSI Host Bus Adapter with hard disk and CD-ROM<br>
--=C2=A0 =C2=A0devices<br>
--<br>
---=C2=A0 PL181 MultiMedia Card Interface with SD card.<br>
--<br>
--The XScale-based clamshell PDA models (\&quot;Spitz\&quot;, \&quot;Akita\&=
-quot;, \&quot;Borzoi\&quot;<br>
--and \&quot;Terrier\&quot;) emulation includes the following peripherals:<b=
-r>
--<br>
---=C2=A0 Intel PXA270 System-on-chip (ARM V5TE core)<br>
--<br>
---=C2=A0 NAND Flash memory<br>
--<br>
---=C2=A0 IBM/Hitachi DSCM microdrive in a PXA PCMCIA slot - not in \&quot;A=
-kita\&quot;<br>
--<br>
---=C2=A0 On-chip OHCI USB controller<br>
--<br>
---=C2=A0 On-chip LCD controller<br>
--<br>
---=C2=A0 On-chip Real Time Clock<br>
--<br>
---=C2=A0 TI ADS7846 touchscreen controller on SSP bus<br>
--<br>
---=C2=A0 Maxim MAX1111 analog-digital converter on |I2C| bus<br>
--<br>
---=C2=A0 GPIO-connected keyboard controller and LEDs<br>
--<br>
---=C2=A0 Secure Digital card connected to PXA MMC/SD host<br>
--<br>
---=C2=A0 Three on-chip UARTs<br>
--<br>
---=C2=A0 WM8750 audio CODEC on |I2C| and |I2S| busses<br>
--<br>
--The Palm Tungsten|E PDA (codename \&quot;Cheetah\&quot;) emulation include=
-s the<br>
--following elements:<br>
--<br>
---=C2=A0 Texas Instruments OMAP310 System-on-chip (ARM 925T core)<br>
--<br>
---=C2=A0 ROM and RAM memories (ROM firmware image can be loaded with<br>
--=C2=A0 =C2=A0-option-rom)<br>
--<br>
---=C2=A0 On-chip LCD controller<br>
--<br>
---=C2=A0 On-chip Real Time Clock<br>
--<br>
---=C2=A0 TI TSC2102i touchscreen controller / analog-digital converter /<br=
->
--=C2=A0 =C2=A0Audio CODEC, connected through MicroWire and |I2S| busses<br>
--<br>
---=C2=A0 GPIO-connected matrix keypad<br>
--<br>
---=C2=A0 Secure Digital card connected to OMAP MMC/SD host<br>
--<br>
---=C2=A0 Three on-chip UARTs<br>
--<br>
--Nokia N800 and N810 internet tablets (known also as RX-34 and RX-44 /<br>
--48) emulation supports the following elements:<br>
--<br>
---=C2=A0 Texas Instruments OMAP2420 System-on-chip (ARM 1136 core)<br>
--<br>
---=C2=A0 RAM and non-volatile OneNAND Flash memories<br>
--<br>
---=C2=A0 Display connected to EPSON remote framebuffer chip and OMAP on-chi=
-p<br>
--=C2=A0 =C2=A0display controller and a LS041y3 MIPI DBI-C controller<br>
--<br>
---=C2=A0 TI TSC2301 (in N800) and TI TSC2005 (in N810) touchscreen<br>
--=C2=A0 =C2=A0controllers driven through SPI bus<br>
--<br>
---=C2=A0 National Semiconductor LM8323-controlled qwerty keyboard driven<br=
->
--=C2=A0 =C2=A0through |I2C| bus<br>
--<br>
---=C2=A0 Secure Digital card connected to OMAP MMC/SD host<br>
--<br>
---=C2=A0 Three OMAP on-chip UARTs and on-chip STI debugging console<br>
--<br>
---=C2=A0 Mentor Graphics \&quot;Inventra\&quot; dual-role USB controller em=
-bedded in a<br>
--=C2=A0 =C2=A0TI TUSB6010 chip - only USB host mode is supported<br>
--<br>
---=C2=A0 TI TMP105 temperature sensor driven through |I2C| bus<br>
--<br>
---=C2=A0 TI TWL92230C power management companion with an RTC on<br>
--=C2=A0 =C2=A0|I2C| bus<br>
--<br>
---=C2=A0 Nokia RETU and TAHVO multi-purpose chips with an RTC, connected<br=
->
--=C2=A0 =C2=A0through CBUS<br>
--<br>
--The Luminary Micro Stellaris LM3S811EVB emulation includes the following<b=
-r>
--devices:<br>
--<br>
---=C2=A0 Cortex-M3 CPU core.<br>
--<br>
---=C2=A0 64k Flash and 8k SRAM.<br>
--<br>
---=C2=A0 Timers, UARTs, ADC and |I2C| interface.<br>
--<br>
---=C2=A0 OSRAM Pictiva 96x16 OLED with SSD0303 controller on<br>
--=C2=A0 =C2=A0|I2C| bus.<br>
--<br>
--The Luminary Micro Stellaris LM3S6965EVB emulation includes the<br>
--following devices:<br>
--<br>
---=C2=A0 Cortex-M3 CPU core.<br>
--<br>
---=C2=A0 256k Flash and 64k SRAM.<br>
--<br>
---=C2=A0 Timers, UARTs, ADC, |I2C| and SSI interfaces.<br>
--<br>
---=C2=A0 OSRAM Pictiva 128x64 OLED with SSD0323 controller connected via<br=
->
--=C2=A0 =C2=A0SSI.<br>
--<br>
--The Freecom MusicPal internet radio emulation includes the following<br>
--elements:<br>
--<br>
---=C2=A0 Marvell MV88W8618 ARM core.<br>
--<br>
---=C2=A0 32 MB RAM, 256 KB SRAM, 8 MB flash.<br>
--<br>
---=C2=A0 Up to 2 16550 UARTs<br>
--<br>
---=C2=A0 MV88W8xx8 Ethernet controller<br>
--<br>
---=C2=A0 MV88W8618 audio controller, WM8750 CODEC and mixer<br>
--<br>
---=C2=A0 128x64 display with brightness control<br>
--<br>
---=C2=A0 2 buttons, 2 navigation wheels with button function<br>
--<br>
--The Siemens SX1 models v1 and v2 (default) basic emulation. The<br>
--emulation includes the following elements:<br>
--<br>
---=C2=A0 Texas Instruments OMAP310 System-on-chip (ARM 925T core)<br>
--<br>
---=C2=A0 ROM and RAM memories (ROM firmware image can be loaded with<br>
--=C2=A0 =C2=A0-pflash) V1 1 Flash of 16MB and 1 Flash of 8MB V2 1 Flash of =
-32MB<br>
--<br>
---=C2=A0 On-chip LCD controller<br>
--<br>
---=C2=A0 On-chip Real Time Clock<br>
--<br>
---=C2=A0 Secure Digital card connected to OMAP MMC/SD host<br>
--<br>
---=C2=A0 Three on-chip UARTs<br>
--<br>
--A Linux 2.6 test image is available on the QEMU web site. More<br>
--information is available in the QEMU mailing-list archive.<br>
-+Use the executable ``qemu-system-arm`` to simulate a ARM machine.<br>
++by hand, except for special cases like the ``virt`` board.<br>
 +<br>
-+.. toctree::<br>
++Choosing a board model<br>
++=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br>
 +<br>
-+=C2=A0 =C2=A0arm/integratorcp<br>
-+=C2=A0 =C2=A0arm/versatile<br>
-+=C2=A0 =C2=A0arm/realview<br>
-+=C2=A0 =C2=A0arm/xscale<br>
-+=C2=A0 =C2=A0arm/palm<br>
-+=C2=A0 =C2=A0arm/nseries<br>
-+=C2=A0 =C2=A0arm/stellaris<br>
-+=C2=A0 =C2=A0arm/musicpal<br>
-+=C2=A0 =C2=A0arm/sx1<br>
++For QEMU&#39;s Arm system emulation, you must specify which board<br>
++model you want to use with the ``-M`` or ``--machine`` option;<br>
++there is no default.<br>
++<br>
++Because Arm systems differ so much and in fundamental ways, typically<br>
++operating system or firmware images intended to run on one machine<br>
++will not run at all on any other. This is often surprising for new<br>
++users who are used to the x86 world where every system looks like a<br>
++standard PC. (Once the kernel has booted, most userspace software<br>
++cares much less about the detail of the hardware.)<br>
++<br>
++If you already have a system image or a kernel that works on hardware<br>
++and you want to boot with QEMU, check whether QEMU lists that machine<br>
++in its ``-machine help`` output. If it is listed, then you can probably<br=
+>
++use that board model. If it is not listed, then unfortunately your image<b=
+r>
++will almost certainly not boot on QEMU. (You might be able to<br>
++extract the filesystem and use that with a different kernel which<br>
++boots on a system that QEMU does emulate.)<br>
++<br>
++If you don&#39;t care about reproducing the idiosyncrasies of a particular=
+<br>
++bit of hardware, such as small amount of RAM, no PCI or other hard<br>
++disk, etc., and just want to run Linux, the best option is to use the<br>
++``virt`` board. This is a platform which doesn&#39;t correspond to any<br>
++real hardware and is designed for use in virtual machines. You&#39;ll<br>
++need to compile Linux with a suitable configuration for running on<br>
++the ``virt`` board. ``virt`` supports PCI, virtio, recent CPUs and<br>
++large amounts of RAM. It also supports 64-bit CPUs.<br>
++<br>
++Board-specific documentation<br>
++=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D<br>
++<br>
++Unfortunately many of the Arm boards QEMU supports are currently<br>
++undocumented; you can get a complete list by running<br>
++``qemu-system-aarch64 --machine help``.<br>
+<br>
+=C2=A0.. toctree::<br>
+<br>
 -- <br>
 2.20.1<br>
 <br>
 </blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
 mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
+div>
 
---000000000000c2505b05a0865193--
+--00000000000070137005a08661ee--

@@ -1,194 +1,96 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id r23sm9583357wrr.93.2020.03.10.01.15.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Mar 2020 01:15:59 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id ADDA41FF7E;
-	Tue, 10 Mar 2020 08:15:58 +0000 (GMT)
-References: <20200301215029.15196-1-nieklinnenbank@gmail.com>
- <20200301215029.15196-19-nieklinnenbank@gmail.com>
- <871rq876h3.fsf@linaro.org>
- <CAPan3WrNnrnngwE4pGeYpR9HS7Vr936-ojPZZovNo8ZdoAA0sg@mail.gmail.com>
- <CAPan3WqOT1B4xuJeAYUh4Np1UjJuypCDSQVGeV2yyNbH5mBxKw@mail.gmail.com>
-User-agent: mu4e 1.3.9; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, Philippe =?utf-8?Q?Mathieu-Daud?=
- =?utf-8?Q?=C3=A9?=
- <philmd@redhat.com>, Beniamino Galvani <b.galvani@gmail.com>, Jason Wang
- <jasowang@redhat.com>, Igor Mammedov <imammedo@redhat.com>
-Subject: Re: [PATCH v6 18/18] docs: add Orange Pi PC document
-In-reply-to: <CAPan3WqOT1B4xuJeAYUh4Np1UjJuypCDSQVGeV2yyNbH5mBxKw@mail.gmail.com>
-Date: Tue, 10 Mar 2020 08:15:58 +0000
-Message-ID: <87pndkiq0x.fsf@linaro.org>
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp768572lfc;
+        Tue, 10 Mar 2020 06:38:51 -0700 (PDT)
+X-Received: by 2002:a05:6808:d7:: with SMTP id t23mr1175804oic.69.1583847531027;
+        Tue, 10 Mar 2020 06:38:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583847531; cv=none;
+        d=google.com; s=arc-20160816;
+        b=w2OFEkTpEpEAtrGyxGTZp2NV8yBMH6WNRcdxUgH9FsRTmVQRScaaVSF5ZRSxoEC15G
+         WrVQO8n+vzlsEkZm5uVuvou/rPYc6eiBIs9uThbopSJR32sOvJcG2kS4aq2wjXc2DYle
+         nfcXDf1LxkTorGQ2zJyoqCw3WS//DQ/vOdmZmYN6hS8Q9jvBFvzFXMIp+VXs5llcF75n
+         Dx6HsdHh9WNrkdJtGYffhb3XCsrHotn0UZzX7GojLFjd8P9cRx+CLw7EeSJRgsevZnsW
+         vTmXkoe4F79zqDHwFL/am1jEArQStNN/dBxNMdfLbOD00s8B0u4bDNAXM2oUM6XCSALa
+         KtBw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=AfOpHfANqMh/+buT8CipNlg7u+XulNXv4MgEELSKa6E=;
+        b=HH/KYEayacMfa5hoIi2Z33XZ21Bm6r3aBZ3DcPIi2OIRrUYNzIH//draTGSrjvKsHi
+         3fUg/uCIp35d+VkPmpW4PIn5PTzT/uKxrx4SYh/xtpQuXpsmdfGaMLEg+BkB8Ykwaj7u
+         bn4eWbLbVXI2gckxh6FqAgGR/rGoesWJs+iJrAaS75kbByKelJXqEuxWEwtCzF0vqXq/
+         tgdgzpd/O6LEqYSPaAqWpXkuwFVHYmZE6lfloiCs+frIB4ONCC5uVQVrz1kVAWZftk+Q
+         ++hyL9huy7vDzCS6wpyNyCDJi4dS9Gboldt4SrdKebfGODhwTIE22iNPDdUwuFurJzVP
+         ZDuA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Sa6/1WJ/";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id i10sor3002192oib.67.2020.03.10.06.38.50
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 10 Mar 2020 06:38:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Sa6/1WJ/";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=AfOpHfANqMh/+buT8CipNlg7u+XulNXv4MgEELSKa6E=;
+        b=Sa6/1WJ//aoDEcg0oJ9iEbWvpzckJjUrdwvS9RzjasDSQgFNArkJM6agOl2In0IZhs
+         kdb3sB1RcFwS0XhIIMsGz7uZ7zF5wtdJLF0AyiqLx2MI30GxuX4B/+t7kMlCNfGs0v0i
+         8JSHj75sENs/iW26yU4AF/HUY+3uwYl4SdyHfdnPLZATdspcEgm4kL12eMz1bKCplaVQ
+         VMU0jx2R6CBivXqUBcAXK6JeXZbSTg77UK73/aOS1Pp+uyw/VWV7wWh3hMf9tOE8u0Ri
+         BMmlK+KYSrKKiGbbHbOvtEqvEBIMzfHiYpP678WrCTho6ne7N53KRjQtWMGFiKN/0cSp
+         DPGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=AfOpHfANqMh/+buT8CipNlg7u+XulNXv4MgEELSKa6E=;
+        b=GW0ClSZK5TvYlf2E3Va3Dx89iGOv0hLlp6FJL5sbJTZLT93/vw57pQ/VHpD96MALfH
+         sOXAwWbBDp6QXFaoHDrcCGmYFW+/wwKdz8ZTHeUNgUV/DqREUG0eJbC2d46TaiIyNjWV
+         7KVrFu6TZqxsjy0r3LCn7q00tn9ON5FzE5I6OvuyBUSApAxZqDikRZYIpKGck5hGxMuY
+         zDBHB5TGkEUt1Gpgo4Uqb/V8NdFwYazffnhs2Y1iQUjnp1SUoScTCABUZkg8XrJ6btEL
+         UP+OYj9svU8HFoElvPdlkZ+lnoyuPpnasJSxmNvUYnQJKD9dCQDOqIdLb9Ra4KdzHtcl
+         vNsA==
+X-Gm-Message-State: ANhLgQ0dBNEDQXTzmI3ksiNd8tbvuMI+LOWS0zN+n/Asih1P3+VSoXym
+	Unf4F6vmhpIifT+AfrDNgXUqKmaq5XGVHPOlhcMRZPd8/pAHLXP7
+X-Google-Smtp-Source: ADFU+vsd/nbAZ4CCViMsj2mWxgKqFfaWmnbwaPzv260A3g3egoesewmn7R2t1zpgWqAx63JV48O2uW78fTPqh95er30=
+X-Received: by 2002:a54:478b:: with SMTP id o11mr1134530oic.146.1583847530221;
+ Tue, 10 Mar 2020 06:38:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20200310133020.27196-1-alex.bennee@linaro.org>
+In-Reply-To: <20200310133020.27196-1-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 10 Mar 2020 13:38:38 +0000
+Message-ID: <CAFEAcA-S1g4ojEkYdEa-ZHH+=uNUgCDWo0Z29ikbvNoX8Ro7Cw@mail.gmail.com>
+Subject: Re: [PATCH] docs/system: add a little more detail to ARM machines
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: mz+dGWrS9TL7
+X-TUID: gQ1yelu5WYlb
 
+On Tue, 10 Mar 2020 at 13:30, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+> Taking from the wiki page mention:
+>
+>   - both 32 and 64 bit architectures
+>   - the roll of A/M profile chips
+>   - warn about kernel portability
+>   - gently suggest -M virt
+>   - add headlines for groups of boards
+>
+> This is still incomplete but hopefully is a less of a straight dive
+> into a dry list of peripherals.
 
-Niek Linnenbank <nieklinnenbank@gmail.com> writes:
+This is a semi-duplicate of the series I sent last night:
+https://patchew.org/QEMU/20200309215818.2021-1-peter.maydell@linaro.org/
 
-> Hi Alex,
->
-> On Wed, Mar 4, 2020 at 9:55 PM Niek Linnenbank <nieklinnenbank@gmail.com>
-> wrote:
->
->> Hello Alex,
->>
->> On Wed, Mar 4, 2020 at 11:35 AM Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> wrote:
->>
->>>
->>> Niek Linnenbank <nieklinnenbank@gmail.com> writes:
->>>
->>> > The Xunlong Orange Pi PC machine is a functional ARM machine
->>> > based on the Allwinner H3 System-on-Chip. It supports mainline
->>> > Linux, U-Boot, NetBSD and is covered by acceptance tests.
->>> >
->>> > This commit adds a documentation text file with a description
->>> > of the machine and instructions for the user.
->>>
->>> This is great, thanks for taking the time to include documentation.
->>>
->>
->> Sure, I'm happy to contribute it. I tried to include most relevant
->> information
->> in there for developers and potential users of the machine. If something
->> is missing
->> just let me know and I'll make an update for it.
->>
->>
->>>
->>> >
->>> > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
->>> > ---
->>> >  docs/orangepi.rst | 226
->>> > ++++++++++++++++++++++++++++++++++++++++++++++
->>>
->>> I suspect there is a better place to put this is than the top level. I
->>> wonder if it should be docs/specs?
->>>
->>
->> Yeah I'm fine to move it to a different subdirectory if needed. Right now
->> its placed in docs,
->> as it seems that documents for machines are also placed there, for examp=
-le
->> docs/microvm.rst
->>
->>
->>>
->>> >  MAINTAINERS       |   1 +
->>> >  2 files changed, 227 insertions(+)
->>> >  create mode 100644 docs/orangepi.rst
->>> >
->>> > diff --git a/docs/orangepi.rst b/docs/orangepi.rst
->>> > new file mode 100644
->>> > index 0000000000..a9b46f553c
->>> > --- /dev/null
->>> > +++ b/docs/orangepi.rst
->>> > @@ -0,0 +1,226 @@
->>> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D
->>> > +Orange Pi PC Machine Type
->>> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D
->>> > +
->>> > +The Xunlong Orange Pi PC is an Allwinner H3 System on Chip
->>> > +based embedded computer with mainline support in both U-Boot
->>> > +and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,
->>> > +1GiB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and
->>> > +various other I/O.
->>>
->>> When Peter's document PR goes in later this week there will also be a:
->>>
->>>   docs/system/target-arm.rst
->>>
->>> which would benefit from a section for the Orange Pi in it.
->>>
->>
->> Nice, I'll have a look at it when it gets merged and add a section for
->> Orange Pi.
->> I'll try to include that in the next version of this series.
->>
->>
->>>
->>> > +
->>> > +Supported devices
->>> > +-----------------
->>> > +
->>> > +The Orange Pi PC machine supports the following devices:
->>> > +
->>> > + * SMP (Quad Core Cortex A7)
->>> > + * Generic Interrupt Controller configuration
->>> > + * SRAM mappings
->>> > + * SDRAM controller
->>> > + * Real Time Clock
->>> > + * Timer device (re-used from Allwinner A10)
->>> > + * UART
->>> > + * SD/MMC storage controller
->>> > + * EMAC ethernet
->>>
->>> Do we ever exercise the ethernet in the acceptance tests? I see we have
->>> some that boots a full OS but boot console only seems to touch the
->>> serial console.
->>>
->>
->> Good point. Currently in the acceptance tests U-Boot and Linux detect
->> the ethernet device, but there are no explicit checks for that in the
->> acceptance tests
->> nor any actual packet transmission.
->>
->> I'll try to extend the current tests in the next version of this series =
-to
->> include some
->> basic checks for the ethernet device, perhaps with DHCP or a ping.
->> I'm open to suggestions for the preferred way to do this.
->>
->
-> FYI, I added some coverage for the ethernet device by extending the
-> test_arm_orangepi_sd test with a few lines like:
->
-> +        exec_command_and_wait_for_pattern(self, 'ifconfig eth0 up', 'eth=
-0:
-> Link is Up')
-> +        exec_command_and_wait_for_pattern(self, 'udhcpc eth0',
-> +                                                'udhcpc: lease of
-> 10.0.2.15 obtained')
-> +        exec_command_and_wait_for_pattern(self, 'ping -c 3 10.0.2.2',
-> +            '3 packets transmitted, 3 packets received, 0% packet loss')
->
-
-That will work as a smoke test. Are you going to re-spin this week so we
-can get the final reviews done?
-
-> Regards,
-> Niek
->
->
->> Regards,
->> Niek
->>
->>
->>
->>
->>
->>
->>>
->>> <snip>
->>>
->>> --
->>> Alex Benn=C3=A9e
->>>
->>
->>
->> --
->> Niek Linnenbank
->>
->>
-
-
---=20
-Alex Benn=C3=A9e
+thanks
+-- PMM

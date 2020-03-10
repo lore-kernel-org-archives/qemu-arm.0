@@ -1,270 +1,210 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1122135lfc;
-        Tue, 10 Mar 2020 12:30:12 -0700 (PDT)
-X-Received: by 2002:a92:3a1d:: with SMTP id h29mr4145617ila.112.1583868611926;
-        Tue, 10 Mar 2020 12:30:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583868611; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1180378lfc;
+        Tue, 10 Mar 2020 13:38:00 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vshabzkON3r26LcZoYuFFbqJtkWzCRfKXrye1m66TgShmzKYaJN/QuqZ6Shf1Vo/W3Oh/0J
+X-Received: by 2002:a05:620a:1517:: with SMTP id i23mr20741852qkk.459.1583872680054;
+        Tue, 10 Mar 2020 13:38:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583872680; cv=none;
         d=google.com; s=arc-20160816;
-        b=guRBBUoMtfq6wIZSRtm5oIutrGrwEj5efDwdnheNHwnn6cdVlXSLE4ueY6IPyt5uq6
-         3w4WjrImWmu5I1yMx8gRL95SgKIAbJ5wpi16zpLH+nL3BIATzdP/7RaFPeC887tRrgeg
-         vUWE+LekcHsnhtRQJ0l6G8SSxfPFBhLsUZ70zHW4IMTIWfIBKSwsoSsP7wmRjJcnLTlf
-         hpGl7Po/nACQmzOzW7mMcFXjTQBJRlUP7m+yum0S8PQWkSJGulZFAYPV7heczxsudpTi
-         0TX0eWo+Lg7AR8Geb15rwTfRYiP9onr7oPZTGs82X8jFYgDQg+uq6npxuvcKW/VBHROB
-         SMnA==
+        b=IlbShYY5ZxQ+b8y+bzuJqLJu1bfxaqGLO7MaCVxxw6xLxs+/WPh8aUwsatQQuDgiut
+         yYsOFybBoZY9wlksvtaCXNCeRYD3hW3V5IhOwhOuzV1RLpsgYNT3dYLfSXdxiRSR8YQF
+         Vnfh7c2RhbHTGFWxhQ/5fbihrsVuq/KO/OmNNEmFLRcvL4eAxJ/8HmRe3I4EKCvS9Up4
+         FRWUvR35szZczKLJ9IuYb+ulGGLzwEnJTGJkfaxB04iV/eLmM8USDz8/GrJorYe6FxMQ
+         3mo1j1z/dfC5xk5smqhJoIzG/5lgxj19RaFv2pki94n9PbqjcB3Dm98OmIix8ln1m7X8
+         j8tQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=Ec4zzvCEIRAZ5xfSFujdt3O/MmVFFCSSaTkJNA0Gesk=;
-        b=0T2iV6XC4Fo08Ff0zxiesNl6jis8eZE8Ssa7kQLIY/FvFNjsxNrKeo4zi7ZCU9jTwW
-         77tNC0Mx5oeISBC2XISOF7eFeYaFRU31DSwbBfacPu1Bi0NtOQzCR4N4ifaoSdN9KuJb
-         Aynm9ifn6IpFqEgRf7yLwyY6EQOQcyCpDJ4jGf9IXT1c8l7UQUXoAcwGKW/DcZWR/oEn
-         grS39eaJMOrBUDdiu9rj+Ge6tUvHBDU0CK1G9+6P2bsHuhlmxcugcOUYDF3I7nxmrGxb
-         4V9JNAtQ5k75zl/18dn/USU76QoaEGzGr+mvVaxda9+apUqyp0jxQl17RceoswHxO01m
-         a22Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=MvAZVxuil2DxjBj7rVmkBNCfZoBmbXssfX+/IEcrzlc=;
+        b=0r9aeWCAeAWvw/Issb/F0x+qTAvh51zFHg3wSdbgZr+PPUXg+rHP4wPrZ9eLnJvp6m
+         k7s6HKYvtIHCafmXzw3KArQgTdJTjIICdk/JQUqeuwoCDgUM7cH1qQ9RWirp/XT7WvON
+         K+MAEFzRAvxNJwa5ChoCKs87tPIe1el1+hAbUlPxqKCAIAbWnsA7uP85gLpOY6jOcHOE
+         PgBN9HhF9g4fyrQ6fdfKIvYjU4jX8RJXaeaTPudt3gx2/LacvmPf5VRQ1FuBjfaaYFvp
+         +tOiiwKmcWBLIbPBxGQNwyUWTH3bphWmpXBSAyjt1n0HVZ7ks/QbwXJD9b8wUavHC0tC
+         f7LQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JSVooyEe;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="QaqF/EMe";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q18sor10682729ilg.75.2020.03.10.12.30.11
-        (Google Transport Security);
-        Tue, 10 Mar 2020 12:30:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id l34si7036563qta.41.2020.03.10.13.37.59
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 10 Mar 2020 13:38:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JSVooyEe;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="QaqF/EMe";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=Ec4zzvCEIRAZ5xfSFujdt3O/MmVFFCSSaTkJNA0Gesk=;
-        b=JSVooyEe2SRDrMNSu6eJ2ilSaVUqiDJJHEPU88wdpKdlsC8RBu3Ku/TKIDJRCH69AY
-         rL1HfDg4T+0ffEuw6s27icwmR+46ArMPYyM5zM44aacjqwCf+QZNeSHzgqviWtNN8/rU
-         Q7urx5INqAt0aIR6r3GKVaViXS916KjyfQRN413Z+IruFnDjieUZAqEziOwBG1g9neQZ
-         0Rb/Mls/rv66pjP1AHa+MlbI1YjbOapgIWqc65VlTWCLHQljxFj7qtaD0kxKa5Y1hDaJ
-         MYUyMQIielUOJux43X2KGqbeeZ56WyX2G4rzkNksWkHHDlbs4xTSSpE91NnmozrndbOX
-         ibZg==
+Received: from localhost ([::1]:39988 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jBldX-00025C-FV
+	for alex.bennee@linaro.org; Tue, 10 Mar 2020 16:37:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60986)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1jBldP-000255-ED
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2020 16:37:52 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1jBldO-0002dU-0o
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2020 16:37:51 -0400
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:37323)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1jBldN-0002dK-SN; Tue, 10 Mar 2020 16:37:49 -0400
+Received: by mail-io1-xd43.google.com with SMTP id k4so14227235ior.4;
+ Tue, 10 Mar 2020 13:37:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=MvAZVxuil2DxjBj7rVmkBNCfZoBmbXssfX+/IEcrzlc=;
+ b=QaqF/EMeKtroURm0XbhyO7p57iwdEtTS3beUzi0GidKNQhhZ1qKkWeqKlKVKYXkJ/b
+ vEn9Uov/mFXUxrkDv5nY0wSo5vbdbwCUULBi6WCPv0eCOD/1m6uH29jUMcD5fQqbyfhM
+ X4bTV8Y6JPzHO1aStG3xMPrWPFsJ5CH5xpTCgBoXbzbdmOIH1BM37oA7w4ePgxM+UQVn
+ HdzG9rMjV0ALYNgRvLbP8ggIHRTB5XbObxGpNDkeGTiWjkIcGbskl0cMJnpBXcZ17uPF
+ DISlt7frKIHW3NGt1w1GLhXHAtXfSPQtKS6WLnypmAc28ZhFeA56UdWne3UFG5vHPKvJ
+ Ggog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=Ec4zzvCEIRAZ5xfSFujdt3O/MmVFFCSSaTkJNA0Gesk=;
-        b=M4mqAc4P577YngKfFzxu6F88C27h2LJLXtpqskiPV0apPXXlc5zuFqGqaiOvx69OAm
-         CPZJWRTBxCuZClIlRO8lJFHcjdz+3QkiounNJh9rO2Zc57ICyFdqvPDsyTeSLlAFY2vD
-         BAjbvoAh8HbkS3fZsCj1huVlD+0TecMfW6nzVYhJ2yvjMVse06b9FCi2qc9tn3vfmcNr
-         PI6x7q3YuGCNcLx8bVEprLJkHHLW4+qQtm897s1CQr+Dr/R/ugk/Hx5VQScNOTrnFxsa
-         b4z2WcaMYw3NFFDO+xmUwp37crp58xBYjlzTfp7v50PWgi3OOEPkDyC31VvEm0X5iOM4
-         ERzA==
-X-Gm-Message-State: ANhLgQ1GxtJQuJakU1JUKwe3gwu+KpO3NydZ/mYr5oEI8dGfpfuo3ei9
-	N9btXFCMRvR+/y5+umx5q/xKE4wr5HO8yTrtdbFWHQ==
-X-Google-Smtp-Source: ADFU+vtVDIkIb5z7RR8jJzmALdrRQn05cTcgu3CPKp3sK97WzjtLn+6ei218QLPZFovuMtjdfgbw+mAhrJJXYQJMNO8=
-X-Received: by 2002:a92:5f45:: with SMTP id t66mr21962193ilb.28.1583868611206;
- Tue, 10 Mar 2020 12:30:11 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=MvAZVxuil2DxjBj7rVmkBNCfZoBmbXssfX+/IEcrzlc=;
+ b=fn13HsIs7CJtAWP0tEeFwpcoJaEyg0xdS12mXWhELMdwHTMOpSgHjwTdiiQP02AyP4
+ 7dUA7dQaKJUo6T88kI1lD43UuLfl3bLxjJ2pBDuQt2Ert7uFFTU7PC2Gx2jkSilA9xWM
+ W5oMJcv98VILrnrVuUyTi5r+9NDnZVJr0A3SmmXd6QuhF6Xin2x9m4K0rtPCjR8yXW6Z
+ z99vJl9auYwdwxhR5qXiOf8beJwdcQBbalRvXEuimbEadW94xC9rlPefR0JPiscEoGTi
+ 5r2+0dUmhPgjmHZiX+dRezCsuabR4MdwJyk36DS2MRQNXpdWu6H8HsN/6claSBumaFwh
+ A7OA==
+X-Gm-Message-State: ANhLgQ2g+EfLaJukYeLyI7Y65MgEGrI7dP2jZP/dOySRrIxHVCuUatzE
+ yedt3s3kuze/imWFOEBz40SVyuqNzu/xL66scQk=
+X-Received: by 2002:a02:7b13:: with SMTP id q19mr21941727jac.73.1583872669058; 
+ Tue, 10 Mar 2020 13:37:49 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200301215029.15196-1-nieklinnenbank@gmail.com>
- <20200301215029.15196-7-nieklinnenbank@gmail.com> <87d09t7i8i.fsf@linaro.org>
- <CAPan3Wo6_15zFSHJwf0hVq9CVUSfOBU+frwSLQX21SWrXW03iA@mail.gmail.com> <CAFEAcA_wTrqgAh+NK5jmtqPeU9y6bhouzaXWQyPR_iYU5waOGg@mail.gmail.com>
-In-Reply-To: <CAFEAcA_wTrqgAh+NK5jmtqPeU9y6bhouzaXWQyPR_iYU5waOGg@mail.gmail.com>
+References: <20200309215818.2021-1-peter.maydell@linaro.org>
+ <20200309215818.2021-2-peter.maydell@linaro.org>
+In-Reply-To: <20200309215818.2021-2-peter.maydell@linaro.org>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Tue, 10 Mar 2020 20:30:00 +0100
-Message-ID: <CAPan3WpVsb0=gpdghsuhmnKc1CTXi8n1A7xfW=NsTpav9RNCLA@mail.gmail.com>
-Subject: Re: [PATCH v6 06/18] hw/arm/allwinner: add CPU Configuration module
+Date: Tue, 10 Mar 2020 21:37:37 +0100
+Message-ID: <CAPan3WqtE6NGTd=yCG2zCirgeCDtv+eSgg4DSF+hCtn9rihk7A@mail.gmail.com>
+Subject: Re: [PATCH 1/5] Makefile: Allow for subdirectories in Sphinx manual
+ dependencies
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	Beniamino Galvani <b.galvani@gmail.com>, Jason Wang <jasowang@redhat.com>, 
-	Igor Mammedov <imammedo@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000f1241905a085253d"
-X-TUID: 4ePilKAnn53v
+Content-Type: multipart/alternative; boundary="000000000000cf090905a086173a"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::d43
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SZhadzvSLNZM
 
---000000000000f1241905a085253d
+--000000000000cf090905a086173a
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-On Mon, Mar 9, 2020 at 12:18 PM Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+
+On Mon, Mar 9, 2020 at 10:58 PM Peter Maydell <peter.maydell@linaro.org>
 wrote:
 
-> On Tue, 3 Mar 2020 at 20:15, Niek Linnenbank <nieklinnenbank@gmail.com>
-> wrote:
-> > On Tue, Mar 3, 2020 at 1:09 PM Alex Benn=C3=A9e <alex.bennee@linaro.org=
+> Currently we put 'docs/foo/*.rst' in the Make list of dependencies
+> for the Sphinx 'foo' manual, which means all the files must be
+> in the top level of that manual's directory. We'd like to be
+> able to have subdirectories inside some of the manuals, so add
+> 'docs/foo/*/*.rst' to the dependencies too.
 >
-> wrote:
-> >> Niek Linnenbank <nieklinnenbank@gmail.com> writes:
-> >> > +static void allwinner_cpucfg_cpu_reset(AwCpuCfgState *s, uint8_t
-> cpu_id)
-> >> > +{
-> >> > +    int ret;
-> >> > +
-> >> > +    trace_allwinner_cpucfg_cpu_reset(cpu_id, s->entry_addr);
-> >> > +
-> >> > +    ret =3D arm_set_cpu_on(cpu_id, s->entry_addr, 0,
-> >> > +                         CPU_EXCEPTION_LEVEL_ON_RESET, false);
-> >>
-> >> According to the arm_set_cpu_on code:
-> >>
-> >>     if (!target_aa64 && arm_feature(&target_cpu->env,
-> ARM_FEATURE_AARCH64)) {
-> >>         /*
-> >>          * For now we don't support booting an AArch64 CPU in AArch32
-> mode
-> >>          * TODO: We should add this support later
-> >>          */
-> >>         qemu_log_mask(LOG_UNIMP,
-> >>                       "[ARM]%s: Starting AArch64 CPU %" PRId64
-> >>                       " in AArch32 mode is not supported yet\n",
-> >>                       __func__, cpuid);
-> >>         return QEMU_ARM_POWERCTL_INVALID_PARAM;
-> >>     }
-> >>
-> >> Do you really want to reboot in aarch32 mode on a reset? If so we shou=
-ld
-> >> fix the TODO.
-> >
-> > The Allwinner H3 has four ARM Cortex-A7 cores and are 32-bit, so in the
-> > early version I filled the @target_aa64 parameter with false to
-> > keep it in 32-bit mode. And for usage in the current Allwinner H3 SoC
-> > that is sufficient, but as soon as a potential new SoC implementation
-> > with a 64-bit CPU starts to use this module, the hardcoded @target_aa64
-> > parameter will become a problem.
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  Makefile | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> > Maybe I should just use some function to check if the current emulated
-> > CPU its 32-bit or 64-bit and use that for @target_aa64?
+> diff --git a/Makefile b/Makefile
+> index 2e930688942..5dba949947a 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -1081,7 +1081,7 @@ sphinxdocs: $(MANUAL_BUILDDIR)/devel/index.html \
+>  # a single doctree: https://github.com/sphinx-doc/sphinx/issues/2946
+>  build-manual = $(call quiet-command,CONFDIR="$(qemu_confdir)"
+> $(SPHINX_BUILD) $(if $(V),,-q) -W -b $2 -D version=$(VERSION) -D
+> release="$(FULL_VERSION)" -d .doctrees/$1-$2 $(SRC_PATH)/docs/$1
+> $(MANUAL_BUILDDIR)/$1 ,"SPHINX","$(MANUAL_BUILDDIR)/$1")
+>  # We assume all RST files in the manual's directory are used in it
+> -manual-deps = $(wildcard $(SRC_PATH)/docs/$1/*.rst) \
+> +manual-deps = $(wildcard $(SRC_PATH)/docs/$1/*.rst
+> $(SRC_PATH)/docs/$1/*/*.rst) \
+>                $(SRC_PATH)/docs/defs.rst.inc \
+>                $(SRC_PATH)/docs/$1/conf.py $(SRC_PATH)/docs/conf.py
+>  # Macro to write out the rule and dependencies for building manpages
+> --
+> 2.20.1
 >
-> If the intended behaviour is "just power on the CPU into EL3
-> in the aarch32/aarch64 state it would naturally have out of reset"
-> then you can get the right value to pass to target_aa64 like this:
->
->    ARMCPU *target_cpu =3D ARM_CPU(arm_get_cpu_by_id(cpu_id));
->
->    if (!target_cpu) {
->        /*
->         * handle the case of "guest wrote bogus value to RST_CTRL
->         * field, probably by returning doing nothing
->         */
->    }
->    target_aa64 =3D arm_feature(&target_cpu->env, ARM_FEATURE_AARCH64);
->
->
-Thanks for explaining Peter. This solution is working fine. I'm including
-it in the v7 respin.
-
-Regards,
-Niek
-
-
-> Or if the required behaviour for a 64-bit CPU is more complicated
-> you can just assert or something with a comment that this would need
-> updating if we ever modelled a 64-bit Allwinner SoC.
->
-> thanks
-> -- PMM
 >
 
-
---=20
+-- 
 Niek Linnenbank
 
---000000000000f1241905a085253d
+--000000000000cf090905a086173a
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Mar 9, 2020 at 12:18 PM Peter=
- Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@lina=
-ro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">On Tue, 3 Mar 2020 at 20:15, Niek Linnenbank &lt;<a href=3D"mailto:ni=
-eklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt; =
-wrote:<br>
-&gt; On Tue, Mar 3, 2020 at 1:09 PM Alex Benn=C3=A9e &lt;<a href=3D"mailto:=
-alex.bennee@linaro.org" target=3D"_blank">alex.bennee@linaro.org</a>&gt; wr=
-ote:<br>
-&gt;&gt; Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com" ta=
-rget=3D"_blank">nieklinnenbank@gmail.com</a>&gt; writes:<br>
-&gt;&gt; &gt; +static void allwinner_cpucfg_cpu_reset(AwCpuCfgState *s, uin=
-t8_t cpu_id)<br>
-&gt;&gt; &gt; +{<br>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 int ret;<br>
-&gt;&gt; &gt; +<br>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 trace_allwinner_cpucfg_cpu_reset(cpu_id, s-&gt=
-;entry_addr);<br>
-&gt;&gt; &gt; +<br>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 ret =3D arm_set_cpu_on(cpu_id, s-&gt;entry_add=
-r, 0,<br>
-&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0CPU_EXCEPTION_LEVEL_ON_RESET, false);<br>
-&gt;&gt;<br>
-&gt;&gt; According to the arm_set_cpu_on code:<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0if (!target_aa64 &amp;&amp; arm_feature(&amp;ta=
-rget_cpu-&gt;env, ARM_FEATURE_AARCH64)) {<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/*<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * For now we don&#39;t support b=
-ooting an AArch64 CPU in AArch32 mode<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * TODO: We should add this suppo=
-rt later<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 */<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qemu_log_mask(LOG_UNIMP,<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0&quot;[ARM]%s: Starting AArch64 CPU %&quot; PRId64<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0&quot; in AArch32 mode is not supported yet\n&quot;,<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0__func__, cpuid);<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return QEMU_ARM_POWERCTL_INVALID_=
-PARAM;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0}<br>
-&gt;&gt;<br>
-&gt;&gt; Do you really want to reboot in aarch32 mode on a reset? If so we =
-should<br>
-&gt;&gt; fix the TODO.<br>
-&gt;<br>
-&gt; The Allwinner H3 has four ARM Cortex-A7 cores and are 32-bit, so in th=
-e<br>
-&gt; early version I filled the @target_aa64 parameter with false to<br>
-&gt; keep it in 32-bit mode. And for usage in the current Allwinner H3 SoC<=
+<div dir=3D"ltr">Reviewed-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklin=
+nenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;<br></div><br><div class=
+=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Mar 9, 2020 =
+at 10:58 PM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">p=
+eter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_=
+quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,=
+204);padding-left:1ex">Currently we put &#39;docs/foo/*.rst&#39; in the Mak=
+e list of dependencies<br>
+for the Sphinx &#39;foo&#39; manual, which means all the files must be<br>
+in the top level of that manual&#39;s directory. We&#39;d like to be<br>
+able to have subdirectories inside some of the manuals, so add<br>
+&#39;docs/foo/*/*.rst&#39; to the dependencies too.<br>
+<br>
+Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org=
+" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
+---<br>
+=C2=A0Makefile | 2 +-<br>
+=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
+<br>
+diff --git a/Makefile b/Makefile<br>
+index 2e930688942..5dba949947a 100644<br>
+--- a/Makefile<br>
++++ b/Makefile<br>
+@@ -1081,7 +1081,7 @@ sphinxdocs: $(MANUAL_BUILDDIR)/devel/index.html \<br>
+=C2=A0# a single doctree: <a href=3D"https://github.com/sphinx-doc/sphinx/i=
+ssues/2946" rel=3D"noreferrer" target=3D"_blank">https://github.com/sphinx-=
+doc/sphinx/issues/2946</a><br>
+=C2=A0build-manual =3D $(call quiet-command,CONFDIR=3D&quot;$(qemu_confdir)=
+&quot; $(SPHINX_BUILD) $(if $(V),,-q) -W -b $2 -D version=3D$(VERSION) -D r=
+elease=3D&quot;$(FULL_VERSION)&quot; -d .doctrees/$1-$2 $(SRC_PATH)/docs/$1=
+ $(MANUAL_BUILDDIR)/$1 ,&quot;SPHINX&quot;,&quot;$(MANUAL_BUILDDIR)/$1&quot=
+;)<br>
+=C2=A0# We assume all RST files in the manual&#39;s directory are used in i=
+t<br>
+-manual-deps =3D $(wildcard $(SRC_PATH)/docs/$1/*.rst) \<br>
++manual-deps =3D $(wildcard $(SRC_PATH)/docs/$1/*.rst $(SRC_PATH)/docs/$1/*=
+/*.rst) \<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0$(SRC_PATH)/docs/def=
+s.rst.inc \<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0$(SRC_PATH)/docs/$1/=
+conf.py $(SRC_PATH)/docs/conf.py<br>
+=C2=A0# Macro to write out the rule and dependencies for building manpages<=
 br>
-&gt; that is sufficient, but as soon as a potential new SoC implementation<=
-br>
-&gt; with a 64-bit CPU starts to use this module, the hardcoded @target_aa6=
-4<br>
-&gt; parameter will become a problem.<br>
+-- <br>
+2.20.1<br>
 <br>
-&gt; Maybe I should just use some function to check if the current emulated=
-<br>
-&gt; CPU its 32-bit or 64-bit and use that for @target_aa64?<br>
-<br>
-If the intended behaviour is &quot;just power on the CPU into EL3<br>
-in the aarch32/aarch64 state it would naturally have out of reset&quot;<br>
-then you can get the right value to pass to target_aa64 like this:<br>
-<br>
-=C2=A0 =C2=A0ARMCPU *target_cpu =3D ARM_CPU(arm_get_cpu_by_id(cpu_id));<br>
-<br>
-=C2=A0 =C2=A0if (!target_cpu) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0/*<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 * handle the case of &quot;guest wrote bogus va=
-lue to RST_CTRL<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 * field, probably by returning doing nothing<br=
->
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 */<br>
-=C2=A0 =C2=A0}<br>
-=C2=A0 =C2=A0target_aa64 =3D arm_feature(&amp;target_cpu-&gt;env, ARM_FEATU=
-RE_AARCH64);<br>
-<br></blockquote><div><br></div><div>Thanks for explaining Peter. This solu=
-tion is working fine. I&#39;m including it in the v7 respin.</div><div><br>=
-</div><div>Regards,</div><div>Niek<br></div><div>=C2=A0</div><blockquote cl=
-ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
- rgb(204,204,204);padding-left:1ex">
-Or if the required behaviour for a 64-bit CPU is more complicated<br>
-you can just assert or something with a comment that this would need<br>
-updating if we ever modelled a 64-bit Allwinner SoC.<br>
-<br>
-thanks<br>
--- PMM<br>
 </blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
 mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
+div>
 
---000000000000f1241905a085253d--
+--000000000000cf090905a086173a--

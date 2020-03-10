@@ -1,283 +1,175 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp636731lfc;
-        Tue, 10 Mar 2020 04:36:42 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vulQ+IL6gCrx4fbHHubIFYQHZqRLpNTvS3BKyL46ycD+ZCvrBk0zeG7IH6U3cJ3rlG/KRoj
-X-Received: by 2002:a37:9f41:: with SMTP id i62mr19228237qke.494.1583840201981;
-        Tue, 10 Mar 2020 04:36:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583840201; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp646430lfc;
+        Tue, 10 Mar 2020 04:46:58 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvA1zv91ZnlUX7VrNf2hFRzrWZE6kRqJayUBcRsB1rLlFaDY9tuIr2zLrpEjqLpTdou7C4B
+X-Received: by 2002:a05:6214:118d:: with SMTP id t13mr17912933qvv.192.1583840818622;
+        Tue, 10 Mar 2020 04:46:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583840818; cv=none;
         d=google.com; s=arc-20160816;
-        b=XCwWpOaAUHdtuP3wLjKtklMD7/VY3DFLcfbIvpIx5QoNbgOpWlZO6fOsZbkhUXiNdW
-         Z+6o4b18LSzCz7MeNh6BpvYFXiY/cCKzynPFjZlWe/wXYnn40fpjlaAUVCygSDoNtsqp
-         fF+XDfzCNTgat8r1AFSozil5DUgZ2Qxa6FDhNBAXXvBgmCQzzq4IHYdZBeFErGhA7677
-         KBzfIEZq3nffoYWFPCMcj22vcxGzhHR1z4qQZNnyUXZCDfscrft1IxB1qmAODQdzZKF+
-         Se9EKtvyYZfKM32QyVtNSVSBQzV0Nvv53s1GxiLGQKz0GDwRLekixOU0kofpDGXhRhlt
-         H26Q==
+        b=uSmbLuPOWicL1eEILkcD4kZ3YI22Z/adR1WHhRYUfcs/mn0oJQVXG3R5HKCGWmKQay
+         ozPNn05s+QeXiiy3FK5AfrRhmHYpSQSHvXLNCx/NP8FsIFo3IattMdKhYrl9YzdXhROg
+         +0AozI7nD2M2l1jQrKEZOety38P0lNlfJ93CAz8q8VP5581m5Zv+UAq80fn5AF4fpK+9
+         g0FpurlASaK0LhcYWTFsqVLE6mefyUYi24cWBsgVOeOewbxeXGn6rEioRb1Dxue6DiS7
+         /b2C3G+4RzvkCa1nRJL5UsnYqCSKJzNMXI31JILGsNVgPz+nfow6VvqfWvRZMg4sOgGm
+         xnug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=V/QeWrjew5MHdadd6HKuGQhvDOqE3u+1grfRaYM/OUE=;
-        b=EXCeOKBfjCUZu1nVt66OOyPgihEsWl7fK7eobS07kY26jeYUZeJxGNuaIr1b1g839w
-         w8WFOjh+81bknwDp+7nPlN6PjyN6xg6bAynkVFpOfANNhUk0Qrp91JdQ5Xy32fI7g2sg
-         AoqlySf2XMg3Hy8N4+ogiF3HQUtkwGQOLtWTANCWZ3HxWmQ0dvabTOJ7nBOxSUQUDhen
-         RTqReUInybXz3gyVWhbnr2G+zxcbwxghtYn7C72YPp8KbTN8XE3fEaxtJm+HaUgItr5b
-         j9ILHiQLkcYTaYMReJh4d71IM2jBj6ANUfAaBorftiftzXqS2wBCKfLd4POq0X+m9c1G
-         7myQ==
+         :content-transfer-encoding:user-agent:in-reply-to:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=ZGqiBJ0CZ5WpkyFas6I7eUP/AIVUqtGGfpTG+U12qXY=;
+        b=aMMG4BFAhFBiQg+pE6+lsvA7dd5S/RuDpUlqwMcrUumvxkhTRLFM4ifTdRPnJccvz6
+         r527Hup2D6nV7i5VsmK3U5muejgEXScnSYzlsgmkPUFW6kM/GFR+XAifi6VG1ThFwY2a
+         ikiAxdaHDq1WDiUxxXOnBQXVPp0u3x3vp58Y+xELKKsHSDJ9MesYCiVPRfMXK39El985
+         Y+7GOdqi9UdKFVmRCLuBsUNye1XbPur/s7oNPIfxL6n6pultDALtghU1Zq6XjKZT6Al2
+         XzEMhjry0M7/zIeo0ONPOefzPhHgtHBkAX8jg6w+61hnYQx/mSMXFZkW/ey6KiyzpCKM
+         p4PQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=H+GgilMO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=h0dMmd+X;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p7si7741010qkh.70.2020.03.10.04.36.41
+        by mx.google.com with ESMTPS id t25si7304996qtr.245.2020.03.10.04.46.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Mar 2020 04:36:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Mar 2020 04:46:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=H+GgilMO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=h0dMmd+X;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58356 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58608 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBdBh-00010w-Dz
-	for alex.bennee@linaro.org; Tue, 10 Mar 2020 07:36:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50752)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jBdLd-0006LR-Vp
+	for alex.bennee@linaro.org; Tue, 10 Mar 2020 07:46:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42256)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mst@redhat.com>) id 1jBdBG-0000wp-Qm
- for qemu-devel@nongnu.org; Tue, 10 Mar 2020 07:36:16 -0400
+ (envelope-from <kwolf@redhat.com>) id 1jBdKv-0005Vt-HX
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2020 07:46:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mst@redhat.com>) id 1jBdBF-000070-6z
- for qemu-devel@nongnu.org; Tue, 10 Mar 2020 07:36:14 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:37034
+ (envelope-from <kwolf@redhat.com>) id 1jBdKt-0006Pg-Ip
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2020 07:46:13 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:44835
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mst@redhat.com>) id 1jBdBF-0008Uk-0N
- for qemu-devel@nongnu.org; Tue, 10 Mar 2020 07:36:13 -0400
+ (Exim 4.71) (envelope-from <kwolf@redhat.com>) id 1jBdKt-0006Mr-Bd
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2020 07:46:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583840172;
+ s=mimecast20190719; t=1583840769;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=V/QeWrjew5MHdadd6HKuGQhvDOqE3u+1grfRaYM/OUE=;
- b=H+GgilMOVHUgvL1LMXkuGtjOeFYaW8OHGUgWVl4tKU2p2drE3BQw63qEHyJuv5IIsQ7T7w
- gi5lzAuL+wRr3xhHSu3ya7vJeP+wtxFZYRiquGFSmVml+/rCDwUKYdeS610X8vEzcwZKvz
- jsbUvJcMEeR9J/t+S6X1sWN8KGmAgdo=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-290-3OekMIbUNYeJoZFh66J-1w-1; Tue, 10 Mar 2020 07:36:08 -0400
-X-MC-Unique: 3OekMIbUNYeJoZFh66J-1w-1
-Received: by mail-qk1-f197.google.com with SMTP id e13so9430836qkm.23
- for <qemu-devel@nongnu.org>; Tue, 10 Mar 2020 04:36:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=q6NI13VfXDngwTrU0FSZRrix51orGlo5LGRIo9tsQDA=;
- b=J4Q4DaHCc+yhtM51xDtkgcBHhk/KN5ndo6ozR08U8C27vMpwXFfbS0aMU72alTgthC
- ffBdrI5u23aL4goDK81uf2ks7COEYDy03PHxC6BUCbDg9dPUzUmhUCiYKX2LwZ4w6DDV
- m8iMPWK/Fkjdiw5GyRdus1bz+ZWZVjVFj3Yt4ZyMPQtN/qYrJCgDML06Eb9mvdlNe1/+
- PRbkUDRZVatGMAfngInKKFeD58SJQVjZfw6B9qbTFJWeffoR2Zk1YG0QBpIzGEaIvoLb
- ysgt3P7nOzU92FYHWGjPALOCdKXOzLHslJI4amE++frzr8npoHVpWUCILTyfowk4rOVv
- YuZQ==
-X-Gm-Message-State: ANhLgQ1RonHtIGNqOUkWGWOrOrRdxlBLJvqgTld36VoEDHFDIJWMfmff
- JXjyEjOEQeN0f3UUranQ4OL7/DNNDwB/KtbxF86SjgJchDYccbeiqcYaO8VOjNSGZgLEwaN0Ihs
- vl/wKcW24zJpNZ78=
-X-Received: by 2002:a05:620a:10b3:: with SMTP id
- h19mr19521789qkk.440.1583840167964; 
- Tue, 10 Mar 2020 04:36:07 -0700 (PDT)
-X-Received: by 2002:a05:620a:10b3:: with SMTP id
- h19mr19521755qkk.440.1583840167651; 
- Tue, 10 Mar 2020 04:36:07 -0700 (PDT)
-Received: from redhat.com (bzq-79-178-2-19.red.bezeqint.net. [79.178.2.19])
- by smtp.gmail.com with ESMTPSA id i11sm9996184qka.92.2020.03.10.04.36.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Mar 2020 04:36:06 -0700 (PDT)
-Date: Tue, 10 Mar 2020 07:36:00 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-Subject: Re: [PATCH v2 2/7] hw/acpi/nvdimm: Fix for NVDIMM incorrect DSM
- output buffer length
-Message-ID: <20200310072644-mutt-send-email-mst@kernel.org>
-References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
- <20200117174522.22044-3-shameerali.kolothum.thodi@huawei.com>
- <20200206170604.12899caf@redhat.com>
- <feb0b61b1bf741219e08b8c2dc6260f8@huawei.com>
+ bh=ZGqiBJ0CZ5WpkyFas6I7eUP/AIVUqtGGfpTG+U12qXY=;
+ b=h0dMmd+X39KdVSWpSIfikExeFVd77UuA1MK1qR7ck0PPMDWcjwuOyMX1YrIRYrNLjSqtvn
+ fnlaVpxs5wV2uHmVm2Q+nVWQEgezG4MPPqd9GPTIxbdXReMD+FX0G40zaal1eWhsg4cVX4
+ DAy3NTTNlW5R8w2TKgW0WqSImxbPFGo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-75-Sc4CF4rQPUqcyMlVXzSYDQ-1; Tue, 10 Mar 2020 07:46:05 -0400
+X-MC-Unique: Sc4CF4rQPUqcyMlVXzSYDQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B2CCA108442C;
+ Tue, 10 Mar 2020 11:46:02 +0000 (UTC)
+Received: from linux.fritz.box (unknown [10.36.118.104])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 74EEA10013A1;
+ Tue, 10 Mar 2020 11:45:49 +0000 (UTC)
+Date: Tue, 10 Mar 2020 12:45:48 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Subject: Re: [PULL 00/33] Trivial branch patches
+Message-ID: <20200310114548.GA6926@linux.fritz.box>
+References: <20200309150837.3193387-1-laurent@vivier.eu>
+ <20200309151621-mutt-send-email-mst@kernel.org>
+ <8db36062-b45d-6c2e-c7d8-98dd2b9db06f@redhat.com>
+ <0bb2eac1-74ab-bee8-e8d0-bac542562cdd@vivier.eu>
 MIME-Version: 1.0
-In-Reply-To: <feb0b61b1bf741219e08b8c2dc6260f8@huawei.com>
+In-Reply-To: <0bb2eac1-74ab-bee8-e8d0-bac542562cdd@vivier.eu>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
-X-BeenThere: qemu-devel@nongnu.org
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>, "lersek@redhat.com" <lersek@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Kt+bsjtswJPh
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>, qemu-devel@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, Helge Deller <deller@gmx.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ Alistair Francis <alistair@alistair23.me>, Greg Kurz <groug@kaod.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Max Reitz <mreitz@redhat.com>, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: q2KqDo6DLrKT
 
-On Tue, Mar 10, 2020 at 11:22:05AM +0000, Shameerali Kolothum Thodi wrote:
->=20
->=20
-> > -----Original Message-----
-> > From: Igor Mammedov [mailto:imammedo@redhat.com]
-> > Sent: 06 February 2020 16:06
-> > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> > Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
-> > eric.auger@redhat.com; peter.maydell@linaro.org;
-> > xiaoguangrong.eric@gmail.com; mst@redhat.com; Linuxarm
-> > <linuxarm@huawei.com>; xuwei (O) <xuwei5@huawei.com>;
-> > shannon.zhaosl@gmail.com; lersek@redhat.com
-> > Subject: Re: [PATCH v2 2/7] hw/acpi/nvdimm: Fix for NVDIMM incorrect DS=
-M
-> > output buffer length
+Am 10.03.2020 um 09:02 hat Laurent Vivier geschrieben:
+> Le 09/03/2020 =E0 20:30, Philippe Mathieu-Daud=E9 a =E9crit=A0:
+> > On 3/9/20 8:17 PM, Michael S. Tsirkin wrote:
+> >> On Mon, Mar 09, 2020 at 04:08:04PM +0100, Laurent Vivier wrote:
+> >>> The following changes since commit
+> >>> 7a5853cec479a448edae0fb2aaf4e2f78c9c774d:
+> >>>
+> >>> =A0=A0 Merge remote-tracking branch 'remotes/mst/tags/for_upstream' i=
+nto
+> >>> staging (2020-03-09 10:32:53 +0000)
+> >>>
+> >>> are available in the Git repository at:
+> >>>
+> >>> =A0=A0 git://github.com/vivier/qemu.git tags/trivial-branch-pull-requ=
+est
+> >>>
+> >>> for you to fetch changes up to 916c92503bd5348a33e561db600d8894bde636=
+bb:
+> >>>
+> >>> =A0=A0 monitor/hmp-cmds: Remove redundant statement in
+> >>> hmp_rocker_of_dpa_groups() (2020-03-09 15:59:31 +0100)
+> >>
+> >>
+> >> Could you avoid CC everyone involved on the whole PULL req?
+> >> I was involved in a patch or two and don't really need to see
+> >> the whole series. Just the cover and the relevant patches
+> >> would be enough - if I do want it there's always lore.
 > >=20
-> > On Fri, 17 Jan 2020 17:45:17 +0000
-> > Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+> > I suppose Laurent used git-publish, which has this limitation.
 > >=20
-> > > As per ACPI spec 6.3, Table 19-419 Object Conversion Rules, if the
-> > > Buffer Field <=3D to the size of an Integer (in bits), it will be
-> > > treated as an integer. Moreover, the integer size depends on DSDT
-> > > tables revision number. If revision number is < 2, integer size is 32
-> > > bits, otherwise it is 64 bits. Current NVDIMM common DSM aml code
-> > > (NCAL) uses CreateField() for creating DSM output buffer. This create=
-s
-> > > an issue in arm/virt platform where DSDT revision number is 2 and
-> > > results in DSM buffer with a wrong
-> > > size(8 bytes) gets returned when actual length is < 8 bytes.
-> > > This causes guest kernel to report,
-> > >
-> > > "nfit ACPI0012:00: found a zero length table '0' parsing nfit"
-> > >
-> > > In order to fix this, aml code is now modified such that it builds th=
-e
-> > > DSM output buffer in a byte by byte fashion when length is smaller
-> > > than Integer size.
-> > >
-> > > Suggested-by: Igor Mammedov <imammedo@redhat.com>
-> > > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com=
->
-> > > ---
-> > > Please find the previous discussion on this here,
-> > > https://patchwork.kernel.org/cover/11174959/
-> > >
-> > > ---
-> > >  hw/acpi/nvdimm.c                            | 36
-> > +++++++++++++++++++--
-> > >  tests/qtest/bios-tables-test-allowed-diff.h |  2 ++
-> > >  2 files changed, 35 insertions(+), 3 deletions(-)
-> > >
-> > > diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c index
-> > > 9fdad6dc3f..5e7b8318d0 100644
-> > > --- a/hw/acpi/nvdimm.c
-> > > +++ b/hw/acpi/nvdimm.c
-> > > @@ -964,6 +964,7 @@ static void nvdimm_build_common_dsm(Aml *dev)
-> > >      Aml *method, *ifctx, *function, *handle, *uuid, *dsm_mem,
-> > *elsectx2;
-> > >      Aml *elsectx, *unsupport, *unpatched, *expected_uuid, *uuid_inva=
-lid;
-> > >      Aml *pckg, *pckg_index, *pckg_buf, *field, *dsm_out_buf,
-> > > *dsm_out_buf_size;
-> > > +    Aml *whilectx, *offset;
-> > >      uint8_t byte_list[1];
-> > >
-> > >      method =3D aml_method(NVDIMM_COMMON_DSM, 5,
-> > AML_SERIALIZED); @@
-> > > -1117,13 +1118,42 @@ static void nvdimm_build_common_dsm(Aml *dev)
-> > >      /* RLEN is not included in the payload returned to guest. */
-> > >      aml_append(method,
-> > aml_subtract(aml_name(NVDIMM_DSM_OUT_BUF_SIZE),
-> > >                 aml_int(4), dsm_out_buf_size));
-> > > +
-> > > +    /*
-> > > +     * As per ACPI spec 6.3, Table 19-419 Object Conversion Rules, i=
-f
-> > > +     * the Buffer Field <=3D to the size of an Integer (in bits), it=
- will
-> > > +     * be treated as an integer. Moreover, the integer size depends =
-on
-> > > +     * DSDT tables revision number. If revision number is < 2, integ=
-er
-> > > +     * size is 32 bits, otherwise it is 64 bits.
-> > > +     * Because of this CreateField() canot be used if RLEN < Integer=
- Size.
-> > > +     * Hence build dsm_out_buf byte by byte.
-> > > +     */
-> > > +    ifctx =3D aml_if(aml_lless(dsm_out_buf_size,
-> > > + aml_sizeof(aml_int(0))));
-> >=20
-> > this decomplies into
-> >=20
-> >  If (Local1 < SizeOf ())
-> >=20
-> > which doesn't look right
 >=20
-> Ok. I tried printing the value returned(SizeOf) and that looks alright.
-
-Well it's illegal in ACPI, it's possible that OSPMs handle it the way
-you want them to, but it's probably not a good idea to assume they will
-always do.
-
-The spec says:
-
-DefSizeOf :=3D SizeOfOp SuperName
-
-
-
-> Anyway, changed it into aml_int(1) which decompiles to
+> Yes, I use git publish and CC are automatically added.
 >=20
->    If (Local1 < SizeOf (One))
->=20
-> Hope this is acceptable.
->=20
-> Thanks,
-> Shameer
+> Philippe, you told me some time ago you have a patch to fix this
+> behaviour and only CC people on a patch base. Is it available?
 
-I suspect it doesn't. And going into semantics, since they are set by
-ASL:
+Actually, I don't think it's even necessary to CC anyone at all (except
+the relevant lists) for pull requests. These patches were already
+reviewed.
 
-
-19.6.125 SizeOf (Get Data Object Size)
-Syntax
-SizeOf (ObjectName) =3D> Integer
-Arguments
-ObjectName must be a buffer, string or package object.
-Description
-Returns the size of a buffer, string, or package data object.
-For a buffer, it returns the size in bytes of the data. For a string, it re=
-turns the size in bytes of the
-string, not counting the trailing NULL. For a package, it returns the numbe=
-r of elements. For an
-object reference, the size of the referenced object is returned. Other data=
- types cause a fatal run-time
-error.
-
-
-Bottom line, I don't think you can figure out the integer size like this.
-What's wrong with just assuming 8 byte integers? I guess sizes 5 to 8
-will be slower with a 32 bit DSDT but why is that a problem?
-
---=20
-MST
+Kevin
 

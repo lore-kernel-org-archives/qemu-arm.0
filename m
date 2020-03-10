@@ -1,126 +1,177 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id y69sm4254503wmd.46.2020.03.10.06.30.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Mar 2020 06:30:26 -0700 (PDT)
-Received: from zen.home.arpa (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C0ECD1FF7E;
-	Tue, 10 Mar 2020 13:30:24 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH] docs/system: add a little more detail to ARM machines
-Date: Tue, 10 Mar 2020 13:30:20 +0000
-Message-Id: <20200310133020.27196-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp847653lfc;
+        Tue, 10 Mar 2020 07:54:26 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vurMtOJEfHhcvmI+papfYOURn4jWGtYyVgWm+pFxjpr6H0hzIgG2W7+G1cF5NRa9TNY4k1N
+X-Received: by 2002:a9d:748c:: with SMTP id t12mr16348994otk.38.1583852066153;
+        Tue, 10 Mar 2020 07:54:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583852066; cv=none;
+        d=google.com; s=arc-20160816;
+        b=IEE9ns9sPhRa80e+gLi13JZt/Pa54QxWVfkl9bkYo151ynCP1G3Za9BAfT7H/4dih5
+         CX5e+qR8dSd+6Xp1Bg5WUIA2co9t5cHw4PX8T67DHWcrCjCZwHClNgcahCCjHqS5liIX
+         JMuZ9jQACzQH3jMNr3IdKE//DeFOqR0navby14VYHKK3/raWg9Dn05snZ6vGg6leRxy+
+         qFJw17fPh72DID6wrAxpAM/1hEqPwDm8kFNjHwDGEIZraZPjfNmGBA8U86oEl/h++bq2
+         dbF/W333lI+9FekIPySJXRfF8TFwhoh6ij9ePIf1aKuuM38OdgzYqlGVyUdfTk2vbreK
+         0Asw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=abFuB6UupSAbj5Uii0ujQcwLeLzAp81W5ty1h0cqZu4=;
+        b=DfDwceXkAwzzyLdimCsmvZWutywf7KnHLHVKrmLfWTZYqzRajy0A0gXmzsl6w+gGyb
+         /9r4bLv8GJk58UXLARPlLK6VgHycmDIDqRs+aniL5gJF0zlxki1l0dMV8Uv8ZiEfPd+l
+         8Cjgog5lEJGey+OpgpPjgTd8ztKm+wEm4GzP0XoGxjyEqp0BIARB/JcJwmiUw279k6VC
+         3lt2OulbwX8KNNflR+oifxUBccL4jHatKClfT9LN56sS05qkibzlDyw9wTEnlSJq+Xvh
+         kkxlSmZRnaGU+yLeWABco3LX3X9oIIp2l9QQDaATAfduhQHJ2MBcRLu+tfSM1AXpKWqa
+         IyHw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DdVNuPgw;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id x24si8259514otq.261.2020.03.10.07.54.25;
+        Tue, 10 Mar 2020 07:54:26 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DdVNuPgw;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727460AbgCJOyZ (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 10 Mar 2020 10:54:25 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:34418 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1727390AbgCJOyZ (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Tue, 10 Mar 2020 10:54:25 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1583852063;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:
+         content-transfer-encoding:content-transfer-encoding;
+        bh=abFuB6UupSAbj5Uii0ujQcwLeLzAp81W5ty1h0cqZu4=;
+        b=DdVNuPgwdyRhhC/bo4ok8MT7lsl9dKAXob23/aNXLbWzxbuzlnPC3DWufqwqXGRMjjQ9wu
+        Y2/uX8TcrfuCAx5n83tkUo6D8PkJo76HV893v1pOi/L0ubluGOwaltW9eyakSJP2OeJI0K
+        tzStCHvPN3wTDtcV7l8ENDqOW1e764k=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-155-QwUxF7bNOPWOI1gJGvvNaw-1; Tue, 10 Mar 2020 10:54:22 -0400
+X-MC-Unique: QwUxF7bNOPWOI1gJGvvNaw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6CA718017CC;
+        Tue, 10 Mar 2020 14:54:20 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-117-85.ams2.redhat.com [10.36.117.85])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id B599B60C88;
+        Tue, 10 Mar 2020 14:54:14 +0000 (UTC)
+From:   Eric Auger <eric.auger@redhat.com>
+To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
+        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc:     drjones@redhat.com, andre.przywara@arm.com,
+        peter.maydell@linaro.org, yuzenghui@huawei.com,
+        alexandru.elisei@arm.com, thuth@redhat.com
+Subject: [kvm-unit-tests PATCH v5 00/13] arm/arm64: Add ITS tests
+Date:   Tue, 10 Mar 2020 15:53:57 +0100
+Message-Id: <20200310145410.26308-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 6y3XGHG48eA6
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Content-Transfer-Encoding: quoted-printable
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: UuO2EhAtmVr4
 
-Taking from the wiki page mention:
+This series is a revival of an RFC series sent in Dec 2016 [1].
+Given the amount of code and the lack of traction at that time,
+I haven't respinned until now. However a recent bug found related
+to the ITS migration convinced me that this work may deserve to be
+respinned and enhanced.
 
-  - both 32 and 64 bit architectures
-  - the roll of A/M profile chips
-  - warn about kernel portability
-  - gently suggest -M virt
-  - add headlines for groups of boards
+Tests exercise main ITS commands and also test migration.
+With the migration framework, we are able to trigger the
+migration from guest and that is very practical actually.
 
-This is still incomplete but hopefully is a less of a straight dive
-into a dry list of peripherals.
+What is particular with the ITS programming is that most of
+the commands are passed through queues and there is real error
+handling. Invalid commands are just ignored and that is not
+really tester friendly.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- docs/system/target-arm.rst | 47 +++++++++++++++++++++++++++++++++++---
- 1 file changed, 44 insertions(+), 3 deletions(-)
+The series can be fount at:
+https://github.com/eauger/kut/tree/its-v5
 
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index d2a3b44ce88..28aaef011d6 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -3,8 +3,35 @@
- ARM System emulator
- -------------------
- 
--Use the executable ``qemu-system-arm`` to simulate a ARM machine. The
--ARM Integrator/CP board is emulated with the following devices:
-+Use the executable ``qemu-system-arm`` to simulate a 32 bit ARM
-+machine. The ``qemu-system-aarch64`` executable is used to simulate
-+the 64 bit ARM AArch64 architecture. AArch64 CPUs can often include an
-+AArch32 execution unit and execute a mix of 64 and 32 bit code.
-+
-+The emulator supports both "A-profile" and "M-profile" CPUs. The
-+A-profile CPUs have a full MMU and can run things like the Linux while
-+the M-profile CPUs are typically used in embedded micro-controller
-+boards.
-+
-+Because ARM systems differ so much and in fundamental ways, typically
-+operating system or firmware images intended to run on one machine
-+will not run at all on any other.
-+
-+If you don't care about running on a particular piece of hardware the
-+``-M virt`` board provides a PCI based virtio board which can be
-+configured with a range of RAM sizes, CPU types and virtio based
-+peripherals. It is generally the target you want to use if general
-+purpose operating systems.
-+
-+Otherwise a range of other machine types are available. Passing ``-M
-+help`` to the command line will list them all. They include the
-+following:
-+
-+ARM Integrator/CP
-+~~~~~~~~~~~~~~~~~
-+
-+This is a development board intended for prototyping and developing
-+ARM-based devices.
- 
- -  ARM926E, ARM1026E, ARM946E, ARM1136 or Cortex-A8 CPU
- 
-@@ -18,7 +45,11 @@ ARM Integrator/CP board is emulated with the following devices:
- 
- -  PL181 MultiMedia Card Interface with SD card.
- 
--The ARM Versatile baseboard is emulated with the following devices:
-+ARM Versatile/Versatile Express
-+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-+
-+Another family of development boards. The more recent Versatile
-+Express boards are designed for modern Cortex processors.
- 
- -  ARM926E, ARM1136 or Cortex-A8 CPU
- 
-@@ -45,6 +76,9 @@ The ARM Versatile baseboard is emulated with the following devices:
- 
- -  PL181 MultiMedia Card Interface with SD card.
- 
-+ARM RealView
-+~~~~~~~~~~~~
-+
- Several variants of the ARM RealView baseboard are emulated, including
- the EB, PB-A8 and PBX-A9. Due to interactions with the bootloader, only
- certain Linux kernel configurations work out of the box on these boards.
-@@ -77,6 +111,9 @@ The following devices are emulated:
- 
- -  PL181 MultiMedia Card Interface with SD card.
- 
-+Various PDA machines
-+~~~~~~~~~~~~~~~~~~~~
-+
- The XScale-based clamshell PDA models (\"Spitz\", \"Akita\", \"Borzoi\"
- and \"Terrier\") emulation includes the following peripherals:
- 
-@@ -156,6 +193,10 @@ Nokia N800 and N810 internet tablets (known also as RX-34 and RX-44 /
- -  Nokia RETU and TAHVO multi-purpose chips with an RTC, connected
-    through CBUS
- 
-+
-+M-profile boards
-+~~~~~~~~~~~~~~~~
-+
- The Luminary Micro Stellaris LM3S811EVB emulation includes the following
- devices:
- 
--- 
+Best Regards
+
+Eric
+
+History:
+v4 -> v5:
+- 32b stubs moved back to arm/gic.c
+- some changes reordering
+- minor style issues
+
+v3 -> v4:
+- addressed comments from Drew and Zenghui
+- added "page_alloc: Introduce get_order()"
+- removed "arm: gic: Provide per-IRQ helper functions"
+- ITS files moved to lib64
+- and many more, see individual logs
+
+v2 -> v3:
+- fix 32b compilation
+- take into account Drew's comments (see individual diff logs)
+
+v1 -> v2:
+- took into account Zenghui's comments
+- collect R-b's from Thomas
+
+References:
+[1] [kvm-unit-tests RFC 00/15] arm/arm64: add ITS framework
+    https://lists.gnu.org/archive/html/qemu-devel/2016-12/msg00575.html
+
+Execution:
+x For other ITS tests:
+  ./run_tests.sh -g its
+
+x non migration tests can be launched invidually. For instance:
+  ./arm-run arm/gic.flat -smp 8 -append 'its-trigger'
+
+Eric Auger (13):
+  libcflat: Add other size defines
+  page_alloc: Introduce get_order()
+  arm/arm64: gic: Introduce setup_irq() helper
+  arm/arm64: gicv3: Add some re-distributor defines
+  arm/arm64: gicv3: Set the LPI config and pending tables
+  arm/arm64: ITS: Introspection tests
+  arm/arm64: ITS: its_enable_defaults
+  arm/arm64: ITS: Device and collection Initialization
+  arm/arm64: ITS: Commands
+  arm/arm64: ITS: INT functional tests
+  arm/run: Allow Migration tests
+  arm/arm64: ITS: migration tests
+  arm/arm64: ITS: pending table migration test
+
+ arm/Makefile.arm64         |   1 +
+ arm/Makefile.common        |   2 +-
+ arm/gic.c                  | 477 +++++++++++++++++++++++++++++++++++--
+ arm/run                    |   2 +-
+ arm/unittests.cfg          |  38 +++
+ lib/alloc_page.c           |   7 +-
+ lib/alloc_page.h           |   1 +
+ lib/arm/asm/gic-v3-its.h   |  22 ++
+ lib/arm/asm/gic-v3.h       |  34 +++
+ lib/arm/asm/processor.h    |   2 +
+ lib/arm/gic-v3.c           |  78 ++++++
+ lib/arm/gic.c              |  34 ++-
+ lib/arm/io.c               |  28 +++
+ lib/arm64/asm/gic-v3-its.h | 172 +++++++++++++
+ lib/arm64/gic-v3-its-cmd.c | 463 +++++++++++++++++++++++++++++++++++
+ lib/arm64/gic-v3-its.c     | 172 +++++++++++++
+ lib/libcflat.h             |   3 +
+ 17 files changed, 1507 insertions(+), 29 deletions(-)
+ create mode 100644 lib/arm/asm/gic-v3-its.h
+ create mode 100644 lib/arm64/asm/gic-v3-its.h
+ create mode 100644 lib/arm64/gic-v3-its-cmd.c
+ create mode 100644 lib/arm64/gic-v3-its.c
+
+--=20
 2.20.1

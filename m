@@ -1,122 +1,214 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1241578lfc;
-        Tue, 10 Mar 2020 14:51:59 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtbnXQaIFW0nrJhsqvUBBAYnKfS0oEO2xMXG5aEHRTX5Qwp16ZhfjXYEaor1Ipf9j3Eqs+g
-X-Received: by 2002:ad4:580b:: with SMTP id dd11mr271873qvb.58.1583877119535;
-        Tue, 10 Mar 2020 14:51:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583877119; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1242239lfc;
+        Tue, 10 Mar 2020 14:52:52 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtZkCXlBccVsvcYEcYMYuwN4O3vyp6f0Mh9Zdr4ZiTdnNA2EZ9Isr+lm0Zb5lOcn/ErSg1V
+X-Received: by 2002:a05:620a:ce6:: with SMTP id c6mr8347670qkj.396.1583877172159;
+        Tue, 10 Mar 2020 14:52:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583877172; cv=none;
         d=google.com; s=arc-20160816;
-        b=W6zB8YjMNg4fujIwxWTc2rKekHQz6Zal8YSVhcpKCe4RRcpgl0SeNJhQMyc/RNhR6l
-         sqBa6jzJ8ZxP63/WHa2zuPRCYKg0BXpGGgTwn7QQ9khXvWmy/NYS+bqibeZAuWVkXwXr
-         PX8S8BD2w8yfI3VhZTV2mwfdIsulSfK9N5kb3dxLIszNJVxy+objtFg52pemQyZmAejw
-         gZIU16gWR2UZayaPlSji3yuqS9xbl5sPMD5RQny1vnGdGu5xWc/pySFFW4WMrJLticDH
-         Ux/cn/tr0toPOLYz+dAviNdkr+WrVniXZz0wcleNMRKikONWrbIXFYlLaHPWw5CffD5g
-         vsiA==
+        b=jKSvaKRBtrxcv6CwTodonn6c4Ko7DbDw4aoYjdch1V8wwJnPjHe+VK7sWsMaWzrmnC
+         WXl13ZiecOVo5IqjdQaVEnGubcaVRJJlxdPu1rv067e0mDEUCFjc4xSCANXPvcQ9m7hL
+         jhdYVI5k9/i2vIwHkDmC118S324IZLZIu758iuxCP3LQ5uoqtS/amny3Dmyue9BAAf8O
+         s/z7yivS6ijPGXb/3OpX0LHZUtCSUNEa9bw5QBF3Ks/1afnC7WVkCrf0USHT2k8UHCrB
+         lYZn1DAbGgCTdM/h6oSy4HDt+9V14YGKa3RcZkb7KKRcDczXFLqCvJOEX/j3h5ttb5rV
+         jdPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=utzyS3UmdZ0hCp124moa/MGYfoU+EGB6ZWqJZIL2aiw=;
-        b=of4/RlfYtpKJ8xoH6vb/XkY2K7O0dVi/cUpJjlyD6iBzl6m0/M2vHsqi6M+dYxjls+
-         gkrA4T6KmGG18h8RTAxfWn2I0XvrlLBSFV7f1cxhbH8rye3eYGGnG0PVHry30P5a5T0U
-         oc7Rm2yLwXufJVLH1ZfJOxqqdbXDEh6WK+mZPyk80zWok4927FbYaL3Lq+A3kci1AwSy
-         vd1VyqndiyBai13CJ8vP6tzIT76otT18/BMDARHevDrO8hTE+pD9eQCZDv0Door3fbdg
-         gSHocxIunU2/mvNmdlMlMpmJEiOTPV/Yv02GPKBiDDqcNNWb0oLt4uMPJ3odX/SWRZTD
-         akzQ==
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=DBYFIldccRLrR0tdp5iDCeyHIyqYrrHiZr1tvZTudAk=;
+        b=m4BIPWeXVwNm9B8rSQ8y7GvAAwuI9FxbbdVpT0IUVz9e4v9fv1hFn12BiGyPIz8GZC
+         quCeX4wfP+e9xcoZphaefD+ak3TJhOpnvWa005CZ0P7X7+cU4ejNU0S7w2VstT8p8Amq
+         A6WbILG+1SNVhtfFdNFtuekWOrGeDXIF7WGsCrNmSaMvNK0TmQdJv+VDSo/dyjEd4XJy
+         ekcZKyQoZByh2eFtw53jM6BMTGfCTCLzRMazsJriHRPTd1HA7pHaAC8IMkj2S2TNhY4J
+         SvdA/gPenNuXTXV+QHHuWxhMXt3zTBeRAm5IkAHr3NR212UFqW/cSsIWAZY888PXD0ld
+         Pccw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=F69MYuMF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AlMDPBBp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x140si8839169qkb.43.2020.03.10.14.51.59
+        by mx.google.com with ESMTPS id c39si1988338qta.25.2020.03.10.14.52.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Mar 2020 14:51:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Mar 2020 14:52:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=F69MYuMF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41056 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AlMDPBBp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41064 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBmn8-0005Al-VL
-	for alex.bennee@linaro.org; Tue, 10 Mar 2020 17:51:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34559)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jBmnz-0006D7-Jy
+	for alex.bennee@linaro.org; Tue, 10 Mar 2020 17:52:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34648)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1jBmn1-00058Q-7i
- for qemu-arm@nongnu.org; Tue, 10 Mar 2020 17:51:52 -0400
+ (envelope-from <groeck7@gmail.com>) id 1jBmn6-0005Hv-DG
+ for qemu-devel@nongnu.org; Tue, 10 Mar 2020 17:51:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1jBmn0-0006sT-5f
- for qemu-arm@nongnu.org; Tue, 10 Mar 2020 17:51:50 -0400
-Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:40556)
+ (envelope-from <groeck7@gmail.com>) id 1jBmn5-00073A-6M
+ for qemu-devel@nongnu.org; Tue, 10 Mar 2020 17:51:56 -0400
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:33013)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1jBmmz-0006qu-V8; Tue, 10 Mar 2020 17:51:50 -0400
-Received: by mail-pj1-x1044.google.com with SMTP id gv19so1007329pjb.5;
- Tue, 10 Mar 2020 14:51:49 -0700 (PDT)
+ id 1jBmn2-0006vw-Nv; Tue, 10 Mar 2020 17:51:52 -0400
+Received: by mail-pg1-x542.google.com with SMTP id m5so39675pgg.0;
+ Tue, 10 Mar 2020 14:51:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id;
- bh=utzyS3UmdZ0hCp124moa/MGYfoU+EGB6ZWqJZIL2aiw=;
- b=F69MYuMF/s0xrgiwGXfzFwd5MJV+CfmnegR2bL2G+As6s+4jMtRIHYYpMlkoeuN1LL
- N6X87+L7ogqqgfTmEvT1UWirKUdlntOJ1uugnFzfy2P3mBPS6+MMo06tFLV5Lc5ReamO
- 8l+cPgBzYwZc6M8iv9wkiaG5AjqcVDs4IH+lgTt0M5UCEfjuu4GEew7x5VBfiX3urf5e
- cmaFoOdZPaNJs/NWnyClt6H6Yk0IFzuF3fsbBF0EgbMxHsJ/mXZHCqDR+VVVsMoyvr0j
- 9LGINRdn5v1CLGtSV+XRhA7XZaqSZ4G8NWZz4CJO9oWFsRqbatrHQdqFuNnXoMx02v+5
- rAfw==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=DBYFIldccRLrR0tdp5iDCeyHIyqYrrHiZr1tvZTudAk=;
+ b=AlMDPBBpU1/mwsaAGrq3I2eZ3BMxYsb0ZgyzmtIsC8s5+PjlgRYALFbOBXO2Shzr/d
+ cmfwhz5PiZC9bWN5gBj45Y+oAKhW8men1pbn5+xih6EZRexLVxo4QKH8Uj/SKyyeBRXC
+ MgeVRrd+RaH7Svww2wyhmcJBjkLD3QPbnReTp/K+SSg6ylJP1WmdXdyq4ys4v988KpUS
+ a/ocVqxK/ADJDNsf+X6Zl0HN37zT5ONPNpIEh7xm0/pmNBv6HzHrsyivVNe8RzwAZKOD
+ nF9Pb3TAQTEIIRYqrpijKCsTaJuWT8/y3faDOYzlDTavCR2uFk3u7cxBg3SbtMxnd/ep
+ tqig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
- bh=utzyS3UmdZ0hCp124moa/MGYfoU+EGB6ZWqJZIL2aiw=;
- b=hxKnrmkl14QSz/8W0dx7YSos2HvxbzPRQM6T+6lELUFu+u0zNn09IvBdI3XhJLznWG
- CzylOxBjisR5Cb0NzlcQ+QTneWGNOpQDgTmczkotYClSVTQpQ2HJGWRH4thbXA9RWHau
- bKAdqLQURep7B9+4cT1/B06xr3Z8MHDOKF5+zLJcGrShhqOyhxnwuXSxU/ZoLxT40Xha
- fIgSt4QWpmUSgXwd+mBznC02Dt2IBgZ3bX6EyFOKqXBedkE2ZbTCVwNyYAFGw0eBGPiv
- xhdpD5FQ4W83yuTzYMw+Pk3UZ025TfeK6b9ZEPLotsotwI99boywgC1oVaDyI5p8lhzi
- U/vQ==
-X-Gm-Message-State: ANhLgQ1UcRN9bVXFVwwlBujOHrDyDgnKn0/UXRX/d7hmcrHkKkw1ZKKI
- kyM+2wpbQZ1tSWF+CcimkSY=
-X-Received: by 2002:a17:902:b183:: with SMTP id s3mr13346plr.33.1583877108849; 
- Tue, 10 Mar 2020 14:51:48 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references;
+ bh=DBYFIldccRLrR0tdp5iDCeyHIyqYrrHiZr1tvZTudAk=;
+ b=R8dFcfPB/Dsv+GERYS1630N3dWP1aB6oG+BFdwmARzZaWzh6xGJAr7LUMoGIdAy/ln
+ HNtXwzFN+Z934kOK641CMdwh0tTsTD16o2pKVh+f65TliwEUFTKQ3NPZxPU6Vk1AvZDt
+ gC7it6C1GneFxo7WNM4gVHM1rg9DMwsCKu4ts377DOEmQxdBpBQ7IRfdTYSpSiDWIV7/
+ cwJT86cqzyRQRWHvEJEw85U6nC2HucakAJcqc628YhI7WhBxfalubocarhzsMa8A1Olx
+ 7460tg/VSXJoRNBn2h3/wAyT7RdYZDON92wFHXEULImy6BT8Uu0Gcxkfb6bsFsX/CG/S
+ DEPg==
+X-Gm-Message-State: ANhLgQ1bKmDNLOvQ7UpYa6SVdQvUa8NRg9b1rQcsps+YpRAI4Rdpk991
+ HhiMaVeu2efFxz2gy3iDPWI=
+X-Received: by 2002:a63:155c:: with SMTP id 28mr22139082pgv.176.1583877111776; 
+ Tue, 10 Mar 2020 14:51:51 -0700 (PDT)
 Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id x9sm17986200pfa.188.2020.03.10.14.51.47
+ by smtp.gmail.com with ESMTPSA id h2sm3081752pjc.7.2020.03.10.14.51.50
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 10 Mar 2020 14:51:48 -0700 (PDT)
+ Tue, 10 Mar 2020 14:51:51 -0700 (PDT)
 From: Guenter Roeck <linux@roeck-us.net>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 0/2] hw/arm: fsl-imx25: Connect eSDHC and USB controllers
-Date: Tue, 10 Mar 2020 14:51:44 -0700
-Message-Id: <20200310215146.19688-1-linux@roeck-us.net>
+Subject: [PATCH 2/2] hw/arm/fsl-imx25: Wire up USB controllers
+Date: Tue, 10 Mar 2020 14:51:46 -0700
+Message-Id: <20200310215146.19688-3-linux@roeck-us.net>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200310215146.19688-1-linux@roeck-us.net>
+References: <20200310215146.19688-1-linux@roeck-us.net>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::1044
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::542
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Guenter Roeck <linux@roeck-us.net>,
  Jean-Christophe Dubois <jcd@tribudubois.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6yygx5/PKyES
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rK+ysgBAfm1a
 
-The following two patches wire up eSDHC and USB controllers for fsl-imx25.
-With these patches in place, the imx25-pdk emulation can boot from SD cards
-and from USB.
+i.MX25 supports two USB controllers. Let's wire them up.
 
-----------------------------------------------------------------
-Guenter Roeck (2):
-      hw/arm: fsl-imx25: Wire up eSDHC controllers
-      hw/arm/fsl-imx25: Wire up USB controllers
+With this patch, imx25-pdk can boot from both USB ports.
 
- hw/arm/fsl-imx25.c         | 56 ++++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/imx25_pdk.c         | 16 +++++++++++++
- include/hw/arm/fsl-imx25.h | 18 +++++++++++++++
- 3 files changed, 90 insertions(+)
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+ hw/arm/fsl-imx25.c         | 24 ++++++++++++++++++++++++
+ include/hw/arm/fsl-imx25.h |  9 +++++++++
+ 2 files changed, 33 insertions(+)
+
+diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
+index f977c42426..a3f829f436 100644
+--- a/hw/arm/fsl-imx25.c
++++ b/hw/arm/fsl-imx25.c
+@@ -81,6 +81,12 @@ static void fsl_imx25_init(Object *obj)
+         sysbus_init_child_obj(obj, "sdhc[*]", &s->esdhc[i], sizeof(s->esdhc[i]),
+                               TYPE_IMX_USDHC);
+     }
++
++    for (i = 0; i < FSL_IMX25_NUM_USBS; i++) {
++        sysbus_init_child_obj(obj, "usb[*]", &s->usb[i], sizeof(s->usb[i]),
++                              TYPE_CHIPIDEA);
++    }
++
+ }
+ 
+ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+@@ -278,6 +284,24 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+                                             esdhc_table[i].irq));
+     }
+ 
++    /* USB */
++    for (i = 0; i < FSL_IMX25_NUM_USBS; i++) {
++        static const struct {
++            hwaddr addr;
++            unsigned int irq;
++        } usb_table[FSL_IMX25_NUM_USBS] = {
++            { FSL_IMX25_USB1_ADDR, FSL_IMX25_USB1_IRQ },
++            { FSL_IMX25_USB2_ADDR, FSL_IMX25_USB2_IRQ },
++        };
++
++        object_property_set_bool(OBJECT(&s->usb[i]), true, "realized",
++                                 &error_abort);
++        sysbus_mmio_map(SYS_BUS_DEVICE(&s->usb[i]), 0, usb_table[i].addr);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->usb[i]), 0,
++                           qdev_get_gpio_in(DEVICE(&s->avic),
++                                            usb_table[i].irq));
++    }
++
+     /* initialize 2 x 16 KB ROM */
+     memory_region_init_rom(&s->rom[0], NULL,
+                            "imx25.rom0", FSL_IMX25_ROM0_SIZE, &err);
+diff --git a/include/hw/arm/fsl-imx25.h b/include/hw/arm/fsl-imx25.h
+index 4e2d4868cd..5e196bbf05 100644
+--- a/include/hw/arm/fsl-imx25.h
++++ b/include/hw/arm/fsl-imx25.h
+@@ -28,6 +28,7 @@
+ #include "hw/i2c/imx_i2c.h"
+ #include "hw/gpio/imx_gpio.h"
+ #include "hw/sd/sdhci.h"
++#include "hw/usb/chipidea.h"
+ #include "exec/memory.h"
+ #include "target/arm/cpu.h"
+ 
+@@ -40,6 +41,7 @@
+ #define FSL_IMX25_NUM_I2CS 3
+ #define FSL_IMX25_NUM_GPIOS 4
+ #define FSL_IMX25_NUM_ESDHCS 2
++#define FSL_IMX25_NUM_USBS 2
+ 
+ typedef struct FslIMX25State {
+     /*< private >*/
+@@ -57,6 +59,7 @@ typedef struct FslIMX25State {
+     IMXI2CState    i2c[FSL_IMX25_NUM_I2CS];
+     IMXGPIOState   gpio[FSL_IMX25_NUM_GPIOS];
+     SDHCIState     esdhc[FSL_IMX25_NUM_ESDHCS];
++    ChipideaState  usb[FSL_IMX25_NUM_USBS];
+     MemoryRegion   rom[2];
+     MemoryRegion   iram;
+     MemoryRegion   iram_alias;
+@@ -226,6 +229,10 @@ typedef struct FslIMX25State {
+ #define FSL_IMX25_GPIO1_SIZE    0x4000
+ #define FSL_IMX25_GPIO2_ADDR    0x53FD0000
+ #define FSL_IMX25_GPIO2_SIZE    0x4000
++#define FSL_IMX25_USB1_ADDR     0x53FF4000
++#define FSL_IMX25_USB1_SIZE     0x0200
++#define FSL_IMX25_USB2_ADDR     0x53FF4400
++#define FSL_IMX25_USB2_SIZE     0x0200
+ #define FSL_IMX25_AVIC_ADDR     0x68000000
+ #define FSL_IMX25_AVIC_SIZE     0x4000
+ #define FSL_IMX25_IRAM_ADDR     0x78000000
+@@ -259,5 +266,7 @@ typedef struct FslIMX25State {
+ #define FSL_IMX25_GPIO4_IRQ     23
+ #define FSL_IMX25_ESDHC1_IRQ    9
+ #define FSL_IMX25_ESDHC2_IRQ    8
++#define FSL_IMX25_USB1_IRQ      37
++#define FSL_IMX25_USB2_IRQ      35
+ 
+ #endif /* FSL_IMX25_H */
+-- 
+2.17.1
+

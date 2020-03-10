@@ -1,707 +1,187 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp848589lfc;
-        Tue, 10 Mar 2020 07:55:20 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vviSSyv/x/0rWwOzLwRNlddmUXGtdHrBBXMV8UFeN894AaebkQ2Qog3/pDoorIiEDoohmoH
-X-Received: by 2002:ad4:4527:: with SMTP id l7mr394129qvu.221.1583852120303;
-        Tue, 10 Mar 2020 07:55:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583852120; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp848674lfc;
+        Tue, 10 Mar 2020 07:55:25 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt6iES+NCxjAfRctUABGjLQ9pwp8O+gC39VcXJwcvcq054PjxDK6iG7N3jRrefgc1oYuXte
+X-Received: by 2002:a05:6830:616:: with SMTP id w22mr16792532oti.215.1583852125702;
+        Tue, 10 Mar 2020 07:55:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583852125; cv=none;
         d=google.com; s=arc-20160816;
-        b=i9Do1AEgscfLcnJpy2X+xPP1xjmn+vuT8CIjo8Kl0v1uWPl7smKDLoniDh2tj4aw+G
-         WOSxpqyKrOZwoJCCRjEGY8zkPEHqefTadAeYyjsI3XRCmeMvND9BNJh/zWHDok17si1N
-         twlOHt6ZtN06yuLSpYTivWsrOiLOpFrMF3YHFiPbcAZpzykFtdtSJSrm8g5zwTq4U0gp
-         NXNRPlzaHRJmeVC1WgGyzjtT7ZkwnksiuhvwMWO+mbXbHuq1EuAokCnxKeDCx8Vw8Xfh
-         L8Jt7XVjo8LJq9kaMh3FriM4lsyg88ypLXSTV5IKyqXE0zNhaH/9ISJ9OZLBapSbyNPR
-         ZUZA==
+        b=pKxIOR+6vaKRmGcFaXFU2uqhkoNxyt0I3+X7ihLDHQ69GQbnylBKu6UsIzRw2AuQof
+         ojVkeI2RwUeIRHBPbdOc5dV2+ROJcArIH/LpS1aZQF56mqJofx6HUXEwaiAbkUyf/Kwg
+         1wEHyGTd1LZoLscKty1wqt7blrJ/On+x+RJSmcl56xnnPoau/9dzR8t4IamDmxWtF9ab
+         npFpYyXdPJMev0/xDlIlJgk3RCeQB9kGGrslHSAH2jFZHaKVew/04oJE12jc/U05keQ+
+         In6lIaPk/wiTqQFGIAD48Trx5MOPNO5qsq9uLxNjbnSc6trOLWrgsLkgs7n1Zm1dhQP/
+         JQnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=n8IL1ojAGBiUHLpLGhaMmehfQQFkH4A0774Tc625aLI=;
-        b=EzuM6x4PAwi72TRU6McN7uHFMYzmyS0qWPvA5qZ3W1mzGd79B89Lln2INBU+rsxBJ5
-         xi3u58b+CNDjN1eItDAje75y/MJuvyfDYRAZoJXx9nCjO1UWx4drvBiA+MJ+l81hjSmL
-         MjT9Se5ssGAqnGhpPmuM6G87ccykXjXuhq7w6LmDNwjjbJ4u38nyvdIbXjre2FAgbOVo
-         MIfcpacWJUZblMCCjfa1sWE0JT4Ds26f68k6FYIeFmjZnN51iaSyLhpqWfwMibxn10zg
-         upL678h2wwDjhGWdl7a4ajkScevZME23Uu2D/JI4ys3rfo/HbMY/OFUTVQQq5bn2Axij
-         ADLw==
+        bh=CnmHcvAzlYerfEhzxJ/5Dt9qcTxe4wP+0MOD1yMQ9wI=;
+        b=FassNyPiwN5HGhwqVa6YVIXEipTJ6bp8YEca5Q7jv9gb23/iNQXEaHHs7P7sUSlf46
+         7W4Q4ZmoLhmO29k+Xb5HaIvrOWqRxF9gtzP0L1ml52yfETbv26bDOwFxDa61J1oRhkEN
+         5LZrV/4dcGJGfisGwZ+V6g3yMzQ8rpi2vp/R2JAp7Jxoq2VHo9sb8Azvk5npNcAG5PkR
+         dsSXXJyyqN1NQBUJiDTnxmrexahLbFXRAMQ64T0acOsad/ScHXVjNWEGv6oZ6zlSkbn2
+         kRP9wvYiihLhVW75b4SELH/mXtTpUrartMngJ5I8eX6Hn8vkxEeJn++dlhHMnU8cXMeX
+         k1bw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=c4Z1FSzr;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id i7si2339753qkk.245.2020.03.10.07.55.20;
-        Tue, 10 Mar 2020 07:55:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pni4QrRs;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id i7si5431916oth.143.2020.03.10.07.55.25;
+        Tue, 10 Mar 2020 07:55:25 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=c4Z1FSzr;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 01FA34A3A5;
-	Tue, 10 Mar 2020 10:55:20 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6Repw8ueuLnM; Tue, 10 Mar 2020 10:55:18 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 422294A4A9;
-	Tue, 10 Mar 2020 10:55:18 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id F04F64A3A5
- for <kvmarm@lists.cs.columbia.edu>; Tue, 10 Mar 2020 10:55:16 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pVkDjAiPBfoH for <kvmarm@lists.cs.columbia.edu>;
- Tue, 10 Mar 2020 10:55:15 -0400 (EDT)
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
- [205.139.110.61])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 7A78A4A542
- for <kvmarm@lists.cs.columbia.edu>; Tue, 10 Mar 2020 10:55:14 -0400 (EDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pni4QrRs;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727681AbgCJOzY (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 10 Mar 2020 10:55:24 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:34568 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1727671AbgCJOzY (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Tue, 10 Mar 2020 10:55:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583852114;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Rl9geoN+FOP5Q2MgFHieb8wwSiuIUGsya906LXvN0pU=;
- b=c4Z1FSzr4d2CDg6X6PndEKLNmwO+n0Pm8LG/aJ3ylEW8Q0CpUo1DA6zMgqmUplc1RcB7to
- RG20YNGZLQ5XSLbXMp0Mc4U6GQw3DiKOKTIXy85xNvDT8IkVw6+E/c0gY+mfJYfvaurYFN
- PLVb9so4e1OlQL/4H7BEIMFf7FEw7mA=
+        s=mimecast20190719; t=1583852123;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=CnmHcvAzlYerfEhzxJ/5Dt9qcTxe4wP+0MOD1yMQ9wI=;
+        b=Pni4QrRseVi/mOe3157Wxo0G6krDq6IXgYmTqXcFyFeWrc0DTip7W5rRDBalfFQncXI5Ex
+        9rD29c0eauyqZTNYLtRhEaWgWr4hN6xUL7Gjv+5rykPFkVpbjG3CnNh1Rc/iXVjmw14sKd
+        UCawWOwP9IBdbfyI729FcAMu/ohqusc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-416-c_0BDdLyNjqeKlrKTyNF0A-1; Tue, 10 Mar 2020 10:55:12 -0400
-X-MC-Unique: c_0BDdLyNjqeKlrKTyNF0A-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2D66913F5;
- Tue, 10 Mar 2020 14:55:11 +0000 (UTC)
+ us-mta-185-XU29fs8xNrqnAyHGP3aOIA-1; Tue, 10 Mar 2020 10:55:22 -0400
+X-MC-Unique: XU29fs8xNrqnAyHGP3aOIA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 43BBD19067F1;
+        Tue, 10 Mar 2020 14:55:20 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-117-85.ams2.redhat.com [10.36.117.85])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A872860BF3;
- Tue, 10 Mar 2020 14:55:05 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
- kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Subject: [kvm-unit-tests PATCH v5 09/13] arm/arm64: ITS: Commands
-Date: Tue, 10 Mar 2020 15:54:06 +0100
-Message-Id: <20200310145410.26308-10-eric.auger@redhat.com>
+        by smtp.corp.redhat.com (Postfix) with ESMTP id C913260C87;
+        Tue, 10 Mar 2020 14:55:14 +0000 (UTC)
+From:   Eric Auger <eric.auger@redhat.com>
+To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
+        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc:     drjones@redhat.com, andre.przywara@arm.com,
+        peter.maydell@linaro.org, yuzenghui@huawei.com,
+        alexandru.elisei@arm.com, thuth@redhat.com
+Subject: [kvm-unit-tests PATCH v5 11/13] arm/run: Allow Migration tests
+Date:   Tue, 10 Mar 2020 15:54:08 +0100
+Message-Id: <20200310145410.26308-12-eric.auger@redhat.com>
 In-Reply-To: <20200310145410.26308-1-eric.auger@redhat.com>
 References: <20200310145410.26308-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Cc: andre.przywara@arm.com, thuth@redhat.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: XAmi0Tm/S6+V
+Content-Transfer-Encoding: quoted-printable
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: +uYqGWaMoeQx
 
-Implement main ITS commands. The code is largely inherited from
-the ITS driver.
+Let's link getchar.o to use puts and getchar from the
+tests.
+
+Then allow tests belonging to the migration group to
+trigger the migration from the test code by putting
+"migrate" into the uart. Then the code can wait for the
+migration completion by using getchar().
+
+The __getchar implement is minimalist as it just reads the
+data register. It is just meant to read the single character
+emitted at the end of the migration by the runner script.
+
+It is not meant to read more data (FIFOs are not enabled).
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
 
 v3 -> v4:
-- device's itt now is a VGA
-- pass verbose to choose whether we shall print the cmd
-- use printf instead of report_info
+- remove space around Elvis operator
+- rename ___getchar into do_getchar
 
 v2 -> v3:
-- do not use report() anymore
-- assert if cmd_write exceeds the queue capacity
-
-v1 -> v2:
-- removed its_print_cmd_state
+- take the lock
+- assert if more than 16 chars
+- removed Thomas' R-b
 ---
- arm/Makefile.arm64         |   2 +-
- lib/arm64/asm/gic-v3-its.h |  57 +++++
- lib/arm64/gic-v3-its-cmd.c | 463 +++++++++++++++++++++++++++++++++++++
- 3 files changed, 521 insertions(+), 1 deletion(-)
- create mode 100644 lib/arm64/gic-v3-its-cmd.c
+ arm/Makefile.common |  2 +-
+ arm/run             |  2 +-
+ lib/arm/io.c        | 28 ++++++++++++++++++++++++++++
+ 3 files changed, 30 insertions(+), 2 deletions(-)
 
-diff --git a/arm/Makefile.arm64 b/arm/Makefile.arm64
-index 60182ae..dfd0c56 100644
---- a/arm/Makefile.arm64
-+++ b/arm/Makefile.arm64
-@@ -19,7 +19,7 @@ endef
- cstart.o = $(TEST_DIR)/cstart64.o
- cflatobjs += lib/arm64/processor.o
- cflatobjs += lib/arm64/spinlock.o
--cflatobjs += lib/arm64/gic-v3-its.o
-+cflatobjs += lib/arm64/gic-v3-its.o lib/arm64/gic-v3-its-cmd.o
- 
- OBJDIRS += lib/arm64
- 
-diff --git a/lib/arm64/asm/gic-v3-its.h b/lib/arm64/asm/gic-v3-its.h
-index 3da548b..889d6ce 100644
---- a/lib/arm64/asm/gic-v3-its.h
-+++ b/lib/arm64/asm/gic-v3-its.h
-@@ -102,6 +102,28 @@ extern struct its_data its_data;
- #define GITS_BASER_TYPE_DEVICE		1
- #define GITS_BASER_TYPE_COLLECTION	4
- 
+diff --git a/arm/Makefile.common b/arm/Makefile.common
+index b8988f2..a123e85 100644
+--- a/arm/Makefile.common
++++ b/arm/Makefile.common
+@@ -32,7 +32,7 @@ CFLAGS +=3D -I $(SRCDIR)/lib -I $(SRCDIR)/lib/libfdt -I=
+ lib
+ asm-offsets =3D lib/$(ARCH)/asm-offsets.h
+ include $(SRCDIR)/scripts/asm-offsets.mak
+=20
+-cflatobjs +=3D lib/util.o
++cflatobjs +=3D lib/util.o lib/getchar.o
+ cflatobjs +=3D lib/alloc_phys.o
+ cflatobjs +=3D lib/alloc_page.o
+ cflatobjs +=3D lib/vmalloc.o
+diff --git a/arm/run b/arm/run
+index 277db9b..a390ca5 100755
+--- a/arm/run
++++ b/arm/run
+@@ -61,6 +61,6 @@ fi
+ M+=3D",accel=3D$ACCEL"
+ command=3D"$qemu -nodefaults $M -cpu $processor $chr_testdev $pci_testde=
+v"
+ command+=3D" -display none -serial stdio -kernel"
+-command=3D"$(timeout_cmd) $command"
++command=3D"$(migration_cmd) $(timeout_cmd) $command"
+=20
+ run_qemu $command "$@"
+diff --git a/lib/arm/io.c b/lib/arm/io.c
+index 99fd315..343e108 100644
+--- a/lib/arm/io.c
++++ b/lib/arm/io.c
+@@ -87,6 +87,34 @@ void puts(const char *s)
+ 	spin_unlock(&uart_lock);
+ }
+=20
++static int do_getchar(void)
++{
++	int c;
++
++	spin_lock(&uart_lock);
++	c =3D readb(uart0_base);
++	spin_unlock(&uart_lock);
++
++	return c ?: -1;
++}
++
 +/*
-+ * ITS commands
++ * Minimalist implementation for migration completion detection.
++ * Without FIFOs enabled on the QEMU UART device we just read
++ * the data register: we cannot read more than 16 characters.
 + */
-+#define GITS_CMD_MAPD			0x08
-+#define GITS_CMD_MAPC			0x09
-+#define GITS_CMD_MAPTI			0x0a
-+/* older GIC documentation used MAPVI for this command */
-+#define GITS_CMD_MAPVI			GITS_CMD_MAPTI
-+#define GITS_CMD_MAPI			0x0b
-+#define GITS_CMD_MOVI			0x01
-+#define GITS_CMD_DISCARD		0x0f
-+#define GITS_CMD_INV			0x0c
-+#define GITS_CMD_MOVALL			0x0e
-+#define GITS_CMD_INVALL			0x0d
-+#define GITS_CMD_INT			0x03
-+#define GITS_CMD_CLEAR			0x04
-+#define GITS_CMD_SYNC			0x05
-+
-+struct its_cmd_block {
-+	u64 raw_cmd[4];
-+};
-+
- extern void its_parse_typer(void);
- extern void its_init(void);
- extern int its_baser_lookup(int i, struct its_baser *baser);
-@@ -109,4 +131,39 @@ extern void its_enable_defaults(void);
- extern struct its_device *its_create_device(u32 dev_id, int nr_ites);
- extern struct its_collection *its_create_collection(u32 col_id, u32 target_pe);
- 
-+extern void __its_send_mapd(struct its_device *dev, int valid, bool verbose);
-+extern void __its_send_mapc(struct its_collection *col, int valid, bool verbose);
-+extern void __its_send_mapti(struct its_device *dev, u32 irq_id, u32 event_id,
-+			     struct its_collection *col, bool verbose);
-+extern void __its_send_int(struct its_device *dev, u32 event_id, bool verbose);
-+extern void __its_send_inv(struct its_device *dev, u32 event_id, bool verbose);
-+extern void __its_send_discard(struct its_device *dev, u32 event_id, bool verbose);
-+extern void __its_send_clear(struct its_device *dev, u32 event_id, bool verbose);
-+extern void __its_send_invall(struct its_collection *col, bool verbose);
-+extern void __its_send_movi(struct its_device *dev, struct its_collection *col,
-+			    u32 id, bool verbose);
-+extern void __its_send_sync(struct its_collection *col, bool verbose);
-+
-+#define its_send_mapd(dev, valid)			__its_send_mapd(dev, valid, true)
-+#define its_send_mapc(col, valid)			__its_send_mapc(col, valid, true)
-+#define its_send_mapti(dev, irqid, eventid, col)	__its_send_mapti(dev, irqid, eventid, col, true)
-+#define its_send_int(dev, eventid)			__its_send_int(dev, eventid, true)
-+#define its_send_inv(dev, eventid)			__its_send_inv(dev, eventid, true)
-+#define its_send_discard(dev, eventid)			__its_send_discard(dev, eventid, true)
-+#define its_send_clear(dev, eventid)			__its_send_clear(dev, eventid, true)
-+#define its_send_invall(col)				__its_send_invall(col, true)
-+#define its_send_movi(dev, col, id)			__its_send_movi(dev, col, id, true)
-+#define its_send_sync(col)				__its_send_sync(col, true)
-+
-+#define its_send_mapd_nv(dev, valid)			__its_send_mapd(dev, valid, false)
-+#define its_send_mapc_nv(col, valid)			__its_send_mapc(col, valid, false)
-+#define its_send_mapti_nv(dev, irqid, eventid, col)	__its_send_mapti(dev, irqid, eventid, col, false)
-+#define its_send_int_nv(dev, eventid)			__its_send_int(dev, eventid, false)
-+#define its_send_inv_nv(dev, eventid)			__its_send_inv(dev, eventid, false)
-+#define its_send_discard_nv(dev, eventid)		__its_send_discard(dev, eventid, false)
-+#define its_send_clear_nv(dev, eventid)			__its_send_clear(dev, eventidn false)
-+#define its_send_invall_nv(col)				__its_send_invall(col, false)
-+#define its_send_movi_nv(dev, col, id)			__its_send_movi(dev, col, id, false)
-+#define its_send_sync_nv(col)				__its_send_sync(col, false)
-+
- #endif /* _ASMARM64_GIC_V3_ITS_H_ */
-diff --git a/lib/arm64/gic-v3-its-cmd.c b/lib/arm64/gic-v3-its-cmd.c
-new file mode 100644
-index 0000000..f3cbe46
---- /dev/null
-+++ b/lib/arm64/gic-v3-its-cmd.c
-@@ -0,0 +1,463 @@
-+/*
-+ * Copyright (C) 2020, Red Hat Inc, Eric Auger <eric.auger@redhat.com>
-+ *
-+ * Most of the code is copy-pasted from:
-+ * drivers/irqchip/irq-gic-v3-its.c
-+ * This work is licensed under the terms of the GNU LGPL, version 2.
-+ */
-+#include <asm/io.h>
-+#include <asm/gic.h>
-+#include <asm/gic-v3-its.h>
-+
-+#define ITS_ITT_ALIGN		SZ_256
-+
-+static const char * const its_cmd_string[] = {
-+	[GITS_CMD_MAPD]		= "MAPD",
-+	[GITS_CMD_MAPC]		= "MAPC",
-+	[GITS_CMD_MAPTI]	= "MAPTI",
-+	[GITS_CMD_MAPI]		= "MAPI",
-+	[GITS_CMD_MOVI]		= "MOVI",
-+	[GITS_CMD_DISCARD]	= "DISCARD",
-+	[GITS_CMD_INV]		= "INV",
-+	[GITS_CMD_MOVALL]	= "MOVALL",
-+	[GITS_CMD_INVALL]	= "INVALL",
-+	[GITS_CMD_INT]		= "INT",
-+	[GITS_CMD_CLEAR]	= "CLEAR",
-+	[GITS_CMD_SYNC]		= "SYNC",
-+};
-+
-+struct its_cmd_desc {
-+	union {
-+		struct {
-+			struct its_device *dev;
-+			u32 event_id;
-+		} its_inv_cmd;
-+
-+		struct {
-+			struct its_device *dev;
-+			u32 event_id;
-+		} its_int_cmd;
-+
-+		struct {
-+			struct its_device *dev;
-+			bool valid;
-+		} its_mapd_cmd;
-+
-+		struct {
-+			struct its_collection *col;
-+			bool valid;
-+		} its_mapc_cmd;
-+
-+		struct {
-+			struct its_device *dev;
-+			u32 phys_id;
-+			u32 event_id;
-+			u32 col_id;
-+		} its_mapti_cmd;
-+
-+		struct {
-+			struct its_device *dev;
-+			struct its_collection *col;
-+			u32 event_id;
-+		} its_movi_cmd;
-+
-+		struct {
-+			struct its_device *dev;
-+			u32 event_id;
-+		} its_discard_cmd;
-+
-+		struct {
-+			struct its_device *dev;
-+			u32 event_id;
-+		} its_clear_cmd;
-+
-+		struct {
-+			struct its_collection *col;
-+		} its_invall_cmd;
-+
-+		struct {
-+			struct its_collection *col;
-+		} its_sync_cmd;
-+	};
-+	bool verbose;
-+};
-+
-+typedef void (*its_cmd_builder_t)(struct its_cmd_block *,
-+				  struct its_cmd_desc *);
-+
-+/* ITS COMMANDS */
-+
-+static void its_encode_cmd(struct its_cmd_block *cmd, u8 cmd_nr)
++int __getchar(void)
 +{
-+	cmd->raw_cmd[0] &= ~0xffUL;
-+	cmd->raw_cmd[0] |= cmd_nr;
++	int c =3D do_getchar();
++	static int count;
++
++	if (c !=3D -1)
++		++count;
++
++	assert(count < 16);
++
++	return c;
 +}
-+
-+static void its_encode_devid(struct its_cmd_block *cmd, u32 devid)
-+{
-+	cmd->raw_cmd[0] &= BIT_ULL(32) - 1;
-+	cmd->raw_cmd[0] |= ((u64)devid) << 32;
-+}
-+
-+static void its_encode_event_id(struct its_cmd_block *cmd, u32 id)
-+{
-+	cmd->raw_cmd[1] &= ~0xffffffffUL;
-+	cmd->raw_cmd[1] |= id;
-+}
-+
-+static void its_encode_phys_id(struct its_cmd_block *cmd, u32 phys_id)
-+{
-+	cmd->raw_cmd[1] &= 0xffffffffUL;
-+	cmd->raw_cmd[1] |= ((u64)phys_id) << 32;
-+}
-+
-+static void its_encode_size(struct its_cmd_block *cmd, u8 size)
-+{
-+	cmd->raw_cmd[1] &= ~0x1fUL;
-+	cmd->raw_cmd[1] |= size & 0x1f;
-+}
-+
-+static void its_encode_itt(struct its_cmd_block *cmd, u64 itt_addr)
-+{
-+	cmd->raw_cmd[2] &= ~0xffffffffffffUL;
-+	cmd->raw_cmd[2] |= itt_addr & 0xffffffffff00UL;
-+}
-+
-+static void its_encode_valid(struct its_cmd_block *cmd, int valid)
-+{
-+	cmd->raw_cmd[2] &= ~(1UL << 63);
-+	cmd->raw_cmd[2] |= ((u64)!!valid) << 63;
-+}
-+
-+static void its_encode_target(struct its_cmd_block *cmd, u64 target_addr)
-+{
-+	cmd->raw_cmd[2] &= ~(0xfffffffffUL << 16);
-+	cmd->raw_cmd[2] |= (target_addr & (0xffffffffUL << 16));
-+}
-+
-+static void its_encode_collection(struct its_cmd_block *cmd, u16 col)
-+{
-+	cmd->raw_cmd[2] &= ~0xffffUL;
-+	cmd->raw_cmd[2] |= col;
-+}
-+
-+static inline void its_fixup_cmd(struct its_cmd_block *cmd)
-+{
-+	/* Let's fixup BE commands */
-+	cmd->raw_cmd[0] = cpu_to_le64(cmd->raw_cmd[0]);
-+	cmd->raw_cmd[1] = cpu_to_le64(cmd->raw_cmd[1]);
-+	cmd->raw_cmd[2] = cpu_to_le64(cmd->raw_cmd[2]);
-+	cmd->raw_cmd[3] = cpu_to_le64(cmd->raw_cmd[3]);
-+}
-+
-+static u64 its_cmd_ptr_to_offset(struct its_cmd_block *ptr)
-+{
-+	return (ptr - its_data.cmd_base) * sizeof(*ptr);
-+}
-+
-+static struct its_cmd_block *its_post_commands(void)
-+{
-+	u64 wr = its_cmd_ptr_to_offset(its_data.cmd_write);
-+
-+	writeq(wr, its_data.base + GITS_CWRITER);
-+	return its_data.cmd_write;
-+}
-+
-+static struct its_cmd_block *its_allocate_entry(void)
-+{
-+	struct its_cmd_block *cmd;
-+
-+	assert((u64)its_data.cmd_write < (u64)its_data.cmd_base + SZ_64K);
-+	cmd = its_data.cmd_write++;
-+	return cmd;
-+}
-+
-+static void its_wait_for_range_completion(struct its_cmd_block *from,
-+					  struct its_cmd_block *to)
-+{
-+	u64 rd_idx, from_idx, to_idx;
-+	u32 count = 1000000;    /* 1s! */
-+
-+	from_idx = its_cmd_ptr_to_offset(from);
-+	to_idx = its_cmd_ptr_to_offset(to);
-+	while (1) {
-+		rd_idx = readq(its_data.base + GITS_CREADR);
-+		if (rd_idx >= to_idx || rd_idx < from_idx)
-+			break;
-+
-+		count--;
-+		if (!count) {
-+			unsigned int cmd_id = from->raw_cmd[0] & 0xFF;
-+
-+			assert_msg(false, "%s timeout!",
-+			       cmd_id <= 0xF ? its_cmd_string[cmd_id] :
-+			       "Unexpected");
-+		}
-+		udelay(1);
-+	}
-+}
-+
-+static void its_send_single_command(its_cmd_builder_t builder,
-+				    struct its_cmd_desc *desc)
-+{
-+	struct its_cmd_block *cmd, *next_cmd;
-+
-+	cmd = its_allocate_entry();
-+	builder(cmd, desc);
-+	next_cmd = its_post_commands();
-+
-+	its_wait_for_range_completion(cmd, next_cmd);
-+}
-+
-+
-+static void its_build_mapd_cmd(struct its_cmd_block *cmd,
-+			       struct its_cmd_desc *desc)
-+{
-+	unsigned long itt_addr;
-+	u8 size = 12; /* 4096 eventids */
-+
-+	itt_addr = (unsigned long)(virt_to_phys(desc->its_mapd_cmd.dev->itt));
-+	itt_addr = ALIGN(itt_addr, ITS_ITT_ALIGN);
-+
-+	its_encode_cmd(cmd, GITS_CMD_MAPD);
-+	its_encode_devid(cmd, desc->its_mapd_cmd.dev->device_id);
-+	its_encode_size(cmd, size - 1);
-+	its_encode_itt(cmd, itt_addr);
-+	its_encode_valid(cmd, desc->its_mapd_cmd.valid);
-+	its_fixup_cmd(cmd);
-+	if (desc->verbose)
-+		printf("ITS: MAPD devid=%d size = 0x%x itt=0x%lx valid=%d\n",
-+			desc->its_mapd_cmd.dev->device_id,
-+			size, itt_addr, desc->its_mapd_cmd.valid);
-+
-+}
-+
-+static void its_build_mapc_cmd(struct its_cmd_block *cmd,
-+			       struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_MAPC);
-+	its_encode_collection(cmd, desc->its_mapc_cmd.col->col_id);
-+	its_encode_target(cmd, desc->its_mapc_cmd.col->target_address);
-+	its_encode_valid(cmd, desc->its_mapc_cmd.valid);
-+	its_fixup_cmd(cmd);
-+	if (desc->verbose)
-+		printf("MAPC col_id=%d target_addr = 0x%lx valid=%d\n",
-+		       desc->its_mapc_cmd.col->col_id,
-+		       desc->its_mapc_cmd.col->target_address,
-+		       desc->its_mapc_cmd.valid);
-+}
-+
-+static void its_build_mapti_cmd(struct its_cmd_block *cmd,
-+				struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_MAPTI);
-+	its_encode_devid(cmd, desc->its_mapti_cmd.dev->device_id);
-+	its_encode_event_id(cmd, desc->its_mapti_cmd.event_id);
-+	its_encode_phys_id(cmd, desc->its_mapti_cmd.phys_id);
-+	its_encode_collection(cmd, desc->its_mapti_cmd.col_id);
-+	its_fixup_cmd(cmd);
-+	if (desc->verbose)
-+		printf("MAPTI dev_id=%d event_id=%d -> phys_id=%d, col_id=%d\n",
-+		       desc->its_mapti_cmd.dev->device_id,
-+		       desc->its_mapti_cmd.event_id,
-+		       desc->its_mapti_cmd.phys_id,
-+		       desc->its_mapti_cmd.col_id);
-+}
-+
-+static void its_build_invall_cmd(struct its_cmd_block *cmd,
-+			      struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_INVALL);
-+	its_encode_collection(cmd, desc->its_invall_cmd.col->col_id);
-+	its_fixup_cmd(cmd);
-+	if (desc->verbose)
-+		printf("INVALL col_id=%d\n", desc->its_invall_cmd.col->col_id);
-+}
-+
-+static void its_build_clear_cmd(struct its_cmd_block *cmd,
-+				struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_CLEAR);
-+	its_encode_devid(cmd, desc->its_clear_cmd.dev->device_id);
-+	its_encode_event_id(cmd, desc->its_clear_cmd.event_id);
-+	its_fixup_cmd(cmd);
-+	if (desc->verbose)
-+		printf("CLEAR col_id=%d\n", desc->its_invall_cmd.col->col_id);
-+}
-+
-+static void its_build_discard_cmd(struct its_cmd_block *cmd,
-+				  struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_DISCARD);
-+	its_encode_devid(cmd, desc->its_discard_cmd.dev->device_id);
-+	its_encode_event_id(cmd, desc->its_discard_cmd.event_id);
-+	its_fixup_cmd(cmd);
-+	if (desc->verbose)
-+		printf("DISCARD col_id=%d\n", desc->its_invall_cmd.col->col_id);
-+}
-+
-+static void its_build_inv_cmd(struct its_cmd_block *cmd,
-+			      struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_INV);
-+	its_encode_devid(cmd, desc->its_inv_cmd.dev->device_id);
-+	its_encode_event_id(cmd, desc->its_inv_cmd.event_id);
-+	its_fixup_cmd(cmd);
-+	if (desc->verbose)
-+		printf("INV dev_id=%d event_id=%d\n",
-+		       desc->its_inv_cmd.dev->device_id,
-+		       desc->its_inv_cmd.event_id);
-+}
-+
-+static void its_build_int_cmd(struct its_cmd_block *cmd,
-+			      struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_INT);
-+	its_encode_devid(cmd, desc->its_int_cmd.dev->device_id);
-+	its_encode_event_id(cmd, desc->its_int_cmd.event_id);
-+	its_fixup_cmd(cmd);
-+	if (desc->verbose)
-+		printf("INT dev_id=%d event_id=%d\n",
-+		       desc->its_int_cmd.dev->device_id,
-+		       desc->its_int_cmd.event_id);
-+}
-+
-+static void its_build_sync_cmd(struct its_cmd_block *cmd,
-+			       struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_SYNC);
-+	its_encode_target(cmd, desc->its_sync_cmd.col->target_address);
-+	its_fixup_cmd(cmd);
-+	if (desc->verbose)
-+		printf("SYNC target_addr = 0x%lx\n",
-+		       desc->its_sync_cmd.col->target_address);
-+}
-+
-+static void its_build_movi_cmd(struct its_cmd_block *cmd,
-+			       struct its_cmd_desc *desc)
-+{
-+	its_encode_cmd(cmd, GITS_CMD_MOVI);
-+	its_encode_devid(cmd, desc->its_movi_cmd.dev->device_id);
-+	its_encode_event_id(cmd, desc->its_movi_cmd.event_id);
-+	its_encode_collection(cmd, desc->its_movi_cmd.col->col_id);
-+	its_fixup_cmd(cmd);
-+	if (desc->verbose)
-+		printf("MOVI dev_id=%d event_id = %d col_id=%d\n",
-+		       desc->its_movi_cmd.dev->device_id,
-+		       desc->its_movi_cmd.event_id,
-+		       desc->its_movi_cmd.col->col_id);
-+}
-+
-+void __its_send_mapd(struct its_device *dev, int valid, bool verbose)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_mapd_cmd.dev = dev;
-+	desc.its_mapd_cmd.valid = !!valid;
-+	desc.verbose = verbose;
-+
-+	its_send_single_command(its_build_mapd_cmd, &desc);
-+}
-+
-+void __its_send_mapc(struct its_collection *col, int valid, bool verbose)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_mapc_cmd.col = col;
-+	desc.its_mapc_cmd.valid = !!valid;
-+	desc.verbose = verbose;
-+
-+	its_send_single_command(its_build_mapc_cmd, &desc);
-+}
-+
-+void __its_send_mapti(struct its_device *dev, u32 irq_id,
-+		      u32 event_id, struct its_collection *col, bool verbose)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_mapti_cmd.dev = dev;
-+	desc.its_mapti_cmd.phys_id = irq_id;
-+	desc.its_mapti_cmd.event_id = event_id;
-+	desc.its_mapti_cmd.col_id = col->col_id;
-+	desc.verbose = verbose;
-+
-+	its_send_single_command(its_build_mapti_cmd, &desc);
-+}
-+
-+void __its_send_int(struct its_device *dev, u32 event_id, bool verbose)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_int_cmd.dev = dev;
-+	desc.its_int_cmd.event_id = event_id;
-+	desc.verbose = verbose;
-+
-+	its_send_single_command(its_build_int_cmd, &desc);
-+}
-+
-+void __its_send_movi(struct its_device *dev, struct its_collection *col,
-+		     u32 id, bool verbose)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_movi_cmd.dev = dev;
-+	desc.its_movi_cmd.col = col;
-+	desc.its_movi_cmd.event_id = id;
-+	desc.verbose = verbose;
-+
-+	its_send_single_command(its_build_movi_cmd, &desc);
-+}
-+
-+void __its_send_invall(struct its_collection *col, bool verbose)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_invall_cmd.col = col;
-+	desc.verbose = verbose;
-+
-+	its_send_single_command(its_build_invall_cmd, &desc);
-+}
-+
-+void __its_send_inv(struct its_device *dev, u32 event_id, bool verbose)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_inv_cmd.dev = dev;
-+	desc.its_inv_cmd.event_id = event_id;
-+	desc.verbose = verbose;
-+
-+	its_send_single_command(its_build_inv_cmd, &desc);
-+}
-+
-+void __its_send_discard(struct its_device *dev, u32 event_id, bool verbose)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_discard_cmd.dev = dev;
-+	desc.its_discard_cmd.event_id = event_id;
-+	desc.verbose = verbose;
-+
-+	its_send_single_command(its_build_discard_cmd, &desc);
-+}
-+
-+void __its_send_clear(struct its_device *dev, u32 event_id, bool verbose)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_clear_cmd.dev = dev;
-+	desc.its_clear_cmd.event_id = event_id;
-+	desc.verbose = verbose;
-+
-+	its_send_single_command(its_build_clear_cmd, &desc);
-+}
-+
-+void __its_send_sync(struct its_collection *col, bool verbose)
-+{
-+	struct its_cmd_desc desc;
-+
-+	desc.its_sync_cmd.col = col;
-+	desc.verbose = verbose;
-+
-+	its_send_single_command(its_build_sync_cmd, &desc);
-+}
-+
--- 
+=20
+ /*
+  * Defining halt to take 'code' as an argument guarantees that it will
+--=20
 2.20.1
-
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

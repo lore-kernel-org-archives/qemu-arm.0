@@ -1,132 +1,215 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp847788lfc;
-        Tue, 10 Mar 2020 07:54:33 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vttHnE8sTah2MMw9JoKHa95gbE67WXJCSH/h+QsId9ytAilUwiJrdAWe/u5bgJW4rjm+8YX
-X-Received: by 2002:a9d:b89:: with SMTP id 9mr17457805oth.297.1583852072859;
-        Tue, 10 Mar 2020 07:54:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583852072; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp847898lfc;
+        Tue, 10 Mar 2020 07:54:39 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuvyHHl8CdKFRFhGOlNco5IQcgG+mSFvSRrD5N5oRTw8LO08aBIZ+D5HS+JNXRAjZTdkX99
+X-Received: by 2002:a05:620a:1362:: with SMTP id d2mr20574752qkl.120.1583852079594;
+        Tue, 10 Mar 2020 07:54:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583852079; cv=none;
         d=google.com; s=arc-20160816;
-        b=xT6nYAC0ZDlkIzRrvf5tnwxLFLb8X71awOt53JZwS2ns57nZm02CD5/Hq/+MDDbfky
-         b/0HpZVvOBnTbakTiraVY01Yg5Ar5yq0rRQPKeuVXUmven43d7y71KJdFDtZkQDx6U+z
-         nAyXZMqd3/atMxV1GLHIsU0ftoZDihnTvpYhdQLlPoiyYg8L+DyTg+wVKC1zeT08BhYa
-         LoixiDcoy3/2vorvxhblODpVWVHxoIGFi3ae57GAK6g4o9f/kaRZ+w4dqrqM+tVjA+ml
-         tbGcsmCzXLkQ7Eax3V5OhdQC9oci/YU36llnuh6+D+o1tMvmLWuJn0QNys6xP8XApZqJ
-         cSZQ==
+        b=1FL+P7m31pnCHu+Zq7DNq9FX9lNracT28ySQPHDu9O3j/mQgaVJlykNm+cJ4KOfCsb
+         uTqiJgOBF+LTzStC84lxYsN+ddoiSflDwv+L20h5TiUawhdaGoG6oRKXdibL84A+rifw
+         qRPOkqn+OGNsJSUtIz/l6SYTDlT0VnQcdTb5Ubyqax4m9MxQZBGeDAiEiLpAd/p2Nurv
+         zT3ZPx9yTcdcht1XwzvpyDj0TPuDi/1xskk2tFdyvh8L+XZX1rq2S0whg8OtsjrhYrAo
+         cgTRBCeIIQSFs/GxvBtEIUY7Pp7/t3puZMsgcldXZaCyXmFJiUs8SoT4vBG/eCblOhXW
+         FvtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=jUPGPmIvaDDGzVaAE49y1ve21avwQxlD6sBJrt5aqiw=;
-        b=QZUFHZv/wJ2Q4raakShIhhKY6GGbk3aCew20F3HDPauQykvJg97Qe2XOmF4N4BRJe6
-         +sdOk1bT6MVWVat9K3WYi0DROYKqt7OnGO5Z7w5B+LFjIoJbOSye6ACXIRAHoDhWBmu7
-         +RXwLzf3QCK+XSkVM7OtgXCQ7Q1u38+IFMwD3J3p6xhBq799ey0arNaqqAt0+nkC5OGI
-         ouqJN9AVr2J/sfB7xhPDoDY4GkFqqUGuC7GchJmOul9ZKwnQD4X37ID8SMlvCdPmkatZ
-         DFfMnR1xmExsxKpc5VuN9peOee7vU0rswW7tTWJCf26PPYB32BMtsKA3IqocujX5ct+K
-         cBvw==
+        bh=Svaro9ya8gIshoCY1/TSx7lahchaaNkktV6D9hBDRVU=;
+        b=MG7XipN+pUkQlfKTfqQX22tga6IpokRLnVqjr7i+aqjB/Hg6A5l8e4jL7kh0YAEIUP
+         sClErtZFK4CHlzYpB4RHjFF4+rkYjYtHK5qOXlzzGqGnz2Pb3rCz53WQNtTF4yVekran
+         rywRzYLmvzauhm9RruIdSslx4HFWI40LoUsx62uzyjuUf+Dnhf/ZjRZIhEYYtpZLteLM
+         QA3laD1xNKpNcI4rPOUwMqDTMybiBAnfE0FV91GQ0bkuTlg1b5rZKpF8D/d8MVVUiaxT
+         HL4UZhEKq6SJ9IjJ83/IFcKR6Wgo9F8ASRYr6ckmHnRa9pRa3nZa201tiuvqPvkSZkp3
+         HVFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Q/LVM0A1";
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id x24si8259514otq.261.2020.03.10.07.54.32;
-        Tue, 10 Mar 2020 07:54:32 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=doP9XKnp;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id i3si4135608qki.27.2020.03.10.07.54.39;
+        Tue, 10 Mar 2020 07:54:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Q/LVM0A1";
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727547AbgCJOyb (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Tue, 10 Mar 2020 10:54:31 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:35158 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1727390AbgCJOyb (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Tue, 10 Mar 2020 10:54:31 -0400
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=doP9XKnp;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 5341B4A551;
+	Tue, 10 Mar 2020 10:54:39 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fgwvkHTll6W5; Tue, 10 Mar 2020 10:54:38 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 4A5A94A591;
+	Tue, 10 Mar 2020 10:54:38 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id ADFF74A551
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 10 Mar 2020 10:54:37 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id dm13LGM65i1i for <kvmarm@lists.cs.columbia.edu>;
+ Tue, 10 Mar 2020 10:54:36 -0400 (EDT)
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
+ [205.139.110.61])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id BF3BD4A54B
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 10 Mar 2020 10:54:36 -0400 (EDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1583852070;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=jUPGPmIvaDDGzVaAE49y1ve21avwQxlD6sBJrt5aqiw=;
-        b=Q/LVM0A1oLXRTHC2mSy9VDDF9lwajnvN3DdyO+ZXiIs90JWJHUFHeeuKBbptnfaAql69nU
-        aBUsItwToPH8mNKBsCzV5TDToHX29C6S4YUG1G8Kdmh5el47h/6NGZU3xbtqMA/yk0VsW4
-        mktbCPe6QJId7PiLy0m1pDoH1cQoI3M=
+ s=mimecast20190719; t=1583852076;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=S1He/Rpf4JLCiKi93YfAGw3px9JkkCyAWLJbg5rNbYc=;
+ b=doP9XKnpDHnLWVkSI3PjhZlxCzfL03o2FQpPIxeIp0Oa6D0dT6i7YVayEl25vjuaWm6BEs
+ XFwKT4DbjMqC4yFOov2uV9Nlgjo2BfAuVdnlTLfJUoF+lPmii9xBpl0ogDJt95RyO5hduS
+ 6VadofTIVvThwCKXVrDL8qE8xyQ5J1c=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-363-X2jbR5sjN_-1IeYNAHOm9Q-1; Tue, 10 Mar 2020 10:54:29 -0400
-X-MC-Unique: X2jbR5sjN_-1IeYNAHOm9Q-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 78519800D4E;
-        Tue, 10 Mar 2020 14:54:27 +0000 (UTC)
+ us-mta-156-75yIwRbYNVqc9bkaXDnWSw-1; Tue, 10 Mar 2020 10:54:34 -0400
+X-MC-Unique: 75yIwRbYNVqc9bkaXDnWSw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3D3E11005509;
+ Tue, 10 Mar 2020 14:54:33 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-117-85.ams2.redhat.com [10.36.117.85])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 0C67660FC1;
-        Tue, 10 Mar 2020 14:54:23 +0000 (UTC)
-From:   Eric Auger <eric.auger@redhat.com>
-To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc:     drjones@redhat.com, andre.przywara@arm.com,
-        peter.maydell@linaro.org, yuzenghui@huawei.com,
-        alexandru.elisei@arm.com, thuth@redhat.com
-Subject: [kvm-unit-tests PATCH v5 02/13] page_alloc: Introduce get_order()
-Date:   Tue, 10 Mar 2020 15:53:59 +0100
-Message-Id: <20200310145410.26308-3-eric.auger@redhat.com>
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DAF3C60E3E;
+ Tue, 10 Mar 2020 14:54:27 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
+ kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Subject: [kvm-unit-tests PATCH v5 03/13] arm/arm64: gic: Introduce setup_irq()
+ helper
+Date: Tue, 10 Mar 2020 15:54:00 +0100
+Message-Id: <20200310145410.26308-4-eric.auger@redhat.com>
 In-Reply-To: <20200310145410.26308-1-eric.auger@redhat.com>
 References: <20200310145410.26308-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: SUSJ0tEYsEet
+Cc: andre.przywara@arm.com, thuth@redhat.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: g4uvfw8SyYlj
 
-Compute the power of 2 order of a size. Use it in
-page_memalign. Other users are looming.
+ipi_enable() code would be reusable for other interrupts
+than IPI. Let's rename it setup_irq() and pass an interrupt
+handler pointer.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- lib/alloc_page.c | 7 ++++++-
- lib/alloc_page.h | 1 +
- 2 files changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/lib/alloc_page.c b/lib/alloc_page.c
-index ed23638..7c8461a 100644
---- a/lib/alloc_page.c
-+++ b/lib/alloc_page.c
-@@ -155,7 +155,7 @@ static void *page_memalign(size_t alignment, size_t s=
-ize)
- 	if (!size)
- 		return NULL;
-=20
--	order =3D is_power_of_2(n) ? fls(n) : fls(n) + 1;
-+	order =3D get_order(n);
-=20
- 	return alloc_pages(order);
+---
+
+v4 -> v5:
+- s/handler_t/irq_handler_t
+- also add irq_handler_fn in lib/arm/asm/processor.h
+
+v2 -> v3:
+- do not export setup_irq anymore
+---
+ arm/gic.c               | 19 ++++++-------------
+ lib/arm/asm/processor.h |  2 ++
+ 2 files changed, 8 insertions(+), 13 deletions(-)
+
+diff --git a/arm/gic.c b/arm/gic.c
+index fcf4c1f..2f904b0 100644
+--- a/arm/gic.c
++++ b/arm/gic.c
+@@ -215,20 +215,20 @@ static void ipi_test_smp(void)
+ 	report_prefix_pop();
  }
-@@ -175,3 +175,8 @@ void page_alloc_ops_enable(void)
+ 
+-static void ipi_enable(void)
++static void setup_irq(irq_handler_fn handler)
  {
- 	alloc_ops =3D &page_alloc_ops;
- }
-+
-+int get_order(size_t size)
-+{
-+	return is_power_of_2(size) ? fls(size) : fls(size) + 1;
-+}
-diff --git a/lib/alloc_page.h b/lib/alloc_page.h
-index 739a91d..e6a51d2 100644
---- a/lib/alloc_page.h
-+++ b/lib/alloc_page.h
-@@ -15,5 +15,6 @@ void *alloc_pages(unsigned long order);
- void free_page(void *page);
- void free_pages(void *mem, unsigned long size);
- void free_pages_by_order(void *mem, unsigned long order);
-+int get_order(size_t size);
-=20
+ 	gic_enable_defaults();
+ #ifdef __arm__
+-	install_exception_handler(EXCPTN_IRQ, ipi_handler);
++	install_exception_handler(EXCPTN_IRQ, handler);
+ #else
+-	install_irq_handler(EL1H_IRQ, ipi_handler);
++	install_irq_handler(EL1H_IRQ, handler);
  #endif
---=20
+ 	local_irq_enable();
+ }
+ 
+ static void ipi_send(void)
+ {
+-	ipi_enable();
++	setup_irq(ipi_handler);
+ 	wait_on_ready();
+ 	ipi_test_self();
+ 	ipi_test_smp();
+@@ -238,7 +238,7 @@ static void ipi_send(void)
+ 
+ static void ipi_recv(void)
+ {
+-	ipi_enable();
++	setup_irq(ipi_handler);
+ 	cpumask_set_cpu(smp_processor_id(), &ready);
+ 	while (1)
+ 		wfi();
+@@ -295,14 +295,7 @@ static void ipi_clear_active_handler(struct pt_regs *regs __unused)
+ static void run_active_clear_test(void)
+ {
+ 	report_prefix_push("active");
+-	gic_enable_defaults();
+-#ifdef __arm__
+-	install_exception_handler(EXCPTN_IRQ, ipi_clear_active_handler);
+-#else
+-	install_irq_handler(EL1H_IRQ, ipi_clear_active_handler);
+-#endif
+-	local_irq_enable();
+-
++	setup_irq(ipi_clear_active_handler);
+ 	ipi_test_self();
+ 	report_prefix_pop();
+ }
+diff --git a/lib/arm/asm/processor.h b/lib/arm/asm/processor.h
+index 1e1132d..e26ef89 100644
+--- a/lib/arm/asm/processor.h
++++ b/lib/arm/asm/processor.h
+@@ -26,7 +26,9 @@ enum vector {
+ 	EXCPTN_MAX,
+ };
+ 
++typedef void (*irq_handler_fn)(struct pt_regs *regs);
+ typedef void (*exception_fn)(struct pt_regs *);
++
+ extern void install_exception_handler(enum vector v, exception_fn fn);
+ 
+ extern void show_regs(struct pt_regs *regs);
+-- 
 2.20.1
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

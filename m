@@ -1,99 +1,105 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1924256lfc;
-        Fri, 13 Mar 2020 03:12:08 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsGQsgeIKT2Ilw3f72y4uHi2pdQn9wtamB1GuOiSxJ0ZI7ccFW1V7PxXC0E8Xy15vI5t/I+
-X-Received: by 2002:ac8:47d9:: with SMTP id d25mr11581923qtr.134.1584094328722;
-        Fri, 13 Mar 2020 03:12:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584094328; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1038893lfc;
+        Tue, 10 Mar 2020 11:02:33 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsIPkijHcfN4VGD0s806QEf3NpvinbS6sgV3HX4+VtrOyI8y6FVHOMzlnEqSEgR4E4vG6Kr
+X-Received: by 2002:ac8:1086:: with SMTP id a6mr20222839qtj.173.1583863353307;
+        Tue, 10 Mar 2020 11:02:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583863353; cv=none;
         d=google.com; s=arc-20160816;
-        b=u4rRadB2xRM2w8GUiRPjqIdCQ26Fi3VsOhErIDalO33mWHKTmRQkqJs2ivoBQkThwp
-         3kOKeodMbvz3GPDaHDEdkQMPtJXMy/aV2xRkpWJi7jRbnaI//orW/bj+Iax6Dvf8xvz2
-         x0lEk6bd8X2hNAkm93dzo4FOWNRuX+cFekq5LPCurU/+NV8Gkk3oLSzvfApbu19WhdaM
-         aQaUcou8mmiybWFmU69ClTOP+0b3VLRE9KnpL1SoWag+hH+g0+2QdmqHTrsvd7HiyjA/
-         QhPAfkZ0gFHPnApujC+j2NDMkMW2c87NO7vh8bRLFfXRE1OjxyNeGmbNVh/4oGTj852Z
-         d6rQ==
+        b=H4xWm/oYt03n5LfWqG4lG3vAZkuZnBOu1hy+3QcHw6w+iNykw0ec7PQUhASDj/kmdG
+         fgqUy2EZj2XB5SjqqpiViiJr6XjKE1MspHY/GW10W5lV1vwCtIZYSbD+NfbXcQNE3TqO
+         GlJngGJ7E+b5v+3cfeZZLudaC0zno9bitZVMpHRVT4HGbpNGcSQmBPCb7638DeyhZDVu
+         ekBD1snpLMmxuK53HzvAGcpaTthXOROV8pZQfCjU/3x74CA3OCY5KK3ubWX0D8O67Blz
+         C9ZcP2usHuifIlPJIV9qmWyT03Kr8neKtpVbGQn9Favt0sQ1TdbCy0rbqiibzEMrIxLh
+         /f0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=/+WIAbLPiSfNKPrmZZl+CntpGyw5jBHXk+8QnsmdbE8=;
-        b=d/4C8oJrK+97zVWKdFFeQdKhx6+GU5tmukiag5B2CJHt9jacVLxkQW9xKPB7oH3x6L
-         vupEeVnvMgHeo3HUw/hR6K+AyLQm/NEokmE/+mfvDYeChi/3RiV0tZZsLKgMpR7f8cAI
-         VThcjklAbINSB6sO/mj4EBEz0xBMOVb2/LFVRW+6sHEdyfRU6Bnw1X18yvKUwUQMc8zL
-         PdjtowhbdJt6PWGv3FTSf667OGQlVn66QBUcIZOFk3+1ecE1rK3HSqBBZuUwOUsk8086
-         47xDq7/htwL7u7YV9GxAhmdtQ+LgTvM8G4o3oTyCayF8i1FkIHtw+r0QZadTUhHOM7BL
-         pzyQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=3bPxUy2EcaU0ypCm1YQuIIqo9A/ro6me+r8HBiJeNNo=;
+        b=IH8d0qKKR0hJecTEKZyIXDaWpkWJDqQKgO1yOrdVExVuRdzjlkM1+1/kcZBScMYKEA
+         m9OESm2opLoY+DTjfWci6CNlNyXqq8/RaJEsb10/YXlWvnG4WlRIaBccyxy0qVIAkmiJ
+         HEE9osNKA25VZkaM9Fk2RW7/H+1HsBZn4FCmi1dboucAZxXyt2aydImOQUN+r+SLO66s
+         EieK8GAr9MOgOhzEzlqsj1DBQpbieNTskvRsOxa1zyDO+W5kH/CxDgerEJ3+w7KyeEov
+         ujqf/dgM9nphL4CCB3ojmXnPJB8byZ/6Tlsybc8xNMfovOczoNNjX5WOnIcAWcMvOpCM
+         c6Xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lwdEBtYe;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qmz7eGDW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m7si4759547qkc.248.2020.03.13.03.12.08
+        by mx.google.com with ESMTPS id a65si1956052qkb.368.2020.03.10.11.02.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Mar 2020 03:12:08 -0700 (PDT)
+        Tue, 10 Mar 2020 11:02:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lwdEBtYe;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qmz7eGDW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56504 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37964 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jChIV-0001qR-Vr
-	for alex.bennee@linaro.org; Fri, 13 Mar 2020 06:12:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44023)
+	id 1jBjD6-0005f7-OH
+	for alex.bennee@linaro.org; Tue, 10 Mar 2020 14:02:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48627)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jChIO-0001q8-LR
- for qemu-arm@nongnu.org; Fri, 13 Mar 2020 06:12:01 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1jBjCt-0005bz-9h
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2020 14:02:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jChIN-0002e2-8s
- for qemu-arm@nongnu.org; Fri, 13 Mar 2020 06:12:00 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:36535)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jChIN-0002cK-2m
- for qemu-arm@nongnu.org; Fri, 13 Mar 2020 06:11:59 -0400
-Received: by mail-ot1-x342.google.com with SMTP id j14so9520244otq.3
- for <qemu-arm@nongnu.org>; Fri, 13 Mar 2020 03:11:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/+WIAbLPiSfNKPrmZZl+CntpGyw5jBHXk+8QnsmdbE8=;
- b=lwdEBtYe0ofHO1t6NB4YNvrhPZq3pOjOyzB1C6IqsBwspv+d3gImR3rhGk5dQn7iwt
- dlPi47JJ/50nErAzFd8H8DKJyWS9NF0ey+Xro4agTRruVeXttPZ2kZ1imVWdCgm2dVrI
- dqEVfo+W59v9UW3Zw0KJJ68u/6F9jwpUdaUmQax/HHjnlwEa11zEpsw9zIRxoylJcSJi
- U8OdWtMGMXAXmqkP4jioJ7LkQJDjvxVJ6Wb43Vg5eR9zMCKvX+JiGl2Nx+dcdbKHNAIJ
- YMDLseGZ7D01FLDlQ3oBp9XQYo5LfyZZ6EI5f1tdW6gn9bjLWHJSHtb785bJtJ3sT9oA
- NlDg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/+WIAbLPiSfNKPrmZZl+CntpGyw5jBHXk+8QnsmdbE8=;
- b=J34vGELXKgOFFFzXQYELrOUjkRpAmGaNQQ4mZ7AZcFVqubUlT9g7z7/b+/t12t6E97
- m9aa9YLD99n1qJOmhghPMqstIIQrht/lAJ2NiM8baLWKIXnAlOHxyIfSju4e56g7vvzD
- uA8xVr4P6SVHURw4X/QWOYut02NE+kNBnbSWKD8dC/RT16FGCUykryUQB9GZ90s6bvwA
- Sz95NLY9zaSIOp8gzySTi7nYiZMu6xCCf8g/JnMTVYHBUUi9OTsb10RlsY/ZWdXUmPN8
- /DJguAfrRcAomtXGjJ7Aka7bdUWeMvpz5jxQW6uZvpflE4eAr8/avXblnNdJTgDagzvJ
- +STg==
-X-Gm-Message-State: ANhLgQ076YRRqEJZ+A+QGUmGkkTdCyZGl8x5mDv3B0/3s30Vtbqm3bJw
- tjOQVBfFhxtHxrlzoZp5t2fFWiQYqFpE5Xm8YNrdBQ==
-X-Received: by 2002:a9d:1d43:: with SMTP id m61mr1287287otm.91.1584094317917; 
- Fri, 13 Mar 2020 03:11:57 -0700 (PDT)
+ (envelope-from <eric.auger@redhat.com>) id 1jBjCr-0003rh-Ni
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2020 14:02:18 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:21333
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1jBjCn-0003a7-Ic
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2020 14:02:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583863329;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3bPxUy2EcaU0ypCm1YQuIIqo9A/ro6me+r8HBiJeNNo=;
+ b=Qmz7eGDWGfBBu4pGcj0GwrdrVjDUytMYET8Jd7s/ZrwASUfqznmavpc/me9flcAuAa9Yfg
+ Dc2MohL4dN5VQUNdYcaRc5Ijt+7h4ryqc5OwUoTtJ9Gzp6PkWOwDI8LBbfeWDplUberjYR
+ iz7kVLhxyNBXcAYcvIHtceVWP36T7hY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-464-3WPwxFC-PaqWf0O45R4Xtw-1; Tue, 10 Mar 2020 14:02:05 -0400
+X-MC-Unique: 3WPwxFC-PaqWf0O45R4Xtw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 93787107ACCA;
+ Tue, 10 Mar 2020 18:02:04 +0000 (UTC)
+Received: from [10.36.117.85] (ovpn-117-85.ams2.redhat.com [10.36.117.85])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 187BE10013A1;
+ Tue, 10 Mar 2020 18:02:02 +0000 (UTC)
+Subject: Re: [PATCH v3 5/6] hw/arm/virt: kvm: Check the chosen gic version is
+ supported by the host
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200302105516.5972-1-eric.auger@redhat.com>
+ <20200302105516.5972-6-eric.auger@redhat.com>
+ <CAFEAcA-XD9LiokquaHj+kCYWA3N=7k3V3R8r5gA1HZM9Adus1A@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <1370e0bc-ae17-c891-72b5-4cbc58ff3247@redhat.com>
+Date: Tue, 10 Mar 2020 19:02:01 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-References: <CALUW38uZL2PLM=GvBY=6uC=Fp0OE5ABJAKwUgebTEmPX5gK6eA@mail.gmail.com>
- <CAFEAcA8cvbevCQRY2NxqsBAuR+dhjNyfg2Z14CgYCAtQEqT4=w@mail.gmail.com>
- <CALUW38tX6uQLrgRbgB2jrALouAhyxVgvOkyUskKyUkJqos3Arw@mail.gmail.com>
-In-Reply-To: <CALUW38tX6uQLrgRbgB2jrALouAhyxVgvOkyUskKyUkJqos3Arw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 Mar 2020 10:11:46 +0000
-Message-ID: <CAFEAcA9dErKNP-fw9fytp0pOp=HrgKvjb4RjuPXVk09g1VCHAQ@mail.gmail.com>
-Subject: Re: Custom ARM Board: Setting BE32 endianness
-To: Tanay Gupta <tanaygupta0x00@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::342
+In-Reply-To: <CAFEAcA-XD9LiokquaHj+kCYWA3N=7k3V3R8r5gA1HZM9Adus1A@mail.gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,84 +111,92 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>
+Cc: Marc Zyngier <maz@kernel.org>, Andrew Jones <drjones@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 76kA348y0lPL
+X-TUID: XykxsvuUPJQ3
 
-On Fri, 13 Mar 2020 at 09:56, Tanay Gupta <tanaygupta0x00@gmail.com> wrote:
->
-> Thanks for the help, Peter!
->
-> I have referred to the versatilepb board for setting the property.
->
-> This is what I'm doing now, in my machine_init:
->
-> Object* cpuobj = obj_new(machine->cpu_type);
-> object_property_set_bool(cpuobj, true, "cfgend", &error_fatal);
-> object_property_set_bool(cpuobj, true, "realized", &error_fatal);
->
-> ARMCPU* armcpu = ARM_CPU(cpuobj);
-> CPUState* cpu = CPU(armcpu);
-> cpu_set_pc(cpu, 0x40000000);
->
-> <board code>
->
-> boot_info.entry = 0x40000000;
+Hi Peter,
 
-The 'entry' field in boot_info is used internally by
-arm_load_kernel(): you are not supposed to set it
-yourself.
+On 3/9/20 2:28 PM, Peter Maydell wrote:
+> On Mon, 2 Mar 2020 at 10:55, Eric Auger <eric.auger@redhat.com> wrote:
+>>
+>> Restructure the finalize_gic_version with switch cases and, in
+>> KVM mode, explictly check whether the chosen version is supported
+>> by the host.
+>>
+>> if the end-user explicitly sets v2/v3 and this is not supported by
+>> the host, then the user gets an explicit error message.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>> Reviewed-by: Andrew Jones <drjones@redhat.com>
+>>
+>> ---
+>>
+>> v2 -> v3:
+>> - explictly list V2 and V3 in the switch/case
+>> - fix indent
+>> ---
+>>  hw/arm/virt.c | 77 +++++++++++++++++++++++++++++++++++----------------
+>>  1 file changed, 53 insertions(+), 24 deletions(-)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index eb8c57c85e..aeb6c45e51 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -1542,33 +1542,62 @@ static void virt_set_memmap(VirtMachineState *vms)
+>>   */
+>>  static void finalize_gic_version(VirtMachineState *vms)
+>>  {
+>> -    if (vms->gic_version == VIRT_GIC_VERSION_HOST ||
+>> -        vms->gic_version == VIRT_GIC_VERSION_MAX) {
+>> -        if (!kvm_enabled()) {
+>> -            if (vms->gic_version == VIRT_GIC_VERSION_HOST) {
+>> -                error_report("gic-version=host requires KVM");
+>> -                exit(1);
+>> -            } else {
+>> -                /* "max": currently means 3 for TCG */
+>> -                vms->gic_version = VIRT_GIC_VERSION_3;
+>> -            }
+>> -        } else {
+>> -            int probe_bitmap = kvm_arm_vgic_probe();
+>> +    if (kvm_enabled()) {
+>> +        int probe_bitmap = kvm_arm_vgic_probe();
+> 
+> Previously we would only do kvm_arm_vgic_probe() if the
+> user asked for 'host' or 'max'. Now we do it always,
+> which means that if the user is on a really old kernel
+> where the CREATE_DEVICE ioctl doesn't exist then we
+> will now fail if the user specifically asked for gicv2,
+> where previously we (probably) would have succeeded.
+> I don't think we should put too much weight on continuing
+> to theoretically support ancient kernels which we're not
+> actually testing against, but it does seem a bit odd to
+> probe even if we don't need to know the answer.
+> 
+> More relevant to actual plausible use cases, if
+> kvm_irqchip_in_kernel() == false, we shouldn't be
+> probing the kernel to ask what kind of GIC to use.
+I think the existing code also does the same:
+kvm_arm_vgic_probe() gets called as soon as vms->gic_version <= 0 &&
+kvm_enabled() whatever the state of kvm_irqchip_in_kernel().
 
-> arm_load_kernel(armcpu, machine, &boot_info);
->
-> In the code above, I am not able to change the pc of the cpu. cpu_set_pc does set the pc, but its value gets changed back to 0 on the call to arm_load_kernel.
->
-> Could you tell me how I can set the pc in this case?
+So in case the host only supports GICv2, in kvm mode with userspace
+irqchip we would use GICV2 in host/max mode. If host supports GICv3 we
+would select GICv3 which is not supported in !kvm_irqchip_in_kernel().
 
-Don't try to set the PC from board code. Follow the
-way other boards work, and you will usually find
-things go easier.
+So do I understand correctly that you want me to change that behavior
+and always set v2 in KVM/!kvm_irqchip_in_kernel() max/host mode?
 
-> I don't use the -kernel option, because I'm loading the binaries to memory in the <board code> section.
+Thanks
 
-Roughly, QEMU for Arm has three expected ways to start:
- * loading a Linux kernel, which is booted via the kernel
-   specification for how you start a kernel (this happens
-   if you use -kernel and pass it something that is not
-   an ELF file)
- * loading an ELF file, in which case execution starts
-   at the ELF entrypoint (if you use -kernel with an ELF,
-   or if you use the "generic loader")
- * running a "bios/boot rom", which is expected to be
-   loaded into memory/flash by the board code in the
-   right place so that when the CPU starts execution
-   from its normal default reset address it will run the
-   boot code
+Eric
 
-If the files you're loading to memory work like
-the 'boot rom' then you can load them in the board
-code, but you should not then be needing to set the
-PC at all, because they should be in the right place
-for the reset PC (which is either 0, or 0xffff0000
-if the CPU is one which sets SCTLR.V on reset.)
+> 
+> thanks
+> -- PMM
+> 
 
-Otherwise, you can use the 'generic loader' device
-(see docs/generic-loader.txt) to load files, set the PC,
-etc. (If your binary is an ELF file the PC gets set from
-its entry point.)
-
-> Also, I get a segfault if I don't set the "realized" property. Is setting it like I have the proper way to do it?
-
-Yes. QEMU devices have a multi-stage initialization:
- * init the device
- * set properties on it
- * "realize" it
-
-The realize step is the final "all device properties
-have been set, complete initialization" part. Trying
-to use a device that has not been realized is a bug
-and will cause random bad behaviour like crashes.
-
-thanks
--- PMM

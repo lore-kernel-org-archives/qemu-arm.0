@@ -1,503 +1,270 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1104710lfc;
-        Tue, 10 Mar 2020 12:11:08 -0700 (PDT)
-X-Received: by 2002:a5d:9ed4:: with SMTP id a20mr19315836ioe.187.1583867467847;
-        Tue, 10 Mar 2020 12:11:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583867467; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1122135lfc;
+        Tue, 10 Mar 2020 12:30:12 -0700 (PDT)
+X-Received: by 2002:a92:3a1d:: with SMTP id h29mr4145617ila.112.1583868611926;
+        Tue, 10 Mar 2020 12:30:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583868611; cv=none;
         d=google.com; s=arc-20160816;
-        b=FUvRi94GIRQws7TmSFsha5HehN+l/gODAqniQmcsIThc/PfotxxeOBnJyFiNUBPL/o
-         A3YUdWdz+3Xd5y2AEvkKLllYMfhZem+qsTUtX6bjftpF4WnhtUhZLespxvpA8w1glt08
-         XL+4F5lAohWX/KIu/+SHsDCharEi8Q5tT+E5NjMD22XALjcTxV6xwaBE2cifFtF1QdGp
-         mnBCCnpaD/gVWOwBCkvIuDifNgbRKXEWyXc7c8dlS0PunEGHg4DpbVnxa8oHd6qOMquf
-         ariab1ImGXjvYTzXa3f0KubqRUtZYnEox/0UTgtHDpmIthvrjIdYPQ/1ZjT91uDu6uiK
-         GsgA==
+        b=guRBBUoMtfq6wIZSRtm5oIutrGrwEj5efDwdnheNHwnn6cdVlXSLE4ueY6IPyt5uq6
+         3w4WjrImWmu5I1yMx8gRL95SgKIAbJ5wpi16zpLH+nL3BIATzdP/7RaFPeC887tRrgeg
+         vUWE+LekcHsnhtRQJ0l6G8SSxfPFBhLsUZ70zHW4IMTIWfIBKSwsoSsP7wmRjJcnLTlf
+         hpGl7Po/nACQmzOzW7mMcFXjTQBJRlUP7m+yum0S8PQWkSJGulZFAYPV7heczxsudpTi
+         0TX0eWo+Lg7AR8Geb15rwTfRYiP9onr7oPZTGs82X8jFYgDQg+uq6npxuvcKW/VBHROB
+         SMnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=3gMdxSJmlSDTB6U+PsygXS1ZLglBM1WGKJh6I0PUIas=;
-        b=0RVkYl/2I5Sct0Bi31waEWi0b2Dmg+0R0BZKJyvqVA/HIcV6IGqXQInDrhwl+U84b7
-         SUddjqECkBS/PbM0+Uw9738jaNAdM1sepWk4K0kLUQM18m0GL3rwRowFh4ra4DYPalat
-         BZdnDLQRabfMvLjH8+zt65A6+kiD/S/Sw1h0C/q+wpEVGx9Bo+LqsPv6qJKhpzbtEKwK
-         0GJ5u2avAHsPJNjEnPaeNWskJZZVenpNY0NykfAdiizDS85Ga29HgbDYYBG3rst8z7VN
-         LuhscavSI6JHum28chneR9x6VZWhI0MJfUhH/kfVV4PiCF1VtcLWb6+wJHnCAFhwyRmH
-         85Jg==
+        bh=Ec4zzvCEIRAZ5xfSFujdt3O/MmVFFCSSaTkJNA0Gesk=;
+        b=0T2iV6XC4Fo08Ff0zxiesNl6jis8eZE8Ssa7kQLIY/FvFNjsxNrKeo4zi7ZCU9jTwW
+         77tNC0Mx5oeISBC2XISOF7eFeYaFRU31DSwbBfacPu1Bi0NtOQzCR4N4ifaoSdN9KuJb
+         Aynm9ifn6IpFqEgRf7yLwyY6EQOQcyCpDJ4jGf9IXT1c8l7UQUXoAcwGKW/DcZWR/oEn
+         grS39eaJMOrBUDdiu9rj+Ge6tUvHBDU0CK1G9+6P2bsHuhlmxcugcOUYDF3I7nxmrGxb
+         4V9JNAtQ5k75zl/18dn/USU76QoaEGzGr+mvVaxda9+apUqyp0jxQl17RceoswHxO01m
+         a22Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="q9bU/XTG";
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JSVooyEe;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id p23sor5279478ill.148.2020.03.10.12.11.07
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id q18sor10682729ilg.75.2020.03.10.12.30.11
         (Google Transport Security);
-        Tue, 10 Mar 2020 12:11:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Tue, 10 Mar 2020 12:30:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="q9bU/XTG";
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JSVooyEe;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=3gMdxSJmlSDTB6U+PsygXS1ZLglBM1WGKJh6I0PUIas=;
-        b=q9bU/XTGgQcSWoczCmuKUyjiuoNTTwzVLqAsmrnPETChOXvam9o4K/FqoYt3yqPY53
-         lQQHSHziF+UqO7FLUWAG5EEZo8/jYXaA0sVdVB9sw+ZKxPgac4PYmQiSN4l5GontHctJ
-         gliAiEkaGUqLSIDMutqbWteLwgh4mQ1rEIyjQytZ2aMN8ZrvT5qB3mMGOU1fRc7PSpak
-         uuqatI5Pu5hDnLhgvkZaB5LcAPnn5b3EFnwT4lwFkNgMJQVnObLx77PaW4Xe9jwUWDFN
-         Xh6Jv35IFccx/koUEf8CjhG2Rw1i+yRCk7J+oeuXZF0qbQohyZcVSB6fhOVKy2fPyV93
-         YrKw==
+        bh=Ec4zzvCEIRAZ5xfSFujdt3O/MmVFFCSSaTkJNA0Gesk=;
+        b=JSVooyEe2SRDrMNSu6eJ2ilSaVUqiDJJHEPU88wdpKdlsC8RBu3Ku/TKIDJRCH69AY
+         rL1HfDg4T+0ffEuw6s27icwmR+46ArMPYyM5zM44aacjqwCf+QZNeSHzgqviWtNN8/rU
+         Q7urx5INqAt0aIR6r3GKVaViXS916KjyfQRN413Z+IruFnDjieUZAqEziOwBG1g9neQZ
+         0Rb/Mls/rv66pjP1AHa+MlbI1YjbOapgIWqc65VlTWCLHQljxFj7qtaD0kxKa5Y1hDaJ
+         MYUyMQIielUOJux43X2KGqbeeZ56WyX2G4rzkNksWkHHDlbs4xTSSpE91NnmozrndbOX
+         ibZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=3gMdxSJmlSDTB6U+PsygXS1ZLglBM1WGKJh6I0PUIas=;
-        b=jHSRLN8bulp8oIzAUktTMeqA21djvf2/ozn4hv7B59N31BqeexZ21TrmG/O5QOzcBr
-         XXr1OlyUqhFK/fYFkXIU7HchcmUHd+9FitRgPUdQJXN4L6wkQLp0GGtWGnFcg2vxa4kG
-         F6cnC+NbYul/WeT7JWelzI4fis4yOt8DXv6MDJJZLJGo6VEFyOvNlCogcNmkkLdn249y
-         DqlJ9tVFqqeCQJhQPjCtAtZQXjyitcBmVfYcailgY3b13MqB4vDMzLJ5iivExz8bgTxQ
-         eX7i+qzjNNftVVbQntK5utiz+sc4hLZCAkOtKQ/YZv2mrk2f853xpRENc3Nc0qFKQsI7
-         mvKQ==
-X-Gm-Message-State: ANhLgQ3KiYiCgD7J+rNgtdcfXul6LcaLmBYJnszLEBZmihmE2SS+SHcQ
-	cvA1BzQqFKmycl9gMqVVPHJDZkH504m/QF8Z+5+hrw==
-X-Google-Smtp-Source: ADFU+vvTdoCgNh6xJ6gZYB9keC8Fkn9Ci3/Td4qI0ykOpx5clQVYmaPDDJgEqegvBS0QrsPYAqYyi0YJhwbUEVkT+rI=
-X-Received: by 2002:a92:58d0:: with SMTP id z77mr13401762ilf.67.1583867467126;
- Tue, 10 Mar 2020 12:11:07 -0700 (PDT)
+        bh=Ec4zzvCEIRAZ5xfSFujdt3O/MmVFFCSSaTkJNA0Gesk=;
+        b=M4mqAc4P577YngKfFzxu6F88C27h2LJLXtpqskiPV0apPXXlc5zuFqGqaiOvx69OAm
+         CPZJWRTBxCuZClIlRO8lJFHcjdz+3QkiounNJh9rO2Zc57ICyFdqvPDsyTeSLlAFY2vD
+         BAjbvoAh8HbkS3fZsCj1huVlD+0TecMfW6nzVYhJ2yvjMVse06b9FCi2qc9tn3vfmcNr
+         PI6x7q3YuGCNcLx8bVEprLJkHHLW4+qQtm897s1CQr+Dr/R/ugk/Hx5VQScNOTrnFxsa
+         b4z2WcaMYw3NFFDO+xmUwp37crp58xBYjlzTfp7v50PWgi3OOEPkDyC31VvEm0X5iOM4
+         ERzA==
+X-Gm-Message-State: ANhLgQ1GxtJQuJakU1JUKwe3gwu+KpO3NydZ/mYr5oEI8dGfpfuo3ei9
+	N9btXFCMRvR+/y5+umx5q/xKE4wr5HO8yTrtdbFWHQ==
+X-Google-Smtp-Source: ADFU+vtVDIkIb5z7RR8jJzmALdrRQn05cTcgu3CPKp3sK97WzjtLn+6ei218QLPZFovuMtjdfgbw+mAhrJJXYQJMNO8=
+X-Received: by 2002:a92:5f45:: with SMTP id t66mr21962193ilb.28.1583868611206;
+ Tue, 10 Mar 2020 12:30:11 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200301215029.15196-1-nieklinnenbank@gmail.com>
- <20200301215029.15196-19-nieklinnenbank@gmail.com> <871rq876h3.fsf@linaro.org>
- <CAPan3WrNnrnngwE4pGeYpR9HS7Vr936-ojPZZovNo8ZdoAA0sg@mail.gmail.com>
- <CAPan3WqOT1B4xuJeAYUh4Np1UjJuypCDSQVGeV2yyNbH5mBxKw@mail.gmail.com> <87pndkiq0x.fsf@linaro.org>
-In-Reply-To: <87pndkiq0x.fsf@linaro.org>
+ <20200301215029.15196-7-nieklinnenbank@gmail.com> <87d09t7i8i.fsf@linaro.org>
+ <CAPan3Wo6_15zFSHJwf0hVq9CVUSfOBU+frwSLQX21SWrXW03iA@mail.gmail.com> <CAFEAcA_wTrqgAh+NK5jmtqPeU9y6bhouzaXWQyPR_iYU5waOGg@mail.gmail.com>
+In-Reply-To: <CAFEAcA_wTrqgAh+NK5jmtqPeU9y6bhouzaXWQyPR_iYU5waOGg@mail.gmail.com>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Tue, 10 Mar 2020 20:10:55 +0100
-Message-ID: <CAPan3WrDCruqwFW6R010u4Cjhx7N6cEZ_9CfpZai8cp=G_m8nA@mail.gmail.com>
-Subject: Re: [PATCH v6 18/18] docs: add Orange Pi PC document
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+Date: Tue, 10 Mar 2020 20:30:00 +0100
+Message-ID: <CAPan3WpVsb0=gpdghsuhmnKc1CTXi8n1A7xfW=NsTpav9RNCLA@mail.gmail.com>
+Subject: Re: [PATCH v6 06/18] hw/arm/allwinner: add CPU Configuration module
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
 	Beniamino Galvani <b.galvani@gmail.com>, Jason Wang <jasowang@redhat.com>, 
 	Igor Mammedov <imammedo@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000bfdd0605a084e1aa"
-X-TUID: azqwP7zWUvFB
+Content-Type: multipart/alternative; boundary="000000000000f1241905a085253d"
+X-TUID: 4ePilKAnn53v
 
---000000000000bfdd0605a084e1aa
+--000000000000f1241905a085253d
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Mar 10, 2020 at 9:16 AM Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
-rote:
+On Mon, Mar 9, 2020 at 12:18 PM Peter Maydell <peter.maydell@linaro.org>
+wrote:
 
+> On Tue, 3 Mar 2020 at 20:15, Niek Linnenbank <nieklinnenbank@gmail.com>
+> wrote:
+> > On Tue, Mar 3, 2020 at 1:09 PM Alex Benn=C3=A9e <alex.bennee@linaro.org=
 >
-> Niek Linnenbank <nieklinnenbank@gmail.com> writes:
+> wrote:
+> >> Niek Linnenbank <nieklinnenbank@gmail.com> writes:
+> >> > +static void allwinner_cpucfg_cpu_reset(AwCpuCfgState *s, uint8_t
+> cpu_id)
+> >> > +{
+> >> > +    int ret;
+> >> > +
+> >> > +    trace_allwinner_cpucfg_cpu_reset(cpu_id, s->entry_addr);
+> >> > +
+> >> > +    ret =3D arm_set_cpu_on(cpu_id, s->entry_addr, 0,
+> >> > +                         CPU_EXCEPTION_LEVEL_ON_RESET, false);
+> >>
+> >> According to the arm_set_cpu_on code:
+> >>
+> >>     if (!target_aa64 && arm_feature(&target_cpu->env,
+> ARM_FEATURE_AARCH64)) {
+> >>         /*
+> >>          * For now we don't support booting an AArch64 CPU in AArch32
+> mode
+> >>          * TODO: We should add this support later
+> >>          */
+> >>         qemu_log_mask(LOG_UNIMP,
+> >>                       "[ARM]%s: Starting AArch64 CPU %" PRId64
+> >>                       " in AArch32 mode is not supported yet\n",
+> >>                       __func__, cpuid);
+> >>         return QEMU_ARM_POWERCTL_INVALID_PARAM;
+> >>     }
+> >>
+> >> Do you really want to reboot in aarch32 mode on a reset? If so we shou=
+ld
+> >> fix the TODO.
+> >
+> > The Allwinner H3 has four ARM Cortex-A7 cores and are 32-bit, so in the
+> > early version I filled the @target_aa64 parameter with false to
+> > keep it in 32-bit mode. And for usage in the current Allwinner H3 SoC
+> > that is sufficient, but as soon as a potential new SoC implementation
+> > with a 64-bit CPU starts to use this module, the hardcoded @target_aa64
+> > parameter will become a problem.
 >
-> > Hi Alex,
-> >
-> > On Wed, Mar 4, 2020 at 9:55 PM Niek Linnenbank <nieklinnenbank@gmail.co=
-m
-> >
-> > wrote:
-> >
-> >> Hello Alex,
-> >>
-> >> On Wed, Mar 4, 2020 at 11:35 AM Alex Benn=C3=A9e <alex.bennee@linaro.o=
-rg>
-> >> wrote:
-> >>
-> >>>
-> >>> Niek Linnenbank <nieklinnenbank@gmail.com> writes:
-> >>>
-> >>> > The Xunlong Orange Pi PC machine is a functional ARM machine
-> >>> > based on the Allwinner H3 System-on-Chip. It supports mainline
-> >>> > Linux, U-Boot, NetBSD and is covered by acceptance tests.
-> >>> >
-> >>> > This commit adds a documentation text file with a description
-> >>> > of the machine and instructions for the user.
-> >>>
-> >>> This is great, thanks for taking the time to include documentation.
-> >>>
-> >>
-> >> Sure, I'm happy to contribute it. I tried to include most relevant
-> >> information
-> >> in there for developers and potential users of the machine. If somethi=
-ng
-> >> is missing
-> >> just let me know and I'll make an update for it.
-> >>
-> >>
-> >>>
-> >>> >
-> >>> > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> >>> > ---
-> >>> >  docs/orangepi.rst | 226
-> >>> > ++++++++++++++++++++++++++++++++++++++++++++++
-> >>>
-> >>> I suspect there is a better place to put this is than the top level. =
-I
-> >>> wonder if it should be docs/specs?
-> >>>
-> >>
-> >> Yeah I'm fine to move it to a different subdirectory if needed. Right
-> now
-> >> its placed in docs,
-> >> as it seems that documents for machines are also placed there, for
-> example
-> >> docs/microvm.rst
-> >>
-> >>
-> >>>
-> >>> >  MAINTAINERS       |   1 +
-> >>> >  2 files changed, 227 insertions(+)
-> >>> >  create mode 100644 docs/orangepi.rst
-> >>> >
-> >>> > diff --git a/docs/orangepi.rst b/docs/orangepi.rst
-> >>> > new file mode 100644
-> >>> > index 0000000000..a9b46f553c
-> >>> > --- /dev/null
-> >>> > +++ b/docs/orangepi.rst
-> >>> > @@ -0,0 +1,226 @@
-> >>> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D
-> >>> > +Orange Pi PC Machine Type
-> >>> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D
-> >>> > +
-> >>> > +The Xunlong Orange Pi PC is an Allwinner H3 System on Chip
-> >>> > +based embedded computer with mainline support in both U-Boot
-> >>> > +and Linux. The board comes with a Quad Core Cortex A7 @ 1.3GHz,
-> >>> > +1GiB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and
-> >>> > +various other I/O.
-> >>>
-> >>> When Peter's document PR goes in later this week there will also be a=
-:
-> >>>
-> >>>   docs/system/target-arm.rst
-> >>>
-> >>> which would benefit from a section for the Orange Pi in it.
-> >>>
-> >>
-> >> Nice, I'll have a look at it when it gets merged and add a section for
-> >> Orange Pi.
-> >> I'll try to include that in the next version of this series.
-> >>
-> >>
-> >>>
-> >>> > +
-> >>> > +Supported devices
-> >>> > +-----------------
-> >>> > +
-> >>> > +The Orange Pi PC machine supports the following devices:
-> >>> > +
-> >>> > + * SMP (Quad Core Cortex A7)
-> >>> > + * Generic Interrupt Controller configuration
-> >>> > + * SRAM mappings
-> >>> > + * SDRAM controller
-> >>> > + * Real Time Clock
-> >>> > + * Timer device (re-used from Allwinner A10)
-> >>> > + * UART
-> >>> > + * SD/MMC storage controller
-> >>> > + * EMAC ethernet
-> >>>
-> >>> Do we ever exercise the ethernet in the acceptance tests? I see we ha=
-ve
-> >>> some that boots a full OS but boot console only seems to touch the
-> >>> serial console.
-> >>>
-> >>
-> >> Good point. Currently in the acceptance tests U-Boot and Linux detect
-> >> the ethernet device, but there are no explicit checks for that in the
-> >> acceptance tests
-> >> nor any actual packet transmission.
-> >>
-> >> I'll try to extend the current tests in the next version of this serie=
-s
-> to
-> >> include some
-> >> basic checks for the ethernet device, perhaps with DHCP or a ping.
-> >> I'm open to suggestions for the preferred way to do this.
-> >>
-> >
-> > FYI, I added some coverage for the ethernet device by extending the
-> > test_arm_orangepi_sd test with a few lines like:
-> >
-> > +        exec_command_and_wait_for_pattern(self, 'ifconfig eth0 up',
-> 'eth0:
-> > Link is Up')
-> > +        exec_command_and_wait_for_pattern(self, 'udhcpc eth0',
-> > +                                                'udhcpc: lease of
-> > 10.0.2.15 obtained')
-> > +        exec_command_and_wait_for_pattern(self, 'ping -c 3 10.0.2.2',
-> > +            '3 packets transmitted, 3 packets received, 0% packet loss=
-')
-> >
+> > Maybe I should just use some function to check if the current emulated
+> > CPU its 32-bit or 64-bit and use that for @target_aa64?
 >
-> That will work as a smoke test. Are you going to re-spin this week so we
-> can get the final reviews done?
+> If the intended behaviour is "just power on the CPU into EL3
+> in the aarch32/aarch64 state it would naturally have out of reset"
+> then you can get the right value to pass to target_aa64 like this:
 >
-
-OK Alex!
-Yes, as I just replied to Peter as well, I'm finalizing / testing the v7
-update now and will send it to the list in a few hours.
-I'll reserve some extra time the coming days so I can reply & respin
-quickly.
+>    ARMCPU *target_cpu =3D ARM_CPU(arm_get_cpu_by_id(cpu_id));
+>
+>    if (!target_cpu) {
+>        /*
+>         * handle the case of "guest wrote bogus value to RST_CTRL
+>         * field, probably by returning doing nothing
+>         */
+>    }
+>    target_aa64 =3D arm_feature(&target_cpu->env, ARM_FEATURE_AARCH64);
+>
+>
+Thanks for explaining Peter. This solution is working fine. I'm including
+it in the v7 respin.
 
 Regards,
 Niek
 
 
+> Or if the required behaviour for a 64-bit CPU is more complicated
+> you can just assert or something with a comment that this would need
+> updating if we ever modelled a 64-bit Allwinner SoC.
 >
-> > Regards,
-> > Niek
-> >
-> >
-> >> Regards,
-> >> Niek
-> >>
-> >>
-> >>
-> >>
-> >>
-> >>
-> >>>
-> >>> <snip>
-> >>>
-> >>> --
-> >>> Alex Benn=C3=A9e
-> >>>
-> >>
-> >>
-> >> --
-> >> Niek Linnenbank
-> >>
-> >>
->
->
-> --
-> Alex Benn=C3=A9e
+> thanks
+> -- PMM
 >
 
 
 --=20
 Niek Linnenbank
 
---000000000000bfdd0605a084e1aa
+--000000000000f1241905a085253d
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Mar 10, 2020 at 9:16 AM Alex =
-Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.org">alex.bennee@linar=
-o.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
-rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
-1ex"><br>
-Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com" target=3D"_=
-blank">nieklinnenbank@gmail.com</a>&gt; writes:<br>
-<br>
-&gt; Hi Alex,<br>
+<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Mar 9, 2020 at 12:18 PM Peter=
+ Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@lina=
+ro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">On Tue, 3 Mar 2020 at 20:15, Niek Linnenbank &lt;<a href=3D"mailto:ni=
+eklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt; =
+wrote:<br>
+&gt; On Tue, Mar 3, 2020 at 1:09 PM Alex Benn=C3=A9e &lt;<a href=3D"mailto:=
+alex.bennee@linaro.org" target=3D"_blank">alex.bennee@linaro.org</a>&gt; wr=
+ote:<br>
+&gt;&gt; Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com" ta=
+rget=3D"_blank">nieklinnenbank@gmail.com</a>&gt; writes:<br>
+&gt;&gt; &gt; +static void allwinner_cpucfg_cpu_reset(AwCpuCfgState *s, uin=
+t8_t cpu_id)<br>
+&gt;&gt; &gt; +{<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 int ret;<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 trace_allwinner_cpucfg_cpu_reset(cpu_id, s-&gt=
+;entry_addr);<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 ret =3D arm_set_cpu_on(cpu_id, s-&gt;entry_add=
+r, 0,<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0CPU_EXCEPTION_LEVEL_ON_RESET, false);<br>
+&gt;&gt;<br>
+&gt;&gt; According to the arm_set_cpu_on code:<br>
+&gt;&gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0if (!target_aa64 &amp;&amp; arm_feature(&amp;ta=
+rget_cpu-&gt;env, ARM_FEATURE_AARCH64)) {<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/*<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * For now we don&#39;t support b=
+ooting an AArch64 CPU in AArch32 mode<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * TODO: We should add this suppo=
+rt later<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 */<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qemu_log_mask(LOG_UNIMP,<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0&quot;[ARM]%s: Starting AArch64 CPU %&quot; PRId64<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0&quot; in AArch32 mode is not supported yet\n&quot;,<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0__func__, cpuid);<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return QEMU_ARM_POWERCTL_INVALID_=
+PARAM;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0}<br>
+&gt;&gt;<br>
+&gt;&gt; Do you really want to reboot in aarch32 mode on a reset? If so we =
+should<br>
+&gt;&gt; fix the TODO.<br>
 &gt;<br>
-&gt; On Wed, Mar 4, 2020 at 9:55 PM Niek Linnenbank &lt;<a href=3D"mailto:n=
-ieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;=
+&gt; The Allwinner H3 has four ARM Cortex-A7 cores and are 32-bit, so in th=
+e<br>
+&gt; early version I filled the @target_aa64 parameter with false to<br>
+&gt; keep it in 32-bit mode. And for usage in the current Allwinner H3 SoC<=
+br>
+&gt; that is sufficient, but as soon as a potential new SoC implementation<=
+br>
+&gt; with a 64-bit CPU starts to use this module, the hardcoded @target_aa6=
+4<br>
+&gt; parameter will become a problem.<br>
 <br>
-&gt; wrote:<br>
-&gt;<br>
-&gt;&gt; Hello Alex,<br>
-&gt;&gt;<br>
-&gt;&gt; On Wed, Mar 4, 2020 at 11:35 AM Alex Benn=C3=A9e &lt;<a href=3D"ma=
-ilto:alex.bennee@linaro.org" target=3D"_blank">alex.bennee@linaro.org</a>&g=
-t;<br>
-&gt;&gt; wrote:<br>
-&gt;&gt;<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com=
-" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt; writes:<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; &gt; The Xunlong Orange Pi PC machine is a functional ARM mach=
-ine<br>
-&gt;&gt;&gt; &gt; based on the Allwinner H3 System-on-Chip. It supports mai=
-nline<br>
-&gt;&gt;&gt; &gt; Linux, U-Boot, NetBSD and is covered by acceptance tests.=
+&gt; Maybe I should just use some function to check if the current emulated=
 <br>
-&gt;&gt;&gt; &gt;<br>
-&gt;&gt;&gt; &gt; This commit adds a documentation text file with a descrip=
-tion<br>
-&gt;&gt;&gt; &gt; of the machine and instructions for the user.<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; This is great, thanks for taking the time to include documenta=
-tion.<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; Sure, I&#39;m happy to contribute it. I tried to include most rele=
-vant<br>
-&gt;&gt; information<br>
-&gt;&gt; in there for developers and potential users of the machine. If som=
-ething<br>
-&gt;&gt; is missing<br>
-&gt;&gt; just let me know and I&#39;ll make an update for it.<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; &gt;<br>
-&gt;&gt;&gt; &gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:niek=
-linnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br=
+&gt; CPU its 32-bit or 64-bit and use that for @target_aa64?<br>
+<br>
+If the intended behaviour is &quot;just power on the CPU into EL3<br>
+in the aarch32/aarch64 state it would naturally have out of reset&quot;<br>
+then you can get the right value to pass to target_aa64 like this:<br>
+<br>
+=C2=A0 =C2=A0ARMCPU *target_cpu =3D ARM_CPU(arm_get_cpu_by_id(cpu_id));<br>
+<br>
+=C2=A0 =C2=A0if (!target_cpu) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0/*<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 * handle the case of &quot;guest wrote bogus va=
+lue to RST_CTRL<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 * field, probably by returning doing nothing<br=
 >
-&gt;&gt;&gt; &gt; ---<br>
-&gt;&gt;&gt; &gt;=C2=A0 docs/orangepi.rst | 226<br>
-&gt;&gt;&gt; &gt; ++++++++++++++++++++++++++++++++++++++++++++++<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; I suspect there is a better place to put this is than the top =
-level. I<br>
-&gt;&gt;&gt; wonder if it should be docs/specs?<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; Yeah I&#39;m fine to move it to a different subdirectory if needed=
-. Right now<br>
-&gt;&gt; its placed in docs,<br>
-&gt;&gt; as it seems that documents for machines are also placed there, for=
- example<br>
-&gt;&gt; docs/microvm.rst<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; &gt;=C2=A0 MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=
-=A01 +<br>
-&gt;&gt;&gt; &gt;=C2=A0 2 files changed, 227 insertions(+)<br>
-&gt;&gt;&gt; &gt;=C2=A0 create mode 100644 docs/orangepi.rst<br>
-&gt;&gt;&gt; &gt;<br>
-&gt;&gt;&gt; &gt; diff --git a/docs/orangepi.rst b/docs/orangepi.rst<br>
-&gt;&gt;&gt; &gt; new file mode 100644<br>
-&gt;&gt;&gt; &gt; index 0000000000..a9b46f553c<br>
-&gt;&gt;&gt; &gt; --- /dev/null<br>
-&gt;&gt;&gt; &gt; +++ b/docs/orangepi.rst<br>
-&gt;&gt;&gt; &gt; @@ -0,0 +1,226 @@<br>
-&gt;&gt;&gt; &gt; +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D<br>
-&gt;&gt;&gt; &gt; +Orange Pi PC Machine Type<br>
-&gt;&gt;&gt; &gt; +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D<br>
-&gt;&gt;&gt; &gt; +<br>
-&gt;&gt;&gt; &gt; +The Xunlong Orange Pi PC is an Allwinner H3 System on Ch=
-ip<br>
-&gt;&gt;&gt; &gt; +based embedded computer with mainline support in both U-=
-Boot<br>
-&gt;&gt;&gt; &gt; +and Linux. The board comes with a Quad Core Cortex A7 @ =
-1.3GHz,<br>
-&gt;&gt;&gt; &gt; +1GiB RAM, 100Mbit ethernet, USB, SD/MMC, USB, HDMI and<b=
-r>
-&gt;&gt;&gt; &gt; +various other I/O.<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; When Peter&#39;s document PR goes in later this week there wil=
-l also be a:<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0docs/system/target-arm.rst<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; which would benefit from a section for the Orange Pi in it.<br=
->
-&gt;&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; Nice, I&#39;ll have a look at it when it gets merged and add a sec=
-tion for<br>
-&gt;&gt; Orange Pi.<br>
-&gt;&gt; I&#39;ll try to include that in the next version of this series.<b=
-r>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; &gt; +<br>
-&gt;&gt;&gt; &gt; +Supported devices<br>
-&gt;&gt;&gt; &gt; +-----------------<br>
-&gt;&gt;&gt; &gt; +<br>
-&gt;&gt;&gt; &gt; +The Orange Pi PC machine supports the following devices:=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 */<br>
+=C2=A0 =C2=A0}<br>
+=C2=A0 =C2=A0target_aa64 =3D arm_feature(&amp;target_cpu-&gt;env, ARM_FEATU=
+RE_AARCH64);<br>
+<br></blockquote><div><br></div><div>Thanks for explaining Peter. This solu=
+tion is working fine. I&#39;m including it in the v7 respin.</div><div><br>=
+</div><div>Regards,</div><div>Niek<br></div><div>=C2=A0</div><blockquote cl=
+ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
+ rgb(204,204,204);padding-left:1ex">
+Or if the required behaviour for a 64-bit CPU is more complicated<br>
+you can just assert or something with a comment that this would need<br>
+updating if we ever modelled a 64-bit Allwinner SoC.<br>
 <br>
-&gt;&gt;&gt; &gt; +<br>
-&gt;&gt;&gt; &gt; + * SMP (Quad Core Cortex A7)<br>
-&gt;&gt;&gt; &gt; + * Generic Interrupt Controller configuration<br>
-&gt;&gt;&gt; &gt; + * SRAM mappings<br>
-&gt;&gt;&gt; &gt; + * SDRAM controller<br>
-&gt;&gt;&gt; &gt; + * Real Time Clock<br>
-&gt;&gt;&gt; &gt; + * Timer device (re-used from Allwinner A10)<br>
-&gt;&gt;&gt; &gt; + * UART<br>
-&gt;&gt;&gt; &gt; + * SD/MMC storage controller<br>
-&gt;&gt;&gt; &gt; + * EMAC ethernet<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; Do we ever exercise the ethernet in the acceptance tests? I se=
-e we have<br>
-&gt;&gt;&gt; some that boots a full OS but boot console only seems to touch=
- the<br>
-&gt;&gt;&gt; serial console.<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; Good point. Currently in the acceptance tests U-Boot and Linux det=
-ect<br>
-&gt;&gt; the ethernet device, but there are no explicit checks for that in =
-the<br>
-&gt;&gt; acceptance tests<br>
-&gt;&gt; nor any actual packet transmission.<br>
-&gt;&gt;<br>
-&gt;&gt; I&#39;ll try to extend the current tests in the next version of th=
-is series to<br>
-&gt;&gt; include some<br>
-&gt;&gt; basic checks for the ethernet device, perhaps with DHCP or a ping.=
-<br>
-&gt;&gt; I&#39;m open to suggestions for the preferred way to do this.<br>
-&gt;&gt;<br>
-&gt;<br>
-&gt; FYI, I added some coverage for the ethernet device by extending the<br=
->
-&gt; test_arm_orangepi_sd test with a few lines like:<br>
-&gt;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &=
-#39;ifconfig eth0 up&#39;, &#39;eth0:<br>
-&gt; Link is Up&#39;)<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &=
-#39;udhcpc eth0&#39;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 &#39;udhcpc: lease of<br>
-&gt; 10.0.2.15 obtained&#39;)<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &=
-#39;ping -c 3 10.0.2.2&#39;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &#39;3 packets transmitted,=
- 3 packets received, 0% packet loss&#39;)<br>
-&gt;<br>
-<br>
-That will work as a smoke test. Are you going to re-spin this week so we<br=
->
-can get the final reviews done?<br></blockquote><div><br></div><div>OK Alex=
-!</div><div>Yes, as I just replied to Peter as well, I&#39;m finalizing / t=
-esting the v7 update now and will send it to the list in a few hours.</div>=
-<div>I&#39;ll reserve some extra time the coming days so I can reply &amp; =
-respin quickly.<br></div><div><br></div><div>Regards,</div><div>Niek<br></d=
-iv><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0=
-px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; Regards,<br>
-&gt; Niek<br>
-&gt;<br>
-&gt;<br>
-&gt;&gt; Regards,<br>
-&gt;&gt; Niek<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; &lt;snip&gt;<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; --<br>
-&gt;&gt;&gt; Alex Benn=C3=A9e<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; --<br>
-&gt;&gt; Niek Linnenbank<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-<br>
-<br>
--- <br>
-Alex Benn=C3=A9e<br>
+thanks<br>
+-- PMM<br>
 </blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
 mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
 div></div>
 
---000000000000bfdd0605a084e1aa--
+--000000000000f1241905a085253d--

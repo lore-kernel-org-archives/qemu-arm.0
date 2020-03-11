@@ -1,71 +1,71 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1294406lfc;
-        Wed, 11 Mar 2020 15:19:10 -0700 (PDT)
-X-Received: by 2002:adf:fd11:: with SMTP id e17mr6168889wrr.195.1583965150528;
-        Wed, 11 Mar 2020 15:19:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583965150; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1294449lfc;
+        Wed, 11 Mar 2020 15:19:12 -0700 (PDT)
+X-Received: by 2002:adf:f2ca:: with SMTP id d10mr6883936wrp.247.1583965152911;
+        Wed, 11 Mar 2020 15:19:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583965152; cv=none;
         d=google.com; s=arc-20160816;
-        b=BHsprz7n/5mZ4WHHuF8MR+FejRKT+toaAk8GOAGEp2PX5Q+ol/vPFEq4GDpk+4b5E+
-         3Lz1LQZ2dF2E2sDvZenr60xBEGm/CzEqIpvmtl3hp2UgeNtR33VvhlB3Z/LocZBJH1fA
-         nBK1KlBkNWROJwZvP5neZYjHCQswynfCKapWwQ+834lubyoBC6VAQN58QgUeJ9DnNrZ8
-         5lnNSwLDjDehEL7Z9uru63M6OikBCYornt32ALOfoLLrBXiwOYjuy8DikiiIT4cc+JLT
-         PpJdFuvvNmE2hWoHs2omJH+vFN1V2wApaMQ2G6wRrrX9v3zMDKOMxQL+iqmRM2JbXYfR
-         87NQ==
+        b=QkipFRAyDBhhu/uGpCxhWTeL8BYGH7LMZDXtVwFAEDeCQiAJAh/i7XSeowd/Aqu3Po
+         tNWdx1KMFqAopbQVyaTAAAJkSlJu+wAQVXh12Fil9MRbdib7xDmAD+h9perdnclg6Z29
+         41wK4J7grU94H0Gsy4KTi3sljZ9PuuyXTh2CSltBphNLZ1toXuEs+7DbfbqlpQbGbxRQ
+         Dx1J8Nq+6ErAVEJyobyJTv2qpa5FKaZ6KAAbxaVjUMNAQgA+84BXRdKBD5MPGCUDqV/T
+         DV6wWbCttHPZoldSmhDnLEc5x3PzuGU1poR95Vudmp1iFxz7dMWlxLIPJGWHj8021E2R
+         fRdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=GaUe5raBf4DpJwr2GXxeYafyMvBK0RHj5ATt/moZ3gU=;
-        b=meEfIvKQfOeBUbxIreyT6UqKRQj9JTprymIAgwwhVEwnddC/q9jAC0OZRiAOpxgiOJ
-         J7l8QoM2nJGub6FgwClsg5d+iEi4JIVOIWyy7BcE28EapvbBlyk4UozfTcg8rHqfwVeI
-         ckVx5QQ/mNhspn+HuMqGfxymjGI8cK8WuMDKVNsmPzvL6Wg2aE43GY3SCubUZwZdOdjb
-         NVXZ9DWHyLcqgCozep4MH7TtrN8+B+ABSuPyzTNwJ8RkBXkAQwXfsMvDHl9SYILk3E5Y
-         FxK29EBr8UdT3egjREUSPs3GxnTtV7+H8jYnZtnv0m//q4CVr/8N/DKw9Ljc3Y4iuEdk
-         rD/g==
+        bh=Qq6b6ICYIOoBAymh+VHaM26CGU8Ea8JY2eFdBqFq9Ok=;
+        b=ac1aMyNpZnX1U9xKg26Mf1HCteU+B4rEx0pT9gfNCOn02VFQEN/bz2Gl59LaTJiUmr
+         z5YSLOdJEqezb16wsh/C+mYwglmxPqmXlFvYyQkJHr01Ht4SvSFS0xeLMDPf/vhacqvK
+         3+WRUc7pOyWfBjzlBvzMxZOiuvGK467KLZ8Rilahe9ODsZqKwYelIoTQ1dfO/2gJ3SCX
+         vK/wFuC98C00lbNdnt8QA5LxiFteY4Ox0TEvIb7f/ssH1FfPWXSzX5oExWQRnBOvEnmK
+         PsLrerWebSmBhql1/B4VDfm2C63qTaKajBDuDDVz1KvkJFF5G6LksvGj28XjccDdpzCI
+         nWhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=njKQ8kY4;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SbPUho9b;
        spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <nieklinnenbank@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id k1sor2051782wrl.22.2020.03.11.15.19.10
+        by mx.google.com with SMTPS id p10sor2045479wrj.41.2020.03.11.15.19.12
         (Google Transport Security);
-        Wed, 11 Mar 2020 15:19:10 -0700 (PDT)
+        Wed, 11 Mar 2020 15:19:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=njKQ8kY4;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SbPUho9b;
        spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=GaUe5raBf4DpJwr2GXxeYafyMvBK0RHj5ATt/moZ3gU=;
-        b=njKQ8kY41GyqsSF7sja9KSCcNyjvoivln7tnq0pGK1CdX9e+mVdKsNghEjN19BTYGf
-         zdI0FSC4JYm8DA8h3i9JNiti+fpchh4pJN+Xtnov0Tgv1eOgncx621Xe8zFEREBzIIb4
-         04G1qeF0hzRHjTLlQNTzelGBNW5jFHa48sXl/2mpvwgkCoqPnlBSaK4vb5kY/lHTdEFB
-         5mOpVrQOM9YeUK+gT69MuS1Y8/EMtgzpnhBfZLFgfwKapCDzRO0VAin1ix/9fgfZKBxd
-         XzqTVcbQ3IwMNNk72wLwxnV5tnkVENP1nYcNNMRE4EcOJPB37ajd861V2RuPPLGscrLi
-         x44w==
+        bh=Qq6b6ICYIOoBAymh+VHaM26CGU8Ea8JY2eFdBqFq9Ok=;
+        b=SbPUho9bzLUffCbg9f0+tPZYRdexvqVQqEs+9mq5jUl2ieCqtOBVmDiHfWNWg2D8sK
+         K4MNjLIsa/mDyGdHkaAYJOXdQp9Mh7IrVKC/sfU/ro2vmSm63LgsWEfHm10Qq6+xBN7F
+         O3XDQiR6Uno4VqSe+gvJ34jLIcTeac/tEF2AVk0peMlPj4bYyhErMpxQXRuOqTFrnyrr
+         D6aM18biwqcYi7HKPIthvygMGLkUsNUxq9lF+hZv4tM26+3d1MgJLC1JNF0QdY5hvxxS
+         AiAeCm9/JHotNh3w3YO5kA1pvYgw/2LpNnpNf5JV4rNyGDCUPV8j+p+5FhqTDdu3+GCV
+         dhKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=GaUe5raBf4DpJwr2GXxeYafyMvBK0RHj5ATt/moZ3gU=;
-        b=OSqbZ8NM2PUkLhfePIi5QrSa7lPJAw6bMCpzeZ9+fxE+3HH06MYYYw+POnU8npsdPL
-         i+RPNzawswVkj2neZo95NU8yi41u4eOJDNmM7LKRxo4LimcH6e0ykXhYKVwpNn6QeOJC
-         djuHzhEf3/c4Vv338P2oCIv7sNVcUSd8yzYjFU+pfBxoFNY5LqCMAkKcbLsrt37q11zZ
-         aIM6a66/h+CHbXhxSuvipU3ezBH6DdF9MXcPnSRmR+iLdprEa3B0RAMHDDCJWxuoMnWu
-         HBTCAeYA5J3JsCUIg1Rnv60IZj23w/vKgXayAi3HlGHx0aOmQnpJ38ghTWbLK/Ifdgu5
-         d3og==
-X-Gm-Message-State: ANhLgQ1g5jspz35zUEe+Q3nKQBhiShTJ8VXtD9GhUiseJ+TZ3qFw4ygr
-	zDPn8l2tDz3ZkLGb4QJmKAHkGtXU
-X-Google-Smtp-Source: ADFU+vvOevC12NasI0scgPOoXVnA+omHV6CtVJfz6RWa0SjMaJ1T31rxxCAGPMsnQ4ZChxIesWaMJA==
-X-Received: by 2002:adf:ec52:: with SMTP id w18mr6476399wrn.26.1583965149957;
-        Wed, 11 Mar 2020 15:19:09 -0700 (PDT)
+        bh=Qq6b6ICYIOoBAymh+VHaM26CGU8Ea8JY2eFdBqFq9Ok=;
+        b=Cof9/WpfTKXicv0TGwyskEzwp/UKQk3tbyimBNrYcJH/cKm+6nPPslJ2LyvXXSX230
+         s+eSjDouIoGg1ZyDYFZtKXveQmACNSJpiJmYxLpp7EVuuOzrAWQHqNOU2MNEeiTtlKIb
+         gqVXbkxnOVTGhijLLDe8GNgNugMQ+j0Mz5tTgkZdXvGi6+MzWbZTTRWr/tnyLImkt+M4
+         vXteupVkEC4E4h8NUJ096jkqMwIazf2sbPZxxE98HHGFP0/d6iLxMZJAqJoFVjBOVAXT
+         aNfd68yldTVhszNBVy7A8cBz5nGYWx7K0hsWmguGPgFNllHPxni593lJrDZ28R8REvZu
+         6uIQ==
+X-Gm-Message-State: ANhLgQ0TU88pwOxRTFoU4VwxROfuSotnY5iBK1crNQ1ji1f0unaqzDnV
+	+JE/1rNe/cBKddw04BLbvxc=
+X-Google-Smtp-Source: ADFU+vsRt9mGcBaofv6nzhL9eneE1acOwU4fR857ckpzHAEyipHxWapo37PJawlg5AhDrMF7AUDzZg==
+X-Received: by 2002:adf:c5c8:: with SMTP id v8mr2327487wrg.111.1583965152499;
+        Wed, 11 Mar 2020 15:19:12 -0700 (PDT)
 Return-Path: <nieklinnenbank@gmail.com>
 Received: from pavilion.home ([2a02:a456:6be8:1:8edc:d4ff:fe8b:18b7])
-        by smtp.gmail.com with ESMTPSA id q7sm19346796wrd.54.2020.03.11.15.19.09
+        by smtp.gmail.com with ESMTPSA id q7sm19346796wrd.54.2020.03.11.15.19.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Mar 2020 15:19:09 -0700 (PDT)
+        Wed, 11 Mar 2020 15:19:12 -0700 (PDT)
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -76,392 +76,127 @@ Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	imammedo@redhat.com,
 	Niek Linnenbank <nieklinnenbank@gmail.com>
-Subject: [PATCH v8 07/18] hw/arm/allwinner: add Security Identifier device
-Date: Wed, 11 Mar 2020 23:18:43 +0100
-Message-Id: <20200311221854.30370-8-nieklinnenbank@gmail.com>
+Subject: [PATCH v8 10/18] hw/arm/allwinner-h3: add Boot ROM support
+Date: Wed, 11 Mar 2020 23:18:46 +0100
+Message-Id: <20200311221854.30370-11-nieklinnenbank@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200311221854.30370-1-nieklinnenbank@gmail.com>
 References: <20200311221854.30370-1-nieklinnenbank@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 3TCWtpC1qogY
+X-TUID: s1rpgSG5kWXG
 
-The Security Identifier device found in various Allwinner System on Chip
-designs gives applications a per-board unique identifier. This commit
-adds support for the Allwinner Security Identifier using a 128-bit
-UUID value as input.
+A real Allwinner H3 SoC contains a Boot ROM which is the
+first code that runs right after the SoC is powered on.
+The Boot ROM is responsible for loading user code (e.g. a bootloader)
+from any of the supported external devices and writing the downloaded
+code to internal SRAM. After loading the SoC begins executing the code
+written to SRAM.
+
+This commits adds emulation of the Boot ROM firmware setup functionality
+by loading user code from SD card in the A1 SRAM. While the A1 SRAM is
+64KiB, we limit the size to 32KiB because the real H3 Boot ROM also rejects
+sizes larger than 32KiB. For reference, this behaviour is documented
+by the Linux Sunxi project wiki at:
+
+  https://linux-sunxi.org/BROM#U-Boot_SPL_limitations
 
 Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/hw/arm/allwinner-h3.h   |   3 +
- include/hw/misc/allwinner-sid.h |  60 ++++++++++++
- hw/arm/allwinner-h3.c           |  11 ++-
- hw/arm/orangepi.c               |   8 ++
- hw/misc/allwinner-sid.c         | 168 ++++++++++++++++++++++++++++++++
- hw/misc/Makefile.objs           |   1 +
- hw/misc/trace-events            |   4 +
- 7 files changed, 254 insertions(+), 1 deletion(-)
- create mode 100644 include/hw/misc/allwinner-sid.h
- create mode 100644 hw/misc/allwinner-sid.c
+ include/hw/arm/allwinner-h3.h | 21 +++++++++++++++++++++
+ hw/arm/allwinner-h3.c         | 17 +++++++++++++++++
+ hw/arm/orangepi.c             |  5 +++++
+ 3 files changed, 43 insertions(+)
 
 diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
-index dc729176ab..85416d9d64 100644
+index f9b9a02373..d338003724 100644
 --- a/include/hw/arm/allwinner-h3.h
 +++ b/include/hw/arm/allwinner-h3.h
-@@ -42,6 +42,7 @@
- #include "hw/misc/allwinner-h3-ccu.h"
- #include "hw/misc/allwinner-cpucfg.h"
- #include "hw/misc/allwinner-h3-sysctrl.h"
-+#include "hw/misc/allwinner-sid.h"
+@@ -46,6 +46,7 @@
+ #include "hw/sd/allwinner-sdhost.h"
+ #include "hw/net/allwinner-sun8i-emac.h"
  #include "target/arm/cpu.h"
++#include "sysemu/block-backend.h"
  
  /**
-@@ -59,6 +60,7 @@ enum {
-     AW_H3_SRAM_A2,
-     AW_H3_SRAM_C,
-     AW_H3_SYSCTRL,
-+    AW_H3_SID,
-     AW_H3_EHCI0,
-     AW_H3_OHCI0,
-     AW_H3_EHCI1,
-@@ -114,6 +116,7 @@ typedef struct AwH3State {
-     AwH3ClockCtlState ccu;
-     AwCpuCfgState cpucfg;
-     AwH3SysCtrlState sysctrl;
-+    AwSidState sid;
-     GICState gic;
-     MemoryRegion sram_a1;
-     MemoryRegion sram_a2;
-diff --git a/include/hw/misc/allwinner-sid.h b/include/hw/misc/allwinner-sid.h
-new file mode 100644
-index 0000000000..4c1fa4762b
---- /dev/null
-+++ b/include/hw/misc/allwinner-sid.h
-@@ -0,0 +1,60 @@
-+/*
-+ * Allwinner Security ID emulation
-+ *
-+ * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef HW_MISC_ALLWINNER_SID_H
-+#define HW_MISC_ALLWINNER_SID_H
-+
-+#include "qom/object.h"
-+#include "hw/sysbus.h"
-+#include "qemu/uuid.h"
-+
+  * Allwinner H3 device list
+@@ -129,4 +130,24 @@ typedef struct AwH3State {
+     MemoryRegion sram_c;
+ } AwH3State;
+ 
 +/**
-+ * Object model
-+ * @{
++ * Emulate Boot ROM firmware setup functionality.
++ *
++ * A real Allwinner H3 SoC contains a Boot ROM
++ * which is the first code that runs right after
++ * the SoC is powered on. The Boot ROM is responsible
++ * for loading user code (e.g. a bootloader) from any
++ * of the supported external devices and writing the
++ * downloaded code to internal SRAM. After loading the SoC
++ * begins executing the code written to SRAM.
++ *
++ * This function emulates the Boot ROM by copying 32 KiB
++ * of data from the given block device and writes it to
++ * the start of the first internal SRAM memory.
++ *
++ * @s: Allwinner H3 state object pointer
++ * @blk: Block backend device object pointer
 + */
++void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk);
 +
-+#define TYPE_AW_SID    "allwinner-sid"
-+#define AW_SID(obj) \
-+    OBJECT_CHECK(AwSidState, (obj), TYPE_AW_SID)
-+
-+/** @} */
-+
-+/**
-+ * Allwinner Security ID object instance state
-+ */
-+typedef struct AwSidState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    /*< public >*/
-+
-+    /** Maps I/O registers in physical memory */
-+    MemoryRegion iomem;
-+
-+    /** Control register defines how and what to read */
-+    uint32_t control;
-+
-+    /** RdKey register contains the data retrieved by the device */
-+    uint32_t rdkey;
-+
-+    /** Stores the emulated device identifier */
-+    QemuUUID identifier;
-+
-+} AwSidState;
-+
-+#endif /* HW_MISC_ALLWINNER_SID_H */
+ #endif /* HW_ARM_ALLWINNER_H3_H */
 diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-index b9a5597f2a..deeea63f5f 100644
+index d1245d2b01..a9767c70c0 100644
 --- a/hw/arm/allwinner-h3.c
 +++ b/hw/arm/allwinner-h3.c
-@@ -38,6 +38,7 @@ const hwaddr allwinner_h3_memmap[] = {
-     [AW_H3_SRAM_A2]    = 0x00044000,
-     [AW_H3_SRAM_C]     = 0x00010000,
-     [AW_H3_SYSCTRL]    = 0x01c00000,
-+    [AW_H3_SID]        = 0x01c14000,
-     [AW_H3_EHCI0]      = 0x01c1a000,
-     [AW_H3_OHCI0]      = 0x01c1a400,
-     [AW_H3_EHCI1]      = 0x01c1b000,
-@@ -78,7 +79,6 @@ struct AwH3Unimplemented {
-     { "mmc0",      0x01c0f000, 4 * KiB },
-     { "mmc1",      0x01c10000, 4 * KiB },
-     { "mmc2",      0x01c11000, 4 * KiB },
--    { "sid",       0x01c14000, 1 * KiB },
-     { "crypto",    0x01c15000, 4 * KiB },
-     { "msgbox",    0x01c17000, 4 * KiB },
-     { "spinlock",  0x01c18000, 4 * KiB },
-@@ -198,6 +198,11 @@ static void allwinner_h3_init(Object *obj)
+@@ -29,6 +29,7 @@
+ #include "hw/char/serial.h"
+ #include "hw/misc/unimp.h"
+ #include "hw/usb/hcd-ehci.h"
++#include "hw/loader.h"
+ #include "sysemu/sysemu.h"
+ #include "hw/arm/allwinner-h3.h"
  
-     sysbus_init_child_obj(obj, "cpucfg", &s->cpucfg, sizeof(s->cpucfg),
-                           TYPE_AW_CPUCFG);
+@@ -170,6 +171,22 @@ enum {
+     AW_H3_GIC_NUM_SPI       = 128
+ };
+ 
++void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk)
++{
++    const int64_t rom_size = 32 * KiB;
++    g_autofree uint8_t *buffer = g_new0(uint8_t, rom_size);
 +
-+    sysbus_init_child_obj(obj, "sid", &s->sid, sizeof(s->sid),
-+                          TYPE_AW_SID);
-+    object_property_add_alias(obj, "identifier", OBJECT(&s->sid),
-+                              "identifier", &error_abort);
- }
- 
- static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-@@ -315,6 +320,10 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-     qdev_init_nofail(DEVICE(&s->cpucfg));
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->cpucfg), 0, s->memmap[AW_H3_CPUCFG]);
- 
-+    /* Security Identifier */
-+    qdev_init_nofail(DEVICE(&s->sid));
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sid), 0, s->memmap[AW_H3_SID]);
++    if (blk_pread(blk, 8 * KiB, buffer, rom_size) < 0) {
++        error_setg(&error_fatal, "%s: failed to read BlockBackend data",
++                   __func__);
++        return;
++    }
 +
-     /* Universal Serial Bus */
-     sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI0],
-                          qdev_get_gpio_in(DEVICE(&s->gic),
++    rom_add_blob("allwinner-h3.bootrom", buffer, rom_size,
++                  rom_size, s->memmap[AW_H3_SRAM_A1],
++                  NULL, NULL, NULL, NULL, false);
++}
++
+ static void allwinner_h3_init(Object *obj)
+ {
+     AwH3State *s = AW_H3(obj);
 diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-index 3fcec1944e..4047c4c386 100644
+index d65bbf8a2f..b8ebcb08b7 100644
 --- a/hw/arm/orangepi.c
 +++ b/hw/arm/orangepi.c
-@@ -65,6 +65,14 @@ static void orangepi_init(MachineState *machine)
-     object_property_set_int(OBJECT(h3), 24 * 1000 * 1000, "clk1-freq",
-                             &error_abort);
+@@ -97,6 +97,11 @@ static void orangepi_init(MachineState *machine)
+     memory_region_add_subregion(get_system_memory(), h3->memmap[AW_H3_SDRAM],
+                                 machine->ram);
  
-+    /* Setup SID properties. Currently using a default fixed SID identifier. */
-+    if (qemu_uuid_is_null(&h3->sid.identifier)) {
-+        qdev_prop_set_string(DEVICE(h3), "identifier",
-+                             "02c00081-1111-2222-3333-000044556677");
-+    } else if (ldl_be_p(&h3->sid.identifier.data[0]) != 0x02c00081) {
-+        warn_report("Security Identifier value does not include H3 prefix");
++    /* Load target kernel or start using BootROM */
++    if (!machine->kernel_filename && blk_is_available(blk)) {
++        /* Use Boot ROM to copy data from SD card to SRAM */
++        allwinner_h3_bootrom_setup(h3, blk);
 +    }
-+
-     /* Mark H3 object realized */
-     object_property_set_bool(OBJECT(h3), true, "realized", &error_abort);
- 
-diff --git a/hw/misc/allwinner-sid.c b/hw/misc/allwinner-sid.c
-new file mode 100644
-index 0000000000..196380c33a
---- /dev/null
-+++ b/hw/misc/allwinner-sid.c
-@@ -0,0 +1,168 @@
-+/*
-+ * Allwinner Security ID emulation
-+ *
-+ * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/units.h"
-+#include "hw/sysbus.h"
-+#include "migration/vmstate.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qemu/guest-random.h"
-+#include "qapi/error.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/misc/allwinner-sid.h"
-+#include "trace.h"
-+
-+/* SID register offsets */
-+enum {
-+    REG_PRCTL = 0x40,   /* Control */
-+    REG_RDKEY = 0x60,   /* Read Key */
-+};
-+
-+/* SID register flags */
-+enum {
-+    REG_PRCTL_WRITE   = 0x0002, /* Unknown write flag */
-+    REG_PRCTL_OP_LOCK = 0xAC00, /* Lock operation */
-+};
-+
-+static uint64_t allwinner_sid_read(void *opaque, hwaddr offset,
-+                                   unsigned size)
-+{
-+    const AwSidState *s = AW_SID(opaque);
-+    uint64_t val = 0;
-+
-+    switch (offset) {
-+    case REG_PRCTL:    /* Control */
-+        val = s->control;
-+        break;
-+    case REG_RDKEY:    /* Read Key */
-+        val = s->rdkey;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        return 0;
-+    }
-+
-+    trace_allwinner_sid_read(offset, val, size);
-+
-+    return val;
-+}
-+
-+static void allwinner_sid_write(void *opaque, hwaddr offset,
-+                                uint64_t val, unsigned size)
-+{
-+    AwSidState *s = AW_SID(opaque);
-+
-+    trace_allwinner_sid_write(offset, val, size);
-+
-+    switch (offset) {
-+    case REG_PRCTL:    /* Control */
-+        s->control = val;
-+
-+        if ((s->control & REG_PRCTL_OP_LOCK) &&
-+            (s->control & REG_PRCTL_WRITE)) {
-+            uint32_t id = s->control >> 16;
-+
-+            if (id <= sizeof(QemuUUID) - sizeof(s->rdkey)) {
-+                s->rdkey = ldl_be_p(&s->identifier.data[id]);
-+            }
-+        }
-+        s->control &= ~REG_PRCTL_WRITE;
-+        break;
-+    case REG_RDKEY:    /* Read Key */
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps allwinner_sid_ops = {
-+    .read = allwinner_sid_read,
-+    .write = allwinner_sid_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+    .impl.min_access_size = 4,
-+};
-+
-+static void allwinner_sid_reset(DeviceState *dev)
-+{
-+    AwSidState *s = AW_SID(dev);
-+
-+    /* Set default values for registers */
-+    s->control = 0;
-+    s->rdkey = 0;
-+}
-+
-+static void allwinner_sid_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    AwSidState *s = AW_SID(obj);
-+
-+    /* Memory mapping */
-+    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_sid_ops, s,
-+                           TYPE_AW_SID, 1 * KiB);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static Property allwinner_sid_properties[] = {
-+    DEFINE_PROP_UUID_NODEFAULT("identifier", AwSidState, identifier),
-+    DEFINE_PROP_END_OF_LIST()
-+};
-+
-+static const VMStateDescription allwinner_sid_vmstate = {
-+    .name = "allwinner-sid",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(control, AwSidState),
-+        VMSTATE_UINT32(rdkey, AwSidState),
-+        VMSTATE_UINT8_ARRAY_V(identifier.data, AwSidState, sizeof(QemuUUID), 1),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void allwinner_sid_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->reset = allwinner_sid_reset;
-+    dc->vmsd = &allwinner_sid_vmstate;
-+    device_class_set_props(dc, allwinner_sid_properties);
-+}
-+
-+static const TypeInfo allwinner_sid_info = {
-+    .name          = TYPE_AW_SID,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_init = allwinner_sid_init,
-+    .instance_size = sizeof(AwSidState),
-+    .class_init    = allwinner_sid_class_init,
-+};
-+
-+static void allwinner_sid_register(void)
-+{
-+    type_register_static(&allwinner_sid_info);
-+}
-+
-+type_init(allwinner_sid_register)
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index f3788a5903..daa734036e 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -31,6 +31,7 @@ common-obj-$(CONFIG_IVSHMEM_DEVICE) += ivshmem.o
- common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-ccu.o
- obj-$(CONFIG_ALLWINNER_H3) += allwinner-cpucfg.o
- common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-h3-sysctrl.o
-+common-obj-$(CONFIG_ALLWINNER_H3) += allwinner-sid.o
- common-obj-$(CONFIG_REALVIEW) += arm_sysctl.o
- common-obj-$(CONFIG_NSERIES) += cbus.o
- common-obj-$(CONFIG_ECCMEMCTL) += eccmemctl.o
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index ede1650672..4f38328d9c 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -5,6 +5,10 @@ allwinner_cpucfg_cpu_reset(uint8_t cpu_id, uint32_t reset_addr) "id %u, reset_ad
- allwinner_cpucfg_read(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
- allwinner_cpucfg_write(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
- 
-+# allwinner-sid.c
-+allwinner_sid_read(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
-+allwinner_sid_write(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
-+
- # eccmemctl.c
- ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
- ecc_mem_writel_mdr(uint32_t val) "Write memory delay 0x%08x"
+     orangepi_binfo.loader_start = h3->memmap[AW_H3_SDRAM];
+     orangepi_binfo.ram_size = machine->ram_size;
+     arm_load_kernel(ARM_CPU(first_cpu), machine, &orangepi_binfo);
 -- 
 2.17.1

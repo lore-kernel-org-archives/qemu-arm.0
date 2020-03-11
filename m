@@ -1,137 +1,90 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp483675lfc;
-        Wed, 11 Mar 2020 01:37:47 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuoZKxCcOzqqbmX9TZtggPw82Z+PCDNfy6G7P9aYaMosQpQaP0xGSuxihpnufV4kTb3KKF7
-X-Received: by 2002:ac8:6909:: with SMTP id e9mr1589340qtr.324.1583915867227;
-        Wed, 11 Mar 2020 01:37:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583915867; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp490866lfc;
+        Wed, 11 Mar 2020 01:46:46 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvO6Vu9y641nKtwLrusZN9zWlQ68Ex8z+eR/yaF0iYhWPIKHvhniPobyIRspID1I1w5kRNP
+X-Received: by 2002:aca:57cd:: with SMTP id l196mr142927oib.1.1583916406652;
+        Wed, 11 Mar 2020 01:46:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583916406; cv=none;
         d=google.com; s=arc-20160816;
-        b=O25Ro7o64w5luNhkJxnR6IWMOV2kQJ4YG/IYt/rdYNqwCq1GcBCHI1q0cLgTkvBTSe
-         jDd7LSJCk8POU3uaoYLC6mfQCJEH+c/4g9ZKV2fFj5MSoiEzRkC20GDuNkrkWthcWCv3
-         TFigh6M0j6V/2Lk9tXmtpg9TT4AiCVBW5p3Z/4qWZnu/OmbdqqKDx54MnQhM5QDO3mC2
-         WjhmoOgZmPZhy5vvSC/bJDJ6G+VeU3uT+ioA7/jvixn4QknHhMO8cnmgbBphrJBwrj9R
-         YztQDP2eRJM+yfj49z2HewaqHbUr7Rv2AKH96aE3rW4LRPPHCmKmQPNp7LuI/3Z9SXKE
-         6qHw==
+        b=v4O9t2G6nviJvXZlIBVvSxUM6ijK9khFbZjQJYvLvqHZEwSPN79ZycKB9A6rVUYMbg
+         8SuGpOUX17xgUbvYF7PV+N6otO/J4bM3TKYotNbYzyMm6hMSS8mR6xA5VIPOb/vppXOY
+         ooUPdRy9dtVrO4bPvLQtVRgW0acUZfqUWqCQrOxOai+zt1VRrs7rUcxc7xm/+QOfciXk
+         CGbwB5vBYBFQi+NHJyBT/itfn9GBoQqbxhvSuxft6sXE2gfkJfLoNlP4BVwy21hS3l2w
+         PYCRVc0epwrJRqCspvIGK8wOavjMg4wKzJ8lQKUIXSdUX+5VXACH899dXY5cVdaY2UmC
+         vbyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+        h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=fhcebCCYl1UeDiz/YaEdu1clp1XINyFTvvxkGCIMNnI=;
-        b=FdAdV9EuVhDrWRBNjOJDoa6F6YUTm2bciQHPTi7MzZL4a+4jR1yOp9c7Bw1RoN1tmA
-         46f7mUbNyh2sOIHPo7r4B0/FwQsjsQ5kmFOX8FN3J0daEljUOW1IA5SMYL83Ppf0Nx7X
-         8jYWWf8zIC5aipd91t70EnGgW3UBiAdchrPLCztUDN9HugaC9LWoCdLK+0x4W0SwgarP
-         4VDN6BCpUQzES/SAUGni7OuPzVy5+KkHR7xrHs/2VsFRsKTbwkAqRTuVkDXnMuXB2Sm6
-         rSPJJZTiSdWHng5iqVi3TaYwnl04SDTsw++thmhrkE4LqRhnMyvu+F80p04T+CfIwnTn
-         k6Gw==
+         :message-id:from:references:cc:to:subject;
+        bh=NZNKlYpkkHtqjJa65T7x6/2NM9EbUeR6Og9RK6XVT88=;
+        b=R0ecWQDoOagfUpG0a4dO80v9AxRJ6/0TB7IgRAaQSz0y4HZeWGTw9w/WRlroSaVeQZ
+         sud43aFpkZQ9zzGT+vXIiY7089E333RMZf+ym/S+Qi2o947kzyQPCOZON3m3tGaSb6wR
+         yVAzqbsjTY5crG+IU3zdN5BBxI6k7L32nZigPGzO0Fw98StOPuefIeZj+rfMpx2E6A8W
+         rBbCfRvOX+KFeKy/6rTWHgPifyV6/Ymyxq5kfhetNEDP5quOn+ErECpvyR8SF/LcVaqg
+         QY7ML9o3cN7tFuK7j4gGf8+0TK9K7ntSw04z2ORo/0TUVDGcG8FdcK4we+5esY12be4k
+         PTxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id 137si585802qkn.203.2020.03.11.01.37.46;
-        Wed, 11 Mar 2020 01:37:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id b21si871780otp.79.2020.03.11.01.46.45;
+        Wed, 11 Mar 2020 01:46:46 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id D39D54A524;
-	Wed, 11 Mar 2020 04:37:46 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: -1.502
-X-Spam-Level: 
-X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
-	SPF_HELO_PASS=-0.001] autolearn=no
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GSk9pdZC7tVB; Wed, 11 Mar 2020 04:37:45 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id E48704A4E1;
-	Wed, 11 Mar 2020 04:37:45 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id ABDA04A483
- for <kvmarm@lists.cs.columbia.edu>; Wed, 11 Mar 2020 04:37:44 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 36GKprepQobb for <kvmarm@lists.cs.columbia.edu>;
- Wed, 11 Mar 2020 04:37:43 -0400 (EDT)
-Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id EEDBB4A1FA
- for <kvmarm@lists.cs.columbia.edu>; Wed, 11 Mar 2020 04:37:42 -0400 (EDT)
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 439021D9CE9A4ADD8EEC;
- Wed, 11 Mar 2020 16:37:36 +0800 (CST)
-Received: from [127.0.0.1] (10.173.222.27) by DGGEMS405-HUB.china.huawei.com
- (10.3.19.205) with Microsoft SMTP Server id 14.3.487.0; Wed, 11 Mar 2020
- 16:37:26 +0800
-Subject: Re: [kvm-unit-tests PATCH v5 06/13] arm/arm64: ITS: Introspection
- tests
-To: Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
- <maz@kernel.org>, <kvmarm@lists.cs.columbia.edu>, <kvm@vger.kernel.org>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1728150AbgCKIqn (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Wed, 11 Mar 2020 04:46:43 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:11659 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1728122AbgCKIqn (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 11 Mar 2020 04:46:43 -0400
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id BA91D104182C4D7121A1;
+        Wed, 11 Mar 2020 16:46:34 +0800 (CST)
+Received: from [127.0.0.1] (10.173.222.27) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Wed, 11 Mar 2020
+ 16:46:25 +0800
+Subject: Re: [kvm-unit-tests PATCH v5 07/13] arm/arm64: ITS:
+ its_enable_defaults
+To:     Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
+        <maz@kernel.org>, <kvmarm@lists.cs.columbia.edu>,
+        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>
+CC:     <drjones@redhat.com>, <andre.przywara@arm.com>,
+        <peter.maydell@linaro.org>, <alexandru.elisei@arm.com>,
+        <thuth@redhat.com>
 References: <20200310145410.26308-1-eric.auger@redhat.com>
- <20200310145410.26308-7-eric.auger@redhat.com>
-From: Zenghui Yu <yuzenghui@huawei.com>
-Message-ID: <83ffda30-e0dc-7fbf-1775-bc45a308acb4@huawei.com>
-Date: Wed, 11 Mar 2020 16:37:24 +0800
+ <20200310145410.26308-8-eric.auger@redhat.com>
+From:   Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <59c072ae-c779-8e6e-7c22-427e087b4b64@huawei.com>
+Date:   Wed, 11 Mar 2020 16:46:23 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <20200310145410.26308-7-eric.auger@redhat.com>
+In-Reply-To: <20200310145410.26308-8-eric.auger@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.173.222.27]
 X-CFilter-Loop: Reflected
-Cc: andre.przywara@arm.com, thuth@redhat.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: hMrMhyXYvajh
-
-Hi Eric,
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: B7uT/RO4hJ+6
 
 On 2020/3/10 22:54, Eric Auger wrote:
-> +#define GITS_TYPER_PLPIS                BIT(0)
-> +#define GITS_TYPER_VLPIS		BIT(1)
-> +#define GITS_TYPER_ITT_ENTRY_SIZE	GENMASK_ULL(7, 4)
-> +#define GITS_TYPER_ITT_ENTRY_SIZE_SHIFT	4
-> +#define GITS_TYPER_IDBITS		GENMASK_ULL(8, 12)
+> its_enable_defaults() enable LPIs at distributor level
 
-Note that this should be GENMASK_ULL(12, 8).
+redistributor level
 
-> +#define GITS_TYPER_IDBITS_SHIFT         8
-> +#define GITS_TYPER_DEVBITS		GENMASK_ULL(13, 17)
+> and ITS level.
+> 
+> gicv3_enable_defaults must be called before.
+> 
+> Signed-off-by: Eric Auger<eric.auger@redhat.com>
 
-(17, 13)
-
-> +#define GITS_TYPER_DEVBITS_SHIFT        13
-> +#define GITS_TYPER_PTA                  BIT(19)
-> +#define GITS_TYPER_CIDBITS		GENMASK_ULL(32, 35)
-
-(35, 32)
-
-> +#define GITS_TYPER_CIDBITS_SHIFT	32
-> +#define GITS_TYPER_CIL			BIT(36)
-
-And please use tab for all of them.
+Reviewed-by: Zenghui Yu <yuzenghui@huawei.com>
 
 
-Thanks,
-Zenghui
-
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+Thanks

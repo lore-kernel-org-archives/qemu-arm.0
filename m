@@ -1,383 +1,195 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp964931lfc;
-        Wed, 11 Mar 2020 09:25:03 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvY2ehuD+wcVjRuO/8GnDhtdR+r+5hIOCIq+JrbT5skiLxiquHMXkof5HzlsgVP+CAauiEB
-X-Received: by 2002:a0c:8601:: with SMTP id p1mr3449356qva.59.1583943903326;
-        Wed, 11 Mar 2020 09:25:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583943903; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1025617lfc;
+        Wed, 11 Mar 2020 10:23:50 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvlwTx59yAg6RHvNpGIkLVMSuwl6dj2Ai69WmKajdGb4Xx8od4kTllZRY+PSBMd1fSxOadP
+X-Received: by 2002:a37:4254:: with SMTP id p81mr3623367qka.98.1583947429898;
+        Wed, 11 Mar 2020 10:23:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583947429; cv=none;
         d=google.com; s=arc-20160816;
-        b=zI+Antioc+S3lMHDeKw5KLGdw0bEp5t2exmtegBnq36d0yLISuGcDNfByZnFmGdzGb
-         5hSyoWv+Ixyv/Mj9U+p3Gy04VPJSqVrA5FkEklY1Tas81YstU3rzwLZBeNDI59d9OM0a
-         fgBd7mkhOYTwtmK0mO2CkjW7qBR963BVDJQG9Hk/O+UXXwTgi4W9EPOGFBuaKU2ZFrwO
-         7JbPHL9SQ8TGYiT+XSSpmnKsm0BS93qNwkLuFfgHZNlhpiR44mi/XXlAW7C6pISMRL5b
-         B3jIkNkT7eiWcOXOKRtNHGaNL28C1MYjwT4FrLw/429EA0z/34d432QbqjIAQLvgGkr5
-         MD2g==
+        b=CD8RI1F7JT/jUhFGSpen/pHoo8j/3KOxNI7XQQCOrVQ+0o2XYN5hZ6AdNq8ky52Pue
+         9hSCne7LZG2wB/pK7fJRtATxxqdbdB9jtdjoo8+I7spGw3y1sD8nX0NjDTYJlP7WrU0j
+         YPIgo3eDuRS5bhOSGUkbFXQWFJnHqI5HSLcmOidadoAXf9xa7l6UJtmWV+Hf1IMeLl5x
+         3lAke3UqRHkVLffkmUWwGMGXmMfdsp3saKzbjcrTuKQA8TtTuom3RFMGXcVK79ZlNYRV
+         Ss2SlGgSAPk6YvGVd5H/uU5unFy+wtCNPu0Jmw0I7s2+XLGui7bWyF/BvgtzYk3b3lqa
+         mxXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=u3TAZ0E/jX6VEo+LiCosEC0JXjTCo1EvBOHrDPpsMHo=;
-        b=IpxDRLpbyJ1EKbz9EZ4yM+RWxa5mry+qal4wG5orgUowxuy+2TH5u0ehxk3y++NwCD
-         XTLQDcE2NOdxAWFDkhFexb70i6JmNLoVd7Yp1Bm8H49ZzdPntvr9YDVOAS7jk1trZ0oE
-         LVfvOQfXF5+5ylsSxHyP5R6dYEQDP2Ivj/9P8g6kK1rHwP9BOHbzi7AKgItqGz2Fz7KL
-         leGJqUbQwagTMvTShkeuQATYXPaUShyDrE2wVZehd5HyxciWjLtho1luhr7PhtibErul
-         DNKa046LF+ivQG2NsxHl49X6AALr3VAwFxTxoO3CPAJ5xuxPafLAPOYt6GjpXOjz6x0L
-         Yuqg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=TLQOMuQvR131k526VymG3Pw670w+Przb0a9NHrMpnGI=;
+        b=gOIoJ8zXzLNL7jxoigteiO9V+fopUpXxGD1/LeB2o2wippBvxeexaS/2h5dirjakYi
+         SxKDwY7EoVOvgXWH7HFsimkhbrPk+gkBlx6utkJBR/uists0CsP9APuxXMC05zAUwMrp
+         ulqNrXg4+lh2CaXpO5YCbbCOr58KhMAyG+TzoRbiC9vHpz6fqRR+Bs6EXj/2CItsGNY0
+         jrBOqjheERz/FGX/XWSDXtDg9Qgc0RVwdyK2YZJzU8LsgC4mUomT0OAQBLXwUC1AhPWz
+         +4dM8gYAFCBq5dccOh90MCXW8VFC01WyenTVulgn/wyQmhtCqrT8u4qaRDC3MARX/gVo
+         RMsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=BAZQOUat;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id a8si1180393qkl.152.2020.03.11.09.25.02;
-        Wed, 11 Mar 2020 09:25:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id u7si1278236qtv.353.2020.03.11.10.23.49
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 11 Mar 2020 10:23:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=BAZQOUat;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 0FBC04A4A0;
-	Wed, 11 Mar 2020 12:25:02 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DtqRQGf6FG8Y; Wed, 11 Mar 2020 12:25:00 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id B0E874A4A9;
-	Wed, 11 Mar 2020 12:25:00 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 211A84A49F
- for <kvmarm@lists.cs.columbia.edu>; Wed, 11 Mar 2020 12:24:59 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tZ+oFq-E9la7 for <kvmarm@lists.cs.columbia.edu>;
- Wed, 11 Mar 2020 12:24:57 -0400 (EDT)
-Received: from us-smtp-1.mimecast.com (us-smtp-1.mimecast.com [205.139.110.61])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id BF5884A32E
- for <kvmarm@lists.cs.columbia.edu>; Wed, 11 Mar 2020 12:24:57 -0400 (EDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583943897;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=DVeoZZJMMZCCIarL9YyHSuTSAyd4nyhK1RYWiCBuaY4=;
- b=BAZQOUatm2J80CrF99MDtRG73DPnskbYcb70Db3KG4mbOVHt80FMFrcXujGCS9u9OpMxZ3
- zsZFCHiZcNwiNtSA3eYrDxx4rEDB5/z6Pf686h1EuWJX3Lr3WzJJxF2qYtPx4qfNnmwb5r
- dtBO/mnFu7YwBXaXoEuRqt4g3EZffs4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-148-E-cCTqctOkmBYw0OSiI2mQ-1; Wed, 11 Mar 2020 12:24:53 -0400
-X-MC-Unique: E-cCTqctOkmBYw0OSiI2mQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 174C61005510;
- Wed, 11 Mar 2020 16:24:52 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (ovpn-206-80.brq.redhat.com
- [10.40.206.80])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 407F726E6D;
- Wed, 11 Mar 2020 16:24:45 +0000 (UTC)
-Date: Wed, 11 Mar 2020 17:24:42 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [kvm-unit-tests PATCH v6 00/13] arm/arm64: Add ITS tests
-Message-ID: <20200311162442.th564amlnxsvzjqc@kamzik.brq.redhat.com>
-References: <20200311135117.9366-1-eric.auger@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56188 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jC55B-0001wP-Au
+	for alex.bennee@linaro.org; Wed, 11 Mar 2020 13:23:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58025)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jC552-0001r9-6Y
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 13:23:41 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jC550-0003d8-Qw
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 13:23:40 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3278 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jC550-0003Zu-Cb; Wed, 11 Mar 2020 13:23:38 -0400
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id AB0E81B2F9C124E293E9;
+ Thu, 12 Mar 2020 01:23:34 +0800 (CST)
+Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
+ DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 12 Mar 2020 01:23:28 +0800
+From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
+ <imammedo@redhat.com>
+Subject: [PATCH v3 04/10] hw/acpi/nvdimm: Fix for NVDIMM incorrect DSM output
+ buffer length
+Date: Wed, 11 Mar 2020 17:20:08 +0000
+Message-ID: <20200311172014.33052-5-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
+In-Reply-To: <20200311172014.33052-1-shameerali.kolothum.thodi@huawei.com>
+References: <20200311172014.33052-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200311135117.9366-1-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Cc: thuth@redhat.com, kvm@vger.kernel.org, maz@kernel.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
- kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+Content-Type: text/plain
+X-Originating-IP: [10.202.227.237]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.191
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: hTinRvk2SJ1X
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, david@redhat.com,
+ mst@redhat.com, linuxarm@huawei.com, xuwei5@hisilicon.com,
+ shannon.zhaosl@gmail.com, lersek@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UK0cjjqvcwIl
 
-On Wed, Mar 11, 2020 at 02:51:04PM +0100, Eric Auger wrote:
-> This series is a revival of an RFC series sent in Dec 2016 [1].
-> Given the amount of code and the lack of traction at that time,
-> I haven't respinned until now. However a recent bug found related
-> to the ITS migration convinced me that this work may deserve to be
-> respinned and enhanced.
-> 
-> Tests exercise main ITS commands and also test migration.
-> With the migration framework, we are able to trigger the
-> migration from guest and that is very practical actually.
-> 
-> What is particular with the ITS programming is that most of
-> the commands are passed through queues and there is real error
-> handling. Invalid commands are just ignored and that is not
-> really tester friendly.
-> 
-> The series can be fount at:
-> https://github.com/eauger/kut/tree/its-v6
-> 
-> Applies on top of arm/queue.
-> 
-> Best Regards
-> 
-> Eric
-> 
-> History:
-> v5 -> v6:
-> - Took into account Zenghui's comments, mostly functional: see invidual
->   history logs
-> - fix wrong assert!
-> 
-> v4 -> v5:
-> - 32b stubs moved back to arm/gic.c
-> - some changes reordering
-> - minor style issues
-> 
-> v3 -> v4:
-> - addressed comments from Drew and Zenghui
-> - added "page_alloc: Introduce get_order()"
-> - removed "arm: gic: Provide per-IRQ helper functions"
-> - ITS files moved to lib64
-> - and many more, see individual logs
-> 
-> v2 -> v3:
-> - fix 32b compilation
-> - take into account Drew's comments (see individual diff logs)
-> 
-> v1 -> v2:
-> - took into account Zenghui's comments
-> - collect R-b's from Thomas
-> 
-> References:
-> [1] [kvm-unit-tests RFC 00/15] arm/arm64: add ITS framework
->     https://lists.gnu.org/archive/html/qemu-devel/2016-12/msg00575.html
-> 
-> Execution:
-> x For other ITS tests:
->   ./run_tests.sh -g its
-> 
-> x non migration tests can be launched invidually. For instance:
->   ./arm-run arm/gic.flat -smp 8 -append 'its-trigger'
-> 
-> Eric Auger (13):
->   libcflat: Add other size defines
->   page_alloc: Introduce get_order()
->   arm/arm64: gic: Introduce setup_irq() helper
->   arm/arm64: gicv3: Add some re-distributor defines
->   arm/arm64: gicv3: Set the LPI config and pending tables
->   arm/arm64: ITS: Introspection tests
->   arm/arm64: ITS: its_enable_defaults
->   arm/arm64: ITS: Device and collection Initialization
->   arm/arm64: ITS: Commands
->   arm/arm64: ITS: INT functional tests
->   arm/run: Allow Migration tests
->   arm/arm64: ITS: migration tests
->   arm/arm64: ITS: pending table migration test
-> 
->  arm/Makefile.arm64         |   1 +
->  arm/Makefile.common        |   2 +-
->  arm/gic.c                  | 460 ++++++++++++++++++++++++++++++++++--
->  arm/run                    |   2 +-
->  arm/unittests.cfg          |  38 +++
->  lib/alloc_page.c           |   7 +-
->  lib/alloc_page.h           |   1 +
->  lib/arm/asm/gic-v3-its.h   |  22 ++
->  lib/arm/asm/gic-v3.h       |  29 +++
->  lib/arm/asm/processor.h    |   2 +
->  lib/arm/gic-v3.c           |  78 +++++++
->  lib/arm/gic.c              |  34 ++-
->  lib/arm/io.c               |  28 +++
->  lib/arm64/asm/gic-v3-its.h | 170 ++++++++++++++
->  lib/arm64/gic-v3-its-cmd.c | 464 +++++++++++++++++++++++++++++++++++++
->  lib/arm64/gic-v3-its.c     | 172 ++++++++++++++
->  lib/libcflat.h             |   3 +
->  17 files changed, 1484 insertions(+), 29 deletions(-)
->  create mode 100644 lib/arm/asm/gic-v3-its.h
->  create mode 100644 lib/arm64/asm/gic-v3-its.h
->  create mode 100644 lib/arm64/gic-v3-its-cmd.c
->  create mode 100644 lib/arm64/gic-v3-its.c
-> 
-> -- 
-> 2.20.1
-> 
->
+As per ACPI spec 6.3, Table 19-419 Object Conversion Rules, if
+the Buffer Field <= to the size of an Integer (in bits), it will
+be treated as an integer. Moreover, the integer size depends on
+DSDT tables revision number. If revision number is < 2, integer
+size is 32 bits, otherwise it is 64 bits. Current NVDIMM common
+DSM aml code (NCAL) uses CreateField() for creating DSM output
+buffer. This creates an issue in arm/virt platform where DSDT
+revision number is 2 and results in DSM buffer with a wrong
+size(8 bytes) gets returned when actual length is < 8 bytes.
+This causes guest kernel to report,
 
-Hi Eric,
+"nfit ACPI0012:00: found a zero length table '0' parsing nfit"
 
-You don't need to respin for me, but let's see if Zenghui has time for
-another review and possibly more r-b's for me to collect.
+In order to fix this, aml code is now modified such that it builds
+the DSM output buffer in a byte by byte fashion when length is
+smaller than Integer size.
 
-While applying I made a few changes that you can integrate if you do
-respin (I can also make the for_each_present_cpu changes myself, if
-you don't respin.)
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+---
+v2 -> v3
+ - Using Integer size as 8 bytes instead of SizeOf(Integer) 
+---
+ hw/acpi/nvdimm.c                            | 40 +++++++++++++++++++--
+ tests/qtest/bios-tables-test-allowed-diff.h |  2 ++
+ 2 files changed, 39 insertions(+), 3 deletions(-)
 
-The changes are for the following reasons and are almost all in
-"arm/arm64: ITS: Introspection tests"
-
- * Only calling its_init for arm64-gicv3, and removing the report call
- * Not including gic-v3-its.h anywhere directly
- * One spaces to tab
-
-diff of the changes below
-
-diff --git a/arm/gic.c b/arm/gic.c
-index 763ed1bc5106..2c56eb212425 100644
---- a/arm/gic.c
-+++ b/arm/gic.c
-@@ -16,7 +16,6 @@
- #include <asm/processor.h>
- #include <asm/delay.h>
- #include <asm/gic.h>
--#include <asm/gic-v3-its.h>
- #include <asm/smp.h>
- #include <asm/barrier.h>
- #include <asm/io.h>
-diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
-index 2167099eb5d1..1af085ef53be 100644
---- a/lib/arm/asm/gic-v3-its.h
-+++ b/lib/arm/asm/gic-v3-its.h
-@@ -5,10 +5,15 @@
-  *
-  * This work is licensed under the terms of the GNU LGPL, version 2.
-  */
--
- #ifndef _ASMARM_GIC_V3_ITS_H_
- #define _ASMARM_GIC_V3_ITS_H_
+diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
+index 5219dd0e2e..213556f35d 100644
+--- a/hw/acpi/nvdimm.c
++++ b/hw/acpi/nvdimm.c
+@@ -938,6 +938,7 @@ static void nvdimm_build_common_dsm(Aml *dev)
+     Aml *method, *ifctx, *function, *handle, *uuid, *dsm_mem, *elsectx2;
+     Aml *elsectx, *unsupport, *unpatched, *expected_uuid, *uuid_invalid;
+     Aml *pckg, *pckg_index, *pckg_buf, *field, *dsm_out_buf, *dsm_out_buf_size;
++    Aml *whilectx, *offset;
+     uint8_t byte_list[1];
  
-+#ifndef _ASMARM_GIC_H_
-+#error Do not directly include <asm/gic-v3-its.h>. Include <asm/gic.h>
-+#endif
+     method = aml_method(NVDIMM_COMMON_DSM, 5, AML_SERIALIZED);
+@@ -1091,13 +1092,46 @@ static void nvdimm_build_common_dsm(Aml *dev)
+     /* RLEN is not included in the payload returned to guest. */
+     aml_append(method, aml_subtract(aml_name(NVDIMM_DSM_OUT_BUF_SIZE),
+                aml_int(4), dsm_out_buf_size));
 +
-+#include <libcflat.h>
++    /*
++     * As per ACPI spec 6.3, Table 19-419 Object Conversion Rules, if
++     * the Buffer Field <= to the size of an Integer (in bits), it will
++     * be treated as an integer. Moreover, the integer size depends on
++     * DSDT tables revision number. If revision number is < 2, integer
++     * size is 32 bits, otherwise it is 64 bits.
++     * Because of this CreateField() canot be used if RLEN < Integer Size.
++     *
++     * Also please note that APCI ASL operator SizeOf() doesn't support
++     * Integer and there isn't any other way to figure out the Integer
++     * size. Hence we assume 8 byte as Integer size and if RLEN < 8 bytes,
++     * build dsm_out_buf byte by byte.
++     */
++    ifctx = aml_if(aml_lless(dsm_out_buf_size, aml_int(8)));
++    offset = aml_local(2);
++    aml_append(ifctx, aml_store(aml_int(0), offset));
++    aml_append(ifctx, aml_name_decl("TBUF", aml_buffer(1, NULL)));
++    aml_append(ifctx, aml_store(aml_buffer(0, NULL), dsm_out_buf));
 +
- /* dummy its_data struct to allow gic_get_dt_bases() call */
- struct its_data {
- 	void *base;
-@@ -16,7 +21,7 @@ struct its_data {
- 
- static inline void its_init(void)
- {
--	report_abort("not supported on 32-bit");
-+	assert_msg(false, "ITS not supported on 32-bit");
++    whilectx = aml_while(aml_lless(offset, dsm_out_buf_size));
++    /* Copy 1 byte at offset from ODAT to temporary buffer(TBUF). */
++    aml_append(whilectx, aml_store(aml_derefof(aml_index(
++                                   aml_name(NVDIMM_DSM_OUT_BUF), offset)),
++                                   aml_index(aml_name("TBUF"), aml_int(0))));
++    aml_append(whilectx, aml_concatenate(dsm_out_buf, aml_name("TBUF"),
++                                         dsm_out_buf));
++    aml_append(whilectx, aml_increment(offset));
++    aml_append(ifctx, whilectx);
++
++    aml_append(ifctx, aml_return(dsm_out_buf));
++    aml_append(method, ifctx);
++
++    /* If RLEN >= Integer size, just use CreateField() operator */
+     aml_append(method, aml_store(aml_shiftleft(dsm_out_buf_size, aml_int(3)),
+                                  dsm_out_buf_size));
+     aml_append(method, aml_create_field(aml_name(NVDIMM_DSM_OUT_BUF),
+                aml_int(0), dsm_out_buf_size, "OBUF"));
+-    aml_append(method, aml_concatenate(aml_buffer(0, NULL), aml_name("OBUF"),
+-                                       dsm_out_buf));
+-    aml_append(method, aml_return(dsm_out_buf));
++    aml_append(method, aml_return(aml_name("OBUF")));
++
+     aml_append(dev, method);
  }
  
--#endif /* _ASMARM_GICv3_ITS_H_ */
-+#endif /* _ASMARM_GIC_V3_ITS_H_ */
-diff --git a/lib/arm/asm/gic.h b/lib/arm/asm/gic.h
-index 922cbe95750c..9564d4f80b93 100644
---- a/lib/arm/asm/gic.h
-+++ b/lib/arm/asm/gic.h
-@@ -40,6 +40,7 @@
- 
- #include <asm/gic-v2.h>
- #include <asm/gic-v3.h>
-+#include <asm/gic-v3-its.h>
- 
- #define PPI(irq)			((irq) + 16)
- #define SPI(irq)			((irq) + GIC_FIRST_SPI)
-diff --git a/lib/arm/gic.c b/lib/arm/gic.c
-index 4f6f15b1eb8a..a807d5f86ee9 100644
---- a/lib/arm/gic.c
-+++ b/lib/arm/gic.c
-@@ -6,7 +6,6 @@
- #include <devicetree.h>
- #include <asm/gic.h>
- #include <asm/io.h>
--#include <asm/gic-v3-its.h>
- 
- struct gicv2_data gicv2_data;
- struct gicv3_data gicv3_data;
-@@ -123,11 +122,14 @@ int gic_version(void)
- 
- int gic_init(void)
- {
--	if (gicv2_init())
-+	if (gicv2_init()) {
- 		gic_common_ops = &gicv2_common_ops;
--	else if (gicv3_init())
-+	} else if (gicv3_init()) {
- 		gic_common_ops = &gicv3_common_ops;
--	its_init();
-+#ifdef __aarch64__
-+		its_init();
-+#endif
-+	}
- 	return gic_version();
- }
- 
-diff --git a/lib/arm64/asm/gic-v3-its.h b/lib/arm64/asm/gic-v3-its.h
-index 872953c005d2..412f43849bac 100644
---- a/lib/arm64/asm/gic-v3-its.h
-+++ b/lib/arm64/asm/gic-v3-its.h
-@@ -8,6 +8,10 @@
- #ifndef _ASMARM64_GIC_V3_ITS_H_
- #define _ASMARM64_GIC_V3_ITS_H_
- 
-+#ifndef _ASMARM_GIC_H_
-+#error Do not directly include <asm/gic-v3-its.h>. Include <asm/gic.h>
-+#endif
-+
- struct its_typer {
- 	unsigned int ite_size;
- 	unsigned int eventid_bits;
-@@ -26,7 +30,7 @@ struct its_baser {
- 	phys_addr_t table_addr;
- };
- 
--#define GITS_BASER_NR_REGS              8
-+#define GITS_BASER_NR_REGS		8
- #define GITS_MAX_DEVICES		8
- #define GITS_MAX_COLLECTIONS		8
- 
-diff --git a/lib/arm64/gic-v3-its-cmd.c b/lib/arm64/gic-v3-its-cmd.c
-index 34b090459ef4..65f1c8c8752f 100644
---- a/lib/arm64/gic-v3-its-cmd.c
-+++ b/lib/arm64/gic-v3-its-cmd.c
-@@ -7,7 +7,6 @@
-  */
- #include <asm/io.h>
- #include <asm/gic.h>
--#include <asm/gic-v3-its.h>
- 
- #define ITS_ITT_ALIGN		SZ_256
- 
-diff --git a/lib/arm64/gic-v3-its.c b/lib/arm64/gic-v3-its.c
-index 9c9fa60400f3..6a3642182bf7 100644
---- a/lib/arm64/gic-v3-its.c
-+++ b/lib/arm64/gic-v3-its.c
-@@ -5,7 +5,6 @@
-  */
- #include <asm/gic.h>
- #include <alloc_page.h>
--#include <asm/gic-v3-its.h>
- 
- void its_parse_typer(void)
- {
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8b..eb8bae1407 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,3 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/pc/SSDT.dimmpxm",
++"tests/data/acpi/q35/SSDT.dimmpxm",
+-- 
+2.17.1
 
- 
 
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

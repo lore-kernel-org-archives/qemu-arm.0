@@ -1,368 +1,158 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp797408lfc;
-        Wed, 11 Mar 2020 06:52:47 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vugoLwtvboznXxalHXnzXfVbAmwk0fG9bZ0rGKx4UHf7EP4D1hjvzwcdsGzSDKdL8z33hVj
-X-Received: by 2002:ac8:6a11:: with SMTP id t17mr2756042qtr.307.1583934767472;
-        Wed, 11 Mar 2020 06:52:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583934767; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp804232lfc;
+        Wed, 11 Mar 2020 07:00:23 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsigdoLGGlefg52YA2P5g8th5h4m31cRSI6VvkbmhVo8lRFliUr4NQUcfSPCfRiIbZIPYIW
+X-Received: by 2002:a9d:c24:: with SMTP id 33mr2477984otr.355.1583935223047;
+        Wed, 11 Mar 2020 07:00:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583935223; cv=none;
         d=google.com; s=arc-20160816;
-        b=rL21r6QeX4jeBiRdEzNGJqJa2GjP8b0qjmBWo7I9TlOH5RVjmAou8jL8caIqqaU7cp
-         OtoEf1CvxagukoKsv9494b+D2pEbkFC+tKSLnfPdpqOJ+P7T5IZml0bCTfpx8V15QfXU
-         Y6kO5YBrUgk1HS1dMKzuzOnpxv7fCwXaacBqhgW2PvVR4/o0M8t132kOeWUX1rYvuoiG
-         40RBogli2Frt99y9AAIb4vy+AFpYc83ILrB0SujqchzTkpw8K47b0haFcddVv8cf/jwI
-         r9je9l6HXo4RaaFaiYKh+JG818xFydISMFEQQNn4t1v0ehaMPmefW01lZyfZsWhbJ2p4
-         VI0g==
+        b=kX/ul6BcEiezUYUGCxnnDQVBmuU1uYC0wsfMOuun5NAAPdOHLeQQ2GzysQucHzbEKD
+         9BIxEcModjdmCkhUImStnL7CLoyuk9Nqae6TXMftvyn89YD354cAjxeMte54rXDDj9HR
+         tRLqz7Hyxefi8ex60uEWnXRl01ksXJXQ7Y+UpngMoq+OthAI9wrtHyfC6tUYMpIN8VM0
+         iA7GsZxNdI7Q9jBI0lALcz97hkrwryiujTCtZFv4gyizOSHnOgJ2FW1XQWFNfMIPn/Cr
+         MO+PCVZX+KK2u/1GVcvNtsF5/ruCpQkxaG3PNuvk8uVsaQn+3pkGfpsfbAd7iW24EiJP
+         26XQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=dGJ1hl+Fa2h83VvRT3JhvsOIUPSDhBkmEQn067GNM50=;
-        b=vsldooXeM5gB9SAMYCYn7awmsT213U/EdlbYYSvfF7N2pZ70B8UvFw3rW9IfPLhVYU
-         4L4qn5KLW0lc7g1PL2n7kP3mV93NWX54sOJ5lFotL93g2DCtwjsxMICH4muEhHVKDuDr
-         xYXiR5mR1zGiAA7mGplFHDpzRHJSJrMgV6mq8zgK+6prPuDfl2Xc8jxLm0WazWSilJiu
-         Q2GNsxzMvIVTOPqon5gLCIrRgtLljuDuoCuJig9/PZglyCBBJbyp1z1OnQNLkfvgwEm0
-         aGS1hfyVXXDlSH8pyrjh/NQmfvt0xUg3SysO9i60/Ctz9d1zYtHoDlOPIBFwamnLM4tJ
-         tz1w==
+        h=list-id:precedence:sender:user-agent:message-id:references
+         :in-reply-to:subject:cc:to:from:date:content-transfer-encoding
+         :mime-version:dkim-signature;
+        bh=QITZVvU6kfL+fcdx6ruOG0zazN0dzOG9JkpTxnF6i5k=;
+        b=HKil7KpSnAxPzPFQ0bPXNhX91zxIbo2PqPN9/gAloru4rV3nVOQKqYG03uOg254x4G
+         /OEIYD4SkHkgM8Plb130xpnEZSVdgAcaGMiKCz9SSRHiwsVBX0f4DcxBnbhlQcphgef0
+         N+HXfyqYloixDiibF9/JHJGW+lVts9qtKr8FhUuElSkx5dE0Tr6j1oRz3/7P7PJnb6am
+         aN/GqlsBQdUN+ImoIP3sWyZKOEml01lYavLduCQ0/wwQT4okvlIZwqHGHpRIY9qCzYIq
+         yBUI+B6uvSmIMwGg3q7qSGGF7LzKGCibFJaIK7I0l9VZsVOg5VyxFmFJJlkr1Sy/idu3
+         UvpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=OAQTGN+Y;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id o17si1051707qtm.244.2020.03.11.06.52.47;
-        Wed, 11 Mar 2020 06:52:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=pass header.i=@kernel.org header.s=default header.b=hT3EYx6u;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id f23si1191191oti.283.2020.03.11.07.00.22;
+        Wed, 11 Mar 2020 07:00:23 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=OAQTGN+Y;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 175414A957;
-	Wed, 11 Mar 2020 09:52:47 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fSykrXo5Ju-7; Wed, 11 Mar 2020 09:52:45 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id CC9654A54B;
-	Wed, 11 Mar 2020 09:52:45 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 22CC24A4A0
- for <kvmarm@lists.cs.columbia.edu>; Wed, 11 Mar 2020 09:52:45 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BjXVnJRF-9uF for <kvmarm@lists.cs.columbia.edu>;
- Wed, 11 Mar 2020 09:52:44 -0400 (EDT)
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [205.139.110.120])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 0A0AF4A534
- for <kvmarm@lists.cs.columbia.edu>; Wed, 11 Mar 2020 09:52:44 -0400 (EDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583934763;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=w8gyhdKEGrl7OA1XIyl7eoBpwHweEDRgm98fLmXN58w=;
- b=OAQTGN+Y1eO45Zi/U5o77OXy4DoQoqQ04BE6QJhOPtPNENRbWph3ecEZrZv7Uwha6p9vtt
- rFn6XuQlC39Tzn89gsCgJB/IPn1q5p8skn8W+g6gbPqu7fqSXVvdoA1C2tl1CePdqFn4pB
- XD6qCUV7LwJcZ5iRAqHQ3rpC4mTYmnk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-460-nO-BCBR5MxeMgrSeKJl9QQ-1; Wed, 11 Mar 2020 09:52:42 -0400
-X-MC-Unique: nO-BCBR5MxeMgrSeKJl9QQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A83091137849;
- Wed, 11 Mar 2020 13:52:40 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.36.118.12])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 25B4A9182F;
- Wed, 11 Mar 2020 13:52:35 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
- kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Subject: [kvm-unit-tests PATCH v6 13/13] arm/arm64: ITS: pending table
- migration test
-Date: Wed, 11 Mar 2020 14:51:17 +0100
-Message-Id: <20200311135117.9366-14-eric.auger@redhat.com>
-In-Reply-To: <20200311135117.9366-1-eric.auger@redhat.com>
-References: <20200311135117.9366-1-eric.auger@redhat.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b=hT3EYx6u;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1729652AbgCKOAT (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Wed, 11 Mar 2020 10:00:19 -0400
+Received: from mail.kernel.org ([198.145.29.99]:47950 "EHLO mail.kernel.org"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S1729428AbgCKOAT (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 11 Mar 2020 10:00:19 -0400
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org [51.254.78.96])
+        (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+        (No client certificate requested)
+        by mail.kernel.org (Postfix) with ESMTPSA id 6D44A21D56;
+        Wed, 11 Mar 2020 14:00:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+        s=default; t=1583935218;
+        bh=0OhcIcZrD2BAj+IbJhSUJLV6Mv2HMcdowWmdsbMbNhY=;
+        h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+        b=hT3EYx6uOpjy1EAwyCTjY6+WpJ5Jl4+nlTYOM1Vi2FQKFukSHtjNZeet9m2Em3MkX
+         ypwcs2QckRkoy2Vw4PJxXmM1eFw+8XI4FBzqmEwoVmOzFY8DCKKfvQwJttcf4jjYi+
+         b1nE90aNOKAZrzYelCvCXhL5i4jKplfAXywUiTgc=
+Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
+        by disco-boy.misterjones.org with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+        (Exim 4.92)
+        (envelope-from <maz@kernel.org>)
+        id 1jC1uC-00BvZI-Lr; Wed, 11 Mar 2020 14:00:16 +0000
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Cc: andre.przywara@arm.com, thuth@redhat.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 6u6nliXL/B/s
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
+Content-Transfer-Encoding: 8bit
+Date:   Wed, 11 Mar 2020 14:00:16 +0000
+From:   Marc Zyngier <maz@kernel.org>
+To:     Auger Eric <eric.auger@redhat.com>
+Cc:     Zenghui Yu <yuzenghui@huawei.com>, eric.auger.pro@gmail.com,
+        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org, drjones@redhat.com,
+        andre.przywara@arm.com, peter.maydell@linaro.org,
+        alexandru.elisei@arm.com, thuth@redhat.com
+Subject: Re: [kvm-unit-tests PATCH v5 10/13] arm/arm64: ITS: INT functional
+ tests
+In-Reply-To: <46f0ed1d-3bda-f91b-e2b0-addf1c61c373@redhat.com>
+References: <20200310145410.26308-1-eric.auger@redhat.com>
+ <20200310145410.26308-11-eric.auger@redhat.com>
+ <d3f651a0-2344-4d6e-111b-be133db7e068@huawei.com>
+ <46f0ed1d-3bda-f91b-e2b0-addf1c61c373@redhat.com>
+Message-ID: <301a8b402ff7e480e927b0f8f8b093f2@kernel.org>
+X-Sender: maz@kernel.org
+User-Agent: Roundcube Webmail/1.3.10
+X-SA-Exim-Connect-IP: 51.254.78.96
+X-SA-Exim-Rcpt-To: eric.auger@redhat.com, yuzenghui@huawei.com, eric.auger.pro@gmail.com, kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org, drjones@redhat.com, andre.przywara@arm.com, peter.maydell@linaro.org, alexandru.elisei@arm.com, thuth@redhat.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: nEZg9xfV1OiS
 
-Add two new migration tests. One testing the migration of
-a topology where collection were unmapped. The second test
-checks the migration of the pending table.
+On 2020-03-11 13:48, Auger Eric wrote:
+> Hi Zenghui,
+> 
+> On 3/11/20 12:59 PM, Zenghui Yu wrote:
+>> Hi Eric,
+>> 
+>> On 2020/3/10 22:54, Eric Auger wrote:
+>>> Triggers LPIs through the INT command.
+>>> 
+>>> the test checks the LPI hits the right CPU and triggers
+>>> the right LPI intid, ie. the translation is correct.
+>>> 
+>>> Updates to the config table also are tested, along with inv
+>>> and invall commands.
+>>> 
+>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>> 
+>>> ---
+>> 
+>> [...]
+>> 
+>>> +static void test_its_trigger(void)
+>>> +{
+>>> +    struct its_collection *col3, *col2;
+>>> +    struct its_device *dev2, *dev7;
+>>> +
+>>> +    if (its_prerequisites(4))
+>>> +        return;
+>>> +
+>>> +    dev2 = its_create_device(2 /* dev id */, 8 /* nb_ites */);
+>>> +    dev7 = its_create_device(7 /* dev id */, 8 /* nb_ites */);
+>>> +
+>>> +    col3 = its_create_collection(3 /* col id */, 3/* target PE */);
+>>> +    col2 = its_create_collection(2 /* col id */, 2/* target PE */);
+>>> +
+>>> +    gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
+>>> +    gicv3_lpi_set_config(8196, LPI_PROP_DEFAULT);
+>>> +
+>>> +    its_send_invall(col2);
+>>> +    its_send_invall(col3);
+>> 
+>> These two INVALLs should be issued after col2 and col3 are mapped,
+>> otherwise this will cause the INVALL command error as per the spec
+>> (though KVM doesn't complain it at all).
+> Yes you're right. reading the spec again:
+> 
+> A command error occurs if any of the following apply:
+> ../..
+> The collection specified by ICID has not been mapped to an RDbase using
+> MAPC.
+> 
+> But as mentionned in the cover letter, no real means to retrieve the
+> error at the moment.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+That is still a problem with the ITS. There is no architectural way
+to report an error, even if the error numbers are architected...
 
----
+One thing we could do though is to implement the stall model (as 
+described
+in 5.3.2). It still doesn't give us the error, but at least the command
+queue would stop on detecting an error.
 
-v5 -> v6:
-- s/Set the PTZ/Clear the PTZ
-- Move the collection inval after MAPC
-- remove the unmap collection test
-
-v4 -> v5:
-- move stub from header to arm/gic.c
-
-v3 -> v4:
-- do not talk about odd/even CPUs, use pe0 and pe1
-- comment the delay
-
-v2 -> v3:
-- tests belong to both its and migration groups
-- use LPI(i)
-- gicv3_lpi_set_pending_table_bit renamed into gicv3_lpi_set_clr_pending
----
- arm/gic.c         | 138 ++++++++++++++++++++++++++++++++++++++++++++++
- arm/unittests.cfg |  16 ++++++
- 2 files changed, 154 insertions(+)
-
-diff --git a/arm/gic.c b/arm/gic.c
-index 6ecfdbc..763ed1b 100644
---- a/arm/gic.c
-+++ b/arm/gic.c
-@@ -193,6 +193,7 @@ static void lpi_handler(struct pt_regs *regs __unused)
- 	smp_rmb(); /* pairs with wmb in lpi_stats_expect */
- 	lpi_stats.observed.cpu_id = smp_processor_id();
- 	lpi_stats.observed.lpi_id = irqnr;
-+	acked[lpi_stats.observed.cpu_id]++;
- 	smp_wmb(); /* pairs with rmb in check_lpi_stats */
- }
- 
-@@ -236,6 +237,22 @@ static void secondary_lpi_test(void)
- 	while (1)
- 		wfi();
- }
-+
-+static void check_lpi_hits(int *expected, const char *msg)
-+{
-+	bool pass = true;
-+	int i;
-+
-+	for (i = 0; i < nr_cpus; i++) {
-+		if (acked[i] != expected[i]) {
-+			report_info("expected %d LPIs on PE #%d, %d observed",
-+				    expected[i], i, acked[i]);
-+			pass = false;
-+			break;
-+		}
-+	}
-+	report(pass, "%s", msg);
-+}
- #endif
- 
- static void gicv2_ipi_send_self(void)
-@@ -591,6 +608,8 @@ static void gic_test_mmio(void)
- static void test_its_introspection(void) {}
- static void test_its_trigger(void) {}
- static void test_its_migration(void) {}
-+static void test_its_pending_migration(void) {}
-+static void test_migrate_unmapped_collection(void) {}
- 
- #else /* __aarch64__ */
- 
-@@ -659,6 +678,15 @@ static int its_prerequisites(int nb_cpus)
- 	return 0;
- }
- 
-+static void set_lpi(struct its_device *dev, u32 eventid, u32 physid,
-+		    struct its_collection *col)
-+{
-+	assert(dev && col);
-+
-+	its_send_mapti(dev, physid, eventid, col);
-+	gicv3_lpi_set_config(physid, LPI_PROP_DEFAULT);
-+}
-+
- /*
-  * Setup the configuration for those mappings:
-  * dev_id=2 event=20 -> vcpu 3, intid=8195
-@@ -790,6 +818,108 @@ static void test_its_migration(void)
- 	its_send_int(dev7, 255);
- 	check_lpi_stats("dev7/eventid=255 triggers LPI 8196 on PE #2 after migration");
- }
-+
-+static void test_migrate_unmapped_collection(void)
-+{
-+	struct its_collection *col;
-+	struct its_device *dev2, *dev7;
-+	int pe0 = nr_cpus - 1;
-+	u8 config;
-+
-+	if (its_setup1())
-+		return;
-+
-+	col = its_create_collection(pe0, pe0);
-+	dev2 = its_get_device(2);
-+	dev7 = its_get_device(7);
-+
-+	/* MAPTI with the collection unmapped */
-+	set_lpi(dev2, 0, 8192, col);
-+
-+	puts("Now migrate the VM, then press a key to continue...\n");
-+	(void)getchar();
-+	report_info("Migration complete");
-+
-+	/* on the destination, map the collection */
-+	its_send_mapc(col, true);
-+	its_send_invall(col);
-+
-+	lpi_stats_expect(2, 8196);
-+	its_send_int(dev7, 255);
-+	check_lpi_stats("dev7/eventid= 255 triggered LPI 8196 on PE #2");
-+
-+	config = gicv3_lpi_get_config(8192);
-+	report(config == LPI_PROP_DEFAULT,
-+	       "Config of LPI 8192 was properly migrated");
-+
-+	lpi_stats_expect(pe0, 8192);
-+	its_send_int(dev2, 0);
-+	check_lpi_stats("dev2/eventid = 0 triggered LPI 8192 on PE0");
-+}
-+
-+static void test_its_pending_migration(void)
-+{
-+	struct its_device *dev;
-+	struct its_collection *collection[2];
-+	int *expected = malloc(nr_cpus * sizeof(int));
-+	int pe0 = nr_cpus - 1, pe1 = nr_cpus - 2;
-+	u64 pendbaser;
-+	void *ptr;
-+	int i;
-+
-+	if (its_prerequisites(4))
-+		return;
-+
-+	dev = its_create_device(2 /* dev id */, 8 /* nb_ites */);
-+	its_send_mapd(dev, true);
-+
-+	collection[0] = its_create_collection(pe0, pe0);
-+	collection[1] = its_create_collection(pe1, pe1);
-+	its_send_mapc(collection[0], true);
-+	its_send_mapc(collection[1], true);
-+
-+	/* disable lpi at redist level */
-+	gicv3_lpi_rdist_disable(pe0);
-+	gicv3_lpi_rdist_disable(pe1);
-+
-+	/* lpis are interleaved inbetween the 2 PEs */
-+	for (i = 0; i < 256; i++) {
-+		struct its_collection *col = i % 2 ? collection[0] :
-+						     collection[1];
-+		int vcpu = col->target_address >> 16;
-+
-+		its_send_mapti(dev, LPI(i), i, col);
-+		gicv3_lpi_set_config(LPI(i), LPI_PROP_DEFAULT);
-+		gicv3_lpi_set_clr_pending(vcpu, LPI(i), true);
-+	}
-+	its_send_invall(collection[0]);
-+	its_send_invall(collection[1]);
-+
-+	/* Clear the PTZ bit on each pendbaser */
-+
-+	expected[pe0] = 128;
-+	expected[pe1] = 128;
-+
-+	ptr = gicv3_data.redist_base[pe0] + GICR_PENDBASER;
-+	pendbaser = readq(ptr);
-+	writeq(pendbaser & ~GICR_PENDBASER_PTZ, ptr);
-+
-+	ptr = gicv3_data.redist_base[pe1] + GICR_PENDBASER;
-+	pendbaser = readq(ptr);
-+	writeq(pendbaser & ~GICR_PENDBASER_PTZ, ptr);
-+
-+	gicv3_lpi_rdist_enable(pe0);
-+	gicv3_lpi_rdist_enable(pe1);
-+
-+	puts("Now migrate the VM, then press a key to continue...\n");
-+	(void)getchar();
-+	report_info("Migration complete");
-+
-+	/* let's wait for the 256 LPIs to be handled */
-+	mdelay(1000);
-+
-+	check_lpi_hits(expected, "128 LPIs on both PE0 and PE1 after migration");
-+}
- #endif
- 
- int main(int argc, char **argv)
-@@ -831,6 +961,14 @@ int main(int argc, char **argv)
- 		report_prefix_push(argv[1]);
- 		test_its_migration();
- 		report_prefix_pop();
-+	} else if (!strcmp(argv[1], "its-pending-migration")) {
-+		report_prefix_push(argv[1]);
-+		test_its_pending_migration();
-+		report_prefix_pop();
-+	} else if (!strcmp(argv[1], "its-migrate-unmapped-collection")) {
-+		report_prefix_push(argv[1]);
-+		test_migrate_unmapped_collection();
-+		report_prefix_pop();
- 	} else if (strcmp(argv[1], "its-introspection") == 0) {
- 		report_prefix_push(argv[1]);
- 		test_its_introspection();
-diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-index 480adec..b96f0a1 100644
---- a/arm/unittests.cfg
-+++ b/arm/unittests.cfg
-@@ -144,6 +144,22 @@ extra_params = -machine gic-version=3 -append 'its-migration'
- groups = its migration
- arch = arm64
- 
-+[its-pending-migration]
-+file = gic.flat
-+smp = $MAX_SMP
-+accel = kvm
-+extra_params = -machine gic-version=3 -append 'its-pending-migration'
-+groups = its migration
-+arch = arm64
-+
-+[its-migrate-unmapped-collection]
-+file = gic.flat
-+smp = $MAX_SMP
-+accel = kvm
-+extra_params = -machine gic-version=3 -append 'its-migrate-unmapped-collection'
-+groups = its migration
-+arch = arm64
-+
- # Test PSCI emulation
- [psci]
- file = psci.flat
+         M.
 -- 
-2.20.1
-
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+Jazz is not dead. It just smells funny...

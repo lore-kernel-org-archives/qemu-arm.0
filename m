@@ -1,204 +1,271 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp762495lfc;
-        Wed, 11 Mar 2020 06:20:17 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvtEHb8dcP9EdxNrveKGrCayc8vifevGD1TjnvE6FjQsbrIS7b5MYx0b1b8i/Tb09FIEJY7
-X-Received: by 2002:ad4:4d0c:: with SMTP id l12mr2891622qvl.156.1583932817824;
-        Wed, 11 Mar 2020 06:20:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583932817; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp792899lfc;
+        Wed, 11 Mar 2020 06:48:26 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtNOxT8yNWjsI9IK4TeUcwe+0Lb6x2lJtssAD5Xsaf3qSUKS4TQYEiZfOcZ7qz9d2MP6D4Z
+X-Received: by 2002:aca:1b09:: with SMTP id b9mr2026501oib.170.1583934506734;
+        Wed, 11 Mar 2020 06:48:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583934506; cv=none;
         d=google.com; s=arc-20160816;
-        b=j53ioHjakECxzlV9AkZEkHb28rlHMUBCnLogN/MC0vpgMmIQM31d77BGETLDcoqRGA
-         LBVFp43FAw+QyyXL/zM/2xk1IaimWNeFmdNjW5VP1x0k/6RgVlOncv8S3kAH+624IzFe
-         zNVXKYEGhhtdS67QP9n6mUPLxvcIaeimdaPzeGCFeCjuwp1g7JaC7prnUz5nWOW5SlYE
-         PGXv7n6NjFr9IBK+LxW8x2Knr7LDcAAbb+g/sQMtHgZhzYg3KmQfYL5ixXf8fDiVm5eU
-         ioFNY/EV7lv+aNR+HQwPc7SygEwEwBZB+uuxAWkNMk1nJAzKe2dgTVT9j2NJ8jjb3Q+g
-         +JWA==
+        b=wigdr9DC1he0O4iR+8j6yZwW+FvwqDsnoq5yi9gOTjqYZYimov7tB+ZIaotqwnoLgc
+         u+R7w7pmsUf7oB7vFzoUIFI1lj8x0TFv4KDO5CQ/zlOo+3HujmQNYRGgkMt/x28l9hYl
+         zEuGn+bVaI/aZPRmB5jroBhqeyDXqOmDMXUZNVZkfY+7PMCaH1bFmz8dLR7dFHv5CQIS
+         2ZYs3nWn9c1VM33JA2f5+U9UtiDYP3PMRZgbdYNK3Eq84f3NF80q/+vVQ+YN9KZ9P2jU
+         6yvPkK3nvNfVG+doWAvzsdq2gM7pBYdd0UJXoMOAOjZU1b5HEIHXe06Uy6jbsHA+N8c0
+         T5Bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=HKQr9VZsT9WY28hk7QtNvhUZkU4EhLIW9bZ3iOeyXR8=;
-        b=K0a7kJDzyCt/VeWOLHsKOJGSrspOoAxvw2g5JqGhPhsLsdAtbgMUrruwBwxApBEAbp
-         joYvCcpmCkN1WpAKTKcUhiC3ZCHhQrKjzY0UBqfrbphyNrnsbzcYXOKz/rDGagD0tERF
-         Je9tmFAr99gkBfs7Z2SmQMiKhwoeqH4V+OyFicRea+1Mi2xhIXeppgBKrEvgnIvdTwgX
-         TRWqsX8nEaHl3zTrP2XJmFYwrYKlHKx8Gd5YFEAXaLqZDZ1xwEfvkNbLR0t7E4v8n+yv
-         1xQsbCxyvn+/7BpSYRmQUGNIaUjDivSNsHJuf4xNKNgIGzIj3CuEzKYaBi/k7O1Zhmg5
-         gEAw==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:dkim-signature;
+        bh=ojxoxR+MHQtWUQ/abjg7bLaa0SyuDx1Bi9ausr3HrUw=;
+        b=PCx+MgsK0J5CP6yBuYicAg1+OAoBKGn5czljZ8N6F/Ny+rx/D7DVra5vnQA/EtGEnj
+         SBnGIw8K1fw4HlEg5q6GVk14oybK+joAvJhWTDAGmqWQHGJSlqeVPLhJTHrGWEPbLp+E
+         74Y7npIM+ahu1JF5/k6oBV9LFVH5i66bo91TW1NlC3jTbPCLDr19hVcnaFF5zkCMr2Kh
+         85PzmL5oXBNRJaG06ftT36D0j05InOYvlxweaj/zUIcH4QIk4rxBQFYdsU7XuReOwErA
+         oqVksi/UAIcaGqNnRFH5bWt0s5yvXbNu7q4ykhjrmGcs878xi9HgpEpBJxoqnDxxg651
+         xlLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=a6lx5JMt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n7si734196qvm.205.2020.03.11.06.20.17
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Mar 2020 06:20:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="P7JAe8/6";
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id o1si1137006otk.154.2020.03.11.06.48.26;
+        Wed, 11 Mar 2020 06:48:26 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=a6lx5JMt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51718 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jC1HV-0000yb-9B
-	for alex.bennee@linaro.org; Wed, 11 Mar 2020 09:20:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56656)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1jC1E9-0001jX-PK
- for qemu-devel@nongnu.org; Wed, 11 Mar 2020 09:16:51 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1jC1E8-0007uQ-K6
- for qemu-devel@nongnu.org; Wed, 11 Mar 2020 09:16:49 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:58423
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1jC1E8-0007tN-FQ
- for qemu-devel@nongnu.org; Wed, 11 Mar 2020 09:16:48 -0400
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="P7JAe8/6";
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1729541AbgCKNsZ (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Wed, 11 Mar 2020 09:48:25 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:30123 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1729428AbgCKNsZ (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 11 Mar 2020 09:48:25 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583932608;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HKQr9VZsT9WY28hk7QtNvhUZkU4EhLIW9bZ3iOeyXR8=;
- b=a6lx5JMtkwHbz8/Xiww6L5m1HsSkuDzNKsHnKlZY7a9vC8PGYypUP5DpXfcUazchVJbxun
- Fg2AnM4xuIYc/cDugtVh3MxzjFOlfnP99xqVsDPkpLSt/33qYgXDhAvndKfIHhqtW/tnt3
- gYexR1QB6CDWsEw9Bhhrd8t7BUb6jkA=
+        s=mimecast20190719; t=1583934504;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=ojxoxR+MHQtWUQ/abjg7bLaa0SyuDx1Bi9ausr3HrUw=;
+        b=P7JAe8/6IEVJ+I+0ew1AVvuGMow+dFyBmWJyAXtlP/4CNdBcTZ5tEXxxu43fD2cczMYH3g
+        5UQQKtRvDd4kXV2R3BEDxHjqDOjL8MU/0iKi1NkI838Gxlr8KmdJqriM2iz8rzJlR1bwLn
+        PLgVrRvBojQX6dR2oauLoUqPg21I8BI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-335-PsdSzhYuMGeKKkxrSPeQYg-1; Wed, 11 Mar 2020 09:16:47 -0400
-X-MC-Unique: PsdSzhYuMGeKKkxrSPeQYg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9F9C7107ACC4;
- Wed, 11 Mar 2020 13:16:45 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.36.118.12])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A466A84779;
- Wed, 11 Mar 2020 13:16:42 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org
-Subject: [PATCH v5 4/6] target/arm/kvm: Let kvm_arm_vgic_probe() return a
- bitmap
-Date: Wed, 11 Mar 2020 14:16:16 +0100
-Message-Id: <20200311131618.7187-5-eric.auger@redhat.com>
-In-Reply-To: <20200311131618.7187-1-eric.auger@redhat.com>
-References: <20200311131618.7187-1-eric.auger@redhat.com>
+ us-mta-189-TwTOY6s4MGWF3JJ6-DH5-w-1; Wed, 11 Mar 2020 09:48:20 -0400
+X-MC-Unique: TwTOY6s4MGWF3JJ6-DH5-w-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 687EE1005509;
+        Wed, 11 Mar 2020 13:48:18 +0000 (UTC)
+Received: from [10.36.118.12] (unknown [10.36.118.12])
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id 114CA60CC0;
+        Wed, 11 Mar 2020 13:48:13 +0000 (UTC)
+Subject: Re: [kvm-unit-tests PATCH v5 10/13] arm/arm64: ITS: INT functional
+ tests
+To:     Zenghui Yu <yuzenghui@huawei.com>, eric.auger.pro@gmail.com,
+        maz@kernel.org, kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc:     drjones@redhat.com, andre.przywara@arm.com,
+        peter.maydell@linaro.org, alexandru.elisei@arm.com,
+        thuth@redhat.com
+References: <20200310145410.26308-1-eric.auger@redhat.com>
+ <20200310145410.26308-11-eric.auger@redhat.com>
+ <d3f651a0-2344-4d6e-111b-be133db7e068@huawei.com>
+From:   Auger Eric <eric.auger@redhat.com>
+Message-ID: <46f0ed1d-3bda-f91b-e2b0-addf1c61c373@redhat.com>
+Date:   Wed, 11 Mar 2020 14:48:11 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <d3f651a0-2344-4d6e-111b-be133db7e068@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: maz@kernel.org, drjones@redhat.com, richard.henderson@linaro.org,
- philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tYm4ELKYQGxt
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: s/LJ/D52JKgK
 
-Convert kvm_arm_vgic_probe() so that it returns a
-bitmap of supported in-kernel emulation VGIC versions instead
-of the max version: at the moment values can be v2 and v3.
-This allows to expose the case where the host GICv3 also
-supports GICv2 emulation. This will be useful to choose the
-default version in KVM accelerated mode.
+Hi Zenghui,
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Andrew Jones <drjones@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/kvm_arm.h |  3 +++
- hw/arm/virt.c        | 11 +++++++++--
- target/arm/kvm.c     | 14 ++++++++------
- 3 files changed, 20 insertions(+), 8 deletions(-)
+On 3/11/20 12:59 PM, Zenghui Yu wrote:
+> Hi Eric,
+>=20
+> On 2020/3/10 22:54, Eric Auger wrote:
+>> Triggers LPIs through the INT command.
+>>
+>> the test checks the LPI hits the right CPU and triggers
+>> the right LPI intid, ie. the translation is correct.
+>>
+>> Updates to the config table also are tested, along with inv
+>> and invall commands.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>
+>> ---
+>=20
+> [...]
+>=20
+>> +static void test_its_trigger(void)
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 struct its_collection *col3, *col2;
+>> +=C2=A0=C2=A0=C2=A0 struct its_device *dev2, *dev7;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 if (its_prerequisites(4))
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 dev2 =3D its_create_device(2 /* dev id */, 8 /* nb=
+_ites */);
+>> +=C2=A0=C2=A0=C2=A0 dev7 =3D its_create_device(7 /* dev id */, 8 /* nb=
+_ites */);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 col3 =3D its_create_collection(3 /* col id */, 3/*=
+ target PE */);
+>> +=C2=A0=C2=A0=C2=A0 col2 =3D its_create_collection(2 /* col id */, 2/*=
+ target PE */);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
+>> +=C2=A0=C2=A0=C2=A0 gicv3_lpi_set_config(8196, LPI_PROP_DEFAULT);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 its_send_invall(col2);
+>> +=C2=A0=C2=A0=C2=A0 its_send_invall(col3);
+>=20
+> These two INVALLs should be issued after col2 and col3 are mapped,
+> otherwise this will cause the INVALL command error as per the spec
+> (though KVM doesn't complain it at all).
+Yes you're right. reading the spec again:
 
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index ae9e075d75..48bf5e16d5 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -15,6 +15,9 @@
- #include "exec/memory.h"
- #include "qemu/error-report.h"
-=20
-+#define KVM_ARM_VGIC_V2   (1 << 0)
-+#define KVM_ARM_VGIC_V3   (1 << 1)
-+
- /**
-  * kvm_arm_vcpu_init:
-  * @cs: CPUState
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index e55cafa014..a94bc5ddae 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1554,11 +1554,18 @@ static void finalize_gic_version(VirtMachineState *=
-vms)
-                 vms->gic_version =3D VIRT_GIC_VERSION_3;
-             }
-         } else {
--            vms->gic_version =3D kvm_arm_vgic_probe();
--            if (!vms->gic_version) {
-+            int probe_bitmap =3D kvm_arm_vgic_probe();
-+
-+            if (!probe_bitmap) {
-                 error_report(
-                     "Unable to determine GIC version supported by host");
-                 exit(1);
-+            } else {
-+                if (probe_bitmap & KVM_ARM_VGIC_V3) {
-+                    vms->gic_version =3D VIRT_GIC_VERSION_3;
-+                } else {
-+                    vms->gic_version =3D VIRT_GIC_VERSION_2;
-+                }
-             }
-         }
-     } else if (vms->gic_version =3D=3D VIRT_GIC_VERSION_NOSEL) {
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 85860e6f95..390077c518 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -874,15 +874,17 @@ int kvm_arch_irqchip_create(KVMState *s)
-=20
- int kvm_arm_vgic_probe(void)
- {
-+    int val =3D 0;
-+
-     if (kvm_create_device(kvm_state,
-                           KVM_DEV_TYPE_ARM_VGIC_V3, true) =3D=3D 0) {
--        return 3;
--    } else if (kvm_create_device(kvm_state,
--                                 KVM_DEV_TYPE_ARM_VGIC_V2, true) =3D=3D 0)=
- {
--        return 2;
--    } else {
--        return 0;
-+        val |=3D KVM_ARM_VGIC_V3;
-     }
-+    if (kvm_create_device(kvm_state,
-+                          KVM_DEV_TYPE_ARM_VGIC_V2, true) =3D=3D 0) {
-+        val |=3D KVM_ARM_VGIC_V2;
-+    }
-+    return val;
- }
-=20
- int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level)
---=20
-2.20.1
+A command error occurs if any of the following apply:
+../..
+The collection specified by ICID has not been mapped to an RDbase using
+MAPC.
 
+But as mentionned in the cover letter, no real means to retrieve the
+error at the moment.
+
+>=20
+>> +
+>> +=C2=A0=C2=A0=C2=A0 report_prefix_push("int");
+>> +=C2=A0=C2=A0=C2=A0 /*
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * dev=3D2, eventid=3D20=C2=A0 -> lpi=3D 8195=
+, col=3D3
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * dev=3D7, eventid=3D255 -> lpi=3D 8196, col=
+=3D2
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * Trigger dev2, eventid=3D20 and dev7, event=
+id=3D255
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * Check both LPIs hit
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 */
+>> +
+>> +=C2=A0=C2=A0=C2=A0 its_send_mapd(dev2, true);
+>> +=C2=A0=C2=A0=C2=A0 its_send_mapd(dev7, true);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 its_send_mapc(col3, true);
+>> +=C2=A0=C2=A0=C2=A0 its_send_mapc(col2, true);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 its_send_mapti(dev2, 8195 /* lpi id */, 20 /* even=
+t id */, col3);
+>> +=C2=A0=C2=A0=C2=A0 its_send_mapti(dev7, 8196 /* lpi id */, 255 /* eve=
+nt id */, col2);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 lpi_stats_expect(3, 8195);
+>> +=C2=A0=C2=A0=C2=A0 its_send_int(dev2, 20);
+>> +=C2=A0=C2=A0=C2=A0 check_lpi_stats("dev=3D2, eventid=3D20=C2=A0 -> lp=
+i=3D 8195, col=3D3");
+>> +
+>> +=C2=A0=C2=A0=C2=A0 lpi_stats_expect(2, 8196);
+>> +=C2=A0=C2=A0=C2=A0 its_send_int(dev7, 255);
+>> +=C2=A0=C2=A0=C2=A0 check_lpi_stats("dev=3D7, eventid=3D255 -> lpi=3D =
+8196, col=3D2");
+>> +
+>> +=C2=A0=C2=A0=C2=A0 report_prefix_pop();
+>> +
+>> +=C2=A0=C2=A0=C2=A0 report_prefix_push("inv/invall");
+>> +
+>> +=C2=A0=C2=A0=C2=A0 /*
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * disable 8195, check dev2/eventid=3D20 does=
+ not trigger the
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * corresponding LPI
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 */
+>> +=C2=A0=C2=A0=C2=A0 gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT & ~LPI=
+_PROP_ENABLED);
+>> +=C2=A0=C2=A0=C2=A0 its_send_inv(dev2, 20);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 lpi_stats_expect(-1, -1);
+>> +=C2=A0=C2=A0=C2=A0 its_send_int(dev2, 20);
+>> +=C2=A0=C2=A0=C2=A0 check_lpi_stats("dev2/eventid=3D20 does not trigge=
+r any LPI");
+>> +
+>> +=C2=A0=C2=A0=C2=A0 /*
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * re-enable the LPI but willingly do not cal=
+l invall
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * so the change in config is not taken into =
+account.
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * The LPI should not hit
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 */
+>> +=C2=A0=C2=A0=C2=A0 gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
+>> +=C2=A0=C2=A0=C2=A0 lpi_stats_expect(-1, -1);
+>> +=C2=A0=C2=A0=C2=A0 its_send_int(dev2, 20);
+>> +=C2=A0=C2=A0=C2=A0 check_lpi_stats("dev2/eventid=3D20 still does not =
+trigger any LPI");
+>> +
+>> +=C2=A0=C2=A0=C2=A0 /* Now call the invall and check the LPI hits */
+>> +=C2=A0=C2=A0=C2=A0 its_send_invall(col3);
+>> +=C2=A0=C2=A0=C2=A0 lpi_stats_expect(3, 8195);
+>> +=C2=A0=C2=A0=C2=A0 its_send_int(dev2, 20);
+>> +=C2=A0=C2=A0=C2=A0 check_lpi_stats("dev2/eventid=3D20 now triggers an=
+ LPI");
+>> +
+>> +=C2=A0=C2=A0=C2=A0 report_prefix_pop();
+>> +
+>> +=C2=A0=C2=A0=C2=A0 report_prefix_push("mapd valid=3Dfalse");
+>> +=C2=A0=C2=A0=C2=A0 /*
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * Unmap device 2 and check the eventid 20 fo=
+rmerly
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 * attached to it does not hit anymore
+>> +=C2=A0=C2=A0=C2=A0=C2=A0 */
+>> +
+>> +=C2=A0=C2=A0=C2=A0 its_send_mapd(dev2, false);
+>> +=C2=A0=C2=A0=C2=A0 lpi_stats_expect(-1, -1);
+>> +=C2=A0=C2=A0=C2=A0 its_send_int(dev2, 20);
+>> +=C2=A0=C2=A0=C2=A0 check_lpi_stats("no LPI after device unmap");
+>> +=C2=A0=C2=A0=C2=A0 report_prefix_pop();
+>> +
+>> +=C2=A0=C2=A0=C2=A0 /* Unmap the collection this time and check no LPI=
+ does hit */
+>> +=C2=A0=C2=A0=C2=A0 report_prefix_push("mapc valid=3Dfalse");
+>> +=C2=A0=C2=A0=C2=A0 its_send_mapc(col2, false);
+>=20
+> And as for the MAPC, the spec says:
+>=20
+> " When V is 0:
+> Behavior is unpredictable if there are interrupts that are mapped to th=
+e
+> specified collection, with the restriction that further translation
+> requests from that device are ignored. "
+>=20
+> So this collection-unmap test may not make sense?
+makes sense. Removing it.
+>=20
+>> +=C2=A0=C2=A0=C2=A0 lpi_stats_expect(-1, -1);
+>> +=C2=A0=C2=A0=C2=A0 its_send_int(dev7, 255);
+>> +=C2=A0=C2=A0=C2=A0 check_lpi_stats("no LPI after collection unmap");
+>> +=C2=A0=C2=A0=C2=A0 report_prefix_pop();
+>> +}
+>=20
+> [...]
+>=20
+> Otherwise looks good.
+Thanks!
+
+Eric
+>=20
+>=20
+> Thanks,
+> Zenghui
+>=20

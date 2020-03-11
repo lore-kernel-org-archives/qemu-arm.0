@@ -1,69 +1,68 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1025617lfc;
-        Wed, 11 Mar 2020 10:23:50 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvlwTx59yAg6RHvNpGIkLVMSuwl6dj2Ai69WmKajdGb4Xx8od4kTllZRY+PSBMd1fSxOadP
-X-Received: by 2002:a37:4254:: with SMTP id p81mr3623367qka.98.1583947429898;
-        Wed, 11 Mar 2020 10:23:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583947429; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1025739lfc;
+        Wed, 11 Mar 2020 10:23:58 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtD0y4mgf/M/Rmkyt6AJ5N5OzgcBjH3loY7Z4wLV21OiKgXdYc0nK6lK/Lg+RK9qlZgtRQk
+X-Received: by 2002:ac8:6957:: with SMTP id n23mr3655627qtr.79.1583947438516;
+        Wed, 11 Mar 2020 10:23:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583947438; cv=none;
         d=google.com; s=arc-20160816;
-        b=CD8RI1F7JT/jUhFGSpen/pHoo8j/3KOxNI7XQQCOrVQ+0o2XYN5hZ6AdNq8ky52Pue
-         9hSCne7LZG2wB/pK7fJRtATxxqdbdB9jtdjoo8+I7spGw3y1sD8nX0NjDTYJlP7WrU0j
-         YPIgo3eDuRS5bhOSGUkbFXQWFJnHqI5HSLcmOidadoAXf9xa7l6UJtmWV+Hf1IMeLl5x
-         3lAke3UqRHkVLffkmUWwGMGXmMfdsp3saKzbjcrTuKQA8TtTuom3RFMGXcVK79ZlNYRV
-         Ss2SlGgSAPk6YvGVd5H/uU5unFy+wtCNPu0Jmw0I7s2+XLGui7bWyF/BvgtzYk3b3lqa
-         mxXw==
+        b=hPNxlNYDriwhfVocesqLeJfEvTbDuoSz4hkyJRvX2VGTwQqNsrH/7rUiIwpaHIh6UJ
+         hV/pQFVjIziPNunuWm/GpruzRMzgFhZyq7w8RY8SvHf/B0ig1yPRCvwID8Ai437kHUBY
+         Glc+HnHh+MvS01KF2OoQG6zeSvtxt00YdXcOtPwNbyDwDH87xM2Kpy+mhI5MJRQ+pu82
+         tY/F1dVm2ZsMq82Jdp4dNX9daH7PC4m845uvCiS2p2DkwyWxb+YTiOY/g86ttw593RrX
+         nubTIfxyj5v2R+31+2IwNx/zh0MdeUDF/g1c5hQ227NMHar5CGAxJbrm0/YjubT1bxRw
+         dVhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=TLQOMuQvR131k526VymG3Pw670w+Przb0a9NHrMpnGI=;
-        b=gOIoJ8zXzLNL7jxoigteiO9V+fopUpXxGD1/LeB2o2wippBvxeexaS/2h5dirjakYi
-         SxKDwY7EoVOvgXWH7HFsimkhbrPk+gkBlx6utkJBR/uists0CsP9APuxXMC05zAUwMrp
-         ulqNrXg4+lh2CaXpO5YCbbCOr58KhMAyG+TzoRbiC9vHpz6fqRR+Bs6EXj/2CItsGNY0
-         jrBOqjheERz/FGX/XWSDXtDg9Qgc0RVwdyK2YZJzU8LsgC4mUomT0OAQBLXwUC1AhPWz
-         +4dM8gYAFCBq5dccOh90MCXW8VFC01WyenTVulgn/wyQmhtCqrT8u4qaRDC3MARX/gVo
-         RMsw==
+        bh=9c4IQBvzRkufAwdC9dSxucGO0wye5J6f1toNwDioFWU=;
+        b=cHePMjmTVgkfvVQjyE+E48YoaGIp5OXZ2sc5iWlbmEgX7unezejKMBo9/4ZOyawEp+
+         ZZnBevCjN5qLzlSpWuiCLTi7Qdw/vh1SNL1h/3b3rtzwtbJb6M9ZgqC5lZNc68CsGtT1
+         dXYk4wglcPYgYsYyGrECwcebr4OBAdn1Bt2vA4BS8sAW2nzJ/Du1EsJ81XbeadgtN+sj
+         VC5X5ehZzglSB0JisSK/okYDswnp8Q3iSbyljHuVzRb/PYVQRbGawaSl/MeXh6mrHUFF
+         gFgL0Cd/spWhVhFDDcaM+Cv7PYlO09pMwN5Twi5AjlsjaFpSqalN7sw9ja0iLyKNGoMd
+         zfyA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u7si1278236qtv.353.2020.03.11.10.23.49
+        by mx.google.com with ESMTPS id n13si1142854qvo.119.2020.03.11.10.23.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Mar 2020 10:23:49 -0700 (PDT)
+        Wed, 11 Mar 2020 10:23:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56188 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56205 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jC55B-0001wP-Au
-	for alex.bennee@linaro.org; Wed, 11 Mar 2020 13:23:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58025)
+	id 1jC55J-0002H3-SS
+	for alex.bennee@linaro.org; Wed, 11 Mar 2020 13:23:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58024)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jC552-0001r9-6Y
+ id 1jC552-0001r4-5a
  for qemu-arm@nongnu.org; Wed, 11 Mar 2020 13:23:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jC550-0003d8-Qw
+ id 1jC550-0003d0-Pl
  for qemu-arm@nongnu.org; Wed, 11 Mar 2020 13:23:40 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3278 helo=huawei.com)
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3277 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jC550-0003Zu-Cb; Wed, 11 Mar 2020 13:23:38 -0400
+ id 1jC550-0003Zv-CB; Wed, 11 Mar 2020 13:23:38 -0400
 Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id AB0E81B2F9C124E293E9;
+ by Forcepoint Email with ESMTP id B1DB18F36637FA53CF75;
  Thu, 12 Mar 2020 01:23:34 +0800 (CST)
 Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
  DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 12 Mar 2020 01:23:28 +0800
+ 14.3.487.0; Thu, 12 Mar 2020 01:23:24 +0800
 From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
  <imammedo@redhat.com>
-Subject: [PATCH v3 04/10] hw/acpi/nvdimm: Fix for NVDIMM incorrect DSM output
- buffer length
-Date: Wed, 11 Mar 2020 17:20:08 +0000
-Message-ID: <20200311172014.33052-5-shameerali.kolothum.thodi@huawei.com>
+Subject: [PATCH v3 03/10] exec: Fix for qemu_ram_resize() callback
+Date: Wed, 11 Mar 2020 17:20:07 +0000
+Message-ID: <20200311172014.33052-4-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20200311172014.33052-1-shameerali.kolothum.thodi@huawei.com>
 References: <20200311172014.33052-1-shameerali.kolothum.thodi@huawei.com>
@@ -90,105 +89,75 @@ Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, david@redhat.com,
  shannon.zhaosl@gmail.com, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UK0cjjqvcwIl
+X-TUID: 3VeacLhX0A9A
 
-As per ACPI spec 6.3, Table 19-419 Object Conversion Rules, if
-the Buffer Field <= to the size of an Integer (in bits), it will
-be treated as an integer. Moreover, the integer size depends on
-DSDT tables revision number. If revision number is < 2, integer
-size is 32 bits, otherwise it is 64 bits. Current NVDIMM common
-DSM aml code (NCAL) uses CreateField() for creating DSM output
-buffer. This creates an issue in arm/virt platform where DSDT
-revision number is 2 and results in DSM buffer with a wrong
-size(8 bytes) gets returned when actual length is < 8 bytes.
-This causes guest kernel to report,
+From: David Hildenbrand <david@redhat.com>
 
-"nfit ACPI0012:00: found a zero length table '0' parsing nfit"
+Summarizing the issue:
+1. Memory regions contain ram blocks with a different size,  if the
+   size is  not properly aligned. While memory regions can have an
+   unaligned size, ram blocks can't. This is true when creating
+   resizable memory region with  an unaligned size.
+2. When resizing a ram block/memory region, the size of the memory
+   region  is set to the aligned size. The callback is called with
+   the aligned size. The unaligned piece is lost.
 
-In order to fix this, aml code is now modified such that it builds
-the DSM output buffer in a byte by byte fashion when length is
-smaller than Integer size.
+Because of the above, if ACPI blob length modifications happens
+after the initial virt_acpi_build() call, and the changed blob
+length is within the PAGE size boundary, then the revised size
+is not seen by the firmware on Guest reboot.
 
-Suggested-by: Igor Mammedov <imammedo@redhat.com>
+Hence make sure callback is called if memory region size is changed,
+irrespective of aligned or not.
+
+Signed-off-by: David Hildenbrand <david@redhat.com>
+[Shameer: added commit log]
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
-v2 -> v3
- - Using Integer size as 8 bytes instead of SizeOf(Integer) 
+Please find the discussion here,
+https://patchwork.kernel.org/patch/11339591/
 ---
- hw/acpi/nvdimm.c                            | 40 +++++++++++++++++++--
- tests/qtest/bios-tables-test-allowed-diff.h |  2 ++
- 2 files changed, 39 insertions(+), 3 deletions(-)
+ exec.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
 
-diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-index 5219dd0e2e..213556f35d 100644
---- a/hw/acpi/nvdimm.c
-+++ b/hw/acpi/nvdimm.c
-@@ -938,6 +938,7 @@ static void nvdimm_build_common_dsm(Aml *dev)
-     Aml *method, *ifctx, *function, *handle, *uuid, *dsm_mem, *elsectx2;
-     Aml *elsectx, *unsupport, *unpatched, *expected_uuid, *uuid_invalid;
-     Aml *pckg, *pckg_index, *pckg_buf, *field, *dsm_out_buf, *dsm_out_buf_size;
-+    Aml *whilectx, *offset;
-     uint8_t byte_list[1];
+diff --git a/exec.c b/exec.c
+index 0cc500d53a..f8974cd303 100644
+--- a/exec.c
++++ b/exec.c
+@@ -2073,11 +2073,21 @@ static int memory_try_enable_merging(void *addr, size_t len)
+  */
+ int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp)
+ {
++    const ram_addr_t unaligned_size = newsize;
++
+     assert(block);
  
-     method = aml_method(NVDIMM_COMMON_DSM, 5, AML_SERIALIZED);
-@@ -1091,13 +1092,46 @@ static void nvdimm_build_common_dsm(Aml *dev)
-     /* RLEN is not included in the payload returned to guest. */
-     aml_append(method, aml_subtract(aml_name(NVDIMM_DSM_OUT_BUF_SIZE),
-                aml_int(4), dsm_out_buf_size));
-+
-+    /*
-+     * As per ACPI spec 6.3, Table 19-419 Object Conversion Rules, if
-+     * the Buffer Field <= to the size of an Integer (in bits), it will
-+     * be treated as an integer. Moreover, the integer size depends on
-+     * DSDT tables revision number. If revision number is < 2, integer
-+     * size is 32 bits, otherwise it is 64 bits.
-+     * Because of this CreateField() canot be used if RLEN < Integer Size.
-+     *
-+     * Also please note that APCI ASL operator SizeOf() doesn't support
-+     * Integer and there isn't any other way to figure out the Integer
-+     * size. Hence we assume 8 byte as Integer size and if RLEN < 8 bytes,
-+     * build dsm_out_buf byte by byte.
-+     */
-+    ifctx = aml_if(aml_lless(dsm_out_buf_size, aml_int(8)));
-+    offset = aml_local(2);
-+    aml_append(ifctx, aml_store(aml_int(0), offset));
-+    aml_append(ifctx, aml_name_decl("TBUF", aml_buffer(1, NULL)));
-+    aml_append(ifctx, aml_store(aml_buffer(0, NULL), dsm_out_buf));
-+
-+    whilectx = aml_while(aml_lless(offset, dsm_out_buf_size));
-+    /* Copy 1 byte at offset from ODAT to temporary buffer(TBUF). */
-+    aml_append(whilectx, aml_store(aml_derefof(aml_index(
-+                                   aml_name(NVDIMM_DSM_OUT_BUF), offset)),
-+                                   aml_index(aml_name("TBUF"), aml_int(0))));
-+    aml_append(whilectx, aml_concatenate(dsm_out_buf, aml_name("TBUF"),
-+                                         dsm_out_buf));
-+    aml_append(whilectx, aml_increment(offset));
-+    aml_append(ifctx, whilectx);
-+
-+    aml_append(ifctx, aml_return(dsm_out_buf));
-+    aml_append(method, ifctx);
-+
-+    /* If RLEN >= Integer size, just use CreateField() operator */
-     aml_append(method, aml_store(aml_shiftleft(dsm_out_buf_size, aml_int(3)),
-                                  dsm_out_buf_size));
-     aml_append(method, aml_create_field(aml_name(NVDIMM_DSM_OUT_BUF),
-                aml_int(0), dsm_out_buf_size, "OBUF"));
--    aml_append(method, aml_concatenate(aml_buffer(0, NULL), aml_name("OBUF"),
--                                       dsm_out_buf));
--    aml_append(method, aml_return(dsm_out_buf));
-+    aml_append(method, aml_return(aml_name("OBUF")));
-+
-     aml_append(dev, method);
+     newsize = HOST_PAGE_ALIGN(newsize);
+ 
+     if (block->used_length == newsize) {
++        /*
++         * We don't have to resize the ram block (which only knows aligned
++         * sizes), however, we have to notify if the unaligned size changed.
++         */
++        if (block->resized && unaligned_size != memory_region_size(block->mr)) {
++            block->resized(block->idstr, unaligned_size, block->host);
++            memory_region_set_size(block->mr, unaligned_size);
++        }
+         return 0;
+     }
+ 
+@@ -2101,9 +2111,9 @@ int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp)
+     block->used_length = newsize;
+     cpu_physical_memory_set_dirty_range(block->offset, block->used_length,
+                                         DIRTY_CLIENTS_ALL);
+-    memory_region_set_size(block->mr, newsize);
++    memory_region_set_size(block->mr, unaligned_size);
+     if (block->resized) {
+-        block->resized(block->idstr, newsize, block->host);
++        block->resized(block->idstr, unaligned_size, block->host);
+     }
+     return 0;
  }
- 
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8b..eb8bae1407 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,3 @@
- /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/pc/SSDT.dimmpxm",
-+"tests/data/acpi/q35/SSDT.dimmpxm",
 -- 
 2.17.1
 

@@ -1,337 +1,165 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp396936lfc;
-        Tue, 10 Mar 2020 23:57:17 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vubYFR9v3aAtyopB1K2o5K9DU2QeEFhGViILHFLGybLQ48F4kMGuLq9Qff2LCSYWG/hjDSB
-X-Received: by 2002:a05:620a:1435:: with SMTP id k21mr1327713qkj.299.1583909837322;
-        Tue, 10 Mar 2020 23:57:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583909837; cv=none;
-        d=google.com; s=arc-20160816;
-        b=FctsIl30G6a/Z8spoxkUjT8Zk2yJiuRhabWZ+Dg6T2d0pKkLx09pNF5Z5GXZzfAKL7
-         VwKRIOItjTzjJCScu9hiGzLh7w3zvRq+uRfBQNAD4yzfLijPFh4PMifxQ6HhO6r0sM3c
-         K5d9qxqLR+YekzMwLrH+Ixk+tR+YfsYT/el3jG69NjVDCm5UoHLUxnexShlcflRvyG/f
-         72XGgsV1y4u2bqNccTxE3mARJCjU2at5+roOlT75XAC8pOvCbeh/Y6NYnF/R1QUWtIsZ
-         UFgnkg56AP2/XYzik3OHxwhBYRfMakhgLxxPyhiHoVx8ziNj8csZN3c4WIoL8OgWmLI+
-         qUaw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=lMQ8Ls/5UNh2CeM9JrBjlxyyT05PO0oq+06rVR26ElQ=;
-        b=vxSciQrFjdn2B3z44ZR9wRsFxDs3b/SJWThQ+CHv7PxnsTTRYBZ4h01rrjW8PMXCg8
-         2dqc5izEEucAjoFYoesjzV4WFDl0FEJ1SrDLt9+kDLXRvtKb3AKRcwMOc5dd3gdz13Mn
-         cGS18tVrWaKevfsRmhxTEuFUeBD51IDyejjIBFFjLaYC+pLP7NvDw0gHQLPIbTQg+LaL
-         8bcMkWD01cB6TAdMswV+0YoxaXsWmKrz64N7be23HUTUlDy4Q+XRI3eXjByR1kLxPJPo
-         g0EoW8H++H+rWvBJsuSyPR6T4U/4zZKe5gRzaN9vW24cV78fNh3A3c65f9rnr15EiqPo
-         kpFg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pnsSDz7u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp410299lfc;
+        Wed, 11 Mar 2020 00:11:19 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtN6WnBYtJKTKtO8W3Kv4eUhicYA68uDrQGtIvbCxPvqd53aMq63SVPdM2WjvSsWPQ13uhl
+X-Received: by 2002:a37:270c:: with SMTP id n12mr1421783qkn.463.1583910678941;
+        Wed, 11 Mar 2020 00:11:18 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l30si528192qtd.382.2020.03.10.23.57.17
+        by mx.google.com with ESMTPS id e45si533166qtc.251.2020.03.11.00.11.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Mar 2020 23:57:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 11 Mar 2020 00:11:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pnsSDz7u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46922 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47446 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBvIq-0001S2-NZ
-	for alex.bennee@linaro.org; Wed, 11 Mar 2020 02:57:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59697)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jBvWP-0007fE-Mz
+	for alex.bennee@linaro.org; Wed, 11 Mar 2020 03:11:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41038)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jBv6j-0006Ua-Kk
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 02:44:47 -0400
+ (envelope-from <no-reply@patchew.org>) id 1jBvVi-0007G7-Ir
+ for qemu-devel@nongnu.org; Wed, 11 Mar 2020 03:10:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1jBv6h-000247-1H
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 02:44:45 -0400
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:55054)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1jBv6f-00023A-MF
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 02:44:41 -0400
-Received: by mail-pj1-x1041.google.com with SMTP id np16so476993pjb.4
- for <qemu-arm@nongnu.org>; Tue, 10 Mar 2020 23:44:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=lMQ8Ls/5UNh2CeM9JrBjlxyyT05PO0oq+06rVR26ElQ=;
- b=pnsSDz7uX7GhYBZZYMXEfjVFEGPwaQGv7iR7MVDt6XU0LW1Tc/eITVr8UjAcfxvK4V
- 2B4Fu0DhX74i8csLOBBc+UDgPV85jn5k84zP86wz9JIuJ1V5T840XSH3obuDoTn/6Fbp
- tYzJOBB3QsLnT643Tp5+KdKKwjHOU+cNNHu2kh7Z37ZMteBQNAf8ah68jkLbsR9PGjK/
- f+A6jOioYsKWmdEAHaoK1u2yLyT+ID8FJFKXIgPhvDeTc8HpoN7smPU3NCHOolFjgmW4
- la7nrqjJmb6BQiW5r4AAPyoq602MxLUej4VkFpm2Lw410Poj3NiLhVHVxMEcjF9bl1ho
- 3x3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=lMQ8Ls/5UNh2CeM9JrBjlxyyT05PO0oq+06rVR26ElQ=;
- b=uUdN80uvZ9f4BMedZ6Jp0MtzeaRIpTxDc0S6f7mrXwzvzGuzmkyXEpelstCmb1pTPI
- F3Ong/JmA4uBVD6TbfNACVwE4gRMfzULxI6RoZh04gA8rgaXgYW06xZyvrm4PYCRrE2p
- bw9/X6IZy2fEPsUfdy9FeSDf8goW2Q0pqSakvkX855wog3o7mCfJ89wXd+el/jvY7hC8
- ixKUxIpTBF9Ci7BdGRUIogLVhwjQBuYP7apjJ0qL9u9rexeNIKFCYWVZUQy3KsFpeRyP
- ctUacfzRj6UfLzBzlt9dZ7OF7TgSCV7UIQ6AkKO3eOECxEpNj7xD2sKCzoDHN2lJHS54
- 1DpQ==
-X-Gm-Message-State: ANhLgQ29tpPXen+8lotQYyj4jhO9U7gqgthvftEy5/+h3aABNieJgzJE
- FQu0XSW2UawTzYlUrK7y39LyvSMXTLM=
-X-Received: by 2002:a17:90a:e7c8:: with SMTP id
- kb8mr1881923pjb.113.1583909080607; 
- Tue, 10 Mar 2020 23:44:40 -0700 (PDT)
-Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net.
- [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id z3sm50137807pfz.155.2020.03.10.23.44.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Mar 2020 23:44:39 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 14/16] target/arm: Reuse sve_probe_page for scatter stores
-Date: Tue, 10 Mar 2020 23:44:18 -0700
-Message-Id: <20200311064420.30606-15-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ (envelope-from <no-reply@patchew.org>) id 1jBvVg-0005AB-P4
+ for qemu-devel@nongnu.org; Wed, 11 Mar 2020 03:10:34 -0400
+Resent-Date: Wed, 11 Mar 2020 03:10:34 -0400
+Resent-Message-Id: <E1jBvVg-0005AB-P4@eggs.gnu.org>
+Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21187)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1jBvVg-00057v-HG; Wed, 11 Mar 2020 03:10:32 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1583910626; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=m4Dfk9URsEEXZb3ofpA5oLy4GY7A2uqnSoHCFAg6zcNGST8gc3xQ/N5x6TYdCXTMN5UymxOI1lIkbhWiLv4TeUk34ud/riLhMN1y32cWrk6k1mgh58IkvRbwJWvAu6IqmSGXJSN/n6udLsTr1EM0DaXrIZthU9vkWgLEWy9F2RY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1583910626;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=xV5BBanb9LkI0C7E5Uax2yILf55RX3wuaAnDjs3Q9zA=; 
+ b=QjYTqFYK0nHv/LrbBApEBe26w9ow+87na0KgdGd0eg4f6Cp//zH44RdKTyU8Cr9+wlVDACPq94eCMEp8nJsXltXKDKu4oQyoqm3l0VKSTzaLf8xhCftQCMYn4l3l2SrUClxMDyh1qUFpz1eEfhoE5sA/wnJAaRopc1vM3uT6HQk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1583910623147325.54569096200134;
+ Wed, 11 Mar 2020 00:10:23 -0700 (PDT)
 In-Reply-To: <20200311064420.30606-1-richard.henderson@linaro.org>
-References: <20200311064420.30606-1-richard.henderson@linaro.org>
+Subject: Re: [PATCH 00/16] target/arm: sve load/store improvements
+Message-ID: <158391062190.4461.13297013687538092318@39012742ff91>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::1041
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: richard.henderson@linaro.org
+Date: Wed, 11 Mar 2020 00:10:23 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 136.143.188.51
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MDoPLhhf+5GB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zVcV82+Y4+yc
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/sve_helper.c | 182 ++++++++++++++++++++++++----------------
- 1 file changed, 111 insertions(+), 71 deletions(-)
-
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index a33699adf8..e8b8f2560d 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -5414,94 +5414,134 @@ DO_LDFF1_ZPZ_D(dd_be, zd, MO_64)
- 
- /* Stores with a vector index.  */
- 
--static void sve_st1_zs(CPUARMState *env, void *vd, void *vg, void *vm,
--                       target_ulong base, uint32_t desc, uintptr_t ra,
--                       zreg_off_fn *off_fn, sve_ldst1_tlb_fn *tlb_fn)
-+static inline QEMU_ALWAYS_INLINE
-+void sve_st1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-+               target_ulong base, uint32_t desc, uintptr_t retaddr,
-+               int esize, int msize, zreg_off_fn *off_fn,
-+               sve_ldst1_host_fn *host_fn,
-+               sve_ldst1_tlb_fn *tlb_fn)
- {
-     const int scale = extract32(desc, SIMD_DATA_SHIFT + MEMOPIDX_SHIFT, 2);
--    intptr_t i, oprsz = simd_oprsz(desc);
-+    const int mmu_idx = cpu_mmu_index(env, false);
-+    const intptr_t reg_max = simd_oprsz(desc);
-+    void *host[ARM_MAX_VQ * 4];
-+    intptr_t reg_off, i;
-+    SVEHostPage info, info2;
- 
--    for (i = 0; i < oprsz; ) {
--        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));
-+    /*
-+     * Probe all of the elements for host addresses and flags.
-+     */
-+    i = reg_off = 0;
-+    do {
-+        uint64_t pg = vg[reg_off >> 6];
-         do {
--            if (likely(pg & 1)) {
--                target_ulong off = off_fn(vm, i);
--                tlb_fn(env, vd, i, base + (off << scale), ra);
-+            target_ulong addr = base + (off_fn(vm, reg_off) << scale);
-+            target_ulong in_page = -(addr | TARGET_PAGE_MASK);
-+
-+            host[i] = NULL;
-+            if (likely((pg >> (reg_off & 63)) & 1)) {
-+                if (likely(in_page >= msize)) {
-+                    sve_probe_page(&info, false, env, addr, 0, MMU_DATA_STORE,
-+                                   mmu_idx, retaddr);
-+                    host[i] = info.host;
-+                } else {
-+                    /*
-+                     * Element crosses the page boundary.
-+                     * Probe both pages, but do not record the host address,
-+                     * so that we use the slow path.
-+                     */
-+                    sve_probe_page(&info, false, env, addr, 0,
-+                                   MMU_DATA_STORE, mmu_idx, retaddr);
-+                    sve_probe_page(&info2, false, env, addr + in_page, 0,
-+                                   MMU_DATA_STORE, mmu_idx, retaddr);
-+                    info.flags |= info2.flags;
-+                }
-+
-+                if (unlikely(info.flags & TLB_WATCHPOINT)) {
-+                    cpu_check_watchpoint(env_cpu(env), addr, msize,
-+                                         info.attrs, BP_MEM_WRITE, retaddr);
-+                }
-+                /* TODO: MTE check. */
-             }
--            i += 4, pg >>= 4;
--        } while (i & 15);
--    }
--}
-+            i += 1;
-+            reg_off += esize;
-+        } while (reg_off & 63);
-+    } while (reg_off < reg_max);
- 
--static void sve_st1_zd(CPUARMState *env, void *vd, void *vg, void *vm,
--                       target_ulong base, uint32_t desc, uintptr_t ra,
--                       zreg_off_fn *off_fn, sve_ldst1_tlb_fn *tlb_fn)
--{
--    const int scale = extract32(desc, SIMD_DATA_SHIFT + MEMOPIDX_SHIFT, 2);
--    intptr_t i, oprsz = simd_oprsz(desc) / 8;
--
--    for (i = 0; i < oprsz; i++) {
--        uint8_t pg = *(uint8_t *)(vg + H1(i));
--        if (likely(pg & 1)) {
--            target_ulong off = off_fn(vm, i * 8);
--            tlb_fn(env, vd, i * 8, base + (off << scale), ra);
-+    /*
-+     * Now that we have recognized all exceptions except SyncExternal
-+     * (from TLB_MMIO), which we cannot avoid, perform all of the stores.
-+     *
-+     * Note for the common case of an element in RAM, not crossing a page
-+     * boundary, we have stored the host address in host[].  This doubles
-+     * as a first-level check against the predicate, since only enabled
-+     * elements have non-null host addresses.
-+     */
-+    i = reg_off = 0;
-+    do {
-+        void *h = host[i];
-+        if (likely(h != NULL)) {
-+            host_fn(vd, reg_off, h);
-+        } else if ((vg[reg_off >> 6] >> (reg_off & 63)) & 1) {
-+            target_ulong addr = base + (off_fn(vm, reg_off) << scale);
-+            tlb_fn(env, vd, reg_off, addr, retaddr);
-         }
--    }
-+        i += 1;
-+        reg_off += esize;
-+    } while (reg_off < reg_max);
- }
- 
--#define DO_ST1_ZPZ_S(MEM, OFS) \
--void QEMU_FLATTEN HELPER(sve_st##MEM##_##OFS) \
--    (CPUARMState *env, void *vd, void *vg, void *vm,         \
--     target_ulong base, uint32_t desc)                       \
--{                                                            \
--    sve_st1_zs(env, vd, vg, vm, base, desc, GETPC(),         \
--              off_##OFS##_s, sve_st1##MEM##_tlb);            \
-+#define DO_ST1_ZPZ_S(MEM, OFS, MSZ) \
-+void HELPER(sve_st##MEM##_##OFS)(CPUARMState *env, void *vd, void *vg,       \
-+                                 void *vm, target_ulong base, uint32_t desc) \
-+{                                                                            \
-+    sve_st1_z(env, vd, vg, vm, base, desc, GETPC(), 4, 1 << MSZ,             \
-+              off_##OFS##_s, sve_st1##MEM##_host, sve_st1##MEM##_tlb);       \
- }
- 
--#define DO_ST1_ZPZ_D(MEM, OFS) \
--void QEMU_FLATTEN HELPER(sve_st##MEM##_##OFS) \
--    (CPUARMState *env, void *vd, void *vg, void *vm,         \
--     target_ulong base, uint32_t desc)                       \
--{                                                            \
--    sve_st1_zd(env, vd, vg, vm, base, desc, GETPC(),         \
--               off_##OFS##_d, sve_st1##MEM##_tlb);           \
-+#define DO_ST1_ZPZ_D(MEM, OFS, MSZ) \
-+void HELPER(sve_st##MEM##_##OFS)(CPUARMState *env, void *vd, void *vg,       \
-+                                 void *vm, target_ulong base, uint32_t desc) \
-+{                                                                            \
-+    sve_st1_z(env, vd, vg, vm, base, desc, GETPC(), 8, 1 << MSZ,             \
-+              off_##OFS##_d, sve_st1##MEM##_host, sve_st1##MEM##_tlb);       \
- }
- 
--DO_ST1_ZPZ_S(bs, zsu)
--DO_ST1_ZPZ_S(hs_le, zsu)
--DO_ST1_ZPZ_S(hs_be, zsu)
--DO_ST1_ZPZ_S(ss_le, zsu)
--DO_ST1_ZPZ_S(ss_be, zsu)
-+DO_ST1_ZPZ_S(bs, zsu, MO_8)
-+DO_ST1_ZPZ_S(hs_le, zsu, MO_16)
-+DO_ST1_ZPZ_S(hs_be, zsu, MO_16)
-+DO_ST1_ZPZ_S(ss_le, zsu, MO_32)
-+DO_ST1_ZPZ_S(ss_be, zsu, MO_32)
- 
--DO_ST1_ZPZ_S(bs, zss)
--DO_ST1_ZPZ_S(hs_le, zss)
--DO_ST1_ZPZ_S(hs_be, zss)
--DO_ST1_ZPZ_S(ss_le, zss)
--DO_ST1_ZPZ_S(ss_be, zss)
-+DO_ST1_ZPZ_S(bs, zss, MO_8)
-+DO_ST1_ZPZ_S(hs_le, zss, MO_16)
-+DO_ST1_ZPZ_S(hs_be, zss, MO_16)
-+DO_ST1_ZPZ_S(ss_le, zss, MO_32)
-+DO_ST1_ZPZ_S(ss_be, zss, MO_32)
- 
--DO_ST1_ZPZ_D(bd, zsu)
--DO_ST1_ZPZ_D(hd_le, zsu)
--DO_ST1_ZPZ_D(hd_be, zsu)
--DO_ST1_ZPZ_D(sd_le, zsu)
--DO_ST1_ZPZ_D(sd_be, zsu)
--DO_ST1_ZPZ_D(dd_le, zsu)
--DO_ST1_ZPZ_D(dd_be, zsu)
-+DO_ST1_ZPZ_D(bd, zsu, MO_8)
-+DO_ST1_ZPZ_D(hd_le, zsu, MO_16)
-+DO_ST1_ZPZ_D(hd_be, zsu, MO_16)
-+DO_ST1_ZPZ_D(sd_le, zsu, MO_32)
-+DO_ST1_ZPZ_D(sd_be, zsu, MO_32)
-+DO_ST1_ZPZ_D(dd_le, zsu, MO_64)
-+DO_ST1_ZPZ_D(dd_be, zsu, MO_64)
- 
--DO_ST1_ZPZ_D(bd, zss)
--DO_ST1_ZPZ_D(hd_le, zss)
--DO_ST1_ZPZ_D(hd_be, zss)
--DO_ST1_ZPZ_D(sd_le, zss)
--DO_ST1_ZPZ_D(sd_be, zss)
--DO_ST1_ZPZ_D(dd_le, zss)
--DO_ST1_ZPZ_D(dd_be, zss)
-+DO_ST1_ZPZ_D(bd, zss, MO_8)
-+DO_ST1_ZPZ_D(hd_le, zss, MO_16)
-+DO_ST1_ZPZ_D(hd_be, zss, MO_16)
-+DO_ST1_ZPZ_D(sd_le, zss, MO_32)
-+DO_ST1_ZPZ_D(sd_be, zss, MO_32)
-+DO_ST1_ZPZ_D(dd_le, zss, MO_64)
-+DO_ST1_ZPZ_D(dd_be, zss, MO_64)
- 
--DO_ST1_ZPZ_D(bd, zd)
--DO_ST1_ZPZ_D(hd_le, zd)
--DO_ST1_ZPZ_D(hd_be, zd)
--DO_ST1_ZPZ_D(sd_le, zd)
--DO_ST1_ZPZ_D(sd_be, zd)
--DO_ST1_ZPZ_D(dd_le, zd)
--DO_ST1_ZPZ_D(dd_be, zd)
-+DO_ST1_ZPZ_D(bd, zd, MO_8)
-+DO_ST1_ZPZ_D(hd_le, zd, MO_16)
-+DO_ST1_ZPZ_D(hd_be, zd, MO_16)
-+DO_ST1_ZPZ_D(sd_le, zd, MO_32)
-+DO_ST1_ZPZ_D(sd_be, zd, MO_32)
-+DO_ST1_ZPZ_D(dd_le, zd, MO_64)
-+DO_ST1_ZPZ_D(dd_be, zd, MO_64)
- 
- #undef DO_ST1_ZPZ_S
- #undef DO_ST1_ZPZ_D
--- 
-2.20.1
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDMxMTA2NDQyMC4zMDYw
+Ni0xLXJpY2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmcvCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2Vl
+bXMgdG8gaGF2ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBm
+b3IKbW9yZSBpbmZvcm1hdGlvbjoKClN1YmplY3Q6IFtQQVRDSCAwMC8xNl0gdGFyZ2V0L2FybTog
+c3ZlIGxvYWQvc3RvcmUgaW1wcm92ZW1lbnRzCk1lc3NhZ2UtaWQ6IDIwMjAwMzExMDY0NDIwLjMw
+NjA2LTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZwpUeXBlOiBzZXJpZXMKCj09PSBURVNU
+IFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9u
+dWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBj
+b25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5h
+bGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFz
+ZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rl
+c3QnCjRjYjRjZmIgdGFyZ2V0L2FybTogUmVtb3ZlIHN2ZV9tZW1vcGlkeAo5YjQzYzRjIHRhcmdl
+dC9hcm06IFJldXNlIHN2ZV9wcm9iZV9wYWdlIGZvciBnYXRoZXIgbG9hZHMKMzAzMmE0OSB0YXJn
+ZXQvYXJtOiBSZXVzZSBzdmVfcHJvYmVfcGFnZSBmb3Igc2NhdHRlciBzdG9yZXMKYWJmMTFkNyB0
+YXJnZXQvYXJtOiBSZXVzZSBzdmVfcHJvYmVfcGFnZSBmb3IgZ2F0aGVyIGZpcnN0LWZhdWx0IGxv
+YWRzCjAyMGY4NzQgdGFyZ2V0L2FybTogVXNlIFNWRUNvbnRMZFN0IGZvciBjb250aWd1b3VzIHN0
+b3JlcwpkZTMxYjMwIHRhcmdldC9hcm06IFVwZGF0ZSBjb250aWd1b3VzIGZpcnN0LWZhdWx0IGFu
+ZCBuby1mYXVsdCBsb2Fkcwo2Mjc1MjhjIHRhcmdldC9hcm06IFVzZSBTVkVDb250TGRTdCBmb3Ig
+bXVsdGktcmVnaXN0ZXIgY29udGlndW91cyBsb2Fkcwo2NzhhMmQ3IHRhcmdldC9hcm06IEhhbmRs
+ZSB3YXRjaHBvaW50cyBpbiBzdmVfbGQxX3IKYjY4MjdiYyB0YXJnZXQvYXJtOiBVc2UgU1ZFQ29u
+dExkU3QgaW4gc3ZlX2xkMV9yCmM2ZmE1ZjYgdGFyZ2V0L2FybTogQWRqdXN0IGludGVyZmFjZSBv
+ZiBzdmVfbGQxX2hvc3RfZm4KYmEzZDNjZSB0YXJnZXQvYXJtOiBBZGQgc3ZlIGluZnJhc3RydWN0
+dXJlIGZvciBwYWdlIGxvb2t1cAowY2YzYjMzIHRhcmdldC9hcm06IERyb3AgbWFudWFsIGhhbmRs
+aW5nIG9mIHNldC9jbGVhcl9oZWxwZXJfcmV0YWRkcgo3ZmFmOGZiIHRhcmdldC9hcm06IFVzZSBj
+cHVfKl9kYXRhX3JhIGZvciBzdmVfbGRzdF90bGJfZm4KZDhlZDVjOCBleGVjOiBBZGQgY3B1X3By
+b2JlX3dhdGNocG9pbnQKNGZmNDA5OCBhY2NlbC90Y2c6IEFkZCBwcm9iZV9hY2Nlc3NfZmxhZ3MK
+NGI2YzNkMCBhY2NlbC90Y2c6IEFkZCBibG9jayBjb21tZW50IGZvciBwcm9iZV9hY2Nlc3MKCj09
+PSBPVVRQVVQgQkVHSU4gPT09CjEvMTYgQ2hlY2tpbmcgY29tbWl0IDRiNmMzZDBlMTBjOSAoYWNj
+ZWwvdGNnOiBBZGQgYmxvY2sgY29tbWVudCBmb3IgcHJvYmVfYWNjZXNzKQoyLzE2IENoZWNraW5n
+IGNvbW1pdCA0ZmY0MDk4MTkwOTkgKGFjY2VsL3RjZzogQWRkIHByb2JlX2FjY2Vzc19mbGFncykK
+V0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzI3MzogRklMRTogYWNjZWwvdGNnL3Vz
+ZXItZXhlYy5jOjIyMDoKKyAgICAgICAgICAgIGNjLT50bGJfZmlsbChjcHUsIGFkZHIsIDAsIGFj
+Y2Vzc190eXBlLCBNTVVfVVNFUl9JRFgsIGZhbHNlLCByZXRhZGRyKTsKCnRvdGFsOiAwIGVycm9y
+cywgMSB3YXJuaW5ncywgMzEyIGxpbmVzIGNoZWNrZWQKClBhdGNoIDIvMTYgaGFzIHN0eWxlIHBy
+b2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2Ug
+cG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBp
+biBNQUlOVEFJTkVSUy4KMy8xNiBDaGVja2luZyBjb21taXQgZDhlZDVjODVkZWVhIChleGVjOiBB
+ZGQgY3B1X3Byb2JlX3dhdGNocG9pbnQpCkVSUk9SOiB0cmFpbGluZyB3aGl0ZXNwYWNlCiMzMTog
+RklMRTogZXhlYy5jOjI3NDc6CisgICAgICAgIGlmICh3YXRjaHBvaW50X2FkZHJlc3NfbWF0Y2hl
+cyh3cCwgYWRkciwgbGVuKSAmJiAkCgp0b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDQ0IGxp
+bmVzIGNoZWNrZWQKClBhdGNoIDMvMTYgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3
+LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVt
+IHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCjQvMTYg
+Q2hlY2tpbmcgY29tbWl0IDdmYWY4ZmJiNWE2NyAodGFyZ2V0L2FybTogVXNlIGNwdV8qX2RhdGFf
+cmEgZm9yIHN2ZV9sZHN0X3RsYl9mbikKRVJST1I6IHNwYWNlcyByZXF1aXJlZCBhcm91bmQgdGhh
+dCAnKicgKGN0eDpXeFYpCiMxNzY6IEZJTEU6IHRhcmdldC9hcm0vc3ZlX2hlbHBlci5jOjQxODQ6
+CisgICAgICAgICAgICAgICAgICAgICAgc3ZlX2xkc3QxX3RsYl9mbiAqdGxiX2ZuKQogICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgoKdG90YWw6IDEgZXJyb3JzLCAwIHdh
+cm5pbmdzLCA0NzkgbGluZXMgY2hlY2tlZAoKUGF0Y2ggNC8xNiBoYXMgc3R5bGUgcHJvYmxlbXMs
+IHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2
+ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5U
+QUlORVJTLgoKNS8xNiBDaGVja2luZyBjb21taXQgMGNmM2IzMzk3NTY1ICh0YXJnZXQvYXJtOiBE
+cm9wIG1hbnVhbCBoYW5kbGluZyBvZiBzZXQvY2xlYXJfaGVscGVyX3JldGFkZHIpCjYvMTYgQ2hl
+Y2tpbmcgY29tbWl0IGJhM2QzY2VjODc3MiAodGFyZ2V0L2FybTogQWRkIHN2ZSBpbmZyYXN0cnVj
+dHVyZSBmb3IgcGFnZSBsb29rdXApCjcvMTYgQ2hlY2tpbmcgY29tbWl0IGM2ZmE1ZjZmODJhMyAo
+dGFyZ2V0L2FybTogQWRqdXN0IGludGVyZmFjZSBvZiBzdmVfbGQxX2hvc3RfZm4pCjgvMTYgQ2hl
+Y2tpbmcgY29tbWl0IGI2ODI3YmNkZTE3MSAodGFyZ2V0L2FybTogVXNlIFNWRUNvbnRMZFN0IGlu
+IHN2ZV9sZDFfcikKOS8xNiBDaGVja2luZyBjb21taXQgNjc4YTJkN2RlMjAyICh0YXJnZXQvYXJt
+OiBIYW5kbGUgd2F0Y2hwb2ludHMgaW4gc3ZlX2xkMV9yKQpXQVJOSU5HOiBsaW5lIG92ZXIgODAg
+Y2hhcmFjdGVycwojNTE6IEZJTEU6IHRhcmdldC9hcm0vc3ZlX2hlbHBlci5jOjQ0MDg6CisgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGluZm8tPnBhZ2VbMF0uYXR0cnMs
+IHdwX2FjY2VzcywgcmV0YWRkcik7CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwoj
+NzU6IEZJTEU6IHRhcmdldC9hcm0vc3ZlX2hlbHBlci5jOjQ0MzI6CisgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIGluZm8tPnBhZ2VbMV0uYXR0cnMsIHdwX2FjY2Vzcywg
+cmV0YWRkcik7Cgp0b3RhbDogMCBlcnJvcnMsIDIgd2FybmluZ3MsIDg4IGxpbmVzIGNoZWNrZWQK
+ClBhdGNoIDkvMTYgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9m
+IHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWlu
+dGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KMTAvMTYgQ2hlY2tpbmcgY29t
+bWl0IDYyNzUyOGMxMTUzMyAodGFyZ2V0L2FybTogVXNlIFNWRUNvbnRMZFN0IGZvciBtdWx0aS1y
+ZWdpc3RlciBjb250aWd1b3VzIGxvYWRzKQoxMS8xNiBDaGVja2luZyBjb21taXQgZGUzMWIzMDBi
+ODgxICh0YXJnZXQvYXJtOiBVcGRhdGUgY29udGlndW91cyBmaXJzdC1mYXVsdCBhbmQgbm8tZmF1
+bHQgbG9hZHMpCjEyLzE2IENoZWNraW5nIGNvbW1pdCAwMjBmODc0YTQ4YmYgKHRhcmdldC9hcm06
+IFVzZSBTVkVDb250TGRTdCBmb3IgY29udGlndW91cyBzdG9yZXMpCjEzLzE2IENoZWNraW5nIGNv
+bW1pdCBhYmYxMWQ3NzE5MTAgKHRhcmdldC9hcm06IFJldXNlIHN2ZV9wcm9iZV9wYWdlIGZvciBn
+YXRoZXIgZmlyc3QtZmF1bHQgbG9hZHMpCjE0LzE2IENoZWNraW5nIGNvbW1pdCAzMDMyYTQ5MWJi
+ZTUgKHRhcmdldC9hcm06IFJldXNlIHN2ZV9wcm9iZV9wYWdlIGZvciBzY2F0dGVyIHN0b3JlcykK
+MTUvMTYgQ2hlY2tpbmcgY29tbWl0IDliNDNjNGNjYjMyMiAodGFyZ2V0L2FybTogUmV1c2Ugc3Zl
+X3Byb2JlX3BhZ2UgZm9yIGdhdGhlciBsb2FkcykKMTYvMTYgQ2hlY2tpbmcgY29tbWl0IDRjYjRj
+ZmI0NTY5MSAodGFyZ2V0L2FybTogUmVtb3ZlIHN2ZV9tZW1vcGlkeCkKPT09IE9VVFBVVCBFTkQg
+PT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBh
+dmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDAzMTEwNjQ0MjAuMzA2MDYt
+MS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1t
+ZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0
+cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXct
+ZGV2ZWxAcmVkaGF0LmNvbQ==

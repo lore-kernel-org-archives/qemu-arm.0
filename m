@@ -1,112 +1,149 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1030791lfc;
-        Wed, 11 Mar 2020 10:29:05 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt7kR4VCGIbO/8TczFfMd9tRxxVjeodQfzgqAOmIm9P0HzZtx2WgdmnXAZJ0gd+01/+JWvx
-X-Received: by 2002:a37:a991:: with SMTP id s139mr3713336qke.116.1583947745289;
-        Wed, 11 Mar 2020 10:29:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583947745; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1047381lfc;
+        Wed, 11 Mar 2020 10:45:44 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvvfDEvG5B1EzShZ7UP2i+cY2P+noH6DdOn1jJJYx3102430Fcv5Nrs7Oq6U6LidLqvwyLq
+X-Received: by 2002:ad4:4dce:: with SMTP id cw14mr3950580qvb.108.1583948743999;
+        Wed, 11 Mar 2020 10:45:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583948743; cv=none;
         d=google.com; s=arc-20160816;
-        b=kHTnQW7uDXpqiJbhQVozBSPo2RoPN5iEQbBUhbVG1sPXTUrKa8s5q/KDfGR2aGAKRb
-         dBC7ZngKix6lKlnaMP+uCWnLss6lyXvuPeoSBLVVPAAW+BUENgy7bJU490FKRMcizW3J
-         a4lF7b5jlvlLbKUJcRbQLMIvR6KAAtFKOKV1iO63Ta5QThbu1BaGoPmxKzjt4WTkb8b9
-         CFnHcRuwO2OSdW54SKtof5hIi5rqZ2YK89L6TtGDa51/ZseRLlQJmfIBK5BbXNrKwN6V
-         NH2RqKVMnbxVpqKafQXobWJvEcQ3QL2CV9ewPAiJwsDB0u+jhioZGJ14eanWFdQQK9TB
-         Fo1Q==
+        b=cHqtMsAkvOJBySmwbLApo0GlFwYGSVEuaDkXElvxW/KpUAX64tkmDz/ARme+8R9Bg1
+         I8U3v02GdTJN8ocg3jHGuE+7s8uSbg3dkBtRuE3MC06E49KhYb9oMbzMh8LP7/2c+ChP
+         x7aTmB3N5yoCmedPH7P2wMla8uRG1HG3gyLHgglAfK/QfxT4wHd9hI1xDWfgnPz5lTO7
+         MGxzJaSN9ek1JPS0hkBg6s0fdhbpd2wtDlbfwoO7uBVnJIOh7+rLeAcKYqynZWXAjrea
+         3iGuaD/PcravZXhNrMQKBlQrrj76wzEQbBQyLPxGFg4Pa4QemRq2YQrHHPuJsAJNSoya
+         9W9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=Q1MBRh8SrGZm7O4QmySK1HQstctS1pbn4BFFUlmjcoY=;
-        b=iVwIAauUz8qLXZ6OVnPcwx7n5B3SrEOJtyjVDhSvL8vPhqsQx+/QeUVfEu+B4H1EMa
-         vE4y98s4TPNofmP87kWlkIJQsejPQ1WXWGOtE43OmnM8mue3l72342JXUgHETyFbOzED
-         BljY3Oojwk7rJbCPnGW6rPbLfpfNR7roONiAno1ZecsoAhdTNf+qIq+u6DIOidMRwGta
-         9FCuB1d2ZFhzdODzgZei4KZuvU4JWtZrlPwkE9IVy+9fsqiBguRfJCU0ouL8xQ5KbdyM
-         BtGtZ0AclIpKPDd1AmKneULUAmlxjehAm8+h0Waef3NWjjvKX1jwvn9RzRlizWBeVl9l
-         VH6w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:autocrypt:from:references:to:subject
+         :dkim-signature;
+        bh=coAu7zOV/G+w6eI2UOEuhPg6QGAW82ncZIE+YByvV/4=;
+        b=p+slxdTpWE8efPp5mlv2mJPI6TTuisn2qRjaN1USQsYovxNU6arrT3P1jOBCoHBmx+
+         FlzaAQK3C3r3s9QZxIFjQ7t0lcR4gQELOHXuVFDKYAsF9shmRFUE4bF8BIoUxNaYqOFa
+         qlFpQqjLXcq9t/U/88X+XPhsnONDG0vDN6U4oTDN67ZZ6TmFzPw+lMI4AbXYxgYa6QEq
+         5ep3/m0hO7qaSfFAYbBBk0mg2ANTVJNQapikcgsC1i+TOQPNbklZMOuibt8jfHBQ0kq8
+         D4uGCBv4gBzetw9McBYYp7pkNs4bBImUS3IClm9QMWC9rnpylIr6IeG+QSzCmci2UOIp
+         2vRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=agaulCzL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i1si508474qkf.154.2020.03.11.10.29.05
+        by mx.google.com with ESMTPS id s7si613331qvk.118.2020.03.11.10.45.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Mar 2020 10:29:05 -0700 (PDT)
+        Wed, 11 Mar 2020 10:45:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56338 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=agaulCzL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56556 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jC5AG-0004yh-Mi
-	for alex.bennee@linaro.org; Wed, 11 Mar 2020 13:29:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59221)
+	id 1jC5QN-0000u3-D3
+	for alex.bennee@linaro.org; Wed, 11 Mar 2020 13:45:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35393)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jC5A6-0004t5-Q9
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 13:28:55 -0400
+ (envelope-from <david@redhat.com>) id 1jC5QB-0000sO-6g
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 13:45:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jC5A5-0008DR-KE
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 13:28:54 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2082 helo=huawei.com)
+ (envelope-from <david@redhat.com>) id 1jC5Q9-0002NJ-KB
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 13:45:31 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:56126
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jC5A5-0008Cn-Ea; Wed, 11 Mar 2020 13:28:53 -0400
-Received: from LHREML713-CAH.china.huawei.com (unknown [172.18.7.107])
- by Forcepoint Email with ESMTP id 76FB0670D6B61220C7A;
- Wed, 11 Mar 2020 17:28:51 +0000 (GMT)
-Received: from lhreml702-chm.china.huawei.com (10.201.108.51) by
- LHREML713-CAH.china.huawei.com (10.201.108.36) with Microsoft SMTP Server
- (TLS) id 14.3.408.0; Wed, 11 Mar 2020 17:28:51 +0000
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- lhreml702-chm.china.huawei.com (10.201.108.51) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1713.5; Wed, 11 Mar 2020 17:28:50 +0000
-Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
- lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
- 15.01.1713.004; Wed, 11 Mar 2020 17:28:50 +0000
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: David Hildenbrand <david@redhat.com>, Igor Mammedov <imammedo@redhat.com>
-Subject: RE: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
-Thread-Topic: [PATCH v2 1/7] exec: Fix for qemu_ram_resize() callback
-Thread-Index: AQHVzV43w2nN4JnxQEOUTwT8NpSKx6gLQ1MAgAAWtoCAACc+AIABYS3wgAAIyYCAAR1e4IAAFJiAgAAHflCAADtYAIABo1pQgARLAwCAAABbwIAABn8AgAN5SJCAADkTAIABctiAgAAIuACAAAKygIAXjGswgAAUwYCAEtIIAA==
-Date: Wed, 11 Mar 2020 17:28:50 +0000
-Message-ID: <1f38f5ffe9c140c4b02626ec48992cf4@huawei.com>
-References: <20200117174522.22044-1-shameerali.kolothum.thodi@huawei.com>
- <20200204162320.67e5d353@redhat.com>
- <74eaaa45-0d20-9a21-fbf8-6d29deb248eb@redhat.com>
- <4ce41554-8b8e-dbb5-5fe9-43af09950f23@redhat.com>
- <8e0b2c762e914c64bebfab5fc7441661@huawei.com>
- <133f274e-e942-7008-93d2-8edb1bc4d7ae@redhat.com>
- <52fff289cca14874ad493fc25806fe3d@huawei.com>
- <f041380c-afcb-f8d8-89db-8f48c7b46767@redhat.com>
- <e97fa28c653044b8bab66aeca2374682@huawei.com>
- <0ff4d2c1-ebd3-1d2f-07e8-a4f13be07ceb@redhat.com>
- <6bf255ecb88446f1b08ee4ab21a85f02@huawei.com>
- <69848dd3-fac4-ec6b-78a8-a052124f4fc3@redhat.com>
- <49b54eea65cd49ae832cd6ec21eae64a@huawei.com>
- <b4ccf1d9-4514-6b63-5ef9-1d337f539267@redhat.com>
- <fad66252aa8f4b46816f21b5315b6358@huawei.com>
- <8f10dd72-9a19-b910-489c-eacc6a772046@redhat.com>
- <04adb50079bc45888f514721edb3cfa3@huawei.com>
- <69ab2339-f4c3-dbd6-1be7-5d6eef28d027@redhat.com>
- <b78f892f-c917-a3a8-4c6b-8d03af02782d@redhat.com>
- <8f27608fd02147bfb11bdfca38316f4c@huawei.com>
- <01aa6f4a-cfa7-6a35-8a7a-5189b66e2c9e@redhat.com>
-In-Reply-To: <01aa6f4a-cfa7-6a35-8a7a-5189b66e2c9e@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.71) (envelope-from <david@redhat.com>) id 1jC5Q9-0002N2-Gq
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 13:45:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583948729;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=coAu7zOV/G+w6eI2UOEuhPg6QGAW82ncZIE+YByvV/4=;
+ b=agaulCzLxkzMvJR9Y83E+IORTBGowuaHNugkMXmDb9acaiA92pejy5mwS27o+/C8NB5s25
+ z/c9dau2mbf77qPHXBVIFY2VmDJaQFQLRvvJ2l4JBc7y8Sw2mc+36PdSe80qgxALFd7Cva
+ nh2JbPst5U8DgNwxl9jMK6oHHEccqVc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-42-7J5KRl0dPTSI3azR_YKM0w-1; Wed, 11 Mar 2020 13:45:22 -0400
+X-MC-Unique: 7J5KRl0dPTSI3azR_YKM0w-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 36ADF8024E8;
+ Wed, 11 Mar 2020 17:45:20 +0000 (UTC)
+Received: from [10.36.116.132] (ovpn-116-132.ams2.redhat.com [10.36.116.132])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9C79928999;
+ Wed, 11 Mar 2020 17:45:00 +0000 (UTC)
+Subject: Re: [PATCH v3 03/10] exec: Fix for qemu_ram_resize() callback
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, eric.auger@redhat.com,
+ imammedo@redhat.com
+References: <20200311172014.33052-1-shameerali.kolothum.thodi@huawei.com>
+ <20200311172014.33052-4-shameerali.kolothum.thodi@huawei.com>
+From: David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat GmbH
+Message-ID: <f8c158b5-8236-e842-25d2-e64d57525146@redhat.com>
+Date: Wed, 11 Mar 2020 18:44:59 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+In-Reply-To: <20200311172014.33052-4-shameerali.kolothum.thodi@huawei.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 185.176.76.210
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -118,46 +155,87 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
- "mst@redhat.com" <mst@redhat.com>,
- Juan Jose Quintela Carreira <quintela@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- "lersek@redhat.com" <lersek@redhat.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "dgilbert@redhat.com" <dgilbert@redhat.com>
+Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, mst@redhat.com,
+ linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
+ lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cCndcV0bQU+f
+X-TUID: AfQAhXWel3HL
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRGF2aWQgSGlsZGVuYnJh
-bmQgW21haWx0bzpkYXZpZEByZWRoYXQuY29tXQ0KPiBTZW50OiAyOCBGZWJydWFyeSAyMDIwIDE4
-OjAwDQo+IFRvOiBTaGFtZWVyYWxpIEtvbG90aHVtIFRob2RpIDxzaGFtZWVyYWxpLmtvbG90aHVt
-LnRob2RpQGh1YXdlaS5jb20+Ow0KPiBJZ29yIE1hbW1lZG92IDxpbWFtbWVkb0ByZWRoYXQuY29t
-Pg0KPiBDYzogcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyB4aWFvZ3Vhbmdyb25nLmVyaWNAZ21h
-aWwuY29tOw0KPiBtc3RAcmVkaGF0LmNvbTsgc2hhbm5vbi56aGFvc2xAZ21haWwuY29tOyBxZW11
-LWRldmVsQG5vbmdudS5vcmc7DQo+IHh1d2VpIChPKSA8eHV3ZWk1QGh1YXdlaS5jb20+OyBMaW51
-eGFybSA8bGludXhhcm1AaHVhd2VpLmNvbT47DQo+IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgcWVt
-dS1hcm1Abm9uZ251Lm9yZzsgbGVyc2VrQHJlZGhhdC5jb207DQo+IGRnaWxiZXJ0QHJlZGhhdC5j
-b207IEp1YW4gSm9zZSBRdWludGVsYSBDYXJyZWlyYSA8cXVpbnRlbGFAcmVkaGF0LmNvbT4NCj4g
-U3ViamVjdDogUmU6IFtQQVRDSCB2MiAxLzddIGV4ZWM6IEZpeCBmb3IgcWVtdV9yYW1fcmVzaXpl
-KCkgY2FsbGJhY2sNCj4gDQoNClsuLi5dDQogDQo+IA0KPiBXZSBzaG91bGQgaW5zdGVhZCB0aGlu
-ayBhYm91dA0KPiANCj4gMS4gTWlncmF0aW5nIHRoZSBhY3R1YWwgc2l6ZSBvZiB0aGUgMyBtZW1v
-cnkgcmVnaW9ucyBzZXBhcmF0ZWx5IGFuZCBzZXR0aW5nDQo+IHRoZW0gdmlhDQo+IG1lbW9yeV9y
-ZWdpb25fcmFtX3Jlc2l6ZSgpIHdoZW4gbG9hZGluZyB0aGUgdm1zdGF0ZS4gVGhpcyB3aWxsIHRy
-aWdnZXINCj4gYW5vdGhlciBGVyBjZmcNCj4gZml4dXAgYW5kIHNob3VsZCBiZSBmaW5lICh3aXRo
-IHRoZSBzYW1lIHFlbXVfcmFtX3Jlc2l6ZSgpIGFib3ZlKS4NCj4gDQo+IDIuIEludHJvZHVjZSBh
-IG5ldyBSQU1fU0FWRV9GTEFHX01FTV9TSVpFXzIsIHRoYXQgZS5nLiwgc3RvcmVzIHRoZQ0KPiBu
-dW1iZXIgb2YgcmFtYmxvY2tzLA0KPiBub3QgdGhlIHRvdGFsIGFtb3VudCBvZiBtZW1vcnkgb2Yg
-dGhlIHJhbSBibG9ja3MuIEJ1dCBpdCdzIGhhY2t5LCBiZWNhdXNlIHdlDQo+IG1pZ3JhdGUNCj4g
-c29tZXRoaW5nIGZvciBSQU0gYmxvY2tzLCB0aGF0IGlzIG5vdCBhIFJBTSBibG9jayBjb25jZXB0
-IChzdWItYmxvY2sgc2l6ZXMpLg0KPiANCj4gSSB0aGluayB5b3Ugc2hvdWxkIGxvb2sgaW50byAx
-LiBTaG91bGRuJ3QgYmUgdG9vIGhhcmQgSSB0aGluay4NCg0KSSBoYXZlIHNlbmQgb3V0IHYzIG9m
-IHRoaXMgc2VyaWVzIChbUEFUQ0ggdjMgMDAvMTBdIEFSTSB2aXJ0OiBBZGQgTlZESU1NIHN1cHBv
-cnQpDQp3aXRoIGFuIGF0dGVtcHQgdG8gbWlncmF0ZSB0aGUgbWVtb3J5IHJlZ2lvbnMgc2VwYXJh
-dGVseS4gSXQgYWxzbyBpbmNsdWRlcw0KeW91ciBwYXRjaCBmb3IgcWVtdV9yYW1fcmVzaXplKCkg
-Y2FsbGJhY2sgZml4LiBQbGVhc2UgdGFrZSBhIGxvb2sgYW5kIGxldCBtZSBrbm93Lg0KDQpUaGFu
-a3MsDQpTaGFtZWVyDQoNCg0K
+On 11.03.20 18:20, Shameer Kolothum wrote:
+> From: David Hildenbrand <david@redhat.com>
+> 
+> Summarizing the issue:
+> 1. Memory regions contain ram blocks with a different size,  if the
+>    size is  not properly aligned. While memory regions can have an
+>    unaligned size, ram blocks can't. This is true when creating
+>    resizable memory region with  an unaligned size.
+> 2. When resizing a ram block/memory region, the size of the memory
+>    region  is set to the aligned size. The callback is called with
+>    the aligned size. The unaligned piece is lost.
+> 
+> Because of the above, if ACPI blob length modifications happens
+> after the initial virt_acpi_build() call, and the changed blob
+> length is within the PAGE size boundary, then the revised size
+> is not seen by the firmware on Guest reboot.
+> 
+> Hence make sure callback is called if memory region size is changed,
+> irrespective of aligned or not.
+> 
+> Signed-off-by: David Hildenbrand <david@redhat.com>
+> [Shameer: added commit log]
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+> Please find the discussion here,
+> https://patchwork.kernel.org/patch/11339591/
+> ---
+>  exec.c | 14 ++++++++++++--
+>  1 file changed, 12 insertions(+), 2 deletions(-)
+> 
+> diff --git a/exec.c b/exec.c
+> index 0cc500d53a..f8974cd303 100644
+> --- a/exec.c
+> +++ b/exec.c
+> @@ -2073,11 +2073,21 @@ static int memory_try_enable_merging(void *addr, size_t len)
+>   */
+>  int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp)
+>  {
+> +    const ram_addr_t unaligned_size = newsize;
+> +
+>      assert(block);
+>  
+>      newsize = HOST_PAGE_ALIGN(newsize);
+>  
+>      if (block->used_length == newsize) {
+> +        /*
+> +         * We don't have to resize the ram block (which only knows aligned
+> +         * sizes), however, we have to notify if the unaligned size changed.
+> +         */
+> +        if (block->resized && unaligned_size != memory_region_size(block->mr)) {
+> +            block->resized(block->idstr, unaligned_size, block->host);
+> +            memory_region_set_size(block->mr, unaligned_size);
+> +        }
+
+I guess we should do
+
+if (unaligned_size != memory_region_size(block->mr)) {
+    memory_region_set_size(block->mr, unaligned_size);
+    if (block->resized) {
+        block->resized(block->idstr, unaligned_size, block->host);
+    }
+}
+
+Instead - like in the case below.
+
+
+Note: This is not completely clean, the RAM block code should'n have to
+care about unaligned stuff. Also, the resized() callback for the RAM
+block is ugly, it should be a resized callback for the memory region.
+But these things imply requires bigger refactorings, so I guess this is
+good and simple enough for now.
+
+-- 
+Thanks,
+
+David / dhildenb
+

@@ -1,228 +1,243 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp796787lfc;
-        Wed, 11 Mar 2020 06:52:14 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuFsVnMQgca6B3Rf+bL8JeutRyV0aOFU60c85OYaqcvxROCLpLZYxBHPBzYw7SO6yDFKW2u
-X-Received: by 2002:a9d:728e:: with SMTP id t14mr2523130otj.63.1583934733833;
-        Wed, 11 Mar 2020 06:52:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583934733; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp796887lfc;
+        Wed, 11 Mar 2020 06:52:19 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vulKAvYoRnO1So3hoGYz6jOGJheRUylspLYwClN7nT0xhxZwtFxOhiToAJrrjgh6bg2isuc
+X-Received: by 2002:a37:63c5:: with SMTP id x188mr2921180qkb.276.1583934739660;
+        Wed, 11 Mar 2020 06:52:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583934739; cv=none;
         d=google.com; s=arc-20160816;
-        b=br26D6vFUygHY/ZZHBC4liffpnGkdI9OVG19Lg/KcUb74GVSgk7gD2x4sdu0vLDCLW
-         Uy6xanvd4WaE4PYg2pQzxvJ8BQ4NTbdasx/VGLwxb1guAA6IDvwrAezcd8LdvvQwrgWR
-         TD1NiM52XeHWI4BYDA1TZNPghJLNlkqgj0ykbbIkYCKTE4MF0vbPASBX9XN96wqwLKMc
-         TVYHPyIr7YQdZk5pGy8mz7SqMIGrwPFmTBElhEAVYzI4pw1QCY2DW2qY4PSt221eqfl4
-         3r9+pcQyMFR6aslwfZEjX28L5qiJg7TwTnMcsgDmkNUAEdQan2yL7lJrvyx6KlfYVwTi
-         WlfA==
+        b=STTdkoiwfjJVgXHN6udJ/hoNgh27P5j1X/MdwYIg3PIAViArVOK5xR9XJYuDqNIroJ
+         GC+OgbH4cJ0GBivV0RzI1rpCjEFJ3hy3vDBjMbGqu2XUNRxLqr1ZS043gB7jH1NfUsLZ
+         sVQHJDJjsPwKTNMXCNiFWAg/WN5qJQFDtoFR0Eb2n4BXYQsKycITK42/q4GwXbh28QZo
+         VVRgAIoOtRbHAMfksdllkM8/HTlBECJeONsu+FkkkSxCFM28pLLnYxOCCUi4lRB/Uqdo
+         mV4IuHgaARvtWXLv67s5Hc5W2Z/+kTQBQbtBLmuOf0YJl880KpprM9rENneNpyV2ROwr
+         jH7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=LThBuzxpBIGnDg2AAuFd9Pk7/QYWy2R/aXM3izuVepc=;
-        b=zU0NOJ4W2un9frhQ16p/5iH99rxuA/ljWNNIzZnCX/iKZS4Ag7ex8aB+jiuMpB5vQQ
-         oeKc0kUmofhvkXMvsU67UKJo2ZVZ6p4NLInXM16i3M+NMHBoxs2XTdc3UEwqt84aOz/J
-         h3QEt1jRdKfp78Y+u3xwg+TJUlUQ8WbdH76z7vnM9Qj3cfM/YAyr2kPycGSbbi4MxjG4
-         dKhaMKC/sBdyxklxcGkQ7dfX6yTFyuZ2Pgax7XrlbMZzIz2KOJW8vzMbLWST6spOzf6F
-         JZEycZZRU75YT5/1bbQ6xjkmhNRtZkdrek841HL/UGBuqvPbPHpqNHGUI4ZJPzLLX56m
-         RAiQ==
+        bh=p5kREJbHKWU2jJawFLQqQ4I1wSOQOxuTOeSW1++4iCE=;
+        b=BpZYiBL8php9GeJAIEW/oLVZk9BVzOGugO38CP+lePn+tu3KNgLqnJ4pM4SeXs5NRY
+         hYeOSzQKyjrLHHROCuBMP7RQnuccsCEGHYc4fZoPu/lBMU3/NQoYLP8ELlxN3HUtO3ml
+         T0SmGfBUMJrMK3d0Euqi3ynvPpkH4SMeMBSpSoJ6wRBL7QnTeAOTdRwHUUOQ/uGlfmQr
+         EoEnAJxz14xYMqBtfvr7sAsKmbsNIuVSFZRlpkMqEgOAfzdTl6aaCCBlkH9sR0F/24CA
+         CT8KMmHBMOuPLVrR05T6SdzRIVW+C1/JBZHT59X/45f+pRsSnhZto3uYrMOn/wpTMnxT
+         uRdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dSZ+sG2z;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id x2si1139440oie.56.2020.03.11.06.52.13;
-        Wed, 11 Mar 2020 06:52:13 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=XwIKlAoa;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id w33si1042874qtj.328.2020.03.11.06.52.19;
+        Wed, 11 Mar 2020 06:52:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dSZ+sG2z;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1729774AbgCKNwM (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Wed, 11 Mar 2020 09:52:12 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:20871 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1729779AbgCKNwL (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 11 Mar 2020 09:52:11 -0400
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=XwIKlAoa;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 3DD4B4A542;
+	Wed, 11 Mar 2020 09:52:19 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wJlHA1s5pixu; Wed, 11 Mar 2020 09:52:18 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1173A4A7F1;
+	Wed, 11 Mar 2020 09:52:18 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id D32904A542
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 11 Mar 2020 09:52:16 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id yiN7H2xIQAl6 for <kvmarm@lists.cs.columbia.edu>;
+ Wed, 11 Mar 2020 09:52:15 -0400 (EDT)
+Received: from us-smtp-1.mimecast.com (us-smtp-1.mimecast.com [205.139.110.61])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id DAFA34A551
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 11 Mar 2020 09:52:15 -0400 (EDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1583934730;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=LThBuzxpBIGnDg2AAuFd9Pk7/QYWy2R/aXM3izuVepc=;
-        b=dSZ+sG2zJkj1U8BOK4zoPQ584ShPaOFcuwhVPpkOebHUCxKagdhNLp71Chm20L6NAq87aT
-        Dqa7AUTfVX2TrFKA2j9KD00eD2r+XjzP4NuHFHZZi4tRMZZ/K5TwfE0TctSI4dPtVa2Vwp
-        +vurWGqZAu+2qkfj090d6TQzZIhBhlQ=
+ s=mimecast20190719; t=1583934735;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=V+xBC2RXQ5rqxWP6/1TDovGW7bQFrd1e4rfk5KfHEUI=;
+ b=XwIKlAoaEUUiqqtIIdnvn0/hxeB0R4FgS1T7NtqrW4sNgy0uKGyTH49yVfDJaSmR2fnVrp
+ eAXCjHRXDn3v3TY78p1et98JPTZoAk3VHg3CrWypd4YINsRD17FbhZiIFhZu0P5tw2alm3
+ dVO9uO3k5ccaj0UQtjE4cQ3McIN/w6Y=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-160-5TdW9Vt9PyOmE9Sbna0gyA-1; Wed, 11 Mar 2020 09:52:06 -0400
-X-MC-Unique: 5TdW9Vt9PyOmE9Sbna0gyA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E037E1005509;
-        Wed, 11 Mar 2020 13:52:04 +0000 (UTC)
+ us-mta-460-AX4EL4XJNcmX8yVAV6MS5w-1; Wed, 11 Mar 2020 09:52:14 -0400
+X-MC-Unique: AX4EL4XJNcmX8yVAV6MS5w-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 704AA189F760;
+ Wed, 11 Mar 2020 13:52:12 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.36.118.12])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id B98E55C13D;
-        Wed, 11 Mar 2020 13:52:00 +0000 (UTC)
-From:   Eric Auger <eric.auger@redhat.com>
-To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc:     drjones@redhat.com, andre.przywara@arm.com,
-        peter.maydell@linaro.org, yuzenghui@huawei.com,
-        alexandru.elisei@arm.com, thuth@redhat.com
-Subject: [kvm-unit-tests PATCH v6 07/13] arm/arm64: ITS: its_enable_defaults
-Date:   Wed, 11 Mar 2020 14:51:11 +0100
-Message-Id: <20200311135117.9366-8-eric.auger@redhat.com>
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 746CD5C13D;
+ Wed, 11 Mar 2020 13:52:05 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
+ kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Subject: [kvm-unit-tests PATCH v6 08/13] arm/arm64: ITS: Device and collection
+ Initialization
+Date: Wed, 11 Mar 2020 14:51:12 +0100
+Message-Id: <20200311135117.9366-9-eric.auger@redhat.com>
 In-Reply-To: <20200311135117.9366-1-eric.auger@redhat.com>
 References: <20200311135117.9366-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: kX+OVdLQyVsU
+Cc: andre.przywara@arm.com, thuth@redhat.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: b2hAoWU/xgDG
 
-its_enable_defaults() enable LPIs at redistributor level
-and ITS level.
+Introduce an helper functions to register
+- a new device, characterized by its device id and the
+  max number of event IDs that dimension its ITT (Interrupt
+  Translation Table).  The function allocates the ITT.
 
-gicv3_enable_defaults must be called before.
+- a new collection, characterized by its ID and the
+  target processing engine (PE).
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Zenghui Yu <yuzenghui@huawei.com>
 
 ---
-v5 -> v6:
-- gicv3_lpi_set/get_config introduced before this patch
-- dist/redist in commit msg
-- Added Zenghui's R-b
-
-v4 -> v5:
-- some reformattings moved to earlier patch
-- add assert(!gicv3_redist_base()) in alloc_lpi_tables()
-- revert the usage of for_each_present_cpu()
 
 v3 -> v4:
-- use GITS_BASER_INDIRECT & GITS_BASER_VALID in its_setup_baser()
-- don't parse BASERs again in its_enable_defaults
-- rename its_setup_baser into its_baser_alloc_table
-- All allocations moved to the init function
-- squashed "arm/arm64: gicv3: Enable/Disable LPIs at re-distributor level=
-"
-  into this patch
-- introduce gicv3_lpi_rdist_enable and gicv3_lpi_rdist_disable
-- pend and prop table bases stored as virt addresses
-- move some init functions from enable() to its_init
-- removed GICR_PROPBASER_IDBITS_MASK
-- introduced LPI_OFFSET
-- lpi_prop becomes u8 *
-- gicv3_lpi_set_config/get_config became macro
-- renamed gicv3_lpi_set_pending_table_bit into gicv3_lpi_set_clr_pending
+- remove unused its_baser variable from its_create_device()
+- use get_order()
+- device->itt becomes a GVA instead of GPA
 
 v2 -> v3:
-- introduce its_setup_baser in this patch
-- squash "arm/arm64: ITS: Init the command queue" in this patch.
----
- lib/arm/asm/gic-v3.h       |  6 ++++++
- lib/arm/gic-v3.c           | 25 +++++++++++++++++++++++++
- lib/arm64/asm/gic-v3-its.h |  1 +
- lib/arm64/gic-v3-its.c     | 13 +++++++++++++
- 4 files changed, 45 insertions(+)
+- s/report_abort/assert
 
-diff --git a/lib/arm/asm/gic-v3.h b/lib/arm/asm/gic-v3.h
-index fedffa8..cb72922 100644
---- a/lib/arm/asm/gic-v3.h
-+++ b/lib/arm/asm/gic-v3.h
-@@ -57,6 +57,10 @@
- #define LPI_PROP_DEFAULT_PRIO		0xa0
- #define LPI_PROP_DEFAULT		(LPI_PROP_DEFAULT_PRIO | LPI_PROP_GROUP1 | LPI=
-_PROP_ENABLED)
-=20
-+#define LPI_ID_BASE			8192
-+#define LPI(lpi)			((lpi) + LPI_ID_BASE)
-+#define LPI_OFFSET(intid)		((intid) - LPI_ID_BASE)
-+
- #include <asm/arch_gicv3.h>
-=20
- #ifndef __ASSEMBLY__
-@@ -93,6 +97,8 @@ extern void gicv3_ipi_send_mask(int irq, const cpumask_=
-t *dest);
- extern void gicv3_set_redist_base(size_t stride);
- extern void gicv3_lpi_set_clr_pending(int rdist, int n, bool set);
- extern void gicv3_lpi_alloc_tables(void);
-+extern void gicv3_lpi_rdist_enable(int redist);
-+extern void gicv3_lpi_rdist_disable(int redist);
-=20
- static inline void gicv3_do_wait_for_rwp(void *base)
- {
-diff --git a/lib/arm/gic-v3.c b/lib/arm/gic-v3.c
-index 6cf1d1d..a7e2cb8 100644
---- a/lib/arm/gic-v3.c
-+++ b/lib/arm/gic-v3.c
-@@ -199,4 +199,29 @@ void gicv3_lpi_set_clr_pending(int rdist, int n, boo=
-l set)
- 		byte &=3D ~mask;
- 	*ptr =3D byte;
- }
-+
-+static void gicv3_lpi_rdist_ctrl(u32 redist, bool set)
-+{
-+	void *ptr;
-+	u64 val;
-+
-+	assert(redist < nr_cpus);
-+
-+	ptr =3D gicv3_data.redist_base[redist];
-+	val =3D readl(ptr + GICR_CTLR);
-+	if (set)
-+		val |=3D GICR_CTLR_ENABLE_LPIS;
-+	else
-+		val &=3D ~GICR_CTLR_ENABLE_LPIS;
-+	writel(val,  ptr + GICR_CTLR);
-+}
-+
-+void gicv3_lpi_rdist_enable(int redist)
-+{
-+	gicv3_lpi_rdist_ctrl(redist, true);
-+}
-+void gicv3_lpi_rdist_disable(int redist)
-+{
-+	gicv3_lpi_rdist_ctrl(redist, false);
-+}
- #endif /* __aarch64__ */
+v1 -> v2:
+- s/nb_/nr_
+---
+ lib/arm64/asm/gic-v3-its.h | 19 +++++++++++++++++++
+ lib/arm64/gic-v3-its.c     | 38 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 57 insertions(+)
+
 diff --git a/lib/arm64/asm/gic-v3-its.h b/lib/arm64/asm/gic-v3-its.h
-index d46669b..fec6767 100644
+index fec6767..8c4ed31 100644
 --- a/lib/arm64/asm/gic-v3-its.h
 +++ b/lib/arm64/asm/gic-v3-its.h
-@@ -88,5 +88,6 @@ extern struct its_data its_data;
- extern void its_parse_typer(void);
+@@ -27,6 +27,19 @@ struct its_baser {
+ };
+ 
+ #define GITS_BASER_NR_REGS              8
++#define GITS_MAX_DEVICES		8
++#define GITS_MAX_COLLECTIONS		8
++
++struct its_device {
++	u32 device_id;	/* device ID */
++	u32 nr_ites;	/* Max Interrupt Translation Entries */
++	void *itt;	/* Interrupt Translation Table GVA */
++};
++
++struct its_collection {
++	u64 target_address;
++	u16 col_id;
++};
+ 
+ struct its_data {
+ 	void *base;
+@@ -35,6 +48,10 @@ struct its_data {
+ 	struct its_baser coll_baser;
+ 	struct its_cmd_block *cmd_base;
+ 	struct its_cmd_block *cmd_write;
++	struct its_device devices[GITS_MAX_DEVICES];
++	u32 nr_devices;		/* Allocated Devices */
++	struct its_collection collections[GITS_MAX_COLLECTIONS];
++	u32 nr_collections;	/* Allocated Collections */
+ };
+ 
+ extern struct its_data its_data;
+@@ -89,5 +106,7 @@ extern void its_parse_typer(void);
  extern void its_init(void);
  extern int its_baser_lookup(int i, struct its_baser *baser);
-+extern void its_enable_defaults(void);
-=20
+ extern void its_enable_defaults(void);
++extern struct its_device *its_create_device(u32 dev_id, int nr_ites);
++extern struct its_collection *its_create_collection(u32 col_id, u32 target_pe);
+ 
  #endif /* _ASMARM64_GIC_V3_ITS_H_ */
 diff --git a/lib/arm64/gic-v3-its.c b/lib/arm64/gic-v3-its.c
-index 4c9c0db..c431f31 100644
+index c431f31..442dcf0 100644
 --- a/lib/arm64/gic-v3-its.c
 +++ b/lib/arm64/gic-v3-its.c
-@@ -97,3 +97,16 @@ void its_init(void)
- 	its_cmd_queue_init();
+@@ -110,3 +110,41 @@ void its_enable_defaults(void)
+ 
+ 	writel(GITS_CTLR_ENABLE, its_data.base + GITS_CTLR);
  }
-=20
-+/* must be called after gicv3_enable_defaults */
-+void its_enable_defaults(void)
++
++struct its_device *its_create_device(u32 device_id, int nr_ites)
 +{
-+	int i;
++	struct its_device *new;
++	unsigned long n;
 +
-+	/* Allocate LPI config and pending tables */
-+	gicv3_lpi_alloc_tables();
++	assert(its_data.nr_devices < GITS_MAX_DEVICES);
 +
-+	for (i =3D 0; i < nr_cpus; i++)
-+		gicv3_lpi_rdist_enable(i);
++	new = &its_data.devices[its_data.nr_devices];
 +
-+	writel(GITS_CTLR_ENABLE, its_data.base + GITS_CTLR);
++	new->device_id = device_id;
++	new->nr_ites = nr_ites;
++
++	n = (its_data.typer.ite_size * nr_ites) >> PAGE_SHIFT;
++	new->itt = alloc_pages(get_order(n));
++
++	its_data.nr_devices++;
++	return new;
 +}
---=20
++
++struct its_collection *its_create_collection(u32 col_id, u32 pe)
++{
++	struct its_collection *new;
++
++	assert(its_data.nr_collections < GITS_MAX_COLLECTIONS);
++
++	new = &its_data.collections[its_data.nr_collections];
++
++	new->col_id = col_id;
++
++	if (its_data.typer.pta)
++		new->target_address = (u64)gicv3_data.redist_base[pe];
++	else
++		new->target_address = pe << 16;
++
++	its_data.nr_collections++;
++	return new;
++}
+-- 
 2.20.1
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

@@ -1,301 +1,193 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1148513lfc;
-        Wed, 11 Mar 2020 12:30:58 -0700 (PDT)
-X-Received: by 2002:a92:83ca:: with SMTP id p71mr4405989ilk.278.1583955058020;
-        Wed, 11 Mar 2020 12:30:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583955058; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1160258lfc;
+        Wed, 11 Mar 2020 12:44:49 -0700 (PDT)
+X-Received: by 2002:a92:c68b:: with SMTP id o11mr2422468ilg.209.1583955889393;
+        Wed, 11 Mar 2020 12:44:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583955889; cv=none;
         d=google.com; s=arc-20160816;
-        b=InXMbvcVJ5ERlmwfJiKUvM45k0t5wgxHVt5gjA9w9E+GeusJHCljEwj4YcVH+hMVtM
-         NXNz6ENxr+QP5RxLBBcdZ30vQCi1hnx5pMKC1tOluPwP1h2ynjIsNwePjcrG3y910nG4
-         vEw6AZbDxyhHSyEXdmbw14CBzQLAycvUAnhxsRK+E5EPX7tAWCZ6iuOdoGnPu6vnQwcw
-         0cYmEybIe3rU1zKsfSqbEfPfksI4eddnAnfQv+iFso+Cf+dEb7H0IRaUXBsvFFKC3vvQ
-         TtopA3u0w+WYRIxcqicTxdui+FBrLEFw7TINKADmZOCIdmU8N2EJWPaUbGfV2QKTSRN3
-         kPtQ==
+        b=QkbxxF/IKzMMCvTfEK6zuC6ue7DcAazcnWo9vz5J/dhPGmp6jqRhkQ1N3rz1YvooMX
+         JLgk+aKgLpEe7Eezevi0wMUkPS0PwPxKF/xuPaUxhD5myanD2T+ap1kynA5hDc7gGkp0
+         5AYb4tqbgrKJyqVrq3TrxvqFt6NhbdscpdwfDKypLTuTLxUoyrTQopIjrX4Res02xDAy
+         PRznhC6sTl4omJz+ZwF0OpAP/7g5xwLyXj3QcHKNF03OArS8c7Y92GxCWqXj4syZp8Sb
+         UCaBefQyKioR9aTsAja8sI9bq8wmlCYFgp9h6w++5fopq1dr53vaQGx2uSuuCKXqOfch
+         5U2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=ZRdMx1uQLpaW4YJMfE+7IyhquX3bamlActAxa6ZJMGI=;
-        b=WRARlIzKP1oZ/u4nQpMorj/0IxRsrKB7SDAJ/FUaz6R6gx0NLTnmSN+CaA6tUKDRvo
-         Kt+0eg8PNVwYiPq9gFtuaLOpEAjuBAPEqQnjtSvgiT+roysUQMiPWAagC2L1ANlfzY2u
-         U6PLypqxwvP7RWAVJxr+9gD3JwG0lV1P9snpQEmW+jJpDJtsSuhRG0/iPFae9FBLPkTR
-         LYNngGT/2FisiW1sx3Oc4W8hfF0hSSLqPsgW9jgSOpG0a1B4NnPbhUD0LEsIZXBPg9sD
-         osP0CF5dQYCOSOMAyquxv6Ja/tZJFz1NQw8Dv0hXcRpQbyEhlP5m2P50vQe+KdCfnlna
-         /tiA==
+        bh=sStzUROPFbNgloBsdUZk7FIRcE4lmU9fOgPFV9ssxS4=;
+        b=eoHjB5+5DhKH72V1NIO5uEeIdwr17/H2yAaswrfPAwPsIbxYVJD9Yt42P60eghRHnP
+         pl2TatWD8ZUagZ68gLLpnnJ2x2IASJUMYuz43z3X30j+JvKDhc31JKvhwrdTkiis/kQu
+         NpmPfW+xuBhSNIa2gG8z8pkLFZIQOQrXrdzBZPVkLHf1OZTOJz1NGh1X6aYVozH3fx9G
+         lBLa8/o6K/OTH+aKLXKM6avo9xqDZ8s/h6DhJTb/2JIGYw4eW4D0buobja/7a38jI8bQ
+         2VjhEzlvqWTwV5LIAxSfT52iMcsZXFfnoDUBpzbUkwBYvaGwKnZittytnNRG8ig3ppLV
+         X8Og==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KX4HZeeI;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=p2qbtuge;
        spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <nieklinnenbank@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id f18sor2683507ioo.25.2020.03.11.12.30.57
+        by mx.google.com with SMTPS id d14sor4670019jah.12.2020.03.11.12.44.48
         (Google Transport Security);
-        Wed, 11 Mar 2020 12:30:58 -0700 (PDT)
+        Wed, 11 Mar 2020 12:44:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KX4HZeeI;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=p2qbtuge;
        spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=ZRdMx1uQLpaW4YJMfE+7IyhquX3bamlActAxa6ZJMGI=;
-        b=KX4HZeeINKci8g4fO3HnXGvmK+tlDSGy3oSzlAB81Ph8bedI9Fk0nfOHPK4wpOPhuM
-         SCulfipFC4AQcd5ZroBC9iqo1YPGB1/t1vxQLtDl3ephz2PV5R+4RHmfkOtZ7km/hq0n
-         /nC8Nc2SzUhpj/30hQA5aFY9wnh0OFVPZnjofnwBvW6V9CBXWIonDtliQaX38PmCUaKd
-         d+EhRXrLKyW1WR0WLtZdkUe6SoSEUlJTJ4lzw18IcrBP0frlMr9czTfIHIwGkjzvI6qv
-         nYs9oHhQQvE6Ub8dPLhjmtkwFL9vpsJJgld+M//0Jume/z8IpGTHdko+/qmFQ1zAuxwq
-         n6QQ==
+        bh=sStzUROPFbNgloBsdUZk7FIRcE4lmU9fOgPFV9ssxS4=;
+        b=p2qbtugeBILQGO4pSkJxkVpz/SmS7SqAPQ6lr+fGC5haRlBSVR5MfQ22itCe4/8OKn
+         eDDtzAN9u+HsIKi4qJuW8QuL6lVt0cXg8O9rl5fTm5q5nvFfkvm0iTeu1p5tuiEdJx3M
+         2S+8YbwOL+2OTpdv9IEOrgSSL79UrUfdtwrZOOYNhDjmMxHhxan3UZdDhtA2XYfmeDd5
+         1Jpg1D1nLXshx6wt1Q63GeLKsGjFGuGKBgYjftcVTqlqcvhL3PiZThd1MkjkRz7qvKHK
+         KKQPZ2N7PX4Pv0rdXHDsPlPu/lmU1NsshcFT8MB/jnUI4p0wDr+FjbjvhYjr+8R54srg
+         BGiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=ZRdMx1uQLpaW4YJMfE+7IyhquX3bamlActAxa6ZJMGI=;
-        b=hrv3c7wvubT2ybstrJx2uLDWPMIv3OZs79K2tTjCNgACZQBqO/tnUzK66zlxRW8Vf0
-         0LyG7bYoPq2Th4jXxeRAHcsBG2iho5j1vCbHplQck/28I/s7qPHYx+MBKEz9WMdTJrVe
-         1sZGVWA/EX9O3KY+IhhZHSf6IPikmni4gaGk1d9Ti41Y6aXe909KToY9dvzRcyiZS1gn
-         dcH5Q94KPDoNdNms+BDBYYbKg4Xfx150KhoWcT8Bklge0EIrMjuOvHehlJRITMWiSokS
-         0xW+zRbENOGIFeVhZp+pfs5RZEDDTzXNm08wk2aU9YX8tsKs6UJ40we2QXFjYUVQIoGy
-         +QVQ==
-X-Gm-Message-State: ANhLgQ3jn1dDm5GLEklTCU2vyjvxTtLQJ4D9hsE3fZYXftLfx7CD3SoX
-	cC5hwzV1pliEWG0po8ppla09ahV3d2ZNfODAjZ25Sg==
-X-Google-Smtp-Source: ADFU+vvmZ2H2+BTFHXPC25SdxUtfqRO70iVNUbcFz32Nj9dF1kDhPLouUl6PV5GbIZ4IDMDg3NAjk4YmJVNsfRqASl0=
-X-Received: by 2002:a02:700a:: with SMTP id f10mr4521668jac.120.1583955057214;
- Wed, 11 Mar 2020 12:30:57 -0700 (PDT)
+        bh=sStzUROPFbNgloBsdUZk7FIRcE4lmU9fOgPFV9ssxS4=;
+        b=hskhp3B1Jr0ZhQULLKwBPsyGTgbKlS/U/WBkSte6HuSoFepCqDfQ6gjcM7nmXnE4On
+         VtIRWbywctj40KGMnII8qh8mHTUwfCmpKqDim2kAqpILjYjczAB3w0q+Amm6qrPrB+kx
+         sKkt9PWepWxS/quYdbmMDiP0dU0XZawi0XdsL0U4434BDTSxwaIiOS4P/0NPWMlPMg82
+         MsL+o1cGb5A0znnutVfM69vkPnnabAGPtPxcyiTV4LqrrAGBJ1BJGnvls/hBpcX+C/Zs
+         BEKWpuNkMRJwE51PykM5cgPyRFlpSf6tYjiiVQxKZ4bHClxjYP94WDvZMWIvTPZMTEl5
+         8K/Q==
+X-Gm-Message-State: ANhLgQ2seAhSuAGqKisxhkDcbFPUH2WWc92PLSSBcQS2LfLPzK41zdAM
+	eA2qmXwr25j1m9OA80kuMfZS9EoU59jkJbPnPDCjSg==
+X-Google-Smtp-Source: ADFU+vtm7ewqMrLdb8tycFjLtjWP91VMIM3UTnsa9gbf9gYxP6H+yTd9pYTUX2q8quHQ0ZeIYojLsESU4pMASx8DyxY=
+X-Received: by 2002:a02:cf1b:: with SMTP id q27mr4269831jar.99.1583955888556;
+ Wed, 11 Mar 2020 12:44:48 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200310213203.18730-1-nieklinnenbank@gmail.com>
- <20200310213203.18730-8-nieklinnenbank@gmail.com> <87k13rgfqe.fsf@linaro.org>
-In-Reply-To: <87k13rgfqe.fsf@linaro.org>
+ <20200310213203.18730-11-nieklinnenbank@gmail.com> <87eetzgfim.fsf@linaro.org>
+In-Reply-To: <87eetzgfim.fsf@linaro.org>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Wed, 11 Mar 2020 20:30:46 +0100
-Message-ID: <CAPan3WrXM=bc33rEndzYeN5-xX7WpR1D5wbVBf8Yx=P3cTx5tA@mail.gmail.com>
-Subject: Re: [PATCH v7 07/18] hw/arm/allwinner: add Security Identifier device
+Date: Wed, 11 Mar 2020 20:44:37 +0100
+Message-ID: <CAPan3Wpebnx0Reikv156Z1R_05WnGHTxBh2pr4yiNJC9zo69ZA@mail.gmail.com>
+Subject: Re: [PATCH v7 10/18] hw/arm/allwinner-h3: add Boot ROM support
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
 	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
 	Beniamino Galvani <b.galvani@gmail.com>, Jason Wang <jasowang@redhat.com>, 
 	Igor Mammedov <imammedo@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000868c7b05a0994663"
-X-TUID: vxdYUVWikY32
+Content-Type: multipart/alternative; boundary="00000000000013cf7f05a0997845"
+X-TUID: CKX43bXXtuqd
 
---000000000000868c7b05a0994663
+--00000000000013cf7f05a0997845
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Mar 11, 2020 at 2:53 PM Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
+On Wed, Mar 11, 2020 at 2:58 PM Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
 rote:
 
 >
 > Niek Linnenbank <nieklinnenbank@gmail.com> writes:
 >
-> > The Security Identifier device found in various Allwinner System on Chi=
-p
-> > designs gives applications a per-board unique identifier. This commit
-> > adds support for the Allwinner Security Identifier using a 128-bit
-> > UUID value as input.
+> > A real Allwinner H3 SoC contains a Boot ROM which is the
+> > first code that runs right after the SoC is powered on.
+> > The Boot ROM is responsible for loading user code (e.g. a bootloader)
+> > from any of the supported external devices and writing the downloaded
+> > code to internal SRAM. After loading the SoC begins executing the code
+> > written to SRAM.
+> >
+> > This commits adds emulation of the Boot ROM firmware setup functionalit=
+y
+> > by loading user code from SD card in the A1 SRAM. While the A1 SRAM is
+> > 64KiB, we limit the size to 32KiB because the real H3 Boot ROM also
+> rejects
+> > sizes larger than 32KiB. For reference, this behaviour is documented
+> > by the Linux Sunxi project wiki at:
+> >
+> >   https://linux-sunxi.org/BROM#U-Boot_SPL_limitations
 > >
 > > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 > > ---
-> >  include/hw/arm/allwinner-h3.h   |   3 +
-> >  include/hw/misc/allwinner-sid.h |  60 ++++++++++++
-> >  hw/arm/allwinner-h3.c           |  11 ++-
-> >  hw/arm/orangepi.c               |   9 ++
-> >  hw/misc/allwinner-sid.c         | 168 ++++++++++++++++++++++++++++++++
-> >  hw/misc/Makefile.objs           |   1 +
-> >  hw/misc/trace-events            |   4 +
-> >  7 files changed, 255 insertions(+), 1 deletion(-)
-> >  create mode 100644 include/hw/misc/allwinner-sid.h
-> >  create mode 100644 hw/misc/allwinner-sid.c
+> >  include/hw/arm/allwinner-h3.h | 21 +++++++++++++++++++++
+> >  hw/arm/allwinner-h3.c         | 18 ++++++++++++++++++
+> >  hw/arm/orangepi.c             |  5 +++++
+> >  3 files changed, 44 insertions(+)
 > >
 > > diff --git a/include/hw/arm/allwinner-h3.h
 > b/include/hw/arm/allwinner-h3.h
-> > index dc729176ab..85416d9d64 100644
+> > index f9b9a02373..d338003724 100644
 > > --- a/include/hw/arm/allwinner-h3.h
 > > +++ b/include/hw/arm/allwinner-h3.h
-> > @@ -42,6 +42,7 @@
-> >  #include "hw/misc/allwinner-h3-ccu.h"
-> >  #include "hw/misc/allwinner-cpucfg.h"
-> >  #include "hw/misc/allwinner-h3-sysctrl.h"
-> > +#include "hw/misc/allwinner-sid.h"
+> > @@ -46,6 +46,7 @@
+> >  #include "hw/sd/allwinner-sdhost.h"
+> >  #include "hw/net/allwinner-sun8i-emac.h"
 > >  #include "target/arm/cpu.h"
+> > +#include "sysemu/block-backend.h"
 > >
 > >  /**
-> > @@ -59,6 +60,7 @@ enum {
-> >      AW_H3_SRAM_A2,
-> >      AW_H3_SRAM_C,
-> >      AW_H3_SYSCTRL,
-> > +    AW_H3_SID,
-> >      AW_H3_EHCI0,
-> >      AW_H3_OHCI0,
-> >      AW_H3_EHCI1,
-> > @@ -114,6 +116,7 @@ typedef struct AwH3State {
-> >      AwH3ClockCtlState ccu;
-> >      AwCpuCfgState cpucfg;
-> >      AwH3SysCtrlState sysctrl;
-> > +    AwSidState sid;
-> >      GICState gic;
-> >      MemoryRegion sram_a1;
-> >      MemoryRegion sram_a2;
-> > diff --git a/include/hw/misc/allwinner-sid.h
-> b/include/hw/misc/allwinner-sid.h
-> > new file mode 100644
-> > index 0000000000..4c1fa4762b
-> > --- /dev/null
-> > +++ b/include/hw/misc/allwinner-sid.h
-> > @@ -0,0 +1,60 @@
-> > +/*
-> > + * Allwinner Security ID emulation
-> > + *
-> > + * Copyright (C) 2019 Niek Linnenbank <nieklinnenbank@gmail.com>
-> > + *
-> > + * This program is free software: you can redistribute it and/or modif=
-y
-> > + * it under the terms of the GNU General Public License as published b=
-y
-> > + * the Free Software Foundation, either version 2 of the License, or
-> > + * (at your option) any later version.
-> > + *
-> > + * This program is distributed in the hope that it will be useful,
-> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + * GNU General Public License for more details.
-> > + *
-> > + * You should have received a copy of the GNU General Public License
-> > + * along with this program.  If not, see <http://www.gnu.org/licenses/
-> >.
-> > + */
-> > +
-> > +#ifndef HW_MISC_ALLWINNER_SID_H
-> > +#define HW_MISC_ALLWINNER_SID_H
-> > +
-> > +#include "qom/object.h"
-> > +#include "hw/sysbus.h"
-> > +#include "qemu/uuid.h"
-> > +
+> >   * Allwinner H3 device list
+> > @@ -129,4 +130,24 @@ typedef struct AwH3State {
+> >      MemoryRegion sram_c;
+> >  } AwH3State;
+> >
 > > +/**
-> > + * Object model
-> > + * @{
+> > + * Emulate Boot ROM firmware setup functionality.
+> > + *
+> > + * A real Allwinner H3 SoC contains a Boot ROM
+> > + * which is the first code that runs right after
+> > + * the SoC is powered on. The Boot ROM is responsible
+> > + * for loading user code (e.g. a bootloader) from any
+> > + * of the supported external devices and writing the
+> > + * downloaded code to internal SRAM. After loading the SoC
+> > + * begins executing the code written to SRAM.
+> > + *
+> > + * This function emulates the Boot ROM by copying 32 KiB
+> > + * of data from the given block device and writes it to
+> > + * the start of the first internal SRAM memory.
+> > + *
+> > + * @s: Allwinner H3 state object pointer
+> > + * @blk: Block backend device object pointer
 > > + */
+> > +void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk);
 > > +
-> > +#define TYPE_AW_SID    "allwinner-sid"
-> > +#define AW_SID(obj) \
-> > +    OBJECT_CHECK(AwSidState, (obj), TYPE_AW_SID)
-> > +
-> > +/** @} */
-> > +
-> > +/**
-> > + * Allwinner Security ID object instance state
-> > + */
-> > +typedef struct AwSidState {
-> > +    /*< private >*/
-> > +    SysBusDevice parent_obj;
-> > +    /*< public >*/
-> > +
-> > +    /** Maps I/O registers in physical memory */
-> > +    MemoryRegion iomem;
-> > +
-> > +    /** Control register defines how and what to read */
-> > +    uint32_t control;
-> > +
-> > +    /** RdKey register contains the data retrieved by the device */
-> > +    uint32_t rdkey;
-> > +
-> > +    /** Stores the emulated device identifier */
-> > +    QemuUUID identifier;
-> > +
-> > +} AwSidState;
-> > +
-> > +#endif /* HW_MISC_ALLWINNER_SID_H */
+> >  #endif /* HW_ARM_ALLWINNER_H3_H */
 > > diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-> > index b9a5597f2a..deeea63f5f 100644
+> > index d1245d2b01..56b5c563a8 100644
 > > --- a/hw/arm/allwinner-h3.c
 > > +++ b/hw/arm/allwinner-h3.c
-> > @@ -38,6 +38,7 @@ const hwaddr allwinner_h3_memmap[] =3D {
-> >      [AW_H3_SRAM_A2]    =3D 0x00044000,
-> >      [AW_H3_SRAM_C]     =3D 0x00010000,
-> >      [AW_H3_SYSCTRL]    =3D 0x01c00000,
-> > +    [AW_H3_SID]        =3D 0x01c14000,
-> >      [AW_H3_EHCI0]      =3D 0x01c1a000,
-> >      [AW_H3_OHCI0]      =3D 0x01c1a400,
-> >      [AW_H3_EHCI1]      =3D 0x01c1b000,
-> > @@ -78,7 +79,6 @@ struct AwH3Unimplemented {
-> >      { "mmc0",      0x01c0f000, 4 * KiB },
-> >      { "mmc1",      0x01c10000, 4 * KiB },
-> >      { "mmc2",      0x01c11000, 4 * KiB },
-> > -    { "sid",       0x01c14000, 1 * KiB },
-> >      { "crypto",    0x01c15000, 4 * KiB },
-> >      { "msgbox",    0x01c17000, 4 * KiB },
-> >      { "spinlock",  0x01c18000, 4 * KiB },
-> > @@ -198,6 +198,11 @@ static void allwinner_h3_init(Object *obj)
+> > @@ -29,6 +29,7 @@
+> >  #include "hw/char/serial.h"
+> >  #include "hw/misc/unimp.h"
+> >  #include "hw/usb/hcd-ehci.h"
+> > +#include "hw/loader.h"
+> >  #include "sysemu/sysemu.h"
+> >  #include "hw/arm/allwinner-h3.h"
 > >
-> >      sysbus_init_child_obj(obj, "cpucfg", &s->cpucfg, sizeof(s->cpucfg)=
-,
-> >                            TYPE_AW_CPUCFG);
-> > +
-> > +    sysbus_init_child_obj(obj, "sid", &s->sid, sizeof(s->sid),
-> > +                          TYPE_AW_SID);
-> > +    object_property_add_alias(obj, "identifier", OBJECT(&s->sid),
-> > +                              "identifier", &error_abort);
-> >  }
+> > @@ -170,6 +171,23 @@ enum {
+> >      AW_H3_GIC_NUM_SPI       =3D 128
+> >  };
 > >
-> >  static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-> > @@ -315,6 +320,10 @@ static void allwinner_h3_realize(DeviceState *dev,
-> Error **errp)
-> >      qdev_init_nofail(DEVICE(&s->cpucfg));
-> >      sysbus_mmio_map(SYS_BUS_DEVICE(&s->cpucfg), 0,
-> s->memmap[AW_H3_CPUCFG]);
-> >
-> > +    /* Security Identifier */
-> > +    qdev_init_nofail(DEVICE(&s->sid));
-> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sid), 0, s->memmap[AW_H3_SID]);
-> > +
-> >      /* Universal Serial Bus */
-> >      sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI0],
-> >                           qdev_get_gpio_in(DEVICE(&s->gic),
-> > diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-> > index 3fcec1944e..c92fab3eac 100644
-> > --- a/hw/arm/orangepi.c
-> > +++ b/hw/arm/orangepi.c
-> > @@ -65,6 +65,15 @@ static void orangepi_init(MachineState *machine)
-> >      object_property_set_int(OBJECT(h3), 24 * 1000 * 1000, "clk1-freq",
-> >                              &error_abort);
-> >
-> > +    /* Setup SID properties. Currently using a default fixed SID
-> identifier. */
-> > +    if (qemu_uuid_is_null(&h3->sid.identifier)) {
-> > +        qdev_prop_set_string(DEVICE(h3), "identifier",
-> > +                             "02c00081-1111-2222-3333-000044556677");
-> > +    } else if (ldl_be_p(&h3->sid.identifier.data[0]) !=3D 0x02c00081) =
-{
-> > +        fprintf(stderr, "WARNING: Security Identifier value does "
-> > +                        "not include H3 prefix\n");
-> > +    }
-> > +
+> > +void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk)
+> > +{
+> > +    const int64_t rom_size =3D 32 * KiB;
+> > +    uint8_t *buffer =3D g_new0(uint8_t, rom_size);
 >
-> Should this be a LOG_GUEST_ERROR?
+> There is an opportunity to use g_autofree here so you can skip..
+>
+> > +    g_free(buffer);
+> > +}
+> > +
+> <snip>
 >
 
-Hi Alex,
+Thanks Alex, I'll use g_autofree here.
 
-This warning is basically to inform the user when overriding the SID
-identifier manually with -global,
-that the identifier specified by the user does not contain the H3 SoC
-prefix. Real hardware always has
-that particular prefix in its identifier value, and it might be so that
-software running on the emulated hardware
-depends on it. So its basically a proactive warning to inform the user, and
-not an error of wrong behavior caused by the guest software.
+Regards,
+Niek
 
 
 >
 > Otherwise:
 >
 > Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->
-
-Assuming the above explanation is sufficient, I'll add your review tag,
-thanks!
-
-
 >
 > --
 > Alex Benn=C3=A9e
@@ -305,12 +197,12 @@ thanks!
 --=20
 Niek Linnenbank
 
---000000000000868c7b05a0994663
+--00000000000013cf7f05a0997845
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Mar 11, 2020 at 2:53 PM Alex =
+<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Mar 11, 2020 at 2:58 PM Alex =
 Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.org">alex.bennee@linar=
 o.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
 rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
@@ -318,255 +210,114 @@ rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
 Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com" target=3D"_=
 blank">nieklinnenbank@gmail.com</a>&gt; writes:<br>
 <br>
-&gt; The Security Identifier device found in various Allwinner System on Ch=
-ip<br>
-&gt; designs gives applications a per-board unique identifier. This commit<=
+&gt; A real Allwinner H3 SoC contains a Boot ROM which is the<br>
+&gt; first code that runs right after the SoC is powered on.<br>
+&gt; The Boot ROM is responsible for loading user code (e.g. a bootloader)<=
 br>
-&gt; adds support for the Allwinner Security Identifier using a 128-bit<br>
-&gt; UUID value as input.<br>
+&gt; from any of the supported external devices and writing the downloaded<=
+br>
+&gt; code to internal SRAM. After loading the SoC begins executing the code=
+<br>
+&gt; written to SRAM.<br>
+&gt;<br>
+&gt; This commits adds emulation of the Boot ROM firmware setup functionali=
+ty<br>
+&gt; by loading user code from SD card in the A1 SRAM. While the A1 SRAM is=
+<br>
+&gt; 64KiB, we limit the size to 32KiB because the real H3 Boot ROM also re=
+jects<br>
+&gt; sizes larger than 32KiB. For reference, this behaviour is documented<b=
+r>
+&gt; by the Linux Sunxi project wiki at:<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0<a href=3D"https://linux-sunxi.org/BROM#U-Boot_SPL_limitat=
+ions" rel=3D"noreferrer" target=3D"_blank">https://linux-sunxi.org/BROM#U-B=
+oot_SPL_limitations</a><br>
 &gt;<br>
 &gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gm=
 ail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
 &gt; ---<br>
-&gt;=C2=A0 include/hw/arm/allwinner-h3.h=C2=A0 =C2=A0|=C2=A0 =C2=A03 +<br>
-&gt;=C2=A0 include/hw/misc/allwinner-sid.h |=C2=A0 60 ++++++++++++<br>
-&gt;=C2=A0 hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
-=C2=A0 11 ++-<br>
+&gt;=C2=A0 include/hw/arm/allwinner-h3.h | 21 +++++++++++++++++++++<br>
+&gt;=C2=A0 hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 18 ++++=
+++++++++++++++<br>
 &gt;=C2=A0 hw/arm/orangepi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0|=C2=A0 =C2=A09 ++<br>
-&gt;=C2=A0 hw/misc/allwinner-sid.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 168 +=
-+++++++++++++++++++++++++++++++<br>
-&gt;=C2=A0 hw/misc/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
-=C2=A0 =C2=A01 +<br>
-&gt;=C2=A0 hw/misc/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
-=C2=A0 =C2=A04 +<br>
-&gt;=C2=A0 7 files changed, 255 insertions(+), 1 deletion(-)<br>
-&gt;=C2=A0 create mode 100644 include/hw/misc/allwinner-sid.h<br>
-&gt;=C2=A0 create mode 100644 hw/misc/allwinner-sid.c<br>
+=A0|=C2=A0 5 +++++<br>
+&gt;=C2=A0 3 files changed, 44 insertions(+)<br>
 &gt;<br>
 &gt; diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-=
 h3.h<br>
-&gt; index dc729176ab..85416d9d64 100644<br>
+&gt; index f9b9a02373..d338003724 100644<br>
 &gt; --- a/include/hw/arm/allwinner-h3.h<br>
 &gt; +++ b/include/hw/arm/allwinner-h3.h<br>
-&gt; @@ -42,6 +42,7 @@<br>
-&gt;=C2=A0 #include &quot;hw/misc/allwinner-h3-ccu.h&quot;<br>
-&gt;=C2=A0 #include &quot;hw/misc/allwinner-cpucfg.h&quot;<br>
-&gt;=C2=A0 #include &quot;hw/misc/allwinner-h3-sysctrl.h&quot;<br>
-&gt; +#include &quot;hw/misc/allwinner-sid.h&quot;<br>
+&gt; @@ -46,6 +46,7 @@<br>
+&gt;=C2=A0 #include &quot;hw/sd/allwinner-sdhost.h&quot;<br>
+&gt;=C2=A0 #include &quot;hw/net/allwinner-sun8i-emac.h&quot;<br>
 &gt;=C2=A0 #include &quot;target/arm/cpu.h&quot;<br>
+&gt; +#include &quot;sysemu/block-backend.h&quot;<br>
 &gt;=C2=A0 <br>
 &gt;=C2=A0 /**<br>
-&gt; @@ -59,6 +60,7 @@ enum {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 AW_H3_SRAM_A2,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 AW_H3_SRAM_C,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 AW_H3_SYSCTRL,<br>
-&gt; +=C2=A0 =C2=A0 AW_H3_SID,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 AW_H3_EHCI0,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 AW_H3_OHCI0,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 AW_H3_EHCI1,<br>
-&gt; @@ -114,6 +116,7 @@ typedef struct AwH3State {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 AwH3ClockCtlState ccu;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 AwCpuCfgState cpucfg;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 AwH3SysCtrlState sysctrl;<br>
-&gt; +=C2=A0 =C2=A0 AwSidState sid;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 GICState gic;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 MemoryRegion sram_a1;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 MemoryRegion sram_a2;<br>
-&gt; diff --git a/include/hw/misc/allwinner-sid.h b/include/hw/misc/allwinn=
-er-sid.h<br>
-&gt; new file mode 100644<br>
-&gt; index 0000000000..4c1fa4762b<br>
-&gt; --- /dev/null<br>
-&gt; +++ b/include/hw/misc/allwinner-sid.h<br>
-&gt; @@ -0,0 +1,60 @@<br>
-&gt; +/*<br>
-&gt; + * Allwinner Security ID emulation<br>
-&gt; + *<br>
-&gt; + * Copyright (C) 2019 Niek Linnenbank &lt;<a href=3D"mailto:nieklinne=
-nbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
-&gt; + *<br>
-&gt; + * This program is free software: you can redistribute it and/or modi=
-fy<br>
-&gt; + * it under the terms of the GNU General Public License as published =
-by<br>
-&gt; + * the Free Software Foundation, either version 2 of the License, or<=
-br>
-&gt; + * (at your option) any later version.<br>
-&gt; + *<br>
-&gt; + * This program is distributed in the hope that it will be useful,<br=
->
-&gt; + * but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
-&gt; + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.=C2=A0 See the=
-<br>
-&gt; + * GNU General Public License for more details.<br>
-&gt; + *<br>
-&gt; + * You should have received a copy of the GNU General Public License<=
-br>
-&gt; + * along with this program.=C2=A0 If not, see &lt;<a href=3D"http://w=
-ww.gnu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.o=
-rg/licenses/</a>&gt;.<br>
-&gt; + */<br>
-&gt; +<br>
-&gt; +#ifndef HW_MISC_ALLWINNER_SID_H<br>
-&gt; +#define HW_MISC_ALLWINNER_SID_H<br>
-&gt; +<br>
-&gt; +#include &quot;qom/object.h&quot;<br>
-&gt; +#include &quot;hw/sysbus.h&quot;<br>
-&gt; +#include &quot;qemu/uuid.h&quot;<br>
-&gt; +<br>
+&gt;=C2=A0 =C2=A0* Allwinner H3 device list<br>
+&gt; @@ -129,4 +130,24 @@ typedef struct AwH3State {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 MemoryRegion sram_c;<br>
+&gt;=C2=A0 } AwH3State;<br>
+&gt;=C2=A0 <br>
 &gt; +/**<br>
-&gt; + * Object model<br>
-&gt; + * @{<br>
+&gt; + * Emulate Boot ROM firmware setup functionality.<br>
+&gt; + *<br>
+&gt; + * A real Allwinner H3 SoC contains a Boot ROM<br>
+&gt; + * which is the first code that runs right after<br>
+&gt; + * the SoC is powered on. The Boot ROM is responsible<br>
+&gt; + * for loading user code (e.g. a bootloader) from any<br>
+&gt; + * of the supported external devices and writing the<br>
+&gt; + * downloaded code to internal SRAM. After loading the SoC<br>
+&gt; + * begins executing the code written to SRAM.<br>
+&gt; + *<br>
+&gt; + * This function emulates the Boot ROM by copying 32 KiB<br>
+&gt; + * of data from the given block device and writes it to<br>
+&gt; + * the start of the first internal SRAM memory.<br>
+&gt; + *<br>
+&gt; + * @s: Allwinner H3 state object pointer<br>
+&gt; + * @blk: Block backend device object pointer<br>
 &gt; + */<br>
+&gt; +void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk);<br>
 &gt; +<br>
-&gt; +#define TYPE_AW_SID=C2=A0 =C2=A0 &quot;allwinner-sid&quot;<br>
-&gt; +#define AW_SID(obj) \<br>
-&gt; +=C2=A0 =C2=A0 OBJECT_CHECK(AwSidState, (obj), TYPE_AW_SID)<br>
-&gt; +<br>
-&gt; +/** @} */<br>
-&gt; +<br>
-&gt; +/**<br>
-&gt; + * Allwinner Security ID object instance state<br>
-&gt; + */<br>
-&gt; +typedef struct AwSidState {<br>
-&gt; +=C2=A0 =C2=A0 /*&lt; private &gt;*/<br>
-&gt; +=C2=A0 =C2=A0 SysBusDevice parent_obj;<br>
-&gt; +=C2=A0 =C2=A0 /*&lt; public &gt;*/<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /** Maps I/O registers in physical memory */<br>
-&gt; +=C2=A0 =C2=A0 MemoryRegion iomem;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /** Control register defines how and what to read */<br=
->
-&gt; +=C2=A0 =C2=A0 uint32_t control;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /** RdKey register contains the data retrieved by the d=
-evice */<br>
-&gt; +=C2=A0 =C2=A0 uint32_t rdkey;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /** Stores the emulated device identifier */<br>
-&gt; +=C2=A0 =C2=A0 QemuUUID identifier;<br>
-&gt; +<br>
-&gt; +} AwSidState;<br>
-&gt; +<br>
-&gt; +#endif /* HW_MISC_ALLWINNER_SID_H */<br>
+&gt;=C2=A0 #endif /* HW_ARM_ALLWINNER_H3_H */<br>
 &gt; diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c<br>
-&gt; index b9a5597f2a..deeea63f5f 100644<br>
+&gt; index d1245d2b01..56b5c563a8 100644<br>
 &gt; --- a/hw/arm/allwinner-h3.c<br>
 &gt; +++ b/hw/arm/allwinner-h3.c<br>
-&gt; @@ -38,6 +38,7 @@ const hwaddr allwinner_h3_memmap[] =3D {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 [AW_H3_SRAM_A2]=C2=A0 =C2=A0 =3D 0x00044000,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 [AW_H3_SRAM_C]=C2=A0 =C2=A0 =C2=A0=3D 0x00010000,<=
-br>
-&gt;=C2=A0 =C2=A0 =C2=A0 [AW_H3_SYSCTRL]=C2=A0 =C2=A0 =3D 0x01c00000,<br>
-&gt; +=C2=A0 =C2=A0 [AW_H3_SID]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D 0x01c14000,<=
-br>
-&gt;=C2=A0 =C2=A0 =C2=A0 [AW_H3_EHCI0]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1a000,<=
-br>
-&gt;=C2=A0 =C2=A0 =C2=A0 [AW_H3_OHCI0]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1a400,<=
-br>
-&gt;=C2=A0 =C2=A0 =C2=A0 [AW_H3_EHCI1]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1b000,<=
-br>
-&gt; @@ -78,7 +79,6 @@ struct AwH3Unimplemented {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 { &quot;mmc0&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c0f000=
-, 4 * KiB },<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 { &quot;mmc1&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c10000=
-, 4 * KiB },<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 { &quot;mmc2&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c11000=
-, 4 * KiB },<br>
-&gt; -=C2=A0 =C2=A0 { &quot;sid&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c14000=
-, 1 * KiB },<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 { &quot;crypto&quot;,=C2=A0 =C2=A0 0x01c15000, 4 *=
- KiB },<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 { &quot;msgbox&quot;,=C2=A0 =C2=A0 0x01c17000, 4 *=
- KiB },<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 { &quot;spinlock&quot;,=C2=A0 0x01c18000, 4 * KiB =
-},<br>
-&gt; @@ -198,6 +198,11 @@ static void allwinner_h3_init(Object *obj)<br>
+&gt; @@ -29,6 +29,7 @@<br>
+&gt;=C2=A0 #include &quot;hw/char/serial.h&quot;<br>
+&gt;=C2=A0 #include &quot;hw/misc/unimp.h&quot;<br>
+&gt;=C2=A0 #include &quot;hw/usb/hcd-ehci.h&quot;<br>
+&gt; +#include &quot;hw/loader.h&quot;<br>
+&gt;=C2=A0 #include &quot;sysemu/sysemu.h&quot;<br>
+&gt;=C2=A0 #include &quot;hw/arm/allwinner-h3.h&quot;<br>
 &gt;=C2=A0 <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_init_child_obj(obj, &quot;cpucfg&quot;, &am=
-p;s-&gt;cpucfg, sizeof(s-&gt;cpucfg),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 TYPE_AW_CPUCFG);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 sysbus_init_child_obj(obj, &quot;sid&quot;, &amp;s-&gt;=
-sid, sizeof(s-&gt;sid),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 TYPE_AW_SID);<br>
-&gt; +=C2=A0 =C2=A0 object_property_add_alias(obj, &quot;identifier&quot;, =
-OBJECT(&amp;s-&gt;sid),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;identifier&quot;, &amp;error_abor=
-t);<br>
-&gt;=C2=A0 }<br>
+&gt; @@ -170,6 +171,23 @@ enum {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 AW_H3_GIC_NUM_SPI=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 12=
+8<br>
+&gt;=C2=A0 };<br>
 &gt;=C2=A0 <br>
-&gt;=C2=A0 static void allwinner_h3_realize(DeviceState *dev, Error **errp)=
+&gt; +void allwinner_h3_bootrom_setup(AwH3State *s, BlockBackend *blk)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 const int64_t rom_size =3D 32 * KiB;<br>
+&gt; +=C2=A0 =C2=A0 uint8_t *buffer =3D g_new0(uint8_t, rom_size);<br>
 <br>
-&gt; @@ -315,6 +320,10 @@ static void allwinner_h3_realize(DeviceState *dev=
-, Error **errp)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 qdev_init_nofail(DEVICE(&amp;s-&gt;cpucfg));<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;cpucfg),=
- 0, s-&gt;memmap[AW_H3_CPUCFG]);<br>
-&gt;=C2=A0 <br>
-&gt; +=C2=A0 =C2=A0 /* Security Identifier */<br>
-&gt; +=C2=A0 =C2=A0 qdev_init_nofail(DEVICE(&amp;s-&gt;sid));<br>
-&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;sid), 0, s-&g=
-t;memmap[AW_H3_SID]);<br>
-&gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 /* Universal Serial Bus */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, s-&gt;memmap=
-[AW_H3_EHCI0],<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
-&gt; diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c<br>
-&gt; index 3fcec1944e..c92fab3eac 100644<br>
-&gt; --- a/hw/arm/orangepi.c<br>
-&gt; +++ b/hw/arm/orangepi.c<br>
-&gt; @@ -65,6 +65,15 @@ static void orangepi_init(MachineState *machine)<br=
->
-&gt;=C2=A0 =C2=A0 =C2=A0 object_property_set_int(OBJECT(h3), 24 * 1000 * 10=
-00, &quot;clk1-freq&quot;,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;error_abort);<br>
-&gt;=C2=A0 <br>
-&gt; +=C2=A0 =C2=A0 /* Setup SID properties. Currently using a default fixe=
-d SID identifier. */<br>
-&gt; +=C2=A0 =C2=A0 if (qemu_uuid_is_null(&amp;h3-&gt;sid.identifier)) {<br=
->
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_string(DEVICE(h3), &quot;id=
-entifier&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;02c00081-1111-2222-3333-0000445566=
-77&quot;);<br>
-&gt; +=C2=A0 =C2=A0 } else if (ldl_be_p(&amp;h3-&gt;sid.identifier.data[0])=
- !=3D 0x02c00081) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 fprintf(stderr, &quot;WARNING: Security I=
-dentifier value does &quot;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 &quot;not include H3 prefix\n&quot;);<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
+There is an opportunity to use g_autofree here so you can skip..<br>
 <br>
-Should this be a LOG_GUEST_ERROR?<br></blockquote><div><br></div><div>Hi Al=
-ex,</div><div><br></div><div>This warning is basically to inform the user w=
-hen overriding the SID identifier manually with -global,</div><div>that the=
- identifier specified by the user does not contain the H3 SoC prefix. Real =
-hardware always has</div><div>that particular prefix in its identifier valu=
-e, and it might be so that software running on the emulated hardware</div><=
-div>depends on it. So its basically a proactive warning to inform the user,=
- and not an error of wrong behavior caused by the guest software.<br></div>=
+&gt; +=C2=A0 =C2=A0 g_free(buffer);<br>
+&gt; +}<br>
+&gt; +<br>
+&lt;snip&gt;<br></blockquote><div><br></div><div>Thanks Alex, I&#39;ll use =
+g_autofree here.</div><div><br></div><div>Regards,</div><div>Niek<br></div>=
 <div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
 <br>
 Otherwise:<br>
 <br>
 Reviewed-by: Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.org"=
- target=3D"_blank">alex.bennee@linaro.org</a>&gt;<br></blockquote><div><br>=
-</div><div>Assuming the above explanation is sufficient, I&#39;ll add your =
-review tag, thanks!<br></div><div>=C2=A0</div><blockquote class=3D"gmail_qu=
-ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
-4);padding-left:1ex">
+ target=3D"_blank">alex.bennee@linaro.org</a>&gt;<br>
 <br>
 -- <br>
 Alex Benn=C3=A9e<br>
@@ -574,4 +325,4 @@ Alex Benn=C3=A9e<br>
 mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
 div></div>
 
---000000000000868c7b05a0994663--
+--00000000000013cf7f05a0997845--

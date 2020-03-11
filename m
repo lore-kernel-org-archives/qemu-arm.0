@@ -1,143 +1,290 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp758332lfc;
-        Wed, 11 Mar 2020 06:16:52 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuWUkhGIFa7Gh5V609GoO/NiOnfMv1r33Re9jaJqwMAT+6PJeAqbL0RThE0+61zm9JB0+e2
-X-Received: by 2002:ac8:197c:: with SMTP id g57mr2694614qtk.264.1583932612102;
-        Wed, 11 Mar 2020 06:16:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583932612; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp760141lfc;
+        Wed, 11 Mar 2020 06:18:20 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuVBIErdgbq2vIAL0jKlo8TpvokQ3+kIKkJHBQ1MnYDZ28uOR4sIAzV6o6yXSYAdGlKFgQK
+X-Received: by 2002:ac8:708f:: with SMTP id y15mr1983745qto.35.1583932700354;
+        Wed, 11 Mar 2020 06:18:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583932700; cv=none;
         d=google.com; s=arc-20160816;
-        b=oOcr3ougYNYxzWnS2bN208WA5ClasWAaJeGn2onxCnXjVgI/INpC9w6KhteoV2ZFE2
-         KT/eVWMyv+FDaPlDIkbih97DbGPdATAf3MsLDpzroQ6Z23Vi52do+B8ndU6NqfNcjUPM
-         i+DLySKqMtl0iJX9Pz7iub7OG3Em4I10YxA96+Zti/xG2sQr7o5JFgEmUgsdlUAcySQ6
-         M5FT9o0tP+16O9LWpflYq64IIlhxKwDWuR9QeTTJXhI2RkaB8QjLCbeXAIsPXeBkJW1u
-         5T2KJaowIs4joqmH156vU5EHRoQo1ohdT4nLHLaH1AUQEwPCYl/s78YlrK/28rYYEf71
-         jnlg==
+        b=HsKcaVe+4/oLq11qYy7hMuYzmQvW32je7p4PEH4boq6/y9LSw2l6gA8LHZujf8UPWN
+         F+wA+7U+sCjltA/+6w6gF1QgPCXmiAos57MZOfupXbEVW5ViYfQfEdkHIXgGTPXHG/NK
+         lmLnCeork0T5X1I5+VdQTBRMHyiUv6b8SIJA9ZochYGUSi9rlw0v93aAKpH15TCrDzFa
+         6alHlJWcp67rMj5GMaBbpK+QPqjTqsA6xUIDMIiMWcae1/KNFoOPyHzGn4vNSpLPN9tB
+         d8yxHzmqsCmVqCe65bDqgrF8sADESDSuD2YbPZu73uDXnZrhvoR71SB940aZAv6Cw5S8
+         hNIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ciFZ44sKcymmMsByHtfMv1caU+62zP76aEdlZZZJYII=;
-        b=oz6ZMtG9JP/9gWAQmtN2FBHRoNtEj+vI3zXOh2IyA2Rq3cZWZBwo64RqQQhbZ05m+L
-         ZOQD3x1lWhkwQ/EErBz2fThC+tF4K+xi0G3rTt6eerYzPYq4Y5rUbRTjydwwgqL7UbXZ
-         M1GqYyk1quSiIM51yFkyRVMuzK0nY/q578AJt5uUoBhTb7+vZdi+trkWZF9iml/O8yLx
-         8iGZyNEMVYzYtuzCGnumgeHcrjQwgGZC4/otxjKNFALzcNF6L/PMAE2qG8fewxs1yerh
-         ZMFa+bJciqcxGHMRtlggoYQ3IcDkibnfrjj779zyZsKUJ30oAgawJW7t7gCMKYL8qHBr
-         8zSQ==
+        bh=NWsKxrm6MCuJ+bbq6H3eDVrINh3UM09rwzqXJQV8W0o=;
+        b=av1hNMkY18tpLESgBCHr17fm4IEXlGUxTwSc8kNvz38HuowPHYCufd9Wnlw2inZMe8
+         7dKxTT8t+uPzBIGsEfggpKFAn2drRQd5YiNACCy3J6Uf2Y92rDWvHlyLrPnd4lMGDWfd
+         6KbGz2j+e073ZXiDXEUhSYpMGupRXPJp1AQqgAA+OUugy3nuN9XBPiualvq43DTWpjSN
+         J19vSKZpZkJoD+xLjwvWXa3ZJyPdXA/NteZLw2D8Whd1F5pxyY07keDMQYal/T5e0Aon
+         Mg+rAcK7yfBw3PNWbHPkwIeBHYRYtYqRfEFJg5wknFNdTBzUUyzDWsnVrSNYwz+wM4hg
+         +W3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=d1Q33j1h;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BsoOmFEl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v22si1022122qkv.372.2020.03.11.06.16.51
+        by mx.google.com with ESMTPS id y64si1022157qtd.197.2020.03.11.06.18.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Mar 2020 06:16:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 11 Mar 2020 06:18:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=d1Q33j1h;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BsoOmFEl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51658 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51691 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jC1EB-0001SE-Ap
-	for alex.bennee@linaro.org; Wed, 11 Mar 2020 09:16:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56531)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jC1Fb-00046f-P5
+	for alex.bennee@linaro.org; Wed, 11 Mar 2020 09:18:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56607)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1jC1Dz-0001OE-GV
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 09:16:40 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1jC1E6-0001cO-9v
+ for qemu-devel@nongnu.org; Wed, 11 Mar 2020 09:16:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1jC1Dy-0007gp-Hx
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 09:16:39 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:38395
+ (envelope-from <eric.auger@redhat.com>) id 1jC1E4-0007oj-QK
+ for qemu-devel@nongnu.org; Wed, 11 Mar 2020 09:16:46 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:51809
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1jC1Dy-0007fX-Er
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 09:16:38 -0400
+ id 1jC1E4-0007ny-Mv
+ for qemu-devel@nongnu.org; Wed, 11 Mar 2020 09:16:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583932597;
+ s=mimecast20190719; t=1583932604;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ciFZ44sKcymmMsByHtfMv1caU+62zP76aEdlZZZJYII=;
- b=d1Q33j1h8Nqtw+B4SHmDdvcjIn/kUgBBi6xdmVhHVt2tdshGisX1xvcjhYC5TOMMm/+55j
- 339Y+BggajnY21Y38p38w1Z0gxw5tky1sda3cbFu+hy/5DavDliavDMfcm+DZX7ua/p8hB
- rntj6joNggnwINir/7bKn/rj0WYDhak=
+ bh=NWsKxrm6MCuJ+bbq6H3eDVrINh3UM09rwzqXJQV8W0o=;
+ b=BsoOmFElbXGnlsxTT+jrXpoASf6wSeRkUt8BUpP6id7KDeW6UOfgIVBMRWwUabnFZB+qGc
+ mOoROKyIlgry/3GGzfkIGPCOPGVj0+swOjwRlgxfTdUZL/SpUR1qzw4sNaAB2u2oovpRTZ
+ n2w3MkyLVGkkKECGd5tzwBdINYlSCJs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-383-nXnx5U1tOdSoneBb42Imxw-1; Wed, 11 Mar 2020 09:16:36 -0400
-X-MC-Unique: nXnx5U1tOdSoneBb42Imxw-1
+ us-mta-205-G4BbWJomNqml4jq-XOuCqQ-1; Wed, 11 Mar 2020 09:16:40 -0400
+X-MC-Unique: G4BbWJomNqml4jq-XOuCqQ-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D0619477;
- Wed, 11 Mar 2020 13:16:34 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BE28C189F760;
+ Wed, 11 Mar 2020 13:16:38 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.36.118.12])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7255484779;
- Wed, 11 Mar 2020 13:16:31 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7588973880;
+ Wed, 11 Mar 2020 13:16:35 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org
-Subject: [PATCH v5 1/6] hw/arm/virt: Document 'max' value in gic-version
- property description
-Date: Wed, 11 Mar 2020 14:16:13 +0100
-Message-Id: <20200311131618.7187-2-eric.auger@redhat.com>
+Subject: [PATCH v5 2/6] hw/arm/virt: Introduce VirtGICType enum type
+Date: Wed, 11 Mar 2020 14:16:14 +0100
+Message-Id: <20200311131618.7187-3-eric.auger@redhat.com>
 In-Reply-To: <20200311131618.7187-1-eric.auger@redhat.com>
 References: <20200311131618.7187-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 207.211.31.120
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: maz@kernel.org, drjones@redhat.com, richard.henderson@linaro.org,
  philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rFQ3BCuKJDfA
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: B1X8+qhV1V45
 
-Mention 'max' value in the gic-version property description.
+We plan to introduce yet another value for the gic version (nosel).
+As we already use exotic values such as 0 and -1, let's introduce
+a dedicated enum type and let vms->gic_version take this
+type.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 Reviewed-by: Andrew Jones <drjones@redhat.com>
----
- hw/arm/virt.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
 
+---
+
+v3 -> v4:
+- added R-bs
+
+v2 -> v3:
+- replaced defines by enum VirtGICType
+- use that new type for vms->gic_version
+---
+ include/hw/arm/virt.h | 11 +++++++++--
+ hw/arm/virt.c         | 30 +++++++++++++++---------------
+ 2 files changed, 24 insertions(+), 17 deletions(-)
+
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 02f500cb8e..c0827cacdf 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -95,6 +95,13 @@ typedef enum VirtIOMMUType {
+     VIRT_IOMMU_VIRTIO,
+ } VirtIOMMUType;
+=20
++typedef enum VirtGICType {
++    VIRT_GIC_VERSION_MAX,
++    VIRT_GIC_VERSION_HOST,
++    VIRT_GIC_VERSION_2,
++    VIRT_GIC_VERSION_3,
++} VirtGICType;
++
+ typedef struct MemMapEntry {
+     hwaddr base;
+     hwaddr size;
+@@ -123,7 +130,7 @@ typedef struct {
+     bool highmem_ecam;
+     bool its;
+     bool virt;
+-    int32_t gic_version;
++    VirtGICType gic_version;
+     VirtIOMMUType iommu;
+     uint16_t virtio_iommu_bdf;
+     struct arm_boot_info bootinfo;
+@@ -162,7 +169,7 @@ static inline int virt_gicv3_redist_region_count(VirtMa=
+chineState *vms)
+     uint32_t redist0_capacity =3D
+                 vms->memmap[VIRT_GIC_REDIST].size / GICV3_REDIST_SIZE;
+=20
+-    assert(vms->gic_version =3D=3D 3);
++    assert(vms->gic_version =3D=3D VIRT_GIC_VERSION_3);
+=20
+     return vms->smp_cpus > redist0_capacity ? 2 : 1;
+ }
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 32d865a488..7c38c6c7f9 100644
+index 7c38c6c7f9..4ed1f0cb2e 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -2146,7 +2146,8 @@ static void virt_instance_init(Object *obj)
+@@ -299,7 +299,7 @@ static void fdt_add_timer_nodes(const VirtMachineState =
+*vms)
+         irqflags =3D GIC_FDT_IRQ_FLAGS_EDGE_LO_HI;
+     }
+=20
+-    if (vms->gic_version =3D=3D 2) {
++    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
+         irqflags =3D deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
+                              GIC_FDT_IRQ_PPI_CPU_WIDTH,
+                              (1 << vms->smp_cpus) - 1);
+@@ -440,7 +440,7 @@ static void fdt_add_gic_node(VirtMachineState *vms)
+     qemu_fdt_setprop_cell(vms->fdt, nodename, "#address-cells", 0x2);
+     qemu_fdt_setprop_cell(vms->fdt, nodename, "#size-cells", 0x2);
+     qemu_fdt_setprop(vms->fdt, nodename, "ranges", NULL, 0);
+-    if (vms->gic_version =3D=3D 3) {
++    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_3) {
+         int nb_redist_regions =3D virt_gicv3_redist_region_count(vms);
+=20
+         qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
+@@ -519,7 +519,7 @@ static void fdt_add_pmu_nodes(const VirtMachineState *v=
+ms)
+         }
+     }
+=20
+-    if (vms->gic_version =3D=3D 2) {
++    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
+         irqflags =3D deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
+                              GIC_FDT_IRQ_PPI_CPU_WIDTH,
+                              (1 << vms->smp_cpus) - 1);
+@@ -1470,7 +1470,7 @@ static uint64_t virt_cpu_mp_affinity(VirtMachineState=
+ *vms, int idx)
+          * purposes are to make TCG consistent (with 64-bit KVM hosts)
+          * and to improve SGI efficiency.
+          */
+-        if (vms->gic_version =3D=3D 3) {
++        if (vms->gic_version =3D=3D VIRT_GIC_VERSION_3) {
+             clustersz =3D GICV3_TARGETLIST_BITS;
+         } else {
+             clustersz =3D GIC_TARGETLIST_BITS;
+@@ -1561,15 +1561,15 @@ static void machvirt_init(MachineState *machine)
+     /* We can probe only here because during property set
+      * KVM is not available yet
+      */
+-    if (vms->gic_version <=3D 0) {
+-        /* "host" or "max" */
++    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_HOST ||
++        vms->gic_version =3D=3D VIRT_GIC_VERSION_MAX) {
+         if (!kvm_enabled()) {
+-            if (vms->gic_version =3D=3D 0) {
++            if (vms->gic_version =3D=3D VIRT_GIC_VERSION_HOST) {
+                 error_report("gic-version=3Dhost requires KVM");
+                 exit(1);
+             } else {
+                 /* "max": currently means 3 for TCG */
+-                vms->gic_version =3D 3;
++                vms->gic_version =3D VIRT_GIC_VERSION_3;
+             }
+         } else {
+             vms->gic_version =3D kvm_arm_vgic_probe();
+@@ -1628,7 +1628,7 @@ static void machvirt_init(MachineState *machine)
+     /* The maximum number of CPUs depends on the GIC version, or on how
+      * many redistributors we can fit into the memory map.
+      */
+-    if (vms->gic_version =3D=3D 3) {
++    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_3) {
+         virt_max_cpus =3D
+             vms->memmap[VIRT_GIC_REDIST].size / GICV3_REDIST_SIZE;
+         virt_max_cpus +=3D
+@@ -1856,7 +1856,7 @@ static void virt_set_its(Object *obj, bool value, Err=
+or **errp)
+ static char *virt_get_gic_version(Object *obj, Error **errp)
+ {
+     VirtMachineState *vms =3D VIRT_MACHINE(obj);
+-    const char *val =3D vms->gic_version =3D=3D 3 ? "3" : "2";
++    const char *val =3D vms->gic_version =3D=3D VIRT_GIC_VERSION_3 ? "3" :=
+ "2";
+=20
+     return g_strdup(val);
+ }
+@@ -1866,13 +1866,13 @@ static void virt_set_gic_version(Object *obj, const=
+ char *value, Error **errp)
+     VirtMachineState *vms =3D VIRT_MACHINE(obj);
+=20
+     if (!strcmp(value, "3")) {
+-        vms->gic_version =3D 3;
++        vms->gic_version =3D VIRT_GIC_VERSION_3;
+     } else if (!strcmp(value, "2")) {
+-        vms->gic_version =3D 2;
++        vms->gic_version =3D VIRT_GIC_VERSION_2;
+     } else if (!strcmp(value, "host")) {
+-        vms->gic_version =3D 0; /* Will probe later */
++        vms->gic_version =3D VIRT_GIC_VERSION_HOST; /* Will probe later */
+     } else if (!strcmp(value, "max")) {
+-        vms->gic_version =3D -1; /* Will probe later */
++        vms->gic_version =3D VIRT_GIC_VERSION_MAX; /* Will probe later */
+     } else {
+         error_setg(errp, "Invalid gic-version value");
+         error_append_hint(errp, "Valid values are 3, 2, host, max.\n");
+@@ -2141,7 +2141,7 @@ static void virt_instance_init(Object *obj)
+                                     "physical address space above 32 bits"=
+,
+                                     NULL);
+     /* Default GIC type is v2 */
+-    vms->gic_version =3D 2;
++    vms->gic_version =3D VIRT_GIC_VERSION_2;
+     object_property_add_str(obj, "gic-version", virt_get_gic_version,
                          virt_set_gic_version, NULL);
      object_property_set_description(obj, "gic-version",
-                                     "Set GIC version. "
--                                    "Valid values are 2, 3 and host", NULL=
-);
-+                                    "Valid values are 2, 3, host and max",
-+                                    NULL);
-=20
-     vms->highmem_ecam =3D !vmc->no_highmem_ecam;
-=20
 --=20
 2.20.1
 

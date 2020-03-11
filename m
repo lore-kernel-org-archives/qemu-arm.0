@@ -1,165 +1,144 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp410299lfc;
-        Wed, 11 Mar 2020 00:11:19 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtN6WnBYtJKTKtO8W3Kv4eUhicYA68uDrQGtIvbCxPvqd53aMq63SVPdM2WjvSsWPQ13uhl
-X-Received: by 2002:a37:270c:: with SMTP id n12mr1421783qkn.463.1583910678941;
-        Wed, 11 Mar 2020 00:11:18 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp464918lfc;
+        Wed, 11 Mar 2020 01:16:05 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vv8BBlX9T02yIpyIl5Ejlkx28kjRO0EBfwCbRN+HJIdFvnCshsKFeVfCarkv1QayM2mnIYU
+X-Received: by 2002:ad4:58d1:: with SMTP id dh17mr1776244qvb.121.1583914565636;
+        Wed, 11 Mar 2020 01:16:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583914565; cv=none;
+        d=google.com; s=arc-20160816;
+        b=USTX/TOP8ffAWNjf31wmjHBeik6UOlmXapjBT4TkaBWySC7etRLcOlqR7x2bZz8kOL
+         za1Z84YeFqVCMvd/AiHv4O8xEjA/lEmVbfEaCWWgfATg1inkhokdA3gZmiaa66b8BJcI
+         R+po7L8WFswFmLSGJRX/2CUDirYV5EeJArMBNOgrp58rU8IGrDjX9tofgboRuuvu4Ks6
+         Td9VepD358QlIQ21wWTKjKoMzJXXysqirVRzGiQx6Si7PJENeyd465ozPSnuuqxlLvVm
+         P8+FQZWxJD7T2cPKL824TzYpBhvfHAt+DEpvqpm2xcjwAmbn1L8Ebe6I6pgZd4KfSVjg
+         3yew==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :dkim-signature;
+        bh=IVsgANGq7xvj2F/J9GyXr61+wsMoZpXHOc0Sgji+ejs=;
+        b=uP4SplS98HX76Dq8kWNuBgTz7gZgdD3AbSFjHV+ubh1NmD/4BRV9hfFhwZSTuOv6Ui
+         lcwNOgs0eZCOcFFvdpNlvcJU42FK+ThzDRzBr2F7Sj0m778fpIb7UdaKMMQt1eRSk4Ci
+         vAC8p85embOQU2ftSEP5djx8QUXiZblqMQGtltBmXGPn7GcMdZC9drOwMPxPkSbZPez6
+         zPu31P2N9qds+g6Lz5WVGNKduYUXpD4I+jSSA9OVNRLImOSJkyAlfc9YnYxLj8pYD22q
+         MFdrsg9940Hev9wdcFj+XxiFsHcFvckIt6joSjJ8S03dd/B4uy/Vc7egCLeSA+MAktBo
+         BEJA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ejp3Pw5d;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e45si533166qtc.251.2020.03.11.00.11.18
+        by mx.google.com with ESMTPS id a28si581756qto.295.2020.03.11.01.16.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Mar 2020 00:11:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 11 Mar 2020 01:16:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47446 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ejp3Pw5d;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47928 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBvWP-0007fE-Mz
-	for alex.bennee@linaro.org; Wed, 11 Mar 2020 03:11:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41038)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jBwX7-0001sv-4n
+	for alex.bennee@linaro.org; Wed, 11 Mar 2020 04:16:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59539)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1jBvVi-0007G7-Ir
- for qemu-devel@nongnu.org; Wed, 11 Mar 2020 03:10:35 -0400
+ (envelope-from <gshan@redhat.com>) id 1jBwX0-0001sh-4q
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 04:15:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1jBvVg-0005AB-P4
- for qemu-devel@nongnu.org; Wed, 11 Mar 2020 03:10:34 -0400
-Resent-Date: Wed, 11 Mar 2020 03:10:34 -0400
-Resent-Message-Id: <E1jBvVg-0005AB-P4@eggs.gnu.org>
-Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21187)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1jBvVg-00057v-HG; Wed, 11 Mar 2020 03:10:32 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1583910626; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=m4Dfk9URsEEXZb3ofpA5oLy4GY7A2uqnSoHCFAg6zcNGST8gc3xQ/N5x6TYdCXTMN5UymxOI1lIkbhWiLv4TeUk34ud/riLhMN1y32cWrk6k1mgh58IkvRbwJWvAu6IqmSGXJSN/n6udLsTr1EM0DaXrIZthU9vkWgLEWy9F2RY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1583910626;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=xV5BBanb9LkI0C7E5Uax2yILf55RX3wuaAnDjs3Q9zA=; 
- b=QjYTqFYK0nHv/LrbBApEBe26w9ow+87na0KgdGd0eg4f6Cp//zH44RdKTyU8Cr9+wlVDACPq94eCMEp8nJsXltXKDKu4oQyoqm3l0VKSTzaLf8xhCftQCMYn4l3l2SrUClxMDyh1qUFpz1eEfhoE5sA/wnJAaRopc1vM3uT6HQk=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1583910623147325.54569096200134;
- Wed, 11 Mar 2020 00:10:23 -0700 (PDT)
-In-Reply-To: <20200311064420.30606-1-richard.henderson@linaro.org>
-Subject: Re: [PATCH 00/16] target/arm: sve load/store improvements
-Message-ID: <158391062190.4461.13297013687538092318@39012742ff91>
+ (envelope-from <gshan@redhat.com>) id 1jBwWy-0008DS-QX
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 04:15:57 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:46906
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1jBwWy-0008D3-MG
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 04:15:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583914556;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=IVsgANGq7xvj2F/J9GyXr61+wsMoZpXHOc0Sgji+ejs=;
+ b=ejp3Pw5dLAZpUstMowHucC6my1NqkRY6BW0rCPfQOzy3kD9D73jzFoSzchNLFmBvO2+5lj
+ 5qkrMs5jk1PrAZ+M1ddE1jpmNZkoo9/2yNh/ydjdijvOXIA/5Mr4XFZgbyNuUbFeMIqOhN
+ DfabcwH/h2jkj179HMF8vBSqdlOyAok=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-353-JTVUCjd-M2uooFXWXrpUqg-1; Wed, 11 Mar 2020 04:15:43 -0400
+X-MC-Unique: JTVUCjd-M2uooFXWXrpUqg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F34DE800D50;
+ Wed, 11 Mar 2020 08:15:41 +0000 (UTC)
+Received: from localhost.localdomain (vpn2-54-67.bne.redhat.com [10.64.54.67])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0779091D74;
+ Wed, 11 Mar 2020 08:15:39 +0000 (UTC)
+Subject: Re: [PATCH v3] hw/char/pl011: Enable TxFIFO and async transmission
+To: qemu-devel@nongnu.org
+References: <158390180818.945.5263842815462048004@39012742ff91>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <8b9f1061-5a13-2e45-fe8d-8f72d4a170cb@redhat.com>
+Date: Wed, 11 Mar 2020 19:15:38 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: richard.henderson@linaro.org
-Date: Wed, 11 Mar 2020 00:10:23 -0700 (PDT)
-X-ZohoMailClient: External
+In-Reply-To: <158390180818.945.5263842815462048004@39012742ff91>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 136.143.188.51
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zVcV82+Y4+yc
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
+ marcandre.lureau@gmail.com, pbonzini@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: as7a8x7im772
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDMxMTA2NDQyMC4zMDYw
-Ni0xLXJpY2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmcvCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2Vl
-bXMgdG8gaGF2ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBm
-b3IKbW9yZSBpbmZvcm1hdGlvbjoKClN1YmplY3Q6IFtQQVRDSCAwMC8xNl0gdGFyZ2V0L2FybTog
-c3ZlIGxvYWQvc3RvcmUgaW1wcm92ZW1lbnRzCk1lc3NhZ2UtaWQ6IDIwMjAwMzExMDY0NDIwLjMw
-NjA2LTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZwpUeXBlOiBzZXJpZXMKCj09PSBURVNU
-IFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9u
-dWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBj
-b25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5h
-bGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFz
-ZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rl
-c3QnCjRjYjRjZmIgdGFyZ2V0L2FybTogUmVtb3ZlIHN2ZV9tZW1vcGlkeAo5YjQzYzRjIHRhcmdl
-dC9hcm06IFJldXNlIHN2ZV9wcm9iZV9wYWdlIGZvciBnYXRoZXIgbG9hZHMKMzAzMmE0OSB0YXJn
-ZXQvYXJtOiBSZXVzZSBzdmVfcHJvYmVfcGFnZSBmb3Igc2NhdHRlciBzdG9yZXMKYWJmMTFkNyB0
-YXJnZXQvYXJtOiBSZXVzZSBzdmVfcHJvYmVfcGFnZSBmb3IgZ2F0aGVyIGZpcnN0LWZhdWx0IGxv
-YWRzCjAyMGY4NzQgdGFyZ2V0L2FybTogVXNlIFNWRUNvbnRMZFN0IGZvciBjb250aWd1b3VzIHN0
-b3JlcwpkZTMxYjMwIHRhcmdldC9hcm06IFVwZGF0ZSBjb250aWd1b3VzIGZpcnN0LWZhdWx0IGFu
-ZCBuby1mYXVsdCBsb2Fkcwo2Mjc1MjhjIHRhcmdldC9hcm06IFVzZSBTVkVDb250TGRTdCBmb3Ig
-bXVsdGktcmVnaXN0ZXIgY29udGlndW91cyBsb2Fkcwo2NzhhMmQ3IHRhcmdldC9hcm06IEhhbmRs
-ZSB3YXRjaHBvaW50cyBpbiBzdmVfbGQxX3IKYjY4MjdiYyB0YXJnZXQvYXJtOiBVc2UgU1ZFQ29u
-dExkU3QgaW4gc3ZlX2xkMV9yCmM2ZmE1ZjYgdGFyZ2V0L2FybTogQWRqdXN0IGludGVyZmFjZSBv
-ZiBzdmVfbGQxX2hvc3RfZm4KYmEzZDNjZSB0YXJnZXQvYXJtOiBBZGQgc3ZlIGluZnJhc3RydWN0
-dXJlIGZvciBwYWdlIGxvb2t1cAowY2YzYjMzIHRhcmdldC9hcm06IERyb3AgbWFudWFsIGhhbmRs
-aW5nIG9mIHNldC9jbGVhcl9oZWxwZXJfcmV0YWRkcgo3ZmFmOGZiIHRhcmdldC9hcm06IFVzZSBj
-cHVfKl9kYXRhX3JhIGZvciBzdmVfbGRzdF90bGJfZm4KZDhlZDVjOCBleGVjOiBBZGQgY3B1X3By
-b2JlX3dhdGNocG9pbnQKNGZmNDA5OCBhY2NlbC90Y2c6IEFkZCBwcm9iZV9hY2Nlc3NfZmxhZ3MK
-NGI2YzNkMCBhY2NlbC90Y2c6IEFkZCBibG9jayBjb21tZW50IGZvciBwcm9iZV9hY2Nlc3MKCj09
-PSBPVVRQVVQgQkVHSU4gPT09CjEvMTYgQ2hlY2tpbmcgY29tbWl0IDRiNmMzZDBlMTBjOSAoYWNj
-ZWwvdGNnOiBBZGQgYmxvY2sgY29tbWVudCBmb3IgcHJvYmVfYWNjZXNzKQoyLzE2IENoZWNraW5n
-IGNvbW1pdCA0ZmY0MDk4MTkwOTkgKGFjY2VsL3RjZzogQWRkIHByb2JlX2FjY2Vzc19mbGFncykK
-V0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzI3MzogRklMRTogYWNjZWwvdGNnL3Vz
-ZXItZXhlYy5jOjIyMDoKKyAgICAgICAgICAgIGNjLT50bGJfZmlsbChjcHUsIGFkZHIsIDAsIGFj
-Y2Vzc190eXBlLCBNTVVfVVNFUl9JRFgsIGZhbHNlLCByZXRhZGRyKTsKCnRvdGFsOiAwIGVycm9y
-cywgMSB3YXJuaW5ncywgMzEyIGxpbmVzIGNoZWNrZWQKClBhdGNoIDIvMTYgaGFzIHN0eWxlIHBy
-b2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2Ug
-cG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBp
-biBNQUlOVEFJTkVSUy4KMy8xNiBDaGVja2luZyBjb21taXQgZDhlZDVjODVkZWVhIChleGVjOiBB
-ZGQgY3B1X3Byb2JlX3dhdGNocG9pbnQpCkVSUk9SOiB0cmFpbGluZyB3aGl0ZXNwYWNlCiMzMTog
-RklMRTogZXhlYy5jOjI3NDc6CisgICAgICAgIGlmICh3YXRjaHBvaW50X2FkZHJlc3NfbWF0Y2hl
-cyh3cCwgYWRkciwgbGVuKSAmJiAkCgp0b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDQ0IGxp
-bmVzIGNoZWNrZWQKClBhdGNoIDMvMTYgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3
-LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVt
-IHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCjQvMTYg
-Q2hlY2tpbmcgY29tbWl0IDdmYWY4ZmJiNWE2NyAodGFyZ2V0L2FybTogVXNlIGNwdV8qX2RhdGFf
-cmEgZm9yIHN2ZV9sZHN0X3RsYl9mbikKRVJST1I6IHNwYWNlcyByZXF1aXJlZCBhcm91bmQgdGhh
-dCAnKicgKGN0eDpXeFYpCiMxNzY6IEZJTEU6IHRhcmdldC9hcm0vc3ZlX2hlbHBlci5jOjQxODQ6
-CisgICAgICAgICAgICAgICAgICAgICAgc3ZlX2xkc3QxX3RsYl9mbiAqdGxiX2ZuKQogICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgoKdG90YWw6IDEgZXJyb3JzLCAwIHdh
-cm5pbmdzLCA0NzkgbGluZXMgY2hlY2tlZAoKUGF0Y2ggNC8xNiBoYXMgc3R5bGUgcHJvYmxlbXMs
-IHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2
-ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5U
-QUlORVJTLgoKNS8xNiBDaGVja2luZyBjb21taXQgMGNmM2IzMzk3NTY1ICh0YXJnZXQvYXJtOiBE
-cm9wIG1hbnVhbCBoYW5kbGluZyBvZiBzZXQvY2xlYXJfaGVscGVyX3JldGFkZHIpCjYvMTYgQ2hl
-Y2tpbmcgY29tbWl0IGJhM2QzY2VjODc3MiAodGFyZ2V0L2FybTogQWRkIHN2ZSBpbmZyYXN0cnVj
-dHVyZSBmb3IgcGFnZSBsb29rdXApCjcvMTYgQ2hlY2tpbmcgY29tbWl0IGM2ZmE1ZjZmODJhMyAo
-dGFyZ2V0L2FybTogQWRqdXN0IGludGVyZmFjZSBvZiBzdmVfbGQxX2hvc3RfZm4pCjgvMTYgQ2hl
-Y2tpbmcgY29tbWl0IGI2ODI3YmNkZTE3MSAodGFyZ2V0L2FybTogVXNlIFNWRUNvbnRMZFN0IGlu
-IHN2ZV9sZDFfcikKOS8xNiBDaGVja2luZyBjb21taXQgNjc4YTJkN2RlMjAyICh0YXJnZXQvYXJt
-OiBIYW5kbGUgd2F0Y2hwb2ludHMgaW4gc3ZlX2xkMV9yKQpXQVJOSU5HOiBsaW5lIG92ZXIgODAg
-Y2hhcmFjdGVycwojNTE6IEZJTEU6IHRhcmdldC9hcm0vc3ZlX2hlbHBlci5jOjQ0MDg6CisgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGluZm8tPnBhZ2VbMF0uYXR0cnMs
-IHdwX2FjY2VzcywgcmV0YWRkcik7CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwoj
-NzU6IEZJTEU6IHRhcmdldC9hcm0vc3ZlX2hlbHBlci5jOjQ0MzI6CisgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIGluZm8tPnBhZ2VbMV0uYXR0cnMsIHdwX2FjY2Vzcywg
-cmV0YWRkcik7Cgp0b3RhbDogMCBlcnJvcnMsIDIgd2FybmluZ3MsIDg4IGxpbmVzIGNoZWNrZWQK
-ClBhdGNoIDkvMTYgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9m
-IHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWlu
-dGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KMTAvMTYgQ2hlY2tpbmcgY29t
-bWl0IDYyNzUyOGMxMTUzMyAodGFyZ2V0L2FybTogVXNlIFNWRUNvbnRMZFN0IGZvciBtdWx0aS1y
-ZWdpc3RlciBjb250aWd1b3VzIGxvYWRzKQoxMS8xNiBDaGVja2luZyBjb21taXQgZGUzMWIzMDBi
-ODgxICh0YXJnZXQvYXJtOiBVcGRhdGUgY29udGlndW91cyBmaXJzdC1mYXVsdCBhbmQgbm8tZmF1
-bHQgbG9hZHMpCjEyLzE2IENoZWNraW5nIGNvbW1pdCAwMjBmODc0YTQ4YmYgKHRhcmdldC9hcm06
-IFVzZSBTVkVDb250TGRTdCBmb3IgY29udGlndW91cyBzdG9yZXMpCjEzLzE2IENoZWNraW5nIGNv
-bW1pdCBhYmYxMWQ3NzE5MTAgKHRhcmdldC9hcm06IFJldXNlIHN2ZV9wcm9iZV9wYWdlIGZvciBn
-YXRoZXIgZmlyc3QtZmF1bHQgbG9hZHMpCjE0LzE2IENoZWNraW5nIGNvbW1pdCAzMDMyYTQ5MWJi
-ZTUgKHRhcmdldC9hcm06IFJldXNlIHN2ZV9wcm9iZV9wYWdlIGZvciBzY2F0dGVyIHN0b3JlcykK
-MTUvMTYgQ2hlY2tpbmcgY29tbWl0IDliNDNjNGNjYjMyMiAodGFyZ2V0L2FybTogUmV1c2Ugc3Zl
-X3Byb2JlX3BhZ2UgZm9yIGdhdGhlciBsb2FkcykKMTYvMTYgQ2hlY2tpbmcgY29tbWl0IDRjYjRj
-ZmI0NTY5MSAodGFyZ2V0L2FybTogUmVtb3ZlIHN2ZV9tZW1vcGlkeCkKPT09IE9VVFBVVCBFTkQg
-PT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBh
-dmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDAzMTEwNjQ0MjAuMzA2MDYt
-MS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1t
-ZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0
-cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXct
-ZGV2ZWxAcmVkaGF0LmNvbQ==
+On 3/11/20 3:43 PM, no-reply@patchew.org wrote:
+[...]
+> http://patchew.org/logs/20200311040923.29115-1-gshan@redhat.com/testing.asan/?type=message.
+
+Is it possible to be a false alarm? The detailed errors extracted from above
+link is shown as below, and I'm unable to reproduce it at local:
+
+Error message
+=============
+
+MALLOC_PERTURB_=${MALLOC_PERTURB_:-$(( ${RANDOM:-0} % 255 + 1))}  QTEST_QEMU_BINARY=x86_64-softmmu/qemu-system-x86_64 QTEST_QEMU_IMG=qemu-img tests/qtest/dbus-vmstate-test -m=quick -k --tap < /dev/null | ./scripts/tap-driver.pl --test-name="dbus-vmstate-test"
+dbus-daemon[8241]: Could not get password database information for UID of current process: User "???" unknown or no memory to allocate password entry
+dbus-daemon[8241]: Could not get password database information for UID of current process: User "???" unknown or no memory to allocate password entry
+
+
+[gwshan@localhost qemu.main]$ MALLOC_PERTURB_=${MALLOC_PERTURB_:-$(( ${RANDOM:-0} % 255 + 1))}  QTEST_QEMU_BINARY=x86_64-softmmu/qemu-system-x86_64 QTEST_QEMU_IMG=qemu-img tests/qtest/dbus-vmstate-test -m=quick -k --tap < /dev/null | ./scripts/tap-driver.pl --test-name="dbus-vmstate-test"
+PASS 1 dbus-vmstate-test /x86_64/dbus-vmstate/without-list
+PASS 2 dbus-vmstate-test /x86_64/dbus-vmstate/with-list
+PASS 3 dbus-vmstate-test /x86_64/dbus-vmstate/only-a
+PASS 4 dbus-vmstate-test /x86_64/dbus-vmstate/missing-src
+PASS 5 dbus-vmstate-test /x86_64/dbus-vmstate/missing-dst
+
+Thanks,
+Gavin
+

@@ -1,103 +1,95 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1038893lfc;
-        Tue, 10 Mar 2020 11:02:33 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsIPkijHcfN4VGD0s806QEf3NpvinbS6sgV3HX4+VtrOyI8y6FVHOMzlnEqSEgR4E4vG6Kr
-X-Received: by 2002:ac8:1086:: with SMTP id a6mr20222839qtj.173.1583863353307;
-        Tue, 10 Mar 2020 11:02:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583863353; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp631615lfc;
+        Wed, 11 Mar 2020 04:16:52 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vshZHxxfcyiDGCa0UeVdMR72PImYF+OroIFd1NX7f+YDf0VDd0nAPDtP/47NbrdsHIK+WmZ
+X-Received: by 2002:ac8:534b:: with SMTP id d11mr2124960qto.101.1583925412424;
+        Wed, 11 Mar 2020 04:16:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583925412; cv=none;
         d=google.com; s=arc-20160816;
-        b=H4xWm/oYt03n5LfWqG4lG3vAZkuZnBOu1hy+3QcHw6w+iNykw0ec7PQUhASDj/kmdG
-         fgqUy2EZj2XB5SjqqpiViiJr6XjKE1MspHY/GW10W5lV1vwCtIZYSbD+NfbXcQNE3TqO
-         GlJngGJ7E+b5v+3cfeZZLudaC0zno9bitZVMpHRVT4HGbpNGcSQmBPCb7638DeyhZDVu
-         ekBD1snpLMmxuK53HzvAGcpaTthXOROV8pZQfCjU/3x74CA3OCY5KK3ubWX0D8O67Blz
-         C9ZcP2usHuifIlPJIV9qmWyT03Kr8neKtpVbGQn9Favt0sQ1TdbCy0rbqiibzEMrIxLh
-         /f0w==
+        b=K132HB7mPkMmg5dX2VCpXAqiBLxCPjkhCJLzk2qnaSJkg25Q1nODytBt5GmHbJNTt0
+         cY4cUzDzjHCOhtRvOsIginn4FjkjF9aW1R7S6zVlSpimcthiETfQR71ihN8J193rNxwt
+         PCn/xxYe+FvVTOok2COIq7WgIascvH2P4UYNNHaonw07UdoAOnxrYdpYMle7Ga4IhS82
+         4653FrcYGQp1fO92ZLBwKMlC2DO1n0rcLwC2/68QPJ0icla56AOoUNnexRi0bCLL0CUk
+         BAt45utv+mQb7CoajbIxfZ7bHQ0w/7JlJ+/zOoz6mqUpsEqNqiz7BZG+FcrrRd22s36v
+         76Jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=3bPxUy2EcaU0ypCm1YQuIIqo9A/ro6me+r8HBiJeNNo=;
-        b=IH8d0qKKR0hJecTEKZyIXDaWpkWJDqQKgO1yOrdVExVuRdzjlkM1+1/kcZBScMYKEA
-         m9OESm2opLoY+DTjfWci6CNlNyXqq8/RaJEsb10/YXlWvnG4WlRIaBccyxy0qVIAkmiJ
-         HEE9osNKA25VZkaM9Fk2RW7/H+1HsBZn4FCmi1dboucAZxXyt2aydImOQUN+r+SLO66s
-         EieK8GAr9MOgOhzEzlqsj1DBQpbieNTskvRsOxa1zyDO+W5kH/CxDgerEJ3+w7KyeEov
-         ujqf/dgM9nphL4CCB3ojmXnPJB8byZ/6Tlsybc8xNMfovOczoNNjX5WOnIcAWcMvOpCM
-         c6Xw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=phRumhE1rAWX2v5bZGRmT4c3AaXfOjTFNz+2YKyVy+E=;
+        b=JvOs3TmiHEGAJbx5b55QPY1Nrw3QzT8xdbOZtPna6q9muRselo4mQSO5mqJZg59nGF
+         yH9WX6t65CZc+xzKoM+8pMLg8Rkq8D0hDOnqxy4t4+GL58AnVs35uwXF+jerla7A3i+a
+         V3EuqqyradNxPxItiUKW42VncHbQ9640PKszLk1/zBQBluWvoJ2/wvxTlTNUqsjegePe
+         tJ7fBLepuT5KSwz2szC2iRBxhhxiwqdSczs3C8iLIs71dtdD389VZhFrtDxgvaBCuqqL
+         xxLKIeZKQjU4F1dgKfQe+TdwHvqxMj2MHPt5qujP1YInQGjoaUi/bHdEmQopHB2I5Jb8
+         /lJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qmz7eGDW;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZK42+6Iv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a65si1956052qkb.368.2020.03.10.11.02.33
+        by mx.google.com with ESMTPS id e28si869890qtm.259.2020.03.11.04.16.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Mar 2020 11:02:33 -0700 (PDT)
+        Wed, 11 Mar 2020 04:16:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qmz7eGDW;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZK42+6Iv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37964 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49716 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBjD6-0005f7-OH
-	for alex.bennee@linaro.org; Tue, 10 Mar 2020 14:02:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48627)
+	id 1jBzM3-0001dj-Qi
+	for alex.bennee@linaro.org; Wed, 11 Mar 2020 07:16:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55481)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1jBjCt-0005bz-9h
- for qemu-arm@nongnu.org; Tue, 10 Mar 2020 14:02:20 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1jBzLt-0001dO-Rf
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 07:16:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1jBjCr-0003rh-Ni
- for qemu-arm@nongnu.org; Tue, 10 Mar 2020 14:02:18 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:21333
+ (envelope-from <eric.auger@redhat.com>) id 1jBzLs-0000EC-Ch
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 07:16:41 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:33154
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1jBjCn-0003a7-Ic
- for qemu-arm@nongnu.org; Tue, 10 Mar 2020 14:02:13 -0400
+ id 1jBzLs-0000Dx-6r
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 07:16:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583863329;
+ s=mimecast20190719; t=1583925399;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3bPxUy2EcaU0ypCm1YQuIIqo9A/ro6me+r8HBiJeNNo=;
- b=Qmz7eGDWGfBBu4pGcj0GwrdrVjDUytMYET8Jd7s/ZrwASUfqznmavpc/me9flcAuAa9Yfg
- Dc2MohL4dN5VQUNdYcaRc5Ijt+7h4ryqc5OwUoTtJ9Gzp6PkWOwDI8LBbfeWDplUberjYR
- iz7kVLhxyNBXcAYcvIHtceVWP36T7hY=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=phRumhE1rAWX2v5bZGRmT4c3AaXfOjTFNz+2YKyVy+E=;
+ b=ZK42+6IvZyRPsuj2VLPeUFyrluTSPKXRbr1nzM8sWwoWY3u3CqNey3uhQ//Mb2TLADU0Ge
+ zpFOEuoZrGALpMl7vqEZjdJ3bzUxJS23PW0yeSHlddgOY7dDpPo3qqpnf5CT/hQqfpjLJY
+ 30qf4nY+h7twiivE6kz0tbQisT82D7Y=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-464-3WPwxFC-PaqWf0O45R4Xtw-1; Tue, 10 Mar 2020 14:02:05 -0400
-X-MC-Unique: 3WPwxFC-PaqWf0O45R4Xtw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-260-FhRxC7afNHC6MJciYRNxyA-1; Wed, 11 Mar 2020 07:16:37 -0400
+X-MC-Unique: FhRxC7afNHC6MJciYRNxyA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 93787107ACCA;
- Tue, 10 Mar 2020 18:02:04 +0000 (UTC)
-Received: from [10.36.117.85] (ovpn-117-85.ams2.redhat.com [10.36.117.85])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 187BE10013A1;
- Tue, 10 Mar 2020 18:02:02 +0000 (UTC)
-Subject: Re: [PATCH v3 5/6] hw/arm/virt: kvm: Check the chosen gic version is
- supported by the host
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200302105516.5972-1-eric.auger@redhat.com>
- <20200302105516.5972-6-eric.auger@redhat.com>
- <CAFEAcA-XD9LiokquaHj+kCYWA3N=7k3V3R8r5gA1HZM9Adus1A@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <1370e0bc-ae17-c891-72b5-4cbc58ff3247@redhat.com>
-Date: Tue, 10 Mar 2020 19:02:01 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8A0508018A2;
+ Wed, 11 Mar 2020 11:16:36 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.36.118.12])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 39A1492D2A;
+ Wed, 11 Mar 2020 11:16:30 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org
+Subject: [PATCH v4 0/6] hw/arm/virt: kvm: allow gicv3 by default if v2 cannot
+ work
+Date: Wed, 11 Mar 2020 12:16:20 +0100
+Message-Id: <20200311111626.5705-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-XD9LiokquaHj+kCYWA3N=7k3V3R8r5gA1HZM9Adus1A@mail.gmail.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
@@ -111,92 +103,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Marc Zyngier <maz@kernel.org>, Andrew Jones <drjones@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Eric Auger <eric.auger.pro@gmail.com>
+Cc: maz@kernel.org, drjones@redhat.com, richard.henderson@linaro.org,
+ philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XykxsvuUPJQ3
+X-TUID: SUwaPd996yPV
 
-Hi Peter,
+At the moment if the end-user does not specify the gic-version along
+with KVM acceleration, v2 is set by default. However most of the
+systems now have GICv3 and sometimes they do not support GICv2
+compatibility. In that case we now end up with the following error:
 
-On 3/9/20 2:28 PM, Peter Maydell wrote:
-> On Mon, 2 Mar 2020 at 10:55, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> Restructure the finalize_gic_version with switch cases and, in
->> KVM mode, explictly check whether the chosen version is supported
->> by the host.
->>
->> if the end-user explicitly sets v2/v3 and this is not supported by
->> the host, then the user gets an explicit error message.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->> Reviewed-by: Andrew Jones <drjones@redhat.com>
->>
->> ---
->>
->> v2 -> v3:
->> - explictly list V2 and V3 in the switch/case
->> - fix indent
->> ---
->>  hw/arm/virt.c | 77 +++++++++++++++++++++++++++++++++++----------------
->>  1 file changed, 53 insertions(+), 24 deletions(-)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index eb8c57c85e..aeb6c45e51 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -1542,33 +1542,62 @@ static void virt_set_memmap(VirtMachineState *vms)
->>   */
->>  static void finalize_gic_version(VirtMachineState *vms)
->>  {
->> -    if (vms->gic_version == VIRT_GIC_VERSION_HOST ||
->> -        vms->gic_version == VIRT_GIC_VERSION_MAX) {
->> -        if (!kvm_enabled()) {
->> -            if (vms->gic_version == VIRT_GIC_VERSION_HOST) {
->> -                error_report("gic-version=host requires KVM");
->> -                exit(1);
->> -            } else {
->> -                /* "max": currently means 3 for TCG */
->> -                vms->gic_version = VIRT_GIC_VERSION_3;
->> -            }
->> -        } else {
->> -            int probe_bitmap = kvm_arm_vgic_probe();
->> +    if (kvm_enabled()) {
->> +        int probe_bitmap = kvm_arm_vgic_probe();
-> 
-> Previously we would only do kvm_arm_vgic_probe() if the
-> user asked for 'host' or 'max'. Now we do it always,
-> which means that if the user is on a really old kernel
-> where the CREATE_DEVICE ioctl doesn't exist then we
-> will now fail if the user specifically asked for gicv2,
-> where previously we (probably) would have succeeded.
-> I don't think we should put too much weight on continuing
-> to theoretically support ancient kernels which we're not
-> actually testing against, but it does seem a bit odd to
-> probe even if we don't need to know the answer.
-> 
-> More relevant to actual plausible use cases, if
-> kvm_irqchip_in_kernel() == false, we shouldn't be
-> probing the kernel to ask what kind of GIC to use.
-I think the existing code also does the same:
-kvm_arm_vgic_probe() gets called as soon as vms->gic_version <= 0 &&
-kvm_enabled() whatever the state of kvm_irqchip_in_kernel().
+"qemu-system-aarch64: Initialization of device kvm-arm-gic failed:
+error creating in-kernel VGIC: No such device
+Perhaps the host CPU does not support GICv2?"
 
-So in case the host only supports GICv2, in kvm mode with userspace
-irqchip we would use GICV2 in host/max mode. If host supports GICv3 we
-would select GICv3 which is not supported in !kvm_irqchip_in_kernel().
+since "1904f9b5f1  hw/intc/arm_gic_kvm: Don't assume kernel can
+provide a GICv2" which already allowed to output an explicit error
+message.
 
-So do I understand correctly that you want me to change that behavior
-and always set v2 in KVM/!kvm_irqchip_in_kernel() max/host mode?
+This patch keeps the default v2 selection in all cases except
+in the KVM accelerated mode when v2 cannot work:
+- either because the host does not support v2 in-kernel emulation or
+- because more than 8 vcpus were requested.
 
-Thanks
+Those cases did not work anyway so we do not break any compatibility.
+Now we get v3 selected in such a case.
+
+Best Regards
 
 Eric
 
-> 
-> thanks
-> -- PMM
-> 
+This series can be found at:
+https://github.com/eauger/qemu/tree/v4.2.0-gic-version-v4
+
+History:
+
+v3 -> v4:
+- do not probe the host GIC version if kernel-irqchip=3Doff
+- In KVM mode / userspace irqchip we immediatly output an error
+  in case the end-user explicitly selected v3. Also we warn the
+  end-user about the weird usage of host in that case (only
+  userspace GICv2 is supported).
+- Removed R-b on last 2 patches
+
+v2 -> v3:
+- replaced defines by VirtGICType enum type
+- fixed some style issue
+- collected Richard and Dres's R-b
+  except on "hw/arm/virt: Introduce VirtGICType enum type" just
+  to make sure this matches their expectation.
+
+RFC -> v1:
+- 1904f9b5f1  hw/intc/arm_gic_kvm: Don't assume kernel can
+provide a GICv2" now has landed upstream
+- Fix gic-version description
+- Introduce finalize_gic_version and use switch/cases
+- take into account smp value
+
+
+Eric Auger (6):
+  hw/arm/virt: Document 'max' value in gic-version property description
+  hw/arm/virt: Introduce VirtGICType enum type
+  hw/arm/virt: Introduce finalize_gic_version()
+  target/arm/kvm: Let kvm_arm_vgic_probe() return a bitmap
+  hw/arm/virt: kvm: Restructure finalize_gic_version()
+  hw/arm/virt: kvm: allow gicv3 by default if v2 cannot work
+
+ include/hw/arm/virt.h |  12 +++-
+ target/arm/kvm_arm.h  |   3 +
+ hw/arm/virt.c         | 146 +++++++++++++++++++++++++++++++++---------
+ target/arm/kvm.c      |  14 ++--
+ 4 files changed, 135 insertions(+), 40 deletions(-)
+
+--=20
+2.20.1
 

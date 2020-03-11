@@ -1,322 +1,237 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp683755lfc;
-        Wed, 11 Mar 2020 05:07:54 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtstDqIC2ZZQ5NfdzLGMtGJNAd5MFqH4HLJAFD/2S6Xi5bOM/ThwonBKQ9vBxyeDCIu62g7
-X-Received: by 2002:ad4:4862:: with SMTP id u2mr2546952qvy.67.1583928473769;
-        Wed, 11 Mar 2020 05:07:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583928473; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp688669lfc;
+        Wed, 11 Mar 2020 05:12:11 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt2Eu86iT2ceBa9Gx1SYZLHJHS31TMw1sKw2SqqcFVk4sqmQdx4Orq08MLxafULfyMc9iec
+X-Received: by 2002:a05:620a:49:: with SMTP id t9mr2507795qkt.248.1583928730899;
+        Wed, 11 Mar 2020 05:12:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583928730; cv=none;
         d=google.com; s=arc-20160816;
-        b=PFoM4yb1kkzabZXPCIzYSl7UObAkYkD7i+rLIb59udIAYV4Gh6wfugh39i9v4GMS4s
-         Z0kFRo3cnBgIiklWLQuQeD2Tj0EuRnl+Mw0STxgKi959iMS1FUTx7FEylxkNM092kUTG
-         mXkFB2SERmcpIqVwdTda10fxfmmPeKFe2Zwgc5kCk8BCpcfHI/nSJm2X/M3IPntgKboV
-         XlaFGDG24xgc6e93hTN3jSCPWjR3cqZ4rkXNOEMOLTBM7JayuXuhUOmYJk1pwjranLWb
-         au5iHaeUwl7AAiYafuak2xlZRtFhFLfm8qvQM24/Rt7sCN4y8L44Fe1atqFhUppcgRXD
-         6r+A==
+        b=ER0YwoGlXeIHf5v51KkkUM+/K6aIKRVzQtcGp/ssrp0mmf61Do1DvsZp7x9QiGcckd
+         IIwbu4QIuCjdmLQnyHCNlhRATChA9lBy/dWQ0Pqc4MASiefWeDgb7LKRAOeS1Qqe6EyE
+         34Act3xUNWQxrIYZx0M4DOs1SSGrh2lu3y0udY0MhCPcyh5lmzpw3QaZG1WzuFvG7O7N
+         lYCKgv4nO+a1uyGRKgZNG1FkBFGxc1XS0wrxVkPL8+d8HdC4Xkn3eiICyJTBSpEEaJXH
+         l93CNH09haJ+qJjUqcRQncjUmS36cStzfaVRGflSxoga/B6k6U5FAyfjSyk/JIXPvnBB
+         Vr6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=9gyy0JTF62F7NGm+aXjCbPIHpC4dNQwLNia/i2jMBFg=;
-        b=ugVbLHt9xbyGe8SfezseLLLi8CgP5flBt7Dz8UJT7cYb5779xyQNQ+4E+OyyvBmTwe
-         2KW12ZNsgWcqhNSgHyfv5/jHE4CxF0Qt7qQhwL4NUJflNiUfTesuPKB5u/WQ5SWo1BEw
-         QIE2NybU8+VokoGXT6oGNj81b+97/k/jDIbzlgVGGkqPwYfHTRnb0X4AzXxrqOuQZzW3
-         tcj+GSWNWNrmwINYmnNhByOLwjpCawATXnT50SwcZbNjafRp9MzId0J0LZeFLdghMhNW
-         fKVNcPre5/2d6qCPFhaOXsQ4yW5Xup6SSWaPhn307lXr9zNyrUnHtGgK0I5eVs1OJCQP
-         J9qA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=Y5S3fiIEyFrYIbLU+yY3gEePrZ4fKEtDA+Wcj1ks4AA=;
+        b=ED0LcHafbpiLVB+VDeA0njckDOeko7DzJ+PflbrvKrE9+OxogRL+/Tt2oXJF38G1MK
+         l9pXyHz3SIK5YplkJELCFcsRHu6GS0R5cHSe0CVd8i46rVVUbajbLMIXvKTuw6znLyw8
+         PLI5KPGM9yc5391g3kZrWTMKoNdvzSY/IjoNjb5DbC7SL6sktqIimtKOw+ODn5w/KzpQ
+         lZARPc3GI3+R9gcXF9PRtFrlenFfo2JnlcHMOebR4IO6O0CPggA1S6J1giSRpax5Qe5p
+         40T3XTe96JGwGdBVij0x0LLvKb4FYJkW3lg/TwmwYjtw0zd8MibdH4v0vciyy4zDMtzV
+         uNfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id ek20si766379qvb.125.2020.03.11.05.07.53;
-        Wed, 11 Mar 2020 05:07:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NKTmRp0L;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n88si794528qva.73.2020.03.11.05.12.10
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 11 Mar 2020 05:12:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 133F14A597;
-	Wed, 11 Mar 2020 08:07:53 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: -1.502
-X-Spam-Level: 
-X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
-	SPF_HELO_PASS=-0.001] autolearn=no
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FjRt4y0ICNBA; Wed, 11 Mar 2020 08:07:51 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id C27A44A51F;
-	Wed, 11 Mar 2020 08:07:51 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 407D84A50F
- for <kvmarm@lists.cs.columbia.edu>; Wed, 11 Mar 2020 08:07:50 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YxwZvMi8BDte for <kvmarm@lists.cs.columbia.edu>;
- Wed, 11 Mar 2020 08:07:49 -0400 (EDT)
-Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id BEE4B4A4E5
- for <kvmarm@lists.cs.columbia.edu>; Wed, 11 Mar 2020 08:07:48 -0400 (EDT)
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 3F3F463669F3BC720716;
- Wed, 11 Mar 2020 20:07:45 +0800 (CST)
-Received: from [127.0.0.1] (10.173.222.27) by DGGEMS412-HUB.china.huawei.com
- (10.3.19.212) with Microsoft SMTP Server id 14.3.487.0; Wed, 11 Mar 2020
- 20:07:36 +0800
-Subject: Re: [kvm-unit-tests PATCH v5 13/13] arm/arm64: ITS: pending table
- migration test
-To: Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
- <maz@kernel.org>, <kvmarm@lists.cs.columbia.edu>, <kvm@vger.kernel.org>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-References: <20200310145410.26308-1-eric.auger@redhat.com>
- <20200310145410.26308-14-eric.auger@redhat.com>
-From: Zenghui Yu <yuzenghui@huawei.com>
-Message-ID: <54139b63-3a1d-7276-4d0b-4d38f9901536@huawei.com>
-Date: Wed, 11 Mar 2020 20:07:34 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NKTmRp0L;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50648 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jC0Da-0006BI-9K
+	for alex.bennee@linaro.org; Wed, 11 Mar 2020 08:12:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39837)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <drjones@redhat.com>) id 1jC0DS-0006B6-4o
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 08:12:03 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <drjones@redhat.com>) id 1jC0DQ-0002HF-86
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 08:12:01 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:52983
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1jC0DP-0002H9-UN
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 08:12:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583928719;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Y5S3fiIEyFrYIbLU+yY3gEePrZ4fKEtDA+Wcj1ks4AA=;
+ b=NKTmRp0LgcmNYjYCKYHQaTjn8RfBQDlwLFtQYpo46jxz8iIp7Yo8dw8nlA9Uld8zFfURFj
+ NzoEoR5mWFDvys7k6Gors8TK3zS4KPMTF5Q7F19NR4nNErMvtKarc32ruwtLhvI/4MGd59
+ WwqefKDsZo9Y5JPe8X/RcXpbwBct2DI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-223-Qh9OZsfZNaqsrdv1FZP3qg-1; Wed, 11 Mar 2020 08:11:57 -0400
+X-MC-Unique: Qh9OZsfZNaqsrdv1FZP3qg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D40E5477;
+ Wed, 11 Mar 2020 12:11:55 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (ovpn-206-80.brq.redhat.com
+ [10.40.206.80])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 41F09388;
+ Wed, 11 Mar 2020 12:11:50 +0000 (UTC)
+Date: Wed, 11 Mar 2020 13:11:46 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v4 3/6] hw/arm/virt: Introduce finalize_gic_version()
+Message-ID: <20200311121146.qeky4n7jdibncavi@kamzik.brq.redhat.com>
+References: <20200311111626.5705-1-eric.auger@redhat.com>
+ <20200311111626.5705-4-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200310145410.26308-14-eric.auger@redhat.com>
-Content-Language: en-US
-X-Originating-IP: [10.173.222.27]
-X-CFilter-Loop: Reflected
-Cc: andre.przywara@arm.com, thuth@redhat.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+In-Reply-To: <20200311111626.5705-4-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 80X7F6NV6ACj
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, maz@kernel.org, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, philmd@redhat.com,
+ eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3jDlXhmqB46f
 
-Hi Eric,
-
-On 2020/3/10 22:54, Eric Auger wrote:
-> Add two new migration tests. One testing the migration of
-> a topology where collection were unmapped. The second test
-> checks the migration of the pending table.
-> 
+On Wed, Mar 11, 2020 at 12:16:23PM +0100, Eric Auger wrote:
+> Let's move the code which freezes which gic-version to
+> be applied in a dedicated function. We also now set by
+> default the VIRT_GIC_VERSION_NO_SET. This eventually
+> turns into the legacy v2 choice in the finalize() function.
+>=20
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Reviewed-by: Andrew Jones <drjones@redhat.com>
+>=20
 > ---
-> 
-> v4 -> v5:
-> - move stub from header to arm/gic.c
-> 
-> v3 -> v4:
-> - do not talk about odd/even CPUs, use pe0 and pe1
-> - comment the delay
-> 
+>=20
 > v2 -> v3:
-> - tests belong to both its and migration groups
-> - use LPI(i)
-> - gicv3_lpi_set_pending_table_bit renamed into gicv3_lpi_set_clr_pending
+> - add NOTSEL value at the end of the new enum type
 > ---
->   arm/gic.c         | 146 ++++++++++++++++++++++++++++++++++++++++++++++
->   arm/unittests.cfg |  16 +++++
->   2 files changed, 162 insertions(+)
-> 
-> diff --git a/arm/gic.c b/arm/gic.c
-> index b8fbc13..e6ffbc3 100644
-> --- a/arm/gic.c
-> +++ b/arm/gic.c
-> @@ -193,6 +193,7 @@ static void lpi_handler(struct pt_regs *regs __unused)
->   	smp_rmb(); /* pairs with wmb in lpi_stats_expect */
->   	lpi_stats.observed.cpu_id = smp_processor_id();
->   	lpi_stats.observed.lpi_id = irqnr;
-> +	acked[lpi_stats.observed.cpu_id]++;
->   	smp_wmb(); /* pairs with rmb in check_lpi_stats */
->   }
->   
-> @@ -236,6 +237,22 @@ static void secondary_lpi_test(void)
->   	while (1)
->   		wfi();
->   }
-> +
-> +static void check_lpi_hits(int *expected, const char *msg)
+>  include/hw/arm/virt.h |  1 +
+>  hw/arm/virt.c         | 54 ++++++++++++++++++++++++++-----------------
+>  2 files changed, 34 insertions(+), 21 deletions(-)
+>=20
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index c0827cacdf..893796d3b0 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -100,6 +100,7 @@ typedef enum VirtGICType {
+>      VIRT_GIC_VERSION_HOST,
+>      VIRT_GIC_VERSION_2,
+>      VIRT_GIC_VERSION_3,
+> +    VIRT_GIC_VERSION_NOSEL,
+>  } VirtGICType;
+> =20
+>  typedef struct MemMapEntry {
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 4ed1f0cb2e..22da0a7ad7 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1535,6 +1535,37 @@ static void virt_set_memmap(VirtMachineState *vms)
+>      }
+>  }
+> =20
+> +/*
+> + * finalize_gic_version - Determines the final gic_version
+> + * according to the gic-version property
+> + *
+> + * Default GIC type is v2
+> + */
+> +static void finalize_gic_version(VirtMachineState *vms)
 > +{
-> +	bool pass = true;
-> +	int i;
-> +
-> +	for (i = 0; i < nr_cpus; i++) {
-> +		if (acked[i] != expected[i]) {
-> +			report_info("expected %d LPIs on PE #%d, %d observed",
-> +				    expected[i], i, acked[i]);
-> +			pass = false;
-> +			break;
-> +		}
-> +	}
-> +	report(pass, "%s", msg);
-> +}
->   #endif
->   
->   static void gicv2_ipi_send_self(void)
-> @@ -591,6 +608,8 @@ static void gic_test_mmio(void)
->   static void test_its_introspection(void) {}
->   static void test_its_trigger(void) {}
->   static void test_its_migration(void) {}
-> +static void test_its_pending_migration(void) {}
-> +static void test_migrate_unmapped_collection(void) {}
->   
->   #else /* __aarch64__ */
->   
-> @@ -659,6 +678,17 @@ static int its_prerequisites(int nb_cpus)
->   	return 0;
->   }
->   
-> +static void set_lpi(struct its_device *dev, u32 eventid, u32 physid,
-> +		    struct its_collection *col)
-> +{
-> +	assert(dev && col);
-> +
-> +	its_send_mapti(dev, physid, eventid, col);
-> +
-> +	gicv3_lpi_set_config(physid, LPI_PROP_DEFAULT);
-> +	its_send_invall(col);
-
-Again, the col hasn't been mapped currently.
-
+> +    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_HOST ||
+> +        vms->gic_version =3D=3D VIRT_GIC_VERSION_MAX) {
+> +        if (!kvm_enabled()) {
+> +            if (vms->gic_version =3D=3D VIRT_GIC_VERSION_HOST) {
+> +                error_report("gic-version=3Dhost requires KVM");
+> +                exit(1);
+> +            } else {
+> +                /* "max": currently means 3 for TCG */
+> +                vms->gic_version =3D VIRT_GIC_VERSION_3;
+> +            }
+> +        } else {
+> +            vms->gic_version =3D kvm_arm_vgic_probe();
+> +            if (!vms->gic_version) {
+> +                error_report(
+> +                    "Unable to determine GIC version supported by host")=
+;
+> +                exit(1);
+> +            }
+> +        }
+> +    } else if (vms->gic_version =3D=3D VIRT_GIC_VERSION_NOSEL) {
+> +        vms->gic_version =3D VIRT_GIC_VERSION_2;
+> +    }
 > +}
 > +
->   /*
->    * Setup the configuration for those mappings:
->    * dev_id=2 event=20 -> vcpu 3, intid=8195
-> @@ -799,6 +829,114 @@ static void test_its_migration(void)
->   	its_send_int(dev7, 255);
->   	check_lpi_stats("dev7/eventid=255 triggers LPI 8196 on PE #2 after migration");
->   }
-> +
-> +static void test_migrate_unmapped_collection(void)
-> +{
-> +	struct its_collection *col;
-> +	struct its_device *dev2, *dev7;
-> +	int pe0 = nr_cpus - 1;
-> +	u8 config;
-> +
-> +	if (its_setup1())
-> +		return;
-> +
-> +	col = its_create_collection(pe0, pe0);
-> +	dev2 = its_get_device(2);
-> +	dev7 = its_get_device(7);
-> +
-> +	/* MAPTI with the collection unmapped */
-> +	set_lpi(dev2, 0, 8192, col);
-> +
-> +	puts("Now migrate the VM, then press a key to continue...\n");
-> +	(void)getchar();
-> +	report_info("Migration complete");
-> +
-> +	/* on the destination, map the collection */
-> +	its_send_mapc(col, true);
-> +
-> +	lpi_stats_expect(2, 8196);
-> +	its_send_int(dev7, 255);
-> +	check_lpi_stats("dev7/eventid= 255 triggered LPI 8196 on PE #2");
-> +
-> +	config = gicv3_lpi_get_config(8192);
-> +	report(config == LPI_PROP_DEFAULT,
-> +	       "Config of LPI 8192 was properly migrated");
-> +
-> +	lpi_stats_expect(pe0, 8192);
-> +	its_send_int(dev2, 0);
-> +	check_lpi_stats("dev2/eventid = 0 triggered LPI 8192 on PE0");
-> +
-> +	/* unmap the collection */
-> +	its_send_mapc(col, false);
+>  static void machvirt_init(MachineState *machine)
+>  {
+>      VirtMachineState *vms =3D VIRT_MACHINE(machine);
+> @@ -1561,25 +1592,7 @@ static void machvirt_init(MachineState *machine)
+>      /* We can probe only here because during property set
+>       * KVM is not available yet
+>       */
+> -    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_HOST ||
+> -        vms->gic_version =3D=3D VIRT_GIC_VERSION_MAX) {
+> -        if (!kvm_enabled()) {
+> -            if (vms->gic_version =3D=3D VIRT_GIC_VERSION_HOST) {
+> -                error_report("gic-version=3Dhost requires KVM");
+> -                exit(1);
+> -            } else {
+> -                /* "max": currently means 3 for TCG */
+> -                vms->gic_version =3D VIRT_GIC_VERSION_3;
+> -            }
+> -        } else {
+> -            vms->gic_version =3D kvm_arm_vgic_probe();
+> -            if (!vms->gic_version) {
+> -                error_report(
+> -                    "Unable to determine GIC version supported by host")=
+;
+> -                exit(1);
+> -            }
+> -        }
+> -    }
+> +     finalize_gic_version(vms);
+       ^ extra space
+> =20
+>      if (!cpu_type_valid(machine->cpu_type)) {
+>          error_report("mach-virt: CPU type %s not supported", machine->cp=
+u_type);
+> @@ -2140,8 +2153,7 @@ static void virt_instance_init(Object *obj)
+>                                      "Set on/off to enable/disable using =
+"
+>                                      "physical address space above 32 bit=
+s",
+>                                      NULL);
+> -    /* Default GIC type is v2 */
+> -    vms->gic_version =3D VIRT_GIC_VERSION_2;
+> +    vms->gic_version =3D VIRT_GIC_VERSION_NOSEL;
+>      object_property_add_str(obj, "gic-version", virt_get_gic_version,
+>                          virt_set_gic_version, NULL);
+>      object_property_set_description(obj, "gic-version",
+> --=20
+> 2.20.1
+>=20
 
-Again, behavior is unpredictable.
-
-> +
-> +	lpi_stats_expect(-1, -1);
-> +	its_send_int(dev2, 0);
-> +	check_lpi_stats("no LPI triggered after collection unmapping");
-> +}
-> +
-> +static void test_its_pending_migration(void)
-> +{
-> +	struct its_device *dev;
-> +	struct its_collection *collection[2];
-> +	int *expected = malloc(nr_cpus * sizeof(int));
-> +	int pe0 = nr_cpus - 1, pe1 = nr_cpus - 2;
-> +	u64 pendbaser;
-> +	void *ptr;
-> +	int i;
-> +
-> +	if (its_prerequisites(4))
-> +		return;
-> +
-> +	dev = its_create_device(2 /* dev id */, 8 /* nb_ites */);
-> +	its_send_mapd(dev, true);
-> +
-> +	collection[0] = its_create_collection(pe0, pe0);
-> +	collection[1] = its_create_collection(pe1, pe1);
-> +	its_send_mapc(collection[0], true);
-> +	its_send_mapc(collection[1], true);
-> +
-> +	/* disable lpi at redist level */
-> +	gicv3_lpi_rdist_disable(pe0);
-> +	gicv3_lpi_rdist_disable(pe1);
-> +
-> +	/* lpis are interleaved inbetween the 2 PEs */
-> +	for (i = 0; i < 256; i++) {
-> +		struct its_collection *col = i % 2 ? collection[0] :
-> +						     collection[1];
-> +		int vcpu = col->target_address >> 16;
-> +
-> +		its_send_mapti(dev, LPI(i), i, col);
-> +		gicv3_lpi_set_config(LPI(i), LPI_PROP_DEFAULT);
-> +		gicv3_lpi_set_clr_pending(vcpu, LPI(i), true);
-> +	}
-> +	its_send_invall(collection[0]);
-> +	its_send_invall(collection[1]);
-> +
-> +	/* Set the PTZ bit on each pendbaser */
-
-'Clear' the PTZ.
-
-Otherwise looks good!
-
-> +
-> +	expected[pe0] = 128;
-> +	expected[pe1] = 128;
-> +
-> +	ptr = gicv3_data.redist_base[pe0] + GICR_PENDBASER;
-> +	pendbaser = readq(ptr);
-> +	writeq(pendbaser & ~GICR_PENDBASER_PTZ, ptr);
-> +
-> +	ptr = gicv3_data.redist_base[pe1] + GICR_PENDBASER;
-> +	pendbaser = readq(ptr);
-> +	writeq(pendbaser & ~GICR_PENDBASER_PTZ, ptr);
-> +
-> +	gicv3_lpi_rdist_enable(pe0);
-> +	gicv3_lpi_rdist_enable(pe1);
-> +
-> +	puts("Now migrate the VM, then press a key to continue...\n");
-> +	(void)getchar();
-> +	report_info("Migration complete");
-> +
-> +	/* let's wait for the 256 LPIs to be handled */
-> +	mdelay(1000);
-> +
-> +	check_lpi_hits(expected, "128 LPIs on both PE0 and PE1 after migration");
-> +}
-
-Thanks,
-Zenghui
-
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

@@ -1,97 +1,97 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp387337lfc;
-        Tue, 10 Mar 2020 23:45:08 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtCbTuDoJI9vHd1SomXnK/wzI5WK1jrDcJ1LAmf4p+5rc0FCbodRqfs1fxi7k4dHkj0V2pO
-X-Received: by 2002:ac8:17f9:: with SMTP id r54mr1308356qtk.285.1583909108464;
-        Tue, 10 Mar 2020 23:45:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583909108; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp387382lfc;
+        Tue, 10 Mar 2020 23:45:11 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsNOL11IE3jpIUaodE5ic0a24grGQCRSopuz9CTcyUTGc5hGMHRv1pRnBOE5JOCvXgeowbO
+X-Received: by 2002:a0c:9081:: with SMTP id p1mr1566320qvp.38.1583909111478;
+        Tue, 10 Mar 2020 23:45:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583909111; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ptit8FaQsZ29uVsMAPQnxhkJkjWZ9itWqjz2dZ8JIWFW7z68pRO5FGTB8x9kr/lVlE
-         L6pjjfv6S0bt7efdzma5fGhEdL72/5Dq7bizWnM2WsIAxCb5CRVBLTzFkN9MkxbqRioF
-         GNGzhrYnZoZNN74S/9+Ag4EwLjadE35aPtgxdGBaLCRZ7mS52lZrfahwfC6IH1Mh41zQ
-         kOttbF/ina1UBGJGa2v02y7V5rt7bXZoB3EP/qCvYPkoIJ0WjkgsRasMAhIrdxYWWesL
-         ernj9YT3tJkJmAjBaVooX6zUyI+lfQuzcVVj5mpQoEaMbUWwCtb93qDKsIzYkCoILt/Y
-         rijA==
+        b=ApuFE7QO8RUwcVAlSUmFVIL8vDfWDVubkTs+rFEGsL7f/ERNc80TGeCME67hCtG6IE
+         mZ6ayl5sdYqcHpPtWmVcbC02rFey+QbZqTFZCAiZpVHjSFWVnu4YozXJ/S0wyrYFPx6l
+         DDr9Pgbb4jXqyAZrYUm2U57t/K9EkcC2q+28jHdGsV9ZK01SfP2/S3n4KRnseSC2C8ix
+         sAZReOkw4pY78M4hIqKf9xYmbG94ekl/G6heci1itpH4bDrfXNIpP6TAuaEKXbf7qH2L
+         3V2CKDtviolyfjkkRRDZI4o8mY9zwolE7HiJGitY6JZYWDNQAVZ+iRPLzdPbCf06Qhrs
+         8z4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ME4wdyObWWzU36JOWOP068GfXM/kHUGKiy3+FE+Caek=;
-        b=RtLXDB+cK0y6h8j9szw4m6xMxuZJZo66Vhs75KLFJU6KSIQJQy0tiwh6WYWFT82dh1
-         /AcImfSK0H/MDW5fANHHBtlUvnHJFf+tcqc8WlkvHvIH6JJFTk6zwx/XtOGNP7Anr7kb
-         hJJBy16jRhddRTcDKV0SoM5wwvFCjAg8260py9+hcIkQP9I44Fzj2UnSJoST0IayUNDQ
-         YniUGWkDZXejVkaOUrGM0cDcCwplnvLuzkSW/t+DQ4eyd0hYQqbzLHNhSTSLFu2fytJg
-         o7Awna/0m5eQOiTIgt8Vs96Hdpiskdrz5tjWwwTrz8IASfDARZRSsYOlcgKJWigAGiYN
-         vQtg==
+        bh=WFkeQZK5wV/2b9hgN0NoiBdZ/Pf2pozUeegzyTZXJXc=;
+        b=SnrTBiC5iwmfGmEbmlkyU4EU8K3gNYvK5bKHOlJ5RLU+Xznsb4CgD4cU0HaJgzq6TV
+         E5nlRJQQ77VYHJqDdm8QzMuHmxYrCwE20pJIZkvt2A5NrONRPCtF2asIaqW9qaFDaZZ5
+         uvG3hwgmMc58H+q1I3q7KxNBr4VUwnEYvnJMbRp/vhYrBJqk9zFmWdViSStj1hC8UzFQ
+         fiN86JboMS5trrTbsbCajWla4Vc4S/9lVSMtKnkhTzIywDmt7XQWxdDX15KczoFyq/zF
+         cgXHGyPxVObx87cLOH/DlDS01hsfSEafgzuwpJh0aewBmh83Ou5iKge1EetYA8CNDv5S
+         iaBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nAqcHY80;
+       dkim=pass header.i=@linaro.org header.s=google header.b="faxQT0/T";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o5si511345qtm.398.2020.03.10.23.45.08
+        by mx.google.com with ESMTPS id bk6si440962qvb.24.2020.03.10.23.45.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Mar 2020 23:45:08 -0700 (PDT)
+        Tue, 10 Mar 2020 23:45:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nAqcHY80;
+       dkim=pass header.i=@linaro.org header.s=google header.b="faxQT0/T";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46170 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46222 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBv75-00068B-S6
-	for alex.bennee@linaro.org; Wed, 11 Mar 2020 02:45:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59301)
+	id 1jBv78-0006DK-Qi
+	for alex.bennee@linaro.org; Wed, 11 Mar 2020 02:45:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59385)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jBv6Q-000665-Es
- for qemu-devel@nongnu.org; Wed, 11 Mar 2020 02:44:27 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1jBv6V-00069K-US
+ for qemu-devel@nongnu.org; Wed, 11 Mar 2020 02:44:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1jBv6O-0001f1-Hm
- for qemu-devel@nongnu.org; Wed, 11 Mar 2020 02:44:26 -0400
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:38245)
+ (envelope-from <richard.henderson@linaro.org>) id 1jBv6S-0001mW-5h
+ for qemu-devel@nongnu.org; Wed, 11 Mar 2020 02:44:30 -0400
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:39444)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1jBv6O-0001cs-Cw
- for qemu-devel@nongnu.org; Wed, 11 Mar 2020 02:44:24 -0400
-Received: by mail-pg1-x541.google.com with SMTP id x7so639014pgh.5
- for <qemu-devel@nongnu.org>; Tue, 10 Mar 2020 23:44:24 -0700 (PDT)
+ id 1jBv6Q-0001hB-D0
+ for qemu-devel@nongnu.org; Wed, 11 Mar 2020 02:44:27 -0400
+Received: by mail-pg1-x544.google.com with SMTP id s2so637509pgv.6
+ for <qemu-devel@nongnu.org>; Tue, 10 Mar 2020 23:44:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ME4wdyObWWzU36JOWOP068GfXM/kHUGKiy3+FE+Caek=;
- b=nAqcHY80e4ejxIJMyR8NQ/oenp6q+JKoqoSjzsnDo3V0irsukHBJXuIFSZMeH2FA91
- nqThih0v1cRFxjbr0+jn2U6EUvJt+351gAGkWdsQAusWjD+k7ZaTRrMfVcBzFUqudBDs
- 22boIFp7rItiG50EB5sHmTOm72nPPhIJS06g+UEHGhfUS73ZT/FP6OTlWitNLXQlBEzr
- 7TVgPHIA4hzZx87mHNTDbqn3DTtgSD9DTLzNLd578xOMPPNqmAivDyftR8KhKM84zPxh
- OVkWZsWp3ZHMK9Ce/V6QQEVWr58hC6Lnr3t+DW6KHbHRF0DdT54SXtBgkpMQSNF8FK7z
- LIfw==
+ bh=WFkeQZK5wV/2b9hgN0NoiBdZ/Pf2pozUeegzyTZXJXc=;
+ b=faxQT0/TZ2lP8LdufRbHEAMgV5SqtHpRoMMBYOjXzi8/oIgSE3khGexXHAGUuNG0TG
+ HBFx4yEsGDAuJfnSqyKCTqX3yy0UoII0WkRISbXRIvE1r5FuUy9PrM/cMnn7z5BD+ZoR
+ Sm/7bl3KmX+FCEFDGgjYlJwxMRzggqNhG4pbEjEyH0aRzMhXhNnE75kJ3lv8fHbm7VNx
+ gkOmIqWNgU1ALaPxbOXA/XouNF/Ej3x7j+H02mErdIAckpsh8fhVcNPDUlTBbQSyk+BU
+ tqlm0WdPXZ0rXAXQsxHs4dVKNUX76eREDFyqqAzVgXlSMu0Rg7S4Xq2tI64LGIpxVXO5
+ 9FXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ME4wdyObWWzU36JOWOP068GfXM/kHUGKiy3+FE+Caek=;
- b=nU5XCeWwXbqhto6JeU5oamSSXxTywmXgW6mm5lolLlmn26B1EiR7DOqggSL5AMxzVd
- VeFi/l2VU+9eCpMlD50VHsizCC/ZGbB2tIJ6kRp7lrWHJSDsnITp0m86q2W8CRiPiSdI
- /4ZOw7Z630bQ0sbqSj3+XmZW7RHwkpkqJ3UV0sHzCCDlzKGZiJ8fJwFdtbZ8JZBH8QzN
- jt5ucceGpM5Ngu8oOA221MKBTZlra12d2ivv/EfJ//t2yZMV6/GCTQQpH1kuBcnxj2RX
- Immfv2yJ6TyCD+nIqXX+f5WOIelmrwkYnL2okQWLnMBluTZpN2Vjc+Q30/BOgnOuK31E
- maJw==
-X-Gm-Message-State: ANhLgQ26GrGurwQBKKAYmJF1gs+xc7ZpaBFw65gdeS+BsAXTabOLp9cx
- 3tubebmVIU3TfBmQye0euEnr+4TlD7w=
-X-Received: by 2002:a62:7cc9:: with SMTP id x192mr767250pfc.176.1583909062988; 
- Tue, 10 Mar 2020 23:44:22 -0700 (PDT)
+ bh=WFkeQZK5wV/2b9hgN0NoiBdZ/Pf2pozUeegzyTZXJXc=;
+ b=K31lWmGYEx0M7T/8X0rwbiiOfC/rQykIM7ng0gzcQyri5UwLgjV3pZpjxN6QpyDgs2
+ Cu9VX2kjqaS4++1ou4gX40nGfQnJqLcFV+Ypb+5/Ybmo6UMUNK2TeWrRo2r+Ufx9jTSP
+ m+uLucfW6WQJ8L3yK/AK0Gr+uK3MzjJnCtodooZeUQr36WjMx5xJbWTqJjh7bkMwOhM1
+ m9dgTjK1K5Xe+fxQ0t0qNyLv0nYojG4/W+cmwE/pw7gSaq19Nin23N3pnUuOEAD8o6M9
+ NN9Oq84Jr+Eva3e5/r78iov6ixA1g3JG3lmF9bsPKaZif2tcC+6YRLywkCUpwyIBXwrR
+ 2IJw==
+X-Gm-Message-State: ANhLgQ1w+RbMvjbhvItVqAJPmik5giBmKTfAgQBZEVhpS5f6yLnrS5JC
+ hefIslMFGGDC1JEV7VJR7lesvzZlEEM=
+X-Received: by 2002:a63:a65:: with SMTP id z37mr1405166pgk.31.1583909064289;
+ Tue, 10 Mar 2020 23:44:24 -0700 (PDT)
 Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net.
  [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id z3sm50137807pfz.155.2020.03.10.23.44.22
+ by smtp.gmail.com with ESMTPSA id z3sm50137807pfz.155.2020.03.10.23.44.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Mar 2020 23:44:22 -0700 (PDT)
+ Tue, 10 Mar 2020 23:44:23 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 01/16] accel/tcg: Add block comment for probe_access
-Date: Tue, 10 Mar 2020 23:44:05 -0700
-Message-Id: <20200311064420.30606-2-richard.henderson@linaro.org>
+Subject: [PATCH 02/16] accel/tcg: Add probe_access_flags
+Date: Tue, 10 Mar 2020 23:44:06 -0700
+Message-Id: <20200311064420.30606-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200311064420.30606-1-richard.henderson@linaro.org>
 References: <20200311064420.30606-1-richard.henderson@linaro.org>
@@ -99,7 +99,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::541
+X-Received-From: 2607:f8b0:4864:20::544
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,41 +114,357 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PJ79T3n1pO7L
+X-TUID: QMzXTHCGTJP7
+
+This new interface will allow targets to probe for a page
+and then handle watchpoints themselves.  This will be most
+useful for vector predicated memory operations, where one
+page lookup can be used for many operations, and one test
+can avoid many watchpoint checks.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/exec-all.h | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ include/exec/cpu-all.h  |  13 ++-
+ include/exec/exec-all.h |  22 +++++
+ accel/tcg/cputlb.c      | 178 ++++++++++++++++++++--------------------
+ accel/tcg/user-exec.c   |  36 +++++---
+ 4 files changed, 150 insertions(+), 99 deletions(-)
 
+diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+index 49384bb66a..43ddcf024c 100644
+--- a/include/exec/cpu-all.h
++++ b/include/exec/cpu-all.h
+@@ -328,7 +328,18 @@ CPUArchState *cpu_copy(CPUArchState *env);
+      | CPU_INTERRUPT_TGT_EXT_3   \
+      | CPU_INTERRUPT_TGT_EXT_4)
+ 
+-#if !defined(CONFIG_USER_ONLY)
++#ifdef CONFIG_USER_ONLY
++
++/*
++ * Allow some level of source compatibility with softmmu.  We do not
++ * support any of the more exotic features, so only invalid pages may
++ * be signaled by probe_access_flags().
++ */
++#define TLB_INVALID_MASK    (1 << (TARGET_PAGE_BITS_MIN - 1))
++#define TLB_MMIO            0
++#define TLB_WATCHPOINT      0
++
++#else
+ 
+ /*
+  * Flags stored in the low bits of the TLB virtual address.
 diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index 350c4b451b..d656a1f05c 100644
+index d656a1f05c..8792bea07a 100644
 --- a/include/exec/exec-all.h
 +++ b/include/exec/exec-all.h
-@@ -330,6 +330,23 @@ static inline void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *cpu,
- {
+@@ -362,6 +362,28 @@ static inline void *probe_read(CPUArchState *env, target_ulong addr, int size,
+     return probe_access(env, addr, size, MMU_DATA_LOAD, mmu_idx, retaddr);
  }
- #endif
+ 
 +/**
-+ * probe_access:
++ * probe_access_flags:
 + * @env: CPUArchState
 + * @addr: guest virtual address to look up
-+ * @size: size of the access
 + * @access_type: read, write or execute permission
 + * @mmu_idx: MMU index to use for lookup
++ * @nonfault: suppress the fault
++ * @phost: return value for host address
 + * @retaddr: return address for unwinding
 + *
-+ * Look up the guest virtual address @addr.  Raise an exception if the
-+ * page does not satisfy @access_type.  Raise an exception if the
-+ * access (@addr, @size) hits a watchpoint.  For writes, mark a clean
-+ * page as dirty.
++ * Similar to probe_access, loosely returning the TLB_FLAGS_MASK for
++ * the page, and storing the host address for RAM in @phost.
 + *
-+ * Finally, return the host address for a page that is backed by RAM,
-+ * or NULL if the page requires I/O.
++ * If @nonfault is set, do not raise an exception but return TLB_INVALID_MASK.
++ * Do not handle watchpoints, but include TLB_WATCHPOINT in the returned flags.
++ * Do handle clean pages, so exclude TLB_NOTDIRY from the returned flags.
++ * For simplicity, all "mmio-like" flags are folded to TLB_MMIO.
 + */
- void *probe_access(CPUArchState *env, target_ulong addr, int size,
-                    MMUAccessType access_type, int mmu_idx, uintptr_t retaddr);
++int probe_access_flags(CPUArchState *env, target_ulong addr,
++                       MMUAccessType access_type, int mmu_idx,
++                       bool nonfault, void **phost, uintptr_t retaddr);
++
+ #define CODE_GEN_ALIGN           16 /* must be >= of the size of a icache line */
  
+ /* Estimated block size for TB allocation.  */
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index e3b5750c3b..687474ccea 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -1231,86 +1231,16 @@ static void notdirty_write(CPUState *cpu, vaddr mem_vaddr, unsigned size,
+     }
+ }
+ 
+-/*
+- * Probe for whether the specified guest access is permitted. If it is not
+- * permitted then an exception will be taken in the same way as if this
+- * were a real access (and we will not return).
+- * If the size is 0 or the page requires I/O access, returns NULL; otherwise,
+- * returns the address of the host page similar to tlb_vaddr_to_host().
+- */
+-void *probe_access(CPUArchState *env, target_ulong addr, int size,
+-                   MMUAccessType access_type, int mmu_idx, uintptr_t retaddr)
++static int probe_access_internal(CPUArchState *env, target_ulong addr,
++                                 int fault_size, MMUAccessType access_type,
++                                 int mmu_idx, bool nonfault,
++                                 void **phost, uintptr_t retaddr)
+ {
+     uintptr_t index = tlb_index(env, mmu_idx, addr);
+     CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
+-    target_ulong tlb_addr;
+-    size_t elt_ofs;
+-    int wp_access;
+-
+-    g_assert(-(addr | TARGET_PAGE_MASK) >= size);
+-
+-    switch (access_type) {
+-    case MMU_DATA_LOAD:
+-        elt_ofs = offsetof(CPUTLBEntry, addr_read);
+-        wp_access = BP_MEM_READ;
+-        break;
+-    case MMU_DATA_STORE:
+-        elt_ofs = offsetof(CPUTLBEntry, addr_write);
+-        wp_access = BP_MEM_WRITE;
+-        break;
+-    case MMU_INST_FETCH:
+-        elt_ofs = offsetof(CPUTLBEntry, addr_code);
+-        wp_access = BP_MEM_READ;
+-        break;
+-    default:
+-        g_assert_not_reached();
+-    }
+-    tlb_addr = tlb_read_ofs(entry, elt_ofs);
+-
+-    if (unlikely(!tlb_hit(tlb_addr, addr))) {
+-        if (!victim_tlb_hit(env, mmu_idx, index, elt_ofs,
+-                            addr & TARGET_PAGE_MASK)) {
+-            tlb_fill(env_cpu(env), addr, size, access_type, mmu_idx, retaddr);
+-            /* TLB resize via tlb_fill may have moved the entry. */
+-            index = tlb_index(env, mmu_idx, addr);
+-            entry = tlb_entry(env, mmu_idx, addr);
+-        }
+-        tlb_addr = tlb_read_ofs(entry, elt_ofs);
+-    }
+-
+-    if (!size) {
+-        return NULL;
+-    }
+-
+-    if (unlikely(tlb_addr & TLB_FLAGS_MASK)) {
+-        CPUIOTLBEntry *iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
+-
+-        /* Reject I/O access, or other required slow-path.  */
+-        if (tlb_addr & (TLB_MMIO | TLB_BSWAP | TLB_DISCARD_WRITE)) {
+-            return NULL;
+-        }
+-
+-        /* Handle watchpoints.  */
+-        if (tlb_addr & TLB_WATCHPOINT) {
+-            cpu_check_watchpoint(env_cpu(env), addr, size,
+-                                 iotlbentry->attrs, wp_access, retaddr);
+-        }
+-
+-        /* Handle clean RAM pages.  */
+-        if (tlb_addr & TLB_NOTDIRTY) {
+-            notdirty_write(env_cpu(env), addr, size, iotlbentry, retaddr);
+-        }
+-    }
+-
+-    return (void *)((uintptr_t)addr + entry->addend);
+-}
+-
+-void *tlb_vaddr_to_host(CPUArchState *env, abi_ptr addr,
+-                        MMUAccessType access_type, int mmu_idx)
+-{
+-    CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
+-    target_ulong tlb_addr, page;
++    target_ulong tlb_addr, page_addr;
+     size_t elt_ofs;
++    int flags;
+ 
+     switch (access_type) {
+     case MMU_DATA_LOAD:
+@@ -1325,20 +1255,19 @@ void *tlb_vaddr_to_host(CPUArchState *env, abi_ptr addr,
+     default:
+         g_assert_not_reached();
+     }
+-
+-    page = addr & TARGET_PAGE_MASK;
+     tlb_addr = tlb_read_ofs(entry, elt_ofs);
+ 
+-    if (!tlb_hit_page(tlb_addr, page)) {
+-        uintptr_t index = tlb_index(env, mmu_idx, addr);
+-
+-        if (!victim_tlb_hit(env, mmu_idx, index, elt_ofs, page)) {
++    page_addr = addr & TARGET_PAGE_MASK;
++    if (!tlb_hit_page(tlb_addr, page_addr)) {
++        if (!victim_tlb_hit(env, mmu_idx, index, elt_ofs, page_addr)) {
+             CPUState *cs = env_cpu(env);
+             CPUClass *cc = CPU_GET_CLASS(cs);
+ 
+-            if (!cc->tlb_fill(cs, addr, 0, access_type, mmu_idx, true, 0)) {
++            if (!cc->tlb_fill(cs, addr, fault_size, access_type,
++                              mmu_idx, nonfault, retaddr)) {
+                 /* Non-faulting page table read failed.  */
+-                return NULL;
++                *phost = NULL;
++                return TLB_INVALID_MASK;
+             }
+ 
+             /* TLB resize via tlb_fill may have moved the entry.  */
+@@ -1346,15 +1275,90 @@ void *tlb_vaddr_to_host(CPUArchState *env, abi_ptr addr,
+         }
+         tlb_addr = tlb_read_ofs(entry, elt_ofs);
+     }
++    flags = tlb_addr & TLB_FLAGS_MASK;
+ 
+-    if (tlb_addr & ~TARGET_PAGE_MASK) {
+-        /* IO access */
++    /* Fold all "mmio-like" bits into TLB_MMIO.  This is not RAM.  */
++    if (unlikely(flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY))) {
++        *phost = NULL;
++        return TLB_MMIO;
++    }
++
++    /* Everything else is RAM. */
++    *phost = (void *)((uintptr_t)addr + entry->addend);
++    return flags;
++}
++
++int probe_access_flags(CPUArchState *env, target_ulong addr,
++                       MMUAccessType access_type, int mmu_idx,
++                       bool nonfault, void **phost, uintptr_t retaddr)
++{
++    void *host;
++    int flags;
++
++    flags = probe_access_internal(env, addr, 0, access_type, mmu_idx,
++                                  nonfault, &host, retaddr);
++
++    /* Handle clean RAM pages.  */
++    if (unlikely(flags & TLB_NOTDIRTY)) {
++        uintptr_t index = tlb_index(env, mmu_idx, addr);
++        CPUIOTLBEntry *iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
++
++        notdirty_write(env_cpu(env), addr, 1, iotlbentry, retaddr);
++        flags &= ~TLB_NOTDIRTY;
++    }
++
++    return flags;
++}
++
++void *probe_access(CPUArchState *env, target_ulong addr, int size,
++                   MMUAccessType access_type, int mmu_idx, uintptr_t retaddr)
++{
++    void *host;
++    int flags;
++
++    g_assert(-(addr | TARGET_PAGE_MASK) >= size);
++
++    flags = probe_access_internal(env, addr, size, access_type, mmu_idx,
++                                  false, &host, retaddr);
++
++    /* Per the interface, size == 0 merely faults the access. */
++    if (size == 0) {
+         return NULL;
+     }
+ 
+-    return (void *)((uintptr_t)addr + entry->addend);
++    if (unlikely(flags & (TLB_NOTDIRTY | TLB_WATCHPOINT))) {
++        uintptr_t index = tlb_index(env, mmu_idx, addr);
++        CPUIOTLBEntry *iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
++
++        /* Handle clean RAM pages.  */
++        if (flags & TLB_NOTDIRTY) {
++            notdirty_write(env_cpu(env), addr, 1, iotlbentry, retaddr);
++        }
++
++        /* Handle watchpoints.  */
++        if (flags & TLB_WATCHPOINT) {
++            int wp_access = (access_type == MMU_DATA_STORE
++                             ? BP_MEM_WRITE : BP_MEM_READ);
++            cpu_check_watchpoint(env_cpu(env), addr, size,
++                                 iotlbentry->attrs, wp_access, retaddr);
++        }
++    }
++
++    return host;
+ }
+ 
++void *tlb_vaddr_to_host(CPUArchState *env, abi_ptr addr,
++                        MMUAccessType access_type, int mmu_idx)
++{
++    void *host;
++    int flags;
++
++    flags = probe_access_internal(env, addr, 0, access_type,
++                                  mmu_idx, true, &host, 0);
++
++    /* No combination of flags are expected by the caller. */
++    return flags ? NULL : host;
++}
+ 
+ #ifdef CONFIG_PLUGIN
+ /*
+diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
+index 4be78eb9b3..c52dd8a95a 100644
+--- a/accel/tcg/user-exec.c
++++ b/accel/tcg/user-exec.c
+@@ -190,13 +190,12 @@ static inline int handle_cpu_signal(uintptr_t pc, siginfo_t *info,
+     g_assert_not_reached();
+ }
+ 
+-void *probe_access(CPUArchState *env, target_ulong addr, int size,
+-                   MMUAccessType access_type, int mmu_idx, uintptr_t retaddr)
++int probe_access_flags(CPUArchState *env, target_ulong addr,
++                       MMUAccessType access_type, int mmu_idx,
++                       bool nonfault, void **phost, uintptr_t retaddr)
+ {
+     int flags;
+ 
+-    g_assert(-(addr | TARGET_PAGE_MASK) >= size);
+-
+     switch (access_type) {
+     case MMU_DATA_STORE:
+         flags = PAGE_WRITE;
+@@ -211,15 +210,30 @@ void *probe_access(CPUArchState *env, target_ulong addr, int size,
+         g_assert_not_reached();
+     }
+ 
+-    if (!guest_addr_valid(addr) || page_check_range(addr, size, flags) < 0) {
+-        CPUState *cpu = env_cpu(env);
+-        CPUClass *cc = CPU_GET_CLASS(cpu);
+-        cc->tlb_fill(cpu, addr, size, access_type, MMU_USER_IDX, false,
+-                     retaddr);
+-        g_assert_not_reached();
++    if (!guest_addr_valid(addr) || page_check_range(addr, 1, flags) < 0) {
++        if (nonfault) {
++            *phost = NULL;
++            return TLB_INVALID_MASK;
++        } else {
++            CPUState *cpu = env_cpu(env);
++            CPUClass *cc = CPU_GET_CLASS(cpu);
++            cc->tlb_fill(cpu, addr, 0, access_type, MMU_USER_IDX, false, retaddr);
++            g_assert_not_reached();
++        }
+     }
+ 
+-    return size ? g2h(addr) : NULL;
++    *phost = g2h(addr);
++    return 0;
++}
++
++void *probe_access(CPUArchState *env, target_ulong addr, int size,
++                   MMUAccessType access_type, int mmu_idx, uintptr_t retaddr)
++{
++    void *host;
++
++    g_assert(-(addr | TARGET_PAGE_MASK) >= size);
++    probe_access_flags(env, addr, access_type, mmu_idx, false, &host, retaddr);
++    return host;
+ }
+ 
+ #if defined(__i386__)
 -- 
 2.20.1
 

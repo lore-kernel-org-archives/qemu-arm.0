@@ -1,158 +1,283 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp804232lfc;
-        Wed, 11 Mar 2020 07:00:23 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsigdoLGGlefg52YA2P5g8th5h4m31cRSI6VvkbmhVo8lRFliUr4NQUcfSPCfRiIbZIPYIW
-X-Received: by 2002:a9d:c24:: with SMTP id 33mr2477984otr.355.1583935223047;
-        Wed, 11 Mar 2020 07:00:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583935223; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp842859lfc;
+        Wed, 11 Mar 2020 07:33:47 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvWPxJKUMgiZbZl+m2SWey+5Ta+Bsv6hByF4tJpPpxzfQ23c0RkkpxaDJQcbT1UMPnK1YEY
+X-Received: by 2002:a05:6808:aac:: with SMTP id r12mr2185831oij.59.1583937227350;
+        Wed, 11 Mar 2020 07:33:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583937227; cv=none;
         d=google.com; s=arc-20160816;
-        b=kX/ul6BcEiezUYUGCxnnDQVBmuU1uYC0wsfMOuun5NAAPdOHLeQQ2GzysQucHzbEKD
-         9BIxEcModjdmCkhUImStnL7CLoyuk9Nqae6TXMftvyn89YD354cAjxeMte54rXDDj9HR
-         tRLqz7Hyxefi8ex60uEWnXRl01ksXJXQ7Y+UpngMoq+OthAI9wrtHyfC6tUYMpIN8VM0
-         iA7GsZxNdI7Q9jBI0lALcz97hkrwryiujTCtZFv4gyizOSHnOgJ2FW1XQWFNfMIPn/Cr
-         MO+PCVZX+KK2u/1GVcvNtsF5/ruCpQkxaG3PNuvk8uVsaQn+3pkGfpsfbAd7iW24EiJP
-         26XQ==
+        b=fMh+mnGsomZUnX+p8vrp3lpHOS9x2eKmZBkZYPASlHc6IvgGeQZhFDdB+Hz7KvzV3S
+         6w+g6Xqpjk3RIAppktSiwFsrnqZdy7tc9eVOEL6f2vzZp7asYvWObtNzmUPDgGxeor28
+         4vUb0hQvBPXziKK7s328PFGfg0xzKgRNjtqWvJfteLFV9jEx/A1Z0Pgzbevh16SVsAyZ
+         JN2ZtaBiplHwJqHPqoEnQgK4t7TtNYP8fmetLy26+eZZkg0ljMcRHvyZJd7KctRsr+EV
+         bKTbvkqruBj5k5cwa4Y79nTllhkpHB0Ll3D4VuFq55TZMDlX02zec52XSFhSI+D1VuQ5
+         xFoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:user-agent:message-id:references
-         :in-reply-to:subject:cc:to:from:date:content-transfer-encoding
-         :mime-version:dkim-signature;
-        bh=QITZVvU6kfL+fcdx6ruOG0zazN0dzOG9JkpTxnF6i5k=;
-        b=HKil7KpSnAxPzPFQ0bPXNhX91zxIbo2PqPN9/gAloru4rV3nVOQKqYG03uOg254x4G
-         /OEIYD4SkHkgM8Plb130xpnEZSVdgAcaGMiKCz9SSRHiwsVBX0f4DcxBnbhlQcphgef0
-         N+HXfyqYloixDiibF9/JHJGW+lVts9qtKr8FhUuElSkx5dE0Tr6j1oRz3/7P7PJnb6am
-         aN/GqlsBQdUN+ImoIP3sWyZKOEml01lYavLduCQ0/wwQT4okvlIZwqHGHpRIY9qCzYIq
-         yBUI+B6uvSmIMwGg3q7qSGGF7LzKGCibFJaIK7I0l9VZsVOg5VyxFmFJJlkr1Sy/idu3
-         UvpA==
+        h=list-id:precedence:sender:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=K6NKxtdxdsPTDuOXVd4dmv4DtWdiQsg9eZxpULS3t3U=;
+        b=XcaK+F4BacsljtypB6XJ3P+Ouzv5+F8gnRi0Nuj25P2AFjf8hn1Cy/CUTc0P3MSxKC
+         hUaXbjFq8QNIjsnF5wrXdH3HERLlSHNPiB4hKB9g8lvvefJDYi+Ai8f0F1XEnTpmfTcZ
+         76BljVGUk4BiHaBuXla6Kv3Zu6uC7Btc+ZY7f3/V2hUMavc70RHB7SJkYl0IioIbuUSn
+         xumJml//Xpc5n5YVX0lLtFEaBDyHWIsay1A8S1ZzIJIokKCftNbNTkX/REb+FCPfxtVn
+         g7Qh1ApRoX5bcAM2POIj3607d6Nh7h6NjmYn6SyUybVsZeOP2jrIkLaN7cJ0QfdKqF7P
+         /EFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=hT3EYx6u;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LduVYrsH;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id f23si1191191oti.283.2020.03.11.07.00.22;
-        Wed, 11 Mar 2020 07:00:23 -0700 (PDT)
+        by mx.google.com with ESMTP id s14si1353418otp.243.2020.03.11.07.33.47;
+        Wed, 11 Mar 2020 07:33:47 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=hT3EYx6u;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LduVYrsH;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1729652AbgCKOAT (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Wed, 11 Mar 2020 10:00:19 -0400
-Received: from mail.kernel.org ([198.145.29.99]:47950 "EHLO mail.kernel.org"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1729428AbgCKOAT (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 11 Mar 2020 10:00:19 -0400
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org [51.254.78.96])
-        (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+        id S1729779AbgCKOdq (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Wed, 11 Mar 2020 10:33:46 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:55343 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1729057AbgCKOdq (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 11 Mar 2020 10:33:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1583937224;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         in-reply-to:in-reply-to:references:references;
+        bh=K6NKxtdxdsPTDuOXVd4dmv4DtWdiQsg9eZxpULS3t3U=;
+        b=LduVYrsH4RFrW45onrENMJ3BS1L3M1Q3ylAboWr4o0nQJtAQFhyo5p4wqVAOqPyew7rBVk
+        TCposuFSdkSB+LD5Cx7dDdvfftKsGQuMgMNwJ3zMyDRwlDUN1cGg4J59rZYyXOUgxWpGIO
+        j5uShLv1rZBZEs7upoVBJHvNrP1CnyE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-83-cOWECrA4PzO-d3YE35NA8Q-1; Wed, 11 Mar 2020 10:33:43 -0400
+X-MC-Unique: cOWECrA4PzO-d3YE35NA8Q-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mail.kernel.org (Postfix) with ESMTPSA id 6D44A21D56;
-        Wed, 11 Mar 2020 14:00:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-        s=default; t=1583935218;
-        bh=0OhcIcZrD2BAj+IbJhSUJLV6Mv2HMcdowWmdsbMbNhY=;
-        h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-        b=hT3EYx6uOpjy1EAwyCTjY6+WpJ5Jl4+nlTYOM1Vi2FQKFukSHtjNZeet9m2Em3MkX
-         ypwcs2QckRkoy2Vw4PJxXmM1eFw+8XI4FBzqmEwoVmOzFY8DCKKfvQwJttcf4jjYi+
-         b1nE90aNOKAZrzYelCvCXhL5i4jKplfAXywUiTgc=
-Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
-        by disco-boy.misterjones.org with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
-        (Exim 4.92)
-        (envelope-from <maz@kernel.org>)
-        id 1jC1uC-00BvZI-Lr; Wed, 11 Mar 2020 14:00:16 +0000
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
-Content-Transfer-Encoding: 8bit
-Date:   Wed, 11 Mar 2020 14:00:16 +0000
-From:   Marc Zyngier <maz@kernel.org>
-To:     Auger Eric <eric.auger@redhat.com>
-Cc:     Zenghui Yu <yuzenghui@huawei.com>, eric.auger.pro@gmail.com,
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7103B189D6C2;
+        Wed, 11 Mar 2020 14:33:40 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (ovpn-206-80.brq.redhat.com [10.40.206.80])
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id 743D05DA7B;
+        Wed, 11 Mar 2020 14:33:34 +0000 (UTC)
+Date:   Wed, 11 Mar 2020 15:33:31 +0100
+From:   Andrew Jones <drjones@redhat.com>
+To:     Eric Auger <eric.auger@redhat.com>
+Cc:     eric.auger.pro@gmail.com, maz@kernel.org,
         kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, drjones@redhat.com,
-        andre.przywara@arm.com, peter.maydell@linaro.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
+        peter.maydell@linaro.org, yuzenghui@huawei.com,
         alexandru.elisei@arm.com, thuth@redhat.com
-Subject: Re: [kvm-unit-tests PATCH v5 10/13] arm/arm64: ITS: INT functional
+Subject: Re: [kvm-unit-tests PATCH v6 06/13] arm/arm64: ITS: Introspection
  tests
-In-Reply-To: <46f0ed1d-3bda-f91b-e2b0-addf1c61c373@redhat.com>
-References: <20200310145410.26308-1-eric.auger@redhat.com>
- <20200310145410.26308-11-eric.auger@redhat.com>
- <d3f651a0-2344-4d6e-111b-be133db7e068@huawei.com>
- <46f0ed1d-3bda-f91b-e2b0-addf1c61c373@redhat.com>
-Message-ID: <301a8b402ff7e480e927b0f8f8b093f2@kernel.org>
-X-Sender: maz@kernel.org
-User-Agent: Roundcube Webmail/1.3.10
-X-SA-Exim-Connect-IP: 51.254.78.96
-X-SA-Exim-Rcpt-To: eric.auger@redhat.com, yuzenghui@huawei.com, eric.auger.pro@gmail.com, kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org, drjones@redhat.com, andre.przywara@arm.com, peter.maydell@linaro.org, alexandru.elisei@arm.com, thuth@redhat.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+Message-ID: <20200311143331.yesdkxuobng3qzuu@kamzik.brq.redhat.com>
+References: <20200311135117.9366-1-eric.auger@redhat.com>
+ <20200311135117.9366-7-eric.auger@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200311135117.9366-7-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: nEZg9xfV1OiS
+X-TUID: SVeuFFuNIvFT
 
-On 2020-03-11 13:48, Auger Eric wrote:
-> Hi Zenghui,
+On Wed, Mar 11, 2020 at 02:51:10PM +0100, Eric Auger wrote:
+> Detect the presence of an ITS as part of the GICv3 init
+> routine, initialize its base address and read few registers
+> the IIDR, the TYPER to store its dimensioning parameters.
+> Parse the BASER registers. As part of the init sequence we
+> also init all the requested tables.
 > 
-> On 3/11/20 12:59 PM, Zenghui Yu wrote:
->> Hi Eric,
->> 
->> On 2020/3/10 22:54, Eric Auger wrote:
->>> Triggers LPIs through the INT command.
->>> 
->>> the test checks the LPI hits the right CPU and triggers
->>> the right LPI intid, ie. the translation is correct.
->>> 
->>> Updates to the config table also are tested, along with inv
->>> and invall commands.
->>> 
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>> 
->>> ---
->> 
->> [...]
->> 
->>> +static void test_its_trigger(void)
->>> +{
->>> +    struct its_collection *col3, *col2;
->>> +    struct its_device *dev2, *dev7;
->>> +
->>> +    if (its_prerequisites(4))
->>> +        return;
->>> +
->>> +    dev2 = its_create_device(2 /* dev id */, 8 /* nb_ites */);
->>> +    dev7 = its_create_device(7 /* dev id */, 8 /* nb_ites */);
->>> +
->>> +    col3 = its_create_collection(3 /* col id */, 3/* target PE */);
->>> +    col2 = its_create_collection(2 /* col id */, 2/* target PE */);
->>> +
->>> +    gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
->>> +    gicv3_lpi_set_config(8196, LPI_PROP_DEFAULT);
->>> +
->>> +    its_send_invall(col2);
->>> +    its_send_invall(col3);
->> 
->> These two INVALLs should be issued after col2 and col3 are mapped,
->> otherwise this will cause the INVALL command error as per the spec
->> (though KVM doesn't complain it at all).
-> Yes you're right. reading the spec again:
+> This is our first ITS test, belonging to a new "its" group.
 > 
-> A command error occurs if any of the following apply:
-> ../..
-> The collection specified by ICID has not been mapped to an RDbase using
-> MAPC.
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > 
-> But as mentionned in the cover letter, no real means to retrieve the
-> error at the moment.
+> ---
+> v5 -> v6:
+> - fix some GENMASK_ULL and tabs
+> 
+> v4 -> v5:
+> - Moved test_its_introspection() stub from
+>   lib/arm/asm/gic-v3-its.h back to arm/gic.c
+> - 32b its_init does report_abort()
+> - remove kerneldoc style comment
+> - remove alloc_lpi_tables from its_init()
+> 
+> v3 -> v4:
+> - fixed some typos, refine trace msgs
+> - move its files to lib/arm64 instead of lib/arm
+> - create lib/arm/asm/gic-v3-its.h containing stubs
+> - rework gic_get_dt_bases
+> - rework baser parsing
+> - move table allocation to init routine
+> - use get_order()
+> 
+> v2 -> v3:
+> - updated dates and changed author
+> - squash "arm/arm64: ITS: Test BASER" into this patch but
+>   removes setup_baser which will be introduced later.
+> - only compile on aarch64
+> - restrict the new test to aarch64
+> 
+> v1 -> v2:
+> - clean GITS_TYPER macros and unused fields in typer struct
+> - remove memory attribute related macros
+> - remove everything related to memory attributes
+> - s/dev_baser/coll_baser/ in report_info
+> - add extra line
+> - removed index filed in its_baser
+> ---
+>  arm/Makefile.arm64         |  1 +
+>  arm/gic.c                  | 48 ++++++++++++++++++
+>  arm/unittests.cfg          |  7 +++
+>  lib/arm/asm/gic-v3-its.h   | 22 +++++++++
+>  lib/arm/gic.c              | 34 +++++++++++--
+>  lib/arm64/asm/gic-v3-its.h | 92 +++++++++++++++++++++++++++++++++++
+>  lib/arm64/gic-v3-its.c     | 99 ++++++++++++++++++++++++++++++++++++++
+>  7 files changed, 298 insertions(+), 5 deletions(-)
+>  create mode 100644 lib/arm/asm/gic-v3-its.h
+>  create mode 100644 lib/arm64/asm/gic-v3-its.h
+>  create mode 100644 lib/arm64/gic-v3-its.c
+> 
+> diff --git a/arm/Makefile.arm64 b/arm/Makefile.arm64
+> index 6d3dc2c..60182ae 100644
+> --- a/arm/Makefile.arm64
+> +++ b/arm/Makefile.arm64
+> @@ -19,6 +19,7 @@ endef
+>  cstart.o = $(TEST_DIR)/cstart64.o
+>  cflatobjs += lib/arm64/processor.o
+>  cflatobjs += lib/arm64/spinlock.o
+> +cflatobjs += lib/arm64/gic-v3-its.o
+>  
+>  OBJDIRS += lib/arm64
+>  
+> diff --git a/arm/gic.c b/arm/gic.c
+> index 2f904b0..649ed81 100644
+> --- a/arm/gic.c
+> +++ b/arm/gic.c
+> @@ -16,6 +16,7 @@
+>  #include <asm/processor.h>
+>  #include <asm/delay.h>
+>  #include <asm/gic.h>
+> +#include <asm/gic-v3-its.h>
+>  #include <asm/smp.h>
+>  #include <asm/barrier.h>
+>  #include <asm/io.h>
+> @@ -517,6 +518,49 @@ static void gic_test_mmio(void)
+>  		test_targets(nr_irqs);
+>  }
+>  
+> +#if defined(__arm__)
+> +
+> +static void test_its_introspection(void) {}
+> +
+> +#else /* __aarch64__ */
+> +
+> +static void test_its_introspection(void)
+> +{
+> +	struct its_baser *dev_baser = &its_data.device_baser;
+> +	struct its_baser *coll_baser = &its_data.coll_baser;
+> +	struct its_typer *typer = &its_data.typer;
+> +
+> +	if (!gicv3_its_base()) {
+> +		report_skip("No ITS, skip ...");
+> +		return;
+> +	}
+> +
+> +	/* IIDR */
+> +	report(test_readonly_32(gicv3_its_base() + GITS_IIDR, false),
+> +	       "GITS_IIDR is read-only"),
+> +
+> +	/* TYPER */
+> +	report(test_readonly_32(gicv3_its_base() + GITS_TYPER, false),
+> +	       "GITS_TYPER is read-only");
+> +
+> +	report(typer->phys_lpi, "ITS supports physical LPIs");
+> +	report_info("vLPI support: %s", typer->virt_lpi ? "yes" : "no");
+> +	report_info("ITT entry size = 0x%x", typer->ite_size);
+> +	report_info("Bit Count: EventID=%d DeviceId=%d CollId=%d",
+> +		    typer->eventid_bits, typer->deviceid_bits,
+> +		    typer->collid_bits);
+> +	report(typer->eventid_bits && typer->deviceid_bits &&
+> +	       typer->collid_bits, "ID spaces");
+> +	report_info("Target address format %s",
+> +			typer->pta ? "Redist base address" : "PE #");
+> +
+> +	report(dev_baser && coll_baser, "detect device and collection BASER");
+> +	report_info("device table entry_size = 0x%x", dev_baser->esz);
+> +	report_info("collection table entry_size = 0x%x", coll_baser->esz);
+> +}
+> +
+> +#endif
+> +
+>  int main(int argc, char **argv)
+>  {
+>  	if (!gic_init()) {
+> @@ -548,6 +592,10 @@ int main(int argc, char **argv)
+>  		report_prefix_push(argv[1]);
+>  		gic_test_mmio();
+>  		report_prefix_pop();
+> +	} else if (strcmp(argv[1], "its-introspection") == 0) {
+> +		report_prefix_push(argv[1]);
+> +		test_its_introspection();
+> +		report_prefix_pop();
+>  	} else {
+>  		report_abort("Unknown subtest '%s'", argv[1]);
+>  	}
+> diff --git a/arm/unittests.cfg b/arm/unittests.cfg
+> index 017958d..23d378e 100644
+> --- a/arm/unittests.cfg
+> +++ b/arm/unittests.cfg
+> @@ -122,6 +122,13 @@ smp = $MAX_SMP
+>  extra_params = -machine gic-version=3 -append 'active'
+>  groups = gic
+>  
+> +[its-introspection]
+> +file = gic.flat
+> +smp = $MAX_SMP
+> +extra_params = -machine gic-version=3 -append 'its-introspection'
+> +groups = its
+> +arch = arm64
+> +
+>  # Test PSCI emulation
+>  [psci]
+>  file = psci.flat
+> diff --git a/lib/arm/asm/gic-v3-its.h b/lib/arm/asm/gic-v3-its.h
+> new file mode 100644
+> index 0000000..2167099
+> --- /dev/null
+> +++ b/lib/arm/asm/gic-v3-its.h
+> @@ -0,0 +1,22 @@
+> +/*
+> + * ITS 32-bit stubs
+> + *
+> + * Copyright (C) 2020, Red Hat Inc, Eric Auger <eric.auger@redhat.com>
+> + *
+> + * This work is licensed under the terms of the GNU LGPL, version 2.
+> + */
+> +
+> +#ifndef _ASMARM_GIC_V3_ITS_H_
+> +#define _ASMARM_GIC_V3_ITS_H_
+> +
+> +/* dummy its_data struct to allow gic_get_dt_bases() call */
+> +struct its_data {
+> +	void *base;
+> +};
+> +
+> +static inline void its_init(void)
+> +{
+> +	report_abort("not supported on 32-bit");
 
-That is still a problem with the ITS. There is no architectural way
-to report an error, even if the error numbers are architected...
+This is supposed to be an assert_msg() (no report_* functions in lib
+code), but it should never fire anyway, because the test code should
+just not call its_init() on 32-bit arm. I.e. the assert is there not
+to report to test runners what's going on, but to stop developers
+from calling it when they shouldn't.
 
-One thing we could do though is to implement the stall model (as 
-described
-in 5.3.2). It still doesn't give us the error, but at least the command
-queue would stop on detecting an error.
-
-         M.
--- 
-Jazz is not dead. It just smells funny...
+I can fix stuff like this up myself on merge to arm/queue though.

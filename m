@@ -1,76 +1,150 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1025799lfc;
-        Wed, 11 Mar 2020 10:24:02 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuv2EOJURdgM7xLzOJvD0nZuDKYosz1Bbp1BwEaE/ifGdfVHiNXDLoeh2QAXB6E70X+mHzM
-X-Received: by 2002:a0c:c1cd:: with SMTP id v13mr3661121qvh.77.1583947441893;
-        Wed, 11 Mar 2020 10:24:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583947441; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1050386lfc;
+        Wed, 11 Mar 2020 10:49:10 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsSgN+9xVCWnZOu8LZik17pTt893csHL7e/8QVmOXBMlFRUOfABqh3xDxbsOuNGZx/Z4u8d
+X-Received: by 2002:a37:2d04:: with SMTP id t4mr3953310qkh.105.1583948950543;
+        Wed, 11 Mar 2020 10:49:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583948950; cv=none;
         d=google.com; s=arc-20160816;
-        b=U+kGWOv49ga3FBdi+v7dHnnSVu7BQ6G1ZJ9gUWjml826EqSTcIJSO+rkcBQ7bgWtNt
-         fVHJoMuMb177ww/9QYlSjVAyA8DEAXcqazONGOcGMHk2X8KBIgXDdXCMC0tG6zIzcSh0
-         4wsZiOpEXpJYC7Gh5kVVpSjaWFLskQZ2ZKPSr+332jgCQu29gngvOjh/08URFNo9rmL7
-         AkvkPnYJyJF7OwJ+DqfyXHT/u+RL5uv2wxl8g0zfeK3TOEZ2fvl1PH00G9W36CEsXe+T
-         fOAbb5lCuVZYkpeDNNSafukT2qOagk2zMjU/uREqsQMyBllbGREf3MZ+46g/tCxOChMW
-         oFmA==
+        b=dNEDLPfCVskT4JCnr5+wWMy8AXojvNMju4XiCXpnYamMw0oe+vYMZFw08f3aRK+Fpi
+         V4M5C3BZPQczlyjvU1yX614zpq3WHIupV1KfwM5+lb63XiE6udvU4wH6deT0k8SsADx9
+         eQzmSvhuzGSK6MC5C3hi5r+pPe0A3Cs0Z2rAxYjOABFxD6sR60UZYzDzjq77CJP+ivzZ
+         xsia42WxJvumZfm8T4Xk1iXeA/kkz7JrBKLedUJywhFvzF0+JlwjphvZXgFQo/Sq5Gze
+         bGIbS5p1NA2dIKQcNTxry9/UGZZR82MBqQLLCfqn4r+N8+/IezqzgGXj3KR/z6HmHpWW
+         Lr1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:to:from;
-        bh=LI6xK06ok8Mn4/+DfWa1Tt6lh4lNrkZRQUDSTs9MsIU=;
-        b=YK7v5RpxB2+AMpgTCzzi/oLLBfwPGDn1F9aO/7DEi7us7f5BCV8KlixXeD8KnxH8BT
-         DpZOkfrAyPGJIeys4vGkTzbu4ndoJ21zNsRx4+5ne8guwgN/B2aYbeDpj9sL2+PZihUt
-         ZOH1/iGCOY94NYd/DHZrVSEWb6ZBFBx9aoC0uLSW9m0v2svID4waEW9TvMjIpyz+JkR8
-         L23HqsPkQZugX1/nSOqDCxnFfCbI1rArD1fxUxo/GDUTlkbxit+De10lgK0NIRBQPQH1
-         G9UUVWn+MhM4UJutjb/cnP5H3y6bg9HdEPX8f8Qgzi+dGC6vpKQe+UIPDDAXWGn/j3uN
-         EooA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:autocrypt:from:references:to:subject
+         :dkim-signature;
+        bh=MBByYtQJAfTSROEA2f4UueE+25jI7JmZxAZh60pMaiY=;
+        b=xlbpDYKYL2dgQPd5oKyYKYeXez3zyIQQCx4LP+KALyqwlfMm0Ch3Im1MznHE2r6cEJ
+         pmoqqcvSIUZMWwBHzRMLWtXuVOz7menXc+Ps1yg1jJD0BfVRo7hqtHDkEvUpSMxJFVga
+         XK8Xx9JjZVVqODOhdynEl5p8W4mm5GQhn1kH1TBCtRFpRlQBH3Cedd4IKrPDKG4HWlVn
+         Td6UVr3Rpuk23zWMA4gsRZEb7zVZjb4CqiR8w2mttKEHXzjc4VRIRNIJ0+GfH4g+z/dP
+         Gywyy8WAFVNBWnWRaprJbx2/EHjY+MAoqNBJV21LXpDLEfn+8BgoeZkV1sBUGgsgLxzO
+         xMow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IxsPHPJf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c7si1263893qka.180.2020.03.11.10.24.01
+        by mx.google.com with ESMTPS id g24si1328394qkk.377.2020.03.11.10.49.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Mar 2020 10:24:01 -0700 (PDT)
+        Wed, 11 Mar 2020 10:49:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56210 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IxsPHPJf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56612 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jC55N-0002Nj-2K
-	for alex.bennee@linaro.org; Wed, 11 Mar 2020 13:24:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57976)
+	id 1jC5Ti-0000ws-0C
+	for alex.bennee@linaro.org; Wed, 11 Mar 2020 13:49:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36174)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jC54z-0001oq-Et
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 13:23:38 -0400
+ (envelope-from <david@redhat.com>) id 1jC5TS-0000uv-AI
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 13:48:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jC54y-0003aI-0z
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 13:23:37 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:35152 helo=huawei.com)
+ (envelope-from <david@redhat.com>) id 1jC5TQ-000788-Lp
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 13:48:54 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:57521
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jC54x-0003RL-KI; Wed, 11 Mar 2020 13:23:35 -0400
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 85C7376D7FBABC6B84C4;
- Thu, 12 Mar 2020 01:23:24 +0800 (CST)
-Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
- DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 12 Mar 2020 01:23:14 +0800
-From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
- <imammedo@redhat.com>
-Subject: [PATCH v3 00/10] ARM virt: Add NVDIMM support
-Date: Wed, 11 Mar 2020 17:20:04 +0000
-Message-ID: <20200311172014.33052-1-shameerali.kolothum.thodi@huawei.com>
-X-Mailer: git-send-email 2.12.0.windows.1
+ (Exim 4.71) (envelope-from <david@redhat.com>) id 1jC5TQ-00076Q-IH
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2020 13:48:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583948931;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=MBByYtQJAfTSROEA2f4UueE+25jI7JmZxAZh60pMaiY=;
+ b=IxsPHPJfe3AY9a+Vng18zTyeeKCY8wUgp5LhBj2nNwTGMONRXykGCRf0Y6f+vkhL+Bc65p
+ sFng32CriNnQicYSyffvmenvvaVSD+aTZb36jdBBKthmqr23V4nhs4GwQPE8vw4WM2gxlb
+ cjt2r/XTaLUMjVEPsDUWr5ZQeO48CX8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-205-we-ipVu-MT-XWxsWmwv3Xw-1; Wed, 11 Mar 2020 13:48:44 -0400
+X-MC-Unique: we-ipVu-MT-XWxsWmwv3Xw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E8DF2107ACC4;
+ Wed, 11 Mar 2020 17:48:42 +0000 (UTC)
+Received: from [10.36.116.132] (ovpn-116-132.ams2.redhat.com [10.36.116.132])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8DB518F37B;
+ Wed, 11 Mar 2020 17:48:35 +0000 (UTC)
+Subject: Re: [PATCH v3 02/10] fw_cfg: Migrate ACPI table mr sizes separately
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, eric.auger@redhat.com,
+ imammedo@redhat.com
+References: <20200311172014.33052-1-shameerali.kolothum.thodi@huawei.com>
+ <20200311172014.33052-3-shameerali.kolothum.thodi@huawei.com>
+From: David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat GmbH
+Message-ID: <4ff72f9b-76e3-3eed-dbe9-7309f2e3eda8@redhat.com>
+Date: Wed, 11 Mar 2020 18:48:34 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.202.227.237]
-X-CFilter-Loop: Reflected
+In-Reply-To: <20200311172014.33052-3-shameerali.kolothum.thodi@huawei.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.32
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,104 +156,224 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, david@redhat.com,
- mst@redhat.com, linuxarm@huawei.com, xuwei5@hisilicon.com,
- shannon.zhaosl@gmail.com, lersek@redhat.com
+Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, mst@redhat.com,
+ linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
+ lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Il++k2ievLpu
+X-TUID: Dni30g1/23L7
 
-This series adds NVDIMM support to arm/virt platform.
-The series reuses some of the patches posted by Eric
-in his earlier attempt here[1].
+On 11.03.20 18:20, Shameer Kolothum wrote:
+> Any sub-page size update to ACPI table MRs will be lost during
+> migration, as we use aligned size in ram_load_precopy() ->
+> qemu_ram_resize() path. This will result in inconsistency in sizes
+> between source and destination. In order to avoid this, save and
+> restore them separately during migration.
+> 
+> Suggested-by: David Hildenbrand <david@redhat.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+> Please find the discussion here,
+> https://patchwork.kernel.org/patch/11339591/
+> ---
+>  hw/core/machine.c         |  1 +
+>  hw/nvram/fw_cfg.c         | 86 ++++++++++++++++++++++++++++++++++++++-
+>  include/hw/nvram/fw_cfg.h |  6 +++
+>  3 files changed, 92 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 9e8c06036f..6d960bd47f 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -39,6 +39,7 @@ GlobalProperty hw_compat_4_2[] = {
+>      { "usb-redir", "suppress-remote-wake", "off" },
+>      { "qxl", "revision", "4" },
+>      { "qxl-vga", "revision", "4" },
+> +    { "fw_cfg", "acpi-mr-restore", "false" },
+>  };
+>  const size_t hw_compat_4_2_len = G_N_ELEMENTS(hw_compat_4_2);
+>  
+> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> index 179b302f01..36d1e32f83 100644
+> --- a/hw/nvram/fw_cfg.c
+> +++ b/hw/nvram/fw_cfg.c
+> @@ -39,6 +39,7 @@
+>  #include "qemu/config-file.h"
+>  #include "qemu/cutils.h"
+>  #include "qapi/error.h"
+> +#include "hw/acpi/aml-build.h"
+>  
+>  #define FW_CFG_FILE_SLOTS_DFLT 0x20
+>  
+> @@ -610,6 +611,50 @@ bool fw_cfg_dma_enabled(void *opaque)
+>      return s->dma_enabled;
+>  }
+>  
+> +static bool fw_cfg_acpi_mr_restore(void *opaque)
+> +{
+> +    FWCfgState *s = opaque;
+> +    return s->acpi_mr_restore;
+> +}
+> +
+> +static void fw_cfg_update_mr(FWCfgState *s, uint16_t key, size_t size)
+> +{
+> +    MemoryRegion *mr;
+> +    ram_addr_t offset;
+> +    int arch = !!(key & FW_CFG_ARCH_LOCAL);
+> +    void *ptr;
+> +
+> +    key &= FW_CFG_ENTRY_MASK;
+> +    assert(key < fw_cfg_max_entry(s));
+> +
+> +    ptr = s->entries[arch][key].data;
+> +    mr = memory_region_from_host(ptr, &offset);
+> +
+> +    memory_region_ram_resize(mr, size, &error_abort);
+> +}
+> +
+> +static int fw_cfg_acpi_mr_restore_post_load(void *opaque, int version_id)
+> +{
+> +    FWCfgState *s = opaque;
+> +    int i, index;
+> +
+> +    assert(s->files);
+> +
+> +    index = be32_to_cpu(s->files->count);
+> +
+> +    for (i = 0; i < index; i++) {
+> +        if (!strcmp(s->files->f[i].name, ACPI_BUILD_TABLE_FILE)) {
+> +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i, s->table_mr_size);
+> +        } else if (!strcmp(s->files->f[i].name, ACPI_BUILD_LOADER_FILE)) {
+> +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i, s->linker_mr_size);
+> +        } else if (!strcmp(s->files->f[i].name, ACPI_BUILD_RSDP_FILE)) {
+> +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i, s->rsdp_mr_size);
+> +        }
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+>  static const VMStateDescription vmstate_fw_cfg_dma = {
+>      .name = "fw_cfg/dma",
+>      .needed = fw_cfg_dma_enabled,
+> @@ -619,6 +664,20 @@ static const VMStateDescription vmstate_fw_cfg_dma = {
+>      },
+>  };
+>  
+> +static const VMStateDescription vmstate_fw_cfg_acpi_mr = {
+> +    .name = "fw_cfg/acpi_mr",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .needed = fw_cfg_acpi_mr_restore,
+> +    .post_load = fw_cfg_acpi_mr_restore_post_load,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT64(table_mr_size, FWCfgState),
+> +        VMSTATE_UINT64(linker_mr_size, FWCfgState),
+> +        VMSTATE_UINT64(rsdp_mr_size, FWCfgState),
+> +        VMSTATE_END_OF_LIST()
+> +    },
+> +};
+> +
+>  static const VMStateDescription vmstate_fw_cfg = {
+>      .name = "fw_cfg",
+>      .version_id = 2,
+> @@ -631,6 +690,7 @@ static const VMStateDescription vmstate_fw_cfg = {
+>      },
+>      .subsections = (const VMStateDescription*[]) {
+>          &vmstate_fw_cfg_dma,
+> +        &vmstate_fw_cfg_acpi_mr,
+>          NULL,
+>      }
+>  };
+> @@ -815,6 +875,23 @@ static struct {
+>  #define FW_CFG_ORDER_OVERRIDE_LAST 200
+>  };
+>  
+> +/*
+> + * Any sub-page size update to these table MRs will be lost during migration,
+> + * as we use aligned size in ram_load_precopy() -> qemu_ram_resize() path.
+> + * In order to avoid the inconsistency in sizes save them seperately and
+> + * migrate over in vmstate post_load().
+> + */
+> +static void fw_cfg_acpi_mr_save(FWCfgState *s, const char *filename, size_t len)
+> +{
+> +    if (!strcmp(filename, ACPI_BUILD_TABLE_FILE)) {
+> +        s->table_mr_size = len;
+> +    } else if (!strcmp(filename, ACPI_BUILD_LOADER_FILE)) {
+> +        s->linker_mr_size = len;
+> +    } else if (!strcmp(filename, ACPI_BUILD_RSDP_FILE)) {
+> +        s->rsdp_mr_size = len;
+> +    }
+> +}
+> +
+>  static int get_fw_cfg_order(FWCfgState *s, const char *name)
+>  {
+>      int i;
+> @@ -914,6 +991,7 @@ void fw_cfg_add_file_callback(FWCfgState *s,  const char *filename,
+>      trace_fw_cfg_add_file(s, index, s->files->f[index].name, len);
+>  
+>      s->files->count = cpu_to_be32(count+1);
+> +    fw_cfg_acpi_mr_save(s, filename, len);
+>  }
+>  
+>  void fw_cfg_add_file(FWCfgState *s,  const char *filename,
+> @@ -937,6 +1015,7 @@ void *fw_cfg_modify_file(FWCfgState *s, const char *filename,
+>              ptr = fw_cfg_modify_bytes_read(s, FW_CFG_FILE_FIRST + i,
+>                                             data, len);
+>              s->files->f[i].size   = cpu_to_be32(len);
+> +            fw_cfg_acpi_mr_save(s, filename, len);
+>              return ptr;
+>          }
+>      }
+> @@ -973,7 +1052,10 @@ static void fw_cfg_machine_ready(struct Notifier *n, void *data)
+>      qemu_register_reset(fw_cfg_machine_reset, s);
+>  }
+>  
+> -
+> +static Property fw_cfg_properties[] = {
+> +    DEFINE_PROP_BOOL("acpi-mr-restore", FWCfgState, acpi_mr_restore, true),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+>  
+>  static void fw_cfg_common_realize(DeviceState *dev, Error **errp)
+>  {
+> @@ -1097,6 +1179,8 @@ static void fw_cfg_class_init(ObjectClass *klass, void *data)
+>  
+>      dc->reset = fw_cfg_reset;
+>      dc->vmsd = &vmstate_fw_cfg;
+> +
+> +    device_class_set_props(dc, fw_cfg_properties);
+>  }
+>  
+>  static const TypeInfo fw_cfg_info = {
+> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+> index b5291eefad..457fee7425 100644
+> --- a/include/hw/nvram/fw_cfg.h
+> +++ b/include/hw/nvram/fw_cfg.h
+> @@ -53,6 +53,12 @@ struct FWCfgState {
+>      dma_addr_t dma_addr;
+>      AddressSpace *dma_as;
+>      MemoryRegion dma_iomem;
+> +
+> +    /* restore during migration */
+> +    bool acpi_mr_restore;
+> +    size_t table_mr_size;
+> +    size_t linker_mr_size;
+> +    size_t rsdp_mr_size;
+>  };
+>  
+>  struct FWCfgIoState {
+> 
 
-This also include few fixes to qemu in general which were
-discovered while adding nvdimm support to arm/virt.
+Makes sense to me, the RAM block migration code will migrate full pages.
+Only the sub-page size has to be migrated and reset.
 
-Patch #2 addresses the issue[2] that, during migration, the 
-source and destination might end up with an inconsistency
-in acpi table memory region sizes.
+Not an expert of the FW code etc, but the general idea sounds correct to me
 
-Patch #3 is to fix the qemu_ram_resize() callback issue[2].
-
-Patch #4 is another fix to the nvdimm aml issue discussed
-here[3].
-
-I have done a basic sanity testing of NVDIMM devices
-with Guest booting with ACPI. Further testing is always
-welcome.
-
-Please let me know your feedback.
-
-Thanks,
-Shameer
-
-[1] https://patchwork.kernel.org/cover/10830777/
-[2] https://patchwork.kernel.org/patch/11339591/
-[3] https://patchwork.kernel.org/cover/11174959/
-
-v2 --> v3
- - Added patch #1 and # 2 to fix the inconsistency in acpi
-   table memory region sizes during migration. Thanks to
-   David H.
- - The fix for qemu_ram_resize() callback was modified to
-   the one in patch #3. Again thanks to David H.
- - Addressed comments from MST and Eric on tests added.
- - Addressed comments from Igor/MST on Integer size in patch #4
- - Added Eric's R-by to patch #7.
-
-v1 --> v2
- -Reworked patch #1 and now fix is inside qemu_ram_resize().
- -Added patch #2 to fix the nvdim aml issue.
- -Dropped support to DT cold plug.
- -Updated test_acpi_virt_tcg_memhp() with pc-dimm and nvdimms(patch #7)
-
-David Hildenbrand (1):
-  exec: Fix for qemu_ram_resize() callback
-
-Kwangwoo Lee (2):
-  nvdimm: Use configurable ACPI IO base and size
-  hw/arm/virt: Add nvdimm hot-plug infrastructure
-
-Shameer Kolothum (7):
-  acpi: Use macro for table-loader file name
-  fw_cfg: Migrate ACPI table mr sizes separately
-  hw/acpi/nvdimm: Fix for NVDIMM incorrect DSM output buffer length
-  hw/arm/virt: Add nvdimm hotplug support
-  tests: Update ACPI tables list for upcoming arm/virt test changes
-  tests/bios-tables-test: Update arm/virt memhp test
-  tests/acpi: add expected tables for bios-tables-test
-
- docs/specs/acpi_hw_reduced_hotplug.rst |   1 +
- exec.c                                 |  14 +++-
- hw/acpi/generic_event_device.c         |  15 ++++-
- hw/acpi/nvdimm.c                       |  72 +++++++++++++++++----
- hw/arm/Kconfig                         |   1 +
- hw/arm/virt-acpi-build.c               |   8 ++-
- hw/arm/virt.c                          |  35 ++++++++--
- hw/core/machine.c                      |   1 +
- hw/i386/acpi-build.c                   |   8 ++-
- hw/i386/acpi-build.h                   |   3 +
- hw/i386/pc_piix.c                      |   2 +
- hw/i386/pc_q35.c                       |   2 +
- hw/mem/Kconfig                         |   2 +-
- hw/nvram/fw_cfg.c                      |  86 ++++++++++++++++++++++++-
- include/hw/acpi/aml-build.h            |   1 +
- include/hw/acpi/generic_event_device.h |   1 +
- include/hw/arm/virt.h                  |   1 +
- include/hw/mem/nvdimm.h                |   3 +
- include/hw/nvram/fw_cfg.h              |   6 ++
- tests/data/acpi/pc/SSDT.dimmpxm        | Bin 685 -> 734 bytes
- tests/data/acpi/q35/SSDT.dimmpxm       | Bin 685 -> 734 bytes
- tests/data/acpi/virt/DSDT.memhp        | Bin 6644 -> 6668 bytes
- tests/data/acpi/virt/NFIT.memhp        | Bin 0 -> 224 bytes
- tests/data/acpi/virt/SSDT.memhp        | Bin 0 -> 736 bytes
- tests/qtest/bios-tables-test.c         |   9 ++-
- 25 files changed, 244 insertions(+), 27 deletions(-)
- create mode 100644 tests/data/acpi/virt/NFIT.memhp
- create mode 100644 tests/data/acpi/virt/SSDT.memhp
+Acked-by: David Hildenbrand <david@redhat.com>
 
 -- 
-2.17.1
+Thanks,
 
+David / dhildenb
 

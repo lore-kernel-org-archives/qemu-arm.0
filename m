@@ -1,185 +1,213 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp634892lfc;
-        Wed, 11 Mar 2020 04:19:54 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt1QK+S6tfKVbPLt/7ySnB8f6zsjz3G7BA3mZTj1m5sXeTfzBy1eO9ZaCU7EyPxgQ0NM2c5
-X-Received: by 2002:a37:b042:: with SMTP id z63mr2217505qke.269.1583925594082;
-        Wed, 11 Mar 2020 04:19:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583925594; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp672976lfc;
+        Wed, 11 Mar 2020 04:59:22 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvtzCbCoju4LY+icOYJIhTCNw0K/3A1gkYXpFwPV4yn7JhuEK4s/e4eICrkY87Zu2wc4iik
+X-Received: by 2002:aca:7517:: with SMTP id q23mr1662222oic.23.1583927962340;
+        Wed, 11 Mar 2020 04:59:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583927962; cv=none;
         d=google.com; s=arc-20160816;
-        b=hzLR6TpzlRYdFZDCBPEhyMc800WesVLVJZ7qGHzw7/E3ncid+ThtU20qya/9df8kHV
-         rsVoYBwrTJvSTMXf5hfCWIrc4fBlMyooAMw2WvwBPJzMrTFV73Z0orZqPwaoVyjGb1FN
-         NVWQlL15uSl5aYxmSZTbZU/mZBpKGUXDtmISfXQPLSDDAH4ILF/ei82pitM56J/5BoxW
-         59/L6e+UsJZyfpdGHOAxm/9X3Wth1WAdbWuK1oYvFJHGxA/yGF7l0vvAI2lhGzizoYTA
-         RWc8P8GKuSQCUMG/CGlGa+8PI5cGPPUneWfCSFKI5LvIFdR5TYyoGW9VW2NJVihUl579
-         +0lw==
+        b=e/qZzdRAHuwGpqrYXKjyy/vl+tNYa4FD/PLYnsxbPexUoLfsQBhXqMH+BcX5mVCT63
+         aJZksQgHhds7mCbxdkDaaFv8EZawf1EQzNqJDzloM5Ikl6Yay271W9m4FSBEX8Sh+5Yx
+         PbV3/00Sikrwihpay6lCP1IIay3SEey8/fAAJj/9stI+UUOMyVmif0ddVl/WkGLWdR6p
+         JhEYkBUnP3iOL06CbC06JaqfluzBXikOHO8Wk4eU8mSJvRAGAedMhKDYRaB8U06dWA8G
+         HQCBEtx1LAmO2EFyVOKROo5AgqV5hbq9V7DS9yM8EmYpqiGa3K5dm/jZse4o9Cf1k5oN
+         roGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=wzbTyy338OK9x1tC0UjkMEAOnkQjAtfB2xgpd8yYspE=;
-        b=tA7IkUzT0FfRoIqjcTi3jzN1KgvE6dbB/brFKxX7qw+gcSvVHIdg9gFD4xeGhlNaoP
-         gFklavo7z4I0AjtYiSzms3hdfz83FxUjqYlmBAPMR+1N55dcNoKudQC+c+VKJl9AMbxI
-         BpEkNStuBH0UOdZkKISHkpHwBLaXRSOXUQA5Fjfql3aQTOM6PfvQRdfx0GQqJIi/i5yv
-         yntMkFdWjZhxqeY6GPmzO2rpInoMYWmtno0+FHWEa7KWgOgje7sK4XD/92NvHfuKyDLL
-         Xxf+l6gLV14Ivqbvje1VDeX5c6Vn1HzrfdCO8gOCPAFOVJq8tYJtvBNnleZTlGL+oFSc
-         YOgQ==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=skqnU0HrVHx4Io0wUTb3hHHWGTX34t50BW7Blacgphw=;
+        b=eE69/M7go/D/n5Rtc5uXcJZ2YdvrOgP5C1jKNaZwO7qUUKDYGLAF5KI6ex3wcr9T1Q
+         SHRTCOHxTt1kV5gEcgiQHTqRQbONuCjmjtlAd9En7vePwBqCRemzGjp+Ze6VtJu5blES
+         1ab+PupwiCLsJaNp+jgTJACALMIe5/eTDZYrVy1cypWUPfGWnpir9ZQfytaLTNalqe6m
+         S1eUSPmcQDC5URK85zCw4zmt/fJrRwPKC7BZ36AvaNrPjkLheq2NOIaAnleciS5Edqmr
+         /N06NtqVKvi0Fooz6AqMtueZNjAoe6e4kQTtbkfzQrGTCnfOj2xjv9wm53KjCVVZznfj
+         LuIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="KRA5/ySy";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a25si789706qtw.111.2020.03.11.04.19.53
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Mar 2020 04:19:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id a6si969463oia.33.2020.03.11.04.59.22;
+        Wed, 11 Mar 2020 04:59:22 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="KRA5/ySy";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49784 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBzOz-0006j5-IF
-	for alex.bennee@linaro.org; Wed, 11 Mar 2020 07:19:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55687)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1jBzMH-00022z-0w
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 07:17:06 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1jBzMF-0000iD-Q1
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 07:17:04 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:50982
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1jBzMF-0000he-MM
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 07:17:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583925423;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wzbTyy338OK9x1tC0UjkMEAOnkQjAtfB2xgpd8yYspE=;
- b=KRA5/ySyjgeCvjnAENiv/QlCvhTviH+3neC8oza8gTlDixCY8kBhQ/x2KW+3HZJpYao7gE
- P3Ojf1utDoPZPkO35QaFL5SUHa2wEdSs+KjqLG6ApofLyuDZN66UMlIe/3QxNz/2xf3cLf
- I01rgVgFUPv1kk9HJpNrYKub7PUfhB0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-436-tPb6PKEVPIaaCF9Ku1jpsw-1; Wed, 11 Mar 2020 07:17:01 -0400
-X-MC-Unique: tPb6PKEVPIaaCF9Ku1jpsw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 88EAC107ACC4;
- Wed, 11 Mar 2020 11:17:00 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.36.118.12])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8A86A91D91;
- Wed, 11 Mar 2020 11:16:57 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org
-Subject: [PATCH v4 6/6] hw/arm/virt: kvm: allow gicv3 by default if v2 cannot
- work
-Date: Wed, 11 Mar 2020 12:16:26 +0100
-Message-Id: <20200311111626.5705-7-eric.auger@redhat.com>
-In-Reply-To: <20200311111626.5705-1-eric.auger@redhat.com>
-References: <20200311111626.5705-1-eric.auger@redhat.com>
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1729237AbgCKL7T (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Wed, 11 Mar 2020 07:59:19 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:11662 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1729057AbgCKL7T (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 11 Mar 2020 07:59:19 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
+        by Forcepoint Email with ESMTP id 84AEF31DAF8532D5D5B4;
+        Wed, 11 Mar 2020 19:59:14 +0800 (CST)
+Received: from [127.0.0.1] (10.173.222.27) by DGGEMS406-HUB.china.huawei.com
+ (10.3.19.206) with Microsoft SMTP Server id 14.3.487.0; Wed, 11 Mar 2020
+ 19:59:07 +0800
+Subject: Re: [kvm-unit-tests PATCH v5 10/13] arm/arm64: ITS: INT functional
+ tests
+To:     Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
+        <maz@kernel.org>, <kvmarm@lists.cs.columbia.edu>,
+        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>
+CC:     <drjones@redhat.com>, <andre.przywara@arm.com>,
+        <peter.maydell@linaro.org>, <alexandru.elisei@arm.com>,
+        <thuth@redhat.com>
+References: <20200310145410.26308-1-eric.auger@redhat.com>
+ <20200310145410.26308-11-eric.auger@redhat.com>
+From:   Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <d3f651a0-2344-4d6e-111b-be133db7e068@huawei.com>
+Date:   Wed, 11 Mar 2020 19:59:05 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: maz@kernel.org, drjones@redhat.com, richard.henderson@linaro.org,
- philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PBmONwo+Mo25
+In-Reply-To: <20200310145410.26308-11-eric.auger@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.173.222.27]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: O25ghcF2jS7m
 
-At the moment if the end-user does not specify the gic-version along
-with KVM acceleration, v2 is set by default. However most of the
-systems now have GICv3 and sometimes they do not support GICv2
-compatibility.
+Hi Eric,
 
-This patch keeps the default v2 selection in all cases except
-in the KVM accelerated mode when either
-- the host does not support GICv2 in-kernel emulation or
-- number of VCPUS exceeds 8.
+On 2020/3/10 22:54, Eric Auger wrote:
+> Triggers LPIs through the INT command.
+> 
+> the test checks the LPI hits the right CPU and triggers
+> the right LPI intid, ie. the translation is correct.
+> 
+> Updates to the config table also are tested, along with inv
+> and invall commands.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> 
+> ---
 
-Those cases did not work anyway so we do not break any compatibility.
-Now we get v3 selected in such a case.
+[...]
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reported-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> +static void test_its_trigger(void)
+> +{
+> +	struct its_collection *col3, *col2;
+> +	struct its_device *dev2, *dev7;
+> +
+> +	if (its_prerequisites(4))
+> +		return;
+> +
+> +	dev2 = its_create_device(2 /* dev id */, 8 /* nb_ites */);
+> +	dev7 = its_create_device(7 /* dev id */, 8 /* nb_ites */);
+> +
+> +	col3 = its_create_collection(3 /* col id */, 3/* target PE */);
+> +	col2 = its_create_collection(2 /* col id */, 2/* target PE */);
+> +
+> +	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
+> +	gicv3_lpi_set_config(8196, LPI_PROP_DEFAULT);
+> +
+> +	its_send_invall(col2);
+> +	its_send_invall(col3);
 
----
+These two INVALLs should be issued after col2 and col3 are mapped,
+otherwise this will cause the INVALL command error as per the spec
+(though KVM doesn't complain it at all).
 
-v3 -> v4:
-- Deal with the case where v3 is not supported by the host and
-  the number of vcpus exceeds 8
+> +
+> +	report_prefix_push("int");
+> +	/*
+> +	 * dev=2, eventid=20  -> lpi= 8195, col=3
+> +	 * dev=7, eventid=255 -> lpi= 8196, col=2
+> +	 * Trigger dev2, eventid=20 and dev7, eventid=255
+> +	 * Check both LPIs hit
+> +	 */
+> +
+> +	its_send_mapd(dev2, true);
+> +	its_send_mapd(dev7, true);
+> +
+> +	its_send_mapc(col3, true);
+> +	its_send_mapc(col2, true);
+> +
+> +	its_send_mapti(dev2, 8195 /* lpi id */, 20 /* event id */, col3);
+> +	its_send_mapti(dev7, 8196 /* lpi id */, 255 /* event id */, col2);
+> +
+> +	lpi_stats_expect(3, 8195);
+> +	its_send_int(dev2, 20);
+> +	check_lpi_stats("dev=2, eventid=20  -> lpi= 8195, col=3");
+> +
+> +	lpi_stats_expect(2, 8196);
+> +	its_send_int(dev7, 255);
+> +	check_lpi_stats("dev=7, eventid=255 -> lpi= 8196, col=2");
+> +
+> +	report_prefix_pop();
+> +
+> +	report_prefix_push("inv/invall");
+> +
+> +	/*
+> +	 * disable 8195, check dev2/eventid=20 does not trigger the
+> +	 * corresponding LPI
+> +	 */
+> +	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT & ~LPI_PROP_ENABLED);
+> +	its_send_inv(dev2, 20);
+> +
+> +	lpi_stats_expect(-1, -1);
+> +	its_send_int(dev2, 20);
+> +	check_lpi_stats("dev2/eventid=20 does not trigger any LPI");
+> +
+> +	/*
+> +	 * re-enable the LPI but willingly do not call invall
+> +	 * so the change in config is not taken into account.
+> +	 * The LPI should not hit
+> +	 */
+> +	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
+> +	lpi_stats_expect(-1, -1);
+> +	its_send_int(dev2, 20);
+> +	check_lpi_stats("dev2/eventid=20 still does not trigger any LPI");
+> +
+> +	/* Now call the invall and check the LPI hits */
+> +	its_send_invall(col3);
+> +	lpi_stats_expect(3, 8195);
+> +	its_send_int(dev2, 20);
+> +	check_lpi_stats("dev2/eventid=20 now triggers an LPI");
+> +
+> +	report_prefix_pop();
+> +
+> +	report_prefix_push("mapd valid=false");
+> +	/*
+> +	 * Unmap device 2 and check the eventid 20 formerly
+> +	 * attached to it does not hit anymore
+> +	 */
+> +
+> +	its_send_mapd(dev2, false);
+> +	lpi_stats_expect(-1, -1);
+> +	its_send_int(dev2, 20);
+> +	check_lpi_stats("no LPI after device unmap");
+> +	report_prefix_pop();
+> +
+> +	/* Unmap the collection this time and check no LPI does hit */
+> +	report_prefix_push("mapc valid=false");
+> +	its_send_mapc(col2, false);
 
-v2 -> v3:
-- add ()
----
- hw/arm/virt.c | 17 ++++++++++++++++-
- 1 file changed, 16 insertions(+), 1 deletion(-)
+And as for the MAPC, the spec says:
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index f5ff2d9006..6becf9aaae 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1543,6 +1543,8 @@ static void virt_set_memmap(VirtMachineState *vms)
-  */
- static void finalize_gic_version(VirtMachineState *vms)
- {
-+    unsigned int max_cpus =3D MACHINE(vms)->smp.max_cpus;
-+
-     if (kvm_enabled()) {
-         int probe_bitmap;
-=20
-@@ -1583,7 +1585,20 @@ static void finalize_gic_version(VirtMachineState *v=
-ms)
-             }
-             return;
-         case VIRT_GIC_VERSION_NOSEL:
--            vms->gic_version =3D VIRT_GIC_VERSION_2;
-+            if ((probe_bitmap & KVM_ARM_VGIC_V2) && max_cpus <=3D GIC_NCPU=
-) {
-+                vms->gic_version =3D VIRT_GIC_VERSION_2;
-+            } else if (probe_bitmap & KVM_ARM_VGIC_V3) {
-+                /*
-+                 * in case the host does not support v2 in-kernel emulatio=
-n or
-+                 * the end-user requested more than 8 VCPUs we now default
-+                 * to v3. In any case defaulting to v2 would be broken.
-+                 */
-+                vms->gic_version =3D VIRT_GIC_VERSION_3;
-+            } else {
-+                error_report("host only supports in-kernel GICv2 emulation=
- "
-+                             "but more than 8 vcpus are requested");
-+                exit(1);
-+            }
-             break;
-         case VIRT_GIC_VERSION_2:
-         case VIRT_GIC_VERSION_3:
---=20
-2.20.1
+" When V is 0:
+Behavior is unpredictable if there are interrupts that are mapped to the
+specified collection, with the restriction that further translation
+requests from that device are ignored. "
 
+So this collection-unmap test may not make sense?
+
+> +	lpi_stats_expect(-1, -1);
+> +	its_send_int(dev7, 255);
+> +	check_lpi_stats("no LPI after collection unmap");
+> +	report_prefix_pop();
+> +}
+
+[...]
+
+Otherwise looks good.
+
+
+Thanks,
+Zenghui

@@ -1,188 +1,134 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1087667lfc;
-        Thu, 12 Mar 2020 12:42:50 -0700 (PDT)
-X-Received: by 2002:a63:c550:: with SMTP id g16mr9638302pgd.9.1584042170034;
-        Thu, 12 Mar 2020 12:42:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584042170; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1087695lfc;
+        Thu, 12 Mar 2020 12:42:51 -0700 (PDT)
+X-Received: by 2002:a17:902:6a88:: with SMTP id n8mr9293217plk.265.1584042171289;
+        Thu, 12 Mar 2020 12:42:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584042171; cv=none;
         d=google.com; s=arc-20160816;
-        b=nX40ti8nMMkneIbGSgoG975siwrV8uOb9Ln6OVS+qQ7J7au6fDyZcFlf4JvyIn/YhN
-         OTGpinRJsfl2lMEZlYRNFbLBaksLEjMu8effCU8xDufgnTVqy6/fipQzxhBJbxjdBZde
-         7p1dSgwc7wJQLZU/YslqGJqfyQFAfNlOT1qo2kHMxSFI0BpD1uDLAlEZtd3z8DGTW4DW
-         YFq0w+wZszR7PshAHSOUuHJAzlWB0XMAT++F13BtK8b3dDSoPEQkuL5MfBQ0fMuu8MBl
-         dVNctzxF5s0J02eyTbYvRAKhIkVI66SzVvbaKSFKTuREG6Tdfpxtjcm4dgwvRQhVJVbp
-         ssxg==
+        b=0xCu7Zszk7SnqOUPKiLpBJ58+O8FAPFcYTXSDGkC3DX0rfu81b3vnieKScP2kdtYyF
+         ofijaQ6uiVlWtFUzE7bMEyU+a2JoFMMocEHnzbfShReyTuaQYALIW+lDsMahbcbLyGG1
+         8rA8zEPyMTIiJ7ixaqvmbOWHW3khGSnvEdlY56s+Rk1uGWfqN1qqTFXIq+8Zoxri+IW1
+         51I5qJSAGk4MB6YBdF55rLp1nm4FArBNNy8mYHcpye7cv1zbdGJSyy3zobFakDRI+jl+
+         OwKiWh03f2hdbwmp66SBbvUEmGAVrKlnTkylikPaQ+tffbCUMbQRSHT8SvZrDU2cBCZr
+         OEJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=KKlja8O+mQ8iXiIKMzNB9d94+lPcoNwMRA3J2mjKmq8=;
-        b=vkPVI+Rtfoa+4f3Uto/33bNppeBRQe39rw75oL4IZuk5NrBTP7y+M48tl2O594VyT4
-         lxIJ5cm3r/IARQ9QmBsChTRwytngWVKsgak4/ejNyh/uvcdbLmMCPDQIeUAxJWj464WJ
-         Nh2eyZJQ8mveRZTXdPsoyXS/949lcsZjbmOS7iZtnSJ5hYU298k2iJiNTz8bz+/V/don
-         kKFIabcOBFtOE01iLMC59yECMCIA4YvNTyo1dmaD9EocfDmvuA1RcgT4sa/5Fmdj+ssd
-         4xivGM3aKnkFpiuDih7/UcmmdS0SUVWncCfK7k18kayiWVcjvAlSCN9XP9V2IrsCVgHU
-         490w==
+        bh=Kqb/ekSCjd3NGP5caJeLUqYBI+D5wVD+00pKBar9ftg=;
+        b=UK/9kOlEMTBE9zlIYKzJh64tlDV9qxRPLpFzZDiUibbhVcARhiFIVJUQeVysyKb9qu
+         7TBOqloy1DkJMjW5NM+zt6BtCpmAYsZJ4Zt2oKK89ZWOwjG8aR3sEUg5cuoNvHG17wxb
+         YMmy68oPzG8taTc7CRQxdXtVY3H/xvIb4HQU9jo+r5EIre+82uKLfoI32IFnWj2zOTU2
+         +yKFo2d3j/+vgpwDnUNpsRE8BHFZk1U6oL/ExSKY6XeD+5Shy7oloCbq4iNL1Adin3xR
+         /8WjV6t3+4cNvhqY6JY/9zMAHvPTM6A4nUJlnBsiWa+c6p40Yb1l2bEL6Oi7QIT3AHxH
+         lJhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wYhN8mA6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zyEfpJzC;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id gc8sor6812377pjb.3.2020.03.12.12.42.49
+        by mx.google.com with SMTPS id gx22sor6817552pjb.9.2020.03.12.12.42.51
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 12 Mar 2020 12:42:50 -0700 (PDT)
+        Thu, 12 Mar 2020 12:42:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wYhN8mA6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zyEfpJzC;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=KKlja8O+mQ8iXiIKMzNB9d94+lPcoNwMRA3J2mjKmq8=;
-        b=wYhN8mA6uSPm/Tx4/2l4L5fu4AxfqE+D69Qh2Mv9sNEgcEPsjyvSVG7yT4lP3WoeqS
-         lIPWEZi5xhy+6/NtpLZ82XQocewuKlNS93sBMktampoMCIfv2XEHmeusiVpowLEi9l8e
-         xScvoOeYkM7xU3yBTNJnrBdcTlBJ4nCoTrMcSe0S72GesaHL71yeELFRDODhqDR5v4y5
-         qQ3wVOZH57QeVzzR0mLHGUxs5JLlM1F0rcY7VOeUiftZuS9PdCmxxQe19fQrxea1nQc2
-         3GoTibt0QglDQMcWrbgJrVAINinOpL7N+pflPQSrfv2WevPKI+RkW7TQ+t0tgTjAsSWY
-         y/CQ==
+        bh=Kqb/ekSCjd3NGP5caJeLUqYBI+D5wVD+00pKBar9ftg=;
+        b=zyEfpJzC8n0DGsJTLkFv4XBCHbl7Zo7VXBxw7FUjt7ig0XTgV0zZJtXk/twPg74NT5
+         5cEvY/xbiDelwu4lgRDkdNvKtFBaO1ugk8iATZP0zKWiaFl7pCE337961lxalS6EfH0Q
+         Z+q0Y8pfDuxPPwWXnOfVUsZujR8MTSUxnLoKpXiTXWKelldFLDB7aHHBTd6yKwHuqvth
+         dB0qmlW1cOJ+jO2FI4zfFEOx+cLiZx/P5YQ/4KqM8WyD0i+yA61iHlUE1oNLtXsPCUlL
+         M27efZ9wMZmM9ysa71WhsKYa4SOe0nDnXCKbrPfLLiCzl2Kk4JIwhv0xgg5HCebs+oyZ
+         Zhkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=KKlja8O+mQ8iXiIKMzNB9d94+lPcoNwMRA3J2mjKmq8=;
-        b=Rdj9C7BKgf1hlmF7ODFZHSLpwtl60mBa38yNOZXt3NZDm3DLP2XoV/LCUopl3mxJSg
-         f9I8JAfhh+tBOJtEgQ74/elX+W2M2uaKmnOICaDR1igNQNjd17JwdIOD8Kk1tLFDLvpC
-         8aRzYmQfrYB7yk5eAZjeRC1i8U878zVa3+07J3GespKfGRKv/e+XP6zqJRdlV1qFRT/J
-         0lGe4/VfwXTH97EGmJArW6i6qCGSeFYBMnCTQqYAkwZHPBLCss7CmvABrMovlLlkqsWQ
-         xN8RDvYG9C7Scp3AC0UbTp27oAuKiVNHb6e90rhJPSMr6W/ILGkwGSiMCZ/La1DyBda9
-         8uog==
-X-Gm-Message-State: ANhLgQ10m+siFpPptwaiYbrGKYfLqZPwDpAD6bTO/rr/8C6hIXoOWThC
-	mKr46O4J8r0Ocj8jP8LsGTNdQznr
-X-Google-Smtp-Source: ADFU+vs6zUp6jh3jMdvmlgJr5UGtJgbToN8tyNH1VixeWHlIFRPisZjfbENGdKrsHyZFU5xeh4WrBw==
-X-Received: by 2002:a17:90a:7348:: with SMTP id j8mr4584415pjs.63.1584042169514;
-        Thu, 12 Mar 2020 12:42:49 -0700 (PDT)
+        bh=Kqb/ekSCjd3NGP5caJeLUqYBI+D5wVD+00pKBar9ftg=;
+        b=h5FeckJ8SANsx+iCVFsno0TgHBYRobm+PYWS5czEEzmsKJJFmmdQVBnuxLnWCNt7My
+         r4lgq4RLsuIDN12B5+CLZp6csLVu/KFLDDFYBFFCrw18yPTmdacmeNAQhEQMry7GQ/cn
+         R5GGZqyZ04he9CX2eGmXsaroqWspTNhqJxOKVxYe87NWRI0k/MU1ruG2/r0/0IqXT3lc
+         yQOdXwMDYOCG6cRVkZazh3DqKxGCB7JBkuoYl4fCtOgsyTtLZL9cY4tphCkiKCD3AIIX
+         nhY16Ydq0NGt37v8+xEC9+N8dLLm/Z/eHKk5bOWy//PZprXvgUqlvQDdPGkRrvPBkz/Z
+         gJuw==
+X-Gm-Message-State: ANhLgQ1MsklIzHM0+nwQRrz5EgbD6DQTUa/9vEODmU6SM1jibThpo4DK
+	+ovwvUozG/cAIYVPMITUiLKa6k2VhJKFAg==
+X-Google-Smtp-Source: ADFU+vtrnEhf0fLWU8QylZUW37j6GCE4vArUjqWs9aYbiiagDuVpeKYPlSQzx9kFmEanihj93RcDgw==
+X-Received: by 2002:a17:902:7794:: with SMTP id o20mr9505928pll.312.1584042170835;
+        Thu, 12 Mar 2020 12:42:50 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net. [97.126.123.70])
-        by smtp.gmail.com with ESMTPSA id g69sm6824842pje.34.2020.03.12.12.42.48
+        by smtp.gmail.com with ESMTPSA id g69sm6824842pje.34.2020.03.12.12.42.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Mar 2020 12:42:48 -0700 (PDT)
+        Thu, 12 Mar 2020 12:42:50 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v6 21/42] target/arm: Move regime_el to internals.h
-Date: Thu, 12 Mar 2020 12:41:58 -0700
-Message-Id: <20200312194219.24406-22-richard.henderson@linaro.org>
+Subject: [PATCH v6 22/42] target/arm: Move regime_tcr to internals.h
+Date: Thu, 12 Mar 2020 12:41:59 -0700
+Message-Id: <20200312194219.24406-23-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200312194219.24406-1-richard.henderson@linaro.org>
 References: <20200312194219.24406-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: PLcTCiRzZd4o
+X-TUID: 0GWEchyIVTCd
 
 We will shortly need this in mte_helper.c as well.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h | 36 ++++++++++++++++++++++++++++++++++++
- target/arm/helper.c    | 36 ------------------------------------
- 2 files changed, 36 insertions(+), 36 deletions(-)
+ target/arm/internals.h | 9 +++++++++
+ target/arm/helper.c    | 9 ---------
+ 2 files changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 3190fc40fc..f091891312 100644
+index f091891312..56fb07f2b6 100644
 --- a/target/arm/internals.h
 +++ b/target/arm/internals.h
-@@ -912,6 +912,42 @@ static inline bool regime_is_pan(CPUARMState *env, ARMMMUIdx mmu_idx)
+@@ -948,6 +948,15 @@ static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
      }
  }
  
-+/* Return the exception level which controls this address translation regime */
-+static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
++/* Return the TCR controlling this translation regime */
++static inline TCR *regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
 +{
-+    switch (mmu_idx) {
-+    case ARMMMUIdx_E20_0:
-+    case ARMMMUIdx_E20_2:
-+    case ARMMMUIdx_E20_2_PAN:
-+    case ARMMMUIdx_Stage2:
-+    case ARMMMUIdx_E2:
-+        return 2;
-+    case ARMMMUIdx_SE3:
-+        return 3;
-+    case ARMMMUIdx_SE10_0:
-+        return arm_el_is_aa64(env, 3) ? 1 : 3;
-+    case ARMMMUIdx_SE10_1:
-+    case ARMMMUIdx_SE10_1_PAN:
-+    case ARMMMUIdx_Stage1_E0:
-+    case ARMMMUIdx_Stage1_E1:
-+    case ARMMMUIdx_Stage1_E1_PAN:
-+    case ARMMMUIdx_E10_0:
-+    case ARMMMUIdx_E10_1:
-+    case ARMMMUIdx_E10_1_PAN:
-+    case ARMMMUIdx_MPrivNegPri:
-+    case ARMMMUIdx_MUserNegPri:
-+    case ARMMMUIdx_MPriv:
-+    case ARMMMUIdx_MUser:
-+    case ARMMMUIdx_MSPrivNegPri:
-+    case ARMMMUIdx_MSUserNegPri:
-+    case ARMMMUIdx_MSPriv:
-+    case ARMMMUIdx_MSUser:
-+        return 1;
-+    default:
-+        g_assert_not_reached();
++    if (mmu_idx == ARMMMUIdx_Stage2) {
++        return &env->cp15.vtcr_el2;
 +    }
++    return &env->cp15.tcr_el[regime_el(env, mmu_idx)];
 +}
 +
  /* Return the FSR value for a debug exception (watchpoint, hardware
   * breakpoint or BKPT insn) targeting the specified exception level.
   */
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index f9daeec1f4..2a50d4e9a2 100644
+index 2a50d4e9a2..e4b4366af7 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -9753,42 +9753,6 @@ void arm_cpu_do_interrupt(CPUState *cs)
- }
+@@ -9835,15 +9835,6 @@ static inline uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx,
+ 
  #endif /* !CONFIG_USER_ONLY */
  
--/* Return the exception level which controls this address translation regime */
--static uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
+-/* Return the TCR controlling this translation regime */
+-static inline TCR *regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
 -{
--    switch (mmu_idx) {
--    case ARMMMUIdx_E20_0:
--    case ARMMMUIdx_E20_2:
--    case ARMMMUIdx_E20_2_PAN:
--    case ARMMMUIdx_Stage2:
--    case ARMMMUIdx_E2:
--        return 2;
--    case ARMMMUIdx_SE3:
--        return 3;
--    case ARMMMUIdx_SE10_0:
--        return arm_el_is_aa64(env, 3) ? 1 : 3;
--    case ARMMMUIdx_SE10_1:
--    case ARMMMUIdx_SE10_1_PAN:
--    case ARMMMUIdx_Stage1_E0:
--    case ARMMMUIdx_Stage1_E1:
--    case ARMMMUIdx_Stage1_E1_PAN:
--    case ARMMMUIdx_E10_0:
--    case ARMMMUIdx_E10_1:
--    case ARMMMUIdx_E10_1_PAN:
--    case ARMMMUIdx_MPrivNegPri:
--    case ARMMMUIdx_MUserNegPri:
--    case ARMMMUIdx_MPriv:
--    case ARMMMUIdx_MUser:
--    case ARMMMUIdx_MSPrivNegPri:
--    case ARMMMUIdx_MSUserNegPri:
--    case ARMMMUIdx_MSPriv:
--    case ARMMMUIdx_MSUser:
--        return 1;
--    default:
--        g_assert_not_reached();
+-    if (mmu_idx == ARMMMUIdx_Stage2) {
+-        return &env->cp15.vtcr_el2;
 -    }
+-    return &env->cp15.tcr_el[regime_el(env, mmu_idx)];
 -}
 -
- uint64_t arm_sctlr(CPUARMState *env, int el)
- {
-     /* Only EL0 needs to be adjusted for EL1&0 or EL2&0. */
+ /* Convert a possible stage1+2 MMU index into the appropriate
+  * stage 1 MMU index
+  */
 -- 
 2.20.1

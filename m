@@ -1,316 +1,146 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp800116lfc;
-        Thu, 12 Mar 2020 08:44:58 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtR49gizh/VGblSBFUKNegsNTzKH5o2Wf5QWwaiVqG1e4HCF8u1VUbZYpGQuP6Zd9zy9hZL
-X-Received: by 2002:aca:49d8:: with SMTP id w207mr2806204oia.85.1584027898146;
-        Thu, 12 Mar 2020 08:44:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584027898; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp827002lfc;
+        Thu, 12 Mar 2020 09:08:59 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvzimE8hDgg1Pk6ezKfBtRjvJXOM7l3NUeuZ8AX9vNtKzkBXb9SP5ZnFZtIEk1ITTbUPU2+
+X-Received: by 2002:a37:4b0c:: with SMTP id y12mr8672176qka.268.1584029338836;
+        Thu, 12 Mar 2020 09:08:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584029338; cv=none;
         d=google.com; s=arc-20160816;
-        b=TgxarNyMKYEOIOpZsRSSJDJLAWFSNvP5NQ64VLUPO5kRZBDG7PpQskDUpVr6s3XSlo
-         HAIoU2wOVHfc6EWSHjilJgWY9bszH1PqcB7V3th+R9y0/qBvnMVMQkR8mfjgr1VZYR0T
-         9GldTLvvpEOOhmHk/4sbI2BIbIvHNuJSetKWTe177jGtyHSBfOoAhLseDdZseaVQKwJo
-         ngHc56KdvuSDeYDU/O068pBVMWTQqlEuHwdWEI4XiK2OGUvvSohpE4pyyeKeCIUNVOS9
-         /4ifMWrywu/7rTkEmulSfWWj/FYRZdzfe3yM9FrWqpbEm9ngtrSkSw1YYbW/z6Zun/90
-         pMFg==
+        b=M4ZJttkTUEIN7P93A36nNeOHYgoIIV47TG3e6m8TobaHHwDpzHVx88hT45JAfbfgPD
+         u5Z7Mm9PmRFpE7cKxWV9N403ToDtYLmgttkp4y88V8QvYgiH02I6gtbMpwATrU2VwNrt
+         z08D++DYgY2zqTZ6u8fhEyulcLRtzmYw0/DBxgg+e9EENqYPtqmtx45FAc3pKLEM1HV7
+         URXrdR5S0KPd+DtpPRItCGd7HcJU4t3Yfs8yc3CpUJADPef0XjDOrGpy6GogAF7UJWd6
+         OJtkqiT02ymJf86IMVR76gHS9aJUOrLW8d9pTQ0XDjWamClorlbQOyLHPGb8A2Ki5EWU
+         3Jcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=JKpqkyg24HBYZMYaHdI/WtnrKZbcyivTfzakH3GMn20=;
-        b=Mb2EtaucCt95+Bw7l6w47ZWkDkum8vxUyo81bBpuoHOUtfD6s9HaOI8Fy9HPTgDNX5
-         2qhsboLgWPdoHjpf1lJ7U8WgVxLQHeC1zM+Onx/Sl6v/te9hOjde4G9dtoMfvaKUU92O
-         r3/0VX+mmx6YUHMd5r6TGRdRQ3zBflxCgS6PHFiqgPhFlCtazPXFuLK1CnS/mmm/QSZu
-         Y0vUqKCR1sggZDdlJ+9Ax4sjxot8zZiwd5Lmnqg+j9e6b++9MkThW77QNSACGNIwDJ+s
-         yBkPCDrFDJoEq6f9P7fR/Z+bMh9PYrl8SLXHv6t6dBLbGaLPVaxRLn38Cae7Mhavnf11
-         MOPw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=CfOlm33yq7HPm3H++4bpQOCqAWPyMg4tSknKyEUmJYs=;
+        b=zhHibVK7f2YTcvsMqMKWX250vWPPn5c5+KuYqtTTbWuPnvrKFVSPsAbRwMgkgM8WE4
+         LZ+WeNWlM3CEKOiHvzr4dScuZuM+ZL9jpoQUK5SG8G5zOM4nhW7NLDFy//XD9xUNZEtF
+         Jmvzmbrv4Ha+/0mK2tH8A2m+eC7oXgX2XHDMX+99xTGGYn4e9oMKVrUjtfA8Uy+ndlEU
+         YonhEbOpFog/K5wUVD5tkUjp/0bTfXttONBY2uA0eCe+iGsgpBOgfWDoxH816cBV69RN
+         4RGIEmItgYk7zLRRfYF8YB+EVg0aKM03d1tBhH015eEx/UuSI+OkB2VbHhYuxNTCMiGC
+         KxEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SS5zSKk4;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id c21si2835424oto.137.2020.03.12.08.44.57;
-        Thu, 12 Mar 2020 08:44:58 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b=vNFfwPbx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id l19si2933707qvy.194.2020.03.12.09.08.58
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 12 Mar 2020 09:08:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SS5zSKk4;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727860AbgCLPo5 (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 12 Mar 2020 11:44:57 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:58061 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1727841AbgCLPo5 (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Thu, 12 Mar 2020 11:44:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1584027895;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=JKpqkyg24HBYZMYaHdI/WtnrKZbcyivTfzakH3GMn20=;
-        b=SS5zSKk4vgwgIKzbQ7y2OYrvl/ve5v5FOUaCln/BNtFTRlFVjbAzc5bhAX1jleX66sR6VV
-        Z+F8p9p1hgcNch3woC0tRE97/lfCbbyvUWBgDChPIJ558EDOWC0/BfJn7/DBW6EGg5Ax9v
-        Gf1WWIMNuSxs7HboqfIJ1X5Oyw5gPlw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-227-UFJlH_GWPHSbdtbRDWfAXg-1; Thu, 12 Mar 2020 11:44:53 -0400
-X-MC-Unique: UFJlH_GWPHSbdtbRDWfAXg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E24618018CB;
-        Thu, 12 Mar 2020 15:44:51 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.36.118.12])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 2C3C35C1B5;
-        Thu, 12 Mar 2020 15:44:46 +0000 (UTC)
-From:   Eric Auger <eric.auger@redhat.com>
-To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc:     drjones@redhat.com, andrew.murray@arm.com, andre.przywara@arm.com,
-        peter.maydell@linaro.org, alexandru.elisei@arm.com
-Subject: [kvm-unit-tests PATCH v3 12/12] arm: pmu: Test overflow interrupts
-Date:   Thu, 12 Mar 2020 16:43:01 +0100
-Message-Id: <20200312154301.9130-13-eric.auger@redhat.com>
-In-Reply-To: <20200312154301.9130-1-eric.auger@redhat.com>
-References: <20200312154301.9130-1-eric.auger@redhat.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=vNFfwPbx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44444 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jCQOH-000652-Vm
+	for alex.bennee@linaro.org; Thu, 12 Mar 2020 12:08:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54769)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <richard.henderson@linaro.org>) id 1jCQNA-00035W-7K
+ for qemu-devel@nongnu.org; Thu, 12 Mar 2020 12:07:49 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <richard.henderson@linaro.org>) id 1jCQN9-0003je-3n
+ for qemu-devel@nongnu.org; Thu, 12 Mar 2020 12:07:48 -0400
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:51999)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1jCQN8-0003gF-S3
+ for qemu-devel@nongnu.org; Thu, 12 Mar 2020 12:07:47 -0400
+Received: by mail-pj1-x1041.google.com with SMTP id y7so2740567pjn.1
+ for <qemu-devel@nongnu.org>; Thu, 12 Mar 2020 09:07:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=CfOlm33yq7HPm3H++4bpQOCqAWPyMg4tSknKyEUmJYs=;
+ b=vNFfwPbxrxQAQRsMxb3Z+Rdpru2vPF9ds/jjHlbJ6BxRxFxfjoUFXX8bPHJ+F9Rmuf
+ qA4G5N+OjIdIJ7Q9hFx/swwbx30/Ta5WfERFXdNG6eZX18Rb/mkmkfcak6THWgcFknA9
+ FMkYNPaecdYEz9D5ZmOIDjY6q/LeN7Yh+J7h/TzPnfqDk3hSINV/9Bd9XM0ODqfd6t+1
+ +zqntGwa74Sc+SlPNocs2kqtwb+TOdz3sW/S2iSaZiOH8/UwdORYhsdjtK+xlHNJBjdE
+ 6EQM1mcp33RUd32/6ixXhtVcOTEFTXUmbWbL4uD+qk710H3z0QeRsSC2TzAqYulXTmIp
+ 4xrQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=CfOlm33yq7HPm3H++4bpQOCqAWPyMg4tSknKyEUmJYs=;
+ b=kMASnSgpgo18GpIGYa7+MZK3XZATLCUT2vd9QzkhgEC3lHBQojr2B3WZZlqPzKTppL
+ gP7/eO+sBCYZp+x5YszVAB7PlW87xenTdEEiBXmpYsfmyR+Q+ZVOkvm5HUBIzOzUC1iX
+ zcdVbX0Y4GlvZ+y6z4C5co8XEZjRz8jdnjBTO+D4hRB0WXtch7TJqi8LAUBeTcrnbbBv
+ iTU9MNG67W+HMMvJh2muGMEeeVZax52IXiv7mC8jPATcHrOF74EwV8ecPySC0BZ0yHaD
+ XoBOcfD01oaybVHDfSMCq6DppCHpQXmQ+i39UbO2k+wesgCB1BwTQDlUEdecqrHlpzSx
+ hSEA==
+X-Gm-Message-State: ANhLgQ1S+M6hqodILfpjOL+Ai/ewu33UOyQQAIlr09qqMIqJYvxbrgC7
+ 9hyIGOk+XsY7dW1G0F/cxrid8A==
+X-Received: by 2002:a17:90a:a48b:: with SMTP id
+ z11mr4992016pjp.1.1584029261958; 
+ Thu, 12 Mar 2020 09:07:41 -0700 (PDT)
+Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
+ by smtp.gmail.com with ESMTPSA id
+ y1sm51319631pgs.74.2020.03.12.09.07.40
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 12 Mar 2020 09:07:41 -0700 (PDT)
+Subject: Re: [PATCH v3 0/2] target/arm: Misc cleanups surrounding TBI
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200308012946.16303-1-richard.henderson@linaro.org>
+ <CAFEAcA9KdR8ZcjngFfSf7Y_zG8+VL+6pXDOJpWxP+VM7dj-XUg@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <a34362a5-3f77-7e84-70af-a29ff100603e@linaro.org>
+Date: Thu, 12 Mar 2020 09:07:39 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 1BNSqCyMENRI
+In-Reply-To: <CAFEAcA9KdR8ZcjngFfSf7Y_zG8+VL+6pXDOJpWxP+VM7dj-XUg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::1041
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 586C4eGJDmwr
 
-Test overflows for MEM_ACCESS and SW_INCR events. Also tests
-overflows with 64-bit events.
+On 3/12/20 5:02 AM, Peter Maydell wrote:
+> On Sun, 8 Mar 2020 at 01:29, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> Changes for v3:
+>>   * All but 2 patches are now merged.
+>>   * Use regime_el to determine aa64-ness of physical memory addressing.
+>>
+> 
+> 
+> 
+> Applied to target-arm.next, thanks.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Amusingly a bug report came in yesterday about this.
+If you like, you can add
 
----
+Buglink: https://bugs.launchpad.net/qemu/+bug/1867072
 
-v2 -> v3:
-- added prefix pop
-- added pmu_stats.unexpected
-- added pmu- prefix
-- remove traces in irq_handler()
+to the final patch.
 
-v1 -> v2:
-- inline setup_irq() code
----
- arm/pmu.c         | 139 ++++++++++++++++++++++++++++++++++++++++++++++
- arm/unittests.cfg |   6 ++
- 2 files changed, 145 insertions(+)
 
-diff --git a/arm/pmu.c b/arm/pmu.c
-index 79c2a0f..628249c 100644
---- a/arm/pmu.c
-+++ b/arm/pmu.c
-@@ -59,12 +59,20 @@
- #define PRE_OVERFLOW		0xFFFFFFF0
- #define PRE_OVERFLOW2		0xFFFFFFDC
-=20
-+#define PMU_PPI			23
-+
- struct pmu {
- 	unsigned int version;
- 	unsigned int nb_implemented_counters;
- 	uint32_t pmcr_ro;
- };
-=20
-+struct pmu_stats {
-+	unsigned long bitmap;
-+	uint32_t interrupts[32];
-+	bool unexpected;
-+};
-+
- static struct pmu pmu;
-=20
- #if defined(__arm__)
-@@ -146,6 +154,7 @@ static void test_sw_incr(void) {}
- static void test_chained_counters(void) {}
- static void test_chained_sw_incr(void) {}
- static void test_chain_promotion(void) {}
-+static void test_overflow_interrupt(void) {}
-=20
- #elif defined(__aarch64__)
- #define ID_AA64DFR0_PERFMON_SHIFT 8
-@@ -276,6 +285,43 @@ asm volatile(
- 	: "x9", "x10", "cc");
- }
-=20
-+static struct pmu_stats pmu_stats;
-+
-+static void irq_handler(struct pt_regs *regs)
-+{
-+	uint32_t irqstat, irqnr;
-+
-+	irqstat =3D gic_read_iar();
-+	irqnr =3D gic_iar_irqnr(irqstat);
-+
-+	if (irqnr =3D=3D PMU_PPI) {
-+		unsigned long overflows =3D read_sysreg(pmovsclr_el0);
-+		int i;
-+
-+		for (i =3D 0; i < 32; i++) {
-+			if (test_and_clear_bit(i, &overflows)) {
-+				pmu_stats.interrupts[i]++;
-+				pmu_stats.bitmap |=3D 1 << i;
-+			}
-+		}
-+		write_sysreg(ALL_SET, pmovsclr_el0);
-+	} else {
-+		pmu_stats.unexpected =3D true;
-+	}
-+	gic_write_eoir(irqstat);
-+}
-+
-+static void pmu_reset_stats(void)
-+{
-+	int i;
-+
-+	for (i =3D 0; i < 32; i++)
-+		pmu_stats.interrupts[i] =3D 0;
-+
-+	pmu_stats.bitmap =3D 0;
-+	pmu_stats.unexpected =3D false;
-+}
-+
- static void pmu_reset(void)
- {
- 	/* reset all counters, counting disabled at PMCR level*/
-@@ -286,6 +332,7 @@ static void pmu_reset(void)
- 	write_sysreg(ALL_SET, pmovsclr_el0);
- 	/* disable overflow interrupts on all counters */
- 	write_sysreg(ALL_SET, pmintenclr_el1);
-+	pmu_reset_stats();
- 	isb();
- }
-=20
-@@ -730,6 +777,94 @@ static void test_chain_promotion(void)
- 			read_sysreg(pmovsclr_el0));
- }
-=20
-+static bool expect_interrupts(uint32_t bitmap)
-+{
-+	int i;
-+
-+	if (pmu_stats.bitmap ^ bitmap || pmu_stats.unexpected)
-+		return false;
-+
-+	for (i =3D 0; i < 32; i++) {
-+		if (test_and_clear_bit(i, &pmu_stats.bitmap))
-+			if (pmu_stats.interrupts[i] !=3D 1)
-+				return false;
-+	}
-+	return true;
-+}
-+
-+static void test_overflow_interrupt(void)
-+{
-+	uint32_t events[] =3D {MEM_ACCESS, SW_INCR};
-+	void *addr =3D malloc(PAGE_SIZE);
-+	int i;
-+
-+	if (!satisfy_prerequisites(events, ARRAY_SIZE(events)))
-+		return;
-+
-+	gic_enable_defaults();
-+	install_irq_handler(EL1H_IRQ, irq_handler);
-+	local_irq_enable();
-+	gic_enable_irq(23);
-+
-+	pmu_reset();
-+
-+	write_regn_el0(pmevtyper, 0, MEM_ACCESS | PMEVTYPER_EXCLUDE_EL0);
-+	write_regn_el0(pmevtyper, 1, SW_INCR | PMEVTYPER_EXCLUDE_EL0);
-+	write_sysreg_s(0x3, PMCNTENSET_EL0);
-+	write_regn_el0(pmevcntr, 0, PRE_OVERFLOW);
-+	write_regn_el0(pmevcntr, 1, PRE_OVERFLOW);
-+	isb();
-+
-+	/* interrupts are disabled */
-+
-+	mem_access_loop(addr, 200, pmu.pmcr_ro | PMU_PMCR_E);
-+	report(expect_interrupts(0), "no overflow interrupt received");
-+
-+	set_pmcr(pmu.pmcr_ro | PMU_PMCR_E);
-+	for (i =3D 0; i < 100; i++)
-+		write_sysreg(0x2, pmswinc_el0);
-+
-+	set_pmcr(pmu.pmcr_ro);
-+	report(expect_interrupts(0), "no overflow interrupt received");
-+
-+	/* enable interrupts */
-+
-+	pmu_reset_stats();
-+
-+	write_regn_el0(pmevcntr, 0, PRE_OVERFLOW);
-+	write_regn_el0(pmevcntr, 1, PRE_OVERFLOW);
-+	write_sysreg(ALL_SET, pmintenset_el1);
-+	isb();
-+
-+	mem_access_loop(addr, 200, pmu.pmcr_ro | PMU_PMCR_E);
-+	for (i =3D 0; i < 100; i++)
-+		write_sysreg(0x3, pmswinc_el0);
-+
-+	mem_access_loop(addr, 200, pmu.pmcr_ro);
-+	report_info("overflow=3D0x%lx", read_sysreg(pmovsclr_el0));
-+	report(expect_interrupts(0x3),
-+		"overflow interrupts expected on #0 and #1");
-+
-+	/* promote to 64-b */
-+
-+	pmu_reset_stats();
-+
-+	write_regn_el0(pmevtyper, 1, CHAIN | PMEVTYPER_EXCLUDE_EL0);
-+	write_regn_el0(pmevcntr, 0, PRE_OVERFLOW);
-+	isb();
-+	mem_access_loop(addr, 200, pmu.pmcr_ro | PMU_PMCR_E);
-+	report(expect_interrupts(0),
-+		"no overflow interrupt expected on 32b boundary");
-+
-+	/* overflow on odd counter */
-+	pmu_reset_stats();
-+	write_regn_el0(pmevcntr, 0, PRE_OVERFLOW);
-+	write_regn_el0(pmevcntr, 1, ALL_SET);
-+	isb();
-+	mem_access_loop(addr, 400, pmu.pmcr_ro | PMU_PMCR_E);
-+	report(expect_interrupts(0x2),
-+		"expect overflow interrupt on odd counter");
-+}
- #endif
-=20
- /*
-@@ -932,6 +1067,10 @@ int main(int argc, char *argv[])
- 		report_prefix_push(argv[1]);
- 		test_chain_promotion();
- 		report_prefix_pop();
-+	} else if (strcmp(argv[1], "pmu-overflow-interrupt") =3D=3D 0) {
-+		report_prefix_push(argv[1]);
-+		test_overflow_interrupt();
-+		report_prefix_pop();
- 	} else {
- 		report_abort("Unknown sub-test '%s'", argv[1]);
- 	}
-diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-index 1b0c8c8..455fd10 100644
---- a/arm/unittests.cfg
-+++ b/arm/unittests.cfg
-@@ -114,6 +114,12 @@ groups =3D pmu
- arch =3D arm64
- extra_params =3D -append 'pmu-chain-promotion'
-=20
-+[pmu-overflow-interrupt]
-+file =3D pmu.flat
-+groups =3D pmu
-+arch =3D arm64
-+extra_params =3D -append 'pmu-overflow-interrupt'
-+
- # Test PMU support (TCG) with -icount IPC=3D1
- #[pmu-tcg-icount-1]
- #file =3D pmu.flat
---=20
-2.20.1
+r~

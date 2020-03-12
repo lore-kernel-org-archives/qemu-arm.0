@@ -1,142 +1,232 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp412123lfc;
-        Thu, 12 Mar 2020 02:52:32 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsfX0IqsDKdCOpYzr5/XtPhy6K8ai2BzizDBIo9MxihxmBbphG4RPfTJ83RZtF1UsrSdcKD
-X-Received: by 2002:a37:9f42:: with SMTP id i63mr6824881qke.192.1584006752341;
-        Thu, 12 Mar 2020 02:52:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584006752; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp417794lfc;
+        Thu, 12 Mar 2020 02:59:47 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtmabsDt3h17NltNzC7nIrhtM5Ydfwwv1sllhikRr0K9YJw36DJ/q7hbz727vY6iQMZqFr6
+X-Received: by 2002:aca:2312:: with SMTP id e18mr1868039oie.118.1584007187733;
+        Thu, 12 Mar 2020 02:59:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584007187; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bhyypg+Sn2hpndZy/L2FDUI6dZfCp6rwLx9BCP1zb97QQg5oylsGDktOxM4ydNldvN
-         RPhat0Adw1VOimiiBRMWBf4dhL+r6nmlwNCj2CTOc3fa6qcBpxaY7mnv74sH9F56PhM8
-         SnKAu45JGktIR/gxtcNtDPFcuv0M9sUWPcBffJeeafNlSz8PzFopWrHzbcn+ufB0nK2+
-         FUa7Q/6iH6mUo2trtjPQru6Ny/rloFT9hfV5ANFgtZeQtkHrwy6Q2sp58bzxe0H0/Cqp
-         PoNMgtq/o7kp7khCaEyrT/ntawDgoiXuakCeQN8gi8GHfoBCAmmgKlX4psJEYt6+TbVa
-         sj/g==
+        b=ZDid4f5TMwkdddx1jLh8haGmkBWGDUIX1TGNnhz5GyUlIS2PiiFRPyp0ZZMmCtBBNJ
+         TlYl/RvkUHlD6HwC8LZYrkRs93rGbEeed5VfTs8oMIYzbh79rbfdn68CTBUKpBELTYJM
+         yTEKzB+zXoyCR2fKDZYV5EJkUizortN0pO5i6q++JfE7y7xOHC04Ke+ZXUVHAbHwq2mE
+         XbfqCp05Gp1ZRBJziG3wwCnd8tfU2gXl1KUBt1K8+gkp8xpDFNauRdkcWm8k9Td7tF5K
+         Mcp4bLsSCIG+YX4MHBaBux3j0i92gxphAdaPnguDM6Uqc5rhDrspJlSMvu22ZaY5peFl
+         Uiew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=G8CWq5+YpgS8qKmE4m/6+V8hfmkS//mGZarIWdmX8zM=;
-        b=B8hyWMm4GB6hDScd3w7j+J89mqxiBI7wsKgoPWd2agAvwD8VlFYiNFIlxWr/Ipn7rd
-         8+fyDMIMhiKwTatYU+vfcEUqrm74IhH/ess3iS6et4WUjCySmDx7hDZL2t7c9+GilE++
-         nm0D9fvpvBgI05Qccbr7RFO2NSC7tc4hbrbfQmR/7UBuAfSNIrxnEVExLYJd/a1ov7qC
-         XDaOYS3v0fGyfp/PViSnr4oGizxtz8T/JcvNeZnoId8A+kiY8NH1Nx9MWU0RCXTQcS8T
-         Oxfx2jlThzkZnzwpEk0Jb2L/Vbq2xxDl6c+e0YEnCh3P714T1rbD6LFRs85rmo0EG6Hc
-         1M9A==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:dkim-signature;
+        bh=VfdtuMjqV4xA6TiIUXqMrT4N1Cfthn1N0mvQcwPp5tg=;
+        b=ER3uLAKw6ZNEzJMxMhCsXqhCroHygR6QXF3TpcRksqrR98jyrq4pPr3zaC/nrcru2u
+         3UhKN1Ipqn8pIWkM893OF6nF22XM50iXFz4KGDFaiO5USUT2CCLYdbHAeT/GapHnRvPk
+         LvNwwaXlyAou3Xwy3LI2aQ3WY3WgvjGAVqAjn2IlnWrsKp5NhlEtyiwfTioqpnXFqktJ
+         8TdrfIPxspuG8lDz7fGKLkqX1KHKEixxActdYQLIUlT5jU5TbkhbGQ1aEfcqXWmyd8Iv
+         FrARVYlebBSkW5OaDzkA3yY/wkboQ43HhETNlu2DvqJZjekTSFkyfFyfkMd2ZhjlVt7b
+         MK0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b="b/vhPXqY";
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id g12si2116564qvt.161.2020.03.12.02.52.32;
-        Thu, 12 Mar 2020 02:52:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=C+aLhxAt;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id y25si2327776oih.73.2020.03.12.02.59.47;
+        Thu, 12 Mar 2020 02:59:47 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b="b/vhPXqY";
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id C051B4A4F7;
-	Thu, 12 Mar 2020 05:52:31 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g72fHRPVlaA4; Thu, 12 Mar 2020 05:52:30 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id AEB4F4A50F;
-	Thu, 12 Mar 2020 05:52:30 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 649704A49C
- for <kvmarm@lists.cs.columbia.edu>; Thu, 12 Mar 2020 05:52:29 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E2gHHtiWOIqu for <kvmarm@lists.cs.columbia.edu>;
- Thu, 12 Mar 2020 05:52:28 -0400 (EDT)
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [207.211.31.120])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 1615D4A32E
- for <kvmarm@lists.cs.columbia.edu>; Thu, 12 Mar 2020 05:52:28 -0400 (EDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=C+aLhxAt;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726641AbgCLJ7q (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 12 Mar 2020 05:59:46 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:22701 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1725978AbgCLJ7q (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 12 Mar 2020 05:59:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584006747;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zG8vPwXr3fW379kNEBs9k2zxUAhuYclstIC5n/OmTcY=;
- b=b/vhPXqYYMPntaKThNrjs0cdotHtowm7mHi1sfI8pzgA2TkmRQ7LisHKFwWNsgvjb53S61
- hVTuRmZIfLTku29lMyMqfHMUaNbrFa4TZd+WVTFYf4W4S8G5UIdXy/5igSOaVlJ6r8TJe0
- f6vsYGjSxQ2bTlqcc7kDYyLEU34inDQ=
+        s=mimecast20190719; t=1584007184;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=VfdtuMjqV4xA6TiIUXqMrT4N1Cfthn1N0mvQcwPp5tg=;
+        b=C+aLhxAtAsf4ILUePfUEpS68BRkVqe4cJ6nNWpy+a0xU6ocVb08oSW96fxiGj3XliJsAuF
+        T8muTK9UkycGjWF1Rvpvht8OlyLK6VuV30/EvXKI/3ODw/wszQvyOgF9cBs07z9N0FZgPk
+        C/SxGjHFPlWAJamsJeldBRseV2QEC9g=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-175-0hKgPFkoNW-VDLxp0GcLmg-1; Thu, 12 Mar 2020 05:52:26 -0400
-X-MC-Unique: 0hKgPFkoNW-VDLxp0GcLmg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5F1B7800D4E;
- Thu, 12 Mar 2020 09:52:24 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BBE8360BEC;
- Thu, 12 Mar 2020 09:52:22 +0000 (UTC)
-Date: Thu, 12 Mar 2020 10:52:20 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Beata Michalska <beata.michalska@linaro.org>
-Subject: Re: [PATCH v3 1/2] target/arm: kvm: Inject events at the last stage
- of sync
-Message-ID: <20200312095220.bb6xdezdujufnfzg@kamzik.brq.redhat.com>
-References: <20200312003401.29017-1-beata.michalska@linaro.org>
- <20200312003401.29017-2-beata.michalska@linaro.org>
+ us-mta-213-t4xEsr7HMISRGINyRi2OEQ-1; Thu, 12 Mar 2020 05:59:42 -0400
+X-MC-Unique: t4xEsr7HMISRGINyRi2OEQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D8FEEDBA3;
+        Thu, 12 Mar 2020 09:59:40 +0000 (UTC)
+Received: from [10.36.118.12] (unknown [10.36.118.12])
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id 91A24272A5;
+        Thu, 12 Mar 2020 09:59:35 +0000 (UTC)
+Subject: Re: [kvm-unit-tests PATCH v5 10/13] arm/arm64: ITS: INT functional
+ tests
+To:     Zenghui Yu <yuzenghui@huawei.com>, Marc Zyngier <maz@kernel.org>
+Cc:     eric.auger.pro@gmail.com, kvmarm@lists.cs.columbia.edu,
+        kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+        drjones@redhat.com, andre.przywara@arm.com,
+        peter.maydell@linaro.org, alexandru.elisei@arm.com,
+        thuth@redhat.com
+References: <20200310145410.26308-1-eric.auger@redhat.com>
+ <20200310145410.26308-11-eric.auger@redhat.com>
+ <d3f651a0-2344-4d6e-111b-be133db7e068@huawei.com>
+ <46f0ed1d-3bda-f91b-e2b0-addf1c61c373@redhat.com>
+ <301a8b402ff7e480e927b0f8f8b093f2@kernel.org>
+ <7fb9f81f-6520-526d-7031-d3d08cb1dd6a@huawei.com>
+From:   Auger Eric <eric.auger@redhat.com>
+Message-ID: <acc652b7-f331-1e48-160c-f07e0e5283b3@redhat.com>
+Date:   Thu, 12 Mar 2020 10:59:32 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20200312003401.29017-2-beata.michalska@linaro.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, pbonzini@redhat.com,
- kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: QCthwDcuMheQ
+In-Reply-To: <7fb9f81f-6520-526d-7031-d3d08cb1dd6a@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Content-Transfer-Encoding: quoted-printable
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: loomKnAzlWGi
 
-On Thu, Mar 12, 2020 at 12:34:00AM +0000, Beata Michalska wrote:
-> KVM_SET_VCPU_EVENTS might actually lead to vcpu registers being modified.
-> As such this should be the last step of sync to avoid potential overwriting
-> of whatever changes KVM might have done.
-> 
-> Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
-> ---
->  target/arm/kvm32.c | 15 ++++++++++-----
->  target/arm/kvm64.c | 15 ++++++++++-----
->  2 files changed, 20 insertions(+), 10 deletions(-)
->
+Hi Zenghui,
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+On 3/12/20 10:19 AM, Zenghui Yu wrote:
+> On 2020/3/11 22:00, Marc Zyngier wrote:
+>> That is still a problem with the ITS. There is no architectural way
+>> to report an error, even if the error numbers are architected...
+>>
+>> One thing we could do though is to implement the stall model (as
+>> described
+>> in 5.3.2). It still doesn't give us the error, but at least the comman=
+d
+>> queue would stop on detecting an error.
+>=20
+> It would be interesting to see the buggy guest's behavior under the
+> stall mode. I've used the following diff (absolutely *not* a formal
+> patch, don't handle CREADR.Stalled and CWRITER.Retry at all) to have
+> a try, and caught another command error in the 'its-trigger' test.
+>=20
+> logs/its-trigger.log:
+> " INT dev_id=3D2 event_id=3D20
+> lib/arm64/gic-v3-its-cmd.c:194: assert failed: false: INT timeout! "
+>=20
+> dmesg:
+> [13297.711958] ------------[ cut here ]------------
+> [13297.711964] ITS command error encoding 0x10307
+>=20
+> It's the last INT test in test_its_trigger() who has triggered this
+> error, Eric?
 
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+Yes it may be the culprit. Anyway I removed the collection unmap in v6.
+
+By the way are you OK now with v6? I think Drew plans to send a pull
+request by the end of this week.
+
+Thanks
+
+Eric
+>=20
+>=20
+> Thanks.
+>=20
+> ---8<---
+> diff --git a/include/kvm/arm_vgic.h b/include/kvm/arm_vgic.h
+> index 9d53f545a3d5..5717f5da0f22 100644
+> --- a/include/kvm/arm_vgic.h
+> +++ b/include/kvm/arm_vgic.h
+> @@ -179,6 +179,7 @@ struct vgic_its {
+> =C2=A0=C2=A0=C2=A0=C2=A0 u64=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 cbaser;
+> =C2=A0=C2=A0=C2=A0=C2=A0 u32=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 creadr;
+> =C2=A0=C2=A0=C2=A0=C2=A0 u32=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 cwriter;
+> +=C2=A0=C2=A0=C2=A0 bool=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 stalled;
+>=20
+> =C2=A0=C2=A0=C2=A0=C2=A0 /* migration ABI revision in use */
+> =C2=A0=C2=A0=C2=A0=C2=A0 u32=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 abi_rev;
+> diff --git a/virt/kvm/arm/vgic/vgic-its.c b/virt/kvm/arm/vgic/vgic-its.=
+c
+> index d53d34a33e35..72422b75e627 100644
+> --- a/virt/kvm/arm/vgic/vgic-its.c
+> +++ b/virt/kvm/arm/vgic/vgic-its.c
+> @@ -1519,6 +1519,9 @@ static void vgic_its_process_commands(struct kvm
+> *kvm, struct vgic_its *its)
+> =C2=A0=C2=A0=C2=A0=C2=A0 if (!its->enabled)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>=20
+> +=C2=A0=C2=A0=C2=A0 if (unlikely(its->stalled))
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+> +
+> =C2=A0=C2=A0=C2=A0=C2=A0 cbaser =3D GITS_CBASER_ADDRESS(its->cbaser);
+>=20
+> =C2=A0=C2=A0=C2=A0=C2=A0 while (its->cwriter !=3D its->creadr) {
+> @@ -1531,9 +1534,34 @@ static void vgic_its_process_commands(struct kvm
+> *kvm, struct vgic_its *its)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * According to s=
+ection 6.3.2 in the GICv3 spec we can just
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * ignore that co=
+mmand then.
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!ret)
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vgi=
+c_its_handle_command(kvm, its, cmd_buf);
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (ret)
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 got=
+o done;
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D vgic_its_handle_com=
+mand(kvm, its, cmd_buf);
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /*
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * Choose the stall mo=
+de on detection of command errors.
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * Guest still can't g=
+et the architected error numbers though...
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (ret) {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* =
+GITS_CREADR.Stalled is set to 1. */
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 its=
+->stalled =3D true;
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /*
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ * GITS_TYPER.SEIS is 0 atm, no System error will be
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ * generated.=C2=A0 Instead report error encodings at ITS
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ * level.
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ */
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 WAR=
+N_RATELIMIT(ret, "ITS command error encoding 0x%x", ret);
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /*
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ * GITS_CREADR is not incremented and continues to
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ * point to the entry that triggered the error.
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ */
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bre=
+ak;
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>=20
+> +done:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 its->creadr +=3D ITS_C=
+MD_SIZE;
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (its->creadr =3D=3D=
+ ITS_CMD_BUFFER_SIZE(its->cbaser))
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ its->creadr =3D 0;
+>=20

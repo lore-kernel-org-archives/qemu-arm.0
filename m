@@ -1,282 +1,299 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1087753lfc;
-        Thu, 12 Mar 2020 12:42:54 -0700 (PDT)
-X-Received: by 2002:a17:902:d915:: with SMTP id c21mr9575441plz.239.1584042174019;
-        Thu, 12 Mar 2020 12:42:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584042174; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1087778lfc;
+        Thu, 12 Mar 2020 12:42:55 -0700 (PDT)
+X-Received: by 2002:a17:902:9890:: with SMTP id s16mr8876973plp.77.1584042175247;
+        Thu, 12 Mar 2020 12:42:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584042175; cv=none;
         d=google.com; s=arc-20160816;
-        b=muQeh36XtRcEHAkdH/97BCS9lL/9tFxSaM3ZH0PVL95OO7AlpOszpwU6MJVisngtG9
-         oo/xAfAM9hBgb09XeFmNBrG+j4xFaozUbfANmBul8pW4VpnQM67WbsHvCNmH4K+LMGPf
-         y/hrUUfbvf3Ej87nmIsOyoCo59Uqn5jiDtLQpmWelAHBwcB9OJtWYZKcUjek/7fVYcdk
-         LeYRe+ejBb5OJRbjiI2oZH8l4ZRZq4lYpImYctOKRIPAAreftaQ+YDGx8pcFATmwZzTV
-         jjWAmGr2zf2yjtr7d+l4bN0vCj6nZp6dL6cmpeiOvKvh4hugdCRyPkxPB1usID5U2CxY
-         RW1w==
+        b=L0J7y784nD7L0jTF2vuNYf5rJvkDgsdfbKtOVTxiuWgkM8GpkxpHgeizzoAn/vLzFZ
+         oRjXM35F5la2yggZ3z+rLOUeRBBroODPZSbcjAyGrgLIrPEjK15osTLdGStGhyHAMZXJ
+         n4Ws8gYUUbSlSjXhKMi1vDKttGfMwwquVVpi2o4jAXh4rlH0BPKG5d5cKETC0m95/i9+
+         MgxO7Nex7hw65rTOOieziGjs3kk7ZZX4KLeoSOMzFbjw0A5/vqwScLqoe6n9I+ql8UpP
+         nojGu98H+J/Ez6NBKL9vtdsXY6x+cU5KM+juAOy0vsy9ZbpZEEoc6Su5hIE/zqsE4tJm
+         GuJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=VrNJWtbNYR04xVfCscKaMniKIGIvli/mwQv8Bqsi+6U=;
-        b=dpIRy72G9q0tW1VoqFQBxvvQzs4hxCnOdxR2lYa7b9ZxPMaE/wI6+gxpTx3ASRI1kc
-         M7rgzQVQuq4BDbqMUIp14jXbmdM8HyiJlaRQOqjtgRUykyOUcdv8rM8lzm28axTjE6Ja
-         hpGohU5jpQq3GlfrJg93yud9VwmmPr+umPECVoF1Ui5UZMxgynMW8j53eBpYLk5WA5dv
-         hhZUE4Ih4aV9aYrS6rh1nyM/d6o+RRVHCWtZeRQMRB2GiM9d5SpgK/OEZwx8hUXuwWpn
-         QQvx4JGNwC0vDAWbFg45mNNMnnO9O+2QN8ndv7oeur0W9/z1Bg456zneD1J2lhPjWDWZ
-         W1Bw==
+        bh=IBVWDMhA5xeJ1t7FkiUhAVEPTJaDqFXyx+BzGGFHx9I=;
+        b=ej2GGF+f22CxlGxzjQ6ykF4iKs4On5cgjswGSDQiRufK1fZVnNqkBjxWkxs70mHy1x
+         J78ji7P4/5UYD+6bptLCfSSAoENMeF96SRIOyeD34T7KdzzidOkZLhriPaGEzcSQNhI1
+         BkgkAppn2aWGRlTFmqmPOqd2cLLHBuf1POqHpdfgkSs37wOkfFjQEPkpOUdhOvfv2aI2
+         JZoFqgug4F3Sz6qP74EmTsc8u/hx4mIT2VmvridYxI1lWwZmpvO3B7utvA1un6ZdPlAS
+         Mpq8KmkRxZ0kg9RV1w7VNdZ7ykDeXVrLlFeMY2dI3samh0V3W2ffBVzy/SZYXJCC4LTK
+         qoow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bQB23GnC;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=olQOyDIE;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id i4sor6836565pjs.26.2020.03.12.12.42.53
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id r13sor7473506pgs.32.2020.03.12.12.42.55
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 12 Mar 2020 12:42:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Thu, 12 Mar 2020 12:42:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bQB23GnC;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=olQOyDIE;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=VrNJWtbNYR04xVfCscKaMniKIGIvli/mwQv8Bqsi+6U=;
-        b=bQB23GnC8RsFCyIQf8D57QMT8ZGW5WIeRbZz1WdFXBfsYgtLiGNPN2VqPukJzI9SQU
-         LCYDOWbuQzfE3IKueuw97P1PeMPkrMk04ZwTKMEuBYgooazXPWVGwSY2jnTjTZWoReMO
-         oJU+XVyXjf4Dz7XuKcbu7OKu9rub4j4YU3p+nWbENgxH0AQLKVCgmdXD1PhlFPHq1bzQ
-         QhMk7m1I1ditlErnEHvRv0TdsJjIdcita1Ql07SYcOmWu2WXUAFxdPUzXCDxXjgJArk0
-         c23vLb5KIDazAaR+jISPRn/iAzNmIZfJk/BLiXiEsxv/lbSU5KzM4/H1gYAIP5AatAOW
-         o5Ow==
+        bh=IBVWDMhA5xeJ1t7FkiUhAVEPTJaDqFXyx+BzGGFHx9I=;
+        b=olQOyDIEpo8WpX+r6UIJkPkICFM81UI0Af/iwDADKEXhFQAB0qPQ8yQLLgpnrvd0SP
+         p9F9UmICF/fH+5rjoTcMjMYf5W8kulrmCuUeB6fVsBMyWa6e/rCsHiMyxfisVaxxW6kO
+         LhSrWqeVjCMtuPt4lnPZxHbIPbW2RPMP5KGatX2K8dM8g0LCmIL/varkKvUA38wI6flf
+         DwSpHOtAg/uLeecTCFmN9bNdpTQ8HIMQRRVc7WY59SI1NzGfFPk5PiZSuMBxtuF2vfAd
+         MaTDabYjJX1FOio0CfUoTIpWu0oVPxzDpo+ZB4fscjMKMgG/1QIqSPKZkBeExBuCZ1k1
+         jOaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=VrNJWtbNYR04xVfCscKaMniKIGIvli/mwQv8Bqsi+6U=;
-        b=HsV7tngVBwVxidIbEuVG0MfH+Ze6Or0a6sTYSNR/SR6PB1DzbWLLUOw7H0tMjIAetW
-         rsoJjfeVzW2BoYorvBoFAn1HHOa1O9EUnPRhQ+aRcxACoqi6fNzXPPotfKtTYKGcgycn
-         Vye6fZozLdZQFePFR00369I1WxoiB04h/z0/lmTXuhp08S/dZu9IZlKUV9Rh5hRKN/Go
-         UM95wh45vl+B9H2pMMT3Oz3V/0sEGV1zRmlxUFUIVtpc4Jiq/fzIDfzvo2r28w5MVDpR
-         /xa5zRRarn2HsZs0YhsDhC7qvhi3QcsFUsd+l1sacQ9JpL6tMni4vj2Yf7B+gIHa/Iev
-         m/wA==
-X-Gm-Message-State: ANhLgQ38H0efzT2rBVb2oqMRUkHFKHpPCrfy5SARAemy7o5gL9eJltwm
-	9k9kjAsBTCsQljGxmjTedhE3lmXP
-X-Google-Smtp-Source: ADFU+vv/OEzPKfch7WsF2Rfjks3h2xOV/IB0ak/uuAgL6uoyL7zSQJm3CrHnh2dVO0I3pxGdyhRvNQ==
-X-Received: by 2002:a17:902:778c:: with SMTP id o12mr9786734pll.324.1584042173317;
-        Thu, 12 Mar 2020 12:42:53 -0700 (PDT)
+        bh=IBVWDMhA5xeJ1t7FkiUhAVEPTJaDqFXyx+BzGGFHx9I=;
+        b=jS3IXuOJcPHcaTd6HFEWoXNXOIYCUb4fBM+dnPIIRt91bvgrP7qdt9iz2f6FJJ5NtH
+         PLPfl3jDjihlCd6dHFE4w+zPbeoj9oVaLB4RlSLriEz74iq3fvBDpwzM+tKoQ+nB3R2w
+         soUDh1Ap5PECMyd77z7UyJxiXdpGTpmZzM77KOwU1CwyEH26OWfyDWDzWczas3lDqRBE
+         MXmI375pEqzCYgoiPJtr22NjD9mFZjdbIUyxzupC63LrOUPJbk1HM+8Y4V12mPtpIdGU
+         jSZ7XAZ6AWVaAggDkPDuubQpbu+mRJ2yy6ZEv9JzdxepdbZjWDDo5I9N3wsiRqt17mx4
+         3uPA==
+X-Gm-Message-State: ANhLgQ28lg+3UJ38u4p2rFUfpB9ivzPRX+R+OGz6WT7FamqIJPSCPSww
+	JwLuRWY0qTFdkIBWpxMmzzzgZnEjVJlo1A==
+X-Google-Smtp-Source: ADFU+vsSW7bbPsLeiXqGzSw/FDnq6/ElQr5bLrccigvzc++Z332ucscmTP6Fn2jnKl20Ml/QMhCakw==
+X-Received: by 2002:a65:6416:: with SMTP id a22mr9888215pgv.268.1584042174648;
+        Thu, 12 Mar 2020 12:42:54 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net. [97.126.123.70])
-        by smtp.gmail.com with ESMTPSA id g69sm6824842pje.34.2020.03.12.12.42.52
+        by smtp.gmail.com with ESMTPSA id g69sm6824842pje.34.2020.03.12.12.42.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Mar 2020 12:42:52 -0700 (PDT)
+        Thu, 12 Mar 2020 12:42:54 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v6 24/42] target/arm: Add gen_mte_checkN
-Date: Thu, 12 Mar 2020 12:42:01 -0700
-Message-Id: <20200312194219.24406-25-richard.henderson@linaro.org>
+Subject: [PATCH v6 25/42] target/arm: Implement helper_mte_check1
+Date: Thu, 12 Mar 2020 12:42:02 -0700
+Message-Id: <20200312194219.24406-26-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200312194219.24406-1-richard.henderson@linaro.org>
 References: <20200312194219.24406-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: qxLWOql7pKbm
+X-TUID: sozBb2Ysril1
 
-Replace existing uses of check_data_tbi in translate-a64.c that
-perform multiple logical memory access.  Leave the helper blank
-for now to reduce the patch size.
+Fill out the stub that was added earlier.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-a64.h    |  1 +
- target/arm/translate-a64.h |  2 ++
- target/arm/mte_helper.c    |  8 +++++
- target/arm/translate-a64.c | 71 +++++++++++++++++++++++++++++---------
- 4 files changed, 66 insertions(+), 16 deletions(-)
+ target/arm/internals.h  |  47 +++++++++++++++
+ target/arm/mte_helper.c | 126 +++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 172 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-index 2faa49d0a3..005af678c7 100644
---- a/target/arm/helper-a64.h
-+++ b/target/arm/helper-a64.h
-@@ -105,6 +105,7 @@ DEF_HELPER_FLAGS_2(xpaci, TCG_CALL_NO_RWG_SE, i64, env, i64)
- DEF_HELPER_FLAGS_2(xpacd, TCG_CALL_NO_RWG_SE, i64, env, i64)
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index a993e8ca0a..8bbaf9b453 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1314,6 +1314,9 @@ FIELD(MTEDESC, WRITE, 8, 1)
+ FIELD(MTEDESC, ESIZE, 9, 5)
+ FIELD(MTEDESC, TSIZE, 14, 10)  /* mte_checkN only */
  
- DEF_HELPER_FLAGS_3(mte_check1, TCG_CALL_NO_WG, i64, env, i32, i64)
-+DEF_HELPER_FLAGS_3(mte_checkN, TCG_CALL_NO_WG, i64, env, i32, i64)
- DEF_HELPER_FLAGS_3(irg, TCG_CALL_NO_RWG, i64, env, i64, i64)
- DEF_HELPER_FLAGS_4(addsubg, TCG_CALL_NO_RWG_SE, i64, env, i64, s32, i32)
- DEF_HELPER_FLAGS_3(ldg, TCG_CALL_NO_WG, i64, env, i64, i64)
-diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
-index cc77e6ce8b..452b4764d0 100644
---- a/target/arm/translate-a64.h
-+++ b/target/arm/translate-a64.h
-@@ -42,6 +42,8 @@ bool logic_imm_decode_wmask(uint64_t *result, unsigned int immn,
- bool sve_access_check(DisasContext *s);
- TCGv_i64 gen_mte_check1(DisasContext *s, TCGv_i64 addr, bool is_write,
-                         bool tag_checked, int log2_size);
-+TCGv_i64 gen_mte_checkN(DisasContext *s, TCGv_i64 addr, bool is_write,
-+                        bool tag_checked, int count, int log2_esize);
- 
- /* We should have at some point before trying to access an FP register
-  * done the necessary access check, so assert that
-diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
-index ec12768dfc..907a12b366 100644
---- a/target/arm/mte_helper.c
-+++ b/target/arm/mte_helper.c
-@@ -366,3 +366,11 @@ uint64_t HELPER(mte_check1)(CPUARMState *env, uint32_t desc, uint64_t ptr)
++bool mte_probe1(CPUARMState *env, uint32_t desc, uint64_t ptr, uintptr_t ra);
++uint64_t mte_check1(CPUARMState *env, uint32_t desc, uint64_t ptr, uintptr_t ra);
++
+ static inline int allocation_tag_from_addr(uint64_t ptr)
  {
-     return ptr;
+     return extract64(ptr, 56, 4);
+@@ -1324,4 +1327,48 @@ static inline uint64_t address_with_allocation_tag(uint64_t ptr, int rtag)
+     return deposit64(ptr, 56, 4, rtag);
  }
+ 
++/* Return true if tbi bits mean that the access is checked.  */
++static inline bool tbi_check(uint32_t desc, int bit55)
++{
++    return (desc >> (R_MTEDESC_TBI_SHIFT + bit55)) & 1;
++}
++
++/* Return true if tcma bits mean that the access is unchecked.  */
++static inline bool tcma_check(uint32_t desc, int bit55, int ptr_tag)
++{
++    /*
++     * We had extracted bit55 and ptr_tag for other reasons, so fold
++     * (ptr<59:55> == 00000 || ptr<59:55> == 11111) into a single test.
++     */
++    bool match = ((ptr_tag + bit55) & 0xf) == 0;
++    bool tcma = (desc >> (R_MTEDESC_TCMA_SHIFT + bit55)) & 1;
++    return tcma && match;
++}
 +
 +/*
-+ * Perform an MTE checked access for multiple logical accesses.
++ * For TBI, ideally, we would do nothing.  Proper behaviour on fault is
++ * for the tag to be present in the FAR_ELx register.  But for user-only
++ * mode, we do not have a TLB with which to implement this, so we must
++ * remote the top byte.
 + */
-+uint64_t HELPER(mte_checkN)(CPUARMState *env, uint32_t desc, uint64_t ptr)
++static inline uint64_t useronly_clean_ptr(uint64_t ptr)
 +{
++    /* TBI is known to be enabled. */
++#ifdef CONFIG_USER_ONLY
++    ptr = sextract64(ptr, 0, 56);
++#endif
 +    return ptr;
 +}
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 683a8a3dba..c6187ccd60 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -301,6 +301,34 @@ TCGv_i64 gen_mte_check1(DisasContext *s, TCGv_i64 addr, bool is_write,
-                                  false, get_mem_index(s));
- }
- 
-+/*
-+ * For MTE, check multiple logical sequential accesses.  
-+ */
-+TCGv_i64 gen_mte_checkN(DisasContext *s, TCGv_i64 addr, bool is_write,
-+                        bool tag_checked, int log2_esize, int total_size)
++
++static inline uint64_t useronly_maybe_clean_ptr(uint32_t desc, uint64_t ptr)
 +{
-+    if (tag_checked && s->mte_active[0] && total_size != (1 << log2_esize)) {
-+        TCGv_i32 tcg_desc;
-+        TCGv_i64 ret;
-+        int desc = 0;
-+
-+        desc = FIELD_DP32(desc, MTEDESC, MIDX, get_mem_index(s));
-+        desc = FIELD_DP32(desc, MTEDESC, TBI, s->tbid);
-+        desc = FIELD_DP32(desc, MTEDESC, TCMA, s->tcma);
-+        desc = FIELD_DP32(desc, MTEDESC, WRITE, is_write);
-+        desc = FIELD_DP32(desc, MTEDESC, ESIZE, 1 << log2_esize);
-+        desc = FIELD_DP32(desc, MTEDESC, TSIZE, total_size);
-+        tcg_desc = tcg_const_i32(desc);
-+
-+        ret = new_tmp_a64(s);
-+        gen_helper_mte_checkN(ret, cpu_env, tcg_desc, addr);
-+        tcg_temp_free_i32(tcg_desc);
-+
-+        return ret;
++#ifdef CONFIG_USER_ONLY
++    int64_t clean_ptr = sextract64(ptr, 0, 56);
++    if (tbi_check(desc, clean_ptr < 0)) {
++        ptr = clean_ptr;
 +    }
-+    return gen_mte_check1(s, addr, is_write, tag_checked, log2_esize);
++#endif
++    return ptr;
 +}
 +
- typedef struct DisasCompare64 {
-     TCGCond cond;
-     TCGv_i64 value;
-@@ -2889,7 +2917,10 @@ static void disas_ldst_pair(DisasContext *s, uint32_t insn)
-         }
+ #endif
+diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
+index 907a12b366..7a87574b35 100644
+--- a/target/arm/mte_helper.c
++++ b/target/arm/mte_helper.c
+@@ -359,12 +359,136 @@ void HELPER(stzgm_tags)(CPUARMState *env, uint64_t ptr, uint64_t val)
      }
+ }
  
--    clean_addr = clean_data_tbi(s, dirty_addr);
-+    clean_addr = gen_mte_checkN(s, dirty_addr, !is_load,
-+                                (wback || rn != 31) && !set_tag,
-+                                size, 2 << size);
++/* Record a tag check failure.  */
++static void mte_check_fail(CPUARMState *env, int mmu_idx,
++                           uint64_t dirty_ptr, uintptr_t ra)
++{
++    ARMMMUIdx arm_mmu_idx = core_to_aa64_mmu_idx(mmu_idx);
++    int el, reg_el, tcf, select;
++    uint64_t sctlr;
 +
-     if (is_vector) {
-         if (is_load) {
-             do_fp_ld(s, rt, clean_addr, size);
-@@ -3555,7 +3586,7 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
-     TCGv_i64 clean_addr, tcg_rn, tcg_ebytes;
-     MemOp endian = s->be_data;
- 
--    int ebytes;   /* bytes per element */
-+    int total;    /* total bytes */
-     int elements; /* elements per vector */
-     int rpt;    /* num iterations */
-     int selem;  /* structure elements */
-@@ -3625,19 +3656,26 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
-         endian = MO_LE;
-     }
- 
--    /* Consecutive little-endian elements from a single register
-+    total = rpt * selem * (is_q ? 16 : 8);
-+    tcg_rn = cpu_reg_sp(s, rn);
++    reg_el = regime_el(env, arm_mmu_idx);
++    sctlr = env->cp15.sctlr_el[reg_el];
 +
-+    /*
-+     * Issue the MTE check vs the logical repeat count, before we
-+     * promote consecutive little-endian elements below.
-+     */
-+    clean_addr = gen_mte_checkN(s, tcg_rn, is_store, is_postidx || rn != 31,
-+                                size, total);
++    switch (arm_mmu_idx) {
++    case ARMMMUIdx_E10_0:
++    case ARMMMUIdx_E20_0:
++        el = 0;
++        tcf = extract64(sctlr, 38, 2);
++        break;
++    default:
++        el = reg_el;
++        tcf = extract64(sctlr, 40, 2);
++    }
 +
-+    /*
-+     * Consecutive little-endian elements from a single register
-      * can be promoted to a larger little-endian operation.
-      */
-     if (selem == 1 && endian == MO_LE) {
-         size = 3;
-     }
--    ebytes = 1 << size;
--    elements = (is_q ? 16 : 8) / ebytes;
--
--    tcg_rn = cpu_reg_sp(s, rn);
--    clean_addr = clean_data_tbi(s, tcg_rn);
--    tcg_ebytes = tcg_const_i64(ebytes);
-+    elements = (is_q ? 16 : 8) >> size;
- 
-+    tcg_ebytes = tcg_const_i64(1 << size);
-     for (r = 0; r < rpt; r++) {
-         int e;
-         for (e = 0; e < elements; e++) {
-@@ -3671,7 +3709,7 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
- 
-     if (is_postidx) {
-         if (rm == 31) {
--            tcg_gen_addi_i64(tcg_rn, tcg_rn, rpt * elements * selem * ebytes);
-+            tcg_gen_addi_i64(tcg_rn, tcg_rn, total);
-         } else {
-             tcg_gen_add_i64(tcg_rn, tcg_rn, cpu_reg(s, rm));
-         }
-@@ -3717,7 +3755,7 @@ static void disas_ldst_single_struct(DisasContext *s, uint32_t insn)
-     int selem = (extract32(opc, 0, 1) << 1 | R) + 1;
-     bool replicate = false;
-     int index = is_q << 3 | S << 2 | size;
--    int ebytes, xs;
-+    int xs, total;
-     TCGv_i64 clean_addr, tcg_rn, tcg_ebytes;
- 
-     if (extract32(insn, 31, 1)) {
-@@ -3771,16 +3809,17 @@ static void disas_ldst_single_struct(DisasContext *s, uint32_t insn)
-         return;
-     }
- 
--    ebytes = 1 << scale;
--
-     if (rn == 31) {
-         gen_check_sp_alignment(s);
-     }
- 
-+    total = selem << scale;
-     tcg_rn = cpu_reg_sp(s, rn);
--    clean_addr = clean_data_tbi(s, tcg_rn);
--    tcg_ebytes = tcg_const_i64(ebytes);
- 
-+    clean_addr = gen_mte_checkN(s, tcg_rn, !is_load, is_postidx || rn != 31,
-+                                scale, total);
++    switch (tcf) {
++    case 1:
++        /*
++         * Tag check fail causes a synchronous exception.
++         *
++         * In restore_state_to_opc, we set the exception syndrome
++         * for the load or store operation.  Unwind first so we
++         * may overwrite that with the syndrome for the tag check.
++         */
++        cpu_restore_state(env_cpu(env), ra, true);
++        env->exception.vaddress = dirty_ptr;
++        raise_exception(env, EXCP_DATA_ABORT,
++                        syn_data_abort_no_iss(el != 0, 0, 0, 0, 0, 0x11),
++                        exception_target_el(env));
++        /* noreturn, but fall through to the assert anyway */
 +
-+    tcg_ebytes = tcg_const_i64(1 << scale);
-     for (xs = 0; xs < selem; xs++) {
-         if (replicate) {
-             /* Load and replicate to all elements */
-@@ -3807,7 +3846,7 @@ static void disas_ldst_single_struct(DisasContext *s, uint32_t insn)
++    case 0:
++        /*
++         * Tag check fail does not affect the PE.
++         * We eliminate this case by not setting MTE_ACTIVE
++         * in tb_flags, so that we never make this runtime call.
++         */
++        g_assert_not_reached();
++
++    case 2:
++        /* Tag check fail causes asynchronous flag set.  */
++        mmu_idx = arm_mmu_idx_el(env, el);
++        if (regime_has_2_ranges(mmu_idx)) {
++            select = extract64(dirty_ptr, 55, 1);
++        } else {
++            select = 0;
++        }
++        env->cp15.tfsr_el[el] |= 1 << select;
++        break;
++
++    default:
++        /* Case 3: Reserved. */
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "Tag check failure with SCTLR_EL%d.TCF%s "
++                      "set to reserved value %d\n",
++                      reg_el, el ? "" : "0", tcf);
++        break;
++    }
++}
++
+ /*
+  * Perform an MTE checked access for a single logical or atomic access.
+  */
++static bool mte_probe1_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
++                           uintptr_t ra, int bit55)
++{
++    int mem_tag, mmu_idx, ptr_tag, size;
++    MMUAccessType type;
++    uint8_t *mem;
++
++    ptr_tag = allocation_tag_from_addr(ptr);
++
++    if (tcma_check(desc, bit55, ptr_tag)) {
++        return true;
++    }
++
++    mmu_idx = FIELD_EX32(desc, MTEDESC, MIDX);
++    type = FIELD_EX32(desc, MTEDESC, WRITE) ? MMU_DATA_STORE : MMU_DATA_LOAD;
++    size = FIELD_EX32(desc, MTEDESC, ESIZE);
++
++    mem = allocation_tag_mem(env, mmu_idx, ptr, type, size,
++                             MMU_DATA_LOAD, 1, ra);
++    if (!mem) {
++        return true;
++    }
++
++    mem_tag = load_tag1(ptr, mem);
++    return ptr_tag == mem_tag;
++}
++
++/* No-fault version of mte_check1, to be used by SVE for MemSingleNF. */
++bool mte_probe1(CPUARMState *env, uint32_t desc, uint64_t ptr, uintptr_t ra)
++{
++    int bit55 = extract64(ptr, 55, 1);
++
++    /* If TBI is disabled, the access is unchecked. */
++    if (unlikely(!tbi_check(desc, bit55))) {
++        return true;
++    }
++
++    return mte_probe1_int(env, desc, ptr, ra, bit55);
++}
++
++uint64_t mte_check1(CPUARMState *env, uint32_t desc, uint64_t ptr, uintptr_t ra)
++{
++    int bit55 = extract64(ptr, 55, 1);
++
++    /* If TBI is disabled, the access is unchecked, and ptr is not dirty. */
++    if (unlikely(!tbi_check(desc, bit55))) {
++        return ptr;
++    }
++
++    if (unlikely(!mte_probe1_int(env, desc, ptr, ra, bit55))) {
++        int mmu_idx = FIELD_EX32(desc, MTEDESC, MIDX);
++        mte_check_fail(env, mmu_idx, ptr, ra);
++    }
++
++    return useronly_clean_ptr(ptr);
++}
++
+ uint64_t HELPER(mte_check1)(CPUARMState *env, uint32_t desc, uint64_t ptr)
+ {
+-    return ptr;
++    return mte_check1(env, desc, ptr, GETPC());
+ }
  
-     if (is_postidx) {
-         if (rm == 31) {
--            tcg_gen_addi_i64(tcg_rn, tcg_rn, selem * ebytes);
-+            tcg_gen_addi_i64(tcg_rn, tcg_rn, total);
-         } else {
-             tcg_gen_add_i64(tcg_rn, tcg_rn, cpu_reg(s, rm));
-         }
+ /*
 -- 
 2.20.1

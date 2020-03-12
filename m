@@ -1,104 +1,106 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp905757lfc;
-        Thu, 12 Mar 2020 10:19:42 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsLbwIaaa70Qq/xsP+Lg1Eh2T0CDLZGL3tQGC9mAfTV+Hnlq36/N84nx+9o9+i2dLDJydeK
-X-Received: by 2002:aed:34e6:: with SMTP id x93mr917524qtd.194.1584033581930;
-        Thu, 12 Mar 2020 10:19:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584033581; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp908293lfc;
+        Thu, 12 Mar 2020 10:22:04 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuPqx9J2wxhUWgHnDNzeuB6L3YxE2ScOXUV24NWdKESFoSZ57WyRtIK1Q7lHeEDFp6cZZiN
+X-Received: by 2002:a37:bc1:: with SMTP id 184mr8644349qkl.57.1584033724438;
+        Thu, 12 Mar 2020 10:22:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584033724; cv=none;
         d=google.com; s=arc-20160816;
-        b=pK7L5F3NsoEo2hhiPRrVcPmjSvnK9mjozeWj2Iatc+Mlz1OT8q+PXm38/AcEMTcJTj
-         LajBe1mCRrskHm0jNKHO5RJnV+hsHyRH4Rbm7pzyjTu4mSe8hqYIMIFBNGTiazWe1370
-         k2SivfF9H15fo4fhWOKuHJtkHz29qqkzB2OTZk48AGEnqh9H9X13ngol9IrLmbC1gZbu
-         ZigIOd0/aSQEjFCv0Z+qXI//ul1/fYkJKP7U3isWINQU0a8g7qIRyj2+U73ERlS6t/ym
-         J4Lp5wSJgtpz0326I6Ii9Csc8QyaUwEAUhhIr67AT3D+9klOMg8R6La1jLAuoVrZxE2N
-         iESw==
+        b=ZPATUUCIArtHKJgFDEMwp6LAl7idanWQ/gQ+Q/qkXaZ1B/krma8Vyc6J3WOAElOjrV
+         iwc67MxB7WNGrnNGSrLZ45tbnFI8fp9tTXOp0TEsKyT7CIYxBcjdahOz8lb8yDSOPSCY
+         c9LT93sh+Zma0oWwC1KG+aHfRbuRxEdKOCOm4055v5mCPLrq01zgcbfcWc2m1H3AlrwT
+         84t8MTwY4JajhYBwJvDC1poCtYSA/rFHFV9aa4ii2qL9BtgS8HEI4tn3157/Eb6K6vax
+         gYCjTLxIM2lGrfLhxCeRcc+fjCQTcPOMyYsSjcLyQeBmjiRF2FnNrN17kh3boqAmm8wT
+         Tk7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:subject:to
          :from:date:dkim-signature;
-        bh=R1Klp5VmAGtpJcR4uZfnLflfD0zf1gm8bN8uDrXOuqw=;
-        b=rphI6BKT3jWVRjenHMpQ+08sAonwSAr0XnxGRDMc6oJkKYt0JcKEOy6JsBU1cVKgQV
-         HHPGRoxUvs2g/sWF4q0MLmkH0pWujDvD19kwxaQ+lRkCyIIgUJRXsqeSmVwCX0x9bRz0
-         cNRxp5Uq06yF3LaY1uTWzXS3PPEK9bgtpL3BmUAvrj6vq6xFuyKAtLNUBbRReGApXvZ+
-         +mR0vWEWSdOdYowbHPNZmmd2twEMXc2NvKTNKthUCOMNoG//8t6/+AovtHeR9D60i+RA
-         Y0DJ6BhCjA0i8lCmntl39t8fy4Z86eJg9Je0WuYGRtRCU4XNiHVQ11kxcf8sl+ClvyD8
-         sFqw==
+        bh=yThmBkuW2LdehValOsK92YJ4z7LhKs38L7+Dci/UMV8=;
+        b=DZIe+R3WTfEMqSvQ51fc3nA8gVDEdMhA/NX51oK/TRUwZ3A1r2CfPrB39N6ZZzaRv6
+         DLTwz1F3Hnafq8vt5lYLzdDhZlCMOLHNXl7qN356LZKJpUXiuVR/RszEBnvPOrf+duNT
+         sWp5Oq3xZh+S/b4t1ExGU1dGBnL8GXXqrG2bbsrgpwzApcu7W/czvnvvDSCKmuluVmCl
+         UevKX1cZQF6qYKsr+kfgoIkOzW6PwUtCoqyKhaLWnVqt9OjbjegOTQmOXCtA7wXB6lHD
+         JLforyggi+u1w6LbVjoSlQYU/oOVv15UIao/br1Y4JYXdztdwDmWDtlp75FOk/4+0Amr
+         qXjA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n2GlV9qa;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=djGOUB47;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f15si3074389qtp.395.2020.03.12.10.19.41
+        by mx.google.com with ESMTPS id 14si3253482qkb.162.2020.03.12.10.22.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Mar 2020 10:19:41 -0700 (PDT)
+        Thu, 12 Mar 2020 10:22:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n2GlV9qa;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=djGOUB47;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46450 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46540 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jCRUj-0008Cj-B3
-	for alex.bennee@linaro.org; Thu, 12 Mar 2020 13:19:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37674)
+	id 1jCRX1-0004dz-TI
+	for alex.bennee@linaro.org; Thu, 12 Mar 2020 13:22:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42185)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1jCR8m-0005Dr-L8
- for qemu-arm@nongnu.org; Thu, 12 Mar 2020 12:57:01 -0400
+ (envelope-from <groeck7@gmail.com>) id 1jCRVl-0002EQ-MI
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2020 13:20:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1jCR8l-0004U4-In
- for qemu-arm@nongnu.org; Thu, 12 Mar 2020 12:57:00 -0400
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:34039)
+ (envelope-from <groeck7@gmail.com>) id 1jCRVk-0005vn-DQ
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2020 13:20:45 -0400
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:33090)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1jCR8l-0004Rg-CY; Thu, 12 Mar 2020 12:56:59 -0400
-Received: by mail-pg1-x541.google.com with SMTP id t3so3358207pgn.1;
- Thu, 12 Mar 2020 09:56:59 -0700 (PDT)
+ id 1jCRVk-0005vY-6c; Thu, 12 Mar 2020 13:20:44 -0400
+Received: by mail-pg1-x543.google.com with SMTP id m5so3397075pgg.0;
+ Thu, 12 Mar 2020 10:20:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=R1Klp5VmAGtpJcR4uZfnLflfD0zf1gm8bN8uDrXOuqw=;
- b=n2GlV9qaxcgxAWMqLiIAArXZ7T8pEEua/Q1vbXXt3GGW03JhWe2miqdzBtUKzZ0IvT
- e9Ca2xCAuq+Zclf2zA5gaFjm4Sq3Tun54zSVGei94jDUPoULUCW3JLyOhCi67Pjr+JTz
- VPY8C8G03QyboWBtG7fkmolFmycRTbXKQowD8WtzWrkmuaUZFnottGfo2HVqiidygAJh
- fNN0cyWUaHDbQHzlnOppNy4elBEdH1t4dnH9EvCLDkBfAKR3IjVi9glZe+J5feZRh130
- sZ6DFRLLE2+NiCGVAt9DZFZQo/5x793638F/vBQ4AoiYoC6BhvjufSxhaKzdwOBl5ktx
- zSjw==
+ bh=yThmBkuW2LdehValOsK92YJ4z7LhKs38L7+Dci/UMV8=;
+ b=djGOUB475YL4CZMFaIOy3V9zmrXfRPXnevAeJafk00xB94yJoh5aBVVNkGZrzQVZez
+ gx2LFv2WP1HuVkdxTGdCl7WoU2MlbRE6Ukj38aAqJE1xYqUPxpWIjGk+HAWtiEo2ncuw
+ E+d5Nk8gSO3BFTyFTfJbMRTVqhcLr+OyR7wb4Xd8BAgmJ99EFQxUYp6tVTwQ31WsUQGY
+ QXO5h36UMxX4ZzUekD9WtUS9/qAtBj/vafycjnqrzcdO6xYLYOMLXkf4L3y8MIwQSQN5
+ rF3avUpeCLNONX7r4gFu04pMxPkP40z1cUFz+BL+0Eb32qbvwAFp+d5cKxeIwuYxmBoE
+ WWpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
  :references:mime-version:content-disposition:in-reply-to:user-agent;
- bh=R1Klp5VmAGtpJcR4uZfnLflfD0zf1gm8bN8uDrXOuqw=;
- b=kh+eaIdMRL3xw9AgEQKqiO+YQ8VePlw+37UJDDqQr+vYZnS8zxd6B6McRND3pKOt6H
- K1c82dEFVP5U+KS6rG73vDODbA5hIhat9OpOvmPXri/ivxZL7lal5E0o9W5t/OlXih8i
- YUwSSitgHKlondwSw2OOBv0nIXvBUSnZ1ALLU1GteOJ7DdGjg486YjtvxkEBbkUxCgEO
- 80BxVDX2lm03udC9uTjTgX8mXxsI9xCQ/fHInTPM1NVRQrfEzADyfMNfq0CLK8WXK74a
- pQ5OzS8mtvL3LkbCeYMi8twGc/LaW8g1xRNsmbm+s2d2nm7VJBFA4Rk0EQC0SuDENYyC
- S+TQ==
-X-Gm-Message-State: ANhLgQ11s+F5gH3hzalsoR6MuqEfKOdzMPGSrDPmzZyxMYaDgedsBDwZ
- ytfSpAAVcrSan8U9vqLx6cHVN6OC
-X-Received: by 2002:a63:e00c:: with SMTP id e12mr8766856pgh.354.1584032217640; 
- Thu, 12 Mar 2020 09:56:57 -0700 (PDT)
+ bh=yThmBkuW2LdehValOsK92YJ4z7LhKs38L7+Dci/UMV8=;
+ b=A4QuwkvbOXWvYQedEEuDKyZ2hi8rEdWyHhrIBqDTF0+120v5oOYe1XCJqLHDW4dTxB
+ UyN15R8ZtpTyeZhQWC6e7xSF52FldWSYjB+Sjzjt3GjbuMf93mi2QohlLpHhREF4Og9B
+ y5dRu4jrNZlsnSPKAjX1IfVo+jB8hLspJmKgd8xbtML4EyKVQGAomXnFRLfDqrnKTOg0
+ woXZaW4O9zPX5g91ELple8k/M1j3ECyDokwmMC45xd1kljS2zqByUFytpwv4GHgpXpgn
+ tV+d6FZxxGqCz+sLHcDCexlyf8XF43H4UoSsgeIH5MZb1ETtaXVEUz3FYmP1zkzp6LCm
+ UieQ==
+X-Gm-Message-State: ANhLgQ09qEcK3gl0Xz/Qi9hVTB4Ck8rvDC1SlW47FXcNEjlX1aItWMf8
+ s8OYLug9wNO4IHq8tX+cY8w=
+X-Received: by 2002:a63:9d0c:: with SMTP id i12mr8688044pgd.378.1584033642964; 
+ Thu, 12 Mar 2020 10:20:42 -0700 (PDT)
 Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id h132sm51332238pfe.118.2020.03.12.09.56.56
+ by smtp.gmail.com with ESMTPSA id e187sm3149706pfe.50.2020.03.12.10.20.41
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 12 Mar 2020 09:56:57 -0700 (PDT)
-Date: Thu, 12 Mar 2020 09:56:56 -0700
+ Thu, 12 Mar 2020 10:20:42 -0700 (PDT)
+Date: Thu, 12 Mar 2020 10:20:40 -0700
 From: Guenter Roeck <linux@roeck-us.net>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v2 3/3] hw/arm/fsl-imx6: Wire up USB controllers
-Message-ID: <20200312165656.GB16719@roeck-us.net>
+Subject: Re: [PATCH v2 2/3] hw/arm/fsl-imx6ul: Wire up USB controllers
+Message-ID: <20200312172040.GA18358@roeck-us.net>
 References: <20200310210434.31544-1-linux@roeck-us.net>
- <20200310210434.31544-4-linux@roeck-us.net>
- <CAFEAcA9itKNV6c07wm_4dJiGtHMLXCFt+A-W5xC5DX1Wxfu30w@mail.gmail.com>
+ <20200310210434.31544-3-linux@roeck-us.net>
+ <CAFEAcA811Zo6JjCait2G467oQo-nL0RTYVdqE-ofmDSxWPcuCQ@mail.gmail.com>
+ <20200312165511.GA16719@roeck-us.net>
+ <CAFEAcA8QKwrVyBz-iGe0+1Kr7efJZC7nwwrTTV0FSUnmcEW=xA@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAFEAcA9itKNV6c07wm_4dJiGtHMLXCFt+A-W5xC5DX1Wxfu30w@mail.gmail.com>
+In-Reply-To: <CAFEAcA8QKwrVyBz-iGe0+1Kr7efJZC7nwwrTTV0FSUnmcEW=xA@mail.gmail.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::541
+X-Received-From: 2607:f8b0:4864:20::543
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,39 +117,77 @@ Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
  Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KDIs9RCbhrGm
+X-TUID: TV2GI4NnV2zH
 
-On Thu, Mar 12, 2020 at 01:29:34PM +0000, Peter Maydell wrote:
-> On Tue, 10 Mar 2020 at 21:04, Guenter Roeck <linux@roeck-us.net> wrote:
+On Thu, Mar 12, 2020 at 05:05:25PM +0000, Peter Maydell wrote:
+> On Thu, 12 Mar 2020 at 16:55, Guenter Roeck <linux@roeck-us.net> wrote:
 > >
-> > With this patch, the USB controllers on 'sabrelite' are detected
-> > and can be used to boot the system.
+> > On Thu, Mar 12, 2020 at 01:19:41PM +0000, Peter Maydell wrote:
+> > > On Tue, 10 Mar 2020 at 21:04, Guenter Roeck <linux@roeck-us.net> wrote:
+> > > > diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+> > > > @@ -456,6 +467,28 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
+> > > >                                              FSL_IMX6UL_ENETn_TIMER_IRQ[i]));
+> > > >      }
+> > > >
+> > > > +    /* USB */
+> > > > +    for (i = 0; i < FSL_IMX6UL_NUM_USBS; i++) {
+> > > > +        static const int FSL_IMX6UL_USBn_IRQ[] = {
+> > > > +            FSL_IMX6UL_USB2_IRQ,
+> > > > +            FSL_IMX6UL_USB1_IRQ,
+> > > > +        };
+> > >
+> > > Do we really want to wire up USB1 to USB2_IRQ and USB2 to USB1_IRQ ?
+> > > If so, a comment explaining that it is deliberate would be useful.
+> > >
+> > Yes. I think the definitions may be incorrect (or the Linux dts files are
+> > incorrect, but that seems unlikely). I tried the other way but then I get
+> > unhandled interrupt errors when trying to access a USB flash drive.
+> 
+> I guess we should check the datasheet and see if we just
+> have our #define names the wrong way around...
+> 
+
+From "i.MX 6UltraLite Applications Processor Reference Manual":
+
+74 USB USBO2 USB OTG2
+75 USB USBO2 USB OTG1
+76 USB_PHY UTMI0 interrupt request
+77 USB_PHY UTMI1 interrupt request
+
+So it looks like the dts files in the Linux kernel are correct.
+
+> > > Side note: not used here, but in the header file we define:
+> > >     FSL_IMX6UL_USB1_IRQ     = 42,
+> > >     FSL_IMX6UL_USB2_IRQ     = 43,
+> > >     FSL_IMX6UL_USB_PHY1_IRQ = 44,
+> > >     FSL_IMX6UL_USB_PHY2_IRQ = 44,
+> > >
+> > > Is that last one correct, or a cut-n-paste error that should be "45" ?
+> > >
+> > From Linux devicetree files:
 > >
-> > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> >         usbphy1: usbphy@20c9000 {
+> >                 compatible = "fsl,imx6ul-usbphy", "fsl,imx23-usbphy";
+> >                 reg = <0x020c9000 0x1000>;
+> >                 interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
+> >         usbphy2: usbphy@20ca000 {
+> >                 compatible = "fsl,imx6ul-usbphy", "fsl,imx23-usbphy";
+> >                 reg = <0x020ca000 0x1000>;
+> >                 interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
+> >         usbotg1: usb@2184000 {
+> >                 compatible = "fsl,imx6ul-usb", "fsl,imx27-usb";
+> >                 reg = <0x02184000 0x200>;
+> >                 interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
+> >         usbotg2: usb@2184200 {
+> >                 compatible = "fsl,imx6ul-usb", "fsl,imx27-usb";
+> >                 reg = <0x02184200 0x200>;
+> >                 interrupts = <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH>;
+> >
+> > Should I maybe fix the definitions in a separate patch ?
 > 
-> > +    for (i = 0; i < FSL_IMX6_NUM_USBS; i++) {
-> > +        static const int FSL_IMX6_USBn_IRQ[] = {
-> > +            FSL_IMX6_USB_OTG_IRQ,
-> > +            FSL_IMX6_USB_HOST1_IRQ,
-> > +            FSL_IMX6_USB_HOST2_IRQ,
-> > +            FSL_IMX6_USB_HOST3_IRQ,
-> > +        };
-> > +
-> > +        object_property_set_bool(OBJECT(&s->usbphy[i]), true, "realized",
-> > +                                 &error_abort);
-> > +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->usbphy[i]), 0,
-> > +                        FSL_IMX6_USBPHY1_ADDR + i * 0x1000);
+> Yes please.
 > 
-> Are you sure these addresses are right? Four of these starting
-> at USBPHY1_ADDR means the last one clashes with what we define
-> as "FSL_IMX6_SNVSHP_ADDR 0x020CC000".
-> 
-> I only have the i.MX 6Dual/6Quad reference manual to hand,
-> so maybe this imx6 variant is different, but that document
-> says there are 4 USB controllers but only 2 PHY blocks.
-> 
-Oops, I think you are correct. Good catch. I'll re-check the datsheet
-and send an updated patch.
+Ok, will do. And, sorry, I should have done that in the first place.
 
 Thanks,
 Guenter

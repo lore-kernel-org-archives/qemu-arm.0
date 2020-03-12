@@ -1,457 +1,112 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp966400lfc;
-        Thu, 12 Mar 2020 11:08:05 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsWBavMLBLuhQdU6kS92LtpLbVyBcuSePsyy2TbORHXxOOZa3ps22GMLQmNGkgRSanHuYeq
-X-Received: by 2002:ae9:eb12:: with SMTP id b18mr9262653qkg.168.1584036485345;
-        Thu, 12 Mar 2020 11:08:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584036485; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1087036lfc;
+        Thu, 12 Mar 2020 12:42:23 -0700 (PDT)
+X-Received: by 2002:a17:90a:2147:: with SMTP id a65mr5642701pje.176.1584042143169;
+        Thu, 12 Mar 2020 12:42:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584042143; cv=none;
         d=google.com; s=arc-20160816;
-        b=vcVMmhGZreLRRCihG3ovaIywQTEMbQnl90vi+k7ynCj+hX5TrVHExk5SCfWCx/i/Mf
-         gPCHoNyjQ/Zx5kB53chxZ1is8opk2XuPa4nk/GaABfl9P+LKXCbAgV/HpTA4A3cE5Jd8
-         rLiYS03jx5bzaX64qtVkaoz2GJEPZWhUv4K7B3MlkCm/N6/1x4uHySnIGfAUCYoft5x+
-         GFxdAXuduj0FvjPmuU9/s7Po+6UMOzi6Dy2K8H2ys+20RAsNMJC4cAPg7itvyxrEmHji
-         k5kv0WWvyt43tnK7qzYgdANBN2XO9y0Pa/cUn+vll6/wANM7egy1hWRLHZeb2ra7W5W3
-         qbFA==
+        b=oi+nG387Ey8VtyL4M97Tv7J8ZTjkGKJN+nzPhvCghkHvGwYqiQcUQg7KmohlkXsw38
+         BH4ybBzoA63FIsjFJn8rpoDp4Zz1GJOVeCaWec3pDRULjmW1FBl0SlVpazwQw9hGVdxo
+         3aVJGHaPdarmFVpFjxZtK1F/xFRbjxQl1F+TY7G4B4oYBNe2L6Ji4r5c+21oLNZd/pD1
+         FxYiiPDu+PnEXKR9zAmRPti+SRlkQFN7LjmM3UbGiKbO+/mqV2mW0sFpEEo8k50Gvu9G
+         YLF34dQNqrltDKnHWo5oL8ASTlMfDGhmtyO2dnr8zstp1XqbkCa1DOZIRqcXoSiDuLDj
+         Eb5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:user-agent:in-reply-to:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=rjjk5DZbniRzVmALfrMcx+UXIqvi6YT8DrtlqaEc59A=;
-        b=i5s2OLQlbESRLMAq2I/Nazboe6eBotTwMbF7tk5e2CDlOYN7wqbwMGDex/MrbQBBRQ
-         3NkcC7yPfJykhUbf8TbXt6MimlGK2BXsik8QtHxGE+5wuuvrjzCH4D4pmz3P/1zYbIV3
-         ip0SkXRSl5cPaUL9Za12WeMII4lGmgDqkutdJKidd4LeUxoCd0cvWfEhbGetXutzu2YA
-         Zq+QOaujWZ5VAgVW8sVDRFq95dmuihdoEIuNmMYbRmXp4pv/V7QUmZaf+hpimxLj+UMK
-         ePO71/DkXRaCFhBdYlJoXFNNGHW2xrT7OhQBy4EEdtxX4DeNFPUHCz5JdIO7eZqna2mR
-         FLhA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=X41LntIfpFnOp1tmXD1Hx9tL8xRzEZP+j1F/1N0KBdg=;
+        b=Jqvm1C5gc6bx2l0c3ST6e0n3SpmzVtucDo0epEF3fXg4o1b7sRmBlFdCvynNVuUjqe
+         ItPvrbWcGpZ7JT+NLSd1Smb7/dofjHXb7WD7Z3sF/O1FIABKP4bjciaicPci/X/6ZgdN
+         0vlFcvnIJlftF3AcrD06D9Y0iw8ntkxxnbIubiaTZwfRV7hDf7cSEU6ni3Q2y5zMIkhR
+         bLELYmDyhQWVaN1noJNwzVhCynpYyVzpNx2r53cTYUpzTSFNjJn68pMnlcn+/U/fIoIL
+         SVF5G942hSpNwO7Iww6GYe5+asfaanEEywaaBK5CU30MbELyz/Y3IDqa4oe6SlJIDV+Q
+         wEMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="JZbODNO/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ez9si3000359qvb.128.2020.03.12.11.08.05
+       dkim=pass header.i=@linaro.org header.s=google header.b=YvaIySu4;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id p97sor6768529pjp.25.2020.03.12.12.42.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Mar 2020 11:08:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 12 Mar 2020 12:42:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="JZbODNO/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47388 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jCSFY-0002fB-LB
-	for alex.bennee@linaro.org; Thu, 12 Mar 2020 14:08:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53500)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgilbert@redhat.com>) id 1jCSFO-0002Xn-J8
- for qemu-arm@nongnu.org; Thu, 12 Mar 2020 14:07:56 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgilbert@redhat.com>) id 1jCSFM-0003Ml-Fg
- for qemu-arm@nongnu.org; Thu, 12 Mar 2020 14:07:54 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:31233
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1jCSFM-0003FO-9T
- for qemu-arm@nongnu.org; Thu, 12 Mar 2020 14:07:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584036470;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=rjjk5DZbniRzVmALfrMcx+UXIqvi6YT8DrtlqaEc59A=;
- b=JZbODNO/aOtKRe+OIb9GcQ4jj9xCtqp5BscHdOrNU/cxZeJ59RNMz6Twl4mFm/3dzk918k
- lSdm2zO4XkaSu9lvZ5MJHBhbtti9kp0Jf/H/b6lOH68r1XwQhzGcAMaBGOfim1s91GIbK2
- vQYg6kcE/Ix8RpkYid0lq4eQ5ez+vPo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-361-j95Z4wAPNO2naHAGD_usQQ-1; Thu, 12 Mar 2020 14:07:47 -0400
-X-MC-Unique: j95Z4wAPNO2naHAGD_usQQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1B1B11034B3A;
- Thu, 12 Mar 2020 18:07:46 +0000 (UTC)
-Received: from work-vm (ovpn-116-106.ams2.redhat.com [10.36.116.106])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B2F4060FCC;
- Thu, 12 Mar 2020 18:07:38 +0000 (UTC)
-Date: Thu, 12 Mar 2020 18:07:35 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Keqian Zhu <zhukeqian1@huawei.com>
-Subject: Re: [PATCH] migration/throttle: Add throttle-trig-thres migration
- parameter
-Message-ID: <20200312180735.GL3211@work-vm>
-References: <20200224023142.39360-1-zhukeqian1@huawei.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=YvaIySu4;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=X41LntIfpFnOp1tmXD1Hx9tL8xRzEZP+j1F/1N0KBdg=;
+        b=YvaIySu4S+qagbhGEolpvRxDVWQr7YGrPXgAmtn6YLYp4OCeTISuJ8hj5xcPenA8ws
+         dvBl0XE4lvnDy4KSkLJjlyOts0c3PJjB5L7qD940RHPbw53Eajd0QSXVc9bPA+fCevsf
+         OBF+N+QR+nNHGevuFZ82mp/dHo536EH4zvaz7TK1ccW+Zm8khkhUfyX2ghRz/TiiuT+f
+         3U9CxZAs0hwBTxImWD7EZnPI2U8SqmKCI2Hz6jAq5YqlLhzuzlq8UqJtLPtJQD8SJcmv
+         cXpf79bgY6hYZrI5AA/efqUNILKkRpXSNx4BORcsgyWCvSzVP87d+4JIx13+jYGOQ6PZ
+         +bnQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=X41LntIfpFnOp1tmXD1Hx9tL8xRzEZP+j1F/1N0KBdg=;
+        b=Bz6NOh51ENg3Mj51LakixiGjCDh/m/3i6Kq/ZQARLfj9gbCIubT+SSeorCt4c6IUC5
+         0+MMZNBiBYMIQ4E32CXSPBBayZo/P2N2Hh7Zsw7A/BCBEzC0AQ3v/I4NQnqtSzSILYp1
+         fJdO6ozeZ2pT6NYT/+M/Aebqyk8O9vT8ZrIcIHOfK5Ad0G1SWz5p4Ru+eOkyyx0VW2eS
+         QlY/zGg/mF/xbURTRIZ7kupAo0WqZJs+Uwrzj6FO1727NVTB/pcEgmkseIQtsECckBaZ
+         6ML+8YZJx8XdOK8762XzveEDC0HKr3Ox0WO4TQxEtJwTCzeZo7vEFqHv4bDb5IuVtAi0
+         3jBQ==
+X-Gm-Message-State: ANhLgQ3stKC8z+IqfC3Agf3wFApLFHAZUT6ki3WhYwWXj4fnQfUs1/iz
+	w+b8Zlavp9I59rfGQoFj6/rGgwIm
+X-Google-Smtp-Source: ADFU+vt7599WRlJaM9rFkrZFruM/D1gP+C2OU+67Us4sS+uMgWznnD0y4Kti9ifHUyNDobqLidXeTg==
+X-Received: by 2002:a17:90a:d585:: with SMTP id v5mr5827956pju.4.1584042142715;
+        Thu, 12 Mar 2020 12:42:22 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net. [97.126.123.70])
+        by smtp.gmail.com with ESMTPSA id g69sm6824842pje.34.2020.03.12.12.42.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Mar 2020 12:42:22 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org,
+	qemu-arm@nongnu.org,
+	alex.bennee@linaro.org
+Subject: [PATCH v6 01/42] target/arm: Add isar tests for mte
+Date: Thu, 12 Mar 2020 12:41:38 -0700
+Message-Id: <20200312194219.24406-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200312194219.24406-1-richard.henderson@linaro.org>
+References: <20200312194219.24406-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20200224023142.39360-1-zhukeqian1@huawei.com>
-User-Agent: Mutt/1.13.3 (2020-01-12)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- wanghaibin.wang@huawei.com, Eric Blake <eblake@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SancgJMvbaR3
+Content-Transfer-Encoding: 8bit
+X-TUID: gimB4zAk6ueU
 
-* Keqian Zhu (zhukeqian1@huawei.com) wrote:
-> Currently, if the bytes_dirty_period is more than the 50% of
-> bytes_xfer_period, we start or increase throttling.
->=20
-> If we make this percentage higher, then we can tolerate higher
-> dirty rate during migration, which means less impact on guest.
-> The side effect of higher percentage is longer migration time.
-> We can make this parameter configurable to switch between mig-
-> ration time first or guest performance first.
->=20
-> The default value is 50 and valid range is 1 to 100.
->=20
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.h | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-Apologies for the delay.
-This looks fine now; so
-
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-
-and I'll queue it.
-I think we could do with a better description than the current one if we
-can find it:
-
- The ratio of bytes_dirty_period and bytes_xfer_period
- to trigger throttling. It is expressed as percentage.
-
-assumes people understand what those bytes*period mean.
-
-Still, until we do:
-
-Queued for migration
-
-> ---
-> Changelog:
->=20
-> v1->v2
->  -Use full name for parameter. Suggested by Eric Blake.
->  -Change the upper bound of threshold to 100.
->  -Extract the throttle strategy as function.
->=20
-> ---
-> Cc: Juan Quintela <quintela@redhat.com>
-> Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-> Cc: Eric Blake <eblake@redhat.com>
-> Cc: Markus Armbruster <armbru@redhat.com>
->=20
-> ---
->  migration/migration.c | 24 ++++++++++++++++++++
->  migration/ram.c       | 52 +++++++++++++++++++++++++------------------
->  monitor/hmp-cmds.c    |  7 ++++++
->  qapi/migration.json   | 16 ++++++++++++-
->  4 files changed, 76 insertions(+), 23 deletions(-)
->=20
-> diff --git a/migration/migration.c b/migration/migration.c
-> index 8fb68795dc..42d2d556e3 100644
-> --- a/migration/migration.c
-> +++ b/migration/migration.c
-> @@ -78,6 +78,7 @@
->  /*0: means nocompress, 1: best speed, ... 9: best compress ratio */
->  #define DEFAULT_MIGRATE_COMPRESS_LEVEL 1
->  /* Define default autoconverge cpu throttle migration parameters */
-> +#define DEFAULT_MIGRATE_THROTTLE_TRIGGER_THRESHOLD 50
->  #define DEFAULT_MIGRATE_CPU_THROTTLE_INITIAL 20
->  #define DEFAULT_MIGRATE_CPU_THROTTLE_INCREMENT 10
->  #define DEFAULT_MIGRATE_MAX_CPU_THROTTLE 99
-> @@ -778,6 +779,8 @@ MigrationParameters *qmp_query_migrate_parameters(Err=
-or **errp)
->      params->compress_wait_thread =3D s->parameters.compress_wait_thread;
->      params->has_decompress_threads =3D true;
->      params->decompress_threads =3D s->parameters.decompress_threads;
-> +    params->has_throttle_trigger_threshold =3D true;
-> +    params->throttle_trigger_threshold =3D s->parameters.throttle_trigge=
-r_threshold;
->      params->has_cpu_throttle_initial =3D true;
->      params->cpu_throttle_initial =3D s->parameters.cpu_throttle_initial;
->      params->has_cpu_throttle_increment =3D true;
-> @@ -1164,6 +1167,15 @@ static bool migrate_params_check(MigrationParamete=
-rs *params, Error **errp)
->          return false;
->      }
-> =20
-> +    if (params->has_throttle_trigger_threshold &&
-> +        (params->throttle_trigger_threshold < 1 ||
-> +         params->throttle_trigger_threshold > 100)) {
-> +        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
-> +                   "throttle_trigger_threshold",
-> +                   "an integer in the range of 1 to 100");
-> +        return false;
-> +    }
-> +
->      if (params->has_cpu_throttle_initial &&
->          (params->cpu_throttle_initial < 1 ||
->           params->cpu_throttle_initial > 99)) {
-> @@ -1279,6 +1291,10 @@ static void migrate_params_test_apply(MigrateSetPa=
-rameters *params,
->          dest->decompress_threads =3D params->decompress_threads;
->      }
-> =20
-> +    if (params->has_throttle_trigger_threshold) {
-> +        dest->throttle_trigger_threshold =3D params->throttle_trigger_th=
-reshold;
-> +    }
-> +
->      if (params->has_cpu_throttle_initial) {
->          dest->cpu_throttle_initial =3D params->cpu_throttle_initial;
->      }
-> @@ -1360,6 +1376,10 @@ static void migrate_params_apply(MigrateSetParamet=
-ers *params, Error **errp)
->          s->parameters.decompress_threads =3D params->decompress_threads;
->      }
-> =20
-> +    if (params->has_throttle_trigger_threshold) {
-> +        s->parameters.throttle_trigger_threshold =3D params->throttle_tr=
-igger_threshold;
-> +    }
-> +
->      if (params->has_cpu_throttle_initial) {
->          s->parameters.cpu_throttle_initial =3D params->cpu_throttle_init=
-ial;
->      }
-> @@ -3506,6 +3526,9 @@ static Property migration_properties[] =3D {
->      DEFINE_PROP_UINT8("x-decompress-threads", MigrationState,
->                        parameters.decompress_threads,
->                        DEFAULT_MIGRATE_DECOMPRESS_THREAD_COUNT),
-> +    DEFINE_PROP_UINT8("x-throttle-trigger-threshold", MigrationState,
-> +                      parameters.throttle_trigger_threshold,
-> +                      DEFAULT_MIGRATE_THROTTLE_TRIGGER_THRESHOLD),
->      DEFINE_PROP_UINT8("x-cpu-throttle-initial", MigrationState,
->                        parameters.cpu_throttle_initial,
->                        DEFAULT_MIGRATE_CPU_THROTTLE_INITIAL),
-> @@ -3606,6 +3629,7 @@ static void migration_instance_init(Object *obj)
->      params->has_compress_level =3D true;
->      params->has_compress_threads =3D true;
->      params->has_decompress_threads =3D true;
-> +    params->has_throttle_trigger_threshold =3D true;
->      params->has_cpu_throttle_initial =3D true;
->      params->has_cpu_throttle_increment =3D true;
->      params->has_max_bandwidth =3D true;
-> diff --git a/migration/ram.c b/migration/ram.c
-> index ed23ed1c7c..3a38253903 100644
-> --- a/migration/ram.c
-> +++ b/migration/ram.c
-> @@ -896,11 +896,38 @@ static void migration_update_rates(RAMState *rs, in=
-t64_t end_time)
->      }
->  }
-> =20
-> +static void migration_trigger_throttle(RAMState *rs)
-> +{
-> +    MigrationState *s =3D migrate_get_current();
-> +    uint64_t threshold =3D s->parameters.throttle_trigger_threshold;
-> +
-> +    uint64_t bytes_xfer_period =3D ram_counters.transferred - rs->bytes_=
-xfer_prev;
-> +    uint64_t bytes_dirty_period =3D rs->num_dirty_pages_period * TARGET_=
-PAGE_SIZE;
-> +    uint64_t bytes_dirty_threshold =3D bytes_xfer_period * threshold / 1=
-00;
-> +
-> +    /* During block migration the auto-converge logic incorrectly detect=
-s
-> +     * that ram migration makes no progress. Avoid this by disabling the
-> +     * throttling logic during the bulk phase of block migration. */
-> +    if (migrate_auto_converge() && !blk_mig_bulk_active()) {
-> +        /* The following detection logic can be refined later. For now:
-> +           Check to see if the ratio between dirtied bytes and the appro=
-x.
-> +           amount of bytes that just got transferred since the last time
-> +           we were in this routine reaches the threshold. If that happen=
-s
-> +           twice, start or increase throttling. */
-> +
-> +        if ((bytes_dirty_period > bytes_dirty_threshold) &&
-> +            (++rs->dirty_rate_high_cnt >=3D 2)) {
-> +            trace_migration_throttle();
-> +            rs->dirty_rate_high_cnt =3D 0;
-> +            mig_throttle_guest_down();
-> +        }
-> +    }
-> +}
-> +
->  static void migration_bitmap_sync(RAMState *rs)
->  {
->      RAMBlock *block;
->      int64_t end_time;
-> -    uint64_t bytes_xfer_now;
-> =20
->      ram_counters.dirty_sync_count++;
-> =20
-> @@ -927,26 +954,7 @@ static void migration_bitmap_sync(RAMState *rs)
-> =20
->      /* more than 1 second =3D 1000 millisecons */
->      if (end_time > rs->time_last_bitmap_sync + 1000) {
-> -        bytes_xfer_now =3D ram_counters.transferred;
-> -
-> -        /* During block migration the auto-converge logic incorrectly de=
-tects
-> -         * that ram migration makes no progress. Avoid this by disabling=
- the
-> -         * throttling logic during the bulk phase of block migration. */
-> -        if (migrate_auto_converge() && !blk_mig_bulk_active()) {
-> -            /* The following detection logic can be refined later. For n=
-ow:
-> -               Check to see if the dirtied bytes is 50% more than the ap=
-prox.
-> -               amount of bytes that just got transferred since the last =
-time we
-> -               were in this routine. If that happens twice, start or inc=
-rease
-> -               throttling */
-> -
-> -            if ((rs->num_dirty_pages_period * TARGET_PAGE_SIZE >
-> -                   (bytes_xfer_now - rs->bytes_xfer_prev) / 2) &&
-> -                (++rs->dirty_rate_high_cnt >=3D 2)) {
-> -                    trace_migration_throttle();
-> -                    rs->dirty_rate_high_cnt =3D 0;
-> -                    mig_throttle_guest_down();
-> -            }
-> -        }
-> +        migration_trigger_throttle(rs);
-> =20
->          migration_update_rates(rs, end_time);
-> =20
-> @@ -955,7 +963,7 @@ static void migration_bitmap_sync(RAMState *rs)
->          /* reset period counters */
->          rs->time_last_bitmap_sync =3D end_time;
->          rs->num_dirty_pages_period =3D 0;
-> -        rs->bytes_xfer_prev =3D bytes_xfer_now;
-> +        rs->bytes_xfer_prev =3D ram_counters.transferred;
->      }
->      if (migrate_use_events()) {
->          qapi_event_send_migration_pass(ram_counters.dirty_sync_count);
-> diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
-> index 53bc3f76c4..de67d0bd53 100644
-> --- a/monitor/hmp-cmds.c
-> +++ b/monitor/hmp-cmds.c
-> @@ -409,6 +409,10 @@ void hmp_info_migrate_parameters(Monitor *mon, const=
- QDict *qdict)
->          monitor_printf(mon, "%s: %u\n",
->              MigrationParameter_str(MIGRATION_PARAMETER_DECOMPRESS_THREAD=
-S),
->              params->decompress_threads);
-> +        assert(params->has_throttle_trigger_threshold);
-> +        monitor_printf(mon, "%s: %u\n",
-> +            MigrationParameter_str(MIGRATION_PARAMETER_THROTTLE_TRIGGER_=
-THRESHOLD),
-> +            params->throttle_trigger_threshold);
->          assert(params->has_cpu_throttle_initial);
->          monitor_printf(mon, "%s: %u\n",
->              MigrationParameter_str(MIGRATION_PARAMETER_CPU_THROTTLE_INIT=
-IAL),
-> @@ -1764,6 +1768,9 @@ void hmp_migrate_set_parameter(Monitor *mon, const =
-QDict *qdict)
->          p->has_decompress_threads =3D true;
->          visit_type_int(v, param, &p->decompress_threads, &err);
->          break;
-> +    case MIGRATION_PARAMETER_THROTTLE_TRIGGER_THRESHOLD:
-> +        p->has_throttle_trigger_threshold =3D true;
-> +        visit_type_int(v, param, &p->throttle_trigger_threshold, &err);
->      case MIGRATION_PARAMETER_CPU_THROTTLE_INITIAL:
->          p->has_cpu_throttle_initial =3D true;
->          visit_type_int(v, param, &p->cpu_throttle_initial, &err);
-> diff --git a/qapi/migration.json b/qapi/migration.json
-> index 52f3429969..0e7ac64c98 100644
-> --- a/qapi/migration.json
-> +++ b/qapi/migration.json
-> @@ -524,6 +524,10 @@
->  #                      compression, so set the decompress-threads to the=
- number about 1/4
->  #                      of compress-threads is adequate.
->  #
-> +# @throttle-trigger-threshold: The ratio of bytes_dirty_period and bytes=
-_xfer_period
-> +#                              to trigger throttling. It is expressed as=
- percentage.
-> +#                              The default value is 50. (Since 5.0)
-> +#
->  # @cpu-throttle-initial: Initial percentage of time guest cpus are throt=
-tled
->  #                        when migration auto-converge is activated. The
->  #                        default value is 20. (Since 2.7)
-> @@ -592,7 +596,7 @@
->    'data': ['announce-initial', 'announce-max',
->             'announce-rounds', 'announce-step',
->             'compress-level', 'compress-threads', 'decompress-threads',
-> -           'compress-wait-thread',
-> +           'compress-wait-thread', 'throttle-trigger-threshold',
->             'cpu-throttle-initial', 'cpu-throttle-increment',
->             'tls-creds', 'tls-hostname', 'tls-authz', 'max-bandwidth',
->             'downtime-limit', 'x-checkpoint-delay', 'block-incremental',
-> @@ -626,6 +630,10 @@
->  #
->  # @decompress-threads: decompression thread count
->  #
-> +# @throttle-trigger-threshold: The ratio of bytes_dirty_period and bytes=
-_xfer_period
-> +#                              to trigger throttling. It is expressed as=
- percentage.
-> +#                              The default value is 50. (Since 5.0)
-> +#
->  # @cpu-throttle-initial: Initial percentage of time guest cpus are
->  #                        throttled when migration auto-converge is activ=
-ated.
->  #                        The default value is 20. (Since 2.7)
-> @@ -701,6 +709,7 @@
->              '*compress-threads': 'int',
->              '*compress-wait-thread': 'bool',
->              '*decompress-threads': 'int',
-> +            '*throttle-trigger-threshold': 'int',
->              '*cpu-throttle-initial': 'int',
->              '*cpu-throttle-increment': 'int',
->              '*tls-creds': 'StrOrNull',
-> @@ -759,6 +768,10 @@
->  #
->  # @decompress-threads: decompression thread count
->  #
-> +# @throttle-trigger-threshold: The ratio of bytes_dirty_period and bytes=
-_xfer_period
-> +#                              to trigger throttling. It is expressed as=
- percentage.
-> +#                              The default value is 50. (Since 5.0)
-> +#
->  # @cpu-throttle-initial: Initial percentage of time guest cpus are
->  #                        throttled when migration auto-converge is activ=
-ated.
->  #                        (Since 2.7)
-> @@ -834,6 +847,7 @@
->              '*compress-threads': 'uint8',
->              '*compress-wait-thread': 'bool',
->              '*decompress-threads': 'uint8',
-> +            '*throttle-trigger-threshold': 'uint8',
->              '*cpu-throttle-initial': 'uint8',
->              '*cpu-throttle-increment': 'uint8',
->              '*tls-creds': 'str',
-> --=20
-> 2.19.1
->=20
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 4ffd991b6f..a77b0d97ac 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3777,6 +3777,16 @@ static inline bool isar_feature_aa64_bti(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, BT) != 0;
+ }
+ 
++static inline bool isar_feature_aa64_mte_insn_reg(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, MTE) != 0;
++}
++
++static inline bool isar_feature_aa64_mte(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, MTE) >= 2;
++}
++
+ static inline bool isar_feature_aa64_pmu_8_1(const ARMISARegisters *id)
+ {
+     return FIELD_EX64(id->id_aa64dfr0, ID_AA64DFR0, PMUVER) >= 4 &&
+-- 
+2.20.1

@@ -1,143 +1,170 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp131365lfc;
-        Wed, 11 Mar 2020 21:38:50 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtBf/vC2eg3cx/467hZDIjInqZCZSwb3AQCIb2ucFhY8DjRQOz1qgncUNgYzUDHHTwKt5lk
-X-Received: by 2002:ae9:efd1:: with SMTP id d200mr5286006qkg.79.1583987929976;
-        Wed, 11 Mar 2020 21:38:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583987929; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp380907lfc;
+        Thu, 12 Mar 2020 02:20:08 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vthixkahuFg7l/neHov1F14BjzG0V0/BmOYrTeHYbzWaUxPBR6UYjNo/+50HMHqcjZ83b/r
+X-Received: by 2002:a05:6830:1b6e:: with SMTP id d14mr5451011ote.117.1584004808489;
+        Thu, 12 Mar 2020 02:20:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584004808; cv=none;
         d=google.com; s=arc-20160816;
-        b=mbQSwU0g20QCbNfn1N5lpbPzYPpy06DjK4dkrj81uquOdMKresKSsLTFkXdr5tiv5G
-         +SzM/mm3BE+HrTcDMkgvD6SHi+kXCdHEsAzgdRcs+GWRBqif4UjvfKOs9VE4LA99vXAH
-         n6yMTHTxn1NY6yBo4Ukf4tPd0jRvcWu+LWT4iYuyyY/XeUyJmfDo1xmlTFqLbbFvuLNf
-         EMlPSwVxArGx7qzRM+VT9UOH5ezKJ7YPRLm3G5UQw3N7Haj2WskgPhOaEpt2KCvMacDG
-         u6mnIpg86IJ+LfGPD9gjrTf+3x9XVX3wSUiXo+BY76YL3BjfJ3Q0S05qV2NQZnLfOnai
-         qYsQ==
+        b=y5ILnPB5uAOXj+wANQKnb+C5ZMY0xkeCvVBU6VeCh8MN2nVuVsZa9eDF3dVETsAZj3
+         o0UZVtDFtO/1/QLfQXDj9Vvpr5WDuDfID9Mplmgwm+C4N/jeL8+zkkI+HaEj/kS9WrOo
+         UrDuj9lIouOBkq3UdwHvAFUypO++CKePYFr4FH/Uy3s7FWbiXieY0ojcWPO+fRc86y6m
+         1YqEq3GpkNQRz9DGZG54w2jCj276YBgouq/zSq9bQOtMO8WXEk+uh5h7wts4Tn1nC/Gf
+         JdiFDM0YaXCY0oqP9w7nBLx6SQ3pYNHb6RllPcZYPzUXENBaDAnlaKwgcQI9YZPFVt/w
+         SK5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+        h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject:dkim-signature;
-        bh=BPruapG5gkRbwPfWuXzqL/1TOcvgyX/vSJbSLtZKK5w=;
-        b=X2Eq/8raDd37lCMDwhsrCrXdPLqpXsNnqZ/oxVxBRmAaZ1WPAzmB42rKJlq/qDK2Im
-         /QHCpkWzxp67sGVoed3MFxeCXxOlHgc6KPRZQjgLGZLhRMWE5uNCMuMWVvm5Ls8AHdjE
-         BuySdfr+LA9MyJve2M3axsY6NP9MfWXYdbEiLIBYix+8i5OtzOYOy4xzWEEqgEzdruWu
-         rctiZ0ZYMgO0yQJhUJZLHBltf6T0VNDVgsybeoIo/YotjLCczLbRP8agra+rLiv2QGkW
-         faNQPjqfWTU6XdmL2BW6gNIdEoAl+MhrhaARy7fNEIVaAhVtlKfWu/AJ1Sp2pjYGIIOW
-         3MVg==
+         :message-id:from:references:cc:to:subject;
+        bh=WT70PB2oWUZCjQ4Swp57FMuf1ze9qTJSPeAnmi6bj3s=;
+        b=EizjskSDH0Lr8VYhKTMsIjKv7q6b1BE0M++9/Fu1PSm9I6RDLlu/dh8BFRwoWJE8MX
+         jAa22fQ++w/OwtJpVKebz70bIAn7QofjjDY8kuqJfTQLSwzFS8FhPtjhOUoQ46HMNMt2
+         tcq3sAKnGdApMhtIocJ5U9E43/tSNoQDIK+MR780k1bQDyDsuPSDIrCnMxnxTpp5g39h
+         NOtTnBcwBJB+rTCIb2w4PO/lS5TzcOu0UIwVzOAVVqh0OcRX+F7F9dGkEuATb3J6vGpt
+         +sGsq4ugC4Ryo0c2Nxaix2nCfXdn9Xoalp4kkLVjyHvWkLjBy72N9xR7uy1NiJ0Wfv2a
+         jNpw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iJXlrRjV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k124si1905374qkf.300.2020.03.11.21.38.49
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Mar 2020 21:38:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id l20si1317123oil.6.2020.03.12.02.20.08;
+        Thu, 12 Mar 2020 02:20:08 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iJXlrRjV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35936 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jCFcP-0001da-3j
-	for alex.bennee@linaro.org; Thu, 12 Mar 2020 00:38:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38259)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jCFcH-0001dP-Vt
- for qemu-arm@nongnu.org; Thu, 12 Mar 2020 00:38:42 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1jCFcG-0000No-Vt
- for qemu-arm@nongnu.org; Thu, 12 Mar 2020 00:38:41 -0400
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042]:54841)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1jCFcG-0000N7-P2
- for qemu-arm@nongnu.org; Thu, 12 Mar 2020 00:38:40 -0400
-Received: by mail-pj1-x1042.google.com with SMTP id np16so2008880pjb.4
- for <qemu-arm@nongnu.org>; Wed, 11 Mar 2020 21:38:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:from:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=BPruapG5gkRbwPfWuXzqL/1TOcvgyX/vSJbSLtZKK5w=;
- b=iJXlrRjVQE2EKiA2R9VAb9bUhs8PkPkF7Pup4DzVvkXWkTMTVeqZvt5+6W8rOcbLNb
- /eXcYdzwVFnVT/4YEUC8q2zHAKslbDp1Rh2+iwmlpeW68uxjRD0+yMQAFsG5LiPjNI+M
- 6WNSYposoa+CHbvyta58HskcPVwAJljQ209/AKCYc7M+jMgnJLXsw92+T1E+Qd9Wh9g7
- 5LHag7dDVbK3BS7L4xFIBsHbYwyrd78G+EiZTRgCYtgLfYFETKEpRg1MnC2O7CkaaAs8
- ykMHOWLIds8OsXm77+JUIi0FQlBsaomwZtxzNUoy696Dz8kAIxiNTtQ405DlD3r1tQi7
- qyGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=BPruapG5gkRbwPfWuXzqL/1TOcvgyX/vSJbSLtZKK5w=;
- b=L1fFBlOF58DO7g9Sf6r7bxlgVOJxu7uHALmQ4K/CCIwUSdTMLUMv1I1j9Im2NgKY+X
- QNXS0n2u3ZO333xKRL7YLrVvvpc5/z/geeflVKiDo4abeqYtEGaZSqH8cmJI26dOcybC
- 7ks/INqm5cjChXgA9/XJ29Xpto1F7pxgh8KYXsUfBDKjArkf5DLBVftaxKwiOe35/uuO
- M/2oMg16zOrR8f9hM3jPhkRXca8wOS8n6GR5SARkcDz3M/Jx0mfM094WawmKOLMKYuAI
- b1xL6tN2pzlpDXaZJRghPtEYmFL8XJ3LNcFWq7g88RQsdbtUsHr4e4sjocNenGLuianA
- 72sw==
-X-Gm-Message-State: ANhLgQ1tEKTt75i9Qhc+byBdM0guFrW00j8Ywg6eYMHT1s3pouwBIBEl
- dB0pEMd64HjZNfCB+Dh4CX3xvDTlCcM=
-X-Received: by 2002:a17:902:9890:: with SMTP id
- s16mr6007662plp.71.1583987919419; 
- Wed, 11 Mar 2020 21:38:39 -0700 (PDT)
-Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id
- y125sm2205770pfy.195.2020.03.11.21.38.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 11 Mar 2020 21:38:38 -0700 (PDT)
-Subject: Re: [PATCH 02/16] accel/tcg: Add probe_access_flags
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-References: <20200311064420.30606-1-richard.henderson@linaro.org>
- <20200311064420.30606-3-richard.henderson@linaro.org>
-Message-ID: <9d7cd2d0-298b-74a1-94e7-cd6889627c6e@linaro.org>
-Date: Wed, 11 Mar 2020 21:38:36 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726567AbgCLJUH (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 12 Mar 2020 05:20:07 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:53564 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1726385AbgCLJUH (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 12 Mar 2020 05:20:07 -0400
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
+        by Forcepoint Email with ESMTP id EDEF9ED6D8587C08CEB4;
+        Thu, 12 Mar 2020 17:20:04 +0800 (CST)
+Received: from [127.0.0.1] (10.173.222.27) by DGGEMS402-HUB.china.huawei.com
+ (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Thu, 12 Mar 2020
+ 17:19:54 +0800
+Subject: Re: [kvm-unit-tests PATCH v5 10/13] arm/arm64: ITS: INT functional
+ tests
+To:     Marc Zyngier <maz@kernel.org>, Auger Eric <eric.auger@redhat.com>
+CC:     <eric.auger.pro@gmail.com>, <kvmarm@lists.cs.columbia.edu>,
+        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>, <drjones@redhat.com>,
+        <andre.przywara@arm.com>, <peter.maydell@linaro.org>,
+        <alexandru.elisei@arm.com>, <thuth@redhat.com>
+References: <20200310145410.26308-1-eric.auger@redhat.com>
+ <20200310145410.26308-11-eric.auger@redhat.com>
+ <d3f651a0-2344-4d6e-111b-be133db7e068@huawei.com>
+ <46f0ed1d-3bda-f91b-e2b0-addf1c61c373@redhat.com>
+ <301a8b402ff7e480e927b0f8f8b093f2@kernel.org>
+From:   Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <7fb9f81f-6520-526d-7031-d3d08cb1dd6a@huawei.com>
+Date:   Thu, 12 Mar 2020 17:19:51 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <20200311064420.30606-3-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <301a8b402ff7e480e927b0f8f8b093f2@kernel.org>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::1042
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cB5bL5rhojza
+X-Originating-IP: [10.173.222.27]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: FTkyH6fnIpJw
 
-On 3/10/20 11:44 PM, Richard Henderson wrote:
-> +int probe_access_flags(CPUArchState *env, target_ulong addr,
-> +                       MMUAccessType access_type, int mmu_idx,
-> +                       bool nonfault, void **phost, uintptr_t retaddr)
-> +{
-> +    void *host;
-> +    int flags;
-> +
-> +    flags = probe_access_internal(env, addr, 0, access_type, mmu_idx,
-> +                                  nonfault, &host, retaddr);
+On 2020/3/11 22:00, Marc Zyngier wrote:
+> That is still a problem with the ITS. There is no architectural way
+> to report an error, even if the error numbers are architected...
+> 
+> One thing we could do though is to implement the stall model (as described
+> in 5.3.2). It still doesn't give us the error, but at least the command
+> queue would stop on detecting an error.
 
-Bug here.  Should have passed along phost to probe_access_internal instead of a
-new local host variable.
+It would be interesting to see the buggy guest's behavior under the
+stall mode. I've used the following diff (absolutely *not* a formal
+patch, don't handle CREADR.Stalled and CWRITER.Retry at all) to have
+a try, and caught another command error in the 'its-trigger' test.
 
-I've sent a v2 for this patch, in-reply-to.  I'll not repost the whole patch
-set until I've also addressed any review.
+logs/its-trigger.log:
+" INT dev_id=2 event_id=20
+lib/arm64/gic-v3-its-cmd.c:194: assert failed: false: INT timeout! "
+
+dmesg:
+[13297.711958] ------------[ cut here ]------------
+[13297.711964] ITS command error encoding 0x10307
+
+It's the last INT test in test_its_trigger() who has triggered this
+error, Eric?
 
 
-r~
+Thanks.
+
+---8<---
+diff --git a/include/kvm/arm_vgic.h b/include/kvm/arm_vgic.h
+index 9d53f545a3d5..5717f5da0f22 100644
+--- a/include/kvm/arm_vgic.h
++++ b/include/kvm/arm_vgic.h
+@@ -179,6 +179,7 @@ struct vgic_its {
+  	u64			cbaser;
+  	u32			creadr;
+  	u32			cwriter;
++	bool			stalled;
+
+  	/* migration ABI revision in use */
+  	u32			abi_rev;
+diff --git a/virt/kvm/arm/vgic/vgic-its.c b/virt/kvm/arm/vgic/vgic-its.c
+index d53d34a33e35..72422b75e627 100644
+--- a/virt/kvm/arm/vgic/vgic-its.c
++++ b/virt/kvm/arm/vgic/vgic-its.c
+@@ -1519,6 +1519,9 @@ static void vgic_its_process_commands(struct kvm 
+*kvm, struct vgic_its *its)
+  	if (!its->enabled)
+  		return;
+
++	if (unlikely(its->stalled))
++		return;
++
+  	cbaser = GITS_CBASER_ADDRESS(its->cbaser);
+
+  	while (its->cwriter != its->creadr) {
+@@ -1531,9 +1534,34 @@ static void vgic_its_process_commands(struct kvm 
+*kvm, struct vgic_its *its)
+  		 * According to section 6.3.2 in the GICv3 spec we can just
+  		 * ignore that command then.
+  		 */
+-		if (!ret)
+-			vgic_its_handle_command(kvm, its, cmd_buf);
++		if (ret)
++			goto done;
++
++		ret = vgic_its_handle_command(kvm, its, cmd_buf);
++
++		/*
++		 * Choose the stall mode on detection of command errors.
++		 * Guest still can't get the architected error numbers though...
++		 */
++		if (ret) {
++			/* GITS_CREADR.Stalled is set to 1. */
++			its->stalled = true;
++
++			/*
++			 * GITS_TYPER.SEIS is 0 atm, no System error will be
++			 * generated.  Instead report error encodings at ITS
++			 * level.
++			 */
++			WARN_RATELIMIT(ret, "ITS command error encoding 0x%x", ret);
++
++			/*
++			 * GITS_CREADR is not incremented and continues to
++			 * point to the entry that triggered the error.
++			 */
++			break;
++		}
+
++done:
+  		its->creadr += ITS_CMD_SIZE;
+  		if (its->creadr == ITS_CMD_BUFFER_SIZE(its->cbaser))
+  			its->creadr = 0;

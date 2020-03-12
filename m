@@ -1,104 +1,101 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp903360lfc;
-        Thu, 12 Mar 2020 10:17:45 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vv+tai54aGrk2llp2ttmT60o+Xisd6oSSUmHwCBhWf9qM17qwQqS2ean2tUR4TRwKLZSYVI
-X-Received: by 2002:ac8:71d7:: with SMTP id i23mr8404631qtp.250.1584033464888;
-        Thu, 12 Mar 2020 10:17:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584033464; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp905386lfc;
+        Thu, 12 Mar 2020 10:19:23 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvp0APY6Rap7kSvmxAqYnlledfqCmSlygETWiWh5ENHatLy378yQk0XJgsHORBnyfP5N0pe
+X-Received: by 2002:a37:702:: with SMTP id 2mr987106qkh.134.1584033562882;
+        Thu, 12 Mar 2020 10:19:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584033562; cv=none;
         d=google.com; s=arc-20160816;
-        b=u4762+nsHQ173Pkijk7Tbm16S3OJcfNcaFFkZkYqlYaTYqR12DMtV9KpymkUcqGVDi
-         IhcE1XXh8H1kt60fdJf/q57XoPpxONHWBgVuaJisBK9Nk9WR91+7420X5CXd5PH+HmYb
-         SQrhz480Yo6nSdi7lEycMMSARLM56dOFCac4eLvF+7AnHYcANZ0TkOeC1qr565cwGDrF
-         xb01DhX1biBYdKKFiT3ooWODy2lBxfPMDrcI6X/p6kqKjLsT4HB+BkB9w786P5ZkvUfr
-         GPG3KWtKPkICMW0Qn0mYkAiVvMPjheCE5IXRFmsAI745yPTzwI0SVZnbT+5V0J4D6YBg
-         rP3Q==
+        b=JGsMVALqUjdeTB3t6qcvmT+zsDRPyIqjrZt3a9ZElZG+LZm5h+OsqrlZLvX1VnWvf3
+         O0bIOxUxgv7AX8ZNpp4a50P8k54MueU243vnEsXE4wKTDSCyFxGyHM286zMQJNtWE+dI
+         ltmczgnJQq/6mRRat1/B8DXwVQYjBmTqBiP6UUUSJgCrdEeRyIsBqPqrxzPkIsijVxpq
+         ZVh8zoZcWDVhD5m9zI0z2BXTkPm8yccqUSDUBdjPd0wbw6pdOMCEvKjR8tZK0+7pz/Jf
+         W/PIisYC+6sSrAL5UwX6Dp2aow0jpkkc605ExZwpXkR2X1eBnm6NDQy+UuvBFUQ55epc
+         kDkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=GXGrQMuSPuWRxxUAmh9Tg77oMP4Uo6B+0hy9wrgNx8o=;
-        b=Ra8zE1pWzSswFVcNTZN3b++5lh8d5YE0g7Xi+fGhB9rlzuO5Sc2NcSQO+F9wwO0xn7
-         sAtgXPFCykLjFzJQ3y5zwwRKEFnGt8Xnn/ATh8y9M+K2Ivph8PYufwaQBdZBTCYf4+jF
-         p523wmnLC4+WoOs4jyUluhKkDWhrcc1mjdqOZjq7rjfWmTU2pX4dVIqATpHogWgfhShY
-         DNYKiLKUOloc5QPGymhz414jXwfYjK9NQBOSasmd6xmasGJiF3zzXMEF+77L7Zs3oI+4
-         weAI9lxV4LQtwnpwvOy8ZLZBWgMciHVCSWcif9t+StbDFlKv9RFe/21Jh6HKYsilb3xU
-         bD1A==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=sG2XHxtL29liFM8qAyu3jpV/gaMswIfwBnXLqD75KIw=;
+        b=FvQHJyvrGNscnTUamJ24L6Hkaofg1dnbk/aXLqofzjJQ1h0qfmC+WFh5kyLKYIRRNZ
+         u+WYOgp4gNqqixQirvvKT2fL1TS3rTultyfYRcLJGwWybDee7brpIvkM5BEbBTF2PJLJ
+         CJCEU6WOw/5GEG9EEFBq6Scu0O7yTxHpWobN2VrtZk0sTulUX55YTTrCtcPETdOfJHS6
+         m5gx3iZ46RYkEzhIzhoqZlBUIHr3v4CE8qSrAm1PZNthTXfethqgLmizUf2bX7VZTpMM
+         H/Of8zXChX5ctupggf3Vq+UwFcp1YtW+H8k8vjl0qAjBf1JeFkTKik5zOM5VIGaDoDXX
+         BsIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Qxj8Px8l;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=tUY0rHtE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d13si3163290qti.132.2020.03.12.10.17.44
+        by mx.google.com with ESMTPS id m130si1045402qke.23.2020.03.12.10.19.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Mar 2020 10:17:44 -0700 (PDT)
+        Thu, 12 Mar 2020 10:19:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Qxj8Px8l;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46406 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=tUY0rHtE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46430 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jCRSq-0003TH-8D
-	for alex.bennee@linaro.org; Thu, 12 Mar 2020 13:17:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37430)
+	id 1jCRUQ-0007VI-Bk
+	for alex.bennee@linaro.org; Thu, 12 Mar 2020 13:19:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38409)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1jCR77-0001Rj-Rw
- for qemu-arm@nongnu.org; Thu, 12 Mar 2020 12:55:19 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jCRCf-0006IO-3z
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2020 13:01:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1jCR76-0003Cn-OQ
- for qemu-arm@nongnu.org; Thu, 12 Mar 2020 12:55:17 -0400
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:39335)
+ (envelope-from <peter.maydell@linaro.org>) id 1jCRCd-00084y-UP
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2020 13:01:00 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:34754)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1jCR76-0003B8-HV; Thu, 12 Mar 2020 12:55:16 -0400
-Received: by mail-pf1-x444.google.com with SMTP id w65so3541526pfb.6;
- Thu, 12 Mar 2020 09:55:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=GXGrQMuSPuWRxxUAmh9Tg77oMP4Uo6B+0hy9wrgNx8o=;
- b=Qxj8Px8ldKKrd8gIZdiXJTZR3wr+I1t7cPG0CJiNHfZn71OLzGjtQMWc3ZuXjQroGw
- 32X1uTWgvUBZPux2FEAeVpvnOAiNFzCOTV9GcPv7TTL8qv9szsGvBvHSKqTM/F0/76VY
- v3vxTaU7iS7yY/2t41i0BcUC58x2E3DmetoFQXrdC3i3PBZ3KsJmwUGxETq0fIJJ25Yh
- UO1yGi+jnnRvBH494b97XRdCfyPYhnE8J3zVEN/joinGIeg07YTQWXPsTZqxZhKSFIZv
- PUkdgudeNLWXiBLojaot5sS3NV72DoQ4eqbgyQq5oOW4zxNuMRh+wldy6pNAvXgkxhM/
- qlaw==
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jCRCd-00084N-PG
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2020 13:00:59 -0400
+Received: by mail-oi1-x242.google.com with SMTP id g6so6208777oiy.1
+ for <qemu-arm@nongnu.org>; Thu, 12 Mar 2020 10:00:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=sG2XHxtL29liFM8qAyu3jpV/gaMswIfwBnXLqD75KIw=;
+ b=tUY0rHtEFZga2G8zMqXXlIUYHIZ+tIEwasI8rTQMdtlszrxnH+GZ3gyv1DaUQpyy0U
+ Xy7GJ3pDw0Rqp+WhO1ASz0i+TFyU1EE+RGBVR6amSqNjbVhfb/NDIQJXym+0DbFM6wt6
+ eirhDm+K1X4e3rUFsDw+0TpAAMDoW0NV8YCk+6njKAqUpsJHG/n5JA6y2nTuieHyVMIq
+ guR1Lcl0/aJiQljsjhtVRY3d3MGaW9KKcYE5vHpLHJv69JSqkLqa+o/q+J0B7bFsi7Gf
+ 7rG92FXA9u9sc7ygSEVSORBsjyh20/wDDjOfU2X2Dhbwmlj8lyq6BsDroqzQo2ecBX8z
+ RbAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition:in-reply-to:user-agent;
- bh=GXGrQMuSPuWRxxUAmh9Tg77oMP4Uo6B+0hy9wrgNx8o=;
- b=uScsFmqoyiT16rk6oCUuiBAYy1gT8FCN6/AbeuPms0w+U0f5AoNG52dScgr0DMWPAk
- h1tNaPKgkVVsms+WlcZ3NgZaJYSym+68uYpmVNE/K7z5N1fIvBm8mEDTbWHOpfnU5q2J
- dXP/+RPAh90lskPC4GqoIOVD5uW6HgIRa0GC9vMnXpRHp/OBlvn394Ge6++vyVJ2bN9h
- jwXVVe4BFs839ZpUbl9eibEc7OhqwZML1HQBke93ZbaJl43HCwUWAQ7OQ5OfxaujmSOe
- pGDrFmF84pmM1zT7om63f2MTjXfaWUsefLGjQDhFi/7CyvP3DoJfjghSFqdwj5uVLSFj
- JY3g==
-X-Gm-Message-State: ANhLgQ1hsomiy/J02IA7PzBOH9uAAACxjDRgj4q7VGriHDrpICETMlop
- ajsMwM6qkrJ3/ojnJz5YqIc=
-X-Received: by 2002:a63:df15:: with SMTP id u21mr8008518pgg.95.1584032114160; 
- Thu, 12 Mar 2020 09:55:14 -0700 (PDT)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id e20sm2677449pfi.171.2020.03.12.09.55.12
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 12 Mar 2020 09:55:13 -0700 (PDT)
-Date: Thu, 12 Mar 2020 09:55:11 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v2 2/3] hw/arm/fsl-imx6ul: Wire up USB controllers
-Message-ID: <20200312165511.GA16719@roeck-us.net>
-References: <20200310210434.31544-1-linux@roeck-us.net>
- <20200310210434.31544-3-linux@roeck-us.net>
- <CAFEAcA811Zo6JjCait2G467oQo-nL0RTYVdqE-ofmDSxWPcuCQ@mail.gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=sG2XHxtL29liFM8qAyu3jpV/gaMswIfwBnXLqD75KIw=;
+ b=BfFBwGbUmImxv0F0sFMs6m/2NjJ70LUI3FCGYNFv8PqHwdY9kSXOv/7psOtvV9nOVC
+ /1Vrs6QujqtFLhU36d1rCQMnPPB1AHmy6xW+FpH5BaVAsPzB+MlsTiMdT+vGRhnGOPmO
+ WyuYcffPhXvLG+UBkvHzw3NRsUQmsy4qZ7xLny/HmFxu9+im2kESm0S+GqFIA9mxBAhW
+ CU0CrAmiVfG54WOUgtcSSOJCR+yd2CpiBXDnHl5M0/TeNRfJdxgEAimPp7u4ucXkB8OW
+ GhBc6mfxPHN+grWKY8IJgIZyWgeuXlnhpYdioh9lvHIsxR0S102KRyIy7XjgenxImBBT
+ 3DjA==
+X-Gm-Message-State: ANhLgQ0YucuGL8Xqi7x2Esti5mie5/6iRb//aOMUlcigYO3aloBahaBy
+ o47rnOuxXD81YGW3yb8mlLPdq+kb3TBhn4SH+XOyXQ==
+X-Received: by 2002:a05:6808:289:: with SMTP id
+ z9mr3226853oic.48.1584032458496; 
+ Thu, 12 Mar 2020 10:00:58 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA811Zo6JjCait2G467oQo-nL0RTYVdqE-ofmDSxWPcuCQ@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+References: <20200305105325.31264-1-kuhn.chenqun@huawei.com>
+ <CAFEAcA8fnz2oaa-CO-EEK_vQTWfPih4PrAB3i4UUgQpv9Y_4mg@mail.gmail.com>
+ <7412CDE03601674DA8197E2EBD8937E83B68019B@dggemm511-mbx.china.huawei.com>
+In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B68019B@dggemm511-mbx.china.huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Mar 2020 17:00:46 +0000
+Message-ID: <CAFEAcA-q4t3yQcHaHzOGx2GpKpuW=kti51myuFK_K3aieRY3dg@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/net/imx_fec: write TGSR and TCSR3 in
+ imx_enet_write()
+To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::444
+X-Received-From: 2607:f8b0:4864:20::242
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,77 +107,56 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Jason Wang <jasowang@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>, Euler Robot <euler.robot@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Oo1qHyNU67XE
+X-TUID: v21EWgv+hS28
 
-On Thu, Mar 12, 2020 at 01:19:41PM +0000, Peter Maydell wrote:
-> On Tue, 10 Mar 2020 at 21:04, Guenter Roeck <linux@roeck-us.net> wrote:
+On Tue, 10 Mar 2020 at 08:08, Chenqun (kuhn) <kuhn.chenqun@huawei.com> wrote:
+>
+> >-----Original Message-----
+> >From: Peter Maydell [mailto:peter.maydell@linaro.org]
+> >>
+> >> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c index
+> >> 6a124a154a..322cbdcc17 100644
+> >> --- a/hw/net/imx_fec.c
+> >> +++ b/hw/net/imx_fec.c
+> >> @@ -855,13 +855,15 @@ static void imx_enet_write(IMXFECState *s,
+> >uint32_t index, uint32_t value)
+> >>          break;
+> >>      case ENET_TGSR:
+> >>          /* implement clear timer flag */
+> >> -        value = value & 0x0000000f;
+> >> +        s->regs[index] ^= s->regs[index] & value;
+> >> +        s->regs[index] &= 0x0000000f;
+> >>          break;
+> >>      case ENET_TCSR0:
+> >>      case ENET_TCSR1:
+> >>      case ENET_TCSR2:
+> >>      case ENET_TCSR3:
+> >> -        value = value & 0x000000fd;
+> >> +        s->regs[index] = (value & 0x00000080) ? (0x0000007d & value) :
+> >> +                         (value & 0x000000fd);
+> >>          break;
+> >>      case ENET_TCCR0:
+> >>      case ENET_TCCR1:
 > >
-> > IMX6UL USB controllers are quite similar to IMX7 USB controllers.
-> > Wire them up the same way.
+> >This isn't the usual way to write W1C behaviour.
+> >If all the relevant bits are W1C, as for TGSR:
 > >
-> > The only real difference is that wiring up phy devices is necessary
-> > to avoid phy reset timeouts in the Linux kernel.
+> >   s->regs[index] &= ~(value & 0xf); /* all bits W1C */
 > >
-> > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> > ---
-> > v2: Use USB PHY emulation
-> >
-> >  hw/arm/fsl-imx6ul.c         | 33 +++++++++++++++++++++++++++++++++
-> >  include/hw/arm/fsl-imx6ul.h |  9 +++++++++
-> >  2 files changed, 42 insertions(+)
-> >
-> > diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
-> > @@ -456,6 +467,28 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
-> >                                              FSL_IMX6UL_ENETn_TIMER_IRQ[i]));
-> >      }
-> >
-> > +    /* USB */
-> > +    for (i = 0; i < FSL_IMX6UL_NUM_USBS; i++) {
-> > +        static const int FSL_IMX6UL_USBn_IRQ[] = {
-> > +            FSL_IMX6UL_USB2_IRQ,
-> > +            FSL_IMX6UL_USB1_IRQ,
-> > +        };
-> 
-> Do we really want to wire up USB1 to USB2_IRQ and USB2 to USB1_IRQ ?
-> If so, a comment explaining that it is deliberate would be useful.
-> 
-Yes. I think the definitions may be incorrect (or the Linux dts files are
-incorrect, but that seems unlikely). I tried the other way but then I get
-unhandled interrupt errors when trying to access a USB flash drive.
+> Yes, it looks better.
+> But do we need clear the reserved bit (31 - 4 bits) explicitly ?
 
-> Side note: not used here, but in the header file we define:
->     FSL_IMX6UL_USB1_IRQ     = 42,
->     FSL_IMX6UL_USB2_IRQ     = 43,
->     FSL_IMX6UL_USB_PHY1_IRQ = 44,
->     FSL_IMX6UL_USB_PHY2_IRQ = 44,
-> 
-> Is that last one correct, or a cut-n-paste error that should be "45" ?
-> 
-From Linux devicetree files:
+Not necessarily, but it seems to be how the other registers
+in the device have generally been coded, and it's clearly
+what the intent was here given that the original (buggy)
+code was masking out reserved bits. So I think it makes
+sense to continue in that style.
 
-	usbphy1: usbphy@20c9000 {
-        	compatible = "fsl,imx6ul-usbphy", "fsl,imx23-usbphy";
-                reg = <0x020c9000 0x1000>;
-                interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
-	usbphy2: usbphy@20ca000 {
-                compatible = "fsl,imx6ul-usbphy", "fsl,imx23-usbphy";
-                reg = <0x020ca000 0x1000>;
-                interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
-	usbotg1: usb@2184000 {
-                compatible = "fsl,imx6ul-usb", "fsl,imx27-usb";
-                reg = <0x02184000 0x200>;
-                interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
-	usbotg2: usb@2184200 {
-                compatible = "fsl,imx6ul-usb", "fsl,imx27-usb";
-                reg = <0x02184200 0x200>;
-                interrupts = <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH>;
-
-Should I maybe fix the definitions in a separate patch ?
-
-Thanks,
-Guenter
+thanks
+-- PMM

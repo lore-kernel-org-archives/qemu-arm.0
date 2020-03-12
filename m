@@ -1,209 +1,344 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1087574lfc;
-        Thu, 12 Mar 2020 12:42:46 -0700 (PDT)
-X-Received: by 2002:a63:be0f:: with SMTP id l15mr9182627pgf.451.1584042166284;
-        Thu, 12 Mar 2020 12:42:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584042166; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1087614lfc;
+        Thu, 12 Mar 2020 12:42:47 -0700 (PDT)
+X-Received: by 2002:a17:90a:185:: with SMTP id 5mr5670529pjc.157.1584042167506;
+        Thu, 12 Mar 2020 12:42:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584042167; cv=none;
         d=google.com; s=arc-20160816;
-        b=E1TSNqX6/6ZvM52P3/WcLCpuBeV4DY6ADSyGFf9BCRdayEb1cqm4b/UBO1nlXRKatg
-         1oIQ+fctIeokzB3tCEW4J1Wl61IP4CGrgisE5KyR6h12nqDr0KNMJ3L0xZdlTAOyeeTu
-         NW+GSz1RFjI9TQViW5DGn8DAmB+4TrKAPP0WTueWfuNmNSDym6rk2Et+4XtZR/UE+tLa
-         9TGJCkv4VwVL+fe2ZasBxUxZXir8UVfSfeqZnzAF5uHfl7JkCb6BJHg5ukIu9sxWjZOR
-         6hUNbsnizCZzYBHXUNMly7cndAK1iIUy28xl2HFR7wPNg4jmQyewbPvu3+FQalhx16k1
-         leXg==
+        b=NfuPaKhK/RKQkBEo4Vu3omfu7S6TKoTeWyZm1yh+EswZeCCwufZuPF724OhLtYffAZ
+         VQiJI1QgjWLqcWjNrgWinzgtZ4JdCeHMk3U/nJEC4mh/FBH9POf8e0WbbMJb1TuZEZDI
+         1JNAEkuNwgww3kw24hpuREgHvTA+tvoeB7LM/Xie1mY/NQEcrORmTCZeRN4cXYTaQZuW
+         XypA076Ku2v6M9sZXgFH9zKmCjGJ0XorKWMqq2oLZsJKI7FihIj4o+82MfLOQVfJKEIw
+         9LfVySbeEEng3Hv3z1czGVoylBgAhMaQ28X2Gg1V1q1vpOaYpTJoR20jTFO59CkdtdjZ
+         w4ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=OdUOrVG4+6fOcBEkk2TzuAIf4lO1j/SFFZ3HajmExks=;
-        b=TJVpJ87Q0mL83HQ/lT7jgZPSQfx1kSxTHNmaQYWYLJQTo9/d6l8BvPG6K8lMuvM9EF
-         CEeRgFWsndt+6ZpN7BA8lGShdddGTiKnTQvI91l7ich1EFajuC25aCG4+o6cs2NauVWu
-         zc2sy987jsaJlh5mt7w+HBioblmAhPVuPCiRsNhCAlRPTz1zhHAMWZXG5yHxKAhO861G
-         1ToNw3DgI1fE42acDGSkfuQY7CV8xv8OwwR70hw3kK/8v36c+rCy1o0yirM4bmD72j52
-         VccuQ8f2EVgo5sYt/oEnZET4wQNdYxZCJxaKCCY0xnmB4widkseonRhbbGTuk6PYYfbc
-         itgA==
+        bh=FUO/6qc4Htz4N9YorwroOFAZWSwiCJ/idNRsOjS2/d8=;
+        b=E8j/f7CEMJr94uRrXwoMZP40AaFcVWpcLNFxNeuDWran4F/yE36vJpkn7b9ZRkI+Ix
+         ManG9K3TRzFVljbngsEcMJk4zCeRMA6hFkjpa0nDqcoSb5rA2DehWZ1vjxPSrIZkTwAv
+         1k5oTYthe4V8OFzYbD7zjNSys8pcUCBTwRHgOuGpcRCNGj6MlvAY1by+7SLk5R1YEPxb
+         Wx06dilXF6CC0wkplvP5szlZcPITTgB+goSCbZTWslxAzUyrwgjw3wGqPpnra10L8tRQ
+         Rk8f2lhscYBGcFQq6XJ9oE1ES6mYljoHSchmjdOZWQStsetuc81iRflDzSsTVqhwtsui
+         kOmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NQm0MU3c;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UtRudqkV;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id mu11sor6776110pjb.30.2020.03.12.12.42.46
+        by mx.google.com with SMTPS id p190sor6336408pfb.35.2020.03.12.12.42.47
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 12 Mar 2020 12:42:46 -0700 (PDT)
+        Thu, 12 Mar 2020 12:42:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NQm0MU3c;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UtRudqkV;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=OdUOrVG4+6fOcBEkk2TzuAIf4lO1j/SFFZ3HajmExks=;
-        b=NQm0MU3cApmQWVJ1p95QWuiOx5XAxifQxmDkUuQZ8Gw4Th1elugQeFMOt9PvfpGsiC
-         U83e/TEiJcIYtY2ZLmPh8eZ3f/xH5sLnEeokLkaacqXXtPPFnxa4vgtrVrpGkXkN3cOG
-         YNljKf6M2dl4yZ9DxitGrlR6B0PuRcCDclQLoWjbLpHUlnCjQPZ1PztoO2RGE1c8EZSU
-         ehB/bFm3ExrQ+ayB4Z5ZRhjqU6HFqffb/q6z9eEA2afsbR2iwhkIZQMKARxmuDNbdS9O
-         e34n7aYYRn3ArD2lad7SuhqeOBgtUbbxV5WT2GWWdA9TQoa/F8XTC4bWARhKHzIc7x/0
-         +ARg==
+        bh=FUO/6qc4Htz4N9YorwroOFAZWSwiCJ/idNRsOjS2/d8=;
+        b=UtRudqkVsfteSSXAgitf/56/vSopMj4lUOqAN6wAY4Ww7Mtwr8Sj45v30zYlxApM0m
+         xoccCsSG9ho/CQs0Jb7zyjyFBfmiVIsG9OS88ghSXZB00IzERsPpjUn7KoOy3RPzXE/j
+         gTagKpgBiu3TpqcosR5Bxvi36T2jK5SZVDogfT49SRxsXX4cwhV65S2ZMSwEX7X7B1yt
+         ZOQcPDARQ580/DYUw9GmMFeLHHeUoLxthsog5KmFsOPiEXPH9RHMSEpnZBY7W6FQHuLd
+         HdTxWNXZ92/FkatEhwpjZzadlSF950xDDKRUHeb4ATYRaj2sPsfAIqpgGy+NWWhWqIr7
+         LSsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=OdUOrVG4+6fOcBEkk2TzuAIf4lO1j/SFFZ3HajmExks=;
-        b=VFpXrjwXR0h7nQdyTrtZJE3hf8ubSxoYTwUrsQ84ugpQX1l9joS/sRsmws0Ykls6k/
-         kP0TwR+Dv0vEEQW+54fCnT9fhCgIi0YroQlmazTyYV2w3KmhHz5+3iOBw1ZsVlbvAGY/
-         tedBBhfPxPM+NdE6jx3bUnOvogHdxS2etFk34j8+TDtPqkhs1elViTlWfll3ipKEVnD7
-         F3lm45p6ZpWHnSL+GexXGbugfYpSQsJnDtQwbhaUgzn1NuxCTYYIpzobPFUfjbF1R9L5
-         iVGO532O6X7ASS3U6829/vHKTaUNlqO827HhByDVre5Rf9zAdl+3QzOEKfxyCSZlQqXS
-         XcGQ==
-X-Gm-Message-State: ANhLgQ1R8/f5DQKn2v4sylUQmN7iR10NqMWP4qBO2gazon9H2nD8gW27
-	u1bEq+ataTGe3tWXM2GUjl/aeyCfqHDv6w==
-X-Google-Smtp-Source: ADFU+vu0oH21qXkYGhSbyxVN3lhjP0De7OnHEpOmfTReU/VfNdXwsSJEX5BYO735f5eY6gzE9Zl2/g==
-X-Received: by 2002:a17:90b:94a:: with SMTP id dw10mr5787263pjb.89.1584042165705;
-        Thu, 12 Mar 2020 12:42:45 -0700 (PDT)
+        bh=FUO/6qc4Htz4N9YorwroOFAZWSwiCJ/idNRsOjS2/d8=;
+        b=oqF87CjecJ/4Jz7tQrXipvHTSwF0qebw/VI9o1gcdsP+In8ZyCUYe3RGwPFlVEvvVR
+         +UOh4aDYX+tHSk6VXWGljWFU7Yt98+9vnQCBweLmmkT3qNE/vTmtq71DW4e78CFF7iZa
+         jVp3vAJeDA/bWF8rVCTSxtq7Lo/fCGZJExYe6P0+afpOBbR1qmgPMSf/SSL4DvwP1aWD
+         GKDM6TK4ylWtJ3/F0AokVxjvL/Fakj7xyhoBQbya9ymIgkGfTrJhYWuJBqkm3Fq0UM95
+         C2XfTJ8VT73xv2UsauTIsUVLRCCmNfKUUL7PeQbua5SvzFhDx5aXeqUTqcboYoEUrkSg
+         eRtw==
+X-Gm-Message-State: ANhLgQ2qNhnjhWA5G/USkITwfw5R5NrkHt+RPrQOSL5wFRTO6cpIQSRy
+	A/qjrCAGNuMv+H3CGPN0w3wujifK
+X-Google-Smtp-Source: ADFU+vtTCDyCkaP7u990Rh530Kcc0gATmhJn0YIv9+Su6HdtJHbti1zovZvq1aq/9h9CqiQnpxuiEw==
+X-Received: by 2002:a63:3f81:: with SMTP id m123mr9558730pga.335.1584042166879;
+        Thu, 12 Mar 2020 12:42:46 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net. [97.126.123.70])
-        by smtp.gmail.com with ESMTPSA id g69sm6824842pje.34.2020.03.12.12.42.44
+        by smtp.gmail.com with ESMTPSA id g69sm6824842pje.34.2020.03.12.12.42.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Mar 2020 12:42:45 -0700 (PDT)
+        Thu, 12 Mar 2020 12:42:46 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v6 18/42] target/arm: Simplify DC_ZVA
-Date: Thu, 12 Mar 2020 12:41:55 -0700
-Message-Id: <20200312194219.24406-19-richard.henderson@linaro.org>
+Subject: [PATCH v6 19/42] target/arm: Implement the LDGM, STGM, STZGM instructions
+Date: Thu, 12 Mar 2020 12:41:56 -0700
+Message-Id: <20200312194219.24406-20-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200312194219.24406-1-richard.henderson@linaro.org>
 References: <20200312194219.24406-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: ekSiHwyGUSk9
-
-Now that we know that the operation is on a single page,
-we need not loop over pages while probing.
+X-TUID: ZqbmurhOow6m
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-a64.c | 94 +++++++++++------------------------------
- 1 file changed, 25 insertions(+), 69 deletions(-)
+v3: Require pre-cleaned addresses.
+v6: Check full mte enabled.  Reorg the helpers.
+---
+ target/arm/helper-a64.h    |  3 ++
+ target/arm/translate.h     |  2 +
+ target/arm/mte_helper.c    | 84 ++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-a64.c | 74 +++++++++++++++++++++++++++++----
+ 4 files changed, 154 insertions(+), 9 deletions(-)
 
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index bc0649a44a..60a04dc880 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -1119,85 +1119,41 @@ void HELPER(dc_zva)(CPUARMState *env, uint64_t vaddr_in)
-      * (which matches the usual QEMU behaviour of not implementing either
-      * alignment faults or any memory attribute handling).
+diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
+index 2fa61b86fa..7b628d100e 100644
+--- a/target/arm/helper-a64.h
++++ b/target/arm/helper-a64.h
+@@ -113,3 +113,6 @@ DEF_HELPER_FLAGS_2(stg_stub, TCG_CALL_NO_WG, void, env, i64)
+ DEF_HELPER_FLAGS_3(st2g, TCG_CALL_NO_WG, void, env, i64, i64)
+ DEF_HELPER_FLAGS_3(st2g_parallel, TCG_CALL_NO_WG, void, env, i64, i64)
+ DEF_HELPER_FLAGS_2(st2g_stub, TCG_CALL_NO_WG, void, env, i64)
++DEF_HELPER_FLAGS_2(ldgm, TCG_CALL_NO_WG, i64, env, i64)
++DEF_HELPER_FLAGS_3(stgm, TCG_CALL_NO_WG, void, env, i64, i64)
++DEF_HELPER_FLAGS_3(stzgm_tags, TCG_CALL_NO_WG, void, env, i64, i64)
+diff --git a/target/arm/translate.h b/target/arm/translate.h
+index e0f5d0be63..5552ee5a94 100644
+--- a/target/arm/translate.h
++++ b/target/arm/translate.h
+@@ -91,6 +91,8 @@ typedef struct DisasContext {
+      *  < 0, set by the current instruction.
       */
-+    int blocklen = 4 << env_archcpu(env)->dcz_blocksize;
-+    uint64_t vaddr = vaddr_in & -blocklen;
-+    int mmu_idx = cpu_mmu_index(env, false);
-+    void *mem;
- 
--    ARMCPU *cpu = env_archcpu(env);
--    uint64_t blocklen = 4 << cpu->dcz_blocksize;
--    uint64_t vaddr = vaddr_in & ~(blocklen - 1);
-+    /*
-+     * Trapless lookup.  In addition to actual invalid page, may
-+     * return NULL for I/O, watchpoints, clean pages, etc.
-+     */
-+    mem = tlb_vaddr_to_host(env, vaddr, MMU_DATA_STORE, mmu_idx);
- 
- #ifndef CONFIG_USER_ONLY
--    {
-+    if (unlikely(!mem)) {
-+        uintptr_t ra = GETPC();
-+
-         /*
--         * Slightly awkwardly, QEMU's TARGET_PAGE_SIZE may be less than
--         * the block size so we might have to do more than one TLB lookup.
--         * We know that in fact for any v8 CPU the page size is at least 4K
--         * and the block size must be 2K or less, but TARGET_PAGE_SIZE is only
--         * 1K as an artefact of legacy v5 subpage support being present in the
--         * same QEMU executable. So in practice the hostaddr[] array has
--         * two entries, given the current setting of TARGET_PAGE_BITS_MIN.
-+         * Trap if accessing an invalid page.  DC_ZVA requires that we supply
-+         * the original pointer for an invalid page.  But watchpoints require
-+         * that we probe the actual space.  So do both.
-          */
--        int maxidx = DIV_ROUND_UP(blocklen, TARGET_PAGE_SIZE);
--        void *hostaddr[DIV_ROUND_UP(2 * KiB, 1 << TARGET_PAGE_BITS_MIN)];
--        int try, i;
--        unsigned mmu_idx = cpu_mmu_index(env, false);
--        TCGMemOpIdx oi = make_memop_idx(MO_UB, mmu_idx);
-+        (void) probe_write(env, vaddr_in, 1, mmu_idx, ra);
-+        mem = probe_write(env, vaddr, blocklen, mmu_idx, ra);
- 
--        assert(maxidx <= ARRAY_SIZE(hostaddr));
--
--        for (try = 0; try < 2; try++) {
--
--            for (i = 0; i < maxidx; i++) {
--                hostaddr[i] = tlb_vaddr_to_host(env,
--                                                vaddr + TARGET_PAGE_SIZE * i,
--                                                1, mmu_idx);
--                if (!hostaddr[i]) {
--                    break;
--                }
--            }
--            if (i == maxidx) {
--                /*
--                 * If it's all in the TLB it's fair game for just writing to;
--                 * we know we don't need to update dirty status, etc.
--                 */
--                for (i = 0; i < maxidx - 1; i++) {
--                    memset(hostaddr[i], 0, TARGET_PAGE_SIZE);
--                }
--                memset(hostaddr[i], 0, blocklen - (i * TARGET_PAGE_SIZE));
--                return;
--            }
-+        if (unlikely(!mem)) {
-             /*
--             * OK, try a store and see if we can populate the tlb. This
--             * might cause an exception if the memory isn't writable,
--             * in which case we will longjmp out of here. We must for
--             * this purpose use the actual register value passed to us
--             * so that we get the fault address right.
-+             * The only remaining reason for mem == NULL is I/O.
-+             * Just do a series of byte writes as the architecture demands.
-              */
--            helper_ret_stb_mmu(env, vaddr_in, 0, oi, GETPC());
--            /* Now we can populate the other TLB entries, if any */
--            for (i = 0; i < maxidx; i++) {
--                uint64_t va = vaddr + TARGET_PAGE_SIZE * i;
--                if (va != (vaddr_in & TARGET_PAGE_MASK)) {
--                    helper_ret_stb_mmu(env, va, 0, oi, GETPC());
--                }
-+            for (int i = 0; i < blocklen; i++) {
-+                cpu_stb_mmuidx_ra(env, vaddr + i, 0, mmu_idx, ra);
-             }
--        }
--
--        /*
--         * Slow path (probably attempt to do this to an I/O device or
--         * similar, or clearing of a block of code we have translations
--         * cached for). Just do a series of byte writes as the architecture
--         * demands. It's not worth trying to use a cpu_physical_memory_map(),
--         * memset(), unmap() sequence here because:
--         *  + we'd need to account for the blocksize being larger than a page
--         *  + the direct-RAM access case is almost always going to be dealt
--         *    with in the fastpath code above, so there's no speed benefit
--         *  + we would have to deal with the map returning NULL because the
--         *    bounce buffer was in use
--         */
--        for (i = 0; i < blocklen; i++) {
--            helper_ret_stb_mmu(env, vaddr + i, 0, oi, GETPC());
-+            return;
-         }
+     int8_t btype;
++    /* A copy of cpu->dcz_blocksize. */
++    uint8_t dcz_blocksize;
+     /* True if this page is guarded.  */
+     bool guarded_page;
+     /* Bottom two bits of XScale c15_cpar coprocessor access control reg */
+diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
+index 7ec7930dfc..27d4b4536c 100644
+--- a/target/arm/mte_helper.c
++++ b/target/arm/mte_helper.c
+@@ -274,3 +274,87 @@ void HELPER(st2g_stub)(CPUARMState *env, uint64_t ptr)
+         probe_write(env, ptr + TAG_GRANULE, TAG_GRANULE, mmu_idx, ra);
      }
--#else
--    memset(g2h(vaddr), 0, blocklen);
- #endif
-+
-+    memset(mem, 0, blocklen);
  }
++
++#define LDGM_STGM_SIZE  (4 << GMID_EL1_BS)
++
++uint64_t HELPER(ldgm)(CPUARMState *env, uint64_t ptr)
++{
++    int mmu_idx = cpu_mmu_index(env, false);
++    uintptr_t ra = GETPC();
++    void *tag_mem;
++
++    ptr = QEMU_ALIGN_DOWN(ptr, LDGM_STGM_SIZE);
++
++    /* Trap if accessing an invalid page.  */
++    tag_mem = allocation_tag_mem(env, mmu_idx, ptr, MMU_DATA_LOAD,
++                                 LDGM_STGM_SIZE, MMU_DATA_LOAD,
++                                 LDGM_STGM_SIZE / (2 * TAG_GRANULE), ra);
++
++    /* The tag is squashed to zero if the page does not support tags.  */
++    if (!tag_mem) {
++        return 0;
++    }
++
++    QEMU_BUILD_BUG_ON(GMID_EL1_BS != 6);
++    /*
++     * We are loading 64-bits worth of tags.  The ordering of elements
++     * within the word corresponds to a 64-bit little-endian operation.
++     */
++    return ldq_le_p(tag_mem);
++}
++
++void HELPER(stgm)(CPUARMState *env, uint64_t ptr, uint64_t val)
++{
++    int mmu_idx = cpu_mmu_index(env, false);
++    uintptr_t ra = GETPC();
++    void *tag_mem;
++
++    ptr = QEMU_ALIGN_DOWN(ptr, LDGM_STGM_SIZE);
++
++    /* Trap if accessing an invalid page.  */
++    tag_mem = allocation_tag_mem(env, mmu_idx, ptr, MMU_DATA_STORE,
++                                 LDGM_STGM_SIZE, MMU_DATA_LOAD,
++                                 LDGM_STGM_SIZE / (2 * TAG_GRANULE), ra);
++
++    /*
++     * Tag store only happens if the page support tags,
++     * and if the OS has enabled access to the tags.
++     */
++    if (!tag_mem) {
++        return;
++    }
++
++    QEMU_BUILD_BUG_ON(GMID_EL1_BS != 6);
++    /*
++     * We are storing 64-bits worth of tags.  The ordering of elements
++     * within the word corresponds to a 64-bit little-endian operation.
++     */
++    stq_le_p(tag_mem, val);
++}
++
++void HELPER(stzgm_tags)(CPUARMState *env, uint64_t ptr, uint64_t val)
++{
++    uintptr_t ra = GETPC();
++    int mmu_idx = cpu_mmu_index(env, false);
++    int log2_dcz_bytes, log2_tag_bytes;
++    intptr_t dcz_bytes, tag_bytes;
++    uint8_t *mem;
++
++    /*
++     * In arm_cpu_realizefn, we assert that dcz > LOG2_TAG_GRANULE+1,
++     * i.e. 32 bytes, which is an unreasonably small dcz anyway,
++     * to make sure that we can access one complete tag byte here.
++     */
++    log2_dcz_bytes = env_archcpu(env)->dcz_blocksize + 2;
++    log2_tag_bytes = log2_dcz_bytes - (LOG2_TAG_GRANULE + 1);
++    dcz_bytes = (intptr_t)1 << log2_dcz_bytes;
++    tag_bytes = (intptr_t)1 << log2_tag_bytes;
++    ptr &= -dcz_bytes;
++
++    mem = allocation_tag_mem(env, mmu_idx, ptr, MMU_DATA_STORE, dcz_bytes,
++                             MMU_DATA_STORE, tag_bytes, ra);
++    if (mem) {
++        int tag_pair = (val & 0xf) * 0x11;
++        memset(mem, tag_pair, tag_bytes);
++    }
++}
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 048140ddc0..f010aa2b58 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -3781,7 +3781,7 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
+     uint64_t offset = sextract64(insn, 12, 9) << LOG2_TAG_GRANULE;
+     int op2 = extract32(insn, 10, 2);
+     int op1 = extract32(insn, 22, 2);
+-    bool is_load = false, is_pair = false, is_zero = false;
++    bool is_load = false, is_pair = false, is_zero = false, is_mult = false;
+     int index = 0;
+     TCGv_i64 addr, clean_addr, tcg_rt;
+ 
+@@ -3797,13 +3797,18 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
+      * > 0 : pre-index, writeback
+      */
+     switch (op1) {
+-    case 0: /* STG */
++    case 0:
+         if (op2 != 0) {
+             /* STG */
+             index = op2 - 2;
+-            break;
++        } else {
++            /* STZGM */
++            if (s->current_el == 0 || offset != 0) {
++                goto do_unallocated;
++            }
++            is_mult = is_zero = true;
+         }
+-        goto do_unallocated;
++        break;
+     case 1:
+         if (op2 != 0) {
+             /* STZG */
+@@ -3819,17 +3824,27 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
+             /* ST2G */
+             is_pair = true;
+             index = op2 - 2;
+-            break;
++        } else {
++            /* STGM */
++            if (s->current_el == 0 || offset != 0) {
++                goto do_unallocated;
++            }
++            is_mult = true;
+         }
+-        goto do_unallocated;
++        break;
+     case 3:
+         if (op2 != 0) {
+             /* STZ2G */
+             is_pair = is_zero = true;
+             index = op2 - 2;
+-            break;
++        } else {
++            /* LDGM */
++            if (s->current_el == 0 || offset != 0) {
++                goto do_unallocated;
++            }
++            is_mult = is_load = true;
+         }
+-        goto do_unallocated;
++        break;
+ 
+     default:
+     do_unallocated:
+@@ -3837,7 +3852,9 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
+         return;
+     }
+ 
+-    if (!dc_isar_feature(aa64_mte_insn_reg, s)) {
++    if (is_mult
++        ? !dc_isar_feature(aa64_mte, s)
++        : !dc_isar_feature(aa64_mte_insn_reg, s)) {
+         goto do_unallocated;
+     }
+ 
+@@ -3851,6 +3868,44 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
+         tcg_gen_addi_i64(addr, addr, offset);
+     }
+ 
++    if (is_mult) {
++        tcg_rt = cpu_reg(s, rt);
++
++        if (is_zero) {
++            int size = 4 << s->dcz_blocksize;
++
++            if (s->ata) {
++                gen_helper_stzgm_tags(cpu_env, addr, tcg_rt);
++            }
++            /*
++             * The non-tags portion of STZGM is mostly like DC_ZVA,
++             * except the alignment happens before the access.
++             */
++            clean_addr = clean_data_tbi(s, addr);
++            tcg_gen_andi_i64(clean_addr, clean_addr, -size);
++            gen_helper_dc_zva(cpu_env, clean_addr);
++        } else if (s->ata) {
++            if (is_load) {
++                gen_helper_ldgm(tcg_rt, cpu_env, addr);
++            } else {
++                gen_helper_stgm(cpu_env, addr, tcg_rt);
++            }
++        } else {
++            MMUAccessType acc = is_load ? MMU_DATA_LOAD : MMU_DATA_STORE;
++            int size = 4 << GMID_EL1_BS;
++
++            clean_addr = clean_data_tbi(s, addr);
++            tcg_gen_andi_i64(clean_addr, clean_addr, -size);
++            gen_probe_access(s, clean_addr, acc, size);
++
++            if (is_load) {
++                /* The result tags are zeros.  */
++                tcg_gen_movi_i64(tcg_rt, 0);
++            }
++        }
++        return;
++    }
++
+     if (is_load) {
+         tcg_rt = cpu_reg(s, rt);
+         if (s->ata) {
+@@ -14623,6 +14678,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
+     dc->vec_stride = 0;
+     dc->cp_regs = arm_cpu->cp_regs;
+     dc->features = env->features;
++    dc->dcz_blocksize = arm_cpu->dcz_blocksize;
+ 
+     /* Single step state. The code-generation logic here is:
+      *  SS_ACTIVE == 0:
 -- 
 2.20.1

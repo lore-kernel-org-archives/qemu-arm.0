@@ -1,98 +1,70 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2001335lfc;
-        Fri, 13 Mar 2020 04:26:21 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtsdNVUumSKjZXzyRMKEcJ3aT3qRB4O/DKqbemPfXnWmLMDMQgRrssexJMtpcVmi7BmoX6+
-X-Received: by 2002:ac8:1198:: with SMTP id d24mr11906563qtj.105.1584098781147;
-        Fri, 13 Mar 2020 04:26:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584098781; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2172558lfc;
+        Fri, 13 Mar 2020 06:59:49 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvuJ1lNiv5n1g92KF0z8sP5WyBenjwLxiyl0616PYfhmj/DagPkP5Zkjn2ud+7LfxQ3zy9H
+X-Received: by 2002:a37:8645:: with SMTP id i66mr12928315qkd.91.1584107989579;
+        Fri, 13 Mar 2020 06:59:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584107989; cv=none;
         d=google.com; s=arc-20160816;
-        b=nBi/xK/gid4rb9IEkQFbVKxUY///DG3eIkv4DYTWAt343ncOmpPZUXKMBF9Kg8aKKX
-         cRMvQV/DHOPEONuChpz+PAkr6tylmoe7cV00ghumKNLDUQBegqPHvGXUcsuQ/JIhyCuO
-         tpmwx9rwxaoZJT2xNSg4hqXnrClMqU1wVXNgWtjyuAtOllufuO3hhKG++9zvHNaskcqX
-         X6PSO6jUYx5wVYjPr1JugaT1rNDZ7SlRt+lr+zCvfHjXYTpeEV334+inPgZ1oS3cVSO/
-         bvdu7yFZ0N4ji6wHpXFTdb2BuoY1XOxTB0Vu+ptmID0a5WTtr29sTqaFBxfSDWaP90zW
-         k5mA==
+        b=AwKdZG4HN5BCveuKp3Sr1vEvDCKvbp6dwlS10Yl2KNKZIIgSGAmqmtJT+L+zIUtMMF
+         r0ggUwusvr8GyJX16hD9bhSNgqtvbHr3rsXOTt8UklXGEx4NK6R8Mtao7ZeN56H/oCGq
+         owyFUO2FiJ5ljNDuyPNNQ2gTDfGISCyzfegPfdZ7NytAnxMw3Lf7Ri6G8yz+6LIv1E3G
+         rDbIRvnD/+hDulzqX/ge6tanRHQVrYSL3HI9TyvIWTFqKupQIjFBTpnHBQsgha4dcXZJ
+         Z8GZpuoZomVxpEBxwkpmPDRupNy2NWnvowLkVZdpdGbnLHZ3n7/gp4fj5LuWBcvkBjDb
+         5DGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=LEggssMrNWfgVXP5KOHtpbYiHSEuQvKakj/NOBYQm+Y=;
-        b=r6ZCwopxIaMzTDrHKP7Rf1e2Cny7yIifpdiQIocQH9Bbv7K5G6GwGOm0lLzWJalbFG
-         e6kpvxciQrmE8fMDa1tkySv2wC0o9AacqNRgBDZTJJJm/WIjrn3ZWWq2ANcaBKkMUWgC
-         WPXnS+MoG906eqgAd92vQPjD/segUcxmdGle8ic9u5sO0Vco5jllftlll9pPdpi2Ci/s
-         KrOz9inSwYqYb8Q2RWjvrqFtE5lkm2hnGRPRavzOt14Mh6Nn1WlBzoi2s/jjeYW8lYmd
-         GXliGO6yh+Rn6lob1CC1TCFcDypfnZ5JpedGdpo9wLVxIiTJtklOKLo8DUKsk/2b1LLD
-         g73Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:organization:message-id:date:subject:to:from;
+        bh=6p9/jg2DOSzIV+A/dn/bAwWvNmAwVPzxuGbGN4NRF4g=;
+        b=A4c8Vb/C0kBTyCihaSe+4rYEWgR+Akj3XMeYJXqTI+CA4jMfpxTylnlFV2L4qtAJ3I
+         4uf0JTjNDP2GVBuxPPBnAjrn5XuaDbqwd2PcpbPGba/nfZqGt+RRUCooXEX6HeQqLTkp
+         lgZdLoqg5gjDfNhGgntYdndBPQdnzvEeXM2RuKNJZPftDKoJrLzymNTV7iWx3zN7BNu7
+         6Jo2jN893vBY2RwglMSRP8URf8RnV+x36QFkBC1NLpXkZwEcNjZS9jc3yAvImjSmqEAS
+         RB/H5Ax627SKNNrIUUipkRI7u8IaDK3juKPWu4HcluJKVcejbxV8/1yGJ3MYgvRGfakb
+         IQ4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KxdtSifU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t12si4772570qke.348.2020.03.13.04.26.20
+        by mx.google.com with ESMTPS id c62si4575032qkg.93.2020.03.13.06.59.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Mar 2020 04:26:21 -0700 (PDT)
+        Fri, 13 Mar 2020 06:59:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KxdtSifU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57238 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59278 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jCiSK-0005xv-J6
-	for alex.bennee@linaro.org; Fri, 13 Mar 2020 07:26:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58132)
+	id 1jCkqr-0004sX-0c
+	for alex.bennee@linaro.org; Fri, 13 Mar 2020 09:59:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41295)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jCiSA-0005xO-5i
- for qemu-arm@nongnu.org; Fri, 13 Mar 2020 07:26:11 -0400
+ (envelope-from <remi@remlab.net>) id 1jCkqg-0004sQ-4i
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2020 09:59:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jCiS8-0004D9-U9
- for qemu-arm@nongnu.org; Fri, 13 Mar 2020 07:26:09 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:45707)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jCiS8-00047s-Pr
- for qemu-arm@nongnu.org; Fri, 13 Mar 2020 07:26:08 -0400
-Received: by mail-ot1-x344.google.com with SMTP id e9so2465820otr.12
- for <qemu-arm@nongnu.org>; Fri, 13 Mar 2020 04:26:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=LEggssMrNWfgVXP5KOHtpbYiHSEuQvKakj/NOBYQm+Y=;
- b=KxdtSifUuM+kpkjK0R4tgQypAEMlmBEh3lj52KdCqneFD6/O57tx6IsFHuaReDxaQA
- svfQBxzu4MjxY6VEC1PNcT4tjQ2rB9iL3fDAGahviouPqZPzVxzMZy6dT+8k7VP5qf5f
- /ovzpihLXiopypNIMaomkWnsb6HBsJX7T3dRlmzeugz6Uks8+jrrvK/DQaJ+5l7eY/La
- 4URMlo3L9hGWaFNuLYmEGMCNrrVLIv2jJJeJS7r7t8yu3EGP3rslB6875+dNmD/1W1qO
- HexdKf13knrLX+T+4N4hxgwTbgxoGOVPS4gzDw+UEmvzXUrcUOLE5hB56TgVaNrGdVro
- /FZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=LEggssMrNWfgVXP5KOHtpbYiHSEuQvKakj/NOBYQm+Y=;
- b=p7rxE6svdiWbbJhZDXb7kZ5ggSwovuXsNsOQF81MrpIeZONHmfR4j/W8qznclj7u3F
- qR2ZLg8mLit+4YFMoB3cros4Ida5mL4LvPGISGW4fnuLynndhAOz2RmRGUM4k0Tzftrs
- lMRRhfTa+ydEnN+r7OKhhj/S1+kTIrSrT2IIysD665mVIxWBXT5JWftr21YkEBb95G9Z
- parFlKD47cksH9++IRjf7yT+ydxtFPxYrsb5FPr5GAsRLgwNlEJG1KBOA5QXS8AjBCHR
- T++TeFXBWwLf3ns3MDuDE1Nj8qF6TBmRxBfVRUSzs4bbfC56KQJiWQ/ZPNxCRxtqQM+n
- diMA==
-X-Gm-Message-State: ANhLgQ3In1tM3ic7YjgLXzYpj4TRZUHUw+dsR5QWxfNs89nP+nurGUUM
- 1OHKjjAVlwbb0MLSqOm6pjL852e/XDEEPXPQsXkN/w==
-X-Received: by 2002:a05:6830:19e2:: with SMTP id
- t2mr9946162ott.97.1584098767568; 
- Fri, 13 Mar 2020 04:26:07 -0700 (PDT)
+ (envelope-from <remi@remlab.net>) id 1jCkqe-0005fV-Ur
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2020 09:59:37 -0400
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:49706
+ helo=ns207790.ip-94-23-215.eu) by eggs.gnu.org with esmtp (Exim 4.71)
+ (envelope-from <remi@remlab.net>)
+ id 1jCkqe-0005KY-PC; Fri, 13 Mar 2020 09:59:36 -0400
+Received: from basile.remlab.net (87-92-31-51.bb.dnainternet.fi [87.92.31.51])
+ (Authenticated sender: remi)
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTPSA id A19B85FAA2;
+ Fri, 13 Mar 2020 14:59:30 +0100 (CET)
+From: =?ISO-8859-1?Q?R=E9mi?= Denis-Courmont <remi@remlab.net>
+To: qemu-arm@nongnu.org
+Subject: [RFC] [PATCH 0/5] ARMv8.5-MemTag disassembly
+Date: Fri, 13 Mar 2020 15:59:29 +0200
+Message-ID: <2159383.tmy0LfLZHX@basile.remlab.net>
+Organization: Remlab
 MIME-Version: 1.0
-References: <20200313014551.12554-1-linux@roeck-us.net>
-In-Reply-To: <20200313014551.12554-1-linux@roeck-us.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 Mar 2020 11:25:56 +0000
-Message-ID: <CAFEAcA8boUtXByYcgpo-gUnf1SEe2XiVNBbwLvjjijwj1jNxeg@mail.gmail.com>
-Subject: Re: [PATCH v3 0/5] Wire up USB controllers in i.MX6 emulations
-To: Guenter Roeck <linux@roeck-us.net>
+Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::344
+X-Received-From: 2001:41d0:2:5a1a::
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,45 +76,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /blp1T502Ant
+X-TUID: sJ8DvGZ1Vs7M
 
-On Fri, 13 Mar 2020 at 01:45, Guenter Roeck <linux@roeck-us.net> wrote:
->
-> This patch series wires up the USB controllers on fsl-imx6 and fsl-imx6ul
-> emulations.
->
-> The first patch provides a basic implementation of the USB PHY controller
-> used in i.MX28 and later chips. Only reset bit handling in the control
-> register is actually implemented. Basic USB PHY support is needed to make
-> the USB ports operational in Linux.
->
-> The second patch fixes USB and USB PHY interrupt numbers for i.MX6UL.
->
-> The third patch instantiates unimplemented pwm and can devices. This patch
-> is necessary to avoid crashes in Linux when it tries to access those
-> devices. The crashes are observed when trying to boot Linux v4.21 or later.
->
-> The final two patches instantiate the USB controllers for i.mMX6 and
-> i.MX6UL.
->
-> v3:
-> - Minor cleanup in patch 1/5 (see details in patch)
-> - Added patch to fix USB and USB PHY interrupt numbers for fsl-imx6ul.
-> - Added patch to instantiate unimplemented pwm and CAN devices.
-> - Instantiate USB and USB PHY separately. They are logically different,
->   and the number of instances is not always the same.
->
-> v2:
-> - Implement and instantiate basic USB PHY implementation
->   instead of emulating a single USB PHY register
+	Hello,
+
+The following changes since commit d4f7d56759f7c75270c13d5f3f5f736a9558929c:
+
+  Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target-arm-20200=
+312' into staging (2020-03-12 17:34:34 +0000)
+
+adds support for the ARM MTE compatibility subset (which does not seem to h=
+ave
+an official name) to QEMU user mode and system mode on "max" CPU. This
+corresponds to MTE =3D=3D 1 in the instruction set feature field, and allows
+running code with MTE instructions without actual tag storage.
+
+Similar to the SP alignment checks, it also adds stubs for memory tag checks
+that don't actually do anything at this point and would be optimized out by
+the compiler.
+
+=46or proper storage and checking of memory tags, MTE =3D=3D 2 would be
+necessary. I have some code (on top of this RFC but not included) to add the
+tag allocation logic. But I have no clue how to actually store the tags in =
+QEMU
+system mode at this point, so it's mostly dead code.
+
+In user mode, it seems impossible anyway, as tags are indexed by physical, =
+not
+virtual address and QEMU cannot know which virtual memory address may
+physically alias another within the user process.
+
+=2D---------------------------------------------------------------
+R=C3=A9mi Denis-Courmont (5):
+      target/arm: MTE processor state
+      target/arm: MTE user mode disassembly
+      target/arm: MTE unprivileged system mode disassembly
+      target/arm: MTE privileged system mode assembly
+      target/arm: MTE tag check stubs
+
+ target/arm/cpu.h           |  17 +++
+ target/arm/cpu64.c         |   5 +
+ target/arm/helper-a64.c    |   2 +
+ target/arm/helper.c        | 118 +++++++++++++++
+ target/arm/translate-a64.c | 370 +++++++++++++++++++++++++++++++++++++++++=
++---
+ 5 files changed, 494 insertions(+), 18 deletions(-)
+
+=2D-=20
+=D0=A0=D0=B5=D0=BC=D0=B8 =D0=94=D1=91=D0=BD=D0=B8-=D0=9A=D1=83=D1=80=D0=BC=
+=D0=BE=D0=BD
+http://www.remlab.net/
 
 
 
-Applied to target-arm.next, thanks.
-
--- PMM

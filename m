@@ -1,74 +1,73 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2590408lfc;
-        Fri, 13 Mar 2020 12:45:59 -0700 (PDT)
-X-Received: by 2002:a67:dc6:: with SMTP id 189mr10541860vsn.214.1584128758965;
-        Fri, 13 Mar 2020 12:45:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584128758; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2609477lfc;
+        Fri, 13 Mar 2020 13:01:44 -0700 (PDT)
+X-Received: by 2002:a67:1601:: with SMTP id 1mr9899168vsw.176.1584129704405;
+        Fri, 13 Mar 2020 13:01:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584129704; cv=none;
         d=google.com; s=arc-20160816;
-        b=jiKKxzh81yxyCPGWfwH6HaFhAIPaoq9Epo89MWuJ4V7LHrDq9uBpy7/35stmmyhvFr
-         By8bzPwU2KZp5PfLXM0vRHlP8TjhosZntH9vn1JBdyFkrYtJirOv0rjC67uXY632jHzK
-         JnTaZ8HaISu7Mw7CnnDPUIK76HQIIelkkoj/wcx1lqjRCF7JkLcLrRnZlwMNgQ0/apMe
-         pcLCrLnlwUAHweyDpMM3TlL7KsXJiFojWVWB/NmeS7ehQn4+eQawGa4RyOSvvUkM23dB
-         H7UxUEW2LokE7Lr4ipyDuIswGuKDW5/0OMItnL2pmKkBKrItPW4QFFoGyUDnnMOCkbbc
-         qV3Q==
+        b=INEfKmWpUUwsYKDMDfz3rmObzGBEmAXcKSBkCp5FxP97Q1vprE3CvY8BvG4fompxP1
+         hSTHd/EJHtzO5SiufETdPaQv5Gum1kOcamvnVIMgDLsD2x0tT83PCFySHOvxWIaEJryd
+         06dEbSTMlgELczoJkK175MHL/UBbcCotSrN8kxzZ8VESAPSqeFaDhmjNK7bkEHIypYNo
+         m4hGEviKF6eqDpBkraPwoGPGgsuLnEckoXhMabBmwq6YJEl46aosDio9MnFoVYBYPUvS
+         UxKNfscb7SVpJTL0EsHOhBal7zkeiDBqhyjXdeWMyNEsKcfVNdqnm/2wp03dvGL3TG5f
+         aVkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=ZO4PnrTuUVTtq2EjFzz8ZaUx+/viaySWIkdpaUeET6I=;
-        b=Q/YCc4NxZ9651l8c2VmPc+/lW6X1HctNYQko41kVXmOH8fZi//RJ3IxUzY/Yj2Rjjl
-         DYYy5OfHum1aH2jD1wzU151+S/wLnjXVww9zFHhs7ZRZsKLU4lQ9AIOexFn2rBf2OQFN
-         lKAzbUNT26QtEShbWiPL/w2/ti19wRO8i31wmCJN9hZWGWtldQvY3M4DN94uIN+5kEO6
-         M/qsRa05Fm/ojNQAxt3bO7lF4v3sTqIOoJnkuqghyRjd31GG2E9mGNHfI5eiLucNgxTV
-         s0f3gh1FugUPihcGkaOCMtW3+fXZPqtJ9lVgSAAsaA7mfgJMwYkLbO546Hu2pe4P/zzJ
-         l08A==
+        bh=OxHoNj73ij1tyjuFJTobIkE6lc8SgWazEItycwi/oTI=;
+        b=YiUCXUr2KloRrq16dGWt5iClwirbYsZ36OX79h3tN1sBWdzmiBlZfI6ypmiTsFK8Bm
+         I3+o4qt7r6my14ZpbA/L5JdQgvYkJKuc2h7scE2RZ13X854Ao3/b4S1ufVlYAlVkdvXE
+         5Waaa1AcDS6gulDdLtgiO2q/VuuTq37mo6m6MWpHbk/dDNmq1ildSM9SkOp+9AkwZWit
+         7JK4gqfwH44dINK07apT62U45f6q9lJzfT74VQZZ/eGgSdKedrIF01ClCpANKSw9EbSZ
+         0MGnLACV1jD9THVtYVLSGcpFlfOL7gs/0ku+HG2cDUvqABWZcrtcnGySMXm3kULhphv7
+         bBNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="C/WQE8vp";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Dh6JAb0p;
        spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <alistair23@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 186sor6138751vsp.120.2020.03.13.12.45.58
+        by mx.google.com with SMTPS id y85sor4753642vkd.52.2020.03.13.13.01.43
         (Google Transport Security);
-        Fri, 13 Mar 2020 12:45:58 -0700 (PDT)
+        Fri, 13 Mar 2020 13:01:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="C/WQE8vp";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Dh6JAb0p;
        spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=ZO4PnrTuUVTtq2EjFzz8ZaUx+/viaySWIkdpaUeET6I=;
-        b=C/WQE8vp+38vC6GqUaLBXwNFSHBv4kASjk4GODqJrHjq5ns2SZTxLbc30q0pzNno7N
-         scotDPBn93nMOVp1I+IePhSq4GSnKqeduKcCYr3oxwcTy4vomJngnZcKce0eP/hRiqLw
-         ecmQQrnyFNOV1TAX2/fFnAeqNtKEqDt7AToWGAfUDfVIEb5zD/1mlESpYLRT3dlaRYTK
-         no5kZP9zIUn0sdCfuttNOklmvB1K03qBZZbGAJBnnTdvJd9nL9RSH9mnhwOot167dzYI
-         BdI/c5uXhUDDWU6aN9b4oL4KbH29tkVKhWudWpk3XW9S3F1TBFem+gF72yB6eVslOQKe
-         H29w==
+        bh=OxHoNj73ij1tyjuFJTobIkE6lc8SgWazEItycwi/oTI=;
+        b=Dh6JAb0pEAJRVSGkkqX+4JIQnLsTxop/96GbXIcrRMAGHx38SoGu8BeCIcR1yzlku1
+         0u6auTWKl2S1G7+QAgUqW1m1jamXPO/nW41Dzn9J98ulPHx8erTJt0CLzaNX4Y4rYqt5
+         obVGZUWzXH1XdNa7Jf0IUibDPCyWhMCP6ljoioyiLoD99c29ne2LLhEgvQw0vbYPZAqd
+         L6qkWigBeyksawJObFPZHou6NYizKgHEd2EwY7w2v+BS77DXsnboF4eZ2OEXbgU8ZTBv
+         NLA8gcT0EGoAx4jhKxBcJxOGyYvaVpIbagUkfGWgURILI3u3QH/RAQNOW27wshzYdzA/
+         oBpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=ZO4PnrTuUVTtq2EjFzz8ZaUx+/viaySWIkdpaUeET6I=;
-        b=sq97EBFroL+seswTU7pl03VIanpNsk/wKDqcZU7nNGT7XdgYP047p8zmjUD8kNEeTW
-         DB/MgBBdSXZZEjloom1rLCULesV6RUf/pGcJrq5BIvWu3OwxcNr20oWCxB8BKsIlGJ7N
-         OY6atMVPtbrq1kOlnIkCBIMsriUoyIxqbpENnV9TpVj3WDb6x9j/cMy2NtiFnEor7IKU
-         KxS4XeUQoHJq9csG8ffuqJu8CTttHAorcMWIXMWkSCCF3Fxv1bYeMk2xPNLAzHv+2mQY
-         h+75YztFnQp92U+J5GwptX0dkZHZc/TE8AfZNOMSG9W/coThjd2qk5QfUzGJeiU4y1AO
-         Zzow==
-X-Gm-Message-State: ANhLgQ3jKSX1vPTKZzp+EoVXysUg3mUNkopYq6UqCcO9+5gNzwYxqmdo
-	Hu1dZScY2EHXVqhGczhGQnvpnRQUbJjUgDHvdJo=
-X-Google-Smtp-Source: ADFU+vviP32q1fsE+cEj9VjsOLyUAIDfTrT73l7cuSbTHaLIrRUIjbliGdn3ettHl6SVIvDQanhSdM/grYNl4wbXXMM=
-X-Received: by 2002:a05:6102:3c2:: with SMTP id n2mr10349575vsq.172.1584128758599;
- Fri, 13 Mar 2020 12:45:58 -0700 (PDT)
+        bh=OxHoNj73ij1tyjuFJTobIkE6lc8SgWazEItycwi/oTI=;
+        b=Eqqfp0UK3/8DeB4vs3+GiF6sUXZ7uF+b4j/zcHkWMpLdfVinSSOp0ChlMSdTqJ6rNJ
+         2ypryhgLfX5x5IPeW0V25cuj/ba1hiXxQzhcqEzc8jfVSHrLFSEICfCHXbw+fgK9eD01
+         MI/EZojCVpmaP1FPX1p8RYMB1OUAG4F5xF7BwGmSnT7HXjQG95YVFpySKyGHosBU0EUK
+         M9hGnV66ZJFFqGu7h5EDlli5+XMP361nDTpr9A/L+aqJHw4Kw3hCJPV/O7UEyzQjGuvZ
+         kBjyDrzrNbPAo5VGN9KjUgHQDGYHsMDJ4kfoYiYYyyiCyfl7kAbGqi5KAkqKaRrJ50uB
+         Jq4g==
+X-Gm-Message-State: ANhLgQ2KUGt5pb+LvJKxcVjfoSoowOWbW/ErvtD1gWk89EUG9Hn8NuEf
+	PQHbjXRbQxrBw5TkWSQhqVOZm7+IBoyBlAOSQLs=
+X-Google-Smtp-Source: ADFU+vsEoXiHJ0spy87aO28SJvhnPFTV77ByNwGPD2NaiebUdXeCq6Qe/izPKfPyiVd4BFGmI4bxRsh+HaG3eHWNrwo=
+X-Received: by 2002:a1f:c786:: with SMTP id x128mr9958917vkf.77.1584129703525;
+ Fri, 13 Mar 2020 13:01:43 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200313183652.10258-1-philmd@redhat.com> <20200313183652.10258-4-philmd@redhat.com>
-In-Reply-To: <20200313183652.10258-4-philmd@redhat.com>
+References: <20200313183652.10258-1-philmd@redhat.com> <20200313183652.10258-8-philmd@redhat.com>
+In-Reply-To: <20200313183652.10258-8-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 13 Mar 2020 12:45:32 -0700
-Message-ID: <CAKmqyKO+kEGj4-=hb+N3PRLkxBUxRpToGCzx1Mo61jtYV=2h+A@mail.gmail.com>
-Subject: Re: [PATCH 03/14] tests/Makefile: Only display TCG-related tests when
- TCG is available
+Date: Fri, 13 Mar 2020 13:01:17 -0700
+Message-ID: <CAKmqyKO=f=on17SBu8OmbdJ4SQ=L6==E-tr=ekQuHPkiTzct6Q@mail.gmail.com>
+Subject: Re: [PATCH 07/14] target/riscv/cpu: Restrict CPU migration to system-mode
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
 	"open list:RISC-V" <qemu-riscv@nongnu.org>, Eduardo Habkost <ehabkost@redhat.com>, 
@@ -81,7 +80,7 @@ Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Peter Maydell <p
 	Palmer Dabbelt <palmer@dabbelt.com>, Richard Henderson <rth@twiddle.net>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: ZfSHEafoxYhE
+X-TUID: mILkFLpqjC+7
 
 On Fri, Mar 13, 2020 at 11:39 AM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
@@ -93,26 +92,43 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  tests/Makefile.include | 2 ++
->  1 file changed, 2 insertions(+)
+>  target/riscv/cpu.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
 >
-> diff --git a/tests/Makefile.include b/tests/Makefile.include
-> index 67e8fcddda..99db5eb3e0 100644
-> --- a/tests/Makefile.include
-> +++ b/tests/Makefile.include
-> @@ -12,8 +12,10 @@ check-help:
->         @echo " $(MAKE) check-speed          Run qobject speed tests"
->         @echo " $(MAKE) check-qapi-schema    Run QAPI schema tests"
->         @echo " $(MAKE) check-block          Run block tests"
-> +ifeq ($(CONFIG_TCG),y)
->         @echo " $(MAKE) check-tcg            Run TCG tests"
->         @echo " $(MAKE) check-softfloat      Run FPU emulation tests"
-> +endif
->         @echo " $(MAKE) check-acceptance     Run all acceptance (function=
-al) tests"
->         @echo
->         @echo " $(MAKE) check-report.tap     Generates an aggregated TAP =
-test report"
+> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+> index c0b7023100..b59e09209e 100644
+> --- a/target/riscv/cpu.c
+> +++ b/target/riscv/cpu.c
+> @@ -475,10 +475,12 @@ static void riscv_cpu_init(Object *obj)
+>      cpu_set_cpustate_pointers(cpu);
+>  }
+>
+> +#ifndef CONFIG_USER_ONLY
+>  static const VMStateDescription vmstate_riscv_cpu =3D {
+>      .name =3D "cpu",
+>      .unmigratable =3D 1,
+>  };
+> +#endif
+>
+>  static Property riscv_cpu_properties[] =3D {
+>      DEFINE_PROP_BOOL("i", RISCVCPU, cfg.ext_i, true),
+> @@ -534,13 +536,13 @@ static void riscv_cpu_class_init(ObjectClass *c, vo=
+id *data)
+>      cc->do_transaction_failed =3D riscv_cpu_do_transaction_failed;
+>      cc->do_unaligned_access =3D riscv_cpu_do_unaligned_access;
+>      cc->get_phys_page_debug =3D riscv_cpu_get_phys_page_debug;
+> +    /* For now, mark unmigratable: */
+> +    cc->vmsd =3D &vmstate_riscv_cpu;
+>  #endif
+>  #ifdef CONFIG_TCG
+>      cc->tcg_initialize =3D riscv_translate_init;
+>      cc->tlb_fill =3D riscv_cpu_tlb_fill;
+>  #endif
+> -    /* For now, mark unmigratable: */
+> -    cc->vmsd =3D &vmstate_riscv_cpu;
+>      device_class_set_props(dc, riscv_cpu_properties);
+>  }
+>
 > --
 > 2.21.1
 >

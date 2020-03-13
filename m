@@ -1,112 +1,97 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1211935lfc;
-        Thu, 12 Mar 2020 14:35:23 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsIVbfLR5TzhK3Cxbgd6he1PiVdK5EvGVtccx+a7rSC90Ye/olv3nXi7lle6DO1HMP62Vic
-X-Received: by 2002:aed:2625:: with SMTP id z34mr3535941qtc.276.1584048923155;
-        Thu, 12 Mar 2020 14:35:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584048923; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1466952lfc;
+        Thu, 12 Mar 2020 18:46:19 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtzEaQEvQp+qlVxr2366mh5ffu3j5JkeyYk2JxvK4i+GW3hB79zZXjOhcTGD2foO82f4l9h
+X-Received: by 2002:ac8:564e:: with SMTP id 14mr10489478qtt.53.1584063979744;
+        Thu, 12 Mar 2020 18:46:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584063979; cv=none;
         d=google.com; s=arc-20160816;
-        b=THuLdeuNwvlmUh5BntDpXQlyso7eaqUUW02tESKw77/6aj4zcw4gFOOQdKbQHfkeWj
-         1XBrudpBUWymSWe+Hgc2kpDpCGK2QOhJHGm9cdaY1OkCmMCyo+sBazERXiU9Ha6pPh9q
-         0HWfAyMcQempjY0OHZxfCusGucBghbuv4cJkjNUEwDTGicWFNjFqeDJddLixaOTAzJl4
-         DDtFaOABT1ZNeKK4oUPzJmKnerA1qSTmy7HXz+t9vSq1CqWhUyB6UGpxHr0JbQjvejbO
-         tJOZyNDZVgQ/k+fbSgmHXfptjboFqmbz9DrfFmw4BpGqZFUep+hJEIfGTYA0WD1QukVh
-         p3zA==
+        b=Tumuerbo5qtxh/NX6VlcqwlaZw6rhlbPzkmgb1npj+GagpKbWu1dHs8C3y031y6idO
+         LnR0XyeIrXp/zgQJaGk672IhI6al/ijUoDLsul6hLrddM+fXeD43gAid68L1dKeSNKsT
+         /OT2jNKDJAthfH8k6b9Ad5Kk7ayAbzQNiLcgU7YIii46IVUGRtXECnD+NZbB164D50Rh
+         38Q3UF+759MROr99Z7uvjWSKAz6QUJs0klHTF+7fgkESUDvNjMZA/BlJkpJP/hcnhlej
+         TBqiBL+a9Cx1MiETSE3bhxznDOuOtHIwIi6Soh9DMLl7TPIHqRu597RVa8xIY6y94INA
+         0noA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=mFXbCCigBc0ZW7QUeDzPsEBC/Vs0XXPpm3bcXDVS2qo=;
-        b=VZ78Ai/Pm5WuyGmKh93g/ullqs3g5vLtMk5zs6jiVQi5i6F6aVbV+bfakfUFGo1VIU
-         mnPqf4gLfC2tcAFl+CgWsaIa7PUYqQ425QlBBxRG/zJpJ6aUb3GY0hHvGuR5Y/kaol/U
-         wFAsjrBx4LsU87ObY7nIIWfX8rSPtDI4ZwjMwqtBNNTAsiwTGuc9eXy6bPR2hPEJeb/9
-         B4txK6ewX9Hl59I1tlycjThbJgRHiXwKTAooLnvd9M/oFcTp2k49a8K56PSoklMzg9pw
-         PkkmZ6PYgLjJa3zjYzzZfrWj7o7T82udN4jSokntMTuUZT/61k/zoR9V3YPswSN6hGYN
-         M+BQ==
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=U/E6FZ2aNyj9E0hjkPWXRdlmcUxMx99Uvd9Fo55qjw0=;
+        b=BJF9r80Dd8MD9FuIPsdxD8TaxUT11FuQi1XSGvOxdXcF8iCemqSPJco76P27Q65HIO
+         d63qcxqVkiFQIJdBlO6VgZtntmv2Zi7pOVSM67GUlpS50ZagDYFp+ZcbgKetq3xf3GHk
+         TFM56A6DDOZpCKtVjnT+RnWiMgBRLJXWzH+xDbhfuhxI+131BlrLsocphV9OmmD3fFce
+         pDl1pLohNOPBFHhvmX+e1PZkCNpHSRLSwidFj8ERKZ3hjURDS8ZQ/jOyV9KT6TmyUU6R
+         GGGhQKFDbMpDnpKVynEHUrninlWjy/MdTqfFHQEu5v5scukNJOC8PKLgyQzuYqVfR4/g
+         nXXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Vv7r8OJX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cCy8+h5g;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dk9si3260703qvb.92.2020.03.12.14.35.22
+        by mx.google.com with ESMTPS id q2si3771772qve.60.2020.03.12.18.46.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Mar 2020 14:35:23 -0700 (PDT)
+        Thu, 12 Mar 2020 18:46:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Vv7r8OJX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50728 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cCy8+h5g;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52614 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jCVUA-0008MP-Im
-	for alex.bennee@linaro.org; Thu, 12 Mar 2020 17:35:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56895)
+	id 1jCZP1-0001dx-5q
+	for alex.bennee@linaro.org; Thu, 12 Mar 2020 21:46:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42317)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jCVU1-0008Lt-B9
- for qemu-arm@nongnu.org; Thu, 12 Mar 2020 17:35:15 -0400
+ (envelope-from <groeck7@gmail.com>) id 1jCZOn-0001Vr-S7
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2020 21:46:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jCVTy-0005FO-Mc
- for qemu-arm@nongnu.org; Thu, 12 Mar 2020 17:35:12 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:24320
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jCVTy-0005Dt-Hv
- for qemu-arm@nongnu.org; Thu, 12 Mar 2020 17:35:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584048909;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=mFXbCCigBc0ZW7QUeDzPsEBC/Vs0XXPpm3bcXDVS2qo=;
- b=Vv7r8OJXQXEy7zVe7Tx/Ws+9mLZBHLjKXYSk0ON8NipM8YFf+L4PQ5wRonXqfWKbrc9bVl
- tXiZIuIQi6PJHkvGCLIWz4gI9VZY77amiu5BOBUKbRgbVoE1LprMT2gQkMXcbFubCibJwy
- ukMbqZ6TuEWr7len1zT60zMKxEQC8Mo=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-361-W9kR7fDvNny8rXVX0byMgg-1; Thu, 12 Mar 2020 17:35:05 -0400
-X-MC-Unique: W9kR7fDvNny8rXVX0byMgg-1
-Received: by mail-wm1-f71.google.com with SMTP id a13so2703385wme.7
- for <qemu-arm@nongnu.org>; Thu, 12 Mar 2020 14:35:05 -0700 (PDT)
+ (envelope-from <groeck7@gmail.com>) id 1jCZOm-0006FJ-Kv
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2020 21:46:05 -0400
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:41438)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1jCZOk-00067c-5a; Thu, 12 Mar 2020 21:46:02 -0400
+Received: by mail-pf1-x443.google.com with SMTP id z65so4212291pfz.8;
+ Thu, 12 Mar 2020 18:46:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=U/E6FZ2aNyj9E0hjkPWXRdlmcUxMx99Uvd9Fo55qjw0=;
+ b=cCy8+h5gRwUEQxLTBFucurKZwImWEYt8KsnLbJrq0u/qPomUAEFHYqJuljdbEP4PoM
+ aKq1g7wxJVTmZsCor6dP4zdiHoNFCP418GZBFj8xf7fX7BJijZWVmZP7e/IZW3iYZqk5
+ tADl3qEQp3Dd13iZzNz0LQH8gv0Dqsc99Df2xEEVjssmHVMKYmrs36JH048vy0Z4PARd
+ I/cJ+rdVr2+ArmajAGXW+9xGBDU4aOv2b6CpqJP1TpwbuoAQqk04Y3zdKE0tTo4AAsi6
+ 3ERJEI+dGMITOONrTdYLjnpWuM1jpIzaq3KhChwSbeTiEt+K+6Z1X0/vVO/tG1m84iNF
+ F2XA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=uTi8YTd4XLR6S3OLKdtMkCx2y1clO9+fdoByjKp8tgw=;
- b=JDqf+JN4MStmqckkSHuYKsy3PQWf884RC7ijg+3pf63QZ5qI3eTiDIy2AANDvP5XjY
- o1Gzl0mvRqqWWqdWAW6I4nY7kFod7ZSa5kH+lbYsYc9tL8meHgjazhLRux6Mz16DqJ9k
- wFcgzAHluyjYoiyKozsDj17aWRQhi8dMbok4D/RlxwPflinJgUyf0CoXLXEuaGgPptwX
- F0W4y5jarqGuUX4lL3/EpF9jyAiejToKOnUk9wUQLJydEHEwgOZO6J2NKBm2tVWVGCMO
- jZ5TpUMioG9u1wqwhY+wJQCd4IwH9LLAd9OmmTI4aS166ut9542Any7Gd2j2qn3rwvMO
- NOcg==
-X-Gm-Message-State: ANhLgQ33sePVlUvw0jdrRDoDM3UIxiYtuGtrpn+8wXkNUWDMrXdx34wG
- VLaxWrDZd1LV3VN6Upt4YlKJJQj9zh5x97EuBFV9XJ9Yai1OI98LPNgRrKVcmDwa2sHGyqelC1y
- 8rgBjCaSxZqga
-X-Received: by 2002:adf:f0c6:: with SMTP id x6mr12710923wro.273.1584048904435; 
- Thu, 12 Mar 2020 14:35:04 -0700 (PDT)
-X-Received: by 2002:adf:f0c6:: with SMTP id x6mr12710886wro.273.1584048903943; 
- Thu, 12 Mar 2020 14:35:03 -0700 (PDT)
-Received: from localhost.localdomain (47.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id i9sm14457664wmd.37.2020.03.12.14.35.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Mar 2020 14:35:03 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] hw/arm/bcm283x: Correct the license text
-Date: Thu, 12 Mar 2020 22:34:55 +0100
-Message-Id: <20200312213455.15854-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.1
-MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references;
+ bh=U/E6FZ2aNyj9E0hjkPWXRdlmcUxMx99Uvd9Fo55qjw0=;
+ b=K8D4qGZs8TEw9RAI4VF3kbS9CBSn1Ia4oP3z8h8BB7BlTlAj7tYdGEuRi/aYv4ILoW
+ 9aX24nsxHicfSfdVbb9vUVVc/mq6ZwC1QkY8wsPF8fA2KZnaJllRlSDE39mv0SMToB32
+ 2xCkqjNbiCnQo0AQ2iNEzozl4aVs9a0xgKBYYLZeGRjcxYHoWhF23s6X3eCevap424yQ
+ qQLQD2Jc8Kiczx74kc4qvMh7YYNt5P3z6U4cH4NuAklVXVBjVEdqdsZIghZzn1uCDAAU
+ rSaPpVkZd345/Jr2UoXNcAxVYmR3W0Xo07rNe+x76CizmPZcpW+Ipvc+3sYS1LOspk7q
+ 0gWg==
+X-Gm-Message-State: ANhLgQ0uLXKc++j22vHskB8QUYXYrwEUxWgy/PLJfzh20vDl3vJOTk8j
+ wDR2VimrxBIuURKipk98ESg=
+X-Received: by 2002:a63:7c0f:: with SMTP id x15mr10699594pgc.173.1584063961229; 
+ Thu, 12 Mar 2020 18:46:01 -0700 (PDT)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id g19sm55823917pfh.134.2020.03.12.18.46.00
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Thu, 12 Mar 2020 18:46:00 -0700 (PDT)
+From: Guenter Roeck <linux@roeck-us.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v3 4/5] hw/arm/fsl-imx6ul: Wire up USB controllers
+Date: Thu, 12 Mar 2020 18:45:50 -0700
+Message-Id: <20200313014551.12554-5-linux@roeck-us.net>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200313014551.12554-1-linux@roeck-us.net>
+References: <20200313014551.12554-1-linux@roeck-us.net>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::443
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -118,359 +103,132 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-trivial@nongnu.org, Andrew Baumann <Andrew.Baumann@microsoft.com>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, Guenter Roeck <linux@roeck-us.net>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RWuPsMyIJjK9
+X-TUID: RteVhQfmf/vi
 
-The license is the 'GNU General Public License v2.0 or later',
-not 'and':
+IMX6UL USB controllers are quite similar to IMX7 USB controllers.
+Wire them up the same way.
 
-  This program is free software; you can redistribute it and/ori
-  modify it under the terms of the GNU General Public License as
-  published by the Free Software Foundation; either version 2 of
-  the License, or (at your option) any later version.
+The only real difference is that wiring up phy devices is necessary
+to avoid phy reset timeouts in the Linux kernel.
 
-Fix the license comment.
-
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 ---
- include/hw/arm/bcm2835_peripherals.h | 3 ++-
- include/hw/arm/bcm2836.h             | 3 ++-
- include/hw/char/bcm2835_aux.h        | 3 ++-
- include/hw/display/bcm2835_fb.h      | 3 ++-
- include/hw/dma/bcm2835_dma.h         | 4 +++-
- include/hw/intc/bcm2835_ic.h         | 4 +++-
- include/hw/intc/bcm2836_control.h    | 3 ++-
- include/hw/misc/bcm2835_mbox.h       | 4 +++-
- include/hw/misc/bcm2835_mbox_defs.h  | 4 +++-
- include/hw/misc/bcm2835_property.h   | 4 +++-
- hw/arm/bcm2835_peripherals.c         | 3 ++-
- hw/arm/bcm2836.c                     | 3 ++-
- hw/arm/raspi.c                       | 3 ++-
- hw/display/bcm2835_fb.c              | 1 -
- hw/dma/bcm2835_dma.c                 | 4 +++-
- hw/intc/bcm2835_ic.c                 | 4 ++--
- hw/intc/bcm2836_control.c            | 4 +++-
- hw/misc/bcm2835_mbox.c               | 4 +++-
- hw/misc/bcm2835_property.c           | 4 +++-
- 19 files changed, 45 insertions(+), 20 deletions(-)
+v3: Wire up USB and USB PHY controllers in separate loops
+    While the number of USB controllers matches the number of USB PHYs,
+    they are logically different.
+v2: Use USB PHY emulation
 
-diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_=
-peripherals.h
-index 7859281e11..2e8655a7c2 100644
---- a/include/hw/arm/bcm2835_peripherals.h
-+++ b/include/hw/arm/bcm2835_peripherals.h
-@@ -5,7 +5,8 @@
-  * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-  * Written by Andrew Baumann
-  *
-- * This code is licensed under the GNU GPLv2 and later.
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #ifndef BCM2835_PERIPHERALS_H
-diff --git a/include/hw/arm/bcm2836.h b/include/hw/arm/bcm2836.h
-index 92a6544816..024af8aae4 100644
---- a/include/hw/arm/bcm2836.h
-+++ b/include/hw/arm/bcm2836.h
-@@ -5,7 +5,8 @@
-  * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-  * Written by Andrew Baumann
-  *
-- * This code is licensed under the GNU GPLv2 and later.
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #ifndef BCM2836_H
-diff --git a/include/hw/char/bcm2835_aux.h b/include/hw/char/bcm2835_aux.h
-index cdbf7e3e37..934acf9c81 100644
---- a/include/hw/char/bcm2835_aux.h
-+++ b/include/hw/char/bcm2835_aux.h
-@@ -2,7 +2,8 @@
-  * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-  * Written by Andrew Baumann
-  *
-- * This code is licensed under the GNU GPLv2 and later.
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #ifndef BCM2835_AUX_H
-diff --git a/include/hw/display/bcm2835_fb.h b/include/hw/display/bcm2835_f=
-b.h
-index 228988ba05..2246be74d8 100644
---- a/include/hw/display/bcm2835_fb.h
-+++ b/include/hw/display/bcm2835_fb.h
-@@ -5,7 +5,8 @@
-  * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-  * Written by Andrew Baumann
-  *
-- * This code is licensed under the GNU GPLv2 and later.
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #ifndef BCM2835_FB_H
-diff --git a/include/hw/dma/bcm2835_dma.h b/include/hw/dma/bcm2835_dma.h
-index 91ed8d05d1..a6747842b7 100644
---- a/include/hw/dma/bcm2835_dma.h
-+++ b/include/hw/dma/bcm2835_dma.h
-@@ -1,6 +1,8 @@
- /*
-  * Raspberry Pi emulation (c) 2012 Gregory Estrade
-- * This code is licensed under the GNU GPLv2 and later.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #ifndef BCM2835_DMA_H
-diff --git a/include/hw/intc/bcm2835_ic.h b/include/hw/intc/bcm2835_ic.h
-index fb75fa0064..392ded1cb3 100644
---- a/include/hw/intc/bcm2835_ic.h
-+++ b/include/hw/intc/bcm2835_ic.h
-@@ -1,6 +1,8 @@
- /*
-  * Raspberry Pi emulation (c) 2012 Gregory Estrade
-- * This code is licensed under the GNU GPLv2 and later.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #ifndef BCM2835_IC_H
-diff --git a/include/hw/intc/bcm2836_control.h b/include/hw/intc/bcm2836_co=
-ntrol.h
-index de061b8929..2c22405686 100644
---- a/include/hw/intc/bcm2836_control.h
-+++ b/include/hw/intc/bcm2836_control.h
-@@ -8,7 +8,8 @@
-  * ARM Local Timer IRQ Copyright (c) 2019. Zolt=C3=A1n Baldaszti
-  * Added basic IRQ_TIMER interrupt support
-  *
-- * This code is licensed under the GNU GPLv2 and later.
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #ifndef BCM2836_CONTROL_H
-diff --git a/include/hw/misc/bcm2835_mbox.h b/include/hw/misc/bcm2835_mbox.=
-h
-index 7e8f3ce86d..57f95cc35e 100644
---- a/include/hw/misc/bcm2835_mbox.h
-+++ b/include/hw/misc/bcm2835_mbox.h
-@@ -1,6 +1,8 @@
- /*
-  * Raspberry Pi emulation (c) 2012 Gregory Estrade
-- * This code is licensed under the GNU GPLv2 and later.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #ifndef BCM2835_MBOX_H
-diff --git a/include/hw/misc/bcm2835_mbox_defs.h b/include/hw/misc/bcm2835_=
-mbox_defs.h
-index a18e520b22..9670bf33a0 100644
---- a/include/hw/misc/bcm2835_mbox_defs.h
-+++ b/include/hw/misc/bcm2835_mbox_defs.h
-@@ -1,6 +1,8 @@
- /*
-  * Raspberry Pi emulation (c) 2012 Gregory Estrade
-- * This code is licensed under the GNU GPLv2 and later.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #ifndef BCM2835_MBOX_DEFS_H
-diff --git a/include/hw/misc/bcm2835_property.h b/include/hw/misc/bcm2835_p=
-roperty.h
-index 11be0dbeac..b321f22499 100644
---- a/include/hw/misc/bcm2835_property.h
-+++ b/include/hw/misc/bcm2835_property.h
-@@ -1,6 +1,8 @@
- /*
-  * Raspberry Pi emulation (c) 2012 Gregory Estrade
-- * This code is licensed under the GNU GPLv2 and later.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #ifndef BCM2835_PROPERTY_H
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 17207ae07e..edcaa4916d 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -5,7 +5,8 @@
-  * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-  * Written by Andrew Baumann
-  *
-- * This code is licensed under the GNU GPLv2 and later.
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #include "qemu/osdep.h"
-diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index 38e2941bab..43022b83f5 100644
---- a/hw/arm/bcm2836.c
-+++ b/hw/arm/bcm2836.c
-@@ -5,7 +5,8 @@
-  * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-  * Written by Andrew Baumann
-  *
-- * This code is licensed under the GNU GPLv2 and later.
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #include "qemu/osdep.h"
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index acd2bb794d..fe3b9bc78b 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -8,7 +8,8 @@
-  * Raspberry Pi 3 emulation Copyright (c) 2018 Zolt=C3=A1n Baldaszti
-  * Upstream code cleanup (c) 2018 Pekka Enberg
-  *
-- * This code is licensed under the GNU GPLv2 and later.
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #include "qemu/osdep.h"
-diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
-index d6bf3374a6..c6263808a2 100644
---- a/hw/display/bcm2835_fb.c
-+++ b/hw/display/bcm2835_fb.c
-@@ -1,7 +1,6 @@
- /*
-  * Raspberry Pi emulation (c) 2012 Gregory Estrade
-  * Refactoring for Pi2 Copyright (c) 2015, Microsoft. Written by Andrew Ba=
-umann.
-- * This code is licensed under the GNU GPLv2 and later.
-  *
-  * Heavily based on milkymist-vgafb.c, copyright terms below:
-  *  QEMU model of the Milkymist VGA framebuffer.
-diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c
-index ccff5ed55b..4cd9dab745 100644
---- a/hw/dma/bcm2835_dma.c
-+++ b/hw/dma/bcm2835_dma.c
-@@ -1,6 +1,8 @@
- /*
-  * Raspberry Pi emulation (c) 2012 Gregory Estrade
-- * This code is licensed under the GNU GPLv2 and later.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #include "qemu/osdep.h"
-diff --git a/hw/intc/bcm2835_ic.c b/hw/intc/bcm2835_ic.c
-index 05bd28e4f9..53ab8f5881 100644
---- a/hw/intc/bcm2835_ic.c
-+++ b/hw/intc/bcm2835_ic.c
-@@ -1,7 +1,6 @@
- /*
-  * Raspberry Pi emulation (c) 2012 Gregory Estrade
-  * Refactoring for Pi2 Copyright (c) 2015, Microsoft. Written by Andrew Ba=
-umann.
-- * This code is licensed under the GNU GPLv2 and later.
-  * Heavily based on pl190.c, copyright terms below:
-  *
-  * Arm PrimeCell PL190 Vector Interrupt Controller
-@@ -9,7 +8,8 @@
-  * Copyright (c) 2006 CodeSourcery.
-  * Written by Paul Brook
-  *
-- * This code is licensed under the GPL.
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #include "qemu/osdep.h"
-diff --git a/hw/intc/bcm2836_control.c b/hw/intc/bcm2836_control.c
-index 61f884ff9e..53dba0080c 100644
---- a/hw/intc/bcm2836_control.c
-+++ b/hw/intc/bcm2836_control.c
-@@ -4,7 +4,6 @@
-  * Written by Andrew Baumann
-  *
-  * Based on bcm2835_ic.c (Raspberry Pi emulation) (c) 2012 Gregory Estrade
-- * This code is licensed under the GNU GPLv2 and later.
-  *
-  * At present, only implements interrupt routing, and mailboxes (i.e.,
-  * not PMU interrupt, or AXI counters).
-@@ -13,6 +12,9 @@
-  *
-  * Ref:
-  * https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/=
-QA7_rev3.4.pdf
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #include "qemu/osdep.h"
-diff --git a/hw/misc/bcm2835_mbox.c b/hw/misc/bcm2835_mbox.c
-index 77d2d80706..2afa06a746 100644
---- a/hw/misc/bcm2835_mbox.c
-+++ b/hw/misc/bcm2835_mbox.c
-@@ -1,11 +1,13 @@
- /*
-  * Raspberry Pi emulation (c) 2012 Gregory Estrade
-- * This code is licensed under the GNU GPLv2 and later.
-  *
-  * This file models the system mailboxes, which are used for
-  * communication with low-bandwidth GPU peripherals. Refs:
-  *   https://github.com/raspberrypi/firmware/wiki/Mailboxes
-  *   https://github.com/raspberrypi/firmware/wiki/Accessing-mailboxes
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #include "qemu/osdep.h"
-diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-index df91280dfc..3e228ca0ae 100644
---- a/hw/misc/bcm2835_property.c
-+++ b/hw/misc/bcm2835_property.c
-@@ -1,6 +1,8 @@
- /*
-  * Raspberry Pi emulation (c) 2012 Gregory Estrade
-- * This code is licensed under the GNU GPLv2 and later.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-  */
-=20
- #include "qemu/osdep.h"
---=20
-2.21.1
+ hw/arm/fsl-imx6ul.c         | 35 +++++++++++++++++++++++++++++++++++
+ include/hw/arm/fsl-imx6ul.h | 10 ++++++++++
+ 2 files changed, 45 insertions(+)
+
+diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+index a0bcc6f895..99a5859a4e 100644
+--- a/hw/arm/fsl-imx6ul.c
++++ b/hw/arm/fsl-imx6ul.c
+@@ -20,6 +20,7 @@
+ #include "qapi/error.h"
+ #include "hw/arm/fsl-imx6ul.h"
+ #include "hw/misc/unimp.h"
++#include "hw/usb/imx-usb-phy.h"
+ #include "hw/boards.h"
+ #include "sysemu/sysemu.h"
+ #include "qemu/error-report.h"
+@@ -133,6 +134,18 @@ static void fsl_imx6ul_init(Object *obj)
+                               TYPE_IMX_ENET);
+     }
+ 
++    /* USB */
++    for (i = 0; i < FSL_IMX6UL_NUM_USB_PHYS; i++) {
++        snprintf(name, NAME_SIZE, "usbphy%d", i);
++        sysbus_init_child_obj(obj, name, &s->usbphy[i], sizeof(s->usbphy[i]),
++                              TYPE_IMX_USBPHY);
++    }
++    for (i = 0; i < FSL_IMX6UL_NUM_USBS; i++) {
++        snprintf(name, NAME_SIZE, "usb%d", i);
++        sysbus_init_child_obj(obj, name, &s->usb[i], sizeof(s->usb[i]),
++                              TYPE_CHIPIDEA);
++    }
++
+     /*
+      * SDHCI
+      */
+@@ -456,6 +469,28 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
+                                             FSL_IMX6UL_ENETn_TIMER_IRQ[i]));
+     }
+ 
++    /* USB */
++    for (i = 0; i < FSL_IMX6UL_NUM_USB_PHYS; i++) {
++        object_property_set_bool(OBJECT(&s->usbphy[i]), true, "realized",
++                                 &error_abort);
++        sysbus_mmio_map(SYS_BUS_DEVICE(&s->usbphy[i]), 0,
++                        FSL_IMX6UL_USBPHY1_ADDR + i * 0x1000);
++    }
++
++    for (i = 0; i < FSL_IMX6UL_NUM_USBS; i++) {
++        static const int FSL_IMX6UL_USBn_IRQ[] = {
++            FSL_IMX6UL_USB1_IRQ,
++            FSL_IMX6UL_USB2_IRQ,
++        };
++        object_property_set_bool(OBJECT(&s->usb[i]), true, "realized",
++                                 &error_abort);
++        sysbus_mmio_map(SYS_BUS_DEVICE(&s->usb[i]), 0,
++                        FSL_IMX6UL_USBO2_USB_ADDR + i * 0x200);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->usb[i]), 0,
++                           qdev_get_gpio_in(DEVICE(&s->a7mpcore),
++                                            FSL_IMX6UL_USBn_IRQ[i]));
++    }
++
+     /*
+      * USDHC
+      */
+diff --git a/include/hw/arm/fsl-imx6ul.h b/include/hw/arm/fsl-imx6ul.h
+index 5a420785b9..1a0bab8daa 100644
+--- a/include/hw/arm/fsl-imx6ul.h
++++ b/include/hw/arm/fsl-imx6ul.h
+@@ -34,6 +34,8 @@
+ #include "hw/sd/sdhci.h"
+ #include "hw/ssi/imx_spi.h"
+ #include "hw/net/imx_fec.h"
++#include "hw/usb/chipidea.h"
++#include "hw/usb/imx-usb-phy.h"
+ #include "exec/memory.h"
+ #include "cpu.h"
+ 
+@@ -54,6 +56,8 @@ enum FslIMX6ULConfiguration {
+     FSL_IMX6UL_NUM_I2CS         = 4,
+     FSL_IMX6UL_NUM_ECSPIS       = 4,
+     FSL_IMX6UL_NUM_ADCS         = 2,
++    FSL_IMX6UL_NUM_USB_PHYS     = 2,
++    FSL_IMX6UL_NUM_USBS         = 2,
+ };
+ 
+ typedef struct FslIMX6ULState {
+@@ -77,6 +81,8 @@ typedef struct FslIMX6ULState {
+     IMXFECState        eth[FSL_IMX6UL_NUM_ETHS];
+     SDHCIState         usdhc[FSL_IMX6UL_NUM_USDHCS];
+     IMX2WdtState       wdt[FSL_IMX6UL_NUM_WDTS];
++    IMXUSBPHYState     usbphy[FSL_IMX6UL_NUM_USB_PHYS];
++    ChipideaState      usb[FSL_IMX6UL_NUM_USBS];
+     MemoryRegion       rom;
+     MemoryRegion       caam;
+     MemoryRegion       ocram;
+@@ -145,6 +151,10 @@ enum FslIMX6ULMemoryMap {
+     FSL_IMX6UL_EPIT2_ADDR           = 0x020D4000,
+     FSL_IMX6UL_EPIT1_ADDR           = 0x020D0000,
+     FSL_IMX6UL_SNVS_HP_ADDR         = 0x020CC000,
++    FSL_IMX6UL_USBPHY2_ADDR         = 0x020CA000,
++    FSL_IMX6UL_USBPHY2_SIZE         = (4 * 1024),
++    FSL_IMX6UL_USBPHY1_ADDR         = 0x020C9000,
++    FSL_IMX6UL_USBPHY1_SIZE         = (4 * 1024),
+     FSL_IMX6UL_ANALOG_ADDR          = 0x020C8000,
+     FSL_IMX6UL_CCM_ADDR             = 0x020C4000,
+     FSL_IMX6UL_WDOG2_ADDR           = 0x020C0000,
+-- 
+2.17.1
 

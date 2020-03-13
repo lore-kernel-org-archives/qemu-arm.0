@@ -1,145 +1,197 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1553543lfc;
-        Thu, 12 Mar 2020 20:25:57 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuJ9nEhEC9tmTcfXuncTAVsXOZBbfIUByB5ognpyBHt+jUE9Ez438ICETiZO3QRuhdUsENY
-X-Received: by 2002:a37:7f03:: with SMTP id a3mr10919275qkd.121.1584069957454;
-        Thu, 12 Mar 2020 20:25:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584069957; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1811998lfc;
+        Fri, 13 Mar 2020 01:18:00 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvE8VD7T5rNtHXyUeKo8rGXIFBs9yb1PiJYhitQCJbK9AD6bUAp0Jmk9oH9jdbxzG5dbzrX
+X-Received: by 2002:a05:620a:13a9:: with SMTP id m9mr11990726qki.359.1584087480686;
+        Fri, 13 Mar 2020 01:18:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584087480; cv=none;
         d=google.com; s=arc-20160816;
-        b=iMDKKe+drsgx7c/0Ok+4anhvMEXxqeTaOW9Wc6TN4jD+h4z5Orrlx7PHwNcZT80w4w
-         DWdWm+FCgzyuzmS5GG2UJxQhl0yKjL08fr7AHgiQy29Am2NWWmDKyeoxJaY8PMUJilgA
-         i6DW07PuPpTYiS6cd4HwOF6Gb71ufnhW3MX1uo6Dd1sS+cgWf2qrY4wr4jJl3Zus0s0q
-         g31g7CNSoRZa0Q7vUnngEYL+NxSFGnK0Ny+zRatED/oms3QtZXp80/U52xCd+vpsl819
-         F5mLejf+yIHzeHYx1pNRqddjS1Z991L+QAfq5eyQ2TLPrDEn2CdZc35mh0jNBznFzXAE
-         nNng==
+        b=TnpMgSFAtfeNX8b0kFpOKlCo8cFFlLswZ3Iz537ejSFts0SrKzKvDLSNskpGS/d9y6
+         0/M+w37+DLqY1482v5q2737ne5ZcwNGH7Xmwmz0jHWDVRT5W3fCD8tKLUEglCjYKfh5Z
+         VGBWCy+qUdYW3/sXHHEeugT+UhZZJ3KVIPtlm3NuxhxuH3Cw0571sCTlsYcDP3bYvol7
+         zSVIFBOQCcnnk1RivSy2CyCw3iIUzyryiUAouivf6O7v9bMIO+EBKQbPv3RWtRB6421s
+         yZcUUGDZ5oWI3RWOxcddsdBibFrPNqaZoJlY1avGNay/8kLYclP2CLtDDZBc3g9zHyn+
+         jTsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=pBxq8+I8hd/+XLj4RIr8QgpB57LKc57NW/tR4QiHdOE=;
-        b=eKswbOYT5Zz9xr7mdiftcRamGjoX5RZg96wrxuwB17FLjl/ifmHogbCC/VqI7SSxfA
-         y2urZ399GE271ih3anbNKvJMx1QUWWpsS8tDm8W/8ZTlTuPemXKE4qdEO3U9PXRqzgjW
-         rIpCOHzrHYfw49EsDxC7uS+Rfbrrp9HXsrrNa02ueBQdF+C1+joArsTKspWfRWxnjMfx
-         2dcO8g2UnscbCraDZopBIg+6K5INE2bUbBG999iQLeFeaVW0W84KQlL7N5n+zBZt5HBV
-         KTsqMt5Vr6OtLsXc36B5woEvXqqA0UCT91J/+vv9hkGeiHAlK4x1GoGxYBKetsalayCt
-         aFWA==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=JUCjyCoQpzR3ix5FqMB/Ss17JFqM524+OIgPKzh8uI4=;
+        b=Qg6waulc8mjU+lyJoREpAJiHkjbZQ2De5k1lSkE0xq3RMWKXEq4/xk+8clm3LJkjTc
+         9Kysu+lErejkMqOf/lSQLYwSGjn5/+g2zNzjzaGed2p5drPZy/Ko55WbeypdLrbQ/VQR
+         kP/AyUGUVlqdLc4RRKwTwpA4a5vyTXX3aSGdSpJsJf8Kh1xcQOtFkYIthMFOasb4wkPx
+         k0WGt7w4tXxprw6WCwt7RAKCVhvb3Ex39lbtuojTpZO16TI5dDJ0rYLvu7B33rWXcQqE
+         fdeQWq/9pw9H7u145jNWLsIIEv89VbHTb0LLiFwwOc5DDW+hljpUJPSpBMxbZodcDGFc
+         EUHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 37si3925194qtb.216.2020.03.12.20.25.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Mar 2020 20:25:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=XelB5Jvp;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id i128si2659123qke.351.2020.03.13.01.18.00;
+        Fri, 13 Mar 2020 01:18:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53232 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jCaxQ-00073Y-Tj
-	for alex.bennee@linaro.org; Thu, 12 Mar 2020 23:25:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38106)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <zhukeqian1@huawei.com>) id 1jCaxI-00073P-NG
- for qemu-arm@nongnu.org; Thu, 12 Mar 2020 23:25:49 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <zhukeqian1@huawei.com>) id 1jCaxH-0003AB-N7
- for qemu-arm@nongnu.org; Thu, 12 Mar 2020 23:25:48 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:44372 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
- id 1jCaxH-0002zc-BW; Thu, 12 Mar 2020 23:25:47 -0400
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id F40B1C7ED93B429C1D3E;
- Fri, 13 Mar 2020 11:25:39 +0800 (CST)
-Received: from [127.0.0.1] (10.173.221.230) by DGGEMS401-HUB.china.huawei.com
- (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0;
- Fri, 13 Mar 2020 11:25:32 +0800
-Subject: Re: [PATCH] migration/throttle: Add throttle-trig-thres migration
- parameter
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-References: <20200224023142.39360-1-zhukeqian1@huawei.com>
- <20200312180735.GL3211@work-vm>
-From: zhukeqian <zhukeqian1@huawei.com>
-Message-ID: <66e1b7b4-1563-ef23-2dbf-a19311f3ec1d@huawei.com>
-Date: Fri, 13 Mar 2020 11:25:30 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.1
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=XelB5Jvp;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1124E4AEE8;
+	Fri, 13 Mar 2020 04:18:00 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id m1c1DFFAPOyF; Fri, 13 Mar 2020 04:17:58 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id D979E4A5A3;
+	Fri, 13 Mar 2020 04:17:58 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 2F20B4A536
+ for <kvmarm@lists.cs.columbia.edu>; Fri, 13 Mar 2020 04:17:58 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 04Kj4JCbG3Wn for <kvmarm@lists.cs.columbia.edu>;
+ Fri, 13 Mar 2020 04:17:56 -0400 (EDT)
+Received: from us-smtp-delivery-1.mimecast.com
+ (us-smtp-delivery-1.mimecast.com [205.139.110.120])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id DF7374A51E
+ for <kvmarm@lists.cs.columbia.edu>; Fri, 13 Mar 2020 04:17:56 -0400 (EDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1584087476;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=BkfTBkxp5txNCOlskJxS6kz6+SU8BlpUA68Svo5CBgs=;
+ b=XelB5JvpGi08hvfy649aiGGfRzGDDicFzUNsm2PioNRddcMqy+sT9MHrE35lTa4ZMM1oJp
+ MloxHTZy+WfuloUPgAuLGombD0Ir8CKuZXOGXlUZyUPovPxq2s5zSz56e2PAP20oKnX1Cq
+ Oa9rcd8hg0BYiKBZJe6lvsgX8HDdvHM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-44-5CGfopJANheQnmlY3EVVng-1; Fri, 13 Mar 2020 04:17:51 -0400
+X-MC-Unique: 5CGfopJANheQnmlY3EVVng-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 092BA800D5B;
+ Fri, 13 Mar 2020 08:17:50 +0000 (UTC)
+Received: from [10.36.118.12] (unknown [10.36.118.12])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 709175C1B5;
+ Fri, 13 Mar 2020 08:17:43 +0000 (UTC)
+Subject: Re: [kvm-unit-tests PATCH v6 10/13] arm/arm64: ITS: INT functional
+ tests
+To: Zenghui Yu <yuzenghui@huawei.com>, eric.auger.pro@gmail.com,
+ maz@kernel.org, kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20200311135117.9366-1-eric.auger@redhat.com>
+ <20200311135117.9366-11-eric.auger@redhat.com>
+ <7d79cc12-acdb-ff56-594d-3fa830f7d053@huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <881583f3-ea9c-64ba-437f-4401f3aaf1ac@redhat.com>
+Date: Fri, 13 Mar 2020 09:17:40 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20200312180735.GL3211@work-vm>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.173.221.230]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.35
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+In-Reply-To: <7d79cc12-acdb-ff56-594d-3fa830f7d053@huawei.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Cc: andre.przywara@arm.com, thuth@redhat.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- wanghaibin.wang@huawei.com, Eric Blake <eblake@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GiyrRLPzNrmm
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: Z+W6u7w0UIQs
 
-Hi Dr. David,
-
-On 2020/3/13 2:07, Dr. David Alan Gilbert wrote:
-> * Keqian Zhu (zhukeqian1@huawei.com) wrote:
->> Currently, if the bytes_dirty_period is more than the 50% of
->> bytes_xfer_period, we start or increase throttling.
->>
->> If we make this percentage higher, then we can tolerate higher
->> dirty rate during migration, which means less impact on guest.
->> The side effect of higher percentage is longer migration time.
->> We can make this parameter configurable to switch between mig-
->> ration time first or guest performance first.
->>
->> The default value is 50 and valid range is 1 to 100.
->>
->> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> 
-> Apologies for the delay.
-It is not late, no worries ;).
-> This looks fine now; so
-> 
-> Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-> 
-> and I'll queue it.
-Thanks.
-> I think we could do with a better description than the current one if we
-> can find it:
-> 
->  The ratio of bytes_dirty_period and bytes_xfer_period
->  to trigger throttling. It is expressed as percentage.
-> 
-> assumes people understand what those bytes*period mean.
-> 
-> Still, until we do:
-> 
-> Queued for migration
-> 
-[...]
->> -- 
->> 2.19.1
->>
-> --
-> Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-> 
-> 
-> .
-> 
-Thanks,
-Keqian
-
+SGkgWmVuZ2h1aSwKT24gMy8xMy8yMCAzOjA2IEFNLCBaZW5naHVpIFl1IHdyb3RlOgo+IE9uIDIw
+MjAvMy8xMSAyMTo1MSwgRXJpYyBBdWdlciB3cm90ZToKPj4gK3N0YXRpYyB2b2lkIHRlc3RfaXRz
+X3RyaWdnZXIodm9pZCkKPj4gK3sKPj4gK8KgwqDCoCBzdHJ1Y3QgaXRzX2NvbGxlY3Rpb24gKmNv
+bDMsICpjb2wyOwo+PiArwqDCoMKgIHN0cnVjdCBpdHNfZGV2aWNlICpkZXYyLCAqZGV2NzsKPj4g
+Kwo+PiArwqDCoMKgIGlmIChpdHNfcHJlcmVxdWlzaXRlcyg0KSkKPj4gK8KgwqDCoMKgwqDCoMKg
+IHJldHVybjsKPj4gKwo+PiArwqDCoMKgIGRldjIgPSBpdHNfY3JlYXRlX2RldmljZSgyIC8qIGRl
+diBpZCAqLywgOCAvKiBuYl9pdGVzICovKTsKPj4gK8KgwqDCoCBkZXY3ID0gaXRzX2NyZWF0ZV9k
+ZXZpY2UoNyAvKiBkZXYgaWQgKi8sIDggLyogbmJfaXRlcyAqLyk7Cj4+ICsKPj4gK8KgwqDCoCBj
+b2wzID0gaXRzX2NyZWF0ZV9jb2xsZWN0aW9uKDMgLyogY29sIGlkICovLCAzLyogdGFyZ2V0IFBF
+ICovKTsKPj4gK8KgwqDCoCBjb2wyID0gaXRzX2NyZWF0ZV9jb2xsZWN0aW9uKDIgLyogY29sIGlk
+ICovLCAyLyogdGFyZ2V0IFBFICovKTsKPj4gKwo+PiArwqDCoMKgIGdpY3YzX2xwaV9zZXRfY29u
+ZmlnKDgxOTUsIExQSV9QUk9QX0RFRkFVTFQpOwo+PiArwqDCoMKgIGdpY3YzX2xwaV9zZXRfY29u
+ZmlnKDgxOTYsIExQSV9QUk9QX0RFRkFVTFQpOwo+PiArCj4+ICvCoMKgwqAgcmVwb3J0X3ByZWZp
+eF9wdXNoKCJpbnQiKTsKPj4gK8KgwqDCoCAvKgo+PiArwqDCoMKgwqAgKiBkZXY9MiwgZXZlbnRp
+ZD0yMMKgIC0+IGxwaT0gODE5NSwgY29sPTMKPj4gK8KgwqDCoMKgICogZGV2PTcsIGV2ZW50aWQ9
+MjU1IC0+IGxwaT0gODE5NiwgY29sPTIKPj4gK8KgwqDCoMKgICogVHJpZ2dlciBkZXYyLCBldmVu
+dGlkPTIwIGFuZCBkZXY3LCBldmVudGlkPTI1NQo+PiArwqDCoMKgwqAgKiBDaGVjayBib3RoIExQ
+SXMgaGl0Cj4+ICvCoMKgwqDCoCAqLwo+PiArCj4+ICvCoMKgwqAgaXRzX3NlbmRfbWFwZChkZXYy
+LCB0cnVlKTsKPj4gK8KgwqDCoCBpdHNfc2VuZF9tYXBkKGRldjcsIHRydWUpOwo+PiArCj4+ICvC
+oMKgwqAgaXRzX3NlbmRfbWFwYyhjb2wzLCB0cnVlKTsKPj4gK8KgwqDCoCBpdHNfc2VuZF9tYXBj
+KGNvbDIsIHRydWUpOwo+PiArCj4+ICvCoMKgwqAgaXRzX3NlbmRfaW52YWxsKGNvbDIpOwo+PiAr
+wqDCoMKgIGl0c19zZW5kX2ludmFsbChjb2wzKTsKPj4gKwo+PiArwqDCoMKgIGl0c19zZW5kX21h
+cHRpKGRldjIsIDgxOTUgLyogbHBpIGlkICovLCAyMCAvKiBldmVudCBpZCAqLywgY29sMyk7Cj4+
+ICvCoMKgwqAgaXRzX3NlbmRfbWFwdGkoZGV2NywgODE5NiAvKiBscGkgaWQgKi8sIDI1NSAvKiBl
+dmVudCBpZCAqLywgY29sMik7Cj4+ICsKPj4gK8KgwqDCoCBscGlfc3RhdHNfZXhwZWN0KDMsIDgx
+OTUpOwo+PiArwqDCoMKgIGl0c19zZW5kX2ludChkZXYyLCAyMCk7Cj4+ICvCoMKgwqAgY2hlY2tf
+bHBpX3N0YXRzKCJkZXY9MiwgZXZlbnRpZD0yMMKgIC0+IGxwaT0gODE5NSwgY29sPTMiKTsKPj4g
+Kwo+PiArwqDCoMKgIGxwaV9zdGF0c19leHBlY3QoMiwgODE5Nik7Cj4+ICvCoMKgwqAgaXRzX3Nl
+bmRfaW50KGRldjcsIDI1NSk7Cj4+ICvCoMKgwqAgY2hlY2tfbHBpX3N0YXRzKCJkZXY9NywgZXZl
+bnRpZD0yNTUgLT4gbHBpPSA4MTk2LCBjb2w9MiIpOwo+PiArCj4+ICvCoMKgwqAgcmVwb3J0X3By
+ZWZpeF9wb3AoKTsKPj4gKwo+PiArwqDCoMKgIHJlcG9ydF9wcmVmaXhfcHVzaCgiaW52L2ludmFs
+bCIpOwo+PiArCj4+ICvCoMKgwqAgLyoKPj4gK8KgwqDCoMKgICogZGlzYWJsZSA4MTk1LCBjaGVj
+ayBkZXYyL2V2ZW50aWQ9MjAgZG9lcyBub3QgdHJpZ2dlciB0aGUKPj4gK8KgwqDCoMKgICogY29y
+cmVzcG9uZGluZyBMUEkKPj4gK8KgwqDCoMKgICovCj4+ICvCoMKgwqAgZ2ljdjNfbHBpX3NldF9j
+b25maWcoODE5NSwgTFBJX1BST1BfREVGQVVMVCAmIH5MUElfUFJPUF9FTkFCTEVEKTsKPj4gK8Kg
+wqDCoCBpdHNfc2VuZF9pbnYoZGV2MiwgMjApOwo+PiArCj4+ICvCoMKgwqAgbHBpX3N0YXRzX2V4
+cGVjdCgtMSwgLTEpOwo+PiArwqDCoMKgIGl0c19zZW5kX2ludChkZXYyLCAyMCk7Cj4+ICvCoMKg
+wqAgY2hlY2tfbHBpX3N0YXRzKCJkZXYyL2V2ZW50aWQ9MjAgZG9lcyBub3QgdHJpZ2dlciBhbnkg
+TFBJIik7Cj4+ICsKPj4gK8KgwqDCoCAvKgo+PiArwqDCoMKgwqAgKiByZS1lbmFibGUgdGhlIExQ
+SSBidXQgd2lsbGluZ2x5IGRvIG5vdCBjYWxsIGludmFsbAo+PiArwqDCoMKgwqAgKiBzbyB0aGUg
+Y2hhbmdlIGluIGNvbmZpZyBpcyBub3QgdGFrZW4gaW50byBhY2NvdW50Lgo+PiArwqDCoMKgwqAg
+KiBUaGUgTFBJIHNob3VsZCBub3QgaGl0Cj4+ICvCoMKgwqDCoCAqLwo+PiArwqDCoMKgIGdpY3Yz
+X2xwaV9zZXRfY29uZmlnKDgxOTUsIExQSV9QUk9QX0RFRkFVTFQpOwo+PiArwqDCoMKgIGxwaV9z
+dGF0c19leHBlY3QoLTEsIC0xKTsKPj4gK8KgwqDCoCBpdHNfc2VuZF9pbnQoZGV2MiwgMjApOwo+
+PiArwqDCoMKgIGNoZWNrX2xwaV9zdGF0cygiZGV2Mi9ldmVudGlkPTIwIHN0aWxsIGRvZXMgbm90
+IHRyaWdnZXIgYW55IExQSSIpOwo+PiArCj4+ICvCoMKgwqAgLyogTm93IGNhbGwgdGhlIGludmFs
+bCBhbmQgY2hlY2sgdGhlIExQSSBoaXRzICovCj4+ICvCoMKgwqAgaXRzX3NlbmRfaW52YWxsKGNv
+bDMpOwo+PiArwqDCoMKgIGxwaV9zdGF0c19leHBlY3QoMywgODE5NSk7Cj4+ICvCoMKgwqAgaXRz
+X3NlbmRfaW50KGRldjIsIDIwKTsKPj4gK8KgwqDCoCBjaGVja19scGlfc3RhdHMoImRldjIvZXZl
+bnRpZD0yMCBub3cgdHJpZ2dlcnMgYW4gTFBJIik7Cj4+ICsKPj4gK8KgwqDCoCByZXBvcnRfcHJl
+Zml4X3BvcCgpOwo+PiArCj4+ICvCoMKgwqAgcmVwb3J0X3ByZWZpeF9wdXNoKCJtYXBkIHZhbGlk
+PWZhbHNlIik7Cj4+ICvCoMKgwqAgLyoKPj4gK8KgwqDCoMKgICogVW5tYXAgZGV2aWNlIDIgYW5k
+IGNoZWNrIHRoZSBldmVudGlkIDIwIGZvcm1lcmx5Cj4+ICvCoMKgwqDCoCAqIGF0dGFjaGVkIHRv
+IGl0IGRvZXMgbm90IGhpdCBhbnltb3JlCj4+ICvCoMKgwqDCoCAqLwo+PiArCj4+ICvCoMKgwqAg
+aXRzX3NlbmRfbWFwZChkZXYyLCBmYWxzZSk7Cj4+ICvCoMKgwqAgbHBpX3N0YXRzX2V4cGVjdCgt
+MSwgLTEpOwo+PiArwqDCoMKgIGl0c19zZW5kX2ludChkZXYyLCAyMCk7Cj4gCj4gSGVyZS4gWW91
+IGlzc3VlZCBhbiBJTlQgY29tbWFuZCB3aGlsZSB0aGUgZGV2MiBoYXMganVzdCBiZWVuIHVubWFw
+cGVkLAo+IHRoaXMgd2lsbCBiZSBkZXRlY3RlZCBieSBJVFMgYXMgYSBjb21tYW5kIGVycm9yLiBX
+ZSBtYXkgZW5kLXVwIGZhaWxlZAo+IHRvIHNlZSB0aGUgY29tcGxldGlvbiBvZiB0aGlzIGNvbW1h
+bmQgKHVuZGVyIHRoZSBJVFMgc3RhbGwgbW9kZSkuCkkgYWdyZWUgdGhpcyBpcyBhIGNhc2Ugd2hl
+cmUgaXQgaXMgZXhwZWN0ZWQgdG8gZmFpbC4gSG93ZXZlciBhdCB0aGUKbW9tZW50IHdlIGRvbid0
+IGhhdmUgc3RhbGwga2VybmVsIHN1cHBvcnQgYW5kIHRoZSB3YXkgSSB0ZXN0IGl0IGZhaWxzIGlz
+CmJ5IGlzc3VpbmcgdGhlIGJlbG93CmxwaV9zdGF0c19leHBlY3QoLTEsIC0xKTsKY2hlY2tfbHBp
+X3N0YXRzKCJubyBMUEkgYWZ0ZXIgZGV2aWNlIHVubWFwIik7CgpPdGhlcndpc2UgSSBjYW5ub3Qg
+dGVzdCB0aGlzIHNjZW5hcmlvLgoKSSBzdWdnZXN0IG9uY2Ugd2UgZ2V0IHRoZSBzdGFsbCBzdXBw
+b3J0IGluIGtlcm5lbCwgd2UgcmV2aXNpdCB0aGUgdGVzdHMuCgpUaGFua3MKCkVyaWMKCj4gCj4g
+Cj4gVGhhbmtzLAo+IFplbmdodWkKPiAKPj4gK8KgwqDCoCBjaGVja19scGlfc3RhdHMoIm5vIExQ
+SSBhZnRlciBkZXZpY2UgdW5tYXAiKTsKPj4gK8KgwqDCoCByZXBvcnRfcHJlZml4X3BvcCgpOwo+
+PiArfQo+IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+a3ZtYXJtIG1haWxpbmcgbGlzdAprdm1hcm1AbGlzdHMuY3MuY29sdW1iaWEuZWR1Cmh0dHBzOi8v
+bGlzdHMuY3MuY29sdW1iaWEuZWR1L21haWxtYW4vbGlzdGluZm8va3ZtYXJtCg==

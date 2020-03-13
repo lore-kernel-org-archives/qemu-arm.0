@@ -1,80 +1,80 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2501248lfc;
-        Fri, 13 Mar 2020 11:37:22 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvPa3Z5rRreqnJR7QvtUj/Q/d9TwlZ9h6OoJNX3Z89Es2F0Ol1p5+MPeNY/+fVW7t5vg8Q/
-X-Received: by 2002:a50:9f6e:: with SMTP id b101mr14783404edf.372.1584124642792;
-        Fri, 13 Mar 2020 11:37:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584124642; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2501312lfc;
+        Fri, 13 Mar 2020 11:37:25 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtdGUdzH7dMq3EilLbX9eLL4UA9Hvx+T/iEeDRtIK8/zOZxraXuI27admtp2iI0a6vcHIz6
+X-Received: by 2002:a5b:c8d:: with SMTP id i13mr17715111ybq.480.1584124645445;
+        Fri, 13 Mar 2020 11:37:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584124645; cv=none;
         d=google.com; s=arc-20160816;
-        b=rmS42cdANW2ZZC4VYXc6jofcJDPahniukeGXJiNuB2eBKVw9zM1hM8PURLT3ZUGphw
-         qUHYUXStcvbPiFUG86qKyIQDKQsvJNO6LRl4tfvkAYZcwUZ+iOwaxxZrdimwxcdIE5lO
-         /MTMZoL5vejJ89ygDBDuF+mux1FjyRW/SSxtNGiht8AZko4NNLi9NPKjyTgtzmx6TnS+
-         QKielIrszNyC66lp1Xp+XUld1HEyln5z0QTU//hQdID13OyFdSoiPnmfy324UrtYBta/
-         C+0b06UCIT2+pwsc7ikw9R7a3cllRjYs4UOJPqQGBwsNpDoG2AKfesnDmuiZ9Wwejy1l
-         lojg==
+        b=TKf3rXf4Ntzg7b6NlaUJvkU1axGmbMtPL2TsIryg98qyVJsoT/HmSTGzlnaNv31Hkt
+         ZZusGOSHCEuazDYAVQv+T9XaSP5YpsSChgAqutP4BlFe4E7dUPGrHw5d2weZlUsPw2El
+         7ca0ZBEht2At6XMhmP3f41appwKjDV7zkHbN2yiEfqEcBUKEraw61RWktsy8LAJlbwKZ
+         e19k2rjWwjRHjgRwvYRag9GKeS6EhpYx2WBmWHbzizNazcye+dsa29liZTkTZOFdapoY
+         ReIgujj61aHn+OFmqHdivEpzTVzolR8wiGnE8M4UVxYFNuvLptRmHoed4ubzrZ2JctlT
+         LthA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8aoJLCXCrlxs+uxn6Eno2ayGO83+rkYY4ustjsPF1ac=;
-        b=zVwP3geUrFSsYwmAuEw3QbCaSnx+qd6q8z/lTf/rZtHBvCoK/YQXqSzxudr5wP9GxA
-         2bUiTTGxEuhj3aNXVrPeskySnsOkWRGgokWXZa2d6t5Sf6xb2v4g8XZFbcVj2sIx8R4J
-         z0XrxfAIaWmgGNp+kc5xLrRgwr6yzA8d65cBtjQkfQrHhPEAXKvIcxcCx+hzBMb5aflO
-         w11tlpc/Y19Dvds4CQaj+p9tb4OeaYWeLqwgHA9rdI0Nz6lFox5VevDmgwVggNNqBqe7
-         XMhE+8pKtje0WAB8AJm3J/8HaoWJNGbkok9yJapo7+PAfVAwRajPD5b9uXl5o9r0tbMD
-         TBMg==
+        bh=RNscj4znfEFoxUyR2eitCsjwBW0o2g2YBibwWrrvxzw=;
+        b=lUacR2YTfKzMqdgPcrF8uR+GTvxuJufACwuGlqbagMAAZZtpkCHIR3SpX+t1iYCOTm
+         z0SBaZ/dKuQ+VcmJyeJIwd5I440ZujKxjnKKs3Zpk78fBqqmobD1Oo5my412CNyaN5Os
+         9Tq3J2RyvnK6Gy4VMXtwOcLuD3v8NWq+LL9fXsRoNMqgZ01kK0RG4mDOAfRxqVUsMA7O
+         Y83QmlrtlxOUs1jksMFuJ8rD1De9uFC1cDk2U4mbzOVpwbrXEO3Dob06eTaca04D+txR
+         VoIfHFreueWXz8bPl5dfQRoWzsCZ7iJt7def8gGY45Jw5o8Cb4PuH234CBeULNqScqR7
+         9ygg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RHl3Lqgv;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=durJYdeU;
+       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id sb10si1657907ejb.205.2020.03.13.11.37.22
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
+        by mx.google.com with ESMTPS id k206si4761836ybf.32.2020.03.13.11.37.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Mar 2020 11:37:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        Fri, 13 Mar 2020 11:37:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RHl3Lqgv;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=durJYdeU;
+       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584124641;
+	s=mimecast20190719; t=1584124644;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=8aoJLCXCrlxs+uxn6Eno2ayGO83+rkYY4ustjsPF1ac=;
-	b=RHl3LqgvYTstlaKMHCsj4H4+RkYw0yDnpIyJTrCGTjY9Fe1AerEFr7C1IhdN7eJj5zislO
-	T0uTbRqDayxuW5KdYYXDU9igTr2dqKI9jEbi0gtnSzhgn8wKNoiBO0bAl0IY9QqtnT3qD4
-	oKo7MRWem+VDH6KZ7qgb6ndfLOqnui8=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-463-NSPPcLHGP1S4IdU0qGEFMw-1; Fri, 13 Mar 2020 14:37:17 -0400
-X-MC-Unique: NSPPcLHGP1S4IdU0qGEFMw-1
-Received: by mail-wr1-f70.google.com with SMTP id w11so4707272wrp.20
-        for <alex.bennee@linaro.org>; Fri, 13 Mar 2020 11:37:17 -0700 (PDT)
+	bh=RNscj4znfEFoxUyR2eitCsjwBW0o2g2YBibwWrrvxzw=;
+	b=durJYdeUM0TRBu/gX3dQnZSfpWgVA+KuxLKRqqPerXzuBOLEUxtuNfXI7+XyZTlqzTIwKD
+	Et6XJYdkmn/j6YqAigDT3MweTAl9SyC11/A/CUQcgU5QOA+prrPXKiR3KN1CdmkpbzE/pE
+	4tLDuq6DiH6Vy2reIh7qsYa+1V1kL/Q=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-418-sVgZMIi1Pg63RW3-ziRHlg-1; Fri, 13 Mar 2020 14:37:23 -0400
+X-MC-Unique: sVgZMIi1Pg63RW3-ziRHlg-1
+Received: by mail-wr1-f69.google.com with SMTP id 31so4760596wrq.0
+        for <alex.bennee@linaro.org>; Fri, 13 Mar 2020 11:37:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=yX3/yxF6EHlmvUP2BbzjjZIQps3yYgRSbpFFIqc8F/E=;
-        b=JRZjs8zmdvGuTtQje66foL0NhT4VY9IxZ0uLDRwKbm0jOcnTlhDMEp+VNFN/oJFYlf
-         nVTv7RJeAJb4DnMfMdavfxTOeIVwtUErGo/xLpyJ+XN3Qe4em6EG2A+9rbtEnN1rMcQm
-         HnJfFhRoqHhvktTSFG1z79yS/14pQYTXsnRsyh/spaLGgAEuSvdCoWaSHc0gmPNYVJDM
-         SM8kuUAypaxT6ptwlkB/gSXy0hKjMXFSYzNsxj9/vriimL6rn0N9lv2Bs4XXoofH6mZT
-         +JRwFkCfJ7jaHws7QZQZtAxMplc4aWWk5gzX7LdRJB4N6C8/yO4qHHGbBJJpNTZXIZjU
-         xf/g==
-X-Gm-Message-State: ANhLgQ1zKtcbkyHHbhmNYY2KOgTlI2/DTggTJhZwoxprX+l6u8ijBb6x
-	CsBSmAz9TZ9Rx+hOfPp8uDjf1cj0ZbPGnOR2rF3mYdd6mn9wAiqbm+W/lXpxY0hjX6Zx24KR/Kw
-	D14axU7qQAhFdW/cF
-X-Received: by 2002:adf:f58f:: with SMTP id f15mr20039038wro.16.1584124636775;
-        Fri, 13 Mar 2020 11:37:16 -0700 (PDT)
-X-Received: by 2002:adf:f58f:: with SMTP id f15mr20038999wro.16.1584124636423;
-        Fri, 13 Mar 2020 11:37:16 -0700 (PDT)
+        bh=UFdvn7QNDrVxUqibYwnc6bH6F2vFCMCHuZOu+Zd/Cpc=;
+        b=RG6ESNra9Nc89i8ffkVRcFd3HHlxMlOTZHFEfNGDctFSxBHwn1owv2EII64v/3zPYe
+         YYjP4ME/oP6ocF2aStmhMs7r03iCCRH2r/0Fas+DZUUp5iUaHVWTuTjKMogBCriG7cC3
+         MyYI0Mcr2KWwcS8bnRQuFT1Ogp7T5xIfgZbWg+RamjDSuuBNTN6yVcE1Xjx+Q4nNbwYk
+         WLFpYD2190cun5ObJ0DLnr3fCzx7keiDqc8QM65NhMlZyzcpKKypzJgb1nzfiVzfErZj
+         PaPVByjk3tuKGug9/AqLVO+/a58teLbE280B0GJXqhk0jzIxcZm328mohyym7tN0IDoS
+         TrUA==
+X-Gm-Message-State: ANhLgQ1cPUBncM5qsL6SbgHzt13wjdMIG9iz4csb9CxdWhMr60L+7W7E
+	hMnO4MaO4hZRY+ocJ+4ryrbLZtnAj4jzA2LnZokVT4y5YAFlObabqKfywPw9XoFJbOmDcz3mmQP
+	3j7ROLIkiioQEs1xk
+X-Received: by 2002:adf:ef92:: with SMTP id d18mr18557126wro.193.1584124641899;
+        Fri, 13 Mar 2020 11:37:21 -0700 (PDT)
+X-Received: by 2002:adf:ef92:: with SMTP id d18mr18557095wro.193.1584124641662;
+        Fri, 13 Mar 2020 11:37:21 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.redhat.com (47.red-88-21-205.staticip.rima-tde.net. [88.21.205.47])
-        by smtp.gmail.com with ESMTPSA id m11sm33980849wrn.92.2020.03.13.11.37.15
+        by smtp.gmail.com with ESMTPSA id n2sm12942644wrr.62.2020.03.13.11.37.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Mar 2020 11:37:15 -0700 (PDT)
+        Fri, 13 Mar 2020 11:37:21 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -96,9 +96,9 @@ Cc: David Hildenbrand <david@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH 04/14] tests/Makefile: Restrict some softmmu-only tests
-Date: Fri, 13 Mar 2020 19:36:42 +0100
-Message-Id: <20200313183652.10258-5-philmd@redhat.com>
+Subject: [PATCH 05/14] stubs/Makefile: Reduce the user-mode object list
+Date: Fri, 13 Mar 2020 19:36:43 +0100
+Message-Id: <20200313183652.10258-6-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200313183652.10258-1-philmd@redhat.com>
 References: <20200313183652.10258-1-philmd@redhat.com>
@@ -108,83 +108,95 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8;
 	text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 5UsU9HzPewMm
+X-TUID: /ISv/fznsO5b
 
-These tests fails when configured with --disable-system.
+These stubs are not required when configured with --disable-system.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- tests/Makefile.include | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ stubs/Makefile.objs | 52 ++++++++++++++++++++++++++-------------------
+ 1 file changed, 30 insertions(+), 22 deletions(-)
 
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index 99db5eb3e0..bf11f765c3 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -64,14 +64,14 @@ check-unit-y +=3D tests/check-qlit$(EXESUF)
- check-unit-y +=3D tests/test-qobject-output-visitor$(EXESUF)
- check-unit-y +=3D tests/test-clone-visitor$(EXESUF)
- check-unit-y +=3D tests/test-qobject-input-visitor$(EXESUF)
--check-unit-y +=3D tests/test-qmp-cmds$(EXESUF)
-+check-unit-$(CONFIG_SOFTMMU) +=3D tests/test-qmp-cmds$(EXESUF)
- check-unit-y +=3D tests/test-string-input-visitor$(EXESUF)
- check-unit-y +=3D tests/test-string-output-visitor$(EXESUF)
- check-unit-y +=3D tests/test-qmp-event$(EXESUF)
- check-unit-y +=3D tests/test-opts-visitor$(EXESUF)
- check-unit-$(CONFIG_BLOCK) +=3D tests/test-coroutine$(EXESUF)
- check-unit-y +=3D tests/test-visitor-serialization$(EXESUF)
--check-unit-y +=3D tests/test-iov$(EXESUF)
-+check-unit-$(CONFIG_SOFTMMU) +=3D tests/test-iov$(EXESUF)
- check-unit-y +=3D tests/test-bitmap$(EXESUF)
- check-unit-$(CONFIG_BLOCK) +=3D tests/test-aio$(EXESUF)
- check-unit-$(CONFIG_BLOCK) +=3D tests/test-aio-multithread$(EXESUF)
-@@ -106,7 +106,7 @@ check-unit-y +=3D tests/test-qht$(EXESUF)
- check-unit-y +=3D tests/test-qht-par$(EXESUF)
- check-unit-y +=3D tests/test-bitops$(EXESUF)
- check-unit-y +=3D tests/test-bitcnt$(EXESUF)
--check-unit-y +=3D tests/test-qdev-global-props$(EXESUF)
-+check-unit-$(CONFIG_SOFTMMU) +=3D tests/test-qdev-global-props$(EXESUF)
- check-unit-y +=3D tests/check-qom-interface$(EXESUF)
- check-unit-y +=3D tests/check-qom-proplist$(EXESUF)
- check-unit-y +=3D tests/test-qemu-opts$(EXESUF)
-@@ -124,9 +124,9 @@ check-unit-$(call land,$(CONFIG_BLOCK),$(CONFIG_GNUTLS)=
-) +=3D tests/test-crypto-tl
- ifneq (,$(findstring qemu-ga,$(TOOLS)))
- check-unit-$(call land,$(CONFIG_LINUX),$(CONFIG_VIRTIO_SERIAL)) +=3D tests=
-/test-qga$(EXESUF)
- endif
--check-unit-y +=3D tests/test-timed-average$(EXESUF)
--check-unit-$(CONFIG_INOTIFY1) +=3D tests/test-util-filemonitor$(EXESUF)
--check-unit-y +=3D tests/test-util-sockets$(EXESUF)
-+check-unit-$(CONFIG_SOFTMMU) +=3D tests/test-timed-average$(EXESUF)
-+check-unit-$(call land,$(CONFIG_SOFTMMU),$(CONFIG_INOTIFY1)) +=3D tests/te=
-st-util-filemonitor$(EXESUF)
-+check-unit-$(CONFIG_SOFTMMU) +=3D tests/test-util-sockets$(EXESUF)
- check-unit-$(CONFIG_BLOCK) +=3D tests/test-authz-simple$(EXESUF)
- check-unit-$(CONFIG_BLOCK) +=3D tests/test-authz-list$(EXESUF)
- check-unit-$(CONFIG_BLOCK) +=3D tests/test-authz-listfile$(EXESUF)
-@@ -137,7 +137,7 @@ check-unit-$(CONFIG_BLOCK) +=3D tests/test-io-channel-f=
-ile$(EXESUF)
- check-unit-$(call land,$(CONFIG_BLOCK),$(CONFIG_GNUTLS)) +=3D tests/test-i=
-o-channel-tls$(EXESUF)
- check-unit-$(CONFIG_BLOCK) +=3D tests/test-io-channel-command$(EXESUF)
- check-unit-$(CONFIG_BLOCK) +=3D tests/test-io-channel-buffer$(EXESUF)
--check-unit-y +=3D tests/test-base64$(EXESUF)
-+check-unit-$(CONFIG_SOFTMMU) +=3D tests/test-base64$(EXESUF)
- check-unit-$(call land,$(CONFIG_BLOCK),$(if $(CONFIG_NETTLE),y,$(CONFIG_GC=
-RYPT))) +=3D tests/test-crypto-pbkdf$(EXESUF)
- check-unit-$(CONFIG_BLOCK) +=3D tests/test-crypto-ivgen$(EXESUF)
- check-unit-$(CONFIG_BLOCK)  +=3D tests/test-crypto-afsplit$(EXESUF)
-@@ -145,7 +145,7 @@ check-unit-$(call land,$(CONFIG_BLOCK),$(CONFIG_QEMU_PR=
-IVATE_XTS)) +=3D tests/test
- check-unit-$(CONFIG_BLOCK)  +=3D tests/test-crypto-block$(EXESUF)
- check-unit-y +=3D tests/test-logging$(EXESUF)
- check-unit-$(call land,$(CONFIG_BLOCK),$(CONFIG_REPLICATION)) +=3D tests/t=
-est-replication$(EXESUF)
--check-unit-y +=3D tests/test-bufferiszero$(EXESUF)
-+check-unit-$(CONFIG_SOFTMMU) +=3D tests/test-bufferiszero$(EXESUF)
- check-unit-y +=3D tests/test-uuid$(EXESUF)
- check-unit-y +=3D tests/ptimer-test$(EXESUF)
- check-unit-y +=3D tests/test-qapi-util$(EXESUF)
+diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
+index 45be5dc0ed..5ffa085c67 100644
+--- a/stubs/Makefile.objs
++++ b/stubs/Makefile.objs
+@@ -1,46 +1,54 @@
+-stub-obj-y +=3D arch_type.o
+-stub-obj-y +=3D bdrv-next-monitor-owned.o
+ stub-obj-y +=3D blk-commit-all.o
+-stub-obj-y +=3D blockdev-close-all-bdrv-states.o
+-stub-obj-y +=3D clock-warp.o
+ stub-obj-y +=3D cpu-get-clock.o
+ stub-obj-y +=3D cpu-get-icount.o
+ stub-obj-y +=3D dump.o
+ stub-obj-y +=3D error-printf.o
+ stub-obj-y +=3D fdset.o
+ stub-obj-y +=3D gdbstub.o
+-stub-obj-y +=3D get-vm-name.o
+-stub-obj-y +=3D iothread.o
+ stub-obj-y +=3D iothread-lock.o
+ stub-obj-y +=3D is-daemonized.o
+ stub-obj-$(CONFIG_LINUX_AIO) +=3D linux-aio.o
+ stub-obj-$(CONFIG_LINUX_IO_URING) +=3D io_uring.o
+-stub-obj-y +=3D machine-init-done.o
+-stub-obj-y +=3D migr-blocker.o
+-stub-obj-y +=3D change-state-handler.o
+-stub-obj-y +=3D monitor.o
+ stub-obj-y +=3D monitor-core.o
+ stub-obj-y +=3D notify-event.o
++stub-obj-y +=3D qmp_memory_device.o
+ stub-obj-y +=3D qtest.o
++stub-obj-y +=3D ramfb.o
+ stub-obj-y +=3D replay.o
+-stub-obj-y +=3D replay-user.o
+ stub-obj-y +=3D runstate-check.o
++stub-obj-$(CONFIG_SOFTMMU) +=3D semihost.o
+ stub-obj-y +=3D set-fd-handler.o
++stub-obj-y +=3D vmgenid.o
+ stub-obj-y +=3D sysbus.o
+ stub-obj-y +=3D tpm.o
+ stub-obj-y +=3D trace-control.o
+-stub-obj-y +=3D uuid.o
+-stub-obj-y +=3D vm-stop.o
+ stub-obj-y +=3D vmstate.o
++
++#######################################################################
++# code used by both qemu system emulation and qemu-img
++
++ifeq ($(call lor,$(CONFIG_SOFTMMU),$(CONFIG_TOOLS)),y)
++
++stub-obj-y +=3D arch_type.o
++stub-obj-y +=3D bdrv-next-monitor-owned.o
++stub-obj-y +=3D blockdev-close-all-bdrv-states.o
++stub-obj-y +=3D change-state-handler.o
++stub-obj-y +=3D clock-warp.o
+ stub-obj-y +=3D fd-register.o
+-stub-obj-y +=3D qmp_memory_device.o
+-stub-obj-y +=3D target-monitor-defs.o
+-stub-obj-y +=3D target-get-monitor-def.o
+-stub-obj-y +=3D vmgenid.o
+-stub-obj-y +=3D xen-common.o
+-stub-obj-y +=3D xen-hvm.o
++stub-obj-y +=3D fw_cfg.o
++stub-obj-y +=3D get-vm-name.o
++stub-obj-y +=3D iothread.o
++stub-obj-y +=3D machine-init-done.o
++stub-obj-y +=3D migr-blocker.o
++stub-obj-y +=3D monitor.o
+ stub-obj-y +=3D pci-host-piix.o
+ stub-obj-y +=3D ram-block.o
+-stub-obj-y +=3D ramfb.o
+-stub-obj-y +=3D fw_cfg.o
+-stub-obj-$(CONFIG_SOFTMMU) +=3D semihost.o
++stub-obj-y +=3D replay-user.o
++stub-obj-y +=3D target-get-monitor-def.o
++stub-obj-y +=3D target-monitor-defs.o
++stub-obj-y +=3D uuid.o
++stub-obj-y +=3D vm-stop.o
++stub-obj-y +=3D xen-common.o
++stub-obj-y +=3D xen-hvm.o
++
++endif # CONFIG_SOFTMMU || CONFIG_TOOLS
 --=20
 2.21.1

@@ -1,62 +1,62 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2173930lfc;
-        Fri, 13 Mar 2020 07:00:55 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvL4ODXwNOfHjNn5k5wFwy4Wb/FYO9/fFnA9CZNiq6RgaHEVmb36ZkdcmfUZRnLK9NciB27
-X-Received: by 2002:a05:6214:b23:: with SMTP id w3mr12743615qvj.181.1584108054949;
-        Fri, 13 Mar 2020 07:00:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584108054; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2174000lfc;
+        Fri, 13 Mar 2020 07:00:58 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsicknxgwFnd5iu36GOlfuF0XtJBM8fgbaoN7w2ZqGg3It/CebaoE0YLN6mfg6XQgt7IWDP
+X-Received: by 2002:a37:9a54:: with SMTP id c81mr8368241qke.185.1584108058558;
+        Fri, 13 Mar 2020 07:00:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584108058; cv=none;
         d=google.com; s=arc-20160816;
-        b=OKC4vi0Onp6PDq65Bz6KjqAf1/WK6+wafegYiWu3N3Tr3fZFOpX7qjit7IMWgPGIWl
-         ai+lPjgdu889tSBPrwBC0DcAvtRrM17K8eAglRC5zDODAFaUesuRUD2Bbn7u+8mdwt2L
-         oRdJIONcBJf44M3ZJcEs0nVAVPanpbWZskXx9ESHNn7/IKsatdMpqi3IceeyL33bW/f7
-         9au3pUUYf0RERbJE3rZ7wuajvFtAXh3N+4NdnDXCGj/2Wn4lwfKfl5+IwfnB7PeoBtRb
-         hDotJrl1kZRmxjwwCQiT68MF/Qwzw0/kEpPMNZtsWR1EhefL4TI9nhH+2idPMb+5aNAd
-         LeVA==
+        b=CzpmG2XEt6VhKLGvOSdiIwy7WGjYmb/3qDgxVQv3woYKZwzUt17IUlNpnm3wNHJNcu
+         PK3RZVn46m0g6qfioWba1o4NXQThnmIOG+WqDjRd/8G+wOJkVzMaIgj5SPHrXMZWZHpn
+         6h57CHTXgrvnQsgrbvhPDzyrGrluy8ufT7Ugm8AxPfjCAh/Br7Mm/alnZsfNS0/UN+AR
+         TlMRyy/KNJ+m3qhxUNX6dEVt09x9Udkol9m4DWM+Dgii7rtNqZHCkzPH0IlxES95n2qv
+         TmNahs1yPDZYrxGFAXZPWVYP3VY/6wKogs5QSwZaWAab1TeWlWFmxtVVDw6V1X9O0Yt/
+         q/pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from;
-        bh=swlkJa/C/Z/SKR0JYjONLLCfcw0Yn4XHRV7dX2+LlXw=;
-        b=buMEWWWJ1xE67Hsfc7hVFIhrJy3pMQnHo2X5fuw6Q/3sHUoWB+B7Pz07XdDQSrpoCJ
-         DH/vuLYW/erQD+WBHIGbxeuANcaoZZ6mUUwQDC0+Wfn6lGxmNa4bMxIsyCEnti41Q9zd
-         HfaPF8dxpHc0HMNLy4IlI74CEj4FdoLHdb35MMlFj+QqX4OaIeQOCHRHDqwd9eDYqvpK
-         G1ND348kE0JZvqEzmyaowwJHZoU69Ggn6E4yQoE8mMh9GWy7YuCn5qbtsXQ6BPgEsrJr
-         67uDkjb0kKVD2SdaNEH5fNXWEbxE3WWFyFpv2R5KWBvZzLMm/5IfsRnXXid6XeyroGju
-         Mpew==
+        bh=stdWfferr2gfUBYh5wu2XZnPFkahQQF7ahYCXf2U240=;
+        b=DoUUyl0rZn6DxYbpNIXAZSVgsHqPQv04qCDh0FzYvydKIXWnalINlcCxACMFDE9lgQ
+         ObSLIZ/9nr0aayEUmARutaGNhQnB7u2vtumTIrX6EtF1oeQ0mOEUpcMXEn7fcDCGtBbK
+         NaKhtCbxAFrvYWcIZDGavFCe9HqXI4/giXlLdMFdTRO1XIT64CSJzH8iZ5f9NF1ecO8c
+         acxC0P0hEG1MPAgGUnrN7PEx+y9ZrMdtFaod9oPeNFFqyt0e79mJmOEaPMvniOCn9PXF
+         Xb7jQ1mtoJ0K4jrqjZ+Q0duwQQiCuTpPQwCI63ECMzqqHWbqKTolu0deA3y2aQCvOsN4
+         QDrw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g7si2117225qtr.388.2020.03.13.07.00.54
+        by mx.google.com with ESMTPS id w54si4757689qtb.103.2020.03.13.07.00.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Mar 2020 07:00:54 -0700 (PDT)
+        Fri, 13 Mar 2020 07:00:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59318 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59324 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jCkru-0005bv-9H
-	for alex.bennee@linaro.org; Fri, 13 Mar 2020 10:00:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42703)
+	id 1jCkrx-0005pf-So
+	for alex.bennee@linaro.org; Fri, 13 Mar 2020 10:00:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42767)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <remi@remlab.net>) id 1jCkrX-0005Xf-Cq
- for qemu-arm@nongnu.org; Fri, 13 Mar 2020 10:00:33 -0400
+ (envelope-from <remi@remlab.net>) id 1jCkrZ-0005ZA-VB
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2020 10:00:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <remi@remlab.net>) id 1jCkrV-0000ls-TV
- for qemu-arm@nongnu.org; Fri, 13 Mar 2020 10:00:31 -0400
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:49728
+ (envelope-from <remi@remlab.net>) id 1jCkrW-0000n8-2v
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2020 10:00:33 -0400
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:49724
  helo=ns207790.ip-94-23-215.eu) by eggs.gnu.org with esmtp (Exim 4.71)
  (envelope-from <remi@remlab.net>)
- id 1jCkrV-0000fY-K3; Fri, 13 Mar 2020 10:00:29 -0400
+ id 1jCkrV-0000b0-MG; Fri, 13 Mar 2020 10:00:29 -0400
 Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 0419B5FDA7;
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 683635FD2A;
  Fri, 13 Mar 2020 15:00:24 +0100 (CET)
 From: =?UTF-8?q?R=C3=A9mi=20Denis-Courmont?= <remi@remlab.net>
 To: qemu-arm@nongnu.org
-Subject: [PATCH 4/5] target/arm: MTE privileged system mode assembly
-Date: Fri, 13 Mar 2020 16:00:22 +0200
-Message-Id: <20200313140023.83844-4-remi@remlab.net>
+Subject: [PATCH 2/5] target/arm: MTE user mode disassembly
+Date: Fri, 13 Mar 2020 16:00:20 +0200
+Message-Id: <20200313140023.83844-2-remi@remlab.net>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -78,99 +78,178 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HAFPLmQ/ABJv
+X-TUID: 2pELdZDvovFi
 
 From: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
 
-This adds all remaining MTE instructions for EL1, EL2 and EL3 on a
-processor with ID_AA64PFR1_EL1.MTE =3D=3D 1.
+This adds TCG disassembler support for the EL0-accessible instructions
+from ARMv8.5-MemTag, and sets corresponding feature bit in the
+"maximum" emulated CPU.
 
 Signed-off-by: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
 ---
- target/arm/cpu64.c         |  8 +++---
- target/arm/helper.c        | 19 ++++++++++++++
- target/arm/translate-a64.c | 52 +++++++++++++++++++++++++++++++++++---
- 3 files changed, 71 insertions(+), 8 deletions(-)
+ target/arm/cpu64.c         |   7 ++
+ target/arm/helper.c        |  30 +++++
+ target/arm/translate-a64.c | 236 +++++++++++++++++++++++++++++++++++--
+ 3 files changed, 266 insertions(+), 7 deletions(-)
 
 diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index a72dfd3d98..749eb93872 100644
+index 62d36f9e8d..a72dfd3d98 100644
 --- a/target/arm/cpu64.c
 +++ b/target/arm/cpu64.c
-@@ -665,13 +665,11 @@ static void aarch64_max_initfn(Object *obj)
+@@ -665,6 +665,13 @@ static void aarch64_max_initfn(Object *obj)
 =20
          t =3D cpu->isar.id_aa64pfr1;
          t =3D FIELD_DP64(t, ID_AA64PFR1, BT, 1);
--#ifdef CONFIG_USER_ONLY
--        /* All MTE instructions and processor states are supported for u=
++#ifdef CONFIG_USER_ONLY
++        /* All MTE instructions and processor states are supported for u=
 ser
--         * mode. This corresponds to feature field value 1 (field value =
++         * mode. This corresponds to feature field value 1 (field value =
 2
--         * implies MemTag memory support).
-+        /* All MTE instructions and processor states are supported. This
-+         * corresponds to feature field value 1 (field value 2 implies M=
-emTag
-+         * memory support).
-          */
-         t =3D FIELD_DP64(t, ID_AA64PFR1, MTE, 1);
--#endif
++         * implies MemTag memory support).
++         */
++        t =3D FIELD_DP64(t, ID_AA64PFR1, MTE, 1);
++#endif
          cpu->isar.id_aa64pfr1 =3D t;
 =20
          t =3D cpu->isar.id_aa64mmfr1;
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index dd64fcb4ef..630dc04302 100644
+index 38500e4f92..ed56198623 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -6906,10 +6906,29 @@ static const ARMCPRegInfo mte_reginfo[] =3D {
-       .opc0 =3D 1, .opc1 =3D 3, .crn =3D 7, .crm =3D 14, .opc2 =3D 5,
-       .access =3D PL0_W, .type =3D ARM_CP_NOP,
-       .accessfn =3D aa64_cacheop_poc_access },
-+    { .name =3D "RGSR_EL1", .state =3D ARM_CP_STATE_AA64,
-+      .opc0 =3D 3, .opc1 =3D 0, .crn =3D 1, .crm =3D 0, .opc2 =3D 5,
-+      .access =3D PL1_RW, .fieldoffset =3D offsetof(CPUARMState, rgsr_el=
-1) },
-+    { .name =3D "GCR_EL1", .state =3D ARM_CP_STATE_AA64,
-+      .opc0 =3D 3, .opc1 =3D 0, .crn =3D 1, .crm =3D 0, .opc2 =3D 6,
-+      .access =3D PL1_RW, .fieldoffset =3D offsetof(CPUARMState, gcr_el1=
-) },
-     { .name =3D "TCO", .state =3D ARM_CP_STATE_AA64,
-       .opc0 =3D 3, .opc1 =3D 3, .crn =3D 4, .crm =3D 2, .opc2 =3D 7,
-       .access =3D PL0_RW, .type =3D ARM_CP_NO_RAW,
-       .readfn =3D tco_read, .writefn =3D tco_write },
-+    { .name =3D "TFSR_EL1", .state =3D ARM_CP_STATE_AA64,
-+      .opc0 =3D 3, .opc1 =3D 0, .crn =3D 6, .crm =3D 5, .opc2 =3D 0,
-+      .access =3D PL1_RW, .fieldoffset =3D offsetof(CPUARMState, tfsr_el=
-[1]) },
-+    { .name =3D "TFSR_EL2", .state =3D ARM_CP_STATE_AA64,
-+      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 6, .crm =3D 5, .opc2 =3D 0,
-+      .access =3D PL2_RW, .type =3D ARM_CP_ALIAS,
-+      .fieldoffset =3D offsetof(CPUARMState, tfsr_el[1]) },
-+    { .name =3D "TFSR_EL3", .state =3D ARM_CP_STATE_AA64,
-+      .opc0 =3D 3, .opc1 =3D 6, .crn =3D 6, .crm =3D 5, .opc2 =3D 0,
-+      .access =3D PL3_RW, .fieldoffset =3D offsetof(CPUARMState, tfsr_el=
-[3]) },
-+    { .name =3D "TFSRE0_EL1", .state =3D ARM_CP_STATE_AA64,
-+      .opc0 =3D 3, .opc1 =3D 0, .crn =3D 6, .crm =3D 6, .opc2 =3D 1,
-+      .access =3D PL1_RW, .fieldoffset =3D offsetof(CPUARMState, tfsre0_=
-el1) },
-     REGINFO_SENTINEL
+@@ -6839,6 +6839,33 @@ static const ARMCPRegInfo dcpodp_reg[] =3D {
  };
+ #endif /*CONFIG_USER_ONLY*/
+=20
++static uint64_t tco_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    return env->pstate & PSTATE_TCO;
++}
++
++static void tco_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t=
+ val)
++{
++    if (val & PSTATE_TCO) {
++        env->pstate |=3D PSTATE_TCO;
++    } else {
++        env->pstate &=3D ~PSTATE_TCO;
++    }
++}
++
++static const ARMCPRegInfo mte_reginfo[] =3D {
++    { .name =3D "DC_GVA", .state =3D ARM_CP_STATE_AA64,
++      .opc0 =3D 1, .opc1 =3D 3, .crn =3D 7, .crm =3D 4, .opc2 =3D 3,
++      .access =3D PL0_W, .type =3D ARM_CP_NOP },
++    { .name =3D "DC_GZVA", .state =3D ARM_CP_STATE_AA64,
++      .opc0 =3D 1, .opc1 =3D 3, .crn =3D 7, .crm =3D 4, .opc2 =3D 4,
++      .access =3D PL0_W, .type =3D ARM_CP_DC_ZVA },
++    { .name =3D "TCO", .state =3D ARM_CP_STATE_AA64,
++      .opc0 =3D 3, .opc1 =3D 3, .crn =3D 4, .crm =3D 2, .opc2 =3D 7,
++      .access =3D PL0_RW, .type =3D ARM_CP_NO_RAW,
++      .readfn =3D tco_read, .writefn =3D tco_write },
++    REGINFO_SENTINEL
++};
  #endif
+=20
+ static CPAccessResult access_predinv(CPUARMState *env, const ARMCPRegInf=
+o *ri,
+@@ -7956,6 +7983,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         }
+     }
+ #endif /*CONFIG_USER_ONLY*/
++    if (cpu_isar_feature(aa64_mte, cpu)) {
++        define_arm_cp_regs(cpu, mte_reginfo);
++    }
+ #endif
+=20
+     if (cpu_isar_feature(any_predinv, cpu)) {
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 6d86480043..9382f53794 100644
+index 8fffb52203..6d86480043 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -2716,6 +2716,38 @@ static void disas_ld_lit(DisasContext *s, uint32_t=
+@@ -830,6 +830,31 @@ static void gen_adc_CC(int sf, TCGv_i64 dest, TCGv_i=
+64 t0, TCGv_i64 t1)
+     }
+ }
+=20
++/* Extract an Allocation Tag from an address */
++static void gen_extract_tag(TCGv_i64 dest, TCGv_i64 source)
++{
++    TCGv_i64 sign =3D tcg_temp_new_i64();
++
++    /* See ARMv8.5-A AllocationTagFromAddress pseudocode */
++    tcg_gen_extract_i64(sign, source, 55, 1);
++    tcg_gen_extract_i64(dest, source, 56, 4);
++    tcg_gen_add_i64(dest, dest, sign);
++    tcg_gen_andi_i64(dest, dest, 0xf);
++    tcg_temp_free_i64(sign);
++}
++
++/* Deposit an Allocation Tag into an address */
++static void gen_deposit_tag(TCGv_i64 dest, TCGv_i64 source, TCGv_i64 tag=
+)
++{
++    TCGv_i64 tmp =3D tcg_temp_new_i64();
++
++    /* See ARMv8.5-A AddressWithAllocationTag pseudocode */
++    tcg_gen_extract_i64(tmp, source, 55, 1);
++    tcg_gen_sub_i64(tmp, tag, tmp);
++    tcg_gen_deposit_i64(dest, source, tmp, 56, 4);
++    tcg_temp_free_i64(tmp);
++}
++
+ /*
+  * Load/Store generators
+  */
+@@ -1650,6 +1675,19 @@ static void handle_msr_i(DisasContext *s, uint32_t=
+ insn,
+         tcg_temp_free_i32(t1);
+         break;
+=20
++    case 0x1c: /* TCO */
++        if (!dc_isar_feature(aa64_mte, s)) {
++            unallocated_encoding(s);
++            return;
++        }
++        if (crm & 1) {
++            set_pstate_bits(PSTATE_TCO);
++        } else {
++            clear_pstate_bits(PSTATE_TCO);
++        }
++        s->base.is_jmp =3D DISAS_NEXT;
++        break;
++
+     case 0x1e: /* DAIFSet */
+         t1 =3D tcg_const_i32(crm);
+         gen_helper_msr_i_daifset(cpu_env, t1);
+@@ -2678,6 +2716,82 @@ static void disas_ld_lit(DisasContext *s, uint32_t=
  insn)
      tcg_temp_free_i64(clean_addr);
  }
 =20
-+#ifndef CONFIG_USER_ONLY
-+static void disas_ldst_memtag_vec(DisasContext *s, int rn, int rt,
-+                                  bool is_load)
++/* LDG, LDGV(EL1), ST(Z)(2)G, STGV */
++static void disas_ldst_memtag(DisasContext *s, uint32_t insn)
 +{
++    int opc =3D extract32(insn, 22, 2);
++    int op2 =3D extract32(insn, 10, 2);
++    bool tuple =3D opc & 2;
++    bool zero_data =3D opc & 1;
++    bool is_store =3D op2 !=3D 0;
++    bool postindex =3D op2 =3D=3D 1;
++    bool wback =3D op2 !=3D 2;
++    uint64_t offset =3D sextract64(insn, 12, 9) << ARM_LOG2_TAG_GRANULE;
++    int rn =3D extract32(insn, 5, 5);
++    int rt =3D extract32(insn, 0, 5);
 +    TCGv_i64 tcg_addr;
 +
-+    if (rn =3D=3D rt) {
++    if (!dc_isar_feature(aa64_mte, s) || extract32(insn, 30, 2) !=3D 3) =
+{
++        unallocated_encoding(s);
++        return;
++    }
++
++    if (op2 =3D=3D 0 && opc !=3D 1) {
++        unallocated_encoding(s);
 +        return;
 +    }
 +
@@ -178,57 +257,266 @@ index 6d86480043..9382f53794 100644
 +        gen_check_sp_alignment(s);
 +    }
 +
-+    /* The starting point between the specified address and the aligned
-+     * address is implementation defined. We start at the aligned addres=
-s.
-+     */
-+    tcg_addr =3D tcg_temp_new_i64();
-+    tcg_gen_andi_i64(tcg_addr, cpu_reg_sp(s, rn),
-+                     ~((16 * ARM_TAG_GRANULE) - 1));
++    tcg_addr =3D read_cpu_reg_sp(s, rn, 1);
 +
-+    /* In principles, memory access permissions should be checked here. =
-*/
-+    if (is_load) {
-+        tcg_gen_movi_i64(cpu_reg(s, rt), 0);
++    if (!postindex) {
++        tcg_gen_addi_i64(tcg_addr, tcg_addr, offset);
 +    }
 +
-+    tcg_gen_addi_i64(cpu_reg_sp(s, rn), tcg_addr, 16 * ARM_TAG_GRANULE);
++    if (is_store) {
++        /* Store Allocation Tag (STG, ST2G, STZG, STZ2G) */
++        if (zero_data) {
++            TCGv_i64 ptr =3D tcg_temp_new_i64();
++            TCGv_i64 zero =3D tcg_const_i64(0);
 +
-+    tcg_temp_free_i64(tcg_addr);
++            do_gpr_st(s, zero, tcg_addr, 3, false, 0, false, false);
++            tcg_gen_addi_i64(ptr, tcg_addr, 8);
++            do_gpr_st(s, zero, ptr, 3, false, 0, false, false);
++
++            if (tuple) {
++                tcg_gen_addi_i64(ptr, ptr, 8);
++                do_gpr_st(s, zero, ptr, 3, false, 0, false, false);
++                tcg_gen_addi_i64(ptr, ptr, 8);
++                do_gpr_st(s, zero, ptr, 3, false, 0, false, false);
++            }
++
++            tcg_temp_free_i64(zero);
++            tcg_temp_free_i64(ptr);
++        }
++        /* Write access permission should be checked here.
++         * If zero_data is true, do_gpr_st() does it but elsewise not.
++         */
++
++        if (wback) {
++            if (postindex) {
++                tcg_gen_addi_i64(tcg_addr, tcg_addr, offset);
++            }
++            tcg_gen_mov_i64(cpu_reg_sp(s, rn), tcg_addr);
++        }
++    } else {
++        /* Load Allocation Tag (LDG) */
++        TCGv_i64 tcg_tag =3D tcg_const_i64(0);
++
++        tcg_gen_andi_i64(tcg_addr, tcg_addr, ~(ARM_TAG_GRANULE - 1));
++        /* In principles, read access permission should be checked here.=
+ */
++        gen_deposit_tag(cpu_reg(s, rt), tcg_addr, tcg_tag);
++        tcg_temp_free_i64(tcg_tag);
++    }
 +}
-+#endif
 +
- /* LDG, LDGV(EL1), ST(Z)(2)G, STGV */
- static void disas_ldst_memtag(DisasContext *s, uint32_t insn)
- {
-@@ -2736,9 +2768,23 @@ static void disas_ldst_memtag(DisasContext *s, uin=
-t32_t insn)
+ /*
+  * LDNP (Load Pair - non-temporal hint)
+  * LDP (Load Pair - non vector)
+@@ -2688,6 +2802,7 @@ static void disas_ld_lit(DisasContext *s, uint32_t =
+insn)
+  * LDP (Load Pair of SIMD&FP)
+  * STNP (Store Pair of SIMD&FP - non-temporal hint)
+  * STP (Store Pair of SIMD&FP)
++ * STGP (Store Pair - allocate tag)
+  *
+  *  31 30 29   27  26  25 24   23  22 21   15 14   10 9    5 4    0
+  * +-----+-------+---+---+-------+---+-----------------------------+
+@@ -2736,8 +2851,12 @@ static void disas_ldst_pair(DisasContext *s, uint3=
+2_t insn)
+         size =3D 2 + extract32(opc, 1, 1);
+         is_signed =3D extract32(opc, 0, 1);
+         if (!is_load && is_signed) {
+-            unallocated_encoding(s);
+-            return;
++            if (size =3D=3D 3 || !dc_isar_feature(aa64_mte, s)) {
++                unallocated_encoding(s);
++                return;
++            }
++
++            size =3D 3; /* sic! */
+         }
+     }
+=20
+@@ -3728,12 +3847,15 @@ static void disas_ldst(DisasContext *s, uint32_t =
+insn)
+         disas_ldst_single_struct(s, insn);
+         break;
+     case 0x19: /* LDAPR/STLR (unscaled immediate) */
+-        if (extract32(insn, 10, 2) !=3D 0 ||
+-            extract32(insn, 21, 1) !=3D 0) {
++        if (extract32(insn, 10, 2) !=3D 0) {
+             unallocated_encoding(s);
+             break;
+         }
+-        disas_ldst_ldapr_stlr(s, insn);
++        if (extract32(insn, 21, 1) !=3D 0) {
++            disas_ldst_memtag(s, insn);
++        } else {
++            disas_ldst_ldapr_stlr(s, insn);
++        }
+         break;
+     default:
+         unallocated_encoding(s);
+@@ -3791,10 +3913,12 @@ static void disas_add_sub_imm(DisasContext *s, ui=
+nt32_t insn)
+     bool setflags =3D extract32(insn, 29, 1);
+     bool sub_op =3D extract32(insn, 30, 1);
+     bool is_64bit =3D extract32(insn, 31, 1);
++    bool memtag =3D false;
+=20
+     TCGv_i64 tcg_rn =3D cpu_reg_sp(s, rn);
+     TCGv_i64 tcg_rd =3D setflags ? cpu_reg(s, rd) : cpu_reg_sp(s, rd);
+     TCGv_i64 tcg_result;
++    TCGv_i64 tcg_rtag;
+=20
+     switch (shift) {
+     case 0x0:
+@@ -3802,11 +3926,23 @@ static void disas_add_sub_imm(DisasContext *s, ui=
+nt32_t insn)
+     case 0x1:
+         imm <<=3D 12;
+         break;
++    case 0x2:
++        memtag =3D true;
++
++        if (dc_isar_feature(aa64_mte, s) && is_64bit && !setflags) {
++            imm =3D extract32(imm, 6, 6) << ARM_LOG2_TAG_GRANULE;
++            break;
++        }
++        /* fall through */
+     default:
+         unallocated_encoding(s);
          return;
      }
 =20
--    if (op2 =3D=3D 0 && opc !=3D 1) {
++    if (memtag) {
++        tcg_rtag =3D tcg_const_i64(0);
++    }
++
+     tcg_result =3D tcg_temp_new_i64();
+     if (!setflags) {
+         if (sub_op) {
+@@ -3824,6 +3960,11 @@ static void disas_add_sub_imm(DisasContext *s, uin=
+t32_t insn)
+         tcg_temp_free_i64(tcg_imm);
+     }
+=20
++    if (memtag) {
++        gen_deposit_tag(tcg_result, tcg_result, tcg_rtag);
++        tcg_temp_free_i64(tcg_rtag);
++    }
++
+     if (is_64bit) {
+         tcg_gen_mov_i64(tcg_rd, tcg_result);
+     } else {
+@@ -5281,6 +5422,72 @@ static void handle_crc32(DisasContext *s,
+     tcg_temp_free_i32(tcg_bytes);
+ }
+=20
++/* SUBP, SUBPS (incl. CCMP) */
++static void handle_subp(DisasContext *s, bool setflags, unsigned int sf,
++                        unsigned int rm, unsigned int rn, unsigned int r=
+d)
++{
++    TCGv_i64 tcg_addr1, tcg_addr2;
++    TCGv_i64 tcg_result;
++
++    if (!sf || !dc_isar_feature(aa64_mte, s)) {
++        unallocated_encoding(s);
++        return;
++    }
++
++    tcg_addr1 =3D tcg_temp_new_i64();
++    tcg_addr2 =3D tcg_temp_new_i64();
++    tcg_result =3D cpu_reg(s, rd);
++
++    tcg_gen_sextract_i64(tcg_addr1, cpu_reg_sp(s, rn), 0, 56);
++    tcg_gen_sextract_i64(tcg_addr2, cpu_reg_sp(s, rm), 0, 56);
++
++    if (setflags) {
++        gen_sub_CC(1, tcg_result, tcg_addr1, tcg_addr2);
++    } else {
++        tcg_gen_sub_i64(tcg_result, tcg_addr1, tcg_addr2);
++    }
++
++    tcg_temp_free_i64(tcg_addr2);
++    tcg_temp_free_i64(tcg_addr1);
++}
++
++static void handle_irg(DisasContext *s, unsigned int sf,
++                       unsigned int rm, unsigned int rn, unsigned int rd=
+)
++{
++    TCGv_i64 rtag;
++
++    if (!sf || !dc_isar_feature(aa64_mte, s)) {
++        unallocated_encoding(s);
++        return;
++    }
++
++    rtag =3D tcg_temp_new_i64();
++    tcg_gen_movi_i64(rtag, 0);
++    gen_deposit_tag(cpu_reg_sp(s, rd), cpu_reg_sp(s, rn), rtag);
++    tcg_temp_free_i64(rtag);
++}
++
++static void handle_gmi(DisasContext *s, unsigned int sf,
++                       unsigned int rm, unsigned int rn, unsigned int rd=
+)
++{
++    TCGv_i64 tcg_one, tcg_tag;
++
++    if (!sf || !dc_isar_feature(aa64_mte, s)) {
++        unallocated_encoding(s);
++        return;
++    }
++
++    tcg_one =3D tcg_const_i64(1);
++    tcg_tag =3D tcg_temp_new_i64();
++
++    gen_extract_tag(tcg_tag, cpu_reg_sp(s, rn));
++    tcg_gen_shl_i64(tcg_tag, tcg_one, tcg_tag);
++    tcg_gen_or_i64(cpu_reg(s, rd), cpu_reg(s, rm), tcg_tag);
++
++    tcg_temp_free_i64(tcg_tag);
++    tcg_temp_free_i64(tcg_one);
++}
++
+ /* Data-processing (2 source)
+  *   31   30  29 28             21 20  16 15    10 9    5 4    0
+  * +----+---+---+-----------------+------+--------+------+------+
+@@ -5297,17 +5504,32 @@ static void disas_data_proc_2src(DisasContext *s,=
+ uint32_t insn)
+     rd =3D extract32(insn, 0, 5);
+=20
+     if (extract32(insn, 29, 1)) {
 -        unallocated_encoding(s);
 -        return;
-+    if (op2 =3D=3D 0) {
-+        switch (opc) {
-+        case 1:
++        switch (opcode) {
++        case 0:
++            handle_subp(s, true, sf, rm, rn, rd);
 +            break;
-+#ifndef CONFIG_USER_ONLY
-+        case 2:
-+        case 3:
-+            if (s->current_el > 0 && offset =3D=3D 0) {
-+                disas_ldst_memtag_vec(s, rn, rt, opc & 1);
-+                return;
-+            }
-+#endif
-+            /* fall through */
 +        default:
 +            unallocated_encoding(s);
 +            return;
 +        }
      }
 =20
-     if (rn =3D=3D 31) {
+     switch (opcode) {
++    case 0:
++        handle_subp(s, false, sf, rm, rn, rd);
++        break;
+     case 2: /* UDIV */
+         handle_div(s, false, sf, rm, rn, rd);
+         break;
+     case 3: /* SDIV */
+         handle_div(s, true, sf, rm, rn, rd);
+         break;
++    case 4:
++        handle_irg(s, sf, rm, rn, rd);
++        break;
++    case 5:
++        handle_gmi(s, sf, rm, rn, rd);
++        break;
+     case 8: /* LSLV */
+         handle_shift_reg(s, A64_SHIFT_TYPE_LSL, sf, rm, rn, rd);
+         break;
 --=20
 2.25.1
 

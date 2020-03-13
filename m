@@ -1,69 +1,101 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2176482lfc;
-        Fri, 13 Mar 2020 07:02:39 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vv4/CR+lb5CPGkedncNiuzdmL9qRiPr150SyuClzD4MvgvnC5+v9XD1YHDrkdEpJlVcJKnC
-X-Received: by 2002:a37:7c47:: with SMTP id x68mr13396057qkc.8.1584108158243;
-        Fri, 13 Mar 2020 07:02:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584108158; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2178544lfc;
+        Fri, 13 Mar 2020 07:04:07 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vst1DwnduHWGo5AKAUnduEEDOHg+LpHD0K5jxWXMmDzurdzRu95pV2ckAZGp1eUFCIZXjoq
+X-Received: by 2002:ac8:7585:: with SMTP id s5mr12638515qtq.339.1584108246509;
+        Fri, 13 Mar 2020 07:04:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584108246; cv=none;
         d=google.com; s=arc-20160816;
-        b=b92ZAQPTlf81mHDrYQyH4qj1ehP0fQDYvhwnza3+CyCrHSyGIOPJh1V23yLXuZLPze
-         JnqHOivjvOgwbR3/RHosOamqTQFu0SVK21sRCsUuRRX4LAPes3zEyHhs25sW4K7ZEUXf
-         OKrKDrePMNt/R/uAISOgtiaJFR4bU6UeYKBjYJX6SDDFIzHDjRQP5bdGn/+BYAUJYT23
-         rZ/YVLJWah0Fx9G7ZHGDSMZqXlEFs8sJdDNL1R2C6aydkTPl1enqAsBlrW9pxUYmMoPF
-         vvAJorMLq/taQN3WBVE2vp1/twUMdEjQpbUKnVJ0/Lr23KnXuDtig2WoIOsZv8pu3cnV
-         qYtQ==
+        b=l5kUKqQBsSAwlQN6tVhHQgi2ilJXc6oMgG3NgM0P1KlKjr1ePGecQVh/9akPO1qkWk
+         f8+G4OGKDxVCLCxQ0DARD23ZBIYy8fwxxQtllrsq4DWVLa26NTgt1R+CtUnxdC6oGbVS
+         ZVHDHvINFfi87exF9srJvu6l5Xy7+ktzEG0YWyU6G8KnIw/BgVvoLCt4Xho3u9a3uLkP
+         zP5PfM61zz2oT+Fdl1XIidCV5iVLgPn5tG51t5yNEGa9EkBTKTtudi7BIbE+nwLpFvey
+         xYLI5vcT5wZEiuDFGp4g1lSENzVv7BqlPdxFQlxBhhEwzdJbvxl6BV7XNUTG7UgwKlkd
+         32+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=gPIHWn+7p+/PvXYBm2MeAO8GEl2StCHzBSa7YN42yz0=;
-        b=uJcNWd9qG2e8QDgZECEQ54aHLDk/QOD+seNMmYJp0rWXMM9J7qWzdtAK/ivI6gAjbG
-         WRAi7UvQI80koCwZ9pUXzConoNOwKv10X0Pkh5lCxMUBAAL9KozGpnqZQGpiS91VBRDO
-         5WklMa5w3BWJCQCFHKM9o0a/zpk9jsjqO9VURsOTN1SQA8Ch6ZwuoYnw8+fIjv3FTNqv
-         2vf7q143eDCmzpDwTOs6yjcYlfw/UBz9WpSnevcomdnyCQbe8s3OyGh9Agex58rDv2vh
-         F86YOigyBHDcG9nk1XHBTbgkn0VBWrKexvXMHo1EooANALaq1sT/xOoycR6l9GhIdvHe
-         gdGQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=yJKUVM/F7YoJrPfZOmqZuyP7n37uZRy29RxD4C3UWUE=;
+        b=c/64nBm+gB642In4youFauThw0UyzjY3/Rgf5t+pzscfku2TvOoOGsKBf/RvYyvjgm
+         pz9/Bj3fYg1BfEXKS1aY/052Fy+wVAGj93+9OGvMuXmZTJi5C+sCh19vImajtPw47LF/
+         KdQN4OTPrTLXg0fcskbgS3IHM/zBhnw4afkHrLebWok/IppC+uQP+COIk4DaHPfxNpn3
+         rLYnC8NsfaDolb3vGzO9dJxg42KXBd6T99W+o1tgyww7pzrceq9YUcopuIwyOV/9+xID
+         MjGSXu11V+uWIdD3g77WiqH0K1m27bJUWrLutefafjHA1VDM15NJW6mN84I/58rcLQLz
+         nL1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=K49RXmN8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t129si3376758qke.87.2020.03.13.07.02.38
+        by mx.google.com with ESMTPS id j125si4969281qkd.140.2020.03.13.07.04.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Mar 2020 07:02:38 -0700 (PDT)
+        Fri, 13 Mar 2020 07:04:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59354 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=K49RXmN8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59386 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jCktZ-0000RM-Gz
-	for alex.bennee@linaro.org; Fri, 13 Mar 2020 10:02:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42697)
+	id 1jCkuz-0002jc-KS
+	for alex.bennee@linaro.org; Fri, 13 Mar 2020 10:04:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48353)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <remi@remlab.net>) id 1jCkrX-0005XT-7O
- for qemu-arm@nongnu.org; Fri, 13 Mar 2020 10:00:33 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jCkum-0002c6-Eh
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2020 10:03:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <remi@remlab.net>) id 1jCkrV-0000im-IU
- for qemu-arm@nongnu.org; Fri, 13 Mar 2020 10:00:31 -0400
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:49722
- helo=ns207790.ip-94-23-215.eu) by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <remi@remlab.net>)
- id 1jCkrR-0000XA-D7; Fri, 13 Mar 2020 10:00:29 -0400
-Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 166455FAA2;
- Fri, 13 Mar 2020 15:00:24 +0100 (CET)
-From: =?UTF-8?q?R=C3=A9mi=20Denis-Courmont?= <remi@remlab.net>
-To: qemu-arm@nongnu.org
-Subject: [PATCH 1/5] target/arm: MTE processor state
-Date: Fri, 13 Mar 2020 16:00:19 +0200
-Message-Id: <20200313140023.83844-1-remi@remlab.net>
-X-Mailer: git-send-email 2.25.1
+ (envelope-from <peter.maydell@linaro.org>) id 1jCkuk-0005Xa-EK
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2020 10:03:52 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:46360)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jCkuj-0005Tx-7R
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2020 10:03:50 -0400
+Received: by mail-oi1-x242.google.com with SMTP id a22so9417347oid.13
+ for <qemu-arm@nongnu.org>; Fri, 13 Mar 2020 07:03:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=yJKUVM/F7YoJrPfZOmqZuyP7n37uZRy29RxD4C3UWUE=;
+ b=K49RXmN8bTkQyxST+AflvQVp6PBGGmAOL5TVW0pOUYvojmmM/chylVNLkC+RAUtL5I
+ 6aYcxM6wtf/8tKatztudkBR7vez/iOEOZ3WVM6oFUjcOkQaBTkOekAxIPpPpRDZOGEQ9
+ KyJdOKww0M7nRYi4yOkUeW/85iLGN4UwUpRdP6CDui4WZ3a0SFXOddLDxGK0jhBTtOYB
+ TcwlVEtpWdoBDAngrYk6DvPf3Q6oZrxUJPSMlpwF3dpmcogKg+NjJAdu2mOGPfrVhRuZ
+ 3kNojJ19nM+/R4Ot7taTNa0MIjk1mk46De5ELagu+7qanWAxdzIMXJiIIj9xMIkQm4nE
+ cZUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=yJKUVM/F7YoJrPfZOmqZuyP7n37uZRy29RxD4C3UWUE=;
+ b=dRZCcIJMJ97d5Pu3NCO+vr7o7uEe6b3XpFL4Kr06yfPvvgO7niU8c41Neytl41bx/D
+ hyH608r1H/0ireebiNA5XOo0vaeaUgXTftvCCAd0Nh8/TcVceiuifDwznJkqUnp9TXK0
+ lSCG7okbpOQ2CMcinEY8ycNPX6cl4805wDLVbrfePKI4/5+g/NXo47g5Q7wwFS1RZsRK
+ jKuZn7tyHIYaNGDgiWaZ0eVLyd3p4DcjK13ElHU73qD9HWqLYNcA67KIVi6wKcZ32je6
+ ihPs+JHip0mXK9dktSsRSQSbw5OGza0I5iCFN7bqiz94aVwgFvPKldm2CAJc5iOWIKmJ
+ NaxA==
+X-Gm-Message-State: ANhLgQ1CP6u9wlM3rEI5/jgg0uZ9oib/6SxEVxs8K+CSNuOwVG64E99o
+ QBIYKtK4U95KvnWY22kyJ/vd/0mbd0afJhkbVMxpLT3GPTPRRw==
+X-Received: by 2002:a05:6808:289:: with SMTP id
+ z9mr6822951oic.48.1584108228052; 
+ Fri, 13 Mar 2020 07:03:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+References: <2159383.tmy0LfLZHX@basile.remlab.net>
+In-Reply-To: <2159383.tmy0LfLZHX@basile.remlab.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 13 Mar 2020 14:03:36 +0000
+Message-ID: <CAFEAcA_nGY4_UQ7jMdxuZXR=_rpVZVCAMX+UzEoFtSpcCVy9Dg@mail.gmail.com>
+Subject: Re: [RFC] [PATCH 0/5] ARMv8.5-MemTag disassembly
+To: =?UTF-8?Q?R=C3=A9mi_Denis=2DCourmont?= <remi@remlab.net>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2001:41d0:2:5a1a::
+X-Received-From: 2607:f8b0:4864:20::242
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,136 +107,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nI2VeSV62vWQ
+X-TUID: l1lrBajRNigi
 
-From: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
+On Fri, 13 Mar 2020 at 13:59, R=C3=A9mi Denis-Courmont <remi@remlab.net> wr=
+ote:
+>
+>         Hello,
+>
+> The following changes since commit d4f7d56759f7c75270c13d5f3f5f736a955892=
+9c:
+>
+>   Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target-arm-202=
+00312' into staging (2020-03-12 17:34:34 +0000)
+>
+> adds support for the ARM MTE compatibility subset (which does not seem to=
+ have
+> an official name) to QEMU user mode and system mode on "max" CPU. This
+> corresponds to MTE =3D=3D 1 in the instruction set feature field, and all=
+ows
+> running code with MTE instructions without actual tag storage.
 
-This adds architectural definitions and internal processor state for
-the ARMv8.5-MemTag, a.k.a. MTE extension:
- - a new ISAR register feature field,
- - new ATA flag bits for tag access in SCR, HCR and SCTLR registers,
- - a TCO flag in PSTATE and SPSR_ELx registers,
- - new CPU registers for pseudo-random tags generation.
+Hi; how does this interact with Richard's series for MemTag ?
+https://patchew.org/QEMU/20200312194219.24406-1-richard.henderson@linaro.or=
+g/
 
-Signed-off-by: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
----
- target/arm/cpu.h        | 17 +++++++++++++++++
- target/arm/helper-a64.c |  2 ++
- target/arm/helper.c     | 17 +++++++++++++++++
- 3 files changed, 36 insertions(+)
+Also, your subject seems odd -- your patches don't touch the
+disassembler, only the translator.
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 4ffd991b6f..e19ce0d746 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -267,6 +267,14 @@ typedef struct CPUARMState {
-     uint64_t elr_el[4]; /* AArch64 exception link regs  */
-     uint64_t sp_el[4]; /* AArch64 banked stack pointers */
-=20
-+    /* Tag registers */
-+    uint64_t gcr_el1;
-+    uint64_t rgsr_el1;
-+    union {
-+        uint64_t tfsre0_el1;
-+        uint64_t tfsr_el[4];
-+    };
-+
-     /* System control coprocessor (cp15) */
-     struct {
-         uint32_t c0_cpuid;
-@@ -1259,6 +1267,7 @@ void pmu_init(ARMCPU *cpu);
- #define PSTATE_SS (1U << 21)
- #define PSTATE_PAN (1U << 22)
- #define PSTATE_UAO (1U << 23)
-+#define PSTATE_TCO (1U << 25)
- #define PSTATE_V (1U << 28)
- #define PSTATE_C (1U << 29)
- #define PSTATE_Z (1U << 30)
-@@ -2949,6 +2958,9 @@ typedef enum ARMASIdx {
-     ARMASIdx_S =3D 1,
- } ARMASIdx;
-=20
-+#define ARM_LOG2_TAG_GRANULE 4
-+#define ARM_TAG_GRANULE (UINT64_C(1) << ARM_LOG2_TAG_GRANULE)
-+
- /* Return the Exception Level targeted by debug exceptions. */
- static inline int arm_debug_target_el(CPUARMState *env)
- {
-@@ -3777,6 +3789,11 @@ static inline bool isar_feature_aa64_bti(const ARM=
-ISARegisters *id)
-     return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, BT) !=3D 0;
- }
-=20
-+static inline unsigned isar_feature_aa64_mte(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, MTE);
-+}
-+
- static inline bool isar_feature_aa64_pmu_8_1(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64dfr0, ID_AA64DFR0, PMUVER) >=3D 4 &&
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index bc0649a44a..5c8d081d4c 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -1036,6 +1036,8 @@ void HELPER(exception_return)(CPUARMState *env, uin=
-t64_t new_pc)
-=20
-         env->aarch64 =3D 1;
-         spsr &=3D aarch64_pstate_valid_mask(&env_archcpu(env)->isar);
-+        /* TCO bit is copied from CPSR, not SPSR */
-+        spsr =3D (spsr & ~PSTATE_TCO) | (env->pstate & PSTATE_TCO);
-         pstate_write(env, spsr);
-         if (!arm_singlestep_active(env)) {
-             env->pstate &=3D ~PSTATE_SS;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index b61ee73d18..38500e4f92 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1993,6 +1993,9 @@ static void scr_write(CPUARMState *env, const ARMCP=
-RegInfo *ri, uint64_t value)
-     if (cpu_isar_feature(aa64_pauth, cpu)) {
-         valid_mask |=3D SCR_API | SCR_APK;
-     }
-+    if (cpu_isar_feature(aa64_mte, cpu) >=3D 2) {
-+        valid_mask |=3D SCR_ATA;
-+    }
-=20
-     /* Clear all-context RES0 bits.  */
-     value &=3D valid_mask;
-@@ -4691,6 +4694,11 @@ static void sctlr_write(CPUARMState *env, const AR=
-MCPRegInfo *ri,
-         value &=3D ~SCTLR_M;
-     }
-=20
-+    if (cpu_isar_feature(aa64_mte, cpu) < 2) {
-+        /* ATA and ATA0 are RES0 without full MTE implementation */
-+        value &=3D ~(SCTLR_ATA | SCTLR_ATA0);
-+    }
-+
-     raw_write(env, ri, value);
-     /* ??? Lots of these bits are not implemented.  */
-     /* This may enable/disable the MMU, so do a TLB flush.  */
-@@ -5226,6 +5234,15 @@ static void do_hcr_write(CPUARMState *env, uint64_=
-t value, uint64_t valid_mask)
-         if (cpu_isar_feature(aa64_pauth, cpu)) {
-             valid_mask |=3D HCR_API | HCR_APK;
-         }
-+        switch (cpu_isar_feature(aa64_mte, cpu)) {
-+        default:
-+            valid_mask |=3D HCR_ATA;
-+            /* fall through */
-+        case 1:
-+            valid_mask |=3D HCR_DCT;
-+        case 0:
-+            break;
-+        }
-     }
-=20
-     /* Clear RES0 bits.  */
---=20
-2.25.1
-
+thnaks
+-- PMM

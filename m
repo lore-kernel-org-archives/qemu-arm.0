@@ -1,94 +1,98 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1467073lfc;
-        Thu, 12 Mar 2020 18:46:28 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsKh7uc6oJnsboSHbGV5T6OWadZoAqUxlW0CHrdNL+bGv3u7TXybr2LFgId4FzO0HgGkdRh
-X-Received: by 2002:ac8:2648:: with SMTP id v8mr10392656qtv.65.1584063988600;
-        Thu, 12 Mar 2020 18:46:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584063988; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1467102lfc;
+        Thu, 12 Mar 2020 18:46:31 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vv6Pp2e5KHLx08ROZ9T8KbJ80pdWwlJdTgpCG5mIlwrSs0H7qt6BojD7i7rFvOAwiYh+jCQ
+X-Received: by 2002:a05:620a:2142:: with SMTP id m2mr10409446qkm.365.1584063991235;
+        Thu, 12 Mar 2020 18:46:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584063991; cv=none;
         d=google.com; s=arc-20160816;
-        b=gD40uF+rBzlELKcQTtfUdMGvJipNELWppZcEX9XTQp4JNs9rfsbdTl1BAn1dcdbtGD
-         eoVXZ2KpphEPHJ6fUjfzPDZ/S0XoO6HyD6n274YKSqfdzd3JfTxe3wgRITmXpX8lsIrp
-         nrtVm3LgqIC/Kd1xfSYWdIgsHhtA+GBsAWUHCMkHakt5kbo6f4WUjxfNHjlvjRPyQI/d
-         C0KjjHOT2JvFcKOrZ6Y4r6tIXcMZvQ8ADPHyqKBYANuU7cxHiFlZANqQn9AZkgAEn8/X
-         j9WnBj8MV9pAwgbPGeY+TZ8SCw9xSUKUJ+bT6G6SjuSMUR74Sg/X1d+VI+p/RLl8jDNo
-         aozQ==
+        b=w315KlAEp3x5PCbxgVRWmGixbnRkd5u5zr0mThENssUoj41TpGjyEXTdz2mmaX2HoS
+         EV/+uwdL74ToODwHKQZps8QPf6P1PKuu+nxGuZIknzG4Qk8swDRelWbCVl+7qfm9ugT8
+         iGiyFcEcvPzXyAZ7eFvN9sg5eQFvuv8Z8O6ppqkoaYXChtfvegdo8N2QQJHyHWF6tNbr
+         6liWfHz6Ejkp8P/SmLJ2zfOdaaWLt4gvkzLkN/zf3X6chmn0qEAS5J3mlDwOy0VkfFIo
+         1oyFRiHCCSNjJtd+aV9dApoR7OPQsV3yGTboWs8+8H0D8+ED092V0Yl/cT35dBYvV1u+
+         yTrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=3nP+DcWKLTYYKct2ubngpCtOm7Ri8oAKLhdkhHkT/ig=;
-        b=lpthQIiFm/5n07lk8+2dAXT6yg88QQ86EiqFzNRjXNAiDmAXmmtm99OgEHRLqRhtIw
-         JbCOnh/zF2E1DHOXXf3fdvzh/fiZ7r75rxFYLbztUY1md9IfFGcuwgHbXywd6U/Qb/wr
-         5yKO6RWmdszsdP7UFbI85/ixZqI3wg6bBLXtopTrkBOhVRPByi6mq/B4wI36HlPQ3FCB
-         tzla/Jpx5eT9BoUeuD0KpPyMhXI/DY33yXws8p46eE+9x4M1UwpEXJqqevVHhrLq554H
-         YOOJnZKwI89ZJVVLZRdP4UIlfmYwwDk6EWtsrcZeWJ5qWeKFmMHQgARYsIDgvLgFgN4p
-         k52Q==
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=AXgArI/1ZeT2wXd+HyZZgBXKR113LCxmNrOyBRd1fu0=;
+        b=wICJoQ0aTP49lNEd2fJ8+wS8fs+tkIWlCNUkecitm+IAYJCmLxhLft173HavV2AfPL
+         Mpdd/rPqAcAQo0EI99OXYaJAey/lkj/PEmiYfTWg+L6kUZN13oc9z1ec23Y4SYMZzbu0
+         pdzEp+tKODPemHLIfD4UIiIAZeylTp7Nm5sQsnbCAt/zYe80DUM18ivPxzX3okMZhSzl
+         jMCV2kR8cNfamHQxtUBuJuBlJSacBD8Dcc+CehdCdiIVI2HnuVlIn1+vaG3+Wf8bVXc9
+         s1sGzoER1JHlrL0uvH569sW3Ln4ulNpq8ocGyB+z6HBN/8xtZWK0Q639/4xEZkdH9ECW
+         FD0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rLGgjIke;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Qsi8TcVK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z10si3814151qkl.68.2020.03.12.18.46.28
+        by mx.google.com with ESMTPS id z67si4028679qkb.64.2020.03.12.18.46.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Mar 2020 18:46:28 -0700 (PDT)
+        Thu, 12 Mar 2020 18:46:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rLGgjIke;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Qsi8TcVK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52606 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52608 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jCZPA-0001Ht-0H
-	for alex.bennee@linaro.org; Thu, 12 Mar 2020 21:46:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42040)
+	id 1jCZPC-0001Nc-G5
+	for alex.bennee@linaro.org; Thu, 12 Mar 2020 21:46:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42103)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1jCZOg-0001EB-F1
- for qemu-devel@nongnu.org; Thu, 12 Mar 2020 21:45:59 -0400
+ (envelope-from <groeck7@gmail.com>) id 1jCZOi-0001Hd-An
+ for qemu-devel@nongnu.org; Thu, 12 Mar 2020 21:46:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1jCZOe-0005xs-Fi
- for qemu-devel@nongnu.org; Thu, 12 Mar 2020 21:45:58 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:43740)
+ (envelope-from <groeck7@gmail.com>) id 1jCZOh-00063O-Bk
+ for qemu-devel@nongnu.org; Thu, 12 Mar 2020 21:46:00 -0400
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:39603)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1jCZOe-0005wf-AX; Thu, 12 Mar 2020 21:45:56 -0400
-Received: by mail-pg1-x542.google.com with SMTP id u12so4007295pgb.10;
- Thu, 12 Mar 2020 18:45:56 -0700 (PDT)
+ id 1jCZOh-000621-6R; Thu, 12 Mar 2020 21:45:59 -0400
+Received: by mail-pf1-x444.google.com with SMTP id w65so4211023pfb.6;
+ Thu, 12 Mar 2020 18:45:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id;
- bh=3nP+DcWKLTYYKct2ubngpCtOm7Ri8oAKLhdkhHkT/ig=;
- b=rLGgjIkegX5yV1VDD79JbMlyf4SDYnGnD8z5g0DjCwoUKxCCnwYkwG+7gzascm6Z6G
- lH7q9hcU62/ngF1mCiGrs1rOOuH0husYFzleirp5nqWeGCr+gPlKX9I0H7flcF4LhnCD
- kvrPzd1WFyAoSg6Y7RTiyS8ueOzMJbUjJ9xjF/UakKlisymc2buTlU8tl8ooT6QxVlOl
- xpjZV6XwP+RtIrZwoWemWTMRvGB6Nx/vHt3lleLUy/ZJpRq8o9KgGSqYp4S5pdUP0xnG
- sRpbpBiddly475ryO05HWNtBoZ7TntOxAl0UJo+TSfssk4IwnLAUrJjU3BCEJyYt8zgf
- iIdQ==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=AXgArI/1ZeT2wXd+HyZZgBXKR113LCxmNrOyBRd1fu0=;
+ b=Qsi8TcVKvaZrZ0lK34NmKTkKmH4xmOhRifCuV6Ytg5fiqAWa1QXprJswy+VmNW12iM
+ FXt/F85Q8wxBmJkrwJo8qYyUhpPuZ5V9gIzqxR53mwLJ8sj2toA/hEjG4hP+gGsrNWWO
+ 6MaJJc41woY3ttFAg+H1C/fM5dWhptDyUicf9XImD2/CfCMlZROtdktojICcc1M/NJb+
+ Fcb4H7KOXKRl3HnWBnzI6al9LoRv4h2m4Z+9LE1WvGxMvOr2iUre1Z3g9JBTGa+ZE/lM
+ ufzSffGTA4zh4razNzBm37bZImNjJedmUc5idvpV5d7hUQL/jhUhQSwZcFkBJkDkak1D
+ OFSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
- bh=3nP+DcWKLTYYKct2ubngpCtOm7Ri8oAKLhdkhHkT/ig=;
- b=dw4Vk8GkTSwMWSqg9GjKE/T6FuO/OP0w2F3qgXSgCnYyu/OvGDsqPAXLhRRtCAGGYF
- 9wxyUG6rXTJlJr0RNE8uun52mpw3Qu/+Jqx4BnBSIlfw8zFDNfI7tlmdQPF9HsnoTCWr
- 0yTOC7P6PLYN0k0c4JIpaqm+p/HC4y/jQXHrOoMFDGQWRh9SHKX2GrkcTfuFxrzAlOX/
- wmOOo8TBx48kuQEg1XNxYSzVJpQk3NL1nsvxdw864Lto3pyUAZBxczLM50xL6qdJb9Pc
- 1dftLJX9VLi0eVbXzjxYpcoFAxB/im6uAEyE2Rd8/45bzeRTO7ATtmr5B1u9LlR/Vg0k
- 4AaA==
-X-Gm-Message-State: ANhLgQ0WWfkuk4mbcAtDf6/kc192OoeOsdAL0Y9vv7z4oSBA2zD/cJgv
- +g0v/Lpr0NbgfGJ0X0BixiA=
-X-Received: by 2002:a63:ef04:: with SMTP id u4mr10587087pgh.292.1584063955082; 
- Thu, 12 Mar 2020 18:45:55 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references;
+ bh=AXgArI/1ZeT2wXd+HyZZgBXKR113LCxmNrOyBRd1fu0=;
+ b=jq4pXhm0P2UxpADvrKuvgO9Z0pc2Dq7qXL/TlwJKLEMQQrj51R0ZpbH2hR2UK7wVyh
+ uCnzwVB0vLG7howoAKEshCkuNFJk15ugjQmCE0slWYxrC6Ia2IpyegDqUnxIJjoR5/9M
+ 2aE5O24e9CCOwIjWXBpz9MEjWQhdJg6BM7QHRP+J1Xen6hqSCHA5qMg6LGT7CnOZx8b0
+ p5mXHw9LeOQSNEsDgMk/GOmLC4YCG4Wtw8c/1H9hHlyX+6b5JxAHnFFAL9JDLq7k5LB0
+ hiSk+3gUWwDiQ7gNhpq5yGDM2glhzqjkyrY4adPviWdQ2DV7fZNe0u/8OjpvSrPIt3qq
+ 4Hmg==
+X-Gm-Message-State: ANhLgQ2EZQerrnXiRS/44FhM3olkiOuRF7qGKdEu1505gCyDIL9XUz0Y
+ sBLhxVArcX77O4kidvATnIY=
+X-Received: by 2002:a62:7cc9:: with SMTP id
+ x192mr10950335pfc.176.1584063958285; 
+ Thu, 12 Mar 2020 18:45:58 -0700 (PDT)
 Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id f19sm13741857pgn.42.2020.03.12.18.45.53
+ by smtp.gmail.com with ESMTPSA id g14sm17234282pfb.131.2020.03.12.18.45.57
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 12 Mar 2020 18:45:54 -0700 (PDT)
+ Thu, 12 Mar 2020 18:45:57 -0700 (PDT)
 From: Guenter Roeck <linux@roeck-us.net>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 0/5] Wire up USB controllers in i.MX6 emulations
-Date: Thu, 12 Mar 2020 18:45:46 -0700
-Message-Id: <20200313014551.12554-1-linux@roeck-us.net>
+Subject: [PATCH v3 2/5] hw/arm/fsl-imx6ul: Fix USB interrupt numbers
+Date: Thu, 12 Mar 2020 18:45:48 -0700
+Message-Id: <20200313014551.12554-3-linux@roeck-us.net>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200313014551.12554-1-linux@roeck-us.net>
+References: <20200313014551.12554-1-linux@roeck-us.net>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::542
+X-Received-From: 2607:f8b0:4864:20::444
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,54 +109,38 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aAQqn8vCNL27
+X-TUID: 32GBsDEl+qzz
 
-This patch series wires up the USB controllers on fsl-imx6 and fsl-imx6ul
-emulations.
+USB1 and USB2 interrupt numbers were swapped. USB_PHY2 interrupt number
+is 45. That didn't really matter up to now since the interrupts were not
+used, but it needs to be fixed to be able to wire up the USB controllers.
 
-The first patch provides a basic implementation of the USB PHY controller
-used in i.MX28 and later chips. Only reset bit handling in the control
-register is actually implemented. Basic USB PHY support is needed to make
-the USB ports operational in Linux.
+Fixes: 31cbf933f0e ("i.MX6UL: Add i.MX6UL SOC")
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+v3: New patch
 
-The second patch fixes USB and USB PHY interrupt numbers for i.MX6UL.
+ include/hw/arm/fsl-imx6ul.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-The third patch instantiates unimplemented pwm and can devices. This patch
-is necessary to avoid crashes in Linux when it tries to access those
-devices. The crashes are observed when trying to boot Linux v4.21 or later.
+diff --git a/include/hw/arm/fsl-imx6ul.h b/include/hw/arm/fsl-imx6ul.h
+index eda389aec7..5a420785b9 100644
+--- a/include/hw/arm/fsl-imx6ul.h
++++ b/include/hw/arm/fsl-imx6ul.h
+@@ -241,10 +241,10 @@ enum FslIMX6ULIRQs {
+     FSL_IMX6UL_UART7_IRQ    = 39,
+     FSL_IMX6UL_UART8_IRQ    = 40,
+ 
+-    FSL_IMX6UL_USB1_IRQ     = 42,
+-    FSL_IMX6UL_USB2_IRQ     = 43,
++    FSL_IMX6UL_USB1_IRQ     = 43,
++    FSL_IMX6UL_USB2_IRQ     = 42,
+     FSL_IMX6UL_USB_PHY1_IRQ = 44,
+-    FSL_IMX6UL_USB_PHY2_IRQ = 44,
++    FSL_IMX6UL_USB_PHY2_IRQ = 45,
+ 
+     FSL_IMX6UL_CAAM_JQ2_IRQ = 46,
+     FSL_IMX6UL_CAAM_ERR_IRQ = 47,
+-- 
+2.17.1
 
-The final two patches instantiate the USB controllers for i.mMX6 and
-i.MX6UL.
-
-v3:
-- Minor cleanup in patch 1/5 (see details in patch)
-- Added patch to fix USB and USB PHY interrupt numbers for fsl-imx6ul.
-- Added patch to instantiate unimplemented pwm and CAN devices.
-- Instantiate USB and USB PHY separately. They are logically different,
-  and the number of instances is not always the same.
-
-v2:
-- Implement and instantiate basic USB PHY implementation
-  instead of emulating a single USB PHY register
-
-----------------------------------------------------------------
-Guenter Roeck (5):
-      hw/usb: Add basic i.MX USB Phy support
-      hw/arm/fsl-imx6ul: Fix USB interrupt numbers
-      hw/arm/fsl-imx6ul: Instantiate unimplemented pwm and can devices
-      hw/arm/fsl-imx6ul: Wire up USB controllers
-      hw/arm/fsl-imx6: Wire up USB controllers
-
- MAINTAINERS                  |   2 +
- hw/arm/Kconfig               |   1 +
- hw/arm/fsl-imx6.c            |  36 +++++++
- hw/arm/fsl-imx6ul.c          |  49 ++++++++++
- hw/usb/Kconfig               |   5 +
- hw/usb/Makefile.objs         |   2 +
- hw/usb/imx-usb-phy.c         | 225 +++++++++++++++++++++++++++++++++++++++++++
- include/hw/arm/fsl-imx6.h    |   6 ++
- include/hw/arm/fsl-imx6ul.h  |  16 ++-
- include/hw/usb/imx-usb-phy.h |  53 ++++++++++
- 10 files changed, 392 insertions(+), 3 deletions(-)
- create mode 100644 hw/usb/imx-usb-phy.c
- create mode 100644 include/hw/usb/imx-usb-phy.h

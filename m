@@ -1,97 +1,98 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp631615lfc;
-        Wed, 11 Mar 2020 04:16:52 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vshZHxxfcyiDGCa0UeVdMR72PImYF+OroIFd1NX7f+YDf0VDd0nAPDtP/47NbrdsHIK+WmZ
-X-Received: by 2002:ac8:534b:: with SMTP id d11mr2124960qto.101.1583925412424;
-        Wed, 11 Mar 2020 04:16:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583925412; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2001335lfc;
+        Fri, 13 Mar 2020 04:26:21 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtsdNVUumSKjZXzyRMKEcJ3aT3qRB4O/DKqbemPfXnWmLMDMQgRrssexJMtpcVmi7BmoX6+
+X-Received: by 2002:ac8:1198:: with SMTP id d24mr11906563qtj.105.1584098781147;
+        Fri, 13 Mar 2020 04:26:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584098781; cv=none;
         d=google.com; s=arc-20160816;
-        b=K132HB7mPkMmg5dX2VCpXAqiBLxCPjkhCJLzk2qnaSJkg25Q1nODytBt5GmHbJNTt0
-         cY4cUzDzjHCOhtRvOsIginn4FjkjF9aW1R7S6zVlSpimcthiETfQR71ihN8J193rNxwt
-         PCn/xxYe+FvVTOok2COIq7WgIascvH2P4UYNNHaonw07UdoAOnxrYdpYMle7Ga4IhS82
-         4653FrcYGQp1fO92ZLBwKMlC2DO1n0rcLwC2/68QPJ0icla56AOoUNnexRi0bCLL0CUk
-         BAt45utv+mQb7CoajbIxfZ7bHQ0w/7JlJ+/zOoz6mqUpsEqNqiz7BZG+FcrrRd22s36v
-         76Jw==
+        b=nBi/xK/gid4rb9IEkQFbVKxUY///DG3eIkv4DYTWAt343ncOmpPZUXKMBF9Kg8aKKX
+         cRMvQV/DHOPEONuChpz+PAkr6tylmoe7cV00ghumKNLDUQBegqPHvGXUcsuQ/JIhyCuO
+         tpmwx9rwxaoZJT2xNSg4hqXnrClMqU1wVXNgWtjyuAtOllufuO3hhKG++9zvHNaskcqX
+         X6PSO6jUYx5wVYjPr1JugaT1rNDZ7SlRt+lr+zCvfHjXYTpeEV334+inPgZ1oS3cVSO/
+         bvdu7yFZ0N4ji6wHpXFTdb2BuoY1XOxTB0Vu+ptmID0a5WTtr29sTqaFBxfSDWaP90zW
+         k5mA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=phRumhE1rAWX2v5bZGRmT4c3AaXfOjTFNz+2YKyVy+E=;
-        b=JvOs3TmiHEGAJbx5b55QPY1Nrw3QzT8xdbOZtPna6q9muRselo4mQSO5mqJZg59nGF
-         yH9WX6t65CZc+xzKoM+8pMLg8Rkq8D0hDOnqxy4t4+GL58AnVs35uwXF+jerla7A3i+a
-         V3EuqqyradNxPxItiUKW42VncHbQ9640PKszLk1/zBQBluWvoJ2/wvxTlTNUqsjegePe
-         tJ7fBLepuT5KSwz2szC2iRBxhhxiwqdSczs3C8iLIs71dtdD389VZhFrtDxgvaBCuqqL
-         xxLKIeZKQjU4F1dgKfQe+TdwHvqxMj2MHPt5qujP1YInQGjoaUi/bHdEmQopHB2I5Jb8
-         /lJw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=LEggssMrNWfgVXP5KOHtpbYiHSEuQvKakj/NOBYQm+Y=;
+        b=r6ZCwopxIaMzTDrHKP7Rf1e2Cny7yIifpdiQIocQH9Bbv7K5G6GwGOm0lLzWJalbFG
+         e6kpvxciQrmE8fMDa1tkySv2wC0o9AacqNRgBDZTJJJm/WIjrn3ZWWq2ANcaBKkMUWgC
+         WPXnS+MoG906eqgAd92vQPjD/segUcxmdGle8ic9u5sO0Vco5jllftlll9pPdpi2Ci/s
+         KrOz9inSwYqYb8Q2RWjvrqFtE5lkm2hnGRPRavzOt14Mh6Nn1WlBzoi2s/jjeYW8lYmd
+         GXliGO6yh+Rn6lob1CC1TCFcDypfnZ5JpedGdpo9wLVxIiTJtklOKLo8DUKsk/2b1LLD
+         g73Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZK42+6Iv;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KxdtSifU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e28si869890qtm.259.2020.03.11.04.16.52
+        by mx.google.com with ESMTPS id t12si4772570qke.348.2020.03.13.04.26.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Mar 2020 04:16:52 -0700 (PDT)
+        Fri, 13 Mar 2020 04:26:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZK42+6Iv;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KxdtSifU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49716 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57238 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jBzM3-0001dj-Qi
-	for alex.bennee@linaro.org; Wed, 11 Mar 2020 07:16:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55481)
+	id 1jCiSK-0005xv-J6
+	for alex.bennee@linaro.org; Fri, 13 Mar 2020 07:26:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58132)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1jBzLt-0001dO-Rf
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 07:16:43 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jCiSA-0005xO-5i
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2020 07:26:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1jBzLs-0000EC-Ch
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 07:16:41 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:33154
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1jBzLs-0000Dx-6r
- for qemu-arm@nongnu.org; Wed, 11 Mar 2020 07:16:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583925399;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=phRumhE1rAWX2v5bZGRmT4c3AaXfOjTFNz+2YKyVy+E=;
- b=ZK42+6IvZyRPsuj2VLPeUFyrluTSPKXRbr1nzM8sWwoWY3u3CqNey3uhQ//Mb2TLADU0Ge
- zpFOEuoZrGALpMl7vqEZjdJ3bzUxJS23PW0yeSHlddgOY7dDpPo3qqpnf5CT/hQqfpjLJY
- 30qf4nY+h7twiivE6kz0tbQisT82D7Y=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-260-FhRxC7afNHC6MJciYRNxyA-1; Wed, 11 Mar 2020 07:16:37 -0400
-X-MC-Unique: FhRxC7afNHC6MJciYRNxyA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8A0508018A2;
- Wed, 11 Mar 2020 11:16:36 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.36.118.12])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 39A1492D2A;
- Wed, 11 Mar 2020 11:16:30 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org
-Subject: [PATCH v4 0/6] hw/arm/virt: kvm: allow gicv3 by default if v2 cannot
- work
-Date: Wed, 11 Mar 2020 12:16:20 +0100
-Message-Id: <20200311111626.5705-1-eric.auger@redhat.com>
+ (envelope-from <peter.maydell@linaro.org>) id 1jCiS8-0004D9-U9
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2020 07:26:09 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:45707)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jCiS8-00047s-Pr
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2020 07:26:08 -0400
+Received: by mail-ot1-x344.google.com with SMTP id e9so2465820otr.12
+ for <qemu-arm@nongnu.org>; Fri, 13 Mar 2020 04:26:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=LEggssMrNWfgVXP5KOHtpbYiHSEuQvKakj/NOBYQm+Y=;
+ b=KxdtSifUuM+kpkjK0R4tgQypAEMlmBEh3lj52KdCqneFD6/O57tx6IsFHuaReDxaQA
+ svfQBxzu4MjxY6VEC1PNcT4tjQ2rB9iL3fDAGahviouPqZPzVxzMZy6dT+8k7VP5qf5f
+ /ovzpihLXiopypNIMaomkWnsb6HBsJX7T3dRlmzeugz6Uks8+jrrvK/DQaJ+5l7eY/La
+ 4URMlo3L9hGWaFNuLYmEGMCNrrVLIv2jJJeJS7r7t8yu3EGP3rslB6875+dNmD/1W1qO
+ HexdKf13knrLX+T+4N4hxgwTbgxoGOVPS4gzDw+UEmvzXUrcUOLE5hB56TgVaNrGdVro
+ /FZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=LEggssMrNWfgVXP5KOHtpbYiHSEuQvKakj/NOBYQm+Y=;
+ b=p7rxE6svdiWbbJhZDXb7kZ5ggSwovuXsNsOQF81MrpIeZONHmfR4j/W8qznclj7u3F
+ qR2ZLg8mLit+4YFMoB3cros4Ida5mL4LvPGISGW4fnuLynndhAOz2RmRGUM4k0Tzftrs
+ lMRRhfTa+ydEnN+r7OKhhj/S1+kTIrSrT2IIysD665mVIxWBXT5JWftr21YkEBb95G9Z
+ parFlKD47cksH9++IRjf7yT+ydxtFPxYrsb5FPr5GAsRLgwNlEJG1KBOA5QXS8AjBCHR
+ T++TeFXBWwLf3ns3MDuDE1Nj8qF6TBmRxBfVRUSzs4bbfC56KQJiWQ/ZPNxCRxtqQM+n
+ diMA==
+X-Gm-Message-State: ANhLgQ3In1tM3ic7YjgLXzYpj4TRZUHUw+dsR5QWxfNs89nP+nurGUUM
+ 1OHKjjAVlwbb0MLSqOm6pjL852e/XDEEPXPQsXkN/w==
+X-Received: by 2002:a05:6830:19e2:: with SMTP id
+ t2mr9946162ott.97.1584098767568; 
+ Fri, 13 Mar 2020 04:26:07 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+References: <20200313014551.12554-1-linux@roeck-us.net>
+In-Reply-To: <20200313014551.12554-1-linux@roeck-us.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 13 Mar 2020 11:25:56 +0000
+Message-ID: <CAFEAcA8boUtXByYcgpo-gUnf1SEe2XiVNBbwLvjjijwj1jNxeg@mail.gmail.com>
+Subject: Re: [PATCH v3 0/5] Wire up USB controllers in i.MX6 emulations
+To: Guenter Roeck <linux@roeck-us.net>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::344
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,79 +104,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: maz@kernel.org, drjones@redhat.com, richard.henderson@linaro.org,
- philmd@redhat.com
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SUwaPd996yPV
+X-TUID: /blp1T502Ant
 
-At the moment if the end-user does not specify the gic-version along
-with KVM acceleration, v2 is set by default. However most of the
-systems now have GICv3 and sometimes they do not support GICv2
-compatibility. In that case we now end up with the following error:
-
-"qemu-system-aarch64: Initialization of device kvm-arm-gic failed:
-error creating in-kernel VGIC: No such device
-Perhaps the host CPU does not support GICv2?"
-
-since "1904f9b5f1  hw/intc/arm_gic_kvm: Don't assume kernel can
-provide a GICv2" which already allowed to output an explicit error
-message.
-
-This patch keeps the default v2 selection in all cases except
-in the KVM accelerated mode when v2 cannot work:
-- either because the host does not support v2 in-kernel emulation or
-- because more than 8 vcpus were requested.
-
-Those cases did not work anyway so we do not break any compatibility.
-Now we get v3 selected in such a case.
-
-Best Regards
-
-Eric
-
-This series can be found at:
-https://github.com/eauger/qemu/tree/v4.2.0-gic-version-v4
-
-History:
-
-v3 -> v4:
-- do not probe the host GIC version if kernel-irqchip=3Doff
-- In KVM mode / userspace irqchip we immediatly output an error
-  in case the end-user explicitly selected v3. Also we warn the
-  end-user about the weird usage of host in that case (only
-  userspace GICv2 is supported).
-- Removed R-b on last 2 patches
-
-v2 -> v3:
-- replaced defines by VirtGICType enum type
-- fixed some style issue
-- collected Richard and Dres's R-b
-  except on "hw/arm/virt: Introduce VirtGICType enum type" just
-  to make sure this matches their expectation.
-
-RFC -> v1:
-- 1904f9b5f1  hw/intc/arm_gic_kvm: Don't assume kernel can
-provide a GICv2" now has landed upstream
-- Fix gic-version description
-- Introduce finalize_gic_version and use switch/cases
-- take into account smp value
+On Fri, 13 Mar 2020 at 01:45, Guenter Roeck <linux@roeck-us.net> wrote:
+>
+> This patch series wires up the USB controllers on fsl-imx6 and fsl-imx6ul
+> emulations.
+>
+> The first patch provides a basic implementation of the USB PHY controller
+> used in i.MX28 and later chips. Only reset bit handling in the control
+> register is actually implemented. Basic USB PHY support is needed to make
+> the USB ports operational in Linux.
+>
+> The second patch fixes USB and USB PHY interrupt numbers for i.MX6UL.
+>
+> The third patch instantiates unimplemented pwm and can devices. This patch
+> is necessary to avoid crashes in Linux when it tries to access those
+> devices. The crashes are observed when trying to boot Linux v4.21 or later.
+>
+> The final two patches instantiate the USB controllers for i.mMX6 and
+> i.MX6UL.
+>
+> v3:
+> - Minor cleanup in patch 1/5 (see details in patch)
+> - Added patch to fix USB and USB PHY interrupt numbers for fsl-imx6ul.
+> - Added patch to instantiate unimplemented pwm and CAN devices.
+> - Instantiate USB and USB PHY separately. They are logically different,
+>   and the number of instances is not always the same.
+>
+> v2:
+> - Implement and instantiate basic USB PHY implementation
+>   instead of emulating a single USB PHY register
 
 
-Eric Auger (6):
-  hw/arm/virt: Document 'max' value in gic-version property description
-  hw/arm/virt: Introduce VirtGICType enum type
-  hw/arm/virt: Introduce finalize_gic_version()
-  target/arm/kvm: Let kvm_arm_vgic_probe() return a bitmap
-  hw/arm/virt: kvm: Restructure finalize_gic_version()
-  hw/arm/virt: kvm: allow gicv3 by default if v2 cannot work
 
- include/hw/arm/virt.h |  12 +++-
- target/arm/kvm_arm.h  |   3 +
- hw/arm/virt.c         | 146 +++++++++++++++++++++++++++++++++---------
- target/arm/kvm.c      |  14 ++--
- 4 files changed, 135 insertions(+), 40 deletions(-)
+Applied to target-arm.next, thanks.
 
---=20
-2.20.1
-
+-- PMM

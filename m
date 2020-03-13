@@ -1,79 +1,80 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2500935lfc;
-        Fri, 13 Mar 2020 11:37:01 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtF/2RlxInthVm/a9cpb6Un2eNV1HXoFytBvTx8I01GeZof7WO1Z7fxUS1ovUQbhbWjL3WD
-X-Received: by 2002:a05:6402:17eb:: with SMTP id t11mr14624686edy.79.1584124621803;
-        Fri, 13 Mar 2020 11:37:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584124621; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2500984lfc;
+        Fri, 13 Mar 2020 11:37:04 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vssu24aiNsegUPpeOdiNRwSccJGIHVP9ccTIkCPn9z1RSbyRCLVc9q9R9+TnbTJtIeX8dGd
+X-Received: by 2002:a17:906:cc93:: with SMTP id oq19mr12324306ejb.173.1584124624562;
+        Fri, 13 Mar 2020 11:37:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584124624; cv=none;
         d=google.com; s=arc-20160816;
-        b=WHtu6XtwuntlSj6xY1+VraBr0wMfzrjW+bW+SgFO9kFjEPqp/nASdhMIfDHXKUfv6P
-         6pb9EMl0oR4vRFGHnjQlTr0t8ORNEO2yqr58rDYUd7zze2nsKZWHO5pDFhFf6P/lmJuU
-         sL+VGO8X96goW9qEZUeA8SUuVYMOmNOgk4mDxx4GhYYBW+Dyj9CF9rvGwKm1IoTBq6bU
-         umRm9Zx4VY2OGb3NjXyIe2AWodW88PuWSMHY3bxw8kRoVhgMbxjUEmHx2p9hh+XQ6kuq
-         PK7gekRomj9UgDDQPvS7/+ckQQnoPAUNlsIqE4iZeYs0sx9xKYU/QG3BIp01FdV0uPjx
-         PKvQ==
+        b=eipe7FNv8qh/oytM+EAeWNSbFKDLNFXqrkaYninKBGOdEY1qXldO6IXwJqE5JLAfbH
+         pszfNVr+Dtr213hPuewf5RK968a0eJ7Lo95T9rSSIaToO2Zat8+XoVkKJ/TWrPwE/3WG
+         qTMj4CAOWUOoTjMbx/w5vpy7VzhPOKUGiex9EOlDgpa/wI/xH6yC4gfulNX04El160f3
+         IW04cr6nl93Kx0crlPsOQc/SvHcIw2RYiE7ox2T/x2jAMSayHGVHRqQPjiJ5HE41vt+K
+         tLYwwlSuX4V5JNiIEY67se/aTBjdE9uYitOsCdovRFSfYoLT2GMsNJJWBlwj8XOjmVf3
+         OJqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=LlpMWUrtmzUqdAEMSyBsmvOkuEwO+0Reg5YUJ16z+Cc=;
-        b=XqXMcdBmLeBGSynSy7hhR/INvPirCQ+iuCKb3/Vn7c9NJ8aOruRIaZMEFNowCnc0Ww
-         AkJLq5tpS9TzsEhR/1/QHGrgfsJn/h0SMecUNrwwMBrAU1idDzYAFIpiDbfpcrh7ahNL
-         6ZUsaPk4BI4hzStgHc6QgdEzNeXxLGI2a3oT5qat6nParg5pfBdb5FCaZu7teEQ5fQXb
-         Wrms+c+V86kUZF6ZRoYT4zzjBD/pOvvRlP1j97kJ07jJPAes+m3UYf6wfdsbuV/rWH+n
-         Oi9G6d/Y5w4cAGoRNeo71xAjLL+wRTT9Cv81/4stvCZkIT802U2FjJvfNcCFWIm1osEK
-         D0Qw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=iLgNrlwyJy7v8dAuschP4PozhwWEQ5HJ4QmdriYy9Wk=;
+        b=BkKEzg9fNIvrwML16zX01329agbpDVyybf8Nw/3isNgu4eH8mvwMeFzFNQJQ6ZC7LY
+         VL8No41BAv86YVw2HKi8NTGjPYF7cp63jvehut6HZBYSsEHeZrhY4YudwLHKPE4qjVnW
+         oiV5WMM/BSQ+9dbnMJyib1T6wZmkBhe7jhJnCNVM1+RBD6EVkOv5jh3zPk1WuMptrCJF
+         c6zxCfe0h78gOX/EnfYW4QEtG5dh+quI/0UDXaCDu/t+h72MQREMTJAde/6HznNPKF7n
+         JzkXSyXJP23VlRbLrT8H93B5jaruJnRj2nBEZoGXW/REgjwhOAmlj6y4i7xN3P9wS2ft
+         ZztQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UUbhixuf;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bQMb23M2;
        spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by mx.google.com with ESMTPS id m24si5839086eja.305.2020.03.13.11.37.01
+        by mx.google.com with ESMTPS id a7si6698157edq.561.2020.03.13.11.37.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Mar 2020 11:37:01 -0700 (PDT)
+        Fri, 13 Mar 2020 11:37:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UUbhixuf;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bQMb23M2;
        spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584124620;
+	s=mimecast20190719; t=1584124623;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=LlpMWUrtmzUqdAEMSyBsmvOkuEwO+0Reg5YUJ16z+Cc=;
-	b=UUbhixufxUESgXn2O7fHUgevqCdovQrqFU9pooIXot6NXYHesJxgpBZ6goLQkNMFDeo+BS
-	fnjr9SgFk3P0Hf5vOkppyyyls/18OxAFWoNMd+fjmeqtMz9+EImHKRJtWC6gIoNA825MQE
-	sZzXKEzYphMafzzGM1/YkpaHArj/ejQ=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-321-1GPBfp2jNGOyoIVYD_HVkw-1; Fri, 13 Mar 2020 14:36:57 -0400
-X-MC-Unique: 1GPBfp2jNGOyoIVYD_HVkw-1
-Received: by mail-wm1-f69.google.com with SMTP id a23so3783306wmm.8
-        for <alex.bennee@linaro.org>; Fri, 13 Mar 2020 11:36:56 -0700 (PDT)
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=iLgNrlwyJy7v8dAuschP4PozhwWEQ5HJ4QmdriYy9Wk=;
+	b=bQMb23M207hIcpVi5QiqHVvpE0xEBc7ll30X/Rcq36qj+a1YFIaRoppEIlRxaB8IktYjIl
+	HP8NHthelRkMBeJdQVbE/A0gscKbRsDAnNkz1SRU9d3Z5uMWCJ5JT5Um+VwyYIUmq8TyK/
+	U7W+JzBmrY+vwOaJPoQ5O0n9ohV98nY=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-281-BfwxYHUCNzqgQp3YWEKnQw-1; Fri, 13 Mar 2020 14:37:01 -0400
+X-MC-Unique: BfwxYHUCNzqgQp3YWEKnQw-1
+Received: by mail-wr1-f72.google.com with SMTP id 94so25503wrr.3
+        for <alex.bennee@linaro.org>; Fri, 13 Mar 2020 11:37:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=tT9l7cduJOEnaW27bPqDaHoIXT0dr05sJq/BTyFEpNQ=;
-        b=E3DLZlD4EViDkYxm4JQsw6qNc2aKqPSzczcD8U/aFX+LCWY5G/UFSXTfkmlvrsX2+z
-         +iYvAa8L4FXtvCxBEcMZ9/fWG0alhld8cxmUSsKEF6B7PU7t6cEJ5dJOvxp67UhOC1Nt
-         FvPq1aNaPjqjMrt+kI1EOYjcyDSZaH8lbfuTxmXIB0GjQIztUybYUe1qxvOdu4MtiOgF
-         +Hc2IJDTX6V/CL7u20PfzBtTpXaY+lmKj8bgDJ6GVraiMyAE2496VDVDtkQJH685E/+D
-         H/KxEyy1tD/tBa26hF+tfri3ETx6DP93DtiflT3IzxSfJj5eLs8dxbHbthSFKPFLDuGW
-         34kQ==
-X-Gm-Message-State: ANhLgQ2UkyxTjyNORFx93jJby2hV0eteJ2+FOzQ2vcyvi2mSQbSPdSOx
-	fo0cvgF7c77HxArsZLsyVZQxRSXpek5n9IieDUm/xFOU4bpwPNmhpiWsYzdpWHTBguYvktiMCaZ
-	UVy7jw/CTTeYuekFy
-X-Received: by 2002:adf:e883:: with SMTP id d3mr18744588wrm.75.1584124615512;
-        Fri, 13 Mar 2020 11:36:55 -0700 (PDT)
-X-Received: by 2002:adf:e883:: with SMTP id d3mr18744553wrm.75.1584124615257;
-        Fri, 13 Mar 2020 11:36:55 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=moZeqK0xvieWMnbLXAu30p4QSLVxENxO9B1zIYBPdN0=;
+        b=k7wq5EmS3G3S6Qw1ad3HhgatrpgMwGyCfrLHDWA6x0j/fnkoLtouaw2WSkeWR+gPua
+         1MIqNsrwh0FfHwn+iSqB+Ai9LMP9tYTo/JAO3E9HgasWp8i6Z9hADIQLFfleSwHRnDLY
+         rJETGbbPcKq9A8tXtQ5+ovKs43fnEhjcyy/FbMtCllskvQTQPC6RTUANnaMJEVVMoGzt
+         OD2iriG1lhb58/OhOptd1s7qzFIDgqqpg3Xe/QEYCMhBRztIG07JxpjuK/awgiI55at/
+         TEvIUt3g3KnqmO2ht0gf4eDXIjrMy+g9mThD28T7OqDaUtG7XBMrs78cijoyk9qH+8ZT
+         qpQg==
+X-Gm-Message-State: ANhLgQ1QgdFN3ANujaempGrw59m+Bj8PEWXh1uVqnsufzmAaPLQRsKrO
+	T5fw7W29StsiDsGZMz1YJ92DY6G+La+4hzABIKLdGTLg3X+61vFJbG3GudCFs9HRqdQfD6G8Bfx
+	FvSThW0QJPXPf0cKq
+X-Received: by 2002:adf:9364:: with SMTP id 91mr18691355wro.223.1584124620545;
+        Fri, 13 Mar 2020 11:37:00 -0700 (PDT)
+X-Received: by 2002:adf:9364:: with SMTP id 91mr18691318wro.223.1584124620383;
+        Fri, 13 Mar 2020 11:37:00 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.redhat.com (47.red-88-21-205.staticip.rima-tde.net. [88.21.205.47])
-        by smtp.gmail.com with ESMTPSA id l7sm9367538wrw.33.2020.03.13.11.36.53
+        by smtp.gmail.com with ESMTPSA id g12sm6334174wrm.87.2020.03.13.11.36.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Mar 2020 11:36:54 -0700 (PDT)
+        Fri, 13 Mar 2020 11:36:59 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -95,61 +96,44 @@ Cc: David Hildenbrand <david@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH 00/14] user-mode: Prune build dependencies (part 1)
-Date: Fri, 13 Mar 2020 19:36:38 +0100
-Message-Id: <20200313183652.10258-1-philmd@redhat.com>
+Subject: [PATCH 01/14] Makefile: Only build virtiofsd if system-mode is enabled
+Date: Fri, 13 Mar 2020 19:36:39 +0100
+Message-Id: <20200313183652.10258-2-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200313183652.10258-1-philmd@redhat.com>
+References: <20200313183652.10258-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8;
 	text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: FlynumE7BRFl
+X-TUID: xxjBj2YVdP06
 
-This is the first part of a series reducing user-mode
-dependencies. By stripping out unused code, the build
-and testing time is reduced (as is space used by objects).
+Do not build the virtiofsd helper when configured with
+--disable-system.
 
-Part 1:
-- reduce user-mode object list
-- remove some migration code from user-mode
-- remove cpu_get_crash_info()
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Philippe Mathieu-Daud=C3=A9 (14):
-  Makefile: Only build virtiofsd if system-mode is enabled
-  configure: Avoid building TCG when not needed
-  tests/Makefile: Only display TCG-related tests when TCG is available
-  tests/Makefile: Restrict some softmmu-only tests
-  stubs/Makefile: Reduce the user-mode object list
-  util/Makefile: Reduce the user-mode object list
-  target/riscv/cpu: Restrict CPU migration to system-mode
-  exec: Assert CPU migration is not used on user-only build
-  exec: Drop redundant #ifdeffery
-  arch_init: Remove unused 'qapi-commands-misc.h' include
-  target: Restrict write_elfXX_note() handlers to system-mode
-  target/i386: Restrict CpuClass::get_crash_info() to system-mode
-  target/s390x: Restrict CpuClass::get_crash_info() to system-mode
-  hw/core: Restrict CpuClass::get_crash_info() to system-mode
-
- configure                       |  4 +++
- Makefile                        |  4 +--
- include/hw/core/cpu.h           |  7 +++-
- target/arm/cpu.h                | 10 +++---
- target/i386/cpu.h               | 18 +++++-----
- target/ppc/cpu.h                |  2 --
- target/s390x/internal.h         |  3 +-
- arch_init.c                     |  1 -
- exec.c                          |  8 ++---
- hw/core/cpu.c                   |  2 ++
- target/i386/cpu.c               |  6 +++-
- target/ppc/translate_init.inc.c |  2 --
- target/riscv/cpu.c              |  6 ++--
- target/s390x/cpu.c              | 12 +++----
- stubs/Makefile.objs             | 52 +++++++++++++++++------------
- tests/Makefile.include          | 18 +++++-----
- util/Makefile.objs              | 59 +++++++++++++++++++++------------
- 17 files changed, 125 insertions(+), 89 deletions(-)
-
+diff --git a/Makefile b/Makefile
+index 7df22fcc5d..ed77b6e50b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -346,8 +346,8 @@ vhost-user-json-y +=3D contrib/vhost-user-gpu/50-qemu-g=
+pu.json
+ endif
+=20
+ ifeq ($(CONFIG_LINUX)$(CONFIG_SECCOMP)$(CONFIG_LIBCAP_NG),yyy)
+-HELPERS-y +=3D virtiofsd$(EXESUF)
+-vhost-user-json-y +=3D tools/virtiofsd/50-qemu-virtiofsd.json
++HELPERS-$(CONFIG_SOFTMMU) +=3D virtiofsd$(EXESUF)
++vhost-user-json-$(CONFIG_SOFTMMU) +=3D tools/virtiofsd/50-qemu-virtiofsd.j=
+son
+ endif
+=20
+ # Sphinx does not allow building manuals into the same directory as
 --=20
 2.21.1

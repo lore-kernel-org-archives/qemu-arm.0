@@ -1,92 +1,92 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp898109lfc;
-        Sat, 14 Mar 2020 10:28:50 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvwa/HitmLIhVFd8Q/jU8vfI5el7QnYETasIYxc7BAxoXk5Cq8eIehl0cFrtaxsjrYxihpi
-X-Received: by 2002:aed:20f1:: with SMTP id 104mr17738244qtb.121.1584206930203;
-        Sat, 14 Mar 2020 10:28:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584206930; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp898233lfc;
+        Sat, 14 Mar 2020 10:29:01 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuzXOotcplMWD5MLz3ftNdq1HYVUw3DG4twJ6K0WJVvb/aD96UKFQ3AtDCJJw6cvfkK6dN5
+X-Received: by 2002:ac8:5395:: with SMTP id x21mr10651706qtp.321.1584206941565;
+        Sat, 14 Mar 2020 10:29:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584206941; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qs+jE4DeBmDfIYXTSNYoRwuKBT5dlIccxLuK3NXgTQTNHy+/im0/PzfLB1sY7wByPN
-         jKSxkyf7PvAESIHP3MS58uS8G+VKvBZF4X93i6kSWKpY/0LAxM9r5qdi4svs2cshILUN
-         xHflfkaqp7Dh5Nt2KsGjlToTHrDmEcWV7eXX/0M78Pf8sV7hkEDf9YVCI5agdA9AGQ29
-         ++W1oK/JRNMLpp/UeSb+8bixmgPlJBQQtPYp2sVck5l8zztd2Yq+DQD7SH7JrnzqLnZ8
-         lp6jF8ATCyVyYbV/Q9I6jQbq4I7t5K1CaCx15TIj5fI3hH+aHMVD5Rw8zBcZZoTHizN5
-         jzQg==
+        b=eak1JceZAh/suEEzrwU4ibjh/puEVyRudzQ0S8jAIjQghudMKztvOu5ZzB8vXvxLTr
+         UtopmstlDgNkDGpfQD92V6Cl9fekr6pEjg0HBf0kQxjp2w5r3HJi4BUInEEZoov6qvMD
+         wxoQJVszhsNJui0NFjC7q4yfRN7BjRefIF5gm6+TePZ4UW6Xyi9WCJA+SoNSzNtH8w6C
+         fpxz4ZOQibYLZgw7n5dyk4tRnfiMhrVPaYgusv2u26p/e/GXZHLxAGwbZIokOqTGxhjo
+         sOe3U2bPcx53FJ4c9aIFHsl/5LlYJ6pIx0bytj4iXNt8t3NxEqhVeTUHBQlnampP1pQr
+         ZZZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=c8+NrFQrAejVqIlPEDdLPF0zMrwlZfTWj58V1G1hCUA=;
-        b=ZHJcNExy+9M0u0ad7bz1pHu8SKx4PhXw1Y5bR/RJSrF72uy+OM4kUHSBrlSRpUrfAn
-         S1x8rbx4dS5AmLNQ4/U9zwzkwfz7hWeiBhTUBMFF0bKmcGjfGIsQCM2RR8p68VTcmvZj
-         goMAueOf+S9Skf+llCL3MWuIStKRPliKI5PzB1GHNkhGWDaIMz0pplFg6a3D9M/DzR/F
-         ZwHZtGgkene7MuTxNJBKEVx0vXMymtkq+YneiyDSSxDBPASYCDkCj9trwb66xG5nO7LO
-         RUcnJlELWb9IYrcjWCeUSgNv+Tha4TSs9ZTzzRPNbj7YqAdHXjEpjDnSw25jhqslb7E7
-         EU4A==
+        bh=HN3zdF18nSNliLofSN6voNm+WsQM7L0BuBkedKHtwLw=;
+        b=XT2ZwmctkJEPGUfe+WGNkCuz6OwMdX8m2NQjBtDsq1kjCiBKX0byJumPLMejDt91x2
+         yHcqCYeT6sJoTZMfZqACptg0i8/rjw+8PEmqBSKZKzOIwn8zW8V4ZvDYZ7FVCTwteG6j
+         7kMITb+WbGfUOG+o7fOKG5tOss7ynVQzDMn7EMiP4PljXyB0fz2+yO2OoSoVWKVOumwA
+         XH/VzdY24sDt8YQFiL2b7IieBEJe0nKTITaNUHQ28iLaWuaa/Q21sdiqHEedjzFDIi7i
+         29Rq3urWI4bOJZGLKgOmsHLVCVoJJFMAofIxWpMJxip9Seb3aGiUH+IQ9PuRonKyPeFN
+         FYEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dbGR7lsQ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IG6rV90o;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t2si7827243qke.304.2020.03.14.10.28.50
+        by mx.google.com with ESMTPS id b135si7689763qkc.272.2020.03.14.10.29.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 14 Mar 2020 10:28:50 -0700 (PDT)
+        Sat, 14 Mar 2020 10:29:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dbGR7lsQ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IG6rV90o;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46736 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46740 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jDAaf-000143-JJ
-	for alex.bennee@linaro.org; Sat, 14 Mar 2020 13:28:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42919)
+	id 1jDAaq-0001So-Vj
+	for alex.bennee@linaro.org; Sat, 14 Mar 2020 13:29:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42978)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1jDAZb-0007ph-3F
- for qemu-devel@nongnu.org; Sat, 14 Mar 2020 13:27:44 -0400
+ (envelope-from <groeck7@gmail.com>) id 1jDAZd-0007qu-Hc
+ for qemu-devel@nongnu.org; Sat, 14 Mar 2020 13:27:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1jDAZZ-0005HN-QS
- for qemu-devel@nongnu.org; Sat, 14 Mar 2020 13:27:43 -0400
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:34855)
+ (envelope-from <groeck7@gmail.com>) id 1jDAZc-0005WS-GX
+ for qemu-devel@nongnu.org; Sat, 14 Mar 2020 13:27:45 -0400
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:54683)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1jDAZZ-0005Ck-L2; Sat, 14 Mar 2020 13:27:41 -0400
-Received: by mail-pj1-x1041.google.com with SMTP id mq3so6013306pjb.0;
- Sat, 14 Mar 2020 10:27:41 -0700 (PDT)
+ id 1jDAZc-0005UR-B4; Sat, 14 Mar 2020 13:27:44 -0400
+Received: by mail-pj1-x1041.google.com with SMTP id np16so5743931pjb.4;
+ Sat, 14 Mar 2020 10:27:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=c8+NrFQrAejVqIlPEDdLPF0zMrwlZfTWj58V1G1hCUA=;
- b=dbGR7lsQPCDshwtJzx3Drr6UAo6Y2pGWsFHRrTfhNI66LFd27ReqQXyEobLrLjWUm+
- awxge4BdHKq5ABtwOqJy/BBSM6Q+Z4Bl/5kZiw1mKWhkMdVdqy6mGfKD4TuLA+bcTlFl
- 3okIeaC2QO8w3friQaZYtVyFRZ3flegwzLf/Ys7jfa2+PBZYBTMn7OPL+Uwbp0TDI7dD
- HvvNth4GzwT+3qeRw87ZFoF/G8e9xC9+whumuwRxNz0dyLunnzWGojYX6SVWCx2sHgT8
- 7U9ZvDRpZRYRMvoM7qM5OFUVOjF/2yv3ldPk4Z2QMZ+jJ/AucctIpV+APX4hPrwFBORX
- jUFw==
+ bh=HN3zdF18nSNliLofSN6voNm+WsQM7L0BuBkedKHtwLw=;
+ b=IG6rV90oUXWJdqJ0XEbdo7jHS9d6bVQL1fzUYLrebniIy0GJzLjoC70OJnXJxDxd6n
+ rqtfWD39u2Fa8Vk97Wri4iv8kOZJtmRefzsyDr8Ga6zvh7z/1DnZSkkuJLC67IE/afOe
+ agR/N0AT8TN5wUl6/wvdDX524zK4uxJ5oh4gHByOw5msFFQB/GFELg0uxBC9XRkvNGpK
+ uCGlodNBGK1gGqEd38R/nS1OKdWeJIbQl3kFTge3EonSzbn3uMzESwtKqTE7YQBHobYE
+ aqOv9rUt7Szhr6av3PRS76aAVhktUOgLayDxdaLVEtxtSTFq8+p1x0+pYWsoz2yHMp2Z
+ p2Og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references;
- bh=c8+NrFQrAejVqIlPEDdLPF0zMrwlZfTWj58V1G1hCUA=;
- b=XC/sLKbilfvZcGB+jQrW2Nrd778hHJ0oqpgEvUlpGJ0uZv11qbxFTfZjc/rXS52tdC
- ERkJMA6ai/VTERVb9MS3DMUci/noK+ef5Tcr+0i8ku5q58SLHNz4vU0/L5JFr2hPUXuB
- f8gDa9QeUMblUfa4vS8JXFUQupE4o8QkFxCkPCu2gU4G2odXZTL93Ax/R1I/g6ySTFE7
- /bvtvAvSdIHXBJP8tZCYKlIQqNm+SpCZ57LdLIowlAjVaS0X2+NYEH6AKhuZTWxgXhKb
- jsFhHPcr29E5zas5RrLln9bGy0t6T8r1JR2u3UKLO0p0Qe5/YChQKVN2mA+Qp8/8F0CE
- 8yyw==
-X-Gm-Message-State: ANhLgQ1JgVIG8mjFGmzYlXQi8NqV36FOACv40iV00uLfVNpEr1DYckXx
- 8FgJUmqCWfuU97bI3HGffCo=
-X-Received: by 2002:a17:90a:21ac:: with SMTP id
- q41mr16370472pjc.41.1584206860560; 
- Sat, 14 Mar 2020 10:27:40 -0700 (PDT)
+ bh=HN3zdF18nSNliLofSN6voNm+WsQM7L0BuBkedKHtwLw=;
+ b=GjUWnLj397ouS21JwOUCi8gOpycHPnzpU4MrQ8deOeoTLCPQYf8i3E9rgW2G9mSSGQ
+ dWNFZ0czKR7nEAkIedgzGgxFbmrw0Q55osjmTU1hvcGUy6jZLXjnKcpFhViAiV5Udnc0
+ yGgoZcaAbiKbw+DwfvHfd0DSBpRjdlHZKcDVcL8XcHNQ6GpPNN39/ON+bl9lGD771kVR
+ /DqAL9K9S8//QssD5vgrvQmExYTTKXlol2ltfU4MefhlsdB7h7K+ilMxzYxm0ZtZy++x
+ bGoPQmXB+drrl2YLisDg3EIftQQ4ZzNhPyZ33AZFpxMkt2CFzDSU4YDpb3L77Kb3E0a/
+ k6iw==
+X-Gm-Message-State: ANhLgQ0xo5OyluMw6qIkXM3crkPxqUlNY800TcceucBiaPkoB82SEPUr
+ iaRdSd8yjYHlOu+w08ogQLE=
+X-Received: by 2002:a17:902:864c:: with SMTP id
+ y12mr18700120plt.8.1584206863308; 
+ Sat, 14 Mar 2020 10:27:43 -0700 (PDT)
 Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id 31sm5067556pgt.2.2020.03.14.10.27.39
+ by smtp.gmail.com with ESMTPSA id z15sm27100787pfg.152.2020.03.14.10.27.42
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sat, 14 Mar 2020 10:27:40 -0700 (PDT)
+ Sat, 14 Mar 2020 10:27:42 -0700 (PDT)
 From: Guenter Roeck <linux@roeck-us.net>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 1/8] hw: Move i.MX watchdog driver to hw/watchdog
-Date: Sat, 14 Mar 2020 10:27:29 -0700
-Message-Id: <20200314172736.24528-2-linux@roeck-us.net>
+Subject: [PATCH 3/8] hw/arm/fsl-imx25: Wire up watchdog
+Date: Sat, 14 Mar 2020 10:27:31 -0700
+Message-Id: <20200314172736.24528-4-linux@roeck-us.net>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200314172736.24528-1-linux@roeck-us.net>
 References: <20200314172736.24528-1-linux@roeck-us.net>
@@ -109,135 +109,81 @@ Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-devel@nongnu.org,
  Peter Chubb <peter.chubb@nicta.com.au>, Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QMunk9Fjr7O2
+X-TUID: OQL5WLF4Nziy
 
-In preparation for a full implementation, move i.MX watchdog driver
-from hw/misc to hw/watchdog. While at it, add the watchdog files
-to MAINTAINERS.
+With this commit, the watchdog on imx25-pdk is fully operational,
+including pretimeout support.
 
 Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 ---
- MAINTAINERS                                         | 2 ++
- hw/misc/Makefile.objs                               | 1 -
- hw/watchdog/Kconfig                                 | 5 +++++
- hw/watchdog/Makefile.objs                           | 1 +
- hw/{misc/imx2_wdt.c => watchdog/wdt_imx2.c}         | 2 +-
- include/hw/arm/fsl-imx6.h                           | 2 +-
- include/hw/arm/fsl-imx6ul.h                         | 2 +-
- include/hw/arm/fsl-imx7.h                           | 2 +-
- include/hw/{misc/imx2_wdt.h => watchdog/wdt_imx2.h} | 0
- 9 files changed, 12 insertions(+), 5 deletions(-)
- rename hw/{misc/imx2_wdt.c => watchdog/wdt_imx2.c} (98%)
- rename include/hw/{misc/imx2_wdt.h => watchdog/wdt_imx2.h} (100%)
+ hw/arm/fsl-imx25.c         | 10 ++++++++++
+ include/hw/arm/fsl-imx25.h |  5 +++++
+ 2 files changed, 15 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 32867bc636..d1197014e8 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -603,8 +603,10 @@ S: Odd Fixes
- F: hw/arm/fsl-imx25.c
- F: hw/arm/imx25_pdk.c
- F: hw/misc/imx25_ccm.c
-+F: hw/watchdog/wdt_imx2.c
- F: include/hw/arm/fsl-imx25.h
- F: include/hw/misc/imx25_ccm.h
-+F: include/hw/watchdog/wdt_imx2.h
+diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
+index a3f829f436..7d5aab562d 100644
+--- a/hw/arm/fsl-imx25.c
++++ b/hw/arm/fsl-imx25.c
+@@ -87,6 +87,7 @@ static void fsl_imx25_init(Object *obj)
+                               TYPE_CHIPIDEA);
+     }
  
- i.MX31 (kzm)
- M: Peter Chubb <peter.chubb@nicta.com.au>
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index 68aae2eabb..b25181b711 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -44,7 +44,6 @@ common-obj-$(CONFIG_IMX) += imx6_ccm.o
- common-obj-$(CONFIG_IMX) += imx6ul_ccm.o
- obj-$(CONFIG_IMX) += imx6_src.o
- common-obj-$(CONFIG_IMX) += imx7_ccm.o
--common-obj-$(CONFIG_IMX) += imx2_wdt.o
- common-obj-$(CONFIG_IMX) += imx7_snvs.o
- common-obj-$(CONFIG_IMX) += imx7_gpr.o
- common-obj-$(CONFIG_IMX) += imx_rngc.o
-diff --git a/hw/watchdog/Kconfig b/hw/watchdog/Kconfig
-index 2118d897c9..2c225b4b17 100644
---- a/hw/watchdog/Kconfig
-+++ b/hw/watchdog/Kconfig
-@@ -14,3 +14,8 @@ config WDT_IB700
++    sysbus_init_child_obj(obj, "wdt", &s->wdt, sizeof(s->wdt), TYPE_IMX2_WDT);
+ }
  
- config WDT_DIAG288
-     bool
+ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+@@ -302,6 +303,15 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+                                             usb_table[i].irq));
+     }
+ 
++    /* Watchdog */
++    object_property_set_bool(OBJECT(&s->wdt), true, "pretimeout-support",
++                             &error_abort);
++    object_property_set_bool(OBJECT(&s->wdt), true, "realized", &error_abort);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt), 0, FSL_IMX25_WDT_ADDR);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->wdt), 0,
++                                      qdev_get_gpio_in(DEVICE(&s->avic),
++                                                       FSL_IMX25_WDT_IRQ));
 +
-+config WDT_IMX2
-+    bool
-+    default y
-+    depends on IMX
-diff --git a/hw/watchdog/Makefile.objs b/hw/watchdog/Makefile.objs
-index 3f536d1cad..dd9b37f642 100644
---- a/hw/watchdog/Makefile.objs
-+++ b/hw/watchdog/Makefile.objs
-@@ -4,3 +4,4 @@ common-obj-$(CONFIG_WDT_IB6300ESB) += wdt_i6300esb.o
- common-obj-$(CONFIG_WDT_IB700) += wdt_ib700.o
- common-obj-$(CONFIG_WDT_DIAG288) += wdt_diag288.o
- common-obj-$(CONFIG_ASPEED_SOC) += wdt_aspeed.o
-+common-obj-$(CONFIG_WDT_IMX) += wdt_imx2.o
-diff --git a/hw/misc/imx2_wdt.c b/hw/watchdog/wdt_imx2.c
-similarity index 98%
-rename from hw/misc/imx2_wdt.c
-rename to hw/watchdog/wdt_imx2.c
-index 2aedfe803a..ad1ef02e9e 100644
---- a/hw/misc/imx2_wdt.c
-+++ b/hw/watchdog/wdt_imx2.c
-@@ -14,7 +14,7 @@
- #include "qemu/module.h"
- #include "sysemu/watchdog.h"
- 
--#include "hw/misc/imx2_wdt.h"
-+#include "hw/watchdog/wdt_imx2.h"
- 
- #define IMX2_WDT_WCR_WDA    BIT(5)      /* -> External Reset WDOG_B */
- #define IMX2_WDT_WCR_SRS    BIT(4)      /* -> Software Reset Signal */
-diff --git a/include/hw/arm/fsl-imx6.h b/include/hw/arm/fsl-imx6.h
-index 60eadccb42..5b02dc1f4b 100644
---- a/include/hw/arm/fsl-imx6.h
-+++ b/include/hw/arm/fsl-imx6.h
-@@ -21,7 +21,7 @@
- #include "hw/cpu/a9mpcore.h"
- #include "hw/misc/imx6_ccm.h"
- #include "hw/misc/imx6_src.h"
--#include "hw/misc/imx2_wdt.h"
-+#include "hw/watchdog/wdt_imx2.h"
- #include "hw/char/imx_serial.h"
- #include "hw/timer/imx_gpt.h"
- #include "hw/timer/imx_epit.h"
-diff --git a/include/hw/arm/fsl-imx6ul.h b/include/hw/arm/fsl-imx6ul.h
-index eda389aec7..91c746918a 100644
---- a/include/hw/arm/fsl-imx6ul.h
-+++ b/include/hw/arm/fsl-imx6ul.h
-@@ -24,7 +24,7 @@
- #include "hw/misc/imx7_snvs.h"
- #include "hw/misc/imx7_gpr.h"
- #include "hw/intc/imx_gpcv2.h"
--#include "hw/misc/imx2_wdt.h"
-+#include "hw/watchdog/wdt_imx2.h"
+     /* initialize 2 x 16 KB ROM */
+     memory_region_init_rom(&s->rom[0], NULL,
+                            "imx25.rom0", FSL_IMX25_ROM0_SIZE, &err);
+diff --git a/include/hw/arm/fsl-imx25.h b/include/hw/arm/fsl-imx25.h
+index 5e196bbf05..9e228dacea 100644
+--- a/include/hw/arm/fsl-imx25.h
++++ b/include/hw/arm/fsl-imx25.h
+@@ -29,6 +29,7 @@
  #include "hw/gpio/imx_gpio.h"
- #include "hw/char/imx_serial.h"
- #include "hw/timer/imx_gpt.h"
-diff --git a/include/hw/arm/fsl-imx7.h b/include/hw/arm/fsl-imx7.h
-index 706aef2e7e..3a0041c4c2 100644
---- a/include/hw/arm/fsl-imx7.h
-+++ b/include/hw/arm/fsl-imx7.h
-@@ -26,7 +26,7 @@
- #include "hw/misc/imx7_snvs.h"
- #include "hw/misc/imx7_gpr.h"
- #include "hw/misc/imx6_src.h"
--#include "hw/misc/imx2_wdt.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/usb/chipidea.h"
 +#include "hw/watchdog/wdt_imx2.h"
- #include "hw/gpio/imx_gpio.h"
- #include "hw/char/imx_serial.h"
- #include "hw/timer/imx_gpt.h"
-diff --git a/include/hw/misc/imx2_wdt.h b/include/hw/watchdog/wdt_imx2.h
-similarity index 100%
-rename from include/hw/misc/imx2_wdt.h
-rename to include/hw/watchdog/wdt_imx2.h
+ #include "exec/memory.h"
+ #include "target/arm/cpu.h"
+ 
+@@ -60,6 +61,7 @@ typedef struct FslIMX25State {
+     IMXGPIOState   gpio[FSL_IMX25_NUM_GPIOS];
+     SDHCIState     esdhc[FSL_IMX25_NUM_ESDHCS];
+     ChipideaState  usb[FSL_IMX25_NUM_USBS];
++    IMX2WdtState   wdt;
+     MemoryRegion   rom[2];
+     MemoryRegion   iram;
+     MemoryRegion   iram_alias;
+@@ -229,6 +231,8 @@ typedef struct FslIMX25State {
+ #define FSL_IMX25_GPIO1_SIZE    0x4000
+ #define FSL_IMX25_GPIO2_ADDR    0x53FD0000
+ #define FSL_IMX25_GPIO2_SIZE    0x4000
++#define FSL_IMX25_WDT_ADDR      0x53FDC000
++#define FSL_IMX25_WDT_SIZE      0x4000
+ #define FSL_IMX25_USB1_ADDR     0x53FF4000
+ #define FSL_IMX25_USB1_SIZE     0x0200
+ #define FSL_IMX25_USB2_ADDR     0x53FF4400
+@@ -268,5 +272,6 @@ typedef struct FslIMX25State {
+ #define FSL_IMX25_ESDHC2_IRQ    8
+ #define FSL_IMX25_USB1_IRQ      37
+ #define FSL_IMX25_USB2_IRQ      35
++#define FSL_IMX25_WDT_IRQ       55
+ 
+ #endif /* FSL_IMX25_H */
 -- 
 2.17.1
 

@@ -1,153 +1,183 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2210347lfc;
-        Sun, 15 Mar 2020 15:16:46 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt4ulV89aj80VzywcBQl8cC51Laum6PePnkjKhhi+H7fHc+gw296XumIq+1ZiLkQM0O7bX6
-X-Received: by 2002:a05:6402:176a:: with SMTP id da10mr23784205edb.195.1584310605923;
-        Sun, 15 Mar 2020 15:16:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584310605; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2213011lfc;
+        Sun, 15 Mar 2020 15:20:48 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuhk/SD5xOiaQ8SGknFoZeqVVEn+fF+K7lXHfwvtafYVmscq/snL77f82rPhckprlmSSFhI
+X-Received: by 2002:a17:906:cc2:: with SMTP id l2mr8326584ejh.115.1584310848165;
+        Sun, 15 Mar 2020 15:20:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584310848; cv=none;
         d=google.com; s=arc-20160816;
-        b=KHDtmmoH+BYUDFCzWPR2Qe1u2/kauPsJhYpGWXxNvV3npN03gjnsF37AfmyPT5WVC4
-         hrlqT3Vua1Km0MxwNfppfk2PU/yle9JRCM29pmhH2EPb25hfgu7rUTImPisCE3uTD/52
-         UXOsA9Jht9l2uUSHUx9RZdtVEykOb5QFUSYlwjQcy3YefDPziKcMlFwNHv9TIZkBZ4W/
-         Ud3rJROXriqt6SqrzYm/irqedT9T0DBBeL1O+knj7PksxIhmYOL7/pqZakVPtcE9mWKv
-         0KPSfLbX1AdO75mJw8V6AW5IrSygHlLC3n3n4okfVxki9C58yZaHQmbLixa313wi0Ldj
-         1ifw==
+        b=XiXVtVc/8ZfLqehv4EKiC39yZby6pSBtEyj/wvfqFI4pDjcGv/6GXLnFl/c0qo0KGP
+         6VgfAIsNf3/47g3a8NGSO8KzOEqLZ0kpToVW8k8WdfYDw9YJIAaiRHhTOBggmZTeQwJy
+         vytS1O6B/EdSw6cILZDEBL7a2dgohPi6ECIuyK5ImZ946XYxajXjWWqphcIPLSkBPU1R
+         sUBnceueemxunJqIKJXn365foWUG27W14sYnsIP8WIwLZBZsctUDdZRjRoX0cm81b5f1
+         KzSbamnuhCgFrLjREEwwOR6cCx7iBiK1ZZPKKU9UUTbgPDKF8a/YQJg89/mlhEyyVDAr
+         0j/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=JVq0jzVMd22wrFGV6AGs0YUGbFRod6Ol4uSuY4S5wO0=;
-        b=MUnq/SGiCe7uFPVFTKYs//EmBRBEJgKTT4YkQZFgCz2ls2NjJ8j2umHXgYgfpiHL7r
-         59HS4tqkJUV8uRmn7rF6vO8doMARvo5wvrtqqcHGQ+jrFA57b3AQcLhDakqDOAc/Q7F0
-         iHItbdocz2lGjUnNR7SFLk51OOJZq5VHY7i9+I4/ml5xWWNa0Ea1WI9WczK7AGUS2jLf
-         46qFNvzbjxtsZdgV5RIuTlCzT6PcghYFb94BsOvcGINr3mA8vN7JklpGYSNFE8mKmTOX
-         7kQKCwPFnI/EcKahWEu6RFEhpfXTTsNyDcKvK5j77EO3UL0PptrLNGNF2k458ITOnoQW
-         aPbQ==
+        bh=Y2D7bkdwvbndMrUyNh6sDviBz4171BxInLQo0HF5lyY=;
+        b=t/cilddUzkKZSkAO0lqGFVikQBSLIbOV6lROKwMuPGau/CzX/dyt61Kqxgdl7rvh9Q
+         pyEZAv5vNAM7T7r4BLyKBhgZCI+42HdxmPviRWb4p7+HOj6unuKja49KafB7/gWmT5w0
+         uuAn6Azo3UBbGZFRKLA3mPwZAIOjkVuF5mTLg+8I2o3uSbDaeD1WPwilnDpcTRCclXl6
+         tr4N67CVrCUnX7w+C6Vi6T2cvYSt9v6kl+LzhwfM8+gH+1f11m0UoZWSE2tavfFC1h93
+         WTP5GJjwxD5ZcxCUvJEI9uV2CZUSB+Dmcp9wFzI6ieecJ8UystAYVh0cB6PMrQgwNWPw
+         v+Pg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=T7GAaOpa;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hP5LgxDD;
        spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by mx.google.com with ESMTPS id p6si9584159ejx.44.2020.03.15.15.16.45
+        by mx.google.com with ESMTPS id s20si10403373edq.588.2020.03.15.15.20.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 15 Mar 2020 15:16:45 -0700 (PDT)
+        Sun, 15 Mar 2020 15:20:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=T7GAaOpa;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hP5LgxDD;
        spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584310604;
+	s=mimecast20190719; t=1584310846;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=JVq0jzVMd22wrFGV6AGs0YUGbFRod6Ol4uSuY4S5wO0=;
-	b=T7GAaOpaxLaLx2IPzp8aW37rhQ3rC0zC6M6IbH+gCVzQzbHFxvHCKuAXakK9CXMXYGdGgd
-	vp4Ht1vUzjkYi8QwCNcwPSSkti5H0qd73yOs7/yEXg0tKydr12Mj19NKV3Pf4AdpjMC3KD
-	hag44n8VIqE+i8hMkgiTLGQh1QA1OaM=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-203-Z1qqthw9PyiMd5qJVTYUQg-1; Sun, 15 Mar 2020 18:16:43 -0400
-X-MC-Unique: Z1qqthw9PyiMd5qJVTYUQg-1
-Received: by mail-wr1-f72.google.com with SMTP id c6so213617wro.7
-        for <alex.bennee@linaro.org>; Sun, 15 Mar 2020 15:16:42 -0700 (PDT)
+	bh=Y2D7bkdwvbndMrUyNh6sDviBz4171BxInLQo0HF5lyY=;
+	b=hP5LgxDDtKidkMd0wxZbcDsg+nF+IRCq5TeuUxiMNC/YlycBLP5tVNUacaupkiR3/dkNkg
+	qfeySuK45E3Ajx7vV1ptf/9hWfS2B8h95ZkEGNPIchGL2kPDssX3OItO4evjWx3zda3yLD
+	tQ5agTWT3HOr93Z2LsUTvcMyIzfX9Zg=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-269-1VTT6d1VO7K3lbXcu_4Orw-1; Sun, 15 Mar 2020 18:20:45 -0400
+X-MC-Unique: 1VTT6d1VO7K3lbXcu_4Orw-1
+Received: by mail-wr1-f69.google.com with SMTP id v6so7950289wrg.22
+        for <alex.bennee@linaro.org>; Sun, 15 Mar 2020 15:20:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=iRHW7+jG/l3gvTxinmkE5xtvg/1Q8eGX49Sjbci+aqU=;
-        b=k05rQvBCvNLiQBha202IaooET5m4SrU4IQxbcRzveDpKOqRMilQb4bpjJWJdBIy5vZ
-         m94fZgysy+hBHImkekvdCI//x8LsUqs+569xTRjEIzdXZxx2n/M98xIcDlmLfx13XnOG
-         KVJ1pTY7zbod+8GFly75T7M7U4H80MSzdN1bbmyrEtKTMGatnS/j9IhtmNv/top+2wmu
-         zxjateI17lmH87jGV4OYY/VZ0HrxRmsDQGP3ebNsmuImUcD8C6xNZSB+0N7Oo7T409Qj
-         xWYQ3fgDQqDEUSNqfM6SkOowTTJUDHFG4vgjw0qigNyFj161xV3VqDYJPr0TOGKZjuAJ
-         HXoQ==
-X-Gm-Message-State: ANhLgQ1vmAfRJ31yPqnzHM4sVXLWwbSOlXp255J6eG8NzeHkGP2aNgyJ
-	pABsT0HVEbhpJm5ZZf5nmr5WoRZPrSFBx5aUes33GGWFCIeH+BSsd4sGqrWzmTwFAcjzmXrRvhe
-	pDLTPiXENkJmfc3SS
-X-Received: by 2002:a7b:cd83:: with SMTP id y3mr23419063wmj.176.1584310601938;
-        Sun, 15 Mar 2020 15:16:41 -0700 (PDT)
-X-Received: by 2002:a7b:cd83:: with SMTP id y3mr23419039wmj.176.1584310601749;
-        Sun, 15 Mar 2020 15:16:41 -0700 (PDT)
+        bh=jli2nez5UekOBc427wJHMKwGcjgVsf+7alJp/mq+nCI=;
+        b=Y5rR5lqZLPsNtiwwnovlprLQz1iLvkdmwk0AY8tjQROpO2j20At6n2ZCGw11UKCri9
+         wANkCK1wblUeF+WMwDjE1mcx1QcyeoexUv3/PAfWmInNcZbPnzOGapZRV4mzIoY9ymBf
+         WudQ5nlDdbQv/VP2Z1iXKru2c1R74Mhfnk77VQlQ9PI5FLaoTosVVKUcLrnsbAPIxWT2
+         3gHgJlqnc36FNVl4V/gA4P4JywASSNAc9bIMqnwGm9QdA9Lafq2E5ejk710hVVyF4XBd
+         dokA+Ra3VqMpcN4S0NxHduwZve0M0C1aD+JyewyWndmi762gVQd1jRpC08jBpgTVXrYH
+         WnSg==
+X-Gm-Message-State: ANhLgQ0bRgKkdjHFnEs9a3sD9cNcl5/313UmoPk4NM263rNYc9tm0IiB
+	2lfA37pQKe06fcVzwFFgQlnu/y8fGnqBbGU+cl4HbvYg2PIJeQTEC7xVthtkMlJHpeyTGfxC17s
+	DIIgf8o6emQgS80wd
+X-Received: by 2002:a05:6000:10c6:: with SMTP id b6mr8106420wrx.130.1584310844166;
+        Sun, 15 Mar 2020 15:20:44 -0700 (PDT)
+X-Received: by 2002:a05:6000:10c6:: with SMTP id b6mr8106393wrx.130.1584310843984;
+        Sun, 15 Mar 2020 15:20:43 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from [192.168.1.40] (191.red-83-42-66.dynamicip.rima-tde.net. [83.42.66.191])
-        by smtp.gmail.com with ESMTPSA id d15sm89324337wrp.37.2020.03.15.15.16.38
+        by smtp.gmail.com with ESMTPSA id c2sm27522294wma.39.2020.03.15.15.20.41
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 15 Mar 2020 15:16:40 -0700 (PDT)
-Subject: Re: [PATCH 01/14] Makefile: Only build virtiofsd if system-mode is
- enabled
-To: Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
+        Sun, 15 Mar 2020 15:20:43 -0700 (PDT)
+Subject: Re: [PATCH 09/14] exec: Drop redundant #ifdeffery
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
  Eduardo Habkost <ehabkost@redhat.com>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
  David Hildenbrand <david@redhat.com>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Paolo Bonzini
- <pbonzini@redhat.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
  David Gibson <david@gibson.dropbear.id.au>,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  Palmer Dabbelt <palmer@dabbelt.com>, Richard Henderson <rth@twiddle.net>
 References: <20200313183652.10258-1-philmd@redhat.com>
- <20200313183652.10258-2-philmd@redhat.com>
- <8f73d608-d28e-b896-b1f0-f95d599502f0@vivier.eu>
- <d9b29b2b-58ff-512c-c426-0ffe7bcad295@linaro.org>
+ <20200313183652.10258-10-philmd@redhat.com>
+ <fdbcdfba-9467-2270-7309-abe8e509edc2@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <29d183c5-6dc5-39a0-e8be-fa2e7f37d331@redhat.com>
-Date: Sun, 15 Mar 2020 23:16:38 +0100
+Message-ID: <ee7ce742-7750-eee7-67a4-804f65f114a1@redhat.com>
+Date: Sun, 15 Mar 2020 23:20:40 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <d9b29b2b-58ff-512c-c426-0ffe7bcad295@linaro.org>
+In-Reply-To: <fdbcdfba-9467-2270-7309-abe8e509edc2@linaro.org>
 Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-TUID: TyPIS4+Q39R3
+X-TUID: w6xPPTFopqY2
 
-On 3/15/20 8:40 PM, Richard Henderson wrote:
-> On 3/13/20 3:28 PM, Laurent Vivier wrote:
->>>   ifeq ($(CONFIG_LINUX)$(CONFIG_SECCOMP)$(CONFIG_LIBCAP_NG),yyy)
->>> -HELPERS-y +=3D virtiofsd$(EXESUF)
->>> -vhost-user-json-y +=3D tools/virtiofsd/50-qemu-virtiofsd.json
->>> +HELPERS-$(CONFIG_SOFTMMU) +=3D virtiofsd$(EXESUF)
->>> +vhost-user-json-$(CONFIG_SOFTMMU) +=3D tools/virtiofsd/50-qemu-virtiof=
-sd.json
+On 3/15/20 9:39 PM, Richard Henderson wrote:
+> On 3/13/20 11:36 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>> ---
+>>   exec.c | 4 ----
+>>   1 file changed, 4 deletions(-)
+>>
+>> diff --git a/exec.c b/exec.c
+>> index 7bc9828c5b..f258502966 100644
+>> --- a/exec.c
+>> +++ b/exec.c
+>> @@ -185,10 +185,6 @@ struct DirtyBitmapSnapshot {
+>>       unsigned long dirty[];
+>>   };
+>>  =20
+>> -#endif
+>> -
+>> -#if !defined(CONFIG_USER_ONLY)
+>> -
+>>   static void phys_map_node_reserve(PhysPageMap *map, unsigned nodes)
+>>   {
+>>       static unsigned alloc_hint =3D 16;
+>>
+>=20
+> There's even more than that.  Looking further down,
+>=20
+>>      745 #endif
+>>      746
+>>      747 #if !defined(CONFIG_USER_ONLY)
+>=20
+> This is the #endif that paired with the one at 190.
+>=20
+> Later,
+>=20
+>>      988 #if defined(CONFIG_USER_ONLY)
 > ...
->>
->> Why don't you do that instead?
->>
->>    ifeq
->> ($(CONFIG_LINUX)$(CONFIG_SECCOMP)$(CONFIG_LIBCAP_NG)$(CONFIG_SOFTMMU),yy=
-yy)
+>>     1000 #else
+> ...
+>>     1031 #endif
+>>     1032
+>>     1033 #ifndef CONFIG_USER_ONLY
+>=20
+> So those three lines are redundant.
+>=20
+> Later,
+>=20
+>>     1252 #if !defined(CONFIG_USER_ONLY)
+> ...
+>>     1438 #endif /* defined(CONFIG_USER_ONLY) */
+>>     1439
+>>     1440 #if !defined(CONFIG_USER_ONLY)
+>=20
+> Clearly these ifdefs are very hard to follow.  I would thus welcome a spl=
+it of
+> this file.
+>=20
+> Possibly into exec-common.c (with functions present in both softmmu and
+> user-only, with ifdefs *inside* functions only), and exec-system.c (with =
+no
+> /#if.*CONFIG_USER_ONLY/).
+>=20
+> But exec.c is over 4000 lines, so if there's another logical split into e=
+ven
+> more files, that would be even better.
 
-This was my first option but checkpatch complained because it is 80=20
-chars long...
+OK, I am taking notes for the 5.0 cycle.
 
-I also tried:
-
-ifeq \
-($(CONFIG_LINUX)$(CONFIG_SECCOMP)$(CONFIG_LIBCAP_NG)$(CONFIG_SOFTMMU),yyyy)
-
-which is uglier and still too long.
-
-Following qemu-bridge-helper syntax I also tried:
-
-ifeq ($(CONFIG_SECCOMP)$(CONFIG_LIBCAP_NG),yy)
-HELPERS-$(call land,$(CONFIG_SOFTMMU),$(CONFIG_LINUX)) +=3D virtiofsd$(EXES=
-UF)
-
-which is also too long =C2=AF\_(=E3=83=84)_/=C2=AF
-
-If you accept checkpatch complain I can use the form you prefer :)
+We can drop this patch for this series objective, as it is mostly cosmetic.
 
 >=20
-> Seconded.
 >=20
 > r~
 >=20

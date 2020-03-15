@@ -1,76 +1,76 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2140786lfc;
-        Sun, 15 Mar 2020 13:41:22 -0700 (PDT)
-X-Received: by 2002:a65:5b04:: with SMTP id y4mr24062956pgq.25.1584304882342;
-        Sun, 15 Mar 2020 13:41:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584304882; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2142967lfc;
+        Sun, 15 Mar 2020 13:44:53 -0700 (PDT)
+X-Received: by 2002:a63:c20e:: with SMTP id b14mr22642194pgd.394.1584305092870;
+        Sun, 15 Mar 2020 13:44:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584305092; cv=none;
         d=google.com; s=arc-20160816;
-        b=lKi/vSZc6yemUATXP6MnldXKKzH5Zime8kF+uNm5Xl+C1FETK4afQUoSZpWyjsh95I
-         AkdjH61ofDBbOxx8qsv56DHTsD6+uJIObNPZf1Hh1Kq3+P4hdV/YIVLpmpWo6pU3iRVp
-         h4ixyCti8ZdjNYsLrfLGDIDg7nTEkq9StknrxP8SK4gFwd0ayE+Q5Dn9Y7FrIhUGt3V3
-         SDwyjc5DBi54tCBLOAEwrZK8XRk3h5enyce5W5jGvUsP4uS2w0ABm7vStGm2HoIcc3Vq
-         ooAhpCYTeHnQ8YhgmJ7lkK5xcZcBOl6oAN1Pk47H3AqdSIbLmYZR9uOcoLZYdB3uFqo2
-         Cx4Q==
+        b=En7hrbk5oovbwIkRlemFUiLqBMO2bO8zWXx0BXJ92XHeG4HZiBBbpKcslYFEm4B3LZ
+         +ICa/Ev2D0HL29Nfi5m+QPWGQXKayb6ai9xFIztcZZCRGg+5tN6QIDd23t49VlJfYjF/
+         vvSg5Rb9tBy8wx+o8LAA5ERF93GLn2Q7v2VMUFGclEk+hiEhZhRgHJbd8l7FIb2yobBw
+         2qJTyt/0jFsLJt2bPqHN/46BZrJaR7m1zMkdz8vhKc6GoWY7TqxPm7EsjFAnGvPumPgW
+         ZKvReBtt0mjaivVTYwB+MDpt7BcMoc06m9x5pfqJzC7UBMyR0aCdJ0ADPmzV5soDby15
+         nIog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=ptWp7DiJgrQmGpFT+cURd2sayWW2ITlf8l13syF2CGc=;
-        b=boSsC0qzrakpHfRxmKxr+BGZruUtX67aWKZIJJ+qqhjZ1LqVsREBm0Fy/VcjdmSdoA
-         QOY68Qr4nDyACCPtAYKkKukotxs504tDikm9r9KLVYjoXtKDyCZoWAyodqXtovHp9MSH
-         yVkAO1MtmFwHb8RHVQinlX6XW9CIcG0YKdLNN/YDn80txnX77yxitbfzDQBL97ztfyZB
-         W/UJq4zMfyNnOpMWrUaHKGo5LXWMXeuUfxaK0Yhm0OjemATstUJr2Ex2fDrjf2UYO5Hj
-         w7jONkbX3OvuiBcMgjAVp3ONseZSwN5fmg/PzVV4JZejifPb5Sm7IDXLBVV0plopXUo6
-         Tzrg==
+        bh=Bcc33132wue5L6xWl0qdTO+jUBha20tXX4c+HRpEd0U=;
+        b=KHd8BpbzHUE2lxIEyoZS8zIErZae5y6yv78EhDOv28dMuUbvpQZmkVnxnkYbnp/c3y
+         WYmU7mbMnasYlc2dDb5L+ttNIgBxCOBwdbREByNRFd4uRJKJw/TxhwjUpsFxJlLZ5H2w
+         Nb0I3QrAMfGBDXqp9EZ9mncz3Mvpr862f7Ru1Sa7gl5VY3YTMxjzwlWF1dBzjmMOteqk
+         63LYAXMwYxH5VOv+ouGw5jruHXtreQdBfIDTeVv7TVDYYO1x9XH4+83tBbgaSeOD4xUy
+         awxLIceZ91/SsHGs/wcsQpS5qITIjerUXY1z4Aag8xp8R+G5v2lCI0BgYmeMiGrosWHG
+         H2gQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n8vZi3qH;
+       dkim=pass header.i=@linaro.org header.s=google header.b="f4e+Q/GY";
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id a43sor17553453pje.19.2020.03.15.13.41.22
+        by mx.google.com with SMTPS id n8sor18158244pfq.57.2020.03.15.13.44.52
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 15 Mar 2020 13:41:22 -0700 (PDT)
+        Sun, 15 Mar 2020 13:44:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n8vZi3qH;
+       dkim=pass header.i=@linaro.org header.s=google header.b="f4e+Q/GY";
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=ptWp7DiJgrQmGpFT+cURd2sayWW2ITlf8l13syF2CGc=;
-        b=n8vZi3qH28OwzWiE8KfIc9it3IHgWAxBcK7e2tNBJxkX75+SoaJvHDljDff/UenDo/
-         m9oolZXvZfgHYNBtVUmMef6F9arSacrn9QJPuS09zf9zQGVpd1OJyHRG0IA9+hv2YZAA
-         WmpKJTxN000P4Dxuc4iTDehOXcbq8UOZCw6ZGHTb3Jx/6EBg4INkIf+0aTneZvSA25mh
-         Qw2oCxi/lNq4oHX5ZTh+oZmu63M9mkXvnHW4VnXyvud/OqIfMrCl46yp65zzHGRBmcng
-         Yp0o7IVRpDPL9eWJQNYW4VCQQNzTqWywou9jv+XR1ylAlBsqFuHRKi43uEsZN78salYL
-         9rmg==
+        bh=Bcc33132wue5L6xWl0qdTO+jUBha20tXX4c+HRpEd0U=;
+        b=f4e+Q/GYztxTGgIohU+ZUpbG193GhozninwhFE/Hc40VgjLMvSeo15v8WMRNnNlC4S
+         +b1FCeXlnEDCuJ8rojP+X8t3pfiBjX7xq63zwr7ODcl79f9OTnY7y8k1hFMPxFfe1V3M
+         dugq6DzDVAzcmZmTE0ODP7TcQlHFWqZ+KbHB9gaB4pEsU6QIwmT/FqEVFUoiXKXHfmIk
+         tsaXYfVinietrGXNfON1bBHM3vs8jsi0cknmH7N3lYzzQLtZyqMOP9krPxsfy3SvCw10
+         0xug7l7iRtjZfHgo0dqYpFFt1Kptlu6P2rIk+SiHLzJVQV65qmtX9eKlGNWkGOLTL9zK
+         c39g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=ptWp7DiJgrQmGpFT+cURd2sayWW2ITlf8l13syF2CGc=;
-        b=LuX20epGHIHgBCLxuZlK1Upofn3WwVZdK62JRWv7Txd6m8ss+nGB25eqWb6VaFYMKl
-         qJhFIjMXFl7wXCo2i4WIuyT5F9TmAk5h+7W+xiIzW/hpfHPt048Dfc5pxOhX+pyOAua4
-         LqZgQ1W6nxA/KLkRjaCA+ma7tZ3kN/S6MxyOUClnbojJzNV8AoJqi+DjEuYmt5F/Xrin
-         AeC4gJOmW40zCfToPIu0I531G60zdcKyeHG5kWlvW40g50QErUaafTfHk5NvP67KQuxk
-         IbKTdHLCVftJ0wkTbrYC73RLfhpHCuOkKBOV6RWMOAaK/z4oESVbTRE7bEJGluO1gB5l
-         qu0g==
-X-Gm-Message-State: ANhLgQ2237u7Zr9abzyRymxgBg4G7zbjyBRn/CXyhB/mCi2Zd01RPdVk
-	THtuFlXxYQ0+NsOxU/Tfau0YkdVqqPu/TQ==
-X-Google-Smtp-Source: ADFU+vse27WxJ2ELddAnrCxJTG3eOKRMRKL1GYKnUYoEFJco84s7vgy56r/l5kZbHu0FK6EzKNb8uA==
-X-Received: by 2002:a17:90b:1a89:: with SMTP id ng9mr20994362pjb.102.1584304881822;
-        Sun, 15 Mar 2020 13:41:21 -0700 (PDT)
+        bh=Bcc33132wue5L6xWl0qdTO+jUBha20tXX4c+HRpEd0U=;
+        b=fWFrkqSXe8G9RwEypNEfLdynkbO2bkxOq13C5aYmcV0wN96m7Cvzcix6y73hzQ2gh7
+         oAEMQ3EGsygA1MqsiiCgt/HmB87oIp+v4Mks2qgPIVhoO730i6zy8q/DqXERFLJ2Gk8x
+         PuZv+xM5dWfe9zF8gx4uv7p0u8DcbnCmMnl06PXVKC8jXB5v5+TT727Z5Ir582JkaL4y
+         cOny1+rYkm3a36fkNHu5JPgSnkrl1wRvb46Nvv8BraInQ1V544Ueyq9tnzSpurTQqzvs
+         JcrjpK0k3CXI4o3kxTE53CzzDSRSLIgtxVOY/SW5Y6MYPY+/piIrNbPHp6VrT7j2axFo
+         SwSw==
+X-Gm-Message-State: ANhLgQ0Is0My+mdTE7Hql+TWWFvJnKwUvoWK1Az9B0xzqv5YHVn2dpf2
+	geXLelsCb7WqzjEfZILH04zFPDD9
+X-Google-Smtp-Source: ADFU+vvtP3uW9LKERfhJChn5oNpU3hlqP9xmv+mLkTuDEmTJ8JQvz1UJ+xgk3zuIfDnKafJD16j6bA==
+X-Received: by 2002:a62:d144:: with SMTP id t4mr11916177pfl.10.1584305092408;
+        Sun, 15 Mar 2020 13:44:52 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
-        by smtp.gmail.com with ESMTPSA id z15sm29706547pfg.152.2020.03.15.13.41.20
+        by smtp.gmail.com with ESMTPSA id y143sm15475592pfb.22.2020.03.15.13.44.50
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 15 Mar 2020 13:41:21 -0700 (PDT)
-Subject: Re: [PATCH 10/14] arch_init: Remove unused 'qapi-commands-misc.h'
- include
+        Sun, 15 Mar 2020 13:44:50 -0700 (PDT)
+Subject: Re: [PATCH 11/14] target: Restrict write_elfXX_note() handlers to
+ system-mode
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
@@ -86,28 +86,31 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  Palmer Dabbelt <palmer@dabbelt.com>, Richard Henderson <rth@twiddle.net>
 References: <20200313183652.10258-1-philmd@redhat.com>
- <20200313183652.10258-11-philmd@redhat.com>
+ <20200313183652.10258-12-philmd@redhat.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <48b4eacf-e95c-ce1c-e198-c1c9c96b9f33@linaro.org>
-Date: Sun, 15 Mar 2020 13:41:19 -0700
+Message-ID: <ded109e8-ceab-752d-c938-66d5386c57b1@linaro.org>
+Date: Sun, 15 Mar 2020 13:44:48 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200313183652.10258-11-philmd@redhat.com>
+In-Reply-To: <20200313183652.10258-12-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: ruNKwwNM831p
+X-TUID: a1zuxCH8IIxG
 
 On 3/13/20 11:36 AM, Philippe Mathieu-Daudé wrote:
-> Commit ffaee83bcb2 moved qmp_query_target but forgot to remove
-> this include.
-> 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  arch_init.c | 1 -
->  1 file changed, 1 deletion(-)
+>  target/arm/cpu.h                | 10 +++++-----
+>  target/i386/cpu.h               | 18 +++++++++---------
+>  target/ppc/cpu.h                |  2 --
+>  target/s390x/internal.h         |  3 ++-
+>  target/ppc/translate_init.inc.c |  2 --
+>  5 files changed, 16 insertions(+), 19 deletions(-)
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Hmm.  Or an suggestion to generate guest core files for user-mode upon a fatal
+guest signal?
+
 
 r~

@@ -1,221 +1,99 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id l26sm417018wmi.37.2020.03.16.10.22.06
+        by smtp.gmail.com with ESMTPSA id s131sm417588wmf.35.2020.03.16.10.22.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 16 Mar 2020 10:22:13 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id F07D21FF98;
-	Mon, 16 Mar 2020 17:21:55 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 3A6731FF9B;
+	Mon, 16 Mar 2020 17:21:56 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
-	Damien Hedde <damien.hedde@greensocs.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH  v1 09/28] gdbstub: move mem_buf to GDBState and use GByteArray
-Date: Mon, 16 Mar 2020 17:21:36 +0000
-Message-Id: <20200316172155.971-10-alex.bennee@linaro.org>
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH  v1 12/28] target/m68k: use gdb_get_reg helpers
+Date: Mon, 16 Mar 2020 17:21:39 +0000
+Message-Id: <20200316172155.971-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200316172155.971-1-alex.bennee@linaro.org>
 References: <20200316172155.971-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: FmJ6VsqC0j1t
+X-TUID: xlzoB9BXD8nY
 
-This is in preparation for further re-factoring of the register API
-with the rest of the code. Theoretically the read register function
-could overwrite the MAX_PACKET_LENGTH buffer although currently all
-registers are well within the size range.
+This is cleaner than poking memory directly and will make later
+clean-ups easier.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
-Tested-by: Damien Hedde <damien.hedde@greensocs.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
 ---
-v4
-  - don't set_set to len on rcmd (it's zeroed before we get here)
 v3
-  - fixed up email on Damien's tags
+  - fix mem_buf references
+  - fix mem_buf + len cases
 ---
- gdbstub.c | 56 ++++++++++++++++++++++++++++++++++---------------------
- 1 file changed, 35 insertions(+), 21 deletions(-)
+ target/m68k/helper.c | 29 +++++++++++------------------
+ 1 file changed, 11 insertions(+), 18 deletions(-)
 
-diff --git a/gdbstub.c b/gdbstub.c
-index f6b42825445..db537a712cc 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -367,6 +367,7 @@ typedef struct GDBState {
-     char syscall_buf[256];
-     gdb_syscall_complete_cb current_syscall_cb;
-     GString *str_buf;
-+    GByteArray *mem_buf;
- } GDBState;
- 
- /* By default use no IRQs and no timers while single stepping so as to
-@@ -382,6 +383,7 @@ static void init_gdbserver_state(void)
-     memset(&gdbserver_state, 0, sizeof(GDBState));
-     gdbserver_state.init = true;
-     gdbserver_state.str_buf = g_string_new(NULL);
-+    gdbserver_state.mem_buf = g_byte_array_sized_new(MAX_PACKET_LENGTH);
- }
- 
- #ifndef CONFIG_USER_ONLY
-@@ -576,12 +578,13 @@ static void memtohex(GString *buf, const uint8_t *mem, int len)
-     g_string_append_c(buf, '\0');
- }
- 
--static void hextomem(uint8_t *mem, const char *buf, int len)
-+static void hextomem(GByteArray *mem, const char *buf, int len)
+diff --git a/target/m68k/helper.c b/target/m68k/helper.c
+index baf7729af00..c23b70f854d 100644
+--- a/target/m68k/helper.c
++++ b/target/m68k/helper.c
+@@ -72,19 +72,15 @@ static int cf_fpu_gdb_get_reg(CPUM68KState *env, uint8_t *mem_buf, int n)
  {
-     int i;
- 
-     for(i = 0; i < len; i++) {
--        mem[i] = (fromhex(buf[0]) << 4) | fromhex(buf[1]);
-+        guint8 byte = fromhex(buf[0]) << 4 | fromhex(buf[1]);
-+        g_byte_array_append(mem, &byte, 1);
-         buf += 2;
+     if (n < 8) {
+         float_status s;
+-        stfq_p(mem_buf, floatx80_to_float64(env->fregs[n].d, &s));
+-        return 8;
++        return gdb_get_reg64(mem_buf, floatx80_to_float64(env->fregs[n].d, &s));
      }
+     switch (n) {
+     case 8: /* fpcontrol */
+-        stl_be_p(mem_buf, env->fpcr);
+-        return 4;
++        return gdb_get_reg32(mem_buf, env->fpcr);
+     case 9: /* fpstatus */
+-        stl_be_p(mem_buf, env->fpsr);
+-        return 4;
++        return gdb_get_reg32(mem_buf, env->fpsr);
+     case 10: /* fpiar, not implemented */
+-        memset(mem_buf, 0, 4);
+-        return 4;
++        return gdb_get_reg32(mem_buf, 0);
+     }
+     return 0;
  }
-@@ -1412,7 +1415,6 @@ static int cmd_parse_params(const char *data, const char *schema,
- typedef struct GdbCmdContext {
-     GdbCmdVariant *params;
-     int num_params;
--    uint8_t mem_buf[MAX_PACKET_LENGTH];
- } GdbCmdContext;
- 
- typedef void (*GdbCmdHandler)(GdbCmdContext *gdb_ctx, void *user_ctx);
-@@ -1503,6 +1505,7 @@ static void run_cmd_parser(const char *data, const GdbCmdParseEntry *cmd)
-     }
- 
-     g_string_set_size(gdbserver_state.str_buf, 0);
-+    g_byte_array_set_size(gdbserver_state.mem_buf, 0);
- 
-     /* In case there was an error during the command parsing we must
-     * send a NULL packet to indicate the command is not supported */
-@@ -1715,8 +1718,8 @@ static void handle_set_reg(GdbCmdContext *gdb_ctx, void *user_ctx)
-     }
- 
-     reg_size = strlen(gdb_ctx->params[1].data) / 2;
--    hextomem(gdb_ctx->mem_buf, gdb_ctx->params[1].data, reg_size);
--    gdb_write_register(gdbserver_state.g_cpu, gdb_ctx->mem_buf,
-+    hextomem(gdbserver_state.mem_buf, gdb_ctx->params[1].data, reg_size);
-+    gdb_write_register(gdbserver_state.g_cpu, gdbserver_state.mem_buf->data,
-                        gdb_ctx->params[0].val_ull);
-     put_packet("OK");
- }
-@@ -1735,14 +1738,17 @@ static void handle_get_reg(GdbCmdContext *gdb_ctx, void *user_ctx)
-         return;
-     }
- 
--    reg_size = gdb_read_register(gdbserver_state.g_cpu, gdb_ctx->mem_buf,
-+    reg_size = gdb_read_register(gdbserver_state.g_cpu,
-+                                 gdbserver_state.mem_buf->data,
-                                  gdb_ctx->params[0].val_ull);
-     if (!reg_size) {
-         put_packet("E14");
-         return;
-+    } else {
-+        g_byte_array_set_size(gdbserver_state.mem_buf, reg_size);
-     }
- 
--    memtohex(gdbserver_state.str_buf, gdb_ctx->mem_buf, reg_size);
-+    memtohex(gdbserver_state.str_buf, gdbserver_state.mem_buf->data, reg_size);
-     put_strbuf();
- }
- 
-@@ -1759,11 +1765,11 @@ static void handle_write_mem(GdbCmdContext *gdb_ctx, void *user_ctx)
-         return;
-     }
- 
--    hextomem(gdb_ctx->mem_buf, gdb_ctx->params[2].data,
-+    hextomem(gdbserver_state.mem_buf, gdb_ctx->params[2].data,
-              gdb_ctx->params[1].val_ull);
-     if (target_memory_rw_debug(gdbserver_state.g_cpu, gdb_ctx->params[0].val_ull,
--                               gdb_ctx->mem_buf,
--                               gdb_ctx->params[1].val_ull, true)) {
-+                               gdbserver_state.mem_buf->data,
-+                               gdbserver_state.mem_buf->len, true)) {
-         put_packet("E14");
-         return;
-     }
-@@ -1784,14 +1790,17 @@ static void handle_read_mem(GdbCmdContext *gdb_ctx, void *user_ctx)
-         return;
-     }
- 
-+    g_byte_array_set_size(gdbserver_state.mem_buf, gdb_ctx->params[1].val_ull);
-+
-     if (target_memory_rw_debug(gdbserver_state.g_cpu, gdb_ctx->params[0].val_ull,
--                               gdb_ctx->mem_buf,
--                               gdb_ctx->params[1].val_ull, false)) {
-+                               gdbserver_state.mem_buf->data,
-+                               gdbserver_state.mem_buf->len, false)) {
-         put_packet("E14");
-         return;
-     }
- 
--    memtohex(gdbserver_state.str_buf, gdb_ctx->mem_buf, gdb_ctx->params[1].val_ull);
-+    memtohex(gdbserver_state.str_buf, gdbserver_state.mem_buf->data,
-+             gdbserver_state.mem_buf->len);
-     put_strbuf();
- }
- 
-@@ -1806,9 +1815,9 @@ static void handle_write_all_regs(GdbCmdContext *gdb_ctx, void *user_ctx)
-     }
- 
-     cpu_synchronize_state(gdbserver_state.g_cpu);
--    registers = gdb_ctx->mem_buf;
-     len = strlen(gdb_ctx->params[0].data) / 2;
--    hextomem(registers, gdb_ctx->params[0].data, len);
-+    hextomem(gdbserver_state.mem_buf, gdb_ctx->params[0].data, len);
-+    registers = gdbserver_state.mem_buf->data;
-     for (addr = 0; addr < gdbserver_state.g_cpu->gdb_num_g_regs && len > 0;
-          addr++) {
-         reg_size = gdb_write_register(gdbserver_state.g_cpu, registers, addr);
-@@ -1825,11 +1834,14 @@ static void handle_read_all_regs(GdbCmdContext *gdb_ctx, void *user_ctx)
-     cpu_synchronize_state(gdbserver_state.g_cpu);
-     len = 0;
-     for (addr = 0; addr < gdbserver_state.g_cpu->gdb_num_g_regs; addr++) {
--        len += gdb_read_register(gdbserver_state.g_cpu, gdb_ctx->mem_buf + len,
-+        len += gdb_read_register(gdbserver_state.g_cpu,
-+                                 gdbserver_state.mem_buf->data + len,
-                                  addr);
-     }
-+    /* FIXME: This is after the fact sizing */
-+    g_byte_array_set_size(gdbserver_state.mem_buf, len);
- 
--    memtohex(gdbserver_state.str_buf, gdb_ctx->mem_buf, len);
-+    memtohex(gdbserver_state.str_buf, gdbserver_state.mem_buf->data, len);
-     put_strbuf();
- }
- 
-@@ -2078,6 +2090,7 @@ static void handle_query_offsets(GdbCmdContext *gdb_ctx, void *user_ctx)
- #else
- static void handle_query_rcmd(GdbCmdContext *gdb_ctx, void *user_ctx)
+@@ -112,21 +108,18 @@ static int cf_fpu_gdb_set_reg(CPUM68KState *env, uint8_t *mem_buf, int n)
+ static int m68k_fpu_gdb_get_reg(CPUM68KState *env, uint8_t *mem_buf, int n)
  {
-+    const guint8 zero = 0;
-     int len;
- 
-     if (!gdb_ctx->num_params) {
-@@ -2091,12 +2104,13 @@ static void handle_query_rcmd(GdbCmdContext *gdb_ctx, void *user_ctx)
-         return;
+     if (n < 8) {
+-        stw_be_p(mem_buf, env->fregs[n].l.upper);
+-        memset(mem_buf + 2, 0, 2);
+-        stq_be_p(mem_buf + 4, env->fregs[n].l.lower);
+-        return 12;
++        int len = gdb_get_reg16(mem_buf, env->fregs[n].l.upper);
++        len += gdb_get_reg16(mem_buf + len, 0);
++        len += gdb_get_reg64(mem_buf + len, env->fregs[n].l.lower);
++        return len;
      }
- 
-+    g_assert(gdbserver_state.mem_buf->len == 0);
-     len = len / 2;
--    hextomem(gdb_ctx->mem_buf, gdb_ctx->params[0].data, len);
--    gdb_ctx->mem_buf[len++] = 0;
--    qemu_chr_be_write(gdbserver_state.mon_chr, gdb_ctx->mem_buf, len);
-+    hextomem(gdbserver_state.mem_buf, gdb_ctx->params[0].data, len);
-+    g_byte_array_append(gdbserver_state.mem_buf, &zero, 1);
-+    qemu_chr_be_write(gdbserver_state.mon_chr, gdbserver_state.mem_buf->data,
-+                      gdbserver_state.mem_buf->len);
-     put_packet("OK");
--
+     switch (n) {
+     case 8: /* fpcontrol */
+-        stl_be_p(mem_buf, env->fpcr);
+-        return 4;
++        return gdb_get_reg32(mem_buf, env->fpcr);
+     case 9: /* fpstatus */
+-        stl_be_p(mem_buf, env->fpsr);
+-        return 4;
++        return gdb_get_reg32(mem_buf, env->fpsr);
+     case 10: /* fpiar, not implemented */
+-        memset(mem_buf, 0, 4);
+-        return 4;
++        return gdb_get_reg32(mem_buf, 0);
+     }
+     return 0;
  }
- #endif
- 
 -- 
 2.20.1

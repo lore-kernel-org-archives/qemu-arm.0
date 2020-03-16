@@ -1,145 +1,168 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id x16sm830249wrg.44.2020.03.16.10.28.41
+        by smtp.gmail.com with ESMTPSA id 9sm443006wmx.32.2020.03.16.10.28.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 16 Mar 2020 10:28:46 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C289E1FFB3;
+	by zen.linaroharston (Postfix) with ESMTP id 815581FFAE;
 	Mon, 16 Mar 2020 17:21:57 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	Damien Hedde <damien.hedde@greensocs.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH  v1 26/28] gdbstub: change GDBState.last_packet to GByteArray
-Date: Mon, 16 Mar 2020 17:21:53 +0000
-Message-Id: <20200316172155.971-27-alex.bennee@linaro.org>
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH  v1 23/28] tests/tcg/aarch64: add a gdbstub testcase for SVE registers
+Date: Mon, 16 Mar 2020 17:21:50 +0000
+Message-Id: <20200316172155.971-24-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200316172155.971-1-alex.bennee@linaro.org>
 References: <20200316172155.971-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 7DmJLi0yo0ec
+X-TUID: 68LGAFwnc5kz
 
-From: Damien Hedde <damien.hedde@greensocs.com>
+A very simple test case which sets and reads SVE registers while
+running a test case. We don't really need to compile a SVE binary for
+this case but we will later so keep it simple for now.
 
-Remove the packet size upper limit by using a GByteArray
-instead of a statically allocated array for last_packet.
-Thus we can now send big packets.
-
-Also remove the last_packet_len field and use last_packet->len
-instead.
-
-Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20191211160514.58373-2-damien.hedde@greensocs.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- gdbstub.c | 39 +++++++++++++++++++++------------------
- 1 file changed, 21 insertions(+), 18 deletions(-)
 
-diff --git a/gdbstub.c b/gdbstub.c
-index 0bcfc47a7c5..a60ef5125eb 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -351,8 +351,7 @@ typedef struct GDBState {
-     int line_buf_index;
-     int line_sum; /* running checksum */
-     int line_csum; /* checksum at the end of the packet */
--    uint8_t last_packet[MAX_PACKET_LENGTH + 4];
--    int last_packet_len;
-+    GByteArray *last_packet;
-     int signal;
- #ifdef CONFIG_USER_ONLY
-     int fd;
-@@ -384,6 +383,7 @@ static void init_gdbserver_state(void)
-     gdbserver_state.init = true;
-     gdbserver_state.str_buf = g_string_new(NULL);
-     gdbserver_state.mem_buf = g_byte_array_sized_new(MAX_PACKET_LENGTH);
-+    gdbserver_state.last_packet = g_byte_array_sized_new(MAX_PACKET_LENGTH + 4);
- }
+---
+v5
+  - properly plumb in
+  - skip if fails to connect
+---
+ tests/.gitignore                      |  1 +
+ tests/tcg/aarch64/Makefile.target     | 15 +++++
+ tests/tcg/aarch64/gdbstub/test-sve.py | 81 +++++++++++++++++++++++++++
+ 3 files changed, 97 insertions(+)
+ create mode 100644 tests/tcg/aarch64/gdbstub/test-sve.py
+
+diff --git a/tests/.gitignore b/tests/.gitignore
+index 7306866f216..d03c037d772 100644
+--- a/tests/.gitignore
++++ b/tests/.gitignore
+@@ -10,6 +10,7 @@ qht-bench
+ rcutorture
+ test-*
+ !test-*.c
++!test-*.py
+ !docker/test-*
+ test-qapi-commands.[ch]
+ test-qapi-init-commands.[ch]
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index a25afc071cc..b61b53e4dd1 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -46,6 +46,21 @@ ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE),)
+ # System Registers Tests
+ AARCH64_TESTS += sysregs
+ sysregs: CFLAGS+=-march=armv8.1-a+sve
++
++ifneq ($(HAVE_GDB_BIN),)
++GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
++
++AARCH64_TESTS += gdbstub-sysregs
++
++.PHONY: gdbstub-sysregs
++run-gdbstub-sysregs: sysregs
++	$(call run-test, $@, $(GDB_SCRIPT) \
++		--gdb $(HAVE_GDB_BIN) \
++		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
++		--bin $< --test $(AARCH64_SRC)/gdbstub/test-sve.py, \
++	"basic gdbstub SVE support")
++endif
++
+ endif
  
- #ifndef CONFIG_USER_ONLY
-@@ -626,28 +626,29 @@ static void hexdump(const char *buf, int len,
- static int put_packet_binary(const char *buf, int len, bool dump)
- {
-     int csum, i;
--    uint8_t *p;
--    uint8_t *ps = &gdbserver_state.last_packet[0];
-+    uint8_t footer[3];
- 
-     if (dump && trace_event_get_state_backends(TRACE_GDBSTUB_IO_BINARYREPLY)) {
-         hexdump(buf, len, trace_gdbstub_io_binaryreply);
-     }
- 
-     for(;;) {
--        p = ps;
--        *(p++) = '$';
--        memcpy(p, buf, len);
--        p += len;
-+        g_byte_array_set_size(gdbserver_state.last_packet, 0);
-+        g_byte_array_append(gdbserver_state.last_packet,
-+                            (const uint8_t *) "$", 1);
-+        g_byte_array_append(gdbserver_state.last_packet,
-+                            (const uint8_t *) buf, len);
-         csum = 0;
-         for(i = 0; i < len; i++) {
-             csum += buf[i];
-         }
--        *(p++) = '#';
--        *(p++) = tohex((csum >> 4) & 0xf);
--        *(p++) = tohex((csum) & 0xf);
-+        footer[0] = '#';
-+        footer[1] = tohex((csum >> 4) & 0xf);
-+        footer[2] = tohex((csum) & 0xf);
-+        g_byte_array_append(gdbserver_state.last_packet, footer, 3);
- 
--        gdbserver_state.last_packet_len = p - ps;
--        put_buffer(ps, gdbserver_state.last_packet_len);
-+        put_buffer(gdbserver_state.last_packet->data,
-+                   gdbserver_state.last_packet->len);
- 
- #ifdef CONFIG_USER_ONLY
-         i = get_char();
-@@ -2812,20 +2813,22 @@ static void gdb_read_byte(uint8_t ch)
-     uint8_t reply;
- 
- #ifndef CONFIG_USER_ONLY
--    if (gdbserver_state.last_packet_len) {
-+    if (gdbserver_state.last_packet->len) {
-         /* Waiting for a response to the last packet.  If we see the start
-            of a new command then abandon the previous response.  */
-         if (ch == '-') {
-             trace_gdbstub_err_got_nack();
--            put_buffer((uint8_t *)gdbserver_state.last_packet, gdbserver_state.last_packet_len);
-+            put_buffer(gdbserver_state.last_packet->data,
-+                       gdbserver_state.last_packet->len);
-         } else if (ch == '+') {
-             trace_gdbstub_io_got_ack();
-         } else {
-             trace_gdbstub_io_got_unexpected(ch);
-         }
- 
--        if (ch == '+' || ch == '$')
--            gdbserver_state.last_packet_len = 0;
-+        if (ch == '+' || ch == '$') {
-+            g_byte_array_set_size(gdbserver_state.last_packet, 0);
-+        }
-         if (ch != '$')
-             return;
-     }
-@@ -3209,7 +3212,7 @@ static int gdb_monitor_write(Chardev *chr, const uint8_t *buf, int len)
-     const char *p = (const char *)buf;
-     int max_sz;
- 
--    max_sz = (sizeof(gdbserver_state.last_packet) - 2) / 2;
-+    max_sz = (MAX_PACKET_LENGTH / 2) + 1;
-     for (;;) {
-         if (len <= max_sz) {
-             gdb_monitor_output(p, len);
+ TESTS += $(AARCH64_TESTS)
+diff --git a/tests/tcg/aarch64/gdbstub/test-sve.py b/tests/tcg/aarch64/gdbstub/test-sve.py
+new file mode 100644
+index 00000000000..90201d80094
+--- /dev/null
++++ b/tests/tcg/aarch64/gdbstub/test-sve.py
+@@ -0,0 +1,81 @@
++from __future__ import print_function
++#
++# Test the SVE registers are visable and changeable via gdbstub
++#
++# This is launched via tests/guest-debug/run-test.py
++#
++
++import gdb
++import sys
++
++MAGIC = 0xDEADBEEF
++
++failcount = 0
++
++def report(cond, msg):
++    "Report success/fail of test"
++    if cond:
++        print ("PASS: %s" % (msg))
++    else:
++        print ("FAIL: %s" % (msg))
++        global failcount
++        failcount += 1
++
++def run_test():
++    "Run through the tests one by one"
++
++    gdb.execute("info registers")
++    report(True, "info registers")
++
++    gdb.execute("info registers vector")
++    report(True, "info registers vector")
++
++    # Now all the zregs
++    frame = gdb.selected_frame()
++    for i in range(0, 32):
++        rname = "z%d" % (i)
++        zreg = frame.read_register(rname)
++        report(True, "Reading %s" % rname)
++        for j in range(0, 4):
++            cmd = "set $%s.q.u[%d] = 0x%x" % (rname, j, MAGIC)
++            gdb.execute(cmd)
++            report(True, "%s" % cmd)
++        for j in range(0, 4):
++            reg = "$%s.q.u[%d]" % (rname, j)
++            v = gdb.parse_and_eval(reg)
++            report(str(v.type) == "uint128_t", "size of %s" % (reg))
++        for j in range(0, 8):
++            cmd = "set $%s.d.u[%d] = 0x%x" % (rname, j, MAGIC)
++            gdb.execute(cmd)
++            report(True, "%s" % cmd)
++        for j in range(0, 8):
++            reg = "$%s.d.u[%d]" % (rname, j)
++            v = gdb.parse_and_eval(reg)
++            report(str(v.type) == "uint64_t", "size of %s" % (reg))
++            report(int(v) == MAGIC, "%s is 0x%x" % (reg, MAGIC))
++
++#
++# This runs as the script it sourced (via -x, via run-test.py)
++#
++try:
++    inferior = gdb.selected_inferior()
++    arch = inferior.architecture()
++    report(arch.name() == "aarch64", "connected to aarch64")
++except (gdb.error, AttributeError):
++    print("SKIPPING (not connected)", file=sys.stderr)
++    exit(0)
++
++try:
++    # These are not very useful in scripts
++    gdb.execute("set pagination off")
++    gdb.execute("set confirm off")
++
++    # Run the actual tests
++    run_test()
++except:
++    print ("GDB Exception: %s" % (sys.exc_info()[0]))
++    failcount += 1
++
++print("All tests complete: %d failures" % failcount)
++
++exit(failcount)
 -- 
 2.20.1

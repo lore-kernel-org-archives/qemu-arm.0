@@ -1,75 +1,76 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp483856lfe;
-        Mon, 16 Mar 2020 12:50:03 -0700 (PDT)
-X-Received: by 2002:a63:144e:: with SMTP id 14mr1455343pgu.264.1584388203562;
-        Mon, 16 Mar 2020 12:50:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584388203; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp485330lfe;
+        Mon, 16 Mar 2020 12:51:44 -0700 (PDT)
+X-Received: by 2002:a17:90a:a417:: with SMTP id y23mr1172476pjp.184.1584388303872;
+        Mon, 16 Mar 2020 12:51:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584388303; cv=none;
         d=google.com; s=arc-20160816;
-        b=WCiDLyogUQJRmtIQx1ATYedloA6ecZTT3pK+ryLyHhd2/X34ixbpyhur2JLn1rIAQ9
-         VX8dgMmaQcS/yAO/Lhw6i8H1l59UlIRfu4kd2THRoT2Gq3cBFkAtVkeDlkMBz18d3agc
-         G5gx7XaMncG/ilHMtiFp664Nr0r29jiuUJy50eEl5DVqNuCPqDcLHid8cAZUNE9aiGJR
-         aXqHNSNlXU4NEwQ8/6qFLi4vIQxhF1GoxqswdalC3H7p17txEzsyLyKr4GEM/lRH1d4P
-         nwJH7F5jvPW9hDnmmELkMoIexYg6vfOsz4hwXiwS3/EK9BJ/TJ2enEGxhtDI2apCcZ7F
-         0tdQ==
+        b=x9IMlFqAMCwiOEB/AIBceFh0e8nnT6Pg9YB1km2B3ji9IL8PsYuX5KkqeJ7qkTKeZL
+         UKwY3OSpSj7bnrkBEPbmJoxTj6lElnP7SX26jJ7oce9zOxrRhpLDt5i/wzJZCICkkV6P
+         iIsNgF03Q9UcTAYLnvafyfN/a2YsAPOyFfTG/Y/2GZ4qDNC6JbPHaHKXl/8N/3u7dy8C
+         B8Ue/McRJNmazsBdFREajq+vpYF2siWKmuF3GP19c2MUpfQRH9pZ4NjR67L5OCO2h1/w
+         Sw8GiHfNjNQiqFqusBJep8X0qLVafOcDm0Z2nVZvwD6zdKG7dlr/Umih39+np+rCs7qa
+         0Lyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+         :user-agent:date:message-id:references:cc:to:from:subject
          :dkim-signature;
-        bh=JIIXamngHKCNeGNFCvKp7fJI5aol/285BJCeJ13G1Aw=;
-        b=OV4gIQSP6kePP6p7kc+pG+tV4w58pbqd3KLve16auc3J5f/P+wwasi2lhglgmBLzyg
-         KQ6YtGzwO6wEfOYUZfZGZyyHm9ygBfB+irr6wqAqw26SwuyASE1HEU7fwlCHy2QJ7IIJ
-         lf8xCjdj2ZLQOfmsRO1pjHJQx5kFHHCPi7ZBvH/CerozsimIWSc1Kb9KKWFl3RJiA3HK
-         4ZOljN1ZSkn6DIeIUGcLlUOXxoZpsBjHhurZyeYxN5zWxKmCbVr2vyuEseMd/dcvtdi2
-         YWO5hf0i2s4lQ12AEkI8jPVWXShFjYGLJDnqdIdIjJxhQNdinSIWBVuZ2UxEOdoTN2HQ
-         xNhg==
+        bh=dDpacGNq/K7yM6PKdJ9BQLRdTUbRwvHtCgHhyhlKoTg=;
+        b=PcJOrN9ZybJyaxQ+USYJ5dP46uTAUmYkBMxIP7wi6WN/SIp0BoSy13mEg1P7suABZK
+         jrOdfgt9Bu6QeA7KQpYnC5i562tSQTJCNxNcgc55SuM7DIu9LzEqza3RG9IHAtrkXT0J
+         R3HWHFZVDU4oNrz6z3A/gJNhQczo/baiglGpehRdF7EtViLYUio+RVaNJgGTJ68pCnAf
+         lSK2iIzyYJdin4WmutAL/Av27/6esATxZrfWKOYYRdK6C9qP43We/5HGJ3aDZdGzf4AN
+         hmDlgZuAMYLULWvDuqZipDJk09I9nS+igAeYjgyi13FjZhNf272VcWWBPcQSwhEURsLi
+         NgdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DYbnMOE1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AQjrgjZK;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id r6sor880883pgm.2.2020.03.16.12.50.03
+        by mx.google.com with SMTPS id d16sor877901pll.40.2020.03.16.12.51.43
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 16 Mar 2020 12:50:03 -0700 (PDT)
+        Mon, 16 Mar 2020 12:51:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DYbnMOE1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AQjrgjZK;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
+        h=subject:from:to:cc:references:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=JIIXamngHKCNeGNFCvKp7fJI5aol/285BJCeJ13G1Aw=;
-        b=DYbnMOE1p6fNHBWyNshe1JqLgxkUEJKp7IhCGmrY8cQDYCWT97FIzU4UlcQoTOEmNc
-         g+gaRYp8IijbJOjjbBqgwoTfujYM9FpLbAmI3COsf696qM2MxpfS8VYjReiUHhSsA29u
-         v3qm/j5bnDmx3amXZBrIAGvx1FczjljWwZivI9824aK4zXP2kucEEUzIdHrNjK42dj3w
-         Vk9JhkgmJWv4i+/b2eVBzlzykm68EUFFpqn0dyvH0cxzsPIvQaYJX5lfO5ClPUxFJAGE
-         d+YMrfFyFmX3wmnJPLu0yhGNIYVIU759uwfv4pvbaTmlwdTeKQPxE9xwovTsSJk1kZEH
-         RucA==
+        bh=dDpacGNq/K7yM6PKdJ9BQLRdTUbRwvHtCgHhyhlKoTg=;
+        b=AQjrgjZKqVW/SyhQvefTLDqlDuksBjLCZbzgROzXz0n3JVr1JybTnPwHORasM0VeEe
+         bq5kFWQxiy7uwsxIt9CDyb3Cq43Ew/R6BEHUV0xOQBY9NyeA/6TKyhKL3I1y7QL9NC/p
+         +zamfgWV7c/8s1b/1OzmI0cF5UKQKr6YcirpPVQhPDhEeojdSOBgn3uW4ItALdn4s/E4
+         ZXPaw1lxlqJzmAQEmMbkOXThEbnBjtDyx4ciihBUo5D5u9HB4IMzyJOrGm85up3rapRK
+         Glg//oOapd89gfUzTPU/7lWeB/O0ZGRy9j+vPrgmOkmGVZ8GS3kzUg/Yq6N4pLhhS8G3
+         BWTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+        h=x-gm-message-state:subject:from:to:cc:references:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=JIIXamngHKCNeGNFCvKp7fJI5aol/285BJCeJ13G1Aw=;
-        b=sByCLfBkiIYWWklop7k1h5ORvjYivaxWmc1D8YErAj8v5Ibp7w5uqtuPtLX4lTmKDG
-         BfhxeStX6yYkI0uBA6NVQ6NOQ/IWs8Jm0Y1hllbLbW3YH2QZ+oSILGHfE0gYlVQWLvru
-         F5NV2ZPvsMdcD7Q9UnIyovAdl2vSAZ6fVh7vc27DWHncXm50KAvC5/kOqQexiQqseMDX
-         DOu0061Bzex+kAD3r2LV3GO1wk7oOwwTGz8P9Cr0Rzfice+hoh35h2dX7TZ1/dAyChM2
-         Zo7ZTjJ4MhUAelGNFVD534QtnixPJ82pb4msANmpnB+YCj/Gr6n7eAqDp8kZUP1WMSv3
-         /rSg==
-X-Gm-Message-State: ANhLgQ2jdwx7HNgBuqiIwFcEyAFYzVGBGgGAzp3oL1Y9vbKwyMTMmm92
-	YNuf3lYGCaeDlqUeXwN50s66M5HJ
-X-Google-Smtp-Source: ADFU+vt0yq9wHnOPkKK1VlQnOJyORm9Djm7DBt1D1EXniKGL7V6557Qng/hrzuvzNfQpAtJaK3s2IA==
-X-Received: by 2002:a63:58e:: with SMTP id 136mr1382048pgf.306.1584388203071;
-        Mon, 16 Mar 2020 12:50:03 -0700 (PDT)
+        bh=dDpacGNq/K7yM6PKdJ9BQLRdTUbRwvHtCgHhyhlKoTg=;
+        b=UXOZ1STqfwcDuc790miJHCq2tUI0H34DJmdBmZsO5VURrb5vaMGCSGymbpmmoXOsVC
+         S5FNqvjF6a5DWX7wgC5DcrTsYnYi68/9nUIbgYEaHRi7OEI6o2wYzASRqUvrcGrjAlhi
+         QsPfj0i3oVCkEgVosDBRndU8lzM1Oc4k01f70vLRJ8hboh64uSJ2OiMwzLIvaRpWeg7x
+         M4LoppFXrAkQIF2yD2Yh9oTwYdub5EZfB+/fq/NN/UT1AY1WPoDz4lwCL3n6+PI7EWEo
+         d5jL6kLtaug8l90VrhGO0dCSPfpgK6Y1FAVJQNJ8gANznrqBBcQh+oiDIcioKDo4dOC0
+         dhXw==
+X-Gm-Message-State: ANhLgQ0VEyxjOUlxjhsDWTqWi+flxCe1Crq3iKEIl6M8MKxaZeklVXt2
+	fLQeeXxYS8oUn52zY6sI+DTG0jPGWrQeLQ==
+X-Google-Smtp-Source: ADFU+vvjl9rPaCPg+vR6UzDGMf3+UPc19rwSelQmwlrtWB0EVNu6h7E4JtH8civEN52sD0o5SxTzKA==
+X-Received: by 2002:a17:902:a9c5:: with SMTP id b5mr789269plr.126.1584388303264;
+        Mon, 16 Mar 2020 12:51:43 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
-        by smtp.gmail.com with ESMTPSA id md20sm564159pjb.15.2020.03.16.12.50.01
+        by smtp.gmail.com with ESMTPSA id j19sm671763pfe.102.2020.03.16.12.51.42
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 16 Mar 2020 12:50:02 -0700 (PDT)
+        Mon, 16 Mar 2020 12:51:42 -0700 (PDT)
 Subject: Re: [PATCH v3 10/19] target/arm: Restrict ARMv4 cpus to TCG accel
+From: Richard Henderson <richard.henderson@linaro.org>
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
@@ -78,39 +79,25 @@ Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>
 References: <20200316160634.3386-1-philmd@redhat.com>
  <20200316160634.3386-11-philmd@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <b5c047f3-ab3e-825d-35c8-b24c8efc616e@linaro.org>
-Date: Mon, 16 Mar 2020 12:50:00 -0700
+ <b5c047f3-ab3e-825d-35c8-b24c8efc616e@linaro.org>
+Message-ID: <bd65d0e1-c94a-6823-cd5b-41aeef8df260@linaro.org>
+Date: Mon, 16 Mar 2020 12:51:40 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200316160634.3386-11-philmd@redhat.com>
+In-Reply-To: <b5c047f3-ab3e-825d-35c8-b24c8efc616e@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: KqTYjP+tGEE0
+Content-Transfer-Encoding: 7bit
+X-TUID: wmnUEik20RKl
 
-On 3/16/20 9:06 AM, Philippe Mathieu-Daudé wrote:
-> +static const ARMCPUInfo arm_v4_cpus[] = {
-> +    { .name = "ti925t",      .initfn = ti925t_initfn },
-> +    { .name = "sa1100",      .initfn = sa1100_initfn },
-> +    { .name = "sa1110",      .initfn = sa1110_initfn },
-> +    { .name = NULL }
-> +};
-> +
-> +static void arm_v4_cpu_register_types(void)
-> +{
-> +    const ARMCPUInfo *info = arm_v4_cpus;
-> +
-> +    while (info->name) {
-> +        arm_cpu_register(info);
-> +        info++;
-> +    }
-> +}
+On 3/16/20 12:50 PM, Richard Henderson wrote:
+> I much prefer ARRAY_SIZE() to sentinels.
+> I know the existing code make much use of them,
+> but we don't need to replicate that here.
 
-I much prefer ARRAY_SIZE() to sentinels.
-I know the existing code make much use of them,
-but we don't need to replicate that here.
+... but otherwise,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~

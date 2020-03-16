@@ -1,241 +1,129 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp251360lfe;
-        Mon, 16 Mar 2020 09:08:05 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt9tH83lPqtdP3f60NsRS0Xb4giKB8MKDwbN8k47pYBeSI74+0xl0Isa17pyNbeSd3krMjy
-X-Received: by 2002:a25:5756:: with SMTP id l83mr457173ybb.334.1584374885761;
-        Mon, 16 Mar 2020 09:08:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584374885; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp314550lfe;
+        Mon, 16 Mar 2020 10:05:39 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtxgWmweTb3RmjM1EgFVHr8Xii8tDrnbdWmipOlnl2My+FHEesh+UhuI562U84uENhO5WQl
+X-Received: by 2002:a17:902:5984:: with SMTP id p4mr157397pli.43.1584378338810;
+        Mon, 16 Mar 2020 10:05:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584378338; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qj96pfpx1Gi0cO0towCDjCKHUfBOt6nXz9OoFJCnwUei75+ucLkEIadIM5VE09ypeb
-         zIXus/a/XhuLBJWwH0vZqnFNBnQoW7ZWVOkT5S+DYOMSTLOpkzximIB3rD11Xvwbb+N3
-         KhNxgEENzimaQRmTDIme24HT0lU8EDwKbPVJfaKFNjqVLHzNM7O4OAcIxM34rtE3EI38
-         56tqgi4764OS1aVU3sAy6mke/pKdyjGrRJJPlBdYQZ+PRJMS7FicJnl0cb0onz3QmrQB
-         J1VKyViA1W69thoacA3UfOndICToAhHTL1Vv8mKd4DWlHNXoeyoaPs5uS71bIXlyscD2
-         zj1Q==
+        b=Vovdi7mRuvufX1wUED9k0d95E2pBKQkwas9gkBJexLomTXqLf09uxrh8jbEZxz4kwg
+         sbDLUGu3fxMTubIwFKQdamnuFEreHjvZNpqdu2LvTkuXOHg5f1ZXXykdJoANaBN9DcIs
+         989A0JM0MijR1MSSbUsrYM/vF3q3ygLu/JoY84cPL8ZOkiH+Y/PastoD4fMc5ZTTnAJV
+         UK3pwxUpzksL4LmSfQIevBSz7Yx3S/mOCVVYIe5QmPClC+VatxR08A7h75lO2vvLI+s2
+         zzODFuns3PnmZvneaVYNW5FE5755YdCa6npN1qUHgpnVuN+SWv2YVa/mPOppulYdOgiz
+         YAWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ui04JwX7OiOXq/laFXLsBkQhZYSQ3MHjobkDuHeSfV0=;
-        b=jot8XZmKxnOUNLTw+T+u6Z2waYwRy09tU00IXdOHc6nyXqtJNY9pmohF0DlZDdnoZv
-         XVgHS3Xht8m5xfJOGMo6HlGmyKY93vSqvAVQBVme/3CGThPuYtTVSw7u58X+VUQNUIee
-         uv/YIPkVYdQFWLEzjS8ipapglxpsfnvaXV9vxRKy3BJ3r9yZwcsyKI6sxces+k28jKMK
-         2DQia58iVDObdnEfUfyP0bdJHx9b3msetW9/ttopaW4hPdDw1kqQcAWJ1UjDwmE+aGWK
-         jssgz2j/nMo+tbQFjSk/4PsMsIgna0K4tYM84xr3g77wtNxi42FU50ZzMmupsop+7cbr
-         9J9Q==
+        h=content-id:mime-version:user-agent:references:message-id
+         :in-reply-to:subject:cc:to:from:date:dkim-signature;
+        bh=r91wveFqr8dYQf2uaiBrpOgCod8nLZ3myO/GgSKxYI4=;
+        b=EGvqrAfPBoTgEHGu8UgsP4/aYVqvCzjttK78lY/34svgzmcA3m3oAK00u0kthmLQcv
+         ng3bMIU5MjulASU7N80aeaNJhjF4zwJuxW6/lvfYvegp4oHP0NjreJ/AW59RsqirkokY
+         y85OqdhCBYfpuzPiNCtDbLEdTkktG6s2NAIZK6j5cv0zvBvTIF3Q8SBRmixzRJsQygzX
+         ggvNElWKvtj75Jj0fh8ZX7sOcdoYIiRVX5xSRIrkXMl0BJF0cpPAnZvnLpR3g4ZNHjMq
+         BANRQRc5jL2HjIMP8Y/sQZmpmi48jkpT+m8mR0gq0lB9S5WD+9JwgHw3HFy10oKWDbRj
+         9qew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CEqpVH6A;
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by mx.google.com with ESMTPS id i202si104645yba.481.2020.03.16.09.08.05
-        for <alex.bennee@linaro.org>
+       dkim=pass header.i=@kernel.org header.s=default header.b=Bbwwfdvr;
+       spf=pass (google.com: domain of sstabellini@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sstabellini@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <sstabellini@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by mx.google.com with ESMTPS id v34si124428pgk.227.2020.03.16.10.05.38
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2020 09:08:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+        Mon, 16 Mar 2020 10:05:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sstabellini@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CEqpVH6A;
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584374885;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ui04JwX7OiOXq/laFXLsBkQhZYSQ3MHjobkDuHeSfV0=;
-	b=CEqpVH6AccFgE6OyyCvobv1P6Su+fxjdCjaDOipj+K1FNLRVvgp9YvCfFihycQxI/Tfo6F
-	xz9i3oVdcgBOA4GL/CuoQYTAkOEVTH8EQUSecp0VpqqROHpmHtc3qIb56liFb/HcBZ3w9f
-	XOf/H6Wpj+6COyfhAqaOudmA1ae+h8Q=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-360-fW8yQ3F1NgC2rbC7NrkI7A-1; Mon, 16 Mar 2020 12:08:01 -0400
-X-MC-Unique: fW8yQ3F1NgC2rbC7NrkI7A-1
-Received: by mail-wm1-f70.google.com with SMTP id a13so6012258wme.7
-        for <alex.bennee@linaro.org>; Mon, 16 Mar 2020 09:08:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=sJ9bxuRVskXYC2aJKl03+Z9cSr20F7Dbm9JRwxmo2e4=;
-        b=ciA8M3SjigJ5Z2fmiyhXfWl7Zpm5ot4RQkx7EjfkW0QCqV5XnGMpEKapgS14//MhPj
-         xQDpKwM71ZrPUUhYOgKMQi4jt+7ePJl7DK1QPB6gNcSXFpQqYltPuiqqsbMnBCxVW2l/
-         AUpfMjusUzYhNAjbtGjDhJSvyaxaKgCatib70XBUhAoGYh2+WbVkFk15LktjRg+cQ0q5
-         X2qzC3LF4KAkszkKitscoe6MCvX6LmPcUceSUYS9Gv6mHbrmYZUDgdjeaKaxLTHawKvf
-         NAAFojyIQmm/AnVxfZqNSWz8n8feHPldqpzjEPuT76g/nvJEOEOnARM2LVwz2RP6yky5
-         PQ+g==
-X-Gm-Message-State: ANhLgQ1FMHypO2jFg7e04ENgu42hnJQHQkpzswc7qGs+ljSTzf+69X6f
-	CXUSv397e0xhx/7L+cdhxS4iyrvAps+AHxAVBt1L9VmzpPz10hGfcNbrdehDES5pm9vTtCBxGF+
-	sTyEy7SKRiG/Q1zcP
-X-Received: by 2002:a5d:4488:: with SMTP id j8mr96064wrq.306.1584374879942;
-        Mon, 16 Mar 2020 09:07:59 -0700 (PDT)
-X-Received: by 2002:a5d:4488:: with SMTP id j8mr96041wrq.306.1584374879656;
-        Mon, 16 Mar 2020 09:07:59 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from localhost.localdomain (96.red-83-59-163.dynamicip.rima-tde.net. [83.59.163.96])
-        by smtp.gmail.com with ESMTPSA id f203sm206459wmf.18.2020.03.16.09.07.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Mar 2020 09:07:59 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	kvm@vger.kernel.org,
-	Thomas Huth <thuth@redhat.com>,
-	qemu-arm@nongnu.org,
-	Fam Zheng <fam@euphon.net>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v3 15/19] target/arm: Make m_helper.c optional via CONFIG_ARM_V7M
-Date: Mon, 16 Mar 2020 17:06:30 +0100
-Message-Id: <20200316160634.3386-16-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200316160634.3386-1-philmd@redhat.com>
-References: <20200316160634.3386-1-philmd@redhat.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b=Bbwwfdvr;
+       spf=pass (google.com: domain of sstabellini@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sstabellini@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost (c-67-164-102-47.hsd1.ca.comcast.net [67.164.102.47])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id D1ECE2051A;
+	Mon, 16 Mar 2020 17:05:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1584378338;
+	bh=SBAgB4tnN5H5EqyYoewhaMY5csYHCmQVwSVf76yy/gs=;
+	h=Date:From:To:cc:Subject:In-Reply-To:References:From;
+	b=BbwwfdvrJpLp/NaruIf9GnCrZSbOkn0rguWsZRP8XubJ0BcYb1I4HyZTcDujkziS0
+	 BHqsjjbo5+FN5/KvuxaBSKYIQReW/29r1van7t7IZ3ZjNWnkM2mJVIko32wAkDklr9
+	 Ak1FL3P/W7gO5l+lUODN2MDa2HvaVn/f5qowIYMg=
+Date: Mon, 16 Mar 2020 10:05:37 -0700 (PDT)
+From: Stefano Stabellini <sstabellini@kernel.org>
+X-X-Sender: sstabellini@sstabellini-ThinkPad-T480s
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+cc: qemu-devel@nongnu.org, 
+    =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, kvm@vger.kernel.org, 
+    Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, 
+    Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>, 
+    Peter Maydell <peter.maydell@linaro.org>, 
+    Richard Henderson <richard.henderson@linaro.org>, 
+    Stefano Stabellini <sstabellini@kernel.org>, 
+    Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>, 
+    xen-devel@lists.xenproject.org
+Subject: Re: [PATCH v3 18/19] hw/arm: Do not build to 'virt' machine on Xen
+In-Reply-To: <20200316160634.3386-19-philmd@redhat.com>
+Message-ID: <alpine.DEB.2.21.2003161001510.1269@sstabellini-ThinkPad-T480s>
+References: <20200316160634.3386-1-philmd@redhat.com> <20200316160634.3386-19-philmd@redhat.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: v5GTgJsR9DkE
+Content-Type: multipart/mixed; BOUNDARY="8323329-1799168742-1584378221=:1269"
+Content-ID: <alpine.DEB.2.21.2003161003470.1269@sstabellini-ThinkPad-T480s>
+X-TUID: ozwVbfUtFMtj
 
-From: Thomas Huth <thuth@redhat.com>
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-We've already got the CONFIG_ARM_V7M switch, but it currently can
-not be disabled yet. The m_helper.c code should not be compiled
-into the binary if the switch is not enabled. We also have to
-provide some stubs in a separate file to make sure that we still
-can link the other code without CONFIG_ARM_V7M.
+--8323329-1799168742-1584378221=:1269
+Content-Type: text/plain; CHARSET=UTF-8
+Content-Transfer-Encoding: 8BIT
+Content-ID: <alpine.DEB.2.21.2003161003471.1269@sstabellini-ThinkPad-T480s>
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20190903154810.27365-4-thuth@redhat.com>
-[PMD: add write_v7m_exception() stub when not using TCG,
-      remove CONFIG_ARM_V7M=3Dy in default-configs/arm-softmmu.mak]
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- default-configs/arm-softmmu.mak |  6 ----
- target/arm/cpu.h                |  7 ++++
- target/arm/m_helper-stub.c      | 59 +++++++++++++++++++++++++++++++++
- target/arm/Makefile.objs        |  3 +-
- 4 files changed, 68 insertions(+), 7 deletions(-)
- create mode 100644 target/arm/m_helper-stub.c
+On Mon, 16 Mar 2020, Philippe Mathieu-Daudé wrote:
+> Xen on ARM does not use QEMU machines [*]. Disable the 'virt'
+> machine there to avoid odd errors such:
+> 
+>     CC      i386-softmmu/hw/cpu/a15mpcore.o
+>   hw/cpu/a15mpcore.c:28:10: fatal error: kvm_arm.h: No such file or directory
+> 
+> [*] https://wiki.xenproject.org/wiki/Xen_ARM_with_Virtualization_Extensions#Use_of_qemu-system-i386_on_ARM
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.=
-mak
-index 511d74da58..7ae8006556 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -1,11 +1,5 @@
- # Default configuration for arm-softmmu
-=20
--# CONFIG_SEMIHOSTING is always required on this architecture
--CONFIG_SEMIHOSTING=3Dy
--
--# TODO: ARM_V7M is currently always required - make this more flexible!
--CONFIG_ARM_V7M=3Dy
--
- # CONFIG_PCI_DEVICES=3Dn
- # CONFIG_TEST_DEVICES=3Dn
-=20
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 4ffd991b6f..84e14ce5a9 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1278,7 +1278,14 @@ void pmu_init(ARMCPU *cpu);
- /* Write a new value to v7m.exception, thus transitioning into or out
-  * of Handler mode; this may result in a change of active stack pointer.
-  */
-+#if !defined(CONFIG_TCG)
-+static inline void write_v7m_exception(CPUARMState *env, uint32_t new_exc)
-+{
-+    g_assert_not_reached();
-+}
-+#else
- void write_v7m_exception(CPUARMState *env, uint32_t new_exc);
-+#endif
-=20
- /* Map EL and handler into a PSTATE_MODE.  */
- static inline unsigned int aarch64_pstate_mode(unsigned int el, bool handl=
-er)
-diff --git a/target/arm/m_helper-stub.c b/target/arm/m_helper-stub.c
-new file mode 100644
-index 0000000000..9316a9995b
---- /dev/null
-+++ b/target/arm/m_helper-stub.c
-@@ -0,0 +1,59 @@
-+/*
-+ * ARM V7M related stubs.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include "qemu/osdep.h"
-+#include "cpu.h"
-+#include "exec/helper-proto.h"
-+#include "internals.h"
-+
-+void HELPER(v7m_bxns)(CPUARMState *env, uint32_t dest)
-+{
-+    abort();
-+}
-+
-+void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
-+{
-+    abort();
-+}
-+
-+uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
-+{
-+    abort();
-+}
-+
-+void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
-+{
-+    abort();
-+}
-+
-+uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
-+{
-+    abort();
-+}
-+
-+void HELPER(v7m_preserve_fp_state)(CPUARMState *env)
-+{
-+    abort();
-+}
-+
-+void write_v7m_exception(CPUARMState *env, uint32_t new_exc)
-+{
-+    abort();
-+}
-+
-+void HELPER(v7m_vlldm)(CPUARMState *env, uint32_t fptr)
-+{
-+    abort();
-+}
-+
-+void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
-+{
-+    abort();
-+}
-+
-+ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
-+{
-+    abort();
-+}
-diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
-index a0df58526b..993899d731 100644
---- a/target/arm/Makefile.objs
-+++ b/target/arm/Makefile.objs
-@@ -66,7 +66,8 @@ obj-y +=3D tlb_helper.o debug_helper.o
- obj-y +=3D translate.o op_helper.o
- obj-y +=3D crypto_helper.o
- obj-y +=3D iwmmxt_helper.o vec_helper.o neon_helper.o
--obj-y +=3D m_helper.o
-+obj-$(CONFIG_ARM_V7M) +=3D m_helper.o
-+obj-$(call lnot,$(CONFIG_ARM_V7M)) +=3D m_helper-stub.o
-=20
- obj-$(CONFIG_ARM_V4) +=3D cpu_v4.o
- obj-$(CONFIG_ARM_V5) +=3D cpu_v5.o
---=20
-2.21.1
+
+I confirm that what's written on that wikipage is correct: Xen on ARM
+doesn't use QEMU for emulation, only as a PV backends provider. As such,
+and also because the code is a bit entangled with the x86 platform, even
+on ARM we are building and running qemu-system-i386 to get the PV disk
+and PV framebuffer. Of course, no x86 emulation is actually done.
+
+Ideally we would have a non-arch-specific machine type for the PV
+backends, but that doesn't exist today.
+
+In short, I think this patch is fine, at least until somebody comes
+around and tries to add emulation to Xen on ARM.
+
+
+
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+> Cc: Stefano Stabellini <sstabellini@kernel.org>
+> Cc: Anthony Perard <anthony.perard@citrix.com>
+> Cc: Paul Durrant <paul@xen.org>
+> Cc: xen-devel@lists.xenproject.org
+> ---
+>  hw/arm/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 8e801cd15f..69a8e30125 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -1,5 +1,6 @@
+>  config ARM_VIRT
+>      bool
+> +    depends on !XEN
+>      default y if KVM
+>      imply PCI_DEVICES
+>      imply TEST_DEVICES
+> -- 
+> 2.21.1
+> 
+--8323329-1799168742-1584378221=:1269--

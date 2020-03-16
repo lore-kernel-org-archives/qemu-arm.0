@@ -1,80 +1,80 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp249735lfe;
-        Mon, 16 Mar 2020 09:06:52 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsKZf8fc5txYWVqt/+aA49gTFb6my4+h68y5g0GEBvM2OKkROVvk6+jjyqS/yTlJJO+B18W
-X-Received: by 2002:a5d:540c:: with SMTP id g12mr97341wrv.230.1584374812679;
-        Mon, 16 Mar 2020 09:06:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584374812; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp249890lfe;
+        Mon, 16 Mar 2020 09:06:59 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vv62/4AcK76qqBgs1CMUFpjtQQKIW+1B+wsIXLGQ0gFSsKU9yr7NZQSYXP4LtsZprn9Csje
+X-Received: by 2002:a25:e792:: with SMTP id e140mr381564ybh.187.1584374819603;
+        Mon, 16 Mar 2020 09:06:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584374819; cv=none;
         d=google.com; s=arc-20160816;
-        b=CJQKHcOyYVOEfN3AYms/dZVUZrAGJGETmOq1O/SSC4kSzabALwalAnQwbB/AMFX3Ay
-         G9tBz5OaF/YRKL/xB1KQZ2hXe6iqGcNfen1gwNfArjhjD0yHug46ZzT9BAEgOnxQQVxP
-         WN35M7VIvxioWsypCZAFiA98rst5k+rKJv1EaE9GgMYdb7oIJQ4gxZT7UcAIqjKl0A14
-         th0zGCRKcdv7+S6E3e1Cf0HydOPHV5kc7HTrd72UjX/xn1dmcNAOIbmLZQnjpqufNJxk
-         8xS7muw1BUGgOz3Btsc4yUrfBTNZgmUAtq0aocVO5L8rKgHYjyYxA9Sujhd7QgE5mdpu
-         1Ncw==
+        b=scmd4EI+WRG4OBiXFKlPaRiaqc8s9epjigaESiA96OCRl4kpXVb4lfdT5WmeHMKtTc
+         Se/qZX5FTu+m7+bNVrCAacgmK3CMuW1/KttAF07D5s635Lb7xy9Ys3ZzlXx+g+C166B/
+         AflpHxN0hvFgmQ8aPjdK2UbH+gBkAlYA3eo/9S0xcBEiz80VAkdH9oYwSA+LtGFa9bRD
+         Asa99e3IAQI+73uVBXxtK1VPkf5/6IudlDcDjTj+6mss56wBRhmx9a9QuuShnqEovtyV
+         jnDcnGHfyFBDMCMuKWerXhdfDOrlWhTP48KBGAlUa1T5eEQxlrwLAA8PP3zonluywCsU
+         uUmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ecct8qM9CQq9wafb4H/DdqFCaIbWp3zdOza4EOqH9I4=;
-        b=Nuy27MGUu90el4fb8RD5o+R1diRvhLIMMetankaFOPHDAMUiHvLq3G86zWExUVD3O9
-         6BtK7j9HRt3YWVwjHFU+R9oQqgXVbPnGMYWz3kT48dla4ktDZUcul5DV3+1rtSWx7RKJ
-         lJfYoJkZobIyBfrD0T/jQBtir8erGMqAbGURKFYKPqfWnKTUxsWtjohvc5J+6kgXpN13
-         xTxDzvOivl2Y4HdQrCQa/iSuFljn5Kiwo8D4QPwjhAOKY9pgneVB0ugvBWwoiapdSa9Z
-         uvAf41KplZs2ip5o+xE1c4NXPAtNXWrq+2pVPlP9FMBM1a5Os0B46rYHrcI3TiaQpaVu
-         mN3A==
+        bh=dGhG21x/brBabH+9g/T50LsdW2AZT9lQa/ZmuQmYRQ4=;
+        b=k0G3hVHMv87tArSVyf5KyAeKLEXITFUKHUdjMolBWHH7yeJ92Sm4JvivB8oNoinATf
+         sAtjXjYVbppRV5ts8C59N2JEn+tBcOMDB7f7MLVWY5VIUOLccTThnGRef/lgZstvOZek
+         KWqmd5ejJXvowLWDn2LH3kQ4QXzb1h/M4xWDgrufi87M5xdiciH+7hwBLW80wcWiw7Mc
+         LinrfzFD9vgk+VM51sO7Tcr28ZHwrbUY2OycTGw6Vk3kCNiWNn59Oz1OgQkyQv7st4wG
+         AgL8b+8Z1X9PD8iESrRKT7BeZMsZlhbCRWs7cOaDFelvHbVxiV88SWZuSIAgNVjeoOpM
+         1WkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c95YFYMk;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WdryLUou;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
-        by mx.google.com with ESMTPS id 93si290597wrc.40.2020.03.16.09.06.52
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
+        by mx.google.com with ESMTPS id s125si132936ybf.131.2020.03.16.09.06.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2020 09:06:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
+        Mon, 16 Mar 2020 09:06:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c95YFYMk;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WdryLUou;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584374811;
+	s=mimecast20190719; t=1584374819;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=ecct8qM9CQq9wafb4H/DdqFCaIbWp3zdOza4EOqH9I4=;
-	b=c95YFYMkfCRaVN+sBlJNYP59oneTP5J978NZXe6kzWU3HRPrA/P3U4zustSTbGdWNutv5b
-	sgYuvGmUSLdYOiFirMRDqrhWZXDMwMco8kL9PNTjZRJHwhgf/nKflkvQUDySM3o0D3C9Qi
-	tfIVR2tThEqfzXrE/P9RffEtaOvRnqc=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-247-pT_x-czaMHyMK2pMSXmfUw-1; Mon, 16 Mar 2020 12:06:49 -0400
-X-MC-Unique: pT_x-czaMHyMK2pMSXmfUw-1
-Received: by mail-wr1-f69.google.com with SMTP id s4so3848252wrb.19
-        for <alex.bennee@linaro.org>; Mon, 16 Mar 2020 09:06:49 -0700 (PDT)
+	bh=dGhG21x/brBabH+9g/T50LsdW2AZT9lQa/ZmuQmYRQ4=;
+	b=WdryLUouN+2Tur+2jPmQfEFpO/ybexozBavfPgSVY1QnPrl+78McH/6BPmtXXLAGJl0hc6
+	jP1u9jS6Cd9OcprMJ47FkZ2yIyJ6RqNFfDOIoqUduJmFj9CApOTRHYlMgwOrGZg50QpVJO
+	h5kQr9Dvo+oBFe6yYjYON/h2E/tN0Uk=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-116-W40nNKRbP6CIoxq_sEsmWw-1; Mon, 16 Mar 2020 12:06:55 -0400
+X-MC-Unique: W40nNKRbP6CIoxq_sEsmWw-1
+Received: by mail-wr1-f72.google.com with SMTP id q18so9242522wrw.5
+        for <alex.bennee@linaro.org>; Mon, 16 Mar 2020 09:06:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=ZypQ8Ym2m02m1znfiemKRznaDVP8zp+ewV5H3Kv12cs=;
-        b=bEcbt69b/EC8IviamVHUbiUu8/kNNMYdguzKBR6Ud3+Qgcyswe2xvpCHRZ7kotaEtg
-         nfncTDDq6JJ9UHC4OlgRyk0CdSPDj72j351NSy4FazMWlQ0asivwJ4paC5BrJngP+Y2d
-         JowYDztPpFdRRyPgr51/I2b32QSqNfamJl55sD9N63Sgjze09yEGYOpZzzpFh/9QR/rU
-         8Xjdz50KzUDt5OSi6dQEYyV5RFlcVUj0fcNENpF83ZHA+MnSgq3E7AuEEHNjqvl8J8jc
-         FyX2/e/TdWTTr4ZZsv6bkzEHeaKNSspzd3vPu2QMobxkDAjQ5ALdB1sYVLugNAD28On1
-         oObQ==
-X-Gm-Message-State: ANhLgQ0QjYkin81gJ/3psbtAg2ed4IhfL2aw87qd0LqcAegmCOqTBGsn
-	tSyVkUn/kgBGVHjFE+VLFh6zAB6wY6TpEw3QSSM/GB0TrmhG6Z1SLWhQh4DosUie8Sg53duU1/q
-	e/0kglpEYUM6z4CaG
-X-Received: by 2002:a5d:6287:: with SMTP id k7mr52974wru.195.1584374808595;
-        Mon, 16 Mar 2020 09:06:48 -0700 (PDT)
-X-Received: by 2002:a5d:6287:: with SMTP id k7mr52955wru.195.1584374808384;
-        Mon, 16 Mar 2020 09:06:48 -0700 (PDT)
+        bh=va3NBmW9VPeLqbh+njzNv2dIJgLWDq461h5IT9vGT6A=;
+        b=n03mfgk7P/xtSmaxZtr/J/JlwOo0oVKA/yLrU1PAtoCuRqfJ6TXlZL7iB7GHI1mJCI
+         4i+DDmsbii1Ruzv94r6Qa1afZ/8XNHWx8pK+5hmjSirNuCDxwU1bSh3ikvLA/wQv2KU7
+         /gisjhlkjERIlzPZIlnXJFcIFA9Zx0v5bfZQ63zJsSeDTCIeVReI4h9J5FfQVreXHOvc
+         7bMGFymA7taGeGb4ZL6ZiOVdxwMDufBpq9nz/U6iy6YqJ3ldqlo4EWMAqpPkz+TogElD
+         Ooizdd4uBtK831tu5u9Ljqr2M1ywGIBpOCn57vSo0c+Btlwlcx8R4F/S0gkpcI6LoIyI
+         o+AA==
+X-Gm-Message-State: ANhLgQ3v/4FhCJbmVNWtteSiPJrU78JU/PkI5RBjRtEpaq8pokPajPf0
+	NBEFiVTvJJWaT/X6CB3hHSjhHo6/MVQ5HsM24IxLpu82qXgg6/WNahZvRgEoeVW375lXFj1JcM0
+	XbepYw3Se7++yp2pp
+X-Received: by 2002:adf:e28b:: with SMTP id v11mr59295wri.229.1584374813952;
+        Mon, 16 Mar 2020 09:06:53 -0700 (PDT)
+X-Received: by 2002:adf:e28b:: with SMTP id v11mr59285wri.229.1584374813809;
+        Mon, 16 Mar 2020 09:06:53 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from localhost.localdomain (96.red-83-59-163.dynamicip.rima-tde.net. [83.59.163.96])
-        by smtp.gmail.com with ESMTPSA id b15sm498970wru.70.2020.03.16.09.06.46
+        by smtp.gmail.com with ESMTPSA id b12sm483914wro.66.2020.03.16.09.06.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Mar 2020 09:06:47 -0700 (PDT)
+        Mon, 16 Mar 2020 09:06:53 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -85,11 +85,10 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v3 02/19] target/arm: Make set_feature() available for other files
-Date: Mon, 16 Mar 2020 17:06:17 +0100
-Message-Id: <20200316160634.3386-3-philmd@redhat.com>
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v3 03/19] target/arm: Restrict DC-CVAP instruction to TCG accel
+Date: Mon, 16 Mar 2020 17:06:18 +0100
+Message-Id: <20200316160634.3386-4-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200316160634.3386-1-philmd@redhat.com>
 References: <20200316160634.3386-1-philmd@redhat.com>
@@ -99,96 +98,63 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8;
 	text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: O+wg2ocfOlUN
+X-TUID: q7tevAPQTw0/
 
-From: Thomas Huth <thuth@redhat.com>
+Under KVM the 'Data or unified Cache line Clean by VA to PoP'
+instruction will trap.
 
-Move the common set_feature() and unset_feature() functions
-from cpu.c and cpu64.c to internals.h.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20190921150420.30743-2-thuth@redhat.com>
-[PMD: Split Thomas's patch in two: set_feature, cpu_register (later)]
+Fixes: 0d57b4999 ("Add support for DC CVAP & DC CVADP ins")
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- target/arm/internals.h | 10 ++++++++++
- target/arm/cpu.c       | 10 ----------
- target/arm/cpu64.c     | 11 +----------
- 3 files changed, 11 insertions(+), 20 deletions(-)
+ target/arm/helper.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index e633aff36e..7341848e1d 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -27,6 +27,16 @@
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index b61ee73d18..924deffd65 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6777,7 +6777,7 @@ static const ARMCPRegInfo rndr_reginfo[] =3D {
+     REGINFO_SENTINEL
+ };
 =20
- #include "hw/registerfields.h"
-=20
-+static inline void set_feature(CPUARMState *env, int feature)
-+{
-+    env->features |=3D 1ULL << feature;
-+}
-+
-+static inline void unset_feature(CPUARMState *env, int feature)
-+{
-+    env->features &=3D ~(1ULL << feature);
-+}
-+
- /* register banks for CPU modes */
- #define BANK_USRSYS 0
- #define BANK_SVC    1
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 3623ecefbd..c074364542 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -723,16 +723,6 @@ static bool arm_cpu_virtio_is_big_endian(CPUState *cs)
-=20
- #endif
-=20
--static inline void set_feature(CPUARMState *env, int feature)
--{
--    env->features |=3D 1ULL << feature;
--}
--
--static inline void unset_feature(CPUARMState *env, int feature)
--{
--    env->features &=3D ~(1ULL << feature);
--}
--
- static int
- print_insn_thumb1(bfd_vma pc, disassemble_info *info)
+-#ifndef CONFIG_USER_ONLY
++#if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
+ static void dccvap_writefn(CPUARMState *env, const ARMCPRegInfo *opaque,
+                           uint64_t value)
  {
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 62d36f9e8d..622082eae2 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -21,6 +21,7 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "cpu.h"
-+#include "internals.h"
- #include "qemu/module.h"
- #if !defined(CONFIG_USER_ONLY)
- #include "hw/loader.h"
-@@ -29,16 +30,6 @@
- #include "kvm_arm.h"
- #include "qapi/visitor.h"
+@@ -6820,9 +6820,9 @@ static const ARMCPRegInfo dcpodp_reg[] =3D {
+       .accessfn =3D aa64_cacheop_poc_access, .writefn =3D dccvap_writefn }=
+,
+     REGINFO_SENTINEL
+ };
+-#endif /*CONFIG_USER_ONLY*/
++#endif /* !CONFIG_USER_ONLY && CONFIG_TCG */
 =20
--static inline void set_feature(CPUARMState *env, int feature)
--{
--    env->features |=3D 1ULL << feature;
--}
--
--static inline void unset_feature(CPUARMState *env, int feature)
--{
--    env->features &=3D ~(1ULL << feature);
--}
--
- #ifndef CONFIG_USER_ONLY
- static uint64_t a57_a53_l2ctlr_read(CPUARMState *env, const ARMCPRegInfo *=
-ri)
- {
+-#endif
++#endif /* TARGET_AARCH64 */
+=20
+ static CPAccessResult access_predinv(CPUARMState *env, const ARMCPRegInfo =
+*ri,
+                                      bool isread)
+@@ -7929,7 +7929,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+     if (cpu_isar_feature(aa64_rndr, cpu)) {
+         define_arm_cp_regs(cpu, rndr_reginfo);
+     }
+-#ifndef CONFIG_USER_ONLY
++#if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
+     /* Data Cache clean instructions up to PoP */
+     if (cpu_isar_feature(aa64_dcpop, cpu)) {
+         define_one_arm_cp_reg(cpu, dcpop_reg);
+@@ -7938,8 +7938,8 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+             define_one_arm_cp_reg(cpu, dcpodp_reg);
+         }
+     }
+-#endif /*CONFIG_USER_ONLY*/
+-#endif
++#endif /* !CONFIG_USER_ONLY && CONFIG_TCG */
++#endif /* TARGET_AARCH64 */
+=20
+     if (cpu_isar_feature(any_predinv, cpu)) {
+         define_arm_cp_regs(cpu, predinv_reginfo);
 --=20
 2.21.1

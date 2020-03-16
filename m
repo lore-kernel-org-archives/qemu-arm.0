@@ -1,80 +1,80 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp250378lfe;
-        Mon, 16 Mar 2020 09:07:22 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvi4sTH6stiquE1sy088NvtTHVtyheDtBlRze7KYOSZdq7tFVlsaaZykksmSNAIs/SPof6E
-X-Received: by 2002:a25:c246:: with SMTP id s67mr389555ybf.95.1584374842706;
-        Mon, 16 Mar 2020 09:07:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584374842; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp250525lfe;
+        Mon, 16 Mar 2020 09:07:29 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vujzFuXhmh8IbszPGQrcdg7Un05PBOf/iEsbGlI5X475GyS/mvyhtxgJ6rgXeKV+KF+oUF2
+X-Received: by 2002:a1c:6146:: with SMTP id v67mr29524945wmb.78.1584374849070;
+        Mon, 16 Mar 2020 09:07:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584374849; cv=none;
         d=google.com; s=arc-20160816;
-        b=JTPOllpnTAbw93jnh4xrSNBGYvkQ5QaqsCRmqVTbeK79ugtoj6VL52Oshpvsg7n0q+
-         uDLqRyv0wSzxwr9RIN2Ym/aQY+uIbInjbUYMTQ05riQDJrt72Yt7V4z0AEIGlBMKgEOD
-         MXNLkSDUMggJ4QcEv6Uz1H3CRvFHjT+oB8qXGmMJ4G75YN4hTmuKdbFUoSCopynUjOEd
-         SxdSiBHSWLh4s2NXhbFMi5AUtKA/BDBZy5PhfaPvI92C2A2P8aqD0MRmXqKZukaD2RC1
-         HgSSgBDSOQZzJqJ3H+yTgPfPrTy4IIcpMWzFzdIzQo4th8meYwBa8qUvXzBOlFOtckFZ
-         99aw==
+        b=H83wFkm/Q4s73U0lkxe8cTq5eMhNDVVJzbTmDzcwdRRkEzX6zVQrIatm+SZGuNtzM8
+         MPkQar1abte8C3iiXJO0M5Z+O5sUDkqZ/j5lwKTY0/osymqgBUPSFlcOZkajQuydOZrc
+         1yeG6Xf665Bnhf1Rl9uO1aNZD3gXt/3k/reiUNnTXhqxfPfnPqyjxO/CmYdk3Pz2YCF2
+         EeEPDj9jkxEIJNigSEg5spFpNGwz60jJBlldvFn03eYAlcRWIuVPElLaYAe1GcNveGdw
+         h0U8TayNwRoEYC9oJO5pMfIOqBdn4/mxw0T0h8AEJrbkBlFtK4YvsNUmNhUJAmeLFib5
+         /Ctw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=bL2VrSLFEXUirQF2ArCcrNoQCZwZW3hELnT927BBnbQ=;
-        b=xy7RjMXJpGEnJ6BQNNy9PQg9rL2AH/pDfoaMTxnQ6kZ6NHBDuAuCGCCAt/m8IG4xIV
-         v3uSJGYC7BLwBlrorkrYaId850chdXGOvhyfZqoWozdAL59PMwgNs1D1Fct22m/zqmS2
-         81UAw0kwPg/oqY1quKCbx/O0gMkVHAd9zeXDTmtku8Ozn5sy3zKHXcQwsi5cZuQsGO4E
-         P0LmFAb6I5sg6Pm6kcnss88iJMiCdIzTBBatQQMSqemo3+6/mnk3McKskwPHa36Z/Uiu
-         PQmdzIlOZI5NI2Q7nfNGPG8FUkW+zQJiyBwHMGEherVJ2aLiUNEMPj5ZslCrDUido7BO
-         C+mg==
+        bh=5MseejxD/7No0UFmjuvYKtOzc/OHo7duv42MWn+BaII=;
+        b=nZP4XeAsJRc89WDEghtGdWuMy2SLiSiAgUy3QDq0BC3WwIOF13VYBr2RfUq0kGdtEN
+         eOcUnGUri7+8QG3cwkYtuDXOTn13BQYOcO6FO7Zw+4Ye8zUuXBOiHtTzauk1Sh0QEtld
+         DODuA4q9jw9mW4dfFvw522IdvkzQu0A4+6gTGdVtFZrYn4/qCRPr8S60tbfukEQ4YViG
+         cNsCLm9fjDEhB5TmfhVrsVVZ4pOtyx6xQ8xzsA9IwLIOIYbhQZVvLOJ36WubYeJo1RKd
+         zWlhMgw2BLbIU1Fr0T9rpogdMTERpGzBvBJIHA1DbESONdSQlnbM2d/JnvibWc/Nz7Xy
+         NsqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="VMbDa/Ay";
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MjsUOyfO;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by mx.google.com with ESMTPS id z5si114429ybz.446.2020.03.16.09.07.22
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
+        by mx.google.com with ESMTPS id f10si253383wrq.455.2020.03.16.09.07.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2020 09:07:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+        Mon, 16 Mar 2020 09:07:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="VMbDa/Ay";
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MjsUOyfO;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584374842;
+	s=mimecast20190719; t=1584374848;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=bL2VrSLFEXUirQF2ArCcrNoQCZwZW3hELnT927BBnbQ=;
-	b=VMbDa/AymFUOaTFpLLfvn964lbSorW/rRI/jQ5CwMKIadWr8i0vL6sQkxW0HQAJcaX0ztI
-	gkZsKkD0mkruiJzT4eaOpo2ojflOyDxMVqBbChexAHWKUBzSnOwjr8EXRENDIQNNH/Xexj
-	mKH26KApq1FcWZ/21QZaDuhG0WIEomU=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-426-82y1rN6YMCi315TvN0zqNQ-1; Mon, 16 Mar 2020 12:07:18 -0400
-X-MC-Unique: 82y1rN6YMCi315TvN0zqNQ-1
-Received: by mail-wr1-f70.google.com with SMTP id t10so2953208wrp.15
-        for <alex.bennee@linaro.org>; Mon, 16 Mar 2020 09:07:18 -0700 (PDT)
+	bh=5MseejxD/7No0UFmjuvYKtOzc/OHo7duv42MWn+BaII=;
+	b=MjsUOyfOw5B5aqAcs1Srh06XkDqiNVq9cNrjWtLv19RcFr48lEYtT84wdFqjQHj39AIH0/
+	VQ7GCwhnK4CKCgU0MkrMfqeBTiknTchbl6RC0+/oiYQaEvi5i5KJZ+2+hwgEWkoJft3SVz
+	d+XhQikjp7/40YRxzMe1M4vZS9JPwtg=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-389---411KgiPRq84xXGWqpXQA-1; Mon, 16 Mar 2020 12:07:22 -0400
+X-MC-Unique: --411KgiPRq84xXGWqpXQA-1
+Received: by mail-wm1-f70.google.com with SMTP id 20so4821572wmk.1
+        for <alex.bennee@linaro.org>; Mon, 16 Mar 2020 09:07:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=r1sJ64QkUjojSCH6EGfhYUMESaCKLhSIpdoia+8OdJA=;
-        b=UcddUykeMGhLFOY0yNG1R51QkTbKTXsDhhMutSFIcWnBSIc2FWrny+FRMMzsK1PDLI
-         1snjhTZ/MpVGnVzRqtJOFSOEU9Rm8LUGw/m/g8D0HClIxxy0hmjcFVUEsWwaYrBmCZsb
-         7VY2ZSxldHAr9d+lOa+PVwDwi4lCWRMzKBrDuCqWcWe8+mepBemPtg+A3Iwors9rXfSx
-         cQkhJjXeMbbggEYzl1ifGiirkxr+X7ygBEqWacpmwWZfnrgMLRB0vojP62qTtAaFhwqv
-         uwVFOQaMe5kyww1E6EzTdHmOkyAONsK9Bg/KFeym6LNXl+4cACwpTxOLac+4Xp2SQngM
-         uMCg==
-X-Gm-Message-State: ANhLgQ0KqSdaMCq8st0brxVVRrHYHg34tICPjrBM1JnNVcJv9UYKkgq6
-	OD0f3m7+f9gCNllWTkdcsf7GikpWbcDHD7zVyB7vAV+s+ME85mHCNHZUpxUJGXJdulGku5nfLKd
-	9mem3HBEvKhGdftOs
-X-Received: by 2002:a05:6000:d0:: with SMTP id q16mr77274wrx.71.1584374836479;
-        Mon, 16 Mar 2020 09:07:16 -0700 (PDT)
-X-Received: by 2002:a05:6000:d0:: with SMTP id q16mr77257wrx.71.1584374836307;
-        Mon, 16 Mar 2020 09:07:16 -0700 (PDT)
+        bh=CXjQwOZg5TRrzV2gPeofWVxsNWA85AadaVJBm5vW278=;
+        b=Wn8bE07rrotpF0h/LWwLZ1oqXE4SsNxLn2JxxJ4WBWGYrMxQbbiTla9cKrNg+77o5A
+         FvodGE/S24iEcpUqA8nQyL+aUiiAz0a4vpktU2sOsqbYhEOB0+49EKJd9Nz5pHtmfd9a
+         ae+JsBhaCPZOKh5YC1VRI/0M25Q3GJ2DhjbB1f2JzHzxNHmzW9ZzwVWXiASLshneTLSn
+         SYypgkkfREtUKF7ueSCa3pxkFnr+FdIw+wiCVNddWwnqg/33G1em/tGmle+9/op1rtCr
+         8cDuSlE9XXZZXqPnh7ItnTufKREujfO08CGkYahefRn0emTlFIDz380HdEO1lzIibuec
+         rGtA==
+X-Gm-Message-State: ANhLgQ00CuyI6VbpDRBwJn0BXzxVJIvmqWySBghlj2FTkmSBZF2+pWQt
+	povNkTd+E1S4UJiR84M75AlNMmnsSCzxW0LaAFSFBcRvyefY7pXl14dt1+slLlI0BUUNk6nJP38
+	lFEABpYj0WDD9sioI
+X-Received: by 2002:adf:dd8f:: with SMTP id x15mr63151wrl.201.1584374841784;
+        Mon, 16 Mar 2020 09:07:21 -0700 (PDT)
+X-Received: by 2002:adf:dd8f:: with SMTP id x15mr63130wrl.201.1584374841621;
+        Mon, 16 Mar 2020 09:07:21 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from localhost.localdomain (96.red-83-59-163.dynamicip.rima-tde.net. [83.59.163.96])
-        by smtp.gmail.com with ESMTPSA id y7sm22973551wmd.1.2020.03.16.09.07.14
+        by smtp.gmail.com with ESMTPSA id u204sm185104wmg.40.2020.03.16.09.07.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Mar 2020 09:07:15 -0700 (PDT)
+        Mon, 16 Mar 2020 09:07:21 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -85,11 +85,10 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v3 07/19] target/arm: Make cpu_register() available for other files
-Date: Mon, 16 Mar 2020 17:06:22 +0100
-Message-Id: <20200316160634.3386-8-philmd@redhat.com>
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v3 08/19] target/arm: Add semihosting stub to allow building without TCG
+Date: Mon, 16 Mar 2020 17:06:23 +0100
+Message-Id: <20200316160634.3386-9-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200316160634.3386-1-philmd@redhat.com>
 References: <20200316160634.3386-1-philmd@redhat.com>
@@ -99,108 +98,51 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8;
 	text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: LmqT9XRDhH8F
+X-TUID: PSDo7oCa9SfG
 
-From: Thomas Huth <thuth@redhat.com>
+Semihosting requires TCG. When configured with --disable-tcg, the
+build fails because the 'do_arm_semihosting' is missing. Instead
+of adding more few more #ifdeffery to the helper code, add a stub.
 
-Make cpu_register() (renamed to arm_cpu_register()) available
-from internals.h so we can register CPUs also from other files
-in the future.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20190921150420.30743-2-thuth@redhat.com>
-[PMD: Split Thomas's patch in two: set_feature (earlier), cpu_register]
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- target/arm/cpu-qom.h |  9 ++++++++-
- target/arm/cpu.c     | 10 ++--------
- target/arm/cpu64.c   |  8 +-------
- 3 files changed, 11 insertions(+), 16 deletions(-)
+ target/arm/arm-semi-stub.c | 13 +++++++++++++
+ target/arm/Makefile.objs   |  3 ++-
+ 2 files changed, 15 insertions(+), 1 deletion(-)
+ create mode 100644 target/arm/arm-semi-stub.c
 
-diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
-index 3a9d31ea9d..29c5e2f2c9 100644
---- a/target/arm/cpu-qom.h
-+++ b/target/arm/cpu-qom.h
-@@ -35,7 +35,14 @@ struct arm_boot_info;
-=20
- #define TYPE_ARM_MAX_CPU "max-" TYPE_ARM_CPU
-=20
--typedef struct ARMCPUInfo ARMCPUInfo;
-+typedef struct ARMCPUInfo {
-+    const char *name;
-+    void (*initfn)(Object *obj);
-+    void (*class_init)(ObjectClass *oc, void *data);
-+} ARMCPUInfo;
+diff --git a/target/arm/arm-semi-stub.c b/target/arm/arm-semi-stub.c
+new file mode 100644
+index 0000000000..47d042f942
+--- /dev/null
++++ b/target/arm/arm-semi-stub.c
+@@ -0,0 +1,13 @@
++/*
++ * Arm "Angel" semihosting syscalls stubs
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "hw/semihosting/semihost.h"
 +
-+void arm_cpu_register(const ARMCPUInfo *info);
-+void aarch64_cpu_register(const ARMCPUInfo *info);
++target_ulong do_arm_semihosting(CPUARMState *env)
++{
++    abort();
++}
+diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+index 0c6f8c248d..fa278bb4c1 100644
+--- a/target/arm/Makefile.objs
++++ b/target/arm/Makefile.objs
+@@ -57,7 +57,8 @@ target/arm/translate.o: target/arm/decode-t16.inc.c
 =20
- /**
-  * ARMCPUClass:
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index c074364542..d2813eb81a 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2698,12 +2698,6 @@ static void arm_max_initfn(Object *obj)
+ ifeq ($(CONFIG_TCG),y)
 =20
- #endif /* !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64) */
+-obj-y +=3D arm-semi.o
++obj-$(CONFIG_SEMIHOSTING) +=3D arm-semi.o
++obj-$(call lnot,$(CONFIG_SEMIHOSTING)) +=3D arm-semi-stub.o
 =20
--struct ARMCPUInfo {
--    const char *name;
--    void (*initfn)(Object *obj);
--    void (*class_init)(ObjectClass *oc, void *data);
--};
--
- static const ARMCPUInfo arm_cpus[] =3D {
- #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
-     { .name =3D "arm926",      .initfn =3D arm926_initfn },
-@@ -2869,7 +2863,7 @@ static void cpu_register_class_init(ObjectClass *oc, =
-void *data)
-     acc->info =3D data;
- }
+ endif # CONFIG_TCG
 =20
--static void cpu_register(const ARMCPUInfo *info)
-+void arm_cpu_register(const ARMCPUInfo *info)
- {
-     TypeInfo type_info =3D {
-         .parent =3D TYPE_ARM_CPU,
-@@ -2910,7 +2904,7 @@ static void arm_cpu_register_types(void)
-     type_register_static(&idau_interface_type_info);
-=20
-     while (info->name) {
--        cpu_register(info);
-+        arm_cpu_register(info);
-         info++;
-     }
-=20
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 622082eae2..e89388378b 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -728,12 +728,6 @@ static void aarch64_max_initfn(Object *obj)
-                         cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
- }
-=20
--struct ARMCPUInfo {
--    const char *name;
--    void (*initfn)(Object *obj);
--    void (*class_init)(ObjectClass *oc, void *data);
--};
--
- static const ARMCPUInfo aarch64_cpus[] =3D {
-     { .name =3D "cortex-a57",         .initfn =3D aarch64_a57_initfn },
-     { .name =3D "cortex-a53",         .initfn =3D aarch64_a53_initfn },
-@@ -816,7 +810,7 @@ static void cpu_register_class_init(ObjectClass *oc, vo=
-id *data)
-     acc->info =3D data;
- }
-=20
--static void aarch64_cpu_register(const ARMCPUInfo *info)
-+void aarch64_cpu_register(const ARMCPUInfo *info)
- {
-     TypeInfo type_info =3D {
-         .parent =3D TYPE_AARCH64_CPU,
 --=20
 2.21.1

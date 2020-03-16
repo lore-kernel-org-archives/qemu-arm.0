@@ -1,237 +1,83 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id a186sm446743wmh.33.2020.03.16.10.28.38
+        by smtp.gmail.com with ESMTPSA id b10sm818520wrm.30.2020.03.16.10.28.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 16 Mar 2020 10:28:41 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 422431FFAA;
+	by zen.linaroharston (Postfix) with ESMTP id 557E01FFAB;
 	Mon, 16 Mar 2020 17:21:57 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v1 20/28] tests/tcg/aarch64: userspace system register test
-Date: Mon, 16 Mar 2020 17:21:47 +0000
-Message-Id: <20200316172155.971-21-alex.bennee@linaro.org>
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH  v1 21/28] configure: allow user to specify what gdb to use
+Date: Mon, 16 Mar 2020 17:21:48 +0000
+Message-Id: <20200316172155.971-22-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200316172155.971-1-alex.bennee@linaro.org>
 References: <20200316172155.971-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: SsUj7WaFdf0r
+X-TUID: /sYYR5cXaC9I
 
-This tests a bunch of registers that the kernel allows userspace to
-read including the CPUID registers. We need a SVE aware compiler as we
-are testing the id_aa64zfr0_el1 register in the set.
+This is useful, especially when testing relatively new gdbstub
+features that might not be in distro packages yet.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20190205190224.2198-7-alex.bennee@linaro.org>
-
 ---
-vgdbstub
-  - don't build unless using docker or CROSS_CC_HAS_SVE
----
- tests/tcg/aarch64/sysregs.c       | 172 ++++++++++++++++++++++++++++++
- tests/tcg/aarch64/Makefile.target |   6 ++
- 2 files changed, 178 insertions(+)
- create mode 100644 tests/tcg/aarch64/sysregs.c
+ configure | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/tests/tcg/aarch64/sysregs.c b/tests/tcg/aarch64/sysregs.c
-new file mode 100644
-index 00000000000..40cf8d2877e
---- /dev/null
-+++ b/tests/tcg/aarch64/sysregs.c
-@@ -0,0 +1,172 @@
-+/*
-+ * Check emulated system register access for linux-user mode.
-+ *
-+ * See: https://www.kernel.org/doc/Documentation/arm64/cpu-feature-registers.txt
-+ *
-+ * Copyright (c) 2019 Linaro
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include <asm/hwcap.h>
-+#include <stdio.h>
-+#include <sys/auxv.h>
-+#include <signal.h>
-+#include <string.h>
-+#include <stdbool.h>
-+
-+#ifndef HWCAP_CPUID
-+#define HWCAP_CPUID (1 << 11)
-+#endif
-+
-+int failed_bit_count;
-+
-+/* Read and print system register `id' value */
-+#define get_cpu_reg(id) ({                                      \
-+            unsigned long __val = 0xdeadbeef;                   \
-+            asm("mrs %0, "#id : "=r" (__val));                  \
-+            printf("%-20s: 0x%016lx\n", #id, __val);            \
-+            __val;                                               \
-+        })
-+
-+/* As above but also check no bits outside of `mask' are set*/
-+#define get_cpu_reg_check_mask(id, mask) ({                     \
-+            unsigned long __cval = get_cpu_reg(id);             \
-+            unsigned long __extra = __cval & ~mask;             \
-+            if (__extra) {                                      \
-+                printf("%-20s: 0x%016lx\n", "  !!extra bits!!", __extra);   \
-+                failed_bit_count++;                            \
-+            }                                                   \
-+})
-+
-+/* As above but check RAZ */
-+#define get_cpu_reg_check_zero(id) ({                           \
-+            unsigned long __val = 0xdeadbeef;                   \
-+            asm("mrs %0, "#id : "=r" (__val));                  \
-+            if (__val) {                                        \
-+                printf("%-20s: 0x%016lx (not RAZ!)\n", #id, __val);        \
-+                failed_bit_count++;                            \
-+            }                                                   \
-+})
-+
-+/* Chunk up mask into 63:48, 47:32, 31:16, 15:0 to ease counting */
-+#define _m(a, b, c, d) (0x ## a ## b ## c ## d ##ULL)
-+
-+bool should_fail;
-+int should_fail_count;
-+int should_not_fail_count;
-+uintptr_t failed_pc[10];
-+
-+void sigill_handler(int signo, siginfo_t *si, void *data)
-+{
-+    ucontext_t *uc = (ucontext_t *)data;
-+
-+    if (should_fail) {
-+        should_fail_count++;
-+    } else {
-+        uintptr_t pc = (uintptr_t) uc->uc_mcontext.pc;
-+        failed_pc[should_not_fail_count++] =  pc;
-+    }
-+    uc->uc_mcontext.pc += 4;
-+}
-+
-+int main(void)
-+{
-+    struct sigaction sa;
-+
-+    /* Hook in a SIGILL handler */
-+    memset(&sa, 0, sizeof(struct sigaction));
-+    sa.sa_flags = SA_SIGINFO;
-+    sa.sa_sigaction = &sigill_handler;
-+    sigemptyset(&sa.sa_mask);
-+
-+    if (sigaction(SIGILL, &sa, 0) != 0) {
-+        perror("sigaction");
-+        return 1;
-+    }
-+
-+    /* Counter values have been exposed since Linux 4.12 */
-+    printf("Checking Counter registers\n");
-+
-+    get_cpu_reg(ctr_el0);
-+    get_cpu_reg(cntvct_el0);
-+    get_cpu_reg(cntfrq_el0);
-+
-+    /* HWCAP_CPUID indicates we can read feature registers, since Linux 4.11 */
-+    if (!(getauxval(AT_HWCAP) & HWCAP_CPUID)) {
-+        printf("CPUID registers unavailable\n");
-+        return 1;
-+    } else {
-+        printf("Checking CPUID registers\n");
-+    }
-+
-+    /*
-+     * Some registers only expose some bits to user-space. Anything
-+     * that is IMPDEF is exported as 0 to user-space. The _mask checks
-+     * assert no extra bits are set.
-+     *
-+     * This check is *not* comprehensive as some fields are set to
-+     * minimum valid fields - for the purposes of this check allowed
-+     * to have non-zero values.
-+     */
-+    get_cpu_reg_check_mask(id_aa64isar0_el1, _m(00ff,ffff,f0ff,fff0));
-+    get_cpu_reg_check_mask(id_aa64isar1_el1, _m(0000,00f0,ffff,ffff));
-+    /* TGran4 & TGran64 as pegged to -1 */
-+    get_cpu_reg_check_mask(id_aa64mmfr0_el1, _m(0000,0000,ff00,0000));
-+    get_cpu_reg_check_zero(id_aa64mmfr1_el1);
-+    /* EL1/EL0 reported as AA64 only */
-+    get_cpu_reg_check_mask(id_aa64pfr0_el1,  _m(000f,000f,00ff,0011));
-+    get_cpu_reg_check_mask(id_aa64pfr1_el1,  _m(0000,0000,0000,00f0));
-+    /* all hidden, DebugVer fixed to 0x6 (ARMv8 debug architecture) */
-+    get_cpu_reg_check_mask(id_aa64dfr0_el1,  _m(0000,0000,0000,0006));
-+    get_cpu_reg_check_zero(id_aa64dfr1_el1);
-+    get_cpu_reg_check_zero(id_aa64zfr0_el1);
-+
-+    get_cpu_reg_check_zero(id_aa64afr0_el1);
-+    get_cpu_reg_check_zero(id_aa64afr1_el1);
-+
-+    get_cpu_reg_check_mask(midr_el1,         _m(0000,0000,ffff,ffff));
-+    /* mpidr sets bit 31, everything else hidden */
-+    get_cpu_reg_check_mask(mpidr_el1,        _m(0000,0000,8000,0000));
-+    /* REVIDR is all IMPDEF so should be all zeros to user-space */
-+    get_cpu_reg_check_zero(revidr_el1);
-+
-+    /*
-+     * There are a block of more registers that are RAZ in the rest of
-+     * the Op0=3, Op1=0, CRn=0, CRm=0,4,5,6,7 space. However for
-+     * brevity we don't check stuff that is currently un-allocated
-+     * here. Feel free to add them ;-)
-+     */
-+
-+    printf("Remaining registers should fail\n");
-+    should_fail = true;
-+
-+    /* Unexposed register access causes SIGILL */
-+    get_cpu_reg(id_mmfr0_el1);
-+    get_cpu_reg(id_mmfr1_el1);
-+    get_cpu_reg(id_mmfr2_el1);
-+    get_cpu_reg(id_mmfr3_el1);
-+
-+    get_cpu_reg(mvfr0_el1);
-+    get_cpu_reg(mvfr1_el1);
-+
-+    if (should_not_fail_count > 0) {
-+        int i;
-+        for (i = 0; i < should_not_fail_count; i++) {
-+            uintptr_t pc = failed_pc[i];
-+            uint32_t insn = *(uint32_t *) pc;
-+            printf("insn %#x @ %#lx unexpected FAIL\n", insn, pc);
-+        }
-+        return 1;
-+    }
-+
-+    if (failed_bit_count > 0) {
-+        printf("Extra information leaked to user-space!\n");
-+        return 1;
-+    }
-+
-+    return should_fail_count == 6 ? 0 : 1;
-+}
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 8ed477d0d51..a25afc071cc 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -42,4 +42,10 @@ run-semiconsole: semiconsole
- run-plugin-semiconsole-with-%:
- 	$(call skip-test, $<, "MANUAL ONLY")
+diff --git a/configure b/configure
+index eb49bb6680c..6724158fde1 100755
+--- a/configure
++++ b/configure
+@@ -303,6 +303,7 @@ libs_qga=""
+ debug_info="yes"
+ stack_protector=""
+ use_containers="yes"
++gdb_bin=$(command -v "gdb")
  
-+ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE),)
-+# System Registers Tests
-+AARCH64_TESTS += sysregs
-+sysregs: CFLAGS+=-march=armv8.1-a+sve
-+endif
+ if test -e "$source_path/.git"
+ then
+@@ -1588,6 +1589,8 @@ for opt do
+   ;;
+   --disable-fuzzing) fuzzing=no
+   ;;
++  --with-gdb=*) gdb_bin="$optarg"
++  ;;
+   *)
+       echo "ERROR: unknown option $opt"
+       echo "Try '$0 --help' for more information"
+@@ -1773,6 +1776,7 @@ Advanced options (experts only):
+   --enable-plugins
+                            enable plugins via shared library loading
+   --disable-containers     don't use containers for cross-building
++  --with-gdb=GBB-path      gdb to use for gdbstub tests [$gdb_bin]
+ 
+ Optional features, enabled with --enable-FEATURE and
+ disabled with --disable-FEATURE, default is enabled if available:
+@@ -6734,6 +6738,7 @@ echo "libudev           $libudev"
+ echo "default devices   $default_devices"
+ echo "plugin support    $plugins"
+ echo "fuzzing support   $fuzzing"
++echo "gdb               $gdb_bin"
+ 
+ if test "$supported_cpu" = "no"; then
+     echo
+@@ -7608,6 +7613,10 @@ if test "$plugins" = "yes" ; then
+     fi
+ fi
+ 
++if test -n "$gdb_bin" ; then
++    echo "HAVE_GDB_BIN=$gdb_bin" >> $config_host_mak
++fi
 +
- TESTS += $(AARCH64_TESTS)
+ if test "$tcg_interpreter" = "yes"; then
+   QEMU_INCLUDES="-iquote \$(SRC_PATH)/tcg/tci $QEMU_INCLUDES"
+ elif test "$ARCH" = "sparc64" ; then
 -- 
 2.20.1

@@ -1,126 +1,123 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp321436lfe;
-        Mon, 16 Mar 2020 10:11:54 -0700 (PDT)
-X-Received: by 2002:aca:ed4b:: with SMTP id l72mr361474oih.95.1584378714368;
-        Mon, 16 Mar 2020 10:11:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584378714; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp401751lfe;
+        Mon, 16 Mar 2020 11:27:40 -0700 (PDT)
+X-Received: by 2002:a05:6830:17d7:: with SMTP id p23mr498171ota.312.1584383260528;
+        Mon, 16 Mar 2020 11:27:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584383260; cv=none;
         d=google.com; s=arc-20160816;
-        b=D9P4Xm0WWsjUgk1dEydp0E/dYTbOJHzdrHc+qTLjzwW2RxS+VDtKb5iWsDGEoCkUjw
-         sHCt2oPFBWe4S4874b3e4f1TYPtpVOLqL4PaYpjJ3z9bpb7bKcY5QgbAQFWolh6oFstJ
-         BV61Jeh4FBNBKsKzVEHIB1+6dWfoVJDbjREf/61ZP9iZ5ZDdMdxGRsbfqkFLPVdfzA4E
-         hKi3lhNe7EPc7IN4uh8YsVEPEGYbRdot76h0yj0LguuFLo/acjr90GF9StgQU9Dzx0Zl
-         PZGaRGAfAYv2I3eUZjM+Le9eYvv+hpMmAjhyQMlcPlqpi0pQQcDEf6hPdWXuVAUkLWkh
-         iE1g==
+        b=isPCyodOosW7Nemr5NVUCW80bm8Pg+Z0uA2q8nFCSk70OsSr71jx6CYpaxDsuXJfSP
+         YOTXvUKyXvP2clqbo8a7VVaySZ+v9nqGnKb2VfxmsGe3024mletQAeMiFPs8IYC/Ptc8
+         LB5TU2H30bAiQfEPNTrELyviBeWcYe2yc6gcBCE1eQggAmViHZ8XWvynesM0wODDgdpO
+         sxGkz7/nk1r1Zs6GI4NhZEUnynNpBPy1NLE7hQYOW+67vFLCzNRDdpxsnznYvSaLa6C1
+         FOjf0cNgp4dX5GS/Q1rZETQ68eIZc18m2DpKQR6CfxoBjAtoVFrm8rSlE6B2dGN/oxZp
+         c3ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=jGqYMRdq+LB8A/GFfRTKfqhbPMZ1y7l+2Nofeb6biR4=;
-        b=Z9MB9XGFhRR7bg07qdcG0ZoeNkz5s84JG/YlsiSs0MprJi/2Ym/OKxLLyWsvIAH/ll
-         7eOWlR8dw4Mht0/laL3j65CAOGR9qbiWBTKgl6jtUy7N5uJ0qAKqorlJjkbgna+WvQfH
-         JYZCK23tlZn9vO1oARv7Piiulo3v6kZQV8is35yrQ0oE5mNzK2dp3wHC4rDsrTADrnSU
-         hPC3R2tOBIGi90PC0GcmS1AgWsHzTWmk9BcFtNYJphiuGHEZCvKuG/mjQnGrWbxKGOUE
-         jb/1s88Q83Xf5R/rUgh/cvgwXNMEhSG6uKuZJ2DEqP79hT1tX2tYeZaeaz6o+7Y+dA3s
-         R4cQ==
+        bh=HoFnRy9roedPxz55B+3k96w9hR7fgmKlmGGI8u+V/Mg=;
+        b=qHWN9dkeHVWCgfrB73DQfvPf5Ax6HnkATCez1vBMGoebs0e8jVwKVRE7aHng45HYxi
+         RvMaFnWE84z731aIo7IniczDw2gDCOAqc8TesefeNYA+L6cH0HgeaFv0FF/HxyjmJfMW
+         Cq25RC4v9teFV1BdCFEak9f6ZMloAD2ZlkSfn+rcTtu5igqtg+8JCG7C9bYNZGKEOgU3
+         GHKwAT7KZ/UE4fJebmOMiDqVyXO1DDPoOzwXUSSLTBljHqVWnpUCYdfsOPoKcholrs1P
+         Hw+FvH1MGscmEqcV35wA7cZ7uFeqpnisRao+fOp8ILYjkoWZW/zYYewSjn+3tqMNL2fL
+         MaoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YgKbCK4v;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gfzKk+Nl;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id j93sor178524otj.71.2020.03.16.10.11.54
+        by mx.google.com with SMTPS id f14sor285218ote.146.2020.03.16.11.27.40
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 16 Mar 2020 10:11:54 -0700 (PDT)
+        Mon, 16 Mar 2020 11:27:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YgKbCK4v;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gfzKk+Nl;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=jGqYMRdq+LB8A/GFfRTKfqhbPMZ1y7l+2Nofeb6biR4=;
-        b=YgKbCK4v/DosAcCr/gjPFUczjd0OmJ6Veyb2qjAruXqGF0EJ02OTVJzlie+LQ4hVRz
-         PcDTuEcM9JGw0OH6X88OF/7/08IgrgIoBSyEqJNBcHGkedrd/XCo6ZfD/6DLSgv0LHLH
-         ExwvxF5F0Yh1n31FAGH8drqhnJ/ULGamjlBRsJF6KJc0WaKZoDhriC0e+sSNex2TqYi9
-         5gDBQgPTFLTDkndw5EiVuHRmwH1LHd7W3E5PP+ChyixvqS1KtqN1r6j2Uq0JiycTup5i
-         TgpHYGMOxC0BB+bJl3IsVqsqtRjVLppyFw2N+w4y9Eb+2n0Ct75Q3H2bk+88FA87Sdh0
-         Wdog==
+        bh=HoFnRy9roedPxz55B+3k96w9hR7fgmKlmGGI8u+V/Mg=;
+        b=gfzKk+Nlk3vNbJII3LFGAwJqvKBxBKNpj3ZcWNQq0Po6zLYKGaSb7bbX+DGgn7U5g6
+         cGCbpXRE4eWlKXA7C7temqGSONteu/wL6SnGvvbgG9Z6N9zzwq9zJ8Uc8z2RwS+gyWvl
+         grzQws62zM/AiYueO4wrL7HhejGUqnXb7LB2razZETZgwyLMB7mvaGYIHSwWGL796M/V
+         eD3VBGFl6YkYR7YM3/gF0CpZB/xezCxNnm1iX8j3QbYNTTDcDrX2G1FFGv9pE+WrSyq/
+         BHCcvv0zfNlAWP/kj7+iRkbAYSW+a21wCF1i0Acjp7MLR53T909wFanDVhlhjsgKMJAY
+         7p0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=jGqYMRdq+LB8A/GFfRTKfqhbPMZ1y7l+2Nofeb6biR4=;
-        b=ZKj5F62s2ZLv/F/876SkLAPs5hLeZiUJyCOn/tGhPsMiyqHKfjixVG7H79dSJ523Xl
-         mg5JtE/pqAJ7Tb+L+KBvI+UDz89eMgf9T8azLaInt0fmY7TI+/B5e0md+WGkAwBxCM+4
-         vpmqjSxcnxXiCjpZbN++MTWORBLXJ5IDQ7OCUfquYsNEKOoftZvJtE9RFF3zq5es13mQ
-         gQnLSSdfjoyD5xn5bsdvMo0aD+6mq0qQK6c70xzF4ZR+3kZu55j869GWbyCSDBUN9+kH
-         UdQ3j4p0zp9HRwAtNDK6p2nWn9EYwxJdHJ4/D5YclyuFOy+hTPNWBqy00dWAuTeVtE29
-         jnqQ==
-X-Gm-Message-State: ANhLgQ2RqFUEIxc9ofNVWz4abX4GoUOpLclnZDfYpKqwp1x6qOL0eY2/
-	b3hK6oxYPkfzhM5ri0gqaUhX/tcUQ7RYXXnQ+X6hkA3r
-X-Google-Smtp-Source: ADFU+vvoWGysq3r5lRnRM5NKLd1UWK0pjHyrPiNZU34PNJZFCmSxBRDw8Ugb5d9gZs9dpVzqX8nq0ix0va8GcoCMtHM=
-X-Received: by 2002:a9d:1d43:: with SMTP id m61mr213922otm.91.1584378713933;
- Mon, 16 Mar 2020 10:11:53 -0700 (PDT)
+        bh=HoFnRy9roedPxz55B+3k96w9hR7fgmKlmGGI8u+V/Mg=;
+        b=gUeJ57/pVYnj8VLzNY2OX51PIPHfESqSVueDZNYALuJuzhasjTTiHJ/P7f68131C+/
+         5/Br3dT0HhLWqPcasyuUKqGvrjG6F52Thp2vKww9MsKqAw3x0HfQxp1LXZ8pp0MykMit
+         TqyZrzhxZ6soHR8I96M2+zFZFom/aSey/4v4a6xgJMHw1NV6saIkj27eZjHH4PJCoegZ
+         BP5S0RPtOUkZYrEAYriEOZn9tpVs5K22Lg1p8tf7ve9/+HcNIBFbFKstyj1KSAjzstpf
+         GETbXv0ZzmIFiV8ml/gHB/v58xiFHJmJdGOegQmyQXEgK8OhF8951pDJsTuta0LUJIjK
+         6T1g==
+X-Gm-Message-State: ANhLgQ3lr+c9ePOWqJjsL5dgTfHcai2JBAi8Fezj342O6aFgfO8JDPDG
+	4Oy36zCyPAawd9na/mO6+HZOl4hqwk3sthmA3Bdd4BohmJ8cYg==
+X-Google-Smtp-Source: ADFU+vs7ixmWJKiAozAXRbEwBZDJ4GTmwwBPmYDbS0EQbenfiPhFUN7uMrNq0aBTlIR/KWhriAbRtY/7WN1GPl5WDk0=
+X-Received: by 2002:a9d:1920:: with SMTP id j32mr421424ota.221.1584383259723;
+ Mon, 16 Mar 2020 11:27:39 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200316160634.3386-1-philmd@redhat.com> <20200316160634.3386-19-philmd@redhat.com>
-In-Reply-To: <20200316160634.3386-19-philmd@redhat.com>
+References: <20200316172155.971-1-alex.bennee@linaro.org> <20200316172155.971-22-alex.bennee@linaro.org>
+In-Reply-To: <20200316172155.971-22-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 16 Mar 2020 17:11:42 +0000
-Message-ID: <CAFEAcA_bXb_RZFxMSYJ8FAoAahAxrq3c0PBzidu+Z0iXTzZqFw@mail.gmail.com>
-Subject: Re: [PATCH v3 18/19] hw/arm: Do not build to 'virt' machine on Xen
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	kvm-devel <kvm@vger.kernel.org>, Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Richard Henderson <richard.henderson@linaro.org>, Stefano Stabellini <sstabellini@kernel.org>, 
-	Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>, 
-	"open list:X86" <xen-devel@lists.xenproject.org>
+Date: Mon, 16 Mar 2020 18:27:28 +0000
+Message-ID: <CAFEAcA-x5L8=csd5tYYEwTaE2wb-8d9qcbaF3A9G2bC0vOOhhg@mail.gmail.com>
+Subject: Re: [PATCH v1 21/28] configure: allow user to specify what gdb to use
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Richard Henderson <richard.henderson@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: JxRAa8gq8CGi
+X-TUID: /ToVinFyIMit
 
-On Mon, 16 Mar 2020 at 16:08, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
+On Mon, 16 Mar 2020 at 18:22, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
 >
-> Xen on ARM does not use QEMU machines [*]. Disable the 'virt'
-> machine there to avoid odd errors such:
+> This is useful, especially when testing relatively new gdbstub
+> features that might not be in distro packages yet.
 >
->     CC      i386-softmmu/hw/cpu/a15mpcore.o
->   hw/cpu/a15mpcore.c:28:10: fatal error: kvm_arm.h: No such file or direc=
-tory
->
-> [*] https://wiki.xenproject.org/wiki/Xen_ARM_with_Virtualization_Extensio=
-ns#Use_of_qemu-system-i386_on_ARM
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
-> Cc: Stefano Stabellini <sstabellini@kernel.org>
-> Cc: Anthony Perard <anthony.perard@citrix.com>
-> Cc: Paul Durrant <paul@xen.org>
-> Cc: xen-devel@lists.xenproject.org
-> ---
->  hw/arm/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
+>  configure | 9 +++++++++
+>  1 file changed, 9 insertions(+)
 >
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 8e801cd15f..69a8e30125 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -1,5 +1,6 @@
->  config ARM_VIRT
->      bool
-> +    depends on !XEN
->      default y if KVM
->      imply PCI_DEVICES
->      imply TEST_DEVICES
-> --
+> diff --git a/configure b/configure
+> index eb49bb6680c..6724158fde1 100755
+> --- a/configure
+> +++ b/configure
+> @@ -303,6 +303,7 @@ libs_qga=3D""
+>  debug_info=3D"yes"
+>  stack_protector=3D""
+>  use_containers=3D"yes"
+> +gdb_bin=3D$(command -v "gdb")
+>
+>  if test -e "$source_path/.git"
+>  then
+> @@ -1588,6 +1589,8 @@ for opt do
+>    ;;
+>    --disable-fuzzing) fuzzing=3Dno
+>    ;;
+> +  --with-gdb=3D*) gdb_bin=3D"$optarg"
+> +  ;;
+>    *)
+>        echo "ERROR: unknown option $opt"
+>        echo "Try '$0 --help' for more information"
+> @@ -1773,6 +1776,7 @@ Advanced options (experts only):
+>    --enable-plugins
+>                             enable plugins via shared library loading
+>    --disable-containers     don't use containers for cross-building
+> +  --with-gdb=3DGBB-path      gdb to use for gdbstub tests [$gdb_bin]
 
-This seems odd to me:
-(1) the error message you quote is for a15mpcore.c, not virt.c
-(2) shouldn't this be prevented by something saying "don't build
-guest architecture X boards into Y-softmmu", rather than a specific
-flag for a specific arm board ?
+s/GBB/GDB/. (Also, the only other program we pass to configure
+with "--with-foo=3D" is git; for make, install, python, sphinx-build,
+smbd, iasl, cc, gcov we just use "--foo=3D".)
 
 thanks
 -- PMM

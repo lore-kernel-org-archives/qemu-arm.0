@@ -1,100 +1,65 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id y12sm404883wmi.48.2020.03.16.10.28.35
+        by smtp.gmail.com with ESMTPSA id g14sm440424wme.32.2020.03.16.10.28.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Mar 2020 10:28:35 -0700 (PDT)
+        Mon, 16 Mar 2020 10:28:41 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 692801FFAC;
-	Mon, 16 Mar 2020 17:21:57 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 0010B1FFA5;
+	Mon, 16 Mar 2020 17:21:56 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH  v1 22/28] tests/guest-debug: add a simple test runner
-Date: Mon, 16 Mar 2020 17:21:49 +0000
-Message-Id: <20200316172155.971-23-alex.bennee@linaro.org>
+	Richard Henderson <richard.henderson@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH  v1 17/28] target/arm: default SVE length to 64 bytes for linux-user
+Date: Mon, 16 Mar 2020 17:21:44 +0000
+Message-Id: <20200316172155.971-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200316172155.971-1-alex.bennee@linaro.org>
 References: <20200316172155.971-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Ykacuza/koKC
+X-TUID: SGQisBUbCsG3
 
-The test runners job is to start QEMU with guest debug enabled and
-then spawn a gdb process running a test script that exercises the
-functionality it wants to test.
+The Linux kernel chooses the default of 64 bytes for SVE registers on
+the basis that it is the largest size on known hardware that won't
+grow the signal frame. We still honour the sve-max-vq property and
+userspace can expand the number of lanes by calling PR_SVE_SET_VL.
+
+This should not make any difference to SVE enabled software as the SVE
+is of course vector length agnostic.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- tests/guest-debug/run-test.py | 57 +++++++++++++++++++++++++++++++++++
- 1 file changed, 57 insertions(+)
- create mode 100755 tests/guest-debug/run-test.py
 
-diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
-new file mode 100755
-index 00000000000..8c49ee2f225
---- /dev/null
-+++ b/tests/guest-debug/run-test.py
-@@ -0,0 +1,57 @@
-+#!/usr/bin/env python3
-+#
-+# Run a gdbstub test case
-+#
-+# Copyright (c) 2019 Linaro
-+#
-+# Author: Alex Bennée <alex.bennee@linaro.org>
-+#
-+# This work is licensed under the terms of the GNU GPL, version 2 or later.
-+# See the COPYING file in the top-level directory.
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+import argparse
-+import subprocess
-+import shutil
-+import shlex
-+
-+def get_args():
-+    parser = argparse.ArgumentParser(description="A gdbstub test runner")
-+    parser.add_argument("--qemu", help="Qemu binary for test",
-+                        required=True)
-+    parser.add_argument("--qargs", help="Qemu arguments for test")
-+    parser.add_argument("--binary", help="Binary to debug",
-+                        required=True)
-+    parser.add_argument("--test", help="GDB test script",
-+                        required=True)
-+    parser.add_argument("--gdb", help="The gdb binary to use", default=None)
-+
-+    return parser.parse_args()
-+
-+if __name__ == '__main__':
-+    args = get_args()
-+
-+    # Search for a gdb we can use
-+    if not args.gdb:
-+        args.gdb = shutil.which("gdb-multiarch")
-+    if not args.gdb:
-+        args.gdb = shutil.which("gdb")
-+    if not args.gdb:
-+        print("We need gdb to run the test")
-+        exit(-1)
-+
-+    # Launch QEMU with binary
-+    if "system" in args.qemu:
-+        cmd = "%s %s %s -s -S" % (args.qemu, args.qargs, args.binary)
-+    else:
-+        cmd = "%s %s -g 1234 %s" % (args.qemu, args.qargs, args.binary)
-+
-+    inferior = subprocess.Popen(shlex.split(cmd))
-+
-+    # Now launch gdb with our test and collect the result
-+    gdb_cmd = "%s %s -ex 'target remote localhost:1234' -x %s" % (args.gdb, args.binary, args.test)
-+
-+    result = subprocess.call(gdb_cmd, shell=True);
-+
-+    exit(result)
+---
+v2
+  - tweak zcr_el[1] instead
+v7
+  - better form
+---
+ target/arm/cpu.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 3623ecefbd9..0909ce86a12 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -195,9 +195,10 @@ static void arm_cpu_reset(CPUState *s)
+         env->cp15.cpacr_el1 = deposit64(env->cp15.cpacr_el1, 20, 2, 3);
+         /* and to the SVE instructions */
+         env->cp15.cpacr_el1 = deposit64(env->cp15.cpacr_el1, 16, 2, 3);
+-        /* with maximum vector length */
+-        env->vfp.zcr_el[1] = cpu_isar_feature(aa64_sve, cpu) ?
+-                             cpu->sve_max_vq - 1 : 0;
++        /* with reasonable vector length */
++        if (cpu_isar_feature(aa64_sve, cpu)) {
++            env->vfp.zcr_el[1] = MIN(cpu->sve_max_vq - 1, 3);
++        }
+         /*
+          * Enable TBI0 and TBI1.  While the real kernel only enables TBI0,
+          * turning on both here will produce smaller code and otherwise
 -- 
 2.20.1

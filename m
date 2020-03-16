@@ -1,229 +1,189 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp68828lfe;
-        Mon, 16 Mar 2020 06:25:03 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsotaKTDZ09t7Gbt8nVoVMkzLAWMk/FeROli8Hinl/5F/aZLNmspUqFmx2yPRPJjD6UqVWO
-X-Received: by 2002:ac8:8b9:: with SMTP id v54mr5274243qth.229.1584365102671;
-        Mon, 16 Mar 2020 06:25:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584365102; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp249511lfe;
+        Mon, 16 Mar 2020 09:06:43 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvdFEJPVDoLVN2+WXh4A7UPiCPhNpfsKUwAjhD7cKzTEEzMwVPbeIvprW2cXT8Le9CSTQtv
+X-Received: by 2002:a25:824e:: with SMTP id d14mr498742ybn.8.1584374803117;
+        Mon, 16 Mar 2020 09:06:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584374803; cv=none;
         d=google.com; s=arc-20160816;
-        b=hQs+20v59xg4rmteIKCgP1GnBGspjBh1F9cohA1MQVHBWYHZ+oJuKXipiOxI2mbZLR
-         yAkWkaRHyAvubMaWEpqtHrhk7QRnBwySR2uyPVPxRI+jpO9w5v0zgrdwwvTtW4uY/TQ0
-         QhBPHI/dPGqEf+wM4WD4MJr5x7PUL6s/BmNtPqrj2vOAqUXL/eE9qDdkqJx7f7cUQZD0
-         RAB4HbDu2G6kKj/+6HP5oL0KelZvn7OPVn0JFYweq5XiKReR/xnGYuffdELYaPdgKujn
-         r8/cBhcNwQDLLLhUIKBKhfqEtM9CCTH7szpKTlCfAB39QnqW7qPaSzsBfwvoAR9gXcyG
-         ry6A==
+        b=cyG4ZTECtrtpAnG5lVIrseI/fCtU+iHp7ptU0Qr3GOSXwcWE+MZLVnkgQ3qAjLWTxX
+         X6JSn+TV86NkNydsr8Cri+NmxK1WoHtBq9lsI7TJtkQyWcaWHxVFI2YMQq/cDWjmWba3
+         GARprnRxstKgIWgJeLZ+RPVqLrvRbjXN42zI9iPnnaiMxjEeZUFg6zaj9ASNcwNxkRd8
+         pfNnL02uPpyoL0chNBnrX9DpBROOEs17ul0gkw0SASborGhmn20QrfDiLz8MAUNbMy6m
+         rPyO3JxT61A/m3G2XQn7AmFOwZaU05IAd2SBeqiC9RMQZ5xZvnGMmHoAaHNNOJ93RdXw
+         WiYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=UwsGaBMEoczo/OQrl4sRsyO0TTUJDm0MSMApTklmPvo=;
-        b=DEP6iYOU31Lb5lMYkuBD9ilEgeKe4m2hN4iWzQL7PhJ0HkT9+xi/qW0IfnhEsL48Jn
-         3FsqjCaZiL5kge0AMPF+THFrUv9VtoKiOpCKYIogAIb14ymtnlRkfjFn9616fM0cEl73
-         4ddWiCLsW5Mu6Ct7piL4HufkPC8bYsIAo7E69KT6o3iwy9X2Is0WaTdzIZrm05DY9M7s
-         uYHxCMs67cVlLI4EGePPrhS4Q+sU4ZINakOvRSD+vhKXrjnhvKfuvyYySeCMCg3fgFPb
-         u+vLs0sbmwVG/i0t/U1gnvNZfSYZCvRWe3jvYqkEdrwgDhf5zhFjd6e5HCYq8xaxTQOa
-         FOlw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=3mVXcxmK2HMmKZLt5GH7gLyONl4hlaRDhaSU8yeP/yU=;
+        b=s80t6D+cPtV5MmfRtcpiXwfl5VjYm8QHFAXVBIXoxMyOBbAbNBQZy9FurbazYhetoh
+         ukNuvoZB8SMzvQsn8Po8D3UTcYKcVrw6QWgZ5bOOc/Ga5QnB0kAKg8Zt7YG4EpdjNuJ7
+         zQ6Q8a/amWx20Tv5riZbbXZEP4wgaVEB+y7ykX88AzVRmHQcHnbyVtza7xS5UvyDIf+9
+         2sUnZRc7rv3Sxy4ImpzGT8pdpbkyoTMjbwKPkTqqIRBB0qjkp2ddRRqVdgmuyLSmgPGz
+         p6JTGfgyFRWpjFCcBYSDtnrdIu1+Lt30KFXaEmHJ5sz3pldhdQ0w5y0imiUc3luX1jmi
+         QLQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uIuI70Y0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h14si10707272qvl.159.2020.03.16.06.25.02
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LWuj7Uvg;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
+        by mx.google.com with ESMTPS id 137si129108ybf.114.2020.03.16.09.06.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Mar 2020 06:25:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 16 Mar 2020 09:06:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uIuI70Y0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38386 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jDpjp-00085L-JQ
-	for alex.bennee@linaro.org; Mon, 16 Mar 2020 09:25:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40715)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jDocJ-0000iB-9V
- for qemu-devel@nongnu.org; Mon, 16 Mar 2020 08:13:13 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jDocC-0004uP-KB
- for qemu-devel@nongnu.org; Mon, 16 Mar 2020 08:13:11 -0400
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:43258)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jDocC-0004bv-AW; Mon, 16 Mar 2020 08:13:04 -0400
-Received: by mail-lj1-x242.google.com with SMTP id r7so18336568ljp.10;
- Mon, 16 Mar 2020 05:13:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=UwsGaBMEoczo/OQrl4sRsyO0TTUJDm0MSMApTklmPvo=;
- b=uIuI70Y09i/5j2pKLPY3CzyQaEFirLis9TcSrnK4xfVVn7bvrrafABtjqEk7m+O13h
- mxnGYrrOd2Vtt9VBXf/Oo/3XWNDXrmcvwueAJnIdHsnXaWiAR3FEsOq973qiXpB1Db0R
- 7n+qvEFPByPmiYka0sYx6fkBm/H5ZnaP0ovo/15KSswzkLZkT3am/WMe963dejsbj3tv
- AwId+GOQWVaZCI4jnYpHOy0317DI74iExxw/fG37qRhSz7I1BxHM18BEIewXe0ek75K0
- 42nuPyZ6xApsAUu+KAYFKp8qwmuqEc0wgiD0TrI1DgwXFcgBb5RscEPQL84VhXAJWU0y
- eEcg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LWuj7Uvg;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584374802;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=3mVXcxmK2HMmKZLt5GH7gLyONl4hlaRDhaSU8yeP/yU=;
+	b=LWuj7UvgdXeaVSlJmYRpqmHKwzvzWGKjAFr6Uub2HWNw5Crd1mUHFgdoPApGZISZGY3DTS
+	12o7SPZeXajCrYYcu/8maTkt26RuhBa+6mcoZjntdFyT4+urqWhzl6/5ce7pdGfaMSh866
+	vxl5GasB9Ivl/OKr5UXhQ5tH7itIcbM=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-492-ILUij4PeOBamVCTr_KR2BA-1; Mon, 16 Mar 2020 12:06:38 -0400
+X-MC-Unique: ILUij4PeOBamVCTr_KR2BA-1
+Received: by mail-wr1-f71.google.com with SMTP id s4so3847979wrb.19
+        for <alex.bennee@linaro.org>; Mon, 16 Mar 2020 09:06:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=UwsGaBMEoczo/OQrl4sRsyO0TTUJDm0MSMApTklmPvo=;
- b=KqTNAM8zYgJgygbvwE9Yw3OeTmK+hketTbMqL9v58aKz+7BcON1obXnnENW88AIf0k
- pRGQ7VnnD7yBBSfI3CTaEofSwma1RQv0kFBRNvJkhLRkb42no9/6B1KZxaKXV3dwFGMR
- sQ0M50Yl//wIfQNYbAJwchGZEEt+b+L/GbrbZosSGrCQN3yBLFZOEFe8QYRuvRW9B3/n
- c4e4DREcKXVeN6s0CLdhlvlODDgMy37hxCzyfjOXf9N61uUlPgQ5vKSHYlLNSmaAkZDc
- Kt/y6NzFwq9yotwNtWNGQpOdwXWzFXz1rLItLX8BILCnEPnZPcoGLE47rSsoK+b26ZFR
- 1cAA==
-X-Gm-Message-State: ANhLgQ1G6VUDnxVkVAagdMr4bIow1a7cXPlHr0D+mGxgYn0f2s+CSq8N
- 4py3sqYdnDCUc7sPV3tlvgE=
-X-Received: by 2002:a2e:96cc:: with SMTP id d12mr9952257ljj.87.1584360781481; 
- Mon, 16 Mar 2020 05:13:01 -0700 (PDT)
-Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id a11sm16306708ljb.45.2020.03.16.05.13.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Mar 2020 05:13:00 -0700 (PDT)
-Date: Mon, 16 Mar 2020 13:14:09 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Damien Hedde <damien.hedde@greensocs.com>
-Subject: Re: [PATCH v8 0/9] Clock framework API
-Message-ID: <20200316121409.GA2669@toto>
-References: <20200225131422.53368-1-damien.hedde@greensocs.com>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=P5yP2gI3jZwVa/ROqUBqAiUPezN5j8lwPUWA/Pi42tY=;
+        b=qbtkStUWyD1uLIETXp/5Z5+bpI/XU6W+uIrYza9BCN6p0KrtTDWWrtTwTlzZIsITFC
+         5p74o2c9O2WidHZ2Mdzf7cCiikJt+KDWpelRu8pdWdnyGWJkvlXtYvkWk6FOrEfchzmx
+         s+JO4I0GobzGiehYYJlADBx+UtlZdd+nWdZrMIkWvDqZrRBXj0Q4r5aw2BEd1uLVQgKv
+         gtm3dEc9TqlrUjojg1XU4AapJ8Ew/YH9aCeoNqPcFPoppIJZ4iE9ru4Y3rq6j6VfM+K6
+         +TAviuEoMDXwJH/xtMVFc/l0QU/o+byvuMM/XWaEpUc3I2/Esk0wk43Cydumd/ZHw2g9
+         keOw==
+X-Gm-Message-State: ANhLgQ0BBVSZhdMXuNyT4SB3+0xVqG4gN5fzcLseZNXKQZ95R3TzZO+U
+	1Z9Ia680n7nNobVmE5ZDMoj4dHggAeEzkQ3vBJyx3L+j7U2Y/rnm58C/G4ZH4ewhcv185PXoTsM
+	eIJ32zMIUnZxCXNfn
+X-Received: by 2002:adf:a343:: with SMTP id d3mr105733wrb.50.1584374797652;
+        Mon, 16 Mar 2020 09:06:37 -0700 (PDT)
+X-Received: by 2002:adf:a343:: with SMTP id d3mr105710wrb.50.1584374797395;
+        Mon, 16 Mar 2020 09:06:37 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from localhost.localdomain (96.red-83-59-163.dynamicip.rima-tde.net. [83.59.163.96])
+        by smtp.gmail.com with ESMTPSA id s7sm478457wri.61.2020.03.16.09.06.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 16 Mar 2020 09:06:36 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	kvm@vger.kernel.org,
+	Thomas Huth <thuth@redhat.com>,
+	qemu-arm@nongnu.org,
+	Fam Zheng <fam@euphon.net>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v3 00/19] Support disabling TCG on ARM (part 2)
+Date: Mon, 16 Mar 2020 17:06:15 +0100
+Message-Id: <20200316160634.3386-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200225131422.53368-1-damien.hedde@greensocs.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::242
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, berrange@redhat.com, ehabkost@redhat.com,
- alistair@alistair23.me, mark.burton@greensocs.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, pbonzini@redhat.com, marcandre.lureau@redhat.com,
- philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OMab8m2oWo0X
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: odDdS2OaPUbK
 
-On Tue, Feb 25, 2020 at 02:14:13PM +0100, Damien Hedde wrote:
-> This series aims to add a way to model clock distribution in qemu.
-> The proposed objet and qdev API allows to model the clock tree of
-> a platform allowing us to inspect clock configuration and detect
-> problems such as disabled clock or bad configured pll.
+Cover from Samuel Ortiz from (part 1) [1]:
 
-On the series:
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+  This patchset allows for building and running ARM targets with TCG
+  disabled. [...]
 
+  The rationale behind this work comes from the NEMU project where we're
+  trying to only support x86 and ARM 64-bit architectures, without
+  including the TCG code base. We can only do so if we can build and run
+  ARM binaries with TCG disabled.
 
+v3 almost 18 months later:
+- Rebased
+- Addressed Thomas review comments
+- Added Travis-CI job to keep building --disable-tcg on ARM
 
-> 
-> This fast v8 fixes the documentation rst patchew errors and includes
-> Alistair's review on v7.
-> 
-> There's 2 notable changes since v6:
-> + The value stored in clock is now a period on 64 bits integer. The
->   unit is 2^-32ns to achieve the same precision as the ptimer internal
->   representation.
-> + No more ClockIn/ClockOut base types, just a single Clock type. It
->   makes things simplier for everything else (standalone clocks,
->   possibility to read device's output clocks) and allow to chain
->   several clock inputs.
-> 
-> Regarding the internal represention. The precision is huge so that
-> it is possible (in the future) to somehow connect a ptimer with a
-> Clock with no loss of precision.
-> The consequence is that we have a ~4seconds period upper bound only.
-> Alternatives, allowing us to keep this precision, are to use a
-> floating point or to extend the integer.
-> 
-> The added clock api is very similar the the GPIO API for devices. We
-> can add input and output and connect them together.
-> 
-> Now that ressettable API is merged, the clock tree is properly
-> initialized during the machine reset.
-> I've tested this patchset running Xilinx's Linux on the xilinx-zynq-a9
-> machine. Clocks are correctly updated and we ends up with a configured
-> baudrate of 115601 on the console uart (for a theoretical 115200)
-> which is nice. "cadence_uart*" and "clock*" traces can be enabled to
-> see what's going on in this platform.
-> 
-> Any comments and suggestions are welcomed.
-> 
-> Patches 1, 3 and 5 to 8 still need some reviews.
-> 
-> The patches are organised as follows:
-> + Patches 1 to 4 adds the clock support in qemu
-> + Patch 5 adds some documentation in docs/devel
-> + Patches 6 to 8 adds the uart's clocks to the xilinx_zynq platform
->   as an example for this framework. It updates the zynq's slcr clock
->   controller, the cadence_uart device, and the zynq toplevel platform.
-> + Patch 9 adds clock info to monitor "info qtree" command
-> 
-> Changes since v7:
-> https://lists.gnu.org/archive/html/qemu-devel/2020-02/msg06451.html
->  - rst errors in doc
->  - Alistair's comments on patch 1 and 3
-> 
-> Changes since v6:
-> https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg00599.html
->  - switch from frequency to period based clock state
->  - single Clock type (no more ClockIn and ClockOut)
->  - doc converted in rst format (Peter)
->  - various fixes (Peter and Philippe)
->  - better migration support for zynq devices (Peter)
-> 
-> Thanks to the Xilinx QEMU team who sponsored this development.
-> 
-> Damien Hedde (9):
->   hw/core/clock: introduce clock object
->   hw/core/clock-vmstate: define a vmstate entry for clock state
->   qdev: add clock input&output support to devices.
->   qdev-clock: introduce an init array to ease the device construction
->   docs/clocks: add device's clock documentation
->   hw/misc/zynq_slcr: add clock generation for uarts
->   hw/char/cadence_uart: add clock support
->   hw/arm/xilinx_zynq: connect uart clocks to slcr
->   qdev-monitor: print the device's clock with info qtree
-> 
->  docs/devel/clocks.rst          | 360 +++++++++++++++++++++++++++++++++
->  docs/devel/index.rst           |   1 +
->  include/hw/char/cadence_uart.h |   1 +
->  include/hw/clock.h             | 225 +++++++++++++++++++++
->  include/hw/qdev-clock.h        | 159 +++++++++++++++
->  include/hw/qdev-core.h         |  12 ++
->  hw/arm/xilinx_zynq.c           |  57 +++++-
->  hw/char/cadence_uart.c         |  73 ++++++-
->  hw/core/clock-vmstate.c        |  25 +++
->  hw/core/clock.c                | 130 ++++++++++++
->  hw/core/qdev-clock.c           | 185 +++++++++++++++++
->  hw/core/qdev.c                 |  12 ++
->  hw/misc/zynq_slcr.c            | 172 +++++++++++++++-
->  qdev-monitor.c                 |   9 +
->  hw/char/trace-events           |   3 +
->  hw/core/Makefile.objs          |   2 +
->  hw/core/trace-events           |   7 +
->  tests/Makefile.include         |   1 +
->  18 files changed, 1412 insertions(+), 22 deletions(-)
->  create mode 100644 docs/devel/clocks.rst
->  create mode 100644 include/hw/clock.h
->  create mode 100644 include/hw/qdev-clock.h
->  create mode 100644 hw/core/clock-vmstate.c
->  create mode 100644 hw/core/clock.c
->  create mode 100644 hw/core/qdev-clock.c
-> 
-> -- 
-> 2.25.1
-> 
+v2 [2]:
+- Addressed review comments from Richard and Thomas from v1 [3]
+
+Regards,
+
+Phil.
+
+[1]: https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg02451.html
+[2]: https://www.mail-archive.com/qemu-devel@nongnu.org/msg641796.html
+[3]: https://lists.gnu.org/archive/html/qemu-devel/2019-08/msg05003.html
+
+Based-on: <20200316120049.11225-1-philmd@redhat.com>
+"accel: Allow targets to use Kconfig, disable semihosting by default"
+https://lists.gnu.org/archive/html/qemu-devel/2020-03/msg04653.html
+
+Philippe Mathieu-Daud=C3=A9 (15):
+  target/arm: Rename KVM set_feature() as kvm_set_feature()
+  target/arm: Restrict DC-CVAP instruction to TCG accel
+  target/arm: Restric the Address Translate operations to TCG accel
+  target/arm: Restrict Virtualization Host Extensions instructions to
+    TCG
+  target/arm: Move Makefile variable restricted to CONFIG_TCG
+  target/arm: Add semihosting stub to allow building without TCG
+  target/arm: Move ARM_V7M Kconfig from hw/ to target/
+  target/arm: Restrict ARMv4 cpus to TCG accel
+  target/arm: Restrict ARMv5 cpus to TCG accel
+  target/arm: Restrict ARMv6 cpus to TCG accel
+  target/arm: Restrict ARMv7 R-profile cpus to TCG accel
+  target/arm: Restrict ARMv7 M-profile cpus to TCG accel
+  hw/arm: Automatically select the 'virt' machine on KVM
+  hw/arm: Do not build to 'virt' machine on Xen
+  .travis.yml: Add a KVM-only Aarch64 job
+
+Samuel Ortiz (1):
+  target/arm: Do not build TCG objects when TCG is off
+
+Thomas Huth (3):
+  target/arm: Make set_feature() available for other files
+  target/arm: Make cpu_register() available for other files
+  target/arm: Make m_helper.c optional via CONFIG_ARM_V7M
+
+ default-configs/aarch64-softmmu.mak |   1 -
+ default-configs/arm-softmmu.mak     |  30 --
+ target/arm/cpu-qom.h                |   9 +-
+ target/arm/cpu.h                    |   7 +
+ target/arm/internals.h              |  10 +
+ target/arm/arm-semi-stub.c          |  13 +
+ target/arm/cpu.c                    | 651 +---------------------------
+ target/arm/cpu64.c                  |  19 +-
+ target/arm/cpu_v4.c                 |  65 +++
+ target/arm/cpu_v5.c                 | 266 ++++++++++++
+ target/arm/cpu_v6.c                 | 171 ++++++++
+ target/arm/cpu_v7m.c                | 207 +++++++++
+ target/arm/cpu_v7r.c                |  83 ++++
+ target/arm/helper.c                 |  54 +--
+ target/arm/kvm32.c                  |  10 +-
+ target/arm/kvm64.c                  |  16 +-
+ target/arm/m_helper-stub.c          |  59 +++
+ .travis.yml                         |  32 ++
+ hw/arm/Kconfig                      |  17 +-
+ target/Kconfig                      |   2 +-
+ target/arm/Kconfig                  |  19 +
+ target/arm/Makefile.objs            |  17 +-
+ 22 files changed, 1016 insertions(+), 742 deletions(-)
+ create mode 100644 target/arm/arm-semi-stub.c
+ create mode 100644 target/arm/cpu_v4.c
+ create mode 100644 target/arm/cpu_v5.c
+ create mode 100644 target/arm/cpu_v6.c
+ create mode 100644 target/arm/cpu_v7m.c
+ create mode 100644 target/arm/cpu_v7r.c
+ create mode 100644 target/arm/m_helper-stub.c
+ create mode 100644 target/arm/Kconfig
+
+--=20
+2.21.1

@@ -1,123 +1,107 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp505956lfe;
-        Mon, 16 Mar 2020 13:11:46 -0700 (PDT)
-X-Received: by 2002:aca:2b14:: with SMTP id i20mr941569oik.79.1584389506216;
-        Mon, 16 Mar 2020 13:11:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584389506; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp510341lfe;
+        Mon, 16 Mar 2020 13:16:35 -0700 (PDT)
+X-Received: by 2002:a17:90a:62cb:: with SMTP id k11mr1365426pjs.20.1584389795424;
+        Mon, 16 Mar 2020 13:16:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584389795; cv=none;
         d=google.com; s=arc-20160816;
-        b=ueZDWu03qp6eoXxEoDEsUXWACM9HCAxlnxmlsQAkxlkYZtQk5PVjMO1rbmwwGNvebK
-         xevd+CbI86GR3d6DVXXXm4SS/JmJKImw9cZHfC9DlJV06mHEmuXNrnXv32B3DUmQG5hA
-         YC/hQiEsKbPy6cnbaPFNbP63vbM23DgTOuxQlYD1XiHZClp2zj242PrhREsDk6I+qKBr
-         trWvJidQfAk+Mq+M2ViLm4uy5QYZB62B1XeV9U2J8EnDBH8bXfsgTgitRcXfq3ogNTPK
-         LOwSGwB5m3ibQeOsKwFwxNwPe7xtHymabfdyaCuwh9oVCnwnnaGPEq7n/XeUJlL5o2qz
-         jSUA==
+        b=hWZtlkRVC00eXpZI1J04B+Tv0xkmYxGJvXm2zQxRQHPlp7r3NOLt31dzX13BrcGeyU
+         xmr6LBSASya9THJBtJiSmg+f7pty8sqgfyYeKIdEg2obdgFo4xvHKmDPvf6KeyssLPGM
+         jBNuVqCMBtvHr+cRhgIU/BN6IaLX9ZZ9ezFxH8y5hnWH/LJMfl0cKSXA05KmRmhZIklj
+         Pr2/eZdVocVnflENfHkbUr2T5cbNyeHcmKoW1IRSM08Mv6zRkyboNWIPJkbR9E3VG6uy
+         DJBaMfcmvXtgBtjmhCdDMnI7ZVTJw+zWAObaDJmdFl9pBnR0abQKDa8w2RjObagKDt7W
+         9qPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=Ijs2BAIZQngYJr60lDXDIztUajpq/leFmXIdziG2LkM=;
-        b=KPWQZO9Ta8WPpJfKHYrTM6axLYBcNdG7CjOCgwR7fHIkfjUT5JzL0bOljZzbJfmsdF
-         IOca23XtO33ZoZ2BXhtb0zukDeA4yUVvW21f3UAm2QyxoYyVSEQUXcQgz+wPd8eVQEiz
-         QTKhEPXRS0d9dT4Eux68v9dmu1fg8uU0P/0PoWkZuNrdhnds1rI5NTtdmYzPCZfNK06U
-         KQFgsdenkaOuS7viH6tHEYn7Tas1PcQ/y3i6RCJ7BmdYhn7dfylGRrq9tTB+uwegQJjI
-         MCOCoDsJRYY0tgz7JQvwXtDgU2JYQUJgabizy8V3javrMzdYhoFlQm+bgNjAm4e3q9v5
-         W0LQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=FhITnVcXOIhnDs6uomlU7NICQahFSW5Nno5Xh6Sq2S4=;
+        b=PR8K3uMQoY8WuLJRhB7jbWmEjwgaO6h7QR0sk1C8QLgEz9it7A8DxebNupyAbU5rPH
+         trhT8Tute4mZCSFG6/SvTB+qwIkjIhlWR47R/88YiLsWYlvhYDtwOFyaGHLxVu3MPxpY
+         jTXDXjjUGc/tW1Yf1dqc7OMZ7tlM6bCT87lDy4vJXWk3sStpXXvU3Z/brIoUR+o9O514
+         cifI7sEsDGVGTjl2uEhVuNF9rez2DUuVRzWpS6stdDy5a0fdwqY+9vv86XMMomq22ArG
+         32WMRcwQtqJuU2Z49DSB8YrHvoK8RQ8LG34F40NYRRKGn8ABlevk4ZyEoRH3o8QJV+Y+
+         chVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sv5GzYNw;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FoJB4AMP;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id b124sor952790oii.37.2020.03.16.13.11.45
+        by mx.google.com with SMTPS id j4sor945194pjn.18.2020.03.16.13.16.35
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 16 Mar 2020 13:11:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Mon, 16 Mar 2020 13:16:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sv5GzYNw;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FoJB4AMP;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=Ijs2BAIZQngYJr60lDXDIztUajpq/leFmXIdziG2LkM=;
-        b=sv5GzYNwiSh3FeS0FRD8JM9TyIwu42PNDUBqb2XRpr7JWlyBhsNwNdpjQBWBU+l1bR
-         WN6v2XTv991YfA+F1LJE3nqARuovbsoRT3n4bJouPNyhgwsi6Fl2xAIdDG+rNfRWzw9N
-         BeyPq/wVWSA56Wg5t/+hJhUDQuLoL92VYEEyb76M2cFYJjW/MPndakK64X7XPFlhMDcc
-         MnKhzJo21aBHp9XNHOLp4MHAGgi6uP28iPP2tAmsbd4osuHZ1UQKD6YU81yz+a8mt1wv
-         KExbnv7HV333vv/xrvNbN6VMES9N3EELGs5ODy6fE7X+/Obh6Cw/X+6S1RJdf6t6o3H8
-         OnSQ==
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=FhITnVcXOIhnDs6uomlU7NICQahFSW5Nno5Xh6Sq2S4=;
+        b=FoJB4AMPXLMvqJ/PwEVqdjzE4axxigJIAJXVIgptDfwHvaprZTEE5YOdc/y1goBOvu
+         4ZZaQY5MzFzgkwfBhc4G6K7luBCzEvSeoGcAaYETYA7PnJtCwMVh8x/6uMPN5r/rJgGe
+         YvRU50ybHtZ0mOlJF+eVXe7HpEaZrykr6uypERcyCu8bFl/CtCsdL0lE+IqAYOw0mHse
+         AftV/lzKuiYcwTV9dV9xl96SMyhsFYDe2VXitZfHl2W6PrAaSmtQp92OiscOzfWMIIXG
+         1Ek0faM4ssdTahTxkQcazBtwMjZurKMef+/NGaY6EsxiQaKqFpYLIQQbwlUIk/7+peV1
+         mfuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=Ijs2BAIZQngYJr60lDXDIztUajpq/leFmXIdziG2LkM=;
-        b=jGzLnjLWMdvViGzLams81pcsZ5ATZ0qNef8n5/BsW3bmCG+BHtV0HR8Q0hyCXbt+FE
-         +9O395+2V6XPoyLLOSARx2EBllM+lIXGmbdn8nLnbXTopmxx66l0FqhXX3WXJOVU87ZW
-         Z83VEASZi/GBbRf+AF3NReV36mdN2mrJTHrp4ihpJ6W4UImRMMkqAr+vv5bGOp/IuGSn
-         KZDklI6DXjEAA0/QHqwBal6dXga+3ZlotQ2uKrcHwUy5fphknomKiNzVs8aMvgtft8RO
-         XCS8TR5jNG08/GpyK1a39Ah9zufvfTMnPL/NhifXiQPKRZLK7vyg9lym31LPHKQ3TcCn
-         qe2A==
-X-Gm-Message-State: ANhLgQ1OcpocS1xkgL1sOnNuvthwEG+k2hf39ZMGJ+oouL1brXMFw5Y2
-	f+b4GD39Rw+wMn5ErsOO+jtJt8CrjRC5YGktVjL9Bq9ni24FVA==
-X-Google-Smtp-Source: ADFU+vuNAGWfTNfTG7BCG62IAVcWTMGcJnSdFo65qjGsPUVKe0hQPlhhs0R7X5BcJqT9yHK67QFaPQIXmPb88pVygO4=
-X-Received: by 2002:aca:190f:: with SMTP id l15mr937814oii.48.1584389505745;
- Mon, 16 Mar 2020 13:11:45 -0700 (PDT)
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=FhITnVcXOIhnDs6uomlU7NICQahFSW5Nno5Xh6Sq2S4=;
+        b=b+MUV09I9oAsRvAr8HZJb09wXxp61USxHyxlfKteLUXYGHAs31FyO7WWFlEO98sRvi
+         HKtPlHMIk4gV4fQ2fRv8czj+K/jSxePiK59ZCmNRo/vMLfxsIuevNWrb435b4jzIR+YC
+         Dxfatkpw6h2b0QKNNTMTemMeKq6l3QQp33P869XZYtYq3l9HqNDQ4ijRCP32kYBvbdKQ
+         n8sKCc4mxKBeomJ+zeJS4ZZ+oa3rmuSTWqqTrZKXe1U1utd1sV2z0aoZkcdELro+Nv7v
+         kN3zeCzxyPvX7KS29ItXe5Zs6w+csX9DqKLzhQ1OXGgwxy6PlwERdUQRxgxBxWKbFqCk
+         gU0g==
+X-Gm-Message-State: ANhLgQ3rMS7Fm52MWV6PKr+la1dKv7aV5CP/u9G0UhPZqUI1phFThjml
+	uAV5T67of53h7nHLb/oJBVrt9db2
+X-Google-Smtp-Source: ADFU+vvXz6vFHeF1yKbPbpgcnf+53vX8VlT/JrnRIIROKRDHpkh55asOanh1rtAanRMRpWVarvC1uw==
+X-Received: by 2002:a17:90b:d8d:: with SMTP id bg13mr1312350pjb.29.1584389794888;
+        Mon, 16 Mar 2020 13:16:34 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
+        by smtp.gmail.com with ESMTPSA id 67sm677082pfe.168.2020.03.16.13.16.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 16 Mar 2020 13:16:34 -0700 (PDT)
+Subject: Re: [PATCH v3 01/19] target/arm: Rename KVM set_feature() as
+ kvm_set_feature()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ kvm@vger.kernel.org, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
+ Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20200316160634.3386-1-philmd@redhat.com>
+ <20200316160634.3386-2-philmd@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <cb3178f1-5a0c-b11c-a012-c41beeb66cd2@linaro.org>
+Date: Mon, 16 Mar 2020 13:16:32 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-References: <20200316160634.3386-1-philmd@redhat.com> <20200316160634.3386-4-philmd@redhat.com>
- <f570579b-da9c-e89a-3430-08e82d9052c1@linaro.org>
-In-Reply-To: <f570579b-da9c-e89a-3430-08e82d9052c1@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 16 Mar 2020 20:11:34 +0000
-Message-ID: <CAFEAcA8K-njh=TyjS_4deD4wTjhqnc=t6SQB1DbKgWWS5rixSQ@mail.gmail.com>
-Subject: Re: [PATCH v3 03/19] target/arm: Restrict DC-CVAP instruction to TCG accel
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	kvm-devel <kvm@vger.kernel.org>, Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: TXT2y4wUpMTA
+In-Reply-To: <20200316160634.3386-2-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: W1nPgzNkyVKT
 
-On Mon, 16 Mar 2020 at 19:36, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> I'm not 100% sure how the system regs function under kvm.
->
-> If they are not used at all, then we should avoid them all en masse an not
-> piecemeal like this.
->
-> If they are used for something, then we should keep them registered and change
-> the writefn like so:
->
-> #ifdef CONFIG_TCG
->     /* existing stuff */
-> #else
->     /* Handled by hardware accelerator. */
->     g_assert_not_reached();
-> #endif
+On 3/16/20 9:06 AM, Philippe Mathieu-Daudé wrote:
+> +++ b/target/arm/kvm32.c
+> @@ -22,7 +22,7 @@
+>  #include "internals.h"
+>  #include "qemu/log.h"
+>  
+> -static inline void set_feature(uint64_t *features, int feature)
+> +static inline void kvm_set_feature(uint64_t *features, int feature)
 
-(1) for those registers where we need to know the value within
-QEMU code (notably anything involved in VA-to-PA translation,
-as this is used by gdbstub accesses, etc, but sometimes we
-want other register values too): the sysreg struct is
-what lets us map from the KVM register to the field in the
-CPU struct when we do a sync of data to/from the kernel.
+Why, what's wrong with the existing name?
+Plus, with patch 2, you can just remove these.
 
-(2) for other registers, the sync lets us make the register
-visible as an r/o register in the gdbstub. (this is not
-very important, but it's nice)
 
-(3) Either way, the sync works via the raw_read/raw_write
-accessors (this is a big part of what they're for), which are
-supposed to just stuff the data into/out of the underlying
-CPU struct field. (But watch out because we fall back to
-using the non-raw read/writefn if there's no raw version
-provided for a particular register.) If a regdef is marked
-as NO_RAW then it means there is no raw access and we don't
-sync the value.
-
-(4) I think that in KVM mode we won't deliberately do
-non-raw accesses, and a quick grep through of the places
-that do 'readfn' accesses supports that.
-
-thanks
--- PMM
+r~

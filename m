@@ -1,181 +1,204 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp1087002lfc;
-        Thu, 12 Mar 2020 12:42:22 -0700 (PDT)
-X-Received: by 2002:a63:c643:: with SMTP id x3mr8550499pgg.299.1584042142074;
-        Thu, 12 Mar 2020 12:42:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584042142; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp249982lfe;
+        Mon, 16 Mar 2020 09:07:03 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuTs9Dj28SZS1C09n9CKddvDIIVLoKlzFSsn58oh9/kUoK50kldU14Tq0tRD1nOotYpGwQA
+X-Received: by 2002:a5d:4c47:: with SMTP id n7mr102808wrt.254.1584374823701;
+        Mon, 16 Mar 2020 09:07:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584374823; cv=none;
         d=google.com; s=arc-20160816;
-        b=EdAvq1U/JaCLalRkxwrhZqVcsFw2Fb57iw+C0OtmoUiwFegZGyJLJE26DCrZS26s9U
-         RnetCHZ6NgHn0V4ztVv60eNRDNVNk+XxEWOVwA8My/5AHUXWQvWpNnxnlM4WO0F8Kpf6
-         DvPhQy8SvFlky0+9qL9LJ7kYjlLUAt66ETJK1gxjnQilMLro4q+zqndOo6J9YwuTS6xQ
-         CoDrvQNKTG1TSGDX3RmBKRA3CLQGGIOhQw7Lp9PhLoKXu3xJ84QauVtwEWonm8F3cv9f
-         stffKS65+YOcSMDG3fi0Hze6O8YIEhNR85vQ8ZwBSi6ffaDF2YJcY2RK71nY0Cl25WgQ
-         Sq3g==
+        b=pOSmy0VetIjUANGIUsmFKO26Q1UE7MpfPDdFDxUYpDbFzqxC7YMvqZW0jcROv/TQ3h
+         rRU+lKEqJC7880mzRJxalcRmBNfRz6j58V7S5Pof5JZfTvmyMW3YzyZ5nYJOr+FUHg7t
+         78CSjvhmCL9ALcrMBX7bHF2roSKMZ//jdh92+/2ujtW3WiK8Qa7eAKROksdscLomLOzP
+         Fs3yr963NXaAQC0eRq/8s0s6z90IQyL21Wni1Kiz+qBncotGK9uuS9ArtOfNcxQitC3i
+         3LzdrFNwX/L0D5Wps3ZOfrHtBVnsV9Eoi/q1ZlErAdkQNC4SIkpu+eHFadRJ350OBRNh
+         7Rng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=/zHbZh0dod5oMK8gTomTJjtjrWcaZXLW0KPv8APWrNg=;
-        b=tBL1GqVNfapYXiHu/UMwvaG2pJ2TzcWV0wF3hSz38P1tJhShVVklqcM1+/u9I5Lt6P
-         Z1oii4nYWHc1S922MShHpCAkGsBzUWhL7nLP+l0UN+F+rjDqcIl8B2BtEnDrc2yi5zJ0
-         q399+GKFl3Q9xTXM6C200t+bssDuxLc43pakSEuPTqvzQBaQgapZ86+sSDPuSCs3YtwK
-         m+hFy/Mwy0fER31G62pZ2Nmz5ul/N5AjQ7SxRl5dEp2qjM9WSQ8mD1dV/j2hGFY3GXjc
-         RK/NxmB+rj5jukWgcE64hHEdKwe2+2MTRDpORduePcfraMhWkN5upQhVexH3tV+w4CqW
-         4kBQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=j2NQUGK1oGWALaGzXfEtj8AM5490glkq1or09z6B8W8=;
+        b=vToFt62e44m0/FMm8fQQlhG+qXiWklx06HBWVEME1sPygMCtKEOLFiXy2fREFuCzLT
+         To0sbUv5g/itB2Kn7DHMb2YfPDdscJ89I6YOFcP7MVALQj2k/OSoKZm7fsllEvznLAQA
+         0i/QvdiJuOHT3J6jH4SGcMbGwEcw1nCWqOenoSRs04rtLTliPASOKJdEF3zz2+fLuYEe
+         4Nr6LxsYz+6XwHVf7GMKDAEJwdFgXOUR+DZbEC4XnHiuFNu11HKdYZnxzWoPz5Ttksrc
+         r8+IdMFK2DsgMRItP+XNrRCuYWW/gDeJi5sJqWMTnnw3jwKaewQ/2dRasXXqWReOS0FK
+         VXuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=i432OUSr;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id v6sor6256908ply.40.2020.03.12.12.42.21
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zf0DNZHi;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
+        by mx.google.com with ESMTPS id w26si4791484wmk.34.2020.03.16.09.07.03
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 12 Mar 2020 12:42:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 16 Mar 2020 09:07:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=i432OUSr;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=/zHbZh0dod5oMK8gTomTJjtjrWcaZXLW0KPv8APWrNg=;
-        b=i432OUSrFBi2EBZjUAVO190uA98WGRNaZI+mm7o//2CETnP4LAaVDpXgFBLgQ/ebkl
-         K9vQYas1Jy/E0geOrwJOJFT2R7kUfQ3JBwMiOTDNJfLnlHTx0ogblk+yN2WLxyYfy696
-         wX42rXSfpPho9sP7gHY39lWYiWwzW6XmqkdZqcZPT+EENqiivzv9+OPcz2lzRxmeo9MQ
-         T8KA4BLnkgAqS1Fs1wMIc8OkXXOgLdd7rota1k822cnC/MmzHx0KG0uyapUU65Kb6OcN
-         YVk1QdIttn87tdO9f2UGwgH8qFtHg0Krb/8eHeqiCFf2JfHOlT3HXXXtdCnu4kgWXIzN
-         yGrw==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zf0DNZHi;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584374822;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=j2NQUGK1oGWALaGzXfEtj8AM5490glkq1or09z6B8W8=;
+	b=Zf0DNZHiVI4eFg98LAkhJz0J9cbICvHiZpIgeiQ5fXtSrrichYZ+Lcyzg1fRnNtlk7QRdS
+	8Dt9TK/Sn0RkecrD1tTwHNf/rLpZybQ4Q8RSOQCJncrGDnDjIJ2FkI6Zmn9EybnAcIky65
+	uAPpaqoDm5uZvQGAv3vPJDY0AVn517I=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-257-QZglDBaRNum_vTto6RcC5A-1; Mon, 16 Mar 2020 12:07:00 -0400
+X-MC-Unique: QZglDBaRNum_vTto6RcC5A-1
+Received: by mail-wm1-f70.google.com with SMTP id i24so4031143wml.1
+        for <alex.bennee@linaro.org>; Mon, 16 Mar 2020 09:07:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=/zHbZh0dod5oMK8gTomTJjtjrWcaZXLW0KPv8APWrNg=;
-        b=LSyPpLYMWFjcbqUUkXc+IvhNZkenoSk9u7tgGTHCXqdM3n1gzpXxIqt0aiU/rfdb9z
-         ZSpWzsOuo1AWbjlTHhO0zA4dBUnIgnuHplz/U2oHpchmWSWpVrURGs6n8dYd9xKJkReE
-         AUtquc7icBm/XuFUPNZRM7q+zp2bABZAe7FSJ4kr+4xpZTtH2Z3LRlZrYybXl+8lMax/
-         aiLd8nmWurjBojoCX3kAuDwnSJWBOu04SBXNBDEbPjmpaqdx5B65g6iLCkZCuFTyMFHS
-         SNCRxwyQRt07bpv1T8bXHbBkKCLD7ZrOH+CLfH/RYpTaTy/f+y0YLtgMdzawglNq494i
-         3FHg==
-X-Gm-Message-State: ANhLgQ3jnoc8aWX/WoipDLYnsP5Br1Rz+h/UV/dWZB4DQi5kWXXG3Rur
-	6xPvGzfSSYGazqv6xJTKTzk3biTO
-X-Google-Smtp-Source: ADFU+vuWuZgiJ1wM8xKXS6la8kjMriZV7Tn9uSF63NjGWvV89wit8agYMmmVDnsq2VSylcSv4WpCTw==
-X-Received: by 2002:a17:902:694c:: with SMTP id k12mr9425175plt.329.1584042141496;
-        Thu, 12 Mar 2020 12:42:21 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net. [97.126.123.70])
-        by smtp.gmail.com with ESMTPSA id g69sm6824842pje.34.2020.03.12.12.42.20
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=x1weIqYNF3Fo5tV0WZvC7V944GYiMwvqowZHCwqs/e8=;
+        b=l1u8uAZy9NpDJ8xRjvu8NB2VBB1OOcQfwb0/lpbZJg+2kTi93ld5jXIY6fpGrxP6BO
+         IlOErU9BDYiUxhcWge7Is1SHrn/hQMVGRSfALa8Sno+42+DVAR/5beMupIw0QA+U92Jl
+         8T8FGytCr9e0U6lK6dQB3w7MR08NXbg+T026txEjrxTABdlc6Ibn4YLLhI3PCC3Tzqiq
+         HO4bAbXZnN/BB1376mOmSGugbdYvFzvkUELRQCm4eyPnvugqYYNfVeTihXzrX9PbckC4
+         NW18XxD1y5F84aCv+lTwpAHk7WET8wjTl7ArAnbSSyl16cimexFHiN94IVsR+/7kCVNa
+         kH1A==
+X-Gm-Message-State: ANhLgQ19JN9SxDKhz/UPVZCTmfEcvxyMDeKXRi8+RHGabFPm+HER9gha
+	MkYySOr0rUz65EJrGXHt+xwcs8aK1yd0qDCz2CjTUmFtQi5YXlcv3DfriNvNU+7f7R0JO/RmR8C
+	MrshNusU4b22WGm0b
+X-Received: by 2002:a1c:6385:: with SMTP id x127mr28120928wmb.141.1584374819496;
+        Mon, 16 Mar 2020 09:06:59 -0700 (PDT)
+X-Received: by 2002:a1c:6385:: with SMTP id x127mr28120897wmb.141.1584374819229;
+        Mon, 16 Mar 2020 09:06:59 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from localhost.localdomain (96.red-83-59-163.dynamicip.rima-tde.net. [83.59.163.96])
+        by smtp.gmail.com with ESMTPSA id y5sm166058wmi.34.2020.03.16.09.06.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Mar 2020 12:42:20 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
+        Mon, 16 Mar 2020 09:06:58 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org,
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	kvm@vger.kernel.org,
+	Thomas Huth <thuth@redhat.com>,
 	qemu-arm@nongnu.org,
-	alex.bennee@linaro.org
-Subject: [PATCH v6 00/42] target/arm: Implement ARMv8.5-MemTag, system mode
-Date: Thu, 12 Mar 2020 12:41:37 -0700
-Message-Id: <20200312194219.24406-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.20.1
+	Fam Zheng <fam@euphon.net>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v3 04/19] target/arm: Restric the Address Translate operations to TCG accel
+Date: Mon, 16 Mar 2020 17:06:19 +0100
+Message-Id: <20200316160634.3386-5-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200316160634.3386-1-philmd@redhat.com>
+References: <20200316160634.3386-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: 4BR01cf9xk1f
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 4fg2hEMe3PK/
 
-I've done quite a lot of reorg since v5, so much so that I've dropped
-most of the review tags that had been given.
+Under KVM the ATS instruction will trap.
 
-There are a couple of major improvements to note:
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ target/arm/helper.c | 20 +++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
 
-* The effective ATA bit is in hflags, noting whether access to the
-  allocation tags is enabled by the OS.  This is moderately expensive
-  to compute, so it's better to hold on to that.  This allows trivial
-  inlining of some of the operations.
-
-* Updates for SVE, and thus
-
-Based-on: <20200311064420.30606-1-richard.henderson@linaro.org>
-("target/arm: sve load/store improvements")
-
-* Architecture updates, to F.a released this month.
-
-* There are now real patches for the kernel:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/arm64/linux.git devel/mte-v2
-
-  Booting that and running my user-mode tests showed up a few bugs.
-
-
-r~
-
-
-Richard Henderson (42):
-  target/arm: Add isar tests for mte
-  target/arm: Improve masking of SCR RES0 bits
-  target/arm: Add support for MTE to SCTLR_ELx
-  target/arm: Add support for MTE to HCR_EL2 and SCR_EL3
-  target/arm: Rename DISAS_UPDATE to DISAS_UPDATE_EXIT
-  target/arm: Add DISAS_UPDATE_NOCHAIN
-  target/arm: Add MTE system registers
-  target/arm: Add MTE bits to tb_flags
-  target/arm: Implement the IRG instruction
-  target/arm: Implement the ADDG, SUBG instructions
-  target/arm: Implement the GMI instruction
-  target/arm: Implement the SUBP instruction
-  target/arm: Define arm_cpu_do_unaligned_access for user-only
-  target/arm: Add helper_probe_access
-  target/arm: Implement LDG, STG, ST2G instructions
-  target/arm: Implement the STGP instruction
-  target/arm: Restrict the values of DCZID.BS under TCG
-  target/arm: Simplify DC_ZVA
-  target/arm: Implement the LDGM, STGM, STZGM instructions
-  target/arm: Implement the access tag cache flushes
-  target/arm: Move regime_el to internals.h
-  target/arm: Move regime_tcr to internals.h
-  target/arm: Add gen_mte_check1
-  target/arm: Add gen_mte_checkN
-  target/arm: Implement helper_mte_check1
-  target/arm: Implement helper_mte_checkN
-  target/arm: Add helper_mte_check_zva
-  target/arm: Use mte_checkN for sve unpredicated loads
-  target/arm: Use mte_checkN for sve unpredicated stores
-  target/arm: Use mte_check1 for sve LD1R
-  target/arm: Add mte helpers for sve scalar + int loads
-  target/arm: Add mte helpers for sve scalar + int stores
-  target/arm: Add mte helpers for sve scalar + int ff/nf loads
-  target/arm: Handle TBI for sve scalar + int memory ops
-  target/arm: Add mte helpers for sve scatter/gather memory ops
-  target/arm: Complete TBI clearing for user-only for SVE
-  target/arm: Implement data cache set allocation tags
-  target/arm: Set PSTATE.TCO on exception entry
-  target/arm: Enable MTE
-  target/arm: Cache the Tagged bit for a page in MemTxAttrs
-  target/arm: Create tagged ram when MTE is enabled
-  target/arm: Add allocation tag storage for system mode
-
- target/arm/cpu.h               |   36 +-
- target/arm/helper-a64.h        |   16 +
- target/arm/helper-sve.h        |  491 +++++++++++
- target/arm/helper.h            |    2 +
- target/arm/internals.h         |  145 ++++
- target/arm/translate-a64.h     |    5 +
- target/arm/translate.h         |   23 +-
- hw/arm/virt.c                  |   52 ++
- linux-user/aarch64/cpu_loop.c  |    7 +
- linux-user/arm/cpu_loop.c      |    7 +
- target/arm/cpu.c               |   79 +-
- target/arm/cpu64.c             |    1 +
- target/arm/helper-a64.c        |   94 +--
- target/arm/helper.c            |  350 ++++++--
- target/arm/mte_helper.c        |  894 ++++++++++++++++++++
- target/arm/op_helper.c         |   16 +
- target/arm/sve_helper.c        |  750 ++++++++++++++---
- target/arm/tlb_helper.c        |   41 +-
- target/arm/translate-a64.c     |  607 ++++++++++++--
- target/arm/translate-sve.c     | 1425 ++++++++++++++++++++------------
- target/arm/translate-vfp.inc.c |    2 +-
- target/arm/translate.c         |   16 +-
- target/arm/Makefile.objs       |    1 +
- 23 files changed, 4204 insertions(+), 856 deletions(-)
- create mode 100644 target/arm/mte_helper.c
-
--- 
-2.20.1
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 924deffd65..a5280c091b 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -3322,7 +3322,7 @@ static void par_write(CPUARMState *env, const ARMCPRe=
+gInfo *ri, uint64_t value)
+     }
+ }
+=20
+-#ifndef CONFIG_USER_ONLY
++#if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
+ /* get_phys_addr() isn't present for user-mode-only targets */
+=20
+ static CPAccessResult ats_access(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -3631,7 +3631,7 @@ static void ats_write64(CPUARMState *env, const ARMCP=
+RegInfo *ri,
+=20
+     env->cp15.par_el[1] =3D do_ats_write(env, value, access_type, mmu_idx)=
+;
+ }
+-#endif
++#endif /* !CONFIG_USER_ONLY && CONFIG_TCG */
+=20
+ static const ARMCPRegInfo vapa_cp_reginfo[] =3D {
+     { .name =3D "PAR", .cp =3D 15, .crn =3D 7, .crm =3D 4, .opc1 =3D 0, .o=
+pc2 =3D 0,
+@@ -3639,7 +3639,7 @@ static const ARMCPRegInfo vapa_cp_reginfo[] =3D {
+       .bank_fieldoffsets =3D { offsetoflow32(CPUARMState, cp15.par_s),
+                              offsetoflow32(CPUARMState, cp15.par_ns) },
+       .writefn =3D par_write },
+-#ifndef CONFIG_USER_ONLY
++#if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
+     /* This underdecoding is safe because the reginfo is NO_RAW. */
+     { .name =3D "ATS", .cp =3D 15, .crn =3D 7, .crm =3D 8, .opc1 =3D 0, .o=
+pc2 =3D CP_ANY,
+       .access =3D PL1_W, .accessfn =3D ats_access,
+@@ -4880,7 +4880,8 @@ static const ARMCPRegInfo v8_cp_reginfo[] =3D {
+       .opc0 =3D 1, .opc1 =3D 4, .crn =3D 8, .crm =3D 7, .opc2 =3D 6,
+       .access =3D PL2_W, .type =3D ARM_CP_NO_RAW,
+       .writefn =3D tlbi_aa64_alle1is_write },
+-#ifndef CONFIG_USER_ONLY
++
++#if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
+     /* 64 bit address translation operations */
+     { .name =3D "AT_S1E1R", .state =3D ARM_CP_STATE_AA64,
+       .opc0 =3D 1, .opc1 =3D 0, .crn =3D 7, .crm =3D 8, .opc2 =3D 0,
+@@ -4929,7 +4930,8 @@ static const ARMCPRegInfo v8_cp_reginfo[] =3D {
+       .access =3D PL1_RW, .resetvalue =3D 0,
+       .fieldoffset =3D offsetof(CPUARMState, cp15.par_el[1]),
+       .writefn =3D par_write },
+-#endif
++#endif /* !CONFIG_USER_ONLY && CONFIG_TCG */
++
+     /* TLB invalidate last level of translation table walk */
+     { .name =3D "TLBIMVALIS", .cp =3D 15, .opc1 =3D 0, .crn =3D 8, .crm =
+=3D 3, .opc2 =3D 5,
+       .type =3D ARM_CP_NO_RAW, .access =3D PL1_W, .accessfn =3D access_ttl=
+b,
+@@ -5536,7 +5538,7 @@ static const ARMCPRegInfo el2_cp_reginfo[] =3D {
+       .opc0 =3D 1, .opc1 =3D 4, .crn =3D 8, .crm =3D 3, .opc2 =3D 5,
+       .access =3D PL2_W, .type =3D ARM_CP_NO_RAW,
+       .writefn =3D tlbi_aa64_vae2is_write },
+-#ifndef CONFIG_USER_ONLY
++#if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
+     /* Unlike the other EL2-related AT operations, these must
+      * UNDEF from EL3 if EL2 is not implemented, which is why we
+      * define them here rather than with the rest of the AT ops.
+@@ -6992,7 +6994,7 @@ static const ARMCPRegInfo vhe_reginfo[] =3D {
+     REGINFO_SENTINEL
+ };
+=20
+-#ifndef CONFIG_USER_ONLY
++#if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
+ static const ARMCPRegInfo ats1e1_reginfo[] =3D {
+     { .name =3D "AT_S1E1R", .state =3D ARM_CP_STATE_AA64,
+       .opc0 =3D 1, .opc1 =3D 0, .crn =3D 7, .crm =3D 9, .opc2 =3D 0,
+@@ -7894,14 +7896,14 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+     if (cpu_isar_feature(aa64_pan, cpu)) {
+         define_one_arm_cp_reg(cpu, &pan_reginfo);
+     }
+-#ifndef CONFIG_USER_ONLY
++#if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
+     if (cpu_isar_feature(aa64_ats1e1, cpu)) {
+         define_arm_cp_regs(cpu, ats1e1_reginfo);
+     }
+     if (cpu_isar_feature(aa32_ats1e1, cpu)) {
+         define_arm_cp_regs(cpu, ats1cp_reginfo);
+     }
+-#endif
++#endif /* !CONFIG_USER_ONLY && CONFIG_TCG */
+     if (cpu_isar_feature(aa64_uao, cpu)) {
+         define_one_arm_cp_reg(cpu, &uao_reginfo);
+     }
+--=20
+2.21.1

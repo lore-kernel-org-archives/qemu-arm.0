@@ -1,155 +1,99 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp511286lfe;
-        Mon, 16 Mar 2020 13:17:42 -0700 (PDT)
-X-Received: by 2002:a62:7d11:: with SMTP id y17mr1350910pfc.127.1584389862638;
-        Mon, 16 Mar 2020 13:17:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584389862; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp689608lfe;
+        Mon, 16 Mar 2020 16:10:46 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt+HOEn5N/DXz6FRdJFaFcdmKu+WQ1tioI+ue7syEagniGjqZnIGQCN043713BW32u+bGdW
+X-Received: by 2002:aa7:d757:: with SMTP id a23mr2462227eds.26.1584400246369;
+        Mon, 16 Mar 2020 16:10:46 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1584400246; cv=pass;
         d=google.com; s=arc-20160816;
-        b=AVaFZMpk8/s9WGoI50M7SXXE1yXuFT5GnEx+d+bbKR6dT4sxMTLCU5mWXqXRYh83HE
-         tke5AoZkDz31l7N7QYG+7hpZCeb+jPxpCLvphicWpsgXl2iB5y3Jac/mV6+6vqs5qB+d
-         Dzqs1An7jf74pJwc1Rg8kbKUcWE58i6Q+6PKDcnLcNY7VWvoxvQaYBZTooNgDD1PvFVX
-         3N/wh6tDGcYPVm4qc3R6YR+6r9T2/paEvjPox837UCNKQ3YgaJU7hMpSWXfyzvn9JqkJ
-         ipuCrrOMGi5/l3AojyEbv5L9d6W1DdiqB4m2MWRoM0QqykBcHe9DIMl170FXJlN5Uzie
-         BsOQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=2yW7S1n3gr0Wmk0qZ8ztP7NorwmiXCsES5nj7/m/l2s=;
-        b=ema+7Ps2bbV/GoGw9zOfHmiHXka3QzblUYpOAU1H5kAoT4uRV/JMGEjFzJzValb3Qz
-         oHY1a8ane3ryBgNpK6Fq6YTzv/TjbgMrK87qS3kvLtsEXuQhzElgqbghhc+p+mpHBUor
-         kMaOUEgcC6hvLj41Hwaw86jwewK2zz835uiVm/D2ieA08Bp5D5xC01Cp1V3Jv7F/RBsL
-         5J1FHSd5bQrd3t0rYxKaxk+CLtQ17eBhg6jahB0OZmttZERFmg4P5H4kUZLRR1aEoQb5
-         ghICC9tgumLB42JuYanIPkZwAkGUMoAqNP3f4wCcerg09E5CK2xOLvZbYE0ceCaycvfb
-         hwqQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lOL79TOm;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id j4sor949424pjn.18.2020.03.16.13.17.42
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 16 Mar 2020 13:17:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        b=q+86oY9vL34wLkGB1TRPHKncvemRuYdjR+n1af2uI39lpJnsoZs9RQFtvl4f2KUTuW
+         HXGsa98r1fU83KmvmmJQoUvzAm78gV9hiTZpFyTVpT4KnCbX/SFRTJbcYNWRxC4UTYcB
+         MsEb2n5W1Rz/7alMar3dL3aFQ+vRZKK5hCeGxR2ps23/2JmcSypgR3spPeEAdXMXu1Zv
+         I+IDPPPFDgzT9ePSfvxapxX5tZIZL1LkwiCe8Uu/eRgpDOGG4falkxOQQJGwcegqcbXT
+         SeaZS3Lw3kxuAqRxk0bcMr/LBZmCvbxAcDpNDlfwwoiBUXQrA56PME5uz/EEQk4Pe7do
+         au8g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
+         :message-id:reply-to:subject:in-reply-to;
+        bh=ALw4DAB7Cs8zNB9H3tmmwtuvBjRFkW2rCw2X+VUNNy4=;
+        b=ZCfBzfQZ9vxwGgudL0ASERBoXI2cGTW5E04vLStzCNrLpYLXXnh6Jp0c/Cx6KttOVK
+         XCntvjILLl/C+DQkvEJ+yBbyoB7YWTsfc4EfCwKPrD7+P+j2glxQFEHKuIjIzfR4d7af
+         dlnqHZ4RIwJBO82h/+Wklbetp9SaD79QCrm/zDnhMem23Mboeswi/EGclnm37l8hI9+E
+         Hwv734VM8veeRoOfNcgfnpl8i1uUCw1miBAxyKoJ8pQam/K9n1/zVOrqU2wQxyfxcNVg
+         CUAPOcQ60uSTcdzAj14Nvce4h5oA8x6rRiBOPrPqq7CJQG02N6Pag40zy1bsREVvs13O
+         tUtQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
+       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.51 as permitted sender) smtp.mailfrom=no-reply@patchew.org
+Return-Path: <no-reply@patchew.org>
+Received: from sender4-of-o51.zoho.com (sender4-of-o51.zoho.com. [136.143.188.51])
+        by mx.google.com with ESMTPS id g9si1121882edn.45.2020.03.16.16.10.44
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 16 Mar 2020 16:10:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 136.143.188.51 as permitted sender) client-ip=136.143.188.51;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lOL79TOm;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=2yW7S1n3gr0Wmk0qZ8ztP7NorwmiXCsES5nj7/m/l2s=;
-        b=lOL79TOmLAhOOPelKaD2VIxJ8azSNOLBXgkxGer1aFJdDHP1Q15mIaKCKsAgieJfCz
-         iIsEJkPjvaqmZEBsjzvL2OfIMhCplUv5MXEUi2QHyfxqNMcNyDUnbUlgZMcu/zB81WtH
-         gRPCUc9FTR/GDj9vkyF+6dJ36N5oG9FH4E9MiIECxl+I+Pysp0cAa/7hTZjJTOJSvfzD
-         rve3rydC76PoRy2zpe7yIq+aTMVo1jrxNDx4FlH5ctnoM0x+4GcHTYqoXUVrdl6Reelu
-         DUiHA7eEtnUl8ivnyP9PPFykGKHZQD4J8Qd3cdyT0+2oRf05TyfA9ktCteVYvHQAPHwv
-         l0/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=2yW7S1n3gr0Wmk0qZ8ztP7NorwmiXCsES5nj7/m/l2s=;
-        b=Xpk3arzbzsYNLE9sKWxC/Y9zuWTvK43saGGWoNf8usUbM1CpImR2gB6cr9dmy/2Tq0
-         HJPi9hoZE2DFLrL7WssL8f7m+6nSn7MF23oLfGhr81uUjyNDEoHhlujBb96IR+xyk/tX
-         CD0FyCrT3WzNQaktbAR6iRn0aSPZbSleDQDIR6X8Qev9t4vR+YEcoKD39yqj1W915oGE
-         3E2kd7TiaHjltIn6YJRkAF8Fwh8Ht4zVepHADpKvwTw2LnHrEp37A5IMs9yavDjaZbIj
-         MFHkyCPBQNdDXm9TUwBuTXYWYrbW6RJMG/TVFsAL9cKgWEAeZzrMjVd33Xt0NTZwrOGB
-         gtRA==
-X-Gm-Message-State: ANhLgQ1NzHpX7sRDq4rRMslSk31A7GZnwdEJ3KVj1HjXx+NQRWUTjjfg
-	L/tfjpP6KshNvuJ8PulwNjv+RaxVwu4SJA==
-X-Google-Smtp-Source: ADFU+vth/TIZRKQ+ne19YZSby2Ty7zpQb7LvvexFS2GGoAPSTqzbmzzEvmtJN4ay/ktxRf/Mc3hJDw==
-X-Received: by 2002:a17:90a:e384:: with SMTP id b4mr1234622pjz.89.1584389862018;
-        Mon, 16 Mar 2020 13:17:42 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
-        by smtp.gmail.com with ESMTPSA id gc16sm593969pjb.8.2020.03.16.13.17.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 16 Mar 2020 13:17:41 -0700 (PDT)
-Subject: Re: [PATCH v3 05/19] target/arm: Restrict Virtualization Host
- Extensions instructions to TCG
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- kvm@vger.kernel.org, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20200316160634.3386-1-philmd@redhat.com>
- <20200316160634.3386-6-philmd@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <9cff4a7a-e404-fcc4-eb04-fdbc48ceb7c2@linaro.org>
-Date: Mon, 16 Mar 2020 13:17:38 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+       arc=pass (i=1 spf=pass spfdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
+       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.51 as permitted sender) smtp.mailfrom=no-reply@patchew.org
+ARC-Seal: i=1; a=rsa-sha256; t=1584400231; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=lTJo3Ft9H5/oJfM+tkL+eNvI0GBJEAdoSc+zlpAho5RpIkrVp7peED+4HzJ1hV6llj2x5IvILV8Y/ZcfCQ0D4VfHaUruILnwuKQnCRg+0g8yNBPgs5t9JFvEKAwbBG1eRfhznqoKSCxs6d+IuYSw3HbmwSS87YQZBFKhnbJMCo0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1584400231; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To; 
+	bh=ALw4DAB7Cs8zNB9H3tmmwtuvBjRFkW2rCw2X+VUNNy4=; 
+	b=NXUYzKG5seVchkE4a6BjKWi63GFLSNY35n5m1MQTDrD04K4W34r6LKgSP4ZTh26I16rEH8FWG9svZGSJMFiT9mYwiFKBnOLRzCQuahTWLGFh6TH4327zP2uGVnSzG8Wcyd2kW8p5doNTAA1cUiC9EYEOVGBASLeZ4KML/QjYQqg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
+	with SMTPS id 1584400229998294.08700547819376; Mon, 16 Mar 2020 16:10:29 -0700 (PDT)
+In-Reply-To: <20200316160634.3386-1-philmd@redhat.com>
+Subject: Re: [PATCH v3 00/19] Support disabling TCG on ARM (part 2)
+Reply-To: <qemu-devel@nongnu.org>
+Message-ID: <158440022829.17104.10073980639396004207@39012742ff91>
 MIME-Version: 1.0
-In-Reply-To: <20200316160634.3386-6-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: RA6YOjJNiOFq
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: philmd@redhat.com
+Cc: qemu-devel@nongnu.org, fam@euphon.net, peter.maydell@linaro.org, thuth@redhat.com, kvm@vger.kernel.org, alex.bennee@linaro.org, richard.henderson@linaro.org, qemu-arm@nongnu.org, pbonzini@redhat.com, philmd@redhat.com
+Date: Mon, 16 Mar 2020 16:10:29 -0700 (PDT)
+X-ZohoMailClient: External
+X-TUID: 9qa+htBO/69i
 
-On 3/16/20 9:06 AM, Philippe Mathieu-Daudé wrote:
-> Under KVM the ARMv8.1-VHE instruction will trap.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  target/arm/helper.c | 22 ++++++++++++----------
->  1 file changed, 12 insertions(+), 10 deletions(-)
-
-What happened to the uses of these functions?
-
-
-r~
-
-> 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index a5280c091b..ce6778283d 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -2897,16 +2897,6 @@ static void gt_virt_ctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
->      gt_ctl_write(env, ri, GTIMER_VIRT, value);
->  }
->  
-> -static void gt_cntvoff_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> -                              uint64_t value)
-> -{
-> -    ARMCPU *cpu = env_archcpu(env);
-> -
-> -    trace_arm_gt_cntvoff_write(value);
-> -    raw_write(env, ri, value);
-> -    gt_recalc_timer(cpu, GTIMER_VIRT);
-> -}
-> -
->  static uint64_t gt_virt_redir_cval_read(CPUARMState *env,
->                                          const ARMCPRegInfo *ri)
->  {
-> @@ -2949,6 +2939,17 @@ static void gt_virt_redir_ctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
->      gt_ctl_write(env, ri, timeridx, value);
->  }
->  
-> +#if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
-> +static void gt_cntvoff_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> +                              uint64_t value)
-> +{
-> +    ARMCPU *cpu = env_archcpu(env);
-> +
-> +    trace_arm_gt_cntvoff_write(value);
-> +    raw_write(env, ri, value);
-> +    gt_recalc_timer(cpu, GTIMER_VIRT);
-> +}
-> +
->  static void gt_hyp_timer_reset(CPUARMState *env, const ARMCPRegInfo *ri)
->  {
->      gt_timer_reset(env, ri, GTIMER_HYP);
-> @@ -2976,6 +2977,7 @@ static void gt_hyp_ctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
->  {
->      gt_ctl_write(env, ri, GTIMER_HYP, value);
->  }
-> +#endif /* !CONFIG_USER_ONLY && CONFIG_TCG */
->  
->  static void gt_sec_timer_reset(CPUARMState *env, const ARMCPRegInfo *ri)
->  {
-> 
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDMxNjE2MDYzNC4zMzg2
+LTEtcGhpbG1kQHJlZGhhdC5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVkIHRoZSBkb2Nr
+ZXItcXVpY2tAY2VudG9zNyBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGluZyBjb21t
+YW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5zdGFsbGVk
+LCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1QgU0NSSVBU
+IEJFR0lOID09PQojIS9iaW4vYmFzaAptYWtlIGRvY2tlci1pbWFnZS1jZW50b3M3IFY9MSBORVRX
+T1JLPTEKdGltZSBtYWtlIGRvY2tlci10ZXN0LXF1aWNrQGNlbnRvczcgU0hPV19FTlY9MSBKPTE0
+IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKbWlzc2luZyBvYmplY3QgdHlwZSAn
+b3ItaXJxJwpCcm9rZW4gcGlwZQovdG1wL3FlbXUtdGVzdC9zcmMvdGVzdHMvcXRlc3QvbGlicXRl
+c3QuYzoxNzU6IGtpbGxfcWVtdSgpIGRldGVjdGVkIFFFTVUgZGVhdGggZnJvbSBzaWduYWwgNiAo
+QWJvcnRlZCkgKGNvcmUgZHVtcGVkKQpFUlJPUiAtIHRvbyBmZXcgdGVzdHMgcnVuIChleHBlY3Rl
+ZCA2LCBnb3QgNSkKbWFrZTogKioqIFtjaGVjay1xdGVzdC1hYXJjaDY0XSBFcnJvciAxCm1ha2U6
+ICoqKiBXYWl0aW5nIGZvciB1bmZpbmlzaGVkIGpvYnMuLi4uCkNvdWxkIG5vdCBhY2Nlc3MgS1ZN
+IGtlcm5lbCBtb2R1bGU6IE5vIHN1Y2ggZmlsZSBvciBkaXJlY3RvcnkKcWVtdS1zeXN0ZW0teDg2
+XzY0OiAtYWNjZWwga3ZtOiBmYWlsZWQgdG8gaW5pdGlhbGl6ZSBrdm06IE5vIHN1Y2ggZmlsZSBv
+ciBkaXJlY3RvcnkKLS0tCiAgICByYWlzZSBDYWxsZWRQcm9jZXNzRXJyb3IocmV0Y29kZSwgY21k
+KQpzdWJwcm9jZXNzLkNhbGxlZFByb2Nlc3NFcnJvcjogQ29tbWFuZCAnWydzdWRvJywgJy1uJywg
+J2RvY2tlcicsICdydW4nLCAnLS1sYWJlbCcsICdjb20ucWVtdS5pbnN0YW5jZS51dWlkPWQ1MWZl
+NzMxNjA2NDRlMGJhNmEwZjNjZjFjMWQ2MjA4JywgJy11JywgJzEwMDMnLCAnLS1zZWN1cml0eS1v
+cHQnLCAnc2VjY29tcD11bmNvbmZpbmVkJywgJy0tcm0nLCAnLWUnLCAnVEFSR0VUX0xJU1Q9Jywg
+Jy1lJywgJ0VYVFJBX0NPTkZJR1VSRV9PUFRTPScsICctZScsICdWPScsICctZScsICdKPTE0Jywg
+Jy1lJywgJ0RFQlVHPScsICctZScsICdTSE9XX0VOVj0xJywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zh
+ci90bXAvY2NhY2hlJywgJy12JywgJy9ob21lL3BhdGNoZXcyLy5jYWNoZS9xZW11LWRvY2tlci1j
+Y2FjaGU6L3Zhci90bXAvY2NhY2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXIt
+dG1wLXU4anU0c3NwL3NyYy9kb2NrZXItc3JjLjIwMjAtMDMtMTYtMTguNTcuMTMuMjEwMDc6L3Zh
+ci90bXAvcWVtdTp6LHJvJywgJ3FlbXU6Y2VudG9zNycsICcvdmFyL3RtcC9xZW11L3J1bicsICd0
+ZXN0LXF1aWNrJ10nIHJldHVybmVkIG5vbi16ZXJvIGV4aXQgc3RhdHVzIDIuCmZpbHRlcj0tLWZp
+bHRlcj1sYWJlbD1jb20ucWVtdS5pbnN0YW5jZS51dWlkPWQ1MWZlNzMxNjA2NDRlMGJhNmEwZjNj
+ZjFjMWQ2MjA4Cm1ha2VbMV06ICoqKiBbZG9ja2VyLXJ1bl0gRXJyb3IgMQptYWtlWzFdOiBMZWF2
+aW5nIGRpcmVjdG9yeSBgL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLXU4anU0c3NwL3NyYycK
+bWFrZTogKioqIFtkb2NrZXItcnVuLXRlc3QtcXVpY2tAY2VudG9zN10gRXJyb3IgMgoKcmVhbCAg
+ICAxM20xNi4yMjhzCnVzZXIgICAgMG04Ljc2M3MKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxl
+IGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwMzE2MTYwNjM0LjMzODYtMS1waGlsbWRA
+cmVkaGF0LmNvbS90ZXN0aW5nLmRvY2tlci1xdWlja0BjZW50b3M3Lz90eXBlPW1lc3NhZ2UuCi0t
+LQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNo
+ZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRo
+YXQuY29t

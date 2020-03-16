@@ -1,197 +1,140 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp333853lfe;
-        Mon, 16 Mar 2020 10:23:33 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vu5wzcUJAzRh67iDUBoyW0a6QEck6snjEguJYpR7aZJXiP+UW4nkom033HAM1UeIaK84Bn/
-X-Received: by 2002:ac8:fcc:: with SMTP id f12mr1188200qtk.76.1584379412939;
-        Mon, 16 Mar 2020 10:23:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584379412; cv=none;
-        d=google.com; s=arc-20160816;
-        b=MUHX225WW1vzbQ0fWuPNERwS7aAzFh4HWXIW+poSnY1OVlMh2jobSbW555VO9H6fTH
-         Wrn10flwyo5m5hzFo+ocfm3LpHOgazcTNfEqsgvC/fS3m74aGGJYcG3eBL1s1j7UidE+
-         5NKt9gKPkMF2BejNpUuR0qv291QX2oiFb3GV0lHUddkJRwPV6jIhGbQebww9RmEB9lXc
-         78P+dS9JRyYj0ZV88dvEE5quKI3S7TCBcIeCBFr7LjoJnxC6j/Osx5HBSe0WwAp6vvZ1
-         1tfrc+3Bgs9dxsshg7pJXcrm7XcZ4TsOuwOHRZ5oFJ6Xve/+2+nikvEyTj1GOE1Dn/ZU
-         vEOQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=lMzu3gBIT8rUHOKPBMLX6fk43S49MjSLHmhMyZe1bEU=;
-        b=YhoiHRpFr8U7bPO/sItrr3fAymKg3n7suzHmctxAmVPP59PIGGDzP7tLi/Ydjv4F1b
-         BnccaXvikqe7KBW3nF03D2fhW8PMQwIRiuj4iR9RZuTp5U2xEq8RhnecQ8A6fZDNZFZN
-         JxviJ/dkwBaE17p1+CdEtdoJ0tYZ54T84j0cl74RfugvwScZmZvA+MzWsmW/IcAhkH8M
-         3a4WUiVOFwEq8kQ8fT5mev3Y1W43+j9vA8DRX38LR7wiEGgZM7WTIZddN3fjezZcabFn
-         5rzkRChyE3MREOUwmoJ1mduTKlUrUw0zwK18Qp8gUNMJP6hRQIe/ZoyVQXaMGJ0BYcSQ
-         7ivg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KD+aEplL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j28si124556qtv.386.2020.03.16.10.23.32
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Mar 2020 10:23:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KD+aEplL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43951 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jDtSd-0001ut-TL
-	for alex.bennee@linaro.org; Mon, 16 Mar 2020 13:23:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43612)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1jDsB0-0002Ad-Eo
- for qemu-devel@nongnu.org; Mon, 16 Mar 2020 12:01:16 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1jDsAz-0000Vx-BO
- for qemu-devel@nongnu.org; Mon, 16 Mar 2020 12:01:14 -0400
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:42082)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1jDsAz-0000P7-1Z; Mon, 16 Mar 2020 12:01:13 -0400
-Received: by mail-pf1-x443.google.com with SMTP id x2so9817941pfn.9;
- Mon, 16 Mar 2020 09:01:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=lMzu3gBIT8rUHOKPBMLX6fk43S49MjSLHmhMyZe1bEU=;
- b=KD+aEplLxM6aFTPE07Y4vhVWmK2h7GZ0u0mfjXjd4bPBY8rea6Q9TOORwQkBaZcflW
- heZddNDgzdo9yiSHxdkOwDJWO+umIDlxdfR6sg0AtJfVBgq3QKiYOK+GsbJd1eVlCdU3
- USgUDFmo95i8NI+GaPJZyHPPK7j9Xs+sZe73fvqEyPIz0b3WOhBYW6q/0klzGV2BIoGo
- iuC0Dux74+t/rFNfzht9IDhDuA2zGMIqt8dugapExowbTa1eIjNco+663orIYBiEfO7u
- 0db25vNpOW6EY6ix2sXNic/Wfp+PmWYDhZvGtQOth9noQSR7GcDI0MKuf3w1bcjYAbfD
- oWPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=lMzu3gBIT8rUHOKPBMLX6fk43S49MjSLHmhMyZe1bEU=;
- b=HnlmFZcBoD4IrI7R56EwbVmTNLqpsuHbk+4qz0TaSKmY3N77YBvEmsoHoOXTXKlbYa
- CZg4DQ5mr9qyewntrW4k6K10QFTk4KpxI4B7zbDXiwRbAG9mHXZVERy8u5FsiQOxAE9i
- bq75epd7HyUzojpHYF9ktCw23igOH60udVLeUGjqY9HqlanRCb3p+lQFWlT2uUKZizKD
- vBDblaIYawO4qGTW2KHYTMJHTcZ5UvlJBtPVZo+FfY9kEF+COlI1F2ul26uNH7vfumdD
- HkNa1n2zeXQKWV+fUSkKgTwrS3lygoW06besmlWX6zDB8qQeBmMJiP26G8S9T3Qk4e/l
- qy7A==
-X-Gm-Message-State: ANhLgQ23jDRhVNRm5mYQSJcya/VeN2LseF/gQu8lIW/L7PuEWWDsEOAb
- aH1htZ8qwO20rNVRfA8gqigd6NqG
-X-Received: by 2002:a63:140f:: with SMTP id u15mr477030pgl.277.1584374470328; 
- Mon, 16 Mar 2020 09:01:10 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- f69sm347598pfa.124.2020.03.16.09.01.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 16 Mar 2020 09:01:08 -0700 (PDT)
-Subject: Re: [PATCH] hw/arm/pxa2xx: Do not wire up OHCI for PXA255
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200313160215.28155-1-linux@roeck-us.net>
- <CAFEAcA-rJCGZC+0G8L=Qbp602SF_=t58bP6v5adQCsDXjtetOg@mail.gmail.com>
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- xsFNBE6H1WcBEACu6jIcw5kZ5dGeJ7E7B2uweQR/4FGxH10/H1O1+ApmcQ9i87XdZQiB9cpN
- RYHA7RCEK2dh6dDccykQk3bC90xXMPg+O3R+C/SkwcnUak1UZaeK/SwQbq/t0tkMzYDRxfJ7
- nyFiKxUehbNF3r9qlJgPqONwX5vJy4/GvDHdddSCxV41P/ejsZ8PykxyJs98UWhF54tGRWFl
- 7i1xvaDB9lN5WTLRKSO7wICuLiSz5WZHXMkyF4d+/O5ll7yz/o/JxK5vO/sduYDIlFTvBZDh
- gzaEtNf5tQjsjG4io8E0Yq0ViobLkS2RTNZT8ICq/Jmvl0SpbHRvYwa2DhNsK0YjHFQBB0FX
- IdhdUEzNefcNcYvqigJpdICoP2e4yJSyflHFO4dr0OrdnGLe1Zi/8Xo/2+M1dSSEt196rXaC
- kwu2KgIgmkRBb3cp2vIBBIIowU8W3qC1+w+RdMUrZxKGWJ3juwcgveJlzMpMZNyM1jobSXZ0
- VHGMNJ3MwXlrEFPXaYJgibcg6brM6wGfX/LBvc/haWw4yO24lT5eitm4UBdIy9pKkKmHHh7s
- jfZJkB5fWKVdoCv/omy6UyH6ykLOPFugl+hVL2Prf8xrXuZe1CMS7ID9Lc8FaL1ROIN/W8Vk
- BIsJMaWOhks//7d92Uf3EArDlDShwR2+D+AMon8NULuLBHiEUQARAQABzTJHdWVudGVyIFJv
- ZWNrIChMaW51eCBhY2NvdW50KSA8bGludXhAcm9lY2stdXMubmV0PsLBgQQTAQIAKwIbAwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4ACGQEFAlVcphcFCRmg06EACgkQyx8mb86fmYFg0RAA
- nzXJzuPkLJaOmSIzPAqqnutACchT/meCOgMEpS5oLf6xn5ySZkl23OxuhpMZTVX+49c9pvBx
- hpvl5bCWFu5qC1jC2eWRYU+aZZE4sxMaAGeWenQJsiG9lP8wkfCJP3ockNu0ZXXAXwIbY1O1
- c+l11zQkZw89zNgWgKobKzrDMBFOYtAh0pAInZ9TSn7oA4Ctejouo5wUugmk8MrDtUVXmEA9
- 7f9fgKYSwl/H7dfKKsS1bDOpyJlqhEAH94BHJdK/b1tzwJCFAXFhMlmlbYEk8kWjcxQgDWMu
- GAthQzSuAyhqyZwFcOlMCNbAcTSQawSo3B9yM9mHJne5RrAbVz4TWLnEaX8gA5xK3uCNCeyI
- sqYuzA4OzcMwnnTASvzsGZoYHTFP3DQwf2nzxD6yBGCfwNGIYfS0i8YN8XcBgEcDFMWpOQhT
- Pu3HeztMnF3HXrc0t7e5rDW9zCh3k2PA6D2NV4fews9KDFhLlTfCVzf0PS1dRVVWM+4jVl6l
- HRIAgWp+2/f8dx5vPc4Ycp4IsZN0l1h9uT7qm1KTwz+sSl1zOqKD/BpfGNZfLRRxrXthvvY8
- BltcuZ4+PGFTcRkMytUbMDFMF9Cjd2W9dXD35PEtvj8wnEyzIos8bbgtLrGTv/SYhmPpahJA
- l8hPhYvmAvpOmusUUyB30StsHIU2LLccUPPOwU0ETofVZwEQALlLbQeBDTDbwQYrj0gbx3bq
- 7kpKABxN2MqeuqGr02DpS9883d/t7ontxasXoEz2GTioevvRmllJlPQERVxM8gQoNg22twF7
- pB/zsrIjxkE9heE4wYfN1AyzT+AxgYN6f8hVQ7Nrc9XgZZe+8IkuW/Nf64KzNJXnSH4u6nJM
- J2+Dt274YoFcXR1nG76Q259mKwzbCukKbd6piL+VsT/qBrLhZe9Ivbjq5WMdkQKnP7gYKCAi
- pNVJC4enWfivZsYupMd9qn7Uv/oCZDYoBTdMSBUblaLMwlcjnPpOYK5rfHvC4opxl+P/Vzyz
- 6WC2TLkPtKvYvXmdsI6rnEI4Uucg0Au/Ulg7aqqKhzGPIbVaL+U0Wk82nz6hz+WP2ggTrY1w
- ZlPlRt8WM9w6WfLf2j+PuGklj37m+KvaOEfLsF1v464dSpy1tQVHhhp8LFTxh/6RWkRIR2uF
- I4v3Xu/k5D0LhaZHpQ4C+xKsQxpTGuYh2tnRaRL14YMW1dlI3HfeB2gj7Yc8XdHh9vkpPyuT
- nY/ZsFbnvBtiw7GchKKri2gDhRb2QNNDyBnQn5mRFw7CyuFclAksOdV/sdpQnYlYcRQWOUGY
- HhQ5eqTRZjm9z+qQe/T0HQpmiPTqQcIaG/edgKVTUjITfA7AJMKLQHgp04Vylb+G6jocnQQX
- JqvvP09whbqrABEBAAHCwWUEGAECAA8CGwwFAlVcpi8FCRmg08MACgkQyx8mb86fmYHNRQ/+
- J0OZsBYP4leJvQF8lx9zif+v4ZY/6C9tTcUv/KNAE5leyrD4IKbnV4PnbrVhjq861it/zRQW
- cFpWQszZyWRwNPWUUz7ejmm9lAwPbr8xWT4qMSA43VKQ7ZCeTQJ4TC8kjqtcbw41SjkjrcTG
- wF52zFO4bOWyovVAPncvV9eGA/vtnd3xEZXQiSt91kBSqK28yjxAqK/c3G6i7IX2rg6pzgqh
- hiH3/1qM2M/LSuqAv0Rwrt/k+pZXE+B4Ud42hwmMr0TfhNxG+X7YKvjKC+SjPjqp0CaztQ0H
- nsDLSLElVROxCd9m8CAUuHplgmR3seYCOrT4jriMFBtKNPtj2EE4DNV4s7k0Zy+6iRQ8G8ng
- QjsSqYJx8iAR8JRB7Gm2rQOMv8lSRdjva++GT0VLXtHULdlzg8VjDnFZ3lfz5PWEOeIMk7Rj
- trjv82EZtrhLuLjHRCaG50OOm0hwPSk1J64R8O3HjSLdertmw7eyAYOo4RuWJguYMg5DRnBk
- WkRwrSuCn7UG+qVWZeKEsFKFOkynOs3pVbcbq1pxbhk3TRWCGRU5JolI4ohy/7JV1TVbjiDI
- HP/aVnm6NC8of26P40Pg8EdAhajZnHHjA7FrJXsy3cyIGqvg9os4rNkUWmrCfLLsZDHD8FnU
- mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-Message-ID: <896b9d93-c58e-61be-191a-8f22efc260fd@roeck-us.net>
-Date: Mon, 16 Mar 2020 09:01:06 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id l12sm770079wrt.73.2020.03.16.10.28.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 16 Mar 2020 10:28:35 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 978F41FFAF;
+	Mon, 16 Mar 2020 17:21:57 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH  v1 24/28] tests/tcg/aarch64: add SVE iotcl test
+Date: Mon, 16 Mar 2020 17:21:51 +0000
+Message-Id: <20200316172155.971-25-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200316172155.971-1-alex.bennee@linaro.org>
+References: <20200316172155.971-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-rJCGZC+0G8L=Qbp602SF_=t58bP6v5adQCsDXjtetOg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::443
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZFGLNpQq2Gw2
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 6YEi+7CHi7wo
 
-On 3/16/20 8:35 AM, Peter Maydell wrote:
-> On Fri, 13 Mar 2020 at 16:02, Guenter Roeck <linux@roeck-us.net> wrote:
->>
->> PXA255 does not support a USB OHCI controller, so don't wire it up.
->>
->> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
->> ---
->>  hw/arm/pxa2xx.c | 3 ---
->>  1 file changed, 3 deletions(-)
->>
->> diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
->> index 56a36202d7..336c9bad4a 100644
->> --- a/hw/arm/pxa2xx.c
->> +++ b/hw/arm/pxa2xx.c
->> @@ -2290,9 +2290,6 @@ PXA2xxState *pxa255_init(MemoryRegion *address_space, unsigned int sdram_size)
->>          s->ssp[i] = (SSIBus *)qdev_get_child_bus(dev, "ssi");
->>      }
->>
->> -    sysbus_create_simple("sysbus-ohci", 0x4c000000,
->> -                         qdev_get_gpio_in(s->pic, PXA2XX_PIC_USBH1));
->> -
->>      s->pcmcia[0] = pxa2xx_pcmcia_init(address_space, 0x20000000);
->>      s->pcmcia[1] = pxa2xx_pcmcia_init(address_space, 0x30000000);
->>
-> 
-> How did you notice this bug? Was it just reading the code?
-> 
+This is a fairly bare-bones test of setting the various vector sizes
+for SVE which will only fail if the PR_SVE_SET_VL can't reduce the
+user-space vector length by powers of 2.
 
-I found that it was wired up and I tried to enable it from Linux, which failed.
-After that, I dug up the chip manual and realized that the pxa255 hardware
-does not support it.
+However we will also be able to use it in a future test which
+exercises the GDB stub.
 
-Guenter
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+
+---
+v3
+  - use index to fill zreg
+  - CROSS_CC_HAS_SVE
+v5
+  - merge conflicts
+v6
+  - drop id check
+---
+ tests/tcg/aarch64/sve-ioctls.c    | 70 +++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  4 ++
+ 2 files changed, 74 insertions(+)
+ create mode 100644 tests/tcg/aarch64/sve-ioctls.c
+
+diff --git a/tests/tcg/aarch64/sve-ioctls.c b/tests/tcg/aarch64/sve-ioctls.c
+new file mode 100644
+index 00000000000..9544dffa0ee
+--- /dev/null
++++ b/tests/tcg/aarch64/sve-ioctls.c
+@@ -0,0 +1,70 @@
++/*
++ * SVE ioctls tests
++ *
++ * Test the SVE width setting ioctls work and provide a base for
++ * testing the gdbstub.
++ *
++ * Copyright (c) 2019 Linaro Ltd
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include <sys/prctl.h>
++#include <asm/hwcap.h>
++#include <stdio.h>
++#include <sys/auxv.h>
++#include <stdint.h>
++#include <stdlib.h>
++
++#ifndef HWCAP_CPUID
++#define HWCAP_CPUID (1 << 11)
++#endif
++
++#define SVE_MAX_QUADS  (2048 / 128)
++#define BYTES_PER_QUAD (128 / 8)
++
++#define get_cpu_reg(id) ({                                      \
++            unsigned long __val;                                \
++            asm("mrs %0, "#id : "=r" (__val));                  \
++            __val;                                              \
++        })
++
++static int do_sve_ioctl_test(void)
++{
++    int i, res, init_vq;
++
++    res = prctl(PR_SVE_GET_VL, 0, 0, 0, 0);
++    if (res < 0) {
++        printf("FAILED to PR_SVE_GET_VL (%d)", res);
++        return -1;
++    }
++    init_vq = res & PR_SVE_VL_LEN_MASK;
++
++    for (i = init_vq; i > 15; i /= 2) {
++        printf("Checking PR_SVE_SET_VL=%d\n", i);
++        res = prctl(PR_SVE_SET_VL, i, 0, 0, 0, 0);
++        if (res < 0) {
++            printf("FAILED to PR_SVE_SET_VL (%d)", res);
++            return -1;
++        }
++        asm("index z0.b, #0, #1\n"
++            ".global __sve_ld_done\n"
++            "__sve_ld_done:\n"
++            "mov z0.b, #0\n"
++            : /* no outputs kept */
++            : /* no inputs */
++            : "memory", "z0");
++    }
++    printf("PASS\n");
++    return 0;
++}
++
++int main(int argc, char **argv)
++{
++    /* we also need to probe for the ioctl support */
++    if (getauxval(AT_HWCAP) & HWCAP_SVE) {
++        return do_sve_ioctl_test();
++    } else {
++        printf("SKIP: no HWCAP_SVE on this system\n");
++        return 0;
++    }
++}
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index b61b53e4dd1..c879932ff6c 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -47,6 +47,10 @@ ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE),)
+ AARCH64_TESTS += sysregs
+ sysregs: CFLAGS+=-march=armv8.1-a+sve
+ 
++# SVE ioctl test
++AARCH64_TESTS += sve-ioctls
++sve-ioctls: CFLAGS+=-march=armv8.1-a+sve
++
+ ifneq ($(HAVE_GDB_BIN),)
+ GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
+ 
+-- 
+2.20.1

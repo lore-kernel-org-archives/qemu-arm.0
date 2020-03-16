@@ -1,75 +1,99 @@
-Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2509740lfc;
-        Sun, 15 Mar 2020 21:33:23 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvFIG4odqgwHdQ+GmKiLKe+PN3JGR3+jFxo01y9sILfxCmzM7zFqKQjaVScQfGHjZjbUKyH
-X-Received: by 2002:aed:39c8:: with SMTP id m66mr3985147qte.4.1584333203564;
-        Sun, 15 Mar 2020 21:33:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584333203; cv=none;
+Received: by 2002:a19:f015:0:0:0:0:0 with SMTP id p21csp2610725lfc;
+        Sun, 15 Mar 2020 23:37:46 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vssGWORmC5+r5iLRZzGfOIzHujY4WpeEEbwBl6aTy9Syo7YbHrtLiHl3t6MHGxwdUrTrQAv
+X-Received: by 2002:a0c:a8e9:: with SMTP id h41mr3788465qvc.235.1584340665862;
+        Sun, 15 Mar 2020 23:37:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584340665; cv=none;
         d=google.com; s=arc-20160816;
-        b=IfNAhAOesnsfqL0c1EtoVvx7+WEfke8J7WZ1sqPwoy5AqeKd0sUvnhjOR9zsZAKMtH
-         mvjGup0CrutLdyBrDZx78ZiEXoapCFbONigWnoroL0cLClodGDNKCg/IE7CAZa/5PEV6
-         aqYOqYFOWOp0+dY0x2LyMb2F38pfLwmhcesWW3rMyVwYZiIW3XFMaBIVKJwHrasPT+Td
-         5513frR2tjCGQtaQewh9NdLAkgB2EbtbFyZd1kA5RbTulGGDIS8hjcCOvRpbBNu0LYTY
-         Fa7ebtEFmgXVaWZ9zfwsrF7VopxVt0t7yA/23PQ0QYnsKRt6fElJqK9xj7DwsztQG6+P
-         zrjA==
+        b=dMNVW6moeq6D7WbZhT6/UcEbbRdPKOsbiGsMG60tNQolPWjqbil1l290S2jcum93jW
+         cVL26wgmWxaJuavBUJnA8UcZ94GuhJfJTKb5wCE98fKJ4yYvUfSxUSktd2bvj2dk951C
+         thc8toM58eARXK4j0U/r0h3DbJN8D7SOgP0mFN6C1uT2eWhmJGPqRtWnwAbpBxzMudn4
+         fV6KTre/UDbd1hZHZWRdonvMm+o53lEba+6zdAZ2aPVK6DgJz0HCacCuDmp/+LOjbhXU
+         ihQIg0DFgxhxR0wcrVbJUQVCwMwOb3oD9mbrIqv5KlUm3fHpQ6+q6z0K3LGUuNPZFo/X
+         DgKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=KwBtUf8l573M0A+Fq4NFvQe56rI/MwhASa5vSduimCw=;
-        b=og3B7BbsVKUPmQKLrRmfMs8jXr51Zxm8XzEiwrVK6aod0IDhtFkZYlxx9O4kdWcMOU
-         iyJ+AM/KD5qPbaR2z2lU/tZOAY9rxJ8MF1ChHIIyh/JVsBrtAlRBXlENj5OmIEQ7XOG+
-         ByfrmW32PZhMSBXAeBcy2nHvtrzaxEPQLqdCzuQkUFeIFX4UT3ODecjeMrAb/Ya1bVBC
-         WOGqBXsj4LKeZhxkqvWs2EhUbvl7KmDIBfHXvdX/+rz0IEZxdLG+F3cIwNlLmFJ+LMur
-         w+RpRAsVEfIrJ/vZXSTfcm2qGKGlaHSgZJeu6VkIY5ARE+wPwAV8b1LrUVTBkJSwISJL
-         9FnQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=4YgX/s6fHjIAKpPmSFXCCFaxKCDlRywAxoxcnd6E5yw=;
+        b=GcQkf0Zhjv5sosFlE/yYsbaa0wbQnOqU2j2IlW7pkBeVdlBOuaQhxxR7gHUUftzkFx
+         IM0rgdO3d8irAQYRJg+PWOunOSPvhf7kPpLIhokGyEAh9ugeVP1E7bU5O/jkUfjzCQjt
+         4r/VldO0FWiQBpeXELsTQHJA1VyJRZwXEZLhk/VBYiXSKBToj9nlJoqoCpAg4sd10yMo
+         1piMSPHR1nlR23OLptI7jLcFRI8CXBsGWN+bTResRxdi2MoiZNDyNo2XwxA+LVOIpY1r
+         FSywCryHem6rgOD0ObPy2ORFiL+JbQQ4cnho7PsvLojIH2bPEZrXpVvdwAWX+qhx/R0B
+         v5JA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=s96vncvG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u18si9055344qvl.112.2020.03.15.21.33.23
+        by mx.google.com with ESMTPS id c19si9889914qtg.139.2020.03.15.23.37.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 15 Mar 2020 21:33:23 -0700 (PDT)
+        Sun, 15 Mar 2020 23:37:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34080 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=s96vncvG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:34882 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jDhRK-0004X4-JV
-	for alex.bennee@linaro.org; Mon, 16 Mar 2020 00:33:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43915)
+	id 1jDjNg-0005nR-Tx
+	for alex.bennee@linaro.org; Mon, 16 Mar 2020 02:37:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37858)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <zhukeqian1@huawei.com>) id 1jDhQB-0004Wy-Mm
- for qemu-arm@nongnu.org; Mon, 16 Mar 2020 00:32:13 -0400
+ (envelope-from <bharatb.linux@gmail.com>) id 1jDjMv-0005mh-5e
+ for qemu-arm@nongnu.org; Mon, 16 Mar 2020 02:36:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <zhukeqian1@huawei.com>) id 1jDhQ9-0003gd-I7
- for qemu-arm@nongnu.org; Mon, 16 Mar 2020 00:32:11 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3723 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
- id 1jDhQ8-0001vx-U2; Mon, 16 Mar 2020 00:32:09 -0400
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 7960E42CF3B8E82A115F;
- Mon, 16 Mar 2020 12:31:55 +0800 (CST)
-Received: from linux-kDCJWP.huawei.com (10.175.104.212) by
- DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
- 14.3.487.0; Mon, 16 Mar 2020 12:31:46 +0800
-From: Keqian Zhu <zhukeqian1@huawei.com>
-To: <qemu-devel@nongnu.org>
-Subject: [PATCH v2] migration/throttle: Add cpu-throttle-tailslow migration
- parameter
-Date: Mon, 16 Mar 2020 12:29:35 +0800
-Message-ID: <20200316042935.28306-1-zhukeqian1@huawei.com>
-X-Mailer: git-send-email 2.19.1
+ (envelope-from <bharatb.linux@gmail.com>) id 1jDjMt-0008Hn-DX
+ for qemu-arm@nongnu.org; Mon, 16 Mar 2020 02:36:57 -0400
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741]:38398)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <bharatb.linux@gmail.com>)
+ id 1jDjMp-0007Oe-I3; Mon, 16 Mar 2020 02:36:51 -0400
+Received: by mail-qk1-x741.google.com with SMTP id h14so24290803qke.5;
+ Sun, 15 Mar 2020 23:36:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=4YgX/s6fHjIAKpPmSFXCCFaxKCDlRywAxoxcnd6E5yw=;
+ b=s96vncvGE4/pPqr7x8HHNo+EUqIcKAwRQwfPMHrNAdxlKHUofwOMgGbVSTXc4I3HS7
+ FnXb+3gkL5zrgFt238vRC3Wno9VVpDKXRUkr5bKzCz7+z1t0x3GaRfhflGIUEuJiqiat
+ u6ZuSQdauwft7WM6XjRLSdRV7CIkNZuF3E/3LGhIwP2411EFmHfgjbLFGnkpyOFcuM65
+ tZuLLBVwkF4JBIDQvM17dlwEOfnPckqIw9T7GcRM9U/aUGFAMkPWC4pZFKLsIChtpdfZ
+ aJsO+4mchUbPyTvR4V+gwCgCEYj+uhPgNbFINe/9zNF80HFttLybjYixct44aNDfqtm6
+ E9Uw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=4YgX/s6fHjIAKpPmSFXCCFaxKCDlRywAxoxcnd6E5yw=;
+ b=QzmzV+dH6woXqlYIL4/QLRpJQXpyM2nGbbUccZ2Pw6Q3nIDQVxcaLgSeL1a9wPp7oy
+ yR6a2nZISdLZ1q3uqVVRj8Iml77nATNB4MW1ErL66FU9kN4vkz0Z2a9xk2nJNHaEhhbB
+ rPf0AAngRPvRlVLGHQkZ96E1Rn7mQawJfvjhKD+bQrWzK8sDQzRWLd8yoKHIJqDMwFrw
+ dgvtXIFK9jXvQdhV3XJdihDB2gombtVSagKWnqaKWvW9sLQeT5HFmpI60QxjXyI7FvZk
+ wB/pjcpAV+lw/OQ/vS8tqjhWaHpfUgUHuwCKZ+ufOVwtvr38dit3MsGtyto1CPQhRLEL
+ eJiA==
+X-Gm-Message-State: ANhLgQ3GLR4cP/yfrY/WREWY/nq/G/Kdh2vfxD6nTFZpzST7KBLCvx/1
+ N3tN79F0uWZDVDd7LmCxysHE/mSJC77IqulSQVk=
+X-Received: by 2002:a37:85c2:: with SMTP id
+ h185mr24573070qkd.446.1584340602241; 
+ Sun, 15 Mar 2020 23:36:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.175.104.212]
-X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.191
+References: <20200313074811.27175-1-bbhushan2@marvell.com>
+ <20200313074811.27175-3-bbhushan2@marvell.com>
+ <369b162f-3a0c-6861-0737-96aa8914b915@redhat.com>
+In-Reply-To: <369b162f-3a0c-6861-0737-96aa8914b915@redhat.com>
+From: Bharat Bhushan <bharatb.linux@gmail.com>
+Date: Mon, 16 Mar 2020 12:06:31 +0530
+Message-ID: <CAAeCc_mEoFLUux6mScyCbA_9n9eJf7Tt9tGrGOG-ENN5Kmr_7A@mail.gmail.com>
+Subject: Re: [PATCH v7 2/5] virtio-iommu: Add iommu notifier for map/unmap
+To: Auger Eric <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::741
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,316 +105,202 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Juan Quintela <quintela@redhat.com>, Eric Blake <eblake@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Markus
- Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org, wanghaibin.wang@huawei.com,
- Keqian Zhu <zhukeqian1@huawei.com>
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, tnowicki@marvell.com,
+ mst@redhat.com, drjones@redhat.com, peterx@redhat.com, qemu-devel@nongnu.org,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org,
+ Bharat Bhushan <bbhushan2@marvell.com>, linuc.decode@gmail.com,
+ eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /ksv+QTAwvnH
+X-TUID: vdspf4EJDm8p
 
-At the tail stage of throttling, the Guest is very sensitive to
-CPU percentage while the @cpu-throttle-increment is excessive
-usually at tail stage.
+Hi Eric,
 
-If this parameter is true, we will compute the ideal CPU percentage
-used by the Guest, which may exactly makes dirty rate to be dirty
-rate threshold. Then we will choose a smaller throttle increment
-between the one specified by @cpu-throttle-increment and the one
-generated by ideal CPU percentage.
+On Fri, Mar 13, 2020 at 7:55 PM Auger Eric <eric.auger@redhat.com> wrote:
+>
+> Hi Bharat,
+> On 3/13/20 8:48 AM, Bharat Bhushan wrote:
+> > This patch extends VIRTIO_IOMMU_T_MAP/UNMAP request to
+> > notify registered iommu-notifier. Which will call vfio
+> s/iommu-notifier/iommu-notifiers
+> > notifier to map/unmap region in iommu.
+> can be any notifier (vhost/vfio).
+> >
+> > Signed-off-by: Bharat Bhushan <bbhushan2@marvell.com>
+> > Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> > ---
+> >  hw/virtio/trace-events           |  2 +
+> >  hw/virtio/virtio-iommu.c         | 66 +++++++++++++++++++++++++++++++-
+> >  include/hw/virtio/virtio-iommu.h |  6 +++
+> >  3 files changed, 73 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+> > index e83500bee9..d94a1cd8a3 100644
+> > --- a/hw/virtio/trace-events
+> > +++ b/hw/virtio/trace-events
+> > @@ -73,3 +73,5 @@ virtio_iommu_get_domain(uint32_t domain_id) "Alloc domain=%d"
+> >  virtio_iommu_put_domain(uint32_t domain_id) "Free domain=%d"
+> >  virtio_iommu_translate_out(uint64_t virt_addr, uint64_t phys_addr, uint32_t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=%d"
+> >  virtio_iommu_report_fault(uint8_t reason, uint32_t flags, uint32_t endpoint, uint64_t addr) "FAULT reason=%d flags=%d endpoint=%d address =0x%"PRIx64
+> > +virtio_iommu_notify_map(const char *name, uint64_t iova, uint64_t paddr, uint64_t map_size) "mr=%s iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64
+> > +virtio_iommu_notify_unmap(const char *name, uint64_t iova, uint64_t map_size) "mr=%s iova=0x%"PRIx64" size=0x%"PRIx64
+> > diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+> > index 4cee8083bc..e51344a53e 100644
+> > --- a/hw/virtio/virtio-iommu.c
+> > +++ b/hw/virtio/virtio-iommu.c
+> > @@ -123,6 +123,38 @@ static gint interval_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
+> >      }
+> >  }
+> >
+> > +static void virtio_iommu_notify_map(IOMMUMemoryRegion *mr, hwaddr iova,
+> > +                                    hwaddr paddr, hwaddr size)
+> > +{
+> > +    IOMMUTLBEntry entry;
+> > +
+> > +    entry.target_as = &address_space_memory;
+> > +    entry.addr_mask = size - 1;
+> > +
+> > +    entry.iova = iova;
+> > +    trace_virtio_iommu_notify_map(mr->parent_obj.name, iova, paddr, size);
+> > +    entry.perm = IOMMU_RW;
+> > +    entry.translated_addr = paddr;
+> > +
+> > +    memory_region_notify_iommu(mr, 0, entry);
+> > +}
+> > +
+> > +static void virtio_iommu_notify_unmap(IOMMUMemoryRegion *mr, hwaddr iova,
+> > +                                      hwaddr size)
+> > +{
+> > +    IOMMUTLBEntry entry;
+> > +
+> > +    entry.target_as = &address_space_memory;
+> > +    entry.addr_mask = size - 1;
+> > +
+> > +    entry.iova = iova;
+> > +    trace_virtio_iommu_notify_unmap(mr->parent_obj.name, iova, size);
+> > +    entry.perm = IOMMU_NONE;
+> > +    entry.translated_addr = 0;
+> > +
+> > +    memory_region_notify_iommu(mr, 0, entry);
+> > +}
+> > +
+> >  static void virtio_iommu_detach_endpoint_from_domain(VirtIOIOMMUEndpoint *ep)
+> >  {
+> >      if (!ep->domain) {
+> > @@ -307,9 +339,12 @@ static int virtio_iommu_map(VirtIOIOMMU *s,
+> >      uint64_t virt_start = le64_to_cpu(req->virt_start);
+> >      uint64_t virt_end = le64_to_cpu(req->virt_end);
+> >      uint32_t flags = le32_to_cpu(req->flags);
+> > +    hwaddr size = virt_end - virt_start + 1;
+> > +    VirtioIOMMUNotifierNode *node;
+> >      VirtIOIOMMUDomain *domain;
+> >      VirtIOIOMMUInterval *interval;
+> >      VirtIOIOMMUMapping *mapping;
+> > +    VirtIOIOMMUEndpoint *ep;
+> >
+> >      if (flags & ~VIRTIO_IOMMU_MAP_F_MASK) {
+> >          return VIRTIO_IOMMU_S_INVAL;
+> > @@ -339,9 +374,37 @@ static int virtio_iommu_map(VirtIOIOMMU *s,
+> >
+> >      g_tree_insert(domain->mappings, interval, mapping);
+> >
+> > +    /* All devices in an address-space share mapping */
+> > +    QLIST_FOREACH(node, &s->notifiers_list, next) {
+> > +        QLIST_FOREACH(ep, &domain->endpoint_list, next) {
+> > +            if (ep->id == node->iommu_dev->devfn) {
+> > +                virtio_iommu_notify_map(&node->iommu_dev->iommu_mr,
+> > +                                        virt_start, phys_start, size);
+> > +            }
+> > +        }
+> > +    }
+> > +
+> >      return VIRTIO_IOMMU_S_OK;
+> >  }
+> >
+> > +static void virtio_iommu_remove_mapping(VirtIOIOMMU *s, VirtIOIOMMUDomain *domain,
+> > +                                        VirtIOIOMMUInterval *interval)
+> > +{
+> > +    VirtioIOMMUNotifierNode *node;
+> > +    VirtIOIOMMUEndpoint *ep;
+> > +
+> > +    QLIST_FOREACH(node, &s->notifiers_list, next) {
+> > +        QLIST_FOREACH(ep, &domain->endpoint_list, next) {
+> > +            if (ep->id == node->iommu_dev->devfn) {
+> > +                virtio_iommu_notify_unmap(&node->iommu_dev->iommu_mr,
+> > +                                          interval->low,
+> > +                                          interval->high - interval->low + 1);
+> > +            }
+> > +        }
+> > +    }
+> > +    g_tree_remove(domain->mappings, (gpointer)(interval));
+> > +}
+> What about virtio_iommu_put_domain() where you destroy the mapping
+> gtree. I guess you also need to send invalidations there?
 
-Therefore, it is compatible to traditional throttling, meanwhile
-the throttle increment won't be excessive at tail stage. This may
-make migration time longer, and is disabled by default.
+In virtio_iommu_put_domain(), before destroying domain->mappings we
+are calling virtio_iommu_detach_endpoint_from_domain(), which send
+invalidations, no ?
 
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
----
-Cc: Juan Quintela <quintela@redhat.com>
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Cc: Eric Blake <eblake@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>
----
- migration/migration.c | 13 ++++++++++++
- migration/ram.c       | 25 +++++++++++++++++-----
- monitor/hmp-cmds.c    |  8 ++++++++
- qapi/migration.json   | 48 +++++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 89 insertions(+), 5 deletions(-)
+> > +
+> >  static int virtio_iommu_unmap(VirtIOIOMMU *s,
+> >                                struct virtio_iommu_req_unmap *req)
+> >  {
+> > @@ -368,7 +431,7 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+> >          uint64_t current_high = iter_key->high;
+> >
+> >          if (interval.low <= current_low && interval.high >= current_high) {
+> > -            g_tree_remove(domain->mappings, iter_key);
+> > +            virtio_iommu_remove_mapping(s, domain, iter_key);
+> >              trace_virtio_iommu_unmap_done(domain_id, current_low, current_high);
+> >          } else {
+> >              ret = VIRTIO_IOMMU_S_RANGE;
+> > @@ -655,6 +718,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+> >      VirtIODevice *vdev = VIRTIO_DEVICE(dev);
+> >      VirtIOIOMMU *s = VIRTIO_IOMMU(dev);
+> >
+> > +    QLIST_INIT(&s->notifiers_list);
+> >      virtio_init(vdev, "virtio-iommu", VIRTIO_ID_IOMMU,
+> >                  sizeof(struct virtio_iommu_config));
+> >
+> > diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
+> > index 6f67f1020a..4539c8ae72 100644
+> > --- a/include/hw/virtio/virtio-iommu.h
+> > +++ b/include/hw/virtio/virtio-iommu.h
+> > @@ -44,6 +44,11 @@ typedef struct IOMMUPciBus {
+> >      IOMMUDevice  *pbdev[0]; /* Parent array is sparse, so dynamically alloc */
+> >  } IOMMUPciBus;
+> >
+> > +typedef struct VirtioIOMMUNotifierNode {
+> > +    IOMMUDevice *iommu_dev;
+> > +    QLIST_ENTRY(VirtioIOMMUNotifierNode) next;
+> > +} VirtioIOMMUNotifierNode;
+> You may use scripts/git.orderfile for a better diff ordering.
 
-diff --git a/migration/migration.c b/migration/migration.c
-index c1d88ace7f..cc157cbf90 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -785,6 +785,8 @@ MigrationParameters *qmp_query_migrate_parameters(Err=
-or **errp)
-     params->cpu_throttle_initial =3D s->parameters.cpu_throttle_initial;
-     params->has_cpu_throttle_increment =3D true;
-     params->cpu_throttle_increment =3D s->parameters.cpu_throttle_increm=
-ent;
-+    params->has_cpu_throttle_tailslow =3D true;
-+    params->cpu_throttle_tailslow =3D s->parameters.cpu_throttle_tailslo=
-w;
-     params->has_tls_creds =3D true;
-     params->tls_creds =3D g_strdup(s->parameters.tls_creds);
-     params->has_tls_hostname =3D true;
-@@ -1323,6 +1325,10 @@ static void migrate_params_test_apply(MigrateSetPa=
-rameters *params,
-         dest->cpu_throttle_increment =3D params->cpu_throttle_increment;
-     }
-=20
-+    if (params->has_cpu_throttle_tailslow) {
-+        dest->cpu_throttle_tailslow =3D params->cpu_throttle_tailslow;
-+    }
-+
-     if (params->has_tls_creds) {
-         assert(params->tls_creds->type =3D=3D QTYPE_QSTRING);
-         dest->tls_creds =3D g_strdup(params->tls_creds->u.s);
-@@ -1411,6 +1417,10 @@ static void migrate_params_apply(MigrateSetParamet=
-ers *params, Error **errp)
-         s->parameters.cpu_throttle_increment =3D params->cpu_throttle_in=
-crement;
-     }
-=20
-+    if (params->has_cpu_throttle_tailslow) {
-+        s->parameters.cpu_throttle_tailslow =3D params->cpu_throttle_tai=
-lslow;
-+    }
-+
-     if (params->has_tls_creds) {
-         g_free(s->parameters.tls_creds);
-         assert(params->tls_creds->type =3D=3D QTYPE_QSTRING);
-@@ -3588,6 +3598,8 @@ static Property migration_properties[] =3D {
-     DEFINE_PROP_UINT8("x-cpu-throttle-increment", MigrationState,
-                       parameters.cpu_throttle_increment,
-                       DEFAULT_MIGRATE_CPU_THROTTLE_INCREMENT),
-+    DEFINE_PROP_BOOL("x-cpu-throttle-tailslow", MigrationState,
-+                      parameters.cpu_throttle_tailslow, false),
-     DEFINE_PROP_SIZE("x-max-bandwidth", MigrationState,
-                       parameters.max_bandwidth, MAX_THROTTLE),
-     DEFINE_PROP_UINT64("x-downtime-limit", MigrationState,
-@@ -3694,6 +3706,7 @@ static void migration_instance_init(Object *obj)
-     params->has_throttle_trigger_threshold =3D true;
-     params->has_cpu_throttle_initial =3D true;
-     params->has_cpu_throttle_increment =3D true;
-+    params->has_cpu_throttle_tailslow =3D true;
-     params->has_max_bandwidth =3D true;
-     params->has_downtime_limit =3D true;
-     params->has_x_checkpoint_delay =3D true;
-diff --git a/migration/ram.c b/migration/ram.c
-index c12cfdbe26..4b74461306 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -616,20 +616,34 @@ static size_t save_page_header(RAMState *rs, QEMUFi=
-le *f,  RAMBlock *block,
-  * able to complete migration. Some workloads dirty memory way too
-  * fast and will not effectively converge, even with auto-converge.
-  */
--static void mig_throttle_guest_down(void)
-+static void mig_throttle_guest_down(uint64_t bytes_dirty_period,
-+                                    uint64_t bytes_dirty_threshold)
- {
-     MigrationState *s =3D migrate_get_current();
-     uint64_t pct_initial =3D s->parameters.cpu_throttle_initial;
--    uint64_t pct_icrement =3D s->parameters.cpu_throttle_increment;
-+    uint64_t pct_increment =3D s->parameters.cpu_throttle_increment;
-+    bool pct_tailslow =3D s->parameters.cpu_throttle_tailslow;
-     int pct_max =3D s->parameters.max_cpu_throttle;
-=20
-+    uint64_t throttle_now =3D cpu_throttle_get_percentage();
-+    uint64_t cpu_now, cpu_ideal, throttle_inc;
-+
-     /* We have not started throttling yet. Let's start it. */
-     if (!cpu_throttle_active()) {
-         cpu_throttle_set(pct_initial);
-     } else {
-         /* Throttling already on, just increase the rate */
--        cpu_throttle_set(MIN(cpu_throttle_get_percentage() + pct_icremen=
-t,
--                         pct_max));
-+        if (!pct_tailslow) {
-+            throttle_inc =3D pct_increment;
-+        } else {
-+            /* Compute the ideal CPU percentage used by Guest, which
-+             * may makes dirty rate to be dirty rate threshold. */
-+            cpu_now =3D 100 - throttle_now;
-+            cpu_ideal =3D cpu_now * (bytes_dirty_threshold * 1.0 /
-+                        bytes_dirty_period);
-+            throttle_inc =3D MIN(cpu_now - cpu_ideal, pct_increment);
-+        }
-+        cpu_throttle_set(MIN(throttle_now + throttle_inc, pct_max));
-     }
- }
-=20
-@@ -919,7 +933,8 @@ static void migration_trigger_throttle(RAMState *rs)
-             (++rs->dirty_rate_high_cnt >=3D 2)) {
-             trace_migration_throttle();
-             rs->dirty_rate_high_cnt =3D 0;
--            mig_throttle_guest_down();
-+            mig_throttle_guest_down(bytes_dirty_period,
-+                                    bytes_dirty_threshold);
-         }
-     }
- }
-diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
-index 58724031ea..29878632c8 100644
---- a/monitor/hmp-cmds.c
-+++ b/monitor/hmp-cmds.c
-@@ -419,6 +419,10 @@ void hmp_info_migrate_parameters(Monitor *mon, const=
- QDict *qdict)
-         monitor_printf(mon, "%s: %u\n",
-             MigrationParameter_str(MIGRATION_PARAMETER_CPU_THROTTLE_INCR=
-EMENT),
-             params->cpu_throttle_increment);
-+        assert(params->has_cpu_throttle_tailslow);
-+        monitor_printf(mon, "%s: %s\n",
-+            MigrationParameter_str(MIGRATION_PARAMETER_CPU_THROTTLE_TAIL=
-SLOW),
-+            params->cpu_throttle_tailslow ? "on" : "off");
-         assert(params->has_max_cpu_throttle);
-         monitor_printf(mon, "%s: %u\n",
-             MigrationParameter_str(MIGRATION_PARAMETER_MAX_CPU_THROTTLE)=
-,
-@@ -1269,6 +1273,10 @@ void hmp_migrate_set_parameter(Monitor *mon, const=
- QDict *qdict)
-         p->has_cpu_throttle_increment =3D true;
-         visit_type_int(v, param, &p->cpu_throttle_increment, &err);
-         break;
-+    case MIGRATION_PARAMETER_CPU_THROTTLE_TAILSLOW:
-+        p->has_cpu_throttle_tailslow =3D true;
-+        visit_type_bool(v, param, &p->cpu_throttle_tailslow, &err);
-+        break;
-     case MIGRATION_PARAMETER_MAX_CPU_THROTTLE:
-         p->has_max_cpu_throttle =3D true;
-         visit_type_int(v, param, &p->max_cpu_throttle, &err);
-diff --git a/qapi/migration.json b/qapi/migration.json
-index 0d1c0712ca..4bf82b74d1 100644
---- a/qapi/migration.json
-+++ b/qapi/migration.json
-@@ -552,6 +552,21 @@
- #                          auto-converge detects that migration is not m=
-aking
- #                          progress. The default value is 10. (Since 2.7=
-)
- #
-+# @cpu-throttle-tailslow: Make CPU throttling slower at tail stage
-+#                         At the tail stage of throttling, the Guest is =
-very
-+#                         sensitive to CPU percentage while the @cpu-thr=
-ottle
-+#                         -increment is excessive usually at tail stage.
-+#                         If this parameter is true, we will compute the=
- ideal
-+#                         CPU percentage used by the Guest, which may ex=
-actly
-+#                         makes dirty rate to be dirty rate threshold. T=
-hen we
-+#                         will choose a smaller throttle increment betwe=
-en the
-+#                         one specified by @cpu-throttle-increment and t=
-he one
-+#                         generated by ideal CPU percentage.
-+#                         Therefore, it is compatible to traditional thr=
-ottling,
-+#                         meanwhile the throttle increment won't be exce=
-ssive
-+#                         at tail stage.
-+#                         The default value is false. (Since 5.0)
-+#
- # @tls-creds: ID of the 'tls-creds' object that provides credentials for
- #             establishing a TLS connection over the migration data chan=
-nel.
- #             On the outgoing side of the migration, the credentials mus=
-t
-@@ -631,6 +646,7 @@
-            'compress-level', 'compress-threads', 'decompress-threads',
-            'compress-wait-thread', 'throttle-trigger-threshold',
-            'cpu-throttle-initial', 'cpu-throttle-increment',
-+           'cpu-throttle-tailslow',
-            'tls-creds', 'tls-hostname', 'tls-authz', 'max-bandwidth',
-            'downtime-limit', 'x-checkpoint-delay', 'block-incremental',
-            'multifd-channels',
-@@ -676,6 +692,21 @@
- #                          auto-converge detects that migration is not m=
-aking
- #                          progress. The default value is 10. (Since 2.7=
-)
- #
-+# @cpu-throttle-tailslow: Make CPU throttling slower at tail stage
-+#                         At the tail stage of throttling, the Guest is =
-very
-+#                         sensitive to CPU percentage while the @cpu-thr=
-ottle
-+#                         -increment is excessive usually at tail stage.
-+#                         If this parameter is true, we will compute the=
- ideal
-+#                         CPU percentage used by the Guest, which may ex=
-actly
-+#                         makes dirty rate to be dirty rate threshold. T=
-hen we
-+#                         will choose a smaller throttle increment betwe=
-en the
-+#                         one specified by @cpu-throttle-increment and t=
-he one
-+#                         generated by ideal CPU percentage.
-+#                         Therefore, it is compatible to traditional thr=
-ottling,
-+#                         meanwhile the throttle increment won't be exce=
-ssive
-+#                         at tail stage.
-+#                         The default value is false. (Since 5.0)
-+#
- # @tls-creds: ID of the 'tls-creds' object that provides credentials
- #             for establishing a TLS connection over the migration data
- #             channel. On the outgoing side of the migration, the creden=
-tials
-@@ -763,6 +794,7 @@
-             '*throttle-trigger-threshold': 'int',
-             '*cpu-throttle-initial': 'int',
-             '*cpu-throttle-increment': 'int',
-+            '*cpu-throttle-tailslow': 'bool',
-             '*tls-creds': 'StrOrNull',
-             '*tls-hostname': 'StrOrNull',
-             '*tls-authz': 'StrOrNull',
-@@ -834,6 +866,21 @@
- #                          auto-converge detects that migration is not m=
-aking
- #                          progress. (Since 2.7)
- #
-+# @cpu-throttle-tailslow: Make CPU throttling slower at tail stage
-+#                         At the tail stage of throttling, the Guest is =
-very
-+#                         sensitive to CPU percentage while the @cpu-thr=
-ottle
-+#                         -increment is excessive usually at tail stage.
-+#                         If this parameter is true, we will compute the=
- ideal
-+#                         CPU percentage used by the Guest, which may ex=
-actly
-+#                         makes dirty rate to be dirty rate threshold. T=
-hen we
-+#                         will choose a smaller throttle increment betwe=
-en the
-+#                         one specified by @cpu-throttle-increment and t=
-he one
-+#                         generated by ideal CPU percentage.
-+#                         Therefore, it is compatible to traditional thr=
-ottling,
-+#                         meanwhile the throttle increment won't be exce=
-ssive
-+#                         at tail stage.
-+#                         The default value is false. (Since 5.0)
-+#
- # @tls-creds: ID of the 'tls-creds' object that provides credentials
- #             for establishing a TLS connection over the migration data
- #             channel. On the outgoing side of the migration, the creden=
-tials
-@@ -921,6 +968,7 @@
-             '*throttle-trigger-threshold': 'uint8',
-             '*cpu-throttle-initial': 'uint8',
-             '*cpu-throttle-increment': 'uint8',
-+            '*cpu-throttle-tailslow': 'bool',
-             '*tls-creds': 'str',
-             '*tls-hostname': 'str',
-             '*tls-authz': 'str',
---=20
-2.19.1
+ok, run "git config diff.orderFile scripts/git.orderfile"
 
+> > +
+> >  typedef struct VirtIOIOMMU {
+> >      VirtIODevice parent_obj;
+> >      VirtQueue *req_vq;
+> > @@ -56,6 +61,7 @@ typedef struct VirtIOIOMMU {
+> >      GTree *domains;
+> >      QemuMutex mutex;
+> >      GTree *endpoints;
+> > +    QLIST_HEAD(, VirtioIOMMUNotifierNode) notifiers_list;
+> See what was done in smmuv3 and intel. We now directly use a list of
+> IOMMUDevice directly. VirtioIOMMUNotifierNode does not bring anything extra.
+
+ok,
+
+Thanks
+-Bharat
+
+> >  } VirtIOIOMMU;
+> >
+> >  #endif
+> >
+>
+> Thanks
+>
+> Eric
+>

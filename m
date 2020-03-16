@@ -1,130 +1,230 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id b187sm456863wmb.42.2020.03.16.10.28.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Mar 2020 10:28:46 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id E0B951FF9F;
-	Mon, 16 Mar 2020 17:21:56 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v1 16/28] target/arm: explicitly encode regnum in our XML
-Date: Mon, 16 Mar 2020 17:21:43 +0000
-Message-Id: <20200316172155.971-17-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200316172155.971-1-alex.bennee@linaro.org>
-References: <20200316172155.971-1-alex.bennee@linaro.org>
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp458250lfe;
+        Mon, 16 Mar 2020 12:23:27 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtE+E6L4NKY/+VFNlMfzcQtfmpqEkDYpIOTDh562u9ZxliWAV+sRnOAKwMtcXbQ9x40V/oJ
+X-Received: by 2002:ac8:7415:: with SMTP id p21mr1729279qtq.290.1584386607229;
+        Mon, 16 Mar 2020 12:23:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584386607; cv=none;
+        d=google.com; s=arc-20160816;
+        b=oT0nWXCMr2BFECRSTwjkgRjYoD+2PvlQB+ti0LYWDoGwbd9YRh1m0xiPIjJmp/4G3p
+         Bhnh5m+i7O7fR2DVG8Juwhlsh5zaIOVJfak5MiGZiWNzlMxffHbWh7zDhvjOp4p/lOQz
+         d3NcwC/d6cQbf74yCVK85Z6rI3w2e1Q75Zh6R2pLPN1hjJcr9WCdskeG4uBsLRWP1Rvr
+         3ngIi/o9CvfaJEuQLLSsXeWtzv0eQS83s7TLtnKEbD3aWK/ukN2xI9TuoiZrn+w+C2Dc
+         l3CtjT/NPYJNc77S3W0v9MSTbUC2PdfJX3q8Lc83EAiW7kMyCsD5gfa75pLZNpzDBuif
+         YkAA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject:dkim-signature;
+        bh=4WTgQWykesiX5dxOOjMQMiBAenYPTdVVpfDS494TJyA=;
+        b=e756i6lzVjD5l76FIxumtySYjeyCVk36bYuKHqQysAP7DmsXnxbYON2BrpGjJbKJlz
+         fcpy6ZiKTbRd8pPiAumqcYjKEGfWB1sNtmL9lbjdC0r6PKdMdG4e5Pd9ixKJ+3X2Jitr
+         gU96THIl7LWpTq/AGByEJ193YXDxCF6rVi+FgahfmuXsru4lknN3hx09j0GIf7uPrYin
+         BiaCLukDy0AWbz1jxAHXXJN0ft47YDDNcO8uqnrD23DbDwmh1v9SocBWvGD22MRFzRnk
+         Ioy8ExrqAC3X7ZgT2Ys+HgGhuE4zUfB4lC5OX9iduz5yWtWGkLOto0idjYKZ90cDuBJm
+         NWhA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=h3nrP+zn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t8si345655qtq.92.2020.03.16.12.23.26
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 16 Mar 2020 12:23:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=h3nrP+zn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47548 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jDvKg-0007Pn-GW
+	for alex.bennee@linaro.org; Mon, 16 Mar 2020 15:23:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51620)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <groeck7@gmail.com>) id 1jDvIx-0004mz-Qc
+ for qemu-devel@nongnu.org; Mon, 16 Mar 2020 15:21:40 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <groeck7@gmail.com>) id 1jDvIw-0002kr-Il
+ for qemu-devel@nongnu.org; Mon, 16 Mar 2020 15:21:39 -0400
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:38691)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1jDvIw-0002gg-BT; Mon, 16 Mar 2020 15:21:38 -0400
+Received: by mail-pl1-x641.google.com with SMTP id w3so8450540plz.5;
+ Mon, 16 Mar 2020 12:21:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:autocrypt:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=4WTgQWykesiX5dxOOjMQMiBAenYPTdVVpfDS494TJyA=;
+ b=h3nrP+zneNwfN9tYr/dKk61MvQl0f7j8GkgReD2jGutUD8sTIk2t/qaDxVwKcS41V0
+ cEydwE6qrJe0H1rlKUTej8NTEt8gOZCj1rH9y63st/u+7FU3Oh7hpjodUlwSFVe5/bVh
+ lTUaC7Dz5AD3rC7QL3jCJqt4xhh+2kW2PUgsvv4vp5Yy2MoHh3NIjWnvaKAtl7ZrVNI6
+ 7rw39TbOQJ9sHiBIvv8rXb/qQOYtxSvDd3k6+AoABt3lpzcj7Vgu+MpvciQVP83V5Trh
+ sNlVOhp3RjcSmkeuwe9HP8mo6PkhXa2ToljHy8j9U0+U1+R+X6Vl7NXxcUjvIUpca+ql
+ MwXA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=4WTgQWykesiX5dxOOjMQMiBAenYPTdVVpfDS494TJyA=;
+ b=nxGeFYrwGOdZ0oCsMeZrk0G00I7XEG1sAqZmK3b1CxdHPjzB8H/vK0PzAOyVxlNAUI
+ Trdv2mn93azUE8ALzMxfZqh1yWXgquRdjUMI035JIfuV+DLRVV3ZRLj13u5KMlZIjMmS
+ 3TzqWQEYXpYazG2j0oQRo2pdUB85faFPzdUdgYySAlZ1InAfCruCuX1uOO0evV8oGJA9
+ EMGWN4OxahlAIEuRZm4DfYhInPcvB3+w3aFTtN/sVk5YIJoRF+2A+JcX9WzTShGHBcB4
+ RvOQGcCiLrgFehv4aCW56d/osHD998mPUhO4JSqWWxvp15lqtA3Nq+Vr8ki4X9wAICwm
+ lFOw==
+X-Gm-Message-State: ANhLgQ1izwWbqnJbf8IPR3BYQdJM6QBjszTlQinE4azX7F+tZIBk+wJq
+ Zy9XxSOhDXKGI/fJGc34vx1vhTy7
+X-Received: by 2002:a17:90a:218e:: with SMTP id
+ q14mr1026338pjc.37.1584386496675; 
+ Mon, 16 Mar 2020 12:21:36 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ n4sm284341pgc.11.2020.03.16.12.21.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 16 Mar 2020 12:21:35 -0700 (PDT)
+Subject: Re: [PATCH] hw/arm/fsl-imx7: Instantiate apbh_dma and ocotp as
+ unimplemented devices
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200313161506.8834-1-linux@roeck-us.net>
+ <CAFEAcA-63OJfcnjE0V4W5a0R2tq_t0oRL7dre_WY_We0Jz9KoA@mail.gmail.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Autocrypt: addr=linux@roeck-us.net; keydata=
+ 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
+ mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
+Message-ID: <2b2b9886-33fe-5b76-4789-a42d61caf6da@roeck-us.net>
+Date: Mon, 16 Mar 2020 12:21:33 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <CAFEAcA-63OJfcnjE0V4W5a0R2tq_t0oRL7dre_WY_We0Jz9KoA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: zVmEmyjDB2GD
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::641
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uVExORA6usA6
 
-This is described as optional but I'm not convinced of the numbering
-when multiple target fragments are sent.
+On 3/16/20 8:39 AM, Peter Maydell wrote:
+> On Fri, 13 Mar 2020 at 16:15, Guenter Roeck <linux@roeck-us.net> wrote:
+>>
+>> Instantiating apbh_dma and ocotp as unimplemented devices prevents crashes
+>> when booting Linux.
+>>
+>> apbh_dma:
+>>
+>> [   14.046518] Unhandled fault: external abort on non-linefetch (0x808) at 0xd0852008
+>> [   14.047287] pgd = (ptrval)
+>> [   14.047607] [d0852008] *pgd=8b028811, *pte=33000653, *ppte=33000453
+>> [   14.050074] Internal error: : 808 [#1] SMP ARM
+>> ...
+>> [   14.077029] [<c0856530>] (stmp_clear_poll_bit) from [<c0856580>] (stmp_reset_block+0x10/0xb8)
+>> [   14.077642] [<c0856580>] (stmp_reset_block) from [<c1a9655c>] (mxs_dma_probe+0x1f4/0x370)
+>> [   14.078158] [<c1a9655c>] (mxs_dma_probe) from [<c0b6a7e8>] (platform_drv_probe+0x48/0x98)
+>> [   14.078641] [<c0b6a7e8>] (platform_drv_probe) from [<c0b685c4>] (really_probe+0x228/0x2d0)
+>>
+>> ocotp:
+>>
+>> [   71.286109] Unhandled fault: external abort on non-linefetch (0x008) at 0xd0ff0000
+>> [   71.287891] pgd = (ptrval)
+>> [   71.288449] [d0ff0000] *pgd=8b497811, *pte=30350653, *ppte=30350453
+>> [   71.291389] Internal error: : 8 [#1] SMP ARM
+>> [   71.292302] Modules linked in:
+>> [   71.293583] CPU: 0 PID: 112 Comm: kworker/0:3 Not tainted 5.0.0-10153-g065b6c4c913d-dirty #2
+>> [   71.294148] Hardware name: Freescale i.MX7 Dual (Device Tree)
+>> [   71.296728] Workqueue: events deferred_probe_work_func
+>> [   71.297740] PC is at imx_ocotp_read+0x68/0x180
+>> [   71.298154] LR is at mark_held_locks+0x48/0x74
+>>
+>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+>> ---
+>>  hw/arm/fsl-imx7.c         | 11 +++++++++++
+>>  include/hw/arm/fsl-imx7.h |  6 ++++++
+>>  2 files changed, 17 insertions(+)
+>>
+>> diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
+>> index 119b281a50..a17136f83c 100644
+>> --- a/hw/arm/fsl-imx7.c
+>> +++ b/hw/arm/fsl-imx7.c
+>> @@ -459,6 +459,17 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
+>>       */
+>>      create_unimplemented_device("sdma", FSL_IMX7_SDMA_ADDR, FSL_IMX7_SDMA_SIZE);
+>>
+>> +    /*
+>> +     * OCOTP
+>> +     */
+>> +    create_unimplemented_device("octop", FSL_IMX7_OCOTP_ADDR,
+>> +                                FSL_IMX7_OCOTP_SIZE);
+> 
+> "octop" or "ocotp" ?
+> 
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Oops. Well, "octop" sounds way better, don't you think ?
 
----
-v2
-  - post inc param->n in place so we don't get out count wrong
----
- target/arm/cpu.h     |  2 +-
- target/arm/gdbstub.c | 17 +++++++++++------
- target/arm/helper.c  |  2 +-
- 3 files changed, 13 insertions(+), 8 deletions(-)
+Anyway, I later folded this patch into "hw/arm/fsl-imx7: Instantiate various
+unimplemented devices" (https://patchwork.kernel.org/patch/11438371/) after
+it turned out that ocotp alone was insufficient, and that apbh_dma had already
+been added with another patch.
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 0ab82c987c3..fbfd73a7b5b 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -980,7 +980,7 @@ int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- /* Dynamically generates for gdb stub an XML description of the sysregs from
-  * the cp_regs hashtable. Returns the registered sysregs number.
-  */
--int arm_gen_dynamic_sysreg_xml(CPUState *cpu);
-+int arm_gen_dynamic_sysreg_xml(CPUState *cpu, int base_reg);
- 
- /* Returns the dynamically generated XML for the gdb stub.
-  * Returns a pointer to the XML contents for the specified XML file or NULL
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 1f68ab98c3b..69c35462a63 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -24,6 +24,7 @@
- typedef struct RegisterSysregXmlParam {
-     CPUState *cs;
-     GString *s;
-+    int n;
- } RegisterSysregXmlParam;
- 
- /* Old gdb always expect FPA registers.  Newer (xml-aware) gdb only expect
-@@ -108,10 +109,11 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
- 
- static void arm_gen_one_xml_sysreg_tag(GString *s, DynamicGDBXMLInfo *dyn_xml,
-                                        ARMCPRegInfo *ri, uint32_t ri_key,
--                                       int bitsize)
-+                                       int bitsize, int regnum)
- {
-     g_string_append_printf(s, "<reg name=\"%s\"", ri->name);
-     g_string_append_printf(s, " bitsize=\"%d\"", bitsize);
-+    g_string_append_printf(s, " regnum=\"%d\"", regnum);
-     g_string_append_printf(s, " group=\"cp_regs\"/>");
-     dyn_xml->data.cpregs.keys[dyn_xml->num] = ri_key;
-     dyn_xml->num++;
-@@ -131,7 +133,8 @@ static void arm_register_sysreg_for_xml(gpointer key, gpointer value,
-     if (!(ri->type & (ARM_CP_NO_RAW | ARM_CP_NO_GDB))) {
-         if (arm_feature(env, ARM_FEATURE_AARCH64)) {
-             if (ri->state == ARM_CP_STATE_AA64) {
--                arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 64);
-+                arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 64,
-+                                           param->n++);
-             }
-         } else {
-             if (ri->state == ARM_CP_STATE_AA32) {
-@@ -140,20 +143,22 @@ static void arm_register_sysreg_for_xml(gpointer key, gpointer value,
-                     return;
-                 }
-                 if (ri->type & ARM_CP_64BIT) {
--                    arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 64);
-+                    arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 64,
-+                                               param->n++);
-                 } else {
--                    arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 32);
-+                    arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 32,
-+                                               param->n++);
-                 }
-             }
-         }
-     }
- }
- 
--int arm_gen_dynamic_sysreg_xml(CPUState *cs)
-+int arm_gen_dynamic_sysreg_xml(CPUState *cs, int base_reg)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     GString *s = g_string_new(NULL);
--    RegisterSysregXmlParam param = {cs, s};
-+    RegisterSysregXmlParam param = {cs, s, base_reg};
- 
-     cpu->dyn_sysreg_xml.num = 0;
-     cpu->dyn_sysreg_xml.data.cpregs.keys = g_new(uint32_t, g_hash_table_size(cpu->cp_regs));
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index b0e2a85b005..90135731353 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7973,7 +7973,7 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
-                                  19, "arm-vfp.xml", 0);
-     }
-     gdb_register_coprocessor(cs, arm_gdb_get_sysreg, arm_gdb_set_sysreg,
--                             arm_gen_dynamic_sysreg_xml(cs),
-+                             arm_gen_dynamic_sysreg_xml(cs, cs->gdb_num_regs),
-                              "system-registers.xml", 0);
- }
- 
--- 
-2.20.1
+Thanks,
+Guenter

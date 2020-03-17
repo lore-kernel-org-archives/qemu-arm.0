@@ -1,96 +1,257 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp1377149lfe;
-        Tue, 17 Mar 2020 03:49:56 -0700 (PDT)
-X-Received: by 2002:aca:1312:: with SMTP id e18mr3015371oii.137.1584442196270;
-        Tue, 17 Mar 2020 03:49:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584442196; cv=none;
-        d=google.com; s=arc-20160816;
-        b=DlE+hrANYSo/xPHLa0Ro1xUMGP9Rf18pF0txHrptKIo9QkGyQcONbXznGvV6BM8Kof
-         lhohkgscPEqByJSDCt2j35nmxrqDhSjNKyhgYfeXdA9B2cTU5XWfQhZq8CxGvB4tOAA+
-         Ez5IMS2eBXYEvfE+PsajuqGEIswytdSM2S20wAAyh0UB4eRMy+NmTraseWvusi2DBlSI
-         iAQqqZZZjv6W4j/CBm+4Z0+THEN06kquZLd0iVwh3WqsZ9khtpX5QC+j27QWzxTVYn/y
-         sYiFAzw31w+SzuuE3fezrN+E7Vtd0a3IFJYlf36BK57AzSkGvc9/kgfUe/jDrA0aJP/o
-         57NA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=5jebkakv2QsVGKK+gf+7wsIdub0gn7LKnI+hJ3xjhFk=;
-        b=p6t8ADL5XbnODGiVL/SZcS+zauBvG+sUEEpN4SciDFptaU0Nc9lX3CKkMMeyWHzdA7
-         iYxOcPz+dcYL9xObHs3YbELfkiw/xaXJ3NgfBhpf8LXCqsehzlgNIHN8nZjAAsJIQTXz
-         4cf6Lr0ygvrPRpuufu0PQRj5OVYpqGzRUkLwpLsmCFpxc/qkVsvkeMDy9ymzOK8mC3hn
-         6n4omDoGtbGtdXRJLlQ/ORkwMx6d5m805GfkdP/WhWr7j6HT+sFmgukkxB2kheT/Cry2
-         UpvoMgmzsK02dfKVPpHz9kTBFZuzF+TGyE7SY01ZYGuEZI4V3IvNxQhczPqJ7eHoP/GZ
-         Lkug==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UuqhQFUt;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id v67sor2276109oia.79.2020.03.17.03.49.56
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 17 Mar 2020 03:49:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UuqhQFUt;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=5jebkakv2QsVGKK+gf+7wsIdub0gn7LKnI+hJ3xjhFk=;
-        b=UuqhQFUt4+g6xdeiRdCFqb0HYKcOD4viudiBqX0UkqxmeItOHVbVYjLHB3o6fQXCAK
-         0UKWNFEs+ixDwQIHnTViDZ420k9qdqCqZsQWi3xc4xcKGl9P7OkoAktqAGsNlUhg+9zR
-         Ax0xkzo17IysqmNTXmQyAkg3iAVqyUcBWjPgBs1tu3l0jmpmZvXb9jwoTgV+qATb2UHd
-         l6sbnTahsHTVoj+e9Vd9E0LevP5MD5kee81cWhB/AI4bOOrRSHFQpC6W696rhNCJV5Tl
-         h6w7riHYJGaBHNQuIh2TFHCnvempr1pVYKnKUgGEbuSIjPceY9hM9+Cf/lzG9Wx69m23
-         n0Xg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=5jebkakv2QsVGKK+gf+7wsIdub0gn7LKnI+hJ3xjhFk=;
-        b=JyWRQRIUrXWdzNcuw24V/XzFjJtegWxCp+W0n+e7F1d3+QJlltGi4dEKCfZUMvCbNz
-         EpyvUy6Wtqpr3yKozi8yn8QYAN8r+999PHVmqAqgvlcrOkgKLPb5X1wOzcS+l30YCfiC
-         Jp9qPzjz2TGALQNRBINENBg29u/cTqTgVzvNTPxmIJKZTx24o65/zHla1XdO1JMceFpJ
-         g7Mfh81EVUSn4fnuwetrBTs+qbErHV69jhFjtsl3+M+meUWm0fNGCTCjjrXMEQcGr5K/
-         407A4+5mKp6Lx3QmimgExsMflKLztef4y7EnmA6ZvnRVgl8P32NvwDMg5+sumLsOGllk
-         sUrg==
-X-Gm-Message-State: ANhLgQ0Vy/Z5RlNfNgbULfTmcaWJgZsiSKII6xujknm2vLC8Zoo8zOed
-	zADpHfTWLPo7PLaTia/1IziDRvYtMZEWnao8J2yGMsrN
-X-Google-Smtp-Source: ADFU+vsDyWNYKItBscndIPy44LE4AYtwfJ1XjsMzN7693uDS+5wfYPNtlgpICh0HYyxdO9Ps6SY/ABY2NrBI+p0tm5M=
-X-Received: by 2002:aca:5b07:: with SMTP id p7mr2866202oib.146.1584442195840;
- Tue, 17 Mar 2020 03:49:55 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id b202sm3576049wmd.15.2020.03.17.04.03.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Mar 2020 04:03:03 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 4236D1FF7E;
+	Tue, 17 Mar 2020 11:03:02 +0000 (GMT)
+References: <20200316172155.971-1-alex.bennee@linaro.org>
+ <20200316172155.971-21-alex.bennee@linaro.org>
+ <18254420-c4a6-b8b6-a8cd-cad3b1d6e38b@redhat.com>
+User-agent: mu4e 1.3.10; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH v1 20/28] tests/tcg/aarch64: userspace system register test
+In-reply-to: <18254420-c4a6-b8b6-a8cd-cad3b1d6e38b@redhat.com>
+Date: Tue, 17 Mar 2020 11:03:02 +0000
+Message-ID: <87lfnzjlax.fsf@linaro.org>
 MIME-Version: 1.0
-References: <20200316172155.971-1-alex.bennee@linaro.org> <20200316172155.971-25-alex.bennee@linaro.org>
- <3d01f357-eeb6-7fd7-1895-feae05beca99@redhat.com> <CAHiYmc5CtAH-zs38YmyLkrrp2DnxzLUWNKBTcL+oyFNEiCsV8A@mail.gmail.com>
-In-Reply-To: <CAHiYmc5CtAH-zs38YmyLkrrp2DnxzLUWNKBTcL+oyFNEiCsV8A@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Mar 2020 10:49:44 +0000
-Message-ID: <CAFEAcA8FSwVeOVDWT8qRO_EL2OncxdgGZbNHH8VhaaoKuwS7_w@mail.gmail.com>
-Subject: Re: [PATCH v1 24/28] tests/tcg/aarch64: add SVE iotcl test
-To: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: 67YfbFs0VbaV
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: xyPBrFI3j8dt
 
-On Tue, 17 Mar 2020 at 10:45, Aleksandar Markovic
-<aleksandar.qemu.devel@gmail.com> wrote:
-> I think it is also a little problematic that tests like this reside
-> and belong in tests/tcg - since they deal more with elements
-> of kernel interface (system call prctl()), rather than TCG.
-> Still, I see there are many other similar cases in tests/tcg,
-> so probably (at this moment) one should't bother about it in
-> the context of this patch. However, in general, the location
-> /tests/tcg for all these cases seems wrong to me.
 
-Well, the only reason we have the test at all is for testing
-our TCG emulation. Generic tests of syscalls don't live
-in QEMU at all, the best place for those would be the
-Linux Test Project's test suite.
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-thanks
--- PMM
+> On 3/16/20 6:21 PM, Alex Benn=C3=A9e wrote:
+>> This tests a bunch of registers that the kernel allows userspace to
+>> read including the CPUID registers. We need a SVE aware compiler as we
+>> are testing the id_aa64zfr0_el1 register in the set.
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>> Message-Id: <20190205190224.2198-7-alex.bennee@linaro.org>
+>> ---
+>> vgdbstub
+>>    - don't build unless using docker or CROSS_CC_HAS_SVE
+>> ---
+>>   tests/tcg/aarch64/sysregs.c       | 172 ++++++++++++++++++++++++++++++
+>>   tests/tcg/aarch64/Makefile.target |   6 ++
+>>   2 files changed, 178 insertions(+)
+>>   create mode 100644 tests/tcg/aarch64/sysregs.c
+>> diff --git a/tests/tcg/aarch64/sysregs.c
+>> b/tests/tcg/aarch64/sysregs.c
+>> new file mode 100644
+>> index 00000000000..40cf8d2877e
+>> --- /dev/null
+>> +++ b/tests/tcg/aarch64/sysregs.c
+>> @@ -0,0 +1,172 @@
+>> +/*
+>> + * Check emulated system register access for linux-user mode.
+>> + *
+>> + * See: https://www.kernel.org/doc/Documentation/arm64/cpu-feature-regi=
+sters.txt
+>> + *
+>> + * Copyright (c) 2019 Linaro
+>> + *
+>> + * This work is licensed under the terms of the GNU GPL, version 2 or l=
+ater.
+>> + * See the COPYING file in the top-level directory.
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +
+>> +#include <asm/hwcap.h>
+>> +#include <stdio.h>
+>> +#include <sys/auxv.h>
+>> +#include <signal.h>
+>> +#include <string.h>
+>> +#include <stdbool.h>
+>> +
+>> +#ifndef HWCAP_CPUID
+>> +#define HWCAP_CPUID (1 << 11)
+>> +#endif
+>> +
+>> +int failed_bit_count;
+>> +
+>> +/* Read and print system register `id' value */
+>> +#define get_cpu_reg(id) ({                                      \
+>> +            unsigned long __val =3D 0xdeadbeef;                   \
+>> +            asm("mrs %0, "#id : "=3Dr" (__val));                  \
+>> +            printf("%-20s: 0x%016lx\n", #id, __val);            \
+>> +            __val;                                               \
+>> +        })
+>> +
+>> +/* As above but also check no bits outside of `mask' are set*/
+>> +#define get_cpu_reg_check_mask(id, mask) ({                     \
+>> +            unsigned long __cval =3D get_cpu_reg(id);             \
+>> +            unsigned long __extra =3D __cval & ~mask;             \
+>> +            if (__extra) {                                      \
+>> +                printf("%-20s: 0x%016lx\n", "  !!extra bits!!", __extra=
+);   \
+>> +                failed_bit_count++;                            \
+>> +            }                                                   \
+>> +})
+>> +
+>> +/* As above but check RAZ */
+>> +#define get_cpu_reg_check_zero(id) ({                           \
+>> +            unsigned long __val =3D 0xdeadbeef;                   \
+>> +            asm("mrs %0, "#id : "=3Dr" (__val));                  \
+>> +            if (__val) {                                        \
+>> +                printf("%-20s: 0x%016lx (not RAZ!)\n", #id, __val);    =
+    \
+>> +                failed_bit_count++;                            \
+>> +            }                                                   \
+>> +})
+>> +
+>> +/* Chunk up mask into 63:48, 47:32, 31:16, 15:0 to ease counting */
+>> +#define _m(a, b, c, d) (0x ## a ## b ## c ## d ##ULL)
+>> +
+>> +bool should_fail;
+>> +int should_fail_count;
+>> +int should_not_fail_count;
+>> +uintptr_t failed_pc[10];
+>> +
+>> +void sigill_handler(int signo, siginfo_t *si, void *data)
+>> +{
+>> +    ucontext_t *uc =3D (ucontext_t *)data;
+>> +
+>> +    if (should_fail) {
+>> +        should_fail_count++;
+>> +    } else {
+>> +        uintptr_t pc =3D (uintptr_t) uc->uc_mcontext.pc;
+>> +        failed_pc[should_not_fail_count++] =3D  pc;
+>> +    }
+>> +    uc->uc_mcontext.pc +=3D 4;
+>> +}
+>> +
+>> +int main(void)
+>> +{
+>> +    struct sigaction sa;
+>> +
+>> +    /* Hook in a SIGILL handler */
+>> +    memset(&sa, 0, sizeof(struct sigaction));
+>> +    sa.sa_flags =3D SA_SIGINFO;
+>> +    sa.sa_sigaction =3D &sigill_handler;
+>> +    sigemptyset(&sa.sa_mask);
+>> +
+>> +    if (sigaction(SIGILL, &sa, 0) !=3D 0) {
+>> +        perror("sigaction");
+>> +        return 1;
+>> +    }
+>> +
+>> +    /* Counter values have been exposed since Linux 4.12 */
+>> +    printf("Checking Counter registers\n");
+>> +
+>> +    get_cpu_reg(ctr_el0);
+>> +    get_cpu_reg(cntvct_el0);
+>> +    get_cpu_reg(cntfrq_el0);
+>> +
+>> +    /* HWCAP_CPUID indicates we can read feature registers, since Linux=
+ 4.11 */
+>> +    if (!(getauxval(AT_HWCAP) & HWCAP_CPUID)) {
+>> +        printf("CPUID registers unavailable\n");
+>> +        return 1;
+>> +    } else {
+>> +        printf("Checking CPUID registers\n");
+>> +    }
+>> +
+>> +    /*
+>> +     * Some registers only expose some bits to user-space. Anything
+>> +     * that is IMPDEF is exported as 0 to user-space. The _mask checks
+>> +     * assert no extra bits are set.
+>> +     *
+>> +     * This check is *not* comprehensive as some fields are set to
+>> +     * minimum valid fields - for the purposes of this check allowed
+>> +     * to have non-zero values.
+>> +     */
+>> +    get_cpu_reg_check_mask(id_aa64isar0_el1, _m(00ff,ffff,f0ff,fff0));
+>> +    get_cpu_reg_check_mask(id_aa64isar1_el1, _m(0000,00f0,ffff,ffff));
+>> +    /* TGran4 & TGran64 as pegged to -1 */
+>> +    get_cpu_reg_check_mask(id_aa64mmfr0_el1, _m(0000,0000,ff00,0000));
+>> +    get_cpu_reg_check_zero(id_aa64mmfr1_el1);
+>> +    /* EL1/EL0 reported as AA64 only */
+>> +    get_cpu_reg_check_mask(id_aa64pfr0_el1,  _m(000f,000f,00ff,0011));
+>> +    get_cpu_reg_check_mask(id_aa64pfr1_el1,  _m(0000,0000,0000,00f0));
+>> +    /* all hidden, DebugVer fixed to 0x6 (ARMv8 debug architecture) */
+>> +    get_cpu_reg_check_mask(id_aa64dfr0_el1,  _m(0000,0000,0000,0006));
+>> +    get_cpu_reg_check_zero(id_aa64dfr1_el1);
+>> +    get_cpu_reg_check_zero(id_aa64zfr0_el1);
+>> +
+>> +    get_cpu_reg_check_zero(id_aa64afr0_el1);
+>> +    get_cpu_reg_check_zero(id_aa64afr1_el1);
+>> +
+>> +    get_cpu_reg_check_mask(midr_el1,         _m(0000,0000,ffff,ffff));
+>> +    /* mpidr sets bit 31, everything else hidden */
+>> +    get_cpu_reg_check_mask(mpidr_el1,        _m(0000,0000,8000,0000));
+>> +    /* REVIDR is all IMPDEF so should be all zeros to user-space */
+>> +    get_cpu_reg_check_zero(revidr_el1);
+>> +
+>> +    /*
+>> +     * There are a block of more registers that are RAZ in the rest of
+>> +     * the Op0=3D3, Op1=3D0, CRn=3D0, CRm=3D0,4,5,6,7 space. However for
+>> +     * brevity we don't check stuff that is currently un-allocated
+>> +     * here. Feel free to add them ;-)
+>> +     */
+>> +
+>> +    printf("Remaining registers should fail\n");
+>> +    should_fail =3D true;
+>> +
+>> +    /* Unexposed register access causes SIGILL */
+>> +    get_cpu_reg(id_mmfr0_el1);
+>> +    get_cpu_reg(id_mmfr1_el1);
+>> +    get_cpu_reg(id_mmfr2_el1);
+>> +    get_cpu_reg(id_mmfr3_el1);
+>> +
+>> +    get_cpu_reg(mvfr0_el1);
+>> +    get_cpu_reg(mvfr1_el1);
+>> +
+>> +    if (should_not_fail_count > 0) {
+>> +        int i;
+>> +        for (i =3D 0; i < should_not_fail_count; i++) {
+>> +            uintptr_t pc =3D failed_pc[i];
+>> +            uint32_t insn =3D *(uint32_t *) pc;
+>> +            printf("insn %#x @ %#lx unexpected FAIL\n", insn, pc);
+>> +        }
+>> +        return 1;
+>> +    }
+>> +
+>> +    if (failed_bit_count > 0) {
+>> +        printf("Extra information leaked to user-space!\n");
+>> +        return 1;
+>> +    }
+>> +
+>> +    return should_fail_count =3D=3D 6 ? 0 : 1;
+>> +}
+>> diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makef=
+ile.target
+>> index 8ed477d0d51..a25afc071cc 100644
+>> --- a/tests/tcg/aarch64/Makefile.target
+>> +++ b/tests/tcg/aarch64/Makefile.target
+>> @@ -42,4 +42,10 @@ run-semiconsole: semiconsole
+>>   run-plugin-semiconsole-with-%:
+>>   	$(call skip-test, $<, "MANUAL ONLY")
+>>   +ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE),)
+>> +# System Registers Tests
+>> +AARCH64_TESTS +=3D sysregs
+>> +sysregs: CFLAGS+=3D-march=3Darmv8.1-a+sve
+>> +endif
+>> +
+>>   TESTS +=3D $(AARCH64_TESTS)
+>>=20
+>
+> warning: while parsing target description (at line 47): Vector
+> "vq128hf" references undefined type "ieee_half"
+> warning: Could not load XML target description; ignoring
+> *** stack smashing detected ***: <unknown> terminated
+
+How? That test doesn't even use the gdbstub.
+
+>
+> (GCC 9.2.1, Fedora 30)
+
+
+--=20
+Alex Benn=C3=A9e

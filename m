@@ -1,183 +1,254 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp616381lfe;
-        Wed, 18 Mar 2020 03:15:56 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvQpdqk+iaUcxQVJcsioYk82Z5HBkAm9ffgEyIv+wJu+HCQdntFpfikDDwbbTDVMaKrnOen
-X-Received: by 2002:ac8:749a:: with SMTP id v26mr3521708qtq.260.1584526556131;
-        Wed, 18 Mar 2020 03:15:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584526556; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp619806lfe;
+        Wed, 18 Mar 2020 03:19:22 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuRN56e5m0y2CeK7U7HYlQeIn5gYd9t5nWEBHhdZ1e6O5XZaHdQ8pUdOJEVUsNCAAl+7Jy+
+X-Received: by 2002:a37:9c8b:: with SMTP id f133mr3220218qke.482.1584526762152;
+        Wed, 18 Mar 2020 03:19:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584526762; cv=none;
         d=google.com; s=arc-20160816;
-        b=qXVFVYzUstbAF7oDb31pNL4W0VT9CwmsJqWl/G+gmc5nyPe043z+FX5jw2hZuILI8G
-         /Zi/j61MT/FcJp80DLZ1DTiLPKQcelW78pGowXZUDWiuGH/YZCNBN6gUpRi45pF0Mvlm
-         8xBUCXX0eyPHOrPkswYgWGuXQ2Tu/Q2UZDFTO9s1C7ecE1rzWSZL0ByCj8u7jvOjJ77H
-         bDCnWrq5bR13Iu4bdY8TF+xmp4Ql9lRyIBp3gRdRCtiK8mZP16mLt97ecloXDsN42FJq
-         NE3FW8J6il2KtdeeiQv55SAAWNptv5wEaZ1DZ5YWDHRE4JH156+2arpWfuRyghQFBMMA
-         Ccrw==
+        b=bEFZ+M/i21rDZ1wZROMLa1ylpSzuBP305gawO8l4wHZGDa7SF8EVLo74MP7cbGU2JG
+         kEJ33FbB8aoT7Isb0vEbcTntvH8aTrQr9YXVvvYoYGmj7k7PGxMRN5YOlbrild+Y3NG9
+         fJ7uc/a7/Knx8xXevahJbNGL18jOCmKD7wMoH7gQ4MMwC4UXY6szE3W4gtbybqmXX2yW
+         +2wx8czaoWPjLX9Fr0XNXKdasMqJQqfstEmiNLCYDhbih30PDYNQX74wJrzlXT89Njy9
+         6Vf0QXv7uqo1qiO9RuwQI9U6j/Usu8AANxKxZ+T4NZ1tjfwO8Xj4xAVJvnAi5LWaYB9Q
+         aoTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from:dkim-signature;
-        bh=b/xFgYePXPIX12aaAGxsXGPT9CqkwDZHYIS0r7ZTW0U=;
-        b=k/Rsh6jDWghzYmzzUOJDAr1KVUKSSlwKTPaSpcMnC9Bcp8RpPtHg+NhThI8CbGIWOu
-         bZ8kxiJLiXwfzzIN7obp2OV9O2OEJDvsDszi0zYudqgnxEV8HG9RxKrGAIZv3BJzeqsS
-         G7BevTMr3twnp8JleRQ2Z7cpohg/VM9p8rtJw2t1ZHgHp4oqtnK+86WswmiynerYH4ZA
-         GBmZjKt4txkiHa9EmWw5xtm29QqnblTcrwWtDlrxJdzI8XZRyISDyxKC2C/ILS+QAP2h
-         JhgEcXNNCF67EITV9k46D5iwENwE1bNZNfoS9AZR7gg2uqsJSB/4s+agJdl6MTuOmyXH
-         3ytg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=YfcHd60/dJetYFRb9sg2e77ZWneZZBfevAMmE0OYj0w=;
+        b=OjBItEFfgSQ0OwWcPdVsYw8kzZ4Pg3zTUB5O9rDRw9v/j4iZaaPjLfMrIQE27xf1rA
+         RzkAuOqJ1XStAnr64dNxb04RtHTD5+wA2UiKo7kjeoF+0x16lV08m4bekWPBJsDpNtlP
+         F96bSfi46Cy01mCgwCS4k4FGcLkb/Ey8NFxmwSpFklkv5eMFFtD/DRI7w1xyB9mm5kIk
+         4tc8uz+slwku5927Pf0cB69Z03XUbpp+UNZiov/6OWtSM441WoSBzLFBTzlAaUBzoixE
+         V2ou3gQyW0UE0S5zaVcJYrijjQNRPRkdYbzmWISEP8PXvU/41ZZ/rPA2KFreDKb89Ogu
+         XHow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@marvell.com header.s=pfpt0818 header.b=VeCzmd+6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=marvell.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IpBeN90n;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m15si3565198qtn.241.2020.03.18.03.15.55
+        by mx.google.com with ESMTPS id y26si3646136qty.110.2020.03.18.03.19.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Mar 2020 03:15:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Mar 2020 03:19:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@marvell.com header.s=pfpt0818 header.b=VeCzmd+6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=marvell.com
-Received: from localhost ([::1]:48080 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IpBeN90n;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48150 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jEVjv-0007qu-Eg
-	for alex.bennee@linaro.org; Wed, 18 Mar 2020 06:15:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37502)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jEVnF-0003xZ-9t
+	for alex.bennee@linaro.org; Wed, 18 Mar 2020 06:19:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39362)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <prvs=2346c1f04e=bbhushan2@marvell.com>)
- id 1jEVh5-0003AD-C5
- for qemu-arm@nongnu.org; Wed, 18 Mar 2020 06:13:00 -0400
+ (envelope-from <bharatb.linux@gmail.com>) id 1jEVlu-0002Uy-6w
+ for qemu-devel@nongnu.org; Wed, 18 Mar 2020 06:17:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <prvs=2346c1f04e=bbhushan2@marvell.com>)
- id 1jEVh4-0005Qv-5J
- for qemu-arm@nongnu.org; Wed, 18 Mar 2020 06:12:59 -0400
-Received: from mx0b-0016f401.pphosted.com ([67.231.156.173]:26454)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <prvs=2346c1f04e=bbhushan2@marvell.com>)
- id 1jEVh4-0005Py-0j; Wed, 18 Mar 2020 06:12:58 -0400
-Received: from pps.filterd (m0045851.ppops.net [127.0.0.1])
- by mx0b-0016f401.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 02IABnOg030625; Wed, 18 Mar 2020 03:12:55 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com;
- h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-type; s=pfpt0818; bh=b/xFgYePXPIX12aaAGxsXGPT9CqkwDZHYIS0r7ZTW0U=;
- b=VeCzmd+6ZI6MCKt9Hit8BdNR4+pYplmI9iihYkvkau//8osJb0goh3S0uoIcqGHVc1tp
- hsaTgvxtfMNwT9qa37H/T1VboZFSEERC5PjKPl0sfyvFa39kYeXBiJNXh4Yb3HT6KOJA
- 2JrngrMGmOzmIvRtW5evinqpl6dd+8f7cTrxlPjsOhYOV5nEC5zob4hzkOulo2Z5VdVw
- iViLcJaN99oJGQEhso/56au+GMSQGvZY74P6tCKbwxGNtbxnlinnTz/LEQyZ0ILLE+Qw
- iLxwPzK8YvclSEiXRCYyuVtyoyTOft+aa0j4dJNP6Wfk59f3qcfqzn2A6REv14z/zAiQ 2Q== 
-Received: from sc-exch03.marvell.com ([199.233.58.183])
- by mx0b-0016f401.pphosted.com with ESMTP id 2yu9rp9tw8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
- Wed, 18 Mar 2020 03:12:55 -0700
-Received: from DC5-EXCH02.marvell.com (10.69.176.39) by SC-EXCH03.marvell.com
- (10.93.176.83) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 18 Mar 2020 03:12:54 -0700
-Received: from SC-EXCH03.marvell.com (10.93.176.83) by DC5-EXCH02.marvell.com
- (10.69.176.39) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 18 Mar 2020 03:12:53 -0700
-Received: from bbhushan2.marvell.com (10.93.176.43) by SC-EXCH03.marvell.com
- (10.93.176.83) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 18 Mar 2020 03:12:48 -0700
-From: Bharat Bhushan <bbhushan2@marvell.com>
-To: <peter.maydell@linaro.org>, <peterx@redhat.com>,
- <eric.auger.pro@gmail.com>, <alex.williamson@redhat.com>,
- <kevin.tian@intel.com>, <mst@redhat.com>, <tnowicki@marvell.com>,
- <drjones@redhat.com>, <linuc.decode@gmail.com>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
- <bharatb.linux@gmail.com>, <jean-philippe@linaro.org>,
- <yang.zhong@intel.com>
-Subject: [PATCH v8 8/8] virtio-iommu: add iommu notifier memory-region
-Date: Wed, 18 Mar 2020 15:41:59 +0530
-Message-ID: <20200318101159.8767-9-bbhushan2@marvell.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200318101159.8767-1-bbhushan2@marvell.com>
-References: <20200318101159.8767-1-bbhushan2@marvell.com>
+ (envelope-from <bharatb.linux@gmail.com>) id 1jEVls-0007gc-Ij
+ for qemu-devel@nongnu.org; Wed, 18 Mar 2020 06:17:58 -0400
+Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844]:35685)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <bharatb.linux@gmail.com>)
+ id 1jEVls-0007eV-Ea; Wed, 18 Mar 2020 06:17:56 -0400
+Received: by mail-qt1-x844.google.com with SMTP id v15so20161871qto.2;
+ Wed, 18 Mar 2020 03:17:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=YfcHd60/dJetYFRb9sg2e77ZWneZZBfevAMmE0OYj0w=;
+ b=IpBeN90nFk4M7I5c/hBhd857zudGJpZV1V0NUgqhQSjBXoq+cgqer2+//BE6RVzBZu
+ 3t1uJ1jy2QY1xm8Yc0ygcV6wJBLDs0hNIsg31wkV9xFyR27dzMw9oQJY4kHWj+XV30EY
+ Ot7D2fwRapCqK56xkBZGbKYY7bAINM/9DPMWB2kw8z0D4HoTMtc5CD6S3UW2DpMHlHXE
+ MEIPSljdcdHuyLNJZI4/t+2jR0gMWDnOPxBR8BxbC5anRbm6RzeQcKl7/90H3hU/JInp
+ 0yQM0XlL9SVpXyiGa68wv/lE5l53odIw1xrU+B1VntnEQ0mbMvLf4H8jyJSBLhQ95t2f
+ 1keg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=YfcHd60/dJetYFRb9sg2e77ZWneZZBfevAMmE0OYj0w=;
+ b=VkBQIblMiIj4YYChlmhxl06LfNgupsOyccmEX4xhXnsQNXPAeVH+comD66NW0DHtAG
+ VeS7+9Xa+fvmEtg/i2KIQuN7QIcuKZ0J5Btt8mBKZXj9QLpufIuZzt7aLzRPo49xUOLx
+ OaG7RSlbJzfVz8E4qJrupkRTWYr9KGrWdDqTYhlzCf3PH6xoCiB3TNbXTWbwXpkNENCe
+ L5ZDilWbTn1d+Eshh9aat5iin6bsvChuetoF4KrBvOqe4gcN2aO8rKkGGp6url5TsU8j
+ DFlDUxb9I64KCjVFPxNG1toGKK/sqqUwmG8Dd+MBkWQ87wiDgSsPKc2XGQ4bXNWNh6pA
+ U7Hw==
+X-Gm-Message-State: ANhLgQ2wBLfNBk4tWosnvWDDHWcp6sPTx2lO0+YrIksboIpfn62WwbO1
+ P59tsYYZ9/imOJ9h2Ul0cK0UFbzVx6iOBkINeBs=
+X-Received: by 2002:ac8:4548:: with SMTP id z8mr3686989qtn.188.1584526675502; 
+ Wed, 18 Mar 2020 03:17:55 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.645
- definitions=2020-03-18_04:2020-03-18,
- 2020-03-18 signatures=0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 67.231.156.173
-X-BeenThere: qemu-arm@nongnu.org
+References: <CAAeCc_m=PKV0T8DmaE06F9NMYfU792f9TDdoyKkaPaEN3597ag@mail.gmail.com>
+ <9b4ab5e8-8848-50ba-17c8-652567483126@redhat.com>
+ <CAAeCc_ksAdoNJcFWkoB4YcySAb5Hw7D+kLyHx-Nt0hZJY17AXA@mail.gmail.com>
+ <CAAeCc_nnM-DGCyXjFJuk-6L8F+Oetq076SEjeV8kUAGxfJVQTw@mail.gmail.com>
+ <cc447790-d1c5-784b-9706-fbcd76f0c94b@redhat.com>
+ <CAAeCc_mSobL4oGcK-J3WJJq8BCS6M_oyPTrzJ9bk8yFgsUDBUw@mail.gmail.com>
+ <20200316101124.GA304669@myrica>
+ <CAAeCc_kJq_TjbZxf3Un5rpwBrNrz-8gdL_SMS-gP_0=rARf0WQ@mail.gmail.com>
+ <20200317085304.GA1057687@myrica>
+ <CAAeCc_n8_sY0EJODeo_PrOZ22zp8nUMOmGx2tBewz8jLaU30kA@mail.gmail.com>
+ <20200317155929.GB1057687@myrica>
+In-Reply-To: <20200317155929.GB1057687@myrica>
+From: Bharat Bhushan <bharatb.linux@gmail.com>
+Date: Wed, 18 Mar 2020 15:47:44 +0530
+Message-ID: <CAAeCc_k_7Ny1Kf2ZiAAJe2xms2bdK-DqB1S2ro+omxp0EWi28g@mail.gmail.com>
+Subject: Re: [PATCH v7 3/5] virtio-iommu: Call iommu notifier for attach/detach
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::844
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Bharat Bhushan <bbhushan2@marvell.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z3AuEQZ7abEc
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, kevin.tian@intel.com,
+ tnowicki@marvell.com, mst@redhat.com, drjones@redhat.com, peterx@redhat.com,
+ qemu-devel@nongnu.org, Auger Eric <eric.auger@redhat.com>,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org,
+ Bharat Bhushan <bbhushan2@marvell.com>, linuc.decode@gmail.com,
+ eric.auger.pro@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: a676zhCh9r5X
 
-Finally add notify_flag_changed() to for memory-region
-access flag iommu flag change notifier
+Hi Jean,
 
-Finally add the memory notifier
+On Tue, Mar 17, 2020 at 9:29 PM Jean-Philippe Brucker
+<jean-philippe@linaro.org> wrote:
+>
+> On Tue, Mar 17, 2020 at 02:46:55PM +0530, Bharat Bhushan wrote:
+> > Hi Jean,
+> >
+> > On Tue, Mar 17, 2020 at 2:23 PM Jean-Philippe Brucker
+> > <jean-philippe@linaro.org> wrote:
+> > >
+> > > On Tue, Mar 17, 2020 at 12:40:39PM +0530, Bharat Bhushan wrote:
+> > > > Hi Jean,
+> > > >
+> > > > On Mon, Mar 16, 2020 at 3:41 PM Jean-Philippe Brucker
+> > > > <jean-philippe@linaro.org> wrote:
+> > > > >
+> > > > > Hi Bharat,
+> > > > >
+> > > > > Could you Cc me on your next posting?  Unfortunately I don't have much
+> > > > > hardware for testing this at the moment, but I might be able to help a
+> > > > > little on the review.
+> > > > >
+> > > > > On Mon, Mar 16, 2020 at 02:40:00PM +0530, Bharat Bhushan wrote:
+> > > > > > > >>> First issue is: your guest can use 4K page and your host can use 64KB
+> > > > > > > >>> pages. In that case VFIO_DMA_MAP will fail with -EINVAL. We must devise
+> > > > > > > >>> a way to pass the host settings to the VIRTIO-IOMMU device.
+> > > > > > > >>>
+> > > > > > > >>> Even with 64KB pages, it did not work for me. I have obviously not the
+> > > > > > > >>> storm of VFIO_DMA_MAP failures but I have some, most probably due to
+> > > > > > > >>> some wrong notifications somewhere. I will try to investigate on my side.
+> > > > > > > >>>
+> > > > > > > >>> Did you test with VFIO on your side?
+> > > > > > > >>
+> > > > > > > >> I did not tried with different page sizes, only tested with 4K page size.
+> > > > > > > >>
+> > > > > > > >> Yes it works, I tested with two n/w device assigned to VM, both interfaces works
+> > > > > > > >>
+> > > > > > > >> First I will try with 64k page size.
+> > > > > > > >
+> > > > > > > > 64K page size does not work for me as well,
+> > > > > > > >
+> > > > > > > > I think we are not passing correct page_size_mask here
+> > > > > > > > (config.page_size_mask is set to TARGET_PAGE_MASK ( which is
+> > > > > > > > 0xfffffffffffff000))
+> > > > > > > I guess you mean with guest using 4K and host using 64K.
+> > > > > > > >
+> > > > > > > > We need to set this correctly as per host page size, correct?
+> > > > > > > Yes that's correct. We need to put in place a control path to retrieve
+> > > > > > > the page settings on host through VFIO to inform the virtio-iommu device.
+> > > > > > >
+> > > > > > > Besides this issue, did you try with 64kB on host and guest?
+> > > > > >
+> > > > > > I tried Followings
+> > > > > >   - 4k host and 4k guest  - it works with v7 version
+> > > > > >   - 64k host and 64k guest - it does not work with v7
+> > > > > >     hard-coded config.page_size_mask to 0xffffffffffff0000 and it works
+> > > > >
+> > > > > You might get this from the iova_pgsize bitmap returned by
+> > > > > VFIO_IOMMU_GET_INFO. The virtio config.page_size_mask is global so there
+> > > > > is the usual problem of aggregating consistent properties, but I'm
+> > > > > guessing using the host page size as a granule here is safe enough.
+> > > > >
+> > > > > If it is a problem, we can add a PROBE property for page size mask,
+> > > > > allowing to define per-endpoint page masks. I have kernel patches
+> > > > > somewhere to do just that.
+> > > >
+> > > > I do not see we need page size mask per endpoint.
+> > > >
+> > > > While I am trying to understand what "page-size-mask" guest will work with
+> > > >
+> > > > - 4K page size host and 4k page size guest
+> > > >   config.page_size_mask = 0xffffffffffff000 will work
+> > > >
+> > > > - 64K page size host and 64k page size guest
+> > > >   config.page_size_mask = 0xfffffffffff0000 will work
+> > > >
+> > > > - 64K page size host and 4k page size guest
+> > > >    1) config.page_size_mask = 0xffffffffffff000 will also not work as
+> > > > VFIO in host expect iova and size to be aligned to 64k (PAGE_SIZE in
+> > > > host)
+> > > >    2) config.page_size_mask = 0xfffffffffff0000 will not work, iova
+> > > > initialization (in guest) expect minimum page-size supported by h/w to
+> > > > be equal to 4k (PAGE_SIZE in guest)
+> > > >        Should we look to relax this in iova allocation code?
+> > >
+> > > Oh right, that's not great. Maybe the BUG_ON() can be removed, I'll ask on
+> > > the list.
+> >
+> > yes, the BUG_ON in iova_init.
+> > I tried with removing same and it worked, but not analyzed side effects.
+>
+> It might break the assumption from device drivers that mapping a page is
+> safe. For example they call alloc_page() followed by dma_map_page(). In
+> our situation dma-iommu.c will oblige and create one 64k mapping to one 4k
+> physical page. As a result the endpoint can access the neighbouring 60k of
+> memory.
+>
+> This isn't too terrible. After all, even when the page sizes match, device
+> drivers can call dma_map_single() on sub-page buffers, which will also let
+> the endpoint access a whole page. The solution, if you don't trust the
+> endpoint, is to use bounce buffers.
+>
+> But I suspect it's not as simple as removing the BUG_ON(), we'll need to
+> go over dma-iommu.c first. And it seems like assigning endpoints to guest
+> userspace won't work either in this config. In vfio_dma_do_map():
+>
+>         mask = ((uint64_t)1 << __ffs(vfio_pgsize_bitmap(iommu))) - 1;
+>
+>         WARN_ON(mask & PAGE_MASK);
 
-Signed-off-by: Bharat Bhushan <bbhushan2@marvell.com>
----
- hw/virtio/virtio-iommu.c | 22 ++++++++++++++++++++++
- hw/virtio/trace-events   |  2 ++
- 2 files changed, 24 insertions(+)
+Yes, Agree
 
-diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-index b68644f7c3..515c965e3c 100644
---- a/hw/virtio/virtio-iommu.c
-+++ b/hw/virtio/virtio-iommu.c
-@@ -814,6 +814,27 @@ unlock:
-     qemu_mutex_unlock(&s->mutex);
- }
- 
-+static int virtio_iommu_notify_flag_changed(IOMMUMemoryRegion *iommu_mr,
-+                                             IOMMUNotifierFlag old,
-+                                             IOMMUNotifierFlag new,
-+                                             Error **errp)
-+{
-+    IOMMUDevice *sdev = container_of(iommu_mr, IOMMUDevice, iommu_mr);
-+    VirtIOIOMMU *s = sdev->viommu;
-+
-+    if (old == IOMMU_NOTIFIER_NONE) {
-+        trace_virtio_iommu_notify_flag_add(iommu_mr->parent_obj.name);
-+        QLIST_INSERT_HEAD(&s->notifiers_list, sdev, next);
-+        return 0;
-+    }
-+
-+    if (new == IOMMU_NOTIFIER_NONE) {
-+        trace_virtio_iommu_notify_flag_del(iommu_mr->parent_obj.name);
-+        QLIST_REMOVE(sdev, next);
-+    }
-+    return 0;
-+}
-+
- static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
- {
-     VirtIODevice *vdev = VIRTIO_DEVICE(dev);
-@@ -1033,6 +1054,7 @@ static void virtio_iommu_memory_region_class_init(ObjectClass *klass,
-     imrc->translate = virtio_iommu_translate;
-     imrc->iommu_set_page_size_mask = virtio_iommu_set_page_size_mask;
-     imrc->replay = virtio_iommu_replay;
-+    imrc->notify_flag_changed = virtio_iommu_notify_flag_changed;
- }
- 
- static const TypeInfo virtio_iommu_info = {
-diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-index 8bae651191..a486adcf6d 100644
---- a/hw/virtio/trace-events
-+++ b/hw/virtio/trace-events
-@@ -76,3 +76,5 @@ virtio_iommu_report_fault(uint8_t reason, uint32_t flags, uint32_t endpoint, uin
- virtio_iommu_notify_map(const char *name, uint64_t iova, uint64_t paddr, uint64_t map_size) "mr=%s iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64
- virtio_iommu_notify_unmap(const char *name, uint64_t iova, uint64_t map_size) "mr=%s iova=0x%"PRIx64" size=0x%"PRIx64
- virtio_iommu_remap(uint64_t iova, uint64_t pa, uint64_t size) "iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64""
-+virtio_iommu_notify_flag_add(const char *iommu) "Add virtio-iommu notifier node for memory region %s"
-+virtio_iommu_notify_flag_del(const char *iommu) "Del virtio-iommu notifier node for memory region %s"
--- 
-2.17.1
+>
+> If I read this correctly the WARN will trigger in a 4k guest under 64k
+> host, right?  So maybe we can just say that this config isn't supported,
+> unless it's an important use-case for virtio-iommu?
 
+I sent v8 version of patch and with that guest and host with same page
+size should work.
+While i have not yet added analyzed how to mark 4k guest and 64k host
+as un-supported configuration, will analyze and send patch.
+
+Thanks
+-Bharat
+
+>
+> Thanks,
+> Jean
+>

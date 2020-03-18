@@ -1,232 +1,190 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp759228lfe;
-        Wed, 18 Mar 2020 05:38:54 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtJ1DzZnGFe6XLEdcNEhDfE1yBZP2OVRD5VreLzcZw4cET51yWNOMT53O9rINsRNB1agBZN
-X-Received: by 2002:ac8:4e44:: with SMTP id e4mr4014452qtw.313.1584535134094;
-        Wed, 18 Mar 2020 05:38:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584535134; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp894879lfe;
+        Wed, 18 Mar 2020 07:42:36 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuNKYn6kCi+Q2TNhX6gFc9Ze4badsWjd25Hmr2hjjwk5MqUbZm/8dCQYEde5NxTexuLuxVd
+X-Received: by 2002:a37:e40a:: with SMTP id y10mr4453095qkf.232.1584542556700;
+        Wed, 18 Mar 2020 07:42:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584542556; cv=none;
         d=google.com; s=arc-20160816;
-        b=iA4gqx2RO26KaJ/ytUWRtQH6rLbL+2WCY05Mn1DnT1QfUMvxOymvMtuBxkhKg4CNjE
-         UaexhuWkoFhcgCoCfCcg0bTSY1yhIK+r4ZEvJ2M0Kl9lNyXAhAqT7ljLIh9I2fiHQAAL
-         n5wUxjK7wHRs4ZHh90Oj9B39/ohD9REPzsrG/xYs+y/Unnv/E0Rw3UZh0bFdpbEXL/+w
-         Q5SJKJ4zYtW49prxadT2RYd/0bLNc6+c5nPl6IwTo3CNHCb9AQZCsSONlv4IkMut1h+q
-         p3vGn1+KeZTjNwjcoT6zQbeBPd6Gljjp75aQLiTaYbAd/a04j2bGilsDW4Rnip1IYcCs
-         3sXA==
+        b=vzLyLMUyqhkzE4omU6t4rvRW9p5SPxOv+bylnJ7epzqHzPDCjMTU0mlfdCMayE9kWH
+         qMbmZ6ejOocdfBZ9To2T1Y9N9ZyQDHJTxeg64E75+DWk+7Ko5PdHrr8IysgMutt593e9
+         EO2XKpOF+w4lhQIITg36OZ/cDq5Mf2TCkCPTCGhgUI+FDmViqOrvndSz3dUQEgMEuXtK
+         PXwBgmPJSjmQ8jTg+KeGNkII5kdXDQXGmhQpx7IDpNcxPQovmcnyFP3r+VYRYp6qJdee
+         hVNlN/tmTzNE/G6nA1AePSY4SmlxXRr/eUI9Dz9kr06/h4m3AKdHVXxG7Ise5ACEUwGC
+         dmoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:to:from;
-        bh=uRbKTckRXyPuqcxNPbMT4HtrH4wXcA8iFHsNfr12DGU=;
-        b=wSEI7aTfw20uTcOWnVrliegs6fThO+gHk1Z2Ea8Qwz4YGG788/YZOWqjKf8OPtzZv+
-         c7LCSgkGWenympvsnVJSNX0JqQDFI/XbUtYBOSZ2fjCmxaP5yRJgeH+ps1pO1xrzOPw/
-         AB9w+X/CiJXF9z8V/tA44MKNh5vaLYYQMaYD9efYeWjRP76J7yTd1AKdVtlnpq7dc6IS
-         3vvajR040hUei1gSmBwZEdo9nMYcfDnNSMQqCNrpsLKSWUswDWiAvSjEx/W69Kig4iW7
-         UZKSkKLwEC0+7kzGlp5PUkx+uzY1WOP2QeIpoxJKqD28roiqPWckIBhKwqg89rOMYiuK
-         QRzw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=1zY6kt8FtxFx7OpmNp1j1dQSSVOqMnX77gpHTli89F0=;
+        b=mgfEpSQT2j2y01OcMgehooRGC2+XiSKU4ou2fhvrNIPHqbm7klJMcFil5L4ZsbXBMp
+         xZlSMdlJIt9LjE0ah6Et6sgGFK/qXUhI8RxBGo1F1lLxsHp/W60pUAG99XsOKP7vtNim
+         TKXkCSzVo3MWQCRuKr+rGhmhvEjmWw+h6t+WDnW9qo7Wn2qxk6wpGnMeb0pAMNKs1MVI
+         FAjnbdUN1faVBofK4CMfalhmgbetS/sxoY8u+uwYWrDjXVWb17LaPkTqxG0XV0T/1cD7
+         IMzcpIQSlxTd/LRPG4VjizNBS3NipkYM9/yCts9nsOE7N8LvRqi+aud1k2K6fLqnvj4l
+         fU8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=i4LT7Hcu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y23si3901996qth.36.2020.03.18.05.38.53
+        by mx.google.com with ESMTPS id f15si3819821qtp.395.2020.03.18.07.42.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Mar 2020 05:38:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Mar 2020 07:42:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50194 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=i4LT7Hcu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:51698 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jEXyH-0002Vk-He
-	for alex.bennee@linaro.org; Wed, 18 Mar 2020 08:38:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44909)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jEZu0-0002X0-6h
+	for alex.bennee@linaro.org; Wed, 18 Mar 2020 10:42:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33148)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jEXyA-0002Vd-83
- for qemu-arm@nongnu.org; Wed, 18 Mar 2020 08:38:47 -0400
+ (envelope-from <bharatb.linux@gmail.com>) id 1jEZn2-00085M-AJ
+ for qemu-devel@nongnu.org; Wed, 18 Mar 2020 10:35:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jEXy8-0003iN-GP
- for qemu-arm@nongnu.org; Wed, 18 Mar 2020 08:38:45 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:60426 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jEXy8-0002Z8-44; Wed, 18 Mar 2020 08:38:44 -0400
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 4743BECD779F03F8355C;
- Wed, 18 Mar 2020 20:38:34 +0800 (CST)
-Received: from S00345302A-PC.china.huawei.com (10.47.26.139) by
- DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
- 14.3.487.0; Wed, 18 Mar 2020 20:38:27 +0800
-From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [RFC v1] arm/virt: Add memory hot remove support
-Date: Wed, 18 Mar 2020 12:37:22 +0000
-Message-ID: <20200318123722.19736-1-shameerali.kolothum.thodi@huawei.com>
-X-Mailer: git-send-email 2.12.0.windows.1
+ (envelope-from <bharatb.linux@gmail.com>) id 1jEZn0-0005xE-Rw
+ for qemu-devel@nongnu.org; Wed, 18 Mar 2020 10:35:24 -0400
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741]:34711)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <bharatb.linux@gmail.com>)
+ id 1jEZn0-0005vD-KZ; Wed, 18 Mar 2020 10:35:22 -0400
+Received: by mail-qk1-x741.google.com with SMTP id f3so39032980qkh.1;
+ Wed, 18 Mar 2020 07:35:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=1zY6kt8FtxFx7OpmNp1j1dQSSVOqMnX77gpHTli89F0=;
+ b=i4LT7HcuPZVbM06C35VOsyxaF0plNxj18vgib2KXessROmC4E3r2oKZKy3xDedMksu
+ LOFXs3Y1i2cl0g9n+rYMjDY1mbYOFXUG40pVhsj2kFstfmUoXzCtfLDJ4I75PgJIPSHI
+ MHIxIm1YlTc77NvewiUlOEeJGFSV3VEMT20zqe7ucH3CMgVGc4HfEZFx3JE0TmUVUovq
+ itiFEUPMloJEn9ArUKIzkugT8u6VXhImHfoGLYIb39845Ifo8GIEpdeSVJehEJ8EMr0N
+ czObGYGSnDp6F3TtN4pAUaxxuiR6Evmc7GShDQeyD7qBavzOox0AdHyv7V+Ioieepj+U
+ HxHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=1zY6kt8FtxFx7OpmNp1j1dQSSVOqMnX77gpHTli89F0=;
+ b=rNzU7O3uxiAaw8l5Gty3ztJu2xLK48zwHIUo4QIpJAIrY+6/qC4k3+NBvWJGLC/g74
+ fM5amvFKvkzD7h0BMnbnai1Zs1E8C4rKf7My12zqh/aL9C+px/LOG3vvIvVP/glO9JbW
+ 28lZcJyx5Bxzj8Qh+eY3l3W3NnlO6Fl3krV9+MIPaLXv7RJbjA6DIoRB33Kmbq9Li+to
+ egQEOAI1fi03AKFOy2V8y70pcRplHN8kW1BX5Fr5mJ1mopdrSBp/FZ397iwSVw9yKAzP
+ N0k3tWGovpVgzbKfr56bosHkGMl4Wg/t4ELklfVmuwAJMebKzrYPKmMBzSkgEM9WwNyK
+ yEzA==
+X-Gm-Message-State: ANhLgQ0OhoziZS1xMtYLQRZKDEm2ptiSLbWWoThpAJWUf66W0CNeI19e
+ MBRm37sCvsk9GA6A3Uokmzrl8HhTGjSPo1vOXMk=
+X-Received: by 2002:a05:620a:10ae:: with SMTP id
+ h14mr4305427qkk.170.1584542121798; 
+ Wed, 18 Mar 2020 07:35:21 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.47.26.139]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.32
-X-BeenThere: qemu-arm@nongnu.org
+References: <20200318101159.8767-1-bbhushan2@marvell.com>
+ <20200318101159.8767-5-bbhushan2@marvell.com>
+ <3da60c1b-6897-7ab1-3a67-bec44fa00a54@redhat.com>
+In-Reply-To: <3da60c1b-6897-7ab1-3a67-bec44fa00a54@redhat.com>
+From: Bharat Bhushan <bharatb.linux@gmail.com>
+Date: Wed, 18 Mar 2020 20:05:10 +0530
+Message-ID: <CAAeCc_nVJXsvEw6iqcs9UEvLJNFyPmHnPnN0VUvzUFtVvjCQsQ@mail.gmail.com>
+Subject: Re: [PATCH v8 4/8] virtio-iommu: set supported page size mask
+To: Auger Eric <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::741
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, linuxarm@huawei.com,
- xuwei5@hisilicon.com, eric.auger@redhat.com, prime.zeng@hisilicon.com,
- imammedo@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JvpqFqBAG7G1
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "Zhong, Yang" <yang.zhong@intel.com>,
+ Peter Maydell <peter.maydell@linaro.org>, kevin.tian@intel.com,
+ tnowicki@marvell.com, mst@redhat.com, drjones@redhat.com, peterx@redhat.com,
+ qemu-devel@nongnu.org, alex.williamson@redhat.com, qemu-arm@nongnu.org,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Bharat Bhushan <bbhushan2@marvell.com>, linuc.decode@gmail.com,
+ eric.auger.pro@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yyIqxn7Xjd2m
 
-This adds support for memory hot remove on arm/virt that
-uses acpi ged device.
+Hi Eric,
 
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
----
- -RFC because linux kernel support for mem hot remove is just queued
-  for 5.7[1].
- -Tested with guest kernel 5.6-rc5 + [1]
+On Wed, Mar 18, 2020 at 4:58 PM Auger Eric <eric.auger@redhat.com> wrote:
+>
+> Hi Bharat,
+>
+> On 3/18/20 11:11 AM, Bharat Bhushan wrote:
+> > Add optional interface to set page size mask.
+> > Currently this is set global configuration and not
+> > per endpoint.
+> >
+> > Signed-off-by: Bharat Bhushan <bbhushan2@marvell.com>
+> > ---
+> > v7->v8:
+> >  - new patch
+> >
+> >  hw/virtio/virtio-iommu.c | 10 ++++++++++
+> >  1 file changed, 10 insertions(+)
+> >
+> > diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+> > index 4cee8083bc..c00a55348d 100644
+> > --- a/hw/virtio/virtio-iommu.c
+> > +++ b/hw/virtio/virtio-iommu.c
+> > @@ -650,6 +650,15 @@ static gint int_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
+> >      return (ua > ub) - (ua < ub);
+> >  }
+> >
+> > +static void virtio_iommu_set_page_size_mask(IOMMUMemoryRegion *mr,
+> > +                                            uint64_t page_size_mask)
+> > +{
+> > +    IOMMUDevice *sdev = container_of(mr, IOMMUDevice, iommu_mr);
+> > +    VirtIOIOMMU *s = sdev->viommu;
+> > +
+> > +    s->config.page_size_mask = page_size_mask;
+> The problem is page_size_mask is global to the VIRTIO-IOMMU.
+>
+> - Can't different VFIO containers impose different/inconsistent settings?
+> - VFIO devices can be hotplugged.
 
-1. https://patchwork.kernel.org/cover/11419301/
----
- hw/acpi/generic_event_device.c | 28 +++++++++++++++++
- hw/arm/virt.c                  | 56 ++++++++++++++++++++++++++++++++--
- 2 files changed, 82 insertions(+), 2 deletions(-)
+This is possible if we different iommu's, which we support. correct?
 
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index 021ed2bf23..3e28c110fa 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -182,6 +182,32 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
-     }
- }
- 
-+static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
-+                                       DeviceState *dev, Error **errp)
-+{
-+    AcpiGedState *s = ACPI_GED(hotplug_dev);
-+
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-+        acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
-+    } else {
-+        error_setg(errp, "acpi: device unplug request for unsupported device"
-+                   " type: %s", object_get_typename(OBJECT(dev)));
-+    }
-+}
-+
-+static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
-+                               DeviceState *dev, Error **errp)
-+{
-+    AcpiGedState *s = ACPI_GED(hotplug_dev);
-+
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-+        acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
-+    } else {
-+        error_setg(errp, "acpi: device unplug for unsupported device"
-+                   " type: %s", object_get_typename(OBJECT(dev)));
-+    }
-+}
-+
- static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
- {
-     AcpiGedState *s = ACPI_GED(adev);
-@@ -286,6 +312,8 @@ static void acpi_ged_class_init(ObjectClass *class, void *data)
-     dc->vmsd = &vmstate_acpi_ged;
- 
-     hc->plug = acpi_ged_device_plug_cb;
-+    hc->unplug_request = acpi_ged_unplug_request_cb;
-+    hc->unplug = acpi_ged_unplug_cb;
- 
-     adevc->send_event = acpi_ged_send_event;
- }
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 94f93dda54..91974e4e80 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2096,11 +2096,62 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
-     }
- }
- 
-+static void virt_dimm_unplug_request(HotplugHandler *hotplug_dev,
-+                                     DeviceState *dev, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-+    Error *local_err = NULL;
-+
-+    if (!vms->acpi_dev) {
-+        error_setg(errp,
-+                   "memory hotplug is not enabled: missing acpi-ged device");
-+        goto out;
-+    }
-+
-+    hotplug_handler_unplug_request(HOTPLUG_HANDLER(vms->acpi_dev), dev,
-+                                   &local_err);
-+out:
-+    error_propagate(errp, local_err);
-+}
-+
-+static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
-+                             DeviceState *dev, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-+    Error *local_err = NULL;
-+
-+    hotplug_handler_unplug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &local_err);
-+    if (local_err) {
-+        goto out;
-+    }
-+
-+    pc_dimm_unplug(PC_DIMM(dev), MACHINE(vms));
-+    object_property_set_bool(OBJECT(dev), false, "realized", NULL);
-+
-+ out:
-+    error_propagate(errp, local_err);
-+}
-+
- static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
-                                           DeviceState *dev, Error **errp)
- {
--    error_setg(errp, "device unplug request for unsupported device"
--               " type: %s", object_get_typename(OBJECT(dev)));
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-+        virt_dimm_unplug_request(hotplug_dev, dev, errp);
-+    } else {
-+        error_setg(errp, "device unplug request for unsupported device"
-+                   " type: %s", object_get_typename(OBJECT(dev)));
-+    }
-+}
-+
-+static void virt_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
-+                                          DeviceState *dev, Error **errp)
-+{
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-+        virt_dimm_unplug(hotplug_dev, dev, errp);
-+    } else {
-+        error_setg(errp, "virt: device unplug for unsupported device"
-+                   " type: %s", object_get_typename(OBJECT(dev)));
-+    }
- }
- 
- static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
-@@ -2181,6 +2232,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     hc->pre_plug = virt_machine_device_pre_plug_cb;
-     hc->plug = virt_machine_device_plug_cb;
-     hc->unplug_request = virt_machine_device_unplug_request_cb;
-+    hc->unplug = virt_machine_device_unplug_cb;
-     mc->numa_mem_supported = true;
-     mc->auto_enable_numa_with_memhp = true;
-     mc->default_ram_id = "mach-virt.ram";
--- 
-2.17.1
+> So we may start with some default
+> page_size_mask which is latter overriden by a host imposed one. Assume
+> you first launch the VM with a virtio NIC. This uses 64K. Then you
+> hotplug a VFIO device behind a physical IOMMU which only supports 4K
+> pages. Isn't it a valid scenario?
 
+So we need to expose page_size_mask per endpoint?
 
+Thanks
+-Bharat
+
+>
+> Thanks
+>
+> Eric
+>
+> > +}
+> > +
+> >  static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+> >  {
+> >      VirtIODevice *vdev = VIRTIO_DEVICE(dev);
+> > @@ -865,6 +874,7 @@ static void virtio_iommu_memory_region_class_init(ObjectClass *klass,
+> >      IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_CLASS(klass);
+> >
+> >      imrc->translate = virtio_iommu_translate;
+> > +    imrc->iommu_set_page_size_mask = virtio_iommu_set_page_size_mask;
+> >  }
+> >
+> >  static const TypeInfo virtio_iommu_info = {
+> >
+>

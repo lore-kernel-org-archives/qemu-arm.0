@@ -1,217 +1,197 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp432771lfe;
-        Thu, 19 Mar 2020 22:43:19 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vu23u8mo7AmdA8NemwN3J+hKciMZmmq9FRQ7g4WrWu1eBJfY+fHaDivq7QG1B0Tp9DUZ2zl
-X-Received: by 2002:ac8:378d:: with SMTP id d13mr6639667qtc.227.1584682999426;
-        Thu, 19 Mar 2020 22:43:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584682999; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp625453lfe;
+        Fri, 20 Mar 2020 02:24:49 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsAQfUt69KgMdUefps02FfSeV3nM5UQy8c4hmTkUkL4h99nfINBSlec4qAbH2O6c4CDBMEl
+X-Received: by 2002:aca:5403:: with SMTP id i3mr5777666oib.174.1584696289552;
+        Fri, 20 Mar 2020 02:24:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584696289; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z7sqK/dmGWgCeurwj305WxHPyp2E4BCQbNzaRQydlYwZpk7vcsH0wNlChhEqlmzLOw
-         wLwMj6RaLBkzKnnUtkctKP/VGKICLoScn8LRnm4TdmfxUlkGTw0qY6N2eJtXL8d+BZdq
-         +Y54P8pN+bZvRcJbhrUNLwzBnapZ3PzxPPqEJSjOnLN3iw6kiJB9s33npcUnmjobO539
-         hO/qWauISM9jD/dZNP7J0fitMJ6ZzjIBUyu8p52yN/HlyQ9jTLmYea8U6tt1C1lAv4/6
-         2c4c/J0h73Lto+jQCUEkvxP2C5YT+T3HBAd3APpk9s+W9i15kQrbjt/+8YPMCJ3MrMXK
-         0uAg==
+        b=tJoDVYwmk3Z0QpXEm1OCiBYtzaXJ587UlLqg4/BLNKc1OJD7dUGjLwQw9LWZ9sh4yT
+         wbkHR43nyNf2s3oZrkVvgpAXaJpqhLZUIPNPmSIRrfsQyyDCpPQ1yHHhXNZoxvBHT+/D
+         Z3xxbxDZxkf2evPhkUyIZogasarO0zGM/GGDm9VPTKtE+Md7rUyUcLMa/Za8esETV5gt
+         3uo7G4Bl8lC3PvMuCaorIbLm5SWRS/eEfZ8Dt39hY7aZN+D/aFC+KOb8Ta2g4gq1dFdH
+         DK12ON51HDoJZTbzVOOEKpr/wwO2/zpOUk20b9668bsS34FXWOtmo3NTo2fbZbxzJCrR
+         vGEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=kRKgru/C/4SxQ3jyweadKM188j334/htLs6Vp9RUPq4=;
-        b=BbU//c52f308d8XgiPxd1J46IYw0urbpHKYfY/XGbCtJvZOTYvrJmrtwQzPNFVhURT
-         GXsV9M9nxiq7H2XABheNJtodmgqzS8y5C9VCmSbc+KS7jIge8hFlc17GfkvpxNpHuN1s
-         pQdQGg6q9IIW9OkRuqxnAepHMpjb6JPG6aJuheIOx+6GQAf4fw04SezJHl/Jx0Q2fw5H
-         Da+O1LA4g6xXCVncmIZDHWyaR1xyed+KY0bUte9JGAwqpXlMrSanJZEKHB/tmin7EQNK
-         xu1QXeNpn2AK3x9602+WvVOzkw2w+suCROPq2uc42hsK3/myjIvs1Xccjax24H2CBH2j
-         GfaA==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=IeMxV+nJyYzaQLc3wwNQ9aEwBnBicqgUTnOCjDW6Sxo=;
+        b=YBgUXX2rT1aXXeTKbOMIWFsYm6QXznT3fafcoUhihkkn/Zra/5comL/5a9OfZUaV2/
+         0Xwpy9DPWZKnhuysdaxvbsyqYHdXKmfsy7o1zwfrv55PALKkletveSwol823YfVfFhhe
+         hiwL4Sp2exgUteMGFisJeI5OlGWSw2LWU5NasSkD7G4MgTw8tjvxzZZpkCHL/T9u5l65
+         vqK6QwLydf0Nl+thIcWwKhaSD1uKf8whcEWCsR/48v3KptW2shQkiFAeT6Ll5bWpGKFu
+         pOIjr/BYhdNilhgZ2gJeEVz+vFPS9upz9LcrfU7DYyrEJiU6yWazJDXh5t10BKNkRsv3
+         S8XA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=S6mo9Vhv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a8si2519415qvv.94.2020.03.19.22.43.19
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Mar 2020 22:43:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cDtHJOwd;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id r19si2659385otq.241.2020.03.20.02.24.49;
+        Fri, 20 Mar 2020 02:24:49 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=S6mo9Vhv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46274 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jFARC-0000en-Ot
-	for alex.bennee@linaro.org; Fri, 20 Mar 2020 01:43:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41184)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <joel.stan@gmail.com>) id 1jFAQm-0000a5-BZ
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 01:42:57 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <joel.stan@gmail.com>) id 1jFAQl-00084W-3e
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 01:42:52 -0400
-Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741]:39663)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <joel.stan@gmail.com>)
- id 1jFAQk-00084D-QE; Fri, 20 Mar 2020 01:42:51 -0400
-Received: by mail-qk1-x741.google.com with SMTP id t17so5739193qkm.6;
- Thu, 19 Mar 2020 22:42:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=kRKgru/C/4SxQ3jyweadKM188j334/htLs6Vp9RUPq4=;
- b=S6mo9Vhv+HU+HL4kKnYwUu68MmpPiTQeQ7ZduQDXSb9skBnjyNfCqBKLKeJwWV0QVn
- KZNdaQO8Qc+OTwlARFGX8bYGpWbqPqhkuITcaUGRw+0HpN9FMYgJ/8LpHvSJX9QBmYTq
- 9T0me5QzsC+aBj4kmqHX16lkZ2JzuyVpF54ag=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=kRKgru/C/4SxQ3jyweadKM188j334/htLs6Vp9RUPq4=;
- b=LpfAv45EGvCyzX7Ioh5b7uy3KEMyByXDJEe0Cj6J/CVurkCoYFeQ/DDxmotTMM/JCI
- PI53j6Xiy+HjknKEyDHJTuzfxO1a20S8RmuxScgQ4tR5WCNERPP9gCllCpTqbSYNzXcE
- JbMftGg4/cSUIBjlLTQpMQHF09ML2ZElLdu/EXUj72t1vmgYN385i+CedzTVgd3mJvvj
- ZqbRXuItHijlXCwIgG9poLuyjfNPfgbCi9mfRGgSeVRdw/eeZdztkI/3j2xIw+E1MjE/
- mf+MaT6u8Jw9Oyx1WpLG6f5S8H0BoXqzYgHD+ATPAFE2AEEVcW8A1Ux6cpoLqNSmEjch
- pUSg==
-X-Gm-Message-State: ANhLgQ2aJJ1BoNc8c9grjWJidOFBzyo2aRVLnTRYrT/GU9IXzQjCN/DX
- ZXbC1IyadWl/rGHtgrXudUDIyghDbihJM3kmUcw=
-X-Received: by 2002:ae9:e810:: with SMTP id a16mr6378393qkg.208.1584682969550; 
- Thu, 19 Mar 2020 22:42:49 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cDtHJOwd;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726878AbgCTJYs (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Fri, 20 Mar 2020 05:24:48 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:32257 "EHLO
+        us-smtp-delivery-74.mimecast.com" rhost-flags-OK-OK-OK-OK)
+        by vger.kernel.org with ESMTP id S1726791AbgCTJYr (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Fri, 20 Mar 2020 05:24:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1584696285;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:
+         content-transfer-encoding:content-transfer-encoding;
+        bh=IeMxV+nJyYzaQLc3wwNQ9aEwBnBicqgUTnOCjDW6Sxo=;
+        b=cDtHJOwdBSE+u1up9vDsINoYWQPnaF5lsTsjXGRsYWS1Wk0R0sHsv1EGA7UYj2Nb4NyEy7
+        cer4cZJT2G0Mk97mnh6M4ho9+zBBMFEz2fWrP7tkb4/fs0P0+qpbTXwiXHm4zP7k9AiCyW
+        owaex6uRxBgTGzqSQUvxlEgppl+lmtw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-451-MnieVj2aM-qS15lDWykShA-1; Fri, 20 Mar 2020 05:24:41 -0400
+X-MC-Unique: MnieVj2aM-qS15lDWykShA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A75451083E80;
+        Fri, 20 Mar 2020 09:24:39 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-113-142.ams2.redhat.com [10.36.113.142])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id A84B45C1D8;
+        Fri, 20 Mar 2020 09:24:32 +0000 (UTC)
+From:   Eric Auger <eric.auger@redhat.com>
+To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
+        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc:     drjones@redhat.com, andre.przywara@arm.com,
+        peter.maydell@linaro.org, yuzenghui@huawei.com,
+        alexandru.elisei@arm.com, thuth@redhat.com
+Subject: [kvm-unit-tests PATCH v7 00/13] arm/arm64: Add ITS tests
+Date:   Fri, 20 Mar 2020 10:24:15 +0100
+Message-Id: <20200320092428.20880-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20200320053923.20565-1-clg@kaod.org>
-In-Reply-To: <20200320053923.20565-1-clg@kaod.org>
-From: Joel Stanley <joel@jms.id.au>
-Date: Fri, 20 Mar 2020 05:42:37 +0000
-Message-ID: <CACPK8Xe=TCQyE+E6a3v-xc7uU=HePrSvZfQr32OkQ=DVVO1DcA@mail.gmail.com>
-Subject: Re: [PATCH] aspeed/smc: Fix DMA support for AST2600
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::741
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: y4LxmnEDSwqb
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: AjOLH6gFPYrC
 
-On Fri, 20 Mar 2020 at 05:39, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> Recent firmwares uses SPI DMA transfers in U-Boot to load the
-> different images (kernel, initrd, dtb) in the SoC DRAM. The AST2600
-> FMC model is missing the masks to be applied on the DMA registers
-> which resulted in incorrect values. Fix that and wire the SPI
-> controllers which have DMA support on the AST2600.
->
-> Fixes: bcaa8ddd081c ("aspeed/smc: Add AST2600 support")
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+This series is a revival of an RFC series sent in Dec 2016 [1].
+Given the amount of code and the lack of traction at that time,
+I haven't respinned until now. However a recent bug found related
+to the ITS migration convinced me that this work may deserve to be
+respinned and enhanced.
 
-I gave this a spin with the Tacoma machine and it resolved the issue I
-saw. Thanks for fixing it.
+Tests exercise main ITS commands and also test migration.
+With the migration framework, we are able to trigger the
+migration from guest and that is very practical actually.
 
-Reviewed-by: Joel Stanley <joel@jms.id.au>
+What is particular with the ITS programming is that most of
+the commands are passed through queues and there is real error
+handling. Invalid commands are just ignored and that is not
+really tester friendly.
 
+The series can be fount at:
+https://github.com/eauger/kut/tree/its-v7
 
-> ---
->  hw/arm/aspeed_ast2600.c |  6 ++++++
->  hw/ssi/aspeed_smc.c     | 15 +++++++++++++--
->  hw/ssi/trace-events     |  1 +
->  3 files changed, 20 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index 446b44d31cf1..1a869e09b96a 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -411,6 +411,12 @@ static void aspeed_soc_ast2600_realize(DeviceState *=
-dev, Error **errp)
->
->      /* SPI */
->      for (i =3D 0; i < sc->spis_num; i++) {
-> +        object_property_set_link(OBJECT(&s->spi[i]), OBJECT(s->dram_mr),
-> +                                 "dram", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
->          object_property_set_int(OBJECT(&s->spi[i]), 1, "num-cs", &err);
->          object_property_set_bool(OBJECT(&s->spi[i]), true, "realized",
->                                   &local_err);
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index 9d5c696d5a17..2edccef2d54d 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -364,6 +364,8 @@ static const AspeedSMCController controllers[] =3D {
->          .flash_window_base =3D ASPEED26_SOC_FMC_FLASH_BASE,
->          .flash_window_size =3D 0x10000000,
->          .has_dma           =3D true,
-> +        .dma_flash_mask    =3D 0x0FFFFFFC,
-> +        .dma_dram_mask     =3D 0x3FFFFFFC,
->          .nregs             =3D ASPEED_SMC_R_MAX,
->          .segment_to_reg    =3D aspeed_2600_smc_segment_to_reg,
->          .reg_to_segment    =3D aspeed_2600_smc_reg_to_segment,
-> @@ -379,7 +381,9 @@ static const AspeedSMCController controllers[] =3D {
->          .segments          =3D aspeed_segments_ast2600_spi1,
->          .flash_window_base =3D ASPEED26_SOC_SPI_FLASH_BASE,
->          .flash_window_size =3D 0x10000000,
-> -        .has_dma           =3D false,
-> +        .has_dma           =3D true,
-> +        .dma_flash_mask    =3D 0x0FFFFFFC,
-> +        .dma_dram_mask     =3D 0x3FFFFFFC,
->          .nregs             =3D ASPEED_SMC_R_MAX,
->          .segment_to_reg    =3D aspeed_2600_smc_segment_to_reg,
->          .reg_to_segment    =3D aspeed_2600_smc_reg_to_segment,
-> @@ -395,7 +399,9 @@ static const AspeedSMCController controllers[] =3D {
->          .segments          =3D aspeed_segments_ast2600_spi2,
->          .flash_window_base =3D ASPEED26_SOC_SPI2_FLASH_BASE,
->          .flash_window_size =3D 0x10000000,
-> -        .has_dma           =3D false,
-> +        .has_dma           =3D true,
-> +        .dma_flash_mask    =3D 0x0FFFFFFC,
-> +        .dma_dram_mask     =3D 0x3FFFFFFC,
->          .nregs             =3D ASPEED_SMC_R_MAX,
->          .segment_to_reg    =3D aspeed_2600_smc_segment_to_reg,
->          .reg_to_segment    =3D aspeed_2600_smc_reg_to_segment,
-> @@ -1135,6 +1141,11 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
->      MemTxResult result;
->      uint32_t data;
->
-> +    trace_aspeed_smc_dma_rw(s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE ?
-> +                            "write" : "read",
-> +                            s->regs[R_DMA_FLASH_ADDR],
-> +                            s->regs[R_DMA_DRAM_ADDR],
-> +                            s->regs[R_DMA_LEN]);
->      while (s->regs[R_DMA_LEN]) {
->          if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
->              data =3D address_space_ldl_le(&s->dram_as, s->regs[R_DMA_DRA=
-M_ADDR],
-> diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
-> index 0a70629801a9..0ea498de910b 100644
-> --- a/hw/ssi/trace-events
-> +++ b/hw/ssi/trace-events
-> @@ -6,5 +6,6 @@ aspeed_smc_do_snoop(int cs, int index, int dummies, int d=
-ata) "CS%d index:0x%x d
->  aspeed_smc_flash_write(int cs, uint64_t addr,  uint32_t size, uint64_t d=
-ata, int mode) "CS%d @0x%" PRIx64 " size %u: 0x%" PRIx64" mode:%d"
->  aspeed_smc_read(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PRI=
-x64 " size %u: 0x%" PRIx64
->  aspeed_smc_dma_checksum(uint32_t addr, uint32_t data) "0x%08x: 0x%08x"
-> +aspeed_smc_dma_rw(const char *dir, uint32_t flash_addr, uint32_t dram_ad=
-dr, uint32_t size) "%s flash:@0x%08x dram:@0x%08x size:0x%08x"
->  aspeed_smc_write(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PR=
-Ix64 " size %u: 0x%" PRIx64
->  aspeed_smc_flash_select(int cs, const char *prefix) "CS%d %sselect"
-> --
-> 2.21.1
->
+Applies on top of arm/queue.
+
+Best Regards
+
+Eric
+
+History:
+v6 -> v7:
+- Fixed issue reported by Drew in its-migrate-unmapped-collection (a coll=
+ection
+  could be allocated twice depending on the SMP value)
+- Integrated changes prepared by Drew
+- Use for_each_present_cpu()
+
+v5 -> v6:
+- Took into account Zenghui's comments, mostly functional: see invidual
+  history logs
+- fix wrong assert!
+
+v4 -> v5:
+- 32b stubs moved back to arm/gic.c
+- some changes reordering
+- minor style issues
+
+v3 -> v4:
+- addressed comments from Drew and Zenghui
+- added "page_alloc: Introduce get_order()"
+- removed "arm: gic: Provide per-IRQ helper functions"
+- ITS files moved to lib64
+- and many more, see individual logs
+
+v2 -> v3:
+- fix 32b compilation
+- take into account Drew's comments (see individual diff logs)
+
+v1 -> v2:
+- took into account Zenghui's comments
+- collect R-b's from Thomas
+
+References:
+[1] [kvm-unit-tests RFC 00/15] arm/arm64: add ITS framework
+    https://lists.gnu.org/archive/html/qemu-devel/2016-12/msg00575.html
+
+Execution:
+x For other ITS tests:
+  ./run_tests.sh -g its
+
+x non migration tests can be launched invidually. For instance:
+  ./arm-run arm/gic.flat -smp 8 -append 'its-trigger'
+
+x also tests can be compiled in standalone mode with
+  "make standalone" and tests (even migration ones) can also be
+  launched that way, for instance:
+  MAX_SMP=3D4 tests/its-migrate-unmapped-collection
+
+Eric Auger (13):
+  libcflat: Add other size defines
+  page_alloc: Introduce get_order()
+  arm/arm64: gic: Introduce setup_irq() helper
+  arm/arm64: gicv3: Add some re-distributor defines
+  arm/arm64: gicv3: Set the LPI config and pending tables
+  arm/arm64: ITS: Introspection tests
+  arm/arm64: ITS: its_enable_defaults
+  arm/arm64: ITS: Device and collection Initialization
+  arm/arm64: ITS: Commands
+  arm/arm64: ITS: INT functional tests
+  arm/run: Allow Migration tests
+  arm/arm64: ITS: migration tests
+  arm/arm64: ITS: pending table migration test
+
+ arm/Makefile.arm64         |   1 +
+ arm/Makefile.common        |   2 +-
+ arm/gic.c                  | 460 ++++++++++++++++++++++++++++++++++--
+ arm/run                    |   2 +-
+ arm/unittests.cfg          |  38 +++
+ lib/alloc_page.c           |   7 +-
+ lib/alloc_page.h           |   1 +
+ lib/arm/asm/gic-v3-its.h   |  27 +++
+ lib/arm/asm/gic-v3.h       |  29 +++
+ lib/arm/asm/gic.h          |   1 +
+ lib/arm/asm/processor.h    |   2 +
+ lib/arm/gic-v3.c           |  78 +++++++
+ lib/arm/gic.c              |  40 +++-
+ lib/arm/io.c               |  28 +++
+ lib/arm64/asm/gic-v3-its.h | 174 ++++++++++++++
+ lib/arm64/gic-v3-its-cmd.c | 463 +++++++++++++++++++++++++++++++++++++
+ lib/arm64/gic-v3-its.c     | 171 ++++++++++++++
+ lib/libcflat.h             |   3 +
+ 18 files changed, 1496 insertions(+), 31 deletions(-)
+ create mode 100644 lib/arm/asm/gic-v3-its.h
+ create mode 100644 lib/arm64/asm/gic-v3-its.h
+ create mode 100644 lib/arm64/gic-v3-its-cmd.c
+ create mode 100644 lib/arm64/gic-v3-its.c
+
+--=20
+2.20.1

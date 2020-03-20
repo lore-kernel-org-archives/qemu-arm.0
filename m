@@ -1,91 +1,91 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp1130125lfe;
-        Fri, 20 Mar 2020 10:03:42 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vs3Cd1gu1PZI/vlLA+C6pdDTt46+LilLvVLHRnyPLAXQ+q7TygTGzOpuS2BfOyy5CRwWZtw
-X-Received: by 2002:a37:8447:: with SMTP id g68mr9122242qkd.172.1584723822220;
-        Fri, 20 Mar 2020 10:03:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584723822; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp1130451lfe;
+        Fri, 20 Mar 2020 10:03:59 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vu0hcgW+fKNWx7daQEeyWdgfthEr80680PcPTV68IvJWK7FYnvca5zVAcxpNs8eFnLEEhnO
+X-Received: by 2002:ae9:d886:: with SMTP id u128mr8267784qkf.240.1584723838897;
+        Fri, 20 Mar 2020 10:03:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584723838; cv=none;
         d=google.com; s=arc-20160816;
-        b=QMZCefnCxAEr38rY8EUv1Mj+dSDvNPH0DFYhlfBA8LJvHaaW66S+hEDOAPYoKR7Mgq
-         nZ09qNLmvmh+wTTDdNEvwNbWX9YgHQwN5FnNd/dTXKJ/QhyRC+LCeI3RAbGmk+uIc3ws
-         eeac7PBuOCJaiqp/I8b/O5/2zDweg2LIRuobJO8deZx5I7v1HbYnW1Ap2H/7IOpXp1qE
-         DH9N4bjf3fHNaLa3pWPUnN07LBHFOvTliGM7zAWoF9iSLrfnXYrSO0kRy46pYSWFYh9x
-         5iim1aX42rXUNdtvipkeLSh5jOY6E5waoL/1cJJlOxCc1qDGP8AgW0GNKiLk8GQepvL1
-         ZIIQ==
+        b=HYbPMXiM7bVOq7rx6uqCLlt7VV4m0uEiaKSTDIDxc+pHyCKxqRMTs4ODqEh7dPCyPg
+         aRs0XK2KXmgBNQG1iR1EOu6tGaOTtz0V3l+hTtg/c+pTI10NkrEAu+Dbtc6H5HccUhO8
+         wrmJ9hmZ3B2XX2Me1sbuoVdh+m+osWWoZ40B/37LqpCONkEBtqkkGiv1M7sQWQk/ASrZ
+         i4lX0d4WCbBnzQxnLS853npVCh6BW2vAfWL2D3yVvA/OhqqIZ8WO9x/o1H9zm0oo4XC3
+         YS/9UodhUrNYnJfKz6b8uHOggYKzrWT1/cRRp+zaPptk2yhXrncqVOTMAtBWb6zzegiX
+         F6tA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=02BJtmu2O0MAYVDAv96+wX90SDBllBZ9UcQUnCwYiy8=;
-        b=pI+gZgKun/85TlWaGc1PCt1V5zQZTmfJeVHJnlI4GGchlbr6f/itm8rzMwDk2Kc/UR
-         flPA6z0I49u4oXS1fgbrk+6FQ7TMARYMvhHYR57iiDCCaGU49uPoM4VjtOwL9e2djWwB
-         RVvsFqf8LJ5zchjb7WDKGsVk8AtCeAw4ogGX97YU1Hh+5uj11XVx03lX8x7jH04aBPxx
-         5Z8g2zzEY2xgx9zS7buhVVm3jqyfW8yStzhgywHyIBwpXOOAsiDO2ULszeCJJI0exQuL
-         dScjQ0mkM0ElxxqYSxMwKX3dY/ehgut/5Kh/CMtQTv3yln19OQTSTAi5a5YEgX+GjTPD
-         GHEQ==
+        bh=nXtzXlFbaPFXfG384F8tfefUNvNBuBevl6Fv5zyuq1Y=;
+        b=ilEZPiAZIR6YW6ndU0pHQpr73yY+q1EfYcHD/IXwAemH1aG1p9ziglnqD8EL3EDElj
+         aRHrSRXe71Dk5LqKL+yUijvN+acZyDaptxtVzl4cQ0VLI9XPobTOgCnGRPfRWs3j8Pu7
+         VmcARBrETF0Sfc8yR7pU3s3w+BDROlilx3JVCVPzKjaTdCf93JOB1EwdSQgLAbPq9yBn
+         qI+Hyq9FCdDieLRGKTSBw2wYP5u0Zq6mGSQNAzVne3IfEqIML10uDs2V1bfgyn/gSw15
+         GFH+gzbJ1t803hIce3V8ih0sC4N44Hsd5890udeiYhd+nsgqeBK9t2sDs002paRqaZz2
+         VfUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SDK4i9Xc;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bZSKx5vy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s7si3489106qvm.139.2020.03.20.10.03.42
+        by mx.google.com with ESMTPS id d5si3588466qtw.272.2020.03.20.10.03.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Mar 2020 10:03:42 -0700 (PDT)
+        Fri, 20 Mar 2020 10:03:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SDK4i9Xc;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bZSKx5vy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56344 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56352 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jFL3d-00011d-Jo
-	for alex.bennee@linaro.org; Fri, 20 Mar 2020 13:03:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54566)
+	id 1jFL3u-0001M4-5t
+	for alex.bennee@linaro.org; Fri, 20 Mar 2020 13:03:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54326)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1jFL0z-0005Hm-BL
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:00:58 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1jFL0Z-0004if-4t
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:00:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1jFL0y-0005Rb-1T
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:00:57 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:40312)
+ (envelope-from <eric.auger@redhat.com>) id 1jFL0Y-000581-1Z
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:00:31 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:56314)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1jFL0x-0005Q3-Sp
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:00:55 -0400
+ id 1jFL0X-00056Y-SA
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:00:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584723654;
+ s=mimecast20190719; t=1584723629;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=02BJtmu2O0MAYVDAv96+wX90SDBllBZ9UcQUnCwYiy8=;
- b=SDK4i9XcVAu2wkMc5rz7Tit+ybg+nupzpD5Vn46/LkIWvebzCbJLJWTbptKUN7avpSWhTK
- sZqmi0hwvw9a86yU/nOLfQx0a1Cs0tyjY5rL6kAD01fbYVry01IbTkgSgF9kwWbqcqaQs4
- hMHrrpA78LO1dbU0EUqFWOHhr/w0r0M=
+ bh=nXtzXlFbaPFXfG384F8tfefUNvNBuBevl6Fv5zyuq1Y=;
+ b=bZSKx5vyUdnN89U4wncGRv4T4ImDzFQiWpKJVdloPRVFEfE3EKr1cMftbahZxgzKb8KJOs
+ EhfZLykIcH9IN+BzwQkaJkEQWu0JKsBrLiHO+9bzUyRP9KeR4mZpNYLvj+49vhMUOw8DUd
+ dZcrw2ghPK3LnL/eOfNnzc6N8j6EbFc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-81-rANHI_eKMNCKKY8lghVg3w-1; Fri, 20 Mar 2020 13:00:50 -0400
-X-MC-Unique: rANHI_eKMNCKKY8lghVg3w-1
+ us-mta-446-ez1_SjPKNGW3nqASzyE1lg-1; Fri, 20 Mar 2020 13:00:27 -0400
+X-MC-Unique: ez1_SjPKNGW3nqASzyE1lg-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 50457800D5A;
- Fri, 20 Mar 2020 17:00:48 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BE79210CE780;
+ Fri, 20 Mar 2020 17:00:25 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-113-142.ams2.redhat.com [10.36.113.142])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8A8A916D22;
- Fri, 20 Mar 2020 17:00:35 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F2A2A19757;
+ Fri, 20 Mar 2020 17:00:12 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  alex.williamson@redhat.com, jacob.jun.pan@linux.intel.com,
  yi.l.liu@intel.com
-Subject: [RFC v6 09/24] vfio: Force nested if iommu requires it
-Date: Fri, 20 Mar 2020 17:58:25 +0100
-Message-Id: <20200320165840.30057-10-eric.auger@redhat.com>
+Subject: [RFC v6 07/24] iommu: Introduce generic header
+Date: Fri, 20 Mar 2020 17:58:23 +0100
+Message-Id: <20200320165840.30057-8-eric.auger@redhat.com>
 In-Reply-To: <20200320165840.30057-1-eric.auger@redhat.com>
 References: <20200320165840.30057-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -95,8 +95,7 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 216.205.24.74
+X-Received-From: 63.128.21.74
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,112 +113,52 @@ Cc: jean-philippe@linaro.org, tnowicki@marvell.com, maz@kernel.org,
  bbhushan2@marvell.com, will@kernel.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3DefHx8A2/tU
+X-TUID: ZBGGhuoMJLqB
 
-In case we detect the address space is translated by
-a virtual IOMMU which requires HW nested paging to
-integrate with VFIO, let's set up the container with
-the VFIO_TYPE1_NESTING_IOMMU iommu_type.
+This header is meant to exposes data types used by
+several IOMMU devices such as struct for SVA and
+nested stage configuration.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
 ---
+ include/hw/iommu/iommu.h | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+ create mode 100644 include/hw/iommu/iommu.h
 
-v4 -> v5:
-- fail immediatly if nested is wanted but not supported
-
-v2 -> v3:
-- add "nested only is selected if requested by @force_nested"
-  comment in this patch
----
- hw/vfio/common.c | 36 ++++++++++++++++++++++++++++--------
- 1 file changed, 28 insertions(+), 8 deletions(-)
-
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 0b3593b3c0..ac417b5dbd 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -1155,27 +1155,38 @@ static void vfio_put_address_space(VFIOAddressSpace=
- *space)
-  * vfio_get_iommu_type - selects the richest iommu_type (v2 first)
-  */
- static int vfio_get_iommu_type(VFIOContainer *container,
-+                               bool want_nested,
-                                Error **errp)
- {
--    int iommu_types[] =3D { VFIO_TYPE1v2_IOMMU, VFIO_TYPE1_IOMMU,
-+    int iommu_types[] =3D { VFIO_TYPE1_NESTING_IOMMU,
-+                          VFIO_TYPE1v2_IOMMU, VFIO_TYPE1_IOMMU,
-                           VFIO_SPAPR_TCE_v2_IOMMU, VFIO_SPAPR_TCE_IOMMU };
--    int i;
-+    int i, ret =3D -EINVAL;
-=20
-     for (i =3D 0; i < ARRAY_SIZE(iommu_types); i++) {
-         if (ioctl(container->fd, VFIO_CHECK_EXTENSION, iommu_types[i])) {
--            return iommu_types[i];
-+            if (iommu_types[i] =3D=3D VFIO_TYPE1_NESTING_IOMMU && !want_ne=
-sted) {
-+                continue;
-+            }
-+            ret =3D iommu_types[i];
-+            break;
-         }
-     }
--    error_setg(errp, "No available IOMMU models");
--    return -EINVAL;
-+    if (ret < 0) {
-+        error_setg(errp, "No available IOMMU models");
-+    } else if (want_nested && ret !=3D VFIO_TYPE1_NESTING_IOMMU) {
-+        error_setg(errp, "Nested mode requested but not supported");
-+        ret =3D -EINVAL;
-+    }
-+    return ret;
- }
-=20
- static int vfio_init_container(VFIOContainer *container, int group_fd,
--                               Error **errp)
-+                               bool want_nested, Error **errp)
- {
-     int iommu_type, ret;
-=20
--    iommu_type =3D vfio_get_iommu_type(container, errp);
-+    iommu_type =3D vfio_get_iommu_type(container, want_nested, errp);
-     if (iommu_type < 0) {
-         return iommu_type;
-     }
-@@ -1211,6 +1222,14 @@ static int vfio_connect_container(VFIOGroup *group, =
-AddressSpace *as,
-     VFIOContainer *container;
-     int ret, fd;
-     VFIOAddressSpace *space;
-+    IOMMUMemoryRegion *iommu_mr;
-+    bool nested =3D false;
+diff --git a/include/hw/iommu/iommu.h b/include/hw/iommu/iommu.h
+new file mode 100644
+index 0000000000..12092bda7b
+--- /dev/null
++++ b/include/hw/iommu/iommu.h
+@@ -0,0 +1,28 @@
++/*
++ * common header for iommu devices
++ *
++ * Copyright Red Hat, Inc. 2019
++ *
++ * Authors:
++ *  Eric Auger <eric.auger@redhat.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2.  See
++ * the COPYING file in the top-level directory.
++ */
 +
-+    if (as !=3D &address_space_memory && memory_region_is_iommu(as->root))=
- {
-+        iommu_mr =3D IOMMU_MEMORY_REGION(as->root);
-+        memory_region_iommu_get_attr(iommu_mr, IOMMU_ATTR_VFIO_NESTED,
-+                                     (void *)&nested);
-+    }
-=20
-     space =3D vfio_get_address_space(as);
-=20
-@@ -1272,12 +1291,13 @@ static int vfio_connect_container(VFIOGroup *group,=
- AddressSpace *as,
-     QLIST_INIT(&container->giommu_list);
-     QLIST_INIT(&container->hostwin_list);
-=20
--    ret =3D vfio_init_container(container, group->fd, errp);
-+    ret =3D vfio_init_container(container, group->fd, nested, errp);
-     if (ret) {
-         goto free_container_exit;
-     }
-=20
-     switch (container->iommu_type) {
-+    case VFIO_TYPE1_NESTING_IOMMU:
-     case VFIO_TYPE1v2_IOMMU:
-     case VFIO_TYPE1_IOMMU:
-     {
++#ifndef QEMU_HW_IOMMU_IOMMU_H
++#define QEMU_HW_IOMMU_IOMMU_H
++#ifdef __linux__
++#include <linux/iommu.h>
++#endif
++
++typedef struct IOMMUConfig {
++    union {
++#ifdef __linux__
++        struct iommu_pasid_table_config pasid_cfg;
++#endif
++          };
++} IOMMUConfig;
++
++
++#endif /* QEMU_HW_IOMMU_IOMMU_H */
 --=20
 2.20.1
 

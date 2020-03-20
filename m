@@ -1,98 +1,98 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp1065598lfe;
-        Fri, 20 Mar 2020 09:06:42 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuuzQPPUFNSTBmUHTfPygThuZoJiYW9rrwbv73eymnRcVwYfAdawIT9XlnixWUTnBHOQLk3
-X-Received: by 2002:a0c:f88c:: with SMTP id u12mr9195152qvn.156.1584720402068;
-        Fri, 20 Mar 2020 09:06:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584720402; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp1065998lfe;
+        Fri, 20 Mar 2020 09:07:01 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtOzgVZ5bZ0cSfRkM6k0cDBPvAE/XcutKRHk6y80jvk19ZRVM1/bzMZbs+bdExDCcFu+lcj
+X-Received: by 2002:ac8:6f64:: with SMTP id u4mr9167747qtv.301.1584720420906;
+        Fri, 20 Mar 2020 09:07:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584720420; cv=none;
         d=google.com; s=arc-20160816;
-        b=AUb7uOR1vP8Rrf5kYttdkcJYnAckJJShVwn8YlxwQmELe4g7SgfDnEAbiBGSqgcKgm
-         vDO9WRbqp8EZumFNLCYhz6r13WkfPvl9WOzFtH26RtsZqpxKD0Dr6SPv+GZFh0YAN9Ng
-         ftf0odKkSPb+5D3VYmKn7AwpXfWxm+v/wnobl2D8MFmd6vmqmZkZ3YZ42G/aZl0FK2El
-         JELhNJ3yd6zHcp9VHu5nYPvP/L5kY/dvpmMjyWEbqfz43Lb1L+3K/c9LPNR+cThwMYy8
-         sWRvaPtZWDeQikojIiR+LQV5BucPNaZt7QeQa/IY2gbMh7liqN06FxnSZVDdCQhYG0SS
-         9s5g==
+        b=Gqy5FvlHY83jCJprIgOTA12qlGwPLK73p5SxqfpOVoBsAx4sRJ51yspC11KD9szfUq
+         AHpKeTDnS8/jVhsXUMpGWfpsisZSsNnSE03AK0i9p+iiz0BowMLe8vtfCyc2xOBI8tbO
+         x/ifRJMAIn9EGL884EQY5OMuQe6UdbVy+LbrSSRV4FcngYhRG+iJc9bt3VHwLozjcai9
+         XYMnG7+0giq/zbIvh9mS7h2OuRIpzzWNIiBAtWMc71boCuAnUiM5/NOVvuIkHlmadAxx
+         H7af+m8vUkWutdC5vF0DpxmEQ6kCx7MPHdQB6e7DmcbC4dJLSlzCKupAzr9EKpcFAr5o
+         ZH1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=9N6FLF8sUw4XVnPIwBVzCdAPTwyubp1J/tKDvqzTiXA=;
-        b=vtPOu6ya62zNHVXSB2nBNHK5J7wzeX32ungqRwXYcLjTCRIyyKBfA0y/EhhH3HNj2K
-         QwX9nE0OGYEgBqeN3eJqusCyU+S/8EG1abVUMNPINQUiMXRNuG9OFxcIh3eXPg4CWQJ6
-         aFwEN2lLfbLS3W90QCCU2QGg9FfYDqVIsd7IcrzG4dI0I2Ui+TChN8z+4G0LhLVEjzG5
-         dm6P7EqbxLTQZpm73YyXLfiHG75clNLokHMEuhsWs7qm7xFehFlVPCpiyN3B6U/xnrZP
-         wOSOKE3A3qeJtY2lOkqAt/0Wn2BJBHEk6XQw70qGdVNR8F8hoT8BRFFSTlrHKhxq0h6/
-         9iOg==
+        bh=Z+SDME4E2sCY/GphbA3qjA/hZrqxGNEA6/MPHDiVJqY=;
+        b=yqQaEiFRgAcYI9DXa8m5u+GKvXg5tpcfx/Hwr6dxND9hI1Tc91oRFmc/c6WzhOr+zx
+         iFbXtbW0ktrtMkwN6IHuHwenI4jg8HZlM5uIcRUc54VN2XtYOljSxtN8EQL9IbvpXON1
+         NAXp4LHbAAPnUjxShmFVVTOoaCYrOt31AmfNzkIEeXqhlhPZ5qkYjBSGIxCRMalo3AKF
+         3al+FoIY2warQeXBQ7Kai9mH8GCDQzDw7L4eVvrwfbBtiU3yK6VM3E/X9qfs/20A0YkJ
+         EgUUsX0xcOA3zmHt8N1hMwulgCH4uhFz3y+wR9EGNTir3DBe2ndmFqyaJQ0GnstjAWkE
+         Ku6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sinYBWdK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mauQ6A8a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x53si3774159qtb.391.2020.03.20.09.06.41
+        by mx.google.com with ESMTPS id s8si3915835qvb.42.2020.03.20.09.07.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Mar 2020 09:06:42 -0700 (PDT)
+        Fri, 20 Mar 2020 09:07:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sinYBWdK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mauQ6A8a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55292 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55296 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jFKAT-00024o-Ew
-	for alex.bennee@linaro.org; Fri, 20 Mar 2020 12:06:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39855)
+	id 1jFKAm-0002L6-9F
+	for alex.bennee@linaro.org; Fri, 20 Mar 2020 12:07:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39817)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jFKAI-0001zy-7z
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 12:06:31 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1jFKAG-0001xZ-Nn
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2020 12:06:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1jFKAH-0001cf-5m
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 12:06:30 -0400
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:44598)
+ (envelope-from <richard.henderson@linaro.org>) id 1jFKAF-0001am-MS
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2020 12:06:28 -0400
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:37916)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1jFKAG-0001c2-Vd
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 12:06:29 -0400
-Received: by mail-pl1-x641.google.com with SMTP id h11so2661247plr.11
- for <qemu-arm@nongnu.org>; Fri, 20 Mar 2020 09:06:28 -0700 (PDT)
+ id 1jFKAF-0001a5-H6
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2020 12:06:27 -0400
+Received: by mail-pl1-x641.google.com with SMTP id w3so2677828plz.5
+ for <qemu-arm@nongnu.org>; Fri, 20 Mar 2020 09:06:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=9N6FLF8sUw4XVnPIwBVzCdAPTwyubp1J/tKDvqzTiXA=;
- b=sinYBWdKPXM87ZyspIJS8N8F+GXUJppxt202/ZQkT99Eg8bR4pvRLUmgByGD0hx0xI
- nJFDBVddSlbNtOc6IsVeOcW7Tm6L5sPKvCgsoaOmuUD1XJlE+tis5nD6VRBTKIlAk5DF
- F3dSjk8o9T72oL00+HtVlQoDUpngTeVf5XJDLApLB4dZptJSlUEcLDh7ToUMgw/0JSa3
- 1mURHO/iqOuys/U9K3Ghrxbtn/e38w0ZJHpYIX2m3ib4knFoZLLa9ncbXOVHwRwdHJj2
- TFxbgDdYz0RszcBptnHmH4N+Hg9u7TCGO2TPSUb8Y9QJEvorDknLz6jlFl39uxdiKDgP
- tulQ==
+ bh=Z+SDME4E2sCY/GphbA3qjA/hZrqxGNEA6/MPHDiVJqY=;
+ b=mauQ6A8a9rBMA3rXL0UlYYMFBZUNKfZWi/KhS+T4kl1u7hBr11rrtv7ujJbx5ujx3U
+ zClxvn/SdO4ludJjbBdr+XeQ7ebWa22HvZkdZtjr6PBEdt0dmObvR0+ndjOR4z3C1HrD
+ sC2ITIiKq/YWPKh1yzfH3fTyXr9c2HVbIt7+qqmPuek965F3dWi/LkmX2p+MrLyuH8K/
+ ODrpP0tjkQdaqGTg2jCcbPxB9v3WTzQ08ID6E5JiD93saoiiqvGtOmV8AoHSMnP4yayS
+ Wr8e8T1DJENUBZY4ifmcC8ekBjvcRXCr0tzaqjKLyAqp3Ukb7NFQIs6TurvZC6wjmD6L
+ 89Vg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=9N6FLF8sUw4XVnPIwBVzCdAPTwyubp1J/tKDvqzTiXA=;
- b=UrX5HOogUpRXnLnrDWazTf0AN9nmnDigUrRCDlO5OMaa/oztpO/6iV1Q3bkvMNdX9n
- QvxUg9uyT1RcgUy0iRA4/OZ64WDmMRWPWG5a2A4wO/sQrUuOnTp8Z84pNhT4MXBL7m4A
- N1nzWL39k9OZqLmCnq9gvad8GLiUAQNcV+CWfpMNbj/Pgb3Aq1pvGrnRq/mMIAxzLXvr
- UEEPQxal7k90/lUat8BmidjeLVnXClCDKGF70lU/GiWRKDC1ln8iXPzCd4iK544C19r7
- yusNvGPycwyVsAC65NRglpOjePCNf5bWyEJII4ambElw9weBYMeNPWPIyKoYseJTycmj
- yYOQ==
-X-Gm-Message-State: ANhLgQ0eoYKhC2Pw+ekjaCBv9/KM/owZx3ULNZLUTCkAbdRo90R5AJ3Q
- Ce3qK7V9l0NDsi5HfJ4XpB9ITw==
-X-Received: by 2002:a17:902:eb49:: with SMTP id
- i9mr8953254pli.91.1584720388077; 
- Fri, 20 Mar 2020 09:06:28 -0700 (PDT)
+ bh=Z+SDME4E2sCY/GphbA3qjA/hZrqxGNEA6/MPHDiVJqY=;
+ b=qltjeFhYD1rgDHAuuiLGxaRLOsRWlpQFUJiHaS3YXkMxlfSz2W7NyyWLmWYt5kbNa8
+ Q/42Hh3AQ4fhctZZt7LsvOxbl9BOFnkKsWNThfDOpaqPwOcySk5OOvVkFnE67wsPSgrp
+ YnSmvfqehtrbTPzRGeSOUAIOTfShw4O6MgxrUN5C5CWLuUK4nSSIHATzt26oX7+6FAK+
+ 3PPCJioE6XcbMZUNXRzrOkgvkINHAg4hT8io2aurLEZQYr3mHXQ3aWekcSy9MqFmWIKw
+ 2IRH+bUZmb/EnIApX7bse7y4BJcHeMR8W5WFjIqJdHNbk5g4nuWPN/0tZXgdaQFLPRo8
+ OcVA==
+X-Gm-Message-State: ANhLgQ36bjULTcPJiFcQaEoQjOKLJIy2MxOgvibpMI/nGsaeXRd8atNr
+ L6Gh6yuE5EGxMcfn2hdLpKlTPSqlZWA=
+X-Received: by 2002:a17:90a:c244:: with SMTP id
+ d4mr10382017pjx.136.1584720385438; 
+ Fri, 20 Mar 2020 09:06:25 -0700 (PDT)
 Received: from localhost.localdomain (97-126-123-70.tukw.qwest.net.
  [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id nu13sm5272745pjb.22.2020.03.20.09.06.26
+ by smtp.gmail.com with ESMTPSA id nu13sm5272745pjb.22.2020.03.20.09.06.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Mar 2020 09:06:27 -0700 (PDT)
+ Fri, 20 Mar 2020 09:06:24 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 3/3] target/arm: Move computation of index in handle_simd_dupe
-Date: Fri, 20 Mar 2020 09:06:22 -0700
-Message-Id: <20200320160622.8040-4-richard.henderson@linaro.org>
+Subject: [PATCH 1/3] target/arm: Rearrange disabled check for watchpoints
+Date: Fri, 20 Mar 2020 09:06:20 -0700
+Message-Id: <20200320160622.8040-2-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200320160622.8040-1-richard.henderson@linaro.org>
 References: <20200320160622.8040-1-richard.henderson@linaro.org>
@@ -115,40 +115,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hdpNmTgRus4Z
+X-TUID: +kESCImcpyEJ
 
-Coverity reports a BAD_SHIFT with ctz32(imm5), with imm5 == 0.
-This is an invalid encoding, but we diagnose that just below
-by rejecting size > 3.  Avoid the warning by sinking the
-computation of index below the check.
+Coverity rightly notes that ctz32(bas) on 0 will return 32,
+which makes the len calculation a BAD_SHIFT.
 
-Reported-by: Coverity (CID 1421965)
+A value of 0 in DBGWCR<n>_EL1.BAS is reserved.  Simply move
+the existing check we have for this case.
+
+Reported-by: Coverity (CID 1421964)
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate-a64.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ target/arm/helper.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 032478614c..7580e46367 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -7422,7 +7422,7 @@ static void handle_simd_dupe(DisasContext *s, int is_q, int rd, int rn,
-                              int imm5)
- {
-     int size = ctz32(imm5);
--    int index = imm5 >> (size + 1);
-+    int index;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index d2ec2c5351..b7b6887241 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6340,17 +6340,18 @@ void hw_watchpoint_update(ARMCPU *cpu, int n)
+         int bas = extract64(wcr, 5, 8);
+         int basstart;
  
-     if (size > 3 || (size == 3 && !is_q)) {
-         unallocated_encoding(s);
-@@ -7433,6 +7433,7 @@ static void handle_simd_dupe(DisasContext *s, int is_q, int rd, int rn,
-         return;
-     }
- 
-+    index = imm5 >> (size + 1);
-     tcg_gen_gvec_dup_mem(size, vec_full_reg_offset(s, rd),
-                          vec_reg_offset(s, rn, index, size),
-                          is_q ? 16 : 8, vec_full_reg_size(s));
+-        if (bas == 0) {
+-            /* This must act as if the watchpoint is disabled */
+-            return;
+-        }
+-
+         if (extract64(wvr, 2, 1)) {
+             /* Deprecated case of an only 4-aligned address. BAS[7:4] are
+              * ignored, and BAS[3:0] define which bytes to watch.
+              */
+             bas &= 0xf;
+         }
++
++        if (bas == 0) {
++            /* This must act as if the watchpoint is disabled */
++            return;
++        }
++
+         /* The BAS bits are supposed to be programmed to indicate a contiguous
+          * range of bytes. Otherwise it is CONSTRAINED UNPREDICTABLE whether
+          * we fire for each byte in the word/doubleword addressed by the WVR.
 -- 
 2.20.1
 

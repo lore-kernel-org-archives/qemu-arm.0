@@ -1,92 +1,91 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp1125416lfe;
-        Fri, 20 Mar 2020 10:00:13 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt848MffelpPPK1EvJ9BFwge4tvMlah0ZoOzGNAcYEPM6MzNwaVP84d+2+qijtG1DlsGzwR
-X-Received: by 2002:a37:664d:: with SMTP id a74mr8706543qkc.256.1584723613532;
-        Fri, 20 Mar 2020 10:00:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584723613; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp1125888lfe;
+        Fri, 20 Mar 2020 10:00:32 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvfuLSrOJ2ARX9rUupkUX55DW9j86mbP43fyrb4min8Qo4eMUINYhSJRQHNnsaW6ll8AxSy
+X-Received: by 2002:a05:6214:b08:: with SMTP id u8mr9171249qvj.54.1584723632778;
+        Fri, 20 Mar 2020 10:00:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584723632; cv=none;
         d=google.com; s=arc-20160816;
-        b=WIJ6EFJjNo9q7d02Qre/Nzl1evyYtR4ccak6x9QJVTSH2lWFCH5u8jqwfHFQGeu/6u
-         k8yRtrAknWEicfJOv7UDNtgXzKVfhxQrIxSsuPz/XFSt2ReOG/g32pEZ9KMI3hZ1tmOS
-         piiA5cudh2OpynVuhBheGlEqH+37kNR6TsH2Te/Fl9g4wM+c8GEE/FQYz+xuplnHfJ8Y
-         sf5GLZGXPBlTL58tx/fCwN4182+Ezfjaysv68CjBx65ELaDHH+LMK3lgjqg/qV9/rjFB
-         hT/uWQErqU3cjCSU+7gdtmTG8yKwG20V2aPSj26eOoS1DaWTf5q8qlV0R1MGw7HMwocb
-         ouNQ==
+        b=Ds1uRi2E0Jk2+5qQCNcXu6hMKRbgvzYZ74fjnwbEDl+4WE2V25avi6xI3KSFu+jnbB
+         GcU5tJ5wGT7y//WeEscwNjlhSWWgATAuqT7nOOIhr0Hle37zg9qDIKRacTdToG+mPnFr
+         0jZO+fk7fBWNQ/gYY/u22e/NyS1BECIxyuv5isDRUI+vKsH0W3lYW5pn9xDWRUvjjOvQ
+         Ibi/qNcTNp5EiAKOWsguEcCzCBsXPeswkM/owfwrpUMtU66W0zbJfyAZNoIxGWMckaqm
+         mRCrOFDZLih4XLUY5JcBUtfqOHPI5j40wwFuqC9yPK91r4q+QRslFCxtKdzD34qpzz7v
+         YiOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=WL0ZvBoB0+XeBxLRP2xltK9U+qv+Rol4ZQFL6ezhHPc=;
-        b=lBDhbjHaA0NxggJskfTqj7Gp2eIoYzvUKT32G1g58n1p4UdKy8ga5y+dD665SdLfLG
-         nK5jLSFuXzpBY+yEZc71S26lDWYxdzcIOqJ04bGH6c2LKdExbq6dMllHYGnBQ4foFLkm
-         LiR8hVr5dXQgjisRlee/XtTBVpSxt0f/6UVlqfNZtCOGg9kk0JUhMnj2DJHaKJ8mGyi+
-         601a6HMQJo5jrIIq3GUlCDa+sXVhss+LhKqUrBJG9uQk82I3Cf1M84bqWi4oEOEUQC9q
-         BVhpuCrhVOlmyUOHff5qxthG9C7zrGCdS0AToQnnIXMxJ9DFzSjzS4+wD0GS4y8zwvoZ
-         LGBQ==
+        bh=l6Iye2O0XeOvISQpSx0b3JOnod6GRILdsZET6zD1a4o=;
+        b=zDEElSo3HMrk1BkMzPR6MOAwKpFeNEbbPzet3kr+hgScczOA9PKzINtXTL0+cJenfY
+         7cdq/fNKSxeKN3CIN0E+4oCD0/I3bwxdaSymF8X3NQLDQl7xHpGrAwVmNJq2HsYyHYnc
+         PJfVDDhk5X55xmEpJMALrAZSazBjRyQGeydO7s6/wtVppvpCYVI/UhD39I8yBGcGr6C3
+         k2RoeAxEqoxynLgZPyfcG+2ofuZ82ov13oYXdqtkyRGUs89Zvhep8X4OkojWIpTYI6Px
+         C2/yE25cJb0ZxmEzpOZ8UfjR8IwLLNnmzuALIDKTiJjHr9Waxq4Cb3sANuw4GZf6r7vC
+         wkyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gfPTA4NU;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hk4m9aVI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 136si4023721qkj.196.2020.03.20.10.00.13
+        by mx.google.com with ESMTPS id 68si3965304qkm.291.2020.03.20.10.00.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Mar 2020 10:00:13 -0700 (PDT)
+        Fri, 20 Mar 2020 10:00:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gfPTA4NU;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hk4m9aVI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56210 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56224 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jFL0G-0003ti-Q2
-	for alex.bennee@linaro.org; Fri, 20 Mar 2020 13:00:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54070)
+	id 1jFL0a-0004P6-0t
+	for alex.bennee@linaro.org; Fri, 20 Mar 2020 13:00:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54254)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1jFKzx-0003Zb-FE
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 12:59:54 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1jFL0O-0004Lu-2b
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:00:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1jFKzw-0004Pc-Gp
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 12:59:53 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:50907)
+ (envelope-from <eric.auger@redhat.com>) id 1jFL0M-0004tm-S0
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:00:19 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:58153)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1jFKzw-0004PN-Dc
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 12:59:52 -0400
+ id 1jFL0M-0004sw-OV
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:00:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584723592;
+ s=mimecast20190719; t=1584723618;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WL0ZvBoB0+XeBxLRP2xltK9U+qv+Rol4ZQFL6ezhHPc=;
- b=gfPTA4NUel/YKaWx23b9cpEKJFRqUvJ6+AbtZdq3B8B5c8t2TuJ5vuHmSzethVIcMJXyHP
- MQ2iiB3icI1jaZGD4OEs5LdS8gahlaD/PG1BhGTFaq2x1gg/mi8Bh7/TkAQcYvlrrHsqQ6
- EMtc7p9l4H4zvvLVklPosTcWj2FDN3Q=
+ bh=l6Iye2O0XeOvISQpSx0b3JOnod6GRILdsZET6zD1a4o=;
+ b=hk4m9aVIYRRM8qqDmPJz8EN3CORP3fRaFHVZ2atoTkMVzsjki6B39rFRST3Sub3VTTJITp
+ VZxJ50UvmPlDGaYjTuQqjeL554zKLFIB9Dlt3gnqiidL67FGDB9hT45buX04r2vZiBL7uz
+ H5hYX42H1LNtGjJHzh2mU0beC5Az5Cw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-331-uswLVvt5Od6fSxHijmEw1Q-1; Fri, 20 Mar 2020 12:59:50 -0400
-X-MC-Unique: uswLVvt5Od6fSxHijmEw1Q-1
+ us-mta-415-51cwJ6uuMnCoWoNlHftSUg-1; Fri, 20 Mar 2020 13:00:14 -0400
+X-MC-Unique: 51cwJ6uuMnCoWoNlHftSUg-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 375FB108E442;
- Fri, 20 Mar 2020 16:59:48 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9E9DDDB25;
+ Fri, 20 Mar 2020 17:00:12 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-113-142.ams2.redhat.com [10.36.113.142])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 97A8719757;
- Fri, 20 Mar 2020 16:59:41 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 28BAF19757;
+ Fri, 20 Mar 2020 17:00:00 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  alex.williamson@redhat.com, jacob.jun.pan@linux.intel.com,
  yi.l.liu@intel.com
-Subject: [RFC v6 04/24] memory: Add IOMMU_ATTR_MSI_TRANSLATE IOMMU memory
- region attribute
-Date: Fri, 20 Mar 2020 17:58:20 +0100
-Message-Id: <20200320165840.30057-5-eric.auger@redhat.com>
+Subject: [RFC v6 06/24] memory: Add arch_id and leaf fields in IOTLBEntry
+Date: Fri, 20 Mar 2020 17:58:22 +0100
+Message-Id: <20200320165840.30057-7-eric.auger@redhat.com>
 In-Reply-To: <20200320165840.30057-1-eric.auger@redhat.com>
 References: <20200320165840.30057-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -115,30 +114,59 @@ Cc: jean-philippe@linaro.org, tnowicki@marvell.com, maz@kernel.org,
  bbhushan2@marvell.com, will@kernel.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bMSMzlO/WcbY
+X-TUID: UCYRwuVNWAWw
 
-We introduce a new IOMMU Memory Region attribute, IOMMU_ATTR_MSI_TRANSLATE
-which tells whether the virtual IOMMU translates MSIs. ARM SMMU
-will expose this attribute since, as opposed to Intel DMAR, MSIs
-are translated as any other DMA requests.
+TLB entries are usually tagged with some ids such as the asid
+or pasid. When propagating an invalidation command from the
+guest to the host, we need to pass this id.
+
+Also we add a leaf field which indicates, in case of invalidation
+notification, whether only cache entries for the last level of
+translation are required to be invalidated.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- include/exec/memory.h | 1 +
- 1 file changed, 1 insertion(+)
+ include/exec/memory.h | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
 
 diff --git a/include/exec/memory.h b/include/exec/memory.h
-index b9d2f0a437..f2c773163f 100644
+index 141a5dc197..d61311aeba 100644
 --- a/include/exec/memory.h
 +++ b/include/exec/memory.h
-@@ -215,6 +215,7 @@ typedef struct MemoryRegionClass {
- enum IOMMUMemoryRegionAttr {
-     IOMMU_ATTR_SPAPR_TCE_FD,
-     IOMMU_ATTR_VFIO_NESTED,
-+    IOMMU_ATTR_MSI_TRANSLATE,
+@@ -71,12 +71,30 @@ typedef enum {
+=20
+ #define IOMMU_ACCESS_FLAG(r, w) (((r) ? IOMMU_RO : 0) | ((w) ? IOMMU_WO : =
+0))
+=20
++/**
++ * IOMMUTLBEntry - IOMMU TLB entry
++ *
++ * Structure used when performing a translation or when notifying MAP or
++ * UNMAP (invalidation) events
++ *
++ * @target_as: target address space
++ * @iova: IO virtual address (input)
++ * @translated_addr: translated address (output)
++ * @addr_mask: address mask (0xfff means 4K binding), must be multiple of =
+2
++ * @perm: permission flag of the mapping (NONE encodes no mapping or
++ * invalidation notification)
++ * @arch_id: architecture specific ID tagging the TLB
++ * @leaf: when @perm is NONE, indicates whether only caches for the last
++ * level of translation need to be invalidated.
++ */
+ struct IOMMUTLBEntry {
+     AddressSpace    *target_as;
+     hwaddr           iova;
+     hwaddr           translated_addr;
+-    hwaddr           addr_mask;  /* 0xfff =3D 4k translation */
++    hwaddr           addr_mask;
+     IOMMUAccessFlags perm;
++    uint32_t         arch_id;
++    bool             leaf;
  };
 =20
- /**
+ /*
 --=20
 2.20.1
 

@@ -1,69 +1,69 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp626190lfe;
-        Fri, 20 Mar 2020 02:25:32 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtxi9ZBXDAiCbkMjXD9mtqtv0hgnKuX6oEgR7vBrxN90vBwFS3FG5Ec/PUKmZdNlrtc9p3F
-X-Received: by 2002:aca:3544:: with SMTP id c65mr5367061oia.160.1584696331838;
-        Fri, 20 Mar 2020 02:25:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584696331; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp626278lfe;
+        Fri, 20 Mar 2020 02:25:37 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtpY8Ew/F7KnKxUVWIg51x4MmaovWB9NYTKqt1YCbz4VOMNfA2NIt7nHZp4CRFw2FbSZOlN
+X-Received: by 2002:a54:4090:: with SMTP id i16mr5700066oii.18.1584696337538;
+        Fri, 20 Mar 2020 02:25:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584696337; cv=none;
         d=google.com; s=arc-20160816;
-        b=QHhuCBM7+pVGeYfa4gEHBJslJY+9L7SiaI/LCNAmc2qD2Uws53h8KoA0UtF/X5QXkT
-         tN+SQam2U6eC8tMbuJjAZ6nRN4Dd0NSqsDKzSb7ZapICNtIu885hde3JzPZJCpjmcJjY
-         NU8e3Q2OOqzS/E5BUP1e91g3zQlilt0B60zGcLZjvlgfnvM4TK46/MW67EjgYBgfLvD/
-         qlIxPWx62jtb3bo+Zmy/tEU4leY5TYu8jovD2KXUKfF9vO/idzSsHkw5kbRcG6SYHXoO
-         Ne4cKEUCQYIOAI507RdMd76Eg0+UpR+rmsRxc2eso6QhoV+y9qxPA46J1Ssl1/tk/F64
-         MNjQ==
+        b=WbU5WjG71u32p4fDNY2j3uw3Y2Pd2pOG/gXdWrIeNVe+/KXIBmXBirEn1rpEvHuu9Z
+         deLGVhywmyg4wLhW4WM5VvJxPTJ9tmelHCaemyFBZok8aHUTIr3W+6q1DE3eKq6AUWlr
+         0d98G8kKP2Qe+wI849ZPVDZc9eMUE9jiJ1tRC0DvFup++IC1hgR2AdSnVloajGyhPeFh
+         YALSCDYhXSJepbkaUIB7Rkr9KT3HvEpkw2IW/m7bDfjZ2MLyqc4epx12LyYVtARCm+xm
+         ZdJ9aAIXlHlrtevSpx4apAQv2XfZPQI8OylRW/54xZs0a1rrANobY8/3/vMeGvlah6nX
+         bSrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=pyoUxJMAJISr2R1CUtM36kjsIf74x1hkGn7NNC+WmAU=;
-        b=hSENDFqJu6Zb/MbJC8uFvxwH4X9MFOzm4g31NjB4wtoAnfT6Y1/Cohx2wESAEziaHx
-         rX7GayolSD9xmc513JsLgDj+k0s9lox0TomrYSi6BViYwLc7TLCMlYGKYXOVX+caP1BQ
-         OTsWZvzPCxurkZLYyG9Iz9bQDWgImC2m24puEeQ6nItNbx1nfEpmK+wIQKKlQL2TdboQ
-         16HSziNoYkawZR4/n+CpmouP462tmQg6RxDYKAoPfV0693WnmsYqv5tvd3ahPqhgrZav
-         t351lSQVE/nNdcbEhjTjOyb7aIJrj9NjRmljZKSt7L3Be30LRG3RTVxUlJEPm4aD/xkR
-         3tRQ==
+        bh=CnmHcvAzlYerfEhzxJ/5Dt9qcTxe4wP+0MOD1yMQ9wI=;
+        b=qhFD5OGVsRrIpz6V+zI0IvcjR/PnAAqbn4YBoQvOqSsYlPIyBbUxYhH+lvHNLZx4R5
+         dDfnqOjSGzY/tUG8VoOMZOXEdHeG4oZpefzdw1wYpxGasW5r+QPBBoEngzsKBo3nZR89
+         +BNrFEYUPuj+0ikQvY6zRFEfTr3m81W8MshWK0ox9CG+BOJ7pUmqlcQgdjBhij5ohpt2
+         hjTMRq9ujWefoLk1QiaVDxcjlsT3kCAjKml6HhnRpEU6utulmEpRj97cYh79st+WvXhB
+         FpbCl68kArF6AGFYJ1evEdx3+7NkujrZpNd86V8oioAS39fcnQXpoiZqlnaSqJVHRS8j
+         RiJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aSdg+lw5;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UaIX3WLR;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id v25si2732057oth.274.2020.03.20.02.25.31;
-        Fri, 20 Mar 2020 02:25:31 -0700 (PDT)
+        by mx.google.com with ESMTP id v25si2732057oth.274.2020.03.20.02.25.37;
+        Fri, 20 Mar 2020 02:25:37 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aSdg+lw5;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UaIX3WLR;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727223AbgCTJZa (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Fri, 20 Mar 2020 05:25:30 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:38213 "EHLO
+        id S1727226AbgCTJZg (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Fri, 20 Mar 2020 05:25:36 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:26246 "EHLO
         us-smtp-delivery-74.mimecast.com" rhost-flags-OK-OK-OK-OK)
-        by vger.kernel.org with ESMTP id S1727025AbgCTJZa (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Fri, 20 Mar 2020 05:25:30 -0400
+        by vger.kernel.org with ESMTP id S1727025AbgCTJZg (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Fri, 20 Mar 2020 05:25:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1584696329;
+        s=mimecast20190719; t=1584696335;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=pyoUxJMAJISr2R1CUtM36kjsIf74x1hkGn7NNC+WmAU=;
-        b=aSdg+lw56vVSf1Sd+DTEUz6bZ4Fqaojmw+LvC51kNinMHmOZyslJcOffcSpJvSz97Yzodj
-        37zEFbnAdadwfO/15SZDan4q2uQXphA0DQGPh1C8PpNJQx5v3CWmjm901os4F9MM410BVa
-        2OLtFoEa7iZqKCchCFCiBtf7AWB7sYM=
+        bh=CnmHcvAzlYerfEhzxJ/5Dt9qcTxe4wP+0MOD1yMQ9wI=;
+        b=UaIX3WLRFurpyjyhaBvk0j+cuXv6LTxBVZ/mLbUzPnVT+JWndcWZ4kEKA5YMrLKwhCkX9a
+        q7rqZFD9dvd4ZC3SUyhh7y3MPsL0Nfj6YHSZ7imtk5wesyM3tDG6kn/JjGZCrhjQm6QSA6
+        jJyIlV9TqdLIdWON5phcc6wKZO269u4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-468-bqvhWHyZOUObR-J1dSbjyQ-1; Fri, 20 Mar 2020 05:25:28 -0400
-X-MC-Unique: bqvhWHyZOUObR-J1dSbjyQ-1
+ us-mta-227-FFPPheyIMTe6Vfnau2IYEQ-1; Fri, 20 Mar 2020 05:25:31 -0400
+X-MC-Unique: FFPPheyIMTe6Vfnau2IYEQ-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 66EEA1005514;
-        Fri, 20 Mar 2020 09:25:26 +0000 (UTC)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B00E3800D4E;
+        Fri, 20 Mar 2020 09:25:29 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-113-142.ams2.redhat.com [10.36.113.142])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 66FB85C1D8;
-        Fri, 20 Mar 2020 09:25:23 +0000 (UTC)
+        by smtp.corp.redhat.com (Postfix) with ESMTP id BE40F5C1D8;
+        Fri, 20 Mar 2020 09:25:26 +0000 (UTC)
 From:   Eric Auger <eric.auger@redhat.com>
 To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
         kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
@@ -71,9 +71,9 @@ To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
 Cc:     drjones@redhat.com, andre.przywara@arm.com,
         peter.maydell@linaro.org, yuzenghui@huawei.com,
         alexandru.elisei@arm.com, thuth@redhat.com
-Subject: [kvm-unit-tests PATCH v7 10/13] arm/arm64: ITS: INT functional tests
-Date:   Fri, 20 Mar 2020 10:24:25 +0100
-Message-Id: <20200320092428.20880-11-eric.auger@redhat.com>
+Subject: [kvm-unit-tests PATCH v7 11/13] arm/run: Allow Migration tests
+Date:   Fri, 20 Mar 2020 10:24:26 +0100
+Message-Id: <20200320092428.20880-12-eric.auger@redhat.com>
 In-Reply-To: <20200320092428.20880-1-eric.auger@redhat.com>
 References: <20200320092428.20880-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -83,314 +83,105 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: Db7p0iBCUgmj
+X-TUID: TeaD0q8I+lUF
 
-Triggers LPIs through the INT command.
+Let's link getchar.o to use puts and getchar from the
+tests.
 
-the test checks the LPI hits the right CPU and triggers
-the right LPI intid, ie. the translation is correct.
+Then allow tests belonging to the migration group to
+trigger the migration from the test code by putting
+"migrate" into the uart. Then the code can wait for the
+migration completion by using getchar().
 
-Updates to the config table also are tested, along with inv
-and invall commands.
+The __getchar implement is minimalist as it just reads the
+data register. It is just meant to read the single character
+emitted at the end of the migration by the runner script.
+
+It is not meant to read more data (FIFOs are not enabled).
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
-v5 -> v6:
-- removed collection-unmap test
-- moved the collection invalidation after the MAPCs
-
-v4 -> v5:
-- move the test stub from the header to arm/gic.c
 
 v3 -> v4:
-- assert in lpi_handler if the interrupt is not an LPI
-- remove check_lpi_stats from its_prerequisites()
+- remove space around Elvis operator
+- rename ___getchar into do_getchar
 
 v2 -> v3:
-- add comments
-- keep the report_skip in case there aren't 4 vcpus to be able to
-  run other tests in the its category.
-- fix the prefix pop
-- move its_event and its_stats to arm/gic.c
+- take the lock
+- assert if more than 16 chars
+- removed Thomas' R-b
 ---
- arm/gic.c         | 215 +++++++++++++++++++++++++++++++++++++++++++---
- arm/unittests.cfg |   7 ++
- 2 files changed, 211 insertions(+), 11 deletions(-)
+ arm/Makefile.common |  2 +-
+ arm/run             |  2 +-
+ lib/arm/io.c        | 28 ++++++++++++++++++++++++++++
+ 3 files changed, 30 insertions(+), 2 deletions(-)
 
-diff --git a/arm/gic.c b/arm/gic.c
-index 649ed81..5f1e595 100644
---- a/arm/gic.c
-+++ b/arm/gic.c
-@@ -159,6 +159,85 @@ static void ipi_handler(struct pt_regs *regs __unuse=
-d)
- 	}
+diff --git a/arm/Makefile.common b/arm/Makefile.common
+index b8988f2..a123e85 100644
+--- a/arm/Makefile.common
++++ b/arm/Makefile.common
+@@ -32,7 +32,7 @@ CFLAGS +=3D -I $(SRCDIR)/lib -I $(SRCDIR)/lib/libfdt -I=
+ lib
+ asm-offsets =3D lib/$(ARCH)/asm-offsets.h
+ include $(SRCDIR)/scripts/asm-offsets.mak
+=20
+-cflatobjs +=3D lib/util.o
++cflatobjs +=3D lib/util.o lib/getchar.o
+ cflatobjs +=3D lib/alloc_phys.o
+ cflatobjs +=3D lib/alloc_page.o
+ cflatobjs +=3D lib/vmalloc.o
+diff --git a/arm/run b/arm/run
+index 277db9b..a390ca5 100755
+--- a/arm/run
++++ b/arm/run
+@@ -61,6 +61,6 @@ fi
+ M+=3D",accel=3D$ACCEL"
+ command=3D"$qemu -nodefaults $M -cpu $processor $chr_testdev $pci_testde=
+v"
+ command+=3D" -display none -serial stdio -kernel"
+-command=3D"$(timeout_cmd) $command"
++command=3D"$(migration_cmd) $(timeout_cmd) $command"
+=20
+ run_qemu $command "$@"
+diff --git a/lib/arm/io.c b/lib/arm/io.c
+index 99fd315..343e108 100644
+--- a/lib/arm/io.c
++++ b/lib/arm/io.c
+@@ -87,6 +87,34 @@ void puts(const char *s)
+ 	spin_unlock(&uart_lock);
  }
 =20
-+static void setup_irq(irq_handler_fn handler)
++static int do_getchar(void)
 +{
-+	gic_enable_defaults();
-+#ifdef __arm__
-+	install_exception_handler(EXCPTN_IRQ, handler);
-+#else
-+	install_irq_handler(EL1H_IRQ, handler);
-+#endif
-+	local_irq_enable();
++	int c;
++
++	spin_lock(&uart_lock);
++	c =3D readb(uart0_base);
++	spin_unlock(&uart_lock);
++
++	return c ?: -1;
 +}
 +
-+#if defined(__aarch64__)
-+struct its_event {
-+	int cpu_id;
-+	int lpi_id;
-+};
-+
-+struct its_stats {
-+	struct its_event expected;
-+	struct its_event observed;
-+};
-+
-+static struct its_stats lpi_stats;
-+
-+static void lpi_handler(struct pt_regs *regs __unused)
++/*
++ * Minimalist implementation for migration completion detection.
++ * Without FIFOs enabled on the QEMU UART device we just read
++ * the data register: we cannot read more than 16 characters.
++ */
++int __getchar(void)
 +{
-+	u32 irqstat =3D gic_read_iar();
-+	int irqnr =3D gic_iar_irqnr(irqstat);
++	int c =3D do_getchar();
++	static int count;
 +
-+	gic_write_eoir(irqstat);
-+	assert(irqnr >=3D 8192);
-+	smp_rmb(); /* pairs with wmb in lpi_stats_expect */
-+	lpi_stats.observed.cpu_id =3D smp_processor_id();
-+	lpi_stats.observed.lpi_id =3D irqnr;
-+	smp_wmb(); /* pairs with rmb in check_lpi_stats */
++	if (c !=3D -1)
++		++count;
++
++	assert(count < 16);
++
++	return c;
 +}
-+
-+static void lpi_stats_expect(int exp_cpu_id, int exp_lpi_id)
-+{
-+	lpi_stats.expected.cpu_id =3D exp_cpu_id;
-+	lpi_stats.expected.lpi_id =3D exp_lpi_id;
-+	lpi_stats.observed.cpu_id =3D -1;
-+	lpi_stats.observed.lpi_id =3D -1;
-+	smp_wmb(); /* pairs with rmb in handler */
-+}
-+
-+static void check_lpi_stats(const char *msg)
-+{
-+	bool pass =3D false;
-+
-+	mdelay(100);
-+	smp_rmb(); /* pairs with wmb in lpi_handler */
-+	if (lpi_stats.observed.cpu_id !=3D lpi_stats.expected.cpu_id ||
-+	    lpi_stats.observed.lpi_id !=3D lpi_stats.expected.lpi_id) {
-+		if (lpi_stats.observed.cpu_id =3D=3D -1 &&
-+		    lpi_stats.observed.lpi_id =3D=3D -1) {
-+			report_info("No LPI received whereas (cpuid=3D%d, intid=3D%d) "
-+				    "was expected", lpi_stats.expected.cpu_id,
-+				    lpi_stats.expected.lpi_id);
-+		} else {
-+			report_info("Unexpected LPI (cpuid=3D%d, intid=3D%d)",
-+				    lpi_stats.observed.cpu_id,
-+				    lpi_stats.observed.lpi_id);
-+		}
-+	} else {
-+		pass =3D true;
-+	}
-+	report(pass, "%s", msg);
-+}
-+
-+static void secondary_lpi_test(void)
-+{
-+	setup_irq(lpi_handler);
-+	cpumask_set_cpu(smp_processor_id(), &ready);
-+	while (1)
-+		wfi();
-+}
-+#endif
-+
- static void gicv2_ipi_send_self(void)
- {
- 	writel(2 << 24 | IPI_IRQ, gicv2_dist_base() + GICD_SGIR);
-@@ -216,17 +295,6 @@ static void ipi_test_smp(void)
- 	report_prefix_pop();
- }
 =20
--static void setup_irq(irq_handler_fn handler)
--{
--	gic_enable_defaults();
--#ifdef __arm__
--	install_exception_handler(EXCPTN_IRQ, handler);
--#else
--	install_irq_handler(EL1H_IRQ, handler);
--#endif
--	local_irq_enable();
--}
--
- static void ipi_send(void)
- {
- 	setup_irq(ipi_handler);
-@@ -521,6 +589,7 @@ static void gic_test_mmio(void)
- #if defined(__arm__)
-=20
- static void test_its_introspection(void) {}
-+static void test_its_trigger(void) {}
-=20
- #else /* __aarch64__ */
-=20
-@@ -559,6 +628,126 @@ static void test_its_introspection(void)
- 	report_info("collection table entry_size =3D 0x%x", coll_baser->esz);
- }
-=20
-+static int its_prerequisites(int nb_cpus)
-+{
-+	int cpu;
-+
-+	if (!gicv3_its_base()) {
-+		report_skip("No ITS, skip ...");
-+		return -1;
-+	}
-+
-+	if (nr_cpus < nb_cpus) {
-+		report_skip("Test requires at least %d vcpus", nb_cpus);
-+		return -1;
-+	}
-+
-+	stats_reset();
-+
-+	setup_irq(lpi_handler);
-+
-+	for_each_present_cpu(cpu) {
-+		if (cpu =3D=3D 0)
-+			continue;
-+		smp_boot_secondary(cpu, secondary_lpi_test);
-+	}
-+	wait_on_ready();
-+
-+	its_enable_defaults();
-+
-+	return 0;
-+}
-+
-+static void test_its_trigger(void)
-+{
-+	struct its_collection *col3, *col2;
-+	struct its_device *dev2, *dev7;
-+
-+	if (its_prerequisites(4))
-+		return;
-+
-+	dev2 =3D its_create_device(2 /* dev id */, 8 /* nb_ites */);
-+	dev7 =3D its_create_device(7 /* dev id */, 8 /* nb_ites */);
-+
-+	col3 =3D its_create_collection(3 /* col id */, 3/* target PE */);
-+	col2 =3D its_create_collection(2 /* col id */, 2/* target PE */);
-+
-+	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
-+	gicv3_lpi_set_config(8196, LPI_PROP_DEFAULT);
-+
-+	report_prefix_push("int");
-+	/*
-+	 * dev=3D2, eventid=3D20  -> lpi=3D 8195, col=3D3
-+	 * dev=3D7, eventid=3D255 -> lpi=3D 8196, col=3D2
-+	 * Trigger dev2, eventid=3D20 and dev7, eventid=3D255
-+	 * Check both LPIs hit
-+	 */
-+
-+	its_send_mapd(dev2, true);
-+	its_send_mapd(dev7, true);
-+
-+	its_send_mapc(col3, true);
-+	its_send_mapc(col2, true);
-+
-+	its_send_invall(col2);
-+	its_send_invall(col3);
-+
-+	its_send_mapti(dev2, 8195 /* lpi id */, 20 /* event id */, col3);
-+	its_send_mapti(dev7, 8196 /* lpi id */, 255 /* event id */, col2);
-+
-+	lpi_stats_expect(3, 8195);
-+	its_send_int(dev2, 20);
-+	check_lpi_stats("dev=3D2, eventid=3D20  -> lpi=3D 8195, col=3D3");
-+
-+	lpi_stats_expect(2, 8196);
-+	its_send_int(dev7, 255);
-+	check_lpi_stats("dev=3D7, eventid=3D255 -> lpi=3D 8196, col=3D2");
-+
-+	report_prefix_pop();
-+
-+	report_prefix_push("inv/invall");
-+
-+	/*
-+	 * disable 8195, check dev2/eventid=3D20 does not trigger the
-+	 * corresponding LPI
-+	 */
-+	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT & ~LPI_PROP_ENABLED);
-+	its_send_inv(dev2, 20);
-+
-+	lpi_stats_expect(-1, -1);
-+	its_send_int(dev2, 20);
-+	check_lpi_stats("dev2/eventid=3D20 does not trigger any LPI");
-+
-+	/*
-+	 * re-enable the LPI but willingly do not call invall
-+	 * so the change in config is not taken into account.
-+	 * The LPI should not hit
-+	 */
-+	gicv3_lpi_set_config(8195, LPI_PROP_DEFAULT);
-+	lpi_stats_expect(-1, -1);
-+	its_send_int(dev2, 20);
-+	check_lpi_stats("dev2/eventid=3D20 still does not trigger any LPI");
-+
-+	/* Now call the invall and check the LPI hits */
-+	its_send_invall(col3);
-+	lpi_stats_expect(3, 8195);
-+	its_send_int(dev2, 20);
-+	check_lpi_stats("dev2/eventid=3D20 now triggers an LPI");
-+
-+	report_prefix_pop();
-+
-+	report_prefix_push("mapd valid=3Dfalse");
-+	/*
-+	 * Unmap device 2 and check the eventid 20 formerly
-+	 * attached to it does not hit anymore
-+	 */
-+
-+	its_send_mapd(dev2, false);
-+	lpi_stats_expect(-1, -1);
-+	its_send_int(dev2, 20);
-+	check_lpi_stats("no LPI after device unmap");
-+	report_prefix_pop();
-+}
- #endif
-=20
- int main(int argc, char **argv)
-@@ -592,6 +781,10 @@ int main(int argc, char **argv)
- 		report_prefix_push(argv[1]);
- 		gic_test_mmio();
- 		report_prefix_pop();
-+	} else if (!strcmp(argv[1], "its-trigger")) {
-+		report_prefix_push(argv[1]);
-+		test_its_trigger();
-+		report_prefix_pop();
- 	} else if (strcmp(argv[1], "its-introspection") =3D=3D 0) {
- 		report_prefix_push(argv[1]);
- 		test_its_introspection();
-diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-index 23d378e..b9a7a2c 100644
---- a/arm/unittests.cfg
-+++ b/arm/unittests.cfg
-@@ -129,6 +129,13 @@ extra_params =3D -machine gic-version=3D3 -append 'i=
-ts-introspection'
- groups =3D its
- arch =3D arm64
-=20
-+[its-trigger]
-+file =3D gic.flat
-+smp =3D $MAX_SMP
-+extra_params =3D -machine gic-version=3D3 -append 'its-trigger'
-+groups =3D its
-+arch =3D arm64
-+
- # Test PSCI emulation
- [psci]
- file =3D psci.flat
+ /*
+  * Defining halt to take 'code' as an argument guarantees that it will
 --=20
 2.20.1

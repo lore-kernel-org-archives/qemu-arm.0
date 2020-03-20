@@ -1,116 +1,96 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp730376lfe;
-        Fri, 20 Mar 2020 04:12:51 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtKL/dlgafFrI3A2HwzEv5GoacybAZwgD1Xr8wTGKsL+CK3LdZdyb2Ya1lqx6vsL3x5V/Er
-X-Received: by 2002:ac8:749a:: with SMTP id v26mr7424531qtq.260.1584702771080;
-        Fri, 20 Mar 2020 04:12:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584702771; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp772603lfe;
+        Fri, 20 Mar 2020 04:53:26 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvjs1HYVv4Qb5EMKOElcSZvTztDyK6Pz3Pruly1yD0hXw9OQFjYTbcKMqTJvf2Zblk5/IOW
+X-Received: by 2002:ad4:5427:: with SMTP id g7mr7651317qvt.23.1584705206542;
+        Fri, 20 Mar 2020 04:53:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584705206; cv=none;
         d=google.com; s=arc-20160816;
-        b=OtvH9yX4eJLlZvY14CE2W7zmLGLkMeqSG73jP+hMeMXiJtWTr8mHcna5pIrV5APUl2
-         sFjGqUj2pCFOFVrbGSreBCd1RiQwGJchqPSzJEJGowYfGZs+3hJKmVAQ++gd7xAzBnSq
-         vO9yZOS4lpiVDXeeggT40BcPzdi3GZbgLLShNHDZFpc0w5yPJE9+RxdCEtAq8NDTyIx5
-         DsyGdEDxeJCm+Wc6uxxf4fQ+AehoLYAGqm6kypD9i3to9vIUQbLa6hSmLCISAZHVqtnz
-         fG6B/NnDMKjz6xP0qne1hzgYhPfGuVkwfop8Dz9kXiJD775fGznEkHft4aaxalY88qgu
-         D7rA==
+        b=f8dKFtu8W8mAastjy2r4/R4SjTHnk8kaVU8lowpWF9IRCh5a3uqDG6DgmUEevUjaJk
+         ph1SBkKYS0ceQ9tohIxfC2+el5ikdkWR3PzL5UauQv9TzEq3MmvLl62bwRLuALArRkVy
+         a2tSY/08U4Hy8jqZf4hjcIZ1e0XNsUTeJ8c+ntzaEOmckQibLl3QyHGOZqtNHhrgxz6Z
+         jJie13AFHL9ZtguwZv9uCgfebyY/g1gMDhlC2FEqr72Hj1avL6Yw8DpAHyfxXrPOJ/qv
+         K+eIctfwrNTgiO2KbDKdacF0ey2p9W3OGFx0yzo72iaOg/UjCc3KTHhp+lFDZF+mlPKt
+         7Zdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=3ixS6QA+0MYlIcBKnC/I/SzALqrn4q5vbAOsm73DFrk=;
-        b=Cf+vzk0CPzbhjYJeQetQH8TqNS9/hdeSsiENgNHOir58J/qzMHQmkadEgizWcCLkrE
-         sgF5GPg9DMQs7ApqaqJ0tHNVKDCM42zyUFfFemogMGOUEaAtwLDnppg/JwetL8EukVS7
-         h34oxb+4umBsm8foRJ8W8e6mTHyUVR5ZdC7+gUCMjozc+LmB3Ho9ZgCk8EuS+nTVNEn0
-         N2ODluL6OjxXOCkc+lKzT3MIzOmKl2Hgx4YLFk/Vkin2HyaLaNrG0gllIQ+YgPpSlewt
-         vhbMGRVMDfeQf4UhxG7kfDxxEYYCzrPmPGGTOb2Mf1Otfw7j+iUcniZr0D3i4GabfC7k
-         Pftg==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=3DnVdbRr7taVwAp8h45H4O4x1+jlech4y1W402vKJeA=;
+        b=l7DIoZ9N+E61X54hjIeMInfHiyNFXocN7eR/e2bVAfPl8RzqdoEUZEpvuLj1MMASJ0
+         A/NWsg5dOQ40ST6m0ChHeP6fNWhWKKoZ2qdEnj0JQcGA7L69HQuVgaYkT+LlNrSK4X3W
+         z/RxAkPJMe1g4hXbNPc0A2taa9WkQA+kpMdstOl6FffdI6F4qtASg6mJ5NPw1R2b5cuH
+         IIKAJfnD1hfKlm+DFF2cCZqv3YhuUit/8oAVGapu9U1NegW76qm9NAdGsVqdT8APCuuW
+         03KJt/xgkgtDTGja9Eoye3E3uRLb6ai8uud6/DxPecGLvA4eKrXnA/J2DMrt/jJynje3
+         tnjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TbKQj3TQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k9si3090786qke.213.2020.03.20.04.12.50
+        by mx.google.com with ESMTPS id k25si3310325qta.249.2020.03.20.04.53.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Mar 2020 04:12:51 -0700 (PDT)
+        Fri, 20 Mar 2020 04:53:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TbKQj3TQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50952 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51334 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jFFa6-0005FN-Gg
-	for alex.bennee@linaro.org; Fri, 20 Mar 2020 07:12:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44718)
+	id 1jFGDN-0004K3-Ve
+	for alex.bennee@linaro.org; Fri, 20 Mar 2020 07:53:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52082)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1jFFZx-0005F9-AZ
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 07:12:43 -0400
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jFGDG-0004Jv-3T
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2020 07:53:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1jFFZv-0002TY-E1
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 07:12:41 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:47319)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jFGDE-000688-09
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2020 07:53:17 -0400
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2084 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1jFFZv-0002Sy-9H
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 07:12:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584702758;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3ixS6QA+0MYlIcBKnC/I/SzALqrn4q5vbAOsm73DFrk=;
- b=TbKQj3TQAx9/r3JESP8Y3lfY9Gf9L6ekRrEImitSWvVV5kD/VFA9GlcQIPmtWGRxji027w
- dUtUr7AhDO8PJzhtLXjKWVH7b//SlpnNpdknPv+H97snQdyqk44cMy8kYcdbDuF/j2CN3h
- lqOPwYDO4T6XzEPKlTfvqSSdU8fuTgs=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-484-Fp7SJEbaP0G7NP0qe2JfQA-1; Fri, 20 Mar 2020 07:12:37 -0400
-X-MC-Unique: Fp7SJEbaP0G7NP0qe2JfQA-1
-Received: by mail-wm1-f70.google.com with SMTP id p18so1667106wmk.9
- for <qemu-arm@nongnu.org>; Fri, 20 Mar 2020 04:12:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=3ixS6QA+0MYlIcBKnC/I/SzALqrn4q5vbAOsm73DFrk=;
- b=aNxU6Xtq7RifRjkBz51ZypE/ZH2y6w9QTlFcB46B7/jfInBFu2XaWOgAMN08vLmORH
- NL7zIaPgB+HZp+5kpDNzyr1c97kwK5w72okzEGRhbGi3idVK+e9ho72eJsh9jOec1yOE
- dguXj2nlM2QDgvneOIGqnz3QziEK6Ml49nfiIH/+nfHG2eyRZwdfMOLck9zD5X3+oeMl
- /7508fkvVUM4jLNltkaXusoBYtEpiAEdXLFhgUt+gacIlhOpryEF1isZAbvKkFJ+xyTV
- LRmj8X+ER2lcD8ZlOznTKhtcqpe99nj2N6T3J4ELW6z2+Uu1o/sZKx6P8X1f+DActIJc
- U2NQ==
-X-Gm-Message-State: ANhLgQ35GLnAp7cKrLuDz9ALhU/Rr2Oj+g0eyHHh7ngaimU1TN7+E+71
- IQKEQFoqjMOsNKOJIhVbCQFdR9lOILD56uhyQilpAyLtMnaRRKiYwPF/uklL2dOoH9yt0YXd5Oq
- RhLab0cnMqv3v
-X-Received: by 2002:a1c:3105:: with SMTP id x5mr9877259wmx.51.1584702755320;
- Fri, 20 Mar 2020 04:12:35 -0700 (PDT)
-X-Received: by 2002:a1c:3105:: with SMTP id x5mr9877227wmx.51.1584702754943;
- Fri, 20 Mar 2020 04:12:34 -0700 (PDT)
-Received: from [192.168.178.58] ([151.21.15.43])
- by smtp.gmail.com with ESMTPSA id j11sm7679819wrt.14.2020.03.20.04.12.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 20 Mar 2020 04:12:34 -0700 (PDT)
-Subject: Re: [PATCH] acpi: add acpi=OnOffAuto machine property to x86 and arm
- virt
-To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
-References: <20200320100136.11717-1-kraxel@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <e4df9657-7f37-ca0d-884a-b62a2109d221@redhat.com>
-Date: Fri, 20 Mar 2020 12:12:32 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
-MIME-Version: 1.0
-In-Reply-To: <20200320100136.11717-1-kraxel@redhat.com>
+ (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jFGDD-000679-NQ; Fri, 20 Mar 2020 07:53:15 -0400
+Received: from lhreml705-cah.china.huawei.com (unknown [172.18.7.106])
+ by Forcepoint Email with ESMTP id 289BF22D7CBE89B1FA93;
+ Fri, 20 Mar 2020 11:53:09 +0000 (GMT)
+Received: from lhreml704-chm.china.huawei.com (10.201.108.53) by
+ lhreml705-cah.china.huawei.com (10.201.108.46) with Microsoft SMTP Server
+ (TLS) id 14.3.408.0; Fri, 20 Mar 2020 11:53:08 +0000
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ lhreml704-chm.china.huawei.com (10.201.108.53) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1713.5; Fri, 20 Mar 2020 11:53:08 +0000
+Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
+ lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
+ 15.01.1713.004; Fri, 20 Mar 2020 11:53:08 +0000
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Subject: RE: [PATCH v3 02/10] fw_cfg: Migrate ACPI table mr sizes separately
+Thread-Topic: [PATCH v3 02/10] fw_cfg: Migrate ACPI table mr sizes separately
+Thread-Index: AQHV98nfLQ/oyrUoTECo1X+eD0njY6hD4yyAgADIa/CAC5LegIABKo/A
+Date: Fri, 20 Mar 2020 11:53:08 +0000
+Message-ID: <b19f79ed1a214a28a73f3007f648a062@huawei.com>
+References: <20200311172014.33052-1-shameerali.kolothum.thodi@huawei.com>
+ <20200311172014.33052-3-shameerali.kolothum.thodi@huawei.com>
+ <20200311170827-mutt-send-email-mst@kernel.org>
+ <cf6384c5b66a4c9ba37c39a07ec9ed6a@huawei.com>
+ <20200319135036-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20200319135036-mutt-send-email-mst@kernel.org>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.47.83.186]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 63.128.21.74
+ [fuzzy]
+X-Received-From: 185.176.76.210
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -122,310 +102,343 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "david@redhat.com" <david@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ "imammedo@redhat.com" <imammedo@redhat.com>,
+ "lersek@redhat.com" <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kYjwPQEoedtL
+X-TUID: oKGFiBJKr5k1
 
-On 20/03/20 11:01, Gerd Hoffmann wrote:
-> Remove the global acpi_enabled bool and replace it with an
-> acpi OnOffAuto machine property.
-> 
-> qemu throws an error now if you use -no-acpi while the machine
-> type you are using doesn't support acpi in the first place.
-> 
-> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-> ---
->  include/hw/acpi/acpi.h   |  1 -
->  include/hw/arm/virt.h    |  2 ++
->  include/hw/i386/x86.h    |  3 +++
->  hw/arm/virt-acpi-build.c |  2 +-
->  hw/arm/virt.c            | 36 ++++++++++++++++++++++++++++++++++--
->  hw/i386/acpi-build.c     |  2 +-
->  hw/i386/pc.c             |  4 ++--
->  hw/i386/pc_piix.c        |  2 +-
->  hw/i386/x86.c            | 32 ++++++++++++++++++++++++++++++++
->  softmmu/vl.c             |  4 ++--
->  10 files changed, 78 insertions(+), 10 deletions(-)
-> 
-> diff --git a/include/hw/acpi/acpi.h b/include/hw/acpi/acpi.h
-> index 1f2dafbd7db6..4bef57531229 100644
-> --- a/include/hw/acpi/acpi.h
-> +++ b/include/hw/acpi/acpi.h
-> @@ -181,7 +181,6 @@ void acpi_send_gpe_event(ACPIREGS *ar, qemu_irq irq,
->  void acpi_update_sci(ACPIREGS *acpi_regs, qemu_irq irq);
->  
->  /* acpi.c */
-> -extern int acpi_enabled;
->  extern char unsigned *acpi_tables;
->  extern size_t acpi_tables_len;
->  
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 893796d3b06b..60b2f521eb47 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -131,6 +131,7 @@ typedef struct {
->      bool highmem_ecam;
->      bool its;
->      bool virt;
-> +    OnOffAuto acpi;
->      VirtGICType gic_version;
->      VirtIOMMUType iommu;
->      uint16_t virtio_iommu_bdf;
-> @@ -163,6 +164,7 @@ typedef struct {
->      OBJECT_CLASS_CHECK(VirtMachineClass, klass, TYPE_VIRT_MACHINE)
->  
->  void virt_acpi_setup(VirtMachineState *vms);
-> +bool virt_is_acpi_enabled(VirtMachineState *vms);
->  
->  /* Return the number of used redistributor regions  */
->  static inline int virt_gicv3_redist_region_count(VirtMachineState *vms)
-> diff --git a/include/hw/i386/x86.h b/include/hw/i386/x86.h
-> index 22babcb3bb8d..54af8ab5cfae 100644
-> --- a/include/hw/i386/x86.h
-> +++ b/include/hw/i386/x86.h
-> @@ -64,6 +64,7 @@ typedef struct {
->      unsigned smp_dies;
->  
->      OnOffAuto smm;
-> +    OnOffAuto acpi;
->  
->      /*
->       * Address space used by IOAPIC device. All IOAPIC interrupts
-> @@ -74,6 +75,7 @@ typedef struct {
->  
->  #define X86_MACHINE_MAX_RAM_BELOW_4G "max-ram-below-4g"
->  #define X86_MACHINE_SMM              "smm"
-> +#define X86_MACHINE_ACPI             "acpi"
->  
->  #define TYPE_X86_MACHINE   MACHINE_TYPE_NAME("x86")
->  #define X86_MACHINE(obj) \
-> @@ -104,6 +106,7 @@ void x86_load_linux(X86MachineState *x86ms,
->                      bool linuxboot_dma_enabled);
->  
->  bool x86_machine_is_smm_enabled(X86MachineState *x86ms);
-> +bool x86_machine_is_acpi_enabled(X86MachineState *x86ms);
->  
->  /* Global System Interrupts */
->  
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index fb4b166f82c7..7ef0733d7147 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -910,7 +910,7 @@ void virt_acpi_setup(VirtMachineState *vms)
->          return;
->      }
->  
-> -    if (!acpi_enabled) {
-> +    if (!virt_is_acpi_enabled(vms)) {
->          trace_virt_acpi_setup();
->          return;
->      }
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 94f93dda54f2..7dc96abf72cf 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -67,6 +67,7 @@
->  #include "kvm_arm.h"
->  #include "hw/firmware/smbios.h"
->  #include "qapi/visitor.h"
-> +#include "qapi/qapi-visit-common.h"
->  #include "standard-headers/linux/input.h"
->  #include "hw/arm/smmuv3.h"
->  #include "hw/acpi/acpi.h"
-> @@ -1844,7 +1845,7 @@ static void machvirt_init(MachineState *machine)
->  
->      create_pcie(vms);
->  
-> -    if (has_ged && aarch64 && firmware_loaded && acpi_enabled) {
-> +    if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
->          vms->acpi_dev = create_acpi_ged(vms);
->      } else {
->          create_gpio(vms);
-> @@ -1934,6 +1935,31 @@ static void virt_set_its(Object *obj, bool value, Error **errp)
->      vms->its = value;
->  }
->  
-> +bool virt_is_acpi_enabled(VirtMachineState *vms)
-> +{
-> +    if (vms->acpi == ON_OFF_AUTO_OFF) {
-> +        return false;
-> +    }
-> +    return true;
-> +}
-> +
-> +static void virt_get_acpi(Object *obj, Visitor *v, const char *name,
-> +                          void *opaque, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
-> +    OnOffAuto acpi = vms->acpi;
-> +
-> +    visit_type_OnOffAuto(v, name, &acpi, errp);
-> +}
-> +
-> +static void virt_set_acpi(Object *obj, Visitor *v, const char *name,
-> +                          void *opaque, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
-> +
-> +    visit_type_OnOffAuto(v, name, &vms->acpi, errp);
-> +}
-> +
->  static char *virt_get_gic_version(Object *obj, Error **errp)
->  {
->      VirtMachineState *vms = VIRT_MACHINE(obj);
-> @@ -2113,7 +2139,7 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
->      if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
->          VirtMachineState *vms = VIRT_MACHINE(machine);
->  
-> -        if (!vms->bootinfo.firmware_loaded || !acpi_enabled) {
-> +        if (!vms->bootinfo.firmware_loaded || !virt_is_acpi_enabled(vms)) {
->              return HOTPLUG_HANDLER(machine);
->          }
->      }
-> @@ -2184,6 +2210,12 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->      mc->numa_mem_supported = true;
->      mc->auto_enable_numa_with_memhp = true;
->      mc->default_ram_id = "mach-virt.ram";
-> +
-> +    object_class_property_add(oc, "acpi", "OnOffAuto",
-> +        virt_get_acpi, virt_set_acpi,
-> +        NULL, NULL, &error_abort);
-> +    object_class_property_set_description(oc, "acpi",
-> +        "Enable ACPI", &error_abort);
->  }
->  
->  static void virt_instance_init(Object *obj)
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 9a19c14e661b..2a7e55bae765 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -3024,7 +3024,7 @@ void acpi_setup(void)
->          return;
->      }
->  
-> -    if (!acpi_enabled) {
-> +    if (!x86_machine_is_acpi_enabled(X86_MACHINE(pcms))) {
->          ACPI_BUILD_DPRINTF("ACPI disabled. Bailing out.\n");
->          return;
->      }
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 98ee763f68f8..0bf0aaca5201 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -1297,7 +1297,7 @@ static void pc_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
->       * but pcms->acpi_dev is still created. Check !acpi_enabled in
->       * addition to cover this case.
->       */
-> -    if (!pcms->acpi_dev || !acpi_enabled) {
-> +    if (!pcms->acpi_dev || !x86_machine_is_acpi_enabled(X86_MACHINE(pcms))) {
->          error_setg(errp,
->                     "memory hotplug is not enabled: missing acpi device or acpi disabled");
->          return;
-> @@ -1351,7 +1351,7 @@ static void pc_memory_unplug_request(HotplugHandler *hotplug_dev,
->       * but pcms->acpi_dev is still created. Check !acpi_enabled in
->       * addition to cover this case.
->       */
-> -    if (!pcms->acpi_dev || !acpi_enabled) {
-> +    if (!pcms->acpi_dev || !x86_machine_is_acpi_enabled(X86_MACHINE(pcms))) {
->          error_setg(&local_err,
->                     "memory hotplug is not enabled: missing acpi device or acpi disabled");
->          goto out;
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index e6756216f9f4..9cceae3e2c35 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -275,7 +275,7 @@ static void pc_init1(MachineState *machine,
->          pci_create_simple(pci_bus, piix3_devfn + 2, "piix3-usb-uhci");
->      }
->  
-> -    if (pcmc->pci_enabled && acpi_enabled) {
-> +    if (pcmc->pci_enabled && x86_machine_is_acpi_enabled(X86_MACHINE(pcms))) {
->          DeviceState *piix4_pm;
->  
->          smi_irq = qemu_allocate_irq(pc_acpi_smi_interrupt, first_cpu, 0);
-> diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-> index 87b73fe33cd2..6ca3cf936f38 100644
-> --- a/hw/i386/x86.c
-> +++ b/hw/i386/x86.c
-> @@ -904,11 +904,37 @@ static void x86_machine_set_smm(Object *obj, Visitor *v, const char *name,
->      visit_type_OnOffAuto(v, name, &x86ms->smm, errp);
->  }
->  
-> +bool x86_machine_is_acpi_enabled(X86MachineState *x86ms)
-> +{
-> +    if (x86ms->acpi == ON_OFF_AUTO_OFF) {
-> +        return false;
-> +    }
-> +    return true;
-> +}
-> +
-> +static void x86_machine_get_acpi(Object *obj, Visitor *v, const char *name,
-> +                                 void *opaque, Error **errp)
-> +{
-> +    X86MachineState *x86ms = X86_MACHINE(obj);
-> +    OnOffAuto acpi = x86ms->acpi;
-> +
-> +    visit_type_OnOffAuto(v, name, &acpi, errp);
-> +}
-> +
-> +static void x86_machine_set_acpi(Object *obj, Visitor *v, const char *name,
-> +                                 void *opaque, Error **errp)
-> +{
-> +    X86MachineState *x86ms = X86_MACHINE(obj);
-> +
-> +    visit_type_OnOffAuto(v, name, &x86ms->acpi, errp);
-> +}
-> +
->  static void x86_machine_initfn(Object *obj)
->  {
->      X86MachineState *x86ms = X86_MACHINE(obj);
->  
->      x86ms->smm = ON_OFF_AUTO_AUTO;
-> +    x86ms->acpi = ON_OFF_AUTO_AUTO;
->      x86ms->max_ram_below_4g = 0; /* use default */
->      x86ms->smp_dies = 1;
->  }
-> @@ -937,6 +963,12 @@ static void x86_machine_class_init(ObjectClass *oc, void *data)
->          NULL, NULL, &error_abort);
->      object_class_property_set_description(oc, X86_MACHINE_SMM,
->          "Enable SMM", &error_abort);
-> +
-> +    object_class_property_add(oc, X86_MACHINE_ACPI, "OnOffAuto",
-> +        x86_machine_get_acpi, x86_machine_set_acpi,
-> +        NULL, NULL, &error_abort);
-> +    object_class_property_set_description(oc, X86_MACHINE_ACPI,
-> +        "Enable ACPI", &error_abort);
->  }
->  
->  static const TypeInfo x86_machine_info = {
-> diff --git a/softmmu/vl.c b/softmmu/vl.c
-> index 1d33a2834037..9f06bd4bf0a7 100644
-> --- a/softmmu/vl.c
-> +++ b/softmmu/vl.c
-> @@ -144,7 +144,6 @@ static Chardev **serial_hds;
->  Chardev *parallel_hds[MAX_PARALLEL_PORTS];
->  int win2k_install_hack = 0;
->  int singlestep = 0;
-> -int acpi_enabled = 1;
->  int no_hpet = 0;
->  int fd_bootchk = 1;
->  static int no_reboot;
-> @@ -3513,7 +3512,8 @@ void qemu_init(int argc, char **argv, char **envp)
->                  vnc_parse(optarg, &error_fatal);
->                  break;
->              case QEMU_OPTION_no_acpi:
-> -                acpi_enabled = 0;
-> +                olist = qemu_find_opts("machine");
-> +                qemu_opts_parse_noisily(olist, "acpi=off", false);
->                  break;
->              case QEMU_OPTION_no_hpet:
->                  no_hpet = 1;
-> 
 
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+
+> -----Original Message-----
+> From: Michael S. Tsirkin [mailto:mst@redhat.com]
+> Sent: 19 March 2020 17:51
+> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
+> eric.auger@redhat.com; imammedo@redhat.com; peter.maydell@linaro.org;
+> shannon.zhaosl@gmail.com; xiaoguangrong.eric@gmail.com;
+> david@redhat.com; xuwei (O) <xuwei5@huawei.com>; lersek@redhat.com;
+> Linuxarm <linuxarm@huawei.com>
+> Subject: Re: [PATCH v3 02/10] fw_cfg: Migrate ACPI table mr sizes separat=
+ely
+>=20
+> On Thu, Mar 12, 2020 at 09:27:32AM +0000, Shameerali Kolothum Thodi
+> wrote:
+> >
+> >
+> > > -----Original Message-----
+> > > From: Michael S. Tsirkin [mailto:mst@redhat.com]
+> > > Sent: 11 March 2020 21:10
+> > > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> > > Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
+> > > eric.auger@redhat.com; imammedo@redhat.com;
+> peter.maydell@linaro.org;
+> > > shannon.zhaosl@gmail.com; xiaoguangrong.eric@gmail.com;
+> > > david@redhat.com; xuwei (O) <xuwei5@huawei.com>;
+> lersek@redhat.com;
+> > > Linuxarm <linuxarm@huawei.com>
+> > > Subject: Re: [PATCH v3 02/10] fw_cfg: Migrate ACPI table mr sizes
+> separately
+> > >
+> > > On Wed, Mar 11, 2020 at 05:20:06PM +0000, Shameer Kolothum wrote:
+> > > > Any sub-page size update to ACPI table MRs will be lost during
+> > > > migration, as we use aligned size in ram_load_precopy() ->
+> > > > qemu_ram_resize() path. This will result in inconsistency in sizes
+> > > > between source and destination. In order to avoid this, save and
+> > > > restore them separately during migration.
+> >
+> >
+> > > Is there a reason this is part of nvdimm patchset?
+> >
+> > Not really. But this problem is more visible if we have nvdimm hotplug
+> > support added to arm/virt. On x86, both acpi table and linker MRs are a=
+lready
+> > aligned and I don't know a use case where you can change RSDP MR size(S=
+ee
+> below).
+> >
+> > >
+> > > Hmm but for old machine types we still have a problem right?
+> > > How about aligning size on source for them?
+> > > Then there won't be an inconsistency across migration.
+> > > Wastes some boot time/memory but maybe that's better
+> > > than a chance of not booting ...
+> >
+> > Right. That was considered. On x86, except RSDP MR, both the LINKER and
+> ACPI
+> > TABLE MRs are already aligned/padded. And we cannot make RSDP mr
+> aligned
+> > as it will break the seabios based boot.
+>=20
+> Hmm. So right now if we migrate just before RSDP is read, there's
+> a failure?
+
+I am not sure that will be the case. IIUC, on migration path, ram_load_prec=
+opy() -->qemu_ram_resize()
+won't be called as both length and block->used_length will be aligned size.
+Even if it calls, the current qemu_ram_resize() works on aligned size and w=
+ont invoke
+the callback to update the FWCfgEntry. And I believe on destination, the bi=
+os read will trigger
+the fw_cfg_select() which will call the acpi_build_update() to rebuild the =
+tables and update the
+FWCfgEntry.
+
+Having said that my knowledge on this is limited, but I can test and confir=
+m this, if there is
+an easy way to trigger this usecase. Please let me know.
+
+Thanks,
+Shameer
+
+
+
+
+
+
+> > So a generic solution based on alignment
+> > is not possible unless we guarantee that RSDP is not going to be modifi=
+ed.
+> >
+> > What we could do for Arm/virt is just follow the x86 way and add paddin=
+g for
+> > table and linker MRs. But this was discussed before and IIRC, was not w=
+ell
+> > received.
+> >
+> > Thanks,
+> > Shameer
+> >
+> > > > Suggested-by: David Hildenbrand <david@redhat.com>
+> > > > Signed-off-by: Shameer Kolothum
+> <shameerali.kolothum.thodi@huawei.com>
+> > > > ---
+> > > > Please find the discussion here,
+> > > > https://patchwork.kernel.org/patch/11339591/
+> > > > ---
+> > > >  hw/core/machine.c         |  1 +
+> > > >  hw/nvram/fw_cfg.c         | 86
+> > > ++++++++++++++++++++++++++++++++++++++-
+> > > >  include/hw/nvram/fw_cfg.h |  6 +++
+> > > >  3 files changed, 92 insertions(+), 1 deletion(-)
+> > > >
+> > > > diff --git a/hw/core/machine.c b/hw/core/machine.c
+> > > > index 9e8c06036f..6d960bd47f 100644
+> > > > --- a/hw/core/machine.c
+> > > > +++ b/hw/core/machine.c
+> > > > @@ -39,6 +39,7 @@ GlobalProperty hw_compat_4_2[] =3D {
+> > > >      { "usb-redir", "suppress-remote-wake", "off" },
+> > > >      { "qxl", "revision", "4" },
+> > > >      { "qxl-vga", "revision", "4" },
+> > > > +    { "fw_cfg", "acpi-mr-restore", "false" },
+> > > >  };
+> > > >  const size_t hw_compat_4_2_len =3D G_N_ELEMENTS(hw_compat_4_2);
+> > > >
+> > > > diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> > > > index 179b302f01..36d1e32f83 100644
+> > > > --- a/hw/nvram/fw_cfg.c
+> > > > +++ b/hw/nvram/fw_cfg.c
+> > > > @@ -39,6 +39,7 @@
+> > > >  #include "qemu/config-file.h"
+> > > >  #include "qemu/cutils.h"
+> > > >  #include "qapi/error.h"
+> > > > +#include "hw/acpi/aml-build.h"
+> > > >
+> > > >  #define FW_CFG_FILE_SLOTS_DFLT 0x20
+> > > >
+> > > > @@ -610,6 +611,50 @@ bool fw_cfg_dma_enabled(void *opaque)
+> > > >      return s->dma_enabled;
+> > > >  }
+> > > >
+> > > > +static bool fw_cfg_acpi_mr_restore(void *opaque)
+> > > > +{
+> > > > +    FWCfgState *s =3D opaque;
+> > > > +    return s->acpi_mr_restore;
+> > > > +}
+> > > > +
+> > > > +static void fw_cfg_update_mr(FWCfgState *s, uint16_t key, size_t s=
+ize)
+> > > > +{
+> > > > +    MemoryRegion *mr;
+> > > > +    ram_addr_t offset;
+> > > > +    int arch =3D !!(key & FW_CFG_ARCH_LOCAL);
+> > > > +    void *ptr;
+> > > > +
+> > > > +    key &=3D FW_CFG_ENTRY_MASK;
+> > > > +    assert(key < fw_cfg_max_entry(s));
+> > > > +
+> > > > +    ptr =3D s->entries[arch][key].data;
+> > > > +    mr =3D memory_region_from_host(ptr, &offset);
+> > > > +
+> > > > +    memory_region_ram_resize(mr, size, &error_abort);
+> > > > +}
+> > > > +
+> > > > +static int fw_cfg_acpi_mr_restore_post_load(void *opaque, int
+> version_id)
+> > > > +{
+> > > > +    FWCfgState *s =3D opaque;
+> > > > +    int i, index;
+> > > > +
+> > > > +    assert(s->files);
+> > > > +
+> > > > +    index =3D be32_to_cpu(s->files->count);
+> > > > +
+> > > > +    for (i =3D 0; i < index; i++) {
+> > > > +        if (!strcmp(s->files->f[i].name, ACPI_BUILD_TABLE_FILE)) {
+> > > > +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i,
+> > > s->table_mr_size);
+> > > > +        } else if (!strcmp(s->files->f[i].name,
+> ACPI_BUILD_LOADER_FILE)) {
+> > > > +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i,
+> > > s->linker_mr_size);
+> > > > +        } else if (!strcmp(s->files->f[i].name, ACPI_BUILD_RSDP_FI=
+LE))
+> {
+> > > > +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i,
+> > > s->rsdp_mr_size);
+> > > > +        }
+> > > > +    }
+> > > > +
+> > > > +    return 0;
+> > > > +}
+> > > > +
+> > > >  static const VMStateDescription vmstate_fw_cfg_dma =3D {
+> > > >      .name =3D "fw_cfg/dma",
+> > > >      .needed =3D fw_cfg_dma_enabled,
+> > > > @@ -619,6 +664,20 @@ static const VMStateDescription
+> > > vmstate_fw_cfg_dma =3D {
+> > > >      },
+> > > >  };
+> > > >
+> > > > +static const VMStateDescription vmstate_fw_cfg_acpi_mr =3D {
+> > > > +    .name =3D "fw_cfg/acpi_mr",
+> > > > +    .version_id =3D 1,
+> > > > +    .minimum_version_id =3D 1,
+> > > > +    .needed =3D fw_cfg_acpi_mr_restore,
+> > > > +    .post_load =3D fw_cfg_acpi_mr_restore_post_load,
+> > > > +    .fields =3D (VMStateField[]) {
+> > > > +        VMSTATE_UINT64(table_mr_size, FWCfgState),
+> > > > +        VMSTATE_UINT64(linker_mr_size, FWCfgState),
+> > > > +        VMSTATE_UINT64(rsdp_mr_size, FWCfgState),
+> > > > +        VMSTATE_END_OF_LIST()
+> > > > +    },
+> > > > +};
+> > > > +
+> > > >  static const VMStateDescription vmstate_fw_cfg =3D {
+> > > >      .name =3D "fw_cfg",
+> > > >      .version_id =3D 2,
+> > > > @@ -631,6 +690,7 @@ static const VMStateDescription vmstate_fw_cfg
+> =3D {
+> > > >      },
+> > > >      .subsections =3D (const VMStateDescription*[]) {
+> > > >          &vmstate_fw_cfg_dma,
+> > > > +        &vmstate_fw_cfg_acpi_mr,
+> > > >          NULL,
+> > > >      }
+> > > >  };
+> > > > @@ -815,6 +875,23 @@ static struct {
+> > > >  #define FW_CFG_ORDER_OVERRIDE_LAST 200
+> > > >  };
+> > > >
+> > > > +/*
+> > > > + * Any sub-page size update to these table MRs will be lost during
+> migration,
+> > > > + * as we use aligned size in ram_load_precopy() -> qemu_ram_resize=
+()
+> path.
+> > > > + * In order to avoid the inconsistency in sizes save them seperate=
+ly and
+> > > > + * migrate over in vmstate post_load().
+> > > > + */
+> > > > +static void fw_cfg_acpi_mr_save(FWCfgState *s, const char *filenam=
+e,
+> > > size_t len)
+> > > > +{
+> > > > +    if (!strcmp(filename, ACPI_BUILD_TABLE_FILE)) {
+> > > > +        s->table_mr_size =3D len;
+> > > > +    } else if (!strcmp(filename, ACPI_BUILD_LOADER_FILE)) {
+> > > > +        s->linker_mr_size =3D len;
+> > > > +    } else if (!strcmp(filename, ACPI_BUILD_RSDP_FILE)) {
+> > > > +        s->rsdp_mr_size =3D len;
+> > > > +    }
+> > > > +}
+> > > > +
+> > > >  static int get_fw_cfg_order(FWCfgState *s, const char *name)
+> > > >  {
+> > > >      int i;
+> > > > @@ -914,6 +991,7 @@ void fw_cfg_add_file_callback(FWCfgState *s,
+> > > const char *filename,
+> > > >      trace_fw_cfg_add_file(s, index, s->files->f[index].name, len);
+> > > >
+> > > >      s->files->count =3D cpu_to_be32(count+1);
+> > > > +    fw_cfg_acpi_mr_save(s, filename, len);
+> > > >  }
+> > > >
+> > > >  void fw_cfg_add_file(FWCfgState *s,  const char *filename,
+> > > > @@ -937,6 +1015,7 @@ void *fw_cfg_modify_file(FWCfgState *s, const
+> char
+> > > *filename,
+> > > >              ptr =3D fw_cfg_modify_bytes_read(s, FW_CFG_FILE_FIRST
+> + i,
+> > > >                                             data, len);
+> > > >              s->files->f[i].size   =3D cpu_to_be32(len);
+> > > > +            fw_cfg_acpi_mr_save(s, filename, len);
+> > > >              return ptr;
+> > > >          }
+> > > >      }
+> > > > @@ -973,7 +1052,10 @@ static void fw_cfg_machine_ready(struct
+> Notifier
+> > > *n, void *data)
+> > > >      qemu_register_reset(fw_cfg_machine_reset, s);
+> > > >  }
+> > > >
+> > > > -
+> > > > +static Property fw_cfg_properties[] =3D {
+> > > > +    DEFINE_PROP_BOOL("acpi-mr-restore", FWCfgState,
+> acpi_mr_restore,
+> > > true),
+> > > > +    DEFINE_PROP_END_OF_LIST(),
+> > > > +};
+> > > >
+> > > >  static void fw_cfg_common_realize(DeviceState *dev, Error **errp)
+> > > >  {
+> > > > @@ -1097,6 +1179,8 @@ static void fw_cfg_class_init(ObjectClass
+> *klass,
+> > > void *data)
+> > > >
+> > > >      dc->reset =3D fw_cfg_reset;
+> > > >      dc->vmsd =3D &vmstate_fw_cfg;
+> > > > +
+> > > > +    device_class_set_props(dc, fw_cfg_properties);
+> > > >  }
+> > > >
+> > > >  static const TypeInfo fw_cfg_info =3D {
+> > > > diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+> > > > index b5291eefad..457fee7425 100644
+> > > > --- a/include/hw/nvram/fw_cfg.h
+> > > > +++ b/include/hw/nvram/fw_cfg.h
+> > > > @@ -53,6 +53,12 @@ struct FWCfgState {
+> > > >      dma_addr_t dma_addr;
+> > > >      AddressSpace *dma_as;
+> > > >      MemoryRegion dma_iomem;
+> > > > +
+> > > > +    /* restore during migration */
+> > > > +    bool acpi_mr_restore;
+> > > > +    size_t table_mr_size;
+> > > > +    size_t linker_mr_size;
+> > > > +    size_t rsdp_mr_size;
+> > > >  };
+> > > >
+> > > >  struct FWCfgIoState {
+> > > > --
+> > > > 2.17.1
+> > > >
 

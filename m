@@ -1,91 +1,91 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp1130451lfe;
-        Fri, 20 Mar 2020 10:03:59 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vu0hcgW+fKNWx7daQEeyWdgfthEr80680PcPTV68IvJWK7FYnvca5zVAcxpNs8eFnLEEhnO
-X-Received: by 2002:ae9:d886:: with SMTP id u128mr8267784qkf.240.1584723838897;
-        Fri, 20 Mar 2020 10:03:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584723838; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp1130504lfe;
+        Fri, 20 Mar 2020 10:04:01 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vs/4GzhxiqdBtbKSE7LIYHo0kA+LeEw6QWTdf0YjlFy0S6N61BSN/dICB8GYPV6n4QnCYzq
+X-Received: by 2002:a0c:fde7:: with SMTP id m7mr9233530qvu.53.1584723840880;
+        Fri, 20 Mar 2020 10:04:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584723840; cv=none;
         d=google.com; s=arc-20160816;
-        b=HYbPMXiM7bVOq7rx6uqCLlt7VV4m0uEiaKSTDIDxc+pHyCKxqRMTs4ODqEh7dPCyPg
-         aRs0XK2KXmgBNQG1iR1EOu6tGaOTtz0V3l+hTtg/c+pTI10NkrEAu+Dbtc6H5HccUhO8
-         wrmJ9hmZ3B2XX2Me1sbuoVdh+m+osWWoZ40B/37LqpCONkEBtqkkGiv1M7sQWQk/ASrZ
-         i4lX0d4WCbBnzQxnLS853npVCh6BW2vAfWL2D3yVvA/OhqqIZ8WO9x/o1H9zm0oo4XC3
-         YS/9UodhUrNYnJfKz6b8uHOggYKzrWT1/cRRp+zaPptk2yhXrncqVOTMAtBWb6zzegiX
-         F6tA==
+        b=Vy+F2qRXhklUwPoxGAi3ErLrCuavOudq+lYpbyukmeBMFPwVfbJV//mlYo7pOxkdZe
+         gka8v4cOBGPMxRGBmMCtQvUbUJ92wMTZVvZ7hzAUIHwBuHy0wjCi8K1NheXRs/ZgUCTe
+         KuSfFV1bI+oIEtGGNcdxgW6Wy1TheD+DZYOW1IHRrTy2gJAgZZ7eaCG1W+aWYdWdXbnz
+         bNhtCi5lvbaSAkW8uDIjwy9qqZ5kJistiXUDWMMAa1v9Ryebkvj/q20bhKeHbptJaO86
+         mZCol53M3iylDmhZPdSgG0RpyatHdn/eyciPiVsGbS5coB40ZqAlRGX1wa2Gse+xzpEp
+         8pMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=nXtzXlFbaPFXfG384F8tfefUNvNBuBevl6Fv5zyuq1Y=;
-        b=ilEZPiAZIR6YW6ndU0pHQpr73yY+q1EfYcHD/IXwAemH1aG1p9ziglnqD8EL3EDElj
-         aRHrSRXe71Dk5LqKL+yUijvN+acZyDaptxtVzl4cQ0VLI9XPobTOgCnGRPfRWs3j8Pu7
-         VmcARBrETF0Sfc8yR7pU3s3w+BDROlilx3JVCVPzKjaTdCf93JOB1EwdSQgLAbPq9yBn
-         qI+Hyq9FCdDieLRGKTSBw2wYP5u0Zq6mGSQNAzVne3IfEqIML10uDs2V1bfgyn/gSw15
-         GFH+gzbJ1t803hIce3V8ih0sC4N44Hsd5890udeiYhd+nsgqeBK9t2sDs002paRqaZz2
-         VfUQ==
+        bh=EvEvCNEalPBw0ypsBybljyBft476JEfxKuCUth4fTiE=;
+        b=vSC5MaPZvh45W0ILUEcBzw+he2GHJI0VkrmLOYUzq0vy5cVcpj0fFH3x8tMQM7TH9v
+         mhgwYh0EtMDSNa4g6Em862jKQ72bdkLKDk4TyMgYTVAzHRbXfNzIbx6mFckUix8dLyEa
+         WOG9fupFJRKxd/c7WBakPoj18CPL3ToJ6zAPUMWS2fV+94LimtnDD50yonRAWJZn/WqL
+         LssNeQs2tK21S2Tjc7wBUlPtb436ak5yAbp/vbj8ilnA4LbjDx+AclXD4jYtHlMjP+Wd
+         AQMdVpZdxRfZC9ZTNtx+GsGEEHXbYGG9G8gXoZHZOfjW106ex3zJJeanW9cLgPIdKUQt
+         yXrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bZSKx5vy;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="V/Yh4iYf";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5si3588466qtw.272.2020.03.20.10.03.58
+        by mx.google.com with ESMTPS id j10si3569245qth.276.2020.03.20.10.04.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Mar 2020 10:03:58 -0700 (PDT)
+        Fri, 20 Mar 2020 10:04:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bZSKx5vy;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="V/Yh4iYf";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56352 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56356 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jFL3u-0001M4-5t
-	for alex.bennee@linaro.org; Fri, 20 Mar 2020 13:03:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54326)
+	id 1jFL3v-0001Ph-Vj
+	for alex.bennee@linaro.org; Fri, 20 Mar 2020 13:04:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55142)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1jFL0Z-0004if-4t
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:00:32 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1jFL2i-00084a-OR
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:02:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1jFL0Y-000581-1Z
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:00:31 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:56314)
+ (envelope-from <eric.auger@redhat.com>) id 1jFL2g-0007xk-ST
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:02:44 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:32638)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1jFL0X-00056Y-SA
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:00:29 -0400
+ id 1jFL2g-0007xP-NR
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:02:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584723629;
+ s=mimecast20190719; t=1584723762;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=nXtzXlFbaPFXfG384F8tfefUNvNBuBevl6Fv5zyuq1Y=;
- b=bZSKx5vyUdnN89U4wncGRv4T4ImDzFQiWpKJVdloPRVFEfE3EKr1cMftbahZxgzKb8KJOs
- EhfZLykIcH9IN+BzwQkaJkEQWu0JKsBrLiHO+9bzUyRP9KeR4mZpNYLvj+49vhMUOw8DUd
- dZcrw2ghPK3LnL/eOfNnzc6N8j6EbFc=
+ bh=EvEvCNEalPBw0ypsBybljyBft476JEfxKuCUth4fTiE=;
+ b=V/Yh4iYf9JKOZYMb+xC/AOkDTLSAlqQdeyCW6aN7RjiOe0PdfDDOl6xQzeF9g++9vEC7N0
+ GxjNdpQ6PqDYv9/nXuyasZQRNuN4sViVj/TyZNL720IJuGM2lSqqUWMTvfsChIiBt5QAI/
+ jwHrNTaPXza9LJ3CMwm+YXxhjLHSCsQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-446-ez1_SjPKNGW3nqASzyE1lg-1; Fri, 20 Mar 2020 13:00:27 -0400
-X-MC-Unique: ez1_SjPKNGW3nqASzyE1lg-1
+ us-mta-20-zFjQ1KtfM0mLvOQ5s2pCwA-1; Fri, 20 Mar 2020 13:02:40 -0400
+X-MC-Unique: zFjQ1KtfM0mLvOQ5s2pCwA-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BE79210CE780;
- Fri, 20 Mar 2020 17:00:25 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 97B349B84E;
+ Fri, 20 Mar 2020 17:02:08 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-113-142.ams2.redhat.com [10.36.113.142])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F2A2A19757;
- Fri, 20 Mar 2020 17:00:12 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E101D28980;
+ Fri, 20 Mar 2020 17:01:47 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  alex.williamson@redhat.com, jacob.jun.pan@linux.intel.com,
  yi.l.liu@intel.com
-Subject: [RFC v6 07/24] iommu: Introduce generic header
-Date: Fri, 20 Mar 2020 17:58:23 +0100
-Message-Id: <20200320165840.30057-8-eric.auger@redhat.com>
+Subject: [RFC v6 13/24] vfio: Pass stage 1 MSI bindings to the host
+Date: Fri, 20 Mar 2020 17:58:29 +0100
+Message-Id: <20200320165840.30057-14-eric.auger@redhat.com>
 In-Reply-To: <20200320165840.30057-1-eric.auger@redhat.com>
 References: <20200320165840.30057-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -113,52 +113,237 @@ Cc: jean-philippe@linaro.org, tnowicki@marvell.com, maz@kernel.org,
  bbhushan2@marvell.com, will@kernel.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZBGGhuoMJLqB
+X-TUID: OGkrXR/ZARFr
 
-This header is meant to exposes data types used by
-several IOMMU devices such as struct for SVA and
-nested stage configuration.
+We register the stage1 MSI bindings when enabling the vectors
+and we unregister them on container disconnection.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- include/hw/iommu/iommu.h | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
- create mode 100644 include/hw/iommu/iommu.h
 
-diff --git a/include/hw/iommu/iommu.h b/include/hw/iommu/iommu.h
-new file mode 100644
-index 0000000000..12092bda7b
---- /dev/null
-+++ b/include/hw/iommu/iommu.h
-@@ -0,0 +1,28 @@
-+/*
-+ * common header for iommu devices
-+ *
-+ * Copyright Red Hat, Inc. 2019
-+ *
-+ * Authors:
-+ *  Eric Auger <eric.auger@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2.  See
-+ * the COPYING file in the top-level directory.
-+ */
+---
+
+v4 -> v5:
+- use VFIO_IOMMU_SET_MSI_BINDING
+
+v2 -> v3:
+- only register the notifier if the IOMMU translates MSIs
+- record the msi bindings in a container list and unregister on
+  container release
+---
+ hw/vfio/common.c              | 52 +++++++++++++++++++++++++++++++++++
+ hw/vfio/pci.c                 | 51 +++++++++++++++++++++++++++++++++-
+ hw/vfio/trace-events          |  2 ++
+ include/hw/vfio/vfio-common.h |  9 ++++++
+ 4 files changed, 113 insertions(+), 1 deletion(-)
+
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index c0ae59bfe6..4d51b1f63b 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -484,6 +484,56 @@ static void vfio_iommu_unmap_notify(IOMMUNotifier *n, =
+IOMMUTLBEntry *iotlb)
+     }
+ }
+=20
++int vfio_iommu_set_msi_binding(VFIOContainer *container,
++                               IOMMUTLBEntry *iotlb)
++{
++    struct vfio_iommu_type1_set_msi_binding ustruct;
++    VFIOMSIBinding *binding;
++    int ret;
 +
-+#ifndef QEMU_HW_IOMMU_IOMMU_H
-+#define QEMU_HW_IOMMU_IOMMU_H
-+#ifdef __linux__
-+#include <linux/iommu.h>
-+#endif
++    QLIST_FOREACH(binding, &container->msibinding_list, next) {
++        if (binding->iova =3D=3D iotlb->iova) {
++            return 0;
++        }
++    }
 +
-+typedef struct IOMMUConfig {
-+    union {
-+#ifdef __linux__
-+        struct iommu_pasid_table_config pasid_cfg;
-+#endif
-+          };
-+} IOMMUConfig;
++    ustruct.argsz =3D sizeof(struct vfio_iommu_type1_set_msi_binding);
++    ustruct.iova =3D iotlb->iova;
++    ustruct.flags =3D VFIO_IOMMU_BIND_MSI;
++    ustruct.gpa =3D iotlb->translated_addr;
++    ustruct.size =3D iotlb->addr_mask + 1;
++    ret =3D ioctl(container->fd, VFIO_IOMMU_SET_MSI_BINDING , &ustruct);
++    if (ret) {
++        error_report("%s: failed to register the stage1 MSI binding (%m)",
++                     __func__);
++        return ret;
++    }
++    binding =3D  g_new0(VFIOMSIBinding, 1);
++    binding->iova =3D ustruct.iova;
++    binding->gpa =3D ustruct.gpa;
++    binding->size =3D ustruct.size;
 +
++    QLIST_INSERT_HEAD(&container->msibinding_list, binding, next);
++    return 0;
++}
 +
-+#endif /* QEMU_HW_IOMMU_IOMMU_H */
++static void vfio_container_unbind_msis(VFIOContainer *container)
++{
++    VFIOMSIBinding *binding, *tmp;
++
++    QLIST_FOREACH_SAFE(binding, &container->msibinding_list, next, tmp) {
++        struct vfio_iommu_type1_set_msi_binding ustruct;
++
++        /* the MSI doorbell is not used anymore, unregister it */
++        ustruct.argsz =3D sizeof(struct vfio_iommu_type1_set_msi_binding);
++        ustruct.flags =3D VFIO_IOMMU_UNBIND_MSI;
++        ustruct.iova =3D binding->iova;
++        ioctl(container->fd, VFIO_IOMMU_SET_MSI_BINDING , &ustruct);
++        QLIST_REMOVE(binding, next);
++        g_free(binding);
++    }
++}
++
+ static void vfio_iommu_map_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb)
+ {
+     VFIOGuestIOMMU *giommu =3D container_of(n, VFIOGuestIOMMU, n);
+@@ -1598,6 +1648,8 @@ static void vfio_disconnect_container(VFIOGroup *grou=
+p)
+             g_free(giommu);
+         }
+=20
++        vfio_container_unbind_msis(container);
++
+         trace_vfio_disconnect_container(container->fd);
+         close(container->fd);
+         g_free(container);
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index fc314cc6a9..6f2d5696c3 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -377,6 +377,49 @@ static void vfio_msi_interrupt(void *opaque)
+     notify(&vdev->pdev, nr);
+ }
+=20
++static int vfio_register_msi_binding(VFIOPCIDevice *vdev, int vector_n)
++{
++    VFIOContainer *container =3D vdev->vbasedev.group->container;
++    PCIDevice *dev =3D &vdev->pdev;
++    AddressSpace *as =3D pci_device_iommu_address_space(dev);
++    MSIMessage msg =3D pci_get_msi_message(dev, vector_n);
++    IOMMUMemoryRegionClass *imrc;
++    IOMMUMemoryRegion *iommu_mr;
++    bool msi_translate =3D false, nested =3D false;
++    IOMMUTLBEntry entry;
++
++    if (as =3D=3D &address_space_memory) {
++        return 0;
++    }
++
++    iommu_mr =3D IOMMU_MEMORY_REGION(as->root);
++    memory_region_iommu_get_attr(iommu_mr, IOMMU_ATTR_MSI_TRANSLATE,
++                                 (void *)&msi_translate);
++    memory_region_iommu_get_attr(iommu_mr, IOMMU_ATTR_VFIO_NESTED,
++                                 (void *)&nested);
++    imrc =3D memory_region_get_iommu_class_nocheck(iommu_mr);
++
++    if (!nested || !msi_translate) {
++        return 0;
++    }
++
++    /* MSI doorbell address is translated by an IOMMU */
++
++    rcu_read_lock();
++    entry =3D imrc->translate(iommu_mr, msg.address, IOMMU_WO, 0);
++    rcu_read_unlock();
++
++    if (entry.perm =3D=3D IOMMU_NONE) {
++        return -ENOENT;
++    }
++
++    trace_vfio_register_msi_binding(vdev->vbasedev.name, vector_n,
++                                    msg.address, entry.translated_addr);
++
++    vfio_iommu_set_msi_binding(container, &entry);
++    return 0;
++}
++
+ static int vfio_enable_vectors(VFIOPCIDevice *vdev, bool msix)
+ {
+     struct vfio_irq_set *irq_set;
+@@ -394,7 +437,7 @@ static int vfio_enable_vectors(VFIOPCIDevice *vdev, boo=
+l msix)
+     fds =3D (int32_t *)&irq_set->data;
+=20
+     for (i =3D 0; i < vdev->nr_vectors; i++) {
+-        int fd =3D -1;
++        int ret, fd =3D -1;
+=20
+         /*
+          * MSI vs MSI-X - The guest has direct access to MSI mask and pend=
+ing
+@@ -409,6 +452,12 @@ static int vfio_enable_vectors(VFIOPCIDevice *vdev, bo=
+ol msix)
+             } else {
+                 fd =3D event_notifier_get_fd(&vdev->msi_vectors[i].kvm_int=
+errupt);
+             }
++            ret =3D vfio_register_msi_binding(vdev, i);
++            if (ret) {
++                error_report("%s failed to register S1 MSI binding "
++                             "for vector %d(%d)", __func__, i, ret);
++                return ret;
++            }
+         }
+=20
+         fds[i] =3D fd;
+diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
+index 9f1868af2d..5de97a8882 100644
+--- a/hw/vfio/trace-events
++++ b/hw/vfio/trace-events
+@@ -117,6 +117,8 @@ vfio_get_dev_region(const char *name, int index, uint32=
+_t type, uint32_t subtype
+ vfio_dma_unmap_overflow_workaround(void) ""
+ vfio_iommu_addr_inv_iotlb(int asid, uint64_t addr, uint64_t size, uint64_t=
+ nb_granules, bool leaf) "nested IOTLB invalidate asid=3D%d, addr=3D0x%"PRI=
+x64" granule_size=3D0x%"PRIx64" nb_granules=3D0x%"PRIx64" leaf=3D%d"
+ vfio_iommu_asid_inv_iotlb(int asid) "nested IOTLB invalidate asid=3D%d"
++vfio_register_msi_binding(const char *name, int vector, uint64_t giova, ui=
+nt64_t gdb) "%s: register vector %d gIOVA=3D0x%"PRIx64 "-> gDB=3D0x%"PRIx64=
+" stage 1 mapping"
++vfio_unregister_msi_binding(const char *name, int vector, uint64_t giova) =
+"%s: unregister vector %d gIOVA=3D0x%"PRIx64 " stage 1 mapping"
+=20
+ # platform.c
+ vfio_platform_base_device_init(char *name, int groupid) "%s belongs to gro=
+up #%d"
+diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
+index fd564209ac..8ca34146d7 100644
+--- a/include/hw/vfio/vfio-common.h
++++ b/include/hw/vfio/vfio-common.h
+@@ -63,6 +63,13 @@ typedef struct VFIOAddressSpace {
+     QLIST_ENTRY(VFIOAddressSpace) list;
+ } VFIOAddressSpace;
+=20
++typedef struct VFIOMSIBinding {
++    hwaddr iova;
++    hwaddr gpa;
++    hwaddr size;
++    QLIST_ENTRY(VFIOMSIBinding) next;
++} VFIOMSIBinding;
++
+ struct VFIOGroup;
+=20
+ typedef struct VFIOContainer {
+@@ -77,6 +84,7 @@ typedef struct VFIOContainer {
+     QLIST_HEAD(, VFIOGuestIOMMU) giommu_list;
+     QLIST_HEAD(, VFIOHostDMAWindow) hostwin_list;
+     QLIST_HEAD(, VFIOGroup) group_list;
++    QLIST_HEAD(, VFIOMSIBinding) msibinding_list;
+     QLIST_ENTRY(VFIOContainer) next;
+ } VFIOContainer;
+=20
+@@ -178,6 +186,7 @@ VFIOGroup *vfio_get_group(int groupid, AddressSpace *as=
+, Error **errp);
+ void vfio_put_group(VFIOGroup *group);
+ int vfio_get_device(VFIOGroup *group, const char *name,
+                     VFIODevice *vbasedev, Error **errp);
++int vfio_iommu_set_msi_binding(VFIOContainer *container, IOMMUTLBEntry *en=
+try);
+=20
+ extern const MemoryRegionOps vfio_region_ops;
+ typedef QLIST_HEAD(VFIOGroupList, VFIOGroup) VFIOGroupList;
 --=20
 2.20.1
 

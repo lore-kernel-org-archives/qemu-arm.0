@@ -1,91 +1,91 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp1125888lfe;
-        Fri, 20 Mar 2020 10:00:32 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvfuLSrOJ2ARX9rUupkUX55DW9j86mbP43fyrb4min8Qo4eMUINYhSJRQHNnsaW6ll8AxSy
-X-Received: by 2002:a05:6214:b08:: with SMTP id u8mr9171249qvj.54.1584723632778;
-        Fri, 20 Mar 2020 10:00:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584723632; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp1125919lfe;
+        Fri, 20 Mar 2020 10:00:34 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuWbZPNuAljvw18/7wv8qCH0HWYzH8kqlc2Cu+huiKPMHmQji36xoIW+UQ5yQbjjCNg4S9a
+X-Received: by 2002:a05:6214:14a:: with SMTP id x10mr9404617qvs.158.1584723633557;
+        Fri, 20 Mar 2020 10:00:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584723633; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ds1uRi2E0Jk2+5qQCNcXu6hMKRbgvzYZ74fjnwbEDl+4WE2V25avi6xI3KSFu+jnbB
-         GcU5tJ5wGT7y//WeEscwNjlhSWWgATAuqT7nOOIhr0Hle37zg9qDIKRacTdToG+mPnFr
-         0jZO+fk7fBWNQ/gYY/u22e/NyS1BECIxyuv5isDRUI+vKsH0W3lYW5pn9xDWRUvjjOvQ
-         Ibi/qNcTNp5EiAKOWsguEcCzCBsXPeswkM/owfwrpUMtU66W0zbJfyAZNoIxGWMckaqm
-         mRCrOFDZLih4XLUY5JcBUtfqOHPI5j40wwFuqC9yPK91r4q+QRslFCxtKdzD34qpzz7v
-         YiOg==
+        b=HecYQ6zhuRFTyJhNqpm04tX7Gqvp7mosNxwy7nGZcjTIffezlNb4x60DV/Rh2KgJRg
+         SnidPaJG5hGTg8wwYOmJt/UCaqEptoM8SapgbOg24q8gsEUIaZYwBfvg74na4MtleHXL
+         fj5AsJXZZy5Ro7AM8dhL2hqObaKPx1Rq8pFpcKWMGLt7q96sZvmyma17QoI9Dw1fNGMz
+         rZpCD3f/eQoowvbG/FDqZ7r7Ouscv1+6v0WMXu8ziTxaKjKkhmZ4E4zD7CwZX/HXftdQ
+         W5FHgmkfWlWoaK5hRhMA/dKfUwksaPuTYGaizcU0GRK32xi1kYZHCkx1gktAxmoK3d7M
+         BNZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=l6Iye2O0XeOvISQpSx0b3JOnod6GRILdsZET6zD1a4o=;
-        b=zDEElSo3HMrk1BkMzPR6MOAwKpFeNEbbPzet3kr+hgScczOA9PKzINtXTL0+cJenfY
-         7cdq/fNKSxeKN3CIN0E+4oCD0/I3bwxdaSymF8X3NQLDQl7xHpGrAwVmNJq2HsYyHYnc
-         PJfVDDhk5X55xmEpJMALrAZSazBjRyQGeydO7s6/wtVppvpCYVI/UhD39I8yBGcGr6C3
-         k2RoeAxEqoxynLgZPyfcG+2ofuZ82ov13oYXdqtkyRGUs89Zvhep8X4OkojWIpTYI6Px
-         C2/yE25cJb0ZxmEzpOZ8UfjR8IwLLNnmzuALIDKTiJjHr9Waxq4Cb3sANuw4GZf6r7vC
-         wkyw==
+        bh=VmF96Bx2pwCwReNVJ8QZR8uA/8ffGlLqu8eY6l+r4nQ=;
+        b=DctDCNI00ayT/Dq6iqVJ3BxDUJS2vitk2dORnrRrb2vJiYGaK3oWjyeQSZu0htn27Q
+         7Xj5YhvQL6X6l02N5BheMLRgYwv9r3IHmq3P1NbOa2EvN3Zb49anzaQYJYkU4h0rjqs2
+         Ji8a1n7CQmClSlr1dehBtptHYLVVvUYuooij8pEm0ZNoRpEWL8nqFWmrPns75DV2NC38
+         B3GVngw29+W0otZmI5vem1ZKEyttLhHnW63qjiezS3ORnTgvitF4BttX887hO137ng1r
+         AGPwi6+mSOk7htEqwxYKtpVzTFK4k2s2NJuUkZHUF/5g0je194BVze7Q1VqRCFu50dGL
+         l28w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hk4m9aVI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cDj1RzDR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 68si3965304qkm.291.2020.03.20.10.00.32
+        by mx.google.com with ESMTPS id d57si3868403qtc.60.2020.03.20.10.00.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Mar 2020 10:00:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Mar 2020 10:00:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hk4m9aVI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cDj1RzDR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56224 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56214 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jFL0a-0004P6-0t
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jFL0a-0003uh-SH
 	for alex.bennee@linaro.org; Fri, 20 Mar 2020 13:00:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54254)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53902)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1jFL0O-0004Lu-2b
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:00:21 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1jFKzU-0002bp-AO
+ for qemu-devel@nongnu.org; Fri, 20 Mar 2020 12:59:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1jFL0M-0004tm-S0
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:00:19 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:58153)
+ (envelope-from <eric.auger@redhat.com>) id 1jFKzT-0003zl-BS
+ for qemu-devel@nongnu.org; Fri, 20 Mar 2020 12:59:24 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:51432)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1jFL0M-0004sw-OV
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:00:18 -0400
+ id 1jFKzT-0003zc-7v
+ for qemu-devel@nongnu.org; Fri, 20 Mar 2020 12:59:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584723618;
+ s=mimecast20190719; t=1584723563;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=l6Iye2O0XeOvISQpSx0b3JOnod6GRILdsZET6zD1a4o=;
- b=hk4m9aVIYRRM8qqDmPJz8EN3CORP3fRaFHVZ2atoTkMVzsjki6B39rFRST3Sub3VTTJITp
- VZxJ50UvmPlDGaYjTuQqjeL554zKLFIB9Dlt3gnqiidL67FGDB9hT45buX04r2vZiBL7uz
- H5hYX42H1LNtGjJHzh2mU0beC5Az5Cw=
+ bh=VmF96Bx2pwCwReNVJ8QZR8uA/8ffGlLqu8eY6l+r4nQ=;
+ b=cDj1RzDREekDIx4XvXcakMwlrb20yQptSHS5c72UWXfz6SOq0yZkNBmucCQiGgJQTsOVA1
+ DRPBsxXTSZV/wuZnqpQpG28lPjNdyocxOwg2pnl82HsA4dj7nLL+gwi3UyKYeCqQPrFjW8
+ An2s36e9BwwmaA4fiKWO7BvJUAHSC6I=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-415-51cwJ6uuMnCoWoNlHftSUg-1; Fri, 20 Mar 2020 13:00:14 -0400
-X-MC-Unique: 51cwJ6uuMnCoWoNlHftSUg-1
+ us-mta-309-IFbecEXuPuSPfxUuFH3emA-1; Fri, 20 Mar 2020 12:59:20 -0400
+X-MC-Unique: IFbecEXuPuSPfxUuFH3emA-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9E9DDDB25;
- Fri, 20 Mar 2020 17:00:12 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6EF26107ACC4;
+ Fri, 20 Mar 2020 16:59:18 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-113-142.ams2.redhat.com [10.36.113.142])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 28BAF19757;
- Fri, 20 Mar 2020 17:00:00 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4B7E7196AE;
+ Fri, 20 Mar 2020 16:59:06 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  alex.williamson@redhat.com, jacob.jun.pan@linux.intel.com,
  yi.l.liu@intel.com
-Subject: [RFC v6 06/24] memory: Add arch_id and leaf fields in IOTLBEntry
-Date: Fri, 20 Mar 2020 17:58:22 +0100
-Message-Id: <20200320165840.30057-7-eric.auger@redhat.com>
+Subject: [RFC v6 01/24] update-linux-headers: Import iommu.h
+Date: Fri, 20 Mar 2020 17:58:17 +0100
+Message-Id: <20200320165840.30057-2-eric.auger@redhat.com>
 In-Reply-To: <20200320165840.30057-1-eric.auger@redhat.com>
 References: <20200320165840.30057-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -97,76 +97,46 @@ Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 216.205.24.74
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: jean-philippe@linaro.org, tnowicki@marvell.com, maz@kernel.org,
  zhangfei.gao@foxmail.com, peterx@redhat.com,
  shameerali.kolothum.thodi@huawei.com, zhangfei.gao@linaro.org,
  bbhushan2@marvell.com, will@kernel.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UCYRwuVNWAWw
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PN2J/uBVLeEO
 
-TLB entries are usually tagged with some ids such as the asid
-or pasid. When propagating an invalidation command from the
-guest to the host, we need to pass this id.
-
-Also we add a leaf field which indicates, in case of invalidation
-notification, whether only cache entries for the last level of
-translation are required to be invalidated.
+Update the script to import the new iommu.h uapi header.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- include/exec/memory.h | 20 +++++++++++++++++++-
- 1 file changed, 19 insertions(+), 1 deletion(-)
+ scripts/update-linux-headers.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 141a5dc197..d61311aeba 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -71,12 +71,30 @@ typedef enum {
+diff --git a/scripts/update-linux-headers.sh b/scripts/update-linux-headers=
+.sh
+index 29c27f4681..5b64ee3912 100755
+--- a/scripts/update-linux-headers.sh
++++ b/scripts/update-linux-headers.sh
+@@ -141,7 +141,7 @@ done
 =20
- #define IOMMU_ACCESS_FLAG(r, w) (((r) ? IOMMU_RO : 0) | ((w) ? IOMMU_WO : =
-0))
-=20
-+/**
-+ * IOMMUTLBEntry - IOMMU TLB entry
-+ *
-+ * Structure used when performing a translation or when notifying MAP or
-+ * UNMAP (invalidation) events
-+ *
-+ * @target_as: target address space
-+ * @iova: IO virtual address (input)
-+ * @translated_addr: translated address (output)
-+ * @addr_mask: address mask (0xfff means 4K binding), must be multiple of =
-2
-+ * @perm: permission flag of the mapping (NONE encodes no mapping or
-+ * invalidation notification)
-+ * @arch_id: architecture specific ID tagging the TLB
-+ * @leaf: when @perm is NONE, indicates whether only caches for the last
-+ * level of translation need to be invalidated.
-+ */
- struct IOMMUTLBEntry {
-     AddressSpace    *target_as;
-     hwaddr           iova;
-     hwaddr           translated_addr;
--    hwaddr           addr_mask;  /* 0xfff =3D 4k translation */
-+    hwaddr           addr_mask;
-     IOMMUAccessFlags perm;
-+    uint32_t         arch_id;
-+    bool             leaf;
- };
-=20
- /*
+ rm -rf "$output/linux-headers/linux"
+ mkdir -p "$output/linux-headers/linux"
+-for header in kvm.h vfio.h vfio_ccw.h vhost.h \
++for header in kvm.h vfio.h vfio_ccw.h vhost.h iommu.h \
+               psci.h psp-sev.h userfaultfd.h mman.h; do
+     cp "$tmpdir/include/linux/$header" "$output/linux-headers/linux"
+ done
 --=20
 2.20.1
 

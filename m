@@ -1,76 +1,76 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp2112874lfe;
-        Sat, 21 Mar 2020 05:58:49 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vst46t91+m9iE+ieP6oNgLtKoPMRuD/8LVuXewIz1M6ju64RGCYHBWoEkfCvZJqq1yCJw2x
-X-Received: by 2002:a37:d13:: with SMTP id 19mr11861386qkn.404.1584795529087;
-        Sat, 21 Mar 2020 05:58:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584795529; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp2119931lfe;
+        Sat, 21 Mar 2020 06:05:17 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtz/FpPJBw/09wEIOEZoF5wiN7OFJmpBSlAxpFYMFgw7xp7VDhNeRv25jxguZYGuGYZ8CJc
+X-Received: by 2002:a0c:ed34:: with SMTP id u20mr12734599qvq.226.1584795917689;
+        Sat, 21 Mar 2020 06:05:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584795917; cv=none;
         d=google.com; s=arc-20160816;
-        b=lW+uuAxy5i/gXWuz3Awv1VzJlhedlPxwry694zln9Gq28FsmVZlxXBSMg27Gejyf0B
-         XmuPjng5jFa+lEoMBAghiiin9wkAPYKxMuGvVqhVnYTlyAoDOCFr3yQjDZ6sejPFvXYX
-         rdH045ARZs52jROfjHVSFXmuDGK1l3qmM1yqkD8tLKdLmiy6hhi09ni5Yn8ebpid7MnR
-         aV2VI2d8dl8V/8Rl73EUpvIiapPYVSCE19+SiaklOFJtTSj28HstQRuEJBMHhAuHGLww
-         wMtuWPvHqSHIUQ7gORajFTY+EU6f8ExJUDW+IuSWKTywcRsUSX0xlBc4aTo+PpyWn4Ih
-         o/6Q==
+        b=j/+AJyY60OSqSP8bkgH3MrSE2fRycydE1G+f9zZ3yPPr/NhhnUdZxafU/74TQM8+Be
+         2AVbsnJRagz6QjP68slogWYg0dmZPwcryefgznjMK8e4Up9qe/WRnPj9UVgbH/40nLN7
+         v6ZOeCMfHmjA1pggFZGH2GHnIa4vOAxpZWw4D4TJePpoi6x8EIMfEAsL/LxnFMedw8SB
+         z+HZgd2sa/fYDqhYvA99mPUWjs0EM7e3znxIJOPA7ZCenkSvJAE3VfOdGv+K4MLxTvVJ
+         aZjmtyJVxPWeERrWl//GPjgPqnPI26z5Kc5cYop6RaBj44L9qmevHq3rOqjfehTHMN8K
+         8Wdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:user-agent
          :references:message-id:in-reply-to:subject:to:from:date;
-        bh=ZnluphLnzU/fgaJPJLvRMacBb1Eov1CCVngcn/m+wI4=;
-        b=t5hmbLWQRqrUewGfV9P4GPRXFI5JxyaeBzf0KMJ8405nEvVbsD1MoTYetYpsRe6bTC
-         HzSaZ3nutEywsU9y5UB7MmpcETjpGP3dYXd06blPgx0CFjMSUUQPvL36zDdvKszeIoTD
-         DHw5scSLFJ9YlmQT/SaMYvh6IPgXnVGtfMfkcs+SoEAstJe30KOJ5xHlCFM4fxwxkJvV
-         X5iCgYH+DluCUf3w0bQUcO+eyy1wY/MSgUJAJyTH+zNHUjdWalsNmmIb0XCfuocnjfwq
-         zYw4eJs04AdRo0NV0J00ZUu+CPS9gDHDdWfcKiqTgqICeV+cySccKWUp0Bdov+HXBE5j
-         wyCg==
+        bh=GD117oZwfhek7Ea+c8LfVrm9s2hPBEMaiVnYpX6TrNs=;
+        b=nd0DxbXUQbbS+1Tr86jjqKmqQqpZOyvnEES+94cL5JhdW7j0ABRXl5aiYqPy0a12zi
+         mgRKQ6AS2R3swh6QPQSXYx1jHl/+S5JTWrXXcGGSfwaOKxmQlWju8SQC9F8uO3Tu3eQr
+         MzPqbYx/FsnaxAcovIGbk4Iz0QNB0LXAwCVg/VU9gj73Dk+WYaOy8XFcVhldLJBxF4d3
+         8Qkq2ERW+XvtvnF+yDy7K80B6809IBtUmFM8IsxaIjo/p8I6wbtLTfpbCgLX9f1LTXcc
+         aUZAcq0u85vNMNjA/D2lBVm7PhxZybvuu6vKiFt8/r814/3tr2DAP08gsRHBGlWUjwOO
+         3SJg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y4si5027554qvt.100.2020.03.21.05.58.48
+        by mx.google.com with ESMTPS id n10si3815316qvm.64.2020.03.21.06.05.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Mar 2020 05:58:49 -0700 (PDT)
+        Sat, 21 Mar 2020 06:05:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36476 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36542 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jFdiC-0003vD-Gx
-	for alex.bennee@linaro.org; Sat, 21 Mar 2020 08:58:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45226)
+	id 1jFdoS-0006Jm-VF
+	for alex.bennee@linaro.org; Sat, 21 Mar 2020 09:05:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46050)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <balaton@eik.bme.hu>) id 1jFdi4-0003v4-Aa
- for qemu-arm@nongnu.org; Sat, 21 Mar 2020 08:58:41 -0400
+ (envelope-from <balaton@eik.bme.hu>) id 1jFdoH-0006JR-Vq
+ for qemu-arm@nongnu.org; Sat, 21 Mar 2020 09:05:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <balaton@eik.bme.hu>) id 1jFdi2-0002n3-N4
- for qemu-arm@nongnu.org; Sat, 21 Mar 2020 08:58:39 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2]:44100)
+ (envelope-from <balaton@eik.bme.hu>) id 1jFdoG-0000tu-PR
+ for qemu-arm@nongnu.org; Sat, 21 Mar 2020 09:05:05 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:25240)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
- id 1jFdi1-0002Vg-Kg; Sat, 21 Mar 2020 08:58:38 -0400
+ id 1jFdoG-0000bi-JP; Sat, 21 Mar 2020 09:05:04 -0400
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id F0227747871;
- Sat, 21 Mar 2020 13:58:33 +0100 (CET)
+ by localhost (Postfix) with SMTP id D56DA7476D5;
+ Sat, 21 Mar 2020 14:04:59 +0100 (CET)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id CF6537476D5; Sat, 21 Mar 2020 13:58:33 +0100 (CET)
+ id B3F187475F6; Sat, 21 Mar 2020 14:04:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id CD57D7475F6;
- Sat, 21 Mar 2020 13:58:33 +0100 (CET)
-Date: Sat, 21 Mar 2020 13:58:33 +0100 (CET)
+ by zero.eik.bme.hu (Postfix) with ESMTP id B1BAB746381;
+ Sat, 21 Mar 2020 14:04:59 +0100 (CET)
+Date: Sat, 21 Mar 2020 14:04:59 +0100 (CET)
 From: BALATON Zoltan <balaton@eik.bme.hu>
 To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [PATCH-for-5.0 04/11] hw/input/adb-kbd: Remove dead assignment
-In-Reply-To: <20200321114615.5360-5-philmd@redhat.com>
-Message-ID: <alpine.BSF.2.22.395.2003211347330.82121@zero.eik.bme.hu>
+Subject: Re: [PATCH-for-5.0 05/11] hw/ide/sii3112: Remove dead assignment
+In-Reply-To: <20200321114615.5360-6-philmd@redhat.com>
+Message-ID: <alpine.BSF.2.22.395.2003211400040.82121@zero.eik.bme.hu>
 References: <20200321114615.5360-1-philmd@redhat.com>
- <20200321114615.5360-5-philmd@redhat.com>
+ <20200321114615.5360-6-philmd@redhat.com>
 User-Agent: Alpine 2.22 (BSF 395 2020-01-19)
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-964345878-1584795513=:82121"
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 152.66.115.2
+Content-Type: multipart/mixed; boundary="3866299591-68472195-1584795899=:82121"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2001:738:2001:2001::2001
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -98,51 +98,52 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bE521BHbA9wV
+X-TUID: ym3Mt72I9IFW
 
   This message is in MIME format.  The first part should be readable text,
   while the remaining parts are likely unreadable without MIME-aware tools.
 
---3866299591-964345878-1584795513=:82121
+--3866299591-68472195-1584795899=:82121
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 
 On Sat, 21 Mar 2020, Philippe Mathieu-Daud=C3=A9 wrote:
 > Fix warning reported by Clang static code analyzer:
 >
->    CC      hw/input/adb-kbd.o
->  hw/input/adb-kbd.c:200:5: warning: Value stored to 'olen' is never rea=
-d
->      olen =3D 0;
->      ^      ~
+>    CC      hw/ide/sii3112.o
+>  hw/ide/sii3112.c:204:9: warning: Value stored to 'val' is never read
+>          val =3D 0;
+>          ^     ~
 >
 > Reported-by: Clang Static Analyzer
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
-> hw/input/adb-kbd.c | 1 -
-> 1 file changed, 1 deletion(-)
+> hw/ide/sii3112.c | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/hw/input/adb-kbd.c b/hw/input/adb-kbd.c
-> index 0ba8207589..b0565be21b 100644
-> --- a/hw/input/adb-kbd.c
-> +++ b/hw/input/adb-kbd.c
-> @@ -197,7 +197,6 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf=
-)
->     int keycode;
->     int olen;
->
-> -    olen =3D 0;
->     if (s->count =3D=3D 0) {
->         return 0;
+> diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
+> index 06605d7af2..36f1905ddb 100644
+> --- a/hw/ide/sii3112.c
+> +++ b/hw/ide/sii3112.c
+> @@ -125,7 +125,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwad=
+dr addr,
+>         val =3D (uint32_t)d->regs[1].sien << 16;
+>         break;
+>     default:
+> -        val =3D 0;
+> +        break;
 >     }
+>     trace_sii3112_read(size, addr, val);
+>     return val;
 
-Is this variable still needed at all? Looks like it's a remnant after=20
-a1f4971863 that can now only return 0 or 2 so you could just remove this=20
-variable and return 2 where now it's assigned as 2 or change return olen=20
-at the end to return 2 or maybe keep olen and change the return 0 above t=
-o=20
-return olen to silence warning but I think this could be cleaned up.
+Value is clearly used in trace and return so don't really get why the=20
+compiler complains here. Looks like wrong warning to me. It's true howeve=
+r=20
+that since val is init to 0 at the beginning this assignment is not=20
+strictily needed and this should work as well, so
+
+Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
 
 Regards,
 BALATON Zoltan
---3866299591-964345878-1584795513=:82121--
+--3866299591-68472195-1584795899=:82121--

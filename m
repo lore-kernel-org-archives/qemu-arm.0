@@ -1,103 +1,103 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp2050948lfe;
-        Sat, 21 Mar 2020 04:49:44 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vu174doZuX/Ini0MtH5JOYfu/9DJhfM8/7hnwXJozwH1z/DDX6d6jzx2TEC5jzRmcDpBj9P
-X-Received: by 2002:ad4:4687:: with SMTP id bq7mr12423872qvb.248.1584791384099;
-        Sat, 21 Mar 2020 04:49:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584791384; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp2051191lfe;
+        Sat, 21 Mar 2020 04:50:08 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvbCccDRI9bnTqSa1aQGZ8cOlU1MY6tXB29iSUsxJ35NUkf11pAB7oQwp8ixtIK2rwhTRft
+X-Received: by 2002:a37:cc1:: with SMTP id 184mr12751739qkm.430.1584791408297;
+        Sat, 21 Mar 2020 04:50:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584791408; cv=none;
         d=google.com; s=arc-20160816;
-        b=pMhjir1qksd23SzkDQ8MSqWQ47+RKQVUX6xv8ceGffWMcitImVCxJOVPn9UlPido32
-         WeSyN213UzJxHi0iy34gCVklhDy1PCU3/4ZU5fPgGsfuKudHRDViK3itbLhL0gcmQYmW
-         Mret41M7btVmIq8FH6TwSzyJqIF1osVSMZ3WPkzvhptMF2ZWLM+4cbkLmC+WcxUU1ZPQ
-         CiPjlziL5xB/dIHMGMdRGafMFC8RJk9CdtBLX/PFlXNe+UoEPZS8+Hy8eAE8KNZG7qwm
-         rLFsApPCNAFw6d6KvHd2DqJerZytvz3sQ7NjVSBSnyllHSaewE8r1OiO63XsMw2LYUaK
-         rmRA==
+        b=huUbJue8xuHQtzyE/t+HxAi4Jh9rtCvQFIQeD+55VhAAJjk3Rdc7OO58CtmyNBAITM
+         u7x0j7r9gFL57Woq2CE1aNo28aeiy5LjygyMfSdR3niuUjcMIbwtvPcvDR9f8S5U80uq
+         QvfvBsR1Gf4VDhkCzZkBAx1MGJtXj80gT5huz+JolGSXh49sK4sIBoCMxbOxwzbhVtH8
+         BO6dU6bXsJYqJBevK7KHgD1gZWf2YKKs+cjkyKG6Zd6LDmMPzri1Dva7Ga7wWO07KOO2
+         0rY25OfG6SUt/JtTH+cs0SFUeUcF57y2w4KyvLlCB+B3BUoV92MP/OxvZRrF92Dv+7+h
+         EpDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=GEdgbG/luCssALBIqG8TygafayDXTkEa0M3aN0ohCNI=;
-        b=N/DYHXou602XZUMvJbId5rVSN3/rKpniCG6z8Ptf57rT5sUbxlKnY6W+s4rbeDpcLY
-         gUkvn95lsaYkT7eZstTW3w7oD/oazPgINwHLrqKFTduXvh681xzaaqhY3aXx2jRaUWtr
-         CjzpyLbQFvnoJtI3Tb0HUVM2ecmF7n/R0UBLfvz9eN31yj/ycL+3NSqUBGpbPbc/C6Lv
-         ePYAffXJ1IkNjWNexNomhSIjaTSBmjcdId1LIOswqS2xhi2Sq3Za6EMHXGQYpKM2RWYe
-         w/6t1qjfCrzBsFbUaGakax/1OfN9wMvuVFO8nzlP+1KKoqZR3Jfw13RBqpWDZysg73tI
-         /wDg==
+        bh=kQDd9EbUfb0uuK6iIsTzZMSp5qbZytglJrEh2QYroHU=;
+        b=HSjhlgx0ptEgoF1oCx96lv4Kq1TvZUD5zjeOHMT7OBfcCS2J/dH4nwtNjagdUwjdOe
+         GN8Qzd+z0K2XYFKwveCEGzfSJI3e+GMWNmUhBssECZ6O6KqcDLp4EjnxA08oDBk2hJeo
+         38AAlcwMGdsdsXvjfeJvn44Bg4MDUCCKNgpULSvyux2cS8/OA2UZ7Zq80bOAVworr4/h
+         Aby2GiAfC+DzHO78XMPcRqB+NM6h3vXuvjds9VXVo+AI40tQEu7fauP3bCckgeV6r+G2
+         19YC/vB/3UJchLT4O3066KOkE99ycnNgGgZkwfp6IrR8XWbz/lG5XQkmm2uTny621Od8
+         0Y4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Aeljr/Tq";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LhhPvsHq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c21si5048236qko.209.2020.03.21.04.49.43
+        by mx.google.com with ESMTPS id n17si5491089qtb.147.2020.03.21.04.50.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Mar 2020 04:49:44 -0700 (PDT)
+        Sat, 21 Mar 2020 04:50:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Aeljr/Tq";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LhhPvsHq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35586 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35592 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jFcdL-0006T6-It
-	for alex.bennee@linaro.org; Sat, 21 Mar 2020 07:49:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35295)
+	id 1jFcdj-0007DM-L0
+	for alex.bennee@linaro.org; Sat, 21 Mar 2020 07:50:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34675)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jFcbS-0002gC-4s
- for qemu-devel@nongnu.org; Sat, 21 Mar 2020 07:47:47 -0400
+ (envelope-from <philmd@redhat.com>) id 1jFcaW-0000zE-RS
+ for qemu-devel@nongnu.org; Sat, 21 Mar 2020 07:46:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jFcbR-00079m-0u
- for qemu-devel@nongnu.org; Sat, 21 Mar 2020 07:47:46 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:31367)
+ (envelope-from <philmd@redhat.com>) id 1jFcaV-0006RQ-SE
+ for qemu-devel@nongnu.org; Sat, 21 Mar 2020 07:46:48 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:33888)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFcbQ-00079Q-Td
- for qemu-devel@nongnu.org; Sat, 21 Mar 2020 07:47:44 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFcaV-0006R4-Ns
+ for qemu-devel@nongnu.org; Sat, 21 Mar 2020 07:46:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584791264;
+ s=mimecast20190719; t=1584791207;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=GEdgbG/luCssALBIqG8TygafayDXTkEa0M3aN0ohCNI=;
- b=Aeljr/TqdJrW03xZZM4tOGzYDFf5As6//+5Re/GwqhLvD5Cgv3jid2fyazmOmVyB/nVB60
- xGZtFcaR+E99CtezBFa7GZbTHPw8g1t8PZjFnLwvjVM4+ZCws6mcUNbQWsFccZxM0Op5M5
- q7Yrze7/IACBLVJN6nlycx2OSeItuJA=
+ bh=kQDd9EbUfb0uuK6iIsTzZMSp5qbZytglJrEh2QYroHU=;
+ b=LhhPvsHqd+9gdTRral+5RxEjZBb55LkoxKF+M+4woFoWlVl+baD2C8ezh9bEWIunzAXSje
+ O/orR9E5XjJosjOliB1f/hibVjX1f6VjNcsja31nVJ4ebaoLz4XzBg6dbHAM1v0SM7fqVZ
+ KMeqTee5qLPCkZE4k7fTRcyuGG0l7OM=
 Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
  [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-436-fcAJNDnGOVC85t8A2lqXXw-1; Sat, 21 Mar 2020 07:47:42 -0400
-X-MC-Unique: fcAJNDnGOVC85t8A2lqXXw-1
-Received: by mail-wr1-f70.google.com with SMTP id b12so4216770wro.4
- for <qemu-devel@nongnu.org>; Sat, 21 Mar 2020 04:47:42 -0700 (PDT)
+ us-mta-462-9XMnFl3QMz24FJrC1AOHUQ-1; Sat, 21 Mar 2020 07:46:45 -0400
+X-MC-Unique: 9XMnFl3QMz24FJrC1AOHUQ-1
+Received: by mail-wr1-f70.google.com with SMTP id b12so4215754wro.4
+ for <qemu-devel@nongnu.org>; Sat, 21 Mar 2020 04:46:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=RNYtNktAqDdDAs+EFJozo/fN2JmmaPRaAB7IeiBu7pw=;
- b=XCXIVJFKvlqgByKspJcVE2JU3nVTV6GMtpAPH1VxOr0SVXcjK0WsbvF1j2fRlChC0S
- Zpb3Wlsfo1nfuYfXqBdnbqR4b8+LxCQ3xRWMImG2JLYSDTugvYNjl3/TVfqRvE///Ou+
- xYzjomCBLl6bB1uWaZEbHepjcko5dlcQsFRucwS4C1+jjCzyXkF9szw0Rb4bwqVS/n3A
- +4YSaB1d6lrXC7t9FU6sckeSs6VrIvHgtWA5BkoedchiDFPJ3CmCaSTAsvlzMiLsaogN
- KQE+n4++ok38PBq9/Bsmo9HLq6vdiPj/wZsUKIY/dRtlVPWn/CDokG0K5+ExuGbHjb07
- Au6Q==
-X-Gm-Message-State: ANhLgQ0ESlNsyr7Dj2tYxaRWgSnEVD+KDn11Lw1Dgxvo7k1XX1Pjws2l
- 6gp2wJOQe75RJqPHzL9v6AeQO1kqYCQPQsVqA165stKeLSM71ncCydhInwFtqjdMZ8Xi8u/m6O2
- IrAbCwXo0mc5tTm0=
-X-Received: by 2002:adf:82f7:: with SMTP id 110mr16733195wrc.373.1584791261269; 
- Sat, 21 Mar 2020 04:47:41 -0700 (PDT)
-X-Received: by 2002:adf:82f7:: with SMTP id 110mr16733166wrc.373.1584791261035; 
- Sat, 21 Mar 2020 04:47:41 -0700 (PDT)
+ bh=7jHPzgLUxabSngeicFYbktzokTE6KbRJJJ5XQsCuGXA=;
+ b=fFSjHh4f0tzltGK6FCynw8xMGYrJyqFIsBgy9zrOkgaibK6PmpxJBCw2qyDEaQOqno
+ XXyM6siefXXfM7JdplhjLAXZXlCdHDaLRG8hNJy4WDvKOz6aeoFgOb8jATMqY2AtTUKv
+ PZ+2BmHUy8XxtHefjwcOWkOcjI2vbBUzzMczw+BYx3paNhguMfd2rxiYSolc+Sqt6Pma
+ yw6RZKZGAJA5PbA/YkHw+XmkTAnUJXcrDesVX3Pqay0bXUJVce5NuhfU9gC20s6RyXHO
+ FvKQE7EyL9fpxN63FoGL235H3z7VXRT9rNBjTGmYTE1uz+xs+p5/HuYdzzBZlZ8eQID/
+ GlWA==
+X-Gm-Message-State: ANhLgQ0NON0Dl0x+4r0Y87OyDGiyuhEO6QeafGPrHEgGRlj0zaVGFFQS
+ hSOL37MjtYdosEHgBfnVBjqqzJGrd+rxfwiJMfUjmmjy+dSap3QVW6/SX1fl0pEyyQ7+e1OTuQG
+ fbcK0pKDmPz2dYCs=
+X-Received: by 2002:a5d:66c2:: with SMTP id k2mr16786078wrw.408.1584791204442; 
+ Sat, 21 Mar 2020 04:46:44 -0700 (PDT)
+X-Received: by 2002:a5d:66c2:: with SMTP id k2mr16786051wrw.408.1584791204274; 
+ Sat, 21 Mar 2020 04:46:44 -0700 (PDT)
 Received: from localhost.localdomain (37.red-83-52-54.dynamicip.rima-tde.net.
  [83.52.54.37])
- by smtp.gmail.com with ESMTPSA id a11sm13098686wrx.54.2020.03.21.04.47.38
+ by smtp.gmail.com with ESMTPSA id i67sm13424296wri.50.2020.03.21.04.46.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Mar 2020 04:47:40 -0700 (PDT)
+ Sat, 21 Mar 2020 04:46:43 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.0 11/11] hw/scsi/esp-pci: Remove dead assignment
-Date: Sat, 21 Mar 2020 12:46:15 +0100
-Message-Id: <20200321114615.5360-12-philmd@redhat.com>
+Subject: [PATCH-for-5.0 03/11] hw/i2c/pm_smbus: Remove dead assignment
+Date: Sat, 21 Mar 2020 12:46:07 +0100
+Message-Id: <20200321114615.5360-4-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200321114615.5360-1-philmd@redhat.com>
 References: <20200321114615.5360-1-philmd@redhat.com>
@@ -137,33 +137,33 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Wy7o+E3414/5
+X-TUID: cpSH0oLoANSL
 
 Fix warning reported by Clang static code analyzer:
 
-    CC      hw/scsi/esp-pci.o
-  hw/scsi/esp-pci.c:198:9: warning: Value stored to 'size' is never read
-          size =3D 4;
-          ^      ~
+    CC      hw/i2c/pm_smbus.o
+  hw/i2c/pm_smbus.c:187:17: warning: Value stored to 'ret' is never read
+                  ret =3D 0;
+                  ^     ~
 
 Reported-by: Clang Static Analyzer
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/scsi/esp-pci.c | 1 -
+ hw/i2c/pm_smbus.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c
-index d5a1f9e017..2e6cc07d4e 100644
---- a/hw/scsi/esp-pci.c
-+++ b/hw/scsi/esp-pci.c
-@@ -195,7 +195,6 @@ static void esp_pci_io_write(void *opaque, hwaddr addr,
-         val <<=3D shift;
-         val |=3D current & ~(mask << shift);
-         addr &=3D ~3;
--        size =3D 4;
-     }
-=20
-     if (addr < 0x40) {
+diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
+index 36994ff585..4728540c37 100644
+--- a/hw/i2c/pm_smbus.c
++++ b/hw/i2c/pm_smbus.c
+@@ -184,7 +184,6 @@ static void smb_transaction(PMSMBus *s)
+                 s->smb_stat |=3D STS_HOST_BUSY | STS_BYTE_DONE;
+                 s->smb_data[0] =3D s->smb_blkdata;
+                 s->smb_index =3D 0;
+-                ret =3D 0;
+             }
+             goto out;
+         }
 --=20
 2.21.1
 

@@ -1,115 +1,97 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp2053458lfe;
-        Sat, 21 Mar 2020 04:53:00 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsTUIEWtn/kzDPogedaf3yBUswaJwkyfdboRt39Vu0GkP57l/FPqV/RJ7ceBwGfbgVm6lbP
-X-Received: by 2002:a0c:eeca:: with SMTP id h10mr12577744qvs.206.1584791580769;
-        Sat, 21 Mar 2020 04:53:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584791580; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp2057198lfe;
+        Sat, 21 Mar 2020 04:58:11 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt5uHeI1vLBpmn0C+mmm6pQ10ErTbCAuIWoUxkWMp34h/NqxOB9YvO0yTu2Ju7t82gyMhOI
+X-Received: by 2002:ad4:5642:: with SMTP id bl2mr12998129qvb.11.1584791891595;
+        Sat, 21 Mar 2020 04:58:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584791891; cv=none;
         d=google.com; s=arc-20160816;
-        b=vUIDh3j53UHLEqbDPfyzeIrXEMSDkEQXvJliLYBMHC9sWeEB/Gzq7Ejtb/D2yEEuPD
-         QsnR9nSUHXfOUEoFfm9/esoggnrOrIfVyHmJwsV/fq1kW3gH6KZ6owEi/jCW6TwC0abL
-         Ak7DQmj5CGVTMoiRRdQTGtvXhk+fmXpKWGRaZ0FCUQlDwnGXa3vejbYV6Asw9x34ZtV8
-         lIxtCQYmKcwkZJVAnKFbjHDZi9H4azWupdVeB18Pgz5xlhGjFMd6dxu+brSAt7VBI9ly
-         bLvf1lnMhxsya6x28yBXaxRGVYjFdekMd2yQiddWB8vNLZDoTrzCw8lH9GyKATJX1CSI
-         ERnA==
+        b=DFJJw0Jsf6aoZBq1w6MWWJYIiTxO39GIDZuK6lEKnZMOBCSSEossF3IHHeIAs2u2hd
+         fCeY5rbDvm7XIF88GXj/6vvBhIUTNxdQ0kyzRD6lhmNvnqFyWdfl6I6BaCzY6EE6x/xq
+         e4VLARXFpP4pSoVTWO6YOPA6F2uxM6g2IecN6D8s2u1izo8Vmant8e+dWpXaISKv2EPE
+         9uUezR32QpMLbGgc571mTkk2LPDS/MazjmW9LFq5jsd55bvV6UVujueT7c24JBvnKHsx
+         yGMKTnAFmACkh6auMTk7aAjOVADaFd37hqBax+xt3kCpFbhE4D8IZHbmrAPBAG1QQEq8
+         1Y/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=TG3vD6dCJich6pAeWRU+T1xBswh8CnNUpTlBwJ1yiQM=;
-        b=gngdJVW3Vs4co8JSPPWrbyPoi6ffi1TS+HRCQQI+mkOvIjoFI4JWH2Tu2n0dyqtDEs
-         16z+HfzAswsYaVR3CxjkCTmI3Lv5fHsXfOhR2Hju8aAB97ENCx/+aMqml4mujvAEWor6
-         n2ptTW6v/6ik3jgsXSt5h4oZh3tKlzqqdB8FnY7GTlnF8WCd+0EhDXKmyzXoscz1Cc6C
-         jTIJW81fG5eaCkeyBdDwusCfesqWP97JGJhuKxSNr1nqmga/ThRvFg+cOfoA5dsYfGMo
-         4+D07clpyiH/gM4qSc9b67gOiElaln5/woIFYS5oorhrLfmnB7im+JNa0+z6bHUb5rSU
-         rLiA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=B5edknIRGTKD8fS/EnDqQ5YjXChVWPbyTu5GtaXjua4=;
+        b=w2INuXBoI/HzQJVL7CktbdEOhq2GCOOOZ4D5SQJT1QXVrLWGwAGFqetYkETAWK8sYe
+         W71oZku4v34mv6883d+Ay2boawW01DfR60HBj4+hkmWSFuZH/5EjmvWZBbZ3YMrEuYlG
+         vPqkiX8C55Rqv80qma9V/Opakayw6x/PEAGcW+7vBnUiL7EUCDF+MHioC/bE+w/nz6kh
+         6w8vRJqyICGHxSd//sZDireh34CWZqWGLd73DIcBRWSilT+WUhrKKuRiQdQT/FMoGjHo
+         ks2OH3sS/f8Cd8B9d0oZnQRSI09RGjGOBh/EJTKIHqbTeKxzaz1vsZThewtqVqnwZV3r
+         zzvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="G/DIaUlN";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CMExGJGm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z68si5309214qkb.167.2020.03.21.04.53.00
+        by mx.google.com with ESMTPS id w38si5195420qtb.354.2020.03.21.04.58.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Mar 2020 04:53:00 -0700 (PDT)
+        Sat, 21 Mar 2020 04:58:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="G/DIaUlN";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CMExGJGm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35690 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:35800 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jFcgW-0004ij-5d
-	for alex.bennee@linaro.org; Sat, 21 Mar 2020 07:53:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35232)
+	id 1jFclX-0002Jf-2F
+	for alex.bennee@linaro.org; Sat, 21 Mar 2020 07:58:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36996)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jFcbL-0002SQ-P8
- for qemu-arm@nongnu.org; Sat, 21 Mar 2020 07:47:41 -0400
+ (envelope-from <aleksandar.qemu.devel@gmail.com>) id 1jFck4-0001O5-Ut
+ for qemu-arm@nongnu.org; Sat, 21 Mar 2020 07:56:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jFcbK-00074w-Nu
- for qemu-arm@nongnu.org; Sat, 21 Mar 2020 07:47:39 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:40793)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFcbK-000749-Fm
- for qemu-arm@nongnu.org; Sat, 21 Mar 2020 07:47:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584791257;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TG3vD6dCJich6pAeWRU+T1xBswh8CnNUpTlBwJ1yiQM=;
- b=G/DIaUlNUcP3dmQoQbnXQSSG1IHUz8N/mF9RtEXZB90/BhS3hIhDJQiSisNoHsXHxX2GKg
- NNM51iEjI2gsUQImxbMrHKNcRRZPe/IwcIx1iGfvyxm+YVTQGLYcuC+c2lcS/AsWMeZNBZ
- 8KlmG1BxqQTfzldXFtOPtG3fgKUexQE=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-330-uGZHt3z5MuqcIf1EHpMh-g-1; Sat, 21 Mar 2020 07:47:36 -0400
-X-MC-Unique: uGZHt3z5MuqcIf1EHpMh-g-1
-Received: by mail-wr1-f72.google.com with SMTP id f13so4162930wro.23
- for <qemu-arm@nongnu.org>; Sat, 21 Mar 2020 04:47:35 -0700 (PDT)
+ (envelope-from <aleksandar.qemu.devel@gmail.com>) id 1jFck3-0002cu-RK
+ for qemu-arm@nongnu.org; Sat, 21 Mar 2020 07:56:40 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:35016)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <aleksandar.qemu.devel@gmail.com>)
+ id 1jFcjv-0002Yp-OJ; Sat, 21 Mar 2020 07:56:31 -0400
+Received: by mail-wr1-x430.google.com with SMTP id h4so10670043wru.2;
+ Sat, 21 Mar 2020 04:56:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=B5edknIRGTKD8fS/EnDqQ5YjXChVWPbyTu5GtaXjua4=;
+ b=CMExGJGmX4wFvVCh1lyksF8s0UpHVsrZ8LSez4ZHwov9NnMzF6SptmZ4r8qC9YmR43
+ 7c+Fz2mNL5JA3b3KWkSa2hfJDriTVkk0R7i6eAV7Q+qtmjpZqkMXhbfyQMFdzerWGdU4
+ jXYJH4D5eBGwbC1LBhnq5it9fdfIcP1QpZCIsY8LPgNVJMIlkevJAinmvOHTR01lPR+6
+ J28Vg9xS1u1aL1WvnMUiFu4XZgRlBZb6y/SLyklEbmTKpasR9JwtIeqTELrLyvY8ssxS
+ F4TsVF7z5SSc8FVo2IgOFtyN9NwQ+bxAv2nkkYOjgDn+DRBqBsRyHf3xIO8YJrSzS+lv
+ eLRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=zAAolWyXSH1ZCqRxa+9EfzNPi+VU6uagizFc7cEyMYQ=;
- b=AAIS5Z28q2b5EmLxic7xXmBH52rRO+xJOF3z0r3l2brkHKt/z1WDABKXfdMjmR9MWX
- WF8MnxUm0vm1jFN5gDri1NBpC3Gz38/KiWXF7pbF0FrEzsIWFZcMRk/9Ogijr62n0fOB
- cqrfN6eRPZEKwPCgE4OKLzUsBDzS1aIFy7w0LU5ajvJb7q64BRp2U2WOzqwDJNiifOpm
- hq7RSxtfO8z6DcROenPkqIYakWufopH36+6MYzXbYRKWEgHnw6getV0yItZEfxMbsdQ5
- sTGFvU2PIrADSw671Os7c6owmdLEhow/vwk3sadnyT7KiVKkw4+HX0py9p858TDxu2Af
- WnWw==
-X-Gm-Message-State: ANhLgQ0CwBj07HQF2/TAOPxDrBK6Ictz8lTMrXm6Ta8IAAsik6qlYa3d
- Ic7lBCTyvR3XJnPTgzQODvGTcbz2VVlOIuTHZtdpxi0eoh3iWv8zAHG7v1KB3XjT2OVZkMhpWI8
- /Wcs8mV8azua8
-X-Received: by 2002:a5d:628f:: with SMTP id k15mr10384657wru.404.1584791254911; 
- Sat, 21 Mar 2020 04:47:34 -0700 (PDT)
-X-Received: by 2002:a5d:628f:: with SMTP id k15mr10384613wru.404.1584791254676; 
- Sat, 21 Mar 2020 04:47:34 -0700 (PDT)
-Received: from localhost.localdomain (37.red-83-52-54.dynamicip.rima-tde.net.
- [83.52.54.37])
- by smtp.gmail.com with ESMTPSA id q13sm12849850wrs.91.2020.03.21.04.47.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Mar 2020 04:47:34 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.0 10/11] hw/timer/pxa2xx_timer: Add assertion to silent
- static analyzer warning
-Date: Sat, 21 Mar 2020 12:46:14 +0100
-Message-Id: <20200321114615.5360-11-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200321114615.5360-1-philmd@redhat.com>
-References: <20200321114615.5360-1-philmd@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=B5edknIRGTKD8fS/EnDqQ5YjXChVWPbyTu5GtaXjua4=;
+ b=bWQouokqYqCQ8QoxrxMv14meiuA0P91eNgUVgelUg07IKKR69nrsQ7HA1IafWCXJV/
+ BQ53vM1ER/og3IHY4ZitNaMgbgpDSxVnVuH8XeleLhzZtbT6y6JYqWGhSMKbqdfBjfdK
+ dd3zR4A3W//lJqG4d/LVxJ6W0PRndnxq5kIM3dsrYiWP7JQC9uUwTybcdxfA5PPOp4Lo
+ bYq/dR1sQ/2Qe/45j5kMoq0fnvFlG0Lld0blzPhpXgqn1ChbWqM7To5a3rfw3EDdHKgL
+ 8ZTLiOkuXNIUFMVd5usk7bSBMouwzookawW1HVLOoaf+doYpURgnnRXgqM6GIRs20LuV
+ S9kQ==
+X-Gm-Message-State: ANhLgQ0peh1mLQguQFTDx8yfaXE4MBtaVphHbCmX3iEF66XyK9hbdWd5
+ 07eNPQkUZPOPhN8cXar9cozETzF8ijA95ob6Csk=
+X-Received: by 2002:adf:efc2:: with SMTP id i2mr15422825wrp.420.1584791790814; 
+ Sat, 21 Mar 2020 04:56:30 -0700 (PDT)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 63.128.21.74
+References: <20200321114615.5360-1-philmd@redhat.com>
+ <20200321114615.5360-2-philmd@redhat.com>
+In-Reply-To: <20200321114615.5360-2-philmd@redhat.com>
+From: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Date: Sat, 21 Mar 2020 12:56:11 +0100
+Message-ID: <CAHiYmc5gpHCUfc5bPMs8Qa7NETYkkj8rfV5dTyqZF4ZQTeNa8Q@mail.gmail.com>
+Subject: Re: [PATCH-for-5.0 01/11] block: Remove dead assignment
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000bc0aed05a15c17c2"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::430
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -122,77 +104,127 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- BALATON Zoltan <balaton@eik.bme.hu>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, Michael Tokarev <mjt@tls.msk.ru>,
  Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
- Kevin Wolf <kwolf@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Max Reitz <mreitz@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: boBoDYc8fZnC
+X-TUID: 9HZSJW2vvyuD
 
-pxa2xx_timer_tick4() takes an opaque pointer, then calls
-pxa2xx_timer_update4(), so the static analyzer can not
-verify that the 'n < 8':
+--000000000000bc0aed05a15c17c2
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-  425 static void pxa2xx_timer_tick4(void *opaque)
-  426 {
-  427     PXA2xxTimer4 *t =3D (PXA2xxTimer4 *) opaque;
-  428     PXA2xxTimerInfo *i =3D (PXA2xxTimerInfo *) t->tm.info;
-  429
-  430     pxa2xx_timer_tick(&t->tm);
-  433     if (t->control & (1 << 6))
-  434         pxa2xx_timer_update4(i, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL)=
-, t->tm.num - 4);
+12:49 PM Sub, 21.03.2020. Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> =
+=D1=98=D0=B5
+=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
+>
+> Fix warning reported by Clang static code analyzer:
+>
+>   block.c:3167:5: warning: Value stored to 'ret' is never read
+>       ret =3D bdrv_fill_options(&options, filename, &flags, &local_err);
+>       ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>
+> Reported-by: Clang Static Analyzer
 
-  135 static void pxa2xx_timer_update4(void *opaque, uint64_t now_qemu, int=
- n)
-  136 {
-  137     PXA2xxTimerInfo *s =3D (PXA2xxTimerInfo *) opaque;
-  140     static const int counters[8] =3D { 0, 0, 0, 0, 4, 4, 6, 6 };
-  142
-  143     if (s->tm4[n].control & (1 << 7))
-  144         counter =3D n;
-  145     else
-  146         counter =3D counters[n];
+Peter, and others,
 
-Add an assert() to give the static analyzer a hint, this fixes a
-warning reported by Clang static code analyzer:
+Is this allowed use of "Reported-by:" mark?
 
-    CC      hw/timer/pxa2xx_timer.o
-  hw/timer/pxa2xx_timer.c:146:17: warning: Assigned value is garbage or und=
-efined
-          counter =3D counters[n];
-                  ^ ~~~~~~~~~~~
+I did not notice it being used this way before. And was under impression
+that all similar tags/marks must be followed by a person, not a tool.
 
-Reported-by: Clang Static Analyzer
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/timer/pxa2xx_timer.c | 1 +
- 1 file changed, 1 insertion(+)
+Regards,
+Aleksandar
 
-diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
-index cd172cc1e9..944c165889 100644
---- a/hw/timer/pxa2xx_timer.c
-+++ b/hw/timer/pxa2xx_timer.c
-@@ -140,6 +140,7 @@ static void pxa2xx_timer_update4(void *opaque, uint64_t=
- now_qemu, int n)
-     static const int counters[8] =3D { 0, 0, 0, 0, 4, 4, 6, 6 };
-     int counter;
-=20
-+    assert(n < ARRAY_SIZE(counters));
-     if (s->tm4[n].control & (1 << 7))
-         counter =3D n;
-     else
---=20
-2.21.1
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  block.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/block.c b/block.c
+> index a2542c977b..908c109a8c 100644
+> --- a/block.c
+> +++ b/block.c
+> @@ -3164,7 +3164,7 @@ static BlockDriverState *bdrv_open_inherit(const
+char *filename,
+>                                      parent->open_flags, parent->options)=
+;
+>      }
+>
+> -    ret =3D bdrv_fill_options(&options, filename, &flags, &local_err);
+> +    bdrv_fill_options(&options, filename, &flags, &local_err);
+>      if (local_err) {
+>          goto fail;
+>      }
+> --
+> 2.21.1
+>
+>
 
+--000000000000bc0aed05a15c17c2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<p dir=3D"ltr"></p>
+<p dir=3D"ltr">12:49 PM Sub, 21.03.2020. Philippe Mathieu-Daud=C3=A9 &lt;<a=
+ href=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; =D1=98=D0=B5 =
+=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:<br>
+&gt;<br>
+&gt; Fix warning reported by Clang static code analyzer:<br>
+&gt;<br>
+&gt; =C2=A0 block.c:3167:5: warning: Value stored to &#39;ret&#39; is never=
+ read<br>
+&gt; =C2=A0 =C2=A0 =C2=A0 ret =3D bdrv_fill_options(&amp;options, filename,=
+ &amp;flags, &amp;local_err);<br>
+&gt; =C2=A0 =C2=A0 =C2=A0 ^=C2=A0 =C2=A0 =C2=A0~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>
+&gt;<br>
+&gt; Reported-by: Clang Static Analyzer</p>
+<p dir=3D"ltr">Peter, and others,</p>
+<p dir=3D"ltr">Is this allowed use of &quot;Reported-by:&quot; mark?</p>
+<p dir=3D"ltr">I did not notice it being used this way before. And was unde=
+r impression that all similar tags/marks must be followed by a person, not =
+a tool.</p>
+<p dir=3D"ltr">Regards,<br>
+Aleksandar<br></p>
+<p dir=3D"ltr">&gt; Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=
+=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt;<br>
+&gt; ---<br>
+&gt; =C2=A0block.c | 2 +-<br>
+&gt; =C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
+&gt;<br>
+&gt; diff --git a/block.c b/block.c<br>
+&gt; index a2542c977b..908c109a8c 100644<br>
+&gt; --- a/block.c<br>
+&gt; +++ b/block.c<br>
+&gt; @@ -3164,7 +3164,7 @@ static BlockDriverState *bdrv_open_inherit(const=
+ char *filename,<br>
+&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0parent-&gt;op=
+en_flags, parent-&gt;options);<br>
+&gt; =C2=A0 =C2=A0 =C2=A0}<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 ret =3D bdrv_fill_options(&amp;options, filename, &amp;=
+flags, &amp;local_err);<br>
+&gt; +=C2=A0 =C2=A0 bdrv_fill_options(&amp;options, filename, &amp;flags, &=
+amp;local_err);<br>
+&gt; =C2=A0 =C2=A0 =C2=A0if (local_err) {<br>
+&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto fail;<br>
+&gt; =C2=A0 =C2=A0 =C2=A0}<br>
+&gt; -- <br>
+&gt; 2.21.1<br>
+&gt;<br>
+&gt;<br>
+</p>
+
+--000000000000bc0aed05a15c17c2--

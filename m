@@ -1,106 +1,113 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp2208480lfe;
-        Sat, 21 Mar 2020 07:41:44 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtb+iSMPBKHMJELa/1xiRuFg3Wbv6Ij+dAmPoYEcecpcn+4/NPf7O8Kc3FsR1Xjg6W/LrNV
-X-Received: by 2002:ac8:1198:: with SMTP id d24mr13539776qtj.105.1584801703913;
-        Sat, 21 Mar 2020 07:41:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584801703; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp2209083lfe;
+        Sat, 21 Mar 2020 07:42:27 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vv9PsyQI4sHO6P2gyexBz9K7cThSC9S1AyaLdZaMbG6V7PbhS0Z0j+923A5tD3eJ5+WU6kb
+X-Received: by 2002:ad4:458d:: with SMTP id x13mr12586478qvu.155.1584801747330;
+        Sat, 21 Mar 2020 07:42:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584801747; cv=none;
         d=google.com; s=arc-20160816;
-        b=hpn33P30NHWNwziyLRVmLfHza011/+vXJ9uWM4yM3AK5Zqhoz1KV0KueAtUgQMWtDV
-         DzxcsZpq7dyVY4n5QKZTt6qSQNwvCErs8j4IsgjaA9T3JIfvZws+kqZ3lifLhSXVgHyw
-         aog0hGj0yflaQ1VxkM0ZqEsVmHrZlN2WerWnOA+m1Z1UMnJLaXuSjO1xeJx8fGWlEvq9
-         tiwb26NRuIzecs0XrDgwfoF7CG7VbYwTQa3MpgqOzHthbblsZEK2oOv1BLttD7zsfrHR
-         2vlItq7YBuVyoa049L6xtsgWkOBYuwUl0YjbG9NZc1ESK6v4iVxYeIVmPR/fmoRqaG7g
-         MdIA==
+        b=CAmYRdvN/bAF3csKdIUmeRwllAqaJODCjTOrF634MKcgL9LbiA1zYw01tL5uOLQrB6
+         BsLbGVE5gDW3z2NMi7S+DGelDNDKqPtdLxqkc+UmhQgTRvGMtfMzkNWQCajAQvDXRLSz
+         MI+nMizYahKpkEdKzes93y1Fn6TcZfQsDhjXYDkdP7oOyPr3dy6LyQhWAmo/ekYiviGS
+         xs5ehjxA+RYJn+AJQXZeUltEfv6QKXL3p1AKaPbzt4/rPt3PV8YBAPxKnOiPhSO0oNCz
+         F1jmankqk8fCxiYGXFPElhiKrNk/XsQc5Mm6uYv1/pq2J+SoB9s7/V6XF9fYysOfd98/
+         EiNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=XjYHy8EAEyVWWAj6PcQzbMtUCcBiHqB3U8PD6B93nsg=;
-        b=Ln35rakl/yjcsSdpoiWtxMirybE4r0M4nONoqdRY7zEGWP6zG1EejZXLrS4o+Aiifw
-         tg4rL54kwIcJbh33MQNdyraqgb2Esj47NDqDRFXTboZhY8AR7ZueR3he6NmefGb4doko
-         oXVSvhePrEUI0tddEbheCI5xQ9jksYQRrv4uEn8F9Gv4k5AkqG+vLn7BESDQQ5jzZ6ae
-         eGldO6XmBp7N9lVdCN4KhE422j/Dh9nmBzJEkyK9/AJnIdNVrGK5uxIUt8Lw+rmJiL6U
-         B0rAkT91TQUM18FvdzhfaYluGTbf9h+wbjzW/4r/it2FzBK/xJByzSk8gFikPl0VVLOY
-         7K6Q==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=HG9aIClnSQgwbfwrNWlQigZ+p9jo+t2veKUaX85pzII=;
+        b=E1dTSHlpXO6PskRIBCyxe2PEmJ5MLqaE/e3jShBCgY6ij8VK1my9c6rU2FpPpuy4mT
+         HieCkDYY2fhgOO474twi6kzhsN7ngE0FxJGEF13nV9nVzxAIsqtmokIAH4EI6cgbocOZ
+         mp/Bk12fyPoiX0D0mTEQCskA/9opLz1AO/1nn+HBlZAwloJqslC1TjU9kUf4KVomGvUs
+         Fjp2m6/RAVOSTzHRzJcalMmnCJmeuMOCyymfwP8vRkLXU00xxsjV+vbVbeJot7JYp+r+
+         8GcdCHjKeXYCfmzNp+DUrHBZgkqbsgC1SnYl+8JGhuR3CtBg6x6w6y1aQBzKv/cE+2Ks
+         LhMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ht6oJzxn;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=alEv05n2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e22si5532838qto.284.2020.03.21.07.41.43
+        by mx.google.com with ESMTPS id d10si5182762qto.241.2020.03.21.07.42.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Mar 2020 07:41:43 -0700 (PDT)
+        Sat, 21 Mar 2020 07:42:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ht6oJzxn;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=alEv05n2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37456 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37518 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jFfJn-0004k0-8J
-	for alex.bennee@linaro.org; Sat, 21 Mar 2020 10:41:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59544)
+	id 1jFfKU-0005wp-Mg
+	for alex.bennee@linaro.org; Sat, 21 Mar 2020 10:42:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59837)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jFfJQ-0004Mo-Tq
- for qemu-arm@nongnu.org; Sat, 21 Mar 2020 10:41:22 -0400
+ (envelope-from <philmd@redhat.com>) id 1jFfJo-000596-F1
+ for qemu-arm@nongnu.org; Sat, 21 Mar 2020 10:41:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jFfJQ-00079j-07
- for qemu-arm@nongnu.org; Sat, 21 Mar 2020 10:41:20 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:20101)
+ (envelope-from <philmd@redhat.com>) id 1jFfJn-0007PW-95
+ for qemu-arm@nongnu.org; Sat, 21 Mar 2020 10:41:44 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:41569)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFfJP-000794-Rv
- for qemu-arm@nongnu.org; Sat, 21 Mar 2020 10:41:19 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFfJn-0007OV-5L
+ for qemu-arm@nongnu.org; Sat, 21 Mar 2020 10:41:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584801679;
+ s=mimecast20190719; t=1584801702;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=XjYHy8EAEyVWWAj6PcQzbMtUCcBiHqB3U8PD6B93nsg=;
- b=ht6oJzxnbO6vMBXePrRNQ0+z8xRRsr9mST6gEMwbH5CXnIE/vQLXI7MUkNoVCvInohfFZt
- tZa4n205S4U15AayTuBP+CthUoNFfqyudgduOsrlU/us4UL2eGH4r2RzMLs6BzwK8u8lM3
- 0J0qrZHnqoHWg0YV4mg+PQK4WPENVZY=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-478-nkaOqY40MRyFlQ_330QRxw-1; Sat, 21 Mar 2020 10:41:15 -0400
-X-MC-Unique: nkaOqY40MRyFlQ_330QRxw-1
-Received: by mail-wr1-f70.google.com with SMTP id d17so4369067wrw.19
- for <qemu-arm@nongnu.org>; Sat, 21 Mar 2020 07:41:15 -0700 (PDT)
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HG9aIClnSQgwbfwrNWlQigZ+p9jo+t2veKUaX85pzII=;
+ b=alEv05n2sfcCenreaQ42B7wM3I9K2QyGTYZ/MOk7pImV/CRtija0xP0/vTgOt924/374W/
+ hjzjKpX3p9ZcA4DNLwdbhllifUP3ywBB28RsAa8H1xW0BeLH4ckw7OrvOTki6Q1JQJJKos
+ aUSHudgDfdfkUbKKzOpK4AOInkioVWg=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-20-ECWmYhZgP16I_peaEPbebg-1; Sat, 21 Mar 2020 10:41:40 -0400
+X-MC-Unique: ECWmYhZgP16I_peaEPbebg-1
+Received: by mail-wm1-f72.google.com with SMTP id p18so2558363wmk.9
+ for <qemu-arm@nongnu.org>; Sat, 21 Mar 2020 07:41:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=VXdFqIF/MgdCDNguoL8cH2BaYWlik8rbXVsmqvrTHJE=;
- b=FDv9NuOx7Eduu1cWTBKIfBX8iij/FdwLdb+mxufwz9EqhSq/9I9bNUNrU7qltBPnDm
- OltauLixtROR8yg1JSZQAmuNnGuYgOVnKhPuZ1yBLFNrSlzc+boXSEJEi9EjdkYeamat
- Cq3yNcs/ez8TGTUPgCZBGZ7xnmJjP85eV7No3Iizcl4Nwg2zFWKxq+jrOQfsMtH1J5/t
- A6sObRo/Bi+zlWV6UvSJEGTL2ghkuKRPLQNGzBPZ9pIrnWieRmZqjR1P9Yj6BIwk1dZp
- waMgapnCl1nJKUgM83jQA1AJIFDG4dKznmhxqGfIQlu+aa8J8Q6zGIBu58+e3ou6glSX
- eH1w==
-X-Gm-Message-State: ANhLgQ0j5VIQkDeDuX5uC3sZeWkec3l2D2zDRWjloUsgQd+YdIMoDdPA
- 9NIKnQ3wMyZc6WMllNwBXXn4dN9FON0CfIScWQeXzfwkhE3SrSkUiU9Tg/nG0TuaYVQPfKCUUKE
- Q1wIU7RMxqsCH
-X-Received: by 2002:a7b:c0cf:: with SMTP id s15mr17311420wmh.106.1584801674417; 
- Sat, 21 Mar 2020 07:41:14 -0700 (PDT)
-X-Received: by 2002:a7b:c0cf:: with SMTP id s15mr17311376wmh.106.1584801674111; 
- Sat, 21 Mar 2020 07:41:14 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Eqn1OJZAYDlLgDc90kBVx1WWSAviOqkIwIwDScG0wiQ=;
+ b=NMjsYZCv4dK5AW6AVf3YtT/jffasZu/pH9pK/pMWsPAW9kbxHHEBecyKWuUVewgqo0
+ 1jez930bFpwv9Ihp7VVfGrQhZN/7qi0mz3itqm85saXvfazWGnpcpSMUHQAyEcf/3/QG
+ bpi6nNWyPXWBF+tJ27LNgWbNPj1dsd9oKYFIPvxFnHiTJFAyUgi/dHmTQ62BSE+FJ0Ai
+ eHmPeWSLCREx7jNIB+A11nOyiKdzh33CSL3wMV6nQbtAfP/d+ypOzootPt9B9vys0SjW
+ 4nFp/nbYKUkXpSibPVXd1ABus8mz6zTklXsTnU84/M6o07Mj0lAdZbXbkvG/E12tW9bD
+ JFGg==
+X-Gm-Message-State: ANhLgQ0us8BitkDmZD+eHL7DmOfUTBeU9+Lxm4qe9KPDKOWP9TKzwnbM
+ puMgYBF9VosXxJeRfvzPNyr3WAggvqxklnItPs0aH8wD5+pYOH9ALKGSjLyN7xfyAW1fGpAt6LV
+ QzX2KR5cHefBq
+X-Received: by 2002:a05:600c:4145:: with SMTP id
+ h5mr16372088wmm.3.1584801699577; 
+ Sat, 21 Mar 2020 07:41:39 -0700 (PDT)
+X-Received: by 2002:a05:600c:4145:: with SMTP id
+ h5mr16372067wmm.3.1584801699378; 
+ Sat, 21 Mar 2020 07:41:39 -0700 (PDT)
 Received: from localhost.localdomain (37.red-83-52-54.dynamicip.rima-tde.net.
  [83.52.54.37])
- by smtp.gmail.com with ESMTPSA id n2sm13181619wrr.62.2020.03.21.07.41.11
+ by smtp.gmail.com with ESMTPSA id a13sm14020382wrh.80.2020.03.21.07.41.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Mar 2020 07:41:13 -0700 (PDT)
+ Sat, 21 Mar 2020 07:41:38 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.0 v2 00/11] misc: Trivial static code analyzer fixes
-Date: Sat, 21 Mar 2020 15:40:59 +0100
-Message-Id: <20200321144110.5010-1-philmd@redhat.com>
+Subject: [PATCH-for-5.0 v2 04/11] hw/input/adb-kbd: Remove dead assignment
+Date: Sat, 21 Mar 2020 15:41:03 +0100
+Message-Id: <20200321144110.5010-5-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200321144110.5010-1-philmd@redhat.com>
+References: <20200321144110.5010-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 63.128.21.74
@@ -132,39 +139,61 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3hTi33OMM8o4
+X-TUID: b7YsKxh2Fxas
 
-Fix trivial warnings reported by the Clang static code analyzer.
+Since commit 5a1f49718 the 'olen' variable is not really
+used. Remove it to fix a warning reported by Clang static
+code analyzer:
 
-Since v1:
-- Addressed Markus/Zoltan/Aleksandar review comments
+    CC      hw/input/adb-kbd.o
+  hw/input/adb-kbd.c:200:5: warning: Value stored to 'olen' is never read
+      olen =3D 0;
+      ^      ~
 
-Philippe Mathieu-Daud=C3=A9 (11):
-  block: Avoid dead assignment
-  blockdev: Remove dead assignment
-  hw/i2c/pm_smbus: Remove dead assignment
-  hw/input/adb-kbd: Remove dead assignment
-  hw/ide/sii3112: Remove dead assignment
-  hw/isa/i82378: Remove dead assignment
-  hw/gpio/aspeed_gpio: Remove dead assignment
-  hw/timer/exynos4210_mct: Remove dead assignments
-  hw/timer/stm32f2xx_timer: Remove dead assignment
-  hw/timer/pxa2xx_timer: Add assertion to silent static analyzer warning
-  hw/scsi/esp-pci: Remove dead assignment
+Fixes: 5a1f49718 (adb: add support for QKeyCode)
+Reported-by: Clang Static Analyzer
+Suggested-by: BALATON Zoltan <balaton@eik.bme.hu>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+v2: Remove 'olen' (Zoltan)
+---
+ hw/input/adb-kbd.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
- block.c                    | 2 +-
- blockdev.c                 | 2 +-
- hw/gpio/aspeed_gpio.c      | 2 +-
- hw/i2c/pm_smbus.c          | 1 -
- hw/ide/sii3112.c           | 5 +++--
- hw/input/adb-kbd.c         | 6 +-----
- hw/isa/i82378.c            | 8 ++++----
- hw/scsi/esp-pci.c          | 1 -
- hw/timer/exynos4210_mct.c  | 3 ---
- hw/timer/pxa2xx_timer.c    | 1 +
- hw/timer/stm32f2xx_timer.c | 1 -
- 11 files changed, 12 insertions(+), 20 deletions(-)
-
+diff --git a/hw/input/adb-kbd.c b/hw/input/adb-kbd.c
+index 0ba8207589..a6d5c9b7c9 100644
+--- a/hw/input/adb-kbd.c
++++ b/hw/input/adb-kbd.c
+@@ -195,9 +195,7 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
+ {
+     KBDState *s =3D ADB_KEYBOARD(d);
+     int keycode;
+-    int olen;
+=20
+-    olen =3D 0;
+     if (s->count =3D=3D 0) {
+         return 0;
+     }
+@@ -216,7 +214,6 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
+     if (keycode =3D=3D 0x7f) {
+         obuf[0] =3D 0x7f;
+         obuf[1] =3D 0x7f;
+-        olen =3D 2;
+     } else {
+         obuf[0] =3D keycode;
+         /* NOTE: the power key key-up is the two byte sequence 0xff 0xff;
+@@ -224,10 +221,9 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
+          * byte, but choose not to bother.
+          */
+         obuf[1] =3D 0xff;
+-        olen =3D 2;
+     }
+=20
+-    return olen;
++    return 2;
+ }
+=20
+ static int adb_kbd_request(ADBDevice *d, uint8_t *obuf,
 --=20
 2.21.1
 

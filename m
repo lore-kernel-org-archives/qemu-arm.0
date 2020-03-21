@@ -1,101 +1,110 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp1142256lfe;
-        Fri, 20 Mar 2020 10:14:31 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuLqSGX5eDHFKgqRMDijoBntrlsKhv5KJV+xTFCLu1KbwcrFke7snbdLnoOF5/wU9OrO1cS
-X-Received: by 2002:a05:620a:15ee:: with SMTP id p14mr8365940qkm.117.1584724471137;
-        Fri, 20 Mar 2020 10:14:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584724471; cv=none;
+Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp2048727lfe;
+        Sat, 21 Mar 2020 04:46:48 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsmZJR8+kJ/j3WGl7zH//WL+4UrTgHIBooTw5AMIPgjGtCXhtLkK5NB5x//EAmYGxdiYaxu
+X-Received: by 2002:aed:32e7:: with SMTP id z94mr12858043qtd.382.1584791208079;
+        Sat, 21 Mar 2020 04:46:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584791208; cv=none;
         d=google.com; s=arc-20160816;
-        b=dxyU3fXrkVIiyZxEBKpWKJs48bjCLsb12u2j/NuhhAYDFUMWwlMkDwrEyXKt1WJgrS
-         SnoW1O/9wtzjykMNceSReWCQq++KUih8bTkBvp/qYJ7PhYPjhJHU+DZxL+6U9NHJyHNS
-         54PCZs8IXN/BMk5FxGUDTEIMptIfPUNNMzpJ7OtMPcfDzks75Unwm2jG3h9Yg1bBa+1f
-         RvHZ0mCXSLKTs9bc8IvZKSg3zVOnSejK4mtaA/aM+YaYuNJvdY1k5VL3ciXSP2Xp32kl
-         LZy+R4FrIsfT/2vhJXq/kSCUW5TK9X9IvV6usueOnFpRJFSi5bVZx7sSpX5oslQHc8L5
-         pR5A==
+        b=W2G+0RQkF6kTxLSvtwvvrgBZT3d6ZYGqe6liFMUJbWM3Zj4mYASwZLd7QwcshV6PHR
+         396ySg8PnqLBPbzFLhLL9esGJw4wAN0dXXnBu6e8yo6hRkSLZ6v8ft/oxjdrLQh3fwO1
+         5PJbwCEyWM1rXxUAVep0A3j47ScNsc4rvloDMig3XSjsSkLc6KdqkM2lxjPWLLnAmUGh
+         zxmPNrS835JjMYuoGZYYoEfPQeS/ZJImNS4M7KzDFZYTKEXfJl+0a1SVQ0ULox5UpQS5
+         eJvoeFKVWeV+kRjjLL4Ka4ZsneOjvxTBDUw1zJL+FcCZAnuYKyaXY6j5Iny7300WAEGq
+         l4Qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=JWww6+PqmJiAFIVmlvqtkmV1JZxTd/zcad5G5lbKagI=;
-        b=gBrkMz+OTGArumx12W7K9zF/QtxJ2aE7y0/tNsHEgPdzCuj98t78q7JpvN/Tcafvv2
-         slgWxIVtKC6WyUuC23dl30ca021n0Jdb5I07HR7KlAWktP789iDl0O87mdZdnovPT5Yy
-         E/7IG4q9padb1TgU/rwhtcdJjq7SLD/gacf9xc2g66R/MwQK/n8k7/S2SqmmjPVBUPFi
-         giBpfAzOcSs2HorSDYXyJq+t1R45SV2jLRSHJt3eW8I1u07RAMydiYAA0vP37PPdUSoI
-         EyW+/qJUZWtIpNzYR2hU+yWZE6lF3m4heDGwE4IO0FARtGm+/nQoYljZwVat1KwHVNMw
-         6oDg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=H/kvBiPyxCh595bpD+FYmGkaOOWay12gFZX+EGKqT6I=;
+        b=PwKz+di6xZEit1lm4chbgGeHl1YtoQDn+y3zuZQOZxGcM9WaDLaW0+9Z5GnruBgIjZ
+         Jd1VHnYw3XtCAdaQ75ztHxOExQM1f4lf9vZNnYrqBSarRNaefamZ/KgsJS/1In2Hm5iJ
+         P5oZONzn+9fou1PXrEJQg2QjAJx4Nzkax+sykGhyTLMjt0as47NXskyzakggLnktnA2w
+         c/oCTHJ+kJXlupqCxeLpiwaXumewSXff+KQSBYJJWS7GJ7DKhxRNOJ1ilmS6J5/c1gyS
+         8D/gjUkqlAtD6auawgm7YIBNQKTetMsqKtOrxjgzt2tvibbkxZK7tZVnZW2bvUk0LgTN
+         IElQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="LlTnZp/x";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bxhXWukO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q6si2191803qtr.132.2020.03.20.10.14.30
+        by mx.google.com with ESMTPS id d5si4966379qtw.272.2020.03.21.04.46.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Mar 2020 10:14:31 -0700 (PDT)
+        Sat, 21 Mar 2020 04:46:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="LlTnZp/x";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bxhXWukO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56576 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35422 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jFLE6-0001Hs-I8
-	for alex.bennee@linaro.org; Fri, 20 Mar 2020 13:14:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55751)
+	id 1jFcaV-0000Y5-E0
+	for alex.bennee@linaro.org; Sat, 21 Mar 2020 07:46:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34482)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1jFL3p-0001Z3-PH
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:03:55 -0400
+ (envelope-from <philmd@redhat.com>) id 1jFcaE-0000Ec-UR
+ for qemu-arm@nongnu.org; Sat, 21 Mar 2020 07:46:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1jFL3o-0000hf-Di
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:03:53 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:60856)
+ (envelope-from <philmd@redhat.com>) id 1jFcaE-0006Ha-23
+ for qemu-arm@nongnu.org; Sat, 21 Mar 2020 07:46:30 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:39248)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1jFL3o-0000gc-9U
- for qemu-arm@nongnu.org; Fri, 20 Mar 2020 13:03:52 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jFcaD-0006HJ-Vc
+ for qemu-arm@nongnu.org; Sat, 21 Mar 2020 07:46:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584723831;
+ s=mimecast20190719; t=1584791189;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=JWww6+PqmJiAFIVmlvqtkmV1JZxTd/zcad5G5lbKagI=;
- b=LlTnZp/xVQGIxRkylak5tUGk7o6hbMbk/d18S0xzmIylai22R00rXxB1kD65IdwVGmrb4x
- iWES5i84vyYsQmSm+mVCYRr8q3gCCI2dqPSHaeLVQfaZMxXyreCZZKXKYZMoPmq0pQXlHg
- BMJeKFnzFr7/38OD9xHofPvQHZbM+ss=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-36-c8zM9QDVOAmhH37NbACyAQ-1; Fri, 20 Mar 2020 13:03:50 -0400
-X-MC-Unique: c8zM9QDVOAmhH37NbACyAQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3FF16100550E;
- Fri, 20 Mar 2020 17:03:48 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-113-142.ams2.redhat.com [10.36.113.142])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7338D19488;
- Fri, 20 Mar 2020 17:03:36 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
- alex.williamson@redhat.com, jacob.jun.pan@linux.intel.com,
- yi.l.liu@intel.com
-Subject: [RFC v6 23/24] hw/arm/smmuv3: Implement fault injection
-Date: Fri, 20 Mar 2020 17:58:39 +0100
-Message-Id: <20200320165840.30057-24-eric.auger@redhat.com>
-In-Reply-To: <20200320165840.30057-1-eric.auger@redhat.com>
-References: <20200320165840.30057-1-eric.auger@redhat.com>
+ content-transfer-encoding:content-transfer-encoding;
+ bh=H/kvBiPyxCh595bpD+FYmGkaOOWay12gFZX+EGKqT6I=;
+ b=bxhXWukO8nf6gtmes3giwOgmyGGkZEXOHeAV4+pAacpCMuDWJuwL3yY35K8BKuFrBX2cYG
+ c2laRfnik/DZtr5Fo+B3UCxLj39x5WNS5JXe12w+Wz8yycb4ANrMsChbqD8m5gDO+glQ6Z
+ USPfyrN7+r1eAgUauqLmXV2XJqpKpHM=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-449-ikgjcyfsM-uwvuc01NDk4w-1; Sat, 21 Mar 2020 07:46:26 -0400
+X-MC-Unique: ikgjcyfsM-uwvuc01NDk4w-1
+Received: by mail-wr1-f71.google.com with SMTP id j12so333416wrr.18
+ for <qemu-arm@nongnu.org>; Sat, 21 Mar 2020 04:46:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9dXP4N8TyULZAzjZYqxK/uANHHgjWwDCR4io6WeB96U=;
+ b=DAxq6NeUW7LUBGbov8NE3WewurQSnt/T/j8YI7o/JhqL3NB12JpBvqLl74lyUFyiua
+ EtqX4LkxQnmZo0WPGmzG+atvoG+aWkIsWWpzkH7632IyyndspvVlxjr0w3STUJC9Vjpk
+ t8H/OPI6kbrd0idDKeLR/g8vACZsXZZa4YkM6gMR8roctxeyybBDDm2XotQ9DJAKh4v1
+ ZmWy5/I+LqfM625axL5VJqBZE4mL7Wn/CrZhm+vQ57CvIj7oTT38uWWIQuBtVUixEojI
+ L3so/Lu1dSTN1m47KFPxtZOhEfh+TrSv3uKHOyk94nmKQUjSlrswiePIsJTuuyPci6Bv
+ 2p9g==
+X-Gm-Message-State: ANhLgQ27k3YrEAyOFHJr9qBw85J7PI4GBO52iZ0zj+NoLoqyldISxWkU
+ kU6zkrOpwyPfEHzFlsg4sgn7m/bRVx7MGVJrIp5jmM5A7zL7KG6sbWSgAO+CgmVFasukka/AzM1
+ +Ro++TsOHZ1ND
+X-Received: by 2002:a7b:c5d9:: with SMTP id n25mr16445012wmk.160.1584791185140; 
+ Sat, 21 Mar 2020 04:46:25 -0700 (PDT)
+X-Received: by 2002:a7b:c5d9:: with SMTP id n25mr16444963wmk.160.1584791184820; 
+ Sat, 21 Mar 2020 04:46:24 -0700 (PDT)
+Received: from localhost.localdomain (37.red-83-52-54.dynamicip.rima-tde.net.
+ [83.52.54.37])
+ by smtp.gmail.com with ESMTPSA id d21sm12882125wrb.51.2020.03.21.04.46.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 21 Mar 2020 04:46:24 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH-for-5.0 00/11] misc: Trivial static code analyzer fixes
+Date: Sat, 21 Mar 2020 12:46:04 +0100
+Message-Id: <20200321114615.5360-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 63.128.21.74
+ [fuzzy]
+X-Received-From: 216.205.24.74
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,121 +116,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: jean-philippe@linaro.org, tnowicki@marvell.com, maz@kernel.org,
- zhangfei.gao@foxmail.com, peterx@redhat.com,
- shameerali.kolothum.thodi@huawei.com, zhangfei.gao@linaro.org,
- bbhushan2@marvell.com, will@kernel.org
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ BALATON Zoltan <balaton@eik.bme.hu>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
+ Kevin Wolf <kwolf@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pB/pVIQ+2a9m
+X-TUID: Ykjv669axjBQ
 
-We convert iommu_fault structs received from the kernel
-into the data struct used by the emulation code and record
-the evnts into the virtual event queue.
+Fix trivial warnings reported by the Clang static code analyzer.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Philippe Mathieu-Daud=C3=A9 (11):
+  block: Remove dead assignment
+  blockdev: Remove dead assignment
+  hw/i2c/pm_smbus: Remove dead assignment
+  hw/input/adb-kbd: Remove dead assignment
+  hw/ide/sii3112: Remove dead assignment
+  hw/isa/i82378: Remove dead assignment
+  hw/gpio/aspeed_gpio: Remove dead assignment
+  hw/timer/exynos4210_mct: Remove dead assignments
+  hw/timer/stm32f2xx_timer: Remove dead assignment
+  hw/timer/pxa2xx_timer: Add assertion to silent static analyzer warning
+  hw/scsi/esp-pci: Remove dead assignment
 
----
+ block.c                    | 2 +-
+ blockdev.c                 | 2 +-
+ hw/gpio/aspeed_gpio.c      | 4 ++--
+ hw/i2c/pm_smbus.c          | 1 -
+ hw/ide/sii3112.c           | 2 +-
+ hw/input/adb-kbd.c         | 1 -
+ hw/isa/i82378.c            | 8 ++++----
+ hw/scsi/esp-pci.c          | 1 -
+ hw/timer/exynos4210_mct.c  | 3 ---
+ hw/timer/pxa2xx_timer.c    | 1 +
+ hw/timer/stm32f2xx_timer.c | 1 -
+ 11 files changed, 10 insertions(+), 16 deletions(-)
 
-v3 -> v4:
-- fix compil issue on mingw
-
-Exhaustive mapping remains to be done
----
- hw/arm/smmuv3.c | 71 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 71 insertions(+)
-
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 7a805030e2..6db3d2f218 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1569,6 +1569,76 @@ static int smmuv3_get_attr(IOMMUMemoryRegion *iommu,
-     return -EINVAL;
- }
-=20
-+struct iommu_fault;
-+
-+static inline int
-+smmuv3_inject_faults(IOMMUMemoryRegion *iommu_mr, int count,
-+                     struct iommu_fault *buf)
-+{
-+#ifdef __linux__
-+    SMMUDevice *sdev =3D container_of(iommu_mr, SMMUDevice, iommu);
-+    SMMUv3State *s3 =3D sdev->smmu;
-+    uint32_t sid =3D smmu_get_sid(sdev);
-+    int i;
-+
-+    for (i =3D 0; i < count; i++) {
-+        SMMUEventInfo info =3D {};
-+        struct iommu_fault_unrecoverable *record;
-+
-+        if (buf[i].type !=3D IOMMU_FAULT_DMA_UNRECOV) {
-+            continue;
-+        }
-+
-+        info.sid =3D sid;
-+        record =3D &buf[i].event;
-+
-+        switch (record->reason) {
-+        case IOMMU_FAULT_REASON_PASID_INVALID:
-+            info.type =3D SMMU_EVT_C_BAD_SUBSTREAMID;
-+            /* TODO further fill info.u.c_bad_substream */
-+            break;
-+        case IOMMU_FAULT_REASON_PASID_FETCH:
-+            info.type =3D SMMU_EVT_F_CD_FETCH;
-+            break;
-+        case IOMMU_FAULT_REASON_BAD_PASID_ENTRY:
-+            info.type =3D SMMU_EVT_C_BAD_CD;
-+            /* TODO further fill info.u.c_bad_cd */
-+            break;
-+        case IOMMU_FAULT_REASON_WALK_EABT:
-+            info.type =3D SMMU_EVT_F_WALK_EABT;
-+            info.u.f_walk_eabt.addr =3D record->addr;
-+            info.u.f_walk_eabt.addr2 =3D record->fetch_addr;
-+            break;
-+        case IOMMU_FAULT_REASON_PTE_FETCH:
-+            info.type =3D SMMU_EVT_F_TRANSLATION;
-+            info.u.f_translation.addr =3D record->addr;
-+            break;
-+        case IOMMU_FAULT_REASON_OOR_ADDRESS:
-+            info.type =3D SMMU_EVT_F_ADDR_SIZE;
-+            info.u.f_addr_size.addr =3D record->addr;
-+            break;
-+        case IOMMU_FAULT_REASON_ACCESS:
-+            info.type =3D SMMU_EVT_F_ACCESS;
-+            info.u.f_access.addr =3D record->addr;
-+            break;
-+        case IOMMU_FAULT_REASON_PERMISSION:
-+            info.type =3D SMMU_EVT_F_PERMISSION;
-+            info.u.f_permission.addr =3D record->addr;
-+            break;
-+        default:
-+            warn_report("%s Unexpected fault reason received from host: %d=
-",
-+                        __func__, record->reason);
-+            continue;
-+        }
-+
-+        smmuv3_record_event(s3, &info);
-+    }
-+    return 0;
-+#else
-+    return -1;
-+#endif
-+}
-+
- static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
-                                                   void *data)
- {
-@@ -1577,6 +1647,7 @@ static void smmuv3_iommu_memory_region_class_init(Obj=
-ectClass *klass,
-     imrc->translate =3D smmuv3_translate;
-     imrc->notify_flag_changed =3D smmuv3_notify_flag_changed;
-     imrc->get_attr =3D smmuv3_get_attr;
-+    imrc->inject_faults =3D smmuv3_inject_faults;
- }
-=20
- static const TypeInfo smmuv3_type_info =3D {
 --=20
-2.20.1
+2.21.1
 

@@ -1,197 +1,144 @@
-Received: by 2002:a19:5509:0:0:0:0:0 with SMTP id n9csp2848541lfe;
-        Sat, 21 Mar 2020 22:38:35 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt/2cXRZ1DzYikoGmqJx22jgdKISHP9UP30zelqBgIAhiOuGLc+RFHx+Qpxj3v6bPAo1qX3
-X-Received: by 2002:aed:3a89:: with SMTP id o9mr16148664qte.375.1584855515096;
-        Sat, 21 Mar 2020 22:38:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584855515; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp69645lfi;
+        Sun, 22 Mar 2020 01:03:40 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuUl2qzUJnu3gTmVUKx3s7X9htSOtq/92mwjJ+2RfsEPck9IdigblEYDzaQp08mHQ6DTq9c
+X-Received: by 2002:ad4:556e:: with SMTP id w14mr16227279qvy.144.1584864220628;
+        Sun, 22 Mar 2020 01:03:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584864220; cv=none;
         d=google.com; s=arc-20160816;
-        b=b6/M7INoSaErlRWCT4N1WF8HJqArmy60yvDkpD4ZpxVl1H3I0j9KimwNmk0RsxW1Ns
-         SCeY0xmZyVBf9FMZATVTseDoDEXzrn8yqEVdmp8Iyc+q9fwtY8UW3Ethg0Cdxrsvw8m5
-         cPvaQdAV9VSj3NS7oI2VZjTZLWXMccqWzVPVZFOeDF7joVRGJ2f+o1a9QqbWmjcWdb1J
-         T4GyuB1s+8/Dbs4Ozdi6dB/TWq8OtVrwRZUuUUiAR3+9A2zU3JhkYMnchb8bSmvk7QAy
-         4Mrhke+727y0JbQ3SCddEUa/qtl1Ai7LTdfmHiLL9ugRJMiTR4C5ar9B3yu7FVCjc+yo
-         7uLA==
+        b=A/QThmF83XHiEh98pPZhly6byIjKEaf3cbjJWuIzuIQuPwu8uyWmOxbrMED/Zqowha
+         Y+Hr+Oe5tguvE/rtIWptADzMrlfR3YgQ1tLEUoGsFmKVelJZd3v5ZDhw9ORUOGhFlQIB
+         v5iD5s+Rz5908Evw006rnzSL8DqbgK0KgLFEdzskAOpAuj+QkGMYJhQq1sVbx7GeM32Q
+         2yMlRRWiGxrWiR+fWwr6ZBBjIXMsMM5QVLzoXnBnhtubxxiJ78mNqYgjJCCpdxjB6x7Q
+         GZUTNlpXDxIFp2dA/Wo8kngxJ7UK+Nm89FvXXxN1XTZjy65PghJiIIkCJrExHUINCmZr
+         Oedg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=9Tvw812LK0rtQ/PoEm8y6jTvq70bzs0+wmVL+GQ320g=;
-        b=PYDsk57Fpf2y560QthUDbp1wOdxCsrBYHShzjTD6tj3fjxU+JArdE0MHIXY+bGcUiY
-         deKaOg484ZOSapzDrLgdNyNTYmgQ2BXbCcK480R8dLfSUmRfGN36BYeJfZDcFPBJMlGK
-         pq9W6ePgpat8dqxSXQ3xcfzDS05s+sxhpclU6e0MiEw1nmmJNQ+8adfhMNKwuOjNXFyv
-         EcVXeC1FSMu3iUCaj+JWf0ts71Qb5mrX0mZQB8qFBSVI390YuL0faMxvy9rVHGNHM/Lh
-         FI0+xtidmuiSY7uZQh2xfEs9r+tKRVUXU1Gt/c1PRknpKC5ml2Dk73nK8s6ZKohlE0Lg
-         W5oA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=4uKBdKfDtOALMctPsEXXuyH4dB23sB7WSrCveJTFj8E=;
+        b=EFLOSXydWf+WnnjxDKzU+Nk7gAyq6wh+VSJYdCVvuKncyORccIR7Q0aKvSrz3lecHM
+         Zdpj2ktZjvxrIRQabCSigw43WiwisSkTDcBPBIA6T59Kbtj/cf8D2D3qhBNMPHIPN8On
+         9gG1o65C8UZftuEp5Dlp5nnwcgwuMegoDGm7EkfpP+FJZvooHOi22G7l2/r80l11TGkv
+         AAKNBPCzkdT0k8iFnQF4DVrmOAAr1Gb4x6LxxQjtHsXwHeKpQTTQC894x1Sk6uN7Uxh6
+         2ULfNTlEmIqYjgzG10kRkDQXv0bYKvrhj/KhzVjoBwqxGDdWs2Jlf0iv6NzaMgHQ7r/n
+         moTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=XpIu+4ML;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o12si6844081qto.164.2020.03.21.22.38.34
+        by mx.google.com with ESMTPS id y31si6687491qtb.94.2020.03.22.01.03.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Mar 2020 22:38:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 22 Mar 2020 01:03:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=XpIu+4ML;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43386 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44024 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jFtJi-0006jT-Hs
-	for alex.bennee@linaro.org; Sun, 22 Mar 2020 01:38:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33574)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jFva8-00021W-3R
+	for alex.bennee@linaro.org; Sun, 22 Mar 2020 04:03:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47299)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1jFtJL-0006j3-Fk
- for qemu-arm@nongnu.org; Sun, 22 Mar 2020 01:38:13 -0400
+ (envelope-from <clg@kaod.org>) id 1jFvZj-0001om-Eg
+ for qemu-devel@nongnu.org; Sun, 22 Mar 2020 04:03:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1jFtJK-0007nN-07
- for qemu-arm@nongnu.org; Sun, 22 Mar 2020 01:38:11 -0400
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:39211 helo=ozlabs.org)
+ (envelope-from <clg@kaod.org>) id 1jFvZi-0003Lt-GL
+ for qemu-devel@nongnu.org; Sun, 22 Mar 2020 04:03:15 -0400
+Received: from 6.mo7.mail-out.ovh.net ([188.165.39.218]:49671)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1jFtJJ-0007jL-4J; Sun, 22 Mar 2020 01:38:09 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 48lR9x0slYz9sPF; Sun, 22 Mar 2020 16:37:57 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1584855477;
- bh=F4WJjh+4C1y+czVXBLaP8DstTq8ObneFRp7nfValy5s=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=XpIu+4MLnl+yeZ0C79fkefwDvOHeyInEHL+0sw6eWx06219QTexLt1cOQjy19sznI
- v2cqQeKn20S1uUvk/pt6C4lVITzJlwdTfPpUEX8fYqcCLUYPmuJje/XZnKgnvhudZy
- cq1Wxqfi/ZnXMHnppCskKhelGUWss3OPHzvl+FNU=
-Date: Sun, 22 Mar 2020 16:34:27 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [PATCH-for-5.0 v2 04/11] hw/input/adb-kbd: Remove dead assignment
-Message-ID: <20200322053427.GH781112@umbus.fritz.box>
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1jFvZi-0003GP-A4
+ for qemu-devel@nongnu.org; Sun, 22 Mar 2020 04:03:14 -0400
+Received: from player157.ha.ovh.net (unknown [10.110.115.182])
+ by mo7.mail-out.ovh.net (Postfix) with ESMTP id EC32615A292
+ for <qemu-devel@nongnu.org>; Sun, 22 Mar 2020 09:03:04 +0100 (CET)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player157.ha.ovh.net (Postfix) with ESMTPSA id 9034D10AC7C42;
+ Sun, 22 Mar 2020 08:02:22 +0000 (UTC)
+Subject: Re: [PATCH-for-5.0 v2 07/11] hw/gpio/aspeed_gpio: Remove dead
+ assignment
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
 References: <20200321144110.5010-1-philmd@redhat.com>
- <20200321144110.5010-5-philmd@redhat.com>
+ <20200321144110.5010-8-philmd@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <6ae25fc2-5eca-8980-2072-f784bbeaaed3@kaod.org>
+Date: Sun, 22 Mar 2020 09:02:21 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="CNK/L7dwKXQ4Ub8J"
-Content-Disposition: inline
-In-Reply-To: <20200321144110.5010-5-philmd@redhat.com>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2401:3900:2:1::2
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <20200321144110.5010-8-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 1997346435897789419
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrudeghedgvddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhduheejrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrgh
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 188.165.39.218
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- BALATON Zoltan <balaton@eik.bme.hu>, qemu-block@nongnu.org,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-block@nongnu.org,
  qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>,
- Michael Tokarev <mjt@tls.msk.ru>, Alistair Francis <alistair@alistair23.me>,
- qemu-arm@nongnu.org, =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- John Snow <jsnow@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, Laurent Vivier <laurent@vivier.eu>,
- Max Reitz <mreitz@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tZ25xm7P+SEf
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, Michael Tokarev <mjt@tls.msk.ru>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
+ Kevin Wolf <kwolf@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rlMnHhvYcRNV
 
-
---CNK/L7dwKXQ4Ub8J
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Sat, Mar 21, 2020 at 03:41:03PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> Since commit 5a1f49718 the 'olen' variable is not really
-> used. Remove it to fix a warning reported by Clang static
-> code analyzer:
+On 3/21/20 3:41 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Fix warning reported by Clang static code analyzer:
 >=20
->     CC      hw/input/adb-kbd.o
->   hw/input/adb-kbd.c:200:5: warning: Value stored to 'olen' is never read
->       olen =3D 0;
->       ^      ~
+>   hw/gpio/aspeed_gpio.c:717:18: warning: Value stored to 'g_idx' during=
+ its initialization is never read
+>       int set_idx, g_idx =3D *group_idx;
+>                    ^~~~~   ~~~~~~~~~~
 >=20
-> Fixes: 5a1f49718 (adb: add support for QKeyCode)
 > Reported-by: Clang Static Analyzer
-> Suggested-by: BALATON Zoltan <balaton@eik.bme.hu>
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
 > ---
-> v2: Remove 'olen' (Zoltan)
+> v2: Do not declare g_idx in for() (Zoltan)
 > ---
->  hw/input/adb-kbd.c | 6 +-----
->  1 file changed, 1 insertion(+), 5 deletions(-)
+>  hw/gpio/aspeed_gpio.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> diff --git a/hw/input/adb-kbd.c b/hw/input/adb-kbd.c
-> index 0ba8207589..a6d5c9b7c9 100644
-> --- a/hw/input/adb-kbd.c
-> +++ b/hw/input/adb-kbd.c
-> @@ -195,9 +195,7 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
+> diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+> index 41e11ea9b0..bd19db31f4 100644
+> --- a/hw/gpio/aspeed_gpio.c
+> +++ b/hw/gpio/aspeed_gpio.c
+> @@ -714,7 +714,7 @@ static void aspeed_gpio_write(void *opaque, hwaddr =
+offset, uint64_t data,
+>  static int get_set_idx(AspeedGPIOState *s, const char *group, int *gro=
+up_idx)
 >  {
->      KBDState *s =3D ADB_KEYBOARD(d);
->      int keycode;
-> -    int olen;
+>      AspeedGPIOClass *agc =3D ASPEED_GPIO_GET_CLASS(s);
+> -    int set_idx, g_idx =3D *group_idx;
+> +    int set_idx, g_idx;
 > =20
-> -    olen =3D 0;
->      if (s->count =3D=3D 0) {
->          return 0;
->      }
-> @@ -216,7 +214,6 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
->      if (keycode =3D=3D 0x7f) {
->          obuf[0] =3D 0x7f;
->          obuf[1] =3D 0x7f;
-> -        olen =3D 2;
->      } else {
->          obuf[0] =3D keycode;
->          /* NOTE: the power key key-up is the two byte sequence 0xff 0xff;
-> @@ -224,10 +221,9 @@ static int adb_kbd_poll(ADBDevice *d, uint8_t *obuf)
->           * byte, but choose not to bother.
->           */
->          obuf[1] =3D 0xff;
-> -        olen =3D 2;
->      }
-> =20
-> -    return olen;
-> +    return 2;
->  }
-> =20
->  static int adb_kbd_request(ADBDevice *d, uint8_t *obuf,
+>      for (set_idx =3D 0; set_idx < agc->nr_gpio_sets; set_idx++) {
+>          const GPIOSetProperties *set_props =3D &agc->props[set_idx];
+>=20
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---CNK/L7dwKXQ4Ub8J
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl52+OMACgkQbDjKyiDZ
-s5J3ihAAyQdD4J2JEB7fYHRvYktz4BhNLIrD6t2qFSAUGeBC2CU+FA4jy4r3qRy8
-bk2AWU8o2poFSBT0CCYUZeGuFEPf1MkxZt3p6saNZVk0IX5q3z3WR2d9z+p6veWG
-rUzXkpbraEZcI5QHQ+iG9iapqikWxmc4GMQAxD4FFRrSwkju9dTQDN4zlLXs7hhL
-YGaQWoIcnfhMQBeM1QFV2mSF4M+SoTTp8RCNsteZAPqf0LAY6BJ3iVb8tH9dpoaO
-qEv5Pyjgcs9IeYore+VR67yLq3dSMdKgryO35OBk2EQKrI+2xXjGt8ehECFgDNBt
-JULe0H3mGq3EXefuKPTby5NReZaKIWDgtoTuzycDT4F1JERG/kCfUpEcKbjwS3N1
-yJsCMshYqqSS1yBfEe0MXi453m8h6N+jzXIQAJXhFVqiyb3mIG2FENNu7g78TMiD
-dN9L8f5lnhRxk0pZXzsOjCjyE9fkthUBU3UBE7xAyHczIaQ/+5nPjr2kKRkjc+Rw
-RkLHCEfHMaJA81znCp6sQhQ5EKskkIVZxvIrdsRpweydRNUNfvdZtF6EGpJBStEc
-btANFqt7dcMWVjxukE711vQJoq1A1k8IulwkkolJB+jnRq2TadAloQjhMdRSPiLE
-CPUAX76wERETZC6h/hgmHd7PzQSFXT6J9gmP1ziJ62ibcLpda1A=
-=8mA0
------END PGP SIGNATURE-----
-
---CNK/L7dwKXQ4Ub8J--

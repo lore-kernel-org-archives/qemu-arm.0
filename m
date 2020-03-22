@@ -1,99 +1,98 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp682570lfi;
-        Sun, 22 Mar 2020 14:20:32 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vv2fuTiJQ8HZTgEvoE/T8VXZO2sPWKjb9poEFeFEr1xKhWQvvEJTvZjbFIeVQ61WSfOXHJj
-X-Received: by 2002:a05:620a:2e4:: with SMTP id a4mr18356159qko.74.1584912032634;
-        Sun, 22 Mar 2020 14:20:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584912032; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp682664lfi;
+        Sun, 22 Mar 2020 14:20:43 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuIm4AVbctBwZe+uSjheUd0vrHYK/S9/Ve4pzAVOcGcEh9ErvxhRznXIRaMdc4nG0uWPSGs
+X-Received: by 2002:ac8:41c9:: with SMTP id o9mr18015146qtm.156.1584912042891;
+        Sun, 22 Mar 2020 14:20:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584912042; cv=none;
         d=google.com; s=arc-20160816;
-        b=jyoeylUWVCVh6vZ5lDGohjQU3rVnagWPjKrfdyXHfA2kLvhFdcwdWll1uhTvJSIW95
-         CKBWBMHYhJ6uEyaJxLFreYmoT5GZk7qvAuTq3AA48cChR57cXxlOdbq2Qkzb+xPmZNgb
-         7dPQ0Ulehb24gzjtLTdhj0Zhb0HBH+b1nq6EKnoQ9eRsWnuKZ4iurgF/ziZtjd6YOpPy
-         eXNYRq6OmNszezEf/XYtmM1D0Zuo3gSZEAAD14RP0uiTzKdfSrzPiEZcHANS/C82aniP
-         ZTOfEUTtTw5+kRgqY6IypER8G8OUUuY/TXgU3OOB8jxpFFag03jefrJ9qoYVy1ivWg7w
-         0DkA==
+        b=BGXdb7C8fQZYFmV0IE0Xy33qN4lvAkoPGXfh1O/wV8eUSjvop2/YgAT5XH0lIbnXlh
+         bzK+rzgumyJ8ZdysxIMDGRWmXEI3/gcl9ENYJOEin5LPC6khoKoRGlLLV+b/SOSjNQb2
+         +fq4ALndvePrVy2QpIFSWmjtsFbhScuqqYplTVF5g0XR9FNuZq8eAQxsp//sU/09Blpw
+         DFkCZtP3230iKw4vRgdfArhl3rgXlc1ci+2ZuUX/DHxg177yoy3VqZClQYyVfFfwRif7
+         RSqNc05339utsqot+Dn80gHidBs9Gw3Gb76P0KmJ4BpqrigApYH/uiyAH8veEmMog99a
+         kAow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=SccDaBvCs9PxfYuAd//3zvF4kjFbX92N+sKnDM9ICNg=;
-        b=i63tF2bjH0PmiuA0pHtoAU0H4P5oaJBJkilGXoPzXR1OlNZ2Uslbl2VUJpDSOpQaji
-         I2Tfb7Zqa4ABwFGKSmLyTCOVU1CRCri20fSnH9YI8JhMFQg0RU4XFjkoUhyrUzuPaSQZ
-         9CHWuQV33vkn2x7yX2bpD8AzwhrMQ/Vdrp/4uaudqI9DT6030q/f+O1JB3o+dlKRAjFv
-         vtxtzkwm51xmLAZKACjR2GV+QXcCSgsjZUfskw6dH7SYx44niXVeJ9M5nD3O+hUzG31w
-         n7Q08JHh+2HNfYQ7QqCNKehjscJNtrYk3CJ4Ny7WQZ+CngLhGzTDmQxJrAwrCyxF7cqa
-         Yceg==
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=ZgsMGDELhEF4+TgSqBXZBt/v6x4+MShoKiq5mNYxWWg=;
+        b=opOG3A68nsCvzqLsFZvsRjxfBH1V16rScgR7zaG+8bERbkEp+OdBOyH+UNsbId/Rxp
+         Z1RM0iz62eHSMJEDcfqCfdTLZ1mteRlmWLOBC7PJMp3ACH6wZ2UwRURGCpR/gzo+zhc8
+         OYAokRHKumCr2/Dx1+k1a1JeEr5976gKdfkWoc9bea8awpACxWhwkASjsQDW9lPhJbCL
+         BOr5MtLTbVNO4bcT8KOjCcho61nNm3uXAy9z6LjqpUCjuVJLKL6FLlyPmeR0ebPizbT6
+         xKmeUmFuL2g+dx/tM+PxFCc7L7QMffFzwsjI/2c3A4xyuv2ftk4SrlaMiOPft0VGl1A5
+         Lvag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="e57Mb/5E";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A25hrsUr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id df12si7138117qvb.73.2020.03.22.14.20.32
+        by mx.google.com with ESMTPS id w10si4258848qki.140.2020.03.22.14.20.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Mar 2020 14:20:32 -0700 (PDT)
+        Sun, 22 Mar 2020 14:20:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="e57Mb/5E";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49916 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A25hrsUr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49922 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jG81H-0002ry-UU
-	for alex.bennee@linaro.org; Sun, 22 Mar 2020 17:20:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42738)
+	id 1jG81R-0002um-5d
+	for alex.bennee@linaro.org; Sun, 22 Mar 2020 17:20:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42823)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jG7zV-0001oJ-Oi
- for qemu-devel@nongnu.org; Sun, 22 Mar 2020 17:18:42 -0400
+ (envelope-from <groeck7@gmail.com>) id 1jG80M-0002sR-L0
+ for qemu-devel@nongnu.org; Sun, 22 Mar 2020 17:19:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jG7zU-0002SG-Lm
- for qemu-devel@nongnu.org; Sun, 22 Mar 2020 17:18:41 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:44513)
+ (envelope-from <groeck7@gmail.com>) id 1jG80K-0002k8-Qe
+ for qemu-devel@nongnu.org; Sun, 22 Mar 2020 17:19:34 -0400
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:37564)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jG7zU-0002Rw-Gl
- for qemu-devel@nongnu.org; Sun, 22 Mar 2020 17:18:40 -0400
-Received: by mail-ot1-x342.google.com with SMTP id a49so11444227otc.11
- for <qemu-devel@nongnu.org>; Sun, 22 Mar 2020 14:18:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=SccDaBvCs9PxfYuAd//3zvF4kjFbX92N+sKnDM9ICNg=;
- b=e57Mb/5E5FeYl+oiBwtaBQhRshKdYaYLw5g5qZmmmjOsOyKeP0Y2l73YBIf0CpkIJb
- QthLjxPPzAxGPJ28afE6pfvcdRfUur7UhD6vMZ3sItpi7os+UPsvROEf6/r0n4EEccu2
- 8E43+TCYohHhBa4vafNpdi8mhsdXyddSE+oQ6EH6B9hXQmwPhugMUzWx2+c/GFjBtrhq
- vHUcazsv6Tw0FzXA24GASkIQ5iBwtC2pJy6anewHxEDmTtcAB6rQjICwTlCLEigaytub
- 6rVv63LMaFu99e1zHuqZLJOoxi6K4ufQa7Dk3sjEMxzyA4bUMMVgYc0Sl3atIQxz1Q/Q
- z/KA==
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1jG80J-0002j6-1v; Sun, 22 Mar 2020 17:19:31 -0400
+Received: by mail-pl1-x641.google.com with SMTP id x1so978020plm.4;
+ Sun, 22 Mar 2020 14:19:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=ZgsMGDELhEF4+TgSqBXZBt/v6x4+MShoKiq5mNYxWWg=;
+ b=A25hrsUrd/dKrtFHB5tKa2BzGOw5+Hx3G87LBJdA0z3XnaKrWzxAVg+0j5XHIXyVYu
+ n7w9rgv3mvOr7VQSkulLA8prfYEfUNEQZY+QbFjQ6tBJ5tGrHOzo2LhiHmb7xl4HvenT
+ m+CaVpfn8K60oGL4+S25dhDG1i4hF1FGGg9InVXB/1rdIpDHMZKHxtKD3dA3GSG0WYKQ
+ q+9+jztvBMdlSCeI8wfkSXDUPrAA9rhbsQYhRXlW0CWev7WCzQAFabQkdve8eCnbzSCV
+ ke4qr+ZtO0Hea9X6ndC/LNGLmfgcJnq1uo9vMQ5PoyvrmZ10TkkT+lmPTPNmP4ZnnO5S
+ tLIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=SccDaBvCs9PxfYuAd//3zvF4kjFbX92N+sKnDM9ICNg=;
- b=EwLJ+Az620UtksQ9E+x1Xwz0P8S6I44W1VVc4Go5Px14YRkJqRWiJjIIY9RfEgO8Rh
- rc5IYAmx1qwpzlHRtmHgxN65CyekNPlQkmSmBvcL+BbR33M3LffBCaHqLlRxCVc2GAsK
- c+lC1lhkpMq8mWe1A6tzSk8gU8CV0c0CvO7Jy3za0lQcSGMjLuHypCTRHenpTk+SwK4b
- LgmgodlMhhhX21nMYLR2emHMuG2TS/pYl3KARsvC14K5/6fLiiYMO6mqxost2+L+U7fm
- CJUaofXBqbAAH3ozKEw8xhEKqKwjCu+6jnUwoGEx2vQQJhxFA3w3X6IqUrbLszoGIewI
- bDNw==
-X-Gm-Message-State: ANhLgQ3SzfRCuJwcn1nV/mJxdu8G/idzZ03S5FwXyWLFu4Sd3oyT20/3
- 8bAzF5DKGD8BL6eI4HKDDoa4oLjOdRRch46RP84lmQ==
-X-Received: by 2002:a9d:1920:: with SMTP id j32mr14752099ota.221.1584911919780; 
- Sun, 22 Mar 2020 14:18:39 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200322205439.15231-1-nieklinnenbank@gmail.com>
- <20200322205439.15231-2-nieklinnenbank@gmail.com>
-In-Reply-To: <20200322205439.15231-2-nieklinnenbank@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 22 Mar 2020 21:18:28 +0000
-Message-ID: <CAFEAcA-dr4_tTevqJmjEy1_W5Thv1c+8ETf=-R2jTeBp-1HmOw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] hw/misc/allwinner-h3-dramc: enforce 64-bit multiply
- when calculating row mirror address
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references;
+ bh=ZgsMGDELhEF4+TgSqBXZBt/v6x4+MShoKiq5mNYxWWg=;
+ b=oonyrJDho8VzeLLmJTnTfRmMagcAE3c+c7wt0Jf8kGhkwAXD3nv4fpOCLsEKcAEN30
+ yCN2dqe6Ykci0Az+mPKEnCP8V8zSIwrDp960NeprvC8gl6j/WyKcQFIGBgGppVsKJo15
+ N8OGReAnDk+MFEG0mdeS8+iLgWA+F3AZE6mmQXcfMy8MYoT32ib/5PlKSjuwaTSgfgV+
+ 1Vk6DcZQmCsFwdCF6zNyFjWAFRk6hb4QaiNXkhYbTlOtOfeRbMB0OKKK43YbSGFNP+5d
+ kmOARQhQbvxxDcorLEIoRw3kaZsuQnRaFqd63h40kfrRfkdEmGsesSDkYk1oKqB6zsjM
+ eE3w==
+X-Gm-Message-State: ANhLgQ1vjIOiclyfgi757J/dHtoIH3xwZmSpNMcSEiLk8lNFIBeKvq4f
+ qbpdGduAXKdQwL/uOKJzZYk=
+X-Received: by 2002:a17:90b:1b05:: with SMTP id
+ nu5mr8439811pjb.110.1584911969517; 
+ Sun, 22 Mar 2020 14:19:29 -0700 (PDT)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id f6sm11992971pfk.99.2020.03.22.14.19.28
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Sun, 22 Mar 2020 14:19:29 -0700 (PDT)
+From: Guenter Roeck <linux@roeck-us.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 2/8] hw/watchdog: Implement full i.MX watchdog support
+Date: Sun, 22 Mar 2020 14:19:13 -0700
+Message-Id: <20200322211919.11335-3-linux@roeck-us.net>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200322211919.11335-1-linux@roeck-us.net>
+References: <20200322211919.11335-1-linux@roeck-us.net>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::342
+X-Received-From: 2607:f8b0:4864:20::641
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,42 +104,341 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-devel@nongnu.org,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>, Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: W1TCPtvxV4ht
+X-TUID: E1AgyBllaPj0
 
-On Sun, 22 Mar 2020 at 20:54, Niek Linnenbank <nieklinnenbank@gmail.com> wrote:
->
-> The allwinner_h3_dramc_map_rows function simulates row addressing behavior
-> when bootloader software attempts to detect the amount of available SDRAM.
->
-> Currently the line that calculates the 64-bit address of the mirrored row
-> uses a signed 32-bit multiply operation that in theory could result in the
-> upper 32-bit be all 1s. This commit ensures that the row mirror address
-> is calculated using only 64-bit operations.
->
-> Reported-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> ---
->  hw/misc/allwinner-h3-dramc.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/misc/allwinner-h3-dramc.c b/hw/misc/allwinner-h3-dramc.c
-> index 2b5260260e..f9f05b5384 100644
-> --- a/hw/misc/allwinner-h3-dramc.c
-> +++ b/hw/misc/allwinner-h3-dramc.c
-> @@ -85,8 +85,8 @@ static void allwinner_h3_dramc_map_rows(AwH3DramCtlState *s, uint8_t row_bits,
->
->      } else if (row_bits_actual) {
->          /* Row bits not matching ram_size, install the rows mirror */
-> -        hwaddr row_mirror = s->ram_addr + ((1 << (row_bits_actual +
-> -                                                  bank_bits)) * page_size);
-> +        hwaddr row_mirror = s->ram_addr + ((1UL << (row_bits_actual +
-> +                                                    bank_bits)) * page_size);
+Implement full support for the watchdog in i.MX systems.
+Pretimeout support is optional because the watchdog hardware on i.MX31
+does not support pretimeouts.
 
-This needs to be a "ULL" suffix... (I just sent a different email
-with the rationale).
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+v2: Fixup of CONFIG_WDT_IMX -> CONFIG_WDT_IMX2 moved to patch 1/8
 
-thanks
--- PMM
+ hw/watchdog/wdt_imx2.c         | 196 +++++++++++++++++++++++++++++++--
+ include/hw/watchdog/wdt_imx2.h |  49 ++++++++-
+ 2 files changed, 231 insertions(+), 14 deletions(-)
+
+diff --git a/hw/watchdog/wdt_imx2.c b/hw/watchdog/wdt_imx2.c
+index ad1ef02e9e..f5339f3590 100644
+--- a/hw/watchdog/wdt_imx2.c
++++ b/hw/watchdog/wdt_imx2.c
+@@ -13,24 +13,157 @@
+ #include "qemu/bitops.h"
+ #include "qemu/module.h"
+ #include "sysemu/watchdog.h"
++#include "migration/vmstate.h"
++#include "hw/qdev-properties.h"
+ 
+ #include "hw/watchdog/wdt_imx2.h"
+ 
+-#define IMX2_WDT_WCR_WDA    BIT(5)      /* -> External Reset WDOG_B */
+-#define IMX2_WDT_WCR_SRS    BIT(4)      /* -> Software Reset Signal */
++static void imx2_wdt_interrupt(void *opaque)
++{
++    IMX2WdtState *s = IMX2_WDT(opaque);
++
++    s->wicr |= IMX2_WDT_WICR_WTIS;
++    qemu_set_irq(s->irq, 1);
++}
+ 
+-static uint64_t imx2_wdt_read(void *opaque, hwaddr addr,
+-                              unsigned int size)
++static void imx2_wdt_expired(void *opaque)
+ {
++    IMX2WdtState *s = IMX2_WDT(opaque);
++
++    s->wrsr = IMX2_WDT_WRSR_TOUT;
++
++    /* Perform watchdog action if watchdog is enabled */
++    if (s->wcr & IMX2_WDT_WCR_WDE) {
++        watchdog_perform_action();
++    }
++}
++
++static void imx2_wdt_reset(DeviceState *dev)
++{
++    IMX2WdtState *s = IMX2_WDT(dev);
++
++    s->wcr = IMX2_WDT_WCR_WDA | IMX2_WDT_WCR_SRS;
++    s->wsr = 0;
++    s->wrsr &= ~(IMX2_WDT_WRSR_TOUT | IMX2_WDT_WRSR_SFTW);
++    s->wicr = 4;
++    s->wmcr = IMX2_WDT_WMCR_PDE;
++}
++
++static uint64_t imx2_wdt_read(void *opaque, hwaddr addr, unsigned int size)
++{
++    IMX2WdtState *s = IMX2_WDT(opaque);
++
++    switch (addr) {
++    case IMX2_WDT_WCR:
++        return s->wcr;
++    case IMX2_WDT_WSR:
++        return s->wsr;
++    case IMX2_WDT_WRSR:
++        return s->wrsr;
++    case IMX2_WDT_WICR:
++        return s->wicr;
++    case IMX2_WDT_WMCR:
++        return s->wmcr;
++    }
+     return 0;
+ }
+ 
++static void imx_wdt2_update_itimer(IMX2WdtState *s, bool start)
++{
++    bool running = (s->wcr & IMX2_WDT_WCR_WDE) && (s->wcr & IMX2_WDT_WCR_WT);
++    bool enabled = s->wicr & IMX2_WDT_WICR_WIE;
++
++    ptimer_transaction_begin(s->itimer);
++    if (start || !enabled) {
++        ptimer_stop(s->itimer);
++    }
++    if (running && enabled) {
++        int count = ptimer_get_count(s->timer);
++        int pretimeout = s->wicr & IMX2_WDT_WICR_WICT;
++
++        /*
++         * Only (re-)start pretimeout timer if its counter value is larger
++         * than 0. Otherwise it will fire right away and we'll get an
++         * interrupt loop.
++         */
++        if (count > pretimeout) {
++            ptimer_set_count(s->itimer, count - pretimeout);
++            if (start) {
++                ptimer_run(s->itimer, 1);
++            }
++        }
++    }
++    ptimer_transaction_commit(s->itimer);
++}
++
++static void imx_wdt2_update_timer(IMX2WdtState *s, bool start)
++{
++    ptimer_transaction_begin(s->timer);
++    if (start) {
++        ptimer_stop(s->timer);
++    }
++    if ((s->wcr & IMX2_WDT_WCR_WDE) && (s->wcr & IMX2_WDT_WCR_WT)) {
++        int count = (s->wcr & IMX2_WDT_WCR_WT) >> 8;
++
++        ptimer_set_count(s->timer, count);
++        if (start) {
++            ptimer_run(s->timer, 1);
++        }
++    }
++    ptimer_transaction_commit(s->timer);
++    if (s->pretimeout_support) {
++        imx_wdt2_update_itimer(s, start);
++    }
++}
++
+ static void imx2_wdt_write(void *opaque, hwaddr addr,
+                            uint64_t value, unsigned int size)
+ {
+-    if (addr == IMX2_WDT_WCR &&
+-        (~value & (IMX2_WDT_WCR_WDA | IMX2_WDT_WCR_SRS))) {
+-        watchdog_perform_action();
++    IMX2WdtState *s = IMX2_WDT(opaque);
++
++    switch (addr) {
++    case IMX2_WDT_WCR:
++        s->wcr = value;
++        if (!(value & IMX2_WDT_WCR_SRS)) {
++            s->wrsr = IMX2_WDT_WRSR_SFTW;
++        }
++        if (!(value & (IMX2_WDT_WCR_WDA | IMX2_WDT_WCR_SRS)) ||
++            (!(value & IMX2_WDT_WCR_WT) && (value & IMX2_WDT_WCR_WDE))) {
++            watchdog_perform_action();
++        }
++        s->wcr |= IMX2_WDT_WCR_SRS;
++        imx_wdt2_update_timer(s, true);
++        break;
++    case IMX2_WDT_WSR:
++        if (s->wsr == IMX2_WDT_SEQ1 && value == IMX2_WDT_SEQ2) {
++            imx_wdt2_update_timer(s, false);
++        }
++        s->wsr = value;
++        break;
++    case IMX2_WDT_WRSR:
++        break;
++    case IMX2_WDT_WICR:
++        if (!s->pretimeout_support) {
++            return;
++        }
++        /* The pretimeout value is write-once */
++        if (s->pretimeout_locked) {
++            value &= ~IMX2_WDT_WICR_WICT;
++            s->wicr &= (IMX2_WDT_WICR_WTIS | IMX2_WDT_WICR_WICT);
++        } else {
++            s->wicr &= IMX2_WDT_WICR_WTIS;
++        }
++        s->wicr |= value & (IMX2_WDT_WICR_WIE | IMX2_WDT_WICR_WICT);
++        if (value & IMX2_WDT_WICR_WTIS) {
++            s->wicr &= ~IMX2_WDT_WICR_WTIS;
++            qemu_set_irq(s->irq, 0);
++        }
++        imx_wdt2_update_itimer(s, true);
++        s->pretimeout_locked = true;
++        break;
++    case IMX2_WDT_WMCR:
++        s->wmcr = value & IMX2_WDT_WMCR_PDE;
++        break;
+     }
+ }
+ 
+@@ -45,28 +178,67 @@ static const MemoryRegionOps imx2_wdt_ops = {
+          * real device but in practice there is no reason for a guest
+          * to access this device unaligned.
+          */
+-        .min_access_size = 4,
+-        .max_access_size = 4,
++        .min_access_size = 2,
++        .max_access_size = 2,
+         .unaligned = false,
+     },
+ };
+ 
++static const VMStateDescription vmstate_imx2_wdt = {
++    .name = "imx2.wdt",
++    .fields = (VMStateField[]) {
++        VMSTATE_PTIMER(timer, IMX2WdtState),
++        VMSTATE_PTIMER(itimer, IMX2WdtState),
++        VMSTATE_BOOL(pretimeout_locked, IMX2WdtState),
++        VMSTATE_UINT16(wcr, IMX2WdtState),
++        VMSTATE_UINT16(wsr, IMX2WdtState),
++        VMSTATE_UINT16(wrsr, IMX2WdtState),
++        VMSTATE_UINT16(wmcr, IMX2WdtState),
++        VMSTATE_UINT16(wicr, IMX2WdtState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static void imx2_wdt_realize(DeviceState *dev, Error **errp)
+ {
+     IMX2WdtState *s = IMX2_WDT(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+ 
+     memory_region_init_io(&s->mmio, OBJECT(dev),
+                           &imx2_wdt_ops, s,
+-                          TYPE_IMX2_WDT".mmio",
+-                          IMX2_WDT_REG_NUM * sizeof(uint16_t));
+-    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mmio);
++                          TYPE_IMX2_WDT,
++                          IMX2_WDT_MMIO_SIZE);
++    sysbus_init_mmio(sbd, &s->mmio);
++    sysbus_init_irq(sbd, &s->irq);
++
++    s->timer = ptimer_init(imx2_wdt_expired, s, PTIMER_POLICY_DEFAULT);
++    ptimer_transaction_begin(s->timer);
++    ptimer_set_freq(s->timer, 2);
++    ptimer_set_limit(s->timer, 0xff, 1);
++    ptimer_transaction_commit(s->timer);
++    if (s->pretimeout_support) {
++        s->itimer = ptimer_init(imx2_wdt_interrupt, s, PTIMER_POLICY_DEFAULT);
++        ptimer_transaction_begin(s->itimer);
++        ptimer_set_freq(s->itimer, 2);
++        ptimer_set_limit(s->itimer, 0xff, 1);
++        ptimer_transaction_commit(s->itimer);
++    }
+ }
+ 
++static Property imx2_wdt_properties[] = {
++    DEFINE_PROP_BOOL("pretimeout-support", IMX2WdtState, pretimeout_support,
++                     false),
++};
++
+ static void imx2_wdt_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
++    device_class_set_props(dc, imx2_wdt_properties);
+     dc->realize = imx2_wdt_realize;
++    dc->reset = imx2_wdt_reset;
++    dc->vmsd = &vmstate_imx2_wdt;
++    dc->desc = "i.MX watchdog timer";
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
+diff --git a/include/hw/watchdog/wdt_imx2.h b/include/hw/watchdog/wdt_imx2.h
+index b91b002528..bed7aa6835 100644
+--- a/include/hw/watchdog/wdt_imx2.h
++++ b/include/hw/watchdog/wdt_imx2.h
+@@ -12,22 +12,67 @@
+ #ifndef IMX2_WDT_H
+ #define IMX2_WDT_H
+ 
++#include "qemu/bitops.h"
+ #include "hw/sysbus.h"
++#include "hw/irq.h"
++#include "hw/ptimer.h"
+ 
+ #define TYPE_IMX2_WDT "imx2.wdt"
+ #define IMX2_WDT(obj) OBJECT_CHECK(IMX2WdtState, (obj), TYPE_IMX2_WDT)
+ 
+ enum IMX2WdtRegisters {
+-    IMX2_WDT_WCR     = 0x0000,
+-    IMX2_WDT_REG_NUM = 0x0008 / sizeof(uint16_t) + 1,
++    IMX2_WDT_WCR  = 0x0000, /* Control Register */
++    IMX2_WDT_WSR  = 0x0002, /* Service Register */
++    IMX2_WDT_WRSR = 0x0004, /* Reset Status Register */
++    IMX2_WDT_WICR = 0x0006, /* Interrupt Control Register */
++    IMX2_WDT_WMCR = 0x0008, /* Misc Register */
+ };
+ 
++#define IMX2_WDT_MMIO_SIZE 0x000a
++
++/* Control Register definitions */
++#define IMX2_WDT_WCR_WT         (0xFF << 8) /* Watchdog Timeout Field */
++#define IMX2_WDT_WCR_WDA        BIT(5)      /* WDOG Assertion */
++#define IMX2_WDT_WCR_SRS        BIT(4)      /* Software Reset Signal */
++#define IMX2_WDT_WCR_WDT        BIT(3)      /* WDOG Timeout Assertion */
++#define IMX2_WDT_WCR_WDE        BIT(2)      /* Watchdog Enable */
++#define IMX2_WDT_WCR_WDZST      BIT(0)      /* Watchdog Timer Suspend */
++
++/* Service Register definitions */
++#define IMX2_WDT_SEQ1           0x5555      /* service sequence 1 */
++#define IMX2_WDT_SEQ2           0xAAAA      /* service sequence 2 */
++
++/* Reset Status Register definitions */
++#define IMX2_WDT_WRSR_TOUT      BIT(1)      /* Reset due to Timeout */
++#define IMX2_WDT_WRSR_SFTW      BIT(0)      /* Reset due to Timeout */
++
++/* Interrupt Control Register definitions */
++#define IMX2_WDT_WICR_WIE       BIT(15)     /* Interrupt Enable */
++#define IMX2_WDT_WICR_WTIS      BIT(14)     /* Interrupt Status */
++#define IMX2_WDT_WICR_WICT      0xff        /* Interrupt Timeout */
++
++/* Misc Control Register definitions */
++#define IMX2_WDT_WMCR_PDE       BIT(0)      /* Power-Down Enable */
+ 
+ typedef struct IMX2WdtState {
+     /* <private> */
+     SysBusDevice parent_obj;
+ 
++    /*< public >*/
+     MemoryRegion mmio;
++    qemu_irq irq;
++
++    struct ptimer_state *timer;
++    struct ptimer_state *itimer;
++
++    bool pretimeout_support;
++    bool pretimeout_locked;
++
++    uint16_t wcr;
++    uint16_t wsr;
++    uint16_t wrsr;
++    uint16_t wicr;
++    uint16_t wmcr;
+ } IMX2WdtState;
+ 
+ #endif /* IMX2_WDT_H */
+-- 
+2.17.1
+

@@ -1,62 +1,62 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1527713lfi;
-        Mon, 23 Mar 2020 07:33:11 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvhIEnhO63cskdtkIxvcTLvz/a+lX0IVT9W//W6edmJnDiMRFKEvL8qCjTw9nQb+5TxnIAc
-X-Received: by 2002:a37:61d0:: with SMTP id v199mr16498718qkb.305.1584973991802;
-        Mon, 23 Mar 2020 07:33:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584973991; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1529460lfi;
+        Mon, 23 Mar 2020 07:34:46 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtF1Kvd2ltRSuXTBN7fcsq/IbSHPufyZe0GRTLyYvLY4aVU6HaNwNsnE5faSDAigpG9utUk
+X-Received: by 2002:a05:6214:1552:: with SMTP id t18mr20125825qvw.113.1584974086760;
+        Mon, 23 Mar 2020 07:34:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584974086; cv=none;
         d=google.com; s=arc-20160816;
-        b=QvEylPcwi74rqZYSbpiHelD5jaKzwNNJTOujh/vWEVJK6mljmlj1Ijuvhn0pZcQ7do
-         FPIB9Y4nDjcLDPi3fjLJkDRQTydNYIEbZ5MYt4FSEKJNaSFshVxUvwgaMOKbGJAl6Gm4
-         wbepTqiOkmGtdGTIM6Yyht/g5iesqV9kZNu9gs2Q1/q7OvLtM9R7/aBK4LW2WZyDWrd9
-         FrhhZIlbR7jBj6Xj+zx4Rx/yf3BKzMLdECSt+4KfZ1FifgyEDS1Hdow4xv4hflDy+xFW
-         sRVVficjGdzREqNcTD/SoWo5xc4hhZJPGUxH0Khcu0dq3of70bwd1VkRlzzta/78CpBR
-         aO1g==
+        b=pB4EPspxItmCFmMJhs9ekP434FufrLJTNgu8ywq6MmFmQrXk8SbGnCj+DAEYAmY4tk
+         W8Fwi4YD2DATi7FshBW3apTB5NouElmZP+jihZaqbSRtPc+l94HQA74tua4DXODbjbiS
+         ajhIiZyXC6rQdUtOYvyusLnygZw0jNb5LfdYZwaF5tDfzp11Q3bJ+8faQWF6qhgQRq2Y
+         O+c5gZRWkCFgGD9vZB8YykwXX4wTLBPBe1HegJsNsK+WeOu5uWaPtnNmPExtRjMpvuj+
+         qTno3Dy93Mbpi3fyUIY02qZkrhlfe0h1475I2SN4GK8OWt3Dzu4y8W1xv9j915Zli4QM
+         BBNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject;
-        bh=UVIYoUzh4OH2oSHWkfbT6wWW1o9G3enu09hqjzcTO+g=;
-        b=dBOkM1NhsdCQ3XNJK1EuapZwfjNAqOb2MaW5ogUxTs+znBp5+tvtF4miikmOHFQgEy
-         P03UhfjaiUgNGimcprqvBpuZEeuHPd0EpVSjD2/5+5ZBdtc0qa9xs+eXs3XtDoxPLgXK
-         5qBYJALuC8SLzy/GK5CMiAZ9VQCVcztB7cqlW5LeVE8nfVowUHRwh20kzNekOOfFh+iv
-         Lnnv84NpFGFYDo4gCGJGR5TcuYsNPc0rp0fZ7fpcrZQDLJ2O1Cc/5NBMwO909sWV5jt+
-         Ikq1XO+SNY5KKqS0Hfgi2RKbMy5ABIKAjfqrkmtuxzE0Uq2uP/EMDwDjH3v6CV4ynZly
-         TVBQ==
+         :message-id:subject:autocrypt:from:references:to;
+        bh=zUORrOG1c9W+WPdxxTOxN7+DDmBzi1ioqKgRJElJMyY=;
+        b=l/lLmvebRxveFgxr6nwOF1oeqiefmc/wNlxPuoLTDINinBTtshFbvHP2ib5MiZvO9x
+         Rm1aSB7sGhHzhh9T9fGz/a2xVQW+uEpxCvUJE9RfUWFE3p9vbTscpVhJ4GiYQvzxaL9o
+         viOt/p/DeCgmH1Vc4Wtl5TeyWI8eVRSfHrEwMNoUehw5S3xWsPQlu346wq8ANnNoVlaY
+         yxHi/Jkw6XnUmpBhUYVlBz00ZhJMipc51R4Rh8MWK1vlsWx8AL6CMF9dCCGU4e+AahiR
+         ZSfUemFvj6Yalwl+58si7WNmPCnrbfTdDk/vDFXgLaXX9T7MNaY6H5Moe6fBMKiuLrSQ
+         G3JQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v187si1967504qkc.318.2020.03.23.07.33.11
+        by mx.google.com with ESMTPS id w20si8287586qvu.155.2020.03.23.07.34.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Mar 2020 07:33:11 -0700 (PDT)
+        Mon, 23 Mar 2020 07:34:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34564 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34590 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jGO8c-0005av-T9
-	for alex.bennee@linaro.org; Mon, 23 Mar 2020 10:33:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40893)
+	id 1jGOAA-0007AY-0r
+	for alex.bennee@linaro.org; Mon, 23 Mar 2020 10:34:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41105)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1jGO8S-0005Zn-1h
- for qemu-arm@nongnu.org; Mon, 23 Mar 2020 10:33:05 -0400
+ (envelope-from <laurent@vivier.eu>) id 1jGO9m-0006sp-62
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 10:34:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1jGO8Q-0004ol-Px
- for qemu-arm@nongnu.org; Mon, 23 Mar 2020 10:32:59 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:38211)
+ (envelope-from <laurent@vivier.eu>) id 1jGO9k-0005bb-VM
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 10:34:22 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:51673)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1jGO8Q-0004no-Hm; Mon, 23 Mar 2020 10:32:58 -0400
+ id 1jGO9i-0005b1-C7; Mon, 23 Mar 2020 10:34:18 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MyK9S-1jSIIi2kDE-00yfm9; Mon, 23 Mar 2020 15:32:29 +0100
-Subject: Re: [PATCH-for-5.0 v2 00/11] misc: Trivial static code analyzer fixes
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1Mhl8Y-1jl48F0Wjg-00dl17; Mon, 23 Mar 2020 15:33:59 +0100
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 References: <20200321144110.5010-1-philmd@redhat.com>
+ <20200321144110.5010-12-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -100,34 +100,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <1c711740-6166-c730-ef67-d07511add1e6@vivier.eu>
-Date: Mon, 23 Mar 2020 15:32:22 +0100
+Subject: Re: [PATCH-for-5.0 v2 11/11] hw/scsi/esp-pci: Remove dead assignment
+Message-ID: <6863476b-9b68-f957-b20c-f8d516a1e7da@vivier.eu>
+Date: Mon, 23 Mar 2020 15:33:52 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20200321144110.5010-1-philmd@redhat.com>
+In-Reply-To: <20200321144110.5010-12-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:AxAjZXC/LaCVsSdrX4s8cJbX4G9uE4lcZoasQTpM8psutVGIpPh
- 03VjfHK1rH1h6sUndIH6WV3mO4cF4pHjZMIMscKa1u3Esq9RdKbcbsZu03q4DdpUAq6kdV6
- u/EE5KVEcoaLd5c86nFCTdOfhMEN5O1aXzHHzMtrgAEJo46uD960v2rFKHYu4wKc6EEY8vl
- IqNY0q+VHUHxvSbW3RlSw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:2ZBO3GplDqI=:u/DClUoYmaGZUq989HEbLx
- gSq5VbfSOzQjMfqtdRfYqHxdyBNKDVs7WKEWzCqUQR+2LIEGQiVL5fZ6YQ/XXablLmdaeVUm8
- aPi1bfMsBkRIGxfVrlMsbwIGkhobrYUa6ti89fOwu8Id+7BVAKk2R+GhHif807qTMCAsNFBhv
- 0FP+9DsQw56hZEu91v0ddlFLQsnX0wfMkmbz8fja8zZHtgYo9CNUQXzf4gDS5+EKVCHkUG6kv
- IW7v1JbNaQ0b4HpIFbfjVEJcpyq/AQ6pba4w+3VK5q8RvaBlp5b9kmW1tcOAnTuFhbizSFZOC
- Mx5CS/9idLoMi3k/G4jOUdvUkzpK2Jyh9uZIhiqu+UKCoM1syYFlZLCsMRTRPaDiTjoN1LXQa
- XNvnicaQN03JQsYSV9KGGbnVUAXLcPaYrXo/c0ZyaffmEUxD+lJJ7po4jUuibo0lGxaNhqQ4n
- h11+xe4Fcm1HkrOg5bzb6rGVrTObL2VCDO1poU5AgNRhfPza6+2fsVsgoh6LwRCnoYNdXQ+hF
- cINSHg+Uprwm3tsepPiF6hbMyM6EgHQHRheM1sWDIHMiXljiiOtF7DvBoETmXVGr6kJHdJMaK
- OH5NiqIDeAEu4UaJaGczMR8HM7XWiHrgnwSadmCNarXMnJ7TweLlw26qtzEaAcG3km9W2Xid+
- zfiRfAblNmPP/OIWSPPTeO+SzBQjF1q+vfQGH3cYJPAVMjUzWVTVUnA1Ia3+51VEFRUJKeSgl
- Jbr42QIrRRZNS/TAmyajtmOsnRgKoAm86KVHDwHTbsvhg0S7/LeNsNgYpAIna8DM/xvCBqdrL
- MqeH8Y/hE73QLncCwoFD7de/iaF9IYYBO033FuEqqrNYs5gBfSnUbVw03I0wBQiFPv7nmvo
+X-Provags-ID: V03:K1:zEA0q2N9UFnW7hsESjbmBdD2eoBizJPcA/0J/BR1pODTpIjLN0X
+ IWOLu6f+0FsrfdIYJfOeXEf9w+BVEfimaeNGI6a0qykSQjYWgMt3C4qpW95ePfTr+l3QQax
+ b4whrmrBA8VB3tgPP4cdMrEBe1UgzTtxoTH6m9yQDlGbG1VwMB3jzstbWe7pw1clFCEUKpj
+ LUn46VBgaUiSmehfxm7vA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Ca8/WgkeGyg=:OATR843/Cs4k5SDNU+pbLc
+ 6c4IZvPKGIsduEcmhO/F30g+DzskVz0ImV+HtEEBLV2IhEAowf5Vg67dUHcc2mqFJLZJDVuBm
+ DYZ4ZGQq/RmKPKHJuBHXewowu5gOW2E7iGJ8cjqgfHTFElzQt2PSbpQQQnbjWnnbXZLUbFWFb
+ Uv6yFCLRlx0L0dRDa371pRvINcMoWgy7rmQslgDdzH2LD65KsqzPhtZdTd7FV8a/uwordtbCw
+ AMafA4Dy1Chzo+yQYx9b0f9gyCsVm3Nigq3gZeioSyh8QKFMfWo+XZ9nZ9S4PqT0Wfwa6Y4oN
+ hd5DqfNRMpxtneb1TkjA+1YKULRfZSXdhAH+Oc6j4HNfuQrin4x4jXRuTN7Phyz6TMoE34k3Y
+ Gp1k0AL/uFdCUKQSf3StpFc6pv8B84w0tk+dRtSPb/IcPdnP66KXgFt8R6Zj4xbuwk55KmP/S
+ mcZ3j8xYR+BZz5pXHaWCdOY+cIOFlZVmqhFZ4rj4s1KTM/CgwsjqAcKMn3k6feWYmytedMXJG
+ B0UQHT9iRBB7x4dT09oV1pe9VZNmoQDEGQM+JmPfa/q3ZmV7nPV0Vxz8P8dNZjLgAzrBZF3zV
+ AVG6IGELPI58aOyW9I/WLE23WCLZtvuDWgq3zVO7eKzvRnaHKnnSJttT3C2VHw8U/HXNAJM0E
+ jcNL+U7i8eNN2GcOlz00mGXaqv23yKMeGzkoVlKTAU0ZoITrTTF5a5Aamgn+M36T8tYhj/Kc4
+ rIt7LNaI8lrFx5Az7bSKrSYL5fPQR0NVunv/plkHEy1DVqHVzF5CKXVtd2Kk5qKiEMu4y1ueX
+ 5cnB+6hkhuFOXYGri0gl52OGekRG+3wmoW1F+RFK0+B/6/xagTzKvzO72JxksXT4Y1AJj+Z
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
+X-Received-From: 212.227.17.10
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -154,46 +155,42 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3OKFEX+iigXC
+X-TUID: eJCXaDsn2NIT
 
-Le 21/03/2020 à 15:40, Philippe Mathieu-Daudé a écrit :
-> Fix trivial warnings reported by the Clang static code analyzer.
+Le 21/03/2020 à 15:41, Philippe Mathieu-Daudé a écrit :
+> Fix warning reported by Clang static code analyzer:
 > 
-> Since v1:
-> - Addressed Markus/Zoltan/Aleksandar review comments
+>     CC      hw/scsi/esp-pci.o
+>   hw/scsi/esp-pci.c:198:9: warning: Value stored to 'size' is never read
+>           size = 4;
+>           ^      ~
 > 
-> Philippe Mathieu-Daudé (11):
->   block: Avoid dead assignment
->   blockdev: Remove dead assignment
->   hw/i2c/pm_smbus: Remove dead assignment
->   hw/input/adb-kbd: Remove dead assignment
->   hw/ide/sii3112: Remove dead assignment
->   hw/isa/i82378: Remove dead assignment
->   hw/gpio/aspeed_gpio: Remove dead assignment
->   hw/timer/exynos4210_mct: Remove dead assignments
->   hw/timer/stm32f2xx_timer: Remove dead assignment
->   hw/timer/pxa2xx_timer: Add assertion to silent static analyzer warning
->   hw/scsi/esp-pci: Remove dead assignment
+> Reported-by: Clang Static Analyzer
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  hw/scsi/esp-pci.c | 1 -
+>  1 file changed, 1 deletion(-)
 > 
->  block.c                    | 2 +-
->  blockdev.c                 | 2 +-
->  hw/gpio/aspeed_gpio.c      | 2 +-
->  hw/i2c/pm_smbus.c          | 1 -
->  hw/ide/sii3112.c           | 5 +++--
->  hw/input/adb-kbd.c         | 6 +-----
->  hw/isa/i82378.c            | 8 ++++----
->  hw/scsi/esp-pci.c          | 1 -
->  hw/timer/exynos4210_mct.c  | 3 ---
->  hw/timer/pxa2xx_timer.c    | 1 +
->  hw/timer/stm32f2xx_timer.c | 1 -
->  11 files changed, 12 insertions(+), 20 deletions(-)
+> diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c
+> index d5a1f9e017..2e6cc07d4e 100644
+> --- a/hw/scsi/esp-pci.c
+> +++ b/hw/scsi/esp-pci.c
+> @@ -195,7 +195,6 @@ static void esp_pci_io_write(void *opaque, hwaddr addr,
+>          val <<= shift;
+>          val |= current & ~(mask << shift);
+>          addr &= ~3;
+> -        size = 4;
+>      }
+>  
+>      if (addr < 0x40) {
 > 
 
-I think your series covers cases already covered by:
+This one has already been reported.
 
-[PATCH v3 00/12] redundant code: Fix warnings reported by Clang static
-code analyzer
-https://patchew.org/QEMU/20200302130715.29440-1-kuhn.ch
+I would prefer an assert(), see my comment:
+https://patchew.org/QEMU/20200302130715.29440-1-kuhn.chenqun@huawei.com/20200302130715.29440-6-kuhn.chenqun@huawei.com/
 
 Thanks,
 Laurent
+
+

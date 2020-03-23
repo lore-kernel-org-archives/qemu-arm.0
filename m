@@ -1,276 +1,169 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1334324lfi;
-        Mon, 23 Mar 2020 04:32:51 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvfgKqiZXeQ3mSFiEHYUqsxcg9uB8wtkYoP2cJQUR9qyzas9HnIbrtH+FprcTT0w4d3w9Kt
-X-Received: by 2002:ac8:24a7:: with SMTP id s36mr20943792qts.357.1584963170846;
-        Mon, 23 Mar 2020 04:32:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584963170; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1387367lfi;
+        Mon, 23 Mar 2020 05:24:50 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vs0CpnqnOHGJSk3xWypWILxwoRMarMmr+3k/Ub7yqWcfHr0iSgSsM4bmbWEKNkGCA9y8f/o
+X-Received: by 2002:ac8:138c:: with SMTP id h12mr8331475qtj.210.1584966289911;
+        Mon, 23 Mar 2020 05:24:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584966289; cv=none;
         d=google.com; s=arc-20160816;
-        b=QFU3yCGd9TTH4/+GlXwbPHlGKtdqvKq4GVbb48ihTt8bTZd7kBr3DQ3yNwakr+tRh9
-         acNjSUhXQDx/RsUQjVnLh2VGFstqKdLy2ZXZ48tp208dbZDlEXQFMkFzNtNnz7O8eVv2
-         L2nFitEaCpd0nhD9uWCnATD6WRwY3QEm0xwPtPCgau0gO0pL02UpStp90H2UYDtSzk0d
-         yW8LsBCGxfuGmmAg/9FvuUhUKivTC1jruz3p+P/ZFAqDokoFVDplubxaIg2F+OhZJrIO
-         enlfyI0eZghffjte0WsK8nhNLVe3Mu/vKFjOFpcYuh5F4gTkRGIJVgRvqK0EANukpMNf
-         DiFw==
+        b=mN2+GwyqolKWUzVIskJMSKSWI/Dj1jWDIZuc8+J86JVvPb/KgJxcvCJlee/9YE+BTC
+         AEn1juKtK7cBxzcFANyXF7lrkcq0n2JCIc0hDJEYwpXk+H55dPnZ5+byDA2k8J8QkDw0
+         s87rh/RVdo2tmhLGOLm0FKMIXSlAJvDoVDs/VEQVx5FWdG0XlV3eBiRA/SZlQJkUEos8
+         H12t9vOfixYVjHzjBN0IHJ4ZUypIlp4sHmmYELdKUsCkCah9eKlXlOujR6KT1hffvwj4
+         Aqjmw/BYKK3+2FhddgxkinSyEoi0pu12xb8ZUEYCMQZ5Tyqlg7VIMLOlRRBBXj2tZL61
+         qkvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:mime-version
-         :list-subscribe:list-help:list-post:list-archive:list-unsubscribe
-         :list-id:precedence:cc:references:in-reply-to:message-id:date
-         :subject:to:from:dkim-signature;
-        bh=vfTx3Fu1g0Ux5EwG22NxCMNfqggnP9hL6QX8AHDZumQ=;
-        b=VxmwDBNVegS0t+g2Msyk4ZHq+Cym6IXJIK2D1C0Li3gZG0ZKqcJN1o2dkGMyzEvTFM
-         A+Kh1aQrs3P2fzhbah8Uo9dmdDqRr3n2V+swUWhzZkuRAzXYz/SSnlJykv2VQgl+4FWI
-         6F6d/U9AKiqZv3ptqd0uB/pV37QSHij6+mkeremzshzbenPoOMZQm8JUbI9P4VvNgC6t
-         jFHkmf1+2Ja+gFRMlNlnqN/+LHS/k88UxvvDKfwLUtEdHn/Jok4XJE1MZOtiE6dILUfx
-         WMbcVfwtDe4VAijJa/dFyWTeB/4QS5jCWSfLUevP1ZbC8BbzkiZzHavUaBHjmuC2EV7L
-         zfMg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=nDf/vEngzybWz4ot9gQJs4GKlGqS4n9YX81k//UFJBM=;
+        b=tyJqx2TSUifdjml8ZEkmJDp0N143U5wTqWuE/kW95j+UiLQJNWEYdIa2BR5/1S5aqE
+         FqwMXwdZR0zPgyrx0qfJMIr5ZSCFw8nFxJgJAPg9oE7V6Gg9M1awKLnIJ1h2nSH0RPDZ
+         txAdF1qwV9aKMY8XQ46TSsBfxyKsa47OEZV4Vj6hN8Uzzsn4k84w/Ud8HfPL6XQTfAi1
+         V/s2NbXPdymzU3OkpzCkbKOk/Jt0hghNqPpilZ3fBXZSNWMrXC2j5fzJS4+SQlhzPJRC
+         z3ILn69esyYSA8Kij+rnZmIFfAX5L7zuUlsMFbx9kfZoFeBZgLg1q3hrpYRfTvlaGZ5C
+         Lraw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b="JLvAr/BL";
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id n5si8931624qti.323.2020.03.23.04.32.50;
-        Mon, 23 Mar 2020 04:32:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=M7siMTQO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c188si8202938qkb.310.2020.03.23.05.24.49
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 23 Mar 2020 05:24:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b="JLvAr/BL";
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 8CF414A4CD;
-	Mon, 23 Mar 2020 07:32:50 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@linaro.org
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Kp8UTQJnBl59; Mon, 23 Mar 2020 07:32:49 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 6B7D24B0B2;
-	Mon, 23 Mar 2020 07:32:49 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 9B2F84B0BB
- for <kvmarm@lists.cs.columbia.edu>; Mon, 23 Mar 2020 07:32:47 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id g1BSIe8FMtji for <kvmarm@lists.cs.columbia.edu>;
- Mon, 23 Mar 2020 07:32:46 -0400 (EDT)
-Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
- [209.85.128.68])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 75B3C4A4C0
- for <kvmarm@lists.cs.columbia.edu>; Mon, 23 Mar 2020 07:32:46 -0400 (EDT)
-Received: by mail-wm1-f68.google.com with SMTP id d198so8487120wmd.0
- for <kvmarm@lists.cs.columbia.edu>; Mon, 23 Mar 2020 04:32:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=scdgVshz7sU0Fzpv5iTWYPRCzh314P+7l5wAJHlPMsk=;
- b=JLvAr/BLfGkIUYDk0CdrGwqORp808GVmj/9LS6QzDIqOCdntGOzADShWL7NqnBoHmE
- y9D0qohsyh6Lh+QOYcEnJP3JfSmaRTaN3SaQKQ8JC/gzGza3aRvQFHayw+VQFVUNG8Be
- DEA2UA5WtVgEpMM8/pbvYq7H6tbTUwceliW4g4yGuPWddc/m1NfJ+GR8ih8Nl+Ff044y
- d1SANkvsxWEmBCPwcKwe4BFeDppIKLTOkzKtFtOvibWEscR7KVZmBNCuIfci0XYwK+9A
- WP32f6nfoIvNoxsxfhdYSqelcnl9nPhH/cHbCUPNCn2vLRCMdvRREZQF5JcW6FvhhVUa
- 071Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=scdgVshz7sU0Fzpv5iTWYPRCzh314P+7l5wAJHlPMsk=;
- b=s7GmVQZJe7In//S33g+7bPOe6GdmXH6v95TgTnG5LTtoHBHOA4QwcWUD95BkreaMBb
- 0NkrgPmv6kj9EBkcHrQPPKcMlxrz/A73BFycrh0MZOK+1R8yTILOIPoIX+9VW50/jXKV
- 5IDHqqRxcTqAnYvqYaqL2a5wUsBki1JR/Bo3Al7vFVFdFJTZU9cZZgdy2y7CvECAqP3r
- kG7DrjYVAWXap+/9CUjzJIB5yeGO22Gyf85gCw2TU07VvjGMoH+8G/exyLpychfAijYp
- bRLSAEKWP5hXdUeZra0QVU/5C5wt1OrQ5mUDwLG47QC6ZQFbc3nPwKRM/jpdvM6facmD
- nMMg==
-X-Gm-Message-State: ANhLgQ0tEXtxIDWGKD+PRrWJWkgxM0j+wdM5zrP1QMAYvrD8dotXizno
- JozJJw14m5lsOv7LMGA7EHrXuA==
-X-Received: by 2002:a05:600c:1405:: with SMTP id
- g5mr12270544wmi.90.1584963165596; 
- Mon, 23 Mar 2020 04:32:45 -0700 (PDT)
-Received: from moi-limbo-9350.home
- (host86-177-220-180.range86-177.btcentralplus.com. [86.177.220.180])
- by smtp.gmail.com with ESMTPSA id 98sm23288473wrk.52.2020.03.23.04.32.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Mar 2020 04:32:45 -0700 (PDT)
-From: Beata Michalska <beata.michalska@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v4 1/2] target/arm: kvm: Handle DABT with no valid ISS
-Date: Mon, 23 Mar 2020 11:32:26 +0000
-Message-Id: <20200323113227.3169-2-beata.michalska@linaro.org>
-In-Reply-To: <20200323113227.3169-1-beata.michalska@linaro.org>
-References: <20200323113227.3169-1-beata.michalska@linaro.org>
-Cc: qemu-arm@nongnu.org, pbonzini@redhat.com, kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=M7siMTQO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33094 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jGM8P-0007rv-Bt
+	for alex.bennee@linaro.org; Mon, 23 Mar 2020 08:24:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49413)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <imammedo@redhat.com>) id 1jGM7K-0005s9-B8
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 08:23:43 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <imammedo@redhat.com>) id 1jGM7J-0006Aa-6l
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 08:23:42 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:52075)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1jGM7I-0006A7-Fl
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 08:23:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1584966220;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=nDf/vEngzybWz4ot9gQJs4GKlGqS4n9YX81k//UFJBM=;
+ b=M7siMTQOQAvia9io4kEBvxdOIRF65RRu/otgnqOfsQf+HCyDhMYwY6m8udHOgeAsnajbI0
+ zgZaPXsBpF5eVIoOnEWNrMfx6TwziSXTgWse902kUa1ObsKVVhfS/yNAOy+YGtpyOlUUg8
+ 89uloapwNOhFA7MxbPruU3GkA7mtPvc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-368-ElVLvD9sPlqtVFVND3ttIA-1; Mon, 23 Mar 2020 08:23:38 -0400
+X-MC-Unique: ElVLvD9sPlqtVFVND3ttIA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C9ACF801E53;
+ Mon, 23 Mar 2020 12:23:36 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.31])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 577A59B92D;
+ Mon, 23 Mar 2020 12:23:24 +0000 (UTC)
+Date: Mon, 23 Mar 2020 13:23:22 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH v3 01/10] acpi: Use macro for table-loader file name
+Message-ID: <20200323132322.1339fb96@redhat.com>
+In-Reply-To: <20200311172014.33052-2-shameerali.kolothum.thodi@huawei.com>
+References: <20200311172014.33052-1-shameerali.kolothum.thodi@huawei.com>
+ <20200311172014.33052-2-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: I+8Z2TgouOFx
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 63.128.21.74
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com,
+ shannon.zhaosl@gmail.com, david@redhat.com, qemu-devel@nongnu.org,
+ xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
+ qemu-arm@nongnu.org, mst@redhat.com, lersek@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Wef17zVecjNn
 
-On ARMv7 & ARMv8 some load/store instructions might trigger a data abort
-exception with no valid ISS info to be decoded. The lack of decode info
-makes it at least tricky to emulate those instruction which is one of the
-(many) reasons why KVM will not even try to do so.
+On Wed, 11 Mar 2020 17:20:05 +0000
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-Add support for handling those by requesting KVM to inject external
-dabt into the quest.
+> Use macro for "etc/table-loader" and move it to the header
+> file similar to ACPI_BUILD_TABLE_FILE/ACPI_BUILD_RSDP_FILE etc.
+> 
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 
-Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
----
- target/arm/cpu.h     |  2 ++
- target/arm/kvm.c     | 54 ++++++++++++++++++++++++++++++++++++++++++++++++++++
- target/arm/kvm_arm.h | 11 +++++++++++
- 3 files changed, 67 insertions(+)
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 4ffd991..4f834c1 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -560,6 +560,8 @@ typedef struct CPUARMState {
-         uint64_t esr;
-     } serror;
- 
-+    uint8_t ext_dabt_pending; /* Request for injecting ext DABT */
-+
-     /* State of our input IRQ/FIQ/VIRQ/VFIQ lines */
-     uint32_t irq_line_state;
- 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 85860e6..c088589 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -39,6 +39,7 @@ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
- 
- static bool cap_has_mp_state;
- static bool cap_has_inject_serror_esr;
-+static bool cap_has_inject_ext_dabt;
- 
- static ARMHostCPUFeatures arm_host_cpu_features;
- 
-@@ -244,6 +245,16 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
-         ret = -EINVAL;
-     }
- 
-+    if (kvm_check_extension(s, KVM_CAP_ARM_NISV_TO_USER)) {
-+        if (kvm_vm_enable_cap(s, KVM_CAP_ARM_NISV_TO_USER, 0)) {
-+            warn_report("Failed to enable DABT NISV cap");
-+        } else {
-+            /* Set status for supporting the external dabt injection */
-+            cap_has_inject_ext_dabt = kvm_check_extension(s,
-+                                    KVM_CAP_ARM_INJECT_EXT_DABT);
-+        }
-+    }
-+
-     return ret;
- }
- 
-@@ -703,9 +714,16 @@ int kvm_put_vcpu_events(ARMCPU *cpu)
-         events.exception.serror_esr = env->serror.esr;
-     }
- 
-+    if (cap_has_inject_ext_dabt) {
-+        events.exception.ext_dabt_pending = env->ext_dabt_pending;
-+    }
-+
-     ret = kvm_vcpu_ioctl(CPU(cpu), KVM_SET_VCPU_EVENTS, &events);
-     if (ret) {
-         error_report("failed to put vcpu events");
-+    } else {
-+        /* Clear instantly if the call was successful */
-+        env->ext_dabt_pending = 0;
-     }
- 
-     return ret;
-@@ -819,6 +837,11 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
-             ret = EXCP_DEBUG;
-         } /* otherwise return to guest */
-         break;
-+    case KVM_EXIT_ARM_NISV:
-+        /* External DABT with no valid iss to decode */
-+        ret = kvm_arm_handle_dabt_nisv(cs, run->arm_nisv.esr_iss,
-+                                       run->arm_nisv.fault_ipa);
-+        break;
-     default:
-         qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
-                       __func__, run->exit_reason);
-@@ -953,3 +976,34 @@ int kvm_arch_msi_data_to_gsi(uint32_t data)
- {
-     return (data - 32) & 0xffff;
- }
-+
-+int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
-+                             uint64_t fault_ipa)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+   /*
-+    * ISS [23:14] is invalid so there is a limited info
-+    * on what has just happened so the only *useful* thing that can
-+    * be retrieved from ISS is WnR & DFSC (though in some cases WnR
-+    * might be less of a value as well)
-+    */
-+
-+    /*
-+     * Set pending ext dabt and trigger SET_EVENTS so that
-+     * KVM can inject the abort
-+     */
-+    if (cap_has_inject_ext_dabt) {
-+        kvm_cpu_synchronize_state(cs);
-+        env->ext_dabt_pending = 1;
-+    } else {
-+        error_report("Data abort exception triggered by guest memory access "
-+                     "at physical address: 0x"  TARGET_FMT_lx,
-+                     (target_ulong)fault_ipa);
-+        error_printf("KVM unable to emulate faulting instruction.\n");
-+        return -1;
-+    }
-+
-+    return 0;
-+}
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index ae9e075..39472d5 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -450,6 +450,17 @@ struct kvm_guest_debug_arch;
- void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr);
- 
- /**
-+ * kvm_arm_handle_dabt_nisv:
-+ * @cs: CPUState
-+ * @esr_iss: ISS encoding (limited) for the exception from Data Abort
-+ *           ISV bit set to '0b0' -> no valid instruction syndrome
-+ * @fault_ipa: faulting address for the synch data abort
-+ *
-+ * Returns: 0 if the exception has been handled, < 0 otherwise
-+ */
-+int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
-+                             uint64_t fault_ipa);
-+/**
-  * its_class_name:
-  *
-  * Return the ITS class name to use depending on whether KVM acceleration
--- 
-2.7.4
+> ---
+>  hw/arm/virt-acpi-build.c    | 2 +-
+>  hw/i386/acpi-build.c        | 2 +-
+>  include/hw/acpi/aml-build.h | 1 +
+>  3 files changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index fb4b166f82..c13710b727 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -929,7 +929,7 @@ void virt_acpi_setup(VirtMachineState *vms)
+>  
+>      build_state->linker_mr =
+>          acpi_add_rom_blob(virt_acpi_build_update, build_state,
+> -                          tables.linker->cmd_blob, "etc/table-loader", 0);
+> +                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE, 0);
+>  
+>      fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
+>                      acpi_data_len(tables.tcpalog));
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 9a19c14e66..80f05d728d 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -3043,7 +3043,7 @@ void acpi_setup(void)
+>  
+>      build_state->linker_mr =
+>          acpi_add_rom_blob(acpi_build_update, build_state,
+> -                          tables.linker->cmd_blob, "etc/table-loader", 0);
+> +                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE, 0);
+>  
+>      fw_cfg_add_file(x86ms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
+>                      tables.tcpalog->data, acpi_data_len(tables.tcpalog));
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index de4a406568..0f4ed53d7f 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -13,6 +13,7 @@
+>  #define ACPI_BUILD_TABLE_FILE "etc/acpi/tables"
+>  #define ACPI_BUILD_RSDP_FILE "etc/acpi/rsdp"
+>  #define ACPI_BUILD_TPMLOG_FILE "etc/tpm/log"
+> +#define ACPI_BUILD_LOADER_FILE "etc/table-loader"
+>  
+>  #define AML_NOTIFY_METHOD "NTFY"
+>  
 
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

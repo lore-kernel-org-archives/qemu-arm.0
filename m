@@ -1,193 +1,258 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1631036lfi;
-        Mon, 23 Mar 2020 09:06:43 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vunxTiyMDrrU1XSjZxp/wuzFeGE6IxECmC9BYe58ORt0WMsQVWX5D0sDt3j/EiKrDm2E7lA
-X-Received: by 2002:a05:620a:391:: with SMTP id q17mr8424496qkm.103.1584979603023;
-        Mon, 23 Mar 2020 09:06:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584979603; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1799115lfi;
+        Mon, 23 Mar 2020 11:47:35 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvmWJX8Wikcq9iTVeY7QSBijSKXguX2QBaRtmachTS3FOCxZb3PGTewmJE75f6HXeGi59jB
+X-Received: by 2002:aed:3a89:: with SMTP id o9mr23140095qte.375.1584989255129;
+        Mon, 23 Mar 2020 11:47:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584989255; cv=none;
         d=google.com; s=arc-20160816;
-        b=z17Llh25ihHubJuefcLPfkNJ5pwFQUd9cZDipnDehGwkXa7Xp4HRtnrPTWRg5TcGEV
-         EiwgNy48YRtx5ll1niIZjdm88NJzSJUeFcuLHciKw72OPBefF95YekLbhGWn/Ebk0yX0
-         HLfslTv68Gt0UiSFj7knNfQKnEy9wHJsHirkccXb6+M6OqkyuHFeBVnkSJv2+DZf0O2B
-         SlXNwXZfp8iUE62XabcLkN1LpMWSUx4cIfL977p+1pcAIC6QcrSBm4yO3NdVa9wQKQsy
-         cE9SsSyQxDX7D/8ORnhsejoCoPXkeoMRMKfYKx/I41lCrE6OuDNZ5gUcWz93RxMQTWPh
-         54pQ==
+        b=P9KszLiXqqEm7i2+81jCsOg14B5kmVXT7B8YBfKzaKRhzeIPlEQ0Ehg7nG7LIYoDwI
+         s/iT2tqsHAY63jwZuBN+eihHNQV7zRg2dgnKMrtZUE8zL6BPn59GFDOmhzP3NYY7O5Kw
+         xWbr44hRhoUpWE17Khr2gbJ78x1dOvYaFwsBmvxNi5cYVzDNj0UjGaDr9ffWB55aYsNq
+         YEvBmQwnuLmXyrA4DBSKW6I5Y1mmh/3ltbwmaoOYLlbQFqy/UGiXz85IhAi6YByhQXCb
+         /dmRhbElwvWO+6bmd0ERknySW9fSXhK6rlqKC7+5pn7kVnlFx9q/bWnw6W8VKqYLCb3Y
+         gG8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=JnyeopB+Gr3i1azSR4z83W38j2lgLgHE6PDpwzZJBB8=;
-        b=SdBifiyWg3AZ+ty4bWJOu0xtyldFUZYBxmeeCAM+T2Tbv4MMBLh/gPzfSxrbHP0XFi
-         LctYlnjpgp/QM8LQ6rDXLmdunIa4qqIJqn8F+Pg9s98Ep0eATm/RP5h1+b8fYxhw712c
-         4h9m+2+1mKjZ37uy+TLcwBy4IJjnnF4TImr7QwMe88YIgQmioVpIJko0w9+puyng4hNT
-         nXxEqEMT2NkCzefTmDiO6mPbMsYMqx/3zZf+Amr3FOTzMDu456u/jiRbr7PvyDMWetvJ
-         EID30ifZ1fH/kFxx0NfnJAp9crEDTFryX+awPR3h03RlvzH+0I1LEmBz3//jakob+Y4/
-         yczg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject:dkim-signature;
+        bh=ot+Xp4AikkjrX/qUt8wNmQUVftBhJ2mV/fSndMYKPsE=;
+        b=Uq5qTO4xb53OL2RLvmua5wRJpwDgAk34z5WQYJ8NHZMZYetwO+ZOtLwV/OhQc80YMb
+         ne5GyNiHuuqgNRv9qGBNVrY88BLNFhHkxdGsJcIrMAqOT6jRJI/Rn7zMapVtvyE9m83F
+         Wo7ZknKvVZpF+jtTyMFf+QhdEyR9wjqlcCZWyPq6KNak9VT9R2+G/4mAvl8WTAWjfcXo
+         XvCSwioY/zEBezppYQ59P3aY6xDZL7eFHmROc9eeH8QmXHsJzef42zGscMpc16bIAzJv
+         sn9mjPmweL0zojTC8QUgT4BXeHHE8bw69X5r2aN9HoGDD2pWUN/kiYGvWvpBvKZDATlZ
+         pMeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p2kvYCwk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FEHfdnkR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 7si9143715qth.153.2020.03.23.09.06.42
+        by mx.google.com with ESMTPS id s63si9234840qke.282.2020.03.23.11.47.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Mar 2020 09:06:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Mar 2020 11:47:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p2kvYCwk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36378 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FEHfdnkR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38482 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jGPb8-0004rH-Cx
-	for alex.bennee@linaro.org; Mon, 23 Mar 2020 12:06:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32789)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jGS6o-0007n7-I8
+	for alex.bennee@linaro.org; Mon, 23 Mar 2020 14:47:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37611)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1jGPXn-0007aY-IY
- for qemu-devel@nongnu.org; Mon, 23 Mar 2020 12:03:17 -0400
+ (envelope-from <jsnow@redhat.com>) id 1jGS6A-0006jS-HW
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 14:46:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1jGPXk-0006fF-OL
- for qemu-devel@nongnu.org; Mon, 23 Mar 2020 12:03:15 -0400
-Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944]:37717)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1jGPXk-0006dA-KV; Mon, 23 Mar 2020 12:03:12 -0400
-Received: by mail-ua1-x944.google.com with SMTP id l18so966748uak.4;
- Mon, 23 Mar 2020 09:03:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=JnyeopB+Gr3i1azSR4z83W38j2lgLgHE6PDpwzZJBB8=;
- b=p2kvYCwkVukiiOQHNpOTZjXZ3qUhT2afJEgMCmV0WTjTzaqibkNcZdaUTtSLRN0J5C
- 5blHrzibFGYcVx1aGlzOBkTIC/WY+Wyd1kBaVrr1VpE+tcR7+xRqwT6tQGDGSOF1aRZI
- t31rf2eFACLhd9OxEZ73GD8R3v2mhKs3mxwa1/fi4KOAQAfOqlG/vhCRoERQpVeTAq0N
- tViP7821FddrPWi0mOIl6Uh/QhXdlhecgVWvxjN6fR1oXV/g80k1wpdLjdx51o9PWPl5
- nkAX/MyVJvglANyR+WW1A+vKlruZKNhUfs5W9EuH7X6JlHVw53O7UXX8gmNGvInMDBw3
- rpxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=JnyeopB+Gr3i1azSR4z83W38j2lgLgHE6PDpwzZJBB8=;
- b=uYRsWxQbNq/smPf/MRNth0LHrKkwY8EsJu8EKUCDjnPHD/uIjAaNwBSKPHwcE5RmWm
- rzli1h/MFYMqUTVLhyCkZyivpR3OsfLbkvcOAwHXLcNUA6N5JbZahs9Yu1kchjiS3n50
- rYiMCCl/iz+/YuurIUoDNs5jRIa0yZgYg8WyRJ6wop5K560wjoxPLA0ZCz0VoEvnAL19
- rqJ27CdRgoRC+70eyziSdzaIk2MlcawSasPk3hBQ+JkZ++jZxlnOUxnKShmtxLw8qLI4
- n+LnQTOHGp2qxrDuCjYR7L33TBi1UnDKuFkBNJIF9UerU/Kelg2BgPvhcxFfexQQCGWP
- +aOQ==
-X-Gm-Message-State: ANhLgQ0E2PPRa4uAOITIqOCHau6tnlaEG/9oNurb9DRvS8fvJFRs5lSP
- UWAFeZyeYV5fay8wq5tbz5TrYaHSC8nS0hKWgrg=
-X-Received: by 2002:a9f:2964:: with SMTP id t91mr7742050uat.21.1584979390662; 
- Mon, 23 Mar 2020 09:03:10 -0700 (PDT)
-MIME-Version: 1.0
+ (envelope-from <jsnow@redhat.com>) id 1jGS69-0005Xn-CE
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 14:46:54 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:30193)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <jsnow@redhat.com>) id 1jGS69-0005XU-8B
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 14:46:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1584989212;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=ot+Xp4AikkjrX/qUt8wNmQUVftBhJ2mV/fSndMYKPsE=;
+ b=FEHfdnkRioaUFGPBoSBbtX8Yc1WGMTvxPiqhb1OZjiDdBj0YUS1ZTjSHQauZhBRKFDMKua
+ w8ZJfMr8NygNrIGN4Pv65WsE8WfkjxEWNF1RG6kpnOa9AtNQ0I7eiAi7GPre3VocuHFTj6
+ Svqo9H3aY6oPLlslVE8xbl+xhMFA3s0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-58-hAoyErYePhyo-FNLQ9EnEQ-1; Mon, 23 Mar 2020 14:46:48 -0400
+X-MC-Unique: hAoyErYePhyo-FNLQ9EnEQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A9BED190D377;
+ Mon, 23 Mar 2020 18:46:26 +0000 (UTC)
+Received: from [10.10.112.191] (ovpn-112-191.rdu2.redhat.com [10.10.112.191])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 62EA894B23;
+ Mon, 23 Mar 2020 18:46:15 +0000 (UTC)
+Subject: Re: [PATCH-for-5.0 v2 05/11] hw/ide/sii3112: Remove dead assignment
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
 References: <20200321144110.5010-1-philmd@redhat.com>
- <20200321144110.5010-11-philmd@redhat.com>
-In-Reply-To: <20200321144110.5010-11-philmd@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 23 Mar 2020 08:55:08 -0700
-Message-ID: <CAKmqyKOt9+O8fYsSOabSP6kOqi879-qE-GBJqhVvW=EtH_2rmg@mail.gmail.com>
-Subject: Re: [PATCH-for-5.0 v2 10/11] hw/timer/pxa2xx_timer: Add assertion to
- silent static analyzer warning
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+ <20200321144110.5010-6-philmd@redhat.com>
+From: John Snow <jsnow@redhat.com>
+Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <9a385d04-719a-7630-a403-63296e8e6c7c@redhat.com>
+Date: Mon, 23 Mar 2020 14:46:14 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
+MIME-Version: 1.0
+In-Reply-To: <20200321144110.5010-6-philmd@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::944
-X-BeenThere: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 63.128.21.74
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Qemu-block <qemu-block@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, Alistair Francis <alistair@alistair23.me>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
  David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Reitz <mreitz@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- "open list:New World" <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: F1Hg/JHPsZRg
+ Andrew Jeffery <andrew@aj.id.au>, Laurent Vivier <laurent@vivier.eu>,
+ Max Reitz <mreitz@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jMwfm7jDHIkv
 
-On Sat, Mar 21, 2020 at 7:50 AM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> pxa2xx_timer_tick4() takes an opaque pointer, then calls
-> pxa2xx_timer_update4(), so the static analyzer can not
-> verify that the 'n < 8':
->
->   425 static void pxa2xx_timer_tick4(void *opaque)
->   426 {
->   427     PXA2xxTimer4 *t =3D (PXA2xxTimer4 *) opaque;
->   428     PXA2xxTimerInfo *i =3D (PXA2xxTimerInfo *) t->tm.info;
->   429
->   430     pxa2xx_timer_tick(&t->tm);
->   433     if (t->control & (1 << 6))
->   434         pxa2xx_timer_update4(i, qemu_clock_get_ns(QEMU_CLOCK_VIRTUA=
-L), t->tm.num - 4);
->
->   135 static void pxa2xx_timer_update4(void *opaque, uint64_t now_qemu, i=
-nt n)
->   136 {
->   137     PXA2xxTimerInfo *s =3D (PXA2xxTimerInfo *) opaque;
->   140     static const int counters[8] =3D { 0, 0, 0, 0, 4, 4, 6, 6 };
->   142
->   143     if (s->tm4[n].control & (1 << 7))
->   144         counter =3D n;
->   145     else
->   146         counter =3D counters[n];
->
-> Add an assert() to give the static analyzer a hint, this fixes a
-> warning reported by Clang static code analyzer:
->
->     CC      hw/timer/pxa2xx_timer.o
->   hw/timer/pxa2xx_timer.c:146:17: warning: Assigned value is garbage or u=
-ndefined
->           counter =3D counters[n];
->                   ^ ~~~~~~~~~~~
->
+
+
+On 3/21/20 10:41 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Fix warning reported by Clang static code analyzer:
+>=20
+>     CC      hw/ide/sii3112.o
+>   hw/ide/sii3112.c:204:9: warning: Value stored to 'val' is never read
+>           val =3D 0;
+>           ^     ~
+>=20
+> Fixes: a9dd6604
 > Reported-by: Clang Static Analyzer
+> Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
 > ---
->  hw/timer/pxa2xx_timer.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
-> index cd172cc1e9..944c165889 100644
-> --- a/hw/timer/pxa2xx_timer.c
-> +++ b/hw/timer/pxa2xx_timer.c
-> @@ -140,6 +140,7 @@ static void pxa2xx_timer_update4(void *opaque, uint64=
-_t now_qemu, int n)
->      static const int counters[8] =3D { 0, 0, 0, 0, 4, 4, 6, 6 };
->      int counter;
->
-> +    assert(n < ARRAY_SIZE(counters));
->      if (s->tm4[n].control & (1 << 7))
->          counter =3D n;
->      else
-> --
-> 2.21.1
->
->
+> v2: Fix the correct function (Aleksandar review)
+> ---
+>  hw/ide/sii3112.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
+> index 06605d7af2..b2ff6dd6d9 100644
+> --- a/hw/ide/sii3112.c
+> +++ b/hw/ide/sii3112.c
+> @@ -42,7 +42,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwaddr a=
+ddr,
+>                                  unsigned int size)
+>  {
+>      SiI3112PCIState *d =3D opaque;
+> -    uint64_t val =3D 0;
+> +    uint64_t val;
+> =20
+>      switch (addr) {
+>      case 0x00:
+> @@ -126,6 +126,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwaddr=
+ addr,
+>          break;
+>      default:
+>          val =3D 0;
+> +        break;
+>      }
+>      trace_sii3112_read(size, addr, val);
+>      return val;
+> @@ -201,7 +202,7 @@ static void sii3112_reg_write(void *opaque, hwaddr ad=
+dr,
+>          d->regs[1].sien =3D (val >> 16) & 0x3eed;
+>          break;
+>      default:
+> -        val =3D 0;
+> +        break;
+>      }
+>  }
+> =20
+>=20
+
+Acked-by: John Snow <jsnow@redhat.com>
+

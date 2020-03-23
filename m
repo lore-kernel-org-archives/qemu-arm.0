@@ -1,136 +1,137 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1199416lfi;
-        Mon, 23 Mar 2020 02:13:03 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuV5Ja2HKnWyAl8OPNEQy0ifq+MfGQW7U99kDN0FlEbQLv4nSzH/zjReJoYx7BZKHfPjxFC
-X-Received: by 2002:a05:620a:11:: with SMTP id j17mr4806471qki.117.1584954783849;
-        Mon, 23 Mar 2020 02:13:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584954783; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1201764lfi;
+        Mon, 23 Mar 2020 02:15:28 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vukc2rny4czNGMWFk6YTCgfSaDdVRrkBrmrVZ5dkeFvR0370TIb7cbMbkmeCpjgws/nK5We
+X-Received: by 2002:a05:6214:aa2:: with SMTP id ew2mr124291qvb.123.1584954928001;
+        Mon, 23 Mar 2020 02:15:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584954927; cv=none;
         d=google.com; s=arc-20160816;
-        b=KTyX9w5tSGUD0W7rKsX/Zjs0CVka5g+f2ePyMj92FXxwz6CFvYuB7xTe6xB0qefm3X
-         PcrTANVHWfqte5cYzdhvzFe1rUb9SIfeG4gmBPt660VbIPzcW39zCFT1EdYBiGDjt80F
-         lBhiS9OriEqT1e+fAlRzSrSHUADBAfDDInPxP4YEJer71eT+PMZYq5Zs/9zKHNoiIeQn
-         zY+j2lXINiMzDhe3wuSKiAwjL+4oYuGLCj1bmPYAF17+K8dT92naSIsagz1xgzhuZu/J
-         UoOQxITnypASrKXsRKZ2c2AbMIdzhoWhFXWmwisNqFx2nnQzBzjI0m3RzTmc4gLUWFPQ
-         MdIA==
+        b=TjD4Y7imDaJ5lFQGcQNK1ShGRKA1e5wLApHMKkQpgJz8mN8qeGDClEky/kRchO4mrE
+         VhgizAPyVxbY4ArOe1CjEpX+WJVtx4lhaFIP804nKrt8A65eEe1ISSt27z2GuZ7A8mho
+         8bWDqEn/vMnDXkEiztaqdWd78IjE6+1wS4bZEIjICfL50DWOLzxYq8xWC9nqjKIDaTWv
+         T9INELJpUyYE3dU05qtUP2jDg12c+tsqyyr0g2ca3UkZdSzL0SzsAMhFErLrZTD8tS+q
+         tn7efOiqZK3dPKP/yrZDNAivz69iKKIxnfED7y2XQViG2JddqLRvnZjYdi4GApVzKSBE
+         tXow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=StYhV2lHqDdL8GVjx4Q/ZJ8fCC3CSz1lNcbb9k1iBQQ=;
-        b=a7tyln0BtK6vuM4uwUXvmAMT0x6PeP2DA+x+/7Dvgf+jhlioRFzUMfXzCUYSYClT5h
-         b5ynn+2WXSU3kTV6+bRGAlcR5aAUZc2qZUvh+/hjFKzmrmYOK0DkmKAP2on0Sk/HGb//
-         cf7+2yJKJoCZjc32Pb7eX2gWVHIO3aAcGftQvblE01h22FmAL1qTgSHnBUkKE8q3t2Fg
-         RgUTqzVwZRlxfCOUwnSSyFZ9fsZ0IxK2DXjaa5ld0jvaIMZNo0UGfSOc66fp7h3I4UNn
-         JhzNyO9MCXn8SCCgzF4XYduvpbyLQM4H/f5NtaOYtnBLW7IOpyNy7dTgtSJuB70SV9i4
-         AhHA==
+        bh=EUWJ8GOUn9hwL9Yz9puJR4/8Y57GGwK7T665TeWw/8I=;
+        b=FSIlSbfJCn+Smujn8uzHx+u3xlfgeuEShMMTcsYAQT55eXKI0a+PFdcM9x8/3Mt+j+
+         xqSFEkIvT+0WmPq4xlFOtlJf0jcj0Ij+b0UNJrPmi6CVse6fDbxeAkmeCbMv3GSt4Ndf
+         W3tB62EYlu9ZRBZvR67hcbMad/qtP17D0WernPKeGmQMwlm6zXz7Hei4Kqw80wDT6OVc
+         ff+dB8v2OizqCBfgNpja/YR+VRcZXkseWdU3thqEih7uogUUGcqKB54FuNXx96B1GHnG
+         L6Tr3wFKM8ep/fc4s9roKfGIRR0upCrRIREiCHBpSMdeJ5nF9ADi6+vIdHehu3D1xMUU
+         EAhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XS3ABJFP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=tIJiaCIs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o66si3817482qkc.50.2020.03.23.02.13.03
+        by mx.google.com with ESMTPS id t1si8039766qkb.29.2020.03.23.02.15.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Mar 2020 02:13:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Mar 2020 02:15:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XS3ABJFP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=tIJiaCIs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59024 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59082 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jGJ8p-0005wA-7E
-	for alex.bennee@linaro.org; Mon, 23 Mar 2020 05:13:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51532)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jGJB9-00084W-Ev
+	for alex.bennee@linaro.org; Mon, 23 Mar 2020 05:15:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51820)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jGJ8f-0005vQ-48
- for qemu-arm@nongnu.org; Mon, 23 Mar 2020 05:12:54 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jGJAF-0007IT-IU
+ for qemu-devel@nongnu.org; Mon, 23 Mar 2020 05:14:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jGJ8d-0004Kt-W6
- for qemu-arm@nongnu.org; Mon, 23 Mar 2020 05:12:52 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:37896)
+ (envelope-from <peter.maydell@linaro.org>) id 1jGJAE-0004tE-Gr
+ for qemu-devel@nongnu.org; Mon, 23 Mar 2020 05:14:31 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:46903)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jGJ8d-0004Ka-Rh
- for qemu-arm@nongnu.org; Mon, 23 Mar 2020 05:12:51 -0400
-Received: by mail-ot1-x343.google.com with SMTP id t28so12644750ott.5
- for <qemu-arm@nongnu.org>; Mon, 23 Mar 2020 02:12:51 -0700 (PDT)
+ id 1jGJAE-0004sx-Ah
+ for qemu-devel@nongnu.org; Mon, 23 Mar 2020 05:14:30 -0400
+Received: by mail-ot1-x341.google.com with SMTP id 111so12590713oth.13
+ for <qemu-devel@nongnu.org>; Mon, 23 Mar 2020 02:14:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=StYhV2lHqDdL8GVjx4Q/ZJ8fCC3CSz1lNcbb9k1iBQQ=;
- b=XS3ABJFPZiIbEtLJAt7sZ9CTqXOF7rsQ8Aha/qKZNVg8GZiz3Ufi8YXwDwUgL2UiI8
- iWzNepWlfYlMl49LMa9ecNHJpB5ifEgsONDOd9CoEbN0uES94MDGtpGP0LDgtfne3qWm
- C56jQf1uqo9j/qT1bOdsTJcdgmlB3sP7ORi7oO+TiIjZ///AqHUupXH1Pz+QcS6UxECM
- 7S6jnOoCDsH2JDgF75lP9mRgkKCMqhrjMvdMISkn16glSqYdA86Yl0mZKucwf7iAUJgX
- ZURuA2H25NLq96MjWv6zhnkimJAPlDquQaYnCGr+yDREt21+Tytf+KBM2Fh4Bf/aDEvP
- kWQw==
+ bh=EUWJ8GOUn9hwL9Yz9puJR4/8Y57GGwK7T665TeWw/8I=;
+ b=tIJiaCIspPeTW5n9OrlzwUfFhBOuPl/1pL/04Ktl0AK/brzBkIqnMyJL5Lzocly3ov
+ 7ogIqCl7zjdhaCN/YJIaa3vBv6/B/cXYa+A829jOXuRn/McGBgKSoCnHtrBhyRpvmAtm
+ 7Aeo6lGiMZNhqXNdHZHS0iWkMZVuTBftpsC0VuRxaIS6CrtoHWoNOp8Uvb4ccE12X0ce
+ SdYsuT/8ekbJwPr/STTj9WfF94VIxYU93V5OfuHVBZEuWsPQq2sGTW2VOcT96orJsHB3
+ 7twNhx88W9Yfj38W4z3Vpl8hI+Asa711j212iSDJtziN/14WV3bMKuXYUWkD5ZW9JODf
+ PH6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=StYhV2lHqDdL8GVjx4Q/ZJ8fCC3CSz1lNcbb9k1iBQQ=;
- b=Ky5pN7ilsKJNgJ610qGH5F3gVheI+F38inpU+aRfvD7u6gowxSy/rLanl85vIo7jBe
- RGqDVHgaj1DHwFance29FSZcUZJiyeUbJ8CcU3GElcUXHajn/iy0HNVoza2OtLb1CY2p
- hsv+JFuTHJn4nHmDUGCiHG1mAxz8Gi51RhSFnJP39fC5AmFanjUdwcdcIFm3AV1oj/eX
- 17sFC4JUXMdT15zR0dVd5a+iOwmeR4YT4KkQmHr8gCaFvurykiwcNEAqiizepNJ4QHhe
- PZyPORkM8sPrvNNM40K673FiGf4uYpAzeVwCybL5Ad1EFmBV8tk7sq0pwGTCvYjOs2Y8
- vjTg==
-X-Gm-Message-State: ANhLgQ2yHYLfyZNWVmKlfhAGVyAvY0ZvnDSuyx5kv6ryUOxhJL1eqTbL
- xzMBpuCWFgqux5wEZfic1nJdZ6Ks7kpHT1FWKnGhAA==
-X-Received: by 2002:a9d:1d43:: with SMTP id m61mr17260836otm.91.1584954770862; 
- Mon, 23 Mar 2020 02:12:50 -0700 (PDT)
+ bh=EUWJ8GOUn9hwL9Yz9puJR4/8Y57GGwK7T665TeWw/8I=;
+ b=hApIbg/TlhlCETI0jyn7xGf0ZUPmATigHwIuyAI+KsjTwOXNrtzMP7fVFVMWoICdTg
+ CEXqIMvqqHjJJwWmpfoiwDGhr7Al0SRo/8YEp/cOxhTHf8gFGO9rKXlGJpoyzCzRHizF
+ QHO5BRN3WnjI7WvxTMND1W40/PUSBL682HdZDsBOQl0JEDWzFaveVzndQxxFrF2eqOyV
+ tGDAphmxvmey0wl4spx7mp/5omE0RhAhJbkKKWvlsiNLLR99v6Z3U65D8dQeGWpDX2uj
+ K0dzoUBLz7j/9Fe//KS9dZj2jGAU3nCiGzDlFw5aVnkwJRgKiTB7XqCq2O+muoJsYYbM
+ 3r9Q==
+X-Gm-Message-State: ANhLgQ0b9f3bAeth9Asm9EeB6UbOyCG3CdOkvP76zNHfI3kCTsi7mCqi
+ HSi+b+eYbCcW8ET9DdG8hLhyLXfa+/YfxH/WkY9Enw==
+X-Received: by 2002:a05:6830:1f39:: with SMTP id
+ e25mr2183048oth.135.1584954869501; 
+ Mon, 23 Mar 2020 02:14:29 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200312213455.15854-1-philmd@redhat.com>
-In-Reply-To: <20200312213455.15854-1-philmd@redhat.com>
+References: <20200320053923.20565-1-clg@kaod.org>
+In-Reply-To: <20200320053923.20565-1-clg@kaod.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 23 Mar 2020 09:12:39 +0000
-Message-ID: <CAFEAcA-i5L1Xz_r28xs1waDcoz5ChnzUcoTb51s31oXBqeO_RQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/bcm283x: Correct the license text
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Date: Mon, 23 Mar 2020 09:14:18 +0000
+Message-ID: <CAFEAcA9BTThqvOofRR4g_vbdgVkMf0083cy6jj3vE3Mevu09kg@mail.gmail.com>
+Subject: Re: [PATCH] aspeed/smc: Fix DMA support for AST2600
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::341
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XFkaUpZcNCmY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Alistair Francis <alistair@alistair23.me>,
+ Joel Stanley <joel@jms.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oh9jPgnTv37D
 
-On Thu, 12 Mar 2020 at 21:35, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
+On Fri, 20 Mar 2020 at 05:39, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> The license is the 'GNU General Public License v2.0 or later',
-> not 'and':
+> Recent firmwares uses SPI DMA transfers in U-Boot to load the
+> different images (kernel, initrd, dtb) in the SoC DRAM. The AST2600
+> FMC model is missing the masks to be applied on the DMA registers
+> which resulted in incorrect values. Fix that and wire the SPI
+> controllers which have DMA support on the AST2600.
 >
->   This program is free software; you can redistribute it and/ori
->   modify it under the terms of the GNU General Public License as
->   published by the Free Software Foundation; either version 2 of
->   the License, or (at your option) any later version.
+> Fixes: bcaa8ddd081c ("aspeed/smc: Add AST2600 support")
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> ---
+>  hw/arm/aspeed_ast2600.c |  6 ++++++
+>  hw/ssi/aspeed_smc.c     | 15 +++++++++++++--
+>  hw/ssi/trace-events     |  1 +
+>  3 files changed, 20 insertions(+), 2 deletions(-)
 >
-> Fix the license comment.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-I was hoping for an ack from Andrew, but in any case I think
-the original licensing intention was clear and this is just
-a fixup on the wording.
+
 
 Applied to target-arm.next, thanks.
 

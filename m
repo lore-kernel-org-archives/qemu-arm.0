@@ -1,117 +1,96 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1558724lfi;
-        Mon, 23 Mar 2020 08:01:31 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vu9ztiUyJL+c/m6rWfq6ueaPHJITHBjz8y/DxQcFHfPpHfzqTN5sBSkvAJDYqCX9blwd4XI
-X-Received: by 2002:ac8:1628:: with SMTP id p37mr16937345qtj.277.1584975690924;
-        Mon, 23 Mar 2020 08:01:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584975690; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1574421lfi;
+        Mon, 23 Mar 2020 08:14:44 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtYxBI6xC3iCDA8t2pm8BmadXb4ykc6o2pNzKCcmWaBfi390iDm9mhfWktx2HKK4IzPx8q+
+X-Received: by 2002:a37:4284:: with SMTP id p126mr19738957qka.316.1584976484318;
+        Mon, 23 Mar 2020 08:14:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584976484; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ul1+SfmVRJvkNSvFqylyxE8qYWQ+mlJwd1+cexonnqEzM9sC8XiZweTpKVc4FS27Fp
-         LY3mXXcsgxEhKZj4M4gFVZ9xN++rZbH+UOY27uPwWfdBNJFh9OSlUGb+Dka6eQ1kfhJ2
-         8FrK/+lO4vKvGmdPnyNu+2bcUiFTxDR52jzVGY8Jc8+xZ2AY0PeTDkdQqzLnETtDsF8k
-         T47pLGfmKMlGgLXbKZTuIyEfsmyikeWqMY9vqn2nSFsM1SjgrqH7cPsBakXsAjZCM7u3
-         wdTRatVNtPq4msMvpiAE4+eyGdlWWiREQfOwl+HnhKH1/8zjCcBpxzdOi2bb8lY5CZoH
-         Hawg==
+        b=Ai3IoJpeKI1beeWGyteTUTzVH3+4XbrkEfnQWjMx997w9VGyfulJMqLzHxA6039GPL
+         Mkp8FYD/efTfqcx0TveyVM+EgCxgSkeVc/CBJTpMFhW6L/mOa7NibGSlelDTxfcwK/Ub
+         wan9W1jsjd41mLtutE78LpriRC4RfOtu2U3z6VqSeQtTA7WWhq5ajowOeCctPXGldYA4
+         lZML3k8uyx4QmhWtWDPtm2HzzqXQT/PRDGW7VXHufFiHOitxP0zzyn4KC5zu1g0p+fab
+         3hN6IrjEslkdfxXko6Sls/hQkRltwH+Fx1ysR8C8AoLx7remBEYN4Lq+tzjlvMR21MTY
+         QzfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=KKeE6h7tq0L0aScGIdzsCho9ssli9lSjPim6mqvxRxM=;
-        b=K04ZSs99/OGckpfRhWloiBdLY5mQ4wYlQbrQKpGvSm03mEqhlKuU+2Ckfnmy5rFMzF
-         XwDxcV/hl1n+WoOSPhRIzBeolJVbkig5EBu7PXG0MJOoCz4D/91+AS18ysXsyxH9w2fq
-         9cqTaF3z/95YtfMorpxhtdz8w3uKYOYk84I9wJLDdhyhn+h36I/f9RaPOjQDZExDLkm6
-         pRh7NK1C0i+MTIY9BOYLkvKPlMP/Hx+Z44FxsyzL75LCvzPSTjL8GnmQCDwd+i9+xN8s
-         Qtkdrb1Z/iAAOU7Txtn7Xxa23OSWVf+hg/qSfSznKhWa50pH88jFAOiLEzF6drgZVIfF
-         Fqsg==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=wVKsPYKfV8Xv8iDOLjQ8gpLL6Prt0vNHjZJ5kMX8EV8=;
+        b=N6EahScK7zgrjlulo/yYFG0B/cwmVD7qM3Cmq1humvYN+rV16wY6qM4nldn+rlVh2W
+         57UPGn8aS1Xl5aaoxYcGjZdG+8u8TR37n9/TG1FM0RG3SDWyI62BuE2yf/gSVJ4m+mDm
+         FHzsaIFWGErvBbwev7hVpEd82e5pEbR8ftAAcvDngVsEVyNckBFprbq0H8uTa8sq/2VS
+         4980kQoaWlJzh9mI1yxmGMkRdeoHrQ2BicS+7nzWgHwu9lDwsv3M5Odh16cbfxqlf9zy
+         ASrWkTNzz3PGmbzNC85QOX0ef76AKwTVKx/TxPrOG9jE3ITdfjva1jMrleXilZAXJqNf
+         629A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iupApbdA;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ScmK3kaf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n5si9303652qti.323.2020.03.23.08.01.30
+        by mx.google.com with ESMTPS id o12si9117811qto.164.2020.03.23.08.14.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Mar 2020 08:01:30 -0700 (PDT)
+        Mon, 23 Mar 2020 08:14:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iupApbdA;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ScmK3kaf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35090 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35224 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jGOa2-00013V-A3
-	for alex.bennee@linaro.org; Mon, 23 Mar 2020 11:01:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46736)
+	id 1jGOmp-0006qU-MQ
+	for alex.bennee@linaro.org; Mon, 23 Mar 2020 11:14:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49071)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jGOZo-0000yj-5o
- for qemu-arm@nongnu.org; Mon, 23 Mar 2020 11:01:17 -0400
+ (envelope-from <imammedo@redhat.com>) id 1jGOmf-0006qB-Ph
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 11:14:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jGOZm-0008KS-Iw
- for qemu-arm@nongnu.org; Mon, 23 Mar 2020 11:01:16 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:49600)
+ (envelope-from <imammedo@redhat.com>) id 1jGOmc-0005Og-O9
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 11:14:32 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:33223)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jGOZm-0008Jd-Cd
- for qemu-arm@nongnu.org; Mon, 23 Mar 2020 11:01:14 -0400
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1jGOmb-0005O6-8I
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 11:14:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584975673;
+ s=mimecast20190719; t=1584976468;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KKeE6h7tq0L0aScGIdzsCho9ssli9lSjPim6mqvxRxM=;
- b=iupApbdAlkqB7Z3/zGrBNV1vEZETnBN+oZH6CaPNZKqWLSXtDoKvDvXNDklx0g3cOkJtvK
- pvuR2dwcBRmbfoyfJTOMOcvFYSRbVla9/Dpa/91q0RnOV6ujSzHAYkXLmvnu4Nid4bcfAB
- N7z9cI+OwpY/zTtIvrfq0VepMr3gSZ8=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-80-BjEzEQtDOFSv3dYgi6bf5A-1; Mon, 23 Mar 2020 11:01:08 -0400
-X-MC-Unique: BjEzEQtDOFSv3dYgi6bf5A-1
-Received: by mail-wm1-f69.google.com with SMTP id x23so776389wmj.1
- for <qemu-arm@nongnu.org>; Mon, 23 Mar 2020 08:01:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=B6se+74uq8IigJ1DNxLJ6QpeoObvmc8ZqUW9UUwi4Q0=;
- b=ISbLjIERvYMmUrnL6upEdFok46VGqYytMFTcAlfo7JPBYrt+jXKXyKtK9xkofGqkG3
- VNhXLJFadCAwB1zXGnje5dTScPyRWRaX6xh0nAN+pWhownafcyaEAulFxyGp/cHONPMi
- HrJx5hnFxz1o8BIYoFkZPRX+icrYNKIpkNAd/BDAOPgmiiVObWY5I/glBHZPA0zpRe5t
- 74wZrgD8plGGdjwFKek5gFwRtKjWaNZrd8glCqAjl6S0+juaFYRBq3miFff3G0/JUHX7
- m9snc9/FW2ZDpXlTr/wlggNmFDu0TtcCIbJNEtg8HgjhJMEJrmtZ/C9nYfS6osHnAqKa
- aEcw==
-X-Gm-Message-State: ANhLgQ0g3CAKjFM3BKn1wGZFKx1TwqaDi8XXbR2gUiRdeh24KTQeqZQM
- 1+dfj34vRqdUAGlthiai/L66PxMP7rAMMWRJvof9D0QESb8Ev8p+0wz956duZl/sqsMmjCI9Y4K
- i5y4mJI4rqUN4
-X-Received: by 2002:adf:8187:: with SMTP id 7mr17180836wra.358.1584975667311; 
- Mon, 23 Mar 2020 08:01:07 -0700 (PDT)
-X-Received: by 2002:adf:8187:: with SMTP id 7mr17180780wra.358.1584975666830; 
- Mon, 23 Mar 2020 08:01:06 -0700 (PDT)
-Received: from [192.168.1.35] (37.red-83-52-54.dynamicip.rima-tde.net.
- [83.52.54.37])
- by smtp.gmail.com with ESMTPSA id f14sm21834164wmb.3.2020.03.23.08.01.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 23 Mar 2020 08:01:06 -0700 (PDT)
-Subject: Re: [PATCH-for-5.0 v2 00/11] misc: Trivial static code analyzer fixes
-To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
-References: <20200321144110.5010-1-philmd@redhat.com>
- <1c711740-6166-c730-ef67-d07511add1e6@vivier.eu>
- <262f8318-1590-1c48-f4de-a6482fdc3071@redhat.com>
- <10431e44-880a-cbec-c35e-1d425064c40b@vivier.eu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <1016a691-244d-9890-01bb-894e62414963@redhat.com>
-Date: Mon, 23 Mar 2020 16:01:04 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ bh=wVKsPYKfV8Xv8iDOLjQ8gpLL6Prt0vNHjZJ5kMX8EV8=;
+ b=ScmK3kafgXhX8V4MZDXcH4PG2yydyaI6gUSH2o5F44v7J/6Cfmb66ycOCgWALt7qkDMQAt
+ qiH5tsSNWXaZFMksG8wUVfA6UtLVdzKMvys5pb6781f/QH2xOedh7x3t90iQ01Qb3koy3G
+ 1z2P+3mzHI398kKiHT5ReJ6fYNFfEXM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-192-MaonSmhuPqmLlIF-8Yb3bg-1; Mon, 23 Mar 2020 11:14:26 -0400
+X-MC-Unique: MaonSmhuPqmLlIF-8Yb3bg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1125F1937FE8;
+ Mon, 23 Mar 2020 15:14:25 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.31])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B1BB29B935;
+ Mon, 23 Mar 2020 15:14:07 +0000 (UTC)
+Date: Mon, 23 Mar 2020 16:14:06 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH v3 05/10] nvdimm: Use configurable ACPI IO base and size
+Message-ID: <20200323161406.07bc0acc@redhat.com>
+In-Reply-To: <20200311172014.33052-6-shameerali.kolothum.thodi@huawei.com>
+References: <20200311172014.33052-1-shameerali.kolothum.thodi@huawei.com>
+ <20200311172014.33052-6-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <10431e44-880a-cbec-c35e-1d425064c40b@vivier.eu>
-Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 63.128.21.74
 X-BeenThere: qemu-arm@nongnu.org
@@ -125,100 +104,235 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- BALATON Zoltan <balaton@eik.bme.hu>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>,
- Michael Tokarev <mjt@tls.msk.ru>, Alistair Francis <alistair@alistair23.me>,
- qemu-arm@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
- Kevin Wolf <kwolf@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- Max Reitz <mreitz@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, david@redhat.com,
+ shannon.zhaosl@gmail.com, mst@redhat.com, qemu-devel@nongnu.org,
+ xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
+ qemu-arm@nongnu.org, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rpbxJEUsjxhN
+X-TUID: zzSeS7PIuyTG
 
-On 3/23/20 3:55 PM, Laurent Vivier wrote:
-> Le 23/03/2020 =C3=A0 15:45, Philippe Mathieu-Daud=C3=A9 a =C3=A9crit=C2=
-=A0:
->> On 3/23/20 3:32 PM, Laurent Vivier wrote:
->>> Le 21/03/2020 =C3=A0 15:40, Philippe Mathieu-Daud=C3=A9 a =C3=A9crit=C2=
-=A0:
->>>> Fix trivial warnings reported by the Clang static code analyzer.
->>>>
->>>> Since v1:
->>>> - Addressed Markus/Zoltan/Aleksandar review comments
->>>>
->>>> Philippe Mathieu-Daud=C3=A9 (11):
->>>>  =C2=A0=C2=A0 block: Avoid dead assignment
->>>>  =C2=A0=C2=A0 blockdev: Remove dead assignment
->>>>  =C2=A0=C2=A0 hw/i2c/pm_smbus: Remove dead assignment
->>>>  =C2=A0=C2=A0 hw/input/adb-kbd: Remove dead assignment
->>>>  =C2=A0=C2=A0 hw/ide/sii3112: Remove dead assignment
->>>>  =C2=A0=C2=A0 hw/isa/i82378: Remove dead assignment
->>>>  =C2=A0=C2=A0 hw/gpio/aspeed_gpio: Remove dead assignment
->>>>  =C2=A0=C2=A0 hw/timer/exynos4210_mct: Remove dead assignments
->>>>  =C2=A0=C2=A0 hw/timer/stm32f2xx_timer: Remove dead assignment
->>>>  =C2=A0=C2=A0 hw/timer/pxa2xx_timer: Add assertion to silent static an=
-alyzer
->>>> warning
->>>>  =C2=A0=C2=A0 hw/scsi/esp-pci: Remove dead assignment
->>>>
->>>>  =C2=A0 block.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 2 +-
->>>>  =C2=A0 blockdev.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 2 +-
->>>>  =C2=A0 hw/gpio/aspeed_gpio.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 2 +-
->>>>  =C2=A0 hw/i2c/pm_smbus.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 | 1 -
->>>>  =C2=A0 hw/ide/sii3112.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 | 5 +++--
->>>>  =C2=A0 hw/input/adb-kbd.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 | 6 +-----
->>>>  =C2=A0 hw/isa/i82378.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 | 8 ++++----
->>>>  =C2=A0 hw/scsi/esp-pci.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 | 1 -
->>>>  =C2=A0 hw/timer/exynos4210_mct.c=C2=A0 | 3 ---
->>>>  =C2=A0 hw/timer/pxa2xx_timer.c=C2=A0=C2=A0=C2=A0 | 1 +
->>>>  =C2=A0 hw/timer/stm32f2xx_timer.c | 1 -
->>>>  =C2=A0 11 files changed, 12 insertions(+), 20 deletions(-)
->>>>
->>>
->>> I think your series covers cases already covered by:
->>>
->>> [PATCH v3 00/12] redundant code: Fix warnings reported by Clang static
->>> code analyzer
->>> https://patchew.org/QEMU/20200302130715.29440-1-kuhn.ch
->>
->> Unfortunately [for me...] I don't have v3 in my INBOX... *sigh*
->> This was 3 weeks ago. *sigh*.
->>
->> I can see the series in the archives:
->> https://lists.gnu.org/archive/html/qemu-devel/2020-03/msg00219.html
->> But I can't find the outcome, was it queued in the trivial tree?
->> Any idea when this will be merged in the master tree?
->=20
-> Some patches are already merged via trivial (1, 2 (should go by SCSI
-> queue) 3, 5, 6, 7, 9, 11 (by USB queue), 12).
->=20
-> But others needed R-b tags or new version. I didn't check which of your
-> patches are already covered by this series.
->=20
-> I'm sorry to not have checked your series earlier...
+On Wed, 11 Mar 2020 17:20:09 +0000
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-Don't be sorry, the problem is my INBOX that is unreliable.
+> From: Kwangwoo Lee <kwangwoo.lee@sk.com>
+> 
+> This patch makes IO base and size configurable to create NPIO AML for
+> ACPI NFIT. Since a different architecture like AArch64 does not use
+> port-mapped IO, a configurable IO base is required to create correct
+> mapping of ACPI IO address and size.
+> 
+> Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 
-I was using NNTP last month until I heard it was working properly again,=20
-which is not the case apparently. I'll try to find them on NNTP and=20
-review them.
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
->=20
-> Thanks,
-> Laurent
->=20
+> ---
+>  hw/acpi/nvdimm.c        | 32 ++++++++++++++++++++++----------
+>  hw/i386/acpi-build.c    |  6 ++++++
+>  hw/i386/acpi-build.h    |  3 +++
+>  hw/i386/pc_piix.c       |  2 ++
+>  hw/i386/pc_q35.c        |  2 ++
+>  include/hw/mem/nvdimm.h |  3 +++
+>  6 files changed, 38 insertions(+), 10 deletions(-)
+> 
+> diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
+> index 213556f35d..fb99ad845a 100644
+> --- a/hw/acpi/nvdimm.c
+> +++ b/hw/acpi/nvdimm.c
+> @@ -900,11 +900,13 @@ void nvdimm_acpi_plug_cb(HotplugHandler *hotplug_dev, DeviceState *dev)
+>  }
+>  
+>  void nvdimm_init_acpi_state(NVDIMMState *state, MemoryRegion *io,
+> +                            struct AcpiGenericAddress dsm_io,
+>                              FWCfgState *fw_cfg, Object *owner)
+>  {
+> +    state->dsm_io = dsm_io;
+>      memory_region_init_io(&state->io_mr, owner, &nvdimm_dsm_ops, state,
+> -                          "nvdimm-acpi-io", NVDIMM_ACPI_IO_LEN);
+> -    memory_region_add_subregion(io, NVDIMM_ACPI_IO_BASE, &state->io_mr);
+> +                          "nvdimm-acpi-io", dsm_io.bit_width >> 3);
+> +    memory_region_add_subregion(io, dsm_io.address, &state->io_mr);
+>  
+>      state->dsm_mem = g_array_new(false, true /* clear */, 1);
+>      acpi_data_push(state->dsm_mem, sizeof(NvdimmDsmIn));
+> @@ -933,13 +935,15 @@ void nvdimm_init_acpi_state(NVDIMMState *state, MemoryRegion *io,
+>  
+>  #define NVDIMM_QEMU_RSVD_UUID   "648B9CF2-CDA1-4312-8AD9-49C4AF32BD62"
+>  
+> -static void nvdimm_build_common_dsm(Aml *dev)
+> +static void nvdimm_build_common_dsm(Aml *dev,
+> +                                    NVDIMMState *nvdimm_state)
+>  {
+>      Aml *method, *ifctx, *function, *handle, *uuid, *dsm_mem, *elsectx2;
+>      Aml *elsectx, *unsupport, *unpatched, *expected_uuid, *uuid_invalid;
+>      Aml *pckg, *pckg_index, *pckg_buf, *field, *dsm_out_buf, *dsm_out_buf_size;
+>      Aml *whilectx, *offset;
+>      uint8_t byte_list[1];
+> +    AmlRegionSpace rs;
+>  
+>      method = aml_method(NVDIMM_COMMON_DSM, 5, AML_SERIALIZED);
+>      uuid = aml_arg(0);
+> @@ -950,9 +954,16 @@ static void nvdimm_build_common_dsm(Aml *dev)
+>  
+>      aml_append(method, aml_store(aml_name(NVDIMM_ACPI_MEM_ADDR), dsm_mem));
+>  
+> +    if (nvdimm_state->dsm_io.space_id == AML_AS_SYSTEM_IO) {
+> +        rs = AML_SYSTEM_IO;
+> +    } else {
+> +        rs = AML_SYSTEM_MEMORY;
+> +    }
+> +
+>      /* map DSM memory and IO into ACPI namespace. */
+> -    aml_append(method, aml_operation_region(NVDIMM_DSM_IOPORT, AML_SYSTEM_IO,
+> -               aml_int(NVDIMM_ACPI_IO_BASE), NVDIMM_ACPI_IO_LEN));
+> +    aml_append(method, aml_operation_region(NVDIMM_DSM_IOPORT, rs,
+> +               aml_int(nvdimm_state->dsm_io.address),
+> +               nvdimm_state->dsm_io.bit_width >> 3));
+>      aml_append(method, aml_operation_region(NVDIMM_DSM_MEMORY,
+>                 AML_SYSTEM_MEMORY, dsm_mem, sizeof(NvdimmDsmIn)));
+>  
+> @@ -967,7 +978,7 @@ static void nvdimm_build_common_dsm(Aml *dev)
+>      field = aml_field(NVDIMM_DSM_IOPORT, AML_DWORD_ACC, AML_NOLOCK,
+>                        AML_PRESERVE);
+>      aml_append(field, aml_named_field(NVDIMM_DSM_NOTIFY,
+> -               NVDIMM_ACPI_IO_LEN * BITS_PER_BYTE));
+> +               nvdimm_state->dsm_io.bit_width));
+>      aml_append(method, field);
+>  
+>      /*
+> @@ -1268,7 +1279,8 @@ static void nvdimm_build_nvdimm_devices(Aml *root_dev, uint32_t ram_slots)
+>  }
+>  
+>  static void nvdimm_build_ssdt(GArray *table_offsets, GArray *table_data,
+> -                              BIOSLinker *linker, GArray *dsm_dma_area,
+> +                              BIOSLinker *linker,
+> +                              NVDIMMState *nvdimm_state,
+>                                uint32_t ram_slots)
+>  {
+>      Aml *ssdt, *sb_scope, *dev;
+> @@ -1296,7 +1308,7 @@ static void nvdimm_build_ssdt(GArray *table_offsets, GArray *table_data,
+>       */
+>      aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0012")));
+>  
+> -    nvdimm_build_common_dsm(dev);
+> +    nvdimm_build_common_dsm(dev, nvdimm_state);
+>  
+>      /* 0 is reserved for root device. */
+>      nvdimm_build_device_dsm(dev, 0);
+> @@ -1315,7 +1327,7 @@ static void nvdimm_build_ssdt(GArray *table_offsets, GArray *table_data,
+>                                                 NVDIMM_ACPI_MEM_ADDR);
+>  
+>      bios_linker_loader_alloc(linker,
+> -                             NVDIMM_DSM_MEM_FILE, dsm_dma_area,
+> +                             NVDIMM_DSM_MEM_FILE, nvdimm_state->dsm_mem,
+>                               sizeof(NvdimmDsmIn), false /* high memory */);
+>      bios_linker_loader_add_pointer(linker,
+>          ACPI_BUILD_TABLE_FILE, mem_addr_offset, sizeof(uint32_t),
+> @@ -1337,7 +1349,7 @@ void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
+>          return;
+>      }
+>  
+> -    nvdimm_build_ssdt(table_offsets, table_data, linker, state->dsm_mem,
+> +    nvdimm_build_ssdt(table_offsets, table_data, linker, state,
+>                        ram_slots);
+>  
+>      device_list = nvdimm_get_device_list();
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 80f05d728d..ed2b9af8d8 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -128,6 +128,12 @@ typedef struct FwCfgTPMConfig {
+>  
+>  static bool acpi_get_mcfg(AcpiMcfgInfo *mcfg);
+>  
+> +const struct AcpiGenericAddress x86_nvdimm_acpi_dsmio = {
+> +    .space_id = AML_AS_SYSTEM_IO,
+> +    .address = NVDIMM_ACPI_IO_BASE,
+> +    .bit_width = NVDIMM_ACPI_IO_LEN << 3
+> +};
+> +
+>  static void init_common_fadt_data(MachineState *ms, Object *o,
+>                                    AcpiFadtData *data)
+>  {
+> diff --git a/hw/i386/acpi-build.h b/hw/i386/acpi-build.h
+> index 007332e51c..74df5fc612 100644
+> --- a/hw/i386/acpi-build.h
+> +++ b/hw/i386/acpi-build.h
+> @@ -1,6 +1,9 @@
+>  
+>  #ifndef HW_I386_ACPI_BUILD_H
+>  #define HW_I386_ACPI_BUILD_H
+> +#include "hw/acpi/acpi-defs.h"
+> +
+> +extern const struct AcpiGenericAddress x86_nvdimm_acpi_dsmio;
+>  
+>  void acpi_setup(void);
+>  
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index e2d98243bc..f0066d2394 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -61,6 +61,7 @@
+>  #include "migration/misc.h"
+>  #include "sysemu/numa.h"
+>  #include "hw/mem/nvdimm.h"
+> +#include "hw/i386/acpi-build.h"
+>  
+>  #define MAX_IDE_BUS 2
+>  
+> @@ -297,6 +298,7 @@ else {
+>  
+>      if (machine->nvdimms_state->is_enabled) {
+>          nvdimm_init_acpi_state(machine->nvdimms_state, system_io,
+> +                               x86_nvdimm_acpi_dsmio,
+>                                 x86ms->fw_cfg, OBJECT(pcms));
+>      }
+>  }
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index d37c425e22..d2806c1b29 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -54,6 +54,7 @@
+>  #include "qemu/error-report.h"
+>  #include "sysemu/numa.h"
+>  #include "hw/mem/nvdimm.h"
+> +#include "hw/i386/acpi-build.h"
+>  
+>  /* ICH9 AHCI has 6 ports */
+>  #define MAX_SATA_PORTS     6
+> @@ -315,6 +316,7 @@ static void pc_q35_init(MachineState *machine)
+>  
+>      if (machine->nvdimms_state->is_enabled) {
+>          nvdimm_init_acpi_state(machine->nvdimms_state, system_io,
+> +                               x86_nvdimm_acpi_dsmio,
+>                                 x86ms->fw_cfg, OBJECT(pcms));
+>      }
+>  }
+> diff --git a/include/hw/mem/nvdimm.h b/include/hw/mem/nvdimm.h
+> index 4807ca615b..a3c08955e8 100644
+> --- a/include/hw/mem/nvdimm.h
+> +++ b/include/hw/mem/nvdimm.h
+> @@ -26,6 +26,7 @@
+>  #include "hw/mem/pc-dimm.h"
+>  #include "hw/acpi/bios-linker-loader.h"
+>  #include "qemu/uuid.h"
+> +#include "hw/acpi/aml-build.h"
+>  
+>  #define NVDIMM_DEBUG 0
+>  #define nvdimm_debug(fmt, ...)                                \
+> @@ -147,10 +148,12 @@ struct NVDIMMState {
+>       */
+>      int32_t persistence;
+>      char    *persistence_string;
+> +    struct AcpiGenericAddress dsm_io;
+>  };
+>  typedef struct NVDIMMState NVDIMMState;
+>  
+>  void nvdimm_init_acpi_state(NVDIMMState *state, MemoryRegion *io,
+> +                            struct AcpiGenericAddress dsm_io,
+>                              FWCfgState *fw_cfg, Object *owner);
+>  void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
+>                         BIOSLinker *linker, NVDIMMState *state,
 

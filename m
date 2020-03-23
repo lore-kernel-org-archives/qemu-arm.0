@@ -1,100 +1,100 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1619366lfi;
-        Mon, 23 Mar 2020 08:57:14 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtvqUkomJWKyUWTzOoD70+aWj/BjXOOXV8wq2x7RHMpDpZ1SSEWt2DPtC8Y8uA9UO86au7r
-X-Received: by 2002:a05:6214:138a:: with SMTP id g10mr21508199qvz.231.1584979034254;
-        Mon, 23 Mar 2020 08:57:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584979034; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1620693lfi;
+        Mon, 23 Mar 2020 08:58:31 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvIW2aHEvYAismHXn86ZJO3UEb3cnoqnLwCDz+zsic8QLHzuZ7q8ceOI6eAgfqXqFASpAeg
+X-Received: by 2002:a0c:9e45:: with SMTP id z5mr13683221qve.250.1584979111264;
+        Mon, 23 Mar 2020 08:58:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584979111; cv=none;
         d=google.com; s=arc-20160816;
-        b=SygiLK2WJ2fXh3BXYdKVK4zJtEYWwK6On8wGYrx2CuVe2AUu6hF3zuxx5eoE4FS9dc
-         hbyHSuKDZXd6JzTb+w+c1Aa0s0paIb+bar9DOVcPjYj9JRwJn+udbkA66X7LRWaMpIU/
-         nL5UCUFPfZmqAJTprRGOXadgIo2CNqh9o9CFA62IR0IHjhn2sMZkSTFC8wK4ulue4Bvv
-         yIgUb/EYSGxJWCr5JHAgbdwLiqqqBpToEas7rw7hnHKALjjZrdCcmAL6mH86gFjhAbcS
-         JEWtrafeVeaLcge3GAXUl3Fdr5rMTfns+GGq08BctKUt/k77Hntvvl4zM6Cp6ZJh+Nzs
-         E0OQ==
+        b=ERbF4SZbR5S5TneawLkid2r03ToXBBpeHTQhfz5q3iPCOvcocfpweKK8JhjpxZ0kgX
+         iHiqWDe/lLrnsC47KlcYY4KAmkbKgeP9f/bKDQCY0VKqbYAxdT8tPIufVkOIRNJRe2vP
+         4DdhhPNbEqmdx14ccW8Nbbx37yWFaFR2rfPptM6ADGv6vCm23j4Uxm1d5DtjRqzvanfG
+         DX4r7DNpWYjyisgggGLjNkTWutVYeR9GF2WMCvyxaB5u5o6YJmCXldW0BWU+LTKuFPTo
+         UAWQv/M5lXf4w9x27kUFGjgHeALptu9arqrkxcmDo/W95JD22Nl2PFAlXEx1b33Fyyj2
+         et9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=9sdYk+m9VIBNOHQO5FBubdeWBpMknt0oInCQuRCvabk=;
-        b=NrmpV9GJUbWv70BPnLN06ktIi00i/kgIOXbkQ7RUb4zrCT5zh9X5IbZOgumSFoPA+J
-         WXF/oVIWoHrTB6WYYryVFNomYtQGMzH/9bdQx186q5phwZEeJr7dWdlw12DMmwqWLRU1
-         jZUDSZ2YNbCqusdeXeihicYxdgSCirFg/g10Nt5fl0T01xNR61HSWqLT7o3tC9p/Rcax
-         NsgduAgMpfoaIntjcT2MX5S75N+x0LIFC1DTRyx1BZ/Tm+Iya1dwTCdC1hsOXxfkMlkC
-         zOycMd0ixPXZ+RbMZjqsG/ez2NZbMSyK5dbscKJGRnz4OxpMDADAV7sFOCl7Cz9tZ0GV
-         vS1A==
+        bh=M8YISYLxprjf1kzWXEpmDWYbQYJJMFlnRQMRu8MBWHM=;
+        b=zrWdOyVzsvjUdSUFK9qU3AA0y41nXIKkh7baDzlJcQdCXI+TcD1uIse4l8cznH60IV
+         +RFz5nfN60vyieSuL9VaYTGNx8FQc9t9EleXxUL1TKU9rnJM58c8kGM3oyo34ekjTl+5
+         CzkEr5rS6z3jiVa+5xcx4wLKMmuyi7OUWLnSLgbrJUc1bmjnsnX3zfVH/gowplIW4Qrd
+         cfB3oRYCxuMyi6JmMIBmhqli+kCCCh9kFTEqNhnKrWBAU9tjZODqDoJOmw0Z+fLmbYJ6
+         J2tQxJckIpZvDbaXXTsrFvuzSWlo0wCzill9N8J+0JCoHZIJFwdnLSyugZa4SzylQoqb
+         AZuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HcvVC9rS;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oXpHylHN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6si8641967qth.281.2020.03.23.08.57.14
+        by mx.google.com with ESMTPS id dy12si8431658qvb.137.2020.03.23.08.58.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Mar 2020 08:57:14 -0700 (PDT)
+        Mon, 23 Mar 2020 08:58:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HcvVC9rS;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oXpHylHN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35998 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36022 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jGPRx-0007cN-Lf
-	for alex.bennee@linaro.org; Mon, 23 Mar 2020 11:57:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59394)
+	id 1jGPTC-00014v-JB
+	for alex.bennee@linaro.org; Mon, 23 Mar 2020 11:58:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59774)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1jGPRf-0007Ij-N8
- for qemu-arm@nongnu.org; Mon, 23 Mar 2020 11:56:56 -0400
+ (envelope-from <alistair23@gmail.com>) id 1jGPT1-0000v5-Al
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 11:58:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1jGPRe-0003j6-BP
- for qemu-arm@nongnu.org; Mon, 23 Mar 2020 11:56:55 -0400
-Received: from mail-ua1-x941.google.com ([2607:f8b0:4864:20::941]:36388)
+ (envelope-from <alistair23@gmail.com>) id 1jGPT0-0004lu-9Y
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 11:58:19 -0400
+Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943]:45101)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1jGPRY-0003gE-7A; Mon, 23 Mar 2020 11:56:48 -0400
-Received: by mail-ua1-x941.google.com with SMTP id o15so3297539ual.3;
- Mon, 23 Mar 2020 08:56:46 -0700 (PDT)
+ id 1jGPSt-0004bZ-VI; Mon, 23 Mar 2020 11:58:12 -0400
+Received: by mail-ua1-x943.google.com with SMTP id 9so5142504uav.12;
+ Mon, 23 Mar 2020 08:58:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=9sdYk+m9VIBNOHQO5FBubdeWBpMknt0oInCQuRCvabk=;
- b=HcvVC9rSVzeRmghwV0dJsoagZ9/o/EtcUICpPdEIItvD2CqprcMlHNhVhCnPJJc5Tx
- 3KOABXPct/V6qgxgaWbeDQzF3wmc+p90p0SfGgCKsHr1WzlXcq23piVpb+ec2qkDNljR
- kW+b5UlTu44XqnxCgwSQhU116gSDExzlDkwzciQK4y8hN41rAr9ETxr4dY8DDWUSFFD+
- Q8zR8vUkJLDb8SIT+EboUmo+QwO1Fqfaq+LpSv8gCPnsPnDOdBuffmdhM3aYVB354Koq
- iQ5zOQrKZPQY0ioj6PmUQIl7ahzn7ohtnG+6QijI8n/hcVbEZtmjbHNTa8wLxFsw2yf+
- hw6w==
+ bh=M8YISYLxprjf1kzWXEpmDWYbQYJJMFlnRQMRu8MBWHM=;
+ b=oXpHylHNOUaYSZg4fvvouJKGdNtzr/SSrOYYCcf7Q7Ptgln46YtSkXeZnTr1LCcCbH
+ gBCntqBUz+MS2YdG6MTj1sTenrlTTJqnT7SEdbDHHmChJRfEX8oklwohLyUt/1zECjaF
+ UgQNEfruFzk1mI+zCGCqCsffFep3PJmRYWZcF+vyIqMvLMVUvHmumB/iD8ncpGDptYlI
+ cUYd8dGmfRYUKzWM4bbUCNacEGVHO7siMBbSUbyM6CfPeQUm/SWJbXV8C+Ex9ffGgF4f
+ PVVAxv2xa/ybojMKz4099t+jOxK55TvVqIGo+fBGPrAinFeci+eNilikm6UMLe6G13xX
+ dOvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=9sdYk+m9VIBNOHQO5FBubdeWBpMknt0oInCQuRCvabk=;
- b=uGGR7pdo/lPhesTzHc7maVYJiL4IEOd0WI4iGjtz+b0xXvxLE/tH7HOO+9rByErCin
- bUy32z3O3T3J8N67Bq29HV9IuCV/Gv0uPrEfCCWs1htCiqf1A25CRHEp+8vvfoUNLQ+P
- O+zAAIjDMRH5G/TzNPxmAVxRoudac65zuf8zjSlNQyNY453/a8MnC3ZeJIX8mHitlGEU
- tEM56F/RtBmS50MkWc/r7hzAURSMFu1ZV6djhDIXNBGqByo2y6vjBB0+mmw0pHy7yxK1
- x2SVHNBwunQ2tV3TfjeM7AYG5EefGkzwZIViysPWz0CfLZDOWsGso68PERjYHV/MUNTR
- puhw==
-X-Gm-Message-State: ANhLgQ1e+CPpsiJOHeLqDB4lsdO4No9Z5vHwn2T26mbhJJoElu5lkTpi
- GzYfCT3JPqqt9mLzHMmrN7fYybPZq5wjJ5hQtfI=
-X-Received: by 2002:a9f:2964:: with SMTP id t91mr7715691uat.21.1584979005734; 
- Mon, 23 Mar 2020 08:56:45 -0700 (PDT)
+ bh=M8YISYLxprjf1kzWXEpmDWYbQYJJMFlnRQMRu8MBWHM=;
+ b=B6MD1GZqnkdd7mpXijcTFugC2pF1bpogRFvchFKf+CQiaaBwDcqv0t75WxM9ea24M4
+ 6BeOk1/v5xeVWuBLt5XnNVoIoazgUPde++suZiDK7MZCdh/Hp56IbbbYZ3GgT5TKSyWM
+ 4ep71QfiryOzwnDZiFAo+o46zMC82qLhpMBNEw+dZwr5wXtu4GQj/jnEpZWGkLgFRXV1
+ HpgTSPrEoux222DXLmQjbl/L2CcPFsWIrKizzUqZnR1FUNOfoW1oHSyng51J+TNV8vWf
+ R1AGnn+z8xE7Mb1fkntUf8Ed4vViMZSpZa4F7kWwUgznEnXSQuY4w1UTSor9VF/bCy56
+ wcMg==
+X-Gm-Message-State: ANhLgQ1NDXiDNJAbdWzLQl+Eoli/kP27zXMEZwBri9jL/N+oJakrrwDe
+ CF9lIxmcta2QqUu6VDltVLZiWzpp1YHY1MIgk5w=
+X-Received: by 2002:ab0:630b:: with SMTP id a11mr13904640uap.133.1584979091256; 
+ Mon, 23 Mar 2020 08:58:11 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200321144110.5010-1-philmd@redhat.com>
- <20200321144110.5010-2-philmd@redhat.com>
-In-Reply-To: <20200321144110.5010-2-philmd@redhat.com>
+ <20200321144110.5010-4-philmd@redhat.com>
+In-Reply-To: <20200321144110.5010-4-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 23 Mar 2020 08:48:47 -0700
-Message-ID: <CAKmqyKNRs-ARh9vcV_TywnM1dBfQtMfUXV94sHTjY2BSE7=4hQ@mail.gmail.com>
-Subject: Re: [PATCH-for-5.0 v2 01/11] block: Avoid dead assignment
+Date: Mon, 23 Mar 2020 08:50:13 -0700
+Message-ID: <CAKmqyKNngiNFN7Q1+PRFSPKyg6xubmESFgtp7dkEjRM42bZs-Q@mail.gmail.com>
+Subject: Re: [PATCH-for-5.0 v2 03/11] hw/i2c/pm_smbus: Remove dead assignment
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::941
+X-Received-From: 2607:f8b0:4864:20::943
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,20 +123,19 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LgGbr3kR+q7h
+X-TUID: rlRMDpqUMqPo
 
-On Sat, Mar 21, 2020 at 7:42 AM Philippe Mathieu-Daud=C3=A9
+On Sat, Mar 21, 2020 at 7:45 AM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
 >
 > Fix warning reported by Clang static code analyzer:
 >
->   block.c:3167:5: warning: Value stored to 'ret' is never read
->       ret =3D bdrv_fill_options(&options, filename, &flags, &local_err);
->       ^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>     CC      hw/i2c/pm_smbus.o
+>   hw/i2c/pm_smbus.c:187:17: warning: Value stored to 'ret' is never read
+>                   ret =3D 0;
+>                   ^     ~
 >
-> Fixes: 462f5bcf6
 > Reported-by: Clang Static Analyzer
-> Suggested-by: Markus Armbruster <armbru@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
@@ -144,25 +143,21 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
-> v2: Keep 'ret' assigned and check it (Markus)
-> ---
->  block.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/i2c/pm_smbus.c | 1 -
+>  1 file changed, 1 deletion(-)
 >
-> diff --git a/block.c b/block.c
-> index a2542c977b..a6f069d8bd 100644
-> --- a/block.c
-> +++ b/block.c
-> @@ -3165,7 +3165,7 @@ static BlockDriverState *bdrv_open_inherit(const ch=
-ar *filename,
->      }
->
->      ret =3D bdrv_fill_options(&options, filename, &flags, &local_err);
-> -    if (local_err) {
-> +    if (ret < 0) {
->          goto fail;
->      }
->
+> diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
+> index 36994ff585..4728540c37 100644
+> --- a/hw/i2c/pm_smbus.c
+> +++ b/hw/i2c/pm_smbus.c
+> @@ -184,7 +184,6 @@ static void smb_transaction(PMSMBus *s)
+>                  s->smb_stat |=3D STS_HOST_BUSY | STS_BYTE_DONE;
+>                  s->smb_data[0] =3D s->smb_blkdata;
+>                  s->smb_index =3D 0;
+> -                ret =3D 0;
+>              }
+>              goto out;
+>          }
 > --
 > 2.21.1
 >

@@ -1,176 +1,99 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1799115lfi;
-        Mon, 23 Mar 2020 11:47:35 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvmWJX8Wikcq9iTVeY7QSBijSKXguX2QBaRtmachTS3FOCxZb3PGTewmJE75f6HXeGi59jB
-X-Received: by 2002:aed:3a89:: with SMTP id o9mr23140095qte.375.1584989255129;
-        Mon, 23 Mar 2020 11:47:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584989255; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1841913lfi;
+        Mon, 23 Mar 2020 12:28:18 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vumGj3b8gNbOIluLAOTq7bQLhvp1fVoJadiUC7840IgkmDjC1Da02qcuz2REZM9ik9nvzeD
+X-Received: by 2002:ad4:5349:: with SMTP id v9mr22710763qvs.177.1584991698267;
+        Mon, 23 Mar 2020 12:28:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584991698; cv=none;
         d=google.com; s=arc-20160816;
-        b=P9KszLiXqqEm7i2+81jCsOg14B5kmVXT7B8YBfKzaKRhzeIPlEQ0Ehg7nG7LIYoDwI
-         s/iT2tqsHAY63jwZuBN+eihHNQV7zRg2dgnKMrtZUE8zL6BPn59GFDOmhzP3NYY7O5Kw
-         xWbr44hRhoUpWE17Khr2gbJ78x1dOvYaFwsBmvxNi5cYVzDNj0UjGaDr9ffWB55aYsNq
-         YEvBmQwnuLmXyrA4DBSKW6I5Y1mmh/3ltbwmaoOYLlbQFqy/UGiXz85IhAi6YByhQXCb
-         /dmRhbElwvWO+6bmd0ERknySW9fSXhK6rlqKC7+5pn7kVnlFx9q/bWnw6W8VKqYLCb3Y
-         gG8Q==
+        b=KeEV4McU0PK2VmTNeGYTVec6sEw3g6hWvPBbZeffy+9qSms6UHFoUD1H3K0bkFR6I2
+         R0zvd4mewrWHKY9zk46YiiBzspPQh2rcPNfXegMbARRJGMS9mnnL9iUUJa8WuK9LjPgW
+         D4c1so754mCjpf7jQBB/H9YxXY+RSuEngeZhHl02R5i3jTgbUTheGr3DN+ij/eKzvWmD
+         5PydfpXLBJiKTpZ4l3oy8hYHmxp3iXJfSUlBTN7qcbre1u1tp9lfUHI00xkcssGJ/x8o
+         2Ua7NPx9BXGdikEJx8/qDHhuIM31+UK1+ke04u+O/fyeqYC6FlqT0FZoU//Jbl64gATT
+         eEhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=ot+Xp4AikkjrX/qUt8wNmQUVftBhJ2mV/fSndMYKPsE=;
-        b=Uq5qTO4xb53OL2RLvmua5wRJpwDgAk34z5WQYJ8NHZMZYetwO+ZOtLwV/OhQc80YMb
-         ne5GyNiHuuqgNRv9qGBNVrY88BLNFhHkxdGsJcIrMAqOT6jRJI/Rn7zMapVtvyE9m83F
-         Wo7ZknKvVZpF+jtTyMFf+QhdEyR9wjqlcCZWyPq6KNak9VT9R2+G/4mAvl8WTAWjfcXo
-         XvCSwioY/zEBezppYQ59P3aY6xDZL7eFHmROc9eeH8QmXHsJzef42zGscMpc16bIAzJv
-         sn9mjPmweL0zojTC8QUgT4BXeHHE8bw69X5r2aN9HoGDD2pWUN/kiYGvWvpBvKZDATlZ
-         pMeA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=baIBv6VF/SVGWRh9jRcClqoT54bPPkrrJgnnfOBWU2c=;
+        b=lFRdpHLSBosmP5+4lDSqsiGnod7TqfvG4zHKFCNsYHjEL9G2tGhluDmvOQa/qRlWHW
+         JIIARqXy2qEtmqJo7EEBL/Et1ixuF44D0FIBY1FyVtFX3qf5E7Go/KvOOua0LV3VonXF
+         1R46I4Gdad9mfVPNzuWD101tronSdPCVOrBIpxPAuXK23QXQ3i8DtiSSgEEhKAsIJuHQ
+         Y19a7NhletC+HUtDbRlphu6FfAtIGPSV/o2pqyiMIPJqOCiDNa+FBN8brqvaXfe9cGuw
+         TMD3tlsHDyLpVbJXB1fjS2XNNIgCyRirW/mLHpj2/BPq8L5B7U9USGL8/QBq3a6zHpWJ
+         DpOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FEHfdnkR;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W8SynKuL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s63si9234840qke.282.2020.03.23.11.47.34
+        by mx.google.com with ESMTPS id o41si9005051qtb.380.2020.03.23.12.28.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Mar 2020 11:47:35 -0700 (PDT)
+        Mon, 23 Mar 2020 12:28:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FEHfdnkR;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W8SynKuL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38482 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:38806 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jGS6o-0007n7-I8
-	for alex.bennee@linaro.org; Mon, 23 Mar 2020 14:47:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37611)
+	id 1jGSkD-0008On-KD
+	for alex.bennee@linaro.org; Mon, 23 Mar 2020 15:28:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45500)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jsnow@redhat.com>) id 1jGS6A-0006jS-HW
- for qemu-arm@nongnu.org; Mon, 23 Mar 2020 14:46:55 -0400
+ (envelope-from <nieklinnenbank@gmail.com>) id 1jGSk0-0008Ld-Pw
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 15:28:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jsnow@redhat.com>) id 1jGS69-0005Xn-CE
- for qemu-arm@nongnu.org; Mon, 23 Mar 2020 14:46:54 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:30193)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jsnow@redhat.com>) id 1jGS69-0005XU-8B
- for qemu-arm@nongnu.org; Mon, 23 Mar 2020 14:46:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584989212;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=ot+Xp4AikkjrX/qUt8wNmQUVftBhJ2mV/fSndMYKPsE=;
- b=FEHfdnkRioaUFGPBoSBbtX8Yc1WGMTvxPiqhb1OZjiDdBj0YUS1ZTjSHQauZhBRKFDMKua
- w8ZJfMr8NygNrIGN4Pv65WsE8WfkjxEWNF1RG6kpnOa9AtNQ0I7eiAi7GPre3VocuHFTj6
- Svqo9H3aY6oPLlslVE8xbl+xhMFA3s0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-58-hAoyErYePhyo-FNLQ9EnEQ-1; Mon, 23 Mar 2020 14:46:48 -0400
-X-MC-Unique: hAoyErYePhyo-FNLQ9EnEQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A9BED190D377;
- Mon, 23 Mar 2020 18:46:26 +0000 (UTC)
-Received: from [10.10.112.191] (ovpn-112-191.rdu2.redhat.com [10.10.112.191])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 62EA894B23;
- Mon, 23 Mar 2020 18:46:15 +0000 (UTC)
-Subject: Re: [PATCH-for-5.0 v2 05/11] hw/ide/sii3112: Remove dead assignment
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-References: <20200321144110.5010-1-philmd@redhat.com>
- <20200321144110.5010-6-philmd@redhat.com>
-From: John Snow <jsnow@redhat.com>
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <9a385d04-719a-7630-a403-63296e8e6c7c@redhat.com>
-Date: Mon, 23 Mar 2020 14:46:14 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (envelope-from <nieklinnenbank@gmail.com>) id 1jGSjz-00040i-H2
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 15:28:04 -0400
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:45250)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1jGSjw-0003wy-PW; Mon, 23 Mar 2020 15:28:00 -0400
+Received: by mail-io1-xd41.google.com with SMTP id e20so15192870ios.12;
+ Mon, 23 Mar 2020 12:28:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=baIBv6VF/SVGWRh9jRcClqoT54bPPkrrJgnnfOBWU2c=;
+ b=W8SynKuL1AAaNKs8S8jnH/IwC3oeF28oNv6TNJpynNpcrtM8uJHcQZ/PvDxySKRMwW
+ TN6Fc4HwDtEWOtN3zdu2MvaRMEus2RsWy6vbvfDGrpRhrA82Pxlo2fanHJr4wGRIOp10
+ 4M5PrV1WYG0vgPJKNVvQvFjLoc/XXfL99NhZVl9fjzwiLsWBUwzDtJ3RMnR1edFMUM+2
+ AS0B20hVi5v2gmA3YvTnhZ05xHgWzdnXXnZPGyCimCgl7FLznllyqlrezGnlG3cOpGVc
+ BdcNUm1pkmRI+scyWMl1HgOgexknA5SzukAbQhqOqDR5lf4lxvToecC1GVt5xLaN7ro0
+ 4oVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=baIBv6VF/SVGWRh9jRcClqoT54bPPkrrJgnnfOBWU2c=;
+ b=g0IfDP3TFdWZFcSViPbPXNT/htadGTxK+kH7exafHeRirJxl+FgDb1dyjPKpN6Z+r3
+ RcqcMpVOBhAJQUitX92bJtt2E2Re9siqNPhN2rXRnN6nWx99HP/aPwHQP4RT3ISSMyai
+ 7U9L7Ih/P09G9hEGCuaYyHmjqi/eb93fyr163JVbgXe/MEvRCdlgzrOAKdZSi3rhPg3G
+ uJLL+63xZ51xETBiXnBIomc7WEJlkoDtJEEBjpvZWTzCoWQ/g/Z9Ec36LwZW+OWEcll/
+ ezsJNq211sHeo2CpP3qDaIbarIaz/KtqnJwIW4RNZeu1oQbVXKi/swEfX2VXRIPaLKlg
+ SVrw==
+X-Gm-Message-State: ANhLgQ1eZM12s/gnVg0zAMxE6OUGgeIwGMpHJn3itj1YBrLYSA4GokV/
+ W7hDssLSnUaM8iifnk3sdMFgBQl35NYveI0PBJ4=
+X-Received: by 2002:a02:6669:: with SMTP id l41mr10776576jaf.126.1584991679835; 
+ Mon, 23 Mar 2020 12:27:59 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200321144110.5010-6-philmd@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 63.128.21.74
+References: <20200322205439.15231-1-nieklinnenbank@gmail.com>
+ <20200322205439.15231-2-nieklinnenbank@gmail.com>
+ <CAFEAcA-dr4_tTevqJmjEy1_W5Thv1c+8ETf=-R2jTeBp-1HmOw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-dr4_tTevqJmjEy1_W5Thv1c+8ETf=-R2jTeBp-1HmOw@mail.gmail.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Mon, 23 Mar 2020 20:27:48 +0100
+Message-ID: <CAPan3WrOTm2pS+9y4TSUf+z5kvkCemsnP0h-Ejm=06Fr1iyKBw@mail.gmail.com>
+Subject: Re: [PATCH 2/2] hw/misc/allwinner-h3-dramc: enforce 64-bit multiply
+ when calculating row mirror address
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="0000000000000c760d05a18aa275"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::d41
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -182,77 +105,147 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- BALATON Zoltan <balaton@eik.bme.hu>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>,
- Michael Tokarev <mjt@tls.msk.ru>, Alistair Francis <alistair@alistair23.me>,
- qemu-arm@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, Laurent Vivier <laurent@vivier.eu>,
- Max Reitz <mreitz@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jMwfm7jDHIkv
+X-TUID: eL1DDfBxxxWd
+
+--0000000000000c760d05a18aa275
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Peter,
+
+On Sun, Mar 22, 2020 at 10:18 PM Peter Maydell <peter.maydell@linaro.org>
+wrote:
+
+> On Sun, 22 Mar 2020 at 20:54, Niek Linnenbank <nieklinnenbank@gmail.com>
+> wrote:
+> >
+> > The allwinner_h3_dramc_map_rows function simulates row addressing
+> behavior
+> > when bootloader software attempts to detect the amount of available
+> SDRAM.
+> >
+> > Currently the line that calculates the 64-bit address of the mirrored row
+> > uses a signed 32-bit multiply operation that in theory could result in
+> the
+> > upper 32-bit be all 1s. This commit ensures that the row mirror address
+> > is calculated using only 64-bit operations.
+> >
+> > Reported-by: Peter Maydell <peter.maydell@linaro.org>
+> > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> > ---
+> >  hw/misc/allwinner-h3-dramc.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/hw/misc/allwinner-h3-dramc.c b/hw/misc/allwinner-h3-dramc.c
+> > index 2b5260260e..f9f05b5384 100644
+> > --- a/hw/misc/allwinner-h3-dramc.c
+> > +++ b/hw/misc/allwinner-h3-dramc.c
+> > @@ -85,8 +85,8 @@ static void
+> allwinner_h3_dramc_map_rows(AwH3DramCtlState *s, uint8_t row_bits,
+> >
+> >      } else if (row_bits_actual) {
+> >          /* Row bits not matching ram_size, install the rows mirror */
+> > -        hwaddr row_mirror = s->ram_addr + ((1 << (row_bits_actual +
+> > -                                                  bank_bits)) *
+> page_size);
+> > +        hwaddr row_mirror = s->ram_addr + ((1UL << (row_bits_actual +
+> > +                                                    bank_bits)) *
+> page_size);
+>
+> This needs to be a "ULL" suffix... (I just sent a different email
+> with the rationale).
+>
+
+Ah ofcourse, it should be ULL indeed. And I can't think of any reason why I
+made this mistake.
+I simply overlooked it, thanks. I'm resending this patch with the proper
+ULL suffix.
+
+Regards,
+Niek
 
 
+>
+> thanks
+> -- PMM
+>
 
-On 3/21/20 10:41 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Fix warning reported by Clang static code analyzer:
->=20
->     CC      hw/ide/sii3112.o
->   hw/ide/sii3112.c:204:9: warning: Value stored to 'val' is never read
->           val =3D 0;
->           ^     ~
->=20
-> Fixes: a9dd6604
-> Reported-by: Clang Static Analyzer
-> Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
-> v2: Fix the correct function (Aleksandar review)
-> ---
->  hw/ide/sii3112.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
->=20
-> diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
-> index 06605d7af2..b2ff6dd6d9 100644
-> --- a/hw/ide/sii3112.c
-> +++ b/hw/ide/sii3112.c
-> @@ -42,7 +42,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwaddr a=
-ddr,
->                                  unsigned int size)
->  {
->      SiI3112PCIState *d =3D opaque;
-> -    uint64_t val =3D 0;
-> +    uint64_t val;
-> =20
->      switch (addr) {
->      case 0x00:
-> @@ -126,6 +126,7 @@ static uint64_t sii3112_reg_read(void *opaque, hwaddr=
- addr,
->          break;
->      default:
->          val =3D 0;
-> +        break;
->      }
->      trace_sii3112_read(size, addr, val);
->      return val;
-> @@ -201,7 +202,7 @@ static void sii3112_reg_write(void *opaque, hwaddr ad=
-dr,
->          d->regs[1].sien =3D (val >> 16) & 0x3eed;
->          break;
->      default:
-> -        val =3D 0;
-> +        break;
->      }
->  }
-> =20
->=20
 
-Acked-by: John Snow <jsnow@redhat.com>
+-- 
+Niek Linnenbank
 
+--0000000000000c760d05a18aa275
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hi Peter,<br></div><br><div class=3D"gmai=
+l_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Mar 22, 2020 at 10:1=
+8 PM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.ma=
+ydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" =
+style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pa=
+dding-left:1ex">On Sun, 22 Mar 2020 at 20:54, Niek Linnenbank &lt;<a href=
+=3D"mailto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail=
+.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; The allwinner_h3_dramc_map_rows function simulates row addressing beha=
+vior<br>
+&gt; when bootloader software attempts to detect the amount of available SD=
+RAM.<br>
+&gt;<br>
+&gt; Currently the line that calculates the 64-bit address of the mirrored =
+row<br>
+&gt; uses a signed 32-bit multiply operation that in theory could result in=
+ the<br>
+&gt; upper 32-bit be all 1s. This commit ensures that the row mirror addres=
+s<br>
+&gt; is calculated using only 64-bit operations.<br>
+&gt;<br>
+&gt; Reported-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.=
+org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
+&gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gm=
+ail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 hw/misc/allwinner-h3-dramc.c | 4 ++--<br>
+&gt;=C2=A0 1 file changed, 2 insertions(+), 2 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/hw/misc/allwinner-h3-dramc.c b/hw/misc/allwinner-h3-dramc=
+.c<br>
+&gt; index 2b5260260e..f9f05b5384 100644<br>
+&gt; --- a/hw/misc/allwinner-h3-dramc.c<br>
+&gt; +++ b/hw/misc/allwinner-h3-dramc.c<br>
+&gt; @@ -85,8 +85,8 @@ static void allwinner_h3_dramc_map_rows(AwH3DramCtlS=
+tate *s, uint8_t row_bits,<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 } else if (row_bits_actual) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Row bits not matching ram_size, i=
+nstall the rows mirror */<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 hwaddr row_mirror =3D s-&gt;ram_addr + ((=
+1 &lt;&lt; (row_bits_actual +<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 bank_bits)) * page_size);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 hwaddr row_mirror =3D s-&gt;ram_addr + ((=
+1UL &lt;&lt; (row_bits_actual +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 bank_bits)) * page_size);<br>
+<br>
+This needs to be a &quot;ULL&quot; suffix... (I just sent a different email=
+<br>
+with the rationale).<br></blockquote><div><br></div><div>Ah ofcourse, it sh=
+ould be ULL indeed. And I can&#39;t think of any reason why I made this mis=
+take.</div><div>I simply overlooked it, thanks. I&#39;m resending this patc=
+h with the proper ULL suffix.</div><div><br></div><div>Regards,</div><div>N=
+iek<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
+1ex">
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--0000000000000c760d05a18aa275--

@@ -1,101 +1,101 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1626314lfi;
-        Mon, 23 Mar 2020 09:02:49 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtpmLb5S3xLJt5ee/hTVV/vBdJiQTywng0n7knTPCXx2jsgroinXE46BFILJXiMBPJZTqxD
-X-Received: by 2002:ad4:5808:: with SMTP id dd8mr14394485qvb.191.1584979369664;
-        Mon, 23 Mar 2020 09:02:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584979369; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1630770lfi;
+        Mon, 23 Mar 2020 09:06:29 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsZ4tVJL5LQ8TedDxUmLq6JVrvLVY0744ZRVtEMS4+4uIpG/iXcVBteA8Dc/6ITjYo78Tci
+X-Received: by 2002:a37:d285:: with SMTP id f127mr21573766qkj.107.1584979589316;
+        Mon, 23 Mar 2020 09:06:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584979589; cv=none;
         d=google.com; s=arc-20160816;
-        b=jS2bLmK+wwOv+XUxXKdRJro4l9gfBUyUdsMX1KWY6GNsaohcgprNPXQT/o15YwTOrh
-         Wu8b4Tt0updOTTAoH9iTdtWP4RezahHvqpyFpno9GzQIHkU+YJs4IHWyuFatoghJjstW
-         vXDfwVffOviPSaUOciRi7IHt7deZoiPTpDZ49j6B4oIk6UKwvr0Z10CPZNhM79xKG+Fb
-         Jkf9SeVUdH17Um1m5MxDlytBi7FJaRetfLe/690M8DkKl3e9Q/E/vV5AJzQUJ0fJ7Vnh
-         guWJ1EGt77IRGgzd17z0GTvpYIzoV9cPdBiQJLWCBsep3aXBS0+R2Q3bQ36SsjcC/EHG
-         4i0Q==
+        b=ck/zhVg1p4IlzH7S5LxXhb2b7jB0amOLkeS1d+mJm1KEpaNxKP4lwscxXV7sqJYLRF
+         EuI+qEk2EUJNvmUxM4L5rEz9BpDKwpoa2CDBbQu3mj5HZYEzel0I+UMovE12XYE+/Srn
+         5PqbKPi7QsGYoAZ0w2lMFOiRqy3Yznp+s1ACtxF9Iqp8fUphmJ8eaD3piySU97aQjtMr
+         Fn6QrtWxtzbZ0l4o3OW5QsQ4/oTRWtG0+1M13A/vOprLfOUjEY3ARyR7gGAnGiVUw/4i
+         v+uRjxX1gDoFqXy/AlFC+R3WhKF6dVfeRqXrqf27dNagYv5df/vUDE5SKpadGAW+0ZvW
+         XnzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=3+zyZBOZgnwvj6HjjkL9VZ1uuTPjSF+4X1NUFEoixK8=;
-        b=JITKwG/uliYv4gNl8GdgbcFwz1swJ29GLe+JBW0cYthnQwnvxaFiAwi6RbPY3K84ep
-         PKgYJpSu3gD/n0ngohI5SYuedmEjnApAXN2i5nYK+zTkFNmGE14DU6Kbd2dVKXXZwN8A
-         JcoKH97nS0cM+Ao0cdqj0I4nrHZcAahLJ5Fak7uBG9mNtmplzYRiREzpSWwb6QbRt7LB
-         fy26NlSRlDP/vFm79g5L1A3uCvogHj/SBMgPZvKFy12lk6SOK6QLQlXuJIGSSPCsdq/6
-         ZDPVh7uDFx0y/ThqEc2i2sLvSdlsBrVIhJ3HUKbZeNLo68UZonWiI2dcU4Zz4Vvi6D0T
-         Nohg==
+        bh=fsrpN92Ba+Aa9m7v+VX26eF17EC615gTnf9oEpSQUIo=;
+        b=jHVVT+miKPFLxCG2lbpT4H0K9jB5wLPcIooQHL1KX5D3dKl+ScDFOAyucwtYEoFv4P
+         P7+UAUCYnLsYDff80P9G49Ty363/WvrTUhg5X7wZQJ/PQzb5fQYuwoKZbQybvagZ7Nmj
+         ncakBgn0YWMoGQZre9yrkYYc/DyBLI53IuA0AcrHPSOQMAVbu+Pb/uSQYM0h54iJGTdR
+         Vi/iQOs8EwJzF1G21CJrW0KNcHRiVvYFgSM/yffFkWECrkxBsebaAl+hF5OvIcSf4/9D
+         vTF1mrKHvM/sg33wMQZTRcW5MROl2hsca45/LEdHp5+T0Yruj84q3djStjXWFA1YPRmn
+         PzLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=P5qT6cS8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fIta0b3W;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h58si5242560qtb.270.2020.03.23.09.02.49
+        by mx.google.com with ESMTPS id y185si7949824qka.96.2020.03.23.09.06.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Mar 2020 09:02:49 -0700 (PDT)
+        Mon, 23 Mar 2020 09:06:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=P5qT6cS8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fIta0b3W;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36162 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36376 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jGPXM-0005rm-Qi
-	for alex.bennee@linaro.org; Mon, 23 Mar 2020 12:02:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60425)
+	id 1jGPau-0004aC-NV
+	for alex.bennee@linaro.org; Mon, 23 Mar 2020 12:06:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60583)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1jGPVE-00041e-0k
- for qemu-devel@nongnu.org; Mon, 23 Mar 2020 12:00:37 -0400
+ (envelope-from <alistair23@gmail.com>) id 1jGPVp-0004aG-As
+ for qemu-devel@nongnu.org; Mon, 23 Mar 2020 12:01:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1jGPV9-0005qc-6w
- for qemu-devel@nongnu.org; Mon, 23 Mar 2020 12:00:35 -0400
-Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943]:41410)
+ (envelope-from <alistair23@gmail.com>) id 1jGPVk-00063P-AW
+ for qemu-devel@nongnu.org; Mon, 23 Mar 2020 12:01:13 -0400
+Received: from mail-vk1-xa41.google.com ([2607:f8b0:4864:20::a41]:38267)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1jGPV8-0005qW-Vy; Mon, 23 Mar 2020 12:00:31 -0400
-Received: by mail-ua1-x943.google.com with SMTP id l7so5163559uap.8;
- Mon, 23 Mar 2020 09:00:30 -0700 (PDT)
+ id 1jGPVj-00062g-HI; Mon, 23 Mar 2020 12:01:08 -0400
+Received: by mail-vk1-xa41.google.com with SMTP id n128so3933163vke.5;
+ Mon, 23 Mar 2020 09:01:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=3+zyZBOZgnwvj6HjjkL9VZ1uuTPjSF+4X1NUFEoixK8=;
- b=P5qT6cS8WdtDBs/RaI8BcVZFtcAZvKg37b7J4V+WkUawV3bPJQwrFoUQrPgnDFy7bk
- /1sXtAbKdBx0CvBH4Nl1W3DJbzssBJHYK76OGovRSZRAWy5BXy+9DITHrmHkX4tynDpb
- HQXUfllfeTdbz61GlwN7GQuOgHZJaLHTftocgR7hJEnur+DuF29VaVomBuPTt/G/ya1f
- hjCDok7Ep8TSQ8SynaG5tX73xrxoeGn8xcrhdRF46Ed5PrSk8c1nOEiPLQu8V36PNbu6
- 8cCz44AwQFk2XXZClq68BDVCpkQseLSrJB73m2nTy/1pzLw/fBB9LHDeP9/wpfA2joyw
- 1Jdw==
+ bh=fsrpN92Ba+Aa9m7v+VX26eF17EC615gTnf9oEpSQUIo=;
+ b=fIta0b3WQ2+spUBaLKMDjsMq+ianR0y/AIw+47jDyDVL6A/UGtUSbq8OkKQgtjFnQN
+ 5AclorZoxpOXULKGAmLOZabYemG9EtaLb/JNxTaeB88Nw2Wy6Bc2OORWs5EVhsGH55k2
+ gOh8cqIT/b1VnJnhNCRXW+bNVqwIZkY5Fji/T4sBBhZuuJpBYTI4jccp5nqmguMmyhL6
+ OIcW4+2D2E8ITTHQ9Vj25x0VEgjZkIhxSzCVOGZAzSGhqC12Zkm8/MWdkp+AEO4HEMCY
+ ShwcqgwNxSighXJKnfVznmXMr9q/cfLswgxB90neJHcW+FGm+4oB2T/NFFeS0mewVpOm
+ 49Ag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=3+zyZBOZgnwvj6HjjkL9VZ1uuTPjSF+4X1NUFEoixK8=;
- b=mub9rgF4In92f80lcvpib8AVZBZJ89dYk0b7mLVdpHfucvbEQW0m9Ux3b63+KH6too
- J5WBydEhItcbEmq2LuGfMuRwcMd9Y2JK93nZz7F+IsBfojdzmhB/Xo/XKv6SsirnP/7K
- 7zB72OXpEK3fKLYk76Ah8/OqSjha3Oia+a081mxnDKXhfZYAYOBIYaB8bteWAnL999be
- 9D/jeSFEoil5RLPRWS6yU7uGmhOL0neLVQ55eFQonAyCbqsHd18lNfb/dub7hB/2kg4b
- iEHVcyiARB8Sw1CeKMYApCCavCm9pLlC4/uQLktJMrfHDm7uNo9xl1GfumYJ7uVp4DD4
- Y9rw==
-X-Gm-Message-State: ANhLgQ2eM/FDYiSVm4awUpVHOUgmEo2iCkSc1GUkzqqqPu4qq/cfpJ83
- 7mPj1EKQFEkGJpdlvioUXdpMZPaL8PjqgrurAfI=
-X-Received: by 2002:a9f:3311:: with SMTP id o17mr15011469uab.30.1584979230391; 
- Mon, 23 Mar 2020 09:00:30 -0700 (PDT)
+ bh=fsrpN92Ba+Aa9m7v+VX26eF17EC615gTnf9oEpSQUIo=;
+ b=AfnOmTb5MxPvs9JMstEKRt0hA3gspk6JV1BPgxF5fI1xJoUlnL5+H8gog5opERcqjZ
+ ACcr49WR/s0F8vIzcgNwQ/Gq539WKmewIJ7SAWDPgZrvcDfQ+q+xriTk2AqjTYj/yEbz
+ EXsNZkM+uRiH59kFkAu6eeXixUsu/Virt8yTTmkzNdxLz3D3q9kPW1jrqF92Q2SN/yWQ
+ YfiB0dlBAXYVe6eZecoqIvUVV0VvqfnoM+Gb6ayEqBo/EY6wX8Yf5BRfDz5aSqznj8fO
+ k99qBJfL/Rghc5knXv6rG/8MVNCIa4BmWYCyOHI05pKAewZPMqYQ8PGdUnOY+j178sWI
+ bZlw==
+X-Gm-Message-State: ANhLgQ3dpY2BCYITY4Sw0cTb7bqO13kRG7sohfBo2Cko2weGMVw8Xijo
+ 7C24J6NrlkEvkG/9+ZatM+L4Qag7FvOtIxrrHJ8=
+X-Received: by 2002:a1f:a2d0:: with SMTP id l199mr14863251vke.77.1584979266742; 
+ Mon, 23 Mar 2020 09:01:06 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200321144110.5010-1-philmd@redhat.com>
- <20200321144110.5010-9-philmd@redhat.com>
-In-Reply-To: <20200321144110.5010-9-philmd@redhat.com>
+ <20200321144110.5010-10-philmd@redhat.com>
+In-Reply-To: <20200321144110.5010-10-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 23 Mar 2020 08:52:30 -0700
-Message-ID: <CAKmqyKMHq58PA3epAE8gjhHdyrOPz12JDPtPezVyPzeFK0xutA@mail.gmail.com>
-Subject: Re: [PATCH-for-5.0 v2 08/11] hw/timer/exynos4210_mct: Remove dead
- assignments
+Date: Mon, 23 Mar 2020 08:53:09 -0700
+Message-ID: <CAKmqyKPa-zc949L=G3gCdA50KQq0GbhE3zqoOTjTatPnsm5Oew@mail.gmail.com>
+Subject: Re: [PATCH-for-5.0 v2 09/11] hw/timer/stm32f2xx_timer: Remove dead
+ assignment
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::943
+X-Received-From: 2607:f8b0:4864:20::a41
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,25 +124,18 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xMcmHqN9FdPD
+X-TUID: 7ZQ/uxYJmpvZ
 
-On Sat, Mar 21, 2020 at 7:50 AM Philippe Mathieu-Daud=C3=A9
+On Sat, Mar 21, 2020 at 7:52 AM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
 >
-> Fix warnings reported by Clang static code analyzer:
+> Fix warning reported by Clang static code analyzer:
 >
->   hw/timer/exynos4210_mct.c:1370:9: warning: Value stored to 'index' is n=
+>     CC      hw/timer/stm32f2xx_timer.o
+>   hw/timer/stm32f2xx_timer.c:225:9: warning: Value stored to 'value' is n=
 ever read
->         index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
->         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->   hw/timer/exynos4210_mct.c:1399:9: warning: Value stored to 'index' is n=
-ever read
->         index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
->         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->   hw/timer/exynos4210_mct.c:1441:9: warning: Value stored to 'index' is n=
-ever read
->         index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
->         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>           value =3D timer_val;
+>           ^       ~~~~~~~~~
 >
 > Reported-by: Clang Static Analyzer
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
@@ -152,40 +145,22 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/timer/exynos4210_mct.c | 3 ---
->  1 file changed, 3 deletions(-)
+>  hw/timer/stm32f2xx_timer.c | 1 -
+>  1 file changed, 1 deletion(-)
 >
-> diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
-> index 944120aea5..c0a25e71ec 100644
-> --- a/hw/timer/exynos4210_mct.c
-> +++ b/hw/timer/exynos4210_mct.c
-> @@ -1367,7 +1367,6 @@ static void exynos4210_mct_write(void *opaque, hwad=
-dr offset,
->
->      case L0_TCNTB: case L1_TCNTB:
->          lt_i =3D GET_L_TIMER_IDX(offset);
-> -        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
->
->          /*
->           * TCNTB is updated to internal register only after CNT expired.
-> @@ -1396,7 +1395,6 @@ static void exynos4210_mct_write(void *opaque, hwad=
-dr offset,
->
->      case L0_ICNTB: case L1_ICNTB:
->          lt_i =3D GET_L_TIMER_IDX(offset);
-> -        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
->
->          s->l_timer[lt_i].reg.wstat |=3D L_WSTAT_ICNTB_WRITE;
->          s->l_timer[lt_i].reg.cnt[L_REG_CNT_ICNTB] =3D value &
-> @@ -1438,7 +1436,6 @@ static void exynos4210_mct_write(void *opaque, hwad=
-dr offset,
->
->      case L0_FRCNTB: case L1_FRCNTB:
->          lt_i =3D GET_L_TIMER_IDX(offset);
-> -        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
->
->          DPRINTF("local timer[%d] FRCNTB write %llx\n", lt_i, value);
->
+> diff --git a/hw/timer/stm32f2xx_timer.c b/hw/timer/stm32f2xx_timer.c
+> index 06ec8a02c2..ba8694dcd3 100644
+> --- a/hw/timer/stm32f2xx_timer.c
+> +++ b/hw/timer/stm32f2xx_timer.c
+> @@ -222,7 +222,6 @@ static void stm32f2xx_timer_write(void *opaque, hwadd=
+r offset,
+>      case TIM_PSC:
+>          timer_val =3D stm32f2xx_ns_to_ticks(s, now) - s->tick_offset;
+>          s->tim_psc =3D value & 0xFFFF;
+> -        value =3D timer_val;
+>          break;
+>      case TIM_CNT:
+>          timer_val =3D value;
 > --
 > 2.21.1
 >

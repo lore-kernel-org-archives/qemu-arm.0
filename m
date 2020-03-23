@@ -1,211 +1,202 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp685301lfi;
-        Sun, 22 Mar 2020 14:24:56 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtL7ess+Py7D6zxrywjZPf+iGYkxD8IbYzykuKPVlnfhWKOk0GUnoZ26anUBzLVO+0KvehX
-X-Received: by 2002:a37:a213:: with SMTP id l19mr17322937qke.377.1584912296391;
-        Sun, 22 Mar 2020 14:24:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584912296; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1172861lfi;
+        Mon, 23 Mar 2020 01:43:38 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvIgtOMSJr3uKcMX96Eg/Y/UN/MV5hRul9+FDtHHxqMCCTgk5RqHefGcgvGkcnEZepsaTAg
+X-Received: by 2002:a37:a89:: with SMTP id 131mr8263567qkk.137.1584953018085;
+        Mon, 23 Mar 2020 01:43:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584953018; cv=none;
         d=google.com; s=arc-20160816;
-        b=mjGxTxHBfwiM8Akxl01c/bl1b2lhXayA0DkCyJHIkWWpCc6GTv3OaRhVVadtBfPZEv
-         /JZy19F2ZsW52EDMAV81Ct7T2o2m1bNsB7ovi9tI8uiMCCAt9jGoJ62RBlAd9i0GDKjD
-         9A5UmPCV3loPWHQ3vCfR4iVUsPmpic/ZiYqOtPPYfssIiIliXzRn6z7TdBxTSJNT+7wO
-         vnKLp94w3wd0CQAOzocbtq1OZ6ZAmM5Ih+P4Y7lHk7lxeweFhl//LMYyyNPd/8A8/Thl
-         arZatJRGCAEC1Ql2jLShkc8LSw2PcfFZ7qdgRD2grN+sEEt6R40kfSdFZphck/simavk
-         l2lQ==
+        b=zFqvtFEnoqsSXnMeMGJb4fIX+IWlW/ZgVYtStZAFn+LhlpRBurPU4z8clDH17Qnm5N
+         PJznxPc/Ob3xq1V4g/S1GfcoEhxGntBKnhJqERn9pxRyeQFVFmpNn+iPRDwvWCdDG69i
+         G+VxUCJRZM1HoBT+SseG/TbzGqwnFJi7bPzLOx4LJazE6yX0sd/WskfExsMkgun4BrLW
+         qMsbuYCddJxoE/zI2mk760g4n7/UBQKG/W8hmKaE2lief5furbtluKYfU+EYatk3QRbE
+         6K/DBUoLDxmneBTdxykBaSDV6TWhgVtOD6rju4UB6htmIPvvUw7YcZDoutTAGfJTJ9QO
+         Ubgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=/KJgg3GQUYAWBtiiHqyoNKWjmdOXcRV798ZDLG19ILg=;
-        b=q4vWQmoS5QzZFrGP91r9Ip20GeclqvWdjzqnjZmK9L8ESqDZpL+I93hB0Qj1TbnDlk
-         spLUBIRNLitS/BTEID3p1Zo/dmBf2Zzr3YdjKyTXw3hEaRNtEWDk8Wmo9CLKFG0eIK2o
-         Z5jKcrDDMOHe//5AHvn/Ev7AwWdrr1n131UDN31mYvFnXfwks79qK96hwIN6ERM7vf4d
-         t8r08IVWr8AXWRLv8eYoTBa72FIxQOtVXUT8NYkj8rXINkpcUZr1eP/ubxfqa6oNyU5r
-         1cMCO1bNvrDu8d+8zMD2ChMBZB+lKVa+HGfpwu4P6RuEqtF68FkbfFtgcgodJW29csTt
-         FBPQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=7OcFTB2KbnTgJqYJ3I8tRvFdDgVPyjMvLszgu2VeGrs=;
+        b=tjXv1FBBj07x483Qez6Id6FIiZm2thIgkNjERQ8ATHQ6yepcUSc/PjgiIla2CT+FmF
+         qXQKggPljmjXOo9LOuyb2E04hjSY9NPPUYzdINsaCc/poF8GIfgLI9+cLXBhiN3+p2Cs
+         dORpFcaxHZ+5YJgbRZDCf5jEgq49ZmtQQhzKQlOyLWo7w5xANhy+Pr+Q4uyE2g1F8BgQ
+         GV/CNNRb1plGiTnlJr1kHkLYA3DDWCMUrkFAll7hi9GTn+GxZ9/EpsDkFqZIF5Z0fF1V
+         d4Arj9TnFxeMQsp0s65RAkG0rpQJ8eDA7E1i01F7ve2XcklEoju5ItfH4WbW8dxFvZ0v
+         Irgg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=e80G1yMo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IQZ9tHJI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o13si1732148qkg.48.2020.03.22.14.24.56
+        by mx.google.com with ESMTPS id g25si7500756qto.215.2020.03.23.01.43.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Mar 2020 14:24:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Mar 2020 01:43:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=e80G1yMo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50004 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IQZ9tHJI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:58476 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jG85X-0000vO-SK
-	for alex.bennee@linaro.org; Sun, 22 Mar 2020 17:24:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42841)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jGIgL-0005w4-GG
+	for alex.bennee@linaro.org; Mon, 23 Mar 2020 04:43:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47973)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1jG80O-0002tX-HP
- for qemu-devel@nongnu.org; Sun, 22 Mar 2020 17:19:37 -0400
+ (envelope-from <bharatb.linux@gmail.com>) id 1jGIgD-0005tE-4f
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 04:43:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1jG80M-0002ke-4D
- for qemu-devel@nongnu.org; Sun, 22 Mar 2020 17:19:36 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:35973)
+ (envelope-from <bharatb.linux@gmail.com>) id 1jGIgC-0001qB-2W
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2020 04:43:29 -0400
+Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744]:35082)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1jG80K-0002jf-Q9; Sun, 22 Mar 2020 17:19:32 -0400
-Received: by mail-pl1-x643.google.com with SMTP id g2so5002201plo.3;
- Sun, 22 Mar 2020 14:19:31 -0700 (PDT)
+ (Exim 4.71) (envelope-from <bharatb.linux@gmail.com>)
+ id 1jGIg9-0001pJ-Nn; Mon, 23 Mar 2020 04:43:25 -0400
+Received: by mail-qk1-x744.google.com with SMTP id k13so2673008qki.2;
+ Mon, 23 Mar 2020 01:43:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=/KJgg3GQUYAWBtiiHqyoNKWjmdOXcRV798ZDLG19ILg=;
- b=e80G1yMo8g4WpgqVlt8ECnyB1a18hfmd19HHCr/2hV9y3jpmb2WLC7/QgEKqTGv9gJ
- pfWgsxsMFHixa6ISPY96SXO+FVAhq4w67Owz3J9josn6Se37FBDSnUDsm6w/jsRDQamc
- dBouPjVwcuNt6cK851fSYqwlwgPWsYMfFRzpCdUz9On1GUNcwadE42hMyhTw1Ps80vYq
- DH4gVKAeBtsxMjScDvqW1E+gJa+qBG32WQFWt0dtIBGRsCaNqs6lAfUHnDGLeeSoATot
- yxiw14lHKxovQklVVmBsPJsKYZ+xqCcslrfGOEsuvXsE55c22pb5dbXkZ8FopKIH3d8K
- AdFQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=7OcFTB2KbnTgJqYJ3I8tRvFdDgVPyjMvLszgu2VeGrs=;
+ b=IQZ9tHJIGmF0j+AMfuxYyrsJRjRzWP4F7VDevtEw+vLOSk2iUL2nVOXD3oGV15cqlO
+ 9bdzu407oRhNnGZlpKb7DFcv6Htf3VtoZAPibDIcd1VqQVp6hlqwzwu6Ox1/Gj+NKTKm
+ hJAQPI/BODq264AVYCuBBoXdbO4F+M5qNTcxescM5vXq0ua2RQ/tOawv7nZK/l7v7ebn
+ 4jdlnrwNFTJUsPJGvvPQvqt6zmAfSS/+U7iXGbc4s6vFrB97t11+vatPvJjay3/buMk9
+ vwLL81ognxcRG9QRnld6jlyKR0HZyuksf0BgOFej3V0ckpU/RgjjJ/6pvuoI3H/ZtbN7
+ PuhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=/KJgg3GQUYAWBtiiHqyoNKWjmdOXcRV798ZDLG19ILg=;
- b=smDldahdZIF4nChogucUIXHewBa5f0tjxoSrpZ1jGk8IQ7LJixdRVppbbEl0HoKxWz
- bQSbhjW0qZyN/fkLUzN80CActB2qTmn2sQMT+98XkdhyCnvzYW/E6E7GLtuvDXmfV8mD
- 0qKTFelGM2gCVYVxpDLg1EEu6VboHR7G3K52hqUF+eL4+prSfFxJcEciBH7AFhzgtAkv
- ih8Hz43dkcRRkW4ZuEN9fUO6tdlhG6g6421ejYpnVWfa2p2d3Z/BJs9OWg9kNPCDi8yA
- 7kDEZyBM9UHyh8lXCF4ePWN6JX416aIsoMlokSOuYtlRa+P4PvHBI8wVMw6XEJBMapJY
- ntGg==
-X-Gm-Message-State: ANhLgQ29trN5x14qxxFhfLY8tTJpXaez9rK6kiScRIOfN2d3xYDhVQ6Q
- h1Ubp9ydkZ1RNX0k0yIHEfc=
-X-Received: by 2002:a17:90a:2149:: with SMTP id
- a67mr21943829pje.190.1584911970883; 
- Sun, 22 Mar 2020 14:19:30 -0700 (PDT)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id y30sm11707064pff.67.2020.03.22.14.19.30
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 22 Mar 2020 14:19:30 -0700 (PDT)
-From: Guenter Roeck <linux@roeck-us.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 3/8] hw/arm/fsl-imx25: Wire up watchdog
-Date: Sun, 22 Mar 2020 14:19:14 -0700
-Message-Id: <20200322211919.11335-4-linux@roeck-us.net>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200322211919.11335-1-linux@roeck-us.net>
-References: <20200322211919.11335-1-linux@roeck-us.net>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=7OcFTB2KbnTgJqYJ3I8tRvFdDgVPyjMvLszgu2VeGrs=;
+ b=TeS9AaegVdLZGB/YToF46ipcS3I9lwj/Htm6sw0BOvZzumxAX1o6XBX7CXCpbT+OTz
+ nXANucoyt3X49/VBRziNm1wAGog6VadwQydzOX+DjN+EucFS35fhi2AQNpdPdlqaKuTF
+ paZB0JvVEx/0pctEcSsQIlqCNzEiJSoAd/5n1g4BkJPHWZO6QvyIGwN5koRx/GDT4VGN
+ IwrpkWwE27DWsapnFUyF1RpLjYgYn849jHMU4n9l7/5zidDBg3PRqVGVHXPEXtP/rD5t
+ jp1sggSOYMLsQ3KMOmG3yGv83QC1jlzPFcbwTm/m1GC8vXFemErH2Lxlmo2GJtStf7O2
+ IzAA==
+X-Gm-Message-State: ANhLgQ282do0+UwRAWU8jm5vVBbBEYtRvB3UDgLHGidIxLcVwsJxHTXM
+ 2gk7jRK81eX31Ou2WIuOUfEDCqkqG7jqXWCg4qA=
+X-Received: by 2002:a05:620a:7f8:: with SMTP id
+ k24mr19755001qkk.228.1584953004888; 
+ Mon, 23 Mar 2020 01:43:24 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <20200318101159.8767-1-bbhushan2@marvell.com>
+ <20200318101159.8767-5-bbhushan2@marvell.com>
+ <3da60c1b-6897-7ab1-3a67-bec44fa00a54@redhat.com>
+ <CAAeCc_nVJXsvEw6iqcs9UEvLJNFyPmHnPnN0VUvzUFtVvjCQsQ@mail.gmail.com>
+In-Reply-To: <CAAeCc_nVJXsvEw6iqcs9UEvLJNFyPmHnPnN0VUvzUFtVvjCQsQ@mail.gmail.com>
+From: Bharat Bhushan <bharatb.linux@gmail.com>
+Date: Mon, 23 Mar 2020 14:13:13 +0530
+Message-ID: <CAAeCc_kyXE6SpYpv=yJWKtNaE=0_OvP-uH3gipEeNm7as8e1gw@mail.gmail.com>
+Subject: Re: [PATCH v8 4/8] virtio-iommu: set supported page size mask
+To: Auger Eric <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::643
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::744
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-devel@nongnu.org,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>, Guenter Roeck <linux@roeck-us.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bpfotcPQqNhl
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Zhong, Yang" <yang.zhong@intel.com>,
+ Peter Maydell <peter.maydell@linaro.org>, kevin.tian@intel.com,
+ tnowicki@marvell.com, mst@redhat.com, drjones@redhat.com, peterx@redhat.com,
+ qemu-devel@nongnu.org, alex.williamson@redhat.com, qemu-arm@nongnu.org,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Bharat Bhushan <bbhushan2@marvell.com>, linuc.decode@gmail.com,
+ eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: aw/tGIGj4OXo
 
-With this commit, the watchdog on imx25-pdk is fully operational,
-including pretimeout support.
+Hi Eric/Jean,
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
----
-v2: Select WDT_IMX2 explicitly
-    Added Philippe's Reviewed-by: tag
+On Wed, Mar 18, 2020 at 8:05 PM Bharat Bhushan <bharatb.linux@gmail.com> wrote:
+>
+> Hi Eric,
+>
+> On Wed, Mar 18, 2020 at 4:58 PM Auger Eric <eric.auger@redhat.com> wrote:
+> >
+> > Hi Bharat,
+> >
+> > On 3/18/20 11:11 AM, Bharat Bhushan wrote:
+> > > Add optional interface to set page size mask.
+> > > Currently this is set global configuration and not
+> > > per endpoint.
+> > >
+> > > Signed-off-by: Bharat Bhushan <bbhushan2@marvell.com>
+> > > ---
+> > > v7->v8:
+> > >  - new patch
+> > >
+> > >  hw/virtio/virtio-iommu.c | 10 ++++++++++
+> > >  1 file changed, 10 insertions(+)
+> > >
+> > > diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+> > > index 4cee8083bc..c00a55348d 100644
+> > > --- a/hw/virtio/virtio-iommu.c
+> > > +++ b/hw/virtio/virtio-iommu.c
+> > > @@ -650,6 +650,15 @@ static gint int_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
+> > >      return (ua > ub) - (ua < ub);
+> > >  }
+> > >
+> > > +static void virtio_iommu_set_page_size_mask(IOMMUMemoryRegion *mr,
+> > > +                                            uint64_t page_size_mask)
+> > > +{
+> > > +    IOMMUDevice *sdev = container_of(mr, IOMMUDevice, iommu_mr);
+> > > +    VirtIOIOMMU *s = sdev->viommu;
+> > > +
+> > > +    s->config.page_size_mask = page_size_mask;
+> > The problem is page_size_mask is global to the VIRTIO-IOMMU.
+> >
+> > - Can't different VFIO containers impose different/inconsistent settings?
+> > - VFIO devices can be hotplugged.
+>
+> This is possible if we different iommu's, which we support. correct?
+>
+> > So we may start with some default
+> > page_size_mask which is latter overriden by a host imposed one. Assume
+> > you first launch the VM with a virtio NIC. This uses 64K. Then you
+> > hotplug a VFIO device behind a physical IOMMU which only supports 4K
+> > pages. Isn't it a valid scenario?
+>
+> So we need to expose page_size_mask per endpoint?
 
- hw/arm/Kconfig             |  1 +
- hw/arm/fsl-imx25.c         | 10 ++++++++++
- include/hw/arm/fsl-imx25.h |  5 +++++
- 3 files changed, 16 insertions(+)
+Just sent Linux RFC patch to use page-size-mask per endpoint.
+QEMU changes are also ready, will share soon.
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index adf401e827..54a49aeabd 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -358,6 +358,7 @@ config FSL_IMX25
-     select IMX
-     select IMX_FEC
-     select IMX_I2C
-+    select WDT_IMX2
-     select DS1338
- 
- config FSL_IMX31
-diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
-index 6f1a82ce3d..cdaa79c26b 100644
---- a/hw/arm/fsl-imx25.c
-+++ b/hw/arm/fsl-imx25.c
-@@ -87,6 +87,7 @@ static void fsl_imx25_init(Object *obj)
-                               TYPE_CHIPIDEA);
-     }
- 
-+    sysbus_init_child_obj(obj, "wdt", &s->wdt, sizeof(s->wdt), TYPE_IMX2_WDT);
- }
- 
- static void fsl_imx25_realize(DeviceState *dev, Error **errp)
-@@ -302,6 +303,15 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
-                                             usb_table[i].irq));
-     }
- 
-+    /* Watchdog */
-+    object_property_set_bool(OBJECT(&s->wdt), true, "pretimeout-support",
-+                             &error_abort);
-+    object_property_set_bool(OBJECT(&s->wdt), true, "realized", &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt), 0, FSL_IMX25_WDT_ADDR);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->wdt), 0,
-+                                      qdev_get_gpio_in(DEVICE(&s->avic),
-+                                                       FSL_IMX25_WDT_IRQ));
-+
-     /* initialize 2 x 16 KB ROM */
-     memory_region_init_rom(&s->rom[0], OBJECT(dev), "imx25.rom0",
-                            FSL_IMX25_ROM0_SIZE, &err);
-diff --git a/include/hw/arm/fsl-imx25.h b/include/hw/arm/fsl-imx25.h
-index 5e196bbf05..9e228dacea 100644
---- a/include/hw/arm/fsl-imx25.h
-+++ b/include/hw/arm/fsl-imx25.h
-@@ -29,6 +29,7 @@
- #include "hw/gpio/imx_gpio.h"
- #include "hw/sd/sdhci.h"
- #include "hw/usb/chipidea.h"
-+#include "hw/watchdog/wdt_imx2.h"
- #include "exec/memory.h"
- #include "target/arm/cpu.h"
- 
-@@ -60,6 +61,7 @@ typedef struct FslIMX25State {
-     IMXGPIOState   gpio[FSL_IMX25_NUM_GPIOS];
-     SDHCIState     esdhc[FSL_IMX25_NUM_ESDHCS];
-     ChipideaState  usb[FSL_IMX25_NUM_USBS];
-+    IMX2WdtState   wdt;
-     MemoryRegion   rom[2];
-     MemoryRegion   iram;
-     MemoryRegion   iram_alias;
-@@ -229,6 +231,8 @@ typedef struct FslIMX25State {
- #define FSL_IMX25_GPIO1_SIZE    0x4000
- #define FSL_IMX25_GPIO2_ADDR    0x53FD0000
- #define FSL_IMX25_GPIO2_SIZE    0x4000
-+#define FSL_IMX25_WDT_ADDR      0x53FDC000
-+#define FSL_IMX25_WDT_SIZE      0x4000
- #define FSL_IMX25_USB1_ADDR     0x53FF4000
- #define FSL_IMX25_USB1_SIZE     0x0200
- #define FSL_IMX25_USB2_ADDR     0x53FF4400
-@@ -268,5 +272,6 @@ typedef struct FslIMX25State {
- #define FSL_IMX25_ESDHC2_IRQ    8
- #define FSL_IMX25_USB1_IRQ      37
- #define FSL_IMX25_USB2_IRQ      35
-+#define FSL_IMX25_WDT_IRQ       55
- 
- #endif /* FSL_IMX25_H */
--- 
-2.17.1
+Thanks
+-Bharat
 
+>
+> Thanks
+> -Bharat
+>
+> >
+> > Thanks
+> >
+> > Eric
+> >
+> > > +}
+> > > +
+> > >  static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+> > >  {
+> > >      VirtIODevice *vdev = VIRTIO_DEVICE(dev);
+> > > @@ -865,6 +874,7 @@ static void virtio_iommu_memory_region_class_init(ObjectClass *klass,
+> > >      IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_CLASS(klass);
+> > >
+> > >      imrc->translate = virtio_iommu_translate;
+> > > +    imrc->iommu_set_page_size_mask = virtio_iommu_set_page_size_mask;
+> > >  }
+> > >
+> > >  static const TypeInfo virtio_iommu_info = {
+> > >
+> >

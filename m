@@ -1,191 +1,174 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2797294lfi;
-        Tue, 24 Mar 2020 06:51:08 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vujrOqNfsEBMig15lL5GCz4FqBes1IcUsijQwVrCqzBv4PbDBjURHAPNTVFSdNK50wZ1QIC
-X-Received: by 2002:a37:a1cc:: with SMTP id k195mr26210258qke.169.1585057868367;
-        Tue, 24 Mar 2020 06:51:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585057868; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2798144lfi;
+        Tue, 24 Mar 2020 06:51:52 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vurGo8PreTNp2Ms8Ir1NM7FJqKob3MdPGbEHMfMiPDQybE0btTgT3BV3xiShOeHpnbHIgDp
+X-Received: by 2002:a37:d8a:: with SMTP id 132mr8945042qkn.270.1585057912071;
+        Tue, 24 Mar 2020 06:51:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585057912; cv=none;
         d=google.com; s=arc-20160816;
-        b=v5qqp2yQOwosqikOuP0rZAsv11kdjxgfGKFMNigmGK2ZjYCdko3ieRmELTIa3cU0SN
-         ZPsD2D32jrAxVqqVfF7c+qpeeXyRUJD4rUegAs+KtylDTLTGz81GXOecqDKlyKgtglGI
-         7b9BuEcRfNNjs5jYXB7lpNrp07PZAeE3s7ew4U7cXPmmrTb475Demkj1iFEuSFqvVnrW
-         ORitO2EJY0T6K4GPyqZ13hxUOvKOSAdKK/tH+aiMArZeYglFaVQ3gqmNfku5pKMkiH4P
-         GTK1b0cYDI96xz7WbEGzSM4DysCoFcj/bn5mPTKphYXesKmvv3ru0zSpgS5Ga1TFT3Ap
-         pQDQ==
+        b=ZTi++KCSnqNyy/w4O9N3gMAwL0m4ORgAIhIeD0mP4i5k2svXyCYOWvtPG6b9vW9Ruw
+         hHjg3gOAX7q0KE+0f8Wd7ETXHeAnWBrbKwDNvOTt7x+al8VUcmey5lmExohTIoHc6hc9
+         4J+3zGkghY+5b75lMbBO0nhBO+0ZOlaRvVbUAQ1cHqcI1wUwKIxoELbeG8feWzrNUkYa
+         TrAGXFueMXCHS7FJKqYkSPKhqxvCpeZjvGCVumObdGW9iCjf0IlMh3XXVJZIYcuYd1xz
+         7Up22EDAfC5DQPCinPxHbLJHepHXAlgA5KTcgfVlugaln5+OkD+ZabyJPsqKmYwN5+YN
+         GbOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=bE22CGlWWqUPL8NcmKjZG+N4XUlNXckt3+kKgAcyxzY=;
-        b=yxKdL1hDWZH2WDiFJKtW7BwgWDg0oGWW9aPS4fgMkh2hdMeqLSyaZjNMjYh/BvfqhK
-         Njrp20RB5t+JuIDMmtAPMMaooyqxPdvT6mAkeabygNo/Z5HGFykTsWRs8U/vlaoBAO2/
-         awLTs9RuG4pq5vLnEjy/3WDZy/ECrJdR8+LtUy00pv6nustRY87yS+lSG+nq8tis6YvE
-         NSptieblUc373a8AzMX7s0tPGz8XHOCBWPXoEWPrvKGQsm2l349eZnrhjVFX9yqeZENy
-         d38fnXNCYG+pjAtVj10QEwxb+bOsTrZeZqlng+6hqTe65G0mDjs6B3GChYBKE9CW2p4+
-         MMtg==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=NQ3BrcZcRe869MGEG3mEya/2DITKXWpltX6Obh6z5Y8=;
+        b=PHWPijSODfw3FeGiKMXQNv8vxVwr4K9n2HPzCjsu2PdcKHU1XCoZu7J1cwTzj2Bksh
+         DtV1LMkRb/s0kg9qLwYoz/85+u8X/4GM6S6Mv+JUgKbava10Ra9vNunudCMoZe2P5Dnl
+         jjRQN39bY2WCRCcicOoJ34RjpdVAx9m0nvmrFB6KpLRZjVxLpWAeTusnFBw54GMa7/jK
+         F6jMEyR17EG/0Ks3toEslS3nAtKcsHPWiIYEVqcq5XHRNKm9T/TeLAsVCc7ZHvqvHz5K
+         ndcAY2fULdLDjY7P7ag0vTg//W3pflkkbLtArI7QotRg2kA8EIDCUn3tgIdhHBuh6zZL
+         mxjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=EG+Xfc3L;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="aI07/rKm";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o44si9344480qvo.134.2020.03.24.06.51.08
+        by mx.google.com with ESMTPS id 7si10277356qkv.147.2020.03.24.06.51.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Mar 2020 06:51:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Mar 2020 06:51:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=EG+Xfc3L;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49122 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="aI07/rKm";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49154 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jGjxT-0002VW-Qw
-	for alex.bennee@linaro.org; Tue, 24 Mar 2020 09:51:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52252)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jGjyB-00045r-HW
+	for alex.bennee@linaro.org; Tue, 24 Mar 2020 09:51:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52527)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jGjwI-0000tX-FZ
- for qemu-devel@nongnu.org; Tue, 24 Mar 2020 09:49:55 -0400
+ (envelope-from <philmd@redhat.com>) id 1jGjxw-00043K-UE
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2020 09:51:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jGjwH-00029H-G0
- for qemu-devel@nongnu.org; Tue, 24 Mar 2020 09:49:54 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:34584)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jGjwH-00027w-9m
- for qemu-devel@nongnu.org; Tue, 24 Mar 2020 09:49:53 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id 65so4822811wrl.1
- for <qemu-devel@nongnu.org>; Tue, 24 Mar 2020 06:49:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=bE22CGlWWqUPL8NcmKjZG+N4XUlNXckt3+kKgAcyxzY=;
- b=EG+Xfc3LqvAQjBcs5BovLBfw1GEfhFecLp2IVF2O1rfNiIfTzNR1X09FUaT64KisjG
- bKna6v1cu/ZLL/Y9d24895gkYk7yAPQa6Q+UREMvPmyh/41/sJzUVByd8hFlZGwLBydS
- co0VjUTRZfeWTNiY/H/aDXFRGC5vwp4NxGWLkHaJ/XqW/kBPOboRqZXiVykuXzDIh2X4
- SYHH3J3N7u206eeTi1KkBvG2ulunbPU9tSezIsZ3Gu0y41/Fb6l/RM3DxHaTRXXuEoGh
- M5R+A1JhbLK508AF5WKno6vZDlJ1k1Xw0qp8E0My0tPMLvYQLTvN/mmHj/5T3JbyGLqr
- nIQQ==
+ (envelope-from <philmd@redhat.com>) id 1jGjxv-0004AE-UJ
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2020 09:51:36 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:27427)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jGjxv-00049x-RB
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2020 09:51:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1585057895;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NQ3BrcZcRe869MGEG3mEya/2DITKXWpltX6Obh6z5Y8=;
+ b=aI07/rKmQPQVnnDMeXhPQIfjOacxyzrhfFjy+KKHG/y+zcZ6ABg9xrYhlU8VRVHDLZ78Fb
+ TxYKy7lCQb6SM66C3/2sP51jFeRvSelww0LA+TGYuvNzAlCCDPTqzaimpvIGI3fHmpszEu
+ ZWrMo/OJyn56w4tXWqJe31mSOpTuXww=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-30-TAjxMBBTOem4NdU560IBKA-1; Tue, 24 Mar 2020 09:51:31 -0400
+X-MC-Unique: TAjxMBBTOem4NdU560IBKA-1
+Received: by mail-ed1-f70.google.com with SMTP id x1so14876101edv.14
+ for <qemu-arm@nongnu.org>; Tue, 24 Mar 2020 06:51:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=bE22CGlWWqUPL8NcmKjZG+N4XUlNXckt3+kKgAcyxzY=;
- b=hC6YaNgokVdmqX5e47Mp7g8GCtzTbNQu+2gfLL2cILSGu6Y+fI+pm+4wBCP2GOaTao
- rXoLyf1FKH6JisYiyCn6ci18eOjqY28Md9PE8gYXSNUcxdMdDbzbpqrl37FD02ofYIV4
- +nrhUxUC+8Sz6IhRfK7/PQiUUcappnXyx+Ef4vhzXgR2gi6Z4D8jyR0LlD2uBLu5Nc8m
- 0mcW/aM3c1NFdo/DGHWkxfqYjTAmapxHPlo8NwoxFyJoH+mZ/MTu7ZwUq2ISxXLZPnmc
- oexuX2HSh87IhtSJI5BxBzYTwcJbik60SFBWGVtMUhsb9OzfWgi5DazEzRSK7gqRMKo3
- sx+w==
-X-Gm-Message-State: ANhLgQ0/QDuEtz0ryCjP9gHd4LG5zeopmjtUSxf+1cFCXTo1mPylRntD
- fcGxG4XigA6cUM3538TmcjTR9Q==
-X-Received: by 2002:adf:e98b:: with SMTP id h11mr17446177wrm.409.1585057792255; 
- Tue, 24 Mar 2020 06:49:52 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id k3sm4332067wmf.16.2020.03.24.06.49.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Mar 2020 06:49:51 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 2/2] hw/arm/xlnx-zynqmp.c: Add missing error-propagation code
-Date: Tue, 24 Mar 2020 13:49:47 +0000
-Message-Id: <20200324134947.15384-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200324134947.15384-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Ckcfv+Xe3KOmGeQUVgWcTejMqOCF+il2FG+fbbla1sE=;
+ b=t9vwDw8y7E5JZ45vuESDJPFbNkxZfUzCTA/oGpoJ5dTHaEEvlpjMKtvr+cAUBaGaqf
+ 9sRKP7LWZuGM0IRT0xdmb6zpuTO471Uy24ggNXdGvL8GzD8UR5X9WZBJQgh85VZAG+CO
+ XpQGR85oe1JFoztqqEsC5n5hEPuWVxOOq6CHHSpAFkjPUyzNQe0g+CIuOHoA5hQE2xAN
+ ljuLJ0HMBHZI7JoavHhIbOpND45ffzFYzs9eu0ukdsQWOcMgNhdwtNO126I5cypc26ml
+ cLrT1b66tToMxQ7vs3OcCqrBiMYrVBLhjzAOMxdyktH4E0YeeIqXvjn5sFlgV4KgWV4r
+ 7G1A==
+X-Gm-Message-State: ANhLgQ0I5bHUTMcGGSj/HpUvrJxujo01fz0HW112ZYNaurlGE2Shj2Lt
+ 6c5Pl8uLQ4YE7bxuQl5gmTxyKNuTDbiuRfxqgpx0ywQaxgbwepXUAACapG/DQzoXllZKCUzFdSd
+ PmW+L9T8EsOj4
+X-Received: by 2002:a17:906:4e12:: with SMTP id
+ z18mr5854493eju.49.1585057890163; 
+ Tue, 24 Mar 2020 06:51:30 -0700 (PDT)
+X-Received: by 2002:a17:906:4e12:: with SMTP id
+ z18mr5854481eju.49.1585057889833; 
+ Tue, 24 Mar 2020 06:51:29 -0700 (PDT)
+Received: from [192.168.1.35] (37.red-83-52-54.dynamicip.rima-tde.net.
+ [83.52.54.37])
+ by smtp.gmail.com with ESMTPSA id w20sm129122ejv.40.2020.03.24.06.51.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 24 Mar 2020 06:51:28 -0700 (PDT)
+Subject: Re: [PATCH 1/2] hw/arm/xlnx-zynqmp.c: Avoid memory leak in
+ error-return path
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 References: <20200324134947.15384-1-peter.maydell@linaro.org>
+ <20200324134947.15384-2-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <6451c169-3d1e-0106-42d6-95b2f5d69fd9@redhat.com>
+Date: Tue, 24 Mar 2020 14:51:27 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::42b
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20200324134947.15384-2-peter.maydell@linaro.org>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 63.128.21.74
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SN6LLh8x7AVw
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Alistair Francis <alistair@alistair23.me>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0FityelTK1TY
 
-In some places in xlnx_zynqmp_realize() we were putting an
-error into our local Error*, but forgetting to check for
-failure and pass it back to the caller. Add the missing code.
+On 3/24/20 2:49 PM, Peter Maydell wrote:
+> In xlnx_zynqmp_realize() if the attempt to realize the SD
+> controller object fails then the error-return path will leak
+> the 'bus_name' string. Fix this by deferring the allocation
+> until after the realize has succeeded.
+>=20
+> Fixes: Coverity CID 1421911
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/arm/xlnx-zynqmp.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index 49f1c8d0de2..a13dbeeacec 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -520,7 +520,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Err=
+or **errp)
+>       sysbus_connect_irq(SYS_BUS_DEVICE(&s->sata), 0, gic_spi[SATA_INTR])=
+;
+>  =20
+>       for (i =3D 0; i < XLNX_ZYNQMP_NUM_SDHCI; i++) {
+> -        char *bus_name =3D g_strdup_printf("sd-bus%d", i);
+> +        char *bus_name;
+>           SysBusDevice *sbd =3D SYS_BUS_DEVICE(&s->sdhci[i]);
+>           Object *sdhci =3D OBJECT(&s->sdhci[i]);
+>  =20
+> @@ -541,6 +541,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Err=
+or **errp)
+>           sysbus_connect_irq(sbd, 0, gic_spi[sdhci_intr[i]]);
+>  =20
+>           /* Alias controller SD bus to the SoC itself */
+> +        bus_name =3D g_strdup_printf("sd-bus%d", i);
+>           object_property_add_alias(OBJECT(s), bus_name, sdhci, "sd-bus",
+>                                     &error_abort);
+>           g_free(bus_name);
+>=20
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Spotted while I was writing the previous patch.
----
- hw/arm/xlnx-zynqmp.c | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
-
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index a13dbeeacec..b84d153d56a 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -530,8 +530,20 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-          * - eMMC Specification Version 4.51
-          */
-         object_property_set_uint(sdhci, 3, "sd-spec-version", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-         object_property_set_uint(sdhci, SDHCI_CAPABILITIES, "capareg", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-         object_property_set_uint(sdhci, UHS_I, "uhs", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-         object_property_set_bool(sdhci, true, "realized", &err);
-         if (err) {
-             error_propagate(errp, err);
-@@ -551,6 +563,10 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-         gchar *bus_name;
- 
-         object_property_set_bool(OBJECT(&s->spi[i]), true, "realized", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
- 
-         sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0, spi_addr[i]);
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
-@@ -565,6 +581,10 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-     }
- 
-     object_property_set_bool(OBJECT(&s->qspi), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 0, QSPI_ADDR);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 1, LQSPI_ADDR);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->qspi), 0, gic_spi[QSPI_IRQ]);
-@@ -619,6 +639,10 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
- 
-     for (i = 0; i < XLNX_ZYNQMP_NUM_GDMA_CH; i++) {
-         object_property_set_uint(OBJECT(&s->gdma[i]), 128, "bus-width", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-         object_property_set_bool(OBJECT(&s->gdma[i]), true, "realized", &err);
-         if (err) {
-             error_propagate(errp, err);
--- 
-2.20.1
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 

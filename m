@@ -1,194 +1,258 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2943859lfi;
-        Tue, 24 Mar 2020 09:05:17 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtuUJYYUfTMXmO5zUoaJMEX5OaHZ/EedxS9CA5E6s+2jgBj/8gwlbsbC6F2Ws0XPhGCArD8
-X-Received: by 2002:a37:d244:: with SMTP id f65mr18519774qkj.373.1585065916183;
-        Tue, 24 Mar 2020 09:05:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585065916; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2954565lfi;
+        Tue, 24 Mar 2020 09:13:59 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vs2CpKCyGabVy00qEoeB9IneyfXY7eS+mLDs2xQjOx/+fyggEBQww31ag0urXqBJeA7m5+O
+X-Received: by 2002:ac8:33d2:: with SMTP id d18mr25905438qtb.325.1585066438922;
+        Tue, 24 Mar 2020 09:13:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585066438; cv=none;
         d=google.com; s=arc-20160816;
-        b=g6/YteP5x2iTKMK9cHlVX5hcN4v1TikKDR12zS4Ph4ycO23n1T6IAQDSG5SDhga59b
-         z8fFensOYRdZFwNCUCQ7G3eGNJXxJEAHtKMhg4JPRcVzNIq+MOh+YWa9MN8S/E/u2yNi
-         dLqqkPmrgB1nWvYloRY3Y6vUt8khQnzHtm2PrzI3l3+IyO+0BpE2hlEF3nAV0wCxLmUB
-         4aZvHZ+jEvJPa0t9+2ds1z9cXowwa9DtBNwkAKx17rEckEFOc1MM4CKxTLm9CG8QUlIb
-         UooVek6nAWwxS30ebbBnTcGNuiTy++N5DmDwt6gFOuzTSGbKLNY0tGKF270DF+LhzQx4
-         o9kw==
+        b=tZ+nPiZzfRW1aFnvtRTB+MW5AlLVBpM9wJ6OyTeAs4vALA1j5OvBejowrLhFODBx0v
+         xl8NcJeWewmKkpH25olapKPJj96nif+40CFLaOZIMP+5NpoLO47ZNozNcbcKX6eUKzHx
+         UF0D2HEuaqKPU92PRMs/wjc86of6/ebkK+LYgcctiC4v5J6HrCy714Pr/QDEPuOTPZOA
+         1A1HqmVn0u089bLCYKjipuFJ+6l9uI2Cixp8LjOuFcYrr+kH4bEQbS9uNDOy3w6LEelw
+         ANBpWJKCACLVyr5DR59RLKUeTyK1j/uvn9q3yNnElk1iuAk3dMEsIykkyWzYBWKbs+Bc
+         cStw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=vbhvlv+VbNXkIg6kT2d/mzvdrSvgE+JmNkuAgdwxn30=;
-        b=aWauTTTMX78f1U8RyxvvqoW0+APti30EDNaoGt9MCbw7M2nU54Rcbe5CKkTsK+BukD
-         tdQG+IjYQVAqMHvC5mODyxRmna4E772gA5eEs8fg9kfGK1YG40KxPkESW0zq6/Imkz6K
-         jzkb8geeBl7fPI1PDHDPRpCpG0VqK6KiXjVJ92B/YUKZKnifriswOrA9WsRL+XyC938x
-         vqHtMMBK1zcWwMTu81VNKDhkvC84kC0AYaU4QUw+9uTpo+cSLMnfCd0j/4AdV/L6beBI
-         rWSUJliP3vZlajwiUchf6BO+o3yNPevIxuK/EDZmvFwffWGC7Veq23KUEpYvKKxJK0Bd
-         CJTA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=pv8bjtviCRxJ0jNBJudOu0UtVGtQU3f5vCwiJ2taSgs=;
+        b=OoBgsOZFxH8BAw2lhJZnZMY6oYxHJFlT0qp42FBBy8D188WrdP7SE6zMq9LAwaLok3
+         NOCwrkR8txyc9AEUFuDLVqNVXh0hjGZ2o3RK5SHL88U5fqx0IDgdKPUkqxFn57+wm5Wd
+         NEwTthWfF/siJH94LISTqnkGd4XyoCYgZ1eQzb0D13b+EoyeAeClhuvUyjo1vRvXGaVX
+         FVoETqgD1+3CgZDaeHm8hr0ZGZ3QKX1QDqFG9/e3peuZ+E+4TFa8I3ZaX5ZfCplC5Wgs
+         dLabCGUcC+CPgg7hLC+cEAjHawHQKW4AME3qEts0gcJj5NayM3b/8JpFTrVYF8qdco9C
+         XRTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jhhzG9Jc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Nv7wID65;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w7si10111951qvf.49.2020.03.24.09.05.15
+        by mx.google.com with ESMTPS id c16si3557159qkj.81.2020.03.24.09.13.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Mar 2020 09:05:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Mar 2020 09:13:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jhhzG9Jc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51740 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Nv7wID65;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51846 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jGm3H-0004dN-Df
-	for alex.bennee@linaro.org; Tue, 24 Mar 2020 12:05:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45041)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jGmBi-0000kN-CT
+	for alex.bennee@linaro.org; Tue, 24 Mar 2020 12:13:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46526)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1jGm2h-0003r6-PG
- for qemu-arm@nongnu.org; Tue, 24 Mar 2020 12:04:40 -0400
+ (envelope-from <imammedo@redhat.com>) id 1jGmB0-0000L2-1g
+ for qemu-devel@nongnu.org; Tue, 24 Mar 2020 12:13:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1jGm2g-0007sc-GY
- for qemu-arm@nongnu.org; Tue, 24 Mar 2020 12:04:39 -0400
-Received: from mail-vs1-xe42.google.com ([2607:f8b0:4864:20::e42]:39928)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1jGm2g-0007s8-CG; Tue, 24 Mar 2020 12:04:38 -0400
-Received: by mail-vs1-xe42.google.com with SMTP id j128so4879366vsd.6;
- Tue, 24 Mar 2020 09:04:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=vbhvlv+VbNXkIg6kT2d/mzvdrSvgE+JmNkuAgdwxn30=;
- b=jhhzG9JcJEPxMLGs/HS+1eXfMAhovoP7GyYd8K4rkAp4mbkIRLJoHHitf/17cZv1S5
- /M5ieUn4u/gCFZIkhwQ7UZAT1yX5cWAWoPJlNxvlDrUEz9KRyA4RHAGeSSARcfxhBQHX
- LWf3HT6l6gLhtEbrToSgr6jIAGBF5QVUacRs+tTbhHDPAvWaUn3sH1Rr7FyANXxFwmid
- ErjvlwiifjpsBf0iBlNRHCud4XPRah+D5aP6hhrK7aH/CfMyGSQPKqfTEMwubgMpHT9b
- Tc85MypPqD+gAbY6GcWdya7vqI8I0zkOT0TChiWMsv2YR0XQExUfNzbt4jS+xmL5LxnZ
- eWkg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=vbhvlv+VbNXkIg6kT2d/mzvdrSvgE+JmNkuAgdwxn30=;
- b=gh4RA9SPloA9lp6NgkX3mcGR/0O6ek/lr1LperWOgAqlRTT9u7P2wT7OM/4v3O6zOz
- f8G6RMevWJxrLyK7HZGYZHp6caKqd0aPhk/HxEg19UDyHW4bIPibfuiRuIiSSTdLhyH6
- QU6B8WoPBJKkYSrtlkdUoqYAGBQnYKmYr2zZblcfi/DPGSBKsqNHvPQ2x4HjanWj+Ij3
- AiYQja59Sf/wClZm0ajNiy7OJwkdQf2TrE7/g15GUcWghmnEssF1nzLARYyXuTtlcICt
- 0rqT1QO4e6w/O+wVXJjXMtREeIg8Vw6oqC+/W5GcxOlBT02tleihPhNe7065pG7hwAv5
- FarQ==
-X-Gm-Message-State: ANhLgQ1lIzrL30LY3gQvaPfpB6eaTX5nfxoeHmv66px3R+H6xgJLqVEB
- PEqVVTSyi3tGODhCxQWOVwMaOl+hleEiDi1pmqs=
-X-Received: by 2002:a67:26c2:: with SMTP id
- m185mr20502695vsm.180.1585065877605; 
- Tue, 24 Mar 2020 09:04:37 -0700 (PDT)
+ (envelope-from <imammedo@redhat.com>) id 1jGmAy-00074H-O0
+ for qemu-devel@nongnu.org; Tue, 24 Mar 2020 12:13:13 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:56475)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1jGmAy-00073z-Jk
+ for qemu-devel@nongnu.org; Tue, 24 Mar 2020 12:13:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1585066392;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=pv8bjtviCRxJ0jNBJudOu0UtVGtQU3f5vCwiJ2taSgs=;
+ b=Nv7wID65ZOKPy/PW50AX4A5auAJr2MZI0e7YZkFY+/QDqj+3n0Ij1IaBSK9KpjtfIC4cl/
+ PsEdrtfXJ/xSX6djmJn1mg2zpoYR1WehKTB5DZR3uFXAoNE2GkhbSUfNB0ecGxO5wsTC1O
+ eYiQLWF9Kjc15HYrPlHFqyXcZibwQns=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-320-J84Vd0uLMx69521nsauxhQ-1; Tue, 24 Mar 2020 12:13:07 -0400
+X-MC-Unique: J84Vd0uLMx69521nsauxhQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A22FE1137845;
+ Tue, 24 Mar 2020 16:13:05 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.76])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6AED2A0A72;
+ Tue, 24 Mar 2020 16:12:54 +0000 (UTC)
+Date: Tue, 24 Mar 2020 17:12:52 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [RFC v1] arm/virt: Add memory hot remove support
+Message-ID: <20200324171252.7918e522@redhat.com>
+In-Reply-To: <20200318123722.19736-1-shameerali.kolothum.thodi@huawei.com>
+References: <20200318123722.19736-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-References: <20200324134947.15384-1-peter.maydell@linaro.org>
- <20200324134947.15384-3-peter.maydell@linaro.org>
-In-Reply-To: <20200324134947.15384-3-peter.maydell@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 24 Mar 2020 08:56:39 -0700
-Message-ID: <CAKmqyKNpw=oWsCjFSocsahRJQDO3Z8F7dnE-JUrhNk_tfHOCtw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] hw/arm/xlnx-zynqmp.c: Add missing error-propagation
- code
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::e42
-X-BeenThere: qemu-arm@nongnu.org
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 63.128.21.74
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5q7vkJQkWWpp
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, mst@redhat.com, linuxarm@huawei.com,
+ xuwei5@hisilicon.com, qemu-devel@nongnu.org, eric.auger@redhat.com,
+ qemu-arm@nongnu.org, prime.zeng@hisilicon.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8pIhITh9iiD5
 
-On Tue, Mar 24, 2020 at 6:50 AM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> In some places in xlnx_zynqmp_realize() we were putting an
-> error into our local Error*, but forgetting to check for
-> failure and pass it back to the caller. Add the missing code.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On Wed, 18 Mar 2020 12:37:22 +0000
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> This adds support for memory hot remove on arm/virt that
+> uses acpi ged device.
+> 
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 
-Alistair
+Looks fine to me,
+please repost once 5.0 is released.
 
 > ---
-> Spotted while I was writing the previous patch.
+>  -RFC because linux kernel support for mem hot remove is just queued
+>   for 5.7[1].
+>  -Tested with guest kernel 5.6-rc5 + [1]
+> 
+> 1. https://patchwork.kernel.org/cover/11419301/
 > ---
->  hw/arm/xlnx-zynqmp.c | 24 ++++++++++++++++++++++++
->  1 file changed, 24 insertions(+)
->
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index a13dbeeacec..b84d153d56a 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -530,8 +530,20 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->           * - eMMC Specification Version 4.51
->           */
->          object_property_set_uint(sdhci, 3, "sd-spec-version", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
->          object_property_set_uint(sdhci, SDHCI_CAPABILITIES, "capareg", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
->          object_property_set_uint(sdhci, UHS_I, "uhs", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
->          object_property_set_bool(sdhci, true, "realized", &err);
->          if (err) {
->              error_propagate(errp, err);
-> @@ -551,6 +563,10 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->          gchar *bus_name;
->
->          object_property_set_bool(OBJECT(&s->spi[i]), true, "realized", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
->
->          sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0, spi_addr[i]);
->          sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
-> @@ -565,6 +581,10 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>  hw/acpi/generic_event_device.c | 28 +++++++++++++++++
+>  hw/arm/virt.c                  | 56 ++++++++++++++++++++++++++++++++--
+>  2 files changed, 82 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+> index 021ed2bf23..3e28c110fa 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -182,6 +182,32 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
 >      }
->
->      object_property_set_bool(OBJECT(&s->qspi), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
+>  }
+>  
+> +static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
+> +                                       DeviceState *dev, Error **errp)
+> +{
+> +    AcpiGedState *s = ACPI_GED(hotplug_dev);
+> +
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
+> +    } else {
+> +        error_setg(errp, "acpi: device unplug request for unsupported device"
+> +                   " type: %s", object_get_typename(OBJECT(dev)));
 > +    }
->      sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 0, QSPI_ADDR);
->      sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 1, LQSPI_ADDR);
->      sysbus_connect_irq(SYS_BUS_DEVICE(&s->qspi), 0, gic_spi[QSPI_IRQ]);
-> @@ -619,6 +639,10 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->
->      for (i = 0; i < XLNX_ZYNQMP_NUM_GDMA_CH; i++) {
->          object_property_set_uint(OBJECT(&s->gdma[i]), 128, "bus-width", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
->          object_property_set_bool(OBJECT(&s->gdma[i]), true, "realized", &err);
->          if (err) {
->              error_propagate(errp, err);
-> --
-> 2.20.1
->
->
+> +}
+> +
+> +static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
+> +                               DeviceState *dev, Error **errp)
+> +{
+> +    AcpiGedState *s = ACPI_GED(hotplug_dev);
+> +
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
+> +    } else {
+> +        error_setg(errp, "acpi: device unplug for unsupported device"
+> +                   " type: %s", object_get_typename(OBJECT(dev)));
+> +    }
+> +}
+> +
+>  static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+>  {
+>      AcpiGedState *s = ACPI_GED(adev);
+> @@ -286,6 +312,8 @@ static void acpi_ged_class_init(ObjectClass *class, void *data)
+>      dc->vmsd = &vmstate_acpi_ged;
+>  
+>      hc->plug = acpi_ged_device_plug_cb;
+> +    hc->unplug_request = acpi_ged_unplug_request_cb;
+> +    hc->unplug = acpi_ged_unplug_cb;
+>  
+>      adevc->send_event = acpi_ged_send_event;
+>  }
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 94f93dda54..91974e4e80 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2096,11 +2096,62 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>      }
+>  }
+>  
+> +static void virt_dimm_unplug_request(HotplugHandler *hotplug_dev,
+> +                                     DeviceState *dev, Error **errp)
+> +{
+> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+> +    Error *local_err = NULL;
+> +
+> +    if (!vms->acpi_dev) {
+> +        error_setg(errp,
+> +                   "memory hotplug is not enabled: missing acpi-ged device");
+> +        goto out;
+> +    }
+> +
+> +    hotplug_handler_unplug_request(HOTPLUG_HANDLER(vms->acpi_dev), dev,
+> +                                   &local_err);
+> +out:
+> +    error_propagate(errp, local_err);
+> +}
+> +
+> +static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
+> +                             DeviceState *dev, Error **errp)
+> +{
+> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+> +    Error *local_err = NULL;
+> +
+> +    hotplug_handler_unplug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &local_err);
+> +    if (local_err) {
+> +        goto out;
+> +    }
+> +
+> +    pc_dimm_unplug(PC_DIMM(dev), MACHINE(vms));
+> +    object_property_set_bool(OBJECT(dev), false, "realized", NULL);
+> +
+> + out:
+> +    error_propagate(errp, local_err);
+> +}
+> +
+>  static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
+>                                            DeviceState *dev, Error **errp)
+>  {
+> -    error_setg(errp, "device unplug request for unsupported device"
+> -               " type: %s", object_get_typename(OBJECT(dev)));
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        virt_dimm_unplug_request(hotplug_dev, dev, errp);
+> +    } else {
+> +        error_setg(errp, "device unplug request for unsupported device"
+> +                   " type: %s", object_get_typename(OBJECT(dev)));
+> +    }
+> +}
+> +
+> +static void virt_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
+> +                                          DeviceState *dev, Error **errp)
+> +{
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        virt_dimm_unplug(hotplug_dev, dev, errp);
+> +    } else {
+> +        error_setg(errp, "virt: device unplug for unsupported device"
+> +                   " type: %s", object_get_typename(OBJECT(dev)));
+> +    }
+>  }
+>  
+>  static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
+> @@ -2181,6 +2232,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>      hc->pre_plug = virt_machine_device_pre_plug_cb;
+>      hc->plug = virt_machine_device_plug_cb;
+>      hc->unplug_request = virt_machine_device_unplug_request_cb;
+> +    hc->unplug = virt_machine_device_unplug_cb;
+>      mc->numa_mem_supported = true;
+>      mc->auto_enable_numa_with_memhp = true;
+>      mc->default_ram_id = "mach-virt.ram";
+

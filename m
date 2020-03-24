@@ -1,96 +1,98 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2818136lfi;
-        Tue, 24 Mar 2020 07:09:40 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtQI/j+tn0pDkPlcobqZJartyNbCwqKU0IUsPLDXocMbWct0RrgJn8wp4VlOPvEVTUW6PGz
-X-Received: by 2002:aed:2535:: with SMTP id v50mr26927575qtc.354.1585058979842;
-        Tue, 24 Mar 2020 07:09:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585058979; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2942745lfi;
+        Tue, 24 Mar 2020 09:04:21 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvwMPa3gt3nrtMpa/yTPi7/76/F8myZasF2eCJLSmfGqS7w5LyTMJe7qOIclwX7Ke6s0N1o
+X-Received: by 2002:a37:66c9:: with SMTP id a192mr21398402qkc.10.1585065859945;
+        Tue, 24 Mar 2020 09:04:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585065859; cv=none;
         d=google.com; s=arc-20160816;
-        b=j3zNlcM2frjYTHhzmFRvsiPqKSsZaX/Q80idsTVR+FU5JIT7Tqvuizx8OnjSNNcMBE
-         nxLlv7rWD4JHdJtsvxbzE1n8n1DLfc5ejGNfBFg3D22B8x0I1vN4ZF5hU7DOCMPQl6M2
-         Lv5vj3Fkc3GK8Si+nT5bvEZO4qaCReR+8Pj5oT2XVnmwLUgyh+rzpWGo2Tl411LZf0BH
-         O3ctnUkl4cAPxPpFT2Vrie4zhlUWGdKwtdUqSeDNiDnr0cxlavEuM7jBj6oEGxdLBGcV
-         K4DKjE0B4qoQK7DT7vMUHsIxrqDyFwS3us2eVb/IoNj5hzGvKOAEK6+/kmhXs0rMmo5E
-         jlGA==
+        b=Pc/4lah/nUs4Th/+3KT8YdClIyIe7j0DCJX5slVa2sadJcPTBpLwLNn8eLP5NZhCPh
+         uS1lEq1nizSQxUj6s+lE3qLRnhmrllWleBNFLK4yUmH8ufs1bKD4OwgFvVKAyM0+EIxQ
+         DSQlt2F6Pg5u1aCWG2fb7ccD9eDFsXyVKacMareLnx9Z/9cYGxn0j9D3R7vlAcYdc4iX
+         OxYpMI/5azldt0sfMhwxp6ewh3eu2E+JJsfO1h0LPuobZBnpz6n3UU3caCaEOXllEOYz
+         V22Da+vRmyEJNTbKR1fmjua7WssXbumybpE5Bg4TLx2FFGWp3pbtn324yURA1+R8jUx7
+         D7CQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=DHFErVccaVagAISXs0hS/UGpos4OgSey3xf3EzZnx1k=;
-        b=qNgoxY7/++wXhAS81C7A3EeTEW4QOqMh/IdVd+xci5k6gOuXSlcUt6hDYnjsuc1qr/
-         M5+cxeo8jD7gwqGbrzv6PADCIEXSsiBul1YA5eM/6aqb5QVPMI0dtVX+1WBHakJI0T6o
-         +gXWPR1zuUfmCzCqrQE1+no1NBEhGGe8RqmoJuBHa/92RRt3JjdYf3Psd2oQA3AImtSz
-         /4zzQF187pxpy2I60QTjzdKnYEfAC634v+Dzj28mFxG6dsk//+6nU8WP6olk6LoNOIqy
-         BH/3/t7UNDZav7VyMB/vPhoqEQTjLW2Gb3d+uoZBFLsQOIlHfyFeUBfFW1zT9ddJbMnW
-         E6qw==
+        bh=0h/TwjEcebCcGsV2tARcocmmiJM/HkWArO7LTFSeZ5w=;
+        b=hQ/0YbQ0vvtq/4hFoR9csxLiE+c5iWwb/aokKT/uMeGLLG90iouK0SlmqO/aIuKjtZ
+         YEAn4iSH8UJS3EZQw/ZaZlOIa1EN1yPZmLPH9ZjWkrn81HeOZe9pgP5hZDTVkLbIKDkE
+         0o2OoZjWbi/3n3svnS8TNW82GCn+b8n2Gfr7PgTb0fqVsNX6juXfIUnGtsU+uEo+PPuK
+         AnPBv7cc6tP8nkfU5tvTbbNtaDB2a7NmSbt7meLucf3EzgrEyuBg0TlerhmzEj2rM0au
+         TtziE+T7lDAb8VY4m3/2Pf0AnjdgHVvA2fLIjnI14iA9GvWwIzd2lYfkIXywTzlphdzT
+         l+vg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NMAhxGsG;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qsAI7UFS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b25si8852159qtq.373.2020.03.24.07.09.39
+        by mx.google.com with ESMTPS id x90si4141663qtd.117.2020.03.24.09.04.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Mar 2020 07:09:39 -0700 (PDT)
+        Tue, 24 Mar 2020 09:04:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NMAhxGsG;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qsAI7UFS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:49500 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:51672 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jGkFP-00025Y-7E
-	for alex.bennee@linaro.org; Tue, 24 Mar 2020 10:09:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55276)
+	id 1jGm2N-00030E-Ay
+	for alex.bennee@linaro.org; Tue, 24 Mar 2020 12:04:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44929)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jGkFH-000250-6P
- for qemu-arm@nongnu.org; Tue, 24 Mar 2020 10:09:32 -0400
+ (envelope-from <alistair23@gmail.com>) id 1jGm24-0002yK-Rz
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2020 12:04:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jGkFG-0007tP-4y
- for qemu-arm@nongnu.org; Tue, 24 Mar 2020 10:09:31 -0400
-Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:33501)
+ (envelope-from <alistair23@gmail.com>) id 1jGm23-0007Lz-Nv
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2020 12:04:00 -0400
+Received: from mail-vs1-xe43.google.com ([2607:f8b0:4864:20::e43]:37116)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jGkFF-0007oy-Sz; Tue, 24 Mar 2020 10:09:30 -0400
-Received: by mail-lf1-x142.google.com with SMTP id c20so13356651lfb.0;
- Tue, 24 Mar 2020 07:09:28 -0700 (PDT)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1jGm22-0007KD-1G; Tue, 24 Mar 2020 12:03:59 -0400
+Received: by mail-vs1-xe43.google.com with SMTP id o3so11474796vsd.4;
+ Tue, 24 Mar 2020 09:03:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=DHFErVccaVagAISXs0hS/UGpos4OgSey3xf3EzZnx1k=;
- b=NMAhxGsGVn5FC1Vrj2u5ltFb4dmdfxj/5Xb5pm2Wnc6KwRqemLRSIhObutcchgNKup
- F3ZE9LpBiP9b2iDRi6/Sktl5pqmzSDu5a9aKmffFTg5DixrOLJ2+MSRgDCtnCk8aQQxC
- rRNLJGtmxeLLwZQ+Qg4vNxAEpVdN4rJOtm2XrecX6+MT/w05xJ+QZ2aJnRzsqpIinAgc
- o/jceiQshCXQkaHC+fDYCjWbvU7usPRft4J5QE3fi4Kym2eo7ZnZyT6rYtGZnbHsEmjS
- Uz18eunPWox7Aljjh2NQl9XjLraiheiQ/1kHAsARSrD8ms2zHVOl+gnm1oJs6Bvs+RQ0
- p1/w==
+ :cc; bh=0h/TwjEcebCcGsV2tARcocmmiJM/HkWArO7LTFSeZ5w=;
+ b=qsAI7UFSOEIVtzsOxnqe51d+4dHFNvDj7V7TB7NJmoZdQXm48xsARVZPqT9JGwprnO
+ T8Nhxojpi7iDlDMZSLOmcQfcwnZK94cX61pjrFT2QlWeUbe+WIBn+eLCe24nGzLax3Pf
+ GpchIYFjjkRepNrVBJZh5bzmBuuvdUDevqbRonFVIQpb1qzPiwfn8SksjZETr9IEUm2Z
+ 5EfHgm2kvYGSCIua8kCqIhTLZEFcZVfUaZZzQEwuV2fucUTjGfBGQ9a11V12YVhRWgd5
+ vtGjopH8klP4XSj1c4v+BeWIgQ3O/afmY6hg2y+fvNgB+/8ew4s08MRHBIMG6MTdPG0e
+ +mRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=DHFErVccaVagAISXs0hS/UGpos4OgSey3xf3EzZnx1k=;
- b=KIW2Mf/2OP3fVlqBc76tZcnStLHgfeu0dXK0gy75lPoyTAtJb2jTNw8Al/zLgNXNKZ
- TOlw2u5DKz8annQs1k/zVMeqkH/aYwMoYABytdAUXd86fVm9U702cJws8F9/wMc/E3Fu
- tyHr5Ps8ejkvNyGOvQU1cX9jGl9VWgLKp76GAQ7KiFyf9VJaSEqXFUxN2z2D/JkOv1yB
- frCGYrd6T6FLH8dJBoweQ9mdP773hWd/SEf8D4fOOQfkJU942qInJ7K53ipQuW2eZOCX
- cjqfElhBvutFBVO4EIBDzpK3bSgU2GLR5Mow3X+BlJz5bLq1xoUcXuPJkEElY/zY1Aph
- lRNg==
-X-Gm-Message-State: ANhLgQ30U38uxU1FPWX2Dv24LnBSPhfmG9d87MMsqyVDAFPVrwktqOWf
- Z+cCRVUgSZ7nv687yWkG9MBUAcmuHSrjgjyOUBY=
-X-Received: by 2002:ac2:42c5:: with SMTP id n5mr5739242lfl.20.1585058966934;
- Tue, 24 Mar 2020 07:09:26 -0700 (PDT)
+ bh=0h/TwjEcebCcGsV2tARcocmmiJM/HkWArO7LTFSeZ5w=;
+ b=dRhGAKxtYKAogLkUK9NUxDuuKYbskyIR+qTa0oujT6C72TVJ0bt+bwG/w4YbdImY0o
+ jCzFSR1DXJ8Def/ZKp4Q0uqWiZ6LVj1+tBtRBb+5H8kvqAT+oIrMeY0MYwRYYGNkVlX7
+ rkYWhNWBTGDC6HvWTziQNWQPsga25TKv0BEUCxkqfQcAGsWZasZyU6DeKNqtZlbj39g7
+ ZCZBP/6TzZVoOucZqI8a/BTjdp0wDDl+y37qiPf2fe4Mxl205EOU2hMaIKf+SGCMJ8KU
+ QeFCAn8LsXWulV+lt9IY1+Owo+2SiHx3wi/f7984NmMe5nvhMGVDe5B+hmlThhmcboYq
+ WbRQ==
+X-Gm-Message-State: ANhLgQ3iJUrpC+6PxohuTqdXmz9Gas44Kb174Hq7tLWJfnwAcjHdWIT/
+ 81tlQ94kUpIlnQa8ygodvWyzbiflC8tdBuFAd5E=
+X-Received: by 2002:a67:ffd0:: with SMTP id w16mr11669933vsq.151.1585065836790; 
+ Tue, 24 Mar 2020 09:03:56 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200324134947.15384-1-peter.maydell@linaro.org>
-In-Reply-To: <20200324134947.15384-1-peter.maydell@linaro.org>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Tue, 24 Mar 2020 15:10:24 +0100
-Message-ID: <CAJy5ezqmUqProhrbqD1gmJ61jMU740CwjPiAyOLjDjSk75iDgA@mail.gmail.com>
-Subject: Re: [PATCH 0/2] hw/arm/xlnx-zynqmp.c: fix some error-handling code
+ <20200324134947.15384-2-peter.maydell@linaro.org>
+In-Reply-To: <20200324134947.15384-2-peter.maydell@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 24 Mar 2020 08:55:58 -0700
+Message-ID: <CAKmqyKMUgDkXdk+gASP-W4_-dSmZOyjVdhtpAQh8ARtNn2ZXow@mail.gmail.com>
+Subject: Re: [PATCH 1/2] hw/arm/xlnx-zynqmp.c: Avoid memory leak in
+ error-return path
 To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000ac201705a19a4cf1"
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::142
+X-Received-From: 2607:f8b0:4864:20::e43
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -102,74 +104,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S9DftoScPPLw
+X-TUID: Xt+0vSTx+kB5
 
---000000000000ac201705a19a4cf1
-Content-Type: text/plain; charset="UTF-8"
-
-On Tue, Mar 24, 2020 at 2:49 PM Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> This series fixes some minor bugs in error-handling paths
-> in the xlnx-zynqmp device. The first is a memory leak spotted
-> by Coverity; the second is some missing error-propagation code
-> that I noticed while writing the first patch.
+On Tue, Mar 24, 2020 at 6:50 AM Peter Maydell <peter.maydell@linaro.org> wrote:
 >
+> In xlnx_zynqmp_realize() if the attempt to realize the SD
+> controller object fails then the error-return path will leak
+> the 'bus_name' string. Fix this by deferring the allocation
+> until after the realize has succeeded.
+>
+> Fixes: Coverity CID 1421911
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
+Alistair
 
+> ---
+>  hw/arm/xlnx-zynqmp.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 >
-> thanks
-> -- PMM
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index 49f1c8d0de2..a13dbeeacec 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -520,7 +520,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->sata), 0, gic_spi[SATA_INTR]);
 >
-> Peter Maydell (2):
->   hw/arm/xlnx-zynqmp.c: Avoid memory leak in error-return path
->   hw/arm/xlnx-zynqmp.c: Add missing error-propagation code
+>      for (i = 0; i < XLNX_ZYNQMP_NUM_SDHCI; i++) {
+> -        char *bus_name = g_strdup_printf("sd-bus%d", i);
+> +        char *bus_name;
+>          SysBusDevice *sbd = SYS_BUS_DEVICE(&s->sdhci[i]);
+>          Object *sdhci = OBJECT(&s->sdhci[i]);
 >
->  hw/arm/xlnx-zynqmp.c | 27 ++++++++++++++++++++++++++-
->  1 file changed, 26 insertions(+), 1 deletion(-)
+> @@ -541,6 +541,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>          sysbus_connect_irq(sbd, 0, gic_spi[sdhci_intr[i]]);
 >
+>          /* Alias controller SD bus to the SoC itself */
+> +        bus_name = g_strdup_printf("sd-bus%d", i);
+>          object_property_add_alias(OBJECT(s), bus_name, sdhci, "sd-bus",
+>                                    &error_abort);
+>          g_free(bus_name);
 > --
 > 2.20.1
 >
 >
-
---000000000000ac201705a19a4cf1
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Mar 24, 2020 at 2:49 PM Peter=
- Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@lina=
-ro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">This series fixes some minor bugs in error-handling paths<br>
-in the xlnx-zynqmp device. The first is a memory leak spotted<br>
-by Coverity; the second is some missing error-propagation code<br>
-that I noticed while writing the first patch.<br></blockquote><div><br></di=
-v><div>Reviewed-by: Edgar E. Iglesias &lt;<a href=3D"mailto:edgar.iglesias@=
-xilinx.com">edgar.iglesias@xilinx.com</a>&gt;<br></div><div>=C2=A0</div><bl=
-ockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-lef=
-t:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-thanks<br>
--- PMM<br>
-<br>
-Peter Maydell (2):<br>
-=C2=A0 hw/arm/xlnx-zynqmp.c: Avoid memory leak in error-return path<br>
-=C2=A0 hw/arm/xlnx-zynqmp.c: Add missing error-propagation code<br>
-<br>
-=C2=A0hw/arm/xlnx-zynqmp.c | 27 ++++++++++++++++++++++++++-<br>
-=C2=A01 file changed, 26 insertions(+), 1 deletion(-)<br>
-<br>
--- <br>
-2.20.1<br>
-<br>
-</blockquote></div></div>
-
---000000000000ac201705a19a4cf1--

@@ -1,308 +1,284 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1077076lfi;
-        Wed, 25 Mar 2020 14:03:51 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuD0I/eoQGOjNccH4UXTJ+iE2eNO2nvcU0eTHphILskIj81LJCNaBlMv6rO/EI1T3o10Eal
-X-Received: by 2002:a37:b041:: with SMTP id z62mr4830484qke.487.1585170231392;
-        Wed, 25 Mar 2020 14:03:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585170231; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1079274lfi;
+        Wed, 25 Mar 2020 14:06:01 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsbP7CSQq7I74bbdU9gEKBNlulYYU6nPqsJ2cE1Wb9xGBBAcWtxilFOPIYHfut6r7HAX3xQ
+X-Received: by 2002:ac8:7288:: with SMTP id v8mr4987281qto.31.1585170361823;
+        Wed, 25 Mar 2020 14:06:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585170361; cv=none;
         d=google.com; s=arc-20160816;
-        b=SnHIqCiUJCLUW7US80ajopBa/gJIfmA1pENz7EdsN4LtJoe7vp3dvOq/ZLZt9MWyEu
-         wFDQD++aoCFNyURM8VR4Z4NbqxMhS/T582wwSAUaj+Krchydkj+DgbNoeXOBO3u7MlRZ
-         HGI0hQrTljWjItlIsIHUtZRqwhXTuCO3D7BFwN1DQtR61x2XuI8YAC2YSyOdTG2P9Zu5
-         pxynBjtngaa5k+KlMH6u5eGrPyaXv6O9DQDfiEnDvJaR3Gi9xA1EkH82oBh6bEohwYL8
-         R04H4g7t9lblBQ0nh5ReKbuwGZM5GKcGaFUKal+6lU/glWqV4K2UJ2csvREUeFOvXUz1
-         zR8A==
+        b=x2/gvIsfjZGXM209QtGwdHz/rPetEoL7W4g3QhDk4ywr/Uy7Kd+Nl95o4UgohitFFo
+         gIfDC2hzqVOZDCNIDKY7pW8cKgjZTQr5rxlUCbGOloM4v7YAyc80rdjNaSsC14XMNGUf
+         e+hY+4421h3tSG1WgnTMa0HBcQ8ZpLN/ptVQgPmPcaOmKcPu/hwgPDNzQu0wbz4KI1Na
+         2w1n5U6+qLAOiYb3T/Tlwt/U6MRNmYI6RVx1lzn6q5jufRBH3H75Pq19jBqvvHovxvf8
+         CucKDJVq3Bo7PsHJWgAYt4GnmEFHchmlcddOE/h9VxDyku9EvB+0vVdvoS+Swb7nCqA/
+         aGnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=XfhENZ6t3ct9uVkcrH1JI6JP+JcsPr1A0NwiLry1SUw=;
-        b=rFAhXVudJmwbpMHTkY2WebqgkEcAiXaYkUQk3+w+whVixPLbiFj1N0F9zkmcduFV4A
-         Gjf80hdLaGpMIhIN/IhZfp7i5T4BCdIJWUvLDqMsgP4d7lng0o1gMS80is+PUva2S61K
-         XBOUI1qS6U8hSJMHP1V+fuiXZ0w4ktcJNNMj+vq05uY461wQdOtuLVxnO9Kl4ORJ6rmc
-         jPPssVWBtg0AfiOH3sY8H9osXDRpAWEAB7tlnvTyeiwVBG5tQWxVNbeU2R5tvTmIWvKt
-         dSyYCi2XHaENohgWgNExNimw6HVJfKrCrGof+KSUs3nZgI2xAng8KbeSWApugklgEPnC
-         CKmg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=NsFh4ZWQW5xf93MxxSQq7WYTkJzxtzcQn8elvCc5naw=;
+        b=RNo2ci7WaJ3od0K+FkT0UytduCnQi5iR41jtrPx8ZVG7p34oxECiygsLra6oIja7DT
+         iYHaeFytJcwwaRv1e+cbJ11rhzbyr583+Wwjl0j7E6s4K150E0NCKKsYE892HOPSQodr
+         l4VKnyanuov/MKhYNNSoddbI2B3qutVY4hq7I/vNKNuT6cNvCp1mfsSF6mJBWmc5yzd0
+         EXctMbmKq0Z8aVHNt4lS2lUuS5oA9WhrrR+hGtlcNi4DIYBAv/btJOe2OZ0JnhbKmwnx
+         dWLM/pO02UiKvKJhLZ32oAH7JetzJUbyvS1d7+KaZYDu7VBgRzEOvY+5OVxSo/9Pkl0Z
+         jQpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p0y33Y34;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="eROiT/Gb";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x4si8099749qkj.112.2020.03.25.14.03.51
+        by mx.google.com with ESMTPS id 4si13697533qkb.260.2020.03.25.14.06.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Mar 2020 14:03:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 25 Mar 2020 14:06:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p0y33Y34;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="eROiT/Gb";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:43374 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43402 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jHDBm-0007wz-Q9
-	for alex.bennee@linaro.org; Wed, 25 Mar 2020 17:03:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43311)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jHDDt-0001ev-51
+	for alex.bennee@linaro.org; Wed, 25 Mar 2020 17:06:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43786)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1jHD96-0004ay-OX
- for qemu-arm@nongnu.org; Wed, 25 Mar 2020 17:01:06 -0400
+ (envelope-from <nieklinnenbank@gmail.com>) id 1jHDBH-0007MU-Ed
+ for qemu-devel@nongnu.org; Wed, 25 Mar 2020 17:03:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1jHD95-0000L2-3r
- for qemu-arm@nongnu.org; Wed, 25 Mar 2020 17:01:04 -0400
-Received: from mail-ua1-x942.google.com ([2607:f8b0:4864:20::942]:41494)
+ (envelope-from <nieklinnenbank@gmail.com>) id 1jHDBG-00020g-0B
+ for qemu-devel@nongnu.org; Wed, 25 Mar 2020 17:03:19 -0400
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:33634)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1jHD91-0000H6-Ta; Wed, 25 Mar 2020 17:00:59 -0400
-Received: by mail-ua1-x942.google.com with SMTP id f9so1317646uaq.8;
- Wed, 25 Mar 2020 14:00:59 -0700 (PDT)
+ (Exim 4.71) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1jHDBD-0001xC-0e; Wed, 25 Mar 2020 17:03:15 -0400
+Received: by mail-io1-xd42.google.com with SMTP id o127so3861339iof.0;
+ Wed, 25 Mar 2020 14:03:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=XfhENZ6t3ct9uVkcrH1JI6JP+JcsPr1A0NwiLry1SUw=;
- b=p0y33Y342ud6TlvVe77z31QRkRWr24mWTFf3ssm7x6VAbAC2dOxfu6W1bRjFKJzv03
- PM63hqjU6/sfybRR+32qyNrRpWPmFDFmcZ9R6NrgGCgpqYYz8APuZh02Z/BmINb4ayYh
- pEvrOkzyQsQ3yo4X7zxBiRerV30lSmK2v2EtKAUC9q3cHff4pKReQdNnv60Dv68zSyWc
- uxIIhz+/uvROFIadeyOQby0CuxCCHXNV/iwKLEU6VDa6KPu3sRIJEE54e20EVHf168fS
- 18G4s8KriKwUbtZsFBrNzyRGPpIGrx3A9C0tBQ4jvkZivsOPmVSBMvH5BvNmW8YRYcIs
- 7eUg==
+ :cc; bh=NsFh4ZWQW5xf93MxxSQq7WYTkJzxtzcQn8elvCc5naw=;
+ b=eROiT/GbXRT2J3qYnSs75btYPYnYW6O60jX2kkQ9z3lXx/lfjh32w6mSBjlLmoZ0Ej
+ FtNcUHqb/NB1cMz3ixScbygmAWuC8CklVpCFaFjTbIyQ+OiEgVzeUf22j0ay+Kl/zVKn
+ NWJfm+c015ZE+mL7a1e/CwkzTRCBekaMcHzSRcFDsgRR0VnUfmUu62Xf++/iTpIdJgbr
+ Cv/ZQqn0a5XETBA713/LtGW2s4AEJeNpRqSIFb+h9lIJj5WvG6QjAfffGxbRt9haCDVY
+ eBMZ0PX3DnK0LHV5z42wB92tpBRoKEP5MbFTrpdwqALHmAZjSOtcCc/65Fc2ZYRwqrad
+ hfOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=XfhENZ6t3ct9uVkcrH1JI6JP+JcsPr1A0NwiLry1SUw=;
- b=Ju8sGmeV6VmziZLs0ztrX8D0V46chd7EGQhNOct7hqESeU9jrjU4Y5WhEMiQ7iylKS
- r52T2U8ZN2oXfU0S3SJdIgEKifCS/0HiL1MUXOi1E1v4Gh3l5gjDk63p+lBTxXEp/U8D
- jOzGXOumJ3Rywh/n7as82pCfIdUBjFy/5gbhI2hZaG1O3H1ce3tUJdgseGkFCGYgP4PD
- KD07iBC/pYuH6My++R0Xfj64CUln8Adrgva2Po/boh2oG+QWGUVD5lf5f8PmPowXG/0/
- JHVWZsAGZue1ku9I5TofAzoPySu/H6Fkmv4Qd8mLHpJ5mS3ZAKWvK1vx9zy9p+raNoXp
- HTWQ==
-X-Gm-Message-State: ANhLgQ2xevjmmd02mdvo4U7io4TFJwSKV26OGpvT1Y3Pb1JvooKoLKxM
- KMcpJ2tQWpUanFZsSQY+yGQq8+AUjXlS4Yy9wyU=
-X-Received: by 2002:ab0:143:: with SMTP id 61mr4044978uak.85.1585170059328;
- Wed, 25 Mar 2020 14:00:59 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=NsFh4ZWQW5xf93MxxSQq7WYTkJzxtzcQn8elvCc5naw=;
+ b=RWTYTKkrsHbIPXyQkU9P6aIHOYdTWa8a6lp38YjQlgR2HSpo/QdRGE1SV5kP+qQPsh
+ xs5E+wT8Ypu5y6uU+p/weIBbfS6bQosXoF+P7SHZPmq9JeHV0PICLBlnZdQ695r7ggqj
+ 0OxqU9InzpabEhyUgGiNli2HNJkXJBm2rkFvzxYondpR5hkKqqECxBBkp3ChzD5pGTza
+ dHR/1Sw4aL0AwVz/1devnV/CJowlD0I8t/3N5+K4J17bueZ/IfYcGMlxRxRATcSqrXBg
+ WEqq20UnJMrFUo6N0bOm62hUaRd7ntT9cQ3Z5z13C+Jo79cwbp2QArFGpIzUClU9TsMA
+ UHAg==
+X-Gm-Message-State: ANhLgQ0+187j9EyPR6JDAt4OkpapnXJYcJ1fus7mSn+6WTP3d/j0Sfch
+ PoRHmWgS1tIVBGnUr3azPF7qQuMyWRDRDDcNHnw=
+X-Received: by 2002:a02:b616:: with SMTP id h22mr1367368jam.126.1585170193351; 
+ Wed, 25 Mar 2020 14:03:13 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200325191830.16553-1-f4bug@amsat.org>
- <20200325191830.16553-13-f4bug@amsat.org>
-In-Reply-To: <20200325191830.16553-13-f4bug@amsat.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 25 Mar 2020 13:52:59 -0700
-Message-ID: <CAKmqyKO6vKwnVOnVOJDNqw7_n-iUh8LyvGww=6h8E-H4OGtyWw@mail.gmail.com>
-Subject: Re: [PATCH-for-5.0 12/12] hw/riscv/sifive_u: Add missing
- error-propagation code
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+References: <20200324212103.7616-1-peter.maydell@linaro.org>
+In-Reply-To: <20200324212103.7616-1-peter.maydell@linaro.org>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Wed, 25 Mar 2020 22:03:02 +0100
+Message-ID: <CAPan3Wpr_ys2qZ_kTZPYyc3qfpvqPdhnDj6VYdbei8Y0_uTG2g@mail.gmail.com>
+Subject: Re: [PATCH] hw/net/allwinner-sun8i-emac.c: Fix REG_ADDR_HIGH/LOW reads
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="00000000000048881405a1b4321d"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::942
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::d42
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paul Burton <pburton@wavecomp.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- "open list:New World" <qemu-ppc@nongnu.org>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PrFMFXgoNk7c
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Beniamino Galvani <b.galvani@gmail.com>, Jason Wang <jasowang@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: av0Ligcfm9UO
 
-On Wed, Mar 25, 2020 at 12:28 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
->
-> Running the coccinelle script produced:
->
->   $ spatch \
->     --macro-file scripts/cocci-macro-file.h --include-headers \
->     --sp-file scripts/coccinelle/object_property_missing_error_propagate.=
-cocci \
->     --keep-comments --smpl-spacing --dir hw
->
->   [[manual check required: error_propagate() might be missing in object_p=
-roperty_set_bool() hw/riscv/sifive_u.c:558:4]]
->   [[manual check required: error_propagate() might be missing in object_p=
-roperty_set_bool() hw/riscv/sifive_u.c:561:4]]
->
-> Add the missing error_propagate() after manual review.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+--00000000000048881405a1b4321d
+Content-Type: text/plain; charset="UTF-8"
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+On Tue, Mar 24, 2020 at 10:21 PM Peter Maydell <peter.maydell@linaro.org>
+wrote:
 
-Alistair
+> Coverity points out (CID 1421926) that the read code for
+> REG_ADDR_HIGH reads off the end of the buffer, because it does a
+> 32-bit read from byte 4 of a 6-byte buffer.
+>
+> The code also has an endianness issue for both REG_ADDR_HIGH and
+> REG_ADDR_LOW, because it will do the wrong thing on a big-endian
+> host.
+>
+> Rewrite the read code to use ldl_le_p() and lduw_le_p() to fix this;
+> the write code is not incorrect, but for consistency we make it use
+> stl_le_p() and stw_le_p().
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>
+Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+
+By the way, is the coverity output of master publically available by any
+chance?
+
+Regards,
+Niek
+
 
 > ---
->  hw/riscv/sifive_u.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
+>  hw/net/allwinner-sun8i-emac.c | 12 ++++--------
+>  1 file changed, 4 insertions(+), 8 deletions(-)
 >
-> diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-> index 56351c4faa..01e44018cd 100644
-> --- a/hw/riscv/sifive_u.c
-> +++ b/hw/riscv/sifive_u.c
-> @@ -473,113 +473,121 @@ static void riscv_sifive_u_machine_instance_init(=
-Object *obj)
->  static void riscv_sifive_u_soc_realize(DeviceState *dev, Error **errp)
->  {
->      MachineState *ms =3D MACHINE(qdev_get_machine());
->      SiFiveUSoCState *s =3D RISCV_U_SOC(dev);
->      const struct MemmapEntry *memmap =3D sifive_u_memmap;
->      MemoryRegion *system_memory =3D get_system_memory();
->      MemoryRegion *mask_rom =3D g_new(MemoryRegion, 1);
->      MemoryRegion *l2lim_mem =3D g_new(MemoryRegion, 1);
->      qemu_irq plic_gpios[SIFIVE_U_PLIC_NUM_SOURCES];
->      char *plic_hart_config;
->      size_t plic_hart_config_len;
->      int i;
->      Error *err =3D NULL;
->      NICInfo *nd =3D &nd_table[0];
->
->      object_property_set_bool(OBJECT(&s->e_cpus), true, "realized",
->                               &error_abort);
->      object_property_set_bool(OBJECT(&s->u_cpus), true, "realized",
->                               &error_abort);
->      /*
->       * The cluster must be realized after the RISC-V hart array containe=
-r,
->       * as the container's CPU object is only created on realize, and the
->       * CPU must exist and have been parented into the cluster before the
->       * cluster is realized.
->       */
->      object_property_set_bool(OBJECT(&s->e_cluster), true, "realized",
->                               &error_abort);
->      object_property_set_bool(OBJECT(&s->u_cluster), true, "realized",
->                               &error_abort);
->
->      /* boot rom */
->      memory_region_init_rom(mask_rom, OBJECT(dev), "riscv.sifive.u.mrom",
->                             memmap[SIFIVE_U_MROM].size, &error_fatal);
->      memory_region_add_subregion(system_memory, memmap[SIFIVE_U_MROM].bas=
-e,
->                                  mask_rom);
->
->      /*
->       * Add L2-LIM at reset size.
->       * This should be reduced in size as the L2 Cache Controller WayEnab=
-le
->       * register is incremented. Unfortunately I don't see a nice (or any=
-) way
->       * to handle reducing or blocking out the L2 LIM while still allowin=
-g it
->       * be re returned to all enabled after a reset. For the time being, =
-just
->       * leave it enabled all the time. This won't break anything, but wil=
-l be
->       * too generous to misbehaving guests.
->       */
->      memory_region_init_ram(l2lim_mem, NULL, "riscv.sifive.u.l2lim",
->                             memmap[SIFIVE_U_L2LIM].size, &error_fatal);
->      memory_region_add_subregion(system_memory, memmap[SIFIVE_U_L2LIM].ba=
-se,
->                                  l2lim_mem);
->
->      /* create PLIC hart topology configuration string */
->      plic_hart_config_len =3D (strlen(SIFIVE_U_PLIC_HART_CONFIG) + 1) *
->                             ms->smp.cpus;
->      plic_hart_config =3D g_malloc0(plic_hart_config_len);
->      for (i =3D 0; i < ms->smp.cpus; i++) {
->          if (i !=3D 0) {
->              strncat(plic_hart_config, "," SIFIVE_U_PLIC_HART_CONFIG,
->                      plic_hart_config_len);
->          } else {
->              strncat(plic_hart_config, "M", plic_hart_config_len);
->          }
->          plic_hart_config_len -=3D (strlen(SIFIVE_U_PLIC_HART_CONFIG) + 1=
-);
->      }
->
->      /* MMIO */
->      s->plic =3D sifive_plic_create(memmap[SIFIVE_U_PLIC].base,
->          plic_hart_config,
->          SIFIVE_U_PLIC_NUM_SOURCES,
->          SIFIVE_U_PLIC_NUM_PRIORITIES,
->          SIFIVE_U_PLIC_PRIORITY_BASE,
->          SIFIVE_U_PLIC_PENDING_BASE,
->          SIFIVE_U_PLIC_ENABLE_BASE,
->          SIFIVE_U_PLIC_ENABLE_STRIDE,
->          SIFIVE_U_PLIC_CONTEXT_BASE,
->          SIFIVE_U_PLIC_CONTEXT_STRIDE,
->          memmap[SIFIVE_U_PLIC].size);
->      g_free(plic_hart_config);
->      sifive_uart_create(system_memory, memmap[SIFIVE_U_UART0].base,
->          serial_hd(0), qdev_get_gpio_in(DEVICE(s->plic), SIFIVE_U_UART0_I=
-RQ));
->      sifive_uart_create(system_memory, memmap[SIFIVE_U_UART1].base,
->          serial_hd(1), qdev_get_gpio_in(DEVICE(s->plic), SIFIVE_U_UART1_I=
-RQ));
->      sifive_clint_create(memmap[SIFIVE_U_CLINT].base,
->          memmap[SIFIVE_U_CLINT].size, ms->smp.cpus,
->          SIFIVE_SIP_BASE, SIFIVE_TIMECMP_BASE, SIFIVE_TIME_BASE, false);
->
->      object_property_set_bool(OBJECT(&s->prci), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
->      sysbus_mmio_map(SYS_BUS_DEVICE(&s->prci), 0, memmap[SIFIVE_U_PRCI].b=
-ase);
->
->      object_property_set_bool(OBJECT(&s->otp), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
->      sysbus_mmio_map(SYS_BUS_DEVICE(&s->otp), 0, memmap[SIFIVE_U_OTP].bas=
-e);
->
->      for (i =3D 0; i < SIFIVE_U_PLIC_NUM_SOURCES; i++) {
->          plic_gpios[i] =3D qdev_get_gpio_in(DEVICE(s->plic), i);
->      }
->
->      if (nd->used) {
->          qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
->          qdev_set_nic_properties(DEVICE(&s->gem), nd);
->      }
->      object_property_set_int(OBJECT(&s->gem), GEM_REVISION, "revision",
->                              &error_abort);
->      object_property_set_bool(OBJECT(&s->gem), true, "realized", &err);
->      if (err) {
->          error_propagate(errp, err);
->          return;
->      }
->      sysbus_mmio_map(SYS_BUS_DEVICE(&s->gem), 0, memmap[SIFIVE_U_GEM].bas=
-e);
->      sysbus_connect_irq(SYS_BUS_DEVICE(&s->gem), 0,
->                         plic_gpios[SIFIVE_U_GEM_IRQ]);
->
->      create_unimplemented_device("riscv.sifive.u.gem-mgmt",
->          memmap[SIFIVE_U_GEM_MGMT].base, memmap[SIFIVE_U_GEM_MGMT].size);
->  }
+> diff --git a/hw/net/allwinner-sun8i-emac.c b/hw/net/allwinner-sun8i-emac.c
+> index 3fc5e346401..fc67a1be70a 100644
+> --- a/hw/net/allwinner-sun8i-emac.c
+> +++ b/hw/net/allwinner-sun8i-emac.c
+> @@ -611,10 +611,10 @@ static uint64_t allwinner_sun8i_emac_read(void
+> *opaque, hwaddr offset,
+>          value = s->mii_data;
+>          break;
+>      case REG_ADDR_HIGH:         /* MAC Address High */
+> -        value = *(((uint32_t *) (s->conf.macaddr.a)) + 1);
+> +        value = lduw_le_p(s->conf.macaddr.a + 4);
+>          break;
+>      case REG_ADDR_LOW:          /* MAC Address Low */
+> -        value = *(uint32_t *) (s->conf.macaddr.a);
+> +        value = ldl_le_p(s->conf.macaddr.a);
+>          break;
+>      case REG_TX_DMA_STA:        /* Transmit DMA Status */
+>          break;
+> @@ -728,14 +728,10 @@ static void allwinner_sun8i_emac_write(void *opaque,
+> hwaddr offset,
+>          s->mii_data = value;
+>          break;
+>      case REG_ADDR_HIGH:         /* MAC Address High */
+> -        s->conf.macaddr.a[4] = (value & 0xff);
+> -        s->conf.macaddr.a[5] = (value & 0xff00) >> 8;
+> +        stw_le_p(s->conf.macaddr.a + 4, value);
+>          break;
+>      case REG_ADDR_LOW:          /* MAC Address Low */
+> -        s->conf.macaddr.a[0] = (value & 0xff);
+> -        s->conf.macaddr.a[1] = (value & 0xff00) >> 8;
+> -        s->conf.macaddr.a[2] = (value & 0xff0000) >> 16;
+> -        s->conf.macaddr.a[3] = (value & 0xff000000) >> 24;
+> +        stl_le_p(s->conf.macaddr.a, value);
+>          break;
+>      case REG_TX_DMA_STA:        /* Transmit DMA Status */
+>      case REG_TX_CUR_DESC:       /* Transmit Current Descriptor */
 > --
-> 2.21.1
+> 2.20.1
 >
 >
+
+-- 
+Niek Linnenbank
+
+--00000000000048881405a1b4321d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Mar 24, 2020 at 10:21 PM Pete=
+r Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@lin=
+aro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
+margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
+t:1ex">Coverity points out (CID 1421926) that the read code for<br>
+REG_ADDR_HIGH reads off the end of the buffer, because it does a<br>
+32-bit read from byte 4 of a 6-byte buffer.<br>
+<br>
+The code also has an endianness issue for both REG_ADDR_HIGH and<br>
+REG_ADDR_LOW, because it will do the wrong thing on a big-endian<br>
+host.<br>
+<br>
+Rewrite the read code to use ldl_le_p() and lduw_le_p() to fix this;<br>
+the write code is not incorrect, but for consistency we make it use<br>
+stl_le_p() and stw_le_p().<br>
+<br>
+Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org=
+" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br></blockquote><div>T=
+ested-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">n=
+ieklinnenbank@gmail.com</a>&gt;</div><div>Reviewed-by: Niek Linnenbank &lt;=
+<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt=
+;<br></div><div><br></div><div>By the way, is the coverity output of master=
+ publically available by any chance?<br></div><div><br></div><div>Regards,<=
+/div><div>Niek<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" =
+style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pa=
+dding-left:1ex">
+---<br>
+=C2=A0hw/net/allwinner-sun8i-emac.c | 12 ++++--------<br>
+=C2=A01 file changed, 4 insertions(+), 8 deletions(-)<br>
+<br>
+diff --git a/hw/net/allwinner-sun8i-emac.c b/hw/net/allwinner-sun8i-emac.c<=
+br>
+index 3fc5e346401..fc67a1be70a 100644<br>
+--- a/hw/net/allwinner-sun8i-emac.c<br>
++++ b/hw/net/allwinner-sun8i-emac.c<br>
+@@ -611,10 +611,10 @@ static uint64_t allwinner_sun8i_emac_read(void *opaqu=
+e, hwaddr offset,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0value =3D s-&gt;mii_data;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0case REG_ADDR_HIGH:=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/*=
+ MAC Address High */<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D *(((uint32_t *) (s-&gt;conf.macaddr.=
+a)) + 1);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D lduw_le_p(s-&gt;conf.macaddr.a + 4);=
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0case REG_ADDR_LOW:=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /*=
+ MAC Address Low */<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D *(uint32_t *) (s-&gt;conf.macaddr.a)=
+;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D ldl_le_p(s-&gt;conf.macaddr.a);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0case REG_TX_DMA_STA:=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Tran=
+smit DMA Status */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+@@ -728,14 +728,10 @@ static void allwinner_sun8i_emac_write(void *opaque, =
+hwaddr offset,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;mii_data =3D value;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0case REG_ADDR_HIGH:=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/*=
+ MAC Address High */<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;conf.macaddr.a[4] =3D (value &amp; 0xff)=
+;<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;conf.macaddr.a[5] =3D (value &amp; 0xff0=
+0) &gt;&gt; 8;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 stw_le_p(s-&gt;conf.macaddr.a + 4, value);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0case REG_ADDR_LOW:=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /*=
+ MAC Address Low */<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;conf.macaddr.a[0] =3D (value &amp; 0xff)=
+;<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;conf.macaddr.a[1] =3D (value &amp; 0xff0=
+0) &gt;&gt; 8;<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;conf.macaddr.a[2] =3D (value &amp; 0xff0=
+000) &gt;&gt; 16;<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;conf.macaddr.a[3] =3D (value &amp; 0xff0=
+00000) &gt;&gt; 24;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 stl_le_p(s-&gt;conf.macaddr.a, value);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0case REG_TX_DMA_STA:=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Tran=
+smit DMA Status */<br>
+=C2=A0 =C2=A0 =C2=A0case REG_TX_CUR_DESC:=C2=A0 =C2=A0 =C2=A0 =C2=A0/* Tran=
+smit Current Descriptor */<br>
+-- <br>
+2.20.1<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div></div>
+
+--00000000000048881405a1b4321d--

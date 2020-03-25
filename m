@@ -1,154 +1,186 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1242902lfi;
-        Mon, 23 Mar 2020 03:01:38 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsXpET9xzytdSdDzIwzL0IPFuNpBzn+gG0JwyJyh6LC2fi6ZvKtY2c6e9QwAzQ0KUQJf4r9
-X-Received: by 2002:a05:6214:3c9:: with SMTP id ce9mr20052807qvb.212.1584957698795;
-        Mon, 23 Mar 2020 03:01:38 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c4si9087412qtm.285.2020.03.23.03.01.38
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Mar 2020 03:01:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp331494lfi;
+        Wed, 25 Mar 2020 01:11:13 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vua2pV1iRSCtbrnvf2OgEil0AERI/vIxMZ1XgJUbq1GNOHGLSyDeLyKMx6NjZDxhzJbR5cg
+X-Received: by 2002:a37:a1c9:: with SMTP id k192mr1610092qke.385.1585123872840;
+        Wed, 25 Mar 2020 01:11:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585123872; cv=none;
+        d=google.com; s=arc-20160816;
+        b=eo9lpQlpl7b+Tr6yI0wmk2cR9Nn1msUVUFgpu4At1pXix4pXXZBq8RtTGRfb6xJjfI
+         V47uBrSnQyPzOoz28lnRCdX4U58Xv6V1ruJDVsO4I0XD5DvoGeVuVD/A7+qc6kIkUXci
+         wnhySCOPRzf9+DH7UQ9gqGd/Vcy9oYeaLCcwz5leiX15pIqzLGqbVxp0GHV0TrhW/5Ip
+         eop9XIwUmPE7pz+MJ6YXrUS7LU4lCLSCMHadXRrE1dZwOTMLJA3KhSDcx7cO1XnqVV/T
+         5cPNXmWEKU4HVPl5N1ebGq/+OXGQ5B6dZPBRtbkSUFQOaRqbIET6sTPTZLO8b68nv2aZ
+         ngBQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=vSD4tWcKZKgByIzZvtghM462MrFji15JB4cBDxPUs/I=;
+        b=wHrmLbpWXUaCbs/Welfx7ZRrpWFErAcSHEzsxWUKfMJABoRudIrCc/kHGBzcNFGBch
+         c42inOEE/ezCVCwzQI2RqqsR2IrL4CpcCpkaYTF7z3UHPDwu+E2wBikhBFle4S2X4vh/
+         AthAI+OZFwjaLRSHvTZEmbtkUacHXDK5pgysbikAvL4/pIypQ/eYJ5H08FqzC6FIVOap
+         a2FH3Xgo4UDFb2grV2ZsMk5SBbUGIR8uLqY3ZjMNkT/Cqg7XhRDnEarTVfmKe0jQQLho
+         Uf3hRqFwuqMbIGWiFSmHP37+RltjL4q7cxLEO8Ud7PSSyaxoVN9AJTDQtyP427kRpotv
+         J4iw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id j24si12131748qtk.144.2020.03.25.01.11.12;
+        Wed, 25 Mar 2020 01:11:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59520 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jGJtq-0007DR-6a
-	for alex.bennee@linaro.org; Mon, 23 Mar 2020 06:01:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57281)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1jGJsA-0006JV-OI
- for qemu-devel@nongnu.org; Mon, 23 Mar 2020 05:59:56 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1jGJs9-0005s1-Dk
- for qemu-devel@nongnu.org; Mon, 23 Mar 2020 05:59:54 -0400
-Resent-Date: Mon, 23 Mar 2020 05:59:54 -0400
-Resent-Message-Id: <E1jGJs9-0005s1-Dk@eggs.gnu.org>
-Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21166)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1jGJs9-0005rk-8N; Mon, 23 Mar 2020 05:59:53 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1584957580; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=hGO562kmRERM2as903OkAoUdhxXiVvWmb2qSUl2hpUEVtx0t7NczYDDh0/tM2R7NjoHhVrf9GGlVLgxfld6WUdkMA9dQhnxeJC9jAV6F4ufJLY+yj0rjsOicd32BUl732gnqPPyhXteJkKDQuYZs8nXN+pOSB3GCx8jX4zQlGho=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1584957580;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=czJRz+gbDDkNk/4k2pzZNP91QW0RRuLSY8JdJA/ewIs=; 
- b=JO+4Qmc1evDJI5GhMTegq1LO5MXtAxSh7GQgAyJZWTsdpuk9jtThpPHP3ywwwnqmFqVBhEHEvjLk5ms2VgKx+jWBzn66d3vmol+OP2pUo4JVQbg5iMyU/Ry9txwsjwC3d0r2IKChWXwAG/TEBYHRVSD3zMSsPAQTi6nxHCoMync=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1584957577228921.7728560470297;
- Mon, 23 Mar 2020 02:59:37 -0700 (PDT)
-In-Reply-To: <20200323084617.1782-1-bbhushan2@marvell.com>
-Subject: Re: [PATCH v9 0/9] virtio-iommu: VFIO integration
-Message-ID: <158495757489.4794.5101864136318571530@39012742ff91>
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 76B954A578;
+	Wed, 25 Mar 2020 04:11:12 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -1.502
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
+	SPF_HELO_PASS=-0.001] autolearn=no
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id U1Hi7taTuf6P; Wed, 25 Mar 2020 04:11:11 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 5ACBB4B08E;
+	Wed, 25 Mar 2020 04:11:11 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 0B6A64A578
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 25 Mar 2020 04:11:10 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id w8q5iAhZojOC for <kvmarm@lists.cs.columbia.edu>;
+ Wed, 25 Mar 2020 04:11:08 -0400 (EDT)
+Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 4F9054A4C0
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 25 Mar 2020 04:11:08 -0400 (EDT)
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id EA89594B89FE7E0A7589;
+ Wed, 25 Mar 2020 16:11:02 +0800 (CST)
+Received: from [127.0.0.1] (10.173.222.27) by DGGEMS412-HUB.china.huawei.com
+ (10.3.19.212) with Microsoft SMTP Server id 14.3.487.0; Wed, 25 Mar 2020
+ 16:10:53 +0800
+Subject: Re: [kvm-unit-tests PATCH v7 08/13] arm/arm64: ITS: Device and
+ collection Initialization
+To: Eric Auger <eric.auger@redhat.com>
+References: <20200320092428.20880-1-eric.auger@redhat.com>
+ <20200320092428.20880-9-eric.auger@redhat.com>
+From: Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <63f3d8aa-c1e3-f40f-32a1-fb6d22e70541@huawei.com>
+Date: Wed, 25 Mar 2020 16:10:51 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: bbhushan2@marvell.com
-Date: Mon, 23 Mar 2020 02:59:37 -0700 (PDT)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.51
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
+In-Reply-To: <20200320092428.20880-9-eric.auger@redhat.com>
+Content-Language: en-US
+X-Originating-IP: [10.173.222.27]
+X-CFilter-Loop: Reflected
+Cc: kvm@vger.kernel.org, maz@kernel.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, andre.przywara@arm.com, thuth@redhat.com,
+ kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
- tnowicki@marvell.com, mst@redhat.com, drjones@redhat.com, peterx@redhat.com,
- qemu-devel@nongnu.org, alex.williamson@redhat.com, qemu-arm@nongnu.org,
- bharatb.linux@gmail.com, jean-philippe@linaro.org, linuc.decode@gmail.com,
- bbhushan2@marvell.com, eric.auger.pro@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8R288PoyOInd
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: iujHYVThOd5e
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDMyMzA4NDYxNy4xNzgy
-LTEtYmJodXNoYW4yQG1hcnZlbGwuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0aGUg
-ZG9ja2VyLW1pbmd3QGZlZG9yYSBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGluZyBj
-b21tYW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5zdGFs
-bGVkLCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1QgU0NS
-SVBUIEJFR0lOID09PQojISAvYmluL2Jhc2gKZXhwb3J0IEFSQ0g9eDg2XzY0Cm1ha2UgZG9ja2Vy
-LWltYWdlLWZlZG9yYSBWPTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1taW5nd0Bm
-ZWRvcmEgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCiAgQ0MgICAgICB4
-ODZfNjQtc29mdG1tdS9ody92aXJ0aW8vdmlydGlvLWJsay1wY2kubwogIENDICAgICAgeDg2XzY0
-LXNvZnRtbXUvaHcvdmlydGlvL3ZpcnRpby1uZXQtcGNpLm8KL3RtcC9xZW11LXRlc3Qvc3JjL2h3
-L3ZpcnRpby92aXJ0aW8taW9tbXUuYzogSW4gZnVuY3Rpb24gJ3ZpcnRpb19pb21tdV9maWxsX3By
-b3BlcnR5JzoKL3RtcC9xZW11LXRlc3Qvc3JjL2h3L3ZpcnRpby92aXJ0aW8taW9tbXUuYzo1NzY6
-MjI6IGVycm9yOiBmb3JtYXQgJyVseCcgZXhwZWN0cyBhcmd1bWVudCBvZiB0eXBlICdsb25nIHVu
-c2lnbmVkIGludCcsIGJ1dCBhcmd1bWVudCA1IGhhcyB0eXBlICdzaXplX3QnIHtha2EgJ2xvbmcg
-bG9uZyB1bnNpZ25lZCBpbnQnfSBbLVdlcnJvcj1mb3JtYXQ9XQogICAgICAgICBlcnJvcl9yZXBv
-cnQoIiVzIHByb3BlcnR5IG9mIHR5cGU9JWQgY291bGQgbm90IGJlIGZpbGxlZCAoJWQpLCIKICAg
-ICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fn5+Ci90bXAvcWVtdS10ZXN0L3NyYy9ody92aXJ0aW8vdmlydGlvLWlvbW11LmM6
-NTc4OjQzOgotLS0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH5+
-XgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJWxseApjYzE6IGFs
-bCB3YXJuaW5ncyBiZWluZyB0cmVhdGVkIGFzIGVycm9ycwptYWtlWzFdOiAqKiogWy90bXAvcWVt
-dS10ZXN0L3NyYy9ydWxlcy5tYWs6Njk6IGh3L3ZpcnRpby92aXJ0aW8taW9tbXUub10gRXJyb3Ig
-MQptYWtlWzFdOiAqKiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2JzLi4uLgogIENDICAgICAg
-YWFyY2g2NC1zb2Z0bW11L2h3L3Njc2kvdmlydGlvLXNjc2ktZGF0YXBsYW5lLm8KICBDQyAgICAg
-IGFhcmNoNjQtc29mdG1tdS9ody9zZW1paG9zdGluZy9jb25maWcubwotLS0KICBDQyAgICAgIGFh
-cmNoNjQtc29mdG1tdS9ody92aXJ0aW8vdmlydGlvLWJhbGxvb24tcGNpLm8KICBDQyAgICAgIGFh
-cmNoNjQtc29mdG1tdS9ody92aXJ0aW8vdmlydGlvLWlvbW11LXBjaS5vCiAgQ0MgICAgICBhYXJj
-aDY0LXNvZnRtbXUvaHcvdmlydGlvL3ZpcnRpby1zY3NpLXBjaS5vCm1ha2U6ICoqKiBbTWFrZWZp
-bGU6NTI3OiB4ODZfNjQtc29mdG1tdS9hbGxdIEVycm9yIDIKbWFrZTogKioqIFdhaXRpbmcgZm9y
-IHVuZmluaXNoZWQgam9icy4uLi4KICBDQyAgICAgIGFhcmNoNjQtc29mdG1tdS9ody92aXJ0aW8v
-dmlydGlvLWJsay1wY2kubwogIENDICAgICAgYWFyY2g2NC1zb2Z0bW11L2h3L3ZpcnRpby92aXJ0
-aW8tbmV0LXBjaS5vCi0tLQogIENDICAgICAgYWFyY2g2NC1zb2Z0bW11L2h3L2FybS92aXJ0Lm8K
-ICBDQyAgICAgIGFhcmNoNjQtc29mdG1tdS9ody9hcm0vdmlydC1hY3BpLWJ1aWxkLm8KL3RtcC9x
-ZW11LXRlc3Qvc3JjL2h3L3ZpcnRpby92aXJ0aW8taW9tbXUuYzogSW4gZnVuY3Rpb24gJ3ZpcnRp
-b19pb21tdV9maWxsX3Byb3BlcnR5JzoKL3RtcC9xZW11LXRlc3Qvc3JjL2h3L3ZpcnRpby92aXJ0
-aW8taW9tbXUuYzo1NzY6MjI6IGVycm9yOiBmb3JtYXQgJyVseCcgZXhwZWN0cyBhcmd1bWVudCBv
-ZiB0eXBlICdsb25nIHVuc2lnbmVkIGludCcsIGJ1dCBhcmd1bWVudCA1IGhhcyB0eXBlICdzaXpl
-X3QnIHtha2EgJ2xvbmcgbG9uZyB1bnNpZ25lZCBpbnQnfSBbLVdlcnJvcj1mb3JtYXQ9XQogICAg
-ICAgICBlcnJvcl9yZXBvcnQoIiVzIHByb3BlcnR5IG9mIHR5cGU9JWQgY291bGQgbm90IGJlIGZp
-bGxlZCAoJWQpLCIKICAgICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+Ci90bXAvcWVtdS10ZXN0L3NyYy9ody92aXJ0aW8v
-dmlydGlvLWlvbW11LmM6NTc4OjQzOgotLS0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIH5+XgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgJWxseApjYzE6IGFsbCB3YXJuaW5ncyBiZWluZyB0cmVhdGVkIGFzIGVycm9ycwptYWtlWzFd
-OiAqKiogWy90bXAvcWVtdS10ZXN0L3NyYy9ydWxlcy5tYWs6Njk6IGh3L3ZpcnRpby92aXJ0aW8t
-aW9tbXUub10gRXJyb3IgMQptYWtlWzFdOiAqKiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2Jz
-Li4uLgogIENDICAgICAgYWFyY2g2NC1zb2Z0bW11L2h3L2FybS9kaWdpY19ib2FyZHMubwptYWtl
-OiAqKiogW01ha2VmaWxlOjUyNzogYWFyY2g2NC1zb2Z0bW11L2FsbF0gRXJyb3IgMgpUcmFjZWJh
-Y2sgKG1vc3QgcmVjZW50IGNhbGwgbGFzdCk6CiAgRmlsZSAiLi90ZXN0cy9kb2NrZXIvZG9ja2Vy
-LnB5IiwgbGluZSA2NjQsIGluIDxtb2R1bGU+CiAgICBzeXMuZXhpdChtYWluKCkpCi0tLQogICAg
-cmFpc2UgQ2FsbGVkUHJvY2Vzc0Vycm9yKHJldGNvZGUsIGNtZCkKc3VicHJvY2Vzcy5DYWxsZWRQ
-cm9jZXNzRXJyb3I6IENvbW1hbmQgJ1snc3VkbycsICctbicsICdkb2NrZXInLCAncnVuJywgJy0t
-bGFiZWwnLCAnY29tLnFlbXUuaW5zdGFuY2UudXVpZD00ODBmY2I1NmI4NDU0YTgwYWUxNDBjZTM3
-M2U5NDBlZScsICctdScsICcxMDAzJywgJy0tc2VjdXJpdHktb3B0JywgJ3NlY2NvbXA9dW5jb25m
-aW5lZCcsICctLXJtJywgJy1lJywgJ1RBUkdFVF9MSVNUPScsICctZScsICdFWFRSQV9DT05GSUdV
-UkVfT1BUUz0nLCAnLWUnLCAnVj0nLCAnLWUnLCAnSj0xNCcsICctZScsICdERUJVRz0nLCAnLWUn
-LCAnU0hPV19FTlY9JywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zhci90bXAvY2NhY2hlJywgJy12Jywg
-Jy9ob21lL3BhdGNoZXcyLy5jYWNoZS9xZW11LWRvY2tlci1jY2FjaGU6L3Zhci90bXAvY2NhY2hl
-OnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLXJrcnk4eGg5L3NyYy9kb2Nr
-ZXItc3JjLjIwMjAtMDMtMjMtMDUuNTUuNDcuMTY2OTovdmFyL3RtcC9xZW11Onoscm8nLCAncWVt
-dTpmZWRvcmEnLCAnL3Zhci90bXAvcWVtdS9ydW4nLCAndGVzdC1taW5ndyddJyByZXR1cm5lZCBu
-b24temVybyBleGl0IHN0YXR1cyAyLgpmaWx0ZXI9LS1maWx0ZXI9bGFiZWw9Y29tLnFlbXUuaW5z
-dGFuY2UudXVpZD00ODBmY2I1NmI4NDU0YTgwYWUxNDBjZTM3M2U5NDBlZQptYWtlWzFdOiAqKiog
-W2RvY2tlci1ydW5dIEVycm9yIDEKbWFrZVsxXTogTGVhdmluZyBkaXJlY3RvcnkgYC92YXIvdG1w
-L3BhdGNoZXctdGVzdGVyLXRtcC1ya3J5OHhoOS9zcmMnCm1ha2U6ICoqKiBbZG9ja2VyLXJ1bi10
-ZXN0LW1pbmd3QGZlZG9yYV0gRXJyb3IgMgoKcmVhbCAgICAzbTQ3LjAzOXMKdXNlciAgICAwbTcu
-NTg5cwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xv
-Z3MvMjAyMDAzMjMwODQ2MTcuMTc4Mi0xLWJiaHVzaGFuMkBtYXJ2ZWxsLmNvbS90ZXN0aW5nLmRv
-Y2tlci1taW5nd0BmZWRvcmEvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRv
-bWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQg
-eW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
+Hi Eric,
+
+On 2020/3/20 17:24, Eric Auger wrote:
+> Introduce an helper functions to register
+> - a new device, characterized by its device id and the
+>    max number of event IDs that dimension its ITT (Interrupt
+>    Translation Table).  The function allocates the ITT.
+> 
+> - a new collection, characterized by its ID and the
+>    target processing engine (PE).
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> 
+> ---
+> 
+> v3 -> v4:
+> - remove unused its_baser variable from its_create_device()
+> - use get_order()
+> - device->itt becomes a GVA instead of GPA
+> 
+> v2 -> v3:
+> - s/report_abort/assert
+> 
+> v1 -> v2:
+> - s/nb_/nr_
+> ---
+>   lib/arm64/asm/gic-v3-its.h | 19 +++++++++++++++++++
+>   lib/arm64/gic-v3-its.c     | 38 ++++++++++++++++++++++++++++++++++++++
+>   2 files changed, 57 insertions(+)
+> 
+> diff --git a/lib/arm64/asm/gic-v3-its.h b/lib/arm64/asm/gic-v3-its.h
+> index 4683011..adcb642 100644
+> --- a/lib/arm64/asm/gic-v3-its.h
+> +++ b/lib/arm64/asm/gic-v3-its.h
+> @@ -31,6 +31,19 @@ struct its_baser {
+>   };
+>   
+>   #define GITS_BASER_NR_REGS		8
+> +#define GITS_MAX_DEVICES		8
+> +#define GITS_MAX_COLLECTIONS		8
+> +
+> +struct its_device {
+> +	u32 device_id;	/* device ID */
+> +	u32 nr_ites;	/* Max Interrupt Translation Entries */
+> +	void *itt;	/* Interrupt Translation Table GVA */
+> +};
+> +
+> +struct its_collection {
+> +	u64 target_address;
+> +	u16 col_id;
+> +};
+>   
+>   struct its_data {
+>   	void *base;
+> @@ -39,6 +52,10 @@ struct its_data {
+>   	struct its_baser coll_baser;
+>   	struct its_cmd_block *cmd_base;
+>   	struct its_cmd_block *cmd_write;
+> +	struct its_device devices[GITS_MAX_DEVICES];
+> +	u32 nr_devices;		/* Allocated Devices */
+> +	struct its_collection collections[GITS_MAX_COLLECTIONS];
+> +	u32 nr_collections;	/* Allocated Collections */
+>   };
+>   
+>   extern struct its_data its_data;
+> @@ -93,5 +110,7 @@ extern void its_parse_typer(void);
+>   extern void its_init(void);
+>   extern int its_baser_lookup(int i, struct its_baser *baser);
+>   extern void its_enable_defaults(void);
+> +extern struct its_device *its_create_device(u32 dev_id, int nr_ites);
+> +extern struct its_collection *its_create_collection(u32 col_id, u32 target_pe);
+
+Maybe use 'u16 col_id'?
+
+Besides,
+Reviewed-by: Zenghui Yu <yuzenghui@huawei.com>
+
+
+Thanks
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

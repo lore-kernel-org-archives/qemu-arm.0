@@ -1,99 +1,99 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp980860lfi;
-        Wed, 25 Mar 2020 12:20:18 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsAC+RVFRQjnbsctlTkoD9CMP0FcT1jriT4EyK6YMZHj1ncLu84O+Est7fAC4vddMkV2QKh
-X-Received: by 2002:ae9:d8c4:: with SMTP id u187mr4532454qkf.354.1585164015869;
-        Wed, 25 Mar 2020 12:20:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585164015; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp980999lfi;
+        Wed, 25 Mar 2020 12:20:28 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtTnzrx9dvJtHTbSvRLzY6L39FzwMZuq93nT5LuBuxMU/DW12EYJ/EjyO/Pn47QzBCnNcpa
+X-Received: by 2002:aed:3046:: with SMTP id 64mr4669388qte.363.1585164028279;
+        Wed, 25 Mar 2020 12:20:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585164028; cv=none;
         d=google.com; s=arc-20160816;
-        b=wpVadXGNgvswM03clAbqzNOLoNL64qwAaX+al9QRTyjjJL8FS2IrhrrZU4JlYxDJ8i
-         HV+af/1deL3C+Ip0H2GlfZUR/z3L5GPWFZvZHqEYz2xxGyxlHS86GACbASHOs4HO8jAD
-         wIC9KHMxPQkvkISQ3QH/pepz1L176zycc//rfNCvRsQBaQptytQbwAXt970Q+8D0Ji6f
-         a6imwN8EFOSDxBPV6DyOFvWCiL8gaArPRVjMOgSyo8mFpcCJIumGsE4m+O9Mt9f/XRPm
-         Kbi2okaUJhBa6tz3VYGppnbhC+FHvDJnjRp5uwyJewW5JrLV62+fyQ3OTDt/I02lWXh+
-         IOCA==
+        b=lxSxe5Ay+9h8aLQtq8MVfpfoa1Lh+ipJ6e+r37+4A1V+hG65swnZ/Em4cj89ZZPc25
+         g7HSZjZnkxIX4cXNvJOI0LRQN37FZKDXp+880zJ6TslQ52O/6pfalvipr5iVCPgrmbGO
+         sKkPg8yBBt1V78PjC1S8sC/wfDyw277N+RhgKKADYcOlMMDtPI+uyjrp8ZlehAypyewu
+         FbR2qv6Vx7NlAhnGmDyg9CqCBN0N8NgK3khMnUmvXXljNo8ifkM0h5vcnsN9FsHXyJ5I
+         uhPII6VOmM+waptB3RnoSGXouMnVFpwsaKH7AcgRtVtx9MH3E29h2uD5BnCJp9BsYoMO
+         dUhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=wrJdKpRKJHYFpsu8f/k/XHLGFdJX1oGK4sHeuwFlD8Q=;
-        b=WdIiJ9t1z0kKewvhuFgddoGhwXe8PDY/tq8Btw26f8VRZ8xXEkWjU1rPphsnNa0A8S
-         Teg4juxIEjDN4BJy8gAiCz2S3TY5SfAeKMsmPOSlHLjZk8v5A3P9rqcuNOgkBFhY4HzC
-         uBSH+xB1CXOOrhTuP6FRKykp+DH/7FyT5GOZ2FSxp0vcpm+BQEwuS9iO0dFOXdbZcZBX
-         vlKvGAPu3VpLcK1pLuQ3GhY8Dwo5dYsVoY4ruZ53Vf/Jwffd51stT8ACYDOy0v7aPPps
-         8UK/1VHu45BJ4keJbnohoXzZZ00iyJhacMH4eXDnWthqbDnhwkJ4FGve07vSox+/2j+t
-         Y22w==
+        bh=8yPGDXJm798UrCxUOiQor4+AbZXIPYYexJrMJiTmsiE=;
+        b=bdVVj+n1DMfcIBjBJOJPe3NXQf4Mq6SiealHKRNUvrI1N2E6HSaswohRGBAXQ9GIEd
+         GgsCscRnjDhUPNUaSJ8d7c5qiVYw74vwJpdE1TIcfwbB//wiIS4XHFwEcfXRfqBRh9r4
+         nnzvWm3m64YlHoxUBntBmKuUSH5Z/wBmNnnfjjDhMSviJlyAWevGbh46lBtO/oU9R5xC
+         8WLETb5Y0QQFnWXnbSdnJA2XlEcbaN1d/Dc8NVDJcAuopUnP0cGHjwHsI5UgbfQAlYRL
+         qdY0bfN8vqj2htISeGUOW0cQgs3JHfIsvBRj8x2oK3TNW27BnhO3I/6WH/7OK5+9bqsv
+         joAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="BJ0/ut6k";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bSZmvO9f;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q144si13514165qke.32.2020.03.25.12.20.15
+        by mx.google.com with ESMTPS id r25si4379959qtk.395.2020.03.25.12.20.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Mar 2020 12:20:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 25 Mar 2020 12:20:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="BJ0/ut6k";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bSZmvO9f;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:41916 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41906 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jHBZX-0001yM-9F
-	for alex.bennee@linaro.org; Wed, 25 Mar 2020 15:20:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53458)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jHBZj-0001JE-MZ
+	for alex.bennee@linaro.org; Wed, 25 Mar 2020 15:20:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53196)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jHBYJ-0000La-Up
- for qemu-arm@nongnu.org; Wed, 25 Mar 2020 15:19:01 -0400
+ id 1jHBY3-0008CP-Vu
+ for qemu-devel@nongnu.org; Wed, 25 Mar 2020 15:18:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jHBYH-0008Tk-Qn
- for qemu-arm@nongnu.org; Wed, 25 Mar 2020 15:18:59 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:35968)
+ id 1jHBY2-0008IW-6s
+ for qemu-devel@nongnu.org; Wed, 25 Mar 2020 15:18:43 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:33555)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jHBYD-0008Pb-Be; Wed, 25 Mar 2020 15:18:53 -0400
-Received: by mail-wr1-x442.google.com with SMTP id 31so4704302wrs.3;
- Wed, 25 Mar 2020 12:18:53 -0700 (PDT)
+ id 1jHBY1-0008I4-VB; Wed, 25 Mar 2020 15:18:42 -0400
+Received: by mail-wr1-x435.google.com with SMTP id a25so4753865wrd.0;
+ Wed, 25 Mar 2020 12:18:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=wrJdKpRKJHYFpsu8f/k/XHLGFdJX1oGK4sHeuwFlD8Q=;
- b=BJ0/ut6kqXFsqLRtDlE1/SHKtzso+q2uxz1zm7jf93uWxv2mfeJdLUt6SEKSk2nqzS
- 7sEy6HaszD3JvjQTtblkk6FKF/v3Bl22TTwo3/XaWfuRjNIJJeZAJCuxbt2v5yQ+YtdJ
- xQU4AtzCye4vIZyvBlSh+p4CnWwjPcgP5YF/5uahBIHXnfb/y3toH1QQmu4TQjvGbn8m
- jbKxSsc5nQ6J87jGpNvgC/F6dox3wQclJPjQHWW72hYX+4ndgS0/ltFTxZ9P1TxUDsfZ
- UE6TlrDps3hK5XMfvOcfYCOBLeJc5NsypvDiR+4+DnQhWJpbf/BbqmadAqTBgo+2c447
- 6I6Q==
+ bh=8yPGDXJm798UrCxUOiQor4+AbZXIPYYexJrMJiTmsiE=;
+ b=bSZmvO9fA0Rdt86RuTRa8dBQUHPcxfTO63JpNIUBd4hyv8UAkT6Doo9Gk08mZtqOKe
+ BKDL+NM7YqGLfiWTPT2QCiIW4lmH0bJbzMVjxhlQl9dhuFPV9jPJdJfIrHrYbtOO9HU1
+ 8A1IgN+mN71bWrZr/pWWqHghOamKSYtRGu1xYXvK3ljRgojnYFw5R1QL1kRPiNnAN1Y5
+ LuzuI11hN+ZehLWTB/VNxGi2Z7aiqBxy3uPuliUKRww+hl3xmRmIjsw4M7Eqzf3XPqac
+ 8MkyXOXOniQ5aOwCzfWkbPJV41QdQr6TQPqAbJ/4KS20cQLhiRcV8SBHQr+IJ/xRSByT
+ 5y5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=wrJdKpRKJHYFpsu8f/k/XHLGFdJX1oGK4sHeuwFlD8Q=;
- b=H8ug+Y8gRPUiHtMi6FB6iohC6pRvc/4yHmng8sYYcQbBF9bs/scxt7E4juT7+Ec1/u
- /4TenhZlu4M5l2PuqHC51/KmbI1RmVrymDZHuhuU6rLbvzr6XJYt1Y7b5YHKzmB5g0Xa
- 125ZsRdByxMPAnMmp2VYdVBk4duEqT/8mhv8dlU8EgeTV1jg23MRSRgMvklk8bY64bVR
- goTS0s1uUZnC5vdqmJ+U6Y4Aw9uDOTmnYGk8iRH0KaKE1xezkGBDCCseZnVcNTFECNy1
- wUxbKYc4vS2je/fY/5i4PhwIXVYRPcSoiR4OKVLIMZT3ElBLDQgYSsw6GeMTC9O0vXk1
- 6QIg==
-X-Gm-Message-State: ANhLgQ0pjOBTd6YS1cKTSYh/B9gvgAOlKXGn53xjNc431JqsMP0kNOhU
- oaOHJRix0qlrcVKxSWqT4wZVxPZnH90=
-X-Received: by 2002:adf:bb06:: with SMTP id r6mr5157392wrg.324.1585163932103; 
- Wed, 25 Mar 2020 12:18:52 -0700 (PDT)
+ bh=8yPGDXJm798UrCxUOiQor4+AbZXIPYYexJrMJiTmsiE=;
+ b=FKL5RR7z9v9xidRE6fXvnuHS7CIxo08aHbIAxAO+Lqc4OX0PNpdD6G/gcVVP3kWGzO
+ B3aIQIkRbGhmaqx9Byu3e3iWbAVq9UYes5A3U21BdYPgW+ZFxo0XXDxjXfThNWpfzF/r
+ qKMpp1lfpFGVZeU2aU/KrHiNH/MFeFHpxbMq3FlzMeb9euRziho9DFoX8oIKYtld7b+z
+ tb/vSYdtVFdi1nJQ0OBD5lks/WkmVTXzizcn8KkqDJ6nxHkBRIxbFvILg+rabrycG1Gx
+ oaj3VZxO5P827Mpbgo4a7rZGe1R+l35rmxBPKs0761j57GNpQxerhNXagAPztzJpVpiS
+ e19w==
+X-Gm-Message-State: ANhLgQ2EHQpHgLurNdcbj+HNMpeM+FHImnai/zNEKTeSIsNJljxmcl/5
+ N1EkdaJLkv5V74lACqKRxm4QHwo9R6Q=
+X-Received: by 2002:adf:8187:: with SMTP id 7mr5272025wra.358.1585163920496;
+ Wed, 25 Mar 2020 12:18:40 -0700 (PDT)
 Received: from localhost.localdomain (37.red-83-52-54.dynamicip.rima-tde.net.
  [83.52.54.37])
- by smtp.gmail.com with ESMTPSA id r17sm6345672wrx.46.2020.03.25.12.18.49
+ by smtp.gmail.com with ESMTPSA id r17sm6345672wrx.46.2020.03.25.12.18.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 25 Mar 2020 12:18:51 -0700 (PDT)
+ Wed, 25 Mar 2020 12:18:39 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.0 06/12] hw/dma/xilinx_axidma: Add missing
+Subject: [PATCH-for-5.0 02/12] hw/arm/bcm2835_peripherals: Add missing
  error-propagation code
-Date: Wed, 25 Mar 2020 20:18:24 +0100
-Message-Id: <20200325191830.16553-7-f4bug@amsat.org>
+Date: Wed, 25 Mar 2020 20:18:20 +0100
+Message-Id: <20200325191830.16553-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200325191830.16553-1-f4bug@amsat.org>
 References: <20200325191830.16553-1-f4bug@amsat.org>
@@ -103,27 +103,27 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::442
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::435
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Paul Burton <pburton@wavecomp.com>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Alistair Francis <Alistair.Francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Markus Armbruster <armbru@redhat.com>,
  Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Palmer Dabbelt <palmer@dabbelt.com>,
  Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
  Richard Henderson <rth@twiddle.net>,
@@ -136,73 +136,289 @@ Cc: Paul Burton <pburton@wavecomp.com>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-ppc@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2p/ZUchM6UMg
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7SddCo2FSttw
 
-Running the coccinelle script produced:
+Patch created mechanically by running:
 
   $ spatch \
     --macro-file scripts/cocci-macro-file.h --include-headers \
     --sp-file scripts/coccinelle/object_property_missing_error_propagate.cocci \
-    --keep-comments --smpl-spacing --dir hw
-
-  [[manual check required: error_propagate() might be missing in object_property_set_link() hw//dma/xilinx_axidma.c:542:4]]
-
-Add the missing error_propagate() after manual review.
+    --keep-comments --smpl-spacing --in-place --dir hw
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/dma/xilinx_axidma.c | 3 +++
- 1 file changed, 3 insertions(+)
+ hw/arm/bcm2835_peripherals.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
-index 018f36991b..6e3406321c 100644
---- a/hw/dma/xilinx_axidma.c
-+++ b/hw/dma/xilinx_axidma.c
-@@ -521,39 +521,42 @@ static const MemoryRegionOps axidma_ops = {
- static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index edcaa4916d..a111e91069 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -133,254 +133,262 @@ static void bcm2835_peripherals_init(Object *obj)
+ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
  {
-     XilinxAXIDMA *s = XILINX_AXI_DMA(dev);
-     XilinxAXIDMAStreamSlave *ds = XILINX_AXI_DMA_DATA_STREAM(&s->rx_data_dev);
-     XilinxAXIDMAStreamSlave *cs = XILINX_AXI_DMA_CONTROL_STREAM(
-                                                             &s->rx_control_dev);
-     Error *local_err = NULL;
+     BCM2835PeripheralState *s = BCM2835_PERIPHERALS(dev);
+     Object *obj;
+     MemoryRegion *ram;
+     Error *err = NULL;
+     uint64_t ram_size, vcram_size;
+     int n;
  
-     object_property_add_link(OBJECT(ds), "dma", TYPE_XILINX_AXI_DMA,
-                              (Object **)&ds->dma,
-                              object_property_allow_set_link,
-                              OBJ_PROP_LINK_STRONG,
-                              &local_err);
-     object_property_add_link(OBJECT(cs), "dma", TYPE_XILINX_AXI_DMA,
-                              (Object **)&cs->dma,
-                              object_property_allow_set_link,
-                              OBJ_PROP_LINK_STRONG,
-                              &local_err);
-     if (local_err) {
-         goto xilinx_axidma_realize_fail;
+     obj = object_property_get_link(OBJECT(dev), "ram", &err);
+     if (obj == NULL) {
+         error_setg(errp, "%s: required ram link not found: %s",
+                    __func__, error_get_pretty(err));
+         return;
      }
-     object_property_set_link(OBJECT(ds), OBJECT(s), "dma", &local_err);
-+    if (local_err) {
-+        goto xilinx_axidma_realize_fail;
+ 
+     ram = MEMORY_REGION(obj);
+     ram_size = memory_region_size(ram);
+ 
+     /* Map peripherals and RAM into the GPU address space. */
+     memory_region_init_alias(&s->peri_mr_alias, OBJECT(s),
+                              "bcm2835-peripherals", &s->peri_mr, 0,
+                              memory_region_size(&s->peri_mr));
+ 
+     memory_region_add_subregion_overlap(&s->gpu_bus_mr, BCM2835_VC_PERI_BASE,
+                                         &s->peri_mr_alias, 1);
+ 
+     /* RAM is aliased four times (different cache configurations) on the GPU */
+     for (n = 0; n < 4; n++) {
+         memory_region_init_alias(&s->ram_alias[n], OBJECT(s),
+                                  "bcm2835-gpu-ram-alias[*]", ram, 0, ram_size);
+         memory_region_add_subregion_overlap(&s->gpu_bus_mr, (hwaddr)n << 30,
+                                             &s->ram_alias[n], 0);
+     }
+ 
+     /* Interrupt Controller */
+     object_property_set_bool(OBJECT(&s->ic), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     memory_region_add_subregion(&s->peri_mr, ARMCTRL_IC_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ic), 0));
+     sysbus_pass_irq(SYS_BUS_DEVICE(s), SYS_BUS_DEVICE(&s->ic));
+ 
+     /* Sys Timer */
+     object_property_set_bool(OBJECT(&s->systmr), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+     memory_region_add_subregion(&s->peri_mr, ST_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systmr), 0));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->systmr), 0,
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_ARM_IRQ,
+                                INTERRUPT_ARM_TIMER));
+ 
+     /* UART0 */
+     qdev_prop_set_chr(DEVICE(&s->uart0), "chardev", serial_hd(0));
+     object_property_set_bool(OBJECT(&s->uart0), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     memory_region_add_subregion(&s->peri_mr, UART0_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->uart0), 0));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart0), 0,
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+                                INTERRUPT_UART0));
+ 
+     /* AUX / UART1 */
+     qdev_prop_set_chr(DEVICE(&s->aux), "chardev", serial_hd(1));
+ 
+     object_property_set_bool(OBJECT(&s->aux), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     memory_region_add_subregion(&s->peri_mr, AUX_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->aux), 0));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->aux), 0,
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+                                INTERRUPT_AUX));
+ 
+     /* Mailboxes */
+     object_property_set_bool(OBJECT(&s->mboxes), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     memory_region_add_subregion(&s->peri_mr, ARMCTRL_0_SBM_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->mboxes), 0));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->mboxes), 0,
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_ARM_IRQ,
+                                INTERRUPT_ARM_MAILBOX));
+ 
+     /* Framebuffer */
+     vcram_size = object_property_get_uint(OBJECT(s), "vcram-size", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     object_property_set_uint(OBJECT(&s->fb), ram_size - vcram_size,
+                              "vcram-base", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     object_property_set_bool(OBJECT(&s->fb), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     memory_region_add_subregion(&s->mbox_mr, MBOX_CHAN_FB << MBOX_AS_CHAN_SHIFT,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->fb), 0));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->fb), 0,
+                        qdev_get_gpio_in(DEVICE(&s->mboxes), MBOX_CHAN_FB));
+ 
+     /* Property channel */
+     object_property_set_bool(OBJECT(&s->property), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     memory_region_add_subregion(&s->mbox_mr,
+                 MBOX_CHAN_PROPERTY << MBOX_AS_CHAN_SHIFT,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->property), 0));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->property), 0,
+                       qdev_get_gpio_in(DEVICE(&s->mboxes), MBOX_CHAN_PROPERTY));
+ 
+     /* Random Number Generator */
+     object_property_set_bool(OBJECT(&s->rng), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     memory_region_add_subregion(&s->peri_mr, RNG_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng), 0));
+ 
+     /* Extended Mass Media Controller
+      *
+      * Compatible with:
+      * - SD Host Controller Specification Version 3.0 Draft 1.0
+      * - SDIO Specification Version 3.0
+      * - MMC Specification Version 4.4
+      *
+      * For the exact details please refer to the Arasan documentation:
+      *   SD3.0_Host_AHB_eMMC4.4_Usersguide_ver5.9_jan11_10.pdf
+      */
+     object_property_set_uint(OBJECT(&s->sdhci), 3, "sd-spec-version", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
 +    }
-     object_property_set_link(OBJECT(cs), OBJECT(s), "dma", &local_err);
-     if (local_err) {
-         goto xilinx_axidma_realize_fail;
+     object_property_set_uint(OBJECT(&s->sdhci), BCM2835_SDHC_CAPAREG, "capareg",
+                              &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
+     object_property_set_bool(OBJECT(&s->sdhci), true, "pending-insert-quirk",
+                              &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
      }
  
-     int i;
- 
-     for (i = 0; i < 2; i++) {
-         struct Stream *st = &s->streams[i];
- 
-         st->nr = i;
-         st->ptimer = ptimer_init(timer_hit, st, PTIMER_POLICY_DEFAULT);
-         ptimer_transaction_begin(st->ptimer);
-         ptimer_set_freq(st->ptimer, s->freqhz);
-         ptimer_transaction_commit(st->ptimer);
+     object_property_set_bool(OBJECT(&s->sdhci), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
      }
-     return;
+ 
+     memory_region_add_subregion(&s->peri_mr, EMMC1_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->sdhci), 0));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->sdhci), 0,
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+                                INTERRUPT_ARASANSDIO));
+ 
+     /* SDHOST */
+     object_property_set_bool(OBJECT(&s->sdhost), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     memory_region_add_subregion(&s->peri_mr, MMCI0_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->sdhost), 0));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->sdhost), 0,
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+                                INTERRUPT_SDIO));
+ 
+     /* DMA Channels */
+     object_property_set_bool(OBJECT(&s->dma), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     memory_region_add_subregion(&s->peri_mr, DMA_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->dma), 0));
+     memory_region_add_subregion(&s->peri_mr, DMA15_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->dma), 1));
+ 
+     for (n = 0; n <= 12; n++) {
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->dma), n,
+                            qdev_get_gpio_in_named(DEVICE(&s->ic),
+                                                   BCM2835_IC_GPU_IRQ,
+                                                   INTERRUPT_DMA0 + n));
+     }
+ 
+     /* THERMAL */
+     object_property_set_bool(OBJECT(&s->thermal), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+     memory_region_add_subregion(&s->peri_mr, THERMAL_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->thermal), 0));
+ 
+     /* GPIO */
+     object_property_set_bool(OBJECT(&s->gpio), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     memory_region_add_subregion(&s->peri_mr, GPIO_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->gpio), 0));
+ 
+     object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->gpio), "sd-bus",
+                               &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     create_unimp(s, &s->armtmr, "bcm2835-sp804", ARMCTRL_TIMER0_1_OFFSET, 0x40);
+     create_unimp(s, &s->cprman, "bcm2835-cprman", CPRMAN_OFFSET, 0x1000);
+     create_unimp(s, &s->a2w, "bcm2835-a2w", A2W_OFFSET, 0x1000);
+     create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
+     create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
+     create_unimp(s, &s->spi[0], "bcm2835-spi0", SPI0_OFFSET, 0x20);
+     create_unimp(s, &s->bscsl, "bcm2835-spis", BSC_SL_OFFSET, 0x100);
+     create_unimp(s, &s->i2c[0], "bcm2835-i2c0", BSC0_OFFSET, 0x20);
+     create_unimp(s, &s->i2c[1], "bcm2835-i2c1", BSC1_OFFSET, 0x20);
+     create_unimp(s, &s->i2c[2], "bcm2835-i2c2", BSC2_OFFSET, 0x20);
+     create_unimp(s, &s->otp, "bcm2835-otp", OTP_OFFSET, 0x80);
+     create_unimp(s, &s->dbus, "bcm2835-dbus", DBUS_OFFSET, 0x8000);
+     create_unimp(s, &s->ave0, "bcm2835-ave0", AVE0_OFFSET, 0x8000);
+     create_unimp(s, &s->dwc2, "dwc-usb2", USB_OTG_OFFSET, 0x1000);
+     create_unimp(s, &s->sdramc, "bcm2835-sdramc", SDRAMC_OFFSET, 0x100);
+ }
 -- 
 2.21.1
 

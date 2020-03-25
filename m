@@ -1,110 +1,101 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2366135lfi;
-        Mon, 23 Mar 2020 23:17:12 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvfa/jKIWZxaC3+pn5EQecyYweTDbIJ0CftzuGtsp4ptW1vQ83M35kXPHzImnaR4Psa8pg0
-X-Received: by 2002:ae9:e894:: with SMTP id a142mr24759131qkg.379.1585030631940;
-        Mon, 23 Mar 2020 23:17:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585030631; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp98256lfi;
+        Tue, 24 Mar 2020 19:33:00 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtxCs6I76Jom+BjAiWeQj58zxP+O+3mDE8O5w30zxP6/YJ3p30Os/rZPl7mx73bUjr8XBNP
+X-Received: by 2002:a37:6411:: with SMTP id y17mr932577qkb.437.1585103580208;
+        Tue, 24 Mar 2020 19:33:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585103580; cv=none;
         d=google.com; s=arc-20160816;
-        b=havO3dqoKf3oPOZADSV3NwZy937WlokRtYKXcip57vq232lVLNFwC92r5ONqsMf7HL
-         MPoKWU/E1C2VgneAjn6tyJy+WKCcS3G8Dm5nlI58NXhGYutX8gPUYfBYvb4KYRWgoCsY
-         UnPmP5AeNsFeJ4pL/KRBzo399v7r3pEiMT15eGt/Go9Ht8pz7Uel1BEUn4Slhq7ByBGS
-         qVelNgX/IBBuF5IirJlorPOQE8ppo5xvYU8kFvNyWKg08o/8/WyTEYMZ2xck6WO8s42Y
-         Mo2f2k0YT3f0aITvxC5qQ8EPv1uZuaBdnpVKJSA7lcqjfW82S5ZT8FKbDe4KvgsQfpog
-         uHTA==
+        b=ooF/11oMZWbDexs6VReW+2n5Fepjy8n0euRGCZ0fjgt2vE+XZsker7RoMuEeA1VSmu
+         P3qvk/Dz5yuBBcsSucuZnpRiittUYFykTG6Wnng//qz24ECyQv6r1PZVwoSuuQlcjR3v
+         PuAjTPA2JD/8NCqnA4tIG4oIewPTZR9ST2VKASyfHTAcQguDDCT+CHCGt4WvrLo4oOac
+         3ZSohL1Fp7UvTMduXGVXqI51Q98o6mmgQxH6bwO/lw26BgXRWPuh5NR3BT61cWESdVSV
+         fY1nSpgzLNiwA4XB0W1urDmZN3UbUGqqcZSEsIaURNcyWhIG4GSLmrprKwj7SSDF4Ub1
+         g7Dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ntwu0iNk5SxCHAsBwOrQKWEafoKA9mB3OGWLeaqo74s=;
-        b=tSH4f+9XltjW/P94sBi77aPSiEjjElb5pcsIhh2/L/r6HzMDdtYjlXfoEHlX282OKT
-         2EuG4101ebQLJ6DnwKqPyoaZmKLiUDaJO3sxNJ0yphbTpvrDHCOcZfKedBUTlI2kqtde
-         WGt6f7Xamnae5kviFAwYwJlwdJ/j2sfHefyX85bvbvpet2oaK0bm3JmuUT44DMfP/tGE
-         sN6ZS6YdpT4X5QWdJEBOoLkGbras3G8ZqGxsDcQbwiB5bbvj+Jcwg4+gSC0kp+v121+n
-         h+F3+CWenoba9YplJAI3em5sscF7vVnwd6IlSOc29WefDELBHl0Fi5PGr5MhkxTErAyh
-         QJqw==
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=tfvdA6fl0nGiCwzGaUVcG2y7t0dMnDN1knHz/pUXHD8=;
+        b=VT9BTdrebvevldH9fN1uZQRKhcoZm35aDJwdzrqR0aEF1VqF4/n5uMufuObNi5YfzI
+         FIpTn67EWqIg+gNbAVhi6aC7uRxbZQuNuL7aPthpLtdWhLRravGm/RYtEcQjz4yAqI42
+         JciMHe1/ASfsYST7c6cLmivTxvgvEJqLn2Koaxl6MM7qdfJqp2om5OEuqk9BjioY4mfh
+         ukhg49GjGWE4HwngUwgsW+LK6QLUXTsskJUlY5JCAt52vwb7diODl1wT2+feWb5tbOGm
+         zwWAtq1OSb2ohBk2F9BrZ7ZdjDIspVrX+/YbmTUVxzLPBL6VAaoqwaQ9ZfIydyD5VY2v
+         0m6w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ArxcFgzP;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E2eRhKyf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5si9196898qtw.272.2020.03.23.23.17.11
+        by mx.google.com with ESMTPS id w1si11697132qtw.301.2020.03.24.19.33.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Mar 2020 23:17:11 -0700 (PDT)
+        Tue, 24 Mar 2020 19:33:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ArxcFgzP;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E2eRhKyf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:43594 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58374 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jGcsB-0000le-A7
-	for alex.bennee@linaro.org; Tue, 24 Mar 2020 02:17:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45830)
+	id 1jGvql-0005N4-Kq
+	for alex.bennee@linaro.org; Tue, 24 Mar 2020 22:32:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43695)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <shannon.zhaosl@gmail.com>) id 1jGcs3-0000lL-8L
- for qemu-arm@nongnu.org; Tue, 24 Mar 2020 02:17:04 -0400
+ (envelope-from <gshan@redhat.com>) id 1jGvqd-0005Mc-Do
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2020 22:32:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shannon.zhaosl@gmail.com>) id 1jGcs2-0007Wl-5O
- for qemu-arm@nongnu.org; Tue, 24 Mar 2020 02:17:02 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:36602)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <shannon.zhaosl@gmail.com>)
- id 1jGcs2-0007VT-0c; Tue, 24 Mar 2020 02:17:02 -0400
-Received: by mail-oi1-x242.google.com with SMTP id k18so17484524oib.3;
- Mon, 23 Mar 2020 23:17:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ntwu0iNk5SxCHAsBwOrQKWEafoKA9mB3OGWLeaqo74s=;
- b=ArxcFgzP4sznUBhNmRg2O6o4lVtFtUn0x/Tz3s6yChWB05s3YDIlNrx1081JchJ+BA
- qmGPzVlJ6YYVYdm11rXSyk4WMMUc8juLKSr2esDvElBzSnCq0YBAif2u8W2nF/G/un/r
- WMk8DGR0QDF604XADy/37yhQ7c9hFIyKlg7lxhw5liis5BILbsbIu+F/rLAtRw1onoU9
- GhzOJwNOZJXq8msaLHfPAyCONMyJ4QTivprAEDtIEEhTEeNVu7s1Omlom8r1kIjQJ2K9
- odIG62vHCzo1VEPzI71ZwH8Qbn1nkzfwLdZoaSfUUF99Leb3Axl4ACUJovuLWL1TTDqF
- Y6+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ntwu0iNk5SxCHAsBwOrQKWEafoKA9mB3OGWLeaqo74s=;
- b=ZYBSzoXYO7Gs+3nX68xgiaZQV2GCHrG8iPKdsvTcQfm/Z5R5o12NEZfeAjLL4p3MLF
- HLfYr9UtEoXoUSqotcbgGG3LjGgUl4cRa8Y8jCpR0YAKL5uTOR9gICIPeG0RVuOUT6SP
- 7zUcGq6+APipEu/c3Y8+6dU/Pg1EJG6mC3T4N+zrJ42nbqmKoOethU9EBo3q1XpyIo19
- qbrZsJTEKNl2hRj32/Whr+ck7CC0rANYE5Bq73f40DsiOw6lr4SFOgVL75dUgruukrz9
- tTYpGbLcor9wP8XkQdPQuIAdWkIArPyxGbOYL/JGAl5o6uV0oCDoB12jMTnzbFz5VYJ1
- kGiA==
-X-Gm-Message-State: ANhLgQ2hmpds4ERJNA+R4GwSIBWEICYQiD3ylzwNgF8f9w/tqh7ZLPx3
- EGX1SoZKqJoPpxUdZI3B3PU=
-X-Received: by 2002:aca:3a83:: with SMTP id h125mr2236038oia.64.1585030620674; 
- Mon, 23 Mar 2020 23:17:00 -0700 (PDT)
-Received: from [30.43.122.30] ([47.89.83.57])
- by smtp.gmail.com with ESMTPSA id f3sm2815282oto.42.2020.03.23.23.16.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 23 Mar 2020 23:16:59 -0700 (PDT)
-Subject: Re: [PATCH v3 07/10] hw/arm/virt: Add nvdimm hotplug support
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, eric.auger@redhat.com,
- imammedo@redhat.com
-References: <20200311172014.33052-1-shameerali.kolothum.thodi@huawei.com>
- <20200311172014.33052-8-shameerali.kolothum.thodi@huawei.com>
-From: Shannon Zhao <shannon.zhaosl@gmail.com>
-Message-ID: <079d4ae2-4be1-feef-4729-d94c85431a6f@gmail.com>
-Date: Tue, 24 Mar 2020 14:16:52 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (envelope-from <gshan@redhat.com>) id 1jGvqb-0005VL-Ga
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2020 22:32:50 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:37944)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <gshan@redhat.com>) id 1jGvqb-0005UN-9q
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2020 22:32:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1585103567;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=tfvdA6fl0nGiCwzGaUVcG2y7t0dMnDN1knHz/pUXHD8=;
+ b=E2eRhKyfMxcIhqm1tMJScAXAelLaZqGfUxR2dtq+wgNYBwBg1Qwk5KwWeMNfBy3ERELQ9P
+ BUUIlPsO8QzZXJ2ajdhGUJgHmyOqJP0+tj5l/vcH3YqIfr5B8Gcoj1/xJQWmBs82HL+T/T
+ adv/pG3q8NAxlKL6jNYovTY/aohPkkE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-223-yI709ja9MEezamytUEt5IQ-1; Tue, 24 Mar 2020 22:32:46 -0400
+X-MC-Unique: yI709ja9MEezamytUEt5IQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DCA331005513;
+ Wed, 25 Mar 2020 02:32:44 +0000 (UTC)
+Received: from localhost.localdomain (vpn2-54-53.bne.redhat.com [10.64.54.53])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C759B5C241;
+ Wed, 25 Mar 2020 02:32:42 +0000 (UTC)
+Subject: Re: [PATCH v3] hw/char/pl011: Enable TxFIFO and async transmission
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20200311040923.29115-1-gshan@redhat.com>
+Message-ID: <4c32dbe0-7d96-5e60-addc-b1bf43e17f47@redhat.com>
+Date: Wed, 25 Mar 2020 13:32:39 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <20200311172014.33052-8-shameerali.kolothum.thodi@huawei.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20200311040923.29115-1-gshan@redhat.com>
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::242
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 216.205.24.74
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,26 +107,208 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, mst@redhat.com,
- david@redhat.com, linuxarm@huawei.com, xuwei5@hisilicon.com, lersek@redhat.com
+Cc: peter.maydell@linaro.org, philmd@redhat.com, marcandre.lureau@gmail.com,
+ pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d0AqmhgBBBt/
+X-TUID: X7GZ5jaKygyg
 
+On 3/11/20 3:09 PM, Gavin Shan wrote:
+> The depth of TxFIFO can be 1 or 16 depending on LCR[4]. The TxFIFO is
+> disabled when its depth is 1. It's nice to have TxFIFO enabled if
+> possible because more characters can be piled and transmitted at once,
+> which would have less overhead. Besides, we can be blocked because of
+> qemu_chr_fe_write_all(), which isn't nice.
+>=20
+> This enables TxFIFO if possible. On ther other hand, the asynchronous
+> transmission is enabled if needed, as we did in hw/char/cadence_uart.c
+>=20
+> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> ---
+> v3: Use PL011() to do data type conversion
+>      Return G_SOURCE_REMOVE when the backend is disconnected in pl011_xmi=
+t()
+>      Drop parenthesis in the condition validating @size in pl011_write_fi=
+fo()
+> ---
+>   hw/char/pl011.c         | 105 +++++++++++++++++++++++++++++++++++++---
+>   include/hw/char/pl011.h |   3 ++
+>   2 files changed, 102 insertions(+), 6 deletions(-)
+>=20
 
+Marc-Andr=C3=A9, ping. Could you please review when you get a chance? Thank=
+s in
+advance :)
 
-On 2020/3/12 1:20, Shameer Kolothum wrote:
-> diff --git a/docs/specs/acpi_hw_reduced_hotplug.rst b/docs/specs/acpi_hw_reduced_hotplug.rst
-> index 911a98255b..e3abe975bf 100644
-> --- a/docs/specs/acpi_hw_reduced_hotplug.rst
-> +++ b/docs/specs/acpi_hw_reduced_hotplug.rst
-> @@ -63,6 +63,7 @@ GED IO interface (4 byte access)
->       bits:
->          0: Memory hotplug event
->          1: System power down event
-> +       2: NVDIMM hotplug event
->       2-31: Reserved
-should modify "2-31: Reserved"
+> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+> index 13e784f9d9..dccb8c42b0 100644
+> --- a/hw/char/pl011.c
+> +++ b/hw/char/pl011.c
+> @@ -169,6 +169,73 @@ static void pl011_set_read_trigger(PL011State *s)
+>           s->read_trigger =3D 1;
+>   }
+>  =20
+> +static gboolean pl011_xmit(GIOChannel *chan, GIOCondition cond, void *op=
+aque)
+> +{
+> +    PL011State *s =3D PL011(opaque);
+> +    int ret;
+> +
+> +    /* Drain FIFO if there is no backend */
+> +    if (!qemu_chr_fe_backend_connected(&s->chr)) {
+> +        s->write_count =3D 0;
+> +        s->flags &=3D ~PL011_FLAG_TXFF;
+> +        s->flags |=3D PL011_FLAG_TXFE;
+> +        return G_SOURCE_REMOVE;
+> +    }
+> +
+> +    /* Nothing to do */
+> +    if (!s->write_count) {
+> +        return FALSE;
+> +    }
+> +
+> +    ret =3D qemu_chr_fe_write(&s->chr, s->write_fifo, s->write_count);
+> +    if (ret > 0) {
+> +        s->write_count -=3D ret;
+> +        memmove(s->write_fifo, s->write_fifo + ret, s->write_count);
+> +        s->flags &=3D ~PL011_FLAG_TXFF;
+> +        if (!s->write_count) {
+> +            s->flags |=3D PL011_FLAG_TXFE;
+> +        }
+> +    }
+> +
+> +    if (s->write_count) {
+> +        s->watch_tag =3D qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_=
+HUP,
+> +                                             pl011_xmit, s);
+> +        if (!s->watch_tag) {
+> +            s->write_count =3D 0;
+> +            s->flags &=3D ~PL011_FLAG_TXFF;
+> +            s->flags |=3D PL011_FLAG_TXFE;
+> +            return FALSE;
+> +        }
+> +    }
+> +
+> +    s->int_level |=3D PL011_INT_TX;
+> +    pl011_update(s);
+> +    return FALSE;
+> +}
+> +
+> +static void pl011_write_fifo(void *opaque, const unsigned char *buf, int=
+ size)
+> +{
+> +    PL011State *s =3D PL011(opaque);
+> +    int depth =3D (s->lcr & 0x10) ? 16 : 1;
+> +
+> +    if (size >=3D depth - s->write_count) {
+> +        size =3D depth - s->write_count;
+> +    }
+> +
+> +    if (size > 0) {
+> +        memcpy(s->write_fifo + s->write_count, buf, size);
+> +        s->write_count +=3D size;
+> +        if (s->write_count >=3D depth) {
+> +            s->flags |=3D PL011_FLAG_TXFF;
+> +        }
+> +        s->flags &=3D ~PL011_FLAG_TXFE;
+> +    }
+> +
+> +    if (!s->watch_tag) {
+> +        pl011_xmit(NULL, G_IO_OUT, s);
+> +    }
+> +}
+> +
+>   static void pl011_write(void *opaque, hwaddr offset,
+>                           uint64_t value, unsigned size)
+>   {
+> @@ -179,13 +246,8 @@ static void pl011_write(void *opaque, hwaddr offset,
+>  =20
+>       switch (offset >> 2) {
+>       case 0: /* UARTDR */
+> -        /* ??? Check if transmitter is enabled.  */
+>           ch =3D value;
+> -        /* XXX this blocks entire thread. Rewrite to use
+> -         * qemu_chr_fe_write and background I/O callbacks */
+> -        qemu_chr_fe_write_all(&s->chr, &ch, 1);
+> -        s->int_level |=3D PL011_INT_TX;
+> -        pl011_update(s);
+> +        pl011_write_fifo(opaque, &ch, 1);
+>           break;
+>       case 1: /* UARTRSR/UARTECR */
+>           s->rsr =3D 0;
+> @@ -207,7 +269,16 @@ static void pl011_write(void *opaque, hwaddr offset,
+>           if ((s->lcr ^ value) & 0x10) {
+>               s->read_count =3D 0;
+>               s->read_pos =3D 0;
+> +
+> +            if (s->watch_tag) {
+> +                g_source_remove(s->watch_tag);
+> +                s->watch_tag =3D 0;
+> +            }
+> +            s->write_count =3D 0;
+> +            s->flags &=3D ~PL011_FLAG_TXFF;
+> +            s->flags |=3D PL011_FLAG_TXFE;
+>           }
+> +
+>           s->lcr =3D value;
+>           pl011_set_read_trigger(s);
+>           break;
+> @@ -292,6 +363,24 @@ static const MemoryRegionOps pl011_ops =3D {
+>       .endianness =3D DEVICE_NATIVE_ENDIAN,
+>   };
+>  =20
+> +static bool pl011_write_fifo_needed(void *opaque)
+> +{
+> +    PL011State *s =3D PL011(opaque);
+> +    return s->write_count > 0;
+> +}
+> +
+> +static const VMStateDescription vmstate_pl011_write_fifo =3D {
+> +    .name =3D "pl011/write_fifo",
+> +    .version_id =3D 1,
+> +    .minimum_version_id =3D 1,
+> +    .needed =3D pl011_write_fifo_needed,
+> +    .fields =3D (VMStateField[]) {
+> +        VMSTATE_INT32(write_count, PL011State),
+> +        VMSTATE_UINT8_ARRAY(write_fifo, PL011State, 16),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+>   static const VMStateDescription vmstate_pl011 =3D {
+>       .name =3D "pl011",
+>       .version_id =3D 2,
+> @@ -314,6 +403,10 @@ static const VMStateDescription vmstate_pl011 =3D {
+>           VMSTATE_INT32(read_count, PL011State),
+>           VMSTATE_INT32(read_trigger, PL011State),
+>           VMSTATE_END_OF_LIST()
+> +    },
+> +    .subsections =3D (const VMStateDescription * []) {
+> +        &vmstate_pl011_write_fifo,
+> +        NULL
+>       }
+>   };
+>  =20
+> diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
+> index 14187165c6..9d1c24db48 100644
+> --- a/include/hw/char/pl011.h
+> +++ b/include/hw/char/pl011.h
+> @@ -38,6 +38,7 @@ typedef struct PL011State {
+>       uint32_t int_enabled;
+>       uint32_t int_level;
+>       uint32_t read_fifo[16];
+> +    uint8_t  write_fifo[16];
+>       uint32_t ilpr;
+>       uint32_t ibrd;
+>       uint32_t fbrd;
+> @@ -45,6 +46,8 @@ typedef struct PL011State {
+>       int read_pos;
+>       int read_count;
+>       int read_trigger;
+> +    int write_count;
+> +    guint watch_tag;
+>       CharBackend chr;
+>       qemu_irq irq[6];
+>       const unsigned char *id;
+>=20
 
-Thanks,
-Shannon

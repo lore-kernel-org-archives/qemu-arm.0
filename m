@@ -1,117 +1,103 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp774637lfi;
-        Wed, 25 Mar 2020 08:56:50 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvofRXWs8PYyHQw9fbSzDqDSJi757Cvbj8DR8j5uNfNgdgii8t9WFGQVmJ060g1EnhmN+oU
-X-Received: by 2002:ac8:312e:: with SMTP id g43mr3736424qtb.360.1585151810269;
-        Wed, 25 Mar 2020 08:56:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585151810; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp876003lfi;
+        Wed, 25 Mar 2020 10:35:08 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvaoGCj7YCfOmdKDE75fri6AD+15rGj3LiOEszb0jl/VgIX3RJk8658ZARVhSzDCN8/1iXT
+X-Received: by 2002:a37:817:: with SMTP id 23mr3739564qki.221.1585157708520;
+        Wed, 25 Mar 2020 10:35:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585157708; cv=none;
         d=google.com; s=arc-20160816;
-        b=fEPCNyPhXi00TpAJnGQhwjmSWqvSMvgx1d3xPmp7hNsEEi3QnGxAcEQg0+Ilq0YVvs
-         u//36vANlS0Rk0cHpyc3/u9DT6hRnHU1skhUvP9bmssuQtwlvZldoDpT/X0DxPpT+VVH
-         vfCY/pam4UXIBNxJG+JXkW5lXBAeq4VwdvUeC/PDqU94RBHYQulOg8MlZyE5hW4/FTFw
-         NE5P7MnGSsKlH7sVPChVPQsb4nfMVgli3yWXa/Px0K2ad/fU5aGfPjgYsoN/qyrgFilk
-         +Wlo0BTItBzfcSmwEBgfbWfgtbU+f6AZ0uYHlLy5M4pDJR8CGJq7fElaYrky7W8v1WWQ
-         dYhA==
+        b=M2Wohs0uQz7MCKG09wfk5Kll9nUluowp8zxPfFdVaPgV6YBxuWUU1eYrGUnf4giYf7
+         71Rup7s6yv3CzCHrNEUFx86gXOLrUkld+Cjt2m2IztRDWG09oz0NtPi1Tty1Nf2vYXJU
+         0iKFwM7+HMaMIIcSq1HHsUnufNIVn0r4Ms+LvWGSAkvQy1nynXva6iCVvh7gIT19PgOw
+         RQRGJwFTTBMGOGzlfzcFJ4T3UG3klcFeidJXVkU/CDwGetM9DqHw9GZT/NzAnA4Oo9/u
+         YkzC3kOgDXksExOIVZ0TvtHeAYrV1wrC2mvD/wlHJdHYMxNoB+Hw+lDC70DRPOYCtFSK
+         mFug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=if4nHKgfpw8B1AsCEBhVgAmrqo1dvIsWXXvDq7Z93T8=;
-        b=dqCo1ebWS43X+SpD+zncuRbyaJN2HAWX0h5NEK8vLvvMlpT3JHaGD3a8kSoY0K1+Xn
-         tHoxfpc0Cp77UbGmOdd/zzu8zZvVKNFzNBiob1NYPgXCG9M4tixs1upkyPldvBKRrYwv
-         6py4ZTUiHKfzMutKW4IBO9kOS8bX2pIiEA/hw6L9Z6EzMD2pF3cP0reeT6yIWk/Bx1IR
-         H7PT22ROav943HdHcSqDq8hKpn/+/0MKwe6tnknvKpGUTVyyyiF8E9BD29+0iy017SJT
-         gPxv4ZLmMX0qm7LPJOxAQ9jjqWhP2QZyns+Rt33sggYmRgEDpwirJFzZZwzI2WmJ/kCy
-         6gOA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=b0OnLCWvM64m5gKXHzRMVXF5dHlaSc79FQsmbEFFsu4=;
+        b=QVr49GryFflRHUdt/Dw+bhppUiFzHgC4qAxtkhtBMIMi+3H5GkzivE2g7s1RRTvOb0
+         AVuFbogiwcPxF56hR+e5azjp5OWwPwywSTg8n5nZdg0LMPL73zkbcxWShQLAPmNXSXzZ
+         7zGkan62radIf3oJ8O0IHLPIMOjyvyZcMthwCTMEQzNsWPlRW46YCpcJsrXAZS1IBCGk
+         ue6rvjhVCQvoaRodO3lPb7CMh194cYRP/H9PrF6Ohf9XfAjAJh+cxcrIyCRkJs4PUBIc
+         dVXbIcIekXV2euEP4bdHMM/HWozatcw6K5Nh/GNLN7oKAs+uLEgPMnYmssM7qvAYvp2F
+         umHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aDtIv2gH;
+       dkim=fail header.i=@linaro.org header.s=google header.b=C1Z6pNdv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f145si12718081qke.0.2020.03.25.08.56.50
+        by mx.google.com with ESMTPS id d8si10310827qtm.248.2020.03.25.10.35.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Mar 2020 08:56:50 -0700 (PDT)
+        Wed, 25 Mar 2020 10:35:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aDtIv2gH;
+       dkim=fail header.i=@linaro.org header.s=google header.b=C1Z6pNdv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38752 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40126 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jH8Of-00071U-MR
-	for alex.bennee@linaro.org; Wed, 25 Mar 2020 11:56:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47362)
+	id 1jH9vo-0005DA-0e
+	for alex.bennee@linaro.org; Wed, 25 Mar 2020 13:35:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60933)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1jH8OX-00070J-Ts
- for qemu-arm@nongnu.org; Wed, 25 Mar 2020 11:56:42 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jH9vb-0005As-23
+ for qemu-arm@nongnu.org; Wed, 25 Mar 2020 13:34:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1jH8OW-0001wi-FW
- for qemu-arm@nongnu.org; Wed, 25 Mar 2020 11:56:41 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:31526)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1jH8OW-0001wD-7M
- for qemu-arm@nongnu.org; Wed, 25 Mar 2020 11:56:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585151799;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=if4nHKgfpw8B1AsCEBhVgAmrqo1dvIsWXXvDq7Z93T8=;
- b=aDtIv2gHVrP3SKQM1AMGytEGHr7+hacxT0Qc9Qs48kOmT5zNxxLkxZLF/pAEeliqSoQSRS
- Dd6v4eaixxGHpR+zw0SV7DNgKh67MTahye9K8fVGs2W6HT/T+zpTjp+eL4CGp/wvUPjLL/
- l4f3kRXUTc77bEk8fV8IqT1RA5Gj0Os=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-243-_rULEcH8MKaZ6Uxjpw0pSw-1; Wed, 25 Mar 2020 11:56:37 -0400
-X-MC-Unique: _rULEcH8MKaZ6Uxjpw0pSw-1
-Received: by mail-wm1-f71.google.com with SMTP id w9so849218wmi.2
- for <qemu-arm@nongnu.org>; Wed, 25 Mar 2020 08:56:37 -0700 (PDT)
+ (envelope-from <peter.maydell@linaro.org>) id 1jH9vZ-0005Kb-Pj
+ for qemu-arm@nongnu.org; Wed, 25 Mar 2020 13:34:54 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:39117)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jH9vZ-0005K9-G9
+ for qemu-arm@nongnu.org; Wed, 25 Mar 2020 13:34:53 -0400
+Received: by mail-oi1-x243.google.com with SMTP id d63so2858750oig.6
+ for <qemu-arm@nongnu.org>; Wed, 25 Mar 2020 10:34:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=b0OnLCWvM64m5gKXHzRMVXF5dHlaSc79FQsmbEFFsu4=;
+ b=C1Z6pNdvSItTGgZeyhNyHULNYgBoDGsq02/U+/B/utTE5RUjqyejof07G2XRvecC+Q
+ PkpQBvY9KF1KrS0ZzUSQU/rsc1sxnjZH2fg+zHWE/AbmWSzIBErw3fzYf1RdfCxxpMT5
+ 6fd29wVqKxDPsys028YFHaa6LboyVdGtIqve15nvmNwlNSH6qxyPEVZxM3g5oWBIVRDq
+ X27+DXKgoimA58vwVDzbvUapJPsc7jtwbBU1McuM1TTw4tfp/7MxD9eGN9Z9LsNYMGSV
+ bhzWh5TUwB7V4SboN80lXDx5RQo8ZfiSK3ussgHb4YGm1hAUq2WdOOlrXZ3AumPRM+Vs
+ oXIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=u0ucPd8wZZF8yHJ+IxpLkbR+ZBVaadk/NDa5B5PcHks=;
- b=GDp9OzaOEGmJOpFiuWWiomHRjPVEczHnooztcUJutuK/QXFKMMDFcUyUiu3vkD4M28
- YXUX4WHdjPhMMYooxnboaMBCACiCfTtokRsg3MJcNnpR6DK0g0G8bPHCR4x39KJO0wzW
- f2ww/6am4+arDr5t8ho/vXKI/H0O+VVMqngTEofXFcNBHYCr0oqZ3modXPizYN5WaBU7
- vFhEdB9C8nDWValAXdjg5uQniJBPJGLqJT28wTIHt3VXCFR4dsSksdEyd2Qz/EFsstGZ
- nI0GdfzHaZixVqaLP4rT5nNwvJiHxSBm+tL8FObJOQ2fA+UBjwdkYFkQ3IJ5S8yVAmP4
- 5Sig==
-X-Gm-Message-State: ANhLgQ3dCKCV0eOfVCfrO45zPKfX9ASBdF1eRy3fLbx6/YnnbkaHwA16
- s4yxbCS5o9uLF9xDo0WEYaoTA9HLQqeaa0FFn5/1wuT0z/XB+zhubJpzjyADZ69jyyGrns5YCIb
- kj7jibNwYajzK
-X-Received: by 2002:a5d:640a:: with SMTP id z10mr4382119wru.301.1585151796712; 
- Wed, 25 Mar 2020 08:56:36 -0700 (PDT)
-X-Received: by 2002:a5d:640a:: with SMTP id z10mr4382100wru.301.1585151796506; 
- Wed, 25 Mar 2020 08:56:36 -0700 (PDT)
-Received: from [192.168.10.150] ([93.56.170.5])
- by smtp.gmail.com with ESMTPSA id t10sm11716010wrx.38.2020.03.25.08.56.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Mar 2020 08:56:35 -0700 (PDT)
-Subject: Re: [PATCH v3] hw/char/pl011: Enable TxFIFO and async transmission
-To: Gavin Shan <gshan@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=b0OnLCWvM64m5gKXHzRMVXF5dHlaSc79FQsmbEFFsu4=;
+ b=CXTy+5sFKyHGF6vydoP2E+KVegOySM4fEuyh6KX5t1JqGK5Ojt5MU+L9PpT7ykHURr
+ o9QzPLAVH5MbsitZf8i4KDnDgmc/DIHzBFSt/iJWnOlPBIz7thid3nIl9kESBi/C6rJ8
+ iweNg+UhuvTN9non9KoOqogsQ0O1jjQuK0B5FYilfEXyTDCYxc9o/pD0LKQZ+28DtudT
+ LHUAadoiexPsxiQUy85RGH0JdkOYhb6fq9xHiso9eeSg+uIY1hLloQf+RQpqpTccni1y
+ +dcju/XSRDZ94uraCOOj8Hql7/ASQvybE0Vbc36EPdWSgyF/NGwSyUscvap0HuQD1xtJ
+ dDgg==
+X-Gm-Message-State: ANhLgQ1WYpyXHWNOwKLTpKorquup2Gs8z8Gf2zKpiX0KavC8eLlQ5+yF
+ UxbtYYn5cYfYJSNP+EZ49zg2NgXv1sGUpQ47aC6OKA==
+X-Received: by 2002:a05:6808:64c:: with SMTP id
+ z12mr3181490oih.146.1585157692306; 
+ Wed, 25 Mar 2020 10:34:52 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200311040923.29115-1-gshan@redhat.com>
  <4c32dbe0-7d96-5e60-addc-b1bf43e17f47@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <da34a58a-0474-c46e-7bbf-cb150bddc717@redhat.com>
-Date: Wed, 25 Mar 2020 16:56:35 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
-MIME-Version: 1.0
-In-Reply-To: <4c32dbe0-7d96-5e60-addc-b1bf43e17f47@redhat.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+ <da34a58a-0474-c46e-7bbf-cb150bddc717@redhat.com>
+In-Reply-To: <da34a58a-0474-c46e-7bbf-cb150bddc717@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 25 Mar 2020 17:34:40 +0000
+Message-ID: <CAFEAcA-kbsdW5p6j6gCt48kZxXtFNM_bO8jH6_XTrFLh=QGzwQ@mail.gmail.com>
+Subject: Re: [PATCH v3] hw/char/pl011: Enable TxFIFO and async transmission
+To: Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 216.205.24.74
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::243
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,20 +109,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, philmd@redhat.com, marcandre.lureau@gmail.com
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Gavin Shan <gshan@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lAkOl6fMieGJ
+X-TUID: yc1+5fuPoeGC
 
-On 25/03/20 03:32, Gavin Shan wrote:
->>
->=20
-> Marc-Andr=C3=A9, ping. Could you please review when you get a chance? Tha=
-nks in
-> advance :)
+On Wed, 25 Mar 2020 at 15:56, Paolo Bonzini <pbonzini@redhat.com> wrote:
+>
+> On 25/03/20 03:32, Gavin Shan wrote:
+> >>
+> >
+> > Marc-Andr=C3=A9, ping. Could you please review when you get a chance? T=
+hanks in
+> > advance :)
+>
+> Or Peter; generally arch-specific changes (as opposed to fixes in
+> chardev API usage) are generally reviewed by arch maintainers.
 
-Or Peter; generally arch-specific changes (as opposed to fixes in
-chardev API usage) are generally reviewed by arch maintainers.
+It's still on my to-review queue, but then so are a bunch
+of other things. Stuff for 5.0 is currently taking priority.
 
-Paolo
-
+thanks
+-- PMM

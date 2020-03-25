@@ -1,44 +1,44 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1796230lfi;
-        Mon, 23 Mar 2020 11:44:39 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsplcanbZYAXrDU4TBNq+FgBmfK4/dArHsQISwT/p5rYkk8YiyymX1ULaYG5zMv851LqH8m
-X-Received: by 2002:ac8:3630:: with SMTP id m45mr21178147qtb.330.1584989079526;
-        Mon, 23 Mar 2020 11:44:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584989079; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp734604lfi;
+        Wed, 25 Mar 2020 08:17:04 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvwoqb6kEjezWfleGeQJEviE/SPbZFOxLwfMVs6AJ+rzFGlcOiO//ujtIQXQdyhpLK8jn+s
+X-Received: by 2002:a37:a551:: with SMTP id o78mr3304793qke.453.1585149423854;
+        Wed, 25 Mar 2020 08:17:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585149423; cv=none;
         d=google.com; s=arc-20160816;
-        b=hmab5d6gcZpvR2RXJr0TvCCldjT+aeFfzB4wl3nFZ2OknMtog03Q4WBm+/n+plO1F1
-         mgGIyA/oxWJtM6WaWgu7Hsm0UYw7Ozf3SWdVS5PXsjWVhabTIdo9fO7MxRZBC0XzU42+
-         VErOl+camjDtyCnvxMieclj4sgl0AllpzRDvyHzBNLQEnO1mFuzHeqQn7lB2QjmmwD/J
-         1azgOVDrmkACXz3TL6+F+AdCCzw+RAuiDVrRSZTu8ezTzKlUEOl6+hLe1S2J5+qcEgfM
-         tl8f2KJeqvA5IpQBEv1iqp6eBLY2RMgbi2oBc4qpt2F1DR08YAg3sidR4PgzYdYO7n+W
-         pcYw==
+        b=KueJDr3+MRsGHWhLgrJpYcGMv7m6FwnhkGHXX0C4qPKMkFnpo8vr3HCCgL5vF6az8n
+         sRJPxIAN/qETJLZ75tmRDUSRvrqFgBViuoWFyns8gfho5kR2FwWYdHwa0c2vnTD5UVZE
+         Pl2IDvXlEB2FqYAxR9jWXc/FikDcUYF8SFDTaoRUmNZcZVfjVv31Jj4833/hf/gZqVcB
+         kKapzNvaaZm7+y+kKKkBFx3/4cLdZ6eXKBa8BE/PGs938qewJK406pDo6Yepv2EtfE40
+         2YgJ9zTJgt2vE9zNwi2GOboqET17nOZO/1QvxlcsDgZ0BBBvhoRj+2EpOewhq9xZGnfG
+         fS8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=cWZf8Ob1OHd4Kq+/oQzay+HP2CCWm9Xm8SwXjWqnvi4=;
-        b=qf0IMuj//y15w5pxbIQoCsxACdg55RTG+j7RYMCZdUPibk37vXKD26SUqn1/OC6puc
-         sLQWRNJPsi8P4mqVrkplTUpa/kGDZhQYWbj/EIL5c5oLf9/QC14mM2dIY3owsZv/mpJB
-         Y4ey+5lSH9xpdSvp1gaCHaUMDtCjvqsQG56ucNabTaaULrRAOwiGU4Z1S39CR2eiGtTL
-         x2FRTzECaim1U3JkEHQQj/Gf28Zf3SvSE7KSpx6STSSsX3QOsVsqOs9YPk2KFkaaD6J9
-         QhGfRT5LNDdbfaJMmpO98pHYXRnPL+6k1gwc4EP2p074xHyHDQRdDvLzL3I7iKyRUjtS
-         ZHlg==
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=jtpOPD4f0vTZMCJAqAUMzG0BCDoKrRQICiA9paVUQQ4=;
+        b=zsrwwE90PBrrQsWZXc72KUAO94pCSUu9SgEMdTynMilOOrIbEGZifUGbiG67jRy9q7
+         vqRTBSco5mylhgDa1CxhHMSfH+4Yhb3JuFW5tX933E2EdpV2/NFuWkGpJjQmH+EBXvzq
+         xURFXoLRIbRZX1GRemFIG9xJsYonuk0kGUs9XdVksCqrdyqqXz7Jki2ydIf4/62aouKQ
+         Vq/xd4cWaqMs12C7WPhneePhFzYh8TwG2Lzx9LZrBgWNbVomBjFeNBJZg2Na8/K4i+VL
+         pdhnYxlGpD6Lpat/J1n1KXkFwzQXsb77DWGjfhs9xau0ZhPWchs4ELHqT5LjoIFSmR5I
+         jonQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=X5mJe48f;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=qNFbj0zm;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id h10si6463875qvf.219.2020.03.23.11.44.39;
-        Mon, 23 Mar 2020 11:44:39 -0700 (PDT)
+        by mx.google.com with ESMTP id e55si13404161qtk.157.2020.03.25.08.17.03;
+        Wed, 25 Mar 2020 08:17:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=X5mJe48f;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=qNFbj0zm;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 134A44B09D;
-	Mon, 23 Mar 2020 14:44:39 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 758EB4A531;
+	Wed, 25 Mar 2020 11:17:03 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
 X-Spam-Score: 0.909
@@ -50,70 +50,61 @@ Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
 	(fail, message has been altered) header.i=@linaro.org
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nDO5Qi7kr+OD; Mon, 23 Mar 2020 14:44:38 -0400 (EDT)
+	with ESMTP id MwNV97YbHxnz; Wed, 25 Mar 2020 11:17:02 -0400 (EDT)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1C8AB4B093;
-	Mon, 23 Mar 2020 14:44:38 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 536A24A551;
+	Wed, 25 Mar 2020 11:17:02 -0400 (EDT)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 27F694B097
- for <kvmarm@lists.cs.columbia.edu>; Mon, 23 Mar 2020 14:44:37 -0400 (EDT)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id D44994A531
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 25 Mar 2020 11:17:00 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id o5Wink0g++l9 for <kvmarm@lists.cs.columbia.edu>;
- Mon, 23 Mar 2020 14:44:36 -0400 (EDT)
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 2F71F4B093
- for <kvmarm@lists.cs.columbia.edu>; Mon, 23 Mar 2020 14:44:36 -0400 (EDT)
-Received: by mail-pf1-f196.google.com with SMTP id q3so3387888pff.13
- for <kvmarm@lists.cs.columbia.edu>; Mon, 23 Mar 2020 11:44:36 -0700 (PDT)
+ with ESMTP id i1K1Go85yvtA for <kvmarm@lists.cs.columbia.edu>;
+ Wed, 25 Mar 2020 11:17:00 -0400 (EDT)
+Received: from mail-io1-f65.google.com (mail-io1-f65.google.com
+ [209.85.166.65])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id EBFB24A4CD
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 25 Mar 2020 11:16:59 -0400 (EDT)
+Received: by mail-io1-f65.google.com with SMTP id c19so2583961ioo.6
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 25 Mar 2020 08:16:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Zu1HzY3aEP2K2cAbQ8V3zxh8z4+CS8uVqTPxmTq4MhI=;
- b=X5mJe48f8ChUHa2asCEWjZmC1IXYoskxXyCP1FOs7boDLks2wUSggDI/Py2yl/5Rw5
- 8JPl0l4iVY02qV/NbTiV9HeF07BkjSyNv+ZnunX4TYFTnov+XkWX8cFyQcuXWvN1VV97
- 3gEs+SP4uNu32E/+Yb+pY0iqCDjuunH2T9+7JiwtVZqmYaHnMV4beZ07z+r4l6mGStgX
- igrmQrLeuF9yI4zj2wCpcb5xqM6fe63Fph5nQYpEj2hsK6IiP0DSHyb1vYYcHmP9SBNK
- EBx9ZvcRAld3/FJkda+AR9/pfx7ww7f1Zh3biGLSq0OWpmeIzGsAz5VSnb5iZ0Hmil0k
- TVzQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=9RGHKxNbbnl/s4SmG5NdZhXSU8xB6QWkp3vD/nnEXdQ=;
+ b=qNFbj0zmmpZYr7uKM8J7jzwlFkp3/oK+09Jtl7asSlyGxlS486Kezm77V/3MtSEMno
+ fW3hVmHhXU14kpel4gG/Z1xg3nfey4dplu4o/+bakM/f/A6kmsxu4C1cpL5Z6sUn40YB
+ 0C7NGCxv3ElTOlSTJC1GFoJ0q2dtqQ+x4cCTgUtL5yFplF3RXvadbMMu4HLjKgHhheIf
+ eMNW98F2Jq27GqXdXBx/hAZuAQhzwfW7wsegTJ4grlpjKr5ei2UUTUiIhQggLdBRGMPp
+ irTc6RIOFoBUg3uxmc0dn60FeF2yyp+0Gg3qbnBnmxNuVTB1dHL3QkO8BAQfB7ptTfbN
+ klOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Zu1HzY3aEP2K2cAbQ8V3zxh8z4+CS8uVqTPxmTq4MhI=;
- b=lEJfY5DRwn+lK8qK6x4dpI4IYfp8xh5DK3mG1hl2Y+hT81oLfe/PV6kYOpeLrP0aJx
- CY8N0D2WUtLdwDt1GImfjjTuxcgHKdUHyvbKNT2K/kbTCICtTUBa0XX2PvjxfgcliGpC
- DE+RS7f6poQhLehtBE1F8K1EqA5c0B5Tme03rPmShLQq+mb+GyUUJBhRQdPHJ/zmKYIC
- zS1k6aOcrM4WGcrKrPFNqkmSooIoCMohHUENI3UHrLcpCcFKLLBDwq9fT5l+BO06OYn1
- qXTiBscT9E4Fm51iE8Q6aEP8gQpnWIlXPx2XcdVxswpdEbo6yI1qcsEO2ig9eQBAvYtH
- xNAQ==
-X-Gm-Message-State: ANhLgQ3DjxL7g+O+nru4hg7g3DLO0+dNl5YK2eBuSl2WV3ule/u4Btq4
- fZUXSh3CLIncvROQviZIwQK53jrvqrc=
-X-Received: by 2002:a05:6a00:8d:: with SMTP id
- c13mr26545393pfj.68.1584989074696; 
- Mon, 23 Mar 2020 11:44:34 -0700 (PDT)
-Received: from [192.168.1.11] (97-126-123-70.tukw.qwest.net. [97.126.123.70])
- by smtp.gmail.com with ESMTPSA id
- j1sm14026922pfg.64.2020.03.23.11.44.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 23 Mar 2020 11:44:34 -0700 (PDT)
-Subject: Re: [PATCH v4 2/2] target/arm: kvm: Handle potential issue with dabt
- injection
-To: Beata Michalska <beata.michalska@linaro.org>, qemu-devel@nongnu.org
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=9RGHKxNbbnl/s4SmG5NdZhXSU8xB6QWkp3vD/nnEXdQ=;
+ b=VkRKqRhyfMWZ1UegUqxSE1E9UXqCDzmiONlR7A2CuAHGEVQbRWP0ofn7yYXcJ43n/c
+ oM0fjIAX7K2XXj/cmL8RLbCJnvMzdzIicUI7xJRbHfxXWrqByiHiP/X0vfMFdM4vwzU8
+ Duoddx4jMfwZLjPJp/ZkbQup8SoiM5Pgs2EBRFvyFCOdl9vYGSfg/Et/qLqegygP7yJ9
+ BT1+KBeg3PXHpChYAydaLh4Ow1+K0DzKUXLSTVqle84jrpG0cOeoQhqt+CalL8YRGkv4
+ 3YhOwdeVqtZDFkiVwd+Nepj4YKUrPjQe17IaFp0o+hJP/5LeGl4ko90epqjQiPygDF5m
+ 7D8g==
+X-Gm-Message-State: ANhLgQ1ua17/x+MEgwMxEea30vppBlCOLh/BI755y5XhVmPjRqHmlFNP
+ oHyVUNWX4M0dQ89FEqMXj0ipA22eQmRrSGcWrIBtsw==
+X-Received: by 2002:a02:2944:: with SMTP id p65mr3247806jap.89.1585149419207; 
+ Wed, 25 Mar 2020 08:16:59 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200323113227.3169-1-beata.michalska@linaro.org>
  <20200323113227.3169-3-beata.michalska@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <fdf4d6f2-ecab-6358-9f74-480f1fa6fdef@linaro.org>
-Date: Mon, 23 Mar 2020 11:44:32 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
-MIME-Version: 1.0
-In-Reply-To: <20200323113227.3169-3-beata.michalska@linaro.org>
-Content-Language: en-US
-Cc: qemu-arm@nongnu.org, pbonzini@redhat.com, kvmarm@lists.cs.columbia.edu
+ <fdf4d6f2-ecab-6358-9f74-480f1fa6fdef@linaro.org>
+In-Reply-To: <fdf4d6f2-ecab-6358-9f74-480f1fa6fdef@linaro.org>
+From: Beata Michalska <beata.michalska@linaro.org>
+Date: Wed, 25 Mar 2020 15:16:48 +0000
+Message-ID: <CADSWDzsuGXBwZLm-rJ7ULbODVk4SgoNvXHqJM_BR-gYJNeMB+w@mail.gmail.com>
+Subject: Re: [PATCH v4 2/2] target/arm: kvm: Handle potential issue with dabt
+ injection
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, kvmarm@lists.cs.columbia.edu
 X-BeenThere: kvmarm@lists.cs.columbia.edu
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -129,16 +120,24 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: rJ8CaWlJbyuM
+X-TUID: XX5F6gvnu4+P
 
-On 3/23/20 4:32 AM, Beata Michalska wrote:
->      uint8_t ext_dabt_pending; /* Request for injecting ext DABT */
-> +    uint8_t ext_dabt_raised; /* Tracking/verifying injection of ext DABT */
+On Mon, 23 Mar 2020 at 18:44, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 3/23/20 4:32 AM, Beata Michalska wrote:
+> >      uint8_t ext_dabt_pending; /* Request for injecting ext DABT */
+> > +    uint8_t ext_dabt_raised; /* Tracking/verifying injection of ext DABT */
+>
+> Is there a reason these are uint8_t and not bool?
+>
+>
+The ext_dabt_pending is reflecting the KVM type.
+The ext_dabt_raised is following that one.
 
-Is there a reason these are uint8_t and not bool?
-
-
-r~
+BR
+Beata
+> r~
 _______________________________________________
 kvmarm mailing list
 kvmarm@lists.cs.columbia.edu

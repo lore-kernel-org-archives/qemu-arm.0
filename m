@@ -1,99 +1,98 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp984798lfi;
-        Wed, 25 Mar 2020 12:24:32 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vv1jV+4Y+fIyqiKd6sf4WNKN23Y078BcuL3DV0OK9G9fn7JR58ifpJnks0QL9sm4J9zKZqI
-X-Received: by 2002:a0c:aee5:: with SMTP id n37mr4520527qvd.173.1585164271884;
-        Wed, 25 Mar 2020 12:24:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585164271; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp985777lfi;
+        Wed, 25 Mar 2020 12:25:35 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtsY4eLS+vRRwVzN7WVgH/96eNuEWOfw61NSOzxA6ePGpZ9e8vhqaBVx4j1zCzOCoAa1m8e
+X-Received: by 2002:a37:6556:: with SMTP id z83mr4537372qkb.381.1585164335679;
+        Wed, 25 Mar 2020 12:25:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585164335; cv=none;
         d=google.com; s=arc-20160816;
-        b=nU6mre90MZ0L4dy52Y1W3iphCyz6xVZQlnFE4kZB4m7q6MZkq5tbDSnC3ZX8/qGQfl
-         1V4m1Phqc9CScZHUBWNkXamESDMOuEdKXt2VEZdkhmUxucjn1qHdkB9GkkMmXE5p7OgH
-         +shVYQk7j+EOFjKNAl10SYV74P3S39wGssTjs7Y36JndNmgOMBQw9zdExo+KHInRxifD
-         N3ot9UDG8iWlJ7ha56C69mIzcGxRW1Pnie3/yO+U9Mt/ju1iTqm5NM7Qq2fbUUTuA0BQ
-         v6NkawNsZ3VBRymEf/p+VL7xAi4n70EF3lwaeZoQAOCiDgtiSC5ZN+V7+wS85jagJjzz
-         Kfvg==
+        b=t6++ShYc3NIKm9ROsqj6GAB3XBo9fTX8xjfNB8C1FbTczoQk4HIq77+Ys2K8PwBnqG
+         rIuGwPl9Xg0UhJHli7xwcEkixQzzT8md0OBxFT9xM2cuAesw81qDpN5Ys+1UjUyyEpmF
+         7NAa9azOE5iVNaZ5NKY0XaUynkqYuFPwKMlaX7lnsBKF2pXGBbLld/Dw8tpo643Sgast
+         g0BCI1KoPZWnNM5gRLfYLR1AjqPjEXyTsiuKdyzS/kX5xZX5vCOvO0iO35pqzV8hTcLu
+         51KjjDv3mjPXsxEBgwM7J+7jAO0TicuwnMsqGXXj9j+vkTgN/br/etuaBkXHLQ88j/ON
+         7dxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=f6uKp3uPJrVKrxXGrT0pUT5lieQ9qkbOy6joblcGLgw=;
-        b=TOZtDeakPFhweifqFkcnxRAwZoXwAJ6z9//iER/Kna+DRFcLhD12h2ODplhCVW5L0l
-         d7Npvp4r0xuWuOclptAbKPtLUvmuK5kqFoCIeYDO27hNsONWvCLUl/dFpdv46CLh9hgi
-         0t3MeyaNjKheNjRL5NGf9GGnmLAlgtR4ZoRk2kS7/TUkwJ3DW4BmBNT8N8rKFCODRLqj
-         9Z1Q2l9bAEKC4/w3vr0P9G+c9IoWI7/i6pfGgL1Tjh3HMc0NQLOpy1hnVUApwHXAvVie
-         +xhBkU56dGFtTsoHSoF66Kx5Qgyi9ssnKcyaEcOqv/v7Uk4XhjeV0tLhN5RITnslVDTb
-         n5Kg==
+        bh=r9hrbhBuaNbQeWGl1mm7dnqJYIZiyDKEgrGsnKIPUcM=;
+        b=tzOkPchAjZJKCdz+UkoZ9R6g6CBlaJpelNir7FV53SO4kxKN6O76+jnulnKVjdz+CS
+         NYLFoYjVUmhAB22WVcVF7SgG41rIQNTQ9C9DakrrzwDrKWwhv+5Xat+habfCjp9VuoQB
+         QxGNmCMJ4omWkvB1NYGlPA5sz1Rad5kIqgFTobs9kerBIiaRDTOZGT57J0ZX5rcIGzdu
+         ymiUcghfrgLZsJ9T2iV+Y4ddfpY85A11QFeMwdAzBki8yPo+X1lR8c4wiaFCf/RYPtkG
+         FqwBpvSnrneW46giNnTDoszp478rgO3JnwTBZUcYqhJsk7GHeJkJG9LzFc+y2CHYnn/O
+         j5oA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pyaUeLsr;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SezOYz6o;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y188si12214485qka.46.2020.03.25.12.24.31
+        by mx.google.com with ESMTPS id w70si8380563qkb.180.2020.03.25.12.25.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Mar 2020 12:24:31 -0700 (PDT)
+        Wed, 25 Mar 2020 12:25:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pyaUeLsr;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SezOYz6o;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:42008 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42020 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jHBdf-0007sC-BL
-	for alex.bennee@linaro.org; Wed, 25 Mar 2020 15:24:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53471)
+	id 1jHBeg-00017k-Cd
+	for alex.bennee@linaro.org; Wed, 25 Mar 2020 15:25:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53417)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jHBYK-0000N1-IH
- for qemu-devel@nongnu.org; Wed, 25 Mar 2020 15:19:02 -0400
+ id 1jHBYH-0000JE-Rq
+ for qemu-devel@nongnu.org; Wed, 25 Mar 2020 15:19:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jHBYJ-0008Uy-7u
- for qemu-devel@nongnu.org; Wed, 25 Mar 2020 15:19:00 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:38966)
+ id 1jHBYG-0008Sf-IC
+ for qemu-devel@nongnu.org; Wed, 25 Mar 2020 15:18:57 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:38965)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jHBYJ-0008UO-1N; Wed, 25 Mar 2020 15:18:59 -0400
-Received: by mail-wm1-x343.google.com with SMTP id a9so4165661wmj.4;
- Wed, 25 Mar 2020 12:18:58 -0700 (PDT)
+ id 1jHBYG-0008Rx-Ay; Wed, 25 Mar 2020 15:18:56 -0400
+Received: by mail-wm1-x342.google.com with SMTP id a9so4165536wmj.4;
+ Wed, 25 Mar 2020 12:18:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=f6uKp3uPJrVKrxXGrT0pUT5lieQ9qkbOy6joblcGLgw=;
- b=pyaUeLsr2K2SsPy0yyFgXsIlyyj8rV4oGJo1asci/4MPy+aJSAcy761P4WE95+ggHe
- KWJhIgzBJvLaWmyk1qc0XNQ0yCATSXqZKOTm5uk7DUiWpLH3SU+sQkPzfkxecu5ThTJD
- TxG89ZXfHAii/Alr87Si44h3LFClH21a9I6YNCrZVau7cxhdj5mt0/k3MlEg4nsB8+U0
- 9yYIcmAfr+aC2Ld4MigD8PBmcEZoduZ4ZGRRpMMQT1KRnFqf+eX2oG1Rjzlillcy69ST
- dOT6Gm30xGDqVxw14ttv73at36TX9Src3KnbMRTzbfVADugumwQCI78LSza0c035zojP
- CAmQ==
+ bh=r9hrbhBuaNbQeWGl1mm7dnqJYIZiyDKEgrGsnKIPUcM=;
+ b=SezOYz6oc+EApTTqVJvWAuQbWiYgDL12PNUdLUj9R0pzsIaE4R+L3VYxi5VRpB9NI8
+ oXRyNZKNjNyWGoGGjHjdAsoEd+pLRXsGb6jgsw4C32QtuDsJqRyyTFhOfWA/vRvfBc3j
+ zNVPhQAPJz8r3ObHeF3FYaVIOfnx7qflf+l3qG6AT7Q16p9/2w91ZmwF7f60tyTAaxcg
+ QLrvojwqjqwdgdEah/PyDs3kgOgx3C7jnfQxVvmOMgp/N7T29IEWXwdMmsQLPHpESqWQ
+ ihxSheQkzMJGb5yZp2p4klTgVUpY/O8VeNGVOSjo3lLCaMppBfhNdUzA/xCYDRn9NhgT
+ MK8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=f6uKp3uPJrVKrxXGrT0pUT5lieQ9qkbOy6joblcGLgw=;
- b=YlxZrUlRUZHN18KQfXexdoo2YqeXIXLt7v5nwovtUOv/PtEEtpEcatl7cEjVr+WqzD
- 9cuyHV71sz7oFFHvfVOsb7U7wslpDTVBR6bzzLOUFEjKtFns6SfTI9ofttPTSCvGy+p0
- 1n8i5SlHCz4AKmxYgWZ75W4kVQwBTmorNFuAi3Pdyj8cjYzO0NhnS75HrFTBZy1NKtv3
- gFHV+StJwymiYdhTS6YVDOJ3lIXoQP9po5jKCKxvR+wMvya6INdIjJQ/q684B+IN7raJ
- xRK5n9TKU0NDaYFVt7K9W62F8EeVEw8vJL/JnQa8mNmbWtwzy9mdvAvHqgw7z084MqWy
- lx1A==
-X-Gm-Message-State: ANhLgQ2k2IJhoHVAANSDUH72mWTxAcB9UqeOech92Xo0ICpewPdOTmhE
- zfTjiqbmDQieIEFDoTZy572hGZ6AJv8=
-X-Received: by 2002:a1c:456:: with SMTP id 83mr4978477wme.54.1585163937757;
- Wed, 25 Mar 2020 12:18:57 -0700 (PDT)
+ bh=r9hrbhBuaNbQeWGl1mm7dnqJYIZiyDKEgrGsnKIPUcM=;
+ b=A77tngFstThjiZdsUKZ23Gdf55tEvXMNsk7pUYNGszSI/dIvBGZMSpJFzDy1rEfiFx
+ XyZsSZyCdhb9OgZDk2MsnsXl0fj6F3kc+wgVSmRla0tWm3eG6bB5BaIw93hnAB9+tnVn
+ h4yM8JWPEt/KNy0BTcXmBNuNtq8s6w8RS0sMA2JZicEMpGf93LhGNM9obJ0ul4Am8EWs
+ W7CN0ly7bRl1/te8rxsf/WWNOxEXZnYCgTXkd2B2eUXWJ9QOH8D9AxM0O7+5h/Jt0j3G
+ PBpsRnt4dewFv7nA0aH2C1tKqo++PBBhc5HPHmEqs/4E1f+fl9wMMRaWlT7hPCeMJv9W
+ FLfQ==
+X-Gm-Message-State: ANhLgQ1GleVf4nfo6Po6C6Vxv8EXHfpu/F3yqFabOTcDKWYMel603A6n
+ nJhEGShORNQtBfNG30scz8Yo0VX8v44=
+X-Received: by 2002:a1c:6285:: with SMTP id w127mr5147255wmb.133.1585163934933; 
+ Wed, 25 Mar 2020 12:18:54 -0700 (PDT)
 Received: from localhost.localdomain (37.red-83-52-54.dynamicip.rima-tde.net.
  [83.52.54.37])
- by smtp.gmail.com with ESMTPSA id r17sm6345672wrx.46.2020.03.25.12.18.55
+ by smtp.gmail.com with ESMTPSA id r17sm6345672wrx.46.2020.03.25.12.18.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 25 Mar 2020 12:18:57 -0700 (PDT)
+ Wed, 25 Mar 2020 12:18:54 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.0 08/12] hw/mips/boston: Add missing error-propagation
- code
-Date: Wed, 25 Mar 2020 20:18:26 +0100
-Message-Id: <20200325191830.16553-9-f4bug@amsat.org>
+Subject: [PATCH-for-5.0 07/12] hw/mips/cps: Add missing error-propagation code
+Date: Wed, 25 Mar 2020 20:18:25 +0100
+Message-Id: <20200325191830.16553-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200325191830.16553-1-f4bug@amsat.org>
 References: <20200325191830.16553-1-f4bug@amsat.org>
@@ -103,7 +102,7 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::343
+X-Received-From: 2a00:1450:4864:20::342
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -138,157 +137,176 @@ Cc: Paul Burton <pburton@wavecomp.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2eVl807sWrvQ
+X-TUID: Vkaam+Fj59ur
 
-Running the coccinelle script produced:
+Patch created mechanically by running:
 
   $ spatch \
     --macro-file scripts/cocci-macro-file.h --include-headers \
     --sp-file scripts/coccinelle/object_property_missing_error_propagate.cocci \
-    --keep-comments --smpl-spacing --dir hw
-
-  [[manual check required: error_propagate() might be missing in object_property_set_int() hw/mips/boston.c:462:4]]
-  [[manual check required: error_propagate() might be missing in object_property_set_str() hw/mips/boston.c:460:4]]
-
-Since the uses are inside a MachineClass::init() function,
-directly use &error_fatal instead of error_propagate().
+    --keep-comments --smpl-spacing --in-place --dir hw
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/mips/boston.c | 17 ++++++-----------
- 1 file changed, 6 insertions(+), 11 deletions(-)
+ hw/mips/cps.c | 52 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 52 insertions(+)
 
-diff --git a/hw/mips/boston.c b/hw/mips/boston.c
-index 98ecd25e8e..2e821ca7d6 100644
---- a/hw/mips/boston.c
-+++ b/hw/mips/boston.c
-@@ -425,121 +425,116 @@ xilinx_pcie_init(MemoryRegion *sys_mem, uint32_t bus_nr,
- static void boston_mach_init(MachineState *machine)
+diff --git a/hw/mips/cps.c b/hw/mips/cps.c
+index 92b9b1a5f6..d682633401 100644
+--- a/hw/mips/cps.c
++++ b/hw/mips/cps.c
+@@ -68,100 +68,152 @@ static bool cpu_mips_itu_supported(CPUMIPSState *env)
+ static void mips_cps_realize(DeviceState *dev, Error **errp)
  {
-     DeviceState *dev;
-     BostonState *s;
--    Error *err = NULL;
-     MemoryRegion *flash, *ddr_low_alias, *lcd, *platreg;
-     MemoryRegion *sys_mem = get_system_memory();
-     XilinxPCIEHost *pcie2;
-     PCIDevice *ahci;
-     DriveInfo *hd[6];
-     Chardev *chr;
-     int fw_size, fit_err;
-     bool is_64b;
+     MIPSCPSState *s = MIPS_CPS(dev);
+     CPUMIPSState *env;
+     MIPSCPU *cpu;
+     int i;
+     Error *err = NULL;
+     target_ulong gcr_base;
+     bool itu_present = false;
+     bool saar_present = false;
  
-     if ((machine->ram_size % GiB) ||
-         (machine->ram_size > (2 * GiB))) {
-         error_report("Memory size must be 1GB or 2GB");
-         exit(1);
-     }
+     for (i = 0; i < s->num_vp; i++) {
+         cpu = MIPS_CPU(cpu_create(s->cpu_type));
  
-     dev = qdev_create(NULL, TYPE_MIPS_BOSTON);
-     qdev_init_nofail(dev);
+         /* Init internal devices */
+         cpu_mips_irq_init_cpu(cpu);
+         cpu_mips_clock_init(cpu);
  
-     s = BOSTON(dev);
-     s->mach = machine;
- 
-     if (!cpu_supports_cps_smp(machine->cpu_type)) {
-         error_report("Boston requires CPUs which support CPS");
-         exit(1);
-     }
- 
-     is_64b = cpu_supports_isa(machine->cpu_type, ISA_MIPS64);
- 
-     sysbus_init_child_obj(OBJECT(machine), "cps", OBJECT(&s->cps),
-                           sizeof(s->cps), TYPE_MIPS_CPS);
-     object_property_set_str(OBJECT(&s->cps), machine->cpu_type, "cpu-type",
--                            &err);
--    object_property_set_int(OBJECT(&s->cps), machine->smp.cpus, "num-vp", &err);
--    object_property_set_bool(OBJECT(&s->cps), true, "realized", &err);
--
--    if (err != NULL) {
--        error_report("%s", error_get_pretty(err));
--        exit(1);
--    }
--
-+                            &error_fatal);
-+    object_property_set_int(OBJECT(&s->cps), machine->smp.cpus, "num-vp",
-+                            &error_fatal);
-+    object_property_set_bool(OBJECT(&s->cps), true, "realized", &error_fatal);
-     sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->cps), 0, 0, 1);
- 
-     flash =  g_new(MemoryRegion, 1);
--    memory_region_init_rom(flash, NULL, "boston.flash", 128 * MiB, &err);
-+    memory_region_init_rom(flash, NULL, "boston.flash", 128 * MiB,
-+                           &error_fatal);
-     memory_region_add_subregion_overlap(sys_mem, 0x18000000, flash, 0);
- 
-     memory_region_add_subregion_overlap(sys_mem, 0x80000000, machine->ram, 0);
- 
-     ddr_low_alias = g_new(MemoryRegion, 1);
-     memory_region_init_alias(ddr_low_alias, NULL, "boston_low.ddr",
-                              machine->ram, 0,
-                              MIN(machine->ram_size, (256 * MiB)));
-     memory_region_add_subregion_overlap(sys_mem, 0, ddr_low_alias, 0);
- 
-     xilinx_pcie_init(sys_mem, 0,
-                      0x10000000, 32 * MiB,
-                      0x40000000, 1 * GiB,
-                      get_cps_irq(&s->cps, 2), false);
- 
-     xilinx_pcie_init(sys_mem, 1,
-                      0x12000000, 32 * MiB,
-                      0x20000000, 512 * MiB,
-                      get_cps_irq(&s->cps, 1), false);
- 
-     pcie2 = xilinx_pcie_init(sys_mem, 2,
-                              0x14000000, 32 * MiB,
-                              0x16000000, 1 * MiB,
-                              get_cps_irq(&s->cps, 0), true);
- 
-     platreg = g_new(MemoryRegion, 1);
-     memory_region_init_io(platreg, NULL, &boston_platreg_ops, s,
-                           "boston-platregs", 0x1000);
-     memory_region_add_subregion_overlap(sys_mem, 0x17ffd000, platreg, 0);
- 
-     s->uart = serial_mm_init(sys_mem, 0x17ffe000, 2,
-                              get_cps_irq(&s->cps, 3), 10000000,
-                              serial_hd(0), DEVICE_NATIVE_ENDIAN);
- 
-     lcd = g_new(MemoryRegion, 1);
-     memory_region_init_io(lcd, NULL, &boston_lcd_ops, s, "boston-lcd", 0x8);
-     memory_region_add_subregion_overlap(sys_mem, 0x17fff000, lcd, 0);
- 
-     chr = qemu_chr_new("lcd", "vc:320x240", NULL);
-     qemu_chr_fe_init(&s->lcd_display, chr, NULL);
-     qemu_chr_fe_set_handlers(&s->lcd_display, NULL, NULL,
-                              boston_lcd_event, NULL, s, NULL, true);
- 
-     ahci = pci_create_simple_multifunction(&PCI_BRIDGE(&pcie2->root)->sec_bus,
-                                            PCI_DEVFN(0, 0),
-                                            true, TYPE_ICH9_AHCI);
-     g_assert(ARRAY_SIZE(hd) == ahci_get_num_ports(ahci));
-     ide_drive_get(hd, ahci_get_num_ports(ahci));
-     ahci_ide_create_devs(ahci, hd);
- 
-     if (machine->firmware) {
-         fw_size = load_image_targphys(machine->firmware,
-                                       0x1fc00000, 4 * MiB);
-         if (fw_size == -1) {
-             error_report("unable to load firmware image '%s'",
-                           machine->firmware);
-             exit(1);
+         env = &cpu->env;
+         if (cpu_mips_itu_supported(env)) {
+             itu_present = true;
+             /* Attach ITC Tag to the VP */
+             env->itc_tag = mips_itu_get_tag_region(&s->itu);
+             env->itu = &s->itu;
          }
-     } else if (machine->kernel_filename) {
-         fit_err = load_fit(&boston_fit_loader, machine->kernel_filename, s);
-         if (fit_err) {
-             error_report("unable to load FIT image");
-             exit(1);
+         qemu_register_reset(main_cpu_reset, cpu);
+     }
+ 
+     cpu = MIPS_CPU(first_cpu);
+     env = &cpu->env;
+     saar_present = (bool)env->saarp;
+ 
+     /* Inter-Thread Communication Unit */
+     if (itu_present) {
+         sysbus_init_child_obj(OBJECT(dev), "itu", &s->itu, sizeof(s->itu),
+                               TYPE_MIPS_ITU);
+         object_property_set_int(OBJECT(&s->itu), 16, "num-fifo", &err);
++        if (err) {
++            error_propagate(errp, err);
++            return;
++        }
+         object_property_set_int(OBJECT(&s->itu), 16, "num-semaphores", &err);
++        if (err) {
++            error_propagate(errp, err);
++            return;
++        }
+         object_property_set_bool(OBJECT(&s->itu), saar_present, "saar-present",
+                                  &err);
++        if (err) {
++            error_propagate(errp, err);
++            return;
++        }
+         if (saar_present) {
+             s->itu.saar = &env->CP0_SAAR;
+         }
+         object_property_set_bool(OBJECT(&s->itu), true, "realized", &err);
++        if (err) {
++            error_propagate(errp, err);
++            return;
++        }
+         if (err != NULL) {
+             error_propagate(errp, err);
+             return;
          }
  
-         gen_firmware(memory_region_get_ram_ptr(flash) + 0x7c00000,
-                      s->kernel_entry, s->fdt_base, is_64b);
-     } else if (!qtest_enabled()) {
-         error_report("Please provide either a -kernel or -bios argument");
-         exit(1);
+         memory_region_add_subregion(&s->container, 0,
+                            sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->itu), 0));
      }
+ 
+     /* Cluster Power Controller */
+     sysbus_init_child_obj(OBJECT(dev), "cpc", &s->cpc, sizeof(s->cpc),
+                           TYPE_MIPS_CPC);
+     object_property_set_int(OBJECT(&s->cpc), s->num_vp, "num-vp", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
+     object_property_set_int(OBJECT(&s->cpc), 1, "vp-start-running", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
+     object_property_set_bool(OBJECT(&s->cpc), true, "realized", &err);
+     if (err != NULL) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     memory_region_add_subregion(&s->container, 0,
+                             sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->cpc), 0));
+ 
+     /* Global Interrupt Controller */
+     sysbus_init_child_obj(OBJECT(dev), "gic", &s->gic, sizeof(s->gic),
+                           TYPE_MIPS_GIC);
+     object_property_set_int(OBJECT(&s->gic), s->num_vp, "num-vp", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
+     object_property_set_int(OBJECT(&s->gic), 128, "num-irq", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
+     object_property_set_bool(OBJECT(&s->gic), true, "realized", &err);
+     if (err != NULL) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     memory_region_add_subregion(&s->container, 0,
+                             sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->gic), 0));
+ 
+     /* Global Configuration Registers */
+     gcr_base = env->CP0_CMGCRBase << 4;
+ 
+     sysbus_init_child_obj(OBJECT(dev), "gcr", &s->gcr, sizeof(s->gcr),
+                           TYPE_MIPS_GCR);
+     object_property_set_int(OBJECT(&s->gcr), s->num_vp, "num-vp", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
+     object_property_set_int(OBJECT(&s->gcr), 0x800, "gcr-rev", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
+     object_property_set_int(OBJECT(&s->gcr), gcr_base, "gcr-base", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
+     object_property_set_link(OBJECT(&s->gcr), OBJECT(&s->gic.mr), "gic", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
+     object_property_set_link(OBJECT(&s->gcr), OBJECT(&s->cpc.mr), "cpc", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
+     object_property_set_bool(OBJECT(&s->gcr), true, "realized", &err);
+     if (err != NULL) {
+         error_propagate(errp, err);
+         return;
+     }
+ 
+     memory_region_add_subregion(&s->container, gcr_base,
+                             sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->gcr), 0));
  }
 -- 
 2.21.1

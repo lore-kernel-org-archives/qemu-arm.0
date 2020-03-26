@@ -1,97 +1,99 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2507169lfi;
-        Thu, 26 Mar 2020 16:14:32 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuVsEkSC0lX9rpt5lVK2rM9KLcMMyWqFS1WHzL5EUDonN6nmGzroGhcIrQG1Mj1ONGClKW3
-X-Received: by 2002:a37:bc43:: with SMTP id m64mr11107270qkf.287.1585264471893;
-        Thu, 26 Mar 2020 16:14:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585264471; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2507338lfi;
+        Thu, 26 Mar 2020 16:14:42 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt5qBt1+6zL+XWKjXwLVKVY2Ykw8yqj8OWwliAIfiAJ8zltwLbB51Z7cFjjcaf/pd47/vKH
+X-Received: by 2002:aed:3c4b:: with SMTP id u11mr11473983qte.137.1585264482276;
+        Thu, 26 Mar 2020 16:14:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585264482; cv=none;
         d=google.com; s=arc-20160816;
-        b=NhCxNFZuZQ1ppjdW8E+OzBcXNpx2Kv5t8mU6hpQYMXzzodjP0/vKTxqQsJcAhThYHC
-         JEhVcAh5mt0u0A07c4+1Jm43zurs7ow2krlsJq06B6aAUrobRqOSXy9jg6ZKyOW5t45A
-         xGYyuhXDGp0kUPGUkJKDn04TJyxdQEDT+3e8Mc14sPYOs0YCFNGYr+Bqye2CDVLoSMf8
-         Wsh1QkIyM/CfqUvhmRIiO+53ALaotKq//2iwpIbCqG/1HgrIYD7o4VfL4GiEQLQORwJn
-         T0TCNeXT6KKSEG1vIX/VB7u0MlqS6vQ8X/ZPKsXwnp29Gr3x5sppHv8RRvE2o4QLhZoZ
-         oppQ==
+        b=HhxignoYwhQJa+uG2DXRI14H67MWTRY2Qte1a2YZOhK3sUEfvUEBihIufJrQbDTmWF
+         8ftKDmhOMAkKhhc9eG6JYzhV7AjvrcEJHsP5akxXHPQiHaxt6XlC7PeYLUFWyPSZFPWI
+         YgVqOUmUHUs+by+7wTZdsz8HaezXoRd53STVECLsfWA1xzhRVgyJrWEPdWHJQWQJZppi
+         TV4yYk3xUoGfCv26g2LNmdpJ7YkFTENzcl8VQviad7VXNqcetw2HT30LdZx9MiXdq23o
+         CEAhHqedURKh4+i1smIFTUqbpVSnBgLkpWu0y7GDt57xbbn8aF5k6FNX3rWyTqLO9h1K
+         Vdrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=cv1t9pmvTM2or2y2OW8+tePDhkWPmqSM7xnDl7FKLbM=;
-        b=aSdeJaxra8h7KmRSvZY25gE3Of5b86XwrZPiaaLvjmaOz7ZeJULswsr85MJimDk7+c
-         /1lfNcrhNSVoSG0lzRFHlrwqciBpZSHt4hNCRnQMYY7hlwu6R+K5v1O7mRR12J4bjfJd
-         89+nKF6WLl5KIfsM8JJvSqrq3zAAq2y+YXWvYc8vfW+LXSIIfpvgN2tdvl9iJQgegtJk
-         UFXktCN4rprz9l5/m0tJc2/OwkA7G1QPswAEa6t5YzOazDMyH9YaA2tRa/Y214/Jfqwp
-         zBDZWYRodIp/7ep6Jx27JwKs16JqGQP8x6MR/IYiiy6367LISBZKSZp1PqykYgP7liX7
-         MxXw==
+        bh=jC3lzQRoD9FYu6PU7hez8Vvm2StpyVGzvHCSmbTwtC4=;
+        b=r3gVVT2r3AbxoLZTZA/17IX0XTV9m2znAGrxrDx9Fk5ASDmdO6OMJiHgm2/7NY2hRn
+         buusTvhERhRc+EHbCByrklxjAYYJjZZGsCWE89LGsBwAzrGq3GTs99LG43S5Xn+VAoKR
+         lXDjlyT7kAVYQtCu/7pVYTslMzzYpoeppS26RIJzYULdI8qNHWssfpXsoL/zMjriJXoS
+         TiOMJUgpjE1qGEEgLciLVJo0X9G6nejiFJt0dXcuQKCIiHz7IV7pdPK5liSrDuiVCus/
+         CKdJvLq+IKi8Rx7WZxO17XHzfSfTzu+N1OWS6hrZI7BxiXwdv90AzuRZE/sVEgzEkFRi
+         dNig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uIqBnWL8;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nPxpTUTX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a13si2275304qvf.210.2020.03.26.16.14.31
+        by mx.google.com with ESMTPS id bh17si2399113qvb.9.2020.03.26.16.14.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Mar 2020 16:14:31 -0700 (PDT)
+        Thu, 26 Mar 2020 16:14:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uIqBnWL8;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nPxpTUTX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34606 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34614 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jHbhn-0002VZ-9x
-	for alex.bennee@linaro.org; Thu, 26 Mar 2020 19:14:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58645)
+	id 1jHbhx-0002tb-L6
+	for alex.bennee@linaro.org; Thu, 26 Mar 2020 19:14:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58029)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jHbcV-0002XY-Bp
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 19:09:04 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1jHbcL-00025T-4c
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 19:08:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1jHbcU-0001bw-3j
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 19:09:03 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:44772)
+ (envelope-from <richard.henderson@linaro.org>) id 1jHbcH-0001JI-UV
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 19:08:53 -0400
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:42661)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1jHbcT-0001aE-S6
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 19:09:02 -0400
-Received: by mail-pg1-x542.google.com with SMTP id 142so3639753pgf.11
- for <qemu-arm@nongnu.org>; Thu, 26 Mar 2020 16:09:01 -0700 (PDT)
+ id 1jHbcH-0001Is-Hi
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 19:08:49 -0400
+Received: by mail-pl1-x643.google.com with SMTP id e1so2727101plt.9
+ for <qemu-arm@nongnu.org>; Thu, 26 Mar 2020 16:08:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=cv1t9pmvTM2or2y2OW8+tePDhkWPmqSM7xnDl7FKLbM=;
- b=uIqBnWL8T4v191boSmUZwB494xE/PGFRifYhV43jeTNSJ3Cj5Mm43BNKjSeUAl55sw
- vZpHh6nj8aEaZFog2zlzPCeedO3UXD8V9+nLMzCuqI9iircm7N7FIdUre1kskonwCdgr
- KBHtgE1vg8AQRYnz74dth6UCBR9+I222bWevRB9nK1VYtmgZ4rIND3oCiHe1/TrhKiRj
- IGGoyLmmMUQPujB2Rf9iBo5fch/Cxcbj0DMTZuam8fRBKKxY0j1JMG/s5Fbf0dobOhFe
- 8SVvRMM1qrpW8VkmErq1AKHlE96DpetQ8FrjlFbH2hHMWpY8JvoWgRElvU/Kt2HJGreR
- 6S+Q==
+ bh=jC3lzQRoD9FYu6PU7hez8Vvm2StpyVGzvHCSmbTwtC4=;
+ b=nPxpTUTXZgSbtkfAVT1ucMgmZz4RroG/rSKGEVdxBMA0DjxMpyk4u1jpMy3WY0c6iH
+ YQYoikICQPy9ls+eZlB+NCluAq773ZUu0kRzyjKuGPgBioQYxdwBa1yZHzhgUliRjcer
+ 7durjlmiTkTy/KPMqxibQ1k7ynzRCkePuIsY6e1yGLPN0heS7wPMID6+ge2f5JUNZ7Yg
+ x7/j18ZgELxd7fvXzdLtMLDOukWV7dhnuFaBtKfY78WIkUaRt3D+yuxJz9EQ4fF3Yqyq
+ 95cKTTcrf6LpuNmvvAkwR34bozawG/7EfH+HfVBCoEcex0a1b+cVbrvYYcrPQ+WVDqBW
+ NSkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=cv1t9pmvTM2or2y2OW8+tePDhkWPmqSM7xnDl7FKLbM=;
- b=fffyFygb4A2De3H2bqRLeJZdXRyvym+hwX+FbIQ/7n2nsqKWBJWqvAjXq9wQrawtn7
- I3JWjV+EJuI0ONbnPr/++K5fambCJH8kWJeO/nUCsUUUXYx0uZhR/snPxUEUdxQY5Xou
- 8lMGBaCStB6brUBUn3hTZYFQKy15HkFUB01CnWi+r7A8Lybl/U6VqIbagbBA26DsX+gJ
- b1TxBYGx3KRGdf8fQiXuL/pf6HIt+e2x9jFZHnitf9rbukrgAbT7vrU2QA3bVMVbk0AN
- rSiMqRNfTJ6F1Ht2er1KkFcjuJnFsO2c5lSDiDp4GnL0E0fTizJGIDl4NVWxoZZxL8Af
- YcIg==
-X-Gm-Message-State: ANhLgQ2YhrHgo0Lm5O9cARWWCaMj0ZyUmc5VZ2+ia5Y7pcXW4FJw85EF
- +QDhA9jvVa5vnO7Hya8tJT5i/PtuKKM=
-X-Received: by 2002:a63:e544:: with SMTP id z4mr10927219pgj.174.1585264140810; 
- Thu, 26 Mar 2020 16:09:00 -0700 (PDT)
+ bh=jC3lzQRoD9FYu6PU7hez8Vvm2StpyVGzvHCSmbTwtC4=;
+ b=A0SvHwJOHwd4BpSADSQfV4g5KCjF+mLZVydpGxd86wT/pOMhO26PsJ6CzO+nARvhcZ
+ c2zl9n3LA0EHkh+maqODWSVL0WGfU4+CvTy+vIWqS/+aOPcJAfUSIZyIEo/XxitzZdHn
+ cyYv2fuSMSGmJFCEUftImWvkQWn775fF5fZImdcb8PAiGf1WsJo298w3KzSGCaWxPjaF
+ Jaimz6536aekYNIzOeA0Y9+gb2fdgG8OTT/n2lEecvvi+kGJnepwrpBTppOF+SFCxpIY
+ pyVOsmIzjZ4vbDSviLYuIx7xg+msRrTKpwRpsPVLkh9LMOp7VSr9dvgykpxHHnvcdNRo
+ Kbfw==
+X-Gm-Message-State: ANhLgQ29J8gjqo9dL8qftawX6kXZGr7Azi1fTT4LjnZ05fkfxKheltdC
+ lZ06e387Y1Pu/KkwClpg5SU82Q==
+X-Received: by 2002:a17:902:5984:: with SMTP id
+ p4mr10599828pli.43.1585264127804; 
+ Thu, 26 Mar 2020 16:08:47 -0700 (PDT)
 Received: from localhost.localdomain (174-21-138-234.tukw.qwest.net.
  [174.21.138.234])
- by smtp.gmail.com with ESMTPSA id i187sm2530037pfg.33.2020.03.26.16.08.59
+ by smtp.gmail.com with ESMTPSA id i187sm2530037pfg.33.2020.03.26.16.08.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Mar 2020 16:09:00 -0700 (PDT)
+ Thu, 26 Mar 2020 16:08:47 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 16/31] target/arm: Tidy SVE tszimm shift formats
-Date: Thu, 26 Mar 2020 16:08:23 -0700
-Message-Id: <20200326230838.31112-17-richard.henderson@linaro.org>
+Subject: [PATCH 06/31] target/arm: Split out saturating/rounding shifts from
+ neon
+Date: Thu, 26 Mar 2020 16:08:13 -0700
+Message-Id: <20200326230838.31112-7-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200326230838.31112-1-richard.henderson@linaro.org>
 References: <20200326230838.31112-1-richard.henderson@linaro.org>
@@ -99,7 +101,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::542
+X-Received-From: 2607:f8b0:4864:20::643
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,78 +116,790 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: rajav@quicinc.com, qemu-arm@nongnu.org, apazos@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iNKbF5bSRdbq
+X-TUID: eQjRxqObsaqS
 
-Rather than require the user to fill in the immediate (shl or shr),
-create full formats that include the immediate.
+Split these operations out into a header that can be shared
+between neon and sve.  The "sat" pointer acts both as a boolean
+for control of saturating behavior and controls the difference
+in behavior between neon and sve -- QC bit or no QC bit.
+
+Implement right-shift rounding as
+
+    tmp = src >> (shift - 1);
+    dst = (tmp >> 1) + (tmp & 1);
+
+This is the same number of instructions as the current
+
+    tmp = 1 << (shift - 1);
+    dst = (src + tmp) >> shift;
+
+without any possibility of intermediate overflow.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/sve.decode | 35 ++++++++++++++++-------------------
- 1 file changed, 16 insertions(+), 19 deletions(-)
+ target/arm/vec_internal.h | 161 ++++++++++++
+ target/arm/neon_helper.c  | 507 +++++++-------------------------------
+ 2 files changed, 244 insertions(+), 424 deletions(-)
+ create mode 100644 target/arm/vec_internal.h
 
-diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 04bf9e5ce8..440cff4597 100644
---- a/target/arm/sve.decode
-+++ b/target/arm/sve.decode
-@@ -151,13 +151,17 @@
- @rd_rn_i6       ........ ... rn:5 ..... imm:s6 rd:5             &rri
+diff --git a/target/arm/vec_internal.h b/target/arm/vec_internal.h
+new file mode 100644
+index 0000000000..0d1f9c86c8
+--- /dev/null
++++ b/target/arm/vec_internal.h
+@@ -0,0 +1,161 @@
++/*
++ * ARM AdvSIMD / SVE Vector Helpers
++ *
++ * Copyright (c) 2020 Linaro
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef TARGET_ARM_VEC_INTERNALS_H
++#define TARGET_ARM_VEC_INTERNALS_H
++
++static inline int32_t do_sqrshl_bhs(int32_t src, int8_t shift, int bits,
++                                    bool round, uint32_t *sat)
++{
++    if (shift <= -bits) {
++        /* Rounding the sign bit always produces 0. */
++        if (round) {
++            return 0;
++        }
++        return src >> 31;
++    } else if (shift < 0) {
++        if (round) {
++            src >>= -shift - 1;
++            return (src >> 1) + (src & 1);
++        }
++        return src >> -shift;
++    } else if (shift < bits) {
++        int32_t val = src << shift;
++        if (bits == 32) {
++            if (!sat || val >> shift == src) {
++                return val;
++            }
++        } else {
++            int32_t extval = sextract32(val, 0, bits);
++            if (!sat || val == extval) {
++                return extval;
++            }
++        }
++    } else if (!sat || src == 0) {
++        return 0;
++    }
++
++    *sat = 1;
++    return (1u << (bits - 1)) - (src >= 0);
++}
++
++static inline uint32_t do_uqrshl_bhs(uint32_t src, int8_t shift, int bits,
++                                     bool round, uint32_t *sat)
++{
++    if (shift <= -(bits + round)) {
++        return 0;
++    } else if (shift < 0) {
++        if (round) {
++            src >>= -shift - 1;
++            return (src >> 1) + (src & 1);
++        }
++        return src >> -shift;
++    } else if (shift < bits) {
++        uint32_t val = src << shift;
++        if (bits == 32) {
++            if (!sat || val >> shift == src) {
++                return val;
++            }
++        } else {
++            uint32_t extval = extract32(val, 0, bits);
++            if (!sat || val == extval) {
++                return extval;
++            }
++        }
++    } else if (!sat || src == 0) {
++        return 0;
++    }
++
++    *sat = 1;
++    return MAKE_64BIT_MASK(0, bits);
++}
++
++static inline int32_t do_suqrshl_bhs(int32_t src, int8_t shift, int bits,
++                                     bool round, uint32_t *sat)
++{
++    if (src < 0) {
++        *sat = 1;
++        return 0;
++    }
++    return do_uqrshl_bhs(src, shift, bits, round, sat);
++}
++
++static inline int64_t do_sqrshl_d(int64_t src, int8_t shift,
++                                  bool round, uint32_t *sat)
++{
++    if (shift <= -64) {
++        /* Rounding the sign bit always produces 0. */
++        if (round) {
++            return 0;
++        }
++        return src >> 63;
++    } else if (shift < 0) {
++        if (round) {
++            src >>= -shift - 1;
++            return (src >> 1) + (src & 1);
++        }
++        return src >> -shift;
++    } else if (shift < 64) {
++        int64_t val = src << shift;
++        if (!sat || val >> shift == src) {
++            return val;
++        }
++    } else if (!sat || src == 0) {
++        return 0;
++    }
++
++    *sat = 1;
++    return src < 0 ? INT64_MIN : INT64_MAX;
++}
++
++static inline uint64_t do_uqrshl_d(uint64_t src, int8_t shift,
++                                   bool round, uint32_t *sat)
++{
++    if (shift <= -(64 + round)) {
++        return 0;
++    } else if (shift < 0) {
++        if (round) {
++            src >>= -shift - 1;
++            return (src >> 1) + (src & 1);
++        }
++        return src >> -shift;
++    } else if (shift < 64) {
++        uint64_t val = src << shift;
++        if (!sat || val >> shift == src) {
++            return val;
++        }
++    } else if (!sat || src == 0) {
++        return 0;
++    }
++
++    *sat = 1;
++    return UINT64_MAX;
++}
++
++static inline int64_t do_suqrshl_d(int64_t src, int8_t shift,
++                                   bool round, uint32_t *sat)
++{
++    if (src < 0) {
++        *sat = 1;
++        return 0;
++    }
++    return do_uqrshl_d(src, shift, round, sat);
++}
++
++#endif /* TARGET_ARM_VEC_INTERNALS_H */
+diff --git a/target/arm/neon_helper.c b/target/arm/neon_helper.c
+index c7a8438b42..e6481a5764 100644
+--- a/target/arm/neon_helper.c
++++ b/target/arm/neon_helper.c
+@@ -11,6 +11,7 @@
+ #include "cpu.h"
+ #include "exec/helper-proto.h"
+ #include "fpu/softfloat.h"
++#include "vec_internal.h"
  
- # Two register operand, one immediate operand, with predicate,
--# element size encoded as TSZHL.  User must fill in imm.
--@rdn_pg_tszimm  ........ .. ... ... ... pg:3 ..... rd:5 \
--                &rpri_esz rn=%reg_movprfx esz=%tszimm_esz
-+# element size encoded as TSZHL.
-+@rdn_pg_tszimm_shl  ........ .. ... ... ... pg:3 ..... rd:5 \
-+                    &rpri_esz rn=%reg_movprfx esz=%tszimm_esz imm=%tszimm_shl
-+@rdn_pg_tszimm_shr  ........ .. ... ... ... pg:3 ..... rd:5 \
-+                    &rpri_esz rn=%reg_movprfx esz=%tszimm_esz imm=%tszimm_shr
+ #define SIGNBIT (uint32_t)0x80000000
+ #define SIGNBIT64 ((uint64_t)1 << 63)
+@@ -604,496 +605,154 @@ NEON_VOP(abd_s32, neon_s32, 1)
+ NEON_VOP(abd_u32, neon_u32, 1)
+ #undef NEON_FN
  
- # Similarly without predicate.
--@rd_rn_tszimm   ........ .. ... ... ...... rn:5 rd:5 \
--                &rri_esz esz=%tszimm16_esz
-+@rd_rn_tszimm_shl   ........ .. ... ... ...... rn:5 rd:5 \
-+                    &rri_esz esz=%tszimm16_esz imm=%tszimm16_shl
-+@rd_rn_tszimm_shr   ........ .. ... ... ...... rn:5 rd:5 \
-+                    &rri_esz esz=%tszimm16_esz imm=%tszimm16_shr
+-#define NEON_FN(dest, src1, src2) do { \
+-    int8_t tmp; \
+-    tmp = (int8_t)src2; \
+-    if (tmp >= (ssize_t)sizeof(src1) * 8 || \
+-        tmp <= -(ssize_t)sizeof(src1) * 8) { \
+-        dest = 0; \
+-    } else if (tmp < 0) { \
+-        dest = src1 >> -tmp; \
+-    } else { \
+-        dest = src1 << tmp; \
+-    }} while (0)
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_uqrshl_bhs(src1, src2, 16, false, NULL))
+ NEON_VOP(shl_u16, neon_u16, 2)
+ #undef NEON_FN
  
- # Two register operand, one immediate operand, with 4-bit predicate.
- # User must fill in imm.
-@@ -290,14 +294,10 @@ UMINV           00000100 .. 001 011 001 ... ..... .....         @rd_pg_rn
- ### SVE Shift by Immediate - Predicated Group
+-#define NEON_FN(dest, src1, src2) do { \
+-    int8_t tmp; \
+-    tmp = (int8_t)src2; \
+-    if (tmp >= (ssize_t)sizeof(src1) * 8) { \
+-        dest = 0; \
+-    } else if (tmp <= -(ssize_t)sizeof(src1) * 8) { \
+-        dest = src1 >> (sizeof(src1) * 8 - 1); \
+-    } else if (tmp < 0) { \
+-        dest = src1 >> -tmp; \
+-    } else { \
+-        dest = src1 << tmp; \
+-    }} while (0)
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_sqrshl_bhs(src1, src2, 16, false, NULL))
+ NEON_VOP(shl_s16, neon_s16, 2)
+ #undef NEON_FN
  
- # SVE bitwise shift by immediate (predicated)
--ASR_zpzi        00000100 .. 000 000 100 ... .. ... ..... \
--                @rdn_pg_tszimm imm=%tszimm_shr
--LSR_zpzi        00000100 .. 000 001 100 ... .. ... ..... \
--                @rdn_pg_tszimm imm=%tszimm_shr
--LSL_zpzi        00000100 .. 000 011 100 ... .. ... ..... \
--                @rdn_pg_tszimm imm=%tszimm_shl
--ASRD            00000100 .. 000 100 100 ... .. ... ..... \
--                @rdn_pg_tszimm imm=%tszimm_shr
-+ASR_zpzi        00000100 .. 000 000 100 ... .. ... .....  @rdn_pg_tszimm_shr
-+LSR_zpzi        00000100 .. 000 001 100 ... .. ... .....  @rdn_pg_tszimm_shr
-+LSL_zpzi        00000100 .. 000 011 100 ... .. ... .....  @rdn_pg_tszimm_shl
-+ASRD            00000100 .. 000 100 100 ... .. ... .....  @rdn_pg_tszimm_shr
+-#define NEON_FN(dest, src1, src2) do { \
+-    int8_t tmp; \
+-    tmp = (int8_t)src2; \
+-    if ((tmp >= (ssize_t)sizeof(src1) * 8) \
+-        || (tmp <= -(ssize_t)sizeof(src1) * 8)) { \
+-        dest = 0; \
+-    } else if (tmp < 0) { \
+-        dest = (src1 + (1 << (-1 - tmp))) >> -tmp; \
+-    } else { \
+-        dest = src1 << tmp; \
+-    }} while (0)
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_sqrshl_bhs(src1, src2, 8, true, NULL))
+ NEON_VOP(rshl_s8, neon_s8, 4)
++#undef NEON_FN
++
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_sqrshl_bhs(src1, src2, 16, true, NULL))
+ NEON_VOP(rshl_s16, neon_s16, 2)
+ #undef NEON_FN
  
- # SVE bitwise shift by vector (predicated)
- ASR_zpzz        00000100 .. 010 000 100 ... ..... .....   @rdn_pg_rm
-@@ -401,12 +401,9 @@ RDVL            00000100 101 11111 01010 imm:s6 rd:5
- ### SVE Bitwise Shift - Unpredicated Group
+-/* The addition of the rounding constant may overflow, so we use an
+- * intermediate 64 bit accumulator.  */
+-uint32_t HELPER(neon_rshl_s32)(uint32_t valop, uint32_t shiftop)
++uint32_t HELPER(neon_rshl_s32)(uint32_t val, uint32_t shift)
+ {
+-    int32_t dest;
+-    int32_t val = (int32_t)valop;
+-    int8_t shift = (int8_t)shiftop;
+-    if ((shift >= 32) || (shift <= -32)) {
+-        dest = 0;
+-    } else if (shift < 0) {
+-        int64_t big_dest = ((int64_t)val + (1 << (-1 - shift)));
+-        dest = big_dest >> -shift;
+-    } else {
+-        dest = val << shift;
+-    }
+-    return dest;
++    return do_sqrshl_bhs(val, shift, 32, true, NULL);
+ }
  
- # SVE bitwise shift by immediate (unpredicated)
--ASR_zzi         00000100 .. 1 ..... 1001 00 ..... ..... \
--                @rd_rn_tszimm imm=%tszimm16_shr
--LSR_zzi         00000100 .. 1 ..... 1001 01 ..... ..... \
--                @rd_rn_tszimm imm=%tszimm16_shr
--LSL_zzi         00000100 .. 1 ..... 1001 11 ..... ..... \
--                @rd_rn_tszimm imm=%tszimm16_shl
-+ASR_zzi         00000100 .. 1 ..... 1001 00 ..... .....  @rd_rn_tszimm_shr
-+LSR_zzi         00000100 .. 1 ..... 1001 01 ..... .....  @rd_rn_tszimm_shr
-+LSL_zzi         00000100 .. 1 ..... 1001 11 ..... .....  @rd_rn_tszimm_shl
+-/* Handling addition overflow with 64 bit input values is more
+- * tricky than with 32 bit values.  */
+-uint64_t HELPER(neon_rshl_s64)(uint64_t valop, uint64_t shiftop)
++uint64_t HELPER(neon_rshl_s64)(uint64_t val, uint64_t shift)
+ {
+-    int8_t shift = (int8_t)shiftop;
+-    int64_t val = valop;
+-    if ((shift >= 64) || (shift <= -64)) {
+-        val = 0;
+-    } else if (shift < 0) {
+-        val >>= (-shift - 1);
+-        if (val == INT64_MAX) {
+-            /* In this case, it means that the rounding constant is 1,
+-             * and the addition would overflow. Return the actual
+-             * result directly.  */
+-            val = 0x4000000000000000LL;
+-        } else {
+-            val++;
+-            val >>= 1;
+-        }
+-    } else {
+-        val <<= shift;
+-    }
+-    return val;
++    return do_sqrshl_d(val, shift, true, NULL);
+ }
  
- # SVE bitwise shift by wide elements (unpredicated)
- # Note esz != 3
+-#define NEON_FN(dest, src1, src2) do { \
+-    int8_t tmp; \
+-    tmp = (int8_t)src2; \
+-    if (tmp >= (ssize_t)sizeof(src1) * 8 || \
+-        tmp < -(ssize_t)sizeof(src1) * 8) { \
+-        dest = 0; \
+-    } else if (tmp == -(ssize_t)sizeof(src1) * 8) { \
+-        dest = src1 >> (-tmp - 1); \
+-    } else if (tmp < 0) { \
+-        dest = (src1 + (1 << (-1 - tmp))) >> -tmp; \
+-    } else { \
+-        dest = src1 << tmp; \
+-    }} while (0)
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_uqrshl_bhs(src1, src2, 8, true, NULL))
+ NEON_VOP(rshl_u8, neon_u8, 4)
++#undef NEON_FN
++
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_uqrshl_bhs(src1, src2, 16, true, NULL))
+ NEON_VOP(rshl_u16, neon_u16, 2)
+ #undef NEON_FN
+ 
+-/* The addition of the rounding constant may overflow, so we use an
+- * intermediate 64 bit accumulator.  */
+-uint32_t HELPER(neon_rshl_u32)(uint32_t val, uint32_t shiftop)
++uint32_t HELPER(neon_rshl_u32)(uint32_t val, uint32_t shift)
+ {
+-    uint32_t dest;
+-    int8_t shift = (int8_t)shiftop;
+-    if (shift >= 32 || shift < -32) {
+-        dest = 0;
+-    } else if (shift == -32) {
+-        dest = val >> 31;
+-    } else if (shift < 0) {
+-        uint64_t big_dest = ((uint64_t)val + (1 << (-1 - shift)));
+-        dest = big_dest >> -shift;
+-    } else {
+-        dest = val << shift;
+-    }
+-    return dest;
++    return do_uqrshl_bhs(val, shift, 32, true, NULL);
+ }
+ 
+-/* Handling addition overflow with 64 bit input values is more
+- * tricky than with 32 bit values.  */
+-uint64_t HELPER(neon_rshl_u64)(uint64_t val, uint64_t shiftop)
++uint64_t HELPER(neon_rshl_u64)(uint64_t val, uint64_t shift)
+ {
+-    int8_t shift = (uint8_t)shiftop;
+-    if (shift >= 64 || shift < -64) {
+-        val = 0;
+-    } else if (shift == -64) {
+-        /* Rounding a 1-bit result just preserves that bit.  */
+-        val >>= 63;
+-    } else if (shift < 0) {
+-        val >>= (-shift - 1);
+-        if (val == UINT64_MAX) {
+-            /* In this case, it means that the rounding constant is 1,
+-             * and the addition would overflow. Return the actual
+-             * result directly.  */
+-            val = 0x8000000000000000ULL;
+-        } else {
+-            val++;
+-            val >>= 1;
+-        }
+-    } else {
+-        val <<= shift;
+-    }
+-    return val;
++    return do_uqrshl_d(val, shift, true, NULL);
+ }
+ 
+-#define NEON_FN(dest, src1, src2) do { \
+-    int8_t tmp; \
+-    tmp = (int8_t)src2; \
+-    if (tmp >= (ssize_t)sizeof(src1) * 8) { \
+-        if (src1) { \
+-            SET_QC(); \
+-            dest = ~0; \
+-        } else { \
+-            dest = 0; \
+-        } \
+-    } else if (tmp <= -(ssize_t)sizeof(src1) * 8) { \
+-        dest = 0; \
+-    } else if (tmp < 0) { \
+-        dest = src1 >> -tmp; \
+-    } else { \
+-        dest = src1 << tmp; \
+-        if ((dest >> tmp) != src1) { \
+-            SET_QC(); \
+-            dest = ~0; \
+-        } \
+-    }} while (0)
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_uqrshl_bhs(src1, src2, 8, false, env->vfp.qc))
+ NEON_VOP_ENV(qshl_u8, neon_u8, 4)
++#undef NEON_FN
++
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_uqrshl_bhs(src1, src2, 16, false, env->vfp.qc))
+ NEON_VOP_ENV(qshl_u16, neon_u16, 2)
+-NEON_VOP_ENV(qshl_u32, neon_u32, 1)
+ #undef NEON_FN
+ 
+-uint64_t HELPER(neon_qshl_u64)(CPUARMState *env, uint64_t val, uint64_t shiftop)
++uint32_t HELPER(neon_qshl_u32)(CPUARMState *env, uint32_t val, uint32_t shift)
+ {
+-    int8_t shift = (int8_t)shiftop;
+-    if (shift >= 64) {
+-        if (val) {
+-            val = ~(uint64_t)0;
+-            SET_QC();
+-        }
+-    } else if (shift <= -64) {
+-        val = 0;
+-    } else if (shift < 0) {
+-        val >>= -shift;
+-    } else {
+-        uint64_t tmp = val;
+-        val <<= shift;
+-        if ((val >> shift) != tmp) {
+-            SET_QC();
+-            val = ~(uint64_t)0;
+-        }
+-    }
+-    return val;
++    return do_uqrshl_bhs(val, shift, 32, false, env->vfp.qc);
+ }
+ 
+-#define NEON_FN(dest, src1, src2) do { \
+-    int8_t tmp; \
+-    tmp = (int8_t)src2; \
+-    if (tmp >= (ssize_t)sizeof(src1) * 8) { \
+-        if (src1) { \
+-            SET_QC(); \
+-            dest = (uint32_t)(1 << (sizeof(src1) * 8 - 1)); \
+-            if (src1 > 0) { \
+-                dest--; \
+-            } \
+-        } else { \
+-            dest = src1; \
+-        } \
+-    } else if (tmp <= -(ssize_t)sizeof(src1) * 8) { \
+-        dest = src1 >> 31; \
+-    } else if (tmp < 0) { \
+-        dest = src1 >> -tmp; \
+-    } else { \
+-        dest = src1 << tmp; \
+-        if ((dest >> tmp) != src1) { \
+-            SET_QC(); \
+-            dest = (uint32_t)(1 << (sizeof(src1) * 8 - 1)); \
+-            if (src1 > 0) { \
+-                dest--; \
+-            } \
+-        } \
+-    }} while (0)
++uint64_t HELPER(neon_qshl_u64)(CPUARMState *env, uint64_t val, uint64_t shift)
++{
++    return do_uqrshl_d(val, shift, false, env->vfp.qc);
++}
++
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_sqrshl_bhs(src1, src2, 8, false, env->vfp.qc))
+ NEON_VOP_ENV(qshl_s8, neon_s8, 4)
++#undef NEON_FN
++
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_sqrshl_bhs(src1, src2, 16, false, env->vfp.qc))
+ NEON_VOP_ENV(qshl_s16, neon_s16, 2)
+-NEON_VOP_ENV(qshl_s32, neon_s32, 1)
+ #undef NEON_FN
+ 
+-uint64_t HELPER(neon_qshl_s64)(CPUARMState *env, uint64_t valop, uint64_t shiftop)
++uint32_t HELPER(neon_qshl_s32)(CPUARMState *env, uint32_t val, uint32_t shift)
+ {
+-    int8_t shift = (uint8_t)shiftop;
+-    int64_t val = valop;
+-    if (shift >= 64) {
+-        if (val) {
+-            SET_QC();
+-            val = (val >> 63) ^ ~SIGNBIT64;
+-        }
+-    } else if (shift <= -64) {
+-        val >>= 63;
+-    } else if (shift < 0) {
+-        val >>= -shift;
+-    } else {
+-        int64_t tmp = val;
+-        val <<= shift;
+-        if ((val >> shift) != tmp) {
+-            SET_QC();
+-            val = (tmp >> 63) ^ ~SIGNBIT64;
+-        }
+-    }
+-    return val;
++    return do_sqrshl_bhs(val, shift, 32, false, env->vfp.qc);
+ }
+ 
+-#define NEON_FN(dest, src1, src2) do { \
+-    if (src1 & (1 << (sizeof(src1) * 8 - 1))) { \
+-        SET_QC(); \
+-        dest = 0; \
+-    } else { \
+-        int8_t tmp; \
+-        tmp = (int8_t)src2; \
+-        if (tmp >= (ssize_t)sizeof(src1) * 8) { \
+-            if (src1) { \
+-                SET_QC(); \
+-                dest = ~0; \
+-            } else { \
+-                dest = 0; \
+-            } \
+-        } else if (tmp <= -(ssize_t)sizeof(src1) * 8) { \
+-            dest = 0; \
+-        } else if (tmp < 0) { \
+-            dest = src1 >> -tmp; \
+-        } else { \
+-            dest = src1 << tmp; \
+-            if ((dest >> tmp) != src1) { \
+-                SET_QC(); \
+-                dest = ~0; \
+-            } \
+-        } \
+-    }} while (0)
+-NEON_VOP_ENV(qshlu_s8, neon_u8, 4)
+-NEON_VOP_ENV(qshlu_s16, neon_u16, 2)
++uint64_t HELPER(neon_qshl_s64)(CPUARMState *env, uint64_t val, uint64_t shift)
++{
++    return do_sqrshl_d(val, shift, false, env->vfp.qc);
++}
++
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_suqrshl_bhs(src1, src2, 8, false, env->vfp.qc))
++NEON_VOP_ENV(qshlu_s8, neon_s8, 4)
+ #undef NEON_FN
+ 
+-uint32_t HELPER(neon_qshlu_s32)(CPUARMState *env, uint32_t valop, uint32_t shiftop)
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_suqrshl_bhs(src1, src2, 16, false, env->vfp.qc))
++NEON_VOP_ENV(qshlu_s16, neon_s16, 2)
++#undef NEON_FN
++
++uint32_t HELPER(neon_qshlu_s32)(CPUARMState *env, uint32_t val, uint32_t shift)
+ {
+-    if ((int32_t)valop < 0) {
+-        SET_QC();
+-        return 0;
+-    }
+-    return helper_neon_qshl_u32(env, valop, shiftop);
++    return do_suqrshl_bhs(val, shift, 32, false, env->vfp.qc);
+ }
+ 
+-uint64_t HELPER(neon_qshlu_s64)(CPUARMState *env, uint64_t valop, uint64_t shiftop)
++uint64_t HELPER(neon_qshlu_s64)(CPUARMState *env, uint64_t val, uint64_t shift)
+ {
+-    if ((int64_t)valop < 0) {
+-        SET_QC();
+-        return 0;
+-    }
+-    return helper_neon_qshl_u64(env, valop, shiftop);
++    return do_suqrshl_d(val, shift, false, env->vfp.qc);
+ }
+ 
+-#define NEON_FN(dest, src1, src2) do { \
+-    int8_t tmp; \
+-    tmp = (int8_t)src2; \
+-    if (tmp >= (ssize_t)sizeof(src1) * 8) { \
+-        if (src1) { \
+-            SET_QC(); \
+-            dest = ~0; \
+-        } else { \
+-            dest = 0; \
+-        } \
+-    } else if (tmp < -(ssize_t)sizeof(src1) * 8) { \
+-        dest = 0; \
+-    } else if (tmp == -(ssize_t)sizeof(src1) * 8) { \
+-        dest = src1 >> (sizeof(src1) * 8 - 1); \
+-    } else if (tmp < 0) { \
+-        dest = (src1 + (1 << (-1 - tmp))) >> -tmp; \
+-    } else { \
+-        dest = src1 << tmp; \
+-        if ((dest >> tmp) != src1) { \
+-            SET_QC(); \
+-            dest = ~0; \
+-        } \
+-    }} while (0)
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_uqrshl_bhs(src1, src2, 8, true, env->vfp.qc))
+ NEON_VOP_ENV(qrshl_u8, neon_u8, 4)
++#undef NEON_FN
++
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_uqrshl_bhs(src1, src2, 16, true, env->vfp.qc))
+ NEON_VOP_ENV(qrshl_u16, neon_u16, 2)
+ #undef NEON_FN
+ 
+-/* The addition of the rounding constant may overflow, so we use an
+- * intermediate 64 bit accumulator.  */
+-uint32_t HELPER(neon_qrshl_u32)(CPUARMState *env, uint32_t val, uint32_t shiftop)
++uint32_t HELPER(neon_qrshl_u32)(CPUARMState *env, uint32_t val, uint32_t shift)
+ {
+-    uint32_t dest;
+-    int8_t shift = (int8_t)shiftop;
+-    if (shift >= 32) {
+-        if (val) {
+-            SET_QC();
+-            dest = ~0;
+-        } else {
+-            dest = 0;
+-        }
+-    } else if (shift < -32) {
+-        dest = 0;
+-    } else if (shift == -32) {
+-        dest = val >> 31;
+-    } else if (shift < 0) {
+-        uint64_t big_dest = ((uint64_t)val + (1 << (-1 - shift)));
+-        dest = big_dest >> -shift;
+-    } else {
+-        dest = val << shift;
+-        if ((dest >> shift) != val) {
+-            SET_QC();
+-            dest = ~0;
+-        }
+-    }
+-    return dest;
++    return do_uqrshl_bhs(val, shift, 32, true, env->vfp.qc);
+ }
+ 
+-/* Handling addition overflow with 64 bit input values is more
+- * tricky than with 32 bit values.  */
+-uint64_t HELPER(neon_qrshl_u64)(CPUARMState *env, uint64_t val, uint64_t shiftop)
++uint64_t HELPER(neon_qrshl_u64)(CPUARMState *env, uint64_t val, uint64_t shift)
+ {
+-    int8_t shift = (int8_t)shiftop;
+-    if (shift >= 64) {
+-        if (val) {
+-            SET_QC();
+-            val = ~0;
+-        }
+-    } else if (shift < -64) {
+-        val = 0;
+-    } else if (shift == -64) {
+-        val >>= 63;
+-    } else if (shift < 0) {
+-        val >>= (-shift - 1);
+-        if (val == UINT64_MAX) {
+-            /* In this case, it means that the rounding constant is 1,
+-             * and the addition would overflow. Return the actual
+-             * result directly.  */
+-            val = 0x8000000000000000ULL;
+-        } else {
+-            val++;
+-            val >>= 1;
+-        }
+-    } else { \
+-        uint64_t tmp = val;
+-        val <<= shift;
+-        if ((val >> shift) != tmp) {
+-            SET_QC();
+-            val = ~0;
+-        }
+-    }
+-    return val;
++    return do_uqrshl_d(val, shift, true, env->vfp.qc);
+ }
+ 
+-#define NEON_FN(dest, src1, src2) do { \
+-    int8_t tmp; \
+-    tmp = (int8_t)src2; \
+-    if (tmp >= (ssize_t)sizeof(src1) * 8) { \
+-        if (src1) { \
+-            SET_QC(); \
+-            dest = (typeof(dest))(1 << (sizeof(src1) * 8 - 1)); \
+-            if (src1 > 0) { \
+-                dest--; \
+-            } \
+-        } else { \
+-            dest = 0; \
+-        } \
+-    } else if (tmp <= -(ssize_t)sizeof(src1) * 8) { \
+-        dest = 0; \
+-    } else if (tmp < 0) { \
+-        dest = (src1 + (1 << (-1 - tmp))) >> -tmp; \
+-    } else { \
+-        dest = src1 << tmp; \
+-        if ((dest >> tmp) != src1) { \
+-            SET_QC(); \
+-            dest = (uint32_t)(1 << (sizeof(src1) * 8 - 1)); \
+-            if (src1 > 0) { \
+-                dest--; \
+-            } \
+-        } \
+-    }} while (0)
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_sqrshl_bhs(src1, src2, 8, true, env->vfp.qc))
+ NEON_VOP_ENV(qrshl_s8, neon_s8, 4)
++#undef NEON_FN
++
++#define NEON_FN(dest, src1, src2) \
++    (dest = do_sqrshl_bhs(src1, src2, 16, true, env->vfp.qc))
+ NEON_VOP_ENV(qrshl_s16, neon_s16, 2)
+ #undef NEON_FN
+ 
+-/* The addition of the rounding constant may overflow, so we use an
+- * intermediate 64 bit accumulator.  */
+-uint32_t HELPER(neon_qrshl_s32)(CPUARMState *env, uint32_t valop, uint32_t shiftop)
++uint32_t HELPER(neon_qrshl_s32)(CPUARMState *env, uint32_t val, uint32_t shift)
+ {
+-    int32_t dest;
+-    int32_t val = (int32_t)valop;
+-    int8_t shift = (int8_t)shiftop;
+-    if (shift >= 32) {
+-        if (val) {
+-            SET_QC();
+-            dest = (val >> 31) ^ ~SIGNBIT;
+-        } else {
+-            dest = 0;
+-        }
+-    } else if (shift <= -32) {
+-        dest = 0;
+-    } else if (shift < 0) {
+-        int64_t big_dest = ((int64_t)val + (1 << (-1 - shift)));
+-        dest = big_dest >> -shift;
+-    } else {
+-        dest = val << shift;
+-        if ((dest >> shift) != val) {
+-            SET_QC();
+-            dest = (val >> 31) ^ ~SIGNBIT;
+-        }
+-    }
+-    return dest;
++    return do_sqrshl_bhs(val, shift, 32, true, env->vfp.qc);
+ }
+ 
+-/* Handling addition overflow with 64 bit input values is more
+- * tricky than with 32 bit values.  */
+-uint64_t HELPER(neon_qrshl_s64)(CPUARMState *env, uint64_t valop, uint64_t shiftop)
++uint64_t HELPER(neon_qrshl_s64)(CPUARMState *env, uint64_t val, uint64_t shift)
+ {
+-    int8_t shift = (uint8_t)shiftop;
+-    int64_t val = valop;
+-
+-    if (shift >= 64) {
+-        if (val) {
+-            SET_QC();
+-            val = (val >> 63) ^ ~SIGNBIT64;
+-        }
+-    } else if (shift <= -64) {
+-        val = 0;
+-    } else if (shift < 0) {
+-        val >>= (-shift - 1);
+-        if (val == INT64_MAX) {
+-            /* In this case, it means that the rounding constant is 1,
+-             * and the addition would overflow. Return the actual
+-             * result directly.  */
+-            val = 0x4000000000000000ULL;
+-        } else {
+-            val++;
+-            val >>= 1;
+-        }
+-    } else {
+-        int64_t tmp = val;
+-        val <<= shift;
+-        if ((val >> shift) != tmp) {
+-            SET_QC();
+-            val = (tmp >> 63) ^ ~SIGNBIT64;
+-        }
+-    }
+-    return val;
++    return do_sqrshl_d(val, shift, true, env->vfp.qc);
+ }
+ 
+ uint32_t HELPER(neon_add_u8)(uint32_t a, uint32_t b)
 -- 
 2.20.1
 

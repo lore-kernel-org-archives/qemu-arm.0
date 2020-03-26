@@ -1,96 +1,101 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1746094lfi;
-        Thu, 26 Mar 2020 04:01:27 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtKyAHeUJxoH+Gcy95vDY5l5KOidTxjtkpED3kWfAbcaIKkp3iY5ooWZjJFMn3ZjKqbdThY
-X-Received: by 2002:a37:687:: with SMTP id 129mr7060190qkg.321.1585220487369;
-        Thu, 26 Mar 2020 04:01:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585220487; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2054386lfi;
+        Thu, 26 Mar 2020 08:48:32 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vv3DrAuF4c0Kldnls97UHMSSxsunHys6V7lBR+D5nST1hrLzSLyxnbyoOinkRAg71hmAkFo
+X-Received: by 2002:a37:a346:: with SMTP id m67mr8603539qke.313.1585237712702;
+        Thu, 26 Mar 2020 08:48:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585237712; cv=none;
         d=google.com; s=arc-20160816;
-        b=l8Z7XVmz87cl45H6mCZpy2ZHGs+vyfzTWAtyTi2PCBFVzgkXmg/KVgoxAsBeHCRuCE
-         CL34SuDcBRFFfrRWVieh6eUfg+sETFsKzMUd+BeDiUmrGXXRcotaxTRDZ8ZDdT0p3TA7
-         /EhWXycYQ6empTiKI5x6qwBV9dD8HzrAE9/ToYXmDoCIn+1OkPMEQcc+VOJZ4d6Bjj/u
-         gqUi4E5X6K3PMOREjzxhotx1O4mkGAO/pdLo4w1LGInqauZxf1fBg4YaR5iLGAVu2P2r
-         0lin/qx273Q4J8YS2ze8e05c1B1/w9puRpWncuYiGtlQgNg3efa8UxvIxfiuhvDKBZ6o
-         GhyQ==
+        b=mpTIVQONSZlaFfkQBxt2CaXVCfvOm5E+iX38zOGeVHVrX1cDraRUNkyLh7IRxPf5ZP
+         QUNlwf6Ioopxc+gvuyBjRpC05C+ahGGldarHcrq9bUj4MGGuAc8pC31zA/u9qbDhEdop
+         Twcb2H7j2CJ7UZIXFg+zdHpI6VoWPwZLP7fwctrKKu8YbAb7bqEx2lqgo3nyi9bX5hG4
+         onWP6lCJizGeTD6lxg0gkBe5xjc8wdaqCwUdTVTEN4jl1q0qCBuRGjFnYSJXm9XRSBZf
+         iQ4SUZpz4LX7kGM+F3Lt5WNKmfNk5OwyFzRttBjRzcF5gou5x6v/GTvt0O5MhxNUBBcO
+         7xrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=2/2wrMEwU8K1EQxN273Pr7zZuw6dVXbtyGGdt5alEzs=;
-        b=lAZWChCbbZYfhXGgp6NvzK6bMXGB6xdFGqgGM08A/y9UbCSBRVf/craF971Ief+eEc
-         hfNuW2oDLWAC3ZBaTVo3E20Kew4oHMblhHfbo/MYFjxqf/Oh9wAswqbEIBXoTTTRJDU0
-         Y0R9b29JrMRDlErY2MOVqpnQPSjZqCpAzFLpS1CX7ogGXCxSnZKB0W3PWTbJP3f5bffq
-         qXmq2QV3uF5D3PQNHAxpBPGr/2brs6oN/3sb/9F6bjShnPMWvs0J1eH2l3graD1tKGHO
-         MstzUJqDz/8kyo6ByDn1S9bZpuQ76L8kANgeWwx//7qopNTQgdC6InN4CbWWkcHiH0jk
-         63NA==
+        bh=syOHizGtMNtt9cfSLs1fY1OVSbZZjgvWBmfc3ckdZzA=;
+        b=IaU08+jyFtL7+id/Im7zgmafknEIWgAheHezFELOWveTb4OEqXAd2RHfWQ7CgJTA/Q
+         mZ5aGUp0iXi+QUVup/smvkwadk40WFIEK4OG/FGdVBZdcKGT57QPQWc/dPSyu5nUe96P
+         jeIjdEHT1Zq6QjngSHCFlw0A+rVRm2RXNnsN7yuc4E0z8bocxUmFmmaRgcsdanyVzPG8
+         xlfrJYavqk7VsOPUClblz3vCx5qmIZP+pDN9nSDoEwUR/salCjarMSmzJW3EpdChxDuX
+         PcmSeXsOEh4iSX1q3GGXj6PGk7iyxWsoL5wxh8nCKVGc3E8A7ObuoHB6fi0zaPwhzIAb
+         FFcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ekF84Wg9;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gxq75ZC6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 1si915653qkr.89.2020.03.26.04.01.27
+        by mx.google.com with ESMTPS id n22si1553315qtb.77.2020.03.26.08.48.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Mar 2020 04:01:27 -0700 (PDT)
+        Thu, 26 Mar 2020 08:48:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ekF84Wg9;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gxq75ZC6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49390 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55726 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jHQGM-0003Ov-QF
-	for alex.bennee@linaro.org; Thu, 26 Mar 2020 07:01:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58219)
+	id 1jHUkC-0003lD-6M
+	for alex.bennee@linaro.org; Thu, 26 Mar 2020 11:48:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55931)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1jHQG7-0003Du-An
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 07:01:16 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1jHUk2-0003l1-L5
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 11:48:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1jHQG5-0003eV-EB
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 07:01:11 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:31787)
+ (envelope-from <eric.auger@redhat.com>) id 1jHUk0-0007w8-Bv
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 11:48:22 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:27727)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1jHQG5-0003e4-8Z
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 07:01:09 -0400
+ id 1jHUk0-0007vo-6W
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 11:48:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585220468;
+ s=mimecast20190719; t=1585237699;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=2/2wrMEwU8K1EQxN273Pr7zZuw6dVXbtyGGdt5alEzs=;
- b=ekF84Wg9FUrpAr1KzhKxr7VE3ueSLTvhhbw5nGuhht4VvW/K1xURn0B5VNeB3eJ9xYSIYk
- oWUlC936w6WQTyrTToVlNozhKn3ekBeMMMtweSQFSUVj8jU1SsZQQq0uHici3MybXE4G+X
- qyvsHCHJiKW+MrJRRj30twewKyMhlBc=
+ bh=syOHizGtMNtt9cfSLs1fY1OVSbZZjgvWBmfc3ckdZzA=;
+ b=gxq75ZC6ipkgUpUchZOjZgzE5AEkT7/cck8rHNSk5LFVj/41HI9lb9dtF10T/bPAfudjvc
+ hJro1/f3A150vL6pNWcMG7MQgbwVyxC3QJlNqf+helMew+Q/jjjrIzjWhlmFkPd67lld2e
+ PKOlLqcsWg4ttiqYcj8HAaC3X375SrU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-228-vsKMGt80N7S49sCooT3n1A-1; Thu, 26 Mar 2020 07:01:02 -0400
-X-MC-Unique: vsKMGt80N7S49sCooT3n1A-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-210-TeU_8bpRPmOwD6si8C1wPQ-1; Thu, 26 Mar 2020 11:48:17 -0400
+X-MC-Unique: TeU_8bpRPmOwD6si8C1wPQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0AE5318B9FC4;
- Thu, 26 Mar 2020 11:01:01 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F124CDB64;
+ Thu, 26 Mar 2020 15:48:15 +0000 (UTC)
 Received: from [10.36.113.142] (ovpn-113-142.ams2.redhat.com [10.36.113.142])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7AE1D19925;
- Thu, 26 Mar 2020 11:00:55 +0000 (UTC)
-Subject: Re: [RFC v1] arm/virt: Add memory hot remove support
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20200318123722.19736-1-shameerali.kolothum.thodi@huawei.com>
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C0C3560BF3;
+ Thu, 26 Mar 2020 15:48:04 +0000 (UTC)
+Subject: Re: [PATCH v9 8/9] virtio-iommu: Implement probe request
+To: Bharat Bhushan <bbhushan2@marvell.com>, peter.maydell@linaro.org,
+ peterx@redhat.com, eric.auger.pro@gmail.com, alex.williamson@redhat.com,
+ kevin.tian@intel.com, mst@redhat.com, tnowicki@marvell.com,
+ drjones@redhat.com, linuc.decode@gmail.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, bharatb.linux@gmail.com, jean-philippe@linaro.org,
+ yang.zhong@intel.com
+References: <20200323084617.1782-1-bbhushan2@marvell.com>
+ <20200323084617.1782-9-bbhushan2@marvell.com>
 From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <b6c6f33b-7e4f-0b46-b67d-2de572e12626@redhat.com>
-Date: Thu, 26 Mar 2020 12:00:53 +0100
+Message-ID: <401ead7e-884e-e4a8-9e5a-ceaa3c868f61@redhat.com>
+Date: Thu, 26 Mar 2020 16:48:03 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20200318123722.19736-1-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <20200323084617.1782-9-bbhushan2@marvell.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=windows-1252
@@ -108,211 +113,313 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com,
- Anshuman Khandual <anshuman.khandual@arm.com>, linuxarm@huawei.com,
- xuwei5@hisilicon.com, prime.zeng@hisilicon.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8Wg3UVTGJdwe
+X-TUID: vdI/nhl4BJvx
 
-Hi Shameer,
+Hi Bharat
 
-On 3/18/20 1:37 PM, Shameer Kolothum wrote:
-> This adds support for memory hot remove on arm/virt that
-> uses acpi ged device.
+On 3/23/20 9:46 AM, Bharat Bhushan wrote:
+> This patch implements the PROBE request. Currently supported
+> page size mask per endpoint is returned. Also append a NONE
+> property in the end.
+> 
+> Signed-off-by: Bharat Bhushan <bbhushan2@marvell.com>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  include/standard-headers/linux/virtio_iommu.h |   6 +
+Changes to virtio_iommu.h should be in a separate patch
+you should use ./scripts/update-linux-headers.sh
+See for instance:
+ddda37483d  linux-headers: update
+until the uapi updates are not upstream you can link to your kernel
+branch and mention this is a temporary linux header update or partial if
+you just want to pick up the iommu.h changes.
 
-I gave this a try and it works fine if the PCDIMM slot was initially
-hotplugged:
-(QEMU) object-add qom-type=memory-backend-ram id=mem1 props.size=4294967296
-{"return": {}}
-(QEMU) device_add driver=pc-dimm  id=pcdimm1 memdev=mem1
-(QEMU) device_del id=pcdimm1
-{"return": {}}
-
-on guest I can see:
-[   82.466321] Offlined Pages 262144
-[   82.541712] Offlined Pages 262144
-[   82.589236] Offlined Pages 262144
-[   82.969166] Offlined Pages 262144
-
-However I noticed that if qemu is launched directly with
-
--m 16G,maxmem=32G,slots=2 \
--object memory-backend-ram,id=mem1,size=4G \
--device pc-dimm,memdev=mem1,id=dimm1,driver=pc-dimm -device
-
-and then in the qmp shell:
-(QEMU) device_del id=dimm1
-
-the hot-unplug fails in guest:
-
-[   78.897407] Offlined Pages 262144
-[   79.260811] Offlined Pages 262144
-[   79.308105] Offlined Pages 262144
-[   79.333675] page:fffffe00137d1f40 refcount:1 mapcount:0
-mapping:ffff0004ea9f20b1 index:0xaaab11c6e
-[   79.335927] anon flags: 0x17ffff8000080024(uptodate|active|swapbacked)
-[   79.337571] raw: 17ffff8000080024 dead000000000100 dead000000000122
-ffff0004ea9f20b1
-[   79.339502] raw: 0000000aaab11c6e 0000000000000000 00000001ffffffff
-ffff0004fd4e3000
-[   79.341701] page dumped because: unmovable page
-[   79.342887] page->mem_cgroup:ffff0004fd4e3000
-[   79.354729] page:fffffe00137d1f40 refcount:1 mapcount:0
-mapping:ffff0004ea9f20b1 index:0xaaab11c6e
-[   79.357012] anon flags: 0x17ffff8000080024(uptodate|active|swapbacked)
-[   79.358658] raw: 17ffff8000080024 dead000000000100 dead000000000122
-ffff0004ea9f20b1
-[   79.360611] raw: 0000000aaab11c6e 0000000000000000 00000001ffffffff
-ffff0004fd4e3000
-[   79.362560] page dumped because: unmovable page
-[   79.363742] page->mem_cgroup:ffff0004fd4e3000
-[   79.368636] memory memory20: Offline failed.
-
-I did not expect this. The PCDIMM slot in that case does not seem to be
-interpreted as a hot-unpluggable one (?). I added Anshuman in cc.
-
+>  hw/virtio/virtio-iommu.c                      | 161 +++++++++++++++++-
+>  hw/virtio/trace-events                        |   2 +
+>  3 files changed, 166 insertions(+), 3 deletions(-)
+> 
+> diff --git a/include/standard-headers/linux/virtio_iommu.h b/include/standard-headers/linux/virtio_iommu.h
+> index b9443b83a1..8a0d47b907 100644
+> --- a/include/standard-headers/linux/virtio_iommu.h
+> +++ b/include/standard-headers/linux/virtio_iommu.h
+> @@ -111,6 +111,7 @@ struct virtio_iommu_req_unmap {
+>  
+>  #define VIRTIO_IOMMU_PROBE_T_NONE		0
+>  #define VIRTIO_IOMMU_PROBE_T_RESV_MEM		1
+> +#define VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK	2
+>  
+>  #define VIRTIO_IOMMU_PROBE_T_MASK		0xfff
+>  
+> @@ -130,6 +131,11 @@ struct virtio_iommu_probe_resv_mem {
+>  	uint64_t					end;
+>  };
+>  
+> +struct virtio_iommu_probe_pgsize_mask {
+> +	struct virtio_iommu_probe_property      head;
+> +	uint64_t				pgsize_bitmap;
+> +};
+> +
+>  struct virtio_iommu_req_probe {
+>  	struct virtio_iommu_req_head		head;
+>  	uint32_t					endpoint;
+> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+> index 747e3cf1da..63fbacdcdc 100644
+> --- a/hw/virtio/virtio-iommu.c
+> +++ b/hw/virtio/virtio-iommu.c
+> @@ -38,6 +38,10 @@
+>  
+>  /* Max size */
+>  #define VIOMMU_DEFAULT_QUEUE_SIZE 256
+> +#define VIOMMU_PROBE_SIZE 512
+> +
+> +#define SUPPORTED_PROBE_PROPERTIES (\
+> +    1 << VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK)
+>  
+>  typedef struct VirtIOIOMMUDomain {
+>      uint32_t id;
+> @@ -62,6 +66,13 @@ typedef struct VirtIOIOMMUMapping {
+>      uint32_t flags;
+>  } VirtIOIOMMUMapping;
+>  
+> +typedef struct VirtIOIOMMUPropBuffer {
+> +    VirtIOIOMMUEndpoint *endpoint;
+> +    size_t filled;
+> +    uint8_t *start;
+> +    bool error;
+> +} VirtIOIOMMUPropBuffer;
+> +
+>  static inline uint16_t virtio_iommu_get_bdf(IOMMUDevice *dev)
+>  {
+>      return PCI_BUILD_BDF(pci_bus_num(dev->bus), dev->devfn);
+> @@ -490,6 +501,114 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+>      return ret;
+>  }
+>  
+> +static int virtio_iommu_fill_none_prop(VirtIOIOMMUPropBuffer *bufstate)
+> +{
+> +    struct virtio_iommu_probe_property *prop;
+> +
+> +    prop = (struct virtio_iommu_probe_property *)
+> +                (bufstate->start + bufstate->filled);
+> +    prop->type = 0;
+> +    prop->length = 0;
+> +    bufstate->filled += sizeof(*prop);
+> +    trace_virtio_iommu_fill_none_property(bufstate->endpoint->id);
+> +    return 0;
+> +}
+> +
+> +static int virtio_iommu_fill_page_size_mask(VirtIOIOMMUPropBuffer *bufstate)
+> +{
+> +    struct virtio_iommu_probe_pgsize_mask *page_size_mask;
+> +    size_t prop_size = sizeof(*page_size_mask);
+> +    VirtIOIOMMUEndpoint *ep = bufstate->endpoint;
+> +    VirtIOIOMMU *s = ep->viommu;
+> +    IOMMUDevice *sdev;
+> +
+> +    if (bufstate->filled + prop_size >= VIOMMU_PROBE_SIZE) {
+> +        bufstate->error = true;
+> +        /* get the traversal stopped by returning true */
+> +        return true;
+> +    }
+> +
+> +    page_size_mask = (struct virtio_iommu_probe_pgsize_mask *)
+> +                     (bufstate->start + bufstate->filled);
+> +
+> +    page_size_mask->head.type = VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK;
+> +    page_size_mask->head.length = prop_size;
+> +    QLIST_FOREACH(sdev, &s->notifiers_list, next) {
+> +        if (ep->id == sdev->devfn) {
+> +            page_size_mask->pgsize_bitmap = sdev->page_size_mask;
+> +	}
+> +    }
+> +    bufstate->filled += sizeof(*page_size_mask);
+> +    trace_virtio_iommu_fill_pgsize_mask_property(bufstate->endpoint->id,
+> +                                                 page_size_mask->pgsize_bitmap,
+> +                                                 bufstate->filled);
+> +    return false;
+> +}
+> +
+> +/* Fill the properties[] buffer with properties of type @type */
+> +static int virtio_iommu_fill_property(int type,
+> +                                      VirtIOIOMMUPropBuffer *bufstate)
+> +{
+> +    int ret = -ENOSPC;
+> +
+> +    if (bufstate->filled + sizeof(struct virtio_iommu_probe_property)
+> +            >= VIOMMU_PROBE_SIZE) {
+> +        /* no space left for the header */
+> +        bufstate->error = true;
+> +        goto out;
+> +    }
+> +
+> +    switch (type) {
+> +    case VIRTIO_IOMMU_PROBE_T_NONE:
+> +        ret = virtio_iommu_fill_none_prop(bufstate);
+> +        break;
+> +    case VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK:
+> +    {
+> +        ret = virtio_iommu_fill_page_size_mask(bufstate);
+I don't think you want to fill the property of each EP. Only for those
+whose sdev->page_size_mask was properly set. For instance if you mix
+virtio and vfio devices, virtio ones won't have this field set.
+> +	break;
+> +    }
+> +    default:
+> +        ret = -ENOENT;
+> +        break;
+> +    }
+> +out:
+> +    if (ret) {
+> +        error_report("%s property of type=%d could not be filled (%d),"
+> +                     " remaining size = 0x%lx",
+> +                     __func__, type, ret, bufstate->filled);
+> +    }
+> +    return ret;
+> +}
+> +
+> +/**
+> + * virtio_iommu_probe - Fill the probe request buffer with all
+> + * the properties the device is able to return and add a NONE
+> + * property at the end. @buf points to properties[].
+> + */
+> +static int virtio_iommu_probe(VirtIOIOMMU *s,
+> +                              struct virtio_iommu_req_probe *req,
+> +                              uint8_t *buf)
+> +{
+> +    uint32_t ep_id = le32_to_cpu(req->endpoint);
+> +    VirtIOIOMMUEndpoint *ep = virtio_iommu_get_endpoint(s, ep_id);
+> +    int16_t prop_types = SUPPORTED_PROBE_PROPERTIES, type;
+> +    VirtIOIOMMUPropBuffer bufstate = {.start = buf, .filled = 0,
+> +                                       .error = false, .endpoint = ep};
+> +
+> +    while ((type = ctz32(prop_types)) != 32) {
+> +        if (virtio_iommu_fill_property(type, &bufstate)) {
+> +            goto failure;
+> +        }
+> +        prop_types &= ~(1 << type);
+> +    }
+> +    if (virtio_iommu_fill_property(VIRTIO_IOMMU_PROBE_T_NONE, &bufstate)) {
+> +        goto failure;
+> +    }
+> +    return VIRTIO_IOMMU_S_OK;
+> +failure:
+> +    return VIRTIO_IOMMU_S_INVAL;
+> +}
+> +
+>  static int virtio_iommu_iov_to_req(struct iovec *iov,
+>                                     unsigned int iov_cnt,
+>                                     void *req, size_t req_sz)
+> @@ -519,6 +638,17 @@ virtio_iommu_handle_req(detach)
+>  virtio_iommu_handle_req(map)
+>  virtio_iommu_handle_req(unmap)
+>  
+> +static int virtio_iommu_handle_probe(VirtIOIOMMU *s,
+> +                                     struct iovec *iov,
+> +                                     unsigned int iov_cnt,
+> +                                     uint8_t *buf)
+> +{
+> +    struct virtio_iommu_req_probe req;
+> +    int ret = virtio_iommu_iov_to_req(iov, iov_cnt, &req, sizeof(req));
+> +
+> +    return ret ? ret : virtio_iommu_probe(s, &req, buf);
+> +}
+> +
+>  static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
+>  {
+>      VirtIOIOMMU *s = VIRTIO_IOMMU(vdev);
+> @@ -564,17 +694,33 @@ static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
+>          case VIRTIO_IOMMU_T_UNMAP:
+>              tail.status = virtio_iommu_handle_unmap(s, iov, iov_cnt);
+>              break;
+> +        case VIRTIO_IOMMU_T_PROBE:
+> +        {
+> +            struct virtio_iommu_req_tail *ptail;
+> +            uint8_t *buf = g_malloc0(s->config.probe_size + sizeof(tail));
+> +
+> +            ptail = (struct virtio_iommu_req_tail *)
+> +                        (buf + s->config.probe_size);
+> +            ptail->status = virtio_iommu_handle_probe(s, iov, iov_cnt, buf);
+> +
+> +            sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
+> +                              buf, s->config.probe_size + sizeof(tail));
+> +            g_free(buf);
+> +            assert(sz == s->config.probe_size + sizeof(tail));
+> +            goto push;
+> +        }
+>          default:
+>              tail.status = VIRTIO_IOMMU_S_UNSUPP;
+>          }
+> -        qemu_mutex_unlock(&s->mutex);
+>  
+>  out:
+>          sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
+>                            &tail, sizeof(tail));
+>          assert(sz == sizeof(tail));
+>  
+> -        virtqueue_push(vq, elem, sizeof(tail));
+> +push:
+> +        qemu_mutex_unlock(&s->mutex);
+> +        virtqueue_push(vq, elem, sz);
+>          virtio_notify(vdev, vq);
+>          g_free(elem);
+>      }
+> @@ -634,16 +780,23 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>      VirtIOIOMMUEndpoint *ep;
+>      uint32_t sid, flags;
+>      bool bypass_allowed;
+> +    hwaddr addr_mask;
+>      bool found;
+>  
+>      interval.low = addr;
+>      interval.high = addr + 1;
+>  
+> +    if (sdev->page_size_mask) {
+> +        addr_mask = (1 << ctz32(sdev->page_size_mask)) - 1;
+> +    } else {
+> +        addr_mask = (1 << ctz32(s->config.page_size_mask)) - 1;
+> +    }
+This change does not belong ot this patch. Rather belongs to
+"virtio-iommu: set supported page size mask"
+> +
+>      IOMMUTLBEntry entry = {
+>          .target_as = &address_space_memory,
+>          .iova = addr,
+>          .translated_addr = addr,
+> -        .addr_mask = (1 << ctz32(s->config.page_size_mask)) - 1,
+> +        .addr_mask = addr_mask,
+>          .perm = IOMMU_NONE,
+>      };
+>  
+> @@ -831,6 +984,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+>      s->config.page_size_mask = TARGET_PAGE_MASK;
+>      s->config.input_range.end = -1UL;
+>      s->config.domain_range.end = 32;
+> +    s->config.probe_size = VIOMMU_PROBE_SIZE;
+>  
+>      virtio_add_feature(&s->features, VIRTIO_RING_F_EVENT_IDX);
+>      virtio_add_feature(&s->features, VIRTIO_RING_F_INDIRECT_DESC);
+> @@ -840,6 +994,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MAP_UNMAP);
+>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_BYPASS);
+>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MMIO);
+> +    virtio_add_feature(&s->features, VIRTIO_IOMMU_F_PROBE);
+>  
+>      qemu_mutex_init(&s->mutex);
+>  
+> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+> index 8bae651191..b0a6e4bda3 100644
+> --- a/hw/virtio/trace-events
+> +++ b/hw/virtio/trace-events
+> @@ -76,3 +76,5 @@ virtio_iommu_report_fault(uint8_t reason, uint32_t flags, uint32_t endpoint, uin
+>  virtio_iommu_notify_map(const char *name, uint64_t iova, uint64_t paddr, uint64_t map_size) "mr=%s iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64
+>  virtio_iommu_notify_unmap(const char *name, uint64_t iova, uint64_t map_size) "mr=%s iova=0x%"PRIx64" size=0x%"PRIx64
+>  virtio_iommu_remap(uint64_t iova, uint64_t pa, uint64_t size) "iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64""
+> +virtio_iommu_fill_none_property(uint32_t devid) "devid=%d"
+> +virtio_iommu_fill_pgsize_mask_property(uint32_t devid, uint64_t pgsize_mask, size_t filled) "dev= %d, pgsize_mask=0x%"PRIx64" filled=0x%lx"
+> 
 Thanks
 
 Eric
-
-
-
-> 
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
->  -RFC because linux kernel support for mem hot remove is just queued
->   for 5.7[1].
->  -Tested with guest kernel 5.6-rc5 + [1]
-> 
-> 1. https://patchwork.kernel.org/cover/11419301/
-> ---
->  hw/acpi/generic_event_device.c | 28 +++++++++++++++++
->  hw/arm/virt.c                  | 56 ++++++++++++++++++++++++++++++++--
->  2 files changed, 82 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-> index 021ed2bf23..3e28c110fa 100644
-> --- a/hw/acpi/generic_event_device.c
-> +++ b/hw/acpi/generic_event_device.c
-> @@ -182,6 +182,32 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
->      }
->  }
->  
-> +static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
-> +                                       DeviceState *dev, Error **errp)
-> +{
-> +    AcpiGedState *s = ACPI_GED(hotplug_dev);
-> +
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> +        acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
-> +    } else {
-> +        error_setg(errp, "acpi: device unplug request for unsupported device"
-> +                   " type: %s", object_get_typename(OBJECT(dev)));
-> +    }
-> +}
-> +
-> +static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
-> +                               DeviceState *dev, Error **errp)
-> +{
-> +    AcpiGedState *s = ACPI_GED(hotplug_dev);
-> +
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> +        acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
-> +    } else {
-> +        error_setg(errp, "acpi: device unplug for unsupported device"
-> +                   " type: %s", object_get_typename(OBJECT(dev)));
-> +    }
-> +}
-> +
->  static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
->  {
->      AcpiGedState *s = ACPI_GED(adev);
-> @@ -286,6 +312,8 @@ static void acpi_ged_class_init(ObjectClass *class, void *data)
->      dc->vmsd = &vmstate_acpi_ged;
->  
->      hc->plug = acpi_ged_device_plug_cb;
-> +    hc->unplug_request = acpi_ged_unplug_request_cb;
-> +    hc->unplug = acpi_ged_unplug_cb;
->  
->      adevc->send_event = acpi_ged_send_event;
->  }
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 94f93dda54..91974e4e80 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2096,11 +2096,62 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
->      }
->  }
->  
-> +static void virt_dimm_unplug_request(HotplugHandler *hotplug_dev,
-> +                                     DeviceState *dev, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-> +    Error *local_err = NULL;
-> +
-> +    if (!vms->acpi_dev) {
-> +        error_setg(errp,
-> +                   "memory hotplug is not enabled: missing acpi-ged device");
-> +        goto out;
-> +    }
-> +
-> +    hotplug_handler_unplug_request(HOTPLUG_HANDLER(vms->acpi_dev), dev,
-> +                                   &local_err);
-> +out:
-> +    error_propagate(errp, local_err);
-> +}
-> +
-> +static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
-> +                             DeviceState *dev, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-> +    Error *local_err = NULL;
-> +
-> +    hotplug_handler_unplug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &local_err);
-> +    if (local_err) {
-> +        goto out;
-> +    }
-> +
-> +    pc_dimm_unplug(PC_DIMM(dev), MACHINE(vms));
-> +    object_property_set_bool(OBJECT(dev), false, "realized", NULL);
-> +
-> + out:
-> +    error_propagate(errp, local_err);
-> +}
-> +
->  static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
->                                            DeviceState *dev, Error **errp)
->  {
-> -    error_setg(errp, "device unplug request for unsupported device"
-> -               " type: %s", object_get_typename(OBJECT(dev)));
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> +        virt_dimm_unplug_request(hotplug_dev, dev, errp);
-> +    } else {
-> +        error_setg(errp, "device unplug request for unsupported device"
-> +                   " type: %s", object_get_typename(OBJECT(dev)));
-> +    }
-> +}
-> +
-> +static void virt_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
-> +                                          DeviceState *dev, Error **errp)
-> +{
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> +        virt_dimm_unplug(hotplug_dev, dev, errp);
-> +    } else {
-> +        error_setg(errp, "virt: device unplug for unsupported device"
-> +                   " type: %s", object_get_typename(OBJECT(dev)));
-> +    }
->  }
->  
->  static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
-> @@ -2181,6 +2232,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->      hc->pre_plug = virt_machine_device_pre_plug_cb;
->      hc->plug = virt_machine_device_plug_cb;
->      hc->unplug_request = virt_machine_device_unplug_request_cb;
-> +    hc->unplug = virt_machine_device_unplug_cb;
->      mc->numa_mem_supported = true;
->      mc->auto_enable_numa_with_memhp = true;
->      mc->default_ram_id = "mach-virt.ram";
-> 
 

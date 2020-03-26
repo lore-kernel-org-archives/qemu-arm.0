@@ -1,102 +1,103 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2418329lfi;
-        Thu, 26 Mar 2020 14:39:23 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtGcZT3AcM809BS3TaBuas9d+zObxc7org1ZAPbAV3fILI9UXzsSU+iXfVbAYfqTDvvuDzD
-X-Received: by 2002:aed:3eec:: with SMTP id o41mr11280554qtf.343.1585258763441;
-        Thu, 26 Mar 2020 14:39:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585258763; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2422304lfi;
+        Thu, 26 Mar 2020 14:44:12 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsEKcK50PTcAOTVo44oujGUQHLXncwqM3FzCshTYkqkAgTA+YedMNnAoQPOA3Xk2GT4tGmY
+X-Received: by 2002:a0c:c187:: with SMTP id n7mr11049215qvh.240.1585259052531;
+        Thu, 26 Mar 2020 14:44:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585259052; cv=none;
         d=google.com; s=arc-20160816;
-        b=KiyB+X5DR4PpYEpDiR2rrfu2ug0g7YFoldRkfgZbRR/0p01tQ/BcFrPjJ5ZnXoZYNO
-         9+OyKCT9G1EoApfWC8l2235fLjrUam/HZdnwpBJ/7FjyWZAYIFA7AoTodIYClZjP6nZh
-         Z9sGWbD+wgteEMLaXlknv9Y1YkP7VMzKDOlh4xrNO8FewiGKAV04AswlEaRjvqJOQa4u
-         8ObKKMngi5lhJ0wCunHzX0pAEiS4UTlgv4Vg9D/p325dzEYyqIdfH8lJwX9RpOgfdIYQ
-         uDVc0F3YZ+++cd+A4uBWybCuz+qWsOeXBmAbcAUUP7uiCyPEyrUr85Ms/pvAboyXSwbY
-         j7OQ==
+        b=Ff9okqg/b0uhUvD7Zq+c1y6zT9jR+giRRpcwRwrin1J7P4+o/hS2f5D/p8mjKCiuct
+         8uJK9ej7ZcEye7hU0ezkE3tybMkPyxruE69f41t9xcMa5lFr8iUWHHameDhkRGYSPyd/
+         aVZ4kn4AzKTrldCJok1Qob6tTQ0yU7bj9Ts22q4bYg2CeZ6pEFuJc6tjRegxvhWXrL3o
+         aNARra0U9v08zvG5r1hwBmdGMGQBk6EJLtNbUItylVz2ihYAp4W0r46zmuNsbY/xEKzp
+         LwEmdi+8/0cfUokzSVQzMKXMZ/YIhkr8Cjh3e9lyscazre+7UrawiansihLJ+D9CKax4
+         JbTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=ttFRTy1miBphiIkRdmeJ7d7lmPHn2JFJgTlTt9y5xDY=;
-        b=fhjD/sixIFMIkiaZ+QZ3TR58jB8cZAKbvxb/2B4SIUOfATuNcWdYLGL4YeY2mnKVMJ
-         LHH8iatmxVkOoxrIHGynjHvxZ2qboqIqEyg1yLaMiC+aY729t0cvcgzzaasEjAZH8ZSK
-         zkwFKtbsezQAjAi9vHEE++J142/Qkxsu31PM7jQJhTzx9OsyF4zOe8C6kuaSxzV4sO8m
-         pP+0hzjHpmfvXCAY+MNasobHnaZ5JDOU2ffGIjr04fPPZr/sco7FIChx3icqBy2XnrgE
-         x8OEoeCsYlYuoBcC1V0SwOJh8FtcYMfhJOWeqNbfrvUjvwA/q0jQ9jcNzo7yS2Pkp2pf
-         BYzQ==
+        bh=xvQuM1t+AMalZIyQmGqvVV5WcXOTpPBqjnsxou10UMI=;
+        b=ORx706r9N3o/R8ypwuAicbIHfP85qcNFPJE4ajtSW2pBrbvUzr5ZiN1fWY+C0Mzqoo
+         HyaKK78Sh6/KlDl5Te8R+0V9ULReghwZQ3zXuglBvmkoPwkh8IbfQg9vFLmjePqCeqFy
+         CvVbjGMDUxCAwPvL7oL9Uj+mWLuvfvatnjevQLBuxWeQtALn4/uxC/CmG0MG0ksin5N5
+         HmUxhpuXgRtYK526OJeS4Kl+iEmtobVe3E4jip3Wi5ESgFTrs80Wx8e/R5fe+ebYlaqq
+         xp4xMtN3jvWLdUllttuGJ1I/GdwaOyDF3Wst5pXWRf3YET4D74qMLobbowEIhjqawvX0
+         9gpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=oy7ZsYMi;
+       dkim=fail header.i=@linaro.org header.s=google header.b=cIfWr7+7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e7si2222045qtb.149.2020.03.26.14.39.23
+        by mx.google.com with ESMTPS id 19si2347850qks.314.2020.03.26.14.44.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Mar 2020 14:39:23 -0700 (PDT)
+        Thu, 26 Mar 2020 14:44:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=oy7ZsYMi;
+       dkim=fail header.i=@linaro.org header.s=google header.b=cIfWr7+7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60894 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:32830 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jHaDi-0004LX-Pi
-	for alex.bennee@linaro.org; Thu, 26 Mar 2020 17:39:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60774)
+	id 1jHaIN-0001vO-Vo
+	for alex.bennee@linaro.org; Thu, 26 Mar 2020 17:44:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39778)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jHaDT-0004L4-KC
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 17:39:09 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jHaID-0001to-Fy
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 17:44:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jHaDS-00039w-BO
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 17:39:07 -0400
-Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336]:34170)
+ (envelope-from <peter.maydell@linaro.org>) id 1jHaIC-0008FI-1C
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 17:44:01 -0400
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:45484)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jHaDS-00039b-6F
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 17:39:06 -0400
-Received: by mail-ot1-x336.google.com with SMTP id j16so7643819otl.1
- for <qemu-arm@nongnu.org>; Thu, 26 Mar 2020 14:39:05 -0700 (PDT)
+ id 1jHaIB-0008DG-OP
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 17:43:59 -0400
+Received: by mail-oi1-x244.google.com with SMTP id l22so6953764oii.12
+ for <qemu-arm@nongnu.org>; Thu, 26 Mar 2020 14:43:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=ttFRTy1miBphiIkRdmeJ7d7lmPHn2JFJgTlTt9y5xDY=;
- b=oy7ZsYMiDp5Es2IvFowVFh0nr4+ydviKOk/cJWOGWV5G+4UZRor6v6j5BnVXyTDQAw
- qpU1jNIl9XhNxR270tB+3awACdQY1r4P++FIVs6Lo0ILF1gPhqIqvd5mFPHRupPdaYSA
- D/iQ43oXoU7RDdcGDg0B24Pt7TMnj0pjNbevqM9Ghc/YVjO1fJRnJ+JFZuzq2fMmpxlh
- 1TsShaNqjV9qNHBtkeGGWtvi6H6Jvp5kWS3pW8gf/yTUyrV4ihYcAZYe/ptsDR6pmYBH
- Q1fs90oCKS/D0oCmhg/oeooj2jorB2nHEVa9ZoxRW5od8NRNy7LUAzQMegm32ikfkyvX
- 89QA==
+ bh=xvQuM1t+AMalZIyQmGqvVV5WcXOTpPBqjnsxou10UMI=;
+ b=cIfWr7+79kzguSu2V3Sa46UNOBIRSKKuTOhRBj75G5/ncXWZgLWn6rHFUcm58jBz4n
+ 1NgfoyHMCGsDexQfb4jItOz9nsObsYWhblDWparPVYqQKl7OW40U+KOKc1yqrDzf+hJ2
+ U5tPvoCplXbW9n3qzpsn85YX8FM8cRmU3oTG/f5YI84XeUlq1MEJBUw5cAm92XMi5P4T
+ FhNnoRWoYb1Ymu8x+uqT2FK0zBNkGv5kvME1PDCjRIsxoYtmPc+cT1lntrSTcjAMOkK+
+ yuIyku7CJnusz9cm9VAO480Nr/G+M5MHIyzvIrmFJ//PQl0AtwWEKPXKeUAXB+8I3VvM
+ tfWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=ttFRTy1miBphiIkRdmeJ7d7lmPHn2JFJgTlTt9y5xDY=;
- b=Y3++DcQcztuitjBn8gu0seXBPPtvffFM9MoXrvOpqjXb2oKFFEUfOwx+OpCwc8A0ty
- nWuU7R7FlraiQ9tiyfECmk//EpXjHEXmiViKNrWa+3ZIU+c55hOw49AhUrbc048VOnGw
- nMso1nJ4AG6Gdlw79awBXcTN1CBvsIlo0P0bnDE0CNnw0KMKSv8alE1/LUjHcIA8BhSc
- YW4D12o7kf6iupq8a8SwDqi/iCJyji4UfvJH6+9sKItd7LjTKLv6QEhBEoXJM3prH/oZ
- 5eXgFD6xYPJE4y/BZAjiV5Rfbv/r8NN1YVr5n6lpTfgnijqeK6JPDICRT08lZXwbontf
- K8Fg==
-X-Gm-Message-State: ANhLgQ2/q1ga0EenDjz0EAuM6iNH4nC21QMKXa0Hd9q9J05orc8IAbTN
- 2S48Ve3HMRLZdQxZuQwFIErzQNcqSxO9ajWbGxV+Zw==
-X-Received: by 2002:a9d:1920:: with SMTP id j32mr7656604ota.221.1585258744877; 
- Thu, 26 Mar 2020 14:39:04 -0700 (PDT)
+ bh=xvQuM1t+AMalZIyQmGqvVV5WcXOTpPBqjnsxou10UMI=;
+ b=Lp+qPwy92wzLXKpeNsWYEuDJYCLwj5bSmLxafUuLfdktIUkgdqPhz0C1aZlhgTCIdK
+ h5O5ZNvLUVsZTNMxmHsLJheqcOt53D8lEz1uye/4PPFkdQ9alGtazpzZPj2PsPakmuxj
+ dvYsQXbjpCr46xeoibzCjDEXlfRA/1E4IjJg7t+57apPMp6vcRlUep3hwm4XaZ1dnMQ1
+ 0DzNi62cSut0CvrXehwfuBRdmmzstAkmINn83NKcbGtcPOKT1QyI+2NyZUMIQVVZsd11
+ zVnDIxnt//bZkjvHwhlpesY7UIGlW2M9GupEupzjr6k/CFrMTxvxKFUN20wHAk14hDY4
+ BPAA==
+X-Gm-Message-State: ANhLgQ0BpHX0awUOWNvgbP2CUug9WRX9BngMY/NR1jPg6qIIV44eRvGb
+ mOmj0dI6MAjeVY4zR+K7VV3UIETP4k0ruHFrhWZeJi+qtWo=
+X-Received: by 2002:a05:6808:8cb:: with SMTP id
+ k11mr1766287oij.48.1585259038796; 
+ Thu, 26 Mar 2020 14:43:58 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200325191830.16553-1-f4bug@amsat.org>
- <20200325191830.16553-6-f4bug@amsat.org>
-In-Reply-To: <20200325191830.16553-6-f4bug@amsat.org>
+ <20200325191830.16553-8-f4bug@amsat.org>
+In-Reply-To: <20200325191830.16553-8-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 26 Mar 2020 21:38:53 +0000
-Message-ID: <CAFEAcA97j0LD__A4eSkf1Aq2GpcQ5up1e76Hwfcj-Dd3o6iOeg@mail.gmail.com>
-Subject: Re: [PATCH-for-5.0 05/12] hw/i386/x86: Add missing error-propagation
+Date: Thu, 26 Mar 2020 21:43:47 +0000
+Message-ID: <CAFEAcA8X5_9G8i31A17DxZDagyHoVYQ7Ctsf5n_9weHqGM6ksA@mail.gmail.com>
+Subject: Re: [PATCH-for-5.0 07/12] hw/mips/cps: Add missing error-propagation
  code
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::336
+X-Received-From: 2607:f8b0:4864:20::244
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -131,7 +132,7 @@ Cc: Paul Burton <pburton@wavecomp.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QAvDVnh9ZCeq
+X-TUID: sWENzfYWVW0+
 
 On Wed, 25 Mar 2020 at 19:18, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
  wrote:
@@ -146,41 +147,78 @@ cocci \
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/i386/x86.c | 4 ++++
->  1 file changed, 4 insertions(+)
+>  hw/mips/cps.c | 52 +++++++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 52 insertions(+)
 >
-> diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-> index 87b73fe33c..0a4865d4a9 100644
-> --- a/hw/i386/x86.c
-> +++ b/hw/i386/x86.c
-> @@ -103,13 +103,17 @@ uint32_t x86_cpu_apic_id_from_index(X86MachineState=
- *x86ms,
->  void x86_cpu_new(X86MachineState *x86ms, int64_t apic_id, Error **errp)
->  {
->      Object *cpu =3D NULL;
->      Error *local_err =3D NULL;
+
+>      /* Inter-Thread Communication Unit */
+>      if (itu_present) {
+>          sysbus_init_child_obj(OBJECT(dev), "itu", &s->itu, sizeof(s->itu=
+),
+>                                TYPE_MIPS_ITU);
+>          object_property_set_int(OBJECT(&s->itu), 16, "num-fifo", &err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+>          object_property_set_int(OBJECT(&s->itu), 16, "num-semaphores", &=
+err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+>          object_property_set_bool(OBJECT(&s->itu), saar_present, "saar-pr=
+esent",
+>                                   &err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+>          if (saar_present) {
+>              s->itu.saar =3D &env->CP0_SAAR;
+>          }
+>          object_property_set_bool(OBJECT(&s->itu), true, "realized", &err=
+);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+>          if (err !=3D NULL) {
+>              error_propagate(errp, err);
+>              return;
+>          }
+
+I think Coccinelle has been fooled here by the slightly non-idiomatic
+use of "err !=3D NULL" in the guard and has inserted a duplicate
+check...
+
+>          memory_region_add_subregion(&s->container, 0,
+>                             sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->itu=
+), 0));
+>      }
 >
->      cpu =3D object_new(MACHINE(x86ms)->cpu_type);
->
->      object_property_set_uint(cpu, apic_id, "apic-id", &local_err);
-> +    if (local_err) {
-> +        error_propagate(errp, local_err);
+>      /* Cluster Power Controller */
+>      sysbus_init_child_obj(OBJECT(dev), "cpc", &s->cpc, sizeof(s->cpc),
+>                            TYPE_MIPS_CPC);
+>      object_property_set_int(OBJECT(&s->cpc), s->num_vp, "num-vp", &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
 > +        return;
 > +    }
->      object_property_set_bool(cpu, true, "realized", &local_err);
->
->      object_unref(cpu);
->      error_propagate(errp, local_err);
->  }
+>      object_property_set_int(OBJECT(&s->cpc), 1, "vp-start-running", &err=
+);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+>      object_property_set_bool(OBJECT(&s->cpc), true, "realized", &err);
+>      if (err !=3D NULL) {
+>          error_propagate(errp, err);
+>          return;
+>      }
 
-Hmm, not sure about this one -- in the error-exit path
-for failure-to-realize we object_unref(), do we need to
-do so also if we error-exit for failure to set the apic-id ?
-
-(Since apic-id is a PROP_UINT32 with no set function, there
-is not currently any way for the set_uint to fail, as it
-happens. But we ought to either have the error-propagation
-right or use error_abort if we truly believe it can never fail.)
+...but oddly it gets it right here and in a couple of other cases
+in this patch.
 
 thanks
 -- PMM

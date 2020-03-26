@@ -1,98 +1,107 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2485078lfi;
-        Thu, 26 Mar 2020 15:51:27 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuqRiYAZZk0O7vCcyucSd5bpVQo0aP6tb3pIo9rRk+NqVPNgemWYRlNqljSvqWvvBKekdXD
-X-Received: by 2002:a37:94a:: with SMTP id 71mr10220866qkj.78.1585263087196;
-        Thu, 26 Mar 2020 15:51:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585263087; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2501916lfi;
+        Thu, 26 Mar 2020 16:09:02 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvbi0o2380OR+UTja379HBXjnprZPm2RylIXKWiSi0TYdNTVqzQ1an4h5iEKLMAPna1BrqC
+X-Received: by 2002:aed:3244:: with SMTP id y62mr11439444qtd.242.1585264142118;
+        Thu, 26 Mar 2020 16:09:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585264142; cv=none;
         d=google.com; s=arc-20160816;
-        b=w7ypla7EWoYqXGrQUvzF8YCSQr72iNfSHJCVm/H3kilRLrZZxCl7smn/KIDvs5tYUm
-         cqncMlnEIKCyBjJri4SgOaAKv8DgVVQafD/OcV/pBNjpGaKcD1GskhaA3HLwtAHVehJO
-         qnKhyWQ7d1RpbfBvJCmq7QLsgkdzTW8cW0AZCyaV7CR23yIegILGKj7x03wMTygIDMg1
-         sI8F+LJSdwbLWrYRMEVTjhPm3+PEGKCvQY9QDtRQ2LhbhnVxiClZt3As6zHzQHfpXqB1
-         dG9j8CMhCj6Fowq18K5/zY1rH1q7W9Mz2F/iTuzhJaIf6+S+NSn21aEbIxrXYxrTHUMq
-         ZNqQ==
+        b=TIvj5546upjX8m7DcQUTK5pbeaMbObgItx0rr/O7ys4mh8IUiev6W2YDlMIHeFFaoD
+         z9grD+ESstFozzxFuKY26RtC1WZwRibGa0Z8LHuoHDbjFbC2Ag6oG2AI2kk1rKSGJ5Fj
+         18Uw3W3pcNSvcY0xjTEOI0BVMgPrcAc9pLpL9gQ5n1B0QCKD5tF8CoKOseRmJ3KyW/2q
+         n/vzVD+iw7SsQ19D8h/yXj8h6sy9wCGZvjjWBgnw0ZpF7pFYQ6n7CjlaGeYRrYZrjbOJ
+         4xzydXeOwqIvGdjPKG0VgljZb+ZMEIw3yBOM9qDiBNPe+A8feR6l7jSQfwuCGvCsYvt5
+         LheQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=bhTcQqH9tF1B8Clb+MOxQ675dIzJZl4HSKXWL0fidL0=;
-        b=fz3iOR4Ca/+g3QVUNEh7Ko/PGd+yCQggSP9XEO/ObaESfR1toYicQ9XrVoGpl0bLLl
-         uUFzdi9D02UchEXvqxwSI5KJfSvydbXHEf/NdHabR/M38P9Z53+CwrBZFgkbzNsihMin
-         4FgYtfAisJmDNBsmNuaClrgrmzKcXxNo+DU+Px0JbAfucDs+bj9iAYb0jS8nTIumyUIT
-         ooGGaMdax0pIf/dVAuUtvObdWy3kPPmxSC5R2d0bYUlJg8I7Oxs3ZiwXrgi8M0AKOtia
-         M0ArTAVwSXsu8vC9KRMT+COp1YP0RbcNWeNkw0xhKSjcGu5F+DRzo0//O0VC4MWSlFTX
-         uF6Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=1a/74RtZJl65FwDaRqFWJWhWsV/XH0AS+LKjeLcIuFE=;
+        b=vbaP+Z8RNcfwdiOcRFXjSdZ48Z8aeT6E43VS8J9QcU1B7nppW1jQJKpXLUV+z9aoQs
+         b+uoh6E/ZVRcK14PcnJ1Cek8kmc5r1YrTPD3UXbmWxj6lp2zLxla2IElIaJDA0WysnZC
+         hj4DB/i57od7ojZXjDks9x20XVO2NCuYYKjJsi1YLzNxImIrSRz6GUgctNLvE2XLt87d
+         rnf0G6Xdl24uxopSLGfbGS5BHNCHq3O41FQJR56NjluCZ5vfRaLNwEz6HxsLWjh1MFd4
+         bXG3NTawnacR4lIk+5X4TlI9Ewa5xegAOuXIGaScMLYgMf1CFs4diKPhO1xzpqunhcgC
+         b7sQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bv95TKr7;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Qz0ewG13;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p5si2402223qki.298.2020.03.26.15.51.26
+        by mx.google.com with ESMTPS id b18si2439717qkc.346.2020.03.26.16.09.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Mar 2020 15:51:27 -0700 (PDT)
+        Thu, 26 Mar 2020 16:09:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bv95TKr7;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Qz0ewG13;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33834 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34158 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jHbLS-0000Ry-J0
-	for alex.bennee@linaro.org; Thu, 26 Mar 2020 18:51:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58284)
+	id 1jHbcT-00025m-DE
+	for alex.bennee@linaro.org; Thu, 26 Mar 2020 19:09:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57923)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aleksandar.qemu.devel@gmail.com>) id 1jHbLE-0000LU-MY
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 18:51:14 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1jHbcI-0001yi-CM
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 19:08:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <aleksandar.qemu.devel@gmail.com>) id 1jHbLC-0000db-HX
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 18:51:12 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:55010)
+ (envelope-from <richard.henderson@linaro.org>) id 1jHbcF-0001IG-O2
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 19:08:50 -0400
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:41253)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <aleksandar.qemu.devel@gmail.com>)
- id 1jHbL2-0000TL-9B; Thu, 26 Mar 2020 18:51:00 -0400
-Received: by mail-wm1-x332.google.com with SMTP id c81so9328438wmd.4;
- Thu, 26 Mar 2020 15:50:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=bhTcQqH9tF1B8Clb+MOxQ675dIzJZl4HSKXWL0fidL0=;
- b=bv95TKr701jZE9PSPU/l1wScN+vW1d+bir4wHxHz1FZqsrP50zwgdq8rqeU1wu6Zz5
- xECq3WB7FcUqis3UsQg/GbBX21GgpbShHRRYqlcxFjUH+htqzBR1jma2aLYeMyyxFvsh
- H0MF0zTp/1ML/q+dQ96UY2cGtbXSE/3QO3cGvyAfPa2LLu3WxDlsYfybD1Ql4TsIm46g
- 2XrA58Awt3NtpyGD9KecuYFiJ0ZOy9V+PhtVQujH/i4wHTbOHbsxN0Rkm6/LkYK3gdkx
- 8KUTsI5LVxFOXT9COHa9KQ6xV5j2LRIrdsdJhMtNvbuI7P/0tgzvjRF/V1qoJ4w0bM1g
- bDNA==
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1jHbcF-0001Ht-Hw
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 19:08:47 -0400
+Received: by mail-pf1-x441.google.com with SMTP id z65so3544537pfz.8
+ for <qemu-arm@nongnu.org>; Thu, 26 Mar 2020 16:08:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=1a/74RtZJl65FwDaRqFWJWhWsV/XH0AS+LKjeLcIuFE=;
+ b=Qz0ewG13NTs2zcsq5z35cW116x7yv5X9PevHtCa0PiThUIaXkg053Wb+w3nOSnUdDE
+ 2Ryev4Aqz41K268MlINa9PBxEJHsNKX/yI9RuEfAWnhryv20RvXh6y2Y1vUb2Vx4qOHS
+ pzRJuHJnRN8ov2cqV/IHW0et7KAwaqPZ2d3xENNcHdI/1S8r8RzzcfG3xeMgmcF3yyvc
+ H9OtAO+BC/P48eQHCejTOG4mK/gBXcgMLWtVX7+6d8jzpvRhoz1KE4DGnpI5zwx1htBW
+ h0kA7W5FfmizD6LIFASo3usTpKDwCdZwgq2Y+8fUyg/+HZGPY+8YBuW/ysgQEIYo8gNO
+ h1+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=bhTcQqH9tF1B8Clb+MOxQ675dIzJZl4HSKXWL0fidL0=;
- b=lLSmq+pattOGXaGIPRr+s4jgPh8LUz+m2V2ZWBb3HLteAhVRR9GZn2jEbx1xJweLf2
- ukWPI/ZH6fd5KrvWfHQxfOcebQ3GOVeOr3JSzRbAC+O9iqOJUCPajXpOzHUQy6U+z+Ls
- Tx5iPY2Q2Rdu46oo5rLXhOhXo9PQMrOD7lxZ1MWVgzDPBeT409PQ0F7hI+9/hHOTcy4D
- 7kC71xcw74Rd9u5i2XcufNO5EiIk3qRl91WW5GbSACcIZtbH83lNJ6VV8ApKKQ+jPfAU
- 6yrdp0tUA4Px9oVmkV864fi0dlxUILfhbf9i+TOa0aOcRw4/4D9BN86QOUZeVigeNDOZ
- EGmQ==
-X-Gm-Message-State: ANhLgQ3H4SAJmBz4ORBCCiVYWnAugHM6Jc8PCIOweQELvcyV+EKREicy
- MEYcV7sgHGZOXYrqtOxNxXCqNG9aanSTDIUovZw=
-X-Received: by 2002:a5d:65c4:: with SMTP id e4mr5281981wrw.147.1585263057127; 
- Thu, 26 Mar 2020 15:50:57 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=1a/74RtZJl65FwDaRqFWJWhWsV/XH0AS+LKjeLcIuFE=;
+ b=BOCK+GbqpY682q68MkVN6IH7vC+KAHolTLJddaUUemph0BMfYwWNTiLmJ4Lbid8nnE
+ 3FEuw7HUvOe5FDh5AHY9hdzOFFuAoI1IhY8zzAMPZkl7H8NkaPcfHqovExDeJWnP2tKU
+ mFbNK0FrvJHl3lD5taJP5pHAhRm7eRCI3gS+P9bkoinKLyOzrqOEPQfGZO0ydK41KtzW
+ zuaSn7qzSS5kxmvtqT3ETgeMVETxfLl+M1LzAx8ZJzDPjVDCNACDlB+s5er8abnpMwp3
+ 9wWygq+MqPdZ9vXZlYQBX9d90ISDRvGF2d6amqXbUWoV2EcD56eBwaqQvVZAx5S7bxDk
+ xIng==
+X-Gm-Message-State: ANhLgQ3xXhT12VVNf+q0minz5AGf3VH9lsxwZ/ezMDMT1iP/TxotaUSF
+ z7InVFUgYv3VvdpuEgHOeZupiA==
+X-Received: by 2002:a62:1dcd:: with SMTP id
+ d196mr11633461pfd.296.1585264126502; 
+ Thu, 26 Mar 2020 16:08:46 -0700 (PDT)
+Received: from localhost.localdomain (174-21-138-234.tukw.qwest.net.
+ [174.21.138.234])
+ by smtp.gmail.com with ESMTPSA id i187sm2530037pfg.33.2020.03.26.16.08.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 26 Mar 2020 16:08:45 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 05/31] target/arm: Implement SVE2 integer unary operations
+ (predicated)
+Date: Thu, 26 Mar 2020 16:08:12 -0700
+Message-Id: <20200326230838.31112-6-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200326230838.31112-1-richard.henderson@linaro.org>
+References: <20200326230838.31112-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-References: <20200325191830.16553-1-f4bug@amsat.org>
- <20200325191830.16553-9-f4bug@amsat.org>
-In-Reply-To: <20200325191830.16553-9-f4bug@amsat.org>
-From: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
-Date: Fri, 27 Mar 2020 00:50:41 +0200
-Message-ID: <CAHiYmc5WNE_044D0eTZnEbe-EfTBD1z0mH=RBOBpv265V7OOUQ@mail.gmail.com>
-Subject: Re: [PATCH-for-5.0 08/12] hw/mips/boston: Add missing
- error-propagation code
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="000000000000654ec605a1c9d17d"
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::332
+X-Received-From: 2607:f8b0:4864:20::441
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,448 +113,163 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paul Burton <pburton@wavecomp.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: rajav@quicinc.com, qemu-arm@nongnu.org, apazos@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /nSvJJvpdT73
+X-TUID: 5RRyx149g0uo
 
---000000000000654ec605a1c9d17d
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/helper-sve.h    | 13 +++++++++++
+ target/arm/sve.decode      |  7 ++++++
+ target/arm/sve_helper.c    | 25 ++++++++++++++++----
+ target/arm/translate-sve.c | 47 ++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 88 insertions(+), 4 deletions(-)
 
-21:18 Sre, 25.03.2020. Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =D1=98=
-=D0=B5
-=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
->
-> Running the coccinelle script produced:
->
->   $ spatch \
->     --macro-file scripts/cocci-macro-file.h --include-headers \
->     --sp-file
-scripts/coccinelle/object_property_missing_error_propagate.cocci \
->     --keep-comments --smpl-spacing --dir hw
->
->   [[manual check required: error_propagate() might be missing in
-object_property_set_int() hw/mips/boston.c:462:4]]
->   [[manual check required: error_propagate() might be missing in
-object_property_set_str() hw/mips/boston.c:460:4]]
->
-> Since the uses are inside a MachineClass::init() function,
-> directly use &error_fatal instead of error_propagate().
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/mips/boston.c | 17 ++++++-----------
->  1 file changed, 6 insertions(+), 11 deletions(-)
->
-> diff --git a/hw/mips/boston.c b/hw/mips/boston.c
-> index 98ecd25e8e..2e821ca7d6 100644
-> --- a/hw/mips/boston.c
-> +++ b/hw/mips/boston.c
-> @@ -425,121 +425,116 @@ xilinx_pcie_init(MemoryRegion *sys_mem, uint32_t
-bus_nr,
->  static void boston_mach_init(MachineState *machine)
->  {
->      DeviceState *dev;
->      BostonState *s;
-> -    Error *err =3D NULL;
->      MemoryRegion *flash, *ddr_low_alias, *lcd, *platreg;
->      MemoryRegion *sys_mem =3D get_system_memory();
->      XilinxPCIEHost *pcie2;
->      PCIDevice *ahci;
->      DriveInfo *hd[6];
->      Chardev *chr;
->      int fw_size, fit_err;
->      bool is_64b;
->
->      if ((machine->ram_size % GiB) ||
->          (machine->ram_size > (2 * GiB))) {
->          error_report("Memory size must be 1GB or 2GB");
->          exit(1);
->      }
->
->      dev =3D qdev_create(NULL, TYPE_MIPS_BOSTON);
->      qdev_init_nofail(dev);
->
->      s =3D BOSTON(dev);
->      s->mach =3D machine;
->
->      if (!cpu_supports_cps_smp(machine->cpu_type)) {
->          error_report("Boston requires CPUs which support CPS");
->          exit(1);
->      }
->
->      is_64b =3D cpu_supports_isa(machine->cpu_type, ISA_MIPS64);
->
->      sysbus_init_child_obj(OBJECT(machine), "cps", OBJECT(&s->cps),
->                            sizeof(s->cps), TYPE_MIPS_CPS);
->      object_property_set_str(OBJECT(&s->cps), machine->cpu_type,
-"cpu-type",
-> -                            &err);
-> -    object_property_set_int(OBJECT(&s->cps), machine->smp.cpus,
-"num-vp", &err);
-> -    object_property_set_bool(OBJECT(&s->cps), true, "realized", &err);
-> -
-> -    if (err !=3D NULL) {
-> -        error_report("%s", error_get_pretty(err));
-> -        exit(1);
-> -    }
-> -
-> +                            &error_fatal);
-> +    object_property_set_int(OBJECT(&s->cps), machine->smp.cpus, "num-vp"=
-,
-> +                            &error_fatal);
-> +    object_property_set_bool(OBJECT(&s->cps), true, "realized",
-&error_fatal);
->      sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->cps), 0, 0, 1);
->
->      flash =3D  g_new(MemoryRegion, 1);
-> -    memory_region_init_rom(flash, NULL, "boston.flash", 128 * MiB, &err)=
-;
-> +    memory_region_init_rom(flash, NULL, "boston.flash", 128 * MiB,
-> +                           &error_fatal);
->      memory_region_add_subregion_overlap(sys_mem, 0x18000000, flash, 0);
->
->      memory_region_add_subregion_overlap(sys_mem, 0x80000000,
-machine->ram, 0);
->
->      ddr_low_alias =3D g_new(MemoryRegion, 1);
->      memory_region_init_alias(ddr_low_alias, NULL, "boston_low.ddr",
->                               machine->ram, 0,
->                               MIN(machine->ram_size, (256 * MiB)));
->      memory_region_add_subregion_overlap(sys_mem, 0, ddr_low_alias, 0);
->
->      xilinx_pcie_init(sys_mem, 0,
->                       0x10000000, 32 * MiB,
->                       0x40000000, 1 * GiB,
->                       get_cps_irq(&s->cps, 2), false);
->
->      xilinx_pcie_init(sys_mem, 1,
->                       0x12000000, 32 * MiB,
->                       0x20000000, 512 * MiB,
->                       get_cps_irq(&s->cps, 1), false);
->
->      pcie2 =3D xilinx_pcie_init(sys_mem, 2,
->                               0x14000000, 32 * MiB,
->                               0x16000000, 1 * MiB,
->                               get_cps_irq(&s->cps, 0), true);
->
->      platreg =3D g_new(MemoryRegion, 1);
->      memory_region_init_io(platreg, NULL, &boston_platreg_ops, s,
->                            "boston-platregs", 0x1000);
->      memory_region_add_subregion_overlap(sys_mem, 0x17ffd000, platreg, 0)=
-;
->
->      s->uart =3D serial_mm_init(sys_mem, 0x17ffe000, 2,
->                               get_cps_irq(&s->cps, 3), 10000000,
->                               serial_hd(0), DEVICE_NATIVE_ENDIAN);
->
->      lcd =3D g_new(MemoryRegion, 1);
->      memory_region_init_io(lcd, NULL, &boston_lcd_ops, s, "boston-lcd",
-0x8);
->      memory_region_add_subregion_overlap(sys_mem, 0x17fff000, lcd, 0);
->
->      chr =3D qemu_chr_new("lcd", "vc:320x240", NULL);
->      qemu_chr_fe_init(&s->lcd_display, chr, NULL);
->      qemu_chr_fe_set_handlers(&s->lcd_display, NULL, NULL,
->                               boston_lcd_event, NULL, s, NULL, true);
->
->      ahci =3D
-pci_create_simple_multifunction(&PCI_BRIDGE(&pcie2->root)->sec_bus,
->                                             PCI_DEVFN(0, 0),
->                                             true, TYPE_ICH9_AHCI);
->      g_assert(ARRAY_SIZE(hd) =3D=3D ahci_get_num_ports(ahci));
->      ide_drive_get(hd, ahci_get_num_ports(ahci));
->      ahci_ide_create_devs(ahci, hd);
->
->      if (machine->firmware) {
->          fw_size =3D load_image_targphys(machine->firmware,
->                                        0x1fc00000, 4 * MiB);
->          if (fw_size =3D=3D -1) {
->              error_report("unable to load firmware image '%s'",
->                            machine->firmware);
->              exit(1);
->          }
->      } else if (machine->kernel_filename) {
->          fit_err =3D load_fit(&boston_fit_loader, machine->kernel_filenam=
-e,
-s);
->          if (fit_err) {
->              error_report("unable to load FIT image");
->              exit(1);
->          }
->
->          gen_firmware(memory_region_get_ram_ptr(flash) + 0x7c00000,
->                       s->kernel_entry, s->fdt_base, is_64b);
->      } else if (!qtest_enabled()) {
->          error_report("Please provide either a -kernel or -bios
-argument");
->          exit(1);
->      }
->  }
-> --
-> 2.21.1
->
+diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+index 854cd97fdf..d3b7c3bd12 100644
+--- a/target/arm/helper-sve.h
++++ b/target/arm/helper-sve.h
+@@ -507,6 +507,19 @@ DEF_HELPER_FLAGS_4(sve_rbit_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve_rbit_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve_rbit_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ 
++DEF_HELPER_FLAGS_4(sve2_sqabs_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqabs_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqabs_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqabs_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(sve2_sqneg_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqneg_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqneg_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqneg_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(sve2_urecpe_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_ursqrte_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
+ DEF_HELPER_FLAGS_5(sve_splice, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ 
+ DEF_HELPER_FLAGS_5(sve_cmpeq_ppzz_b, TCG_CALL_NO_RWG,
+diff --git a/target/arm/sve.decode b/target/arm/sve.decode
+index 6691145854..95a9c65451 100644
+--- a/target/arm/sve.decode
++++ b/target/arm/sve.decode
+@@ -1107,3 +1107,10 @@ PMUL_zzz        00000100 00 1 ..... 0110 01 ..... .....  @rd_rn_rm_e0
+ 
+ SADALP_zpzz     01000100 .. 000 100 101 ... ..... .....  @rdm_pg_rn
+ UADALP_zpzz     01000100 .. 000 101 101 ... ..... .....  @rdm_pg_rn
++
++### SVE2 integer unary operations (predicated)
++
++URECPE          01000100 .. 000 000 101 ... ..... .....  @rd_pg_rn
++URSQRTE         01000100 .. 000 001 101 ... ..... .....  @rd_pg_rn
++SQABS           01000100 .. 001 000 101 ... ..... .....  @rd_pg_rn
++SQNEG           01000100 .. 001 001 101 ... ..... .....  @rd_pg_rn
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index 7dc17421e9..16606331fc 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -535,8 +535,8 @@ static inline uint64_t do_sadalp_d(uint64_t n, uint64_t m)
+     return m + n1 + n2;
+ }
+ 
+-DO_ZPZZ(sve2_sadalp_zpzz_h, int16_t, H1_2, do_sadalp_h)
+-DO_ZPZZ(sve2_sadalp_zpzz_s, int32_t, H1_4, do_sadalp_s)
++DO_ZPZZ(sve2_sadalp_zpzz_h, uint16_t, H1_2, do_sadalp_h)
++DO_ZPZZ(sve2_sadalp_zpzz_s, uint32_t, H1_4, do_sadalp_s)
+ DO_ZPZZ_D(sve2_sadalp_zpzz_d, uint64_t, do_sadalp_d)
+ 
+ static inline uint16_t do_uadalp_h(uint16_t n, uint16_t m)
+@@ -557,8 +557,8 @@ static inline uint64_t do_uadalp_d(uint64_t n, uint64_t m)
+     return m + n1 + n2;
+ }
+ 
+-DO_ZPZZ(sve2_uadalp_zpzz_h, int16_t, H1_2, do_uadalp_h)
+-DO_ZPZZ(sve2_uadalp_zpzz_s, int32_t, H1_4, do_uadalp_s)
++DO_ZPZZ(sve2_uadalp_zpzz_h, uint16_t, H1_2, do_uadalp_h)
++DO_ZPZZ(sve2_uadalp_zpzz_s, uint32_t, H1_4, do_uadalp_s)
+ DO_ZPZZ_D(sve2_uadalp_zpzz_d, uint64_t, do_uadalp_d)
+ 
+ #undef DO_ZPZZ
+@@ -728,6 +728,23 @@ DO_ZPZ(sve_rbit_h, uint16_t, H1_2, revbit16)
+ DO_ZPZ(sve_rbit_s, uint32_t, H1_4, revbit32)
+ DO_ZPZ_D(sve_rbit_d, uint64_t, revbit64)
+ 
++#define DO_SQABS(N)  (N == -N ? N - 1 : N < 0 ? -N : N)
++
++DO_ZPZ(sve2_sqabs_b, int8_t, H1, DO_SQABS)
++DO_ZPZ(sve2_sqabs_h, int16_t, H1_2, DO_SQABS)
++DO_ZPZ(sve2_sqabs_s, int32_t, H1_4, DO_SQABS)
++DO_ZPZ_D(sve2_sqabs_d, int64_t, DO_SQABS)
++
++#define DO_SQNEG(N)  (N == -N ? N - 1 : -N)
++
++DO_ZPZ(sve2_sqneg_b, uint8_t, H1, DO_SQNEG)
++DO_ZPZ(sve2_sqneg_h, uint16_t, H1_2, DO_SQNEG)
++DO_ZPZ(sve2_sqneg_s, uint32_t, H1_4, DO_SQNEG)
++DO_ZPZ_D(sve2_sqneg_d, uint64_t, DO_SQNEG)
++
++DO_ZPZ(sve2_urecpe_s, uint32_t, H1_4, helper_recpe_u32)
++DO_ZPZ(sve2_ursqrte_s, uint32_t, H1_4, helper_rsqrte_u32)
++
+ /* Three-operand expander, unpredicated, in which the third operand is "wide".
+  */
+ #define DO_ZZW(NAME, TYPE, TYPEW, H, OP)                       \
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index bc8321f7cd..938ec08673 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -5919,3 +5919,50 @@ static bool trans_UADALP_zpzz(DisasContext *s, arg_rprr_esz *a)
+     }
+     return do_sve2_zpzz_ool(s, a, fns[a->esz - 1]);
+ }
++
++/*
++ * SVE2 integer unary operations (predicated)
++ */
++
++static bool do_sve2_zpz_ool(DisasContext *s, arg_rpr_esz *a,
++                            gen_helper_gvec_3 *fn)
++{
++    if (!dc_isar_feature(aa64_sve2, s)) {
++        return false;
++    }
++    return do_zpz_ool(s, a, fn);
++}
++
++static bool trans_URECPE(DisasContext *s, arg_rpr_esz *a)
++{
++    if (a->esz != 2) {
++        return false;
++    }
++    return do_sve2_zpz_ool(s, a, gen_helper_sve2_urecpe_s);
++}
++
++static bool trans_URSQRTE(DisasContext *s, arg_rpr_esz *a)
++{
++    if (a->esz != 2) {
++        return false;
++    }
++    return do_sve2_zpz_ool(s, a, gen_helper_sve2_ursqrte_s);
++}
++
++static bool trans_SQABS(DisasContext *s, arg_rpr_esz *a)
++{
++    static gen_helper_gvec_3 * const fns[4] = {
++        gen_helper_sve2_sqabs_b, gen_helper_sve2_sqabs_h,
++        gen_helper_sve2_sqabs_s, gen_helper_sve2_sqabs_d,
++    };
++    return do_sve2_zpz_ool(s, a, fns[a->esz]);
++}
++
++static bool trans_SQNEG(DisasContext *s, arg_rpr_esz *a)
++{
++    static gen_helper_gvec_3 * const fns[4] = {
++        gen_helper_sve2_sqneg_b, gen_helper_sve2_sqneg_h,
++        gen_helper_sve2_sqneg_s, gen_helper_sve2_sqneg_d,
++    };
++    return do_sve2_zpz_ool(s, a, fns[a->esz]);
++}
+-- 
+2.20.1
 
-Reviewed-by: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
-
---000000000000654ec605a1c9d17d
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<p dir=3D"ltr"></p>
-<p dir=3D"ltr">21:18 Sre, 25.03.2020. Philippe Mathieu-Daud=C3=A9 &lt;<a hr=
-ef=3D"mailto:f4bug@amsat.org">f4bug@amsat.org</a>&gt; =D1=98=D0=B5 =D0=BD=
-=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:<br>
-&gt;<br>
-&gt; Running the coccinelle script produced:<br>
-&gt;<br>
-&gt; =C2=A0 $ spatch \<br>
-&gt; =C2=A0 =C2=A0 --macro-file scripts/cocci-macro-file.h --include-header=
-s \<br>
-&gt; =C2=A0 =C2=A0 --sp-file scripts/coccinelle/object_property_missing_err=
-or_propagate.cocci \<br>
-&gt; =C2=A0 =C2=A0 --keep-comments --smpl-spacing --dir hw<br>
-&gt;<br>
-&gt; =C2=A0 [[manual check required: error_propagate() might be missing in =
-object_property_set_int() hw/mips/boston.c:462:4]]<br>
-&gt; =C2=A0 [[manual check required: error_propagate() might be missing in =
-object_property_set_str() hw/mips/boston.c:460:4]]<br>
-&gt;<br>
-&gt; Since the uses are inside a MachineClass::init() function,<br>
-&gt; directly use &amp;error_fatal instead of error_propagate().<br>
-&gt;<br>
-&gt; Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug=
-@amsat.org">f4bug@amsat.org</a>&gt;<br>
-&gt; ---<br>
-&gt; =C2=A0hw/mips/boston.c | 17 ++++++-----------<br>
-&gt; =C2=A01 file changed, 6 insertions(+), 11 deletions(-)<br>
-&gt;<br>
-&gt; diff --git a/hw/mips/boston.c b/hw/mips/boston.c<br>
-&gt; index 98ecd25e8e..2e821ca7d6 100644<br>
-&gt; --- a/hw/mips/boston.c<br>
-&gt; +++ b/hw/mips/boston.c<br>
-&gt; @@ -425,121 +425,116 @@ xilinx_pcie_init(MemoryRegion *sys_mem, uint32=
-_t bus_nr,<br>
-&gt; =C2=A0static void boston_mach_init(MachineState *machine)<br>
-&gt; =C2=A0{<br>
-&gt; =C2=A0 =C2=A0 =C2=A0DeviceState *dev;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0BostonState *s;<br>
-&gt; -=C2=A0 =C2=A0 Error *err =3D NULL;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0MemoryRegion *flash, *ddr_low_alias, *lcd, *platre=
-g;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0MemoryRegion *sys_mem =3D get_system_memory();<br>
-&gt; =C2=A0 =C2=A0 =C2=A0XilinxPCIEHost *pcie2;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0PCIDevice *ahci;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0DriveInfo *hd[6];<br>
-&gt; =C2=A0 =C2=A0 =C2=A0Chardev *chr;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0int fw_size, fit_err;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0bool is_64b;<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0if ((machine-&gt;ram_size % GiB) ||<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(machine-&gt;ram_size &gt; (2 * GiB)=
-)) {<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0error_report(&quot;Memory size must =
-be 1GB or 2GB&quot;);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exit(1);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0}<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0dev =3D qdev_create(NULL, TYPE_MIPS_BOSTON);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0qdev_init_nofail(dev);<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0s =3D BOSTON(dev);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0s-&gt;mach =3D machine;<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0if (!cpu_supports_cps_smp(machine-&gt;cpu_type)) {=
-<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0error_report(&quot;Boston requires C=
-PUs which support CPS&quot;);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exit(1);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0}<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0is_64b =3D cpu_supports_isa(machine-&gt;cpu_type, =
-ISA_MIPS64);<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0sysbus_init_child_obj(OBJECT(machine), &quot;cps&q=
-uot;, OBJECT(&amp;s-&gt;cps),<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0sizeof(s-&gt;cps), TYPE_MIPS_CPS);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0object_property_set_str(OBJECT(&amp;s-&gt;cps), ma=
-chine-&gt;cpu_type, &quot;cpu-type&quot;,<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;err);<br>
-&gt; -=C2=A0 =C2=A0 object_property_set_int(OBJECT(&amp;s-&gt;cps), machine=
--&gt;smp.cpus, &quot;num-vp&quot;, &amp;err);<br>
-&gt; -=C2=A0 =C2=A0 object_property_set_bool(OBJECT(&amp;s-&gt;cps), true, =
-&quot;realized&quot;, &amp;err);<br>
-&gt; -<br>
-&gt; -=C2=A0 =C2=A0 if (err !=3D NULL) {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;%s&quot;, error_get_pr=
-etty(err));<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
-&gt; -=C2=A0 =C2=A0 }<br>
-&gt; -<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;error_fatal);<br>
-&gt; +=C2=A0 =C2=A0 object_property_set_int(OBJECT(&amp;s-&gt;cps), machine=
--&gt;smp.cpus, &quot;num-vp&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;error_fatal);<br>
-&gt; +=C2=A0 =C2=A0 object_property_set_bool(OBJECT(&amp;s-&gt;cps), true, =
-&quot;realized&quot;, &amp;error_fatal);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&amp;s-&gt;=
-cps), 0, 0, 1);<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0flash =3D=C2=A0 g_new(MemoryRegion, 1);<br>
-&gt; -=C2=A0 =C2=A0 memory_region_init_rom(flash, NULL, &quot;boston.flash&=
-quot;, 128 * MiB, &amp;err);<br>
-&gt; +=C2=A0 =C2=A0 memory_region_init_rom(flash, NULL, &quot;boston.flash&=
-quot;, 128 * MiB,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0&amp;error_fatal);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0memory_region_add_subregion_overlap(sys_mem, 0x180=
-00000, flash, 0);<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0memory_region_add_subregion_overlap(sys_mem, 0x800=
-00000, machine-&gt;ram, 0);<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0ddr_low_alias =3D g_new(MemoryRegion, 1);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0memory_region_init_alias(ddr_low_alias, NULL, &quo=
-t;boston_low.ddr&quot;,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 machine-&gt;ram, 0,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 MIN(machine-&gt;ram_size, (256 * MiB)));=
-<br>
-&gt; =C2=A0 =C2=A0 =C2=A0memory_region_add_subregion_overlap(sys_mem, 0, dd=
-r_low_alias, 0);<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0xilinx_pcie_init(sys_mem, 0,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 0x10000000, 32 * MiB,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 0x40000000, 1 * GiB,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 get_cps_irq(&amp;s-&gt;cps, 2), false);<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0xilinx_pcie_init(sys_mem, 1,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 0x12000000, 32 * MiB,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 0x20000000, 512 * MiB,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 get_cps_irq(&amp;s-&gt;cps, 1), false);<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0pcie2 =3D xilinx_pcie_init(sys_mem, 2,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 0x14000000, 32 * MiB,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 0x16000000, 1 * MiB,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 get_cps_irq(&amp;s-&gt;cps, 0), true);<b=
-r>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0platreg =3D g_new(MemoryRegion, 1);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0memory_region_init_io(platreg, NULL, &amp;boston_p=
-latreg_ops, s,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;boston-platregs&quot;, 0x1000);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0memory_region_add_subregion_overlap(sys_mem, 0x17f=
-fd000, platreg, 0);<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0s-&gt;uart =3D serial_mm_init(sys_mem, 0x17ffe000,=
- 2,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 get_cps_irq(&amp;s-&gt;cps, 3), 10000000=
-,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 serial_hd(0), DEVICE_NATIVE_ENDIAN);<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0lcd =3D g_new(MemoryRegion, 1);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0memory_region_init_io(lcd, NULL, &amp;boston_lcd_o=
-ps, s, &quot;boston-lcd&quot;, 0x8);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0memory_region_add_subregion_overlap(sys_mem, 0x17f=
-ff000, lcd, 0);<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0chr =3D qemu_chr_new(&quot;lcd&quot;, &quot;vc:320=
-x240&quot;, NULL);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0qemu_chr_fe_init(&amp;s-&gt;lcd_display, chr, NULL=
-);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0qemu_chr_fe_set_handlers(&amp;s-&gt;lcd_display, N=
-ULL, NULL,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 boston_lcd_event, NULL, s, NULL, true);<=
-br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0ahci =3D pci_create_simple_multifunction(&amp;PCI_=
-BRIDGE(&amp;pcie2-&gt;root)-&gt;sec_bus,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 PCI_DEVFN(0, 0),<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 true, TYPE_ICH9_AHCI);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0g_assert(ARRAY_SIZE(hd) =3D=3D ahci_get_num_ports(=
-ahci));<br>
-&gt; =C2=A0 =C2=A0 =C2=A0ide_drive_get(hd, ahci_get_num_ports(ahci));<br>
-&gt; =C2=A0 =C2=A0 =C2=A0ahci_ide_create_devs(ahci, hd);<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0if (machine-&gt;firmware) {<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0fw_size =3D load_image_targphys(mach=
-ine-&gt;firmware,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00x1fc0=
-0000, 4 * MiB);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (fw_size =3D=3D -1) {<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0error_report(&quot;una=
-ble to load firmware image &#39;%s&#39;&quot;,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0machine-&gt;firmware);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exit(1);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt; =C2=A0 =C2=A0 =C2=A0} else if (machine-&gt;kernel_filename) {<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0fit_err =3D load_fit(&amp;boston_fit=
-_loader, machine-&gt;kernel_filename, s);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (fit_err) {<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0error_report(&quot;una=
-ble to load FIT image&quot;);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exit(1);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt;<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0gen_firmware(memory_region_get_ram_p=
-tr(flash) + 0x7c00000,<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 s-&gt;kernel_entry, s-&gt;fdt_base, is_64b);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0} else if (!qtest_enabled()) {<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0error_report(&quot;Please provide ei=
-ther a -kernel or -bios argument&quot;);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exit(1);<br>
-&gt; =C2=A0 =C2=A0 =C2=A0}<br>
-&gt; =C2=A0}<br>
-&gt; -- <br>
-&gt; 2.21.1<br>
-&gt;<br></p>
-<p dir=3D"ltr">Reviewed-by: Aleksandar Markovic &lt;<a href=3D"mailto:aleks=
-andar.qemu.devel@gmail.com">aleksandar.qemu.devel@gmail.com</a>&gt;<br>
-</p>
-
---000000000000654ec605a1c9d17d--

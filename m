@@ -1,242 +1,178 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1883115lfi;
-        Thu, 26 Mar 2020 06:13:51 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvIQpxvrMaEZ1GQuDcAHjIOi9ggz1gKP7TLPCbmvMRSvlse2qxCe4rLwz4xP8WhghWS9j6n
-X-Received: by 2002:a37:57c2:: with SMTP id l185mr7989769qkb.172.1585228431037;
-        Thu, 26 Mar 2020 06:13:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585228430; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2058463lfi;
+        Thu, 26 Mar 2020 08:52:47 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvRehauBqPK7GaTLzy7nf6HMCdJHBAoDsxGjpYJLw5bSdxZJQtJw5d886drE0B6OWqOvmOB
+X-Received: by 2002:a05:620a:14e:: with SMTP id e14mr8565733qkn.16.1585237966976;
+        Thu, 26 Mar 2020 08:52:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585237966; cv=none;
         d=google.com; s=arc-20160816;
-        b=JY66z48w6gotJlmuOQ0AdZnAK8GWh2g68y41/OGnw7C1O13fXUkLDVvm1Ena4p5vv1
-         mpWtzQFeVj2wK/eT/fqTRIrZ77b2wpMg5SroM4d7lHo/+jlLA/HHRH6T47IXkQMA9P6c
-         wglnKwBaON1dJEPQCFbZECITfGXAtH+GtwlLXpBR0zyG3Fn59M6z5/Gde6gHSAzHT6C3
-         /pQvj4SDSr09ECGrx7mPC5bzO32BNR8UzW8n21C4axAwxvlik46+v9pAsTWhcVkLtaeD
-         C3beZUA0M4w7yoks28T5z9VRTuCtR+sJiI3OIUaDfSoJEbjgGUNMIzD0SqaCcznralUt
-         3JIA==
+        b=GsgEKZQv30LPBjIJSLjsOxp8w3b557/25A56pAFWOm/l5VUkJD38K1ZyEYZ4WxvBAb
+         ujnJZMF4cIujiGkSeyP5l8mSelhrqrU2C9NbVkfmgbI6AVzFD08L1teGHrfNSB0cus6C
+         Cvf7DQd/u2FhhVsasKdTjYBzzjbL+AsbF7BL5PPPqX+KoywhcDd52AgNgVcsZ5Kp37Xr
+         8wt2txOI45OZv6cZbQ5MkBZoi1tX1n46/4oJOUsFIOILR0c9aWxdhC2VeAHpVi9aKpz5
+         EmKrLw6PECXMsfZDdTihR5A8ilVRNAT+chW531CiGaWHEN0o+e6lFHQ7oeDNfXlBzkZ0
+         eKNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:dlp-reaction:dlp-version:dlp-product
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:subject:to:from:ironport-sdr
-         :ironport-sdr;
-        bh=9oa90XokEP0KuwTGpO9+dc6eU0Fp2NMW1EgMz+YdmQs=;
-        b=GbTYF3+U58kGMOAG8HbOJWX2u0NoPNQExQQg5vN9Gm9BcflSSFk+nl0ROgl7OnRKIV
-         VSWzz6o2S9nYaZK6iNSR5g+SZei2EcJLhyaoNmYjW5c5DT3NZWk//RnfsLYEvVK/+iXs
-         yyWgnv2aNByP2jlK8H5LNs5/N1ENpMeVz5uTDNpLhNwWzu8cedK2iSKiHhTUUgc9/pZf
-         GV7RtwdO47ypG0lOpR+hzmwLXhqQfBdMt7kTNIYkn93T+GEfBCgljkCTIHLGNZcoWfSH
-         dECCl6VP/XPMYfnDK70A4Aj/E615qUcjKgG7dqLZ4pyDP8BgPtmGAKtYl88NHFtLALuG
-         +Gjw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=be3ips6eGXoWwpTGAhWL/bVeP/QLHCVGDOD9oN5okII=;
+        b=maZieV3xn2yPWFoTbwAhoGO7Qn75/w0gpPKxYsTj5wZFZF+7zTue6ZqS4ycUkf5oqa
+         ESc5bceRrGz0UNSZE02QITAtSVhQNXBdZFKNPOoxvwZZ2KAALP2c+a/QzKIGs64y2WsF
+         EUq9GDS76Wj8YdMvqH6k8HXxhziXZUby7D6O1K3MUx63ifptHTjZVwHq3oW2IwSI18BB
+         5l4YXA8BoXN/qlNmfnUe3M6U7X9iFDwoAqSBsTlvVePFjIRwyg8oyk7wbvaZzUgE0ODN
+         o+jteZ6NHcccp1WiGGHvMcMrh3pHUrkliRSLasfE3hFGnwh+8jwGW6Vjfnumd6vMNJ+n
+         gCxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YzQySB5V;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b89si1173131qva.0.2020.03.26.06.13.50
+        by mx.google.com with ESMTPS id d9si1496431qti.14.2020.03.26.08.52.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Mar 2020 06:13:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Mar 2020 08:52:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:51344 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YzQySB5V;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55770 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jHSKU-0006Wc-Dc
-	for alex.bennee@linaro.org; Thu, 26 Mar 2020 09:13:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52750)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jHUoI-0006CK-IB
+	for alex.bennee@linaro.org; Thu, 26 Mar 2020 11:52:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56412)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <yi.l.liu@intel.com>) id 1jHSKM-0006VE-5S
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 09:13:43 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1jHUnZ-0005mH-Pv
+ for qemu-devel@nongnu.org; Thu, 26 Mar 2020 11:52:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <yi.l.liu@intel.com>) id 1jHSKK-0008E9-TR
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 09:13:42 -0400
-Received: from mga07.intel.com ([134.134.136.100]:38256)
+ (envelope-from <eric.auger@redhat.com>) id 1jHUnY-0000qs-Jw
+ for qemu-devel@nongnu.org; Thu, 26 Mar 2020 11:52:01 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:43742)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <yi.l.liu@intel.com>)
- id 1jHSKH-0008DW-A1; Thu, 26 Mar 2020 09:13:37 -0400
-IronPort-SDR: YqRTi94eWTktwQTEGgZtwHVKzL1X46NMQxZWipLsDvIHDDk2rcLnDatPvVki8r72Qun21qAtmD
- aT0kDNVDOsRg==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Mar 2020 06:13:32 -0700
-IronPort-SDR: gMn7iuYRMuIEtF25zmXu0iCA0a9il9/1joqf694JTqs5IyvErTdk2nT0Ewmv1KFJFKcrlnxWlT
- jkljHO5XbhFA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,308,1580803200"; d="scan'208";a="238798886"
-Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
- by fmsmga007.fm.intel.com with ESMTP; 26 Mar 2020 06:13:32 -0700
-Received: from fmsmsx120.amr.corp.intel.com (10.18.124.208) by
- FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 26 Mar 2020 06:13:32 -0700
-Received: from shsmsx101.ccr.corp.intel.com (10.239.4.153) by
- fmsmsx120.amr.corp.intel.com (10.18.124.208) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 26 Mar 2020 06:13:31 -0700
-Received: from shsmsx104.ccr.corp.intel.com ([169.254.5.206]) by
- SHSMSX101.ccr.corp.intel.com ([169.254.1.43]) with mapi id 14.03.0439.000;
- Thu, 26 Mar 2020 21:13:29 +0800
-From: "Liu, Yi L" <yi.l.liu@intel.com>
-To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
- <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "mst@redhat.com" <mst@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "jacob.jun.pan@linux.intel.com" <jacob.jun.pan@linux.intel.com>
-Subject: RE: [RFC v6 05/24] memory: Introduce IOMMU Memory Region
- inject_faults API
-Thread-Topic: [RFC v6 05/24] memory: Introduce IOMMU Memory Region
- inject_faults API
-Thread-Index: AQHV/tkL56HOGmRgQUStEsCG5C4Dkqha4D1w
-Date: Thu, 26 Mar 2020 13:13:28 +0000
-Message-ID: <A2975661238FB949B60364EF0F2C25743A2044AD@SHSMSX104.ccr.corp.intel.com>
-References: <20200320165840.30057-1-eric.auger@redhat.com>
- <20200320165840.30057-6-eric.auger@redhat.com>
-In-Reply-To: <20200320165840.30057-6-eric.auger@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.239.127.40]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1jHUnY-0000qY-G8
+ for qemu-devel@nongnu.org; Thu, 26 Mar 2020 11:52:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1585237919;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=be3ips6eGXoWwpTGAhWL/bVeP/QLHCVGDOD9oN5okII=;
+ b=YzQySB5V7YZ/weWhXTvIA5NOFIrv4oVCIQBv398YAYtRzMduMb1TLtEMvKrfd01kiXvJaf
+ ontlb5o15/ts9JeixLFFKMExT94pyvg60ABXyQNv5jCc7gk0jaDbP+DSJwjrwg7in5O/c4
+ dE9a7+P4ybWU+C2zSecJaQOc4wFwp+0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-169-URj52xGsM-uMBnTjjUqD2Q-1; Thu, 26 Mar 2020 11:51:58 -0400
+X-MC-Unique: URj52xGsM-uMBnTjjUqD2Q-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D0503800D50;
+ Thu, 26 Mar 2020 15:51:56 +0000 (UTC)
+Received: from [10.36.113.142] (ovpn-113-142.ams2.redhat.com [10.36.113.142])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DB79560C18;
+ Thu, 26 Mar 2020 15:51:45 +0000 (UTC)
+Subject: Re: [PATCH v9 4/9] virtio-iommu: set supported page size mask
+To: Bharat Bhushan <bbhushan2@marvell.com>, peter.maydell@linaro.org,
+ peterx@redhat.com, eric.auger.pro@gmail.com, alex.williamson@redhat.com,
+ kevin.tian@intel.com, mst@redhat.com, tnowicki@marvell.com,
+ drjones@redhat.com, linuc.decode@gmail.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, bharatb.linux@gmail.com, jean-philippe@linaro.org,
+ yang.zhong@intel.com
+References: <20200323084617.1782-1-bbhushan2@marvell.com>
+ <20200323084617.1782-5-bbhushan2@marvell.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <994d9a4f-b8a8-7bda-f5a2-81d65711f580@redhat.com>
+Date: Thu, 26 Mar 2020 16:51:44 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 134.134.136.100
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <20200323084617.1782-5-bbhushan2@marvell.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 216.205.24.74
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- "tnowicki@marvell.com" <tnowicki@marvell.com>,
- "maz@kernel.org" <maz@kernel.org>,
- "zhangfei.gao@foxmail.com" <zhangfei.gao@foxmail.com>,
- "peterx@redhat.com" <peterx@redhat.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "bbhushan2@marvell.com" <bbhushan2@marvell.com>,
- "will@kernel.org" <will@kernel.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rhunrdpqJzax
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +uA98tbQTrJT
 
-Hi Eric,
+Hi Bharat,
 
-I'm also considering how to inject iommu fault to vIOMMU. As our
-previous discussion (long time ago), MemoryRegion way doesn't work
-well for VTd case. So I'd like see your opinion on the proposal
-below:
-I've a patch to make vIOMMUs register PCIIOMMUOps to PCI layer.
-Current usage is to get address space and set/unset HostIOMMUContext
-(added by me). I think it may be also nice to add the fault injection
-callback in the PCIIOMMUOps. Thoughts?
-
-https://patchwork.ozlabs.org/patch/1259645/
-
-Regards,
-Yi Liu
-
-> From: Eric Auger <eric.auger@redhat.com>
-> Sent: Saturday, March 21, 2020 12:58 AM
-> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-devel@nongnu.or=
-g;
-> Subject: [RFC v6 05/24] memory: Introduce IOMMU Memory Region inject_faul=
-ts
-> API
->=20
-> This new API allows to inject @count iommu_faults into
-> the IOMMU memory region.
->=20
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+On 3/23/20 9:46 AM, Bharat Bhushan wrote:
+> Add optional interface to set page size mask.
+> Currently this is set global configuration and not
+> per endpoint.
+This allows to override the page size mask per end-point?
+> 
+> Signed-off-by: Bharat Bhushan <bbhushan2@marvell.com>
 > ---
->  include/exec/memory.h | 25 +++++++++++++++++++++++++
->  memory.c              | 10 ++++++++++
->  2 files changed, 35 insertions(+)
->=20
-> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index f2c773163f..141a5dc197 100644
-> --- a/include/exec/memory.h
-> +++ b/include/exec/memory.h
-> @@ -57,6 +57,8 @@ struct MemoryRegionMmio {
->      CPUWriteMemoryFunc *write[3];
->  };
->=20
-> +struct iommu_fault;
-> +
->  typedef struct IOMMUTLBEntry IOMMUTLBEntry;
->=20
->  /* See address_space_translate: bit 0 is read, bit 1 is write.  */
-> @@ -357,6 +359,19 @@ typedef struct IOMMUMemoryRegionClass {
->       * @iommu: the IOMMUMemoryRegion
->       */
->      int (*num_indexes)(IOMMUMemoryRegion *iommu);
-> +
-> +    /*
-> +     * Inject @count faults into the IOMMU memory region
-> +     *
-> +     * Optional method: if this method is not provided, then
-> +     * memory_region_injection_faults() will return -ENOENT
-> +     *
-> +     * @iommu: the IOMMU memory region to inject the faults in
-> +     * @count: number of faults to inject
-> +     * @buf: fault buffer
-> +     */
-> +    int (*inject_faults)(IOMMUMemoryRegion *iommu, int count,
-> +                         struct iommu_fault *buf);
->  } IOMMUMemoryRegionClass;
->=20
->  typedef struct CoalescedMemoryRange CoalescedMemoryRange;
-> @@ -1365,6 +1380,16 @@ int
-> memory_region_iommu_attrs_to_index(IOMMUMemoryRegion *iommu_mr,
->   */
->  int memory_region_iommu_num_indexes(IOMMUMemoryRegion *iommu_mr);
->=20
-> +/**
-> + * memory_region_inject_faults : inject @count faults stored in @buf
-> + *
-> + * @iommu_mr: the IOMMU memory region
-> + * @count: number of faults to be injected
-> + * @buf: buffer containing the faults
-> + */
-> +int memory_region_inject_faults(IOMMUMemoryRegion *iommu_mr, int count,
-> +                                struct iommu_fault *buf);
-> +
->  /**
->   * memory_region_name: get a memory region's name
->   *
-> diff --git a/memory.c b/memory.c
-> index 09be40edd2..9cdd77e0de 100644
-> --- a/memory.c
-> +++ b/memory.c
-> @@ -2001,6 +2001,16 @@ int
-> memory_region_iommu_num_indexes(IOMMUMemoryRegion *iommu_mr)
->      return imrc->num_indexes(iommu_mr);
+>  include/hw/virtio/virtio-iommu.h | 1 +
+>  hw/virtio/virtio-iommu.c         | 9 +++++++++
+>  2 files changed, 10 insertions(+)
+> 
+> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
+> index 6f67f1020a..4efa09610a 100644
+> --- a/include/hw/virtio/virtio-iommu.h
+> +++ b/include/hw/virtio/virtio-iommu.h
+> @@ -35,6 +35,7 @@ typedef struct IOMMUDevice {
+>      void         *viommu;
+>      PCIBus       *bus;
+>      int           devfn;
+> +    uint64_t      page_size_mask;
+>      IOMMUMemoryRegion  iommu_mr;
+>      AddressSpace  as;
+>  } IOMMUDevice;
+> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+> index 4cee8083bc..a28818202c 100644
+> --- a/hw/virtio/virtio-iommu.c
+> +++ b/hw/virtio/virtio-iommu.c
+> @@ -650,6 +650,14 @@ static gint int_cmp(gconstpointer a, gconstpointer b, gpointer user_data)
+>      return (ua > ub) - (ua < ub);
 >  }
->=20
-> +int memory_region_inject_faults(IOMMUMemoryRegion *iommu_mr, int count,
-> +                                struct iommu_fault *buf)
+>  
+> +static void virtio_iommu_set_page_size_mask(IOMMUMemoryRegion *mr,
+> +                                            uint64_t page_size_mask)
 > +{
-> +    IOMMUMemoryRegionClass *imrc =3D
-> IOMMU_MEMORY_REGION_GET_CLASS(iommu_mr);
-> +    if (!imrc->inject_faults) {
-> +        return -ENOENT;
-> +    }
-> +    return imrc->inject_faults(iommu_mr, count, buf);
+> +    IOMMUDevice *sdev = container_of(mr, IOMMUDevice, iommu_mr);
+> +
+> +    sdev->page_size_mask = page_size_mask;
 > +}
 > +
->  void memory_region_set_log(MemoryRegion *mr, bool log, unsigned client)
+>  static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
 >  {
->      uint8_t mask =3D 1 << client;
-> --
-> 2.20.1
+>      VirtIODevice *vdev = VIRTIO_DEVICE(dev);
+> @@ -865,6 +873,7 @@ static void virtio_iommu_memory_region_class_init(ObjectClass *klass,
+>      IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_CLASS(klass);
+>  
+>      imrc->translate = virtio_iommu_translate;
+> +    imrc->iommu_set_page_size_mask = virtio_iommu_set_page_size_mask;
+>  }
+>  
+>  static const TypeInfo virtio_iommu_info = {
+> 
+Thanks
+
+Eric
 

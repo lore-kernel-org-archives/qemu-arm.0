@@ -1,66 +1,103 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2403927lfi;
-        Thu, 26 Mar 2020 14:23:05 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuXahAsyzHWOx67H6wAQvuL/Aj+bKCA1F3gfeJAVabo35AX41BqWpuoGxcolWm2kWSe2Vtk
-X-Received: by 2002:a37:8503:: with SMTP id h3mr11039366qkd.198.1585257785804;
-        Thu, 26 Mar 2020 14:23:05 -0700 (PDT)
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2412785lfi;
+        Thu, 26 Mar 2020 14:33:06 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsqshiU18WYWSD2HdhHwjTkfPetOuSl4oOJXxYE733QNqKbbw2CwvDeh/u3GG0M3kedY7nZ
+X-Received: by 2002:ae9:c206:: with SMTP id j6mr11211520qkg.84.1585258385871;
+        Thu, 26 Mar 2020 14:33:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585258385; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Zi9qlh4QrvQigcR++teXUBcEQ1S4YecY6lQF2MZjEdZiTP5U9DGxQn9KXJL2qF0nMv
+         +5XMBDFaufaFdedaueBPWXW1AhLofL7U5/Xqc6OkfBa+EL0krtzFlvPTwe5WIX1nTgqK
+         h1KzCGsY6nlLFXlMOGE72fd5Gt1Y57rEdyf42auRhn0i6l7ntXpe3or9gvOP6JsJP48y
+         byT98PvYE+pH4WnFr4BKHapwUK+tR8VBqhdZilbPyBJZ0jOSP74ni8ykBp0eLDWBb1aO
+         gcO+xTjM0qVIF6phpSKHWrz9hk5v6FDvG3MIWlbnamrVtlMQ8Jptz3KIWLi9j4ZFcxHA
+         NOpg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=4bQJElQtxExdNClri0m5sgcXCnjLo99SHgCzJWX7tCU=;
+        b=dwIRNi5ozhxGkJF8LDCalGdf1eJ2RGqc+WlnWuy1hSecnR0udOl4jh13xKcJTg6c2D
+         YAQnaUcn/+qSVZawEk5WwNhKoEu8DWDA37Mp+LncKlhivjWmm26+Lpr9tijM/D3pWCet
+         dZhMUTblcMG7R8cpovEPUo15IIs/qNnh01Cw+2dTtloygQL0j4b2V5R9saDJQoEvuiVo
+         PJfapKmZeuGQG4Si3Sa2Tqw3ssMfxEStMVNtLq23CmP0VYTBFzcr2TCHyjmgEgYqeHj9
+         EaeYQ2R23brMqXtggCQCAPt8eWm5TtW9PNDJ+GkE+HmSfqv988T04RSfqn/iMQW7UC3N
+         /I/g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=r4wtG65F;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h12si2220104qkl.323.2020.03.26.14.23.05
+        by mx.google.com with ESMTPS id w190si2265041qkd.9.2020.03.26.14.33.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Mar 2020 14:23:05 -0700 (PDT)
+        Thu, 26 Mar 2020 14:33:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60584 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=r4wtG65F;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60702 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jHZxx-0002v7-8V
-	for alex.bennee@linaro.org; Thu, 26 Mar 2020 17:23:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39202)
+	id 1jHa7d-0006z3-9r
+	for alex.bennee@linaro.org; Thu, 26 Mar 2020 17:33:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52213)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1jHZxb-0002k5-Rl
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 17:22:44 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jHa7P-0006y5-P9
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 17:32:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1jHZxa-0003aM-8X
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 17:22:43 -0400
-Resent-Date: Thu, 26 Mar 2020 17:22:43 -0400
-Resent-Message-Id: <E1jHZxa-0003aM-8X@eggs.gnu.org>
-Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21108)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1jHZxZ-0003YO-WC; Thu, 26 Mar 2020 17:22:42 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1585257757; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=RtwP5e3WvG0lSsA6M0biR96U7InVlhJBmlPDVI4owE4+hDy8XIhcxmNjnw3c9W9ogjLFnTUHrtBVAKpYX2eVYA+f6YhNTuMgQfE9uUO6dComnOxFL/vFyJGf9vLD3IellzbzGY09ubRQFK9Zu0ph2Dny+STvEfqDT/PdHDG3FJ0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1585257757;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=UQ1oTNrf1VH1ahRuAhXyGf+I2a02qMIHYEK9VCDSIS4=; 
- b=R8mcRV2jgGt4UPBwTfekbp5TyKdjxePCPysow+VI0PXaUzNlVhwBdsyp0GvO+BOA3wCEgd7vimVXS6fnF0AGgrnHno0NDHFWuVh3N/p+mu786tGIEfNO8NV64iArX4ePaE+3XdJ9MW87GZ4B1b3g7arOtt6jWshdfRpRa19j2lU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1585257756192308.1368310990623;
- Thu, 26 Mar 2020 14:22:36 -0700 (PDT)
-In-Reply-To: <20200326203414.18140-1-peter.maydell@linaro.org>
-Subject: Re: [PATCH] hw/arm/collie: Put StrongARMState* into a
- CollieMachineState struct
-Message-ID: <158525775502.25711.13645073054159373855@39012742ff91>
+ (envelope-from <peter.maydell@linaro.org>) id 1jHa7O-0005KW-Bj
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 17:32:51 -0400
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:41379)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jHa7N-0005Jk-9q
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 17:32:50 -0400
+Received: by mail-oi1-x244.google.com with SMTP id k9so6953201oia.8
+ for <qemu-arm@nongnu.org>; Thu, 26 Mar 2020 14:32:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=4bQJElQtxExdNClri0m5sgcXCnjLo99SHgCzJWX7tCU=;
+ b=r4wtG65F0C2G/xy8cnOso46Q1Kq9XK70ovOONPapRMhNsSTuv8jehWPG+LVe/Ur5XM
+ WKXO94T1RtNgqdsNJe6O4LV5kApbV90934Vdxwu+tQKu2+PtJJGYHS+Ak+WFEtTaBZ+q
+ f0bXdqljRCWtsNrJTyAvVqyqYWKE4cbCK/ODpn2ZDRivd5bWzbuQgNqJWDCpVgfOz5IS
+ i0lDaz5iDOjoyMnjN+kRfRpAlFcjCyHpZo6rChP7yq5mnwsq4B4RkMuvTyBO/zYYiQdt
+ vvF9U2Gcfcu8z5DKVhxyWCKWyfGiGzxISq013pYrAGpzAOZxGFG0lIZj57dUOIjWgulU
+ WjYA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=4bQJElQtxExdNClri0m5sgcXCnjLo99SHgCzJWX7tCU=;
+ b=ilVcYZfX31+cytzkuWu7P7hb65pUSLO2XUY6ubwyiWYfQYB6bFuK+JogHOBJ4qZfC7
+ LB87azHFIzq/MFSbfaguhSJ6YUinMM/hv25tLTA0bSbl76j58PobFhbPims9gsb5pISA
+ +DOpB4NEo7hImF2r72MPfdXl01dtucEC//UzqTnHAC+zpPkhRhvI9ZFmGB++4ULynU7W
+ oT8qZP0S1r0XiK6b8tWmomPO3vcX962frd+lgegn3pbtKmoT158HdBSJfKCtkqzvwAHo
+ +yfA3Lt0ZcNt3WNYYgFa7cz9VynSxJTil6HAB/io1DzR3AIZzZElukdes7LjGDW/YgMK
+ 7dZw==
+X-Gm-Message-State: ANhLgQ3YeulwgjWpVR3zmx2q/76gJlkj3tfNOTVZxKDE9ZbAKzLbSFF0
+ pBU4Y9blwLYyzcC2TX6xeYedhZY2DHZwkN001e1erg==
+X-Received: by 2002:a05:6808:64c:: with SMTP id
+ z12mr1790415oih.146.1585258368267; 
+ Thu, 26 Mar 2020 14:32:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: peter.maydell@linaro.org
-Date: Thu, 26 Mar 2020 14:22:36 -0700 (PDT)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.51
+References: <20200325191830.16553-1-f4bug@amsat.org>
+ <20200325191830.16553-2-f4bug@amsat.org>
+In-Reply-To: <20200325191830.16553-2-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 26 Mar 2020 21:32:36 +0000
+Message-ID: <CAFEAcA9qmwCmu-0OmNF-TkXzdd3qrhPxQRO6DS36X=Up2g4QoQ@mail.gmail.com>
+Subject: Re: [PATCH-for-5.0 01/12] scripts/coccinelle: Add script to catch
+ missing error_propagate() calls
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::244
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,53 +109,120 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Paul Burton <pburton@wavecomp.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ "open list:RISC-V" <qemu-riscv@nongnu.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +cJQ0zXY/ClP
+X-TUID: mNaSOovNVyQ1
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDMyNjIwMzQxNC4xODE0
-MC0xLXBldGVyLm1heWRlbGxAbGluYXJvLm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQg
-dGhlIGRvY2tlci1taW5nd0BmZWRvcmEgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRlc3Rp
-bmcgY29tbWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2VyIGlu
-c3RhbGxlZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBURVNU
-IFNDUklQVCBCRUdJTiA9PT0KIyEgL2Jpbi9iYXNoCmV4cG9ydCBBUkNIPXg4Nl82NAptYWtlIGRv
-Y2tlci1pbWFnZS1mZWRvcmEgVj0xIE5FVFdPUks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtbWlu
-Z3dAZmVkb3JhIEo9MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgogIENDICAg
-ICAgYWFyY2g2NC1zb2Z0bW11L3RhcmdldC9hcm0vdHJhbnNsYXRlLWE2NC5vCiAgQ0MgICAgICBh
-YXJjaDY0LXNvZnRtbXUvdGFyZ2V0L2FybS9oZWxwZXItYTY0Lm8KL3RtcC9xZW11LXRlc3Qvc3Jj
-L2h3L2FybS9jb2xsaWUuYzogSW4gZnVuY3Rpb24gJ2NvbGxpZV9pbml0JzoKL3RtcC9xZW11LXRl
-c3Qvc3JjL2h3L2FybS9jb2xsaWUuYzo2NzoyMTogZXJyb3I6ICdzJyB1bmRlY2xhcmVkIChmaXJz
-dCB1c2UgaW4gdGhpcyBmdW5jdGlvbikKICAgICBhcm1fbG9hZF9rZXJuZWwocy0+Y3B1LCBtYWNo
-aW5lLCAmY29sbGllX2JpbmZvKTsKICAgICAgICAgICAgICAgICAgICAgXgovdG1wL3FlbXUtdGVz
-dC9zcmMvaHcvYXJtL2NvbGxpZS5jOjY3OjIxOiBub3RlOiBlYWNoIHVuZGVjbGFyZWQgaWRlbnRp
-ZmllciBpcyByZXBvcnRlZCBvbmx5IG9uY2UgZm9yIGVhY2ggZnVuY3Rpb24gaXQgYXBwZWFycyBp
-bgptYWtlWzFdOiAqKiogWy90bXAvcWVtdS10ZXN0L3NyYy9ydWxlcy5tYWs6Njk6IGh3L2FybS9j
-b2xsaWUub10gRXJyb3IgMQptYWtlWzFdOiAqKiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2Jz
-Li4uLgogIEdFTiAgICAgYWFyY2g2NC1zb2Z0bW11L3RhcmdldC9hcm0vZGVjb2RlLXN2ZS5pbmMu
-YwptYWtlOiAqKiogW01ha2VmaWxlOjUyNzogYWFyY2g2NC1zb2Z0bW11L2FsbF0gRXJyb3IgMgpt
-YWtlOiAqKiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2JzLi4uLgogIEdFTiAgICAgeDg2XzY0
-LXNvZnRtbXUvcWVtdS1zeXN0ZW0teDg2XzY0LmV4ZQpUcmFjZWJhY2sgKG1vc3QgcmVjZW50IGNh
-bGwgbGFzdCk6Ci0tLQogICAgcmFpc2UgQ2FsbGVkUHJvY2Vzc0Vycm9yKHJldGNvZGUsIGNtZCkK
-c3VicHJvY2Vzcy5DYWxsZWRQcm9jZXNzRXJyb3I6IENvbW1hbmQgJ1snc3VkbycsICctbicsICdk
-b2NrZXInLCAncnVuJywgJy0tbGFiZWwnLCAnY29tLnFlbXUuaW5zdGFuY2UudXVpZD1jZGI5MTRi
-ZjY2NTI0ZDdlYTNmMTAzZDIyZDEyMTlhNycsICctdScsICcxMDAxJywgJy0tc2VjdXJpdHktb3B0
-JywgJ3NlY2NvbXA9dW5jb25maW5lZCcsICctLXJtJywgJy1lJywgJ1RBUkdFVF9MSVNUPScsICct
-ZScsICdFWFRSQV9DT05GSUdVUkVfT1BUUz0nLCAnLWUnLCAnVj0nLCAnLWUnLCAnSj0xNCcsICct
-ZScsICdERUJVRz0nLCAnLWUnLCAnU0hPV19FTlY9JywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zhci90
-bXAvY2NhY2hlJywgJy12JywgJy9ob21lL3BhdGNoZXcvLmNhY2hlL3FlbXUtZG9ja2VyLWNjYWNo
-ZTovdmFyL3RtcC9jY2FjaGU6eicsICctdicsICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAt
-dWd6ejF6dm8vc3JjL2RvY2tlci1zcmMuMjAyMC0wMy0yNi0xNy4yMC4yMS43NzUxOi92YXIvdG1w
-L3FlbXU6eixybycsICdxZW11OmZlZG9yYScsICcvdmFyL3RtcC9xZW11L3J1bicsICd0ZXN0LW1p
-bmd3J10nIHJldHVybmVkIG5vbi16ZXJvIGV4aXQgc3RhdHVzIDIuCmZpbHRlcj0tLWZpbHRlcj1s
-YWJlbD1jb20ucWVtdS5pbnN0YW5jZS51dWlkPWNkYjkxNGJmNjY1MjRkN2VhM2YxMDNkMjJkMTIx
-OWE3Cm1ha2VbMV06ICoqKiBbZG9ja2VyLXJ1bl0gRXJyb3IgMQptYWtlWzFdOiBMZWF2aW5nIGRp
-cmVjdG9yeSBgL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLXVnenoxenZvL3NyYycKbWFrZTog
-KioqIFtkb2NrZXItcnVuLXRlc3QtbWluZ3dAZmVkb3JhXSBFcnJvciAyCgpyZWFsICAgIDJtMTQu
-NjIxcwp1c2VyICAgIDBtOC4zMTNzCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRw
-Oi8vcGF0Y2hldy5vcmcvbG9ncy8yMDIwMDMyNjIwMzQxNC4xODE0MC0xLXBldGVyLm1heWRlbGxA
-bGluYXJvLm9yZy90ZXN0aW5nLmRvY2tlci1taW5nd0BmZWRvcmEvP3R5cGU9bWVzc2FnZS4KLS0t
-CkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hl
-dy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhh
-dC5jb20=
+On Wed, 25 Mar 2020 at 19:18, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>
+> In some places in we put an error into a local Error*, but forget
+> to check for failure and pass it back to the caller.
+> Add a Coccinelle patch to catch automatically add the missing code.
+>
+> Inspired-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+
+This coccinelle script is impressively deep magic...
+My general rule with cocci scripts is that if they serve
+the purpose they're written for then that's sufficient
+and they're not worth trying to polish further, but just
+for my own education I have some questions below about how
+this one works.
+
+> +@match exists@
+> +typedef Error;
+> +Error *err;
+
+I didn't realize you could do this kind of "this thing
+must be this type" stuff in the metavariable declaration
+section...
+
+> +identifier func, errp;
+> +identifier object_property_set_type1 =3D~ "^object_property_set_.*";
+> +identifier object_property_set_type2 =3D~ "^object_property_set_.*";
+
+If we relax this so that we just look for "anything that takes
+an &err as its final argument" do we hit way too many false
+positives ?
+
+> +expression obj;
+> +@@
+> +void func(..., Error **errp)
+> +{
+> + <+...
+> + object_property_set_type1(obj, ..., &err);
+> + ... when !=3D err
+
+This 'when' clause means "match only when the code doesn't
+touch 'err' anywhere between the two calls", right?
+
+> + object_property_set_type2(obj, ..., &err);
+> + ...+>
+> +}
+> +
+> +@@
+> +Error *match.err;
+> +identifier match.errp;
+> +identifier match.object_property_set_type1;
+> +expression match.obj;
+> +@@
+> + object_property_set_type1(obj, ..., &err);
+> ++if (err) {
+> ++    error_propagate(errp, err);
+> ++    return;
+> ++}
+
+Is there a reason we can't do the substitution
+in the same rule we were using to find the match,
+or was it just easier this way/done this way in
+some other example you were following ?
+
+> +
+> +@manual depends on never match@
+> +Error *err;
+> +identifier object_property_set_type1 =3D~ "^object_property_set_.*";
+> +identifier object_property_set_type2 =3D~ "^object_property_set_.*";
+> +position p;
+> +@@
+> + object_property_set_type1@p(..., &err);
+> + ... when !=3D err
+> + object_property_set_type2(..., &err);
+> +
+> +@script:python@
+> +f << manual.object_property_set_type1;
+> +p << manual.p;
+> +@@
+> +print("[[manual check required: "
+> +      "error_propagate() might be missing in {}() {}:{}:{}]]".format(
+> +            f, p[0].file, p[0].line, p[0].column))
+
+Nice to have an example of how to do a "find these things
+and print a diagnostic". This 'manual' match is handling
+the cases where we got two consecutive uses of &err but
+not in a function that took "Error *errp", yes?
+
+thanks
+-- PMM

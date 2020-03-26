@@ -1,161 +1,208 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2502090lfi;
-        Thu, 26 Mar 2020 16:09:13 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsouPdu7T/G47GDif7RRoaHbmOi7wUBDSdnHjFlgnJ3db0Kgk0bKcfhZ47dvUAuPbR6pEWL
-X-Received: by 2002:ac8:4416:: with SMTP id j22mr10909242qtn.85.1585264152855;
-        Thu, 26 Mar 2020 16:09:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585264152; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2502161lfi;
+        Thu, 26 Mar 2020 16:09:17 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvCtqTcvgpurbEqHKydZVsvX/QSoRP3OYgS+Vrbyb1qS9cpU0KPAo7+hvPJEkTjDx/wrofd
+X-Received: by 2002:ad4:4182:: with SMTP id e2mr11244369qvp.32.1585264157041;
+        Thu, 26 Mar 2020 16:09:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585264157; cv=none;
         d=google.com; s=arc-20160816;
-        b=tx+UymPFc532HobslpKRD2mmbeUSAksB8C+Z2V6NhT2g4fxDpMM23qpPkqUbqLgkHG
-         4/JMI2dDKJdu4GF2OlRo5cvguceLYOetHawnoYb+93EJoFe2FVN+yJgsA775R5/MpjfE
-         /4eLNYqnwZQkRp71npXAFyPGxTUg9DvTgfrG6i+JclYW8dnyHhYW5i4EdXSVGRJvGP9j
-         /JSj8nBG+CGIkxN694LjE0sSjdTs4KSFxZg7OHyRtfcG+9IIXPa2U+AMvjyRE0pnl153
-         VegrAUfY0752onwOMLkAuCp8lauiMQI39d3cwfzCPy6Jaw8hA90Ig/JKj3Ei9wzTyR+Q
-         ifKA==
+        b=PtsnlLwhzG5aEWcYi06Sdvm290L7Jcwr1st9M5uJQjaRiFAxxZdZW+z8H3RqsysPLD
+         tyuWqJeXY9N8Xb3+4VaadUqNam46t8O47uiy8XUUrwp08zW1DxD06ELjQadUaFBo0G3r
+         WU4pizzlWfU4CBwl054bJMKNL3tERLbR9GZiT88yYxfyOy4BW98laFGpN9rM1zpGiHPt
+         v6fNuTFvljh9U97JDbNu0O+f1N8uSOEFcp9qHUH6LeyoR2Y5ZjHV9cNnH8oG3xWoI7lb
+         S6kM8Owe2z/0YmvqDiStanqvzYCSo2iJ3X9vXdTbmF+pfsnZ+Nh0JUXJGHxZOMUejE0r
+         mGHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=Sz8Q6/lROF919J+K+cTqN6AeyEkEwGuAjIPol0tSqWA=;
-        b=RpPNycNT1wz+izQB5Y//362QhSLSm083Pcaw83jwafNG717kS8H7cjhtZ4Obr6ixL2
-         /LXVDvY/41+W9QqtVQ9Wl9Z0Bydq8bB1HELWx/W1PmqtM7wSEWteFwpIO1XWL3LLaAk1
-         ydY6V5IDwi+APPHQZsubuxw0lXw4KwFO73ZLhHVqx96S/hqC5Fn/QVyodnItw3DY7pS1
-         I2QnVOSD+pa+WaFED9wsjrNUHUTr4E8dYjDL30fNRNiKg1MGTONIgcct01st/WfVXHfy
-         iJQTN+FfZO5Vhm1eIU/LDE4zcpBcFQe4x6P+Oimnfwb2XXEV8TYBJBO7CTxE8Z2nVz/v
-         ehmw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=F6i9arXen4TLeK0sY1KC/vE3U9xI96E0JovDA1nAh+A=;
+        b=ii8UuMV/EE/eBnzjukJ5RAyZ4jgPRzp7QlM+a89DgiN3NBGV+adsH+5OPDOaannjKH
+         QOGkexJGCaijmbtxA0dpbhBwxMd4fbl+rCmKYoMKStjWGqg2ppHn/pilw0WpG/IqF7U1
+         vaHFKloudPqgKrrqAdauD9whm/NLgAdVBZNBfeTru19aQRuUgmB6Pv77hy1emf6/Fc+I
+         BygMmeVzWP+3byLIR1uzlEFYgD2niQfek+CWMhTkOjMYnAoOpuAtzBbVhzvzMyJL6UpL
+         TaHi/VjV0YdA6byQ6fornEp5L7qc+InNqNo1YpIS3uvyH4jnEo2J6LqkEYWnG46OAPqf
+         kt/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bCT8eHrH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=ax2U9u49;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g29si2846476qtm.90.2020.03.26.16.09.12
+        by mx.google.com with ESMTPS id g14si2394784qki.334.2020.03.26.16.09.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Mar 2020 16:09:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Mar 2020 16:09:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bCT8eHrH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=ax2U9u49;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34274 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34100 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jHbce-0002Xq-4u
-	for alex.bennee@linaro.org; Thu, 26 Mar 2020 19:09:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58319)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jHbci-0001qZ-DS
+	for alex.bennee@linaro.org; Thu, 26 Mar 2020 19:09:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57769)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jHbcQ-0002Im-7K
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 19:08:59 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1jHbcB-0001q7-SD
+ for qemu-devel@nongnu.org; Thu, 26 Mar 2020 19:08:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1jHbcO-0001Sn-W7
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 19:08:58 -0400
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f]:34182)
+ (envelope-from <richard.henderson@linaro.org>) id 1jHbcA-0001EF-5b
+ for qemu-devel@nongnu.org; Thu, 26 Mar 2020 19:08:43 -0400
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c]:36313)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1jHbcO-0001Rb-Pq
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 19:08:56 -0400
-Received: by mail-pg1-x52f.google.com with SMTP id d37so3147172pgl.1
- for <qemu-arm@nongnu.org>; Thu, 26 Mar 2020 16:08:56 -0700 (PDT)
+ id 1jHbcA-0001E2-0j
+ for qemu-devel@nongnu.org; Thu, 26 Mar 2020 19:08:42 -0400
+Received: by mail-pl1-x62c.google.com with SMTP id g2so2741988plo.3
+ for <qemu-devel@nongnu.org>; Thu, 26 Mar 2020 16:08:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Sz8Q6/lROF919J+K+cTqN6AeyEkEwGuAjIPol0tSqWA=;
- b=bCT8eHrH03fihfc4mys2UWYgxhCZJ3Eapf7D7S00Lg9bWrQGq0DSmu744se0BHLjGh
- DwuCyP4cypLCDASWuWTY6OYPCIoJP1OLzkFkhNICLoiZyEoLV17lB9IIWLuilfQ8FFDE
- HVOdsAKdSfZrHcS5MnA6JlC/maqVdgt+OfI5+ajF4MwkVuONJgvrmm8uUa6wfnwxaza/
- YWdK9bCWF9lafluE/31aNF/sgdtqLlWBnUQ/1YZQWTbPdfm+A+sFngvccHk+p8nIkYhi
- m2BdmtW0TikIeH+bZkBbXm/V01DSVsfBIb3TonHZ2I0JUU56JrX01i/B8IKv7jBzbOKD
- FumQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=F6i9arXen4TLeK0sY1KC/vE3U9xI96E0JovDA1nAh+A=;
+ b=ax2U9u49VmY0gE13qfwVJclO+B1Tzk6x0lBTKlYeB8FjPOuL4aesEUgEYCiT+/iWbu
+ Ti66yszpdyU6RBxsu7tM92nCKns3X/0HhuRzBHFsm5PsXwfOARJ8FZIMrD6KvD92HTsw
+ OaSQJiTBxacF5By+QvK9OlhAD0WfayjBqQwMGCmyggrVQ/1Esp1fZ/TxmOftAG10Aevs
+ lPpDbDXLHqRtcgxNg7qiKff0toKJLRIQyJQACRgEppCDIRL6kvRfr/3xpcaJudFHaEQC
+ duXYrQuJot/hgEvrKeKxV1MJ8TpZBdoyzZqZHySpriR5yQGpYDkAO/T6MQO48ASnmnfg
+ 7XNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Sz8Q6/lROF919J+K+cTqN6AeyEkEwGuAjIPol0tSqWA=;
- b=VYfE/DKBfNcBWboh6Hf9walGmaWLiftqK+m8/FVSYawNJSAbLPYE6fuUCNEaNzm5oI
- 8BFyybipUf27hxb+wBLmnGwWeWTxFvcNyJzerxBkQRxnGaSk7Omky0PzPldGCQ+DGrSw
- Sk6sGixlKCi3ZEQb6C8E4LRXM8nzD5FtOyK+lv98utikyxxO40f6ooaNmmPJCjb2Gzde
- G8oVPQFP51AsZ0k+4biIM7Fp282F2dpU4rb9LYOz76SSg/sVaCa9cMO8bjXztAVAaBRo
- SAwK1+NwfQaX7Txw8FFzBuI6YzanXGsDZhdQH4ML0U0HteyfWLGNVxwBgejN8Iqqojii
- PUCA==
-X-Gm-Message-State: ANhLgQ0OdU2e9DifhYrZW893OxA8xZX6U00iL4nQ1jQlcN/6Gd615TnU
- xBg60vmja3JJQbl/5HynraWVeQ==
-X-Received: by 2002:a63:ff4e:: with SMTP id s14mr11080157pgk.269.1585264135783; 
- Thu, 26 Mar 2020 16:08:55 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=F6i9arXen4TLeK0sY1KC/vE3U9xI96E0JovDA1nAh+A=;
+ b=cEG9tuCizI3xwttgcHxxWpqmS98vYqCbMarv1Hn/aednbFvWky+tebx7tXuz4+GKNc
+ 6aslJ+Wzm6lzSz1McAHUX2pQCsy4PE05IufmDiwm9i3VhP+hWShi29RujovgAaKgfTVJ
+ FaQIo8hmRIr0ZotLPeZuBsW1Vw5JwH4LUvRHZ9NfKjueuUA2kmObfQKlE0x+d+OACF6Y
+ bXmN0xO5eaVJxhmm/Pd+c7CkUdluODoRlo8BpC5yJyQK7+hKYKB/yGMZhaNi5k9Cqczm
+ Wl2pcjyS274aXDP4tzHaU+T/Bd7529S3GVq9NwCHSWlTkHNb81sZTMxFS6OJerd/t44K
+ tucQ==
+X-Gm-Message-State: ANhLgQ0MiLi3Fy3/M4VCEHN1afYC5RYbxP9HI1uCRXiaMtNESMOO/Z/q
+ ANkBfOuzjcAgsUnFHBHgHAvHD8NUc7c=
+X-Received: by 2002:a17:90a:208:: with SMTP id
+ c8mr2561202pjc.153.1585264120482; 
+ Thu, 26 Mar 2020 16:08:40 -0700 (PDT)
 Received: from localhost.localdomain (174-21-138-234.tukw.qwest.net.
  [174.21.138.234])
- by smtp.gmail.com with ESMTPSA id i187sm2530037pfg.33.2020.03.26.16.08.54
+ by smtp.gmail.com with ESMTPSA id i187sm2530037pfg.33.2020.03.26.16.08.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Mar 2020 16:08:55 -0700 (PDT)
+ Thu, 26 Mar 2020 16:08:39 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 12/31] target/arm: Implement SVE2 integer add/subtract
- interleaved long
-Date: Thu, 26 Mar 2020 16:08:19 -0700
-Message-Id: <20200326230838.31112-13-richard.henderson@linaro.org>
+Subject: [PATCH for-5.1 00/31] target/arm: SVE2, part 1
+Date: Thu, 26 Mar 2020 16:08:07 -0700
+Message-Id: <20200326230838.31112-1-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200326230838.31112-1-richard.henderson@linaro.org>
-References: <20200326230838.31112-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::52f
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::62c
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: rajav@quicinc.com, qemu-arm@nongnu.org, apazos@quicinc.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cyy/UJ9CB8Hs
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PreJ40Dg7eqc
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Posting this for early review.  It's based on some other patch
+sets that I have posted recently that also touch SVE, listed
+below.  But it might just be easier to clone the devel tree [2].
+While the branch itself will rebase frequently for development,
+I've also created a tag, post-sve2-20200326, for this posting.
+
+This is mostly untested, as the most recently released Foundation
+Model does not support SVE2.  Some of the new instructions overlap
+with old fashioned NEON, and I can verify that those have not
+broken, and show that SVE2 will use the same code path.  But the
+predicated insns and bottom/top interleaved insns are not yet
+RISU testable, as I have nothing to compare against.
+
+The patches are in general arranged so that one complete group
+of insns are added at once.  The groups within the manual [1]
+have so far been small-ish.
+
+
+r~
+
 ---
- target/arm/sve.decode      | 7 +++++++
- target/arm/translate-sve.c | 3 +++
- 2 files changed, 10 insertions(+)
 
-diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index a239fd3479..8d5f31bcc4 100644
---- a/target/arm/sve.decode
-+++ b/target/arm/sve.decode
-@@ -109,6 +109,7 @@
- 
- # Three operand, vector element size
- @rd_rn_rm       ........ esz:2 . rm:5 ... ... rn:5 rd:5         &rrr_esz
-+@rd_rm_rn       ........ esz:2 . rn:5 ... ... rm:5 rd:5         &rrr_esz
- @pd_pn_pm       ........ esz:2 .. rm:4 ....... rn:4 . rd:4      &rrr_esz
- @rdn_rm         ........ esz:2 ...... ...... rm:5 rd:5 \
-                 &rrr_esz rn=%reg_movprfx
-@@ -1180,3 +1181,9 @@ SABDLB          01000101 .. 0 ..... 00 1100 ..... .....  @rd_rn_rm
- SABDLT          01000101 .. 0 ..... 00 1101 ..... .....  @rd_rn_rm
- UABDLB          01000101 .. 0 ..... 00 1110 ..... .....  @rd_rn_rm
- UABDLT          01000101 .. 0 ..... 00 1111 ..... .....  @rd_rn_rm
-+
-+## SVE2 integer add/subtract interleaved long
-+
-+SADDLBT         01000101 .. 0 ..... 1000 00 ..... .....  @rd_rn_rm
-+SSUBLBT         01000101 .. 0 ..... 1000 10 ..... .....  @rd_rn_rm
-+SSUBLBT         01000101 .. 0 ..... 1000 11 ..... .....  @rd_rm_rn # SSUBLTB
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index ee8a6fd912..accb74537b 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -6051,3 +6051,6 @@ DO_SVE2_ZZZ_TB(SABDLT, sabdl, true, true)
- DO_SVE2_ZZZ_TB(UADDLT, uaddl, true, true)
- DO_SVE2_ZZZ_TB(USUBLT, usubl, true, true)
- DO_SVE2_ZZZ_TB(UABDLT, uabdl, true, true)
-+
-+DO_SVE2_ZZZ_TB(SADDLBT, saddl, false, true)
-+DO_SVE2_ZZZ_TB(SSUBLBT, ssubl, false, true)
+[1] ISA manual: https://static.docs.arm.com/ddi0602/d/ISA_A64_xml_futureA-2019-12_OPT.pdf
+
+[2] Devel tree: https://github.com/rth7680/qemu/tree/tgt-arm-sve-2
+
+Based-on: http://patchwork.ozlabs.org/project/qemu-devel/list/?series=163610
+("target/arm: sve load/store improvements")
+
+Based-on: http://patchwork.ozlabs.org/project/qemu-devel/list/?series=164500
+("target/arm: Use tcg_gen_gvec_5_ptr for sve FMLA/FCMLA")
+
+Based-on: http://patchwork.ozlabs.org/project/qemu-devel/list/?series=164048
+("target/arm: Implement ARMv8.5-MemTag, system mode")
+
+Richard Henderson (31):
+  target/arm: Add ID_AA64ZFR0 fields and isar_feature_aa64_sve2
+  target/arm: Implement SVE2 Integer Multiply - Unpredicated
+  target/arm: Implement SVE2 integer pairwise add and accumulate long
+  target/arm: Remove fp_status from helper_{recpe,rsqrte}_u32
+  target/arm: Implement SVE2 integer unary operations (predicated)
+  target/arm: Split out saturating/rounding shifts from neon
+  target/arm: Implement SVE2 saturating/rounding bitwise shift left
+    (predicated)
+  target/arm: Implement SVE2 integer halving add/subtract (predicated)
+  target/arm: Implement SVE2 integer pairwise arithmetic
+  target/arm: Implement SVE2 saturating add/subtract (predicated)
+  target/arm: Implement SVE2 integer add/subtract long
+  target/arm: Implement SVE2 integer add/subtract interleaved long
+  target/arm: Implement SVE2 integer add/subtract wide
+  target/arm: Implement SVE2 integer multiply long
+  target/arm: Implement PMULLB and PMULLT
+  target/arm: Tidy SVE tszimm shift formats
+  target/arm: Implement SVE2 bitwise shift left long
+  target/arm: Implement SVE2 bitwise exclusive-or interleaved
+  target/arm: Implement SVE2 bitwise permute
+  target/arm: Implement SVE2 complex integer add
+  target/arm: Implement SVE2 integer absolute difference and accumulate
+    long
+  target/arm: Implement SVE2 integer add/subtract long with carry
+  target/arm: Create arm_gen_gvec_[us]sra
+  target/arm: Create arm_gen_gvec_{u,s}{rshr,rsra}
+  target/arm: Implement SVE2 bitwise shift right and accumulate
+  target/arm: Create arm_gen_gvec_{sri,sli}
+  target/arm: Tidy handle_vec_simd_shri
+  target/arm: Implement SVE2 bitwise shift and insert
+  target/arm: Vectorize SABD/UABD
+  target/arm: Vectorize SABA/UABA
+  target/arm: Implement SVE2 integer absolute difference and accumulate
+
+ target/arm/cpu.h           |  31 ++
+ target/arm/helper-sve.h    | 345 +++++++++++++++++
+ target/arm/helper.h        |  81 +++-
+ target/arm/translate-a64.h |   9 +
+ target/arm/translate.h     |  24 +-
+ target/arm/vec_internal.h  | 161 ++++++++
+ target/arm/sve.decode      | 217 ++++++++++-
+ target/arm/helper.c        |   3 +-
+ target/arm/kvm64.c         |   2 +
+ target/arm/neon_helper.c   | 515 ++++---------------------
+ target/arm/sve_helper.c    | 757 ++++++++++++++++++++++++++++++++++---
+ target/arm/translate-a64.c | 557 +++++++++++++++++++++++----
+ target/arm/translate-sve.c | 557 +++++++++++++++++++++++++++
+ target/arm/translate.c     | 626 ++++++++++++++++++++++--------
+ target/arm/vec_helper.c    | 411 ++++++++++++++++++++
+ target/arm/vfp_helper.c    |   4 +-
+ 16 files changed, 3532 insertions(+), 768 deletions(-)
+ create mode 100644 target/arm/vec_internal.h
+
 -- 
 2.20.1
 

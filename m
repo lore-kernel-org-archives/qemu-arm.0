@@ -1,132 +1,126 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2385596lfi;
-        Thu, 26 Mar 2020 14:03:18 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vur6hD/DaTMIID6a8w2/x4EZLiEsciWt5VTA6JvB2M0Xbkt8gUVIXz07J7txJeXaCW7NCeo
-X-Received: by 2002:ad4:5112:: with SMTP id g18mr10619938qvp.54.1585256598014;
-        Thu, 26 Mar 2020 14:03:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585256598; cv=none;
-        d=google.com; s=arc-20160816;
-        b=J3/QaXuYudw7hNawGReAfZOENE37LqzYFQJgerO25IF1yCS6ZLHQWn/8N06uv9/FVm
-         0n7D6u56PB6DcTigZMTIhezdwnSrMRXcZCwvsBwslCXHQfSbYFZT+gysq6QRzmPI83Zj
-         pvdGicj89CAKEdWc7CoTr8ibj3irWFSwCRSz8Nq6pM0n6HYXBVlXWDyGSsFejzVdHfLs
-         QZ5r8AIOuPpYnWk85vxWTfehro47OA4LG7cVFAnUwCvmvkh5uI7EMG+Ycfsvr+ZAwhhj
-         ygVfRuM62ofCXYRCe414GRsvC/NIUz3zVabXMy+ci/OADRtMoKXdy3I4lHiHFkqRwLaC
-         kxww==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ne+d+Y4anm0FeFq9N6PoCQUG4ARAatC/9qkLGfyZxnU=;
-        b=M8cStzFXMOCFpRUR34a9yaFPt4eorqsMbaFNlZndPpDC9s+OvTeBxOZOo6RlUiJ/l2
-         CvuwpBocjh+Jxm/3TnWRRkYseQpJonNqoXBHiQTN9wOpEfrHdbemMH9Jxq8kfUGBv8B1
-         2luljSESugofwT18elqflut6AL0UlKVyqokB0Lqv7bfpV8/Vc0KJVpmU6I0fl8dX+Qq6
-         MXX+XxT61tO3+6NE61GvZ5ILahWv69pudqOqImIGauGkdTe3IxQWMvLXSJsGcGBBbQSY
-         nmAh86/trfW2sQ9n2eU8S26ld9gBCTqdDuz+noVKiU8NWcQIN7ti2aHbaVvUOxEpDs9e
-         aOFA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=joBeHdyq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2401404lfi;
+        Thu, 26 Mar 2020 14:20:16 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vu4PcTbX8tdgky0t3t08E5WJfP3MuqdrPBIr9gaRWKb/Ecq9JwJw33qvMIGu93mB4HpAuTW
+X-Received: by 2002:ac8:1968:: with SMTP id g37mr10880881qtk.322.1585257616439;
+        Thu, 26 Mar 2020 14:20:16 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bx9si2199096qvb.43.2020.03.26.14.03.17
+        by mx.google.com with ESMTPS id j21si2325068qke.144.2020.03.26.14.20.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Mar 2020 14:03:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Mar 2020 14:20:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=joBeHdyq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60384 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60536 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jHZen-0003jR-DJ
-	for alex.bennee@linaro.org; Thu, 26 Mar 2020 17:03:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42215)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jHZvD-0001Ah-Rf
+	for alex.bennee@linaro.org; Thu, 26 Mar 2020 17:20:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35324)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jHZd7-000255-8R
- for qemu-devel@nongnu.org; Thu, 26 Mar 2020 17:01:34 -0400
+ (envelope-from <no-reply@patchew.org>) id 1jHZur-0000lL-PV
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 17:19:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jHZd6-0006mN-8Y
- for qemu-devel@nongnu.org; Thu, 26 Mar 2020 17:01:33 -0400
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:33444)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jHZd6-0006l4-2o
- for qemu-devel@nongnu.org; Thu, 26 Mar 2020 17:01:32 -0400
-Received: by mail-oi1-x241.google.com with SMTP id m14so6934874oic.0
- for <qemu-devel@nongnu.org>; Thu, 26 Mar 2020 14:01:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ne+d+Y4anm0FeFq9N6PoCQUG4ARAatC/9qkLGfyZxnU=;
- b=joBeHdyqwK4eEzVc02zmIdav1a/r0e6/eDZvdLA5MiK2LF3Q8ZVfBg+iE2HrNLjnWj
- M8LvvR/c59r9dnmpxvkbK7XiZ4OZLZbQAWNEz2ftBoGRWbwv6w3C72hJtWYiK+ENxFKb
- o+lH7/IVto7i/qgfnisLxh+rDQgjmFWT7Sug7hvVJ8lfl/Op6RBv4GhQvm/dMSAlH82n
- 8w6Rbno9XPnEGVmsyM9KAK3tbf+ExfDNWjXo4M1WSYLpLn+wk4/FdIJugUBpJ2CTbaGW
- Q3IkP04Cjc+wCt8d6dObYi7HIrLaTtNfr/vbA/inGsSXsNIcxSoXzDJgltfskRKjZ221
- 4iNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ne+d+Y4anm0FeFq9N6PoCQUG4ARAatC/9qkLGfyZxnU=;
- b=LN6vGCB/LKqw5jQj0C1v0ixD0xE0HPR6wRsv7sX0yrY67FfEsu7/ndPq0nTNb0vJTn
- eDIZnyZ7PYd1wzbFcSrkqwhLK0TTbXNQ+5SjTTY0XkMdI/VHbzsgfsp+/FMMM+QU4wXj
- CkUGYe4tTY+7xuI6sEhqs9mgYn+lgAx1aht9ROJCv1O2DrGOfiBViohJcnfbb+utrwg1
- oAYSQL9NpI3WMoSbsz30bIJFYBTh6cdDp1suXjppDrU+v8e2IBx6G5sTUxSoAvA0BYrd
- 8qPYcEFzRphRdPyOFs7jngOKY+87zF75xgvlm4HPqQgld9YUpk4Z7/S+pYd+L2nJ/rT2
- UDLg==
-X-Gm-Message-State: ANhLgQ3Q4U9CQaTpkGSfOju0crCGQ90OBGpCV4mvrh0G1UlVTpJpI3Vm
- Xbg+uKUMIRHz8G/f5Dq6qEW+Pgz2TnFRaWJOi/akBQ==
-X-Received: by 2002:aca:c608:: with SMTP id w8mr1797640oif.163.1585256490887; 
- Thu, 26 Mar 2020 14:01:30 -0700 (PDT)
+ (envelope-from <no-reply@patchew.org>) id 1jHZuq-0000Qb-Bp
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 17:19:53 -0400
+Resent-Date: Thu, 26 Mar 2020 17:19:53 -0400
+Resent-Message-Id: <E1jHZuq-0000Qb-Bp@eggs.gnu.org>
+Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21162)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1jHZuq-0000NP-4A; Thu, 26 Mar 2020 17:19:52 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1585257587; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=AnNg/N8ktwP/9URZxeDIGjankTnHY6KwoGCpK45qjGaZ4hpGOfzOyAjRAgOzfMW9Y4GBpYpmDD967e1Fx0YfGWo0LbIHEj2vO53iDC8gwoMs763KGX0O27YhGIHBch4zLO/65WpUreP++ILok4c9be2noyfOw2UoE+YFRJSa+7c=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1585257587;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=+1fPIDFv0Dy7DTsJKUOm5KFRZqrB4KFG/KgZ87HbTCs=; 
+ b=WT+b6vR2FSbXxT+naik6zIkT+ya9DIPLzklcmh26XeFUSrvwGYkFAQ/rGqcvPtKUaNmAJj2+eqwyBPfMghfi1ZbeM5Ih80WWpXQiNokszZKAMogELEPVyH2Q0jQi+MK3ixPfOHtKYPkap8akBcJGGLvitG51CzU9LMPcbRnfEVs=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1585257584462812.4986226658922;
+ Thu, 26 Mar 2020 14:19:44 -0700 (PDT)
+In-Reply-To: <20200326203414.18140-1-peter.maydell@linaro.org>
+Subject: Re: [PATCH] hw/arm/collie: Put StrongARMState* into a
+ CollieMachineState struct
+Message-ID: <158525758339.25711.4191316348507848085@39012742ff91>
 MIME-Version: 1.0
-References: <20200323192944.5967-1-nieklinnenbank@gmail.com>
-In-Reply-To: <20200323192944.5967-1-nieklinnenbank@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 26 Mar 2020 21:01:18 +0000
-Message-ID: <CAFEAcA_qBW1ip26-O05fF-PLZfXJDCa2=A7oCTxPpURsYVc0hw@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/misc/allwinner-h3-dramc: enforce 64-bit multiply
- when calculating row mirror address
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::241
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: peter.maydell@linaro.org
+Date: Thu, 26 Mar 2020 14:19:44 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 136.143.188.51
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o9bGhCa32sJF
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QLAmnSv8nLBf
 
-On Mon, 23 Mar 2020 at 19:29, Niek Linnenbank <nieklinnenbank@gmail.com> wrote:
->
-> The allwinner_h3_dramc_map_rows function simulates row addressing behavior
-> when bootloader software attempts to detect the amount of available SDRAM.
->
-> Currently the line that calculates the 64-bit address of the mirrored row
-> uses a signed 32-bit multiply operation that in theory could result in the
-> upper 32-bit be all 1s. This commit ensures that the row mirror address
-> is calculated using only 64-bit operations.
->
-> Reported-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> ---
->  hw/misc/allwinner-h3-dramc.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-
-
-
-Applied to target-arm.next, thanks.
-
--- PMM
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDMyNjIwMzQxNC4xODE0
+MC0xLXBldGVyLm1heWRlbGxAbGluYXJvLm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQg
+dGhlIGRvY2tlci1xdWlja0BjZW50b3M3IGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0
+aW5nIGNvbW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBp
+bnN0YWxsZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVT
+VCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCm1ha2UgZG9ja2VyLWltYWdlLWNlbnRvczcg
+Vj0xIE5FVFdPUks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtcXVpY2tAY2VudG9zNyBTSE9XX0VO
+Vj0xIEo9MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgogIENDICAgICAgeDg2
+XzY0LXNvZnRtbXUvaHcvaTM4Ni9rdm0vYXBpYy5vCiAgQ0MgICAgICB4ODZfNjQtc29mdG1tdS9o
+dy9pMzg2L2t2bS9pb2FwaWMubwovdG1wL3FlbXUtdGVzdC9zcmMvaHcvYXJtL2NvbGxpZS5jOiBJ
+biBmdW5jdGlvbiAnY29sbGllX2luaXQnOgovdG1wL3FlbXUtdGVzdC9zcmMvaHcvYXJtL2NvbGxp
+ZS5jOjY3OjIxOiBlcnJvcjogJ3MnIHVuZGVjbGFyZWQgKGZpcnN0IHVzZSBpbiB0aGlzIGZ1bmN0
+aW9uKQogICAgIGFybV9sb2FkX2tlcm5lbChzLT5jcHUsIG1hY2hpbmUsICZjb2xsaWVfYmluZm8p
+OwogICAgICAgICAgICAgICAgICAgICBeCi90bXAvcWVtdS10ZXN0L3NyYy9ody9hcm0vY29sbGll
+LmM6Njc6MjE6IG5vdGU6IGVhY2ggdW5kZWNsYXJlZCBpZGVudGlmaWVyIGlzIHJlcG9ydGVkIG9u
+bHkgb25jZSBmb3IgZWFjaCBmdW5jdGlvbiBpdCBhcHBlYXJzIGluCm1ha2VbMV06ICoqKiBbaHcv
+YXJtL2NvbGxpZS5vXSBFcnJvciAxCm1ha2VbMV06ICoqKiBXYWl0aW5nIGZvciB1bmZpbmlzaGVk
+IGpvYnMuLi4uCiAgQ0MgICAgICB4ODZfNjQtc29mdG1tdS9ody9pMzg2L2t2bS9pODI1NC5vCiAg
+Q0MgICAgICB4ODZfNjQtc29mdG1tdS9ody9pMzg2L2t2bS9pODI1OS5vCi0tLQogIENDICAgICAg
+eDg2XzY0LXNvZnRtbXUvcWFwaS9xYXBpLXR5cGVzLm8KICBDQyAgICAgIHg4Nl82NC1zb2Z0bW11
+L3FhcGkvcWFwaS12aXNpdC1tYWNoaW5lLXRhcmdldC5vCiAgQ0MgICAgICB4ODZfNjQtc29mdG1t
+dS9xYXBpL3FhcGktdmlzaXQtbWlzYy10YXJnZXQubwptYWtlOiAqKiogW2FhcmNoNjQtc29mdG1t
+dS9hbGxdIEVycm9yIDIKbWFrZTogKioqIFdhaXRpbmcgZm9yIHVuZmluaXNoZWQgam9icy4uLi4K
+ICBDQyAgICAgIHg4Nl82NC1zb2Z0bW11L3FhcGkvcWFwaS12aXNpdC5vCiAgQ0MgICAgICB4ODZf
+NjQtc29mdG1tdS9xYXBpL3FhcGktZXZlbnRzLW1hY2hpbmUtdGFyZ2V0Lm8KLS0tCiAgICByYWlz
+ZSBDYWxsZWRQcm9jZXNzRXJyb3IocmV0Y29kZSwgY21kKQpzdWJwcm9jZXNzLkNhbGxlZFByb2Nl
+c3NFcnJvcjogQ29tbWFuZCAnWydzdWRvJywgJy1uJywgJ2RvY2tlcicsICdydW4nLCAnLS1sYWJl
+bCcsICdjb20ucWVtdS5pbnN0YW5jZS51dWlkPThmMDM0NGNjZTg1YTQyYWJhMTU4MzQzNzU2M2I0
+MzAwJywgJy11JywgJzEwMDEnLCAnLS1zZWN1cml0eS1vcHQnLCAnc2VjY29tcD11bmNvbmZpbmVk
+JywgJy0tcm0nLCAnLWUnLCAnVEFSR0VUX0xJU1Q9JywgJy1lJywgJ0VYVFJBX0NPTkZJR1VSRV9P
+UFRTPScsICctZScsICdWPScsICctZScsICdKPTE0JywgJy1lJywgJ0RFQlVHPScsICctZScsICdT
+SE9XX0VOVj0xJywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zhci90bXAvY2NhY2hlJywgJy12JywgJy9o
+b21lL3BhdGNoZXcvLmNhY2hlL3FlbXUtZG9ja2VyLWNjYWNoZTovdmFyL3RtcC9jY2FjaGU6eics
+ICctdicsICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtdXNtZmI5cHAvc3JjL2RvY2tlci1z
+cmMuMjAyMC0wMy0yNi0xNy4xNy4xMC4zMDk4MzovdmFyL3RtcC9xZW11Onoscm8nLCAncWVtdTpj
+ZW50b3M3JywgJy92YXIvdG1wL3FlbXUvcnVuJywgJ3Rlc3QtcXVpY2snXScgcmV0dXJuZWQgbm9u
+LXplcm8gZXhpdCBzdGF0dXMgMi4KZmlsdGVyPS0tZmlsdGVyPWxhYmVsPWNvbS5xZW11Lmluc3Rh
+bmNlLnV1aWQ9OGYwMzQ0Y2NlODVhNDJhYmExNTgzNDM3NTYzYjQzMDAKbWFrZVsxXTogKioqIFtk
+b2NrZXItcnVuXSBFcnJvciAxCm1ha2VbMV06IExlYXZpbmcgZGlyZWN0b3J5IGAvdmFyL3RtcC9w
+YXRjaGV3LXRlc3Rlci10bXAtdXNtZmI5cHAvc3JjJwptYWtlOiAqKiogW2RvY2tlci1ydW4tdGVz
+dC1xdWlja0BjZW50b3M3XSBFcnJvciAyCgpyZWFsICAgIDJtMzMuNTQwcwp1c2VyICAgIDBtOC42
+OTBzCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9n
+cy8yMDIwMDMyNjIwMzQxNC4xODE0MC0xLXBldGVyLm1heWRlbGxAbGluYXJvLm9yZy90ZXN0aW5n
+LmRvY2tlci1xdWlja0BjZW50b3M3Lz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQg
+YXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBz
+ZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t

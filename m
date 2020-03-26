@@ -1,94 +1,105 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1761064lfi;
-        Thu, 26 Mar 2020 04:15:08 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vv7Fy1bVMFvpvUhOYCG+qKHuAjCvMXAEFYrfgBtMUtMBSuR+nHWiBYPsWUhfvADpkdJdaO+
-X-Received: by 2002:ac8:2c33:: with SMTP id d48mr3017468qta.323.1585221308292;
-        Thu, 26 Mar 2020 04:15:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585221308; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1796351lfi;
+        Thu, 26 Mar 2020 04:52:12 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsGO8r79XsPIprIGULMeVr1TOsZSQSSTRJYsYD1yS77J4uCgxWKqdcoGMNvWuXbYXAjD49C
+X-Received: by 2002:a0c:e846:: with SMTP id l6mr7774772qvo.238.1585223532095;
+        Thu, 26 Mar 2020 04:52:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585223532; cv=none;
         d=google.com; s=arc-20160816;
-        b=rkXhlcNge5h46XazhwDcxMi513W/Zbt9uBC/Ekpt/0gxChSWU1fM1+RT9PLoZsQvPj
-         VA1IccFd5gA0pH1WVXOX4eTAXsT4J4x0GeN8osKOCyliDhDCeZw4Y1UeI6LfmYSDrOtY
-         k4/DYki4LXpuADjV54/DEiX2w73vfmWPnfQ5YPYLTNtLdN0AQZON8PojA/No+mzr+rA9
-         I3RgAyb8Nj92x05JJ/U9LkgvpG4/mDm1/JxP2iiE6oy604mJPgDMf126QJEQ8byctl2h
-         vgpMixn67Xhy0AawlUgTBWITNZxAqLfgx7sQZyPB5lP1UCJqvdd8vFQHV62wyHuL3V7w
-         32gQ==
+        b=zLFvJApBxIwaSyqG5rwEwHWuTzEvudpX2IOyAectAD+mSb81M99F+mq9ICru7ofQEq
+         cRw+7o/UYUy7ATQ1OJvwO19fbaXACgop+taqAUIHnfbcaXNzmm6FGxkdAZ7y2aafB7PZ
+         grpTZIV5tad4/wqo4KlsGkI3pl6IzYUksdjp00up5cG2Pm5dUPDIl31A7Y/X63BfF/IM
+         EDLtE1SiKA6LpOaCnao28aAXHeMIvPrOJX5pCU6D78CHJTXE2wbyO+yX1g3Z+eRlt9Yl
+         C0i2f5Y4/SvLc6W8u2LUH4VyWUMfX0HW6XXNYVsV2TW5twNUgqmndXynGbGvzeKD6iUl
+         RsNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=FJlmf71GbDzqSr16f7VMQp8xhNDuIO9JRXD/qsNeFqQ=;
-        b=Nu2VhN8scUQHP7Lwkwyjasub5NimJKyG/xDLUatym8YKoFA4JXnKQIz6IONGlKhRBn
-         RnAgvL2mcDhr+NVnFhNGKCK2wjoE0htwpvVHTxOiDbbwQTO3ZgOx7N77oVeXMNAO11mP
-         Y3ZIyHnwi2iS6jBkXWXeoCEVSzqHf87lsrKxYIQQlS6jqk+TOfw/5GbJTmLM/9P014Gw
-         sjU//OT1mac768OkYlGyPu5Vm1B5oLPoFreeWxv+u1r9vsDLKBvOYOnlHFJ4s54S2QcL
-         1Lqfb5N5FIvBDouASi1BIUm7N4GubNqsvWxoB/u995uJIZ+MewjoFblxjzqlDHNxp0y4
-         1TNQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=HLnEAt+6BrBaQnSkassFqgYv79Jhms/iTJpo2JV6vpc=;
+        b=ywcgLGeFSypDrfOgCQI71iHGXvkowcVV+eVG+tbSlIjnlXFqUNWOFkiXmTvNf/yqDL
+         QBSi6FoNkvIOkRLpdAAQEvwuVqI2eVlxYzIyYKtNAtoNJ9z6bucpRR+yM0iGGf5/Q6Fw
+         OeMnDqx0NADqdwbI9PDHSVWI+RCX/oVDwZmTW61TDmybi3OtwhIKL/82tVzuaxe+5wsj
+         wPgnbDRKlkL/xUoS1VpwVeCEZBBg2tXLug4TBoLGqdsntQEgd4OWhO4Qkx5IaSRtAI3k
+         IEYRxzmTbBVI+2UgSkpHnM6KYMwYj6tOTr04/qEY7qD5vb29rnz79ac/PZl0dSPaVdVL
+         nlCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T2YQ382H;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n10si1018828qvl.148.2020.03.26.04.15.08
+        by mx.google.com with ESMTPS id z7si1063430qtq.128.2020.03.26.04.52.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Mar 2020 04:15:08 -0700 (PDT)
+        Thu, 26 Mar 2020 04:52:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49484 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T2YQ382H;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50014 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jHQTb-0007WI-OA
-	for alex.bennee@linaro.org; Thu, 26 Mar 2020 07:15:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60185)
+	id 1jHR3T-0005VF-F0
+	for alex.bennee@linaro.org; Thu, 26 Mar 2020 07:52:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37692)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jHQTU-0007Vc-AG
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 07:15:01 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1jHR30-0004ta-2z
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 07:51:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jHQTS-0006FC-Bu
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 07:15:00 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2087 helo=huawei.com)
+ (envelope-from <eric.auger@redhat.com>) id 1jHR2y-0002d0-9f
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 07:51:41 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:53477)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jHQTS-0006DT-2U; Thu, 26 Mar 2020 07:14:58 -0400
-Received: from lhreml703-cah.china.huawei.com (unknown [172.18.7.107])
- by Forcepoint Email with ESMTP id A715B721B8505ED14D4A;
- Thu, 26 Mar 2020 11:14:54 +0000 (GMT)
-Received: from lhreml701-chm.china.huawei.com (10.201.108.50) by
- lhreml703-cah.china.huawei.com (10.201.108.44) with Microsoft SMTP Server
- (TLS) id 14.3.408.0; Thu, 26 Mar 2020 11:14:53 +0000
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- lhreml701-chm.china.huawei.com (10.201.108.50) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1713.5; Thu, 26 Mar 2020 11:14:54 +0000
-Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
- lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
- 15.01.1713.004; Thu, 26 Mar 2020 11:14:53 +0000
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Auger Eric <eric.auger@redhat.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Subject: RE: [RFC v1] arm/virt: Add memory hot remove support
-Thread-Topic: [RFC v1] arm/virt: Add memory hot remove support
-Thread-Index: AQHV/SI7g2bnth2huEKfm213qjOT+KhawV2AgAAAwFA=
-Date: Thu, 26 Mar 2020 11:14:53 +0000
-Message-ID: <246eb04443e342749ed91533949a5e67@huawei.com>
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1jHR2y-0002cq-65
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 07:51:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1585223499;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HLnEAt+6BrBaQnSkassFqgYv79Jhms/iTJpo2JV6vpc=;
+ b=T2YQ382H1Tb38meDpOiFqCKSjRJqMP6j2ONyvF37m5g2Th8gYY4PGLc63/L8OIyzMskHKw
+ 2XJsHzcPFoOG+w7ISz6XGFR8Y8skkDYWrjvvaeNvuD/4eZGC6EkIKZqM21663d6pg9qvuA
+ Z6ugvJ/2dOdCGyr/as9YICc8EAMy2AE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-424-v_8ALUnhOQmM4E1s_lZKZg-1; Thu, 26 Mar 2020 07:51:24 -0400
+X-MC-Unique: v_8ALUnhOQmM4E1s_lZKZg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B2227800D4E;
+ Thu, 26 Mar 2020 11:51:22 +0000 (UTC)
+Received: from [10.36.113.142] (ovpn-113-142.ams2.redhat.com [10.36.113.142])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C0A4D19925;
+ Thu, 26 Mar 2020 11:51:15 +0000 (UTC)
+Subject: Re: [RFC v1] arm/virt: Add memory hot remove support
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
 References: <20200318123722.19736-1-shameerali.kolothum.thodi@huawei.com>
  <b6c6f33b-7e4f-0b46-b67d-2de572e12626@redhat.com>
-In-Reply-To: <b6c6f33b-7e4f-0b46-b67d-2de572e12626@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.92.97]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ <246eb04443e342749ed91533949a5e67@huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <65e01a68-8228-ea4b-10b9-a21eac55eda0@redhat.com>
+Date: Thu, 26 Mar 2020 12:51:14 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+In-Reply-To: <246eb04443e342749ed91533949a5e67@huawei.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 185.176.76.210
+X-Received-From: 63.128.21.74
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,252 +118,268 @@ Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
  "imammedo@redhat.com" <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ctRM0OQ5JcPb
+X-TUID: XM5QTgdujST7
 
-Hi Eric,
+Hi Shameer,
 
-> -----Original Message-----
-> From: Auger Eric [mailto:eric.auger@redhat.com]
-> Sent: 26 March 2020 11:01
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
-> qemu-devel@nongnu.org; qemu-arm@nongnu.org
-> Cc: imammedo@redhat.com; peter.maydell@linaro.org; mst@redhat.com;
-> xuwei (O) <xuwei5@huawei.com>; Zengtao (B) <prime.zeng@hisilicon.com>;
-> Linuxarm <linuxarm@huawei.com>; Anshuman Khandual
-> <anshuman.khandual@arm.com>
-> Subject: Re: [RFC v1] arm/virt: Add memory hot remove support
->=20
-> Hi Shameer,
->=20
-> On 3/18/20 1:37 PM, Shameer Kolothum wrote:
-> > This adds support for memory hot remove on arm/virt that
-> > uses acpi ged device.
->=20
-> I gave this a try and it works fine if the PCDIMM slot was initially
-> hotplugged:
-> (QEMU) object-add qom-type=3Dmemory-backend-ram id=3Dmem1
-> props.size=3D4294967296
-> {"return": {}}
-> (QEMU) device_add driver=3Dpc-dimm  id=3Dpcdimm1 memdev=3Dmem1
-> (QEMU) device_del id=3Dpcdimm1
-> {"return": {}}
->=20
-> on guest I can see:
-> [   82.466321] Offlined Pages 262144
-> [   82.541712] Offlined Pages 262144
-> [   82.589236] Offlined Pages 262144
-> [   82.969166] Offlined Pages 262144
->=20
-> However I noticed that if qemu is launched directly with
->=20
-> -m 16G,maxmem=3D32G,slots=3D2 \
-> -object memory-backend-ram,id=3Dmem1,size=3D4G \
-> -device pc-dimm,memdev=3Dmem1,id=3Ddimm1,driver=3Dpc-dimm -device
->=20
-> and then in the qmp shell:
-> (QEMU) device_del id=3Ddimm1
->=20
-> the hot-unplug fails in guest:
->=20
-> [   78.897407] Offlined Pages 262144
-> [   79.260811] Offlined Pages 262144
-> [   79.308105] Offlined Pages 262144
-> [   79.333675] page:fffffe00137d1f40 refcount:1 mapcount:0
-> mapping:ffff0004ea9f20b1 index:0xaaab11c6e
-> [   79.335927] anon flags: 0x17ffff8000080024(uptodate|active|swapbacked)
-> [   79.337571] raw: 17ffff8000080024 dead000000000100
-> dead000000000122
-> ffff0004ea9f20b1
-> [   79.339502] raw: 0000000aaab11c6e 0000000000000000 00000001ffffffff
-> ffff0004fd4e3000
-> [   79.341701] page dumped because: unmovable page
-> [   79.342887] page->mem_cgroup:ffff0004fd4e3000
-> [   79.354729] page:fffffe00137d1f40 refcount:1 mapcount:0
-> mapping:ffff0004ea9f20b1 index:0xaaab11c6e
-> [   79.357012] anon flags: 0x17ffff8000080024(uptodate|active|swapbacked)
-> [   79.358658] raw: 17ffff8000080024 dead000000000100
-> dead000000000122
-> ffff0004ea9f20b1
-> [   79.360611] raw: 0000000aaab11c6e 0000000000000000 00000001ffffffff
-> ffff0004fd4e3000
-> [   79.362560] page dumped because: unmovable page
-> [   79.363742] page->mem_cgroup:ffff0004fd4e3000
-> [   79.368636] memory memory20: Offline failed.
->=20
-> I did not expect this. The PCDIMM slot in that case does not seem to be
-> interpreted as a hot-unpluggable one (?). I added Anshuman in cc.
+On 3/26/20 12:14 PM, Shameerali Kolothum Thodi wrote:
+> Hi Eric,
+> 
+>> -----Original Message-----
+>> From: Auger Eric [mailto:eric.auger@redhat.com]
+>> Sent: 26 March 2020 11:01
+>> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
+>> qemu-devel@nongnu.org; qemu-arm@nongnu.org
+>> Cc: imammedo@redhat.com; peter.maydell@linaro.org; mst@redhat.com;
+>> xuwei (O) <xuwei5@huawei.com>; Zengtao (B) <prime.zeng@hisilicon.com>;
+>> Linuxarm <linuxarm@huawei.com>; Anshuman Khandual
+>> <anshuman.khandual@arm.com>
+>> Subject: Re: [RFC v1] arm/virt: Add memory hot remove support
+>>
+>> Hi Shameer,
+>>
+>> On 3/18/20 1:37 PM, Shameer Kolothum wrote:
+>>> This adds support for memory hot remove on arm/virt that
+>>> uses acpi ged device.
+>>
+>> I gave this a try and it works fine if the PCDIMM slot was initially
+>> hotplugged:
+>> (QEMU) object-add qom-type=memory-backend-ram id=mem1
+>> props.size=4294967296
+>> {"return": {}}
+>> (QEMU) device_add driver=pc-dimm  id=pcdimm1 memdev=mem1
+>> (QEMU) device_del id=pcdimm1
+>> {"return": {}}
+>>
+>> on guest I can see:
+>> [   82.466321] Offlined Pages 262144
+>> [   82.541712] Offlined Pages 262144
+>> [   82.589236] Offlined Pages 262144
+>> [   82.969166] Offlined Pages 262144
+>>
+>> However I noticed that if qemu is launched directly with
+>>
+>> -m 16G,maxmem=32G,slots=2 \
+>> -object memory-backend-ram,id=mem1,size=4G \
+>> -device pc-dimm,memdev=mem1,id=dimm1,driver=pc-dimm -device
+>>
+>> and then in the qmp shell:
+>> (QEMU) device_del id=dimm1
+>>
+>> the hot-unplug fails in guest:
+>>
+>> [   78.897407] Offlined Pages 262144
+>> [   79.260811] Offlined Pages 262144
+>> [   79.308105] Offlined Pages 262144
+>> [   79.333675] page:fffffe00137d1f40 refcount:1 mapcount:0
+>> mapping:ffff0004ea9f20b1 index:0xaaab11c6e
+>> [   79.335927] anon flags: 0x17ffff8000080024(uptodate|active|swapbacked)
+>> [   79.337571] raw: 17ffff8000080024 dead000000000100
+>> dead000000000122
+>> ffff0004ea9f20b1
+>> [   79.339502] raw: 0000000aaab11c6e 0000000000000000 00000001ffffffff
+>> ffff0004fd4e3000
+>> [   79.341701] page dumped because: unmovable page
+>> [   79.342887] page->mem_cgroup:ffff0004fd4e3000
+>> [   79.354729] page:fffffe00137d1f40 refcount:1 mapcount:0
+>> mapping:ffff0004ea9f20b1 index:0xaaab11c6e
+>> [   79.357012] anon flags: 0x17ffff8000080024(uptodate|active|swapbacked)
+>> [   79.358658] raw: 17ffff8000080024 dead000000000100
+>> dead000000000122
+>> ffff0004ea9f20b1
+>> [   79.360611] raw: 0000000aaab11c6e 0000000000000000 00000001ffffffff
+>> ffff0004fd4e3000
+>> [   79.362560] page dumped because: unmovable page
+>> [   79.363742] page->mem_cgroup:ffff0004fd4e3000
+>> [   79.368636] memory memory20: Offline failed.
+>>
+>> I did not expect this. The PCDIMM slot in that case does not seem to be
+>> interpreted as a hot-unpluggable one (?). I added Anshuman in cc.
+> 
+> Could you please try adding "movable_node" to qemu guest kernel command line params.
+> This will prevent any kernel allocation from hotplugable memory nodes which I think is
+> causing the behavior you are seeing.
 
-Could you please try adding "movable_node" to qemu guest kernel command lin=
-e params.
-This will prevent any kernel allocation from hotplugable memory nodes which=
- I think is
-causing the behavior you are seeing.
+Effectively, when adding the movable_node option in the guest kernel
+parameters, I get the following traces:
 
-Thanks,
-Shameer
+[   29.581418] Offlined Pages 262144
+[   29.663605] Offlined Pages 262144
+[   29.714225] Offlined Pages 262144
+[   30.222953] Offlined Pages 262144
+[   30.314288] Built 1 zonelists, mobility grouping on.  Total pages:
+4076898
+[   30.316067] Policy zone: Normal
 
+Thanks
 
-> Thanks
->=20
-> Eric
->=20
->=20
->=20
-> >
-> > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> > ---
-> >  -RFC because linux kernel support for mem hot remove is just queued
-> >   for 5.7[1].
-> >  -Tested with guest kernel 5.6-rc5 + [1]
-> >
-> > 1. https://patchwork.kernel.org/cover/11419301/
-> > ---
-> >  hw/acpi/generic_event_device.c | 28 +++++++++++++++++
-> >  hw/arm/virt.c                  | 56
-> ++++++++++++++++++++++++++++++++--
-> >  2 files changed, 82 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/hw/acpi/generic_event_device.c
-> b/hw/acpi/generic_event_device.c
-> > index 021ed2bf23..3e28c110fa 100644
-> > --- a/hw/acpi/generic_event_device.c
-> > +++ b/hw/acpi/generic_event_device.c
-> > @@ -182,6 +182,32 @@ static void
-> acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
-> >      }
-> >  }
-> >
-> > +static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
-> > +                                       DeviceState *dev, Error
-> **errp)
-> > +{
-> > +    AcpiGedState *s =3D ACPI_GED(hotplug_dev);
-> > +
-> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> > +        acpi_memory_unplug_request_cb(hotplug_dev,
-> &s->memhp_state, dev, errp);
-> > +    } else {
-> > +        error_setg(errp, "acpi: device unplug request for unsupported
-> device"
-> > +                   " type: %s", object_get_typename(OBJECT(dev)));
-> > +    }
-> > +}
-> > +
-> > +static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
-> > +                               DeviceState *dev, Error **errp)
-> > +{
-> > +    AcpiGedState *s =3D ACPI_GED(hotplug_dev);
-> > +
-> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> > +        acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
-> > +    } else {
-> > +        error_setg(errp, "acpi: device unplug for unsupported device"
-> > +                   " type: %s", object_get_typename(OBJECT(dev)));
-> > +    }
-> > +}
-> > +
-> >  static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBit=
-s
-> ev)
-> >  {
-> >      AcpiGedState *s =3D ACPI_GED(adev);
-> > @@ -286,6 +312,8 @@ static void acpi_ged_class_init(ObjectClass *class,
-> void *data)
-> >      dc->vmsd =3D &vmstate_acpi_ged;
-> >
-> >      hc->plug =3D acpi_ged_device_plug_cb;
-> > +    hc->unplug_request =3D acpi_ged_unplug_request_cb;
-> > +    hc->unplug =3D acpi_ged_unplug_cb;
-> >
-> >      adevc->send_event =3D acpi_ged_send_event;
-> >  }
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 94f93dda54..91974e4e80 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -2096,11 +2096,62 @@ static void
-> virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
-> >      }
-> >  }
-> >
-> > +static void virt_dimm_unplug_request(HotplugHandler *hotplug_dev,
-> > +                                     DeviceState *dev, Error
-> **errp)
-> > +{
-> > +    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
-> > +    Error *local_err =3D NULL;
-> > +
-> > +    if (!vms->acpi_dev) {
-> > +        error_setg(errp,
-> > +                   "memory hotplug is not enabled: missing acpi-ged
-> device");
-> > +        goto out;
-> > +    }
-> > +
-> > +    hotplug_handler_unplug_request(HOTPLUG_HANDLER(vms->acpi_dev),
-> dev,
-> > +                                   &local_err);
-> > +out:
-> > +    error_propagate(errp, local_err);
-> > +}
-> > +
-> > +static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
-> > +                             DeviceState *dev, Error **errp)
-> > +{
-> > +    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
-> > +    Error *local_err =3D NULL;
-> > +
-> > +    hotplug_handler_unplug(HOTPLUG_HANDLER(vms->acpi_dev), dev,
-> &local_err);
-> > +    if (local_err) {
-> > +        goto out;
-> > +    }
-> > +
-> > +    pc_dimm_unplug(PC_DIMM(dev), MACHINE(vms));
-> > +    object_property_set_bool(OBJECT(dev), false, "realized", NULL);
-> > +
-> > + out:
-> > +    error_propagate(errp, local_err);
-> > +}
-> > +
-> >  static void virt_machine_device_unplug_request_cb(HotplugHandler
-> *hotplug_dev,
-> >                                            DeviceState *dev, Error
-> **errp)
-> >  {
-> > -    error_setg(errp, "device unplug request for unsupported device"
-> > -               " type: %s", object_get_typename(OBJECT(dev)));
-> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> > +        virt_dimm_unplug_request(hotplug_dev, dev, errp);
-> > +    } else {
-> > +        error_setg(errp, "device unplug request for unsupported device=
-"
-> > +                   " type: %s", object_get_typename(OBJECT(dev)));
-> > +    }
-> > +}
-> > +
-> > +static void virt_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
-> > +                                          DeviceState *dev, Error
-> **errp)
-> > +{
-> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> > +        virt_dimm_unplug(hotplug_dev, dev, errp);
-> > +    } else {
-> > +        error_setg(errp, "virt: device unplug for unsupported device"
-> > +                   " type: %s", object_get_typename(OBJECT(dev)));
-> > +    }
-> >  }
-> >
-> >  static HotplugHandler *virt_machine_get_hotplug_handler(MachineState
-> *machine,
-> > @@ -2181,6 +2232,7 @@ static void virt_machine_class_init(ObjectClass
-> *oc, void *data)
-> >      hc->pre_plug =3D virt_machine_device_pre_plug_cb;
-> >      hc->plug =3D virt_machine_device_plug_cb;
-> >      hc->unplug_request =3D virt_machine_device_unplug_request_cb;
-> > +    hc->unplug =3D virt_machine_device_unplug_cb;
-> >      mc->numa_mem_supported =3D true;
-> >      mc->auto_enable_numa_with_memhp =3D true;
-> >      mc->default_ram_id =3D "mach-virt.ram";
-> >
+Eric
+
+> 
+> Thanks,
+> Shameer
+> 
+> 
+>> Thanks
+>>
+>> Eric
+>>
+>>
+>>
+>>>
+>>> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+>>> ---
+>>>  -RFC because linux kernel support for mem hot remove is just queued
+>>>   for 5.7[1].
+>>>  -Tested with guest kernel 5.6-rc5 + [1]
+>>>
+>>> 1. https://patchwork.kernel.org/cover/11419301/
+>>> ---
+>>>  hw/acpi/generic_event_device.c | 28 +++++++++++++++++
+>>>  hw/arm/virt.c                  | 56
+>> ++++++++++++++++++++++++++++++++--
+>>>  2 files changed, 82 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/hw/acpi/generic_event_device.c
+>> b/hw/acpi/generic_event_device.c
+>>> index 021ed2bf23..3e28c110fa 100644
+>>> --- a/hw/acpi/generic_event_device.c
+>>> +++ b/hw/acpi/generic_event_device.c
+>>> @@ -182,6 +182,32 @@ static void
+>> acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
+>>>      }
+>>>  }
+>>>
+>>> +static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
+>>> +                                       DeviceState *dev, Error
+>> **errp)
+>>> +{
+>>> +    AcpiGedState *s = ACPI_GED(hotplug_dev);
+>>> +
+>>> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+>>> +        acpi_memory_unplug_request_cb(hotplug_dev,
+>> &s->memhp_state, dev, errp);
+>>> +    } else {
+>>> +        error_setg(errp, "acpi: device unplug request for unsupported
+>> device"
+>>> +                   " type: %s", object_get_typename(OBJECT(dev)));
+>>> +    }
+>>> +}
+>>> +
+>>> +static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
+>>> +                               DeviceState *dev, Error **errp)
+>>> +{
+>>> +    AcpiGedState *s = ACPI_GED(hotplug_dev);
+>>> +
+>>> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+>>> +        acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
+>>> +    } else {
+>>> +        error_setg(errp, "acpi: device unplug for unsupported device"
+>>> +                   " type: %s", object_get_typename(OBJECT(dev)));
+>>> +    }
+>>> +}
+>>> +
+>>>  static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits
+>> ev)
+>>>  {
+>>>      AcpiGedState *s = ACPI_GED(adev);
+>>> @@ -286,6 +312,8 @@ static void acpi_ged_class_init(ObjectClass *class,
+>> void *data)
+>>>      dc->vmsd = &vmstate_acpi_ged;
+>>>
+>>>      hc->plug = acpi_ged_device_plug_cb;
+>>> +    hc->unplug_request = acpi_ged_unplug_request_cb;
+>>> +    hc->unplug = acpi_ged_unplug_cb;
+>>>
+>>>      adevc->send_event = acpi_ged_send_event;
+>>>  }
+>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>> index 94f93dda54..91974e4e80 100644
+>>> --- a/hw/arm/virt.c
+>>> +++ b/hw/arm/virt.c
+>>> @@ -2096,11 +2096,62 @@ static void
+>> virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>>>      }
+>>>  }
+>>>
+>>> +static void virt_dimm_unplug_request(HotplugHandler *hotplug_dev,
+>>> +                                     DeviceState *dev, Error
+>> **errp)
+>>> +{
+>>> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+>>> +    Error *local_err = NULL;
+>>> +
+>>> +    if (!vms->acpi_dev) {
+>>> +        error_setg(errp,
+>>> +                   "memory hotplug is not enabled: missing acpi-ged
+>> device");
+>>> +        goto out;
+>>> +    }
+>>> +
+>>> +    hotplug_handler_unplug_request(HOTPLUG_HANDLER(vms->acpi_dev),
+>> dev,
+>>> +                                   &local_err);
+>>> +out:
+>>> +    error_propagate(errp, local_err);
+>>> +}
+>>> +
+>>> +static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
+>>> +                             DeviceState *dev, Error **errp)
+>>> +{
+>>> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+>>> +    Error *local_err = NULL;
+>>> +
+>>> +    hotplug_handler_unplug(HOTPLUG_HANDLER(vms->acpi_dev), dev,
+>> &local_err);
+>>> +    if (local_err) {
+>>> +        goto out;
+>>> +    }
+>>> +
+>>> +    pc_dimm_unplug(PC_DIMM(dev), MACHINE(vms));
+>>> +    object_property_set_bool(OBJECT(dev), false, "realized", NULL);
+>>> +
+>>> + out:
+>>> +    error_propagate(errp, local_err);
+>>> +}
+>>> +
+>>>  static void virt_machine_device_unplug_request_cb(HotplugHandler
+>> *hotplug_dev,
+>>>                                            DeviceState *dev, Error
+>> **errp)
+>>>  {
+>>> -    error_setg(errp, "device unplug request for unsupported device"
+>>> -               " type: %s", object_get_typename(OBJECT(dev)));
+>>> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+>>> +        virt_dimm_unplug_request(hotplug_dev, dev, errp);
+>>> +    } else {
+>>> +        error_setg(errp, "device unplug request for unsupported device"
+>>> +                   " type: %s", object_get_typename(OBJECT(dev)));
+>>> +    }
+>>> +}
+>>> +
+>>> +static void virt_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
+>>> +                                          DeviceState *dev, Error
+>> **errp)
+>>> +{
+>>> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+>>> +        virt_dimm_unplug(hotplug_dev, dev, errp);
+>>> +    } else {
+>>> +        error_setg(errp, "virt: device unplug for unsupported device"
+>>> +                   " type: %s", object_get_typename(OBJECT(dev)));
+>>> +    }
+>>>  }
+>>>
+>>>  static HotplugHandler *virt_machine_get_hotplug_handler(MachineState
+>> *machine,
+>>> @@ -2181,6 +2232,7 @@ static void virt_machine_class_init(ObjectClass
+>> *oc, void *data)
+>>>      hc->pre_plug = virt_machine_device_pre_plug_cb;
+>>>      hc->plug = virt_machine_device_plug_cb;
+>>>      hc->unplug_request = virt_machine_device_unplug_request_cb;
+>>> +    hc->unplug = virt_machine_device_unplug_cb;
+>>>      mc->numa_mem_supported = true;
+>>>      mc->auto_enable_numa_with_memhp = true;
+>>>      mc->default_ram_id = "mach-virt.ram";
+>>>
+> 
 

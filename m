@@ -1,16 +1,16 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1868290lfi;
-        Thu, 26 Mar 2020 06:01:56 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvsqf4R72rutdta+aryWntyJZCgUsCLltkr6ftzRRsNwbSc2cmrUVSCVUVK0Q6xj9fmQFUA
-X-Received: by 2002:a0c:a8e9:: with SMTP id h41mr8099410qvc.235.1585227716857;
-        Thu, 26 Mar 2020 06:01:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585227716; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1883115lfi;
+        Thu, 26 Mar 2020 06:13:51 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvIQpxvrMaEZ1GQuDcAHjIOi9ggz1gKP7TLPCbmvMRSvlse2qxCe4rLwz4xP8WhghWS9j6n
+X-Received: by 2002:a37:57c2:: with SMTP id l185mr7989769qkb.172.1585228431037;
+        Thu, 26 Mar 2020 06:13:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585228430; cv=none;
         d=google.com; s=arc-20160816;
-        b=JeY3VgD5zwNgoZvZwmRwVQdk4/HiyBT/P2imweBj/Zuj0SIowiOMBaRvEGumJdYGS7
-         vDADEK/cbSq/nzbfIYXwnm7n8tqo15GEa7oHvpBsiadySqodQFD4JuJOnYlpBlEQocEZ
-         VdKLYoMrz3Xa7zwvzi+96NYSk7GTDha09wTcELrFOblBh+7wjeRQyLafHXGsDXRc0xXb
-         bwWzv+1IGxTlQ+RUu9+c+zFUUkcWcVXtFVlHx43fOkBrHsFzLdFT0eQxhqxIZ40MuOA/
-         IrOOhlEjhhTvSqlrw+LMlZtx48oH0Y9g7hZO42BiFU4nvbqcLVxcKjiFnLaaA+6AHLuj
-         mHxQ==
+        b=JY66z48w6gotJlmuOQ0AdZnAK8GWh2g68y41/OGnw7C1O13fXUkLDVvm1Ena4p5vv1
+         mpWtzQFeVj2wK/eT/fqTRIrZ77b2wpMg5SroM4d7lHo/+jlLA/HHRH6T47IXkQMA9P6c
+         wglnKwBaON1dJEPQCFbZECITfGXAtH+GtwlLXpBR0zyG3Fn59M6z5/Gde6gHSAzHT6C3
+         /pQvj4SDSr09ECGrx7mPC5bzO32BNR8UzW8n21C4axAwxvlik46+v9pAsTWhcVkLtaeD
+         C3beZUA0M4w7yoks28T5z9VRTuCtR+sJiI3OIUaDfSoJEbjgGUNMIzD0SqaCcznralUt
+         3JIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
@@ -18,64 +18,64 @@ ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc
          :content-language:accept-language:in-reply-to:references:message-id
          :date:thread-index:thread-topic:subject:to:from:ironport-sdr
          :ironport-sdr;
-        bh=QetdpfwWcoxSMQ6oS8vNMpxyp98/zs8FyzLQqaaD4bY=;
-        b=cu9HOoOwc2DaCNu4WHVEB+DfC0YoO5zpC9HFSKL8zaW/Ba8PJzkjjkTOMQFNznZNi7
-         Ij18OgizUu8Da/w8lBsJVP8AIaVgOvIMRRSVQALYwiC3I+Yi4YvR1GA0T7BJ8Za5YQyk
-         Jy0dN+COltUn7GpURK8ONR8MDH7Yf/MSj32WU35+OrOrybkuJUQC4wce/gY6erO48zOv
-         gwGO+ziovD/JNR/M8ZH6N1e2eBZzdYSaonF1bIvOpDgIwe+KlfWFIiqKE1twpirv0XM2
-         9ibR1ayria8e/f6/OunEVNp2EKi6rAUSXrSRY8TUsb2huxagjaRjNtS42qFCX3F8iFmL
-         g5GA==
+        bh=9oa90XokEP0KuwTGpO9+dc6eU0Fp2NMW1EgMz+YdmQs=;
+        b=GbTYF3+U58kGMOAG8HbOJWX2u0NoPNQExQQg5vN9Gm9BcflSSFk+nl0ROgl7OnRKIV
+         VSWzz6o2S9nYaZK6iNSR5g+SZei2EcJLhyaoNmYjW5c5DT3NZWk//RnfsLYEvVK/+iXs
+         yyWgnv2aNByP2jlK8H5LNs5/N1ENpMeVz5uTDNpLhNwWzu8cedK2iSKiHhTUUgc9/pZf
+         GV7RtwdO47ypG0lOpR+hzmwLXhqQfBdMt7kTNIYkn93T+GEfBCgljkCTIHLGNZcoWfSH
+         dECCl6VP/XPMYfnDK70A4Aj/E615qUcjKgG7dqLZ4pyDP8BgPtmGAKtYl88NHFtLALuG
+         +Gjw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cz14si1086321qvb.199.2020.03.26.06.01.56
+        by mx.google.com with ESMTPS id b89si1173131qva.0.2020.03.26.06.13.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Mar 2020 06:01:56 -0700 (PDT)
+        Thu, 26 Mar 2020 06:13:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:51134 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51344 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jHS8y-00085i-2y
-	for alex.bennee@linaro.org; Thu, 26 Mar 2020 09:01:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49894)
+	id 1jHSKU-0006Wc-Dc
+	for alex.bennee@linaro.org; Thu, 26 Mar 2020 09:13:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52750)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <yi.l.liu@intel.com>) id 1jHS8a-000848-Kh
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 09:01:34 -0400
+ (envelope-from <yi.l.liu@intel.com>) id 1jHSKM-0006VE-5S
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 09:13:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <yi.l.liu@intel.com>) id 1jHS8Z-0008WK-4z
- for qemu-arm@nongnu.org; Thu, 26 Mar 2020 09:01:32 -0400
-Received: from mga04.intel.com ([192.55.52.120]:58551)
+ (envelope-from <yi.l.liu@intel.com>) id 1jHSKK-0008E9-TR
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2020 09:13:42 -0400
+Received: from mga07.intel.com ([134.134.136.100]:38256)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <yi.l.liu@intel.com>)
- id 1jHS8W-0008UX-1M; Thu, 26 Mar 2020 09:01:28 -0400
-IronPort-SDR: Q9vMwRyJPbngx1kv4kFU8b9/G9/lKIkBwac7Dz6QM1xDx/k6af0yij8+fllGYzaodTh672OMKV
- jjaBMHi8CcvQ==
+ id 1jHSKH-0008DW-A1; Thu, 26 Mar 2020 09:13:37 -0400
+IronPort-SDR: YqRTi94eWTktwQTEGgZtwHVKzL1X46NMQxZWipLsDvIHDDk2rcLnDatPvVki8r72Qun21qAtmD
+ aT0kDNVDOsRg==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Mar 2020 06:01:26 -0700
-IronPort-SDR: CZooHnj5IZ6UX3vhrZQNzKb7LrfUl3kq2dYtjlz3C2avbUuqyIfsWrdbmehye7SVbGIOlsYdiQ
- 98+2KH20NalA==
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Mar 2020 06:13:32 -0700
+IronPort-SDR: gMn7iuYRMuIEtF25zmXu0iCA0a9il9/1joqf694JTqs5IyvErTdk2nT0Ewmv1KFJFKcrlnxWlT
+ jkljHO5XbhFA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,308,1580803200"; d="scan'208";a="240667872"
+X-IronPort-AV: E=Sophos;i="5.72,308,1580803200"; d="scan'208";a="238798886"
 Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
- by fmsmga008.fm.intel.com with ESMTP; 26 Mar 2020 06:01:26 -0700
-Received: from fmsmsx102.amr.corp.intel.com (10.18.124.200) by
+ by fmsmga007.fm.intel.com with ESMTP; 26 Mar 2020 06:13:32 -0700
+Received: from fmsmsx120.amr.corp.intel.com (10.18.124.208) by
  FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 26 Mar 2020 06:01:26 -0700
-Received: from shsmsx154.ccr.corp.intel.com (10.239.6.54) by
- FMSMSX102.amr.corp.intel.com (10.18.124.200) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 26 Mar 2020 06:01:25 -0700
+ id 14.3.439.0; Thu, 26 Mar 2020 06:13:32 -0700
+Received: from shsmsx101.ccr.corp.intel.com (10.239.4.153) by
+ fmsmsx120.amr.corp.intel.com (10.18.124.208) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 26 Mar 2020 06:13:31 -0700
 Received: from shsmsx104.ccr.corp.intel.com ([169.254.5.206]) by
- SHSMSX154.ccr.corp.intel.com ([169.254.7.145]) with mapi id 14.03.0439.000;
- Thu, 26 Mar 2020 21:01:23 +0800
+ SHSMSX101.ccr.corp.intel.com ([169.254.1.43]) with mapi id 14.03.0439.000;
+ Thu, 26 Mar 2020 21:13:29 +0800
 From: "Liu, Yi L" <yi.l.liu@intel.com>
 To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
  <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
@@ -83,14 +83,16 @@ To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
  <peter.maydell@linaro.org>, "mst@redhat.com" <mst@redhat.com>,
  "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
  "jacob.jun.pan@linux.intel.com" <jacob.jun.pan@linux.intel.com>
-Subject: RE: [RFC v6 08/24] pci: introduce PCIPASIDOps to PCIDevice
-Thread-Topic: [RFC v6 08/24] pci: introduce PCIPASIDOps to PCIDevice
-Thread-Index: AQHV/tktUfcQ5azYVUulSCglN9SHFKha3xew
-Date: Thu, 26 Mar 2020 13:01:22 +0000
-Message-ID: <A2975661238FB949B60364EF0F2C25743A204440@SHSMSX104.ccr.corp.intel.com>
+Subject: RE: [RFC v6 05/24] memory: Introduce IOMMU Memory Region
+ inject_faults API
+Thread-Topic: [RFC v6 05/24] memory: Introduce IOMMU Memory Region
+ inject_faults API
+Thread-Index: AQHV/tkL56HOGmRgQUStEsCG5C4Dkqha4D1w
+Date: Thu, 26 Mar 2020 13:13:28 +0000
+Message-ID: <A2975661238FB949B60364EF0F2C25743A2044AD@SHSMSX104.ccr.corp.intel.com>
 References: <20200320165840.30057-1-eric.auger@redhat.com>
- <20200320165840.30057-9-eric.auger@redhat.com>
-In-Reply-To: <20200320165840.30057-9-eric.auger@redhat.com>
+ <20200320165840.30057-6-eric.auger@redhat.com>
+In-Reply-To: <20200320165840.30057-6-eric.auger@redhat.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -103,7 +105,7 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 192.55.52.120
+X-Received-From: 134.134.136.100
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -126,15 +128,20 @@ Cc: "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
  "will@kernel.org" <will@kernel.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ocdY2YTbj2rR
+X-TUID: rhunrdpqJzax
 
 Hi Eric,
 
-Not sure about your preference. I've modified my patch as below, which
-HostIOMMUContext to provide callbacks for vIOMMU to call into VFIO.
-Please feel free to give your suggestions.
+I'm also considering how to inject iommu fault to vIOMMU. As our
+previous discussion (long time ago), MemoryRegion way doesn't work
+well for VTd case. So I'd like see your opinion on the proposal
+below:
+I've a patch to make vIOMMUs register PCIIOMMUOps to PCI layer.
+Current usage is to get address space and set/unset HostIOMMUContext
+(added by me). I think it may be also nice to add the fault injection
+callback in the PCIIOMMUOps. Thoughts?
 
-https://patchwork.ozlabs.org/patch/1259665/
+https://patchwork.ozlabs.org/patch/1259645/
 
 Regards,
 Yi Liu
@@ -143,132 +150,93 @@ Yi Liu
 > Sent: Saturday, March 21, 2020 12:58 AM
 > To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-devel@nongnu.or=
 g;
-> Subject: [RFC v6 08/24] pci: introduce PCIPASIDOps to PCIDevice
+> Subject: [RFC v6 05/24] memory: Introduce IOMMU Memory Region inject_faul=
+ts
+> API
 >=20
-> From: Liu Yi L <yi.l.liu@intel.com>
+> This new API allows to inject @count iommu_faults into
+> the IOMMU memory region.
 >=20
-> This patch introduces PCIPASIDOps for IOMMU related operations.
->=20
-> https://lists.gnu.org/archive/html/qemu-devel/2018-03/msg00078.html
-> https://lists.gnu.org/archive/html/qemu-devel/2018-03/msg00940.html
->=20
-> So far, to setup virt-SVA for assigned SVA capable device, needs to
-> configure host translation structures for specific pasid. (e.g. bind
-> guest page table to host and enable nested translation in host).
-> Besides, vIOMMU emulator needs to forward guest's cache invalidation
-> to host since host nested translation is enabled. e.g. on VT-d, guest
-> owns 1st level translation table, thus cache invalidation for 1st
-> level should be propagated to host.
->=20
-> This patch adds two functions: alloc_pasid and free_pasid to support
-> guest pasid allocation and free. The implementations of the callbacks
-> would be device passthru modules. Like vfio.
->=20
-> Cc: Kevin Tian <kevin.tian@intel.com>
-> Cc: Jacob Pan <jacob.jun.pan@linux.intel.com>
-> Cc: Peter Xu <peterx@redhat.com>
-> Cc: Eric Auger <eric.auger@redhat.com>
-> Cc: Yi Sun <yi.y.sun@linux.intel.com>
-> Cc: David Gibson <david@gibson.dropbear.id.au>
-> Signed-off-by: Liu Yi L <yi.l.liu@intel.com>
-> Signed-off-by: Yi Sun <yi.y.sun@linux.intel.com>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > ---
->  hw/pci/pci.c         | 34 ++++++++++++++++++++++++++++++++++
->  include/hw/pci/pci.h | 11 +++++++++++
->  2 files changed, 45 insertions(+)
+>  include/exec/memory.h | 25 +++++++++++++++++++++++++
+>  memory.c              | 10 ++++++++++
+>  2 files changed, 35 insertions(+)
 >=20
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index e1ed6677e1..67e03b8db1 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -2695,6 +2695,40 @@ void pci_setup_iommu(PCIBus *bus, PCIIOMMUFunc fn,
-> void *opaque)
->      bus->iommu_opaque =3D opaque;
+> diff --git a/include/exec/memory.h b/include/exec/memory.h
+> index f2c773163f..141a5dc197 100644
+> --- a/include/exec/memory.h
+> +++ b/include/exec/memory.h
+> @@ -57,6 +57,8 @@ struct MemoryRegionMmio {
+>      CPUWriteMemoryFunc *write[3];
+>  };
+>=20
+> +struct iommu_fault;
+> +
+>  typedef struct IOMMUTLBEntry IOMMUTLBEntry;
+>=20
+>  /* See address_space_translate: bit 0 is read, bit 1 is write.  */
+> @@ -357,6 +359,19 @@ typedef struct IOMMUMemoryRegionClass {
+>       * @iommu: the IOMMUMemoryRegion
+>       */
+>      int (*num_indexes)(IOMMUMemoryRegion *iommu);
+> +
+> +    /*
+> +     * Inject @count faults into the IOMMU memory region
+> +     *
+> +     * Optional method: if this method is not provided, then
+> +     * memory_region_injection_faults() will return -ENOENT
+> +     *
+> +     * @iommu: the IOMMU memory region to inject the faults in
+> +     * @count: number of faults to inject
+> +     * @buf: fault buffer
+> +     */
+> +    int (*inject_faults)(IOMMUMemoryRegion *iommu, int count,
+> +                         struct iommu_fault *buf);
+>  } IOMMUMemoryRegionClass;
+>=20
+>  typedef struct CoalescedMemoryRange CoalescedMemoryRange;
+> @@ -1365,6 +1380,16 @@ int
+> memory_region_iommu_attrs_to_index(IOMMUMemoryRegion *iommu_mr,
+>   */
+>  int memory_region_iommu_num_indexes(IOMMUMemoryRegion *iommu_mr);
+>=20
+> +/**
+> + * memory_region_inject_faults : inject @count faults stored in @buf
+> + *
+> + * @iommu_mr: the IOMMU memory region
+> + * @count: number of faults to be injected
+> + * @buf: buffer containing the faults
+> + */
+> +int memory_region_inject_faults(IOMMUMemoryRegion *iommu_mr, int count,
+> +                                struct iommu_fault *buf);
+> +
+>  /**
+>   * memory_region_name: get a memory region's name
+>   *
+> diff --git a/memory.c b/memory.c
+> index 09be40edd2..9cdd77e0de 100644
+> --- a/memory.c
+> +++ b/memory.c
+> @@ -2001,6 +2001,16 @@ int
+> memory_region_iommu_num_indexes(IOMMUMemoryRegion *iommu_mr)
+>      return imrc->num_indexes(iommu_mr);
 >  }
 >=20
-> +void pci_setup_pasid_ops(PCIDevice *dev, PCIPASIDOps *ops)
+> +int memory_region_inject_faults(IOMMUMemoryRegion *iommu_mr, int count,
+> +                                struct iommu_fault *buf)
 > +{
-> +    assert(ops && !dev->pasid_ops);
-> +    dev->pasid_ops =3D ops;
+> +    IOMMUMemoryRegionClass *imrc =3D
+> IOMMU_MEMORY_REGION_GET_CLASS(iommu_mr);
+> +    if (!imrc->inject_faults) {
+> +        return -ENOENT;
+> +    }
+> +    return imrc->inject_faults(iommu_mr, count, buf);
 > +}
 > +
-> +bool pci_device_is_pasid_ops_set(PCIBus *bus, int32_t devfn)
-> +{
-> +    PCIDevice *dev;
-> +
-> +    if (!bus) {
-> +        return false;
-> +    }
-> +
-> +    dev =3D bus->devices[devfn];
-> +    return !!(dev && dev->pasid_ops);
-> +}
-> +
-> +int pci_device_set_pasid_table(PCIBus *bus, int32_t devfn,
-> +                               IOMMUConfig *config)
-> +{
-> +    PCIDevice *dev;
-> +
-> +    if (!bus) {
-> +        return -EINVAL;
-> +    }
-> +
-> +    dev =3D bus->devices[devfn];
-> +    if (dev && dev->pasid_ops && dev->pasid_ops->set_pasid_table) {
-> +        return dev->pasid_ops->set_pasid_table(bus, devfn, config);
-> +    }
-> +    return -ENOENT;
-> +}
-> +
->  static void pci_dev_get_w64(PCIBus *b, PCIDevice *dev, void *opaque)
+>  void memory_region_set_log(MemoryRegion *mr, bool log, unsigned client)
 >  {
->      Range *range =3D opaque;
-> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-> index cfedf5a995..2146cb7519 100644
-> --- a/include/hw/pci/pci.h
-> +++ b/include/hw/pci/pci.h
-> @@ -8,6 +8,7 @@
->  #include "hw/isa/isa.h"
->=20
->  #include "hw/pci/pcie.h"
-> +#include "hw/iommu/iommu.h"
->=20
->  extern bool pci_available;
->=20
-> @@ -264,6 +265,11 @@ struct PCIReqIDCache {
->  };
->  typedef struct PCIReqIDCache PCIReqIDCache;
->=20
-> +struct PCIPASIDOps {
-> +    int (*set_pasid_table)(PCIBus *bus, int32_t devfn, IOMMUConfig *conf=
-ig);
-> +};
-> +typedef struct PCIPASIDOps PCIPASIDOps;
-> +
->  struct PCIDevice {
->      DeviceState qdev;
->      bool partially_hotplugged;
-> @@ -357,6 +363,7 @@ struct PCIDevice {
->=20
->      /* ID of standby device in net_failover pair */
->      char *failover_pair_id;
-> +    PCIPASIDOps *pasid_ops;
->  };
->=20
->  void pci_register_bar(PCIDevice *pci_dev, int region_num,
-> @@ -490,6 +497,10 @@ typedef AddressSpace *(*PCIIOMMUFunc)(PCIBus *, void
-> *, int);
->  AddressSpace *pci_device_iommu_address_space(PCIDevice *dev);
->  void pci_setup_iommu(PCIBus *bus, PCIIOMMUFunc fn, void *opaque);
->=20
-> +void pci_setup_pasid_ops(PCIDevice *dev, PCIPASIDOps *ops);
-> +bool pci_device_is_pasid_ops_set(PCIBus *bus, int32_t devfn);
-> +int pci_device_set_pasid_table(PCIBus *bus, int32_t devfn, IOMMUConfig *=
-config);
-> +
->  static inline void
->  pci_set_byte(uint8_t *config, uint8_t val)
->  {
+>      uint8_t mask =3D 1 << client;
 > --
 > 2.20.1
 

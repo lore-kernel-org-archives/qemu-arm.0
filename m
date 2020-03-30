@@ -1,86 +1,113 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2508484lfi;
-        Mon, 30 Mar 2020 02:22:59 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtNP5X1czecWviiqBcNdyae/2IfWXTrTcC43P2DKvv6nJyCNI5D0ksGKG+4Et2A/caQXN6z
-X-Received: by 2002:ac8:6d0b:: with SMTP id o11mr10605699qtt.324.1585560179624;
-        Mon, 30 Mar 2020 02:22:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585560179; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2536202lfi;
+        Mon, 30 Mar 2020 02:56:21 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvtN9TqE83blAaC8tsmEWdwSvtyVl9vUPFfP9sxplEWTK7C+PQxWxfi+fMe+/GobH4za1oJ
+X-Received: by 2002:a0c:d786:: with SMTP id z6mr11081890qvi.50.1585562181228;
+        Mon, 30 Mar 2020 02:56:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585562181; cv=none;
         d=google.com; s=arc-20160816;
-        b=FoWh8Y3oo/4N/fQN2SezolYqJ1KOjJCyVpiJjPByquS63FEragEzvmNi2crv1+xSvx
-         isdZTkfe2y9LNKMrpfqVCjO8rYR7BVlEvP5pyZXT1rFbU8qWaxxr2905pPc6iMECducy
-         dAc3WnE6GuYjnFH1H1gckmdWPHCYnnKZr52VvnaO2hifPBwbKZkzjpIiHb+IhgHa5QZr
-         /OkbntIAdSuLIIa9cNqqu4kFzxHNdeoMDOyUtjoNQGDhr9B5MedyidmeOrl9hdBpQroE
-         P7wfTm31NAD3wK41I3qMN5bzTvnFSu6pN42S/c9fJ7A512DKCHaslwTdj60x8yt2JAy/
-         /rPQ==
+        b=V0aH37Vu2N3ZT4Z2CmxA5ylxyqxsL8L7KU/SvCQq7j4zgY5f7618/quY0XPeLDTEkl
+         QwmmBQtRWbHRLrVg3x/PIL/sDD5E2mwL+KtlXBsla3wxa5lmYN6vXrpl0Ontu9NkbezD
+         oFNjLR2gxs7PlVjRdkz6OK5gcEzGED34bFwKboAmuAJmfiPeA9dElZnMD/UB9D1nV75i
+         DBtnZVs76xE+/K4n+wH/fexajvTo6uDUUJ4lOMvxs8k1Wv9T9SCs4hX6LjFhCzfdAByZ
+         Ie4/1INQFiwoZc/DACFRhTpD+BfaoRsG8Xespa/Md8t5iz74ds3yp/UBiiBXHozDSmRs
+         820g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=+ySFxLUHxI+qg3bQ9Q0UqsrBaga3VngIR5RyFzU61eY=;
-        b=KeJd39KfqkQbRFab/mXDY/BKxN5SGSjRgX1QErundRwKWJvbXrXgD+EZbVTbW+jZhG
-         MdqxMBEr6sJp/KyrC3jj9+yYsYfrCl0zm/vIbW4awa+HxHOfTx5AL4LrEhK0TpedcMf5
-         Pvv2AOPlu2TFGDtN79wPieZ0jDgswysAV4MIK7+VIFw1dm48kYv0GDCCywxZXa6dYuRU
-         RdeffCICpQyYTfRuWXd6Xhk2ljfVMLQxHEnNemj5AlRU/zBHfezuhRK8QFMrLyly8HVK
-         n8Ml0ZIfYAjIBXUS4vwqlaAtlVzAuiP9LnDwka4gn6iFGKA3ENNfLJcwxh7su7/PQpdF
-         id8g==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=/g3NBc9jZke4knbpRHSO0RcZ2Eef0zvpknJqPsufzVE=;
+        b=dYb/dKyHCOLCMCqawOHkvVFtvCi8v67vxY2HGYKqOBOAEkiHISEMkhHRpCdhK8PuxS
+         itXG1J57SaQ65llbZ0623iZJ18t6TZfNOsP/0qN/x5XwcehTwUSFTDX0PvZJQ3geeSb2
+         xwVpAdDUsoBHm8MZGdDxOlip7Hx5YJKm5umxDm3QDPgUNwtt14SZoslsN9nsCHsxzNkk
+         A3IueS6mwdZbUkzfOpNQ9ljpe5j4pnT/GJk509sCMmfIf/JVRzaXntSvJXMzy9Dj+b8q
+         9Y5+bzerC7adBqMjlOBqD74yDL+7v2bBDwvqdTmrM3kx7Ce0DDn0LJ47xltSKUIxgNCI
+         57qA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=SHfHlPya;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id y50si7815203qtj.387.2020.03.30.02.22.59;
-        Mon, 30 Mar 2020 02:22:59 -0700 (PDT)
+        by mx.google.com with ESMTP id c188si1816554qkb.218.2020.03.30.02.56.20;
+        Mon, 30 Mar 2020 02:56:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=SHfHlPya;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 4AABB4B143;
-	Mon, 30 Mar 2020 05:22:59 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id D1BBA4B1C6;
+	Mon, 30 Mar 2020 05:56:20 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
-X-Spam-Score: -1.502
+X-Spam-Score: 0.909
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
-	SPF_HELO_PASS=-0.001] autolearn=no
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u4IzC0D9LMrw; Mon, 30 Mar 2020 05:22:58 -0400 (EDT)
+	with ESMTP id JFi9c0wmn7Lb; Mon, 30 Mar 2020 05:56:19 -0400 (EDT)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 2471E4B1F3;
-	Mon, 30 Mar 2020 05:22:58 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id C50244B1CD;
+	Mon, 30 Mar 2020 05:56:19 -0400 (EDT)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 7ADD74B0BA
- for <kvmarm@lists.cs.columbia.edu>; Mon, 30 Mar 2020 05:22:57 -0400 (EDT)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id CD6DD4B1B9
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 30 Mar 2020 05:56:17 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xWGtNYyJAcGR for <kvmarm@lists.cs.columbia.edu>;
- Mon, 30 Mar 2020 05:22:56 -0400 (EDT)
-Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id C71124B0B8
- for <kvmarm@lists.cs.columbia.edu>; Mon, 30 Mar 2020 05:22:55 -0400 (EDT)
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 3476A1E97E7AB0E559FA;
- Mon, 30 Mar 2020 17:22:47 +0800 (CST)
-Received: from [127.0.0.1] (10.173.222.27) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.487.0; Mon, 30 Mar 2020
- 17:22:39 +0800
-Subject: Re: [kvm-unit-tests PATCH v7 09/13] arm/arm64: ITS: Commands
-To: Eric Auger <eric.auger@redhat.com>
+ with ESMTP id SLd-OVS8gvI1 for <kvmarm@lists.cs.columbia.edu>;
+ Mon, 30 Mar 2020 05:56:16 -0400 (EDT)
+Received: from us-smtp-delivery-74.mimecast.com
+ (us-smtp-delivery-74.mimecast.com [216.205.24.74])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id E90934B1B4
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 30 Mar 2020 05:56:16 -0400 (EDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1585562176;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+i48u5EVTvTZXlAFzW/M3AOj4ZvswK4iw2XDLheQWkE=;
+ b=SHfHlPyaQRbcqbGJt78LlBXMXUe43GOiaXXDHKZDQWnxbFl8cGB7Z4oOC2k6MJS88FmkCz
+ KT5MWt24qOPAhC5PzJsfm0UudmxCUBqk7SBhwyMzZLEhGjEV2u3cwvw7rH6Knd4Is9EuEA
+ ciVRCd3aYHYRJ1fYbxLuDKA2XW7ScBo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-27-jk6K2iO_ORCgrkaHNScO6Q-1; Mon, 30 Mar 2020 05:56:12 -0400
+X-MC-Unique: jk6K2iO_ORCgrkaHNScO6Q-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2B4E7801E53;
+ Mon, 30 Mar 2020 09:56:10 +0000 (UTC)
+Received: from [10.36.112.58] (ovpn-112-58.ams2.redhat.com [10.36.112.58])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id AA160953D6;
+ Mon, 30 Mar 2020 09:56:04 +0000 (UTC)
+Subject: Re: [kvm-unit-tests PATCH v7 06/13] arm/arm64: ITS: Introspection
+ tests
+To: Andrew Jones <drjones@redhat.com>
 References: <20200320092428.20880-1-eric.auger@redhat.com>
- <20200320092428.20880-10-eric.auger@redhat.com>
-From: Zenghui Yu <yuzenghui@huawei.com>
-Message-ID: <84493416-7b0d-df3e-df56-cedcbdd72010@huawei.com>
-Date: Mon, 30 Mar 2020 17:22:37 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ <20200320092428.20880-7-eric.auger@redhat.com>
+ <947a79f5-1f79-532b-9ec7-6fd539ccd183@huawei.com>
+ <8878be7f-7653-b427-cd0d-722f82fb6b65@redhat.com>
+ <20200330091139.i2d6vv64f5diamlz@kamzik.brq.redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <7d6dc4e7-82b4-3c54-574f-2149d4a85c48@redhat.com>
+Date: Mon, 30 Mar 2020 11:56:00 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20200320092428.20880-10-eric.auger@redhat.com>
+In-Reply-To: <20200330091139.i2d6vv64f5diamlz@kamzik.brq.redhat.com>
 Content-Language: en-US
-X-Originating-IP: [10.173.222.27]
-X-CFilter-Loop: Reflected
-Cc: kvm@vger.kernel.org, maz@kernel.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, andre.przywara@arm.com, thuth@redhat.com,
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Cc: thuth@redhat.com, kvm@vger.kernel.org, maz@kernel.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
  kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
 X-BeenThere: kvmarm@lists.cs.columbia.edu
 X-Mailman-Version: 2.1.14
@@ -93,135 +120,51 @@ List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
 List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
 List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
  <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 7U9g/c6Wo+Ts
+X-TUID: auI0Fem0PUWi
 
-Hi Eric,
-
-On 2020/3/20 17:24, Eric Auger wrote:
-> Implement main ITS commands. The code is largely inherited from
-> the ITS driver.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
-[...]
-
-> +/* ITS COMMANDS */
-> +
-> +static void its_encode_cmd(struct its_cmd_block *cmd, u8 cmd_nr)
-> +{
-> +	cmd->raw_cmd[0] &= ~0xffUL;
-> +	cmd->raw_cmd[0] |= cmd_nr;
-> +}
-> +
-> +static void its_encode_devid(struct its_cmd_block *cmd, u32 devid)
-> +{
-> +	cmd->raw_cmd[0] &= BIT_ULL(32) - 1;
-> +	cmd->raw_cmd[0] |= ((u64)devid) << 32;
-> +}
-> +
-> +static void its_encode_event_id(struct its_cmd_block *cmd, u32 id)
-> +{
-> +	cmd->raw_cmd[1] &= ~0xffffffffUL;
-> +	cmd->raw_cmd[1] |= id;
-> +}
-> +
-> +static void its_encode_phys_id(struct its_cmd_block *cmd, u32 phys_id)
-> +{
-> +	cmd->raw_cmd[1] &= 0xffffffffUL;
-> +	cmd->raw_cmd[1] |= ((u64)phys_id) << 32;
-> +}
-> +
-> +static void its_encode_size(struct its_cmd_block *cmd, u8 size)
-> +{
-> +	cmd->raw_cmd[1] &= ~0x1fUL;
-> +	cmd->raw_cmd[1] |= size & 0x1f;
-> +}
-> +
-> +static void its_encode_itt(struct its_cmd_block *cmd, u64 itt_addr)
-> +{
-> +	cmd->raw_cmd[2] &= ~0xffffffffffffUL;
-> +	cmd->raw_cmd[2] |= itt_addr & 0xffffffffff00UL;
-> +}
-> +
-> +static void its_encode_valid(struct its_cmd_block *cmd, int valid)
-> +{
-> +	cmd->raw_cmd[2] &= ~(1UL << 63);
-> +	cmd->raw_cmd[2] |= ((u64)!!valid) << 63;
-> +}
-> +
-> +static void its_encode_target(struct its_cmd_block *cmd, u64 target_addr)
-> +{
-> +	cmd->raw_cmd[2] &= ~(0xfffffffffUL << 16);
-> +	cmd->raw_cmd[2] |= (target_addr & (0xffffffffUL << 16));
-> +}
-> +
-> +static void its_encode_collection(struct its_cmd_block *cmd, u16 col)
-> +{
-> +	cmd->raw_cmd[2] &= ~0xffffUL;
-> +	cmd->raw_cmd[2] |= col;
-> +}
-
-The command encoding can be refactored like:
-
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4d36f136d57aea6f6440886106e246bb7e5918d8
-
-which will look much clearer.
-
-[...]
-
-> +static void its_send_single_command(its_cmd_builder_t builder,
-> +				    struct its_cmd_desc *desc)
-> +{
-> +	struct its_cmd_block *cmd, *next_cmd;
-> +
-> +	cmd = its_allocate_entry();
-> +	builder(cmd, desc);
-> +	next_cmd = its_post_commands();
-> +
-> +	its_wait_for_range_completion(cmd, next_cmd);
-> +}
-> +
-> +
-
-extra line.
-
-> +static void its_build_mapd_cmd(struct its_cmd_block *cmd,
-> +			       struct its_cmd_desc *desc)
-> +{
-> +	unsigned long itt_addr;
-> +	u8 size = 12; /* 4096 eventids */
-
-Maybe use desc->its_mapd_cmd.dev->nr_ites instead as we already have it?
-
-> +
-> +	itt_addr = (unsigned long)(virt_to_phys(desc->its_mapd_cmd.dev->itt));
-> +	itt_addr = ALIGN(itt_addr, ITS_ITT_ALIGN);
-> +
-> +	its_encode_cmd(cmd, GITS_CMD_MAPD);
-> +	its_encode_devid(cmd, desc->its_mapd_cmd.dev->device_id);
-> +	its_encode_size(cmd, size - 1);
-> +	its_encode_itt(cmd, itt_addr);
-> +	its_encode_valid(cmd, desc->its_mapd_cmd.valid);
-> +	its_fixup_cmd(cmd);
-> +	if (desc->verbose)
-> +		printf("ITS: MAPD devid=%d size = 0x%x itt=0x%lx valid=%d\n",
-> +			desc->its_mapd_cmd.dev->device_id,
-> +			size, itt_addr, desc->its_mapd_cmd.valid);
-> +
-
-extra line.
-
-All of these are trivial things and feel free to ignore them,
-Reviewed-by: Zenghui Yu <yuzenghui@huawei.com>
-
-
-Thanks
-
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+SGksCgpPbiAzLzMwLzIwIDExOjExIEFNLCBBbmRyZXcgSm9uZXMgd3JvdGU6Cj4gT24gTW9uLCBN
+YXIgMzAsIDIwMjAgYXQgMTA6NDY6NTdBTSArMDIwMCwgQXVnZXIgRXJpYyB3cm90ZToKPj4gSGkg
+WmVuZ2h1aSwKPj4KPj4gT24gMy8zMC8yMCAxMDozMCBBTSwgWmVuZ2h1aSBZdSB3cm90ZToKPj4+
+IEhpIEVyaWMsCj4+Pgo+Pj4gT24gMjAyMC8zLzIwIDE3OjI0LCBFcmljIEF1Z2VyIHdyb3RlOgo+
+Pj4+ICtzdGF0aWMgdm9pZCBpdHNfY21kX3F1ZXVlX2luaXQodm9pZCkKPj4+PiArewo+Pj4+ICvC
+oMKgwqAgdW5zaWduZWQgbG9uZyBvcmRlciA9IGdldF9vcmRlcihTWl82NEsgPj4gUEFHRV9TSElG
+VCk7Cj4+Pj4gK8KgwqDCoCB1NjQgY2Jhc2VyOwo+Pj4+ICsKPj4+PiArwqDCoMKgIGl0c19kYXRh
+LmNtZF9iYXNlID0gKHZvaWQgKil2aXJ0X3RvX3BoeXMoYWxsb2NfcGFnZXMob3JkZXIpKTsKPj4+
+Cj4+PiBTaG91bGRuJ3QgdGhlIGNtZF9iYXNlIChhbmQgdGhlIGNtZF93cml0ZSkgYmUgc2V0IGFz
+IGEgR1ZBPwo+PiB5ZXMgaXQgc2hvdWxkCj4gCj4gSWYgaXQncyBzdXBwb3NlZCB0byBiZSBhIHZp
+cnR1YWwgYWRkcmVzcywgd2hlbiB3aHkgZG8gdGhlIHZpcnRfdG9fcGh5cz8KV2hhdCBpcyBwcm9n
+cmFtbWVkIGluIENCQVNFUiByZWdpc3RlciBpcyBhIHBoeXNpY2FsIGFkZHJlc3MuIFNvIHRoZQp2
+aXJ0X3RvX3BoeXMoKSBpcyByZWxldmFudC4gVGhlIGluY29uc2lzdGVuY3kgaXMgaW4gaXRzX2Fs
+bG9jYXRlX2VudHJ5KCkKaW50cm9kdWNlZCBsYXRlciBvbiB3aGVyZSBJIHJldHVybiB0aGUgcGh5
+c2ljYWwgYWRkcmVzcyBpbnN0ZWFkIG9mIHRoZQp2aXJ0dWFsIGFkZHJlc3MuIEkgd2lsbCBmaXgg
+dGhhdC4KCgo+IAo+Pj4KPj4+IE90aGVyd2lzZSBJIHRoaW5rIHdlIHdpbGwgZW5kLXVwIHdpdGgg
+bWVtb3J5IGNvcnJ1cHRpb24gd2hlbiB3cml0aW5nCj4+PiB0aGUgY29tbWFuZCBxdWV1ZS7CoCBC
+dXQgaXQgc2VlbXMgdGhhdCBldmVyeXRoaW5nIGp1c3Qgd29ya3MgZmluZSAuLi4KPj4+IFNvIEkn
+bSByZWFsbHkgY29uZnVzZWQgaGVyZSA6LS8KPj4gSSB3YXMgdG9sZCBieSBQYW9sbyB0aGF0IHRo
+ZSBWQS9QQSBtZW1vcnkgbWFwIGlzIGZsYXQgaW4ga3ZtdW5pdCB0ZXN0Lgo+IAo+IFdoYXQgZG9l
+cyBmbGF0IG1lYW4/CgpZZXMgSSBtZWFudCBhbiBpZGVudGl0eSBtYXAuCgoga3ZtLXVuaXQtdGVz
+dHMsIGF0IGxlYXN0IGFybS9hcm02NCwgZG9lcyBwcmVwYXJlCj4gYW4gaWRlbnRpdHkgbWFwIG9m
+IGFsbCBwaHlzaWNhbCBtZW1vcnksIHdoaWNoIGV4cGxhaW5zIHdoeSB0aGUgYWJvdmUKPiBpcyB3
+b3JraW5nLgoKc2hvdWxkIGJlIHRoZSBzYW1lIG9uIHg4NgoKIEl0J3MgZG9pbmcgdmlydF90b19w
+aHlzKHNvbWUtdmlydC1hZGRyKSwgd2hpY2ggZ2V0cyBhCj4gcGh5cyBhZGRyLCBidXQgd2hlbiB0
+aGUgSVRTIHVzZXMgaXQgYXMgYSB2aXJ0IGFkZHIgaXQgd29ya3MgYmVjYXVzZQo+IHdlICphbHNv
+KiBoYXZlIGEgdmlydCBhZGRyID09IHBoeXMgYWRkciBtYXBwaW5nIGluIHRoZSBkZWZhdWx0IHBh
+Z2UKPiB0YWJsZSwgd2hpY2ggaXMgbmFtZWQgImlkbWFwIiBmb3IgZ29vZCByZWFzb24uCj4gCj4g
+SSB0aGluayBpdCB3b3VsZCBiZSBiZXR0ZXIgdG8gdGVzdCB3aXRoIHRoZSBub24taWRlbnRpdHkg
+bWFwcGVkIGFkZHJlc3Nlcwo+IHRob3VnaC4KCmlzIHRoZXJlIGFueSB3YXkgdG8gZXhlcmNpc2Ug
+YSBub24gaWRtYXA/CgpUaGFua3MKCkVyaWMKPiAKPiBUaGFua3MsCj4gZHJldwo+IAo+Pgo+Pj4K
+Pj4+PiArCj4+Pj4gK8KgwqDCoCBjYmFzZXIgPSAoKHU2NClpdHNfZGF0YS5jbWRfYmFzZSB8IChT
+Wl82NEsgLyBTWl80SyAtIDEpwqDCoMKgIHwKPj4+PiBHSVRTX0NCQVNFUl9WQUxJRCk7Cj4+Pj4g
+Kwo+Pj4+ICvCoMKgwqAgd3JpdGVxKGNiYXNlciwgaXRzX2RhdGEuYmFzZSArIEdJVFNfQ0JBU0VS
+KTsKPj4+PiArCj4+Pj4gK8KgwqDCoCBpdHNfZGF0YS5jbWRfd3JpdGUgPSBpdHNfZGF0YS5jbWRf
+YmFzZTsKPj4+PiArwqDCoMKgIHdyaXRlcSgwLCBpdHNfZGF0YS5iYXNlICsgR0lUU19DV1JJVEVS
+KTsKPj4+PiArfQo+Pj4KPj4+IE90aGVyd2lzZSB0aGlzIGxvb2tzIGdvb2QsCj4+PiBSZXZpZXdl
+ZC1ieTogWmVuZ2h1aSBZdSA8eXV6ZW5naHVpQGh1YXdlaS5jb20+Cj4+IFRoYW5rcyEKPj4KPj4g
+RXJpYwo+Pj4KPj4+Cj4+PiBUaGFua3MKPj4+Cj4+Cj4+CgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwprdm1hcm0gbWFpbGluZyBsaXN0Cmt2bWFybUBsaXN0
+cy5jcy5jb2x1bWJpYS5lZHUKaHR0cHM6Ly9saXN0cy5jcy5jb2x1bWJpYS5lZHUvbWFpbG1hbi9s
+aXN0aW5mby9rdm1hcm0K

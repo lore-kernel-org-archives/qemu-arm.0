@@ -1,77 +1,78 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2955778lfi;
-        Mon, 30 Mar 2020 09:50:42 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtxMdKoMe4Zd47FOHncCbn4alDet/G2KjEhPxffT4Ux7cuFA8+OtMJJjKAWM7rSMAzw0DQx
-X-Received: by 2002:a05:6214:72f:: with SMTP id c15mr12251255qvz.3.1585587042488;
-        Mon, 30 Mar 2020 09:50:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585587042; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2955955lfi;
+        Mon, 30 Mar 2020 09:50:51 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vs9FNEsT+f4Y3/a3/PVRm1FIUMPy6Sq5VxWmHYF1aygDejE82E56+rNb6I4TN+lNXyz7ZoG
+X-Received: by 2002:a05:6214:138a:: with SMTP id g10mr12822074qvz.231.1585587051285;
+        Mon, 30 Mar 2020 09:50:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585587051; cv=none;
         d=google.com; s=arc-20160816;
-        b=ol1ZFyJwlbadvDxsCMx7bW8dcAj/67Vg4GOZPxoCPcRssZbNq6ozJyBVnL3w//XJll
-         kxsRn0nElwUUtBPumiVbJgZRtKJeFAXMjJeArZhQ8QgDTL0kmy4YGh78qgQ/ttp7SVyy
-         WK7ZSe7mPrJOAqgl0bKpayGRdYdaumUvPzKP80/SmEELyOk1VnFBq6uZu/GjprLYB/BU
-         8KP2LefaMpT5MfXSe0GTW2p5aGhxEIo5HTN+Fq3pSWMSPcxH/aCeMSVWhG7MGmpuWNhA
-         RdxJsmDo0xNEAZQkXLYjILS/+HKRt+ZkAbsEefQF/fCf66ZlN30NPssv755KOE5EwHdj
-         IAlw==
+        b=ndLteXChxosS1aDog0XTHFXaLCLlFv5JURl4YW1MX7msEcaKnQjEui8opCGOykqs0J
+         OSF+ybLCr7F9WyVL4ja1p6pL/LyPrY6y0e+xNWoSb7emJftAEGg9rrTwHeAhNlkakWfK
+         vB5nkTxtbpNPulMXHyPQkrbyEJRo3aRPGf8c4s+g7wyMdyGt8NQbCbqmt40ahRHaxfPF
+         pNr0HruVG3TrUwm9dik671r70sELiNbLEzvvZIwR5SUgrj2zTMB31GLHpESiK9siytQF
+         qpNd3w5FwltyjrC/HWWU4p4Xfk1Q+3yLZh9d5PwUD7TNWqoSbLdvlGYv8844OJjULOW7
+         As6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:to:from;
-        bh=u6ZJONyfcPz8KA+Ty+Np3cQbAU1C9oJeL1X5JBbl1Ck=;
-        b=AN8GweJs/CWFedZX/WG5nhIuvVSQ5DhvkgDX1CWrCaU3DWwTyFwZmwHqK9143hFrez
-         MFvYgTY6FhnS1LCIsaAT/52iwf/4rcReQyTVYXO3ZUlp8d4ouA94Ci1ourXFKZp63YDW
-         brd02eOYuqdWcrD/6JmTDHRWQAtkBlE/VVB9N5E6hAHiJ3NQCsVR5iIa7q7adXB17zFS
-         N5PSm99s50gZ7aLzVG+nTxCG3wKaUFutLElRBt52V8o9HEcCX7T18TzljYbCmYwqcLvf
-         w1Slz4fCeXcV51P7SrytegCmWq3u1QvR4Go2LGxOG+mNmjgpBAUmYY+Jqy+Spu73OiwD
-         6UQg==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=BGouYB+5ZoVvoJD3xPwg50MYQu2EhygV86HAYa8MhPU=;
+        b=jW+tTgCqPbolqTrw8G+GEJ+RzPReieKp7O/1SXWbY6lqolkkJ4o1PaJjEyjqT1nw2G
+         DHy9qP+EyspQhKRyk2rSA5GPlcUmqEeAqHgL7KTWsCJ+ZoVBQ1wAXHCY1hwmD8cRc2hl
+         qThqGFvSUnL0ZhcEWLlt8Y4O90WSZUwgi86xHMxKSE/iWyy2llrTHDrRGgQ0mxWOVMUJ
+         4fbPqkzzcJaNx256C0wC2Vj9QobsCkFr0Hjucj6dVpC2oP4LBe/no6P+eWU4XSAZQz+y
+         d+Lpae10W+D6iionIVgfBXr3NIKiLUOJWi207U+RfCKsEnJD2mbCdthm6Po6qD5zyw9B
+         +bhg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f19si9015031qtg.113.2020.03.30.09.50.42
+        by mx.google.com with ESMTPS id x195si8282684qkb.100.2020.03.30.09.50.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Mar 2020 09:50:42 -0700 (PDT)
+        Mon, 30 Mar 2020 09:50:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52960 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52962 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jIxcX-0001Yl-U2
-	for alex.bennee@linaro.org; Mon, 30 Mar 2020 12:50:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53513)
+	id 1jIxcg-0001kd-NI
+	for alex.bennee@linaro.org; Mon, 30 Mar 2020 12:50:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53538)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jIxcC-000178-Q4
- for qemu-arm@nongnu.org; Mon, 30 Mar 2020 12:50:21 -0400
+ id 1jIxcE-00019r-Tf
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 12:50:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jIxcB-0004pV-IV
- for qemu-arm@nongnu.org; Mon, 30 Mar 2020 12:50:20 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3219 helo=huawei.com)
+ id 1jIxcD-0004rl-QZ
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 12:50:22 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:33398 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jIxcB-0004ih-5O; Mon, 30 Mar 2020 12:50:19 -0400
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id EDE6D49C3F22F7113B3E;
- Tue, 31 Mar 2020 00:50:12 +0800 (CST)
+ id 1jIxcD-0004p6-Dc; Mon, 30 Mar 2020 12:50:21 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 09E7E890079DE5EF0139;
+ Tue, 31 Mar 2020 00:50:18 +0800 (CST)
 Received: from S00345302A-PC.china.huawei.com (10.47.27.100) by
  DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
- 14.3.487.0; Tue, 31 Mar 2020 00:50:04 +0800
+ 14.3.487.0; Tue, 31 Mar 2020 00:50:08 +0800
 From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
  <imammedo@redhat.com>
-Subject: [PATCH for-5.0 0/3] acpi: Fixes for inconsistency in ACPI MR size
- during migration 
-Date: Mon, 30 Mar 2020 17:49:06 +0100
-Message-ID: <20200330164909.28324-1-shameerali.kolothum.thodi@huawei.com>
+Subject: [PATCH for-5.0 1/3] acpi: Use macro for table-loader file name
+Date: Mon, 30 Mar 2020 17:49:07 +0100
+Message-ID: <20200330164909.28324-2-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
+In-Reply-To: <20200330164909.28324-1-shameerali.kolothum.thodi@huawei.com>
+References: <20200330164909.28324-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.47.27.100]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.190
+X-Received-From: 45.249.212.32
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,36 +89,57 @@ Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, david@redhat.com,
  shannon.zhaosl@gmail.com, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J1uz9aRW9f/F
+X-TUID: WOA67hLi+oQc
 
-This is to fix few issues discovered while adding NVDIMM hot-add
-support to arm/virt. These were previously part of [1] and since
-the fixes are generic in nature and might be an issue in x86 as
-well, they are being treated separately now.
+Use macro for "etc/table-loader" and move it to the header
+file similar to ACPI_BUILD_TABLE_FILE/ACPI_BUILD_RSDP_FILE etc.
 
-1. https://patchwork.kernel.org/cover/11432383/
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+---
+ hw/arm/virt-acpi-build.c    | 2 +-
+ hw/i386/acpi-build.c        | 2 +-
+ include/hw/acpi/aml-build.h | 1 +
+ 3 files changed, 3 insertions(+), 2 deletions(-)
 
-Updates:
- -Added R-by and A-by tags.
- -Edited commit log for patch#2
- -Updated patch#3 as per David's comment
-
-David Hildenbrand (1):
-  exec: Fix for qemu_ram_resize() callback
-
-Shameer Kolothum (2):
-  acpi: Use macro for table-loader file name
-  fw_cfg: Migrate ACPI table mr sizes separately
-
- exec.c                      | 16 ++++++-
- hw/arm/virt-acpi-build.c    |  2 +-
- hw/core/machine.c           |  1 +
- hw/i386/acpi-build.c        |  2 +-
- hw/nvram/fw_cfg.c           | 86 ++++++++++++++++++++++++++++++++++++-
- include/hw/acpi/aml-build.h |  1 +
- include/hw/nvram/fw_cfg.h   |  6 +++
- 7 files changed, 109 insertions(+), 5 deletions(-)
-
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index fb4b166f82..c13710b727 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -929,7 +929,7 @@ void virt_acpi_setup(VirtMachineState *vms)
+ 
+     build_state->linker_mr =
+         acpi_add_rom_blob(virt_acpi_build_update, build_state,
+-                          tables.linker->cmd_blob, "etc/table-loader", 0);
++                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE, 0);
+ 
+     fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
+                     acpi_data_len(tables.tcpalog));
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 9a19c14e66..80f05d728d 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -3043,7 +3043,7 @@ void acpi_setup(void)
+ 
+     build_state->linker_mr =
+         acpi_add_rom_blob(acpi_build_update, build_state,
+-                          tables.linker->cmd_blob, "etc/table-loader", 0);
++                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE, 0);
+ 
+     fw_cfg_add_file(x86ms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
+                     tables.tcpalog->data, acpi_data_len(tables.tcpalog));
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index de4a406568..0f4ed53d7f 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -13,6 +13,7 @@
+ #define ACPI_BUILD_TABLE_FILE "etc/acpi/tables"
+ #define ACPI_BUILD_RSDP_FILE "etc/acpi/rsdp"
+ #define ACPI_BUILD_TPMLOG_FILE "etc/tpm/log"
++#define ACPI_BUILD_LOADER_FILE "etc/table-loader"
+ 
+ #define AML_NOTIFY_METHOD "NTFY"
+ 
 -- 
 2.17.1
 

@@ -1,111 +1,124 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2721233lfi;
-        Mon, 30 Mar 2020 06:17:59 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vufFyBSz7W9YvbK+zoZwFTJXORPIvIO30Cg5E5SA3UX/qLztuJMt+ClH315LNEgOf+txKYI
-X-Received: by 2002:a54:4181:: with SMTP id 1mr7209369oiy.61.1585574279785;
-        Mon, 30 Mar 2020 06:17:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585574279; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2955778lfi;
+        Mon, 30 Mar 2020 09:50:42 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtxMdKoMe4Zd47FOHncCbn4alDet/G2KjEhPxffT4Ux7cuFA8+OtMJJjKAWM7rSMAzw0DQx
+X-Received: by 2002:a05:6214:72f:: with SMTP id c15mr12251255qvz.3.1585587042488;
+        Mon, 30 Mar 2020 09:50:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585587042; cv=none;
         d=google.com; s=arc-20160816;
-        b=hWUWLaVgVyRA0/7vsojHqmKzuMf5+8ms9rRPz+Ui/1+uFZFHVm/olaQkjseTPeDTWB
-         eCjn2ZYYJEs32xdK6jCFY0+VSZ2HzuR0AXGx4qq2nK4Tz0forPeiQ2iGG/ExskV9AQFA
-         Sw2+6w4e6XC0FyGytKSdH+C7HGSgaWaRu22IaImysU/0imVNwuaxNoPSDpVCeEp2mX9q
-         9BDMhNhbvG4LZgpsQC7T9vO0BsoHa8aQRz2PBpRNsmNB+qFBYg7bhxqZfSCDODJtk6iy
-         iYh5W14N/lxohU8gj/znU7tuKe6YQUbqiU6hNfWNgUMX2lABhmyp+E/TNxPkIZtxFrnC
-         Dkiw==
+        b=ol1ZFyJwlbadvDxsCMx7bW8dcAj/67Vg4GOZPxoCPcRssZbNq6ozJyBVnL3w//XJll
+         kxsRn0nElwUUtBPumiVbJgZRtKJeFAXMjJeArZhQ8QgDTL0kmy4YGh78qgQ/ttp7SVyy
+         WK7ZSe7mPrJOAqgl0bKpayGRdYdaumUvPzKP80/SmEELyOk1VnFBq6uZu/GjprLYB/BU
+         8KP2LefaMpT5MfXSe0GTW2p5aGhxEIo5HTN+Fq3pSWMSPcxH/aCeMSVWhG7MGmpuWNhA
+         RdxJsmDo0xNEAZQkXLYjILS/+HKRt+ZkAbsEefQF/fCf66ZlN30NPssv755KOE5EwHdj
+         IAlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=KpeN8U++dVMdHWHMEjno40HeDxFwqnpYkqvZXNnPFro=;
-        b=B/kW4JBPE59T/rgJYmN7XsVPiVTj6pNyU0rIB6T8kyasZXa5eWrqzNOGjbgpyAWYwC
-         FfPJAPCFb4WO/8xFuuf+RRDtV7EP3SMyzncLHklB9VujT27hBuvwxS8KWOSCt57e0kwl
-         8vLQ9zA5BKvi0Bhj34hwFKbj+NHLlqEaKQAUqe+Wxw/awW5bx9/wvLG9fANBlZ6kMXB2
-         +xDwA5607Su5LzhFE872hNkqKIUu8GqqX7VJosWu2HU7uTGjSCcNjQTJ38slrl6w8k+K
-         DWSlurT6rIOj0f5C6lkLYY7nU70Wf6fPeN1YwT4fjlnsMFZI6zomE05s6YvfQHrRy90p
-         x5ug==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=u6ZJONyfcPz8KA+Ty+Np3cQbAU1C9oJeL1X5JBbl1Ck=;
+        b=AN8GweJs/CWFedZX/WG5nhIuvVSQ5DhvkgDX1CWrCaU3DWwTyFwZmwHqK9143hFrez
+         MFvYgTY6FhnS1LCIsaAT/52iwf/4rcReQyTVYXO3ZUlp8d4ouA94Ci1ourXFKZp63YDW
+         brd02eOYuqdWcrD/6JmTDHRWQAtkBlE/VVB9N5E6hAHiJ3NQCsVR5iIa7q7adXB17zFS
+         N5PSm99s50gZ7aLzVG+nTxCG3wKaUFutLElRBt52V8o9HEcCX7T18TzljYbCmYwqcLvf
+         w1Slz4fCeXcV51P7SrytegCmWq3u1QvR4Go2LGxOG+mNmjgpBAUmYY+Jqy+Spu73OiwD
+         6UQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id q197si5856257oic.262.2020.03.30.06.17.59;
-        Mon, 30 Mar 2020 06:17:59 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f19si9015031qtg.113.2020.03.30.09.50.42
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 30 Mar 2020 09:50:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1730134AbgC3NR6 (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 30 Mar 2020 09:17:58 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:12653 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1730015AbgC3NR6 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 30 Mar 2020 09:17:58 -0400
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52960 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jIxcX-0001Yl-U2
+	for alex.bennee@linaro.org; Mon, 30 Mar 2020 12:50:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53513)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jIxcC-000178-Q4
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 12:50:21 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jIxcB-0004pV-IV
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 12:50:20 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3219 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jIxcB-0004ih-5O; Mon, 30 Mar 2020 12:50:19 -0400
 Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
-        by Forcepoint Email with ESMTP id 6D6481EB6A23AB42A64A;
-        Mon, 30 Mar 2020 21:17:54 +0800 (CST)
-Received: from [127.0.0.1] (10.173.222.27) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.487.0; Mon, 30 Mar 2020
- 21:17:48 +0800
-Subject: Re: [kvm-unit-tests PATCH v7 13/13] arm/arm64: ITS: pending table
- migration test
-To:     Auger Eric <eric.auger@redhat.com>
-CC:     <peter.maydell@linaro.org>, <drjones@redhat.com>,
-        <kvm@vger.kernel.org>, <maz@kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>, <andre.przywara@arm.com>,
-        <thuth@redhat.com>, <alexandru.elisei@arm.com>,
-        <kvmarm@lists.cs.columbia.edu>, <eric.auger.pro@gmail.com>
-References: <20200320092428.20880-1-eric.auger@redhat.com>
- <20200320092428.20880-14-eric.auger@redhat.com>
- <296c574b-810c-9c90-a613-df732a9ac193@huawei.com>
- <ea74559c-2ab4-752c-e587-2bf40eab14b0@redhat.com>
-From:   Zenghui Yu <yuzenghui@huawei.com>
-Message-ID: <0e73fd13-ca18-2d17-2267-fd5d852e3ac8@huawei.com>
-Date:   Mon, 30 Mar 2020 21:17:47 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ by Forcepoint Email with ESMTP id EDE6D49C3F22F7113B3E;
+ Tue, 31 Mar 2020 00:50:12 +0800 (CST)
+Received: from S00345302A-PC.china.huawei.com (10.47.27.100) by
+ DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
+ 14.3.487.0; Tue, 31 Mar 2020 00:50:04 +0800
+From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
+ <imammedo@redhat.com>
+Subject: [PATCH for-5.0 0/3] acpi: Fixes for inconsistency in ACPI MR size
+ during migration 
+Date: Mon, 30 Mar 2020 17:49:06 +0100
+Message-ID: <20200330164909.28324-1-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
 MIME-Version: 1.0
-In-Reply-To: <ea74559c-2ab4-752c-e587-2bf40eab14b0@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.173.222.27]
+Content-Type: text/plain
+X-Originating-IP: [10.47.27.100]
 X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: FTBZOf53+9gQ
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.190
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, david@redhat.com,
+ mst@redhat.com, linuxarm@huawei.com, xuwei5@hisilicon.com,
+ shannon.zhaosl@gmail.com, lersek@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: J1uz9aRW9f/F
 
-On 2020/3/30 20:38, Auger Eric wrote:
-> Hi Zenghui,
+This is to fix few issues discovered while adding NVDIMM hot-add
+support to arm/virt. These were previously part of [1] and since
+the fixes are generic in nature and might be an issue in x86 as
+well, they are being treated separately now.
 
-[...]
+1. https://patchwork.kernel.org/cover/11432383/
 
->>> +
->>> +    ptr = gicv3_data.redist_base[pe0] + GICR_PENDBASER;
->>> +    pendbaser = readq(ptr);
->>> +    writeq(pendbaser & ~GICR_PENDBASER_PTZ, ptr);
->>> +
->>> +    ptr = gicv3_data.redist_base[pe1] + GICR_PENDBASER;
->>> +    pendbaser = readq(ptr);
->>> +    writeq(pendbaser & ~GICR_PENDBASER_PTZ, ptr);
->>> +
->>> +    gicv3_lpi_rdist_enable(pe0);
->>> +    gicv3_lpi_rdist_enable(pe1);
->>
->> I don't know how the migration gets implemented in kvm-unit-tests.
->> But is there any guarantee that the LPIs will only be triggered on the
->> destination side? As once the EnableLPIs bit becomes 1, VGIC will start
->> reading the pending bit in guest memory and potentially injecting LPIs
->> into the target vcpu (in the source side).
-> 
-> I expect some LPIs to hit on source and some others to hit on the
-> destination. To me, this does not really matter as long as the handlers
-> gets called and accumulate the stats. Given the number of LPIs, we will
-> at least test the migration of some of the pending bits and especially
-> adjacent ones. It does work as it allows to test your fix:
-> 
-> ca185b260951  KVM: arm/arm64: vgic: Don't rely on the wrong pending table
+Updates:
+ -Added R-by and A-by tags.
+ -Edited commit log for patch#2
+ -Updated patch#3 as per David's comment
 
-Fair enough. Thanks for your explanation!
+David Hildenbrand (1):
+  exec: Fix for qemu_ram_resize() callback
+
+Shameer Kolothum (2):
+  acpi: Use macro for table-loader file name
+  fw_cfg: Migrate ACPI table mr sizes separately
+
+ exec.c                      | 16 ++++++-
+ hw/arm/virt-acpi-build.c    |  2 +-
+ hw/core/machine.c           |  1 +
+ hw/i386/acpi-build.c        |  2 +-
+ hw/nvram/fw_cfg.c           | 86 ++++++++++++++++++++++++++++++++++++-
+ include/hw/acpi/aml-build.h |  1 +
+ include/hw/nvram/fw_cfg.h   |  6 +++
+ 7 files changed, 109 insertions(+), 5 deletions(-)
+
+-- 
+2.17.1
 
 
-Zenghui

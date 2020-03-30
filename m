@@ -1,66 +1,102 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp3138393lfi;
-        Mon, 30 Mar 2020 13:01:05 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsJUJ8RIoO1VXET6RJCwvfE0E5IySCyEluRl1Y2cXPLiW0xbWfu82eKqVxQeR6NstUNs6up
-X-Received: by 2002:a0c:aee5:: with SMTP id n37mr12897963qvd.173.1585598465587;
-        Mon, 30 Mar 2020 13:01:05 -0700 (PDT)
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp3193036lfi;
+        Mon, 30 Mar 2020 14:04:26 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtbya2ySIubu0irLnQPZBL3qM3596leXvwjUuXgtQUuuMkWFKSYf3fxqnhPRU1ze9EjpDYu
+X-Received: by 2002:a37:4c8d:: with SMTP id z135mr1245681qka.128.1585602265801;
+        Mon, 30 Mar 2020 14:04:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585602265; cv=none;
+        d=google.com; s=arc-20160816;
+        b=R3k0q52xbCTTWF5py5c0ZAB3FG8gIcYcDeqtovydXWqR7FDQ/FlxuhEAqd7WGaV8HZ
+         tCP9UY30tDgkdt07cyGIypZs6lLIqolyqRS/zECX0MrEEy5DF/aDGgcEYXNY3b96W2wF
+         nwxQc6Nbg1+SMLgNnOXLX9wKLrUb/9bAcQKy2wQ2DqNE8C/Z2WjInk3RpqXGX8tZOth5
+         u/yLtfbkfHSd2R8yNVvlspDisjCeTjH7RE2tnM45hr3EO+8bewuZZgPBAngzpYhZy/44
+         wYvtoGLz1hpiroUC+aLkCSh7+TS49+VhQsvnpLw92tWYm2iLt1lLHu8j6zZKxVN0jc16
+         agaQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=GOZtPYlJYkzukGwNx4Y9x7WEX4ppgFY4ZIR1eVR/7yU=;
+        b=CN7y35XwFxoZ23nRyFJlX83Gx9JaspVUPiynmIPsE5Hrb2vMiJNu6IvxvNrmbJOQta
+         vUgWUjYpA0Fc7QkehXz/c2XS0Yqo5Hdz00W45qEQ5Tu9A+As0xfHsya1nLAyQLwVZ08a
+         iJ1nt0qqzqVnjAhnuj+05FrGjd344PgrUrITouuzq1BtLNfIe3FxBKj8ZTORxUjjYYMm
+         Runz9uidQ8OKkjIFFYGNPctrnipKneE9L9jev06z0D79MixGYboLtUcmHDV1FWZtabnk
+         sZ9ZmYzKb6gz1j/d/aZHPSEnRqlUtnDFdYFrIROzofxC7gTSqqPSR0vx3q72NoNcFsFD
+         rwXA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QVzxmaMK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y53si8971602qta.30.2020.03.30.13.01.05
+        by mx.google.com with ESMTPS id c14si9000048qkc.56.2020.03.30.14.04.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Mar 2020 13:01:05 -0700 (PDT)
+        Mon, 30 Mar 2020 14:04:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56130 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=QVzxmaMK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56820 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jJ0am-00017W-Vo
-	for alex.bennee@linaro.org; Mon, 30 Mar 2020 16:01:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33354)
+	id 1jJ1a5-0006YC-2N
+	for alex.bennee@linaro.org; Mon, 30 Mar 2020 17:04:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40486)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1jJ0a8-0000N5-46
- for qemu-arm@nongnu.org; Mon, 30 Mar 2020 16:00:25 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jJ1Zl-0006XZ-Vg
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 17:04:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1jJ0a6-0002K7-HG
- for qemu-arm@nongnu.org; Mon, 30 Mar 2020 16:00:24 -0400
-Resent-Date: Mon, 30 Mar 2020 16:00:24 -0400
-Resent-Message-Id: <E1jJ0a6-0002K7-HG@eggs.gnu.org>
-Received: from sender4-of-o54.zoho.com ([136.143.188.54]:21448)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1jJ0a2-00024o-Uk; Mon, 30 Mar 2020 16:00:19 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1585598392; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=BhyoMIqAmnKoRV+GFqSrJGJ/Ln8KOPEk4Xt2BS9XQUcgpvaX3rXVZ870soUp8pFGopySwCnH8zftNGgNr22ysmWf4OSrf60gIHO8K+VRLw2aZfarbq+iDLfqrShyMUEDDzrUIL/Lwkx3RVmowF5XCTcyQBTPrU1Bn2bAQ58UnA4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1585598392;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=csLclqeDsiSiRcvsOCidlujRoAsKZYbsu2f153rCCR0=; 
- b=GPqLOjxoRIFRsh8Q27NGMLcuv14huNbQZXb/gIQDzfxI+Q8/4mtAJSAQg80OpC9G7VNifWne95Rzs2rTVSpyuRu9ECU4QMMgpWHkyBx8BeZ1SJ29gKYc0DPnXRvl+tbNELJ39HsyJVpocJr/kHhNOmK2ZIlFvFdyYENtk3xsiYs=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1585598389649695.1731931413614;
- Mon, 30 Mar 2020 12:59:49 -0700 (PDT)
-In-Reply-To: <20200330164909.28324-1-shameerali.kolothum.thodi@huawei.com>
-Subject: Re: [PATCH for-5.0 0/3] acpi: Fixes for inconsistency in ACPI MR size
- during migration
-Message-ID: <158559838781.14168.4660132133802021028@39012742ff91>
+ (envelope-from <peter.maydell@linaro.org>) id 1jJ1Zk-0002d5-DX
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 17:04:05 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:46085)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jJ1Zk-0002bF-2V
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 17:04:04 -0400
+Received: by mail-wr1-x442.google.com with SMTP id j17so23328507wru.13
+ for <qemu-arm@nongnu.org>; Mon, 30 Mar 2020 14:04:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=GOZtPYlJYkzukGwNx4Y9x7WEX4ppgFY4ZIR1eVR/7yU=;
+ b=QVzxmaMKMve3RG9zta7/gXvwyTcZxoq8Gk6nC8mZ2Yw2yyCXMGy6+nYN0cIAcAwwrp
+ K6qc38osB+k0mHsc20jVfPpYR3vaG3Rs2I/H1ZDPzBo+tDpWF07StARg27Pfjmk328+4
+ S70fRZ9HkHuZkpwHWm+6G4onzArSi2J26Jz2lP9b3w2S24tNTb/NaMobhcHlLbY8AewF
+ wZiUsmDChgzpjmj4M3PS/47hhEWd9u9OnYwBpCnRjseBekIGbCw4xnrx6EwtYSPRDo3J
+ n3U7ZGKE+xymKWuEUOk8G6SxKcRZ1pZOB/2VXnfgUfKPSfykqc4eqlDgZWsOJHsauuNY
+ PvHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=GOZtPYlJYkzukGwNx4Y9x7WEX4ppgFY4ZIR1eVR/7yU=;
+ b=USCHApjpl0YDDQucPQqj8kZxjiSZ7kbR1HL0g3MUHC+XTGHKjLI1MBbw6cVQ7+T7t1
+ c4RSnMLuLK6cmP5/+H3i2E0kRKt7f+DdgkvWZkK3WBn0M0pjUk/6zLTAsqRhSmTu3z9r
+ Ml0+0ljT1jgT8SO5Br98n/sOMXhPG9tQ2wXps85XovchqKqFpJkdnmab/nLMJ7oVBqW+
+ 2gzQfyYlJKSEJE8yfiUId/dIq/oqKDM57T2gDbcTgsy/wFYtB4yr+haa9OjIxL240UOf
+ eNzh1ItzkyJG1VssAKmrnn54e4KBj68BytkPyLh8k5EsrOAskCdaiYdc0//Gwud8U92w
+ 5Spg==
+X-Gm-Message-State: ANhLgQ1JP3Vnkssw/P0w9Kv5nCZumcF/9M++yT3eKsYJZUwx4h0emISj
+ 1stlePH2scFggZ+oVMbzP2ajjgDxzPHXeA==
+X-Received: by 2002:adf:ab5d:: with SMTP id r29mr18258373wrc.158.1585602242416; 
+ Mon, 30 Mar 2020 14:04:02 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id p21sm1012700wma.0.2020.03.30.14.04.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 30 Mar 2020 14:04:01 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 0/4] arm: Implement ARMv8.2-TTS2UXN
+Date: Mon, 30 Mar 2020 22:03:56 +0100
+Message-Id: <20200330210400.11724-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: shameerali.kolothum.thodi@huawei.com
-Date: Mon, 30 Mar 2020 12:59:49 -0700 (PDT)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.54
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::442
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,76 +108,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, david@redhat.com,
- shannon.zhaosl@gmail.com, mst@redhat.com, qemu-devel@nongnu.org,
- xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
- qemu-arm@nongnu.org, imammedo@redhat.com, lersek@redhat.com
+Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: V/vMdql9XwCI
+X-TUID: XF8/OQZ7wdmB
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDMzMDE2NDkwOS4yODMy
-NC0xLXNoYW1lZXJhbGkua29sb3RodW0udGhvZGlAaHVhd2VpLmNvbS8KCgoKSGksCgpUaGlzIHNl
-cmllcyBmYWlsZWQgdGhlIGRvY2tlci1taW5nd0BmZWRvcmEgYnVpbGQgdGVzdC4gUGxlYXNlIGZp
-bmQgdGhlIHRlc3RpbmcgY29tbWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhh
-dmUgRG9ja2VyIGluc3RhbGxlZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxs
-eS4KCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEgL2Jpbi9iYXNoCmV4cG9ydCBBUkNIPXg4
-Nl82NAptYWtlIGRvY2tlci1pbWFnZS1mZWRvcmEgVj0xIE5FVFdPUks9MQp0aW1lIG1ha2UgZG9j
-a2VyLXRlc3QtbWluZ3dAZmVkb3JhIEo9MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQg
-PT09CgogIENDICAgICAgaHcvc21iaW9zL3NtYmlvcy5vCkluIGZpbGUgaW5jbHVkZWQgZnJvbSAv
-dG1wL3FlbXUtdGVzdC9zcmMvaW5jbHVkZS9xZW11L29zZGVwLmg6NTEsCiAgICAgICAgICAgICAg
-ICAgZnJvbSAvdG1wL3FlbXUtdGVzdC9zcmMvaHcvbnZyYW0vZndfY2ZnLmM6MjU6Ci90bXAvcWVt
-dS10ZXN0L3NyYy9pbmNsdWRlL3FlbXUvY29tcGlsZXIuaDo4MTozNTogZXJyb3I6IGludmFsaWQg
-b3BlcmFuZHMgdG8gYmluYXJ5IC0gKGhhdmUgJ3VpbnQ2NF90IConIHtha2EgJ2xvbmcgbG9uZyB1
-bnNpZ25lZCBpbnQgKid9IGFuZCAnc2l6ZV90IConIHtha2EgJ3Vuc2lnbmVkIGludCAqJ30pCiAj
-ZGVmaW5lIHR5cGVfY2hlY2sodDEsdDIpICgodDEqKTAgLSAodDIqKTApCiAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgXgovdG1wL3FlbXUtdGVzdC9zcmMvaW5jbHVkZS9taWdyYXRp
-b24vdm1zdGF0ZS5oOjI1NDo2OiBub3RlOiBpbiBleHBhbnNpb24gb2YgbWFjcm8gJ3R5cGVfY2hl
-Y2snCi0tLQovdG1wL3FlbXUtdGVzdC9zcmMvaHcvbnZyYW0vZndfY2ZnLmM6Njc0Ojk6IG5vdGU6
-IGluIGV4cGFuc2lvbiBvZiBtYWNybyAnVk1TVEFURV9VSU5UNjQnCiAgICAgICAgIFZNU1RBVEVf
-VUlOVDY0KHRhYmxlX21yX3NpemUsIEZXQ2ZnU3RhdGUpLAogICAgICAgICBefn5+fn5+fn5+fn5+
-fgovdG1wL3FlbXUtdGVzdC9zcmMvaW5jbHVkZS9xZW11L2NvbXBpbGVyLmg6ODE6MzU6IGVycm9y
-OiBpbnZhbGlkIG9wZXJhbmRzIHRvIGJpbmFyeSAtIChoYXZlICd1aW50NjRfdCAqJyB7YWthICds
-b25nIGxvbmcgdW5zaWduZWQgaW50IConfSBhbmQgJ3NpemVfdCAqJyB7YWthICd1bnNpZ25lZCBp
-bnQgKid9KQogI2RlZmluZSB0eXBlX2NoZWNrKHQxLHQyKSAoKHQxKikwIC0gKHQyKikwKQogICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF4KL3RtcC9xZW11LXRlc3Qvc3JjL2luY2x1
-ZGUvbWlncmF0aW9uL3Ztc3RhdGUuaDoyNTQ6Njogbm90ZTogaW4gZXhwYW5zaW9uIG9mIG1hY3Jv
-ICd0eXBlX2NoZWNrJwotLS0KL3RtcC9xZW11LXRlc3Qvc3JjL2h3L252cmFtL2Z3X2NmZy5jOjY3
-NTo5OiBub3RlOiBpbiBleHBhbnNpb24gb2YgbWFjcm8gJ1ZNU1RBVEVfVUlOVDY0JwogICAgICAg
-ICBWTVNUQVRFX1VJTlQ2NChsaW5rZXJfbXJfc2l6ZSwgRldDZmdTdGF0ZSksCiAgICAgICAgIF5+
-fn5+fn5+fn5+fn5+Ci90bXAvcWVtdS10ZXN0L3NyYy9pbmNsdWRlL3FlbXUvY29tcGlsZXIuaDo4
-MTozNTogZXJyb3I6IGludmFsaWQgb3BlcmFuZHMgdG8gYmluYXJ5IC0gKGhhdmUgJ3VpbnQ2NF90
-IConIHtha2EgJ2xvbmcgbG9uZyB1bnNpZ25lZCBpbnQgKid9IGFuZCAnc2l6ZV90IConIHtha2Eg
-J3Vuc2lnbmVkIGludCAqJ30pCiAjZGVmaW5lIHR5cGVfY2hlY2sodDEsdDIpICgodDEqKTAgLSAo
-dDIqKTApCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgovdG1wL3FlbXUtdGVz
-dC9zcmMvaW5jbHVkZS9taWdyYXRpb24vdm1zdGF0ZS5oOjI1NDo2OiBub3RlOiBpbiBleHBhbnNp
-b24gb2YgbWFjcm8gJ3R5cGVfY2hlY2snCi0tLQovdG1wL3FlbXUtdGVzdC9zcmMvaHcvbnZyYW0v
-ZndfY2ZnLmM6Njc2Ojk6IG5vdGU6IGluIGV4cGFuc2lvbiBvZiBtYWNybyAnVk1TVEFURV9VSU5U
-NjQnCiAgICAgICAgIFZNU1RBVEVfVUlOVDY0KHJzZHBfbXJfc2l6ZSwgRldDZmdTdGF0ZSksCiAg
-ICAgICAgIF5+fn5+fn5+fn5+fn5+Cm1ha2U6ICoqKiBbL3RtcC9xZW11LXRlc3Qvc3JjL3J1bGVz
-Lm1hazo2OTogaHcvbnZyYW0vZndfY2ZnLm9dIEVycm9yIDEKbWFrZTogKioqIFdhaXRpbmcgZm9y
-IHVuZmluaXNoZWQgam9icy4uLi4KVHJhY2ViYWNrIChtb3N0IHJlY2VudCBjYWxsIGxhc3QpOgog
-IEZpbGUgIi4vdGVzdHMvZG9ja2VyL2RvY2tlci5weSIsIGxpbmUgNjY0LCBpbiA8bW9kdWxlPgot
-LS0KICAgIHJhaXNlIENhbGxlZFByb2Nlc3NFcnJvcihyZXRjb2RlLCBjbWQpCnN1YnByb2Nlc3Mu
-Q2FsbGVkUHJvY2Vzc0Vycm9yOiBDb21tYW5kICdbJ3N1ZG8nLCAnLW4nLCAnZG9ja2VyJywgJ3J1
-bicsICctLWxhYmVsJywgJ2NvbS5xZW11Lmluc3RhbmNlLnV1aWQ9ZTk3NWRhZmNlMThjNGQ4ZDhi
-ZGMxYWVjY2ZlMmMzZmUnLCAnLXUnLCAnMTAwMScsICctLXNlY3VyaXR5LW9wdCcsICdzZWNjb21w
-PXVuY29uZmluZWQnLCAnLS1ybScsICctZScsICdUQVJHRVRfTElTVD0nLCAnLWUnLCAnRVhUUkFf
-Q09ORklHVVJFX09QVFM9JywgJy1lJywgJ1Y9JywgJy1lJywgJ0o9MTQnLCAnLWUnLCAnREVCVUc9
-JywgJy1lJywgJ1NIT1dfRU5WPScsICctZScsICdDQ0FDSEVfRElSPS92YXIvdG1wL2NjYWNoZScs
-ICctdicsICcvaG9tZS9wYXRjaGV3Ly5jYWNoZS9xZW11LWRvY2tlci1jY2FjaGU6L3Zhci90bXAv
-Y2NhY2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLWQ4czZjeXJsL3Ny
-Yy9kb2NrZXItc3JjLjIwMjAtMDMtMzAtMTUuNTQuMjYuMzA0OTovdmFyL3RtcC9xZW11Onoscm8n
-LCAncWVtdTpmZWRvcmEnLCAnL3Zhci90bXAvcWVtdS9ydW4nLCAndGVzdC1taW5ndyddJyByZXR1
-cm5lZCBub24temVybyBleGl0IHN0YXR1cyAyLgpmaWx0ZXI9LS1maWx0ZXI9bGFiZWw9Y29tLnFl
-bXUuaW5zdGFuY2UudXVpZD1lOTc1ZGFmY2UxOGM0ZDhkOGJkYzFhZWNjZmUyYzNmZQptYWtlWzFd
-OiAqKiogW2RvY2tlci1ydW5dIEVycm9yIDEKbWFrZVsxXTogTGVhdmluZyBkaXJlY3RvcnkgYC92
-YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC1kOHM2Y3lybC9zcmMnCm1ha2U6ICoqKiBbZG9ja2Vy
-LXJ1bi10ZXN0LW1pbmd3QGZlZG9yYV0gRXJyb3IgMgoKcmVhbCAgICA1bTIyLjIwMnMKdXNlciAg
-ICAwbTguNTk5cwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcu
-b3JnL2xvZ3MvMjAyMDAzMzAxNjQ5MDkuMjgzMjQtMS1zaGFtZWVyYWxpLmtvbG90aHVtLnRob2Rp
-QGh1YXdlaS5jb20vdGVzdGluZy5kb2NrZXItbWluZ3dAZmVkb3JhLz90eXBlPW1lc3NhZ2UuCi0t
-LQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNo
-ZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRo
-YXQuY29t
+This is obviously not 5.0 material, but I figured it would be better
+to push it out for review now rather than hang on to it and forget...
+
+TTS2UXN is an ARMv8.2 extension which changes the 'XN' field in stage
+2 translation table descriptors from just bit [54] to bits [54:53],
+allowing stage 2 to control execution permissions separately for EL0
+and EL1.
+
+For QEMU this had the potential to be awkward, because it means that
+the stage 2 translation now depends on whether it's being used
+for an EL0 or an EL1 stage 1 access (the address doesn't change
+but the access permissions do). Fortunately, although we allocated
+a QEMU TLB/MMU index for Stage 2, we never actually look anything
+up in the TLB. So patch 1 turns ARMMMUIdx_Stage2 into a 'NOTLB'
+index (ie one without a QEMU TLB), thus avoiding the complication
+of splitting it into separate Stage2-for-EL0 and Stage2-for-EL1
+indexes. Once we've done that the actual implementation is pretty
+trivial -- we just need to plumb an extra 's1_is_el0' argument
+into get_phys_addr_lpae(), and then use it to decide what to do.
+
+Peter Maydell (4):
+  target/arm: Don't use a TLB for ARMMMUIdx_Stage2
+  target/arm: Use enum constant in get_phys_addr_lpae() call
+  target/arm: Add new 's1_is_el0' argument to get_phys_addr_lpae()
+  target/arm: Implement ARMv8.2-TTS2UXN
+
+ target/arm/cpu-param.h |   2 +-
+ target/arm/cpu.h       |  36 ++++++--
+ target/arm/cpu.c       |   1 +
+ target/arm/cpu64.c     |   2 +
+ target/arm/helper.c    | 183 ++++++++++++++++-------------------------
+ 5 files changed, 107 insertions(+), 117 deletions(-)
+
+-- 
+2.20.1
+

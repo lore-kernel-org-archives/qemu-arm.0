@@ -1,286 +1,155 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2681388lfi;
-        Mon, 30 Mar 2020 05:38:49 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vv7QoTFmzAK7rdZ7a48TSNODCvxuDyVnYLwjp6I2fOa6DlWRrTuOSZDoiDAIOi34buUf67Y
-X-Received: by 2002:a05:6808:2d9:: with SMTP id a25mr7380725oid.125.1585571929424;
-        Mon, 30 Mar 2020 05:38:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585571929; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2709062lfi;
+        Mon, 30 Mar 2020 06:07:27 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvD0BVOQC+l4g9YRidntRcbuhngNXyIl9Rb1T7TZYy5jFLxl9htmcRHew0+lC48+B3pEUxA
+X-Received: by 2002:a0c:b617:: with SMTP id f23mr11438247qve.134.1585573647216;
+        Mon, 30 Mar 2020 06:07:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585573647; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bb3fjY0dFa+8Wh+Q99qhNww/04V3Ox79X9/NKoo9f1n1E4gPX3jUW5XBzNO8lj1OpF
-         LUseYrUFYQsv/BPUoIIJeaBEgkCGoTM4WeluYO//HCs6p1FkP38E8T/bwee8A5UGi7MW
-         Ce6hBofbLc+3RigFRIpdHaLdDXM2I1mCu6USl17lBh8yS3kuU8ASjMHjRuH/oMEfBCZ1
-         WACg79A5QExtjl9RH6jdAcGJKNiwlrWO8RKMBqAiDXdg/+KHZVjy1tWLVeqb8SPInwTG
-         DJuXXV3MYkva3lfPnHx5x6oA224j987FlPC0RU/u9TqyCNIDCQhCQFvEMN5BexFDvRSn
-         IZeQ==
+        b=deBbBFZ3YSD3Ocg1go+BZOeBVN0nT+7UzQPihXumn+8lEs37l29inDkrHD+4mdsoe8
+         lHPtLCQQkndwQek4YpsvI/jhYqLP2OKYFSavl6ibaTy3+VYeNwSMqMNBVkTSdsCEOFAN
+         Ui6+7setw5TpiVXciSqS5OyV/IzA6A9wt0B5+RJeHSeUQPqJ+9ISqL6cQFAuaoNYp0z4
+         UIX6siu1ZR4AOR2CGJsq3KMAUOgS8JU4wBUZkhle0Y5a7fh51W6+UFzFs44uib8n96Qj
+         KF6lZImBqvEo/OAosRQKl2pgaNDJ+m6vHHf1zjt1sTHLp5OesyW1udPzmkvIRjKQAWio
+         eiQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:dkim-signature;
-        bh=Z4cUzeidLCschmMx+521qeR+2AGe9fkhbWsqAhHXFkg=;
-        b=aJsqp1hiFqo19WI5CfuxdUO6T8wlLFP5Q1WtF3nOlTqIsN/dCBTjn6eg/NbwH1vqjS
-         tjuoBW6eVPChvZM6TPYiolUKE6H/XhsrcEbXQvTeLKuI8gp2u99EmZQ/nXCRL1yG8qYo
-         qF6kKrVt7duE7hvLbvGGEzIHzCOOb3UlhpuwlnBtpKQJ3ZG6daqy/MeqsF2kpCfrRMCf
-         cpXzGieBLW3zOE0kbUroiYZ52VsnouVWbDzd9XzmJlR9WU/EZjGleIQVk5XUW9s/vBHL
-         bc5LOJR4F5by1iNOhACJT6feDHoCd2gcz5SVwKUOeFE2gPBd58ll3KIm78WQ+ZOOi6sp
-         I8EA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=N9kafDzItByaOJgeiXXAocdwy9zkWyh6uH03myYBXi8=;
+        b=nuKlU7ncHNz7V9R1krrJyh6CO/qu8GeuJqFfCCi4FVP2I+d7+DvlbBxdOJQWa4zchd
+         fe/6a55ONozzPQX2z6qK1m3YKLh0XrVNeDCWeqkOrSN9SZmEyMy8NoMAXMZ92zmIwaPp
+         zcztYx/Ki+hplItq3DRPu2pnoWghtKPgJnrY/vjZyECi3J+qvho1G22nscoRD/ZjHwXx
+         IIiDfxEATTpJIk98NgbEF1CCHQOQGPdmlo4qWZ9+dnkb7wzA2p+ZXXCgm81uBYS0+E0W
+         VVea+e/M6XrSdgVABuEftH0FSItoR7/Kr+J9jTIz9XSzk4JPGs4qyrtYdYEKbhA96hqv
+         l43A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jei6MkZo;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id g188si1727959oia.203.2020.03.30.05.38.49;
-        Mon, 30 Mar 2020 05:38:49 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=pass header.i=@linaro.org header.s=google header.b=q2DRcg00;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v55si8102974qtc.309.2020.03.30.06.07.26
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 30 Mar 2020 06:07:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jei6MkZo;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1730221AbgC3Mir (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 30 Mar 2020 08:38:47 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:25746 "EHLO
-        us-smtp-delivery-74.mimecast.com" rhost-flags-OK-OK-OK-OK)
-        by vger.kernel.org with ESMTP id S1730064AbgC3Mir (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Mon, 30 Mar 2020 08:38:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1585571925;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=Z4cUzeidLCschmMx+521qeR+2AGe9fkhbWsqAhHXFkg=;
-        b=Jei6MkZohwWkaJ0GFaOPY+9Wyuch94fZKKz9l/VPvrNx7L66Ahn45CvhnAYmYUu3pFt7C6
-        JDq9n8Dt6Veurj2Hkx7F1+EqAurISyI1pD/VQcwynZuezHaHizoT+7eddi1kxwmQMLpOS3
-        QuXk5q/T9LzJ51K/TLzeUwlEFUWBOoA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-198-e6d9mGMXOOW6hD0m0hqhTQ-1; Mon, 30 Mar 2020 08:38:41 -0400
-X-MC-Unique: e6d9mGMXOOW6hD0m0hqhTQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0A27618AB2C4;
-        Mon, 30 Mar 2020 12:38:40 +0000 (UTC)
-Received: from [10.36.112.58] (ovpn-112-58.ams2.redhat.com [10.36.112.58])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 89E3C5DA66;
-        Mon, 30 Mar 2020 12:38:34 +0000 (UTC)
-Subject: Re: [kvm-unit-tests PATCH v7 13/13] arm/arm64: ITS: pending table
- migration test
-To:     Zenghui Yu <yuzenghui@huawei.com>
-Cc:     peter.maydell@linaro.org, drjones@redhat.com, kvm@vger.kernel.org,
-        maz@kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-        andre.przywara@arm.com, thuth@redhat.com, alexandru.elisei@arm.com,
-        kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
-References: <20200320092428.20880-1-eric.auger@redhat.com>
- <20200320092428.20880-14-eric.auger@redhat.com>
- <296c574b-810c-9c90-a613-df732a9ac193@huawei.com>
-From:   Auger Eric <eric.auger@redhat.com>
-Message-ID: <ea74559c-2ab4-752c-e587-2bf40eab14b0@redhat.com>
-Date:   Mon, 30 Mar 2020 14:38:32 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=q2DRcg00;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49456 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jIu8U-0001Bc-Fz
+	for alex.bennee@linaro.org; Mon, 30 Mar 2020 09:07:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44415)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1jIu8L-0001B5-OB
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 09:07:18 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1jIu8K-0003kr-C3
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 09:07:17 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:40673)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jIu8K-0003jz-2J
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 09:07:16 -0400
+Received: by mail-oi1-x242.google.com with SMTP id y71so15561278oia.7
+ for <qemu-arm@nongnu.org>; Mon, 30 Mar 2020 06:07:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=N9kafDzItByaOJgeiXXAocdwy9zkWyh6uH03myYBXi8=;
+ b=q2DRcg003lIzIt4qr4qLLzhprWqRI72/HbDgA7X060z0UO53Yyd7qoCk5w/Dz1sfyE
+ hYLNCETWlHSTapt6kLIZWvqwYdyhSxKEck6RSovl0orEeGuhDIvB5py0E2VEN0yl57bX
+ XwSMuYBqto++M7gAF3kib4Q7h+bZhXxesfzAQPbyam9RTd+jWALgGHoj62HIgqvpcEsY
+ D9NRtAn9Boshc80WG/AWhtlRdldQL5qfhAgUzW8vTmESTdDHic+ZXe4baYmt1DKV/mRi
+ mHEds3aR/F0PMRj5CUWtRUY3jIPa1gQ0Gzu2QM32vvAcifwWZMSncAmJ64sznE3VEVle
+ SwAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=N9kafDzItByaOJgeiXXAocdwy9zkWyh6uH03myYBXi8=;
+ b=MzZHhlsHzGXdCv4JllvpDkcwv7ND4tYYIpZ5pLJ62Keg12APnbNAYtdQrylVR6T0mu
+ K5C9ms35QaijT2M85p6ypKBOQ0iZrNUO/BwurxWaomqUA9zcsJf59WwVcYX74QF2fk+r
+ 4ODfEfA7SwA/8pF3GjBCkAbvI3lACMqV3fUmVmiLrBemFYkqTXRTe5Z98Xx8ea7nqIhx
+ DKcHU5qaPaj26MvPBI8CywijCJPFOHE8ddXHsbEiDXExOTEObnHvGHqOqEe5VP+r9Y14
+ z4sJJ6bHwTOzC8TgZ6BdMDVeJ/H6CIqkl023Qrj0H/uLqPo4sMClYj4Uf3MCL0y852cV
+ 6KEA==
+X-Gm-Message-State: ANhLgQ2m4Ujmkpit7q9BfFN0l6rAP1lBjnqHOdj/vU1hprp9R6pmngum
+ hn3Ge4ao7AooDe8Ft/fwWG95j4m/pelEgBnHWBb4Tg==
+X-Received: by 2002:a05:6808:64c:: with SMTP id
+ z12mr7187724oih.146.1585573634743; 
+ Mon, 30 Mar 2020 06:07:14 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <296c574b-810c-9c90-a613-df732a9ac193@huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: bG6zMkQLbEzJ
+References: <20200328140232.17278-1-changbin.du@gmail.com>
+In-Reply-To: <20200328140232.17278-1-changbin.du@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 30 Mar 2020 14:07:03 +0100
+Message-ID: <CAFEAcA8B=WB9ow3ZU4jcf7Z+dXizPRpsGp_BB7KPG4hfhH-cUw@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: fix incorrect current EL bug in aarch32
+ exception emulation
+To: Changbin Du <changbin.du@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::242
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9zgtIGPELYQz
 
-Hi Zenghui,
+On Sat, 28 Mar 2020 at 14:02, Changbin Du <changbin.du@gmail.com> wrote:
+>
+> The arm_current_el() should be invoked after mode switching. Otherwise, we
+> get a wrong current EL value, since current EL is also determined by
+> current mode.
+>
+> Fixes: 4a2696c0d4 ("target/arm: Set PAN bit as required on exception entry")
+> Signed-off-by: Changbin Du <changbin.du@gmail.com>
+> ---
+>  target/arm/helper.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index b7b6887241..163c91a1cc 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -9172,7 +9172,6 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
+>
+>      /* Change the CPU state so as to actually take the exception. */
+>      switch_mode(env, new_mode);
+> -    new_el = arm_current_el(env);
+>
+>      /*
+>       * For exceptions taken to AArch32 we must clear the SS bit in both
+> @@ -9184,6 +9183,10 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
+>      env->condexec_bits = 0;
+>      /* Switch to the new mode, and to the correct instruction set.  */
+>      env->uncached_cpsr = (env->uncached_cpsr & ~CPSR_M) | new_mode;
+> +
+> +    /* This must be after mode switching. */
+> +    new_el = arm_current_el(env);
+> +
+>      /* Set new mode endianness */
+>      env->uncached_cpsr &= ~CPSR_E;
+>      if (env->cp15.sctlr_el[new_el] & SCTLR_EE) {
+> --
+> 2.25.1
 
-On 3/30/20 2:06 PM, Zenghui Yu wrote:
-> Hi Eric,
->=20
-> On 2020/3/20 17:24, Eric Auger wrote:
->> Add two new migration tests. One testing the migration of
->> a topology where collection were unmapped. The second test
->> checks the migration of the pending table.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->=20
-> [...]
->=20
->> @@ -659,6 +678,15 @@ static int its_prerequisites(int nb_cpus)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return 0;
->> =C2=A0 }
->> =C2=A0 +static void set_lpi(struct its_device *dev, u32 eventid, u32 p=
-hysid,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 st=
-ruct its_collection *col)
->> +{
->> +=C2=A0=C2=A0=C2=A0 assert(dev && col);
->> +
->> +=C2=A0=C2=A0=C2=A0 its_send_mapti(dev, physid, eventid, col);
->> +=C2=A0=C2=A0=C2=A0 gicv3_lpi_set_config(physid, LPI_PROP_DEFAULT);
->> +}
->=20
-> I'd say we can just drop this helper and open-code it anywhere
-> necessarily. The name 'set_lpi' doesn't tell me too much about
-> what has been implemented inside the helper.
->=20
->> +
->> =C2=A0 /*
->> =C2=A0=C2=A0 * Setup the configuration for those mappings:
->> =C2=A0=C2=A0 * dev_id=3D2 event=3D20 -> vcpu 3, intid=3D8195
->> @@ -790,6 +818,108 @@ static void test_its_migration(void)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 its_send_int(dev7, 255);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 check_lpi_stats("dev7/eventid=3D255 tri=
-ggers LPI 8196 on PE #2
->> after migration");
->> =C2=A0 }
->> +
->> +static void test_migrate_unmapped_collection(void)
->> +{
->> +=C2=A0=C2=A0=C2=A0 struct its_collection *col;
->> +=C2=A0=C2=A0=C2=A0 struct its_device *dev2, *dev7;
->> +=C2=A0=C2=A0=C2=A0 int pe0 =3D 0;
->> +=C2=A0=C2=A0=C2=A0 u8 config;
->> +
->> +=C2=A0=C2=A0=C2=A0 if (its_setup1())
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
->> +
->> +=C2=A0=C2=A0=C2=A0 col =3D its_create_collection(pe0, pe0);
->> +=C2=A0=C2=A0=C2=A0 dev2 =3D its_get_device(2);
->> +=C2=A0=C2=A0=C2=A0 dev7 =3D its_get_device(7);
->> +
->> +=C2=A0=C2=A0=C2=A0 /* MAPTI with the collection unmapped */
->> +=C2=A0=C2=A0=C2=A0 set_lpi(dev2, 0, 8192, col);
->=20
-> ... and it's only invoked here.
->=20
->> +
->> +=C2=A0=C2=A0=C2=A0 puts("Now migrate the VM, then press a key to cont=
-inue...\n");
->> +=C2=A0=C2=A0=C2=A0 (void)getchar();
->> +=C2=A0=C2=A0=C2=A0 report_info("Migration complete");
->> +
->> +=C2=A0=C2=A0=C2=A0 /* on the destination, map the collection */
->> +=C2=A0=C2=A0=C2=A0 its_send_mapc(col, true);
->> +=C2=A0=C2=A0=C2=A0 its_send_invall(col);
->> +
->> +=C2=A0=C2=A0=C2=A0 lpi_stats_expect(2, 8196);
->> +=C2=A0=C2=A0=C2=A0 its_send_int(dev7, 255);
->> +=C2=A0=C2=A0=C2=A0 check_lpi_stats("dev7/eventid=3D 255 triggered LPI=
- 8196 on PE #2");
->> +
->> +=C2=A0=C2=A0=C2=A0 config =3D gicv3_lpi_get_config(8192);
->> +=C2=A0=C2=A0=C2=A0 report(config =3D=3D LPI_PROP_DEFAULT,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "Config =
-of LPI 8192 was properly migrated");
->> +
->> +=C2=A0=C2=A0=C2=A0 lpi_stats_expect(pe0, 8192);
->> +=C2=A0=C2=A0=C2=A0 its_send_int(dev2, 0);
->> +=C2=A0=C2=A0=C2=A0 check_lpi_stats("dev2/eventid =3D 0 triggered LPI =
-8192 on PE0");
->> +}
->> +
->> +static void test_its_pending_migration(void)
->> +{
->> +=C2=A0=C2=A0=C2=A0 struct its_device *dev;
->> +=C2=A0=C2=A0=C2=A0 struct its_collection *collection[2];
->> +=C2=A0=C2=A0=C2=A0 int *expected =3D malloc(nr_cpus * sizeof(int));
->> +=C2=A0=C2=A0=C2=A0 int pe0 =3D nr_cpus - 1, pe1 =3D nr_cpus - 2;
->> +=C2=A0=C2=A0=C2=A0 u64 pendbaser;
->> +=C2=A0=C2=A0=C2=A0 void *ptr;
->> +=C2=A0=C2=A0=C2=A0 int i;
->> +
->> +=C2=A0=C2=A0=C2=A0 if (its_prerequisites(4))
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
->> +
->> +=C2=A0=C2=A0=C2=A0 dev =3D its_create_device(2 /* dev id */, 8 /* nb_=
-ites */);
->> +=C2=A0=C2=A0=C2=A0 its_send_mapd(dev, true);
->> +
->> +=C2=A0=C2=A0=C2=A0 collection[0] =3D its_create_collection(pe0, pe0);
->> +=C2=A0=C2=A0=C2=A0 collection[1] =3D its_create_collection(pe1, pe1);
->> +=C2=A0=C2=A0=C2=A0 its_send_mapc(collection[0], true);
->> +=C2=A0=C2=A0=C2=A0 its_send_mapc(collection[1], true);
->> +
->> +=C2=A0=C2=A0=C2=A0 /* disable lpi at redist level */
->> +=C2=A0=C2=A0=C2=A0 gicv3_lpi_rdist_disable(pe0);
->> +=C2=A0=C2=A0=C2=A0 gicv3_lpi_rdist_disable(pe1);
->> +
->> +=C2=A0=C2=A0=C2=A0 /* lpis are interleaved inbetween the 2 PEs */
->> +=C2=A0=C2=A0=C2=A0 for (i =3D 0; i < 256; i++) {
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct its_collection *col=
- =3D i % 2 ? collection[0] :
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0 collection[1];
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int vcpu =3D col->target_a=
-ddress >> 16;
->> +
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 its_send_mapti(dev, LPI(i)=
-, i, col);
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 gicv3_lpi_set_config(LPI(i=
-), LPI_PROP_DEFAULT);
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 gicv3_lpi_set_clr_pending(=
-vcpu, LPI(i), true);
->> +=C2=A0=C2=A0=C2=A0 }
->> +=C2=A0=C2=A0=C2=A0 its_send_invall(collection[0]);
->> +=C2=A0=C2=A0=C2=A0 its_send_invall(collection[1]);
->> +
->> +=C2=A0=C2=A0=C2=A0 /* Clear the PTZ bit on each pendbaser */
->> +
->> +=C2=A0=C2=A0=C2=A0 expected[pe0] =3D 128;
->> +=C2=A0=C2=A0=C2=A0 expected[pe1] =3D 128;
->=20
-> Do we need to initialize expected[] for other PEs? Or it has always
-> been zeroed by the kvm-unit-tests implementation of malloc()?
->=20
->> +
->> +=C2=A0=C2=A0=C2=A0 ptr =3D gicv3_data.redist_base[pe0] + GICR_PENDBAS=
-ER;
->> +=C2=A0=C2=A0=C2=A0 pendbaser =3D readq(ptr);
->> +=C2=A0=C2=A0=C2=A0 writeq(pendbaser & ~GICR_PENDBASER_PTZ, ptr);
->> +
->> +=C2=A0=C2=A0=C2=A0 ptr =3D gicv3_data.redist_base[pe1] + GICR_PENDBAS=
-ER;
->> +=C2=A0=C2=A0=C2=A0 pendbaser =3D readq(ptr);
->> +=C2=A0=C2=A0=C2=A0 writeq(pendbaser & ~GICR_PENDBASER_PTZ, ptr);
->> +
->> +=C2=A0=C2=A0=C2=A0 gicv3_lpi_rdist_enable(pe0);
->> +=C2=A0=C2=A0=C2=A0 gicv3_lpi_rdist_enable(pe1);
->=20
-> I don't know how the migration gets implemented in kvm-unit-tests.
-> But is there any guarantee that the LPIs will only be triggered on the
-> destination side? As once the EnableLPIs bit becomes 1, VGIC will start
-> reading the pending bit in guest memory and potentially injecting LPIs
-> into the target vcpu (in the source side).
 
-I expect some LPIs to hit on source and some others to hit on the
-destination. To me, this does not really matter as long as the handlers
-gets called and accumulate the stats. Given the number of LPIs, we will
-at least test the migration of some of the pending bits and especially
-adjacent ones. It does work as it allows to test your fix:
 
-ca185b260951  KVM: arm/arm64: vgic: Don't rely on the wrong pending table
+Applied to target-arm.next, thanks.
 
-Thanks
-
-Eric
->=20
->> +
->> +=C2=A0=C2=A0=C2=A0 puts("Now migrate the VM, then press a key to cont=
-inue...\n");
->> +=C2=A0=C2=A0=C2=A0 (void)getchar();
->> +=C2=A0=C2=A0=C2=A0 report_info("Migration complete");
->> +
->> +=C2=A0=C2=A0=C2=A0 /* let's wait for the 256 LPIs to be handled */
->> +=C2=A0=C2=A0=C2=A0 mdelay(1000);
->> +
->> +=C2=A0=C2=A0=C2=A0 check_lpi_hits(expected, "128 LPIs on both PE0 and=
- PE1 after
->> migration");
->> +}
->=20
->=20
-> Thanks,
-> Zenghui
->=20
->=20
+-- PMM

@@ -1,147 +1,206 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2479930lfi;
-        Mon, 30 Mar 2020 01:47:10 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtr2ppTEOqllJGpN4RrGjz1DEK/H0cgZWtl4Hj1C+GsuD073iI0sMICNnhdj/M6o7P2Z0W0
-X-Received: by 2002:a0c:eccc:: with SMTP id o12mr10673060qvq.223.1585558030842;
-        Mon, 30 Mar 2020 01:47:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585558030; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2479942lfi;
+        Mon, 30 Mar 2020 01:47:12 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtoKs4+ddZ4BxGzohQfH/miD/6wM0282wB+52PQYdyuSW6NobQVVnk+CvzTNiXcJkaDGXrZ
+X-Received: by 2002:ad4:4088:: with SMTP id l8mr10720500qvp.34.1585558032528;
+        Mon, 30 Mar 2020 01:47:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585558032; cv=none;
         d=google.com; s=arc-20160816;
-        b=HbxVFPmWP0xFCERZEm9mthrt8WQPhQEKsqfMLu9tkhpw+Nok1ArAn/Ag1A2TrNcftF
-         mmsgZiLp26uaZBB9pwr4e17ZtfWAVebnJ3js0pU3Pj7nlzK7YvH/8lG7RHNWpUztHXN/
-         qdj8+iTAgC2gh5fNb0hXnbrgUmLFq9vtLPUOTqw7Bx0cCGSRwyTeggz2QbmWIh+EWpPD
-         LXjrrin9tsNtjDAoHHK+3T9EAr1LHJGpWKrC0yq8Qf7M3TCfQOyGg38O61/5wmmm591v
-         vRZD9Oa5K577j/HrVeM7nimodtFibGRwgpIh0eKQfZz2RUbb8Hk7WNM8BbH/AQcoSogH
-         kCUg==
+        b=jY7ibdCKUErAiXGriHwsVCxVjDmxsBLUgG3oC54cJI8wpcte4Pa+LPYopF6VKLa50B
+         2WRclnG9YPFtyP0wK7sMYY+6sCbWOXdI7hg8swK7hVwtLDuxsdfTxV62f8AUmiQariyd
+         774qnz4OVqfSZfJfNt/XdSwgv+kC415nU9H0mwhKafNWM4FmFVB501dNTnvMDWEDtWNg
+         MFyKsSoDzklb588k0AQHLh/KfiwFyn2zdVM65nxLAaAJmGx0Y6pZPzdy3DW4x5ObAc5C
+         o9rf+2oYw/sRC8iJPLCuPOUn4niaiLqcinw4jrqP6HbtHjBAlt+FhvtmTRPc6WKHyRZA
+         Bsew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=cep/nkTv6eSZVEa2H/mUbuoGJtkfpqBE1V0DqIr4Jhc=;
-        b=DpW007ElL9DnW9OZTaTlTcTrRymeFzqw6mdJ8Te/AHc5bdNryEi8bgNnRIK+Lyrhuq
-         GfI02SbgdRjTaaJ1b3sZvWEMfEAryd0q8znoHxYYTVqUqfSj90smvUeCMPIkpwoZ7v9+
-         /FWcj/CIv8Op0AefUB/mz8nr4xA5MXazXoWlnmBc0ec5zeItgZUuCNpW6x4rsTfpXsE2
-         oM4GeKsoZx3qn9N4FsTQWBKyvMVqzpuWW3Uevj2BHjURQ8jFtwNVck2Rp0Gf6RxpZL4i
-         M4HzEkZQ7PViDi/M0HuRLVkutT/wCEHLf1HIeJcocl5JjlZsvU2bX67duZ6pyntV4MFV
-         bprg==
+         :message-id:organization:autocrypt:from:references:to:subject
+         :dkim-signature;
+        bh=/D4JiiqsAVALZBlz0e9Ky7Ip7ThnIPQrmipAY5GMNQI=;
+        b=D7xmffY6ei5WqXcT2mlszS8T8HW+AFEYJpdVEwbLXRub/iP0ssXfi85bHj7phlmfw4
+         wWeJhl7aLcT4MnZ8Bx//wyQbD5NJQvYEyYfmRyOxhSQ0pzJEIvejvSu+WCcTHonwkXcQ
+         EUXtKJmECKd/EITXLQFiMt8yuDDZMMSKtSHCK3Z9XxdhLfd+q8soYt4ll3qjGGQRdeT0
+         qzg2voFgNl+TPVcQaGTPh6IonzNjrC3uyxN4FTHt7eTPoODiM3AFqDc6wWw51WFbcTRT
+         PEAHwVBt2U970s+wQ2Cue7HeBnEOwk9a8NrbrIFYbmhW20V7ZH51rKH7Pq6nnmgZwaDm
+         DJUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=hR+egNjQ;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Q9DzsEin;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id v11si7262673qvs.190.2020.03.30.01.47.10;
-        Mon, 30 Mar 2020 01:47:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z14si7570396qvy.197.2020.03.30.01.47.12
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 30 Mar 2020 01:47:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=hR+egNjQ;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Q9DzsEin;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 81D3D4B16A;
-	Mon, 30 Mar 2020 04:47:10 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 30AXwuALUohJ; Mon, 30 Mar 2020 04:47:09 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 8C43F4B22C;
-	Mon, 30 Mar 2020 04:47:09 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 1FE3A4B0E6
- for <kvmarm@lists.cs.columbia.edu>; Mon, 30 Mar 2020 04:47:09 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Kv6bfOvD3+Tn for <kvmarm@lists.cs.columbia.edu>;
- Mon, 30 Mar 2020 04:47:08 -0400 (EDT)
-Received: from us-smtp-delivery-74.mimecast.com
- (us-smtp-delivery-74.mimecast.com [63.128.21.74])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 3F7F54B22A
- for <kvmarm@lists.cs.columbia.edu>; Mon, 30 Mar 2020 04:47:08 -0400 (EDT)
+Received: from localhost ([::1]:46620 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jIq4d-0001pj-Sd
+	for alex.bennee@linaro.org; Mon, 30 Mar 2020 04:47:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34387)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <david@redhat.com>) id 1jIq4T-0001pK-KZ
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 04:47:02 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <david@redhat.com>) id 1jIq4R-0005GB-FQ
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 04:47:00 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:60655)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <david@redhat.com>) id 1jIq4R-0005F7-9W
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 04:46:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585558028;
+ s=mimecast20190719; t=1585558017;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=V3toyHtdmIDsvhTBATPytSTJjTPkQkswWc1NSEnUkCA=;
- b=hR+egNjQzEk5eifKHk07jk7VBWeFrgqXvYq7fKYtQxX+NcCd1OAIA2ZbklLrKxR0+xF/2r
- +r8JI78ntq5vGu563DNqQHsqN/Mc48Vn/L6vP6tqzOjv+4gjFT3DJXuvSPlYbkxNgKhmQv
- YoHNspxR8+4DWiuOtqbVU69fRIyPg3A=
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=/D4JiiqsAVALZBlz0e9Ky7Ip7ThnIPQrmipAY5GMNQI=;
+ b=Q9DzsEinzZ74YhZE3hBZh9yv6e6SRk9QQq2+7Fz0vAmxXAoG4m+yHKrCKTPlkE7mhhNy2F
+ AW8h9tRCmDLlG757LEyITPRrBIeqjqz7Fmp64Yymw5L46Dae3u7UDSF/5Q0p5aNpQIM4zc
+ yb9wg8gjCdq5+6GaloJCgiEq3aFm13A=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-318-PV9z_La-NdqheXia0TXc2w-1; Mon, 30 Mar 2020 04:47:05 -0400
-X-MC-Unique: PV9z_La-NdqheXia0TXc2w-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-199-rNIRm1RFNbaitAvROZkl-Q-1; Mon, 30 Mar 2020 04:46:53 -0400
+X-MC-Unique: rNIRm1RFNbaitAvROZkl-Q-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 427BD1937FC0;
- Mon, 30 Mar 2020 08:47:04 +0000 (UTC)
-Received: from [10.36.112.58] (ovpn-112-58.ams2.redhat.com [10.36.112.58])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C33CE19925;
- Mon, 30 Mar 2020 08:46:58 +0000 (UTC)
-Subject: Re: [kvm-unit-tests PATCH v7 06/13] arm/arm64: ITS: Introspection
- tests
-To: Zenghui Yu <yuzenghui@huawei.com>
-References: <20200320092428.20880-1-eric.auger@redhat.com>
- <20200320092428.20880-7-eric.auger@redhat.com>
- <947a79f5-1f79-532b-9ec7-6fd539ccd183@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <8878be7f-7653-b427-cd0d-722f82fb6b65@redhat.com>
-Date: Mon, 30 Mar 2020 10:46:57 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0626F1137844;
+ Mon, 30 Mar 2020 08:46:52 +0000 (UTC)
+Received: from [10.36.113.227] (ovpn-113-227.ams2.redhat.com [10.36.113.227])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 21A2A5C1B5;
+ Mon, 30 Mar 2020 08:46:43 +0000 (UTC)
+Subject: Re: [PATCH v3 00/10] ARM virt: Add NVDIMM support
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+References: <20200311172014.33052-1-shameerali.kolothum.thodi@huawei.com>
+ <20200329064435-mutt-send-email-mst@kernel.org>
+ <feb17f74f9d547019d052032395b9667@huawei.com>
+From: David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat GmbH
+Message-ID: <315945d9-d45f-349e-7b0c-946ca192a13e@redhat.com>
+Date: Mon, 30 Mar 2020 10:46:43 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <947a79f5-1f79-532b-9ec7-6fd539ccd183@huawei.com>
+In-Reply-To: <feb17f74f9d547019d052032395b9667@huawei.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Cc: kvm@vger.kernel.org, maz@kernel.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, andre.przywara@arm.com, thuth@redhat.com,
- kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 216.205.24.74
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: IdKB0rKOav8g
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ "imammedo@redhat.com" <imammedo@redhat.com>,
+ "lersek@redhat.com" <lersek@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hwY4NgCi7GzH
 
-SGkgWmVuZ2h1aSwKCk9uIDMvMzAvMjAgMTA6MzAgQU0sIFplbmdodWkgWXUgd3JvdGU6Cj4gSGkg
-RXJpYywKPiAKPiBPbiAyMDIwLzMvMjAgMTc6MjQsIEVyaWMgQXVnZXIgd3JvdGU6Cj4+ICtzdGF0
-aWMgdm9pZCBpdHNfY21kX3F1ZXVlX2luaXQodm9pZCkKPj4gK3sKPj4gK8KgwqDCoCB1bnNpZ25l
-ZCBsb25nIG9yZGVyID0gZ2V0X29yZGVyKFNaXzY0SyA+PiBQQUdFX1NISUZUKTsKPj4gK8KgwqDC
-oCB1NjQgY2Jhc2VyOwo+PiArCj4+ICvCoMKgwqAgaXRzX2RhdGEuY21kX2Jhc2UgPSAodm9pZCAq
-KXZpcnRfdG9fcGh5cyhhbGxvY19wYWdlcyhvcmRlcikpOwo+IAo+IFNob3VsZG4ndCB0aGUgY21k
-X2Jhc2UgKGFuZCB0aGUgY21kX3dyaXRlKSBiZSBzZXQgYXMgYSBHVkE/CnllcyBpdCBzaG91bGQK
-PiAKPiBPdGhlcndpc2UgSSB0aGluayB3ZSB3aWxsIGVuZC11cCB3aXRoIG1lbW9yeSBjb3JydXB0
-aW9uIHdoZW4gd3JpdGluZwo+IHRoZSBjb21tYW5kIHF1ZXVlLsKgIEJ1dCBpdCBzZWVtcyB0aGF0
-IGV2ZXJ5dGhpbmcganVzdCB3b3JrcyBmaW5lIC4uLgo+IFNvIEknbSByZWFsbHkgY29uZnVzZWQg
-aGVyZSA6LS8KSSB3YXMgdG9sZCBieSBQYW9sbyB0aGF0IHRoZSBWQS9QQSBtZW1vcnkgbWFwIGlz
-IGZsYXQgaW4ga3ZtdW5pdCB0ZXN0LgoKPiAKPj4gKwo+PiArwqDCoMKgIGNiYXNlciA9ICgodTY0
-KWl0c19kYXRhLmNtZF9iYXNlIHwgKFNaXzY0SyAvIFNaXzRLIC0gMSnCoMKgwqAgfAo+PiBHSVRT
-X0NCQVNFUl9WQUxJRCk7Cj4+ICsKPj4gK8KgwqDCoCB3cml0ZXEoY2Jhc2VyLCBpdHNfZGF0YS5i
-YXNlICsgR0lUU19DQkFTRVIpOwo+PiArCj4+ICvCoMKgwqAgaXRzX2RhdGEuY21kX3dyaXRlID0g
-aXRzX2RhdGEuY21kX2Jhc2U7Cj4+ICvCoMKgwqAgd3JpdGVxKDAsIGl0c19kYXRhLmJhc2UgKyBH
-SVRTX0NXUklURVIpOwo+PiArfQo+IAo+IE90aGVyd2lzZSB0aGlzIGxvb2tzIGdvb2QsCj4gUmV2
-aWV3ZWQtYnk6IFplbmdodWkgWXUgPHl1emVuZ2h1aUBodWF3ZWkuY29tPgpUaGFua3MhCgpFcmlj
-Cj4gCj4gCj4gVGhhbmtzCj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwprdm1hcm0gbWFpbGluZyBsaXN0Cmt2bWFybUBsaXN0cy5jcy5jb2x1bWJpYS5l
-ZHUKaHR0cHM6Ly9saXN0cy5jcy5jb2x1bWJpYS5lZHUvbWFpbG1hbi9saXN0aW5mby9rdm1hcm0K
+On 30.03.20 10:44, Shameerali Kolothum Thodi wrote:
+> 
+> 
+>> -----Original Message-----
+>> From: Michael S. Tsirkin [mailto:mst@redhat.com]
+>> Sent: 29 March 2020 11:46
+>> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+>> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
+>> eric.auger@redhat.com; imammedo@redhat.com; peter.maydell@linaro.org;
+>> shannon.zhaosl@gmail.com; xiaoguangrong.eric@gmail.com;
+>> david@redhat.com; xuwei (O) <xuwei5@huawei.com>; lersek@redhat.com;
+>> Linuxarm <linuxarm@huawei.com>
+>> Subject: Re: [PATCH v3 00/10] ARM virt: Add NVDIMM support
+>>
+>> On Wed, Mar 11, 2020 at 05:20:04PM +0000, Shameer Kolothum wrote:
+>>> This series adds NVDIMM support to arm/virt platform.
+>>
+>>
+>> So I'm still confused about whether there's a bugfix here
+>> that we need for 5.0. If yes pls post just that part
+>> with acks included and for-5.0 in the subject.
+> 
+> Ok. I can send the first 4 patches in this series as general fixes,
+> but as I mentioned earlier they only matter if we add nvdimm arm/virt
+> support. The only case I am not sure that may break x86 is the RSDP
+> table update and the resulting size inconsistency during migration 
+> discussed in patch #2.
+
+I think at least the first three patches fix real issues that are
+possible on x86.
+
+-- 
+Thanks,
+
+David / dhildenb
+

@@ -1,164 +1,157 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2497608lfi;
-        Mon, 30 Mar 2020 02:09:42 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuYygpOYaq4yYSNZntDUqxiEZUF19sKO+Yz7beznzTzMTzCTCe71/4qRsF741lSwvezt5Ay
-X-Received: by 2002:a05:6214:70e:: with SMTP id b14mr10500660qvz.246.1585559382420;
-        Mon, 30 Mar 2020 02:09:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585559382; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2499651lfi;
+        Mon, 30 Mar 2020 02:11:58 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsZs2V34TaQvLp6FiV+9ViPUH3d2aZCAMV8uLSDSWFlnfpkFuxkeNKA00YV0IUYWePftCAs
+X-Received: by 2002:a05:6830:1ae9:: with SMTP id c9mr7969132otd.298.1585559518220;
+        Mon, 30 Mar 2020 02:11:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585559518; cv=none;
         d=google.com; s=arc-20160816;
-        b=U7gyskwvE7SW56lXWJegKUhrO8rzjXJ8A8MDJdULud8/dR+ZpTMzVyhYHd9sC2veJJ
-         Kv2fhF2V7+qByuxLNWGeQFQwULGCwhEb8s7miVAJfZYecZ5Iln8lRHAOd3kUr7/iMC6m
-         sAY56RjPnn5PUMcZjdVB1DgXLhV6kg0p9piZAFfH5jTYTbNcdPk18wYHqwyJHH26ALTU
-         kLoU/JCOPIBH5IeteeUjwbZWCDOxWPNzyLYGXiV/NLfWcsW2mFFyqFRIGa+Iv4PGNUPA
-         5ew8EbmZJy9VyVT9N5Zk7srQaG99/OWqFJJ8G6C87vJkDqsVXMcGPfXaoDpuTDrVmbSF
-         I+3Q==
+        b=jHky808OpPXnYLMdJMVQ3PIuHAzD/6vjb+S55DDRyOM2HuEfoznpPF+yzIFoUcdYHD
+         yXZVOu+ZyHe0rGT1j96u4h660GlyQAAYBkGPrudU6+IX/AzJTfwMyHWqNzMz1e/KNwhm
+         j+MIsvYz8vELUhynp7rEmKVGS5dITDfc1MjvjHWR+fYV1NfTrUODAL3HQgvvKFg+FbEy
+         1wYqo64IGRBGaATqytGVwgXyeynO+ImskWWjdruT+LOYtGTpvjdwvNqn1Pm3O02PKkop
+         MpFfgaIPY5afQa+grHWL67q6+g8K3j/KcFFqBm399BFH7hS4cpgCf9Dm8C9vN2pVcbSJ
+         0hhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=o90aux+gJuYZZ35aBpKAauPQDQOQmxZUCFQGlqjLIsc=;
-        b=YQJczvH5oPUA2IXt8KNJenJIrLojzTbfeoTZSHgwJB7P+TcQ2QKDzF/Fp34ObDEfL0
-         9txmrdPMGmp8OF2H8+AvdebxVPcfS3Zv6+nIGm9eRyz8wvaFo2mq1LaAMdkw3Lcvh8IT
-         rFW+3NA7A1TZtev2PiMEPSfobeR62B0fQY9PPMFkGa9+5m9XlztSYwMg9PHuHuVeKFP+
-         O6veUr95wgqRV8wf55eFylzlJODyiV8SdZlNYf8bZXsj64WSO9iROtV4wr5nvD8szxJW
-         W184/6KOLEMj2fPovlOnsKq2AfMEnAAMBTCP3yag5qjlDMaqDxhhGp8NxxMgXiagj0F0
-         4XJw==
+        h=list-id:precedence:sender:content-transfer-encoding:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=m2DCNzbDRPMtY5AnjTRXp7pP6euGDlLTuk3BX6MYjYU=;
+        b=fKnkkTuWzWfeKL8DufGk3Ksg6ylRIFajY71IHwBpE4SN9ZsOKj8FPWiMNAQ94OluRK
+         Cs+CL5CQKPpY7H7oUT0ong5Zt7NI1VCf7c+edsubqHbeaRDBicTQdaJZNj5hC0tnDfcM
+         jrnx83QsNPKxxlCcCs2Xix7RSyAA+so+OjdiFNV+FOUq8hHSpEaGYE2hYEUjy2ofvB1T
+         vUfx2BQ2TFjxlf2xurbTjwKl0hdBV6CYz8OG/fJoO1Tz1pmTMPBijHhkGyXqxd9cfh0/
+         i8N2JIir/bFJBG1qhK8iFIz46iCKUd9HFN/lOqMV3uNx1mb8VBIW2D/oNzHRrJfnr23S
+         TC6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QrLcJzsw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j7si7821835qvx.78.2020.03.30.02.09.42
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Mar 2020 02:09:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XIgl9shC;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id l4si5849473otf.195.2020.03.30.02.11.58;
+        Mon, 30 Mar 2020 02:11:58 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QrLcJzsw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46806 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jIqQP-0003Hz-TT
-	for alex.bennee@linaro.org; Mon, 30 Mar 2020 05:09:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37263)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <changbin.du@gmail.com>) id 1jIqQD-0003DW-Jm
- for qemu-arm@nongnu.org; Mon, 30 Mar 2020 05:09:30 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <changbin.du@gmail.com>) id 1jIqQC-0007YE-Gz
- for qemu-arm@nongnu.org; Mon, 30 Mar 2020 05:09:29 -0400
-Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:37410)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <changbin.du@gmail.com>)
- id 1jIqQC-0007P2-Am; Mon, 30 Mar 2020 05:09:28 -0400
-Received: by mail-pj1-x1044.google.com with SMTP id o12so7058908pjs.2;
- Mon, 30 Mar 2020 02:09:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=o90aux+gJuYZZ35aBpKAauPQDQOQmxZUCFQGlqjLIsc=;
- b=QrLcJzsw1dwKUcw3n2EIP8FAS5disqHLjkybsna47wFVst4lQ9Qx/j2DNFn9Rx2CuX
- NlPiX0RtPCie7oP4ZSQngoC6duOW7MtDm7aIBscxKV+ZDdW1tXnC5+JnWertMIkICY94
- BfwCLLpf7RNuZoXLbREzmdOhFljI5xTGhgfTVS/R5cWVUfyktqtzqlDjQUt1dhxmmyMi
- BrTrnXiRvrbexSXtUyC2YytjJyqq6rchuQo2HZo/87gvPuueL+OUweeyoct1MuQiVER7
- dz6C6PNE6cSZBftzbAfNdI63kiQNfz3/qcUKBSWqc8J/Pxj5mBxfoL3aBw2MiSFYKoRq
- X2Pg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=o90aux+gJuYZZ35aBpKAauPQDQOQmxZUCFQGlqjLIsc=;
- b=FCedm1/q5qtyKF1IwKaeK2KI+3iFg4lId1UlIus2CQtNewmg9tVhH0KW60bjqixlpa
- E+JMEpX5cXfdTzNMbZM4lA0/BgkcTCUvrJK13BHpVIWFNfC5In6SoOurzZmkVgIe11KV
- D+okeoaDhDigxTpl40a9QlGaMSdjAeEsZpRglXjyu1M6+k603avLswVKy9P5FdvmUyIW
- i+Zg7CxmIl01+VYVQbINjBmPSfNUs1GyUutWDUdUpK6iCQxwk2ZfVy0HNVEgOw/XGzGk
- qevhhniA0Bvi8grJsI5gbovkWxQOnxuODSW2ws6PirZotMkelkrQFdkFSwKay8ZBkYJS
- p9XA==
-X-Gm-Message-State: ANhLgQ0LkHNxzDG6ojtKfWXAKE27l7+NEY61+mjeEz/4vXx1SfsPs1lp
- 9Z2UgfyxFWVoMTGN0VUY2Xc=
-X-Received: by 2002:a17:90a:8e84:: with SMTP id
- f4mr14347349pjo.72.1585559363826; 
- Mon, 30 Mar 2020 02:09:23 -0700 (PDT)
-Received: from mail.google.com ([149.248.10.52])
- by smtp.gmail.com with ESMTPSA id x11sm3791086pfp.204.2020.03.30.02.09.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Mar 2020 02:09:23 -0700 (PDT)
-Date: Mon, 30 Mar 2020 17:09:17 +0800
-From: Changbin Du <changbin.du@gmail.com>
-To: Changbin Du <changbin.du@gmail.com>
-Subject: Re: [PATCH] target/arm: fix incorrect current EL bug in aarch32
- exception emulation
-Message-ID: <20200330090917.kovajpwnb3mxbtc7@mail.google.com>
-References: <20200328140232.17278-1-changbin.du@gmail.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XIgl9shC;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1728129AbgC3JL4 (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Mon, 30 Mar 2020 05:11:56 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74]:38803 "EHLO
+        us-smtp-delivery-74.mimecast.com" rhost-flags-OK-OK-OK-OK)
+        by vger.kernel.org with ESMTP id S1728080AbgC3JLz (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Mon, 30 Mar 2020 05:11:55 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1585559514;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=m2DCNzbDRPMtY5AnjTRXp7pP6euGDlLTuk3BX6MYjYU=;
+        b=XIgl9shCPaavJGtc9Yp5n3i8xLVQzkkuC68CIqNvOcOuzdkz2/yC7awfYTAtN1VpaDvEOY
+        mgzLmHHbRphz4wHjXAUxjluKFscRFp2ZBm4UmMOx0EX5wEKosk8A14ukroAZxIk9fHgvdB
+        TM6+pUh2aw7oP3MtD8OUvntHT3dq8IU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-126-YUwdMTuWP9aQAZleaNZsXw-1; Mon, 30 Mar 2020 05:11:50 -0400
+X-MC-Unique: YUwdMTuWP9aQAZleaNZsXw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 23FFFDB83;
+        Mon, 30 Mar 2020 09:11:49 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.193.172])
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id 340D419925;
+        Mon, 30 Mar 2020 09:11:42 +0000 (UTC)
+Date:   Mon, 30 Mar 2020 11:11:39 +0200
+From:   Andrew Jones <drjones@redhat.com>
+To:     Auger Eric <eric.auger@redhat.com>
+Cc:     Zenghui Yu <yuzenghui@huawei.com>, peter.maydell@linaro.org,
+        kvm@vger.kernel.org, maz@kernel.org, qemu-devel@nongnu.org,
+        qemu-arm@nongnu.org, andre.przywara@arm.com, thuth@redhat.com,
+        alexandru.elisei@arm.com, kvmarm@lists.cs.columbia.edu,
+        eric.auger.pro@gmail.com
+Subject: Re: [kvm-unit-tests PATCH v7 06/13] arm/arm64: ITS: Introspection
+ tests
+Message-ID: <20200330091139.i2d6vv64f5diamlz@kamzik.brq.redhat.com>
+References: <20200320092428.20880-1-eric.auger@redhat.com>
+ <20200320092428.20880-7-eric.auger@redhat.com>
+ <947a79f5-1f79-532b-9ec7-6fd539ccd183@huawei.com>
+ <8878be7f-7653-b427-cd0d-722f82fb6b65@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20200328140232.17278-1-changbin.du@gmail.com>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::1044
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wqmkq7F5Lzek
+In-Reply-To: <8878be7f-7653-b427-cd0d-722f82fb6b65@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Content-Transfer-Encoding: quoted-printable
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: YtTItU6ZXT7c
 
-Hi, Peter,
-Could you take this fix as high priority? This bug has made qemu-system-arm
-broken.
+On Mon, Mar 30, 2020 at 10:46:57AM +0200, Auger Eric wrote:
+> Hi Zenghui,
+>=20
+> On 3/30/20 10:30 AM, Zenghui Yu wrote:
+> > Hi Eric,
+> >=20
+> > On 2020/3/20 17:24, Eric Auger wrote:
+> >> +static void its_cmd_queue_init(void)
+> >> +{
+> >> +=A0=A0=A0 unsigned long order =3D get_order(SZ_64K >> PAGE_SHIFT);
+> >> +=A0=A0=A0 u64 cbaser;
+> >> +
+> >> +=A0=A0=A0 its_data.cmd_base =3D (void *)virt_to_phys(alloc_pages(or=
+der));
+> >=20
+> > Shouldn't the cmd_base (and the cmd_write) be set as a GVA?
+> yes it should
 
-On Sat, Mar 28, 2020 at 10:02:32PM +0800, Changbin Du wrote:
-> The arm_current_el() should be invoked after mode switching. Otherwise, we
-> get a wrong current EL value, since current EL is also determined by
-> current mode.
-> 
-> Fixes: 4a2696c0d4 ("target/arm: Set PAN bit as required on exception entry")
-> Signed-off-by: Changbin Du <changbin.du@gmail.com>
-> ---
->  target/arm/helper.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index b7b6887241..163c91a1cc 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -9172,7 +9172,6 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
->  
->      /* Change the CPU state so as to actually take the exception. */
->      switch_mode(env, new_mode);
-> -    new_el = arm_current_el(env);
->  
->      /*
->       * For exceptions taken to AArch32 we must clear the SS bit in both
-> @@ -9184,6 +9183,10 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
->      env->condexec_bits = 0;
->      /* Switch to the new mode, and to the correct instruction set.  */
->      env->uncached_cpsr = (env->uncached_cpsr & ~CPSR_M) | new_mode;
-> +
-> +    /* This must be after mode switching. */
-> +    new_el = arm_current_el(env);
-> +
->      /* Set new mode endianness */
->      env->uncached_cpsr &= ~CPSR_E;
->      if (env->cp15.sctlr_el[new_el] & SCTLR_EE) {
-> -- 
-> 2.25.1
-> 
+If it's supposed to be a virtual address, when why do the virt_to_phys?
 
--- 
-Cheers,
-Changbin Du
+> >=20
+> > Otherwise I think we will end-up with memory corruption when writing
+> > the command queue.=A0 But it seems that everything just works fine ..=
+.
+> > So I'm really confused here :-/
+> I was told by Paolo that the VA/PA memory map is flat in kvmunit test.
+
+What does flat mean? kvm-unit-tests, at least arm/arm64, does prepare
+an identity map of all physical memory, which explains why the above
+is working. It's doing virt_to_phys(some-virt-addr), which gets a
+phys addr, but when the ITS uses it as a virt addr it works because
+we *also* have a virt addr =3D=3D phys addr mapping in the default page
+table, which is named "idmap" for good reason.
+
+I think it would be better to test with the non-identity mapped addresses
+though.
+
+Thanks,
+drew
+
+>=20
+> >=20
+> >> +
+> >> +=A0=A0=A0 cbaser =3D ((u64)its_data.cmd_base | (SZ_64K / SZ_4K - 1)=
+=A0=A0=A0 |
+> >> GITS_CBASER_VALID);
+> >> +
+> >> +=A0=A0=A0 writeq(cbaser, its_data.base + GITS_CBASER);
+> >> +
+> >> +=A0=A0=A0 its_data.cmd_write =3D its_data.cmd_base;
+> >> +=A0=A0=A0 writeq(0, its_data.base + GITS_CWRITER);
+> >> +}
+> >=20
+> > Otherwise this looks good,
+> > Reviewed-by: Zenghui Yu <yuzenghui@huawei.com>
+> Thanks!
+>=20
+> Eric
+> >=20
+> >=20
+> > Thanks
+> >=20
+>=20
+>=20

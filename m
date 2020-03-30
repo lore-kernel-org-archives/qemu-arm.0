@@ -1,78 +1,102 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2957222lfi;
-        Mon, 30 Mar 2020 09:51:55 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvv7xsnVPoQT1Jd6G3XmSkb4XcMv8CkwmrhTRDe2lNQ/elGmsnWcvYZMXX/Boo5HL6ihvhR
-X-Received: by 2002:a37:514:: with SMTP id 20mr876785qkf.420.1585587115522;
-        Mon, 30 Mar 2020 09:51:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585587115; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2974614lfi;
+        Mon, 30 Mar 2020 10:07:11 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvidB4swHOFsDXZnIvikkTL8AyVXLnICFlu/bXSzqPO+DfzzcFnVmps+rFPDQ+mGcacbpJo
+X-Received: by 2002:ac8:6c50:: with SMTP id z16mr1002974qtu.154.1585588030925;
+        Mon, 30 Mar 2020 10:07:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585588030; cv=none;
         d=google.com; s=arc-20160816;
-        b=TWwaNnX4HHFNrTXWVjzC2JQMIePD1j02yQMMMW0U76vRVPQLQqOHf2xwoAwF+jKYRf
-         eFSnWvCx7B4Y+hvSB9APcReRRCUykQ240nriv6Utmuaw/ap/t5sAFVFzQEQMi6akEUxb
-         jNfaZzZ3armZf17NnvbIQLn+BoROptIqMQtZZlsIWeF2vyhYmLSo/x7TOscr2/9S9Ska
-         J52KtI1zYQzyksf5rslxL5bmzJC+QRoqauGaO6M6WpkqK6U2ve529XxgMl/zZHKUOXio
-         cdksa5uzOV7zeR2J3xovGwK4z+Z5+X+7m0ZO4Og3DEicM19GvCnPRRJ56ouyngj0Mx13
-         9Yaw==
+        b=xXC6/N2D+N0+Nst6syJRTwQJbVo2+E9G63hU6+kG9lB/VFtZY6Q/cuTJinxyTm+s2W
+         G6h/SGlNJtDyO0i1ckMeRrtYoJPFvAf9l4VWEFnRTYCdBLwZaVglRCeOnxsUIjtkA66P
+         x8JGkiOad+jo6gjaTZNVTBl/CP+xcxBYvoBfqMnfyUIn+sPVqdpfIrL7z4EMTfmOCepi
+         5am1Eq+dAszHp6rPH+ZbfyJu5HgdlwPqOIQqAnpXUuCduQWW8UfSqNwQCkP58oox7Ku8
+         Qfn/ul/qj1Xi+e+EeZYr0r+XHjKR4Ozr3U9QOThM/zIXPq175Z/lQDqz7mRv7PHtxak3
+         YR/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from;
-        bh=iFUpAzeliQFHgW5uVlrZOFQswa0SqmFF2uG4ZCQ1Crs=;
-        b=IRXLzu0pbftIp+z86PIVjTQ6yoa1zbty0OGuoQxt4MSxmv+9/NiL7Bow5lxHLWXx5T
-         /eT9+cFhtI9xxJD8Kzu1NZKT875R7+pHOabLrN/i4GH/FHRhR/z83FZr6SfYp4Jcf9pi
-         gjb5s/Hb4gMlV30mSv2E1aXtCcaRokhx25lFwgyYbB5AJT31WSs59/AeWaBliRTiQQ8+
-         IqzHwqI7l0fKN3Qj+clK5JeloR56cjFk6kNXiATTRzLdPtS3Uj4/t0iOf2oxq3xDzf0H
-         VM69s2Ku0L4VEMgqujay+KKFsD5++AN+1BOMWE4zJwoDDJPBZM41oxRIogomqbzsBVAt
-         ZVhA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=mfnVD714sPEUmYFC+jPaoOlpvFWNuI8yQfnoLWvtCfw=;
+        b=nYOq4n6OFDTnJCQnmzzl+94l61WbiPtUY+x0c778Mqc+RlO5aApf39XAAKx1YzYNZF
+         0tk6lsJPKSLP0RW8rTwcVrzItsFbPF9XwcwgQIVmb6igiF98atJboQhwU10nus3w27e7
+         5Vg6O+MyykOUmr5F82/SFCXKpWW6t/V7PzNBsHGPDRdFDwZcUkt80YSncMvQE0/Rc/Ib
+         dQxLHMlpqHoi/F6UvL2wGlEE7UEvq5yULT+DsWW28JcYB+GnD1fGHOwP9CAv0+uOAfBC
+         G56dfNq6e04A6nF4M7nBzUxu2esiHwAsvu7W17ZdMW2bLZEOUmBaiIZRUreSve5Rbgxx
+         x/9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=E3c4FUrb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f24si9558689qtm.123.2020.03.30.09.51.55
+        by mx.google.com with ESMTPS id q9si8784154qkn.374.2020.03.30.10.07.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Mar 2020 09:51:55 -0700 (PDT)
+        Mon, 30 Mar 2020 10:07:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52983 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=E3c4FUrb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53294 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jIxdi-0003Dq-Tn
-	for alex.bennee@linaro.org; Mon, 30 Mar 2020 12:51:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53585)
+	id 1jIxsU-0000VT-8P
+	for alex.bennee@linaro.org; Mon, 30 Mar 2020 13:07:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56889)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jIxcJ-0001IZ-3R
- for qemu-arm@nongnu.org; Mon, 30 Mar 2020 12:50:28 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jIxsH-0000Fx-4o
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 13:06:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jIxcH-0004uz-OZ
- for qemu-arm@nongnu.org; Mon, 30 Mar 2020 12:50:27 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:33520 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jIxcH-0004tG-C7; Mon, 30 Mar 2020 12:50:25 -0400
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 13CBF8FF5964092C93BD;
- Tue, 31 Mar 2020 00:50:23 +0800 (CST)
-Received: from S00345302A-PC.china.huawei.com (10.47.27.100) by
- DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
- 14.3.487.0; Tue, 31 Mar 2020 00:50:15 +0800
-From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
- <imammedo@redhat.com>
-Subject: [PATCH for-5.0 3/3] exec: Fix for qemu_ram_resize() callback
-Date: Mon, 30 Mar 2020 17:49:09 +0100
-Message-ID: <20200330164909.28324-4-shameerali.kolothum.thodi@huawei.com>
-X-Mailer: git-send-email 2.12.0.windows.1
-In-Reply-To: <20200330164909.28324-1-shameerali.kolothum.thodi@huawei.com>
-References: <20200330164909.28324-1-shameerali.kolothum.thodi@huawei.com>
+ (envelope-from <peter.maydell@linaro.org>) id 1jIxsF-0001nZ-UZ
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 13:06:56 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:35200)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jIxsF-0001iq-Gz
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 13:06:55 -0400
+Received: by mail-wm1-x344.google.com with SMTP id i19so2483404wmb.0
+ for <qemu-arm@nongnu.org>; Mon, 30 Mar 2020 10:06:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=mfnVD714sPEUmYFC+jPaoOlpvFWNuI8yQfnoLWvtCfw=;
+ b=E3c4FUrbBuI/MXLpgfCXVYWmmmqP4DHNhJccTqwnbuMpX66Iyv04l77kxirnKAKQCc
+ 3aD6Nh9UfpHb+dKVylZVbCd5hQ3FIr8VIpzlLRpCEwr72VwcPy7BPGrJBK5TDerhrM/T
+ WrT1Ld/3EkIIinONtTtYRRerITgO7Z+fuGW/c6k7kyOWQOhWemAplSPPS98V7NDcz330
+ EFRjOTLLR9L6hf10L9gYXftEXnXKnM8XMBq8ok1MEm0NLipSGXxEDG+CgakYd/gNPtPQ
+ 4I4pL5FzCHxLJf+9lJcAqOG82YJmJ2uldsQ083UuOEOV++wiqAjoIBGFn1f+3scOcsVe
+ 0YYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=mfnVD714sPEUmYFC+jPaoOlpvFWNuI8yQfnoLWvtCfw=;
+ b=MGGg6wyQa2jUM2gEcdqQ2SBuwdQ3IRbWweT9FRmLM93YKSxhZ2/I+m57r7RakbmloK
+ kjhVYSUKI9adNmqEN9YIaau2u0OMb7/V5eGP9qn3Gos2BaaqcIKL+7DQ+pLnS8o2qEAT
+ ahZGd9drPoj6i9D6glF0K+SLO54P2D1dCUglkiUqS3JAJnoD+/vk1NsE+ZtITh+QTRVL
+ a/KUu/KeszVm3J7xsdWVCJ/QNLwn8kEcwZ/Y5Jg8QjN9+W0lK/l4UY8E1lFzN0DlWeB5
+ Uq8knpKc/D7Nv7mNaFYQI+9YvjFFcAQmAYmfRJZrGUvZ4CgSAS7owWwoTAdVQgKwQkFG
+ 7ihA==
+X-Gm-Message-State: ANhLgQ3C9mC2OLMsZCKh2ETvXE694QaNxFyu8sRqrUMhF5tTCb5zQh8P
+ qgbxTi5DJhDgQPBEGsbM+CikxyK6BBm5Dw==
+X-Received: by 2002:a1c:9658:: with SMTP id y85mr245194wmd.63.1585588013996;
+ Mon, 30 Mar 2020 10:06:53 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id 61sm24550033wrn.82.2020.03.30.10.06.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 30 Mar 2020 10:06:53 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH for-5.0] target/arm: PSTATE.PAN should not clear exec bits
+Date: Mon, 30 Mar 2020 18:06:51 +0100
+Message-Id: <20200330170651.20901-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.47.27.100]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.32
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::344
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -84,84 +108,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, david@redhat.com,
- mst@redhat.com, linuxarm@huawei.com, xuwei5@hisilicon.com,
- shannon.zhaosl@gmail.com, lersek@redhat.com
+Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v155kpYqX4b5
+X-TUID: cfz+9oCug5Ds
 
-From: David Hildenbrand <david@redhat.com>
+Our implementation of the PSTATE.PAN bit incorrectly cleared all
+access permission bits for privileged access to memory which is
+user-accessible.  It should only affect the privileged read and write
+permissions; execute permission is dealt with via XN/PXN instead.
 
-Summarizing the issue:
-1. Memory regions contain ram blocks with a different size,  if the
-   size is  not properly aligned. While memory regions can have an
-   unaligned size, ram blocks can't. This is true when creating
-   resizable memory region with  an unaligned size.
-2. When resizing a ram block/memory region, the size of the memory
-   region  is set to the aligned size. The callback is called with
-   the aligned size. The unaligned piece is lost.
-
-Because of the above, if ACPI blob length modifications happens
-after the initial virt_acpi_build() call, and the changed blob
-length is within the PAGE size boundary, then the revised size
-is not seen by the firmware on Guest reboot.
-
-Hence make sure callback is called if memory region size is changed,
-irrespective of aligned or not.
-
-Signed-off-by: David Hildenbrand <david@redhat.com>
-[Shameer: added commit log]
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Fixes: 81636b70c226dc27d7ebc8d
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-Please find previous discussion here,
-https://patchwork.kernel.org/patch/11432375/#23216751
+Compare the pseudocode AArch64.CheckPermission().
 ---
- exec.c | 16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
+ target/arm/helper.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/exec.c b/exec.c
-index de9d949902..2874bb5088 100644
---- a/exec.c
-+++ b/exec.c
-@@ -2074,11 +2074,23 @@ static int memory_try_enable_merging(void *addr, size_t len)
-  */
- int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp)
- {
-+    const ram_addr_t unaligned_size = newsize;
-+
-     assert(block);
- 
-     newsize = HOST_PAGE_ALIGN(newsize);
- 
-     if (block->used_length == newsize) {
-+        /*
-+         * We don't have to resize the ram block (which only knows aligned
-+         * sizes), however, we have to notify if the unaligned size changed.
-+         */
-+        if (unaligned_size != memory_region_size(block->mr)) {
-+            memory_region_set_size(block->mr, unaligned_size);
-+            if (block->resized) {
-+                block->resized(block->idstr, unaligned_size, block->host);
-+            }
-+        }
-         return 0;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 163c91a1ccd..ed7eb8ab54e 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -10025,9 +10025,11 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
+         prot_rw = user_rw;
+     } else {
+         if (user_rw && regime_is_pan(env, mmu_idx)) {
+-            return 0;
++            /* PAN forbids data accesses but doesn't affect insn fetch */
++            prot_rw = 0;
++        } else {
++            prot_rw = simple_ap_to_rw_prot_is_user(ap, false);
+         }
+-        prot_rw = simple_ap_to_rw_prot_is_user(ap, false);
      }
  
-@@ -2102,9 +2114,9 @@ int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp)
-     block->used_length = newsize;
-     cpu_physical_memory_set_dirty_range(block->offset, block->used_length,
-                                         DIRTY_CLIENTS_ALL);
--    memory_region_set_size(block->mr, newsize);
-+    memory_region_set_size(block->mr, unaligned_size);
-     if (block->resized) {
--        block->resized(block->idstr, newsize, block->host);
-+        block->resized(block->idstr, unaligned_size, block->host);
-     }
-     return 0;
- }
+     if (ns && arm_is_secure(env) && (env->cp15.scr_el3 & SCR_SIF)) {
 -- 
-2.17.1
-
+2.20.1
 

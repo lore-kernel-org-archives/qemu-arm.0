@@ -1,149 +1,105 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2479942lfi;
-        Mon, 30 Mar 2020 01:47:12 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtoKs4+ddZ4BxGzohQfH/miD/6wM0282wB+52PQYdyuSW6NobQVVnk+CvzTNiXcJkaDGXrZ
-X-Received: by 2002:ad4:4088:: with SMTP id l8mr10720500qvp.34.1585558032528;
-        Mon, 30 Mar 2020 01:47:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585558032; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2497608lfi;
+        Mon, 30 Mar 2020 02:09:42 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuYygpOYaq4yYSNZntDUqxiEZUF19sKO+Yz7beznzTzMTzCTCe71/4qRsF741lSwvezt5Ay
+X-Received: by 2002:a05:6214:70e:: with SMTP id b14mr10500660qvz.246.1585559382420;
+        Mon, 30 Mar 2020 02:09:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585559382; cv=none;
         d=google.com; s=arc-20160816;
-        b=jY7ibdCKUErAiXGriHwsVCxVjDmxsBLUgG3oC54cJI8wpcte4Pa+LPYopF6VKLa50B
-         2WRclnG9YPFtyP0wK7sMYY+6sCbWOXdI7hg8swK7hVwtLDuxsdfTxV62f8AUmiQariyd
-         774qnz4OVqfSZfJfNt/XdSwgv+kC415nU9H0mwhKafNWM4FmFVB501dNTnvMDWEDtWNg
-         MFyKsSoDzklb588k0AQHLh/KfiwFyn2zdVM65nxLAaAJmGx0Y6pZPzdy3DW4x5ObAc5C
-         o9rf+2oYw/sRC8iJPLCuPOUn4niaiLqcinw4jrqP6HbtHjBAlt+FhvtmTRPc6WKHyRZA
-         Bsew==
+        b=U7gyskwvE7SW56lXWJegKUhrO8rzjXJ8A8MDJdULud8/dR+ZpTMzVyhYHd9sC2veJJ
+         Kv2fhF2V7+qByuxLNWGeQFQwULGCwhEb8s7miVAJfZYecZ5Iln8lRHAOd3kUr7/iMC6m
+         sAY56RjPnn5PUMcZjdVB1DgXLhV6kg0p9piZAFfH5jTYTbNcdPk18wYHqwyJHH26ALTU
+         kLoU/JCOPIBH5IeteeUjwbZWCDOxWPNzyLYGXiV/NLfWcsW2mFFyqFRIGa+Iv4PGNUPA
+         5ew8EbmZJy9VyVT9N5Zk7srQaG99/OWqFJJ8G6C87vJkDqsVXMcGPfXaoDpuTDrVmbSF
+         I+3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:from:references:to:subject
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=/D4JiiqsAVALZBlz0e9Ky7Ip7ThnIPQrmipAY5GMNQI=;
-        b=D7xmffY6ei5WqXcT2mlszS8T8HW+AFEYJpdVEwbLXRub/iP0ssXfi85bHj7phlmfw4
-         wWeJhl7aLcT4MnZ8Bx//wyQbD5NJQvYEyYfmRyOxhSQ0pzJEIvejvSu+WCcTHonwkXcQ
-         EUXtKJmECKd/EITXLQFiMt8yuDDZMMSKtSHCK3Z9XxdhLfd+q8soYt4ll3qjGGQRdeT0
-         qzg2voFgNl+TPVcQaGTPh6IonzNjrC3uyxN4FTHt7eTPoODiM3AFqDc6wWw51WFbcTRT
-         PEAHwVBt2U970s+wQ2Cue7HeBnEOwk9a8NrbrIFYbmhW20V7ZH51rKH7Pq6nnmgZwaDm
-         DJUg==
+        bh=o90aux+gJuYZZ35aBpKAauPQDQOQmxZUCFQGlqjLIsc=;
+        b=YQJczvH5oPUA2IXt8KNJenJIrLojzTbfeoTZSHgwJB7P+TcQ2QKDzF/Fp34ObDEfL0
+         9txmrdPMGmp8OF2H8+AvdebxVPcfS3Zv6+nIGm9eRyz8wvaFo2mq1LaAMdkw3Lcvh8IT
+         rFW+3NA7A1TZtev2PiMEPSfobeR62B0fQY9PPMFkGa9+5m9XlztSYwMg9PHuHuVeKFP+
+         O6veUr95wgqRV8wf55eFylzlJODyiV8SdZlNYf8bZXsj64WSO9iROtV4wr5nvD8szxJW
+         W184/6KOLEMj2fPovlOnsKq2AfMEnAAMBTCP3yag5qjlDMaqDxhhGp8NxxMgXiagj0F0
+         4XJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Q9DzsEin;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QrLcJzsw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z14si7570396qvy.197.2020.03.30.01.47.12
+        by mx.google.com with ESMTPS id j7si7821835qvx.78.2020.03.30.02.09.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Mar 2020 01:47:12 -0700 (PDT)
+        Mon, 30 Mar 2020 02:09:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Q9DzsEin;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QrLcJzsw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46620 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:46806 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jIq4d-0001pj-Sd
-	for alex.bennee@linaro.org; Mon, 30 Mar 2020 04:47:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34387)
+	id 1jIqQP-0003Hz-TT
+	for alex.bennee@linaro.org; Mon, 30 Mar 2020 05:09:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37263)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <david@redhat.com>) id 1jIq4T-0001pK-KZ
- for qemu-arm@nongnu.org; Mon, 30 Mar 2020 04:47:02 -0400
+ (envelope-from <changbin.du@gmail.com>) id 1jIqQD-0003DW-Jm
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 05:09:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <david@redhat.com>) id 1jIq4R-0005GB-FQ
- for qemu-arm@nongnu.org; Mon, 30 Mar 2020 04:47:00 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74]:60655)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <david@redhat.com>) id 1jIq4R-0005F7-9W
- for qemu-arm@nongnu.org; Mon, 30 Mar 2020 04:46:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585558017;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=/D4JiiqsAVALZBlz0e9Ky7Ip7ThnIPQrmipAY5GMNQI=;
- b=Q9DzsEinzZ74YhZE3hBZh9yv6e6SRk9QQq2+7Fz0vAmxXAoG4m+yHKrCKTPlkE7mhhNy2F
- AW8h9tRCmDLlG757LEyITPRrBIeqjqz7Fmp64Yymw5L46Dae3u7UDSF/5Q0p5aNpQIM4zc
- yb9wg8gjCdq5+6GaloJCgiEq3aFm13A=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-199-rNIRm1RFNbaitAvROZkl-Q-1; Mon, 30 Mar 2020 04:46:53 -0400
-X-MC-Unique: rNIRm1RFNbaitAvROZkl-Q-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0626F1137844;
- Mon, 30 Mar 2020 08:46:52 +0000 (UTC)
-Received: from [10.36.113.227] (ovpn-113-227.ams2.redhat.com [10.36.113.227])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 21A2A5C1B5;
- Mon, 30 Mar 2020 08:46:43 +0000 (UTC)
-Subject: Re: [PATCH v3 00/10] ARM virt: Add NVDIMM support
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- "Michael S. Tsirkin" <mst@redhat.com>
-References: <20200311172014.33052-1-shameerali.kolothum.thodi@huawei.com>
- <20200329064435-mutt-send-email-mst@kernel.org>
- <feb17f74f9d547019d052032395b9667@huawei.com>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat GmbH
-Message-ID: <315945d9-d45f-349e-7b0c-946ca192a13e@redhat.com>
-Date: Mon, 30 Mar 2020 10:46:43 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (envelope-from <changbin.du@gmail.com>) id 1jIqQC-0007YE-Gz
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2020 05:09:29 -0400
+Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:37410)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <changbin.du@gmail.com>)
+ id 1jIqQC-0007P2-Am; Mon, 30 Mar 2020 05:09:28 -0400
+Received: by mail-pj1-x1044.google.com with SMTP id o12so7058908pjs.2;
+ Mon, 30 Mar 2020 02:09:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=o90aux+gJuYZZ35aBpKAauPQDQOQmxZUCFQGlqjLIsc=;
+ b=QrLcJzsw1dwKUcw3n2EIP8FAS5disqHLjkybsna47wFVst4lQ9Qx/j2DNFn9Rx2CuX
+ NlPiX0RtPCie7oP4ZSQngoC6duOW7MtDm7aIBscxKV+ZDdW1tXnC5+JnWertMIkICY94
+ BfwCLLpf7RNuZoXLbREzmdOhFljI5xTGhgfTVS/R5cWVUfyktqtzqlDjQUt1dhxmmyMi
+ BrTrnXiRvrbexSXtUyC2YytjJyqq6rchuQo2HZo/87gvPuueL+OUweeyoct1MuQiVER7
+ dz6C6PNE6cSZBftzbAfNdI63kiQNfz3/qcUKBSWqc8J/Pxj5mBxfoL3aBw2MiSFYKoRq
+ X2Pg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=o90aux+gJuYZZ35aBpKAauPQDQOQmxZUCFQGlqjLIsc=;
+ b=FCedm1/q5qtyKF1IwKaeK2KI+3iFg4lId1UlIus2CQtNewmg9tVhH0KW60bjqixlpa
+ E+JMEpX5cXfdTzNMbZM4lA0/BgkcTCUvrJK13BHpVIWFNfC5In6SoOurzZmkVgIe11KV
+ D+okeoaDhDigxTpl40a9QlGaMSdjAeEsZpRglXjyu1M6+k603avLswVKy9P5FdvmUyIW
+ i+Zg7CxmIl01+VYVQbINjBmPSfNUs1GyUutWDUdUpK6iCQxwk2ZfVy0HNVEgOw/XGzGk
+ qevhhniA0Bvi8grJsI5gbovkWxQOnxuODSW2ws6PirZotMkelkrQFdkFSwKay8ZBkYJS
+ p9XA==
+X-Gm-Message-State: ANhLgQ0LkHNxzDG6ojtKfWXAKE27l7+NEY61+mjeEz/4vXx1SfsPs1lp
+ 9Z2UgfyxFWVoMTGN0VUY2Xc=
+X-Received: by 2002:a17:90a:8e84:: with SMTP id
+ f4mr14347349pjo.72.1585559363826; 
+ Mon, 30 Mar 2020 02:09:23 -0700 (PDT)
+Received: from mail.google.com ([149.248.10.52])
+ by smtp.gmail.com with ESMTPSA id x11sm3791086pfp.204.2020.03.30.02.09.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 30 Mar 2020 02:09:23 -0700 (PDT)
+Date: Mon, 30 Mar 2020 17:09:17 +0800
+From: Changbin Du <changbin.du@gmail.com>
+To: Changbin Du <changbin.du@gmail.com>
+Subject: Re: [PATCH] target/arm: fix incorrect current EL bug in aarch32
+ exception emulation
+Message-ID: <20200330090917.kovajpwnb3mxbtc7@mail.google.com>
+References: <20200328140232.17278-1-changbin.du@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <feb17f74f9d547019d052032395b9667@huawei.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 216.205.24.74
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200328140232.17278-1-changbin.du@gmail.com>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::1044
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -155,52 +111,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- "imammedo@redhat.com" <imammedo@redhat.com>,
- "lersek@redhat.com" <lersek@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hwY4NgCi7GzH
+X-TUID: wqmkq7F5Lzek
 
-On 30.03.20 10:44, Shameerali Kolothum Thodi wrote:
-> 
-> 
->> -----Original Message-----
->> From: Michael S. Tsirkin [mailto:mst@redhat.com]
->> Sent: 29 March 2020 11:46
->> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
->> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
->> eric.auger@redhat.com; imammedo@redhat.com; peter.maydell@linaro.org;
->> shannon.zhaosl@gmail.com; xiaoguangrong.eric@gmail.com;
->> david@redhat.com; xuwei (O) <xuwei5@huawei.com>; lersek@redhat.com;
->> Linuxarm <linuxarm@huawei.com>
->> Subject: Re: [PATCH v3 00/10] ARM virt: Add NVDIMM support
->>
->> On Wed, Mar 11, 2020 at 05:20:04PM +0000, Shameer Kolothum wrote:
->>> This series adds NVDIMM support to arm/virt platform.
->>
->>
->> So I'm still confused about whether there's a bugfix here
->> that we need for 5.0. If yes pls post just that part
->> with acks included and for-5.0 in the subject.
-> 
-> Ok. I can send the first 4 patches in this series as general fixes,
-> but as I mentioned earlier they only matter if we add nvdimm arm/virt
-> support. The only case I am not sure that may break x86 is the RSDP
-> table update and the resulting size inconsistency during migration 
-> discussed in patch #2.
+Hi, Peter,
+Could you take this fix as high priority? This bug has made qemu-system-arm
+broken.
 
-I think at least the first three patches fix real issues that are
-possible on x86.
+On Sat, Mar 28, 2020 at 10:02:32PM +0800, Changbin Du wrote:
+> The arm_current_el() should be invoked after mode switching. Otherwise, we
+> get a wrong current EL value, since current EL is also determined by
+> current mode.
+> 
+> Fixes: 4a2696c0d4 ("target/arm: Set PAN bit as required on exception entry")
+> Signed-off-by: Changbin Du <changbin.du@gmail.com>
+> ---
+>  target/arm/helper.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index b7b6887241..163c91a1cc 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -9172,7 +9172,6 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
+>  
+>      /* Change the CPU state so as to actually take the exception. */
+>      switch_mode(env, new_mode);
+> -    new_el = arm_current_el(env);
+>  
+>      /*
+>       * For exceptions taken to AArch32 we must clear the SS bit in both
+> @@ -9184,6 +9183,10 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
+>      env->condexec_bits = 0;
+>      /* Switch to the new mode, and to the correct instruction set.  */
+>      env->uncached_cpsr = (env->uncached_cpsr & ~CPSR_M) | new_mode;
+> +
+> +    /* This must be after mode switching. */
+> +    new_el = arm_current_el(env);
+> +
+>      /* Set new mode endianness */
+>      env->uncached_cpsr &= ~CPSR_E;
+>      if (env->cp15.sctlr_el[new_el] & SCTLR_EE) {
+> -- 
+> 2.25.1
+> 
 
 -- 
-Thanks,
-
-David / dhildenb
-
+Cheers,
+Changbin Du

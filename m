@@ -1,101 +1,79 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp3811283lfi;
-        Tue, 31 Mar 2020 03:46:19 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuANLZEPAEkMKl/8zjH5BmSRp4gtguo/kuxO+5UVb5sF5Hr9Ldyao+4kt8Hyex+2jtMYna/
-X-Received: by 2002:ac8:5252:: with SMTP id y18mr4228005qtn.311.1585651579664;
-        Tue, 31 Mar 2020 03:46:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585651579; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp3905732lfi;
+        Tue, 31 Mar 2020 05:30:42 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt5BmSg/9mWpBGOSQqRe8JMYu6XN6tDHoft0gcKJdV9z2RKGBnKYwhzdM2lGH2k531t1Ncz
+X-Received: by 2002:ae9:e894:: with SMTP id a142mr4733049qkg.379.1585657842029;
+        Tue, 31 Mar 2020 05:30:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585657842; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wyh1/OsCkLjF8PHcryxJOVR9gO/W2vzkh56MeqdKQF7Tt/aTMMNu55aJ1LkMl1E/Ll
-         YlO/TNPRNbjBtWOXcPVFHeFYOhsf8JfV5o2nkrdgsT0z6urINuwkVRby2cL4+5/nM5Kl
-         0Pe5iUvOD18ormxopAg5arBgV2B+QRUW9aItq0z6CrdDOsziagDCEz/KPlUJ1/otx5c3
-         BeM1l/T538tmgg/wJ9UezmPsp0xj87auLUsVp5ViLiRjql25O5X83n8fdo8NY2vNhe61
-         Fr7zPRYBPUIG+Sqdjy9POS/dx7hO5ivIfDbtawVPxKBKPuh0pYJqwUU/9GJITBuNeeoq
-         QMpA==
+        b=E7fe+yk8PlOsTH2Wre3edpLnGF4pl9lDJvwWpqRp3F/77Dsv7H4xMf0Zb1P6RGuyLA
+         kn3902PNLfukVig2aYZ8fds1X+CXwCSg3AXMgiv6WKrwc3XOBQU92Iy/8fe89jUHA1Km
+         NBnRy3S1dqTAtdLo2zkQM17+TOVjE4KafnBBwh6mK0TiORB2r2xs1A6g6LOMx/qeTJJW
+         G6QlFmnbtzRyv1dmurhAEJM7rSl1d7UybhV9qnj4mGxIpxustQUj76b/F+d6P33II2ac
+         IzKvWTocKdzafZQOOVrcee9WdoXk9FoJO4sGox2CLS6aLPry/p0Dm1zwHUPciKieDk9U
+         CZWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:user-agent:in-reply-to:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=BjLdfkZky3cghMEqgCcq1KUPOCycddc4qMo0vtDVe14=;
-        b=kvI4pSAbn5xtPhKgwq41rxZv84FiOpEWb9e7p9+ezR8dcyKjWvuAVAJ6iencoru5iZ
-         RYI4jWW5UK1295+Mopi4qPWobIuHsFN1QEjrn+ckvuNmthRhNahtWH1wXBQB0a9H7tdn
-         rXfZ2HHnFaLfbh1GLxdT5971wNYUf5quScuDPEBvPEmEGBmxWnDBWULaaYoOFWlONV+v
-         n9D2iSc7rMjcrXaAQ//YHb3GHuom63U+5MpoKDSKg7rsbK3MK2TzP+/tqCOwihxGuW61
-         SCnfZFEipQBgQT/HVDKEauBvaHLUw+aKxO8uYbbCmr4CLu+TGUhYptKdAydc72SMkPHO
-         G2eg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=dcQY96yC2Hmnhsz+F0n5gaG7y34dqKC9gw0VPYbbaes=;
+        b=NtGjH+DNJlmVtymappFsZKsLc35GHPSDVZC5zG0L5xBJcAgbdfd6FT2CLlRujZhXsB
+         aN/1i6F3/lxTnzJTIW0g9xeyNyERIHe5CTLkBhsZsULx9pNYK1YxIVGHlCZwdkTXT/Y5
+         cBwheMpCbGUQhIX2oiZ7Lzw4FQYWKBBS7gpj1Pn6KqnB3BEfY/A5VFYxvOcfqQYTRFRg
+         yzdhPoBLAuARN/2E1tVMp6QEvgRVnxAZTsD/+ktF4+eBerUbnsNtFJSt9vMxl95NVRvn
+         gXiHVZ2NYbu9rRVFopRRGQTKpsFGOcohzgiWzPTFdZATBBVdnQ2b5ERCNFjOVb7D+wjj
+         aFGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cd77cSkr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bx9si9625412qvb.43.2020.03.31.03.46.19
+        by mx.google.com with ESMTPS id l11si9218352qve.30.2020.03.31.05.30.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Mar 2020 03:46:19 -0700 (PDT)
+        Tue, 31 Mar 2020 05:30:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cd77cSkr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35782 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37208 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jJEPS-00075W-Va
-	for alex.bennee@linaro.org; Tue, 31 Mar 2020 06:46:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52305)
+	id 1jJG2T-0008N1-Ef
+	for alex.bennee@linaro.org; Tue, 31 Mar 2020 08:30:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35768)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgilbert@redhat.com>) id 1jJEPH-00072b-B8
- for qemu-arm@nongnu.org; Tue, 31 Mar 2020 06:46:09 -0400
+ (envelope-from <zhukeqian1@huawei.com>) id 1jJG2H-0008Mr-4k
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2020 08:30:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgilbert@redhat.com>) id 1jJEPF-0001bZ-Dv
- for qemu-arm@nongnu.org; Tue, 31 Mar 2020 06:46:07 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:24201
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <zhukeqian1@huawei.com>) id 1jJG2F-0006e6-3c
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2020 08:30:28 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3220 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1jJEPF-0001bD-9L
- for qemu-arm@nongnu.org; Tue, 31 Mar 2020 06:46:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585651564;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BjLdfkZky3cghMEqgCcq1KUPOCycddc4qMo0vtDVe14=;
- b=cd77cSkr5Fm+PElebdO3FT/vjZEv8pNt37YWsM4dnEHcBA+OEKHzNmdaTdirxpF1iVjyh1
- RyS5TZNOVXr01Q1R7koEnATqmKr6P9/+nRGCG10poNzWUW2byXET7QslWr0XYXVvYLbFFF
- dWPxWGGla3EqM0jqOMAiLPr93LDcASI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-276-fP2F3uZvM0iR0ufYGC5AOA-1; Tue, 31 Mar 2020 06:45:59 -0400
-X-MC-Unique: fP2F3uZvM0iR0ufYGC5AOA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 53EFA108442F;
- Tue, 31 Mar 2020 10:45:58 +0000 (UTC)
-Received: from work-vm (ovpn-112-221.ams2.redhat.com [10.36.112.221])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6430ECDBC8;
- Tue, 31 Mar 2020 10:45:46 +0000 (UTC)
-Date: Tue, 31 Mar 2020 11:45:43 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Subject: Re: [PATCH for-5.0 2/3] fw_cfg: Migrate ACPI table mr sizes separately
-Message-ID: <20200331104543.GA2942@work-vm>
-References: <20200330164909.28324-1-shameerali.kolothum.thodi@huawei.com>
- <20200330164909.28324-3-shameerali.kolothum.thodi@huawei.com>
+ (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
+ id 1jJG2E-0006ZC-Dv; Tue, 31 Mar 2020 08:30:27 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id A1A2F735E375ED3CD107;
+ Tue, 31 Mar 2020 20:30:17 +0800 (CST)
+Received: from [127.0.0.1] (10.173.221.230) by DGGEMS411-HUB.china.huawei.com
+ (10.3.19.211) with Microsoft SMTP Server id 14.3.487.0;
+ Tue, 31 Mar 2020 20:30:08 +0800
+Subject: Re: [PATCH v2] migration/throttle: Add cpu-throttle-tailslow
+ migration parameter
+To: <qemu-devel@nongnu.org>
+References: <20200316042935.28306-1-zhukeqian1@huawei.com>
+From: zhukeqian <zhukeqian1@huawei.com>
+Message-ID: <2113f5ba-be62-1963-a89a-d3f19cc80ed9@huawei.com>
+Date: Tue, 31 Mar 2020 20:30:06 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-In-Reply-To: <20200330164909.28324-3-shameerali.kolothum.thodi@huawei.com>
-User-Agent: Mutt/1.13.3 (2020-01-12)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+In-Reply-To: <20200316042935.28306-1-zhukeqian1@huawei.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.173.221.230]
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+ [fuzzy]
+X-Received-From: 45.249.212.190
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,253 +85,275 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, david@redhat.com,
- shannon.zhaosl@gmail.com, mst@redhat.com, qemu-devel@nongnu.org,
- xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
- qemu-arm@nongnu.org, imammedo@redhat.com, lersek@redhat.com
+Cc: Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ wanghaibin.wang@huawei.com, Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LSwFa+Ux0gXa
+X-TUID: swaUNHNg1htQ
 
-* Shameer Kolothum (shameerali.kolothum.thodi@huawei.com) wrote:
-> Any sub-page size update to ACPI MRs will be lost during
-> migration, as we use aligned size in ram_load_precopy() ->
-> qemu_ram_resize() path. This will result in inconsistency in
-> FWCfgEntry sizes between source and destination. In order to avoid
-> this, save and restore them separately during migration.
->=20
-> Up until now, this problem may not be that relevant for x86 as both
-> ACPI table and Linker MRs gets padded and aligned. Also at present,
-> qemu_ram_resize() doesn't invoke callback to update FWCfgEntry for
-> unaligned size changes. But since we are going to fix the
-> qemu_ram_resize() in the subsequent patch, the issue may become
-> more serious especially for RSDP MR case.
->=20
-> Moreover, the issue will soon become prominent in arm/virt as well
-> where the MRs are not padded or aligned at all and eventually have
-> acpi table changes as part of future additions like NVDIMM hot-add
-> feature.
->=20
-> Suggested-by: David Hildenbrand <david@redhat.com>
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> Acked-by: David Hildenbrand <david@redhat.com>
+Friendly ping...
+
+Hi all,
+
+Could you please review this patch. Thanks very much.
+
+Thanks,
+Keqian
+
+On 2020/3/16 12:29, Keqian Zhu wrote:
+> At the tail stage of throttling, the Guest is very sensitive to
+> CPU percentage while the @cpu-throttle-increment is excessive
+> usually at tail stage.
+> 
+> If this parameter is true, we will compute the ideal CPU percentage
+> used by the Guest, which may exactly makes dirty rate to be dirty
+> rate threshold. Then we will choose a smaller throttle increment
+> between the one specified by @cpu-throttle-increment and the one
+> generated by ideal CPU percentage.
+> 
+> Therefore, it is compatible to traditional throttling, meanwhile
+> the throttle increment won't be excessive at tail stage. This may
+> make migration time longer, and is disabled by default.
+> 
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 > ---
-> Please find previous discussions here,
-> https://patchwork.kernel.org/patch/11339591/#23140343
+> Cc: Juan Quintela <quintela@redhat.com>
+> Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+> Cc: Eric Blake <eblake@redhat.com>
+> Cc: Markus Armbruster <armbru@redhat.com>
 > ---
->=20
->  hw/core/machine.c         |  1 +
->  hw/nvram/fw_cfg.c         | 86 ++++++++++++++++++++++++++++++++++++++-
->  include/hw/nvram/fw_cfg.h |  6 +++
->  3 files changed, 92 insertions(+), 1 deletion(-)
->=20
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index de0c425605..c1a444cb75 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -39,6 +39,7 @@ GlobalProperty hw_compat_4_2[] =3D {
->      { "usb-redir", "suppress-remote-wake", "off" },
->      { "qxl", "revision", "4" },
->      { "qxl-vga", "revision", "4" },
-> +    { "fw_cfg", "acpi-mr-restore", "false" },
->  };
->  const size_t hw_compat_4_2_len =3D G_N_ELEMENTS(hw_compat_4_2);
-> =20
-> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-> index 179b302f01..36d1e32f83 100644
-> --- a/hw/nvram/fw_cfg.c
-> +++ b/hw/nvram/fw_cfg.c
-> @@ -39,6 +39,7 @@
->  #include "qemu/config-file.h"
->  #include "qemu/cutils.h"
->  #include "qapi/error.h"
-> +#include "hw/acpi/aml-build.h"
-> =20
->  #define FW_CFG_FILE_SLOTS_DFLT 0x20
-> =20
-> @@ -610,6 +611,50 @@ bool fw_cfg_dma_enabled(void *opaque)
->      return s->dma_enabled;
->  }
-> =20
-> +static bool fw_cfg_acpi_mr_restore(void *opaque)
-> +{
-> +    FWCfgState *s =3D opaque;
-> +    return s->acpi_mr_restore;
-> +}
-> +
-> +static void fw_cfg_update_mr(FWCfgState *s, uint16_t key, size_t size)
-> +{
-> +    MemoryRegion *mr;
-> +    ram_addr_t offset;
-> +    int arch =3D !!(key & FW_CFG_ARCH_LOCAL);
-> +    void *ptr;
-> +
-> +    key &=3D FW_CFG_ENTRY_MASK;
-> +    assert(key < fw_cfg_max_entry(s));
-> +
-> +    ptr =3D s->entries[arch][key].data;
-> +    mr =3D memory_region_from_host(ptr, &offset);
-> +
-> +    memory_region_ram_resize(mr, size, &error_abort);
-> +}
-> +
-> +static int fw_cfg_acpi_mr_restore_post_load(void *opaque, int version_id=
-)
-> +{
-> +    FWCfgState *s =3D opaque;
-> +    int i, index;
-> +
-> +    assert(s->files);
-> +
-> +    index =3D be32_to_cpu(s->files->count);
-> +
-> +    for (i =3D 0; i < index; i++) {
-> +        if (!strcmp(s->files->f[i].name, ACPI_BUILD_TABLE_FILE)) {
-> +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i, s->table_mr_size)=
-;
-> +        } else if (!strcmp(s->files->f[i].name, ACPI_BUILD_LOADER_FILE))=
- {
-> +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i, s->linker_mr_size=
-);
-> +        } else if (!strcmp(s->files->f[i].name, ACPI_BUILD_RSDP_FILE)) {
-> +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i, s->rsdp_mr_size);
-> +        }
-> +    }
-> +
-> +    return 0;
-> +}
-> +
->  static const VMStateDescription vmstate_fw_cfg_dma =3D {
->      .name =3D "fw_cfg/dma",
->      .needed =3D fw_cfg_dma_enabled,
-> @@ -619,6 +664,20 @@ static const VMStateDescription vmstate_fw_cfg_dma =
-=3D {
->      },
->  };
-> =20
-> +static const VMStateDescription vmstate_fw_cfg_acpi_mr =3D {
-> +    .name =3D "fw_cfg/acpi_mr",
-> +    .version_id =3D 1,
-> +    .minimum_version_id =3D 1,
-> +    .needed =3D fw_cfg_acpi_mr_restore,
-> +    .post_load =3D fw_cfg_acpi_mr_restore_post_load,
-> +    .fields =3D (VMStateField[]) {
-> +        VMSTATE_UINT64(table_mr_size, FWCfgState),
-> +        VMSTATE_UINT64(linker_mr_size, FWCfgState),
-> +        VMSTATE_UINT64(rsdp_mr_size, FWCfgState),
-
-The checker found something I also spotted; which is you can't use a
-VMSTATE_UINT64 against a field that is size_t - it's not portable;
-I suggest the easiest fix is to make your fields in fw_cfg.h uint64's.
-
-Dave
-
-> +        VMSTATE_END_OF_LIST()
-> +    },
-> +};
-> +
->  static const VMStateDescription vmstate_fw_cfg =3D {
->      .name =3D "fw_cfg",
->      .version_id =3D 2,
-> @@ -631,6 +690,7 @@ static const VMStateDescription vmstate_fw_cfg =3D {
->      },
->      .subsections =3D (const VMStateDescription*[]) {
->          &vmstate_fw_cfg_dma,
-> +        &vmstate_fw_cfg_acpi_mr,
->          NULL,
+>  migration/migration.c | 13 ++++++++++++
+>  migration/ram.c       | 25 +++++++++++++++++-----
+>  monitor/hmp-cmds.c    |  8 ++++++++
+>  qapi/migration.json   | 48 +++++++++++++++++++++++++++++++++++++++++++
+>  4 files changed, 89 insertions(+), 5 deletions(-)
+> 
+> diff --git a/migration/migration.c b/migration/migration.c
+> index c1d88ace7f..cc157cbf90 100644
+> --- a/migration/migration.c
+> +++ b/migration/migration.c
+> @@ -785,6 +785,8 @@ MigrationParameters *qmp_query_migrate_parameters(Error **errp)
+>      params->cpu_throttle_initial = s->parameters.cpu_throttle_initial;
+>      params->has_cpu_throttle_increment = true;
+>      params->cpu_throttle_increment = s->parameters.cpu_throttle_increment;
+> +    params->has_cpu_throttle_tailslow = true;
+> +    params->cpu_throttle_tailslow = s->parameters.cpu_throttle_tailslow;
+>      params->has_tls_creds = true;
+>      params->tls_creds = g_strdup(s->parameters.tls_creds);
+>      params->has_tls_hostname = true;
+> @@ -1323,6 +1325,10 @@ static void migrate_params_test_apply(MigrateSetParameters *params,
+>          dest->cpu_throttle_increment = params->cpu_throttle_increment;
 >      }
->  };
-> @@ -815,6 +875,23 @@ static struct {
->  #define FW_CFG_ORDER_OVERRIDE_LAST 200
->  };
-> =20
-> +/*
-> + * Any sub-page size update to these table MRs will be lost during migra=
-tion,
-> + * as we use aligned size in ram_load_precopy() -> qemu_ram_resize() pat=
-h.
-> + * In order to avoid the inconsistency in sizes save them seperately and
-> + * migrate over in vmstate post_load().
-> + */
-> +static void fw_cfg_acpi_mr_save(FWCfgState *s, const char *filename, siz=
-e_t len)
-> +{
-> +    if (!strcmp(filename, ACPI_BUILD_TABLE_FILE)) {
-> +        s->table_mr_size =3D len;
-> +    } else if (!strcmp(filename, ACPI_BUILD_LOADER_FILE)) {
-> +        s->linker_mr_size =3D len;
-> +    } else if (!strcmp(filename, ACPI_BUILD_RSDP_FILE)) {
-> +        s->rsdp_mr_size =3D len;
+>  
+> +    if (params->has_cpu_throttle_tailslow) {
+> +        dest->cpu_throttle_tailslow = params->cpu_throttle_tailslow;
 > +    }
-> +}
 > +
->  static int get_fw_cfg_order(FWCfgState *s, const char *name)
+>      if (params->has_tls_creds) {
+>          assert(params->tls_creds->type == QTYPE_QSTRING);
+>          dest->tls_creds = g_strdup(params->tls_creds->u.s);
+> @@ -1411,6 +1417,10 @@ static void migrate_params_apply(MigrateSetParameters *params, Error **errp)
+>          s->parameters.cpu_throttle_increment = params->cpu_throttle_increment;
+>      }
+>  
+> +    if (params->has_cpu_throttle_tailslow) {
+> +        s->parameters.cpu_throttle_tailslow = params->cpu_throttle_tailslow;
+> +    }
+> +
+>      if (params->has_tls_creds) {
+>          g_free(s->parameters.tls_creds);
+>          assert(params->tls_creds->type == QTYPE_QSTRING);
+> @@ -3588,6 +3598,8 @@ static Property migration_properties[] = {
+>      DEFINE_PROP_UINT8("x-cpu-throttle-increment", MigrationState,
+>                        parameters.cpu_throttle_increment,
+>                        DEFAULT_MIGRATE_CPU_THROTTLE_INCREMENT),
+> +    DEFINE_PROP_BOOL("x-cpu-throttle-tailslow", MigrationState,
+> +                      parameters.cpu_throttle_tailslow, false),
+>      DEFINE_PROP_SIZE("x-max-bandwidth", MigrationState,
+>                        parameters.max_bandwidth, MAX_THROTTLE),
+>      DEFINE_PROP_UINT64("x-downtime-limit", MigrationState,
+> @@ -3694,6 +3706,7 @@ static void migration_instance_init(Object *obj)
+>      params->has_throttle_trigger_threshold = true;
+>      params->has_cpu_throttle_initial = true;
+>      params->has_cpu_throttle_increment = true;
+> +    params->has_cpu_throttle_tailslow = true;
+>      params->has_max_bandwidth = true;
+>      params->has_downtime_limit = true;
+>      params->has_x_checkpoint_delay = true;
+> diff --git a/migration/ram.c b/migration/ram.c
+> index c12cfdbe26..4b74461306 100644
+> --- a/migration/ram.c
+> +++ b/migration/ram.c
+> @@ -616,20 +616,34 @@ static size_t save_page_header(RAMState *rs, QEMUFile *f,  RAMBlock *block,
+>   * able to complete migration. Some workloads dirty memory way too
+>   * fast and will not effectively converge, even with auto-converge.
+>   */
+> -static void mig_throttle_guest_down(void)
+> +static void mig_throttle_guest_down(uint64_t bytes_dirty_period,
+> +                                    uint64_t bytes_dirty_threshold)
 >  {
->      int i;
-> @@ -914,6 +991,7 @@ void fw_cfg_add_file_callback(FWCfgState *s,  const c=
-har *filename,
->      trace_fw_cfg_add_file(s, index, s->files->f[index].name, len);
-> =20
->      s->files->count =3D cpu_to_be32(count+1);
-> +    fw_cfg_acpi_mr_save(s, filename, len);
+>      MigrationState *s = migrate_get_current();
+>      uint64_t pct_initial = s->parameters.cpu_throttle_initial;
+> -    uint64_t pct_icrement = s->parameters.cpu_throttle_increment;
+> +    uint64_t pct_increment = s->parameters.cpu_throttle_increment;
+> +    bool pct_tailslow = s->parameters.cpu_throttle_tailslow;
+>      int pct_max = s->parameters.max_cpu_throttle;
+>  
+> +    uint64_t throttle_now = cpu_throttle_get_percentage();
+> +    uint64_t cpu_now, cpu_ideal, throttle_inc;
+> +
+>      /* We have not started throttling yet. Let's start it. */
+>      if (!cpu_throttle_active()) {
+>          cpu_throttle_set(pct_initial);
+>      } else {
+>          /* Throttling already on, just increase the rate */
+> -        cpu_throttle_set(MIN(cpu_throttle_get_percentage() + pct_icrement,
+> -                         pct_max));
+> +        if (!pct_tailslow) {
+> +            throttle_inc = pct_increment;
+> +        } else {
+> +            /* Compute the ideal CPU percentage used by Guest, which
+> +             * may makes dirty rate to be dirty rate threshold. */
+> +            cpu_now = 100 - throttle_now;
+> +            cpu_ideal = cpu_now * (bytes_dirty_threshold * 1.0 /
+> +                        bytes_dirty_period);
+> +            throttle_inc = MIN(cpu_now - cpu_ideal, pct_increment);
+> +        }
+> +        cpu_throttle_set(MIN(throttle_now + throttle_inc, pct_max));
+>      }
 >  }
-> =20
->  void fw_cfg_add_file(FWCfgState *s,  const char *filename,
-> @@ -937,6 +1015,7 @@ void *fw_cfg_modify_file(FWCfgState *s, const char *=
-filename,
->              ptr =3D fw_cfg_modify_bytes_read(s, FW_CFG_FILE_FIRST + i,
->                                             data, len);
->              s->files->f[i].size   =3D cpu_to_be32(len);
-> +            fw_cfg_acpi_mr_save(s, filename, len);
->              return ptr;
+>  
+> @@ -919,7 +933,8 @@ static void migration_trigger_throttle(RAMState *rs)
+>              (++rs->dirty_rate_high_cnt >= 2)) {
+>              trace_migration_throttle();
+>              rs->dirty_rate_high_cnt = 0;
+> -            mig_throttle_guest_down();
+> +            mig_throttle_guest_down(bytes_dirty_period,
+> +                                    bytes_dirty_threshold);
 >          }
 >      }
-> @@ -973,7 +1052,10 @@ static void fw_cfg_machine_ready(struct Notifier *n=
-, void *data)
->      qemu_register_reset(fw_cfg_machine_reset, s);
 >  }
-> =20
-> -
-> +static Property fw_cfg_properties[] =3D {
-> +    DEFINE_PROP_BOOL("acpi-mr-restore", FWCfgState, acpi_mr_restore, tru=
-e),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-> =20
->  static void fw_cfg_common_realize(DeviceState *dev, Error **errp)
->  {
-> @@ -1097,6 +1179,8 @@ static void fw_cfg_class_init(ObjectClass *klass, v=
-oid *data)
-> =20
->      dc->reset =3D fw_cfg_reset;
->      dc->vmsd =3D &vmstate_fw_cfg;
-> +
-> +    device_class_set_props(dc, fw_cfg_properties);
->  }
-> =20
->  static const TypeInfo fw_cfg_info =3D {
-> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
-> index b5291eefad..457fee7425 100644
-> --- a/include/hw/nvram/fw_cfg.h
-> +++ b/include/hw/nvram/fw_cfg.h
-> @@ -53,6 +53,12 @@ struct FWCfgState {
->      dma_addr_t dma_addr;
->      AddressSpace *dma_as;
->      MemoryRegion dma_iomem;
-> +
-> +    /* restore during migration */
-> +    bool acpi_mr_restore;
-> +    size_t table_mr_size;
-> +    size_t linker_mr_size;
-> +    size_t rsdp_mr_size;
->  };
-> =20
->  struct FWCfgIoState {
-> --=20
-> 2.17.1
->=20
->=20
->=20
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+> diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
+> index 58724031ea..29878632c8 100644
+> --- a/monitor/hmp-cmds.c
+> +++ b/monitor/hmp-cmds.c
+> @@ -419,6 +419,10 @@ void hmp_info_migrate_parameters(Monitor *mon, const QDict *qdict)
+>          monitor_printf(mon, "%s: %u\n",
+>              MigrationParameter_str(MIGRATION_PARAMETER_CPU_THROTTLE_INCREMENT),
+>              params->cpu_throttle_increment);
+> +        assert(params->has_cpu_throttle_tailslow);
+> +        monitor_printf(mon, "%s: %s\n",
+> +            MigrationParameter_str(MIGRATION_PARAMETER_CPU_THROTTLE_TAILSLOW),
+> +            params->cpu_throttle_tailslow ? "on" : "off");
+>          assert(params->has_max_cpu_throttle);
+>          monitor_printf(mon, "%s: %u\n",
+>              MigrationParameter_str(MIGRATION_PARAMETER_MAX_CPU_THROTTLE),
+> @@ -1269,6 +1273,10 @@ void hmp_migrate_set_parameter(Monitor *mon, const QDict *qdict)
+>          p->has_cpu_throttle_increment = true;
+>          visit_type_int(v, param, &p->cpu_throttle_increment, &err);
+>          break;
+> +    case MIGRATION_PARAMETER_CPU_THROTTLE_TAILSLOW:
+> +        p->has_cpu_throttle_tailslow = true;
+> +        visit_type_bool(v, param, &p->cpu_throttle_tailslow, &err);
+> +        break;
+>      case MIGRATION_PARAMETER_MAX_CPU_THROTTLE:
+>          p->has_max_cpu_throttle = true;
+>          visit_type_int(v, param, &p->max_cpu_throttle, &err);
+> diff --git a/qapi/migration.json b/qapi/migration.json
+> index 0d1c0712ca..4bf82b74d1 100644
+> --- a/qapi/migration.json
+> +++ b/qapi/migration.json
+> @@ -552,6 +552,21 @@
+>  #                          auto-converge detects that migration is not making
+>  #                          progress. The default value is 10. (Since 2.7)
+>  #
+> +# @cpu-throttle-tailslow: Make CPU throttling slower at tail stage
+> +#                         At the tail stage of throttling, the Guest is very
+> +#                         sensitive to CPU percentage while the @cpu-throttle
+> +#                         -increment is excessive usually at tail stage.
+> +#                         If this parameter is true, we will compute the ideal
+> +#                         CPU percentage used by the Guest, which may exactly
+> +#                         makes dirty rate to be dirty rate threshold. Then we
+> +#                         will choose a smaller throttle increment between the
+> +#                         one specified by @cpu-throttle-increment and the one
+> +#                         generated by ideal CPU percentage.
+> +#                         Therefore, it is compatible to traditional throttling,
+> +#                         meanwhile the throttle increment won't be excessive
+> +#                         at tail stage.
+> +#                         The default value is false. (Since 5.0)
+> +#
+>  # @tls-creds: ID of the 'tls-creds' object that provides credentials for
+>  #             establishing a TLS connection over the migration data channel.
+>  #             On the outgoing side of the migration, the credentials must
+> @@ -631,6 +646,7 @@
+>             'compress-level', 'compress-threads', 'decompress-threads',
+>             'compress-wait-thread', 'throttle-trigger-threshold',
+>             'cpu-throttle-initial', 'cpu-throttle-increment',
+> +           'cpu-throttle-tailslow',
+>             'tls-creds', 'tls-hostname', 'tls-authz', 'max-bandwidth',
+>             'downtime-limit', 'x-checkpoint-delay', 'block-incremental',
+>             'multifd-channels',
+> @@ -676,6 +692,21 @@
+>  #                          auto-converge detects that migration is not making
+>  #                          progress. The default value is 10. (Since 2.7)
+>  #
+> +# @cpu-throttle-tailslow: Make CPU throttling slower at tail stage
+> +#                         At the tail stage of throttling, the Guest is very
+> +#                         sensitive to CPU percentage while the @cpu-throttle
+> +#                         -increment is excessive usually at tail stage.
+> +#                         If this parameter is true, we will compute the ideal
+> +#                         CPU percentage used by the Guest, which may exactly
+> +#                         makes dirty rate to be dirty rate threshold. Then we
+> +#                         will choose a smaller throttle increment between the
+> +#                         one specified by @cpu-throttle-increment and the one
+> +#                         generated by ideal CPU percentage.
+> +#                         Therefore, it is compatible to traditional throttling,
+> +#                         meanwhile the throttle increment won't be excessive
+> +#                         at tail stage.
+> +#                         The default value is false. (Since 5.0)
+> +#
+>  # @tls-creds: ID of the 'tls-creds' object that provides credentials
+>  #             for establishing a TLS connection over the migration data
+>  #             channel. On the outgoing side of the migration, the credentials
+> @@ -763,6 +794,7 @@
+>              '*throttle-trigger-threshold': 'int',
+>              '*cpu-throttle-initial': 'int',
+>              '*cpu-throttle-increment': 'int',
+> +            '*cpu-throttle-tailslow': 'bool',
+>              '*tls-creds': 'StrOrNull',
+>              '*tls-hostname': 'StrOrNull',
+>              '*tls-authz': 'StrOrNull',
+> @@ -834,6 +866,21 @@
+>  #                          auto-converge detects that migration is not making
+>  #                          progress. (Since 2.7)
+>  #
+> +# @cpu-throttle-tailslow: Make CPU throttling slower at tail stage
+> +#                         At the tail stage of throttling, the Guest is very
+> +#                         sensitive to CPU percentage while the @cpu-throttle
+> +#                         -increment is excessive usually at tail stage.
+> +#                         If this parameter is true, we will compute the ideal
+> +#                         CPU percentage used by the Guest, which may exactly
+> +#                         makes dirty rate to be dirty rate threshold. Then we
+> +#                         will choose a smaller throttle increment between the
+> +#                         one specified by @cpu-throttle-increment and the one
+> +#                         generated by ideal CPU percentage.
+> +#                         Therefore, it is compatible to traditional throttling,
+> +#                         meanwhile the throttle increment won't be excessive
+> +#                         at tail stage.
+> +#                         The default value is false. (Since 5.0)
+> +#
+>  # @tls-creds: ID of the 'tls-creds' object that provides credentials
+>  #             for establishing a TLS connection over the migration data
+>  #             channel. On the outgoing side of the migration, the credentials
+> @@ -921,6 +968,7 @@
+>              '*throttle-trigger-threshold': 'uint8',
+>              '*cpu-throttle-initial': 'uint8',
+>              '*cpu-throttle-increment': 'uint8',
+> +            '*cpu-throttle-tailslow': 'bool',
+>              '*tls-creds': 'str',
+>              '*tls-hostname': 'str',
+>              '*tls-authz': 'str',
+> 
 

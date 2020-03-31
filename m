@@ -1,151 +1,339 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4040663lfi;
-        Tue, 31 Mar 2020 07:34:22 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuSNSOZxoflQbzHv5pmdpw4GAuPWAusNDF6PVV+z9rhroW2q3twU75liir/6ea9H25zENeI
-X-Received: by 2002:a37:4f83:: with SMTP id d125mr5429561qkb.296.1585665261490;
-        Tue, 31 Mar 2020 07:34:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585665261; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4062210lfi;
+        Tue, 31 Mar 2020 07:54:35 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuuC+uACbiG7J4in1GHO4mlcTZWFwAcWluvFFuMsKtKDSM5hovScv8nDpbx1VBPpPGtNj/w
+X-Received: by 2002:a05:6214:12c7:: with SMTP id s7mr17285871qvv.218.1585666475141;
+        Tue, 31 Mar 2020 07:54:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585666475; cv=none;
         d=google.com; s=arc-20160816;
-        b=h6/94ZvHZsgd6B6TWlN9w/aZxpcAqdCFrujkMni69E3BwassjMuhhGyn8THVHE9nZy
-         +uyp2fI5Wt+mmg6gr7Zvcnj4k6Ue32noEcGl3gaA+M0eUkD+CCLpVCqAakT4UWR4jal1
-         Y606ZA4Yo8jJkCweGRQd98X94glxed7KvXkEhCBxYu8xBF7FlZOapyj1ME2yS0gntBsQ
-         yqMOkTN6XTOGY3OvZz1inMXzwvTBL+7Mh1Eic8lF1f0CoMjnm2gBGwezAznrvzF1hzxv
-         yA7R2Wi3rzCq1PryfTf0aZWa0DiD4q+MXWbm/z/TAyGhS84f8SKk7gCkDRvZ+fxIynZy
-         u6EA==
+        b=InJXyZJ9bvu1v0h0eXRAeboO0eN4zw/V/sErd7W1rAbA21ANE94DXcDMdp+NIQeINT
+         nsYfM3UxZ7cfQ1B9c9fEP4mhw4LsK4fSLQS1icipZ0156irJ5fy0j/sqD5kto5MHGL0M
+         YaqoAliNIjpeJdGPJFesSgLhPnjgt+aZpSIUbTKit6xv+OKnd5Xk+Ry5fv0QpuQbtHFR
+         ZolsmVnzyQxKojiRIoHL2u3qioic2MvvbO69J26X0aYBbkcYXxJZsXFrFSRojGB/NrEd
+         43KtvJ7QgPJh4+AKQ6yysjZB5rhdIcx7k58EZafHp12iGkRftLP9l5o6aaPvUhrY0bOH
+         NR2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=I8acRX+3Ax0e+6wpNxKGO9kRpEiLoBvALCJRagPszfg=;
-        b=OGCknw1/fDu70htW/R+LIze43xGFlmRYc/0c8ye4FHDb63ftdEIT9bol8zHyzD9JOw
-         3+Tz6/iEuHLRyFoNZrGKOCrU8bUwdSPNxZu5+2SchSW3gshS0x1/ipaNi0tPyLv50IBu
-         5nO4GGBcmmpEv/i8LbEy+EE1/5Ve3EL6fn/7gCZtNj9FK1bfR74ihhN3GcEb2wDdHeJg
-         IiijpAAwLBuPraKTJjtSGSf2WKRgN1ZH2S5GRYDfWax2tAyMZnNp8ZTTePiM4l5vl27c
-         5fz4EGtvmz1f8t+XGcdYxb1HGr0PHz1EgWwNgpt/bmiaOo3GddRp7te4rJci0ZUdAc+L
-         S82Q==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=JtuxwyQgBtohAdKqnkXNluLTX8glKHTHViD3dbMoMJI=;
+        b=pZLbcbOaJBTkJEz13MWnyF+RzjxyIvvwGDZLiANaSuZSuYtEKptbB+xzvFRkq3eALU
+         k9M4Dto/oojIGVoHHX430CeZ4Z9Fryuq4i3CS9ft42GyFBebigxfTUPAtThBdqcgUOUe
+         qilg9Jfb7nS1v5Kj9nM+qqP3hSZIcZukNxNAZAse/+Re4+XWcuXwIUHrst148o/qlIog
+         ymyjs4sYVIzZA7PLSD0dcszZNrh6TAegilCSTYE5k416Tr2OFpE6ADFUI6i0vn5NnQMO
+         OQFXzauI69kkTxS5P2PCEHK/AsvotFq3f49RU7Ka034oCbQpMDhH0ulAv7iWuDY9uGUH
+         b93Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GqZdBxms;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AqNKaODe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p58si9780313qtk.18.2020.03.31.07.34.21
+        by mx.google.com with ESMTPS id bn19si9678604qvb.218.2020.03.31.07.54.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Mar 2020 07:34:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 31 Mar 2020 07:54:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GqZdBxms;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39052 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AqNKaODe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39464 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jJHy8-0006II-Sd
-	for alex.bennee@linaro.org; Tue, 31 Mar 2020 10:34:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51888)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jJIHi-0003KS-IR
+	for alex.bennee@linaro.org; Tue, 31 Mar 2020 10:54:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55186)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jJHy1-0006G9-52
- for qemu-arm@nongnu.org; Tue, 31 Mar 2020 10:34:14 -0400
+ (envelope-from <imammedo@redhat.com>) id 1jJIEK-0006G4-U2
+ for qemu-devel@nongnu.org; Tue, 31 Mar 2020 10:51:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jJHxz-0008W1-Tt
- for qemu-arm@nongnu.org; Tue, 31 Mar 2020 10:34:13 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:37823)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jJHxz-0008Va-Oa
- for qemu-arm@nongnu.org; Tue, 31 Mar 2020 10:34:11 -0400
-Received: by mail-wr1-x430.google.com with SMTP id w10so26351847wrm.4
- for <qemu-arm@nongnu.org>; Tue, 31 Mar 2020 07:34:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=I8acRX+3Ax0e+6wpNxKGO9kRpEiLoBvALCJRagPszfg=;
- b=GqZdBxmsUuWE4nrTaxGY8OIZUcimR9abzaMy1wp1FZ76KwBcDmh3iaihwAJUfRIbom
- HkpJJOap09mnGxl+d/tPgXZ9fbpOvt7Ij+NT0FZVObMDg4c/fFz5/8H6kwIszWgPCMjf
- ZrZFuXgunOx+gzHNrzQfteKJk0fo3nt7RPeopYRV40pGl4dQQKD8ZO/0I2SEUVT0j1lT
- Ff8MK/7JjLpJfme7zTb1wUwKD3XEKZwY9MiKOJyjS95emt3E2d26VuiwABhrEc/adwra
- nDPDyPWNKs5IxrQLsvZ0i/r1ulvGsVBdUDNFSbFGg0JHZrwjAqeacOnv9Y1YXUjoZ6rW
- QiqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=I8acRX+3Ax0e+6wpNxKGO9kRpEiLoBvALCJRagPszfg=;
- b=mcPm/Len9jpPy0RrqBwJRtKDkQaNYBf4olSCS5k28n+7iYlLWWsoCPT8PwI7r7aDna
- 8sQ0Gcr+IOtQwXWSdRoNG0YNypwPe2S50bYq95Zy7sEowdAEE/+0xqLdUVoB41ZmykDj
- 4ihKEJpabNZCwjw8sR1j+6Q/pSZ07sQTIFuguq1DPTFj/l7X6U1ToXTSSYjsWCR0Exv1
- IdZ8VEUfjCODqcspFOEqB1weAjqOtzYY4bNXxVMKAp3cvr4AfGhIQESE5SEaw0ib3hHa
- OQwJSvCb4XZ2DDB5crESY1s0n7Js//52A//2js/XnUdsriX8gj0lUjV9s49CR3wmVl+T
- UzYg==
-X-Gm-Message-State: ANhLgQ0Yr/G2r8Y8wzuiK0/5g8MmlhaSLhstabJncyLySi3VQ/MPlR8r
- xsx3i6p9i0HDMIvUeAkVxMS8x5H0Jf7zMA==
-X-Received: by 2002:a5d:54cb:: with SMTP id x11mr22055554wrv.179.1585665250142; 
- Tue, 31 Mar 2020 07:34:10 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id b26sm3899189wmj.21.2020.03.31.07.34.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Mar 2020 07:34:09 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Remove obsolete TODO note from
- get_phys_addr_lpae()
-Date: Tue, 31 Mar 2020 15:34:07 +0100
-Message-Id: <20200331143407.3186-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ (envelope-from <imammedo@redhat.com>) id 1jJIEI-0000Eb-2S
+ for qemu-devel@nongnu.org; Tue, 31 Mar 2020 10:51:03 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40707
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1jJIEH-0000E1-Si
+ for qemu-devel@nongnu.org; Tue, 31 Mar 2020 10:51:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1585666261;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JtuxwyQgBtohAdKqnkXNluLTX8glKHTHViD3dbMoMJI=;
+ b=AqNKaODeHXcGterq0Zikczw6eJYHHjlstqLFogAJe3Fe0fHYmCArKTGY88twMqUBit2nI9
+ fgb+o87iCp4CF8GYh7EjHBvwkDp7nYvDWLWRwscnKnuSgA8ApgpGmiA1Loo1VPADs8WdV6
+ MwlApLkAfJhTbkJIqufuHc7fD/h6fJM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-221-KGkMTydaPmuwEMPSrPrY2w-1; Tue, 31 Mar 2020 10:50:56 -0400
+X-MC-Unique: KGkMTydaPmuwEMPSrPrY2w-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 19112101FC6C;
+ Tue, 31 Mar 2020 14:50:54 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.4])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DA5C0194BB;
+ Tue, 31 Mar 2020 14:50:40 +0000 (UTC)
+Date: Tue, 31 Mar 2020 16:50:38 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH for-5.0 2/3] fw_cfg: Migrate ACPI table mr sizes separately
+Message-ID: <20200331165038.2dddcedc@redhat.com>
+In-Reply-To: <20200330164909.28324-3-shameerali.kolothum.thodi@huawei.com>
+References: <20200330164909.28324-1-shameerali.kolothum.thodi@huawei.com>
+ <20200330164909.28324-3-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::430
-X-BeenThere: qemu-arm@nongnu.org
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vE5fpfPbjYw1
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, david@redhat.com,
+ shannon.zhaosl@gmail.com, mst@redhat.com, qemu-devel@nongnu.org,
+ xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
+ qemu-arm@nongnu.org, lersek@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: voInvGygqmUU
 
-An old comment in get_phys_addr_lpae() claims that the code does not
-support the different format TCR for VTCR_EL2.  This used to be true
-but it is not true now (in particular the aa64_va_parameters() and
-aa32_va_parameters() functions correctly handle the different
-register format by checking whether the mmu_idx is Stage2).
-Remove the out of date parts of the comment.
+On Mon, 30 Mar 2020 17:49:08 +0100
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Randomly noticed this out of date comment while I was stepping
-through the code this afternoon...
+> Any sub-page size update to ACPI MRs will be lost during
+> migration, as we use aligned size in ram_load_precopy() ->
+> qemu_ram_resize() path. This will result in inconsistency in
+> FWCfgEntry sizes between source and destination. In order to avoid
+> this, save and restore them separately during migration.
+> 
+> Up until now, this problem may not be that relevant for x86 as both
+> ACPI table and Linker MRs gets padded and aligned. Also at present,
+> qemu_ram_resize() doesn't invoke callback to update FWCfgEntry for
+> unaligned size changes. But since we are going to fix the
+> qemu_ram_resize() in the subsequent patch, the issue may become
+> more serious especially for RSDP MR case.
+> 
+> Moreover, the issue will soon become prominent in arm/virt as well
+> where the MRs are not padded or aligned at all and eventually have
+> acpi table changes as part of future additions like NVDIMM hot-add
+> feature.
+> 
+> Suggested-by: David Hildenbrand <david@redhat.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> Acked-by: David Hildenbrand <david@redhat.com>
 
- target/arm/helper.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
+without 3/3, current master is fine (x86/arm acpi)
+2-3/s looks to me a bit risky for hard freeze,
+so I'd postpone this series till the next merge window.
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index cba8ac57983..27059045842 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -10714,12 +10714,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-     bool aarch64 = arm_el_is_aa64(env, el);
-     bool guarded = false;
- 
--    /* TODO:
--     * This code does not handle the different format TCR for VTCR_EL2.
--     * This code also does not support shareability levels.
--     * Attribute and permission bit handling should also be checked when adding
--     * support for those page table walks.
--     */
-+    /* TODO: This code does not support shareability levels. */
-     if (aarch64) {
-         param = aa64_va_parameters(env, address, mmu_idx,
-                                    access_type != MMU_INST_FETCH);
--- 
-2.20.1
+
+> ---
+> Please find previous discussions here,
+> https://patchwork.kernel.org/patch/11339591/#23140343
+> ---
+> 
+>  hw/core/machine.c         |  1 +
+>  hw/nvram/fw_cfg.c         | 86 ++++++++++++++++++++++++++++++++++++++-
+>  include/hw/nvram/fw_cfg.h |  6 +++
+>  3 files changed, 92 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index de0c425605..c1a444cb75 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -39,6 +39,7 @@ GlobalProperty hw_compat_4_2[] = {
+>      { "usb-redir", "suppress-remote-wake", "off" },
+>      { "qxl", "revision", "4" },
+>      { "qxl-vga", "revision", "4" },
+> +    { "fw_cfg", "acpi-mr-restore", "false" },
+>  };
+>  const size_t hw_compat_4_2_len = G_N_ELEMENTS(hw_compat_4_2);
+>  
+> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> index 179b302f01..36d1e32f83 100644
+> --- a/hw/nvram/fw_cfg.c
+> +++ b/hw/nvram/fw_cfg.c
+> @@ -39,6 +39,7 @@
+>  #include "qemu/config-file.h"
+>  #include "qemu/cutils.h"
+>  #include "qapi/error.h"
+> +#include "hw/acpi/aml-build.h"
+>  
+>  #define FW_CFG_FILE_SLOTS_DFLT 0x20
+>  
+> @@ -610,6 +611,50 @@ bool fw_cfg_dma_enabled(void *opaque)
+>      return s->dma_enabled;
+>  }
+>  
+> +static bool fw_cfg_acpi_mr_restore(void *opaque)
+> +{
+> +    FWCfgState *s = opaque;
+> +    return s->acpi_mr_restore;
+> +}
+> +
+> +static void fw_cfg_update_mr(FWCfgState *s, uint16_t key, size_t size)
+> +{
+> +    MemoryRegion *mr;
+> +    ram_addr_t offset;
+> +    int arch = !!(key & FW_CFG_ARCH_LOCAL);
+> +    void *ptr;
+> +
+> +    key &= FW_CFG_ENTRY_MASK;
+> +    assert(key < fw_cfg_max_entry(s));
+> +
+> +    ptr = s->entries[arch][key].data;
+> +    mr = memory_region_from_host(ptr, &offset);
+> +
+> +    memory_region_ram_resize(mr, size, &error_abort);
+> +}
+> +
+> +static int fw_cfg_acpi_mr_restore_post_load(void *opaque, int version_id)
+> +{
+> +    FWCfgState *s = opaque;
+> +    int i, index;
+> +
+> +    assert(s->files);
+> +
+> +    index = be32_to_cpu(s->files->count);
+> +
+> +    for (i = 0; i < index; i++) {
+> +        if (!strcmp(s->files->f[i].name, ACPI_BUILD_TABLE_FILE)) {
+> +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i, s->table_mr_size);
+> +        } else if (!strcmp(s->files->f[i].name, ACPI_BUILD_LOADER_FILE)) {
+> +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i, s->linker_mr_size);
+> +        } else if (!strcmp(s->files->f[i].name, ACPI_BUILD_RSDP_FILE)) {
+> +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i, s->rsdp_mr_size);
+> +        }
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+>  static const VMStateDescription vmstate_fw_cfg_dma = {
+>      .name = "fw_cfg/dma",
+>      .needed = fw_cfg_dma_enabled,
+> @@ -619,6 +664,20 @@ static const VMStateDescription vmstate_fw_cfg_dma = {
+>      },
+>  };
+>  
+> +static const VMStateDescription vmstate_fw_cfg_acpi_mr = {
+> +    .name = "fw_cfg/acpi_mr",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .needed = fw_cfg_acpi_mr_restore,
+> +    .post_load = fw_cfg_acpi_mr_restore_post_load,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT64(table_mr_size, FWCfgState),
+> +        VMSTATE_UINT64(linker_mr_size, FWCfgState),
+> +        VMSTATE_UINT64(rsdp_mr_size, FWCfgState),
+> +        VMSTATE_END_OF_LIST()
+> +    },
+> +};
+> +
+>  static const VMStateDescription vmstate_fw_cfg = {
+>      .name = "fw_cfg",
+>      .version_id = 2,
+> @@ -631,6 +690,7 @@ static const VMStateDescription vmstate_fw_cfg = {
+>      },
+>      .subsections = (const VMStateDescription*[]) {
+>          &vmstate_fw_cfg_dma,
+> +        &vmstate_fw_cfg_acpi_mr,
+>          NULL,
+>      }
+>  };
+> @@ -815,6 +875,23 @@ static struct {
+>  #define FW_CFG_ORDER_OVERRIDE_LAST 200
+>  };
+>  
+> +/*
+> + * Any sub-page size update to these table MRs will be lost during migration,
+> + * as we use aligned size in ram_load_precopy() -> qemu_ram_resize() path.
+> + * In order to avoid the inconsistency in sizes save them seperately and
+> + * migrate over in vmstate post_load().
+> + */
+> +static void fw_cfg_acpi_mr_save(FWCfgState *s, const char *filename, size_t len)
+> +{
+> +    if (!strcmp(filename, ACPI_BUILD_TABLE_FILE)) {
+> +        s->table_mr_size = len;
+> +    } else if (!strcmp(filename, ACPI_BUILD_LOADER_FILE)) {
+> +        s->linker_mr_size = len;
+> +    } else if (!strcmp(filename, ACPI_BUILD_RSDP_FILE)) {
+> +        s->rsdp_mr_size = len;
+> +    }
+> +}
+> +
+>  static int get_fw_cfg_order(FWCfgState *s, const char *name)
+>  {
+>      int i;
+> @@ -914,6 +991,7 @@ void fw_cfg_add_file_callback(FWCfgState *s,  const char *filename,
+>      trace_fw_cfg_add_file(s, index, s->files->f[index].name, len);
+>  
+>      s->files->count = cpu_to_be32(count+1);
+> +    fw_cfg_acpi_mr_save(s, filename, len);
+>  }
+>  
+>  void fw_cfg_add_file(FWCfgState *s,  const char *filename,
+> @@ -937,6 +1015,7 @@ void *fw_cfg_modify_file(FWCfgState *s, const char *filename,
+>              ptr = fw_cfg_modify_bytes_read(s, FW_CFG_FILE_FIRST + i,
+>                                             data, len);
+>              s->files->f[i].size   = cpu_to_be32(len);
+> +            fw_cfg_acpi_mr_save(s, filename, len);
+>              return ptr;
+>          }
+>      }
+> @@ -973,7 +1052,10 @@ static void fw_cfg_machine_ready(struct Notifier *n, void *data)
+>      qemu_register_reset(fw_cfg_machine_reset, s);
+>  }
+>  
+> -
+> +static Property fw_cfg_properties[] = {
+> +    DEFINE_PROP_BOOL("acpi-mr-restore", FWCfgState, acpi_mr_restore, true),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+>  
+>  static void fw_cfg_common_realize(DeviceState *dev, Error **errp)
+>  {
+> @@ -1097,6 +1179,8 @@ static void fw_cfg_class_init(ObjectClass *klass, void *data)
+>  
+>      dc->reset = fw_cfg_reset;
+>      dc->vmsd = &vmstate_fw_cfg;
+> +
+> +    device_class_set_props(dc, fw_cfg_properties);
+>  }
+>  
+>  static const TypeInfo fw_cfg_info = {
+> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+> index b5291eefad..457fee7425 100644
+> --- a/include/hw/nvram/fw_cfg.h
+> +++ b/include/hw/nvram/fw_cfg.h
+> @@ -53,6 +53,12 @@ struct FWCfgState {
+>      dma_addr_t dma_addr;
+>      AddressSpace *dma_as;
+>      MemoryRegion dma_iomem;
+> +
+> +    /* restore during migration */
+> +    bool acpi_mr_restore;
+> +    size_t table_mr_size;
+> +    size_t linker_mr_size;
+> +    size_t rsdp_mr_size;
+>  };
+>  
+>  struct FWCfgIoState {
 

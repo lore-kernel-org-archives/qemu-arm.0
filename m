@@ -1,277 +1,359 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp3700816lfi;
-        Tue, 31 Mar 2020 01:35:31 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuYJha1mwNswEKNMSXT9opJOwPf6KWfPzZND4bk3qVCCg2SMPsBFOW2RHggT8CDEWySIpSl
-X-Received: by 2002:ac8:7351:: with SMTP id q17mr3920314qtp.237.1585643731147;
-        Tue, 31 Mar 2020 01:35:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585643731; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp3811283lfi;
+        Tue, 31 Mar 2020 03:46:19 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuANLZEPAEkMKl/8zjH5BmSRp4gtguo/kuxO+5UVb5sF5Hr9Ldyao+4kt8Hyex+2jtMYna/
+X-Received: by 2002:ac8:5252:: with SMTP id y18mr4228005qtn.311.1585651579664;
+        Tue, 31 Mar 2020 03:46:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585651579; cv=none;
         d=google.com; s=arc-20160816;
-        b=WGK7kZUtVhr3WsWwqTgLQ6ioOGl81tOvnCEYXwrRBWsDg1Z9qNYlqIt5qWLvUrrwFf
-         Ck5b+ow6l74ttilP8fJWFf0nHFTlu64qFYnl41ANgZNyUSo6AfGo+0ywvVSzDPjsi2l8
-         6Ibo+LdN7RhmIWqlZXvnxuRaD2HP4f7Zarc2Z5Nnr9BlD2C7w6mMIvzXzRHwQvs2XE39
-         YDwcz7ihp64E2V40ARP77/WA2GfZOTplyd2t/Hd/qd8jPCH9JVQy1hcH8oNFZPm6LDGt
-         6DsyqCwigwNhsKfcdZwLtu9dM3DkbR/T1rznh0oknSuxePu6WP68IJaQDD5fGcpc7mbT
-         CR1g==
+        b=Wyh1/OsCkLjF8PHcryxJOVR9gO/W2vzkh56MeqdKQF7Tt/aTMMNu55aJ1LkMl1E/Ll
+         YlO/TNPRNbjBtWOXcPVFHeFYOhsf8JfV5o2nkrdgsT0z6urINuwkVRby2cL4+5/nM5Kl
+         0Pe5iUvOD18ormxopAg5arBgV2B+QRUW9aItq0z6CrdDOsziagDCEz/KPlUJ1/otx5c3
+         BeM1l/T538tmgg/wJ9UezmPsp0xj87auLUsVp5ViLiRjql25O5X83n8fdo8NY2vNhe61
+         Fr7zPRYBPUIG+Sqdjy9POS/dx7hO5ivIfDbtawVPxKBKPuh0pYJqwUU/9GJITBuNeeoq
+         QMpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:dlp-reaction:dlp-version:dlp-product
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:subject:to:from:ironport-sdr
-         :ironport-sdr;
-        bh=eEETk46m8BmccEAwKEnh28aJgK9Oxqp+KCCxFidr9JA=;
-        b=d7DVJoFLPJVlIqsBGNG6atOnhuzJ4FcuoX/zhAvcBiulZVbhXrKBmTyzlqslYXCAyg
-         aJT3vU/zdzZJKyPLq4psylIJTVMhfDPyctn3fiLoCJ+js5TQYT3hrTBXN3jax2vqUq71
-         liXlv9NZ0HZSgZBfsYcejDiLJ2qqG0hdPILOkFOUF0y7HkT2F773TgDMEF+J4p8duqGh
-         Rn/7GafgUvddcZjUGZt4tWEaUYIQJa3QCQBEAMd9aRj2UtoRRI4jogu3bJr0uPM1n+Pz
-         Wza+mPWsg26S5GJBrO+P5wisPLyJPQKEjm6plh50di5kI+UqGtRPKJlBoJIE/+z5eW2c
-         R1gQ==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:user-agent:in-reply-to:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=BjLdfkZky3cghMEqgCcq1KUPOCycddc4qMo0vtDVe14=;
+        b=kvI4pSAbn5xtPhKgwq41rxZv84FiOpEWb9e7p9+ezR8dcyKjWvuAVAJ6iencoru5iZ
+         RYI4jWW5UK1295+Mopi4qPWobIuHsFN1QEjrn+ckvuNmthRhNahtWH1wXBQB0a9H7tdn
+         rXfZ2HHnFaLfbh1GLxdT5971wNYUf5quScuDPEBvPEmEGBmxWnDBWULaaYoOFWlONV+v
+         n9D2iSc7rMjcrXaAQ//YHb3GHuom63U+5MpoKDSKg7rsbK3MK2TzP+/tqCOwihxGuW61
+         SCnfZFEipQBgQT/HVDKEauBvaHLUw+aKxO8uYbbCmr4CLu+TGUhYptKdAydc72SMkPHO
+         G2eg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cd77cSkr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dt14si9686639qvb.181.2020.03.31.01.35.30
+        by mx.google.com with ESMTPS id bx9si9625412qvb.43.2020.03.31.03.46.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Mar 2020 01:35:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 31 Mar 2020 03:46:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:33986 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cd77cSkr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35782 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jJCMs-0006bw-Hb
-	for alex.bennee@linaro.org; Tue, 31 Mar 2020 04:35:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57997)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jJEPS-00075W-Va
+	for alex.bennee@linaro.org; Tue, 31 Mar 2020 06:46:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52305)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <yi.l.liu@intel.com>) id 1jJCLw-0005w8-6Z
- for qemu-devel@nongnu.org; Tue, 31 Mar 2020 04:34:33 -0400
+ (envelope-from <dgilbert@redhat.com>) id 1jJEPH-00072b-B8
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2020 06:46:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <yi.l.liu@intel.com>) id 1jJCLt-0002qq-M2
- for qemu-devel@nongnu.org; Tue, 31 Mar 2020 04:34:31 -0400
-Received: from mga18.intel.com ([134.134.136.126]:42603)
+ (envelope-from <dgilbert@redhat.com>) id 1jJEPF-0001bZ-Dv
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2020 06:46:07 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:24201
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <yi.l.liu@intel.com>)
- id 1jJCLt-0002o0-EE; Tue, 31 Mar 2020 04:34:29 -0400
-IronPort-SDR: Qs2W5iWOzD846IG5sK75VVZiHqkaQTaAUEQy/eHPq0wwcCtITsLA57dpp/6Jjjoev4f/wGSmCe
- VNqUO1zH94MA==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Mar 2020 01:34:25 -0700
-IronPort-SDR: K89PERLa0J9Yzmn7MKa2KKAKrlH8UrXd+qIb7kfh2+nPw4l0UVdhhtzvJ+31z2WlQA4+9vSLpU
- jmPwGrOm96ig==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,327,1580803200"; d="scan'208";a="359435124"
-Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
- by fmsmga001.fm.intel.com with ESMTP; 31 Mar 2020 01:34:25 -0700
-Received: from fmsmsx161.amr.corp.intel.com (10.18.125.9) by
- FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 31 Mar 2020 01:34:24 -0700
-Received: from shsmsx153.ccr.corp.intel.com (10.239.6.53) by
- FMSMSX161.amr.corp.intel.com (10.18.125.9) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 31 Mar 2020 01:34:24 -0700
-Received: from shsmsx104.ccr.corp.intel.com ([169.254.5.225]) by
- SHSMSX153.ccr.corp.intel.com ([169.254.12.89]) with mapi id 14.03.0439.000;
- Tue, 31 Mar 2020 16:34:22 +0800
-From: "Liu, Yi L" <yi.l.liu@intel.com>
-To: Auger Eric <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
- <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "mst@redhat.com" <mst@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "jacob.jun.pan@linux.intel.com" <jacob.jun.pan@linux.intel.com>
-Subject: RE: [RFC v6 09/24] vfio: Force nested if iommu requires it
-Thread-Topic: [RFC v6 09/24] vfio: Force nested if iommu requires it
-Thread-Index: AQHV/tkoyufwzZuw+kOQFrVm2InyoqhiSCKw//+aMoCAAIpS0A==
-Date: Tue, 31 Mar 2020 08:34:21 +0000
-Message-ID: <A2975661238FB949B60364EF0F2C25743A21A9D3@SHSMSX104.ccr.corp.intel.com>
-References: <20200320165840.30057-1-eric.auger@redhat.com>
- <20200320165840.30057-10-eric.auger@redhat.com>
- <A2975661238FB949B60364EF0F2C25743A21A69E@SHSMSX104.ccr.corp.intel.com>
- <33fab5b6-b217-3b87-9207-b5653c268fe3@redhat.com>
-In-Reply-To: <33fab5b6-b217-3b87-9207-b5653c268fe3@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.239.127.40]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1jJEPF-0001bD-9L
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2020 06:46:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1585651564;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=BjLdfkZky3cghMEqgCcq1KUPOCycddc4qMo0vtDVe14=;
+ b=cd77cSkr5Fm+PElebdO3FT/vjZEv8pNt37YWsM4dnEHcBA+OEKHzNmdaTdirxpF1iVjyh1
+ RyS5TZNOVXr01Q1R7koEnATqmKr6P9/+nRGCG10poNzWUW2byXET7QslWr0XYXVvYLbFFF
+ dWPxWGGla3EqM0jqOMAiLPr93LDcASI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-276-fP2F3uZvM0iR0ufYGC5AOA-1; Tue, 31 Mar 2020 06:45:59 -0400
+X-MC-Unique: fP2F3uZvM0iR0ufYGC5AOA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 53EFA108442F;
+ Tue, 31 Mar 2020 10:45:58 +0000 (UTC)
+Received: from work-vm (ovpn-112-221.ams2.redhat.com [10.36.112.221])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6430ECDBC8;
+ Tue, 31 Mar 2020 10:45:46 +0000 (UTC)
+Date: Tue, 31 Mar 2020 11:45:43 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH for-5.0 2/3] fw_cfg: Migrate ACPI table mr sizes separately
+Message-ID: <20200331104543.GA2942@work-vm>
+References: <20200330164909.28324-1-shameerali.kolothum.thodi@huawei.com>
+ <20200330164909.28324-3-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 134.134.136.126
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20200330164909.28324-3-shameerali.kolothum.thodi@huawei.com>
+User-Agent: Mutt/1.13.3 (2020-01-12)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- "tnowicki@marvell.com" <tnowicki@marvell.com>,
- "maz@kernel.org" <maz@kernel.org>,
- "zhangfei.gao@foxmail.com" <zhangfei.gao@foxmail.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- "peterx@redhat.com" <peterx@redhat.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "bbhushan2@marvell.com" <bbhushan2@marvell.com>,
- "will@kernel.org" <will@kernel.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: skdVWLshZzkn
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, david@redhat.com,
+ shannon.zhaosl@gmail.com, mst@redhat.com, qemu-devel@nongnu.org,
+ xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
+ qemu-arm@nongnu.org, imammedo@redhat.com, lersek@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LSwFa+Ux0gXa
 
-> From: Auger Eric <eric.auger@redhat.com>
-> Sent: Tuesday, March 31, 2020 4:05 PM
-> To: Liu, Yi L <yi.l.liu@intel.com>; eric.auger.pro@gmail.com; qemu-
-> Subject: Re: [RFC v6 09/24] vfio: Force nested if iommu requires it
+* Shameer Kolothum (shameerali.kolothum.thodi@huawei.com) wrote:
+> Any sub-page size update to ACPI MRs will be lost during
+> migration, as we use aligned size in ram_load_precopy() ->
+> qemu_ram_resize() path. This will result in inconsistency in
+> FWCfgEntry sizes between source and destination. In order to avoid
+> this, save and restore them separately during migration.
 >=20
-> Yi,
+> Up until now, this problem may not be that relevant for x86 as both
+> ACPI table and Linker MRs gets padded and aligned. Also at present,
+> qemu_ram_resize() doesn't invoke callback to update FWCfgEntry for
+> unaligned size changes. But since we are going to fix the
+> qemu_ram_resize() in the subsequent patch, the issue may become
+> more serious especially for RSDP MR case.
 >=20
-> On 3/31/20 8:34 AM, Liu, Yi L wrote:
-> > Hi Eric,
-> >
-> >> From: Eric Auger <eric.auger@redhat.com>
-> >> Sent: Saturday, March 21, 2020 12:58 AM
-> >> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
-> devel@nongnu.org;
-> >> Subject: [RFC v6 09/24] vfio: Force nested if iommu requires it
-> >>
-> >> In case we detect the address space is translated by
-> >> a virtual IOMMU which requires HW nested paging to
-> >> integrate with VFIO, let's set up the container with
-> >> the VFIO_TYPE1_NESTING_IOMMU iommu_type.
-> >>
-> >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> >>
-> >> ---
-> >>
-> >> v4 -> v5:
-> >> - fail immediatly if nested is wanted but not supported
-> >>
-> >> v2 -> v3:
-> >> - add "nested only is selected if requested by @force_nested"
-> >>   comment in this patch
-> >> ---
-> >>  hw/vfio/common.c | 36 ++++++++++++++++++++++++++++--------
-> >>  1 file changed, 28 insertions(+), 8 deletions(-)
-> >>
-> >> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-> >> index 0b3593b3c0..ac417b5dbd 100644
-> >> --- a/hw/vfio/common.c
-> >> +++ b/hw/vfio/common.c
-> >> @@ -1155,27 +1155,38 @@ static void
-> vfio_put_address_space(VFIOAddressSpace
-> >> *space)
-> >>   * vfio_get_iommu_type - selects the richest iommu_type (v2 first)
-> >>   */
-> >>  static int vfio_get_iommu_type(VFIOContainer *container,
-> >> +                               bool want_nested,
-> >>                                 Error **errp)
-> >>  {
-> >> -    int iommu_types[] =3D { VFIO_TYPE1v2_IOMMU, VFIO_TYPE1_IOMMU,
-> >> +    int iommu_types[] =3D { VFIO_TYPE1_NESTING_IOMMU,
-> >> +                          VFIO_TYPE1v2_IOMMU, VFIO_TYPE1_IOMMU,
-> >>                            VFIO_SPAPR_TCE_v2_IOMMU, VFIO_SPAPR_TCE_IOM=
-MU };
-> >> -    int i;
-> >> +    int i, ret =3D -EINVAL;
-> >>
-> >>      for (i =3D 0; i < ARRAY_SIZE(iommu_types); i++) {
-> >>          if (ioctl(container->fd, VFIO_CHECK_EXTENSION, iommu_types[i]=
-)) {
-> >> -            return iommu_types[i];
-> >> +            if (iommu_types[i] =3D=3D VFIO_TYPE1_NESTING_IOMMU && !wa=
-nt_nested)
-> {
-> >> +                continue;
-> >> +            }
-> >> +            ret =3D iommu_types[i];
-> >> +            break;
-> >>          }
-> >>      }
-> >> -    error_setg(errp, "No available IOMMU models");
-> >> -    return -EINVAL;
-> >> +    if (ret < 0) {
-> >> +        error_setg(errp, "No available IOMMU models");
-> >> +    } else if (want_nested && ret !=3D VFIO_TYPE1_NESTING_IOMMU) {
-> >> +        error_setg(errp, "Nested mode requested but not supported");
-> >> +        ret =3D -EINVAL;
-> >> +    }
-> >> +    return ret;
-> >>  }
-> >>
-> >>  static int vfio_init_container(VFIOContainer *container, int group_fd=
-,
-> >> -                               Error **errp)
-> >> +                               bool want_nested, Error **errp)
-> >>  {
-> >>      int iommu_type, ret;
-> >>
-> >> -    iommu_type =3D vfio_get_iommu_type(container, errp);
-> >> +    iommu_type =3D vfio_get_iommu_type(container, want_nested, errp);
-> >>      if (iommu_type < 0) {
-> >>          return iommu_type;
-> >>      }
-> >> @@ -1211,6 +1222,14 @@ static int vfio_connect_container(VFIOGroup *gr=
-oup,
-> >> AddressSpace *as,
-> >>      VFIOContainer *container;
-> >>      int ret, fd;
-> >>      VFIOAddressSpace *space;
-> >> +    IOMMUMemoryRegion *iommu_mr;
-> >> +    bool nested =3D false;
-> >> +
-> >> +    if (as !=3D &address_space_memory && memory_region_is_iommu(as->r=
-oot))
-> {
-> >
-> > I tried on my side. For virtual VT-d, it doesn't work as in intel_iommu=
-,
-> > we have a dynamic switch mechanism. Thus that, the
-> > memory_region_is_iommu(as->root) won't return true as expected. I'm afr=
-aid
-> > it doesn't work for virtual VT-d.  So firstly, I'm wondering if
-> > as !=3D &address_space_memory is enough.
+> Moreover, the issue will soon become prominent in arm/virt as well
+> where the MRs are not padded or aligned at all and eventually have
+> acpi table changes as part of future additions like NVDIMM hot-add
+> feature.
 >=20
-> (as !=3D &address_space_memory) should be sufficient to tell that a vIOMM=
-U
-> is being used. But then, for example, you don't want to set nested
-> paging for the virtio-iommu because virtio-iommu/VFIO uses notify-on-my
-> (CM similar implementation). That's why I devised an attribute to
-> retrieve the vIOMMU need for nested.
+> Suggested-by: David Hildenbrand <david@redhat.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> Acked-by: David Hildenbrand <david@redhat.com>
+> ---
+> Please find previous discussions here,
+> https://patchwork.kernel.org/patch/11339591/#23140343
+> ---
 >=20
->  Secondly, I'm considering if it is
-> > good to let vfio_get_group() caller to provide a hint whether vIOMMU is
-> > exposed. e.g. vfio_realize() in vfio/pci.c could figure out whether vIO=
-MMU
-> > is set easily. Thoughts?
-> Sorry I don't get your point here. Why is it easier to figure out
-> whether vIOMMU is set in vfio_realize()?
+>  hw/core/machine.c         |  1 +
+>  hw/nvram/fw_cfg.c         | 86 ++++++++++++++++++++++++++++++++++++++-
+>  include/hw/nvram/fw_cfg.h |  6 +++
+>  3 files changed, 92 insertions(+), 1 deletion(-)
 >=20
-> pci_device_iommu_address_space(pdev) !=3D  &address_space_memory
-> does determine whether a vIOMMU is in place, no?
->=20
-No it's not just pci_device_iommu_address_space(pdev) !=3D  &address_space_=
-memory,
-I agree with your above comment, it's not enough to tell whether nesting is
-needed or not. I'd like to add an API like pci_device_iommu_nesting_require=
-d(),
-so that it can be determined. In the meanwhile, adding a query callback in
-PCIIOMMUOps introduced in below pathc. Guess it works?
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index de0c425605..c1a444cb75 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -39,6 +39,7 @@ GlobalProperty hw_compat_4_2[] =3D {
+>      { "usb-redir", "suppress-remote-wake", "off" },
+>      { "qxl", "revision", "4" },
+>      { "qxl-vga", "revision", "4" },
+> +    { "fw_cfg", "acpi-mr-restore", "false" },
+>  };
+>  const size_t hw_compat_4_2_len =3D G_N_ELEMENTS(hw_compat_4_2);
+> =20
+> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> index 179b302f01..36d1e32f83 100644
+> --- a/hw/nvram/fw_cfg.c
+> +++ b/hw/nvram/fw_cfg.c
+> @@ -39,6 +39,7 @@
+>  #include "qemu/config-file.h"
+>  #include "qemu/cutils.h"
+>  #include "qapi/error.h"
+> +#include "hw/acpi/aml-build.h"
+> =20
+>  #define FW_CFG_FILE_SLOTS_DFLT 0x20
+> =20
+> @@ -610,6 +611,50 @@ bool fw_cfg_dma_enabled(void *opaque)
+>      return s->dma_enabled;
+>  }
+> =20
+> +static bool fw_cfg_acpi_mr_restore(void *opaque)
+> +{
+> +    FWCfgState *s =3D opaque;
+> +    return s->acpi_mr_restore;
+> +}
+> +
+> +static void fw_cfg_update_mr(FWCfgState *s, uint16_t key, size_t size)
+> +{
+> +    MemoryRegion *mr;
+> +    ram_addr_t offset;
+> +    int arch =3D !!(key & FW_CFG_ARCH_LOCAL);
+> +    void *ptr;
+> +
+> +    key &=3D FW_CFG_ENTRY_MASK;
+> +    assert(key < fw_cfg_max_entry(s));
+> +
+> +    ptr =3D s->entries[arch][key].data;
+> +    mr =3D memory_region_from_host(ptr, &offset);
+> +
+> +    memory_region_ram_resize(mr, size, &error_abort);
+> +}
+> +
+> +static int fw_cfg_acpi_mr_restore_post_load(void *opaque, int version_id=
+)
+> +{
+> +    FWCfgState *s =3D opaque;
+> +    int i, index;
+> +
+> +    assert(s->files);
+> +
+> +    index =3D be32_to_cpu(s->files->count);
+> +
+> +    for (i =3D 0; i < index; i++) {
+> +        if (!strcmp(s->files->f[i].name, ACPI_BUILD_TABLE_FILE)) {
+> +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i, s->table_mr_size)=
+;
+> +        } else if (!strcmp(s->files->f[i].name, ACPI_BUILD_LOADER_FILE))=
+ {
+> +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i, s->linker_mr_size=
+);
+> +        } else if (!strcmp(s->files->f[i].name, ACPI_BUILD_RSDP_FILE)) {
+> +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i, s->rsdp_mr_size);
+> +        }
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+>  static const VMStateDescription vmstate_fw_cfg_dma =3D {
+>      .name =3D "fw_cfg/dma",
+>      .needed =3D fw_cfg_dma_enabled,
+> @@ -619,6 +664,20 @@ static const VMStateDescription vmstate_fw_cfg_dma =
+=3D {
+>      },
+>  };
+> =20
+> +static const VMStateDescription vmstate_fw_cfg_acpi_mr =3D {
+> +    .name =3D "fw_cfg/acpi_mr",
+> +    .version_id =3D 1,
+> +    .minimum_version_id =3D 1,
+> +    .needed =3D fw_cfg_acpi_mr_restore,
+> +    .post_load =3D fw_cfg_acpi_mr_restore_post_load,
+> +    .fields =3D (VMStateField[]) {
+> +        VMSTATE_UINT64(table_mr_size, FWCfgState),
+> +        VMSTATE_UINT64(linker_mr_size, FWCfgState),
+> +        VMSTATE_UINT64(rsdp_mr_size, FWCfgState),
 
-[v2,05/22] hw/pci: modify pci_setup_iommu() to set PCIIOMMUOps
-https://patchwork.kernel.org/patch/11464577/
+The checker found something I also spotted; which is you can't use a
+VMSTATE_UINT64 against a field that is size_t - it's not portable;
+I suggest the easiest fix is to make your fields in fw_cfg.h uint64's.
 
-Regards,
-Yi Liu
+Dave
+
+> +        VMSTATE_END_OF_LIST()
+> +    },
+> +};
+> +
+>  static const VMStateDescription vmstate_fw_cfg =3D {
+>      .name =3D "fw_cfg",
+>      .version_id =3D 2,
+> @@ -631,6 +690,7 @@ static const VMStateDescription vmstate_fw_cfg =3D {
+>      },
+>      .subsections =3D (const VMStateDescription*[]) {
+>          &vmstate_fw_cfg_dma,
+> +        &vmstate_fw_cfg_acpi_mr,
+>          NULL,
+>      }
+>  };
+> @@ -815,6 +875,23 @@ static struct {
+>  #define FW_CFG_ORDER_OVERRIDE_LAST 200
+>  };
+> =20
+> +/*
+> + * Any sub-page size update to these table MRs will be lost during migra=
+tion,
+> + * as we use aligned size in ram_load_precopy() -> qemu_ram_resize() pat=
+h.
+> + * In order to avoid the inconsistency in sizes save them seperately and
+> + * migrate over in vmstate post_load().
+> + */
+> +static void fw_cfg_acpi_mr_save(FWCfgState *s, const char *filename, siz=
+e_t len)
+> +{
+> +    if (!strcmp(filename, ACPI_BUILD_TABLE_FILE)) {
+> +        s->table_mr_size =3D len;
+> +    } else if (!strcmp(filename, ACPI_BUILD_LOADER_FILE)) {
+> +        s->linker_mr_size =3D len;
+> +    } else if (!strcmp(filename, ACPI_BUILD_RSDP_FILE)) {
+> +        s->rsdp_mr_size =3D len;
+> +    }
+> +}
+> +
+>  static int get_fw_cfg_order(FWCfgState *s, const char *name)
+>  {
+>      int i;
+> @@ -914,6 +991,7 @@ void fw_cfg_add_file_callback(FWCfgState *s,  const c=
+har *filename,
+>      trace_fw_cfg_add_file(s, index, s->files->f[index].name, len);
+> =20
+>      s->files->count =3D cpu_to_be32(count+1);
+> +    fw_cfg_acpi_mr_save(s, filename, len);
+>  }
+> =20
+>  void fw_cfg_add_file(FWCfgState *s,  const char *filename,
+> @@ -937,6 +1015,7 @@ void *fw_cfg_modify_file(FWCfgState *s, const char *=
+filename,
+>              ptr =3D fw_cfg_modify_bytes_read(s, FW_CFG_FILE_FIRST + i,
+>                                             data, len);
+>              s->files->f[i].size   =3D cpu_to_be32(len);
+> +            fw_cfg_acpi_mr_save(s, filename, len);
+>              return ptr;
+>          }
+>      }
+> @@ -973,7 +1052,10 @@ static void fw_cfg_machine_ready(struct Notifier *n=
+, void *data)
+>      qemu_register_reset(fw_cfg_machine_reset, s);
+>  }
+> =20
+> -
+> +static Property fw_cfg_properties[] =3D {
+> +    DEFINE_PROP_BOOL("acpi-mr-restore", FWCfgState, acpi_mr_restore, tru=
+e),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> =20
+>  static void fw_cfg_common_realize(DeviceState *dev, Error **errp)
+>  {
+> @@ -1097,6 +1179,8 @@ static void fw_cfg_class_init(ObjectClass *klass, v=
+oid *data)
+> =20
+>      dc->reset =3D fw_cfg_reset;
+>      dc->vmsd =3D &vmstate_fw_cfg;
+> +
+> +    device_class_set_props(dc, fw_cfg_properties);
+>  }
+> =20
+>  static const TypeInfo fw_cfg_info =3D {
+> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+> index b5291eefad..457fee7425 100644
+> --- a/include/hw/nvram/fw_cfg.h
+> +++ b/include/hw/nvram/fw_cfg.h
+> @@ -53,6 +53,12 @@ struct FWCfgState {
+>      dma_addr_t dma_addr;
+>      AddressSpace *dma_as;
+>      MemoryRegion dma_iomem;
+> +
+> +    /* restore during migration */
+> +    bool acpi_mr_restore;
+> +    size_t table_mr_size;
+> +    size_t linker_mr_size;
+> +    size_t rsdp_mr_size;
+>  };
+> =20
+>  struct FWCfgIoState {
+> --=20
+> 2.17.1
+>=20
+>=20
+>=20
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 

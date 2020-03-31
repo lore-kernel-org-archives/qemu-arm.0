@@ -1,112 +1,112 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp3655652lfi;
-        Tue, 31 Mar 2020 00:37:03 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsbU4ORYFe8Y3iSRJUC51IJsoxLT1XsmNxMn5oIvu7ZyYC7Du/xj/i5Xwuv5JIxzc0VaO3s
-X-Received: by 2002:ac8:4e51:: with SMTP id e17mr3852124qtw.101.1585640223639;
-        Tue, 31 Mar 2020 00:37:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585640223; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp3676544lfi;
+        Tue, 31 Mar 2020 01:05:35 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtRGHNTamPd0Fr5Rf7yhyyBsS0cf2VeiI72ekhjcGXri/RxVqUljqrN7WMJPsoVaLLaHRjI
+X-Received: by 2002:a37:715:: with SMTP id 21mr3844894qkh.435.1585641935180;
+        Tue, 31 Mar 2020 01:05:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585641935; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ba71aoFyjfQaWRNNQxJl/DQ8zMmp6+FCsjRVR3f0B4Fp9iFA9HUviiR7lNtmOqnIVS
-         XA2sfIB3pIcRxKoIMcpQh+qZFBvRPveGMTPAQZHJRbBXqP05Cm97VHBIBNEeyr3j9WSm
-         akPpIxnvcueRJyKGO7s6NVhdaT5hZSVCPzaqT2L13djwHoIrRHla0vPKaNV2gauhnyCW
-         68CqQYoNMCio9wc0/MOUEuBoXyPD5tUVFNmLKUt/f5gGLTgG6+HYHqDvm/PoKacxKa4K
-         radLOg4ISUD/EstRkRfDtBUrDSQm17Q/6oqp6y4BB2pF9SO4Y+7XVxQHsZYiUlAPaCy3
-         dn3g==
+        b=OT51aIX3bvDZrf/1+tORn91VPG4XZ0borJXXM4H7pb0WytFDDaJLwndtsFT9ENUbap
+         TV9cnjtKOqCjqUITlLZLyecKWcyYbT2xVl02Kg8SYOsgBJkMZAqinuh1EMZJNbMeIyjZ
+         7I1NEGKi9Qpe+Ltr9h1/T6ll3A9vajkAnD58yPF7xExA2TeZDsJHRNRMxeSicdT2oPpC
+         RZaH9fhoKIz3YVWbcqnttVP9Iy6ysnZYwHDGU8VkMkR9Kz5J+VVaIqAus2OOoWuQ/Gq0
+         Cld/C4PUU4JRaZ3RGBRxNv4OZvI0ykXBcVF8s5jIccZtW/9uADR5p8mXoPu6YMumt9I/
+         8qBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=HWKo00iz8fvROFUAHZ5wh/5hjLTRWUP788xE8iR+dm0=;
-        b=sbc+V8yH1dTWCgAPfTi7kd2UKcKIVG5p2nhiGFAx3YZwHiF1oQ4RYD3d4KBXDCEBKN
-         gS4Vyyo+Z7y3Owkf0MYX8tymaapaswRU3Y/u+w4s//ZPsGWAPg6R3mg+zHB7VXA8Y+ck
-         6w9AE3yWYBcuW6ev3ID30M+bIPNCw/kUe1on+XWGz4WgtzWCn85j7o7VD0WXSBmlre4I
-         x9+iv0XKztM85ArQ7J5tYw/rSdebuAHXQsLx2lp2jya5UCcKUnNQHEbvE6AZFmE8/tCR
-         6bcbb3SrNPUAZ/Zp3c3QR2a6/1IYDqaVmeN3YkOKWBhP+ye92A1Pb2UZ0wZRXPX5Q4ZA
-         NGlg==
+        bh=Law9c0/JcqFOfhzWbV+HtEXkfNUXATHQp7uoDMhrCEQ=;
+        b=nytpmQhB5tMKtJ2tADlWHvJAcTWKv8ILzxAI36FX5dFS/V9tZ0Tbxd87rKKAPQfszq
+         MsG0N+TQfKxUHCIzaQsKz6wSzKEdxODBY3AhUKR2bsgH+z7yTyLGxJkHYeQssZwU1H1v
+         mM2X8RMMAVsliWltqE6BRY4ypJh9Yv5qzqJybeRZb96fK9BYpUY2JR7VYZVKDQoiYyK1
+         70qBOr7gjzK3POserO1IKeJz4AlZoHfc+FCfHNWxm7gKvb9PSBF4ARt8fwwvpbeofTeL
+         xkSxWB/mdFPUaCggbFtsGi4pRL556lc6wgoDHOXWojM4T5uuhH2Jd75/4WjFfbgSLAoJ
+         xUNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ne0LxTmX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="MqdVt9/9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p17si9101734qtu.73.2020.03.31.00.37.03
+        by mx.google.com with ESMTPS id x15si9461804qth.156.2020.03.31.01.05.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Mar 2020 00:37:03 -0700 (PDT)
+        Tue, 31 Mar 2020 01:05:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ne0LxTmX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="MqdVt9/9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33294 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33636 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jJBSJ-0002wR-3l
-	for alex.bennee@linaro.org; Tue, 31 Mar 2020 03:37:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47282)
+	id 1jJBtu-0008Ne-Ht
+	for alex.bennee@linaro.org; Tue, 31 Mar 2020 04:05:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54472)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <zhangfei.gao@linaro.org>) id 1jJAbZ-0005RI-O4
- for qemu-arm@nongnu.org; Tue, 31 Mar 2020 02:42:35 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1jJBth-0008Ku-Vs
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2020 04:05:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <zhangfei.gao@linaro.org>) id 1jJAbX-00026J-LZ
- for qemu-arm@nongnu.org; Tue, 31 Mar 2020 02:42:33 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:36426)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <zhangfei.gao@linaro.org>)
- id 1jJAbX-00023H-9C
- for qemu-arm@nongnu.org; Tue, 31 Mar 2020 02:42:31 -0400
-Received: by mail-pg1-x542.google.com with SMTP id c23so1528676pgj.3
- for <qemu-arm@nongnu.org>; Mon, 30 Mar 2020 23:42:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=HWKo00iz8fvROFUAHZ5wh/5hjLTRWUP788xE8iR+dm0=;
- b=ne0LxTmXheyqWvplQua1gZp1Jj8sfmo3Iq5BVA2ncwOCl/Muu7H3VjyGs6rXpAeWXf
- 1yrriluz6hVMviDugkkiRNuBhw1Tk8seAOqdlFgq9dZpv3OMT8IH478whrHXziN/54S9
- pilEljZBufxp50r/KFh1tMtzO/JStpVROUrPF8CF54Iz9Gt0/aaJU7mGm7iqn4eGoY6P
- o5xho3Af7F6ATfWmJcg5hCVTug/RLZYl8+YJU65bkaVmD94PCjeLfkfvybNOf+k81Au+
- 7O55Jiq6dwD4zFh0yozIu7TlpUSi7pdYoYUSeySu8O/M2z5Um15m4tJY+MV9oQbcNCto
- vFKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=HWKo00iz8fvROFUAHZ5wh/5hjLTRWUP788xE8iR+dm0=;
- b=SqK6ImijMuSa7RUTYkH3BAtOJCMQwVqtWeFuanZyu+LHVI24MTuEyUfGsWHdhmGQfn
- pEWUmCIuQM/qXqKoAufZ4UmLMAh21QY3hSmlifnj6kziSUlz6ZDPk6bKq+M7dibJhRPT
- XNiotESXwWu8htKCQHMURHnAEZ0NYF1B5Xz0YZasNlqZn6OxlYIkfCZi46KQrGS33+2P
- d+jBppC53CALztx2VAcAAUy96cbObx+Ie9DU+paJqPCXPpbGPPqnytZG2emdndAlHryP
- hCVmajRrWFLDWdmgJsgrQGW2Z+L47NIE8AbXcWNt8VvC81lyxIiirA8yurjsV5CPCZe9
- gj9w==
-X-Gm-Message-State: ANhLgQ2UWTAZT5Jakd4L+8vG3M6Zl1TKwY3yAUQEdsG/IVq8taD/b9A+
- td6fBQSXabg2JUSg8vD8QMAZug==
-X-Received: by 2002:a63:bf4e:: with SMTP id i14mr16015360pgo.41.1585636944877; 
- Mon, 30 Mar 2020 23:42:24 -0700 (PDT)
-Received: from [10.27.0.210] ([45.135.186.113])
- by smtp.gmail.com with ESMTPSA id h4sm1928170pgg.67.2020.03.30.23.42.15
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 30 Mar 2020 23:42:24 -0700 (PDT)
-Subject: Re: [RFC v6 00/24] vSMMUv3/pSMMUv3 2 stage VFIO integration
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, alex.williamson@redhat.com, jacob.jun.pan@linux.intel.com,
- yi.l.liu@intel.com
+ (envelope-from <eric.auger@redhat.com>) id 1jJBtg-0005W0-G7
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2020 04:05:21 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:60971
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1jJBtg-0005VB-BB
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2020 04:05:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1585641919;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Law9c0/JcqFOfhzWbV+HtEXkfNUXATHQp7uoDMhrCEQ=;
+ b=MqdVt9/9a1iQoNqnbswHwR7m0CDeWi5FUAf36Bcbg8vJ3OihMgHkTBGkJI3tEXoc1YIXHr
+ wW0cqpRg1UNd3l7nzxA+ufPfUSGuK25JG7D/2Vt5QDjkTql7It75T8L3ovMfzvYdE1x8oY
+ oNPN0xwBDaEwIugTWzk78SgTsQzYQU8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-305-yXmGvD9YPampLoE9LJD13g-1; Tue, 31 Mar 2020 04:05:16 -0400
+X-MC-Unique: yXmGvD9YPampLoE9LJD13g-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E92951005514;
+ Tue, 31 Mar 2020 08:05:13 +0000 (UTC)
+Received: from [10.36.112.58] (ovpn-112-58.ams2.redhat.com [10.36.112.58])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 541D610016EB;
+ Tue, 31 Mar 2020 08:04:59 +0000 (UTC)
+Subject: Re: [RFC v6 09/24] vfio: Force nested if iommu requires it
+To: "Liu, Yi L" <yi.l.liu@intel.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "mst@redhat.com" <mst@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "jacob.jun.pan@linux.intel.com" <jacob.jun.pan@linux.intel.com>
 References: <20200320165840.30057-1-eric.auger@redhat.com>
-From: Zhangfei Gao <zhangfei.gao@linaro.org>
-Message-ID: <73b1c3e1-a418-f57c-d949-261250d6a79b@linaro.org>
-Date: Tue, 31 Mar 2020 14:42:06 +0800
+ <20200320165840.30057-10-eric.auger@redhat.com>
+ <A2975661238FB949B60364EF0F2C25743A21A69E@SHSMSX104.ccr.corp.intel.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <33fab5b6-b217-3b87-9207-b5653c268fe3@redhat.com>
+Date: Tue, 31 Mar 2020 10:04:57 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20200320165840.30057-1-eric.auger@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <A2975661238FB949B60364EF0F2C25743A21A69E@SHSMSX104.ccr.corp.intel.com>
 Content-Language: en-US
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::542
-X-Mailman-Approved-At: Tue, 31 Mar 2020 03:36:49 -0400
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -118,82 +118,136 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: jean-philippe@linaro.org, tnowicki@marvell.com, maz@kernel.org,
- peterx@redhat.com, shameerali.kolothum.thodi@huawei.com,
- zhangfei.gao@linaro.org, bbhushan2@marvell.com, will@kernel.org
+Cc: "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "tnowicki@marvell.com" <tnowicki@marvell.com>,
+ "maz@kernel.org" <maz@kernel.org>,
+ "zhangfei.gao@foxmail.com" <zhangfei.gao@foxmail.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "bbhushan2@marvell.com" <bbhushan2@marvell.com>,
+ "will@kernel.org" <will@kernel.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o/1wxHmIuqVi
+X-TUID: n8jrCJiSW8jy
 
-Hi, Eric
+Yi,
 
-On 2020/3/21 上午12:58, Eric Auger wrote:
-> Up to now vSMMUv3 has not been integrated with VFIO. VFIO
-> integration requires to program the physical IOMMU consistently
-> with the guest mappings. However, as opposed to VTD, SMMUv3 has
-> no "Caching Mode" which allows easy trapping of guest mappings.
-> This means the vSMMUV3 cannot use the same VFIO integration as VTD.
->
-> However SMMUv3 has 2 translation stages. This was devised with
-> virtualization use case in mind where stage 1 is "owned" by the
-> guest whereas the host uses stage 2 for VM isolation.
->
-> This series sets up this nested translation stage. It only works
-> if there is one physical SMMUv3 used along with QEMU vSMMUv3 (in
-> other words, it does not work if there is a physical SMMUv2).
->
-> - We force the host to use stage 2 instead of stage 1, when we
->    detect a vSMMUV3 is behind a VFIO device. For a VFIO device
->    without any virtual IOMMU, we still use stage 1 as many existing
->    SMMUs expect this behavior.
-> - We use PCIPASIDOps to propage guest stage1 config changes on
->    STE (Stream Table Entry) changes.
-> - We implement a specific UNMAP notifier that conveys guest
->    IOTLB invalidations to the host
-> - We register MSI IOVA/GPA bindings to the host so that this latter
->    can build a nested stage translation
-> - As the legacy MAP notifier is not called anymore, we must make
->    sure stage 2 mappings are set. This is achieved through another
->    prereg memory listener.
-> - Physical SMMU stage 1 related faults are reported to the guest
->    via en eventfd mechanism and exposed trhough a dedicated VFIO-PCI
->    region. Then they are reinjected into the guest.
->
-> Best Regards
->
-> Eric
->
-> This series can be found at:
-> https://github.com/eauger/qemu/tree/v4.2.0-2stage-rfcv6
->
-> Kernel Dependencies:
-> [1] [PATCH v10 00/11] SMMUv3 Nested Stage Setup (VFIO part)
-> [2] [PATCH v10 00/13] SMMUv3 Nested Stage Setup (IOMMU part)
-> branch at: https://github.com/eauger/linux/tree/will-arm-smmu-updates-2stage-v10
-Really appreciated that you re-start this work.
+On 3/31/20 8:34 AM, Liu, Yi L wrote:
+> Hi Eric,
+> 
+>> From: Eric Auger <eric.auger@redhat.com>
+>> Sent: Saturday, March 21, 2020 12:58 AM
+>> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-devel@nongnu.org;
+>> Subject: [RFC v6 09/24] vfio: Force nested if iommu requires it
+>>
+>> In case we detect the address space is translated by
+>> a virtual IOMMU which requires HW nested paging to
+>> integrate with VFIO, let's set up the container with
+>> the VFIO_TYPE1_NESTING_IOMMU iommu_type.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>
+>> ---
+>>
+>> v4 -> v5:
+>> - fail immediatly if nested is wanted but not supported
+>>
+>> v2 -> v3:
+>> - add "nested only is selected if requested by @force_nested"
+>>   comment in this patch
+>> ---
+>>  hw/vfio/common.c | 36 ++++++++++++++++++++++++++++--------
+>>  1 file changed, 28 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+>> index 0b3593b3c0..ac417b5dbd 100644
+>> --- a/hw/vfio/common.c
+>> +++ b/hw/vfio/common.c
+>> @@ -1155,27 +1155,38 @@ static void vfio_put_address_space(VFIOAddressSpace
+>> *space)
+>>   * vfio_get_iommu_type - selects the richest iommu_type (v2 first)
+>>   */
+>>  static int vfio_get_iommu_type(VFIOContainer *container,
+>> +                               bool want_nested,
+>>                                 Error **errp)
+>>  {
+>> -    int iommu_types[] = { VFIO_TYPE1v2_IOMMU, VFIO_TYPE1_IOMMU,
+>> +    int iommu_types[] = { VFIO_TYPE1_NESTING_IOMMU,
+>> +                          VFIO_TYPE1v2_IOMMU, VFIO_TYPE1_IOMMU,
+>>                            VFIO_SPAPR_TCE_v2_IOMMU, VFIO_SPAPR_TCE_IOMMU };
+>> -    int i;
+>> +    int i, ret = -EINVAL;
+>>
+>>      for (i = 0; i < ARRAY_SIZE(iommu_types); i++) {
+>>          if (ioctl(container->fd, VFIO_CHECK_EXTENSION, iommu_types[i])) {
+>> -            return iommu_types[i];
+>> +            if (iommu_types[i] == VFIO_TYPE1_NESTING_IOMMU && !want_nested) {
+>> +                continue;
+>> +            }
+>> +            ret = iommu_types[i];
+>> +            break;
+>>          }
+>>      }
+>> -    error_setg(errp, "No available IOMMU models");
+>> -    return -EINVAL;
+>> +    if (ret < 0) {
+>> +        error_setg(errp, "No available IOMMU models");
+>> +    } else if (want_nested && ret != VFIO_TYPE1_NESTING_IOMMU) {
+>> +        error_setg(errp, "Nested mode requested but not supported");
+>> +        ret = -EINVAL;
+>> +    }
+>> +    return ret;
+>>  }
+>>
+>>  static int vfio_init_container(VFIOContainer *container, int group_fd,
+>> -                               Error **errp)
+>> +                               bool want_nested, Error **errp)
+>>  {
+>>      int iommu_type, ret;
+>>
+>> -    iommu_type = vfio_get_iommu_type(container, errp);
+>> +    iommu_type = vfio_get_iommu_type(container, want_nested, errp);
+>>      if (iommu_type < 0) {
+>>          return iommu_type;
+>>      }
+>> @@ -1211,6 +1222,14 @@ static int vfio_connect_container(VFIOGroup *group,
+>> AddressSpace *as,
+>>      VFIOContainer *container;
+>>      int ret, fd;
+>>      VFIOAddressSpace *space;
+>> +    IOMMUMemoryRegion *iommu_mr;
+>> +    bool nested = false;
+>> +
+>> +    if (as != &address_space_memory && memory_region_is_iommu(as->root)) {
+> 
+> I tried on my side. For virtual VT-d, it doesn't work as in intel_iommu,
+> we have a dynamic switch mechanism. Thus that, the
+> memory_region_is_iommu(as->root) won't return true as expected. I'm afraid
+> it doesn't work for virtual VT-d.  So firstly, I'm wondering if
+> as != &address_space_memory is enough.
 
-I tested your branch and some update.
+(as != &address_space_memory) should be sufficient to tell that a vIOMMU
+is being used. But then, for example, you don't want to set nested
+paging for the virtio-iommu because virtio-iommu/VFIO uses notify-on-my
+(CM similar implementation). That's why I devised an attribute to
+retrieve the vIOMMU need for nested.
 
-Guest: https://github.com/Linaro/linux-kernel-warpdrive/tree/sva-devel 
-<https://github.com/Linaro/linux-kernel-warpdrive/tree/sva-devel>
-Host: 
-https://github.com/eauger/linux/tree/will-arm-smmu-updates-2stage-v10 
-<https://github.com/eauger/linux/tree/will-arm-smmu-updates-2stage-v10>
-qemu: https://github.com/eauger/qemu/tree/v4.2.0-2stage-rfcv6 
-<https://github.com/eauger/qemu/tree/v4.2.0-2stage-rfcv6>
+ Secondly, I'm considering if it is
+> good to let vfio_get_group() caller to provide a hint whether vIOMMU is
+> exposed. e.g. vfio_realize() in vfio/pci.c could figure out whether vIOMMU
+> is set easily. Thoughts?
+Sorry I don't get your point here. Why is it easier to figure out
+whether vIOMMU is set in vfio_realize()?
 
-The guest I am using is contains Jean's sva patches.
-Since currently they are many patch conflict, so use two different tree.
-
-Result
-No-sva mode works.
-This mode, guest directly get physical address via ioctl.
-
-While vSVA can not work, there are still much work to do.
-I am trying to SVA mode, and it fails, so choose no-sva instead.
-iommu_dev_enable_feature(parent, IOMMU_DEV_FEAT_SVA)
-
-I am in debugging how to enable this.
+pci_device_iommu_address_space(pdev) !=  &address_space_memory
+does determine whether a vIOMMU is in place, no?
 
 Thanks
+
+Eric
+> 
+> Regards,
+> Yi Liu
+> 
 

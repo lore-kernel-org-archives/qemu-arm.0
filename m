@@ -1,104 +1,128 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1820654lfi;
-        Sat, 4 Apr 2020 05:28:16 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJwc19ukWITstQ0eJUaS6LWUCVbk/3EcHjwJKPfZPNnJz6csKCNgtra1LRaJ+Q2MdoSNMj8
-X-Received: by 2002:a37:987:: with SMTP id 129mr13471013qkj.83.1586003296669;
-        Sat, 04 Apr 2020 05:28:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586003296; cv=none;
-        d=google.com; s=arc-20160816;
-        b=g3unezjiaZZjk6mKviji76+3bS+a6ZUYVq6U7Dr8NnxWjMQyRSsBEFoBOOvQrmG51c
-         dOu3tdOdZ7zAdOhUkuN5LC30fvHiyvfzQB2I9C1jmCBI/uOYfSZxkI8NQhWpgNbteeSc
-         S86loQAMcKRr7Gm/nf2MgGJrZuy0VqMv2ijWrfVMCOhQY1x9prNI8ZYLwf5ibI0zqwiy
-         ayOm2hTITNfeNpwW2zinHlsiCjGKh5xs0XeqHgxqrnrHBwaZhGT+ht/q/9J2yNI6q1EU
-         G+xAM797qvOpOeF3vWT4NTbWEgTyURGAb2XMNCyZqVK/59sqUBIoSFrN+2XKV4rm6kjo
-         a52Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=UIdgNnpIM7op2ww8CQDxqYn3C3b56loAVAluCHlbtpI=;
-        b=GM3X4WNmSBzk59wZVUCfmmgG7FX6IVoBlilc8fuVG3u4GR+I+Ni4JhLu5KLm5QREU/
-         pPQl81Saf80aKDvbsYwbwmvhGaTQ1kE6lRXPN1wMo8/D8ew0SVm+oZ0ha5b0NbLC872E
-         svybEm2JbtgNjW/pZo97eKeksah/LfUClDzFEn1BNPkRVwNRUd8knAWZ6KoYtowz4KQL
-         +4bYC7oRfKKGmZNSyYAbLcGw65OFU7hcPoPO6/uFITD0yW1XJO8DtPAJ7VYrcojNjpN1
-         CsZfv5wqvdRv8qcfxw++F3dV3fSsaZ92CTdrDre+su7/B4QYMOag8b65Rc88a+oqFcPg
-         PUyQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OH2pxAlx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1305049lfi;
+        Wed, 1 Apr 2020 17:43:40 -0700 (PDT)
+X-Google-Smtp-Source: APiQypImlQFdMnM/UHhj9fS6HFUuJa5iS4IlmUXyg3H1XE8B7gZIRGYimp2xM03xNscJWVfG39Eo
+X-Received: by 2002:a37:6114:: with SMTP id v20mr951613qkb.445.1585788220118;
+        Wed, 01 Apr 2020 17:43:40 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w21si7192399qth.319.2020.04.04.05.28.16
+        by mx.google.com with ESMTPS id c2si2284863qva.126.2020.04.01.17.43.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 04 Apr 2020 05:28:16 -0700 (PDT)
+        Wed, 01 Apr 2020 17:43:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OH2pxAlx;
+       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=LZCcT3Zx;
+       dkim=neutral (body hash did not verify) header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b=nrL6TKNf;
+       arc=fail (body hash mismatch);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38464 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Received: from localhost ([::1]:60214 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jKhuK-0008FU-2a
-	for alex.bennee@linaro.org; Sat, 04 Apr 2020 08:28:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54638)
+	id 1jJnxL-0005oG-Hd
+	for alex.bennee@linaro.org; Wed, 01 Apr 2020 20:43:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59099)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jKhsR-00051s-8C
- for qemu-arm@nongnu.org; Sat, 04 Apr 2020 08:26:20 -0400
+ (envelope-from <apazos@quicinc.com>) id 1jJkjk-0008DA-Vh
+ for qemu-arm@nongnu.org; Wed, 01 Apr 2020 17:17:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jKhsQ-00078q-6H
- for qemu-arm@nongnu.org; Sat, 04 Apr 2020 08:26:19 -0400
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:45952)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jKhsK-00074W-Db; Sat, 04 Apr 2020 08:26:12 -0400
-Received: by mail-lf1-x141.google.com with SMTP id f8so6658719lfe.12;
- Sat, 04 Apr 2020 05:26:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=UIdgNnpIM7op2ww8CQDxqYn3C3b56loAVAluCHlbtpI=;
- b=OH2pxAlxJKC37T2qOgXtzCvuH7Zh5kcqZ4uz0l26jz0i59u2lzJ/cJsT+nsghk8QiE
- oeNiwEdtEbF0+F1GpjC79x1OxiKVAOI1/P4fVrtFG3/M+7BAnyDMMeJ9ZEUMd+rdjwi5
- aB9OSociNgxHXeENMTDiM50HzWnqQRDkhu5ir7Nw1rKYkjA8pQDf8rxYztP29BK6sz+a
- Yea9j/KMTkY9oI9oL1auGYWhL0E7xbBPmLUXasc+sy/h+ccRrx6ir6uN7AE4SArpIH08
- tDNUPgGAxQkSSjjZ+p3XMAxiFeK5SpkhsN1S/mcf2Ax3sKYkCCzrLY4KIw7dC4CI7vY3
- TXEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=UIdgNnpIM7op2ww8CQDxqYn3C3b56loAVAluCHlbtpI=;
- b=eoYHrgINX9NtWkEVDakmFAx8Lt+Mzp/ZW3ydZS2CfW/x8aZYJYDHT6h7NxPg1WoeNj
- IB7UJ8IepEPnjMSrbXtakG/ip+jWmf/91bRne9sP73sA33PT6qKWJKw2etEV1m1MxThE
- cEyNCywowf9Y74eGxIMSlOMeLZuUiT6c2bMWyER6FunddNJnAl6pJ4g6Kjg5Dq+1c1ux
- uIpTNKADsyJqhgdp8Egmj3Yil1F5yMvc/ohQFP80JU/8zJi9WOgK2OpuXnoBYoopQMzn
- rRxDvXK0POASUAqHy2gVstDKaVQuAx4Dd4aMBK6Tp3K+cKjNkKROF6KKAfpGiYph46ZG
- PbTg==
-X-Gm-Message-State: AGi0PuaZmkB/3wz5SeN+YSxU/It3jb8ySuz07DVRebcEG+LocjQFuFjf
- 59S1hrMoZtdivxFkh8jFoFhIpWDaAaB8Mg==
-X-Received: by 2002:a19:430b:: with SMTP id q11mr1103901lfa.142.1586003171052; 
- Sat, 04 Apr 2020 05:26:11 -0700 (PDT)
-Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id i4sm7877776lfl.57.2020.04.04.05.26.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 04 Apr 2020 05:26:10 -0700 (PDT)
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v1 2/2] dma/xlnx-zdma: Fix descriptor loading (REG) wrt
- endianness
-Date: Sat,  4 Apr 2020 14:27:18 +0200
-Message-Id: <20200404122718.25111-3-edgar.iglesias@gmail.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200404122718.25111-1-edgar.iglesias@gmail.com>
-References: <20200404122718.25111-1-edgar.iglesias@gmail.com>
+ (envelope-from <apazos@quicinc.com>) id 1jJkjj-0000Sz-Ei
+ for qemu-arm@nongnu.org; Wed, 01 Apr 2020 17:17:24 -0400
+Received: from alexa-out-sd-02.qualcomm.com ([199.106.114.39]:3306)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <apazos@quicinc.com>)
+ id 1jJkjd-0000Mr-37; Wed, 01 Apr 2020 17:17:17 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
+ t=1585775837; x=1617311837;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=uQqRv8+AHp8LDXIggurEEXdpVna0Cs7JnlC1psrkBJ0=;
+ b=LZCcT3Zx79Bg+ETgbbcCSCFGZTkMHh2J+zxlOWfLZPFWmsWPm072Jb3z
+ jRxdPCEF359uBua46USGHxEpsmGegvg+3HwxFzKzoH4Bznj7iiZM2iWDU
+ HYNmFsy2feuL4+50S4nVQD9AhzjCUYn9+08+hnzJfZtQL8uLgpA7h/n7O w=;
+Received: from unknown (HELO ironmsg02-sd.qualcomm.com) ([10.53.140.142])
+ by alexa-out-sd-02.qualcomm.com with ESMTP; 01 Apr 2020 14:17:13 -0700
+Received: from nasanexm01g.na.qualcomm.com ([10.85.0.33])
+ by ironmsg02-sd.qualcomm.com with ESMTP/TLS/AES256-SHA;
+ 01 Apr 2020 14:17:13 -0700
+Received: from nasanexm03g.na.qualcomm.com (10.85.0.49) by
+ NASANEXM01G.na.qualcomm.com (10.85.0.33) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 1 Apr 2020 14:17:12 -0700
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (199.106.107.6)
+ by nasanexm03g.na.qualcomm.com (10.85.0.49) with Microsoft SMTP Server (TLS)
+ id 15.0.1497.2 via Frontend Transport; Wed, 1 Apr 2020 14:17:12 -0700
+Received: from BYAPR02MB5480.namprd02.prod.outlook.com (2603:10b6:a03:9a::22)
+ by BYAPR02MB4069.namprd02.prod.outlook.com (2603:10b6:a02:f9::33)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2856.18; Wed, 1 Apr
+ 2020 21:17:11 +0000
+Received: from BYAPR02MB5480.namprd02.prod.outlook.com
+ ([fe80::555e:8aa2:2160:3209]) by BYAPR02MB5480.namprd02.prod.outlook.com
+ ([fe80::555e:8aa2:2160:3209%6]) with mapi id 15.20.2856.019; Wed, 1 Apr 2020
+ 21:17:11 +0000
+From: Ana Pazos <apazos@quicinc.com>
+To: Richard Henderson <richard.henderson@linaro.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, Stephen Long <steplong@quicinc.com>
+Subject: RE: [PATCH for-5.1 00/31] target/arm: SVE2, part 1
+Thread-Topic: [PATCH for-5.1 00/31] target/arm: SVE2, part 1
+Thread-Index: AQHWA8OEDy/AJi7Mmk+tnRHY8nzk8qhkyy0Q
+Date: Wed, 1 Apr 2020 21:17:11 +0000
+Message-ID: <BYAPR02MB54804D981F1AE6E66D2D9289C9C90@BYAPR02MB5480.namprd02.prod.outlook.com>
+References: <20200326230838.31112-1-richard.henderson@linaro.org>
+In-Reply-To: <20200326230838.31112-1-richard.henderson@linaro.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=apazos@quicinc.com; 
+x-originating-ip: [108.225.56.200]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 2ac2fa92-f8f8-4911-3a2e-08d7d6820b2f
+x-ms-traffictypediagnostic: BYAPR02MB4069:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BYAPR02MB40699983634A8F1726800A04C9C90@BYAPR02MB4069.namprd02.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-forefront-prvs: 03607C04F0
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR02MB5480.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(10019020)(396003)(366004)(39860400002)(136003)(376002)(346002)(53546011)(54906003)(8676002)(966005)(5660300002)(4326008)(66446008)(81166006)(66946007)(81156014)(7696005)(64756008)(6506007)(76116006)(66556008)(26005)(186003)(9686003)(52536014)(478600001)(107886003)(316002)(6636002)(33656002)(71200400001)(86362001)(8936002)(55016002)(110136005)(66476007)(2906002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: lKqysN1JE0V0Wg7eBAtVDIoyYfe7z5izi+yGx5PWdDEY5fbSmYq5rSvu8EGwHJE421fPdoKJtyyB6odxkSlY8kUft2TbF3do9EQFVflsQjt/ukiVMiayjW3rpvKz5qLI36PB7lvXnCNdbz9iX2Wzpwm1MbV/r/30PlihddCS7PxsFvobrDuWOV+xsiFsz61Bd2IMAnOpQttpXxXSod2TymIywE/scOvSOUmnfIGzA7ZEKHjrzpp+sq+ZrtesqgY1CavuK5S9UpbR0iKV6p4PIlZEsI/YXD7s7Q6jH5iZSh23HLwWoUjq+in/9ZI4z85s+0FDNifjM+oJ8LHEdwf/lGQvzKFvrFUVrnmEHyQtp1dCRtHm0Uc+MsRLq4GPdbRAgzwyNycO8Ffn7T/k7JbVtmKl0IxbT2991oTMwu1lNfI/rfhBqSjactA5zTVU6hkdrQef8T3XEwGsoaJv/WGQ2fr+IuaEN5nftxe9Gd5j3gq8o9Z/3FDsjfx6zneFiOQ5ctI+9py5Ic2hc0t5O0r2tA==
+x-ms-exchange-antispam-messagedata: xhXepxm4ixxMA25/zmQfONLrj6R5LZyjJiMuLlfJILzhehVm3JCD/zodN4bVKIZAmFsqSNaZjsTJoFEYbJi9LYBNuvTFdIgBxb58ZSu4cWZHAKdss2O6V44A06bGUgv9tmEJF13V/vS8KqIWETuJRQ==
+arc-seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=AXfY6W5pRspth3ZT8fCVJEcixd0EutopgOeEj0JWFJGuPoJDrTIkj4rb3oAFIH+J1U4ZCBu1o1NIbdZD5DYbuDXI/uNNok1/4b96+DATMnx+b1LQTffxSFrkehDoxYwzSqOy4dIO4rPwURvxJ0CP78U7lcunZNscV+dsAT3mSNaC0J1WsqQqnuNPP9LW8XJECR7q92wq2tPAtEc2JtemJ04B7I/RtnwMEInrtSux/2MraEXP+4nwLQpdrF2otrqeP/lYOSTrp9k8JwIKGLqSceRJbHWyWUmtcyYeaYlNSFiwf+ncbIPKRdrOl38c97YMKIBIMK0ghsM2S4i5Ztaj+Q==
+arc-message-signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=4FSS9I4WJvCX9RwajQBJDmE9iOVAFqkpsgSB8UZvWhQ=;
+ b=f8cufl9c82VnksZnI81yMGYatgYHFTzHHyZcaWvbX/Tht82Dc0vGPfrLmdhoyMhEBMVRsBd52Dubv5s5IcYijEvN5afAK0CcErR2cWefFOKOJIktzUVgTQOdZCZN3pA5DQhs9dEn8Bs4Y4kwffjfTIHNa2YzjVmZqh6FmA+sr/Nghq8wffdA8jWh7yfMqcF6eNrnFub7GDigDRCM+xGvHPjC6lkV6n76wZnS4KV0rO8uhITuQPdRynsNfv2QvCn5k7UQS0iHuW8JBnf4dg5JW2QrCx0+Ss9FmqUTNGCL/5RjieykaPEQhfMdrE2bL1frPivYL3bW66LKAYggugITJg==
+arc-authentication-results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
+ dkim=pass header.d=quicinc.com; arc=none
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=qualcomm.onmicrosoft.com; s=selector1-qualcomm-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=4FSS9I4WJvCX9RwajQBJDmE9iOVAFqkpsgSB8UZvWhQ=;
+ b=nrL6TKNfkq4NRAckdiOunMPz1R1ME4LUfkXtvhfILm4ys2N4wrV+dGC2NH/dEBrw62ujA7e5WF7uN45bir/l+/PujSApnCeRrr8nol+b+RcpQ/z4DiiB9GXvDijIMh5OCI25HE0YM0WEroHc/Xxwdu6aouxwDSZc/9k1lUyYsAI=
+x-ms-exchange-crosstenant-network-message-id: 2ac2fa92-f8f8-4911-3a2e-08d7d6820b2f
+x-ms-exchange-crosstenant-originalarrivaltime: 01 Apr 2020 21:17:11.6192 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-exchange-crosstenant-id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
+x-ms-exchange-crosstenant-mailboxtype: HOSTED
+x-ms-exchange-crosstenant-userprincipalname: RdTtX3gqywq/Re1WX2D4YtPLw2EiOni8AztgTA0GQNMbp+JwdJbk9BFlmU7Y4Gn78J8DHMfJi6VCnGZQ8C4cwQ==
+x-ms-exchange-transport-crosstenantheadersstamped: BYAPR02MB4069
+x-originatororg: quicinc.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::141
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 199.106.114.39
+X-Mailman-Approved-At: Wed, 01 Apr 2020 20:43:24 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,64 +134,128 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
- edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
- frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
- philmd@redhat.com, luc.michel@greensocs.com
+Cc: Raja Venkateswaran <rajav@quicinc.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Ana Pazos <apazos@quicinc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Yi84N53/rYFs
+X-TUID: XQl71qrAMIc+
 
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+Hello Richard,
 
-Fix descriptor loading from registers wrt host endianness.
+I want to introduce you to Stephen Long. He is our new hire who started thi=
+s week.
 
-Reported-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+I want to know if you are available for a sync-up meeting to discuss how we=
+ can cooperate with qemu sve2 support.
+
+Thank you,
+Ana.
+
+-----Original Message-----
+From: Richard Henderson <richard.henderson@linaro.org>
+Sent: Thursday, March 26, 2020 4:08 PM
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org; Ana Pazos <apazos@quicinc.com>; Raja Venkateswaran=
+ <rajav@quicinc.com>
+Subject: [PATCH for-5.1 00/31] target/arm: SVE2, part 1
+
+-------------------------------------------------------------------------
+CAUTION: This email originated from outside of the organization.
+-------------------------------------------------------------------------
+
+Posting this for early review.  It's based on some other patch sets that I =
+have posted recently that also touch SVE, listed below.  But it might just =
+be easier to clone the devel tree [2].
+While the branch itself will rebase frequently for development, I've also c=
+reated a tag, post-sve2-20200326, for this posting.
+
+This is mostly untested, as the most recently released Foundation Model doe=
+s not support SVE2.  Some of the new instructions overlap with old fashione=
+d NEON, and I can verify that those have not broken, and show that SVE2 wil=
+l use the same code path.  But the predicated insns and bottom/top interlea=
+ved insns are not yet RISU testable, as I have nothing to compare against.
+
+The patches are in general arranged so that one complete group of insns are=
+ added at once.  The groups within the manual [1] have so far been small-is=
+h.
+
+
+r~
+
 ---
- hw/dma/xlnx-zdma.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
 
-diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
-index 5f4775f663..4121a1b489 100644
---- a/hw/dma/xlnx-zdma.c
-+++ b/hw/dma/xlnx-zdma.c
-@@ -299,6 +299,14 @@ static void zdma_put_regaddr64(XlnxZDMA *s, unsigned int basereg, uint64_t addr)
-     s->regs[basereg + 1] = addr >> 32;
- }
- 
-+static void zdma_load_descriptor_reg(XlnxZDMA *s, unsigned int reg,
-+                                     XlnxZDMADescr *descr)
-+{
-+    descr->addr = zdma_get_regaddr64(s, reg);
-+    descr->size = s->regs[reg + 2];
-+    descr->attr = s->regs[reg + 3];
-+}
-+
- static bool zdma_load_descriptor(XlnxZDMA *s, uint64_t addr,
-                                  XlnxZDMADescr *descr)
- {
-@@ -324,8 +332,7 @@ static void zdma_load_src_descriptor(XlnxZDMA *s)
-     unsigned int ptype = ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0, POINT_TYPE);
- 
-     if (ptype == PT_REG) {
--        memcpy(&s->dsc_src, &s->regs[R_ZDMA_CH_SRC_DSCR_WORD0],
--               sizeof(s->dsc_src));
-+        zdma_load_descriptor_reg(s, R_ZDMA_CH_SRC_DSCR_WORD0, &s->dsc_src);
-         return;
-     }
- 
-@@ -360,8 +367,7 @@ static void zdma_load_dst_descriptor(XlnxZDMA *s)
-     bool dst_type;
- 
-     if (ptype == PT_REG) {
--        memcpy(&s->dsc_dst, &s->regs[R_ZDMA_CH_DST_DSCR_WORD0],
--               sizeof(s->dsc_dst));
-+        zdma_load_descriptor_reg(s, R_ZDMA_CH_DST_DSCR_WORD0, &s->dsc_dst);
-         return;
-     }
- 
--- 
+[1] ISA manual: https://static.docs.arm.com/ddi0602/d/ISA_A64_xml_futureA-2=
+019-12_OPT.pdf
+
+[2] Devel tree: https://github.com/rth7680/qemu/tree/tgt-arm-sve-2
+
+Based-on: http://patchwork.ozlabs.org/project/qemu-devel/list/?series=3D163=
+610
+("target/arm: sve load/store improvements")
+
+Based-on: http://patchwork.ozlabs.org/project/qemu-devel/list/?series=3D164=
+500
+("target/arm: Use tcg_gen_gvec_5_ptr for sve FMLA/FCMLA")
+
+Based-on: http://patchwork.ozlabs.org/project/qemu-devel/list/?series=3D164=
+048
+("target/arm: Implement ARMv8.5-MemTag, system mode")
+
+Richard Henderson (31):
+  target/arm: Add ID_AA64ZFR0 fields and isar_feature_aa64_sve2
+  target/arm: Implement SVE2 Integer Multiply - Unpredicated
+  target/arm: Implement SVE2 integer pairwise add and accumulate long
+  target/arm: Remove fp_status from helper_{recpe,rsqrte}_u32
+  target/arm: Implement SVE2 integer unary operations (predicated)
+  target/arm: Split out saturating/rounding shifts from neon
+  target/arm: Implement SVE2 saturating/rounding bitwise shift left
+    (predicated)
+  target/arm: Implement SVE2 integer halving add/subtract (predicated)
+  target/arm: Implement SVE2 integer pairwise arithmetic
+  target/arm: Implement SVE2 saturating add/subtract (predicated)
+  target/arm: Implement SVE2 integer add/subtract long
+  target/arm: Implement SVE2 integer add/subtract interleaved long
+  target/arm: Implement SVE2 integer add/subtract wide
+  target/arm: Implement SVE2 integer multiply long
+  target/arm: Implement PMULLB and PMULLT
+  target/arm: Tidy SVE tszimm shift formats
+  target/arm: Implement SVE2 bitwise shift left long
+  target/arm: Implement SVE2 bitwise exclusive-or interleaved
+  target/arm: Implement SVE2 bitwise permute
+  target/arm: Implement SVE2 complex integer add
+  target/arm: Implement SVE2 integer absolute difference and accumulate
+    long
+  target/arm: Implement SVE2 integer add/subtract long with carry
+  target/arm: Create arm_gen_gvec_[us]sra
+  target/arm: Create arm_gen_gvec_{u,s}{rshr,rsra}
+  target/arm: Implement SVE2 bitwise shift right and accumulate
+  target/arm: Create arm_gen_gvec_{sri,sli}
+  target/arm: Tidy handle_vec_simd_shri
+  target/arm: Implement SVE2 bitwise shift and insert
+  target/arm: Vectorize SABD/UABD
+  target/arm: Vectorize SABA/UABA
+  target/arm: Implement SVE2 integer absolute difference and accumulate
+
+ target/arm/cpu.h           |  31 ++
+ target/arm/helper-sve.h    | 345 +++++++++++++++++
+ target/arm/helper.h        |  81 +++-
+ target/arm/translate-a64.h |   9 +
+ target/arm/translate.h     |  24 +-
+ target/arm/vec_internal.h  | 161 ++++++++
+ target/arm/sve.decode      | 217 ++++++++++-
+ target/arm/helper.c        |   3 +-
+ target/arm/kvm64.c         |   2 +
+ target/arm/neon_helper.c   | 515 ++++---------------------
+ target/arm/sve_helper.c    | 757 ++++++++++++++++++++++++++++++++++---
+ target/arm/translate-a64.c | 557 +++++++++++++++++++++++----  target/arm/t=
+ranslate-sve.c | 557 +++++++++++++++++++++++++++
+ target/arm/translate.c     | 626 ++++++++++++++++++++++--------
+ target/arm/vec_helper.c    | 411 ++++++++++++++++++++
+ target/arm/vfp_helper.c    |   4 +-
+ 16 files changed, 3532 insertions(+), 768 deletions(-)  create mode 100644=
+ target/arm/vec_internal.h
+
+--
 2.20.1
+
 

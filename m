@@ -1,105 +1,80 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4204768lfi;
-        Tue, 31 Mar 2020 10:04:06 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsXrTE0MoEebqAqT+mpB3622p+T7sOiawiOuneEwvPEH3Zfz015OQGBPZbGcQEzy4Dl3l8o
-X-Received: by 2002:a37:9d89:: with SMTP id g131mr6097083qke.166.1585674246366;
-        Tue, 31 Mar 2020 10:04:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585674246; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp26794lfi;
+        Tue, 31 Mar 2020 18:27:44 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuxQKxvRTwJcmcOG4vuV1hGE7Bhq33Hi6K7mCE/o90uMyvlZ97cqCT7Tjw7ttjgrIb65a1i
+X-Received: by 2002:a37:8046:: with SMTP id b67mr7831968qkd.207.1585704464684;
+        Tue, 31 Mar 2020 18:27:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585704464; cv=none;
         d=google.com; s=arc-20160816;
-        b=YERb8fN/3qXujPufT7CtaQX0zrgCIi4WED/LNbDAhvjSKuyFPlajra9csSyb7PWoRn
-         eoaXwTulgJvmXPDQD3/stjBUjUDOoGGDY3/XyIQd3PlFVCuTU1AGlMDT+yC6QWBbgFMX
-         29MkH4+/rEF01zm/GdI8seA1CUXMsiAxMj7gIB9WPazlDBV9E/gkN4BV9vw8bGIr0G7g
-         VOmXXxmGGDI0uSFzJtLLWqcB0RYRdI2BiU6E21tVQ+wTvBZ4xfHcAUFN8sQRD6C34PUA
-         uM7MASsIFH2rwJxKQdA4d6XHW+36kPCf+ewJo21SJyEKlcJLmFSDK6RTHv+41FR5IvYj
-         tpiA==
+        b=ZulAAaUWaup0M53rmQUFF7hpq801rB0VCRIlRgkCSDVKPrmQ2j+jH8pfVZhYvy44wM
+         pkERHF7yC193wyNPhYBzoyh6cZxRcQDa7ira5rRPXxDu5+wunjMDaoImpFmLLWXq88xG
+         B95ztZh0ReNZmu0k1XsVvmLv6QzugNbpTgmyswyd2yw3n7Sy18LLom0zCLXWzIS4rNzW
+         YABo8CEAPJJ6oZMmiqNms3UYnsaZKZ8eJ4YAVpnNqVb1S0IZmhZzLLsg1fwPI4oD846O
+         w1LfTQ1rV903rklVDQ9vT/K1tOw/pGuFwrt+akAjVsM7I4/nUReFucDcW3Q2/CNPVx6D
+         DpDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=9blV1H9Js4on1Ru4pm7hErJIva7kNEymOz2IOkz5vus=;
-        b=iYgu1BE+/EvN1Y1UYjgAgdfKKTZfragpt6Z3nnpR/2LWqK0sdoVR+JESIWkcbjdwPI
-         lA+zvY4eK4GFf53HN5zFDvOB9h7fKoJ5GS87tQsuoL/AxquVaoOnRXlLyZtRn6+A2Lh+
-         DdsjjItZA5UurWWpJv+Kdu0EegRlKhAZ/oqoaiFeXk45WzbEqnpz/iQIU406klTph9CQ
-         Ha7Blvk/YPHTE6QdrNAwoOqu1GHfflkKuzA64CWP1HNIEaw9f6CdggSD5I+tETauN58i
-         eH8836jY7vA6cEjFOGeorTS3cWRI2jZUcXewma00W8+yWqsKzBLYL2FuD8xod5RQo26P
-         yy3w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=ItMnk1sVvOah/z8ZYbgIPe4wn65oWE4bgeMY+Exb5mc=;
+        b=twVr/HrHsYO8m8aIvCsXhKx8v170cFGhkH2nvju4ckMiT8bCumFqwHumvbA3/nWFRF
+         iWKWS7ifoWw0QEaaPJD300qdkBiUT2M73a4fTQ8Q5ENP9Ar7oeKzYa8nLLUotW72iIBa
+         AyLDZryLWU8Zzh20AQd1WjyV2bpguDzFkJN2NAigharwliiTv8CS7x2mDjmf9b2RXqvU
+         FkSOZxoHQ6fosj+q2TLYMbhG/ROB77Tkr+8C8/56X7ZEo8gHfJBC9ymAyDkDktnb6pJA
+         ET5znaVJvpJ7qAjl5w9nswrdUBpQtMzWOml3beNHtFcZbwq93jIFDj4BotgW2wHCXQuk
+         S4UA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=SLv0dQ7u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g36si10506867qtb.333.2020.03.31.10.04.06
+        by mx.google.com with ESMTPS id w61si370020qtd.214.2020.03.31.18.27.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Mar 2020 10:04:06 -0700 (PDT)
+        Tue, 31 Mar 2020 18:27:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=SLv0dQ7u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41904 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45782 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jJKJ3-0002QO-La
-	for alex.bennee@linaro.org; Tue, 31 Mar 2020 13:04:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47018)
+	id 1jJSAS-0005Us-4v
+	for alex.bennee@linaro.org; Tue, 31 Mar 2020 21:27:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34114)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jJKIl-0002Nd-UI
- for qemu-arm@nongnu.org; Tue, 31 Mar 2020 13:03:49 -0400
+ (envelope-from <zhukeqian1@huawei.com>) id 1jJSAH-0005TA-Hn
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2020 21:27:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jJKIk-00004q-Et
- for qemu-arm@nongnu.org; Tue, 31 Mar 2020 13:03:47 -0400
-Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234]:34232)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jJKIj-0008VM-D9
- for qemu-arm@nongnu.org; Tue, 31 Mar 2020 13:03:45 -0400
-Received: by mail-oi1-x234.google.com with SMTP id d3so14995421oic.1
- for <qemu-arm@nongnu.org>; Tue, 31 Mar 2020 10:03:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=9blV1H9Js4on1Ru4pm7hErJIva7kNEymOz2IOkz5vus=;
- b=SLv0dQ7u1fEVRXqkzrOdwk8U3oIebC2JYOFyn5H3Ap9UMGXug+Ki2LmB7tMf5dalMM
- ZVCDWaE8AMUENE4AAGM9ra/L6etUNOIO0ErUUIZBw2fED6xgcVUj4n0J8njSKMLiHhDq
- 3RSDUZLhG7dELbTj5yEBthasUqochW4FQpYHaE7A4DDZISu4NzoO7YCDvjyVHh/+0kez
- Q/9AxIKsRcAG6T9teNyd22CpINizKC3dGf0SNqEE+HV2c5jGdtnYolw6HhbMAQXhnNos
- dhUmpaWaiEkUvMXdA6UTMErbxRxVVW94eEBCxXzuU2panAyvzOg+/s0oQLr4YBUmYge/
- OXLw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=9blV1H9Js4on1Ru4pm7hErJIva7kNEymOz2IOkz5vus=;
- b=Tt48yPkabDH8EG4iI60PbvlvDVxWx+35APRmkIxoKewQh9gIA7+OiZ41hb9m3pPa1j
- eUsty2SC9AurMs0Ux5Wgbb1my2OlBYAD4j6Bmpu/kkLzTP6lCnCStTsrvDHuH7nOwv9h
- 5px2GML8wZ/3v9LWw6Z9xdsRzdyu/g2HF/AWt3LEEVgt8T/0vOn2v8z+8c0543C6OP9p
- sDfcwQeTGdIP9jQxJERDzoRqj87UeQQop8lkLj7VgCfhOgON+XZ6kuZNw4n1JwTFThPY
- YZlF/QNjarennk7MtbxzN0F0WfvpKm4KehapZ0Rl6hwj8nJ13uCeFOEDNhJV6j2AKQsA
- oSsg==
-X-Gm-Message-State: ANhLgQ01GVJ8WLkXgAwi8yHk7JS64Oo5mfa8ADf5GbKtPU/YumBot5xZ
- uL1a33TZnjeg58Yhwhp+e56InsE/dReBbCz6lgTspg==
-X-Received: by 2002:a05:6808:8cb:: with SMTP id
- k11mr2652699oij.48.1585674223782; 
- Tue, 31 Mar 2020 10:03:43 -0700 (PDT)
+ (envelope-from <zhukeqian1@huawei.com>) id 1jJSAG-0000Gu-55
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2020 21:27:33 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3221 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
+ id 1jJSAF-0008Km-QM; Tue, 31 Mar 2020 21:27:32 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 1F72338BC5638744CD24;
+ Wed,  1 Apr 2020 09:27:26 +0800 (CST)
+Received: from [127.0.0.1] (10.173.221.230) by DGGEMS411-HUB.china.huawei.com
+ (10.3.19.211) with Microsoft SMTP Server id 14.3.487.0;
+ Wed, 1 Apr 2020 09:27:17 +0800
+Subject: Re: [PATCH v2] migration/throttle: Add cpu-throttle-tailslow
+ migration parameter
+To: Eric Blake <eblake@redhat.com>, <qemu-devel@nongnu.org>
+References: <20200316042935.28306-1-zhukeqian1@huawei.com>
+ <144483ff-e10d-e1b5-0c60-609b4da9c217@redhat.com>
+From: zhukeqian <zhukeqian1@huawei.com>
+Message-ID: <21b7be8f-fd42-e585-2955-fc810c39aaee@huawei.com>
+Date: Wed, 1 Apr 2020 09:27:17 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-References: <20200325191830.16553-1-f4bug@amsat.org>
- <20200325191830.16553-13-f4bug@amsat.org>
- <CAFEAcA-26fHbOp5saM+XBCz72fzfz+=+xtiXGRtWnc6CMoiakA@mail.gmail.com>
- <e293f19c-7005-16f0-57df-55ce953fe0a4@redhat.com>
-In-Reply-To: <e293f19c-7005-16f0-57df-55ce953fe0a4@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 31 Mar 2020 18:03:32 +0100
-Message-ID: <CAFEAcA-W9V_GvA0yKXY+tsZNSe_DnSbYsd33wNnAP4WWivi-og@mail.gmail.com>
-Subject: Re: [PATCH-for-5.0 12/12] hw/riscv/sifive_u: Add missing
- error-propagation code
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::234
+In-Reply-To: <144483ff-e10d-e1b5-0c60-609b4da9c217@redhat.com>
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.173.221.230]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.190
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,35 +86,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paul Burton <pburton@wavecomp.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Markus Armbruster <armbru@redhat.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Richard Henderson <rth@twiddle.net>, Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-ppc <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: wanghaibin.wang@huawei.com, qemu-arm@nongnu.org,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Juan Quintela <quintela@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BdsydEFMesbd
+X-TUID: jHMZKKbl9UfJ
 
-On Tue, 31 Mar 2020 at 18:02, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote
-> What about this memory_region_init_rom() call (and later
-> memory_region_init_ram) using error_fatal, same reasoning right?
+Hi Eric,
 
-Yes.
+On 2020/3/31 23:03, Eric Blake wrote:
+> On 3/15/20 11:29 PM, Keqian Zhu wrote:
+>> At the tail stage of throttling, the Guest is very sensitive to
+>> CPU percentage while the @cpu-throttle-increment is excessive
+>> usually at tail stage.
+>>
+>> If this parameter is true, we will compute the ideal CPU percentage
+>> used by the Guest, which may exactly makes dirty rate to be dirty
+>> rate threshold. Then we will choose a smaller throttle increment
+>> between the one specified by @cpu-throttle-increment and the one
+>> generated by ideal CPU percentage.
+>>
+>> Therefore, it is compatible to traditional throttling, meanwhile
+>> the throttle increment won't be excessive at tail stage. This may
+>> make migration time longer, and is disabled by default.
+>>
+>> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+>> ---
+>> Cc: Juan Quintela <quintela@redhat.com>
+>> Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+>> Cc: Eric Blake <eblake@redhat.com>
+>> Cc: Markus Armbruster <armbru@redhat.com>
+>> ---
+> 
+>> +++ b/qapi/migration.json
+>> @@ -552,6 +552,21 @@
+>>   #                          auto-converge detects that migration is not making
+>>   #                          progress. The default value is 10. (Since 2.7)
+>>   #
+>> +# @cpu-throttle-tailslow: Make CPU throttling slower at tail stage
+>> +#                         At the tail stage of throttling, the Guest is very
+>> +#                         sensitive to CPU percentage while the @cpu-throttle
+>> +#                         -increment is excessive usually at tail stage.
+>> +#                         If this parameter is true, we will compute the ideal
+>> +#                         CPU percentage used by the Guest, which may exactly
+>> +#                         makes dirty rate to be dirty rate threshold. Then we
+> 
+> Grammar is off here, but I don't know if you meant "which may exactly make the dirty rate match the dirty rate threshold" or something else.
+> 
+yep, this is what I want to express. I will correct it in v3. Thanks.
+>> +#                         will choose a smaller throttle increment between the
+>> +#                         one specified by @cpu-throttle-increment and the one
+>> +#                         generated by ideal CPU percentage.
+>> +#                         Therefore, it is compatible to traditional throttling,
+>> +#                         meanwhile the throttle increment won't be excessive
+>> +#                         at tail stage.
+>> +#                         The default value is false. (Since 5.0)
+> 
+> Is this a bug-fix that must make it into 5.0?  It seems more like a feature addition, at which point listing it for 5.1 is probably a better idea.
+> 
+Thanks for figuring it out.
+This patch is sent out when v5.0 is not released.
+I will correct it in v3.
 
--- PMM
+Thanks,
+Keqian
+

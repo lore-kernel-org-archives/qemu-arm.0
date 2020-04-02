@@ -1,92 +1,74 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp284761lfi;
-        Wed, 1 Apr 2020 00:48:32 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtr8KnStCTSLyi69WDu4jlJ4MSsU3gLzieTp8eazCJY70jaCaSvuKEkV47jf63CX3xmSpNZ
-X-Received: by 2002:aed:24c2:: with SMTP id u2mr9106856qtc.269.1585727312796;
-        Wed, 01 Apr 2020 00:48:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585727312; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1333978lfi;
+        Wed, 1 Apr 2020 18:18:54 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJ5E6ZyNNHTt4tQm6hPMB+b6hBo6NubCb3VCVqnXqgTk58/FhQkEfWTJLKxuXpZaNALCZMX
+X-Received: by 2002:a37:a213:: with SMTP id l19mr1095057qke.377.1585790334378;
+        Wed, 01 Apr 2020 18:18:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585790334; cv=none;
         d=google.com; s=arc-20160816;
-        b=A3dhIzky3QYX7w/xTr7+1BQ2htnnYtFuSIbYuUYwgBl+Dc3PtxQVQYIlZtfZ5StqTv
-         Q0ddz4H5srRGyuu5/sQhOCO2OLHBxq0CyPNpNuuimgj2E280gmZjdMC0iGBtXzeAHE23
-         kMNuLQ3ZnrppyFZc3nVnZcnbICmUI0NmUL4o88uYQEjzFH7H6dXrFY0MK7B0qlSApCT2
-         Yoh51JXABIKbfV7eVOvyeoBgTG6FDjIqM1TxpzsdSToN2KJqoAQdN7czxywZqCk9+3Am
-         WvfndCDgO1vwtcFMRtSEcUcHLihKC4OhvMx0h8AkpnGUj89jzz2EIEf2KBTA+lFnXDuX
-         X0Zg==
+        b=DnEmkuc8A5BxeIliholqc6VRuSRFlm1cOUxI1Q2MdQt1L0hHvSgaMcopyzG+NKZejt
+         7t+XofJbVEWT4oKqLi6TAyTV+UwpjHmOrUiAzCN60F1ggVW67Tv1e4gWyjUIjIgoZ/29
+         iCuEN8M9KIY2wZurZAZU8c05RtoNPIQIzlZJVKZ2VIJKaX7VDt3w9tU45Own0L2e1W3U
+         Gk3d6LS3K54OdA3kalGfxWNaHY4vR5yE+2HD5xyvPm577f8JomgWhFYSaUdc/8mNJPxj
+         GFdjpcoEhK/NsU/CJqMR6w9Gdfi64oa87Hpk0R6nZ1zNbdqQhB8byXHuVsg64Q370lBp
+         7JVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=X6fP1BgEzL2gFcxTUOKJ87ZjPzvb9JtdcanqIkEaVI0=;
-        b=nhviuLqwFWy/zSjgzQbWmXeLaM2Vm4WKoyswxwMfalI0Ngk6IKiRM5geobRnB8IenP
-         +D9b8TWOExwofqnq02HtH80jhU+vcsBBNX57O0OcX56V2ovoVbsXijBys2X3+/d6Vx5D
-         SGP07eTPrslfcdqKR4BpoSVlCewwdcrMIIjgTmImXJnKeDRGyPnVZ0U5fBsYY6UnvVfg
-         u5pVWqBNsLzdsQd9ntGHG5hUSm2g96jcZy3B7iOKhx+/kB6dJrbdzmZNiHjSFgNi8sCh
-         N4fu8sy8lt7ktAIJJRg7O/H264iXXF1tuaofMY5Hs4JqscQFAj9kphrZ4dYrp8i9ZRcr
-         2MVA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=Cqnnsk/pSJ+51AGB6pJiZPPzGms/mDCfZqtdablC9xU=;
+        b=X5UOuDigKQe9wGweRBTGrrKfpMqiCaSR7acn1qYVFQcGo6UoFZSmK5MlkrkTuwqfPK
+         DAYVLADk09krckaAs4PoeO/XE58WmImurmutXshMoVX0HmDblxZCwGU3PdqFbuOcxeeg
+         9x6Ek9giNZEWxuAdQHzkJaMjkG6kk2Rx7QgQOpzL4CYQdfNTyZ4YW9kGQDPhcbh2m9Li
+         Qkj0uFDz3W5ttcDWI094tOoq5lIZnVXwvzXSx8mksfexqlF1HR8fC0wcXu+y6N7En4iP
+         99p1lnLaWDRhJrPFfKSH1fVs6XirqQqaOT+IWrnlVLzFmMQLVKgm4QN8eHS21sU0ewVF
+         ldWA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y28si713436qtb.187.2020.04.01.00.48.32
+        by mx.google.com with ESMTPS id x19si2551381qta.398.2020.04.01.18.18.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Apr 2020 00:48:32 -0700 (PDT)
+        Wed, 01 Apr 2020 18:18:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48528 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60406 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jJY6y-0002Y6-7F
-	for alex.bennee@linaro.org; Wed, 01 Apr 2020 03:48:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54553)
+	id 1jJoVR-0006VX-R4
+	for alex.bennee@linaro.org; Wed, 01 Apr 2020 21:18:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46041)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jJY6q-0002Xu-3Z
- for qemu-arm@nongnu.org; Wed, 01 Apr 2020 03:48:25 -0400
+ (envelope-from <fangying1@huawei.com>) id 1jJoVH-0006VG-KQ
+ for qemu-arm@nongnu.org; Wed, 01 Apr 2020 21:18:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jJY6o-0007tV-AU
- for qemu-arm@nongnu.org; Wed, 01 Apr 2020 03:48:24 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2094 helo=huawei.com)
+ (envelope-from <fangying1@huawei.com>) id 1jJoVF-0000z7-Rj
+ for qemu-arm@nongnu.org; Wed, 01 Apr 2020 21:18:43 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:33656 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jJY6o-0007sE-1D; Wed, 01 Apr 2020 03:48:22 -0400
-Received: from lhreml703-chm.china.huawei.com (unknown [172.18.7.107])
- by Forcepoint Email with ESMTP id 2E7216FC37C1A3F8CB87;
- Wed,  1 Apr 2020 08:48:21 +0100 (IST)
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- lhreml703-chm.china.huawei.com (10.201.108.52) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1713.5; Wed, 1 Apr 2020 08:48:20 +0100
-Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
- lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
- 15.01.1713.004; Wed, 1 Apr 2020 08:48:20 +0100
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Subject: RE: [PATCH for-5.0 2/3] fw_cfg: Migrate ACPI table mr sizes separately
-Thread-Topic: [PATCH for-5.0 2/3] fw_cfg: Migrate ACPI table mr sizes
- separately
-Thread-Index: AQHWBrNmc/8JhbZhOkGXkACpglv9b6hivMgAgAEo84A=
-Date: Wed, 1 Apr 2020 07:48:20 +0000
-Message-ID: <26ca9fa6d82d4388b6707a5c856aeca0@huawei.com>
-References: <20200330164909.28324-1-shameerali.kolothum.thodi@huawei.com>
- <20200330164909.28324-3-shameerali.kolothum.thodi@huawei.com>
- <20200331110223-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20200331110223-mutt-send-email-mst@kernel.org>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.88.147]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.71) (envelope-from <fangying1@huawei.com>)
+ id 1jJoVC-0000gZ-5q; Wed, 01 Apr 2020 21:18:39 -0400
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 5D28B181EA1385B4931E;
+ Thu,  2 Apr 2020 09:18:29 +0800 (CST)
+Received: from localhost (10.133.205.53) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Thu, 2 Apr 2020
+ 09:18:18 +0800
+From: Ying Fang <fangying1@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Subject: [PATCH] util/async: Add memory barrier to aio_ctx_prepare
+Date: Thu, 2 Apr 2020 09:18:03 +0800
+Message-ID: <20200402011803.1270-1-fangying1@huawei.com>
+X-Mailer: git-send-email 2.22.0.windows.1
 MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.133.205.53]
 X-CFilter-Loop: Reflected
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 185.176.76.210
+X-Received-From: 45.249.212.35
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -98,276 +80,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "david@redhat.com" <david@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei
- \(O\)" <xuwei5@huawei.com>, "imammedo@redhat.com" <imammedo@redhat.com>,
- "lersek@redhat.com" <lersek@redhat.com>
+Cc: fam@euphon.net, zhang.zhanghailiang@huawei.com, qemu-stable@nongnu.org,
+ stefanha@redhat.com, pbonzini@redhat.com, wu.wubin@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mp24nr7EUvoK
+X-TUID: fcmRT0S1Brd6
 
+Qemu main thread is found to hang up in the mainloop when doing
+image format convert on aarch64 platform and it is highly
+reproduceable by executing test using:
 
+qemu-img convert -f qcow2 -O qcow2 origin.qcow2 converted.qcow2
 
-> -----Original Message-----
-> From: Michael S. Tsirkin [mailto:mst@redhat.com]
-> Sent: 31 March 2020 16:03
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
-> eric.auger@redhat.com; imammedo@redhat.com; peter.maydell@linaro.org;
-> shannon.zhaosl@gmail.com; xiaoguangrong.eric@gmail.com;
-> david@redhat.com; xuwei (O) <xuwei5@huawei.com>; lersek@redhat.com;
-> Linuxarm <linuxarm@huawei.com>
-> Subject: Re: [PATCH for-5.0 2/3] fw_cfg: Migrate ACPI table mr sizes sepa=
-rately
->=20
-> On Mon, Mar 30, 2020 at 05:49:08PM +0100, Shameer Kolothum wrote:
-> > Any sub-page size update to ACPI MRs will be lost during
-> > migration, as we use aligned size in ram_load_precopy() ->
-> > qemu_ram_resize() path. This will result in inconsistency in
-> > FWCfgEntry sizes between source and destination. In order to avoid
-> > this, save and restore them separately during migration.
-> >
-> > Up until now, this problem may not be that relevant for x86 as both
-> > ACPI table and Linker MRs gets padded and aligned. Also at present,
-> > qemu_ram_resize() doesn't invoke callback to update FWCfgEntry for
-> > unaligned size changes. But since we are going to fix the
-> > qemu_ram_resize() in the subsequent patch, the issue may become
-> > more serious especially for RSDP MR case.
-> >
-> > Moreover, the issue will soon become prominent in arm/virt as well
-> > where the MRs are not padded or aligned at all and eventually have
-> > acpi table changes as part of future additions like NVDIMM hot-add
-> > feature.
-> >
-> > Suggested-by: David Hildenbrand <david@redhat.com>
-> > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> > Acked-by: David Hildenbrand <david@redhat.com>
-> > ---
-> > Please find previous discussions here,
-> > https://patchwork.kernel.org/patch/11339591/#23140343
-> > ---
-> >
-> >  hw/core/machine.c         |  1 +
-> >  hw/nvram/fw_cfg.c         | 86
-> ++++++++++++++++++++++++++++++++++++++-
-> >  include/hw/nvram/fw_cfg.h |  6 +++
-> >  3 files changed, 92 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/hw/core/machine.c b/hw/core/machine.c
-> > index de0c425605..c1a444cb75 100644
-> > --- a/hw/core/machine.c
-> > +++ b/hw/core/machine.c
-> > @@ -39,6 +39,7 @@ GlobalProperty hw_compat_4_2[] =3D {
-> >      { "usb-redir", "suppress-remote-wake", "off" },
-> >      { "qxl", "revision", "4" },
-> >      { "qxl-vga", "revision", "4" },
-> > +    { "fw_cfg", "acpi-mr-restore", "false" },
-> >  };
-> >  const size_t hw_compat_4_2_len =3D G_N_ELEMENTS(hw_compat_4_2);
-> >
-> > diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-> > index 179b302f01..36d1e32f83 100644
-> > --- a/hw/nvram/fw_cfg.c
-> > +++ b/hw/nvram/fw_cfg.c
-> > @@ -39,6 +39,7 @@
-> >  #include "qemu/config-file.h"
-> >  #include "qemu/cutils.h"
-> >  #include "qapi/error.h"
-> > +#include "hw/acpi/aml-build.h"
-> >
-> >  #define FW_CFG_FILE_SLOTS_DFLT 0x20
-> >
-> > @@ -610,6 +611,50 @@ bool fw_cfg_dma_enabled(void *opaque)
-> >      return s->dma_enabled;
-> >  }
-> >
-> > +static bool fw_cfg_acpi_mr_restore(void *opaque)
-> > +{
-> > +    FWCfgState *s =3D opaque;
-> > +    return s->acpi_mr_restore;
->=20
-> How about we limit this to the case where the address is
-> unaligned?
+This mysterious hang can be explained by a race condition between
+the main thread and an io worker thread. There can be a chance that
+the last worker thread has called aio_bh_schedule_oneshot and it is
+checking against notify_me to deliver a notfiy event. At the same
+time, the main thread is calling aio_ctx_prepare however it first
+calls qemu_timeout_ns_to_ms, thus the worker thread did not see
+notify_me as true and did not send a notify event. The time line
+can be shown in the following way:
 
-Ok. I will add that check as well.
+ Main Thread
+ ------------------------------------------------
+ aio_ctx_prepare
+    atomic_or(&ctx->notify_me, 1);
+    /* out of order execution goes here */
+    *timeout =3D qemu_timeout_ns_to_ms(aio_compute_timeout(ctx));
 
-Thanks,
-Shameer
+ Worker Thread
+ -----------------------------------------------
+ aio_bh_schedule_oneshot -> aio_bh_enqueue
+    aio_notify
+	smp_mb();
+	if (ctx->notify_me) {   /* worker thread checks notify_me here */
+	    event_notifier_set(&ctx->notifier);
+	    atomic_mb_set(&ctx->notified, true);
+	}
 
-> > +}
-> > +
-> > +static void fw_cfg_update_mr(FWCfgState *s, uint16_t key, size_t size)
-> > +{
-> > +    MemoryRegion *mr;
-> > +    ram_addr_t offset;
-> > +    int arch =3D !!(key & FW_CFG_ARCH_LOCAL);
-> > +    void *ptr;
-> > +
-> > +    key &=3D FW_CFG_ENTRY_MASK;
-> > +    assert(key < fw_cfg_max_entry(s));
-> > +
-> > +    ptr =3D s->entries[arch][key].data;
-> > +    mr =3D memory_region_from_host(ptr, &offset);
-> > +
-> > +    memory_region_ram_resize(mr, size, &error_abort);
-> > +}
-> > +
-> > +static int fw_cfg_acpi_mr_restore_post_load(void *opaque, int version_=
-id)
-> > +{
-> > +    FWCfgState *s =3D opaque;
-> > +    int i, index;
-> > +
-> > +    assert(s->files);
-> > +
-> > +    index =3D be32_to_cpu(s->files->count);
-> > +
-> > +    for (i =3D 0; i < index; i++) {
-> > +        if (!strcmp(s->files->f[i].name, ACPI_BUILD_TABLE_FILE)) {
-> > +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i,
-> s->table_mr_size);
-> > +        } else if (!strcmp(s->files->f[i].name, ACPI_BUILD_LOADER_FILE=
-)) {
-> > +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i,
-> s->linker_mr_size);
-> > +        } else if (!strcmp(s->files->f[i].name, ACPI_BUILD_RSDP_FILE))=
- {
-> > +            fw_cfg_update_mr(s, FW_CFG_FILE_FIRST + i,
-> s->rsdp_mr_size);
-> > +        }
-> > +    }
-> > +
-> > +    return 0;
-> > +}
-> > +
-> >  static const VMStateDescription vmstate_fw_cfg_dma =3D {
-> >      .name =3D "fw_cfg/dma",
-> >      .needed =3D fw_cfg_dma_enabled,
-> > @@ -619,6 +664,20 @@ static const VMStateDescription
-> vmstate_fw_cfg_dma =3D {
-> >      },
-> >  };
-> >
-> > +static const VMStateDescription vmstate_fw_cfg_acpi_mr =3D {
-> > +    .name =3D "fw_cfg/acpi_mr",
-> > +    .version_id =3D 1,
-> > +    .minimum_version_id =3D 1,
-> > +    .needed =3D fw_cfg_acpi_mr_restore,
-> > +    .post_load =3D fw_cfg_acpi_mr_restore_post_load,
-> > +    .fields =3D (VMStateField[]) {
-> > +        VMSTATE_UINT64(table_mr_size, FWCfgState),
-> > +        VMSTATE_UINT64(linker_mr_size, FWCfgState),
-> > +        VMSTATE_UINT64(rsdp_mr_size, FWCfgState),
-> > +        VMSTATE_END_OF_LIST()
-> > +    },
-> > +};
-> > +
-> >  static const VMStateDescription vmstate_fw_cfg =3D {
-> >      .name =3D "fw_cfg",
-> >      .version_id =3D 2,
-> > @@ -631,6 +690,7 @@ static const VMStateDescription vmstate_fw_cfg =3D =
-{
-> >      },
-> >      .subsections =3D (const VMStateDescription*[]) {
-> >          &vmstate_fw_cfg_dma,
-> > +        &vmstate_fw_cfg_acpi_mr,
-> >          NULL,
-> >      }
-> >  };
-> > @@ -815,6 +875,23 @@ static struct {
-> >  #define FW_CFG_ORDER_OVERRIDE_LAST 200
-> >  };
-> >
-> > +/*
-> > + * Any sub-page size update to these table MRs will be lost during mig=
-ration,
-> > + * as we use aligned size in ram_load_precopy() -> qemu_ram_resize() p=
-ath.
-> > + * In order to avoid the inconsistency in sizes save them seperately a=
-nd
-> > + * migrate over in vmstate post_load().
-> > + */
-> > +static void fw_cfg_acpi_mr_save(FWCfgState *s, const char *filename,
-> size_t len)
-> > +{
-> > +    if (!strcmp(filename, ACPI_BUILD_TABLE_FILE)) {
-> > +        s->table_mr_size =3D len;
-> > +    } else if (!strcmp(filename, ACPI_BUILD_LOADER_FILE)) {
-> > +        s->linker_mr_size =3D len;
-> > +    } else if (!strcmp(filename, ACPI_BUILD_RSDP_FILE)) {
-> > +        s->rsdp_mr_size =3D len;
-> > +    }
-> > +}
-> > +
-> >  static int get_fw_cfg_order(FWCfgState *s, const char *name)
-> >  {
-> >      int i;
-> > @@ -914,6 +991,7 @@ void fw_cfg_add_file_callback(FWCfgState *s,
-> const char *filename,
-> >      trace_fw_cfg_add_file(s, index, s->files->f[index].name, len);
-> >
-> >      s->files->count =3D cpu_to_be32(count+1);
-> > +    fw_cfg_acpi_mr_save(s, filename, len);
-> >  }
-> >
-> >  void fw_cfg_add_file(FWCfgState *s,  const char *filename,
-> > @@ -937,6 +1015,7 @@ void *fw_cfg_modify_file(FWCfgState *s, const char
-> *filename,
-> >              ptr =3D fw_cfg_modify_bytes_read(s, FW_CFG_FILE_FIRST + i,
-> >                                             data, len);
-> >              s->files->f[i].size   =3D cpu_to_be32(len);
-> > +            fw_cfg_acpi_mr_save(s, filename, len);
-> >              return ptr;
-> >          }
-> >      }
-> > @@ -973,7 +1052,10 @@ static void fw_cfg_machine_ready(struct Notifier
-> *n, void *data)
-> >      qemu_register_reset(fw_cfg_machine_reset, s);
-> >  }
-> >
-> > -
-> > +static Property fw_cfg_properties[] =3D {
-> > +    DEFINE_PROP_BOOL("acpi-mr-restore", FWCfgState, acpi_mr_restore,
-> true),
-> > +    DEFINE_PROP_END_OF_LIST(),
-> > +};
-> >
-> >  static void fw_cfg_common_realize(DeviceState *dev, Error **errp)
-> >  {
-> > @@ -1097,6 +1179,8 @@ static void fw_cfg_class_init(ObjectClass *klass,
-> void *data)
-> >
-> >      dc->reset =3D fw_cfg_reset;
-> >      dc->vmsd =3D &vmstate_fw_cfg;
-> > +
-> > +    device_class_set_props(dc, fw_cfg_properties);
-> >  }
-> >
-> >  static const TypeInfo fw_cfg_info =3D {
-> > diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
-> > index b5291eefad..457fee7425 100644
-> > --- a/include/hw/nvram/fw_cfg.h
-> > +++ b/include/hw/nvram/fw_cfg.h
-> > @@ -53,6 +53,12 @@ struct FWCfgState {
-> >      dma_addr_t dma_addr;
-> >      AddressSpace *dma_as;
-> >      MemoryRegion dma_iomem;
-> > +
-> > +    /* restore during migration */
-> > +    bool acpi_mr_restore;
-> > +    size_t table_mr_size;
-> > +    size_t linker_mr_size;
-> > +    size_t rsdp_mr_size;
-> >  };
-> >
-> >  struct FWCfgIoState {
-> > --
-> > 2.17.1
-> >
+Normal VM runtime is not affected by this hang since there is always some
+timer timeout or subsequent io worker come and notify the main thead.
+To fix this problem, a memory barrier is added to aio_ctx_prepare and
+it is proved to have the hang fixed in our test.
+
+This hang is not observed on the x86 platform however it can be easily
+reproduced on the aarch64 platform, thus it is architecture related.
+Not sure if this is revelant to Commit eabc977973103527bbb8fed69c91cfaa66=
+91f8ab
+
+Signed-off-by: Ying Fang <fangying1@huawei.com>
+Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+---
+ util/async.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/util/async.c b/util/async.c
+index b94518b948..a51fffc20d 100644
+--- a/util/async.c
++++ b/util/async.c
+@@ -251,6 +251,7 @@ aio_ctx_prepare(GSource *source, gint    *timeout)
+=20
+     atomic_or(&ctx->notify_me, 1);
+=20
++    smp_mb();
+     /* We assume there is no timeout already supplied */
+     *timeout =3D qemu_timeout_ns_to_ms(aio_compute_timeout(ctx));
+=20
+--=20
+2.19.1
+
 

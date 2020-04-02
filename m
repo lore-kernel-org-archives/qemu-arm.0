@@ -1,144 +1,141 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1920632lfi;
-        Thu, 2 Apr 2020 05:40:58 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKQnaPqzKPpn5zb/JW6paJcO9tTwUmSmwxXpbgn3gv27tqxKxQdye/U0RdLbaKpFB56yjh4
-X-Received: by 2002:a9d:b8f:: with SMTP id 15mr2184053oth.256.1585831258054;
-        Thu, 02 Apr 2020 05:40:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585831258; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1992926lfi;
+        Thu, 2 Apr 2020 06:47:10 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLFRU3BDJxiwmspD5eTODW1zSG5J0lkWv/ray6x+aEjPs0iI6iwoc0FgjDuhyzqBEWgcRFp
+X-Received: by 2002:a37:274d:: with SMTP id n74mr2639935qkn.259.1585835230400;
+        Thu, 02 Apr 2020 06:47:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585835230; cv=none;
         d=google.com; s=arc-20160816;
-        b=hILCkDxUjYrFJkL/HB83fADIyfGkgrTriEeEOvI9ffC+iG7b6NpkmFB0bt2vWn6z6n
-         JizsK0uvGUxMgDj2v0aeGcq7CpWaIQY5AVRbVqUoCgDcLXIpnA33BvdVI7v/jQhBub0C
-         or/FSv3BzoRypaBYuY6JoWfdxS1iZJYtudk9PhN0jCD87OZvKq1/sXTP0jHnk1PuIOtf
-         0LEGxq/M9NoNu06nYHewKfIcYTcz7uoCzHxmbqFoV2ws1GNjFa1uG9Rei6aZrKHbN4Gd
-         Cm79l4ZYVpxmsq03WLN5oYLPFVgT4a1UH9lS8QcwaVSEVBUIYXITc4Q+L4ER4GHgYKm4
-         Hv6w==
+        b=nRx9vaQkdpHt7rtThQjiiqTEIcJYipJtZcnaXPUO/L53U0OCD8h27RwSbKICCjHtsv
+         qAvkh/g0fngYVcnP8E3e7xdvgngo9NDQxuJkeBp5qHpPMCobVF0WrIaM6poY4poJ2GZ1
+         QgGcklOGDBsvkSvnPoFBsyLzaSqchuZCuFEVI8oj0aRqjQcGzM/KRy5VVFE6ptQGHP97
+         PcJbEJIQEb7Iw6vAf36AtBnRueyNms1LG5B+e/r976Ak8BWO9kEpZKYo3ApCWOPYiJG1
+         dISW23NJRXRcoBMsbn80StvxvNBjqm56OzhidFubaJ5cTJH+p+BIGuzn5UuDsxthjK6E
+         EwAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=m+gq78o+S2hujNkyFRzd4jN2FAolI+RHa0eL85YeftM=;
-        b=MTTbMvpfFU4pLTrEOFMS9+GFz3a3iDuKoLW926cG56W6FFFFS7T6YrEtoiDNk1XjvF
-         0a+RdNuqQxm8aSy35DR3REbgy2Kd7i0OVfM1aU5zx/SaxW4+GYvyF/a8Ys88hJVSnUae
-         j4+S7VAGhNOdPfBaKfTr8/SiGKkLATJgpEVl2rxva87ZygAsgMH5J8b2JJAdSv6x4n1n
-         Vd4sX2cIlHZ4oOUyeVQh+Vk2+luF3BaA6dXNVUaAYvIOzZ2jT8HV0Mn9qtG6/tni/ZZc
-         oWXJ/UcM4C6NaXFL5GwpXAprg4TNhRdIiJBLW+3DtdOEVofG2bf/db2Od1c8AAhSNGy2
-         7lNw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=a1+oHXuKff6r/woFFFjfDPVNB78x30jyW/Sxef4N894=;
+        b=J0sJCuUNGH6Q8yN5DYNNW04C8SeL5hBR57OB66IheIEzhIp9nxr2SsrGSCDg2ycXks
+         7YkD/aU0IXFfct4wJyxnr4m/oEpfuAMiVlyT8OWnXo0IY8umjQaMW7MlUFO9kxJ1Dys0
+         7/QRk4N8Putt0LoAMiBy7Uj4Vxck/BMMps//JfccBta2YGVtpZ+e3oCcn4gfGA16I0jN
+         zqZgKHMIrqGvHQI8UBTuyNCOA0Ibah4iyBqvQmS18pwEbhwOzcjGoGjvske9hGNeux66
+         fw6A6nAtfYUBFR5uoMmlfCv26CNe6iN3wKdN5Jom12mE8GESh7ho77whWB2HJM1qzh/D
+         ZqKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id z3si2432157oth.163.2020.04.02.05.40.57;
-        Thu, 02 Apr 2020 05:40:58 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=STvhflsw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id k26si3355869qkj.242.2020.04.02.06.47.10
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 02 Apr 2020 06:47:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S2388227AbgDBMkw (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 2 Apr 2020 08:40:52 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:12608 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S2388164AbgDBMkv (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 2 Apr 2020 08:40:51 -0400
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id D905A6F00FF2ADCB7EC9;
-        Thu,  2 Apr 2020 20:40:49 +0800 (CST)
-Received: from [127.0.0.1] (10.173.222.27) by DGGEMS404-HUB.china.huawei.com
- (10.3.19.204) with Microsoft SMTP Server id 14.3.487.0; Thu, 2 Apr 2020
- 20:40:43 +0800
-Subject: Re: [kvm-unit-tests PATCH v7 10/13] arm/arm64: ITS: INT functional
- tests
-To:     Auger Eric <eric.auger@redhat.com>
-CC:     <eric.auger.pro@gmail.com>, <maz@kernel.org>,
-        <kvmarm@lists.cs.columbia.edu>, <kvm@vger.kernel.org>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
-        <drjones@redhat.com>, <andre.przywara@arm.com>,
-        <peter.maydell@linaro.org>, <alexandru.elisei@arm.com>,
-        <thuth@redhat.com>
-References: <20200320092428.20880-1-eric.auger@redhat.com>
- <20200320092428.20880-11-eric.auger@redhat.com>
- <f7f1d7c4-2321-9123-2394-528af737bfa7@huawei.com>
- <fa4e14f6-20ee-982f-0eda-74b101cddf7a@redhat.com>
-From:   Zenghui Yu <yuzenghui@huawei.com>
-Message-ID: <114f8bba-a1e0-0367-a1b4-e875718d8dba@huawei.com>
-Date:   Thu, 2 Apr 2020 20:40:42 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=STvhflsw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:40268 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jK0BZ-0006Q6-OQ
+	for alex.bennee@linaro.org; Thu, 02 Apr 2020 09:47:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50672)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jK0Ah-0006Nm-SD
+ for qemu-devel@nongnu.org; Thu, 02 Apr 2020 09:46:16 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jK0Ag-0001pm-RL
+ for qemu-devel@nongnu.org; Thu, 02 Apr 2020 09:46:15 -0400
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:39423)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1jK0Ag-0001n0-Hv; Thu, 02 Apr 2020 09:46:14 -0400
+Received: by mail-lj1-x243.google.com with SMTP id i20so3275850ljn.6;
+ Thu, 02 Apr 2020 06:46:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=a1+oHXuKff6r/woFFFjfDPVNB78x30jyW/Sxef4N894=;
+ b=STvhflsw6eolqY0UHQEGzqbVyOhbYvFOu2Ob9oaj4ToQgxJOJP5otOAS5KOHY1fkLB
+ 7D/gEN1CBaiLKVh1TyH7u+5qiqAsuajkXHoHn3+sy8wzDEmztIIMOA7nuGR5paqiQyJx
+ 0pW4WXVkq99UurAI6nDpeQiGujwRnz2UqsrMVJVAkwWmY6F+xEqK17mzJYGkm9gaAlNL
+ MwaHjsavZ/1AxCB9p2g2ECUbjScgypuMMhnTPkrhxyK8HEWzahqTro/naMnXhskJU1/h
+ xYcRWFrjAQBHNZr0O9kSw4TROFYlE6p2rXJ4YqwY+KYEZeYdUZWdBIr+Lo1bdH7+LC5I
+ d5kw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=a1+oHXuKff6r/woFFFjfDPVNB78x30jyW/Sxef4N894=;
+ b=dODNJZm0ITt6XFQqu8/VJD7kem2OqxAnYWwX8U8/fsKTaMTnZ4Vs26GIDgAreh2RgX
+ /TvHVSQU1FB+/TnR9Gr43fP1jD9+AkSdk+I4iJbDqhL6M48/UbFthYAno8SzTTg3KFow
+ W4SpnCnQktB/+AVdOYx4RKUEn7gYRpvMJVfSi4piDxv0O1zqeADrZpJTdYdhlpIFLh6W
+ rraD+IB94hM6NHvlScUHOMg25YxBV+4G3bG3CkPRJU8ltPpEnAYFuQZ8JtnO2TNxMsgZ
+ fnlQiLVXGc5QGh3+4eKdMJEpCeZuWqgODqneZqfawtxDHJeHwECEhxVcWjrTK5SHcwpv
+ egsw==
+X-Gm-Message-State: AGi0PuY56C4eNQ5gaqSuTE+3gFjX4eRRpfAWYbTvdoLey+hr4J4dyFPD
+ xnjRRxotzsL2l7cmQ/SXzntix6aaswTf5A==
+X-Received: by 2002:a05:651c:1aa:: with SMTP id
+ c10mr2103915ljn.53.1585835172206; 
+ Thu, 02 Apr 2020 06:46:12 -0700 (PDT)
+Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id c22sm3849538lfi.41.2020.04.02.06.46.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 02 Apr 2020 06:46:11 -0700 (PDT)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v1 0/5] dma/xlnx-zdma: Bug fixes
+Date: Thu,  2 Apr 2020 15:47:16 +0200
+Message-Id: <20200402134721.27863-1-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <fa4e14f6-20ee-982f-0eda-74b101cddf7a@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.173.222.27]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: xommwSDBJzab
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::243
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
+ edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
+ frasse.iglesias@gmail.com, alistair@alistair23.me,
+ richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
+ philmd@redhat.com, luc.michel@greensocs.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: b7SNdEKMOOm/
 
-Hi Eric,
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-On 2020/4/2 16:50, Auger Eric wrote:
-> Hi Zenghui,
-> 
-> On 3/30/20 12:43 PM, Zenghui Yu wrote:
->> Hi Eric,
->>
->> On 2020/3/20 17:24, Eric Auger wrote:
->>> Triggers LPIs through the INT command.
->>>
->>> the test checks the LPI hits the right CPU and triggers
->>> the right LPI intid, ie. the translation is correct.
->>>
->>> Updates to the config table also are tested, along with inv
->>> and invall commands.
->>>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> [...]
->>
->> So I've tested this series and found that the "INT" test will sometimes
->> fail.
->>
->> "not ok 12 - gicv3: its-migration: dev2/eventid=20 triggers LPI 8195 en
->> PE #3 after migration
->> not ok 13 - gicv3: its-migration: dev7/eventid=255 triggers LPI 8196 on
->> PE #2 after migration"
->>
->>  From logs:
->> "INFO: gicv3: its-migration: Migration complete
->> INT dev_id=2 event_id=20
->> INFO: gicv3: its-migration: No LPI received whereas (cpuid=3,
->> intid=8195) was expected
->> FAIL: gicv3: its-migration: dev2/eventid=20 triggers LPI 8195 en PE #3
->> after migration
->> INT dev_id=7 event_id=255
->> INFO: gicv3: its-migration: No LPI received whereas (cpuid=2,
->> intid=8196) was expected
->> FAIL: gicv3: its-migration: dev7/eventid=255 triggers LPI 8196 on PE #2
->> after migration"
->>
->>> +static void check_lpi_stats(const char *msg)
->>> +{
->>> +    bool pass = false;
->>> +
->>> +    mdelay(100);
->>
->> After changing this to 'mdelay(1000)', the above error doesn't show up
->> anymore. But it sounds strange that 100ms is not enough to deliver a
->> single LPI. I haven't dig it further but will get back here later.
-> 
-> Did you find some time to investigate this issue. Changing 100 to 1000
-> has a huge impact on the overall test duration and I don't think it is
-> sensible. Could you see what is your minimal value that pass the tests?
+Hi,
 
-I can reproduce this issue with a very *low* probability so I failed
-to investigate it :-(.  (It might because the LPI was delivered to a
-busy vcpu...)
+This series fixes a couple of bugs we've ran into with some
+proprietary test code and drivers using the Xilinx zDMA.
 
-You can leave it as it is until someone else complain about it again.
-Or take the similar approach as check_acked() - wait up to 5s for the
-interrupt to be delivered, and bail out as soon as we see it.
+Cheers,
+Edgar
 
+Edgar E. Iglesias (5):
+  dma/xlnx-zdma: Remove comment
+  dma/xlnx-zdma: Populate DBG0.CMN_BUF_FREE
+  dma/xlnx-zdma: Clear DMA_DONE when halting
+  dma/xlnx-zdma: Advance the descriptor address when stopping
+  dma/xlnx-zdma: Reorg to fix CUR_DSCR
 
-Thanks,
-Zenghui
+ hw/dma/xlnx-zdma.c | 56 ++++++++++++++++++++++++----------------------
+ 1 file changed, 29 insertions(+), 27 deletions(-)
+
+-- 
+2.20.1
+

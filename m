@@ -1,230 +1,197 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2052805lfi;
-        Thu, 2 Apr 2020 07:41:31 -0700 (PDT)
-X-Google-Smtp-Source: APiQypImu5QmSCZ5HysCZRAheF42q11Un2mOHl+Gm/pXWZpbixOVJsnxquDQ3QvDEXsroQex2aJ/
-X-Received: by 2002:a0c:e08d:: with SMTP id l13mr3573644qvk.216.1585838491453;
-        Thu, 02 Apr 2020 07:41:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585838491; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2064741lfi;
+        Thu, 2 Apr 2020 07:52:48 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIWR8iarqD6SiwzHVzfDmawAtN4W9xLUUJoByep7zNRgBE/n2qhiy0myOiuKlGaxaJXPBIF
+X-Received: by 2002:a9d:6452:: with SMTP id m18mr2669987otl.51.1585839168152;
+        Thu, 02 Apr 2020 07:52:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585839168; cv=none;
         d=google.com; s=arc-20160816;
-        b=ROlZ0iIrV8RoOVyrWjrknqzmiGvWArq9KAXk3tpvigF0gwaZnIqRO+9WX93CTXu477
-         SO7MkPjBb5v+SMI1LRdPc6xndEmK958amues6ydWjGyd6ko8RKnSI50SZGAHk9JG6Iro
-         GUpmVO0JydrSbsE4EkLXXlGwxsg+FmZF+RkZoJQInn1JuHvCM2ZoKUvjqIvh6objjYYM
-         7iAB18BIxv4MwcfIcou/Ybtu+OGBCRhz8UI2Z5ZyD0jJjsqztdknrZXl9/Gpb+7ZoMJv
-         jN/Fs+OGa7URWCYxo57barBKZvxVHqNUedVeDywiiHUUwAo2L/KNgSQad09trxKLoOAS
-         FjfA==
+        b=ygsxB22WPiTLzaiK7ELCj6b1W6JOst0GnlgBZmX7fyx+z8+SM9ZwueL1+L2zvt6w5B
+         biZmZ+QV4p8Bg1rxWYwrpIjCUQXvfJHSuQKbcFatQc7FWqMt7AUTzZKwQv9/w9qtTw7q
+         j0HZhcnCmRLMnZ5ZMNSJqw1BM8Zh5OrFKUJqCh5vA5yn3MPEeGgrYpoezbKhAknwEtcU
+         XZnMEk2VeeSDm3GnVVT+RYlH9b0KLauuQZzn1Bzjo5mYJ6pkgFh7cshbuKm+bnxtBAkx
+         yLX5iDwwbsJXrP5IPKtObkxgUOqpqYnu05ffOD51F2wVkRNpYQm+ux7fcsr6EkVntZJ/
+         SssQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=UZ3l7EJn/Yt2DsATvi8XChFxKP9Q5ReX5h6s4t8+Zo0=;
-        b=JTUqhNKZQGfo1Y84NBCiE5AytV+YoDBBusA9O23BriLTYgVVnks9IYoyEhOfk1+fZ/
-         ICpNVaG5Il9x/az9fuAANVFD2XUFwVgGoGd2s+1zHbQlsdbYzD4N2zrSz1jb+hsm/fKP
-         w9SWdLXePWpz8c8Pvo0L9L4VlysN5ge4UJxa7kK9h/GwP1lVylIDDc8Tsb5VtG6LWH/6
-         VPY93krCi36XxQ488Y1KYEx3lLR5Qw+fDWCleqgi0lxSvGo3K/0hC8dG64eellTk8XoZ
-         NJSrocQ+SaTOY0JVD2dpZDPI/1AdWMKKZ/g7gwOaTwQv1pYZRP59zd1wMa/StE06m3UY
-         nFJg==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=V5Kw0rzsF+uN7oZ/ix5qLdtcjmsaTXjUInee5I5wEVg=;
+        b=Juf2+7BWLyQ3iSuE9ALEwsJoo/6WtJWoZIGkLnwIl774IVPgIM5ZS0G5rdWsDLvAnh
+         kBhYdOTyRd259w364hA8MjLn67BFVn+Fwk+ZEL6YUKzthKc/ilRHDoIS7iBy5c/T55NK
+         4WVkK4vVZ2MNw/gFzesxhObRpEB3up6pLWofp+YX23gLFtcFo9/w4Zoh2RrzjNejysbJ
+         CHxw63t4NYmNeuAsBPBBFrQ1Tak4lC+jA9qBKp1w/J+Z38NQZaKWeHd5XzT077byNyzS
+         5YCi+8Tg1A8jpQpKvxlU+tObmDqfRX0vN7EzP1OdqvIrqHHEZVQu4dnzIt7qsEScUVtG
+         jP+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=SRxHE2xH;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id g17si3402235qka.106.2020.04.02.07.41.31;
-        Thu, 02 Apr 2020 07:41:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RB59wdcU;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id 18si2419617oin.182.2020.04.02.07.52.47;
+        Thu, 02 Apr 2020 07:52:48 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=SRxHE2xH;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 102CB4B164;
-	Thu,  2 Apr 2020 10:41:31 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hXJCxCMX2KXD; Thu,  2 Apr 2020 10:41:29 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id E3EE44B15D;
-	Thu,  2 Apr 2020 10:41:29 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 8B66D4B159
- for <kvmarm@lists.cs.columbia.edu>; Thu,  2 Apr 2020 10:41:28 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yjFvMXDy8QhN for <kvmarm@lists.cs.columbia.edu>;
- Thu,  2 Apr 2020 10:41:27 -0400 (EDT)
-Received: from us-smtp-1.mimecast.com (us-smtp-1.mimecast.com [207.211.31.81])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 88B0B4B0EF
- for <kvmarm@lists.cs.columbia.edu>; Thu,  2 Apr 2020 10:41:27 -0400 (EDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RB59wdcU;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S2388760AbgDBOwr (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 2 Apr 2020 10:52:47 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:20300 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1732598AbgDBOwq (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 2 Apr 2020 10:52:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585838487;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LQlIPwSA6eO8FaNGqaPVKwSvrWhWEma0a4EepOgZn9Y=;
- b=SRxHE2xHo6MwBPHWu79tFhGLGd+Rfik79qgtkL4tc34VNZMYNQAbW5O0zHggZ0OdnMXO52
- CdG75jI3MZzMukDps1XweOgiH/hNnG5FbqE1Jcgm8soNy1JuH3/MqRfbTQ8WWGRP8m800F
- 6QNoOQ0yXal+8quQdCriIaee6O6yxvg=
+        s=mimecast20190719; t=1585839166;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:
+         content-transfer-encoding:content-transfer-encoding;
+        bh=V5Kw0rzsF+uN7oZ/ix5qLdtcjmsaTXjUInee5I5wEVg=;
+        b=RB59wdcUqKhNq+9BX8k0bA4IJbRaIbzhIXlsGqKq0FfyAURSiYZ8esHHyvIPSl4yVQfQSw
+        3bRmE7/KW/ZLa2y9YA873s7UN6rCXfH1A274KuAVZT6+wGFO67dyM1di7z+QfNx5Juzizr
+        AYoT7P2TQX1/kX1pIIHt6uYTuwTSd6Q=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-497-jcwdGm7hNY6oM0oaAdC1ag-1; Thu, 02 Apr 2020 10:41:25 -0400
-X-MC-Unique: jcwdGm7hNY6oM0oaAdC1ag-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 94C7419067E7;
- Thu,  2 Apr 2020 14:41:23 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.192.77])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 78A36D768E;
- Thu,  2 Apr 2020 14:41:15 +0000 (UTC)
-Date: Thu, 2 Apr 2020 16:41:12 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Zenghui Yu <yuzenghui@huawei.com>
-Subject: Re: [kvm-unit-tests PATCH v7 10/13] arm/arm64: ITS: INT functional
- tests
-Message-ID: <20200402144112.u6nwzkqe7mt3rr6c@kamzik.brq.redhat.com>
-References: <20200320092428.20880-1-eric.auger@redhat.com>
- <20200320092428.20880-11-eric.auger@redhat.com>
- <f7f1d7c4-2321-9123-2394-528af737bfa7@huawei.com>
- <fa4e14f6-20ee-982f-0eda-74b101cddf7a@redhat.com>
- <114f8bba-a1e0-0367-a1b4-e875718d8dba@huawei.com>
+ us-mta-492-WuIbVq8sP_agJfh56bxLPQ-1; Thu, 02 Apr 2020 10:52:42 -0400
+X-MC-Unique: WuIbVq8sP_agJfh56bxLPQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 793018024D1;
+        Thu,  2 Apr 2020 14:52:40 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-112-58.ams2.redhat.com [10.36.112.58])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 8F6295D9C9;
+        Thu,  2 Apr 2020 14:52:31 +0000 (UTC)
+From:   Eric Auger <eric.auger@redhat.com>
+To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
+        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc:     drjones@redhat.com, andre.przywara@arm.com,
+        peter.maydell@linaro.org, yuzenghui@huawei.com,
+        alexandru.elisei@arm.com, thuth@redhat.com
+Subject: [kvm-unit-tests PATCH v8 00/13] arm/arm64: Add ITS tests
+Date:   Thu,  2 Apr 2020 16:52:14 +0200
+Message-Id: <20200402145227.20109-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <114f8bba-a1e0-0367-a1b4-e875718d8dba@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Cc: thuth@redhat.com, kvm@vger.kernel.org, maz@kernel.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
- kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Content-Transfer-Encoding: quoted-printable
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: wlLnlbqVLSBD
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: JIjNyeB6uhI+
 
-On Thu, Apr 02, 2020 at 08:40:42PM +0800, Zenghui Yu wrote:
-> Hi Eric,
-> =
+This series is a revival of an RFC series sent in Dec 2016 [1].
+Given the amount of code and the lack of traction at that time,
+I haven't respinned until now. However a recent bug found related
+to the ITS migration convinced me that this work may deserve to be
+respinned and enhanced.
 
-> On 2020/4/2 16:50, Auger Eric wrote:
-> > Hi Zenghui,
-> > =
+Tests exercise main ITS commands and also test migration.
+With the migration framework, we are able to trigger the
+migration from guest and that is very practical actually.
 
-> > On 3/30/20 12:43 PM, Zenghui Yu wrote:
-> > > Hi Eric,
-> > > =
+What is particular with the ITS programming is that most of
+the commands are passed through queues and there is real error
+handling. Invalid commands are just ignored and that is not
+really tester friendly.
 
-> > > On 2020/3/20 17:24, Eric Auger wrote:
-> > > > Triggers LPIs through the INT command.
-> > > > =
+The series can be fount at:
+https://github.com/eauger/kut/tree/its-v8
 
-> > > > the test checks the LPI hits the right CPU and triggers
-> > > > the right LPI intid, ie. the translation is correct.
-> > > > =
+Applies on top of arm/queue.
 
-> > > > Updates to the config table also are tested, along with inv
-> > > > and invall commands.
-> > > > =
+Best Regards
 
-> > > > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> > > =
+Eric
 
-> > > [...]
-> > > =
+History:
 
-> > > So I've tested this series and found that the "INT" test will sometim=
-es
-> > > fail.
-> > > =
+v7 -> v8:
+- take into account last comments from Zenghui and collected
+  his R-bs
 
-> > > "not ok 12 - gicv3: its-migration: dev2/eventid=3D20 triggers LPI 819=
-5 en
-> > > PE #3 after migration
-> > > not ok 13 - gicv3: its-migration: dev7/eventid=3D255 triggers LPI 819=
-6 on
-> > > PE #2 after migration"
-> > > =
+v6 -> v7:
+- Fixed issue reported by Drew in its-migrate-unmapped-collection (a coll=
+ection
+  could be allocated twice depending on the SMP value)
+- Integrated changes prepared by Drew
+- Use for_each_present_cpu()
 
-> > >  From logs:
-> > > "INFO: gicv3: its-migration: Migration complete
-> > > INT dev_id=3D2 event_id=3D20
-> > > INFO: gicv3: its-migration: No LPI received whereas (cpuid=3D3,
-> > > intid=3D8195) was expected
-> > > FAIL: gicv3: its-migration: dev2/eventid=3D20 triggers LPI 8195 en PE=
- #3
-> > > after migration
-> > > INT dev_id=3D7 event_id=3D255
-> > > INFO: gicv3: its-migration: No LPI received whereas (cpuid=3D2,
-> > > intid=3D8196) was expected
-> > > FAIL: gicv3: its-migration: dev7/eventid=3D255 triggers LPI 8196 on P=
-E #2
-> > > after migration"
-> > > =
+v5 -> v6:
+- Took into account Zenghui's comments, mostly functional: see invidual
+  history logs
+- fix wrong assert!
 
-> > > > +static void check_lpi_stats(const char *msg)
-> > > > +{
-> > > > +=A0=A0=A0 bool pass =3D false;
-> > > > +
-> > > > +=A0=A0=A0 mdelay(100);
-> > > =
+v4 -> v5:
+- 32b stubs moved back to arm/gic.c
+- some changes reordering
+- minor style issues
 
-> > > After changing this to 'mdelay(1000)', the above error doesn't show up
-> > > anymore. But it sounds strange that 100ms is not enough to deliver a
-> > > single LPI. I haven't dig it further but will get back here later.
-> > =
+v3 -> v4:
+- addressed comments from Drew and Zenghui
+- added "page_alloc: Introduce get_order()"
+- removed "arm: gic: Provide per-IRQ helper functions"
+- ITS files moved to lib64
+- and many more, see individual logs
 
-> > Did you find some time to investigate this issue. Changing 100 to 1000
-> > has a huge impact on the overall test duration and I don't think it is
-> > sensible. Could you see what is your minimal value that pass the tests?
-> =
+v2 -> v3:
+- fix 32b compilation
+- take into account Drew's comments (see individual diff logs)
 
-> I can reproduce this issue with a very *low* probability so I failed
-> to investigate it :-(.  (It might because the LPI was delivered to a
-> busy vcpu...)
-> =
+v1 -> v2:
+- took into account Zenghui's comments
+- collect R-b's from Thomas
 
-> You can leave it as it is until someone else complain about it again.
-> Or take the similar approach as check_acked() - wait up to 5s for the
-> interrupt to be delivered, and bail out as soon as we see it.
+References:
+[1] [kvm-unit-tests RFC 00/15] arm/arm64: add ITS framework
+    https://lists.gnu.org/archive/html/qemu-devel/2016-12/msg00575.html
 
-I think the check_acked approach would be the best approach.
+Execution:
+x For other ITS tests:
+  ./run_tests.sh -g its
 
-Thanks,
-drew
+x non migration tests can be launched invidually. For instance:
+  ./arm-run arm/gic.flat -smp 8 -append 'its-trigger'
 
-> =
+Eric Auger (13):
+  libcflat: Add other size defines
+  page_alloc: Introduce get_order()
+  arm/arm64: gic: Introduce setup_irq() helper
+  arm/arm64: gicv3: Add some re-distributor defines
+  arm/arm64: gicv3: Set the LPI config and pending tables
+  arm/arm64: ITS: Introspection tests
+  arm/arm64: ITS: its_enable_defaults
+  arm/arm64: ITS: Device and collection Initialization
+  arm/arm64: ITS: Commands
+  arm/arm64: ITS: INT functional tests
+  arm/run: Allow Migration tests
+  arm/arm64: ITS: migration tests
+  arm/arm64: ITS: pending table migration test
 
-> =
+ arm/Makefile.arm64         |   1 +
+ arm/Makefile.common        |   2 +-
+ arm/gic.c                  | 454 ++++++++++++++++++++++++++++++++++--
+ arm/run                    |   2 +-
+ arm/unittests.cfg          |  38 +++
+ lib/alloc_page.c           |   7 +-
+ lib/alloc_page.h           |   1 +
+ lib/arm/asm/gic-v3-its.h   |  27 +++
+ lib/arm/asm/gic-v3.h       |  29 +++
+ lib/arm/asm/gic.h          |   1 +
+ lib/arm/asm/processor.h    |   2 +
+ lib/arm/gic-v3.c           |  78 +++++++
+ lib/arm/gic.c              |  40 +++-
+ lib/arm/io.c               |  28 +++
+ lib/arm64/asm/gic-v3-its.h | 174 ++++++++++++++
+ lib/arm64/gic-v3-its-cmd.c | 459 +++++++++++++++++++++++++++++++++++++
+ lib/arm64/gic-v3-its.c     | 171 ++++++++++++++
+ lib/libcflat.h             |   3 +
+ 18 files changed, 1486 insertions(+), 31 deletions(-)
+ create mode 100644 lib/arm/asm/gic-v3-its.h
+ create mode 100644 lib/arm64/asm/gic-v3-its.h
+ create mode 100644 lib/arm64/gic-v3-its-cmd.c
+ create mode 100644 lib/arm64/gic-v3-its.c
 
-> Thanks,
-> Zenghui
-> =
-
-> =
-
-
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+--=20
+2.20.1

@@ -1,109 +1,98 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2192981lfi;
-        Thu, 2 Apr 2020 09:47:28 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLet4CfJ1fblNGhjWi8/nJvhaXp1eQ9kQ9xwiCSK5t3r+h8709Z7OqA6oYlhR0wWJuXJruE
-X-Received: by 2002:ac8:32f2:: with SMTP id a47mr4074022qtb.62.1585846048180;
-        Thu, 02 Apr 2020 09:47:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585846048; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2212660lfi;
+        Thu, 2 Apr 2020 10:06:15 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIBzgbArWKf0h32PoMNnVxZ7HOWuiaWx1XKMHe+zEul3qwF0I4E4whRiwnovoRBLRg/Iehb
+X-Received: by 2002:ac8:7292:: with SMTP id v18mr3981668qto.304.1585847175532;
+        Thu, 02 Apr 2020 10:06:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585847175; cv=none;
         d=google.com; s=arc-20160816;
-        b=pQ2p/MZisyjocHT9vfQgPCbfsmdydRn4r13bd99q5eS1b3MVoazM1cgbewMYUAY2LU
-         CggoFxhS7KvRVYsDBXD5L9rKWtdbYLslOmKZ3tXVApXm678fA6d8tHQyZEFjOAq1P38U
-         qeX1u2AVSlRSjXDw3APjD3Ae2cW583JHYrodh6CLduF8ep742mwuOJjZhadfPeV5OzOP
-         ByY4AOH/tPbt6WmLh35+2Z45UAzTjB1UlGOcu506y+icmfcZ/IEwPfIcdSuHAoXfx/kZ
-         ZT6VJPb+zTBtp+wGhvRfQdeJvD4MURGDJsZ++LlKTa+W8CU+mUu0anVKTAyT5kHoN7Nt
-         D+hA==
+        b=m54bcD1AFS7ZqnD6hjhSkbUTAST8oJwjsk+2RopJm9WVy1L+aJG3AeUrXIEC9y6qay
+         UkSilEVIkY7wFfVTFKVDynUKSle1W9KKvywzg4gSreh28u8tE5ljvEp1APyfpVBAzfKN
+         bP+GpKfcqYBR72OdFAxgOS5vRaX+Nn6FD0b7d08yua7ExtQkfhY2r8rqHzQkXpxWwxww
+         CNhFL9JpQ6lZwY4V7cvvCBWhYHYDV4Vo+d4crqcljt9anPPFc2lmhz1xmcTqq7X0AZUv
+         EHN7b0BN2X23aT5V6XLUPzgtJ5vIvVWNEF9zm+/C+2vQTiV8Ng1KUBy1XpbEdbNmyxM6
+         M/uQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=k5V0yigrc2CwpTkB3juzLB9oQMb4n2kUeWssfkY1zfQ=;
-        b=JUSJtJHN/TsG7M65x1RhRQBQnA7HbRF15+PSqhGe2JwLm8K0sO6oFUrNErJo63U/JH
-         /iZg7J4VPXNDcHICyPAObM0vzFfLFr3IM/s8swWBIyTDuhf87ssKnbr8BP/cpFKIfckU
-         6M89Ph4jPQTJuks3IbyxXi/hnrifM1nl3rtrTVoGt+UV03dpBceRICf5hqt4mNUJZyiU
-         X6mT6+6u6L6zKx8jmLpSBjJKm3yrlF3n4LP9DY8aKZQ2G3suNNlZ1VioK/qFB9/OOsHp
-         fMJfc/LQ8FXIyPizIXcZyHAr1vT38bVdbJSaoKiVghe9zp5RuwkOdQ9t3tmYzXv4cmEs
-         lamQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=TbYWU2Jlqfbeqyj2fl2VXxgfCuBG4GtNYBQeDD+Vx/A=;
+        b=KCRsCzH06iHs5Yldxr2ragvF79caAjnj6odwOqITyHw7kiBAykcZUFuegKz74H3I5N
+         UxMCX8H3tnaxFbD9rxH14DDDp5XF6MlvZwcNp+bm/yEh+ZQnewiwtwhB7B2y72xPWDsb
+         0F+HsKcDFEJx9ZznWEjNyYDzxMbpdt7a4Dkkv6+QCbBA4Tg7b/mLILd/RCAJgVovvpua
+         szqaDmy7snNkLIBMCzYt+27bbBpOjAaTqK819dtVFFBanNSfw4h6DRtIE5Ml70NtDTeo
+         5E5oRtY/FzIHMXe2V8YKXrjeXhaE2EOqh49tzYavGmlXjb66THcKNxIsHfqXxXtUZz0o
+         2/wA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RbGo5CRt;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=e0cM11So;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x195si3736561qka.269.2020.04.02.09.47.28
+        by mx.google.com with ESMTPS id d23si3981978qte.13.2020.04.02.10.06.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Apr 2020 09:47:28 -0700 (PDT)
+        Thu, 02 Apr 2020 10:06:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RbGo5CRt;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=e0cM11So;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44600 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:44874 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jK303-0005z2-IZ
-	for alex.bennee@linaro.org; Thu, 02 Apr 2020 12:47:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39765)
+	id 1jK3IE-0007Oi-Th
+	for alex.bennee@linaro.org; Thu, 02 Apr 2020 13:06:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42728)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1jK2zp-0005wf-VE
- for qemu-arm@nongnu.org; Thu, 02 Apr 2020 12:47:16 -0400
+ (envelope-from <alistair23@gmail.com>) id 1jK3I2-0007Lm-Uy
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2020 13:06:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1jK2zn-0006X8-IN
- for qemu-arm@nongnu.org; Thu, 02 Apr 2020 12:47:13 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:53586
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1jK2zn-0006VG-A6
- for qemu-arm@nongnu.org; Thu, 02 Apr 2020 12:47:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585846030;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=k5V0yigrc2CwpTkB3juzLB9oQMb4n2kUeWssfkY1zfQ=;
- b=RbGo5CRtqyAxkAnCgvpaCKVfOKEOG/c0HfhYt9AJPjoDFezl4Am1uedQxuZMoe3zZEHPCa
- EexlIGayt9lrQnqr01bh/Z4vaacdNNX4yKd+BZf3CzMutF5PtB5g13rdnaZZghfnSGmU7B
- KJgUKpN4hA4Y0Wyzm/CCQ6tzHhG8z2g=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-223-DW2gLHcqNMqKTxyLy4ykpg-1; Thu, 02 Apr 2020 12:47:05 -0400
-X-MC-Unique: DW2gLHcqNMqKTxyLy4ykpg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 287B81005516;
- Thu,  2 Apr 2020 16:47:02 +0000 (UTC)
-Received: from [10.36.112.58] (ovpn-112-58.ams2.redhat.com [10.36.112.58])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BF85D9B924;
- Thu,  2 Apr 2020 16:46:50 +0000 (UTC)
-Subject: Re: [RFC v6 00/24] vSMMUv3/pSMMUv3 2 stage VFIO integration
-To: Zhangfei Gao <zhangfei.gao@linaro.org>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, alex.williamson@redhat.com, jacob.jun.pan@linux.intel.com,
- yi.l.liu@intel.com
-References: <20200320165840.30057-1-eric.auger@redhat.com>
- <73b1c3e1-a418-f57c-d949-261250d6a79b@linaro.org>
- <c15f98fb-01d7-cb2f-5401-4b648997fcba@redhat.com>
- <fbae2237-11ed-9527-0c01-340d5092ddcc@linaro.org>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <86c0b1e4-8073-1644-f420-0b548c8f8895@redhat.com>
-Date: Thu, 2 Apr 2020 18:46:49 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ (envelope-from <alistair23@gmail.com>) id 1jK3I2-0003QM-0W
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2020 13:06:02 -0400
+Received: from mail-vs1-xe44.google.com ([2607:f8b0:4864:20::e44]:38285)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1jK3Hz-0003P2-R5; Thu, 02 Apr 2020 13:05:59 -0400
+Received: by mail-vs1-xe44.google.com with SMTP id x206so2869243vsx.5;
+ Thu, 02 Apr 2020 10:05:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=TbYWU2Jlqfbeqyj2fl2VXxgfCuBG4GtNYBQeDD+Vx/A=;
+ b=e0cM11SorEKbqSLmbzZ7DEWcUik3F1Rfxu8McKj9IOdp0SbK4nw3SBO3Bo881u6Jsx
+ LQLrhgJW29WV3vzu6mvARz+CPnpyyDCxinj8nyf5gZ8jMYsw4ONbW73dXnrROVQv3g+a
+ Mdhd8pZRF2Jf3VH11cMfLnlcv1fD/6UWPFBLU1nHEe+PiOpWtbUq1zOxbDvWfMKzwolW
+ bR2HoitgaIObMOkfWC4EI0kjhqfmh46KVEmMxjx7BxP2xFaPlgA/Nj4nJ8yc4DtNogyt
+ qvnVA0rpoBYPRSBVUprURTSJhV7DL7xQPuGdYLWh9E3td3L/JK6mjNDYH8UxErFz+/wN
+ v2DQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=TbYWU2Jlqfbeqyj2fl2VXxgfCuBG4GtNYBQeDD+Vx/A=;
+ b=BHhMjE/ro+qhSlouqSTA33KcDCHLQrUYhZ37JDTEYcD355gpAq7NmnJU8+jyaJlLKP
+ HASCergjFq3TzxSLW1bUAlzF7zbqWir/lMKWz0loRawOs9feMMQ+54JjdOVlOg8Ez6KK
+ TH3nPlsZQvPa+OUTyVK/8xEbNXhC9oYanUJCtkgDe7Zh4J8YoiZNQF9eBIDd6FtsxLlK
+ 8lBLs6CHOlWdRvmzA7g7SFckd8EqW/YYcFFM+1sWD8zz96w/xD2lf9qn6Aqye1LSVFH2
+ r2cnYgRLS4QX4Zr6LX8c/Z/jPGqsYNuhtZrKU9rFZgdBIDGass8FsNQHu2edyNm4aK7L
+ yGfw==
+X-Gm-Message-State: AGi0PubB9Iy6ZmZdyJwDYZSbDFIN0kPL90n4yJQIYh7HMotNeGFnRgxn
+ By44gjvoT08+AeG2R6mHrQGxOSnuYYMJlitgZjw=
+X-Received: by 2002:a05:6102:730:: with SMTP id
+ u16mr2889551vsg.70.1585847158764; 
+ Thu, 02 Apr 2020 10:05:58 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <fbae2237-11ed-9527-0c01-340d5092ddcc@linaro.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+References: <20200402134721.27863-1-edgar.iglesias@gmail.com>
+ <20200402134721.27863-2-edgar.iglesias@gmail.com>
+In-Reply-To: <20200402134721.27863-2-edgar.iglesias@gmail.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 2 Apr 2020 09:57:46 -0700
+Message-ID: <CAKmqyKMUesgAAvU+e1gbiv3bK9QxpJHtM-GzbXxLfLiEF8eRKg@mail.gmail.com>
+Subject: Re: [PATCH v1 1/5] dma/xlnx-zdma: Remove comment
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::e44
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,121 +104,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: jean-philippe@linaro.org, tnowicki@marvell.com, maz@kernel.org,
- shameerali.kolothum.thodi@huawei.com, peterx@redhat.com, bbhushan2@marvell.com,
- will@kernel.org
+Cc: figlesia@xilinx.com, Peter Maydell <peter.maydell@linaro.org>,
+ Edgar Iglesias <edgar.iglesias@xilinx.com>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Stefano Stabellini <sstabellini@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7uijXp6MsEPT
+X-TUID: TABn5nB4WCXm
 
-Hi Zhangfei,
+On Thu, Apr 2, 2020 at 6:49 AM Edgar E. Iglesias
+<edgar.iglesias@gmail.com> wrote:
+>
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+>
+> Remove comment.
+>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-On 3/31/20 10:24 AM, Zhangfei Gao wrote:
-> Hi, Eric
->=20
-> On 2020/3/31 =E4=B8=8B=E5=8D=884:12, Auger Eric wrote:
->> Hi Zhangfei,
->>
->> On 3/31/20 8:42 AM, Zhangfei Gao wrote:
->>> Hi, Eric
->>>
->>> On 2020/3/21 =E4=B8=8A=E5=8D=8812:58, Eric Auger wrote:
->>>> Up to now vSMMUv3 has not been integrated with VFIO. VFIO
->>>> integration requires to program the physical IOMMU consistently
->>>> with the guest mappings. However, as opposed to VTD, SMMUv3 has
->>>> no "Caching Mode" which allows easy trapping of guest mappings.
->>>> This means the vSMMUV3 cannot use the same VFIO integration as VTD.
->>>>
->>>> However SMMUv3 has 2 translation stages. This was devised with
->>>> virtualization use case in mind where stage 1 is "owned" by the
->>>> guest whereas the host uses stage 2 for VM isolation.
->>>>
->>>> This series sets up this nested translation stage. It only works
->>>> if there is one physical SMMUv3 used along with QEMU vSMMUv3 (in
->>>> other words, it does not work if there is a physical SMMUv2).
->>>>
->>>> - We force the host to use stage 2 instead of stage 1, when we
->>>> =C2=A0=C2=A0=C2=A0 detect a vSMMUV3 is behind a VFIO device. For a VFI=
-O device
->>>> =C2=A0=C2=A0=C2=A0 without any virtual IOMMU, we still use stage 1 as =
-many existing
->>>> =C2=A0=C2=A0=C2=A0 SMMUs expect this behavior.
->>>> - We use PCIPASIDOps to propage guest stage1 config changes on
->>>> =C2=A0=C2=A0=C2=A0 STE (Stream Table Entry) changes.
->>>> - We implement a specific UNMAP notifier that conveys guest
->>>> =C2=A0=C2=A0=C2=A0 IOTLB invalidations to the host
->>>> - We register MSI IOVA/GPA bindings to the host so that this latter
->>>> =C2=A0=C2=A0=C2=A0 can build a nested stage translation
->>>> - As the legacy MAP notifier is not called anymore, we must make
->>>> =C2=A0=C2=A0=C2=A0 sure stage 2 mappings are set. This is achieved thr=
-ough another
->>>> =C2=A0=C2=A0=C2=A0 prereg memory listener.
->>>> - Physical SMMU stage 1 related faults are reported to the guest
->>>> =C2=A0=C2=A0=C2=A0 via en eventfd mechanism and exposed trhough a dedi=
-cated VFIO-PCI
->>>> =C2=A0=C2=A0=C2=A0 region. Then they are reinjected into the guest.
->>>>
->>>> Best Regards
->>>>
->>>> Eric
->>>>
->>>> This series can be found at:
->>>> https://github.com/eauger/qemu/tree/v4.2.0-2stage-rfcv6
->>>>
->>>> Kernel Dependencies:
->>>> [1] [PATCH v10 00/11] SMMUv3 Nested Stage Setup (VFIO part)
->>>> [2] [PATCH v10 00/13] SMMUv3 Nested Stage Setup (IOMMU part)
->>>> branch at:
->>>> https://github.com/eauger/linux/tree/will-arm-smmu-updates-2stage-v10
->>> Really appreciated that you re-start this work.
->>>
->>> I tested your branch and some update.
->>>
->>> Guest: https://github.com/Linaro/linux-kernel-warpdrive/tree/sva-devel
->>> <https://github.com/Linaro/linux-kernel-warpdrive/tree/sva-devel>
->>> Host:
->>> https://github.com/eauger/linux/tree/will-arm-smmu-updates-2stage-v10
->>> <https://github.com/eauger/linux/tree/will-arm-smmu-updates-2stage-v10>
->>> qemu: https://github.com/eauger/qemu/tree/v4.2.0-2stage-rfcv6
->>> <https://github.com/eauger/qemu/tree/v4.2.0-2stage-rfcv6>
->>>
->>> The guest I am using is contains Jean's sva patches.
->>> Since currently they are many patch conflict, so use two different tree=
-.
->>>
->>> Result
->>> No-sva mode works.
->>> This mode, guest directly get physical address via ioctl.
->> OK thanks for testing
->>> While vSVA can not work, there are still much work to do.
->>> I am trying to SVA mode, and it fails, so choose no-sva instead.
->>> iommu_dev_enable_feature(parent, IOMMU_DEV_FEAT_SVA)
->> Indeed I assume there are plenty of things missing to make vSVM work on
->> ARM (iommu, vfio, QEMU). I am currently reviewing Jacob and Yi's kernel
->> and QEMU series on Intel side. After that, I will come back to you to
->> help. Also vSMMUv3 does not support multiple contexts at the moment. I
->> will add this soon.
->>
->>
->> Still the problem I have is testing. Any suggestion welcome.
->>
->>
-> To make sure
-> Do you mean you need a environment for testing?
->=20
-> How about Hisilicon kunpeng920, arm64 platform supporting SVA in host now=
-.
-> There is such a platform in linaro mlab that I think we can share.
-> Currently I am testing with uacce,
-> By testing a user driver (hisi zip accelerator) in guest, we can test
-> vSVA and PASID easily.
-Sorry for the delay. I am currently investigating if this could be
-possible. Thank you for the suggestion!
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Best Regards
+Alistair
 
-Eric
->=20
-> Thanks
->=20
-
+> ---
+>  hw/dma/xlnx-zdma.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
+> index 2d9c0a0d5e..a6c5b2304a 100644
+> --- a/hw/dma/xlnx-zdma.c
+> +++ b/hw/dma/xlnx-zdma.c
+> @@ -511,7 +511,6 @@ static void zdma_process_descr(XlnxZDMA *s)
+>          zdma_src_done(s);
+>      }
+>
+> -    /* Load next descriptor.  */
+>      if (ptype == PT_REG || src_cmd == CMD_STOP) {
+>          ARRAY_FIELD_DP32(s->regs, ZDMA_CH_CTRL2, EN, 0);
+>          zdma_set_state(s, DISABLED);
+> --
+> 2.20.1
+>
+>

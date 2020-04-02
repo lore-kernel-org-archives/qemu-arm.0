@@ -1,118 +1,168 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1694073lfi;
-        Thu, 2 Apr 2020 01:47:22 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIiQgRzp3Gotv+sPj0VpsySNi4TrrOzrtZv2ZazqJRhMfO260f/1pYVl8F+w4uWfejLIVUj
-X-Received: by 2002:a05:620a:69b:: with SMTP id f27mr2415072qkh.285.1585817242800;
-        Thu, 02 Apr 2020 01:47:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585817242; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1709340lfi;
+        Thu, 2 Apr 2020 02:01:54 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKrkN4BoQfHrg31KlAd/L1iU4TlFlM006uJoeJUQkDCnZN0+k2Dy1YG9taFUKLvaoVGaBXG
+X-Received: by 2002:aed:33a6:: with SMTP id v35mr1786911qtd.328.1585818114753;
+        Thu, 02 Apr 2020 02:01:54 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1585818114; cv=pass;
         d=google.com; s=arc-20160816;
-        b=h4wkgafNMYOylFD5GvQOq6eHHIpOZ00RI74irJd0cFaeafxei0aohcjJbSuV9WzJcW
-         HAY3aBobm2KNWlIXxdGdodgjwk4laXcch+DdTKaUeSfTcLF1nQw/BpDsDko6Vd29jWy7
-         bFYfGROrZwRuM33/2xjDsTU53UIgl5HB5qv/8hGZajIRl42YJdLGef37PtdVnz7YLVmS
-         IZgFe67boEpsAsV+KhEnak77IrwUKRrq3l6HWOrvBr+FIM6pJm1ZbHIKxe9LvdAQg1KV
-         O9OgR9ghFtjrkbiqY0Ess+o3301iabxOVy+pi9xre0YgXuAZHwv9/DIrS6aaLQCrCRTv
-         zeZQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=AGEIZFIQWklGo7QBoBnAV9PRUDRxtvdpu32nW8GHEriP8JO//OedEguvWGPBmzQsnQ
+         NN61IJulnP1kpScvW9y6zetk3f8KT2DXrIKdxjwMBi2Al/m71wJW9n78gg3LhSkauhP6
+         ZqsTipGihYifoVOsLfGkOmm+VbvzhUnarRRkkat6SC7OI4v0Sm40yOt61OwPiytbIG7Q
+         6OAk7q2wGLvQUobXVOmPDJSJDwIjYjddjROR6NdXlvbLpJNK8dj5SSvtrAAKilfE4brF
+         qZBCdRTOksGu11rmvJOqTvZkvxIvKvL+bNAMQkjSCIpoFlY36lfL09AGE4OukLfCcJfz
+         LU0g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=lj30UAt8X7wWPT0eCo7ZWeFtSAuq0vDSwO2ZWdmBTpk=;
-        b=IofCFqV/3qesdVxT8CYSGyLYVFjWwxmFYE+6VOFtuJXscFJWU85LCxmTaiuPM/1LtI
-         23AEupubKmfSN+pFQ6Zb4FklCYkU6klNuV7Mdr7cchzMHZMFSEJmDjVg33kW0eZNWZSm
-         w8aV5ulEcLsowUXhviJ8/hikC6jDr4xEZ5Gn0HUdLam8feMgJ1PSwU60zOgIcrYmVtSF
-         4DARfPQWXP54YZOso33q8jCiUNsNrYV6WolABTpNLxGkDCqwHQzSyOd6bQfZ3CsT8dR5
-         dDNMfEGWcqWgKl883oI5JYNtoGe4JvgytDlNtzTEbA+istZRp/5UCbe2TLDPZxw6Ms2A
-         Bmdw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eXNkAYMT;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from:dkim-signature:dkim-signature;
+        bh=NkUACl3n2On6yFv3onEkF8DwkWU05vpPa8YQ8Lw2z9Y=;
+        b=vOOdWETISc6dP+hQmow1jhVZK2wUkF9/2Eap3s2GYkyTjatMiHoAsvWby7rkAMr8C/
+         n/mYikqJpwOB1iLnpW7cSFxbpy1Fdhdh0iNFW6Yg5IfuBFksn0LKqAlXsapp8AbvIw8u
+         mQJn0EDp1ukcCFPIMb5mbmYkSgnUvzdBfSaANYrxxrRQbxDeb3u6WRhZ72nBlL5mzCsF
+         6ajqJCAFfOptGFyeHSBMktFsUR6DQ0N6oNfx0MlB8VNAY++ldK73neafuxtiZJais5zE
+         G289CkR7UX/yOa9g8hWV29pPbBEHJeP88NcUWdD2lVjItbI4OABFoJpmF+jVQ54WSPBZ
+         aT1Q==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=fail header.i=@marvell.com header.s=pfpt0818 header.b="TWVJhJw/";
+       dkim=pass header.i=@marvell.onmicrosoft.com header.s=selector1-marvell-onmicrosoft-com header.b=OjqK81US;
+       arc=pass (i=1 spf=pass spfdomain=marvell.com dkim=pass dkdomain=marvell.com dmarc=pass fromdomain=marvell.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=marvell.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l10si3099110qtn.120.2020.04.02.01.47.22
+        by mx.google.com with ESMTPS id m5si2119286qvb.192.2020.04.02.02.01.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Apr 2020 01:47:22 -0700 (PDT)
+        Thu, 02 Apr 2020 02:01:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eXNkAYMT;
+       dkim=fail header.i=@marvell.com header.s=pfpt0818 header.b="TWVJhJw/";
+       dkim=pass header.i=@marvell.onmicrosoft.com header.s=selector1-marvell-onmicrosoft-com header.b=OjqK81US;
+       arc=pass (i=1 spf=pass spfdomain=marvell.com dkim=pass dkdomain=marvell.com dmarc=pass fromdomain=marvell.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35382 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=marvell.com
+Received: from localhost ([::1]:35620 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jJvVS-000111-8B
-	for alex.bennee@linaro.org; Thu, 02 Apr 2020 04:47:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44633)
+	id 1jJvjW-0001om-6b
+	for alex.bennee@linaro.org; Thu, 02 Apr 2020 05:01:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47971)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1jJvVK-0000zJ-80
- for qemu-arm@nongnu.org; Thu, 02 Apr 2020 04:47:15 -0400
+ (envelope-from <prvs=336187d25f=bbhushan2@marvell.com>)
+ id 1jJvjJ-0001lF-Tk
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2020 05:01:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1jJvVJ-0005Q9-8H
- for qemu-arm@nongnu.org; Thu, 02 Apr 2020 04:47:14 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:48046
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1jJvVJ-0005PY-44
- for qemu-arm@nongnu.org; Thu, 02 Apr 2020 04:47:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585817232;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lj30UAt8X7wWPT0eCo7ZWeFtSAuq0vDSwO2ZWdmBTpk=;
- b=eXNkAYMTg1d14p4p8XmqOM+4Kk3EtG18avTGwyWzWwPPKo1UdWCLDXFYBkbQYr3Jnp5Kzh
- zbNwv7k4+CT7TKbNflHuee4Tp9ZRtdxGF/HpbxI56C6OjH5saOVDm44tn0Bek++41SXK4V
- 8EtsSM0upmwyi4Nt9y3rpFMt/VNnOQM=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-316-eGXPWPdtNdKD34Hriq-Pvw-1; Thu, 02 Apr 2020 04:47:11 -0400
-X-MC-Unique: eGXPWPdtNdKD34Hriq-Pvw-1
-Received: by mail-wm1-f70.google.com with SMTP id w8so1097676wmk.5
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2020 01:47:11 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=lj30UAt8X7wWPT0eCo7ZWeFtSAuq0vDSwO2ZWdmBTpk=;
- b=tUru0E2bAyvzP4v/4MQLUYcVO+KDyG1T9brsrohwrNntqgtih9nw3ZcT6OU5nj6hAw
- WVvaAoC1/YR3rupGsBAgmrMIeGkBHBHouphkcke9mBHlHxdxtDPw7iuMWBi9KOE/kNxH
- yOdq+T7D9MKSH3cLmA18o1e7stAn7esLbUyfXsO7BUA9l/sfur0Nu8oFZgpWMbQnMhQc
- SZqCHO26G2CHdNwU9ASJOScNFkPdyg62hYwa77Kux3xOX3/AG2p8zTq0IrJ7HJryxSff
- LpXVbH7xv4igwaO9VSJSneBhk0GzoegVacvgZ1TG5maAhRsukdJoYSbFXDfdBXqP2neC
- BX9w==
-X-Gm-Message-State: AGi0PuYQQKdWc0eaY+xcXNzPZuZs/CQmMpGZ3TEdfOfS1br/MYCZ68vf
- xwPYVkNKdlza84loYckb7ndAABAmLglkQncxv9ZC6LB18MFbe5kV3Dh78gZ/++txNzgA/1OBy+Q
- KoJMiyCaP160J
-X-Received: by 2002:adf:800e:: with SMTP id 14mr2251245wrk.369.1585817230138; 
- Thu, 02 Apr 2020 01:47:10 -0700 (PDT)
-X-Received: by 2002:adf:800e:: with SMTP id 14mr2251222wrk.369.1585817229828; 
- Thu, 02 Apr 2020 01:47:09 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:1868:42dd:216c:2c09?
- ([2001:b07:6468:f312:1868:42dd:216c:2c09])
- by smtp.gmail.com with ESMTPSA id z12sm6722573wrt.27.2020.04.02.01.47.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 Apr 2020 01:47:09 -0700 (PDT)
-Subject: Re: [PATCH v2] util/async: Add memory barrier to aio_ctx_prepare
-To: Ying Fang <fangying1@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-References: <20200402024431.1629-1-fangying1@huawei.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <2f8406fa-ae18-856b-938f-a804ff1b11c7@redhat.com>
-Date: Thu, 2 Apr 2020 10:47:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
-MIME-Version: 1.0
-In-Reply-To: <20200402024431.1629-1-fangying1@huawei.com>
+ (envelope-from <prvs=336187d25f=bbhushan2@marvell.com>)
+ id 1jJvjI-0008BZ-HA
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2020 05:01:41 -0400
+Received: from mx0b-0016f401.pphosted.com ([67.231.156.173]:31588)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <prvs=336187d25f=bbhushan2@marvell.com>)
+ id 1jJvjD-00088B-HC; Thu, 02 Apr 2020 05:01:35 -0400
+Received: from pps.filterd (m0045851.ppops.net [127.0.0.1])
+ by mx0b-0016f401.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 032916f7021528; Thu, 2 Apr 2020 02:01:25 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com;
+ h=from : to : cc :
+ subject : date : message-id : references : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=pfpt0818;
+ bh=NkUACl3n2On6yFv3onEkF8DwkWU05vpPa8YQ8Lw2z9Y=;
+ b=TWVJhJw/TKumKTma4GI1HDcpmR/7tld9C9cD1Dtdf3pCZHX9KCSMfRmsAv6KNqaIy0yj
+ 6yG/PeElqUJFjuYzecJEB3tR0P1HBBseJQ1mJmdQv6ioEOvjJ0fJPnljBg2z8u51o9EM
+ 8T9igaZmbKzp5r2NaFC4PByGMWIzlwrzDIGkpZawn781TZ8dplrcoNHRpZW+Tkfmbfag
+ cGVNdK4BiWvqakXGmtkIST52Zu1RmOmq0wU7mP3/nKMy9SYl6hthS9yHYtrKhmZ9/hQI
+ KFBCQUcM9h/YkRR/yipdDZUwpkGP/i8X3VN7Sytuh8INH4X7tNONOnY1ZRENCt0vEci4 NQ== 
+Received: from sc-exch04.marvell.com ([199.233.58.184])
+ by mx0b-0016f401.pphosted.com with ESMTP id 3046h61jf7-2
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
+ Thu, 02 Apr 2020 02:01:25 -0700
+Received: from SC-EXCH03.marvell.com (10.93.176.83) by SC-EXCH04.marvell.com
+ (10.93.176.84) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Thu, 2 Apr
+ 2020 02:01:23 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.175)
+ by SC-EXCH03.marvell.com (10.93.176.83) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2 via Frontend Transport; Thu, 2 Apr 2020 02:01:23 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=OmDX1mxxr+99mtWk5Jg1xikapDC44k8zKeSkdwSUPr6qIdGEd+Y10heq9aer+HWSl1LF0r4YfrfkJKleHlrZmHRTAQg3LoPVVfRVf7VYy6SwuqRBB1/5e6VVWbkxrEqwD32eE1n58gn6It8ZJmB8cSwL+LhSR9ig42sbt9CNLca7OLcw3MqINgUBK9/RGvBrHJCcGrb2XnC6jt1e966M5yU1gjZRfTehasIUOhYnyncmrAfQEDjaqeRUAuHvtm/jNjWDqDTHvWsN8jIGIBSDqNFsA12k53X9N6tM/nFNx3fuke4zsUJrYNM1NFmKqKzXzqKdjioQWH1JwmhflhUGMw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=NkUACl3n2On6yFv3onEkF8DwkWU05vpPa8YQ8Lw2z9Y=;
+ b=VV0cOJePS+/IfncVtF99LY8EDcVXd1PicDADfVdBgyNBpofzO7xO6GIKAWt0IVGytVoe0LFtegV4QQITQDBmDsDNaNe/7XrkrixcDRCla1FvzJsC+JEvXFlHM1+tY9kBpZtxQEUY6Y1ngf9extwAYkW0dNHgT0UA71sDDNmzQlKEYA+FajHVaLPaqZ9zi5fEqjJCc6baJdNd/JXjRknAdk3WXof9EWJCxWDBwUA/iBY/kbSHGZp1Ez8b5oYDGGXXgUCMk6Qyqvd8dt3tWTQ2HgHt0CHw0iowk8LQZU4QaADsRHu4AEPqZoUpTBWro/slWjQ6CAf98GFsQmVJCiVLHg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=marvell.com; dmarc=pass action=none header.from=marvell.com;
+ dkim=pass header.d=marvell.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=marvell.onmicrosoft.com; s=selector1-marvell-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=NkUACl3n2On6yFv3onEkF8DwkWU05vpPa8YQ8Lw2z9Y=;
+ b=OjqK81US55nU/WUbkVZKkxtP91Lz366QCYHr4pjjlv69jiF04cXx91v6URqn5q4SPlh20cpdkcDUh4c0hC2GIqBpxNZgY96evtVadhR1aBTnEcsRbAgm4Yra/TpSrrc7TofI45A2bjaHXrvITc7YbN5caGrvRpUabLyEfonVSmU=
+Received: from MWHPR1801MB1966.namprd18.prod.outlook.com
+ (2603:10b6:301:66::20) by MWHPR1801MB1888.namprd18.prod.outlook.com
+ (2603:10b6:301:68::27) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2856.18; Thu, 2 Apr
+ 2020 09:01:21 +0000
+Received: from MWHPR1801MB1966.namprd18.prod.outlook.com
+ ([fe80::b417:ff60:caba:11a1]) by MWHPR1801MB1966.namprd18.prod.outlook.com
+ ([fe80::b417:ff60:caba:11a1%7]) with mapi id 15.20.2856.019; Thu, 2 Apr 2020
+ 09:01:21 +0000
+From: Bharat Bhushan <bbhushan2@marvell.com>
+To: Alex Williamson <alex.williamson@redhat.com>, Auger Eric
+ <eric.auger@redhat.com>
+Subject: RE: [EXT] Re: [PATCH v9 1/9] hw/vfio/common: Remove error print on
+ mmio region translation by viommu
+Thread-Topic: [EXT] Re: [PATCH v9 1/9] hw/vfio/common: Remove error print on
+ mmio region translation by viommu
+Thread-Index: AQHWAO+QkxQYttOMmkGEh3oW5XA+3qhWzhWAgARaBACAAATkAIAKaXPQ
+Date: Thu, 2 Apr 2020 09:01:21 +0000
+Message-ID: <MWHPR1801MB196612966851882A99A6D3F3E3C60@MWHPR1801MB1966.namprd18.prod.outlook.com>
+References: <20200323084617.1782-1-bbhushan2@marvell.com>
+ <20200323084617.1782-2-bbhushan2@marvell.com>
+ <20200323170835.5021f845@w520.home>
+ <8ec6af3c-6bd7-a3dc-c531-16db6b2089c5@redhat.com>
+ <20200326115318.094ab79a@x1.home>
+In-Reply-To: <20200326115318.094ab79a@x1.home>
+Accept-Language: en-IN, en-US
 Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [122.179.45.151]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 016e18ba-d24a-4e3f-b0af-08d7d6e469e9
+x-ms-traffictypediagnostic: MWHPR1801MB1888:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <MWHPR1801MB1888CF4C2093E631E3CDDC38E3C60@MWHPR1801MB1888.namprd18.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:321;
+x-forefront-prvs: 0361212EA8
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR1801MB1966.namprd18.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(10009020)(4636009)(39860400002)(366004)(396003)(136003)(346002)(376002)(66556008)(33656002)(2906002)(8936002)(66446008)(8676002)(316002)(76116006)(6506007)(53546011)(66476007)(478600001)(64756008)(71200400001)(5660300002)(81166006)(81156014)(86362001)(9686003)(66946007)(186003)(26005)(7696005)(7416002)(55016002)(52536014)(54906003)(110136005)(4326008);
+ DIR:OUT; SFP:1101; 
+received-spf: None (protection.outlook.com: marvell.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: +zIyUKzEd3yOdlLT4vAikiNBjRmt3P4CBPBe10tmB73iV+whNChMQb8BWTFza8lNDgt1LeZ7ZdE5vFuNtTmIe9Yqix9SpW5B3VQB1wIbbYvtQjKuhOGCRtGjMb/SRsvqSlb51jDMQPmZno0t93SiTUmHVBmo/r5X0dOd61TZMjcYsFriEW1Ypu0PbGEMYNosxmKHkDdKi0W1teWnYtg8ay+Yjc+VdNoz/MOyS7C/CpQYRIZUN4x1ZMbGvHiCEAHhcHzU1RR8PLDSe/iV5Sg61H3uHlTyjD/QEe8z9KqTACemSyMWYl7r44h2WtpVIcBVuLFET0azqolpDD7Dtcqx0i6hXbIkjdw3EsH9K/G9ianDcq7v/5WLw3MhTvqX3hX22njcamP4Vflpewl+TzVEVzikRekUzsPFdppBgYLr2rWmkjOgPG1yWG4/xu8DFPUp
+x-ms-exchange-antispam-messagedata: BMXEjc7uFnw16Ck+y3RUrWeanCRLYGOZyvf03WuLV6583xGvg6u153IpeHQO/mtjpXK/psAKigJbPSe8h+ufwYIltCf+f/bToc+fHtcanotj+7NiTzduWjSQyR/jdlggMwU7/IB6OCP9wjV8iCBsyw==
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-Network-Message-Id: 016e18ba-d24a-4e3f-b0af-08d7d6e469e9
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Apr 2020 09:01:21.1946 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 70e1fb47-1155-421d-87fc-2e58f638b6e0
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: MUsjhc3QWhDbEtp3OrqJUxryDWD0t5wozfQyd0Y+izfFsSFYTgPcLczqUMePOlgnLrVvoqhQzlEx9osIzkw8pw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR1801MB1888
+X-OriginatorOrg: marvell.com
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
+ definitions=2020-04-02_01:2020-03-31,
+ 2020-04-02 signatures=0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 67.231.156.173
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,47 +174,124 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: fam@euphon.net, wu.wubin@huawei.com, qemu-stable@nongnu.org,
- stefanha@redhat.com, zhang.zhanghailiang@huawei.com
+Cc: "yang.zhong@intel.com" <yang.zhong@intel.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "kevin.tian@intel.com" <kevin.tian@intel.com>,
+ "Tomasz Nowicki \[C\]" <tnowicki@marvell.com>,
+ "mst@redhat.com" <mst@redhat.com>, "drjones@redhat.com" <drjones@redhat.com>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "bharatb.linux@gmail.com" <bharatb.linux@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "linuc.decode@gmail.com" <linuc.decode@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pVHcnuXZ5Itm
+X-TUID: fKNthO3Oyu8U
 
-On 02/04/20 04:44, Ying Fang wrote:
-> Normal VM runtime is not affected by this hang since there is always some
-> timer timeout or subsequent io worker come and notify the main thead.
-> To fix this problem, a memory barrier is added to aio_ctx_prepare and
-> it is proved to have the hang fixed in our test.
+Hi Eric/Alex,
 
-Hi Ying Fang,
+> -----Original Message-----
+> From: Alex Williamson <alex.williamson@redhat.com>
+> Sent: Thursday, March 26, 2020 11:23 PM
+> To: Auger Eric <eric.auger@redhat.com>
+> Cc: Bharat Bhushan <bbhushan2@marvell.com>; peter.maydell@linaro.org;
+> peterx@redhat.com; eric.auger.pro@gmail.com; kevin.tian@intel.com;
+> mst@redhat.com; Tomasz Nowicki [C] <tnowicki@marvell.com>;
+> drjones@redhat.com; linuc.decode@gmail.com; qemu-devel@nongnu.org; qemu-
+> arm@nongnu.org; bharatb.linux@gmail.com; jean-philippe@linaro.org;
+> yang.zhong@intel.com; David Gibson <david@gibson.dropbear.id.au>
+> Subject: [EXT] Re: [PATCH v9 1/9] hw/vfio/common: Remove error print on m=
+mio
+> region translation by viommu
+>=20
+> External Email
+>=20
+> ----------------------------------------------------------------------
+> On Thu, 26 Mar 2020 18:35:48 +0100
+> Auger Eric <eric.auger@redhat.com> wrote:
+>=20
+> > Hi Alex,
+> >
+> > On 3/24/20 12:08 AM, Alex Williamson wrote:
+> > > [Cc +dwg who originated this warning]
+> > >
+> > > On Mon, 23 Mar 2020 14:16:09 +0530
+> > > Bharat Bhushan <bbhushan2@marvell.com> wrote:
+> > >
+> > >> On ARM, the MSI doorbell is translated by the virtual IOMMU.
+> > >> As such address_space_translate() returns the MSI controller MMIO
+> > >> region and we get an "iommu map to non memory area"
+> > >> message. Let's remove this latter.
+> > >>
+> > >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> > >> Signed-off-by: Bharat Bhushan <bbhushan2@marvell.com>
+> > >> ---
+> > >>  hw/vfio/common.c | 2 --
+> > >>  1 file changed, 2 deletions(-)
+> > >>
+> > >> diff --git a/hw/vfio/common.c b/hw/vfio/common.c index
+> > >> 5ca11488d6..c586edf47a 100644
+> > >> --- a/hw/vfio/common.c
+> > >> +++ b/hw/vfio/common.c
+> > >> @@ -426,8 +426,6 @@ static bool vfio_get_vaddr(IOMMUTLBEntry *iotlb,
+> void **vaddr,
+> > >>                                   &xlat, &len, writable,
+> > >>                                   MEMTXATTRS_UNSPECIFIED);
+> > >>      if (!memory_region_is_ram(mr)) {
+> > >> -        error_report("iommu map to non memory area %"HWADDR_PRIx"",
+> > >> -                     xlat);
+> > >>          return false;
+> > >>      }
+> > >>
+> > >
+> > > I'm a bit confused here, I think we need more justification beyond
+> > > "we hit this warning and we don't want to because it's ok in this
+> > > one special case, therefore remove it".  I assume the special case
+> > > is that the device MSI address is managed via the SET_IRQS ioctl and
+> > > therefore we won't actually get DMAs to this range.
+> > Yes exactly. The guest creates a mapping between one giova and this
+> > gpa (corresponding to the MSI controller doorbell) because MSIs are
+> > mapped on ARM. But practically the physical device is programmed with
+> > an host chosen iova that maps onto the physical MSI controller's
+> > doorbell. so the device never performs DMA accesses to this range.
+> >
+> >   But I imagine the case that
+> > > was in mind when adding this warning was general peer-to-peer
+> > > between and assigned and emulated device.
+> > yes makes sense.
+> >
+> >   Maybe there's an argument to be made
+> > > that such a p2p mapping might also be used in a non-vIOMMU case.  We
+> > > skip creating those mappings and drivers continue to work, maybe
+> > > because nobody attempts to do p2p DMA with the types of devices we
+> > > emulate, maybe because p2p DMA is not absolutely reliable on bare
+> > > metal and drivers test it before using it.
+> > MSI doorbells are mapped using the IOMMU_MMIO flag (dma-iommu.c
+> > iommu_dma_get_msi_page).
+> > One idea could be to pass that flag through the IOMMU Notifier
+> > mechanism into the iotlb->perm. Eventually when we get this in
+> > vfio_get_vaddr() we would not print the warning. Could that make sense?
+>=20
+> Yeah, if we can identify a valid case that doesn't need a warning, that's=
+ fine by me.
+> Thanks,
 
-this part of the patch is correct, but I am not sure if a memory barrier
-is needed in aio_poll too.
+Let me know if I understood the proposal correctly:
 
-In addition, the memory barrier is quite slow on x86 and not needed there.
+virtio-iommu driver in guest will make map (VIRTIO_IOMMU_T_MAP) with VIRTIO=
+_IOMMU_MAP_F_MMIO flag for MSI mapping.
+In qemu, virtio-iommu device will set a new defined flag (say IOMMU_MMIO) i=
+n iotlb->perm in memory_region_notify_iommu(). vfio_get_vaddr() will check =
+same flag and will not print the warning.
 
-I am sorry for dropping the ball on this bug; I had a patch using
-relaxed atomics (atomic_set/atomic_read) but I never submitted it
-because I had placed it in a larger series.  Let me post it now.
+Is above correct?
 
-Thanks,
+Thanks
+-Bharat
 
-Paolo
-
-> 
-> diff --git a/util/async.c b/util/async.c
-> index b94518b..89a4f3e 100644
-> --- a/util/async.c
-> +++ b/util/async.c
-> @@ -250,7 +250,8 @@ aio_ctx_prepare(GSource *source, gint    *timeout)
->      AioContext *ctx = (AioContext *) source;
->  
->      atomic_or(&ctx->notify_me, 1);
-> -
-> +    /* Make sure notify_me is set before aio_compute_timeout */
-> +    smp_mb();
->      /* We assume there is no timeout already supplied */
->      *timeout = qemu_timeout_ns_to_ms(aio_compute_timeout(ctx));
->  
-> 
+>=20
+> Alex
 

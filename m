@@ -1,197 +1,219 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2285464lfi;
-        Thu, 2 Apr 2020 11:02:13 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIHcs05DNKbib11+i6OrsuwrxFZicPW8zpZzusqFytHicyf5/txUpIwQu+RbmozExd6LvnF
-X-Received: by 2002:a05:620a:66f:: with SMTP id a15mr4707819qkh.341.1585850532513;
-        Thu, 02 Apr 2020 11:02:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585850532; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2555969lfi;
+        Thu, 2 Apr 2020 15:56:21 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKJNI4v0iMrR3WF5dwcLBlKy9gX5SDmhusxUZXNGz6Gb5ui2DvP732zBTEfYc3+NbM8mt/w
+X-Received: by 2002:a05:620a:1590:: with SMTP id d16mr5605797qkk.489.1585868181322;
+        Thu, 02 Apr 2020 15:56:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585868181; cv=none;
         d=google.com; s=arc-20160816;
-        b=iWDOCBLkHP1tbLCLlmKpNLiEQDVauonIVaI/L0/pXUSMaP/19zsyqa2XZyUfpUsOeF
-         MGg1tY77+QJpdfPszT8t5dOVT8j6qTAzdMDUT2FWxX23c6aASyJiO3z3cvqy6H9kvMpT
-         /R2cWcO/ATzp3DkduZG04QVq61urStsLBYKw4zxr61cf2foGBUpPljwJPZp/ccuaDDbU
-         oVCZUJqzUKbpDU1jEBpei2RvDXsHGGK0TAuyHEkcqj4GHO+kgsQG9UaQx+ET4LbdiTXL
-         m19XZey28oDTS8zp9cnDl+E4esMsFXkjz/9Zivuk4xY/Wjkg4/g/AmaKrWyWWhn36OPI
-         fiOg==
+        b=C3pQMcy/DfuMaqXqfpj2IUX+jl7+edAvZfoyJyh2Q5Y+BmJDsqc3Gas6XNNw0YoJ70
+         28XSyrKgF5tDc2WKgckX/W71INzxXjCJyKODELxkkPHw/Ur3R1Fz4ejLm1Y6Ip+lWzBT
+         EXmFbh+pzlvgTVo2mplvOpwDcAoW0clScCYDDm3NAjPjQTJNwolBcjja8zITkpp1+Tss
+         r8ttW0Tl2RTU0GUhQ4usxijAPY+Cw9zTh/vR60QjLbyRBW9Rr9np72XCM8rOT1ym7fIK
+         zMDLV8RA4WyP3KozB3IZU5/bH7lpCqz4vJ8K+DDPx3P9kn8mOdUMX1rrm/qHGwWKae+X
+         GYiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=MOlYVGfGMDjFtUFlaMKQr6y/eGb0fXOFs8/O4Thx2qA=;
-        b=Z/80s0CHYvhogCItI03f4/H8oUM1P60CoCtccj4UkRKYxcBvrWXoHKxi3KMdqTgYN1
-         YuAf1pVf9zai4OZkNEiHEPd2i7aqn4zjIPEvMiF/Rsq/PSYkUwY6IN/g791tozFgnxKb
-         lsuV+jdrDkhw2gOwbsA1YRIAQdUSwp7d0kkUL766QumNV18EWNS7sUfRNQY+gCjbEQoa
-         auaRaXB+jgXgLPrOMTchjymqRWqfkC2Iwa76sBgw08m2QcMq9EVuV671uDs6pTqjxTAc
-         Z/NSMF86R58eb01YVxgg3OyabPt9huu1cwSF/Dz23CfANRMniwkZY99QFGf40oUfV3Zt
-         CuUw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=1nkyQA9MCDPk2sT0OluSIvutSIHYXPNrx24fVKKyB8c=;
+        b=CVWyvVZYBkEADLbT/QgY+ItF4h3PwHtDPbnWI9uTaFGTgbeUADokJ1R7AnS6y7Tm4e
+         5BlXw+1FY0rT0dhBhDDT1uttTHjYUv1eBNuLaVA/Q99UZy7fJGFMcxstNh3nuozOZkan
+         L7u9DXevwyzq+BubTM+UXOAAMdFru5kOU4bgVldbWratzspN6EwmBJ/dgFl8CCBgIqCP
+         FvlJpzQzWktdq+IOW2+x8cW9sDEogExj634CiZVLsbN/GyDTTGmjsEpukJ4nH63wYsYV
+         kSLlFtJ75c1TEPKrOGp2/y7emLsM2ic2AqKv8lzg99Q0yFfslL67YHT2dCLv4CGGdfIm
+         4NSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=bbu75Kuk;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id o10si4102446qko.205.2020.04.02.11.02.11;
-        Thu, 02 Apr 2020 11:02:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=l3WFS0Sh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id k18si4275298qkg.117.2020.04.02.15.56.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 02 Apr 2020 15:56:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=bbu75Kuk;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 50EFD4B154;
-	Thu,  2 Apr 2020 14:02:11 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id htRpool69eXE; Thu,  2 Apr 2020 14:02:10 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 315384B107;
-	Thu,  2 Apr 2020 14:02:10 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 0ADFA4B0F2
- for <kvmarm@lists.cs.columbia.edu>; Thu,  2 Apr 2020 14:02:09 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nkql5V1UDyhN for <kvmarm@lists.cs.columbia.edu>;
- Thu,  2 Apr 2020 14:02:08 -0400 (EDT)
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
- [205.139.110.61])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 200F14B0C9
- for <kvmarm@lists.cs.columbia.edu>; Thu,  2 Apr 2020 14:02:08 -0400 (EDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585850527;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Tjp557QoSwX1zXO0Qt6n7kWqUIk7/59D04dmkiPODOE=;
- b=bbu75KukY0+WDO5Sb4UqSPMNfTWykKZ2uzm1YgLefeNoL9tOQDfsBRc421tuSwb/e3oYX7
- Cxcp/RjG2M1n8jx+nJlIoG9+67vVuBYoZieqqnCQvnzpFQ6ctSkUqbG2pNFbp3+q6x7Ih7
- vNtcklCOp180V2e4H9NqLSaWKThgdn0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-144-PBDxcm1jN-qIMcFRkyICVA-1; Thu, 02 Apr 2020 14:02:05 -0400
-X-MC-Unique: PBDxcm1jN-qIMcFRkyICVA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D257B13F6;
- Thu,  2 Apr 2020 18:01:57 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.192.77])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E3CBD118F22;
- Thu,  2 Apr 2020 18:01:50 +0000 (UTC)
-From: Andrew Jones <drjones@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
- kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Subject: [PATCH kvm-unit-tests] fixup! arm/arm64: ITS: pending table migration
- test
-Date: Thu,  2 Apr 2020 20:01:48 +0200
-Message-Id: <20200402180148.490026-1-drjones@redhat.com>
-In-Reply-To: <20200402145227.20109-1-eric.auger@redhat.com>
-References: <20200402145227.20109-1-eric.auger@redhat.com>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=l3WFS0Sh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48110 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jK8l2-0000ZF-PR
+	for alex.bennee@linaro.org; Thu, 02 Apr 2020 18:56:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38906)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <alistair23@gmail.com>) id 1jK8kv-0000Vg-Ts
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2020 18:56:14 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <alistair23@gmail.com>) id 1jK8ku-0007UJ-QQ
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2020 18:56:13 -0400
+Received: from mail-ua1-x942.google.com ([2607:f8b0:4864:20::942]:37718)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1jK8ks-0007SN-FG; Thu, 02 Apr 2020 18:56:10 -0400
+Received: by mail-ua1-x942.google.com with SMTP id l18so2028758uak.4;
+ Thu, 02 Apr 2020 15:56:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=1nkyQA9MCDPk2sT0OluSIvutSIHYXPNrx24fVKKyB8c=;
+ b=l3WFS0ShdCI70o02BEnsIH4nHqW2TGTkgUgDct73lz4Ceo93NMgHKTfajiUSkltsKV
+ 0zyA2hKCi2izp/L/dj22tiIV7SYIlqaz6UWF8s8Ju1Cy8Xe7X+qHsCicc/GJXRf27SyP
+ H0XNiUmuE8oBkQVCgzaLC6KJm36dbSSEQmO5Z9EAN/QvA820je9C69HXoyqT5/R8IG/k
+ ByzjA0kiAwLIOmumFv6plIc5bs/YI7my6o5yTz6E0MxarGC52MuSR9JxVFXCRCDdlb5A
+ DUlLn5bAejwlQtBQH7us9mTBMr7/a9XToRmflQl3oR6d4+nwhfOMYiN114a7ZBqK3YNX
+ TWfg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=1nkyQA9MCDPk2sT0OluSIvutSIHYXPNrx24fVKKyB8c=;
+ b=LDNErjQH6+O+4c/1pfuvDRxrYDZ4F2+vFUbrYEP2xL4mJTVMCB0CD7WsvdsOEtdVeL
+ 62et4OUNrpg+W9BDrASuvzapblyuaHbpD5YdrRFHUA0L0g9hE2+VreKvGkeUyOUvOo0p
+ eify9tviaFOLnGrslXrE7MsknMSp7lRbsxCbnmvh/Y+3XYg8hrVjLgWUD6fU0JnWF87H
+ GE2H8/4CQ2fPqFDjddbswdL0zkuwUW06kbLG9Cjdic/jfQwX+tl3HCgIuy+t9SC6t1K/
+ JNqFWkOt/LhoSjEBLOY0B3nq6IAG0NVAbBt7/GxEOaJvBizyT3CH++ogI6LZTD/QeOy9
+ DXUA==
+X-Gm-Message-State: AGi0PuYq9mGWx8MED6JtUGf8r5SDl0t7uDT0DjgpzMVlRnLC7ZmMAkoY
+ I7r5ushU/pZAkhlexIG3/WHh1RFuag4MkPJOLv4=
+X-Received: by 2002:a9f:2964:: with SMTP id t91mr4481268uat.21.1585868168528; 
+ Thu, 02 Apr 2020 15:56:08 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Cc: thuth@redhat.com, andre.przywara@arm.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+References: <20200402134721.27863-1-edgar.iglesias@gmail.com>
+ <20200402134721.27863-6-edgar.iglesias@gmail.com>
+In-Reply-To: <20200402134721.27863-6-edgar.iglesias@gmail.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 2 Apr 2020 15:47:56 -0700
+Message-ID: <CAKmqyKPjF8KQBEAkBJRTj02OuT3RutNHmA1BkZgbJ8tsztQ2EA@mail.gmail.com>
+Subject: Re: [PATCH v1 5/5] dma/xlnx-zdma: Reorg to fix CUR_DSCR
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::942
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: YMAja9UuULTB
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: figlesia@xilinx.com, Peter Maydell <peter.maydell@linaro.org>,
+ Edgar Iglesias <edgar.iglesias@xilinx.com>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Stefano Stabellini <sstabellini@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rrl4n1dTTQyb
 
-[ Without the fix this test would hang, as timeouts don't work with
-  the migration scripts (yet). Use errata to skip instead of hang. ]
-Signed-off-by: Andrew Jones <drjones@redhat.com>
----
- arm/gic.c  | 18 ++++++++++++++++--
- errata.txt |  1 +
- 2 files changed, 17 insertions(+), 2 deletions(-)
+On Thu, Apr 2, 2020 at 6:50 AM Edgar E. Iglesias
+<edgar.iglesias@gmail.com> wrote:
+>
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+>
+> Reorganize the descriptor handling so that CUR_DSCR always
+> points to the next descriptor to be processed.
+>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-diff --git a/arm/gic.c b/arm/gic.c
-index ddf0f9d09b14..c0781f8c2c80 100644
---- a/arm/gic.c
-+++ b/arm/gic.c
-@@ -12,6 +12,7 @@
-  * This work is licensed under the terms of the GNU LGPL, version 2.
-  */
- #include <libcflat.h>
-+#include <errata.h>
- #include <asm/setup.h>
- #include <asm/processor.h>
- #include <asm/delay.h>
-@@ -812,13 +813,23 @@ static void test_its_migration(void)
- 	check_lpi_stats("dev7/eventid=255 triggers LPI 8196 on PE #2 after migration");
- }
- 
-+#define ERRATA_UNMAPPED_COLLECTIONS "ERRATA_8c58be34494b"
-+
- static void test_migrate_unmapped_collection(void)
- {
--	struct its_collection *col;
--	struct its_device *dev2, *dev7;
-+	struct its_collection *col = NULL;
-+	struct its_device *dev2 = NULL, *dev7 = NULL;
-+	bool test_skipped = false;
- 	int pe0 = 0;
- 	u8 config;
- 
-+	if (!errata(ERRATA_UNMAPPED_COLLECTIONS)) {
-+		report_skip("Skipping test, as this test hangs without the fix. "
-+			    "Set %s=y to enable.", ERRATA_UNMAPPED_COLLECTIONS);
-+		test_skipped = true;
-+		goto do_migrate;
-+	}
-+
- 	if (its_setup1())
- 		return;
- 
-@@ -830,9 +841,12 @@ static void test_migrate_unmapped_collection(void)
- 	its_send_mapti(dev2, 8192, 0, col);
- 	gicv3_lpi_set_config(8192, LPI_PROP_DEFAULT);
- 
-+do_migrate:
- 	puts("Now migrate the VM, then press a key to continue...\n");
- 	(void)getchar();
- 	report_info("Migration complete");
-+	if (test_skipped)
-+		return;
- 
- 	/* on the destination, map the collection */
- 	its_send_mapc(col, true);
-diff --git a/errata.txt b/errata.txt
-index 7d6abc2a7bf6..b66afaa9c079 100644
---- a/errata.txt
-+++ b/errata.txt
-@@ -5,4 +5,5 @@
- 9e3f7a296940    : 4.9                           : arm64: KVM: pmu: Fix AArch32 cycle counter access
- 7b6b46311a85    : 4.11                          : KVM: arm/arm64: Emulate the EL1 phys timer registers
- 6c7a5dce22b3    : 4.12                          : KVM: arm/arm64: fix races in kvm_psci_vcpu_on
-+8c58be34494b    : 5.6                           : KVM: arm/arm64: vgic-its: Fix restoration of unmapped collections
- #---------------:-------------------------------:---------------------------------------------------
--- 
-2.25.1
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+Alistair
+
+> ---
+>  hw/dma/xlnx-zdma.c | 47 ++++++++++++++++++++++------------------------
+>  1 file changed, 22 insertions(+), 25 deletions(-)
+>
+> diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
+> index e856d233f2..1c45367f3c 100644
+> --- a/hw/dma/xlnx-zdma.c
+> +++ b/hw/dma/xlnx-zdma.c
+> @@ -333,10 +333,28 @@ static void zdma_load_src_descriptor(XlnxZDMA *s)
+>      }
+>  }
+>
+> +static void zdma_update_descr_addr(XlnxZDMA *s, bool type,
+> +                                   unsigned int basereg)
+> +{
+> +    uint64_t addr, next;
+> +
+> +    if (type == DTYPE_LINEAR) {
+> +        addr = zdma_get_regaddr64(s, basereg);
+> +        next = addr + sizeof(s->dsc_dst);
+> +    } else {
+> +        addr = zdma_get_regaddr64(s, basereg);
+> +        addr += sizeof(s->dsc_dst);
+> +        address_space_read(s->dma_as, addr, s->attr, (void *) &next, 8);
+> +    }
+> +
+> +    zdma_put_regaddr64(s, basereg, next);
+> +}
+> +
+>  static void zdma_load_dst_descriptor(XlnxZDMA *s)
+>  {
+>      uint64_t dst_addr;
+>      unsigned int ptype = ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0, POINT_TYPE);
+> +    bool dst_type;
+>
+>      if (ptype == PT_REG) {
+>          memcpy(&s->dsc_dst, &s->regs[R_ZDMA_CH_DST_DSCR_WORD0],
+> @@ -349,24 +367,10 @@ static void zdma_load_dst_descriptor(XlnxZDMA *s)
+>      if (!zdma_load_descriptor(s, dst_addr, &s->dsc_dst)) {
+>          ARRAY_FIELD_DP32(s->regs, ZDMA_CH_ISR, AXI_RD_DST_DSCR, true);
+>      }
+> -}
+> -
+> -static uint64_t zdma_update_descr_addr(XlnxZDMA *s, bool type,
+> -                                       unsigned int basereg)
+> -{
+> -    uint64_t addr, next;
+>
+> -    if (type == DTYPE_LINEAR) {
+> -        next = zdma_get_regaddr64(s, basereg);
+> -        next += sizeof(s->dsc_dst);
+> -        zdma_put_regaddr64(s, basereg, next);
+> -    } else {
+> -        addr = zdma_get_regaddr64(s, basereg);
+> -        addr += sizeof(s->dsc_dst);
+> -        address_space_read(s->dma_as, addr, s->attr, &next, 8);
+> -        zdma_put_regaddr64(s, basereg, next);
+> -    }
+> -    return next;
+> +    /* Advance the descriptor pointer.  */
+> +    dst_type = FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WORD3, TYPE);
+> +    zdma_update_descr_addr(s, dst_type, R_ZDMA_CH_DST_CUR_DSCR_LSB);
+>  }
+>
+>  static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
+> @@ -387,14 +391,7 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
+>          dst_size = FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WORD2,
+>                                SIZE);
+>          if (dst_size == 0 && ptype == PT_MEM) {
+> -            uint64_t next;
+> -            bool dst_type = FIELD_EX32(s->dsc_dst.words[3],
+> -                                       ZDMA_CH_DST_DSCR_WORD3,
+> -                                       TYPE);
+> -
+> -            next = zdma_update_descr_addr(s, dst_type,
+> -                                          R_ZDMA_CH_DST_CUR_DSCR_LSB);
+> -            zdma_load_descriptor(s, next, &s->dsc_dst);
+> +            zdma_load_dst_descriptor(s);
+>              dst_size = FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WORD2,
+>                                    SIZE);
+>          }
+> --
+> 2.20.1
+>
+>

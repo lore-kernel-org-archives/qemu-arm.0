@@ -1,330 +1,158 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2066234lfi;
-        Thu, 2 Apr 2020 07:54:12 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKIPN0WLInVb7QnCOfD1l51CUgrZ6FGOnOvKEGFA2bryTKLCOQbMwYqI0Dz9tsmy9oTRwqU
-X-Received: by 2002:a4a:d1a5:: with SMTP id z5mr3070670oor.63.1585839252076;
-        Thu, 02 Apr 2020 07:54:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585839252; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp2234225lfi;
+        Thu, 2 Apr 2020 10:21:48 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJDOQBi2P4rX5pZrzBnslQv/YalYwi9jzCbLUs7yy1iiIyZJk0Yi1Tuq6KoDVFpXOC6lPP+
+X-Received: by 2002:ac8:6b4b:: with SMTP id x11mr4150757qts.118.1585848108189;
+        Thu, 02 Apr 2020 10:21:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585848108; cv=none;
         d=google.com; s=arc-20160816;
-        b=lwyZyPFjIVlXgqdGMjgleHYdhqpR9pkp7YXSPw4V5s+iLKMhKrwgXEzDXVO/zirovR
-         OZZXkmcAAdKijh8JOI4DccUsT+8l2eVY4NAYY+d5HFEnA6a7HXw2GihKUBhnVFSHlOHB
-         PpbNVpX/iwmy3HLpLGmlqxEYEMKmo325tO9vTyIi64/2u/buGXWdHG09SKnNzhVtnOeI
-         0Cn/ycahL32wf3zR1ShFYCXgUoG8e99XYpumBCFZiNvCk8GlTC8h34aw/wIe1YVQFuis
-         gv7U+Q22avR5VvcrBqPkRHCqb9aK3c5V3kMFQHTToY2f48zNdsWlYN8jeZKDqGbE/Byd
-         19Hw==
+        b=ENgPrVyN6wDEOrXpCdhF2DG55AOzCRfSeNz+nS8NfOXOQdtfxqjRrb5O3mMy5qEhsj
+         LGv/jcDm2G+ngyQZTmCsXHCDk29dIMlL8jjptk4kI8e3EFJ1dQwz61uvCqzPxaWMM4Mj
+         u2p1GgGmCPFH8gjkPtfvasTayxWeCcC0Kc4K/nmdDoGCIyS0Cb1cPnV6lzWvrB1bxKEa
+         XGCoz7W0hF9v6ExzRQLb/qm3PeeYlQKD1oEBhxyWDfV+9STzrPbvdkGORNBJImB5rOSZ
+         OUFrYjTdwqDCNPAPs/KYQO1iKLpDo17Lo+KNM+hi1cfmdAqlUzFsm/12nX5+OvQR9e4n
+         Frcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=QhrZeK5drwApiePPY4lvBKjmy/lVD4J+Wgvu5CSrsas=;
-        b=GfuEwN+kPbiJtfTo1FrUMpSbprdSc5oLagLt9xEIteCSgFHVZI8khMiL6H8oTWlJVd
-         YLOSkRxmm8XEKp3FAx3T4ZGk3+xRud7bxOUPeHpdba9Y5SuvNDrFUeBGaMcMveyH0F4u
-         JiaLKCSOHFQWFzxsuADmuS7jHko7seFOuWn36uzbsdl5NO8e3/1CGjhmlUyBrswwPcHP
-         cYnwQK78c//Ugxi3GDCCOJDAXb+rLSaqHi/V1BvdKrmtc6scL2iSDkAecUahFp9plBoE
-         usZYkYHC947tUjhqSHnQR/Wv20HvxlDBFt3KAlftGkAMrzu/WZzMa3eo1z27JEJBRrUV
-         wKEQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=oekO7Iey/J+A25klZ5udo88BsGYzcw759MzkmKCIw7I=;
+        b=p2HGNOeVJdZKCUHAWUkuuNS2LynI7yl878pnrPdieVgfJw/IEVerFUFrqxlhb6lcKT
+         EaeVyn2WIuzPHptgIljr2RObx6Kyg5CcV6fE4OUfyRJCAGhOL35M5m5dymrKnKn83tGG
+         KpWs6kJg54A5/SfTXvsXnCsDmuukErEL9zckMpTNHtuqzl2odZyZvNTUrsnla0BV+D4X
+         2GURWTdBDY4yGQR9HDddzUwEssZwOnzboshKmh14+2NoZQZOdtAuNktfdJjDLsElJW/I
+         YsHbUN4/RMe4CdUA9Q0JwQk9MfoQiTf6dNd0CePTOQLAPRHSRmp2Aj/93m0qbJ1Y1g6Q
+         MZYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VCm7gjbi;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id n82si2370912oib.123.2020.04.02.07.54.11;
-        Thu, 02 Apr 2020 07:54:12 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Yyjw5OUU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id l11si3804126qke.345.2020.04.02.10.21.48
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 02 Apr 2020 10:21:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VCm7gjbi;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S2388933AbgDBOyL (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 2 Apr 2020 10:54:11 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:31574 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S2388830AbgDBOyK (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Thu, 2 Apr 2020 10:54:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1585839249;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=QhrZeK5drwApiePPY4lvBKjmy/lVD4J+Wgvu5CSrsas=;
-        b=VCm7gjbi4eSie3Hv3l8537M65R/tn+Z7keFBlICGVY9/sQtPXBaE1tCVV0s1crkwBFAgmp
-        bSiozr90NB04Vvzmg0I74FHSzBQhP1d+rmKWs3heZHHejVG1EVD4LTmXWHQxaN4dxd6yD/
-        dgAqHNl1wHZ66VOn6FdU1JZyygd18YA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-375-wnr8vXZKObeps7E-lb9zaA-1; Thu, 02 Apr 2020 10:54:08 -0400
-X-MC-Unique: wnr8vXZKObeps7E-lb9zaA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6F02618C35A1;
-        Thu,  2 Apr 2020 14:54:05 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-112-58.ams2.redhat.com [10.36.112.58])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 0C7755D9C9;
-        Thu,  2 Apr 2020 14:53:54 +0000 (UTC)
-From:   Eric Auger <eric.auger@redhat.com>
-To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
-        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc:     drjones@redhat.com, andre.przywara@arm.com,
-        peter.maydell@linaro.org, yuzenghui@huawei.com,
-        alexandru.elisei@arm.com, thuth@redhat.com
-Subject: [kvm-unit-tests PATCH v8 13/13] arm/arm64: ITS: pending table migration test
-Date:   Thu,  2 Apr 2020 16:52:27 +0200
-Message-Id: <20200402145227.20109-14-eric.auger@redhat.com>
-In-Reply-To: <20200402145227.20109-1-eric.auger@redhat.com>
-References: <20200402145227.20109-1-eric.auger@redhat.com>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Yyjw5OUU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45121 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jK3XH-0003zw-Jh
+	for alex.bennee@linaro.org; Thu, 02 Apr 2020 13:21:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46036)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <alistair23@gmail.com>) id 1jK3X9-0003vs-7X
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2020 13:21:40 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <alistair23@gmail.com>) id 1jK3X4-00071r-F2
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2020 13:21:39 -0400
+Received: from mail-vs1-xe43.google.com ([2607:f8b0:4864:20::e43]:45940)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1jK3X2-00070q-Gi; Thu, 02 Apr 2020 13:21:32 -0400
+Received: by mail-vs1-xe43.google.com with SMTP id x82so2866573vsc.12;
+ Thu, 02 Apr 2020 10:21:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=oekO7Iey/J+A25klZ5udo88BsGYzcw759MzkmKCIw7I=;
+ b=Yyjw5OUUGqmZDd+hbAZZJr3vBaJH10dqL/IeHbbmJ15NIXnzKSSEw4V/Y6J3Wadzht
+ AJp52TwXMZiG7+7IcHqpMIoB086/sPq+iZfwk1NnLNT1Zpsm1hxpHfHy9oZjo0dRYAOT
+ qT6zvjqfPSEfSMZ3AREJfTBGib75ZmWfxm+wvwYOQ0Jx8hEGcEptj6d1343fIdEd7/LC
+ YGMFYOcO9ylPETm3aqwXlFCFse9wjOwF3FIGv6L91GW8NNakm9bxpYv3vqKioerHh8fl
+ qhyfMxF7A0ZfQIZIJ8zHFjc0qJq7Z40GK41fgFptWvUcdTxpE/moV4Xq3blfKnG/wWTb
+ nA+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=oekO7Iey/J+A25klZ5udo88BsGYzcw759MzkmKCIw7I=;
+ b=onxIgQUJC03WEgzMVMEwA8z2z5NvuIWV4Am351zkjbbH1Y+Jc9NOOA6pWhIczleIyp
+ YboTCXjnLlR7tfCmBb/S0ZWnmGqvcqt8QE7bZLPjz0Pe6pRl8kN4VKzKFhVuUcGJWpp0
+ mHcuz+EWsHXF9QS6EsvP4CUszyysFouYygKs0/EDuEw0FQL4Ja3iVEi9WF22JzQ6GylU
+ Lf8oO2rSmIYnxYuI2qiqVyXLuHhtqKY0cbu9c3cg4wHp+qalu2tnieIrJkvJUDsYS1fd
+ 8Gvyq0LI0M+BAnT1fc3HPdR1YV2XrGh9lkHPNcSe/5ePbDH/ynYBXliXHAqBvjzOU89f
+ xdRg==
+X-Gm-Message-State: AGi0PuZvx7wFjGroN3JdImPCu5r+FhjRVRzEl6xP0EJ0Gzlmcw97fY6p
+ 9/SNJglVXmvupCMMbvn+J5YvgSg5fqkNQJ7XSDI=
+X-Received: by 2002:a67:26c2:: with SMTP id m185mr3304616vsm.180.1585848091833; 
+ Thu, 02 Apr 2020 10:21:31 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Content-Transfer-Encoding: quoted-printable
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: Qh6sGlOaQiD1
+References: <20200402134721.27863-1-edgar.iglesias@gmail.com>
+ <20200402134721.27863-3-edgar.iglesias@gmail.com>
+In-Reply-To: <20200402134721.27863-3-edgar.iglesias@gmail.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 2 Apr 2020 10:13:19 -0700
+Message-ID: <CAKmqyKNY0qv8iwJCheC0x7EQgdUgLsMtJzwkyS6CpcRzOiJLZw@mail.gmail.com>
+Subject: Re: [PATCH v1 2/5] dma/xlnx-zdma: Populate DBG0.CMN_BUF_FREE
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::e43
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: figlesia@xilinx.com, Peter Maydell <peter.maydell@linaro.org>,
+ Edgar Iglesias <edgar.iglesias@xilinx.com>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Stefano Stabellini <sstabellini@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BirS5M25jJAV
 
-Add two new migration tests. One testing the migration of
-a topology where collection were unmapped. The second test
-checks the migration of the pending table.
+On Thu, Apr 2, 2020 at 6:46 AM Edgar E. Iglesias
+<edgar.iglesias@gmail.com> wrote:
+>
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+>
+> Populate DBG0.CMN_BUF_FREE so that SW can see some free space.
+>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
----
-v7 -> v8:
-- removed set_lpi()
-- change expected alloc, ie. s/malloc/calloc,
-  this latter does memset()
+Alistair
 
-v6 -> v7:
-- test_migrate_unmapped_collection now uses pe0=3D0. Otherwise,
-  depending on SMP value it collides with collections created
-  by setup1()
-- use of for_each_present_cpu
-
-v5 -> v6:
-- s/Set the PTZ/Clear the PTZ
-- Move the collection inval after MAPC
-- remove the unmap collection test
-
-v4 -> v5:
-- move stub from header to arm/gic.c
-
-v3 -> v4:
-- do not talk about odd/even CPUs, use pe0 and pe1
-- comment the delay
-
-v2 -> v3:
-- tests belong to both its and migration groups
-- use LPI(i)
-- gicv3_lpi_set_pending_table_bit renamed into gicv3_lpi_set_clr_pending
----
- arm/gic.c         | 130 ++++++++++++++++++++++++++++++++++++++++++++++
- arm/unittests.cfg |  16 ++++++
- 2 files changed, 146 insertions(+)
-
-diff --git a/arm/gic.c b/arm/gic.c
-index 6ae5515..ddf0f9d 100644
---- a/arm/gic.c
-+++ b/arm/gic.c
-@@ -193,6 +193,7 @@ static void lpi_handler(struct pt_regs *regs __unused=
-)
- 	smp_rmb(); /* pairs with wmb in lpi_stats_expect */
- 	lpi_stats.observed.cpu_id =3D smp_processor_id();
- 	lpi_stats.observed.lpi_id =3D irqnr;
-+	acked[lpi_stats.observed.cpu_id]++;
- 	smp_wmb(); /* pairs with rmb in check_lpi_stats */
- }
-=20
-@@ -238,6 +239,22 @@ static void secondary_lpi_test(void)
- 	while (1)
- 		wfi();
- }
-+
-+static void check_lpi_hits(int *expected, const char *msg)
-+{
-+	bool pass =3D true;
-+	int i;
-+
-+	for_each_present_cpu(i) {
-+		if (acked[i] !=3D expected[i]) {
-+			report_info("expected %d LPIs on PE #%d, %d observed",
-+				    expected[i], i, acked[i]);
-+			pass =3D false;
-+			break;
-+		}
-+	}
-+	report(pass, "%s", msg);
-+}
- #endif
-=20
- static void gicv2_ipi_send_self(void)
-@@ -593,6 +610,8 @@ static void gic_test_mmio(void)
- static void test_its_introspection(void) {}
- static void test_its_trigger(void) {}
- static void test_its_migration(void) {}
-+static void test_its_pending_migration(void) {}
-+static void test_migrate_unmapped_collection(void) {}
-=20
- #else /* __aarch64__ */
-=20
-@@ -792,6 +811,109 @@ static void test_its_migration(void)
- 	its_send_int(dev7, 255);
- 	check_lpi_stats("dev7/eventid=3D255 triggers LPI 8196 on PE #2 after mi=
-gration");
- }
-+
-+static void test_migrate_unmapped_collection(void)
-+{
-+	struct its_collection *col;
-+	struct its_device *dev2, *dev7;
-+	int pe0 =3D 0;
-+	u8 config;
-+
-+	if (its_setup1())
-+		return;
-+
-+	col =3D its_create_collection(pe0, pe0);
-+	dev2 =3D its_get_device(2);
-+	dev7 =3D its_get_device(7);
-+
-+	/* MAPTI with the collection unmapped */
-+	its_send_mapti(dev2, 8192, 0, col);
-+	gicv3_lpi_set_config(8192, LPI_PROP_DEFAULT);
-+
-+	puts("Now migrate the VM, then press a key to continue...\n");
-+	(void)getchar();
-+	report_info("Migration complete");
-+
-+	/* on the destination, map the collection */
-+	its_send_mapc(col, true);
-+	its_send_invall(col);
-+
-+	lpi_stats_expect(2, 8196);
-+	its_send_int(dev7, 255);
-+	check_lpi_stats("dev7/eventid=3D 255 triggered LPI 8196 on PE #2");
-+
-+	config =3D gicv3_lpi_get_config(8192);
-+	report(config =3D=3D LPI_PROP_DEFAULT,
-+	       "Config of LPI 8192 was properly migrated");
-+
-+	lpi_stats_expect(pe0, 8192);
-+	its_send_int(dev2, 0);
-+	check_lpi_stats("dev2/eventid =3D 0 triggered LPI 8192 on PE0");
-+}
-+
-+static void test_its_pending_migration(void)
-+{
-+	struct its_device *dev;
-+	struct its_collection *collection[2];
-+	int *expected =3D calloc(nr_cpus, sizeof(int));
-+	int pe0 =3D nr_cpus - 1, pe1 =3D nr_cpus - 2;
-+	u64 pendbaser;
-+	void *ptr;
-+	int i;
-+
-+	if (its_prerequisites(4))
-+		return;
-+
-+	dev =3D its_create_device(2 /* dev id */, 8 /* nb_ites */);
-+	its_send_mapd(dev, true);
-+
-+	collection[0] =3D its_create_collection(pe0, pe0);
-+	collection[1] =3D its_create_collection(pe1, pe1);
-+	its_send_mapc(collection[0], true);
-+	its_send_mapc(collection[1], true);
-+
-+	/* disable lpi at redist level */
-+	gicv3_lpi_rdist_disable(pe0);
-+	gicv3_lpi_rdist_disable(pe1);
-+
-+	/* lpis are interleaved inbetween the 2 PEs */
-+	for (i =3D 0; i < 256; i++) {
-+		struct its_collection *col =3D i % 2 ? collection[0] :
-+						     collection[1];
-+		int vcpu =3D col->target_address >> 16;
-+
-+		its_send_mapti(dev, LPI(i), i, col);
-+		gicv3_lpi_set_config(LPI(i), LPI_PROP_DEFAULT);
-+		gicv3_lpi_set_clr_pending(vcpu, LPI(i), true);
-+	}
-+	its_send_invall(collection[0]);
-+	its_send_invall(collection[1]);
-+
-+	/* Clear the PTZ bit on each pendbaser */
-+
-+	expected[pe0] =3D 128;
-+	expected[pe1] =3D 128;
-+
-+	ptr =3D gicv3_data.redist_base[pe0] + GICR_PENDBASER;
-+	pendbaser =3D readq(ptr);
-+	writeq(pendbaser & ~GICR_PENDBASER_PTZ, ptr);
-+
-+	ptr =3D gicv3_data.redist_base[pe1] + GICR_PENDBASER;
-+	pendbaser =3D readq(ptr);
-+	writeq(pendbaser & ~GICR_PENDBASER_PTZ, ptr);
-+
-+	gicv3_lpi_rdist_enable(pe0);
-+	gicv3_lpi_rdist_enable(pe1);
-+
-+	puts("Now migrate the VM, then press a key to continue...\n");
-+	(void)getchar();
-+	report_info("Migration complete");
-+
-+	/* let's wait for the 256 LPIs to be handled */
-+	mdelay(1000);
-+
-+	check_lpi_hits(expected, "128 LPIs on both PE0 and PE1 after migration"=
-);
-+}
- #endif
-=20
- int main(int argc, char **argv)
-@@ -833,6 +955,14 @@ int main(int argc, char **argv)
- 		report_prefix_push(argv[1]);
- 		test_its_migration();
- 		report_prefix_pop();
-+	} else if (!strcmp(argv[1], "its-pending-migration")) {
-+		report_prefix_push(argv[1]);
-+		test_its_pending_migration();
-+		report_prefix_pop();
-+	} else if (!strcmp(argv[1], "its-migrate-unmapped-collection")) {
-+		report_prefix_push(argv[1]);
-+		test_migrate_unmapped_collection();
-+		report_prefix_pop();
- 	} else if (strcmp(argv[1], "its-introspection") =3D=3D 0) {
- 		report_prefix_push(argv[1]);
- 		test_its_introspection();
-diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-index 480adec..b96f0a1 100644
---- a/arm/unittests.cfg
-+++ b/arm/unittests.cfg
-@@ -144,6 +144,22 @@ extra_params =3D -machine gic-version=3D3 -append 'i=
-ts-migration'
- groups =3D its migration
- arch =3D arm64
-=20
-+[its-pending-migration]
-+file =3D gic.flat
-+smp =3D $MAX_SMP
-+accel =3D kvm
-+extra_params =3D -machine gic-version=3D3 -append 'its-pending-migration=
-'
-+groups =3D its migration
-+arch =3D arm64
-+
-+[its-migrate-unmapped-collection]
-+file =3D gic.flat
-+smp =3D $MAX_SMP
-+accel =3D kvm
-+extra_params =3D -machine gic-version=3D3 -append 'its-migrate-unmapped-=
-collection'
-+groups =3D its migration
-+arch =3D arm64
-+
- # Test PSCI emulation
- [psci]
- file =3D psci.flat
---=20
-2.20.1
+> ---
+>  hw/dma/xlnx-zdma.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
+> index a6c5b2304a..6a4699757a 100644
+> --- a/hw/dma/xlnx-zdma.c
+> +++ b/hw/dma/xlnx-zdma.c
+> @@ -680,6 +680,12 @@ static RegisterAccessInfo zdma_regs_info[] = {
+>      },{ .name = "ZDMA_CH_DBG0",  .addr = A_ZDMA_CH_DBG0,
+>          .rsvd = 0xfffffe00,
+>          .ro = 0x1ff,
+> +
+> +        /*
+> +         * There's SW out there that will check the debug regs for free space.
+> +         * Claim that we always have 0x100 free.
+> +         */
+> +        .reset = 0x100
+>      },{ .name = "ZDMA_CH_DBG1",  .addr = A_ZDMA_CH_DBG1,
+>          .rsvd = 0xfffffe00,
+>          .ro = 0x1ff,
+> --
+> 2.20.1
+>
+>

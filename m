@@ -1,95 +1,96 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1994506lfi;
-        Thu, 2 Apr 2020 06:48:49 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKmqk+2MH2lZQj8BYgavHuZifyzNqBZ/jZh7TrRoW7zTy93ZsxWDjR5RfJjyvGWdCCc+2dJ
-X-Received: by 2002:ac8:24e4:: with SMTP id t33mr3020287qtt.107.1585835329239;
-        Thu, 02 Apr 2020 06:48:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585835329; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1994755lfi;
+        Thu, 2 Apr 2020 06:49:05 -0700 (PDT)
+X-Google-Smtp-Source: APiQypL+5aigV/9ph10JXlrtPhgXjsy0BU+5qJtc1OOlWNCbUk5Vah49c3O5JencBK7D1ZysqTgg
+X-Received: by 2002:ac8:f85:: with SMTP id b5mr2925501qtk.158.1585835344925;
+        Thu, 02 Apr 2020 06:49:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585835344; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y2B4aThaEdeIGXWPSU+BLUmkbSvU67nOycUiOpc9v3ypZI1dckKSxoFRmNbja8t86T
-         55JBJzwxG/0YOhQibQKzMmxxKETsF2btqa/sjvOXqk5Z+7RB8Gemz6a/UJkVd6uDY+p0
-         dUXDHGSkcF4qCqYNNULuXS5FrE/L0YCopfnQgBaTqBN21rndDnHDswZgUpnun7b4y9cD
-         lzpBPOdTuY65FLfEuwNDSgwcLop/4G6Xk+sVCP3TUfG7s3ykJi2qkTDa5jI7xieCmU7c
-         MtXgXs/RoVnFa3IMJAKNnPve2u3RX5zOnbxOAAPit3T8lpf2IBmYhIbmZ99XQRN9dY3R
-         sYhQ==
+        b=kWVUzqxpuvPZUq5YcnI0n+GKuce5nz3GGN5YhIP9pV4oA/DpuqZbYFV4O67QwOggqH
+         qepV6BaqyxZLCuY060FIi3Gh74eHgjq3L/IYJIlwgi17FTlmUtpPmp+THrG5vfBGcQno
+         x9psIxU9PxE4bNj9pBpQVNcYWySXjRELM0V8nNLyXS6xn2gpXlxppZllobznpjKh6D9n
+         w2t1SXizHt8kSL0Le+E3nKPu0TpgZi5+b9pkUXAnv8SNG9sWymlaqFDTmI4CfGxVwVDw
+         HZaiBQG09w3af4JScWGzIad9aKjqYfNdOoeXDuZit9pEPGLfzna2YiSHmwhJUhV7JqC/
+         bsMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=h4Q7MSpHXVMJ49cK44wbGbgCP5J9MGmDVmW1uuYRWUs=;
-        b=UPcuC3EzHqNRBWurx91hFovz8vYrVhdn+U4tT4Hi9gGbqw4rtTpASj4Y5TLZttnIzo
-         aOeHDctVZ4iNRTi3kcVZ0RQi51nmdyGmcOmmyv9QfG8N5eoaCxlAKRfrt/VpqTwSmuEx
-         oEVyeq2nuXiY6ELj5yiFJXWdZ0NWgDcpdtG6dn2wjoNDyI54zhU/mN17JKLhQa5wquLN
-         nbxSoYrdNUNzgT+eifsqovtcCekx8vBDuxUfE6F4vX9DsTwjDzF1yQt/I1mmii5D43vm
-         BNBItF/9gdVIbQs5YBfqs0XZviHM2xzXwfvtAfsJflNYVH5Zcao0NJviThgz6InJg014
-         YDLw==
+        bh=TLzE2qyREnbaDqlCoLajdWkY9S6FLWSn1nRwtU02lS4=;
+        b=WKbjGh0Fz1UIilnC0KlJl4B9Zxz01mAYv7KMn8N9ZCGDCB+REOGZOxHCErPqxwaRG4
+         48In1djylBOZvu8/xFn4c8/YLzPFZSLwyvJGLLWsnCH9Vr7FElDe6BBiI1cLlg5H6YJh
+         C8d1Xn+cMUMMX5dwhgthec2xdv1Upp/1RUkuytRkazV6wdl5c/YbX90slGqLQxHsx2mW
+         9osMbaHmsMGB7wm5UJk0LGk0+Pu5n2aqTSsU3bHZCFcqp4v5jvdBLL+gLsAuR2rWbJ/Z
+         GWzU5ws8ujD1i3B63MXs7xHon8mf+Q+3wIsD7IxRDl3x+lFKrjloj335YW1VmqjqyaWN
+         T9tw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Qm+SzTwP;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cWf4kD0t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d13si3168711qvo.115.2020.04.02.06.48.49
+        by mx.google.com with ESMTPS id p36si3468700qtc.183.2020.04.02.06.49.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Apr 2020 06:48:49 -0700 (PDT)
+        Thu, 02 Apr 2020 06:49:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Qm+SzTwP;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cWf4kD0t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:40298 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40306 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jK0DA-0001Xc-Fn
-	for alex.bennee@linaro.org; Thu, 02 Apr 2020 09:48:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50731)
+	id 1jK0DQ-0002CX-C0
+	for alex.bennee@linaro.org; Thu, 02 Apr 2020 09:49:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50818)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jK0Ak-0006Qy-CH
- for qemu-arm@nongnu.org; Thu, 02 Apr 2020 09:46:19 -0400
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jK0Aq-0006gC-Qa
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2020 09:46:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jK0Aj-0001xl-Cy
- for qemu-arm@nongnu.org; Thu, 02 Apr 2020 09:46:18 -0400
-Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:39278)
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jK0Ap-00029H-L5
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2020 09:46:24 -0400
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:40081)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jK0Ah-0001oj-4e; Thu, 02 Apr 2020 09:46:15 -0400
-Received: by mail-lf1-x142.google.com with SMTP id h6so2765409lfp.6;
- Thu, 02 Apr 2020 06:46:15 -0700 (PDT)
+ id 1jK0Am-00021z-3i; Thu, 02 Apr 2020 09:46:20 -0400
+Received: by mail-lj1-x242.google.com with SMTP id 19so3265853ljj.7;
+ Thu, 02 Apr 2020 06:46:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=h4Q7MSpHXVMJ49cK44wbGbgCP5J9MGmDVmW1uuYRWUs=;
- b=Qm+SzTwPSelbgQGrPXZ0eRecqfbd6cMSBxsf+s198QHT+gl8uK1hQQlDnIfTa/OyOY
- yOx6T2K49fZbybzn1i0iDKyxwfaEq4J6/n93gtIO+PerrYZrhvRQaNP4D/Q/tD9MchZ3
- +UO6r94GyrcM0AXr8PHLdeuSldt9NI2bUZ8Y6IBC/EIrSDhRYaKar8EHbAON4zkvQKIB
- VfRpqkMsW11mpwxJ8dZU5B7i6TkbSCPn4CqZ71QGSBO5n4z0Atd/Po2j4XuSeEy8Ixl0
- 6NxV3SrMtzoXJaAVahYnp8zTpMyOKnIYkJugOPZJRnmwGRmt+i5kuGHcKvnuJftVd4ma
- ou7w==
+ bh=TLzE2qyREnbaDqlCoLajdWkY9S6FLWSn1nRwtU02lS4=;
+ b=cWf4kD0tqff1FpoKtDsdz4F13D6TjBFJCPrBpb9VYbAme1/R22JtubShlbYm1T1E90
+ VcOr61DgvfL1dUNH8Zer0wFTvazpz2Bd3Ga2YpENcjDtiuPXmR9qesMiWBB/DaAY4251
+ UsbMQLb1v/ARH0fmmDjiLpWwf1AAdILrwaJUphF8vZQeEhlfIBsYsuWt5BEOiQcd9+s9
+ o7M10bVknTttz2fT8kxztLG3kG+GOPQ+NCAW9LFVxGOnYldYdzuqRUgjVm27dRze7noU
+ vgH/kndj1+J88hyW1n27o3r8tD+y1quAiK9UppG0pGk4jTBtMfL8gVpqrIRJpFTfM78o
+ S+Mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=h4Q7MSpHXVMJ49cK44wbGbgCP5J9MGmDVmW1uuYRWUs=;
- b=gSEkghOm7G+wwSl6GEA+8Fs0JOBo3WzB0zLrGhwNUmCMif+1JemLKGWTNNLiNSaJKM
- U86B/4sYqJ3fLt/L5c1a7Z9vwcUdBCPwUs+Z7uLAnRYx8XL4zGZZB4YAIixiXUzCpic6
- 2EjG2AnzVO2+h62t7YhuYO708loqI0z3IKGkKko4WWLrKS443wlpB9EmtRNFPRXVuhNY
- Pdltd/FYH9yhlXTvtLuvLvWPFuwVNQkZXDeh35WASDAMZHq7JLY1dz1VPqFRr1ZE3ua1
- qnLHDkBDz1K7k6GVzV2t9UnkvXhGTqUGcxRiVLv0ohBZ+2cQVG03ImEaTdG1B0W1BJFA
- R7wg==
-X-Gm-Message-State: AGi0PubE3J/cBo8mGPI9kbS0KrPGw2ouqOB1FD3m5A0wDDwS1K9utacT
- Fh7MW0GmeatOF1ZZfP8M8LdyYoJPHhMuSw==
-X-Received: by 2002:a19:5519:: with SMTP id n25mr2280129lfe.198.1585835173457; 
- Thu, 02 Apr 2020 06:46:13 -0700 (PDT)
+ bh=TLzE2qyREnbaDqlCoLajdWkY9S6FLWSn1nRwtU02lS4=;
+ b=s3JhNkFMpp3W4ROoXWHHIKPGC16NT/7x9N0UcEOXlQmXIVIbZVRKMxjAfTzOvAJxuV
+ mYpsOdY4SoV/0Z2tTYji+i4zOYJvtCSnSWYD0ZaNBYJmb3UJzouJfH0mkasZ47lsWeZj
+ KwJw8m+LqSZWt88V1217VSu6HGs1zrlyLiezVWOCRVyPqP9e8d/aoXFNJfown23TuuzL
+ F4yJcPPSKu0JGPX9RSpLN+BYxEpHgdtf3BbebXr0K/FrRnH9a5w+pCl9ci64W6g85/nu
+ myab3sR3RuCu0OmReJNZGTVjTe0B5XyjF5avbjVf2g7YVytdcTgfEltj5VviVvJ/Pcvm
+ K+aA==
+X-Gm-Message-State: AGi0PuZzBrT6mtlyqYT+P7cvCL5Z6rtPqh55eKHrZsuLT2EQUiy2UreQ
+ Pka6YR2wkuuvcNHdTMwmdf7jnC4oMrP6LA==
+X-Received: by 2002:a05:651c:22e:: with SMTP id
+ z14mr2017486ljn.64.1585835178613; 
+ Thu, 02 Apr 2020 06:46:18 -0700 (PDT)
 Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id e1sm3202774ljo.16.2020.04.02.06.46.12
+ by smtp.gmail.com with ESMTPSA id b16sm3939517lfq.34.2020.04.02.06.46.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2020 06:46:12 -0700 (PDT)
+ Thu, 02 Apr 2020 06:46:18 -0700 (PDT)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v1 1/5] dma/xlnx-zdma: Remove comment
-Date: Thu,  2 Apr 2020 15:47:17 +0200
-Message-Id: <20200402134721.27863-2-edgar.iglesias@gmail.com>
+Subject: [PATCH v1 5/5] dma/xlnx-zdma: Reorg to fix CUR_DSCR
+Date: Thu,  2 Apr 2020 15:47:21 +0200
+Message-Id: <20200402134721.27863-6-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200402134721.27863-1-edgar.iglesias@gmail.com>
 References: <20200402134721.27863-1-edgar.iglesias@gmail.com>
@@ -97,7 +98,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::142
+X-Received-From: 2a00:1450:4864:20::242
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,29 +117,95 @@ Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
  philmd@redhat.com, luc.michel@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t7yMwaB6jPvi
+X-TUID: fCz4Lix8uN1Y
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Remove comment.
+Reorganize the descriptor handling so that CUR_DSCR always
+points to the next descriptor to be processed.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- hw/dma/xlnx-zdma.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/dma/xlnx-zdma.c | 47 ++++++++++++++++++++++------------------------
+ 1 file changed, 22 insertions(+), 25 deletions(-)
 
 diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
-index 2d9c0a0d5e..a6c5b2304a 100644
+index e856d233f2..1c45367f3c 100644
 --- a/hw/dma/xlnx-zdma.c
 +++ b/hw/dma/xlnx-zdma.c
-@@ -511,7 +511,6 @@ static void zdma_process_descr(XlnxZDMA *s)
-         zdma_src_done(s);
+@@ -333,10 +333,28 @@ static void zdma_load_src_descriptor(XlnxZDMA *s)
      }
+ }
  
--    /* Load next descriptor.  */
-     if (ptype == PT_REG || src_cmd == CMD_STOP) {
-         ARRAY_FIELD_DP32(s->regs, ZDMA_CH_CTRL2, EN, 0);
-         zdma_set_state(s, DISABLED);
++static void zdma_update_descr_addr(XlnxZDMA *s, bool type,
++                                   unsigned int basereg)
++{
++    uint64_t addr, next;
++
++    if (type == DTYPE_LINEAR) {
++        addr = zdma_get_regaddr64(s, basereg);
++        next = addr + sizeof(s->dsc_dst);
++    } else {
++        addr = zdma_get_regaddr64(s, basereg);
++        addr += sizeof(s->dsc_dst);
++        address_space_read(s->dma_as, addr, s->attr, (void *) &next, 8);
++    }
++
++    zdma_put_regaddr64(s, basereg, next);
++}
++
+ static void zdma_load_dst_descriptor(XlnxZDMA *s)
+ {
+     uint64_t dst_addr;
+     unsigned int ptype = ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0, POINT_TYPE);
++    bool dst_type;
+ 
+     if (ptype == PT_REG) {
+         memcpy(&s->dsc_dst, &s->regs[R_ZDMA_CH_DST_DSCR_WORD0],
+@@ -349,24 +367,10 @@ static void zdma_load_dst_descriptor(XlnxZDMA *s)
+     if (!zdma_load_descriptor(s, dst_addr, &s->dsc_dst)) {
+         ARRAY_FIELD_DP32(s->regs, ZDMA_CH_ISR, AXI_RD_DST_DSCR, true);
+     }
+-}
+-
+-static uint64_t zdma_update_descr_addr(XlnxZDMA *s, bool type,
+-                                       unsigned int basereg)
+-{
+-    uint64_t addr, next;
+ 
+-    if (type == DTYPE_LINEAR) {
+-        next = zdma_get_regaddr64(s, basereg);
+-        next += sizeof(s->dsc_dst);
+-        zdma_put_regaddr64(s, basereg, next);
+-    } else {
+-        addr = zdma_get_regaddr64(s, basereg);
+-        addr += sizeof(s->dsc_dst);
+-        address_space_read(s->dma_as, addr, s->attr, &next, 8);
+-        zdma_put_regaddr64(s, basereg, next);
+-    }
+-    return next;
++    /* Advance the descriptor pointer.  */
++    dst_type = FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WORD3, TYPE);
++    zdma_update_descr_addr(s, dst_type, R_ZDMA_CH_DST_CUR_DSCR_LSB);
+ }
+ 
+ static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
+@@ -387,14 +391,7 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
+         dst_size = FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WORD2,
+                               SIZE);
+         if (dst_size == 0 && ptype == PT_MEM) {
+-            uint64_t next;
+-            bool dst_type = FIELD_EX32(s->dsc_dst.words[3],
+-                                       ZDMA_CH_DST_DSCR_WORD3,
+-                                       TYPE);
+-
+-            next = zdma_update_descr_addr(s, dst_type,
+-                                          R_ZDMA_CH_DST_CUR_DSCR_LSB);
+-            zdma_load_descriptor(s, next, &s->dsc_dst);
++            zdma_load_dst_descriptor(s);
+             dst_size = FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WORD2,
+                                   SIZE);
+         }
 -- 
 2.20.1
 

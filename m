@@ -1,44 +1,44 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp315944lfi;
-        Fri, 3 Apr 2020 00:13:57 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKD6bwJgGck5wLAQtd3/QciujqA2wyoJ5WO/Iqoi4K/JFG/Z29Mrs0PJRsdXXhbgVrjLE/1
-X-Received: by 2002:a05:6214:118a:: with SMTP id t10mr7124924qvv.9.1585898037076;
-        Fri, 03 Apr 2020 00:13:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585898037; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp316046lfi;
+        Fri, 3 Apr 2020 00:14:03 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLc83WCquut3C+kSnoCoFeOYR0nlokULi/yNTcQJ6f2YZ9aNYpK2oVJtZieF+EjUeDQQZ3i
+X-Received: by 2002:a37:4cd1:: with SMTP id z200mr6488561qka.324.1585898042914;
+        Fri, 03 Apr 2020 00:14:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585898042; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ny3dvLtZqRrxzuKv+LNXdnOtnaZl2Trl2Tp0Piij0C3Lj4/av979xgdgZ7P3AyhhZN
-         G6jC2PQm6IAOREeELLpxcXC3tZLIne13LegsYu9qbG96zK3wHZm/OqQ6v+eOBrYY3Jxq
-         P4lykShq9gu+Y88/g3nHazXdpGNoIdgW9ClgRuYEhH/Yt/qON168DzbZczKuP7kgthtg
-         Wob2fS5JIu+rinyNA7F5PVuBhb+CHjt2Ofc9ixNQYEyIKDU11PGbMgeLqp2hXNSv1AeE
-         1wMaj0Lz7z/FFlVGxiSEH98UgvS3wvTIWxRkGwrOtv3gqYTqs7WJErrT6bcgvX+14c6k
-         LMfA==
+        b=MgA+Bzv8tp/HdKD7q+R8lWA+n/LLFx3eSE4aq5o/j8WCCdV5PGNAfx/FdyEUAQ7jHl
+         IGITnhly2hNFvN6UZTfwFHWfe3O4YreT6XSUWhj6eUwC4cpUbEER8UyqzPUy1sB4RLld
+         UZ2CsYSbphE/REn0Kg1odvq11FCJpwuTGZ6NOL+tXSXfVftGxOenKqWIMz1pn2QLFrAw
+         GbklT3msGwD7Ajbsg/Nichdxsg8ZEhgfoBO3PidTBBAT5jOR68uDe3T0vTW6jI5B4B/+
+         tCDb61ViGVYtWNx7+fxdceuIqb9hbP2LpfCs6eut8O4BtoXwTK3TUCpprf/BJRPGb6vp
+         qPcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=2vx5FDhRHLDiVwg/aXMGK3audra4nxu8RVFmE+bzPy4=;
-        b=dpRmfyLWcAVyXa/cmvcTdJ3RvC4pMqVFGvmvjazM/ZvH2FK4OsotNySRuhcsE9OYVb
-         FeD/F9XV6G2kzaquvKuIitQcNwhxaGm1FlqWtKMDxhd/bmR5/Ax+AEjyjkVY+Q41ZQBX
-         o814HrUYIcNKBoS4PgfO2Wc++SWp4kJCOHRv70h0T8AK933wH3Y8j/prXZtoIEHG0tHK
-         Ah8vG+R3c658suV7O97OTtE/Rm0kVEcdTXgpTU6TxPGrerQHfN8uYMrwOpt3a3YYkh9b
-         ZZSXM9s2BPxa0rw0cuZqnOfPM9Iz/PI2ECWIFmBUkpCgBWv7KUHsL066kKBnZH/0joNa
-         Xn7A==
+        bh=FsmyydB0eMLIlpClVj/W25MVv03ebYxg1P7AJxmkZ/g=;
+        b=BPPfWsCHll62I9bleXfk/qqTiWKU0VA4oUF3hTokiiu/N1ciJC7R4Ro/tCyB+tjZUx
+         0glhJHrQwOdZ3abjq23ojG0QQBoM4jT1cZbCxUvan3C9ouG3Pek/o3+z7NG9IvXX031r
+         z8cG2y/Txwsa9i28E+ypT0dGlyZOGVKlovBH+aWWnFsT/W+NpjMSeXAQTG5gltiAij30
+         80Cf48VE27/3FrCuLyIfWwpS77DQEH477qQ+Jwst60jSvv20+I0+K/fF7DFZ4pbDvPQL
+         sjT6tHtBAF8mlkMM8fusDcdvC3nq0XP39oeC8DmsNStXXw98DAbXVx1WpcdNPtkYBmqx
+         S6oQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b="H9CmbOh/";
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=MlWOutqX;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id s12si4762055qth.9.2020.04.03.00.13.56;
-        Fri, 03 Apr 2020 00:13:57 -0700 (PDT)
+        by mx.google.com with ESMTP id d191si3000022qkb.268.2020.04.03.00.14.02;
+        Fri, 03 Apr 2020 00:14:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b="H9CmbOh/";
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=MlWOutqX;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id C00184B167;
-	Fri,  3 Apr 2020 03:13:56 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 914D34B167;
+	Fri,  3 Apr 2020 03:14:02 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
 X-Spam-Score: 0.909
@@ -50,52 +50,53 @@ Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
 	(fail, message has been altered) header.i=@redhat.com
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jme9VYkM1qxa; Fri,  3 Apr 2020 03:13:55 -0400 (EDT)
+	with ESMTP id xWKj22COeCSU; Fri,  3 Apr 2020 03:14:01 -0400 (EDT)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 639B54B184;
-	Fri,  3 Apr 2020 03:13:55 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 890344B093;
+	Fri,  3 Apr 2020 03:14:01 -0400 (EDT)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 3C65B4A5A0
- for <kvmarm@lists.cs.columbia.edu>; Fri,  3 Apr 2020 03:13:54 -0400 (EDT)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 5774E4B0FE
+ for <kvmarm@lists.cs.columbia.edu>; Fri,  3 Apr 2020 03:14:00 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1UERzYeNodMA for <kvmarm@lists.cs.columbia.edu>;
- Fri,  3 Apr 2020 03:13:53 -0400 (EDT)
+ with ESMTP id ga4xZjr3GvKa for <kvmarm@lists.cs.columbia.edu>;
+ Fri,  3 Apr 2020 03:13:59 -0400 (EDT)
 Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
  [205.139.110.61])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 583F14B081
- for <kvmarm@lists.cs.columbia.edu>; Fri,  3 Apr 2020 03:13:53 -0400 (EDT)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 5B0844B08F
+ for <kvmarm@lists.cs.columbia.edu>; Fri,  3 Apr 2020 03:13:59 -0400 (EDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585898033;
+ s=mimecast20190719; t=1585898039;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=VMgw7fPRvswGtz0UWDZWno+rhI8xWDdMNwR6QWL2h2w=;
- b=H9CmbOh/SH3NrUHDjQV+r+sdRXr0i1ObPxGb0LjJbrHGGAg3KkJ5XqxywAnZQ5fufvY3oM
- /t5i6zB1/VUcNtkgKzJB+THoEwpHZkUvr3+wUSeypYbydqna7/Rj+RPuyhEH6QwwFAqd11
- sw43sz5V8dHw5BAD4WI3orkLpfc10O0=
+ bh=fDpHgRY2PBeuAglXruVQh+Gy7es0EWulYw4xwBVDuzY=;
+ b=MlWOutqXnql/HzqFXtn1FVG/lCQaWAkrGNkikiF2t6WvEy46sdCJyTbCJ+u02E1nsGbngV
+ UDdq4S8qe29jVIb9rNhDMrPbalwwT7jfAF0HEWYn2DEDgVFdf0WYl91QOjT78TeA7yfLWi
+ ZGLl5Xg/s2UgWzB0BctNyMkYc0HgElU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-336-vVHercPyPrOkiD-P-tOYzw-1; Fri, 03 Apr 2020 03:13:51 -0400
-X-MC-Unique: vVHercPyPrOkiD-P-tOYzw-1
+ us-mta-320-InROAzoLPN28gxEW3IZW_w-1; Fri, 03 Apr 2020 03:13:57 -0400
+X-MC-Unique: InROAzoLPN28gxEW3IZW_w-1
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
  [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 47285800D5B;
- Fri,  3 Apr 2020 07:13:50 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EAF59100550D;
+ Fri,  3 Apr 2020 07:13:55 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-112-58.ams2.redhat.com [10.36.112.58])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3FC575C1C6;
- Fri,  3 Apr 2020 07:13:46 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A529B5C1C6;
+ Fri,  3 Apr 2020 07:13:50 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
  kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
-Subject: [kvm-unit-tests PATCH v4 04/12] arm: pmu: Add a pmu struct
-Date: Fri,  3 Apr 2020 09:13:18 +0200
-Message-Id: <20200403071326.29932-5-eric.auger@redhat.com>
+Subject: [kvm-unit-tests PATCH v4 05/12] arm: pmu: Introduce defines for PMU
+ versions
+Date: Fri,  3 Apr 2020 09:13:19 +0200
+Message-Id: <20200403071326.29932-6-eric.auger@redhat.com>
 In-Reply-To: <20200403071326.29932-1-eric.auger@redhat.com>
 References: <20200403071326.29932-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -116,83 +117,85 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: w1OeI81+eWnx
+X-TUID: vRJscVIzoAIL
 
-This struct aims at storing information potentially used by
-all tests such as the pmu version, the read-only part of the
-PMCR, the number of implemented event counters, ...
+Introduce some defines encoding the different PMU versions.
+v3 is encoded differently in 32 and 64 bits.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Andre Przywara <andre.przywara@arm.com>
-
 ---
-
-v2 -> v3:
-- Fix pmcr_ro and add a comment
----
- arm/pmu.c | 29 +++++++++++++++++++++--------
- 1 file changed, 21 insertions(+), 8 deletions(-)
+ arm/pmu.c | 26 +++++++++++++++++++++-----
+ 1 file changed, 21 insertions(+), 5 deletions(-)
 
 diff --git a/arm/pmu.c b/arm/pmu.c
-index 44f3543..d827e82 100644
+index d827e82..a04588a 100644
 --- a/arm/pmu.c
 +++ b/arm/pmu.c
-@@ -33,7 +33,14 @@
- 
- #define NR_SAMPLES 10
- 
--static unsigned int pmu_version;
-+struct pmu {
-+	unsigned int version;
-+	unsigned int nb_implemented_counters;
-+	uint32_t pmcr_ro;
-+};
-+
-+static struct pmu pmu;
-+
- #if defined(__arm__)
+@@ -45,6 +45,15 @@ static struct pmu pmu;
  #define ID_DFR0_PERFMON_SHIFT 24
  #define ID_DFR0_PERFMON_MASK  0xf
-@@ -242,7 +249,7 @@ static bool check_cpi(int cpi)
+ 
++#define ID_DFR0_PMU_NOTIMPL	0b0000
++#define ID_DFR0_PMU_V1		0b0001
++#define ID_DFR0_PMU_V2		0b0010
++#define ID_DFR0_PMU_V3		0b0011
++#define ID_DFR0_PMU_V3_8_1	0b0100
++#define ID_DFR0_PMU_V3_8_4	0b0101
++#define ID_DFR0_PMU_V3_8_5	0b0110
++#define ID_DFR0_PMU_IMPDEF	0b1111
++
+ #define PMCR         __ACCESS_CP15(c9, 0, c12, 0)
+ #define ID_DFR0      __ACCESS_CP15(c0, 0, c1, 2)
+ #define PMSELR       __ACCESS_CP15(c9, 0, c12, 5)
+@@ -105,6 +114,13 @@ static inline void precise_instrs_loop(int loop, uint32_t pmcr)
+ #define ID_AA64DFR0_PERFMON_SHIFT 8
+ #define ID_AA64DFR0_PERFMON_MASK  0xf
+ 
++#define ID_DFR0_PMU_NOTIMPL	0b0000
++#define ID_DFR0_PMU_V3		0b0001
++#define ID_DFR0_PMU_V3_8_1	0b0100
++#define ID_DFR0_PMU_V3_8_4	0b0101
++#define ID_DFR0_PMU_V3_8_5	0b0110
++#define ID_DFR0_PMU_IMPDEF	0b1111
++
+ static inline uint32_t get_id_aa64dfr0(void) { return read_sysreg(id_aa64dfr0_el1); }
+ static inline uint32_t get_pmcr(void) { return read_sysreg(pmcr_el0); }
+ static inline void set_pmcr(uint32_t v) { write_sysreg(v, pmcr_el0); }
+@@ -116,7 +132,7 @@ static inline void set_pmccfiltr(uint32_t v) { write_sysreg(v, pmccfiltr_el0); }
+ static inline uint8_t get_pmu_version(void)
+ {
+ 	uint8_t ver = (get_id_aa64dfr0() >> ID_AA64DFR0_PERFMON_SHIFT) & ID_AA64DFR0_PERFMON_MASK;
+-	return ver == 1 ? 3 : ver;
++	return ver;
+ }
+ 
+ /*
+@@ -249,7 +265,7 @@ static bool check_cpi(int cpi)
  static void pmccntr64_test(void)
  {
  #ifdef __arm__
--	if (pmu_version == 0x3) {
-+	if (pmu.version == 0x3) {
+-	if (pmu.version == 0x3) {
++	if (pmu.version == ID_DFR0_PMU_V3) {
  		if (ERRATA(9e3f7a296940)) {
  			write_sysreg(0xdead, PMCCNTR64);
  			report(read_sysreg(PMCCNTR64) == 0xdead, "pmccntr64");
-@@ -257,18 +264,24 @@ static bool pmu_probe(void)
+@@ -262,13 +278,13 @@ static void pmccntr64_test(void)
+ /* Return FALSE if no PMU found, otherwise return TRUE */
+ static bool pmu_probe(void)
  {
- 	uint32_t pmcr;
+-	uint32_t pmcr;
++	uint32_t pmcr = get_pmcr();
  
--	pmu_version = get_pmu_version();
--	if (pmu_version == 0 || pmu_version == 0xf)
-+	pmu.version = get_pmu_version();
-+	if (pmu.version == 0 || pmu.version == 0xf)
+ 	pmu.version = get_pmu_version();
+-	if (pmu.version == 0 || pmu.version == 0xf)
++	if (pmu.version == ID_DFR0_PMU_NOTIMPL || pmu.version == ID_DFR0_PMU_IMPDEF)
  		return false;
  
--	report_info("PMU version: %d", pmu_version);
-+	report_info("PMU version: %d", pmu.version);
+-	report_info("PMU version: %d", pmu.version);
++	report_info("PMU version: 0x%x", pmu.version);
  
  	pmcr = get_pmcr();
--	report_info("PMU implementer/ID code/counters: %#x(\"%c\")/%#x/%d",
-+	report_info("PMU implementer/ID code: %#x(\"%c\")/%#x",
- 		    (pmcr >> PMU_PMCR_IMP_SHIFT) & PMU_PMCR_IMP_MASK,
- 		    ((pmcr >> PMU_PMCR_IMP_SHIFT) & PMU_PMCR_IMP_MASK) ? : ' ',
--		    (pmcr >> PMU_PMCR_ID_SHIFT) & PMU_PMCR_ID_MASK,
--		    (pmcr >> PMU_PMCR_N_SHIFT) & PMU_PMCR_N_MASK);
-+		    (pmcr >> PMU_PMCR_ID_SHIFT) & PMU_PMCR_ID_MASK);
-+
-+	/* store read-only and RES0 fields of the PMCR bottom-half*/
-+	pmu.pmcr_ro = pmcr & 0xFFFFFF00;
-+	pmu.nb_implemented_counters =
-+		(pmcr >> PMU_PMCR_N_SHIFT) & PMU_PMCR_N_MASK;
-+	report_info("Implements %d event counters",
-+		    pmu.nb_implemented_counters);
- 
- 	return true;
- }
+ 	report_info("PMU implementer/ID code: %#x(\"%c\")/%#x",
 -- 
 2.20.1
 

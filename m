@@ -1,44 +1,44 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp334044lfi;
-        Fri, 3 Apr 2020 00:38:16 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJRsCb5VPicWdxALgq0SGaImSDrBiJAHpd7VviN4cqc/rzmKpgc49wOaSo4FnAuPJi/22w7
-X-Received: by 2002:a37:9c81:: with SMTP id f123mr7464456qke.494.1585899495906;
-        Fri, 03 Apr 2020 00:38:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585899495; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp369252lfi;
+        Fri, 3 Apr 2020 01:24:03 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKrqXsxS3TKjZVHLdvrO+QtZ1bEW1n4CEFfDMN8yT7+fpLxLy3YyTpUyIWUpWXG6dKPTHuS
+X-Received: by 2002:a0c:f701:: with SMTP id w1mr7247388qvn.126.1585902243369;
+        Fri, 03 Apr 2020 01:24:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585902243; cv=none;
         d=google.com; s=arc-20160816;
-        b=fH0MiqeoEJhd2aXg9I5LWWamtAx9Da/TpBO8+Xs2rcKePenAgpWyx/LsIkZdHIl+Tg
-         YT3WSwX+6qR3uUrKhSsllEHgTzMfKr/SnKCTzpt/w9olCdUOwbrasOSryWcalmcPgJ4u
-         UoYnomg6s39A10WtV1/g4Ec+5r5fjW/1Z6mBaYqUy3XDer9YHg/WD0BHyBLq02ER7zz7
-         /cpMBhqAiBaecissfs3N3/OyZNjYL0qzqv3TssuHkoSzaCW+8mPCgiqMj28TaTp2UGnV
-         EvMEfcTRkSdPEOZ8pO0UNaQ9REhkpUC7//36TjSpb51K7YQqhBdsSrsdnZ1CU7g6mvTl
-         O99w==
+        b=IBBQQYGTZQ9P3vjnhdfR6qoyajDHd/1KSU5bLNiwvvoXGdlEt0KSMv21N3b9KxXqpd
+         0ixKm6gdCXgypGzC0CEFoDwcGPDsSb7r2KdwdAqBPrUo9fbryo/vExHzJ7SqUE4GljUf
+         IWsJZfD2ubrDpe3xjbM6lQPbyVD0NoHEC3JXBcPjxA+T4uuJaNo2Vrl0N9H5SavSy7oI
+         goFp1oH2BS2v4ZdT91fbZf4BPx5yAYiYIGSGN5B+oBLoOgeYnSAo93mhYRZ8cdIieakT
+         QUjOQYLiM/c9+iFa2pcLHjmtcEx4Nb33bKYHmENA1DqjPfs9YFCBWpx2YjTMmScvcwO3
+         hcJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=nFnoqfL0615VY9gAxIJ+cW3HWHGwnWeZw4BxkZk9IpI=;
-        b=x3KThto8Sl5x7RqnZo15iLzT+w9zlitE8EeSgTtvG+AvnMVO98aS1rUtGeRrx20Bwf
-         cTsGxCBwgOloh5PsjRvB1WSEKWe7k+5L6hetKsFbRDeBV1DcyKZQ5Wojx+WyTXD6gd+b
-         4vBB1d3gL2Td/vSIwKwY1C7MElwBoCQ9wLvgo0QdGkePgFKhoSTbDDOtV+aRqlf507WK
-         mtWoGDgycVo96fJv6ulxgb7+DmwwDPgV2m+frSbp1H36iCrc/UceEmY5EKqhGgUgIL5r
-         MubT145GCK4qLcdHWGOP+Ocm4szNIRAJA0YBwzyQjAJokM855rxbd4Z2l5Y0snviz0W1
-         uMdA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=MJK3bXKC+/aNiMqP6tR/8YD2qygF7f8l589JhmJ8iTc=;
+        b=CVk1S+92Z5li0NvTF4c/PcSNOam6kJbcoxfJxE/7UVs0rxrPrVUjxk0SAEO2xkTBiR
+         NpXYuIzbRb9PZk1Bj1+GLw6NtVUHbMQnt+6UMYBf9oWWCg44jMcC+/pdGDnqURuf7Idy
+         Nal+E+RfDgCMt2dewkOq9krfmo6lGYo4baCspBr9VgWeJarlYkQhFpjjxK1rOolsJMUg
+         iPmFfQzVf0PvEHZqUMIdwjDDQdYUbUktTurGRxz2n0qe5suzpmJOUpECNxUndz5Oa1a2
+         7O9JmMgwwVNQIEkVcPffW2O2F0Ywa5YQjSF3re7/dahjw9CFa6CknLngPWyXsqWbMLza
+         MPUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b="Fk0KJpF/";
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b="Vqiw/iFe";
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id y185si4853420qka.96.2020.04.03.00.38.15;
-        Fri, 03 Apr 2020 00:38:15 -0700 (PDT)
+        by mx.google.com with ESMTP id o27si5033761qtc.358.2020.04.03.01.24.03;
+        Fri, 03 Apr 2020 01:24:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b="Fk0KJpF/";
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b="Vqiw/iFe";
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 877554A5A0;
-	Fri,  3 Apr 2020 03:38:15 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 0123D4B162;
+	Fri,  3 Apr 2020 04:24:03 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
 X-Spam-Score: 0.909
@@ -50,57 +50,60 @@ Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
 	(fail, message has been altered) header.i=@redhat.com
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M3Heexaip0a0; Fri,  3 Apr 2020 03:38:14 -0400 (EDT)
+	with ESMTP id SJ1f3PCyDIFv; Fri,  3 Apr 2020 04:24:01 -0400 (EDT)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 72B964B0FF;
-	Fri,  3 Apr 2020 03:38:14 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id BB4E04B161;
+	Fri,  3 Apr 2020 04:24:01 -0400 (EDT)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id B7AF14B0D0
- for <kvmarm@lists.cs.columbia.edu>; Fri,  3 Apr 2020 03:38:13 -0400 (EDT)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id EEA7E4B160
+ for <kvmarm@lists.cs.columbia.edu>; Fri,  3 Apr 2020 04:24:00 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LyavdzMdiddy for <kvmarm@lists.cs.columbia.edu>;
- Fri,  3 Apr 2020 03:38:12 -0400 (EDT)
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
- [205.139.110.61])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id B1F9C4B0BD
- for <kvmarm@lists.cs.columbia.edu>; Fri,  3 Apr 2020 03:38:12 -0400 (EDT)
+ with ESMTP id CtehUeljx2zC for <kvmarm@lists.cs.columbia.edu>;
+ Fri,  3 Apr 2020 04:24:00 -0400 (EDT)
+Received: from us-smtp-1.mimecast.com (us-smtp-2.mimecast.com [205.139.110.61])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id F2FD04B15E
+ for <kvmarm@lists.cs.columbia.edu>; Fri,  3 Apr 2020 04:23:59 -0400 (EDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585899492;
+ s=mimecast20190719; t=1585902239;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/ShhmZm72SQhR4eIFmmC27wtjg2NRVT2I6JWq3826bM=;
- b=Fk0KJpF/0KL2tq6i0GaGk3n01DyTxRudN6D9KgZhTdE0+aclDvXNi7kGoW+8yLXi/yJlEH
- 856brNkDqVPSkh3pJmsoy9cY2WvzWNimXGCqthVZ0/hhaYTRMHtG0b5Wg/P7ogMN3aa+FO
- p1GvwH5cyItP0WRuST9maVKr0v6mato=
+ bh=NTncJUoNdeKHAO92tzeCBJ8GvfQ7t10bHlzh4JiTrfM=;
+ b=Vqiw/iFewuoDzv5J5SjgNqxPlp0mSf4WUtSCVdZZg3WacQz4ol+rFbTZekx9zjdVNy3TY9
+ N1WO/GObPrFb5ubKkDmKWP6QqRRxA4V60mYkkVKjh1Ml3udbAjGC5fRZLGg1T+tALWmIin
+ xQVEI6osV/2QhH5x9XsEx7pG6S809Gs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-102-27GNLgHAPASwY-YYKh5Jsw-1; Fri, 03 Apr 2020 03:38:08 -0400
-X-MC-Unique: 27GNLgHAPASwY-YYKh5Jsw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-152-o0skrVGVN0GWSitMPoWZCA-1; Fri, 03 Apr 2020 04:23:55 -0400
+X-MC-Unique: o0skrVGVN0GWSitMPoWZCA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1B2B38017CE;
- Fri,  3 Apr 2020 07:38:06 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.193.142])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id AB9EC99E09;
- Fri,  3 Apr 2020 07:37:57 +0000 (UTC)
-Date: Fri, 3 Apr 2020 09:37:54 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2A5DD8017CE;
+ Fri,  3 Apr 2020 08:23:54 +0000 (UTC)
+Received: from [10.36.112.58] (ovpn-112-58.ams2.redhat.com [10.36.112.58])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E75C05C1D6;
+ Fri,  3 Apr 2020 08:23:50 +0000 (UTC)
 Subject: Re: [PATCH kvm-unit-tests] fixup! arm/arm64: ITS: pending table
  migration test
-Message-ID: <20200403073754.6q6njhh25s2zutic@kamzik.brq.redhat.com>
+To: Andrew Jones <drjones@redhat.com>
 References: <20200402145227.20109-1-eric.auger@redhat.com>
  <20200402180148.490026-1-drjones@redhat.com>
  <a13e00e8-b699-103a-af6c-7807b67f8c70@redhat.com>
+ <20200403073754.6q6njhh25s2zutic@kamzik.brq.redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <84973989-d751-2f33-8de5-c83b0f71065d@redhat.com>
+Date: Fri, 3 Apr 2020 10:23:49 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <a13e00e8-b699-103a-af6c-7807b67f8c70@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+In-Reply-To: <20200403073754.6q6njhh25s2zutic@kamzik.brq.redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Cc: thuth@redhat.com, kvm@vger.kernel.org, maz@kernel.org,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
  kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
@@ -119,107 +122,116 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: bIqXD97B7KhO
+X-TUID: 5mt+B+WJazD3
 
-On Fri, Apr 03, 2020 at 07:07:10AM +0200, Auger Eric wrote:
-> Hi Drew,
+Hi Drew,
+On 4/3/20 9:37 AM, Andrew Jones wrote:
+> On Fri, Apr 03, 2020 at 07:07:10AM +0200, Auger Eric wrote:
+>> Hi Drew,
+>>
+>> On 4/2/20 8:01 PM, Andrew Jones wrote:
+>>> [ Without the fix this test would hang, as timeouts don't work with
+>>>   the migration scripts (yet). Use errata to skip instead of hang. ]
+>>> Signed-off-by: Andrew Jones <drjones@redhat.com>
+>>> ---
+>>>  arm/gic.c  | 18 ++++++++++++++++--
+>>>  errata.txt |  1 +
+>>>  2 files changed, 17 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/arm/gic.c b/arm/gic.c
+>>> index ddf0f9d09b14..c0781f8c2c80 100644
+>>> --- a/arm/gic.c
+>>> +++ b/arm/gic.c
+>>> @@ -12,6 +12,7 @@
+>>>   * This work is licensed under the terms of the GNU LGPL, version 2.
+>>>   */
+>>>  #include <libcflat.h>
+>>> +#include <errata.h>
+>>>  #include <asm/setup.h>
+>>>  #include <asm/processor.h>
+>>>  #include <asm/delay.h>
+>>> @@ -812,13 +813,23 @@ static void test_its_migration(void)
+>>>  	check_lpi_stats("dev7/eventid=255 triggers LPI 8196 on PE #2 after migration");
+>>>  }
+>>>  
+>>> +#define ERRATA_UNMAPPED_COLLECTIONS "ERRATA_8c58be34494b"
+>>> +
+>>>  static void test_migrate_unmapped_collection(void)
+>>>  {
+>>> -	struct its_collection *col;
+>>> -	struct its_device *dev2, *dev7;
+>>> +	struct its_collection *col = NULL;
+>>> +	struct its_device *dev2 = NULL, *dev7 = NULL;
+>>> +	bool test_skipped = false;
+>>>  	int pe0 = 0;
+>>>  	u8 config;
+>>>  
+>>> +	if (!errata(ERRATA_UNMAPPED_COLLECTIONS)) {
+>>> +		report_skip("Skipping test, as this test hangs without the fix. "
+>>> +			    "Set %s=y to enable.", ERRATA_UNMAPPED_COLLECTIONS);
+>>> +		test_skipped = true;
+>>> +		goto do_migrate;
+>> out of curiosity why do you still do the migration and not directly return.
 > 
-> On 4/2/20 8:01 PM, Andrew Jones wrote:
-> > [ Without the fix this test would hang, as timeouts don't work with
-> >   the migration scripts (yet). Use errata to skip instead of hang. ]
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > ---
-> >  arm/gic.c  | 18 ++++++++++++++++--
-> >  errata.txt |  1 +
-> >  2 files changed, 17 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/arm/gic.c b/arm/gic.c
-> > index ddf0f9d09b14..c0781f8c2c80 100644
-> > --- a/arm/gic.c
-> > +++ b/arm/gic.c
-> > @@ -12,6 +12,7 @@
-> >   * This work is licensed under the terms of the GNU LGPL, version 2.
-> >   */
-> >  #include <libcflat.h>
-> > +#include <errata.h>
-> >  #include <asm/setup.h>
-> >  #include <asm/processor.h>
-> >  #include <asm/delay.h>
-> > @@ -812,13 +813,23 @@ static void test_its_migration(void)
-> >  	check_lpi_stats("dev7/eventid=255 triggers LPI 8196 on PE #2 after migration");
-> >  }
-> >  
-> > +#define ERRATA_UNMAPPED_COLLECTIONS "ERRATA_8c58be34494b"
-> > +
-> >  static void test_migrate_unmapped_collection(void)
-> >  {
-> > -	struct its_collection *col;
-> > -	struct its_device *dev2, *dev7;
-> > +	struct its_collection *col = NULL;
-> > +	struct its_device *dev2 = NULL, *dev7 = NULL;
-> > +	bool test_skipped = false;
-> >  	int pe0 = 0;
-> >  	u8 config;
-> >  
-> > +	if (!errata(ERRATA_UNMAPPED_COLLECTIONS)) {
-> > +		report_skip("Skipping test, as this test hangs without the fix. "
-> > +			    "Set %s=y to enable.", ERRATA_UNMAPPED_COLLECTIONS);
-> > +		test_skipped = true;
-> > +		goto do_migrate;
-> out of curiosity why do you still do the migration and not directly return.
+> That won't work for the same reason the migration failure doesn't work.
+> The problem is with the migration scripts not completing when a migration
+> test doesn't successfully migrate. I plan to fix that when I get a bit of
+> time, and when I do, I'll post a patch removing this errata as well, as
+> it will no longer be needed to avoid test hangs. Anybody testing on a
+> kernel without the kernel fix after the migration scripts are fixed will
+> just get an appropriate FAIL instead.
 
-That won't work for the same reason the migration failure doesn't work.
-The problem is with the migration scripts not completing when a migration
-test doesn't successfully migrate. I plan to fix that when I get a bit of
-time, and when I do, I'll post a patch removing this errata as well, as
-it will no longer be needed to avoid test hangs. Anybody testing on a
-kernel without the kernel fix after the migration scripts are fixed will
-just get an appropriate FAIL instead.
+OK Got it
 
-Thanks,
-drew
+Thanks
 
+Eric
 > 
-> Besides, what caused the migration to fail without 8c58be34494b is
-> bypassed so:
+> Thanks,
+> drew
 > 
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> Tested-by: Eric Auger <eric.auger@redhat.com>
-> 
-> Thank you for the fixup
-> 
-> Eric
-> 
-> > +	}
-> > +
-> >  	if (its_setup1())
-> >  		return;
-> >  
-> > @@ -830,9 +841,12 @@ static void test_migrate_unmapped_collection(void)
-> >  	its_send_mapti(dev2, 8192, 0, col);
-> >  	gicv3_lpi_set_config(8192, LPI_PROP_DEFAULT);
-> >  
-> > +do_migrate:
-> >  	puts("Now migrate the VM, then press a key to continue...\n");
-> >  	(void)getchar();
-> >  	report_info("Migration complete");
-> > +	if (test_skipped)
-> > +		return;
-> >  
-> >  	/* on the destination, map the collection */
-> >  	its_send_mapc(col, true);
-> > diff --git a/errata.txt b/errata.txt
-> > index 7d6abc2a7bf6..b66afaa9c079 100644
-> > --- a/errata.txt
-> > +++ b/errata.txt
-> > @@ -5,4 +5,5 @@
-> >  9e3f7a296940    : 4.9                           : arm64: KVM: pmu: Fix AArch32 cycle counter access
-> >  7b6b46311a85    : 4.11                          : KVM: arm/arm64: Emulate the EL1 phys timer registers
-> >  6c7a5dce22b3    : 4.12                          : KVM: arm/arm64: fix races in kvm_psci_vcpu_on
-> > +8c58be34494b    : 5.6                           : KVM: arm/arm64: vgic-its: Fix restoration of unmapped collections
-> >  #---------------:-------------------------------:---------------------------------------------------
-> > 
-> 
+>>
+>> Besides, what caused the migration to fail without 8c58be34494b is
+>> bypassed so:
+>>
+>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>> Tested-by: Eric Auger <eric.auger@redhat.com>
+>>
+>> Thank you for the fixup
+>>
+>> Eric
+>>
+>>> +	}
+>>> +
+>>>  	if (its_setup1())
+>>>  		return;
+>>>  
+>>> @@ -830,9 +841,12 @@ static void test_migrate_unmapped_collection(void)
+>>>  	its_send_mapti(dev2, 8192, 0, col);
+>>>  	gicv3_lpi_set_config(8192, LPI_PROP_DEFAULT);
+>>>  
+>>> +do_migrate:
+>>>  	puts("Now migrate the VM, then press a key to continue...\n");
+>>>  	(void)getchar();
+>>>  	report_info("Migration complete");
+>>> +	if (test_skipped)
+>>> +		return;
+>>>  
+>>>  	/* on the destination, map the collection */
+>>>  	its_send_mapc(col, true);
+>>> diff --git a/errata.txt b/errata.txt
+>>> index 7d6abc2a7bf6..b66afaa9c079 100644
+>>> --- a/errata.txt
+>>> +++ b/errata.txt
+>>> @@ -5,4 +5,5 @@
+>>>  9e3f7a296940    : 4.9                           : arm64: KVM: pmu: Fix AArch32 cycle counter access
+>>>  7b6b46311a85    : 4.11                          : KVM: arm/arm64: Emulate the EL1 phys timer registers
+>>>  6c7a5dce22b3    : 4.12                          : KVM: arm/arm64: fix races in kvm_psci_vcpu_on
+>>> +8c58be34494b    : 5.6                           : KVM: arm/arm64: vgic-its: Fix restoration of unmapped collections
+>>>  #---------------:-------------------------------:---------------------------------------------------
+>>>
+>>
+>>
 > 
 
 _______________________________________________

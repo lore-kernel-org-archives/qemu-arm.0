@@ -1,101 +1,99 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp461965lfi;
-        Fri, 3 Apr 2020 03:11:15 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLGv9JdfHjSR/JPcCMNKzXJJxSEguqsSoSF5fc5mzEdf+9McHPrGA1Pn0S/fshabJI/JdHQ
-X-Received: by 2002:a37:7242:: with SMTP id n63mr7573937qkc.111.1585908675617;
-        Fri, 03 Apr 2020 03:11:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585908675; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1005424lfi;
+        Fri, 3 Apr 2020 11:40:23 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLgqVtwGFoPhZYQLmhpGz6PszLmGxVGkEM6DX41b49z0Ooe5DACOGKHVrlBF1m7IrkeZ8to
+X-Received: by 2002:a37:6411:: with SMTP id y17mr10685158qkb.437.1585939222888;
+        Fri, 03 Apr 2020 11:40:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585939222; cv=none;
         d=google.com; s=arc-20160816;
-        b=HYif8ETDF+32Qa/CMN1qm9q9Ju4fOxEq1hr6tIzzrUFeSWycDP8Rc+PYI9EbqxzbQl
-         YtMdOYhLs74iuxsc6CMsXRVJgVIFnnTfumbpF8g3/12OeV5ry0lDDb7Zw5aCupAvRwya
-         B/+RiPKFU6vvvxDNMZSa3tUwA5FEUMneeCGC+VOxF/Nbn6u2H6jyjzh8pUObh2EPFluI
-         6Q2z+GZEi+thSqK7U+KhWgR8jZYfqYg+7T3Hqku+ajT/69q8nvnHA79Yd0wEc+A8pI5s
-         jZo8OTQLabgkR1NPcXHYCL8eyLWg3w33JVNNb26Y2cprzdQLSBrjdEnY99NIvBsVwhLC
-         3jZQ==
+        b=UeL5lAIphowbQodzRwDTizckjud31rGWjHTYPyqsMV0O4EY3IZCuO52QV2S9WUXCCG
+         GOMuEhh3JX0B0B8H1blxdaTe3XnKKBrspBHtbU48pp5YcZthD7UJD+XEaZqfWdzyirqr
+         RzHeFQMjx+5TUDoCZTQEA8ACMeVicPc3d7QKjK+2KxzLlFryXCCfkfILklsr3kO8mQXy
+         Hlk4yl1DCM4VfNc0kY4jzY/e7Rw/AdlFcxQV/fVWtR4+c8o049ys05aYtFDfQ7s2vBR3
+         JtheNvzFbv+YEFlPUMjq4znPLS3K+CloLIhyAwMWB5JIx/8fsOF8UCsSf9HXyBEVK33T
+         xHvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=EjDl7RJhUl4gal0S+CLLSPIpxT4VfbXva6nnJEnQ3e0=;
-        b=Fujp5XY2e7grO9uck2T9vVPxqjU2U99wIWFbNuYUFHJEcRBtRD0ZuDv8QmpCFO19r7
-         aG8Wf2oviRX0QxcecjFEwWsQBA44PMLi1G05PE8+kQoa0HhovKcw2emnRJHoHfsxb+0l
-         HUdoIFn4S/jQd4IN1Ih46Ow8RKbI+ZiOuB/m1RcSpcAI/W8+k3yRoX9bqsedrZjc8PLX
-         88YCQhpMShL06W2n1w+n3skgmUCcA728ZW2MwmVjKjTgAGu0F3ZRQV76HZCLHoVLKNlb
-         C13+0p5YMX9aSfWZsdpWaupd/ukunGzWPhB3Rsp5WSfvJazHBmiJtSe9KVyEygnJiiKP
-         Ga4w==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=21IbM3UajX86HvbzjpQqc+UNfp75BVUQPThr9h3lp0k=;
+        b=zLfHUvjH1t/6BMiby0OGWTsSpNBVr2FOTbKSbl9gZB8BK3tWk62MEvlqyzQMC91ywo
+         G336akAVVnYN2zUlh0QE1K8MA25pZ2RmowrECnS9EM823ns8Y+lIY7UjN0zYVM1p7/p/
+         m3rY5Z159OeEkxdW68DUaYPD6d5+/zY1FLUaCdDIymfv5EO/pAR527aCP3Nzdiu3SWbb
+         Rymj79uUT6RnvTstIVzyxFo6E/wpEaW6ZLxnwng5MBugneM7x9e94FvM2CSxrIMvc//X
+         lLF2DRc509aucIozhrThva8ua/gmWQXCe/6K4w01Gw+JDH5h9AHGfOLlFF/gXTr6hHwQ
+         nZ6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AsqlgNrX;
+       dkim=fail header.i=@linaro.org header.s=google header.b=xUQWgmmA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 2si5124263qks.88.2020.04.03.03.11.15
+        by mx.google.com with ESMTPS id bq5si5823313qvb.48.2020.04.03.11.40.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Apr 2020 03:11:15 -0700 (PDT)
+        Fri, 03 Apr 2020 11:40:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AsqlgNrX;
+       dkim=fail header.i=@linaro.org header.s=google header.b=xUQWgmmA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53122 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59648 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jKJIA-0006VS-WB
-	for alex.bennee@linaro.org; Fri, 03 Apr 2020 06:11:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34870)
+	id 1jKREs-0001MC-As
+	for alex.bennee@linaro.org; Fri, 03 Apr 2020 14:40:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55214)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <stefanha@redhat.com>) id 1jKJHq-000695-HI
- for qemu-arm@nongnu.org; Fri, 03 Apr 2020 06:10:56 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jKREd-0001Il-2B
+ for qemu-arm@nongnu.org; Fri, 03 Apr 2020 14:40:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <stefanha@redhat.com>) id 1jKJHp-000202-CE
- for qemu-arm@nongnu.org; Fri, 03 Apr 2020 06:10:54 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:43471
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <stefanha@redhat.com>) id 1jKJHp-0001zR-8m
- for qemu-arm@nongnu.org; Fri, 03 Apr 2020 06:10:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585908652;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=EjDl7RJhUl4gal0S+CLLSPIpxT4VfbXva6nnJEnQ3e0=;
- b=AsqlgNrXrsyJul2AtpxLRNaFOxa7uVGFvJy4/SoAq2q1ywOZ5DW0k1MDE7a9kAPKkvX5Ww
- 3XQ4fcCmZ/yrAbewsiHJNLEjj7MmM7oj47OQMzxbRNTCX7EgQnqbji3dRJdBTFiS62/sDm
- JXsCC4K7zawmr97ftQFsfQQ9R8h6hos=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-351-dHpZO7k9PfuYIE3CVXqRbg-1; Fri, 03 Apr 2020 06:10:48 -0400
-X-MC-Unique: dHpZO7k9PfuYIE3CVXqRbg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 53D59100550D;
- Fri,  3 Apr 2020 10:10:47 +0000 (UTC)
-Received: from localhost (ovpn-114-214.ams2.redhat.com [10.36.114.214])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8F1685DA87;
- Fri,  3 Apr 2020 10:10:44 +0000 (UTC)
-Date: Fri, 3 Apr 2020 11:10:44 +0100
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v2] util/async: Add memory barrier to aio_ctx_prepare
-Message-ID: <20200403101044.GA135040@stefanha-x1.localdomain>
-References: <20200402024431.1629-1-fangying1@huawei.com>
- <20200402093221.GD28280@stefanha-x1.localdomain>
- <7de4d886-d861-5c80-f669-098b730906c8@redhat.com>
+ (envelope-from <peter.maydell@linaro.org>) id 1jKREb-0003Yc-J3
+ for qemu-arm@nongnu.org; Fri, 03 Apr 2020 14:40:06 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:44991)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jKREb-0003Ur-5O
+ for qemu-arm@nongnu.org; Fri, 03 Apr 2020 14:40:05 -0400
+Received: by mail-ot1-x344.google.com with SMTP id a49so8276943otc.11
+ for <qemu-arm@nongnu.org>; Fri, 03 Apr 2020 11:40:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=21IbM3UajX86HvbzjpQqc+UNfp75BVUQPThr9h3lp0k=;
+ b=xUQWgmmAA4+X+RUYByPjTOkrrXkSTqMvo5HMy0aM4DqXG78OWBOSAVgVahRNmE0idx
+ pUhcUUlgFQrP+gtcVtWR73vRO362hfWXbiFm7sUnIx+qc+b0RFo57/nEbGc4HLkohrJ5
+ 9GvajImseQAWsfvX31kAHNoeckBlSjAbada0VNuH4BGm3N1yYnKHT9ZnXh5Con20X7oi
+ bLsfiukOAQ44HJGuHRhuI2OavSVCsMmcTe7J1Xu7FnDRG8CyEJBjANMFsCD+eeS9ADJR
+ X41CzYlTguy01Y6iQm5ZOoaYxfDIdSi3KZ0QJ89VOClDOrWfP4i74MEMkvsYQo24uAQL
+ 2F3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=21IbM3UajX86HvbzjpQqc+UNfp75BVUQPThr9h3lp0k=;
+ b=XMtafqwF190EDcNfVKQ+3b4R39Y28A1QySzCzdPLAmuTjKcQsKuJ6cbkvMOFmKbzCO
+ Q/dIhSYu3FqAIcpp8YkQvX/sHE6JWY3PvuRNNqTtmMJ0TfTYrpc8dRkzXsWIFMQWRF6Z
+ OLkhp63JfQJZimlLQZqgSU5hygEGMXYvK00V5CWXuECI+6L/HTi4YdLQ1sld/PqGxJg7
+ qdJQjEwkq/ZBo51Dnb/7M+c18tzle8n1Mrbd+bL7ppRbc27PBkB4QAHKTLrJmxGRMq5I
+ yItPNyhd8jClTNJbbQzdx/FSpqNe8gmboeYden6ueOgP4TTz8NlUbkEafeUTNHmDJwfJ
+ UEfQ==
+X-Gm-Message-State: AGi0PubHTUofM4OLF0Gh0JULE2F2LKpWFwJhiZ70a0zZCpZ2TERkkEsP
+ R0dy7N1ZkfQWjLu2WN7oI6HfrMuqOT+EbTz0xMbz9g==
+X-Received: by 2002:a05:6830:11d5:: with SMTP id
+ v21mr7696633otq.91.1585939204054; 
+ Fri, 03 Apr 2020 11:40:04 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <7de4d886-d861-5c80-f669-098b730906c8@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="cNdxnHkX5QqsyA0e"
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+References: <20200402134721.27863-1-edgar.iglesias@gmail.com>
+ <20200402134721.27863-6-edgar.iglesias@gmail.com>
+In-Reply-To: <20200402134721.27863-6-edgar.iglesias@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 3 Apr 2020 19:39:52 +0100
+Message-ID: <CAFEAcA99fjZwYJzhypCxyqDMN9NR-BEd8Q21R-5Ge3tv1EwEkQ@mail.gmail.com>
+Subject: Re: [PATCH v1 5/5] dma/xlnx-zdma: Reorg to fix CUR_DSCR
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::344
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,68 +105,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: fam@euphon.net, zhang.zhanghailiang@huawei.com, qemu-devel@nongnu.org,
- qemu-stable@nongnu.org, qemu-arm@nongnu.org, Ying Fang <fangying1@huawei.com>,
- wu.wubin@huawei.com
+Cc: figlesia@xilinx.com, Edgar Iglesias <edgar.iglesias@xilinx.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B9onAanFUDEB
+X-TUID: d5NEMyW0qdZm
 
---cNdxnHkX5QqsyA0e
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Thu, 2 Apr 2020 at 14:46, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
+>
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+>
+> Reorganize the descriptor handling so that CUR_DSCR always
+> points to the next descriptor to be processed.
+>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> ---
 
-On Thu, Apr 02, 2020 at 11:59:06AM +0200, Paolo Bonzini wrote:
-> On 02/04/20 11:32, Stefan Hajnoczi wrote:
-> > Paolo, I'm not sure how to interpret this case according to
-> > docs/devel/atomics.txt.  Maybe you can clarify.
-> >=20
-> > atomic_or() is sequentially consistent and I therefore expected it to
-> > act as a barrier.  Or does sequential consistency only cover the memory
-> > accessed via the sequentially consistent atomics APIs and everything
-> > else (like aio_compute_timeout()) can be reordered?
->=20
-> Yes, that's what I expected too when I wrote that code. :(  But Torvald
-> Riegel explained a while ago that seq-cst accesses are actually weaker
-> than e.g. the Linux kernel atomics[1].
->=20
-> The difference basically only matters if you are writing the relatively
-> common synchronization pattern
->=20
-> =09write A=09=09=09=09write B
-> =09smp_mb()=09=09=09smp_mb()
-> =09read B=09=09=09=09read A
-> =09if not B then sleep=09=09if A then wake up the other side
-> =09do something
->=20
-> because you must either use memory barriers as above, or use seq-cst
-> writes *and* reads.  You cannot rely on having a memory barrier implicit
-> in the writes.
->=20
-> Paolo
->=20
-> [1] https://lists.gnu.org/archive/html/qemu-arm/2019-10/msg00051.html
+This is just moved-code in this patch so I think it's
+a separate issue, but it looks like you have an endianness
+bug here:
 
-Thanks.  I know you are probably very busy right now, but updating
-atomics.txt would be great.
+> +static void zdma_update_descr_addr(XlnxZDMA *s, bool type,
+> +                                   unsigned int basereg)
+> +{
+> +    uint64_t addr, next;
+> +
+> +    if (type == DTYPE_LINEAR) {
+> +        addr = zdma_get_regaddr64(s, basereg);
+> +        next = addr + sizeof(s->dsc_dst);
+> +    } else {
+> +        addr = zdma_get_regaddr64(s, basereg);
+> +        addr += sizeof(s->dsc_dst);
+> +        address_space_read(s->dma_as, addr, s->attr, (void *) &next, 8);
 
-Stefan
+This reads 8 bytes into the uint64_t 'next', which means
+that the value from C's point of view will be different
+for big-endian and little-endian hosts. You probably wanted
+address_space_ldq_le(), assuming the h/w always does
+little-endian reads and that these get_regaddr64 and
+put_regaddr64 functions work with host-endian integers.
 
---cNdxnHkX5QqsyA0e
-Content-Type: application/pgp-signature; name="signature.asc"
+There's a similar problem elsewhere in the device where
+it does this:
+    address_space_read(s->dma_as, addr, s->attr, buf, sizeof(XlnxZDMADescr));
+and assumes the guest structure is the same layout and
+endianness as the host struct XlnxDMADescr.
 
------BEGIN PGP SIGNATURE-----
+I'm not a huge fan of defining host C structs to match
+guest data structures, but if you want to go that way
+you ought to (a) be byteswapping the contents appropriately
+and (b) have a compile-time assert that the size of the
+struct is what you think it is and the compiler hasn't
+inserted any helpful extra padding.
 
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl6HC6MACgkQnKSrs4Gr
-c8jb3wgApUrsFc9OgKA8jcUzLnqULaTnxs4Vbc3d3aTBOUUK6kohWoEmFIMqnUMt
-84lw2B4PYoazj1aM5KoXQMFuS6+sLQff8NWNINXK2qBF+YQAPrMiakm7BMBtH1s2
-wbFwPrlIDtpbnrK1ulC621NjPYOcvhn+yrWp4dHrXXjb/TJ+htXmrO1qteqDsVWl
-pxv28G9pJ/SNl2AqrxAiN8mWDD2dRtQlo6VV2cEMidXoDogcGFzcQr/DM9dTgXgW
-Nfc8sznFE8qt7BJe6vj5F05byOtnu6Jq8JTS7upWEUJDgeM+9AIOwxjgzXXbLwV5
-5dJTLpyU4ef8P49mBZgQZAnJq8MKTQ==
-=6w+Y
------END PGP SIGNATURE-----
-
---cNdxnHkX5QqsyA0e--
-
+thanks
+-- PMM

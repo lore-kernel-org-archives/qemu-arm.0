@@ -1,240 +1,127 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp369252lfi;
-        Fri, 3 Apr 2020 01:24:03 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKrqXsxS3TKjZVHLdvrO+QtZ1bEW1n4CEFfDMN8yT7+fpLxLy3YyTpUyIWUpWXG6dKPTHuS
-X-Received: by 2002:a0c:f701:: with SMTP id w1mr7247388qvn.126.1585902243369;
-        Fri, 03 Apr 2020 01:24:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585902243; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp469938lfi;
+        Fri, 3 Apr 2020 03:20:00 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKvVVKxqeKPDnVEBWKzQw3EzkXOsaxYshQeaWKNEAFKlL/Z8j++TaGZQNNw4ardyX59lu7q
+X-Received: by 2002:a37:9b56:: with SMTP id d83mr7467134qke.461.1585909200034;
+        Fri, 03 Apr 2020 03:20:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585909200; cv=none;
         d=google.com; s=arc-20160816;
-        b=IBBQQYGTZQ9P3vjnhdfR6qoyajDHd/1KSU5bLNiwvvoXGdlEt0KSMv21N3b9KxXqpd
-         0ixKm6gdCXgypGzC0CEFoDwcGPDsSb7r2KdwdAqBPrUo9fbryo/vExHzJ7SqUE4GljUf
-         IWsJZfD2ubrDpe3xjbM6lQPbyVD0NoHEC3JXBcPjxA+T4uuJaNo2Vrl0N9H5SavSy7oI
-         goFp1oH2BS2v4ZdT91fbZf4BPx5yAYiYIGSGN5B+oBLoOgeYnSAo93mhYRZ8cdIieakT
-         QUjOQYLiM/c9+iFa2pcLHjmtcEx4Nb33bKYHmENA1DqjPfs9YFCBWpx2YjTMmScvcwO3
-         hcJA==
+        b=Yd/sVZcUOBguolefWj/8t4iGllKHYfDu13Fag2KirxqIwizl8iwKlFfwk+64sc17YI
+         +7HcYX49RzH3tnXvskgyhtRmR2kuhvbqGROvUAyp7weYeaiGX4GtJ3iSdokB3Y+7oGoa
+         K1rFxVW/Q2f8vXiwXyzPdg/skpbXEpdYCJ1aJc9axfAk0YUZbr9ot0VAfYVLZstsOct7
+         7o/OXilaqZDpl6b6ydVdeUu6Pz2MIA1MCJQkeaZc+bjyk58C++JgNkigycvfo+z8TWNm
+         IvH6P3kJLza6mdNkT259gzV0VdDsRgoSJOAo4MCOox08aYjNoT5bREQOzj8QtFfxNMKv
+         OEpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=MJK3bXKC+/aNiMqP6tR/8YD2qygF7f8l589JhmJ8iTc=;
-        b=CVk1S+92Z5li0NvTF4c/PcSNOam6kJbcoxfJxE/7UVs0rxrPrVUjxk0SAEO2xkTBiR
-         NpXYuIzbRb9PZk1Bj1+GLw6NtVUHbMQnt+6UMYBf9oWWCg44jMcC+/pdGDnqURuf7Idy
-         Nal+E+RfDgCMt2dewkOq9krfmo6lGYo4baCspBr9VgWeJarlYkQhFpjjxK1rOolsJMUg
-         iPmFfQzVf0PvEHZqUMIdwjDDQdYUbUktTurGRxz2n0qe5suzpmJOUpECNxUndz5Oa1a2
-         7O9JmMgwwVNQIEkVcPffW2O2F0Ywa5YQjSF3re7/dahjw9CFa6CknLngPWyXsqWbMLza
-         MPUA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=BDo6/NpvcZe1m9Q45SOapiH2+35sMq4bzkU/dXELtnA=;
+        b=gS2H32M3I+++T8BMO1Xg4248tTzaZxjq5fxziE+GL7W5gKZgfefkM2mcp8j1MVTlBN
+         0dqI2AH9m4P1zwjMX5+YBqgj5VFHsm28zcAxKebRIL64CoJdld6C5j/dUzvIUyNlooB8
+         b5bxjeymkFGQmDyidpn1xHQzduWKTDM1ssDDDMH9EZJosNWE6vFRyAP6Q6CQqjwKshgI
+         4nUOrgR7l0lSD+5nrjppXdQrTcqBVJzjrpbmLxDMjJ2OYLrewvPQP9zM09WLfZzmUgWT
+         jZLTxhcj7/VKmMbkeMTvT6l//nsL7/1tJ/3f9lUbSWqj2EJiyna2ifWlKX5maAOqvX+o
+         q+qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b="Vqiw/iFe";
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id o27si5033761qtc.358.2020.04.03.01.24.03;
-        Fri, 03 Apr 2020 01:24:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h23si495184qte.361.2020.04.03.03.19.59
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 03 Apr 2020 03:20:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b="Vqiw/iFe";
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 0123D4B162;
-	Fri,  3 Apr 2020 04:24:03 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SJ1f3PCyDIFv; Fri,  3 Apr 2020 04:24:01 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id BB4E04B161;
-	Fri,  3 Apr 2020 04:24:01 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id EEA7E4B160
- for <kvmarm@lists.cs.columbia.edu>; Fri,  3 Apr 2020 04:24:00 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CtehUeljx2zC for <kvmarm@lists.cs.columbia.edu>;
- Fri,  3 Apr 2020 04:24:00 -0400 (EDT)
-Received: from us-smtp-1.mimecast.com (us-smtp-2.mimecast.com [205.139.110.61])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id F2FD04B15E
- for <kvmarm@lists.cs.columbia.edu>; Fri,  3 Apr 2020 04:23:59 -0400 (EDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585902239;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NTncJUoNdeKHAO92tzeCBJ8GvfQ7t10bHlzh4JiTrfM=;
- b=Vqiw/iFewuoDzv5J5SjgNqxPlp0mSf4WUtSCVdZZg3WacQz4ol+rFbTZekx9zjdVNy3TY9
- N1WO/GObPrFb5ubKkDmKWP6QqRRxA4V60mYkkVKjh1Ml3udbAjGC5fRZLGg1T+tALWmIin
- xQVEI6osV/2QhH5x9XsEx7pG6S809Gs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-152-o0skrVGVN0GWSitMPoWZCA-1; Fri, 03 Apr 2020 04:23:55 -0400
-X-MC-Unique: o0skrVGVN0GWSitMPoWZCA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2A5DD8017CE;
- Fri,  3 Apr 2020 08:23:54 +0000 (UTC)
-Received: from [10.36.112.58] (ovpn-112-58.ams2.redhat.com [10.36.112.58])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E75C05C1D6;
- Fri,  3 Apr 2020 08:23:50 +0000 (UTC)
-Subject: Re: [PATCH kvm-unit-tests] fixup! arm/arm64: ITS: pending table
- migration test
-To: Andrew Jones <drjones@redhat.com>
-References: <20200402145227.20109-1-eric.auger@redhat.com>
- <20200402180148.490026-1-drjones@redhat.com>
- <a13e00e8-b699-103a-af6c-7807b67f8c70@redhat.com>
- <20200403073754.6q6njhh25s2zutic@kamzik.brq.redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <84973989-d751-2f33-8de5-c83b0f71065d@redhat.com>
-Date: Fri, 3 Apr 2020 10:23:49 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53214 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jKJQd-0003NH-Eu
+	for alex.bennee@linaro.org; Fri, 03 Apr 2020 06:19:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35844)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jKJQR-0003My-Ku
+ for qemu-arm@nongnu.org; Fri, 03 Apr 2020 06:19:48 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jKJQQ-0001oX-IY
+ for qemu-arm@nongnu.org; Fri, 03 Apr 2020 06:19:47 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:50348 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jKJQQ-0001kE-7H; Fri, 03 Apr 2020 06:19:46 -0400
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 5DAAF1C7CDC4ED513491;
+ Fri,  3 Apr 2020 18:19:39 +0800 (CST)
+Received: from S00345302A-PC.china.huawei.com (10.47.24.31) by
+ DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
+ 14.3.487.0; Fri, 3 Apr 2020 18:19:28 +0800
+From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
+ <imammedo@redhat.com>
+Subject: [PATCH for-5.0 v2 0/3] acpi: Fixes for inconsistency in ACPI MR size
+ during migration
+Date: Fri, 3 Apr 2020 11:18:24 +0100
+Message-ID: <20200403101827.30664-1-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
 MIME-Version: 1.0
-In-Reply-To: <20200403073754.6q6njhh25s2zutic@kamzik.brq.redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Cc: thuth@redhat.com, kvm@vger.kernel.org, maz@kernel.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
- kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+Content-Type: text/plain
+X-Originating-IP: [10.47.24.31]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.32
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 5mt+B+WJazD3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, david@redhat.com,
+ mst@redhat.com, dgilbert@redhat.com, xuwei5@hisilicon.com, linuxarm@huawei.com,
+ shannon.zhaosl@gmail.com, lersek@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yK5G06OPqST7
 
-Hi Drew,
-On 4/3/20 9:37 AM, Andrew Jones wrote:
-> On Fri, Apr 03, 2020 at 07:07:10AM +0200, Auger Eric wrote:
->> Hi Drew,
->>
->> On 4/2/20 8:01 PM, Andrew Jones wrote:
->>> [ Without the fix this test would hang, as timeouts don't work with
->>>   the migration scripts (yet). Use errata to skip instead of hang. ]
->>> Signed-off-by: Andrew Jones <drjones@redhat.com>
->>> ---
->>>  arm/gic.c  | 18 ++++++++++++++++--
->>>  errata.txt |  1 +
->>>  2 files changed, 17 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/arm/gic.c b/arm/gic.c
->>> index ddf0f9d09b14..c0781f8c2c80 100644
->>> --- a/arm/gic.c
->>> +++ b/arm/gic.c
->>> @@ -12,6 +12,7 @@
->>>   * This work is licensed under the terms of the GNU LGPL, version 2.
->>>   */
->>>  #include <libcflat.h>
->>> +#include <errata.h>
->>>  #include <asm/setup.h>
->>>  #include <asm/processor.h>
->>>  #include <asm/delay.h>
->>> @@ -812,13 +813,23 @@ static void test_its_migration(void)
->>>  	check_lpi_stats("dev7/eventid=255 triggers LPI 8196 on PE #2 after migration");
->>>  }
->>>  
->>> +#define ERRATA_UNMAPPED_COLLECTIONS "ERRATA_8c58be34494b"
->>> +
->>>  static void test_migrate_unmapped_collection(void)
->>>  {
->>> -	struct its_collection *col;
->>> -	struct its_device *dev2, *dev7;
->>> +	struct its_collection *col = NULL;
->>> +	struct its_device *dev2 = NULL, *dev7 = NULL;
->>> +	bool test_skipped = false;
->>>  	int pe0 = 0;
->>>  	u8 config;
->>>  
->>> +	if (!errata(ERRATA_UNMAPPED_COLLECTIONS)) {
->>> +		report_skip("Skipping test, as this test hangs without the fix. "
->>> +			    "Set %s=y to enable.", ERRATA_UNMAPPED_COLLECTIONS);
->>> +		test_skipped = true;
->>> +		goto do_migrate;
->> out of curiosity why do you still do the migration and not directly return.
-> 
-> That won't work for the same reason the migration failure doesn't work.
-> The problem is with the migration scripts not completing when a migration
-> test doesn't successfully migrate. I plan to fix that when I get a bit of
-> time, and when I do, I'll post a patch removing this errata as well, as
-> it will no longer be needed to avoid test hangs. Anybody testing on a
-> kernel without the kernel fix after the migration scripts are fixed will
-> just get an appropriate FAIL instead.
+This is to fix few issues discovered while adding NVDIMM hot-add
+support to arm/virt. These were previously part of [1] and since
+the fixes are generic in nature and might be an issue in x86 as
+well, they are being treated separately now.
 
-OK Got it
+1. https://patchwork.kernel.org/patch/11432371/
 
-Thanks
+v1 --> V2
+ - patch #2, Addressed comments from Dave and MST
 
-Eric
-> 
-> Thanks,
-> drew
-> 
->>
->> Besides, what caused the migration to fail without 8c58be34494b is
->> bypassed so:
->>
->> Reviewed-by: Eric Auger <eric.auger@redhat.com>
->> Tested-by: Eric Auger <eric.auger@redhat.com>
->>
->> Thank you for the fixup
->>
->> Eric
->>
->>> +	}
->>> +
->>>  	if (its_setup1())
->>>  		return;
->>>  
->>> @@ -830,9 +841,12 @@ static void test_migrate_unmapped_collection(void)
->>>  	its_send_mapti(dev2, 8192, 0, col);
->>>  	gicv3_lpi_set_config(8192, LPI_PROP_DEFAULT);
->>>  
->>> +do_migrate:
->>>  	puts("Now migrate the VM, then press a key to continue...\n");
->>>  	(void)getchar();
->>>  	report_info("Migration complete");
->>> +	if (test_skipped)
->>> +		return;
->>>  
->>>  	/* on the destination, map the collection */
->>>  	its_send_mapc(col, true);
->>> diff --git a/errata.txt b/errata.txt
->>> index 7d6abc2a7bf6..b66afaa9c079 100644
->>> --- a/errata.txt
->>> +++ b/errata.txt
->>> @@ -5,4 +5,5 @@
->>>  9e3f7a296940    : 4.9                           : arm64: KVM: pmu: Fix AArch32 cycle counter access
->>>  7b6b46311a85    : 4.11                          : KVM: arm/arm64: Emulate the EL1 phys timer registers
->>>  6c7a5dce22b3    : 4.12                          : KVM: arm/arm64: fix races in kvm_psci_vcpu_on
->>> +8c58be34494b    : 5.6                           : KVM: arm/arm64: vgic-its: Fix restoration of unmapped collections
->>>  #---------------:-------------------------------:---------------------------------------------------
->>>
->>
->>
-> 
+Updates from [1]:
+ -Added R-by and A-by tags.
+ -Edited commit log for patch#2
+ -Updated patch#3 as per David's comment
 
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+David Hildenbrand (1):
+  exec: Fix for qemu_ram_resize() callback
+
+Shameer Kolothum (2):
+  acpi: Use macro for table-loader file name
+  fw_cfg: Migrate ACPI table mr sizes separately
+
+ exec.c                      | 16 ++++++-
+ hw/arm/virt-acpi-build.c    |  2 +-
+ hw/core/machine.c           |  1 +
+ hw/i386/acpi-build.c        |  2 +-
+ hw/nvram/fw_cfg.c           | 91 ++++++++++++++++++++++++++++++++++++-
+ include/hw/acpi/aml-build.h |  1 +
+ include/hw/nvram/fw_cfg.h   |  6 +++
+ 7 files changed, 114 insertions(+), 5 deletions(-)
+
+-- 
+2.17.1
+
+

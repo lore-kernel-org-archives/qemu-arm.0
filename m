@@ -1,43 +1,44 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp315807lfi;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp315817lfi;
         Fri, 3 Apr 2020 00:13:46 -0700 (PDT)
-X-Google-Smtp-Source: APiQypK8uT7khadd+R7eMcgYpCC7KzQ13Vc/jgYTjgnHbo51DnnFQvDjvngkUJHN5TKSlsSYjhtB
-X-Received: by 2002:aed:35cc:: with SMTP id d12mr6839147qte.298.1585898025898;
-        Fri, 03 Apr 2020 00:13:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585898025; cv=none;
+X-Google-Smtp-Source: APiQypJbl3KXHsa4yI4LNyfpzNngfEd98p6bhYVmK0BWIvKxGH1o33eKVdW97vRAXmAm8hfCjD/6
+X-Received: by 2002:a37:bc47:: with SMTP id m68mr7422438qkf.8.1585898026448;
+        Fri, 03 Apr 2020 00:13:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585898026; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZpZ3mnQPzSYU5CY+Df8pX7hDqnGPRMS3qiONC4XYFUAA35rLBoq5BPIAuWyzfBMj4C
-         rtCsvFrzZchQeZa8UQxi1qFq7mFk98C+OZkpc82J34WIcLjqMCTm5erg/U1GK282PeDC
-         gBtAPIyV9WET/0nMWjPM0mPCjDPEju5dY02awZ3HEkDhgJogGAcM+uMlMBak6IkWFp5X
-         UmWHZDK5AiZqQzSj80wu4jUXkJaKiij4gcJ4JEkgQVrJMnxHp8fNZbQCyisiG6+2cPX6
-         9OGD9e/98ObYJBbiINf2Z5SoAqTP38GxyJDMirwxYkTarrDfkXhyk7vn7hbl5SVsCGfm
-         UPYA==
+        b=xv/LXoOEhFrmjw8ZZqo4JZBnhxTq0Waz5wvOKr+q2nIiQZHmmqNaW9yXfo3QMgfnW/
+         i5itm1Ba4tjPdIAcPUccvUdmbDKY0xnwFQBmP7zLcqZ4ejvlghRyFQvbvG1/wzXoWbIa
+         IxpG7tQkioDV9UKstpvBjnfDT9M1IkWOC6fq/NQLeqNk9M5Qr4YIDLl/UPINzWW8IOxx
+         kFFL6EdKrf2eyyrdT7gHxle5ds5AqL0BqTfilf0FLYv9HoUT3tnGjAEWKo3jUiycD81d
+         NTVI5rrCzFgB/jVoC2ETpF9IFRpsWENK0CGIqtH0Q2zOwvMeYmU+/5Y0LiwwvgwKZ1Pi
+         2oPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=XWX5L+vV9/k9HDD//yV2Y7vrpDPnLh7N9zkOtRIB6OY=;
-        b=P25Ze9+APsBPHujqwPZELDiXuxysTIOutBtDccNHlMdNf6CZj+LBwRnadWyU33mTBM
-         lIMUk+85TJ+vYHkew637+aogL4OuN7O37PrxMh1NofxsDgur1FC4ZIs9Cnu65pL/pjUy
-         dCsndfyqnW4a/O7HMfy2ZD7ihtU7krVax0DeYkqxd4QdvHvlvV7nnrcptg6fwcWN/3A+
-         lvMBRLet5LfT3Uq1SrmxSfTtQrSiByrFbIL7AbjoDwqbJb/CxlSOHMb1E2kJqyD4A6ha
-         NWXto3gkU0KZ69xMVEAPeGo8oDvX0qWepbovAYQz1ptkPM/yFvbdzGZilNjoAYyn9cLe
-         cSAw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=o7uOCWKDJiT/jsE9S4PCqkrvL+UPwe798TBdfqna+3E=;
+        b=wR8ui0dkluwdMIbIYDjT3qX73cb1WWLdgCWQJximo+J+MGdYWlcXsLvpbso7VkDDL0
+         vuqH+hKJw2R0V8SyP56wlplgW8ViXAFcVzGdGeRd8ybkeawXhTnqyjMv8Q1IotzqDsDs
+         Eho+1V93BrlhXWvs0dV+FGN3N92DJjgfXg+SkYQFsaQSo+vCZC059pnZMnLIN4QcdP5k
+         JQZ+lvFZgpbBylWhWOMB0JD9vOhSQopx5tOTUbWBNzvUeVaYjRAsC0wOrXCHcGYy3yfn
+         Idli0q3RZ6keFnB3RsgGYyMlstpWp111Sc4rjWiBQkwaTaRjoCsseS5HsTKsdH7Cy6gw
+         ghLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=gucKaM+E;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=AmaEZl22;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id n9si4669644qvi.153.2020.04.03.00.13.45;
-        Fri, 03 Apr 2020 00:13:45 -0700 (PDT)
+        by mx.google.com with ESMTP id n26si4890777qtb.327.2020.04.03.00.13.46;
+        Fri, 03 Apr 2020 00:13:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=gucKaM+E;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=AmaEZl22;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1694A4B170;
-	Fri,  3 Apr 2020 03:13:45 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 21D674B162;
+	Fri,  3 Apr 2020 03:13:46 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
 X-Spam-Score: 0.909
@@ -49,51 +50,54 @@ Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
 	(fail, message has been altered) header.i=@redhat.com
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OdzL41qNs7HB; Fri,  3 Apr 2020 03:13:43 -0400 (EDT)
+	with ESMTP id 6lU2c599XT8Q; Fri,  3 Apr 2020 03:13:45 -0400 (EDT)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id D0DDC4B164;
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id EE3144B169;
 	Fri,  3 Apr 2020 03:13:43 -0400 (EDT)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 1B7EF4AC80
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 802B74AC80
  for <kvmarm@lists.cs.columbia.edu>; Fri,  3 Apr 2020 03:13:43 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nEUEATAgj4uH for <kvmarm@lists.cs.columbia.edu>;
+ with ESMTP id yaY9RJgT1mpn for <kvmarm@lists.cs.columbia.edu>;
  Fri,  3 Apr 2020 03:13:42 -0400 (EDT)
-Received: from us-smtp-delivery-1.mimecast.com
- (us-smtp-delivery-1.mimecast.com [205.139.110.120])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 0E5074B081
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
+ [205.139.110.120])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id A7A664B163
  for <kvmarm@lists.cs.columbia.edu>; Fri,  3 Apr 2020 03:13:42 -0400 (EDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585898021;
+ s=mimecast20190719; t=1585898022;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=ozI3eRo5MHiGvv1ljzippiG2WaPze3ybClTx3Rcz8Hg=;
- b=gucKaM+Evw1VCrklP5gh2n9N8BqJbQmPOi5pwoknz0WvydlLR5uVc4MUt1BNgROOD18wnn
- AvK107NLQ3bAw2/v7vgeFRdJdhkRSrWF1Wn3FqwhNU7uiMNvRgCKgfo94e0TUR4PTwd9sN
- Xaoq0WeQ2GWxQamFoVvJPCbS5m69GWU=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5QgGQR5lmCzHdU2tw8u26Dp0LVz138MaKuXfv7AyzLc=;
+ b=AmaEZl22Q6IctKMMzB+rgc+I1AJAJjjmCPvgwSxYbp1F/7g70ROC+W/WgheZZZrnrpsD0w
+ HJn3BGdNJ6XD6i09ZsLqX/OtUMQi7+MlinhASqRimz9VP1UZJhENS/jSWEkmmxfjHB/SX3
+ jhSyQK9eZihjj2v+7n0051UbQpd95Rc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-378-2Z4fimH_O9u0RX99QlL5cg-1; Fri, 03 Apr 2020 03:13:37 -0400
-X-MC-Unique: 2Z4fimH_O9u0RX99QlL5cg-1
+ us-mta-246-6uK3z0ZZOhS9hY4FytW9qg-1; Fri, 03 Apr 2020 03:13:40 -0400
+X-MC-Unique: 6uK3z0ZZOhS9hY4FytW9qg-1
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
  [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B85568017F3;
- Fri,  3 Apr 2020 07:13:35 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D63AF107ACC4;
+ Fri,  3 Apr 2020 07:13:38 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-112-58.ams2.redhat.com [10.36.112.58])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2716948;
- Fri,  3 Apr 2020 07:13:29 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1D68C5C1C6;
+ Fri,  3 Apr 2020 07:13:35 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
  kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
-Subject: [kvm-unit-tests PATCH v4 00/12] KVM: arm64: PMUv3 Event Counter Tests
-Date: Fri,  3 Apr 2020 09:13:14 +0200
-Message-Id: <20200403071326.29932-1-eric.auger@redhat.com>
+Subject: [kvm-unit-tests PATCH v4 01/12] arm64: Provide read/write_sysreg_s
+Date: Fri,  3 Apr 2020 09:13:15 +0200
+Message-Id: <20200403071326.29932-2-eric.auger@redhat.com>
+In-Reply-To: <20200403071326.29932-1-eric.auger@redhat.com>
+References: <20200403071326.29932-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Cc: andrew.murray@arm.com, andre.przywara@arm.com
@@ -112,83 +116,41 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: dIRwqNThsZdM
+X-TUID: s4/9XT3FmOKn
 
-This series implements tests exercising the PMUv3 event counters.
-It tests both the 32-bit and 64-bit versions. Overflow interrupts
-also are checked. Those tests only are written for arm64.
+From: Andrew Jones <drjones@redhat.com>
 
-It allowed to reveal some issues related to SW_INCR implementation
-(esp. related to 64-bit implementation), some problems related to
-32-bit <-> 64-bit transitions and consistency of enabled states
-of odd and event counters. Fixes now are upstream.
+Sometimes we need to test access to system registers which are
+missing assembler mnemonics.
 
-Drew kindly provided "arm64: Provide read/write_sysreg_s".
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Alexandru Elisei <alexandru.elisei@arm.com>
+---
+ lib/arm64/asm/sysreg.h | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-All PMU tests can be launched with:
-./run_tests.sh -g pmu
-Tests also can be launched individually. For example:
-./arm-run arm/pmu.flat -append 'pmu-chained-sw-incr'
-
-With KVM:
-- On TX2, I have some random failures due to MEM_ACCESS event
-  measured with a great disparity. This is not observed on
-  other machines I have access to.
-
-The series can be found at:
-https://github.com/eauger/kut/tree/pmu_event_counters_v4
-
-History:
-v3 -> v4:
-- Drew reported that some report messages were repeated.
-  This version makes sure all messages are different.
-
-v2 -> v3:
-- Took into account numerous comments from Drew
-- Applied Andre's R-b when code has not changed too much
-- Don't check PMCR.IMP anymore
-- better handling of version
-- put simple SW_INCR tests for easier TCG testing
-
-v1 -> v2:
-- Took into account Andre's comments except I did not
-  use cnbz in the mem_access_loop() and I did not use
-  @loop directly. Those changes had side effects I
-  cannot explain on the tests. Anyway I think this can
-  be improved later on.
-- removed [kvm-unit-tests PATCH 09/10] arm/arm64: gic:
-  Introduce setup_irq() helper
-
-RFC -> v1:
-- Use new report() proto
-- Style cleanup
-- do not warn about ARM spec recommendations
-- add a comment about PMCEID0/1 splits
-
-Andrew Jones (1):
-  arm64: Provide read/write_sysreg_s
-
-Eric Auger (11):
-  arm: pmu: Let pmu tests take a sub-test parameter
-  arm: pmu: Don't check PMCR.IMP anymore
-  arm: pmu: Add a pmu struct
-  arm: pmu: Introduce defines for PMU versions
-  arm: pmu: Check Required Event Support
-  arm: pmu: Basic event counter Tests
-  arm: pmu: Test SW_INCR event count
-  arm: pmu: Test chained counters
-  arm: pmu: test 32-bit <-> 64-bit transitions
-  arm: gic: Introduce gic_irq_set_clr_enable() helper
-  arm: pmu: Test overflow interrupts
-
- arm/pmu.c              | 838 +++++++++++++++++++++++++++++++++++++++--
- arm/unittests.cfg      |  61 ++-
- lib/arm/asm/gic.h      |   4 +
- lib/arm/gic.c          |  31 ++
- lib/arm64/asm/sysreg.h |  17 +
- lib/bitops.h           |   3 +
- 6 files changed, 917 insertions(+), 37 deletions(-)
-
+diff --git a/lib/arm64/asm/sysreg.h b/lib/arm64/asm/sysreg.h
+index a03830b..a45eebd 100644
+--- a/lib/arm64/asm/sysreg.h
++++ b/lib/arm64/asm/sysreg.h
+@@ -38,6 +38,17 @@
+ 	asm volatile("msr " xstr(r) ", %x0" : : "rZ" (__val));	\
+ } while (0)
+ 
++#define read_sysreg_s(r) ({					\
++	u64 __val;						\
++	asm volatile("mrs_s %0, " xstr(r) : "=r" (__val));	\
++	__val;							\
++})
++
++#define write_sysreg_s(v, r) do {				\
++	u64 __val = (u64)v;					\
++	asm volatile("msr_s " xstr(r) ", %x0" : : "rZ" (__val));\
++} while (0)
++
+ asm(
+ "	.irp	num,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30\n"
+ "	.equ	.L__reg_num_x\\num, \\num\n"
 -- 
 2.20.1
 

@@ -1,78 +1,78 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp316368lfi;
-        Fri, 3 Apr 2020 00:14:22 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJirG7a2yWKGUZPEVS5g/LGT+BrTtk0t0LPa/XVvXX+PiyGxHefpF43S4A+QToq2cZ7MR5O
-X-Received: by 2002:a05:6830:1e93:: with SMTP id n19mr5634438otr.153.1585898062600;
-        Fri, 03 Apr 2020 00:14:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585898062; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp316393lfi;
+        Fri, 3 Apr 2020 00:14:24 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJiAwBbHBom4vdOHu8Q6VCTKfXfxyEr1szLErvYjse8qzFSy6wJmI10r8LAJ7UJytV1nmaw
+X-Received: by 2002:aca:d40f:: with SMTP id l15mr1973106oig.90.1585898064416;
+        Fri, 03 Apr 2020 00:14:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585898064; cv=none;
         d=google.com; s=arc-20160816;
-        b=CpH6lUX5TOhhS7b+EQ/GS5j3LDwF2bvjBgdbD36vbeM2yGkqJxLT3q2qxKpCiuKfUQ
-         bYCNtygvEZcuTun+53W3A2H0SgpH87kRYGrOr7YJMop3m/vyjZB9hRZ9jyGIf9WWeysZ
-         iiu0ntUFXJZJhuIsaSZr25HWQMZE8buXPpukW61lnys/POmTVpifaUkOEh6nQ7s/KDMh
-         0pTIKQkworBhjFa361TWCF3PtGxDkLSdbrDNxTjqvxlfKZHr2O1+yr3RLe9tKSTaxA3g
-         CQdepNvWPc1wRRjIYITlv8srGI6gho/d9GwFWBip5tW3VEgk5WA4UKqxDnCAt4eaNEAm
-         R+vA==
+        b=yHOgwWBx0mYZ1W+XQDcTJakn4MjvOYZIR87e4XxHOTaW5PN6/DNAyEgOHhfeIzZ2rH
+         lgoh7OuOMldGvQ+SEQU9EohdTMFB3whddH6+gq7JqChiGq8gX4GRq4fdW1VZeLkang6H
+         yrHyncU7DDjUpuXuF2UrWkqZRvBty/dscaJL7gBdfZ97GaEY+yWFfiiH7J7cnKmZb+Mn
+         sTonXVf/1yM63M+wpI8l3zI9sB5fsbDIGp+OgzH5iiV+w++9lnPwRWNwG5l9ZOEH3+xB
+         XjvpPHbdq/1H1lOwYFr+rPkONLpkMhbd5xSWSVX24nXKSMBlEjxmp6vwVRpmRJYtHVeH
+         L48g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=0mA5O6VELrlosqTtWhHeA6dNwzSlKertDBwWhijb2Es=;
-        b=u4/jh1qb4A7O1E5S6wPm3Uytov0cTbuCHdjZmDhgUvykpcJvwhjkLcAPQBxthJMVji
-         QSrbjG+mbzLQPXP5izj0a3NjvyNi1MMkUxY/IAL3ZOa+wePIXJQ52FsY++jbfHnbsWgi
-         2Z4JMdivH5lRN3oW4pRa9oaYTdKthbGLuvhJwWxcGnPBPdRmAsbvCJDXRxiNcpbWCuT5
-         gy8E5re/Ad8bxsalNmWc66sWka65qKpMc5XawwWdH0JyUtoWyl9o2DOSaOfDRvOs71/6
-         +DgjccxnmX6hKlegVphIwgcrTYU7ovpxDxqN92h2XUHsMKJyavTwj2KHLvQS+PdjiWDC
-         19lw==
+        bh=aafjbtXSHBMixYKwM8RWXU8749gRXQWdvAvew/5369c=;
+        b=rJEoua0PLrFLnwH3rDwX0x6cDLbfGD8968DV+t3Qdq/0929rXkPLq42OQcX5kBViBo
+         BtuyN805XDbqKtVYkCkoUXE2NzAmR+FRRoqTxuq7VZN1zjsK5QoE+t2oOHz73xG/ErcZ
+         NJ3gWp7LmVeuRgyEbQnqESmjrJkv4UhIpzkfgupc3kIHyupe4IPuMMi3aensgFB4viM7
+         8gHkXuDGSTvPQHZFqXY8dY4snqIfdk7kLk23ezmoVlSt3qjrZXzARAJKOeBStMMEey3s
+         fyM0VSE3IMfdvsYwf0+eRO3ugox+fhVG7n/eFsnC+VaWoV74siPr1wlL3aohfz/fC8ZH
+         t3hA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BXp92zbi;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NoY+2DID;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id x9si3221020oia.194.2020.04.03.00.14.22;
-        Fri, 03 Apr 2020 00:14:22 -0700 (PDT)
+        by mx.google.com with ESMTP id x9si3221020oia.194.2020.04.03.00.14.24;
+        Fri, 03 Apr 2020 00:14:24 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BXp92zbi;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NoY+2DID;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S2389849AbgDCHOV (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Fri, 3 Apr 2020 03:14:21 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:55479 "EHLO
+        id S2389758AbgDCHOX (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Fri, 3 Apr 2020 03:14:23 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:20012 "EHLO
         us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S2388227AbgDCHOV (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 3 Apr 2020 03:14:21 -0400
+        with ESMTP id S2389878AbgDCHOX (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 3 Apr 2020 03:14:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1585898060;
+        s=mimecast20190719; t=1585898062;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=0mA5O6VELrlosqTtWhHeA6dNwzSlKertDBwWhijb2Es=;
-        b=BXp92zbiD+/5OUUF5/tsTw+VVGTapiPU0IAMw9XHpM9l+d/+PNuIVUwHOlImhNbrqTeUKS
-        BulpIBpv6F2f9OVkkYKSimUVg27n2n6pT7wSMYqgy7ujFF825vs3iUNS5LP+oyFDwyGNf7
-        QJwmwl2vXJPanUGTFK88wCbIijrm0Rg=
+        bh=aafjbtXSHBMixYKwM8RWXU8749gRXQWdvAvew/5369c=;
+        b=NoY+2DIDU0hRscPyA1Z2eERIJMbjvWhL0r5GBWwT+zQrLaxRTmY9EO8pf8LjpCQhZB3Cnz
+        3hLMJpFcapD5t/XTKF5C8yPNALg+N6wFF8fUDdetoHx43nlClvksayttJlha2f96ea8Gwq
+        A0vhMJ+QhPo4EWSGTAtQm6eNKZZknso=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-269-xJJkn6sgPsGNCaClIjbZRA-1; Fri, 03 Apr 2020 03:14:16 -0400
-X-MC-Unique: xJJkn6sgPsGNCaClIjbZRA-1
+ us-mta-375-v4Eu734rPNWjFwtx4ek6jA-1; Fri, 03 Apr 2020 03:14:19 -0400
+X-MC-Unique: v4Eu734rPNWjFwtx4ek6jA-1
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4DB86477;
-        Fri,  3 Apr 2020 07:14:14 +0000 (UTC)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6F3FE8017F5;
+        Fri,  3 Apr 2020 07:14:17 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-112-58.ams2.redhat.com [10.36.112.58])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 13FB65C1C6;
-        Fri,  3 Apr 2020 07:14:08 +0000 (UTC)
+        by smtp.corp.redhat.com (Postfix) with ESMTP id A78A85C1C6;
+        Fri,  3 Apr 2020 07:14:14 +0000 (UTC)
 From:   Eric Auger <eric.auger@redhat.com>
 To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
         kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org,
         qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc:     drjones@redhat.com, andrew.murray@arm.com, andre.przywara@arm.com,
         peter.maydell@linaro.org, alexandru.elisei@arm.com
-Subject: [kvm-unit-tests PATCH v4 10/12] arm: pmu: test 32-bit <-> 64-bit transitions
-Date:   Fri,  3 Apr 2020 09:13:24 +0200
-Message-Id: <20200403071326.29932-11-eric.auger@redhat.com>
+Subject: [kvm-unit-tests PATCH v4 11/12] arm: gic: Introduce gic_irq_set_clr_enable() helper
+Date:   Fri,  3 Apr 2020 09:13:25 +0200
+Message-Id: <20200403071326.29932-12-eric.auger@redhat.com>
 In-Reply-To: <20200403071326.29932-1-eric.auger@redhat.com>
 References: <20200403071326.29932-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -82,220 +82,78 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: yN7s3wHH9FW2
+X-TUID: TC1YV6fccCNJ
 
-Test configurations where we transit from 32b to 64b
-counters and conversely. Also tests configuration where
-chain counters are configured but only one counter is
-enabled.
+Allows to set or clear the enable state of a PPI/SGI/SPI.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
-
-v3 -> v4:
-- allo report messages are different
-
-v2 -> v3:
-- added prefix pop
 ---
- arm/pmu.c         | 138 ++++++++++++++++++++++++++++++++++++++++++++++
- arm/unittests.cfg |   6 ++
- 2 files changed, 144 insertions(+)
+ lib/arm/asm/gic.h |  4 ++++
+ lib/arm/gic.c     | 31 +++++++++++++++++++++++++++++++
+ 2 files changed, 35 insertions(+)
 
-diff --git a/arm/pmu.c b/arm/pmu.c
-index be249cc..f8d9a18 100644
---- a/arm/pmu.c
-+++ b/arm/pmu.c
-@@ -57,6 +57,7 @@
- #define ALL_SET			0xFFFFFFFF
- #define ALL_CLEAR		0x0
- #define PRE_OVERFLOW		0xFFFFFFF0
-+#define PRE_OVERFLOW2		0xFFFFFFDC
+diff --git a/lib/arm/asm/gic.h b/lib/arm/asm/gic.h
+index 922cbe9..57e81c6 100644
+--- a/lib/arm/asm/gic.h
++++ b/lib/arm/asm/gic.h
+@@ -82,5 +82,9 @@ extern void gic_ipi_send_single(int irq, int cpu);
+ extern void gic_ipi_send_mask(int irq, const cpumask_t *dest);
+ extern enum gic_irq_state gic_irq_state(int irq);
 =20
- struct pmu {
- 	unsigned int version;
-@@ -144,6 +145,7 @@ static void test_mem_access(void) {}
- static void test_sw_incr(void) {}
- static void test_chained_counters(void) {}
- static void test_chained_sw_incr(void) {}
-+static void test_chain_promotion(void) {}
-=20
- #elif defined(__aarch64__)
- #define ID_AA64DFR0_PERFMON_SHIFT 8
-@@ -595,6 +597,138 @@ static void test_chained_sw_incr(void)
- 		    read_regn_el0(pmevcntr, 0), read_regn_el0(pmevcntr, 1));
++void gic_irq_set_clr_enable(int irq, bool enable);
++#define gic_enable_irq(irq) gic_irq_set_clr_enable(irq, true);
++#define gic_disable_irq(irq) gic_irq_set_clr_enable(irq, false);
++
+ #endif /* !__ASSEMBLY__ */
+ #endif /* _ASMARM_GIC_H_ */
+diff --git a/lib/arm/gic.c b/lib/arm/gic.c
+index c3c5f6b..8a1a8c8 100644
+--- a/lib/arm/gic.c
++++ b/lib/arm/gic.c
+@@ -147,6 +147,36 @@ void gic_ipi_send_mask(int irq, const cpumask_t *des=
+t)
+ 	gic_common_ops->ipi_send_mask(irq, dest);
  }
 =20
-+static void test_chain_promotion(void)
++void gic_irq_set_clr_enable(int irq, bool enable)
 +{
-+	uint32_t events[] =3D {MEM_ACCESS, CHAIN};
-+	void *addr =3D malloc(PAGE_SIZE);
++	u32 offset, split =3D 32, shift =3D (irq % 32);
++	u32 reg, mask =3D BIT(shift);
++	void *base;
 +
-+	if (!satisfy_prerequisites(events, ARRAY_SIZE(events)))
-+		return;
++	assert(irq < 1020);
 +
-+	/* Only enable CHAIN counter */
-+	pmu_reset();
-+	write_regn_el0(pmevtyper, 0, MEM_ACCESS | PMEVTYPER_EXCLUDE_EL0);
-+	write_regn_el0(pmevtyper, 1, CHAIN | PMEVTYPER_EXCLUDE_EL0);
-+	write_sysreg_s(0x2, PMCNTENSET_EL0);
-+	isb();
-+
-+	mem_access_loop(addr, 20, pmu.pmcr_ro | PMU_PMCR_E);
-+	report(!read_regn_el0(pmevcntr, 0),
-+		"chain counter not counting if even counter is disabled");
-+
-+	/* Only enable even counter */
-+	pmu_reset();
-+	write_regn_el0(pmevcntr, 0, PRE_OVERFLOW);
-+	write_sysreg_s(0x1, PMCNTENSET_EL0);
-+	isb();
-+
-+	mem_access_loop(addr, 20, pmu.pmcr_ro | PMU_PMCR_E);
-+	report(!read_regn_el0(pmevcntr, 1) && (read_sysreg(pmovsclr_el0) =3D=3D=
- 0x1),
-+		"odd counter did not increment on overflow if disabled");
-+	report_info("MEM_ACCESS counter #0 has value %ld",
-+		    read_regn_el0(pmevcntr, 0));
-+	report_info("CHAIN counter #1 has value %ld",
-+		    read_regn_el0(pmevcntr, 1));
-+	report_info("overflow counter %ld", read_sysreg(pmovsclr_el0));
-+
-+	/* start at 0xFFFFFFDC, +20 with CHAIN enabled, +20 with CHAIN disabled=
- */
-+	pmu_reset();
-+	write_sysreg_s(0x3, PMCNTENSET_EL0);
-+	write_regn_el0(pmevcntr, 0, PRE_OVERFLOW2);
-+	isb();
-+
-+	mem_access_loop(addr, 20, pmu.pmcr_ro | PMU_PMCR_E);
-+	report_info("MEM_ACCESS counter #0 has value 0x%lx",
-+		    read_regn_el0(pmevcntr, 0));
-+
-+	/* disable the CHAIN event */
-+	write_sysreg_s(0x2, PMCNTENCLR_EL0);
-+	mem_access_loop(addr, 20, pmu.pmcr_ro | PMU_PMCR_E);
-+	report_info("MEM_ACCESS counter #0 has value 0x%lx",
-+		    read_regn_el0(pmevcntr, 0));
-+	report(read_sysreg(pmovsclr_el0) =3D=3D 0x1,
-+		"should have triggered an overflow on #0");
-+	report(!read_regn_el0(pmevcntr, 1),
-+		"CHAIN counter #1 shouldn't have incremented");
-+
-+	/* start at 0xFFFFFFDC, +20 with CHAIN disabled, +20 with CHAIN enabled=
- */
-+
-+	pmu_reset();
-+	write_sysreg_s(0x1, PMCNTENSET_EL0);
-+	write_regn_el0(pmevcntr, 0, PRE_OVERFLOW2);
-+	isb();
-+	report_info("counter #0 =3D 0x%lx, counter #1 =3D 0x%lx overflow=3D0x%l=
-x",
-+		    read_regn_el0(pmevcntr, 0), read_regn_el0(pmevcntr, 1),
-+		    read_sysreg(pmovsclr_el0));
-+
-+	mem_access_loop(addr, 20, pmu.pmcr_ro | PMU_PMCR_E);
-+	report_info("MEM_ACCESS counter #0 has value 0x%lx",
-+		    read_regn_el0(pmevcntr, 0));
-+
-+	/* enable the CHAIN event */
-+	write_sysreg_s(0x3, PMCNTENSET_EL0);
-+	isb();
-+	mem_access_loop(addr, 20, pmu.pmcr_ro | PMU_PMCR_E);
-+	report_info("MEM_ACCESS counter #0 has value 0x%lx",
-+		    read_regn_el0(pmevcntr, 0));
-+
-+	report((read_regn_el0(pmevcntr, 1) =3D=3D 1) && !read_sysreg(pmovsclr_e=
-l0),
-+		"CHAIN counter enabled: CHAIN counter was incremented and no overflow"=
-);
-+
-+	report_info("CHAIN counter #1 =3D 0x%lx, overflow=3D0x%lx",
-+		read_regn_el0(pmevcntr, 1), read_sysreg(pmovsclr_el0));
-+
-+	/* start as MEM_ACCESS/CPU_CYCLES and move to CHAIN/MEM_ACCESS */
-+	pmu_reset();
-+	write_regn_el0(pmevtyper, 0, MEM_ACCESS | PMEVTYPER_EXCLUDE_EL0);
-+	write_regn_el0(pmevtyper, 1, CPU_CYCLES | PMEVTYPER_EXCLUDE_EL0);
-+	write_sysreg_s(0x3, PMCNTENSET_EL0);
-+	write_regn_el0(pmevcntr, 0, PRE_OVERFLOW2);
-+	isb();
-+
-+	mem_access_loop(addr, 20, pmu.pmcr_ro | PMU_PMCR_E);
-+	report_info("MEM_ACCESS counter #0 has value 0x%lx",
-+		    read_regn_el0(pmevcntr, 0));
-+
-+	/* 0 becomes CHAINED */
-+	write_sysreg_s(0x0, PMCNTENSET_EL0);
-+	write_regn_el0(pmevtyper, 1, CHAIN | PMEVTYPER_EXCLUDE_EL0);
-+	write_sysreg_s(0x3, PMCNTENSET_EL0);
-+	write_regn_el0(pmevcntr, 1, 0x0);
-+
-+	mem_access_loop(addr, 20, pmu.pmcr_ro | PMU_PMCR_E);
-+	report_info("MEM_ACCESS counter #0 has value 0x%lx",
-+		    read_regn_el0(pmevcntr, 0));
-+
-+	report((read_regn_el0(pmevcntr, 1) =3D=3D 1) && !read_sysreg(pmovsclr_e=
-l0),
-+		"32b->64b: CHAIN counter incremented and no overflow");
-+
-+	report_info("CHAIN counter #1 =3D 0x%lx, overflow=3D0x%lx",
-+		read_regn_el0(pmevcntr, 1), read_sysreg(pmovsclr_el0));
-+
-+	/* start as CHAIN/MEM_ACCESS and move to MEM_ACCESS/CPU_CYCLES */
-+	pmu_reset();
-+	write_regn_el0(pmevtyper, 0, MEM_ACCESS | PMEVTYPER_EXCLUDE_EL0);
-+	write_regn_el0(pmevtyper, 1, CHAIN | PMEVTYPER_EXCLUDE_EL0);
-+	write_regn_el0(pmevcntr, 0, PRE_OVERFLOW2);
-+	write_sysreg_s(0x3, PMCNTENSET_EL0);
-+
-+	mem_access_loop(addr, 20, pmu.pmcr_ro | PMU_PMCR_E);
-+	report_info("counter #0=3D0x%lx, counter #1=3D0x%lx",
-+			read_regn_el0(pmevcntr, 0), read_regn_el0(pmevcntr, 1));
-+
-+	write_sysreg_s(0x0, PMCNTENSET_EL0);
-+	write_regn_el0(pmevtyper, 1, CPU_CYCLES | PMEVTYPER_EXCLUDE_EL0);
-+	write_sysreg_s(0x3, PMCNTENSET_EL0);
-+
-+	mem_access_loop(addr, 20, pmu.pmcr_ro | PMU_PMCR_E);
-+	report(read_sysreg(pmovsclr_el0) =3D=3D 1,
-+		"overflow is expected on counter 0");
-+	report_info("counter #0=3D0x%lx, counter #1=3D0x%lx overflow=3D0x%lx",
-+			read_regn_el0(pmevcntr, 0), read_regn_el0(pmevcntr, 1),
-+			read_sysreg(pmovsclr_el0));
++	switch (gic_version()) {
++	case 2:
++		offset =3D enable ? GICD_ISENABLER : GICD_ICENABLER;
++		base =3D gicv2_dist_base();
++		break;
++	case 3:
++		if (irq < 32) {
++			offset =3D enable ? GICR_ISENABLER0 : GICR_ICENABLER0;
++			base =3D gicv3_sgi_base();
++		} else {
++			offset =3D enable ? GICD_ISENABLER : GICD_ICENABLER;
++			base =3D gicv3_dist_base();
++		}
++		break;
++	default:
++		assert(0);
++	}
++	base +=3D offset + (irq / split) * 4;
++	reg =3D readl(base);
++	writel(reg | mask, base);
 +}
 +
- #endif
+ enum gic_irq_state gic_irq_state(int irq)
+ {
+ 	enum gic_irq_state state;
+@@ -191,3 +221,4 @@ enum gic_irq_state gic_irq_state(int irq)
 =20
- /*
-@@ -793,6 +927,10 @@ int main(int argc, char *argv[])
- 		report_prefix_push(argv[1]);
- 		test_chained_sw_incr();
- 		report_prefix_pop();
-+	} else if (strcmp(argv[1], "pmu-chain-promotion") =3D=3D 0) {
-+		report_prefix_push(argv[1]);
-+		test_chain_promotion();
-+		report_prefix_pop();
- 	} else {
- 		report_abort("Unknown sub-test '%s'", argv[1]);
- 	}
-diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-index d31dcbf..1b0c8c8 100644
---- a/arm/unittests.cfg
-+++ b/arm/unittests.cfg
-@@ -108,6 +108,12 @@ groups =3D pmu
- arch =3D arm64
- extra_params =3D -append 'pmu-chained-sw-incr'
-=20
-+[pmu-chain-promotion]
-+file =3D pmu.flat
-+groups =3D pmu
-+arch =3D arm64
-+extra_params =3D -append 'pmu-chain-promotion'
+ 	return state;
+ }
 +
- # Test PMU support (TCG) with -icount IPC=3D1
- #[pmu-tcg-icount-1]
- #file =3D pmu.flat
 --=20
 2.20.1

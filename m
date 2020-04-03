@@ -1,217 +1,198 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp298809lfi;
-        Thu, 2 Apr 2020 23:52:04 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJpEv7jsJeBpncxNLP/X0UqzNqbbKFjKjICw0rbil+XGerFe4f0jqDvpZCkIYeh+NjZpdft
-X-Received: by 2002:a37:a88e:: with SMTP id r136mr7441314qke.12.1585896724526;
-        Thu, 02 Apr 2020 23:52:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585896724; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp315807lfi;
+        Fri, 3 Apr 2020 00:13:46 -0700 (PDT)
+X-Google-Smtp-Source: APiQypK8uT7khadd+R7eMcgYpCC7KzQ13Vc/jgYTjgnHbo51DnnFQvDjvngkUJHN5TKSlsSYjhtB
+X-Received: by 2002:aed:35cc:: with SMTP id d12mr6839147qte.298.1585898025898;
+        Fri, 03 Apr 2020 00:13:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585898025; cv=none;
         d=google.com; s=arc-20160816;
-        b=UXtkX4qqW0tiGZuxRzESG1IbIDmfzwKfNiUd5hhdguhZNu2wOfmfvsDl7qp8JlZKbY
-         0Crso7RuUerMbD3kaWMuMxaZfSKUSYkNZFir/cTAzbpMwrShasR+8f8jidukv1LY5XWi
-         t0Jmss5X1x3hFwdzQ2FuO7GFe4uaVTUDBfSM1lCcagq59PrFgk+i1/yz/M5hFkBqc+H0
-         aZ0O2cs2cUHpdtn40mSisCekmZ5ZwAxWNIEB4tUoWQjrHnyILHpBjiS4fSXuZ5XtAaRr
-         SduCQR0u9QNuoL9Mjou92a0ZtEf8t1I7nMFWH5NMOQ+YCjoywAU+vg1xGf8AczkDROt7
-         Vajw==
+        b=ZpZ3mnQPzSYU5CY+Df8pX7hDqnGPRMS3qiONC4XYFUAA35rLBoq5BPIAuWyzfBMj4C
+         rtCsvFrzZchQeZa8UQxi1qFq7mFk98C+OZkpc82J34WIcLjqMCTm5erg/U1GK282PeDC
+         gBtAPIyV9WET/0nMWjPM0mPCjDPEju5dY02awZ3HEkDhgJogGAcM+uMlMBak6IkWFp5X
+         UmWHZDK5AiZqQzSj80wu4jUXkJaKiij4gcJ4JEkgQVrJMnxHp8fNZbQCyisiG6+2cPX6
+         9OGD9e/98ObYJBbiINf2Z5SoAqTP38GxyJDMirwxYkTarrDfkXhyk7vn7hbl5SVsCGfm
+         UPYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=slzYGb+v5/dk7IKPCVP3MLpXBHHlWFIEKQjlrIrF0c0=;
-        b=D3oDTB3Z4b6cv5lc5rGRte8ZNyKDvlU77vxT3hahiYjIJori1PerAMZBEXRWhbY30E
-         NL1ermlNd2RxdcWXTuGLcBnfQtiepYJ92Oja7k6KebljlLcW5J9wzThQ5Fi5ECNshbun
-         A9fGRAKzq8ZHDGxPSgI309gx4LhehnGZlF5uhH5/SEcqhaUgU7PtmhWmR/DN1BF7BoTh
-         ObENCK8OSU30VL2aB8M80YGoWNdK8Y6+iKCC6r8Zisfik0nPKJMlaXP/ZNkyQfxDjHfB
-         1bNEj8h4ZElB6nrpy2KFhrqz2qQGSpJ6EeI8QMUgZC2nk0uxCHWtMu+fSA8GPCaAhuFx
-         AjHQ==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=XWX5L+vV9/k9HDD//yV2Y7vrpDPnLh7N9zkOtRIB6OY=;
+        b=P25Ze9+APsBPHujqwPZELDiXuxysTIOutBtDccNHlMdNf6CZj+LBwRnadWyU33mTBM
+         lIMUk+85TJ+vYHkew637+aogL4OuN7O37PrxMh1NofxsDgur1FC4ZIs9Cnu65pL/pjUy
+         dCsndfyqnW4a/O7HMfy2ZD7ihtU7krVax0DeYkqxd4QdvHvlvV7nnrcptg6fwcWN/3A+
+         lvMBRLet5LfT3Uq1SrmxSfTtQrSiByrFbIL7AbjoDwqbJb/CxlSOHMb1E2kJqyD4A6ha
+         NWXto3gkU0KZ69xMVEAPeGo8oDvX0qWepbovAYQz1ptkPM/yFvbdzGZilNjoAYyn9cLe
+         cSAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="FF/0agqa";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p124si1173458qke.295.2020.04.02.23.52.04
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Apr 2020 23:52:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=gucKaM+E;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id n9si4669644qvi.153.2020.04.03.00.13.45;
+        Fri, 03 Apr 2020 00:13:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="FF/0agqa";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:50958 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jKGBP-0004eX-WB
-	for alex.bennee@linaro.org; Fri, 03 Apr 2020 02:52:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34272)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <frasse.iglesias@gmail.com>) id 1jKGA4-0002lA-UF
- for qemu-arm@nongnu.org; Fri, 03 Apr 2020 02:50:42 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <frasse.iglesias@gmail.com>) id 1jKGA3-0002i4-OC
- for qemu-arm@nongnu.org; Fri, 03 Apr 2020 02:50:40 -0400
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:38183)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <frasse.iglesias@gmail.com>)
- id 1jKGA1-0002dH-4g; Fri, 03 Apr 2020 02:50:37 -0400
-Received: by mail-lf1-x141.google.com with SMTP id c5so4871785lfp.5;
- Thu, 02 Apr 2020 23:50:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=slzYGb+v5/dk7IKPCVP3MLpXBHHlWFIEKQjlrIrF0c0=;
- b=FF/0agqaVocaewikiG32abS/2mK/L00908lFmlV/SUouPIzROtTIzivtqTO3JalVoB
- q7BWFot06Rk0pTj9L8XW3POL3TPPl/3ornDCVGm1N19PGABFaNdv8OgmFtpJtdpkKGZl
- A/8KhL0RXt5oZ+sMxRUhO2wOADmx4bP5s9VXeOVNJz//m2JOl7HIIXHLIiZSogf9gYwi
- 5NXP19PbH1GQpxChecL5qBSPZKiqRnrdP54EkGxdQ7gbEcWomJaT/MqVUM4WrBX/xzSe
- G1gikpBmzIsNMhwcb5cS5+cnOqhomKmyTSm00ZQsUcXS2A0w2vPstx6Ed/8SH2bj4xkh
- ZGWQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=slzYGb+v5/dk7IKPCVP3MLpXBHHlWFIEKQjlrIrF0c0=;
- b=oUtFBmd8Pbbta1xuL25dnVuBOH7f8J65E/Qt4kWNLMuKylyEfXHHizAGZvzAgnPT/j
- YgwAOICTo4UGwvbPlHWTEl9tG8WtPw27pRGYuePZVUivrsoMXcIhk67DUw+PWm9v1FHY
- etXwsF/7QmD1U1x6yRxPRvfDMcQQvhylygGvRvsKmZ3qc+j4o7U98RVPjDJtZ5MHxHOE
- P37/SK0KnHwBFc2KVXCquCDEQsrHZ2zO37o9Vn6Gueh/N7GRaWK4zC9u23kPk5VcTN0X
- mVpwPS+rT23xoAARGerIIrewvoZYP6v3HxBWiGLqNO8tEXAWhrtUZ+H0Eh19RdgOPWfC
- PuNA==
-X-Gm-Message-State: AGi0Pub04mr/O4UygUCeQb0rxkjocE2OAr9CuzBHjODB8C2wYKB2BK3O
- 5m6QxJ16ZYAJWC17DzXcu1Q=
-X-Received: by 2002:ac2:545a:: with SMTP id d26mr4560260lfn.85.1585896635977; 
- Thu, 02 Apr 2020 23:50:35 -0700 (PDT)
-Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
- by smtp.gmail.com with ESMTPSA id
- d8sm4807916lfm.28.2020.04.02.23.50.34
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 02 Apr 2020 23:50:35 -0700 (PDT)
-Date: Fri, 3 Apr 2020 08:50:33 +0200
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH v1 5/5] dma/xlnx-zdma: Reorg to fix CUR_DSCR
-Message-ID: <20200403065032.b6g6onhvvkvhfx5w@fralle-msi>
-References: <20200402134721.27863-1-edgar.iglesias@gmail.com>
- <20200402134721.27863-6-edgar.iglesias@gmail.com>
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=gucKaM+E;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1694A4B170;
+	Fri,  3 Apr 2020 03:13:45 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id OdzL41qNs7HB; Fri,  3 Apr 2020 03:13:43 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id D0DDC4B164;
+	Fri,  3 Apr 2020 03:13:43 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 1B7EF4AC80
+ for <kvmarm@lists.cs.columbia.edu>; Fri,  3 Apr 2020 03:13:43 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id nEUEATAgj4uH for <kvmarm@lists.cs.columbia.edu>;
+ Fri,  3 Apr 2020 03:13:42 -0400 (EDT)
+Received: from us-smtp-delivery-1.mimecast.com
+ (us-smtp-delivery-1.mimecast.com [205.139.110.120])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 0E5074B081
+ for <kvmarm@lists.cs.columbia.edu>; Fri,  3 Apr 2020 03:13:42 -0400 (EDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1585898021;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=ozI3eRo5MHiGvv1ljzippiG2WaPze3ybClTx3Rcz8Hg=;
+ b=gucKaM+Evw1VCrklP5gh2n9N8BqJbQmPOi5pwoknz0WvydlLR5uVc4MUt1BNgROOD18wnn
+ AvK107NLQ3bAw2/v7vgeFRdJdhkRSrWF1Wn3FqwhNU7uiMNvRgCKgfo94e0TUR4PTwd9sN
+ Xaoq0WeQ2GWxQamFoVvJPCbS5m69GWU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-378-2Z4fimH_O9u0RX99QlL5cg-1; Fri, 03 Apr 2020 03:13:37 -0400
+X-MC-Unique: 2Z4fimH_O9u0RX99QlL5cg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B85568017F3;
+ Fri,  3 Apr 2020 07:13:35 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-112-58.ams2.redhat.com [10.36.112.58])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2716948;
+ Fri,  3 Apr 2020 07:13:29 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
+ kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Subject: [kvm-unit-tests PATCH v4 00/12] KVM: arm64: PMUv3 Event Counter Tests
+Date: Fri,  3 Apr 2020 09:13:14 +0200
+Message-Id: <20200403071326.29932-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200402134721.27863-6-edgar.iglesias@gmail.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::141
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Cc: andrew.murray@arm.com, andre.przywara@arm.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
- edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com, alistair@alistair23.me,
- richard.henderson@linaro.org, qemu-devel@nongnu.org,
- frederic.konrad@adacore.com, qemu-arm@nongnu.org, philmd@redhat.com,
- luc.michel@greensocs.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jcocj6knhQQC
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: dIRwqNThsZdM
 
-On [2020 Apr 02] Thu 15:47:21, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-> 
-> Reorganize the descriptor handling so that CUR_DSCR always
-> points to the next descriptor to be processed.
-> 
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+This series implements tests exercising the PMUv3 event counters.
+It tests both the 32-bit and 64-bit versions. Overflow interrupts
+also are checked. Those tests only are written for arm64.
 
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+It allowed to reveal some issues related to SW_INCR implementation
+(esp. related to 64-bit implementation), some problems related to
+32-bit <-> 64-bit transitions and consistency of enabled states
+of odd and event counters. Fixes now are upstream.
 
-> ---
->  hw/dma/xlnx-zdma.c | 47 ++++++++++++++++++++++------------------------
->  1 file changed, 22 insertions(+), 25 deletions(-)
-> 
-> diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
-> index e856d233f2..1c45367f3c 100644
-> --- a/hw/dma/xlnx-zdma.c
-> +++ b/hw/dma/xlnx-zdma.c
-> @@ -333,10 +333,28 @@ static void zdma_load_src_descriptor(XlnxZDMA *s)
->      }
->  }
->  
-> +static void zdma_update_descr_addr(XlnxZDMA *s, bool type,
-> +                                   unsigned int basereg)
-> +{
-> +    uint64_t addr, next;
-> +
-> +    if (type == DTYPE_LINEAR) {
-> +        addr = zdma_get_regaddr64(s, basereg);
-> +        next = addr + sizeof(s->dsc_dst);
-> +    } else {
-> +        addr = zdma_get_regaddr64(s, basereg);
-> +        addr += sizeof(s->dsc_dst);
-> +        address_space_read(s->dma_as, addr, s->attr, (void *) &next, 8);
-> +    }
-> +
-> +    zdma_put_regaddr64(s, basereg, next);
-> +}
-> +
->  static void zdma_load_dst_descriptor(XlnxZDMA *s)
->  {
->      uint64_t dst_addr;
->      unsigned int ptype = ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0, POINT_TYPE);
-> +    bool dst_type;
->  
->      if (ptype == PT_REG) {
->          memcpy(&s->dsc_dst, &s->regs[R_ZDMA_CH_DST_DSCR_WORD0],
-> @@ -349,24 +367,10 @@ static void zdma_load_dst_descriptor(XlnxZDMA *s)
->      if (!zdma_load_descriptor(s, dst_addr, &s->dsc_dst)) {
->          ARRAY_FIELD_DP32(s->regs, ZDMA_CH_ISR, AXI_RD_DST_DSCR, true);
->      }
-> -}
-> -
-> -static uint64_t zdma_update_descr_addr(XlnxZDMA *s, bool type,
-> -                                       unsigned int basereg)
-> -{
-> -    uint64_t addr, next;
->  
-> -    if (type == DTYPE_LINEAR) {
-> -        next = zdma_get_regaddr64(s, basereg);
-> -        next += sizeof(s->dsc_dst);
-> -        zdma_put_regaddr64(s, basereg, next);
-> -    } else {
-> -        addr = zdma_get_regaddr64(s, basereg);
-> -        addr += sizeof(s->dsc_dst);
-> -        address_space_read(s->dma_as, addr, s->attr, &next, 8);
-> -        zdma_put_regaddr64(s, basereg, next);
-> -    }
-> -    return next;
-> +    /* Advance the descriptor pointer.  */
-> +    dst_type = FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WORD3, TYPE);
-> +    zdma_update_descr_addr(s, dst_type, R_ZDMA_CH_DST_CUR_DSCR_LSB);
->  }
->  
->  static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
-> @@ -387,14 +391,7 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
->          dst_size = FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WORD2,
->                                SIZE);
->          if (dst_size == 0 && ptype == PT_MEM) {
-> -            uint64_t next;
-> -            bool dst_type = FIELD_EX32(s->dsc_dst.words[3],
-> -                                       ZDMA_CH_DST_DSCR_WORD3,
-> -                                       TYPE);
-> -
-> -            next = zdma_update_descr_addr(s, dst_type,
-> -                                          R_ZDMA_CH_DST_CUR_DSCR_LSB);
-> -            zdma_load_descriptor(s, next, &s->dsc_dst);
-> +            zdma_load_dst_descriptor(s);
->              dst_size = FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WORD2,
->                                    SIZE);
->          }
-> -- 
-> 2.20.1
-> 
+Drew kindly provided "arm64: Provide read/write_sysreg_s".
+
+All PMU tests can be launched with:
+./run_tests.sh -g pmu
+Tests also can be launched individually. For example:
+./arm-run arm/pmu.flat -append 'pmu-chained-sw-incr'
+
+With KVM:
+- On TX2, I have some random failures due to MEM_ACCESS event
+  measured with a great disparity. This is not observed on
+  other machines I have access to.
+
+The series can be found at:
+https://github.com/eauger/kut/tree/pmu_event_counters_v4
+
+History:
+v3 -> v4:
+- Drew reported that some report messages were repeated.
+  This version makes sure all messages are different.
+
+v2 -> v3:
+- Took into account numerous comments from Drew
+- Applied Andre's R-b when code has not changed too much
+- Don't check PMCR.IMP anymore
+- better handling of version
+- put simple SW_INCR tests for easier TCG testing
+
+v1 -> v2:
+- Took into account Andre's comments except I did not
+  use cnbz in the mem_access_loop() and I did not use
+  @loop directly. Those changes had side effects I
+  cannot explain on the tests. Anyway I think this can
+  be improved later on.
+- removed [kvm-unit-tests PATCH 09/10] arm/arm64: gic:
+  Introduce setup_irq() helper
+
+RFC -> v1:
+- Use new report() proto
+- Style cleanup
+- do not warn about ARM spec recommendations
+- add a comment about PMCEID0/1 splits
+
+Andrew Jones (1):
+  arm64: Provide read/write_sysreg_s
+
+Eric Auger (11):
+  arm: pmu: Let pmu tests take a sub-test parameter
+  arm: pmu: Don't check PMCR.IMP anymore
+  arm: pmu: Add a pmu struct
+  arm: pmu: Introduce defines for PMU versions
+  arm: pmu: Check Required Event Support
+  arm: pmu: Basic event counter Tests
+  arm: pmu: Test SW_INCR event count
+  arm: pmu: Test chained counters
+  arm: pmu: test 32-bit <-> 64-bit transitions
+  arm: gic: Introduce gic_irq_set_clr_enable() helper
+  arm: pmu: Test overflow interrupts
+
+ arm/pmu.c              | 838 +++++++++++++++++++++++++++++++++++++++--
+ arm/unittests.cfg      |  61 ++-
+ lib/arm/asm/gic.h      |   4 +
+ lib/arm/gic.c          |  31 ++
+ lib/arm64/asm/sysreg.h |  17 +
+ lib/bitops.h           |   3 +
+ 6 files changed, 917 insertions(+), 37 deletions(-)
+
+-- 
+2.20.1
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

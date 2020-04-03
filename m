@@ -1,196 +1,343 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp491351lfi;
-        Fri, 3 Apr 2020 03:45:21 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLsN+vuPJLSsjnvEWlA8xfCIswGdoVr8TisXY19oFlDE1Mowtg5jTxPIHpDZ5vbzMRBcr3R
-X-Received: by 2002:a05:620a:12fa:: with SMTP id f26mr7907753qkl.374.1585910721530;
-        Fri, 03 Apr 2020 03:45:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585910721; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp493092lfi;
+        Fri, 3 Apr 2020 03:47:29 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIrTNmTiQmVcxJ3iTHHX7+7gBUYnlsHEZ89ueUlt16/i6sjln3dlv+lyvrBfD1C/FvVDLcO
+X-Received: by 2002:a37:6514:: with SMTP id z20mr8068321qkb.197.1585910849443;
+        Fri, 03 Apr 2020 03:47:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585910849; cv=none;
         d=google.com; s=arc-20160816;
-        b=jo3AiEpTyWMwfOwd/libuaVcgx78e2LaE1klhlFOXPYmQMeAZwQVn455hn4XUSLPso
-         N4IYDO0zyW6Xbf5w69GOgl+JL7s58y3TY5SA6SfBHobkHJD8wWHuLxjUWB5u+ntrY7Rj
-         k4GIE/oY2c3+PEw+AVf5zr4FHZ7YhGXCfDf4zMQjaIPmTG7SZsEj7hlxf6wDrYPfT2Kl
-         QghKR8yY80J04fFmOWFd+o33HwMM+be3UowFJpais2Js4Wol2/XEu0SxeU5fP5FEY0UD
-         sajWketHJYY61mG3uZ7Q4f1S27vvtK8WbsopeNRn3wGjXisF17d9uPDEeCUSFd0OSTUX
-         fLPA==
+        b=GNCuihLQ2DdQ/vxE55Zv0GQLFlFqnPRQXQpzN+EzzMauRA6pmM4qTHhYK61NOxqm43
+         dbEisqMKn8eWYApeegCEDxEdBq0qvHg+DkneuKMKu38BYvrkFwFl3J5POTIuiTTvPtRk
+         /NSWus1PNZnrdDUJFk/Z9TYDrZMOx6DxWP8oXR6+14EUMtSBYn/pgbpiV5423AWXYjrl
+         ac0XS/NPidBFuZZrYxWjx0RZMCy19RCL9oaXMXk8+FnVQnmzZKOj1veLqsLK329JGR+m
+         Els8KEpS3xIlmFpxQ47qnkPlPfOO8FgfTTnNNdI42KRfaGr2dDX9fr3eq2D6l8K2mOmr
+         x9JQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=+ghZb6Eun+5bzjnQXBt9RQ99kAffUM+xGHK/9RPTXNA=;
-        b=PZ2mUWzcS46U+/XpsZjkmYAbWqJiFVDXBJGbZmqQC9Wmf5LvR/YqR8jKQD4gUZUs3M
-         4gy539X41RVc0aJ3OaLcwPFv5+yjE3Iug3Ii66DREo0dkJnacSU5TOegwcnGFi7fzbpy
-         nsnnRzUIACouk8CjPNRS9eh5a1Bs6szEUzXdvGyrYd+8HC5SnOacdZYGlCnOqE+tNqHC
-         DnveSXq9uRQC2lx4MlbdtzikVRS8dQLT5ZxKzU3uKHgBnM7qA9dw++KkzRD6N8jq4ict
-         NPpxR9Mi2O4qfyxYy7LrDff4IJCMqZeRInhqtAM5WZwSLbxrMOUgj3dvlNzgZa8JlNdF
-         86Ow==
+        bh=j/erGCbJYzzoXIjetzXI9iQgTa4ijdiA0oEOnwOH01s=;
+        b=x7YyxLq3PoX1O6RUF5YeM+cN+qwHVp3IyDquvX+AaR06fUk7pXMauv7w/y/y7j/DX2
+         22GBDekYR94i18UlJVOdCsCswQiWrN61Fwe0iW49PfmWd+DPR1ILFKfn7sR2GyoH8nLL
+         +msIxG7iHbnFQFk4rSPngCmy4CbGUXCnz2zVX7lYyvjxXztYjTNZ5+ByEn21CTrOCqN8
+         r4gCP+izyJpJylM1krvV/q9v4VVj68Z3bGW7hxomVN08y6WFfJD8NM7aJ/mi/DhfmdWE
+         Zxe8lmeTB/eVQXwR6W3EmqeT3ZIVuj7Mi25TFqe11DQUxNr92fD2XBgraIPPaJTEymIZ
+         xJPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SULbWsvL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sk5GxlqI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m12si4833856qvy.216.2020.04.03.03.45.21
+        by mx.google.com with ESMTPS id x16si3949039qvv.61.2020.04.03.03.47.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Apr 2020 03:45:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Apr 2020 03:47:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SULbWsvL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sk5GxlqI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53468 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53504 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jKJpA-00052O-Ur
-	for alex.bennee@linaro.org; Fri, 03 Apr 2020 06:45:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39685)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jKJrC-00070P-N0
+	for alex.bennee@linaro.org; Fri, 03 Apr 2020 06:47:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39771)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jKJoz-0004yK-UW
- for qemu-arm@nongnu.org; Fri, 03 Apr 2020 06:45:11 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1jKJpU-0005nE-29
+ for qemu-devel@nongnu.org; Fri, 03 Apr 2020 06:45:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jKJoy-0006wO-JJ
- for qemu-arm@nongnu.org; Fri, 03 Apr 2020 06:45:09 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:34162
+ (envelope-from <eric.auger@redhat.com>) id 1jKJpR-0007Jt-VP
+ for qemu-devel@nongnu.org; Fri, 03 Apr 2020 06:45:39 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:52321
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jKJoy-0006vz-FT
- for qemu-arm@nongnu.org; Fri, 03 Apr 2020 06:45:08 -0400
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1jKJpR-0007Ja-QA
+ for qemu-devel@nongnu.org; Fri, 03 Apr 2020 06:45:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585910708;
+ s=mimecast20190719; t=1585910737;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=+ghZb6Eun+5bzjnQXBt9RQ99kAffUM+xGHK/9RPTXNA=;
- b=SULbWsvLH56GsOHlOQT/8BTVKwfRYT2nlWvfC6qmtlYfhf6uWql8dE4Y3zdApJ1N7AknX+
- saWnC7m/jZPKFOvUGRpIfOja4KQeAgm5Wm3mpLsFx7CcGJ0OsN3J4frZRhiF1gSHrKDt6B
- kv8xKD7pyisyDe27ad04Vb+ZOj4+FC0=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-358-O-Vyqe7LMwaNUB-ACURdlQ-1; Fri, 03 Apr 2020 06:45:06 -0400
-X-MC-Unique: O-Vyqe7LMwaNUB-ACURdlQ-1
-Received: by mail-ed1-f70.google.com with SMTP id q29so5169143edc.1
- for <qemu-arm@nongnu.org>; Fri, 03 Apr 2020 03:45:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ozMZ/amXSNgxmyQ0H4QXomcX4f7o5imAO8qQjN8vcqg=;
- b=ar+x1m+lt6A110Ets2UACIeh4ZhL5n7+sS4BRJgJ9heUL7z4KdxItH9Gg31a7wAPgR
- zdLbNU8/XuxdKNZ9gZ5wl0op2F3iv6UGdMfbiP8qqoM+derA/Jx7Xj4/Y9eB4ckEFXee
- 6PiqLh1ZhvXrlwgMfftqhb7+dWhJjmetO53/voXz1bcC1M7JG/BYaqORyJGV1YT6bJea
- 0sZujLBJcFD8bbf6yGQH0eiJZlGtzGfT4oH3qAz7fGagZdbFS3u4VQSYvPhm7z0d6Z+m
- dxVIMaZyTZSwuUlg8OqFJy+9/MsYrl94HG2DO2SYTlAodJvdoJ2id6RTWtsJh4NKj1dw
- F3ug==
-X-Gm-Message-State: AGi0Pubk8qkEOWThgns1BV1K9Q406f60mk8ZzBHdStQVIU+Ft9CKEAw5
- IC3BtAExFt62G5LQvd0Pz9ZulQcbAgtAFp9/dKgiwJJPljdgZPVWwlCTKPbIE/IoLp3Fsr8g57g
- VZQuld1WW5Tib
-X-Received: by 2002:a50:cb84:: with SMTP id k4mr7121573edi.89.1585910705389;
- Fri, 03 Apr 2020 03:45:05 -0700 (PDT)
-X-Received: by 2002:a50:cb84:: with SMTP id k4mr7121554edi.89.1585910705147;
- Fri, 03 Apr 2020 03:45:05 -0700 (PDT)
-Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net.
- [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id fx19sm1593473ejb.6.2020.04.03.03.45.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 03 Apr 2020 03:45:04 -0700 (PDT)
-Subject: Re: [PATCH for-5.0 v2 1/3] acpi: Use macro for table-loader file name
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, eric.auger@redhat.com,
- imammedo@redhat.com
-References: <20200403101827.30664-1-shameerali.kolothum.thodi@huawei.com>
- <20200403101827.30664-2-shameerali.kolothum.thodi@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <1c76c584-0c21-c88f-323f-6154f0caf1a9@redhat.com>
-Date: Fri, 3 Apr 2020 12:45:02 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ bh=j/erGCbJYzzoXIjetzXI9iQgTa4ijdiA0oEOnwOH01s=;
+ b=Sk5GxlqIcCdNVoFajwPHJT8+jzdZcUODaNAsr0vNRQ4ahEI/dWthx/ZIZLGTggX4IpjlD/
+ OEEOzBp1/7l2PLGD7s0ubTsGj8HYDzZCgiaDIp4gbSdLkr9rWQnSLE4uKxlbXqI7BmKxTz
+ 9rVZJ5WVROxhsKTxS6foNpfnVTZpG/I=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-418-gaSzSlWGP_-8Wlr7hac9Ng-1; Fri, 03 Apr 2020 06:45:33 -0400
+X-MC-Unique: gaSzSlWGP_-8Wlr7hac9Ng-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B728D107ACCC;
+ Fri,  3 Apr 2020 10:45:31 +0000 (UTC)
+Received: from [10.36.112.58] (ovpn-112-58.ams2.redhat.com [10.36.112.58])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8CE138EA1A;
+ Fri,  3 Apr 2020 10:45:19 +0000 (UTC)
+Subject: Re: [RFC v6 00/24] vSMMUv3/pSMMUv3 2 stage VFIO integration
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "mst@redhat.com" <mst@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "jacob.jun.pan@linux.intel.com" <jacob.jun.pan@linux.intel.com>,
+ "yi.l.liu@intel.com" <yi.l.liu@intel.com>
+References: <20200320165840.30057-1-eric.auger@redhat.com>
+ <779801971e964109bc46120dda541078@huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <93dccfc9-774c-9976-15ad-b484f0c5956c@redhat.com>
+Date: Fri, 3 Apr 2020 12:45:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20200403101827.30664-2-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <779801971e964109bc46120dda541078@huawei.com>
 Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 205.139.110.120
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, mst@redhat.com,
- david@redhat.com, dgilbert@redhat.com, xuwei5@hisilicon.com,
- linuxarm@huawei.com, shannon.zhaosl@gmail.com, lersek@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DZXumsoCK+aQ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "tnowicki@marvell.com" <tnowicki@marvell.com>,
+ "maz@kernel.org" <maz@kernel.org>,
+ "zhangfei.gao@foxmail.com" <zhangfei.gao@foxmail.com>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "bbhushan2@marvell.com" <bbhushan2@marvell.com>,
+ "will@kernel.org" <will@kernel.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pkQO4hCMSUCS
 
-On 4/3/20 12:18 PM, Shameer Kolothum wrote:
-> Use macro for "etc/table-loader" and move it to the header
-> file similar to ACPI_BUILD_TABLE_FILE/ACPI_BUILD_RSDP_FILE etc.
->=20
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Hi Shameer,
 
-Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+On 3/25/20 12:35 PM, Shameerali Kolothum Thodi wrote:
+> Hi Eric,
+> 
+>> -----Original Message-----
+>> From: Eric Auger [mailto:eric.auger@redhat.com]
+>> Sent: 20 March 2020 16:58
+>> To: eric.auger.pro@gmail.com; eric.auger@redhat.com;
+>> qemu-devel@nongnu.org; qemu-arm@nongnu.org; peter.maydell@linaro.org;
+>> mst@redhat.com; alex.williamson@redhat.com;
+>> jacob.jun.pan@linux.intel.com; yi.l.liu@intel.com
+>> Cc: peterx@redhat.com; jean-philippe@linaro.org; will@kernel.org;
+>> tnowicki@marvell.com; Shameerali Kolothum Thodi
+>> <shameerali.kolothum.thodi@huawei.com>; zhangfei.gao@foxmail.com;
+>> zhangfei.gao@linaro.org; maz@kernel.org; bbhushan2@marvell.com
+>> Subject: [RFC v6 00/24] vSMMUv3/pSMMUv3 2 stage VFIO integration
+>>
+>> Up to now vSMMUv3 has not been integrated with VFIO. VFIO
+>> integration requires to program the physical IOMMU consistently
+>> with the guest mappings. However, as opposed to VTD, SMMUv3 has
+>> no "Caching Mode" which allows easy trapping of guest mappings.
+>> This means the vSMMUV3 cannot use the same VFIO integration as VTD.
+>>
+>> However SMMUv3 has 2 translation stages. This was devised with
+>> virtualization use case in mind where stage 1 is "owned" by the
+>> guest whereas the host uses stage 2 for VM isolation.
+>>
+>> This series sets up this nested translation stage. It only works
+>> if there is one physical SMMUv3 used along with QEMU vSMMUv3 (in
+>> other words, it does not work if there is a physical SMMUv2).
+> 
+> I was testing this series on one of our hardware board with SMMUv3. I did
+> observe an issue while trying to bring up Guest with and without the vsmmuV3.
 
-> ---
->   hw/arm/virt-acpi-build.c    | 2 +-
->   hw/i386/acpi-build.c        | 2 +-
->   include/hw/acpi/aml-build.h | 1 +
->   3 files changed, 3 insertions(+), 2 deletions(-)
->=20
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 7ef0733d71..81d41a3990 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -929,7 +929,7 @@ void virt_acpi_setup(VirtMachineState *vms)
->  =20
->       build_state->linker_mr =3D
->           acpi_add_rom_blob(virt_acpi_build_update, build_state,
-> -                          tables.linker->cmd_blob, "etc/table-loader", 0=
-);
-> +                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FIL=
-E, 0);
->  =20
->       fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog=
-->data,
->                       acpi_data_len(tables.tcpalog));
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 2a7e55bae7..23c77eeb95 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -3043,7 +3043,7 @@ void acpi_setup(void)
->  =20
->       build_state->linker_mr =3D
->           acpi_add_rom_blob(acpi_build_update, build_state,
-> -                          tables.linker->cmd_blob, "etc/table-loader", 0=
-);
-> +                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FIL=
-E, 0);
->  =20
->       fw_cfg_add_file(x86ms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
->                       tables.tcpalog->data, acpi_data_len(tables.tcpalog)=
-);
-> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-> index de4a406568..0f4ed53d7f 100644
-> --- a/include/hw/acpi/aml-build.h
-> +++ b/include/hw/acpi/aml-build.h
-> @@ -13,6 +13,7 @@
->   #define ACPI_BUILD_TABLE_FILE "etc/acpi/tables"
->   #define ACPI_BUILD_RSDP_FILE "etc/acpi/rsdp"
->   #define ACPI_BUILD_TPMLOG_FILE "etc/tpm/log"
-> +#define ACPI_BUILD_LOADER_FILE "etc/table-loader"
->  =20
->   #define AML_NOTIFY_METHOD "NTFY"
->  =20
->=20
+I am currently investigating and up to now I fail to reproduce on my end.
+> 
+> Steps are like below,
+> 
+> 1. start a guest with "iommu=smmuv3" and a n/w vf device.
+> 
+> 2.Exit the VM.
+how to you exit the VM?
+> 
+> 3. start the guest again without "iommu=smmuv3"
+> 
+> This time qemu crashes with,
+> 
+> [ 0.447830] hns3 0000:00:01.0: enabling device (0000 -> 0002)
+> /home/shameer/qemu-eric/qemu/hw/vfio/pci.c:2851:vfio_dma_fault_notifier_handler:
+> Object 0xaaaaeeb47c00 is not an instance of type
+So I think I understand the qemu crash. At the moment the vfio_pci
+registers a fault handler even if we are not in nested mode. The smmuv3
+host driver calls any registered fault handler when it encounters an
+error in !nested mode. So the eventfd is triggered to userspace but qemu
+does not expect that. However the root case is we got some physical
+faults on the second run.
+> qemu:iommu-memory-region
+> ./qemu_run-vsmmu-hns: line 9: 13609 Aborted                 (core
+> dumped) ./qemu-system-aarch64-vsmmuv3v10 -machine
+> virt,kernel_irqchip=on,gic-version=3 -cpu host -smp cpus=1 -kernel
+> Image-ericv10-uacce -initrd rootfs-iperf.cpio -bios
+Just to double check with you,
+host: will-arm-smmu-updates-2stage-v10
+qemu: v4.2.0-2stage-rfcv6
+guest version?
+> QEMU_EFI_Dec2018.fd -device vfio-pci,host=0000:7d:02.1 -net none -m
+Do you assign exactly the same VF as during the 1st run?
+> 4096 -nographic -D -d -enable-kvm -append "console=ttyAMA0
+> root=/dev/vda -m 4096 rw earlycon=pl011,0x9000000"
+> 
+> And you can see that host kernel receives smmuv3 C_BAD_STE event,
+> 
+> [10499.379288] vfio-pci 0000:7d:02.1: enabling device (0000 -> 0002)
+> [10501.943881] arm-smmu-v3 arm-smmu-v3.2.auto: event 0x04 received:
+> [10501.943884] arm-smmu-v3 arm-smmu-v3.2.auto: 0x00007d1100000004
+> [10501.943886] arm-smmu-v3 arm-smmu-v3.2.auto: 0x0000100800000080
+> [10501.943887] arm-smmu-v3 arm-smmu-v3.2.auto: 0x00000000fe040000
+> [10501.943889] arm-smmu-v3 arm-smmu-v3.2.auto: 0x000000007e04c440
+I will try to prepare a kernel branch with additional traces.
+
+Thanks
+
+Eric
+> 
+> So I suspect we didn't clear nested stage configuration and that affects the 
+> translation in the second run. I tried to issue(force) a vfio_detach_pasid_table() but 
+> that didn't solve the problem.
+> 
+> May be I am missing something. Could you please take a look and let me know.
+> 
+> Thanks,
+> Shameer
+> 
+>> - We force the host to use stage 2 instead of stage 1, when we
+>>   detect a vSMMUV3 is behind a VFIO device. For a VFIO device
+>>   without any virtual IOMMU, we still use stage 1 as many existing
+>>   SMMUs expect this behavior.
+>> - We use PCIPASIDOps to propage guest stage1 config changes on
+>>   STE (Stream Table Entry) changes.
+>> - We implement a specific UNMAP notifier that conveys guest
+>>   IOTLB invalidations to the host
+>> - We register MSI IOVA/GPA bindings to the host so that this latter
+>>   can build a nested stage translation
+>> - As the legacy MAP notifier is not called anymore, we must make
+>>   sure stage 2 mappings are set. This is achieved through another
+>>   prereg memory listener.
+>> - Physical SMMU stage 1 related faults are reported to the guest
+>>   via en eventfd mechanism and exposed trhough a dedicated VFIO-PCI
+>>   region. Then they are reinjected into the guest.
+>>
+>> Best Regards
+>>
+>> Eric
+>>
+>> This series can be found at:
+>> https://github.com/eauger/qemu/tree/v4.2.0-2stage-rfcv6
+>>
+>> Kernel Dependencies:
+>> [1] [PATCH v10 00/11] SMMUv3 Nested Stage Setup (VFIO part)
+>> [2] [PATCH v10 00/13] SMMUv3 Nested Stage Setup (IOMMU part)
+>> branch at:
+>> https://github.com/eauger/linux/tree/will-arm-smmu-updates-2stage-v10
+>>
+>> History:
+>>
+>> v5 -> v6:
+>> - just rebase work
+>>
+>> v4 -> v5:
+>> - Use PCIPASIDOps for config update notifications
+>> - removal of notification for MSI binding which is not needed
+>>   anymore
+>> - Use a single fault region
+>> - use the specific interrupt index
+>>
+>> v3 -> v4:
+>> - adapt to changes in uapi (asid cache invalidation)
+>> - check VFIO_PCI_DMA_FAULT_IRQ_INDEX is supported at kernel level
+>>   before attempting to set signaling for it.
+>> - sync on 5.2-rc1 kernel headers + Drew's patch that imports sve_context.h
+>> - fix MSI binding for MSI (not MSIX)
+>> - fix mingw compilation
+>>
+>> v2 -> v3:
+>> - rework fault handling
+>> - MSI binding registration done in vfio-pci. MSI binding tear down called
+>>   on container cleanup path
+>> - leaf parameter propagated
+>>
+>> v1 -> v2:
+>> - Fixed dual assignment (asid now correctly propagated on TLB invalidations)
+>> - Integrated fault reporting
+>>
+>>
+>> Eric Auger (23):
+>>   update-linux-headers: Import iommu.h
+>>   header update against 5.6.0-rc3 and IOMMU/VFIO nested stage APIs
+>>   memory: Add IOMMU_ATTR_VFIO_NESTED IOMMU memory region
+>> attribute
+>>   memory: Add IOMMU_ATTR_MSI_TRANSLATE IOMMU memory region
+>> attribute
+>>   memory: Introduce IOMMU Memory Region inject_faults API
+>>   memory: Add arch_id and leaf fields in IOTLBEntry
+>>   iommu: Introduce generic header
+>>   vfio: Force nested if iommu requires it
+>>   vfio: Introduce hostwin_from_range helper
+>>   vfio: Introduce helpers to DMA map/unmap a RAM section
+>>   vfio: Set up nested stage mappings
+>>   vfio: Pass stage 1 MSI bindings to the host
+>>   vfio: Helper to get IRQ info including capabilities
+>>   vfio/pci: Register handler for iommu fault
+>>   vfio/pci: Set up the DMA FAULT region
+>>   vfio/pci: Implement the DMA fault handler
+>>   hw/arm/smmuv3: Advertise MSI_TRANSLATE attribute
+>>   hw/arm/smmuv3: Store the PASID table GPA in the translation config
+>>   hw/arm/smmuv3: Fill the IOTLBEntry arch_id on NH_VA invalidation
+>>   hw/arm/smmuv3: Fill the IOTLBEntry leaf field on NH_VA invalidation
+>>   hw/arm/smmuv3: Pass stage 1 configurations to the host
+>>   hw/arm/smmuv3: Implement fault injection
+>>   hw/arm/smmuv3: Allow MAP notifiers
+>>
+>> Liu Yi L (1):
+>>   pci: introduce PCIPASIDOps to PCIDevice
+>>
+>>  hw/arm/smmuv3.c                 | 189 ++++++++++--
+>>  hw/arm/trace-events             |   3 +-
+>>  hw/pci/pci.c                    |  34 +++
+>>  hw/vfio/common.c                | 506
+>> +++++++++++++++++++++++++-------
+>>  hw/vfio/pci.c                   | 267 ++++++++++++++++-
+>>  hw/vfio/pci.h                   |   9 +
+>>  hw/vfio/trace-events            |   9 +-
+>>  include/exec/memory.h           |  49 +++-
+>>  include/hw/arm/smmu-common.h    |   1 +
+>>  include/hw/iommu/iommu.h        |  28 ++
+>>  include/hw/pci/pci.h            |  11 +
+>>  include/hw/vfio/vfio-common.h   |  16 +
+>>  linux-headers/COPYING           |   2 +
+>>  linux-headers/asm-x86/kvm.h     |   1 +
+>>  linux-headers/linux/iommu.h     | 375 +++++++++++++++++++++++
+>>  linux-headers/linux/vfio.h      | 109 ++++++-
+>>  memory.c                        |  10 +
+>>  scripts/update-linux-headers.sh |   2 +-
+>>  18 files changed, 1478 insertions(+), 143 deletions(-)
+>>  create mode 100644 include/hw/iommu/iommu.h
+>>  create mode 100644 linux-headers/linux/iommu.h
+>>
+>> --
+>> 2.20.1
+> 
 

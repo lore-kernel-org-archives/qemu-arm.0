@@ -1,106 +1,156 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1538276lfi;
-        Fri, 3 Apr 2020 22:56:29 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLWfiuonxBwzfReJ3CkQlvMKP+qkqz1li2uEZDbapUSDoI+5ohPPxmhC0jO2jbw/yih0u9O
-X-Received: by 2002:a37:70c6:: with SMTP id l189mr11819341qkc.158.1585979788856;
-        Fri, 03 Apr 2020 22:56:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585979788; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1820658lfi;
+        Sat, 4 Apr 2020 05:28:17 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJz1wAbA3uaaU8CxQC3payheJeQ93QA7r6Od7qGKIxftSb7qwfm+oqfySMwOZFHe8w6PntY
+X-Received: by 2002:ac8:68c:: with SMTP id f12mr12740692qth.100.1586003296875;
+        Sat, 04 Apr 2020 05:28:16 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1586003296; cv=pass;
         d=google.com; s=arc-20160816;
-        b=xP4lSBdi5bbQxe4hsq7lCpyAVP3cfNeju0C0TwpvNyiOekQjb3GcucX7C2LQRc4bTR
-         q+yJ3gePuBhp/ZGhaWuKUHqzdbSqfIRlp3RphpJkuB+PQlg2C2RitF/0lQr1+qUvumse
-         5X1NGMfN2Xnu9ye3G405x7UvVqMVDTqK01wp0f2dawilPVZAVD246v3U9E2ZBtJItr9s
-         SBixhQdtseDOWoUZ1lkOvLZDgH6d+DVqmUZvdi4XHKuq9Bhwvp7u7eeLywF6yeeOGILG
-         Jw20wRUemk2pPJiRMuNCvQ+bH/gEsOoq41kw2ReRgbwvdMXPOU1LOkKW6v3NUrV6Gpne
-         mvtw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=BNSgq0VcnQi6h0QmfxfewVqUH5swiBW3T1VdgRetYPGC/LLreo6+QBLnEZQu5zKeMA
+         29/6KPo7OxBaxmYCglfTwmeLQoEGzOfGANm/Ee9lQcoXorREhswy68CMsO4WdKDvJ58r
+         WnLhDG9t2PYG1QKiVSKeg7XtDeXU6uiVougd/JGfMWgwvB3aDcJ7dF8YxsFzvVhDKf40
+         ipO8IGkgHkqGyLvup0GWkuBFDGOFvIM/AVX8i5Fl7wpRp2nBb4lNsvy7gqYxToWjUQWo
+         6glkjrKNzsjroBdpnCDRW0DKSxciUTZx0BA9bKSjNf5kPnVR5foiwBwd4F+SwSIKjmYA
+         JBFA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=tbu+yhQJvJC1lvCLLfqKnvLXIL2FpNXjo1kKksMp9Os=;
-        b=SDDqzZOrI8UsM1ZCC0IxxOiBVBGmUHDOC5wvdO3RmjKekLrM1NNfMRKDlUyPiJuC2n
-         0FBPpzPi22xVQPv17SKcSwfdrVnZ2r13OCwRu0zZhjWkh7B4PsqPLspd8/0rl+nXyEp5
-         OS3DnIOIyi8yH3zYQMqp4VtAfk5oLAIRo58xDTaQ07bUJdMM48UKf9IrE9uQ2azI68un
-         oanLJgyFLjjeccP3fsKtFL6Lxz8ZFTvBsIv2z1pVh5Ljs/rh2CgkLMdGsdrBMJWW01jO
-         XXc+OvD7usfNxUXSMTnfmIJiloxDhjb+gz5PMlASGqWfupmP08AlODciatwcRn2cf0Ys
-         Ot1Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hdd84qoi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=maZKNtn7wlA4YHBBM6nYzFvGPYNDg1duoI8yzA2N6js=;
+        b=PUY46Sy2dpXoNObriT22lXlq2qRIslIOZU2J8g76GqbHwrvnwF/DJVrkH8iy9807bV
+         gkOC9smWcAbQ1SMNuIHBwH0HYEMqCpq10i0TkN0Y6nRWiLxVFK8M0k1bkGQFQk9wY+/t
+         ACsjluZzYyve1tsJU6pQsqzf3KeRgr8fHVMXNCV40HWPNiWUMY0IvHaKb3EAUeAjcUTA
+         hoz5mpYr+iVivS3hCx8I8mIoWiJoLCYmTGHM2P4UnJ9gOGgU0XddZqOb26ojESnKFSnw
+         VsTIUKHAcrdp0BGKrQHdNe6rY0TGxU6H9VxNrzwn8KbfFwtGsa/6MLq+TcR8nQpAki96
+         zMmg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=GTO+HVzs;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9si6848530qka.174.2020.04.03.22.56.28
+        by mx.google.com with ESMTPS id i2si7468186qtc.82.2020.04.04.05.28.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Apr 2020 22:56:28 -0700 (PDT)
+        Sat, 04 Apr 2020 05:28:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hdd84qoi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35622 helo=lists1p.gnu.org)
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=GTO+HVzs;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38466 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jKbn9-0002ea-Vk
-	for alex.bennee@linaro.org; Sat, 04 Apr 2020 01:56:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59112)
+	id 1jKhuK-0008Fd-8r
+	for alex.bennee@linaro.org; Sat, 04 Apr 2020 08:28:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54838)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1jKbmv-0002dr-4u
- for qemu-arm@nongnu.org; Sat, 04 Apr 2020 01:56:14 -0400
+ (envelope-from <edgar@xilinx.com>) id 1jKhu9-000877-MX
+ for qemu-arm@nongnu.org; Sat, 04 Apr 2020 08:28:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1jKbmt-0002HV-Az
- for qemu-arm@nongnu.org; Sat, 04 Apr 2020 01:56:12 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:33598
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1jKbmt-0002H7-4u
- for qemu-arm@nongnu.org; Sat, 04 Apr 2020 01:56:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585979770;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=tbu+yhQJvJC1lvCLLfqKnvLXIL2FpNXjo1kKksMp9Os=;
- b=hdd84qoifPYM1xCKcn36sk8ByCy+8qPVROmF1A+AmUFKlKIlRnn8N/0/neecGzi1KDkxf0
- EU5kL7jEaCVY062tAvY4QFk4tMpn5HmBnuaFk3kXNEUF9eVK3yKOxDYuk8GXM5X8WatiRU
- M2znzJJz7HJVTQVQZBnUs+FOp51eeBg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-288-WHxLg8XsMc6whceK-6e6Bg-1; Sat, 04 Apr 2020 01:56:06 -0400
-X-MC-Unique: WHxLg8XsMc6whceK-6e6Bg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E7EC113FB;
- Sat,  4 Apr 2020 05:56:02 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-152.ams2.redhat.com
- [10.36.112.152])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8A20610002A8;
- Sat,  4 Apr 2020 05:55:55 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 0C4841138610; Sat,  4 Apr 2020 07:55:54 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [PATCH-for-5.0 00/12] hw: Add missing error-propagation code
-References: <20200325191830.16553-1-f4bug@amsat.org>
- <87r1x8vet0.fsf@dusky.pond.sub.org>
- <dbee4e3d-afba-827d-4950-2ac9b99419ab@redhat.com>
-Date: Sat, 04 Apr 2020 07:55:54 +0200
-In-Reply-To: <dbee4e3d-afba-827d-4950-2ac9b99419ab@redhat.com> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 3 Apr 2020 19:53:01
- +0200")
-Message-ID: <87mu7r23rp.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ (envelope-from <edgar@xilinx.com>) id 1jKhu7-0008Eo-NT
+ for qemu-arm@nongnu.org; Sat, 04 Apr 2020 08:28:04 -0400
+Received: from mail-co1nam11on2062.outbound.protection.outlook.com
+ ([40.107.220.62]:6109 helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <edgar@xilinx.com>)
+ id 1jKhu7-0008DV-BO; Sat, 04 Apr 2020 08:28:03 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=T/VGSeO494gCEiFHaDPORgBA6qW16BkZtlFthHJXsjy4+dkqOWwvPyUNsouNDCB3RMsDpbPIo8dGTaR21mgvNY/EalaLv0Xmxlz01mo39T0c4FNW3Qd+9V3e8uG2OVsuQHvs/a6z41EE7JoIhPxRghSq96m5E00AjPN2pJNtOn/inG+sCv+jHwyZ3WHRhDu0WorRN+aurSQUtF2De7ES8x7r6opJv+05Wlc2lncIl+sWG1Kq013icO0+qT6HmJpWJbGlLofbvJYvRlokpJGQ18oKEsOPTAOx/6EcN2P89LG7i2tjg8Eu1XoY90AUGh99alxtiyr16+WD+2lfxgOgQQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=maZKNtn7wlA4YHBBM6nYzFvGPYNDg1duoI8yzA2N6js=;
+ b=kxs5PEzTtNXmWafZXLgbmCBhnZhi6ct1bG0N7KlPxoH5qoEjvs0v7hS+p9v9IW1po+1uLG5MKf7XMRkpid+3OnZQlP4xY38FJ6jqX5IIVZQanrm0dhTEpyRQVd3gAxfoxMJ1DWVoRBRhSYbUrtU31IqDZbcI8tAZAKgNkC8Tt3gCDB7m9BR4+Cel6c2ZFXZQW3tHTZDDyy+V92cJBKCGJEgbcxel5Fd/fTNWUIDdCoBhz99R+0JkMS5EyHBVTRYbIcleUuLyOSm9HoIMeGLmfFTOupze496GEsPv2lkK2cLcpWMuiBFfFlCeUeubpl9vFrkvTswdb4BMhJNvkM+Yow==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.60.83) smtp.rcpttodomain=kernel.org smtp.mailfrom=xilinx.com;
+ dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
+ not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=maZKNtn7wlA4YHBBM6nYzFvGPYNDg1duoI8yzA2N6js=;
+ b=GTO+HVzss2R2elX7IkqLyskfmrwHFaHessaN3MXMXixZykAtARv9hitRn/Wv69Z++c8cStTarySE8K3K3u0qbwUXLrC7tLuxFujGXLk4/7RM3ZfXpNvOPN8sO/2jO4fIrcEWVZfjCuBEr8K3APZI0v0SIK8YjbWG/z9MvobUmQQ=
+Received: from MN2PR22CA0012.namprd22.prod.outlook.com (2603:10b6:208:238::17)
+ by DM5PR02MB2874.namprd02.prod.outlook.com (2603:10b6:3:108::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2878.15; Sat, 4 Apr
+ 2020 12:28:00 +0000
+Received: from BL2NAM02FT010.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:208:238:cafe::e0) by MN2PR22CA0012.outlook.office365.com
+ (2603:10b6:208:238::17) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2878.15 via Frontend
+ Transport; Sat, 4 Apr 2020 12:28:00 +0000
+Authentication-Results: spf=pass (sender IP is 149.199.60.83)
+ smtp.mailfrom=xilinx.com; kernel.org; dkim=none (message not signed)
+ header.d=none;kernel.org; dmarc=bestguesspass action=none
+ header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+ BL2NAM02FT010.mail.protection.outlook.com (10.152.77.53) with Microsoft SMTP
+ Server id 15.20.2878.15 via Frontend Transport; Sat, 4 Apr 2020 12:28:00
+ +0000
+Received: from [149.199.38.66] (port=51043 helo=xsj-pvapsmtp01)
+ by xsj-pvapsmtpgw01 with esmtp (Exim 4.90)
+ (envelope-from <edgar@xilinx.com>)
+ id 1jKhts-00047B-Ih; Sat, 04 Apr 2020 05:27:48 -0700
+Received: from [127.0.0.1] (helo=localhost)
+ by xsj-pvapsmtp01 with smtp (Exim 4.63)
+ (envelope-from <edgar@xilinx.com>)
+ id 1jKhu3-0002ct-Nu; Sat, 04 Apr 2020 05:27:59 -0700
+Received: from xsj-pvapsmtp01 (smtp-fallback.xilinx.com [149.199.38.66] (may
+ be forged))
+ by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id 034CRwOM028373; 
+ Sat, 4 Apr 2020 05:27:58 -0700
+Received: from [10.71.117.116] (helo=localhost)
+ by xsj-pvapsmtp01 with esmtp (Exim 4.63)
+ (envelope-from <edgar@xilinx.com>)
+ id 1jKhu2-0002cm-D8; Sat, 04 Apr 2020 05:27:58 -0700
+Date: Sat, 4 Apr 2020 14:29:08 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH v1 0/5] dma/xlnx-zdma: Bug fixes
+Message-ID: <20200404122908.GP4289@toto>
+References: <20200402134721.27863-1-edgar.iglesias@gmail.com>
+ <CAFEAcA_E9VQSZRoV5rk-QOgj-F_-w-jhBBVb4p8vUx-VY9_-CQ@mail.gmail.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA_E9VQSZRoV5rk-QOgj-F_-w-jhBBVb4p8vUx-VY9_-CQ@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-RCIS-Action: ALLOW
+X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
+X-TM-AS-User-Approved-Sender: Yes;Yes
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:149.199.60.83; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:xsj-pvapsmtpgw01; PTR:unknown-60-83.xilinx.com; CAT:NONE;
+ SFTY:;
+ SFS:(10009020)(7916004)(4636009)(136003)(346002)(376002)(396003)(39860400002)(46966005)(47076004)(107886003)(33716001)(316002)(4744005)(7416002)(54906003)(9686003)(336012)(5660300002)(356004)(6666004)(426003)(1076003)(82740400003)(8676002)(26005)(4326008)(186003)(2906002)(81156014)(70206006)(478600001)(70586007)(33656002)(81166006)(8936002)(9786002)(6916009)(42866002);
+ DIR:OUT; SFP:1101; 
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 4e09b072-b887-4dfa-6fde-08d7d8939d02
+X-MS-TrafficTypeDiagnostic: DM5PR02MB2874:
+X-Microsoft-Antispam-PRVS: <DM5PR02MB2874394702EE6AB2CC6694D0C2C40@DM5PR02MB2874.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-Forefront-PRVS: 03630A6A4A
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ZJ72N/ID7NF9OZSOC3wuOnR+xdE9QoOpiTEswOjU/Xw0w5vwxgtCTrHxqJkA6zwXbdMXGWaWh3rmg757Csz3SN9e2HbEJuoJqiXe4aAOEHen7lOUsyADO1TYDo57ij2nxKBSXaVwEQ3bH++U6K2KD1tmHiU9IUyYBK7F44e0n98ziglj9bfaZoO0LgLNPlL4TMiYadcMjT+4q+vO26CAm26zGkap2+IQTmonNkIb3c7bYVfYwCd+Efz2N7kfmJBNPuCksouETAEnJu5T7PdjIba5q+RyLW4mK4mIkvwewgMATD9ggy09wBmjOhCG623cmfII9mQWZxrjSkWqzAGhWsuQ3GUXrBCLQYYani631JVXedGcMI9RNkgA9NIQMFWohJh7kioJNEkV6u0/1nCy29GUdPDWE3P2dFvzhW8A6I7kmh7dO7IPelyl63Sbl7N4Yaqyhr9SkQgCnylbBugKX+RIfE2jh6ejAflZ1QXplijqOFlAinO/qFlUeM3efYAXl/U0G5MA2xtnK+2DBCvUCKfhMbStEBNv7KUvSzfXoeI=
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Apr 2020 12:28:00.2029 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4e09b072-b887-4dfa-6fde-08d7d8939d02
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
+ Helo=[xsj-pvapsmtpgw01]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR02MB2874
+X-detected-operating-system: by eggs.gnu.org: Windows NT kernel [generic]
+ [fuzzy]
+X-Received-From: 40.107.220.62
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,93 +162,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paul Burton <pburton@wavecomp.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-ppc@nongnu.org,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Richard Henderson <rth@twiddle.net>, Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
+Cc: figlesia@xilinx.com, Stefano Stabellini <sstabellini@kernel.org>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eqMmjylzJ6pC
+X-TUID: se+RAQnqt/Vi
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+On Fri, Apr 03, 2020 at 07:53:24PM +0100, Peter Maydell wrote:
+> On Thu, 2 Apr 2020 at 14:46, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
+> >
+> > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+> >
+> > Hi,
+> >
+> > This series fixes a couple of bugs we've ran into with some
+> > proprietary test code and drivers using the Xilinx zDMA.
+> 
+> Thanks; as these are bugfixes I've applied them to target-arm.next
+> for 5.0. I'd appreciate it if you could take a look at the
+> endianness bugs I mention in a reply to patch 5 (probably
+> that is 5.1 work).
 
-> Hi Markus, Peter.
->
-> On 3/31/20 3:23 PM, Markus Armbruster wrote:
->> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
->>
->>> This series is inspired of Peter fix:
->>> "hw/arm/xlnx-zynqmp.c: fix some error-handling code"
->>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg691636.html
->>>
->>> Add a cocci script to fix the other places.
->>>
->>> Based-on: <20200324134947.15384-1-peter.maydell@linaro.org>
->>
->> I skimmed the code patches [PATCH 02-12/12], and they look like bug
->> fixes.  Other reviewers raised a few issues.
->>
->> I also skimmed the Coccinelle script [PATCH 01].  Peter pointed out a
->> few things it apparently missed (e.g. in review of PATCH 06+11).
->> Moreover, the bug pattern applies beyond object_property_set() &
->> friends.  Perhaps the script can be generalized.  No reason to hold
->> fixes.  We may want to add suitable notes to the scipt, though.
->>
->> Can you address the reviews in a v2, so we can get the fixes into -rc1,
->> due today?
->
-> Status on this series (sorry I didn't update earlier).
->
-> I addressed Peter's comments, improved/simplified/documented the cocci
-> script (which I split in smaller ones).
->
-> Peter suggested other functions can be checked too, not only the
-> "^object_property_set_.*" matches. Indeed, more patches added. Some
-> are big.
->
-> Another suggestion is replace in init() 'NULL' Error* final argument
-> by &error_abort. This can be another series on top.
-> However I noticed we can reduce the error_propagate() generated calls
-> in many places, when both init()/realize() exist and the property set
-> is not dependent of parent operation, by moving these calls from
-> realize() to init(). Another cocci script. But to make sense it has to
-> be run previous the "add missing error_propagate" one.
->
-> While writing the cocci patches, I had 3 different Coccinelle failures.
-> Failures not due to a spatch bug, but timeout because C source hard to
-> process. Indeed the C source code was dubious, could get some
-> simplification rewrite. Then spatch could transform them. More patches
-> in the middle.
->
-> Now I'm at 47 patches, the reviewed patches at the end of the series.
-> Too much for RC2. Since I don't think these are critical bugs, but
-> improvements, are you OK to postpone this series to 5.1?
 
-Punting bug fixes to a later release is always kind of sad, but getting
-that many patches reviewed properly in time for -rc2 feels hopeless, and
-the bugs old and unthreatending on first glance.
+Thanks for pointing those out!
 
-> If you think a patch deserves to be in 5.0, point me at it and I can
-> send it ASAP with comments addressed. Else I'll post my series as
-> -for-5.1 soon.
+I've just posted fixes for the endianness related descriptor loading
+bugs but left some of the C struct issues for 5.1.
 
-I'm okay with punting the whole series to 5.1.
-
-We have quite some Error work pending for 5.1.  Beware of conflicts.
-
-In particular, I now plan to make object_property_set() & friends return
-a useful value.  This should make your patches a bit smaller.
+Cheers,
+Edgar
 

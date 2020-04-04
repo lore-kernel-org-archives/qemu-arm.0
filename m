@@ -1,94 +1,138 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp985433lfi;
-        Fri, 3 Apr 2020 11:21:23 -0700 (PDT)
-X-Received: by 2002:a9d:58c:: with SMTP id 12mr2276445otd.156.1585938083522;
-        Fri, 03 Apr 2020 11:21:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585938083; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp1820203lfi;
+        Sat, 4 Apr 2020 05:27:39 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJNsowkC/bVJdKnMZQzGHXJrrCFt9iPGFwesWRSnUVKXQdQiRqBYtGuBbJqssWBobH5Aagk
+X-Received: by 2002:a37:74c5:: with SMTP id p188mr13641654qkc.475.1586003258992;
+        Sat, 04 Apr 2020 05:27:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586003258; cv=none;
         d=google.com; s=arc-20160816;
-        b=qbnA+t2SIaAQNOQemzy8dc1lSHpU9sMHkSHGWL4OnZGeEarvznzcDXxydGaL5/0oRc
-         kFdzPf1Ng61iqaHZYNMzLZwQRpGttLm6kzL18baN1kjs2cLaPEZejbRsdgk653YnOLiZ
-         x/2lQjs0NT5436F7ylfL7OZWwvzAeYsZXs7BamU5p17t1sRfjyYfJ7N+qgNSYTd/0SVO
-         ZZ6gm2DkG/xg2emfW9+8tfyV5iH+1/Cq8kQMTM+gK9p6yKR/C1S8z0B7h2nNkV11tMHv
-         q2jcZXopIx3Xzs432YzE8gjACJGZ5J6Jc07U5dzCbA21/0DgQ5hMY0xlaM0BXTGXyd+o
-         NIxA==
+        b=EPp9CwECrUMr15XXVPYAUZq834WYTaMk363TWOU1/iw3w7cUutKznoHBq9czKJBJo4
+         /ONeDQLc29Llk7pi1k5CcP+TL8rA09K3GIbVc3LlAvzAiY4XgiQHE/ZYv5E4clxzNRc0
+         mgLjd4bte7vT2aFswZUWiXNQlTY5ZrbC+sYBBAf7NtLLv//Wi69fPVd+5VCwihJpZpMN
+         Jp21K+VYSkBCmUEeGmTtvzzThH8YGZlJ+o9r8WxINyAke42gBrRIqrOdTR4dR7G5rz/U
+         bwAPKWjvIUjesK6T9n4Plj6ZX/PMJEYO5rBfY0aXiOiGXyEzGeA5OveU+KfL/F3kR3Fu
+         PRag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=vLKZheo+falulKlRLT42MgwKmcgpnY7d/Pc4nfpmDwA=;
-        b=QF50L2nWbgKIaGfVe4XkzdbbkigVZZKVAvjiDIqOYYAqZMQyvHDIjH02jKiReShnli
-         B6O4qCiOjSrihWxI3J6E/ASr72A3OOmeVH/PAv0JnH6hVgiE9deGO1Lg6INJ8rnnkm/Z
-         Q9UJrYnRmciKeQ0pcc/cUgkX8Yzh+uNJD0Cx2A2K9eCjGjc3dqXFdaZ+X482uf2GthQR
-         ce3+qJhvqjIu0DVB9ZiSlckZcaLH87y6EszWB0V0pK/ENSknXaP6V6DWT0XKEpDQ/HD4
-         DwAdgkoxaWeryCi+NJppkkHUHKn3hJRE6VDRZ0CKGCPNyxXVNirrT95oK2BheYftFdaV
-         /rsw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=8zHSVDhG2VqQJYu54V1syJCEbfw+DP1r4lsTcrXvAfg=;
+        b=zL1nJmi3MlHySiubvcD7F6+PG/G0kbqnTOInAuw2MGF6AwTZDTErIc2gyB9dpzD61x
+         WnY/NBvzkyN2RUmnTwpn5ZidsTkdClcX2bXf+4KZL4UL5abH9h55QCqpt07lEfaoQHLI
+         jeT0C5dkgR5koe3Sp0enxmjAwd0jTyQndvc7fojCdUVw2R2w5AmgFcBx6xG5Ys6em9LO
+         Q+279B2IpM+9k1RWDzh4ubGEsOqL6IHN1yWIl1QG5tOBYZLvhSLkBFAqGa7s7vg9jfOn
+         zQ7pYDaK/KKaZ9fERmu5ijRs89h3aWmflBLMnsGbbJwAmClXot26Zu4I7gig9c8+m83g
+         2AEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pUV9AdwS;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id x138sor9859701oia.15.2020.04.03.11.21.23
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jk6xQx45;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id l62si7124382qkf.189.2020.04.04.05.27.38
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 03 Apr 2020 11:21:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 04 Apr 2020 05:27:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pUV9AdwS;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=vLKZheo+falulKlRLT42MgwKmcgpnY7d/Pc4nfpmDwA=;
-        b=pUV9AdwShAwVdqMEZqxP+ABC/F13Xx4BPA2BIfm6ZQzMPPsK+yRsSzvmTNExIFFJ/n
-         7xq8AOEM0ea6F/OIaiPM8aFwAeu9Nzd0so0FMrdTMITApuxLwWQMnf+F6AJa77/pz4NE
-         t35MnQHUI0+8qh513b0CwxFef7E2cdEtomgtpAFpI4/lyfB9qNyIzVXyvNxaPOq38V5M
-         obN877/wuI2XnQ+vKAJDXZ/08C+gRuD7u4kBJB1L7Dp/VMXbArwGdT9cU9rgpFoExPQC
-         1Y3UwpVqq8N5NnoaPWrT3SVFTcsrzF1VslK+zkJRgnw5liUgH/NIyZ3RsMd8b5sGLgoa
-         I5pQ==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jk6xQx45;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:38442 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jKhti-0006F3-Ce
+	for alex.bennee@linaro.org; Sat, 04 Apr 2020 08:27:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54578)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jKhsJ-0004xV-RL
+ for qemu-devel@nongnu.org; Sat, 04 Apr 2020 08:26:12 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jKhsI-00073n-PT
+ for qemu-devel@nongnu.org; Sat, 04 Apr 2020 08:26:11 -0400
+Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:45954)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1jKhsI-00072z-Hu; Sat, 04 Apr 2020 08:26:10 -0400
+Received: by mail-lf1-x144.google.com with SMTP id f8so6658681lfe.12;
+ Sat, 04 Apr 2020 05:26:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=8zHSVDhG2VqQJYu54V1syJCEbfw+DP1r4lsTcrXvAfg=;
+ b=jk6xQx45H2adb8koM7GjVxSRextpy3F96p99hEEPrFQ19fqFHIqr1YL09JWjuK08Ic
+ Rui89rmFp4rccQMxrgAPBZxfxGA2ueKRkj2trCYYX7LSPFH8l6pEPGldHeRUpp8xlNYj
+ o0DzTKLji9jXrZFHcZNuAhEDRdHyNFk70xuRlApEzqxDXRHBz8HUPbhChDWrn9wtZ09a
+ /sO1FqnLjZHezgg3r2GWiFwW2/dnrWPxLGaYHI6mWc9LWANciil7nQtXsCkZWhnb8gcy
+ 588gyuFMYSk1w5t/vQeS1qbBzwwc1etb6lDPOgAVXQa9w5zvx+m0yhFUcSJkJzuO0NWT
+ onFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=vLKZheo+falulKlRLT42MgwKmcgpnY7d/Pc4nfpmDwA=;
-        b=fBdShshaY1qClcwh3BI921aihDY54bVNwcYW1kdvn+3+romCC8vZXPTRzI01HJbRPh
-         rVYyhKk0FI80WjBSlRZczv/9GkMKNa0Lzx2qZNUcwRWiTUvO9G5mJRw9wYhbYr4azmmJ
-         v5Ew764M7UMmPMv61UK80Kod+9YZNFSoJ/Mm2bSeSHVmcfihBwXUyivmGDNWzFRDwCMS
-         ryg2OwLNnQEUWD2cu1IU/m509lpihtYK3Gmus09DQYaw4bN5CurF53plwEFGf6pmOuFh
-         F8Z3nbHxBQXPf3Oehd0bHEjGD5L8W/oO53rnG6SPuzdu4Ah3k/GRVLaAuZfF3c6Pw1Cm
-         NLYw==
-X-Gm-Message-State: AGi0Puau6crMS32zrVPHxyCIwibKVsR+/Do3BySjEADQJWNKLs7uBhAK
-	wg1Wk1RmpDtG1ZC48Kz3kUDa21yRzwlnHYl/+II0JpsxTi2wpQ==
-X-Google-Smtp-Source: APiQypLyQw/2tJEt/8xBo04I3bvvfux/6I3Fd9A1BiSS3Ca8jwdvvHPqBRDEA8gssM375AdOcMbs1wgno9iy7+OPDP4=
-X-Received: by 2002:a05:6808:8cb:: with SMTP id k11mr3876593oij.48.1585938082922;
- Fri, 03 Apr 2020 11:21:22 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=8zHSVDhG2VqQJYu54V1syJCEbfw+DP1r4lsTcrXvAfg=;
+ b=gjKF/Yj38tLzSVZqQVK2jItuKK4D6j6JuEY/Oy/M1ue5bgXussdBANJZc+t953dhie
+ Fywoa7qyiif0ESpp52p/4Ghgi1B9zKBvIYaVhyo9jMg80oz8i091110R2A3WlWyhXkLY
+ j7r/E9gX15qnJDYR+ZJ9KWgEVP2ZoxWJ31Q8vojdaL6vo5atlY+QY1Fv666nI85kEfjl
+ rK7EXCAysLNw04S6GyefACl8gJzfB5Z9PQKQvxGpNP0T7LxmzlHsXg3ZepcrkR62R6kZ
+ tYVrXBq53SE/XennnANxYyFHOjSVXii2gFcnqSkUMtctoJzn/ry4j7bStB8M6LxqFNO4
+ M05A==
+X-Gm-Message-State: AGi0PualDFE6FjC7aXuRXMykfLbdeY7lj9NeHqoNsZd2WjNWFkNlXpj1
+ XyMA3vuJCRBdtEDSvB9I5scjWIAjatkfRw==
+X-Received: by 2002:a19:ac41:: with SMTP id r1mr8220395lfc.113.1586003168752; 
+ Sat, 04 Apr 2020 05:26:08 -0700 (PDT)
+Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id n23sm6515545lji.59.2020.04.04.05.26.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 04 Apr 2020 05:26:07 -0700 (PDT)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v1 0/2] dma/xlnx-zdma: Fix descriptor loading wrt host
+ endianness
+Date: Sat,  4 Apr 2020 14:27:16 +0200
+Message-Id: <20200404122718.25111-1-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20200402143913.24005-1-alex.bennee@linaro.org>
-In-Reply-To: <20200402143913.24005-1-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Apr 2020 19:21:11 +0100
-Message-ID: <CAFEAcA-pw+xJnsxhG6N2ibWH0K2McqGQnJ_b5qAzWBa+TV8z4Q@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: don't expose "ieee_half" via gdbstub
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 8XDPQkes1hfF
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::144
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
+ edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
+ frasse.iglesias@gmail.com, alistair@alistair23.me,
+ richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
+ philmd@redhat.com, luc.michel@greensocs.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: W3nfGiyeadKO
 
-On Thu, 2 Apr 2020 at 15:39, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> While support for parsing ieee_half in the XML description was added
-> to gdb in 2019 (a6d0f249) there is no easy way for the gdbstub to know
-> if the gdb end will understand it. Disable it for now and allow older
-> gdbs to successfully connect to the default -cpu max SVE enabled
-> QEMUs.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> ---
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
+Hi,
 
+This fixes the endinannes related bugs with descriptor loading
+that Peter pointed out.
 
-Applied to target-arm.next for 5.0, thanks.
+Cheers,
+Edgar
 
--- PMM
+Edgar E. Iglesias (2):
+  dma/xlnx-zdma: Fix descriptor loading (MEM) wrt endianness
+  dma/xlnx-zdma: Fix descriptor loading (REG) wrt endianness
+
+ hw/dma/xlnx-zdma.c | 25 +++++++++++++++++--------
+ 1 file changed, 17 insertions(+), 8 deletions(-)
+
+-- 
+2.20.1
+

@@ -1,100 +1,100 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4242750lfi;
-        Mon, 6 Apr 2020 10:55:21 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJ+yBQqxyG7JrH/ELdHO8+kmCYjdRZCfj4QTL2IM/fopyeX2hbFZmGkyaH7dcmqmJbfkbLE
-X-Received: by 2002:ac8:23ed:: with SMTP id r42mr666866qtr.372.1586195720667;
-        Mon, 06 Apr 2020 10:55:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586195720; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4242906lfi;
+        Mon, 6 Apr 2020 10:55:32 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLVJ2VCTLHKpLo0RfjXh3/CeD+iFRkbsO6PIl+UkLkaVWqRiuktqMu5RLcGMjpqT8QEBzm8
+X-Received: by 2002:a37:5647:: with SMTP id k68mr23337730qkb.33.1586195732428;
+        Mon, 06 Apr 2020 10:55:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586195732; cv=none;
         d=google.com; s=arc-20160816;
-        b=oAUyAPO5/V6CDs4rD0YXHNRmrJoTXsOtH5ZAdiA2hov0fHoUWSaxVwj573+Awp4+jc
-         mHyCTjXuTIaDx1td2p8KNjzv1sgpPCflFGN4VBavi+BvEysaMhgfGVXbpz7iMPVFa6Pj
-         8VLN/Vs6DDfmmlpKbm6Gr9zMYO88GGoiwyQXv9sTHYOgmxqhomHmGfr7mHvhJC9SP77T
-         qlkgXVTqV243OgA4WB95dcMbT8AJV7nXCeU8V77+NByePHwa12DWq6ttmfsvztSQdXZd
-         VRCXvs6LmS+wNs415NozivWe0O8UBO7/8vNUrQWyoEBo3qYGYfN7FF31zc0t/hLwouwk
-         V//w==
+        b=IU/EMeUxK77Z1VbIYN+EJVTvS7LDFpYl6zYG+Wj3paIma/6twy3A7UynUWTx93YpWk
+         w61yCT9DgwdZKivVPGnNAy/qF9gpTLiNL/aWFXkZ0yVibcSkh+Mao+zCnTeSugFsB9wO
+         ePwvKqQtpwujGlQmaKZPEay34Wib8ATpRjfUErbfp2QvI9vD7ofnQRxYhdVhoIjLRMxW
+         BToJPa31P5RxVzUWFKrmzU9RYYhjkp4TcOFu4Zn2lsIJ9vm79qEtulGX75uiKGAUsAga
+         osb8Q9882sDscTh7JFJRRGBAnc4ktr288bcsw93Agm6MSDzZmoI5HDPiUQzrzAKEsKA5
+         ts2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=rNOvzQC0gAZiW9IjgvdXICw1FeldG6faD6QdyriSpSA=;
-        b=xWSdrkNy/E22y9LhOm8tzCFotcoC1rXKm5nU/Osl3I2M3deIscv4YF/gp7jzmyCGaO
-         JvHIMUDqNJyiqMKRPXkPqMxQ4ns8bdDCgZ1B7+PAqbG5bm0wnaWAZ10nYGGkpRTzdmhn
-         2kN6MBN3wFBqhqYUvxcYTuXaCwCmb6zTm9tqGNkMICC1pLBMaJOiH9iNTEr6RiBd6+pk
-         /iIi29A+zJ6KCRuPezpzCSS9uR2eb6MfEZ4IeVwAlu/sddxoEdKT70qs8/DeStkALWn2
-         poiOsI+0D5dnjLkxXQWI8s/ub3vrar3AOa2GAt4DOMeZR8Dk28BJBWDDAp4yx2gYBU69
-         VvaA==
+        bh=dxLsxZYXQYEKWKbERHeZOPlL0o3+IfFCX14RzhAQjos=;
+        b=aIUOgCeBrlNyX8zRYo8lm1Rm53ExcRtbS10FhwUWkTxHQWA1FzqUZ6GdPsBBby1aIr
+         Pi+gEilAPVbMymzyNYLI0TLLr3A9GIJLlFgGKDMsTXoBPsU9ns+pBUtqFDA15+zR8K7h
+         NqUhAb9CHCjqq/NL8uEbafJojvxYXY4ZtL9P/yCRTHxFOwCBYK3udfrUwit3ipUzHjzW
+         Ta9wSO2ujVMMrytCzyIrLB+otBOT+3v9D7BOdvpQYGyEn6yvbQu3c75KCXTnbuGA8g2n
+         Wm42LH6IQ29o8+93AlEHqjZrXMEvNm+xygIDDx/6+f2FJvF6TEw5besP0N3MLU0EVoR9
+         MHqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="c/n+hqSX";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="t9H8A/f1";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p47si210475qtb.64.2020.04.06.10.55.20
+        by mx.google.com with ESMTPS id o39si187996qtb.368.2020.04.06.10.55.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Apr 2020 10:55:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Apr 2020 10:55:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="c/n+hqSX";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="t9H8A/f1";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:35964 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36004 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jLVxw-0006IF-2C
-	for alex.bennee@linaro.org; Mon, 06 Apr 2020 13:55:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35936)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jLVy7-0007Xd-SC
+	for alex.bennee@linaro.org; Mon, 06 Apr 2020 13:55:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36106)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVqu-0001gk-3j
- for qemu-devel@nongnu.org; Mon, 06 Apr 2020 13:48:09 -0400
+ id 1jLVr1-0001tv-Cy
+ for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:48:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVqs-0001uP-Uq
- for qemu-devel@nongnu.org; Mon, 06 Apr 2020 13:48:04 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:53244)
+ id 1jLVqz-0002Yu-9m
+ for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:48:10 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:38384)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVqs-0001rg-NK; Mon, 06 Apr 2020 13:48:02 -0400
-Received: by mail-wm1-x343.google.com with SMTP id t203so295216wmt.2;
- Mon, 06 Apr 2020 10:48:02 -0700 (PDT)
+ id 1jLVql-0001aM-VA; Mon, 06 Apr 2020 13:47:57 -0400
+Received: by mail-wm1-x341.google.com with SMTP id f20so311623wmh.3;
+ Mon, 06 Apr 2020 10:47:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=rNOvzQC0gAZiW9IjgvdXICw1FeldG6faD6QdyriSpSA=;
- b=c/n+hqSXSD6F6qaxpMdMSonWyATO4kGyDsDvE11hkpNqZ0OPTKvxYdOVbUH3k5V2SS
- lED/ZjO82uWDhIadKnSNfPzHeHYQ97t0rVysBln+5mK6p6CnDQ23khn41btWsXbdOJw3
- 2yIuiacSdkmj8zgTb3LNK7J/L82w95dwpTlsVoC9ogTWXUgcE1kD7uVs/VeN4T7Ratt1
- mzG3Sd8f1FZYj/OnB+yxNyI33xb/rRLtBLoTf+8cprwyiRKrhHJQfZ3Iq30fpSjUreJS
- Fw8UAB+rmF2PAfM8rauQHLYrp7UZ+6+Ec1yONYhC1mfx8Mv9axnQE1Y09snZ2q9T9EVR
- 8+1g==
+ bh=dxLsxZYXQYEKWKbERHeZOPlL0o3+IfFCX14RzhAQjos=;
+ b=t9H8A/f1nGr7g2HQs+8jQ9LgueOGv0KDhedNGjE9nRIHwNQQh4Lfb7Tnopm9NZsH4V
+ BqxahXtSkoixGLixzsJaB8FeIRZEQlTuXqwSI4nxhqznAorfTgukwIA/W55kf63hqLyZ
+ CjxOr4hplACHOTFohZECAkdFCfvkJh6rMSKoUiWZEskpHMTeCsW78i6HpjNmbo4XgZom
+ 3yBSY7i/8hhMhTk0q1l4EOlZqQLzqLQgBcMoOJdIZ4Y4kNLw2LWA2r6G+cqTlRZGtZ68
+ qiq+KzstFxHlUpneEVZTttMZ3IEpFN0IKcur2SwjB0Ht4SBotX9O8C1xVgmp2Am1E/wl
+ rdnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=rNOvzQC0gAZiW9IjgvdXICw1FeldG6faD6QdyriSpSA=;
- b=Y5gyDZM55u3xIKO9E90qCCP0F559maLu2DDwrBR+xDvFVHOcMwBNxd7s6r11cc+HHP
- JbFv7Ht50AFDTier3pICZ3DDi9mIpKqP+qtLT5spa8OyUndHhOleSwNbxzS01OFBKNX8
- DHjLj1U0ONDl/lotFMxRnZ5GiyUNuEoqUKPNecr2Wbb09sxjuUxOk/1UbFzNodb4l4sl
- A6TpO5ZWNEda39t4PNdfJJU6xj9cUvFmQmDQDp2DeWkNelWup3xDFHSv7uJoedkMJ8Tt
- EgVF6C9I+P0l3IlSIH/r+lgnjJZgqH3OAALamA06bCC8Q7TPkyATe5ezNliZjTQ+KKeI
- eZ5w==
-X-Gm-Message-State: AGi0PubFUcoysPnqTqbK1BmqNvuGVQ5TZ23dgXPBX5o7T5AOXPcNOihD
- xCFtRgxKmjSEqulgLvSFkgxDVubKB+U=
-X-Received: by 2002:a7b:cb81:: with SMTP id m1mr171274wmi.1.1586195281403;
- Mon, 06 Apr 2020 10:48:01 -0700 (PDT)
+ bh=dxLsxZYXQYEKWKbERHeZOPlL0o3+IfFCX14RzhAQjos=;
+ b=AJz0X1iEGU023GiUlZPsyZPdFuFJ1uhTiH6QH/swwwlhcps7OTaHFMUEw+IxMCF7YX
+ 4MbFffYZWALtpPaysWCvVQB6/ifsGvtkwNZ7Jf7+UC7bWIRHJdvK4IN6ouqhIxLF7Nf7
+ /vpgh+wo4D+OfC1H/dtI0kJWI005DhHCqjC+BbKg9FzVix6x28wQFG99mXFBxjSYjDR4
+ pP4AdC53x99iTa7M0OXHvwxtjIaCDsom7Gi/wKXy6xORrfDl3AXYZkqcd0L6lXdVwcHL
+ wAlOrF24SBQIKyg7Y5Rf2F0TBErEukHg5jGIJWTv91j348bGFrU44PldtLfCNbH7NaVJ
+ O60g==
+X-Gm-Message-State: AGi0PuZtKYDtnzh2Wd9I5TImt7M5ps4ra0NxubUhskCHBgXEiC6M4Kiy
+ U/oDr1f16oaDREK+KRVknyULHfoOy9M=
+X-Received: by 2002:a7b:c148:: with SMTP id z8mr474112wmi.31.1586195274811;
+ Mon, 06 Apr 2020 10:47:54 -0700 (PDT)
 Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id a67sm364880wmc.30.2020.04.06.10.48.00
+ by smtp.gmail.com with ESMTPSA id a67sm364880wmc.30.2020.04.06.10.47.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Apr 2020 10:48:00 -0700 (PDT)
+ Mon, 06 Apr 2020 10:47:54 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH-for-5.1 v2 11/54] hw/arm/msf2-soc: Store MemoryRegion in
- MSF2State
-Date: Mon,  6 Apr 2020 19:47:00 +0200
-Message-Id: <20200406174743.16956-12-f4bug@amsat.org>
+Subject: [PATCH-for-5.1 v2 06/54] hw/arm/aspeed_soc: Move some code from
+ realize() to init()
+Date: Mon,  6 Apr 2020 19:46:55 +0200
+Message-Id: <20200406174743.16956-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200406174743.16956-1-f4bug@amsat.org>
 References: <20200406174743.16956-1-f4bug@amsat.org>
@@ -104,100 +104,67 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::343
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::341
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- "open list:SmartFusion2" <qemu-arm@nongnu.org>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tFypod0m5t7X
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: veobqZ8Y4mKk
 
 Coccinelle reported:
 
   $ spatch ... --timeout 60 --sp-file \
     scripts/coccinelle/simplify-init-realize-error_propagate.cocci
-  HANDLING: ./hw/arm/msf2-soc.c
-  >>> possible moves from m2sxxx_soc_initfn() to m2sxxx_soc_realize() in ./hw/arm/msf2-soc.c:86
+  HANDLING: ./hw/arm/aspeed_soc.c
+  >>> possible moves from aspeed_soc_init() to aspeed_soc_realize() in ./hw/arm/aspeed_soc.c:231
 
-While reviewing we notice storing the MemoryRegion in the device
-state, we'll be able to later automatically simplify the error
-propagation calls.
+Move the calls using &error_fatal which don't depend of input
+updated before realize() to init().
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/arm/msf2-soc.h |  4 ++++
- hw/arm/msf2-soc.c         | 18 +++++++-----------
- 2 files changed, 11 insertions(+), 11 deletions(-)
+ hw/arm/aspeed_soc.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
-index 3cfe5c76ee..e4c5110036 100644
---- a/include/hw/arm/msf2-soc.h
-+++ b/include/hw/arm/msf2-soc.h
-@@ -50,6 +50,10 @@ typedef struct MSF2State {
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 696c7fda14..debd7c8faa 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -183,6 +183,7 @@ static void aspeed_soc_init(Object *obj)
+         snprintf(typename, sizeof(typename), "aspeed.spi%d-%s", i + 1, socname);
+         sysbus_init_child_obj(obj, "spi[*]", OBJECT(&s->spi[i]),
+                               sizeof(s->spi[i]), typename);
++        object_property_set_int(OBJECT(&s->spi[i]), 1, "num-cs", &error_abort);
+     }
  
-     ARMv7MState armv7m;
+     for (i = 0; i < sc->ehcis_num; i++) {
+@@ -360,10 +361,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
  
-+    MemoryRegion sram;
-+    MemoryRegion nvm;
-+    MemoryRegion nvm_alias;
-+
-     char *cpu_type;
-     char *part_name;
-     uint64_t envm_size;
-diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-index 588d643b8d..e448b0ab74 100644
---- a/hw/arm/msf2-soc.c
-+++ b/hw/arm/msf2-soc.c
-@@ -90,13 +90,9 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
-     SysBusDevice *busdev;
-     Error *err = NULL;
-     int i;
--
-     MemoryRegion *system_memory = get_system_memory();
--    MemoryRegion *nvm = g_new(MemoryRegion, 1);
--    MemoryRegion *nvm_alias = g_new(MemoryRegion, 1);
--    MemoryRegion *sram = g_new(MemoryRegion, 1);
- 
--    memory_region_init_rom(nvm, OBJECT(dev_soc), "MSF2.eNVM", s->envm_size,
-+    memory_region_init_rom(&s->nvm, OBJECT(dev_soc), "MSF2.eNVM", s->envm_size,
-                            &error_fatal);
-     /*
-      * On power-on, the eNVM region 0x60000000 is automatically
-@@ -104,15 +100,15 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
-      * start address (0x0). We do not support remapping other eNVM,
-      * eSRAM and DDR regions by guest(via Sysreg) currently.
-      */
--    memory_region_init_alias(nvm_alias, OBJECT(dev_soc), "MSF2.eNVM", nvm, 0,
--                             s->envm_size);
-+    memory_region_init_alias(&s->nvm_alias, OBJECT(dev_soc), "MSF2.eNVM",
-+                             &s->nvm, 0, s->envm_size);
- 
--    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, nvm);
--    memory_region_add_subregion(system_memory, 0, nvm_alias);
-+    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, &s->nvm);
-+    memory_region_add_subregion(system_memory, 0, &s->nvm_alias);
- 
--    memory_region_init_ram(sram, NULL, "MSF2.eSRAM", s->esram_size,
-+    memory_region_init_ram(&s->sram, NULL, "MSF2.eSRAM", s->esram_size,
-                            &error_fatal);
--    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
-+    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, &s->sram);
- 
-     armv7m = DEVICE(&s->armv7m);
-     qdev_prop_set_uint32(armv7m, "num-irq", 81);
+     /* SPI */
+     for (i = 0; i < sc->spis_num; i++) {
+-        object_property_set_int(OBJECT(&s->spi[i]), 1, "num-cs", &err);
+-        object_property_set_bool(OBJECT(&s->spi[i]), true, "realized",
+-                                 &local_err);
+-        error_propagate(&err, local_err);
++        object_property_set_bool(OBJECT(&s->spi[i]), true, "realized", &err);
+         if (err) {
+             error_propagate(errp, err);
+             return;
 -- 
 2.21.1
 

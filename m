@@ -1,100 +1,100 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4242906lfi;
-        Mon, 6 Apr 2020 10:55:32 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLVJ2VCTLHKpLo0RfjXh3/CeD+iFRkbsO6PIl+UkLkaVWqRiuktqMu5RLcGMjpqT8QEBzm8
-X-Received: by 2002:a37:5647:: with SMTP id k68mr23337730qkb.33.1586195732428;
-        Mon, 06 Apr 2020 10:55:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586195732; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4244345lfi;
+        Mon, 6 Apr 2020 10:57:04 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJoKVr1s57E+vMrTHpisloOtUs9svyjpJMaQvqW4VNpcxV7GA6Nb3bhvIQoLidtKwO0dizY
+X-Received: by 2002:ac8:6f14:: with SMTP id g20mr673191qtv.53.1586195824495;
+        Mon, 06 Apr 2020 10:57:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586195824; cv=none;
         d=google.com; s=arc-20160816;
-        b=IU/EMeUxK77Z1VbIYN+EJVTvS7LDFpYl6zYG+Wj3paIma/6twy3A7UynUWTx93YpWk
-         w61yCT9DgwdZKivVPGnNAy/qF9gpTLiNL/aWFXkZ0yVibcSkh+Mao+zCnTeSugFsB9wO
-         ePwvKqQtpwujGlQmaKZPEay34Wib8ATpRjfUErbfp2QvI9vD7ofnQRxYhdVhoIjLRMxW
-         BToJPa31P5RxVzUWFKrmzU9RYYhjkp4TcOFu4Zn2lsIJ9vm79qEtulGX75uiKGAUsAga
-         osb8Q9882sDscTh7JFJRRGBAnc4ktr288bcsw93Agm6MSDzZmoI5HDPiUQzrzAKEsKA5
-         ts2Q==
+        b=w/FBgR4OtMO94y1KoyzBHkdEGCkP7bXGWSMtPkq3qZWqqUH2lJU11+C0NNmzFKuWLb
+         13trFRA5x+Uca7zPmhfTlWKbej+iFj3OPUIK+SoAV6DEZuO/DPA7LaQEGRAB0m0+//Mk
+         xBrAuevKGDGxIU534QoKQj2nY9IOO2BOcdvu2ckpEn1/tAaBb4Ikxnb6QFjx1ff11IGx
+         8LV52NnhuNCojBMxjR/jbYYbuY660isI/k76zkaEkPCptDQVYlxUleZQlFyFCNJsFncX
+         XY9I7Q/xwlwI0xZXqXKM6nmvV7GQa38vyO4ufU6ChZj/hekgiHJSIc/vWhnZEkJ8D64M
+         sgtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=dxLsxZYXQYEKWKbERHeZOPlL0o3+IfFCX14RzhAQjos=;
-        b=aIUOgCeBrlNyX8zRYo8lm1Rm53ExcRtbS10FhwUWkTxHQWA1FzqUZ6GdPsBBby1aIr
-         Pi+gEilAPVbMymzyNYLI0TLLr3A9GIJLlFgGKDMsTXoBPsU9ns+pBUtqFDA15+zR8K7h
-         NqUhAb9CHCjqq/NL8uEbafJojvxYXY4ZtL9P/yCRTHxFOwCBYK3udfrUwit3ipUzHjzW
-         Ta9wSO2ujVMMrytCzyIrLB+otBOT+3v9D7BOdvpQYGyEn6yvbQu3c75KCXTnbuGA8g2n
-         Wm42LH6IQ29o8+93AlEHqjZrXMEvNm+xygIDDx/6+f2FJvF6TEw5besP0N3MLU0EVoR9
-         MHqg==
+        bh=4j3n0ZN8lrQk9Ox5ZI487lTmFghYMiP7ZCOjQ+gtTO0=;
+        b=CRswl1j7U3ZvP/hF8B08cvrB7V6JBoBA137iSv2BtdUsuTzBpXowZJabm+Rk3Ca5ab
+         /uro5zOshgp0PxY632m+aKrxgU/OVdYiqXdzlwWXl7v0LrQA12XrF5iuiKTxspjpNYkP
+         UZ5P99mRSHhmQ+6ZvZFu3C9Fhozom+znyE2GbtAk3TA/nuDAcCW5HX18OoldY4rcEqoA
+         XOOmHXDA8U95Aes8s/F87+NsBdROpLX/wwLhxYrFQXeN8684KSabUKLA3RcTbZj2PBwH
+         T09IiloolIueuQiT5ou2UEJRNniPvtkkvsgVXDrIxgfrBtqu5lTiDStHnoXf5dnNWecw
+         UUsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="t9H8A/f1";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SpohpnJ0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o39si187996qtb.368.2020.04.06.10.55.32
+        by mx.google.com with ESMTPS id l53si195809qtl.355.2020.04.06.10.57.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Apr 2020 10:55:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Apr 2020 10:57:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="t9H8A/f1";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SpohpnJ0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:36004 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36032 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jLVy7-0007Xd-SC
-	for alex.bennee@linaro.org; Mon, 06 Apr 2020 13:55:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36106)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jLVzb-0001PZ-QZ
+	for alex.bennee@linaro.org; Mon, 06 Apr 2020 13:57:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36068)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVr1-0001tv-Cy
- for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:48:12 -0400
+ id 1jLVqz-0001qt-Gw
+ for qemu-devel@nongnu.org; Mon, 06 Apr 2020 13:48:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVqz-0002Yu-9m
- for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:48:10 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:38384)
+ id 1jLVqw-0002Kt-Uu
+ for qemu-devel@nongnu.org; Mon, 06 Apr 2020 13:48:09 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:40005)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVql-0001aM-VA; Mon, 06 Apr 2020 13:47:57 -0400
-Received: by mail-wm1-x341.google.com with SMTP id f20so311623wmh.3;
- Mon, 06 Apr 2020 10:47:55 -0700 (PDT)
+ id 1jLVqw-0002Ej-NY; Mon, 06 Apr 2020 13:48:06 -0400
+Received: by mail-wr1-x443.google.com with SMTP id s8so486238wrt.7;
+ Mon, 06 Apr 2020 10:48:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=dxLsxZYXQYEKWKbERHeZOPlL0o3+IfFCX14RzhAQjos=;
- b=t9H8A/f1nGr7g2HQs+8jQ9LgueOGv0KDhedNGjE9nRIHwNQQh4Lfb7Tnopm9NZsH4V
- BqxahXtSkoixGLixzsJaB8FeIRZEQlTuXqwSI4nxhqznAorfTgukwIA/W55kf63hqLyZ
- CjxOr4hplACHOTFohZECAkdFCfvkJh6rMSKoUiWZEskpHMTeCsW78i6HpjNmbo4XgZom
- 3yBSY7i/8hhMhTk0q1l4EOlZqQLzqLQgBcMoOJdIZ4Y4kNLw2LWA2r6G+cqTlRZGtZ68
- qiq+KzstFxHlUpneEVZTttMZ3IEpFN0IKcur2SwjB0Ht4SBotX9O8C1xVgmp2Am1E/wl
- rdnA==
+ bh=4j3n0ZN8lrQk9Ox5ZI487lTmFghYMiP7ZCOjQ+gtTO0=;
+ b=SpohpnJ0y3OSsXtDpDfzxhrbMiciM6SWsR0qVRmJ4NXnMZ+mIIkT342I+pwRMIbGMi
+ s0OWe+ECY8pRRj48PMt5br2rxW0pW/P60MUiVrm9lp3OQ4M/I8BphDXLZfbnaK4OiGD+
+ 74S27b37UyzkifDE0iDjQIPulAzACig9+qUPbyTbAK0hT5ONCwm88cxIC5sO7dyRAFJS
+ a6bOTYEqtgpr4gegBcYPdYUX+BJrGHZJfoZuLjZJoIONAc8lRuB4P6Yq0lpD4e+lYO5X
+ nFzQ1uTQJoalTj9zBVsysdRIbaz2eB3NjBguPo/+giR80g0ngGPg7N8f7oodRy3MWIn2
+ VhyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=dxLsxZYXQYEKWKbERHeZOPlL0o3+IfFCX14RzhAQjos=;
- b=AJz0X1iEGU023GiUlZPsyZPdFuFJ1uhTiH6QH/swwwlhcps7OTaHFMUEw+IxMCF7YX
- 4MbFffYZWALtpPaysWCvVQB6/ifsGvtkwNZ7Jf7+UC7bWIRHJdvK4IN6ouqhIxLF7Nf7
- /vpgh+wo4D+OfC1H/dtI0kJWI005DhHCqjC+BbKg9FzVix6x28wQFG99mXFBxjSYjDR4
- pP4AdC53x99iTa7M0OXHvwxtjIaCDsom7Gi/wKXy6xORrfDl3AXYZkqcd0L6lXdVwcHL
- wAlOrF24SBQIKyg7Y5Rf2F0TBErEukHg5jGIJWTv91j348bGFrU44PldtLfCNbH7NaVJ
- O60g==
-X-Gm-Message-State: AGi0PuZtKYDtnzh2Wd9I5TImt7M5ps4ra0NxubUhskCHBgXEiC6M4Kiy
- U/oDr1f16oaDREK+KRVknyULHfoOy9M=
-X-Received: by 2002:a7b:c148:: with SMTP id z8mr474112wmi.31.1586195274811;
- Mon, 06 Apr 2020 10:47:54 -0700 (PDT)
+ bh=4j3n0ZN8lrQk9Ox5ZI487lTmFghYMiP7ZCOjQ+gtTO0=;
+ b=YuQri13q8P3mRYVfPyUQ2FVjoQyf7asmg0vwkRGCM5m1XxSetI9CWcp02t8Ipv+9Ic
+ N3Roc21pfJ5zswB8XVGqHCQ0xNy5E/V+BAYlG2+PwV4j+FmUQOE6abSBlli0nkJHV59r
+ bTQ3XsUxbnc6PwtxIxD4W7EG017gX1w2gtxkHUlPX5seXoNSjQdGUzvLn5IN4wUuxq9y
+ /kYnZzCPD1ozi2wYtKRKk+rCrLlJPWHAas/H2B/1TzEK9+E3qJPy+W6PlupxpFkysEwe
+ mKMlyscnkof/BO3v/hatW497AjrGKJhmYyRprpKcMxGnKzQXZv9+Xt/GGxFDtFpYX3ja
+ l6Uw==
+X-Gm-Message-State: AGi0Puad0dG3t22Gn50oJo1Q8cYzd9zD6iteVmHqilVqMAbaLuxl0Aex
+ u+jp4B6gCOMms4OvoP2VZDdkmq3e5XM=
+X-Received: by 2002:adf:a347:: with SMTP id d7mr349706wrb.21.1586195285428;
+ Mon, 06 Apr 2020 10:48:05 -0700 (PDT)
 Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id a67sm364880wmc.30.2020.04.06.10.47.53
+ by smtp.gmail.com with ESMTPSA id a67sm364880wmc.30.2020.04.06.10.48.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Apr 2020 10:47:54 -0700 (PDT)
+ Mon, 06 Apr 2020 10:48:04 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH-for-5.1 v2 06/54] hw/arm/aspeed_soc: Move some code from
- realize() to init()
-Date: Mon,  6 Apr 2020 19:46:55 +0200
-Message-Id: <20200406174743.16956-7-f4bug@amsat.org>
+Subject: [PATCH-for-5.1 v2 14/54] hw/arm/xlnx-zynqmp: Use single
+ propagate_error() call
+Date: Mon,  6 Apr 2020 19:47:03 +0200
+Message-Id: <20200406174743.16956-15-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200406174743.16956-1-f4bug@amsat.org>
 References: <20200406174743.16956-1-f4bug@amsat.org>
@@ -104,67 +104,228 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::341
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::443
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Andrew Jeffery <andrew@aj.id.au>,
+ Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: veobqZ8Y4mKk
+ "open list:Xilinx ZynqMP" <qemu-arm@nongnu.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IciqCDkFmFI8
 
-Coccinelle reported:
+Coccinelle failed at processing this file:
 
   $ spatch ... --timeout 60 --sp-file \
     scripts/coccinelle/simplify-init-realize-error_propagate.cocci
-  HANDLING: ./hw/arm/aspeed_soc.c
-  >>> possible moves from aspeed_soc_init() to aspeed_soc_realize() in ./hw/arm/aspeed_soc.c:231
+  HANDLING: ./hw/arm/xlnx-zynqmp.c
+  EXN: Coccinelle_modules.Common.Timeout
 
-Move the calls using &error_fatal which don't depend of input
-updated before realize() to init().
+We are going to manually add the missing propagate_error() calls.
+As there are many Error* calls used, simplify by using an unique
+call to propagate_error().
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/aspeed_soc.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ hw/arm/xlnx-zynqmp.c | 61 +++++++++++++++++---------------------------
+ 1 file changed, 23 insertions(+), 38 deletions(-)
 
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 696c7fda14..debd7c8faa 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -183,6 +183,7 @@ static void aspeed_soc_init(Object *obj)
-         snprintf(typename, sizeof(typename), "aspeed.spi%d-%s", i + 1, socname);
-         sysbus_init_child_obj(obj, "spi[*]", OBJECT(&s->spi[i]),
-                               sizeof(s->spi[i]), typename);
-+        object_property_set_int(OBJECT(&s->spi[i]), 1, "num-cs", &error_abort);
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index b84d153d56..43d57fa7de 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -385,15 +385,13 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+         object_property_set_bool(OBJECT(&s->apu_cpu[i]), true, "realized",
+                                  &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
      }
  
-     for (i = 0; i < sc->ehcis_num; i++) {
-@@ -360,10 +361,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     object_property_set_bool(OBJECT(&s->gic), true, "realized", &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
  
-     /* SPI */
-     for (i = 0; i < sc->spis_num; i++) {
--        object_property_set_int(OBJECT(&s->spi[i]), 1, "num-cs", &err);
--        object_property_set_bool(OBJECT(&s->spi[i]), true, "realized",
--                                 &local_err);
--        error_propagate(&err, local_err);
-+        object_property_set_bool(OBJECT(&s->spi[i]), true, "realized", &err);
+     assert(ARRAY_SIZE(xlnx_zynqmp_gic_regions) == XLNX_ZYNQMP_GIC_REGIONS);
+@@ -462,8 +460,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+ 
+     xlnx_zynqmp_create_rpu(ms, s, boot_cpu, &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
+ 
+     if (!s->boot_cpu_ptr) {
+@@ -488,8 +485,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+                                 &error_abort);
+         object_property_set_bool(OBJECT(&s->gem[i]), true, "realized", &err);
          if (err) {
-             error_propagate(errp, err);
-             return;
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->gem[i]), 0, gem_addr[i]);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->gem[i]), 0,
+@@ -500,8 +496,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+         qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", serial_hd(i));
+         object_property_set_bool(OBJECT(&s->uart[i]), true, "realized", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->uart[i]), 0, uart_addr[i]);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
+@@ -512,8 +507,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+                             &error_abort);
+     object_property_set_bool(OBJECT(&s->sata), true, "realized", &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
+ 
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->sata), 0, SATA_ADDR);
+@@ -531,23 +525,19 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+          */
+         object_property_set_uint(sdhci, 3, "sd-spec-version", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+         object_property_set_uint(sdhci, SDHCI_CAPABILITIES, "capareg", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+         object_property_set_uint(sdhci, UHS_I, "uhs", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+         object_property_set_bool(sdhci, true, "realized", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+         sysbus_mmio_map(sbd, 0, sdhci_addr[i]);
+         sysbus_connect_irq(sbd, 0, gic_spi[sdhci_intr[i]]);
+@@ -564,8 +554,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+ 
+         object_property_set_bool(OBJECT(&s->spi[i]), true, "realized", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0, spi_addr[i]);
+@@ -582,8 +571,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+ 
+     object_property_set_bool(OBJECT(&s->qspi), true, "realized", &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 0, QSPI_ADDR);
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 1, LQSPI_ADDR);
+@@ -605,16 +593,14 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+ 
+     object_property_set_bool(OBJECT(&s->dp), true, "realized", &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->dp), 0, DP_ADDR);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->dp), 0, gic_spi[DP_IRQ]);
+ 
+     object_property_set_bool(OBJECT(&s->dpdma), true, "realized", &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
+     object_property_set_link(OBJECT(&s->dp), OBJECT(&s->dpdma), "dpdma",
+                              &error_abort);
+@@ -623,16 +609,14 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+ 
+     object_property_set_bool(OBJECT(&s->ipi), true, "realized", &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->ipi), 0, IPI_ADDR);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->ipi), 0, gic_spi[IPI_IRQ]);
+ 
+     object_property_set_bool(OBJECT(&s->rtc), true, "realized", &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->rtc), 0, RTC_ADDR);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->rtc), 0, gic_spi[RTC_IRQ]);
+@@ -640,13 +624,11 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i < XLNX_ZYNQMP_NUM_GDMA_CH; i++) {
+         object_property_set_uint(OBJECT(&s->gdma[i]), 128, "bus-width", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+         object_property_set_bool(OBJECT(&s->gdma[i]), true, "realized", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->gdma[i]), 0, gdma_ch_addr[i]);
+@@ -657,14 +639,17 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i < XLNX_ZYNQMP_NUM_ADMA_CH; i++) {
+         object_property_set_bool(OBJECT(&s->adma[i]), true, "realized", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->adma[i]), 0, adma_ch_addr[i]);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->adma[i]), 0,
+                            gic_spi[adma_ch_intr[i]]);
+     }
++    return;
++
++out_propagate_error:
++    error_propagate(errp, err);
+ }
+ 
+ static Property xlnx_zynqmp_props[] = {
 -- 
 2.21.1
 

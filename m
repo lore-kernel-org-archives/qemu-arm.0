@@ -1,192 +1,214 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4235703lfi;
-        Mon, 6 Apr 2020 10:48:03 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJG18TtTuXFHjgMYf4DhPiMa4sLPTDcwRsLvz6deVKtA5V1W9wjaKgHUwVsNBWOmgrC4v52
-X-Received: by 2002:a0c:a2c5:: with SMTP id g63mr872382qva.114.1586195282877;
-        Mon, 06 Apr 2020 10:48:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586195282; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4237654lfi;
+        Mon, 6 Apr 2020 10:50:02 -0700 (PDT)
+X-Google-Smtp-Source: APiQypI01EI1MhvgfgcKz2NmNUWudgzs7zhwZEaJq+o9ZDzqUa+GZ+tvAXFjdcUqZ7b2Lkbii6il
+X-Received: by 2002:a05:620a:1250:: with SMTP id a16mr23518876qkl.497.1586195402662;
+        Mon, 06 Apr 2020 10:50:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586195402; cv=none;
         d=google.com; s=arc-20160816;
-        b=IjqxtvmXAOi2obM1xIDM3EdWMaxqY6iri1sQ0bJ9h7f5klLU0LTIqU24eMElEQ2Tyo
-         GtWM8QUvqFcz/E4MpsemrDfjzuMlqRgxLTiiDfoNwmZkNDlXpS9Ijka4BF9C0TXxH8O8
-         Q3FA+ibLKMtSC8MJMhIC2YC8xyjLdIpS3qEb0nLZX8esuA0iFYpJjsIgmS0Svw2s55Je
-         Co1/L6rbiEUjg/4R4zDnNp4BbFnExWzwd1xyfTg28qPVUhtAKdju8m9srQ2N9o8h2CXJ
-         afzGj+PznQGLf6KHlcJeE5DovMVKOHzGMzqW/lk4YUpL+DNhyYQkXvW0J0L+fdLP7SSn
-         tqvw==
+        b=BChjFfieNwhIblYWLhNM+NzIJHEcqZGIf7cbU6g49Vdvmbl6vTvyP30LswAejwIZlN
+         7zY7fC/A5Q8bbkXceehr7jg3eh4v5puGC2MFkuaKRwjTWI0yy7Pq31JNLudzq9sAZXh/
+         By6LvVMDXx6WRrs0zowKmVqqflMQQneD+EnmY36WL+SykFAcLZsjpY4X1p55EglJDpR5
+         3rQlY++s3e5DTUOL9t7D5ugQbQGYKi9onHFRNyLXvqwn6TscB+z55/b//G1nzQSyexTP
+         FzzYyUj/c8X9gOWJ02T5xDL5Ppzbc8hbIlNamp/GRKeXFmySWZgrV3VUaMkFNymEeY23
+         71yA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=BH2VYTUXcsfl/0dH3y012NaqwkbVBg2RcLAh0syExwQ=;
-        b=gikvlufjFSbgaGKbN1hsHt6VfgbqIqwachdHmCL5DacG3qNUIlLJ1Npnv93mAtNpkc
-         JxbCbTbvuHvmhFOVE/IMi7xr3MElUKcZxUn2s/q3CqfIY0PAyizEfkPwqmYC3GckEupj
-         ui17UfcLK6hmuPg4A8zArVzb87HB40LnI7aBjIRnkHio0HJ3s7mDhOedpZPnFfFiX0aJ
-         XZhYyKXyrfhfethdWApxXkygD6Gd09FG8KZOMPBOuyFECgSLM1prbphD/GGrMfT3M3Fr
-         6BU4mGawZM+m4Ss0YNeAC8y9xJJbppLOiwi4clk3ld4D50lugzMA7UUbsiuz/x6CcAJP
-         ymNw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=SEX/nwZgTPc5n/w+lMa0+UqvNUZKOIm8zzduq8bu1fA=;
+        b=N+7qVoEhmyo9XNH4G6f/mEMbHGvKiluPKMIXdhsx3uVkkkP+bnnyKhENrpNifwbzZ2
+         Mt75bT4vKys9TOuHdiSbE4F1zhiZie6WsI5SdGSIInEgX8CQdfcjeWxacPMF62hQROHm
+         NAyXre10TEbfYGVGOPMONQomHx65e7lsYnqlmr/TqeaUDPTawUqFyay0OM8r7BlFt4Xt
+         AZishyLMjk/21HczguNT9mzABSQcetD2rIGFTXP6UtrYrH/5cIe2KsI8b8oz+AFfkCvJ
+         fr4+UhAzfH969gYHYkvx9C0MvpknfQoiaYf97k7yuF/go7CEix/Ic4aJtEU9o0t7OPcW
+         mK2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="U/EifyN5";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OmWPI53S;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o21si194546qtl.201.2020.04.06.10.48.02
+        by mx.google.com with ESMTPS id r1si326303qvv.214.2020.04.06.10.50.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Apr 2020 10:48:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Apr 2020 10:50:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="U/EifyN5";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35844 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OmWPI53S;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:35860 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jLVqs-0001KC-Ad
-	for alex.bennee@linaro.org; Mon, 06 Apr 2020 13:48:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35601)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jLVso-0003Vw-2t
+	for alex.bennee@linaro.org; Mon, 06 Apr 2020 13:50:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35771)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jLVqD-00015K-Cv
- for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:47:26 -0400
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jLVqk-0001TT-2i
+ for qemu-devel@nongnu.org; Mon, 06 Apr 2020 13:47:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jLVq4-0000aQ-OK
- for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:47:15 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:57848
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jLVq4-0000Yo-GH
- for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:47:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1586195231;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BH2VYTUXcsfl/0dH3y012NaqwkbVBg2RcLAh0syExwQ=;
- b=U/EifyN5xUgZtW3pu9AHEWZqdi5Xv9yq4iKCiaC/W9powd7XiruDGSRhGsMgp3sTJdv41Q
- OufbWToPVS8UEHy9iQc+K3+P2YALK/uPZGFgYP8hFMXO6TXwiaJvBJ6kuo9hPTGbAElew8
- ksqq92WB2ESa97rfi1PQWh6G8FTUgns=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-1-Tht1hExuNwSFpKHzHN3zDw-1; Mon, 06 Apr 2020 13:47:07 -0400
-X-MC-Unique: Tht1hExuNwSFpKHzHN3zDw-1
-Received: by mail-wm1-f69.google.com with SMTP id r8so44509wmn.1
- for <qemu-arm@nongnu.org>; Mon, 06 Apr 2020 10:47:06 -0700 (PDT)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jLVqi-0001Ru-09
+ for qemu-devel@nongnu.org; Mon, 06 Apr 2020 13:47:53 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:52096)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jLVqh-0001Qf-Qj; Mon, 06 Apr 2020 13:47:51 -0400
+Received: by mail-wm1-x343.google.com with SMTP id z7so300433wmk.1;
+ Mon, 06 Apr 2020 10:47:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=SEX/nwZgTPc5n/w+lMa0+UqvNUZKOIm8zzduq8bu1fA=;
+ b=OmWPI53SVitm/Hc/eeQ4R7pbBNgpOgA4UffgmeF40nLceZUObiufYQ4edn2Csv/01G
+ iS4p9aAQs7JpusZEYNa9VfrlcxEumFLsC4n4mcpyQ1jVMx6wfsjanzLHMhMycZHbm3d7
+ pzv6l1VrPgeXx0n09ug9D+VxoK7lspWknUSxKSww9yfXAyDu0+d5qEhjfZC6giUDjE4S
+ 9dOnsgP3UiPUDN+oh3j4CrqClpcbDxhQtBfvWqGgJlBBe5AwGdmDwxtX+L7e3fBmxy6B
+ b9EYAOQ5AOYMorNYw6quJoJuaYwg1yIS8V07LP3cLZbgR4u/i29sMbckoLHF4NZTxpTV
+ S7Xw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=YKe0BgM0CmuS/l7Co2UJ4kTaHPz04qaQEvypXhdFiFE=;
- b=ua3kMdcOJ6XXYb8qmb2gY5SwewXwSCxSBW0xTClxifPUdGxaFQ6ShELs3PIwb2dgp1
- Zj0NEV4rBKxcDMh8ImNaheozSFy19AmZfC+kwlqG0Gp3cOut5dh/swtkKlCVC4A1fiuv
- Fp8wK1Dv+ls5xNouNGeln62nM16cB+vvp0vlFfi4dWpJzXS7NJnYv6Y+fgyIB31wbvbQ
- jSxPU+jhd0gVVUgfq5w3uBc0J0AmH/hQ7AwWlRKSqbV3Yjpicc39mkNYSAfUS5oB2VYL
- EfjvQMkO8CmS0Z0z6wx9n3rtYjcawmTgOCgE0Km9jmWqmFEmHCsE9GFj+2SrEmzataqr
- 56nQ==
-X-Gm-Message-State: AGi0PubI9nEiHk0h9PVl109LAdq+LfpsvgcrC6OlaLTXB7xcaBnLRbuU
- RRxQUve7QuUnvJ9OOdnHBC3hrK3CXqqTKRWHPc+fFNT+0OErHAm7xNXtpN2rbULvT6MDAxhC0WP
- rK9fCEzeEeTdG
-X-Received: by 2002:a1c:dc0a:: with SMTP id t10mr454865wmg.113.1586195226075; 
- Mon, 06 Apr 2020 10:47:06 -0700 (PDT)
-X-Received: by 2002:a1c:dc0a:: with SMTP id t10mr454814wmg.113.1586195225719; 
- Mon, 06 Apr 2020 10:47:05 -0700 (PDT)
-Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net.
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=SEX/nwZgTPc5n/w+lMa0+UqvNUZKOIm8zzduq8bu1fA=;
+ b=NGT4lSxRnNTeswsaU8M10XDac/soA8IS2sX2bI7W2cMOO37/rA6U32QzNNVNq/QxgF
+ U6uN25DpLn7nwEqek5LX+479MIMwu8JLo5B5818PjPrhK7P4JF9sVM0o8LOVK3cj7Gbb
+ MDOkom/20IpbgmBYK7c1/pgH4ujRviHz3rEF4Zv8EJyqn22ctid88tI1Lnpo9Empb0yf
+ 9MwxdIiI13N/vKDqTFt4sj5u7Cseq6fcZBuR4gaxLhYvr94b9WFHwO5IYVIgm3qjQeFe
+ Nng2OhFhfzGgOpfh0cwlLlQNofH1NqpbFuBr/K3pnDSsUUpDxfsznAVZ9VDX/AiFBrSQ
+ oQYQ==
+X-Gm-Message-State: AGi0PuYmt/nUMOj+Pnl6pZwL/4VEBuk5jOMZ9sIJCCN1IM/isc1nTOOF
+ ne0t/FXxhkFbDw9KnW0BwhB6QRAidIk=
+X-Received: by 2002:a1c:dfc6:: with SMTP id w189mr497008wmg.180.1586195270273; 
+ Mon, 06 Apr 2020 10:47:50 -0700 (PDT)
+Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id o67sm398413wmo.5.2020.04.06.10.47.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Apr 2020 10:47:04 -0700 (PDT)
-Subject: Re: [PATCH-for-5.0 00/12] hw: Add missing error-propagation code
-To: Stefan Hajnoczi <stefanha@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <20200325191830.16553-1-f4bug@amsat.org>
- <CAAdtpL7rC1u=B-xW+ZbrRbpSMKvGx0kq_hug1J9-cxx6NgJR1Q@mail.gmail.com>
- <20200330092127.GE73285@stefanha-x1.localdomain>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <22fd27d1-6d22-c91d-716f-6518a062dd21@redhat.com>
-Date: Mon, 6 Apr 2020 19:47:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ by smtp.gmail.com with ESMTPSA id a67sm364880wmc.30.2020.04.06.10.47.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 06 Apr 2020 10:47:49 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>
+Subject: [PATCH-for-5.1 v2 03/54] hw/arm/allwinner-a10: Move some code from
+ realize() to init()
+Date: Mon,  6 Apr 2020 19:46:52 +0200
+Message-Id: <20200406174743.16956-4-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200406174743.16956-1-f4bug@amsat.org>
+References: <20200406174743.16956-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20200330092127.GE73285@stefanha-x1.localdomain>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::343
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paul Burton <pburton@wavecomp.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alistair Francis <Alistair.Francis@wdc.com>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Richard Henderson <rth@twiddle.net>, Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- "qemu-ppc@nongnu.org list:PowerPC" <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: f+1388+urMvO
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ "open list:Allwinner-a10" <qemu-arm@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nURlkhKuMD4V
 
-On 3/30/20 11:21 AM, Stefan Hajnoczi wrote:
-> On Wed, Mar 25, 2020 at 08:20:49PM +0100, Philippe Mathieu-Daud=E9 wrote:
->> On Wed, Mar 25, 2020 at 8:18 PM Philippe Mathieu-Daud=E9 <f4bug@amsat.or=
-g> wrote:
->>>
->>> This series is inspired of Peter fix:
->>> "hw/arm/xlnx-zynqmp.c: fix some error-handling code"
->>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg691636.html
->>>
->>> Add a cocci script to fix the other places.
->>>
->>> Based-on: <20200324134947.15384-1-peter.maydell@linaro.org>
->>>
->>> Philippe Mathieu-Daud=3DC3=3DA9 (12):
->>
->> Hmm is that a git-publish bug?
->=20
-> Please run git-publish once more on the same branch and inspect the
-> $TMPDIR/0000-cover-letter.patch email in an editor when git-publish
-> prints "Stopping so you can inspect the patch emails:".
->=20
-> It would be interesting to see how your name is formatted, as well as
-> the MIME Content-Type and Content-Transfer-Encoding headers.
+Coccinelle reported:
 
-Content-Type: text/plain; charset=3D"utf-8"
+  $ spatch ... --timeout 60 --sp-file \
+    scripts/coccinelle/simplify-init-realize-error_propagate.cocci
+  HANDLING: ./hw/arm/allwinner-a10.c
+  >>> possible moves from aw_a10_init() to aw_a10_realize() in ./hw/arm/allwinner-a10.c:77
 
-Content-Transfer-Encoding: quoted-printable
+Move the calls using &error_fatal which don't depend of input
+updated before realize() to init().
 
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/arm/allwinner-a10.c | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
 
-Philippe Mathieu-Daud=3DC3=3DA9 (12):
-
-
->=20
-> This information can be compared to the final email sent to the list
-> and/or received by the mailing list.
->=20
-> Stefan
->=20
+diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+index 62a67a3e1a..f41395734a 100644
+--- a/hw/arm/allwinner-a10.c
++++ b/hw/arm/allwinner-a10.c
+@@ -60,10 +60,18 @@ static void aw_a10_init(Object *obj)
+         int i;
+ 
+         for (i = 0; i < AW_A10_NUM_USB; i++) {
++            char bus[16];
++
+             sysbus_init_child_obj(obj, "ehci[*]", OBJECT(&s->ehci[i]),
+                                   sizeof(s->ehci[i]), TYPE_PLATFORM_EHCI);
+             sysbus_init_child_obj(obj, "ohci[*]", OBJECT(&s->ohci[i]),
+                                   sizeof(s->ohci[i]), TYPE_SYSBUS_OHCI);
++            object_property_set_bool(OBJECT(&s->ehci[i]), true,
++                                     "companion-enable", &error_fatal);
++
++            sprintf(bus, "usb-bus.%d", i);
++            object_property_set_str(OBJECT(&s->ohci[i]), bus, "masterbus",
++                                    &error_fatal);
+         }
+     }
+ 
+@@ -72,6 +80,11 @@ static void aw_a10_init(Object *obj)
+ 
+     sysbus_init_child_obj(obj, "rtc", &s->rtc, sizeof(s->rtc),
+                           TYPE_AW_RTC_SUN4I);
++
++    memory_region_init_ram(&s->sram_a, obj, "sram A", 48 * KiB,
++                           &error_fatal);
++    memory_region_add_subregion(get_system_memory(), 0x00000000, &s->sram_a);
++    create_unimplemented_device("a10-sram-ctrl", 0x01c00000, 4 * KiB);
+ }
+ 
+ static void aw_a10_realize(DeviceState *dev, Error **errp)
+@@ -113,11 +126,6 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(sysbusdev, 4, qdev_get_gpio_in(dev, 67));
+     sysbus_connect_irq(sysbusdev, 5, qdev_get_gpio_in(dev, 68));
+ 
+-    memory_region_init_ram(&s->sram_a, OBJECT(dev), "sram A", 48 * KiB,
+-                           &error_fatal);
+-    memory_region_add_subregion(get_system_memory(), 0x00000000, &s->sram_a);
+-    create_unimplemented_device("a10-sram-ctrl", 0x01c00000, 4 * KiB);
+-
+     /* FIXME use qdev NIC properties instead of nd_table[] */
+     if (nd_table[0].used) {
+         qemu_check_nic_model(&nd_table[0], TYPE_AW_EMAC);
+@@ -149,12 +157,6 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+         int i;
+ 
+         for (i = 0; i < AW_A10_NUM_USB; i++) {
+-            char bus[16];
+-
+-            sprintf(bus, "usb-bus.%d", i);
+-
+-            object_property_set_bool(OBJECT(&s->ehci[i]), true,
+-                                     "companion-enable", &error_fatal);
+             object_property_set_bool(OBJECT(&s->ehci[i]), true, "realized",
+                                      &error_fatal);
+             sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
+@@ -162,8 +164,6 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+             sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
+                                qdev_get_gpio_in(dev, 39 + i));
+ 
+-            object_property_set_str(OBJECT(&s->ohci[i]), bus, "masterbus",
+-                                    &error_fatal);
+             object_property_set_bool(OBJECT(&s->ohci[i]), true, "realized",
+                                      &error_fatal);
+             sysbus_mmio_map(SYS_BUS_DEVICE(&s->ohci[i]), 0,
+-- 
+2.21.1
 

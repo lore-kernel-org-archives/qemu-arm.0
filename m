@@ -1,74 +1,121 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp3994237lfi;
-        Mon, 6 Apr 2020 06:53:45 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIpKjpLMaB/HROuadBh3nUMtFUEAeHk49SzCydxJ3uMoZCMP/e+eBTZLcgN5X5FQ83pqwEV
-X-Received: by 2002:a05:6214:12c1:: with SMTP id s1mr20320606qvv.150.1586181225636;
-        Mon, 06 Apr 2020 06:53:45 -0700 (PDT)
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4235703lfi;
+        Mon, 6 Apr 2020 10:48:03 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJG18TtTuXFHjgMYf4DhPiMa4sLPTDcwRsLvz6deVKtA5V1W9wjaKgHUwVsNBWOmgrC4v52
+X-Received: by 2002:a0c:a2c5:: with SMTP id g63mr872382qva.114.1586195282877;
+        Mon, 06 Apr 2020 10:48:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586195282; cv=none;
+        d=google.com; s=arc-20160816;
+        b=IjqxtvmXAOi2obM1xIDM3EdWMaxqY6iri1sQ0bJ9h7f5klLU0LTIqU24eMElEQ2Tyo
+         GtWM8QUvqFcz/E4MpsemrDfjzuMlqRgxLTiiDfoNwmZkNDlXpS9Ijka4BF9C0TXxH8O8
+         Q3FA+ibLKMtSC8MJMhIC2YC8xyjLdIpS3qEb0nLZX8esuA0iFYpJjsIgmS0Svw2s55Je
+         Co1/L6rbiEUjg/4R4zDnNp4BbFnExWzwd1xyfTg28qPVUhtAKdju8m9srQ2N9o8h2CXJ
+         afzGj+PznQGLf6KHlcJeE5DovMVKOHzGMzqW/lk4YUpL+DNhyYQkXvW0J0L+fdLP7SSn
+         tqvw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=BH2VYTUXcsfl/0dH3y012NaqwkbVBg2RcLAh0syExwQ=;
+        b=gikvlufjFSbgaGKbN1hsHt6VfgbqIqwachdHmCL5DacG3qNUIlLJ1Npnv93mAtNpkc
+         JxbCbTbvuHvmhFOVE/IMi7xr3MElUKcZxUn2s/q3CqfIY0PAyizEfkPwqmYC3GckEupj
+         ui17UfcLK6hmuPg4A8zArVzb87HB40LnI7aBjIRnkHio0HJ3s7mDhOedpZPnFfFiX0aJ
+         XZhYyKXyrfhfethdWApxXkygD6Gd09FG8KZOMPBOuyFECgSLM1prbphD/GGrMfT3M3Fr
+         6BU4mGawZM+m4Ss0YNeAC8y9xJJbppLOiwi4clk3ld4D50lugzMA7UUbsiuz/x6CcAJP
+         ymNw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="U/EifyN5";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7si11086556qkj.195.2020.04.06.06.53.45
+        by mx.google.com with ESMTPS id o21si194546qtl.201.2020.04.06.10.48.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Apr 2020 06:53:45 -0700 (PDT)
+        Mon, 06 Apr 2020 10:48:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=6f1goiF8;
-       arc=fail (body hash mismatch);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60476 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="U/EifyN5";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35844 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jLSC7-00040U-V6
-	for alex.bennee@linaro.org; Mon, 06 Apr 2020 09:53:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53993)
+	id 1jLVqs-0001KC-Ad
+	for alex.bennee@linaro.org; Mon, 06 Apr 2020 13:48:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35601)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1jLSBg-0003wj-4P
- for qemu-arm@nongnu.org; Mon, 06 Apr 2020 09:53:17 -0400
+ (envelope-from <philmd@redhat.com>) id 1jLVqD-00015K-Cv
+ for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:47:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1jLSBe-00022Y-E5
- for qemu-arm@nongnu.org; Mon, 06 Apr 2020 09:53:15 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:56966)
+ (envelope-from <philmd@redhat.com>) id 1jLVq4-0000aQ-OK
+ for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:47:15 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:57848
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1jLSBd-00021X-RP; Mon, 06 Apr 2020 09:53:14 -0400
-Received: from crumble.bar.greensocs.com (unknown [172.17.10.14])
- by beetle.greensocs.com (Postfix) with ESMTPS id 1F42496EF0;
- Mon,  6 Apr 2020 13:53:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1586181190;
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jLVq4-0000Yo-GH
+ for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:47:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1586195231;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=t/xyHYq5tpxUxWZ+lbSoh4xNSdXCZMO0BrX0rs1uVWc=;
- b=6f1goiF8BHPPODjikXaLkwG/dSCcSRoQ/jRhuONsS3uCrS6GAcSZhDnlzuq5oqnEeEktkl
- 0o7b3Y94t813FqqxNnwCxMGFQTlesWrWfxkOxbw01mXa2VZzIPnomqOYj5zdR88V41Iuzo
- V48w9S+ZC6GaQHwqTNbv33xWrr3r+do=
-From: Damien Hedde <damien.hedde@greensocs.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v9 0/9] Clock framework API
-Date: Mon,  6 Apr 2020 15:52:42 +0200
-Message-Id: <20200406135251.157596-1-damien.hedde@greensocs.com>
-X-Mailer: git-send-email 2.26.0
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=BH2VYTUXcsfl/0dH3y012NaqwkbVBg2RcLAh0syExwQ=;
+ b=U/EifyN5xUgZtW3pu9AHEWZqdi5Xv9yq4iKCiaC/W9powd7XiruDGSRhGsMgp3sTJdv41Q
+ OufbWToPVS8UEHy9iQc+K3+P2YALK/uPZGFgYP8hFMXO6TXwiaJvBJ6kuo9hPTGbAElew8
+ ksqq92WB2ESa97rfi1PQWh6G8FTUgns=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-1-Tht1hExuNwSFpKHzHN3zDw-1; Mon, 06 Apr 2020 13:47:07 -0400
+X-MC-Unique: Tht1hExuNwSFpKHzHN3zDw-1
+Received: by mail-wm1-f69.google.com with SMTP id r8so44509wmn.1
+ for <qemu-arm@nongnu.org>; Mon, 06 Apr 2020 10:47:06 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=YKe0BgM0CmuS/l7Co2UJ4kTaHPz04qaQEvypXhdFiFE=;
+ b=ua3kMdcOJ6XXYb8qmb2gY5SwewXwSCxSBW0xTClxifPUdGxaFQ6ShELs3PIwb2dgp1
+ Zj0NEV4rBKxcDMh8ImNaheozSFy19AmZfC+kwlqG0Gp3cOut5dh/swtkKlCVC4A1fiuv
+ Fp8wK1Dv+ls5xNouNGeln62nM16cB+vvp0vlFfi4dWpJzXS7NJnYv6Y+fgyIB31wbvbQ
+ jSxPU+jhd0gVVUgfq5w3uBc0J0AmH/hQ7AwWlRKSqbV3Yjpicc39mkNYSAfUS5oB2VYL
+ EfjvQMkO8CmS0Z0z6wx9n3rtYjcawmTgOCgE0Km9jmWqmFEmHCsE9GFj+2SrEmzataqr
+ 56nQ==
+X-Gm-Message-State: AGi0PubI9nEiHk0h9PVl109LAdq+LfpsvgcrC6OlaLTXB7xcaBnLRbuU
+ RRxQUve7QuUnvJ9OOdnHBC3hrK3CXqqTKRWHPc+fFNT+0OErHAm7xNXtpN2rbULvT6MDAxhC0WP
+ rK9fCEzeEeTdG
+X-Received: by 2002:a1c:dc0a:: with SMTP id t10mr454865wmg.113.1586195226075; 
+ Mon, 06 Apr 2020 10:47:06 -0700 (PDT)
+X-Received: by 2002:a1c:dc0a:: with SMTP id t10mr454814wmg.113.1586195225719; 
+ Mon, 06 Apr 2020 10:47:05 -0700 (PDT)
+Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net.
+ [83.42.57.116])
+ by smtp.gmail.com with ESMTPSA id o67sm398413wmo.5.2020.04.06.10.47.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 06 Apr 2020 10:47:04 -0700 (PDT)
+Subject: Re: [PATCH-for-5.0 00/12] hw: Add missing error-propagation code
+To: Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <20200325191830.16553-1-f4bug@amsat.org>
+ <CAAdtpL7rC1u=B-xW+ZbrRbpSMKvGx0kq_hug1J9-cxx6NgJR1Q@mail.gmail.com>
+ <20200330092127.GE73285@stefanha-x1.localdomain>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <22fd27d1-6d22-c91d-716f-6518a062dd21@redhat.com>
+Date: Mon, 6 Apr 2020 19:47:00 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1586181190;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=t/xyHYq5tpxUxWZ+lbSoh4xNSdXCZMO0BrX0rs1uVWc=;
- b=mXl7CM4/KMxBXE0wwrUYtiY20yxhO/DlN3vcXUJmTm+cBH4a1hGNrH9fBCVhC5AHmtjEyl
- CvCSKh2bhLqI4bCMwYn+reYolDuPF8tOEeP6QROkVLDQRoUewT83dtcoIvNv3ZKbQCzs3s
- X/IV1nTRV1Ed1Kq3ICbFYiRKuBYpluo=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1586181190; a=rsa-sha256; cv=none;
- b=7SR0uh/QQVEwLtuWRTpPt7Rkk2AeYh2LhhU4eWjSoYNJ8rGZmB7rNOeHtRv+ySLRFX7sU4
- iDxG8ZwPc8LRcAd/p//LkH/HpnsULvBPElKeI4rieq+K9Pv1DcduUivo6tuswC6rnVxqCt
- BpKBm9PrR3PYurjUCvtLliDJsKttFYE=
-ARC-Authentication-Results: i=1;
-	beetle.greensocs.com;
-	none
+In-Reply-To: <20200330092127.GE73285@stefanha-x1.localdomain>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 5.135.226.135
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -80,111 +127,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>, peter.maydell@linaro.org,
- berrange@redhat.com, ehabkost@redhat.com, pbonzini@redhat.com,
- alistair@alistair23.me, mark.burton@greensocs.com, qemu-arm@nongnu.org,
- marcandre.lureau@redhat.com, philmd@redhat.com
+Cc: Paul Burton <pburton@wavecomp.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Richard Henderson <rth@twiddle.net>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ "qemu-ppc@nongnu.org list:PowerPC" <qemu-ppc@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3NtMtgV23VaO
+X-TUID: f+1388+urMvO
 
-Hi all,
+On 3/30/20 11:21 AM, Stefan Hajnoczi wrote:
+> On Wed, Mar 25, 2020 at 08:20:49PM +0100, Philippe Mathieu-Daud=E9 wrote:
+>> On Wed, Mar 25, 2020 at 8:18 PM Philippe Mathieu-Daud=E9 <f4bug@amsat.or=
+g> wrote:
+>>>
+>>> This series is inspired of Peter fix:
+>>> "hw/arm/xlnx-zynqmp.c: fix some error-handling code"
+>>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg691636.html
+>>>
+>>> Add a cocci script to fix the other places.
+>>>
+>>> Based-on: <20200324134947.15384-1-peter.maydell@linaro.org>
+>>>
+>>> Philippe Mathieu-Daud=3DC3=3DA9 (12):
+>>
+>> Hmm is that a git-publish bug?
+>=20
+> Please run git-publish once more on the same branch and inspect the
+> $TMPDIR/0000-cover-letter.patch email in an editor when git-publish
+> prints "Stopping so you can inspect the patch emails:".
+>=20
+> It would be interesting to see how your name is formatted, as well as
+> the MIME Content-Type and Content-Transfer-Encoding headers.
 
-The series has now been fully reviewed and is ready to be merged
-(obviously not for 5.0). I did this v9 to fix the small typos
-Alistair spotted in the doc. I've also rebased the series on master.
+Content-Type: text/plain; charset=3D"utf-8"
 
-This series aims to add a way to model clock distribution in qemu.
-The proposed objet and qdev API allows to model the clock tree of
-a platform allowing us to inspect clock configuration and detect
-problems such as disabled clock or bad configured pll.
+Content-Transfer-Encoding: quoted-printable
 
-Regarding the internal represention. The precision is huge so that
-it is possible (in the future) to somehow connect a ptimer with a
-Clock with no loss of precision.
-The consequence is that we have a ~4seconds period upper bound only.
-Alternatives, allowing us to keep this precision, are to use a
-floating point or to extend the integer.
 
-The added clock api is very similar the the GPIO API for devices. We
-can add input and output and connect them together.
+Philippe Mathieu-Daud=3DC3=3DA9 (12):
 
-Now that ressettable API is merged, the clock tree is properly
-initialized during the machine reset.
-I've tested this patchset running Xilinx's Linux on the xilinx-zynq-a9
-machine. Clocks are correctly updated and we ends up with a configured
-baudrate of 115601 on the console uart (for a theoretical 115200)
-which is nice. "cadence_uart*" and "clock*" traces can be enabled to
-see what's going on in this platform.
 
-Any comments and suggestions are welcomed.
-
-Damien
-
-The patches are organised as follows:
-+ Patches 1 to 4 adds the clock support in qemu
-+ Patch 5 adds some documentation in docs/devel
-+ Patches 6 to 8 adds the uart's clocks to the xilinx_zynq platform
-  as an example for this framework. It updates the zynq's slcr clock
-  controller, the cadence_uart device, and the zynq toplevel platform.
-+ Patch 9 adds clock info to monitor "info qtree" command
-
-Changes since v8:
-https://lists.gnu.org/archive/html/qemu-devel/2020-02/msg07039.html
- - typos in patch 5 (Alistair)
-
-Changes since v7:
-https://lists.gnu.org/archive/html/qemu-devel/2020-02/msg06451.html
- - rst errors in doc
- - Alistair's comments on patch 1 and 3
-
-Changes since v6:
-https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg00599.html
- - switch from frequency to period based clock state
- - single Clock type (no more ClockIn and ClockOut)
- - doc converted in rst format (Peter)
- - various fixes (Peter and Philippe)
- - better migration support for zynq devices (Peter)
-
-Thanks to the Xilinx QEMU team who sponsored this development.
-
-Damien Hedde (9):
-  hw/core/clock: introduce clock object
-  hw/core/clock-vmstate: define a vmstate entry for clock state
-  qdev: add clock input&output support to devices.
-  qdev-clock: introduce an init array to ease the device construction
-  docs/clocks: add device's clock documentation
-  hw/misc/zynq_slcr: add clock generation for uarts
-  hw/char/cadence_uart: add clock support
-  hw/arm/xilinx_zynq: connect uart clocks to slcr
-  qdev-monitor: print the device's clock with info qtree
-
- docs/devel/clocks.rst          | 360 +++++++++++++++++++++++++++++++++
- docs/devel/index.rst           |   1 +
- include/hw/char/cadence_uart.h |   1 +
- include/hw/clock.h             | 225 +++++++++++++++++++++
- include/hw/qdev-clock.h        | 159 +++++++++++++++
- include/hw/qdev-core.h         |  12 ++
- hw/arm/xilinx_zynq.c           |  57 +++++-
- hw/char/cadence_uart.c         |  73 ++++++-
- hw/core/clock-vmstate.c        |  25 +++
- hw/core/clock.c                | 130 ++++++++++++
- hw/core/qdev-clock.c           | 185 +++++++++++++++++
- hw/core/qdev.c                 |  12 ++
- hw/misc/zynq_slcr.c            | 172 +++++++++++++++-
- qdev-monitor.c                 |   9 +
- hw/char/trace-events           |   3 +
- hw/core/Makefile.objs          |   2 +
- hw/core/trace-events           |   7 +
- tests/Makefile.include         |   1 +
- 18 files changed, 1412 insertions(+), 22 deletions(-)
- create mode 100644 docs/devel/clocks.rst
- create mode 100644 include/hw/clock.h
- create mode 100644 include/hw/qdev-clock.h
- create mode 100644 hw/core/clock-vmstate.c
- create mode 100644 hw/core/clock.c
- create mode 100644 hw/core/qdev-clock.c
-
---=20
-2.26.0
+>=20
+> This information can be compared to the final email sent to the list
+> and/or received by the mailing list.
+>=20
+> Stefan
+>=20
 

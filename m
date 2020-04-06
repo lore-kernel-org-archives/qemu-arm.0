@@ -1,99 +1,100 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4239962lfi;
-        Mon, 6 Apr 2020 10:52:18 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJx1VeyqJQhjNmbq9R4GqATXG/7ax1pQC/ae56zH1FgZEK3Z8Ddv+WqE65xk5TqG4YjlIpq
-X-Received: by 2002:a37:bd41:: with SMTP id n62mr21878089qkf.127.1586195538131;
-        Mon, 06 Apr 2020 10:52:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586195538; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4240182lfi;
+        Mon, 6 Apr 2020 10:52:31 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKeavJRjMnYHcOT/Zfi5khKIgakKVBGwJzZflmOYbQfKVQyscSczlS/PqooF4BFyCU1nZ1Y
+X-Received: by 2002:a37:7c81:: with SMTP id x123mr22378400qkc.287.1586195551070;
+        Mon, 06 Apr 2020 10:52:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586195551; cv=none;
         d=google.com; s=arc-20160816;
-        b=rdJNkW1lNWSRhUZFMamJ/t9UfT1CPoQ7prE/j4vQ4wTuKqwz5IoX0ubMTry+mGPdtu
-         3TFBMJIXFP8QIbxb+Gt46hf7G8lA6BU31wPEkS1ZQ7nA7AeZL434iAsNaAzVTe95/00e
-         OBuS3Qh02US+ZBt70+JYogV/hmDmfaIXeP7T+/v8ULR4nnL3ABfdAbNGZ6g/EVVq81DX
-         +aBALxE7EBl0iskR5DptSfczPP+5DSdYzs25s61xHcjuqCN3K44YiKygkDrOlfhfiJIR
-         +sI/YM8mvscoV7xsanzgHD8dhcN3VjZEaR33BXGFsUBlGW7OB1P/lmoUfv2UAqr2D/f8
-         qJSw==
+        b=Mo2x5pqSFZ7CHEJxQCyceHW1Q15Z7PLD+fZns05irheDybKG1dQys7wOIFpmYk9/2h
+         SpLH/FqQasP1LeY8opv0ZE6YaH86wT7tMaYAKCNNa7yCYIyp/rR/pAPItvEUHTyAc4jF
+         768l6+X72aUfmiMrBxQjQ8vNZUG9IUYxekeNs68SqqWlTI+KWq0kz+qXwEWeFsT4gy/B
+         b8FQ6LkH2U+Xg3fUHkIkjLKYM2aDDxMXE/YS4IhGc9U88DBEGFu8GPAr8HHmq0LhGP5j
+         qBTFFLTOp9G+YEYCCzOdrqF0BdY3pE5eC1e23psU+5byvQe1Rlv1h6YLG7MhPzKmrci5
+         niLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=zYpWb46Zb3WjHhWYjAhvTjDn7e4H1J5r3AnlR5BkDdA=;
-        b=P+4LxSxdrw1OPJsgegoLJcdMfN0c1zNaVCFUAoUXvxNqDW0T5kiS3RiviRSZB9HJE7
-         ZPZqsnqseBUd25leC3BbscxZCZZiuxC7B16lMwbeIakp6fc1BA5FdmnkizPXsvERrUE3
-         Fq/rD9vXzdpG2YZXgQU4GCL0v7uHmlZT9V3gy7A1XwywzP9cHU7c24IUy03REVwSATWB
-         JixvO0zx5SgfRekAvYaaQ9oqaNrac/fX7t7WlV09I3VQH2+L/ya8RbOdtwLb3pdEG8Jc
-         yY8gL9A2W34LTDet18IiLSRoqYyk+zw1LeZvAIoeSJnxNXD5Y4TNka8U43lxQh3L2oNp
-         2PHQ==
+        bh=8naS2wy7z7r5ZHMslOR/F6A89KH9g2Da3djfcOFUQbw=;
+        b=ZXEe0yCMaUPrAisagHWHcb7Cz4u/Zdg029CS3Pv8J68lXVSiuRALnffpsuCiFikqVL
+         asjXsvXs5qOZ2zKjjZqQwbmtKSrfxMVfQvlV9bQjpAYslzOrnfBNwYmGjuUYi4SPFwFX
+         smjX3ezqb2zPldYaME0KPbIduxw0km/ISlKGxaiZbcgO3VniFE6jy+vhSqUPPxSUTTZJ
+         UNA2j5CUf49mxbXKLn+WE9aeKshqWLfxEJBNWTJdoS0fFZ37SLj54r+Z3F3XYokSqj07
+         q8NYobw1WZW+gc0jGZfD/8DQPyEVlSMo0xsWyVk6DsE6Yv/cS06iJhuUNYzyQI/s4ayv
+         JrKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=koP1HxoO;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IdbN0w1D;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q75si332780qvq.150.2020.04.06.10.52.17
+        by mx.google.com with ESMTPS id i1si339637qvx.170.2020.04.06.10.52.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Apr 2020 10:52:18 -0700 (PDT)
+        Mon, 06 Apr 2020 10:52:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=koP1HxoO;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IdbN0w1D;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:35910 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35916 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jLVuz-0008Gf-AG
-	for alex.bennee@linaro.org; Mon, 06 Apr 2020 13:52:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35806)
+	id 1jLVvC-00005N-Dm
+	for alex.bennee@linaro.org; Mon, 06 Apr 2020 13:52:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35878)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVql-0001Tt-VC
- for qemu-devel@nongnu.org; Mon, 06 Apr 2020 13:47:57 -0400
+ id 1jLVqr-0001c4-CN
+ for qemu-devel@nongnu.org; Mon, 06 Apr 2020 13:48:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVqk-0001Yx-UZ
- for qemu-devel@nongnu.org; Mon, 06 Apr 2020 13:47:55 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:38917)
+ id 1jLVqp-0001ib-9N
+ for qemu-devel@nongnu.org; Mon, 06 Apr 2020 13:48:01 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:34486)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVqk-0001T2-5T; Mon, 06 Apr 2020 13:47:54 -0400
-Received: by mail-wm1-x336.google.com with SMTP id y20so305235wma.4;
- Mon, 06 Apr 2020 10:47:53 -0700 (PDT)
+ id 1jLVqp-0001eG-2n; Mon, 06 Apr 2020 13:47:59 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id 65so540387wrl.1;
+ Mon, 06 Apr 2020 10:47:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=zYpWb46Zb3WjHhWYjAhvTjDn7e4H1J5r3AnlR5BkDdA=;
- b=koP1HxoOe+IJv1RQ3fCFQAEZSOvw6wlwL/SCXUKZhAeCZZuYMB0jG9um6nWoiuCTo9
- kxIu1UszPucOy1Qkdgr81e/B8udpNOc4uRShRk04JCDMIui6SAUC3tu4tPeCndbYGLLu
- A+vf1TbyyAgPh7nDuWhkecv6YZEo1X+RXRJP8x42fNSi510mH90ALerwaVZd2n8Dwnds
- yZZrkhLm9Iw7Cc0oaUgqR9dWT+WnYD8NLRTNI34x22U7zWat1omWjb2OzRC50kIJnXLy
- P0N6qwCVqTmzZvlKF7GlVcjpxFufJobkI4HLhROsZLiOOz7TmlLtoU2SoDc6NTicQI+D
- b4Hw==
+ bh=8naS2wy7z7r5ZHMslOR/F6A89KH9g2Da3djfcOFUQbw=;
+ b=IdbN0w1DfyFRmQULHoZhV0M1iy18Px58Xe4QSa0+fV5j/PXebmm4iK0aPGHkG7QhHt
+ 75WYS/AlPf9ngiydKa/rTdmkMFYPcVlSzH1fWv7gD9LQnEH6aC6bHjcTdrG76n3QqtCO
+ S2u8cmvqj5Kj2GsWsmTDWKIgAPfJCAoMmjHSO83NsBEY4J+6GJ5riYheTxeLop8pdnH8
+ Her01QU6fJVAJmCa7n4Hwmv5RhVaFQYKcGFpc0ceNNQykLbvLNIJ+ovQJJ/TBan7xOvz
+ 2xB6baViv8MUF2K2wAFaXctRTt+RhKRAKBv75omLW3kPGDlhECyK2MYylMHL/i7CycHP
+ JdsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=zYpWb46Zb3WjHhWYjAhvTjDn7e4H1J5r3AnlR5BkDdA=;
- b=XIdAa94uXkImMK80VktLEbdkGS2tDbq0xgByJnWOZb4a7NjrADz+VGRFKgkJw3tuei
- NkpRjkZ2gsZX+zEzh7FJsy0xfZVa348qKp8PMlt/CKo0YF/13BabUUjy4WxnhcqXlio1
- nw5r86vvffKOC76iE3g3tNgBpeW9QJaY3zLz8QZrZMB0e2mZ5KGZ5mAEDsmBNNq+s3+r
- PRH60i/pJ1a6BXc3dlMPNWIqii+I7eNFWEzXPnuLG+tXL9W430FXZ2w7A1y8PmByq/HY
- tfw3KTNpCQCewsrpb7eYn7Ro8FvRCFjseUeIfm9/I4d+YoTTPgo/zQvNUY/nYXDggaI4
- bzrg==
-X-Gm-Message-State: AGi0PubOYlgQ36RgU9Mk5dtERLHPsGV/oknywZjOZsi+S9BTv7t/R8dC
- B+VDjXAEvL7j/B38tZXu5tNTAVIHTes=
-X-Received: by 2002:a1c:2d41:: with SMTP id t62mr181523wmt.128.1586195271901; 
- Mon, 06 Apr 2020 10:47:51 -0700 (PDT)
+ bh=8naS2wy7z7r5ZHMslOR/F6A89KH9g2Da3djfcOFUQbw=;
+ b=ClYKBfo9iKIctdKAaI6mnPIYsk998QmgkUb2iZkAVwimHgEotLZm2JiRfTgRbZSfjD
+ PGtYXu8FJwTxe7lRAn6r2sfm3AmMxafmzn2ttCEAi4kdT/pW5fv1Vd7FDvYm+o2tyAns
+ qqyWXC7UFLlMVA2gB/m8NHEfUhg1743HMQcT8BxAudpBUoB1uPWmhLx6vgphcF+qLCe/
+ SAeGT4L7X79nzQ/ORrYlAlN9SVbCkDg/y/mcciPD+RI4rhXn3zdnsUoOABDZNdqyyIBb
+ UylXsO7enS59a1MuWuDANNVxANdHuD1wL8hq+4EUUn6VYOkNjyW4gHxxIg/85OegrELp
+ AOGA==
+X-Gm-Message-State: AGi0PuZ9esMufHiZB38FSuxnk48nCVyBHBO+YM/MgryM7CI26NDUbmdS
+ ktyNbi0hLcvr1SoRk6/bYwMKEm7tkCo=
+X-Received: by 2002:adf:a308:: with SMTP id c8mr390720wrb.302.1586195277554;
+ Mon, 06 Apr 2020 10:47:57 -0700 (PDT)
 Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id a67sm364880wmc.30.2020.04.06.10.47.50
+ by smtp.gmail.com with ESMTPSA id a67sm364880wmc.30.2020.04.06.10.47.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Apr 2020 10:47:51 -0700 (PDT)
+ Mon, 06 Apr 2020 10:47:56 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH-for-5.1 v2 04/54] hw/arm/aspeed_ast2600: Simplify use of Error*
-Date: Mon,  6 Apr 2020 19:46:53 +0200
-Message-Id: <20200406174743.16956-5-f4bug@amsat.org>
+Subject: [PATCH-for-5.1 v2 08/54] hw/arm/fsl-imx6: Simplify checks on
+ 'smp_cpus' count
+Date: Mon,  6 Apr 2020 19:46:57 +0200
+Message-Id: <20200406174743.16956-9-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200406174743.16956-1-f4bug@amsat.org>
 References: <20200406174743.16956-1-f4bug@amsat.org>
@@ -103,7 +104,7 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::336
+X-Received-From: 2a00:1450:4864:20::42f
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,72 +118,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+ "open list:SABRELITE / i.MX6" <qemu-arm@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8XkVXwLVtYCk
+X-TUID: PpbKEHejzF4v
 
-Coccinelle reported:
+Coccinelle failed at processing this file:
 
   $ spatch ... --timeout 60 --sp-file \
     scripts/coccinelle/simplify-init-realize-error_propagate.cocci
-  HANDLING: ./hw/arm/aspeed_ast2600.c
-  >>> possible moves from aspeed_soc_ast2600_init() to aspeed_soc_ast2600_realize() in ./hw/arm/aspeed_ast2600.c:243
+  HANDLING: ./hw/arm/fsl-imx6.c
+  Fatal error: exception Coccinelle_modules.Common.Timeout
 
-While reviewing we notice we don't need two different Error*,
-drop the one less used.
+While reviewing we notice the smp_cpus count is already limited
+by MachineClass::max_cpus:
+
+  static void sabrelite_machine_init(MachineClass *mc)
+  {
+      mc->max_cpus = FSL_IMX6_NUM_CPUS;
+      ...
+  }
+
+So remove the check in realize(), but still assert in init().
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/aspeed_ast2600.c | 16 +++++++++++-----
- 1 file changed, 11 insertions(+), 5 deletions(-)
+ hw/arm/fsl-imx6.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 1a869e09b9..b08359f3ef 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -245,7 +245,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index 13f1bf23a6..3d37352b08 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -37,10 +37,12 @@
+ static void fsl_imx6_init(Object *obj)
+ {
+     MachineState *ms = MACHINE(qdev_get_machine());
++    unsigned int smp_cpus = ms->smp.cpus;
+     FslIMX6State *s = FSL_IMX6(obj);
+     char name[NAME_SIZE];
      int i;
-     AspeedSoCState *s = ASPEED_SOC(dev);
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
--    Error *err = NULL, *local_err = NULL;
-+    Error *err = NULL;
-     qemu_irq irq;
  
-     /* IO space */
-@@ -418,9 +418,12 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-             return;
-         }
-         object_property_set_int(OBJECT(&s->spi[i]), 1, "num-cs", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+           return;
-+        }
-         object_property_set_bool(OBJECT(&s->spi[i]), true, "realized",
--                                 &local_err);
--        error_propagate(&err, local_err);
-+                                 &err);
-         if (err) {
-             error_propagate(errp, err);
-             return;
-@@ -472,9 +475,12 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-         qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[i]);
-         object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspeed",
-                                  &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+           return;
-+        }
-         object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "realized",
--                                 &local_err);
--        error_propagate(&err, local_err);
-+                                 &err);
-         if (err) {
-             error_propagate(errp, err);
-            return;
++    assert(smp_cpus <= FSL_IMX6_NUM_CPUS);
+     for (i = 0; i < MIN(ms->smp.cpus, FSL_IMX6_NUM_CPUS); i++) {
+         snprintf(name, NAME_SIZE, "cpu%d", i);
+         object_initialize_child(obj, name, &s->cpu[i], sizeof(s->cpu[i]),
+@@ -121,12 +123,6 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+     Error *err = NULL;
+     unsigned int smp_cpus = ms->smp.cpus;
+ 
+-    if (smp_cpus > FSL_IMX6_NUM_CPUS) {
+-        error_setg(errp, "%s: Only %d CPUs are supported (%d requested)",
+-                   TYPE_FSL_IMX6, FSL_IMX6_NUM_CPUS, smp_cpus);
+-        return;
+-    }
+-
+     for (i = 0; i < smp_cpus; i++) {
+ 
+         /* On uniprocessor, the CBAR is set to 0 */
 -- 
 2.21.1
 

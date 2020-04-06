@@ -1,100 +1,100 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4244948lfi;
-        Mon, 6 Apr 2020 10:57:48 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJ1TF6j91Lg7deFfuxGWQM6ARwtsSUpG3xTpd37qnjM/GgLNHYUY1bikSdCLQp61IdiNM+b
-X-Received: by 2002:a37:8d42:: with SMTP id p63mr22572725qkd.182.1586195868395;
-        Mon, 06 Apr 2020 10:57:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586195868; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4245078lfi;
+        Mon, 6 Apr 2020 10:57:56 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLgL4bOc7Te8pqIvX82BQHARCMeVQVk/6UuxBeoQGljdRbsQpXf1171EZaY67FhE42P8eFC
+X-Received: by 2002:a05:620a:10b1:: with SMTP id h17mr10337017qkk.126.1586195876251;
+        Mon, 06 Apr 2020 10:57:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586195876; cv=none;
         d=google.com; s=arc-20160816;
-        b=i1c3IXPd5gWyU8X5gv6QJSXoStyET0Gmpr/1bKM1LmZl5rWfNDCtM0cZ2IUaX1lKaG
-         MpZ3Q7Hw4Ove/aYcSRzTXJuafsITBYR1v1q09LXM7i6aNo5FplZcug3cg0e5Wh/oSl1t
-         t9Lk5+T2tLYhAgmyPvsmSs4I7rJXXRc1smhYUaM2hlOdSCaVmgcgpdDyeCmlFGJ52iBj
-         mkm2SoRof7iJh/7PuK1i8WNbJJDx1VmT0rbRenIA2Y0TKIzEbAwT2fJJRKwe4nCgva83
-         DLScV1+Gec9tBgEfgjWHHZYg/iOJu0REC5rWJKAiFZz5zgvLd+Ds0BU+snLKc2CC84Qc
-         S9yQ==
+        b=i+AdnXeN2AoJ/YxvQNMGbyleIUQnvM9uDM7bYOlm2a+kB1VBIy2EAW7aZ9oq0vTSR4
+         /x7iKjXmht5H3Tp0l0CKT2624/kpOB+3rKOSyT3Nm/NhjElegLa0Dt1FXkkfDT5gBkVn
+         p4bsEU7nVjsXiAjMomqGdDHdZYHxFlaw6Q0Oq9nna2c1/AzxtUIXh1T6ZKH7dQo4mFXN
+         rJ8rIS2koeuUgmEBy46emCKJ7kKtghzn+6BdWxKCCbeByKSjIdAk2VAtoJT3R6RfJjNU
+         dDBQqT+G2yVnaH/0zUOVAEWsZGz0yARWWAV9fnwUmFt8wllnKFcjNW8WOgVH0lYoHZVS
+         X66Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=cLajudUBTjPPEHDWHNc0MGZvDpG60cDj46wJF9MFpFg=;
-        b=OJdfMkhQIK3AE8Y3aft1ekqLuqs/69IvkLjofWnrxCVJmdivtJrItKm1H3drAohwk4
-         E+E+VdnMlj7uhgcWDCGiVF3vX8oM+F8vYDJMqVc4RpPGcHfNDk4QyDUzXAIFDFYJlKLZ
-         DALYXuE9W/20+ah0FLeBC7XEph2SsdtTwUCuT+8B+R3cCwmXgFklxI59zeFSLUPXxxnl
-         YbSpEpPAP9NEjhxhU8B8wb/SdoJgJ9vI1fYt/D1RARXHANE1qi8kbCsHyOuI0tECqzRs
-         RCvFsSv3PCcIBn8D85rMz6tcElpKuo9G6/Ob/hCbjFWx2lk/fz0M3KaNBqp7O5JqlOBn
-         Zmgw==
+        bh=Cywb3NzU3xTAsl3tlLXZAS+5IRTu4MJbpH6wU0QcRK0=;
+        b=GqE6JAh7XaiWGJ++kgyW30s6V0nlv35GDtfV4aiCnbfvgc1IT2lY6LJPidQm9cGHBm
+         /Lmlj/D0b7amRO8r28Zv9l7T0ht6Ea0L4lW+l15R1CyKUD8I1aHQ0D1VEwTGfC50CJaE
+         kw4pxAOmM8DG6ONrxPruugVBaGzgbC+z3Id2QVegijo6M+Bv1AzAVxB7lHUwPXYOjQQg
+         qddgS0vbopT5xAQ1jetb6JmZNR++89PUOtbrc3xSmlIW32hnCEUG46eW17QAtdUnJiR0
+         ZMUit72u0Go65BYcTDZgql1AWPDaQaa55mqwm3ZV5KIYjwAltwV1RQR20wJGMfpHjFRW
+         r5/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mPn2hMxB;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IzVvpA9m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w20si366576qvu.155.2020.04.06.10.57.48
+        by mx.google.com with ESMTPS id j37si209504qtk.39.2020.04.06.10.57.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Apr 2020 10:57:48 -0700 (PDT)
+        Mon, 06 Apr 2020 10:57:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mPn2hMxB;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IzVvpA9m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:36044 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36052 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jLW0J-0003AO-PO
-	for alex.bennee@linaro.org; Mon, 06 Apr 2020 13:57:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36174)
+	id 1jLW0R-0003ce-M3
+	for alex.bennee@linaro.org; Mon, 06 Apr 2020 13:57:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36184)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVr4-0001z4-Dv
- for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:48:15 -0400
+ id 1jLVr5-0001zw-22
+ for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:48:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVr1-0002m9-UO
- for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:48:13 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:39146)
+ id 1jLVr3-0002nb-EJ
+ for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:48:14 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:33427)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVqx-0002Oh-Vq; Mon, 06 Apr 2020 13:48:08 -0400
-Received: by mail-wr1-x442.google.com with SMTP id p10so493622wrt.6;
- Mon, 06 Apr 2020 10:48:07 -0700 (PDT)
+ id 1jLVr0-0002gW-Mu; Mon, 06 Apr 2020 13:48:10 -0400
+Received: by mail-wm1-x332.google.com with SMTP id g21so582346wmh.0;
+ Mon, 06 Apr 2020 10:48:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=cLajudUBTjPPEHDWHNc0MGZvDpG60cDj46wJF9MFpFg=;
- b=mPn2hMxBiUQws0UYR6Oe4NESYpxvCpxXmuJs+beJFfV83Pl8Pqc2djjTCOaTwqk8t6
- a7wxDDAFDDOloUPL7ywMXu4jV/hGlOSGQ2A3N3FHeGmQMcG1SXkYIt3JCF5I/OMSuKuT
- uCkPKA0WR4Ueu9rKm//UzY3L+cmwSkw0U15BAZkKEId8jG29LFTUWmXeR3TCPyQAyjwH
- qoaJ1B/TISUK1IkiudVLOGJP0ahrbBevURnHGD+SVv6+R4Qawsiq82u75Rpp8Vfe+H+U
- KJoRb0NuOp9SQzIv8A6yYbGoE9JYC8x3mxiOqFyrv5ujo7oFg6d8V5RslC9NAJipZ9T8
- ppYA==
+ bh=Cywb3NzU3xTAsl3tlLXZAS+5IRTu4MJbpH6wU0QcRK0=;
+ b=IzVvpA9m3fMFuR0rzc0GtThCkipYcef0pszA8n1Odu59QjGfSZPI2Y5pk+z+X/G4ZI
+ gBupz8W822SeIX1S1ot3bVU+PzhnRz1VNfqZ51MgzYdYhSHYxlk2qN4Cz0MaM4Reopo6
+ OzSQPrYkFTJvrfgWMXKAzoY07DT8S1FXcCC+eooKRAbmG5TSea1ZtusMn1OGBGjEycET
+ oWsoiyXiAKtPAMMDbLh2/D9q+iY5obH8HfCtcyvB7zJea1cr79ZAt/hzmiTYQpBLR5y9
+ DBeDobrjyFgL6EGnGIb7ftcA57p8sSykb44EnaehaN/oaIEbgrjZf+SkyOaJhcZ1yfOw
+ wIOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=cLajudUBTjPPEHDWHNc0MGZvDpG60cDj46wJF9MFpFg=;
- b=XSTzf9W6O7/mnuD6KpusXSgb878ZoUumwI6kV6anvDjQNIMsX9gZKOmmAaSjgueXQM
- gLy12iIXtIlOe9jWH4iCDHJxkjkxAImgXs6M55Ziv1/NT7fIEUbTT3l8k2ujox1hN3wt
- YCzSO40EGo1MJsPIS9mYXhNFAJuvse1EQZDLa13bFN0GTIG2ZZ6QgGraGOv8rsG0lsIc
- ILuf0zEKSlASQtMo4TAiUvyrw87LdUO9O4cmI/C5bujnxy4ZOaJno/GMpSoUt197wVwp
- Z24K/mNs+4HnM214np2hUx86U9qt++tXMVn5cXXyavkps+3pSeR8jGp/Oo1r16laonuX
- 7ufw==
-X-Gm-Message-State: AGi0PuZswiH+axm9c7sGSZoMHsGFm3ib/K+pEEzSsARzsDhS8VRICo9k
- AO2B/IEu8+EPpXPoCAH7uUg/RG1zGL8=
-X-Received: by 2002:adf:a308:: with SMTP id c8mr391382wrb.302.1586195286691;
- Mon, 06 Apr 2020 10:48:06 -0700 (PDT)
+ bh=Cywb3NzU3xTAsl3tlLXZAS+5IRTu4MJbpH6wU0QcRK0=;
+ b=MbZWLPlmXuWFMSZAuUA8ZUXRUigf9yPx6doXQOQgg44UgHXtlmmKnxob7LzGsnVBHr
+ PsJb0LtaJhEDrKO6/AiKrushFcIpYdcQPqzC2Nu+Vrvj1kK4j15chF8W2cWSITpDThUZ
+ xHmhGRgVy/WHWazhaIjxnT+flCgqMgouEN+J1SDlZe9WtsIGQPkauDBWvgkyNJsTI1Ak
+ QidzD8Z37RWUetg6e/CpmxZWj9rFGTiruGAlTVzF9h7W40anjm4KYHhMEWIzsHR2hXfo
+ fACenKEFRnT0bdLuMYABmwzEeWq6NvcYUx03VnDtTrmaBj5drPJPIiGyYzhwyr7Ds1Os
+ sEzQ==
+X-Gm-Message-State: AGi0PubrHppvtL7NIcre/4FgRL6bzb7kCmMIe+bGx5d52ubCTSZq3xEn
+ y0Ye/DwYcIXl/lzV7GF554FKXy2LHGw=
+X-Received: by 2002:a1c:dfc6:: with SMTP id w189mr498174wmg.180.1586195289478; 
+ Mon, 06 Apr 2020 10:48:09 -0700 (PDT)
 Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id a67sm364880wmc.30.2020.04.06.10.48.05
+ by smtp.gmail.com with ESMTPSA id a67sm364880wmc.30.2020.04.06.10.48.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Apr 2020 10:48:06 -0700 (PDT)
+ Mon, 06 Apr 2020 10:48:08 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH-for-5.1 v2 15/54] hw/arm/xlnx-zynqmp: Split
- xlnx_zynqmp_create_rpu() as init + realize
-Date: Mon,  6 Apr 2020 19:47:04 +0200
-Message-Id: <20200406174743.16956-16-f4bug@amsat.org>
+Subject: [PATCH-for-5.1 v2 17/54] hw/microblaze/xlnx-zynqmp-pmu: Move some
+ code from realize() to init()
+Date: Mon,  6 Apr 2020 19:47:06 +0200
+Message-Id: <20200406174743.16956-18-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200406174743.16956-1-f4bug@amsat.org>
 References: <20200406174743.16956-1-f4bug@amsat.org>
@@ -104,7 +104,7 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::442
+X-Received-From: 2a00:1450:4864:20::332
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,130 +123,94 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  "open list:Xilinx ZynqMP" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6xSjO3YJ2uDQ
+X-TUID: e56wV9CGfbeO
 
-Coccinelle failed at processing this file:
+Coccinelle reported:
 
   $ spatch ... --timeout 60 --sp-file \
     scripts/coccinelle/simplify-init-realize-error_propagate.cocci
-  HANDLING: ./hw/arm/xlnx-zynqmp.c
-  EXN: Coccinelle_modules.Common.Timeout
+  HANDLING: ./hw/microblaze/xlnx-zynqmp-pmu.c
+  >>> possible moves from xlnx_zynqmp_pmu_soc_init() to xlnx_zynqmp_pmu_soc_realize() in ./hw/microblaze/xlnx-zynqmp-pmu.c:79
 
-We are going to manually add the missing propagate_error() calls.
-Some functions can be called at init() time, reducing the need
-to add extra Error checks at realize() time. Split create_rpu()
-in init() and realize().
+Move the calls using &error_abort which don't depend of input
+updated before realize() to init().
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/xlnx-zynqmp.c | 45 +++++++++++++++++++++++++++-----------------
- 1 file changed, 28 insertions(+), 17 deletions(-)
+ hw/microblaze/xlnx-zynqmp-pmu.c | 46 ++++++++++++++++-----------------
+ 1 file changed, 23 insertions(+), 23 deletions(-)
 
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index 43d57fa7de..457057198a 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -173,18 +173,9 @@ static inline int arm_gic_ppi_index(int cpu_nr, int ppi_index)
-     return GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_index;
- }
+diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-pmu.c
+index 028f31894d..2aa602cf85 100644
+--- a/hw/microblaze/xlnx-zynqmp-pmu.c
++++ b/hw/microblaze/xlnx-zynqmp-pmu.c
+@@ -63,24 +63,6 @@ static void xlnx_zynqmp_pmu_soc_init(Object *obj)
  
--static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
--                                   const char *boot_cpu, Error **errp)
-+static void xlnx_zynqmp_rpu_init(XlnxZynqMPState *s, int num_rpus)
- {
--    Error *err = NULL;
-     int i;
--    int num_rpus = MIN(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS,
--                       XLNX_ZYNQMP_NUM_RPU_CPUS);
+     object_initialize_child(obj, "pmu-cpu", &s->cpu, sizeof(s->cpu),
+                             TYPE_MICROBLAZE_CPU, &error_abort, NULL);
 -
--    if (num_rpus <= 0) {
--        /* Don't create rpu-cluster object if there's nothing to put in it */
+-    sysbus_init_child_obj(obj, "intc", &s->intc, sizeof(s->intc),
+-                          TYPE_XLNX_PMU_IO_INTC);
+-
+-    /* Create the IPI device */
+-    for (int i = 0; i < XLNX_ZYNQMP_PMU_NUM_IPIS; i++) {
+-        char *name = g_strdup_printf("ipi%d", i);
+-        sysbus_init_child_obj(obj, name, &s->ipi[i],
+-                              sizeof(XlnxZynqMPIPI), TYPE_XLNX_ZYNQMP_IPI);
+-        g_free(name);
+-    }
+-}
+-
+-static void xlnx_zynqmp_pmu_soc_realize(DeviceState *dev, Error **errp)
+-{
+-    XlnxZynqMPPMUSoCState *s = XLNX_ZYNQMP_PMU_SOC(dev);
+-    Error *err = NULL;
+-
+     object_property_set_uint(OBJECT(&s->cpu), XLNX_ZYNQMP_PMU_ROM_ADDR,
+                              "base-vectors", &error_abort);
+     object_property_set_bool(OBJECT(&s->cpu), true, "use-stack-protection",
+@@ -99,18 +81,36 @@ static void xlnx_zynqmp_pmu_soc_realize(DeviceState *dev, Error **errp)
+     object_property_set_str(OBJECT(&s->cpu), "8.40.b", "version",
+                             &error_abort);
+     object_property_set_uint(OBJECT(&s->cpu), 0, "pvr", &error_abort);
+-    object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
+-    if (err) {
+-        error_propagate(errp, err);
 -        return;
 -    }
  
-     object_initialize_child(OBJECT(s), "rpu-cluster", &s->rpu_cluster,
-                             sizeof(s->rpu_cluster), TYPE_CPU_CLUSTER,
-@@ -192,13 +183,25 @@ static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
-     qdev_prop_set_uint32(DEVICE(&s->rpu_cluster), "cluster-id", 1);
- 
-     for (i = 0; i < num_rpus; i++) {
--        char *name;
--
-         object_initialize_child(OBJECT(&s->rpu_cluster), "rpu-cpu[*]",
-                                 &s->rpu_cpu[i], sizeof(s->rpu_cpu[i]),
-                                 ARM_CPU_TYPE_NAME("cortex-r5f"),
-                                 &error_abort, NULL);
- 
-+        object_property_set_bool(OBJECT(&s->rpu_cpu[i]), true, "reset-hivecs",
-+                                 &error_abort);
++    sysbus_init_child_obj(obj, "intc", &s->intc, sizeof(s->intc),
++                          TYPE_XLNX_PMU_IO_INTC);
+     object_property_set_uint(OBJECT(&s->intc), 0x10, "intc-intr-size",
+                              &error_abort);
+     object_property_set_uint(OBJECT(&s->intc), 0x0, "intc-level-edge",
+                              &error_abort);
+     object_property_set_uint(OBJECT(&s->intc), 0xffff, "intc-positive",
+                              &error_abort);
++
++    /* Create the IPI device */
++    for (int i = 0; i < XLNX_ZYNQMP_PMU_NUM_IPIS; i++) {
++        char *name = g_strdup_printf("ipi%d", i);
++        sysbus_init_child_obj(obj, name, &s->ipi[i],
++                              sizeof(XlnxZynqMPIPI), TYPE_XLNX_ZYNQMP_IPI);
++        g_free(name);
 +    }
 +}
 +
-+static void xlnx_zynqmp_rpu_realize(XlnxZynqMPState *s, int num_rpus,
-+                                    const char *boot_cpu, Error **errp)
++static void xlnx_zynqmp_pmu_soc_realize(DeviceState *dev, Error **errp)
 +{
++    XlnxZynqMPPMUSoCState *s = XLNX_ZYNQMP_PMU_SOC(dev);
 +    Error *err = NULL;
-+    int i;
 +
-+    for (i = 0; i < num_rpus; i++) {
-+        char *name;
-+
-         name = object_get_canonical_path_component(OBJECT(&s->rpu_cpu[i]));
-         if (strcmp(name, boot_cpu)) {
-             /* Secondary CPUs start in PSCI powered-down state */
-@@ -209,8 +212,6 @@ static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
-         }
-         g_free(name);
- 
--        object_property_set_bool(OBJECT(&s->rpu_cpu[i]), true, "reset-hivecs",
--                                 &error_abort);
-         object_property_set_bool(OBJECT(&s->rpu_cpu[i]), true, "realized",
-                                  &err);
-         if (err) {
-@@ -228,6 +229,8 @@ static void xlnx_zynqmp_init(Object *obj)
-     XlnxZynqMPState *s = XLNX_ZYNQMP(obj);
-     int i;
-     int num_apus = MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
-+    int num_rpus = MIN(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS,
-+                       XLNX_ZYNQMP_NUM_RPU_CPUS);
- 
-     object_initialize_child(obj, "apu-cluster", &s->apu_cluster,
-                             sizeof(s->apu_cluster), TYPE_CPU_CLUSTER,
-@@ -290,6 +293,10 @@ static void xlnx_zynqmp_init(Object *obj)
-         sysbus_init_child_obj(obj, "adma[*]", &s->adma[i], sizeof(s->adma[i]),
-                               TYPE_XLNX_ZDMA);
-     }
-+
-+    if (num_rpus > 0) {
-+        xlnx_zynqmp_rpu_init(s, num_rpus);
++    object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
 +    }
- }
- 
- static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-@@ -300,6 +307,8 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-     uint8_t i;
-     uint64_t ram_size;
-     int num_apus = MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
-+    int num_rpus = MIN(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS,
-+                       XLNX_ZYNQMP_NUM_RPU_CPUS);
-     const char *boot_cpu = s->boot_cpu ? s->boot_cpu : "apu-cpu[0]";
-     ram_addr_t ddr_low_size, ddr_high_size;
-     qemu_irq gic_spi[GIC_NUM_SPI_INTR];
-@@ -458,9 +467,11 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-                     "RPUs just use -smp 6.");
-     }
- 
--    xlnx_zynqmp_create_rpu(ms, s, boot_cpu, &err);
--    if (err) {
--        goto out_propagate_error;
-+    if (num_rpus > 0) {
-+        xlnx_zynqmp_rpu_realize(s, num_rpus, boot_cpu, &err);
-+        if (err) {
-+            goto out_propagate_error;
-+        }
-     }
- 
-     if (!s->boot_cpu_ptr) {
++
+     object_property_set_bool(OBJECT(&s->intc), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
 -- 
 2.21.1
 

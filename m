@@ -1,100 +1,100 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4255906lfi;
-        Mon, 6 Apr 2020 11:07:38 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKro8IplQIewua5OLrDhHJ7Prh8E+dvzVy1kuMSG4QS8695cxLSSGc5OmExrWqpBjgBICkc
-X-Received: by 2002:a37:a991:: with SMTP id s139mr15748383qke.34.1586196458060;
-        Mon, 06 Apr 2020 11:07:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586196458; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4256319lfi;
+        Mon, 6 Apr 2020 11:08:00 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJu7CXnB3FNyim5wLSyttl4Gn3YftH2nGjCRuV06m4P7reOzu7H3merdDN3E2tjO/uMvMQj
+X-Received: by 2002:ac8:3550:: with SMTP id z16mr704396qtb.217.1586196480679;
+        Mon, 06 Apr 2020 11:08:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586196480; cv=none;
         d=google.com; s=arc-20160816;
-        b=AZaDe9Dp9VLdEsfX4Ze4ZVnPo/0tfQ80SPm0RWP1UJVRUVG1yVU8rjOgqAerwEV1L6
-         6Q2rTUSs2e4Vt6MPgawTKxYLkY9aBj0TveHjL3+YRdjO9/xkJHTiSymqPvfBmLmAIdga
-         +eI5FBxZfYugnnzi2Atq6qUzxLdKSDJU+yvBeNTruuMPHEnbbQeFu61xH9p1sjnbnAZ3
-         ex0gvzyuSI/e+DLthCFLJ0PhC5ZCnxpFNQv5MGDiLYoI3CZxw2Nq4v/Qn+19mKuwW6sM
-         rO1X226eIg5TbMpUHtnSLb5vnDC9hyuhvw8/eTR+WN2zL1v/T5QEH1UIwTmcbAjrjAjd
-         FgXg==
+        b=yoZ98jwjNfbEe72/vio2wYL8JKsZe+J7ddIpEsji7VLMD3u8dsnuH4/5XhK2w6xWTP
+         Hk1q0vrZQQprxRt/cplgEVURAlgJRxxtZEvVOq8ll+AKRr4dSuQtpDFiCsmlRJA+WENN
+         2Ai6zZYuq8wDaHtGR6bh20TU4rm7NPaMfdVEm6jm7kUOLq8FK0Eprkp6MERnNpT7Y1/v
+         LTCwahkBnJNLCmqtCil+eiz7jDBcJ7u9Y/Pyjm364r/PA1eqgZQhOOyUciyr4v/OfvVI
+         vANfZR/lw1ZIm0ruirrOVB8ikDtSC0ZEQmTcKxULmV+/3D3b2rb2Ymo/ZpGm5VlLexAd
+         l3YQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=pmelmK+74hZzKF1Ju2OEtzPp85pYogzLjVOdCh3WjgU=;
-        b=NUP+8e9Zlv2fIhW7eTm4g66sBjsTgzsgMlAkYAVgzW+biCLhmtdt7GKmtofy/XsUQt
-         03umYolzCEGwc9BzcaznY/WByo/3LVGEU9s12BhIhYFtU2xjawCOHpniphe8roaPScPw
-         BOhCXmIE7Qm3yg6M3SV3FvCDnyK7wL7rmyzTAd9saukSb/teI+sUgyGNwLvLgiwh0QpM
-         NmxWydUF3qVgAUO0QJg3JO1TpxdNbh9CP1bDSfYQ+YrNe/mrkaWJcqMUI+C6jBrmlVtO
-         ZSxHS08sgEloR4Q6YZnL330Velz75Tlhl2Z64PciXOkRDaGuleAqJA37wMbA/XcnVlgX
-         9Dnw==
+        bh=F5/QTF8NoUKx5KsbybkQ+s3UGgYsvC0vkYP7rtWEAYk=;
+        b=VdLUuldqC5apXbyo0ph6e4FFjek0Djuf4Q0uvrl9pxUUxNLWjAV3TGPYWSbp7Qiy9a
+         hN9ilDtjh7H2i6tV9h5++wSMB8x5JFnqDQOuL8cRQ/Tmokp6HCSpw3iOF6zE9tdS2BxN
+         jcLylcn41qtrAL4WFWQinpDstMdCFdDEmDFUtjPkJzpb2Yrl0ebGUDdxDQRaWZcHoIck
+         WhZ7Z39g2Y2GWVrXmemwyhou2Cf2VLidbUGRWj42zgqoL7d5oN+tBBV06So4JJfTDk21
+         2lYZ943TQPDtY6jHlCxDgObxISkdJER5bnzMoUB4wmeejo/g5lMNeYYl/jgcnR6/efis
+         P3OA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jADQD1NQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gvIEB0pi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w6si212440qts.244.2020.04.06.11.07.37
+        by mx.google.com with ESMTPS id r14si387228qvn.1.2020.04.06.11.08.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Apr 2020 11:07:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Apr 2020 11:08:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jADQD1NQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gvIEB0pi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:36236 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36252 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jLW9p-0002B0-Gf
-	for alex.bennee@linaro.org; Mon, 06 Apr 2020 14:07:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36468)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jLWAC-0003Rb-2n
+	for alex.bennee@linaro.org; Mon, 06 Apr 2020 14:08:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36902)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVrK-0002Ms-SB
- for qemu-devel@nongnu.org; Mon, 06 Apr 2020 13:48:31 -0400
+ id 1jLVrm-00035W-ED
+ for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:48:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVrJ-0003Is-Qo
- for qemu-devel@nongnu.org; Mon, 06 Apr 2020 13:48:30 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:55813)
+ id 1jLVrc-0003We-Ht
+ for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:48:58 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:37167)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVrI-0003Gh-8a; Mon, 06 Apr 2020 13:48:29 -0400
-Received: by mail-wm1-x342.google.com with SMTP id e26so277057wmk.5;
- Mon, 06 Apr 2020 10:48:27 -0700 (PDT)
+ id 1jLVrZ-0003Th-89; Mon, 06 Apr 2020 13:48:45 -0400
+Received: by mail-wm1-x341.google.com with SMTP id j19so225358wmi.2;
+ Mon, 06 Apr 2020 10:48:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=pmelmK+74hZzKF1Ju2OEtzPp85pYogzLjVOdCh3WjgU=;
- b=jADQD1NQCGgy4v5kf6eilYBewiHygFXg8eZDnUOFmgGaPOJQT4OmKpe3JUAR9x94Kd
- CKSbRAQea+4v5qTnRL0xOwb+D+XAMmRlAP95nHqpcH399ZVdb395xdlplmyErIY02cbi
- Qc0rNOpqUet33XO/j0TtbXhIFj+7qBB6nwqYoUpBXbtLGND4HyDU6If30J8H0K/aaYzH
- jlxuQx1AScuDaSRqisFNimm9eMbzwyhaVP600Tr+ulCnQlaPyMUp3ZONzlmNxpKGnXJL
- ubko6JEOYsA47FouRu6UgAHr1V88Qp28d3xa//Z29gQqdsL3DaftmBBxM0zCTS4LSy5J
- kmkw==
+ bh=F5/QTF8NoUKx5KsbybkQ+s3UGgYsvC0vkYP7rtWEAYk=;
+ b=gvIEB0pi6HBHmRx29tveqnsdgj+1thhiP4vU0NT2/+oPkh+2mfgQuB3uDO5+ZDruQu
+ 3Yq0h9+Zm8GFqQCT7edQdK2m0BLwvRiPDT5zIHvC3p32d92udfpmcld/YaCOAPZ0qMe4
+ lZrYPxhoDKdFDgE+KmxlcT9XdY2cEBWNam2h7JNgPV5+ogbiLfc2N59og21iNKyS+w79
+ k3tdkUvkFEZ3FOpuDZcAho5YO4K25up1U4LvwE9VzkAXefSUCxLaOmLAlKM8tcxxyPqf
+ 7FbTV7DE9gFSLepFlh3q2ddqg7Zq2fbF7v2J33UC0wKlZ4z5BcR3E3wVcRyXhHx0KGK5
+ yolA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=pmelmK+74hZzKF1Ju2OEtzPp85pYogzLjVOdCh3WjgU=;
- b=RTFrGGYbgQEGmLpGKMMndJBK4hpWXnvwbihv3+1ATgEAOcAeCHDHK+O9rUa28uSOKG
- JuZdu5uI5mz13O8MNtgkblp9FC/ZQhduMzekO/Sbc4qkdBUR8g/GGz9Uvf8zM1rnvgRM
- n8XC7VwWhPvAdWm6E3ItCgv3LcPNFVyfyYNO0Q372W0c2UZ5+oJsDsI9/Kk7xk8UcC1z
- 7pgWOq8zB+WsWGd+pEWNaLyJdxU40OCDw3wkoImDavlVU/eP3EjRBhrNpznhf1hhEa5G
- dGPPFKsynahFSpTn7CPvbyUNROudu6E8JPiSH0UgRiss2SW3HNZNgzjbdltx+uMAPAU+
- P7IA==
-X-Gm-Message-State: AGi0PuaCTIy6bZvD7dkwvPR7zyr+MwYGtQhStsZU5Nl7v+e7FYMtUFtw
- z4QQgkU3+TLXV/Gs05MvA1SZXE7jCvQ=
-X-Received: by 2002:a1c:e407:: with SMTP id b7mr209077wmh.32.1586195305891;
- Mon, 06 Apr 2020 10:48:25 -0700 (PDT)
+ bh=F5/QTF8NoUKx5KsbybkQ+s3UGgYsvC0vkYP7rtWEAYk=;
+ b=aso7r3qrjOm++jpLVroY2Vg7DinXrZy8xCzJoddAoiErUQwxlz/ywmrsJvt9rBrevb
+ J12GJWPvc1olb66hVPtIJFd5qXEiFIF41i4IFuLmf1+jptZ0rsRDrPsiJOb9GeWAaGMw
+ JeWGadIUFkXJugrdF56rPS7y8OF5iahSbKYtwghox52CeHvyt4UgnDWGSbwBw24pI+XQ
+ uG/fFhH7zlt5qxqzFm2kMMHWFZqFovtzOd38NHW3TGdm+EZmpPklpRdZWGrh5ubceUJC
+ 3fYgFHYCg0iB9uwl1/M0uvd2CAhATI3LU8w9mlN0thTCXUJuG2lvkxNL5Bjk9Isly3jO
+ hEXA==
+X-Gm-Message-State: AGi0PuYkxEirMieJC5bS2bBY0osQIlu3j+356GYS8iaqhY4NBKXySp+B
+ GEtwk8dG1ntBA8avuREyX5GpJyQ7SUM=
+X-Received: by 2002:a1c:bb08:: with SMTP id l8mr193424wmf.168.1586195323572;
+ Mon, 06 Apr 2020 10:48:43 -0700 (PDT)
 Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id a67sm364880wmc.30.2020.04.06.10.48.24
+ by smtp.gmail.com with ESMTPSA id a67sm364880wmc.30.2020.04.06.10.48.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Apr 2020 10:48:25 -0700 (PDT)
+ Mon, 06 Apr 2020 10:48:41 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH-for-5.1 v2 29/54] hw/arm/allwinner-a10: Add missing
+Subject: [PATCH-for-5.1 v2 41/54] hw/dma/xilinx_axidma: Add missing
  error-propagation code
-Date: Mon,  6 Apr 2020 19:47:18 +0200
-Message-Id: <20200406174743.16956-30-f4bug@amsat.org>
+Date: Mon,  6 Apr 2020 19:47:30 +0200
+Message-Id: <20200406174743.16956-42-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200406174743.16956-1-f4bug@amsat.org>
 References: <20200406174743.16956-1-f4bug@amsat.org>
@@ -104,81 +104,72 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::342
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::341
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
  Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- "open list:Allwinner-a10" <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KckEL4I/SaOz
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
+ Alistair Francis <alistair.francis@wdc.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Rv9bkZzFu4W1
 
 Patch created mechanically by running:
 
   $ spatch \
     --macro-file scripts/cocci-macro-file.h --include-headers \
-    --sp-file scripts/coccinelle/use-error_propagate-in-realize.cocci \
-    --keep-comments --smpl-spacing --in-place --dir hw
+    --sp-file scripts/coccinelle/object_property_missing_error_propagate.cocci \
+    --keep-comments --smpl-spacing --dir hw
 
+Then review showed this file has a 'xilinx_axidma_realize_fail'
+label that calls error_propagate().  Updated the patch to use
+the label.
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/allwinner-a10.c | 18 +++++++++++++++---
- 1 file changed, 15 insertions(+), 3 deletions(-)
+v2: New cocci patch generated both transformations
+    (Peter noticed v1 only catched one)
+---
+ hw/dma/xilinx_axidma.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index f41395734a..db70aa2b88 100644
---- a/hw/arm/allwinner-a10.c
-+++ b/hw/arm/allwinner-a10.c
-@@ -158,14 +158,22 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
- 
-         for (i = 0; i < AW_A10_NUM_USB; i++) {
-             object_property_set_bool(OBJECT(&s->ehci[i]), true, "realized",
--                                     &error_fatal);
-+                                     &err);
-+            if (err) {
-+                error_propagate(errp, err);
-+                return;
-+            }
-             sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-                             AW_A10_EHCI_BASE + i * 0x8000);
-             sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-                                qdev_get_gpio_in(dev, 39 + i));
- 
-             object_property_set_bool(OBJECT(&s->ohci[i]), true, "realized",
--                                     &error_fatal);
-+                                     &err);
-+            if (err) {
-+                error_propagate(errp, err);
-+                return;
-+            }
-             sysbus_mmio_map(SYS_BUS_DEVICE(&s->ohci[i]), 0,
-                             AW_A10_OHCI_BASE + i * 0x8000);
-             sysbus_connect_irq(SYS_BUS_DEVICE(&s->ohci[i]), 0,
-@@ -178,7 +186,11 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc0), 0, AW_A10_MMC0_BASE);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc0), 0, qdev_get_gpio_in(dev, 32));
-     object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->mmc0),
--                              "sd-bus", &error_abort);
-+                              "sd-bus", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
+diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+index 018f36991b..2d36346319 100644
+--- a/hw/dma/xilinx_axidma.c
++++ b/hw/dma/xilinx_axidma.c
+@@ -531,6 +531,9 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
+                              object_property_allow_set_link,
+                              OBJ_PROP_LINK_STRONG,
+                              &local_err);
++    if (local_err) {
++        goto xilinx_axidma_realize_fail;
 +    }
- 
-     /* RTC */
-     qdev_init_nofail(DEVICE(&s->rtc));
+     object_property_add_link(OBJECT(cs), "dma", TYPE_XILINX_AXI_DMA,
+                              (Object **)&cs->dma,
+                              object_property_allow_set_link,
+@@ -540,6 +543,9 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
+         goto xilinx_axidma_realize_fail;
+     }
+     object_property_set_link(OBJECT(ds), OBJECT(s), "dma", &local_err);
++    if (local_err) {
++        goto xilinx_axidma_realize_fail;
++    }
+     object_property_set_link(OBJECT(cs), OBJECT(s), "dma", &local_err);
+     if (local_err) {
+         goto xilinx_axidma_realize_fail;
 -- 
 2.21.1
 

@@ -1,100 +1,100 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4252652lfi;
-        Mon, 6 Apr 2020 11:04:47 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJsd0Ni/TL3IYTpmPWaNtpPBT9oCRl7n6Fwl2ufHrJb7ixKr7xg34OIxZQxO5NuPFjeZ+XY
-X-Received: by 2002:a37:4ed5:: with SMTP id c204mr22307686qkb.328.1586196287433;
-        Mon, 06 Apr 2020 11:04:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586196287; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4253707lfi;
+        Mon, 6 Apr 2020 11:05:39 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJ7fW4kJmptqP/OodgVfbBTeXpLpo9+hgtaMGCDNKjtqJ+b0j1kDiCKA812mbt+aeG+95l9
+X-Received: by 2002:a05:6214:72f:: with SMTP id c15mr924727qvz.3.1586196339031;
+        Mon, 06 Apr 2020 11:05:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586196339; cv=none;
         d=google.com; s=arc-20160816;
-        b=IhZwvLpqNEkjYfuMU6yT5plpTA4p+YyNklnred1o/JsjGAghuuhmJbDoEoAoZxCYkb
-         ImCIhFtDZgU5ASYFuqvl4si5Fjo/oht2hECzxpTWo9wV8RfIxzRmzjV0NWuCVwDDwvmg
-         puLrPLgFxGB67BQSPKq1JDY3vdv2iaMfoHYsqaZ5OdccoZqIINreFf+hglRAzI8g9Th4
-         uKG1Q8kyUzVTN2Mjt3w3pd6GnjAvjAQEt41U1U3tieKyl/nX8zb2EJWoqDq+9+tIQjeK
-         uVO3/XzVyru3XDMvGRg+q3HvmYE9dNcalRzROmPpi4HLHMO95X9c0k9arrtJQrdUirp5
-         ajlQ==
+        b=juawINXZljrvZXTbShy3WU/Fvtw3/6f7fW3gQ/sk0RlBMGU9XOBpEFsdNoaDTijbZd
+         QavuLtg7FaRYrgO1RHsbrpB3+ORbFGR3u1G9b7AdVRT1x2cvQnDltGA06f3WnsUmCaPK
+         zAxrlXNFWfXdLzwrWB6jJeUbAqXg/YjYFLsYIMql7cnOy+pAiaxdIJhzehgwOYO0LHJr
+         LGj0fN2z4dhBahuEjq9JZSbCDX9fr7508/KWX0CXj1jPWQjY8Uxo5n+1XvrqWpWCVK5R
+         Xs8r+iPCwWGi1bR5Hbrlsx4OQK3fADynIEnGI4AAV6u8UBo5hbM2qEFWZ+BKPfgKnbge
+         ihwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=7nYHyoCJMlnQy3DVHwC5v3e8R1Ia13oWI3bOWgCiP+E=;
-        b=1JOA/z0jIwmh4F9SeWty3SkbvArKYf7rH9wCYVKoEw+7k46abn796CpcHGZ33sr3GU
-         x+RwEwEfb8dXMo/PpLbjTzSPLORNfBn8H3jw6Ri6rAkrW18nI2f07MfpjmIrp6+7fB/u
-         pOjLjfGwENu5v56vogjnDg58c/eb7eUgxfa+s1SozAtz3l62VjWgYbmh8E/9nu/1bPlH
-         yPmmQt3JjYijlb5IC/gIZa7jVfnRfedocc0498Y+dn8fifYtrnudRqo1buf4tPu/M1x/
-         KeUzasAm7V0Q/oBKAqRQlN5z+hABVznuHgu2wdMb7sfrHqGesIAnSoUNW0wCLb7DXhNb
-         kFGQ==
+        bh=aa+iNBsUIc02tXQoILWJv3WLGp8FOp4Qp/JxXw+sxRg=;
+        b=uXxYjqwKmdfyi+EeSa8kayeG9K03AklN5dof5QAcSoVPrX3HYNZlEL4o84B4K/FZAq
+         kSFnASfo0ikiSStqfPa+FcY5SK7+qKZikwljMCAvT+O8jC37eEnfEfBa1hZ1kEmV9y4/
+         tgac9YAQlPlaOIqtvzGHa/PLFXxqjvTJBujY31tqKkQa7VsrOpjeCv784wlypvKHID6g
+         THvotZDETCOc670LgA82FLO4Lvsl5KSwVhaL+TnajQpFEnxrm2vz4RoYC5CdjX7xQJAk
+         6LOmklZWRpDj+BrCrCzlnVdDFLJ6dk5xZSNUZLxBHdeeP5Q6Tj8/05C9WKZmz1J8msS3
+         eypQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=S80ufqKN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gYtKflbx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y16si373726qvn.38.2020.04.06.11.04.47
+        by mx.google.com with ESMTPS id e54si222570qtc.237.2020.04.06.11.05.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Apr 2020 11:04:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Apr 2020 11:05:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=S80ufqKN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gYtKflbx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:36184 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36214 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jLW74-00050e-P1
-	for alex.bennee@linaro.org; Mon, 06 Apr 2020 14:04:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36696)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jLW7u-0007Wo-E4
+	for alex.bennee@linaro.org; Mon, 06 Apr 2020 14:05:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36819)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVrX-0002hb-Dm
- for qemu-devel@nongnu.org; Mon, 06 Apr 2020 13:48:49 -0400
+ id 1jLVrg-0002vJ-De
+ for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:48:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVrW-0003SJ-7E
- for qemu-devel@nongnu.org; Mon, 06 Apr 2020 13:48:43 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:52260)
+ id 1jLVre-0003XN-BC
+ for qemu-arm@nongnu.org; Mon, 06 Apr 2020 13:48:52 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:34527)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jLVrW-0003RB-1D; Mon, 06 Apr 2020 13:48:42 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id t203so297339wmt.2;
- Mon, 06 Apr 2020 10:48:41 -0700 (PDT)
+ id 1jLVrT-0003Ol-4W; Mon, 06 Apr 2020 13:48:39 -0400
+Received: by mail-wm1-x329.google.com with SMTP id c195so140616wme.1;
+ Mon, 06 Apr 2020 10:48:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=7nYHyoCJMlnQy3DVHwC5v3e8R1Ia13oWI3bOWgCiP+E=;
- b=S80ufqKNxYsOM37GU0HwCQZ2Hv7rbwYyLWzpwXqZo1/iG/IBrLHVBkMivBmjHCcnrb
- RdcyQIu8R31xk52mKCQjoJQU9OwduNfomP0M7YF96oWPA6wwO8wkjMg6tqA001jI7C9x
- lPJlA2m4cjKK2ZwxDINMHvZK4GYcTkFYQT+GiCoMBoz9Htxj8RkEUeADW7QAunK1UYx1
- ZGqyq+klezNQEFwHJSjVPvr8QrYOJFGQWtNfI7XlddyS/nDl/HLMX6kZrOu8nd186WnS
- 1Aobj0J5aonnwIa7tCyVP/ud3eVlYs35T7D5grlnb59PMinWM/J/elsoqU0fXoz/ehYi
- MBOQ==
+ bh=aa+iNBsUIc02tXQoILWJv3WLGp8FOp4Qp/JxXw+sxRg=;
+ b=gYtKflbxtv0KOO93GxMUFEEez7VBfiz39wC1pLQhhLlrVnwUvt27kQtjecwGYQGh24
+ WwWrubbOug/megiCEdA+R+D7nl62mzfjdtvk0AoxKdGgkk59Qa4w2BTRvOW/dBB/IqTu
+ PPJ12leEEvSmiv4C+p5ykHilzo3eGjjOZ3hNrdd6BGlfbWcNE2m37ZmNoB96H9eLTkcP
+ ex5EcJqt6SjKn9Jv8v3z1yriYPAsKeb7isB7S/NJkvyHPVLcTZ4Vn3h01s7oI7u2yHf6
+ /W1/YOlP/g0cw67BtLP7wIjh0uKfg0FuGK6disZtEixghWP2+SEI53bTZr9r2PGFiSeY
+ +zUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=7nYHyoCJMlnQy3DVHwC5v3e8R1Ia13oWI3bOWgCiP+E=;
- b=mcAs58sbS7+OJYZcFzXZxETYkVEWE5kF033zBvQGAmmatLRixrNMjK5y/FDU8Z2OBR
- 0wM6K9fYLwp/l/sUQ25njuC9n8hsWZU+HV1b+J7C9s9Ma9zt8P3I236Ufhak0UF/Fr2M
- FImo0QOikg8lF9uOFXwfEZ/CPjeumnNjkoOXo0Vx+5SwEldjMByOozPBgva8Sc4+hV2l
- f4Yw4saWqzuBGjF3GuzLoHYzmUNgZoTVktmuSsGnFZWi7gtnWmUb8gYUlDdjFQk87uNb
- uFN5zlAgNB0hEIENrNUvGOi0wC8A7bM9LkjyTJWSOqWZLS76cvsPBe3zXmSAx/hiY/o/
- scjA==
-X-Gm-Message-State: AGi0PuZrKbUZ25TEDu7iaapGmc1tYiHtut7oXpFbLpeOoY/t5VL4MSXy
- HVtKbquD7qEaiEDiKje8yYeDwxlwlW4=
-X-Received: by 2002:a1c:f315:: with SMTP id q21mr459404wmq.169.1586195320705; 
- Mon, 06 Apr 2020 10:48:40 -0700 (PDT)
+ bh=aa+iNBsUIc02tXQoILWJv3WLGp8FOp4Qp/JxXw+sxRg=;
+ b=rZ35EDLqmytOgxKQVJbSw/vycJjROmOGF35xwpDB2r+hVOjpDjK40/r+RF1PkFqwjB
+ oOdQ6Yxknmpbidn1ID3MkfPvl3g9Cz4pM6a1+jl/M4RLLp8Akd0GhrDdydQ1yVkg8u8T
+ FVcSuwHlT4JwRSngPenAT1uJ7MihiSxEcDJFIYf/ZMo+Xy2VOHnJ6TMoVlkNJkYsWtPJ
+ DRQ9Y+h5xQm+kxYe24iVH1fMjcjDORRdv8zwFAvjBmsy6DCkYTkOKBdJSmf0NUAqeEbw
+ IyyEH4nCrd3afyU6e71U5u+CLNdgl9LkezAckfK7KpMnDpz8FN7oTzlqewdIBQfhWeZr
+ 46Sg==
+X-Gm-Message-State: AGi0PuaVQLehZuL805KJ+3vIs1FFcM7DvKSvNSinlvMheIAlxWp+1la8
+ KzmxFHxhszO/zmqBgwwrx/UY6gJEXm8=
+X-Received: by 2002:a1c:e242:: with SMTP id z63mr207222wmg.72.1586195318004;
+ Mon, 06 Apr 2020 10:48:38 -0700 (PDT)
 Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id a67sm364880wmc.30.2020.04.06.10.48.39
+ by smtp.gmail.com with ESMTPSA id a67sm364880wmc.30.2020.04.06.10.48.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Apr 2020 10:48:40 -0700 (PDT)
+ Mon, 06 Apr 2020 10:48:37 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH-for-5.1 v2 40/54] hw/arm/stm32fx05_soc: Add missing
+Subject: [PATCH-for-5.1 v2 38/54] hw/arm/bcm2835_peripherals: Add missing
  error-propagation code
-Date: Mon,  6 Apr 2020 19:47:29 +0200
-Message-Id: <20200406174743.16956-41-f4bug@amsat.org>
+Date: Mon,  6 Apr 2020 19:47:27 +0200
+Message-Id: <20200406174743.16956-39-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200406174743.16956-1-f4bug@amsat.org>
 References: <20200406174743.16956-1-f4bug@amsat.org>
@@ -104,27 +104,27 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::32d
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::329
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- "open list:STM32F205" <qemu-arm@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oJJOSdevRYIq
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ "open list:Raspberry Pi" <qemu-arm@nongnu.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2ZrraaGjIVP7
 
 Patch created mechanically by running:
 
@@ -133,44 +133,33 @@ Patch created mechanically by running:
     --sp-file scripts/coccinelle/object_property_missing_error_propagate.cocci \
     --keep-comments --smpl-spacing --in-place --dir hw
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/stm32f205_soc.c | 4 ++++
- hw/arm/stm32f405_soc.c | 4 ++++
- 2 files changed, 8 insertions(+)
+ hw/arm/bcm2835_peripherals.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
-index b1be4fde40..fba18bc204 100644
---- a/hw/arm/stm32f205_soc.c
-+++ b/hw/arm/stm32f205_soc.c
-@@ -159,6 +159,10 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
-     /* ADC 1 to 3 */
-     object_property_set_int(OBJECT(s->adc_irqs), STM_NUM_ADCS,
-                             "num-lines", &err);
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index edcaa4916d..a111e91069 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -289,8 +289,16 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+      *   SD3.0_Host_AHB_eMMC4.4_Usersguide_ver5.9_jan11_10.pdf
+      */
+     object_property_set_uint(OBJECT(&s->sdhci), 3, "sd-spec-version", &err);
 +    if (err) {
 +        error_propagate(errp, err);
 +        return;
 +    }
-     object_property_set_bool(OBJECT(s->adc_irqs), true, "realized", &err);
-     if (err != NULL) {
-         error_propagate(errp, err);
-diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
-index 2b8a84a695..6db77d296b 100644
---- a/hw/arm/stm32f405_soc.c
-+++ b/hw/arm/stm32f405_soc.c
-@@ -181,6 +181,10 @@ static void stm32f405_soc_realize(DeviceState *dev_soc, Error **errp)
-     }
-     object_property_set_int(OBJECT(&s->adc_irqs), STM_NUM_ADCS,
-                             "num-lines", &err);
+     object_property_set_uint(OBJECT(&s->sdhci), BCM2835_SDHC_CAPAREG, "capareg",
+                              &err);
 +    if (err) {
 +        error_propagate(errp, err);
 +        return;
 +    }
-     object_property_set_bool(OBJECT(&s->adc_irqs), true, "realized", &err);
-     if (err != NULL) {
-         error_propagate(errp, err);
+     object_property_set_bool(OBJECT(&s->sdhci), true, "pending-insert-quirk",
+                              &err);
+     if (err) {
 -- 
 2.21.1
 

@@ -1,147 +1,178 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4276920lfi;
-        Mon, 6 Apr 2020 11:26:55 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIOjlLhuAlKAd7HK/1yKa0lxEonNc3XjpiVgxSzOo36x7O01oWRYlHdk8hoPrQorB/QjP0q
-X-Received: by 2002:aed:247b:: with SMTP id s56mr784735qtc.203.1586197615214;
-        Mon, 06 Apr 2020 11:26:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586197615; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4777815lfi;
+        Mon, 6 Apr 2020 22:08:07 -0700 (PDT)
+X-Google-Smtp-Source: APiQypL104GcyliSJ8AtTW5BoCqzlB4goeF7rj+DUD9SJzdPVYzXjZL06DrnoZZbfKR3Xb4QhNt/
+X-Received: by 2002:ac8:66cf:: with SMTP id m15mr661800qtp.146.1586236086871;
+        Mon, 06 Apr 2020 22:08:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586236086; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y4I/+IvbyGFurmWz+nlgcuKzXt3yHDlKZD2WipKi9rttcimeqSO+bbzZiN1fJRKlaV
-         wBnDxDXTvJyk/OHm5H8ufoNo790AjJzRzSG/GxkcwqizmH+curoCEjHL2oUbLwIoK3hV
-         b749ew03w+jfCb3zX2knr5/HET98DJPVPve2tIKIA7o71dH3E5J4t893N1TlvMPb7j5C
-         2adX1cx6QrtxwmdcFR442PeKRB7iCrd5oBmeGdFTnyjQIZVThpjVczt6K7Hrd2+n7LAH
-         SQJ7EpGW/GOcfdyIhcuxVwYwk25OJDXH5pN8UPKjnVtCIp475m6xLuimp4rtAUO28n4h
-         b7cQ==
+        b=u/wZPVmjl+Y15gxSMFq56jE5ZNo9vcKDt7cjDs2n9u8j9iXpeJI9n/AdVityeWVco8
+         nRz9twmWqkdWr6WMGzIEcc7kB78rt8j5VT1SHK+TGKL4dAkj1YkLR2uEnjqQAO5FIOu4
+         jo9/qiMlLKyDaVi3QDFhy6yBjiyt3qw5b+PMQTEYJ0e9ESWz5yL33CR92trdDru1pimQ
+         nVZmbSzRf7Gl3f72Wk5kCMzDORlPfgQKJLg482CbGJ2WeuHUMDGzVsmDDf3ay4EK2LhF
+         /3oR+cOAf4jBIAPxnW00LW36BmMvsXac+aHaLo08NAIQ1AtnEDHSaoPDancF9UKIK5cy
+         TZBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:from:references:to:subject:dkim-signature;
-        bh=lcRHjxwj2IvLYyUdLYq/UMlWvaUXQxQz8jsA6VMuQkI=;
-        b=NTrnJ+Ytyg6exLzUzDzDX3EK0f6Wn6jmFrrTpQlOGUT+voxJgTOSDuc/n8qPenPbdy
-         8SE0uw5p9MD33Y9LFDONtRLbNdsq/GOAG9LxyQ0+y8cEFMK5hwz3TE+rGMRlk/fJQk2v
-         W36almXkSvTEYlgMjYa/OCXqSis8xWmJ0DRd0YtO8hTiSOS2HJ1hL187D6UENBrkkmrj
-         weW9/CYxRSBhe2xOmyRXDoOQdjxbnUFv72xOZbxfpPe1ynb0qLCUfrP7gpv0x5ZTRUyF
-         RerI7gH6prE9QO9W/8NBOhzVVf9lqc7NJL1jBb2RtPNI7VVAH5Unhm9LtymfQgTMWoSR
-         wjtA==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=LjMD0jkEzb9cWwxW5LveFzkmbNvZsVEkT9sE07/io2Y=;
+        b=m76NvLUuUV/dQ1WnuJhxpNol67nWmDwzW9sZXtJ/0+PAWteLzGfhLI+RaqhYeZphv7
+         ZI0z1WFkrLiJZgEb+uFX/kafIvib0H9s1GFA1o41w0L4dr+vqZ30ZOQL/XXVhTZTkZVt
+         MjCJNQDmSlx91AdT7BLPE4Ijlbs2rsZ1z1euWEpuqHz4B9dWUO0SLJozNzKVjkwq4XCp
+         8Xiy+T17/Ep1+/3kDeflGvg8Y3hoz2RvW2occ+CaocJT+sDnNdrCqDW9pfPBwg0eAu6q
+         4jaYJC5G0uHMT6oW2sL+VKJ0B3KkVlHExlUsGcXgoO1gMd7UNWCQbdoOG672MncI169R
+         Q7bQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OHCi6bur;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JqfiMmVb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x5si273945qtv.36.2020.04.06.11.26.55
+        by mx.google.com with ESMTPS id l3si248420qtd.273.2020.04.06.22.08.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Apr 2020 11:26:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Apr 2020 22:08:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OHCi6bur;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36702 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JqfiMmVb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41270 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jLWSU-0000Ao-Lx
-	for alex.bennee@linaro.org; Mon, 06 Apr 2020 14:26:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39897)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jLgT0-0004qz-Bj
+	for alex.bennee@linaro.org; Tue, 07 Apr 2020 01:08:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56317)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1jLW3L-0000Ki-0R
- for qemu-devel@nongnu.org; Mon, 06 Apr 2020 14:00:56 -0400
+ (envelope-from <armbru@redhat.com>) id 1jLgSs-0004qk-RP
+ for qemu-arm@nongnu.org; Tue, 07 Apr 2020 01:07:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1jLW3J-0002Bq-So
- for qemu-devel@nongnu.org; Mon, 06 Apr 2020 14:00:54 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:59416
+ (envelope-from <armbru@redhat.com>) id 1jLgSr-0002Uy-1J
+ for qemu-arm@nongnu.org; Tue, 07 Apr 2020 01:07:58 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:32629
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1jLW3J-0002BU-PM
- for qemu-devel@nongnu.org; Mon, 06 Apr 2020 14:00:53 -0400
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1jLgSq-0002UO-QY
+ for qemu-arm@nongnu.org; Tue, 07 Apr 2020 01:07:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1586196052;
+ s=mimecast20190719; t=1586236075;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=lcRHjxwj2IvLYyUdLYq/UMlWvaUXQxQz8jsA6VMuQkI=;
- b=OHCi6burjlJfmKU2Oht6jJEUhCJJ9KTxRa4CUGHoV/SI+TWEVIHhIleEnJ1PbRuKxMyVb9
- GlzC3991kGUIOg67+zwckyvajp9rqEV20nHzAo2JLujB9WDp6u9A8JySsB+TUoCmv7H6gr
- CCYkJZgVPXWwFXDbuO20E5nuxIFoiyw=
+ bh=LjMD0jkEzb9cWwxW5LveFzkmbNvZsVEkT9sE07/io2Y=;
+ b=JqfiMmVbcvYZCs0mT7P/JRI4RDivT/R2rQshGdit2xm3dBOqiz+GAiArXnwlbuXuFWWDcY
+ dYz2MzhqGUhIWJnj4xwkc1gXtJZaO8GK+EmyesVLbb9y0vY4DG2p5kolvRqp8PSxpVfaNv
+ f/wLCk75j5FRI0yYFegAQYj7OgpAyEU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-68-UbMHiyz7MBKGZynepQXUNw-1; Mon, 06 Apr 2020 14:00:35 -0400
-X-MC-Unique: UbMHiyz7MBKGZynepQXUNw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-364-h-C7YXPpO0ayr779Oj1-mA-1; Tue, 07 Apr 2020 01:07:54 -0400
+X-MC-Unique: h-C7YXPpO0ayr779Oj1-mA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4322418C35A4;
- Mon,  6 Apr 2020 18:00:34 +0000 (UTC)
-Received: from [10.3.114.49] (ovpn-114-49.phx2.redhat.com [10.3.114.49])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5A9385C1B0;
- Mon,  6 Apr 2020 18:00:33 +0000 (UTC)
-Subject: Re: [PATCH-for-5.1 v2 03/54] hw/arm/allwinner-a10: Move some code
- from realize() to init()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
-References: <20200406174743.16956-1-f4bug@amsat.org>
- <20200406174743.16956-4-f4bug@amsat.org>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <e9eb76ff-b81b-91ad-55c1-62da93ca8cf4@redhat.com>
-Date: Mon, 6 Apr 2020 13:00:32 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9ED6218A8C80;
+ Tue,  7 Apr 2020 05:07:52 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-113-20.ams2.redhat.com
+ [10.36.113.20])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 675375DA60;
+ Tue,  7 Apr 2020 05:07:49 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id D38E211385C8; Tue,  7 Apr 2020 07:07:47 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Damien Hedde <damien.hedde@greensocs.com>
+Subject: Re: [PATCH v9 5/9] docs/clocks: add device's clock documentation
+References: <20200406135251.157596-1-damien.hedde@greensocs.com>
+ <20200406135251.157596-6-damien.hedde@greensocs.com>
+Date: Tue, 07 Apr 2020 07:07:47 +0200
+In-Reply-To: <20200406135251.157596-6-damien.hedde@greensocs.com> (Damien
+ Hedde's message of "Mon, 6 Apr 2020 15:52:47 +0200")
+Message-ID: <87pncjzxwc.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20200406174743.16956-4-f4bug@amsat.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 205.139.110.120
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- "open list:Allwinner-a10" <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 28u6+JGug8HQ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>, peter.maydell@linaro.org,
+ berrange@redhat.com, ehabkost@redhat.com, alistair@alistair23.me,
+ mark.burton@greensocs.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, marcandre.lureau@redhat.com,
+ pbonzini@redhat.com, philmd@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zgm95NQ3/XNM
 
-On 4/6/20 12:46 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Coccinelle reported:
->=20
->    $ spatch ... --timeout 60 --sp-file \
->      scripts/coccinelle/simplify-init-realize-error_propagate.cocci
->    HANDLING: ./hw/arm/allwinner-a10.c
->    >>> possible moves from aw_a10_init() to aw_a10_realize() in ./hw/arm/=
-allwinner-a10.c:77
->=20
-> Move the calls using &error_fatal which don't depend of input
+Damien Hedde <damien.hedde@greensocs.com> writes:
 
-s/of/on/ (here, and in many subsequent messages in the series)
-
-> updated before realize() to init().
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Add the documentation about the clock inputs and outputs in devices.
+>
+> This is based on the original work of Frederic Konrad.
+>
+> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 > ---
->   hw/arm/allwinner-a10.c | 26 +++++++++++++-------------
->   1 file changed, 13 insertions(+), 13 deletions(-)
->=20
+> v9:
+>  + fix a few typos (Alistair)
+>
+> v8:
+>  + fix list indentation
+>  + reduce title size
+>
+> v7:
+>  + update ClockIn/Out types
+>  + switch to rst format
+> ---
+>  docs/devel/clocks.rst | 360 ++++++++++++++++++++++++++++++++++++++++++
+>  docs/devel/index.rst  |   1 +
+>  2 files changed, 361 insertions(+)
+>  create mode 100644 docs/devel/clocks.rst
+>
+> diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
+> new file mode 100644
+> index 0000000000..ead9f55561
+> --- /dev/null
+> +++ b/docs/devel/clocks.rst
+> @@ -0,0 +1,360 @@
+> +Modeling a clock tree in QEMU
+> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D
+> +
+> +What are clocks
+> +---------------
+> +
+> +Clocks are QOM objects developed for the purpose of modeling the
+> +distribution of clocks in QEMU.
+> +
+> +They allow us to model the clock distribution of a platform and detect
+> +configuration errors in the clock tree such as badly configured PLL, clo=
+ck
+> +source selection or disabled clock.
+> +
+> +The object is *Clock* and its QOM name is ``CLOCK``.
 
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+PATCH 1 has
+
+    #define TYPE_CLOCK "clock"
+
+Ignorant question: how is this related to *Clock* and ``CLOCK``?
+
+[...]
 

@@ -1,84 +1,120 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4924384lfi;
-        Tue, 7 Apr 2020 01:26:27 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLJrnWH6lO+yKR9e882absaRshHo3guLxJ1TY2wYSgNxXC4h/Za/yYFqNZ42bNdwFbsMT1E
-X-Received: by 2002:ac8:35e2:: with SMTP id l31mr1168313qtb.104.1586247986925;
-        Tue, 07 Apr 2020 01:26:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586247986; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp5079647lfi;
+        Tue, 7 Apr 2020 04:12:44 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLTUxclaP+LU+36/4BXUq4DPMVQVzDBQhKsZi0KSTJrXwbhksHTTdlwaY67/sXmu1YENVjj
+X-Received: by 2002:a05:620a:16ab:: with SMTP id s11mr1496920qkj.16.1586257963896;
+        Tue, 07 Apr 2020 04:12:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586257963; cv=none;
         d=google.com; s=arc-20160816;
-        b=xUbZbdVPPDPHQFFUcKoqT7YGvtKgOi/GDL1X3AeiNbm+XbDnDvUuaDmjUVUJ5EqO05
-         5XJfgp2vdCutuIEOlqOeIhhnAz4l8Xoc5nXb6oH//Iu9vAYcOCy7t39/9VWzmf/ATzQc
-         /ORw2SXxaTguPTRENDqrPbL4JLJ4jRjFqKZEWoGocJ0rT3KCI/d53l+OEgQUTAVdSvvp
-         WJ0GYBcQPIJLnk+5gbhDvuZOxXNWOLrsRv+U1sRGR9Nb962+BS6bByaM2jCNJAc0zP2h
-         zov8AWBMe3GHMhGjlfDOguCWl8HgrJdYWfw1x+Y7eW3PHJQLFIKc3q41oeUByoGAwLEV
-         Mg9Q==
+        b=Jtmz4cGjo41R2D+kF5spFB7o6/jUc93Bz6zNV4LkYSebjk/mrFbJ42KiQff5wiu90P
+         JDSUlfEbMcJj0tkBtZuuy0z0rqnJygNKzZ7/T/ZX5wcQ+88AX2AXP+hB+cZo7/CB0gEE
+         sFoC2LWnBdaHH7g2uljQecQbDTlappoxCuXCwVr1V0hBDB+Y3VIF6Yh/9/H+cUkqQ8IJ
+         +qp/3keEShR1X9dIWazbeU0r9KhKrMUEk+66sADsR2auLcVp7w360Y8eel8iaAbDrYaO
+         oVAnla7O4ITBmhMx+TA15MK6882u+y95n6NnO2kmO0iLuZ+ar7jQV7yxYTQzepWgqOZo
+         0YJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=5aR2oojbUXyitPRtLcqUecRmM4CJk060oTX+JqEm3bM=;
-        b=jcCEuYBXkJy6+C/I+VYQhsa4s2qhLjwyVSwskUkxBq4DXm2MFau17CcvIb1oEQ3BY6
-         u9en6rkdncw+w1nK9wW4336gQ08qAWd4Za7MERqHrlGU5It0j2xOQMs8PZ2/Wmk1Wtk+
-         S297b7AT1Ly4M8NS2xQOSDYKxHwhaMcP0m98ckXrWWVpjrAGOI9ukgoE9qptP/PPjGLD
-         vti1bLwGp5uZcgGD+5lBRNKYo68h3CAMdiuPs1F8uUSRvuFBu3vd01M3Bu7h3YYopk8x
-         YpV8FT/ZYsWbVmhvWjgflHkrwXRTXEB5fhGweeVwloEjtYNiIEu/n22Qm7BhsJCJ13NU
-         Nc6w==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=cSUdV4YJp2r4Uc62ffvGv4zQUWbZQAl/6XoUgsGODn4=;
+        b=yt6oouDPMkJE6Nh1Sm2GErmr1KJJulwZjZVu8eFjtKILzd8FyyzdZI67JYiNaCtAGP
+         ALuXzfa4oWQvf9eUfsbnHrlgxbb6FTh8aQlNvbsUNIhc4uwl7pKwBtqITZEBzmTq/jWw
+         1ra4hh4kD17aQLBuC+D2gBNbEoJlw6cJnnWL/ptJPPUv2MRz8rxEZT87KMrTo4paKwOu
+         3TIe//LFchpURdfBC1q1CsK5OYXEHJXYYFERtTft5qbNhRf+vkLBN6GQKey1Dy27xJEY
+         XzUwE4KC+0QHHunSCs+HONx2TLendTy8dAz1ObeeHCwJeaJBmhEjxrKztUIUSBtsOT6+
+         nWPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BLl9jbkZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s39si1274908qtj.65.2020.04.07.01.26.26
+        by mx.google.com with ESMTPS id w25si1486917qtn.87.2020.04.07.04.12.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Apr 2020 01:26:26 -0700 (PDT)
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 07 Apr 2020 04:12:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42990 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BLl9jbkZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45328 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jLjYw-0006jF-AJ
-	for alex.bennee@linaro.org; Tue, 07 Apr 2020 04:26:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49850)
+	id 1jLm9r-0006lQ-CS
+	for alex.bennee@linaro.org; Tue, 07 Apr 2020 07:12:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49643)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1jLjYn-0006fZ-OV
- for qemu-arm@nongnu.org; Tue, 07 Apr 2020 04:26:19 -0400
+ (envelope-from <philmd@redhat.com>) id 1jLm9j-0006jt-KS
+ for qemu-arm@nongnu.org; Tue, 07 Apr 2020 07:12:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1jLjYm-0007U3-7p
- for qemu-arm@nongnu.org; Tue, 07 Apr 2020 04:26:17 -0400
-Received: from 9.mo1.mail-out.ovh.net ([178.32.108.172]:39370)
+ (envelope-from <philmd@redhat.com>) id 1jLm9i-0006xK-Df
+ for qemu-arm@nongnu.org; Tue, 07 Apr 2020 07:12:35 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:58859
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1jLjYm-0007Qc-2b
- for qemu-arm@nongnu.org; Tue, 07 Apr 2020 04:26:16 -0400
-Received: from player159.ha.ovh.net (unknown [10.108.54.38])
- by mo1.mail-out.ovh.net (Postfix) with ESMTP id F1DD51B917B
- for <qemu-arm@nongnu.org>; Tue,  7 Apr 2020 10:26:06 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player159.ha.ovh.net (Postfix) with ESMTPSA id 4929E112A3FE8;
- Tue,  7 Apr 2020 08:25:56 +0000 (UTC)
-Subject: Re: [PATCH] aspeed: Add boot stub for smp booting
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
-References: <20200407072517.671521-1-joel@jms.id.au>
- <CACPK8XfHnE_kEPw++CdLRG9r=xJmLZkuV4WXP7NKTo8mW+dJvA@mail.gmail.com>
- <16f057db-a4d7-889f-344c-930587fc8bf1@redhat.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <141d2355-5f9d-c8f9-4021-01754f8bc2ae@kaod.org>
-Date: Tue, 7 Apr 2020 10:25:52 +0200
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jLm9i-0006xA-AV
+ for qemu-arm@nongnu.org; Tue, 07 Apr 2020 07:12:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1586257953;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=cSUdV4YJp2r4Uc62ffvGv4zQUWbZQAl/6XoUgsGODn4=;
+ b=BLl9jbkZVvUxg6SRKIHduURNqxc6ZwjYses46eL4csohzgcCvzUR19nLuNT0jJTT+tZkrB
+ XUVTy11wYbyRnzYA7Z17DOWLq/89+cyOh59rrOKWQVskD9no7PCtXashIGcIYkbBrGa2K2
+ Sf6ugo1qgXuVjAK6PD/OVb85cgMGOMU=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-317-OLsGtGePMDey2BBLkWMQvQ-1; Tue, 07 Apr 2020 07:12:32 -0400
+X-MC-Unique: OLsGtGePMDey2BBLkWMQvQ-1
+Received: by mail-ed1-f72.google.com with SMTP id k7so2816389edn.0
+ for <qemu-arm@nongnu.org>; Tue, 07 Apr 2020 04:12:31 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=IAfi00UCbTdnAMY5UYEliobHyzCVnYDyFiL/3c4BkNQ=;
+ b=CVC4Hp8regWEtI+GgzCEkOk+3Y9o3gCAfAEzcY6nifBRCQ+i8jc743jNkjjJKqYdtx
+ H4wfy7hwurla9t7zRH+22tlRhb7yAUwz02ayIgdvjbHHsYwQPRoJfqZZdhL8ljk+dHto
+ kW9stH1QTEHuVCt7vH/Moh4pCAkFEFSod7DblWsL/UJ8OD8HO0fWvyEJ9F8Xfk+0tMZ6
+ 6PbgRHA3E5vmDiGhWd2feuxZVgkYNaiG/vkPeXoeV4sWK4BEaYHP4tPCfVyPcgtA4rfM
+ iHPSN6Yin/JNNgpstrzFYyHNXhQlwfVrvsbdSPh+mdcmv0fvNgl35Hwj/3RsSF4zpcb/
+ wuSQ==
+X-Gm-Message-State: AGi0PuYDKFp9/vtpJmzzW61283PXGnYs/ZgIRdmxkLRmKsZuNEjnTJJ4
+ QIwdalDA/9r5Ue0kUrWg8fnUxXGMWtoP0qZu4pcYSqjHwXKCKbzaz8P8EvO+D9ekgMYF1S0MqYe
+ 3h0Rl6moY7BeN
+X-Received: by 2002:aa7:d383:: with SMTP id x3mr1406515edq.222.1586257950377; 
+ Tue, 07 Apr 2020 04:12:30 -0700 (PDT)
+X-Received: by 2002:aa7:d383:: with SMTP id x3mr1406488edq.222.1586257950106; 
+ Tue, 07 Apr 2020 04:12:30 -0700 (PDT)
+Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net.
+ [83.42.57.116])
+ by smtp.gmail.com with ESMTPSA id um17sm420868ejb.50.2020.04.07.04.12.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 07 Apr 2020 04:12:29 -0700 (PDT)
+Subject: Re: [PATCH v1 1/2] dma/xlnx-zdma: Fix descriptor loading (MEM) wrt
+ endianness
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
+References: <20200404122718.25111-1-edgar.iglesias@gmail.com>
+ <20200404122718.25111-2-edgar.iglesias@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <e447464e-eeb9-3024-fc52-6e03dcb79a17@redhat.com>
+Date: Tue, 7 Apr 2020 13:12:27 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <16f057db-a4d7-889f-344c-930587fc8bf1@redhat.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20200404122718.25111-2-edgar.iglesias@gmail.com>
 Content-Language: en-US
-X-Ovh-Tracer-Id: 4115727110219402048
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudehgddtgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrudehledrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 178.32.108.172
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,237 +126,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
+ edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
+ frasse.iglesias@gmail.com, alistair@alistair23.me,
+ richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
+ luc.michel@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: frWzeI+mekVl
+X-TUID: 6MHlI8BUppy0
 
-On 4/7/20 10:19 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+On 4/4/20 2:27 PM, Edgar E. Iglesias wrote:
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 >=20
+> Fix descriptor loading from memory wrt host endianness.
 >=20
-> On 4/7/20 9:38 AM, Joel Stanley wrote:
->> On Tue, 7 Apr 2020 at 07:25, Joel Stanley <joel@jms.id.au> wrote:
->>>
->>> This is a boot stub that is similar to the code u-boot runs, allowing
->>> the kernel to boot the secondary CPU.
->>>
->>> u-boot works as follows:
->>>
->>> =C2=A0 1. Initialises the SMP mailbox area in the SCU at 0x1e6e2180 w=
-ith default values
->>>
->>> =C2=A0 2. Copies a stub named 'mailbox_insn' from flash to the SCU, j=
-ust above the
->>> =C2=A0=C2=A0=C2=A0=C2=A0 mailbox area
->>>
->>> =C2=A0 3. Sets AST_SMP_MBOX_FIELD_READY to a magic value to indicate =
-the
->>> =C2=A0=C2=A0=C2=A0=C2=A0 secondary can begin execution from the stub
->>>
->>> =C2=A0 4. The stub waits until the AST_SMP_MBOX_FIELD_GOSIGN register=
- is set to
->>> =C2=A0=C2=A0=C2=A0=C2=A0 a magic value
->>>
->>> =C2=A0 5. Jumps to the address in AST_SMP_MBOX_FIELD_ENTRY, starting =
-Linux
->>>
->>> Linux indicates it is ready by writing the address of its entrypoint
->>> function to AST_SMP_MBOX_FIELD_ENTRY and the 'go' magic number to
->>> AST_SMP_MBOX_FIELD_GOSIGN. The secondary CPU sees this at step 4 and
->>> breaks out of it's loop.
->>>
->>> To be compatible, a fixed qemu stub is loaded into the mailbox area. =
-As
->>> qemu can ensure the stub is loaded before execution starts, we do not
->>> need to emulate the AST_SMP_MBOX_FIELD_READY behaviour of u-boot. The
->>> secondary CPU's program counter points to the beginning of the stub,
->>> allowing qemu to start secondaries at step four.
->>>
->>> Reboot behaviour is preserved by resetting AST_SMP_MBOX_FIELD_GOSIGN
->>> when the secondaries are reset.
->>>
->>> This is only configured when the system is booted with -kernel and qe=
-mu
->>> does not execute u-boot first.
->>>
->>> Signed-off-by: Joel Stanley <joel@jms.id.au>
->>> ---
->>> =C2=A0 hw/arm/aspeed.c | 65 +++++++++++++++++++++++++++++++++++++++++=
-++++++++
->>> =C2=A0 1 file changed, 65 insertions(+)
->>>
->>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->>> index a6a2102a93cb..bc4386cc6174 100644
->>> --- a/hw/arm/aspeed.c
->>> +++ b/hw/arm/aspeed.c
->>> @@ -116,6 +116,58 @@ static const MemoryRegionOps max_ram_ops =3D {
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .endianness =3D DEVICE_NATIVE_ENDIAN,
->>> =C2=A0 };
->>>
->>> +#define AST_SMP_MAILBOX_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0 0x1e6e2180
->>> +#define AST_SMP_MBOX_FIELD_ENTRY=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 (AST_SMP_MAILBOX_BASE + 0x0)
->>> +#define AST_SMP_MBOX_FIELD_GOSIGN=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- (AST_SMP_MAILBOX_BASE + 0x4)
->>> +#define AST_SMP_MBOX_FIELD_READY=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 (AST_SMP_MAILBOX_BASE + 0x8)
->>> +#define AST_SMP_MBOX_FIELD_POLLINSN=C2=A0=C2=A0=C2=A0=C2=A0 (AST_SMP=
-_MAILBOX_BASE + 0xc)
->>> +#define AST_SMP_MBOX_CODE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (AST_SMP_MAILBOX_BASE + 0x10)
->>> +#define AST_SMP_MBOX_GOSIGN=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0xabbaab00
->>> +
->>> +static void aspeed_write_smpboot(ARMCPU *cpu,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const struct arm_boot_in=
-fo *info)
->>> +{
->>> +=C2=A0=C2=A0=C2=A0 static const uint32_t poll_mailbox_ready[] =3D {
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /*
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * r2 =3D per-cpu go=
- sign value
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * r1 =3D AST_SMP_MB=
-OX_FIELD_ENTRY
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * r0 =3D AST_SMP_MB=
-OX_FIELD_GOSIGN
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0xee100fb0,=C2=A0 /* mrc=C2=
-=A0=C2=A0=C2=A0=C2=A0 p15, 0, r0, c0, c0, 5 */
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0xe21000ff,=C2=A0 /* ands=
-=C2=A0=C2=A0=C2=A0 r0, r0, #255=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 */
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0xe59f201c,=C2=A0 /* ldr=C2=
-=A0=C2=A0=C2=A0=C2=A0 r2, [pc, #28]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 */
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0xe1822000,=C2=A0 /* orr=C2=
-=A0=C2=A0=C2=A0=C2=A0 r2, r2, r0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0 */
->>> +
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0xe59f1018,=C2=A0 /* ldr=C2=
-=A0=C2=A0=C2=A0=C2=A0 r1, [pc, #24]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 */
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0xe59f0018,=C2=A0 /* ldr=C2=
-=A0=C2=A0=C2=A0=C2=A0 r0, [pc, #24]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 */
->>> +
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0xe320f002,=C2=A0 /* wfe=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 */
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0xe5904000,=C2=A0 /* ldr=C2=
-=A0=C2=A0=C2=A0=C2=A0 r4, [r0]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0xe1520004,=C2=A0 /* cmp=C2=
-=A0=C2=A0=C2=A0=C2=A0 r2, r4=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0x1afffffb,=C2=A0 /* bne=C2=
-=A0=C2=A0=C2=A0=C2=A0 <wfe>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0xe591f000,=C2=A0 /* ldr=C2=
-=A0=C2=A0=C2=A0=C2=A0 pc, [r1]=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AST_SMP_MBOX_GOSIGN,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AST_SMP_MBOX_FIELD_ENTRY,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AST_SMP_MBOX_FIELD_GOSIGN=
-,
->>> +=C2=A0=C2=A0=C2=A0 };
->>> +
->>> +=C2=A0=C2=A0=C2=A0 rom_add_blob_fixed("aspeed.smpboot", poll_mailbox=
-_ready,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 sizeof(po=
-ll_mailbox_ready),
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 info->smp=
-_loader_start);
->>> +}
->>> +
->>> +static void aspeed_reset_secondary(ARMCPU *cpu,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const struct=
- arm_boot_info *info)
->>> +{
->>> +=C2=A0=C2=A0=C2=A0 AddressSpace *as =3D arm_boot_address_space(cpu, =
-info);
->>> +=C2=A0=C2=A0=C2=A0 CPUState *cs =3D CPU(cpu);
->>> +
->>> +=C2=A0=C2=A0=C2=A0 /* info->smp_bootreg_addr */
->>> +=C2=A0=C2=A0=C2=A0 address_space_stl_notdirty(as, AST_SMP_MBOX_FIELD=
-_GOSIGN, 0,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 MEMTXATTRS_UNSPECIFIED, NULL);
->>> +=C2=A0=C2=A0=C2=A0 cpu_set_pc(cs, info->smp_loader_start);
->>> +}
->>> +
->>> =C2=A0 #define FIRMWARE_ADDR 0x0
->>>
->>> =C2=A0 static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size=
-_t rom_size,
->>> @@ -270,6 +322,19 @@ static void aspeed_machine_init(MachineState *ma=
-chine)
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>>
->>> +=C2=A0=C2=A0=C2=A0 if (machine->kernel_filename) {
->>
->> I just realised this shouldn't be executed on non-ast2600 platforms.
->> We could test for the number of CPUs like this:
->>
->> if (machine->kernel_filename && aspeed_board_binfo.nb_cpus > 1) {
+> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> ---
+>   hw/dma/xlnx-zdma.c | 11 +++++++----
+>   1 file changed, 7 insertions(+), 4 deletions(-)
 >=20
-> =C2=A0 if (!strcmp(amc->soc_name, "ast2600")) { ?
+> diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
+> index 1c45367f3c..5f4775f663 100644
+> --- a/hw/dma/xlnx-zdma.c
+> +++ b/hw/dma/xlnx-zdma.c
+> @@ -299,19 +299,22 @@ static void zdma_put_regaddr64(XlnxZDMA *s, unsigne=
+d int basereg, uint64_t addr)
+>       s->regs[basereg + 1] =3D addr >> 32;
+>   }
+>  =20
+> -static bool zdma_load_descriptor(XlnxZDMA *s, uint64_t addr, void *buf)
+> +static bool zdma_load_descriptor(XlnxZDMA *s, uint64_t addr,
+> +                                 XlnxZDMADescr *descr)
+>   {
+>       /* ZDMA descriptors must be aligned to their own size.  */
+>       if (addr % sizeof(XlnxZDMADescr)) {
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "zdma: unaligned descriptor at %" PRIx64,
+>                         addr);
+> -        memset(buf, 0x0, sizeof(XlnxZDMADescr));
+> +        memset(descr, 0x0, sizeof(XlnxZDMADescr));
+>           s->error =3D true;
+>           return false;
+>       }
+>  =20
+> -    address_space_read(s->dma_as, addr, s->attr, buf, sizeof(XlnxZDMADes=
+cr));
+> +    descr->addr =3D address_space_ldq_le(s->dma_as, addr, s->attr, NULL)=
+;
+> +    descr->size =3D address_space_ldl_le(s->dma_as, addr + 8, s->attr, N=
+ULL);
+> +    descr->attr =3D address_space_ldl_le(s->dma_as, addr + 12, s->attr, =
+NULL);
 
-or a 'bool' under AspeedMachineClass ?=20
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-A part from that,=20
-
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Tested-by: C=C3=A9dric Le Goater <clg@kaod.org>
-
-C.=20
-
-
->=20
->>
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* With no u-boot we must=
- set up a boot stub for the secondary CPU */
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 MemoryRegion *smpboot =3D=
- g_new(MemoryRegion, 1);
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 memory_region_init_ram(sm=
-pboot, OBJECT(bmc), "aspeed.smpboot",
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0x80, &error_abort);
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 memory_region_add_subregi=
-on(get_system_memory(),
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AST_SM=
-P_MAILBOX_BASE, smpboot);
->>> +
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 aspeed_board_binfo.write_=
-secondary_boot =3D aspeed_write_smpboot;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 aspeed_board_binfo.second=
-ary_cpu_reset_hook =3D aspeed_reset_secondary;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 aspeed_board_binfo.smp_lo=
-ader_start =3D AST_SMP_MBOX_CODE;
->>> +=C2=A0=C2=A0=C2=A0 }
->>> +
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 aspeed_board_binfo.ram_size =3D ram_si=
-ze;
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 aspeed_board_binfo.loader_start =3D sc=
-->memmap[ASPEED_SDRAM];
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 aspeed_board_binfo.nb_cpus =3D bmc->so=
-c.num_cpus;
->>> --=20
->>> 2.25.1
->>>
->>
+>       return true;
+>   }
+>  =20
+> @@ -344,7 +347,7 @@ static void zdma_update_descr_addr(XlnxZDMA *s, bool =
+type,
+>       } else {
+>           addr =3D zdma_get_regaddr64(s, basereg);
+>           addr +=3D sizeof(s->dsc_dst);
+> -        address_space_read(s->dma_as, addr, s->attr, (void *) &next, 8);
+> +        next =3D address_space_ldq_le(s->dma_as, addr, s->attr, NULL);
+>       }
+>  =20
+>       zdma_put_regaddr64(s, basereg, next);
 >=20
 

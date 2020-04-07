@@ -1,198 +1,287 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp5079647lfi;
-        Tue, 7 Apr 2020 04:12:44 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLTUxclaP+LU+36/4BXUq4DPMVQVzDBQhKsZi0KSTJrXwbhksHTTdlwaY67/sXmu1YENVjj
-X-Received: by 2002:a05:620a:16ab:: with SMTP id s11mr1496920qkj.16.1586257963896;
-        Tue, 07 Apr 2020 04:12:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586257963; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp5084628lfi;
+        Tue, 7 Apr 2020 04:17:43 -0700 (PDT)
+X-Google-Smtp-Source: APiQypL/yIqYvV2Fuw6oL4yJE+JiIrv0qOU+Om1C6WdbU5u+zHSjACqv2qLfhm0tK7Oav+PJ3LnG
+X-Received: by 2002:ad4:4587:: with SMTP id x7mr1611772qvu.214.1586258263367;
+        Tue, 07 Apr 2020 04:17:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586258263; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jtmz4cGjo41R2D+kF5spFB7o6/jUc93Bz6zNV4LkYSebjk/mrFbJ42KiQff5wiu90P
-         JDSUlfEbMcJj0tkBtZuuy0z0rqnJygNKzZ7/T/ZX5wcQ+88AX2AXP+hB+cZo7/CB0gEE
-         sFoC2LWnBdaHH7g2uljQecQbDTlappoxCuXCwVr1V0hBDB+Y3VIF6Yh/9/H+cUkqQ8IJ
-         +qp/3keEShR1X9dIWazbeU0r9KhKrMUEk+66sADsR2auLcVp7w360Y8eel8iaAbDrYaO
-         oVAnla7O4ITBmhMx+TA15MK6882u+y95n6NnO2kmO0iLuZ+ar7jQV7yxYTQzepWgqOZo
-         0YJg==
+        b=q5CZ8Ic1Miz+kbg1Z0y+GKtv4Q+YYrr8Y6OvnQIYUkY09cRw1CKzbHedDPlo1a3TNP
+         agHbT66hwiJ+rScoPuCy9lrfKR2G22GEvrGYniN4CKKDk+7ihrrs0v5pJXa5oJ//W1vh
+         ctRQrUdQ3MCtCysmMV0d5+F8oyOQHh97Aqhh/al46sApZ8BlMrL7+INrVDxlM7CFxqkD
+         9+u4AQ6nSyA4Jy6okSMqPncP3NwWcvbEZw2RZujupCSI7AYLME+liDi3MdbAwVLSP/LB
+         kMnBHrH2tVD8GFNhI7KBkVbNOpaYN1wE1KVKG5Y42A+Eqql7QMrFy0GcppzOWCV4NRDb
+         tGMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=cSUdV4YJp2r4Uc62ffvGv4zQUWbZQAl/6XoUgsGODn4=;
-        b=yt6oouDPMkJE6Nh1Sm2GErmr1KJJulwZjZVu8eFjtKILzd8FyyzdZI67JYiNaCtAGP
-         ALuXzfa4oWQvf9eUfsbnHrlgxbb6FTh8aQlNvbsUNIhc4uwl7pKwBtqITZEBzmTq/jWw
-         1ra4hh4kD17aQLBuC+D2gBNbEoJlw6cJnnWL/ptJPPUv2MRz8rxEZT87KMrTo4paKwOu
-         3TIe//LFchpURdfBC1q1CsK5OYXEHJXYYFERtTft5qbNhRf+vkLBN6GQKey1Dy27xJEY
-         XzUwE4KC+0QHHunSCs+HONx2TLendTy8dAz1ObeeHCwJeaJBmhEjxrKztUIUSBtsOT6+
-         nWPg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=wGIxJUtkUDHcup4SgLJ5MT1btx+T7qC+ZTD5Q9HuceE=;
+        b=w41VUHOoHhNlnQ3UZRHWiNnxyfGTKL3c+R+zZpmEY4I3kP7CLbR0os2wCd4IuMhoG/
+         3d1twnS9YQt5wDyDavEbp3pyUAtejW3+QH6iuVGiQvEXl1ZLuMka2zHvIe2PqmahyMKf
+         gVCEnIFodv/vPtKOrlShikXshWYE70ovUqBDBZT90XOIfAArviTZkKSwp87PjP8Gc0jt
+         dLJFy5nGJDywaDFca7aTebBedzMgGtP1CXKvH1hlyYzJc36egvWRCLwPMMuWxowkIPrN
+         Dwpe6Fk6S+QDxX8CIS8a/WQGb7s8Ryurx5S7/cRt9yLMbCXCNLFmiDZ6+mnFncSWuWSq
+         wlFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BLl9jbkZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=axvfpdKw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w25si1486917qtn.87.2020.04.07.04.12.43
+        by mx.google.com with ESMTPS id bx9si1686704qvb.43.2020.04.07.04.17.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Apr 2020 04:12:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 07 Apr 2020 04:17:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BLl9jbkZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45328 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=axvfpdKw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45406 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jLm9r-0006lQ-CS
-	for alex.bennee@linaro.org; Tue, 07 Apr 2020 07:12:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49643)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jLmEg-0002ML-R1
+	for alex.bennee@linaro.org; Tue, 07 Apr 2020 07:17:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50255)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jLm9j-0006jt-KS
- for qemu-arm@nongnu.org; Tue, 07 Apr 2020 07:12:36 -0400
+ (envelope-from <sundeep.lkml@gmail.com>) id 1jLmDq-0001CN-UI
+ for qemu-devel@nongnu.org; Tue, 07 Apr 2020 07:16:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jLm9i-0006xK-Df
- for qemu-arm@nongnu.org; Tue, 07 Apr 2020 07:12:35 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:58859
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jLm9i-0006xA-AV
- for qemu-arm@nongnu.org; Tue, 07 Apr 2020 07:12:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1586257953;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=cSUdV4YJp2r4Uc62ffvGv4zQUWbZQAl/6XoUgsGODn4=;
- b=BLl9jbkZVvUxg6SRKIHduURNqxc6ZwjYses46eL4csohzgcCvzUR19nLuNT0jJTT+tZkrB
- XUVTy11wYbyRnzYA7Z17DOWLq/89+cyOh59rrOKWQVskD9no7PCtXashIGcIYkbBrGa2K2
- Sf6ugo1qgXuVjAK6PD/OVb85cgMGOMU=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-317-OLsGtGePMDey2BBLkWMQvQ-1; Tue, 07 Apr 2020 07:12:32 -0400
-X-MC-Unique: OLsGtGePMDey2BBLkWMQvQ-1
-Received: by mail-ed1-f72.google.com with SMTP id k7so2816389edn.0
- for <qemu-arm@nongnu.org>; Tue, 07 Apr 2020 04:12:31 -0700 (PDT)
+ (envelope-from <sundeep.lkml@gmail.com>) id 1jLmDp-0001Vl-D0
+ for qemu-devel@nongnu.org; Tue, 07 Apr 2020 07:16:50 -0400
+Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d]:34150)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+ id 1jLmDp-0001VI-85; Tue, 07 Apr 2020 07:16:49 -0400
+Received: by mail-il1-x12d.google.com with SMTP id t11so2802298ils.1;
+ Tue, 07 Apr 2020 04:16:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=wGIxJUtkUDHcup4SgLJ5MT1btx+T7qC+ZTD5Q9HuceE=;
+ b=axvfpdKw7AMQBsn7/mfZHixfOZSlI9I+DlDBd/0WvXdAEBf1Ib54QNumv5V9b9EueE
+ lPDYCIgNTNjWy77ZxjXQFbSr+sUMpEPwiyUdOh1R0kjcI1/6NpquMCg/EG+yYZKfQCxk
+ 2ze+uaTbss+UurYvl+q7mOB/TMOuEQSTFrPFxBlxKfo8Zj0E8Xt8BzXOv6zBZhkYgbQp
+ Nug+gjm8DQKMo4uL09R1plOPCZzZkW2CabWBB839i2IbFLktX6s0VZUMKDHRiaztWvdo
+ lIvoP1qv+0FbmPFkeurHz8mQyVVE4Lx2TDown/Nri/R6rKa6yKf8dFULyMGH/cfooT+R
+ kSNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=IAfi00UCbTdnAMY5UYEliobHyzCVnYDyFiL/3c4BkNQ=;
- b=CVC4Hp8regWEtI+GgzCEkOk+3Y9o3gCAfAEzcY6nifBRCQ+i8jc743jNkjjJKqYdtx
- H4wfy7hwurla9t7zRH+22tlRhb7yAUwz02ayIgdvjbHHsYwQPRoJfqZZdhL8ljk+dHto
- kW9stH1QTEHuVCt7vH/Moh4pCAkFEFSod7DblWsL/UJ8OD8HO0fWvyEJ9F8Xfk+0tMZ6
- 6PbgRHA3E5vmDiGhWd2feuxZVgkYNaiG/vkPeXoeV4sWK4BEaYHP4tPCfVyPcgtA4rfM
- iHPSN6Yin/JNNgpstrzFYyHNXhQlwfVrvsbdSPh+mdcmv0fvNgl35Hwj/3RsSF4zpcb/
- wuSQ==
-X-Gm-Message-State: AGi0PuYDKFp9/vtpJmzzW61283PXGnYs/ZgIRdmxkLRmKsZuNEjnTJJ4
- QIwdalDA/9r5Ue0kUrWg8fnUxXGMWtoP0qZu4pcYSqjHwXKCKbzaz8P8EvO+D9ekgMYF1S0MqYe
- 3h0Rl6moY7BeN
-X-Received: by 2002:aa7:d383:: with SMTP id x3mr1406515edq.222.1586257950377; 
- Tue, 07 Apr 2020 04:12:30 -0700 (PDT)
-X-Received: by 2002:aa7:d383:: with SMTP id x3mr1406488edq.222.1586257950106; 
- Tue, 07 Apr 2020 04:12:30 -0700 (PDT)
-Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net.
- [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id um17sm420868ejb.50.2020.04.07.04.12.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Apr 2020 04:12:29 -0700 (PDT)
-Subject: Re: [PATCH v1 1/2] dma/xlnx-zdma: Fix descriptor loading (MEM) wrt
- endianness
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
-References: <20200404122718.25111-1-edgar.iglesias@gmail.com>
- <20200404122718.25111-2-edgar.iglesias@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <e447464e-eeb9-3024-fc52-6e03dcb79a17@redhat.com>
-Date: Tue, 7 Apr 2020 13:12:27 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=wGIxJUtkUDHcup4SgLJ5MT1btx+T7qC+ZTD5Q9HuceE=;
+ b=fW/Smx3/HDDkzSZNvq4nvfFs6uOf0OEbT5sfQ+kwrW9P567h02ibf8yhk1uFYTuO3/
+ 1QRKSsU6/s32h8rBt+jh2uDcUHTgiMHwTPEcGolsN6CZ1/IPzU60DMybAyZdIa800Vyq
+ DboQo4QA3dVZNlq2+rDGq+FBTPHS4fTeYeFfq/foXJzZAmXn/cIDyTpqZycNT64cEdaZ
+ RfqAnokiBzvoUii8n0MBm6J95hJ2rC9dpSR9xmXKuyeYR+Wm5E+V45gfoMHNeYZUBIVj
+ JlqC0oRtR8cHTC2s/V7Nj0SfjsnH7t7AJWujkvl4jAk+yf7wYMy7GHYawTBCSTafQ0CZ
+ 1/9w==
+X-Gm-Message-State: AGi0PuZ8LsNwSz4ZlUUM73VoG+OjdTnTX3H0inMx0UmzhRE1ya90/C+j
+ ZwFMT4x5eb/hwgmYZTrSxl8vkPls764AZF7Sga0=
+X-Received: by 2002:a92:aac8:: with SMTP id p69mr1802634ill.305.1586258208130; 
+ Tue, 07 Apr 2020 04:16:48 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200404122718.25111-2-edgar.iglesias@gmail.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+References: <1586063624-13375-1-git-send-email-sundeep.lkml@gmail.com>
+ <8783e9e6-e013-955b-c953-d203f59225d1@redhat.com>
+In-Reply-To: <8783e9e6-e013-955b-c953-d203f59225d1@redhat.com>
+From: sundeep subbaraya <sundeep.lkml@gmail.com>
+Date: Tue, 7 Apr 2020 16:46:36 +0530
+Message-ID: <CALHRZuq0vqqzTeBYiYapmbwyi_0Yy9GLOsJVcfrEH8ghqNvaDA@mail.gmail.com>
+Subject: Re: [Qemu-devel PATCH v2 0/2] Add SmartFusion2 EMAC block
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::12d
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
- edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
- frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
- luc.michel@greensocs.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6MHlI8BUppy0
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rSYigkIQCIrs
 
-On 4/4/20 2:27 PM, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->=20
-> Fix descriptor loading from memory wrt host endianness.
->=20
-> Reported-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> ---
->   hw/dma/xlnx-zdma.c | 11 +++++++----
->   1 file changed, 7 insertions(+), 4 deletions(-)
->=20
-> diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
-> index 1c45367f3c..5f4775f663 100644
-> --- a/hw/dma/xlnx-zdma.c
-> +++ b/hw/dma/xlnx-zdma.c
-> @@ -299,19 +299,22 @@ static void zdma_put_regaddr64(XlnxZDMA *s, unsigne=
-d int basereg, uint64_t addr)
->       s->regs[basereg + 1] =3D addr >> 32;
->   }
->  =20
-> -static bool zdma_load_descriptor(XlnxZDMA *s, uint64_t addr, void *buf)
-> +static bool zdma_load_descriptor(XlnxZDMA *s, uint64_t addr,
-> +                                 XlnxZDMADescr *descr)
->   {
->       /* ZDMA descriptors must be aligned to their own size.  */
->       if (addr % sizeof(XlnxZDMADescr)) {
->           qemu_log_mask(LOG_GUEST_ERROR,
->                         "zdma: unaligned descriptor at %" PRIx64,
->                         addr);
-> -        memset(buf, 0x0, sizeof(XlnxZDMADescr));
-> +        memset(descr, 0x0, sizeof(XlnxZDMADescr));
->           s->error =3D true;
->           return false;
->       }
->  =20
-> -    address_space_read(s->dma_as, addr, s->attr, buf, sizeof(XlnxZDMADes=
-cr));
-> +    descr->addr =3D address_space_ldq_le(s->dma_as, addr, s->attr, NULL)=
-;
-> +    descr->size =3D address_space_ldl_le(s->dma_as, addr + 8, s->attr, N=
-ULL);
-> +    descr->attr =3D address_space_ldl_le(s->dma_as, addr + 12, s->attr, =
-NULL);
+Hi Philippe,
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+On Mon, Apr 6, 2020 at 3:54 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+om> wrote:
+>
+> Hi Sundeep,
+>
+> On 4/5/20 7:13 AM, sundeep.lkml@gmail.com wrote:
+> > From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> >
+> > This patch set emulates Ethernet MAC block
+> > present in Microsemi SmartFusion2 SoC.
+> >
+> > v2:
+> >    No changes. Fixed Signed-off mail id in patch 2/2
+> >
+> >
+> > Testing:
+> >
+> > 1. Download u-boot.bin, uImage and msf2-devkit.dtb from
+> >     https://github.com/Subbaraya-Sundeep/qemu-test-binaries.git
+> > 2. Copy uImage and msf2-devkit.dtb to suitable Qemu tftp directory
+> > 3. Launch Qemu by
+> >     ./arm-softmmu/qemu-system-arm -M emcraft-sf2 -serial mon:stdio -ker=
+nel \
+> >     u-boot.bin -display none -nic user,tftp=3D<qemu tftp directory>
+> >
+> > Example:
+> > ./arm-softmmu/qemu-system-arm -M emcraft-sf2 -serial mon:stdio -kernel =
+u-boot -display none -nic user,tftp=3D/home/hyd1358/qemu_tftp
+> >
+> > U-Boot 2010.03-00000-ga7695d6 (Apr 04 2020 - 15:07:27)
+> >
+> > CPU  : SmartFusion2 SoC (Cortex-M3 Hard IP)
+> > Freqs: CORTEX-M3=3D142MHz,PCLK0=3D71MHz,PCLK1=3D71MHz
+> > Board: M2S-FG484-SOM Rev 1A, www.emcraft.com
+> > DRAM:  64 MB
+> > *** Warning - bad CRC, using default environment
+> >
+> > In:    serial
+> > Out:   serial
+> > Err:   serial
+> > Net:   M2S_MAC
+> >
+> > Hit any key to stop autoboot:  3  0
+> >
+> > M2S-FG484-SOM> run netboot
+> > Using M2S_MAC device
+> > TFTP from server 10.0.2.2; our IP address is 10.0.2.15
+> > Filename 'uImage'.
+> > Load address: 0xa0007fc0
+> > Loading: *#############################################################=
+####
+> >   #################################################################
+> >   #################################################################
+> >   ###############################################################
+> > done
+> > Bytes transferred =3D 3681568 (382d20 hex)
+> > Using M2S_MAC device
+> > TFTP from server 10.0.2.2; our IP address is 10.0.2.15
+> > Filename 'msf2-devkit.dtb'.
+> > Load address: 0xa0000200
+> > Loading: *#
+> > done
+> > Bytes transferred =3D 1712 (6b0 hex)
+> > ## Booting kernel from Legacy Image at a0007fc0 ...
+> >     Image Name:
+> >     Image Type:   ARM Linux Kernel Image (uncompressed)
+> >     Data Size:    3681504 Bytes =3D  3.5 MB
+> >     Load Address: a0008000
+> >     Entry Point:  a0008001
+> >     Verifying Checksum ... OK
+> >     Loading Kernel Image ... OK
+> > OK
+> >
+> > Starting kernel ...
+> >
+> > [    0.000000] Booting Linux on physical CPU 0x0
+> > [    0.000000] Linux version 4.5.0-gb0e5502-dirty (hyd1358@hyd1358) (gc=
+c version 4.4.1 (Sourcery G++ Lite 2010q1-189) ) #85 PREEMPT Sat Apr 4 23:2=
+6:40 IST 2020
+> > [    0.000000] CPU: ARMv7-M [410fc231] revision 1 (ARMv7M), cr=3D000000=
+00
+> > [    0.000000] CPU: unknown data cache, unknown instruction cache
+> > [    0.000000] Machine model: Microsemi SmartFusion 2 development board
+> > [    0.000000] bootconsole [earlycon0] enabled
+> > [    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  =
+Total pages: 16256
+> > [    0.000000] Kernel command line: console=3DttyS0,115200n8 panic=3D10=
+ mem=3D64M@0xa0000000 earlyprintk
+> > [    0.000000] PID hash table entries: 256 (order: -2, 1024 bytes)
+> > [    0.000000] Dentry cache hash table entries: 8192 (order: 3, 32768 b=
+ytes)
+> > [    0.000000] Inode-cache hash table entries: 4096 (order: 2, 16384 by=
+tes)
+> > [    0.000000] Memory: 61212K/65536K available (1612K kernel code, 75K =
+rwdata, 680K rodata, 1224K init, 120K bss, 4324K reserved, 0K cma-reserved)
+> > [    0.000000] Virtual kernel memory layout:
+> > [    0.000000]     vector  : 0x00000000 - 0x00001000   (   4 kB)
+> > [    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+> > [    0.000000]     vmalloc : 0x00000000 - 0xffffffff   (4095 MB)
+> > [    0.000000]     lowmem  : 0xa0000000 - 0xa4000000   (  64 MB)
+> > [    0.000000]     modules : 0xa0000000 - 0xa0800000   (   8 MB)
+> > [    0.000000]       .text : 0xa0008000 - 0xa02453e8   (2293 kB)
+> > [    0.000000]       .init : 0xa0246000 - 0xa0378000   (1224 kB)
+> > [    0.000000]       .data : 0xa0378000 - 0xa038ace0   (  76 kB)
+> > [    0.000000]        .bss : 0xa038ace0 - 0xa03a8ea0   ( 121 kB)
+> > [    0.000000] SLUB: HWalign=3D32, Order=3D0-3, MinObjects=3D0, CPUs=3D=
+1, Nodes=3D1
+> > [    0.000000] Preemptible hierarchical RCU implementation.
+> > .
+> > .
+> > .
+> > [    0.445184] Found M2S MAC at 0x40041000, irq 18
+> > [    0.448810] libphy: msf2 MII bus: probed
+> > [    0.527047] ipip: IPv4 over IPv4 tunneling driver
+> > [    0.532367] NET: Registered protocol family 10
+> > [    0.542307] sit: IPv6 over IPv4 tunneling driver
+> > [    0.544655] NET: Registered protocol family 17
+> > [    0.565395] Freeing unused kernel memory: 1224K (a0246000 - a0378000=
+)
+> > init started: BusyBox v1.31.1 (2020-01-25 20:01:06 IST)
+> > starting pid 26, tty '': '/etc/rc'
+> > starting pid 31, tty '/dev/ttyS0': '/bin/hush -i'
+> >
+> >
+> > BusyBox v1.31.1 (2020-01-25 20:01:06 IST) hush - the humble shell
+> > Enter 'help' for a list of built-in commands.
+> >
+> > / # ifconfig eth0 10.0.2.15
+> > [   11.116091] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+> > / # [   11.653634] eth0: link up (100/full)
+> > [   11.655246] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+> >
+> > / # ls
+> > dev   proc  sys   etc   usr   bin   tmp   sbin  mnt   init
+> > / # tftp -gr uImage 10.0.2.2
+> > [   40.780983] random: nonblocking pool is initialized
+> > / # ls
+> > dev     sys     usr     tmp     mnt     uImage
+> > proc    etc     bin     sbin    init
+> > / #
+>
+> Thanks for the use case example!
+>
+> Do you mind adding it to our test suite? There are various examples in
+> tests/acceptance/boot_linux_console.py.
 
->       return true;
->   }
->  =20
-> @@ -344,7 +347,7 @@ static void zdma_update_descr_addr(XlnxZDMA *s, bool =
-type,
->       } else {
->           addr =3D zdma_get_regaddr64(s, basereg);
->           addr +=3D sizeof(s->dsc_dst);
-> -        address_space_read(s->dma_as, addr, s->attr, (void *) &next, 8);
-> +        next =3D address_space_ldq_le(s->dma_as, addr, s->attr, NULL);
->       }
->  =20
->       zdma_put_regaddr64(s, basereg, next);
->=20
+Sure I will add and send next spin.
 
+Thanks,
+Sundeep
+>
+> Thanks!
+>
+> Phil.
+> >
+> > Subbaraya Sundeep (2):
+> >    hw/net: Add Smartfusion2 emac block
+> >    msf2: Add EMAC block to SmartFusion2 SoC
+> >
+> >   MAINTAINERS                |   2 +
+> >   hw/arm/msf2-soc.c          |  21 +-
+> >   hw/net/Makefile.objs       |   1 +
+> >   hw/net/msf2-emac.c         | 556 ++++++++++++++++++++++++++++++++++++=
++++++++++
+> >   include/hw/arm/msf2-soc.h  |   3 +
+> >   include/hw/net/msf2-emac.h |  50 ++++
+> >   6 files changed, 632 insertions(+), 1 deletion(-)
+> >   create mode 100644 hw/net/msf2-emac.c
+> >   create mode 100644 include/hw/net/msf2-emac.h
+> >
+>

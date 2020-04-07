@@ -1,104 +1,84 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4777815lfi;
-        Mon, 6 Apr 2020 22:08:07 -0700 (PDT)
-X-Google-Smtp-Source: APiQypL104GcyliSJ8AtTW5BoCqzlB4goeF7rj+DUD9SJzdPVYzXjZL06DrnoZZbfKR3Xb4QhNt/
-X-Received: by 2002:ac8:66cf:: with SMTP id m15mr661800qtp.146.1586236086871;
-        Mon, 06 Apr 2020 22:08:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586236086; cv=none;
+Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp4848465lfi;
+        Mon, 6 Apr 2020 23:47:20 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJ8iM6Fw9hCld+jzv+LizIUE4i2MLJ4ro4MyJtHui+268xE563XWC8Ymh2mzzDGKCt+Glkk
+X-Received: by 2002:a0c:ed2a:: with SMTP id u10mr559628qvq.3.1586242040022;
+        Mon, 06 Apr 2020 23:47:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586242040; cv=none;
         d=google.com; s=arc-20160816;
-        b=u/wZPVmjl+Y15gxSMFq56jE5ZNo9vcKDt7cjDs2n9u8j9iXpeJI9n/AdVityeWVco8
-         nRz9twmWqkdWr6WMGzIEcc7kB78rt8j5VT1SHK+TGKL4dAkj1YkLR2uEnjqQAO5FIOu4
-         jo9/qiMlLKyDaVi3QDFhy6yBjiyt3qw5b+PMQTEYJ0e9ESWz5yL33CR92trdDru1pimQ
-         nVZmbSzRf7Gl3f72Wk5kCMzDORlPfgQKJLg482CbGJ2WeuHUMDGzVsmDDf3ay4EK2LhF
-         /3oR+cOAf4jBIAPxnW00LW36BmMvsXac+aHaLo08NAIQ1AtnEDHSaoPDancF9UKIK5cy
-         TZBw==
+        b=Pg1IhddqYFx/hr43NPWJt+LrqBCmMGuv5HZB7s5oCPE+OHoA2lZ4s16zsfSbZVPKVG
+         UKPzDx9RRAc2WAO7ONkYnJK3+O1IuMDLEkRzG2KWtPySP0RS9IgFYlbdFhbrbRx6rcQ1
+         rZfBbPw8e8WLa527AYmFwXZiQt8RpvTsYnAGrSetxdaZ7x9FneU7q9OXKsuKRzEiVBFk
+         DUWb4JVeuNdreXmxBWJB9j8NxqWaH/KDriGiUNwjA0ftKNqN5LyeZgfRHIiwmeMtJwim
+         k0a/aTp/B0QLr4x8xN92k7n82krBeF3AtVdDBJPOsHPmz/RWciu9c694qVQbqtB259LM
+         N9Fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=LjMD0jkEzb9cWwxW5LveFzkmbNvZsVEkT9sE07/io2Y=;
-        b=m76NvLUuUV/dQ1WnuJhxpNol67nWmDwzW9sZXtJ/0+PAWteLzGfhLI+RaqhYeZphv7
-         ZI0z1WFkrLiJZgEb+uFX/kafIvib0H9s1GFA1o41w0L4dr+vqZ30ZOQL/XXVhTZTkZVt
-         MjCJNQDmSlx91AdT7BLPE4Ijlbs2rsZ1z1euWEpuqHz4B9dWUO0SLJozNzKVjkwq4XCp
-         8Xiy+T17/Ep1+/3kDeflGvg8Y3hoz2RvW2occ+CaocJT+sDnNdrCqDW9pfPBwg0eAu6q
-         4jaYJC5G0uHMT6oW2sL+VKJ0B3KkVlHExlUsGcXgoO1gMd7UNWCQbdoOG672MncI169R
-         Q7bQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=Rl3JwaGlr19pqbfTeKG5Wl7kfB7e7j/6lYYMkspxMrE=;
+        b=e3k2EuKUOdQG0fSeCWayvpRrisw3/0nBfzMuq5o8cfL7o0GFbIl9f8Gmo81nffRxQ4
+         myo0gJsQS2kcL4pxSi2LkldG6rOsGcgGqNKnN4PJux4v88D7KX+c8IvQR/xVsEwGBw0t
+         W17sDQ935p9ZfGD8M5Nt3+Ju3Rmuu6ld+50gg3ZJcu8D5E/o0PwAEWetOVYM1oCq3Y8f
+         Z59RK1Rf0UP6n31hqX2v2o87mNPPzTMJIO5G4Z1p5zeJsnZs+zqbPYh/u5I4/Q/0Ii5/
+         sHa11wvc8OP2CM5KMiLf5CeTksAO+FE997s3WhUEYTfatxTSb30FeVPhorCUHooh4Bp5
+         VQWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JqfiMmVb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l3si248420qtd.273.2020.04.06.22.08.06
+        by mx.google.com with ESMTPS id e41si1169665qtk.202.2020.04.06.23.47.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Apr 2020 22:08:06 -0700 (PDT)
+        Mon, 06 Apr 2020 23:47:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JqfiMmVb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41270 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42090 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jLgT0-0004qz-Bj
-	for alex.bennee@linaro.org; Tue, 07 Apr 2020 01:08:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56317)
+	id 1jLi11-0007Mf-Es
+	for alex.bennee@linaro.org; Tue, 07 Apr 2020 02:47:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37100)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1jLgSs-0004qk-RP
- for qemu-arm@nongnu.org; Tue, 07 Apr 2020 01:07:59 -0400
+ (envelope-from <clg@kaod.org>) id 1jLi0s-0007M3-3C
+ for qemu-arm@nongnu.org; Tue, 07 Apr 2020 02:47:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1jLgSr-0002Uy-1J
- for qemu-arm@nongnu.org; Tue, 07 Apr 2020 01:07:58 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:32629
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <clg@kaod.org>) id 1jLi0q-0005yr-SL
+ for qemu-arm@nongnu.org; Tue, 07 Apr 2020 02:47:09 -0400
+Received: from 5.mo179.mail-out.ovh.net ([46.105.43.140]:54056)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1jLgSq-0002UO-QY
- for qemu-arm@nongnu.org; Tue, 07 Apr 2020 01:07:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1586236075;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LjMD0jkEzb9cWwxW5LveFzkmbNvZsVEkT9sE07/io2Y=;
- b=JqfiMmVbcvYZCs0mT7P/JRI4RDivT/R2rQshGdit2xm3dBOqiz+GAiArXnwlbuXuFWWDcY
- dYz2MzhqGUhIWJnj4xwkc1gXtJZaO8GK+EmyesVLbb9y0vY4DG2p5kolvRqp8PSxpVfaNv
- f/wLCk75j5FRI0yYFegAQYj7OgpAyEU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-364-h-C7YXPpO0ayr779Oj1-mA-1; Tue, 07 Apr 2020 01:07:54 -0400
-X-MC-Unique: h-C7YXPpO0ayr779Oj1-mA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9ED6218A8C80;
- Tue,  7 Apr 2020 05:07:52 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-113-20.ams2.redhat.com
- [10.36.113.20])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 675375DA60;
- Tue,  7 Apr 2020 05:07:49 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id D38E211385C8; Tue,  7 Apr 2020 07:07:47 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Damien Hedde <damien.hedde@greensocs.com>
-Subject: Re: [PATCH v9 5/9] docs/clocks: add device's clock documentation
-References: <20200406135251.157596-1-damien.hedde@greensocs.com>
- <20200406135251.157596-6-damien.hedde@greensocs.com>
-Date: Tue, 07 Apr 2020 07:07:47 +0200
-In-Reply-To: <20200406135251.157596-6-damien.hedde@greensocs.com> (Damien
- Hedde's message of "Mon, 6 Apr 2020 15:52:47 +0200")
-Message-ID: <87pncjzxwc.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1jLi0q-0005we-M1
+ for qemu-arm@nongnu.org; Tue, 07 Apr 2020 02:47:08 -0400
+Received: from player779.ha.ovh.net (unknown [10.108.35.95])
+ by mo179.mail-out.ovh.net (Postfix) with ESMTP id 86B9A162BAA
+ for <qemu-arm@nongnu.org>; Tue,  7 Apr 2020 08:47:06 +0200 (CEST)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player779.ha.ovh.net (Postfix) with ESMTPSA id 4539811266063;
+ Tue,  7 Apr 2020 06:46:57 +0000 (UTC)
+Subject: Re: [PATCH-for-5.1 v2 04/54] hw/arm/aspeed_ast2600: Simplify use of
+ Error*
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
+References: <20200406174743.16956-1-f4bug@amsat.org>
+ <20200406174743.16956-5-f4bug@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <423df879-b5d8-31e5-c911-b67e4283ef7c@kaod.org>
+Date: Tue, 7 Apr 2020 08:46:52 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
+In-Reply-To: <20200406174743.16956-5-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 2443765749797391280
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudeggdduuddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejjeelrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+X-Received-From: 46.105.43.140
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,69 +90,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>, peter.maydell@linaro.org,
- berrange@redhat.com, ehabkost@redhat.com, alistair@alistair23.me,
- mark.burton@greensocs.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Alistair Francis <alistair.francis@wdc.com>, marcandre.lureau@redhat.com,
- pbonzini@redhat.com, philmd@redhat.com
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zgm95NQ3/XNM
+X-TUID: yXgUoMcnU+cO
 
-Damien Hedde <damien.hedde@greensocs.com> writes:
+On 4/6/20 7:46 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Coccinelle reported:
+>=20
+>   $ spatch ... --timeout 60 --sp-file \
+>     scripts/coccinelle/simplify-init-realize-error_propagate.cocci
+>   HANDLING: ./hw/arm/aspeed_ast2600.c
+>   >>> possible moves from aspeed_soc_ast2600_init() to aspeed_soc_ast26=
+00_realize() in ./hw/arm/aspeed_ast2600.c:243
+>=20
+> While reviewing we notice we don't need two different Error*,
+> drop the one less used.
 
-> Add the documentation about the clock inputs and outputs in devices.
->
-> This is based on the original work of Frederic Konrad.
->
-> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
-> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+I think that comes from another pattern we were using at some time=20
+which was propagating the second error in the first. Anyhow, this
+is better.
+
+
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+
+It seems that the 'return' are badly aligned ?
+
+Thanks,
+
+C.=20
+
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
-> v9:
->  + fix a few typos (Alistair)
->
-> v8:
->  + fix list indentation
->  + reduce title size
->
-> v7:
->  + update ClockIn/Out types
->  + switch to rst format
-> ---
->  docs/devel/clocks.rst | 360 ++++++++++++++++++++++++++++++++++++++++++
->  docs/devel/index.rst  |   1 +
->  2 files changed, 361 insertions(+)
->  create mode 100644 docs/devel/clocks.rst
->
-> diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
-> new file mode 100644
-> index 0000000000..ead9f55561
-> --- /dev/null
-> +++ b/docs/devel/clocks.rst
-> @@ -0,0 +1,360 @@
-> +Modeling a clock tree in QEMU
-> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D
-> +
-> +What are clocks
-> +---------------
-> +
-> +Clocks are QOM objects developed for the purpose of modeling the
-> +distribution of clocks in QEMU.
-> +
-> +They allow us to model the clock distribution of a platform and detect
-> +configuration errors in the clock tree such as badly configured PLL, clo=
-ck
-> +source selection or disabled clock.
-> +
-> +The object is *Clock* and its QOM name is ``CLOCK``.
-
-PATCH 1 has
-
-    #define TYPE_CLOCK "clock"
-
-Ignorant question: how is this related to *Clock* and ``CLOCK``?
-
-[...]
+>  hw/arm/aspeed_ast2600.c | 16 +++++++++++-----
+>  1 file changed, 11 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index 1a869e09b9..b08359f3ef 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -245,7 +245,7 @@ static void aspeed_soc_ast2600_realize(DeviceState =
+*dev, Error **errp)
+>      int i;
+>      AspeedSoCState *s =3D ASPEED_SOC(dev);
+>      AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
+> -    Error *err =3D NULL, *local_err =3D NULL;
+> +    Error *err =3D NULL;
+>      qemu_irq irq;
+> =20
+>      /* IO space */
+> @@ -418,9 +418,12 @@ static void aspeed_soc_ast2600_realize(DeviceState=
+ *dev, Error **errp)
+>              return;
+>          }
+>          object_property_set_int(OBJECT(&s->spi[i]), 1, "num-cs", &err)=
+;
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +           return;
+> +        }
+>          object_property_set_bool(OBJECT(&s->spi[i]), true, "realized",
+> -                                 &local_err);
+> -        error_propagate(&err, local_err);
+> +                                 &err);
+>          if (err) {
+>              error_propagate(errp, err);
+>              return;
+> @@ -472,9 +475,12 @@ static void aspeed_soc_ast2600_realize(DeviceState=
+ *dev, Error **errp)
+>          qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[i]=
+);
+>          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspe=
+ed",
+>                                   &err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +           return;
+> +        }
+>          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "real=
+ized",
+> -                                 &local_err);
+> -        error_propagate(&err, local_err);
+> +                                 &err);
+>          if (err) {
+>              error_propagate(errp, err);
+>             return;
+>=20
 

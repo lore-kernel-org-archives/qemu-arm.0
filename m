@@ -1,209 +1,856 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp567743lfm;
-        Fri, 10 Apr 2020 04:45:45 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLOGO6zygmRDuo0jlS9EKXOUQXVtnBi0EsEG6Ym4Z5ILYzmL91WUVAGWXURV5P8Od1uLWJM
-X-Received: by 2002:ad4:48c7:: with SMTP id v7mr4866659qvx.138.1586519145535;
-        Fri, 10 Apr 2020 04:45:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586519145; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp687831lfm;
+        Fri, 10 Apr 2020 06:47:28 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKAnWLZxDEiyO20svSFGqLO6S2Pg9MhMpMliQ1D/qvKdqYe3vtdp2WefNUuoFNScm01rqu7
+X-Received: by 2002:a37:4b42:: with SMTP id y63mr3967731qka.35.1586526447917;
+        Fri, 10 Apr 2020 06:47:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586526447; cv=none;
         d=google.com; s=arc-20160816;
-        b=IQs2E6DsQaeBxVG9BSPbDALnShDBUPKgiWdETYqtU58hZhuwOzvB40W+qScCzRm5/u
-         3ARdaypcoyYnXJfRw4F0VwqHxbI7M8VKQGIv5Sau1Vm7KCEFvvrisuq4cjkbSDXHiKU2
-         hmvQvw1mgC7UIzlO0Az177H9Psz8HAjBvswVMkLBXvY+Wka0EbwielZTAUxe0aU/0LXs
-         oY0O9AXWkhkUcWudYX8BPO5JQlYwI2b72P6zqsA7WKcnnDkedE1dgY3jcGFKcf6YU/Jp
-         m6xGvbVlOoAmSPWbGdiUN6IPkuOU93yxpG6FIkasEwAd3OL4F2enVQ6Hnfl9jiy5M5tT
-         A9dg==
+        b=1IcNHU24dfOuEzCEsPC9tsXnLtVakYUg1jHjSTJmYvj0hOiGsAEyHbsgsklxViLi5L
+         HM46i8620lhP4umuG+NaMtH99dj/lh35B1nR9UT0LNVEh4HySqNZWcSmyNdiiuK/CIsB
+         Yai6qcsPw2Y8E9D3EdPv2v4+1QoNSC1zDyLpEpn8X+uT26BKVfNLkZy3omlmbUwBcW9h
+         Lv+kqxhJNCDYNVR6bJfvE+VQZamMUNw/9T+Dz/NW452CLYrmpgrzz1vtsckwGmLSLnKR
+         GyKrmaRejgL/jRnsOf+feYo3Kvaqjd4UM9tDmjoLgi19HMcg2zp0WBGjo2tLLArzKVG7
+         p22w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=Lahlf/3rn46Y+m4fdTmZH2tDXuX3UcrU9Cik0fkQe98=;
-        b=Ip/prIM1/HzrJkFN40HBbKC9XDKOi2tfBr5YYyaWd+jfKlIyHfHBuw6iVYANX0d3R6
-         z7+1rYUPYFKTILaW3t9LYo2lz92+RnQP4iyEGRk0J8e67JwTbelx0OwaO7oiFFsS+/hE
-         IEDuQAkinLxPYvpcXynk8M0EsgiXq/ht3Pe8VFs7pW2iSjDuDuYOn+dDRXKzHTk/7s40
-         j1EEnb3MtFomH97OzgnWCItpe0zXeFrbwBtM02NSdXtnV4bu5WrE9IqnZCH86sbfM2Zz
-         d6agLQ9oYh3CONU3SfHWGOyEzrOicqAbD2slP/pJAEr7P2dCbPcUWXfnmSJ/K11/AHJZ
-         Orzg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=0LDWXyvRVFgeMnwzaAhFGEezldF9RkP2cc9XOKxcthg=;
+        b=R7d5Bytd1XAkYIjdauFtQHlCfW/oTvxurkHdNku5FIZBv34zyJ4KhE2zmHFYHQzzRY
+         bEg2A303u1lF9WJxHXBEcDBv6VFRQ72/cUrtEgUiF3dAYP5SEtCRAPOy1sLrAeMUrZVf
+         8q9YjMzZC18wkoQsh57X2UoVV+mhHNfvSvX0owAvdDP52kE1Weuw4e1xeZyos3xCnoAx
+         QsBOe/xzEAl8prYO8hDFIZEVsQHXGlZgDvpwHk5k8vJZzwIFcm/huqZOIax80Qq0J0LT
+         9hDUMZzqJxbPnjSm/v1nk51Hc3gF+xullR1j3FbOc0lQwhakVqMlwqDfqZstGKW+tqnu
+         wqBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id w7si879148qvf.49.2020.04.10.04.45.45;
-        Fri, 10 Apr 2020 04:45:45 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bAePj4EV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a40si1153934qtk.15.2020.04.10.06.47.27
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 10 Apr 2020 06:47:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726694AbgDJLpn (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Fri, 10 Apr 2020 07:45:43 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:52026 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726191AbgDJLpn (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 10 Apr 2020 07:45:43 -0400
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 58D14C91F3E7B0E15CBA;
-        Fri, 10 Apr 2020 19:45:27 +0800 (CST)
-Received: from huawei.com (10.151.151.243) by DGGEMS401-HUB.china.huawei.com
- (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0; Fri, 10 Apr 2020
- 19:45:19 +0800
-From:   Dongjiu Geng <gengdongjiu@huawei.com>
-To:     <imammedo@redhat.com>, <mst@redhat.com>,
-        <xiaoguangrong.eric@gmail.com>, <peter.maydell@linaro.org>,
-        <shannon.zhaosl@gmail.com>, <fam@euphon.net>, <rth@twiddle.net>,
-        <ehabkost@redhat.com>, <mtosatti@redhat.com>,
-        <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
-        <qemu-arm@nongnu.org>, <pbonzini@redhat.com>
-CC:     <gengdongjiu@huawei.com>, <zhengxiang9@huawei.com>,
-        <Jonathan.Cameron@huawei.com>, <linuxarm@huawei.com>
-Subject: [PATCH v25 03/10] docs: APEI GHES generation and CPER record description
-Date:   Fri, 10 Apr 2020 19:46:32 +0800
-Message-ID: <20200410114639.32844-4-gengdongjiu@huawei.com>
-X-Mailer: git-send-email 2.18.0.huawei.25
-In-Reply-To: <20200410114639.32844-1-gengdongjiu@huawei.com>
-References: <20200410114639.32844-1-gengdongjiu@huawei.com>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bAePj4EV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:34578 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jMu0F-0003Tf-AV
+	for alex.bennee@linaro.org; Fri, 10 Apr 2020 09:47:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45734)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <sundeep.lkml@gmail.com>) id 1jMtzn-0003Ou-1g
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2020 09:47:03 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <sundeep.lkml@gmail.com>) id 1jMtzh-0002kz-Tf
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2020 09:46:57 -0400
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:42900)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+ id 1jMtzX-00021x-RM; Fri, 10 Apr 2020 09:46:44 -0400
+Received: by mail-io1-xd42.google.com with SMTP id y17so1753912iow.9;
+ Fri, 10 Apr 2020 06:46:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=0LDWXyvRVFgeMnwzaAhFGEezldF9RkP2cc9XOKxcthg=;
+ b=bAePj4EV9YnfKerAcXuDMXrYCJwJhQ21Fej20EMX8R/9/09SP9GsXrSCH/V5lrm6/4
+ trJ65+1+anl80jNB/+nu7r/ZV0CMsyPrSR4TZPQtSqo7XPxutHeeFEGVolVi1thEov+W
+ lnObfj/q174DamdPM5397fgSUYp1nICrm1T3xoRlJwpKWcyk4rzTdhWCqtpi421VahKr
+ kprZ4i6g3OpWTl3knge3IwFC8fjc8g395btbAEbuNWTfcgmcndxLhCu/JUiCy/PF4cz1
+ JeCyD+sso58GhSVAsEabldcIouVk307yd5br+EYgHrwYyaOalmeJZi267IV5TNC0KKwq
+ WVdg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=0LDWXyvRVFgeMnwzaAhFGEezldF9RkP2cc9XOKxcthg=;
+ b=ajIZLaF/Uc0RcGXJGNgBQ2hLsffE2SaylO4NekowmX+CL43fc4N9GxUYcGgFclFBwk
+ xVDKMr7VJN9WJu+DaDVQXsHmq7saO70TZKs//yBVieklLkHl1dqqxGTYGvCJ+CbkXBIj
+ jEJMZWGL7xprrpQWGjMVKjPy7bbJAZR9XuBYcBr2Ha339eo/+KHkiHiLVRrL43nhnoiA
+ 4zU8BmYEfYxE/OsxWXEvosfPdzVK3D5Z2N6WZUoezturgUAET4q/yhhoq+W7bl/G7S59
+ oN2foqpPb5KVX2fzn1+X7cGEs37x+5aOQ6BnaGEFO+m/9AOGk0oLaXeAh3ETV9OX8TJI
+ yUYg==
+X-Gm-Message-State: AGi0PubDOledWUR/ndmvwZ70WoyBx/J0wbKsy82HspYQO5XrVHaPRRmd
+ D5BFI/qR6ctbQj1P9i0xtDIKRsf7+IiFkn61rfs=
+X-Received: by 2002:a05:6602:14d4:: with SMTP id
+ b20mr4371098iow.132.1586526402385; 
+ Fri, 10 Apr 2020 06:46:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.151.151.243]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 02OUZwd1rr6d
+References: <1586258134-6932-1-git-send-email-sundeep.lkml@gmail.com>
+ <1586258134-6932-2-git-send-email-sundeep.lkml@gmail.com>
+ <4445ded1-e2ac-f422-4e5b-091af5efc9f4@redhat.com>
+In-Reply-To: <4445ded1-e2ac-f422-4e5b-091af5efc9f4@redhat.com>
+From: sundeep subbaraya <sundeep.lkml@gmail.com>
+Date: Fri, 10 Apr 2020 19:16:31 +0530
+Message-ID: <CALHRZuphUp1kq9vQOOwYizvQ=oE-eJLaX-+Ac+5Q0jdoROdY8A@mail.gmail.com>
+Subject: Re: [Qemu devel PATCH v3 1/3] hw/net: Add Smartfusion2 emac block
+To: Jason Wang <jasowang@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::d42
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vqPulWB2Q7Wd
 
-Add APEI/GHES detailed design document
+Hi Jason,
 
-Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
----
- docs/specs/acpi_hest_ghes.rst | 110 ++++++++++++++++++++++++++++++++++++++++++
- docs/specs/index.rst          |   1 +
- 2 files changed, 111 insertions(+)
- create mode 100644 docs/specs/acpi_hest_ghes.rst
+On Thu, Apr 9, 2020 at 9:40 AM Jason Wang <jasowang@redhat.com> wrote:
+>
+>
+> On 2020/4/7 =E4=B8=8B=E5=8D=887:15, sundeep.lkml@gmail.com wrote:
+> > From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> >
+> > Modelled Ethernet MAC of Smartfusion2 SoC.
+> > Micrel KSZ8051 PHY is present on Emcraft's
+> > SOM kit hence same PHY is emulated.
+> >
+> > Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> > ---
+> >   MAINTAINERS                |   2 +
+> >   hw/net/Makefile.objs       |   1 +
+> >   hw/net/msf2-emac.c         | 556 ++++++++++++++++++++++++++++++++++++=
++++++++++
+> >   include/hw/net/msf2-emac.h |  50 ++++
+> >   4 files changed, 609 insertions(+)
+> >   create mode 100644 hw/net/msf2-emac.c
+> >   create mode 100644 include/hw/net/msf2-emac.h
+> >
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index 9d156d7..6a103f2 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -918,6 +918,8 @@ F: include/hw/arm/msf2-soc.h
+> >   F: include/hw/misc/msf2-sysreg.h
+> >   F: include/hw/timer/mss-timer.h
+> >   F: include/hw/ssi/mss-spi.h
+> > +F: hw/net/msf2-emac.c
+> > +F: include/hw/net/msf2-emac.h
+> >
+> >   Emcraft M2S-FG484
+> >   M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> > diff --git a/hw/net/Makefile.objs b/hw/net/Makefile.objs
+> > index af4d194..f2b7398 100644
+> > --- a/hw/net/Makefile.objs
+> > +++ b/hw/net/Makefile.objs
+> > @@ -55,3 +55,4 @@ common-obj-$(CONFIG_ROCKER) +=3D rocker/rocker.o rock=
+er/rocker_fp.o \
+> >   obj-$(call lnot,$(CONFIG_ROCKER)) +=3D rocker/qmp-norocker.o
+> >
+> >   common-obj-$(CONFIG_CAN_BUS) +=3D can/
+> > +common-obj-$(CONFIG_MSF2) +=3D msf2-emac.o
+> > diff --git a/hw/net/msf2-emac.c b/hw/net/msf2-emac.c
+> > new file mode 100644
+> > index 0000000..cb80e19
+> > --- /dev/null
+> > +++ b/hw/net/msf2-emac.c
+> > @@ -0,0 +1,556 @@
+> > +/*
+> > + * QEMU model of the Smartfusion2 Ethernet MAC.
+> > + *
+> > + * Copyright (c) 2020 Subbaraya Sundeep <sundeep.lkml@gmail.com>.
+> > + *
+> > + * Permission is hereby granted, free of charge, to any person obtaini=
+ng a copy
+> > + * of this software and associated documentation files (the "Software"=
+), to deal
+> > + * in the Software without restriction, including without limitation t=
+he rights
+> > + * to use, copy, modify, merge, publish, distribute, sublicense, and/o=
+r sell
+> > + * copies of the Software, and to permit persons to whom the Software =
+is
+> > + * furnished to do so, subject to the following conditions:
+> > + *
+> > + * The above copyright notice and this permission notice shall be incl=
+uded in
+> > + * all copies or substantial portions of the Software.
+> > + *
+> > + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXP=
+RESS OR
+> > + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABI=
+LITY,
+> > + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT S=
+HALL
+> > + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES O=
+R OTHER
+> > + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARI=
+SING FROM,
+> > + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALI=
+NGS IN
+> > + * THE SOFTWARE.
+> > + *
+> > + * Refer to section Ethernet MAC in the document:
+> > + * UG0331: SmartFusion2 Microcontroller Subsystem User Guide
+> > + * Datasheet URL:
+> > + * https://www.microsemi.com/document-portal/cat_view/56661-internal-d=
+ocuments/
+> > + * 56758-soc?lang=3Den&limit=3D20&limitstart=3D220
+> > + */
+> > +
+> > +#include "qemu/osdep.h"
+> > +#include "qemu-common.h"
+> > +#include "qemu/log.h"
+> > +#include "exec/address-spaces.h"
+> > +#include "hw/registerfields.h"
+> > +#include "hw/net/msf2-emac.h"
+> > +#include "hw/net/mii.h"
+> > +#include "hw/irq.h"
+> > +#include "net/net.h"
+> > +#include "hw/qdev-properties.h"
+> > +#include "migration/vmstate.h"
+> > +
+> > +REG32(CFG1, 0x0)
+> > +REG32(CFG2, 0x4)
+> > +REG32(IFG, 0x8)
+> > +REG32(HALF_DUPLEX, 0xc)
+> > +REG32(FRM_LEN, 0x10)
+> > +REG32(MII_CMD, 0x24)
+> > +REG32(MII_ADDR, 0x28)
+> > +REG32(MII_CTL, 0x2c)
+> > +REG32(MII_STS, 0x30)
+> > +REG32(STA1, 0x40)
+> > +REG32(STA2, 0x44)
+> > +REG32(FIFO_CFG0, 0x48)
+> > +REG32(DMA_TX_CTL, 0x180)
+> > +REG32(DMA_TX_DESC, 0x184)
+> > +REG32(DMA_TX_STATUS, 0x188)
+> > +REG32(DMA_RX_CTL, 0x18c)
+> > +REG32(DMA_RX_DESC, 0x190)
+> > +REG32(DMA_RX_STATUS, 0x194)
+> > +REG32(DMA_IRQ_MASK, 0x198)
+> > +REG32(DMA_IRQ, 0x19c)
+> > +
+> > +FIELD(DMA, PKTCNT, 16, 8)
+> > +
+> > +#define R_DMA_PKT_TXRX          (1 << 0)
+> > +#define DMA_TX_UNDERRUN         (1 << 1)
+> > +#define DMA_RX_OVERFLOW         (1 << 2)
+> > +
+> > +#define EMPTY_MASK              (1 << 31)
+> > +#define PKT_SIZE                0x7FF
+> > +
+> > +#define CFG1_RESET              (1 << 31)
+> > +#define CFG1_RX_EN              (1 << 2)
+> > +#define CFG1_TX_EN              (1 << 0)
+> > +
+> > +#define DMA_TX_CTL_EN           (1 << 0)
+> > +#define DMA_RX_CTL_EN           (1 << 0)
+> > +
+> > +#define MII_CMD_READ            (1 << 0)
+> > +
+> > +#define PHYADDR                 0x1
+> > +#define MII_ADDR_MASK           0x1F
+> > +#define PHY_ADDR_SHIFT          8
+> > +#define MAX_PKT_SIZE            2048
+> > +
+> > +typedef struct {
+> > +    uint32_t pktaddr;
+> > +    uint32_t pktsize;
+> > +    uint32_t next;
+> > +} EmacDesc;
+> > +
+> > +static uint32_t emac_get_isr(MSF2EmacState *s)
+> > +{
+> > +    uint32_t ier =3D s->regs[R_DMA_IRQ_MASK];
+> > +    uint32_t tx =3D s->regs[R_DMA_TX_STATUS] & 0xF;
+> > +    uint32_t rx =3D s->regs[R_DMA_RX_STATUS] & 0xF;
+> > +    uint32_t isr =3D (rx << 4) | tx;
+> > +
+> > +    s->regs[R_DMA_IRQ] =3D ier & isr;
+> > +    return s->regs[R_DMA_IRQ];
+> > +}
+> > +
+> > +static void emac_update_irq(MSF2EmacState *s)
+> > +{
+> > +    bool intr =3D emac_get_isr(s);
+> > +
+> > +    qemu_set_irq(s->irq, intr);
+> > +}
+> > +
+> > +static void emac_load_desc(MSF2EmacState *s, EmacDesc *d, hwaddr desc)
+> > +{
+> > +    address_space_read(&s->dma_as, desc, MEMTXATTRS_UNSPECIFIED,
+> > +                       (uint8_t *)d, sizeof *d);
+> > +    /* Convert from LE into host endianness. */
+> > +    d->pktaddr =3D le32_to_cpu(d->pktaddr);
+> > +    d->pktsize =3D le32_to_cpu(d->pktsize);
+> > +    d->next =3D le32_to_cpu(d->next);
+> > +}
+> > +
+> > +static void emac_store_desc(MSF2EmacState *s, EmacDesc *d, hwaddr desc=
+)
+> > +{
+> > +    /* Convert from host endianness into LE. */
+> > +    d->pktaddr =3D cpu_to_le32(d->pktaddr);
+> > +    d->pktsize =3D cpu_to_le32(d->pktsize);
+> > +    d->next =3D cpu_to_le32(d->next);
+> > +
+> > +    address_space_write(&s->dma_as, desc, MEMTXATTRS_UNSPECIFIED,
+> > +                        (uint8_t *)d, sizeof *d);
+> > +}
+> > +
+> > +static void msf2_dma_tx(MSF2EmacState *s)
+> > +{
+> > +    hwaddr desc =3D s->regs[R_DMA_TX_DESC];
+> > +    uint8_t buf[MAX_PKT_SIZE];
+> > +    EmacDesc d;
+> > +    int size;
+> > +    uint8_t pktcnt;
+> > +    uint32_t status;
+> > +
+> > +    if (!(s->regs[R_CFG1] & CFG1_TX_EN)) {
+> > +        return;
+> > +    }
+> > +
+> > +    while (1) {
+> > +        emac_load_desc(s, &d, desc);
+> > +        if (d.pktsize & EMPTY_MASK) {
+> > +            break;
+> > +        }
+> > +        size =3D d.pktsize & PKT_SIZE;
+> > +        address_space_read(&s->dma_as, d.pktaddr, MEMTXATTRS_UNSPECIFI=
+ED,
+> > +                           buf, size);
+> > +        /*
+> > +         * This is very basic way to send packets. Ideally there shoul=
+d be
+> > +         * a FIFO and packets should be sent out from FIFO only when
+> > +         * R_CFG1 bit 0 is set.
+> > +         */
+> > +        qemu_send_packet(qemu_get_queue(s->nic), buf, size);
+>
+>
+> It looks to me loopback is not implemented.
 
-diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
-new file mode 100644
-index 0000000..68f1fbe
---- /dev/null
-+++ b/docs/specs/acpi_hest_ghes.rst
-@@ -0,0 +1,110 @@
-+APEI tables generating and CPER record
-+======================================
-+
-+..
-+   Copyright (c) 2020 HUAWEI TECHNOLOGIES CO., LTD.
-+
-+   This work is licensed under the terms of the GNU GPL, version 2 or later.
-+   See the COPYING file in the top-level directory.
-+
-+Design Details
-+--------------
-+
-+::
-+
-+         etc/acpi/tables                           etc/hardware_errors
-+      ====================                   ===============================
-+  + +--------------------------+            +----------------------------+
-+  | | HEST                     | +--------->|    error_block_address1    |------+
-+  | +--------------------------+ |          +----------------------------+      |
-+  | | GHES1                    | | +------->|    error_block_address2    |------+-+
-+  | +--------------------------+ | |        +----------------------------+      | |
-+  | | .................        | | |        |      ..............        |      | |
-+  | | error_status_address-----+-+ |        -----------------------------+      | |
-+  | | .................        |   |   +--->|    error_block_addressN    |------+-+---+
-+  | | read_ack_register--------+-+ |   |    +----------------------------+      | |   |
-+  | | read_ack_preserve        | +-+---+--->|     read_ack_register1     |      | |   |
-+  | | read_ack_write           |   |   |    +----------------------------+      | |   |
-+  + +--------------------------+   | +-+--->|     read_ack_register2     |      | |   |
-+  | | GHES2                    |   | | |    +----------------------------+      | |   |
-+  + +--------------------------+   | | |    |       .............        |      | |   |
-+  | | .................        |   | | |    +----------------------------+      | |   |
-+  | | error_status_address-----+---+ | | +->|     read_ack_registerN     |      | |   |
-+  | | .................        |     | | |  +----------------------------+      | |   |
-+  | | read_ack_register--------+-----+ | |  |Generic Error Status Block 1|<-----+ |   |
-+  | | read_ack_preserve        |       | |  |-+------------------------+-+        |   |
-+  | | read_ack_write           |       | |  | |          CPER          | |        |   |
-+  + +--------------------------|       | |  | |          CPER          | |        |   |
-+  | | ...............          |       | |  | |          ....          | |        |   |
-+  + +--------------------------+       | |  | |          CPER          | |        |   |
-+  | | GHESN                    |       | |  |-+------------------------+-|        |   |
-+  + +--------------------------+       | |  |Generic Error Status Block 2|<-------+   |
-+  | | .................        |       | |  |-+------------------------+-+            |
-+  | | error_status_address-----+-------+ |  | |           CPER         | |            |
-+  | | .................        |         |  | |           CPER         | |            |
-+  | | read_ack_register--------+---------+  | |           ....         | |            |
-+  | | read_ack_preserve        |            | |           CPER         | |            |
-+  | | read_ack_write           |            +-+------------------------+-+            |
-+  + +--------------------------+            |         ..........         |            |
-+                                            |----------------------------+            |
-+                                            |Generic Error Status Block N |<----------+
-+                                            |-+-------------------------+-+
-+                                            | |          CPER           | |
-+                                            | |          CPER           | |
-+                                            | |          ....           | |
-+                                            | |          CPER           | |
-+                                            +-+-------------------------+-+
-+
-+
-+(1) QEMU generates the ACPI HEST table. This table goes in the current
-+    "etc/acpi/tables" fw_cfg blob. Each error source has different
-+    notification types.
-+
-+(2) A new fw_cfg blob called "etc/hardware_errors" is introduced. QEMU
-+    also needs to populate this blob. The "etc/hardware_errors" fw_cfg blob
-+    contains an address registers table and an Error Status Data Block table.
-+
-+(3) The address registers table contains N Error Block Address entries
-+    and N Read Ack Register entries. The size for each entry is 8-byte.
-+    The Error Status Data Block table contains N Error Status Data Block
-+    entries. The size for each entry is 4096(0x1000) bytes. The total size
-+    for the "etc/hardware_errors" fw_cfg blob is (N * 8 * 2 + N * 4096) bytes.
-+    N is the number of the kinds of hardware error sources.
-+
-+(4) QEMU generates the ACPI linker/loader script for the firmware. The
-+    firmware pre-allocates memory for "etc/acpi/tables", "etc/hardware_errors"
-+    and copies blob contents there.
-+
-+(5) QEMU generates N ADD_POINTER commands, which patch addresses in the
-+    "error_status_address" fields of the HEST table with a pointer to the
-+    corresponding "address registers" in the "etc/hardware_errors" blob.
-+
-+(6) QEMU generates N ADD_POINTER commands, which patch addresses in the
-+    "read_ack_register" fields of the HEST table with a pointer to the
-+    corresponding "read_ack_register" within the "etc/hardware_errors" blob.
-+
-+(7) QEMU generates N ADD_POINTER commands for the firmware, which patch
-+    addresses in the "error_block_address" fields with a pointer to the
-+    respective "Error Status Data Block" in the "etc/hardware_errors" blob.
-+
-+(8) QEMU defines a third and write-only fw_cfg blob which is called
-+    "etc/hardware_errors_addr". Through that blob, the firmware can send back
-+    the guest-side allocation addresses to QEMU. The "etc/hardware_errors_addr"
-+    blob contains a 8-byte entry. QEMU generates a single WRITE_POINTER command
-+    for the firmware. The firmware will write back the start address of
-+    "etc/hardware_errors" blob to the fw_cfg file "etc/hardware_errors_addr".
-+
-+(9) When QEMU gets a SIGBUS from the kernel, QEMU writes CPER into corresponding
-+    "Error Status Data Block", guest memory, and then injects platform specific
-+    interrupt (in case of arm/virt machine it's Synchronous External Abort) as a
-+    notification which is necessary for notifying the guest.
-+
-+(10) This notification (in virtual hardware) will be handled by the guest
-+     kernel, on receiving notification, guest APEI driver could read the CPER error
-+     and take appropriate action.
-+
-+(11) kvm_arch_on_sigbus_vcpu() uses source_id as index in "etc/hardware_errors" to
-+     find out "Error Status Data Block" entry corresponding to error source. So supported
-+     source_id values should be assigned here and not be changed afterwards to make sure
-+     that guest will write error into expected "Error Status Data Block" even if guest was
-+     migrated to a newer QEMU.
-diff --git a/docs/specs/index.rst b/docs/specs/index.rst
-index de46a8b..426632a 100644
---- a/docs/specs/index.rst
-+++ b/docs/specs/index.rst
-@@ -14,3 +14,4 @@ Contents:
-    ppc-spapr-xive
-    acpi_hw_reduced_hotplug
-    tpm
-+   acpi_hest_ghes
--- 
-1.8.3.1
+Right. I will do that.
+>
+>
+> > +        d.pktsize |=3D EMPTY_MASK;
+> > +        emac_store_desc(s, &d, desc);
+> > +        /* update sent packets count */
+> > +        status =3D s->regs[R_DMA_TX_STATUS];
+> > +        pktcnt =3D extract32(status, R_DMA_PKTCNT_SHIFT, 8);
+> > +        pktcnt++;
+> > +        s->regs[R_DMA_TX_STATUS] =3D deposit32(status, R_DMA_PKTCNT_SH=
+IFT,
+> > +                                             8, pktcnt);
+> > +        s->regs[R_DMA_TX_STATUS] |=3D R_DMA_PKT_TXRX;
+> > +        desc =3D d.next;
+> > +    }
+> > +    s->regs[R_DMA_TX_STATUS] |=3D DMA_TX_UNDERRUN;
+> > +    s->regs[R_DMA_TX_CTL] &=3D ~DMA_TX_CTL_EN;
+> > +}
+> > +
+> > +static void msf2_phy_update_link(MSF2EmacState *s)
+> > +{
+> > +    /* Autonegotiation status mirrors link status. */
+> > +    if (qemu_get_queue(s->nic)->link_down) {
+> > +        s->phy_regs[MII_BMSR] &=3D ~(MII_BMSR_AN_COMP |
+> > +                                         MII_BMSR_LINK_ST);
+> > +    } else {
+> > +        s->phy_regs[MII_BMSR] |=3D (MII_BMSR_AN_COMP |
+> > +                                         MII_BMSR_LINK_ST);
+> > +    }
+> > +}
+> > +
+> > +static void msf2_phy_reset(MSF2EmacState *s)
+> > +{
+> > +    memset(&s->phy_regs[0], 0, sizeof(s->phy_regs));
+> > +    s->phy_regs[MII_BMCR] =3D 0x1140;
+> > +    s->phy_regs[MII_BMSR] =3D 0x7968;
+> > +    s->phy_regs[MII_PHYID1] =3D 0x0022;
+> > +    s->phy_regs[MII_PHYID2] =3D 0x1550;
+> > +    s->phy_regs[MII_ANAR] =3D 0x01E1;
+> > +    s->phy_regs[MII_ANLPAR] =3D 0xCDE1;
+> > +
+> > +    msf2_phy_update_link(s);
+> > +}
+> > +
+> > +static void write_to_phy(MSF2EmacState *s)
+> > +{
+> > +    uint8_t reg_addr =3D s->regs[R_MII_ADDR] & MII_ADDR_MASK;
+> > +    uint8_t phy_addr =3D (s->regs[R_MII_ADDR] >> PHY_ADDR_SHIFT) & MII=
+_ADDR_MASK;
+> > +    uint16_t data =3D s->regs[R_MII_CTL] & 0xFFFF;
+> > +
+> > +    if (phy_addr !=3D PHYADDR) {
+> > +        return;
+> > +    }
+> > +
+> > +    switch (reg_addr) {
+> > +    case MII_BMCR:
+> > +        if (data & MII_BMCR_RESET) {
+> > +            /* Phy reset */
+> > +            msf2_phy_reset(s);
+> > +            data &=3D ~MII_BMCR_RESET;
+> > +        }
+> > +        if (data & MII_BMCR_AUTOEN) {
+> > +            /* Complete autonegotiation immediately */
+> > +            data &=3D ~MII_BMCR_AUTOEN;
+> > +            s->phy_regs[MII_BMSR] |=3D MII_BMSR_AN_COMP;
+> > +        }
+> > +        break;
+> > +    }
+> > +
+> > +    s->phy_regs[reg_addr] =3D data;
+> > +}
+> > +
+> > +static uint16_t read_from_phy(MSF2EmacState *s)
+> > +{
+> > +    uint8_t reg_addr =3D s->regs[R_MII_ADDR] & MII_ADDR_MASK;
+> > +    uint8_t phy_addr =3D (s->regs[R_MII_ADDR] >> PHY_ADDR_SHIFT) & MII=
+_ADDR_MASK;
+> > +
+> > +    if (phy_addr =3D=3D PHYADDR) {
+> > +        return s->phy_regs[reg_addr];
+> > +    } else {
+> > +        return 0xFFFF;
+> > +    }
+> > +}
+> > +
+> > +static void msf2_emac_do_reset(MSF2EmacState *s)
+> > +{
+> > +    memset(&s->regs[0], 0, sizeof(s->regs));
+> > +    s->regs[R_CFG1] =3D 0x80000000;
+> > +    s->regs[R_CFG2] =3D 0x00007000;
+> > +    s->regs[R_IFG] =3D 0x40605060;
+> > +    s->regs[R_HALF_DUPLEX] =3D 0x00A1F037;
+> > +    s->regs[R_FRM_LEN] =3D 0x00000600;
+> > +
+> > +    msf2_phy_reset(s);
+> > +}
+> > +
+> > +static uint64_t emac_read(void *opaque, hwaddr addr, unsigned int size=
+)
+> > +{
+> > +    MSF2EmacState *s =3D opaque;
+> > +    uint32_t r =3D 0;
+> > +
+> > +    addr >>=3D 2;
+> > +
+> > +    switch (addr) {
+> > +    case R_DMA_IRQ:
+> > +        r =3D emac_get_isr(s);
+> > +        break;
+> > +    default:
+> > +        if (addr < ARRAY_SIZE(s->regs)) {
+> > +            r =3D s->regs[addr];
+> > +        } else {
+> > +            qemu_log_mask(LOG_GUEST_ERROR,
+> > +                         "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func=
+__,
+> > +                         addr * 4);
+> > +            return r;
+> > +        }
+> > +        break;
+> > +    }
+> > +    return r;
+> > +}
+> > +
+> > +static void emac_write(void *opaque, hwaddr addr, uint64_t val64,
+> > +        unsigned int size)
+> > +{
+> > +    MSF2EmacState *s =3D opaque;
+> > +    uint32_t value =3D val64;
+> > +    uint32_t enreqbits;
+> > +    uint8_t pktcnt;
+> > +
+> > +    addr >>=3D 2;
+> > +    switch (addr) {
+> > +    case R_DMA_TX_CTL:
+> > +        s->regs[addr] =3D value;
+> > +        if (value & DMA_TX_CTL_EN) {
+> > +            msf2_dma_tx(s);
+> > +        }
+> > +        break;
+> > +    case R_DMA_RX_CTL:
+> > +        s->regs[addr] =3D value;
+> > +        if (value & DMA_RX_CTL_EN) {
+> > +            s->rx_desc =3D s->regs[R_DMA_RX_DESC];
+> > +            qemu_flush_queued_packets(qemu_get_queue(s->nic));
+> > +        }
+> > +        break;
+> > +    case R_CFG1:
+> > +        if (value & CFG1_RESET) {
+> > +            msf2_emac_do_reset(s);
+> > +        }
+> > +    case R_FIFO_CFG0:
+> > +       /*
+> > +        * For our implementation, turning on modules is instantaneous,
+> > +        * so the states requested via the *ENREQ bits appear in the
+> > +        * *ENRPLY bits immediately. Also the reset bits to reset PE-MC=
+XMAC
+> > +        * module are not emulated here since it deals with start of fr=
+ames,
+> > +        * inter-packet gap and control frames.
+> > +        */
+> > +        enreqbits =3D extract32(value, 8, 5);
+> > +        value =3D deposit32(value, 16, 5, enreqbits);
+> > +        s->regs[addr] =3D value;
+> > +        break;
+> > +    case R_DMA_TX_DESC:
+> > +        if (value & 0x3) {
+> > +            qemu_log_mask(LOG_GUEST_ERROR, "Tx Descriptor address shou=
+ld be"
+> > +                        " 32 bit aligned\n");
+> > +        }
+> > +        /* Ignore [1:0] bits */
+> > +        s->regs[addr] =3D value & 0xFFFFFFFC;
+> > +        break;
+> > +    case R_DMA_RX_DESC:
+> > +        if (value & 0x3) {
+> > +            qemu_log_mask(LOG_GUEST_ERROR, "Rx Descriptor address shou=
+ld be"
+> > +                        " 32 bit aligned\n");
+> > +        }
+> > +        /* Ignore [1:0] bits */
+> > +        s->regs[addr] =3D value & 0xFFFFFFFC;
+> > +        break;
+> > +    case R_DMA_TX_STATUS:
+> > +        if (value & DMA_TX_UNDERRUN) {
+> > +            s->regs[addr] &=3D ~DMA_TX_UNDERRUN;
+> > +        }
+> > +        if (value & R_DMA_PKT_TXRX) {
+> > +            pktcnt =3D extract32(s->regs[addr], R_DMA_PKTCNT_SHIFT,
+> > +                               R_DMA_PKTCNT_LENGTH);
+> > +            pktcnt--;
+> > +            s->regs[addr] =3D deposit32(s->regs[addr], R_DMA_PKTCNT_SH=
+IFT,
+> > +                                      8, pktcnt);
+> > +            if (pktcnt =3D=3D 0) {
+> > +                s->regs[addr] &=3D ~R_DMA_PKT_TXRX;
+> > +            }
+> > +        }
+> > +        break;
+> > +    case R_DMA_RX_STATUS:
+> > +        if (value & DMA_RX_OVERFLOW) {
+> > +            s->regs[addr] &=3D ~DMA_RX_OVERFLOW;
+> > +        }
+> > +        if (value & R_DMA_PKT_TXRX) {
+> > +            pktcnt =3D extract32(s->regs[addr], R_DMA_PKTCNT_SHIFT,
+> > +                               R_DMA_PKTCNT_LENGTH);
+> > +            pktcnt--;
+> > +            s->regs[addr] =3D deposit32(s->regs[addr], R_DMA_PKTCNT_SH=
+IFT,
+> > +                                      8, pktcnt);
+> > +            if (pktcnt =3D=3D 0) {
+> > +                s->regs[addr] &=3D ~R_DMA_PKT_TXRX;
+> > +            }
+> > +        }
+> > +        break;
+> > +    case R_DMA_IRQ:
+> > +        break;
+> > +    case R_MII_CMD:
+> > +        if (value & MII_CMD_READ) {
+> > +            s->regs[R_MII_STS] =3D read_from_phy(s);
+> > +        }
+> > +        break;
+> > +    case R_MII_CTL:
+> > +        s->regs[addr] =3D value;
+> > +        write_to_phy(s);
+> > +        break;
+> > +    default:
+> > +        if (addr < ARRAY_SIZE(s->regs)) {
+> > +            s->regs[addr] =3D value;
+> > +        } else {
+> > +            qemu_log_mask(LOG_GUEST_ERROR,
+> > +                         "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func=
+__,
+> > +                         addr * 4);
+> > +            return;
+> > +        }
+> > +        break;
+> > +    }
+> > +    emac_update_irq(s);
+> > +}
+> > +
+> > +static const MemoryRegionOps emac_ops =3D {
+> > +    .read =3D emac_read,
+> > +    .write =3D emac_write,
+> > +    .endianness =3D DEVICE_NATIVE_ENDIAN,
+> > +    .valid =3D {
+> > +        .min_access_size =3D 4,
+> > +        .max_access_size =3D 4
+> > +    }
+> > +};
+> > +
+> > +static bool emac_can_rx(NetClientState *nc)
+> > +{
+> > +    MSF2EmacState *s =3D qemu_get_nic_opaque(nc);
+> > +
+> > +    return (s->regs[R_CFG1] & CFG1_RX_EN) &&
+> > +           (s->regs[R_DMA_RX_CTL] & DMA_RX_CTL_EN);
+> > +}
+> > +
+> > +static bool match_addr(MSF2EmacState *s, const uint8_t *buf)
+> > +{
+> > +    /* The broadcast MAC address: FF:FF:FF:FF:FF:FF */
+> > +    static const uint8_t broadcast_addr[] =3D { 0xFF, 0xFF, 0xFF, 0xFF=
+,
+> > +                                              0xFF, 0xFF };
+> > +    uint8_t addr[6];
+> > +
+> > +    if (!memcmp(buf, broadcast_addr, sizeof(broadcast_addr))) {
+> > +        return true;
+> > +    }
+> > +
+> > +    /*
+> > +     * R_STA1 [31:24] : octet 1 of mac address
+> > +     * R_STA1 [23:16] : octet 2 of mac address
+> > +     *          .
+> > +     *          .
+> > +     * R_STA2 [31:24] : octet 5 of mac address
+> > +     * R_STA2 [23:16] : octet 6 of mac address
+> > +     */
+> > +    stl_le_p(addr, s->regs[R_STA1]);
+> > +    stw_le_p(addr + 4, s->regs[R_STA2] >> 16);
+> > +
+> > +    if (!memcmp(buf, addr, sizeof(addr))) {
+> > +        return false;
+> > +    }
+> > +
+> > +    return true;
+> > +}
+> > +
+> > +static ssize_t emac_rx(NetClientState *nc, const uint8_t *buf, size_t =
+size)
+> > +{
+> > +    MSF2EmacState *s =3D qemu_get_nic_opaque(nc);
+> > +    EmacDesc d;
+> > +    uint8_t pktcnt;
+> > +    uint32_t status;
+> > +
+> > +    if (size > (s->regs[R_FRM_LEN] & 0xFFFF)) {
+> > +        return -1;
+> > +    }
+> > +    if (!match_addr(s, buf)) {
+> > +        return -1;
+> > +    }
+> > +
+> > +    emac_load_desc(s, &d, s->rx_desc);
+> > +
+> > +    if (d.pktsize & EMPTY_MASK) {
+> > +        address_space_write(&s->dma_as, d.pktaddr, MEMTXATTRS_UNSPECIF=
+IED,
+> > +                            buf, size & PKT_SIZE);
+>
+>
+> Do we need to check whether the descriptor has sufficient space for the
+> packet?
+
+Not needed. As per datasheet:
+"For the transmit operations, the 12-bit field gives the size of
+packet to be transferred in bytes.
+In the receive operations, the DMA controller writes the
+number of bytes received to this field.
+The value of this field prior to the transfer being made is
+ignored."
+
+Thanks,
+Sundeep
+
+>
+> Thanks
+>
+>
+> > +        d.pktsize =3D size & PKT_SIZE;
+> > +        emac_store_desc(s, &d, s->rx_desc);
+> > +        /* update received packets count */
+> > +        status =3D s->regs[R_DMA_RX_STATUS];
+> > +        pktcnt =3D extract32(status, R_DMA_PKTCNT_SHIFT, 8);
+> > +        pktcnt++;
+> > +        s->regs[R_DMA_RX_STATUS] =3D deposit32(status, R_DMA_PKTCNT_SH=
+IFT,
+> > +                                             8, pktcnt);
+> > +        s->regs[R_DMA_RX_STATUS] |=3D R_DMA_PKT_TXRX;
+> > +        s->rx_desc =3D d.next;
+> > +    } else {
+> > +        s->regs[R_DMA_RX_CTL] &=3D ~DMA_RX_CTL_EN;
+> > +        s->regs[R_DMA_RX_STATUS] |=3D DMA_RX_OVERFLOW;
+> > +    }
+> > +    emac_update_irq(s);
+> > +    return size;
+> > +}
+> > +
+> > +static void msf2_emac_reset(DeviceState *dev)
+> > +{
+> > +    MSF2EmacState *s =3D MSS_EMAC(dev);
+> > +
+> > +    msf2_emac_do_reset(s);
+> > +}
+> > +
+> > +static void emac_set_link(NetClientState *nc)
+> > +{
+> > +    MSF2EmacState *s =3D qemu_get_nic_opaque(nc);
+> > +
+> > +    msf2_phy_update_link(s);
+> > +}
+> > +
+> > +static NetClientInfo net_msf2_emac_info =3D {
+> > +    .type =3D NET_CLIENT_DRIVER_NIC,
+> > +    .size =3D sizeof(NICState),
+> > +    .can_receive =3D emac_can_rx,
+> > +    .receive =3D emac_rx,
+> > +    .link_status_changed =3D emac_set_link,
+> > +};
+> > +
+> > +static void msf2_emac_realize(DeviceState *dev, Error **errp)
+> > +{
+> > +    MSF2EmacState *s =3D MSS_EMAC(dev);
+> > +
+> > +    address_space_init(&s->dma_as,
+> > +                       s->dma_mr ? s->dma_mr : get_system_memory(), "d=
+ma");
+> > +
+> > +    qemu_macaddr_default_if_unset(&s->conf.macaddr);
+> > +    s->nic =3D qemu_new_nic(&net_msf2_emac_info, &s->conf,
+> > +                          object_get_typename(OBJECT(dev)), dev->id, s=
+);
+> > +    qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a=
+);
+> > +}
+> > +
+> > +static void msf2_emac_init(Object *obj)
+> > +{
+> > +    MSF2EmacState *s =3D MSS_EMAC(obj);
+> > +
+> > +    sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
+> > +
+> > +    memory_region_init_io(&s->mmio, obj, &emac_ops, s,
+> > +                          "msf2-emac", R_MAX * 4);
+> > +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+> > +}
+> > +
+> > +static Property msf2_emac_properties[] =3D {
+> > +    DEFINE_NIC_PROPERTIES(MSF2EmacState, conf),
+> > +    DEFINE_PROP_END_OF_LIST(),
+> > +};
+> > +
+> > +static const VMStateDescription vmstate_msf2_emac =3D {
+> > +    .name =3D TYPE_MSS_EMAC,
+> > +    .version_id =3D 1,
+> > +    .minimum_version_id =3D 1,
+> > +    .fields =3D (VMStateField[]) {
+> > +        VMSTATE_UINT32(rx_desc, MSF2EmacState),
+> > +        VMSTATE_UINT16_ARRAY(phy_regs, MSF2EmacState, PHY_MAX_REGS),
+> > +        VMSTATE_UINT32_ARRAY(regs, MSF2EmacState, R_MAX),
+> > +        VMSTATE_END_OF_LIST()
+> > +    }
+> > +};
+> > +
+> > +static void msf2_emac_class_init(ObjectClass *klass, void *data)
+> > +{
+> > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> > +
+> > +    dc->realize =3D msf2_emac_realize;
+> > +    dc->reset =3D msf2_emac_reset;
+> > +    dc->vmsd =3D &vmstate_msf2_emac;
+> > +    device_class_set_props(dc, msf2_emac_properties);
+> > +}
+> > +
+> > +static const TypeInfo msf2_emac_info =3D {
+> > +    .name          =3D TYPE_MSS_EMAC,
+> > +    .parent        =3D TYPE_SYS_BUS_DEVICE,
+> > +    .instance_size =3D sizeof(MSF2EmacState),
+> > +    .instance_init =3D msf2_emac_init,
+> > +    .class_init    =3D msf2_emac_class_init,
+> > +};
+> > +
+> > +static void msf2_emac_register_types(void)
+> > +{
+> > +    type_register_static(&msf2_emac_info);
+> > +}
+> > +
+> > +type_init(msf2_emac_register_types)
+> > diff --git a/include/hw/net/msf2-emac.h b/include/hw/net/msf2-emac.h
+> > new file mode 100644
+> > index 0000000..ab0da62
+> > --- /dev/null
+> > +++ b/include/hw/net/msf2-emac.h
+> > @@ -0,0 +1,50 @@
+> > +/*
+> > + * QEMU model of the Smartfusion2 Ethernet MAC.
+> > + *
+> > + * Copyright (c) 2020 Subbaraya Sundeep <sundeep.lkml@gmail.com>.
+> > + *
+> > + * Permission is hereby granted, free of charge, to any person obtaini=
+ng a copy
+> > + * of this software and associated documentation files (the "Software"=
+), to deal
+> > + * in the Software without restriction, including without limitation t=
+he rights
+> > + * to use, copy, modify, merge, publish, distribute, sublicense, and/o=
+r sell
+> > + * copies of the Software, and to permit persons to whom the Software =
+is
+> > + * furnished to do so, subject to the following conditions:
+> > + *
+> > + * The above copyright notice and this permission notice shall be incl=
+uded in
+> > + * all copies or substantial portions of the Software.
+> > + *
+> > + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXP=
+RESS OR
+> > + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABI=
+LITY,
+> > + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT S=
+HALL
+> > + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES O=
+R OTHER
+> > + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARI=
+SING FROM,
+> > + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALI=
+NGS IN
+> > + * THE SOFTWARE.
+> > + */
+> > +
+> > +#include "hw/sysbus.h"
+> > +#include "net/net.h"
+> > +
+> > +#define TYPE_MSS_EMAC "msf2-emac"
+> > +#define MSS_EMAC(obj) \
+> > +    OBJECT_CHECK(MSF2EmacState, (obj), TYPE_MSS_EMAC)
+> > +
+> > +#define R_MAX         (0x1a0 / 4)
+> > +#define PHY_MAX_REGS  32
+> > +
+> > +typedef struct MSF2EmacState {
+> > +    SysBusDevice parent;
+> > +
+> > +    MemoryRegion mmio;
+> > +    MemoryRegion *dma_mr;
+> > +    AddressSpace dma_as;
+> > +
+> > +    qemu_irq irq;
+> > +    NICState *nic;
+> > +    NICConf conf;
+> > +
+> > +    uint32_t rx_desc;
+> > +    uint16_t phy_regs[PHY_MAX_REGS];
+> > +
+> > +    uint32_t regs[R_MAX];
+> > +} MSF2EmacState;
+>

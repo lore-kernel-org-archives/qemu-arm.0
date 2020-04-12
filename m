@@ -1,99 +1,99 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3138997lfm;
-        Sun, 12 Apr 2020 15:40:44 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJ/y7X4tw6EdT4siheYsSxdWVlTbK5RBd7MCadIdWiwh9msm0IvXyf5Q6JHOKb++nqi/GoN
-X-Received: by 2002:a37:4a14:: with SMTP id x20mr13989292qka.357.1586731244438;
-        Sun, 12 Apr 2020 15:40:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586731244; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3139153lfm;
+        Sun, 12 Apr 2020 15:40:58 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKVERdrYnT9EkupZGk5Ao/BcjKII2roxxlHLHLmLqI/UpgrPnu6pZtqO45+uWRJehxyqJMe
+X-Received: by 2002:a05:6214:1789:: with SMTP id ct9mr10669239qvb.21.1586731258155;
+        Sun, 12 Apr 2020 15:40:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586731258; cv=none;
         d=google.com; s=arc-20160816;
-        b=BLZHdbpQbBvmO9/K/1rSys0R1MvwYn5Q1zEf9y6IIOsJQDBVeb7o6nTqXFH+aOACpI
-         Y86mxUCvkgz17GSeNy/GsEx3kZjutSnufMKLRFYJKmIUKPZg6T1QhWIgkPaTQcnQDCr1
-         KANnHt3acacjs+tcsO51K2LMK98bs/9IvN/fU2Hqbd020CEJNDHwJyYAb5sVs8JWx2in
-         NCk/eLyJYrg7lVB1Q6WnX9JDm0qJ5byAxOSWxwMONfPbd6QPNYvMChX9hC8zm+Ldtewy
-         7KmQLdPFxTKhRboEsa8Jexai80HMf8dl6H3lsyz14QyKj7+tRDZnBlYX6mv8wd6PrGB7
-         +LYQ==
+        b=nA7AozW98PG6/j1C6rRaUBJXdnHaWNa+Sp7bz9Er3tqzdQbZPsyh2RIoskifZ4KokS
+         FesrimFBsvl+hY1yWT3fNEc1H/Hp81gUpTqoe9s5214QRoQ9eDg7yL3NemkjUoLHZoUh
+         fi1zx4n99x2+srKmmT/7KLTQRdO1xXm/PA48i64Zil3uCiCoSAEvDUuct96oenBBwPX0
+         J42OoUM9j+1aHjHJ48wpED7WW8NXwBkrx5WUVE5ouCvsO0qFZBYT719qnw4zc4UneCzv
+         aDbiUzX2U2Uj4CBDsz7IhS3i1xxj2W0M0+SKbdX0eJEgGw8rtKWSFAMNro/KTpyhr6GN
+         ejKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=s0AvIH4tmhY8dJIWOooS3DYC6YTsxY1MNRofHTiR85M=;
-        b=07r2MuDxngHfInHjXw4YstXPUhgKafiir3m8I0YtXOo4oa/duGUaFmX5BKQwaGYhU7
-         su2rFORuFMrIVuZ2MOCnkdcw9haYkT5snw7j9OGeEVXXW0kXDVreViC/GedJmW9cFGp7
-         6BoO0+7sFV0sfBe6WmNI7GnYxnsoknFL1NOgTtyuo1X1GYYROuoiPrpZo7P8Kf2NVtTQ
-         ni6tZPAuEqiBfvnNdQAEM0k94CXUHCR8RtTpFRNMyea5bNmKgb8XjZUCar1hgWznk/Zj
-         5fckDTBjy9Cg8AIXGpeDn+ds7DsGh6wcXeJQshi7LtiO/1/Wx9LlrNOW6jRVFGJlQggM
-         6K6w==
+        bh=rNOvzQC0gAZiW9IjgvdXICw1FeldG6faD6QdyriSpSA=;
+        b=xe8DPjhH1xo6P8wfOaGe2fZMeKcw/sal4BKkzFeJO5TUiPuqUVWVNiVl54R9KT5C8o
+         lSuKS3QyWYKKFjQj8i5IzuY0xoq5ejsbY/rXF6eNH/jcAgqaD8Tu2ilRnf/aue0bcJd/
+         YT/N3LzimLgTMM1VEZ0Xy5eL8DrdhcYtHqKgU4eqSc2DbxNAYTeI4hj3ZsNCicbwKuXp
+         gKnAxnordFmaZGnKnuUO0NTi13dUisPd6da2uTS76zpcRruVgZnEJQ8u2uPv0+sCar+m
+         5u4+CVRfy/ioMg9ZhsGSRq6RUQXq/1IaQvm5fiojQ2Nd5F3E7NwvyRIRiEW73tKWpBjj
+         BEaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="sJ/YqrK5";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Yms+dVno;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k194si5312764qke.63.2020.04.12.15.40.44
+        by mx.google.com with ESMTPS id h41si4720003qtk.45.2020.04.12.15.40.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Apr 2020 15:40:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 12 Apr 2020 15:40:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="sJ/YqrK5";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Yms+dVno;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:37784 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37786 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jNlHP-0005fn-T7
-	for alex.bennee@linaro.org; Sun, 12 Apr 2020 18:40:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47690)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jNlHd-0005hF-GI
+	for alex.bennee@linaro.org; Sun, 12 Apr 2020 18:40:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47674)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlDt-0006LZ-8Y
- for qemu-arm@nongnu.org; Sun, 12 Apr 2020 18:37:06 -0400
+ id 1jNlDs-0006JD-EZ
+ for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:37:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlDs-0002ky-4r
- for qemu-arm@nongnu.org; Sun, 12 Apr 2020 18:37:05 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:36717)
+ id 1jNlDr-0002jG-BG
+ for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:37:04 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:39444)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlDn-0002fI-Qo; Sun, 12 Apr 2020 18:36:59 -0400
-Received: by mail-wr1-x443.google.com with SMTP id u13so8049446wrp.3;
- Sun, 12 Apr 2020 15:36:59 -0700 (PDT)
+ id 1jNlDr-0002id-4d; Sun, 12 Apr 2020 18:37:03 -0400
+Received: by mail-wr1-x441.google.com with SMTP id p10so8517155wrt.6;
+ Sun, 12 Apr 2020 15:37:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=s0AvIH4tmhY8dJIWOooS3DYC6YTsxY1MNRofHTiR85M=;
- b=sJ/YqrK5TugYkQl5sc0s15+oijPE5rmDui2mmm426O3nS20g7Iqp2ltIuK0f0PBihj
- zN6rI0IbarDeMJvzhgzN9dAl5a89IN8iFLiBum11DWPxCw34nwRQPRZzxNHaNfKXKlW2
- 3taNV/vYtbmHh/XkeiuNMqVZjraJ3zIsdVqLGCmZTcQyZKjdTiOL9h1wbUaVF+0ZIM/L
- DGJBtNsbKlG1iR82A/FsRGmUt7tk4ZuyMSaghR9c+hSJ9RlLPWMs8rR5eKpmHlnr17Qc
- Ivmo5Ie0zkDMFGMzDIuZpSKSnvsu/cAiaozPT7HkKGLTxUzqrHA8VBE9EqiE6ToGqcz2
- mB8Q==
+ bh=rNOvzQC0gAZiW9IjgvdXICw1FeldG6faD6QdyriSpSA=;
+ b=Yms+dVnobgL/uTyskm/CPmGVpuY5K7rRdl/y/Xcw36vwxQ4cXdVkaf3wqlD8Za79ok
+ U/eQ0KdvGCCuYFZ6RYlgmadQw237gtmd5zOSr/E+aphrQk0rOZiAm1wPzlXJDvs9JINY
+ 8VnhhvZP4diyOC0umPSzp9tvtLp/ucbCoD6izhWzKJqtl71n/GtUO9MS/z+54RzS5EuG
+ TpszyNIilI0JzZmpURO6BKGFuZItPz4l9BMi0zWjeYqESlxn0f+uC1hL/8ZpSj+eM+4R
+ oE/CzP/7uRejFlskPIu9dMheg0X2Cma9G7Y8Fnm3Aj7SCBA5yxD6SJn6AeZN8ankWpGb
+ Xe7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=s0AvIH4tmhY8dJIWOooS3DYC6YTsxY1MNRofHTiR85M=;
- b=ikRldUAQPJNeIMPDLYBR9S+CYksDluwOWCm0HWTT9e+OTuxe7vxJAOixuElaU61a+i
- tgAd0Zk3YVWbxV7Q7qkWdgTmQmgQtuk3X1NZ/yQRPSpoSH+h9bajhxCkGPnv5q8QRddU
- H5KUNFjGwxTNCxsRCekD4caVqRAsbGMiUc3PUUkcDYfNz0ruXTn2i/ZiqjYKZJTEDJSz
- ypfOGPSjTPOZ4ZxEW67pJxu7xGhNHeOi9kDEGJVC7W/T8Yyt9Rp92jcsxjECszzo1mJS
- tKAMkrhN8Z2CbFeg/wTle6MuL3/NPIQKj+U2GZK9i3JJmjgfWsw5om5DJj9hfiibEftM
- Nw6w==
-X-Gm-Message-State: AGi0PuZAcdWTnR6YwJ5TYAlekcq7UeW6/dzqkm01oSkm3WFMB1kLJNci
- OTtOIxHOs3DY26EKrsBkweKVyfYGmTZNTA==
-X-Received: by 2002:adf:ee12:: with SMTP id y18mr15131900wrn.289.1586731018704; 
- Sun, 12 Apr 2020 15:36:58 -0700 (PDT)
+ bh=rNOvzQC0gAZiW9IjgvdXICw1FeldG6faD6QdyriSpSA=;
+ b=gSGniEl22W1ter74CjmVc3KYe9zSvzn8Ksi3aFaV5/Bj9NbFZBVj4lUEews8eICEzw
+ bIHSRWnDtViC0op4xQRxiZX0Y2qBn9NXqsnF7UddayAQtfmHCYaibWOdyhbzpaz7BnDk
+ /GL5iBb4NVq6U+499SblbENep/l9adNiw92XjTYxekSEnsBMHTG46NhztrmY4FUNMXnx
+ b8iCy0eRlC/x824tz4yMgqyBj38KW3qYT6oJOqCoRJFySFcLPrE6Y+vjMGbv6LtdyNiJ
+ gUuyE6kCqovhaCSxs39AZEtjrexBg2XRcuEtNs9MFL204NN5yO36uiv36FgkRhRqo1rM
+ fmbw==
+X-Gm-Message-State: AGi0PuZN0OCL7fDqB3ZhxvdLvqenrfR84NwbpIGko/tH9H3jirCw5Utn
+ VDOaTMxoZ1AlPcPEA10N0VGyAbnQaGGP/w==
+X-Received: by 2002:adf:ee06:: with SMTP id y6mr16579217wrn.187.1586731021977; 
+ Sun, 12 Apr 2020 15:37:01 -0700 (PDT)
 Received: from localhost.localdomain (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id d13sm12563559wrv.34.2020.04.12.15.36.55
+ by smtp.gmail.com with ESMTPSA id d13sm12563559wrv.34.2020.04.12.15.36.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Apr 2020 15:36:58 -0700 (PDT)
+ Sun, 12 Apr 2020 15:37:01 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.1 v3 10/24] hw/arm/fsl-imx31: Move some code from
- realize() to init()
-Date: Mon, 13 Apr 2020 00:36:05 +0200
-Message-Id: <20200412223619.11284-11-f4bug@amsat.org>
+Subject: [PATCH-for-5.1 v3 11/24] hw/arm/msf2-soc: Store MemoryRegion in
+ MSF2State
+Date: Mon, 13 Apr 2020 00:36:06 +0200
+Message-Id: <20200412223619.11284-12-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200412223619.11284-1-f4bug@amsat.org>
 References: <20200412223619.11284-1-f4bug@amsat.org>
@@ -103,22 +103,23 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::443
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::441
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
  Jason Wang <jasowang@redhat.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
  Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>,
  Joel Stanley <joel@jms.id.au>,
@@ -139,49 +140,83 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-ppc@nongnu.org,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6hrYMtTo4cbz
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BcgDO2aLnl8r
 
 Coccinelle reported:
 
   $ spatch ... --timeout 60 --sp-file \
     scripts/coccinelle/simplify-init-realize-error_propagate.cocci
-  HANDLING: hw/arm/fsl-imx31.c
-  >>> possible moves from fsl_imx31_init() to fsl_imx31_realize() in hw/arm/fsl-imx31.c:68
+  HANDLING: ./hw/arm/msf2-soc.c
+  >>> possible moves from m2sxxx_soc_initfn() to m2sxxx_soc_realize() in ./hw/arm/msf2-soc.c:86
 
-Move the calls using &error_abort which don't depend on input
-updated before realize() to init().
+While reviewing we notice storing the MemoryRegion in the device
+state, we'll be able to later automatically simplify the error
+propagation calls.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-v3: Typo 'depend of' -> 'depend on' (eblake)
----
- hw/arm/fsl-imx31.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ include/hw/arm/msf2-soc.h |  4 ++++
+ hw/arm/msf2-soc.c         | 18 +++++++-----------
+ 2 files changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/hw/arm/fsl-imx31.c b/hw/arm/fsl-imx31.c
-index 8472d2e911..61287e24f6 100644
---- a/hw/arm/fsl-imx31.c
-+++ b/hw/arm/fsl-imx31.c
-@@ -62,6 +62,8 @@ static void fsl_imx31_init(Object *obj)
-     for (i = 0; i < FSL_IMX31_NUM_GPIOS; i++) {
-         sysbus_init_child_obj(obj, "gpio[*]", &s->gpio[i], sizeof(s->gpio[i]),
-                               TYPE_IMX_GPIO);
-+        object_property_set_bool(OBJECT(&s->gpio[i]), false, "has-edge-sel",
-+                                 &error_abort);
-     }
- }
+diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
+index 3cfe5c76ee..e4c5110036 100644
+--- a/include/hw/arm/msf2-soc.h
++++ b/include/hw/arm/msf2-soc.h
+@@ -50,6 +50,10 @@ typedef struct MSF2State {
  
-@@ -191,8 +193,6 @@ static void fsl_imx31_realize(DeviceState *dev, Error **errp)
-             { FSL_IMX31_GPIO3_ADDR, FSL_IMX31_GPIO3_IRQ }
-         };
+     ARMv7MState armv7m;
  
--        object_property_set_bool(OBJECT(&s->gpio[i]), false, "has-edge-sel",
--                                 &error_abort);
-         object_property_set_bool(OBJECT(&s->gpio[i]), true, "realized", &err);
-         if (err) {
-             error_propagate(errp, err);
++    MemoryRegion sram;
++    MemoryRegion nvm;
++    MemoryRegion nvm_alias;
++
+     char *cpu_type;
+     char *part_name;
+     uint64_t envm_size;
+diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+index 588d643b8d..e448b0ab74 100644
+--- a/hw/arm/msf2-soc.c
++++ b/hw/arm/msf2-soc.c
+@@ -90,13 +90,9 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+     SysBusDevice *busdev;
+     Error *err = NULL;
+     int i;
+-
+     MemoryRegion *system_memory = get_system_memory();
+-    MemoryRegion *nvm = g_new(MemoryRegion, 1);
+-    MemoryRegion *nvm_alias = g_new(MemoryRegion, 1);
+-    MemoryRegion *sram = g_new(MemoryRegion, 1);
+ 
+-    memory_region_init_rom(nvm, OBJECT(dev_soc), "MSF2.eNVM", s->envm_size,
++    memory_region_init_rom(&s->nvm, OBJECT(dev_soc), "MSF2.eNVM", s->envm_size,
+                            &error_fatal);
+     /*
+      * On power-on, the eNVM region 0x60000000 is automatically
+@@ -104,15 +100,15 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+      * start address (0x0). We do not support remapping other eNVM,
+      * eSRAM and DDR regions by guest(via Sysreg) currently.
+      */
+-    memory_region_init_alias(nvm_alias, OBJECT(dev_soc), "MSF2.eNVM", nvm, 0,
+-                             s->envm_size);
++    memory_region_init_alias(&s->nvm_alias, OBJECT(dev_soc), "MSF2.eNVM",
++                             &s->nvm, 0, s->envm_size);
+ 
+-    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, nvm);
+-    memory_region_add_subregion(system_memory, 0, nvm_alias);
++    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, &s->nvm);
++    memory_region_add_subregion(system_memory, 0, &s->nvm_alias);
+ 
+-    memory_region_init_ram(sram, NULL, "MSF2.eSRAM", s->esram_size,
++    memory_region_init_ram(&s->sram, NULL, "MSF2.eSRAM", s->esram_size,
+                            &error_fatal);
+-    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
++    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, &s->sram);
+ 
+     armv7m = DEVICE(&s->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 81);
 -- 
 2.21.1
 

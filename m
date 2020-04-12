@@ -1,98 +1,98 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3081352lfm;
-        Sun, 12 Apr 2020 14:10:45 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJQH5+8oyl3e9NvcUCH6sb26f1UVDReFnCpZnyzkkKUw1IRkiFkHyKgsncHIkq8myCiax2I
-X-Received: by 2002:a37:5e47:: with SMTP id s68mr13017387qkb.411.1586725844885;
-        Sun, 12 Apr 2020 14:10:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586725844; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3081387lfm;
+        Sun, 12 Apr 2020 14:10:47 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKIGMMf2JNxvtfBloE39NE4ZaDF0nd5ILkKmaSwSsF7co0CTVVuXqh+Ogh/6adcuV+tCOgF
+X-Received: by 2002:ac8:3254:: with SMTP id y20mr5620471qta.67.1586725847108;
+        Sun, 12 Apr 2020 14:10:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586725847; cv=none;
         d=google.com; s=arc-20160816;
-        b=kkAvYvvo+vajXNv9cYZAxj5xXNSSzKVzAY3xiWjcW8R68TSaQHuhBamsdfEa2ffrDV
-         ogygvbXo31mYiI8Dj4osYre+gK/gscsi3BRCLIGHc0CvYVebUcwSpHGWAjc+VpztPb51
-         7+2bUJBECT2NM40BYJ7r9+fyKjA0AHxILKc5WB+9NfsrZrbCN1W89j1gYw8w1mpwcTNm
-         1t221SlWfhKYCQ3pr05W6qN7Znh1iG4RywHbNqIriiE8zpBBPI3hyHKB7QA/Jy6iF7H2
-         tDKU8xvdQcg2zLHPfIGTsAQFaN13BAkdS88FbyHKh/BRoppwZg/fOut6nkckIQofkpMC
-         qeIg==
+        b=dMi0G9dHeU883Thklq78uPB4k1fMRTXpjS6VPOG5/TX+lagXUkDo8X4bVow9zAFK30
+         EzN9ahPm+Ks9l2P7G5iO8WZtSD7g46/M+Sge5u7ge3bZxWSxwGgKJid/udstm10AzA57
+         IG3SviQ2S8gHEvKocu9p91FqA1eyZKIb4kcQPGN48LiT9DjNr7AqA0AD4EWJ/8rXDoB+
+         FP5qsHlJrwyOzHwlP980jxIij4MXQwVZteoTclPruCj8IWVLv8VLAx36X/2yRbN3zUO4
+         nXlV/+KB24sVT3MvpTJrag8R1zoy1v96BZldBb0doI9kj2lGNgOc2I8VWRhnSZeq4rDt
+         ++VQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=eWubfF2iDWfZ1hbsO/IXecVFoz0dDRJS/Xj5DAW2JNo=;
-        b=m22qu5H1E4nWVYnOXGAbt0nfke4aHSt9Jwr+Gw81bCT3N1PJgwzNOimvfD3dB4wmqy
-         LyN8x6CoiE4LjZqN91AQzspKRNt1XVeP98F11YrVz67S4xlHV7DcfCIgQaMPCHSwmsDs
-         gg3bHgLPRzWWo1Cai1EhpObuACNm8kiN0OT4zev0IBUkBexkD+OcrRMDSqOCZrvMrHQ9
-         5iIX5VDMN59HL3mYabAa0evfDR9BcZcCT7sNmXcXJnOYkwyrIzi4zVmRpR/jt5SqF1Nz
-         a3Y5OVuVjQF0jnhfjZCR0bvtsNCKEMht0wtmb/lnWbVLtbaN9uivlrReM+T8YSdEbh/r
-         9b3Q==
+        bh=WI0uWQVZOcYqeJp2uBcJ0303+lu8M+R0XXUdzA9Q1p0=;
+        b=K87RSRZu37QsDMes5qnfZSRt8HFk6eY5GPO2jpjmcKap2cLopEMqR5VXhAIL2H1k/h
+         Lv7lvZvSa//fSCWsU2xg6i1afUBjbXG+/7L8fOM/rUE/rpGNcFHlCjlgD1IJdtuK34Cg
+         jqzTGeEK3T2Dw8ThDtXkk+X3LsHSi6LWfdq8MnYu/dSxlSauDJq47mMMbiOHYnXKUsW3
+         gBdRxAILtyevtzY7y8PApsK/YVBw7tlyw2wswCYMBgkiPgVqDPgiHrQY6D4nz6SosV+P
+         xU/cfbG6VY0Pm108RBjr6V/Q4TWko3WxEiHxEeemPou84Q8I8zGsS5WvXP9K4Zjr0LL8
+         6irA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TKsyfLjr;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cU4DzG8k;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i22si4554240qtp.390.2020.04.12.14.10.44
+        by mx.google.com with ESMTPS id b2si5085140qke.119.2020.04.12.14.10.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Apr 2020 14:10:44 -0700 (PDT)
+        Sun, 12 Apr 2020 14:10:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TKsyfLjr;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cU4DzG8k;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:37004 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37018 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jNjsJ-0000Zk-Ap
-	for alex.bennee@linaro.org; Sun, 12 Apr 2020 17:10:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41001)
+	id 1jNjsM-0000lj-HJ
+	for alex.bennee@linaro.org; Sun, 12 Apr 2020 17:10:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41135)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNjrl-0008G8-0U
- for qemu-arm@nongnu.org; Sun, 12 Apr 2020 17:10:09 -0400
+ id 1jNjrw-0000Gx-KI
+ for qemu-arm@nongnu.org; Sun, 12 Apr 2020 17:10:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNjrk-00057I-4E
- for qemu-arm@nongnu.org; Sun, 12 Apr 2020 17:10:08 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:39877)
+ id 1jNjru-0005Ce-UB
+ for qemu-arm@nongnu.org; Sun, 12 Apr 2020 17:10:20 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:38027)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNjrg-00055B-AO; Sun, 12 Apr 2020 17:10:04 -0400
-Received: by mail-wr1-x442.google.com with SMTP id p10so8395402wrt.6;
- Sun, 12 Apr 2020 14:10:04 -0700 (PDT)
+ id 1jNjrn-00058n-QE; Sun, 12 Apr 2020 17:10:11 -0400
+Received: by mail-wm1-x343.google.com with SMTP id g12so406744wmh.3;
+ Sun, 12 Apr 2020 14:10:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=eWubfF2iDWfZ1hbsO/IXecVFoz0dDRJS/Xj5DAW2JNo=;
- b=TKsyfLjrtirKrDYfamB6nSrrR1fPhrULfxHjh5dsXKznOBbWceZZrZQvEgoeZxVwzh
- lyJwOD9688ualAfVSJptSzKTDdFxJmthHKBJK+Zzg977Bw1z5adwWSDk7qwbN0r+btX/
- VgcDBQWB1idyVqirNa1KnHS0CTnRxSpja5/oIGNROIK0uS38xV2hbPpj/ESifO26aecS
- t++f3fH9j6yhpg5IpeK0CdEbMOlUMsAvicHE/sEEZptPqxP5EE1D4KJgdxQse8zEOmnv
- WuYFZdR7TlOo5Wtd9u6MzWOwp5xvBCfBKt/2HASpFTnxjpmuCx3jFscSZH0JywZchrBM
- nEZg==
+ bh=WI0uWQVZOcYqeJp2uBcJ0303+lu8M+R0XXUdzA9Q1p0=;
+ b=cU4DzG8kqqs2TjXHLis6XOLzgrHN02vjMnOKSSYfhhMP5l2oHzFAmyge2FXQqc0/1i
+ N6yLdtTkguIoUJcfLqkaoRKNXonCZ8hf4DgB1/xooDdxVwjG6CPclbRsrHZRtqVI87sR
+ tCXasUn8FS1JgRT+D72CoZgi/gx/QS7dzvZkJNQ6zgX06fXEFNAcWY2tqCfVvh5rRXnB
+ VRgijZIy9TYGoUwOZnZwFAwJs+W/cdTZqJpo1FCu2F4tdTKGNfSl++HIcDcanPqtqOhz
+ 2GzCk4XvwggWeph1f0Se74nYxhgV2VuJ8WTt09Upfu813qdRiWl+q6FS8CL78q2yO/Wr
+ x6NQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=eWubfF2iDWfZ1hbsO/IXecVFoz0dDRJS/Xj5DAW2JNo=;
- b=rG/tUU2KEKvJMOPs4HUnQpDPrRgqGYEp/v27IVaQW/vMd96gpLPnXOypNsI95uYb72
- d1K8PTEqLVRroIOtXr5qxTtghdEJD3Rszb94C2XRGUq5Ue9WujIPJwxH4reLD8UyLq5o
- W3aKXRQfLZ6P/LqU88vqGraCkHoBSxn9cPKFh7K2HvWc1sAlUhtna853yKTBZ7gqDV1C
- jSHo2Vlf/AXtHm0sCc2RgwM+zL29nisw29IKqm73/wCCIOLiEExWYV/ZR9Z0ybZtsbgr
- UOoihkomLruaSgJB5TDFqx6UAdaBmeuFZp8hagJAc2F6+Wc1NqakR7z7XBqZqJYRgh5o
- 6aHA==
-X-Gm-Message-State: AGi0PuaTdSljtQOpAsKjTf7yEV5yXorUk03JP4wMqrSd2n+ZJWukCqBt
- gWP4IOrFNiB096wqJ4+XivGgzUufK/k=
-X-Received: by 2002:adf:cc8c:: with SMTP id p12mr15464439wrj.165.1586725803042; 
- Sun, 12 Apr 2020 14:10:03 -0700 (PDT)
+ bh=WI0uWQVZOcYqeJp2uBcJ0303+lu8M+R0XXUdzA9Q1p0=;
+ b=JTZVblf85vXiNEg6mwoouiXue/I3GW5EjuAHH3eRJ/tFpQT46EkEpHJj4g5n//pIOL
+ uApZo3Idm+Dlj2KaCRBswKi630oxnQ83gy6IFUMW4U7ghziAVKRqVVOOiW3KD9zbvxJk
+ dZ/OtcOtm+S60iHtzNrznak8ewnhmDUAcJDZMKuTcwv7cUL6Jdi9hYR6RYrIFIFjHA1J
+ 7la0W9eB51SoC+QmL5yGIRZ0cqh4uYLIY0BL18nmYzI37veLd6nMQgujFgrIoDSYxTEd
+ Ny6u6NslXim2e5rFkNUZq2ZVhiuNTYnlsDbk1fMjvKsm+pSRpMbkrk+QGA/xC11mbxs6
+ rfjA==
+X-Gm-Message-State: AGi0PuZwOScgqyinBPmgoMsD/P9TJIShBPR3SC7ECR8+ZPJQhqi1cSKK
+ /NBjzCrtSHDZrJOuzDHVQpBj4acBTm4=
+X-Received: by 2002:a1c:1904:: with SMTP id 4mr15496465wmz.21.1586725809996;
+ Sun, 12 Apr 2020 14:10:09 -0700 (PDT)
 Received: from localhost.localdomain (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id o16sm12553602wrs.44.2020.04.12.14.09.59
+ by smtp.gmail.com with ESMTPSA id o16sm12553602wrs.44.2020.04.12.14.10.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Apr 2020 14:10:02 -0700 (PDT)
+ Sun, 12 Apr 2020 14:10:09 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.1 1/3] target: Remove unnecessary CPU() cast
-Date: Sun, 12 Apr 2020 23:09:52 +0200
-Message-Id: <20200412210954.32313-2-f4bug@amsat.org>
+Subject: [PATCH-for-5.1 3/3] hw: Remove unnecessary DEVICE() cast
+Date: Sun, 12 Apr 2020 23:09:54 +0200
+Message-Id: <20200412210954.32313-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200412210954.32313-1-f4bug@amsat.org>
 References: <20200412210954.32313-1-f4bug@amsat.org>
@@ -102,7 +102,7 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::442
+X-Received-From: 2a00:1450:4864:20::343
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -138,41 +138,255 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cPTX3yztONBf
+X-TUID: grv74zahCA7W
 
-The CPU() macro is defined as:
+The DEVICE() macro is defined as:
 
-  #define CPU(obj) ((CPUState *)(obj))
+  #define DEVICE(obj) OBJECT_CHECK(DeviceState, (obj), TYPE_DEVICE)
 
-Remove an unnecessary CPU() cast.
+Remove unnecessary DEVICE() casts.
 
 Patch created mechanically using spatch with this script:
 
   @@
-  typedef CPUState;
-  CPUState *s;
+  typedef DeviceState;
+  DeviceState *s;
   @@
-  -   CPU(s)
+  -   DEVICE(s)
   +   s
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/ppc/mmu_helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/display/artist.c         | 2 +-
+ hw/display/cg3.c            | 2 +-
+ hw/display/sm501.c          | 2 +-
+ hw/display/tcx.c            | 4 ++--
+ hw/display/vga-isa.c        | 2 +-
+ hw/i2c/imx_i2c.c            | 2 +-
+ hw/i2c/mpc_i2c.c            | 2 +-
+ hw/ide/piix.c               | 2 +-
+ hw/misc/macio/pmu.c         | 2 +-
+ hw/net/ftgmac100.c          | 3 +--
+ hw/net/imx_fec.c            | 2 +-
+ hw/nubus/nubus-device.c     | 2 +-
+ hw/pci-host/bonito.c        | 2 +-
+ hw/ppc/spapr.c              | 2 +-
+ hw/sh4/sh_pci.c             | 2 +-
+ hw/xen/xen-legacy-backend.c | 2 +-
+ 16 files changed, 17 insertions(+), 18 deletions(-)
 
-diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
-index 86c667b094..8972714775 100644
---- a/target/ppc/mmu_helper.c
-+++ b/target/ppc/mmu_helper.c
-@@ -1820,7 +1820,7 @@ static inline void do_invalidate_BAT(CPUPPCState *env, target_ulong BATu,
-     if (((end - base) >> TARGET_PAGE_BITS) > 1024) {
-         /* Flushing 1024 4K pages is slower than a complete flush */
-         LOG_BATS("Flush all BATs\n");
--        tlb_flush(CPU(cs));
-+        tlb_flush(cs);
-         LOG_BATS("Flush done\n");
-         return;
+diff --git a/hw/display/artist.c b/hw/display/artist.c
+index 753dbb9a77..7e2a4556bd 100644
+--- a/hw/display/artist.c
++++ b/hw/display/artist.c
+@@ -1353,7 +1353,7 @@ static void artist_realizefn(DeviceState *dev, Error **errp)
+     s->cursor_height = 32;
+     s->cursor_width = 32;
+ 
+-    s->con = graphic_console_init(DEVICE(dev), 0, &artist_ops, s);
++    s->con = graphic_console_init(dev, 0, &artist_ops, s);
+     qemu_console_resize(s->con, s->width, s->height);
+ }
+ 
+diff --git a/hw/display/cg3.c b/hw/display/cg3.c
+index a1ede10394..f7f1c199ce 100644
+--- a/hw/display/cg3.c
++++ b/hw/display/cg3.c
+@@ -321,7 +321,7 @@ static void cg3_realizefn(DeviceState *dev, Error **errp)
+ 
+     sysbus_init_irq(sbd, &s->irq);
+ 
+-    s->con = graphic_console_init(DEVICE(dev), 0, &cg3_ops, s);
++    s->con = graphic_console_init(dev, 0, &cg3_ops, s);
+     qemu_console_resize(s->con, s->width, s->height);
+ }
+ 
+diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+index de0ab9d977..2a564889bd 100644
+--- a/hw/display/sm501.c
++++ b/hw/display/sm501.c
+@@ -1839,7 +1839,7 @@ static void sm501_init(SM501State *s, DeviceState *dev,
+                                 &s->twoD_engine_region);
+ 
+     /* create qemu graphic console */
+-    s->con = graphic_console_init(DEVICE(dev), 0, &sm501_ops, s);
++    s->con = graphic_console_init(dev, 0, &sm501_ops, s);
+ }
+ 
+ static const VMStateDescription vmstate_sm501_state = {
+diff --git a/hw/display/tcx.c b/hw/display/tcx.c
+index 76de16e8ea..1fb45b1aab 100644
+--- a/hw/display/tcx.c
++++ b/hw/display/tcx.c
+@@ -868,9 +868,9 @@ static void tcx_realizefn(DeviceState *dev, Error **errp)
+     sysbus_init_irq(sbd, &s->irq);
+ 
+     if (s->depth == 8) {
+-        s->con = graphic_console_init(DEVICE(dev), 0, &tcx_ops, s);
++        s->con = graphic_console_init(dev, 0, &tcx_ops, s);
+     } else {
+-        s->con = graphic_console_init(DEVICE(dev), 0, &tcx24_ops, s);
++        s->con = graphic_console_init(dev, 0, &tcx24_ops, s);
      }
+     s->thcmisc = 0;
+ 
+diff --git a/hw/display/vga-isa.c b/hw/display/vga-isa.c
+index 0633ed382c..3aaeeeca1e 100644
+--- a/hw/display/vga-isa.c
++++ b/hw/display/vga-isa.c
+@@ -74,7 +74,7 @@ static void vga_isa_realizefn(DeviceState *dev, Error **errp)
+                                         0x000a0000,
+                                         vga_io_memory, 1);
+     memory_region_set_coalescing(vga_io_memory);
+-    s->con = graphic_console_init(DEVICE(dev), 0, s->hw_ops, s);
++    s->con = graphic_console_init(dev, 0, s->hw_ops, s);
+ 
+     memory_region_add_subregion(isa_address_space(isadev),
+                                 VBE_DISPI_LFB_PHYSICAL_ADDRESS,
+diff --git a/hw/i2c/imx_i2c.c b/hw/i2c/imx_i2c.c
+index 30b9aea247..2e02e1c4fa 100644
+--- a/hw/i2c/imx_i2c.c
++++ b/hw/i2c/imx_i2c.c
+@@ -305,7 +305,7 @@ static void imx_i2c_realize(DeviceState *dev, Error **errp)
+                           IMX_I2C_MEM_SIZE);
+     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
+     sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+-    s->bus = i2c_init_bus(DEVICE(dev), NULL);
++    s->bus = i2c_init_bus(dev, NULL);
+ }
+ 
+ static void imx_i2c_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/i2c/mpc_i2c.c b/hw/i2c/mpc_i2c.c
+index 0aa1be3ce7..9a724f3a3e 100644
+--- a/hw/i2c/mpc_i2c.c
++++ b/hw/i2c/mpc_i2c.c
+@@ -332,7 +332,7 @@ static void mpc_i2c_realize(DeviceState *dev, Error **errp)
+     memory_region_init_io(&i2c->iomem, OBJECT(i2c), &i2c_ops, i2c,
+                           "mpc-i2c", 0x14);
+     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &i2c->iomem);
+-    i2c->bus = i2c_init_bus(DEVICE(dev), "i2c");
++    i2c->bus = i2c_init_bus(dev, "i2c");
+ }
+ 
+ static void mpc_i2c_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/ide/piix.c b/hw/ide/piix.c
+index 3b2de4c312..b402a93636 100644
+--- a/hw/ide/piix.c
++++ b/hw/ide/piix.c
+@@ -193,7 +193,7 @@ int pci_piix3_xen_ide_unplug(DeviceState *dev, bool aux)
+             blk_unref(blk);
+         }
+     }
+-    qdev_reset_all(DEVICE(dev));
++    qdev_reset_all(dev);
+     return 0;
+ }
+ 
+diff --git a/hw/misc/macio/pmu.c b/hw/misc/macio/pmu.c
+index b8466a4a3f..4b7def9096 100644
+--- a/hw/misc/macio/pmu.c
++++ b/hw/misc/macio/pmu.c
+@@ -758,7 +758,7 @@ static void pmu_realize(DeviceState *dev, Error **errp)
+ 
+     if (s->has_adb) {
+         qbus_create_inplace(&s->adb_bus, sizeof(s->adb_bus), TYPE_ADB_BUS,
+-                            DEVICE(dev), "adb.0");
++                            dev, "adb.0");
+         s->adb_poll_timer = timer_new_ms(QEMU_CLOCK_VIRTUAL, pmu_adb_poll, s);
+         s->adb_poll_mask = 0xffff;
+         s->autopoll_rate_ms = 20;
+diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+index 041ed21017..25ebee7ec2 100644
+--- a/hw/net/ftgmac100.c
++++ b/hw/net/ftgmac100.c
+@@ -1035,8 +1035,7 @@ static void ftgmac100_realize(DeviceState *dev, Error **errp)
+     qemu_macaddr_default_if_unset(&s->conf.macaddr);
+ 
+     s->nic = qemu_new_nic(&net_ftgmac100_info, &s->conf,
+-                          object_get_typename(OBJECT(dev)), DEVICE(dev)->id,
+-                          s);
++                          object_get_typename(OBJECT(dev)), dev->id, s);
+     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
+ }
+ 
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index a35c33683e..7adcc9df65 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -1323,7 +1323,7 @@ static void imx_eth_realize(DeviceState *dev, Error **errp)
+ 
+     s->nic = qemu_new_nic(&imx_eth_net_info, &s->conf,
+                           object_get_typename(OBJECT(dev)),
+-                          DEVICE(dev)->id, s);
++                          dev->id, s);
+ 
+     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
+ }
+diff --git a/hw/nubus/nubus-device.c b/hw/nubus/nubus-device.c
+index 01ccad9e8e..ffe78a8823 100644
+--- a/hw/nubus/nubus-device.c
++++ b/hw/nubus/nubus-device.c
+@@ -156,7 +156,7 @@ void nubus_register_rom(NubusDevice *dev, const uint8_t *rom, uint32_t size,
+ 
+ static void nubus_device_realize(DeviceState *dev, Error **errp)
+ {
+-    NubusBus *nubus = NUBUS_BUS(qdev_get_parent_bus(DEVICE(dev)));
++    NubusBus *nubus = NUBUS_BUS(qdev_get_parent_bus(dev));
+     NubusDevice *nd = NUBUS_DEVICE(dev);
+     char *name;
+     hwaddr slot_offset;
+diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
+index cc6545c8a8..f212796044 100644
+--- a/hw/pci-host/bonito.c
++++ b/hw/pci-host/bonito.c
+@@ -606,7 +606,7 @@ static void bonito_pcihost_realize(DeviceState *dev, Error **errp)
+     BonitoState *bs = BONITO_PCI_HOST_BRIDGE(dev);
+ 
+     memory_region_init(&bs->pci_mem, OBJECT(dev), "pci.mem", BONITO_PCILO_SIZE);
+-    phb->bus = pci_register_root_bus(DEVICE(dev), "pci",
++    phb->bus = pci_register_root_bus(dev, "pci",
+                                      pci_bonito_set_irq, pci_bonito_map_irq,
+                                      dev, &bs->pci_mem, get_system_io(),
+                                      0x28, 32, TYPE_PCI_BUS);
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index 9a2bd501aa..3337f5e79c 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -4031,7 +4031,7 @@ static void spapr_phb_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+     /* hotplug hooks should check it's enabled before getting this far */
+     assert(drc);
+ 
+-    spapr_drc_attach(drc, DEVICE(dev), &local_err);
++    spapr_drc_attach(drc, dev, &local_err);
+     if (local_err) {
+         error_propagate(errp, local_err);
+         return;
+diff --git a/hw/sh4/sh_pci.c b/hw/sh4/sh_pci.c
+index 08f2fc1dde..0a3e86f949 100644
+--- a/hw/sh4/sh_pci.c
++++ b/hw/sh4/sh_pci.c
+@@ -129,7 +129,7 @@ static void sh_pci_device_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i < 4; i++) {
+         sysbus_init_irq(sbd, &s->irq[i]);
+     }
+-    phb->bus = pci_register_root_bus(DEVICE(dev), "pci",
++    phb->bus = pci_register_root_bus(dev, "pci",
+                                      sh_pci_set_irq, sh_pci_map_irq,
+                                      s->irq,
+                                      get_system_memory(),
+diff --git a/hw/xen/xen-legacy-backend.c b/hw/xen/xen-legacy-backend.c
+index 4a373b2373..f9d013811a 100644
+--- a/hw/xen/xen-legacy-backend.c
++++ b/hw/xen/xen-legacy-backend.c
+@@ -705,7 +705,7 @@ int xen_be_init(void)
+ 
+     xen_sysdev = qdev_create(NULL, TYPE_XENSYSDEV);
+     qdev_init_nofail(xen_sysdev);
+-    xen_sysbus = qbus_create(TYPE_XENSYSBUS, DEVICE(xen_sysdev), "xen-sysbus");
++    xen_sysbus = qbus_create(TYPE_XENSYSBUS, xen_sysdev, "xen-sysbus");
+     qbus_set_bus_hotplug_handler(xen_sysbus, &error_abort);
+ 
+     return 0;
 -- 
 2.21.1
 

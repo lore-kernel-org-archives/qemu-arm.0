@@ -1,98 +1,100 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3138248lfm;
-        Sun, 12 Apr 2020 15:39:37 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIxUEYd7CdKHD8PQwcZ7Ic0PMf4iHSfHyLh/kj+Mmm1javPg2pKaYYk/N09GimWsiqjDr3i
-X-Received: by 2002:ac8:3723:: with SMTP id o32mr9161443qtb.176.1586731177393;
-        Sun, 12 Apr 2020 15:39:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586731177; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3138591lfm;
+        Sun, 12 Apr 2020 15:40:08 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLPgoNvdjB38OqFUz+pR1pUl7Cwiz4u1oAQptUsfuCZTAjAYdNFEOLt6+u/wVPIKyv9f0sM
+X-Received: by 2002:ad4:4141:: with SMTP id z1mr14869454qvp.180.1586731208603;
+        Sun, 12 Apr 2020 15:40:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586731208; cv=none;
         d=google.com; s=arc-20160816;
-        b=jbmnPdrcforhy4I2IDxZ+cgRUnuyLvFOIXe69KbMAnUsy492rXj9Yy1r6DyKIj5WJZ
-         0ddyC9q6Rp1U8eLdteyk7bONocf5BhT8V1SZe7/I4lGozQuqrQdEi2sAUddg+n/O9o3m
-         A8z65BTi66n5Il0KB/VWQRxNVofZeboCHQLxe7AgjoUAjnaSJqpKe8tZmYwmd81osSUK
-         f6yGZ9rFY15Hra0viyhMwFS71hdJEAfUauo0ghkZfXH2SFrbi+oVQZTOrtRceVVtNxVE
-         0tRH1OMLsQuVMQ+/MOXFD1Ue4eLJDn6sXMk/WrGU2udNLuCL1h91OemDt9UnyhwoqQhH
-         QIqQ==
+        b=mEnD+s8sausnYWrXCeXOYR1YHTcP5nuhmqXwNfTY8vtKDpRBJK8X1fHHFMpUjP4YIv
+         XEkBHcJ9dZRry0jPVhGU5T4ndwRg4iRnDzeBdahp4SdhVMiyOzP8G5KTpT5UAdEzhsfv
+         N2uD6Df9QXsPgCY1QYh8LfxUTdzqztwnUG0eaMLVRDrKcFBeOCQVI0zbltZFE19N7BL4
+         z3us1YSLAEF88wT3aRH5zT6oW5d2XpYdomcs53B9UWyopDLg8O15XD3wwsheQGkzjJVc
+         0bmDEyW3dsXXR9ZD+sodVlE36QOnwilA0LZQ0zF7tU+8ud3nD4HEBpX2P5zUlBgomEuj
+         9dOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=GiwJ4gTZC8RX41lgDmd3v75v+8FpbTkDx97eHKIDhQk=;
-        b=0fHMnPElEojzF3cm9vnp/0q2Qkzq/+a4AiuihtJSVbcqPOVgA+/1bVYMjs7PxN4jMw
-         JKukB8jRYlqDrEb4FxBxuaWxYb0j9mZ89TZgIyRXB0xhV+CUTa8mIpTPwHg6+7JxCB4p
-         j7xN309r/+ufhkRIzTt7tD9EMZWwBDYwTUyvmiZM5hn7CXVPylLvJwDH4zmFHZWMcYBi
-         g6F+OtYrdUkCITHhUU6QiH56ZJG7zCz0/z4QL4iLqLn+zMoI82KHX9UPY8ISGwy/Q0li
-         gETkUIEiKdOuKnjpryWJBawE/udsTF5t5kSj9OSsHWYkC/d95F+DWHxsFGzBC0USkWfe
-         Jk3Q==
+        bh=6j0bhZZ4DXOIthIvcH8V/7teI/2Tb9x+JKEVdKazvPI=;
+        b=SbpfphG6tbA46upk+G6P3nkDE/iFiSIuoSZn+SvcGAMGjPiijT+xLbwozFRSwRkvdm
+         RpvJNmUh5iHvUvvUJdvyqhD1FThpe6YCT1TFdsIkokmr3HERzWyava2lRgK3BglcwUqQ
+         83vQYthby8MHqVomWV1XqdGnoXocilFoTd4EwJcm8oxw13pypyNEO4E0oaB9v+mU3W9l
+         HKJ4jfLoLjtV+2jMa25+y4qB99kTMNe5ulja/9fWKKg050omc6GK3dNKh3lJN99Vj+lB
+         k5Rj104M3HsFJUbkOUijHhIKEl8Cmo7iBjSjD0GfiejLLCakBgos/bzHQYBO+XQ5D+NI
+         ynzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Mq797QED;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eFlUd8YE;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v24si5039870qtp.44.2020.04.12.15.39.37
+        by mx.google.com with ESMTPS id z129si5125106qkd.79.2020.04.12.15.40.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Apr 2020 15:39:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 12 Apr 2020 15:40:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Mq797QED;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eFlUd8YE;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:37736 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37738 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jNlGK-0003Hr-PE
-	for alex.bennee@linaro.org; Sun, 12 Apr 2020 18:39:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47551)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jNlGq-0003LX-0D
+	for alex.bennee@linaro.org; Sun, 12 Apr 2020 18:40:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47537)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlDm-00061v-Jc
- for qemu-arm@nongnu.org; Sun, 12 Apr 2020 18:36:59 -0400
+ id 1jNlDm-00060A-1j
+ for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:36:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlDl-0002cp-I3
- for qemu-arm@nongnu.org; Sun, 12 Apr 2020 18:36:58 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:36399)
+ id 1jNlDk-0002as-RW
+ for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:36:57 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:40094)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlDf-0002SW-57; Sun, 12 Apr 2020 18:36:51 -0400
-Received: by mail-wm1-x341.google.com with SMTP id a201so8010380wme.1;
- Sun, 12 Apr 2020 15:36:50 -0700 (PDT)
+ id 1jNlDk-0002a4-Kj; Sun, 12 Apr 2020 18:36:56 -0400
+Received: by mail-wr1-x441.google.com with SMTP id s8so8515793wrt.7;
+ Sun, 12 Apr 2020 15:36:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=GiwJ4gTZC8RX41lgDmd3v75v+8FpbTkDx97eHKIDhQk=;
- b=Mq797QEDhRzAek9t4CjQkFwSgRFmMI4IZkDmNnSk2RGLFR7FblrPehzgX4xfKOdL9U
- /oohG/hJdPCpZbJc4gyMfvGoYu03fyun2A34w7ddDHMrji3JdYAO5h1l4SOsZh6romXL
- /D78Op7QyfJcr/rRUsGK5Ns96bm1Ks6dnB+qMCd+I+lc3PQH0sbPofP+SQ5ke2B1xR6l
- wVNyB+8U+7OCRqRwjpGXSse2INskpTqbPVB6eVp7KliYaT1yRvQl99ft5IqsDwe6gIIp
- ZLHLdGfb5Ph69ogAChQVeJ8El1KJTk8R6pJalWlCTddiESdrrne7lEmxefjrHOz8LnFz
- pprA==
+ bh=6j0bhZZ4DXOIthIvcH8V/7teI/2Tb9x+JKEVdKazvPI=;
+ b=eFlUd8YEqZR/79bEwbmGKECR8/EG2M4YzFCWq3LM08R0hHAPy+gzaCZAV03gn6/lAY
+ jn+9+rtK4Xfimpyr4E8Qx9FsPUwPLRLggGi00zgpDTEL7bwTiDZhZ0em9A5UbtxwpSpj
+ FZLJZXEE1waHPMxAD+KhRXVHtn7aoXnJbrm8Wts4dZ3xKncTCQWBTaiT3v8idWJBSlNJ
+ tuv/tGTzoxre+aNodrp5aya19i1uidhDFCw7d/rMaI6xdgo/mwru/10anjgfsQJ8jPsj
+ HxyKqY/GZMcHFK8a+XS3ET6vbx/itFfEcCNOreDuV7LSYsosLtYgGEXzX0kFpMDK2iVP
+ YNZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=GiwJ4gTZC8RX41lgDmd3v75v+8FpbTkDx97eHKIDhQk=;
- b=rDL7yLOUAgzNF6XzG0v1rL1koniUapbuqCVntlC/lZWYhfk3Egi+55XI9z9s0UYeg8
- 4Ez2tcd3Xb8xBermtj2y5o3h3LGzQve8nbx5SpQu6NCwz8YDfvDN1489gjI8cPUh8a5G
- Lt+e6bK62TThgJ0SWkRJrl0P1blpgl0OF4lGBOC7sc6uyM5JbZPJq43GNJmUN+izkeHa
- vz0VkX5HtoZl/58E/CFX5vF7B3kI1w+66fYAkc02EuBNxJcsXhw+wd+6DlGxjdXUaQbr
- Qi9Ms3zxMmSyeLWjoGr9tTLMWslNwsyta4x859GugJ7zH94frMFcxScdR4R4FGrEnVD+
- JDPg==
-X-Gm-Message-State: AGi0PuYFqwejdl1Eu0OrUNCRxWWCJq8ir39qdxo4LgLB0dZjJSCl6faU
- PsMppm9H4Xu4iCQq5jVJKg6wzJjur6seIQ==
-X-Received: by 2002:a1c:3b09:: with SMTP id i9mr15471185wma.19.1586731008786; 
- Sun, 12 Apr 2020 15:36:48 -0700 (PDT)
+ bh=6j0bhZZ4DXOIthIvcH8V/7teI/2Tb9x+JKEVdKazvPI=;
+ b=VEUEbUW/dC3w9XR+l93hEQJpl0D2iFWIQQLyG3rx+UPCqUiFhp5aJdE3ZulKg0z0fT
+ A04go+1FnPa5sMj6WrEnFRYoIfJP52f0x8b82AS0sudMSF6K6k6WgHYLxec3YkkUiSA0
+ g7Zxv94Gip+g3m2Ts199n/FKxSEGuIkZ/IP478QL6cMbFDSpYBMxFRuTxsSzzuSOoe/1
+ p6iVhbTva5x9gl/WR1u24tJPXO5UJ7GuAhHk5x1FOHvCHKPADC2y/blKOOiueptKogB4
+ PUWdgMT10o/0VdTxHWlh+JriO+2E4AK2+OP7RosFYutdGR1BM1mFJr4JnG3hT5m256NT
+ AFiw==
+X-Gm-Message-State: AGi0PuZFFm/50NMuNlgdTggoERF2fW0Ppn28oyBRtPPdOiZhNfvxosrv
+ i2a2U1V1Xs99s2PHBHLu7E7PSYWKxaqf4w==
+X-Received: by 2002:a05:6000:370:: with SMTP id
+ f16mr16595619wrf.9.1586731015348; 
+ Sun, 12 Apr 2020 15:36:55 -0700 (PDT)
 Received: from localhost.localdomain (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id d13sm12563559wrv.34.2020.04.12.15.36.45
+ by smtp.gmail.com with ESMTPSA id d13sm12563559wrv.34.2020.04.12.15.36.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Apr 2020 15:36:48 -0700 (PDT)
+ Sun, 12 Apr 2020 15:36:54 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.1 v3 07/24] hw/arm/aspeed_soc: Simplify use of Error*
-Date: Mon, 13 Apr 2020 00:36:02 +0200
-Message-Id: <20200412223619.11284-8-f4bug@amsat.org>
+Subject: [PATCH-for-5.1 v3 09/24] hw/arm/fsl-imx6: Move some code from
+ realize() to init()
+Date: Mon, 13 Apr 2020 00:36:04 +0200
+Message-Id: <20200412223619.11284-10-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200412223619.11284-1-f4bug@amsat.org>
 References: <20200412223619.11284-1-f4bug@amsat.org>
@@ -102,22 +104,23 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::341
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::441
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
  Jason Wang <jasowang@redhat.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
  Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>,
  Joel Stanley <joel@jms.id.au>,
@@ -138,54 +141,118 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-ppc@nongnu.org,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UtPhRbIpgJTG
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HhbL9NX6H1to
 
-In the previous commit we noticed we don't need two different
-Error*, drop the one less used.
+Coccinelle failed at processing this file:
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+  $ spatch ... --timeout 60 --sp-file \
+    scripts/coccinelle/simplify-init-realize-error_propagate.cocci
+  HANDLING: ./hw/arm/fsl-imx6.c
+  Fatal error: exception Coccinelle_modules.Common.Timeout
+
+While reviewing we noticed some functions can be called at
+init() time, reducing the need to add extra Error checks at
+realize() time. Move them. The coccinelle script succeeds
+after this.
+
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-v3: Indent 'return'
----
- hw/arm/aspeed_soc.c | 13 ++++++++-----
- 1 file changed, 8 insertions(+), 5 deletions(-)
+ hw/arm/fsl-imx6.c | 47 +++++++++++++++++++++++------------------------
+ 1 file changed, 23 insertions(+), 24 deletions(-)
 
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index debd7c8faa..4ee991ec16 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -234,7 +234,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-     int i;
-     AspeedSoCState *s = ASPEED_SOC(dev);
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
--    Error *err = NULL, *local_err = NULL;
-+    Error *err = NULL;
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index 3d37352b08..6bf8aa0404 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -48,11 +48,30 @@ static void fsl_imx6_init(Object *obj)
+         object_initialize_child(obj, name, &s->cpu[i], sizeof(s->cpu[i]),
+                                 ARM_CPU_TYPE_NAME("cortex-a9"),
+                                 &error_abort, NULL);
++
++        /* On uniprocessor, the CBAR is set to 0 */
++        if (smp_cpus > 1) {
++            object_property_set_int(OBJECT(&s->cpu[i]), FSL_IMX6_A9MPCORE_ADDR,
++                                    "reset-cbar", &error_abort);
++        }
++
++        /* All CPU but CPU 0 start in power off mode */
++        if (i) {
++            object_property_set_bool(OBJECT(&s->cpu[i]), true,
++                                     "start-powered-off", &error_abort);
++        }
+     }
  
-     /* IO space */
-     create_unimplemented_device("aspeed_soc.io", sc->memmap[ASPEED_IOMEM],
-@@ -413,12 +413,15 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-         qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[i]);
-         object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspeed",
-                                  &err);
--        object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "realized",
--                                 &local_err);
--        error_propagate(&err, local_err);
+     sysbus_init_child_obj(obj, "a9mpcore", &s->a9mpcore, sizeof(s->a9mpcore),
+                           TYPE_A9MPCORE_PRIV);
+ 
++    object_property_set_int(OBJECT(&s->a9mpcore), smp_cpus, "num-cpu",
++                            &error_abort);
++
++    object_property_set_int(OBJECT(&s->a9mpcore),
++                            FSL_IMX6_MAX_IRQ + GIC_INTERNAL, "num-irq",
++                            &error_abort);
++
+     sysbus_init_child_obj(obj, "ccm", &s->ccm, sizeof(s->ccm), TYPE_IMX6_CCM);
+ 
+     sysbus_init_child_obj(obj, "src", &s->src, sizeof(s->src), TYPE_IMX6_SRC);
+@@ -81,6 +100,10 @@ static void fsl_imx6_init(Object *obj)
+         snprintf(name, NAME_SIZE, "gpio%d", i + 1);
+         sysbus_init_child_obj(obj, name, &s->gpio[i], sizeof(s->gpio[i]),
+                               TYPE_IMX_GPIO);
++        object_property_set_bool(OBJECT(&s->gpio[i]), true, "has-edge-sel",
++                                 &error_abort);
++        object_property_set_bool(OBJECT(&s->gpio[i]), true, "has-upper-pin-irq",
++                                 &error_abort);
+     }
+ 
+     for (i = 0; i < FSL_IMX6_NUM_ESDHCS; i++) {
+@@ -124,19 +147,6 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+     unsigned int smp_cpus = ms->smp.cpus;
+ 
+     for (i = 0; i < smp_cpus; i++) {
+-
+-        /* On uniprocessor, the CBAR is set to 0 */
+-        if (smp_cpus > 1) {
+-            object_property_set_int(OBJECT(&s->cpu[i]), FSL_IMX6_A9MPCORE_ADDR,
+-                                    "reset-cbar", &error_abort);
+-        }
+-
+-        /* All CPU but CPU 0 start in power off mode */
+-        if (i) {
+-            object_property_set_bool(OBJECT(&s->cpu[i]), true,
+-                                     "start-powered-off", &error_abort);
+-        }
+-
+         object_property_set_bool(OBJECT(&s->cpu[i]), true, "realized", &err);
          if (err) {
              error_propagate(errp, err);
--           return;
-+            return;
-+        }
-+        object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "realized",
-+                                 &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
+@@ -144,13 +154,6 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
          }
-         sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
-                         sc->memmap[ASPEED_ETH1 + i]);
+     }
+ 
+-    object_property_set_int(OBJECT(&s->a9mpcore), smp_cpus, "num-cpu",
+-                            &error_abort);
+-
+-    object_property_set_int(OBJECT(&s->a9mpcore),
+-                            FSL_IMX6_MAX_IRQ + GIC_INTERNAL, "num-irq",
+-                            &error_abort);
+-
+     object_property_set_bool(OBJECT(&s->a9mpcore), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+@@ -310,10 +313,6 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+             },
+         };
+ 
+-        object_property_set_bool(OBJECT(&s->gpio[i]), true, "has-edge-sel",
+-                                 &error_abort);
+-        object_property_set_bool(OBJECT(&s->gpio[i]), true, "has-upper-pin-irq",
+-                                 &error_abort);
+         object_property_set_bool(OBJECT(&s->gpio[i]), true, "realized", &err);
+         if (err) {
+             error_propagate(errp, err);
 -- 
 2.21.1
 

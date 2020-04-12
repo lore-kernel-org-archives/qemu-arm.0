@@ -1,99 +1,100 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3155499lfm;
-        Sun, 12 Apr 2020 16:05:32 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIIyRf3OZ1Kt5GtlvMpPIbBwHGvMcOYb1y+t+cd8tLm8BHCxTuYThMs5OxjC9p+7DCwI44T
-X-Received: by 2002:ac8:7292:: with SMTP id v18mr8906094qto.304.1586732732168;
-        Sun, 12 Apr 2020 16:05:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586732732; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3158144lfm;
+        Sun, 12 Apr 2020 16:08:25 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKxJOCOF/YmchWq9YJb3oeSXo3KF7Uh38Zh/uL1WO3Ak3ed79bJgtvTa3/l4hrwcYp43t2M
+X-Received: by 2002:ac8:454f:: with SMTP id z15mr411765qtn.311.1586732905744;
+        Sun, 12 Apr 2020 16:08:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586732905; cv=none;
         d=google.com; s=arc-20160816;
-        b=xQvQ+L6NvLagED/Xf77UR35pGJuSs7Y2uQbkILWQIMsM1wl6/9GBgKLhGwuCeW1Bsv
-         6BlnEmhqSGSXlPerGhRo48rzUmM/kr/+aRt+HYLBO6I3ijuzilCi4Ean+NPeHu4KbuIe
-         ouhdfMkYBnFoEL/lQCCAxHamvNroUognoBn0hyjFJvSr2hpEtzih1T4Jxy086HqOhAnD
-         kcD5k5KF+mNmAudCGnNUI3TSnjcM36sy3jCrHylrpx22IccjOdjWf1FlSip+JOdASp2j
-         MGKsoyNG4AgSirHr+3eokneRvFzDSUre8abs/6ZOM820enWMEKVpn9oUnTzudiM2276W
-         62pw==
+        b=rYC2SRwARMwehGR2hhI16WQcT4G7k7dOP0cpKVP2bsLcMUsStb6l5zerX2y88t/YEQ
+         yG0q61B0EGGgfSMnZMXptGpwfNO0BuT+HjAuCumgjEyXCADwUYCXZFq7m4QmRY/sT80t
+         wey5txiKFnxLSdqPadVEDDLCVq6B0MHwEVqLsr157bTHe1qs2+2Q04FOxOWDZmXJs5Kp
+         EGWtQDjoOO+ZgJkkut46Ktz/j5slCHQapxFHyjh7owAIF2+RQ1oI8Hv1MM6MtyU1KFmv
+         PcUqJAdxqkBB75Iz3Z2+8kK7T1QsJchdFS/m2XsRt9/DzD9KWn24DmUKKv2SjRHNNHZG
+         HhiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=X/mQ0/ksrnKYeCH9PXW2OPU9IIFVOFowuUUBw22B+TA=;
-        b=a9m8ryM6d6pBGI9nAe3lWxLzD8LRMbeAK16JMnET/w+Cv8ng5JJIYBEJqwBSdNGmzI
-         iHDk7SzYVIDyYlHKZf4OTAY3ZCaUDGfF/9eXvE1MD3vYWCixcBrLO5Ivr10fFzrm9sob
-         7tynPQE0Qa+7mxqwT0e9sfQnBGo8Xm1hR1MWLwb0KtrBBcEdVf31AA7wX23mBswCHmiE
-         fCi321Zi5kJlTLdbVNehsm7hmGvy6P1i2VCNwdx1t9L4ulntNxxvHFk4jhivqAH2Fxlm
-         F3e9Two1cbswFCMUBOS7I+mD1KNSz1Fq0QKlBcVGOh6WkzXGEPE2g1DT4I2BRvK90YbO
-         rDlw==
+        bh=3QRm8Wqt1J2otRs7IHGLTNCRC9I2pIq2Ldqm2vYIZwQ=;
+        b=hmZ+v+sqri8g1Vofq+Hh288Jw3eVHdcWngiTacNQvrcJH259nmCMzP+OO1kHmQ9670
+         5Nt145MW7QJf9PjHbZs/3MZbvl9DxIFnh3YPBOTGruQ+Wxs5wxIOUvKzB0hZlcH8G2+e
+         XYut9g+lSRqgWkZiR+4i4F3QtBDeNqsIBSssqfMPAXNqMDO/59yUZFwstNxqoYWO16+G
+         D9V9tVEhBsJ1QqLrFV7h14oAwwWaqcuftP9W2JIACGIvzIpukDHf7wXtujvn+nhqILG4
+         dLseIu9jITmr3FyZq5MN+bxGh7Cx2bKEqCq/UGlYdPSK2nljqf1CQugmY9aIn0ojX+9r
+         uRmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AyRLCDzV;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BI0OO7eQ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n74si4996803qke.375.2020.04.12.16.05.31
+        by mx.google.com with ESMTPS id y90si4859626qtd.310.2020.04.12.16.08.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Apr 2020 16:05:32 -0700 (PDT)
+        Sun, 12 Apr 2020 16:08:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AyRLCDzV;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BI0OO7eQ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:38522 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38582 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jNlfP-0003pe-Ii
-	for alex.bennee@linaro.org; Sun, 12 Apr 2020 19:05:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50330)
+	id 1jNliD-0008WO-8G
+	for alex.bennee@linaro.org; Sun, 12 Apr 2020 19:08:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50559)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlJf-0002Wp-Ns
- for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:43:05 -0400
+ id 1jNlJu-00036w-5k
+ for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:43:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlJe-0006Ny-HR
- for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:43:03 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:51415)
+ id 1jNlJt-0006V7-6E
+ for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:43:18 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:39482)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlJe-0006MW-BY; Sun, 12 Apr 2020 18:43:02 -0400
-Received: by mail-wm1-x342.google.com with SMTP id x4so7945697wmj.1;
- Sun, 12 Apr 2020 15:43:00 -0700 (PDT)
+ id 1jNlJs-0006Si-W4; Sun, 12 Apr 2020 18:43:17 -0400
+Received: by mail-wr1-x442.google.com with SMTP id p10so8531185wrt.6;
+ Sun, 12 Apr 2020 15:43:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=X/mQ0/ksrnKYeCH9PXW2OPU9IIFVOFowuUUBw22B+TA=;
- b=AyRLCDzVUq1ImEY3a10im+mwz3jmG4NYRS0sVuF2Q/JTQvHSWwueJeuWcGXf+cE/Io
- OrN5KHWWd3XuDPsPYx1V9swSYM1II3GPJgUYW80dmnizOaOVZSjDz49aUtjFH0fYozSW
- Vlm6iYSQY0OruDS9OqL4stCcUTmErzQZbjK9Dwg66j1+WGz4i8ViC+AICv7vNF9biExB
- kgYRCcdSVC36O1td/zMGF8jODTAGgxRquzjhlZHbd5i70/ttFB7ct/n8LZraBYR0zg+y
- HKfrxmhg4ZVruKVMyC5/CS1KkJoiG4DvhOEIBSoSep5dp6y17mbD1onLJFxgtSeyEDNY
- PpKQ==
+ bh=3QRm8Wqt1J2otRs7IHGLTNCRC9I2pIq2Ldqm2vYIZwQ=;
+ b=BI0OO7eQOT9kON+/WoQdaSkswe9KIOYn0LuVWTQG19Osoy7nIPv1kWrm01BaRVd+HY
+ dKLe9U7lhvy1vxqRdTmkfVjoI8ZhCGIimT5f+twxLbXawn9ZJDmJDJ+cTDjHgN4C3Ocd
+ Lp+43j3OY2meI1NI2VooapLB7emwYx9/PzaR5S6hFTZLWWsQWeUKG+SUiOe0DF+BfwXD
+ PJWsyUBETLr/ALdZWbz2rf9oJdZCoYH60KzwzIoE6Xc8W2JqC1hjODQ/yjGusUcvIN7A
+ iW3w5+XZ05inhuYtPMM/tE4a1aHIlJYUcBNTLRCbW7qMRoL+1w2Ar81lVYiwRmi2u+ul
+ Jz0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=X/mQ0/ksrnKYeCH9PXW2OPU9IIFVOFowuUUBw22B+TA=;
- b=ODuPz0MN3IFLhD4AuTttNWetYAaFy/kh+0bLEALwaIZdAWZATjD7tYfr5B+pKBtqZm
- nk3yNoZhNOarNHAi+wAvMR4mpP8kR8vVq7ZRArHIo2cOK769mQql5FZwcFwfupYIzni5
- IWM2UQIIK5NmxVprs10diTwZO0r12Te72fN6mBwbHqWSykPQGQlVypGO/OZHUZyrl/po
- dLsDRyeYLJK8Ce6+XQMU0TBw54zJaiqUAenBApOV1gODlpEux0QD1U76YFkNX/pVPoQC
- sK0kGBX2GQfG4NmTQZpCGKgH5bjtjjG+16an1JLwp/qHsAJN/On9Wjgrm1A1pfDMvR/S
- xSoQ==
-X-Gm-Message-State: AGi0PuZk4OjorGJzjmjCBXzNJAsiCAI967JEjdyYiI53K5gfHumMcZSj
- vPtWu7ywbzMgmCf3XIO5xt6Te3FZytJrKg==
-X-Received: by 2002:a1c:544c:: with SMTP id p12mr15868793wmi.88.1586731379149; 
- Sun, 12 Apr 2020 15:42:59 -0700 (PDT)
+ bh=3QRm8Wqt1J2otRs7IHGLTNCRC9I2pIq2Ldqm2vYIZwQ=;
+ b=o+pb5lj8gLWy4CUPByLXJSSMsLQSZpia65/N6skr+YaUD2UZYHfBpT4jfck1PFTxBP
+ jhhpVDVM8sXwKvq/OwOpEJBa6GD+bMqHJStQ8yKzRzVJ1iKUOShwRxvpaLFzvOVZjUzi
+ BwW1xcruWqwE1A18NJy2Mg+1j9t1tcVL5RV8i5TkXu2phwUgF4y+li6kBu3SjLFhgfGU
+ rWqP2Hh73ucL0xP+GbfvHrboaaikKyYG7vw0n/NpOLo2b49OLhQs5Qxd+rtOA1ifeFBo
+ 9UJpRtLVguTYlIqV1c8HwK1+ydS5aa0eDein8afg0kC4hHiBEwm+g3zg4MPghoj5P11k
+ rC/A==
+X-Gm-Message-State: AGi0Pua7cMwiGlYAj70RmUKZyfhCTsvm9iuj8zPStdV8xu1LZL4pZ6er
+ mhLGyu+szANBh/0Vz65uSZbfjn0EBuaB/w==
+X-Received: by 2002:a05:6000:e:: with SMTP id
+ h14mr16915034wrx.128.1586731392852; 
+ Sun, 12 Apr 2020 15:43:12 -0700 (PDT)
 Received: from localhost.localdomain (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id f63sm12083825wma.47.2020.04.12.15.42.55
+ by smtp.gmail.com with ESMTPSA id f63sm12083825wma.47.2020.04.12.15.43.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Apr 2020 15:42:58 -0700 (PDT)
+ Sun, 12 Apr 2020 15:43:12 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.1 v3 19/23] hw/mips/cps: Add missing error-propagation
- code
-Date: Mon, 13 Apr 2020 00:41:40 +0200
-Message-Id: <20200412224144.12205-20-f4bug@amsat.org>
+Subject: [PATCH-for-5.1 v3 23/23] hw/sd/milkymist-memcard: Add missing
+ error-propagation code
+Date: Mon, 13 Apr 2020 00:41:44 +0200
+Message-Id: <20200412224144.12205-24-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200412224144.12205-1-f4bug@amsat.org>
 References: <20200412224144.12205-1-f4bug@amsat.org>
@@ -103,7 +104,7 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::342
+X-Received-From: 2a00:1450:4864:20::442
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -143,114 +144,35 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8WWmN+bYvifz
+X-TUID: sp0xPAiSEP87
 
 Patch created mechanically by running:
 
   $ spatch \
     --macro-file scripts/cocci-macro-file.h --include-headers \
     --sp-file scripts/coccinelle/add-missing-error_propagate.cocci \
-    --keep-comments --smpl-spacing --in-place --dir hw
+    --keep-comments --smpl-spacing --dir hw
 
-Unfortunately the cocci script doesn't properly patch trailing
-error_propagate() block and emitted duplicate if() block statements.
-These 3 blocks were manually removed.
-
-Reviewed-by: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/mips/cps.c | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 48 insertions(+)
+ hw/sd/milkymist-memcard.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/hw/mips/cps.c b/hw/mips/cps.c
-index 92b9b1a5f6..18943b64e0 100644
---- a/hw/mips/cps.c
-+++ b/hw/mips/cps.c
-@@ -102,9 +102,21 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
-         sysbus_init_child_obj(OBJECT(dev), "itu", &s->itu, sizeof(s->itu),
-                               TYPE_MIPS_ITU);
-         object_property_set_int(OBJECT(&s->itu), 16, "num-fifo", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-         object_property_set_int(OBJECT(&s->itu), 16, "num-semaphores", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-         object_property_set_bool(OBJECT(&s->itu), saar_present, "saar-present",
-                                  &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-         if (saar_present) {
-             s->itu.saar = &env->CP0_SAAR;
-         }
-@@ -122,7 +134,15 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
-     sysbus_init_child_obj(OBJECT(dev), "cpc", &s->cpc, sizeof(s->cpc),
-                           TYPE_MIPS_CPC);
-     object_property_set_int(OBJECT(&s->cpc), s->num_vp, "num-vp", &err);
+diff --git a/hw/sd/milkymist-memcard.c b/hw/sd/milkymist-memcard.c
+index 926e1af475..87294c1b71 100644
+--- a/hw/sd/milkymist-memcard.c
++++ b/hw/sd/milkymist-memcard.c
+@@ -280,6 +280,10 @@ static void milkymist_memcard_realize(DeviceState *dev, Error **errp)
+     blk = dinfo ? blk_by_legacy_dinfo(dinfo) : NULL;
+     carddev = qdev_create(BUS(&s->sdbus), TYPE_SD_CARD);
+     qdev_prop_set_drive(carddev, "drive", blk, &err);
 +    if (err) {
 +        error_propagate(errp, err);
 +        return;
 +    }
-     object_property_set_int(OBJECT(&s->cpc), 1, "vp-start-running", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-     object_property_set_bool(OBJECT(&s->cpc), true, "realized", &err);
-     if (err != NULL) {
-         error_propagate(errp, err);
-@@ -136,7 +156,15 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
-     sysbus_init_child_obj(OBJECT(dev), "gic", &s->gic, sizeof(s->gic),
-                           TYPE_MIPS_GIC);
-     object_property_set_int(OBJECT(&s->gic), s->num_vp, "num-vp", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-     object_property_set_int(OBJECT(&s->gic), 128, "num-irq", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-     object_property_set_bool(OBJECT(&s->gic), true, "realized", &err);
-     if (err != NULL) {
-         error_propagate(errp, err);
-@@ -152,10 +180,30 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
-     sysbus_init_child_obj(OBJECT(dev), "gcr", &s->gcr, sizeof(s->gcr),
-                           TYPE_MIPS_GCR);
-     object_property_set_int(OBJECT(&s->gcr), s->num_vp, "num-vp", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-     object_property_set_int(OBJECT(&s->gcr), 0x800, "gcr-rev", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-     object_property_set_int(OBJECT(&s->gcr), gcr_base, "gcr-base", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-     object_property_set_link(OBJECT(&s->gcr), OBJECT(&s->gic.mr), "gic", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-     object_property_set_link(OBJECT(&s->gcr), OBJECT(&s->cpc.mr), "cpc", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-     object_property_set_bool(OBJECT(&s->gcr), true, "realized", &err);
-     if (err != NULL) {
-         error_propagate(errp, err);
+     object_property_set_bool(OBJECT(carddev), true, "realized", &err);
+     if (err) {
+         error_setg(errp, "failed to init SD card: %s", error_get_pretty(err));
 -- 
 2.21.1
 

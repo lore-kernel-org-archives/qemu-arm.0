@@ -1,71 +1,136 @@
-Received: by 2002:ac2:5937:0:0:0:0:0 with SMTP id v23csp696864lfi;
-        Wed, 8 Apr 2020 08:27:47 -0700 (PDT)
-X-Google-Smtp-Source: APiQypITLUmqdG55HDAkUZeFGiVNmjIO/9gPIGFsgWSkzqw1lfItxulE7mTXs7wy7h56p6L0Hfrb
-X-Received: by 2002:a37:2d83:: with SMTP id t125mr8288460qkh.359.1586359667085;
-        Wed, 08 Apr 2020 08:27:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586359667; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2945158lfm;
+        Sun, 12 Apr 2020 10:58:45 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIOjJd3BbcC4ORqxTLKhPmng8W5VsZ6KEIMo31RZwhalLNrkYtx2dIchY7wcOaY72+UCKpT
+X-Received: by 2002:a05:620a:cca:: with SMTP id b10mr13599878qkj.435.1586714324911;
+        Sun, 12 Apr 2020 10:58:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586714324; cv=none;
         d=google.com; s=arc-20160816;
-        b=JOB4TFil8t1SI8xZ3Q2Aj4mUZLW75DwnZ6TL745rCNOLja6IPYWIA+f62x6+y6mNF0
-         G+4ZbpDnAJYwkoRpYVazeNw/d8vZMTlTtxUqbtNe7cyfGcft4fLuz0sg0mtNUogcAOcy
-         d3ELZRy3YzmQG4uLvx0yTE4Mqu9OHxsw0FTjDnJ323KtlnWfzbifwSkq3WAKLR2UIOxe
-         wcDF4Mcyd9MvSuj4UUpx1VlpnPi4vi4WSYVfoggbSUeBOQSrAAOM3zx5lY2zb9XIGc3i
-         HiBrzzINhYFaPB77lTDoUiREHr5voi+/vcpc5FDnDDUBkXZyPb+8CHTi0Y+RqUMuDTPt
-         W4yg==
+        b=aW8TF8nq/97aQMZJElzsV63+5bKi0/bL3fX5KX1HkQ2zCGEyEae7aEudjjiD09mbFl
+         UYxKolTVopilLsv1c89DwYyH7JnM9v+0aQENy+1MoPqs1CSOZbSV4wnP/DcOcZd8Jpd7
+         obOEWchP3s+PljlN7OkYXHOcSWPalNP2202DLrw8f9kCLpxPB1qSzbAFE3tpIiCqyOMC
+         NceKAQIxG+DQxs+2s2OJVW2hQhtr6NSKcS0BhFbarnhqlJRJKYDxQjrepHxWYhL1xdTu
+         N6igrdIOpZIzbzltxzViS4m2exrC5pkj+LG2ny8m46JK1z4YgVOtemdFXu5nJ/otazt8
+         73wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=QnDZehE/AAypjmGo+OkdocTPHfJQ/kZDt++TQk77MRQ=;
-        b=j/R7TK8qd4wUV3FATJKSmd+9goq3HfMppQ59jo0n7N86H3Xyj97nHAooLaJXU/R4sn
-         Gmv7gDkai+vQnHPTJok4gwyHlNKqDORW/VXgfUcdBV45CBCu7/KUZz/eI+dm3Hjsny8Q
-         chCK14oBgE05k88e3LM3OmQWJhKBpYubDom9/un70TCyFH1HRskxaVkEWcPr+bv2oY7B
-         4lWoHP+e1vFFUtu0YfHAMCwVsobVEa5TT8115cpTPgMrLF1/MNov9I4xzJkYZ2i8Hhpk
-         v06WArm2kDg26zBLwzSmW6cT4RWKB4OWNNCF7f+LoNfuyCUf5itgZNT/BNE7qOyFklkO
-         Ux2g==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject:dkim-signature;
+        bh=Tqd9AUY7sf7jpL/VRx5RQMosFX++9TLHSqoWaE8MkYM=;
+        b=kgdGd1NZQOAFvmlOKmeNQfuXPmPR1m23rLc5WspWNKsYD5YaIvHkGjVD5IbT04SO+D
+         u+1W2xNpj62olF20E0gthRwDrX92LHe+hLO/coPH+QsYlZjFuvijJlaWOy/yxPJJ+JWh
+         xxhJ4Rm3KKFp3yaKdKLlmT9zQ1PgtdaqMZO6sLAgcEpYYzhuR+KXJJsOZj0POZV7UF9h
+         ChUAr/xMUo0ikSH1trWGP3KTZ9JF+eiDox5Yug50TZ3/W1Hke9KLhtVfg/qAdPdty2hU
+         eYWZvKHzGurtaR8QZ/DXITdGFT3mP/5OA/0lh0qAVAUD652sL2Z+zJuG3yTMUt7LmdB5
+         GIBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IAfLmzHa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v10si1717677qvz.101.2020.04.08.08.27.46
+        by mx.google.com with ESMTPS id d32si4617322qva.186.2020.04.12.10.58.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Apr 2020 08:27:47 -0700 (PDT)
+        Sun, 12 Apr 2020 10:58:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36880 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IAfLmzHa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:35684 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jMBtR-0001Ix-Iy
-	for alex.bennee@linaro.org; Wed, 08 Apr 2020 10:41:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60720)
+	id 1jNgsW-0001Vo-Cj
+	for alex.bennee@linaro.org; Sun, 12 Apr 2020 13:58:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51707)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <fredrik@strupe.net>) id 1jM9Nm-0004Yv-K6
- for qemu-arm@nongnu.org; Wed, 08 Apr 2020 08:00:39 -0400
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jNgsM-0001VL-H6
+ for qemu-arm@nongnu.org; Sun, 12 Apr 2020 13:58:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <fredrik@strupe.net>) id 1jM9Nl-0001ZF-DR
- for qemu-arm@nongnu.org; Wed, 08 Apr 2020 08:00:38 -0400
-Received: from relay12.mail.gandi.net ([217.70.178.232]:41341)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <fredrik@strupe.net>)
- id 1jM9Nl-0001W3-7O; Wed, 08 Apr 2020 08:00:37 -0400
-Received: from consensus.lan (cm-84.210.220.251.getinternet.no
- [84.210.220.251]) (Authenticated sender: fredrik@strupe.net)
- by relay12.mail.gandi.net (Postfix) with ESMTPSA id 9A984200014;
- Wed,  8 Apr 2020 12:00:33 +0000 (UTC)
-From: Fredrik Strupe <fredrik@strupe.net>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH 1/2] target/arm: Make VQDMULL undefined when U=1
-Date: Wed,  8 Apr 2020 13:59:53 +0200
-Message-Id: <20200408115953.1158-1-fredrik@strupe.net>
-X-Mailer: git-send-email 2.20.1
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jNgsL-0004MT-5i
+ for qemu-arm@nongnu.org; Sun, 12 Apr 2020 13:58:34 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:40133)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jNgsK-0004LJ-SJ; Sun, 12 Apr 2020 13:58:33 -0400
+Received: by mail-wr1-x443.google.com with SMTP id s8so8066146wrt.7;
+ Sun, 12 Apr 2020 10:58:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:references:from:autocrypt:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Tqd9AUY7sf7jpL/VRx5RQMosFX++9TLHSqoWaE8MkYM=;
+ b=IAfLmzHaacOBypj96+tkxl7WgORE6520jad+vd5aGMzeK2bHIgNwxJ8Rp9NPye6kKZ
+ EnbsbrxYE8zWdjWmAOAAjzY73N1Kjz7U73YOuoiJxopzlrF3XZWkG+BQtdSFsdtYPaMl
+ 0iE2buVvJ1dxShOJKEOFm4rVkcQqjB3DvejcBsL8l0ODPkKY6Tc4w1VNE+F1a/gAkmr/
+ v++Oom294D2tMjR+QWAXHGcCYAsJB8ceayEhr0yd+BsYftRKRjjqcOHWijWYhUIrnp++
+ evCinTSmclo4XZ9d7wGSgKdMNmQPvRtG4o5Vr98iw//RLa9oFC1R7H+iKUg8TGZFatIc
+ zKmQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=Tqd9AUY7sf7jpL/VRx5RQMosFX++9TLHSqoWaE8MkYM=;
+ b=juQt+TqTL5DOdS8xiob1cVEXgaZHF4KnvWp6ju7y1U+Mfg2FI518YSFvnsztBHzb46
+ BIuxAfFqdudt4iBhewQTIUVKP4DmWUFbHHRjMFVyaheP0FBx2yATGAcHGGuVBPi7xsNb
+ aNcy+jwYv1AL/sXu5HbQvqnXwrNp8OXSrboQTeYFOhKOJvXZMCkaqOJxWJI3Aq6uzDxN
+ gMubtUq4YD4aqWQm1PTQydlbr/qrwu/Ui26N8SmnqNNVZNXln6P3cReB5mSXIdgyxLj3
+ e/psR/Ah6/a9zrILWA+kfhWXm78yNG3Qsih1bo3UiMH9WVkn98O+4kQUD4VeIpyN+//C
+ 9w8w==
+X-Gm-Message-State: AGi0PubSJLWL6g+AukfUkBy1ZZugd8XdTDdwvE6IworcFA5cg59hG6/W
+ ZtSClT6pyIGccH5yb55UgI1M/ep2FVo=
+X-Received: by 2002:adf:f187:: with SMTP id h7mr15209517wro.331.1586714311059; 
+ Sun, 12 Apr 2020 10:58:31 -0700 (PDT)
+Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net.
+ [83.42.57.116])
+ by smtp.gmail.com with ESMTPSA id a67sm11836116wmc.30.2020.04.12.10.58.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 12 Apr 2020 10:58:30 -0700 (PDT)
+Subject: Re: [Qemu devel PATCH v4 2/3] msf2: Add EMAC block to SmartFusion2 SoC
+To: sundeep.lkml@gmail.com, jasowang@redhat.com, peter.maydell@linaro.org,
+ philmd@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <1586529926-11441-1-git-send-email-sundeep.lkml@gmail.com>
+ <1586529926-11441-3-git-send-email-sundeep.lkml@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Autocrypt: addr=f4bug@amsat.org; keydata=
+ mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
+ u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
+ HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
+ YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
+ ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
+ dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
+ ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
+ Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
+ HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
+ Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
+ CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
+ klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
+ jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
+ 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
+ loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
+ sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
+ JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
+ 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
+ K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
+ n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
+ CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
+Message-ID: <09d13b7c-7a48-4405-fbcd-558e71871ddf@amsat.org>
+Date: Sun, 12 Apr 2020 19:58:28 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
+In-Reply-To: <1586529926-11441-3-git-send-email-sundeep.lkml@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 217.70.178.232
-X-Mailman-Approved-At: Wed, 08 Apr 2020 10:41:16 -0400
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::443
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -77,33 +142,135 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fredrik Strupe <fredrik@strupe.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8Fh6ewrsYaI4
+X-TUID: XFwlW0d+ZcgY
 
-According to Arm ARM, VQDMULL is only valid when U=0, while having
-U=1 is unallocated.
+On 4/10/20 4:45 PM, sundeep.lkml@gmail.com wrote:
+> From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> 
+> With SmartFusion2 Ethernet MAC model in
+> place this patch adds the same to SoC.
+> 
+> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> ---
+>  hw/arm/msf2-soc.c         | 21 ++++++++++++++++++++-
+>  include/hw/arm/msf2-soc.h |  3 +++
+>  2 files changed, 23 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+> index 588d643..2f2db6d 100644
+> --- a/hw/arm/msf2-soc.c
+> +++ b/hw/arm/msf2-soc.c
+> @@ -35,6 +35,7 @@
 
-Signed-off-by: Fredrik Strupe <fredrik@strupe.net>
-Fixes: 695272dcb976 ("target-arm: Handle UNDEF cases for Neon 3-regs-different-widths")
----
- target/arm/translate.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Maybe you also want:
 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 9f9f4e19e0..dfe9dbbcfd 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -5817,7 +5817,7 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
-                     {0, 0, 0, 0}, /* VMLSL */
-                     {0, 0, 0, 9}, /* VQDMLSL */
-                     {0, 0, 0, 0}, /* Integer VMULL */
--                    {0, 0, 0, 1}, /* VQDMULL */
-+                    {0, 0, 0, 9}, /* VQDMULL */
-                     {0, 0, 0, 0xa}, /* Polynomial VMULL */
-                     {0, 0, 0, 7}, /* Reserved: always UNDEF */
-                 };
--- 
-2.20.1
+- * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
++ * Copyright (c) 2017-2020 Subbaraya Sundeep <sundeep.lkml@gmail.com>
 
+>  
+>  #define MSF2_TIMER_BASE       0x40004000
+>  #define MSF2_SYSREG_BASE      0x40038000
+> +#define MSF2_EMAC_BASE        0x40041000
+>  
+>  #define ENVM_BASE_ADDRESS     0x60000000
+>  
+> @@ -55,6 +56,7 @@ static const uint32_t uart_addr[MSF2_NUM_UARTS] = { 0x40000000 , 0x40010000 };
+>  static const int spi_irq[MSF2_NUM_SPIS] = { 2, 3 };
+>  static const int uart_irq[MSF2_NUM_UARTS] = { 10, 11 };
+>  static const int timer_irq[MSF2_NUM_TIMERS] = { 14, 15 };
+> +static const int emac_irq[MSF2_NUM_EMACS] = { 12 };
+
+Correct.
+
+>  
+>  static void do_sys_reset(void *opaque, int n, int level)
+>  {
+> @@ -81,6 +83,13 @@ static void m2sxxx_soc_initfn(Object *obj)
+>          sysbus_init_child_obj(obj, "spi[*]", &s->spi[i], sizeof(s->spi[i]),
+>                            TYPE_MSS_SPI);
+>      }
+> +
+> +    sysbus_init_child_obj(obj, "eth", &s->emac, sizeof(s->emac),
+
+"eth" -> "tsemac" (or "emac")?
+
+> +                          TYPE_MSS_EMAC);
+> +    if (nd_table[0].used) {
+> +        qemu_check_nic_model(&nd_table[0], TYPE_MSS_EMAC);
+> +        qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
+> +    }
+>  }
+>  
+>  static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+> @@ -192,6 +201,17 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+>          g_free(bus_name);
+>      }
+>  
+> +    dev = DEVICE(&s->emac);
+
+Can you pass the DMA memory via a link property please?
+
+       object_property_set_link(OBJECT(&s->emac),
+                                OBJECT(get_system_memory()),
+                                "ahb-bus", &error_abort);
+
+> +    object_property_set_bool(OBJECT(&s->emac), true, "realized", &err);
+> +    if (err != NULL) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +    busdev = SYS_BUS_DEVICE(dev);
+> +    sysbus_mmio_map(busdev, 0, MSF2_EMAC_BASE);
+> +    sysbus_connect_irq(busdev, 0,
+> +                           qdev_get_gpio_in(armv7m, emac_irq[0]));
+
+Indentation is off.
+
+> +
+>      /* Below devices are not modelled yet. */
+>      create_unimplemented_device("i2c_0", 0x40002000, 0x1000);
+>      create_unimplemented_device("dma", 0x40003000, 0x1000);
+> @@ -202,7 +222,6 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+>      create_unimplemented_device("can", 0x40015000, 0x1000);
+>      create_unimplemented_device("rtc", 0x40017000, 0x1000);
+>      create_unimplemented_device("apb_config", 0x40020000, 0x10000);
+> -    create_unimplemented_device("emac", 0x40041000, 0x1000);
+>      create_unimplemented_device("usb", 0x40043000, 0x1000);
+>  }
+>  
+> diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
+> index 3cfe5c7..296ed03 100644
+> --- a/include/hw/arm/msf2-soc.h
+> +++ b/include/hw/arm/msf2-soc.h
+> @@ -29,12 +29,14 @@
+>  #include "hw/timer/mss-timer.h"
+>  #include "hw/misc/msf2-sysreg.h"
+>  #include "hw/ssi/mss-spi.h"
+> +#include "hw/net/msf2-emac.h"
+>  
+>  #define TYPE_MSF2_SOC     "msf2-soc"
+>  #define MSF2_SOC(obj)     OBJECT_CHECK(MSF2State, (obj), TYPE_MSF2_SOC)
+>  
+>  #define MSF2_NUM_SPIS         2
+>  #define MSF2_NUM_UARTS        2
+> +#define MSF2_NUM_EMACS        1
+>  
+>  /*
+>   * System timer consists of two programmable 32-bit
+> @@ -62,6 +64,7 @@ typedef struct MSF2State {
+>      MSF2SysregState sysreg;
+>      MSSTimerState timer;
+>      MSSSpiState spi[MSF2_NUM_SPIS];
+> +    MSF2EmacState emac;
+
+You used 'emac_irq[MSF2_NUM_EMACS]', either use emac[MSF2_NUM_EMACS]
+here or drop MSF2_NUM_EMACS?
+
+>  } MSF2State;
+>  
+>  #endif
+>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

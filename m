@@ -1,104 +1,100 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3155449lfm;
-        Sun, 12 Apr 2020 16:05:28 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLWWH7BOh+02HoPkUR2z2hpVCfJyzaTEecZYDQS+04T25PsjRlfh3r02S5FXs4Mc89VQQnI
-X-Received: by 2002:a37:bd45:: with SMTP id n66mr14106044qkf.73.1586732728562;
-        Sun, 12 Apr 2020 16:05:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586732728; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3155480lfm;
+        Sun, 12 Apr 2020 16:05:30 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJab2LdGV8u3tqHFZkjDT82d3C3cmvegkLMCwZO+nQNeVFHbuJBdz77X3J3HKGv6cDXO1XK
+X-Received: by 2002:ad4:4d08:: with SMTP id l8mr10818288qvl.167.1586732730562;
+        Sun, 12 Apr 2020 16:05:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586732730; cv=none;
         d=google.com; s=arc-20160816;
-        b=c7NZstuZoRMU98imcx1J+qhdP6rOw75PrktBU/IWldGOat6cP5qlh+wopEIccqCJMH
-         46biO3udO5up/+JxbA0vNBlwJFKpWTDcpUlK39iyhsBxtojj7r3JWxKJM8REAOnaive8
-         AxZXE3OJJ5Sg/CbPD+52ihRfN3S3uwsdDtEik9CrdJFHQuQ8LlwSB7dC/m1AgG7Kh+Ac
-         ZGOPwz0FWHfNQmGEsQmmGCt6QBXvfZiToiswYD3tMVkQBtf/KUO0lc6QXydqLANxj3ol
-         o3QtzozIDZ/eybqPwRaOAHcJhtXawf8pN61QHMcJBcTCSk9Q0o028sUdUVAdTYcpUxhX
-         a8PQ==
+        b=pdQv3CJB2N66XDZCUDC0Irwl11b86uG6n5AEvP2rwpBUgeSORmcDVUkaEcIXDa4qsE
+         sGV+03Rr0JeqCkj4nOkVaxdKzTyf+f9k1UsaJ4Ce5bZgw7Qf16ZJD6tPn/YVrMUeFooi
+         inU0CpkWaPQd3zmynejKousqRcaVbeUPpBOPqa4oEInX4CSQPCSMhB5gjh55j0vxBnZe
+         n7Y50go5RmxeAyK2hrfuXP4fWa6KJy36Nb7NENF1Jn0Ywklm2N+hjO90lLDWCLrs/GsP
+         1rkyrQIYN6tGWs45SPGnNxHz7PTWV7YwH4K5A/Li30hQiiwT7XOazsI+pvRJfiWrp7ib
+         W0sA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=YaIevl7FVZKJyC7g4Goc3D0dFDZM5MSezImTR0wlSxA=;
-        b=vwiXadQJCCRiTeOD/s3ao/rnDPVQQ1ED8ogOMWdj+thO+QjVQKPDEEFgegO4oIRWqW
-         H4GDM2GvIXm3+dsbFfOpQNzrUyUrYaAjBMBw3ABwjA/a5mJiNhiSonclEpcY9NhwXUZS
-         C+ko0ey9ymOVnRm3Ilji4IjYR2Oe13A1itZComBF6lO/k07chRdPGFL118sKPNXhlfhy
-         io51NXqdDE8DtDW1gDfhQ+PDUxpd/WgOzP4R7AiuEHEEFUWrnX4R1FEpVUZ39k3P4XmS
-         EH70HdWj0aFcvL6xAoNITsll2EzUqnVQ1AfXGN9O6waYI+exdFqJP5LoEnGjXaU892UP
-         QJnA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=paXowiFLspJCJ+CxZTq0gQWD9VWSRURwdUHQAdRuXpU=;
+        b=nJ2oEo3FjWZFKNzp+K2djFf1XpZ6aKMSrCnsKUtQ2U7uMZ+0/PtxHYcbJnI/0wi8k+
+         pN3+dB3Vn3XwsgXchL8akHRCToZY3pGx3o3wInYjW3z//osFdsEDqHYF8AbHgA7K5mP5
+         LmE9fEcXrGWyUv4IlXSmzYYQV+dffYFGzmw5A0wdb920OHIdR4hiHpG8Ow64CjSwO7c+
+         eHaU5kLfeaLzMQbpyDJENog4mZ3tJYblgvbu7H662pQgSEX/KEw9G0ENcKbbayaVuAAO
+         gDCKS30ZUcOUOBmFIZ9MrMSJdKS1d6eNmys/gqz0WsgsAq9jqPEJvSLGRwVoUf1KhjyN
+         JEyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KLQmRGMv;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="a3o93U/z";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h4si4860725qvq.9.2020.04.12.16.05.28
+        by mx.google.com with ESMTPS id d5si4986126qti.50.2020.04.12.16.05.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Apr 2020 16:05:28 -0700 (PDT)
+        Sun, 12 Apr 2020 16:05:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KLQmRGMv;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="a3o93U/z";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:38518 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38520 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jNlfM-0003gd-0D
-	for alex.bennee@linaro.org; Sun, 12 Apr 2020 19:05:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50407)
+	id 1jNlfN-0003kN-Uq
+	for alex.bennee@linaro.org; Sun, 12 Apr 2020 19:05:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50822)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlJm-0002mL-6o
- for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:43:11 -0400
+ id 1jNlM8-00070R-Rq
+ for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:45:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlJl-0006Qn-7P
- for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:43:10 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:36768)
+ id 1jNlLy-0007Ot-Oi
+ for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:45:36 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:45240)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlJl-0006Pd-1m; Sun, 12 Apr 2020 18:43:09 -0400
-Received: by mail-wr1-x443.google.com with SMTP id u13so8063113wrp.3;
- Sun, 12 Apr 2020 15:43:06 -0700 (PDT)
+ id 1jNlLy-0007OI-Hz; Sun, 12 Apr 2020 18:45:26 -0400
+Received: by mail-wr1-x443.google.com with SMTP id v5so8517772wrp.12;
+ Sun, 12 Apr 2020 15:45:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=YaIevl7FVZKJyC7g4Goc3D0dFDZM5MSezImTR0wlSxA=;
- b=KLQmRGMv9CBAmo9FgoPduo/o5yFTRq3Q/zNf9FvQhsCGWSXGbj7G+c94b/752CchlW
- kVExzxUSiXMi3kLyE9vx2TZULs5AlKXzUv8vN3yDlwmRqLnN0Q38Oqs5BCJpvcw2IwKV
- fwi6RxAppYm2TWS34f6h4EzVxlY9GFo1l5C8KeZF8vNCGjacR45bBcGVIQB9t602xZi7
- g3mhr62nIX5VW0dd/+o+2ASh733MJ4ZgjHxe6MXB0viUC9Y62fJcwS/1DLt3PnYwgpVO
- rBz3FY5tTY20jX0VemWik/fUmef3g0VoVc6hUm/dxb64YA24l85dPIoCBGZ9JzIf/5OJ
- j50A==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=paXowiFLspJCJ+CxZTq0gQWD9VWSRURwdUHQAdRuXpU=;
+ b=a3o93U/zHKzjtmWo/h4HlyWVvYhpJwHL2cZ2tOlElCFEjVvrKgS8PemHiYUQIiU+Ia
+ Vjz4zUIuffSPe3f+RoEXjK9iLX9NVuciP8qF9yj93cDygWgh8bnAVnhHDulxUWAKPM2u
+ O8oVjVinRP8otLOmF9REGmgBCJubcc5Kct7KN4JrVV5fQ+30QD9FMzvDP9tL681NJ4Xp
+ ZXys733MPAO3DRTfpNdpF4PIf4+Qxz8AXt9hok2D8YwKyyIBMiVg8A7P+crQ67bO6kOk
+ D6UsKb/Ccv4z0XFbnvNAJ6CgFGIhM8Z93Fj8WPW0BoWTGQrS0oz+oAmzyMBPb6oRa2g0
+ p/tA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=YaIevl7FVZKJyC7g4Goc3D0dFDZM5MSezImTR0wlSxA=;
- b=qamHqZRGBbYxZiZDIESfdH01LsrQC+aQdm0buyatfSaEU3pOapRJbBOud1Qt1MNNkG
- zMaQGjzIK3KT5yyqdZ4uEQMK+327qLLaXRp0X8b6ay1TL8B5f963FoW/Xh88tIVAk3OM
- 4YB1MPTPOIU/j7JV51LxX6ZKBOLZ54OKiGL6uJiIFAckooiZdw7T1YePG2NHoDLfBc0+
- aaufbpF2TFq2VZhliU3C6iQCrxUmlSb4zK3kZe6GkyhNC2i4oUZzr8zVwVFAIy9Tzv3b
- 9OQWR8XcxWK4ms5A6gTMgSi2IGFiPjL6A9BWaGa7tNgh7CmDpRhVt1iXCOctrC6CMY1j
- 0fKA==
-X-Gm-Message-State: AGi0PuZttJjVwLvlfaHMsLjf1Iwd4+y0IRgafDX8Jfv3RWhKvPouivZM
- BLr0WcsFNmcInIJaPBX8jlYx/AuP11aRmA==
-X-Received: by 2002:a5d:460b:: with SMTP id t11mr13300743wrq.319.1586731385949; 
- Sun, 12 Apr 2020 15:43:05 -0700 (PDT)
+ :mime-version:content-transfer-encoding;
+ bh=paXowiFLspJCJ+CxZTq0gQWD9VWSRURwdUHQAdRuXpU=;
+ b=Ky+Loys3286sMwrfM38RdQFoM3e7tzC3ln2cv27v+8ciOMEBLFEVFvBM/81+gLD1HI
+ 7AjJyoPfj1GdfaRLaHpFRzBFyHYW+EoP/67zjqeh1JPbSTYuAwdfsYwdzxR+9aCmQ60o
+ 0ifok47JZ7mj91PuFa/OcsPmaAKgzAur8NdNhJf14c4TTFaP8OBfM69bVZQy5tJC7Rha
+ yPTYRviZNr8r81BMgjrZkfSpl1VEzoUps+Scem66zhv0eDYvWE3A2YSSKrpCjBQ6NJFD
+ MscSNTXRWMp+G1zmGIp1Xqs/ZOjXQJzcP1F6ZJNZaBhZsH3IhF5xDMT4B3urJD3xnHbT
+ Bvkg==
+X-Gm-Message-State: AGi0PubHRR+OtuyQ+0ZeBYvCRcT1mvI6PLyHvaZwcjnbznLC5rcuzNZM
+ OYNMISTdMx5J6Qw6N6OX7M7fa7ep0C51ug==
+X-Received: by 2002:adf:f3c5:: with SMTP id g5mr15721541wrp.230.1586731523938; 
+ Sun, 12 Apr 2020 15:45:23 -0700 (PDT)
 Received: from localhost.localdomain (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id f63sm12083825wma.47.2020.04.12.15.43.02
+ by smtp.gmail.com with ESMTPSA id a1sm3509742wrn.80.2020.04.12.15.45.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Apr 2020 15:43:05 -0700 (PDT)
+ Sun, 12 Apr 2020 15:45:22 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.1 v3 21/23] hw/net/xilinx_axienet: Add missing
- error-propagation code
-Date: Mon, 13 Apr 2020 00:41:42 +0200
-Message-Id: <20200412224144.12205-22-f4bug@amsat.org>
+Subject: [PATCH-for-5.1 v3 0/7] various: Fix error-propagation with Coccinelle
+ scripts (part 3)
+Date: Mon, 13 Apr 2020 00:45:10 +0200
+Message-Id: <20200412224517.12869-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200412224144.12205-1-f4bug@amsat.org>
-References: <20200412224144.12205-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
@@ -115,80 +111,149 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Paul Burton <pburton@wavecomp.com>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
- Markus Armbruster <armbru@redhat.com>,
+ Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Jiri Slaby <jslaby@suse.cz>,
+ Li Zhijian <lizhijian@cn.fujitsu.com>, qemu-block@nongnu.org,
+ Juan Quintela <quintela@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
  Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Max Reitz <mreitz@redhat.com>, Joel Stanley <joel@jms.id.au>,
- Palmer Dabbelt <palmer@dabbelt.com>,
+ "Gonglei \(Arei\)" <arei.gonglei@huawei.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, Palmer Dabbelt <palmer@dabbelt.com>,
  Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
  David Gibson <david@gibson.dropbear.id.au>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Eric Farman <farman@linux.ibm.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Amit Shah <amit@kernel.org>,
  Alistair Francis <alistair@alistair23.me>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ qemu-riscv@nongnu.org, John Snow <jsnow@redhat.com>,
  Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- qemu-riscv@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ Andrew Jeffery <andrew@aj.id.au>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, Michael Walle <michael@walle.cc>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
+ Cornelia Huck <cohuck@redhat.com>,
+ Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, Max Reitz <mreitz@redhat.com>,
+ Zhang Chen <chen.zhang@intel.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X/hyCoC8PCj7
+X-TUID: cQAVzq30BRE+
 
-Patch created mechanically by running:
+This series is inspired of Peter Maydell fix [1]:
+"hw/arm/xlnx-zynqmp.c: fix some error-handling code",
+but grew after v1 [2] review :/
 
-  $ spatch \
-    --macro-file scripts/cocci-macro-file.h --include-headers \
-    --sp-file scripts/coccinelle/add-missing-error_propagate.cocci \
-    --keep-comments --smpl-spacing --dir hw
+Markus: I added the cocci patches to your Error section, I hope
+that's fine :)
 
-Then review showed this file has a 'xilinx_enet_realize_fail'
-label that calls error_propagate(). Updated the patch to use
-the label.
+Part 3: Use &error_abort/&error_fatal in instance_init().
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-v2: New cocci patch generated both transformations
-    (Peter noticed v1 only catched one)
----
- hw/net/xilinx_axienet.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+Regards,
 
-diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-index 704788811a..db2c675b16 100644
---- a/hw/net/xilinx_axienet.c
-+++ b/hw/net/xilinx_axienet.c
-@@ -958,6 +958,9 @@ static void xilinx_enet_realize(DeviceState *dev, Error **errp)
-                              object_property_allow_set_link,
-                              OBJ_PROP_LINK_STRONG,
-                              &local_err);
-+    if (local_err) {
-+        goto xilinx_enet_realize_fail;
-+    }
-     object_property_add_link(OBJECT(cs), "enet", "xlnx.axi-ethernet",
-                              (Object **) &cs->enet,
-                              object_property_allow_set_link,
-@@ -967,6 +970,9 @@ static void xilinx_enet_realize(DeviceState *dev, Error **errp)
-         goto xilinx_enet_realize_fail;
-     }
-     object_property_set_link(OBJECT(ds), OBJECT(s), "enet", &local_err);
-+    if (local_err) {
-+        goto xilinx_enet_realize_fail;
-+    }
-     object_property_set_link(OBJECT(cs), OBJECT(s), "enet", &local_err);
-     if (local_err) {
-         goto xilinx_enet_realize_fail;
+Phil.
+
+[1] https://www.mail-archive.com/qemu-devel@nongnu.org/msg691636.html
+[2] https://www.mail-archive.com/qemu-devel@nongnu.org/msg692155.html
+Based-on: <20200412224144.12205-1-f4bug@amsat.org>
+
+Philippe Mathieu-Daudé (7):
+  scripts/coccinelle: Use &error_abort in TypeInfo::instance_init()
+  various: Use &error_abort in instance_init()
+  scripts/coccinelle: Find eventually missing error_propagate() calls
+  migration/colo: Add missing error-propagation code
+  hw/mips/boston: Add missing error-propagation code
+  hw/mips/mips_malta: Use &error_abort in MachineClass::init ->
+    create_cps
+  qga/commands-win32: Add missing error-propagation code
+
+ .../find-missing-error_propagate.cocci        | 53 +++++++++++++++++++
+ .../use-error_abort-in-instance_init.cocci    | 45 ++++++++++++++++
+ backends/cryptodev-vhost-user.c               |  2 +-
+ backends/rng-egd.c                            |  2 +-
+ backends/rng-random.c                         |  2 +-
+ backends/vhost-user.c                         |  3 +-
+ hw/arm/bcm2835_peripherals.c                  |  6 ++-
+ hw/arm/vexpress.c                             |  8 +--
+ hw/arm/xlnx-zcu102.c                          |  8 +--
+ hw/block/fdc.c                                |  4 +-
+ hw/block/vhost-user-blk.c                     |  2 +-
+ hw/block/virtio-blk.c                         |  2 +-
+ hw/core/machine.c                             |  6 +--
+ hw/cpu/core.c                                 |  4 +-
+ hw/display/vga-pci.c                          |  7 ++-
+ hw/display/xlnx_dp.c                          |  4 +-
+ hw/dma/sparc32_dma.c                          |  2 +-
+ hw/gpio/aspeed_gpio.c                         |  2 +-
+ hw/ide/macio.c                                |  4 +-
+ hw/ide/qdev.c                                 |  4 +-
+ hw/intc/apic_common.c                         |  2 +-
+ hw/mem/nvdimm.c                               |  4 +-
+ hw/mips/boston.c                              | 17 +++---
+ hw/mips/mips_malta.c                          | 15 ++----
+ hw/misc/aspeed_sdmc.c                         |  2 +-
+ hw/misc/edu.c                                 |  3 +-
+ hw/misc/macio/macio.c                         |  4 +-
+ hw/misc/macio/pmu.c                           |  3 +-
+ hw/misc/pca9552.c                             |  2 +-
+ hw/misc/tmp105.c                              |  2 +-
+ hw/misc/tmp421.c                              |  8 +--
+ hw/net/e1000.c                                |  3 +-
+ hw/net/lance.c                                |  3 +-
+ hw/net/lasi_i82596.c                          |  3 +-
+ hw/net/ne2000-isa.c                           |  4 +-
+ hw/net/spapr_llan.c                           |  3 +-
+ hw/net/virtio-net.c                           |  2 +-
+ hw/pci-host/grackle.c                         |  2 +-
+ hw/pci-host/i440fx.c                          |  8 +--
+ hw/pci-host/prep.c                            |  2 +-
+ hw/pci-host/q35.c                             | 23 ++++----
+ hw/pci-host/sabre.c                           |  3 +-
+ hw/pci-host/uninorth.c                        |  9 ++--
+ hw/pcmcia/pxa2xx.c                            |  3 +-
+ hw/ppc/spapr_drc.c                            |  6 +--
+ hw/ppc/spapr_rng.c                            |  2 +-
+ hw/riscv/sifive_u.c                           |  4 +-
+ hw/s390x/event-facility.c                     |  6 +--
+ hw/s390x/s390-ccw.c                           |  2 +-
+ hw/s390x/s390-skeys.c                         |  4 +-
+ hw/s390x/s390-stattrib.c                      |  4 +-
+ hw/s390x/sclp.c                               |  2 +-
+ hw/scsi/scsi-bus.c                            |  2 +-
+ hw/ssi/xilinx_spips.c                         |  2 +-
+ hw/usb/bus.c                                  |  4 +-
+ hw/usb/dev-network.c                          |  2 +-
+ hw/usb/dev-storage.c                          |  4 +-
+ hw/usb/host-libusb.c                          |  2 +-
+ hw/usb/redirect.c                             |  2 +-
+ hw/virtio/virtio-balloon.c                    |  4 +-
+ migration/colo.c                              |  3 ++
+ net/dump.c                                    |  4 +-
+ net/filter-buffer.c                           |  2 +-
+ net/filter-mirror.c                           | 10 ++--
+ net/filter-rewriter.c                         |  3 +-
+ qga/commands-win32.c                          | 26 ++++++---
+ target/arm/cpu64.c                            |  4 +-
+ target/i386/cpu.c                             | 23 ++++----
+ target/s390x/cpu.c                            |  3 +-
+ tests/check-qom-proplist.c                    |  7 +--
+ tests/test-qdev-global-props.c                |  5 +-
+ MAINTAINERS                                   |  2 +
+ 72 files changed, 289 insertions(+), 155 deletions(-)
+ create mode 100644 scripts/coccinelle/find-missing-error_propagate.cocci
+ create mode 100644 scripts/coccinelle/use-error_abort-in-instance_init.cocci
+
 -- 
 2.21.1
 

@@ -1,99 +1,99 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3139153lfm;
-        Sun, 12 Apr 2020 15:40:58 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKVERdrYnT9EkupZGk5Ao/BcjKII2roxxlHLHLmLqI/UpgrPnu6pZtqO45+uWRJehxyqJMe
-X-Received: by 2002:a05:6214:1789:: with SMTP id ct9mr10669239qvb.21.1586731258155;
-        Sun, 12 Apr 2020 15:40:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586731258; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3139312lfm;
+        Sun, 12 Apr 2020 15:41:13 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKLTcmjbfEyMpI/oF0NxVdumjF+8qA12ydrmXSQF7bQiRRhoWOkQxgLKiUomwhgAYRLa3cC
+X-Received: by 2002:a37:6c81:: with SMTP id h123mr13710876qkc.290.1586731273237;
+        Sun, 12 Apr 2020 15:41:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586731273; cv=none;
         d=google.com; s=arc-20160816;
-        b=nA7AozW98PG6/j1C6rRaUBJXdnHaWNa+Sp7bz9Er3tqzdQbZPsyh2RIoskifZ4KokS
-         FesrimFBsvl+hY1yWT3fNEc1H/Hp81gUpTqoe9s5214QRoQ9eDg7yL3NemkjUoLHZoUh
-         fi1zx4n99x2+srKmmT/7KLTQRdO1xXm/PA48i64Zil3uCiCoSAEvDUuct96oenBBwPX0
-         J42OoUM9j+1aHjHJ48wpED7WW8NXwBkrx5WUVE5ouCvsO0qFZBYT719qnw4zc4UneCzv
-         aDbiUzX2U2Uj4CBDsz7IhS3i1xxj2W0M0+SKbdX0eJEgGw8rtKWSFAMNro/KTpyhr6GN
-         ejKg==
+        b=mXnexm6UQ30xXHWYzB29FgI3nEsll4TdAoxl/X/U5MDJJbggMV2pEMiKjyc+p1Gynt
+         4YKGRd7U8Vn8RIg7PHKtdZEFsJvA6p1Jr4pPYvVI9JxVsW2j+f9DjUb+b2kLtvGs/GUP
+         tUEGy0u48o3h6+re7JHUKS4FsMJKZsfScA4roExLyyUJewWSc7gi8h4reh+Uj/lj2bR2
+         bk9aa807GCciqLMBNnync4WXRL4BPanssdRQA4aZK6d0MJcww5L0KyG0Udq99LL/pQ+j
+         XTsKskc3PkUdRWcSose3Spe9SU3bcbX1RSrf8Z4rXepUOJ7qEJVgDZKts/C9mGWQta+R
+         s7Ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=rNOvzQC0gAZiW9IjgvdXICw1FeldG6faD6QdyriSpSA=;
-        b=xe8DPjhH1xo6P8wfOaGe2fZMeKcw/sal4BKkzFeJO5TUiPuqUVWVNiVl54R9KT5C8o
-         lSuKS3QyWYKKFjQj8i5IzuY0xoq5ejsbY/rXF6eNH/jcAgqaD8Tu2ilRnf/aue0bcJd/
-         YT/N3LzimLgTMM1VEZ0Xy5eL8DrdhcYtHqKgU4eqSc2DbxNAYTeI4hj3ZsNCicbwKuXp
-         gKnAxnordFmaZGnKnuUO0NTi13dUisPd6da2uTS76zpcRruVgZnEJQ8u2uPv0+sCar+m
-         5u4+CVRfy/ioMg9ZhsGSRq6RUQXq/1IaQvm5fiojQ2Nd5F3E7NwvyRIRiEW73tKWpBjj
-         BEaw==
+        bh=4j3n0ZN8lrQk9Ox5ZI487lTmFghYMiP7ZCOjQ+gtTO0=;
+        b=KaNksltlFe2Sk1RBHyvM3mh0LnY0QhBKqsOOX8EnICnwqjJBzCW755NFEMRj8kNkQ6
+         3EEWgCyX2Azi85LodUDEfaZgiJy7Gn7WAwWHV8i+ekAJ23HkxJXMTgPTatqbwKuJrpN5
+         iIFIii6WHf3rGlBm2i20MxmmYt9RUE5hh3/VRctnckDVjR/zM6snnDS1U6aEdX0XID1S
+         sFnc2GrKvNJ9JElpJGNSHZuLYHjbr7VE/OriHFChznCjckic8gw7BjPsAF/UGW09CWfe
+         VMLmDT/cf7RDHNbFyFwhFqF44DNLZm0hIT4b2dq1LTrVjtkqo+fCdd4U3fa8rtZngYUl
+         DXIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Yms+dVno;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FiPl+xfI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h41si4720003qtk.45.2020.04.12.15.40.57
+        by mx.google.com with ESMTPS id p55si2862906qtk.60.2020.04.12.15.41.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Apr 2020 15:40:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 12 Apr 2020 15:41:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Yms+dVno;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FiPl+xfI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:37786 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37798 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jNlHd-0005hF-GI
-	for alex.bennee@linaro.org; Sun, 12 Apr 2020 18:40:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47674)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jNlHs-0006vg-MW
+	for alex.bennee@linaro.org; Sun, 12 Apr 2020 18:41:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47971)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlDs-0006JD-EZ
- for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:37:05 -0400
+ id 1jNlE8-0006xV-Ve
+ for qemu-arm@nongnu.org; Sun, 12 Apr 2020 18:37:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlDr-0002jG-BG
- for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:37:04 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:39444)
+ id 1jNlE7-0002wh-Kw
+ for qemu-arm@nongnu.org; Sun, 12 Apr 2020 18:37:20 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:56094)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlDr-0002id-4d; Sun, 12 Apr 2020 18:37:03 -0400
-Received: by mail-wr1-x441.google.com with SMTP id p10so8517155wrt.6;
- Sun, 12 Apr 2020 15:37:03 -0700 (PDT)
+ id 1jNlE1-0002rQ-Lg; Sun, 12 Apr 2020 18:37:13 -0400
+Received: by mail-wm1-x342.google.com with SMTP id e26so7922076wmk.5;
+ Sun, 12 Apr 2020 15:37:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=rNOvzQC0gAZiW9IjgvdXICw1FeldG6faD6QdyriSpSA=;
- b=Yms+dVnobgL/uTyskm/CPmGVpuY5K7rRdl/y/Xcw36vwxQ4cXdVkaf3wqlD8Za79ok
- U/eQ0KdvGCCuYFZ6RYlgmadQw237gtmd5zOSr/E+aphrQk0rOZiAm1wPzlXJDvs9JINY
- 8VnhhvZP4diyOC0umPSzp9tvtLp/ucbCoD6izhWzKJqtl71n/GtUO9MS/z+54RzS5EuG
- TpszyNIilI0JzZmpURO6BKGFuZItPz4l9BMi0zWjeYqESlxn0f+uC1hL/8ZpSj+eM+4R
- oE/CzP/7uRejFlskPIu9dMheg0X2Cma9G7Y8Fnm3Aj7SCBA5yxD6SJn6AeZN8ankWpGb
- Xe7A==
+ bh=4j3n0ZN8lrQk9Ox5ZI487lTmFghYMiP7ZCOjQ+gtTO0=;
+ b=FiPl+xfImHl2GpHUMPv7DS3HnCGs7y5Yv7rRAWLbBxSA+Zejhz/zl3dYLZFx9NwO3C
+ ruBIj4ErorNm/wEEEwmAZQN7jz+KhLLNa3qUtc6sXdKd0t4oGGLXPCHrZDaqFOt7+heG
+ akctvFAf/HakBv2w5G3h7MQwU/7e8gmOEEk6Z3+IDI0ZJ8CQnO1vrHu4pMgXZE7FtJ37
+ +V2y1Eimw56yRDBdiaV3zqgFJs1xlb2++xZYHy83WCjNnfGmjYL3b+tsJbkPb0JXPjQ6
+ mm7I3D/7KEPFhiTmxZNJOmqeOOKBoCVRVDbYfbGEZ4JPJvWn79ulzvCvctV9S8Op08JM
+ 6KXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=rNOvzQC0gAZiW9IjgvdXICw1FeldG6faD6QdyriSpSA=;
- b=gSGniEl22W1ter74CjmVc3KYe9zSvzn8Ksi3aFaV5/Bj9NbFZBVj4lUEews8eICEzw
- bIHSRWnDtViC0op4xQRxiZX0Y2qBn9NXqsnF7UddayAQtfmHCYaibWOdyhbzpaz7BnDk
- /GL5iBb4NVq6U+499SblbENep/l9adNiw92XjTYxekSEnsBMHTG46NhztrmY4FUNMXnx
- b8iCy0eRlC/x824tz4yMgqyBj38KW3qYT6oJOqCoRJFySFcLPrE6Y+vjMGbv6LtdyNiJ
- gUuyE6kCqovhaCSxs39AZEtjrexBg2XRcuEtNs9MFL204NN5yO36uiv36FgkRhRqo1rM
- fmbw==
-X-Gm-Message-State: AGi0PuZN0OCL7fDqB3ZhxvdLvqenrfR84NwbpIGko/tH9H3jirCw5Utn
- VDOaTMxoZ1AlPcPEA10N0VGyAbnQaGGP/w==
-X-Received: by 2002:adf:ee06:: with SMTP id y6mr16579217wrn.187.1586731021977; 
- Sun, 12 Apr 2020 15:37:01 -0700 (PDT)
+ bh=4j3n0ZN8lrQk9Ox5ZI487lTmFghYMiP7ZCOjQ+gtTO0=;
+ b=NDk6OdbEfQIzD4f7kNQB7TtSmI+3GaowfGPmWcuE6OI+tVK6TpDsiqd0UGQK2qnmmh
+ BejAKN8SjEfqTt6MKwJQ/jmGEvgxBuADzg9jJEVZmJWGDUGdvo23pDosPNDPX4hBpFc0
+ 5rJdsy54zyCp0ftdmQRZk6rXCM8JFT74GU4ogCiCrrCv0X022bl69rCCHzYsTK/t544E
+ ajb4NMgmE0beHEz2alF3agWFSVgxVuOPDPZeMqBAjCWJntVlsi1oE42viY0zd/tXIjzR
+ 56cFgRnqwKZyIYH9gmPQhVOkd08QDJDdkRQ3gIvkSJ9jZgdU6Fv+PXCypPY8qNuMvJGd
+ v/bw==
+X-Gm-Message-State: AGi0PuaR+VGZEmMahti7aVPdm9EfelZQh4tMBfAdAzgpwydSx+PQynl9
+ Qv0XVETGASH50VnzAxhayImVmyVveln+WQ==
+X-Received: by 2002:a1c:7301:: with SMTP id d1mr16763598wmb.26.1586731032454; 
+ Sun, 12 Apr 2020 15:37:12 -0700 (PDT)
 Received: from localhost.localdomain (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id d13sm12563559wrv.34.2020.04.12.15.36.58
+ by smtp.gmail.com with ESMTPSA id d13sm12563559wrv.34.2020.04.12.15.37.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Apr 2020 15:37:01 -0700 (PDT)
+ Sun, 12 Apr 2020 15:37:11 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.1 v3 11/24] hw/arm/msf2-soc: Store MemoryRegion in
- MSF2State
-Date: Mon, 13 Apr 2020 00:36:06 +0200
-Message-Id: <20200412223619.11284-12-f4bug@amsat.org>
+Subject: [PATCH-for-5.1 v3 14/24] hw/arm/xlnx-zynqmp: Use single
+ propagate_error() call
+Date: Mon, 13 Apr 2020 00:36:09 +0200
+Message-Id: <20200412223619.11284-15-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200412223619.11284-1-f4bug@amsat.org>
 References: <20200412223619.11284-1-f4bug@amsat.org>
@@ -103,23 +103,22 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::441
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::342
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
  Jason Wang <jasowang@redhat.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
  Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>,
  Joel Stanley <joel@jms.id.au>,
@@ -140,83 +139,210 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-ppc@nongnu.org,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BcgDO2aLnl8r
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2f1YCRJfkP8Y
 
-Coccinelle reported:
+Coccinelle failed at processing this file:
 
   $ spatch ... --timeout 60 --sp-file \
     scripts/coccinelle/simplify-init-realize-error_propagate.cocci
-  HANDLING: ./hw/arm/msf2-soc.c
-  >>> possible moves from m2sxxx_soc_initfn() to m2sxxx_soc_realize() in ./hw/arm/msf2-soc.c:86
+  HANDLING: ./hw/arm/xlnx-zynqmp.c
+  EXN: Coccinelle_modules.Common.Timeout
 
-While reviewing we notice storing the MemoryRegion in the device
-state, we'll be able to later automatically simplify the error
-propagation calls.
+We are going to manually add the missing propagate_error() calls.
+As there are many Error* calls used, simplify by using an unique
+call to propagate_error().
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/arm/msf2-soc.h |  4 ++++
- hw/arm/msf2-soc.c         | 18 +++++++-----------
- 2 files changed, 11 insertions(+), 11 deletions(-)
+ hw/arm/xlnx-zynqmp.c | 61 +++++++++++++++++---------------------------
+ 1 file changed, 23 insertions(+), 38 deletions(-)
 
-diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
-index 3cfe5c76ee..e4c5110036 100644
---- a/include/hw/arm/msf2-soc.h
-+++ b/include/hw/arm/msf2-soc.h
-@@ -50,6 +50,10 @@ typedef struct MSF2State {
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index b84d153d56..43d57fa7de 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -385,15 +385,13 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+         object_property_set_bool(OBJECT(&s->apu_cpu[i]), true, "realized",
+                                  &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+     }
  
-     ARMv7MState armv7m;
+     object_property_set_bool(OBJECT(&s->gic), true, "realized", &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
  
-+    MemoryRegion sram;
-+    MemoryRegion nvm;
-+    MemoryRegion nvm_alias;
+     assert(ARRAY_SIZE(xlnx_zynqmp_gic_regions) == XLNX_ZYNQMP_GIC_REGIONS);
+@@ -462,8 +460,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+ 
+     xlnx_zynqmp_create_rpu(ms, s, boot_cpu, &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
+ 
+     if (!s->boot_cpu_ptr) {
+@@ -488,8 +485,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+                                 &error_abort);
+         object_property_set_bool(OBJECT(&s->gem[i]), true, "realized", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->gem[i]), 0, gem_addr[i]);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->gem[i]), 0,
+@@ -500,8 +496,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+         qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", serial_hd(i));
+         object_property_set_bool(OBJECT(&s->uart[i]), true, "realized", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->uart[i]), 0, uart_addr[i]);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
+@@ -512,8 +507,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+                             &error_abort);
+     object_property_set_bool(OBJECT(&s->sata), true, "realized", &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
+ 
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->sata), 0, SATA_ADDR);
+@@ -531,23 +525,19 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+          */
+         object_property_set_uint(sdhci, 3, "sd-spec-version", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+         object_property_set_uint(sdhci, SDHCI_CAPABILITIES, "capareg", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+         object_property_set_uint(sdhci, UHS_I, "uhs", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+         object_property_set_bool(sdhci, true, "realized", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+         sysbus_mmio_map(sbd, 0, sdhci_addr[i]);
+         sysbus_connect_irq(sbd, 0, gic_spi[sdhci_intr[i]]);
+@@ -564,8 +554,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+ 
+         object_property_set_bool(OBJECT(&s->spi[i]), true, "realized", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0, spi_addr[i]);
+@@ -582,8 +571,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+ 
+     object_property_set_bool(OBJECT(&s->qspi), true, "realized", &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 0, QSPI_ADDR);
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi), 1, LQSPI_ADDR);
+@@ -605,16 +593,14 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+ 
+     object_property_set_bool(OBJECT(&s->dp), true, "realized", &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->dp), 0, DP_ADDR);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->dp), 0, gic_spi[DP_IRQ]);
+ 
+     object_property_set_bool(OBJECT(&s->dpdma), true, "realized", &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
+     object_property_set_link(OBJECT(&s->dp), OBJECT(&s->dpdma), "dpdma",
+                              &error_abort);
+@@ -623,16 +609,14 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+ 
+     object_property_set_bool(OBJECT(&s->ipi), true, "realized", &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->ipi), 0, IPI_ADDR);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->ipi), 0, gic_spi[IPI_IRQ]);
+ 
+     object_property_set_bool(OBJECT(&s->rtc), true, "realized", &err);
+     if (err) {
+-        error_propagate(errp, err);
+-        return;
++        goto out_propagate_error;
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->rtc), 0, RTC_ADDR);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->rtc), 0, gic_spi[RTC_IRQ]);
+@@ -640,13 +624,11 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i < XLNX_ZYNQMP_NUM_GDMA_CH; i++) {
+         object_property_set_uint(OBJECT(&s->gdma[i]), 128, "bus-width", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+         object_property_set_bool(OBJECT(&s->gdma[i]), true, "realized", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->gdma[i]), 0, gdma_ch_addr[i]);
+@@ -657,14 +639,17 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i < XLNX_ZYNQMP_NUM_ADMA_CH; i++) {
+         object_property_set_bool(OBJECT(&s->adma[i]), true, "realized", &err);
+         if (err) {
+-            error_propagate(errp, err);
+-            return;
++            goto out_propagate_error;
+         }
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->adma[i]), 0, adma_ch_addr[i]);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->adma[i]), 0,
+                            gic_spi[adma_ch_intr[i]]);
+     }
++    return;
 +
-     char *cpu_type;
-     char *part_name;
-     uint64_t envm_size;
-diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-index 588d643b8d..e448b0ab74 100644
---- a/hw/arm/msf2-soc.c
-+++ b/hw/arm/msf2-soc.c
-@@ -90,13 +90,9 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
-     SysBusDevice *busdev;
-     Error *err = NULL;
-     int i;
--
-     MemoryRegion *system_memory = get_system_memory();
--    MemoryRegion *nvm = g_new(MemoryRegion, 1);
--    MemoryRegion *nvm_alias = g_new(MemoryRegion, 1);
--    MemoryRegion *sram = g_new(MemoryRegion, 1);
++out_propagate_error:
++    error_propagate(errp, err);
+ }
  
--    memory_region_init_rom(nvm, OBJECT(dev_soc), "MSF2.eNVM", s->envm_size,
-+    memory_region_init_rom(&s->nvm, OBJECT(dev_soc), "MSF2.eNVM", s->envm_size,
-                            &error_fatal);
-     /*
-      * On power-on, the eNVM region 0x60000000 is automatically
-@@ -104,15 +100,15 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
-      * start address (0x0). We do not support remapping other eNVM,
-      * eSRAM and DDR regions by guest(via Sysreg) currently.
-      */
--    memory_region_init_alias(nvm_alias, OBJECT(dev_soc), "MSF2.eNVM", nvm, 0,
--                             s->envm_size);
-+    memory_region_init_alias(&s->nvm_alias, OBJECT(dev_soc), "MSF2.eNVM",
-+                             &s->nvm, 0, s->envm_size);
- 
--    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, nvm);
--    memory_region_add_subregion(system_memory, 0, nvm_alias);
-+    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, &s->nvm);
-+    memory_region_add_subregion(system_memory, 0, &s->nvm_alias);
- 
--    memory_region_init_ram(sram, NULL, "MSF2.eSRAM", s->esram_size,
-+    memory_region_init_ram(&s->sram, NULL, "MSF2.eSRAM", s->esram_size,
-                            &error_fatal);
--    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
-+    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, &s->sram);
- 
-     armv7m = DEVICE(&s->armv7m);
-     qdev_prop_set_uint32(armv7m, "num-irq", 81);
+ static Property xlnx_zynqmp_props[] = {
 -- 
 2.21.1
 

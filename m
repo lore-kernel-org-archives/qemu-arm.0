@@ -1,99 +1,99 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3137553lfm;
-        Sun, 12 Apr 2020 15:38:32 -0700 (PDT)
-X-Google-Smtp-Source: APiQypI5SpypmOCPTGhyVDzRU4okk0xvEnUjpNDlz/De/YHOQvBpO8O/Pz8PTB1woGNNvXoYGSqh
-X-Received: by 2002:a37:9b4f:: with SMTP id d76mr11092173qke.305.1586731112031;
-        Sun, 12 Apr 2020 15:38:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586731112; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3137705lfm;
+        Sun, 12 Apr 2020 15:38:48 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLH7sHEpNipAQ7VEUXW/X7rW6qZI53FGJOYJTEFKdTskWnLM3S/LCqoSXbtzc8AbT5mfz/v
+X-Received: by 2002:a05:620a:88f:: with SMTP id b15mr13149256qka.118.1586731127844;
+        Sun, 12 Apr 2020 15:38:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586731127; cv=none;
         d=google.com; s=arc-20160816;
-        b=a11YsCklqIcTOyeoV3wZ098P7vmN22fVwLCW1BIAGJDVHOqNKb6ZCn431QRo/KOR/m
-         NJS0SDM7bQSmPqyqW7Jfx5xUS7uHC6ib1rafslGt6KxYt4R5q9aSxiEks7tF4YltsE1N
-         gg7o1X673nFhXbaQqqUhImvnP1m3VMQPA5kdcOJ1fCmcpIXIMMXWuxLNY7XPCfu1GYiZ
-         C/PZy7s4dB2ibz7n48yLF8HNACXoGuYhQlQkd8ng3nlOXr9Wt1V1ILQeVwvZI/rmGCgz
-         jm2s1IaTTGrmNq3BvMPzOvIADN4spJZcRRoDla9nr7nw5q83OaRGdAqEOsiMsuxLH3lk
-         NbgA==
+        b=Sqypqt59HvG1Q/nh4j1sOKU19kIsTHUXr1cl61F+PqzcCtcRIi77GQlK5XT1o5P5b8
+         X8TMDe4CAGEcRnAC+ZHty4Y19tddapXilMNudQ0q6xPHI/sx7sdxlVGwWz+M3OAJrut9
+         uK4jRqnv+GIm4JvPGdPTasqkkf/em59cNDtQHaQX5Otwr9+WM+tTqwUNBdWukVWfumgy
+         H/ThxpgmT1/eJdBT6YE06DvjVibA4NTHYkPkXC8L7yU0qHJp4ddMNQsglpdYqb2oFfRn
+         cAnC2voQIHRHQnxGFg+OvCUkRRHzkVdtEX060EO48t+C1gHofQQsfYKAtWQs6whLvCWq
+         J96g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=bXa2l2oxeqJx05eiHv+iO8CwXNv4HJULZjaNP8dd5IQ=;
-        b=WQfYaqwS3hBtTDBbZAx6NH3BS4kBEtXkf32XCDnhTMlzUcUaXm4sGQIeVD/N7+hd7D
-         c2SlR+Ph3in20Rr32cjZgmXurwwMKAWLFaoIJKwv/xszSftL2RanogEcWcMPTdEVZ7og
-         lgJpSVThygglFAoBeX+qRSr4uuB7ncf4vIAMRVJ4tCEObxVwg6D8f/IlylHoqUiNWNO0
-         1sl/Fe7oeKBQFjnzD39Q/5OKXSKmITFdj73OfyFDnyyOFl/XEpnmWWQmvVmTxtbJBqgt
-         s+Y3qyfdO6svUKbMHejUdVj5v4lh3gjuR2mKsuB9Lp5WRYMU5VgsAxFOUZx0HkOziKmO
-         FfjQ==
+        bh=0L3GtgkM+tHAsomgjJ+0n9R4GwoMloXQteUzufC2V7I=;
+        b=KT0U1GzBSvM1mcJMPnJsBa74eSbvzZ7HIVkRyLM6j65gHACQd2afPPLTeTVDD2yl9O
+         tOVs4QlejwASRG5fTE+K7Dn17PQLXoXYP3OjO6x5rMIN34iUVEZBzVYbr9Reo8NJB6W/
+         UMJo6KmP17nCPHU0u4rh6hhlykciJcvth5U9kps/J16zeOUIBjH6F7m90NHcOeVBYsJR
+         fOpjrV6zI5zYEafztp9YZ4HoNCf+PgXw7OYFFIkvMd3BG6+bAupjyQ0QSHGOKFAmIdkO
+         eJQr62nmrf5S4/ck6d5g0NGnJvBe9U9MeWllhGpxUmaFMjSC2BZ24enHb4Bha50TXdp6
+         AK3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gu427nNY;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jTYU73qG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q20si4802505qtn.318.2020.04.12.15.38.31
+        by mx.google.com with ESMTPS id d188si5063752qkf.282.2020.04.12.15.38.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Apr 2020 15:38:32 -0700 (PDT)
+        Sun, 12 Apr 2020 15:38:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gu427nNY;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jTYU73qG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:37692 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37710 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jNlFH-0001M9-Fd
-	for alex.bennee@linaro.org; Sun, 12 Apr 2020 18:38:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47205)
+	id 1jNlFX-00023z-8z
+	for alex.bennee@linaro.org; Sun, 12 Apr 2020 18:38:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47255)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlDV-0005HZ-KB
- for qemu-arm@nongnu.org; Sun, 12 Apr 2020 18:36:43 -0400
+ id 1jNlDX-0005QO-TR
+ for qemu-arm@nongnu.org; Sun, 12 Apr 2020 18:36:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlDT-000256-MW
- for qemu-arm@nongnu.org; Sun, 12 Apr 2020 18:36:41 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:46739)
+ id 1jNlDW-00028y-NF
+ for qemu-arm@nongnu.org; Sun, 12 Apr 2020 18:36:43 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:34236)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlDK-0001mP-2i; Sun, 12 Apr 2020 18:36:30 -0400
-Received: by mail-wr1-x443.google.com with SMTP id f13so8490696wrm.13;
- Sun, 12 Apr 2020 15:36:29 -0700 (PDT)
+ id 1jNlDR-0001zl-Aq; Sun, 12 Apr 2020 18:36:37 -0400
+Received: by mail-wr1-x443.google.com with SMTP id 65so8549525wrl.1;
+ Sun, 12 Apr 2020 15:36:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=bXa2l2oxeqJx05eiHv+iO8CwXNv4HJULZjaNP8dd5IQ=;
- b=gu427nNYFaua2qj3onP+11MonyrkRl4dCZ/THEK1YjiLNqIij00Gy9B9HVCWiSc+tx
- b4thvhno/ZMxZ70JbAAPcQFoDvgN5Fz1T1KiXYmEh7RsGejzBIcsShesJPuXBGBlHsix
- jInOcm/Wzxxz8FjoqjXAXnQKNTk7qQENWGgNUxqCNtUvllLU3ntNOnGtFDOnxmHgPUQv
- XnKEiC3S2n6C5/JzLubvnpnY5/75+pTSBYDm+pm8JXWQtU+/+lsTJYEfsa7Jzp1BctEI
- n8Olkhj/HRCCiEomcEBtOODCLfiwXeyHALhrqPmyN4pQuFnaUsceDT5dY5BFMEfjq3EU
- Npog==
+ bh=0L3GtgkM+tHAsomgjJ+0n9R4GwoMloXQteUzufC2V7I=;
+ b=jTYU73qGqVFddr8pLnVQpLbF5W2VR27kMU7rzfTogZDI+MLQvq0BoNDP7FDEEvSRBX
+ 0ZNK4KsvD2fjIjLEu7ZM4UXndxYQ6owfy2j6Ifdfg68yAYMy7FOK7okPnY1OQ1l3M2Mw
+ uLMFStGPYm5v+vCENxCdqkSYFw3+z0vBvc7LR3+wPtpgOEAGG4M6thP4q+rPL/C/+IlQ
+ tJ2MpkbjbvVZPc2Yx42MoILUTLS7bq5Rqf29jIcEfLLWsMcqnZdsRahPVkGNx1t2shat
+ ud7bFgG/ceAmbWp/JuEKJsOeHmcHTKgWEg1r2TXfNTdtd8AKLbcjAPHnMN+e7iRjm2EE
+ /1Ag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=bXa2l2oxeqJx05eiHv+iO8CwXNv4HJULZjaNP8dd5IQ=;
- b=VeFE7xPa3kV81NQ4r3H1vBZKYbCQxOeF6DQ7doAyh8FSfn+SGwe0kJvY9SU6+Zlf5Y
- DgKIgmpttKNwZPTBYfkGw+YMYjdxojYSIzQwSf5j2Ii1iLeTn896jpNMwK7Czv2DPOtE
- x7mrWoin7RduiNQgbpWQlqNumyH6YaoAP3yENv+JxWEaESSOqBJP4jwaZVszvcn55rWu
- vj0LgX7kWahm1wIULlPlUdBn/QbsZz5HQ0LMUFFv4G/bog7qdO9BRgBSzBQR2nyNR2wx
- PwgDSSo47R9mV8zLv2NKWlxbcvvzVIepHc2sqYsL0eRTkdnFH6ORgWViUCJ9RzVAUEFZ
- Xm1Q==
-X-Gm-Message-State: AGi0PuYjKcp4hbTC3sGNdgl7asOCvMMCNOmkmD2NHWlh90R6rgjv/WcY
- vUIHMmf6PuLAksyrcjP3TNpXiZsE0j3BwQ==
-X-Received: by 2002:adf:cd12:: with SMTP id w18mr15621226wrm.311.1586730987817; 
- Sun, 12 Apr 2020 15:36:27 -0700 (PDT)
+ bh=0L3GtgkM+tHAsomgjJ+0n9R4GwoMloXQteUzufC2V7I=;
+ b=TiDvkiBEgSH5ngW+qv81Ud9AYCGrqSZYaCdSsBEwcjvMTcGAJHDT7Gs9EzbDvAcGiZ
+ 4y0Ivx4gNnLP9IS5YNlsSGS+bsGyJTYST/Dlv6OriGmKwCc4+d4g5wn4SA6xq7K4+6q7
+ UqnBrKTT1HwoTpLMmJ/XoqBuWGdbj4fytEYB1VC85Ruhn+WmMu+pfx97gKHCKW1hHO9s
+ f/i++3CUYU8nvmCoew4M9maWy3A9YzOjh32ulKEnMCrtA8jLTtpcaJEa1kymlWRn9rhz
+ f+VvH3pqJ7IxKSp4AK9gJPoePmzAKXkG9BmFHyUvrZsfX5nhj/i2E2n35DQ7d18TLkU2
+ 5vSg==
+X-Gm-Message-State: AGi0PubLTWsdERrkaN1Wuwup/DbP9MGysFwDdVs9EokZpmrp0JsXstD5
+ /ieyPzU285a+bmiogRs3plJJaG2R2qiEGg==
+X-Received: by 2002:a5d:53ce:: with SMTP id a14mr15422281wrw.129.1586730995171; 
+ Sun, 12 Apr 2020 15:36:35 -0700 (PDT)
 Received: from localhost.localdomain (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id d13sm12563559wrv.34.2020.04.12.15.36.24
+ by smtp.gmail.com with ESMTPSA id d13sm12563559wrv.34.2020.04.12.15.36.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Apr 2020 15:36:27 -0700 (PDT)
+ Sun, 12 Apr 2020 15:36:34 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.1 v3 01/24] various: Remove suspicious '\' character
- outside of #define in C code
-Date: Mon, 13 Apr 2020 00:35:56 +0200
-Message-Id: <20200412223619.11284-2-f4bug@amsat.org>
+Subject: [PATCH-for-5.1 v3 03/24] hw/arm/allwinner-a10: Move some code from
+ realize() to init()
+Date: Mon, 13 Apr 2020 00:35:58 +0200
+Message-Id: <20200412223619.11284-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200412223619.11284-1-f4bug@amsat.org>
 References: <20200412223619.11284-1-f4bug@amsat.org>
@@ -141,260 +141,94 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1VRRZuEL36q8
+X-TUID: /HrpqOQ0ya9G
 
-Fixes the following coccinelle warnings:
+Coccinelle reported:
 
-  $ spatch --sp-file --verbose-parsing  ... \
-      scripts/coccinelle/remove_local_err.cocci
-  ...
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/ppc/translate_init.inc.c:5213
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/ppc/translate_init.inc.c:5261
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/microblaze/cpu.c:166
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/microblaze/cpu.c:167
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/microblaze/cpu.c:169
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/microblaze/cpu.c:170
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/microblaze/cpu.c:171
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/microblaze/cpu.c:172
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/microblaze/cpu.c:173
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/i386/cpu.c:5787
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/i386/cpu.c:5789
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/i386/cpu.c:5800
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/i386/cpu.c:5801
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/i386/cpu.c:5802
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/i386/cpu.c:5804
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/i386/cpu.c:5805
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/i386/cpu.c:5806
-  SUSPICIOUS: a \ character appears outside of a #define at ./target/i386/cpu.c:6329
-  SUSPICIOUS: a \ character appears outside of a #define at ./hw/sd/sdhci.c:1133
-  SUSPICIOUS: a \ character appears outside of a #define at ./hw/scsi/scsi-disk.c:3081
-  SUSPICIOUS: a \ character appears outside of a #define at ./hw/net/virtio-net.c:1529
-  SUSPICIOUS: a \ character appears outside of a #define at ./hw/riscv/sifive_u.c:468
-  SUSPICIOUS: a \ character appears outside of a #define at ./dump/dump.c:1895
-  SUSPICIOUS: a \ character appears outside of a #define at ./block/vhdx.c:2209
-  SUSPICIOUS: a \ character appears outside of a #define at ./block/vhdx.c:2215
-  SUSPICIOUS: a \ character appears outside of a #define at ./block/vhdx.c:2221
-  SUSPICIOUS: a \ character appears outside of a #define at ./block/vhdx.c:2222
-  SUSPICIOUS: a \ character appears outside of a #define at ./block/replication.c:172
-  SUSPICIOUS: a \ character appears outside of a #define at ./block/replication.c:173
+  $ spatch ... --timeout 60 --sp-file \
+    scripts/coccinelle/simplify-init-realize-error_propagate.cocci
+  HANDLING: ./hw/arm/allwinner-a10.c
+  >>> possible moves from aw_a10_init() to aw_a10_realize() in ./hw/arm/allwinner-a10.c:77
 
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Move the calls using &error_fatal which don't depend on input
+updated before realize() to init().
+
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- block/replication.c             |  4 ++--
- block/vhdx.c                    |  8 ++++----
- dump/dump.c                     |  2 +-
- hw/net/virtio-net.c             |  2 +-
- hw/riscv/sifive_u.c             |  2 +-
- hw/scsi/scsi-disk.c             |  2 +-
- hw/sd/sdhci.c                   |  2 +-
- target/i386/cpu.c               | 18 +++++++++---------
- target/microblaze/cpu.c         | 14 +++++++-------
- target/ppc/translate_init.inc.c |  4 ++--
- 10 files changed, 29 insertions(+), 29 deletions(-)
+v3: Typo 'depend of' -> 'depend on' (eblake)
+---
+ hw/arm/allwinner-a10.c | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
 
-diff --git a/block/replication.c b/block/replication.c
-index da013c2041..971f0fe266 100644
---- a/block/replication.c
-+++ b/block/replication.c
-@@ -172,8 +172,8 @@ static void replication_child_perm(BlockDriverState *bs, BdrvChild *c,
-     if ((bs->open_flags & (BDRV_O_INACTIVE | BDRV_O_RDWR)) == BDRV_O_RDWR) {
-         *nperm |= BLK_PERM_WRITE;
-     }
--    *nshared = BLK_PERM_CONSISTENT_READ \
--               | BLK_PERM_WRITE \
-+    *nshared = BLK_PERM_CONSISTENT_READ
-+               | BLK_PERM_WRITE
-                | BLK_PERM_WRITE_UNCHANGED;
-     return;
- }
-diff --git a/block/vhdx.c b/block/vhdx.c
-index 33e57cd656..e16fdc2f2d 100644
---- a/block/vhdx.c
-+++ b/block/vhdx.c
-@@ -2206,20 +2206,20 @@ static QemuOptsList vhdx_create_opts = {
-            .name = VHDX_BLOCK_OPT_BLOCK_SIZE,
-            .type = QEMU_OPT_SIZE,
-            .def_value_str = stringify(0),
--           .help = "Block Size; min 1MB, max 256MB. " \
-+           .help = "Block Size; min 1MB, max 256MB. "
-                    "0 means auto-calculate based on image size."
-        },
-        {
-            .name = BLOCK_OPT_SUBFMT,
-            .type = QEMU_OPT_STRING,
--           .help = "VHDX format type, can be either 'dynamic' or 'fixed'. "\
-+           .help = "VHDX format type, can be either 'dynamic' or 'fixed'. "
-                    "Default is 'dynamic'."
-        },
-        {
-            .name = VHDX_BLOCK_OPT_ZERO,
-            .type = QEMU_OPT_BOOL,
--           .help = "Force use of payload blocks of type 'ZERO'. "\
--                   "Non-standard, but default.  Do not set to 'off' when "\
-+           .help = "Force use of payload blocks of type 'ZERO'. "
-+                   "Non-standard, but default.  Do not set to 'off' when "
-                    "using 'qemu-img convert' with subformat=dynamic."
-        },
-        { NULL }
-diff --git a/dump/dump.c b/dump/dump.c
-index 22ed1d3b0d..248ea06370 100644
---- a/dump/dump.c
-+++ b/dump/dump.c
-@@ -1892,7 +1892,7 @@ static void dump_process(DumpState *s, Error **errp)
-     result = qmp_query_dump(NULL);
-     /* should never fail */
-     assert(result);
--    qapi_event_send_dump_completed(result, !!local_err, (local_err ? \
-+    qapi_event_send_dump_completed(result, !!local_err, (local_err ?
-                                    error_get_pretty(local_err) : NULL));
-     qapi_free_DumpQueryResult(result);
+diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+index 62a67a3e1a..f41395734a 100644
+--- a/hw/arm/allwinner-a10.c
++++ b/hw/arm/allwinner-a10.c
+@@ -60,10 +60,18 @@ static void aw_a10_init(Object *obj)
+         int i;
  
-diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-index a46e3b37a7..eddfa7f923 100644
---- a/hw/net/virtio-net.c
-+++ b/hw/net/virtio-net.c
-@@ -1526,7 +1526,7 @@ static void virtio_net_rsc_extract_unit6(VirtioNetRscChain *chain,
-                                  + sizeof(struct eth_header));
-     unit->ip = ip6;
-     unit->ip_plen = &(ip6->ip6_ctlun.ip6_un1.ip6_un1_plen);
--    unit->tcp = (struct tcp_header *)(((uint8_t *)unit->ip)\
-+    unit->tcp = (struct tcp_header *)(((uint8_t *)unit->ip)
-                                         + sizeof(struct ip6_header));
-     unit->tcp_hdrlen = (htons(unit->tcp->th_offset_flags) & 0xF000) >> 10;
- 
-diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-index 56351c4faa..998666c91f 100644
---- a/hw/riscv/sifive_u.c
-+++ b/hw/riscv/sifive_u.c
-@@ -465,7 +465,7 @@ static void riscv_sifive_u_machine_instance_init(Object *obj)
-     object_property_add_bool(obj, "start-in-flash", sifive_u_get_start_in_flash,
-                              sifive_u_set_start_in_flash, NULL);
-     object_property_set_description(obj, "start-in-flash",
--                                    "Set on to tell QEMU's ROM to jump to " \
-+                                    "Set on to tell QEMU's ROM to jump to "
-                                     "flash. Otherwise QEMU will jump to DRAM",
-                                     NULL);
- }
-diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
-index 1c0cb63a6f..e5bcd0baf8 100644
---- a/hw/scsi/scsi-disk.c
-+++ b/hw/scsi/scsi-disk.c
-@@ -3078,7 +3078,7 @@ static const TypeInfo scsi_cd_info = {
- 
- #ifdef __linux__
- static Property scsi_block_properties[] = {
--    DEFINE_BLOCK_ERROR_PROPERTIES(SCSIDiskState, qdev.conf),         \
-+    DEFINE_BLOCK_ERROR_PROPERTIES(SCSIDiskState, qdev.conf),
-     DEFINE_PROP_DRIVE("drive", SCSIDiskState, qdev.conf.blk),
-     DEFINE_PROP_BOOL("share-rw", SCSIDiskState, qdev.conf.share_rw, false),
-     DEFINE_PROP_UINT16("rotation_rate", SCSIDiskState, rotation_rate, 0),
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index de63ffb037..70531ad360 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -1130,7 +1130,7 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
- 
-         /* Limit block size to the maximum buffer size */
-         if (extract32(s->blksize, 0, 12) > s->buf_maxsz) {
--            qemu_log_mask(LOG_GUEST_ERROR, "%s: Size 0x%x is larger than " \
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: Size 0x%x is larger than "
-                           "the maximum buffer 0x%x", __func__, s->blksize,
-                           s->buf_maxsz);
- 
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 90ffc5f3b1..9c256ab159 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -5784,9 +5784,9 @@ void cpu_x86_cpuid(CPUX86State *env, uint32_t index, uint32_t count,
-             host_cpuid(index, 0, eax, ebx, ecx, edx);
-             break;
-         }
--        *eax = (L1_DTLB_2M_ASSOC << 24) | (L1_DTLB_2M_ENTRIES << 16) | \
-+        *eax = (L1_DTLB_2M_ASSOC << 24) | (L1_DTLB_2M_ENTRIES << 16) |
-                (L1_ITLB_2M_ASSOC <<  8) | (L1_ITLB_2M_ENTRIES);
--        *ebx = (L1_DTLB_4K_ASSOC << 24) | (L1_DTLB_4K_ENTRIES << 16) | \
-+        *ebx = (L1_DTLB_4K_ASSOC << 24) | (L1_DTLB_4K_ENTRIES << 16) |
-                (L1_ITLB_4K_ASSOC <<  8) | (L1_ITLB_4K_ENTRIES);
-         *ecx = encode_cache_cpuid80000005(env->cache_info_amd.l1d_cache);
-         *edx = encode_cache_cpuid80000005(env->cache_info_amd.l1i_cache);
-@@ -5797,13 +5797,13 @@ void cpu_x86_cpuid(CPUX86State *env, uint32_t index, uint32_t count,
-             host_cpuid(index, 0, eax, ebx, ecx, edx);
-             break;
-         }
--        *eax = (AMD_ENC_ASSOC(L2_DTLB_2M_ASSOC) << 28) | \
--               (L2_DTLB_2M_ENTRIES << 16) | \
--               (AMD_ENC_ASSOC(L2_ITLB_2M_ASSOC) << 12) | \
-+        *eax = (AMD_ENC_ASSOC(L2_DTLB_2M_ASSOC) << 28) |
-+               (L2_DTLB_2M_ENTRIES << 16) |
-+               (AMD_ENC_ASSOC(L2_ITLB_2M_ASSOC) << 12) |
-                (L2_ITLB_2M_ENTRIES);
--        *ebx = (AMD_ENC_ASSOC(L2_DTLB_4K_ASSOC) << 28) | \
--               (L2_DTLB_4K_ENTRIES << 16) | \
--               (AMD_ENC_ASSOC(L2_ITLB_4K_ASSOC) << 12) | \
-+        *ebx = (AMD_ENC_ASSOC(L2_DTLB_4K_ASSOC) << 28) |
-+               (L2_DTLB_4K_ENTRIES << 16) |
-+               (AMD_ENC_ASSOC(L2_ITLB_4K_ASSOC) << 12) |
-                (L2_ITLB_4K_ENTRIES);
-         encode_cache_cpuid80000006(env->cache_info_amd.l2_cache,
-                                    cpu->enable_l3_cache ?
-@@ -6326,7 +6326,7 @@ static void x86_cpu_expand_features(X86CPU *cpu, Error **errp)
-              */
-             env->features[w] |=
-                 x86_cpu_get_supported_feature_word(w, cpu->migratable) &
--                ~env->user_features[w] & \
-+                ~env->user_features[w] &
-                 ~feature_word_info[w].no_autoenable_flags;
+         for (i = 0; i < AW_A10_NUM_USB; i++) {
++            char bus[16];
++
+             sysbus_init_child_obj(obj, "ehci[*]", OBJECT(&s->ehci[i]),
+                                   sizeof(s->ehci[i]), TYPE_PLATFORM_EHCI);
+             sysbus_init_child_obj(obj, "ohci[*]", OBJECT(&s->ohci[i]),
+                                   sizeof(s->ohci[i]), TYPE_SYSBUS_OHCI);
++            object_property_set_bool(OBJECT(&s->ehci[i]), true,
++                                     "companion-enable", &error_fatal);
++
++            sprintf(bus, "usb-bus.%d", i);
++            object_property_set_str(OBJECT(&s->ohci[i]), bus, "masterbus",
++                                    &error_fatal);
          }
      }
-diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
-index a2c2f271df..c9cf2364ca 100644
---- a/target/microblaze/cpu.c
-+++ b/target/microblaze/cpu.c
-@@ -163,14 +163,14 @@ static void mb_cpu_realizefn(DeviceState *dev, Error **errp)
  
-     qemu_init_vcpu(cs);
+@@ -72,6 +80,11 @@ static void aw_a10_init(Object *obj)
  
--    env->pvr.regs[0] = PVR0_USE_EXC_MASK \
--                       | PVR0_USE_ICACHE_MASK \
-+    env->pvr.regs[0] = PVR0_USE_EXC_MASK
-+                       | PVR0_USE_ICACHE_MASK
-                        | PVR0_USE_DCACHE_MASK;
--    env->pvr.regs[2] = PVR2_D_OPB_MASK \
--                        | PVR2_D_LMB_MASK \
--                        | PVR2_I_OPB_MASK \
--                        | PVR2_I_LMB_MASK \
--                        | PVR2_FPU_EXC_MASK \
-+    env->pvr.regs[2] = PVR2_D_OPB_MASK
-+                        | PVR2_D_LMB_MASK
-+                        | PVR2_I_OPB_MASK
-+                        | PVR2_I_LMB_MASK
-+                        | PVR2_FPU_EXC_MASK
-                         | 0;
+     sysbus_init_child_obj(obj, "rtc", &s->rtc, sizeof(s->rtc),
+                           TYPE_AW_RTC_SUN4I);
++
++    memory_region_init_ram(&s->sram_a, obj, "sram A", 48 * KiB,
++                           &error_fatal);
++    memory_region_add_subregion(get_system_memory(), 0x00000000, &s->sram_a);
++    create_unimplemented_device("a10-sram-ctrl", 0x01c00000, 4 * KiB);
+ }
  
-     version = cpu->cfg.version ? cpu->cfg.version : DEFAULT_CPU_VERSION;
-diff --git a/target/ppc/translate_init.inc.c b/target/ppc/translate_init.inc.c
-index e853164a86..fd763e588e 100644
---- a/target/ppc/translate_init.inc.c
-+++ b/target/ppc/translate_init.inc.c
-@@ -5210,7 +5210,7 @@ POWERPC_FAMILY(e5500)(ObjectClass *oc, void *data)
-                        PPC_FLOAT_STFIWX | PPC_WAIT |
-                        PPC_MEM_TLBSYNC | PPC_TLBIVAX | PPC_MEM_SYNC |
-                        PPC_64B | PPC_POPCNTB | PPC_POPCNTWD;
--    pcc->insns_flags2 = PPC2_BOOKE206 | PPC2_PRCNTL | PPC2_PERM_ISA206 | \
-+    pcc->insns_flags2 = PPC2_BOOKE206 | PPC2_PRCNTL | PPC2_PERM_ISA206 |
-                         PPC2_FP_CVT_S64;
-     pcc->msr_mask = (1ull << MSR_CM) |
-                     (1ull << MSR_GS) |
-@@ -5258,7 +5258,7 @@ POWERPC_FAMILY(e6500)(ObjectClass *oc, void *data)
-                        PPC_FLOAT_STFIWX | PPC_WAIT |
-                        PPC_MEM_TLBSYNC | PPC_TLBIVAX | PPC_MEM_SYNC |
-                        PPC_64B | PPC_POPCNTB | PPC_POPCNTWD | PPC_ALTIVEC;
--    pcc->insns_flags2 = PPC2_BOOKE206 | PPC2_PRCNTL | PPC2_PERM_ISA206 | \
-+    pcc->insns_flags2 = PPC2_BOOKE206 | PPC2_PRCNTL | PPC2_PERM_ISA206 |
-                         PPC2_FP_CVT_S64 | PPC2_ATOMIC_ISA206;
-     pcc->msr_mask = (1ull << MSR_CM) |
-                     (1ull << MSR_GS) |
+ static void aw_a10_realize(DeviceState *dev, Error **errp)
+@@ -113,11 +126,6 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(sysbusdev, 4, qdev_get_gpio_in(dev, 67));
+     sysbus_connect_irq(sysbusdev, 5, qdev_get_gpio_in(dev, 68));
+ 
+-    memory_region_init_ram(&s->sram_a, OBJECT(dev), "sram A", 48 * KiB,
+-                           &error_fatal);
+-    memory_region_add_subregion(get_system_memory(), 0x00000000, &s->sram_a);
+-    create_unimplemented_device("a10-sram-ctrl", 0x01c00000, 4 * KiB);
+-
+     /* FIXME use qdev NIC properties instead of nd_table[] */
+     if (nd_table[0].used) {
+         qemu_check_nic_model(&nd_table[0], TYPE_AW_EMAC);
+@@ -149,12 +157,6 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+         int i;
+ 
+         for (i = 0; i < AW_A10_NUM_USB; i++) {
+-            char bus[16];
+-
+-            sprintf(bus, "usb-bus.%d", i);
+-
+-            object_property_set_bool(OBJECT(&s->ehci[i]), true,
+-                                     "companion-enable", &error_fatal);
+             object_property_set_bool(OBJECT(&s->ehci[i]), true, "realized",
+                                      &error_fatal);
+             sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
+@@ -162,8 +164,6 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+             sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
+                                qdev_get_gpio_in(dev, 39 + i));
+ 
+-            object_property_set_str(OBJECT(&s->ohci[i]), bus, "masterbus",
+-                                    &error_fatal);
+             object_property_set_bool(OBJECT(&s->ohci[i]), true, "realized",
+                                      &error_fatal);
+             sysbus_mmio_map(SYS_BUS_DEVICE(&s->ohci[i]), 0,
 -- 
 2.21.1
 

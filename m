@@ -1,99 +1,99 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3142731lfm;
-        Sun, 12 Apr 2020 15:46:15 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJKKWdLebbtJ/ofdRoMGTT1l440NWW0bloaoPp5KbLHrTiqXzWKk08bodZA5ALuZlsn/xdK
-X-Received: by 2002:a05:6214:1401:: with SMTP id n1mr14693985qvx.141.1586731575212;
-        Sun, 12 Apr 2020 15:46:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586731575; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3143912lfm;
+        Sun, 12 Apr 2020 15:48:01 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLd/F+nexyPxz0q2EHzX2YXz98w2Iqr1Gb3yxoXEKcZxmlBPGHA1AU3BxIOgyLo7EHIn1QA
+X-Received: by 2002:ac8:6d3b:: with SMTP id r27mr9306412qtu.55.1586731681478;
+        Sun, 12 Apr 2020 15:48:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586731681; cv=none;
         d=google.com; s=arc-20160816;
-        b=iOr/2Z4PHE4CWgN8Hwoa0HSQ4vl0iirH/iIdC0C7eH25O/OiYRr9kY1f/LbVhhkGVc
-         cfYJ+cDGToL/X+L26m/VaZj11kbYtVYSKMq7uiUnvQ/1UH85JCTgGkoibXM49eMafy1b
-         dt7yOFKNZXzf1dcwnv/rCx4scSWF+re86+Dnh2q0Bx0lMAIdHXFoZzlfbRzIWR3tBbnK
-         f2iAZ1z2cDJ2oz/8lB842+0S5ki4kgQ218YqhMVXTZTGtm7WtSl7HGuTioYHhvfYCZOP
-         30DItT1q0SmtsMKKtAbZTuKYxeu1EGDe09O7I54py4H1m3JQeMxLi/B1l9dcMMPEPegW
-         hF1w==
+        b=QOUdZr2Tpfi6TKR0LEJ8ErarHV4H2Oq0jWIF4O9hzI6lwDBHC6hhBFQPY21P4HZ6W+
+         RXSc5upVk2FCchRt+2wA6inD7lX/dtcJks9JYgsF+CEZX4vlQT8xzrUxD+3ReVPxKx0O
+         IVFetVheMVFZUkc+NodGPMfmQ6+xzDF2y0YeyED3nLM5YIlLd6mNU1O4YBa9bAJ4UCQd
+         7rRyJ8q1QEoEAur7Y/+TL7G4rEd9sZL+4cm9otzp7ImCpAkYehBIOTamuUzp+VXoBXB2
+         ubkqP5MAvOezWnMQUAD4YgfswlmXRofLOpSvA9+b+jpidmctWJjims2SjRWsswk+o/AX
+         0Q/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=BasB+g8nzHU9NqlorXFhvA0RjIUcriXJQANOu1FTC+I=;
-        b=YaBdquf753xz1qEhLdt4xDkHVqxwcw0T1m9YNf1jmyiIsIS/gcetytR7Yk9oVKrmHS
-         wmGfXITZFxWyD86LpjSp4yoBfs+P/1lKc8sl5a6lDH43f+BvOmbsKE8viXlIvPVXTPxF
-         dI0rtSrXAQALF+iKYbU+33SGUMMl6ldMVrOTjQ2RzDuS2z80eLZINo95PSt0E5QCDGp+
-         cJhkI2UWyyUDS/5KkHthTtasdL0GNOSElMEOgc3M2uMP1Tt5Y2V5ezvj5saGoEwZNBhx
-         GNDLN7ITxeqeqB/ifcUFIOtE3YpreiDISv6E7oDWlbHW3MCWjPkzaVQko5hIaEt4Ou2W
-         KbEQ==
+        bh=cLajudUBTjPPEHDWHNc0MGZvDpG60cDj46wJF9MFpFg=;
+        b=YrCrL25Fj6OcDjmhi/603CBLEkPcVJDsSWsF/HBFwxsWtWjqsryVh/u240/ALCNlUA
+         f9C05O6KpEFNFSLMaqK7CxnEkMSL6nTjSK+HLtxZWRpRILbnqQinIjg8Tt3BHyqQilca
+         7eM3PiDuERSwMPhlugm40GDfwzjEz2Xv0gCjKQ3LmG31y2Wsr2jM9CPQMbMc32rSlr+L
+         cDFC/imiaT2vS2i74iorLCcF1QewAB87sb5Z5ZQP1rXWwm5wrY7hy4bKAPDHdnJjWXts
+         UA3WAUcxOGzhVoN1upqdZ5tj4zVCo5iXXkyQrq9/Gs/x+hmiRfT3c6UUV666H5G4P2kJ
+         olOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JvMtQoy5;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fhUjf2lC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y4si1576621qtb.117.2020.04.12.15.46.15
+        by mx.google.com with ESMTPS id 1si5213385qko.24.2020.04.12.15.48.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Apr 2020 15:46:15 -0700 (PDT)
+        Sun, 12 Apr 2020 15:48:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JvMtQoy5;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fhUjf2lC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:37910 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37952 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jNlMk-0007PQ-K3
-	for alex.bennee@linaro.org; Sun, 12 Apr 2020 18:46:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48202)
+	id 1jNlOS-0002Pm-P8
+	for alex.bennee@linaro.org; Sun, 12 Apr 2020 18:48:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47951)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlEJ-0007Qh-U8
- for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:37:33 -0400
+ id 1jNlE7-0006vf-Ha
+ for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:37:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlEI-00033S-KY
- for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:37:31 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:46748)
+ id 1jNlE5-0002vL-A7
+ for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:37:19 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:55732)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlEI-00032n-EP; Sun, 12 Apr 2020 18:37:30 -0400
-Received: by mail-wr1-x444.google.com with SMTP id f13so8492739wrm.13;
- Sun, 12 Apr 2020 15:37:30 -0700 (PDT)
+ id 1jNlE5-0002uo-3k; Sun, 12 Apr 2020 18:37:17 -0400
+Received: by mail-wm1-x331.google.com with SMTP id e26so7922203wmk.5;
+ Sun, 12 Apr 2020 15:37:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=BasB+g8nzHU9NqlorXFhvA0RjIUcriXJQANOu1FTC+I=;
- b=JvMtQoy5jGVm+8GTmlMuiC1ueHzc7rwT5p0KjyN+hsDtCP4Cn/JcNRjyihyWdj1Xss
- dtTI7Fv3AEEkUCxM+MBsr8py6lEmOfl88MiFeO/9zQb/EyYfaYfoCy6GWOS1uPW4/k7Y
- ytJwyS6D3FPLDQoAuwh+9v1qQjJEv+RlWs6ZB3SigBk8RzVjtqOYmZzrGu/5PW1uyLWB
- 8oEd5a2rHSAe48/FO0M0iiZchZXc20+ui+IDOBXDnkBiARaT4gt5hXqcgdCwCBac3SVL
- JZ2STQPPOH3UJiG8R3nbAuw90HN5yYwEBUy9ARd1rv71Sg3xu0pVpJzxlcPyhOGL9pmp
- 91Vw==
+ bh=cLajudUBTjPPEHDWHNc0MGZvDpG60cDj46wJF9MFpFg=;
+ b=fhUjf2lC31hWvhQc0jfLtI9F/BIZ5VIR2Wq6tohOk81zDbrOll+RxbdwOLBS8vjr5k
+ yG/GeGp43DkcM1phJoDP23wccdizGpVjXQYiuhJSdAUD3VJTPcojeJuatp9RBnozjK/E
+ fZ6U9XKVSWbBn40dI3QcxHpKHmfd3bvnUkJuh6wqttFw8RyUoemfeweYSb8ONBk8idkA
+ iO4Vx2BLKOAcUFyuqoK1aNXDP3nt6U21iiTkJXT63QNjRIuY4BeNp9b4sCuPIUyNULcz
+ swsGBRjHj6dOXWrT856nZoeLpI59WFK5Iiw8eVsD12GDDMh/4gOeacBZDrngXmrHXR6D
+ Kkvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=BasB+g8nzHU9NqlorXFhvA0RjIUcriXJQANOu1FTC+I=;
- b=YyzVNNnS+e9uLAiKw9pXEB9e+K0RjnW8ZbKsiLNJ9TiBvUrC+IwGx9vheAyngQTJgX
- MOZpM5oWD5m+rbEy0xLPK5i1dKdfzsLh7m03lxe7oo49uFHNqzBcnS+YvhdFX/VgyBB3
- 5BRf1g1Q1vhiLl0B2sAF5pFruIdEmUbtLts7L4BYy0GonX0P4aLq+s2Ki1aMxdGeyWsL
- h6ukY8phJDqgKjttlMcQIM6i9JKSDzii2Sb1bl+5PX6OwVow5XJIW7c981M3yL1vm2mz
- gD/OnC1hP8iFlKGBtXKogprputafQzcULwsvydFaQG1HcCDkkJn5KEwLRXEMt+suOIpX
- ucCA==
-X-Gm-Message-State: AGi0Puaa7CY8uWUPXwxBqTxkGQ6CloHONXt2urQYs2aD539viAg2UPtf
- /0Mg94zWmzCr9AiZy90nfOp4yg/RhcuDmg==
-X-Received: by 2002:a5d:4b49:: with SMTP id w9mr15981211wrs.359.1586731049029; 
- Sun, 12 Apr 2020 15:37:29 -0700 (PDT)
+ bh=cLajudUBTjPPEHDWHNc0MGZvDpG60cDj46wJF9MFpFg=;
+ b=mci4jD2MoHTLyfMt653Zq+LYIZ+c03O8uP9bRXWpyDfQca6PdUbEI8wl+nMECYqWbZ
+ B9pzsArkvOQaWQSyN9xXO5vzenllhE+jz50nmjc+dBlSco9G2xk/Z6vdptetZmbM0cnP
+ 7XIhiQnsXk+LO0SM7vn769fLlE7q7aZPELL14z/qgSzAxtNESQelPGszauONssrAmZ+K
+ Ov0Zl6Pq9HY//IHVP+edwF9xELZ0fAXhMiERbDJtyCk/IlYtfR1OBGbOyA8GeQqrU/pg
+ L3hoDbPGxFQVq3ZkPUPq5pIeesUEFQY4OLKeDacute9z1XQ7+e+4ddHR2L1Zm4LhZZY2
+ dpqA==
+X-Gm-Message-State: AGi0PuaPiGqQ4DUBYcIEtdHqBhcxktkenghg1VzopcfA0b9YDLe38DBy
+ 47M4mFPWkgx8xq4wlWHNlXxMcHs+4+TYeQ==
+X-Received: by 2002:a1c:3c08:: with SMTP id j8mr13491389wma.30.1586731035721; 
+ Sun, 12 Apr 2020 15:37:15 -0700 (PDT)
 Received: from localhost.localdomain (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id d13sm12563559wrv.34.2020.04.12.15.37.25
+ by smtp.gmail.com with ESMTPSA id d13sm12563559wrv.34.2020.04.12.15.37.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Apr 2020 15:37:28 -0700 (PDT)
+ Sun, 12 Apr 2020 15:37:15 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.1 v3 19/24] hw/riscv/sifive_e: Move some code from
- realize() to init()
-Date: Mon, 13 Apr 2020 00:36:14 +0200
-Message-Id: <20200412223619.11284-20-f4bug@amsat.org>
+Subject: [PATCH-for-5.1 v3 15/24] hw/arm/xlnx-zynqmp: Split
+ xlnx_zynqmp_create_rpu() as init + realize
+Date: Mon, 13 Apr 2020 00:36:10 +0200
+Message-Id: <20200412223619.11284-16-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200412223619.11284-1-f4bug@amsat.org>
 References: <20200412223619.11284-1-f4bug@amsat.org>
@@ -103,7 +103,7 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::444
+X-Received-From: 2a00:1450:4864:20::331
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -142,84 +142,130 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4f7A3sMQvL4c
+X-TUID: T97cT5R6AwsE
 
-Coccinelle reported:
+Coccinelle failed at processing this file:
 
   $ spatch ... --timeout 60 --sp-file \
     scripts/coccinelle/simplify-init-realize-error_propagate.cocci
-  HANDLING: ./hw/riscv/sifive_e.c
-  >>> possible moves from riscv_sifive_e_soc_init() to riscv_sifive_e_soc_realize() in ./hw/riscv/sifive_e.c:135
+  HANDLING: ./hw/arm/xlnx-zynqmp.c
+  EXN: Coccinelle_modules.Common.Timeout
 
-Move the calls using &error_fatal which don't depend on input
-updated before realize() to init().
+We are going to manually add the missing propagate_error() calls.
+Some functions can be called at init() time, reducing the need
+to add extra Error checks at realize() time. Split create_rpu()
+in init() and realize().
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-v3: Typo 'depend of' -> 'depend on' (eblake)
----
- hw/riscv/sifive_e.c | 26 ++++++++++++++------------
- 1 file changed, 14 insertions(+), 12 deletions(-)
+ hw/arm/xlnx-zynqmp.c | 45 +++++++++++++++++++++++++++-----------------
+ 1 file changed, 28 insertions(+), 17 deletions(-)
 
-diff --git a/hw/riscv/sifive_e.c b/hw/riscv/sifive_e.c
-index 646553a7c3..0be8b52147 100644
---- a/hw/riscv/sifive_e.c
-+++ b/hw/riscv/sifive_e.c
-@@ -118,7 +118,9 @@ static void riscv_sifive_e_init(MachineState *machine)
- static void riscv_sifive_e_soc_init(Object *obj)
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index 43d57fa7de..457057198a 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -173,18 +173,9 @@ static inline int arm_gic_ppi_index(int cpu_nr, int ppi_index)
+     return GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_index;
+ }
+ 
+-static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
+-                                   const char *boot_cpu, Error **errp)
++static void xlnx_zynqmp_rpu_init(XlnxZynqMPState *s, int num_rpus)
  {
-     MachineState *ms = MACHINE(qdev_get_machine());
-+    const struct MemmapEntry *memmap = sifive_e_memmap;
-     SiFiveESoCState *s = RISCV_E_SOC(obj);
-+    MemoryRegion *sys_mem = get_system_memory();
+-    Error *err = NULL;
+     int i;
+-    int num_rpus = MIN(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS,
+-                       XLNX_ZYNQMP_NUM_RPU_CPUS);
+-
+-    if (num_rpus <= 0) {
+-        /* Don't create rpu-cluster object if there's nothing to put in it */
+-        return;
+-    }
  
-     object_initialize_child(obj, "cpus", &s->cpus,
-                             sizeof(s->cpus), TYPE_RISCV_HART_ARRAY,
-@@ -130,6 +132,18 @@ static void riscv_sifive_e_soc_init(Object *obj)
-     sysbus_init_child_obj(obj, "riscv.sifive.e.gpio0",
-                           &s->gpio, sizeof(s->gpio),
-                           TYPE_SIFIVE_GPIO);
+     object_initialize_child(OBJECT(s), "rpu-cluster", &s->rpu_cluster,
+                             sizeof(s->rpu_cluster), TYPE_CPU_CLUSTER,
+@@ -192,13 +183,25 @@ static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
+     qdev_prop_set_uint32(DEVICE(&s->rpu_cluster), "cluster-id", 1);
+ 
+     for (i = 0; i < num_rpus; i++) {
+-        char *name;
+-
+         object_initialize_child(OBJECT(&s->rpu_cluster), "rpu-cpu[*]",
+                                 &s->rpu_cpu[i], sizeof(s->rpu_cpu[i]),
+                                 ARM_CPU_TYPE_NAME("cortex-r5f"),
+                                 &error_abort, NULL);
+ 
++        object_property_set_bool(OBJECT(&s->rpu_cpu[i]), true, "reset-hivecs",
++                                 &error_abort);
++    }
++}
 +
-+    /* Mask ROM */
-+    memory_region_init_rom(&s->mask_rom, obj, "riscv.sifive.e.mrom",
-+                           memmap[SIFIVE_E_MROM].size, &error_fatal);
-+    memory_region_add_subregion(sys_mem,
-+        memmap[SIFIVE_E_MROM].base, &s->mask_rom);
++static void xlnx_zynqmp_rpu_realize(XlnxZynqMPState *s, int num_rpus,
++                                    const char *boot_cpu, Error **errp)
++{
++    Error *err = NULL;
++    int i;
 +
-+    /* Flash memory */
-+    memory_region_init_rom(&s->xip_mem, obj, "riscv.sifive.e.xip",
-+                           memmap[SIFIVE_E_XIP].size, &error_fatal);
-+    memory_region_add_subregion(sys_mem, memmap[SIFIVE_E_XIP].base,
-+        &s->xip_mem);
++    for (i = 0; i < num_rpus; i++) {
++        char *name;
++
+         name = object_get_canonical_path_component(OBJECT(&s->rpu_cpu[i]));
+         if (strcmp(name, boot_cpu)) {
+             /* Secondary CPUs start in PSCI powered-down state */
+@@ -209,8 +212,6 @@ static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
+         }
+         g_free(name);
+ 
+-        object_property_set_bool(OBJECT(&s->rpu_cpu[i]), true, "reset-hivecs",
+-                                 &error_abort);
+         object_property_set_bool(OBJECT(&s->rpu_cpu[i]), true, "realized",
+                                  &err);
+         if (err) {
+@@ -228,6 +229,8 @@ static void xlnx_zynqmp_init(Object *obj)
+     XlnxZynqMPState *s = XLNX_ZYNQMP(obj);
+     int i;
+     int num_apus = MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
++    int num_rpus = MIN(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS,
++                       XLNX_ZYNQMP_NUM_RPU_CPUS);
+ 
+     object_initialize_child(obj, "apu-cluster", &s->apu_cluster,
+                             sizeof(s->apu_cluster), TYPE_CPU_CLUSTER,
+@@ -290,6 +293,10 @@ static void xlnx_zynqmp_init(Object *obj)
+         sysbus_init_child_obj(obj, "adma[*]", &s->adma[i], sizeof(s->adma[i]),
+                               TYPE_XLNX_ZDMA);
+     }
++
++    if (num_rpus > 0) {
++        xlnx_zynqmp_rpu_init(s, num_rpus);
++    }
  }
  
- static void riscv_sifive_e_soc_realize(DeviceState *dev, Error **errp)
-@@ -144,12 +158,6 @@ static void riscv_sifive_e_soc_realize(DeviceState *dev, Error **errp)
-     object_property_set_bool(OBJECT(&s->cpus), true, "realized",
-                             &error_abort);
+ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+@@ -300,6 +307,8 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+     uint8_t i;
+     uint64_t ram_size;
+     int num_apus = MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
++    int num_rpus = MIN(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS,
++                       XLNX_ZYNQMP_NUM_RPU_CPUS);
+     const char *boot_cpu = s->boot_cpu ? s->boot_cpu : "apu-cpu[0]";
+     ram_addr_t ddr_low_size, ddr_high_size;
+     qemu_irq gic_spi[GIC_NUM_SPI_INTR];
+@@ -458,9 +467,11 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+                     "RPUs just use -smp 6.");
+     }
  
--    /* Mask ROM */
--    memory_region_init_rom(&s->mask_rom, OBJECT(dev), "riscv.sifive.e.mrom",
--                           memmap[SIFIVE_E_MROM].size, &error_fatal);
--    memory_region_add_subregion(sys_mem,
--        memmap[SIFIVE_E_MROM].base, &s->mask_rom);
--
-     /* MMIO */
-     s->plic = sifive_plic_create(memmap[SIFIVE_E_PLIC].base,
-         (char *)SIFIVE_E_PLIC_HART_CONFIG,
-@@ -206,12 +214,6 @@ static void riscv_sifive_e_soc_realize(DeviceState *dev, Error **errp)
-         memmap[SIFIVE_E_QSPI2].base, memmap[SIFIVE_E_QSPI2].size);
-     create_unimplemented_device("riscv.sifive.e.pwm2",
-         memmap[SIFIVE_E_PWM2].base, memmap[SIFIVE_E_PWM2].size);
--
--    /* Flash memory */
--    memory_region_init_rom(&s->xip_mem, OBJECT(dev), "riscv.sifive.e.xip",
--                           memmap[SIFIVE_E_XIP].size, &error_fatal);
--    memory_region_add_subregion(sys_mem, memmap[SIFIVE_E_XIP].base,
--        &s->xip_mem);
- }
+-    xlnx_zynqmp_create_rpu(ms, s, boot_cpu, &err);
+-    if (err) {
+-        goto out_propagate_error;
++    if (num_rpus > 0) {
++        xlnx_zynqmp_rpu_realize(s, num_rpus, boot_cpu, &err);
++        if (err) {
++            goto out_propagate_error;
++        }
+     }
  
- static void riscv_sifive_e_machine_init(MachineClass *mc)
+     if (!s->boot_cpu_ptr) {
 -- 
 2.21.1
 

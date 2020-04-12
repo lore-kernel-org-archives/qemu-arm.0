@@ -1,99 +1,99 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3149015lfm;
-        Sun, 12 Apr 2020 15:56:58 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJSKlUBiqHUm4mKvnoXY5ZM+DH1lsOoQu+tX79WAkvzUdEy9jWjA6meVoJBhTobQlLBymoE
-X-Received: by 2002:ac8:3421:: with SMTP id u30mr9140265qtb.303.1586732218458;
-        Sun, 12 Apr 2020 15:56:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586732218; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3149495lfm;
+        Sun, 12 Apr 2020 15:57:48 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLmLygktzRvm14EO+3pQZG/YmrOINrBI+chlz+aVIMrNZuI/AY3dRMVV2hqFk1lBQoUfkim
+X-Received: by 2002:a37:48a:: with SMTP id 132mr14358165qke.390.1586732268290;
+        Sun, 12 Apr 2020 15:57:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586732268; cv=none;
         d=google.com; s=arc-20160816;
-        b=V7BAdO9uIwwiJR/oXzlBkAFKx/fULVzQ8EqIVJyGr6Smx30ptCZBr3UTQelRXJ8qvY
-         cGn+C6AbAlU4beOQD/d21R1LuJ97mzw0ybH4KRwRxF2IF8U419FgT8GFMEt91+qsyAKe
-         L//7jfPaElMSB4bzlzvzPYtfe2x3R5nvtcHYwPsRAHixaivA2Xg6A7vCg85erd0HzEbm
-         gIzUvsfRkZ8vwVB1H3GO/dQGUvstCtpKa5SzGmZgfAeAa+qJuZF+W/3goFX6mCQej0l8
-         yqIggbXjcr19Yx73w285PVRt6XDffvZ5Epx5EEGD4Ir2UE4k9UP2B/UuHB4l/BUDaw1J
-         anng==
+        b=hq5SJT6JYtO/5iPQNSAJ72rYkHaAEchKbO1Y3r1QD09GtJWhQ/Cpmh6FBRRrKPlEAi
+         BxqW32DLu292vjwg77mu0cAzIAXEU/0oX2G/ZWzcccOxNvVAd9UCZzGmg17e2Kji+cyq
+         tPMo10LJlDqlYwJ3nbr9O+WUnFKpcwzfNXq9kPZjIIq3aqnfzaOTFzYZxyP79GtT90YI
+         pqwber5CtCiLPfR2yRzPA3xEq/tdYTG8r0jGXgSQ4SNoQo9581y0X7fPix+V9iSzH1uU
+         ZCAOK9Qf4wF25EVu25ZIoeqGQh/T7U86lMyygAYAmDiieBE9KuHT0QpM24FYC1VzHuUP
+         G9bQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=bApzeehHQvaZ5RZ4EwLCFOZnVCZVtwLLMYEWft8h2tw=;
-        b=Y8UEVu5cMc5E5cLvXifFzNHUPY5T2+J3f8ES2e8bv7qHPyLswROsPPvxHw/vsEzYpF
-         ECo9Au0a/U+z3h3SE/D8uS4KEttA3vBb5U4/vfnh6x80MnT5QXavw9vkgLxLZ4LBaG3I
-         uWUOtXjegI0eDtyW7hG73jjbC2IQbqQbRwqFQpieX9t/BF+GsBx9/ga4uUd4Me4YPC3i
-         9xEM0rpAQ+vPj07C1o3l5L6ghutY0EanYOIXjbilX9GZ9cnN+cAkfBlwMRrUEuxsR19z
-         k4X1qq5F50sHyO1NZhkG2LhZEdHXk3QLwD+Jutnhf0/GaHHKxZaTHOxPrFojVz3v2+9r
-         lBFg==
+        bh=74G8KHhadiGPyGitkFydcSDSAs1meyukZBFpYk9pD6I=;
+        b=srrTUmSElMwNymXyq3hVL9ppB+ZFTpQBcmn/lI/Q/PI7YdesFof8FZgLb5/WJ5zQgK
+         qnCopaCwBYy3M1oOuv8rIanKPdNbx46CDBiuPmCkGKU0VfY9oLB9JOFFh+s0EcXtb9TZ
+         rcQEBGrrO6uGBfi5XpYJQNqnr0K+2Jazhbt1J8aA6AsxkOByLq3YP3YA3jR0rNq8P6SR
+         eSAf6HM2S/GQ8WLHti502P2ctqhGta/aoFUqHzi5iK4/ZdKKrQvR0Vhdj7hS1ii6081G
+         dj+AJovuoX1/PjIqEcFXCXz8BdhfRtTMAgdD2JqgnBrLWpxOKiZv9Qspx75CI0i/ZifZ
+         xwQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YNkaV1gy;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dPCfqUi+;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q75si4685023qvq.150.2020.04.12.15.56.58
+        by mx.google.com with ESMTPS id y1si1505337qtn.367.2020.04.12.15.57.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Apr 2020 15:56:58 -0700 (PDT)
+        Sun, 12 Apr 2020 15:57:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YNkaV1gy;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dPCfqUi+;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:38252 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38268 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jNlX7-00043A-RC
-	for alex.bennee@linaro.org; Sun, 12 Apr 2020 18:56:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49936)
+	id 1jNlXv-0005Eh-0R
+	for alex.bennee@linaro.org; Sun, 12 Apr 2020 18:57:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49873)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlJO-0001it-31
- for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:42:47 -0400
+ id 1jNlJE-0001fe-PV
+ for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:42:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlJK-0006BJ-U3
- for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:42:44 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:54677)
+ id 1jNlJD-00068W-Eo
+ for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:42:36 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:44377)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlJK-0006Ag-Ni; Sun, 12 Apr 2020 18:42:42 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id h2so7925008wmb.4;
- Sun, 12 Apr 2020 15:42:42 -0700 (PDT)
+ id 1jNlJD-000686-9L; Sun, 12 Apr 2020 18:42:35 -0400
+Received: by mail-wr1-x444.google.com with SMTP id d17so1634792wrg.11;
+ Sun, 12 Apr 2020 15:42:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=bApzeehHQvaZ5RZ4EwLCFOZnVCZVtwLLMYEWft8h2tw=;
- b=YNkaV1gyW63dSllGD8BM7xLOzjMiqY1FQIy6kxkAqv4WrWFueAzPJChEPmYrWsiVuF
- iBxugnDZXthtkisdZjwJMXHO6ro/F7zpddUEWyJil8zSWaNx7GgPH6Ky4vgIRulUfvML
- LhIjk+BUQrj/O5+E72jJHawdWKuwYTVm/DBden1hghTXlndcUhRZfhnz2VZ5byw9eQZq
- KftPtGiHQR6LVEnrP1W7te8pOsxxgqtdiC5JKTrmIERb0H7mzfoTkA3uqzKLcAYJXNLj
- 09749hBuiJDBYe3xkWY3CU0qAwdYSLSGT2UTpsz8zhPaIpMtCJLbKmcLQvyPU8g8AOMa
- 9pJQ==
+ bh=74G8KHhadiGPyGitkFydcSDSAs1meyukZBFpYk9pD6I=;
+ b=dPCfqUi+fQcBEG3K/WPUk56J0LAaObHIxDG46h8wY4ZNxJLUwgj0NWwAwtUyFExGA5
+ r5+4rSPzbfX1aAnLWCYcyKaohy7boPLvXOAepLJ662xZIblElg2FuJbH9ri897tTWZt6
+ 6dX5pQ1pFJrNZCtU/FRBwVhqd3WEKQzg34n135qBqGR6o/WT66bm/AhG31Mp2g7nVTy1
+ SFvZGg+UwXBXaJM28hgts6+00mKiW6O1ivAvRJWYTbL2x/xGQq/FTarhAjFQggLC9JcG
+ E1hW5iuN9t/c0S+zX8j1T48TCU8lERf/8j3iJAPh68RiIHQKW1o0OtQD+wO7zRQZOinH
+ ipyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=bApzeehHQvaZ5RZ4EwLCFOZnVCZVtwLLMYEWft8h2tw=;
- b=Je/V1tEBER6M2KfgidS5TUjmzhnugmqyvf6qwB6NoEq40DCBXcqmpaVT3o5TwNCs9m
- EWZDW73rhq69z/X9xn3msDsWSMszeLnC2v6OM308mepSRHP94oKEpqKx28N6o2si5Fx7
- MsAF/VSo6t0PmtebyF0mu53/l4cA7gsCVQGlBVpylPFZbmIiXVbQpPJXKJ2blfd4vrhY
- WqT3xZWVcMi506n7r6Aul0Wn02kNddvop+I3ky0JGFafUAWh9FR/CbPsV1renH+rU9L+
- qpIdaXnluGxVWpbFrnB637OGNwDLmkto+o6AYENjuGMIGRb0cNLEUPFFIf5nWoQpsA3Q
- dwXQ==
-X-Gm-Message-State: AGi0PuZdNyWwNpzHgm0pE5Iaq2BBik2XTr5f5bKNN1KLfCOFY6aGqAu2
- aJ0X2kSxxIDptPD98krnbbaksWEq+4b8Lw==
-X-Received: by 2002:a7b:c5d8:: with SMTP id n24mr15743438wmk.158.1586731361205; 
- Sun, 12 Apr 2020 15:42:41 -0700 (PDT)
+ bh=74G8KHhadiGPyGitkFydcSDSAs1meyukZBFpYk9pD6I=;
+ b=f772oGezS01RVlhSF2S1PMy8ic33QAldzotRBNvP+GFoFMN+ozuJrnXwSj3nVmHTr7
+ ZnBFtSRCaGs08sJRJFW2z6jpHeQSIjKcyTE+8ZU1CYN2WccB0jsHElf2L4Bi0oqczUrx
+ agOXqU77uLNMW/9NUAYdJPkNyaxZzufHCPLBlmDTgZ3LjTFCgWo5rnotOtLRgj0q2aD4
+ 3HMl2JpS36Lr7h7MbqniK1Uow47OkDLszbio4AO8uTiijP0lKUqd1j+6pjTjMUTuDD5W
+ 3ommnp8/IJ84YS7y7PqLrB6zlqDo+q1AzUwxd1A6M1nTHG/dRIsAST7On7O0wS7F+G6d
+ bNIQ==
+X-Gm-Message-State: AGi0PuZ+kFCw8pkKLWlEwrYmVYxBu40oG60WuzXIZWQrfFbX8TxEWGGI
+ UviXaCoHSmmY80ID6CC/wUGR0S7qxqFj1g==
+X-Received: by 2002:adf:9441:: with SMTP id 59mr15577538wrq.211.1586731353887; 
+ Sun, 12 Apr 2020 15:42:33 -0700 (PDT)
 Received: from localhost.localdomain (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id f63sm12083825wma.47.2020.04.12.15.42.38
+ by smtp.gmail.com with ESMTPSA id f63sm12083825wma.47.2020.04.12.15.42.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Apr 2020 15:42:40 -0700 (PDT)
+ Sun, 12 Apr 2020 15:42:33 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.1 v3 14/23] hw/arm/bcm2835_peripherals: Add missing
+Subject: [PATCH-for-5.1 v3 12/23] hw/block/onenand: Add missing
  error-propagation code
-Date: Mon, 13 Apr 2020 00:41:35 +0200
-Message-Id: <20200412224144.12205-15-f4bug@amsat.org>
+Date: Mon, 13 Apr 2020 00:41:33 +0200
+Message-Id: <20200412224144.12205-13-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200412224144.12205-1-f4bug@amsat.org>
 References: <20200412224144.12205-1-f4bug@amsat.org>
@@ -103,7 +103,7 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::32e
+X-Received-From: 2a00:1450:4864:20::444
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -143,42 +143,37 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Q8yK4tR/Izaj
+X-TUID: 9GeKU4g3JGRD
 
 Patch created mechanically by running:
 
   $ spatch \
     --macro-file scripts/cocci-macro-file.h --include-headers \
-    --sp-file scripts/coccinelle/add-missing-error_propagate.cocci \
+    --sp-file scripts/coccinelle/use-error_propagate-in-realize.cocci \
     --keep-comments --smpl-spacing --in-place --dir hw
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/bcm2835_peripherals.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ hw/block/onenand.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index edcaa4916d..a111e91069 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -289,8 +289,16 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-      *   SD3.0_Host_AHB_eMMC4.4_Usersguide_ver5.9_jan11_10.pdf
-      */
-     object_property_set_uint(OBJECT(&s->sdhci), 3, "sd-spec-version", &err);
-+    if (err) {
-+        error_propagate(errp, err);
+diff --git a/hw/block/onenand.c b/hw/block/onenand.c
+index 898ac563a3..1f68dba28b 100644
+--- a/hw/block/onenand.c
++++ b/hw/block/onenand.c
+@@ -810,7 +810,11 @@ static void onenand_realize(DeviceState *dev, Error **errp)
+     s->otp = memset(g_malloc((64 + 2) << PAGE_SHIFT),
+                     0xff, (64 + 2) << PAGE_SHIFT);
+     memory_region_init_ram_nomigrate(&s->ram, OBJECT(s), "onenand.ram",
+-                           0xc000 << s->shift, &error_fatal);
++                           0xc000 << s->shift, &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
 +        return;
 +    }
-     object_property_set_uint(OBJECT(&s->sdhci), BCM2835_SDHC_CAPAREG, "capareg",
-                              &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-     object_property_set_bool(OBJECT(&s->sdhci), true, "pending-insert-quirk",
-                              &err);
-     if (err) {
+     vmstate_register_ram_global(&s->ram);
+     ram = memory_region_get_ram_ptr(&s->ram);
+     s->boot[0] = ram + (0x0000 << s->shift);
 -- 
 2.21.1
 

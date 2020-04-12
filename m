@@ -1,99 +1,99 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3140371lfm;
-        Sun, 12 Apr 2020 15:42:47 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKJXfKu+DwTMnoNshwsbK0oG5cIBFipAO9P1KIow+1hMRlvfFl/l1HO1UOOEep6lOkZImmn
-X-Received: by 2002:a0c:9e45:: with SMTP id z5mr14940689qve.250.1586731367197;
-        Sun, 12 Apr 2020 15:42:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586731367; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3140460lfm;
+        Sun, 12 Apr 2020 15:42:55 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIYLzxtlTqVGLM1aLbGkE+dwNkXGUjUtej1whxsZXITuHObMAzSpj7lS09+/JTtjxUDER5W
+X-Received: by 2002:ac8:5057:: with SMTP id h23mr8983572qtm.287.1586731375071;
+        Sun, 12 Apr 2020 15:42:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586731375; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZXRfK1ge9wDhECZ7ZBUXXDw3yqIEI72bW0YbYRtyWHB1NxRB8pzJvza+uhl4Pbo0o9
-         LK6nMs5Z7PEwddY8HwNUssaQ02FaR+/A+sNrwGmHzK+HjA+cDcB8F1vdfZGmmDT9w9vc
-         onP41lkvXFy8OIu2mdP83OiEWG/MWQ/YnE5WmliMUIba3h2RrTf+ejbds+VivJkxmity
-         ZhHMzO1n9Gs/TU2knCXwMpyQi0rFozH8p6SCLN+ryl7FwBeXTwWqMwfCytMAkrIBiyjl
-         G6ujgzbwQJL5rctcGnMrnDncKMe5jjamalWxQk+aktFGTxEIq6RB1SPGRHl0Lh9DIIoQ
-         cHzg==
+        b=VRiGeSGbF1D5VzKbT50wA16IJqcrL508WCU/ztXcCrZK8s1k2d2k3qNnQYqHJ0st4n
+         ZfFsdy4aUIEQXHzT/zvgFGu9phv6blCRrOxBg+IA54GqLDPl/qlQVdyYRuExaR15o1+F
+         3GTx47KrU0dJrQKUs3QlxFsQNAtM3+F6ONewgDvDo50//xrSqjr3mT/u4cqgI+qtaXlX
+         IKkG79A2+gWn45TvkTtKXzYA0zNoA7EFLoT7CQl8PTPLtGN3YFHtdIAuL/bXa0z+Yjc4
+         Dps5qKZtHci9KwNMcpol8/fziBhGwTWrlr+irxAIiedF+DSD8a0rJlO09Zq3KgPsVxUT
+         PPCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=VuVWzBfpjz6H0HCIF1s/Heqg2exv+JQ+H2vwU4p06Wo=;
-        b=0fM1uMvU0NCiFfmobz0F2vQn28rNthBcf2+KJNQPC+L16XTEsLaciP2BbWqbPlbBqV
-         Sl7xq7R461R7/a129blK6oz0WcrGRm3BbvBlU4aW7Lyb8D09NfGzIvHFP5v9WtPAcrCb
-         0Yt081VRjmDt0nl4snrnXnXSwQ/W12QJeuO0lDC/dB5iXwlk7kg49L0oGshKM2dVXjYe
-         /5vmfI3G0F6efbTBMIzW53gD2DT4vDFwYm5Fh9709Ufe9nvwDGtMf8Z5p2FtEC2xZire
-         RilSAS6IBgP/is0744qJVCmKSDAyZFECUDitRWEMml5uG6FviDO0+tvmvCioM38dX9de
-         fJuQ==
+        bh=03MmkCIzrXFk47EffNUcQSBR3zXYGz9X21Cp/fIhcLE=;
+        b=xgrHm/GokArSPJskXDYy0wnkl+wPHc5gNRIqEZepnmGLQWt2+Fh4c0mv8fnEvXwBFe
+         +GA7m0YT4ATpQRnHbRhzvusD833rayz94r49MJj9qoRVUSDGmnta2p1Wz301rPelFK2n
+         nJLeY7k/3I01q+42o4W4IR737IYg0QM8jXMfbgOMM8fpLSkesARxnukrhWSfj4Vt23Ck
+         NQrOzOo2wbkSMKJBkotIvlG4CwphgvK7N7n1yrcnyyFK8fdLyTXgoqqpVPAduzJXz74h
+         vv+5p9Kk8jSIsr+eJyjadl1iltdsqCiiIU8Rk74ntnvmTjc6TfQs43RgDO/byUveXyuu
+         1E+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=f4h0TAvN;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iGEKLlQA;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r38si4743282qte.152.2020.04.12.15.42.47
+        by mx.google.com with ESMTPS id p9si4328306qkh.125.2020.04.12.15.42.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Apr 2020 15:42:47 -0700 (PDT)
+        Sun, 12 Apr 2020 15:42:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=f4h0TAvN;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iGEKLlQA;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:37836 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37838 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jNlJO-0000fj-Kk
-	for alex.bennee@linaro.org; Sun, 12 Apr 2020 18:42:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47985)
+	id 1jNlJW-0000ky-EA
+	for alex.bennee@linaro.org; Sun, 12 Apr 2020 18:42:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47785)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlE9-0006zj-N9
- for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:37:22 -0400
+ id 1jNlDz-0006Zz-I4
+ for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:37:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlE8-0002wz-EI
- for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:37:21 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:54908)
+ id 1jNlDy-0002pt-GU
+ for qemu-devel@nongnu.org; Sun, 12 Apr 2020 18:37:11 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:40811)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jNlE8-0002wl-7x; Sun, 12 Apr 2020 18:37:20 -0400
-Received: by mail-wm1-x341.google.com with SMTP id h2so7914546wmb.4;
- Sun, 12 Apr 2020 15:37:20 -0700 (PDT)
+ id 1jNlDy-0002pc-Ak; Sun, 12 Apr 2020 18:37:10 -0400
+Received: by mail-wm1-x344.google.com with SMTP id a81so8355795wmf.5;
+ Sun, 12 Apr 2020 15:37:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=VuVWzBfpjz6H0HCIF1s/Heqg2exv+JQ+H2vwU4p06Wo=;
- b=f4h0TAvNfsqrudSKvetIzFeOKI3Mm7ul8tSs4BXylq9EZam7VrYgdFSM23ZR9dmCZO
- JjXMx0CoZPEF7YgSs7zcsr5gkYxxzslClRq2JI+9syCPg2cgo+jDd1O0Ilx9bLmh4yPU
- Cp4FZJulgOMk/IAKxOb154sBFRa0U1Jr7NKtRaloX4nAQPnMdXa8ufRESoX3N2HX9oT0
- ph/JhnkcOIQ8seDCKhaW7spnYVy19Y80OO8QyZUDfDpiBolKDNZXWDdxi0j1jh3P74kN
- 08nXKIiYlj4p4CCPC+iwlXC6/WzeewZff3mj+lwKdRdEzXMI3WwX6ZAL4s48xtsVqzmK
- OWvQ==
+ bh=03MmkCIzrXFk47EffNUcQSBR3zXYGz9X21Cp/fIhcLE=;
+ b=iGEKLlQArYa83S7I9arl1DJbwIwAdHBaLioZNrYS/3FDqyukGXGl/TTBgepyGBIbGj
+ E6q7tcniVvnUOO4fyRzL2OjNM9pryPhNjpWPUeKhPt3ZGKfylBYZla04/Ojo3dEntlkj
+ 7VfnRkcV4QXCP2TROvJyuvlSi2qWmoJoaJHU5YFBWfvg7ZJ4JuyVy3LaaTinyglqFKMm
+ lcmk6RjXz2WbDnt45QBVHxJU1ZfFwzeuseyBfi6r84AqtWa+COmzT9w27rXqmpI6wdFy
+ qI2SoIcHLMqhVZ2cz+HV+JUm/qercaprVo84UB1yV3h3EBwimyg1x7N9YP1w50tDKpzk
+ A8ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=VuVWzBfpjz6H0HCIF1s/Heqg2exv+JQ+H2vwU4p06Wo=;
- b=SfQcUDv0R+Z6MW7BDxwsGiaXiSJ7mRnIpkJFBIu4QKdQIHWhBPaa/R6Nl1+GBM7CVN
- Gjc6aS44V6A1GevznMLacufDML1hDHMZUpyl7ooXKhEeGk0fxkBTefe25LWDumuZ++u3
- xhZTBuZrrpYkJ5ZCT/G+k4vdUmQEjKEzK/eY1osrOkGg3ZnUi8TXBs8lFH+30ngWrFKo
- 5qm/rGlvosnQmUpmQRep5rg7833R7WMc/9HcP1CJOTN0VFIcZWpiJUG3ptmftVlbzdjv
- kYxMGYpokNZZnqDSxL+laB4obPWlfz+fqTwdblsWomemxpD4aHeAs1fqIcH2ERJ3RY9w
- EG5w==
-X-Gm-Message-State: AGi0PuYWoAxD/TUvigrACX59U2QPSqJhm3Pym7TbqRDXeHV7E128swGj
- lJcNRNFRIZK5yzn/vbyRxyN1ytHFcY3fNg==
-X-Received: by 2002:a1c:3884:: with SMTP id f126mr121709wma.91.1586731039078; 
- Sun, 12 Apr 2020 15:37:19 -0700 (PDT)
+ bh=03MmkCIzrXFk47EffNUcQSBR3zXYGz9X21Cp/fIhcLE=;
+ b=qEtF57XxPDAq4sJG9BAj8AdiO3P6v74NeetedQz0USyX5dOYz848n0wSTx6K2+No9n
+ oreDatyvZv/ryqBjAaaqeyPT+t4szSDlD2zF0qx3mZYmL29fQd9FF99fopJgPctmFhd5
+ Uf0RDQQ2BYmsHmkppV7rykQnTt3XkD2ZrYrwFr9SW6NcP3pciKeZBklKEuHeIfUiNXo0
+ LmxO8XPhAEPqgT4e0cO1zsX75z1SURznQDRGUBG9lULCv1xuaqlCuAHD52KCUpr7qLoV
+ XvluyBUg3HIDxgdGvluT/zh4h+uCA47yne/xyfhnF38BM2UP5TTqfGjPQHtW8/vULhbm
+ yypg==
+X-Gm-Message-State: AGi0PuYiIRix7BxDZws5omroPeKltkUKg/iy6ySAnJrkYgNhfW0YXtBg
+ b9sQWYhj/y5eIx/YqCZHoggVcZsrceBrNg==
+X-Received: by 2002:a1c:7ed7:: with SMTP id z206mr14927358wmc.64.1586731029197; 
+ Sun, 12 Apr 2020 15:37:09 -0700 (PDT)
 Received: from localhost.localdomain (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id d13sm12563559wrv.34.2020.04.12.15.37.15
+ by smtp.gmail.com with ESMTPSA id d13sm12563559wrv.34.2020.04.12.15.37.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Apr 2020 15:37:18 -0700 (PDT)
+ Sun, 12 Apr 2020 15:37:08 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.1 v3 16/24] hw/arm/xlnx-zynqmp: Move some code from
+Subject: [PATCH-for-5.1 v3 13/24] hw/arm/stm32f205_soc: Move some code from
  realize() to init()
-Date: Mon, 13 Apr 2020 00:36:11 +0200
-Message-Id: <20200412223619.11284-17-f4bug@amsat.org>
+Date: Mon, 13 Apr 2020 00:36:08 +0200
+Message-Id: <20200412223619.11284-14-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200412223619.11284-1-f4bug@amsat.org>
 References: <20200412223619.11284-1-f4bug@amsat.org>
@@ -103,7 +103,7 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::341
+X-Received-From: 2a00:1450:4864:20::344
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -142,100 +142,73 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LEHhcTXpkvRf
+X-TUID: yRCSQzVIavjH
 
-Coccinelle failed at processing this file:
+Coccinelle reported:
 
   $ spatch ... --timeout 60 --sp-file \
     scripts/coccinelle/simplify-init-realize-error_propagate.cocci
-  HANDLING: ./hw/arm/xlnx-zynqmp.c
-  EXN: Coccinelle_modules.Common.Timeout
+  HANDLING: ./hw/arm/stm32f205_soc.c
+  >>> possible moves from stm32f205_soc_initfn() to stm32f205_soc_realize() in ./hw/arm/stm32f205_soc.c:83
 
-Move the calls using &error_abort which don't depend on input
+Move the calls using &error_fatal which don't depend on input
 updated before realize() to init().
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
 v3: Typo 'depend of' -> 'depend on' (eblake)
 ---
- hw/arm/xlnx-zynqmp.c | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+ hw/arm/stm32f205_soc.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index 457057198a..5ec9c24ee7 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -242,6 +242,11 @@ static void xlnx_zynqmp_init(Object *obj)
-                                 &s->apu_cpu[i], sizeof(s->apu_cpu[i]),
-                                 ARM_CPU_TYPE_NAME("cortex-a53"),
-                                 &error_abort, NULL);
+diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
+index 42f4e44134..76b0b0e9be 100644
+--- a/hw/arm/stm32f205_soc.c
++++ b/hw/arm/stm32f205_soc.c
+@@ -49,6 +49,7 @@ static const int spi_irq[STM_NUM_SPIS] = {35, 36, 51};
+ static void stm32f205_soc_initfn(Object *obj)
+ {
+     STM32F205State *s = STM32F205_SOC(obj);
++    MemoryRegion *system_memory = get_system_memory();
+     int i;
+ 
+     sysbus_init_child_obj(obj, "armv7m", &s->armv7m, sizeof(s->armv7m),
+@@ -78,6 +79,14 @@ static void stm32f205_soc_initfn(Object *obj)
+         sysbus_init_child_obj(obj, "spi[*]", &s->spi[i], sizeof(s->spi[i]),
+                               TYPE_STM32F2XX_SPI);
+     }
 +
-+        object_property_set_int(OBJECT(&s->apu_cpu[i]), QEMU_PSCI_CONDUIT_SMC,
-+                                "psci-conduit", &error_abort);
-+        object_property_set_int(OBJECT(&s->apu_cpu[i]), GIC_BASE_ADDR,
-+                                "reset-cbar", &error_abort);
-     }
++    memory_region_init_ram(&s->sram, NULL, "STM32F205.sram", SRAM_SIZE,
++                           &error_fatal);
++    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, &s->sram);
++
++    memory_region_init_rom(&s->flash, obj, "STM32F205.flash",
++                           FLASH_SIZE, &error_fatal);
++    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, &s->flash);
+ }
  
-     sysbus_init_child_obj(obj, "gic", &s->gic, sizeof(s->gic),
-@@ -250,6 +255,10 @@ static void xlnx_zynqmp_init(Object *obj)
-     for (i = 0; i < XLNX_ZYNQMP_NUM_GEMS; i++) {
-         sysbus_init_child_obj(obj, "gem[*]", &s->gem[i], sizeof(s->gem[i]),
-                               TYPE_CADENCE_GEM);
-+        object_property_set_int(OBJECT(&s->gem[i]), GEM_REVISION, "revision",
-+                                &error_abort);
-+        object_property_set_int(OBJECT(&s->gem[i]), 2, "num-priority-queues",
-+                                &error_abort);
-     }
+ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+@@ -87,19 +96,10 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+     SysBusDevice *busdev;
+     Error *err = NULL;
+     int i;
+-    MemoryRegion *system_memory = get_system_memory();
  
-     for (i = 0; i < XLNX_ZYNQMP_NUM_UARTS; i++) {
-@@ -259,6 +268,8 @@ static void xlnx_zynqmp_init(Object *obj)
- 
-     sysbus_init_child_obj(obj, "sata", &s->sata, sizeof(s->sata),
-                           TYPE_SYSBUS_AHCI);
-+    object_property_set_int(OBJECT(&s->sata), SATA_NUM_PORTS, "num-ports",
-+                            &error_abort);
- 
-     for (i = 0; i < XLNX_ZYNQMP_NUM_SDHCI; i++) {
-         sysbus_init_child_obj(obj, "sdhci[*]", &s->sdhci[i],
-@@ -370,9 +381,6 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-     for (i = 0; i < num_apus; i++) {
-         char *name;
- 
--        object_property_set_int(OBJECT(&s->apu_cpu[i]), QEMU_PSCI_CONDUIT_SMC,
--                                "psci-conduit", &error_abort);
+-    memory_region_init_rom(&s->flash, OBJECT(dev_soc), "STM32F205.flash",
+-                           FLASH_SIZE, &error_fatal);
+     memory_region_init_alias(&s->flash_alias, OBJECT(dev_soc),
+                              "STM32F205.flash.alias", &s->flash, 0, FLASH_SIZE);
 -
-         name = object_get_canonical_path_component(OBJECT(&s->apu_cpu[i]));
-         if (strcmp(name, boot_cpu)) {
-             /* Secondary CPUs start in PSCI powered-down state */
-@@ -387,8 +395,6 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-                                  s->secure, "has_el3", NULL);
-         object_property_set_bool(OBJECT(&s->apu_cpu[i]),
-                                  s->virt, "has_el2", NULL);
--        object_property_set_int(OBJECT(&s->apu_cpu[i]), GIC_BASE_ADDR,
--                                "reset-cbar", &error_abort);
-         object_property_set_int(OBJECT(&s->apu_cpu[i]), num_apus,
-                                 "core-count", &error_abort);
-         object_property_set_bool(OBJECT(&s->apu_cpu[i]), true, "realized",
-@@ -490,10 +496,6 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-             qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
-             qdev_set_nic_properties(DEVICE(&s->gem[i]), nd);
-         }
--        object_property_set_int(OBJECT(&s->gem[i]), GEM_REVISION, "revision",
--                                &error_abort);
--        object_property_set_int(OBJECT(&s->gem[i]), 2, "num-priority-queues",
--                                &error_abort);
-         object_property_set_bool(OBJECT(&s->gem[i]), true, "realized", &err);
-         if (err) {
-             goto out_propagate_error;
-@@ -514,8 +516,6 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-                            gic_spi[uart_intr[i]]);
-     }
+-    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, &s->flash);
+-    memory_region_add_subregion(system_memory, 0, &s->flash_alias);
+-
+-    memory_region_init_ram(&s->sram, NULL, "STM32F205.sram", SRAM_SIZE,
+-                           &error_fatal);
+-    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, &s->sram);
++    memory_region_add_subregion(get_system_memory(), 0, &s->flash_alias);
  
--    object_property_set_int(OBJECT(&s->sata), SATA_NUM_PORTS, "num-ports",
--                            &error_abort);
-     object_property_set_bool(OBJECT(&s->sata), true, "realized", &err);
-     if (err) {
-         goto out_propagate_error;
+     armv7m = DEVICE(&s->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 96);
 -- 
 2.21.1
 

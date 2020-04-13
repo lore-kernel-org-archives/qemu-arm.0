@@ -1,65 +1,65 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3568105lfm;
-        Mon, 13 Apr 2020 02:18:54 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIznYU6bVhih6XqX15U7ha1CnauKTX8lrJIBxa49gLWAaajlOJdK7WcAoMNyGDQL0Aopd2G
-X-Received: by 2002:a37:6191:: with SMTP id v139mr4089106qkb.469.1586769534105;
-        Mon, 13 Apr 2020 02:18:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586769534; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3568187lfm;
+        Mon, 13 Apr 2020 02:19:02 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJNDBXcuN2R4lG/z2uVM24NgsqgairFJSzFk9Pe/xYDjOzBnNBRdANBczhkJko4//NT4lZs
+X-Received: by 2002:ad4:57a3:: with SMTP id g3mr3906730qvx.86.1586769541899;
+        Mon, 13 Apr 2020 02:19:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586769541; cv=none;
         d=google.com; s=arc-20160816;
-        b=CbyMRK/gpLV3rfGd46T1Kp8jdBfOejKNQgqp15b2ASm2C2+KZuVSCd4JKhtBEchJnh
-         ydRQoVzikincZ/huVSrmmSr9e7ioUOw0p+9mNsFeU0f/d3OrlifO9V549BIuzyjD+UJX
-         gT65JQ0Y4OYNwWHHw2toZgb5MJ2Qo4L+WwStUDMaJuM3XGYn78uH01uEPao/ady4OBQi
-         FScoVMx68KpQ8XBIFXUJ2Yuj9Tx916y5JiBDYSngmxinyqkAKGo/o01gZjmJVNLpXidJ
-         cSBbZYaqA+eXCRoD1jIhMKSFMODNQkb14S43ZdS5Td/6snRAc8UZn8T+jY/ABShnJC0B
-         3J6w==
+        b=MxNECfTXHfdPgsD0fF85t/p2cmq5OAYyXq6mswUmDJXOrMuhH8551tqIWzrj+/SNED
+         9DgKSMAWOTcbJL1pFqvxOmQOJxcgKwlk/upflX/H08K8EdTYiMnLriZwWP7mLkOjRSpE
+         5uyvmxAkAotKDk0kcULHGGyb3E/KUOMacy+ZT2Ne0KRU8H09Xy2Z3K5aprb6mDCfNNRY
+         Z8HmiDebhav6NuNzKgNDO12hC0dR6DIqUubhVv9Z7l5ENd/xR0l+9yVnQ7QBqoBxFWn6
+         znaPftONksDQg5lJfQwWqkP6vI9kKgLLNGxleuAxEe16WGgPNxzdyBsDsalcCo3H/Vxx
+         qaSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=74lrm29DdlxF/q2OO2seXpWT83MaDVmHxfdQIOB03Io=;
-        b=JpbkN02qHG7ctzP6tEWYKgxCrhPublfABJmp6L5WkT+G2ry7AoyXKVgRbam5pgZOsz
-         aupCYO4zlVftnh4zYflgT4lqprId78Rqw7kNGHOHzGV2Wkdq4fjbG7hthspUVXDo9FMu
-         4p8ulVys+MPnJYiwTDk+nIDy6hRZ9q1v25AWlj4mI6XWVxZCQz/Yv/uZnu9xTaYTjCfi
-         L/35b9cdy3pZmhUP4FX+uX/6T732MM5E4W6mEO31A7CDRfBNjLkkO6MJ2SPY2x5qZ20b
-         mYYhwa8jamsHcJ89x2bWaJQG+/vC1j585GXUAPILfLUpAma+mQZytttG7aDHVEUzNw/N
-         1xeQ==
+        bh=rOOsKrO+S+nD6s4Gug0JWVnVSezT5XjJLHO6nz7vzdo=;
+        b=wxGMFqEx2br+jIgyUlP+8ao9SKruBWMiPCZccVS9ozRVZtKkEM0xR3WqJA15tKO6dn
+         WM+zr/iHqBUaGHJ0ojGcH50olVqVwXwOGBcqEwRxVXGeIzi3bzoC36fdwcENiKgalVEQ
+         AUnzMGD9Nw3HaVEI1OXSB3ajFG57Y5jb4WmiYZSvOZxyQQd+ShYPmQO0JG5P19oI7I7s
+         hQoue9PPl6+jBDPeZqjcNlCox/fNFEqIa7v7I5YUWo7/hK3qxgUhI+RrSJ0rkq3G0eaf
+         eZJ0l3c5mmhS5uAE4HdUj6mYBm2kRC88hFQt5eGLkFQ+689WhMyC2Iw2UoIlKQgy6BDD
+         Pgvg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a11si3408185qkg.66.2020.04.13.02.18.53
+        by mx.google.com with ESMTPS id z188si5831119qkd.216.2020.04.13.02.19.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Apr 2020 02:18:54 -0700 (PDT)
+        Mon, 13 Apr 2020 02:19:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42014 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42016 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jNvEz-0001hO-Il
-	for alex.bennee@linaro.org; Mon, 13 Apr 2020 05:18:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47309)
+	id 1jNvF7-0001wR-C3
+	for alex.bennee@linaro.org; Mon, 13 Apr 2020 05:19:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47318)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <zhukeqian1@huawei.com>) id 1jNvEi-0001SS-Jh
+ (envelope-from <zhukeqian1@huawei.com>) id 1jNvEi-0001SX-Ms
  for qemu-arm@nongnu.org; Mon, 13 Apr 2020 05:18:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <zhukeqian1@huawei.com>) id 1jNvEh-00062I-H3
+ (envelope-from <zhukeqian1@huawei.com>) id 1jNvEh-00062T-PI
  for qemu-arm@nongnu.org; Mon, 13 Apr 2020 05:18:36 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:37966 helo=huawei.com)
+Received: from szxga07-in.huawei.com ([45.249.212.35]:37964 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
- id 1jNvEh-0005zM-6Z; Mon, 13 Apr 2020 05:18:35 -0400
+ id 1jNvEh-0005zJ-F5; Mon, 13 Apr 2020 05:18:35 -0400
 Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 1C765453D2D92EB224A4;
+ by Forcepoint Email with ESMTP id 17EE7DAEE6C89476076C;
  Mon, 13 Apr 2020 17:18:27 +0800 (CST)
 Received: from linux-kDCJWP.huawei.com (10.175.104.212) by
  DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
- 14.3.487.0; Mon, 13 Apr 2020 17:18:19 +0800
+ 14.3.487.0; Mon, 13 Apr 2020 17:18:18 +0800
 From: Keqian Zhu <zhukeqian1@huawei.com>
 To: <qemu-devel@nongnu.org>
-Subject: [PATCH 3/3] Typo: Correct the name of CPU hotplug memory region
-Date: Mon, 13 Apr 2020 17:15:52 +0800
-Message-ID: <20200413091552.62748-4-zhukeqian1@huawei.com>
+Subject: [PATCH 2/3] intc/gicv3_kvm: use kvm_gicc_access to get ICC_CTLR_EL1
+Date: Mon, 13 Apr 2020 17:15:51 +0800
+Message-ID: <20200413091552.62748-3-zhukeqian1@huawei.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20200413091552.62748-1-zhukeqian1@huawei.com>
 References: <20200413091552.62748-1-zhukeqian1@huawei.com>
@@ -88,30 +88,33 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Keqian Zhu <zhukeqian1@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GSAwznrjbKEm
+X-TUID: SbG3P4CPDzNm
 
-Replace "acpi-mem-hotplug" with "acpi-cpu-hotplug"
+Replace kvm_device_access with kvm_gicc_access to simplify
+code.
 
 Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 ---
- hw/acpi/cpu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/intc/arm_gicv3_kvm.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-index e2c957ce00..3d6a500fb7 100644
---- a/hw/acpi/cpu.c
-+++ b/hw/acpi/cpu.c
-@@ -222,7 +222,7 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *ow=
-ner,
-         state->devs[i].arch_id =3D id_list->cpus[i].arch_id;
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index ca43bf87ca..85f6420498 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -678,9 +678,8 @@ static void arm_gicv3_icc_reset(CPUARMState *env, con=
+st ARMCPRegInfo *ri)
      }
-     memory_region_init_io(&state->ctrl_reg, owner, &cpu_hotplug_ops, sta=
-te,
--                          "acpi-mem-hotplug", ACPI_CPU_HOTPLUG_REG_LEN);
-+                          "acpi-cpu-hotplug", ACPI_CPU_HOTPLUG_REG_LEN);
-     memory_region_add_subregion(as, base_addr, &state->ctrl_reg);
- }
 =20
+     /* Initialize to actual HW supported configuration */
+-    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS,
+-                      KVM_VGIC_ATTR(ICC_CTLR_EL1, c->gicr_typer),
+-                      &c->icc_ctlr_el1[GICV3_NS], false, &error_abort);
++    kvm_gicc_access(s, ICC_CTLR_EL1, c->cpu->cpu_index,
++                    &c->icc_ctlr_el1[GICV3_NS], false);
+=20
+     c->icc_ctlr_el1[GICV3_S] =3D c->icc_ctlr_el1[GICV3_NS];
+ }
 --=20
 2.19.1
 

@@ -1,66 +1,74 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3260878lfm;
-        Sun, 12 Apr 2020 18:32:07 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLas14BuizFyP83EQqQp7avQntEgjEjfe206SZttEC3lnlVEgqolrrG19jlYNj94T3jNm3k
-X-Received: by 2002:a37:8803:: with SMTP id k3mr14468730qkd.392.1586741527327;
-        Sun, 12 Apr 2020 18:32:07 -0700 (PDT)
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3568002lfm;
+        Mon, 13 Apr 2020 02:18:46 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLRO12w2WtfSCgYOtXkdzkNpBZO9sE+KfYJLrg/VSTDxjCznXW4/6iWEqjRvr8OhtCSA/eH
+X-Received: by 2002:a0c:fb12:: with SMTP id c18mr15729643qvp.171.1586769526335;
+        Mon, 13 Apr 2020 02:18:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586769526; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PjfGEHclXm4CmL9J3RXXQxXeUs+rw1zfR3K2Zipk/lYlsWL/hGw7AlTEu0++8Ho2gy
+         FilV/E6j2oxV2aqqkxX4TP8s0sLSRuAzy53wF5Jyk5cO0YJHJwQ5vFyRnBAYsDWt0T+/
+         9fXWE/yYn+7U6QV9QGqKvTKeQZ/H5RA/lcq5KmfyF/5c3084DGXgGi674XRl+2jlX+mZ
+         DgQkWPn8ayOudAqK13iEEkTvFeJ8xYUHTjfE+R8k8B3/RWo5GoBkWmjRLwa+lKEpYlMj
+         r2K+YoiGnLrSiM1azU0DCIHMMsPb34oxYiQGjcHM6mT3sSjMe2Zf7xcqSWptSamd5zus
+         EnJQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=2YXOPT19zTahkq3m5/UNxhQxP57PLcwNXGm65NjzAtQ=;
+        b=K9breF91N2aRvs9IfsRBus7seQ5tGub5rTW89R/z/nnAPyUFs9nAxh5FnkltMBSLev
+         dHoRHNAwoycm8jpBZej8ZfHHckJ/+3iNFRHEzxy/N4CWWe0/tPLjrnogGbWuVJxybFta
+         zko7r6EoBMlHeowVjZtQajmApELDQJ2Xi8wBo0qfwzmcitXN5z5t0Q5/KARLVOBcwRDT
+         FIApJ0mzqqOU+x/iPEICufDtAnS4H/w7fuyKm073BhQD1ctHCrQxJVpRixxUMLa4hb9l
+         JotcuUhEj7pxrY41qMLexlzzOn6jiG66JOSnDLRrmEEzjJJpz+upnddzc0DQYxxmKmW5
+         jBIw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d22si5126838qtb.123.2020.04.12.18.32.07
+        by mx.google.com with ESMTPS id bu8si115305qvb.53.2020.04.13.02.18.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Apr 2020 18:32:07 -0700 (PDT)
+        Mon, 13 Apr 2020 02:18:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39398 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42006 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jNnxG-0006Z1-PJ
-	for alex.bennee@linaro.org; Sun, 12 Apr 2020 21:32:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36072)
+	id 1jNvEr-0001TP-PJ
+	for alex.bennee@linaro.org; Mon, 13 Apr 2020 05:18:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47307)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1jNnx8-0006VP-LO
- for qemu-arm@nongnu.org; Sun, 12 Apr 2020 21:31:59 -0400
+ (envelope-from <zhukeqian1@huawei.com>) id 1jNvEi-0001SR-JH
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2020 05:18:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1jNnx7-0002pn-GJ
- for qemu-arm@nongnu.org; Sun, 12 Apr 2020 21:31:58 -0400
-Resent-Date: Sun, 12 Apr 2020 21:31:58 -0400
-Resent-Message-Id: <E1jNnx7-0002pn-GJ@eggs.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21390)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1jNnwz-0002dl-QO; Sun, 12 Apr 2020 21:31:50 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1586741409; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=G3wDKTZtvh6mLs8WTe1FPQ47spBioyPgehatm5mzZpGLAGVIrPgaIO3mM3iVipF4oMsbe6nqCAThull5HdUSNxLN8NuPQIIQM2D+RiyCvo1CQRm8H/WZVedkaPG3GtQY6jUUE3ReSRS0kLfWexFpw8oNeT1fXQlv/T7qCRhlNBs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1586741409;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=DXA8ROflQaKr4S/rbswC1itG5CejlDkW2QEiSUsR/5U=; 
- b=ey3Uai/yjI0xltaIIlsp8pDejsNjswbQCnFtb/SCnkMFGC94BrjaBnUbJd4Urf8/4ZE3trkKyB8xI1zNUFFWFTpdVMmDXkcjXQvWyGWRF5f68g5FotylrVC9DCUd1aAsgRK3pzGEx67XvAOKclIGMtqBM5/IL4VhJfSy3EUsEyE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1586741406599264.8925429120661;
- Sun, 12 Apr 2020 18:30:06 -0700 (PDT)
-In-Reply-To: <20200412224144.12205-1-f4bug@amsat.org>
-Subject: Re: [PATCH-for-5.1 v3 00/23] various: Fix error-propagation with
- Coccinelle scripts (part 2)
-Message-ID: <158674140284.24582.4738303734545201273@39012742ff91>
+ (envelope-from <zhukeqian1@huawei.com>) id 1jNvEh-00062C-GV
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2020 05:18:36 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:37968 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
+ id 1jNvEh-0005zL-62; Mon, 13 Apr 2020 05:18:35 -0400
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 24379E4DEB964DCF0316;
+ Mon, 13 Apr 2020 17:18:27 +0800 (CST)
+Received: from linux-kDCJWP.huawei.com (10.175.104.212) by
+ DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
+ 14.3.487.0; Mon, 13 Apr 2020 17:18:16 +0800
+From: Keqian Zhu <zhukeqian1@huawei.com>
+To: <qemu-devel@nongnu.org>
+Subject: [PATCH 0/3] Some trivial fixes
+Date: Mon, 13 Apr 2020 17:15:49 +0800
+Message-ID: <20200413091552.62748-1-zhukeqian1@huawei.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: f4bug@amsat.org
-Date: Sun, 12 Apr 2020 18:30:06 -0700 (PDT)
-X-ZohoMailClient: External
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.212]
+X-CFilter-Loop: Reflected
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 136.143.188.53
+X-Received-From: 45.249.212.35
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,54 +80,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, sagark@eecs.berkeley.edu, mst@redhat.com,
- jasowang@redhat.com, mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org,
- Alistair.Francis@wdc.com, mreitz@redhat.com, qemu-block@nongnu.org,
- armbru@redhat.com, aleksandar.qemu.devel@gmail.com, joel@jms.id.au,
- qemu-ppc@nongnu.org, aleksandar.rikalo@rt-rk.com, rth@twiddle.net,
- philmd@redhat.com, ehabkost@redhat.com, jcd@tribudubois.net,
- alistair@alistair23.me, b.galvani@gmail.com, qemu-arm@nongnu.org, clg@kaod.org,
- david@gibson.dropbear.id.au, kwolf@redhat.com, qemu-riscv@nongnu.org,
- andrew@aj.id.au, kbastian@mail.uni-paderborn.de, f4bug@amsat.org,
- Andrew.Baumann@microsoft.com, sundeep.lkml@gmail.com, michael@walle.cc,
- palmer@dabbelt.com, pbonzini@redhat.com, aurelien@aurel32.net
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, wanghaibin.wang@huawei.com,
+ Keqian Zhu <zhukeqian1@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J6XYXIgsFLxD
+X-TUID: Q6u0IzO5e3dR
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDQxMjIyNDE0NC4xMjIw
-NS0xLWY0YnVnQGFtc2F0Lm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgdGhlIGRvY2tl
-ci1xdWlja0BjZW50b3M3IGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5nIGNvbW1h
-bmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0YWxsZWQs
-IHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBTQ1JJUFQg
-QkVHSU4gPT09CiMhL2Jpbi9iYXNoCm1ha2UgZG9ja2VyLWltYWdlLWNlbnRvczcgVj0xIE5FVFdP
-Uks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtcXVpY2tAY2VudG9zNyBTSE9XX0VOVj0xIEo9MTQg
-TkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpSQU1CbG9jayAic3JhbSBBIiBhbHJl
-YWR5IHJlZ2lzdGVyZWQsIGFib3J0IQpCcm9rZW4gcGlwZQovdG1wL3FlbXUtdGVzdC9zcmMvdGVz
-dHMvcXRlc3QvbGlicXRlc3QuYzoxNzU6IGtpbGxfcWVtdSgpIGRldGVjdGVkIFFFTVUgZGVhdGgg
-ZnJvbSBzaWduYWwgNiAoQWJvcnRlZCkgKGNvcmUgZHVtcGVkKQpFUlJPUiAtIHRvbyBmZXcgdGVz
-dHMgcnVuIChleHBlY3RlZCA2LCBnb3QgNSkKbWFrZTogKioqIFtjaGVjay1xdGVzdC1hYXJjaDY0
-XSBFcnJvciAxCm1ha2U6ICoqKiBXYWl0aW5nIGZvciB1bmZpbmlzaGVkIGpvYnMuLi4uCiAgVEVT
-VCAgICBpb3Rlc3QtcWNvdzI6IDE1NAogIFRFU1QgICAgaW90ZXN0LXFjb3cyOiAxNTYKLS0tCiAg
-ICByYWlzZSBDYWxsZWRQcm9jZXNzRXJyb3IocmV0Y29kZSwgY21kKQpzdWJwcm9jZXNzLkNhbGxl
-ZFByb2Nlc3NFcnJvcjogQ29tbWFuZCAnWydzdWRvJywgJy1uJywgJ2RvY2tlcicsICdydW4nLCAn
-LS1sYWJlbCcsICdjb20ucWVtdS5pbnN0YW5jZS51dWlkPWJiYmI5ZDI5YjRlNDQ3N2Y5YTNlMGRm
-YmUxYmY2OWRiJywgJy11JywgJzEwMDMnLCAnLS1zZWN1cml0eS1vcHQnLCAnc2VjY29tcD11bmNv
-bmZpbmVkJywgJy0tcm0nLCAnLWUnLCAnVEFSR0VUX0xJU1Q9JywgJy1lJywgJ0VYVFJBX0NPTkZJ
-R1VSRV9PUFRTPScsICctZScsICdWPScsICctZScsICdKPTE0JywgJy1lJywgJ0RFQlVHPScsICct
-ZScsICdTSE9XX0VOVj0xJywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zhci90bXAvY2NhY2hlJywgJy12
-JywgJy9ob21lL3BhdGNoZXcyLy5jYWNoZS9xZW11LWRvY2tlci1jY2FjaGU6L3Zhci90bXAvY2Nh
-Y2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLTc0NHZyNnc2L3NyYy9k
-b2NrZXItc3JjLjIwMjAtMDQtMTItMjEuMTYuMzAuOTI4OTovdmFyL3RtcC9xZW11Onoscm8nLCAn
-cWVtdTpjZW50b3M3JywgJy92YXIvdG1wL3FlbXUvcnVuJywgJ3Rlc3QtcXVpY2snXScgcmV0dXJu
-ZWQgbm9uLXplcm8gZXhpdCBzdGF0dXMgMi4KZmlsdGVyPS0tZmlsdGVyPWxhYmVsPWNvbS5xZW11
-Lmluc3RhbmNlLnV1aWQ9YmJiYjlkMjliNGU0NDc3ZjlhM2UwZGZiZTFiZjY5ZGIKbWFrZVsxXTog
-KioqIFtkb2NrZXItcnVuXSBFcnJvciAxCm1ha2VbMV06IExlYXZpbmcgZGlyZWN0b3J5IGAvdmFy
-L3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtNzQ0dnI2dzYvc3JjJwptYWtlOiAqKiogW2RvY2tlci1y
-dW4tdGVzdC1xdWlja0BjZW50b3M3XSBFcnJvciAyCgpyZWFsICAgIDEzbTMzLjE5NHMKdXNlciAg
-ICAwbTkuMDYwcwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcu
-b3JnL2xvZ3MvMjAyMDA0MTIyMjQxNDQuMTIyMDUtMS1mNGJ1Z0BhbXNhdC5vcmcvdGVzdGluZy5k
-b2NrZXItcXVpY2tAY2VudG9zNy8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1
-dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2Vu
-ZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+Hi all,
+
+This patch-set contains trivial bugfix and typo fix.
+
+Thanks,
+Keqian
+
+Keqian Zhu (3):
+  bugfix: Use gicr_typer in arm_gicv3_icc_reset
+  intc/gicv3_kvm: use kvm_gicc_access to get ICC_CTLR_EL1
+  Typo: Correct the name of CPU hotplug memory region
+
+ hw/acpi/cpu.c           | 2 +-
+ hw/intc/arm_gicv3_kvm.c | 7 ++-----
+ 2 files changed, 3 insertions(+), 6 deletions(-)
+
+--=20
+2.19.1
+

@@ -1,119 +1,120 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4280073lfm;
-        Mon, 13 Apr 2020 15:24:45 -0700 (PDT)
-X-Google-Smtp-Source: APiQypILxVIaXUXUh5WUvw99+ZHBYm0CXD7eoV4pYgVvr45WOCEbwTU1Yi73Xse1UzHfkPL1f1Dc
-X-Received: by 2002:aed:2bc7:: with SMTP id e65mr13711913qtd.220.1586816685480;
-        Mon, 13 Apr 2020 15:24:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586816685; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4280890lfm;
+        Mon, 13 Apr 2020 15:25:54 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIb19cLPe97IXTzzL1paEz5sP82B8OOprREjLjryDWEJ5Lx8Tf6oXAC4c8j05fjr6/FDAsv
+X-Received: by 2002:ac8:5304:: with SMTP id t4mr9286893qtn.250.1586816754338;
+        Mon, 13 Apr 2020 15:25:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586816754; cv=none;
         d=google.com; s=arc-20160816;
-        b=rlSTJiarRELdE7P9Noi8Gg6g8nMlqSAzdYQrEy3hAEZ0oFQTXAc64/bBw9n0JAwA5H
-         ZnIoy8c2ajCA0GGS4TgpIES8zspcgg0TW+AwUSMgKSbgyjPexp/j20zPTKqiZp5zw4QA
-         C5dCxs2sN6/5zdAcU5/SW+nx5JtrMpsNfclYsHbvxBVklNvTsf2JVx1SQdb8vG+TBrE/
-         Y086HWDTrIwiywlNvSOb+o0R55KJZaSI/8xIaY8suFvwwoSHWQ9X6AY4kO0Yz4YladQp
-         1/QzZgaYImG3i9ihlg6dGoBdZgGKv1IFgRaGU7kwwHwQnM6eZ/Xw3UU5lnDmG7DqqMwW
-         vulw==
+        b=EclfTrnZtk66P8ZsLFYdudCfKwQaTQSkukmGmSrFljp0mttrJYz5632VIVQq/HyjoD
+         kliie55t85oK7ZqXlo7Tte/Z3xVOTuyNUQ8siCuv7PHSm1G9Mj/GEXt2BhdhV69dnmxW
+         TopwXaiw26st9AbpgCTMREq7bZO+y25CElAdF/6zIzeLjaYFe6CYCDhfDyAqvgaTHqnn
+         qtppxar/2u9rRAkOUhktp/jIH7surmGTPimqhfJHnos8tk7m2GT03eSLRwtHagdXkL+j
+         UixE3ErqzxA8tGvzH4UG1LrCYdcuIQZflZc8h4aeWfk30+fkZw3n4OQNojoV34OEFUh/
+         f50A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=NfS+if34QaICcgQhFzQlQDHmzlQVRe47Rr7qXTiSLIk=;
-        b=x4WZgGl30W555fI46U8VjzzX5rO0p0nZJuvzbMSkctEALjeYYs7DQ/WmuRxfAiSkjI
-         dFG4aNOl8Qp/Ldx+0pZpM6hEtUYBRlg0CEf8M9U9JhmzALEXwlYXY/FYyoG8WM2Y7xm5
-         zW3pthCjp383dEYZdB75afRnv7DgtgpsPhmyd41laeFKtCreNBWI+S73On2Ze6C9vTNL
-         h12ER1pBGLA8s9g+wkI4LDobs4T+FnocjZHlQgB1SANQzp4CDs4B0HmMpdH1JTlq0KmO
-         hZH9/RvnX6ADAg5dXh93Ye6C0wPljhtjcFKzLjtiSlwkE8CPz7UZtUIrZv1MBYtJ6iXc
-         +7LA==
+        bh=00mEsRo2bzgYeyCBB/qVfWiSej9R1kMUMqztNKgMU0c=;
+        b=gEfXqUAhyVY4SL6mLhVFHF4VbQRxqaW0aYPNGgIln4gaMKEu7tY0bqva2a1BAiAar1
+         Gif/68Vmyqu48fKMwij/8vUDa4qX2C0eE8IT7Uj24ZMc0AiS6TIKai8pBwxquXKOodk1
+         fmgh28CWgcajvy0MSB9Ky5re5YimkQCoL3oGnhQthRLh7yrO7nltsnWQKT9LKTGGl3wa
+         NB4IkHLMfmup2PH40oc3U6I1k6RPvBAAFW+Q9M479eIoAUBeNN6JfAEUkg6BmkeHgrcG
+         9nYyHAlWYfXBxdnqQCmGCiOO3D8FPsBjOmQYvCyw1v9NHZgfFMDInSZO3AD8At3w7quD
+         9Ihg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=E7VeJP1a;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tOouTCBx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b189si6766808qkf.88.2020.04.13.15.24.45
+        by mx.google.com with ESMTPS id g5si6457882qkb.287.2020.04.13.15.25.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Apr 2020 15:24:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Apr 2020 15:25:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=E7VeJP1a;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tOouTCBx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:49746 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49768 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jO7VU-0003hV-Rp
-	for alex.bennee@linaro.org; Mon, 13 Apr 2020 18:24:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46649)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jO7Wb-0005VX-OF
+	for alex.bennee@linaro.org; Mon, 13 Apr 2020 18:25:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46509)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1jO7VH-0003eJ-F1
- for qemu-arm@nongnu.org; Mon, 13 Apr 2020 18:24:35 -0400
+ (envelope-from <alistair23@gmail.com>) id 1jO7Up-0002nu-K1
+ for qemu-devel@nongnu.org; Mon, 13 Apr 2020 18:24:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1jO7VG-0006Vn-CP
- for qemu-arm@nongnu.org; Mon, 13 Apr 2020 18:24:31 -0400
-Received: from mail-vs1-xe44.google.com ([2607:f8b0:4864:20::e44]:33052)
+ (envelope-from <alistair23@gmail.com>) id 1jO7Uo-0006M2-9T
+ for qemu-devel@nongnu.org; Mon, 13 Apr 2020 18:24:03 -0400
+Received: from mail-vs1-xe41.google.com ([2607:f8b0:4864:20::e41]:46365)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1jO7VB-0006Uo-RZ; Mon, 13 Apr 2020 18:24:25 -0400
-Received: by mail-vs1-xe44.google.com with SMTP id a2so2408597vsd.0;
- Mon, 13 Apr 2020 15:24:25 -0700 (PDT)
+ id 1jO7Uo-0006LT-5T; Mon, 13 Apr 2020 18:24:02 -0400
+Received: by mail-vs1-xe41.google.com with SMTP id h189so6419400vsc.13;
+ Mon, 13 Apr 2020 15:24:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=NfS+if34QaICcgQhFzQlQDHmzlQVRe47Rr7qXTiSLIk=;
- b=E7VeJP1anCexgCP9YAQnkh4bF9Hdp5i3OvXEPCKFXRqTj+8CCHpACQxAG4yEI9Du4N
- cO37BGaUunXddYyCo2w8xputvkC1/U4sB2Qy5fZKnIlUdEH7inGXS/wRS+j6PQ379Tax
- UPKI0+/SspkTcVJPrQvAKVj9SHWq2b28+zlGVd3KpL10YoFKH+Op/Fhup0ckGTodz6yN
- orOM1m+Y3+9Fi+TL9qrTxJ7UwPUpYYEPRhtNh9Bv9x8R2IXNViY6TzSJejRQlHIx6F+p
- EgyVkTcoLvfKlmF2F8LngUR93ntT3Q27aHaCiecvaQoXFV0e8yeJ4SdifXiFyWbNnLso
- LLIg==
+ bh=00mEsRo2bzgYeyCBB/qVfWiSej9R1kMUMqztNKgMU0c=;
+ b=tOouTCBx3ptVp4gVS/cR4yrG1ApwoJGxTUAvngORUG1xwpH4Zt/ArgjRHeDa1UNLs1
+ goDaT1DvP6lcia/czzXxmre84Ofz9X9LiQ9yZKpZRhCJwewq/BsFVP2FLOQ5xO5mRuvM
+ iKYJ7Nd93hzzwe+I/JZ0uuCbjEgnydmCf+7T6TnRhWh4J/9/s4mIQMkchEhHKzaS7vGg
+ 1FPb8cpm3jXBz2LiuMpFCAlODXxaaKVy8pYA0M0Nj6yQlqYAMDQjVKW3Wej95sQP7oL/
+ v/XRJzOITTKYmVv8OYw8NFYkFyMp/ClJJiaIZmhqdkTF/ffHlIv8iu8g6L6Fks1x5FB+
+ 7wyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=NfS+if34QaICcgQhFzQlQDHmzlQVRe47Rr7qXTiSLIk=;
- b=YZhvWLPeXYjGUaGrVFtaqt1XtxXk+iMeN6lARkGXsZU9QeHioCDLuPiK0EPN7xk3Qv
- wsBwiazh97yQYQlZNr+iV/1IC0SkYTZsjbsR/Qt5QUUo/g7tUmR11Fj2UsW7RthFffcC
- 8WNYbfWrQF6z0l3H4+/m2qVUyFi0bIHE518N9ndzi0jCjGl5mYFKj8GGdilrRRjDKlmj
- yuVzPrkGHtSFDw+JlV5JQhBnW4DZBGywXit3jaECY3IlABxlOHkWjjUNhEmTn4mn5NpM
- NGlGT2Mv1cn6vEUcNzn+BKgDzLQqBj2uXf9h5s9bVyO+X62fE+5cKdpgQxd3a+nYzvco
- MrTA==
-X-Gm-Message-State: AGi0PuY/lXHPqj67k1OxG2h0QumA0Wo8mHatVF2eFHBPxUiW4YJwHBBs
- 1/6+596peU5bdgxnU8YbkY8ogO4jicx2bxxwJDM=
-X-Received: by 2002:a67:26c2:: with SMTP id
- m185mr14419055vsm.180.1586816665267; 
- Mon, 13 Apr 2020 15:24:25 -0700 (PDT)
+ bh=00mEsRo2bzgYeyCBB/qVfWiSej9R1kMUMqztNKgMU0c=;
+ b=oRg/zAGAkxjBUkUqR9VPQdzuYILWfupz5Ffd+dgtKBTti+h8DJhPu4A/sP8Vz2GJoY
+ pkeLbESd+VpCPc8MfU2uW2lKC/pQt7LAfbMT3lTh0qtGos9q5Be5UGL6geSqTmzUB+Fi
+ y1hTho/uJs82Fyfa8+U8n6hDzwJ8weQTJw3BOOGMgqw8T5YlOqBeTR8UPfaOUgroh9DC
+ uzqWWph6tjYGsgcSWZUFllRh11LvQ+fDNkc1Gha0VaVAcceqaPivmtP/h02B/XS/xPBt
+ vXBPKVNHFAAp52mi5o9UWHjIxfJqwZ/XDGNEjFCVd7ms15DX4k52wVtzA8Qy5q4nupLY
+ MhRA==
+X-Gm-Message-State: AGi0PuZKJKaXLGQMW8BK2pyPEzSh12ipYmI33Fi/zZwhVR6HdF3sPdxn
+ LAfHPQa7duhCbLGjoV2rl8YP4ppXXOMv7Q7miDA=
+X-Received: by 2002:a67:1b81:: with SMTP id
+ b123mr13177867vsb.172.1586816640437; 
+ Mon, 13 Apr 2020 15:24:00 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200412223619.11284-1-f4bug@amsat.org>
- <20200412223619.11284-22-f4bug@amsat.org>
-In-Reply-To: <20200412223619.11284-22-f4bug@amsat.org>
+ <20200412223619.11284-24-f4bug@amsat.org>
+In-Reply-To: <20200412223619.11284-24-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 13 Apr 2020 15:16:09 -0700
-Message-ID: <CAKmqyKM6PxaKUi7CL-WarfkF+t7OxNpYPEfjjCQ3yTSKRtzWUg@mail.gmail.com>
-Subject: Re: [PATCH-for-5.1 v3 21/24] hw/riscv/sifive_u: Move some code from
+Date: Mon, 13 Apr 2020 15:15:43 -0700
+Message-ID: <CAKmqyKMXQVr9jSjWy2ByJZh5_YNhFrn3We9rVP6iSWFF736CjA@mail.gmail.com>
+Subject: Re: [PATCH-for-5.1 v3 23/24] hw/riscv/sifive_u: Move some code from
  realize() to init()
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::e44
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::e41
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
  Jason Wang <jasowang@redhat.com>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alistair Francis <Alistair.Francis@wdc.com>, Max Reitz <mreitz@redhat.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Max Reitz <mreitz@redhat.com>,
  Qemu-block <qemu-block@nongnu.org>, Markus Armbruster <armbru@redhat.com>,
  Joel Stanley <joel@jms.id.au>,
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
@@ -134,11 +135,11 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Palmer Dabbelt <palmer@dabbelt.com>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kzIlstJ8qc4O
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XvbPwFKY+Ypc
 
-On Sun, Apr 12, 2020 at 3:49 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+On Sun, Apr 12, 2020 at 3:48 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
 g> wrote:
 >
 > Coccinelle reported:
@@ -161,32 +162,93 @@ Alistair
 > ---
 > v3: Typo 'depend of' -> 'depend on' (eblake)
 > ---
->  hw/riscv/sifive_u.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  hw/riscv/sifive_u.c | 42 ++++++++++++++++++++++--------------------
+>  1 file changed, 22 insertions(+), 20 deletions(-)
 >
 > diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-> index 9c90c94c33..754af19eef 100644
+> index 96177c1977..7bf1f30a35 100644
 > --- a/hw/riscv/sifive_u.c
 > +++ b/hw/riscv/sifive_u.c
-> @@ -441,6 +441,8 @@ static void riscv_sifive_u_soc_init(Object *obj)
->      qdev_prop_set_uint32(DEVICE(&s->otp), "serial", OTP_SERIAL);
->      sysbus_init_child_obj(obj, "gem", &s->gem, sizeof(s->gem),
+> @@ -406,6 +406,8 @@ static void riscv_sifive_u_init(MachineState *machine=
+)
+>  static void riscv_sifive_u_soc_init(Object *obj)
+>  {
+>      MachineState *ms =3D MACHINE(qdev_get_machine());
+> +    const struct MemmapEntry *memmap =3D sifive_u_memmap;
+> +    MemoryRegion *system_memory =3D get_system_memory();
+>      SiFiveUSoCState *s =3D RISCV_U_SOC(obj);
+>
+>      object_initialize_child(obj, "e-cluster", &s->e_cluster,
+> @@ -443,6 +445,26 @@ static void riscv_sifive_u_soc_init(Object *obj)
 >                            TYPE_CADENCE_GEM);
-> +    object_property_set_int(OBJECT(&s->gem), GEM_REVISION, "revision",
-> +                            &error_abort);
+>      object_property_set_int(OBJECT(&s->gem), GEM_REVISION, "revision",
+>                              &error_abort);
+> +
+> +    /* boot rom */
+> +    memory_region_init_rom(&s->mask_rom, obj, "riscv.sifive.u.mrom",
+> +                           memmap[SIFIVE_U_MROM].size, &error_fatal);
+> +    memory_region_add_subregion(system_memory, memmap[SIFIVE_U_MROM].bas=
+e,
+> +                                &s->mask_rom);
+> +
+> +    /*
+> +     * Add L2-LIM at reset size.
+> +     * This should be reduced in size as the L2 Cache Controller WayEnab=
+le
+> +     * register is incremented. Unfortunately I don't see a nice (or any=
+) way
+> +     * to handle reducing or blocking out the L2 LIM while still allowin=
+g it
+> +     * be re returned to all enabled after a reset. For the time being, =
+just
+> +     * leave it enabled all the time. This won't break anything, but wil=
+l be
+> +     * too generous to misbehaving guests.
+> +     */
+> +    memory_region_init_ram(&s->l2lim_mem, NULL, "riscv.sifive.u.l2lim",
+> +                           memmap[SIFIVE_U_L2LIM].size, &error_fatal);
+> +    memory_region_add_subregion(system_memory, memmap[SIFIVE_U_L2LIM].ba=
+se,
+> +                                &s->l2lim_mem);
 >  }
 >
 >  static bool sifive_u_get_start_in_flash(Object *obj, Error **errp)
-> @@ -569,8 +571,6 @@ static void riscv_sifive_u_soc_realize(DeviceState *d=
-ev, Error **errp)
->          qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
->          qdev_set_nic_properties(DEVICE(&s->gem), nd);
->      }
-> -    object_property_set_int(OBJECT(&s->gem), GEM_REVISION, "revision",
-> -                            &error_abort);
->      object_property_set_bool(OBJECT(&s->gem), true, "realized", &err);
->      if (err) {
->          error_propagate(errp, err);
+> @@ -500,26 +522,6 @@ static void riscv_sifive_u_soc_realize(DeviceState *=
+dev, Error **errp)
+>      object_property_set_bool(OBJECT(&s->u_cluster), true, "realized",
+>                               &error_abort);
+>
+> -    /* boot rom */
+> -    memory_region_init_rom(&s->mask_rom, OBJECT(dev), "riscv.sifive.u.mr=
+om",
+> -                           memmap[SIFIVE_U_MROM].size, &error_fatal);
+> -    memory_region_add_subregion(system_memory, memmap[SIFIVE_U_MROM].bas=
+e,
+> -                                &s->mask_rom);
+> -
+> -    /*
+> -     * Add L2-LIM at reset size.
+> -     * This should be reduced in size as the L2 Cache Controller WayEnab=
+le
+> -     * register is incremented. Unfortunately I don't see a nice (or any=
+) way
+> -     * to handle reducing or blocking out the L2 LIM while still allowin=
+g it
+> -     * be re returned to all enabled after a reset. For the time being, =
+just
+> -     * leave it enabled all the time. This won't break anything, but wil=
+l be
+> -     * too generous to misbehaving guests.
+> -     */
+> -    memory_region_init_ram(&s->l2lim_mem, NULL, "riscv.sifive.u.l2lim",
+> -                           memmap[SIFIVE_U_L2LIM].size, &error_fatal);
+> -    memory_region_add_subregion(system_memory, memmap[SIFIVE_U_L2LIM].ba=
+se,
+> -                                &s->l2lim_mem);
+> -
+>      /* create PLIC hart topology configuration string */
+>      plic_hart_config_len =3D (strlen(SIFIVE_U_PLIC_HART_CONFIG) + 1) *
+>                             ms->smp.cpus;
 > --
 > 2.21.1
 >

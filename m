@@ -1,106 +1,101 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4991281lfm;
-        Tue, 14 Apr 2020 06:25:14 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIrJbqlAlRp/yo0Fbix6XP6cFKj7AWceki5MpjpPYIw0M+tfq6PbhVGrjWwMF7RWTd6M6dJ
-X-Received: by 2002:ac8:6c23:: with SMTP id k3mr16333514qtu.107.1586870714392;
-        Tue, 14 Apr 2020 06:25:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586870714; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3941740lfm;
+        Mon, 13 Apr 2020 09:04:50 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJj+lRnvUsUJIFZxJXLAf73QdYYQdin4Cz0WdmYNtlEawzrEPTX/LZ21zHsX5/8n3YP0SBW
+X-Received: by 2002:a37:a909:: with SMTP id s9mr1390293qke.327.1586793889974;
+        Mon, 13 Apr 2020 09:04:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586793889; cv=none;
         d=google.com; s=arc-20160816;
-        b=FVJSSphIDyLaqQZh9djKNeb9Lo164ntBDWd3sOCoLSTkNkgqnsrisd683FEp0WomrN
-         i/QtA4T4f42dfFL+CLEOpUiZjXibzNahHs+tyxlBWDLPPvBGJO8169ru81W5gVbnCTPf
-         hnKNw1hACenO0+/kQFZSfnEZofFBlHf2UnmBF0Sd6mu11bECnAgzxuBqDAwfCGGfoOq3
-         1BdH3SYDwQmj/+puezNB7Jhob0fdK+EmTPgffq7mUiODnk7PHR4v6xehBRwmhURhMGqT
-         1AdCpGQBPGwayns1Tl3pvqrFXl6zTT1Fg/pFkiQOMUI5AHbAy4mkAi8Z2cvW9i5rLvPM
-         9o3g==
+        b=i0GWp83no35LBFcbH7WsKuCoaxVnt45oPGe5iS84KONqKRpF7wQYREIh2W6n5gBmZ0
+         EbOl8qLQYwqz12MkUfdWWxy83qVEBkICfveMSB9K3dKzxOU6b1WoSGJUbTyBG7qqcXNC
+         hsskVHf90PGEEzRjYj94XHPvyxqrUNHayx66uBYvbLhOIFjglEjXTIzgq48CIXAtmnih
+         jtFB+Hzkknno68QzMLT2ZVowZwIlT7ibMV50+H5x/CRrhUQB27CLt+HPDMnzQ4ZxNUbm
+         5KegLfzuzM9Nq+99onkFCAvI00bv6LGPVLda1vf500SAzl71JSQgFjEMb3mDNRVvZZIz
+         aguw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=n1enxpw1iq2qUSKHRxdrji8h9Lk93CaNmW3jVYV179E=;
-        b=e01RNTRgdktaKeukah6bLGZi0YtVTpyaP23Ag0oCHZFUL0yHeVsVJYiH/v3VMZzvNq
-         xyytWe0deAz6ZebOcx60pjwGo5fIAvd2kE91lBdpyakiabUDh3B2JKe32UXkrkg4Me9j
-         IlKZGfxwYUhoOF+mdR/jnbXlQ3Cl+m7i8/0AyLo/il6FYUbtyPydhh3nteMH8j8HjivP
-         QDEyM8pnmAmT08+unH0Si0EP2yUMwZGQU0ztvFLx15343CfUm3BmxWiB8xwCl9bXWqpt
-         PE9wLgroYCNL5813hZgBUvh8RFFzKZfLzmPogvtai+poaUU72brHHnxg7+Z+2SlD36l5
-         5vkA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=SkY93g081tYc+r8vljnrAhCCxfM1oSj3fDtrxu7uJew=;
+        b=rkFB1bOxUJ8WEC9hghCcRYxNziS0HBQj6EPTZ8ONbrmpJkAcWBPXaE7zg33YBX2cMi
+         iq8i2Trk1gJ5PGlbQoaqIHuyNeLsrW2uYUdGoyAOpNZW739hO0ivxdme3z1dzKrUygxc
+         Jvr29ZjzMdwcusHpIwp/SHYPdAv25UErbW3NNCegAEjp+xsHqxrFevoFwjKqOPBEtnk9
+         JI4yGH06X++LQZpev7PKDcIvinDU/CNWDTg5iv69dqlawLOnLmao2npHWcm4o5asfjT/
+         HkGPcdL3iieYLFlCQw/oIpSrZ2AtIGBI5SLQZyc/D22BeH1zuEyIOjWdE4zuFsxCuzI4
+         Q0vg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZE+2LL6s;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Kchv4Fvb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k26si5124935qkj.43.2020.04.14.06.25.14
+        by mx.google.com with ESMTPS id i12si5366499qkm.346.2020.04.13.09.04.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Apr 2020 06:25:14 -0700 (PDT)
+        Mon, 13 Apr 2020 09:04:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZE+2LL6s;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Kchv4Fvb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60600 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45988 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jOLYv-0003AO-S4
-	for alex.bennee@linaro.org; Tue, 14 Apr 2020 09:25:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42161)
+	id 1jO1Zp-0000nG-4u
+	for alex.bennee@linaro.org; Mon, 13 Apr 2020 12:04:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58582)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1jOLYk-00039v-9Z
- for qemu-arm@nongnu.org; Tue, 14 Apr 2020 09:25:03 -0400
+ (envelope-from <alistair23@gmail.com>) id 1jO1Zb-0000bQ-N8
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2020 12:04:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1jOLYi-0005PK-PT
- for qemu-arm@nongnu.org; Tue, 14 Apr 2020 09:25:02 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:51732
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1jOLYi-0005Oy-LQ
- for qemu-arm@nongnu.org; Tue, 14 Apr 2020 09:25:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1586870699;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=n1enxpw1iq2qUSKHRxdrji8h9Lk93CaNmW3jVYV179E=;
- b=ZE+2LL6s3i/pSw2IyQuiOHpLpaGa/BNj+L2W/LuSwdGacudu5yXF4S/XlnBuSoURajLjhc
- lO8W0HbpqPvJBD8XfB/1BZ5AAk7F5wqNeBDjUZzIkGnhrIEo5LzDx9dBnedWGXxN3xSLYE
- pe6x/Yfddfw5+3jq+62C2UYKqH+5qJA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-474-vr-mMZd5MjmMWvdr1lzLew-1; Tue, 14 Apr 2020 09:24:54 -0400
-X-MC-Unique: vr-mMZd5MjmMWvdr1lzLew-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BD01C149C4;
- Tue, 14 Apr 2020 13:24:51 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-113-20.ams2.redhat.com
- [10.36.113.20])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C845218A8E;
- Tue, 14 Apr 2020 13:24:47 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 4855B11385C8; Tue, 14 Apr 2020 15:24:46 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH-for-5.1 v3 01/23] scripts/coccinelle: Catch missing
- error_propagate() calls in realize()
-References: <20200412224144.12205-1-f4bug@amsat.org>
- <20200412224144.12205-2-f4bug@amsat.org>
- <87v9m2s0k4.fsf@dusky.pond.sub.org>
-Date: Tue, 14 Apr 2020 15:24:46 +0200
-In-Reply-To: <87v9m2s0k4.fsf@dusky.pond.sub.org> (Markus Armbruster's message
- of "Tue, 14 Apr 2020 14:40:11 +0200")
-Message-ID: <87d08aqjxd.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ (envelope-from <alistair23@gmail.com>) id 1jO1ZZ-0003fJ-OH
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2020 12:04:35 -0400
+Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943]:46729)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1jO1ZR-0003bW-0G; Mon, 13 Apr 2020 12:04:25 -0400
+Received: by mail-ua1-x943.google.com with SMTP id o14so3271042uat.13;
+ Mon, 13 Apr 2020 09:04:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=SkY93g081tYc+r8vljnrAhCCxfM1oSj3fDtrxu7uJew=;
+ b=Kchv4FvbO0ZAE6azSSCfzB0iRfuv1+2ruRiyIo2HextCFljIPm4uqjhBeullz1SmwJ
+ YC/c9R96lW7jvoSfDW1uSVnK/wT8nwbETEZnsngq65dh2226uanZyYMaJSgjLgs1c6hS
+ Kht8XzfFTMNMi9Z+eq6I+dQH+Z6kxTiqxr8nYMcIvrVF3Qt8et1QFWajO8xqZ9NSqvNo
+ AcXSLP5l5z3Y9xidxZqNS5JRCyQX2PaKV9STio6j9JqCbYn2iuQI4HyVvNc70RrbOSRb
+ gQtT1RJRucuVu0upg5eOgLgex+Vxlp5qg1dl8NwcjxhGpnKm7SMWFi5qhdyLy3ipkd0H
+ hisw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=SkY93g081tYc+r8vljnrAhCCxfM1oSj3fDtrxu7uJew=;
+ b=lqUxORHhJ/iUE59PkpxTqnzi503bEcdd93nnt1JJw+vfi5H5/Eo6Mnfh9BNJtm84DB
+ 5wacABfgXSG4jlBL6F/YVHfvdZ8MnnkzG2weU1eZkuSn/YvTNoivvoG6LGX/jD1SOmRJ
+ cGEUbDqYXcWXtVXTFfOSAJkh6KKnfYIwpw+/tlput+tQe5IACFoii6RqqtftWwblstyn
+ aMdlIsS5TsPSgPcxsuMigoYjDX8HYQeSkNF66VEZPfpZhwQOsD2DxdGqj4Vjbrvr/KFV
+ IgHg1VYxZXZlksONW7NvnQ4Ylfx4aBsgc9g+aMaqvh2Di2GBHAZgyxOhEBqYC5ZQUzvQ
+ FooA==
+X-Gm-Message-State: AGi0Puam3Zd/gGgPqCNo9H3fOKJinLP4BdIi2ck2m/p5nhoeoaMf9Ud+
+ E5aUCMlFJZfrY9kPOVzO1aXAZ/r5nZ3V1Ol1pxA=
+X-Received: by 2002:a9f:2964:: with SMTP id t91mr11281050uat.21.1586793862356; 
+ Mon, 13 Apr 2020 09:04:22 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+References: <20200412223619.11284-1-f4bug@amsat.org>
+ <20200412223619.11284-2-f4bug@amsat.org>
+In-Reply-To: <20200412223619.11284-2-f4bug@amsat.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 13 Apr 2020 08:56:06 -0700
+Message-ID: <CAKmqyKPjYurgma0TqtXfg-RfkjHBKiw=KqvbO_ZMMqDqwoaB9w@mail.gmail.com>
+Subject: Re: [PATCH-for-5.1 v3 01/24] various: Remove suspicious '\' character
+ outside of #define in C code
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::943
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,156 +107,361 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
+ Jason Wang <jasowang@redhat.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Alistair Francis <Alistair.Francis@wdc.com>, Max Reitz <mreitz@redhat.com>,
- qemu-block@nongnu.org, Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Joel Stanley <joel@jms.id.au>, qemu-ppc@nongnu.org,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Richard Henderson <rth@twiddle.net>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Qemu-block <qemu-block@nongnu.org>, Markus Armbruster <armbru@redhat.com>,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Xie Changlong <xiechanglong.d@gmail.com>,
  Alistair Francis <alistair@alistair23.me>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
- qemu-riscv@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ "open list:New World" <qemu-ppc@nongnu.org>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ "open list:RISC-V" <qemu-riscv@nongnu.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Wen Congyang <wencongyang2@huawei.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Michael Walle <michael@walle.cc>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sdMWbRgwvk3T
+X-TUID: /jYrKkGDQR27
 
-Markus Armbruster <armbru@redhat.com> writes:
-
-> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+On Sun, Apr 12, 2020 at 3:38 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
 >
->> In some DeviceClass::realize() while we can propagate errors
->> to the caller, we forgot to do so. Add a Coccinelle patch to
->> automatically add the missing code.
->>
->> Inspired-by: Peter Maydell <peter.maydell@linaro.org>
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> ---
->>  .../use-error_propagate-in-realize.cocci      | 54 +++++++++++++++++++
->>  MAINTAINERS                                   |  1 +
->>  2 files changed, 55 insertions(+)
->>  create mode 100644 scripts/coccinelle/use-error_propagate-in-realize.co=
-cci
->>
->> diff --git a/scripts/coccinelle/use-error_propagate-in-realize.cocci b/s=
-cripts/coccinelle/use-error_propagate-in-realize.cocci
->> new file mode 100644
->> index 0000000000..7b59277a50
->> --- /dev/null
->> +++ b/scripts/coccinelle/use-error_propagate-in-realize.cocci
->> @@ -0,0 +1,54 @@
->> +// Add missing error-propagation code in DeviceClass::realize()
->> +//
->> +// Copyright: (C) 2020 Philippe Mathieu-Daud=C3=A9
->> +// This work is licensed under the terms of the GNU GPLv2 or later.
->> +//
->> +// spatch \
->> +//  --macro-file scripts/cocci-macro-file.h --include-headers \
->> +//  --sp-file scripts/coccinelle/use-error_abort-in-instance_init.cocci=
+> Fixes the following coccinelle warnings:
+>
+>   $ spatch --sp-file --verbose-parsing  ... \
+>       scripts/coccinelle/remove_local_err.cocci
+>   ...
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/ppc/=
+translate_init.inc.c:5213
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/ppc/=
+translate_init.inc.c:5261
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/micr=
+oblaze/cpu.c:166
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/micr=
+oblaze/cpu.c:167
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/micr=
+oblaze/cpu.c:169
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/micr=
+oblaze/cpu.c:170
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/micr=
+oblaze/cpu.c:171
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/micr=
+oblaze/cpu.c:172
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/micr=
+oblaze/cpu.c:173
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5787
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5789
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5800
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5801
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5802
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5804
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5805
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5806
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:6329
+>   SUSPICIOUS: a \ character appears outside of a #define at ./hw/sd/sdhci=
+.c:1133
+>   SUSPICIOUS: a \ character appears outside of a #define at ./hw/scsi/scs=
+i-disk.c:3081
+>   SUSPICIOUS: a \ character appears outside of a #define at ./hw/net/virt=
+io-net.c:1529
+>   SUSPICIOUS: a \ character appears outside of a #define at ./hw/riscv/si=
+five_u.c:468
+>   SUSPICIOUS: a \ character appears outside of a #define at ./dump/dump.c=
+:1895
+>   SUSPICIOUS: a \ character appears outside of a #define at ./block/vhdx.=
+c:2209
+>   SUSPICIOUS: a \ character appears outside of a #define at ./block/vhdx.=
+c:2215
+>   SUSPICIOUS: a \ character appears outside of a #define at ./block/vhdx.=
+c:2221
+>   SUSPICIOUS: a \ character appears outside of a #define at ./block/vhdx.=
+c:2222
+>   SUSPICIOUS: a \ character appears outside of a #define at ./block/repli=
+cation.c:172
+>   SUSPICIOUS: a \ character appears outside of a #define at ./block/repli=
+cation.c:173
+>
+> Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
+> ---
+>  block/replication.c             |  4 ++--
+>  block/vhdx.c                    |  8 ++++----
+>  dump/dump.c                     |  2 +-
+>  hw/net/virtio-net.c             |  2 +-
+>  hw/riscv/sifive_u.c             |  2 +-
+>  hw/scsi/scsi-disk.c             |  2 +-
+>  hw/sd/sdhci.c                   |  2 +-
+>  target/i386/cpu.c               | 18 +++++++++---------
+>  target/microblaze/cpu.c         | 14 +++++++-------
+>  target/ppc/translate_init.inc.c |  4 ++--
+>  10 files changed, 29 insertions(+), 29 deletions(-)
+>
+> diff --git a/block/replication.c b/block/replication.c
+> index da013c2041..971f0fe266 100644
+> --- a/block/replication.c
+> +++ b/block/replication.c
+> @@ -172,8 +172,8 @@ static void replication_child_perm(BlockDriverState *=
+bs, BdrvChild *c,
+>      if ((bs->open_flags & (BDRV_O_INACTIVE | BDRV_O_RDWR)) =3D=3D BDRV_O=
+_RDWR) {
+>          *nperm |=3D BLK_PERM_WRITE;
+>      }
+> -    *nshared =3D BLK_PERM_CONSISTENT_READ \
+> -               | BLK_PERM_WRITE \
+> +    *nshared =3D BLK_PERM_CONSISTENT_READ
+> +               | BLK_PERM_WRITE
+>                 | BLK_PERM_WRITE_UNCHANGED;
+>      return;
+>  }
+> diff --git a/block/vhdx.c b/block/vhdx.c
+> index 33e57cd656..e16fdc2f2d 100644
+> --- a/block/vhdx.c
+> +++ b/block/vhdx.c
+> @@ -2206,20 +2206,20 @@ static QemuOptsList vhdx_create_opts =3D {
+>             .name =3D VHDX_BLOCK_OPT_BLOCK_SIZE,
+>             .type =3D QEMU_OPT_SIZE,
+>             .def_value_str =3D stringify(0),
+> -           .help =3D "Block Size; min 1MB, max 256MB. " \
+> +           .help =3D "Block Size; min 1MB, max 256MB. "
+>                     "0 means auto-calculate based on image size."
+>         },
+>         {
+>             .name =3D BLOCK_OPT_SUBFMT,
+>             .type =3D QEMU_OPT_STRING,
+> -           .help =3D "VHDX format type, can be either 'dynamic' or 'fixe=
+d'. "\
+> +           .help =3D "VHDX format type, can be either 'dynamic' or 'fixe=
+d'. "
+>                     "Default is 'dynamic'."
+>         },
+>         {
+>             .name =3D VHDX_BLOCK_OPT_ZERO,
+>             .type =3D QEMU_OPT_BOOL,
+> -           .help =3D "Force use of payload blocks of type 'ZERO'. "\
+> -                   "Non-standard, but default.  Do not set to 'off' when=
+ "\
+> +           .help =3D "Force use of payload blocks of type 'ZERO'. "
+> +                   "Non-standard, but default.  Do not set to 'off' when=
+ "
+>                     "using 'qemu-img convert' with subformat=3Ddynamic."
+>         },
+>         { NULL }
+> diff --git a/dump/dump.c b/dump/dump.c
+> index 22ed1d3b0d..248ea06370 100644
+> --- a/dump/dump.c
+> +++ b/dump/dump.c
+> @@ -1892,7 +1892,7 @@ static void dump_process(DumpState *s, Error **errp=
+)
+>      result =3D qmp_query_dump(NULL);
+>      /* should never fail */
+>      assert(result);
+> -    qapi_event_send_dump_completed(result, !!local_err, (local_err ? \
+> +    qapi_event_send_dump_completed(result, !!local_err, (local_err ?
+>                                     error_get_pretty(local_err) : NULL));
+>      qapi_free_DumpQueryResult(result);
+>
+> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+> index a46e3b37a7..eddfa7f923 100644
+> --- a/hw/net/virtio-net.c
+> +++ b/hw/net/virtio-net.c
+> @@ -1526,7 +1526,7 @@ static void virtio_net_rsc_extract_unit6(VirtioNetR=
+scChain *chain,
+>                                   + sizeof(struct eth_header));
+>      unit->ip =3D ip6;
+>      unit->ip_plen =3D &(ip6->ip6_ctlun.ip6_un1.ip6_un1_plen);
+> -    unit->tcp =3D (struct tcp_header *)(((uint8_t *)unit->ip)\
+> +    unit->tcp =3D (struct tcp_header *)(((uint8_t *)unit->ip)
+>                                          + sizeof(struct ip6_header));
+>      unit->tcp_hdrlen =3D (htons(unit->tcp->th_offset_flags) & 0xF000) >>=
+ 10;
+>
+> diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
+> index 56351c4faa..998666c91f 100644
+> --- a/hw/riscv/sifive_u.c
+> +++ b/hw/riscv/sifive_u.c
+> @@ -465,7 +465,7 @@ static void riscv_sifive_u_machine_instance_init(Obje=
+ct *obj)
+>      object_property_add_bool(obj, "start-in-flash", sifive_u_get_start_i=
+n_flash,
+>                               sifive_u_set_start_in_flash, NULL);
+>      object_property_set_description(obj, "start-in-flash",
+> -                                    "Set on to tell QEMU's ROM to jump t=
+o " \
+> +                                    "Set on to tell QEMU's ROM to jump t=
+o "
+>                                      "flash. Otherwise QEMU will jump to =
+DRAM",
+>                                      NULL);
+>  }
+> diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
+> index 1c0cb63a6f..e5bcd0baf8 100644
+> --- a/hw/scsi/scsi-disk.c
+> +++ b/hw/scsi/scsi-disk.c
+> @@ -3078,7 +3078,7 @@ static const TypeInfo scsi_cd_info =3D {
+>
+>  #ifdef __linux__
+>  static Property scsi_block_properties[] =3D {
+> -    DEFINE_BLOCK_ERROR_PROPERTIES(SCSIDiskState, qdev.conf),         \
+> +    DEFINE_BLOCK_ERROR_PROPERTIES(SCSIDiskState, qdev.conf),
+>      DEFINE_PROP_DRIVE("drive", SCSIDiskState, qdev.conf.blk),
+>      DEFINE_PROP_BOOL("share-rw", SCSIDiskState, qdev.conf.share_rw, fals=
+e),
+>      DEFINE_PROP_UINT16("rotation_rate", SCSIDiskState, rotation_rate, 0)=
+,
+> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+> index de63ffb037..70531ad360 100644
+> --- a/hw/sd/sdhci.c
+> +++ b/hw/sd/sdhci.c
+> @@ -1130,7 +1130,7 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t v=
+al, unsigned size)
+>
+>          /* Limit block size to the maximum buffer size */
+>          if (extract32(s->blksize, 0, 12) > s->buf_maxsz) {
+> -            qemu_log_mask(LOG_GUEST_ERROR, "%s: Size 0x%x is larger than=
+ " \
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: Size 0x%x is larger than=
+ "
+>                            "the maximum buffer 0x%x", __func__, s->blksiz=
+e,
+>                            s->buf_maxsz);
+>
+> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> index 90ffc5f3b1..9c256ab159 100644
+> --- a/target/i386/cpu.c
+> +++ b/target/i386/cpu.c
+> @@ -5784,9 +5784,9 @@ void cpu_x86_cpuid(CPUX86State *env, uint32_t index=
+, uint32_t count,
+>              host_cpuid(index, 0, eax, ebx, ecx, edx);
+>              break;
+>          }
+> -        *eax =3D (L1_DTLB_2M_ASSOC << 24) | (L1_DTLB_2M_ENTRIES << 16) |=
  \
->> +//  --keep-comments --timeout 60 --in-place
->> +//
->> +// Inspired by https://www.mail-archive.com/qemu-devel@nongnu.org/msg69=
-1638.html
->> +
->> +
->> +@ match_class_init @
->> +TypeInfo info;
->> +identifier class_initfn;
->> +@@
->> +    info.class_init =3D class_initfn;
->> +
->> +
->> +@ match_realize @
->> +identifier match_class_init.class_initfn;
->> +DeviceClass *dc;
->> +identifier realizefn;
->> +@@
->> +void class_initfn(...)
->> +{
->> +    ...
->> +    dc->realize =3D realizefn;
->> +    ...
->> +}
->> +
->> +
->> +@ propagate_in_realize @
->> +identifier match_realize.realizefn;
->> +identifier err;
->> +identifier errp;
->> +identifier func_with_errp;
->> +symbol error_abort, error_fatal;
->> +@@
->> +void realizefn(..., Error **errp)
->> +{
->> +    ...
->> +    Error *err =3D NULL;
->> +    <+...
->> +    func_with_errp(...,
->> +-                      \(&error_abort\|&error_fatal\));
->> ++                      &err);
->> ++   if (err) {
->> ++       error_propagate(errp, err);
->> ++       return;
+> +        *eax =3D (L1_DTLB_2M_ASSOC << 24) | (L1_DTLB_2M_ENTRIES << 16) |
+>                 (L1_ITLB_2M_ASSOC <<  8) | (L1_ITLB_2M_ENTRIES);
+> -        *ebx =3D (L1_DTLB_4K_ASSOC << 24) | (L1_DTLB_4K_ENTRIES << 16) |=
+ \
+> +        *ebx =3D (L1_DTLB_4K_ASSOC << 24) | (L1_DTLB_4K_ENTRIES << 16) |
+>                 (L1_ITLB_4K_ASSOC <<  8) | (L1_ITLB_4K_ENTRIES);
+>          *ecx =3D encode_cache_cpuid80000005(env->cache_info_amd.l1d_cach=
+e);
+>          *edx =3D encode_cache_cpuid80000005(env->cache_info_amd.l1i_cach=
+e);
+> @@ -5797,13 +5797,13 @@ void cpu_x86_cpuid(CPUX86State *env, uint32_t ind=
+ex, uint32_t count,
+>              host_cpuid(index, 0, eax, ebx, ecx, edx);
+>              break;
+>          }
+> -        *eax =3D (AMD_ENC_ASSOC(L2_DTLB_2M_ASSOC) << 28) | \
+> -               (L2_DTLB_2M_ENTRIES << 16) | \
+> -               (AMD_ENC_ASSOC(L2_ITLB_2M_ASSOC) << 12) | \
+> +        *eax =3D (AMD_ENC_ASSOC(L2_DTLB_2M_ASSOC) << 28) |
+> +               (L2_DTLB_2M_ENTRIES << 16) |
+> +               (AMD_ENC_ASSOC(L2_ITLB_2M_ASSOC) << 12) |
+>                 (L2_ITLB_2M_ENTRIES);
+> -        *ebx =3D (AMD_ENC_ASSOC(L2_DTLB_4K_ASSOC) << 28) | \
+> -               (L2_DTLB_4K_ENTRIES << 16) | \
+> -               (AMD_ENC_ASSOC(L2_ITLB_4K_ASSOC) << 12) | \
+> +        *ebx =3D (AMD_ENC_ASSOC(L2_DTLB_4K_ASSOC) << 28) |
+> +               (L2_DTLB_4K_ENTRIES << 16) |
+> +               (AMD_ENC_ASSOC(L2_ITLB_4K_ASSOC) << 12) |
+>                 (L2_ITLB_4K_ENTRIES);
+>          encode_cache_cpuid80000006(env->cache_info_amd.l2_cache,
+>                                     cpu->enable_l3_cache ?
+> @@ -6326,7 +6326,7 @@ static void x86_cpu_expand_features(X86CPU *cpu, Er=
+ror **errp)
+>               */
+>              env->features[w] |=3D
+>                  x86_cpu_get_supported_feature_word(w, cpu->migratable) &
+> -                ~env->user_features[w] & \
+> +                ~env->user_features[w] &
+>                  ~feature_word_info[w].no_autoenable_flags;
+>          }
+>      }
+> diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+> index a2c2f271df..c9cf2364ca 100644
+> --- a/target/microblaze/cpu.c
+> +++ b/target/microblaze/cpu.c
+> @@ -163,14 +163,14 @@ static void mb_cpu_realizefn(DeviceState *dev, Erro=
+r **errp)
 >
-> Issues:
+>      qemu_init_vcpu(cs);
 >
-> 0. The script patches only realize() methods of DeviceClass, not of
->    subclasses, and no helpers.
+> -    env->pvr.regs[0] =3D PVR0_USE_EXC_MASK \
+> -                       | PVR0_USE_ICACHE_MASK \
+> +    env->pvr.regs[0] =3D PVR0_USE_EXC_MASK
+> +                       | PVR0_USE_ICACHE_MASK
+>                         | PVR0_USE_DCACHE_MASK;
+> -    env->pvr.regs[2] =3D PVR2_D_OPB_MASK \
+> -                        | PVR2_D_LMB_MASK \
+> -                        | PVR2_I_OPB_MASK \
+> -                        | PVR2_I_LMB_MASK \
+> -                        | PVR2_FPU_EXC_MASK \
+> +    env->pvr.regs[2] =3D PVR2_D_OPB_MASK
+> +                        | PVR2_D_LMB_MASK
+> +                        | PVR2_I_OPB_MASK
+> +                        | PVR2_I_LMB_MASK
+> +                        | PVR2_FPU_EXC_MASK
+>                          | 0;
 >
->    Example of a subclass method: see my review of "[PATCH-for-5.1 v3
->    02/24] scripts/coccinelle: Script to simplify DeviceClass error
->    propagation".
+>      version =3D cpu->cfg.version ? cpu->cfg.version : DEFAULT_CPU_VERSIO=
+N;
+> diff --git a/target/ppc/translate_init.inc.c b/target/ppc/translate_init.=
+inc.c
+> index e853164a86..fd763e588e 100644
+> --- a/target/ppc/translate_init.inc.c
+> +++ b/target/ppc/translate_init.inc.c
+> @@ -5210,7 +5210,7 @@ POWERPC_FAMILY(e5500)(ObjectClass *oc, void *data)
+>                         PPC_FLOAT_STFIWX | PPC_WAIT |
+>                         PPC_MEM_TLBSYNC | PPC_TLBIVAX | PPC_MEM_SYNC |
+>                         PPC_64B | PPC_POPCNTB | PPC_POPCNTWD;
+> -    pcc->insns_flags2 =3D PPC2_BOOKE206 | PPC2_PRCNTL | PPC2_PERM_ISA206=
+ | \
+> +    pcc->insns_flags2 =3D PPC2_BOOKE206 | PPC2_PRCNTL | PPC2_PERM_ISA206=
+ |
+>                          PPC2_FP_CVT_S64;
+>      pcc->msr_mask =3D (1ull << MSR_CM) |
+>                      (1ull << MSR_GS) |
+> @@ -5258,7 +5258,7 @@ POWERPC_FAMILY(e6500)(ObjectClass *oc, void *data)
+>                         PPC_FLOAT_STFIWX | PPC_WAIT |
+>                         PPC_MEM_TLBSYNC | PPC_TLBIVAX | PPC_MEM_SYNC |
+>                         PPC_64B | PPC_POPCNTB | PPC_POPCNTWD | PPC_ALTIVE=
+C;
+> -    pcc->insns_flags2 =3D PPC2_BOOKE206 | PPC2_PRCNTL | PPC2_PERM_ISA206=
+ | \
+> +    pcc->insns_flags2 =3D PPC2_BOOKE206 | PPC2_PRCNTL | PPC2_PERM_ISA206=
+ |
+>                          PPC2_FP_CVT_S64 | PPC2_ATOMIC_ISA206;
+>      pcc->msr_mask =3D (1ull << MSR_CM) |
+>                      (1ull << MSR_GS) |
+> --
+> 2.21.1
 >
->    Example of a helper method: pnv_chip_core_realize().
-
-One more:
-
-  * The script doesn't patch calls that pass NULL for errp.  The ones
-    that can't fail should pass &error_abort instad.  The ones that can
-    fail commonly need to error_propagate().  There may be exceptions,
-    though.
-
 >
-> 1. When the function can't actually fail, the script adds dead error
->    handling.
-
-     &error_abort is not wrong in such cases.
-
-     &error_fatal is always wrong in realize().
-
-> 2. When the function can fail, it may well add incomplete error
->    handling: it can't add the code needed to revert what has been done
->    so far.
->
->    Example: ivshmem_common_realize() has:
->
->         error_setg(&s->migration_blocker,
->                    "Migration is disabled when using feature 'peer mode' =
-in device 'ivshmem'");
->         migrate_add_blocker(s->migration_blocker, &err);
->         if (err) {
->             error_propagate(errp, err);
->             error_free(s->migration_blocker);
->             return;
->         }
->
->    If the error handling was missing, the script would fail to add the
->    error_free().
->
-> Even imperfect scripts can lead us to code in need of improvement.  But
-> you should explain the script's limitations, both in the script and the
-> commit message.
-

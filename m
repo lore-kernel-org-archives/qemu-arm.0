@@ -1,211 +1,295 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4057323lfm;
-        Mon, 13 Apr 2020 11:11:41 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIE66CThBc0OImOO9oOjSfbvOH81yEtf9YYvkAPJ0irt2owVZ96osIGT5hhHcIWmM6Al8Xd
-X-Received: by 2002:a37:e103:: with SMTP id c3mr16459867qkm.7.1586801501545;
-        Mon, 13 Apr 2020 11:11:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586801501; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4209687lfm;
+        Mon, 13 Apr 2020 14:02:35 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJMllr6g2eO+PEikQ/22ThixTI9Iee6DS2DJD/e1XJp+6on2xQrdzfoPLeMfilxE+kFg962
+X-Received: by 2002:ac8:24a7:: with SMTP id s36mr13258190qts.357.1586811755273;
+        Mon, 13 Apr 2020 14:02:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586811755; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yb0e3qVCmgOxVHhmRQTnpwH92p2NiiRJk/YQDweWcR0GktU83zmqSxQBhB3dFVjybH
-         Lm1jRaiXptepAI7xUez0Yu9c6gsluXg97oLtCrmd5HoO3puHkke7F4zt/c76zSU2YNG1
-         8NgwrMkVA6COXruuMFBdyY+L/aXDSBcM3dim5RlbGjt7J/V2inctqAk7BMSZEYQG7Mq1
-         8IkkOMaSHlkSgZ5NftHHFaLX6B1PX1xRQnwf7V9hBubTuX00nyAUwHj9ElaN99Jk7wuO
-         /KWG59bz3U4Po3ar8ut9m7KNNzfT5xidRmlpwCj5Myozx+O8kTvJT0J+zUdTYrlhnWJZ
-         F9Mw==
+        b=n+e+tGkpbHPh6qKHFlrj2XsZ26zNBzGNCjD1WQkxXhS9/RDoRVT7Ffi53atMKkiETQ
+         ZqsU0Sy+/lzC/w7GX1PS8zjg+35/sBpXg3H4U7z2ct7G91ua8hJn4s35+yF8GiPeu/sq
+         zY8lkfidgIfv7A3H3Jtlj29g9QCsEM4VCg8iQ4q0IPLt0jOe8shSq3FJ6NrlxAkER+63
+         Dbp63tnL2dRgIibpeFbdvQBzepGo3PLbYF+75Y89v7ylJoQhKvqLbp07z+gp9/uS4n+C
+         UR4Ysq7ZngKzt4rRDqzp4VAt5l7QiSGJODtzpZYOIE0b4/GBbxY7JuDMfM1/TXFZftfy
+         j7ag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=D2o7yS8lDP+9vZND/93mgvVi5n/zRoNMfS7bbRBUMcA=;
-        b=pXCb1IZqlkgEiIc4G9yoa+0fXn/IuDpGJ7OuQcWNNWjr4aL4YzOfxq8hBO87AKEEPX
-         EpNHa/SdikpgearaD91QkfAyu5wFQOZdao4wGk/eaPkfA1iuuuoq7BgCrmB/sARY/h11
-         hQllsTOxJVm2DC6uzNuNaLlb3hNsoHqt35U+vpc46bSC0ryoq3ORzD0iru1IKgypW4kj
-         nDMu+faUIuY6N+xCCqmRGT70ZAaYpmHsXg+y2ampCHuQfz/Kzw/4dFn0Gg2/nGC8O9eP
-         gyDuyw33SC4w+BC7VsO81eQYbb3OxAUyyijASSzUYtUJ8wMF++Yfa01q9+LbKmQn2S+P
-         fPDQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject:dkim-signature;
+        bh=s2UGnlYUIEu4wY/N07cBtoh8iurspPtqjLWiG88cOaU=;
+        b=T6EitBQL73gge37aG6jA1XxhgGJinnJfAPXqdwC+p3+b2BgjqETKtB7dFa4SDvAU3m
+         EaVQKqLluFID9rGS0oY73buJnlz9RJrmQqQZK/+bpX3/75RDvP2jH0M4GtTwJYMmyZZn
+         XsGyqXpdzKC4lRsxXt5QZGn3A/iFPK8/2QFa33DpXZGjDxGtVLHsLCRSzUUvQJMBfkiM
+         NaveqgjW95GbNDoOOnyir0fFNDF76UOXlLsQhpY+oQ/4U88I2a6uNmycqG2S1tbSVLYo
+         JIaQP+dktToep50aF5vGqg5BCqRTEqIgrY3UkPPTNp5TAAgYa6yfZ4bepcnAb7/iWf10
+         1qCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="pO/Ifq5M";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WTki7mfH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d3si5813973qtk.109.2020.04.13.11.11.41
+        by mx.google.com with ESMTPS id a143si6569893qkb.103.2020.04.13.14.02.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Apr 2020 11:11:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Apr 2020 14:02:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="pO/Ifq5M";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47364 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WTki7mfH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:48786 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jO3Ya-0005U8-RK
-	for alex.bennee@linaro.org; Mon, 13 Apr 2020 14:11:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47763)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jO6Dy-0002eo-Nj
+	for alex.bennee@linaro.org; Mon, 13 Apr 2020 17:02:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36896)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <rfried.dev@gmail.com>) id 1jO3Y4-0005SU-0p
- for qemu-devel@nongnu.org; Mon, 13 Apr 2020 14:11:09 -0400
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jO6Dj-0002aS-Je
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2020 17:02:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <rfried.dev@gmail.com>) id 1jO3Y2-0006Ug-Ue
- for qemu-devel@nongnu.org; Mon, 13 Apr 2020 14:11:07 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:43450)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jO6Di-0005Up-BD
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2020 17:02:19 -0400
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:42585)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
- id 1jO3Y2-0006US-OL; Mon, 13 Apr 2020 14:11:06 -0400
-Received: by mail-oi1-x243.google.com with SMTP id j16so8116682oih.10;
- Mon, 13 Apr 2020 11:11:06 -0700 (PDT)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jO6Dd-0005Sl-3c; Mon, 13 Apr 2020 17:02:13 -0400
+Received: by mail-ed1-x544.google.com with SMTP id s10so5789872edy.9;
+ Mon, 13 Apr 2020 14:02:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=D2o7yS8lDP+9vZND/93mgvVi5n/zRoNMfS7bbRBUMcA=;
- b=pO/Ifq5M4VAeasoXLDg/vVog6X5HgXzNyQ0QuJ4qbkfMfECC1Pq3fdtQvfT1gQO//I
- BN8CUXiVXHiqvzZ2DmYoHsfpIy4txtf6qeNcGN4Eb/pIfRmnxHdaaHAKZl8lIvwcGbFk
- 0SyBH3ADPGZg3BD8lAIuNhjYnDx8nVjfa4dAYMhHXWcJafMrZnDpzl3eLzUjphEtnJyx
- 4vZPRLaMzt4zEtY6twBenhkOOH3Jfhxu7C3fnglOKJwyrWKlZGdb2gOmEuTrZlkEqUfj
- 590tGHjN3Zq+yKgk1CDc8lhIOdtBw/weOHhIHuzO7rfJk6IrG4Pq708TJm6b6/OeFbdq
- 9APg==
+ h=sender:subject:to:cc:references:from:autocrypt:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=s2UGnlYUIEu4wY/N07cBtoh8iurspPtqjLWiG88cOaU=;
+ b=WTki7mfHovlfUbdyt9/3OQuJfvsVdvY9OI9o9RlNPT3pXKEj0YvGphKnJ4uPvrX5sJ
+ pFWf455EaNQwM0LZgfcejCSqod2wTtzPzkHaYhQBg3eB2ueKK7wZToArpcKHELAVpJxV
+ WwGLVsCgH+4lWVcOeKbK9NpBg1wFwQjb8JSMgSt0a/Fzzt/WtJ6hEzuOcqsB9ILFmxx4
+ uwDgenUUgKRVaPgl1RPPXE0cB19QRvpM+wYeAoV9XrtbzWiyqUx/dUOfoohlUKzqSJKT
+ SzWNlq4GNE6knxRNTXpbxrPGLJohLVvkyWbFHZzf6gao6sPmwe9cnLtXgUheFYnMRY5P
+ jIbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=D2o7yS8lDP+9vZND/93mgvVi5n/zRoNMfS7bbRBUMcA=;
- b=TophCyFTfnNwheX0ArOdJj9F1zhpiSz0ur+5QgcecLgsAgwgpYKYBDGz/42Cy6YpBe
- p0wsCTyvMXrkct86agAd1hYysDm1FnXso488+tNGWavHtmaxtBmQHpgvpEhX+OHTUhKb
- 0fUpnVixUs/ucsItVuytJxjjgTQoK4MPJZJEixnGxghzFCuUW91CRP7X0n0dRGefIf3/
- tR17p8T7sZTCDVzva12Eu05odKTdC2AcVQ0pKNrrGuKnqpa9a97cKd+XGJW6mtVVYaUs
- kcl4YKNcz0UZfy0+2xZaK8KrHt+Ik7bzgv+bJj0hrHUFsSg0OdNa3KG2r13f2xlZZAcw
- MvsQ==
-X-Gm-Message-State: AGi0PuaiZ+90Qkxm4pw+OjbTk0hJbXHfTVdjSHO9qjkKsDzNwDzWYEvI
- LIIopnaDoTPefXKRM4cl6OWiQq+D8XwrH9AH2QI=
-X-Received: by 2002:aca:c691:: with SMTP id w139mr6985242oif.147.1586801465659; 
- Mon, 13 Apr 2020 11:11:05 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=s2UGnlYUIEu4wY/N07cBtoh8iurspPtqjLWiG88cOaU=;
+ b=b7B+ft44gjlToq+jj5Gu9tBcKOEpqJjVhUkOkSZZgln3BREVDnyfNr/qZ7NhJ/7k/i
+ qUI7g2NvfFnIZDJj9q/1ly2RuGNLVMk/UAK5wEnjutc7uy4e8j1ypx5F6Gx3NqTy91VW
+ Sz00SDCNM294QiDDz4lbxFbOiamXxisy03gBvrCsVa96HLyoiTgaLN8W6kRvDdDuEzR0
+ vBHeran0YDW39Z6uEF25P9xJNxcYOCyhPmMPitjR61pOqWXoAi3fS0PKXITjX66j9oHl
+ ThPFMWdtaT2kR/xd4tkAJIgpQBpl4viK4aD/99elJBmsCJZS1OClq9IkVjROgmU5pyw9
+ yhpg==
+X-Gm-Message-State: AGi0PuZcws8JNyV51HUJWAPCiavd/Ybt4FEuBziOMKoYscWER1vTuTlR
+ qJtW+Hn1EyeusNfZNhm/Kgs=
+X-Received: by 2002:a17:906:459:: with SMTP id
+ e25mr5749546eja.379.1586811731734; 
+ Mon, 13 Apr 2020 14:02:11 -0700 (PDT)
+Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net.
+ [83.42.57.116])
+ by smtp.gmail.com with ESMTPSA id rk25sm1660893ejb.14.2020.04.13.14.02.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 13 Apr 2020 14:02:10 -0700 (PDT)
+Subject: Re: [PATCH-for-5.1 v3 03/24] hw/arm/allwinner-a10: Move some code
+ from realize() to init()
+To: qemu-devel@nongnu.org
+References: <20200412223619.11284-1-f4bug@amsat.org>
+ <20200412223619.11284-4-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Autocrypt: addr=f4bug@amsat.org; keydata=
+ mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
+ u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
+ HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
+ YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
+ ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
+ dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
+ ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
+ Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
+ HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
+ Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
+ CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
+ klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
+ jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
+ 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
+ loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
+ sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
+ JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
+ 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
+ K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
+ n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
+ CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
+Message-ID: <effeb6fb-57b6-3b5c-f9b3-c7d2f7541532@amsat.org>
+Date: Mon, 13 Apr 2020 23:02:06 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-References: <20190615051559.13767-1-rfried.dev@gmail.com>
- <d87ea542-7ecc-4fb1-ac1d-929825d23a8a@redhat.com>
- <E1523CDB-895A-4EC7-908F-8A3A3717353C@gmail.com>
- <CAGi-RUJ_0LBfAe6eVXRrhqpW0EQH97TtdvjaQnXNY0Ts73zJCg@mail.gmail.com>
-In-Reply-To: <CAGi-RUJ_0LBfAe6eVXRrhqpW0EQH97TtdvjaQnXNY0Ts73zJCg@mail.gmail.com>
-From: Ramon Fried <rfried.dev@gmail.com>
-Date: Mon, 13 Apr 2020 21:10:54 +0300
-Message-ID: <CAGi-RU+aC=c8fZRRdCvSmxtcwhoCG5oAKES7DVDP037iBWy3zQ@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v3] net: cadence_gem: fix compilation error
- when debug is on
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20200412223619.11284-4-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::243
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::544
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
+ Jason Wang <jasowang@redhat.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Xie Changlong <xiechanglong.d@gmail.com>,
  Alistair Francis <alistair@alistair23.me>,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ow7WY9TApzMo
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
+ qemu-riscv@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
+ Wen Congyang <wencongyang2@huawei.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-ppc@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bqziU6yqARko
 
-False alarm, exact same patch was merged by someone else.
+On 4/13/20 12:35 AM, Philippe Mathieu-Daudé wrote:
+> Coccinelle reported:
+> 
+>   $ spatch ... --timeout 60 --sp-file \
+>     scripts/coccinelle/simplify-init-realize-error_propagate.cocci
+>   HANDLING: ./hw/arm/allwinner-a10.c
+>   >>> possible moves from aw_a10_init() to aw_a10_realize() in ./hw/arm/allwinner-a10.c:77
+> 
+> Move the calls using &error_fatal which don't depend on input
+> updated before realize() to init().
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+> v3: Typo 'depend of' -> 'depend on' (eblake)
+> ---
+>  hw/arm/allwinner-a10.c | 26 +++++++++++++-------------
+>  1 file changed, 13 insertions(+), 13 deletions(-)
+> 
+> diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+> index 62a67a3e1a..f41395734a 100644
+> --- a/hw/arm/allwinner-a10.c
+> +++ b/hw/arm/allwinner-a10.c
+> @@ -60,10 +60,18 @@ static void aw_a10_init(Object *obj)
+>          int i;
+>  
+>          for (i = 0; i < AW_A10_NUM_USB; i++) {
+> +            char bus[16];
+> +
+>              sysbus_init_child_obj(obj, "ehci[*]", OBJECT(&s->ehci[i]),
+>                                    sizeof(s->ehci[i]), TYPE_PLATFORM_EHCI);
+>              sysbus_init_child_obj(obj, "ohci[*]", OBJECT(&s->ohci[i]),
+>                                    sizeof(s->ohci[i]), TYPE_SYSBUS_OHCI);
+> +            object_property_set_bool(OBJECT(&s->ehci[i]), true,
+> +                                     "companion-enable", &error_fatal);
+> +
+> +            sprintf(bus, "usb-bus.%d", i);
+> +            object_property_set_str(OBJECT(&s->ohci[i]), bus, "masterbus",
+> +                                    &error_fatal);
+>          }
+>      }
+>  
+> @@ -72,6 +80,11 @@ static void aw_a10_init(Object *obj)
+>  
+>      sysbus_init_child_obj(obj, "rtc", &s->rtc, sizeof(s->rtc),
+>                            TYPE_AW_RTC_SUN4I);
+> +
+> +    memory_region_init_ram(&s->sram_a, obj, "sram A", 48 * KiB,
+> +                           &error_fatal);
+> +    memory_region_add_subregion(get_system_memory(), 0x00000000, &s->sram_a);
 
-On Mon, Apr 13, 2020 at 8:55 PM Ramon Fried <rfried.dev@gmail.com> wrote:
->
-> Hi.
-> Just noticed that this patch didn't hit master.
-> Got lost ?
->
-> Thanks,
-> Ramon.
->
-> On Sat, Jun 15, 2019 at 9:16 AM Ramon Fried <rfried.dev@gmail.com> wrote:
-> >
-> >
-> >
-> > On June 15, 2019 8:38:35 AM GMT+03:00, "Philippe Mathieu-Daud=C3=A9" <p=
-hilmd@redhat.com> wrote:
-> > >Hi Ramon,
-> > >
-> > >On 6/15/19 7:15 AM, Ramon Fried wrote:
-> > >> defining CADENCE_GEM_ERR_DEBUG causes compilation
-> > >> errors, fix that.
-> > >>
-> > >> Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
-> > >> ---
-> > >> v2: change %lx to HWADDR_PRIx and %lx to %zdx
-> > >> v3: change %zdx to %zx
-> > >>
-> > >>  hw/net/cadence_gem.c | 6 +++---
-> > >>  1 file changed, 3 insertions(+), 3 deletions(-)
-> > >>
-> > >> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> > >> index 7f63411430..ecee22525c 100644
-> > >> --- a/hw/net/cadence_gem.c
-> > >> +++ b/hw/net/cadence_gem.c
-> > >> @@ -982,8 +982,8 @@ static ssize_t gem_receive(NetClientState *nc,
-> > >const uint8_t *buf, size_t size)
-> > >>              return -1;
-> > >>          }
-> > >>
-> > >> -        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy,
-> > >rxbufsize),
-> > >> -                rx_desc_get_buffer(s->rx_desc[q]));
-> > >> +        DB_PRINT("copy %d bytes to 0x%" HWADDR_PRIx "\n",
-> > >MIN(bytes_to_copy, rxbufsize),
-> > >> +                rx_desc_get_buffer(s, s->rx_desc[q]));
-> > >>
-> > >>          /* Copy packet data to emulated DMA buffer */
-> > >>          address_space_write(&s->dma_as, rx_desc_get_buffer(s,
-> > >s->rx_desc[q]) +
-> > >> @@ -1156,7 +1156,7 @@ static void gem_transmit(CadenceGEMState *s)
-> > >>              if (tx_desc_get_length(desc) > sizeof(tx_packet) -
-> > >>                                                 (p - tx_packet)) {
-> > >>                  DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x
-> > >space " \
-> > >> -                         "0x%x\n", (unsigned)packet_desc_addr,
-> > >> +                         "0x%zx\n", (unsigned)packet_desc_addr,
-> > >>                           (unsigned)tx_desc_get_length(desc),
-> > >>                           sizeof(tx_packet) - (p - tx_packet));
-> > >>                  break;
-> > >>
-> > >
-> > >I still get an error when trying to build on 32bit host with
-> > >CADENCE_GEM_ERR_DEBUG enabled (pre-existing to your patch):
-> > >
-> > >  CC      hw/net/cadence_gem.o
-> > >./hw/net/cadence_gem.c: In function 'gem_receive':
-> > >./hw/net/cadence_gem.c:973:14: error: format '%ld' expects argument of
-> > >type 'long int', but argument 4 has type 'size_t {aka unsigned int}'
-> > >[-Werror=3Dformat=3D]
-> > >    DB_PRINT("config bufsize: %d packet size: %ld\n", rxbufsize, size)=
-;
-> > >              ^
-> > >./hw/net/cadence_gem.c:38:24: note: in definition of macro 'DB_PRINT'
-> > >     fprintf(stderr, ## __VA_ARGS__); \
-> > >                        ^
-> > >cc1: all warnings being treated as errors
-> > >./rules.mak:69: recipe for target 'hw/net/cadence_gem.o' failed
-> > >make: *** [hw/net/cadence_gem.o] Error 1
-> > >
-> > >However the 64bit host is indeed fixed, so I'm fine with your patch:
-> > >Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> > >Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> > >
-> > >Regards,
-> > >
-> > >Phil.
-> > Thanks!
-> >
-> > --
-> > Sent from my Android device with K-9 Mail. Please excuse my brevity.
+Unfortunately this makes qtest/device-introspect-test fail:
+
+(qemu) device_add allwinner-a10,help
+(qemu) device_add allwinner-a10,help
+RAMBlock "sram A" already registered, abort!
+Aborted (core dumped)
+
+(gdb) bt
+#1  0x00007ffff5089895 in abort () at /lib64/libc.so.6
+#2  0x0000555557324445 in qemu_ram_set_idstr (new_block=0x614000026a40,
+name=0x602000231a50 "sram A", dev=0x633000038800) at exec.c:2023
+#3  0x00005555595ed050 in vmstate_register_ram (mr=0x633000049610,
+dev=0x633000038800) at migration/savevm.c:2921
+#4  0x0000555557569a85 in memory_region_init_ram (mr=0x633000049610,
+owner=0x633000038800, name=0x55555a4da6a0 <str> "sram A", size=49152,
+errp=0x55555c908d00 <error_fatal>)
+    at memory.c:3170
+#5  0x0000555557b7cadf in aw_a10_init (obj=0x633000038800) at
+hw/arm/allwinner-a10.c:84
+#6  0x00005555599b0c09 in object_init_with_type (obj=0x633000038800,
+ti=0x61300001da80) at qom/object.c:376
+#7  0x0000555559994350 in object_initialize_with_type
+(data=0x633000038800, size=97024, type=0x61300001da80) at qom/object.c:516
+#8  0x0000555559996756 in object_new_with_type (type=0x61300001da80) at
+qom/object.c:684
+#9  0x0000555559996832 in object_new (typename=0x60200022e8b0
+"allwinner-a10") at qom/object.c:699
+#10 0x000055555979e809 in qmp_device_list_properties
+(typename=0x60200022e8b0 "allwinner-a10", errp=0x7fffffffafc0) at
+qom/qom-qmp-cmds.c:153
+#11 0x00005555582b68cd in qdev_device_help (opts=0x607000120130) at
+qdev-monitor.c:282
+
+
+> +    create_unimplemented_device("a10-sram-ctrl", 0x01c00000, 4 * KiB);
+>  }
+>  
+>  static void aw_a10_realize(DeviceState *dev, Error **errp)
+> @@ -113,11 +126,6 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+>      sysbus_connect_irq(sysbusdev, 4, qdev_get_gpio_in(dev, 67));
+>      sysbus_connect_irq(sysbusdev, 5, qdev_get_gpio_in(dev, 68));
+>  
+> -    memory_region_init_ram(&s->sram_a, OBJECT(dev), "sram A", 48 * KiB,
+> -                           &error_fatal);
+> -    memory_region_add_subregion(get_system_memory(), 0x00000000, &s->sram_a);
+> -    create_unimplemented_device("a10-sram-ctrl", 0x01c00000, 4 * KiB);
+> -
+>      /* FIXME use qdev NIC properties instead of nd_table[] */
+>      if (nd_table[0].used) {
+>          qemu_check_nic_model(&nd_table[0], TYPE_AW_EMAC);
+> @@ -149,12 +157,6 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+>          int i;
+>  
+>          for (i = 0; i < AW_A10_NUM_USB; i++) {
+> -            char bus[16];
+> -
+> -            sprintf(bus, "usb-bus.%d", i);
+> -
+> -            object_property_set_bool(OBJECT(&s->ehci[i]), true,
+> -                                     "companion-enable", &error_fatal);
+>              object_property_set_bool(OBJECT(&s->ehci[i]), true, "realized",
+>                                       &error_fatal);
+>              sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
+> @@ -162,8 +164,6 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+>              sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
+>                                 qdev_get_gpio_in(dev, 39 + i));
+>  
+> -            object_property_set_str(OBJECT(&s->ohci[i]), bus, "masterbus",
+> -                                    &error_fatal);
+>              object_property_set_bool(OBJECT(&s->ohci[i]), true, "realized",
+>                                       &error_fatal);
+>              sysbus_mmio_map(SYS_BUS_DEVICE(&s->ohci[i]), 0,
+> 

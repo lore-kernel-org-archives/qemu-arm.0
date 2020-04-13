@@ -1,101 +1,101 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4265537lfm;
-        Mon, 13 Apr 2020 15:08:15 -0700 (PDT)
-X-Google-Smtp-Source: APiQypL8IG5wZDTQVWIktRhPnoIAEwj20WPrsbXZxFBcJSfu7lxYIs6QFk5NaYiLsgmtohPN5a2e
-X-Received: by 2002:aed:2006:: with SMTP id 6mr2218094qta.276.1586815695327;
-        Mon, 13 Apr 2020 15:08:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586815695; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4266394lfm;
+        Mon, 13 Apr 2020 15:09:10 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIcROIfvzxzr1r7fgRpsWFtDpaf1rO3/EzbqfL14/dPv0t43pso480sJXf8QZRzp4XTeOKN
+X-Received: by 2002:ac8:4885:: with SMTP id i5mr7617856qtq.305.1586815750682;
+        Mon, 13 Apr 2020 15:09:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586815750; cv=none;
         d=google.com; s=arc-20160816;
-        b=T67CNf1+VOdK37clypFd1oMKKKEA0JToD54Do900Y0NCeP9E7Q+jZrVW6zfWm3pcrM
-         9oyxKvI5jyP86tCKUG4j6UvUuK7DiQwZmvm9boR20p6QTIFgnN56bKNbZYP4uGnJihLG
-         mX+3G8OLA8xPP/H+4vaVuyzkKTowYy1unAkz4ueBICeyIyftsZOzJ3F7Z1bw34W2StJ8
-         pRBZkQ/mKjGbWu1leV79jl4xPF1h5XInuJV1oQWAxvuxPE3ND5bqO3u0ukjmPuMp6v8l
-         n46KurdOHAG/lSWmGzPkrV3+IZi7rDYAc7ZnMuvEdSDYXpj1QZwpH2TH5ApfOqwDdzLV
-         ClzQ==
+        b=VjvGyvOltBGeOBvNlM58n1yaqiMkZ5UpqPhV96ixOZBhPr70iLMjYWerc6bQ4q/hEK
+         gml8Q+4z0LCiEhpzJub5gPSCVFJxwmS4y1l73cpiDgn+eHGEN595+tDu+dDbw86f5BfT
+         xtlLwcOYLdNqgrXwLvW8N7xuaqF0M4+RPnRmcXaqlXQSiu4yjD/tGWMofLw7KfUYXfUp
+         wcuI+8VKP2QUjfeX+Xst2oywWOrqvodXIQeXFVxi1fr+//1+5ic1zHVkRbBKRUp0Bl7F
+         pdKMGguhGJA1nqoyIRBpOBuoN6OrzT+I8pSghB9jMmWkZNeOFVAD8uOPIp3zrjTukS9c
+         Jneg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=43BfZE9uxQlRypiXVLawqDbuwTbqxgiL7O2TCDlfh/g=;
-        b=jA/NCu5Ig+yMepisDFZj/oUX/Ed1qlpUtf2XnJTvqzNdXtgFHwuCN2pAItVPUdIpex
-         WLx6xPswI+UYXYSSJvTaerRPA9gbhgZoJKbtIpsLmPHHL/62Rl9zvI/YT69XwA6QN+sa
-         voXSQD3CIgC/4VvDbdaIhMKkeQQHILrwcmuQo1l9OxnrymCvvNbZYDzaGGvpkPEPEN/D
-         m0+3LCOvprbORayyrvn8GWACtvb3FiPetDjZirdq9tzc7fpzmHbEvZjZCdz2PsOrWAX8
-         EURhaivGhTVbc/iqaGyvy9Q30B3aimPxMCOfAYXRP6AU0ZPyALryXfrVSw4ydBhqRGIw
-         u15w==
+        bh=HKNaRMZJ3gFznHNDvelB7ig1QHhvKcE4j/y1jytht9A=;
+        b=pHe9XbRrev13qg2RwxWf3F0edY9C+2VmLVreQfi5sozc5fx2meF96CLPubtG7KY/IL
+         9Sr6rLa/T5IKbOnMcAcKcA+IliXVQlqVFitBcZEWKiJJMxCV1SyHb5r+DkmY9vWjcpCD
+         dy44YkbXaqP3sEBEFrWcZvSUkTF7xPB20QDOgj7qhndnPwFaL1WbmsTphEUuxD8rTj7h
+         NPXSVwkfbPqtstiZvLeU3aK2PwIDuVPz8Gzhm314HP5kyIhPPGi+4EzF8Wrbi732Cm1s
+         ALSAoGRUAl+K0af4N3n6St40qyq3z0U1Q1GDGRYl1prdJIEIib2xQcrtor3bB/N1PjU9
+         5RHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Soz/lluK";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=InWQtmKQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u14si6800116qka.310.2020.04.13.15.08.15
+        by mx.google.com with ESMTPS id m6si6210065qvf.209.2020.04.13.15.09.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Apr 2020 15:08:15 -0700 (PDT)
+        Mon, 13 Apr 2020 15:09:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Soz/lluK";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=InWQtmKQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:49452 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49468 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jO7FW-0002lt-P7
-	for alex.bennee@linaro.org; Mon, 13 Apr 2020 18:08:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44343)
+	id 1jO7GQ-0003zD-20
+	for alex.bennee@linaro.org; Mon, 13 Apr 2020 18:09:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44434)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1jO7FM-0002hW-N7
- for qemu-arm@nongnu.org; Mon, 13 Apr 2020 18:08:05 -0400
+ (envelope-from <alistair23@gmail.com>) id 1jO7GI-0003vU-7J
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2020 18:09:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1jO7FL-0003XX-Jj
- for qemu-arm@nongnu.org; Mon, 13 Apr 2020 18:08:04 -0400
-Received: from mail-vs1-xe41.google.com ([2607:f8b0:4864:20::e41]:33841)
+ (envelope-from <alistair23@gmail.com>) id 1jO7GH-0003q4-2B
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2020 18:09:02 -0400
+Received: from mail-vs1-xe43.google.com ([2607:f8b0:4864:20::e43]:38823)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1jO7FG-0003P4-RZ; Mon, 13 Apr 2020 18:07:58 -0400
-Received: by mail-vs1-xe41.google.com with SMTP id b5so6498830vsb.1;
- Mon, 13 Apr 2020 15:07:58 -0700 (PDT)
+ id 1jO7GC-0003pU-5y; Mon, 13 Apr 2020 18:08:56 -0400
+Received: by mail-vs1-xe43.google.com with SMTP id y15so6009110vsm.5;
+ Mon, 13 Apr 2020 15:08:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=43BfZE9uxQlRypiXVLawqDbuwTbqxgiL7O2TCDlfh/g=;
- b=Soz/lluK+rYgW7TNHkF/fmsFqes4CsWM+/+cQedeyb8GyB2+WFvbgbg6SugVUl+9ja
- /Kt7OEmXq05rLhrb0rKqY8+QhlqDTY7niiQK01EFqM/QtBPC1bJU9LrVRszWds7M7C+l
- qc2aGPrU+hgXn2KBEnxwTrArE64rVM3nU+fxboY3rBqgkdYCsFuxo9V1LJZnnphLThw7
- XhadXRqhphrsA5bJj865JBOURPbtrxWXJVKtyfSaVDKWVW2aPJqkXo5+JCU2181tihq/
- gsIigC0ob8Sek8ChSSCLEz5dwRjfL6994LUZr8xd/rGpw6Z3cE8ZP4nq4yTRhCPRsAAp
- JMdg==
+ bh=HKNaRMZJ3gFznHNDvelB7ig1QHhvKcE4j/y1jytht9A=;
+ b=InWQtmKQfXr4TqinKncD7MN/QgUNsROyxXpW62erh/0xwbvfeiB6pN936PJiLl5Cym
+ 3DFI6tjS5ltJDR5zx/cwBEHy7iErje8rAG0eAPxf2nVuJF1MfJ9p83Bejc+YPYCIE04y
+ XUF1mJi1WJcj5x+VkkfjswcfAzQ21IQy6yiqWIuP5gxja1779TpRyxrUDrHTsq2NYR3v
+ ue204YHjPOYkKQvaD03UlSlyyg6lt1j9s3b1vF7u0iPkqeAZLHx1+ZYgS5k9nRTc3Jws
+ gpYeHT18BTGdppwtyHP4A7k/3lsEvfsEQLycaeEFmqyDpJw1tUmcPyyx0p3uakuwhh5K
+ kzUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=43BfZE9uxQlRypiXVLawqDbuwTbqxgiL7O2TCDlfh/g=;
- b=olW31riyxdUL3wOLi0mVzGxFn8Y9a/YJvk/EVl5Xw/uMW/lkDXm5PP70Zjq2/RJsyl
- V0w7ffA9QU7wXqy8TNQi36/XoMEaWkf4EWpx06yLVBxSH3xYNAiB8I1GMBChf4sGHIyu
- baSKoXwE5hzJzXOHmD7CYsS5kM2Xn9153ShBJldHK/thGphGtBCOIotyicBH7eo7rEIq
- UzvR2K7W3O4m6jypfFS//lLKKf4eG6Q4FTF3pIRmEGoTeLDXZkULmQ/KdFxJ7Gr51myl
- Dui+fh/hZYCZLZG8nR05Ys9gQpRo/Tg9v8hKx6tKuqsP5osS2KkrWRK7/T1tXEzvCAkV
- qIwg==
-X-Gm-Message-State: AGi0PuaEtoLcGpje0uKV7Jrf8dTepAv/C5FpJLoNF81X5YJZu1mG3IEa
- Y5e4lo7KbCHKve1x2IAEFNPEuU+4tt1kmNEFvOA=
-X-Received: by 2002:a67:902:: with SMTP id 2mr14829949vsj.133.1586815677800;
- Mon, 13 Apr 2020 15:07:57 -0700 (PDT)
+ bh=HKNaRMZJ3gFznHNDvelB7ig1QHhvKcE4j/y1jytht9A=;
+ b=jiRu2y3SQruy+iRYwR8gzEuQfTa7LY0O+3SjkMHohqMgjzluQhxNOqa7iFiGiwT80P
+ lq+IQAzz75WjQsDXfjhmGh8ka8HNxWgHXXDO6D7MnXiQXlu25vUarsaaloPIdPVE5H93
+ XQzY5P74b2ox3bXWe7HZYtdoed2CFW2E7p4ddIUw5f2t+g/x5lPV4hITyD2WA7PsitoT
+ 0eNDN6/MbjvplQnihvxgTjembcrxAy4E0O/8PLFpP0l10sbon69qjoH+Gfy9ggbzRj1Q
+ 7jVtK8uwM0aDr8xOK9bfbInwFDFRvGt2UzzOi0zDosKmCPtPgp5aF+72tVR1A+YZpLeV
+ NVFg==
+X-Gm-Message-State: AGi0PuZaTFoytv6NDJZgZMWSNgC9U6yg+/jLCWcX6UagtJ0nU5zVXdc6
+ gUz4K9+SM6Vfrr40KnC/ropqm2YY31dR3i8fYvQ=
+X-Received: by 2002:a67:e2d5:: with SMTP id i21mr4682013vsm.151.1586815735420; 
+ Mon, 13 Apr 2020 15:08:55 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200412223619.11284-1-f4bug@amsat.org>
- <20200412223619.11284-12-f4bug@amsat.org>
-In-Reply-To: <20200412223619.11284-12-f4bug@amsat.org>
+ <20200412223619.11284-13-f4bug@amsat.org>
+In-Reply-To: <20200412223619.11284-13-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 13 Apr 2020 14:59:41 -0700
-Message-ID: <CAKmqyKPpjifNG575VVbfKk1h7+v1XK9YMs44nG2rY=Z3=HDkbg@mail.gmail.com>
-Subject: Re: [PATCH-for-5.1 v3 11/24] hw/arm/msf2-soc: Store MemoryRegion in
- MSF2State
+Date: Mon, 13 Apr 2020 15:00:39 -0700
+Message-ID: <CAKmqyKPUdDT+QM3ovRsRMq6gf=B6MJt_FQgcjza236mdUWpYAA@mail.gmail.com>
+Subject: Re: [PATCH-for-5.1 v3 12/24] hw/arm/stm32f205_soc: Store MemoryRegion
+ in STM32F205State
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::e41
+X-Received-From: 2607:f8b0:4864:20::e43
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -135,18 +135,18 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uJwCgyJ7v+GY
+X-TUID: I7/NhZRclcNZ
 
-On Sun, Apr 12, 2020 at 3:40 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+On Sun, Apr 12, 2020 at 3:41 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
 g> wrote:
 >
 > Coccinelle reported:
 >
 >   $ spatch ... --timeout 60 --sp-file \
 >     scripts/coccinelle/simplify-init-realize-error_propagate.cocci
->   HANDLING: ./hw/arm/msf2-soc.c
->   >>> possible moves from m2sxxx_soc_initfn() to m2sxxx_soc_realize() in =
-./hw/arm/msf2-soc.c:86
+>   HANDLING: ./hw/arm/stm32f205_soc.c
+>   >>> possible moves from stm32f205_soc_initfn() to stm32f205_soc_realize=
+() in ./hw/arm/stm32f205_soc.c:83
 >
 > While reviewing we notice storing the MemoryRegion in the device
 > state, we'll be able to later automatically simplify the error
@@ -159,74 +159,68 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  include/hw/arm/msf2-soc.h |  4 ++++
->  hw/arm/msf2-soc.c         | 18 +++++++-----------
+>  include/hw/arm/stm32f205_soc.h |  4 ++++
+>  hw/arm/stm32f205_soc.c         | 18 +++++++-----------
 >  2 files changed, 11 insertions(+), 11 deletions(-)
 >
-> diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
-> index 3cfe5c76ee..e4c5110036 100644
-> --- a/include/hw/arm/msf2-soc.h
-> +++ b/include/hw/arm/msf2-soc.h
-> @@ -50,6 +50,10 @@ typedef struct MSF2State {
+> diff --git a/include/hw/arm/stm32f205_soc.h b/include/hw/arm/stm32f205_so=
+c.h
+> index 922a733f88..63e7e7c825 100644
+> --- a/include/hw/arm/stm32f205_soc.h
+> +++ b/include/hw/arm/stm32f205_soc.h
+> @@ -56,6 +56,10 @@ typedef struct STM32F205State {
 >
 >      ARMv7MState armv7m;
 >
 > +    MemoryRegion sram;
-> +    MemoryRegion nvm;
-> +    MemoryRegion nvm_alias;
+> +    MemoryRegion flash;
+> +    MemoryRegion flash_alias;
 > +
->      char *cpu_type;
->      char *part_name;
->      uint64_t envm_size;
-> diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-> index 588d643b8d..e448b0ab74 100644
-> --- a/hw/arm/msf2-soc.c
-> +++ b/hw/arm/msf2-soc.c
-> @@ -90,13 +90,9 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, E=
-rror **errp)
+>      STM32F2XXSyscfgState syscfg;
+>      STM32F2XXUsartState usart[STM_NUM_USARTS];
+>      STM32F2XXTimerState timer[STM_NUM_TIMERS];
+> diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
+> index 118c342559..42f4e44134 100644
+> --- a/hw/arm/stm32f205_soc.c
+> +++ b/hw/arm/stm32f205_soc.c
+> @@ -87,23 +87,19 @@ static void stm32f205_soc_realize(DeviceState *dev_so=
+c, Error **errp)
 >      SysBusDevice *busdev;
 >      Error *err =3D NULL;
 >      int i;
 > -
 >      MemoryRegion *system_memory =3D get_system_memory();
-> -    MemoryRegion *nvm =3D g_new(MemoryRegion, 1);
-> -    MemoryRegion *nvm_alias =3D g_new(MemoryRegion, 1);
 > -    MemoryRegion *sram =3D g_new(MemoryRegion, 1);
+> -    MemoryRegion *flash =3D g_new(MemoryRegion, 1);
+> -    MemoryRegion *flash_alias =3D g_new(MemoryRegion, 1);
 >
-> -    memory_region_init_rom(nvm, OBJECT(dev_soc), "MSF2.eNVM", s->envm_si=
-ze,
-> +    memory_region_init_rom(&s->nvm, OBJECT(dev_soc), "MSF2.eNVM", s->env=
-m_size,
->                             &error_fatal);
->      /*
->       * On power-on, the eNVM region 0x60000000 is automatically
-> @@ -104,15 +100,15 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc=
-, Error **errp)
->       * start address (0x0). We do not support remapping other eNVM,
->       * eSRAM and DDR regions by guest(via Sysreg) currently.
->       */
-> -    memory_region_init_alias(nvm_alias, OBJECT(dev_soc), "MSF2.eNVM", nv=
-m, 0,
-> -                             s->envm_size);
-> +    memory_region_init_alias(&s->nvm_alias, OBJECT(dev_soc), "MSF2.eNVM"=
+> -    memory_region_init_rom(flash, OBJECT(dev_soc), "STM32F205.flash",
+> +    memory_region_init_rom(&s->flash, OBJECT(dev_soc), "STM32F205.flash"=
 ,
-> +                             &s->nvm, 0, s->envm_size);
+>                             FLASH_SIZE, &error_fatal);
+> -    memory_region_init_alias(flash_alias, OBJECT(dev_soc),
+> -                             "STM32F205.flash.alias", flash, 0, FLASH_SI=
+ZE);
+> +    memory_region_init_alias(&s->flash_alias, OBJECT(dev_soc),
+> +                             "STM32F205.flash.alias", &s->flash, 0, FLAS=
+H_SIZE);
 >
-> -    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, nvm);
-> -    memory_region_add_subregion(system_memory, 0, nvm_alias);
-> +    memory_region_add_subregion(system_memory, ENVM_BASE_ADDRESS, &s->nv=
-m);
-> +    memory_region_add_subregion(system_memory, 0, &s->nvm_alias);
+> -    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, flash=
+);
+> -    memory_region_add_subregion(system_memory, 0, flash_alias);
+> +    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, &s->f=
+lash);
+> +    memory_region_add_subregion(system_memory, 0, &s->flash_alias);
 >
-> -    memory_region_init_ram(sram, NULL, "MSF2.eSRAM", s->esram_size,
-> +    memory_region_init_ram(&s->sram, NULL, "MSF2.eSRAM", s->esram_size,
+> -    memory_region_init_ram(sram, NULL, "STM32F205.sram", SRAM_SIZE,
+> +    memory_region_init_ram(&s->sram, NULL, "STM32F205.sram", SRAM_SIZE,
 >                             &error_fatal);
 > -    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
 > +    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, &s->sr=
 am);
 >
 >      armv7m =3D DEVICE(&s->armv7m);
->      qdev_prop_set_uint32(armv7m, "num-irq", 81);
+>      qdev_prop_set_uint32(armv7m, "num-irq", 96);
 > --
 > 2.21.1
 >

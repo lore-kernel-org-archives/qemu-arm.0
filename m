@@ -1,101 +1,102 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4279613lfm;
-        Mon, 13 Apr 2020 15:24:12 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIjum870rpxI50e+PgYr5zOQ5Ka2YNYsw6RjcRrge6Ls/1y1dbhAOta2Z1iBsv4Db420+vN
-X-Received: by 2002:ac8:1663:: with SMTP id x32mr13316421qtk.254.1586816652094;
-        Mon, 13 Apr 2020 15:24:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586816652; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4280073lfm;
+        Mon, 13 Apr 2020 15:24:45 -0700 (PDT)
+X-Google-Smtp-Source: APiQypILxVIaXUXUh5WUvw99+ZHBYm0CXD7eoV4pYgVvr45WOCEbwTU1Yi73Xse1UzHfkPL1f1Dc
+X-Received: by 2002:aed:2bc7:: with SMTP id e65mr13711913qtd.220.1586816685480;
+        Mon, 13 Apr 2020 15:24:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586816685; cv=none;
         d=google.com; s=arc-20160816;
-        b=jQUMLvhxlDH3Z/lVSlYK0EnnCtmGoICjUXRImtd8SfdnWawmyt/4wsTdTU/z04lnsC
-         wOk14kxaCf8rg5WNO44270cXnav73fS7RqF30dpQI8n3hhW1I4FBNx7MQjFOK/S4VqJA
-         FRlhyO8+ahLboN8iIJLVvLzGarH8xtu+uxwovEBTOF5ehVrvvNrrqxH+gW9vrk1rmg+k
-         V4y2ZbPLMmhhIaL0CK5sMxGmkOoi4Etc6mrmDwjD4q3cm4fipqMZUEIzpl2yWhOVp9+U
-         cFiMivQu9+pdWOMDBjj6LF+8yEskdMG/4zQbrfPoIyAgMA5WEYfBoiEBqcAmKJt46NeO
-         8XsA==
+        b=rlSTJiarRELdE7P9Noi8Gg6g8nMlqSAzdYQrEy3hAEZ0oFQTXAc64/bBw9n0JAwA5H
+         ZnIoy8c2ajCA0GGS4TgpIES8zspcgg0TW+AwUSMgKSbgyjPexp/j20zPTKqiZp5zw4QA
+         C5dCxs2sN6/5zdAcU5/SW+nx5JtrMpsNfclYsHbvxBVklNvTsf2JVx1SQdb8vG+TBrE/
+         Y086HWDTrIwiywlNvSOb+o0R55KJZaSI/8xIaY8suFvwwoSHWQ9X6AY4kO0Yz4YladQp
+         1/QzZgaYImG3i9ihlg6dGoBdZgGKv1IFgRaGU7kwwHwQnM6eZ/Xw3UU5lnDmG7DqqMwW
+         vulw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=gEKohtwFE3SQeQe0CuNpY6V0C6EIim4ono+ZvepKLzU=;
-        b=G5jC69RPs1MYQzylvpwJoGreafyXAKAooXMIjnj5yN5wMiI8jnhKtIUU7u1vAsZUvP
-         YpqJI0avdlNY20Ea45pH/pZ3ruTXdJN1xp6KDQeRBnLtIKuxmfEdeJozCzf+J/er+z8P
-         Rq9+Gh4IeQwFlddvLgEfCWaPZHCThdWPPIWnC83vqeJ0jXyKe+x1oyHa5nzLqDC9GZpO
-         yudsZyULL7gtLVNMB2axsSU5TeZ3wAjsX3eQ4/0dUUg38KOPUUD4rPYcq5wodtOReWte
-         f8qtNqtx63Znk+N1Kaq7dDrRZbgml610wlPHuLQQn4vpJSZGk0NygcQ5prNQIhOj/lNg
-         1PYQ==
+        bh=NfS+if34QaICcgQhFzQlQDHmzlQVRe47Rr7qXTiSLIk=;
+        b=x4WZgGl30W555fI46U8VjzzX5rO0p0nZJuvzbMSkctEALjeYYs7DQ/WmuRxfAiSkjI
+         dFG4aNOl8Qp/Ldx+0pZpM6hEtUYBRlg0CEf8M9U9JhmzALEXwlYXY/FYyoG8WM2Y7xm5
+         zW3pthCjp383dEYZdB75afRnv7DgtgpsPhmyd41laeFKtCreNBWI+S73On2Ze6C9vTNL
+         h12ER1pBGLA8s9g+wkI4LDobs4T+FnocjZHlQgB1SANQzp4CDs4B0HmMpdH1JTlq0KmO
+         hZH9/RvnX6ADAg5dXh93Ye6C0wPljhtjcFKzLjtiSlwkE8CPz7UZtUIrZv1MBYtJ6iXc
+         +7LA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VJB4c5T5;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=E7VeJP1a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d17si6330762qvf.17.2020.04.13.15.24.11
+        by mx.google.com with ESMTPS id b189si6766808qkf.88.2020.04.13.15.24.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Apr 2020 15:24:12 -0700 (PDT)
+        Mon, 13 Apr 2020 15:24:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VJB4c5T5;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=E7VeJP1a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:49728 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49746 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jO7Ux-0002pv-E5
-	for alex.bennee@linaro.org; Mon, 13 Apr 2020 18:24:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46382)
+	id 1jO7VU-0003hV-Rp
+	for alex.bennee@linaro.org; Mon, 13 Apr 2020 18:24:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46649)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1jO7U7-0001gl-LT
- for qemu-arm@nongnu.org; Mon, 13 Apr 2020 18:23:20 -0400
+ (envelope-from <alistair23@gmail.com>) id 1jO7VH-0003eJ-F1
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2020 18:24:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1jO7U5-0006CY-RN
- for qemu-arm@nongnu.org; Mon, 13 Apr 2020 18:23:19 -0400
-Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944]:36454)
+ (envelope-from <alistair23@gmail.com>) id 1jO7VG-0006Vn-CP
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2020 18:24:31 -0400
+Received: from mail-vs1-xe44.google.com ([2607:f8b0:4864:20::e44]:33052)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1jO7Tw-0006An-QA; Mon, 13 Apr 2020 18:23:08 -0400
-Received: by mail-ua1-x944.google.com with SMTP id m15so3732718uao.3;
- Mon, 13 Apr 2020 15:23:08 -0700 (PDT)
+ id 1jO7VB-0006Uo-RZ; Mon, 13 Apr 2020 18:24:25 -0400
+Received: by mail-vs1-xe44.google.com with SMTP id a2so2408597vsd.0;
+ Mon, 13 Apr 2020 15:24:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=gEKohtwFE3SQeQe0CuNpY6V0C6EIim4ono+ZvepKLzU=;
- b=VJB4c5T5N3hdsN16C1+Toc3Wt7t/5PLQgT1dit/2xFRajjoJ2JrDb+cGACNa3DHICL
- kBlkEfsQOz+Mr81hvnXWs4jptW3BHJew+b0M3jnnG9yvmyvWPH7lMIbsNv25y9Rk1Kxm
- 5Dt1ic6gtHOOMDS2UGHFInFqWFQBw7v7Sv6gdGe4EFkqHRCGTlw5nmVhCoAcT0LeNEBi
- nP0tth8vaLJu86htyafrNDVkRsn9qtWmmuhOUy3PPG7/hcb30GAQE7WIMOn2QxS8ArLO
- 9mIhQfHU5a0YApku0bKnqGRTAo8XP9d3QIcyDqsLDgZ1PVVDhLGEsriE7I/3LWEUsgfo
- ruTA==
+ bh=NfS+if34QaICcgQhFzQlQDHmzlQVRe47Rr7qXTiSLIk=;
+ b=E7VeJP1anCexgCP9YAQnkh4bF9Hdp5i3OvXEPCKFXRqTj+8CCHpACQxAG4yEI9Du4N
+ cO37BGaUunXddYyCo2w8xputvkC1/U4sB2Qy5fZKnIlUdEH7inGXS/wRS+j6PQ379Tax
+ UPKI0+/SspkTcVJPrQvAKVj9SHWq2b28+zlGVd3KpL10YoFKH+Op/Fhup0ckGTodz6yN
+ orOM1m+Y3+9Fi+TL9qrTxJ7UwPUpYYEPRhtNh9Bv9x8R2IXNViY6TzSJejRQlHIx6F+p
+ EgyVkTcoLvfKlmF2F8LngUR93ntT3Q27aHaCiecvaQoXFV0e8yeJ4SdifXiFyWbNnLso
+ LLIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=gEKohtwFE3SQeQe0CuNpY6V0C6EIim4ono+ZvepKLzU=;
- b=AYf5JoByb+EkUrOTy8yv++Q7amXHI+LQdSdYqk7EDrbCCkN6X6Uusal3JUh+obCOZ8
- 0RX4AoXMLEhlr35M/fawHNBA+pXhDzVGpcat95j78vRBhUGDksNeLuNFreC7ObCMZHrR
- wjqVXwnolynHFMi/8/NcBDG9DzoXCYAHJlDJF5a52hE68C+AxyZAZyHu1l77Sna2f7W6
- ArqT6ZmAERlw3eJypY8ImRbpaNxT6cyQEjrt18pkxW7nFAy8kTeiNmfSNvcTfM+glLlV
- kkIByezr5vUIi8BT96LQa6bDJkFureSxN5z+CGbtrS9OyoJ6fWIIAvj6Jra4tGktnYiV
- cGqw==
-X-Gm-Message-State: AGi0PuYrulovt8YCSsrHeUJLJ65H221coxe5IEeSKexcqd4EBhRfK4UD
- 74Vw4Frr7wb2sbo/keKkUtYXPE+kDETeBxE189g=
-X-Received: by 2002:ab0:6946:: with SMTP id c6mr5308103uas.85.1586816588194;
- Mon, 13 Apr 2020 15:23:08 -0700 (PDT)
+ bh=NfS+if34QaICcgQhFzQlQDHmzlQVRe47Rr7qXTiSLIk=;
+ b=YZhvWLPeXYjGUaGrVFtaqt1XtxXk+iMeN6lARkGXsZU9QeHioCDLuPiK0EPN7xk3Qv
+ wsBwiazh97yQYQlZNr+iV/1IC0SkYTZsjbsR/Qt5QUUo/g7tUmR11Fj2UsW7RthFffcC
+ 8WNYbfWrQF6z0l3H4+/m2qVUyFi0bIHE518N9ndzi0jCjGl5mYFKj8GGdilrRRjDKlmj
+ yuVzPrkGHtSFDw+JlV5JQhBnW4DZBGywXit3jaECY3IlABxlOHkWjjUNhEmTn4mn5NpM
+ NGlGT2Mv1cn6vEUcNzn+BKgDzLQqBj2uXf9h5s9bVyO+X62fE+5cKdpgQxd3a+nYzvco
+ MrTA==
+X-Gm-Message-State: AGi0PuY/lXHPqj67k1OxG2h0QumA0Wo8mHatVF2eFHBPxUiW4YJwHBBs
+ 1/6+596peU5bdgxnU8YbkY8ogO4jicx2bxxwJDM=
+X-Received: by 2002:a67:26c2:: with SMTP id
+ m185mr14419055vsm.180.1586816665267; 
+ Mon, 13 Apr 2020 15:24:25 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200412223619.11284-1-f4bug@amsat.org>
- <20200412223619.11284-23-f4bug@amsat.org>
-In-Reply-To: <20200412223619.11284-23-f4bug@amsat.org>
+ <20200412223619.11284-22-f4bug@amsat.org>
+In-Reply-To: <20200412223619.11284-22-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 13 Apr 2020 15:14:52 -0700
-Message-ID: <CAKmqyKNpyobujx0_piqmuBf40MLspKjkX64QVenAz6pSEN1uHw@mail.gmail.com>
-Subject: Re: [PATCH-for-5.1 v3 22/24] hw/riscv/sifive_u: Store MemoryRegion in
- SiFiveUSoCState
+Date: Mon, 13 Apr 2020 15:16:09 -0700
+Message-ID: <CAKmqyKM6PxaKUi7CL-WarfkF+t7OxNpYPEfjjCQ3yTSKRtzWUg@mail.gmail.com>
+Subject: Re: [PATCH-for-5.1 v3 21/24] hw/riscv/sifive_u: Move some code from
+ realize() to init()
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::944
+X-Received-From: 2607:f8b0:4864:20::e44
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -135,9 +136,9 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g0dv14Ds2OMC
+X-TUID: kzIlstJ8qc4O
 
-On Sun, Apr 12, 2020 at 3:52 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+On Sun, Apr 12, 2020 at 3:49 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
 g> wrote:
 >
 > Coccinelle reported:
@@ -148,9 +149,8 @@ g> wrote:
 >   >>> possible moves from riscv_sifive_u_soc_init() to riscv_sifive_u_soc=
 _realize() in ./hw/riscv/sifive_u.c:473
 >
-> While reviewing we notice storing the MemoryRegion in the device
-> state, we'll be able to later automatically simplify the error
-> propagation calls.
+> Move the calls using &error_abort which don't depend on input
+> updated before realize() to init().
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
@@ -159,69 +159,34 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  include/hw/riscv/sifive_u.h |  2 ++
->  hw/riscv/sifive_u.c         | 10 ++++------
->  2 files changed, 6 insertions(+), 6 deletions(-)
+> v3: Typo 'depend of' -> 'depend on' (eblake)
+> ---
+>  hw/riscv/sifive_u.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
-> diff --git a/include/hw/riscv/sifive_u.h b/include/hw/riscv/sifive_u.h
-> index 82667b5746..254c6a64f8 100644
-> --- a/include/hw/riscv/sifive_u.h
-> +++ b/include/hw/riscv/sifive_u.h
-> @@ -42,6 +42,8 @@ typedef struct SiFiveUSoCState {
->      SiFiveUPRCIState prci;
->      SiFiveUOTPState otp;
->      CadenceGEMState gem;
-> +    MemoryRegion mask_rom;
-> +    MemoryRegion l2lim_mem;
->  } SiFiveUSoCState;
->
->  #define TYPE_RISCV_U_MACHINE MACHINE_TYPE_NAME("sifive_u")
 > diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-> index 754af19eef..96177c1977 100644
+> index 9c90c94c33..754af19eef 100644
 > --- a/hw/riscv/sifive_u.c
 > +++ b/hw/riscv/sifive_u.c
-> @@ -478,8 +478,6 @@ static void riscv_sifive_u_soc_realize(DeviceState *d=
+> @@ -441,6 +441,8 @@ static void riscv_sifive_u_soc_init(Object *obj)
+>      qdev_prop_set_uint32(DEVICE(&s->otp), "serial", OTP_SERIAL);
+>      sysbus_init_child_obj(obj, "gem", &s->gem, sizeof(s->gem),
+>                            TYPE_CADENCE_GEM);
+> +    object_property_set_int(OBJECT(&s->gem), GEM_REVISION, "revision",
+> +                            &error_abort);
+>  }
+>
+>  static bool sifive_u_get_start_in_flash(Object *obj, Error **errp)
+> @@ -569,8 +571,6 @@ static void riscv_sifive_u_soc_realize(DeviceState *d=
 ev, Error **errp)
->      SiFiveUSoCState *s =3D RISCV_U_SOC(dev);
->      const struct MemmapEntry *memmap =3D sifive_u_memmap;
->      MemoryRegion *system_memory =3D get_system_memory();
-> -    MemoryRegion *mask_rom =3D g_new(MemoryRegion, 1);
-> -    MemoryRegion *l2lim_mem =3D g_new(MemoryRegion, 1);
->      qemu_irq plic_gpios[SIFIVE_U_PLIC_NUM_SOURCES];
->      char *plic_hart_config;
->      size_t plic_hart_config_len;
-> @@ -503,10 +501,10 @@ static void riscv_sifive_u_soc_realize(DeviceState =
-*dev, Error **errp)
->                               &error_abort);
->
->      /* boot rom */
-> -    memory_region_init_rom(mask_rom, OBJECT(dev), "riscv.sifive.u.mrom",
-> +    memory_region_init_rom(&s->mask_rom, OBJECT(dev), "riscv.sifive.u.mr=
-om",
->                             memmap[SIFIVE_U_MROM].size, &error_fatal);
->      memory_region_add_subregion(system_memory, memmap[SIFIVE_U_MROM].bas=
-e,
-> -                                mask_rom);
-> +                                &s->mask_rom);
->
->      /*
->       * Add L2-LIM at reset size.
-> @@ -517,10 +515,10 @@ static void riscv_sifive_u_soc_realize(DeviceState =
-*dev, Error **errp)
->       * leave it enabled all the time. This won't break anything, but wil=
-l be
->       * too generous to misbehaving guests.
->       */
-> -    memory_region_init_ram(l2lim_mem, NULL, "riscv.sifive.u.l2lim",
-> +    memory_region_init_ram(&s->l2lim_mem, NULL, "riscv.sifive.u.l2lim",
->                             memmap[SIFIVE_U_L2LIM].size, &error_fatal);
->      memory_region_add_subregion(system_memory, memmap[SIFIVE_U_L2LIM].ba=
-se,
-> -                                l2lim_mem);
-> +                                &s->l2lim_mem);
->
->      /* create PLIC hart topology configuration string */
->      plic_hart_config_len =3D (strlen(SIFIVE_U_PLIC_HART_CONFIG) + 1) *
+>          qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
+>          qdev_set_nic_properties(DEVICE(&s->gem), nd);
+>      }
+> -    object_property_set_int(OBJECT(&s->gem), GEM_REVISION, "revision",
+> -                            &error_abort);
+>      object_property_set_bool(OBJECT(&s->gem), true, "realized", &err);
+>      if (err) {
+>          error_propagate(errp, err);
 > --
 > 2.21.1
 >

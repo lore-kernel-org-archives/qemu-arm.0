@@ -1,101 +1,106 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4979258lfm;
-        Tue, 14 Apr 2020 06:13:41 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIT3ZMKsYPVAvfjwAdl7BBLdIvXjLo6YbERMIkLi6GOoGUQxCboAu2sXakkS+TsxeI9IGaa
-X-Received: by 2002:ac8:480e:: with SMTP id g14mr15047846qtq.333.1586870021137;
-        Tue, 14 Apr 2020 06:13:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586870021; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4991281lfm;
+        Tue, 14 Apr 2020 06:25:14 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIrJbqlAlRp/yo0Fbix6XP6cFKj7AWceki5MpjpPYIw0M+tfq6PbhVGrjWwMF7RWTd6M6dJ
+X-Received: by 2002:ac8:6c23:: with SMTP id k3mr16333514qtu.107.1586870714392;
+        Tue, 14 Apr 2020 06:25:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586870714; cv=none;
         d=google.com; s=arc-20160816;
-        b=dphIFAhyWtJTkMQLvNKsDfLQft1yXhoVOhxhB8ebVDaz70kls2dNfYA6zC9V80TAgU
-         IglrRzTwtmVywA/5Wfp6DxGMrUXOXarO1+sLNokz2HTgiLc0kS/SZgvATHOwv7eyMhpR
-         y5Q6hM7hIOzINUAZnV30afChmA/fVVdyQeenofFLlsJIqWwktXz5rQqo4y37nt6W29cJ
-         uTQUkg39JZ9OILxOLoi5ecR+zJ+0IMrg6UivoWL9+vUEtx6tfNhrz39NKVhP7MTgtE9j
-         uj/ixjWEKHLU6waMlN7EH/TrGtFT8Kbf5ukjzas7uiLB+/VECEdlo9wTry5d6jScYkLe
-         RO9g==
+        b=FVJSSphIDyLaqQZh9djKNeb9Lo164ntBDWd3sOCoLSTkNkgqnsrisd683FEp0WomrN
+         i/QtA4T4f42dfFL+CLEOpUiZjXibzNahHs+tyxlBWDLPPvBGJO8169ru81W5gVbnCTPf
+         hnKNw1hACenO0+/kQFZSfnEZofFBlHf2UnmBF0Sd6mu11bECnAgzxuBqDAwfCGGfoOq3
+         1BdH3SYDwQmj/+puezNB7Jhob0fdK+EmTPgffq7mUiODnk7PHR4v6xehBRwmhURhMGqT
+         1AdCpGQBPGwayns1Tl3pvqrFXl6zTT1Fg/pFkiQOMUI5AHbAy4mkAi8Z2cvW9i5rLvPM
+         9o3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=ECr5QE9/ZG1LP8toqj5wZJNArL3k/t9YUAbsoEu9oI4=;
-        b=xXLk18iA2EOQjFBRWF5UpgzAgBaGZYvZp2twWE6HCf6QqHSFdRJBlNOAHHSEunLVYy
-         sQqPydUz7alfHMaTHoNZeSncvwu43z9UNc1tD4tswqjkFLxH2XcAef7Mmx3ruemXsax0
-         Gotrg0hMPqCoUNJdn89lIMaKdj0r3YlM3SRFrNPTmyzR+wNZss1I7JKUI7ZI1PW6Rd3K
-         lcEkt7DesvqJJuBt7nwI/6GfHNPUl9aZ6Y5lL/vzYyYOBxFtN0HC0N0kib5tt3lABDl1
-         PZINurp07MhsH6oXmVvJ3Y9BwVt/qETt50suWWaG6jVtQAUkTYKOkmFJOajPTIP3T8x+
-         vxEw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=n1enxpw1iq2qUSKHRxdrji8h9Lk93CaNmW3jVYV179E=;
+        b=e01RNTRgdktaKeukah6bLGZi0YtVTpyaP23Ag0oCHZFUL0yHeVsVJYiH/v3VMZzvNq
+         xyytWe0deAz6ZebOcx60pjwGo5fIAvd2kE91lBdpyakiabUDh3B2JKe32UXkrkg4Me9j
+         IlKZGfxwYUhoOF+mdR/jnbXlQ3Cl+m7i8/0AyLo/il6FYUbtyPydhh3nteMH8j8HjivP
+         QDEyM8pnmAmT08+unH0Si0EP2yUMwZGQU0ztvFLx15343CfUm3BmxWiB8xwCl9bXWqpt
+         PE9wLgroYCNL5813hZgBUvh8RFFzKZfLzmPogvtai+poaUU72brHHnxg7+Z+2SlD36l5
+         5vkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UufHc8Ro;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZE+2LL6s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s40si749000qts.310.2020.04.14.06.13.40
+        by mx.google.com with ESMTPS id k26si5124935qkj.43.2020.04.14.06.25.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Apr 2020 06:13:41 -0700 (PDT)
+        Tue, 14 Apr 2020 06:25:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UufHc8Ro;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZE+2LL6s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60438 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60600 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jOLNk-00051X-JM
-	for alex.bennee@linaro.org; Tue, 14 Apr 2020 09:13:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40394)
+	id 1jOLYv-0003AO-S4
+	for alex.bennee@linaro.org; Tue, 14 Apr 2020 09:25:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42161)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <sundeep.lkml@gmail.com>) id 1jOLNa-0004yx-L7
- for qemu-arm@nongnu.org; Tue, 14 Apr 2020 09:13:31 -0400
+ (envelope-from <armbru@redhat.com>) id 1jOLYk-00039v-9Z
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 09:25:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <sundeep.lkml@gmail.com>) id 1jOLNZ-0000mc-IG
- for qemu-arm@nongnu.org; Tue, 14 Apr 2020 09:13:30 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:39719)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
- id 1jOLNX-0000lv-0e; Tue, 14 Apr 2020 09:13:27 -0400
-Received: by mail-io1-xd42.google.com with SMTP id m4so13125008ioq.6;
- Tue, 14 Apr 2020 06:13:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=ECr5QE9/ZG1LP8toqj5wZJNArL3k/t9YUAbsoEu9oI4=;
- b=UufHc8RoT4aVuiwKw0fRk65MSomBZ0Ex2tiNVCBUZ/f9PTowuqh1E4VPJLapjhNVcA
- yk/nkTbFCIdnxCcT+8NKUEAOByEB/UknRdLfXjjdB9cVOTsLfXhbEGXjB56cRp8/lm7O
- lWeqOYfckpEMG9P6VeiF/by/bAQ0ww5FL87OcTseFxmM60i1tdlOJ+PBNrABYswydSGC
- in09vkK+oj9bzQjTa/oUNpm8y2Xm2e+rf6ypzxk41i551luhoJ7rTXr9qJc7n9LDvCar
- zCa8yJwL/cn8/7S2+yuP7ju9vG9JDFbNuVc1nztdrAXGEkzinS7KefXuIiFFTtQdfZy/
- /S0w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=ECr5QE9/ZG1LP8toqj5wZJNArL3k/t9YUAbsoEu9oI4=;
- b=knKse2hv5jC3HVNie7bspWyKsay2U0UxhFBc/l2d9mscINYhlOOS+9BBAqlXmesMZM
- kmywThIs7pme/g5vrIcIS7YdlZ68uVs2mYphkCEOMvzLJTw0nBAO/ryHhvZ/sCH0502x
- E/+FMqF6vHbVN6AuEYGP9H+LeNwz3e1EC7r7rFtBibF7KTSrnqc21QrFOmpfeQ0RcThe
- vmzC78jIVbTXn2BTnqi0ZzlF2vtA8AZ44ekIilh4NVnLPydNLvI6yZDe+djnHaQORTZR
- 9mNsVkxetOTcIVO2LoRhevy2jEUtH4vID+EMC3HlvzikqjJfIIRX8Y0fKybhNJeOCsGV
- kFRg==
-X-Gm-Message-State: AGi0Pua/HUEBbZ4z5JaSVl0b7i6ikN5zr8ONreRdALiZFWiANExm0+Xy
- WngDa3YAK6GWtmpjBERsn1AbYAFbr5aIwiDzfbI=
-X-Received: by 2002:a5d:9c09:: with SMTP id 9mr7448545ioe.26.1586870006115;
- Tue, 14 Apr 2020 06:13:26 -0700 (PDT)
+ (envelope-from <armbru@redhat.com>) id 1jOLYi-0005PK-PT
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 09:25:02 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:51732
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1jOLYi-0005Oy-LQ
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 09:25:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1586870699;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=n1enxpw1iq2qUSKHRxdrji8h9Lk93CaNmW3jVYV179E=;
+ b=ZE+2LL6s3i/pSw2IyQuiOHpLpaGa/BNj+L2W/LuSwdGacudu5yXF4S/XlnBuSoURajLjhc
+ lO8W0HbpqPvJBD8XfB/1BZ5AAk7F5wqNeBDjUZzIkGnhrIEo5LzDx9dBnedWGXxN3xSLYE
+ pe6x/Yfddfw5+3jq+62C2UYKqH+5qJA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-474-vr-mMZd5MjmMWvdr1lzLew-1; Tue, 14 Apr 2020 09:24:54 -0400
+X-MC-Unique: vr-mMZd5MjmMWvdr1lzLew-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BD01C149C4;
+ Tue, 14 Apr 2020 13:24:51 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-113-20.ams2.redhat.com
+ [10.36.113.20])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C845218A8E;
+ Tue, 14 Apr 2020 13:24:47 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 4855B11385C8; Tue, 14 Apr 2020 15:24:46 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH-for-5.1 v3 01/23] scripts/coccinelle: Catch missing
+ error_propagate() calls in realize()
+References: <20200412224144.12205-1-f4bug@amsat.org>
+ <20200412224144.12205-2-f4bug@amsat.org>
+ <87v9m2s0k4.fsf@dusky.pond.sub.org>
+Date: Tue, 14 Apr 2020 15:24:46 +0200
+In-Reply-To: <87v9m2s0k4.fsf@dusky.pond.sub.org> (Markus Armbruster's message
+ of "Tue, 14 Apr 2020 14:40:11 +0200")
+Message-ID: <87d08aqjxd.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-References: <1586529926-11441-1-git-send-email-sundeep.lkml@gmail.com>
- <1586529926-11441-3-git-send-email-sundeep.lkml@gmail.com>
- <09d13b7c-7a48-4405-fbcd-558e71871ddf@amsat.org>
-In-Reply-To: <09d13b7c-7a48-4405-fbcd-558e71871ddf@amsat.org>
-From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Tue, 14 Apr 2020 18:43:15 +0530
-Message-ID: <CALHRZuqJMk3BeMhKfjCjuEBqQmSFn=oLgXe=Hn0FPXgq1TbTJw@mail.gmail.com>
-Subject: Re: [Qemu devel PATCH v4 2/3] msf2: Add EMAC block to SmartFusion2 SoC
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::d42
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,159 +112,156 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Alistair Francis <Alistair.Francis@wdc.com>, Max Reitz <mreitz@redhat.com>,
+ qemu-block@nongnu.org, Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Joel Stanley <joel@jms.id.au>, qemu-ppc@nongnu.org,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Richard Henderson <rth@twiddle.net>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Alistair Francis <alistair@alistair23.me>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
+ qemu-riscv@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Michael Walle <michael@walle.cc>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 87jBUFp9GwG0
+X-TUID: sdMWbRgwvk3T
 
-Hi Philippe,
+Markus Armbruster <armbru@redhat.com> writes:
 
-On Sun, Apr 12, 2020 at 11:28 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
+> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 >
-> On 4/10/20 4:45 PM, sundeep.lkml@gmail.com wrote:
-> > From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> >
-> > With SmartFusion2 Ethernet MAC model in
-> > place this patch adds the same to SoC.
-> >
-> > Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> > ---
-> >  hw/arm/msf2-soc.c         | 21 ++++++++++++++++++++-
-> >  include/hw/arm/msf2-soc.h |  3 +++
-> >  2 files changed, 23 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-> > index 588d643..2f2db6d 100644
-> > --- a/hw/arm/msf2-soc.c
-> > +++ b/hw/arm/msf2-soc.c
-> > @@ -35,6 +35,7 @@
+>> In some DeviceClass::realize() while we can propagate errors
+>> to the caller, we forgot to do so. Add a Coccinelle patch to
+>> automatically add the missing code.
+>>
+>> Inspired-by: Peter Maydell <peter.maydell@linaro.org>
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>> ---
+>>  .../use-error_propagate-in-realize.cocci      | 54 +++++++++++++++++++
+>>  MAINTAINERS                                   |  1 +
+>>  2 files changed, 55 insertions(+)
+>>  create mode 100644 scripts/coccinelle/use-error_propagate-in-realize.co=
+cci
+>>
+>> diff --git a/scripts/coccinelle/use-error_propagate-in-realize.cocci b/s=
+cripts/coccinelle/use-error_propagate-in-realize.cocci
+>> new file mode 100644
+>> index 0000000000..7b59277a50
+>> --- /dev/null
+>> +++ b/scripts/coccinelle/use-error_propagate-in-realize.cocci
+>> @@ -0,0 +1,54 @@
+>> +// Add missing error-propagation code in DeviceClass::realize()
+>> +//
+>> +// Copyright: (C) 2020 Philippe Mathieu-Daud=C3=A9
+>> +// This work is licensed under the terms of the GNU GPLv2 or later.
+>> +//
+>> +// spatch \
+>> +//  --macro-file scripts/cocci-macro-file.h --include-headers \
+>> +//  --sp-file scripts/coccinelle/use-error_abort-in-instance_init.cocci=
+ \
+>> +//  --keep-comments --timeout 60 --in-place
+>> +//
+>> +// Inspired by https://www.mail-archive.com/qemu-devel@nongnu.org/msg69=
+1638.html
+>> +
+>> +
+>> +@ match_class_init @
+>> +TypeInfo info;
+>> +identifier class_initfn;
+>> +@@
+>> +    info.class_init =3D class_initfn;
+>> +
+>> +
+>> +@ match_realize @
+>> +identifier match_class_init.class_initfn;
+>> +DeviceClass *dc;
+>> +identifier realizefn;
+>> +@@
+>> +void class_initfn(...)
+>> +{
+>> +    ...
+>> +    dc->realize =3D realizefn;
+>> +    ...
+>> +}
+>> +
+>> +
+>> +@ propagate_in_realize @
+>> +identifier match_realize.realizefn;
+>> +identifier err;
+>> +identifier errp;
+>> +identifier func_with_errp;
+>> +symbol error_abort, error_fatal;
+>> +@@
+>> +void realizefn(..., Error **errp)
+>> +{
+>> +    ...
+>> +    Error *err =3D NULL;
+>> +    <+...
+>> +    func_with_errp(...,
+>> +-                      \(&error_abort\|&error_fatal\));
+>> ++                      &err);
+>> ++   if (err) {
+>> ++       error_propagate(errp, err);
+>> ++       return;
 >
-> Maybe you also want:
+> Issues:
 >
-> - * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> + * Copyright (c) 2017-2020 Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> 0. The script patches only realize() methods of DeviceClass, not of
+>    subclasses, and no helpers.
 >
-Ok.
-> >
-> >  #define MSF2_TIMER_BASE       0x40004000
-> >  #define MSF2_SYSREG_BASE      0x40038000
-> > +#define MSF2_EMAC_BASE        0x40041000
-> >
-> >  #define ENVM_BASE_ADDRESS     0x60000000
-> >
-> > @@ -55,6 +56,7 @@ static const uint32_t uart_addr[MSF2_NUM_UARTS] =3D {=
- 0x40000000 , 0x40010000 };
-> >  static const int spi_irq[MSF2_NUM_SPIS] =3D { 2, 3 };
-> >  static const int uart_irq[MSF2_NUM_UARTS] =3D { 10, 11 };
-> >  static const int timer_irq[MSF2_NUM_TIMERS] =3D { 14, 15 };
-> > +static const int emac_irq[MSF2_NUM_EMACS] =3D { 12 };
+>    Example of a subclass method: see my review of "[PATCH-for-5.1 v3
+>    02/24] scripts/coccinelle: Script to simplify DeviceClass error
+>    propagation".
 >
-> Correct.
->
-> >
-> >  static void do_sys_reset(void *opaque, int n, int level)
-> >  {
-> > @@ -81,6 +83,13 @@ static void m2sxxx_soc_initfn(Object *obj)
-> >          sysbus_init_child_obj(obj, "spi[*]", &s->spi[i], sizeof(s->spi=
-[i]),
-> >                            TYPE_MSS_SPI);
-> >      }
-> > +
-> > +    sysbus_init_child_obj(obj, "eth", &s->emac, sizeof(s->emac),
->
-> "eth" -> "tsemac" (or "emac")?
->
-Will change to emac.
-> > +                          TYPE_MSS_EMAC);
-> > +    if (nd_table[0].used) {
-> > +        qemu_check_nic_model(&nd_table[0], TYPE_MSS_EMAC);
-> > +        qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
-> > +    }
-> >  }
-> >
-> >  static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
-> > @@ -192,6 +201,17 @@ static void m2sxxx_soc_realize(DeviceState *dev_so=
-c, Error **errp)
-> >          g_free(bus_name);
-> >      }
-> >
-> > +    dev =3D DEVICE(&s->emac);
->
-> Can you pass the DMA memory via a link property please?
->
->        object_property_set_link(OBJECT(&s->emac),
->                                 OBJECT(get_system_memory()),
->                                 "ahb-bus", &error_abort);
->
-Okay.
-> > +    object_property_set_bool(OBJECT(&s->emac), true, "realized", &err)=
-;
-> > +    if (err !=3D NULL) {
-> > +        error_propagate(errp, err);
-> > +        return;
-> > +    }
-> > +    busdev =3D SYS_BUS_DEVICE(dev);
-> > +    sysbus_mmio_map(busdev, 0, MSF2_EMAC_BASE);
-> > +    sysbus_connect_irq(busdev, 0,
-> > +                           qdev_get_gpio_in(armv7m, emac_irq[0]));
->
-> Indentation is off.
->
-Will fix
-> > +
-> >      /* Below devices are not modelled yet. */
-> >      create_unimplemented_device("i2c_0", 0x40002000, 0x1000);
-> >      create_unimplemented_device("dma", 0x40003000, 0x1000);
-> > @@ -202,7 +222,6 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc=
-, Error **errp)
-> >      create_unimplemented_device("can", 0x40015000, 0x1000);
-> >      create_unimplemented_device("rtc", 0x40017000, 0x1000);
-> >      create_unimplemented_device("apb_config", 0x40020000, 0x10000);
-> > -    create_unimplemented_device("emac", 0x40041000, 0x1000);
-> >      create_unimplemented_device("usb", 0x40043000, 0x1000);
-> >  }
-> >
-> > diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
-> > index 3cfe5c7..296ed03 100644
-> > --- a/include/hw/arm/msf2-soc.h
-> > +++ b/include/hw/arm/msf2-soc.h
-> > @@ -29,12 +29,14 @@
-> >  #include "hw/timer/mss-timer.h"
-> >  #include "hw/misc/msf2-sysreg.h"
-> >  #include "hw/ssi/mss-spi.h"
-> > +#include "hw/net/msf2-emac.h"
-> >
-> >  #define TYPE_MSF2_SOC     "msf2-soc"
-> >  #define MSF2_SOC(obj)     OBJECT_CHECK(MSF2State, (obj), TYPE_MSF2_SOC=
-)
-> >
-> >  #define MSF2_NUM_SPIS         2
-> >  #define MSF2_NUM_UARTS        2
-> > +#define MSF2_NUM_EMACS        1
-> >
-> >  /*
-> >   * System timer consists of two programmable 32-bit
-> > @@ -62,6 +64,7 @@ typedef struct MSF2State {
-> >      MSF2SysregState sysreg;
-> >      MSSTimerState timer;
-> >      MSSSpiState spi[MSF2_NUM_SPIS];
-> > +    MSF2EmacState emac;
->
-> You used 'emac_irq[MSF2_NUM_EMACS]', either use emac[MSF2_NUM_EMACS]
-> here or drop MSF2_NUM_EMACS?
->
-Will drop MSF2_NUM_EMACS.
+>    Example of a helper method: pnv_chip_core_realize().
 
-> >  } MSF2State;
-> >
-> >  #endif
-> >
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Tested-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+One more:
 
-Thank you,
-Sundeep
+  * The script doesn't patch calls that pass NULL for errp.  The ones
+    that can't fail should pass &error_abort instad.  The ones that can
+    fail commonly need to error_propagate().  There may be exceptions,
+    though.
+
+>
+> 1. When the function can't actually fail, the script adds dead error
+>    handling.
+
+     &error_abort is not wrong in such cases.
+
+     &error_fatal is always wrong in realize().
+
+> 2. When the function can fail, it may well add incomplete error
+>    handling: it can't add the code needed to revert what has been done
+>    so far.
+>
+>    Example: ivshmem_common_realize() has:
+>
+>         error_setg(&s->migration_blocker,
+>                    "Migration is disabled when using feature 'peer mode' =
+in device 'ivshmem'");
+>         migrate_add_blocker(s->migration_blocker, &err);
+>         if (err) {
+>             error_propagate(errp, err);
+>             error_free(s->migration_blocker);
+>             return;
+>         }
+>
+>    If the error handling was missing, the script would fail to add the
+>    error_free().
+>
+> Even imperfect scripts can lead us to code in need of improvement.  But
+> you should explain the script's limitations, both in the script and the
+> commit message.
+

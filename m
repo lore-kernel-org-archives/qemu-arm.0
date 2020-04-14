@@ -1,173 +1,152 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4884865lfm;
-        Tue, 14 Apr 2020 04:35:26 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKMRKsLFT7Cx1tdis6NljAv96Vqooax7NVxEM8zXFEswomuuxgOIqBInh36ngTg+N38Qk9f
-X-Received: by 2002:aa7:cb4e:: with SMTP id w14mr5483953edt.168.1586864126206;
-        Tue, 14 Apr 2020 04:35:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586864126; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4916740lfm;
+        Tue, 14 Apr 2020 05:09:52 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIiZ66CdksMvWt9RlPBckSgbp9K0PeO7w5M4pKxN1N6WaEEJjpPzgynKGkj/seRMiN8TmRk
+X-Received: by 2002:aed:3ec2:: with SMTP id o2mr12040776qtf.334.1586866192263;
+        Tue, 14 Apr 2020 05:09:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586866192; cv=none;
         d=google.com; s=arc-20160816;
-        b=AQBZvbCvq4aZwRMyfiVATya/x6D5n8lFAHrrkT/2wbe0fLyi3oI+mNiFIqm/obrBdJ
-         lJp+s4swIRrlhPoGxtgI5WHv4zIrkRVQAMLkZ3ar+F2HQo84b6FOd1OXmxB4TylSaeP6
-         DBBnu1lQN02eDv0cZWKSeJMceZPdwrNlbn42I87gDxYGTAohlsQrfmoFwkwR15EkyYeB
-         O3JtTk3CPFGhx7w61AXRgASANKXdgdzUUocYlyMxeMismHioA+Opxr6tB0sqxgVhmfdV
-         XyEwuBO3PTopu5vjA0t3Y+ZPL4ndJDtAWOOtDwyxiPBJW6JxiavBRr/yLA6GVYvHRjAR
-         Bmdg==
+        b=oKrOlCffRTX+WLpz92cuzmZbd/+5Z0TTn9JAONGOa3Nk0dGNbOnBZAWCBGE5zy9kwP
+         qoVmWsp1hFxUe8mtOz5YiiLCelSRlm7kEu0R8rAHwgPiIlkyM57jbTT2qJEUfH7+Ko18
+         AnnxFmUF+1qWO4HN6VUa69Yz1/7aGCt4FZmaIT+3VcqxSsulMv8g5UdB7ZyxCbziyzl6
+         40U0z2pocX4ZqFq8SyL87khntxiJe7Yc86ZGWU8QowlTDq/RQtbizx89GNUHhfmdc+j+
+         ppW10HfjtT+09kxCt8BtRK0Ef/jTLj2HXIbnM2dcWgbbLz5LQnR6EpHiO5RXmEc1aEbm
+         nWjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=TkWkv1sSQkb10ESnJ81NX+eXLN9yPeO5ArhBlLlo7kM=;
-        b=0z83q+UWdE3y09fkdqnf4mdzYDw4ws8vJ9LCbInqtqxTknB5Xgw9xXjaltLTCljXQg
-         fUTpDv/y4PWLptnH4LebCJJjn9gDKXAxtrU3razBYKruluXUVwVDrLMdVTk5IvWlyIpl
-         jooikYBzFRLse1XisDGvXqNGip0mP7zwuaoCmNfUG8f3m5NPT6BH/xDPHXZIAzIS+43j
-         hHO/iuOwX9jhewAyOWf+Q5uDVnFZZjgMn2rMfcalV++MRqF8K30bLhJMrGzkquw4TWUG
-         XR1iXWRjxlNSiVgddGtQX0u7SyFW9ELMKkl3A6+OKHE5+bOdo5pQEqpk9orHyaxcFR6v
-         S0Ow==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=v6Zv+pX1jlJqPpGlzzS0UHccRy5au45iW1uB7VR0uRk=;
+        b=JpedWJGr5Ytq0KwYo/bPJRCl8u0fzMQUQ0nbxYS/BsfoRJngme7ClFI4z7rpG4ooml
+         GWosUPhV17WCwmNQvAWs99ygWkFhQeBy6LZcn+EZN0dgmp7S4ZPvB+Sc3ckArdml9XnU
+         Gwp08oFAQip9zGUSNWE2x5R3VaszTT/hI/eGp3GhVWNpm7bLwUpUyFUQTPNdKcYvuW7O
+         joXiLNOsDHep3TphnqxNA3M4vtRJ2VaxyS4AS8JXdTHBkrJ08FhAL+MVRhcT7mhcXHbL
+         IAjRgditUeiUnkd6JF99I512oeS1durQ7llg5IMDPLYIFuH8iHCiiimKtentE5fcxKEI
+         pYvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g3qI1N+W;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id b1si8707868edh.318.2020.04.14.04.35.25
+       dkim=pass header.i=@linaro.org header.s=google header.b="A/lkR0fi";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s20si7373788qtb.249.2020.04.14.05.09.52
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 14 Apr 2020 04:35:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 14 Apr 2020 05:09:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g3qI1N+W;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1586864125;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=TkWkv1sSQkb10ESnJ81NX+eXLN9yPeO5ArhBlLlo7kM=;
-	b=g3qI1N+WndwWYqYJQt38oWJEWlUKHYiNwTLiHOVj/UNJM5AMndteBpSKBqTZv0AeTjtjz3
-	QT94hQXFr4755O4AqZAzixyKEv3m5OdTPgSNiGhF1DXLWi5DbKE/+kBg0JIVEpxFtAhKqq
-	OP0QmQgQbkQnTBgEWmiwA/4KpnvQgX8=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-171-28zlHIRVOrWwrSRzeWwZhg-1; Tue, 14 Apr 2020 07:35:21 -0400
-X-MC-Unique: 28zlHIRVOrWwrSRzeWwZhg-1
-Received: by mail-wr1-f69.google.com with SMTP id v14so8527118wrq.13
-        for <alex.bennee@linaro.org>; Tue, 14 Apr 2020 04:35:21 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b="A/lkR0fi";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59290 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jOKNz-00071B-N7
+	for alex.bennee@linaro.org; Tue, 14 Apr 2020 08:09:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59139)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1jOKNo-00070S-PS
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 08:09:41 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1jOKNn-0004o1-Gq
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 08:09:40 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:46404)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jOKNn-0004nh-AE
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 08:09:39 -0400
+Received: by mail-wr1-x443.google.com with SMTP id f13so14008698wrm.13
+ for <qemu-arm@nongnu.org>; Tue, 14 Apr 2020 05:09:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=v6Zv+pX1jlJqPpGlzzS0UHccRy5au45iW1uB7VR0uRk=;
+ b=A/lkR0fi6W7ZdKckfOiXkVnUHfqVDwqevglnG0zorUNwGX+Y981e96h8lc1NRmxIYm
+ SzD+udUTZvDoOnyQAlKYwHN41FVFeSR90RpiMEF6I081FclcBbXRxwGw/dK2qirPFHFT
+ wbzyDkZJJ1WfuQyGYvkfMcK15/GPvoISje721IzdlqPfYpBd6OXoXeST+fpa/Izl+isn
+ 7/IOHQpAgX2YT5g1rQ1oP0CXP/E2DLeOch/0+hUJlAKgvJjNIbGeHcx0WczkNb8L4Wvm
+ dQ3D8gUgQte5bAGat9QhvTf5zV7LqvOLrBsRhz3GqyVWSrFDP5yEJAiDlIpMQfhUnENO
+ JqFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=45deY+ympfnEFZqUmSQTtjgToLUZLlw6E2wOzJRdDj4=;
-        b=od/hn2Ykc6D/eCncqbaYjDtJizt6BIAlcWHy8MANhJQZ16a7DcTyYnnHSfja8G8afk
-         BxKdgupYq8tYM8WAyCl8GD9IoXiHz1cm5Ce8jqajY07uM5RfsuRHc30Fqx5bQX5O+Pfr
-         hmDm5eKXXF5jY6KwdMlbdXWn2Tmn+U3ibKkVBToF3nkD4E2qM8wap3ST73OZiAuKUk65
-         iwY5rt/OpyvwDIqKmWrZ5uq85yiYrPntlLSY8UKExjcSptZjU+s2acIAsV7jWqAmxfRb
-         zwbnjNK+g5d4sapc2NH99IllBQ7az+BdD25pgLiEck3dJMxtPB3OGXv84jNqkKKPIwKi
-         e4gA==
-X-Gm-Message-State: AGi0PuaH3RfyCyiUPm/vZKteRIHAyoDmG4c3TQHeaB0sLrMgmJi+b4lF
-	1QxKEHoB8qe/UudnErQE7Kgo5Yd5TiSuGx/8bDUYvOnyN2E3xN7P/L00++dx2yg93nLnewnakwq
-	VysiUHPsUr4rVOcvK
-X-Received: by 2002:a1c:bd8b:: with SMTP id n133mr24582562wmf.175.1586864120306;
-        Tue, 14 Apr 2020 04:35:20 -0700 (PDT)
-X-Received: by 2002:a1c:bd8b:: with SMTP id n133mr24582536wmf.175.1586864120106;
-        Tue, 14 Apr 2020 04:35:20 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net. [83.42.57.116])
-        by smtp.gmail.com with ESMTPSA id h26sm18105559wmb.19.2020.04.14.04.35.18
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 14 Apr 2020 04:35:19 -0700 (PDT)
-Subject: Re: [PATCH-for-5.1] gdbstub: Rename GByteArray variable 'mem_buf' as
- 'array'
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Stafford Horne <shorne@gmail.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>, qemu-arm@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- David Hildenbrand <david@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Laurent Vivier <laurent@vivier.eu>, Cornelia Huck <cohuck@redhat.com>,
- qemu-s390x@nongnu.org, Alistair Francis <Alistair.Francis@wdc.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
- Marek Vasut <marex@denx.de>, Aurelien Jarno <aurelien@aurel32.net>,
- Chris Wulff <crwulff@gmail.com>, Richard Henderson <rth@twiddle.net>,
- qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Paolo Bonzini <pbonzini@redhat.com>, Michael Walle <michael@walle.cc>,
- Max Filippov <jcmvbkbc@gmail.com>
-References: <20200414112849.21787-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <09f9ae36-f8e9-8412-cd97-f3f386907b6f@redhat.com>
-Date: Tue, 14 Apr 2020 13:35:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=v6Zv+pX1jlJqPpGlzzS0UHccRy5au45iW1uB7VR0uRk=;
+ b=h2XTEipN4Gos+XiDNmiKmkqAtSjGivxJtl5kbIfYNnBf4vj4gV423AUgwPnO6a5O1Q
+ L1fQvo0XmVUY9Wsqxv6ZoRFtq/mgkTaybB1w1Pr9SqUQ0HA4q7PhhvTljqAPN5DEWGo/
+ zJkWxzNG7Xxw6zgi/Cj1qLD9R+ylerIOL0YVWLvDp176W8agto76aiQrHHkpoPOUOYNY
+ 7He/zYAgWN/muzKDnsYWOo1wN06II26R7nfNMT4y6HnRCm+JhE8VI6+HUR9RxbueOzKc
+ pjXFVj/nCBMa4D9Vf1OCesUKkcUzHF33NjesnV1tZVu6C8hrJoutgvyNJdAymhyvgWQx
+ Z1yg==
+X-Gm-Message-State: AGi0Pubk7zQuGklTWpwGqGdFR9em6ukQ0rGDE97CXrh2xt+8vPyQQhDl
+ L4LC2e6Os8+ayTq7P1RKWyEPH0V86nhLag==
+X-Received: by 2002:a5d:6645:: with SMTP id f5mr24741897wrw.280.1586866177813; 
+ Tue, 14 Apr 2020 05:09:37 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id i25sm18391406wml.43.2020.04.14.05.09.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 14 Apr 2020 05:09:37 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [for-5.0] Deprecate KVM support for AArch32
+Date: Tue, 14 Apr 2020 13:09:35 +0100
+Message-Id: <20200414120935.12719-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <20200414112849.21787-1-philmd@redhat.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-TUID: eOcyrOQeMOq4
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::443
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vovMiLe+sEiy
 
-On 4/14/20 1:28 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> GByteArray type has should not be treated as a u8[] buffer.
-> The GLib Byte Arrays API should be used instead.
-> Rename the 'mem_buf' variable as 'array' to make it more
-> obvious in the code.
+The Linux kernel has dropped support for allowing 32-bit Arm systems
+to host KVM guests (kernel commit 541ad0150ca4aa663a2, which just
+landed upstream in the 5.7 merge window).  Mark QEMU's support for
+this configuration as deprecated, so that we can delete that support
+code in 5.2.
 
-I forgot to mention this variable was used as u8[] buffer prior to=20
-commit a010bdbe719 ("extend GByteArray to read register helpers").
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+I was reading the 5.7 merge window writeup on LWN this weekend
+and saw that the dropping of 32-bit support had gone in; just
+enough time to squeeze our deprecation warning into 5.0 so we
+can drop the code in 5.2 rather than 6.0...
 
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
-> Based-on: <20200414111846.27495-1-philmd@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->   include/exec/gdbstub.h      | 34 +++++++-------
->   include/hw/core/cpu.h       |  2 +-
->   target/alpha/cpu.h          |  2 +-
->   target/arm/cpu.h            |  4 +-
->   target/cris/cpu.h           |  4 +-
->   target/hppa/cpu.h           |  2 +-
->   target/i386/cpu.h           |  2 +-
->   target/lm32/cpu.h           |  2 +-
->   target/m68k/cpu.h           |  2 +-
->   target/microblaze/cpu.h     |  2 +-
->   target/mips/internal.h      |  2 +-
->   target/openrisc/cpu.h       |  2 +-
->   target/ppc/cpu.h            |  4 +-
->   target/riscv/cpu.h          |  2 +-
->   target/rx/cpu.h             |  2 +-
->   target/s390x/internal.h     |  2 +-
->   target/sh4/cpu.h            |  2 +-
->   target/sparc/cpu.h          |  2 +-
->   target/xtensa/cpu.h         |  2 +-
->   gdbstub.c                   |  6 +--
->   hw/core/cpu.c               |  3 +-
->   target/alpha/gdbstub.c      |  4 +-
->   target/arm/gdbstub.c        | 10 ++--
->   target/arm/gdbstub64.c      | 10 ++--
->   target/cris/gdbstub.c       | 34 +++++++-------
->   target/hppa/gdbstub.c       |  6 +--
->   target/i386/gdbstub.c       | 92 ++++++++++++++++++-------------------
->   target/lm32/gdbstub.c       | 18 ++++----
->   target/m68k/gdbstub.c       | 10 ++--
->   target/m68k/helper.c        | 24 +++++-----
->   target/microblaze/gdbstub.c |  6 +--
->   target/mips/gdbstub.c       | 30 ++++++------
->   target/nios2/cpu.c          |  8 ++--
->   target/openrisc/gdbstub.c   | 10 ++--
->   target/riscv/gdbstub.c      |  6 +--
->   target/rx/gdbstub.c         | 22 ++++-----
->   target/s390x/gdbstub.c      | 28 +++++------
->   target/sh4/gdbstub.c        | 38 +++++++--------
->   target/sparc/gdbstub.c      | 46 +++++++++----------
->   target/xtensa/gdbstub.c     | 20 ++++----
->   40 files changed, 254 insertions(+), 253 deletions(-)
+ docs/system/deprecated.rst | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
+index c633fe2beff..3142fac3865 100644
+--- a/docs/system/deprecated.rst
++++ b/docs/system/deprecated.rst
+@@ -336,6 +336,14 @@ The ``compat`` property used to set backwards compatibility modes for
+ the processor has been deprecated. The ``max-cpu-compat`` property of
+ the ``pseries`` machine type should be used instead.
+ 
++KVM guest support on 32-bit Arm hosts (since 5.0)
++'''''''''''''''''''''''''''''''''''''''''''''''''
++
++The Linux kernel has dropped support for allowing 32-bit Arm systems
++to host KVM guests as of the 5.7 kernel. Accordingly, QEMU is deprecating
++its support for this configuration and will remove it in a future version.
++Running 32-bit guests on a 64-bit Arm host remains supported.
++
+ System emulator devices
+ -----------------------
+ 
+-- 
+2.20.1
+

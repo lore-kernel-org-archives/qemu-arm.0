@@ -1,105 +1,107 @@
-Received: by 2002:a0c:f485:0:0:0:0:0 with SMTP id i5csp1078643qvm;
-        Tue, 14 Apr 2020 09:51:34 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKUvf4oo0U0YuCqCC5M5oMNhcuH2fGYrvphleFL9K7f+AKQ7M54tX62vD5JFkRaNgLN4j18
-X-Received: by 2002:ad4:42c9:: with SMTP id f9mr873128qvr.228.1586883094599;
-        Tue, 14 Apr 2020 09:51:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586883094; cv=none;
+Received: by 2002:a0c:f485:0:0:0:0:0 with SMTP id i5csp1081733qvm;
+        Tue, 14 Apr 2020 09:55:16 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIIywYaDo3loBfOcZfxrCaXZNUqTq+hnfzEnoDTWwL9xqUjn0YyKPMeMSPVfYANhBKbsqky
+X-Received: by 2002:ac8:7396:: with SMTP id t22mr17157143qtp.15.1586883316226;
+        Tue, 14 Apr 2020 09:55:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586883316; cv=none;
         d=google.com; s=arc-20160816;
-        b=iWaJst5DoWz5OWTSDEVGgGfdo1sSIP5P7kuZfRx00LkhZEbp09ykbeTjWYR8KgacxT
-         8/rpJXidsiAmyHAbjPkuv3vbYtDQg+on/l+kPLZwFEg6oNWH5HG45xUo+jvOMzs1YvUl
-         bWOIcmPXPEXdaCILzxfOYYCs37IPFEBmUB303AVIEqayAcgF36oPcOJgKWpYxggq/lZI
-         V/T585QIuqywmXTKa5PIOFBgY+3XyYGzgseG3Hu5STfm+2bp6sfBnv3JLqHR3zur96lR
-         Q8IV70UOx6iFbpohvGk5WQwtvjRqs72g0Gi+lc7/Up2Hm6R0zECfX6sQUCD9TmOqQi7O
-         kNbw==
+        b=NHn20vVXakhJgS9Rs8vDTT/Lpd6yJzK47shEnG7VZTw4nDotNYKBpP5AY23apL3jul
+         uBW/pCBTXVGLjW1rZ2evMYxW7jG3wpuRZzZAoeubjfDTu+PM0c3v8m/blSyQB+FrOufr
+         Getxy0vsOek2VHFwouIEyyyMLu+HO98JbuZz7ZRaNxK4bpu77aLVnGIwgI503eTsd2WZ
+         TcXmavJBwwDZF+Nd4Eh0MVn115aWmYidfqhW5x85rd+vRNUw1g/eK2DN5q0SJ1wgDDlb
+         kWBMzzQ34YkXCTna/XrC7MTUp+FjUfSetX80ae7lvrFb6faqAYPRyt7YJvo/BnmN3rHM
+         Joig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=GnJYBUthOsce7NJ4xT6W5gmharUMTFvzDWfeqO/U2B4=;
-        b=e9ba/RF9x08l1pPcLBvhJ+xY1I6IAq2unD0ZJE+ImCzWPsmiF3jdHPzKc8QQuk6bYV
-         tBY7dhvUxlC2W+EFf2UlQjw4wz+VH8gpHOKIFyDz3nJiZfxD4S6q4SYngmxnj7B9rsKQ
-         9XfNaPZIHn/iuQnv0ZGe1F4NoLQ1HtZb2gBIaoJd65//TD6sHFW6gCPMW1CmJvHEz7Zl
-         3gK/hA/74ng7BiGMPWWVxNc2vQad+9wQISrGLbrQLvHQzuO0vVGQua5tmV3WG/sbaFq2
-         5734nXdk/JEDiDhRDf3GmPUKwHldMuEk+3fCcmV12y4QywvYQU0i/WZk7TfQqkc5hu4i
-         OgNg==
+        bh=fu0f7k/a61zvNy9hTYFT7tcEyV8paFWKyShaFKjjtn0=;
+        b=tXpcvVeRPmA6wgNnW9eCDDxNrwD5gakHenYppOAvVQeWskOiO2ik3DUUXrMV/gIEjH
+         3jOQsMlW3/JJHOsiouusm1hDs7yR6jOlV0V9fOwxxedaMX4eOtg8+llElAejvG1YvqAr
+         BezmHnilSz90ZXMqQNhl7ZWdAUmVv/ex/tUKv5ionIEWCKM/uC5oOOfYzTWrZ0fJI6eE
+         qk/3rzAdroxAUJ/tEhfuUPRPDgTSpS9FcAirLR5KqWJPAuy6cd8LXazH4qHahtXvwLzw
+         nZT4A4fsw2mD487oNECH62W3g0Q9vBDSIUlQSHuXq9DBCGoJE7mWO/uPeMxc6tENO6m4
+         O0ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PKrk+PfA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DkdPImi2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m10si851630qvf.177.2020.04.14.09.51.34
+        by mx.google.com with ESMTPS id d22si5443315qto.24.2020.04.14.09.55.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Apr 2020 09:51:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Apr 2020 09:55:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PKrk+PfA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DkdPImi2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34958 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35119 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jOOmc-0006bN-3L
-	for alex.bennee@linaro.org; Tue, 14 Apr 2020 12:51:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34074)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jOOqB-0004OP-LO
+	for alex.bennee@linaro.org; Tue, 14 Apr 2020 12:55:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33425)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jOOln-0006Wr-3e
- for qemu-devel@nongnu.org; Tue, 14 Apr 2020 12:50:44 -0400
+ (envelope-from <philmd@redhat.com>) id 1jOOkg-0005Ji-98
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 12:49:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jOOll-0002rs-1p
- for qemu-devel@nongnu.org; Tue, 14 Apr 2020 12:50:42 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:29123
+ (envelope-from <philmd@redhat.com>) id 1jOOkc-00026K-Bq
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 12:49:34 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:59325
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jOLef-0008DI-6b
- for qemu-devel@nongnu.org; Tue, 14 Apr 2020 09:31:09 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jOLek-0008EP-EL
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 09:31:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1586871068;
+ s=mimecast20190719; t=1586871074;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=GnJYBUthOsce7NJ4xT6W5gmharUMTFvzDWfeqO/U2B4=;
- b=PKrk+PfAQAey7pGbNH4bRmsEQeG/8WnmpFMcQh4+HzwxZ26sj0jLKaURiEwCxvlpeOSBVs
- /tfgLtFMbzobr1ccNnYAEL5y5EqLpZgcXKlbWEf+/IfGW/WEMFp5yleTd7TB+51VCZPqLY
- bq4qMcFblG36m3lZZF2nMZxFdAYa3vk=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-361-zDdda0cnPhuMJAx74_G21A-1; Tue, 14 Apr 2020 09:31:07 -0400
-X-MC-Unique: zDdda0cnPhuMJAx74_G21A-1
-Received: by mail-wm1-f71.google.com with SMTP id f128so2617095wmf.8
- for <qemu-devel@nongnu.org>; Tue, 14 Apr 2020 06:31:07 -0700 (PDT)
+ bh=fu0f7k/a61zvNy9hTYFT7tcEyV8paFWKyShaFKjjtn0=;
+ b=DkdPImi25Yx0rxdvRS2vbzv6AsYCRKSfK3hnM2Fn0mIm4TD0EuWjOze74uxLqjyquQl/Uy
+ 30JJXKoZ5uZ6psykKBZQcZqsO2dCR2PV3ALYIw5dpLaJZBUQlpF3Iz68xlmJQ93xuxWlcs
+ tJwME0ikVV72ZYWkhWRemMMv4DnNvu8=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-64-ehF3RQ63M1y0rsxjqtJCkA-1; Tue, 14 Apr 2020 09:31:12 -0400
+X-MC-Unique: ehF3RQ63M1y0rsxjqtJCkA-1
+Received: by mail-wr1-f72.google.com with SMTP id m5so5560665wru.15
+ for <qemu-arm@nongnu.org>; Tue, 14 Apr 2020 06:31:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=6idqut0mU47T5T/l9mhwNn6dpgHJZBNeGp23JGNjmX8=;
- b=fD4pnzakIDJGsaxiirmmi8LNvxkHLKdNDNyaNPi6Z7F5HSVkcAATwi76uXAjoXk/bi
- u/P7tJ8uWreHPFE7XzndfK7eCbzLU+plYnTcT6NiqHcP4K5otND1st2h+gybUemHbtMC
- ymTSvjQDMqphimSRlhHDwD3/8uU3x8T6BqSIaKZSsO6Grk/aIoBQlaF2wLT+ZNW/+GP2
- L3uu/znZ/2gTZgVFYCjwr+6GVud5zyjr7XyzpaSkRn9QxSTHOLuTxL0T2MuVCK4Qa37x
- nkq/ArbJDATIMnl+K2/0vOZ91FCOzWoEdQyepvnsric5mR7P0gylhxCUvROzmmBDrbqx
- EhJQ==
-X-Gm-Message-State: AGi0PuZpaWN26cOZLl6UykAT1+g8LC3ExOclDYehaolwTa1k8V1LWxjO
- oZwqNWQ3ahzYBR74ZFx+ovMvD2ISoi9+tqGSHrNi+jTMwXl2bc+pSrGxdHBOU2CeHB+Fu4opMNP
- SWQqlFaAw01Ru8eE=
-X-Received: by 2002:a7b:c399:: with SMTP id s25mr11080821wmj.169.1586871065894; 
- Tue, 14 Apr 2020 06:31:05 -0700 (PDT)
-X-Received: by 2002:a7b:c399:: with SMTP id s25mr11080797wmj.169.1586871065711; 
- Tue, 14 Apr 2020 06:31:05 -0700 (PDT)
+ bh=eFub0oIWRGuMfBgpHGkeKThVa6ZfWPB3Vt4l4sK5QOw=;
+ b=AwmjWCJFz0FeTmOvVzrLt1D1cliv2L5tvpe97wy4Mmr2AyKV9veOYaAJFrQlEZNrjB
+ KdmOvQB2K4zKF4abDgY/wRoenMYGb8xrKoQMy3xTDLjlgGO4ftKeCX41KakXkQJNCQuw
+ YJrsCabN2++gLSYGPNnoqjmbwZnvYBdycsHJ+hkn7253i3UaTnqQS7Vs3JQ3kaagvFPP
+ aJW/tpQ3UOE1xbK+I+gA1gNuxJa34lSTps1R0Ie5W/hfYQ8zHX4i6kGLww7kLMWcQrKK
+ KzWXESFAc6tl3zMjWGYKbk65nogU5/5O1UkYiEo/RoJ9TNgfMQ2BncpjxX/RUSLk6jPu
+ 6wSA==
+X-Gm-Message-State: AGi0PuY1/z4das87R0Dym3AM1dXlEuWLBVMvv0JVEHEdA30YJz5gINgt
+ 9rd9iYtVzjDbC5l8OWgCvEfMyuo7C31xFKTWWPXE3JJsCBDe2rXr65C/nwhgvdNJ8GOPf5ybT7Y
+ RWNBwHYzqH0Va
+X-Received: by 2002:a05:600c:2645:: with SMTP id
+ 5mr23428263wmy.168.1586871070896; 
+ Tue, 14 Apr 2020 06:31:10 -0700 (PDT)
+X-Received: by 2002:a05:600c:2645:: with SMTP id
+ 5mr23428234wmy.168.1586871070661; 
+ Tue, 14 Apr 2020 06:31:10 -0700 (PDT)
 Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id q19sm19299307wra.38.2020.04.14.06.31.04
+ by smtp.gmail.com with ESMTPSA id g186sm19354552wme.7.2020.04.14.06.31.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Apr 2020 06:31:05 -0700 (PDT)
+ Tue, 14 Apr 2020 06:31:10 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.0 02/12] qga: Extract guest_file_handle_find() to
- commands-common.h
-Date: Tue, 14 Apr 2020 15:30:42 +0200
-Message-Id: <20200414133052.13712-3-philmd@redhat.com>
+Subject: [PATCH-for-5.0 03/12] qga: Extract qmp_guest_file_read() to common
+ commands.c
+Date: Tue, 14 Apr 2020 15:30:43 +0200
+Message-Id: <20200414133052.13712-4-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200414133052.13712-1-philmd@redhat.com>
 References: <20200414133052.13712-1-philmd@redhat.com>
@@ -110,142 +112,187 @@ Content-Type: text/plain; charset=UTF-8;
 	text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
  Michael Roth <mdroth@linux.vnet.ibm.com>,
- Fabien Chouteau <chouteau@adacore.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Fabien Chouteau <chouteau@adacore.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Max Filippov <jcmvbkbc@gmail.com>,
  KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Stafford Horne <shorne@gmail.com>, Max Reitz <mreitz@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GeQsn7rft2IE
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yVI/FK8MlJ7y
 
-As we are going to reuse this method, declare it in common
-header.
+Extract the common code shared by both POSIX/Win32 implementations.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- qga/commands-common.h | 18 ++++++++++++++++++
- qga/commands-posix.c  |  7 ++++---
- qga/commands-win32.c  |  7 ++++---
- 3 files changed, 26 insertions(+), 6 deletions(-)
- create mode 100644 qga/commands-common.h
+ qga/commands-common.h |  3 +++
+ qga/commands-posix.c  | 22 +++-------------------
+ qga/commands-win32.c  | 20 +++-----------------
+ qga/commands.c        | 26 ++++++++++++++++++++++++++
+ 4 files changed, 35 insertions(+), 36 deletions(-)
 
 diff --git a/qga/commands-common.h b/qga/commands-common.h
-new file mode 100644
-index 0000000000..af90e5481e
---- /dev/null
+index af90e5481e..90785ed4bb 100644
+--- a/qga/commands-common.h
 +++ b/qga/commands-common.h
-@@ -0,0 +1,18 @@
-+/*
-+ * QEMU Guest Agent common/cross-platform common commands
-+ *
-+ * Copyright (c) 2020 Red Hat, Inc.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-+ */
-+#ifndef QGA_COMMANDS_COMMON_H
-+#define QGA_COMMANDS_COMMON_H
+@@ -15,4 +15,7 @@ typedef struct GuestFileHandle GuestFileHandle;
+=20
+ GuestFileHandle *guest_file_handle_find(int64_t id, Error **errp);
+=20
++GuestFileRead *guest_file_read_unsafe(GuestFileHandle *gfh,
++                                      int64_t count, Error **errp);
 +
-+#include "qga-qapi-types.h"
-+
-+typedef struct GuestFileHandle GuestFileHandle;
-+
-+GuestFileHandle *guest_file_handle_find(int64_t id, Error **errp);
-+
-+#endif
+ #endif
 diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-index cc69b82704..c59c32185c 100644
+index c59c32185c..a52af0315f 100644
 --- a/qga/commands-posix.c
 +++ b/qga/commands-posix.c
-@@ -26,6 +26,7 @@
- #include "qemu/sockets.h"
- #include "qemu/base64.h"
- #include "qemu/cutils.h"
-+#include "commands-common.h"
-=20
- #ifdef HAVE_UTMPX
- #include <utmpx.h>
-@@ -237,12 +238,12 @@ typedef enum {
-     RW_STATE_WRITING,
- } RwState;
-=20
--typedef struct GuestFileHandle {
-+struct GuestFileHandle {
-     uint64_t id;
-     FILE *fh;
-     RwState state;
-     QTAILQ_ENTRY(GuestFileHandle) next;
--} GuestFileHandle;
-+};
-=20
- static struct {
-     QTAILQ_HEAD(, GuestFileHandle) filehandles;
-@@ -268,7 +269,7 @@ static int64_t guest_file_handle_add(FILE *fh, Error **=
-errp)
-     return handle;
+@@ -461,29 +461,14 @@ void qmp_guest_file_close(int64_t handle, Error **err=
+p)
+     g_free(gfh);
  }
 =20
--static GuestFileHandle *guest_file_handle_find(int64_t id, Error **errp)
-+GuestFileHandle *guest_file_handle_find(int64_t id, Error **errp)
+-struct GuestFileRead *qmp_guest_file_read(int64_t handle, bool has_count,
+-                                          int64_t count, Error **errp)
++GuestFileRead *guest_file_read_unsafe(GuestFileHandle *gfh,
++                                      int64_t count, Error **errp)
  {
-     GuestFileHandle *gfh;
+-    GuestFileHandle *gfh =3D guest_file_handle_find(handle, errp);
+     GuestFileRead *read_data =3D NULL;
+     guchar *buf;
+-    FILE *fh;
++    FILE *fh =3D gfh->fh;
+     size_t read_count;
 =20
+-    if (!gfh) {
+-        return NULL;
+-    }
+-
+-    if (!has_count) {
+-        count =3D QGA_READ_COUNT_DEFAULT;
+-    } else if (count < 0 || count >=3D UINT32_MAX) {
+-        error_setg(errp, "value '%" PRId64 "' is invalid for argument coun=
+t",
+-                   count);
+-        return NULL;
+-    }
+-
+-    fh =3D gfh->fh;
+-
+     /* explicitly flush when switching from writing to reading */
+     if (gfh->state =3D=3D RW_STATE_WRITING) {
+         int ret =3D fflush(fh);
+@@ -498,7 +483,6 @@ struct GuestFileRead *qmp_guest_file_read(int64_t handl=
+e, bool has_count,
+     read_count =3D fread(buf, 1, count, fh);
+     if (ferror(fh)) {
+         error_setg_errno(errp, errno, "failed to read file");
+-        slog("guest-file-read failed, handle: %" PRId64, handle);
+     } else {
+         buf[read_count] =3D 0;
+         read_data =3D g_new0(GuestFileRead, 1);
 diff --git a/qga/commands-win32.c b/qga/commands-win32.c
-index 46cea7d1d9..cfaf6b84b8 100644
+index cfaf6b84b8..9717a8d52d 100644
 --- a/qga/commands-win32.c
 +++ b/qga/commands-win32.c
-@@ -37,6 +37,7 @@
- #include "qemu/queue.h"
- #include "qemu/host-utils.h"
- #include "qemu/base64.h"
-+#include "commands-common.h"
-=20
- #ifndef SHTDN_REASON_FLAG_PLANNED
- #define SHTDN_REASON_FLAG_PLANNED 0x80000000
-@@ -50,11 +51,11 @@
-=20
- #define INVALID_SET_FILE_POINTER ((DWORD)-1)
-=20
--typedef struct GuestFileHandle {
-+struct GuestFileHandle {
-     int64_t id;
-     HANDLE fh;
-     QTAILQ_ENTRY(GuestFileHandle) next;
--} GuestFileHandle;
-+};
-=20
- static struct {
-     QTAILQ_HEAD(, GuestFileHandle) filehandles;
-@@ -126,7 +127,7 @@ static int64_t guest_file_handle_add(HANDLE fh, Error *=
-*errp)
-     return handle;
+@@ -322,33 +322,19 @@ void qmp_guest_shutdown(bool has_mode, const char *mo=
+de, Error **errp)
+     }
  }
 =20
--static GuestFileHandle *guest_file_handle_find(int64_t id, Error **errp)
-+GuestFileHandle *guest_file_handle_find(int64_t id, Error **errp)
+-GuestFileRead *qmp_guest_file_read(int64_t handle, bool has_count,
+-                                   int64_t count, Error **errp)
++GuestFileRead *guest_file_read_unsafe(GuestFileHandle *gfh,
++                                      int64_t count, Error **errp)
  {
-     GuestFileHandle *gfh;
-     QTAILQ_FOREACH(gfh, &guest_file_state.filehandles, next) {
+     GuestFileRead *read_data =3D NULL;
+     guchar *buf;
+-    HANDLE fh;
++    HANDLE fh =3D gfh->fh;
+     bool is_ok;
+     DWORD read_count;
+-    GuestFileHandle *gfh =3D guest_file_handle_find(handle, errp);
+=20
+-    if (!gfh) {
+-        return NULL;
+-    }
+-    if (!has_count) {
+-        count =3D QGA_READ_COUNT_DEFAULT;
+-    } else if (count < 0 || count >=3D UINT32_MAX) {
+-        error_setg(errp, "value '%" PRId64
+-                   "' is invalid for argument count", count);
+-        return NULL;
+-    }
+-
+-    fh =3D gfh->fh;
+     buf =3D g_malloc0(count + 1);
+     is_ok =3D ReadFile(fh, buf, count, &read_count, NULL);
+     if (!is_ok) {
+         error_setg_win32(errp, GetLastError(), "failed to read file");
+-        slog("guest-file-read failed, handle %" PRId64, handle);
+     } else {
+         buf[read_count] =3D 0;
+         read_data =3D g_new0(GuestFileRead, 1);
+diff --git a/qga/commands.c b/qga/commands.c
+index 4471a9f08d..5611117372 100644
+--- a/qga/commands.c
++++ b/qga/commands.c
+@@ -18,6 +18,7 @@
+ #include "qemu/base64.h"
+ #include "qemu/cutils.h"
+ #include "qemu/atomic.h"
++#include "commands-common.h"
+=20
+ /* Maximum captured guest-exec out_data/err_data - 16MB */
+ #define GUEST_EXEC_MAX_OUTPUT (16*1024*1024)
+@@ -547,3 +548,28 @@ error:
+     g_free(info);
+     return NULL;
+ }
++
++GuestFileRead *qmp_guest_file_read(int64_t handle, bool has_count,
++                                   int64_t count, Error **errp)
++{
++    GuestFileHandle *gfh =3D guest_file_handle_find(handle, errp);
++    GuestFileRead *read_data;
++
++    if (!gfh) {
++        return NULL;
++    }
++    if (!has_count) {
++        count =3D QGA_READ_COUNT_DEFAULT;
++    } else if (count < 0 || count >=3D UINT32_MAX) {
++        error_setg(errp, "value '%" PRId64 "' is invalid for argument coun=
+t",
++                   count);
++        return NULL;
++    }
++
++    read_data =3D guest_file_read_unsafe(gfh, count, errp);
++    if (!read_data) {
++        slog("guest-file-write failed, handle: %" PRId64, handle);
++    }
++
++    return read_data;
++}
 --=20
 2.21.1
 

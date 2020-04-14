@@ -1,333 +1,224 @@
-Received: by 2002:a0c:f485:0:0:0:0:0 with SMTP id i5csp47040qvm;
-        Tue, 14 Apr 2020 11:35:51 -0700 (PDT)
-X-Google-Smtp-Source: APiQypK+yn/vAxktjMaUKxMb2hNMWFCje2x53/xtgrVKMfEXat37Ut9vu+I5sWubOnn3F2WaLSfL
-X-Received: by 2002:a0c:bec4:: with SMTP id f4mr1422858qvj.26.1586889351339;
-        Tue, 14 Apr 2020 11:35:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586889351; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5235432lfm;
+        Tue, 14 Apr 2020 10:28:44 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKzp0p36lj/Q39tJQQOke8bFlheclJ5r3RmtiyYl++FI9pa16OKEw4okLz7Os9+iU1/Pue4
+X-Received: by 2002:a05:620a:12fa:: with SMTP id f26mr11229062qkl.374.1586885324692;
+        Tue, 14 Apr 2020 10:28:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586885324; cv=none;
         d=google.com; s=arc-20160816;
-        b=SDz4uartFI1qGWddC4SmVZeeknCNg+XRkEvBgorbOOrAObOBYbXpJLHHMy1ceOOBpQ
-         ISWL5cBjoeEC2IwXjAE+zRAzo3BPUJ5sEEFVTEDOWwrmfRKb87iLtsuOJ5gZcH7prD7S
-         mx0d0lw51WaCUT2TgD8u7fsooIE01shOIv3bdrnnAAWCizo++CwAfu5iBO/tQiKSuDMc
-         0lw1hAHw/pL/bd+hLKSoKJGAuo9kuTccJUqtgiyx0ZMbeN+6RO/+/aWMjv+iGPpkuaU/
-         anqLCVeSr6vfQ6JZgptCpcJNcPRa/l1BJhNU+QGb7+nIzM0RQtwcpeyUndBwBUuWf+X4
-         ORuQ==
+        b=oUqdSKYjd0Yw8PaQsCo+8fShBxcw+GB413tLBOHHME8S+OzAlyBMBLKMa5ybPcFJu4
+         Uxtysr/qbi247QS8Nj+H8HZp8apEkD0WIoc6Fu7ex4VPmyzRURc+bFZMTzDpauavNaQk
+         LtRfmFS813I/PHbhNHEbmuIacC2wa5lznHbUfMkwJEGWbY0cr9WQEz6wOa0cyBRJ1wMT
+         CSPPHVlhHSIFwR3+3DxKbhTYOJDBJTHj/FFk+eVGzoiLBHdMD5wUT2eBiMDvet8pWPpw
+         ThLwRTp84t/SxRnI0F2je7UI6VmVJ9n38JiS2ljUEjEzs/31njNhknbhR+0AS3poIBg9
+         AXtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=akcFBqDpgpseprupEuVffBvAo4OaWunc9XDKF/6Io0Y=;
-        b=0Mw8jDWKBfnfeXFNtdeaZI7cKOX3Ed5ze03L/DgUstlIWgktLooQBHZRvuyAtDiMsC
-         D0CNMWxFNWxtQqeYb3AsD9JJchWWh5LrSJWdNbg0MLfiP0KYDzTRkQA7Q9PXk1zxeLay
-         cSscVmTpXSnE8E2qa5rI1hLRkjebfAENw9z0K6VUuGuacXDJa+0ykRRv5H5QlQ8Gmkxc
-         WJ5vSVI7wej6b2ioUWFmuXdOjA+aKcEjk+lCDVKmG02lkBmxRWFQ3SpkDWUZYPRSQ2hT
-         e52Reko+3YsL9ooqXD8Oig1o2IRxv+dMDjHpmOzXrRCtg7B0J010Pan/njrnE+vFT8hT
-         UCJQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=CUyXXTyShFlx2/maCp5HGaaaIrvw4HRoNrxDU7Mf/kQ=;
+        b=hKuaT+F183xDXu/imgU+NiCSQwN5wZKwBRahLIB6xfWhDAMv15lNh451hZr1Mmh2oh
+         3EY8zcF1dpyjYBqnisGj3vRc4gFQk6yhw0kJ0Mh2FPVib3EirdW+bIDOKdARNZaiy9LG
+         1ZEfXpSTKEgiBozSONa+VFAHUwl59L1srbK4Q2AVawLUD7vcLpE9lcXk1WGVN/kvpGT3
+         f4BSzoQ+80Qd1HnFJi3JwwjCso3cY/cD4CRu90Bo86Mui3WhCPvkOIrs/Gw2a/VDOoxQ
+         Ion6RecDTz0TMj2hbCRsCxHsn+2HnXs7WTJ3NxiXg+1RXEhGbFw/3qb4J14XWlFfItjj
+         Wfxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mUvUyC4m;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WluseXrB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b22si8118522qtk.219.2020.04.14.11.35.51
+        by mx.google.com with ESMTPS id 2si3514550qkc.351.2020.04.14.10.28.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Apr 2020 11:35:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Apr 2020 10:28:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mUvUyC4m;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37226 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WluseXrB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36234 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jOQPW-0004Ce-RI
-	for alex.bennee@linaro.org; Tue, 14 Apr 2020 14:35:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60339)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jOPMa-0007Yz-4z
+	for alex.bennee@linaro.org; Tue, 14 Apr 2020 13:28:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46816)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mansourweb@gmail.com>) id 1jOQOb-0004B7-LO
- for qemu-devel@nongnu.org; Tue, 14 Apr 2020 14:34:55 -0400
+ (envelope-from <sundeep.lkml@gmail.com>) id 1jOP9Q-0001hS-Dx
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 13:15:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mansourweb@gmail.com>) id 1jOQOa-0000tj-4c
- for qemu-devel@nongnu.org; Tue, 14 Apr 2020 14:34:53 -0400
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133]:45972)
+ (envelope-from <sundeep.lkml@gmail.com>) id 1jOP9M-0005x1-FR
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 13:15:08 -0400
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:36041)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <mansourweb@gmail.com>)
- id 1jOQOZ-0000iX-Rn; Tue, 14 Apr 2020 14:34:52 -0400
-Received: by mail-lf1-x133.google.com with SMTP id f8so539169lfe.12;
- Tue, 14 Apr 2020 11:34:50 -0700 (PDT)
+ (Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+ id 1jON5O-0003dY-JW; Tue, 14 Apr 2020 11:02:50 -0400
+Received: by mail-pf1-x443.google.com with SMTP id n10so39092pff.3;
+ Tue, 14 Apr 2020 08:02:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=akcFBqDpgpseprupEuVffBvAo4OaWunc9XDKF/6Io0Y=;
- b=mUvUyC4m2JBYAzsFs+An+T28AORoPWuBlH6atjgJ39vXfVxWryQ3GuZ5OdD2BT22vB
- TEpuLWJC9WlBCVtbS4dQG+5TcdWSAO2V2N8bvkF9Klaq89SRDLTGVsoTCZS+llbUly/Y
- NgrqWBPKx5BZ24uWBozfzGnopJR9bKciWzuC0568dEtH+9yg8VDrEJGYj20B5JaKCb90
- ynOgU/KWrD+LDd5SWHGXqlekAeGDJ4LKdNZ3B+W3gvn5EkVZt6f42/2dhsY+u0cjoZdw
- wIYEjpIwF4//uRnsSLcLc7nQ4sye1erv5nQ636U2e8qYN0jOCbwY2yZGnlGz/x/1xhiV
- EZFg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=CUyXXTyShFlx2/maCp5HGaaaIrvw4HRoNrxDU7Mf/kQ=;
+ b=WluseXrBHnVseij7jQRu9iNU5Wspkl85BKByw1Ua6dODwWIgNS01Q+3np+07qVQ957
+ o7syHT4q3eI+sEPmYMQFUi5R6yr/xUQjQp5A+Ruxf55+3IFoyB9qC+AImyuKAtZdp8sZ
+ 9D/M1wQPCXLLizkp83+404zHMTn+cofqj+RZSRhA633VLVWcmPlSW4AmzoBT3xV/xxsH
+ BJ+sdVrQLlLWnIC2yeN3d8e3HL59jyJVnKV0O1Wr1dSNkt62tIzK82oiTjrXSgGVqJEZ
+ Tak0Ef6TSC9D0Qm7SKB7nr5qNpuFXge4rPd2fQJbuvn3gXwMgfq3NTzYAOfHKLRCxqA9
+ C1RQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=akcFBqDpgpseprupEuVffBvAo4OaWunc9XDKF/6Io0Y=;
- b=dVOicFSblKo4yJtQxlKPNxOsXyRLFWvV+74FZnEyCwm2TPmhB36Z+Uqf0aMogIG3sf
- Sv1nCDBPA0v6BZrridSHblHl49PoEKpQlPmQ7/grkmsy9KB5iNdz8u6QmpWmnmNTmmH9
- XotWZKYPBkTZx5DFnNmhCKSs4khoIt1UEUGDQa022/sQfQWAaLA8HEN8Kfusn5j3hs8B
- ucKhhIw1yPJLybZ/7kRoMzuhefc2FFOQCWz437pC8A/ndFcLLshHX4U6tmfY5ycJTv0H
- YaLjo1dzVcoiHxIO0mE8hRs8npie5A2SqNp9TjXnMQCsRIVCQJ8vY7Gev+7zyez4VmYC
- EdXw==
-X-Gm-Message-State: AGi0PuaJU0PmOpYJxgOIcxJfzzkkzYg2aVpkvXVYk0wgyojBrVA29lAc
- aY6yhvuMTXPrXGSXoCyYD3ystTmSHb44UpZOw0w=
-X-Received: by 2002:a19:5f4e:: with SMTP id a14mr681051lfj.57.1586889289066;
- Tue, 14 Apr 2020 11:34:49 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=CUyXXTyShFlx2/maCp5HGaaaIrvw4HRoNrxDU7Mf/kQ=;
+ b=DH+s8sJSvYyriSol6ODS1HyzbK0YA03eGbh4JkN5xdzooMpl1WVGoYU8mXVtgh1Vl6
+ jxFyddcqddCR75q95KczDL4w6gr1CjYirPaF8tbSXddF8XzJLNPNcQBRixb3p2C7VcTk
+ xBMER21ZPQP4d92KEcNJXL2sUpp8TdzA2oELMaui8LhXc9LSMLyd3y8Cgar6Ko5CavXk
+ qMfH9pBFd0YBr7e1J6fGoY+XNJrr3amHmB9XE5huEn7KGSIEmPMoLv/Jqk/u1Rdn2PGg
+ 6boD1Byw6wteRFm9se3x2gRfX91bGc/BjHZm1UghfYV75rDL+M2nM3ZCaL9EH5qc5z60
+ 9Dmg==
+X-Gm-Message-State: AGi0PuaJIqwVwa1tVtWqGSWL967EmartqoOwbsFqLY/Xvs7bMmrhy84M
+ 8mlk/b9ofOrHCNVHhMdLKSM=
+X-Received: by 2002:a63:4004:: with SMTP id n4mr11361362pga.234.1586876569594; 
+ Tue, 14 Apr 2020 08:02:49 -0700 (PDT)
+Received: from hyd1358.marvell.com ([115.113.156.2])
+ by smtp.googlemail.com with ESMTPSA id f9sm12175240pjt.45.2020.04.14.08.02.47
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 14 Apr 2020 08:02:49 -0700 (PDT)
+From: sundeep.lkml@gmail.com
+To: jasowang@redhat.com, peter.maydell@linaro.org, philmd@redhat.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: [Qemu devel PATCH v5 2/3] msf2: Add EMAC block to SmartFusion2 SoC
+Date: Tue, 14 Apr 2020 20:32:30 +0530
+Message-Id: <1586876551-3695-3-git-send-email-sundeep.lkml@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1586876551-3695-1-git-send-email-sundeep.lkml@gmail.com>
+References: <1586876551-3695-1-git-send-email-sundeep.lkml@gmail.com>
 MIME-Version: 1.0
-References: <20200414133052.13712-1-philmd@redhat.com>
- <20200414133052.13712-11-philmd@redhat.com>
-In-Reply-To: <20200414133052.13712-11-philmd@redhat.com>
-From: Mansour Ahmadi <mansourweb@gmail.com>
-Date: Tue, 14 Apr 2020 14:34:38 -0400
-Message-ID: <CAGT9xrCSLPNgTgUD_QveEFVdW65PNG3vOB8_1xEoON04=da+_A@mail.gmail.com>
-Subject: Re: [PATCH-for-5.0 10/12] hw/block/pflash: Check return value of
- blk_pwrite()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="0000000000005f6f1a05a3447475"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::133
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::443
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Qemu-block <qemu-block@nongnu.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Fabien Chouteau <chouteau@adacore.com>, Max Filippov <jcmvbkbc@gmail.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- Stafford Horne <shorne@gmail.com>, Max Reitz <mreitz@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2/sFe534rcMd
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9ZGtactIjcje
 
---0000000000005f6f1a05a3447475
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 
-Thank you for fixing the patch, Philippe!
+With SmartFusion2 Ethernet MAC model in
+place this patch adds the same to SoC.
 
+Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/arm/msf2-soc.c         | 26 ++++++++++++++++++++++++--
+ include/hw/arm/msf2-soc.h |  2 ++
+ 2 files changed, 26 insertions(+), 2 deletions(-)
 
-On Tue, Apr 14, 2020 at 9:31 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
-com>
-wrote:
+diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+index 588d643..a455b88 100644
+--- a/hw/arm/msf2-soc.c
++++ b/hw/arm/msf2-soc.c
+@@ -1,7 +1,7 @@
+ /*
+  * SmartFusion2 SoC emulation.
+  *
+- * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
++ * Copyright (c) 2017-2020 Subbaraya Sundeep <sundeep.lkml@gmail.com>
+  *
+  * Permission is hereby granted, free of charge, to any person obtaining a copy
+  * of this software and associated documentation files (the "Software"), to deal
+@@ -35,11 +35,14 @@
+ 
+ #define MSF2_TIMER_BASE       0x40004000
+ #define MSF2_SYSREG_BASE      0x40038000
++#define MSF2_EMAC_BASE        0x40041000
+ 
+ #define ENVM_BASE_ADDRESS     0x60000000
+ 
+ #define SRAM_BASE_ADDRESS     0x20000000
+ 
++#define MSF2_EMAC_IRQ         12
++
+ #define MSF2_ENVM_MAX_SIZE    (512 * KiB)
+ 
+ /*
+@@ -81,6 +84,13 @@ static void m2sxxx_soc_initfn(Object *obj)
+         sysbus_init_child_obj(obj, "spi[*]", &s->spi[i], sizeof(s->spi[i]),
+                           TYPE_MSS_SPI);
+     }
++
++    sysbus_init_child_obj(obj, "emac", &s->emac, sizeof(s->emac),
++                          TYPE_MSS_EMAC);
++    if (nd_table[0].used) {
++        qemu_check_nic_model(&nd_table[0], TYPE_MSS_EMAC);
++        qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
++    }
+ }
+ 
+ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+@@ -192,6 +202,19 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+         g_free(bus_name);
+     }
+ 
++    dev = DEVICE(&s->emac);
++    object_property_set_link(OBJECT(&s->emac), OBJECT(get_system_memory()),
++                             "ahb-bus", &error_abort);
++    object_property_set_bool(OBJECT(&s->emac), true, "realized", &err);
++    if (err != NULL) {
++        error_propagate(errp, err);
++        return;
++    }
++    busdev = SYS_BUS_DEVICE(dev);
++    sysbus_mmio_map(busdev, 0, MSF2_EMAC_BASE);
++    sysbus_connect_irq(busdev, 0,
++                       qdev_get_gpio_in(armv7m, MSF2_EMAC_IRQ));
++
+     /* Below devices are not modelled yet. */
+     create_unimplemented_device("i2c_0", 0x40002000, 0x1000);
+     create_unimplemented_device("dma", 0x40003000, 0x1000);
+@@ -202,7 +225,6 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+     create_unimplemented_device("can", 0x40015000, 0x1000);
+     create_unimplemented_device("rtc", 0x40017000, 0x1000);
+     create_unimplemented_device("apb_config", 0x40020000, 0x10000);
+-    create_unimplemented_device("emac", 0x40041000, 0x1000);
+     create_unimplemented_device("usb", 0x40043000, 0x1000);
+ }
+ 
+diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
+index 3cfe5c7..c9cb214 100644
+--- a/include/hw/arm/msf2-soc.h
++++ b/include/hw/arm/msf2-soc.h
+@@ -29,6 +29,7 @@
+ #include "hw/timer/mss-timer.h"
+ #include "hw/misc/msf2-sysreg.h"
+ #include "hw/ssi/mss-spi.h"
++#include "hw/net/msf2-emac.h"
+ 
+ #define TYPE_MSF2_SOC     "msf2-soc"
+ #define MSF2_SOC(obj)     OBJECT_CHECK(MSF2State, (obj), TYPE_MSF2_SOC)
+@@ -62,6 +63,7 @@ typedef struct MSF2State {
+     MSF2SysregState sysreg;
+     MSSTimerState timer;
+     MSSSpiState spi[MSF2_NUM_SPIS];
++    MSF2EmacState emac;
+ } MSF2State;
+ 
+ #endif
+-- 
+2.7.4
 
-> From: Mansour Ahmadi <mansourweb@gmail.com>
->
-> When updating the PFLASH file contents, we should check for a
-> possible failure of blk_pwrite(). Similar to commit 3a688294e.
->
-> Signed-off-by: Mansour Ahmadi <mansourweb@gmail.com>
-> Message-Id: <20200408003552.58095-1-mansourweb@gmail.com>
-> [PMD: Add missing "qemu/error-report.h" include and TODO comment]
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  hw/block/pflash_cfi01.c | 8 +++++++-
->  hw/block/pflash_cfi02.c | 8 +++++++-
->  2 files changed, 14 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-> index 24f3bce7ef..be1954c5d8 100644
-> --- a/hw/block/pflash_cfi01.c
-> +++ b/hw/block/pflash_cfi01.c
-> @@ -42,6 +42,7 @@
->  #include "hw/qdev-properties.h"
->  #include "sysemu/block-backend.h"
->  #include "qapi/error.h"
-> +#include "qemu/error-report.h"
->  #include "qemu/timer.h"
->  #include "qemu/bitops.h"
->  #include "qemu/error-report.h"
-> @@ -399,13 +400,18 @@ static void pflash_update(PFlashCFI01 *pfl, int
-> offset,
->                            int size)
->  {
->      int offset_end;
-> +    int ret;
->      if (pfl->blk) {
->          offset_end =3D offset + size;
->          /* widen to sector boundaries */
->          offset =3D QEMU_ALIGN_DOWN(offset, BDRV_SECTOR_SIZE);
->          offset_end =3D QEMU_ALIGN_UP(offset_end, BDRV_SECTOR_SIZE);
-> -        blk_pwrite(pfl->blk, offset, pfl->storage + offset,
-> +        ret =3D blk_pwrite(pfl->blk, offset, pfl->storage + offset,
->                     offset_end - offset, 0);
-> +        if (ret < 0) {
-> +            /* TODO set error bit in status */
-> +            error_report("Could not update PFLASH: %s", strerror(-ret));
-> +        }
->      }
->  }
->
-> diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-> index 12f18d401a..c6b6f2d082 100644
-> --- a/hw/block/pflash_cfi02.c
-> +++ b/hw/block/pflash_cfi02.c
-> @@ -37,6 +37,7 @@
->  #include "hw/block/flash.h"
->  #include "hw/qdev-properties.h"
->  #include "qapi/error.h"
-> +#include "qemu/error-report.h"
->  #include "qemu/bitmap.h"
->  #include "qemu/timer.h"
->  #include "sysemu/block-backend.h"
-> @@ -393,13 +394,18 @@ static uint64_t pflash_read(void *opaque, hwaddr
-> offset, unsigned int width)
->  static void pflash_update(PFlashCFI02 *pfl, int offset, int size)
->  {
->      int offset_end;
-> +    int ret;
->      if (pfl->blk) {
->          offset_end =3D offset + size;
->          /* widen to sector boundaries */
->          offset =3D QEMU_ALIGN_DOWN(offset, BDRV_SECTOR_SIZE);
->          offset_end =3D QEMU_ALIGN_UP(offset_end, BDRV_SECTOR_SIZE);
-> -        blk_pwrite(pfl->blk, offset, pfl->storage + offset,
-> +        ret =3D blk_pwrite(pfl->blk, offset, pfl->storage + offset,
->                     offset_end - offset, 0);
-> +        if (ret < 0) {
-> +            /* TODO set error bit in status */
-> +            error_report("Could not update PFLASH: %s", strerror(-ret));
-> +        }
->      }
->  }
->
-> --
-> 2.21.1
->
->
-
---0000000000005f6f1a05a3447475
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:garamond=
-,serif;font-size:large">Thank you for fixing the patch, Philippe!</div><br>=
-</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">=
-On Tue, Apr 14, 2020 at 9:31 AM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"=
-mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; wrote:<br></div><blockq=
-uote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1p=
-x solid rgb(204,204,204);padding-left:1ex">From: Mansour Ahmadi &lt;<a href=
-=3D"mailto:mansourweb@gmail.com" target=3D"_blank">mansourweb@gmail.com</a>=
-&gt;<br>
-<br>
-When updating the PFLASH file contents, we should check for a<br>
-possible failure of blk_pwrite(). Similar to commit 3a688294e.<br>
-<br>
-Signed-off-by: Mansour Ahmadi &lt;<a href=3D"mailto:mansourweb@gmail.com" t=
-arget=3D"_blank">mansourweb@gmail.com</a>&gt;<br>
-Message-Id: &lt;<a href=3D"mailto:20200408003552.58095-1-mansourweb@gmail.c=
-om" target=3D"_blank">20200408003552.58095-1-mansourweb@gmail.com</a>&gt;<b=
-r>
-[PMD: Add missing &quot;qemu/error-report.h&quot; include and TODO comment]=
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@red=
-hat.com" target=3D"_blank">philmd@redhat.com</a>&gt;<br>
----<br>
-=C2=A0hw/block/pflash_cfi01.c | 8 +++++++-<br>
-=C2=A0hw/block/pflash_cfi02.c | 8 +++++++-<br>
-=C2=A02 files changed, 14 insertions(+), 2 deletions(-)<br>
-<br>
-diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c<br>
-index 24f3bce7ef..be1954c5d8 100644<br>
---- a/hw/block/pflash_cfi01.c<br>
-+++ b/hw/block/pflash_cfi01.c<br>
-@@ -42,6 +42,7 @@<br>
-=C2=A0#include &quot;hw/qdev-properties.h&quot;<br>
-=C2=A0#include &quot;sysemu/block-backend.h&quot;<br>
-=C2=A0#include &quot;qapi/error.h&quot;<br>
-+#include &quot;qemu/error-report.h&quot;<br>
-=C2=A0#include &quot;qemu/timer.h&quot;<br>
-=C2=A0#include &quot;qemu/bitops.h&quot;<br>
-=C2=A0#include &quot;qemu/error-report.h&quot;<br>
-@@ -399,13 +400,18 @@ static void pflash_update(PFlashCFI01 *pfl, int offse=
-t,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0int size)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0int offset_end;<br>
-+=C2=A0 =C2=A0 int ret;<br>
-=C2=A0 =C2=A0 =C2=A0if (pfl-&gt;blk) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0offset_end =3D offset + size;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* widen to sector boundaries */<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0offset =3D QEMU_ALIGN_DOWN(offset, BDRV_S=
-ECTOR_SIZE);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0offset_end =3D QEMU_ALIGN_UP(offset_end, =
-BDRV_SECTOR_SIZE);<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 blk_pwrite(pfl-&gt;blk, offset, pfl-&gt;storag=
-e + offset,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D blk_pwrite(pfl-&gt;blk, offset, pfl-&g=
-t;storage + offset,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 offse=
-t_end - offset, 0);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (ret &lt; 0) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* TODO set error bit in status =
-*/<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;Could not upd=
-ate PFLASH: %s&quot;, strerror(-ret));<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-=C2=A0}<br>
-<br>
-diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c<br>
-index 12f18d401a..c6b6f2d082 100644<br>
---- a/hw/block/pflash_cfi02.c<br>
-+++ b/hw/block/pflash_cfi02.c<br>
-@@ -37,6 +37,7 @@<br>
-=C2=A0#include &quot;hw/block/flash.h&quot;<br>
-=C2=A0#include &quot;hw/qdev-properties.h&quot;<br>
-=C2=A0#include &quot;qapi/error.h&quot;<br>
-+#include &quot;qemu/error-report.h&quot;<br>
-=C2=A0#include &quot;qemu/bitmap.h&quot;<br>
-=C2=A0#include &quot;qemu/timer.h&quot;<br>
-=C2=A0#include &quot;sysemu/block-backend.h&quot;<br>
-@@ -393,13 +394,18 @@ static uint64_t pflash_read(void *opaque, hwaddr offs=
-et, unsigned int width)<br>
-=C2=A0static void pflash_update(PFlashCFI02 *pfl, int offset, int size)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0int offset_end;<br>
-+=C2=A0 =C2=A0 int ret;<br>
-=C2=A0 =C2=A0 =C2=A0if (pfl-&gt;blk) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0offset_end =3D offset + size;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* widen to sector boundaries */<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0offset =3D QEMU_ALIGN_DOWN(offset, BDRV_S=
-ECTOR_SIZE);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0offset_end =3D QEMU_ALIGN_UP(offset_end, =
-BDRV_SECTOR_SIZE);<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 blk_pwrite(pfl-&gt;blk, offset, pfl-&gt;storag=
-e + offset,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D blk_pwrite(pfl-&gt;blk, offset, pfl-&g=
-t;storage + offset,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 offse=
-t_end - offset, 0);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (ret &lt; 0) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* TODO set error bit in status =
-*/<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;Could not upd=
-ate PFLASH: %s&quot;, strerror(-ret));<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-=C2=A0}<br>
-<br>
--- <br>
-2.21.1<br>
-<br>
-</blockquote></div>
-
---0000000000005f6f1a05a3447475--
